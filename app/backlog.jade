@@ -1,0 +1,30 @@
+extends layout
+
+block head
+  title Taiga  Project management web application with scrum in mind!
+
+block content
+  section.main.backlog
+    h1 Decathlon Backlog
+    include views/components/summary
+    include views/modules/burndown
+    div.sub-menu
+      a(href="", title="Move to Current Sprint")
+        span.ico(data-icon="")
+        span.text Move to current Sprint
+      a(href="", title="Show Filters")
+        span.ico(data-icon="")
+        span.text Show Filters
+      a(href="", title="Show Tags")
+        span.ico(data-icon="")
+        span.text Show Tags
+      include views/components/addnewus
+      include views/modules/backlog-table
+  sidebar.menu-secondary.sidebar
+    header
+      h2 Sprints
+    body
+      ul
+        li Text1
+        li text2
+        li test2

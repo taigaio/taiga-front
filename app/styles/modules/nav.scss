@@ -1,0 +1,33 @@
+.menu {
+    width: 90px;
+    background-image: url("/images/menu.png");
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    flex-wrap: wrap;
+    padding: 3em .3em;
+    font-family: 'ostrichSans';
+}
+
+.logo {
+    margin-bottom: 4em;
+    img {
+        width: 100%;
+    }
+}
+
+.main-nav {
+    text-align: center;
+    margin-bottom: 100px;
+    li {
+        margin-bottom: 20px;
+    }
+    a {
+        color: $white;
+        @extend .xlarge;
+        display: block;
+        span{
+            display: block;
+            line-height: 1.2em;
+        }
+    }
+}

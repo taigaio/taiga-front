@@ -1,0 +1,102 @@
+/* Typography */
+
+/*Font face*/
+
+@each $font-face in DroidSans, DroidSans-Bold, ostrichSans, taiga {
+    @font-face {
+        font-family: '#{$font-face}';
+        src: url('../fonts/#{$font-face}.eot?#iefix') format('embedded-opentype'),
+            url('../fonts/#{$font-face}.woff') format('woff'),
+            url('../fonts/#{$font-face}.ttf')  format('truetype'),
+            url('../fonts/#{$font-face}.svg#{$font-face}') format('svg');
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: $blackish;
+    font-weight: normal;
+    a {
+        font-weight: inherit;
+    }
+}
+
+/*__Font Sizes__*/
+.small {font-size: .7em;}
+.medium {font-size: 1em;}
+.large {font-size: 1.2;}
+.xlarge {font-size: 2em;}
+.xxlarge {font-size: 3em;}
+
+p { margin: 0 0 20px 0;
+    img {
+        margin: 0;
+    }
+}
+
+em { font-style: italic; }
+strong { font-weight: bold; color: #333; }
+
+hr {
+    border: solid #ddd;
+    border-width: 1px 0 0;
+    clear: both;
+    margin: 10px 0 30px;
+    height: 0;
+}
+
+/* __Links__ */
+
+a, a:visited {
+    color: #333;
+    text-decoration: none;
+}
+
+/* Taiga Icons */
+
+[data-icon]:before {
+  font-family: "taiga" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: "taiga" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-backlog:before {
+  content: "a";
+}
+.icon-issues:before {
+  content: "b";
+}
+.icon-kanban:before {
+  content: "c";
+}
+.icon-search:before {
+  content: "d";
+}
+.icon-video:before {
+  content: "e";
+}
+.icon-wiki:before {
+  content: "f";
+}
+.icon-settings:before {
+  content: "g";
+}
