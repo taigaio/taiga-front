@@ -1,15 +1,15 @@
 .menu {
     width: 90px;
     background-image: url("/images/menu.png");
+    background-attachment: fixed;
     background-position: center bottom;
-    background-repeat: no-repeat;
     flex-wrap: wrap;
-    padding: 3em .3em;
+    padding: 2em .3em;
     font-family: 'ostrichSans';
 }
 
 .logo {
-    margin-bottom: 4em;
+    margin-bottom: 2em;
     img {
         width: 100%;
     }
@@ -17,17 +17,63 @@
 
 .main-nav {
     text-align: center;
-    margin-bottom: 100px;
+    margin-bottom: 3em;
+    list-style: none;
+    padding: 0;
+    position: relative;
     li {
-        margin-bottom: 20px;
+        margin-bottom: 1em;
     }
     a {
         color: $white;
-        @extend .xlarge;
         display: block;
-        span{
+        text-align:center;
+        &:hover {
+            @include transition (color .3s linear);
+            color: $freshTaiga;
+        }
+        span {
             display: block;
-            line-height: 1.2em;
+        }
+        .icon{
+            @extend .xlarge;
+            line-height: 1.1em;
+        }
+        .item {
+            @extend .large;
+        }
+    }
+    .active {
+        @include transition (color .3s linear);
+        color: $freshTaiga;
+    }
+}
+
+.user {
+    width: 80px;
+    padding: 0 10px;
+    position: absolute;
+    bottom: 1em;
+    a {
+        text-align: center;
+        color: $white;
+        @extend .medium;
+    }
+    img{
+        border: 1px solid transparent;
+        &:hover {
+            border: 2px solid $freshTaiga;
+            @include transition (all .6s ease-in-out);
+        }
+    }
+    .settings {
+        text-align: center;
+        a {
+            margin-right: .5em;
+            &:hover {
+                @include transition (color .3s linear);
+                color: $freshTaiga;
+            }
         }
     }
 }
