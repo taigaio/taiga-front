@@ -1,8 +1,7 @@
 Taiga Layout
 ===============
 
-.. image:: http://kaleidos.net/static/img/badge.png
-    :target: http://kaleidos.net/community/taiga/
+![Kaleidos Project](http://kaleidos.net/static/img/badge.png "Kaleidos Project")
 
 Setup initial environment
 -------------------------
