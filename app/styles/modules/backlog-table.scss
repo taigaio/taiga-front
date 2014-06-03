@@ -1,0 +1,55 @@
+.backlog-table{
+    display:flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: center;
+    width: 100%;
+    .row {
+        display:flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-content: stretch;
+        align-items: stretch;
+        width: 100%;
+        text-align: left;
+        padding: .5em 0;
+
+        @for $i from 1 through 8 {
+            .width-#{$i} {
+                flex-grow: $i;
+                flex-shrink: 0;
+                flex-basis: 50px;
+            }
+        }
+    }
+    .user-stories {
+        flex-basis: 500px;
+        input {
+            vertical-align: top;
+        }
+        span {
+            max-width: 70%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            display: inline-block;
+        }
+    }
+    .title {
+        font-family: 'DroidSans-Bold';
+        @extend .medium;
+    }
+    .sub-title {
+        font-family: 'DroidSans';
+        @extend .small;
+        background: $whitish;
+        border-bottom: 2px solid $grayer;
+    }
+    .table-main {
+        @extend .small;
+        border-bottom: 1px solid $grayLight;
+    }
+}
