@@ -21,11 +21,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /*__Font Sizes__*/
-.small {font-size: .7em;}
-.medium {font-size: 1em;}
-.large {font-size: 1.2em;}
-.xlarge {font-size: 2em;}
-.xxlarge {font-size: 3em;}
+.small {font-size: .8rem;}
+.medium {font-size: 1rem;}
+.large {font-size: 1.2rem;}
+.xlarge {font-size: 2rem;}
+.xxlarge {font-size: 3rem;}
+.xxxlarge {font-size: 3rem;}
+
+h1 {
+    @extend .xxlarge;
+    font-family: 'ostrichSans';
+    margin-bottom: 2rem;
+    .green {
+        color: $greenTaiga;
+        margin-left: .3rem;
+    }
+}
 
 p { margin: 0 0 20px 0;
     img {

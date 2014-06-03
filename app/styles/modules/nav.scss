@@ -2,14 +2,14 @@
     width: 90px;
     background-image: url("/images/menu.png");
     background-attachment: fixed;
-    background-position: center bottom;
+    background-position: left bottom;
     flex-wrap: wrap;
     padding: 2em .3em;
     font-family: 'ostrichSans';
 }
 
 .logo {
-    margin-bottom: 2em;
+    margin-bottom: 1em;
     img {
         width: 100%;
     }
@@ -37,7 +37,7 @@
         }
         .icon{
             @extend .xlarge;
-            line-height: 1.1em;
+            line-height: 2.2rem;
         }
         .item {
             @extend .large;

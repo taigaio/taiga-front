@@ -1,0 +1,60 @@
+.summary {
+    background: $blackish;
+    color: $white;
+    padding: 1em;
+    @include clearfix;
+    ul {
+        margin: 0;
+        padding: 0;
+        float: left;
+        margin-top: 4px;
+        width: 50%;
+    }
+    li {
+        float: left;
+        display: block;
+        margin-right: 4%;
+    }
+    .data {
+        float: left;
+        margin-top: 4px;
+        margin-right: 1.5em;
+        .number {
+            color: $freshTaiga;
+        }
+    }
+}
+
+.summary-progress-bar {
+    height: 30px;
+    margin-bottom: 0;
+    margin-right: 10px;
+    background: $whitish;
+    width: 20%;
+    position: relative;
+    float: left;
+    .current-progress {
+        position: absolute;
+        top: 3px;
+        left: 2px;
+        width: calc(30% - 4px);
+        background: $freshTaiga;
+        height: 24px;
+    }
+}
+
+.number {
+    font-family: 'DroidSans-Bold';
+    @extend .xlarge;
+    float: left;
+    margin-right: .2em;
+}
+
+.description {
+    font-family: 'DroidSans';
+    @extend .small;
+    float: left;
+    line-height: 1em;
+    position: relative;
+    top: -2px;
+}
