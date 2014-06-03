@@ -1,2 +1,18 @@
 .backlog {
 }
+
+.backlog-menu {
+    background: $whitish;
+    color: $blackish;
+    padding: 1em;
+    margin-bottom: 2rem;
+    @include clearfix;
+}
+
+.trans-button {
+    margin-right: 1rem;
+}
+
+.new-us {
+    float: right;
+}

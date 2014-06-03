@@ -1,1 +1,54 @@
 /* Buttons components */
+.trans-button {
+    font-family: 'ostrichSans';
+    @extend .large;
+    &:hover {
+        @include transition (color .3s linear);
+        color: $greenTaiga;
+    }
+    .icon {
+        margin-right: .3rem;
+    }
+}
+
+.button{
+    font-family: 'ostrichSans';
+    @extend .large;
+    padding: 5px 40px;
+    height: 32px;
+    display: inline-block;
+    .icon {
+        margin-right: .3rem;
+    }
+}
+
+.button-green {
+    @extend .button;
+    background: $greenTaiga;
+    span {
+        color: $white;
+    }
+    &:hover {
+        @include transition (background .3s linear);
+        background: $freshTaiga;
+    }
+}
+
+.button-bulk {
+    @extend .button;
+    background: $greenTaiga;
+    font-size: 22px;
+    padding: 5px;
+    vertical-align: middle;
+    margin-left: 2px;
+    span {
+        color: $white;
+    }
+    .icon {
+        margin-right: 0;
+    }
+    &:hover {
+        @include transition (background .3s linear);
+        background: $freshTaiga;
+    }
+}

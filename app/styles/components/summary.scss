@@ -1,7 +1,8 @@
 .summary {
-    background: $blackish;
+    background: $grayer;
     color: $white;
     padding: 1em;
+    margin-bottom: 2rem;
     @include clearfix;
     ul {
         margin: 0;
@@ -47,14 +48,14 @@
     font-family: 'DroidSans-Bold';
     @extend .xlarge;
     float: left;
-    margin-right: .2em;
+    margin-right: .2rem;
 }
 
 .description {
     font-family: 'DroidSans';
     @extend .small;
     float: left;
-    line-height: 1em;
+    line-height: .9rem;
     position: relative;
-    top: -2px;
+    top: -6px;
 }

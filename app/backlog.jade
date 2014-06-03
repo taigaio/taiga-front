@@ -8,18 +8,18 @@ block content
     include views/components/mainTitle
     include views/components/summary
     include views/modules/burndown
-    div.sub-menu
-      a(href="", title="Move to Current Sprint")
-        span.ico(data-icon="")
+    div.backlog-menu
+      a.trans-button(href="", title="Move to Current Sprint")
+        span.icon.icon-move
         span.text Move to current Sprint
-      a(href="", title="Show Filters")
-        span.ico(data-icon="")
+      a.trans-button(href="", title="Show Filters")
+        span.icon.icon-filter
         span.text Show Filters
-      a(href="", title="Show Tags")
-        span.ico(data-icon="")
+      a.trans-button(href="", title="Show Tags")
+        span.icon.icon-tag
         span.text Show Tags
       include views/components/addnewus
-      include views/modules/backlog-table
+    include views/modules/backlog-table
   sidebar.menu-secondary.sidebar
     header
       h2 Sprints
