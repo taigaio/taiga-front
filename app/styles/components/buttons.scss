@@ -27,6 +27,8 @@
     background: $greenTaiga;
     span {
         color: $white;
+        position: relative;
+        top: 2px;
     }
     &:hover {
         @include transition (background .3s linear);

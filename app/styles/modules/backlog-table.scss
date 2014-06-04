@@ -16,7 +16,6 @@
         width: 100%;
         text-align: left;
         padding: .5em 0;
-
         @for $i from 1 through 8 {
             .width-#{$i} {
                 flex-grow: $i;
@@ -24,6 +23,15 @@
                 flex-basis: 50px;
             }
         }
+        &:hover {
+            background: lighten( $greenTaiga, 60% );
+            @include transition (background .2s ease-in);
+            cursor: move;
+        }
+    }
+    .row-selected {
+        background: lighten( $greenTaiga, 60% );
+        @include transition (background .2s ease-in);
     }
     .user-stories {
         flex-basis: 500px;
@@ -41,12 +49,18 @@
     .title {
         font-family: 'DroidSans-Bold';
         @extend .medium;
+        &:hover {
+            background: transparent;
+        }
     }
     .sub-title {
         font-family: 'DroidSans';
         @extend .small;
         background: $whitish;
         border-bottom: 2px solid $grayer;
+        &:hover {
+            background: $whitish;
+        }
     }
     .table-main {
         @extend .small;

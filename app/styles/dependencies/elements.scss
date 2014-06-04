@@ -23,6 +23,14 @@ blockquote {
     }
 }
 
+a {
+    color: $blackish;
+    &:hover {
+        @include transition (color .3s linear);
+        color: $greenTaiga;
+    }
+}
+
 /* __Lists__ */
 
 ul, ol {
