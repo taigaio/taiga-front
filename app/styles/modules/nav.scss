@@ -51,27 +51,44 @@
     }
 }
 
+.user-settings {
+
+}
+
 .user {
     width: 80px;
     padding: 0 10px;
     position: absolute;
     bottom: 1em;
-    a {
-        text-align: center;
-        color: $white;
-        @extend .medium;
+    .popover {
+        @include popover(150px, "", 30px, 30px);
+        a{
+            text-align: left;
+            @extend .small;
+            color: $white;
+            &:hover {
+                color: $freshTaiga;
+                @include transition (color .2s linear);
+            }
+        }
     }
-    img{
-        border: 1px solid transparent;
-        &:hover {
-            border: 2px solid $freshTaiga;
-            @include transition (all .6s ease-in-out);
+    .user-settings{
+        position: relative;
+        img{
+          border: 1px solid transparent;
+          width: 100%;
+          border-radius: 50%;
+          &:hover {
+              border: 2px solid $freshTaiga;
+              @include transition (all .6s ease-in-out);
+          }
         }
     }
     .settings {
         text-align: center;
         a {
             margin-right: .5em;
+            color: $whitish;
             &:hover {
                 @include transition (color .3s linear);
                 color: $freshTaiga;

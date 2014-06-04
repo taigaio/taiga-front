@@ -28,8 +28,16 @@ nav.menu
         span.icon.icon-video
         span.item Video
   div.user
-    a.avatar(href="", title="User preferences")
-      img(src="http://thecodeplayer.com/u/uifaces/12.jpg", alt="username")
+    div.user-settings
+        ul.popover
+            li
+                a(href="", title="Change profile photo") Change profile photo
+            li
+                a(href="", title="Account settings") Account settings
+            li
+                a(href="", title="Logout") Logout
+        a.avatar(href="", title="User preferences")
+        img(src="http://thecodeplayer.com/u/uifaces/12.jpg", alt="username")
     div.settings
       a(href="", title="User preferences") Pilar
       a(href="", title="Site preferences")

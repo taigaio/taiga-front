@@ -1,0 +1,25 @@
+@mixin popover($width, $top:"", $left:"", $bottom:"", $right:"") {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    position: absolute;
+    background: $blackish;
+    color: $white;
+    font-family: 'DroidSans';
+    padding: 10px;
+    top: #{$top};
+    left: #{$left};
+    bottom: #{$bottom};
+    right: #{$right};
+    width: $width;
+    display: none;
+    a {
+        padding: 10px 2px;
+        display: block;
+        @extend .small;
+        border-bottom: 1px solid $grayer;
+        &:last-child {
+            border: none;
+        }
+    }
+}
