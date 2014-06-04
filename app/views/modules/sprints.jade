@@ -1,0 +1,33 @@
+section.sprints
+    header
+        h1 SPRINTS
+        div.summary
+            ul
+                li
+                    span.number 12
+                    span.description project<br />points
+            div.new-sprint
+              a.button-green(href="", title="Add New US")
+                span.text + New sprint
+
+    section.sprint.sprint-current
+        header
+            div.sprint-summary
+                a.icon.icon-arrow-up(href="", title="compact Sprint")
+                span.sprint-name current sprint
+                span.sprint-date 04/06/14-20/06/14
+            ul
+                li
+                    span.number 12
+                    span.description closed<br />points
+                li
+                    span.number 24
+                    span.description total<br />points
+        div.sprint-progress-bar
+            div.current-progress
+        div.sprint-table
+            - for (var x = 0; x < 10; x++)
+                div.row
+                    div.column-us.width-8
+                        span #125 Crear el perfil de usuario Senior en el admin
+                    div.column-points.width-1 45

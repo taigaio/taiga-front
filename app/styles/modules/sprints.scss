@@ -1,0 +1,121 @@
+.sprints{
+    .summary{
+        background: $grayLight;
+        @include clearfix;
+        ul {
+            width: 40%;
+        }
+        li {
+            color: $grayer;
+        }
+    }
+    .new-sprint {
+        float: right;
+    }
+    .sprint-name {
+        font-family: 'ostrichSans';
+        margin-right: 3px;
+        @extend .large;
+        max-width: 100px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        vertical-align: middle;
+        display: inline-block;
+    }
+    .sprint-date {
+        font-family: 'ostrichSans';
+        color: $grayLight;
+        @extend .large;
+    }
+    .sprint {
+        .sprint-summary {
+            width: 65%;
+            display: inline-block;
+        }
+        ul {
+            float: right;
+            width: 32%;
+            .number {
+                @extend .large;
+            }
+            .description {
+                @extend .xsmall;
+                line-height: .6rem;
+                margin-top: 5px;
+            }
+        }
+        li {
+            display: inline-block;
+            &:first-child {
+                margin-right: 3px;
+            }
+        }
+    }
+    .sprint-progress-bar{
+        height: 8px;
+        margin-bottom: 0;
+        background: $grayLight;
+        width: 100%;
+        position: relative;
+        border-radius: 2px;
+        margin-top: .5rem;
+        .current-progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: calc(30% - 4px);
+            background: $greenTaiga;
+            height: 8px;
+            border-radius: 2px;
+        }
+    }
+    .sprint-table {
+        display:flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-content: stretch;
+        align-items: center;
+        width: 100%;
+        .row {
+            display:flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+            align-content: stretch;
+            align-items: stretch;
+            width: 100%;
+            text-align: left;
+            padding: .5em 0;
+            border-bottom: 1px solid $grayLight;
+            @for $i from 1 through 8 {
+                .width-#{$i} {
+                    flex-grow: $i;
+                    flex-shrink: 0;
+                    flex-basis: 50px;
+                }
+            }
+            &:hover {
+                background: lighten($grayLight, 10%);
+                @include transition (background .2s ease-in);
+                cursor: move;
+            }
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+        .column-us {
+            @extend .small;
+            padding: 0 4px;
+            span {
+                @include ellipsis(250px);
+                display: block;
+            }
+        }
+        .column-points {
+            text-align: right;
+            padding: 0 4px;
+        }
+    }
+}

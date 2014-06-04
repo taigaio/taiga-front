@@ -21,12 +21,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /*__Font Sizes__*/
+.xsmall {font-size: .5rem;}
 .small {font-size: .8rem;}
 .medium {font-size: 1rem;}
 .large {font-size: 1.2rem;}
 .xlarge {font-size: 2rem;}
 .xxlarge {font-size: 3rem;}
-.xxxlarge {font-size: 3rem;}
 
 h1 {
     @extend .xxlarge;
@@ -122,4 +122,16 @@ a, a:visited {
 }
 .icon-bulk:before {
   content: "l";
+}
+.icon-arrow-up:before {
+  content: "h";
+}
+.icon-arrow-right:before {
+  content: "m";
+}
+.icon-arrow-left:before {
+  content: "n";
+}
+.icon-arrow-bottom:before {
+  content: "o";
 }

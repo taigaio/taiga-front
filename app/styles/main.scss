@@ -15,6 +15,7 @@ $prefix-for-spec:      true;
 @import 'dependencies/colors';
 @import 'dependencies/typography';
 @import 'dependencies/elements';
+@import 'dependencies/mixins';
 
 //Components
 @import 'components/buttons';
@@ -29,6 +30,7 @@ $prefix-for-spec:      true;
 //Modules
 @import 'modules/nav';
 @import 'modules/sidebar';
+@import 'modules/sprints';
 @import 'modules/burndown';
 @import 'modules/backlog-table';
 
