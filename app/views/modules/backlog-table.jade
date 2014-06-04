@@ -9,14 +9,15 @@ section.backlog-table
     div.status.width-2
     div.points.width-1 Front
     div.points.width-1 Back
-  div.row.table-main
-    div.user-stories.width-4
-      input(type="checkbox", name="")
-      a(href="") Crear el perfil de usuario Senior en el admin
-      a(href="", title="Edit")
-      span.icon.icon-edit
-      a(href="", title="Delete")
-      span.icon.icon-delete
-    div.status.width-2 Status
-    div.points.width-1 Front
-    div.points.width-1 Back
+  - for (var x = 0; x < 50; x++)
+      div.row.table-main
+        div.user-stories.width-4
+          input(type="checkbox", name="")
+          a(href="") Crear el perfil de usuario Senior en el admin
+          a(href="", title="Edit")
+          span.icon.icon-edit
+          a(href="", title="Delete")
+          span.icon.icon-delete
+        div.status.width-2 Status
+        div.points.width-1 Front
+        div.points.width-1 Back
