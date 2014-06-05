@@ -70,6 +70,9 @@
         @extend .small;
         border-bottom: 1px solid $grayLight;
     }
+    .status, .points {
+        position: relative;
+    }
     .blocked {
         background: $redLight;
         color: $white;
@@ -87,5 +90,26 @@
     }
     .doom-line {
         border-bottom: 3px solid $red;
+    }
+    .pop-status {
+        @include popover(150px, "", 30px, 10px, "");
+    }
+    .pop-points {
+        @include popover(150px, "", 30px, 10px, "");
+    }
+    .pop-points-open {
+        @include popover(200px, "", 30px, 10px, "");
+        li {
+            width: 23%;
+            display: inline-block;
+        }
+        a{
+            display: block;
+            text-align: center;
+            &:hover {
+                background: $freshTaiga;
+                color: $white;
+            }
+        }
     }
 }

@@ -8,7 +8,7 @@ section.backlog-table
         div.user-stories.width-4
         div.status.width-2
         div.points.width-1 Front
-        div.points.width-1 Back
+        div.points.width-1 Total
     div.row.table-main.blocked.doom-line
         div.user-stories.width-4
             div.user-story-name
@@ -19,9 +19,51 @@ section.backlog-table
             div.user-story-tags
                 - for(var y = 0; y < 3; y++)
                     include ../components/tag
-        div.status.width-2 Status
-        div.points.width-1 Front
-        div.points.width-1 Back
+        div.status.width-2
+            a(href="", title="Status Name") Status Name
+            ul.popover.pop-status
+                li
+                    a(href="", title="Status 1") Status 1
+                li
+                    a(href="", title="Status 2") Status 2
+                li
+                    a(href="", title="Status 3") Status 3
+        div.points.width-1
+            a(href="", title="Front") 24
+            ul.popover.pop-points-open
+                li
+                    a(href="", title="0") 0
+                li
+                    a(href="", title="1/2") 1/2
+                li
+                    a(href="", title="1") 1
+                li
+                    a(href="", title="2") 2
+                li
+                    a(href="", title="3") 3
+                li
+                    a(href="", title="4") 4
+                li
+                    a(href="", title="8") 8
+                li
+                    a(href="", title="13") 13
+                li
+                    a(href="", title="20") 20
+                li
+                    a(href="", title="40") 40
+                li
+                    a(href="", title="100") 100
+                li
+                    a(href="", title="?") ?
+        div.points.width-1
+            a(href="", title="Total Points") 43
+            ul.popover.pop-status
+                li
+                    a(href="", title="Status 1") Status 1
+                li
+                    a(href="", title="Status 2") Status 2
+                li
+                    a(href="", title="Status 3") Status 3
       - for (var x = 0; x < 50; x++)
             div.row.table-main
                 div.user-stories.width-4
@@ -34,5 +76,5 @@ section.backlog-table
                         - for(var y = 0; y < 3; y++)
                             include ../components/tag
                 div.status.width-2 Status
-                div.points.width-1 Front
-                div.points.width-1 Back
+                div.points.width-1 12
+                div.points.width-1 54

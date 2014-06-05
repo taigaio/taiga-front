@@ -12,14 +12,20 @@
     bottom: #{$bottom};
     right: #{$right};
     width: $width;
+    z-index: 99;
     display: none;
     a {
         padding: 10px 2px;
         display: block;
         @extend .small;
         border-bottom: 1px solid $grayer;
+        color: $white;
         &:last-child {
             border: none;
+        }
+        &:hover {
+            color: $freshTaiga;
+            @include transition (color .3s linear);
         }
     }
 }
