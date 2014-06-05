@@ -11,7 +11,7 @@
     }
 }
 
-.button{
+a.button{
     font-family: 'ostrichSans';
     @extend .large;
     padding: 5px 40px;
@@ -25,6 +25,7 @@
 .button-green {
     @extend .button;
     background: $greenTaiga;
+    @include transition (background .3s linear);
     span {
         color: $white;
         position: relative;
@@ -33,6 +34,22 @@
     &:hover {
         @include transition (background .3s linear);
         background: $freshTaiga;
+    }
+}
+
+.button-gray {
+    @extend .button;
+    background: $buttonGray;
+    @include transition (background .3s linear);
+    span {
+        color: $white;
+        position: relative;
+        top: 2px;
+    }
+    &:hover {
+        @include transition (background .3s linear);
+        background: $buttonGrayHover;
+        color: $white
     }
 }
 
