@@ -16,5 +16,6 @@
     "bulletproof-font-face": false,
     "important": false,
     "unqualified-attributes": false,
-    "regex-selectors": false
+    "regex-selectors": false,
+    "floats": false
 }

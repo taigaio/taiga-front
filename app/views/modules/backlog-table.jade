@@ -14,8 +14,9 @@ section.backlog-table
             div.user-story-name
                 input(type="checkbox", name="")
                 a(href="") Crear el perfil de usuario Senior en el admin
-                a.icon.icon-edit(href="", title="Edit")
-                a.icon.icon-delete(href="", title="Delete")
+                span.us-settings
+                    a.icon.icon-edit(href="", title="Edit")
+                    a.icon.icon-delete(href="", title="Delete")
             div.user-story-tags
                 - for(var y = 0; y < 3; y++)
                     include ../components/tag
@@ -71,8 +72,9 @@ section.backlog-table
                 div.user-story-name
                     input(type="checkbox", name="")
                     a(href="") Crear el perfil de usuario Senior en el admin
-                    a.icon.icon-edit(href="", title="Edit")
-                    a.icon.icon-delete(href="", title="Delete")
+                    span.us-settings
+                        a.icon.icon-edit(href="", title="Edit")
+                        a.icon.icon-delete(href="", title="Delete")
                 div.user-story-tags
                     - for(var y = 0; y < 3; y++)
                         include ../components/tag
