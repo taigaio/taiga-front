@@ -1,0 +1,9 @@
+.tag {
+    text-align: center;
+    display: inline-block;
+    width: 7rem;
+    padding: 3px;
+    margin: 0 .5rem .5rem 0;
+    color: $white;
+    background: $grayer; /* Fallback */
+}

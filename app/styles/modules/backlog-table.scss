@@ -33,7 +33,7 @@
         background: lighten( $greenTaiga, 60% );
         @include transition (background .2s ease-in);
     }
-    .user-stories {
+    .user-story-name {
         flex-basis: 500px;
         input {
             vertical-align: top;
@@ -45,6 +45,10 @@
             white-space: nowrap;
             display: inline-block;
         }
+    }
+    .user-story-tags {
+        margin-top: .3rem;
+        display: none;
     }
     .title {
         font-family: 'DroidSans-Bold';
