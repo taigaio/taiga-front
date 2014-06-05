@@ -10,6 +10,7 @@ section.sprints
               a.button-green(href="", title="Add New US")
                 span.text + New sprint
 
+    // If is current sprint
     section.sprint.sprint-current
         header
             div.sprint-summary
@@ -29,5 +30,51 @@ section.sprints
             - for (var x = 0; x < 10; x++)
                 div.row
                     div.column-us.width-8
-                        span #125 Crear el perfil de usuario Senior en el admin
+                        a(href="", title="") #125 Crear el perfil de usuario Senior en el admin
+                    div.column-points.width-1 45
+
+    // If Sprint is open but date is old
+    section.sprint.sprint-old-open
+        header
+            div.sprint-summary
+                a.icon.icon-arrow-up(href="", title="compact Sprint")
+                span.sprint-name old open sprint
+                span.sprint-date 04/05/14-03/06/14
+            ul
+                li
+                    span.number 20
+                    span.description closed<br />points
+                li
+                    span.number 24
+                    span.description total<br />points
+        div.sprint-progress-bar
+            div.current-progress
+        div.sprint-table
+            - for (var x = 0; x < 10; x++)
+                div.row
+                    div.column-us.width-8
+                        a(href="", title="") #125 Crear el perfil de usuario Senior en el admin
+                    div.column-points.width-1 45
+
+    // If Sprint is closed and date is old
+    section.sprint.sprint-closed
+        header
+            div.sprint-summary
+                a.icon.icon-arrow-up(href="", title="compact Sprint")
+                span.sprint-name old sprint
+                span.sprint-date 04/04/14-03/05/14
+            ul
+                li
+                    span.number 24
+                    span.description closed<br />points
+                li
+                    span.number 24
+                    span.description total<br />points
+        div.sprint-progress-bar
+            div.current-progress
+        div.sprint-table
+            - for (var x = 0; x < 10; x++)
+                div.row
+                    div.column-us.width-8
+                        a(href="", title="") #125 Crear el perfil de usuario Senior en el admin
                     div.column-points.width-1 45

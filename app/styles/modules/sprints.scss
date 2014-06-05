@@ -29,9 +29,17 @@
         @extend .large;
     }
     .sprint {
+        margin-bottom: 2rem;
         .sprint-summary {
             width: 65%;
             display: inline-block;
+        }
+        .icon{
+            display: inline-block;
+            &:hover {
+                @include transform(rotate(180deg));
+                @include transition (all .2s ease-in);
+            }
         }
         ul {
             float: right;
@@ -97,7 +105,7 @@
                 }
             }
             &:hover {
-                background: lighten($grayLight, 10%);
+                background: lighten($grayLight, 12%);
                 @include transition (background .2s ease-in);
                 cursor: move;
             }
@@ -108,7 +116,7 @@
         .column-us {
             @extend .small;
             padding: 0 4px;
-            span {
+            a {
                 @include ellipsis(250px);
                 display: block;
             }
@@ -117,5 +125,36 @@
             text-align: right;
             padding: 0 4px;
         }
+    }
+}
+
+/* If Sprint is open but date is old */
+.sprint-old-open {
+    .sprint-summary{
+        .icon {
+            @include transform(rotate(180deg));
+            &:hover {
+                @include transform(rotate(0deg));
+                @include transition (all .2s ease-in);
+            }
+        }
+    }
+    .sprint-table {
+        display: none;
+    }
+}
+
+/* If sprint is closed and date is old */
+.sprint-closed {
+    .number, .description {
+        color: $grayLight;
+    }
+    .sprint-progress-bar{
+        .current-progress {
+            background: darken($grayLight, 10%);
+        }
+    }
+    .sprint-table {
+        display: none;
     }
 }
