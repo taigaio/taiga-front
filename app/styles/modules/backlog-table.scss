@@ -70,4 +70,22 @@
         @extend .small;
         border-bottom: 1px solid $grayLight;
     }
+    .blocked {
+        background: $redLight;
+        color: $white;
+        &:hover {
+            background: $red;
+            @include transition (background .2s ease-in);
+            cursor: move;
+        }
+        a {
+            color: $white;
+            &:hover {
+                color: $white;
+            }
+        }
+    }
+    .doom-line {
+        border-bottom: 3px solid $red;
+    }
 }
