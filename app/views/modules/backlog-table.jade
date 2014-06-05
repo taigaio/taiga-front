@@ -9,7 +9,7 @@ section.backlog-table
         div.status.width-2
         div.points.width-1 Front
         div.points.width-1 Total
-    div.row.table-main.blocked.doom-line
+    div.row.table-main.blocked
         div.user-stories.width-4
             div.user-story-name
                 input(type="checkbox", name="")
@@ -64,17 +64,18 @@ section.backlog-table
                     a(href="", title="Status 2") Status 2
                 li
                     a(href="", title="Status 3") Status 3
-      - for (var x = 0; x < 50; x++)
-            div.row.table-main
-                div.user-stories.width-4
-                    div.user-story-name
-                        input(type="checkbox", name="")
-                        a(href="") Crear el perfil de usuario Senior en el admin
-                        a.icon.icon-edit(href="", title="Edit")
-                        a.icon.icon-delete(href="", title="Delete")
-                    div.user-story-tags
-                        - for(var y = 0; y < 3; y++)
-                            include ../components/tag
-                div.status.width-2 Status
-                div.points.width-1 12
-                div.points.width-1 54
+    hr.doom-line
+    - for (var x = 0; x < 50; x++)
+        div.row.table-main
+            div.user-stories.width-4
+                div.user-story-name
+                    input(type="checkbox", name="")
+                    a(href="") Crear el perfil de usuario Senior en el admin
+                    a.icon.icon-edit(href="", title="Edit")
+                    a.icon.icon-delete(href="", title="Delete")
+                div.user-story-tags
+                    - for(var y = 0; y < 3; y++)
+                        include ../components/tag
+            div.status.width-2 Status
+            div.points.width-1 12
+            div.points.width-1 54

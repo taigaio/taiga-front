@@ -89,7 +89,12 @@
         }
     }
     .doom-line {
-        border-bottom: 3px solid $red;
+        width: 100%;
+        height: 4px;
+        background: $red;
+        border-top: 2px solid darken($red, 10%);
+        border-bottom: 2px solid lighten($red, 10%);
+        margin: .5rem 0;
     }
     .pop-status {
         @include popover(150px, "", 30px, 10px, "");

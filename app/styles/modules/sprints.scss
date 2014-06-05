@@ -146,6 +146,15 @@
 
 /* If sprint is closed and date is old */
 .sprint-closed {
+    .sprint-summary {
+        .icon {
+            @include transform(rotate(180deg));
+            &:hover {
+                @include transform(rotate(0deg));
+                @include transition (all .2s ease-in);
+            }
+        }
+    }
     .number, .description {
         color: $grayLight;
     }
