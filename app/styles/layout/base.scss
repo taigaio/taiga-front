@@ -21,23 +21,26 @@ body {
     justify-content: flex-start;
     align-content: stretch;
     align-items: stretch;
+    padding-left: 90px;
 }
 
 .menu-secondary {
-    width: 200px;
     flex-grow: 1;
     flex-shrink: 0;
-    flex-basis: 200px;
+    flex-basis: 260px;
     padding: 2em 1em;
 }
 
+.extrabar {
+    background: $whitish;
+    /* display: none; */
+}
+
 .main {
-    width: 600px;
     flex-grow: 8;
     flex-shrink: 0;
-    flex-basis: 200px;
+    flex-basis: 600px;
     padding: 2em;
-    padding-left: calc(2em + 90px);
 }
 
 .icon {

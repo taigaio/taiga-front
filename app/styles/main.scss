@@ -16,6 +16,7 @@ $prefix-for-spec:      true;
 @import 'dependencies/typography';
 @import 'dependencies/elements';
 @import 'dependencies/mixins';
+@import 'dependencies/forms';
 
 //Components
 @import 'components/buttons';
@@ -23,6 +24,7 @@ $prefix-for-spec:      true;
 @import 'components/summary';
 @import 'components/popover';
 @import 'components/tag';
+@import 'components/filter';
 
 //Layout
 @import 'layout/base';
@@ -34,6 +36,7 @@ $prefix-for-spec:      true;
 @import 'modules/sprints';
 @import 'modules/burndown';
 @import 'modules/backlog-table';
+@import 'modules/filters';
 
 // Responsive
 @import 'responsive/mobile';

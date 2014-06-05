@@ -1,24 +1,26 @@
 extends layout
 
 block head
-  title Taiga  Project management web application with scrum in mind!
+    title Taiga  Project management web application with scrum in mind!
 
 block content
-  section.main.backlog
-    include views/components/mainTitle
-    include views/components/summary
-    include views/modules/burndown
-    div.backlog-menu
-      a.trans-button(href="", title="Move to Current Sprint")
-        span.icon.icon-move
-        span.text Move to current Sprint
-      a.trans-button(href="", title="Show Filters")
-        span.icon.icon-filter
-        span.text Show Filters
-      a.trans-button(href="", title="Show Tags")
-        span.icon.icon-tag
-        span.text Show Tags
-      include views/components/addnewus
-    include views/modules/backlog-table
-  sidebar.menu-secondary.sidebar
-    include views/modules/sprints
+    sidebar.menu-secondary.extrabar
+        include views/modules/filters
+    section.main.backlog
+        include views/components/mainTitle
+        include views/components/summary
+        include views/modules/burndown
+        div.backlog-menu
+            a.trans-button(href="", title="Move to Current Sprint")
+                span.icon.icon-move
+                span.text Move to current Sprint
+            a.trans-button(href="", title="Show Filters")
+                span.icon.icon-filter
+                span.text Show Filters
+            a.trans-button(href="", title="Show Tags")
+                span.icon.icon-tag
+                span.text Show Tags
+            include views/components/addnewus
+        include views/modules/backlog-table
+    sidebar.menu-secondary.sidebar
+        include views/modules/sprints

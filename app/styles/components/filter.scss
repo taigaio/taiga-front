@@ -1,0 +1,30 @@
+.single-filter {
+    display: block;
+    margin-bottom: .5em;
+    font-family: 'ostrichSans';
+    @extend .large;
+    height: 32px;
+    opacity: .5;
+    @include clearfix;
+    position: relative;
+    margin-bottom: 1rem;
+    &:hover {
+        opacity: 1;
+        @include transition (opacity .2s linear);
+        color: $grayer;
+    }
+    .name, .number {
+        padding: 8px 10px;
+    }
+    .name {
+        background: darken($whitish, 10%); /* Fallback */
+        display: block;
+        width: 100%;
+    }
+    .number {
+        background: darken($whitish, 20%); /* Fallback */
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}

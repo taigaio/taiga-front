@@ -24,6 +24,21 @@
             color: $freshTaiga;
         }
     }
+    .number {
+        font-family: 'DroidSans-Bold';
+        @extend .xlarge;
+        float: left;
+        margin-right: .2rem;
+    }
+
+    .description {
+        font-family: 'DroidSans';
+        @extend .small;
+        float: left;
+        line-height: .9rem;
+        position: relative;
+        top: -6px;
+    }
 }
 
 .summary-progress-bar {
@@ -42,20 +57,4 @@
         background: $freshTaiga;
         height: 24px;
     }
-}
-
-.number {
-    font-family: 'DroidSans-Bold';
-    @extend .xlarge;
-    float: left;
-    margin-right: .2rem;
-}
-
-.description {
-    font-family: 'DroidSans';
-    @extend .small;
-    float: left;
-    line-height: .9rem;
-    position: relative;
-    top: -6px;
 }

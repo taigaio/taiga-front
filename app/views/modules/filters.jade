@@ -1,0 +1,10 @@
+section.filters
+    header
+        h1 filters
+        form
+            fieldset
+                input(type="text", placeholder="Filter Filters")
+                a.icon.icon-search(href="", title="search")
+        div.filter-list
+            - for (var x = 0; x < 10; x++)
+                include ../components/filter
