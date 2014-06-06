@@ -11,7 +11,10 @@ form
     fieldset
         input(type="text", placeholder="Tags")
     fieldset
-        textarea
+        div.markdown-preview
+            a.active(href="", title="Edit") Edit
+            a(href="", title="Preview") Preview
+        textarea(placeholder="One user story per line")
     div.new-us-settings
         fieldset
             label.requirement(for="team-requirement") Team Requirement
@@ -23,4 +26,4 @@ form
             label.blocked(for="blocked-us") Blocked
             input(type="checkbox", name="blocked-us", id="blocked-us")
     a.button.button-green(href="", title="Save")
-        span Save
+        span Create

@@ -35,12 +35,33 @@
 }
 
 .lightbox_add-new-us{
+    display: none;
     form {
         width: 600px;
         min-width: 600px;
         flex-grow: 0;
         flex-shrink: 0;
         flex-basis: 0;
+    }
+    .markdown-preview {
+        margin-bottom: .5rem;
+        display: inline-block;
+        a {
+            @extend .small;
+            color: $grayLight;
+            @extend .button;
+            padding: 3px 20px;
+            &:first-child {
+                border-right: 1px solid $grayLight;
+            }
+            &:hover {
+                color: $grayer;
+                @include transition(color .2s linear);
+            }
+        }
+        .active {
+            color: $grayer;
+        }
     }
     textarea {
         min-height: 7rem;
@@ -103,5 +124,21 @@
         input[type="checkbox"] {
             display: none;
         }
+    }
+}
+
+.lightbox_add-bulk {
+    display: none;
+    form {
+        width: 600px;
+        min-width: 600px;
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex-basis: 0;
+    }
+    textarea {
+        min-height: 15rem;
+        max-height: 12rem;
+        margin-bottom: 1rem;
     }
 }
