@@ -1,0 +1,26 @@
+a.close(href="", title="close")
+    span.icon.icon-delete
+form
+    h2.title New User Story
+    fieldset
+        input(type="text", placeholder="Subject")
+    fieldset
+        select
+            option(selected, value="open") Open
+            option(selected, value="closed") Closed
+    fieldset
+        input(type="text", placeholder="Tags")
+    fieldset
+        textarea
+    div.new-us-settings
+        fieldset
+            label.requirement(for="team-requirement") Team Requirement
+            input(type="checkbox", name="team-requirement", id="team-requirement")
+        fieldset
+            label.requirement(for="client-requirement") Team Requirement
+            input(type="checkbox", name="client-requirement", id="client-requirement")
+        fieldset
+            label.blocked(for="blocked-us") Blocked
+            input(type="checkbox", name="blocked-us", id="blocked-us")
+    a.button.button-green(href="", title="Save")
+        span Save

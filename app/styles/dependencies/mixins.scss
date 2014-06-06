@@ -4,3 +4,8 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+@mixin background-opacity($color: $white, $opacity: 0.3) {
+    background: $color; /* The Fallback */
+    background: rgba($color, $opacity);
+}

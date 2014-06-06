@@ -1,0 +1,107 @@
+.lightbox {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    @include background-opacity( $white, .9);
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    .close {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        @extend .large;
+    }
+    .title {
+        text-align: center;
+    }
+    input, select {
+        margin-bottom: 1rem;
+    }
+    textarea {
+        resize:vertical;
+    }
+    .button-green {
+        display: block;
+        text-align: center;
+        padding: 12px;
+    }
+}
+
+.lightbox_add-new-us{
+    form {
+        width: 600px;
+        min-width: 600px;
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex-basis: 0;
+    }
+    textarea {
+        min-height: 7rem;
+        max-height: 9rem;
+        margin-bottom: 1rem;
+    }
+    .new-us-settings {
+        display:flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-content: flex-start;
+        align-items: stretch;
+        margin-bottom: 1rem;
+        fieldset {
+            flex-grow: 1;
+            flex-shrink: 0;
+            flex-basis: 30%;
+            text-align: center;
+            margin-right: .5rem;
+            &:last-child {
+                margin: 0;
+            }
+        }
+        label{
+            @extend .button;
+            border: 1px solid $grayLight;
+            display: block;
+            cursor: pointer;
+            @include transition( all .2s ease-in );
+        }
+        .requirement{
+            &:hover {
+                background: $freshTaiga;
+                color: $white;
+                border: 1px solid $freshTaiga;
+                @include transition( all .2s ease-in );
+            }
+        }
+        .requirement-selected {
+            background: $greenTaiga;
+            color: $white;
+            border: 1px solid $greenTaiga;
+            @include transition( all .2s ease-in );
+        }
+        .blocked {
+            &:hover {
+                background: $redLight;
+                color: $white;
+                border: 1px solid $redLight;
+                @include transition( all .2s ease-in );
+            }
+        }
+        .blocked-selected {
+            background: $red;
+            color: $white;
+            border: 1px solid $red;
+            @include transition( all .2s ease-in );
+        }
+        input[type="checkbox"] {
+            display: none;
+        }
+    }
+}

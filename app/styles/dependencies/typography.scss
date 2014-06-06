@@ -38,6 +38,12 @@ h1 {
     }
 }
 
+h2 {
+    @extend .xlarge;
+    font-family: 'ostrichSans';
+    margin-bottom: 1rem;
+}
+
 p { margin: 0 0 20px 0;
     img {
         margin: 0;
