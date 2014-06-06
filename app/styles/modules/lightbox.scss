@@ -43,6 +43,9 @@
         flex-shrink: 0;
         flex-basis: 0;
     }
+    fieldset {
+        position: relative;
+    }
     .markdown-preview {
         margin-bottom: .5rem;
         display: inline-block;
@@ -140,5 +143,34 @@
         min-height: 15rem;
         max-height: 12rem;
         margin-bottom: 1rem;
+    }
+}
+
+.lightbox_add-sprint {
+    display: none;
+    form {
+        width: 600px;
+        min-width: 600px;
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex-basis: 0;
+    }
+    .last-sprint-name {
+        position: absolute;
+        top: .5rem;
+        right: 1rem;
+        color: $gray;
+    }
+    .dates {
+        margin-bottom: 1rem;
+        input {
+            width: 49%;
+            float: left;
+            margin-right: 1%;
+            &:last-child {
+                margin: 0;
+                width: 50%;
+            }
+        }
     }
 }

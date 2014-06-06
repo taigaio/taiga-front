@@ -11,7 +11,7 @@ fieldset{
     }
 }
 
-input[type="text"], input[type="email"], select, textarea{
+input[type="text"], input[type="email"], input[type="date"], select, textarea{
     font-family: 'ostrichSans';
     @extend .large;
     padding: 8px;
