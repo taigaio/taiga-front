@@ -7,14 +7,11 @@
     ul {
         margin: 0;
         padding: 0;
-        float: left;
-        margin-top: 4px;
-        width: 50%;
+        display: inline-block;
     }
     li {
-        float: left;
-        display: block;
-        margin-right: 4%;
+        display: inline-block;
+        margin-right: 1rem;
     }
     .data {
         float: left;
@@ -22,27 +19,34 @@
         margin-right: 1.5em;
         .number {
             color: $freshTaiga;
+            top: 0;
         }
+
+    }
+    .icon{
+        @extend .large;
+        float: left;
     }
     .number {
         font-family: 'DroidSans-Bold';
         @extend .xlarge;
         float: left;
-        margin-right: .2rem;
+        margin-right: .3rem;
+        position: relative;
+        top: 5px;
     }
 
     .description {
-        font-family: 'DroidSans';
-        @extend .small;
-        float: left;
+        font-family: DroidSans;
         line-height: .9rem;
-        position: relative;
-        top: -6px;
+        /* line-height: 0; */
+        float: left;
+        @extend .small;
     }
 }
 
 .summary-progress-bar {
-    height: 30px;
+    height: 26px;
     margin-bottom: 0;
     margin-right: 10px;
     background: $whitish;
@@ -55,6 +59,24 @@
         left: 2px;
         width: calc(30% - 4px);
         background: $freshTaiga;
-        height: 24px;
+        height: 20px;
+    }
+}
+
+
+.large-summary{
+    ul {
+        margin-right: 1rem;
+        border-right: 1px solid $whitish;
+        &:last-child {
+            margin-right: 0;
+        }
+        &:last-child {
+            border-right: none;
+        }
+    }
+    .icon {
+       @extend .xlarge;
+        margin-right: .4rem;
     }
 }

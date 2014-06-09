@@ -35,12 +35,14 @@ h1 {
     margin-bottom: 1rem;
     span {
         @include ellipsis(250px);
+        margin-right: .5rem;
     }
     .green {
         color: $greenTaiga;
     }
     .date {
         color: $grayLight;
+        @include ellipsis(500px);
     }
 }
 
@@ -152,4 +154,7 @@ a, a:visited {
 }
 .icon-delete:before {
   content: "q";
+}
+.icon-iocaine:before {
+  content: "r";
 }
