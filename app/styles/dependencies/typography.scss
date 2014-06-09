@@ -32,6 +32,7 @@ h1 {
     @extend .xxlarge;
     font-family: 'ostrichSans';
     line-height: 2.7rem;
+    margin-bottom: 1rem;
     span {
         @include ellipsis(250px);
     }
