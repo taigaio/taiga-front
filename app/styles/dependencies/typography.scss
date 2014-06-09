@@ -31,10 +31,15 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
     @extend .xxlarge;
     font-family: 'ostrichSans';
-    margin-bottom: 2rem;
+    line-height: 2.7rem;
+    span {
+        @include ellipsis(250px);
+    }
     .green {
         color: $greenTaiga;
-        margin-left: .3rem;
+    }
+    .date {
+        color: $grayLight;
     }
 }
 

@@ -4,14 +4,14 @@
     background-attachment: fixed;
     background-position: left bottom;
     flex-wrap: wrap;
-    padding: 2em .3em;
+    padding: 2rem .3rem;
     font-family: 'ostrichSans';
     height: 100%;
     position: fixed;
 }
 
 .logo {
-    margin-bottom: 1em;
+    margin-bottom: 2rem;
     img {
         width: 100%;
     }
@@ -19,12 +19,11 @@
 
 .main-nav {
     text-align: center;
-    margin-bottom: 3em;
     list-style: none;
     padding: 0;
     position: relative;
     li {
-        margin-bottom: 1em;
+        margin-bottom: 1rem;
     }
     a {
         color: $white;
@@ -59,7 +58,7 @@
     width: 80px;
     padding: 0 10px;
     position: absolute;
-    bottom: 1em;
+    bottom: 1rem;
     .popover {
         @include popover(150px, "", 30px, 30px);
         a{
@@ -87,7 +86,7 @@
     .settings {
         text-align: center;
         a {
-            margin-right: .5em;
+            margin-right: .5rem;
             color: $whitish;
             &:hover {
                 @include transition (color .3s linear);
