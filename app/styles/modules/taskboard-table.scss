@@ -1,0 +1,265 @@
+%table-flex {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: stretch;
+}
+
+%table-flex-child {
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 300px;
+    width: 300px;
+}
+
+.taskboard-table {
+    width:100%;
+    overflow: hidden;
+}
+
+.taskboard-table-header{
+    width:100%;
+    margin-bottom: .5rem;
+    .taskboard-table-inner {
+        overflow: hidden;
+        @extend %table-flex;
+        width:3500px;
+    }
+    .task-colum_name{
+        @extend %table-flex-child;
+        background: $whitish;
+        padding: .5rem 0;
+        text-align: center;
+        @extend .large;
+        margin: 0 .3rem;
+    }
+}
+
+.taskboard-table-body {
+    width:100%;
+    height: 700px;
+    overflow-y: scroll;
+    overflow-x: scroll;
+    .taskboard-table-inner {
+        overflow: hidden;
+        @extend %table-flex;
+        width:3500px;
+    }
+    .task-column {
+        @extend %table-flex-child;
+    }
+    .task-row {
+        height: 30rem;
+        margin-bottom: 1rem;
+        padding: 1rem;
+        margin: 0 .3rem 1rem .3rem;
+    }
+    .taskboard_task-playground {
+        .task-row {
+            background: $whitish;
+        }
+    }
+}
+
+.taskboard_task-list {
+    .tag-list {
+        margin-bottom: 1rem;
+        display: none;
+    }
+    .task-title {
+        font-family: 'DroidSans';
+        @extend .large;
+        margin-bottom: 1rem;
+    }
+    .task-num{
+        color: $gray;
+        margin-right: .5rem;
+    }
+    .task-status {
+        color: $greenTaiga;
+        margin-bottom: .5rem;
+    }
+    .task-list {
+        span {
+            margin-left: .5rem;
+            color: $gray;
+        }
+    }
+}
+
+/*
+.taskboard-table {
+    width:100%;
+    overflow: hidden;
+}
+
+.taskboard-table-header{
+    width:100%;
+    .taskboard-table-inner {
+        overflow: hidden;
+        @extend %table-flex;
+        width:3500px;
+    }
+    .task-colum_name{
+        @extend %table-flex-child;
+        background: $whitish;
+        padding: .5rem 0;
+        text-align: center;
+        @extend .large;
+        margin: 0 .3rem;
+    }
+}
+
+.taskboard-table-body {
+    width:100%;
+    .taskboard-table-inner {
+        overflow: hidden;
+        @extend %table-flex;
+        width:3500px;
+    }
+}
+
+.task-row {
+    height: 30rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+
+.taskboard_task-list {
+    @extend %table-flex-child;
+    .tag-list {
+        margin-bottom: 1rem;
+        display: none;
+    }
+    .task-title {
+        font-family: 'DroidSans';
+        @extend .large;
+        margin-bottom: 1rem;
+    }
+    .task-num{
+        color: $gray;
+        margin-right: .5rem;
+    }
+    .task-status {
+        color: $greenTaiga;
+        margin-bottom: .5rem;
+    }
+    .task-list {
+        span {
+            margin-left: .5rem;
+            color: $gray;
+        }
+    }
+}
+
+.taskboard_task-status {
+    flex-grow: 10;
+    flex-shrink: 0;
+    flex-basis: 300px;
+    padding: 0 .3rem;
+    .task-row {
+        background: $whitish;
+    }
+}
+
+
+/* .taskboard-table {
+    width:100%;
+    .tag {
+        width: 30%;
+    }
+}
+
+.taskboard_task-list {
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 300px;
+    padding: 0 .3rem;
+    width: 300px;
+    .tag-list {
+        margin-bottom: 1rem;
+        display: none;
+    }
+    .task-title {
+        font-family: 'DroidSans';
+        @extend .large;
+        margin-bottom: 1rem;
+    }
+    .task-num{
+        color: $gray;
+        margin-right: .5rem;
+    }
+    .task-status {
+        color: $greenTaiga;
+        margin-bottom: .5rem;
+    }
+    .task-list {
+        span {
+            margin-left: .5rem;
+            color: $gray;
+        }
+    }
+}
+
+.taskboard_task-status {
+    flex-grow: 20;
+    flex-shrink: 0;
+    flex-basis: 300px;
+    padding: 0 .3rem;
+    .task-row {
+        background: $whitish;
+    }
+}
+
+.task-row {
+    height: 30rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+
+.taskboard-table-inner,
+.taskboard-table-header {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: stretch;
+}
+.taskboard-table-inner {
+    height: 700px;
+    overflow-x: scroll;
+}
+
+.taskboard-table-header{
+    width:3500px;
+}
+
+.task-colum_name{
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 300px;
+    width: 300px;
+    background: $whitish;
+    padding: .5rem 0;
+    text-align: center;
+    @extend .large;
+}
+
+.taskboard-wrapper {
+    width:3500px; //Just a simple example. It should be calculated by JS
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: stretch;
+    .task-column {
+        flex-grow: 1;
+        flex-shrink: 0;
+        flex-basis: 300px;
+        padding: 0 .3rem;
+    }
+} */
