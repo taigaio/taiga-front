@@ -8,7 +8,7 @@
     .taskboard-tag {
         @include table-flex-child(1, 0, 0, 0);
         background: $postit-hover; //Fallback
-        height: .2rem;
+        height: .3rem;
     }
     .taskboard-task-inner {
         @include table-flex();
@@ -45,6 +45,7 @@
         @extend %large;
         bottom: .2rem;
         color: $postit-hover;
+        display: none;
         position: absolute;
         &:hover {
             @include transition(color, .3s, linear);
@@ -57,6 +58,12 @@
     .icon-drag-h {
         @extend %xlarge;
         right: 45%;
+    }
+    &:hover {
+        .icon-edit,
+        .icon-drag-h {
+            display: block;
+        }
     }
 }
 
