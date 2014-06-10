@@ -10,7 +10,9 @@ var gulp = require('gulp'),
     size = require('gulp-filesize'),
     notify = require("gulp-notify"),
     connect = require('gulp-connect'),
-    scsslint = require('gulp-scss-lint');
+    scsslint = require('gulp-scss-lint'),
+    newer = require('gulp-newer')
+    cache = require('gulp-cached');
 
 var paths = {
     app: 'app',
@@ -39,7 +41,7 @@ gulp.task('jade', function() {
 //Sass lint
 gulp.task('scss-lint', function() {
   gulp.src([paths.appStyles, '!/**/bourbon/**/*.scss'])
-    .pipe(scsslint({config: 'scsslint.yml'}));
+        .pipe(scsslint({config: 'scsslint.yml'}))
 });
 
 //Sass Files
@@ -103,6 +105,16 @@ gulp.task('watch', function() {
 
 // The default task (called when you run `gulp` from cli)
 gulp.task('default', [
+    'jade',
+    'sass',
+    'css',
+    'copy',
+    'connect',
+    'watch'
+]);
+
+// The default task (called when you run `gulp` from cli)
+gulp.task('dist', [
     'jade',
     'sass',
     'css',
