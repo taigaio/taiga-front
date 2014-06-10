@@ -41,6 +41,7 @@ gulp.task('jade', function() {
 //Sass lint
 gulp.task('scss-lint', function() {
   gulp.src([paths.appStyles, '!/**/bourbon/**/*.scss'])
+        .pipe(cache('scsslint'))
         .pipe(scsslint({config: 'scsslint.yml'}))
 });
 
@@ -100,7 +101,7 @@ gulp.task('connect', function() {
 // Rerun the task when a file changes
 gulp.task('watch', function() {
     gulp.watch(paths.jade, ['jade']);
-    gulp.watch(paths.appStyles, ['scss-lint', 'sass', 'css', 'minifyCSS']);
+    gulp.watch(paths.appStyles, ['scss-lint', 'sass', 'css']);
 });
 
 // The default task (called when you run `gulp` from cli)
