@@ -1,18 +1,23 @@
-/* Typography */
+// Typography
 
-/*Font face*/
+// Font face
 
 @each $font-face in DroidSans, DroidSans-Bold, ostrichSans, taiga {
     @font-face {
         font-family: '#{$font-face}';
         src: url('../fonts/#{$font-face}.eot?#iefix') format('embedded-opentype'),
-            url('../fonts/#{$font-face}.woff') format('woff'),
-            url('../fonts/#{$font-face}.ttf')  format('truetype'),
-            url('../fonts/#{$font-face}.svg#{$font-face}') format('svg');
+        url('../fonts/#{$font-face}.woff') format('woff'),
+        url('../fonts/#{$font-face}.ttf')  format('truetype'),
+        url('../fonts/#{$font-face}.svg#{$font-face}') format('svg');
     }
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     color: $blackish;
     font-weight: normal;
     a {
@@ -20,16 +25,16 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-/*__Font Sizes__*/
-.xsmall {font-size: .5rem;}
-.small {font-size: .8rem;}
-.medium {font-size: 1rem;}
-.large {font-size: 1.2rem;}
-.xlarge {font-size: 2rem;}
-.xxlarge {font-size: 3rem;}
+// __Font Sizes__
+%xsmall {font-size: .5rem;}
+%small {font-size: .8rem;}
+%medium {font-size: 1rem;}
+%large {font-size: 1.2rem;}
+%xlarge {font-size: 2rem;}
+%xxlarge {font-size: 3rem;}
 
 h1 {
-    @extend .xxlarge;
+    @extend %xxlarge;
     font-family: 'ostrichSans';
     line-height: 2.7rem;
     margin-bottom: 1rem;
@@ -38,123 +43,128 @@ h1 {
         margin-right: .5rem;
     }
     .green {
-        color: $greenTaiga;
+        color: $green-taiga;
     }
     .date {
-        color: $grayLight;
+        color: $gray-light;
         @include ellipsis(500px);
     }
 }
 
 h2 {
-    @extend .xlarge;
+    @extend %xlarge;
     font-family: 'ostrichSans';
     margin-bottom: 1rem;
 }
 
-p { margin: 0 0 20px 0;
+p {
+    margin: 0 0 20px;
     img {
         margin: 0;
     }
-}
+  }
 
 em { font-style: italic; }
-strong { font-weight: bold; color: #333; }
+strong {
+    color: #333;
+    font-weight: bold;
+}
 
 hr {
     border: solid #ddd;
     border-width: 1px 0 0;
     clear: both;
-    margin: 10px 0 30px;
     height: 0;
+    margin: 10px 0 30px;
 }
 
-/* __Links__ */
+// __Links__
 
-a, a:visited {
+a,
+a:visited {
     color: #333;
     text-decoration: none;
 }
 
-/* Taiga Icons */
+// Taiga Icons
 
 [data-icon]:before {
-  font-family: "taiga" !important;
-  content: attr(data-icon);
-  font-style: normal !important;
-  font-weight: normal !important;
-  font-variant: normal !important;
-  text-transform: none !important;
-  speak: none;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    content: attr(data-icon);
+    font-family: 'taiga' !important;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-style: normal !important;
+    font-variant: normal !important;
+    font-weight: normal !important;
+    line-height: 1;
+    speak: none;
+    text-transform: none !important;
 }
 
-[class^="icon-"]:before,
-[class*=" icon-"]:before {
-  font-family: "taiga" !important;
-  font-style: normal !important;
-  font-weight: normal !important;
-  font-variant: normal !important;
-  text-transform: none !important;
-  speak: none;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+[class^='icon-']:before,
+[class*=' icon-']:before {
+    font-family: 'taiga' !important;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-style: normal !important;
+    font-variant: normal !important;
+    font-weight: normal !important;
+    line-height: 1;
+    speak: none;
+    text-transform: none !important;
 }
 
 .icon-backlog:before {
-  content: "a";
+    content: 'a';
 }
 .icon-issues:before {
-  content: "b";
+    content: 'b';
 }
 .icon-kanban:before {
-  content: "c";
+    content: 'c';
 }
 .icon-search:before {
-  content: "d";
+    content: 'd';
 }
 .icon-video:before {
-  content: "e";
+    content: 'e';
 }
 .icon-wiki:before {
-  content: "f";
+    content: 'f';
 }
 .icon-settings:before {
-  content: "g";
+    content: 'g';
 }
 .icon-move:before {
-  content: "i";
+    content: 'i';
 }
 .icon-filter:before {
-  content: "j";
+    content: 'j';
 }
 .icon-tag:before {
-  content: "k";
+    content: 'k';
 }
 .icon-bulk:before {
-  content: "l";
+    content: 'l';
 }
 .icon-arrow-up:before {
-  content: "h";
+    content: 'h';
 }
 .icon-arrow-right:before {
-  content: "m";
+    content: 'm';
 }
 .icon-arrow-left:before {
-  content: "n";
+    content: 'n';
 }
 .icon-arrow-bottom:before {
-  content: "o";
+    content: 'o';
 }
 .icon-edit:before {
-  content: "p";
+    content: 'p';
 }
 .icon-delete:before {
-  content: "q";
+    content: 'q';
 }
 .icon-iocaine:before {
-  content: "r";
+    content: 'r';
 }

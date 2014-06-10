@@ -1,13 +1,13 @@
 .summary {
+    @include clearfix;
     background: $grayer;
     color: $white;
-    padding: 1em;
     margin-bottom: 2rem;
-    @include clearfix;
+    padding: 1em;
     ul {
+        display: inline-block;
         margin: 0;
         padding: 0;
-        display: inline-block;
     }
     li {
         display: inline-block;
@@ -15,68 +15,66 @@
     }
     .data {
         float: left;
-        margin-top: 4px;
         margin-right: 1.5em;
+        margin-top: 4px;
         .number {
-            color: $freshTaiga;
+            color: $fresh-taiga;
             top: 0;
         }
 
     }
-    .icon{
-        @extend .large;
+    .icon {
+        @extend %large;
         float: left;
     }
     .number {
-        font-family: 'DroidSans-Bold';
-        @extend .xlarge;
+        @extend %xlarge;
         float: left;
+        font-family: 'DroidSans-Bold';
         margin-right: .3rem;
         position: relative;
         top: 5px;
     }
 
     .description {
+        // line-height: 0;
+        @extend %small;
+        float: left;
         font-family: DroidSans;
         line-height: .9rem;
-        /* line-height: 0; */
-        float: left;
-        @extend .small;
     }
 }
 
 .summary-progress-bar {
+    background: $whitish;
+    float: left;
     height: 26px;
     margin-bottom: 0;
     margin-right: 10px;
-    background: $whitish;
-    width: 20%;
     position: relative;
-    float: left;
+    width: 20%;
     .current-progress {
+        background: $fresh-taiga;
+        height: 20px;
+        left: 2px;
         position: absolute;
         top: 3px;
-        left: 2px;
         width: calc(30% - 4px);
-        background: $freshTaiga;
-        height: 20px;
     }
 }
 
 
-.large-summary{
+.large-summary {
     ul {
-        margin-right: 1rem;
         border-right: 1px solid $whitish;
+        margin-right: 1rem;
         &:last-child {
+            border-right: 0;
             margin-right: 0;
-        }
-        &:last-child {
-            border-right: none;
         }
     }
     .icon {
-       @extend .xlarge;
+        @extend %xlarge;
         margin-right: .4rem;
     }
 }

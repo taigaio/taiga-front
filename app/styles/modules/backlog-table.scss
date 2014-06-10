@@ -1,30 +1,30 @@
-.backlog-table{
-    display:flex;
+.backlog-table {
+    align-content: stretch;
+    align-items: center;
+    display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: flex-start;
-    align-content: stretch;
-    align-items: center;
     width: 100%;
     .row {
-        display:flex;
+        align-content: stretch;
+        align-items: stretch;
+        display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
         justify-content: flex-start;
-        align-content: stretch;
-        align-items: stretch;
-        width: 100%;
-        text-align: left;
         padding: .5em 0;
+        text-align: left;
+        width: 100%;
         @for $i from 1 through 8 {
             .width-#{$i} {
+                flex-basis: 50px;
                 flex-grow: $i;
                 flex-shrink: 0;
-                flex-basis: 50px;
             }
         }
         &:hover {
-            background: lighten( $greenTaiga, 60% );
+            background: lighten($green-taiga, 60%);
             @include transition (background .2s ease-in);
             cursor: move;
             .us-settings {
@@ -34,7 +34,7 @@
         }
     }
     .row-selected {
-        background: lighten( $greenTaiga, 60% );
+        background: lighten($green-taiga, 60%);
         @include transition (background .2s ease-in);
     }
     .user-story-name {
@@ -43,15 +43,15 @@
             vertical-align: top;
         }
         span {
+            display: inline-block;
             max-width: 70%;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
-            display: inline-block;
         }
         .icon {
-            color: $grayLight;
-            @extend .medium;
+            @extend %medium;
+            color: $gray-light;
             &:hover {
                 color: $grayer;
                 @include transition (color .3s linear);
@@ -59,34 +59,35 @@
         }
     }
     .user-story-tags {
-        margin-top: .3rem;
         display: none;
+        margin-top: .3rem;
     }
     .title {
+        @extend %medium;
         font-family: 'DroidSans-Bold';
-        @extend .medium;
         &:hover {
             background: transparent;
         }
     }
     .sub-title {
-        font-family: 'DroidSans';
-        @extend .small;
+        @extend %small;
         background: $whitish;
         border-bottom: 2px solid $grayer;
+        font-family: 'DroidSans';
         &:hover {
             background: $whitish;
         }
     }
     .table-main {
-        @extend .small;
-        border-bottom: 1px solid $grayLight;
+        @extend %small;
+        border-bottom: 1px solid $gray-light;
     }
-    .status, .points {
+    .status,
+    .points {
         position: relative;
     }
     .blocked {
-        background: $redLight;
+        background: $red-light;
         color: $white;
         &:hover {
             background: $red;
@@ -107,30 +108,30 @@
         }
     }
     .doom-line {
-        width: 100%;
-        height: 4px;
         background: $red;
-        border-top: 2px solid darken($red, 10%);
         border-bottom: 2px solid lighten($red, 10%);
+        border-top: 2px solid darken($red, 10%);
+        height: 4px;
         margin: .5rem 0;
+        width: 100%;
     }
     .pop-status {
-        @include popover(150px, "", 30px, 10px, "");
+        @include popover(150px, '', 30px, 10px, '');
     }
     .pop-points {
-        @include popover(150px, "", 30px, 10px, "");
+        @include popover(150px, '', 30px, 10px, '');
     }
     .pop-points-open {
-        @include popover(200px, "", 30px, 10px, "");
+        @include popover(200px, '', 30px, 10px, '');
         li {
-            width: 23%;
             display: inline-block;
+            width: 23%;
         }
-        a{
+        a {
             display: block;
             text-align: center;
             &:hover {
-                background: $freshTaiga;
+                background: $fresh-taiga;
                 color: $white;
             }
         }

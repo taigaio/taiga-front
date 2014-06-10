@@ -1,6 +1,6 @@
-.sprints{
-    .summary{
-        background: $grayLight;
+.sprints {
+    .summary {
+        background: $gray-light;
         @include clearfix;
         ul {
             width: 40%;
@@ -13,45 +13,45 @@
         float: right;
     }
     .sprint-name {
+        @extend %large;
+        display: inline-block;
         font-family: 'ostrichSans';
         margin-right: 3px;
-        @extend .large;
         max-width: 100px;
-        white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
         vertical-align: middle;
-        display: inline-block;
+        white-space: nowrap;
     }
     .sprint-date {
+        @extend %large;
+        color: $gray-light;
         font-family: 'ostrichSans';
-        color: $grayLight;
-        @extend .large;
     }
     .sprint {
         margin-bottom: 2rem;
         .sprint-summary {
-            width: 65%;
             display: inline-block;
+            width: 65%;
         }
-        .icon{
+        .icon {
             display: inline-block;
             &:hover {
                 @include transform(rotate(180deg));
                 @include transition (all .2s ease-in);
             }
         }
+        .number {
+            @extend %large;
+        }
+        .description {
+            @extend %xsmall;
+            line-height: .6rem;
+            margin-top: 5px;
+        }
         ul {
             float: right;
             width: 32%;
-            .number {
-                @extend .large;
-            }
-            .description {
-                @extend .xsmall;
-                line-height: .6rem;
-                margin-top: 5px;
-            }
         }
         li {
             display: inline-block;
@@ -60,70 +60,70 @@
             }
         }
     }
-    .sprint-progress-bar{
+    .sprint-progress-bar {
+        background: $gray-light;
+        border-radius: 2px;
         height: 8px;
         margin-bottom: 0;
-        background: $grayLight;
-        width: 100%;
-        position: relative;
-        border-radius: 2px;
         margin-top: .5rem;
+        position: relative;
+        width: 100%;
         .current-progress {
+            background: $green-taiga;
+            border-radius: 2px;
+            height: 8px;
+            left: 0;
             position: absolute;
             top: 0;
-            left: 0;
             width: calc(30% - 4px);
-            background: $greenTaiga;
-            height: 8px;
-            border-radius: 2px;
         }
     }
     .sprint-table {
-        display:flex;
+        align-content: stretch;
+        align-items: center;
+        display: flex;
         flex-direction: column;
         flex-wrap: wrap;
         justify-content: flex-start;
-        align-content: stretch;
-        align-items: center;
         width: 100%;
+        @for $i from 1 through 8 {
+            .width-#{$i} {
+                flex-basis: 50px;
+                flex-grow: $i;
+                flex-shrink: 0;
+            }
+        }
         .row {
-            display:flex;
+            align-content: stretch;
+            align-items: stretch;
+            border-bottom: 1px solid $gray-light;
+            display: flex;
             flex-direction: row;
             flex-wrap: nowrap;
             justify-content: flex-start;
-            align-content: stretch;
-            align-items: stretch;
-            width: 100%;
-            text-align: left;
             padding: .5em 0;
-            border-bottom: 1px solid $grayLight;
-            @for $i from 1 through 8 {
-                .width-#{$i} {
-                    flex-grow: $i;
-                    flex-shrink: 0;
-                    flex-basis: 50px;
-                }
-            }
+            text-align: left;
+            width: 100%;
             &:hover {
-                background: lighten($grayLight, 12%);
+                background: lighten($gray-light, 12%);
                 @include transition (background .2s ease-in);
                 cursor: move;
             }
             &:last-child {
-                border-bottom: none;
+                border-bottom: 0;
             }
         }
         .column-us {
-            @extend .small;
+            @extend %small;
             padding: 0 4px;
-            a {
-                @include ellipsis(250px);
-                display: block;
-            }
+        }
+        .us-name {
+            @include ellipsis(250px);
+            display: block;
         }
         .column-points {
-            text-align: right;
             padding: 0 4px;
+            text-align: right;
         }
     }
     .button {
@@ -132,9 +132,9 @@
     }
 }
 
-/* If Sprint is open but date is old */
+// If Sprint is open but date is old
 .sprint-old-open {
-    .sprint-summary{
+    .sprint-summary {
         .icon {
             @include transform(rotate(180deg));
             &:hover {
@@ -148,7 +148,7 @@
     }
 }
 
-/* If sprint is closed and date is old */
+// If sprint is closed and date is old
 .sprint-closed {
     .sprint-summary {
         .icon {
@@ -159,12 +159,13 @@
             }
         }
     }
-    .number, .description {
-        color: $grayLight;
+    .number,
+    .description {
+        color: $gray-light;
     }
-    .sprint-progress-bar{
+    .sprint-progress-bar {
         .current-progress {
-            background: darken($grayLight, 10%);
+            background: darken($gray-light, 10%);
         }
     }
     .sprint-table {

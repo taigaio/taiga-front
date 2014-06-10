@@ -1,13 +1,13 @@
 .menu {
-    width: 90px;
-    background-image: url("../images/menu.png");
     background-attachment: fixed;
+    background-image: url('../images/menu.png');
     background-position: left bottom;
     flex-wrap: wrap;
-    padding: 2rem .3rem;
     font-family: 'ostrichSans';
     height: 100%;
+    padding: 2rem .3rem;
     position: fixed;
+    width: 90px;
 }
 
 .logo {
@@ -18,79 +18,75 @@
 }
 
 .main-nav {
-    text-align: center;
     list-style: none;
     padding: 0;
     position: relative;
+    text-align: center;
     li {
         margin-bottom: 1rem;
     }
     a {
         color: $white;
         display: block;
-        text-align:center;
+        text-align: center;
         &:hover {
             @include transition (color .3s linear);
-            color: $freshTaiga;
+            color: $fresh-taiga;
         }
         span {
             display: block;
         }
-        .icon{
-            @extend .xlarge;
+        .icon {
+            @extend %xlarge;
             line-height: 2.2rem;
         }
         .item {
-            @extend .large;
+            @extend %large;
         }
     }
     .active {
         @include transition (color .3s linear);
-        color: $freshTaiga;
+        color: $fresh-taiga;
     }
-}
-
-.user-settings {
-
 }
 
 .user {
-    width: 80px;
+    bottom: 1rem;
     padding: 0 10px;
     position: absolute;
-    bottom: 1rem;
+    width: 80px;
     .popover {
-        @include popover(150px, "", 30px, 30px);
-        a{
-            text-align: left;
-            @extend .small;
+        @include popover(150px, '', 30px, 30px);
+        a {
+            @extend %small;
             color: $white;
+            text-align: left;
             &:hover {
-                color: $freshTaiga;
                 @include transition (color .2s linear);
+                color: $fresh-taiga;
             }
         }
     }
-    .user-settings{
+    .user-settings {
         position: relative;
-        img{
-          border: 1px solid transparent;
-          width: 100%;
-          border-radius: 50%;
-          &:hover {
-              border: 2px solid $freshTaiga;
-              @include transition (all .6s ease-in-out);
-          }
+        img {
+            border: 1px solid transparent;
+            border-radius: 50%;
+            width: 100%;
+            &:hover {
+                @include transition (all .6s ease-in-out);
+                border: 2px solid $fresh-taiga;
+            }
         }
     }
     .settings {
         text-align: center;
         a {
-            margin-right: .5rem;
             color: $whitish;
+            margin-right: .5rem;
             &:hover {
                 @include transition (color .3s linear);
-                color: $freshTaiga;
+                color: $fresh-taiga;
             }
         }
     }

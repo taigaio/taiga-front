@@ -1,24 +1,26 @@
-/* Elements */
+// Elements
 
-/*	Blockquotes  */
-blockquote, blockquote p {
-    line-height: 24px;
+// Blockquotes
+blockquote,
+blockquote p {
     color: #777;
     font-style: italic;
+    line-height: 24px;
 }
 blockquote {
+    border-left: 1px solid #ddd;
     margin: 0 0 20px;
     padding: 9px 20px 0 19px;
-    border-left: 1px solid #ddd;
     cite {
+        color: #555;
         display: block;
         font-size: 12px;
-        color: #555;
         &:before {
-            content: "\2014 \0020";
+            content: '\2014 \0020';
         }
     }
-    a, a:visited {
+    a,
+    a:visited {
         color: #555;
     }
 }
@@ -27,13 +29,14 @@ a {
     color: $blackish;
     &:hover {
         @include transition (color .3s linear);
-        color: $greenTaiga;
+        color: $green-taiga;
     }
 }
 
-/* __Lists__ */
+// __Lists__
 
-ul, ol {
+ul,
+ol {
     margin-bottom: 20px;
 }
 ul { list-style: none outside; }

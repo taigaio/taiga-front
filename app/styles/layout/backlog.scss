@@ -1,16 +1,13 @@
-.backlog {
-}
-
 .backlog-menu {
+    @include clearfix;
     background: $whitish;
     color: $blackish;
-    padding: 1em;
     margin-bottom: 2rem;
-    @include clearfix;
+    padding: 1em;
     .trans-button {
+        display: inline-block;
         margin-right: 1rem;
         padding: 4px 0;
-        display: inline-block;
     }
 }
 

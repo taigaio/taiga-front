@@ -1,30 +1,30 @@
-/* Buttons components */
+// Buttons components
 .trans-button {
+    @extend %large;
     font-family: 'ostrichSans';
-    @extend .large;
     &:hover {
         @include transition (color .3s linear);
-        color: $greenTaiga;
+        color: $green-taiga;
     }
     .icon {
         margin-right: .3rem;
     }
 }
 
-.button{
-    font-family: 'ostrichSans';
-    @extend .large;
-    padding: 8px 40px;
+%button {
+    @extend %large;
     display: inline-block;
+    font-family: 'ostrichSans';
+    padding: 8px 40px;
     .icon {
         margin-right: .3rem;
     }
 }
 
 .button-green {
-    @extend .button;
-    background: $greenTaiga;
+    @extend %button;
     @include transition (background .3s linear);
+    background: $green-taiga;
     span {
         color: $white;
         position: relative;
@@ -32,14 +32,14 @@
     }
     &:hover {
         @include transition (background .3s linear);
-        background: $freshTaiga;
+        background: $fresh-taiga;
     }
 }
 
 .button-gray {
-    @extend .button;
-    background: $buttonGray;
+    @extend %button;
     @include transition (background .3s linear);
+    background: $button-gray;
     span {
         color: $white;
         position: relative;
@@ -47,18 +47,18 @@
     }
     &:hover {
         @include transition (background .3s linear);
-        background: $buttonGrayHover;
-        color: $white
+        background: $button-gray-hover;
+        color: $white;
     }
 }
 
 .button-bulk {
-    @extend .button;
-    background: $greenTaiga;
+    @extend %button;
+    background: $green-taiga;
     font-size: 22px;
+    margin-left: 2px;
     padding: 5px;
     vertical-align: middle;
-    margin-left: 2px;
     span {
         color: $white;
     }
@@ -67,6 +67,6 @@
     }
     &:hover {
         @include transition (background .3s linear);
-        background: $freshTaiga;
+        background: $fresh-taiga;
     }
 }

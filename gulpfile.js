@@ -9,7 +9,8 @@ var gulp = require('gulp'),
     watch = require('gulp-watch'),
     size = require('gulp-filesize'),
     notify = require("gulp-notify"),
-    connect = require('gulp-connect');
+    connect = require('gulp-connect'),
+    scsslint = require('gulp-scss-lint');
 
 var paths = {
     app: 'app',
@@ -33,6 +34,12 @@ gulp.task('jade', function() {
     }))
     .pipe(gulp.dest(paths.dist))
     .pipe(size());
+});
+
+//Sass lint
+gulp.task('scss-lint', function() {
+  gulp.src([paths.appStyles, '!/**/bourbon/**/*.scss'])
+    .pipe(scsslint({config: 'scsslint.yml'}));
 });
 
 //Sass Files
@@ -91,7 +98,7 @@ gulp.task('connect', function() {
 // Rerun the task when a file changes
 gulp.task('watch', function() {
     gulp.watch(paths.jade, ['jade']);
-    gulp.watch(paths.appStyles, ['sass', 'css', 'minifyCSS']);
+    gulp.watch(paths.appStyles, ['scss-lint', 'sass', 'css', 'minifyCSS']);
 });
 
 // The default task (called when you run `gulp` from cli)

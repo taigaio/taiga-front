@@ -1,26 +1,30 @@
-fieldset{
-    width: 100%;
+fieldset {
     border: 0;
     margin: 0;
     padding: 0;
     position: relative;
+    width: 100%;
     .icon {
         position: absolute;
-        top: 6px;
         right: 10px;
+        top: 6px;
     }
 }
 
-input[type="text"], input[type="email"], input[type="date"], select, textarea{
-    font-family: 'ostrichSans';
-    @extend .large;
-    padding: 8px;
-    height: 40px;
-    background: $grayLight;
-    width: 100%;
+input[type="text"],
+input[type="email"],
+input[type="date"],
+select,
+textarea {
+    @extend %large;
+    background: $gray-light;
     border: 0;
-    margin: 0;
     color: $grayer;
+    font-family: 'ostrichSans';
+    height: 40px;
+    margin: 0;
+    padding: 8px;
+    width: 100%;
     @include placeholder {
         color: $white;
     }

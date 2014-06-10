@@ -1,61 +1,62 @@
 .lightbox {
-    display:flex;
+    @include background-opacity($white, .9);
+    align-content: center;
+    align-items: center;
+    bottom: 0;
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    align-content: center;
-    align-items: center;
-    @include background-opacity( $white, .9);
-    position: fixed;
-    z-index: 999;
-    top: 0;
     left: 0;
-    bottom: 0;
+    position: fixed;
     right: 0;
+    top: 0;
+    z-index: 999;
     .close {
+        @extend %large;
         position: absolute;
-        top: 2rem;
         right: 2rem;
-        @extend .large;
+        top: 2rem;
     }
     .title {
         text-align: center;
     }
-    input, select {
+    input,
+    select {
         margin-bottom: 1rem;
     }
     textarea {
-        resize:vertical;
+        resize: vertical;
     }
     .button-green {
         display: block;
-        text-align: center;
         padding: 12px;
+        text-align: center;
     }
 }
 
-.lightbox_add-new-us{
+.lightbox_add-new-us {
     display: none;
     form {
-        width: 600px;
-        min-width: 600px;
+        flex-basis: 0;
         flex-grow: 0;
         flex-shrink: 0;
-        flex-basis: 0;
+        min-width: 600px;
+        width: 600px;
     }
     fieldset {
         position: relative;
     }
     .markdown-preview {
-        margin-bottom: .5rem;
         display: inline-block;
+        margin-bottom: .5rem;
         a {
-            @extend .small;
-            color: $grayLight;
-            @extend .button;
+            @extend %button;
+            @extend %small;
+            color: $gray-light;
             padding: 3px 20px;
             &:first-child {
-                border-right: 1px solid $grayLight;
+                border-right: 1px solid $gray-light;
             }
             &:hover {
                 color: $grayer;
@@ -67,62 +68,62 @@
         }
     }
     textarea {
-        min-height: 7rem;
-        max-height: 9rem;
         margin-bottom: 1rem;
+        max-height: 9rem;
+        min-height: 7rem;
     }
     .new-us-settings {
-        display:flex;
+        align-content: flex-start;
+        align-items: stretch;
+        display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: flex-start;
-        align-content: flex-start;
-        align-items: stretch;
         margin-bottom: 1rem;
         fieldset {
+            flex-basis: 30%;
             flex-grow: 1;
             flex-shrink: 0;
-            flex-basis: 30%;
-            text-align: center;
             margin-right: .5rem;
+            text-align: center;
             &:last-child {
                 margin: 0;
             }
         }
-        label{
-            @extend .button;
-            border: 1px solid $grayLight;
-            display: block;
+        label {
+            @extend %button;
+            @include transition(all .2s ease-in);
+            border: 1px solid $gray-light;
             cursor: pointer;
-            @include transition( all .2s ease-in );
+            display: block;
         }
-        .requirement{
+        .requirement {
             &:hover {
-                background: $freshTaiga;
+                @include transition(all .2s ease-in);
+                background: $fresh-taiga;
+                border: 1px solid $fresh-taiga;
                 color: $white;
-                border: 1px solid $freshTaiga;
-                @include transition( all .2s ease-in );
             }
         }
         .requirement-selected {
-            background: $greenTaiga;
+            @include transition(all .2s ease-in);
+            background: $green-taiga;
+            border: 1px solid $green-taiga;
             color: $white;
-            border: 1px solid $greenTaiga;
-            @include transition( all .2s ease-in );
         }
         .blocked {
             &:hover {
-                background: $redLight;
+                @include transition(all .2s ease-in);
+                background: $red-light;
+                border: 1px solid $red-light;
                 color: $white;
-                border: 1px solid $redLight;
-                @include transition( all .2s ease-in );
             }
         }
         .blocked-selected {
+            @include transition(all .2s ease-in);
             background: $red;
-            color: $white;
             border: 1px solid $red;
-            @include transition( all .2s ease-in );
+            color: $white;
         }
         input[type="checkbox"] {
             display: none;
@@ -133,40 +134,40 @@
 .lightbox_add-bulk {
     display: none;
     form {
-        width: 600px;
-        min-width: 600px;
+        flex-basis: 0;
         flex-grow: 0;
         flex-shrink: 0;
-        flex-basis: 0;
+        min-width: 600px;
+        width: 600px;
     }
     textarea {
-        min-height: 15rem;
-        max-height: 12rem;
         margin-bottom: 1rem;
+        max-height: 12rem;
+        min-height: 15rem;
     }
 }
 
 .lightbox_add-sprint {
     display: none;
     form {
-        width: 600px;
-        min-width: 600px;
+        flex-basis: 0;
         flex-grow: 0;
         flex-shrink: 0;
-        flex-basis: 0;
+        min-width: 600px;
+        width: 600px;
     }
     .last-sprint-name {
-        position: absolute;
-        top: .5rem;
-        right: 1rem;
         color: $gray;
+        position: absolute;
+        right: 1rem;
+        top: .5rem;
     }
     .dates {
         margin-bottom: 1rem;
         input {
-            width: 49%;
             float: left;
             margin-right: 1%;
+            width: 49%;
             &:last-child {
                 margin: 0;
                 width: 50%;

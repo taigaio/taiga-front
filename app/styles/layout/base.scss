@@ -1,45 +1,45 @@
-/* Basic layout styles */
+// Basic layout styles
 html {
-    width: 100%;
     height: 100%;
+    width: 100%;
 }
 body {
-    width: 100%;
-    height: 100%;
-    background: #fff; /* fallback */
-    font: 16px/21px 'DroidSans', Arial, sans-serif;
+    background: #fff; // fallback
     color: #444;
-    -webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
-    -webkit-text-size-adjust: 100%;
+    font: 16px/21px 'DroidSans', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased; // Fix for webkit renderin
+    height: 100%;
     -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    width: 100%;
 }
 
 .wrapper {
-    display:flex;
+    align-content: stretch;
+    align-items: stretch;
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
-    align-content: stretch;
-    align-items: stretch;
     padding-left: 90px;
 }
 
 .menu-secondary {
+    flex-basis: 260px;
     flex-grow: 1;
     flex-shrink: 0;
-    flex-basis: 260px;
     padding: 2em 1em;
 }
 
 .extrabar {
     background: $whitish;
-    /* display: none; */
+    // display: none;
 }
 
 .main {
+    flex-basis: 600px;
     flex-grow: 8;
     flex-shrink: 0;
-    flex-basis: 600px;
     padding: 2em;
 }
 
