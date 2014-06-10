@@ -138,7 +138,7 @@
         .icon {
             @include transform(rotate(180deg));
             &:hover {
-                @include transform(rotate(0deg));
+                @include transform(rotate(0));
                 @include transition (all .2s ease-in);
             }
         }
@@ -154,7 +154,7 @@
         .icon {
             @include transform(rotate(180deg));
             &:hover {
-                @include transform(rotate(0deg));
+                @include transform(rotate(0));
                 @include transition (all .2s ease-in);
             }
         }

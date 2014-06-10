@@ -1,0 +1,100 @@
+%table-flex {
+    align-content: stretch;
+    align-items: stretch;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+%table-flex-child {
+    flex-basis: 300px;
+    flex-grow: 1;
+    flex-shrink: 0;
+    width: 300px;
+}
+
+.taskboard-table {
+    overflow: hidden;
+    width: 100%;
+}
+
+.taskboard-table-header {
+    margin-bottom: .5rem;
+    width: 100%;
+    .taskboard-table-inner {
+        @extend %table-flex;
+        overflow: hidden;
+        width: 3500px; //Just and example, should be JS calc
+    }
+    .task-colum_name {
+        @extend %table-flex-child;
+        @extend %large;
+        background: $whitish;
+        margin: 0 .3rem;
+        padding: .5rem 0;
+        text-align: center;
+    }
+}
+
+.taskboard-table-body {
+    height: 700px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    width: 100%;
+    .taskboard-table-inner {
+        @extend %table-flex;
+        overflow: hidden;
+        width: 3500px; //Just and example, should be JS calc
+    }
+    .task-column {
+        @extend %table-flex-child;
+    }
+    .task-row {
+        height: 30rem;
+        margin: 0 .3rem 1rem;
+        margin-bottom: 1rem;
+        padding: 1rem;
+    }
+    .taskboard_task-playground {
+        .task-row {
+            background: $whitish;
+        }
+    }
+}
+
+.taskboard_task-list {
+    .tag-list {
+        display: none;
+        margin-bottom: 1rem;
+    }
+    .task-title {
+        @extend %large;
+        font-family: 'DroidSans';
+        margin-bottom: 1rem;
+    }
+    .task-num {
+        color: $gray;
+        margin-right: .5rem;
+    }
+    .task-status {
+        color: $green-taiga;
+        margin-bottom: .5rem;
+    }
+    .task-list {
+        span {
+            color: $gray;
+            margin-left: .5rem;
+        }
+    }
+    .task-row {
+        position: relative;
+    }
+    .new-us {
+        bottom: 2rem;
+        position: absolute;
+    }
+    .button-green {
+        padding: 7px 80px;
+    }
+}
