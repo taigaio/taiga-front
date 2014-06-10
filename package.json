@@ -27,7 +27,7 @@
     "gulp-newer": "^0.3.0",
     "gulp-notify": "^1.2.5",
     "gulp-ruby-sass": "^0.4.3",
-    "gulp-scss-lint": "0.0.5",
+    "gulp-scss-lint": "0.0.6",
     "gulp-styledocco": "0.0.1",
     "gulp-watch": "^0.5.4"
   }
