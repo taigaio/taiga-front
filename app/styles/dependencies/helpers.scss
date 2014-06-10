@@ -3,6 +3,23 @@
     box-sizing: border-box;
 }
 
+//Flexbox FTW
+%table-flex {
+    align-content: stretch;
+    align-items: stretch;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+%table-flex-child {
+    flex-basis: 300px;
+    flex-grow: 1;
+    flex-shrink: 0;
+    width: 300px;
+}
+
 // #Reset & Basics (Inspired by E. Meyers)
 //==================================================
 a,

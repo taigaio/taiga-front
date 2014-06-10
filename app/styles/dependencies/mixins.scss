@@ -8,3 +8,23 @@
 @mixin background-opacity($color: $white, $opacity: .3) {
     background: rgba($color, $opacity);
 }
+
+// Table Flex - http://devbryce.com/site/flexbox/
+@mixin table-flex() {
+    align-content: stretch;
+    align-items: stretch;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+@mixin table-flex-child($flex-grow: 1, $flex-basis: 300px, $flex-shrink: 0, $width:'') {
+    flex-basis: $flex-basis;
+    flex-grow: $flex-grow;
+    flex-shrink: $flex-shrink;
+    width: $flex-basis;
+    @if #{$width} != null {
+        width: #{$width};
+    }
+}
