@@ -7,7 +7,7 @@
     }
     .taskboard-tag {
         @include table-flex-child(1, 0, 0, 0);
-        background: $grayer; //Fallback
+        background: $postit-hover; //Fallback
         height: .2rem;
     }
     .taskboard-task-inner {
@@ -58,4 +58,8 @@
         @extend %xlarge;
         right: 45%;
     }
+}
+
+.task-drag {
+    @include box-shadow();
 }
