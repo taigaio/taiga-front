@@ -1,0 +1,32 @@
+.us-detail-header {
+    position: relative;
+    .button {
+        color: $white;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+}
+.us-story-main-data {
+    margin-bottom: 2rem;
+    .us-title {
+        @extend %xlarge;
+        background: $whitish;
+        font-family: 'DroidSans';
+        padding: 2rem 1rem;
+        .us-number {
+            color: $gray-light;
+            margin-right: .5rem;
+        }
+        .us-name {
+            color: $grayer;
+        }
+    }
+}
+
+.user-story-tags {
+    input {
+        display: inline-block;
+        width: 14rem;
+    }
+}

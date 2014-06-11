@@ -29,6 +29,7 @@ $prefix-for-spec:      true;
 @import 'layout/base';
 @import 'layout/backlog';
 @import 'layout/taskboard';
+@import 'layout/us-detail';
 
 //Modules
 @import 'modules/nav';
@@ -39,6 +40,7 @@ $prefix-for-spec:      true;
 @import 'modules/filters';
 @import 'modules/lightbox';
 @import 'modules/taskboard-table';
+@import 'modules/attachments';
 @import 'modules/search-filter';
 @import 'modules/search-result-table';
 
