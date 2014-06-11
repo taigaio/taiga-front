@@ -1,0 +1,68 @@
+{
+  "name": "taiga-layout",
+  "version": "0.1.0",
+  "homepage": "https://github.com/taiga.io/taiga-layout",
+  "authors": [
+    {
+      "name": "Andrey Antukh",
+      "email": "niwi@niwi.be"
+    },
+    {
+      "name": "Jesus Espino Garcia",
+      "email": "jespinog@gmail.com"
+    },
+    {
+      "name": "David Barragán Merino",
+      "email": "dbarragan@dbarragan.com"
+    },
+    {
+      "name": "Xavi Julian",
+      "email": "xavier.julian@kaleidos.net"
+    }
+  ],
+  "description": "Taiga project management system (frontend)",
+  "license": "AGPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:taigaio/taiga-front.git"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "lodash": "~2.4.1",
+    "emoticons": "~0.1.7",
+    "jquery-flot": "~0.8.2",
+    "angular": "1.2.17",
+    "angular-route": "1.2.17",
+    "angular-animate": "1.2.17",
+    "angular-sanitize": "1.2.17",
+    "angular-mocks": "1.2.17",
+    "kalendae": "~0.4.1",
+    "checksley": "~0.5.0",
+    "i18next": "~1.7.1",
+    "jquery": "~2.1.1",
+    "select2": "~3.4.5",
+    "angular-ui-select2": "~0.0.5",
+    "google-diff-match-patch-js": "~1.0.0",
+    "underscore.string": "~2.3.3",
+    "markitup": "~1.1.14",
+    "jquery-textcomplete": "yuku-t/jquery-textcomplete#~0.1.1",
+    "flot-orderBars": "emmerich/flot-orderBars",
+    "moment": "~2.6.0",
+    "isMobile": "~0.3.1",
+    "favico.js": "0.3.4",
+    "Sortable": "~0.1.8"
+  },
+  "resolutions": {
+    "lodash": "~2.4.1",
+    "moment": "~2.6.0",
+    "jquery": "~2.1.1"
+  },
+  "private": true
+}

@@ -31,8 +31,21 @@ var paths = {
     distStyles: "dist/styles",
     sassMain: "app/styles/main.scss",
     css:  "dist/styles/**/*.css",
-    images: "app/images/**/*"
+    images: "app/images/**/*",
+    coffee: ["app/coffee/*.coffee", "app/coffee/**/*.coffee"]
 };
+
+// Ordered list of vendor/external libraries.
+var vendorJsLibs = [
+    "app/vendor/jquery/dist/jquery.js",
+    "app/vendor/lodash/dist/lodash.js",
+    "app/vendor/emoticons/lib/emoticons.js",
+    "app/vendor/underscore.string/lib/underscore.string.js",
+    "app/vendor/angular/angular.js",
+    "app/vendor/angular-route/angular-route.js",
+    "app/vendor/angular-sanitize/angular-sanitize.js",
+    "app/vendor/angular-animate/angular-animate.js"
+]
 
 ////////////////////////////////////////////////////////////////////////////
 // Layout/CSS Related tasks
@@ -43,6 +56,13 @@ gulp.task("jade", function() {
              .pipe(plumber())
              .pipe(jade({pretty: true}))
              .pipe(gulp.dest(paths.dist + "/partials"));
+});
+
+gulp.task("template", function() {
+    return gulp.src(paths.app + "/index.jade")
+               .pipe(plumber())
+               .pipe(jade({pretty: true, locals:{v:(new Date()).getTime()}}))
+               .pipe(gulp.dest(paths.dist));
 });
 
 // Sass lint
@@ -88,18 +108,18 @@ gulp.task("imagemin", function () {
 ////////////////////////////////////////////////////////////////////////////
 
 gulp.task("coffee", function() {
-    return gulp.src(coffeeSources)
+    return gulp.src(paths.coffee)
                .pipe(plumber())
                .pipe(coffee())
                .pipe(concat("app.js"))
-               .pipe(gulp.dest("app/dist/js/"));
+               .pipe(gulp.dest("dist/js/"));
 });
 
 gulp.task("jslibs", function() {
-    return gulp.src(externalSources)
+    return gulp.src(vendorJsLibs)
                .pipe(plumber())
                .pipe(concat("libs.js"))
-               .pipe(gulp.dest("app/dist/js/"));
+               .pipe(gulp.dest("dist/js/"));
 });
 
 gulp.task("locales", function() {
@@ -140,23 +160,22 @@ gulp.task("connect", function() {
 gulp.task("watch", function() {
     gulp.watch(paths.jade, ["jade"]);
     gulp.watch(paths.appStyles, ["scss-lint", "sass", "css"]);
+    gulp.watch(paths.coffee, ["coffee"]);
 });
 
 gulp.task("express", function() {
     var express = require("express");
     var app = express();
 
-    app.use("/js", express.static(__dirname + "/app/js"));
-    app.use("/components", express.static(__dirname + "/app/components"));
-    app.use("/dist", express.static(__dirname + "/app/dist"));
-    app.use("/less", express.static(__dirname + "/app/less"));
-    app.use("/img", express.static(__dirname + "/app/img"));
-    app.use("/partials", express.static(__dirname + "/app/partials"));
-    app.use("/fonts", express.static(__dirname + "/app/fonts"));
+    app.use("/js", express.static(__dirname + "/dist/js"));
+    app.use("/styles", express.static(__dirname + "/dist/styles"));
+    app.use("/images", express.static(__dirname + "/dist/images"));
+    app.use("/partials", express.static(__dirname + "/dist/partials"));
+    app.use("/fonts", express.static(__dirname + "/dist/fonts"));
 
     app.all("/*", function(req, res, next) {
         // Just send the index.html for other files to support HTML5Mode
-        res.sendfile("index.html", { root: __dirname + "/app/" });
+        res.sendfile("index.html", { root: __dirname + "/dist/" });
     });
 
     app.listen(9001);
@@ -166,10 +185,14 @@ gulp.task("express", function() {
 // The default task (called when you run `gulp` from cli)
 gulp.task("default", [
     "jade",
+    "template",
     "sass",
     "css",
     "copy",
+    "coffee",
+    "jslibs",
     "connect",
+    "express",
     "watch"
 ]);
 
