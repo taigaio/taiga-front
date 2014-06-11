@@ -18,5 +18,6 @@
     "unqualified-attributes": false,
     "regex-selectors": false,
     "floats": false,
-    "fallback-colors": false
+    "fallback-colors": false,
+    "adjoining-classes": false
 }

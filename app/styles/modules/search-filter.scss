@@ -1,6 +1,8 @@
 .search-filter {
     ul {
+        border-bottom: 3px solid $gray-light;
         display: flex;
+        padding-bottom: .5rem;
     }
     li {
         margin-right: 1rem;
@@ -9,6 +11,7 @@
         @extend %large;
         font-family: 'ostrichSans';
         opacity: .2;
+        &.active,
         &:hover {
             @include transition (opacity .3s linear);
             color: $blackish;
