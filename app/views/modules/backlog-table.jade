@@ -1,16 +1,16 @@
 section.backlog-table
-    div.row.title
-        div.user-stories.width-4 User Stories
-        div.status.width-2 Status
-        div.points.width-1 Points
-        div.points.width-1
+    div.row.backlog-table-header
+        div.user-stories User Stories
+        div.status Status
+        div.points Points
+        div.points
       div.row.sub-title
         div.user-stories.width-4
         div.status.width-2
         div.points.width-1 Front
         div.points.width-1 Total
     div.row.table-main.blocked
-        div.user-stories.width-4
+        div.user-stories
             div.user-story-name
                 input(type="checkbox", name="")
                 a(href="") Crear el perfil de usuario Senior en el admin
@@ -29,7 +29,7 @@ section.backlog-table
                     a(href="", title="Status 2") Status 2
                 li
                     a(href="", title="Status 3") Status 3
-        div.points.width-1
+        div.points
             a(href="", title="Front") 24
             ul.popover.pop-points-open
                 li
@@ -56,7 +56,7 @@ section.backlog-table
                     a(href="", title="100") 100
                 li
                     a(href="", title="?") ?
-        div.points.width-1
+        div.points
             a(href="", title="Total Points") 43
             ul.popover.pop-status
                 li
@@ -68,7 +68,7 @@ section.backlog-table
     hr.doom-line
     - for (var x = 0; x < 50; x++)
         div.row.table-main
-            div.user-stories.width-4
+            div.user-stories
                 div.user-story-name
                     input(type="checkbox", name="")
                     a(href="") Crear el perfil de usuario Senior en el admin
@@ -78,6 +78,7 @@ section.backlog-table
                 div.user-story-tags
                     - for(var y = 0; y < 3; y++)
                         include ../components/tag
-            div.status.width-2 Status
-            div.points.width-1 12
-            div.points.width-1 54
+            div.status Status
+            div.points 12
+            div.points 54
+            a.icon.icon-drag-v(href="", title="Drag")

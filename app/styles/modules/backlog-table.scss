@@ -1,28 +1,11 @@
 .backlog-table {
-    align-content: stretch;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: flex-start;
+    @include table-flex();
     width: 100%;
     .row {
-        align-content: stretch;
-        align-items: stretch;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        justify-content: flex-start;
+        @include table-flex();
         padding: 1rem 0 1rem 1rem;
         text-align: left;
         width: 100%;
-        @for $i from 1 through 8 {
-            .width-#{$i} {
-                flex-basis: 50px;
-                flex-grow: $i;
-                flex-shrink: 0;
-            }
-        }
         &:hover {
             background: lighten($green-taiga, 60%);
             @include transition (background .2s ease-in);
@@ -50,7 +33,6 @@
             white-space: nowrap;
         }
         .icon {
-            @extend %medium;
             color: $gray-light;
             &:hover {
                 color: $grayer;
@@ -62,11 +44,24 @@
         display: none;
         margin-top: .3rem;
     }
-    .title {
+    .backlog-table-header {
         @extend %medium;
         font-family: 'DroidSans-Bold';
+    }
+    .backlog-table-header,
+    .sub-title,
+    .table-main {
         &:hover {
             background: transparent;
+        }
+        .user-stories {
+            @include table-flex-child(20, 100px, 0, 0);
+        }
+        .status {
+            @include table-flex-child(2, 100px, 0, 0);
+        }
+        .points {
+            @include table-flex-child(1, 100px, 0, 0);
         }
     }
     .sub-title {
