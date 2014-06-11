@@ -1,0 +1,55 @@
+.add-comment {
+    @include clearfix;
+    textarea {
+        @include transition(height .3s ease-in);
+        &:focus {
+            @include transition(height .3s ease-in);
+            height: 150px;
+            +a {
+                display: inline-block;
+            }
+        }
+    }
+    a {
+        color: $white;
+        display: none;
+        float: right;
+    }
+}
+
+.comment-single {
+    @include table-flex;
+    border-bottom: 2px solid $gray-light;
+    padding: 1rem 0;
+    &:first-child {
+        margin-top: 0;
+    }
+    &:last-child {
+        border-bottom: 0;
+    }
+    .username {
+        color: $green-taiga;
+        display: block;
+        margin-bottom: 1rem;
+    }
+    .comment-user {
+        @include table-flex-child(1, 50px, 0);
+        img {
+            max-width: 70px;
+            width: 100%;
+        }
+    }
+    .comment-content {
+        @include table-flex-child(20, 150px, 0);
+    }
+    .us-activity {
+        background: $whitish;
+        .activity-inner {
+            display: none;
+        }
+    }
+    .date {
+        @extend %small;
+        color: $gray-light;
+    }
+}

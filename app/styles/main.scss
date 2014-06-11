@@ -43,6 +43,8 @@ $prefix-for-spec:      true;
 @import 'modules/attachments';
 @import 'modules/search-filter';
 @import 'modules/search-result-table';
+@import 'modules/comments';
+@import 'modules/activity';
 
 // Responsive
 @import 'responsive/mobile';

@@ -1,0 +1,16 @@
+section.us-comments
+    div.add-comment
+        textarea(placeholder="Write here a new commet")
+        a.button.button-green(href="", title="Comment") Comment
+    div.comment-list
+         - for(var x = 0; x < 6; x++)
+            div.comment-single
+                div.comment-user
+                    a.avatar(href="", title="User preferences")
+                        img(src="http://thecodeplayer.com/u/uifaces/12.jpg", alt="username")
+                div.comment-content
+                    a.username(href="", title="User name") User Name
+                    include activity
+                    p.comment
+                        Para un escenario en el cual ya están cargados en la DB la lista de usuarios para un Grupo o varios, tenemos que tener la posibilidad de lanzar a todos los miembros de un grupo y/o a un individuo en concreto, un mail. El mail lleva un bloque de texto (pendiende de que os lo pasemos) y también llevará un link que llevará a una pantalla donde ponga la pw que usará a partir de ese momento. Si elige su PW dentro de las reglas de PW establecidas (pendientes de decidir), el sistema le logará automáticamente.
+                    p.date 15 junio 2014 15:30h

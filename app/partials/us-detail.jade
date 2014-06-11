@@ -28,4 +28,17 @@ block content
             p <strong>Prototipos</strong><br /><a href="">share.axure.com/lalala</a>
             p <strong>Prototipos</strong><br /><a href="">share.axure.com/lalala</a>
         include views/modules/attachments
+        section.us-activity
+            ul.us-activity-tabs
+                li
+                    a.active(href="#")
+                        span.icon.icon-bulk
+                        span.tab-title Comments
+
+                li
+                    a(href="#")
+                        span.icon.icon-issues
+                        span.tab-title Activity
+            include views/modules/comments
+            //include views/modules/activity
     sidebar.menu-secondary.sidebar
