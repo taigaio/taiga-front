@@ -38,7 +38,7 @@
         margin-right: .5em;
     }
     .taskboard-text {
-        @include table-flex-child($flex-grow: 10, $flex-basis: 50px, $width: 100px);
+        @include table-flex-child($flex-grow: 10, $flex-basis: 50px);
     }
     .icon-edit,
     .icon-drag-h {
