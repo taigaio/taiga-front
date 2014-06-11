@@ -4,12 +4,12 @@
     .row {
         @include table-flex();
         padding: 1rem 0 1rem 1rem;
+        position: relative;
         text-align: left;
         width: 100%;
         &:hover {
             background: lighten($green-taiga, 60%);
             @include transition (background .2s ease-in);
-            cursor: move;
             .us-settings {
                 opacity: 1;
                 @include transition (opacity .2s ease-in);
@@ -33,6 +33,7 @@
             white-space: nowrap;
         }
         .icon {
+            @extend %medium;
             color: $gray-light;
             &:hover {
                 color: $grayer;
@@ -51,9 +52,6 @@
     .backlog-table-header,
     .sub-title,
     .table-main {
-        &:hover {
-            background: transparent;
-        }
         .user-stories {
             @include table-flex-child(20, 100px, 0, 0);
         }
@@ -62,6 +60,12 @@
         }
         .points {
             @include table-flex-child(1, 100px, 0, 0);
+        }
+    }
+    .backlog-table-header,
+    .sub-title {
+        &:hover {
+            background: transparent;
         }
     }
     .sub-title {
@@ -87,7 +91,6 @@
         &:hover {
             background: $red;
             @include transition (background .2s ease-in);
-            cursor: move;
         }
         a {
             color: $white;
@@ -96,6 +99,7 @@
             }
         }
         .icon {
+            @extend %medium;
             color: $white;
             &:hover {
                 color: $white;
@@ -136,5 +140,18 @@
         margin-right: 2rem;
         opacity: 0;
         @include transition (opacity .2s ease-in);
+    }
+    .icon-drag-v {
+        @include transition(color .2s linear);
+        @extend %large;
+        color: $gray-light;
+        position: absolute;
+        right: .5rem;
+        top: 30%;
+        &:hover {
+            @include transition(color .2s linear);
+            color: $grayer;
+            cursor: move;
+        }
     }
 }
