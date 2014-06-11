@@ -18,27 +18,44 @@
 taiga = @.taiga
 
 class BacklogController extends taiga.TaigaController
-    constructor: (@repo) ->
-        console.log "foo"
+    constructor: (@scope, @repo, @params, @rs) ->
+        # Resolve project slug
+        promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
+            console.log "resolve", data.project
+            @scope.projectId = data.project
+            return @rs.getProject(@scope.projectId)
 
-    getMilestones: ->
-        projectId = 1
-        return @repo.queryMany("milestones", {project:projectId}).then (milestones) ->
-            console.log milestones
-            return milestones
+        # Load project
+        promise = promise.then (project) =>
+            @scope.project = project
+            console.log project
+            return @rs.getMilestones(@scope.projectId)
+
+        # Load milestones
+        promise = promise.then (milestones) =>
+            @scope.milestones = milestones
+            return @rs.getBacklog(@scope.projectId)
+
+        # Load unassigned userstories
+        promise = promise.then (userstories) =>
+            @scope.userstories = userstories
+
+        # Obviously fail condition
+        promise.then null, =>
+            console.log "FAIL"
 
 
 BacklogDirective = ($compile) ->
-    controller: ["$tgRepo", BacklogController]
+    controller: ["$scope", "$tgRepo", "$routeParams", "$tgResources", BacklogController]
     link: (scope, element, attrs, ctrl) ->
-        ctrl.getMilestones().then =>
-            console.log "kaka"
 
 
 BacklogTableDirective = ($compile, $templateCache) ->
     require: "^tgBacklog"
     link: (scope, element, attrs, ctrl) ->
         content = $templateCache.get("backlog-row.html")
+        scope.$watch "userstories", (userstories) =>
+            console.log "ready to render", userstories
 
 
 module = angular.module("taiga")

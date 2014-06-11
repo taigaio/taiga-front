@@ -108,7 +108,14 @@ class RepositoryService extends taiga.TaigaService
         url = "#{url}/#{id}" if id
 
         return @http.get(url, params).then (data) =>
-            return @model.make_model(name, data)
+            return @model.make_model(name, data.data)
+
+    queryOneRaw: (name, id, params) ->
+        url = @urls.resolve(name)
+        url = "#{url}/#{id}" if id
+
+        return @http.get(url, params).then (data) =>
+            return data.data
 
     queryPaginated: (name, params) ->
         url = @urls.resolve(name)
@@ -120,6 +127,16 @@ class RepositoryService extends taiga.TaigaService
             result.current = parseInt(headers["x-pagination-current"] or 1, 10)
             result.paginatedBy = parseInt(headers["x-paginated-by"], 10)
             return result
+
+    resolve: (options) ->
+        params = {}
+        params.project = options.pslug if options.pslug?
+        params.us = options.usref if options.usref?
+        params.task = options.taskref if options.taskref?
+        params.issue = options.issueref if options.issueref?
+        params.milestone = options.mlref if options.mlref?
+        return @.queryOneRaw("resolver", null, params)
+
 
 module = angular.module("taigaResources")
 module.service("$tgRepo", RepositoryService)
