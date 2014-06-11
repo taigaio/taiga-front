@@ -3,3 +3,4 @@ dist/
 node_modules/
 app/vendor
 config/main.coffee
+bower_components
