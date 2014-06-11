@@ -11,7 +11,8 @@ var gulp = require('gulp'),
     notify = require("gulp-notify"),
     connect = require('gulp-connect'),
     scsslint = require('gulp-scss-lint'),
-    newer = require('gulp-newer')
+    newer = require('gulp-newer'),
+    plumber = require('gulp-plumber'),
     cache = require('gulp-cached');
 
 var paths = {
@@ -28,12 +29,10 @@ var paths = {
 
 gulp.task('jade', function() {
   return gulp.src(paths.jade)
+    .pipe(plumber())
     .pipe(jade({
       pretty: true
     }))
-    .on('error', function(err) {
-        console.log(err);
-    })
     .pipe(gulp.dest(paths.dist))
     .pipe(size());
 });
