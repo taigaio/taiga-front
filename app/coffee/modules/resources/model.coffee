@@ -115,15 +115,16 @@ class Model
         return model
 
 
-provider = ($q, $http, $gmUrls, $gmStorage) ->
-    headers = ->
-        token = $gmStorage.get('token')
-        if token
-            return {"Authorization":"Bearer #{token}"}
-        return {}
+taiga = @.taiga
 
+class ModelService extends taiga.TaigaService
+    @.$inject = ["$q", "$tgUrls", "$tgStorage", "$tgHttp"]
+
+    constructor: (@q, @urls, @storage, @http) ->
+        super()
+
+provider = ($q, $http, $gmUrls, $gmStorage) ->
     service = {}
-    service.headers = headers
     service.make_model = (name, data, cls=Model, dataTypes={}) ->
         return new cls(name, data, dataTypes)
 

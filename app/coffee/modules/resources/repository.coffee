@@ -18,16 +18,10 @@
 taiga = @.taiga
 
 class RepositoryService extends taiga.TaigaService
-    @.$inject = ["$http", "$q", "$tgModel", "$tgStorage"]
+    @.$inject = ["$q", "$tgModel", "$tgStorage", "$tgHttp"]
 
-    constructor: (@http, @q, @model, @storage) ->
+    constructor: (@q, @model, @storage, @http) ->
         super()
-
-    headers: ->
-        token = @.storage.get('token')
-        if token
-            return {"Authorization":"Bearer #{token}"}
-        return {}
 
     resolveUrlForModel: (model) ->
         idAttrName = model.getIdAttrName()
@@ -35,16 +29,9 @@ class RepositoryService extends taiga.TaigaService
 
     create: (name, data, dataTypes={}, extraParams={}) ->
         defered = @q.defer()
+        url = @urls.resolve(name)
 
-        params = {
-            method: "POST"
-            url: @urls.resolve(name)
-            headers: headers()
-            data: JSON.stringify(data)
-            params: extraParams
-        }
-
-        promise = @http(params)
+        promise = @http.post(url, JSON.stringify(data))
         promise.success (_data, _status) =>
             defered.resolve(@model.make_model(name, _data, null, dataTypes))
 
@@ -55,14 +42,9 @@ class RepositoryService extends taiga.TaigaService
 
     remove: (model) ->
         defered = $q.defer()
+        url = @.resolveUrlForModel(model)
 
-        params = {
-            method: "DELETE"
-            url: @.resolveUrlForModel(model)
-            headers: @.headers()
-        }
-
-        promise = @http(params)
+        promise = @http.delete(url)
         promise.success (data, status) ->
             defered.resolve(model)
 
@@ -78,20 +60,14 @@ class RepositoryService extends taiga.TaigaService
             defered.resolve(model)
             return defered.promise
 
-        params = {
-            url: @.resolveUrlForModel(model)
-            headers: @.headers()
-        }
+        url = @.resolveUrlForModel(model)
+        data = JSON.stringify(model.getAttrs(patch))
 
         if patch
-            params.method = "PATCH"
+            promise = @http.patch(url, data)
         else
-            params.method = "PUT"
+            promise = @http.put(url, data)
 
-        params.data = JSON.stringify(model.getAttrs(patch))
-        params = _.extend({}, params, extraParams)
-
-        promise = @http(params)
         promise.success (data, status) =>
             model._isModified = false
             model._attrs = _.extend(model.getAttrs(), data)
@@ -107,13 +83,9 @@ class RepositoryService extends taiga.TaigaService
 
     refresh: (model) ->
         defered = $q.defer()
-        params = {
-            method: "GET",
-            url: @.resolveUrlForModel(model)
-            headers: @.headers()
-        }
 
-        promise = @http(params)
+        url = @.resolveUrlForModel(model)
+        promise = @http.get(url)
         promise.success (data, status) ->
             model._modifiedAttrs = {}
             model._attrs = data
@@ -127,5 +99,28 @@ class RepositoryService extends taiga.TaigaService
         return defered.promise
 
 
+    queryMany: (name, params) ->
+        url = @urls.resolve(name)
+        return @http.get(url, params).then (data, status) ->
+            return _.map(data, (x) -> @model.make_model(name, x))
+
+    queryOne: (name, id, params) ->
+        url = @urls.resolve(name)
+        url = "#{url}/#{id}" if id
+
+        return @http.get(url, params).then (data, status) ->
+            return @model.make_model(name, data)
+
+    queryPaginated: (name, params) ->
+        url = @urls.resolve(name)
+        return @http.get(url, params).then (data, status, headers) ->
+            headers = headers()
+            result = {}
+            result.models = _.map(data, (x) -> @model.make_model(name, x))
+            result.count = parseInt(headers["x-pagination-count"], 10)
+            result.current = parseInt(headers["x-pagination-current"] or 1, 10)
+            result.paginatedBy = parseInt(headers["x-paginated-by"], 10)
+            return result
+
 module = angular.module("taigaResources")
-module.service("resources", RepositoryService)
+module.service("$tgRepo", RepositoryService)
