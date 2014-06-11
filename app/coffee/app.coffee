@@ -53,11 +53,9 @@ modules = [
     "ngRoute",
     "ngAnimate",
 
-    "taigaConfig"
-    # Taiga specific modules
-    # "taigaCommon"
+    "taigaConfig",
+    "taigaResources",
 ]
-
 
 angular.module("taigaLocalConfig", []).value("localconfig", {})
 module = angular.module("taiga", modules)
