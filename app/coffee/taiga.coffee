@@ -43,17 +43,17 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $compil
     # $httpProvider.responseInterceptors.push('authHttpIntercept')
 
 
-init = ($rootScope) ->
-    console.log "INIT"
-
+init = ($log, $rootScope) ->
+    $log.debug("Initialize application")
 
 configure.$inject = ["$routeProvider", "$locationProvider","$httpProvider"]
-init.$inject = ["$rootScope"]
+init.$inject = ["$log", "$rootScope"]
 
 modules = [
     "ngRoute",
     "ngAnimate",
 
+    "taigaConfig"
     # Taiga specific modules
     # "taigaCommon"
 ]

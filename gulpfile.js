@@ -32,7 +32,9 @@ var paths = {
     sassMain: "app/styles/main.scss",
     css:  "dist/styles/**/*.css",
     images: "app/images/**/*",
-    coffee: ["app/coffee/*.coffee", "app/coffee/**/*.coffee"]
+    coffee: ["app/coffee/*.coffee",
+             "config/main.coffee",
+             "app/coffee/**/*.coffee"]
 };
 
 // Ordered list of vendor/external libraries.
