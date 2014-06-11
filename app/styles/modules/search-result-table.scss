@@ -1,0 +1,72 @@
+.search-result-table {
+    align-content: stretch;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 100%;
+    .row {
+        align-content: stretch;
+        align-items: stretch;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        padding: 1rem 0 1rem 1rem;
+        text-align: left;
+        width: 100%;
+        @for $i from 1 through 8 {
+            .width-#{$i} {
+                flex-basis: 50px;
+                flex-grow: $i;
+                flex-shrink: 0;
+            }
+        }
+        &:hover {
+            background: lighten($green-taiga, 60%);
+            @include transition (background .2s ease-in);
+        }
+    }
+    .row-selected {
+        background: lighten($green-taiga, 60%);
+        @include transition (background .2s ease-in);
+    }
+    .user-story-name {
+        flex-basis: 500px;
+        input {
+            vertical-align: top;
+        }
+        span {
+            display: inline-block;
+            max-width: 70%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .icon {
+            @extend %medium;
+            color: $gray-light;
+            &:hover {
+                color: $grayer;
+                @include transition (color .3s linear);
+            }
+        }
+    }
+    .title {
+        @extend %medium;
+        border-bottom: 1px solid $gray-light;
+        font-family: 'DroidSans-Bold';
+        &:hover {
+            background: transparent;
+        }
+    }
+    .table-main {
+        @extend %small;
+        border-bottom: 1px solid $gray-light;
+    }
+    .status,
+    .points {
+        position: relative;
+    }
+}

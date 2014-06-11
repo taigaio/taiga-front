@@ -23,6 +23,7 @@ $prefix-for-spec:      true;
 @import 'components/popover';
 @import 'components/tag';
 @import 'components/filter';
+@import 'components/taskboard-task';
 
 //Layout
 @import 'layout/base';
@@ -38,6 +39,8 @@ $prefix-for-spec:      true;
 @import 'modules/filters';
 @import 'modules/lightbox';
 @import 'modules/taskboard-table';
+@import 'modules/search-filter';
+@import 'modules/search-result-table';
 
 // Responsive
 @import 'responsive/mobile';

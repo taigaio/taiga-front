@@ -1,0 +1,72 @@
+.taskboard-task {
+    background: $postit;
+    margin-bottom: 1rem;
+    position: relative;
+    .taskboard-tagline {
+        @include table-flex();
+    }
+    .taskboard-tag {
+        @include table-flex-child(1, 0, 0, 0);
+        background: $postit-hover; //Fallback
+        height: .3rem;
+    }
+    .taskboard-task-inner {
+        @include table-flex();
+        padding: 1rem .5rem;
+    }
+    .avatar {
+        @include table-flex-child($flex-basis: 50px);
+        a {
+            @extend %small;
+            text-align: center;
+        }
+        img {
+            margin: 0 auto;
+        }
+        figcaption {
+            display: block;
+            overflow: hidden;
+            position: relative;
+            text-overflow: ellipsis;
+            top: 4px;
+            white-space: nowrap;
+            width: 50px;
+        }
+    }
+    .task-num {
+        color: $postit-hover;
+        margin-right: .5em;
+    }
+    .taskboard-text {
+        @include table-flex-child($flex-grow: 10, $flex-basis: 50px, $width: 100px);
+    }
+    .icon-edit,
+    .icon-drag-h {
+        @extend %large;
+        bottom: .2rem;
+        color: $postit-hover;
+        display: none;
+        position: absolute;
+        &:hover {
+            @include transition(color, .3s, linear);
+            color: darken($postit-hover, 15%);
+        }
+    }
+    .icon-edit {
+        right: .5rem;
+    }
+    .icon-drag-h {
+        @extend %xlarge;
+        right: 45%;
+    }
+    &:hover {
+        .icon-edit,
+        .icon-drag-h {
+            display: block;
+        }
+    }
+}
+
+.task-drag {
+    @include box-shadow();
+}
