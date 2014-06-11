@@ -1,0 +1,31 @@
+extends layout
+
+block head
+    title Taiga  Project management web application with scrum in mind!
+
+block content
+    div.main.us-detail
+        header
+            h1
+                span ProjectName
+                span.green User Story
+            a.button.button-green(href="", title="Edit") Edit
+        section.us-story-main-data
+            h2.us-title
+                span.us-number 125
+                span-us-name Tagear contenido dentro de las catas privadas
+            div.user-story-tags
+                - for(var y = 0; y < 6; y++)
+                    include views/components/tag
+                input(type="text", placeholder="Add Tag")
+            div.us-description
+                p Hay que cambiar el texto "Hola NombreDelUsuario" por "Nivel de conexion al XX%"
+                p La propuesta que esperábamos de UX debía incluir nombre y nivel de conexión. Esperamos nueva propuesta corregida donde aparezca tanto el nombre como el % de conexión
+                p <strong>Test de aceptación</strong>
+                ul
+                    li Entro en la aplicación
+                    li Compruebo que el indicador crece
+                p <strong>Prototipos</strong><br /><a href="">share.axure.com/lalala</a>
+                p <strong>Prototipos</strong><br /><a href="">share.axure.com/lalala</a>
+        include views/modules/attachments
+    sidebar.menu-secondary.sidebar

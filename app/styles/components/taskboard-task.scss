@@ -45,6 +45,7 @@
         @extend %large;
         bottom: .2rem;
         color: $postit-hover;
+        cursor: move;
         display: none;
         position: absolute;
         &:hover {
