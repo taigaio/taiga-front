@@ -39,29 +39,34 @@ class HttpService extends taiga.TaigaService
     get: (url, params) ->
         return @.request({
             method: "GET",
+            url: url,
             params: params
         })
 
     post: (url, data, params) ->
-        options = {method: "POST"}
+        options = {method: "POST", url: url}
         options.data = data if data
         options.params = params if params
         return @.request(options)
 
     put: (url, data, params) ->
-        options = {method: "PUT"}
+        options = {method: "PUT", url: url}
         options.data = data if data
         options.params = params if params
         return @.request(options)
 
     patch: (url, data, params) ->
-        options = {method: "PATCH"}
+        options = {method: "PATCH", url: url}
         options.data = data if data
         options.params = params if params
         return @.request(options)
 
     delete: (url, data, params) ->
-        options = {method: "DELETE"}
+        options = {method: "DELETE", url: url}
         options.data = data if data
         options.params = params if params
         return @.request(options)
+
+
+module = angular.module("taigaResources")
+module.service("$tgHttp", HttpService)

@@ -18,9 +18,9 @@
 taiga = @.taiga
 
 class RepositoryService extends taiga.TaigaService
-    @.$inject = ["$q", "$tgModel", "$tgStorage", "$tgHttp"]
+    @.$inject = ["$q", "$tgModel", "$tgStorage", "$tgHttp", "$tgUrls"]
 
-    constructor: (@q, @model, @storage, @http) ->
+    constructor: (@q, @model, @storage, @http, @urls) ->
         super()
 
     resolveUrlForModel: (model) ->
@@ -98,25 +98,24 @@ class RepositoryService extends taiga.TaigaService
 
         return defered.promise
 
-
     queryMany: (name, params) ->
         url = @urls.resolve(name)
-        return @http.get(url, params).then (data, status) ->
-            return _.map(data, (x) -> @model.make_model(name, x))
+        return @http.get(url, params).then (data) =>
+            return _.map(data.data, (x) => @model.make_model(name, x))
 
     queryOne: (name, id, params) ->
         url = @urls.resolve(name)
         url = "#{url}/#{id}" if id
 
-        return @http.get(url, params).then (data, status) ->
+        return @http.get(url, params).then (data) =>
             return @model.make_model(name, data)
 
     queryPaginated: (name, params) ->
         url = @urls.resolve(name)
-        return @http.get(url, params).then (data, status, headers) ->
-            headers = headers()
+        return @http.get(url, params).then (data) =>
+            headers = data.headers()
             result = {}
-            result.models = _.map(data, (x) -> @model.make_model(name, x))
+            result.models = _.map(data.data, (x) => @model.make_model(name, x))
             result.count = parseInt(headers["x-pagination-count"], 10)
             result.current = parseInt(headers["x-pagination-current"] or 1, 10)
             result.paginatedBy = parseInt(headers["x-paginated-by"], 10)

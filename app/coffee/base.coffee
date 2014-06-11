@@ -16,8 +16,9 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 class TaigaBase
-
 class TaigaService extends TaigaBase
+class TaigaController extends TaigaBase
 
 @.taiga.TaigaBase = TaigaBase
 @.taiga.TaigaService = TaigaService
+@.taiga.TaigaController = TaigaController

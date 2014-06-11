@@ -1,4 +1,4 @@
-section.backlog-table
+section.backlog-table(tg-backlog-table)
     div.row.backlog-table-header
         div.user-stories User Stories
         div.status Status
@@ -66,19 +66,7 @@ section.backlog-table
                 li
                     a(href="", title="Status 3") Status 3
     hr.doom-line
-    - for (var x = 0; x < 50; x++)
-        div.row.table-main
-            div.user-stories
-                div.user-story-name
-                    input(type="checkbox", name="")
-                    a(href="") Crear el perfil de usuario Senior en el admin
-                    span.us-settings
-                        a.icon.icon-edit(href="", title="Edit")
-                        a.icon.icon-delete(href="", title="Delete")
-                div.user-story-tags
-                    - for(var y = 0; y < 3; y++)
-                        include ../components/tag
-            div.status Status
-            div.points 12
-            div.points 54
-            a.icon.icon-drag-v(href="", title="Drag")
+
+// Preloading angular templates parts
+script(type="text/ng-template" id="backlog-row.html")
+    include ../components/backlog-row
