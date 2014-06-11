@@ -1,0 +1,21 @@
+.search-filter {
+    ul {
+        display: flex;
+    }
+    li {
+        margin-right: 1rem;
+    }
+    a {
+        @extend %large;
+        font-family: 'ostrichSans';
+        opacity: .2;
+        &:hover {
+            @include transition (opacity .3s linear);
+            color: $blackish;
+            opacity: 1;
+        }
+    }
+    .icon {
+        margin-right: .4rem;
+    }
+}

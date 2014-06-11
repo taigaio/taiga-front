@@ -28,12 +28,12 @@ var paths = {
 
 gulp.task('jade', function() {
   return gulp.src(paths.jade)
-    .on('error', function(err) {
-        console.log(err);
-    })
     .pipe(jade({
       pretty: true
     }))
+    .on('error', function(err) {
+        console.log(err);
+    })
     .pipe(gulp.dest(paths.dist))
     .pipe(size());
 });
