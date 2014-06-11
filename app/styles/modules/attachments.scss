@@ -1,1 +1,42 @@
+.attachments-header {
+    background: $whitish;
+    @include clearfix;
+    padding: .5rem 1rem;
+    .button {
+        float: right;
+        padding: .2rem 6rem;
+    }
+    .icon,
+    .attachments-num,
+    .attachments-text {
+        @extend %medium;
+        margin-right: .5rem;
+        position: relative;
+        top: 2px;
+    }
+}
 
+.single-attachment {
+    @include table-flex();
+    @extend %small;
+    border-bottom: 1px solid #cdcdcd;
+    padding: 1rem 0 1rem 1rem;
+    &:last-child {
+        border: 0;
+    }
+    .attachment-name {
+        @include table-flex-child(1, 200px);
+    }
+    .attachment-comment {
+        @include table-flex-child(3, 300px);
+        .attachment-size {
+            color: $gray-light;
+            margin-left: .5rem;
+        }
+    }
+    .icon {
+        @extend %large;
+        color: $gray-light;
+        display: none;
+    }
+}

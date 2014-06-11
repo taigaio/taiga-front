@@ -1,18 +1,17 @@
 section.attachments
     div.attachments-header
-        div.attachments-inner
-            h3.attachments-title
-                span.icon.icon-attachment
-                span.attachments-num {{5}}
-                span.attachemnts-text attachments
+        h3.attachments-title
+            span.icon.icon-attachment
+            span.attachments-num 5
+            span.attachments-text attachments
             a.button.button-gray(href="", title="Add new attachment")
                 span +new file
     div.attachment-body
-        div.attachments-inner
-            div.attachment-single
+        - for(var x = 0; x < 3; x++)
+            div.single-attachment
                 div.attachment-name
                     span.icon.icon-document
-                    span pefildeusuario.png
+                    a(href="", title="Attachment pefildeusuario.png") pefildeusuario.png
                 div.attachment-comment
                     span Comentario sobre el contenido
                     span.attachment-size (125kb.)
