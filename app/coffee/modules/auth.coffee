@@ -32,11 +32,11 @@ class AuthService extends taiga.TaigaService
     setUser: (user) ->
         @rootScope.auth = user
         @rootScope.$broadcast("i18n:change", user.default_language)
-        @gmStorage.set("userInfo", user.getAttrs())
+        @storage.set("userInfo", user.getAttrs())
 
     clear: ->
         @rootScope.auth = null
-        @gmStorage.remove("userInfo")
+        @storage.remove("userInfo")
 
     setToken: (token) ->
         @storage.set("token", token)

@@ -58,6 +58,6 @@ BacklogTableDirective = ($compile, $templateCache) ->
             console.log "ready to render", userstories
 
 
-module = angular.module("taiga")
+module = angular.module("taigaBacklog", [])
 module.directive("tgBacklog", ["$compile", BacklogDirective])
 module.directive("tgBacklogTable", ["$compile", "$templateCache", BacklogTableDirective])

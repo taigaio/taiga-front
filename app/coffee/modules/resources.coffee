@@ -15,6 +15,38 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
+taiga = @.taiga
+
+class ResourcesService extends taiga.TaigaService
+    @.$inject = ["$q", "$tgRepo", "$tgUrls", "$tgModel"]
+
+    constructor: (@q, @repo, @urls, @model) ->
+        super()
+
+    #############################################################################
+    # Common
+    #############################################################################
+
+    getProject: (projectId) ->
+        return @repo.queryOne("projects", projectId)
+
+    #############################################################################
+    # Backlog
+    #############################################################################
+
+    getMilestones: (projectId) ->
+        return @repo.queryMany("milestones", {project:projectId}).then (milestones) =>
+            for m in milestones
+                uses = m.user_stories
+                uses = _.map(uses, (u) => @model.make_model("userstories", u))
+                m._attrs.user_stories = uses
+            return milestones
+
+    getBacklog: (projectId) ->
+        params = {"project": projectId, "milestone": "null"}
+        return @repo.queryMany("userstories", params)
+
+
 init = (urls) ->
     urls.update({
         "auth": "/api/v1/auth"
@@ -75,4 +107,5 @@ init = (urls) ->
     })
 
 module = angular.module("taigaResources", [])
+module.service("$tgResources", ResourcesService)
 module.run(["$tgUrls", init])

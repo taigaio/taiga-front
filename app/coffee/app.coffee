@@ -55,6 +55,8 @@ modules = [
 
     "taigaConfig",
     "taigaResources",
+
+    "taigaBacklog",
 ]
 
 angular.module("taigaLocalConfig", []).value("localconfig", {})
