@@ -21,11 +21,15 @@
     @include table-flex;
     border-bottom: 2px solid $gray-light;
     padding: 1rem 0;
+    position: relative;
+    &:hover {
+        .delete-comment {
+            opacity: 1;
+            @include transition(opacity .2s linear);
+        }
+    }
     &:first-child {
         margin-top: 0;
-    }
-    &:last-child {
-        border-bottom: 0;
     }
     .username {
         color: $green-taiga;
@@ -51,5 +55,30 @@
     .date {
         @extend %small;
         color: $gray-light;
+    }
+    .delete-comment {
+        @include transition(all .2s linear);
+        bottom: 2rem;
+        color: $grayer;
+        opacity: 0;
+        position: absolute;
+        right: 1.5rem;
+        &:hover {
+            @include transition(color .2s linear);
+            color: $red;
+
+        }
+    }
+}
+
+.more-comments {
+    @extend %small;
+    border-bottom: 1px solid $gray-light;
+    color: $gray-light;
+    display: block;
+    padding: 1rem;
+    .prev-comments-num {
+        color: $green-taiga;
+        margin-left: .5rem;
     }
 }
