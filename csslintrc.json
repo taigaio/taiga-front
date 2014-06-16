@@ -19,5 +19,6 @@
     "regex-selectors": false,
     "floats": false,
     "fallback-colors": false,
-    "adjoining-classes": false
+    "adjoining-classes": false,
+    "qualified-headings": false
 }
