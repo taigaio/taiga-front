@@ -63,6 +63,9 @@
     .pending {
         padding: 8px;
         width: 115px;
+        .icon {
+            @extend %large;
+        }
     }
     .active {
         background-color: $whitish;
