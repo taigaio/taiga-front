@@ -66,5 +66,5 @@ class HttpService extends taiga.TaigaService
         return @.request(options)
 
 
-module = angular.module("taigaResources")
+module = angular.module("taigaBase")
 module.service("$tgHttp", HttpService)

@@ -41,5 +41,5 @@ class UrlsService
         return format("%s://%s%s", [@.scheme, @.host, url])
 
 
-module = angular.module("taigaResources")
+module = angular.module("taigaBase")
 module.service('$tgUrls', UrlsService)

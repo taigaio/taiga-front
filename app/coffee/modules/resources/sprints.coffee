@@ -1,3 +1,4 @@
+###
 # Copyright (C) 2014 Andrey Antukh <niwi@niwi.be>
 # Copyright (C) 2014 Jesús Espino Garcia <jespinog@gmail.com>
 # Copyright (C) 2014 David Barragán Merino <bameda@dbarragan.com>
@@ -14,39 +15,26 @@
 #
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
+#
+# File: modules/resources/sprints.coffee
+###
 
 taiga = @.taiga
 
-class StorageService extends taiga.TaigaService
-    @.$inject = ["$rootScope"]
+resourceProvider = ($repo, $model) ->
+    service = {}
 
-    constructor: ($rootScope) ->
-        super()
+    service.list = (projectId) ->
+        params = {"project": projectId}
+        return $repo.queryMany("milestones", params).then (milestones) =>
+            for m in milestones
+                uses = m.user_stories
+                uses = _.map(uses, (u) => $model.make_model("userstories", u))
+                m._attrs.user_stories = uses
+            return milestones
 
-    get: (key, _default) ->
-        serializedValue = localStorage.getItem(key)
-        if serializedValue == null
-            return _default or null
-
-        return JSON.parse(serializedValue)
-
-    set: (key, val) ->
-        if _.isObject(key)
-            _.each key, (val, key) =>
-                @set(key, val)
-        else
-            localStorage.setItem(key, JSON.stringify(val))
-
-    contains: (key) ->
-        value = @.get(key)
-        return (value != null)
-
-    remove: (key) ->
-        localStorage.removeItem(key)
-
-    clear: ->
-        localStorage.clear()
-
+    return (instance) ->
+        instance.sprints = service
 
 module = angular.module("taigaResources")
-module.service("$tgStorage", StorageService)
+module.factory("$tgSprintsResourcesProvider", ["$tgRepo", "$tgModel", resourceProvider])

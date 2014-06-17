@@ -139,5 +139,5 @@ provider = ($q, $http, $gmUrls, $gmStorage) ->
 
     return service
 
-module = angular.module("taigaResources")
+module = angular.module("taigaBase")
 module.factory("$tgModel", ["$q", "$http", "$tgUrls", "$tgStorage", provider])

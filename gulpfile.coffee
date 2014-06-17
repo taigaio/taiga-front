@@ -36,7 +36,7 @@ paths = {
              "config/main.coffee",
              "app/coffee/*.coffee",
              "app/coffee/modules/*.coffee",
-             "app/coffee/modules/resources/init.coffee",
+             "app/coffee/modules/base/*.coffee",
              "app/coffee/modules/resources/*.coffee",
              "app/coffee/**/*.coffee"]
 }

@@ -1,3 +1,4 @@
+###
 # Copyright (C) 2014 Andrey Antukh <niwi@niwi.be>
 # Copyright (C) 2014 Jesús Espino Garcia <jespinog@gmail.com>
 # Copyright (C) 2014 David Barragán Merino <bameda@dbarragan.com>
@@ -14,23 +15,27 @@
 #
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
+#
+# File: modules/backlog.coffee
+###
 
 taiga = @.taiga
 
 class BacklogController extends taiga.TaigaController
     constructor: (@scope, @repo, @params, @rs, @q) ->
         promise = @.loadInitialData()
+
         # Obviously fail condition
         promise.then null, =>
             console.log "FAIL"
 
     loadSprints: ->
-        return @rs.getSprints(@scope.projectId).then (sprints) =>
+        return @rs.sprints.list(@scope.projectId).then (sprints) =>
             @scope.sprints = sprints
             return sprints
 
     loadUserstories: ->
-        return @rs.getUnassignedUserstories(@scope.projectId).then (userstories) =>
+        return @rs.userstories.listUnassigned(@scope.projectId).then (userstories) =>
             @scope.userstories = userstories
             return userstories
 
@@ -45,7 +50,7 @@ class BacklogController extends taiga.TaigaController
         promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
             console.log "resolve", data.project
             @scope.projectId = data.project
-            return @rs.getProject(@scope.projectId)
+            return @rs.projects.get(@scope.projectId)
 
         # Load project
         promise = promise.then (project) =>

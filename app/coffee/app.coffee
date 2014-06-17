@@ -50,18 +50,24 @@ configure.$inject = ["$routeProvider", "$locationProvider", "$httpProvider"]
 init.$inject = ["$log", "$rootScope"]
 
 modules = [
-    "ngRoute",
-    "ngAnimate",
-
+    # Main Modules
     "taigaConfig",
+    "taigaBase",
     "taigaResources",
+
+    # Specific Modules
     "taigaBacklog",
 
     # Vendor modules
+    "ngRoute",
+    "ngAnimate",
     "pasvaz.bindonce",
 ]
 
+# Default Value for taiga local config module.
 angular.module("taigaLocalConfig", []).value("localconfig", {})
+
+# Main module definition
 module = angular.module("taiga", modules)
 module.config(configure)
 module.run(init)

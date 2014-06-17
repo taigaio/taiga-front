@@ -18,40 +18,8 @@
 taiga = @.taiga
 
 class ResourcesService extends taiga.TaigaService
-    @.$inject = ["$q", "$tgRepo", "$tgUrls", "$tgModel"]
 
-    constructor: (@q, @repo, @urls, @model) ->
-        super()
-
-    #############################################################################
-    # Common
-    #############################################################################
-
-    getProject: (projectId) ->
-        return @repo.queryOne("projects", projectId)
-
-    getProjects: ->
-        return @repo.queryMany("projects")
-
-    #############################################################################
-    # Backlog
-    #############################################################################
-
-    getSprints: (projectId) ->
-        params = {"project": projectId}
-        return @repo.queryMany("milestones", params).then (milestones) =>
-            for m in milestones
-                uses = m.user_stories
-                uses = _.map(uses, (u) => @model.make_model("userstories", u))
-                m._attrs.user_stories = uses
-            return milestones
-
-    getUnassignedUserstories: (projectId) ->
-        params = {"project": projectId, "milestone": "null"}
-        return @repo.queryMany("userstories", params)
-
-
-init = (urls) ->
+initUrls = (urls) ->
     urls.update({
         "auth": "/api/v1/auth"
         "auth-register": "/api/v1/auth/register"
@@ -110,6 +78,25 @@ init = (urls) ->
         "wiki/attachments": "/api/v1/wiki/attachments"
     })
 
-module = angular.module("taigaResources", [])
+# Initialize resources service populating it with methods
+# defined in separated files.
+initResources = ($log, $rs) ->
+    $log.debug "Initialize resources"
+    providers = _.toArray(arguments).slice(2)
+
+    for provider in providers
+        provider($rs)
+
+module = angular.module("taigaResources", ["taigaBase"])
 module.service("$tgResources", ResourcesService)
-module.run(["$tgUrls", init])
+
+# Module entry point
+module.run(["$tgUrls", initUrls])
+module.run([
+    "$log",
+    "$tgResources",
+    "$tgProjectsResourcesProvider",
+    "$tgSprintsResourcesProvider",
+    "$tgUserstoriesResourcesProvider",
+    initResources
+])

@@ -138,5 +138,5 @@ class RepositoryService extends taiga.TaigaService
         return @.queryOneRaw("resolver", null, params)
 
 
-module = angular.module("taigaResources")
+module = angular.module("taigaBase")
 module.service("$tgRepo", RepositoryService)
