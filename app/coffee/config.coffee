@@ -34,9 +34,9 @@ class ConfigService
     get: (key, defaultValue=null) ->
         return @.config[key] || defaultValue
 
-
+# Initialize config loading local configuration.
 init = ($log, localconfig, config) ->
-    $log.debug("Initializing configuration")
+    $log.debug("Initializing configuration", localconfig)
     config.initialize(localconfig)
 
 module = angular.module("taigaConfig", ["taigaLocalConfig"])

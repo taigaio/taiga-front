@@ -43,11 +43,13 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $compil
     # $httpProvider.responseInterceptors.push('authHttpIntercept')
 
 
-init = ($log, $rootScope) ->
+init = ($log, $i18n, $config, $rootscope) ->
+    $i18n.initialize($config.get("defaultLanguage"))
     $log.debug("Initialize application")
 
+
 configure.$inject = ["$routeProvider", "$locationProvider", "$httpProvider"]
-init.$inject = ["$log", "$rootScope"]
+init.$inject = ["$log", "$tgI18n", "$tgConfig","$rootScope"]
 
 modules = [
     # Main Modules
