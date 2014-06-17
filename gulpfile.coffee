@@ -32,6 +32,7 @@ paths = {
     sassMain: "app/styles/main.scss"
     css:  "dist/styles/**/*.css"
     images: "app/images/**/*"
+    locales: "app/locales/**/*.json"
     coffee: ["app/coffee/app.coffee",
              "config/main.coffee",
              "app/coffee/*.coffee",
@@ -51,7 +52,8 @@ vendorJsLibs = [
     "app/vendor/angular/angular.js",
     "app/vendor/angular-route/angular-route.js",
     "app/vendor/angular-sanitize/angular-sanitize.js",
-    "app/vendor/angular-animate/angular-animate.js"
+    "app/vendor/angular-animate/angular-animate.js",
+    "app/vendor/i18next/i18next.js"
 ]
 
 
@@ -128,14 +130,14 @@ gulp.task "jslibs", ->
 
 gulp.task "locales", ->
     gulp.src("app/locales/en/app.json")
-        .pipe(wrap("angular.module('locales.en', []).constant('locales.en', <%= contents %>);"))
-        .pipe(rename("locale.en.coffee"))
-        .pipe(gulp.dest("app/coffee/"))
+        .pipe(wrap("angular.module('taigaLocales').constant('localesEnglish', <%= contents %>);"))
+        .pipe(rename("localeEnglish.coffee"))
+        .pipe(gulp.dest("app/coffee/modules/locales"))
 
-    gulp.src("app/locales/es/app.json")
-        .pipe(wrap("angular.module('locales.es', []).constant('locales.es', <%= contents %>);"))
-        .pipe(rename("locale.es.coffee"))
-        .pipe(gulp.dest("app/coffee/"))
+    # gulp.src("app/locales/es/app.json")
+    #     .pipe(wrap("angular.module('locales.es', []).constant('locales.es', <%= contents %>);"))
+    #     .pipe(rename("locale.es.coffee"))
+    #     .pipe(gulp.dest("app/coffee/"))
 
 
 ##############################################################################
@@ -163,6 +165,7 @@ gulp.task "watch", ->
     gulp.watch(paths.jade, ["jade"])
     gulp.watch(paths.appStyles, ["scss-lint", "sass", "css"])
     gulp.watch(paths.coffee, ["coffee"])
+    gulp.watch(paths.locales, ["locales"])
 
 
 gulp.task "express", ->
@@ -189,6 +192,7 @@ gulp.task "default", [
     "sass",
     "css",
     "copy",
+    "locales",
     "coffee",
     "jslibs",
     "connect",
