@@ -10,6 +10,8 @@ section.backlog-table-header
         div.points.width-1 Front
         div.points.width-1 Total
 section.backlog-table-body
+    include ../components/backlog-row
+
     // - for (var x = 0; x < 40; x++)
     //     div.row
     //         div.user-stories
@@ -44,6 +46,3 @@ section.backlog-table-body
     //                     a(href="", title="Status 3") Status 3
     //         a.icon.icon-drag-v(href="", title="Drag")
     // hr.doom-line
-
-    script(type="text/ng-template" id="backlog-row.html")
-        include ../components/backlog-row

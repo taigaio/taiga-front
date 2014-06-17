@@ -4,10 +4,10 @@ block head
     title Taiga  Project management web application with scrum in mind!
 
 block content
-    div.wrapper
+    div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl")
         sidebar.menu-secondary.extrabar.filters-bar
             include views/modules/filters
-        section.main.backlog(tg-backlog)
+        section.main.backlog
             include views/components/mainTitle
             include views/components/summary
             include views/modules/burndown
@@ -31,6 +31,3 @@ block content
             include views/modules/lightbox_add-bulk
         div.lightbox.lightbox_add-sprint
             include views/modules/lightbox_add-sprint
-        div.lightbox.lightbox_confirm-delete
-            include views/modules/lightbox_confirm-delete
-

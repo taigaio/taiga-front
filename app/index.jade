@@ -11,5 +11,7 @@ html(lang="en", ng-app="taiga")
     body
         include partials/views/modules/nav
         div.master(ng-view="")
+        div.lightbox.lightbox_confirm-delete
+            include partials/views/modules/lightbox_confirm-delete
         script(src="/js/libs.js?v=#{v}")
         script(src="/js/app.js?v=#{v}")

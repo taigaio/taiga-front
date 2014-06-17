@@ -223,13 +223,13 @@
         min-width: 420px;
         width: 420px;
     }
-    .us-delete-question,
-    .us-to-delete {
+    .delete-question,
+    .subtitle {
         display: block;
         line-height: 2rem;
         text-align: center;
     }
-    .us-to-delete {
+    .subtitle {
         @extend %large;
         font-family: 'ostrichSans';
     }
