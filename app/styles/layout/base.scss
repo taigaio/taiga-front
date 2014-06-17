@@ -26,7 +26,16 @@ body {
 }
 
 .menu-secondary {
+    background: $whitish;
     flex-basis: 260px;
+    flex-grow: 1;
+    flex-shrink: 0;
+    padding: 2em 1em;
+}
+
+.menu-tertiary {
+    background-color: $dark-grayish-lime-green;
+    flex-basis: 190px;
     flex-grow: 1;
     flex-shrink: 0;
     padding: 2em 1em;
