@@ -77,7 +77,7 @@ BacklogDirective = ($compile, $templateCache) ->
             $element.append(dom)
 
     link = ($scope, $element, $attrs, $ctrl) ->
-        backlogTableDom = $element.find("section.backlog-table")
+        backlogTableDom = $element.find("section.backlog-table-body")
         backlogLink($scope, backlogTableDom, $attrs, $ctrl)
 
     return {
@@ -92,6 +92,24 @@ BacklogDirective = ($compile, $templateCache) ->
         link: link
     }
 
+SprintDirective = ($compile, $templateCache) ->
+    link = (scope, element, attrs) ->
+        sprint = scope.$eval(attrs.tgSprint)
+        if scope.$first
+            element.addClass("sprint-current")
+
+        if sprint.closed
+            element.addClass("sprint-closed")
+
+        # Event Handlers
+        element.on "click", ".sprint-summary > a", (event) ->
+            element.find(".sprint-table").toggle()
+
+    return {
+        link: link
+    }
+
 
 module = angular.module("taigaBacklog", [])
 module.directive("tgBacklog", ["$compile", "$templateCache", BacklogDirective])
+module.directive("tgSprint", ["$compile", SprintDirective])

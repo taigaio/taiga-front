@@ -61,7 +61,6 @@ modules = [
     # Vendor modules
     "ngRoute",
     "ngAnimate",
-    "pasvaz.bindonce",
 ]
 
 # Default Value for taiga local config module.

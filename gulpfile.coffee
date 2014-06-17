@@ -51,8 +51,7 @@ vendorJsLibs = [
     "app/vendor/angular/angular.js",
     "app/vendor/angular-route/angular-route.js",
     "app/vendor/angular-sanitize/angular-sanitize.js",
-    "app/vendor/angular-animate/angular-animate.js",
-    "app/vendor/angular-bindonce/bindonce.js"
+    "app/vendor/angular-animate/angular-animate.js"
 ]
 
 

@@ -10,7 +10,7 @@ section.sprints
               a.button-green(href="", title="Add New US")
                 span.text + New sprint
 
-    section.sprint(ng-repeat="sprint in sprints track by sprint.id", tg-backlog-sprint)
+    section.sprint(ng-repeat="sprint in sprints track by sprint.id", tg-sprint="sprint")
         header
             div.sprint-summary
                 a.icon.icon-arrow-up(href="", title="compact Sprint")
@@ -26,11 +26,12 @@ section.sprints
         div.sprint-progress-bar
             div.current-progress
         div.sprint-table
-            - for (var x = 0; x < 10; x++)
-                div.row
-                    div.column-us.width-8
-                        a.us-name(href="", title="") #125 Crear el perfil de usuario Senior en el admin
-                    div.column-points.width-1 45
+            div.row(ng-repeat="us in sprint.user_stories track by us.id")
+                div.column-us.width-8
+                    a.us-name(href="", title="")
+                        span(tg-bo-ref="us.ref")
+                        span(tg-bo-html="us.subject")
+                div.column-points.width-1(tg-bindonce-html="us.total_points")
         a.button.button-gray(href="", title="Current Sprint Taskboard")
             span Sprint Taskboard
 

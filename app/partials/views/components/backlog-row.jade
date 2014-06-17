@@ -1,5 +1,5 @@
 div.row(ng-repeat="us in userstories")
-    div
+    div.user-stories
         div.user-story-name
             input(type="checkbox", name="")
             a(href="") {{ us.subject }}
@@ -7,8 +7,8 @@ div.row(ng-repeat="us in userstories")
                 a.icon.icon-edit(href="", title="Edit")
                 a.icon.icon-delete(href="", title="Delete")
         div.user-story-tags
-          span.tag Tag name
-          span.tag Tag name
+            span.tag Tag name
+            span.tag Tag name
     div.status Status
     div.points 12
     div.points 54
