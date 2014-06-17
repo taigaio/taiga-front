@@ -8,9 +8,7 @@ block content
         sidebar.menu-secondary.extrabar.filters-bar
             include views/modules/filters
         section.main.backlog(tg-backlog)
-            h1
-                span(tg-bo-html="project.name")
-                span.green Title
+            include views/components/mainTitle
             include views/components/summary
             include views/modules/burndown
             div.backlog-menu
