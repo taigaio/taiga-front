@@ -18,7 +18,29 @@
 taiga = @.taiga
 
 class BacklogController extends taiga.TaigaController
-    constructor: (@scope, @repo, @params, @rs) ->
+    constructor: (@scope, @repo, @params, @rs, @q) ->
+        promise = @.loadInitialData()
+        # Obviously fail condition
+        promise.then null, =>
+            console.log "FAIL"
+
+    loadSprints: ->
+        return @rs.getSprints(@scope.projectId).then (sprints) =>
+            @scope.sprints = sprints
+            return sprints
+
+    loadUserstories: ->
+        return @rs.getUnassignedUserstories(@scope.projectId).then (userstories) =>
+            @scope.userstories = userstories
+            return userstories
+
+    loadBacklog: ->
+        return @q.all([
+            @.loadSprints(),
+            @.loadUserstories()
+        ])
+
+    loadInitialData: ->
         # Resolve project slug
         promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
             console.log "resolve", data.project
@@ -28,36 +50,43 @@ class BacklogController extends taiga.TaigaController
         # Load project
         promise = promise.then (project) =>
             @scope.project = project
-            console.log project
-            return @rs.getMilestones(@scope.projectId)
+            return @.loadBacklog()
 
-        # Load milestones
-        promise = promise.then (milestones) =>
-            @scope.milestones = milestones
-            return @rs.getBacklog(@scope.projectId)
-
-        # Load unassigned userstories
-        promise = promise.then (userstories) =>
-            @scope.userstories = userstories
-
-        # Obviously fail condition
-        promise.then null, =>
-            console.log "FAIL"
+        return promise
 
 
-BacklogDirective = ($compile) ->
-    controller: ["$scope", "$tgRepo", "$routeParams", "$tgResources", BacklogController]
-    link: (scope, element, attrs, ctrl) ->
+BacklogDirective = ($compile, $templateCache) ->
+    backlogLink = ($scope, $element, $attrs, $ctrl) ->
+        # UserStories renderin
+        dom = angular.element.parseHTML($templateCache.get("backlog-row.html"))
+        scope = null
 
+        $scope.$watch "userstories", (userstories) =>
+            return if not userstories
 
-BacklogTableDirective = ($compile, $templateCache) ->
-    require: "^tgBacklog"
-    link: (scope, element, attrs, ctrl) ->
-        content = $templateCache.get("backlog-row.html")
-        scope.$watch "userstories", (userstories) =>
-            console.log "ready to render", userstories
+            if scope != null
+                scope.$destroy()
+
+            scope = $scope.$new()
+            dom = $compile(dom)(scope)
+            $element.append(dom)
+
+    link = ($scope, $element, $attrs, $ctrl) ->
+        backlogTableDom = $element.find("section.backlog-table")
+        backlogLink($scope, backlogTableDom, $attrs, $ctrl)
+
+    return {
+        controller: [
+            "$scope",
+            "$tgRepo",
+            "$routeParams",
+            "$tgResources",
+            "$q",
+            BacklogController
+        ]
+        link: link
+    }
 
 
 module = angular.module("taigaBacklog", [])
-module.directive("tgBacklog", ["$compile", BacklogDirective])
-module.directive("tgBacklogTable", ["$compile", "$templateCache", BacklogTableDirective])
+module.directive("tgBacklog", ["$compile", "$templateCache", BacklogDirective])

@@ -1,4 +1,4 @@
-section.backlog-table(tg-backlog-table)
+section.backlog-table
     div.row.backlog-table-header
         div.user-stories User Stories
         div.status Status
@@ -9,61 +9,52 @@ section.backlog-table(tg-backlog-table)
         div.status.width-2
         div.points.width-1 Front
         div.points.width-1 Total
-    div.row.table-main.blocked
-        div.user-stories
-            div.user-story-name
-                input(type="checkbox", name="")
-                a(href="") Crear el perfil de usuario Senior en el admin
-                span.us-settings
-                    a.icon.icon-edit(href="", title="Edit")
-                    a.icon.icon-delete(href="", title="Delete")
-            div.user-story-tags
-                - for(var y = 0; y < 3; y++)
-                    include ../components/tag
-        div.status.width-2
-            a(href="", title="Status Name") Status Name
-            ul.popover.pop-status
-                li
-                    a(href="", title="Status 1") Status 1
-                li
-                    a(href="", title="Status 2") Status 2
-                li
-                    a(href="", title="Status 3") Status 3
-        div.points
-            a(href="", title="Front") 24
-            ul.popover.pop-points-open
-                li
-                    a(href="", title="0") 0
-                li
-                    a(href="", title="1/2") 1/2
-                li
-                    a(href="", title="1") 1
-                li
-                    a(href="", title="2") 2
-                li
-                    a(href="", title="3") 3
-                li
-                    a(href="", title="4") 4
-                li
-                    a(href="", title="8") 8
-                li
-                    a(href="", title="13") 13
-                li
-                    a(href="", title="20") 20
-                li
-                    a(href="", title="40") 40
-                li
-                    a(href="", title="100") 100
-                li
-                    a(href="", title="?") ?
-        div.points
-            a(href="", title="Total Points") 43
-            ul.popover.pop-status
-                li
-                    a(href="", title="Status 1") Status 1
-                li
-                    a(href="", title="Status 2") Status 2
-                li
-                    a(href="", title="Status 3") Status 3
+section.backlog-table
+    // div.row.table-main.blocked
+    //     div.user-stories
+    //         div.user-story-name
+    //             input(type="checkbox", name="")
+    //             a(href="") Crear el perfil de usuario Senior en el admin
+    //             span.us-settings
+    //                 a.icon.icon-edit(href="", title="Edit")
+    //                 a.icon.icon-delete(href="", title="Delete")
+    //         div.user-story-tags
+    //             - for(var y = 0; y < 3; y++)
+    //                 include ../components/tag
+    //     div.status.width-2
+    //         a(href="", title="Status Name") Status Name
+    //         ul.popover.pop-status
+    //             li
+    //                 a(href="", title="Status 1") Status 1
+    //             li
+    //                 a(href="", title="Status 2") Status 2
+    //             li
+    //                 a(href="", title="Status 3") Status 3
+    //     div.points
+    //         a(href="", title="Front") 24
+    //         ul.popover.pop-points-open
+    //             li: a(href="", title="0") 0
+    //             li: a(href="", title="1/2") 1/2
+    //             li: a(href="", title="1") 1
+    //             li: a(href="", title="2") 2
+    //             li: a(href="", title="3") 3
+    //             li: a(href="", title="4") 4
+    //             li: a(href="", title="8") 8
+    //             li: a(href="", title="13") 13
+    //             li: a(href="", title="20") 20
+    //             li: a(href="", title="40") 40
+    //             li: a(href="", title="100") 100
+    //             li: a(href="", title="?") ?
+    //     div.points
+    //         a(href="", title="Total Points") 43
+    //         ul.popover.pop-status
+    //             li
+    //                 a(href="", title="Status 1") Status 1
+    //             li
+    //                 a(href="", title="Status 2") Status 2
+    //             li
+    //                 a(href="", title="Status 3") Status 3
     hr.doom-line
 
+script(type="text/ng-template" id="backlog-row.html")
+    include ../components/backlog-row

@@ -1,14 +1,14 @@
-div.row.table-main
+div.row.table-main(ng-repeat="us in userstories")
     div.user-stories
         div.user-story-name
             input(type="checkbox", name="")
-            a(href="") Crear el perfil de usuario Senior en el admin
+            a(href="") {{ us.subject }}
             span.us-settings
                 a.icon.icon-edit(href="", title="Edit")
                 a.icon.icon-delete(href="", title="Delete")
         div.user-story-tags
-            - for(var y = 0; y < 3; y++)
-                include ../components/tag
+          span.tag Tag name
+          span.tag Tag name
     div.status Status
     div.points 12
     div.points 54

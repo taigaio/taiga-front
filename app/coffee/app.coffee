@@ -46,7 +46,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $compil
 init = ($log, $rootScope) ->
     $log.debug("Initialize application")
 
-configure.$inject = ["$routeProvider", "$locationProvider","$httpProvider"]
+configure.$inject = ["$routeProvider", "$locationProvider", "$httpProvider"]
 init.$inject = ["$log", "$rootScope"]
 
 modules = [
@@ -55,8 +55,10 @@ modules = [
 
     "taigaConfig",
     "taigaResources",
-
     "taigaBacklog",
+
+    # Vendor modules
+    "pasvaz.bindonce",
 ]
 
 angular.module("taigaLocalConfig", []).value("localconfig", {})

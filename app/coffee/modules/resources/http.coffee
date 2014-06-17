@@ -37,11 +37,9 @@ class HttpService extends taiga.TaigaService
         return @http(options)
 
     get: (url, params) ->
-        return @.request({
-            method: "GET",
-            url: url,
-            params: params
-        })
+        options = {method: "GET", url: url}
+        options.params = params if params
+        return @.request(options)
 
     post: (url, data, params) ->
         options = {method: "POST", url: url}
