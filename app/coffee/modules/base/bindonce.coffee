@@ -22,7 +22,9 @@
 # Html bind once directive
 BindHtmlDirective = ->
     link = (scope, element, attrs) ->
-        element.html(scope.$eval(attrs.tgBoHtml))
+        val = scope.$eval(attrs.tgBoHtml)
+        scope.$watch attrs.tgBoHtml, (val) ->
+            element.html(val) if val
 
     return {link:link}
 
