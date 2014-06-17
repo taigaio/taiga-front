@@ -25,11 +25,6 @@ $prefix-for-spec:      true;
 @import 'components/filter';
 @import 'components/taskboard-task';
 
-//Layout
-@import 'layout/base';
-@import 'layout/backlog';
-@import 'layout/taskboard';
-
 //Modules
 @import 'modules/nav';
 @import 'modules/sprints';
@@ -49,3 +44,8 @@ $prefix-for-spec:      true;
 // Responsive
 @import 'responsive/mobile';
 @import 'responsive/screen';
+
+//Layout
+@import 'layout/base';
+@import 'layout/backlog';
+@import 'layout/taskboard';
