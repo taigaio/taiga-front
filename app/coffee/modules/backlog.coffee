@@ -95,9 +95,32 @@ SprintDirective = ($compile, $templateCache) ->
     return {link: link}
 
 
+###########################################################################################
+# Lightboxes
+###########################################################################################
+
+
+CreateEditUserstoryDirective = ($repo, $model) ->
+    link = ($scope, $el, attrs) ->
+        # TODO: defaults
+        $scope.$on "usform:new", ->
+            $scope.us = {}
+            $el.removeClass("hidden")
+            console.log "usform new requested"
+
+        $scope.$on "usform:change", (ctx, us) ->
+            $scope.us = us
+    
+    return {
+        scope: {}
+        link: link
+    }
+
+
 module = angular.module("taigaBacklog", [])
 module.directive("tgBacklog", ["$compile", "$templateCache", BacklogDirective])
 module.directive("tgSprint", ["$compile", SprintDirective])
+module.directive("tgLightboxCreateEditUserstory", ["$tgRepo", "$tgModel", CreateEditUserstoryDirective])
 module.controller("BacklogController", [
     "$scope",
     "$tgRepo",
