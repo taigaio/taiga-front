@@ -43,6 +43,8 @@ $prefix-for-spec:      true;
 @import 'modules/admin-menu';
 @import 'modules/admin-menu-roles';
 @import 'modules/admin-membership';
+@import 'modules/admin-roles';
+@import 'modules/category-config';
 
 // Responsive
 @import 'responsive/mobile';

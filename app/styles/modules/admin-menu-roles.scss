@@ -31,5 +31,8 @@
     .button-gray {
         padding: .5rem 0;
         text-align: center;
+        &:hover {
+            background-color: darken($button-gray-hover, 15%);
+        }
     }
 }
