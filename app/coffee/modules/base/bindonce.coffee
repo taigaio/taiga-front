@@ -19,20 +19,30 @@
 # File: modules/base/bindonce.coffee
 ###
 
+bindOnce = (scope, attr, continuation) =>
+    val = scope.$eval(attr)
+    if val != undefined
+        return continuation(val)
+
+    delBind = null
+    delBind = scope.$watch attr, (val) ->
+        return if val is undefined
+        continuation(val)
+        delBind() if delBind
+
 # Html bind once directive
 BindHtmlDirective = ->
     link = (scope, element, attrs) ->
-        val = scope.$eval(attrs.tgBoHtml)
-        scope.$watch attrs.tgBoHtml, (val) ->
-            element.html(val) if val
+        bindOnce scope, attrs.tgBoHtml, (val) ->
+            element.html(val)
 
     return {link:link}
 
 # Object reference bind once helper.
 BindRefDirective = ->
     link = (scope, element, attrs) ->
-        val = scope.$eval(attrs.tgBoRef)
-        element.html("##{val} ")
+        bindOnce scope, attrs.tgBoRef, (val) ->
+            element.html("##{val} ")
     return {link:link}
 
 module = angular.module("taigaBase")
