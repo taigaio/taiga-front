@@ -22,10 +22,8 @@
 taiga = @.taiga
 
 class BacklogController extends taiga.TaigaController
-    constructor: (@scope, @repo, @params, @rs, @q) ->
+    constructor: (@scope, @repo, @confirm, @rs, @params, @q) ->
         promise = @.loadInitialData()
-
-        # Obviously fail condition
         promise.then null, =>
             console.log "FAIL"
 
@@ -59,38 +57,20 @@ class BacklogController extends taiga.TaigaController
 
         return promise
 
+    deleteUserStory: (us) ->
+        title = "Delete User Story"
+        subtitle = us.subject
+
+        @confirm.ask(title, subtitle).then =>
+            console.log "#TODO"
+
 
 BacklogDirective = ($compile, $templateCache) ->
-    backlogLink = ($scope, $element, $attrs, $ctrl) ->
-        # UserStories renderin
-        dom = angular.element.parseHTML($templateCache.get("backlog-row.html"))
-        scope = null
+    link = ($scope, $el, $attrs) ->
+        $ctrl = $el.controller()
 
-        $scope.$watch "userstories", (userstories) =>
-            return if not userstories
+    return {link: link}
 
-            if scope != null
-                scope.$destroy()
-
-            scope = $scope.$new()
-            dom = $compile(dom)(scope)
-            $element.append(dom)
-
-    link = ($scope, $element, $attrs, $ctrl) ->
-        backlogTableDom = $element.find("section.backlog-table-body")
-        backlogLink($scope, backlogTableDom, $attrs, $ctrl)
-
-    return {
-        controller: [
-            "$scope",
-            "$tgRepo",
-            "$routeParams",
-            "$tgResources",
-            "$q",
-            BacklogController
-        ]
-        link: link
-    }
 
 SprintDirective = ($compile, $templateCache) ->
     link = (scope, element, attrs) ->
@@ -105,11 +85,18 @@ SprintDirective = ($compile, $templateCache) ->
         element.on "click", ".sprint-summary > a", (event) ->
             element.find(".sprint-table").toggle()
 
-    return {
-        link: link
-    }
+    return {link: link}
 
 
 module = angular.module("taigaBacklog", [])
 module.directive("tgBacklog", ["$compile", "$templateCache", BacklogDirective])
 module.directive("tgSprint", ["$compile", SprintDirective])
+module.controller("BacklogController", [
+    "$scope",
+    "$tgRepo",
+    "$tgConfirm",
+    "$tgResources",
+    "$routeParams",
+    "$q",
+    BacklogController
+])
