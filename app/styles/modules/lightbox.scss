@@ -213,3 +213,32 @@
         }
     }
 }
+
+.lightbox_confirm-delete {
+    display: none;
+    form {
+        flex-basis: 0;
+        flex-grow: 0;
+        flex-shrink: 0;
+        min-width: 420px;
+        width: 420px;
+    }
+    .us-delete-question,
+    .us-to-delete {
+        display: block;
+        line-height: 2rem;
+        text-align: center;
+    }
+    .us-to-delete {
+        @extend %large;
+        font-family: 'ostrichSans';
+    }
+    .delete-options {
+        @include table-flex();
+        a {
+            @include table-flex-child(1, 0, 0);
+            padding: 8px 0;
+            text-align: center;
+        }
+    }
+}

@@ -1,4 +1,5 @@
-.backlog-table {
+.backlog-table-header,
+.backlog-table-body {
     @include table-flex();
     width: 100%;
     .row {
@@ -6,19 +7,84 @@
         padding: 1rem 0 1rem 1rem;
         text-align: left;
         width: 100%;
+    }
+    .row { //Previously table-main
+        @extend %small;
+        border-bottom: 1px solid $gray-light;
+    }
+    .backlog-table-title,
+    .backlog-table-subtitle,
+    .row {
         &:hover {
-            background: lighten($green-taiga, 60%);
+            background: transparent;
+        }
+        .user-stories {
+            @include table-flex-child(20, 100px, 0, 0);
+        }
+        .status {
+            @include table-flex-child(2, 100px, 0, 0);
+        }
+        .points {
+            @include table-flex-child(1, 100px, 0, 0);
+        }
+    }
+    .status,
+    .points {
+        position: relative;
+    }
+    .pop-status {
+        @include popover(150px, '', 30px, 10px, '');
+    }
+    .pop-points {
+        @include popover(150px, '', 30px, 10px, '');
+    }
+    .pop-points-open {
+        @include popover(200px, '', 30px, 10px, '');
+        li {
+            display: inline-block;
+            width: 23%;
+        }
+        a {
+            display: block;
+            text-align: center;
+            &:hover {
+                background: $fresh-taiga;
+                color: $white;
+            }
+        }
+    }
+}
+
+.backlog-table-header {
+    .backlog-table-title {
+        @extend %medium;
+        font-family: 'DroidSans-Bold';
+    }
+    .backlog-table-subtitle {
+        @extend %small;
+        background: $whitish;
+        border-bottom: 2px solid $grayer;
+        font-family: 'DroidSans';
+        &:hover {
+            background: $whitish;
+        }
+    }
+}
+
+.backlog-table-body {
+    .row {
+        &:hover {
             @include transition (background .2s ease-in);
-            cursor: move;
+            background: lighten($green-taiga, 60%);
             .us-settings {
-                opacity: 1;
                 @include transition (opacity .2s ease-in);
+                opacity: 1;
             }
         }
     }
     .row-selected {
-        background: lighten($green-taiga, 60%);
         @include transition (background .2s ease-in);
+        background: lighten($green-taiga, 60%);
     }
     .user-story-name {
         flex-basis: 500px;
@@ -44,50 +110,12 @@
         display: none;
         margin-top: .3rem;
     }
-    .backlog-table-header {
-        @extend %medium;
-        font-family: 'DroidSans-Bold';
-    }
-    .backlog-table-header,
-    .sub-title,
-    .table-main {
-        &:hover {
-            background: transparent;
-        }
-        .user-stories {
-            @include table-flex-child(20, 100px, 0, 0);
-        }
-        .status {
-            @include table-flex-child(2, 100px, 0, 0);
-        }
-        .points {
-            @include table-flex-child(1, 100px, 0, 0);
-        }
-    }
-    .sub-title {
-        @extend %small;
-        background: $whitish;
-        border-bottom: 2px solid $grayer;
-        font-family: 'DroidSans';
-        &:hover {
-            background: $whitish;
-        }
-    }
-    .table-main {
-        @extend %small;
-        border-bottom: 1px solid $gray-light;
-    }
-    .status,
-    .points {
-        position: relative;
-    }
     .blocked {
         background: $red-light;
         color: $white;
         &:hover {
             background: $red;
             @include transition (background .2s ease-in);
-            cursor: move;
         }
         a {
             color: $white;
@@ -109,27 +137,6 @@
         height: 4px;
         margin: .5rem 0;
         width: 100%;
-    }
-    .pop-status {
-        @include popover(150px, '', 30px, 10px, '');
-    }
-    .pop-points {
-        @include popover(150px, '', 30px, 10px, '');
-    }
-    .pop-points-open {
-        @include popover(200px, '', 30px, 10px, '');
-        li {
-            display: inline-block;
-            width: 23%;
-        }
-        a {
-            display: block;
-            text-align: center;
-            &:hover {
-                background: $fresh-taiga;
-                color: $white;
-            }
-        }
     }
     .us-settings {
         float: right;

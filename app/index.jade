@@ -10,6 +10,6 @@ html(lang="en", ng-app="taiga")
         link(rel="stylesheet", href="/styles/main.css")
     body
         include partials/views/modules/nav
-        div.wrapper(ng-view="")
+        div.master(ng-view="")
         script(src="/js/libs.js?v=#{v}")
         script(src="/js/app.js?v=#{v}")
