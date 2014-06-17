@@ -29,7 +29,7 @@ class ConfirmService extends taiga.TaigaService
         _.bindAll(@)
 
     hide: ->
-        @.el.css("display", "none")
+        @.el.addClass("hidden")
         @.el.off(".confirm-dialog")
 
     ask: (title, subtitle) ->
@@ -49,7 +49,7 @@ class ConfirmService extends taiga.TaigaService
             defered.reject()
             @.hide()
 
-        @.el.css("display", "flex")
+        @.el.removeClass("hidden")
         return defered.promise
 
 

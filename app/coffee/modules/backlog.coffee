@@ -57,12 +57,19 @@ class BacklogController extends taiga.TaigaController
 
         return promise
 
+    ## Template actions
+
     deleteUserStory: (us) ->
         title = "Delete User Story"
         subtitle = us.subject
 
         @confirm.ask(title, subtitle).then =>
             console.log "#TODO"
+
+    addNewUs: (type) ->
+        switch type
+            when "standard" then @rootscope.$emit("usform:new")
+            when "bulk" then @rootscope.$emit("usform:bulk")
 
 
 BacklogDirective = ($compile, $templateCache) ->
