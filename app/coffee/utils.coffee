@@ -16,26 +16,20 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: modules/base/bindonce.coffee
+# File: utils.coffee
 ###
 
-bindOnce = @.taiga.bindOnce
+bindOnce = (scope, attr, continuation) =>
+    val = scope.$eval(attr)
+    if val != undefined
+        return continuation(val)
 
-# Html bind once directive
-BindHtmlDirective = ->
-    link = (scope, element, attrs) ->
-        bindOnce scope, attrs.tgBoHtml, (val) ->
-            element.html(val)
+    delBind = null
+    delBind = scope.$watch attr, (val) ->
+        return if val is undefined
+        continuation(val)
+        delBind() if delBind
 
-    return {link:link}
 
-# Object reference bind once helper.
-BindRefDirective = ->
-    link = (scope, element, attrs) ->
-        bindOnce scope, attrs.tgBoRef, (val) ->
-            element.html("##{val} ")
-    return {link:link}
-
-module = angular.module("taigaBase")
-module.directive("tgBoHtml", BindHtmlDirective)
-module.directive("tgBoRef", BindRefDirective)
+taiga = @.taiga
+taiga.bindOnce = bindOnce
