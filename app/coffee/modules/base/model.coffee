@@ -117,7 +117,7 @@ class Model
 
 taiga = @.taiga
 
-class ModelService extends taiga.TaigaService
+class ModelService extends taiga.Service
     @.$inject = ["$q", "$tgUrls", "$tgStorage", "$tgHttp"]
 
     constructor: (@q, @urls, @storage, @http) ->

@@ -21,7 +21,7 @@
 
 taiga = @.taiga
 
-class ResourcesService extends taiga.TaigaService
+class ResourcesService extends taiga.Service
 
 initUrls = (urls) ->
     urls.update({

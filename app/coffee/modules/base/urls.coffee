@@ -23,7 +23,9 @@ format = (fmt, obj) ->
     obj = _.clone(obj)
     return fmt.replace /%s/g, (match) -> String(obj.shift())
 
-class UrlsService
+taiga = @.taiga
+
+class UrlsService extends taiga.Service
     @.$inject = ["$tgConfig"]
 
     constructor: (@config) ->

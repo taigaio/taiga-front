@@ -21,7 +21,7 @@
 
 taiga = @.taiga
 
-class StorageService extends taiga.TaigaService
+class StorageService extends taiga.Service
     @.$inject = ["$rootScope"]
 
     constructor: ($rootScope) ->

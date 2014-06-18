@@ -17,7 +17,7 @@
 
 taiga = @.taiga
 
-class AuthService extends taiga.TaigaService
+class AuthService extends taiga.Service
     @.$inject = ["$rootScope", "$tgStorage", "$tgModel", "$tgHttp"]
 
     constructor: (@rootScope, @storage, @model, @http) ->

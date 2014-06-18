@@ -21,7 +21,7 @@
 
 taiga = @.taiga
 
-class HttpService extends taiga.TaigaService
+class HttpService extends taiga.Service
     @.$inject = ["$http", "$q", "$tgStorage"]
 
     headers: ->

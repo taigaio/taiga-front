@@ -21,7 +21,7 @@
 
 taiga = @.taiga
 
-class ConfirmService extends taiga.TaigaService
+class ConfirmService extends taiga.Service
     @.$inject = ["$q"]
 
     constructor: (@q) ->

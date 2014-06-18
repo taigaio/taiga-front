@@ -21,15 +21,20 @@
 
 taiga = @.taiga
 
-resourceProvider = ($repo) ->
+resourceProvider = ($repo, $http, $urls) ->
     service = {}
 
     service.listUnassigned = (projectId) ->
         params = {"project": projectId, "milestone": "null"}
         return $repo.queryMany("userstories", params)
 
+    service.bulkCreate = (projectId, data) ->
+        url = $urls.resolve("bulk-create-us")
+        params = {projectId: projectId, bulkStories: data}
+        return $http.post(url, params)
+
     return (instance) ->
         instance.userstories = service
 
 module = angular.module("taigaResources")
-module.factory("$tgUserstoriesResourcesProvider", ["$tgRepo", resourceProvider])
+module.factory("$tgUserstoriesResourcesProvider", ["$tgRepo", "$tgHttp", "$tgUrls", resourceProvider])

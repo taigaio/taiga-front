@@ -19,6 +19,6 @@ class TaigaBase
 class TaigaService extends TaigaBase
 class TaigaController extends TaigaBase
 
-@.taiga.TaigaBase = TaigaBase
-@.taiga.TaigaService = TaigaService
-@.taiga.TaigaController = TaigaController
+@.taiga.Base = TaigaBase
+@.taiga.Service = TaigaService
+@.taiga.Controller = TaigaController

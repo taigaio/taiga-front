@@ -20,12 +20,16 @@
 ###
 
 taiga = @.taiga
+mixOf = @.taiga.mixOf
 
-class BacklogController extends taiga.TaigaController
-    constructor: (@scope, @repo, @confirm, @rs, @params, @q) ->
+class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin)
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q) ->
+        _.bindAll(@)
         promise = @.loadInitialData()
         promise.then null, =>
             console.log "FAIL"
+
+        @rootscope.$on("usform:bulk:success", @.loadUserstories)
 
     loadSprints: ->
         return @rs.sprints.list(@scope.projectId).then (sprints) =>
@@ -43,19 +47,22 @@ class BacklogController extends taiga.TaigaController
             @.loadUserstories()
         ])
 
+    loadProject: ->
+        return @rs.projects.get(@scope.projectId).then (project) =>
+            @scope.project = project
+            @scope.points = _.sortBy(project.points, "order")
+            @scope.statusList = _.sortBy(project.us_statuses, "id")
+            return project
+
     loadInitialData: ->
         # Resolve project slug
         promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
-            console.log "resolve", data.project
             @scope.projectId = data.project
-            return @rs.projects.get(@scope.projectId)
+            return data
 
-        # Load project
-        promise = promise.then (project) =>
-            @scope.project = project
-            return @.loadBacklog()
-
-        return promise
+        return promise.then(=> @.loadProject())
+                      .then(=> @.loadUsersAndRoles())
+                      .then(=> @.loadBacklog())
 
     ## Template actions
 
@@ -68,8 +75,8 @@ class BacklogController extends taiga.TaigaController
 
     addNewUs: (type) ->
         switch type
-            when "standard" then @rootscope.$emit("usform:new")
-            when "bulk" then @rootscope.$emit("usform:bulk")
+            when "standard" then @rootscope.$broadcast("usform:new")
+            when "bulk" then @rootscope.$broadcast("usform:bulk")
 
 
 BacklogDirective = ($compile, $templateCache) ->
@@ -99,30 +106,79 @@ SprintDirective = ($compile, $templateCache) ->
 # Lightboxes
 ###########################################################################################
 
-
 CreateEditUserstoryDirective = ($repo, $model) ->
     link = ($scope, $el, attrs) ->
+        $scope.us = {"tags": ["kaka", "pedo", "pis"]}
         # TODO: defaults
         $scope.$on "usform:new", ->
-            $scope.us = {}
+            $scope.us = {"subject": "KAKA"}
             $el.removeClass("hidden")
-            console.log "usform new requested"
 
         $scope.$on "usform:change", (ctx, us) ->
+            $el.removeClass("hidden")
             $scope.us = us
-    
-    return {
-        scope: {}
-        link: link
-    }
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+        # Dom Event Handlers
+        $el.on "click", ".markdown-preview a", (event) ->
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+
+            target.parent().find("a").removeClass("active")
+            target.addClass("active")
+
+        $el.on "click", ".close", (event) ->
+            event.preventDefault()
+            $el.addClass("hidden")
+
+        $el.on "click", ".button-green", (event) ->
+            event.preventDefault()
+            console.log $scope.us
+
+    return {link: link}
+
+CreateBulkUserstroriesDirective = ($repo, $rs, $rootscope) ->
+    link = ($scope, $el, attrs) ->
+        $scope.form = {data: ""}
+
+        $scope.$on "usform:bulk", ->
+            $el.removeClass("hidden")
+            $scope.form = {data: ""}
+
+        $el.on "click", ".close", (event) ->
+            event.preventDefault()
+            $el.addClass("hidden")
+
+        $el.on "click", ".button-green", (event) ->
+            event.preventDefault()
+
+            data = $scope.form.data
+            projectId = $scope.projectId
+
+            $rs.userstories.bulkCreate(projectId, data).then (result) ->
+                $rootscope.$broadcast("usform:bulk:success", result)
+                $el.addClass("hidden")
+
+    return {link: link}
 
 
 module = angular.module("taigaBacklog", [])
 module.directive("tgBacklog", ["$compile", "$templateCache", BacklogDirective])
 module.directive("tgSprint", ["$compile", SprintDirective])
-module.directive("tgLightboxCreateEditUserstory", ["$tgRepo", "$tgModel", CreateEditUserstoryDirective])
+module.directive("tgLbCreateEditUserstory", ["$tgRepo", "$tgModel", CreateEditUserstoryDirective])
+
+module.directive("tgLbCreateBulkUserstories", [
+    "$tgRepo",
+    "$tgResources",
+    "$rootScope",
+    CreateBulkUserstroriesDirective
+])
+
 module.controller("BacklogController", [
     "$scope",
+    "$rootScope",
     "$tgRepo",
     "$tgConfirm",
     "$tgResources",
