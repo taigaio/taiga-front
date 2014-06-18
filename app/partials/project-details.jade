@@ -1,0 +1,34 @@
+extends layout
+
+block head
+    title Taiga  Project management web application with scrum in mind!
+
+block content
+    div.wrapper
+        sidebar.menu-secondary.sidebar
+            include views/modules/admin-menu
+        sidebar.menu-tertiary.sidebar
+            include views/modules/admin-menu-roles
+
+        section.main.project-details
+            header
+                include views/components/mainTitle
+
+            form
+                fieldset
+                    input(type="text", placeholder="Name")
+
+                fieldset
+                    input(type="text", placeholder="Slug")
+
+                fieldset
+                    input(type="text", placeholder="Number of sprints")
+
+                fieldset
+                    input(type="text", placeholder="Number of US points")
+
+                fieldset
+                    textarea(placeholder="Description")
+
+                a.button.button-green(href="")
+                    span Create

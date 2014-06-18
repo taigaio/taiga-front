@@ -1,0 +1,20 @@
+.project-details {
+    input[type="text"],
+    textarea {
+        @extend %medium;
+        background-color: $very-light-gray;
+        font-family: 'DroidSans';
+        font-weight: bold;
+    }
+    fieldset {
+        margin-bottom: 1rem;
+    }
+    textarea {
+        height: 300px;
+    }
+    .button-green {
+        display: block;
+        padding: 12px;
+        text-align: center;
+    }
+}
