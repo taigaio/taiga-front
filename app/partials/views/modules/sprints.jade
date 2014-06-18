@@ -10,7 +10,7 @@ section.sprints
               a.button-green(href="", title="Add New US")
                 span.text + New sprint
 
-    section.sprint(ng-repeat="sprint in sprints track by sprint.id", tg-sprint="sprint")
+    section.sprint(ng-repeat="sprint in sprints track by sprint.id", tg-backlog-sprint="sprint")
         header
             div.sprint-summary
                 a.icon.icon-arrow-up(href="", title="compact Sprint")

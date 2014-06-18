@@ -8,7 +8,6 @@ plumber = require("gulp-plumber")
 wrap = require("gulp-wrap")
 rename = require("gulp-rename")
 
-newer = require("gulp-newer")
 minifyHTML = require("gulp-minify-html")
 sass = require("gulp-ruby-sass")
 csslint = require("gulp-csslint")
@@ -38,6 +37,7 @@ paths = {
              "app/coffee/*.coffee",
              "app/coffee/modules/controllerMixins.coffee",
              "app/coffee/modules/*.coffee",
+             "app/coffee/modules/backlog/*.coffee",
              "app/coffee/modules/locales/*.coffee",
              "app/coffee/modules/base/*.coffee",
              "app/coffee/modules/resources/*.coffee"]
