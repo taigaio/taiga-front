@@ -29,8 +29,7 @@ defaults = {
 }
 
 
-class I18nService extends taiga.TaigaService
-    @.$inject = ["$rootScope", "localeEnglish"]
+class I18nService extends taiga.Service
     constructor: (@rootscope, @localeEn) ->
 
     setLanguage: (language) ->
@@ -46,6 +45,7 @@ class I18nService extends taiga.TaigaService
         options.resStore = {
             en: { app: @localeEn }
         }
+
         i18n.init(options)
         @rootscope.t = i18n.t
 
@@ -60,17 +60,17 @@ I18nDirective = ($rootscope, $i18n) ->
 
             for v in values
                 if v.indexOf(":") == -1
-                    element.html($scope.t(v, opts))
+                    $el.html($scope.t(v, opts))
                 else
                     [ns, v] = v.split(":")
-                    element.attr(ns, $scope.t(v, opts))
+                    $el.attr(ns, $scope.t(v, opts))
 
-        bindOnce(scope, "t", applyTranslation)
+        bindOnce($scope, "t", applyTranslation)
         $scope.$on("i18n:changeLang", applyTranslation)
 
     return {link: link}
 
 
 module = angular.module("taigaBase")
-module.service("$tgI18n", ["$rootScope", I18nService])
+module.service("$tgI18n", ["$rootScope", "localesEnglish", I18nService])
 module.directive("tgI18n", ["$rootScope", "$tgI18n", I18nDirective])

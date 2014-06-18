@@ -27,5 +27,19 @@
     "pagination": {
         "next": "Next",
         "prev": "Previous"
+    },
+    "common": {
+        "subject": "Subject"
+        "save": "Save",
+        "blocked": "Blocked",
+        "cancel": "Cancel",
+        "status": "Status",
+        "new-bulk": "New bulk insert",
+        "one-item-line": "One item per line..."
+    },
+    "us": {
+        "title-new": "New User Story",
+        "team-requirement": "Ream Requirement",
+        "client-requirement": "Client Requirement"
     }
 }

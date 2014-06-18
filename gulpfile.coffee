@@ -36,10 +36,11 @@ paths = {
     coffee: ["app/coffee/app.coffee",
              "config/main.coffee",
              "app/coffee/*.coffee",
+             "app/coffee/modules/controllerMixins.coffee",
              "app/coffee/modules/*.coffee",
+             "app/coffee/modules/locales/*.coffee",
              "app/coffee/modules/base/*.coffee",
-             "app/coffee/modules/resources/*.coffee",
-             "app/coffee/**/*.coffee"]
+             "app/coffee/modules/resources/*.coffee"]
 }
 
 
