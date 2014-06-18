@@ -103,12 +103,12 @@
                 border: 1px solid $fresh-taiga;
                 color: $white;
             }
-        }
-        .requirement-selected {
-            @include transition(all .2s ease-in);
-            background: $green-taiga;
-            border: 1px solid $green-taiga;
-            color: $white;
+            &.selected {
+               @include transition(all .2s ease-in);
+               background: $green-taiga;
+               border: 1px solid $green-taiga;
+               color: $white;
+            }
         }
         .blocked {
             &:hover {
@@ -117,12 +117,12 @@
                 border: 1px solid $red-light;
                 color: $white;
             }
-        }
-        .blocked-selected {
-            @include transition(all .2s ease-in);
-            background: $red;
-            border: 1px solid $red;
-            color: $white;
+            &.selected {
+                @include transition(all .2s ease-in);
+                background: $red;
+                border: 1px solid $red;
+                color: $white;
+            }
         }
         input[type="checkbox"] {
             display: none;
