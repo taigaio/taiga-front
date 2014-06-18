@@ -20,22 +20,28 @@ taiga = @.taiga
 class AuthService extends taiga.Service
     @.$inject = ["$rootScope", "$tgStorage", "$tgModel", "$tgHttp"]
 
-    constructor: (@rootScope, @storage, @model, @http) ->
+    constructor: (@rootscope, @storage, @model, @http) ->
         super()
 
     getUser: ->
+        if @rootscope.user
+            return @rootscope.user
+
         userData = @storage.get("userInfo")
         if userData
-            return @model.make_model("users", userData)
+            user = @model.make_model("users", userData)
+            @rootscope.user = user
+            return user
+
         return null
 
     setUser: (user) ->
-        @rootScope.auth = user
-        @rootScope.$broadcast("i18n:change", user.default_language)
+        @rootscope.auth = user
+        @rootscope.$broadcast("i18n:change", user.default_language)
         @storage.set("userInfo", user.getAttrs())
 
     clear: ->
-        @rootScope.auth = null
+        @rootscope.auth = null
         @storage.remove("userInfo")
 
     setToken: (token) ->

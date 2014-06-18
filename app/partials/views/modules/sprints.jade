@@ -32,7 +32,8 @@ section.sprints
                         span(tg-bo-ref="us.ref")
                         span(tg-bo-html="us.subject")
                 div.column-points.width-1(tg-bo-html="us.total_points")
-        a.button.button-gray(href="", title="Current Sprint Taskboard")
+        a.button.button-gray(href="", tg-nav="project-taskboard:project=projectId,sprint=sprint.id",
+                             title="Current Sprint Taskboard")
             span Sprint Taskboard
 
     // If is current sprint

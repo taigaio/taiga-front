@@ -57,6 +57,9 @@ modules = [
     "taigaBase",
     "taigaResources",
     "taigaLocales",
+    "taigaAuth",
+
+    "taigaNavigation",
 
     # Specific Modules
     "taigaBacklog",

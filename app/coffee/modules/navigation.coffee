@@ -16,35 +16,23 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: utils.coffee
+# File: modules/navigation.coffee
 ###
 
-bindOnce = (scope, attr, continuation) =>
-    val = scope.$eval(attr)
-    if val != undefined
-        return continuation(val)
+# Simple module that uses navurls service and register
+# navigation urls for taiga.
 
-    delBind = null
-    delBind = scope.$watch attr, (val) ->
-        return if val is undefined
-        continuation(val)
-        delBind() if delBind
+urls = {
+    "home": "/",
+    "profile": "/:user",
+    "project": "/:user/:project",
+    "project-backlog": "/:user/:project/backlog",
+    "project-taskboard": "/:user/:project/taskboard/:sprint",
+}
 
+init = ($log, $navurls) ->
+    $log.debug "Initialize navigation urls"
+    $navurls.update(urls)
 
-mixOf = (base, mixins...) ->
-    class Mixed extends base
-
-    for mixin in mixins by -1 #earlier mixins override later ones
-        for name, method of mixin::
-            Mixed::[name] = method
-    Mixed
-
-
-trim = (data, char) ->
-    return _.str.trim(data, char)
-
-
-taiga = @.taiga
-taiga.bindOnce = bindOnce
-taiga.mixOf = mixOf
-taiga.trim = trim
+module = angular.module("taigaNavigation", ["taigaBase"])
+module.run(["$log", "$tgNavUrls", init])
