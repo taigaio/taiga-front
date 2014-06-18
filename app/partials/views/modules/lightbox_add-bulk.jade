@@ -1,8 +1,8 @@
 a.close(href="", title="close")
     span.icon.icon-delete
 form
-    h2.title New Bulk
+    h2.title(tg-i18n="common.new-bulk")
     fieldset
-        textarea(placeholder="One user story per line")
-    a.button.button-green(href="", title="Save")
-        span Create
+        textarea(tg-i18n="placeholder:common.one-item-line", ng-model="form.data")
+    a.button.button-green(href="", tg-i18n="title:common.save")
+        span(tg-i18n="common.save")

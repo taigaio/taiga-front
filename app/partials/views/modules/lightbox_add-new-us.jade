@@ -1,29 +1,32 @@
 a.close(href="", title="close")
     span.icon.icon-delete
 form
-    h2.title New User Story
+    h2.title(tg-i18n="us.title-new")
     fieldset
-        input(type="text", placeholder="Subject")
+        input(type="text", ng-model="us.subject", tg-i18n="placeholder:common.subject")
     fieldset
-        select
-            option(selected, value="open") Open
-            option(selected, value="closed") Closed
+        select(ng-model="us.status", ng-options="s.name for s in statusList",
+               tg-i18n="placeholder:common.status")
     fieldset
-        input(type="text", placeholder="Tags")
+        input(type="text", placeholder="Tags", tg-tags, ng-model="us.tags")
     fieldset
         div.markdown-preview
-            a.active(href="", title="Edit") Edit
-            a(href="", title="Preview") Preview
-        textarea(placeholder="One user story per line")
+            a.edit.active(href="", title="Edit") Edit
+            a.preview(href="", title="Preview") Preview
+        textarea(placeholder="One user story per line", ng-model="us.description")
     div.new-us-settings
         fieldset
-            label.requirement(for="team-requirement") Team Requirement
-            input(type="checkbox", name="team-requirement", id="team-requirement")
+            label.requirement(for="team-requirement", tg-i18n="us.team-requirement")
+            input(
+                type="checkbox", ng-model="us.team_requirement",
+                name="team-requirement", id="team-requirement")
         fieldset
-            label.requirement(for="client-requirement") Team Requirement
-            input(type="checkbox", name="client-requirement", id="client-requirement")
+            label.requirement(for="client-requirement", tg-i18n="us.client-requirement")
+            input(
+                type="checkbox", ng-model="us.client_requirement",
+                name="client-requirement", id="client-requirement")
         fieldset
-            label.blocked(for="blocked-us") Blocked
-            input(type="checkbox", name="blocked-us", id="blocked-us")
+            label.blocked(for="blocked-us", tg-i18n="common.blocked")
+            input(type="checkbox", ng-model="us.blocked", name="blocked-us", id="blocked-us")
     a.button.button-green(href="", title="Save")
         span Create
