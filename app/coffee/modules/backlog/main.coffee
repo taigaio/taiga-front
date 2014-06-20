@@ -79,7 +79,16 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin)
             when "bulk" then @rootscope.$broadcast("usform:bulk")
 
 
+#############################################################################
+## Backlog Directive
+#############################################################################
+
 BacklogDirective = ($repo) ->
+
+    #########################
+    ## Drag & Drop Link
+    #########################
+
     linkSortable = ($scope, $el, $attrs, $ctrl) ->
         resortAndSave = ->
             toSave = []
@@ -144,12 +153,23 @@ BacklogDirective = ($repo) ->
             onRemove: onRemoveItem
         })
 
+    #########################
+    ## Filters Link
+    #########################
+
+    linkFilters = ($scope, $el, $attrs, $ctrl) ->
+        console.log "TODO"
+
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
         linkSortable($scope, $el, $attrs, $ctrl)
+        linkFilters($scope, $el, $attrs, $ctrl)
 
     return {link: link}
 
+#############################################################################
+## Sprint Directive
+#############################################################################
 
 BacklogSprintDirective = ($repo) ->
     link = ($scope, $el, $attrs) ->
