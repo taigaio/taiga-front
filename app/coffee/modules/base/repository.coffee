@@ -29,7 +29,7 @@ class RepositoryService extends taiga.Service
 
     resolveUrlForModel: (model) ->
         idAttrName = model.getIdAttrName()
-        return "#{@urls.resolve(model.name)}/#{model[idAttrName]}"
+        return "#{@urls.resolve(model.getName())}/#{model[idAttrName]}"
 
     create: (name, data, dataTypes={}, extraParams={}) ->
         defered = @q.defer()
@@ -45,7 +45,7 @@ class RepositoryService extends taiga.Service
         return defered.promise
 
     remove: (model) ->
-        defered = $q.defer()
+        defered = @q.defer()
         url = @.resolveUrlForModel(model)
 
         promise = @http.delete(url)
@@ -57,8 +57,12 @@ class RepositoryService extends taiga.Service
 
         return defered.promise
 
-    save: (model, extraParams, patch=true) ->
-        defered = $q.defer()
+    saveAll: (models, patch=true) ->
+        promises = _.map(models, (x) => @.save(x, true))
+        return @q.all.apply(@q, promises)
+
+    save: (model, patch=true) ->
+        defered = @q.defer()
 
         if not model.isModified() and patch
             defered.resolve(model)
@@ -86,7 +90,7 @@ class RepositoryService extends taiga.Service
         return defered.promise
 
     refresh: (model) ->
-        defered = $q.defer()
+        defered = @q.defer()
 
         url = @.resolveUrlForModel(model)
         promise = @http.get(url)

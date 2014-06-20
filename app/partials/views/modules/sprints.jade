@@ -26,7 +26,7 @@ section.sprints
         div.sprint-progress-bar
             div.current-progress
         div.sprint-table
-            div.row(ng-repeat="us in sprint.user_stories track by us.id")
+            div.row.milestone-us-item-row(ng-repeat="us in sprint.user_stories track by us.id")
                 div.column-us.width-8
                     a.us-name(href="", title="")
                         span(tg-bo-ref="us.ref")

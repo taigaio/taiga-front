@@ -79,34 +79,184 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin)
             when "bulk" then @rootscope.$broadcast("usform:bulk")
 
 
-BacklogDirective = ->
+BacklogDirective = ($repo) ->
+    linkSortable = ($scope, $el, $attrs, $ctrl) ->
+        resortAndSave = ->
+            toSave = []
+            for item, i in $scope.userstories
+                if item.order == i
+                    continue
+                item.order = i
+
+            toSave = _.filter($scope.userstories, (x) -> x.isModified())
+            $repo.saveAll(toSave).then ->
+                console.log "FINISHED", arguments
+
+        onUpdateItem = (event) ->
+            console.log "onUpdate", event
+
+            item = angular.element(event.item)
+            itemScope = item.scope()
+
+            ids = _.map($scope.userstories, "id")
+            index = ids.indexOf(itemScope.us.id)
+
+            $scope.userstories.splice(index, 1)
+            $scope.userstories.splice(item.index(), 0, itemScope.us)
+
+            resortAndSave()
+
+        onAddItem = (event) ->
+            console.log "BacklogDirective:onAdd", event
+
+            item = angular.element(event.item)
+            itemScope = item.scope()
+            itemIndex = item.index()
+
+            itemScope.us.milestone = null
+            userstories = $scope.userstories
+            userstories.splice(itemIndex, 0, itemScope.us)
+
+            item.remove()
+            item.off()
+
+            $scope.$apply()
+            resortAndSave()
+
+        onRemoveItem = (event) ->
+            item = angular.element(event.item)
+            itemScope = item.scope()
+
+            ids = _.map($scope.userstories, "id")
+            index = ids.indexOf(itemScope.us.id)
+            console.log "BacklogDirective:onRemove:0:", itemScope.us.id, index
+
+            if index != -1
+                userstories = $scope.userstories
+                userstories.splice(index, 1)
+
+            item.off()
+            itemScope.$destroy()
+            console.log "BacklogDirective:onRemove:1:", ids
+            console.log "BacklogDirective:onRemove:2:", _.map($scope.userstories, "id")
+
+        dom = $el.find(".backlog-table-body")
+        sortable = new Sortable(dom[0], {
+            group: "Kaka",
+            selector: ".us-item-row",
+            onUpdate: onUpdateItem
+            onAdd: onAddItem
+            onRemove: onRemoveItem
+        })
+
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
+        linkSortable($scope, $el, $attrs, $ctrl)
+
     return {link: link}
+
+
+BacklogSprintDirective = ($repo) ->
+    link = ($scope, $el, $attrs) ->
+        $ctrl = $el.closest("div.wrapper").controller()
+        console.log $ctrl
+
+        sprint = $scope.$eval($attrs.tgBacklogSprint)
+        if $scope.$first
+            $el.addClass("sprint-current")
+
+        # if sprint.closed
+        #     $el.addClass("sprint-closed")
+
+        # Event Handlers
+        $el.on "click", ".sprint-summary > a", (event) ->
+            $el.find(".sprint-table").toggle()
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+        # Drag & Drop
+
+        resortAndSave = ->
+            toSave = []
+            for item, i in $scope.sprint.user_stories
+                if item.order == i
+                    continue
+                item.order = i
+
+            toSave = _.filter($scope.sprint.user_stories, (x) -> x.isModified())
+            $repo.saveAll(toSave).then ->
+                console.log "FINISHED", arguments
+
+        onUpdateItem = (event) ->
+            console.log "onUpdate", event
+
+            item = angular.element(event.item)
+            itemScope = item.scope()
+
+            ids = _.map($scope.sprint.user_stories, {"id": itemScope.us.id})
+            index = ids.indexOf(itemScope.us.id)
+
+            $scope.sprint.user_stories.splice(index, 1)
+            $scope.sprint.user_stories.splice(item.index(), 0, itemScope.us)
+            resortAndSave()
+
+        onAddItem = (event) ->
+            console.log "onAdd", event
+
+            item = angular.element(event.item)
+            itemScope = item.scope()
+            itemIndex = item.index()
+
+            itemScope.us.milestone = $scope.sprint.id
+            userstories = $scope.sprint.user_stories
+            userstories.splice(itemIndex, 0, itemScope.us)
+
+            item.remove()
+            item.off()
+
+            $scope.$apply()
+            resortAndSave()
+
+        onRemoveItem = (event) ->
+            console.log "BacklogSprintDirective:onRemove", event
+
+            item = angular.element(event.item)
+            itemScope = item.scope()
+
+            ids = _.map($scope.sprint.user_stories, "id")
+            index = ids.indexOf(itemScope.us.id)
+
+            console.log "BacklogSprintDirective:onRemove:0:", itemScope.us.id, index
+
+            if index != -1
+                userstories = $scope.sprint.user_stories
+                userstories.splice(index, 1)
+
+            item.off()
+            itemScope.$destroy()
+            console.log "BacklogSprintDirective:onRemove:1", ids
+            console.log "BacklogSprintDirective:onRemove:2", _.map($scope.sprint.user_stories, "id")
+
+        dom = $el.find(".sprint-table")
+        sortable = new Sortable(dom[0], {
+            group: "Kaka",
+            selector: ".milestone-us-item-row",
+            onUpdate: onUpdateItem,
+            onAdd: onAddItem,
+            onRemove: onRemoveItem,
+        })
+
+    return {link: link}
+
 
 BacklogSummaryDirective = ->
     link = ($scope, $el, $attrs) ->
     return {link:link}
 
-BacklogSprintDirective = ->
-    link = (scope, element, attrs) ->
-        sprint = scope.$eval(attrs.tgBacklogSprint)
-        if scope.$first
-            element.addClass("sprint-current")
-
-        if sprint.closed
-            element.addClass("sprint-closed")
-
-        # Event Handlers
-        element.on "click", ".sprint-summary > a", (event) ->
-            element.find(".sprint-table").toggle()
-
-    return {link: link}
-
-
 module = angular.module("taigaBacklog")
-module.directive("tgBacklog", BacklogDirective)
-module.directive("tgBacklogSprint", BacklogSprintDirective)
+module.directive("tgBacklog", ["$tgRepo", BacklogDirective])
+module.directive("tgBacklogSprint", ["$tgRepo", BacklogSprintDirective])
 module.directive("tgBacklogSummary", BacklogSummaryDirective)
 
 module.controller("BacklogController", [

@@ -1,4 +1,4 @@
-div.row(ng-repeat="us in userstories")
+div.row.us-item-row(ng-repeat="us in userstories track by us.id")
     div.user-stories
         div.user-story-name
             input(type="checkbox", name="")

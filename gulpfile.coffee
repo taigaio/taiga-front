@@ -41,21 +41,22 @@ paths = {
              "app/coffee/modules/locales/*.coffee",
              "app/coffee/modules/base/*.coffee",
              "app/coffee/modules/resources/*.coffee"]
+    vendorJsLibs: [
+        "app/vendor/jquery/dist/jquery.js",
+        "app/vendor/lodash/dist/lodash.js",
+        "app/vendor/emoticons/lib/emoticons.js",
+        "app/vendor/underscore.string/lib/underscore.string.js",
+        "app/vendor/angular/angular.js",
+        "app/vendor/angular-route/angular-route.js",
+        "app/vendor/angular-sanitize/angular-sanitize.js",
+        "app/vendor/angular-animate/angular-animate.js",
+        "app/vendor/i18next/i18next.js",
+        "app/js/Sortable.js"
+    ]
 }
 
 
 # Ordered list of vendor/external libraries.
-vendorJsLibs = [
-    "app/vendor/jquery/dist/jquery.js",
-    "app/vendor/lodash/dist/lodash.js",
-    "app/vendor/emoticons/lib/emoticons.js",
-    "app/vendor/underscore.string/lib/underscore.string.js",
-    "app/vendor/angular/angular.js",
-    "app/vendor/angular-route/angular-route.js",
-    "app/vendor/angular-sanitize/angular-sanitize.js",
-    "app/vendor/angular-animate/angular-animate.js",
-    "app/vendor/i18next/i18next.js"
-]
 
 
 ##############################################################################
@@ -123,7 +124,7 @@ gulp.task "coffee", ->
         .pipe(gulp.dest("dist/js/"))
 
 gulp.task "jslibs", ->
-    gulp.src(vendorJsLibs)
+    gulp.src(paths.vendorJsLibs)
         .pipe(plumber())
         .pipe(concat("libs.js"))
         .pipe(gulp.dest("dist/js/"))
@@ -166,6 +167,7 @@ gulp.task "watch", ->
     gulp.watch(paths.jade, ["jade"])
     gulp.watch(paths.appStyles, ["scss-lint", "sass", "css"])
     gulp.watch(paths.coffee, ["coffee"])
+    gulp.watch(paths.vendorJsLibs, ["jslibs"])
     gulp.watch(paths.locales, ["locales"])
 
 

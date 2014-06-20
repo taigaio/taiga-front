@@ -39,8 +39,8 @@ class Model
     getIdAttrName: ->
         return "id"
 
-    getUrl: ->
-        return "#{$gmUrls.api(@_name)}/#{@.getAttrs()[@.getIdAttrName()]}"
+    getName: ->
+        return @._name
 
     getAttrs: (patch=false) ->
         if patch
@@ -101,7 +101,7 @@ class Model
 
         return JSON.stringify(data)
 
-    isModified: () ->
+    isModified: ->
         return this._isModified
 
     markSaved: () ->
