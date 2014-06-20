@@ -1,0 +1,63 @@
+extends layout
+
+block head
+    title Taiga  Project management web application with scrum in mind!
+
+block content
+    div.wrapper
+        sidebar.menu-secondary.sidebar
+            include views/modules/admin-menu
+        sidebar.menu-tertiary.sidebar
+            include views/modules/admin-submenu
+
+        section.main.admin-functionalities
+            header
+                include views/components/mainTitle
+
+            section
+                div.functionality
+                    div.icon.icon-backlog
+                    div.desc
+                        p
+                            span Backlog
+                            |  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sagittis quam augue, quis bibendum lectus porta eget. Nunc dictum imperdiet venenatis. Curabitur vitae augue ut est rhoncus pellentesque. Nunc sed ultricies est, tincidunt euismod nunc. Nunc nec posuere metus.
+
+                div.functionality.active
+                    div.icon.icon-kanban
+                    div.desc
+                        p
+                            span Kanban
+                            |  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sagittis quam augue, quis bibendum lectus porta eget. Nunc dictum imperdiet venenatis. Curabitur vitae augue ut est rhoncus pellentesque. Nunc sed ultricies est, tincidunt euismod nunc. Nunc nec posuere metus.
+
+                div.functionality
+                    div.icon.icon-issues
+                    div.desc
+                        p
+                            span Issues
+                            |  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sagittis quam augue, quis bibendum lectus porta eget. Nunc dictum imperdiet venenatis. Curabitur vitae augue ut est rhoncus pellentesque. Nunc sed ultricies est, tincidunt euismod nunc. Nunc nec posuere metus.
+
+                div.functionality.active
+                    div.icon.icon-wiki
+                    div.desc
+                        p
+                            span Wiki
+                            |  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sagittis quam augue, quis bibendum lectus porta eget. Nunc dictum imperdiet venenatis. Curabitur vitae augue ut est rhoncus pellentesque. Nunc sed ultricies est, tincidunt euismod nunc. Nunc nec posuere metus.
+
+                div.functionality.active
+                    div.icon.icon-video
+                    div.desc
+                        p
+                            span Video
+                            |  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sagittis quam augue, quis bibendum lectus porta eget. Nunc dictum imperdiet venenatis. Curabitur vitae augue ut est rhoncus pellentesque. Nunc sed ultricies est, tincidunt euismod nunc. Nunc nec posuere metus.
+
+                        select
+                            option Option 1
+                            option Option 2
+                            option Option 3
+                            option Option 4
+
+                        select
+                            option Option 1
+                            option Option 2
+                            option Option 3
+                            option Option 4
