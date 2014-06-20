@@ -1,0 +1,21 @@
+.filter-tags {
+    margin-top: 2rem;
+    .filter-tag {
+        color: $white;
+        cursor: pointer;
+        margin-bottom: 1rem;
+        opacity: .5;
+        padding: .5rem 1rem;
+        position: relative;
+        &.selected {
+            opacity: 1;
+        }
+    }
+    .tag-count {
+        background: none repeat scroll 0 0 rgba(0, 0, 0, .3);
+        padding: .5rem 1rem;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+}

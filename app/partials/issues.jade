@@ -1,0 +1,14 @@
+extends layout
+
+block head
+    title Taiga  Project management web application with scrum in mind!
+
+block content
+    div.wrapper
+        sidebar.menu-secondary.sidebar
+            include views/modules/search-in
+            include views/modules/filter-tags
+
+        section.main.admin-roles
+            header
+                include views/components/mainTitle
