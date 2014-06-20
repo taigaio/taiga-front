@@ -107,8 +107,6 @@ BacklogDirective = ($repo) ->
             resortAndSave()
 
         onAddItem = (event) ->
-            console.log "BacklogDirective:onAdd", event
-
             item = angular.element(event.item)
             itemScope = item.scope()
             itemIndex = item.index()
@@ -129,7 +127,6 @@ BacklogDirective = ($repo) ->
 
             ids = _.map($scope.userstories, "id")
             index = ids.indexOf(itemScope.us.id)
-            console.log "BacklogDirective:onRemove:0:", itemScope.us.id, index
 
             if index != -1
                 userstories = $scope.userstories
@@ -137,12 +134,10 @@ BacklogDirective = ($repo) ->
 
             item.off()
             itemScope.$destroy()
-            console.log "BacklogDirective:onRemove:1:", ids
-            console.log "BacklogDirective:onRemove:2:", _.map($scope.userstories, "id")
 
         dom = $el.find(".backlog-table-body")
         sortable = new Sortable(dom[0], {
-            group: "Kaka",
+            group: "backlog",
             selector: ".us-item-row",
             onUpdate: onUpdateItem
             onAdd: onAddItem
@@ -159,14 +154,13 @@ BacklogDirective = ($repo) ->
 BacklogSprintDirective = ($repo) ->
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.closest("div.wrapper").controller()
-        console.log $ctrl
 
         sprint = $scope.$eval($attrs.tgBacklogSprint)
         if $scope.$first
             $el.addClass("sprint-current")
 
-        # if sprint.closed
-        #     $el.addClass("sprint-closed")
+        if sprint.closed
+            $el.addClass("sprint-closed")
 
         # Event Handlers
         $el.on "click", ".sprint-summary > a", (event) ->
@@ -189,8 +183,6 @@ BacklogSprintDirective = ($repo) ->
                 console.log "FINISHED", arguments
 
         onUpdateItem = (event) ->
-            console.log "onUpdate", event
-
             item = angular.element(event.item)
             itemScope = item.scope()
 
@@ -202,8 +194,6 @@ BacklogSprintDirective = ($repo) ->
             resortAndSave()
 
         onAddItem = (event) ->
-            console.log "onAdd", event
-
             item = angular.element(event.item)
             itemScope = item.scope()
             itemIndex = item.index()
@@ -219,15 +209,11 @@ BacklogSprintDirective = ($repo) ->
             resortAndSave()
 
         onRemoveItem = (event) ->
-            console.log "BacklogSprintDirective:onRemove", event
-
             item = angular.element(event.item)
             itemScope = item.scope()
 
             ids = _.map($scope.sprint.user_stories, "id")
             index = ids.indexOf(itemScope.us.id)
-
-            console.log "BacklogSprintDirective:onRemove:0:", itemScope.us.id, index
 
             if index != -1
                 userstories = $scope.sprint.user_stories
@@ -235,12 +221,10 @@ BacklogSprintDirective = ($repo) ->
 
             item.off()
             itemScope.$destroy()
-            console.log "BacklogSprintDirective:onRemove:1", ids
-            console.log "BacklogSprintDirective:onRemove:2", _.map($scope.sprint.user_stories, "id")
 
         dom = $el.find(".sprint-table")
         sortable = new Sortable(dom[0], {
-            group: "Kaka",
+            group: "backlog",
             selector: ".milestone-us-item-row",
             onUpdate: onUpdateItem,
             onAdd: onAddItem,
