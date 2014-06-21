@@ -21,10 +21,10 @@
 
 CreateEditUserstoryDirective = ($repo, $model) ->
     link = ($scope, $el, attrs) ->
-        $scope.us = {"tags": ["kaka", "pedo", "pis"]}
+        $scope.us = {}
         # TODO: defaults
         $scope.$on "usform:new", ->
-            $scope.us = {"subject": "KAKA"}
+            $scope.us = {}
             $el.removeClass("hidden")
 
         $scope.$on "usform:edit", (ctx, us) ->
