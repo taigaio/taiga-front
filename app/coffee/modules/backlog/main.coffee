@@ -39,6 +39,9 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin)
     loadUserstories: ->
         return @rs.userstories.listUnassigned(@scope.projectId).then (userstories) =>
             @scope.userstories = userstories
+            @scope.filters = @.generateFilters()
+
+            @.filterVisibleUserstories()
             return userstories
 
     loadBacklog: ->
@@ -64,6 +67,27 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin)
                       .then(=> @.loadUsersAndRoles())
                       .then(=> @.loadBacklog())
 
+    filterVisibleUserstories: ->
+        selectedTags = _.filter(@scope.filters.tags, "selected")
+        selectedTags = _.map(selectedTags, "name")
+
+        @scope.visibleUserstories = []
+
+        if selectedTags.length == 0
+            @scope.visibleUserstories = _.clone(@scope.userstories, false)
+        else
+            @scope.visibleUserstories = _.reject @scope.userstories, (us) =>
+                if _.intersection(selectedTags, us.tags).length == 0
+                    return true
+                else
+                    return false
+
+    generateFilters: ->
+        filters = {}
+        plainTags = _.flatten(_.map(@scope.userstories, "tags"))
+        filters.tags = _.map(_.countBy(plainTags), (v, k) -> {name: k, count:v})
+        return filters
+
     ## Template actions
 
     deleteUserStory: (us) ->
@@ -84,7 +108,6 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin)
 #############################################################################
 
 BacklogDirective = ($repo) ->
-
     #########################
     ## Drag & Drop Link
     #########################
@@ -158,12 +181,27 @@ BacklogDirective = ($repo) ->
     #########################
 
     linkFilters = ($scope, $el, $attrs, $ctrl) ->
-        console.log "TODO"
+        $scope.filtersSearch = {}
+        $el.on "click", "#show-filters-button", (event) ->
+            event.preventDefault()
+            $el.find("sidebar.filters-bar").toggle()
+
+        $el.on "click", "section.filters a.single-filter", (event) ->
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+            targetScope = target.scope()
+
+            $scope.$apply ->
+                targetScope.tag.selected = not (targetScope.tag.selected or false)
+                $ctrl.filterVisibleUserstories()
 
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
         linkSortable($scope, $el, $attrs, $ctrl)
         linkFilters($scope, $el, $attrs, $ctrl)
+
+        $scope.$on "$destroy", ->
+            $el.off()
 
     return {link: link}
 

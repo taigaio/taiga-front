@@ -12,6 +12,11 @@
         color: $grayer;
         opacity: 1;
     }
+    &.selected {
+        @include transition (opacity .2s linear);
+        color: $grayer;
+        opacity: 1;
+    }
     .name,
     .number {
         padding: 8px 10px;
