@@ -27,7 +27,7 @@ CreateEditUserstoryDirective = ($repo, $model) ->
             $scope.us = {"subject": "KAKA"}
             $el.removeClass("hidden")
 
-        $scope.$on "usform:change", (ctx, us) ->
+        $scope.$on "usform:edit", (ctx, us) ->
             $el.removeClass("hidden")
             $scope.us = us
 

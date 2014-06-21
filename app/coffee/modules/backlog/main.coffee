@@ -90,6 +90,9 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     ## Template actions
 
+    editUserStory: (us) ->
+        @rootscope.$broadcast("usform:edit", us)
+
     deleteUserStory: (us) ->
         title = "Delete User Story"
         subtitle = us.subject
