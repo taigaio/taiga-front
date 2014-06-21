@@ -18,6 +18,18 @@
     {
       "name": "Xavi Julian",
       "email": "xavier.julian@kaleidos.net"
+    },
+    {
+      "name": "Alejandro Alonso",
+      "email": "alejandro.alonso@kaleidos.net"
+    },
+    {
+      "name": "Anler Hernández",
+      "email": "hello@anler.me"
+    },
+    {
+      "name": "Juan Francisco Alcántara",
+      "email": "juanfran.alcantara@kaleidos.net"
     }
   ],
   "description": "Taiga project management system (frontend)",
