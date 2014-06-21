@@ -19,7 +19,9 @@
 # File: config.coffee
 ###
 
-class ConfigService
+taiga = @.taiga
+
+class ConfigService extends taiga.Service
     defaults: {
         host: "localhost:8000"
         scheme: "http"
