@@ -104,10 +104,10 @@
                 color: $white;
             }
             &.selected {
-               @include transition(all .2s ease-in);
-               background: $green-taiga;
-               border: 1px solid $green-taiga;
-               color: $white;
+                @include transition(all .2s ease-in);
+                background: $green-taiga;
+                border: 1px solid $green-taiga;
+                color: $white;
             }
         }
         .blocked {

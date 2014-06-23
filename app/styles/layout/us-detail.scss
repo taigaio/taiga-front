@@ -74,3 +74,31 @@
 .comment-list {
     padding: 1rem 2rem;
 }
+
+.activity-single {
+    @include table-flex;
+    border-bottom: 2px solid $gray-light;
+    padding: 1rem 0;
+    position: relative;
+    .username {
+        color: $green-taiga;
+        margin-bottom: 1rem;
+    }
+    .date {
+        @extend %small;
+        color: $gray-light;
+        margin-left: 1rem;
+    }
+}
+
+.activity-user {
+    @include table-flex-child(1, 50px, 0);
+    img {
+        max-width: 70px;
+        width: 100%;
+    }
+}
+
+.activity-content {
+    @include table-flex-child(20, 150px, 0);
+}

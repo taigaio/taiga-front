@@ -32,7 +32,7 @@
         top: 2px;
     }
     &:hover {
-         @include transition (background .3s linear);
+        @include transition (background .3s linear);
     }
 }
 

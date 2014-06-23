@@ -42,6 +42,9 @@ $prefix-for-spec:      true;
 @import 'modules/admin-functionalities';
 @import 'modules/category-config';
 @import 'modules/project-details';
+@import 'modules/comments';
+@import 'modules/attachments';
+@import 'modules/comment-activity';
 
 // Responsive
 @import 'responsive/mobile';
@@ -51,3 +54,4 @@ $prefix-for-spec:      true;
 @import 'layout/base';
 @import 'layout/backlog';
 @import 'layout/taskboard';
+@import 'layout/us-detail';
