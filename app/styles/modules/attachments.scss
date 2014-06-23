@@ -1,0 +1,81 @@
+.attachments {
+    margin-bottom: 2rem;
+}
+
+.attachments-header {
+    background: $whitish;
+    @include clearfix;
+    padding: .5rem 1rem;
+    .button {
+        float: right;
+        padding: .2rem 6rem;
+    }
+    .icon,
+    .attachments-num,
+    .attachments-text {
+        @extend %medium;
+        margin-right: .5rem;
+        position: relative;
+        top: 2px;
+    }
+}
+
+.single-attachment {
+    @include table-flex();
+    @extend %small;
+    border-bottom: 1px solid #cdcdcd;
+    padding: 1rem 0 1rem 1rem;
+    position: relative;
+    &:last-child {
+        border: 0;
+    }
+    .attachment-name {
+        @include ellipsis(200px);
+        @include table-flex-child(1, 200px);
+        padding-right: 1rem;
+        .icon {
+            margin-right: .5rem;
+        }
+    }
+    .attachment-comment {
+        @include table-flex-child(10, 300px);
+        .attachment-size {
+            color: $gray-light;
+            margin-left: .5rem;
+        }
+    }
+    .settings {
+        @extend %large;
+        color: $gray-light;
+        display: none;
+    }
+    &:hover {
+        @include transition (background .2s ease-in);
+        background: lighten($green-taiga, 60%);
+        .settings {
+            @include transition (opacity .2s ease-in);
+            display: block;
+            position: absolute;
+            top: 1rem;
+        }
+        .icon-edit {
+            right: 4rem;
+        }
+        .icon-drag-v {
+            cursor: move;
+            right: 1rem;
+        }
+    }
+}
+
+.more-attachments {
+    @extend %small;
+    border-bottom: 1px solid $gray-light;
+    color: $gray-light;
+    display: block;
+    padding: 1rem 0 1rem 1rem;
+    .more-attachments-num {
+        color: $green-taiga;
+        margin-left: .5rem;
+    }
+}

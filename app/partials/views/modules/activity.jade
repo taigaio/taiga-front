@@ -1,0 +1,24 @@
+div.us-activity
+    - for(var x = 0; x < 6; x++)
+        div.activity-single
+            div.activity-user
+                a.avatar(href="", title="User preferences")
+                    img(src="http://thecodeplayer.com/u/uifaces/12.jpg", alt="username")
+            div.activity-content
+                div.activity-username
+                    a.username(href="", title="User name") User Name
+                    span.date 15 junio 2014 15:30h
+                - for(var y = 0; y < 2; y++)
+                    div.activity-inner
+                        div.activity-changed
+                            span US status
+                        div.activity-fromto
+                            p
+                                strong from <br />
+                                Este es el título que tenía la historia
+                            p
+                                strong to <br />
+                                Este es el título que tenía la historia modificado
+    a.more-activity(href="", title="show more comments")
+         span show previous activity
+         span.prev-activity-num (3 more)
