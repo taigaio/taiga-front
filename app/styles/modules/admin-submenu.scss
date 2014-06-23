@@ -1,0 +1,38 @@
+.admin-submenu {
+    h1 {
+        color: $white;
+    }
+    li {
+        @extend %xlarge;
+        border-bottom: 1px solid #a6b2a7;
+        font-family: 'ostrichSans';
+        &:last-child {
+            border-bottom: 0;
+        }
+    }
+    a {
+        color: $white;
+        display: block;
+        padding: 1rem 0 1rem 1rem;
+        &.active,
+        &:hover {
+            color: $blackish;
+            .icon {
+                @include transition (opacity .3s linear);
+                opacity: 1;
+            }
+        }
+    }
+    .icon {
+        color: $white;
+        float: right;
+        opacity: 0;
+    }
+    .button-gray {
+        padding: .5rem 0;
+        text-align: center;
+        &:hover {
+            background-color: darken($button-gray-hover, 15%);
+        }
+    }
+}

@@ -8,7 +8,7 @@
     width: 100%;
     .row {
         align-content: stretch;
-        align-items: stretch;
+        align-items: center;
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
@@ -68,5 +68,15 @@
     .status,
     .points {
         position: relative;
+    }
+    .avatar {
+        align-items: center;
+        display: flex;
+        img {
+            flex-basis: 35px;
+        }
+        figcaption {
+            margin-left: 1rem;
+        }
     }
 }

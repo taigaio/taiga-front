@@ -1,0 +1,115 @@
+.admin-membership {
+    header {
+        @include clearfix;
+        margin-bottom: 1rem;
+        h1 {
+            float: left;
+            margin-bottom: 0;
+        }
+        a {
+            float: right;
+        }
+    }
+}
+
+.admin-membership-table {
+    align-content: stretch;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 100%;
+    .title {
+        font-family: 'DroidSans-Bold';
+    }
+    .row {
+        align-content: stretch;
+        align-items: center;
+        border-bottom: 1px solid $gray-light;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        padding: 1rem 0 1rem 1rem;
+        text-align: left;
+        width: 100%;
+        &:last-child {
+            border-bottom: 0;
+        }
+    }
+    .avatar {
+        align-items: center;
+        display: flex;
+        figcaption {
+            margin-left: 1rem;
+        }
+        img {
+            flex-basis: 35px;
+        }
+        .name,
+        .email {
+            display: block;
+            width: 100%;
+        }
+        .name {
+            font-family: DroidSans-Bold;
+        }
+        .email {
+            color: $gray-light;
+        }
+    }
+    .active,
+    .pending {
+        padding: 8px;
+        width: 115px;
+        .icon {
+            @extend %large;
+        }
+    }
+    .active {
+        background-color: $whitish;
+    }
+    .pending {
+        background-color: $red-light;
+        color: $white;
+        .icon {
+            float: right;
+        }
+        &:hover {
+            @include transition (background-color .3s linear);
+            background-color: $red;
+        }
+    }
+    .header-role,
+    .header-status {
+        padding-left: .5rem;
+    }
+    .row-role {
+        padding-right: 1rem;
+    }
+    .row-status {
+        display: flex;
+        .delete {
+            @extend %large;
+            align-items: center;
+            color: $gray-light;
+            display: flex;
+            margin-left: 15px;
+            padding: 0 15px;
+            &:hover {
+                color: $red;
+            }
+        }
+    }
+    .row-status,
+    .header-status {
+        width: 180px;
+    }
+    .row-member,
+    .row-role,
+    .header-member,
+    .header-role {
+        flex: 1 0 50px;
+    }
+}

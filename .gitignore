@@ -1,4 +1,7 @@
 .sass-cache/
-bower_components/
 dist/
 node_modules/
+app/vendor
+config/main.coffee
+bower_components
+app/coffee/modules/locales/locale*.coffee

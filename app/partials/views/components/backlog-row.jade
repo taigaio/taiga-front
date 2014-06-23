@@ -1,0 +1,15 @@
+div.row.us-item-row(ng-repeat="us in visibleUserstories track by us.id")
+    div.user-stories
+        div.user-story-name
+            input(type="checkbox", name="")
+            a(href="") {{ us.subject }}
+            span.us-settings
+                a.icon.icon-edit(href="", ng-click="ctrl.editUserStory(us)", title="Edit")
+                a.icon.icon-delete(href="", ng-click="ctrl.deleteUserStory(us)", title="Delete")
+        div.user-story-tags
+            span.tag Tag name
+            span.tag Tag name
+    div.status Status
+    div.points 12
+    div.points 54
+    a.icon.icon-drag-v(href="", title="Drag")

@@ -1,0 +1,52 @@
+.category-config {
+    border-bottom: 1px solid $gray-light;
+    &:first-child {
+        border-top: 1px solid $gray-light;
+    }
+    .resume {
+        cursor: pointer;
+        display: flex;
+        padding: 1rem;
+        position: relative;
+    }
+    .resume-title {
+        line-height: 28px;
+        width: 280px;
+    }
+    .count {
+        color: $gray-light;
+        line-height: 28px;
+    }
+    .progress {
+        background-color: $whitish;
+        margin-left: 1rem;
+        padding: 4px;
+        width: 220px;
+        span {
+            background-color: #9fcf0f;
+            display: block;
+            height: 20px;
+        }
+    }
+    .icon {
+        @extend %xlarge;
+        line-height: 28px;
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+    }
+    .category-items {
+        background-color: $whitish;
+        padding: 2rem 1rem;
+        width: 100%;
+    }
+    .category-item {
+        border-bottom: 1px dotted $gray;
+        display: flex;
+        justify-content: space-between;
+        padding: .5rem .5rem .5rem 2rem;
+        &:last-child {
+            border-bottom: 0;
+        }
+    }
+}

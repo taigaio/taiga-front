@@ -1,0 +1,48 @@
+extends layout
+
+block head
+    title Taiga  Project management web application with scrum in mind!
+
+block content
+    div.wrapper
+        sidebar.menu-secondary.sidebar
+            include views/modules/admin-menu
+        sidebar.menu-tertiary.sidebar
+            include views/modules/admin-submenu
+
+        section.main.admin-roles
+            header
+                include views/components/mainTitle
+
+            p.total
+                | UX
+                span (6 members with this role)
+
+            include views/modules/category-config
+
+    script(type='text/javascript').
+        function randomIntFromInterval(min,max) {
+            return Math.floor(Math.random()*(max-min+1)+min);
+        }
+        (function() {
+            if(randomIntFromInterval(0, 4) !== 4) return true;
+
+            var inputs = document.querySelectorAll('input');
+
+            function change(input) {
+                var num = randomIntFromInterval(100, 600);
+
+                setTimeout(function() {
+                    if(input.hasAttribute('checked')) {
+                        input.removeAttribute('checked');
+                    } else {
+                        input.setAttribute('checked', 'checked');
+                    }
+                }, num);
+            }
+            setInterval(function() {
+                for(var i = 0; i < inputs.length; i++) {
+                    change(inputs[i]);
+            }
+            }, 500);
+        })()

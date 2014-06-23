@@ -3,8 +3,10 @@ section.filters
         h1 filters
         form
             fieldset
-                input(type="text", placeholder="Filter Filters")
+                input(type="text", placeholder="Filter Filters", ng-model="filtersSearch.$")
                 a.icon.icon-search(href="", title="search")
         div.filter-list
-            - for (var x = 0; x < 10; x++)
-                include ../components/filter
+            a.single-filter(ng-repeat="tag in filters.tags|filter:filtersSearch:strict"
+                            ng-class="{selected: tag.selected}")
+                span.name(tg-bo-html="tag.name")
+                span.number(tg-bo-html="tag.count")

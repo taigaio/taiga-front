@@ -1,7 +1,7 @@
 {
   "name": "TaigaIO",
   "version": "0.0.1",
-  "description": "Landing page for Taiga",
+  "description": "Taiga project management system (frontend)",
   "main": "index.js",
   "keywords": [
     "Taiga",
@@ -9,10 +9,15 @@
     "Project Management",
     "Github"
   ],
-  "author": "Kaleidos",
-  "license": "ISC",
+  "author": "Kaleidos OpenSource SL",
+  "licenses": [
+    {
+      "type": "AGPL-3.0",
+      "url": "https://github.com/taigaio/taiga-front/blob/master/LICENSE"
+    }
+  ],
   "devDependencies": {
-    "gulp": "^3.6.0",
+    "gulp": "^3.8.0",
     "coffee-script": "^1.7.1",
     "express": "^4.3.0",
     "gulp-clean": "^0.2.4",

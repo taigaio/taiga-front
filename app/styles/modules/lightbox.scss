@@ -36,7 +36,6 @@
 }
 
 .lightbox_add-new-us {
-    display: none;
     form {
         flex-basis: 0;
         flex-grow: 0;
@@ -104,12 +103,12 @@
                 border: 1px solid $fresh-taiga;
                 color: $white;
             }
-        }
-        .requirement-selected {
-            @include transition(all .2s ease-in);
-            background: $green-taiga;
-            border: 1px solid $green-taiga;
-            color: $white;
+            &.selected {
+               @include transition(all .2s ease-in);
+               background: $green-taiga;
+               border: 1px solid $green-taiga;
+               color: $white;
+            }
         }
         .blocked {
             &:hover {
@@ -118,12 +117,12 @@
                 border: 1px solid $red-light;
                 color: $white;
             }
-        }
-        .blocked-selected {
-            @include transition(all .2s ease-in);
-            background: $red;
-            border: 1px solid $red;
-            color: $white;
+            &.selected {
+                @include transition(all .2s ease-in);
+                background: $red;
+                border: 1px solid $red;
+                color: $white;
+            }
         }
         input[type="checkbox"] {
             display: none;
@@ -132,7 +131,6 @@
 }
 
 .lightbox_add-bulk {
-    display: none;
     form {
         flex-basis: 0;
         flex-grow: 0;
@@ -147,8 +145,45 @@
     }
 }
 
-.lightbox_add-sprint {
+.ligbox_add-member {
     display: none;
+    fieldset {
+        @include clearfix;
+        margin-bottom: 1rem;
+    }
+    input[type=email],
+    select {
+        float: left;
+        margin-bottom: 0;
+    }
+    input[type=email] {
+        width: 430px;
+    }
+    select {
+        margin-left: .5rem;
+        width: 255px;
+    }
+    .icon {
+        @extend %large;
+        float: left;
+        line-height: 40px;
+        margin-left: .5rem;
+    }
+    .icon-delete {
+        &:hover {
+            color: $red;
+        }
+    }
+    .button {
+        margin-top: 2rem;
+    }
+    .help-text {
+        @extend %small;
+        padding: .5rem 1rem;
+    }
+}
+
+.lightbox_add-sprint {
     form {
         flex-basis: 0;
         flex-grow: 0;
@@ -172,6 +207,34 @@
                 margin: 0;
                 width: 50%;
             }
+        }
+    }
+}
+
+.lightbox_confirm-delete {
+    form {
+        flex-basis: 0;
+        flex-grow: 0;
+        flex-shrink: 0;
+        min-width: 420px;
+        width: 420px;
+    }
+    .delete-question,
+    .subtitle {
+        display: block;
+        line-height: 2rem;
+        text-align: center;
+    }
+    .subtitle {
+        @extend %large;
+        font-family: 'ostrichSans';
+    }
+    .delete-options {
+        @include table-flex();
+        a {
+            @include table-flex-child(1, 0, 0);
+            padding: 8px 0;
+            text-align: center;
         }
     }
 }

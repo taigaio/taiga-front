@@ -1,0 +1,26 @@
+.admin-menu {
+    li {
+        @extend %xlarge;
+        border-bottom: 1px solid $gray-light;
+        font-family: 'ostrichSans';
+        &:last-child {
+            border-bottom: 0;
+        }
+    }
+    a {
+        display: block;
+        padding: 1rem 0 1rem 1rem;
+        &.active,
+        &:hover {
+            .icon {
+                @include transition (opacity .3s linear);
+                opacity: 1;
+            }
+        }
+    }
+    .icon {
+        color: $blackish;
+        float: right;
+        opacity: 0;
+    }
+}

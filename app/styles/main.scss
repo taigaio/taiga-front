@@ -25,28 +25,29 @@ $prefix-for-spec:      true;
 @import 'components/filter';
 @import 'components/taskboard-task';
 
-//Layout
-@import 'layout/base';
-@import 'layout/backlog';
-@import 'layout/taskboard';
-@import 'layout/us-detail';
-
 //Modules
 @import 'modules/nav';
-@import 'modules/sidebar';
 @import 'modules/sprints';
 @import 'modules/burndown';
 @import 'modules/backlog-table';
 @import 'modules/filters';
 @import 'modules/lightbox';
 @import 'modules/taskboard-table';
-@import 'modules/attachments';
 @import 'modules/search-filter';
 @import 'modules/search-result-table';
-@import 'modules/comments';
-@import 'modules/comment-activity';
-@import 'modules/activity';
+@import 'modules/admin-menu';
+@import 'modules/admin-submenu';
+@import 'modules/admin-membership';
+@import 'modules/admin-roles';
+@import 'modules/admin-functionalities';
+@import 'modules/category-config';
+@import 'modules/project-details';
 
 // Responsive
 @import 'responsive/mobile';
 @import 'responsive/screen';
+
+//Layout
+@import 'layout/base';
+@import 'layout/backlog';
+@import 'layout/taskboard';

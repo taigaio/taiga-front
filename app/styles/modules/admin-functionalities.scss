@@ -1,0 +1,32 @@
+.admin-functionalities {
+    .functionality {
+        background-color: $whitish;
+        display: flex;
+        margin-bottom: 1rem;
+        padding: 2rem;
+        .icon,
+        .desc {
+            opacity: .5;
+        }
+        p {
+            margin-bottom: 0;
+        }
+        span {
+            font-weight: bold;
+        }
+        select {
+            margin-top: 1rem;
+        }
+        &.active {
+            background-color: #e9f0da;
+            div,
+            p {
+                opacity: 1;
+            }
+        }
+    }
+    .icon {
+        @extend %xxlarge;
+        margin-right: 2rem;
+    }
+}

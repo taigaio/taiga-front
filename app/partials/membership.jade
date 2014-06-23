@@ -1,0 +1,58 @@
+extends layout
+
+block head
+    title Taiga  Project management web application with scrum in mind!
+
+block content
+    sidebar.menu-secondary.sidebar
+        include views/modules/admin-menu
+
+    section.main.admin-membership
+        header
+            include views/components/mainTitle
+            a.button-green(title="Add New US" href="")
+               span.text + New role
+
+        section.admin-membership-table
+            div.row.title
+                div.header-member Member
+                div.header-role Role
+                div.header-status Status
+            div.row
+                div.row-member
+                    figure.avatar
+                        img(alt="username" src="http://thecodeplayer.com/u/uifaces/12.jpg")
+                        figcaption
+                            span.name Pilar
+                            span.email pilar.estaban@secuoyas.com
+                div.row-role
+                    select
+                        option UX
+                        option Front
+                        option Back
+                div.row-status
+                    div.active Active
+                    a(href="#").delete
+                        span.icon.icon-delete
+
+            div.row
+                div.row-member
+                    figure.avatar
+                        img(alt="username" src="http://thecodeplayer.com/u/uifaces/12.jpg")
+                        figcaption
+                            span.name Pilar
+                            span.email pilar.estaban@secuoyas.com
+                div.row-role
+                    select
+                        option UX
+                        option Front
+                        option Back
+                div.row-status
+                    a(href="#").pending
+                        | Pending
+                        span.icon.icon-reload
+                    a(href="#").delete
+                        span.icon.icon-delete
+
+    div.lightbox.ligbox_add-member
+        include views/modules/lightbox_add-member
