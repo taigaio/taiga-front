@@ -1,0 +1,38 @@
+.login-main {
+    @include table-flex(center, center, flex, row, wrap, center);
+    background: url('/images/bg.png') no-repeat center center;
+    background-size: cover;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 999;
+    .login-container {
+        @include table-flex-child(0, 400px, 0, 400px);
+    }
+    .logo,
+    .tagline {
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+    .tagline {
+        @extend %xlarge;
+        color: $white;
+        font-family: 'ostrichSans';
+        line-height: 2rem;
+    }
+    input {
+        margin-bottom: 1rem;
+    }
+    .button-login,
+    .button-signup {
+        color: $white;
+        display: block;
+        margin-bottom: .5rem;
+        text-align: center;
+    }
+    .button-signup {
+        background: $orange;
+    }
+}
