@@ -54,6 +54,14 @@
     }
 }
 
+.button-orange {
+    background: $orange;
+    &:hover {
+        background: lighten($orange, 10%);
+        color: $white;
+    }
+}
+
 a.button-block {
     background: $white;
     color: $red;

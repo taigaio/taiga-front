@@ -23,6 +23,7 @@
         line-height: 2rem;
     }
     input {
+        background: $white;
         margin-bottom: 1rem;
     }
     .button-login,
@@ -32,7 +33,37 @@
         margin-bottom: .5rem;
         text-align: center;
     }
-    .button-signup {
-        background: $orange;
+    .button-login {
+        &:hover {
+            background: $green-taiga;
+        }
+    }
+}
+
+.login-error {
+    background: $red;
+    border-radius: 4px;
+    color: $white;
+    padding: 1rem;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    width: 20%;
+    span {
+        display: block;
+    }
+    .title {
+        @extend %large;
+        font-family: 'DroidSans-bold';
+    }
+    .icon-delete {
+        color: $red-light;
+        position: absolute;
+        right: .5rem;
+        top: .5rem;
+        &:hover {
+            @include transition(color .3s linear);
+            color: $white;
+        }
     }
 }
