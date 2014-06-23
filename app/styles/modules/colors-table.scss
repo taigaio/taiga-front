@@ -1,0 +1,100 @@
+.colors-table {
+    align-content: stretch;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 100%;
+    .row {
+        align-content: stretch;
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        padding: 1rem 0 1rem 1rem;
+        position: relative;
+        text-align: left;
+        width: 100%;
+        @for $i from 1 through 8 {
+            .width-#{$i} {
+                flex-basis: 50px;
+                flex-grow: $i;
+                flex-shrink: 0;
+            }
+        }
+        &:hover {
+            background: lighten($green-taiga, 60%);
+            @include transition (background .2s ease-in);
+        }
+    }
+    .row-selected {
+        background: lighten($green-taiga, 60%);
+        @include transition (background .2s ease-in);
+    }
+    .title {
+        @extend %medium;
+        border-bottom: 1px solid $gray-light;
+        font-family: 'DroidSans-Bold';
+        &:hover {
+            background: transparent;
+        }
+    }
+    .table-main {
+        @extend %small;
+        border-bottom: 1px solid $gray-light;
+    }
+    .color {
+        background-color: $gray-light;
+        border-radius: 2px;
+        cursor: pointer;
+        height: 35px;
+        width: 35px;
+    }
+    .is-closed {
+        text-align: center;
+    }
+    .icon-delete,
+    .icon-edit {
+        @extend %large;
+        margin-right: .5rem;
+    }
+    .icon-delete {
+        &:hover {
+            color: $red;
+        }
+    }
+    .select-color {
+        @include popover(323px, 10px, 70px, '', '', 15px, 13px, -7px);
+        border-radius: 0 10px 10px 0;
+        padding: 15px;
+        li {
+            float: left;
+            margin: 0 .5rem .5rem 0;
+            &:nth-child(7n) {
+                margin-right: 0;
+            }
+            &:nth-last-child(-n+7) {
+                margin-bottom: 0;
+            }
+        }
+        ul {
+            float: left;
+            margin-bottom: 1rem;
+        }
+        input {
+            background-color: $very-light-gray;
+            font-family: DroidSans;
+            width: 243px;
+            @include placeholder {
+                color: $gray;
+            }
+        }
+        .selected-color {
+            float: right;
+            height: 40px;
+            width: 40px;
+        }
+    }
+}

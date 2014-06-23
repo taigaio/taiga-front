@@ -1,4 +1,4 @@
-@mixin popover($width, $top: '', $left: '', $bottom: '', $right: '') {
+@mixin popover($width, $top: '', $left: '', $bottom: '', $right: '', $arrow-width: 0, $arrow-top: '', $arrow-left: '', $arrow-bottom: '') {
     background: $blackish;
     bottom: #{$bottom};
     color: $white;
@@ -26,5 +26,16 @@
             color: $fresh-taiga;
             @include transition (color .3s linear);
         }
+    }
+    &:after {
+        background: $blackish;
+        bottom: #{$arrow-bottom};
+        content: '';
+        height: 15px;
+        left: #{$arrow-left};
+        position: absolute;
+        top: #{$arrow-top};
+        transform: rotate(45deg);
+        width: #{$arrow-width};
     }
 }

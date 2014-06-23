@@ -1,0 +1,23 @@
+section.colors-table
+    div.row.title
+        div.width-1 Color
+        div.width-6 Name
+        div.is-closed.width-2 Is closed?
+        div.options.width-1
+    - for (var x = 0; x < 50; x++)
+        div.row.table-main
+            div.width-1.color-column
+                div.color
+                div.popover.select-color
+                    ul
+                        - for (var z = 0; z < 21; z++)
+                            li.color
+                    input(type="text", placeholder="personalized colors")
+                    div.selected-color(style="background-color: red")
+
+            div.width-6 Ready for test
+            div.is-closed.width-2
+                div.icon.icon-plus
+            div.options.width-1
+                a.icon.icon-edit(href="#")
+                a.icon.icon-delete(href="#")
