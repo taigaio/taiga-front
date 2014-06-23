@@ -1,6 +1,7 @@
 // Basic layout styles
 html {
     height: 100%;
+    min-height: 100%;
     width: 100%;
 }
 body {
@@ -9,35 +10,32 @@ body {
     font: 16px/21px 'DroidSans', Arial, sans-serif;
     -webkit-font-smoothing: antialiased; // Fix for webkit renderin
     height: 100%;
+    min-height: 100%;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
     width: 100%;
 }
 
+.master {
+    height: 100%;
+    min-height: 100%;
+}
+
 .wrapper {
-    align-content: stretch;
-    align-items: stretch;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
+    @include table-flex();
     min-height: 100%;
     padding-left: 90px;
 }
 
 .menu-secondary {
+    @include table-flex-child(1, 260px, 0, 260px);
     background: $whitish;
-    flex-basis: 260px;
-    flex-grow: 1;
-    flex-shrink: 0;
     padding: 2em 1em;
 }
 
 .menu-tertiary {
+    @include table-flex-child(1, 190px, 0, 190px);
     background-color: $dark-grayish-lime-green;
-    flex-basis: 190px;
-    flex-grow: 1;
-    flex-shrink: 0;
     padding: 2em 1em;
 }
 
@@ -47,9 +45,7 @@ body {
 }
 
 .main {
-    flex-basis: 600px;
-    flex-grow: 8;
-    flex-shrink: 0;
+    @include table-flex-child(8, 600px, 0, 600px);
     padding: 2em;
 }
 
