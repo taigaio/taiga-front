@@ -118,7 +118,8 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin)
         subtitle = us.subject
 
         @confirm.ask(title, subtitle).then =>
-            console.log "#TODO"
+            @.repo.remove(us).then =>
+                @.loadBacklog()
 
     addNewUs: (type) ->
         switch type
@@ -239,8 +240,6 @@ BacklogSprintDirective = ($repo) ->
     #########################
 
     linkCommon = ($scope, $el, $attrs, $ctrl) ->
-        $ctrl = $el.closest("div.wrapper").controller()
-
         sprint = $scope.$eval($attrs.tgBacklogSprint)
         if $scope.$first
             $el.addClass("sprint-current")
@@ -331,7 +330,7 @@ BacklogSprintDirective = ($repo) ->
         })
 
     link = ($scope, $el, $attrs) ->
-        $ctrl = $el.controller()
+        $ctrl = $el.closest("div.wrapper").controller()
         linkSortable($scope, $el, $attrs, $ctrl)
         linkCommon($scope, $el, $attrs, $ctrl)
 

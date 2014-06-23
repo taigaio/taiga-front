@@ -13,20 +13,24 @@ form
         div.markdown-preview
             a.edit.active(href="", title="Edit") Edit
             a.preview(href="", title="Preview") Preview
-        textarea(placeholder="One user story per line", ng-model="us.description")
+        textarea.description(placeholder="One user story per line", ng-model="us.description")
+        div.description-preview.hidden
     div.new-us-settings
         fieldset
-            label.requirement(for="team-requirement", tg-i18n="us.team-requirement")
+            label.requirement.team-requirement(for="team-requirement", tg-i18n="us.team-requirement")
             input(
                 type="checkbox", ng-model="us.team_requirement",
                 name="team-requirement", id="team-requirement")
         fieldset
-            label.requirement(for="client-requirement", tg-i18n="us.client-requirement")
+            label.requirement.client-requirement(for="client-requirement", tg-i18n="us.client-requirement")
             input(
                 type="checkbox", ng-model="us.client_requirement",
                 name="client-requirement", id="client-requirement")
         fieldset
             label.blocked(for="blocked-us", tg-i18n="common.blocked")
-            input(type="checkbox", ng-model="us.blocked", name="blocked-us", id="blocked-us")
+            input(type="checkbox", ng-model="us.is_blocked", name="blocked-us", id="blocked-us")
+    fieldset.blocked-note.hidden
+        textarea(placeholder="Why is this user story blocked?", ng-model="us.blocked_note")
+
     a.button.button-green(href="", title="Save")
         span Create
