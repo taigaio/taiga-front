@@ -59,6 +59,15 @@
     }
 }
 
+a.button-block {
+    background: $white;
+    color: $red;
+    &:hover {
+        background: $red-light;
+        color: $white;
+    }
+}
+
 .button-bulk {
     @extend %button;
     background: $green-taiga;

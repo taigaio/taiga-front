@@ -7,6 +7,7 @@
         top: 0;
     }
 }
+
 .us-story-main-data {
     margin-bottom: 2rem;
     .us-title {
@@ -20,6 +21,34 @@
         }
         .us-name {
             color: $grayer;
+        }
+    }
+    .blocked-warning {
+        background: $red;
+        color: $white;
+        margin-bottom: 1rem;
+        padding: 1rem;
+        position: relative;
+        .icon {
+            @extend %xxlarge;
+            display: inline;
+            left: 1rem;
+            position: absolute;
+            top: 1rem;
+        }
+        .blocked {
+            @extend %xlarge;
+            margin-bottom: .3em;
+        }
+        p {
+            margin-bottom: 0;
+            margin-left: 4rem;
+            margin-right: 10rem;
+        }
+        .button-block {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
         }
     }
 }
