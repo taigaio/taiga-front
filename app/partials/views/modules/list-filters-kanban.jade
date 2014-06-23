@@ -1,18 +1,23 @@
-section.issues-header
+section.list-filters
     ul
         li
             a(href="#").active
-                span.icon.icon-issues
-                | SHOW LIST
+                span.icon.icon-filter
+                | SHOW FILTERS
+
+        li
+            a(href="#")
+                span.icon.icon-tag
+                | SHOW TAGS
 
         li
             a(href="#")
                 span.icon.icon-graph
-                | SHOW GRAPH
+                | HIDE CFD GRAPH
 
     div.new-issue
         a.button-green(href="")
             span.text
-                | + NEW ISSUE
+                | + NEW TASK
         a.button-bulk(href="")
             span.icon.icon-bulk

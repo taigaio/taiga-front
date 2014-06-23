@@ -18,6 +18,9 @@
         margin: 0 .3rem;
         padding: .5rem 0;
         text-align: center;
+        &:first-child {
+            margin-left: 0;
+        }
     }
 }
 
