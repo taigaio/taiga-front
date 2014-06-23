@@ -4,11 +4,12 @@ block head
     title Taiga  Project management web application with scrum in mind!
 
 block content
-    section.main.taskboard
-        h1
-            span ProjectName
-            span.green Sprint Name
-            span.date 02/10/2014-15/10/2014
-        include views/components/large-summary
-        include views/modules/burndown
-        include views/modules/taskboard-table
+    div.wrapper
+        section.main.taskboard
+            h1
+                span ProjectName
+                span.green Sprint Name
+                span.date 02/10/2014-15/10/2014
+            include views/components/large-summary
+            include views/modules/burndown
+            include views/modules/taskboard-table
