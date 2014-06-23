@@ -22,9 +22,9 @@
 taiga = @.taiga
 
 class AuthService extends taiga.Service
-    @.$inject = ["$rootScope", "$tgStorage", "$tgModel", "$tgHttp"]
+    @.$inject = ["$rootScope", "$tgStorage", "$tgModel", "$tgHttp", "$tgUrls"]
 
-    constructor: (@rootscope, @storage, @model, @http) ->
+    constructor: (@rootscope, @storage, @model, @http, @urls) ->
         super()
 
     getUser: ->
@@ -60,11 +60,12 @@ class AuthService extends taiga.Service
         data = {
             username: username
             password: password
+            type: "normal"
         }
 
         return @http.post(url, data).then (data, status) =>
-            user = @model.make_model("users", data)
-            @.setToken(data["auth_token"])
+            user = @model.make_model("users", data.data)
+            @.setToken(user.auth_token)
             @.setUser(user)
             return user
 
@@ -73,5 +74,19 @@ class AuthService extends taiga.Service
             return true
         return false
 
+
+class AuthController extends taiga.Controller
+    @.$inject = ["$scope", "$tgAuth", "$location"]
+
+    constructor: (@scope, @auth, @location) ->
+        @scope.form = {username: "", password: ""}
+
+    submit: ->
+        @auth.login(@scope.form.username, @scope.form.password).then (user) =>
+            #TODO: fix this
+            @location.path("/project/project-example-0/backlog")
+
+
 module = angular.module("taigaAuth", ["taigaResources"])
 module.service("$tgAuth", AuthService)
+module.controller("AuthController", AuthController)

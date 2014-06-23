@@ -22,7 +22,9 @@
 @taiga = taiga = {}
 
 configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $compileProvider, $gmUrlsProvider) ->
-    $routeProvider.when('/project/:pslug/backlog', {templateUrl: '/partials/backlog.html'})
+    $routeProvider.when("/project/:pslug/backlog", {templateUrl: "/partials/backlog.html"})
+    $routeProvider.when("/login", {templateUrl: "/partials/login.html"})
+
     $routeProvider.otherwise({redirectTo: '/login'})
     $locationProvider.html5Mode(true);
 
@@ -80,6 +82,3 @@ angular.module("taigaLocalConfig", []).value("localconfig", {})
 module = angular.module("taiga", modules)
 module.config(configure)
 module.run(init)
-
-
-

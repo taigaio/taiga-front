@@ -39,10 +39,12 @@ resourceProvider = ($repo) ->
         params = {"project": projectId}
         return $repo.queryMany("roles", params)
 
+    service.stats = (projectId) ->
+        return $repo.queryOneRaw("projects", "#{projectId}/stats")
+
     return (instance) ->
         instance.projects = service
 
 
 module = angular.module("taigaResources")
 module.factory("$tgProjectsResourcesProvider", ["$tgRepo", resourceProvider])
-

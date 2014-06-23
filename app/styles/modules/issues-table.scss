@@ -1,0 +1,70 @@
+.issues-table {
+    align-content: stretch;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 100%;
+    .row {
+        align-content: stretch;
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        padding: 1rem 0;
+        text-align: left;
+        width: 100%;
+        @for $i from 1 through 8 {
+            .width-#{$i} {
+                flex-basis: 50px;
+                flex-grow: $i;
+                flex-shrink: 0;
+            }
+        }
+        &:hover {
+            background: lighten($green-taiga, 60%);
+            @include transition (background .2s ease-in);
+        }
+    }
+    .row-selected {
+        background: lighten($green-taiga, 60%);
+        @include transition (background .2s ease-in);
+    }
+    .title {
+        @extend %medium;
+        border-bottom: 1px solid $gray-light;
+        font-family: 'DroidSans-Bold';
+        &:hover {
+            background: transparent;
+        }
+    }
+    .table-main {
+        @extend %small;
+        border-bottom: 1px solid $gray-light;
+    }
+    .avatar {
+        align-items: center;
+        display: flex;
+        img {
+            flex-basis: 35px;
+        }
+        figcaption {
+            margin-left: 1rem;
+        }
+    }
+    .level {
+        background-color: $gray-light;
+        border-radius: 9px;
+        height: 18px;
+        margin: 0 auto;
+        width: 18px;
+    }
+    .level-field {
+        text-align: center;
+    }
+    .subject {
+        padding-right: 1rem;
+    }
+}

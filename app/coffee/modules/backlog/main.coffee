@@ -31,6 +31,22 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin)
 
         @rootscope.$on("usform:bulk:success", @.loadUserstories)
 
+    initializeProjectStats: ->
+        @scope.stats = {
+            total_points: "--"
+            defined_points: "--"
+            assigned_points: "--"
+            closed_points: "--"
+            completedPercentage: "--%"
+        }
+
+    loadProjectStats: ->
+        return @rs.projects.stats(@scope.projectId).then (stats) =>
+            @scope.stats = stats
+            completedPercentage = Math.round(100 * stats.closed_points / stats.total_points)
+            @scope.stats.completedPercentage = "#{completedPercentage}%"
+            return stats
+
     loadSprints: ->
         return @rs.sprints.list(@scope.projectId).then (sprints) =>
             @scope.sprints = sprints
@@ -46,6 +62,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     loadBacklog: ->
         return @q.all([
+            @.loadProjectStats(),
             @.loadSprints(),
             @.loadUserstories()
         ])
@@ -58,6 +75,9 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin)
             return project
 
     loadInitialData: ->
+        # Set stats initial values
+        @.initializeProjectStats()
+
         # Resolve project slug
         promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
             @scope.projectId = data.project
@@ -213,7 +233,12 @@ BacklogDirective = ($repo) ->
 #############################################################################
 
 BacklogSprintDirective = ($repo) ->
-    link = ($scope, $el, $attrs) ->
+
+    #########################
+    ## Common parts
+    #########################
+
+    linkCommon = ($scope, $el, $attrs, $ctrl) ->
         $ctrl = $el.closest("div.wrapper").controller()
 
         sprint = $scope.$eval($attrs.tgBacklogSprint)
@@ -223,15 +248,28 @@ BacklogSprintDirective = ($repo) ->
         if sprint.closed
             $el.addClass("sprint-closed")
 
+        if not $scope.$first and not sprint.closed
+            $el.addClass("sprint-old-open")
+
+        # Atatch formatted dates
+        initialDate = moment(sprint.estimated_start).format("YYYY/MM/DD")
+        finishDate = moment(sprint.estimated_finish).format("YYYY/MM/DD")
+        dates = "#{initialDate}-#{finishDate}"
+        $el.find(".sprint-date").html(dates)
+
+        # Update progress bars
+        progressPercentage = Math.round(100 * (sprint.closed_points / sprint.total_points))
+        $el.find(".current-progress").css("width", "#{progressPercentage}%")
+
         # Event Handlers
         $el.on "click", ".sprint-summary > a", (event) ->
             $el.find(".sprint-table").toggle()
 
-        $scope.$on "$destroy", ->
-            $el.off()
+    #########################
+    ## Drag & Drop Link
+    #########################
 
-        # Drag & Drop
-
+    linkSortable = ($scope, $el, $attrs, $ctrl) ->
         resortAndSave = ->
             toSave = []
             for item, i in $scope.sprint.user_stories
@@ -291,6 +329,14 @@ BacklogSprintDirective = ($repo) ->
             onAdd: onAddItem,
             onRemove: onRemoveItem,
         })
+
+    link = ($scope, $el, $attrs) ->
+        $ctrl = $el.controller()
+        linkSortable($scope, $el, $attrs, $ctrl)
+        linkCommon($scope, $el, $attrs, $ctrl)
+
+        $scope.$on "$destroy", ->
+            $el.off()
 
     return {link: link}
 
