@@ -10,13 +10,13 @@
 }
 
 // Table Flex - http://devbryce.com/site/flexbox/
-@mixin table-flex {
-    align-content: stretch;
-    align-items: stretch;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
+@mixin table-flex($align-content: stretch, $align-items: stretch, $display: flex, $flex-direction: row, $flex-wrap: wrap, $justify-content: flex-start) {
+    align-content: $align-content;
+    align-items: $align-items;
+    display: $display;
+    flex-direction: $flex-direction;
+    flex-wrap: $flex-wrap;
+    justify-content: $justify-content;
 }
 
 @mixin table-flex-child($flex-grow: 1, $flex-basis: 300px, $flex-shrink: 0, $width:'') {

@@ -11,28 +11,23 @@
     }
 }
 
-%button {
+%button,
+.button {
     @extend %large;
+    @include transition (background .3s linear);
     display: inline-block;
     font-family: 'ostrichSans';
     padding: 8px 40px;
-    .icon {
-        margin-right: .3rem;
+    &:hover {
+        @include transition (background .3s linear);
     }
-}
-
-.button-green,
-.button-gray,
-.button-red {
-    @extend %button;
-    @include transition (background .3s linear);
     span {
         color: $white;
         position: relative;
         top: 2px;
     }
-    &:hover {
-        @include transition (background .3s linear);
+    .icon {
+        margin-right: .3rem;
     }
 }
 

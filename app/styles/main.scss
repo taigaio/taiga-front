@@ -42,9 +42,10 @@ $prefix-for-spec:      true;
 @import 'modules/admin-functionalities';
 @import 'modules/category-config';
 @import 'modules/project-details';
-@import 'modules/comments';
 @import 'modules/attachments';
+@import 'modules/comments';
 @import 'modules/comment-activity';
+@import 'modules/activity';
 
 // Responsive
 @import 'responsive/mobile';

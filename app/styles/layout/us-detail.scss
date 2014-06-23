@@ -104,30 +104,143 @@
     padding: 1rem 2rem;
 }
 
-.activity-single {
-    @include table-flex;
-    border-bottom: 2px solid $gray-light;
-    padding: 1rem 0;
+.us-detail-status {
+    @extend %large;
+    color: $green-taiga;
+    vertical-align: middle;
+}
+
+.us-detail-progress-bar {
+    background: $grayer;
+    height: 26px;
+    margin-bottom: 1rem;
     position: relative;
-    .username {
-        color: $green-taiga;
-        margin-bottom: 1rem;
+    .current-progress {
+        background: $fresh-taiga;
+        height: 26px;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 60%;
     }
-    .date {
+    .tasks-completed {
         @extend %small;
-        color: $gray-light;
-        margin-left: 1rem;
+        color: $white;
+        left: 10px;
+        position: absolute;
+        top: 2px;
     }
 }
 
-.activity-user {
-    @include table-flex-child(1, 50px, 0);
-    img {
-        max-width: 70px;
+.points-per-role {
+    li {
+        border-right: 1px solid $grayer;
+        display: inline-block;
+        margin: .5rem .1rem;
+        opacity: .3;
+        text-align: center;
+        width: 18%;
+        &:first-child {
+            opacity: 1;
+        }
+        &:nth-child(5n) {
+            border: 0;
+        }
+    }
+    .points {
+        @extend %xlarge;
+        display: block;
+        font-family: 'ostrichSans';
+        text-align: center;
+    }
+    .role {
+        display: inline-block;
+        max-width: 90%;
+        overflow: hidden;
+        text-align: center;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+.us-detail-assigned-to {
+    @include table-flex();
+    margin-top: 2rem;
+    .user-avatar {
+        @include table-flex-child(1, 0);
+    }
+    .assigned-to {
+        @include table-flex-child(3, 0);
+        margin-left: 1rem;
+        margin-top: 15px;
+        .assigned-title {
+            color: $gray-light;
+            display: block;
+        }
+        .user-assigned {
+            @extend %large;
+            color: $green-taiga;
+        }
+    }
+}
+
+.watchers {
+    margin-top: 2rem;
+    .watchers-header {
+        border-bottom: 2px solid $gray-light;
+        padding: .5rem;
+        position: relative;
+        .title {
+            @extend %large;
+            font-family: 'ostrichSans';
+        }
+        .icon {
+            @extend %large;
+            position: absolute;
+            right: 1rem;
+            top: 4px;
+        }
+    }
+    .watcher-single {
+        @include table-flex(center, center, flex, row, wrap, center);
+        border-bottom: 1px solid $gray-light;
+        padding: .5rem;
+        vertical-align: middle;
+        &:last-child {
+            border: 0;
+        }
+        .watcher-avatar {
+            @include table-flex-child(1, 0);
+        }
+        .watcher-name {
+            @include table-flex-child(8, 0);
+            @extend %large;
+            color: $grayer;
+            margin-left: 1rem;
+        }
+    }
+}
+
+.us-settings {
+    margin-top: 2rem;
+    .button {
+        color: $white;
+        display: block;
+        margin-bottom: .5rem;
+        text-align: center;
         width: 100%;
     }
-}
-
-.activity-content {
-    @include table-flex-child(20, 150px, 0);
+    .button-gray {
+        background: $gray-light;
+        &:hover,
+        &.active {
+            background: $grayer;
+        }
+    }
+    .button-red {
+        &:hover,
+        &.active {
+            background: $red;
+        }
+    }
 }

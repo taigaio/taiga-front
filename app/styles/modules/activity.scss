@@ -44,6 +44,7 @@
     @include table-flex;
     border-bottom: 2px solid $gray-light;
     padding: 2rem 0;
+    position: relative;
     &:first-child {
         margin-top: 0;
     }
@@ -60,7 +61,8 @@
     }
     .activity-username {
         border-bottom: 1px dotted $gray-light;
-        padding-bottom: 1rem;
+        color: $green-taiga;
+        margin-bottom: 1rem;
     }
     .activity-content {
         @include table-flex-child(20, 150px, 0);
@@ -72,6 +74,7 @@
         }
     }
     .date {
+        @extend %small;
         color: $gray-light;
         margin-left: 1rem;
     }
