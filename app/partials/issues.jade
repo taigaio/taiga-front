@@ -6,9 +6,15 @@ block head
 block content
     div.wrapper
         sidebar.menu-secondary.sidebar
+            header
+                h1 Filters
+
             include views/modules/search-in
             include views/modules/filter-tags
 
-        section.main.admin-roles
+        section.main.issues-page
             header
                 include views/components/mainTitle
+
+            include views/modules/issues-header
+            include views/modules/issues-table

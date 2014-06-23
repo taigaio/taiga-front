@@ -1,0 +1,21 @@
+section.issues-table
+    div.row.title
+        div.level-field.width-1 Severity
+        div.level-field.width-1 Priority
+        div.width-7.subject Subject
+        div.width-2 Status
+        div.width-2 Assigned to
+    - for (var x = 0; x < 50; x++)
+        div.row.table-main
+            div.level-field.width-1
+                div.level
+            div.level-field.width-1
+                div.level
+            div.width-7.subject
+                | #2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sit amet leo accumsan, commodo neque eu, iaculis nisl. Phasellus fermentum ipsum eget sapien suscipit pretium.
+            div.width-2
+                In progress
+            div.width-2
+                figure.avatar
+                    img(src="http://thecodeplayer.com/u/uifaces/12.jpg", alt="username")
+                    figcaption Pilar
