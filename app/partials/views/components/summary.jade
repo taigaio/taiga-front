@@ -2,18 +2,18 @@ div.summary(tg-backlog-summary)
     div.summary-progress-bar
         div.current-progress
     div.data
-        span.number 30%
+        span.number(ng-bind="stats.completedPercentage")
         span.description completed
     ul
         li
-            span.number 12
+            span.number(ng-bind="stats.total_points")
             span.description project<br />points
         li
-            span.number 23
+            span.number(ng-bind="stats.defined_points")
             span.description defined<br />points
         li
-            span.number 12
+            span.number(ng-bind="stats.assigned_points")
             span.description assigned<br />points
         li
-            span.number 23
+            span.number(ng-bind="stats.closed_points")
             span.description closed<br />points
