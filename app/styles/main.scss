@@ -41,9 +41,9 @@ $prefix-for-spec:      true;
 @import 'modules/filter-tags';
 @import 'modules/admin-menu';
 @import 'modules/admin-submenu';
-@import 'modules/admin-membership';
 @import 'modules/admin-roles';
 @import 'modules/admin-functionalities';
+@import 'modules/admin-membership-table';
 @import 'modules/category-config';
 @import 'modules/project-details';
 
@@ -55,4 +55,5 @@ $prefix-for-spec:      true;
 @import 'layout/base';
 @import 'layout/backlog';
 @import 'layout/taskboard';
+@import 'layout/admin-membership';
 @import 'layout/kanban';
