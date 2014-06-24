@@ -25,9 +25,9 @@
 urls = {
     "home": "/",
     "profile": "/:user",
-    "project": "/:user/:project",
-    "project-backlog": "/:user/:project/backlog",
-    "project-taskboard": "/:user/:project/taskboard/:sprint",
+    "project": "/project/:project",
+    "project-backlog": "/project/:project/backlog",
+    "project-taskboard": "/project/:project/taskboard/:sprint",
 }
 
 init = ($log, $navurls) ->
