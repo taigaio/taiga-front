@@ -39,12 +39,19 @@ DateRangeDirective = ->
 
 
 SprintProgressBarDirective = ->
+    renderProgress = ($el, percentage) ->
+        if $el.is(".current-progress")
+            $el.css("width", "#{percentage}%")
+        else
+            $el.find(".current-progress").css("width", "#{percentage}%")
+            $el.find(".number").html("#{percentage} %")
+
     link = ($scope, $el, $attrs) ->
         bindOnce $scope, $attrs.tgSprintProgressbar, (sprint) ->
             closedPoints = sprint.closed_points
             totalPoints = sprint.total_points
             percentage = Math.round(100 * (closedPoints/totalPoints))
-            $el.css("width", "#{percentage}%")
+            renderProgress($el, percentage)
 
     return {link: link}
 
