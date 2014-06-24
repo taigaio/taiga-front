@@ -45,42 +45,12 @@
     .register-text {
         @extend %small;
     }
-    .button-login,
-    .button-register {
+    .button {
         color: $white;
         display: block;
         margin-bottom: .5rem;
         text-align: center;
     }
-}
-
-.login-form-container {
-    .login-password {
-        position: relative;
-    }
-    input:focus {
-        &+.forgot-pass {
-            opacity: 0;
-            @include transition(opacity .5s linear);
-        }
-    }
-    .forgot-pass {
-        @include transition(all .3s linear);
-        @extend %small;
-        color: $gray-light;
-        opacity: 1;
-        position: absolute;
-        right: 1rem;
-        top: .5rem;
-        &:hover {
-            @include transition(color .3s linear);
-            color: $grayer;
-        }
-    }
-}
-
-.register-form-container {
-    display: none;
 }
 
 .login-error {

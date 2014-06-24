@@ -52,6 +52,9 @@ $prefix-for-spec:      true;
 @import 'modules/comments';
 @import 'modules/comment-activity';
 @import 'modules/activity';
+@import 'modules/login-form';
+@import 'modules/register-form';
+//@import 'modules/forgot-form';
 
 // Responsive
 @import 'responsive/mobile';
