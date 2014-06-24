@@ -1,0 +1,14 @@
+.project-nav {
+    @include transform(translate3d(-300px, 0, 0));
+    background-color: $blackish;
+    height: 100%;
+    left: 0;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 300px;
+    z-index: 99;
+    h1 {
+        color: $white;
+    }
+}

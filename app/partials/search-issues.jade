@@ -12,3 +12,12 @@ block content
             include views/components/mainTitle
             include views/modules/search-filter
             include views/modules/search-result-issues-table
+
+    script.
+        setTimeout(function () {
+            document.body.className = 'open-project-nav';
+        }, 2000);
+
+        setTimeout(function () {
+            document.body.className = 'closed-project-nav';
+        }, 6000);

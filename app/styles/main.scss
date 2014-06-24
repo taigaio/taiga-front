@@ -28,6 +28,7 @@ $prefix-for-spec:      true;
 
 //Modules
 @import 'modules/nav';
+@import 'modules/project-nav';
 @import 'modules/sprints';
 @import 'modules/burndown';
 @import 'modules/backlog-table';
