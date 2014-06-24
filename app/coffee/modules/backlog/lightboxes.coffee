@@ -53,8 +53,8 @@ CreateEditUserstoryDirective = ($repo, $model, $rs) ->
             isNew = true
             editDescription($scope, $el)
             # Update texts for creation
-            $el.find(".button-green span").html("Create")
-            $el.find(".title").html("New user story  ")
+            $el.find(".button-green span").html("Create") #TODO: i18n
+            $el.find(".title").html("New user story  ") #TODO: i18n
             $el.removeClass("hidden")
 
         $scope.$on "usform:edit", (ctx, us) ->
@@ -62,8 +62,8 @@ CreateEditUserstoryDirective = ($repo, $model, $rs) ->
             isNew = false
             editDescription($scope, $el)
             # Update texts for edition
-            $el.find(".button-green span").html("Save")
-            $el.find(".title").html("Edit user story  ")
+            $el.find(".button-green span").html("Save") #TODO: i18n
+            $el.find(".title").html("Edit user story  ") #TODO: i18n
             $el.removeClass("hidden")
 
             # Update requirement info (team, client or blocked)

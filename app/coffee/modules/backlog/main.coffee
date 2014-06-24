@@ -21,6 +21,7 @@
 
 taiga = @.taiga
 mixOf = @.taiga.mixOf
+toggleText = @.taiga.toggleText
 
 class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin)
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q) ->
@@ -208,7 +209,10 @@ BacklogDirective = ($repo) ->
         $scope.filtersSearch = {}
         $el.on "click", "#show-filters-button", (event) ->
             event.preventDefault()
+            target = angular.element(event.currentTarget)
             $el.find("sidebar.filters-bar").toggle()
+            target.toggleClass("active")
+            toggleText(target.find(".text"), ["Hide Filters", "Show Filters"]) # TODO: i18n
 
         $el.on "click", "section.filters a.single-filter", (event) ->
             event.preventDefault()

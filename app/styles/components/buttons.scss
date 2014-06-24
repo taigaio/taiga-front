@@ -2,7 +2,8 @@
 .trans-button {
     @extend %large;
     font-family: 'ostrichSans';
-    &:hover {
+    &:hover,
+    &.active {
         @include transition (color .3s linear);
         color: $green-taiga;
     }
