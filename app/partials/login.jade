@@ -10,14 +10,11 @@ block content
             div.login-container
                 h1.logo
                     img(src="/images/logo.png", alt="TAIGA")
-                p.tagline Project management web application with scrum in the mind!
+                p.tagline Project management web application with scrum in mind!
                 p.login-error
                     span.title Ooops! Something went wrong!
                     span.text According to our Oompa Loompas, your username or password are incorrect.
                     a.icon.icon-delete(href="", title="Close message")
-                form(ng-submit="ctrl.submit()")
-                    input(type="text", name="username", ng-model="form.username", placeholder="User name")
-                    input(type="password", name="password", ng-model="form.password")
-                    a.button.button-login.button-gray(href="", title="Log in") Log in
-                    a.button.button-signup.button-orange(href="", title="Log in") Sign up
-                    input(type="submit", value="I am an horrible button to be deleted. Click me to login for the moment")
+
+                include views/modules/login-form
+                include views/modules/register-form

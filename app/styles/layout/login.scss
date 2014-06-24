@@ -22,28 +22,47 @@
         font-family: 'ostrichSans';
         line-height: 2rem;
     }
+    form {
+        margin-bottom: 2rem;
+    }
     input {
         background: $white;
         margin-bottom: 1rem;
+        @include placeholder {
+            color: $gray-light;
+        }
+    }
+    .remember-me {
+        vertical-align: top;
+    }
+    .login-text,
+    .register-text {
+        text-align: center;
+        a:hover {
+            color: $fresh-taiga;
+        }
+    }
+    .register-text {
+        @extend %small;
     }
     .button-login,
-    .button-signup {
+    .button-register {
         color: $white;
         display: block;
         margin-bottom: .5rem;
         text-align: center;
     }
-    .button-login {
-        &:hover {
-            background: $green-taiga;
-        }
-    }
+}
+
+.register-form-container {
+    display: none;
 }
 
 .login-error {
     background: $red;
     border-radius: 4px;
     color: $white;
+    display: none;
     padding: 1rem;
     position: absolute;
     right: 1rem;

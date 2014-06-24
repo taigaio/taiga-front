@@ -1,0 +1,14 @@
+div.login-form-container
+    form.login-form(ng-submit="ctrl.submit()")
+        fieldset
+            input(type="text", name="username", ng-model="form.username", placeholder="User name")
+        fieldset
+            input(type="password", name="password", ng-model="form.password")
+        fieldset
+            input.remember-me(type="checkbox", checked="checked")
+            label remember me on this computer
+        fieldset
+            a.button.button-login.button-green(href="", title="Log in") Enter
+    p.login-text
+        span Not registered yet?
+        a(href="", title="Register")  create your free account here
