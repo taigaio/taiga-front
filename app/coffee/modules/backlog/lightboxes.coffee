@@ -21,7 +21,7 @@
 
 CreateEditUserstoryDirective = ($repo, $model, $rs) ->
 
-    editDescription = ($scope, $el) ->
+    editDescription = ($scope, $el) ->        
         $el.find('.markdown-preview a').removeClass("active")
         $el.find('.markdown-preview a.edit').addClass("active")
         descriptionDOM = $el.find("textarea.description")

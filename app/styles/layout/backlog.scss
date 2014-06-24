@@ -14,5 +14,8 @@
         display: inline-block;
         margin-right: 1rem;
         padding: 4px 0;
+        &.move-to-current-sprint {
+            display: none;
+        }
     }
 }

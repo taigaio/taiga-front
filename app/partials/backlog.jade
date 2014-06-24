@@ -12,7 +12,7 @@ block content
             include views/components/summary
             include views/modules/burndown
             div.backlog-menu
-                a.trans-button(href="", title="Move to Current Sprint")
+                a.trans-button.move-to-current-sprint(href="", title="Move to Current Sprint", id="move-to-current-sprint")
                     span.icon.icon-move
                     span.text Move to current Sprint
                 a.trans-button(href="", title="Show Filters", id="show-filters-button")

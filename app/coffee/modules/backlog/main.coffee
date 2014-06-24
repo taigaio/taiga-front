@@ -201,6 +201,39 @@ BacklogDirective = ($repo) ->
             onRemove: onRemoveItem
         })
 
+    ##############################
+    ## Move to current sprint link
+    ##############################
+    linkMoveToCurrentSprint = ($scope, $el, $attrs, $ctrl) ->
+
+        moveToCurrentSprint = (selectedUss) ->
+            ussCurrent = _($scope.userstories)
+            # Remove them from backlog
+            $scope.userstories = ussCurrent.without.apply(ussCurrent, selectedUss).value()
+            # Add them to current sprint
+            $scope.sprints[0].user_stories = _.union(selectedUss, $scope.sprints[0].user_stories)
+            $ctrl.filterVisibleUserstories()
+            $repo.saveAll(selectedUss)
+
+
+        # Enable move to current sprint only when there are selected us's
+        $el.on "change", ".backlog-table-body .user-stories input:checkbox", (event) ->
+            moveToCurrentSprintDom = $el.find("#move-to-current-sprint")
+            if $el.find(".backlog-table-body .user-stories input:checkbox:checked").length > 0 and $scope.sprints.length > 0
+                moveToCurrentSprintDom.show()
+            else
+                moveToCurrentSprintDom.hide()
+
+        $el.on "click", "#move-to-current-sprint", (event) =>
+            # Calculating the us's to be modified
+            ussDom = $el.find(".backlog-table-body .user-stories input:checkbox:checked")
+            ussToMove = _.map ussDom, (item) ->
+                itemScope = angular.element(item).scope()
+                itemScope.us.milestone = $scope.sprints[0].id
+                return itemScope.us
+
+            $scope.$apply(_.partial(moveToCurrentSprint, ussToMove))
+
     #########################
     ## Filters Link
     #########################
@@ -226,6 +259,7 @@ BacklogDirective = ($repo) ->
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
         linkSortable($scope, $el, $attrs, $ctrl)
+        linkMoveToCurrentSprint($scope, $el, $attrs, $ctrl)
         linkFilters($scope, $el, $attrs, $ctrl)
 
         $scope.$on "$destroy", ->
