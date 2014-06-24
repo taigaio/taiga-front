@@ -23,6 +23,8 @@
 
 configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $compileProvider, $gmUrlsProvider) ->
     $routeProvider.when("/project/:pslug/backlog", {templateUrl: "/partials/backlog.html"})
+    $routeProvider.when("/project/:pslug/taskboard/:id", {templateUrl: "/partials/taskboard.html"})
+
     $routeProvider.when("/login", {templateUrl: "/partials/login.html"})
 
     $routeProvider.otherwise({redirectTo: '/login'})
@@ -71,6 +73,7 @@ modules = [
 
     # Specific Modules
     "taigaBacklog",
+    "taigaTaskboard",
 
     # Vendor modules
     "ngRoute",

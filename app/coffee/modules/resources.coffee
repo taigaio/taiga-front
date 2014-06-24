@@ -107,5 +107,6 @@ module.run([
     "$tgSprintsResourcesProvider",
     "$tgUserstoriesResourcesProvider",
     "$tgMdRenderResourcesProvider",
+    "$tgTasksResourcesProvider",
     initResources
 ])

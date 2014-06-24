@@ -1,4 +1,4 @@
-div.taskboard-task
+div.taskboard-task(ng-repeat="t in tasksByStatus[s.id] track by t.id")
     div.taskboard-tagline
         - for(var y = 0; y < 3; y++)
             a.taskboard-tag(href="", title="tasboard-tag")
