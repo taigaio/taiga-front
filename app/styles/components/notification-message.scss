@@ -1,0 +1,44 @@
+.notification-message {
+    background: $grayer;
+    color: $white;
+    padding: 1rem;
+    padding-bottom: .5em;
+    position: relative;
+    width: 100%;
+    z-index: 999;
+    .text {
+        display: inline-block;
+        margin-left: .5rem;
+        width: 80%;
+    }
+    .warning {
+        @extend %xlarge;
+        color: $white;
+        font-family: 'DroidSans-Bold';
+        line-height: 2.4rem;
+    }
+    .icon-delete {
+        color: $white;
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+    }
+}
+
+.notification-message-success {
+    background: $fresh-taiga;
+    .icon-notification-success {
+        @extend %xxlarge;
+        display: inline;
+        vertical-align: sub;
+    }
+}
+
+.notification-message-error {
+    background: $red;
+    .icon-notification-error {
+        @extend %xxlarge;
+        display: inline;
+        vertical-align: sub;
+    }
+}
