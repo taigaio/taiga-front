@@ -52,17 +52,25 @@
         height: 35px;
         width: 35px;
     }
+    .icon-floppy,
     .icon-delete,
     .icon-edit {
         @extend %large;
         float: right;
         margin-right: .5rem;
     }
+    .icon-floppy {
+        margin-right: 1rem;
+    }
     .icon-delete {
         margin-right: 1rem;
         &:hover {
             color: $red;
         }
+    }
+    .icon-notification-success {
+        @extend %large;
+        color: $fresh-taiga;
     }
     .select-color {
         @include popover(323px, 10px, 70px, '', '', 15px, 13px, -7px);

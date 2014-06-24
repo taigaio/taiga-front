@@ -3,6 +3,9 @@
         float: right;
     }
     .colors-table {
-        margin-top: 2rem;
+        margin-top: 1rem;
+    }
+    .project-colors-options {
+        @include clearfix;
     }
 }
