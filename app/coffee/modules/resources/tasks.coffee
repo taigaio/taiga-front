@@ -16,23 +16,23 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: modules/navigation.coffee
+# File: modules/resources/tasks.coffee
 ###
 
-# Simple module that uses navurls service and register
-# navigation urls for taiga.
 
-urls = {
-    "home": "/",
-    "profile": "/:user",
-    "project": "/project/:project",
-    "project-backlog": "/project/:project/backlog",
-    "project-taskboard": "/project/:project/taskboard/:sprint",
-}
+taiga = @.taiga
 
-init = ($log, $navurls) ->
-    $log.debug "Initialize navigation urls"
-    $navurls.update(urls)
+resourceProvider = ($repo) ->
+    service = {}
 
-module = angular.module("taigaNavigation", ["taigaBase"])
-module.run(["$log", "$tgNavUrls", init])
+    service.list = (projectId, sprintId=null) ->
+        params = {project: projectId}
+        params.milestone = sprintId if sprintId
+        return $repo.queryMany("tasks", params)
+
+    return (instance) ->
+        instance.tasks = service
+
+
+module = angular.module("taigaResources")
+module.factory("$tgTasksResourcesProvider", ["$tgRepo", resourceProvider])

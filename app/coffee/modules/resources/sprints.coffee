@@ -24,6 +24,16 @@ taiga = @.taiga
 resourceProvider = ($repo, $model) ->
     service = {}
 
+    service.get = (projectId, sprintId) ->
+        return $repo.queryOne("milestones", sprintId).then (sprint) ->
+            uses = sprint.user_stories
+            uses = _.map(uses, (u) -> $model.make_model("userstories", u))
+            sprint._attrs.user_stories = uses
+            return sprint
+
+    service.stats = (projectId, sprintId) ->
+        return $repo.queryOneRaw("milestones", "#{sprintId}/stats")
+
     service.list = (projectId) ->
         params = {"project": projectId}
         return $repo.queryMany("milestones", params).then (milestones) =>
@@ -32,6 +42,7 @@ resourceProvider = ($repo, $model) ->
                 uses = _.map(uses, (u) => $model.make_model("userstories", u))
                 m._attrs.user_stories = uses
             return milestones
+
 
     return (instance) ->
         instance.sprints = service

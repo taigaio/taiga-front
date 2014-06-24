@@ -1,32 +1,29 @@
 div.taskboard-table
     div.taskboard-table-header
         div.taskboard-table-inner
-            - for(var z = 0; z < 11; z++)
-                h2.task-colum_name user stories
+            h2.task-colum_name "User story"
+            h2.task-colum_name(ng-repeat="s in statusList track by s.id", tg-bo-html="s.name")
     div.taskboard-table-body
         div.taskboard-table-inner
             div.taskboard_task-list.task-column
-                - for(var x = 0; x < 3; x++)
-                    div.task-row
-                        div.tag-list
-                            - for(var y = 0; y < 5; y++)
-                                include ../components/tag
-                        h3.task-title
-                            span.task-num 125
-                            span Invitacion de los usuarios a la plataforma
-                        ul.task-list
-                            li.task-status Open
-                            li UX
-                                span 4.5
-                            li Diseño
-                                span 4.5
-                            li Front
-                                span 4.5
-                            li Back
-                                span 4.5
-                        include ../components/addnewus
-            - for(var z = 0; z < 10; z++)
-                div.taskboard_task-playground.task-column
-                    - for(var x = 0; x < 3; x++)
-                        div.task-row
-                            include ../components/taskboard-task
+                div.task-row(ng-repeat="us in userstories track by us.id")
+                    div.tag-list
+                        - for(var y = 0; y < 5; y++)
+                            include ../components/tag
+                    h3.task-title
+                        span.task-num 125
+                        span Invitacion de los usuarios a la plataforma
+                    ul.task-list
+                        li.task-status Open
+                        li UX
+                            span 4.5
+                        li Diseño
+                            span 4.5
+                        li Front
+                            span 4.5
+                        li Back
+                            span 4.5
+                    include ../components/addnewus
+            div.taskboard_task-playground.task-column(ng-repeat="s in statusList track by s.id")
+                div.task-row(ng-repeat="us in userstories track by us.id")
+                    include ../components/taskboard-task

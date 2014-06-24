@@ -1,15 +1,15 @@
-extends layout
+extends dummy-layout
 
 block head
     title Taiga  Project management web application with scrum in mind!
 
 block content
-    div.wrapper
+    div.wrapper(tg-taskboard, ng-controller="TaskboardController as ctrl")
         section.main.taskboard
             h1
-                span ProjectName
-                span.green Sprint Name
-                span.date 02/10/2014-15/10/2014
-            include views/components/large-summary
+                span(tg-bo-html="project.name")
+                span.green(tg-bo-html="sprint-name")
+                span.date(tg-date-range="sprint.estimated_start,sprint.estimated_finish")
+            include views/components/sprint-summary
             include views/modules/burndown
             include views/modules/taskboard-table
