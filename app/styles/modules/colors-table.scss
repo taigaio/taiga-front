@@ -1,29 +1,5 @@
 .colors-table {
-    align-content: stretch;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    width: 100%;
     .row {
-        align-content: stretch;
-        align-items: center;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        justify-content: flex-start;
-        padding: 1rem 0 1rem 1rem;
-        position: relative;
-        text-align: left;
-        width: 100%;
-        @for $i from 1 through 8 {
-            .width-#{$i} {
-                flex-basis: 50px;
-                flex-grow: $i;
-                flex-shrink: 0;
-            }
-        }
         &:hover {
             background: lighten($green-taiga, 60%);
             @include transition (background .2s ease-in);

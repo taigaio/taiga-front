@@ -1,28 +1,6 @@
 .admin-membership-table {
-    align-content: stretch;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    width: 100%;
     .title {
         font-family: 'DroidSans-Bold';
-    }
-    .row {
-        align-content: stretch;
-        align-items: center;
-        border-bottom: 1px solid $gray-light;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        justify-content: flex-start;
-        padding: 1rem 0 1rem 1rem;
-        text-align: left;
-        width: 100%;
-        &:last-child {
-            border-bottom: 0;
-        }
     }
     .avatar {
         align-items: center;
