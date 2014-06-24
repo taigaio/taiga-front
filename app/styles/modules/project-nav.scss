@@ -1,14 +1,58 @@
 .project-nav {
     @include transform(translate3d(-300px, 0, 0));
-    background-color: $blackish;
+    background-color: #232323;
     height: 100%;
     left: 0;
     overflow: hidden;
+    padding: 2rem 1rem;
     position: fixed;
     top: 0;
     width: 300px;
     z-index: 99;
     h1 {
         color: $white;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+    input {
+        background-color: $gray;
+        color: $whitish;
+    }
+    .icon-search {
+        position: absolute;
+        right: 10px;
+        top: 6px;
+    }
+    ul {
+        margin-top: 1rem;
+    }
+}
+
+.projects-list {
+    a {
+        @extend %large;
+        color: $whitish;
+        display: block;
+        font-family: 'ostrichSans';
+        padding: 1rem;
+        text-transform: uppercase;
+        width: 100%;
+        &.active,
+        &:hover {
+            @include transition (background-color .3s linear);
+            background-color: $gray;
+            .icon {
+                @include transition (opacity .3s linear);
+                opacity: 1;
+            }
+        }
+    }
+    .icon {
+        color: $whitish;
+        float: right;
+        opacity: 0;
+    }
+    li {
+        border-bottom: 2px solid $gray;
     }
 }
