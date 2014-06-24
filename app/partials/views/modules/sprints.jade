@@ -15,7 +15,7 @@ section.sprints
             div.sprint-summary
                 a.icon.icon-arrow-up(href="", title="compact Sprint")
                 span.sprint-name current sprint
-                span.sprint-date
+                span.sprint-date(tg-date-range="sprint.estimated_start,sprint.estimated_finish")
             ul
                 li
                     span.number(tg-bo-html="sprint.closed_points") --
@@ -24,7 +24,7 @@ section.sprints
                     span.number(tg-bo-html="sprint.total_points") --
                     span.description total<br />points
         div.sprint-progress-bar
-            div.current-progress
+            div.current-progress(tg-sprint-progressbar="sprint")
         div.sprint-table
             div.row.milestone-us-item-row(ng-repeat="us in sprint.user_stories track by us.id")
                 div.column-us.width-8
@@ -32,6 +32,6 @@ section.sprints
                         span(tg-bo-ref="us.ref")
                         span(tg-bo-html="us.subject")
                 div.column-points.width-1(tg-bo-html="us.total_points")
-        a.button.button-gray(href="", tg-nav="project-taskboard:project=projectId,sprint=sprint.id",
+        a.button.button-gray(href="", tg-nav="project-taskboard:project=project.slug,sprint=sprint.id",
                              title="Current Sprint Taskboard")
             span Sprint Taskboard

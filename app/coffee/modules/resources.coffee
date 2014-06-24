@@ -21,12 +21,7 @@
 
 taiga = @.taiga
 
-
-
-
-
 class ResourcesService extends taiga.Service
-
 
 urls = {
     "auth": "/api/v1/auth"

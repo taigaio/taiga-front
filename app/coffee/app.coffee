@@ -53,18 +53,20 @@ init = ($log, $i18n, $config, $rootscope) ->
     $i18n.initialize($config.get("defaultLanguage"))
     $log.debug("Initialize application")
 
+# Default Value for taiga local config module.
+angular.module("taigaLocalConfig", []).value("localconfig", {})
 
-configure.$inject = ["$routeProvider", "$locationProvider", "$httpProvider"]
-init.$inject = ["$log", "$tgI18n", "$tgConfig","$rootScope"]
+# Default constructor for common module
+angular.module("taigaCommon", [])
 
 modules = [
-    # Main Modules
+    # Main Global Modules
     "taigaConfig",
     "taigaBase",
     "taigaResources",
     "taigaLocales",
     "taigaAuth",
-
+    "taigaCommon",
     "taigaNavigation",
 
     # Specific Modules
@@ -75,10 +77,20 @@ modules = [
     "ngAnimate",
 ]
 
-# Default Value for taiga local config module.
-angular.module("taigaLocalConfig", []).value("localconfig", {})
-
 # Main module definition
 module = angular.module("taiga", modules)
-module.config(configure)
-module.run(init)
+
+module.config([
+    "$routeProvider",
+    "$locationProvider",
+    "$httpProvider",
+    configure
+])
+
+module.run([
+    "$log",
+    "$tgI18n",
+    "$tgConfig",
+    "$rootScope",
+    init
+])

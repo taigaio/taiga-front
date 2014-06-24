@@ -288,12 +288,6 @@ BacklogSprintDirective = ($repo) ->
         if not $scope.$first and not sprint.closed
             $el.addClass("sprint-old-open")
 
-        # Atatch formatted dates
-        initialDate = moment(sprint.estimated_start).format("YYYY/MM/DD")
-        finishDate = moment(sprint.estimated_finish).format("YYYY/MM/DD")
-        dates = "#{initialDate}-#{finishDate}"
-        $el.find(".sprint-date").html(dates)
-
         # Update progress bars
         progressPercentage = Math.round(100 * (sprint.closed_points / sprint.total_points))
         $el.find(".current-progress").css("width", "#{progressPercentage}%")
