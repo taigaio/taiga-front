@@ -1,13 +1,17 @@
-div.register-form-container
+div.register-form-container(tg-register)
     form.register-form
         fieldset
-            input(type="text" placeholder="Pick a username")
+            input(type="text", placeholder="Pick a username", ng-model="data.username",
+                  data-required="true")
         fieldset
-            input(type="text" placeholder="Your email")
+            input(type="text", placeholder="Your email", ng-model="data.email", data-required="true")
         fieldset
-            input(type="password"  placeholder="Set a password")
+            input(type="password"  placeholder="Set a password", ng-model="data.password",
+                  data-required="true")
         fieldset
             a.button.button-register.button-gray(href="", title="Sign up") Sign up
+            input(type="submit", class="hidden")
+
     p.register-text
         span By clicking "Sign up", you agree to our <br />
         a(href="", title="See terms of service")  terms of service

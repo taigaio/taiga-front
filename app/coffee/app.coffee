@@ -26,6 +26,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $compil
     $routeProvider.when("/project/:pslug/taskboard/:id", {templateUrl: "/partials/taskboard.html"})
 
     $routeProvider.when("/login", {templateUrl: "/partials/login.html"})
+    $routeProvider.when("/register", {templateUrl: "/partials/register.html"})
 
     $routeProvider.otherwise({redirectTo: '/login'})
     $locationProvider.html5Mode(true)

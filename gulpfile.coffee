@@ -53,7 +53,8 @@ paths = {
         "app/vendor/angular-animate/angular-animate.js",
         "app/vendor/i18next/i18next.js",
         "app/js/Sortable.js",
-        "app/vendor/moment/min/moment-with-langs.js"
+        "app/vendor/moment/min/moment-with-langs.js",
+        "app/vendor/checksley/checksley.js"
     ]
 }
 

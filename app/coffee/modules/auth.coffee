@@ -54,6 +54,15 @@ class AuthService extends taiga.Service
     getToken: ->
         return @storage.get("token")
 
+    isAuthenticated: ->
+        if @.getUser() != null
+            return true
+        return false
+
+    ###################
+    ## Http interface
+    ###################
+
     login: (username, password) ->
         url = @urls.resolve("auth")
 
@@ -69,10 +78,46 @@ class AuthService extends taiga.Service
             @.setUser(user)
             return user
 
-    isAuthenticated: ->
-        if @.getUser() != null
-            return true
-        return false
+    publicRegister: (data) ->
+        url = @urls.resolve("auth-register")
+
+        data = _.clone(data, false)
+        data.type = "public"
+
+        return @http.post(url, data).then (response) =>
+            user = @model.make_model("users", response.data)
+            @.setToken(user.auth_token)
+            @.setUser(user)
+            return user
+
+    # acceptInvitiationWithNewUser: (username, email, password, token) ->
+    #     url = @urls.resolve("auth-register")
+    #     data = _.extend(data, {
+    #         username: username,
+    #         password: password,
+    #         token: token
+    #         email: email
+    #         existing: "off"
+    #     }
+    #     return @http.post(url, data).then (response) =>
+    #         user = @model.make_model("users", response.data)
+    #         @.setToken(user.auth_token)
+    #         @.setUser(user)
+    #         return user
+
+    # acceptInvitiationWithExistingUser: (username, password, token) ->
+    #     url = @urls.resolve("auth-register")
+    #     data = _.extend(data, {
+    #         username: username,
+    #         password: password,
+    #         token: token,
+    #         existing: "on"
+    #     }
+    #     return @http.post(url, data).then (response) =>
+    #         user = @model.make_model("users", response.data)
+    #         @.setToken(user.auth_token)
+    #         @.setUser(user)
+    #         return user
 
 
 class AuthController extends taiga.Controller
@@ -87,6 +132,36 @@ class AuthController extends taiga.Controller
             @location.path("/project/project-example-0/backlog")
 
 
+
+RegisterDirective = ($auth, $confirm) ->
+    link = ($scope, $el, $attrs) ->
+        $scope.data = {}
+        form = $el.find("form").checksley()
+
+        submit = ->
+            if not form.validate()
+                return
+
+            promise = $auth.publicRegister($scope.data)
+            promise.then (response) ->
+                # TODO: finish this.
+                console.log response
+
+            promise.then null, (response) ->
+                if response.data._error_message
+                    $confirm.error(response.data._error_message)
+
+        $el.on "submit", (event) ->
+            event.preventDefault()
+            submit()
+
+        $el.on "click", "a.button-register", (event) ->
+            event.preventDefault()
+            submit()
+
+    return {link:link}
+
 module = angular.module("taigaAuth", ["taigaResources"])
 module.service("$tgAuth", AuthService)
 module.controller("AuthController", AuthController)
+module.directive("tgRegister", ["$tgAuth", "$tgConfirm", RegisterDirective])

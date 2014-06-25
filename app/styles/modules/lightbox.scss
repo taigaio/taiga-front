@@ -238,3 +238,23 @@
         }
     }
 }
+
+
+.lightbox-generic-error {
+    section {
+        flex-basis: 0;
+        flex-grow: 0;
+        flex-shrink: 0;
+        min-width: 420px;
+        width: 420px;
+    }
+    .delete-options {
+        @include table-flex();
+        a {
+            @include table-flex-child(1, 0, 0);
+            padding: 8px 0;
+            text-align: center;
+        }
+    }
+}
+

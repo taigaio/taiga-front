@@ -1,5 +1,5 @@
 div.login-form-container
-    form.login-form
+    form.login-form(ng-submit="ctrl.submit()")
         fieldset
             input(type="text", name="username", ng-model="form.username", placeholder="User name")
         fieldset.login-password
@@ -9,8 +9,11 @@ div.login-form-container
         fieldset
             input.remember-me(type="checkbox", checked="checked", id="remember-me")
             label(for="remember-me") remember me on this computer
+
         fieldset
             a.button.button-login.button-gray(href="", ng-click="ctrl.submit()", title="Log in") Enter
+            input(type="submit", class="hidden")
+
     p.login-text
         span Not registered yet?
         a(href="", title="Register")  create your free account here

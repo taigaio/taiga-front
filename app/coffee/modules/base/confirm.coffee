@@ -25,14 +25,17 @@ class ConfirmService extends taiga.Service
     @.$inject = ["$q"]
 
     constructor: (@q) ->
-        @.el = angular.element(".lightbox_confirm-delete")
         _.bindAll(@)
 
     hide: ->
-        @.el.addClass("hidden")
-        @.el.off(".confirm-dialog")
+        if @.el
+            @.el.addClass("hidden")
+            @.el.off(".confirm-dialog")
+            delete @.el
 
     ask: (title, subtitle) ->
+        @.el = angular.element(".lightbox_confirm-delete")
+
         # Render content
         @.el.find("h2.title").html(title)
         @.el.find("span.subtitle").html(subtitle)
@@ -47,6 +50,22 @@ class ConfirmService extends taiga.Service
         @.el.on "click.confirm-dialog", "a.button-red", (event) =>
             event.preventDefault()
             defered.reject()
+            @.hide()
+
+        @.el.removeClass("hidden")
+        return defered.promise
+
+    error: (message) ->
+        @.el = angular.element(".lightbox-generic-error")
+
+        # Render content
+        @.el.find("h2.title").html(message)
+        defered = @q.defer()
+
+        # Assign event handlers
+        @.el.on "click.confirm-dialog", "a.button-green", (event) =>
+            event.preventDefault()
+            defered.resolve()
             @.hide()
 
         @.el.removeClass("hidden")
