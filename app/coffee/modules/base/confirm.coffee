@@ -20,6 +20,8 @@
 ###
 
 taiga = @.taiga
+timeout = @.taiga.timeout
+
 
 class ConfirmService extends taiga.Service
     @.$inject = ["$q"]
@@ -71,6 +73,23 @@ class ConfirmService extends taiga.Service
         @.el.removeClass("hidden")
         return defered.promise
 
+    notify: (type, message) ->
+        # TODO: at this momment the message is ignored
+        # because the notification message not permits
+        # custom messages.
+
+        selector = ".notification-message-#{type}"
+
+        body = angular.element("body")
+        body.find(".notification-message").addClass("hidden")
+        body.find(selector).removeClass("hidden")
+
+        if @.tsem
+            cancelTimeout(@.tsem)
+
+        @.tsem = timeout 4000, =>
+            body.find(selector).addClass("hidden")
+            delete @.sem
 
 module = angular.module("taigaBase")
 module.service("$tgConfirm", ["$q", ConfirmService])

@@ -1,15 +1,13 @@
-extends layout
+extends dummy-layout
 
 block head
     title Taiga  Project management web application with scrum in mind!
 
 block content
-    div.wrapper
-        include views/components/notification-message
+    div.wrapper(tg-issues, ng-controller="IssuesController as ctrl")
         sidebar.menu-secondary.sidebar
             header
                 h1 Filters
-
             include views/modules/search-in
             include views/modules/filter-tags
         section.main.issues-page
