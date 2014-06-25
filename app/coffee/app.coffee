@@ -28,7 +28,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $compil
     $routeProvider.when("/login", {templateUrl: "/partials/login.html"})
 
     $routeProvider.otherwise({redirectTo: '/login'})
-    $locationProvider.html5Mode(true);
+    $locationProvider.html5Mode(true)
 
     defaultHeaders = {
         "Content-Type": "application/json"
