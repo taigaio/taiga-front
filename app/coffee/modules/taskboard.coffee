@@ -87,7 +87,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
 #############################################################################
 ## TaskboardDirective
 #############################################################################
-
+taiga = @.taiga
 TaskboardDirective = ->
 
     #########################
@@ -96,6 +96,10 @@ TaskboardDirective = ->
 
     linkSortable = ($scope, $el, $attrs, $ctrl) ->
         console.log "TaskboardDirective:linkSortable"
+        taiga.bindOnce $scope, "statusList", (v) ->
+            console.log 33333, v
+            size = v.length * 300
+            $el.find(".task-row").css("width", size + "px")
 
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
