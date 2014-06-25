@@ -39,11 +39,11 @@ DateRangeDirective = ->
 
 
 SprintProgressBarDirective = ->
-    renderProgress = ($el, percentage) ->
+    renderProgress = ($el, percentage, visual_percentage) ->
         if $el.is(".current-progress")
             $el.css("width", "#{percentage}%")
         else
-            $el.find(".current-progress").css("width", "#{percentage}%")
+            $el.find(".current-progress").css("width", "#{visual_percentage}%")
             $el.find(".number").html("#{percentage} %")
 
     link = ($scope, $el, $attrs) ->
@@ -51,7 +51,8 @@ SprintProgressBarDirective = ->
             closedPoints = sprint.closed_points
             totalPoints = sprint.total_points
             percentage = Math.round(100 * (closedPoints/totalPoints))
-            renderProgress($el, percentage)
+            visual_percentage = Math.round(98 * (closedPoints/totalPoints)) #Visual hack for .current-progress bar
+            renderProgress($el, percentage, visual_percentage)
 
     return {link: link}
 
