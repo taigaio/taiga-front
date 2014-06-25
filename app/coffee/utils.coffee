@@ -50,8 +50,16 @@ toggleText = (element, texts) ->
     element.data('nextTextPosition', nextTextPosition + 1)
     element.text(text)
 
+groupBy = (coll, pred) ->
+    result = {}
+    for item in coll
+        result[pred(item)] = item
+
+    return result
+
 taiga = @.taiga
 taiga.bindOnce = bindOnce
 taiga.mixOf = mixOf
 taiga.trim = trim
 taiga.toggleText = toggleText
+taiga.groupBy = groupBy
