@@ -7,8 +7,8 @@ div.row.us-item-row(ng-repeat="us in visibleUserstories track by us.id")
                 a.icon.icon-edit(href="", ng-click="ctrl.editUserStory(us)", title="Edit")
                 a.icon.icon-delete(href="", ng-click="ctrl.deleteUserStory(us)", title="Delete")
         div.user-story-tags
-            span.tag Tag name
-            span.tag Tag name
+            span.tag(ng-repeat="tag in us.tags")
+                {{ tag }}
     div.status Status
     div.points 12
     div.points 54

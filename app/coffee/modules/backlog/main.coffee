@@ -247,6 +247,13 @@ BacklogDirective = ($repo) ->
             target.toggleClass("active")
             toggleText(target.find(".text"), ["Hide Filters", "Show Filters"]) # TODO: i18n
 
+        $el.on "click", "#show-tags", (event) ->
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+            $el.find(".user-story-tags").toggle()
+            target.toggleClass("active")
+            toggleText(target.find(".text"), ["Hide Tags", "Show Tags"]) # TODO: i18n
+
         $el.on "click", "section.filters a.single-filter", (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
