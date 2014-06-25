@@ -57,9 +57,14 @@ groupBy = (coll, pred) ->
 
     return result
 
+
+timeout = (wait, continuation) ->
+    return window.setTimeout(continuation, wait)
+
 taiga = @.taiga
 taiga.bindOnce = bindOnce
 taiga.mixOf = mixOf
 taiga.trim = trim
 taiga.toggleText = toggleText
 taiga.groupBy = groupBy
+taiga.timeout = timeout
