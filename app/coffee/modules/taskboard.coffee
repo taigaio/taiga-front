@@ -107,9 +107,9 @@ TaskboardDirective = ->
 
 
 TaskboardTaskrowDirective = ->
-    itemSize = 300
     link = ($scope, $el, $attrs) ->
         taiga.bindOnce $scope, "statusList", (statuses) ->
+            itemSize = 300 + (10 * statuses.length)
             size = (1 + statuses.length) * itemSize
             $el.css("width", size + "px")
 

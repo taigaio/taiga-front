@@ -3,7 +3,7 @@
 $column-width: 300px;
 $column-flex: 1;
 $column-shrink: 0;
-$column-margin: 0 .3rem 0 0;
+$column-margin: 0 10px 0 0;
 
 
 .taskboard-table {
@@ -25,6 +25,9 @@ $column-margin: 0 .3rem 0 0;
         margin: $column-margin;
         padding: .5rem 0;
         text-align: center;
+        &:last-child {
+            margin-right: 0;
+        }
     }
 }
 
@@ -33,13 +36,13 @@ $column-margin: 0 .3rem 0 0;
     overflow-x: scroll;
     overflow-y: scroll;
     width: 100%;
-    .taskboard-table-inner {
-        overflow: hidden;
-    }
     .task-column {
         @include table-flex-child($column-flex, $column-width, $column-shrink, $column-width);
         margin: $column-margin;
         padding: 1rem;
+        &:last-child {
+            margin-right: 0;
+        }
     }
     .task-row {
         @include table-flex();
@@ -53,6 +56,7 @@ $column-margin: 0 .3rem 0 0;
 }
 
 .taskboard_task-list {
+    position: relative;
     .tag-list {
         display: none;
         margin-bottom: 1rem;
@@ -75,9 +79,6 @@ $column-margin: 0 .3rem 0 0;
             color: $gray;
             margin-left: .5rem;
         }
-    }
-    .task-row {
-        position: relative;
     }
     .new-us {
         bottom: 2rem;
