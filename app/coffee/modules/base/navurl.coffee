@@ -22,6 +22,7 @@
 
 taiga = @.taiga
 trim = @.taiga.trim
+bindOnce = @.taiga.bindOnce
 
 parseNav = (data, scope) ->
     options = {}
@@ -34,6 +35,7 @@ parseNav = (data, scope) ->
         options[key] = scope.$eval(value)
 
     return [name, options]
+
 
 formatUrl = (url, ctx={}) ->
     replacer = (match) ->
@@ -53,9 +55,18 @@ class NavigationUrlsService extends taiga.Service
         return @.urls[name]
 
 
-NavigationUrlsDirective = ($navurls, $auth) ->
+NavigationUrlsDirective = ($navurls, $auth, $q) ->
     # Example:
     # link(tg-nav="project-backlog:project='sss',")
+
+
+    # TODO: almost all menu entries requires project
+    # model available in scope, but project is only
+    # eventually available on child scopes
+    # TODO: this need an other aproximation :(((
+
+    # bindOnceP = ($scope, attr) ->
+    #     defered = $q.defer()
 
     link = ($scope, $el, $attrs) ->
         [name, options] = parseNav($attrs.tgNav, $scope)
@@ -66,6 +77,8 @@ NavigationUrlsDirective = ($navurls, $auth) ->
         url = $navurls.resolve(name)
         fullUrl = formatUrl(url, options)
 
+        console.log url, $attrs.tgNav
+
         $el.attr("href", fullUrl)
 
     return {link: link}
@@ -73,6 +86,6 @@ NavigationUrlsDirective = ($navurls, $auth) ->
 
 module = angular.module("taigaBase")
 module.service("$tgNavUrls", NavigationUrlsService)
-module.directive("tgNav", ["$tgNavUrls", "$tgAuth", NavigationUrlsDirective])
+module.directive("tgNav", ["$tgNavUrls", "$tgAuth", "$q", NavigationUrlsDirective])
 
 
