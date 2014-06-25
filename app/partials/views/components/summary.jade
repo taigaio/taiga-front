@@ -6,14 +6,14 @@ div.summary(tg-backlog-summary)
         span.description completed
     ul
         li
-            span.number(ng-bind="stats.total_points")
+            span.number(ng-bind="stats.total_points|default:'--'")
             span.description project<br />points
         li
-            span.number(ng-bind="stats.defined_points")
+            span.number(ng-bind="stats.defined_points|default:'--'")
             span.description defined<br />points
         li
-            span.number(ng-bind="stats.assigned_points")
+            span.number(ng-bind="stats.assigned_points|default:'--'")
             span.description assigned<br />points
         li
-            span.number(ng-bind="stats.closed_points")
+            span.number(ng-bind="stats.closed_points|default:'-- %'")
             span.description closed<br />points

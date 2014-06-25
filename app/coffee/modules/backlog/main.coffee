@@ -32,15 +32,6 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin)
 
         @rootscope.$on("usform:bulk:success", @.loadUserstories)
 
-    initializeProjectStats: ->
-        @scope.stats = {
-            total_points: "--"
-            defined_points: "--"
-            assigned_points: "--"
-            closed_points: "--"
-            completedPercentage: "--%"
-        }
-
     loadProjectStats: ->
         return @rs.projects.stats(@scope.projectId).then (stats) =>
             @scope.stats = stats
@@ -76,9 +67,6 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin)
             return project
 
     loadInitialData: ->
-        # Set stats initial values
-        @.initializeProjectStats()
-
         # Resolve project slug
         promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
             @scope.projectId = data.project
