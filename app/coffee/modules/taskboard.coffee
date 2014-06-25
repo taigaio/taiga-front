@@ -22,6 +22,12 @@
 taiga = @.taiga
 mixOf = @.taiga.mixOf
 
+module = angular.module("taigaTaskboard", [])
+
+#############################################################################
+## Taskboard Controller
+#############################################################################
+
 class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
     @.$inject = [
         "$scope",
@@ -88,6 +94,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
                       .then(=> @.loadUsersAndRoles())
                       .then(=> @.loadTaskboard())
 
+module.controller("TaskboardController", TaskboardController)
 
 #############################################################################
 ## TaskboardDirective
@@ -112,6 +119,8 @@ TaskboardDirective = ->
     return {link: link}
 
 
+# TODO: the name of this directive should be changet
+# to more apropiate, like: TaskboardRowsizeFixer
 TaskboardTaskrowDirective = ->
     link = ($scope, $el, $attrs) ->
         taiga.bindOnce $scope, "taskStatusList", (statuses) ->
@@ -122,7 +131,7 @@ TaskboardTaskrowDirective = ->
     return {link: link}
 
 
-UsStatus = ->
+UsStatusDirective = ->
     link = ($scope, $el, $attrs) ->
         $scope.$watch "#{$attrs.tgTaskboardUsStatus}.status", (status_id) ->
             if status_id is undefined
@@ -132,8 +141,6 @@ UsStatus = ->
 
     return {link:link}
 
-module = angular.module("taigaTaskboard", [])
-module.controller("TaskboardController", TaskboardController)
 module.directive("tgTaskboard", TaskboardDirective)
 module.directive("tgTaskboardTaskrow", TaskboardTaskrowDirective)
-module.directive("tgTaskboardUsStatus", UsStatus)
+module.directive("tgTaskboardUsStatus", UsStatusDirective)
