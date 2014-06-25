@@ -24,6 +24,8 @@
 configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $compileProvider, $gmUrlsProvider) ->
     $routeProvider.when("/project/:pslug/backlog", {templateUrl: "/partials/backlog.html"})
     $routeProvider.when("/project/:pslug/taskboard/:id", {templateUrl: "/partials/taskboard.html"})
+    $routeProvider.when("/project/:pslug/issues", {templateUrl: "/partials/issues.html"})
+    $routeProvider.when("/project/:pslug/search", {templateUrl: "/partials/search.html"})
 
     $routeProvider.when("/login", {templateUrl: "/partials/login.html"})
     $routeProvider.when("/register", {templateUrl: "/partials/register.html"})

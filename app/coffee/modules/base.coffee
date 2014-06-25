@@ -85,6 +85,8 @@ urls = {
     "project": "/project/:project",
     "project-backlog": "/project/:project/backlog",
     "project-taskboard": "/project/:project/taskboard/:sprint",
+    "project-issues": "/project/:project/issues",
+    "project-search": "/project/:project/search"
 }
 
 init = ($log, $navurls) ->
