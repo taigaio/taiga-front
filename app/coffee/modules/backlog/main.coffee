@@ -63,6 +63,10 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin)
         return @rs.projects.get(@scope.projectId).then (project) =>
             @scope.project = project
             @scope.points = _.sortBy(project.points, "order")
+            @scope.pointsById = {}
+            for p in @scope.points
+                @scope.pointsById[p.id] = p
+
             @scope.statusList = _.sortBy(project.us_statuses, "id")
             return project
 
@@ -192,6 +196,7 @@ BacklogDirective = ($repo) ->
     ##############################
     ## Move to current sprint link
     ##############################
+
     linkMoveToCurrentSprint = ($scope, $el, $attrs, $ctrl) ->
 
         moveToCurrentSprint = (selectedUss) ->
@@ -367,14 +372,159 @@ BacklogSprintDirective = ($repo) ->
     return {link: link}
 
 
-BacklogSummaryDirective = ->
+#############################################################################
+## User story points directive
+#############################################################################
+
+UsRolePointsSelectorDirective = ($rootscope) ->
+    #TODO: i18n
+    selectionTemplate = _.template("""
+      <ul class="popover pop-role">
+          <li><a class="clear-selection" href="" title="All">All</a></li>
+          <% _.forEach(roles, function(role) { %>
+          <li><a href="" class="role" title="<%- role.name %>" data-role-id="<%- role.id %>"><%- role.name %></a></li>
+          <% }); %>
+      </ul>
+    """)
     link = ($scope, $el, $attrs) ->
-    return {link:link}
+        taiga.bindOnce $scope, "project", (project) ->
+            roles = _.filter(project.roles, "computable")
+            $el.append(selectionTemplate({ 'roles':  roles }))
+
+        $scope.$on "uspoints:select", (ctx, roleId, roleName) ->
+            $el.find(".popover").hide()
+            $el.find("span").text(roleName)
+
+        $scope.$on "uspoints:clear-selection", (ctx, roleId) ->
+            $el.find(".popover").hide()
+            $el.find("span").text("Points") #TODO: i18n
+
+        $el.on "click", (event) ->
+            target = angular.element(event.target)
+
+            if target.is("span") or target.is("div")
+                event.stopPropagation()
+
+            $el.find(".popover").show()
+            body = angular.element("body")
+            body.one "click", (event) ->
+                $el.find(".popover").hide()
+
+        $el.on "click", ".clear-selection", (event) ->
+            event.preventDefault()
+            event.stopPropagation()
+            $rootscope.$broadcast("uspoints:clear-selection")
+
+        $el.on "click", ".role", (event) ->
+            event.preventDefault()
+            event.stopPropagation()
+            target = angular.element(event.currentTarget)
+            rolScope = target.scope()
+            $rootscope.$broadcast("uspoints:select", target.data("role-id"), target.text())
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {link: link}
+
+UsPointsDirective = ($repo) ->
+    selectionTemplate = _.template("""
+      <ul class="popover pop-role">
+          <% _.forEach(roles, function(role) { %>
+          <li><a href="" class="role" title="<%- role.name %>" data-role-id="<%- role.id %>"><%- role.name %></a></li>
+          <% }); %>
+      </ul>
+    """)
+    pointsTemplate = _.template("""
+      <ul class="popover pop-points-open">
+          <% _.forEach(points, function(point) { %>
+          <li><a href="" class="point" title="<%- point.name %>" data-point-id="<%- point.id %>"><%- point.name %></a></li>
+          <% }); %>
+      </ul>
+    """)
+
+    updatePointsValue = (us, pointsById, pointsDomNode, selectedRoleId) ->
+        if not selectedRoleId?
+            pointsDomNode.text(us.total_points)
+        else
+            selectedPoints = pointsById[us.points[selectedRoleId]]
+            selectedPointsValue = selectedPoints.value
+            selectedPointsValue = '?' if not selectedPointsValue?
+            pointsDomNode.text("#{selectedPointsValue}/#{us.total_points}")
+
+    link = ($scope, $el, $attrs) ->
+        $ctrl = $el.controller()
+        us = $scope.$eval($attrs.tgUsPoints)
+        usPoints = us.points
+        pointsDom = $el.find("a")
+        selectedRoleId = null
+        updatingSelectedRoleId = null
+        pointsById = $scope.pointsById
+        updatePointsValue(us, pointsById, pointsDom, selectedRoleId)
+
+        taiga.bindOnce $scope, "project", (project) ->
+            roles = _.filter(project.roles, "computable")
+            $el.append(selectionTemplate({ 'roles':  roles }))
+            $el.append(pointsTemplate({ 'points':  project.points }))
+
+        $scope.$on "uspoints:select", (ctx, roleId,roleName) ->
+            selectedRoleId = roleId
+            updatePointsValue(us, pointsById, pointsDom, selectedRoleId)
+
+        $scope.$on "uspoints:clear-selection", (ctx) ->
+            selectedRoleId = null
+            updatePointsValue(us, pointsById, pointsDom, selectedRoleId)
+
+        $el.on "click", "a.us-points", (event) ->
+            event.preventDefault()
+            target = angular.element(event.target)
+
+            if target.is("a")
+                event.stopPropagation()
+
+            if selectedRoleId?
+                updatingSelectedRoleId = selectedRoleId
+                $el.find(".pop-points-open").show()
+            else
+                $el.find(".pop-role").show()
+
+            body = angular.element("body")
+            body.one "click", (event) ->
+                $el.find(".popover").hide()
+
+        $el.on "click", ".role", (event) ->
+            event.preventDefault()
+            event.stopPropagation()
+            target = angular.element(event.currentTarget)
+            updatingSelectedRoleId = target.data("role-id")
+            $el.find(".pop-points-open").show()
+            $el.find(".pop-role").hide()
+
+        $el.on "click", ".point", (event) ->
+            event.preventDefault()
+            event.stopPropagation()
+            target = angular.element(event.currentTarget)
+            $el.find(".pop-points-open").hide()
+            $scope.$apply () ->
+                usPoints[updatingSelectedRoleId] = target.data("point-id")
+                us.points = _.clone(usPoints, false)
+                total = _.reduce(_.map(us.points, (value, key) -> $scope.pointsById[value].value), (memo, num) -> memo + num)
+                us.total_points = total
+                updatePointsValue(us, pointsById, pointsDom, selectedRoleId)
+                $repo.save(us).then ->
+                    $ctrl.loadProjectStats()
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {link: link}
+
 
 module = angular.module("taigaBacklog")
 module.directive("tgBacklog", ["$tgRepo", BacklogDirective])
 module.directive("tgBacklogSprint", ["$tgRepo", BacklogSprintDirective])
-module.directive("tgBacklogSummary", BacklogSummaryDirective)
+module.directive("tgUsPoints", ["$tgRepo", UsPointsDirective])
+module.directive("tgUsRolePointsSelector", ["$rootScope", UsRolePointsSelectorDirective])
 
 module.controller("BacklogController", [
     "$scope",

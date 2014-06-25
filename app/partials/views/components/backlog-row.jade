@@ -8,7 +8,18 @@ div.row.us-item-row(ng-repeat="us in visibleUserstories track by us.id")
                 a.icon.icon-delete(href="", ng-click="ctrl.deleteUserStory(us)", title="Delete")
         div.user-story-tags
             span.tag(ng-repeat="tag in us.tags") {{ tag }}
-    div.status Status
-    div.points 12
-    div.points 54
+
+    div.status.width-2
+       a(href="", title="Status Name") Status Name
+       ul.popover.pop-status
+           li
+               a(href="", title="Status 1") Status 1
+           li
+               a(href="", title="Status 2") Status 2
+           li
+               a(href="", title="Status 3") Status 3
+
+    div.points(tg-us-points="us")
+        a.us-points(href="", title="Points") 0
+
     a.icon.icon-drag-v(href="", title="Drag")

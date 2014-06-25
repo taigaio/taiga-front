@@ -32,6 +32,9 @@
     .points {
         position: relative;
     }
+    .pop-role {
+        @include popover(150px, '', 30px, 10px, '');
+    }
     .pop-status {
         @include popover(150px, '', 30px, 10px, '');
     }

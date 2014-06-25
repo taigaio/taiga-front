@@ -2,13 +2,8 @@ section.backlog-table-header
     div.row.backlog-table-title
         div.user-stories User Stories
         div.status Status
-        div.points Points
-        div.points
-    div.row.backlog-table-subtitle
-        div.user-stories.width-4
-        div.status.width-2
-        div.points.width-1 Front
-        div.points.width-1 Total
+        div.points(tg-us-role-points-selector)
+            span Points
 section.backlog-table-body
     include ../components/backlog-row
 
