@@ -22,7 +22,7 @@
 
 defaultFilter = ->
     return (value, defaultValue) ->
-        if not value
+        if value in [null, undefined]
             return defaultValue
         return value
 
