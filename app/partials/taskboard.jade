@@ -4,7 +4,8 @@ block head
     title Taiga  Project management web application with scrum in mind!
 
 block content
-    div.wrapper(tg-taskboard, ng-controller="TaskboardController as ctrl")
+    div.wrapper(tg-taskboard, ng-controller="TaskboardController as ctrl",
+                tg-section-marker="backlog")
         section.main.taskboard
             h1
                 span(tg-bo-html="project.name")

@@ -63,13 +63,12 @@ angular.module("taigaCommon", [])
 
 modules = [
     # Main Global Modules
-    "taigaConfig",
     "taigaBase",
+    "taigaCommon",
+    "taigaConfig",
     "taigaResources",
     "taigaLocales",
     "taigaAuth",
-    "taigaCommon",
-    "taigaNavigation",
 
     # Specific Modules
     "taigaBacklog",

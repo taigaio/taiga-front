@@ -19,4 +19,76 @@
 # File: modules/base.coffee
 ###
 
+taiga = @.taiga
+groupBy = @.taiga.groupBy
+
 module = angular.module("taigaBase", ["taigaLocales"])
+
+
+#############################################################################
+## Global Page Directive
+#############################################################################
+
+class MainTaigaController extends taiga.Controller
+    @.$inject = ["$scope"]
+
+    constructor: (@scope) ->
+        @scope.mainSection = "backlog"
+
+    setSectionName: (name) ->
+        @scope.mainSection = name
+
+
+MainTaigaDirective = ($log) ->
+    linkMainNav = ($scope, $el, $attrs, $ctrl) ->
+        menuEntriesSelector = $el.find("ul.main-nav > li")
+        menuEntries = _.map(menuEntriesSelector, (x) -> angular.element(x))
+        menuEntriesByName = groupBy(menuEntries, (x) -> x.data("name"))
+
+        $scope.$watch "mainSection", (sectionName) ->
+            $el.find("ul.main-nav a.active").removeClass("active")
+
+            entry = menuEntriesByName[sectionName]
+            entry.find("> a").addClass("active")
+
+    link = ($scope, $el, $attrs, $ctrl) ->
+        $log.debug "Taiga main directive initialized."
+        linkMainNav($scope, $el, $attrs, $ctrl)
+
+    return {
+        controller: MainTaigaController
+        link: link
+    }
+
+
+SectionMarkerDirective = ($log) ->
+    link = ($scope, $el, $attrs, $ctrl) ->
+        $ctrl.setSectionName($attrs.tgSectionMarker)
+
+    return {
+        require: "^tgMain"
+        link: link
+    }
+
+
+module.directive("tgMain", ["$log", MainTaigaDirective])
+module.directive("tgSectionMarker", ["$log", SectionMarkerDirective])
+
+
+#############################################################################
+## Navigation
+#############################################################################
+
+urls = {
+    "home": "/",
+    "profile": "/:user",
+    "project": "/project/:project",
+    "project-backlog": "/project/:project/backlog",
+    "project-taskboard": "/project/:project/taskboard/:sprint",
+}
+
+init = ($log, $navurls) ->
+    $log.debug "Initialize navigation urls"
+    $navurls.update(urls)
+
+module.run(["$log", "$tgNavUrls", init])
