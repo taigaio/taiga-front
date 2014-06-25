@@ -9,7 +9,7 @@ block content
         section.main.taskboard
             h1
                 span(tg-bo-html="project.name")
-                span.green(tg-bo-html="sprint-name")
+                span.green(tg-bo-html="sprint.name")
                 span.date(tg-date-range="sprint.estimated_start,sprint.estimated_finish")
             include views/components/sprint-summary
             include views/modules/burndown
