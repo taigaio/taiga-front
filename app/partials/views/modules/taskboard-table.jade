@@ -6,15 +6,14 @@ div.taskboard-table
     div.taskboard-table-body
         div.taskboard-table-inner
             div.task-row(ng-repeat="us in userstories track by us.id", tg-taskboard-taskrow)
-                div.taskboard_task-list.task-column
+                div.taskboard_us-list.task-column
                     div.tag-list
-                        - for(var y = 0; y < 5; y++)
-                            include ../components/tag
-                    h3.task-title
-                        span.task-num 125
-                        span Invitacion de los usuarios a la plataforma
-                    ul.task-list
-                        li.task-status Open
+                        span.tag(ng-repeat="tag in us.tags") {{ tag }}
+                    h3.us-title
+                        span.us-ref(tg-bo-ref="us.ref")
+                        span(ng-bind="us.subject")
+                    div.us-status(tg-taskboard-us-status="us")
+                    ul.points-list
                         li UX
                             span 4.5
                         li Diseño
@@ -23,6 +22,7 @@ div.taskboard-table
                             span 4.5
                         li Back
                             span 4.5
-                    include ../components/addnewus
+                    include ../components/addnewtask
+
                 div.taskboard_task-playground.task-column(ng-repeat="s in taskStatusList track by s.id")
                     include ../components/taskboard-task

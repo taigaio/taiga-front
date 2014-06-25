@@ -55,32 +55,32 @@ $column-margin: 0 10px 0 0;
     }
 }
 
-.taskboard_task-list {
+.taskboard_us-list {
     position: relative;
     .tag-list {
         display: none;
         margin-bottom: 1rem;
     }
-    .task-title {
+    .us-title {
         @extend %large;
         font-family: 'DroidSans';
         margin-bottom: 1rem;
     }
-    .task-num {
+    .us-ref {
         color: $gray;
         margin-right: .5rem;
     }
-    .task-status {
+    .us-status {
         color: $green-taiga;
         margin-bottom: .5rem;
     }
-    .task-list {
+    .points-list {
         span {
             color: $gray;
             margin-left: .5rem;
         }
     }
-    .new-us {
+    .new-task {
         bottom: 2rem;
         position: absolute;
     }

@@ -57,27 +57,6 @@ SprintProgressBarDirective = ->
     return {link: link}
 
 
-UsStatusDisplay = ->
-    ###
-    Show the name of a US status by id.
-    It need usStatusList in the $scope.
-
-    Example:
-        <span tg-us-status-display="us.status"></span>
-
-    ###
-    link = ($scope, $el, $attrs) ->
-       $scope.$watch $attrs.tgUsStatusDisplay, (status_id) ->
-           if status_id is undefined
-               return
-
-           status_name = $scope.usStatusList[status_id].name
-           $el.html(status_name)
-
-    return {link:link}
-
-
 module = angular.module("taigaCommon")
 module.directive("tgDateRange", DateRangeDirective)
 module.directive("tgSprintProgressbar", SprintProgressBarDirective)
-module.directive("tgUsStatusDisplay", UsStatusDisplay)

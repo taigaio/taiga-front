@@ -122,7 +122,18 @@ TaskboardTaskrowDirective = ->
     return {link: link}
 
 
+UsStatus = ->
+    link = ($scope, $el, $attrs) ->
+        $scope.$watch "#{$attrs.tgTaskboardUsStatus}.status", (status_id) ->
+            if status_id is undefined
+                return
+            status_name = $scope.usStatusList[status_id].name
+            $el.html(status_name)
+
+    return {link:link}
+
 module = angular.module("taigaTaskboard", [])
 module.controller("TaskboardController", TaskboardController)
 module.directive("tgTaskboard", TaskboardDirective)
 module.directive("tgTaskboardTaskrow", TaskboardTaskrowDirective)
+module.directive("tgTaskboardUsStatus", UsStatus)
