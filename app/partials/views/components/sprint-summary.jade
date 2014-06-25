@@ -3,35 +3,33 @@ div.summary.large-summary
         div.summary-progress-bar
             div.current-progress
         div.data
-            span.number 30%
-            span.description completed
+            span.number -- %
+
     ul
         li
-            span.number 12
-            span.description project<br />points
+            span.number(ng-bind="stats.totalPointsSum|default:'--'")
+            span.description total<br />points
         li
-            span.number 23
-            span.description defined<br />points
+            span.number(ng-bind="stats.completedPointsSum|default:'--'")
+            span.description completed<br />points
         li
-            span.number 12
-            span.description assigned<br />points
-        li
-            span.number 23
-            span.description closed<br />points
+            span.number(ng-bind="stats.remainingPointsSum|default:'--'")
+            span.description remaining<br />points
 
     ul
         li
             span.icon.icon-bulk
-            span.number 73
+            span.number(ng-bind="stats.total_tasks|default:'--'")
             span.description created<br />tasks
         li
-            span.number 72
-            span.description closed<br />tasks
+            span.number(ng-bind="stats.remainingTasks|default:'--'")
+            span.description open<br />tasks
         li
-            span.number 18
-            span.description remaining<br />tasks
+            span.number(ng-bind="stats.completed_tasks|default:'--'")
+            span.description closed<br />tasks
+
     ul
         li
             span.icon.icon-iocaine
-            span.number 10
-            span.description iocanie<br />doses
+            span.number(ng-bind="stats.iocaine_doses|default:'--'")
+            span.description iocaine<br />doses

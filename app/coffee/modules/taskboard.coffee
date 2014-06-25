@@ -35,20 +35,25 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q) ->
         @scope.sprintId = @params.id
-
         promise = @.loadInitialData()
         promise.then null, ->
-            console.log "FAIL"
+            console.log "FAIL" #TODO
 
     loadSprintStats: ->
         return @rs.sprints.stats(@scope.projectId, @scope.sprintId).then (stats) =>
-            console.log "loadSprintStats",
+            totalPointsSum =_.reduce(_.values(stats.total_points), ((res, n) -> res + n), 0)
+            completedPointsSum = _.reduce(_.values(stats.completed_points), ((res, n) -> res + n), 0)
+            remainingPointsSum = totalPointsSum - completedPointsSum
+            remainingTasks = stats.total_tasks - stats.completed_tasks
             @scope.stats = stats
+            @scope.stats.totalPointsSum = totalPointsSum
+            @scope.stats.completedPointsSum = completedPointsSum
+            @scope.stats.remainingPointsSum = remainingPointsSum
+            @scope.stats.remainingTasks = remainingTasks
             return stats
 
     loadSprint: ->
         return @rs.sprints.get(@scope.projectId, @scope.sprintId).then (sprint) =>
-            console.log "loadSprint", sprint
             @scope.sprint = sprint
             @scope.userstories = sprint.user_stories
             return sprint
@@ -57,7 +62,6 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
         return @rs.tasks.list(@scope.projectId, @scope.sprintId).then (tasks) =>
             @scope.tasks = tasks
             @scope.tasksByStatus = _.groupBy(tasks, "status")
-            console.log "loadTasks", @scope.tasksByStatus
             return tasks
 
     loadProject: ->
@@ -65,7 +69,6 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.project = project
             @scope.points = _.sortBy(project.points, "order")
             @scope.statusList = _.sortBy(project.task_statuses, "id")
-            console.log "loadProject", @scope.statusList
             return project
 
     loadTaskboard: ->
@@ -76,7 +79,6 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
         ]).then(=> @.loadTasks())
 
     loadInitialData: ->
-        console.log @params
         promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
             @scope.projectId = data.project
             return data
@@ -84,6 +86,8 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
         return promise.then(=> @.loadProject())
                       .then(=> @.loadUsersAndRoles())
                       .then(=> @.loadTaskboard())
+
+
 #############################################################################
 ## TaskboardDirective
 #############################################################################
