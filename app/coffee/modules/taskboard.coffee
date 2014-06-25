@@ -68,7 +68,8 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
         return @rs.projects.get(@scope.projectId).then (project) =>
             @scope.project = project
             @scope.points = _.sortBy(project.points, "order")
-            @scope.statusList = _.sortBy(project.task_statuses, "id")
+            @scope.taskStatusList = _.sortBy(project.task_statuses, "order")
+            @scope.usStatusList = _.sortBy(project.us_statuses, "order")
             return project
 
     loadTaskboard: ->
@@ -99,6 +100,7 @@ TaskboardDirective = ->
     #########################
 
     linkSortable = ($scope, $el, $attrs, $ctrl) ->
+        console.log "TaskboardDirective.linkSortable" #TODO
 
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
@@ -112,12 +114,13 @@ TaskboardDirective = ->
 
 TaskboardTaskrowDirective = ->
     link = ($scope, $el, $attrs) ->
-        taiga.bindOnce $scope, "statusList", (statuses) ->
+        taiga.bindOnce $scope, "taskStatusList", (statuses) ->
             itemSize = 300 + (10 * statuses.length)
             size = (1 + statuses.length) * itemSize
             $el.css("width", size + "px")
 
     return {link: link}
+
 
 module = angular.module("taigaTaskboard", [])
 module.controller("TaskboardController", TaskboardController)
