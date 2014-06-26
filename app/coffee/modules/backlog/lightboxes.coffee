@@ -93,6 +93,11 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope) ->
 
         $el.on "click", ".button-green", (event) ->
             event.preventDefault()
+
+            form = $el.find("form").checksley()
+            if not form.validate()
+                return
+
             if isNew
                 promise = $repo.create("userstories", $scope.us)
                 broadcastEvent = "usform:new:success"
@@ -141,6 +146,10 @@ CreateBulkUserstroriesDirective = ($repo, $rs, $rootscope) ->
         $el.on "click", ".button-green", (event) ->
             event.preventDefault()
 
+            form = $el.find("form").checksley()
+            if not form.validate()
+                return
+
             data = $scope.form.data
             projectId = $scope.projectId
 
@@ -155,6 +164,15 @@ CreateBulkUserstroriesDirective = ($repo, $rs, $rootscope) ->
 
 CreateSprint = ($repo, $rs, $rootscope) ->
     link = ($scope, $el, attrs) ->
+        submit = ->
+            form = $el.find("form").checksley()
+            if not form.validate()
+                return
+
+            $repo.create("milestones", $scope.sprint).then (data) ->
+                $el.addClass("hidden")
+                $rootscope.$broadcast("sprintform:create:success", data)
+
         $scope.$on "sprintform:create", ->
             $el.removeClass("hidden")
             $scope.sprint = {
@@ -170,9 +188,7 @@ CreateSprint = ($repo, $rs, $rootscope) ->
 
         $el.on "click", ".button-green", (event) ->
             event.preventDefault()
-            $repo.create("milestones", $scope.sprint).then (data) ->
-                $el.addClass("hidden")
-                $rootscope.$broadcast("sprintform:create:success", data)
+            submit()
 
         $scope.$on "$destroy", ->
             $el.off()
