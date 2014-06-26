@@ -9,8 +9,7 @@ html(lang="en", ng-app="taiga")
         meta(name="viewport", content="width=device-width, user-scalable=no")
         link(rel="stylesheet", href="/styles/main.css")
     body(tg-main)
-        // TODO: move to inner of ng-view
-        include partials/views/modules/nav
+        nav.menu
         include partials/views/components/notification-message
         div.master(ng-view)
         div.hidden.lightbox.lightbox_confirm-delete

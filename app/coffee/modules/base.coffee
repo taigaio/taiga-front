@@ -39,7 +39,60 @@ class MainTaigaController extends taiga.Controller
         @scope.mainSection = name
 
 
-MainTaigaDirective = ($log) ->
+MainTaigaDirective = ($log, $compile) ->
+    template = _.template("""
+    <h1 class="logo"><a href="" title="Home"><img src="/images/logo.png" alt="Taiga"/></a></h1>
+    <ul class="main-nav">
+        <li data-name="search">
+            <a href="" title="Search" tg-nav="project-search:project=project.slug">
+                <span class="icon icon-search"></span><span class="item">Search</span>
+            </a>
+        </li>
+        <li data-name="backlog" tg-nav="project-backlog:project=project.slug">
+            <a href="" title="Backlog" class="active">
+                <span class="icon icon-backlog"></span>
+                <span class="item">Backlog</span>
+            </a>
+        </li>
+        <li data-name="kanban">
+            <a href="" title="Kanban">
+                <span class="icon icon-kanban"></span><span class="item">Kanban</span></a></li>
+        <li data-name="issues">
+            <a href="" title="Issues" tg-nav="project-issues:project=project.slug">
+                <span class="icon icon-issues"></span><span class="item">Issues</span></a></li>
+        <li data-name="wiki">
+            <a href="" title="Wiki">
+                <span class="icon icon-wiki"></span>
+                <span class="item">Wiki</span>
+            </a>
+        </li>
+        <li data-name="video">
+            <a href="" title="Video">
+                <span class="icon icon-video"></span>
+                <span class="item">Video</span>
+            </a>
+        </li>
+    </ul>
+    <div class="user">
+        <div class="user-settings">
+            <ul class="popover">
+                <li><a href="" title="Change profile photo">Change profile photo</a></li>
+                <li><a href="" title="Account settings">Account settings</a></li>
+                <li><a href="" title="Logout">Logout</a></li>
+            </ul>
+            <a href="" title="User preferences" class="avatar">
+                <img src="http://thecodeplayer.com/u/uifaces/12.jpg" alt="username"/>
+            </a>
+        </div>
+    </div>
+    <div class="settings">
+        <a href="" title="User preferences">Pilar</a>
+        <a href="" title="Site preferences">
+            <span class="icon icon-settings"></span>
+        </a>
+    </div>""")
+
+
     linkMainNav = ($scope, $el, $attrs, $ctrl) ->
         menuEntriesSelector = $el.find("ul.main-nav > li")
         menuEntries = _.map(menuEntriesSelector, (x) -> angular.element(x))
@@ -47,13 +100,25 @@ MainTaigaDirective = ($log) ->
 
         $scope.$watch "mainSection", (sectionName) ->
             $el.find("ul.main-nav a.active").removeClass("active")
-
             entry = menuEntriesByName[sectionName]
             entry.find("> a").addClass("active")
 
     link = ($scope, $el, $attrs, $ctrl) ->
         $log.debug "Taiga main directive initialized."
         linkMainNav($scope, $el, $attrs, $ctrl)
+
+        # WARNING: this code has traces of slighty hacky parts
+        # This rerenders and compiles the navigation when ng-view
+        # content loaded signal is raised using inner scope.
+        $scope.$on "$viewContentLoaded", ->
+            body = angular.element("body")
+            wScope = body.find(".wrapper").scope()
+            html = template({})
+            dom = $compile(html)(wScope)
+
+            menuDom = $el.find("nav.menu")
+            menuDom.empty()
+            menuDom.append(dom)
 
     return {
         controller: MainTaigaController
@@ -71,7 +136,7 @@ SectionMarkerDirective = ($log) ->
     }
 
 
-module.directive("tgMain", ["$log", MainTaigaDirective])
+module.directive("tgMain", ["$log", "$compile", MainTaigaDirective])
 module.directive("tgSectionMarker", ["$log", SectionMarkerDirective])
 
 

@@ -24,26 +24,6 @@ taiga = @.taiga
 trim = @.taiga.trim
 bindOnce = @.taiga.bindOnce
 
-parseNav = (data, scope) ->
-    options = {}
-
-    [name, params] = _.map(data.split(":"), trim)
-    params = _.map(params.split(","), trim)
-
-    for item in params
-        [key, value] = _.map(item.split("="), trim)
-        options[key] = scope.$eval(value)
-
-    return [name, options]
-
-
-formatUrl = (url, ctx={}) ->
-    replacer = (match) ->
-        match = trim(match, ":")
-        return ctx[match] or "undefined"
-    return url.replace(/(:\w+)/g, replacer)
-
-
 class NavigationUrlsService extends taiga.Service
     constructor: ->
         @.urls = {}
@@ -59,27 +39,43 @@ NavigationUrlsDirective = ($navurls, $auth, $q) ->
     # Example:
     # link(tg-nav="project-backlog:project='sss',")
 
+    # bindOnce version that uses $q for offer
+    # promise based api
+    bindOnceP = ($scope, attr) ->
+        defered = $q.defer()
+        bindOnce $scope, attr, (v) ->
+            defered.resolve(v)
+        return defered.promise
 
-    # TODO: almost all menu entries requires project
-    # model available in scope, but project is only
-    # eventually available on child scopes
-    # TODO: this need an other aproximation :(((
+    parseNav = (data, $scope) ->
+        [name, params] = _.map(data.split(":"), trim)
+        params = _.map(params.split(","), trim)
+        values = _.map(params, (x) -> trim(x.split("=")[1]))
+        promises = _.map(values, (x) -> bindOnceP($scope, x))
 
-    # bindOnceP = ($scope, attr) ->
-    #     defered = $q.defer()
+        return $q.all.apply($q, promises).then ->
+            options = {}
+            for item in params
+                [key, value] = _.map(item.split("="), trim)
+                options[key] = $scope.$eval(value)
+            return [name, options]
+
+    formatUrl = (url, ctx={}) ->
+        replacer = (match) ->
+            match = trim(match, ":")
+            return ctx[match] or "undefined"
+        return url.replace(/(:\w+)/g, replacer)
 
     link = ($scope, $el, $attrs) ->
-        [name, options] = parseNav($attrs.tgNav, $scope)
+        parseNav($attrs.tgNav, $scope).then (result) ->
+            [name, options] = result
 
-        user = $auth.getUser()
-        options.user = user.username if user
+            user = $auth.getUser()
+            options.user = user.username if user
 
-        url = $navurls.resolve(name)
-        fullUrl = formatUrl(url, options)
-
-        console.log url, $attrs.tgNav
-
-        $el.attr("href", fullUrl)
+            url = $navurls.resolve(name)
+            fullUrl = formatUrl(url, options)
+            $el.attr("href", fullUrl)
 
     return {link: link}
 
