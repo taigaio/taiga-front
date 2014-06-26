@@ -69,6 +69,22 @@ scopeDefer = (scope, func) ->
         scope.$apply(func)
 
 
+toString = (value) ->
+    if _.isNumber(value)
+        return value + ""
+    else if _.isString(value)
+        return value
+    else if _.isPlainObject(value)
+        return JSON.stringify(value)
+    else if _.isUndefined(value)
+        return ""
+    return value.toString()
+
+
+joinStr = (str, coll) ->
+    return _.str.join(str, coll)
+
+
 taiga = @.taiga
 taiga.bindOnce = bindOnce
 taiga.mixOf = mixOf
@@ -77,3 +93,5 @@ taiga.toggleText = toggleText
 taiga.groupBy = groupBy
 taiga.timeout = timeout
 taiga.scopeDefer = scopeDefer
+taiga.toString = toString
+taiga.joinStr = joinStr
