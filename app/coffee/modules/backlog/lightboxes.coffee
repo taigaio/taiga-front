@@ -19,7 +19,7 @@
 # File: modules/backlog/lightboxes.coffee
 ###
 
-CreateEditUserstoryDirective = ($repo, $model, $rs) ->
+CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope) ->
 
     editDescription = ($scope, $el) ->
         $el.find('.markdown-preview a').removeClass("active")
@@ -40,7 +40,6 @@ CreateEditUserstoryDirective = ($repo, $model, $rs) ->
             descriptionPreviewDOM.show()
 
     link = ($scope, $el, attrs) ->
-        $ctrl = $el.closest("div.wrapper").controller()
         isNew = true
 
         $scope.$on "usform:new", ->
@@ -96,12 +95,14 @@ CreateEditUserstoryDirective = ($repo, $model, $rs) ->
             event.preventDefault()
             if isNew
                 promise = $repo.create("userstories", $scope.us)
+                broadcastEvent = "usform:new:success"
             else
                 promise = $repo.save($scope.us)
+                broadcastEvent = "usform:edit:success"
 
             promise.then (data) ->
                 $el.addClass("hidden")
-                $ctrl.loadUserstories()
+                $rootScope.$broadcast(broadcastEvent, data)
 
         $el.on "click", "label.blocked", (event) ->
             event.preventDefault()
@@ -180,6 +181,6 @@ CreateSprint = ($repo, $rs, $rootscope) ->
 
 
 module = angular.module("taigaBacklog")
-module.directive("tgLbCreateEditUserstory", ["$tgRepo", "$tgModel", "$tgResources", CreateEditUserstoryDirective])
+module.directive("tgLbCreateEditUserstory", ["$tgRepo", "$tgModel", "$tgResources", "$rootScope", CreateEditUserstoryDirective])
 module.directive("tgLbCreateBulkUserstories", ["$tgRepo", "$tgResources", "$rootScope", CreateBulkUserstroriesDirective])
 module.directive("tgLbCreateSprint", ["$tgRepo", "$tgResources", "$rootScope", CreateSprint])

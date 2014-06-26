@@ -22,6 +22,8 @@
 taiga = @.taiga
 mixOf = @.taiga.mixOf
 toggleText = @.taiga.toggleText
+scopeDefer = @.taiga.scopeDefer
+bindOnce = @.taiga.bindOnce
 
 class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin)
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q) ->
@@ -30,8 +32,10 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin)
         promise.then null, =>
             console.log "FAIL"
 
-        @rootscope.$on("usform:bulk:success", @.loadUserstories)
-        @rootscope.$on("sprintform:create:success", @.loadSprints)
+        @scope.$on("usform:bulk:success", @.loadUserstories)
+        @scope.$on("sprintform:create:success", @.loadSprints)
+        @scope.$on("usform:new:success", @.loadUserstories)
+        @scope.$on("usform:edit:success", @.loadUserstories)
 
     loadProjectStats: ->
         return @rs.projects.stats(@scope.projectId).then (stats) =>
@@ -51,6 +55,9 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.filters = @.generateFilters()
 
             @.filterVisibleUserstories()
+            scopeDefer @scope, =>
+                @scope.$broadcast("userstories:loaded")
+
             return userstories
 
     loadBacklog: ->
@@ -132,6 +139,48 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin)
 #############################################################################
 
 BacklogDirective = ($repo) ->
+    #########################
+    ## Doom line Link
+    #########################
+
+    linkDoomLine = ($scope, $el, $attrs, $ctrl) ->
+
+        removeDoomlineDom = ->
+            $el.find(".doom-line").remove()
+
+        addDoomLineDom = (element) ->
+            element?.before($( "<hr>", { class:"doom-line"}))
+
+        getUsItems = ->
+            rowElements = $el.find('.backlog-table-body .us-item-row')
+            return _.map(rowElements, (x) -> angular.element(x))
+
+        reloadDoomlineLocation = () ->
+            bindOnce $scope, "stats", (project) ->
+                removeDoomlineDom()
+
+                elements = getUsItems()
+                stats = $scope.stats
+
+                total_points = stats.total_points
+                current_sum = stats.assigned_points
+
+                for element in elements
+                    scope = element.scope()
+
+                    if not scope.us?
+                        continue
+
+                    current_sum += scope.us.total_points
+                    if current_sum > total_points
+                        addDoomLineDom(element)
+                        break
+
+        bindOnce $scope, "stats", (project) ->
+            reloadDoomlineLocation()
+            $scope.$on("userstories:loaded", reloadDoomlineLocation)
+            $scope.$on("doomline:redraw", reloadDoomlineLocation)
+
     #########################
     ## Drag & Drop Link
     #########################
@@ -268,6 +317,7 @@ BacklogDirective = ($repo) ->
         linkSortable($scope, $el, $attrs, $ctrl)
         linkMoveToCurrentSprint($scope, $el, $attrs, $ctrl)
         linkFilters($scope, $el, $attrs, $ctrl)
+        linkDoomLine($scope, $el, $attrs, $ctrl)
 
         $scope.$on "$destroy", ->
             $el.off()
@@ -394,7 +444,7 @@ UsRolePointsSelectorDirective = ($rootscope) ->
       </ul>
     """)
     link = ($scope, $el, $attrs) ->
-        taiga.bindOnce $scope, "project", (project) ->
+        bindOnce $scope, "project", (project) ->
             roles = _.filter(project.roles, "computable")
             $el.append(selectionTemplate({ 'roles':  roles }))
 
@@ -473,10 +523,10 @@ UsPointsDirective = ($repo) ->
         pointsById = $scope.pointsById
         updatePointsValue(usPoints, usTotalPoints, pointsById, pointsDom, selectedRoleId)
 
-        taiga.bindOnce $scope, "project", (project) ->
+        bindOnce $scope, "project", (project) ->
             roles = _.filter(project.roles, "computable")
-            $el.append(selectionTemplate({ 'roles':  roles }))
-            $el.append(pointsTemplate({ 'points':  project.points }))
+            $el.append(selectionTemplate({ "roles":  roles }))
+            $el.append(pointsTemplate({ "points":  project.points }))
 
         $scope.$on "uspoints:select", (ctx, roleId,roleName) ->
             selectedRoleId = roleId
@@ -557,7 +607,7 @@ UsStatusDirective = ($repo) ->
         $ctrl = $el.controller()
         us = $scope.$eval($attrs.tgUsStatus)
 
-        taiga.bindOnce $scope, "project", (project) ->
+        bindOnce $scope, "project", (project) ->
             $el.append(selectionTemplate({ 'statuses':  project.us_statuses }))
             updateUsStatus($el, us, $scope.usStatusById)
 

@@ -64,6 +64,11 @@ timeout = (wait, continuation) ->
     return window.setTimeout(continuation, wait)
 
 
+scopeDefer = (scope, func) ->
+    _.defer =>
+        scope.$apply(func)
+
+
 taiga = @.taiga
 taiga.bindOnce = bindOnce
 taiga.mixOf = mixOf
@@ -71,3 +76,4 @@ taiga.trim = trim
 taiga.toggleText = toggleText
 taiga.groupBy = groupBy
 taiga.timeout = timeout
+taiga.scopeDefer = scopeDefer
