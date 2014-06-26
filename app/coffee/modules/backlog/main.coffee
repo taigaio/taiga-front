@@ -443,24 +443,28 @@ UsPointsDirective = ($repo) ->
       </ul>
     """)
 
-    updatePointsValue = (us, pointsById, pointsDomNode, selectedRoleId) ->
+    updatePointsValue = (usPoints, usTotalPoints, pointsById, pointsDomNode, selectedRoleId) ->
         if not selectedRoleId?
-            pointsDomNode.text(us.total_points)
+            pointsDomNode.text(usTotalPoints)
         else
-            selectedPoints = pointsById[us.points[selectedRoleId]]
+            selectedPoints = pointsById[usPoints[selectedRoleId]]
             selectedPointsValue = selectedPoints.value
             selectedPointsValue = '?' if not selectedPointsValue?
-            pointsDomNode.text("#{selectedPointsValue}/#{us.total_points}")
+            pointsDomNode.text("#{selectedPointsValue}/#{usTotalPoints}")
+
+    calculateTotalPoints = (us, pointsById) ->
+        return _.reduce(_.map(us.points, (value, key) -> pointsById[value].value), (memo, num) -> memo + num)
 
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
         us = $scope.$eval($attrs.tgUsPoints)
         usPoints = us.points
+        usTotalPoints = us.total_points
         pointsDom = $el.find("a")
         selectedRoleId = null
         updatingSelectedRoleId = null
         pointsById = $scope.pointsById
-        updatePointsValue(us, pointsById, pointsDom, selectedRoleId)
+        updatePointsValue(usPoints, usTotalPoints, pointsById, pointsDom, selectedRoleId)
 
         taiga.bindOnce $scope, "project", (project) ->
             roles = _.filter(project.roles, "computable")
@@ -469,11 +473,11 @@ UsPointsDirective = ($repo) ->
 
         $scope.$on "uspoints:select", (ctx, roleId,roleName) ->
             selectedRoleId = roleId
-            updatePointsValue(us, pointsById, pointsDom, selectedRoleId)
+            updatePointsValue(usPoints, usTotalPoints, pointsById, pointsDom, selectedRoleId)
 
         $scope.$on "uspoints:clear-selection", (ctx) ->
             selectedRoleId = null
-            updatePointsValue(us, pointsById, pointsDom, selectedRoleId)
+            updatePointsValue(usPoints, usTotalPoints, pointsById, pointsDom, selectedRoleId)
 
         $el.on "click", "a.us-points", (event) ->
             event.preventDefault()
@@ -507,10 +511,10 @@ UsPointsDirective = ($repo) ->
             $el.find(".pop-points-open").hide()
             $scope.$apply () ->
                 usPoints[updatingSelectedRoleId] = target.data("point-id")
-                us.points = _.clone(usPoints, false)
-                total = _.reduce(_.map(us.points, (value, key) -> $scope.pointsById[value].value), (memo, num) -> memo + num)
-                us.total_points = total
-                updatePointsValue(us, pointsById, pointsDom, selectedRoleId)
+                us.points = _.clone(usPoints, true)
+                usTotalPoints = calculateTotalPoints(us, $scope.pointsById)
+                us.total_points = usTotalPoints
+                updatePointsValue(usPoints, usTotalPoints, pointsById, pointsDom, selectedRoleId)
                 $repo.save(us).then ->
                     $ctrl.loadProjectStats()
 
