@@ -1,8 +1,8 @@
 .menu {
+    @extend %title;
     background-image: url('../images/menu.png');
     background-position: left bottom;
     flex-wrap: wrap;
-    font-family: 'ostrichSans';
     height: 100%;
     padding: 2rem .3rem;
     position: fixed;

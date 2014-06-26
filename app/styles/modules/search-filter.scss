@@ -9,7 +9,7 @@
     }
     a {
         @extend %large;
-        font-family: 'ostrichSans';
+        @extend %title;
         opacity: .2;
         &.active,
         &:hover {

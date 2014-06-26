@@ -12,8 +12,8 @@
     margin-bottom: 2rem;
     .us-title {
         @extend %xlarge;
+        @extend %text;
         background: $whitish;
-        font-family: 'DroidSans';
         padding: 2rem 1rem;
         .us-number {
             color: $gray-light;
@@ -73,8 +73,8 @@
 }
 
 .us-activity-tabs {
+    @extend %title;
     border-bottom: 3px solid $gray-light;
-    font-family: 'ostrichSans';
     padding: .5rem 0;
     li {
         @extend %large;
@@ -149,8 +149,8 @@
     }
     .points {
         @extend %xlarge;
+        @extend %title;
         display: block;
-        font-family: 'ostrichSans';
         text-align: center;
     }
     .role {
@@ -192,7 +192,7 @@
         position: relative;
         .title {
             @extend %large;
-            font-family: 'ostrichSans';
+            @extend %title;
         }
         .icon {
             @extend %large;

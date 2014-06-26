@@ -13,10 +13,10 @@ input[type="date"],
 select,
 textarea {
     @extend %large;
+    @extend %title;
     background: $gray-light;
     border: 0;
     color: $grayer;
-    font-family: 'ostrichSans';
     height: 40px;
     margin: 0;
     padding: 8px;
@@ -26,5 +26,5 @@ textarea {
     }
 }
 input[type="password"] {
-    font-family: 'DroidSans';
+    @extend %text;
 }

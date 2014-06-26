@@ -63,7 +63,7 @@ $column-margin: 0 10px 0 0;
     }
     .us-title {
         @extend %large;
-        font-family: 'DroidSans';
+        @extend %title;
         margin-bottom: 1rem;
     }
     .us-ref {

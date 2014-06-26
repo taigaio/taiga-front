@@ -2,7 +2,7 @@
 
 // Font face
 
-@each $font-face in DroidSans, DroidSans-Bold, ostrichSans, taiga {
+@each $font-face in DroidSans, DroidSans-Bold, ostrichSans, OpenSans-CondLight-webfont, taiga {
     @font-face {
         font-family: '#{$font-face}';
         src: url('../fonts/#{$font-face}.eot?#iefix') format('embedded-opentype'),
@@ -25,7 +25,7 @@ h6 {
     }
 }
 
-// __Font Sizes__
+// __Font Sizes__ //
 %xsmall {font-size: .5rem;}
 %small {font-size: .8rem;}
 %medium {font-size: 1rem;}
@@ -33,13 +33,21 @@ h6 {
 %xlarge {font-size: 2rem;}
 %xxlarge {font-size: 3rem;}
 
+// __Font Types__ //
+%title {font-family: 'OpenSans-CondLight-webfont';}
+%text {font-family: 'DroidSans';}
+%bold {font-family: 'DroidSans-Bold';}
+%taiga {font-family: 'taiga';}
+
 h1 {
     @extend %xxlarge;
-    font-family: 'ostrichSans';
+    @extend %title;
     line-height: 2.7rem;
     margin-bottom: 1rem;
+    text-transform: uppercase;
     span {
         @include ellipsis(250px);
+        display: inline;
         margin-right: .5rem;
     }
     .green {
@@ -53,7 +61,7 @@ h1 {
 
 h2 {
     @extend %xlarge;
-    font-family: 'ostrichSans';
+    @extend %title;
     margin-bottom: 1rem;
 }
 

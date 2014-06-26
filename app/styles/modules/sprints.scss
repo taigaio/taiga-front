@@ -14,8 +14,8 @@
     }
     .sprint-name {
         @extend %large;
+        @extend %title;
         display: inline-block;
-        font-family: 'ostrichSans';
         margin-right: 3px;
         max-width: 100px;
         overflow: hidden;
@@ -25,8 +25,8 @@
     }
     .sprint-date {
         @extend %large;
+        @extend %title;
         color: $gray-light;
-        font-family: 'ostrichSans';
     }
     .sprint {
         margin-bottom: 2rem;

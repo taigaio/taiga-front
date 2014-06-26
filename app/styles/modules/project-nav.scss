@@ -31,9 +31,9 @@
 .projects-list {
     a {
         @extend %large;
+        @extend %title;
         color: $whitish;
         display: block;
-        font-family: 'ostrichSans';
         padding: 1rem;
         text-transform: uppercase;
         width: 100%;

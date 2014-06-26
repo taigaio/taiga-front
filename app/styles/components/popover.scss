@@ -1,9 +1,9 @@
 @mixin popover($width, $top: '', $left: '', $bottom: '', $right: '', $arrow-width: 0, $arrow-top: '', $arrow-left: '', $arrow-bottom: '') {
+    @extend %text;
     background: $blackish;
     bottom: #{$bottom};
     color: $white;
     display: none;
-    font-family: 'DroidSans';
     left: #{$left};
     list-style-type: none;
     margin: 0;

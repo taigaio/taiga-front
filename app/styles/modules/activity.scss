@@ -33,7 +33,7 @@
         @include table-flex-child(1, 50px, 0);
     }
     .activity-changed {
-        font-family: 'DroidSans-Bold';
+        @extend %bold;
     }
     .activity-fromto {
         @extend %small;

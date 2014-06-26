@@ -61,13 +61,13 @@
 .backlog-table-header {
     .backlog-table-title {
         @extend %medium;
-        font-family: 'DroidSans-Bold';
+        @extend %bold;
     }
     .backlog-table-subtitle {
         @extend %small;
+        @extend %text;
         background: $whitish;
         border-bottom: 2px solid $grayer;
-        font-family: 'DroidSans';
         &:hover {
             background: $whitish;
         }

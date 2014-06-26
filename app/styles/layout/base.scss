@@ -80,7 +80,7 @@ body {
 }
 
 .icon {
-    font-family: 'taiga';
+    @extend %taiga;
 }
 
 .hidden {

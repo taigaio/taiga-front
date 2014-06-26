@@ -1,8 +1,8 @@
 .admin-menu {
     li {
         @extend %xlarge;
+        @extend %title;
         border-bottom: 1px solid $gray-light;
-        font-family: 'ostrichSans';
         &:last-child {
             border-bottom: 0;
         }

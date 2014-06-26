@@ -31,8 +31,8 @@
     }
     .invitation-text {
         @extend %xlarge;
+        @extend %title;
         color: $white;
-        font-family: 'ostrichSans';
         line-height: 3rem;
         text-align: center;
         .project-name {

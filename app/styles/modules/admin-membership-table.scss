@@ -1,6 +1,6 @@
 .admin-membership-table {
     .title {
-        font-family: 'DroidSans-Bold';
+        @extend %bold;
     }
     .avatar {
         align-items: center;
@@ -17,7 +17,7 @@
             width: 100%;
         }
         .name {
-            font-family: DroidSans-Bold;
+            @extend %bold;
         }
         .email {
             color: $gray-light;

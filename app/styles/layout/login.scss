@@ -18,8 +18,8 @@
     }
     .tagline {
         @extend %xlarge;
+        @extend %title;
         color: $white;
-        font-family: 'ostrichSans';
         line-height: 2rem;
     }
     form {
@@ -80,7 +80,7 @@
     }
     .title {
         @extend %large;
-        font-family: 'DroidSans-bold';
+        @extend %bold;
     }
     .icon-delete {
         color: $red-light;

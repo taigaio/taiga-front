@@ -1,8 +1,8 @@
 .single-filter {
     @extend %large;
     @include clearfix;
+    @extend %title;
     display: block;
-    font-family: 'ostrichSans';
     height: 32px;
     margin-bottom: 1rem;
     opacity: .5;

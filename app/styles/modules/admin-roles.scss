@@ -1,12 +1,12 @@
 .admin-roles {
     .total {
         @extend %large;
+        @extend %title;
         background-color: $whitish;
-        font-family: DroidSans-Bold;
         padding: .5rem 1rem;
         span {
             @extend %medium;
-            font-family: DroidSans;
+            @extend %text;
             padding-left: .5rem;
         }
     }

@@ -29,8 +29,8 @@
     }
     .number {
         @extend %xlarge;
+        @extend %bold;
         float: left;
-        font-family: 'DroidSans-Bold';
         margin-right: .3rem;
         position: relative;
         top: 5px;
@@ -39,8 +39,8 @@
     .description {
         // line-height: 0;
         @extend %small;
+        @extend %text;
         float: left;
-        font-family: DroidSans;
         line-height: .9rem;
     }
 }

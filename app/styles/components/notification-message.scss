@@ -13,8 +13,8 @@
     }
     .warning {
         @extend %xlarge;
+        @extend %bold;
         color: $white;
-        font-family: 'DroidSans-Bold';
         line-height: 2.4rem;
     }
     .icon-delete {

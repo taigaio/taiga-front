@@ -2,8 +2,8 @@
     input[type="text"],
     textarea {
         @extend %medium;
+        @extend %text;
         background-color: $very-light-gray;
-        font-family: 'DroidSans';
         font-weight: bold;
     }
     fieldset {

@@ -12,7 +12,7 @@
         margin-right: 2rem;
         a {
             @extend %large;
-            font-family: 'ostrichSans';
+            @extend %title;
             opacity: .4;
             &.active,
             &:hover {

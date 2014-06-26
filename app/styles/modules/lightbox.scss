@@ -227,7 +227,7 @@
     }
     .subtitle {
         @extend %large;
-        font-family: 'ostrichSans';
+        @extend %title;
     }
     .delete-options {
         @include table-flex();

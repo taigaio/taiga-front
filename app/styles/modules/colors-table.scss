@@ -11,8 +11,8 @@
     }
     .title {
         @extend %medium;
+        @extend %bold;
         border-bottom: 1px solid $gray-light;
-        font-family: 'DroidSans-Bold';
         &:hover {
             background: transparent;
         }
@@ -67,8 +67,8 @@
             margin-bottom: 1rem;
         }
         input {
+            @extend %text;
             background-color: $very-light-gray;
-            font-family: DroidSans;
             width: 243px;
             @include placeholder {
                 color: $gray;

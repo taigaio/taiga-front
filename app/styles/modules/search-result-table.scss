@@ -32,8 +32,8 @@
     }
     .title {
         @extend %medium;
+        @extend %bold;
         border-bottom: 1px solid $gray-light;
-        font-family: 'DroidSans-Bold';
         &:hover {
             background: transparent;
         }

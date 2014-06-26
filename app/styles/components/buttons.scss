@@ -1,7 +1,7 @@
 // Buttons components
 .trans-button {
     @extend %large;
-    font-family: 'ostrichSans';
+    @extend %title;
     &:hover,
     &.active {
         @include transition (color .3s linear);
@@ -14,18 +14,18 @@
 
 %button,
 .button {
-    @extend %large;
+    @extend %medium;
+    @extend %title;
     @include transition (background .3s linear);
     display: inline-block;
-    font-family: 'ostrichSans';
     padding: 8px 40px;
+    text-transform: uppercase;
+
     &:hover {
         @include transition (background .3s linear);
     }
     span {
         color: $white;
-        position: relative;
-        top: 2px;
     }
     .icon {
         margin-right: .3rem;
