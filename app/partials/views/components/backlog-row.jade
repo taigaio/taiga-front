@@ -9,15 +9,8 @@ div.row.us-item-row(ng-repeat="us in visibleUserstories track by us.id")
         div.user-story-tags
             span.tag(ng-repeat="tag in us.tags") {{ tag }}
 
-    div.status.width-2
-       a(href="", title="Status Name") Status Name
-       ul.popover.pop-status
-           li
-               a(href="", title="Status 1") Status 1
-           li
-               a(href="", title="Status 2") Status 2
-           li
-               a(href="", title="Status 3") Status 3
+    div.status.width-2(tg-us-status="us")
+       a.us-status(href="", title="Status Name")
 
     div.points(tg-us-points="us")
         a.us-points(href="", title="Points") 0
