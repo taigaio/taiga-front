@@ -27,8 +27,28 @@ module = angular.module("taigaBase", ["taigaLocales"])
 
 
 #############################################################################
+## Global Page Controller
+#############################################################################
+
+class MainTaigaController extends taiga.Controller
+    @.$inject = ["$scope", "$tgResources"]
+
+    constructor: (@scope, @rs) ->
+        promise = @.loadInitialData()
+        promise.then null, ->
+            console.log "FAIL"
+            # TODO
+
+    loadInitialData: ->
+        return @rs.projects.list().then (projects) =>
+            console.log projects
+            @scope.projects = projects
+            return projects
+
+#############################################################################
 ## Global Page Directive
 #############################################################################
+
 
 MainTaigaDirective = ($log, $compile, $rootscope) ->
     template = _.template("""
