@@ -26,10 +26,12 @@ paths = {
     dist: "dist"
     html: "app/*.html"
     jade: "app/partials/**/*.jade"
-    appStyles: "app/styles/**/*.scss"
-    distStyles: "dist/styles"
-    sassMain: "app/styles/main.scss"
-    css:  "dist/styles/**/*.css"
+    scssStyles: "app/styles/**/*.scss"
+    distStylesPath: "dist/styles"
+    distStyles: ["dist/styles/vendor.css",
+                 "dist/styles/app.css"]
+    sassStylesMain: "app/styles/main.scss"
+    css:  "app/styles/vendor/*.css"
     images: "app/images/**/*"
     locales: "app/locales/**/*.json"
     coffee: ["app/coffee/app.coffee",
@@ -80,35 +82,39 @@ gulp.task "template", ->
         .pipe(jade({pretty: true, locals:{v:(new Date()).getTime()}}))
         .pipe(gulp.dest(paths.dist))
 
-
-# Sass lint
-gulp.task "scss-lint", ->
-    gulp.src([paths.appStyles, "!/**/bourbon/**/*.scss"])
+gulp.task "scsslint", ->
+    gulp.src(paths.scssStyles)
         .pipe(cache("scsslint"))
         .pipe(scsslint({config: "scsslint.yml"}))
 
-
-# Sass Files
 gulp.task "sass", ->
-    gulp.src(paths.sassMain)
+    gulp.src(paths.sassStylesMain)
         .pipe(plumber())
         .pipe(sass())
-        .pipe(gulp.dest(paths.distStyles))
+        .pipe(rename("app.css"))
+        .pipe(gulp.dest(paths.distStylesPath))
 
+gulp.task "css", ->
+    gulp.src(paths.css)
+        .pipe(concat("vendor.css"))
+        .pipe(gulp.dest(paths.distStylesPath))
 
-# CSS Linting and report
-gulp.task "css", ["sass"], ->
-    gulp.src([paths.css, "!#{paths.dist}/styles/vendor/**/*.css"])
+gulp.task "csslint-vendor", ->
+    gulp.src(paths.css)
         .pipe(csslint("csslintrc.json"))
         .pipe(csslint.reporter())
 
+gulp.task "csslint-app", ->
+    gulp.src(paths.distStylesPath + "/app.css")
+        .pipe(csslint("csslintrc.json"))
+        .pipe(csslint.reporter())
 
-# Minify CSS
-gulp.task "minifyCSS", ["css", "sass"], ->
-    gulp.src("dist/styles/main.css")
-        .pipe(minifyCSS())
-        .pipe(gulp.dest(paths.distStyles))
-        .pipe(size())
+# # Minify CSS
+# gulp.task "minifyCSS", ["css", "sass"], ->
+#     gulp.src("dist/styles/main.css")
+#         .pipe(minifyCSS())
+#         .pipe(gulp.dest(paths.distStylesPath))
+#         .pipe(size())
 
 gulp.task "imagemin", ->
     gulp.src(paths.images)
@@ -116,6 +122,10 @@ gulp.task "imagemin", ->
         .pipe(imagemin({progressive: true}))
         .pipe(gulp.dest(paths.dist+"/images"))
 
+gulp.task "styles", ["css", "sass"], ->
+    gulp.src(paths.distStyles)
+        .pipe(concat("main.css"))
+        .pipe(gulp.dest(paths.distStylesPath))
 
 ##############################################################################
 # JS Related tasks
@@ -152,7 +162,7 @@ gulp.task "locales", ->
 ##############################################################################
 
 # Copy Files
-gulp.task "copy", ["sass"], ->
+gulp.task "copy",  ->
     gulp.src("#{paths.app}/fonts/*")
         .pipe(gulp.dest("#{paths.dist}/fonts/"))
 
@@ -165,15 +175,6 @@ gulp.task "connect", ->
         root: paths.dist
         livereload: true
     })
-
-
-# Rerun the task when a file changes
-gulp.task "watch", ->
-    gulp.watch(paths.jade, ["jade"])
-    gulp.watch(paths.appStyles, ["scss-lint", "sass", "css"])
-    gulp.watch(paths.coffee, ["coffee"])
-    gulp.watch(paths.vendorJsLibs, ["jslibs"])
-    gulp.watch(paths.locales, ["locales"])
 
 
 gulp.task "express", ->
@@ -192,30 +193,27 @@ gulp.task "express", ->
 
     app.listen(9001)
 
+# Rerun the task when a file changes
+gulp.task "watch", ->
+    gulp.watch(paths.jade, ["jade"])
+    gulp.watch(paths.scssStyles, ["scsslint", "styles", "csslint-app"])
+    gulp.watch(paths.css, ["styles", "csslint-vendor"])
+    gulp.watch(paths.coffee, ["coffee"])
+    gulp.watch(paths.vendorJsLibs, ["jslibs"])
+    gulp.watch(paths.locales, ["locales"])
+
 
 # The default task (called when you run gulp from cli)
 gulp.task "default", [
     "jade",
     "template",
-    "sass",
-    "css",
+    "styles",
+    "csslint-app",
     "copy",
     "locales",
     "coffee",
     "jslibs",
     "connect",
     "express",
-    "watch"
-]
-
-# The default task (called when you run `gulp` from cli)
-gulp.task "dist", [
-    "jade",
-    "sass",
-    "css",
-    "minifyCSS",
-    "imagemin",
-    "copy",
-    "connect",
     "watch"
 ]
