@@ -556,7 +556,6 @@ UsStatusDirective = ($repo) ->
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
         us = $scope.$eval($attrs.tgUsStatus)
-        $el.find(".us-status").text(us.status)
 
         taiga.bindOnce $scope, "project", (project) ->
             $el.append(selectionTemplate({ 'statuses':  project.us_statuses }))
