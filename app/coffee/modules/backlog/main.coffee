@@ -443,11 +443,13 @@ UsRolePointsSelectorDirective = ($rootscope) ->
     selectionTemplate = _.template("""
       <ul class="popover pop-role">
           <li><a class="clear-selection" href="" title="All">All</a></li>
-          <% _.forEach(roles, function(role) { %>
-          <li><a href="" class="role" title="<%- role.name %>" data-role-id="<%- role.id %>"><%- role.name %></a></li>
+          <% _.each(roles, function(role) { %>
+          <li><a href="" class="role" title="<%- role.name %>"
+                 data-role-id="<%- role.id %>"><%- role.name %></a></li>
           <% }); %>
       </ul>
     """)
+
     link = ($scope, $el, $attrs) ->
         bindOnce $scope, "project", (project) ->
             roles = _.filter(project.roles, "computable")
@@ -480,6 +482,7 @@ UsRolePointsSelectorDirective = ($rootscope) ->
         $el.on "click", ".role", (event) ->
             event.preventDefault()
             event.stopPropagation()
+
             target = angular.element(event.currentTarget)
             rolScope = target.scope()
             $rootscope.$broadcast("uspoints:select", target.data("role-id"), target.text())
@@ -491,18 +494,23 @@ UsRolePointsSelectorDirective = ($rootscope) ->
 
 UsPointsDirective = ($repo) ->
     selectionTemplate = _.template("""
-      <ul class="popover pop-role">
-          <% _.forEach(roles, function(role) { %>
-          <li><a href="" class="role" title="<%- role.name %>" data-role-id="<%- role.id %>"><%- role.name %></a></li>
-          <% }); %>
-      </ul>
+    <ul class="popover pop-role">
+        <% _.each(roles, function(role) { %>
+        <li><a href="" class="role" title="<%- role.name %>"
+               data-role-id="<%- role.id %>"><%- role.name %></a>
+        </li>
+        <% }); %>
+    </ul>
     """)
+
     pointsTemplate = _.template("""
-      <ul class="popover pop-points-open">
-          <% _.forEach(points, function(point) { %>
-          <li><a href="" class="point" title="<%- point.name %>" data-point-id="<%- point.id %>"><%- point.name %></a></li>
-          <% }); %>
-      </ul>
+    <ul class="popover pop-points-open">
+        <% _.each(points, function(point) { %>
+        <li><a href="" class="point" title="<%- point.name %>"
+               data-point-id="<%- point.id %>"><%- point.name %></a>
+        </li>
+        <% }); %>
+    </ul>
     """)
 
     updatePointsValue = (usPoints, usTotalPoints, pointsById, pointsDomNode, selectedRoleId) ->
@@ -515,17 +523,20 @@ UsPointsDirective = ($repo) ->
             pointsDomNode.text("#{selectedPointsValue}/#{usTotalPoints}")
 
     calculateTotalPoints = (us, pointsById) ->
-        return _.reduce(_.map(us.points, (value, key) -> pointsById[value].value), (memo, num) -> memo + num)
+        values = _.map(us.point, (v, k) -> pointsById[v].value)
+        return _.reduce(values, (acc, num) -> acc + num)
 
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
         us = $scope.$eval($attrs.tgUsPoints)
+
         usPoints = us.points
         usTotalPoints = us.total_points
         pointsDom = $el.find("a")
         selectedRoleId = null
         updatingSelectedRoleId = null
         pointsById = $scope.pointsById
+
         updatePointsValue(usPoints, usTotalPoints, pointsById, pointsDom, selectedRoleId)
 
         bindOnce $scope, "project", (project) ->
