@@ -13,9 +13,9 @@
     .us-title {
         @extend %large;
         @extend %text;
-        text-transform: uppercase;
         background: $whitish;
         padding: 2rem 1rem;
+        text-transform: uppercase;
         .us-number {
             color: $gray-light;
             margin-right: .5rem;

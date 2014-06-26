@@ -5,8 +5,8 @@
     li {
         @extend %xlarge;
         @extend %title;
-        text-transform: uppercase;
         border-bottom: 1px solid #a6b2a7;
+        text-transform: uppercase;
         &:last-child {
             border-bottom: 0;
         }
