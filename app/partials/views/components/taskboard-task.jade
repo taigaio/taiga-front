@@ -1,14 +1,13 @@
-div.taskboard-task(ng-repeat="t in tasksByStatus[s.id] track by t.id")
+div.taskboard-task(ng-repeat="task in tasksByStatus[s.id] track by task.id")
     div.taskboard-tagline
-        - for(var y = 0; y < 3; y++)
-            a.taskboard-tag(href="", title="tasboard-tag")
+        a.taskboard-tag(ng-repeat="tag in task.tags" href="" title="{{ tag }}") {{ tag }}
     div.taskboard-task-inner
         figure.avatar
             a(href="", title="UserName")
                 img.avatar(src="http://thecodeplayer.com/u/uifaces/12.jpg", alt="username")
                 figcaption Username
         p.taskboard-text
-            span.task-num 125
-            span.task-name Crear usuarios que no sepan que tienen que darse de alta para darse de baja y crear contenido bloqueado o no en la plataforma
+            span.task-num(ng-bind="task.ref")
+            span.task-name(ng-bind="task.subject")
         a.icon.icon-edit(href="", title="Edit")
         a.icon.icon-drag-h(href="", title="Drag&Drop")
