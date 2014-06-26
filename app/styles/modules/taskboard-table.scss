@@ -85,6 +85,21 @@ $column-margin: 0 10px 0 0;
             margin-left: .5rem;
         }
     }
+    .pop-points {
+        @include popover(200px, 125px, 30px, '', '');
+        li {
+            display: inline-block;
+            width: 23%;
+        }
+        a {
+            display: block;
+            text-align: center;
+            &:hover {
+                background: $fresh-taiga;
+                color: $white;
+            }
+        }
+    }
     .new-task {
         bottom: 2rem;
         position: absolute;
