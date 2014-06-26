@@ -12,7 +12,7 @@ div.taskboard-table
                     h3.us-title
                         span.us-ref(tg-bo-ref="us.ref")
                         span(ng-bind="us.subject")
-                    div.status(tg-taskboard-us-status="us")
+                    div.status(tg-us-status="us" on-update="ctrl.loadSprintState()")
                         a.us-status(href="", title="Status Name")
                     ul.points-list
                         li UX

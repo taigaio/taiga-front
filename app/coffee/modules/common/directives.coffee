@@ -22,6 +22,7 @@
 taiga = @.taiga
 bindOnce = @.taiga.bindOnce
 
+
 DateRangeDirective = ->
     renderRange = ($el, first, second) ->
         initDate = moment(first).format("YYYY/MM/DD")
@@ -56,6 +57,7 @@ SprintProgressBarDirective = ->
 
     return {link: link}
 
+
 DateSelectorDirective =->
     link = ($scope, $el, $attrs, $model) ->
         picker = new Pikaday({field: $el[0]})
@@ -66,7 +68,76 @@ DateSelectorDirective =->
     }
 
 
+#############################################################################
+## User story status directive
+#############################################################################
+
+UsStatusDirective = ($repo) ->
+    ### Print the status of a US and a popover to change it.
+        - tg-us-status: The user story
+        - on-update: Method call after US is updated
+
+    Example:
+
+        div.status(tg-us-status="us" on-update="ctrl.loadSprintState()")
+            a.us-status(href="", title="Status Name")
+
+    NOTE: This directive need 'usStatusById' and 'project'.
+    ###
+    selectionTemplate = _.template("""
+      <ul class="popover pop-status">
+          <% _.forEach(statuses, function(status) { %>
+          <li>
+              <a href="" class="status" title="<%- status.name %>" data-status-id="<%- status.id %>">
+                  <%- status.name %>
+              </a>
+          </li>
+          <% }); %>
+      </ul>
+    """)
+
+    updateUsStatus = ($el, us, usStatusById) ->
+        usStatusDom = $el.find(".us-status")
+        usStatusDom.text(usStatusById[us.status].name)
+        usStatusDom.css('color', usStatusById[us.status].color)
+
+    link = ($scope, $el, $attrs) ->
+        $ctrl = $el.controller()
+        us = $scope.$eval($attrs.tgUsStatus)
+
+        taiga.bindOnce $scope, "project", (project) ->
+            $el.append(selectionTemplate({ 'statuses':  project.us_statuses }))
+            updateUsStatus($el, us, $scope.usStatusById)
+
+        $el.on "click", ".us-status", (event) ->
+            event.preventDefault()
+            event.stopPropagation()
+            $el.find(".pop-status").show()
+
+            body = angular.element("body")
+            body.one "click", (event) ->
+                $el.find(".popover").hide()
+
+        $el.on "click", ".status", (event) ->
+            event.preventDefault()
+            event.stopPropagation()
+            target = angular.element(event.currentTarget)
+            us.status = target.data("status-id")
+            $el.find(".pop-status").hide()
+            updateUsStatus($el, us, $scope.usStatusById)
+
+            $scope.$apply () ->
+                $repo.save(us).then ->
+                    $scope.$eval($attrs.onUpdate)
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {link: link}
+
+
 module = angular.module("taigaCommon")
 module.directive("tgDateRange", DateRangeDirective)
 module.directive("tgSprintProgressbar", SprintProgressBarDirective)
 module.directive("tgDateSelector", DateSelectorDirective)
+module.directive("tgUsStatus", ["$tgRepo", UsStatusDirective])

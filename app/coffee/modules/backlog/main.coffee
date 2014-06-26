@@ -583,69 +583,11 @@ UsPointsDirective = ($repo) ->
     return {link: link}
 
 
-#############################################################################
-## User story status directive
-#############################################################################
-
-UsStatusDirective = ($repo) ->
-    selectionTemplate = _.template("""
-      <ul class="popover pop-status">
-          <% _.forEach(statuses, function(status) { %>
-          <li>
-              <a href="" class="status" title="<%- status.name %>" data-status-id="<%- status.id %>">
-                  <%- status.name %>
-              </a>
-          </li>
-          <% }); %>
-      </ul>
-    """)
-
-    updateUsStatus = ($el, us, usStatusById) ->
-        usStatusDom = $el.find(".us-status")
-        usStatusDom.text(usStatusById[us.status].name)
-        usStatusDom.css('color', usStatusById[us.status].color)
-
-    link = ($scope, $el, $attrs) ->
-        $ctrl = $el.controller()
-        us = $scope.$eval($attrs.tgUsStatus)
-
-        bindOnce $scope, "project", (project) ->
-            $el.append(selectionTemplate({ 'statuses':  project.us_statuses }))
-            updateUsStatus($el, us, $scope.usStatusById)
-
-        $el.on "click", ".us-status", (event) ->
-            event.preventDefault()
-            event.stopPropagation()
-            $el.find(".pop-status").show()
-
-            body = angular.element("body")
-            body.one "click", (event) ->
-                $el.find(".popover").hide()
-
-        $el.on "click", ".status", (event) ->
-            event.preventDefault()
-            event.stopPropagation()
-            target = angular.element(event.currentTarget)
-            us.status = target.data("status-id")
-            $el.find(".pop-status").hide()
-            updateUsStatus($el, us, $scope.usStatusById)
-
-            $scope.$apply () ->
-                $repo.save(us).then ->
-                    $ctrl.loadProjectStats()
-
-        $scope.$on "$destroy", ->
-            $el.off()
-
-    return {link: link}
-
-
 module = angular.module("taigaBacklog")
 module.directive("tgBacklog", ["$tgRepo", BacklogDirective])
 module.directive("tgBacklogSprint", ["$tgRepo", BacklogSprintDirective])
 module.directive("tgUsPoints", ["$tgRepo", UsPointsDirective])
 module.directive("tgUsRolePointsSelector", ["$rootScope", UsRolePointsSelectorDirective])
-module.directive("tgUsStatus", ["$tgRepo", UsStatusDirective])
 
 module.controller("BacklogController", [
     "$scope",
