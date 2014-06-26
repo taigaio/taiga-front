@@ -4,7 +4,8 @@ block head
     title Taiga  Project management web application with scrum in mind!
 
 block content
-    div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl")
+    div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
+                ng-init="section='backlog'")
         sidebar.menu-secondary.extrabar.filters-bar
             include views/modules/filters
         section.main.backlog

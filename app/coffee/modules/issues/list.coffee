@@ -85,7 +85,7 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin)
 module.controller("IssuesController", IssuesController)
 
 #############################################################################
-## Issues Controller
+## Issues Directive
 #############################################################################
 
 paginatorTemplate = """
@@ -126,7 +126,6 @@ IssuesDirective = ($log, $location) ->
     ## Issues Pagination
     #########################
 
-    # Constants
     template = _.template(paginatorTemplate)
 
     linkPagination = ($scope, $el, $attrs, $ctrl) ->
@@ -197,13 +196,11 @@ IssuesDirective = ($log, $location) ->
                 $location.noreload($scope).search("page", $scope.page)
                 $ctrl.loadIssues()
 
-
     #########################
     ## Issues Link
     #########################
 
     link = ($scope, $el, $attrs) ->
-        console.log "IssuesDirective:link"
         $ctrl = $el.controller()
         linkPagination($scope, $el, $attrs, $ctrl)
 

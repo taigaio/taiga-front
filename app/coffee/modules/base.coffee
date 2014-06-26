@@ -21,6 +21,7 @@
 
 taiga = @.taiga
 groupBy = @.taiga.groupBy
+bindOnce = @.taiga.bindOnce
 
 module = angular.module("taigaBase", ["taigaLocales"])
 
@@ -29,17 +30,7 @@ module = angular.module("taigaBase", ["taigaLocales"])
 ## Global Page Directive
 #############################################################################
 
-class MainTaigaController extends taiga.Controller
-    @.$inject = ["$scope"]
-
-    constructor: (@scope) ->
-        @scope.mainSection = "backlog"
-
-    setSectionName: (name) ->
-        @scope.mainSection = name
-
-
-MainTaigaDirective = ($log, $compile) ->
+MainTaigaDirective = ($log, $compile, $rootscope) ->
     template = _.template("""
     <h1 class="logo"><a href="" title="Home"><img src="/images/logo.png" alt="Taiga"/></a></h1>
     <ul class="main-nav">
@@ -49,7 +40,7 @@ MainTaigaDirective = ($log, $compile) ->
             </a>
         </li>
         <li data-name="backlog" tg-nav="project-backlog:project=project.slug">
-            <a href="" title="Backlog" class="active">
+            <a href="" title="Backlog" tg-nav="project-backlog:project=project.slug">
                 <span class="icon icon-backlog"></span>
                 <span class="item">Backlog</span>
             </a>
@@ -92,52 +83,29 @@ MainTaigaDirective = ($log, $compile) ->
         </a>
     </div>""")
 
+    # WARNING: this code has traces of slighty hacky parts
+    # This rerenders and compiles the navigation when ng-view
+    # content loaded signal is raised using inner scope.
+    renderMainMenu = ($el, targetScope) ->
+        container = $el.find(".master > .wrapper")
+        dom = $compile(template({}))(targetScope)
 
-    linkMainNav = ($scope, $el, $attrs, $ctrl) ->
-        menuEntriesSelector = $el.find("ul.main-nav > li")
-        menuEntries = _.map(menuEntriesSelector, (x) -> angular.element(x))
-        menuEntriesByName = groupBy(menuEntries, (x) -> x.data("name"))
+        menuDom = $el.find("nav.menu")
+        menuDom.empty()
+        menuDom.append(dom)
 
-        $scope.$watch "mainSection", (sectionName) ->
-            $el.find("ul.main-nav a.active").removeClass("active")
-            entry = menuEntriesByName[sectionName]
-            entry.find("> a").addClass("active")
+        sectionName = targetScope.section
+        menuDom.find("a.active").removeClass("active")
+        menuDom.find("[data-name=#{sectionName}] > a").addClass("active")
 
     link = ($scope, $el, $attrs, $ctrl) ->
-        $log.debug "Taiga main directive initialized."
-        linkMainNav($scope, $el, $attrs, $ctrl)
+        $scope.$on "$viewContentLoaded", (ctx) ->
+            renderMainMenu($el, ctx.targetScope.$$childHead)
 
-        # WARNING: this code has traces of slighty hacky parts
-        # This rerenders and compiles the navigation when ng-view
-        # content loaded signal is raised using inner scope.
-        $scope.$on "$viewContentLoaded", ->
-            body = angular.element("body")
-            wScope = body.find(".wrapper").scope()
-            html = template({})
-            dom = $compile(html)(wScope)
-
-            menuDom = $el.find("nav.menu")
-            menuDom.empty()
-            menuDom.append(dom)
-
-    return {
-        controller: MainTaigaController
-        link: link
-    }
+    return {link:link}
 
 
-SectionMarkerDirective = ($log) ->
-    link = ($scope, $el, $attrs, $ctrl) ->
-        $ctrl.setSectionName($attrs.tgSectionMarker)
-
-    return {
-        require: "^tgMain"
-        link: link
-    }
-
-
-module.directive("tgMain", ["$log", "$compile", MainTaigaDirective])
-module.directive("tgSectionMarker", ["$log", SectionMarkerDirective])
+module.directive("tgMain", ["$log", "$compile", "$rootScope", MainTaigaDirective])
 
 
 #############################################################################
