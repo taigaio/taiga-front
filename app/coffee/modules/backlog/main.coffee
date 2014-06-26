@@ -28,6 +28,9 @@ bindOnce = @.taiga.bindOnce
 class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin)
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q) ->
         _.bindAll(@)
+
+        @scope.sectionName = "Backlog"
+
         promise = @.loadInitialData()
         promise.then null, =>
             console.log "FAIL"
@@ -266,7 +269,7 @@ BacklogDirective = ($repo) ->
             $ctrl.filterVisibleUserstories()
             $repo.saveAll(selectedUss)
 
-
+        # FIXME: very large line sucks ;)
         # Enable move to current sprint only when there are selected us's
         $el.on "change", ".backlog-table-body .user-stories input:checkbox", (event) ->
             moveToCurrentSprintDom = $el.find("#move-to-current-sprint")
