@@ -2,6 +2,7 @@
 .trans-button {
     @extend %large;
     @extend %title;
+    text-transform: uppercase;
     &:hover,
     &.active {
         @include transition (color .3s linear);
@@ -20,7 +21,6 @@
     display: inline-block;
     padding: 8px 40px;
     text-transform: uppercase;
-
     &:hover {
         @include transition (background .3s linear);
     }
