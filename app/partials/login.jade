@@ -5,7 +5,7 @@ block head
     title Taiga  Project management web application with scrum in mind!
 
 block content
-    div.wrapper(ng-controller="AuthController as ctrl")
+    div.wrapper
         div.login-main
             div.login-container
                 h1.logo
@@ -17,6 +17,3 @@ block content
                     a.icon.icon-delete(href="", title="Close message")
 
                 include views/modules/login-form
-                // include views/modules/register-form
-                // include views/modules/forgot-form
-                // include views/modules/reset-pass

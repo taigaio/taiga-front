@@ -1,14 +1,12 @@
-div.login-form-container
+div.login-form-container(tg-login)
     form.login-form(ng-submit="ctrl.submit()")
         fieldset
-            input(type="text", name="username", ng-model="form.username", placeholder="User name")
+            input(type="text", name="username", ng-model="data.username", placeholder="User name",
+                  data-required="true")
         fieldset.login-password
-            input(type="password", name="password", ng-model="form.password")
-            //-This should be hidden when focus on pass
+            input(type="password", name="password", ng-model="data.password", data-required="true")
+            // This should be hidden when focus on pass
             a.forgot-pass(href="", title="Did you forgot your pass?") Forgot it?
-        fieldset
-            input.remember-me(type="checkbox", checked="checked", id="remember-me")
-            label(for="remember-me") remember me on this computer
 
         fieldset
             a.button.button-login.button-gray(href="", ng-click="ctrl.submit()", title="Log in") Enter

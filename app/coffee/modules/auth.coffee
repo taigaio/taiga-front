@@ -21,6 +21,12 @@
 
 taiga = @.taiga
 
+module = angular.module("taigaAuth", ["taigaResources"])
+
+#############################################################################
+## Autghentication Service
+#############################################################################
+
 class AuthService extends taiga.Service
     @.$inject = ["$rootScope", "$tgStorage", "$tgModel", "$tgHttp", "$tgUrls"]
 
@@ -63,14 +69,11 @@ class AuthService extends taiga.Service
     ## Http interface
     ###################
 
-    login: (username, password) ->
+    login: (data) ->
         url = @urls.resolve("auth")
 
-        data = {
-            username: username
-            password: password
-            type: "normal"
-        }
+        data = _.clone(data, false)
+        data.type = "normal"
 
         return @http.post(url, data).then (data, status) =>
             user = @model.make_model("users", data.data)
@@ -119,18 +122,39 @@ class AuthService extends taiga.Service
     #         @.setUser(user)
     #         return user
 
+module.service("$tgAuth", AuthService)
 
-class AuthController extends taiga.Controller
-    @.$inject = ["$scope", "$tgAuth", "$location"]
+#############################################################################
+## Auth related directives (login, reguister, invitation
+#############################################################################
 
-    constructor: (@scope, @auth, @location) ->
-        @scope.form = {username: "", password: ""}
+LoginDirective = ($auth, $confirm, $location) ->
+    link = ($scope, $el, $attrs) ->
+        $scope.data = {}
+        form = $el.find("form").checksley()
 
-    submit: ->
-        @auth.login(@scope.form.username, @scope.form.password).then (user) =>
-            #TODO: fix this
-            @location.path("/project/project-example-0/backlog")
+        submit = ->
+            if not form.validate()
+                return
 
+            promise = $auth.login($scope.data)
+            promise.then (response) ->
+                # TODO: finish this.
+                $location.path("/project/project-example-0/backlog")
+
+            promise.then null, (response) ->
+                if response.data._error_message
+                    $confirm.error(response.data._error_message)
+
+        $el.on "submit", (event) ->
+            event.preventDefault()
+            submit()
+
+        $el.on "click", "a.button-login", (event) ->
+            event.preventDefault()
+            submit()
+
+    return {link:link}
 
 
 RegisterDirective = ($auth, $confirm) ->
@@ -161,7 +185,5 @@ RegisterDirective = ($auth, $confirm) ->
 
     return {link:link}
 
-module = angular.module("taigaAuth", ["taigaResources"])
-module.service("$tgAuth", AuthService)
-module.controller("AuthController", AuthController)
 module.directive("tgRegister", ["$tgAuth", "$tgConfirm", RegisterDirective])
+module.directive("tgLogin", ["$tgAuth", "$tgConfirm", "$location", LoginDirective])
