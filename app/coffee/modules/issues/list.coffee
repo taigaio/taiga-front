@@ -48,6 +48,7 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location) ->
         @scope.sprintId = @params.id
+        @scope.sectionName = "Issues"
 
         promise = @.loadInitialData()
         promise.then null, ->
