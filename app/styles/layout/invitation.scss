@@ -35,6 +35,7 @@
         color: $white;
         line-height: 3rem;
         text-align: center;
+        text-transform: uppercase;
         .project-name {
             @extend %xxlarge;
             display: block;

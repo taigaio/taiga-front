@@ -11,8 +11,9 @@
 .us-story-main-data {
     margin-bottom: 2rem;
     .us-title {
-        @extend %xlarge;
+        @extend %large;
         @extend %text;
+        text-transform: uppercase;
         background: $whitish;
         padding: 2rem 1rem;
         .us-number {
@@ -38,6 +39,7 @@
         }
         .blocked {
             @extend %xlarge;
+            @extend %bold;
             margin-bottom: .3em;
         }
         p {
@@ -193,6 +195,7 @@
         .title {
             @extend %large;
             @extend %title;
+            text-transform: uppercase;
         }
         .icon {
             @extend %large;
@@ -214,7 +217,7 @@
         }
         .watcher-name {
             @include table-flex-child(8, 0);
-            @extend %large;
+            @extend %medium;
             color: $grayer;
             margin-left: 1rem;
         }

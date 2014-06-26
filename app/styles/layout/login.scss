@@ -21,6 +21,7 @@
         @extend %title;
         color: $white;
         line-height: 2rem;
+        text-transform: uppercase;
     }
     form {
         margin-bottom: 2rem;

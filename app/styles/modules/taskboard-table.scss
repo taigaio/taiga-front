@@ -25,6 +25,7 @@ $column-margin: 0 10px 0 0;
         margin: $column-margin;
         padding: .5rem 0;
         text-align: center;
+        text-transform: uppercase;
         &:last-child {
             margin-right: 0;
         }
