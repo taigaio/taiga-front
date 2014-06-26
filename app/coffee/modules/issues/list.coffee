@@ -65,7 +65,7 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @scope.issueStatusById = groupBy(project.issue_statuses, (x) -> x.id)
             @scope.severityById = groupBy(project.severities, (x) -> x.id)
             @scope.priorityById = groupBy(project.priorities, (x) -> x.id)
-            @scope.membersById = groupBy(project.memberships, (x) -> x.id)
+            @scope.membersById = groupBy(project.memberships, (x) -> x.user)
             return project
 
     getFilters: ->
