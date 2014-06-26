@@ -42,6 +42,8 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q) ->
         @scope.sprintId = @params.id
+        @scope.sectionName = "Taskboard"
+
         promise = @.loadInitialData()
         promise.then null, ->
             console.log "FAIL" #TODO
