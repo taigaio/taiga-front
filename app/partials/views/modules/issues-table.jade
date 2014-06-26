@@ -6,16 +6,10 @@ section.issues-table.basic-table
         div.width-2 Status
         div.width-2 Assigned to
     div.row.table-main(ng-repeat="issue in issues track by issue.id")
-        div.level-field.width-1
-            div.level
-        div.level-field.width-1
-            div.level
+        div.level-field.width-1(tg-issue-severity="issue")
+        div.level-field.width-1(tg-issue-priority="issue")
         div.width-7.subject(tg-bo-html="issue.subject")
-        div.width-2
-            In progress
-        div.width-2
-            figure.avatar
-                img(src="http://thecodeplayer.com/u/uifaces/12.jpg", alt="username")
-                figcaption Pilar
+        div.width-2(tg-issue-status="issue")
+        div.width-2(tg-issue-assignedto="issue")
 
 section.issues-paginator

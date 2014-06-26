@@ -20,7 +20,13 @@
 ###
 
 taiga = @.taiga
+
 mixOf = @.taiga.mixOf
+trim = @.taiga.trim
+toString = @.taiga.toString
+joinStr = @.taiga.joinStr
+groupBy = @.taiga.groupBy
+bindOnce = @.taiga.bindOnce
 
 module = angular.module("taigaIssues")
 
@@ -36,12 +42,12 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$tgConfirm",
         "$tgResources",
         "$routeParams",
-        "$q"
+        "$q",
+        "$location"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location) ->
         @scope.sprintId = @params.id
-        @scope.page = @params.page or 1
 
         promise = @.loadInitialData()
         promise.then null, ->
@@ -55,15 +61,58 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin)
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
             @scope.project = project
-            @scope.points = _.sortBy(project.points, "order")
-            @scope.taskStatusList = _.sortBy(project.task_statuses, "order")
-            @scope.usStatusList = _.sortBy(project.us_statuses, "order")
+            # @scope.points = _.sortBy(project.points, "order")
+            # @scope.issueStatusList = _.sortBy(project.issue_statuses, "order")
+            # @scope.severityList = _.sortBy(project.severities, "order")
+            # @scope.priorityList = _.sortBy(project.priorities, "order")
+
+            @scope.issueStatusById = groupBy(project.issue_statuses, (x) -> x.id)
+            @scope.severityById = groupBy(project.severities, (x) -> x.id)
+            @scope.priorityById = groupBy(project.priorities, (x) -> x.id)
+            @scope.membersById = groupBy(project.memberships, (x) -> x.id)
+            console.log @scope.membersById
             return project
 
+    selectFilter: (name, value, load=false) ->
+        params = @location.search()
+        if params[name] != undefined
+            existing = _.map(params[name].split(","), trim)
+            existing.push(value)
+
+            value = joinStr(",", _.uniq(existing))
+
+        location = if load then @location else @location.noreload()
+        location.search(name, value)
+
+    unselectFilter: (name, value, load=false) ->
+        params = @location.search()
+
+        if params[name] is undefined
+            return
+
+        if value is undefined
+            delete params[name]
+
+        parsedValues = _.map(params[name].split(","), trim)
+        newValues = _.reject(parsedValues, (x) -> x == toString(value))
+
+        if _.isEmpty(newValues)
+            value = null
+        else
+            value = joinStr(",", _.uniq(newValues))
+
+        location = if load then @location else @location.noreload()
+        location.search(name, value)
+
+    getFilters: ->
+        filters = _.pick(@location.search(), "page", "tags", "status", "type")
+        filters.page = 1 if not filters.page
+        return filters
+
     loadIssues: ->
-        filters = {page: @scope.page}
+        filters = @.getFilters()
+
         promise = @rs.issues.list(@scope.projectId, filters).then (data) =>
-            console.log "loadIssues:", data
             @scope.issues = data.models
             @scope.page = data.current
             @scope.count = data.count
@@ -207,4 +256,84 @@ IssuesDirective = ($log, $location) ->
     return {link:link}
 
 
+
+IssueStatusDirective = ->
+    link = ($scope, $el, $attrs) ->
+        issue = $scope.$eval($attrs.tgIssueStatus)
+        bindOnce $scope, "issueStatusById", (issueStatusById) ->
+            $el.html(issueStatusById[issue.status].name)
+
+    return {link:link}
+
+IssueAssignedtoDirective = ->
+    template = """
+    <figure class="avatar">
+        <img src="http://thecodeplayer.com/u/uifaces/12.jpg" alt="username"/>
+        <figcaption>--</figcaption>
+    </figure>
+    """
+
+    link = ($scope, $el, $attrs) ->
+        issue = $scope.$eval($attrs.tgIssueAssignedto)
+        if issue.assigned_to is null
+            $el.find("figcaption").html("Unassigned")
+        else
+            bindOnce $scope, "membersById", (membersById) ->
+                memberName = membersById[issue.assigned_to].full_name
+                $el.find("figcaption").html(memberName)
+
+    return {
+        template: template
+        link:link
+    }
+
+
+IssuePriorityDirective = ->
+    template = """
+    <div class="level"></div>
+    """
+
+    link = ($scope, $el, $attrs) ->
+        issue = $scope.$eval($attrs.tgIssuePriority)
+        bindOnce $scope, "priorityById", (priorityById) ->
+            priority = priorityById[issue.priority]
+
+            domNode = $el.find("div.level")
+            domNode.css("background-color", priority.color)
+            domNode.addClass(priority.name.toLowerCase())
+            domNode.attr("title", priority.name)
+
+    return {
+        link: link
+        template: template
+    }
+
+
+IssueSeverityDirective = ->
+    template = """
+    <div class="level"></div>
+    """
+
+    link = ($scope, $el, $attrs) ->
+        issue = $scope.$eval($attrs.tgIssueSeverity)
+        bindOnce $scope, "severityById", (severityById) ->
+            severity = severityById[issue.severity]
+
+            domNode = $el.find("div.level")
+            domNode.css("background-color", severity.color)
+            domNode.addClass(severity.name.toLowerCase())
+            domNode.attr("title", severity.name)
+
+    return {
+        link: link
+        template: template
+    }
+
+
 module.directive("tgIssues", ["$log", "$tgLocation", IssuesDirective])
+module.directive("tgIssueStatus", IssueStatusDirective)
+module.directive("tgIssueAssignedto", IssueAssignedtoDirective)
+module.directive("tgIssuePriority", IssuePriorityDirective)
+module.directive("tgIssueSeverity", IssueSeverityDirective)
+
+
