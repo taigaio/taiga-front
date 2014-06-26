@@ -132,9 +132,6 @@ MainTaigaDirective = ($log, $compile, $rootscope) ->
             $el.toggleClass("closed-project-nav")
             $el.toggleClass("open-project-nav")
 
-        $scope.$watch ->
-            console.log $scope
-
     link = ($scope, $el, $attrs, $ctrl) ->
         $scope.$on "$viewContentLoaded", (ctx) ->
             renderMainMenu($el, ctx.targetScope.$$childHead)
