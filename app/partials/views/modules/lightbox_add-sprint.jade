@@ -3,7 +3,7 @@ a.close(href="", title="close")
 form
     h2.title New Sprint
     fieldset
-        label.last-sprint-name last sprint is <strong> {{sprintname}} ;-) </strong>
+        label.last-sprint-name
         input(ng-model="sprint.name", type="text", placeholder="sprint name", name="name", data-required="true")
     fieldset.dates
         input.date-start(tg-date-selector, ng-model="sprint.estimated_start", type="text", placeholder="Estimated Start", data-required="true")

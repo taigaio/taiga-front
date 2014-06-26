@@ -19,6 +19,9 @@
 # File: modules/backlog/lightboxes.coffee
 ###
 
+taiga = @.taiga
+bindOnce = @.taiga.bindOnce
+
 CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope) ->
 
     editDescription = ($scope, $el) ->
@@ -181,6 +184,11 @@ CreateSprint = ($repo, $rs, $rootscope) ->
                 estimated_start: null
                 estimated_finish: null
             }
+
+            lastSprintNameDom = $el.find(".last-sprint-name")
+            sprintName = $scope.sprints?[0].name
+            if sprintName?
+                lastSprintNameDom.text(" last sprint is <strong> #{sprintName} ;-) </strong>")
 
         $el.on "click", ".close", (event) ->
             event.preventDefault()
