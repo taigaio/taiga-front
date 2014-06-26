@@ -56,7 +56,17 @@ SprintProgressBarDirective = ->
 
     return {link: link}
 
+DateSelectorDirective =->
+    link = ($scope, $el, $attrs, $model) ->
+        picker = new Pikaday({field: $el[0]})
+
+    return {
+        link: link
+        require: "ngModel"
+    }
+
 
 module = angular.module("taigaCommon")
 module.directive("tgDateRange", DateRangeDirective)
 module.directive("tgSprintProgressbar", SprintProgressBarDirective)
+module.directive("tgDateSelector", DateSelectorDirective)

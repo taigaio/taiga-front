@@ -21,7 +21,7 @@
 
 CreateEditUserstoryDirective = ($repo, $model, $rs) ->
 
-    editDescription = ($scope, $el) ->        
+    editDescription = ($scope, $el) ->
         $el.find('.markdown-preview a').removeClass("active")
         $el.find('.markdown-preview a.edit').addClass("active")
         descriptionDOM = $el.find("textarea.description")
@@ -120,6 +120,9 @@ CreateEditUserstoryDirective = ($repo, $model, $rs) ->
             angular.element(event.currentTarget).toggleClass("selected")
             $scope.us.client_requirement = not $scope.us.client_requirement
 
+        $scope.$on "$destroy", ->
+            $el.off()
+
     return {link: link}
 
 CreateBulkUserstroriesDirective = ($repo, $rs, $rootscope) ->
@@ -144,13 +147,39 @@ CreateBulkUserstroriesDirective = ($repo, $rs, $rootscope) ->
                 $rootscope.$broadcast("usform:bulk:success", result)
                 $el.addClass("hidden")
 
+        $scope.$on "$destroy", ->
+            $el.off()
+
     return {link: link}
+
+CreateSprint = ($repo, $rs, $rootscope) ->
+    link = ($scope, $el, attrs) ->
+        $scope.$on "sprintform:create", ->
+            $el.removeClass("hidden")
+            $scope.sprint = {
+                project: $scope.projectId
+                name: null
+                estimated_start: null
+                estimated_finish: null
+            }
+
+        $el.on "click", ".close", (event) ->
+            event.preventDefault()
+            $el.addClass("hidden")
+
+        $el.on "click", ".button-green", (event) ->
+            event.preventDefault()
+            $repo.create("milestones", $scope.sprint).then (data) ->
+                $el.addClass("hidden")
+                $rootscope.$broadcast("sprintform:create:success", data)
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {link: link}
+
 
 module = angular.module("taigaBacklog")
 module.directive("tgLbCreateEditUserstory", ["$tgRepo", "$tgModel", "$tgResources", CreateEditUserstoryDirective])
-module.directive("tgLbCreateBulkUserstories", [
-    "$tgRepo",
-    "$tgResources",
-    "$rootScope",
-    CreateBulkUserstroriesDirective
-])
+module.directive("tgLbCreateBulkUserstories", ["$tgRepo", "$tgResources", "$rootScope", CreateBulkUserstroriesDirective])
+module.directive("tgLbCreateSprint", ["$tgRepo", "$tgResources", "$rootScope", CreateSprint])

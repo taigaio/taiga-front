@@ -4,9 +4,9 @@ form
     h2.title New Sprint
     fieldset
         label.last-sprint-name last sprint is <strong> {{sprintname}} ;-) </strong>
-        input(type="text", placeholder="sprint name")
+        input(ng-model="sprint.name", type="text", placeholder="sprint name", name="name")
     fieldset.dates
-        input.date-start(type="text", placeholder="Estimated Start")
-        input.date-end(type="text", placeholder="Estimated End")
+        input.date-start(tg-date-selector, ng-model="sprint.estimated_start", type="text", placeholder="Estimated Start")
+        input.date-end(tg-date-selector, ng-model="sprint.estimated_finish", type="text", placeholder="Estimated End")
     a.button.button-green(href="", title="Save")
         span Create

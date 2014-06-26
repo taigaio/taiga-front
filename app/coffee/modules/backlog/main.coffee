@@ -31,6 +31,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin)
             console.log "FAIL"
 
         @rootscope.$on("usform:bulk:success", @.loadUserstories)
+        @rootscope.$on("sprintform:create:success", @.loadSprints)
 
     loadProjectStats: ->
         return @rs.projects.stats(@scope.projectId).then (stats) =>
@@ -123,6 +124,8 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin)
             when "standard" then @rootscope.$broadcast("usform:new")
             when "bulk" then @rootscope.$broadcast("usform:bulk")
 
+    addNewSprint: () ->
+        @rootscope.$broadcast("sprintform:create")
 
 #############################################################################
 ## Backlog Directive

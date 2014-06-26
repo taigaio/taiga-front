@@ -77,5 +77,8 @@
     "moment": "~2.6.0",
     "jquery": "~2.1.1"
   },
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "pikaday": "~1.2.0"
+  }
 }

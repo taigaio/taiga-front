@@ -55,7 +55,8 @@ paths = {
         "app/vendor/i18next/i18next.js",
         "app/js/Sortable.js",
         "app/vendor/moment/min/moment-with-langs.js",
-        "app/vendor/checksley/checksley.js"
+        "app/vendor/checksley/checksley.js",
+        "app/vendor/pikaday/pikaday.js"
     ]
 }
 
