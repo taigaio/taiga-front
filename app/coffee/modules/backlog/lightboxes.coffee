@@ -172,9 +172,13 @@ CreateSprint = ($repo, $rs, $rootscope) ->
             if not form.validate()
                 return
 
-            $repo.create("milestones", $scope.sprint).then (data) ->
+            promise = $repo.create("milestones", $scope.sprint)
+            promise.then (data) ->
                 $el.addClass("hidden")
                 $rootscope.$broadcast("sprintform:create:success", data)
+
+            promise.then null, (data) ->
+                form.setErrors(data)
 
         $scope.$on "sprintform:create", ->
             $el.removeClass("hidden")
