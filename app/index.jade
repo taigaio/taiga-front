@@ -9,6 +9,7 @@ html(lang="en", ng-app="taiga")
         meta(name="viewport", content="width=device-width, user-scalable=no")
         link(rel="stylesheet", href="/styles/main.css")
     body(tg-main)
+        include partials/views/modules/project-nav
         nav.menu
         include partials/views/components/notification-message
         div.master(ng-view)

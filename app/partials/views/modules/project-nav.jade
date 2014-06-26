@@ -2,22 +2,10 @@ nav.project-nav
     h1 Your projects
     form
         fieldset
-            input(type="text" placeholder="Search in...")
+            input(type="text" placeholder="Search in...", ng-model="projectsSearch.$")
             a.icon.icon-search
 
     ul.projects-list
-        li
-            a(href="") Decathlon
-                span.icon.icon-arrow-right
-
-        li
-            a.active(href="") Yump
-                span.icon.icon-arrow-right
-
-        li
-            a(href="") Taiga
-                span.icon.icon-arrow-right
-
-        li
-            a(href="") Wine and people
+        li(ng-repeat="project in projects|filter:projectsSearch:strict track by project.id")
+            a(href="", tg-bo-html="project.name", tg-nav="project-backlog:project=project.slug")
                 span.icon.icon-arrow-right

@@ -118,11 +118,33 @@ MainTaigaDirective = ($log, $compile, $rootscope) ->
         menuDom.find("a.active").removeClass("active")
         menuDom.find("[data-name=#{sectionName}] > a").addClass("active")
 
+    # Link function related to projects navigation
+    # part of main menu.
+    linkProjecsNav = ($scope, $el, $attrs, $ctrl) ->
+        $el.addClass("closed-project-nav")
+
+        $el.on "click", ".menu .logo > a", (event) ->
+            event.preventDefault()
+            $el.toggleClass("closed-project-nav")
+            $el.toggleClass("open-project-nav")
+
+        $el.on "click", ".projects-list > li > a", (event) ->
+            $el.toggleClass("closed-project-nav")
+            $el.toggleClass("open-project-nav")
+
+        $scope.$watch ->
+            console.log $scope
+
     link = ($scope, $el, $attrs, $ctrl) ->
         $scope.$on "$viewContentLoaded", (ctx) ->
             renderMainMenu($el, ctx.targetScope.$$childHead)
 
-    return {link:link}
+        linkProjecsNav($scope, $el, $attrs, $ctrl)
+
+    return {
+        controller: MainTaigaController
+        link: link
+    }
 
 
 module.directive("tgMain", ["$log", "$compile", "$rootScope", MainTaigaDirective])

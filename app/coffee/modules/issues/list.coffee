@@ -235,6 +235,7 @@ IssueStatusDirective = ->
 
     return {link:link}
 
+
 IssueAssignedtoDirective = ->
     template = """
     <figure class="avatar">
@@ -305,5 +306,3 @@ module.directive("tgIssueStatus", IssueStatusDirective)
 module.directive("tgIssueAssignedto", IssueAssignedtoDirective)
 module.directive("tgIssuePriority", IssuePriorityDirective)
 module.directive("tgIssueSeverity", IssueSeverityDirective)
-
-
