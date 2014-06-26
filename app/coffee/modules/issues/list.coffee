@@ -34,7 +34,7 @@ module = angular.module("taigaIssues")
 ## Issues Controller
 #############################################################################
 
-class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin)
+class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.FiltersMixin)
     @.$inject = [
         "$scope",
         "$rootScope",
@@ -62,48 +62,11 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin)
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
             @scope.project = project
-            # @scope.points = _.sortBy(project.points, "order")
-            # @scope.issueStatusList = _.sortBy(project.issue_statuses, "order")
-            # @scope.severityList = _.sortBy(project.severities, "order")
-            # @scope.priorityList = _.sortBy(project.priorities, "order")
-
             @scope.issueStatusById = groupBy(project.issue_statuses, (x) -> x.id)
             @scope.severityById = groupBy(project.severities, (x) -> x.id)
             @scope.priorityById = groupBy(project.priorities, (x) -> x.id)
             @scope.membersById = groupBy(project.memberships, (x) -> x.id)
-            console.log @scope.membersById
             return project
-
-    selectFilter: (name, value, load=false) ->
-        params = @location.search()
-        if params[name] != undefined
-            existing = _.map(params[name].split(","), trim)
-            existing.push(value)
-
-            value = joinStr(",", _.uniq(existing))
-
-        location = if load then @location else @location.noreload()
-        location.search(name, value)
-
-    unselectFilter: (name, value, load=false) ->
-        params = @location.search()
-
-        if params[name] is undefined
-            return
-
-        if value is undefined
-            delete params[name]
-
-        parsedValues = _.map(params[name].split(","), trim)
-        newValues = _.reject(parsedValues, (x) -> x == toString(value))
-
-        if _.isEmpty(newValues)
-            value = null
-        else
-            value = joinStr(",", _.uniq(newValues))
-
-        location = if load then @location else @location.noreload()
-        location.search(name, value)
 
     getFilters: ->
         filters = _.pick(@location.search(), "page", "tags", "status", "type")
@@ -235,16 +198,22 @@ IssuesDirective = ($log, $location) ->
             event.preventDefault()
 
             $scope.$apply ->
-                $scope.page += 1
-                $location.noreload($scope).search("page", $scope.page)
+                $ctrl.selectFilter("page", $scope.page + 1)
                 $ctrl.loadIssues()
 
         $el.on "click", ".issues-paginator a.previous", (event) ->
             event.preventDefault()
             $scope.$apply ->
-                $scope.page -= 1
-                $location.noreload($scope).search("page", $scope.page)
+                $ctrl.selectFilter("page", $scope.page - 1)
                 $ctrl.loadIssues()
+
+
+    #########################
+    ## Issues Filters
+    #########################
+
+    linkFilters = ($scope, $el, $attrs, $ctrl) ->
+        $log.debug "IssuesDirective:linkFilters"
 
     #########################
     ## Issues Link
@@ -252,10 +221,10 @@ IssuesDirective = ($log, $location) ->
 
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
+        linkFilters($scope, $el, $attrs, $ctrl)
         linkPagination($scope, $el, $attrs, $ctrl)
 
     return {link:link}
-
 
 
 IssueStatusDirective = ->

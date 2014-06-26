@@ -41,5 +41,42 @@ class PageMixin
                                              .value()
             return results
 
+
+# This mixin requires @location and @scope
+
+class FiltersMixin
+    selectFilter: (name, value, load=false) ->
+        params = @location.search()
+        if params[name] != undefined and name != "page"
+            existing = _.map(params[name].split(","), trim)
+            existing.push(value)
+
+            value = joinStr(",", _.uniq(existing))
+
+        location = if load then @location else @location.noreload(@scope)
+        location.search(name, value)
+
+    unselectFilter: (name, value, load=false) ->
+        params = @location.search()
+
+        if params[name] is undefined
+            return
+
+        if value is undefined or value is null
+            delete params[name]
+
+        parsedValues = _.map(params[name].split(","), trim)
+        newValues = _.reject(parsedValues, (x) -> x == toString(value))
+
+        if _.isEmpty(newValues)
+            value = null
+        else
+            value = joinStr(",", _.uniq(newValues))
+
+        location = if load then @location else @location.noreload(@scope)
+        location.search(name, value)
+
+
 taiga = @.taiga
 taiga.PageMixin = PageMixin
+taiga.FiltersMixin = FiltersMixin

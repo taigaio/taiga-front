@@ -6,7 +6,9 @@ block head
 block content
     div.wrapper(tg-issues, ng-controller="IssuesController as ctrl",
                 ng-init="section='issues'")
-        sidebar.menu-secondary.sidebar
+        sidebar.menu-secondary.sidebar.filters-container
+            // TODO: maybe everything related to this section
+            // should be done in one unique include?
             header
                 h1 Filters
             include views/modules/search-in
