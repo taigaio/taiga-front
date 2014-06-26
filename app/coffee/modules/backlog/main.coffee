@@ -55,6 +55,8 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.filters = @.generateFilters()
 
             @.filterVisibleUserstories()
+            # The broadcast must be executed when the DOM has been fully reloaded.
+            # We can't assure when this exactly happens so we need a defer
             scopeDefer @scope, =>
                 @scope.$broadcast("userstories:loaded")
 
