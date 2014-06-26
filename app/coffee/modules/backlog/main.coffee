@@ -549,7 +549,9 @@ UsStatusDirective = ($repo) ->
     """)
 
     updateUsStatus = ($el, us, usStatusById) ->
-        $el.find(".us-status").text(usStatusById[us.status].name).css('color', usStatusById[us.status].color)
+        usStatusDom = $el.find(".us-status")
+        usStatusDom.text(usStatusById[us.status].name)
+        usStatusDom.css('color', usStatusById[us.status].color)
 
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
