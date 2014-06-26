@@ -21,6 +21,7 @@
 
 taiga = @.taiga
 mixOf = @.taiga.mixOf
+groupBy = @.taiga.groupBy
 
 module = angular.module("taigaTaskboard", [])
 
@@ -76,6 +77,8 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.points = _.sortBy(project.points, "order")
             @scope.taskStatusList = _.sortBy(project.task_statuses, "order")
             @scope.usStatusList = _.sortBy(project.us_statuses, "order")
+            @scope.usStatusById = groupBy(project.us_statuses, (e) -> e.id)
+
             return project
 
     loadTaskboard: ->
@@ -95,6 +98,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
                       .then(=> @.loadTaskboard())
 
 module.controller("TaskboardController", TaskboardController)
+
 
 #############################################################################
 ## TaskboardDirective
@@ -119,9 +123,11 @@ TaskboardDirective = ->
     return {link: link}
 
 
-# TODO: the name of this directive should be changet
-# to more apropiate, like: TaskboardRowsizeFixer
-TaskboardTaskrowDirective = ->
+#############################################################################
+## Task Row Size Fixer Directive
+#############################################################################
+
+TaskboardRowSizeFixer = ->
     link = ($scope, $el, $attrs) ->
         taiga.bindOnce $scope, "taskStatusList", (statuses) ->
             itemSize = 300 + (10 * statuses.length)
@@ -131,16 +137,71 @@ TaskboardTaskrowDirective = ->
     return {link: link}
 
 
-UsStatusDirective = ->
-    link = ($scope, $el, $attrs) ->
-        $scope.$watch "#{$attrs.tgTaskboardUsStatus}.status", (status_id) ->
-            if status_id is undefined
-                return
-            status_name = $scope.usStatusList[status_id].name
-            $el.html(status_name)
+#############################################################################
+## User story status directive
+#############################################################################
 
-    return {link:link}
+TaskboardUsStatusDirective = ($repo) ->
+    # NOTE: This directive is similar to backlog.main.UsStatusDirective
+    selectionTemplate = _.template("""
+      <ul class="popover pop-status">
+          <% _.forEach(statuses, function(status) { %>
+          <li>
+              <a href="" class="status" title="<%- status.name %>" data-status-id="<%- status.id %>">
+                  <%- status.name %>
+              </a>
+          </li>
+          <% }); %>
+      </ul>
+    """)
+
+    updateUsStatus = ($el, us, usStatusById) ->
+        usStatusDom = $el.find(".us-status")
+        usStatusDom.text(usStatusById[us.status].name)
+        usStatusDom.css('color', usStatusById[us.status].color)
+
+    link = ($scope, $el, $attrs) ->
+        $ctrl = $el.controller()
+        us = $scope.$eval($attrs.tgTaskboardUsStatus)
+
+        taiga.bindOnce $scope, "project", (project) ->
+            $el.append(selectionTemplate({ 'statuses':  project.us_statuses }))
+            updateUsStatus($el, us, $scope.usStatusById)
+
+        $el.on "click", ".us-status", (event) ->
+            event.preventDefault()
+            event.stopPropagation()
+            $el.find(".pop-status").show()
+
+            body = angular.element("body")
+            body.one "click", (event) ->
+                $el.find(".popover").hide()
+
+        $el.on "click", ".status", (event) ->
+            event.preventDefault()
+            event.stopPropagation()
+            target = angular.element(event.currentTarget)
+            us.status = target.data("status-id")
+            $el.find(".pop-status").hide()
+            updateUsStatus($el, us, $scope.usStatusById)
+
+            $scope.$apply () ->
+                $repo.save(us).then ->
+                    $ctrl.loadSprintStats()
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {link: link}
+
+
+#############################################################################
+## User story status directive
+#############################################################################
+
+TaskboardUsPointsDirective = ($repo) ->
+
 
 module.directive("tgTaskboard", TaskboardDirective)
-module.directive("tgTaskboardTaskrow", TaskboardTaskrowDirective)
-module.directive("tgTaskboardUsStatus", UsStatusDirective)
+module.directive("tgTaskboardRowSizeFixer", TaskboardRowSizeFixer)
+module.directive("tgTaskboardUsStatus", ["$tgRepo", TaskboardUsStatusDirective])

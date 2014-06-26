@@ -1,6 +1,6 @@
 div.taskboard-table
     div.taskboard-table-header
-        div.taskboard-table-inner(tg-taskboard-taskrow)
+        div.taskboard-table-inner(tg-taskboard-row-size-fixer)
             h2.task-colum_name "User story"
             h2.task-colum_name(ng-repeat="s in taskStatusList track by s.id", tg-bo-html="s.name")
     div.taskboard-table-body
@@ -12,7 +12,8 @@ div.taskboard-table
                     h3.us-title
                         span.us-ref(tg-bo-ref="us.ref")
                         span(ng-bind="us.subject")
-                    div.us-status(tg-taskboard-us-status="us")
+                    div.status(tg-taskboard-us-status="us")
+                        a.us-status(href="", title="Status Name")
                     ul.points-list
                         li UX
                             span 4.5

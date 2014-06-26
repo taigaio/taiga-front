@@ -70,9 +70,13 @@ $column-margin: 0 10px 0 0;
         color: $gray;
         margin-right: .5rem;
     }
-    .us-status {
+    .status {
         color: $green-taiga;
         margin-bottom: .5rem;
+        position: relative;
+    }
+    .pop-status {
+        @include popover(150px, 20px, 30px, '', '');
     }
     .points-list {
         span {
