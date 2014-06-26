@@ -43,12 +43,14 @@ mixOf = (base, mixins...) ->
 trim = (data, char) ->
     return _.str.trim(data, char)
 
+
 toggleText = (element, texts) ->
     nextTextPosition = element.data('nextTextPosition')
     nextTextPosition = 0 if not nextTextPosition? or nextTextPosition >= texts.length
     text = texts[nextTextPosition]
     element.data('nextTextPosition', nextTextPosition + 1)
     element.text(text)
+
 
 groupBy = (coll, pred) ->
     result = {}
@@ -60,6 +62,7 @@ groupBy = (coll, pred) ->
 
 timeout = (wait, continuation) ->
     return window.setTimeout(continuation, wait)
+
 
 taiga = @.taiga
 taiga.bindOnce = bindOnce
