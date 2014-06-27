@@ -5,7 +5,7 @@ block head
 
 block content
     div.wrapper(tg-taskboard, ng-controller="TaskboardController as ctrl",
-                tg-section-marker="backlog")
+                ng-init="section='backlog'")
         section.main.taskboard
             h1
                 span(tg-bo-html="project.name")
