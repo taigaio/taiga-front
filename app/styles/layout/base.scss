@@ -18,29 +18,29 @@ body {
     &.open-project-nav {
         .project-nav {
             @include transform(translate3d(0, 0, 0));
-            @include transition (transform 1s ease);
+//             @include transition (transform 1s ease);
         }
         .master {
             @include transform(translate3d(300px, 0, 0));
-            @include transition (transform 1s ease);
+            //@include transition (transform 1s ease);
         }
         .menu {
             @include transform(translate3d(300px, 0, 0));
-            @include transition (transform 1s ease);
+//            @include transition (transform 1s ease);
         }
     }
     &.closed-project-nav {
         .project-nav {
             @include transform(translate3d(-300px, 0, 0));
-            @include transition (transform 1s ease);
+//            @include transition (transform 1s ease);
         }
         .master {
             @include transform(translate3d(0, 0, 0));
-            @include transition (transform 1s ease);
+//            @include transition (transform 1s ease);
         }
         .menu {
             @include transform(translate3d(0, 0, 0));
-            @include transition (transform 1s ease);
+//             @include transition (transform 1s ease); */
         }
     }
 }

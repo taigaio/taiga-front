@@ -120,17 +120,16 @@ MainTaigaDirective = ($log, $compile, $rootscope) ->
     # Link function related to projects navigation
     # part of main menu.
     linkProjecsNav = ($scope, $el, $attrs, $ctrl) ->
-        # $el.addClass("closed-project-nav")
+        $el.addClass("closed-project-nav")
 
         $el.on "click", ".menu .logo > a", (event) ->
             event.preventDefault()
-            $el.find(".project-nav").toggle()
-            # $el.toggleClass("closed-project-nav")
-            # $el.toggleClass("open-project-nav")
+            $el.toggleClass("closed-project-nav")
+            $el.toggleClass("open-project-nav")
 
         $el.on "click", ".projects-list > li > a", (event) ->
-            # $el.toggleClass("closed-project-nav")
-            # $el.toggleClass("open-project-nav")
+            $el.toggleClass("closed-project-nav")
+            $el.toggleClass("open-project-nav")
 
     link = ($scope, $el, $attrs, $ctrl) ->
         $scope.$on "$viewContentLoaded", (ctx) ->
