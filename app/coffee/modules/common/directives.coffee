@@ -51,8 +51,11 @@ SprintProgressBarDirective = ->
         bindOnce $scope, $attrs.tgSprintProgressbar, (sprint) ->
             closedPoints = sprint.closed_points
             totalPoints = sprint.total_points
-            percentage = Math.round(100 * (closedPoints/totalPoints))
-            visual_percentage = Math.round(98 * (closedPoints/totalPoints)) #Visual hack for .current-progress bar
+            percentage = 0
+            percentage = Math.round(100 * (closedPoints/totalPoints)) if totalPoints != 0
+            visual_percentage = 0
+            #Visual hack for .current-progress bar
+            visual_percentage = Math.round(98 * (closedPoints/totalPoints)) if totalPoints != 0
             renderProgress($el, percentage, visual_percentage)
 
     return {link: link}
