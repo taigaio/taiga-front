@@ -112,8 +112,6 @@ MainTaigaDirective = ($log, $compile, $rootscope) ->
         menuDom.empty()
         menuDom.append(dom)
 
-        $el.find("nav.menu").removeClass("hidden")
-
         sectionName = targetScope.section
         menuDom.find("a.active").removeClass("active")
         menuDom.find("[data-name=#{sectionName}] > a").addClass("active")
@@ -121,20 +119,14 @@ MainTaigaDirective = ($log, $compile, $rootscope) ->
     # Link function related to projects navigation
     # part of main menu.
     linkProjecsNav = ($scope, $el, $attrs, $ctrl) ->
-        $el.addClass("closed-project-nav")
-
         $el.on "click", ".menu .logo > a", (event) ->
             event.preventDefault()
-            $el.toggleClass("closed-project-nav")
             $el.toggleClass("open-project-nav")
 
         $el.on "click", ".projects-list > li > a", (event) ->
-            $el.toggleClass("closed-project-nav")
             $el.toggleClass("open-project-nav")
 
     linkMenuNav = ($scope, $el, $attrs, $ctrl) ->
-        $el.find("nav.menu").addClass("hidden")
-
         $scope.$on "$viewContentLoaded", (ctx) ->
             if ctx.targetScope.$$childHead is null
                 $log.error "No scope found for render menu."
