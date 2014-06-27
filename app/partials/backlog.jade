@@ -11,7 +11,9 @@ block content
         section.main.backlog
             include views/components/mainTitle
             include views/components/summary
-            include views/modules/burndown
+            div.graphics-container
+                div.burndown(tg-gm-backlog-graph)
+                    include views/modules/burndown
             div.backlog-menu
                 a.trans-button.move-to-current-sprint(href="", title="Move to Current Sprint", id="move-to-current-sprint")
                     span.icon.icon-move

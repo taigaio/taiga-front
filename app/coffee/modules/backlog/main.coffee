@@ -37,6 +37,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin)
 
         @scope.$on("usform:bulk:success", @.loadUserstories)
         @scope.$on("sprintform:create:success", @.loadSprints)
+        @scope.$on("sprintform:create:success", @.loadProjectStats)
         @scope.$on("usform:new:success", @.loadUserstories)
         @scope.$on("usform:edit:success", @.loadUserstories)
 
@@ -523,7 +524,7 @@ UsPointsDirective = ($repo) ->
             pointsDomNode.text("#{selectedPointsValue}/#{usTotalPoints}")
 
     calculateTotalPoints = (us, pointsById) ->
-        values = _.map(us.point, (v, k) -> pointsById[v].value)
+        values = _.map(us.points, (v, k) -> pointsById[v].value)
         return _.reduce(values, (acc, num) -> acc + num)
 
     link = ($scope, $el, $attrs) ->
@@ -597,11 +598,109 @@ UsPointsDirective = ($repo) ->
     return {link: link}
 
 
+#############################################################################
+## Burndown graph directive
+#############################################################################
+
+GmBacklogGraphDirective = ->
+    redrawChart = (element, dataToDraw) ->
+        width = element.width()
+        element.height(width/6)
+        milestones = _.map(dataToDraw.milestones, (ml) -> ml.name)
+        milestonesRange = [0..(milestones.length - 1)]
+        data = []
+        zero_line = _.map(dataToDraw.milestones, (ml) -> 0)
+        data.push({
+            data: _.zip(milestonesRange, zero_line)
+            lines:
+                fillColor : "rgba(0,0,0,0)"
+            points:
+                show: false
+        })
+        optimal_line = _.map(dataToDraw.milestones, (ml) -> ml.optimal)
+        data.push({
+            data: _.zip(milestonesRange, optimal_line)
+            lines:
+                fillColor : "rgba(120,120,120,0.2)"
+        })
+        evolution_line = _.filter(_.map(dataToDraw.milestones, (ml) -> ml.evolution), (evolution) -> evolution?)
+        data.push({
+            data: _.zip(milestonesRange, evolution_line)
+            lines:
+                fillColor : "rgba(102,153,51,0.3)"
+        })
+        team_increment_line = _.map(dataToDraw.milestones, (ml) -> -ml['team-increment'])
+        data.push({
+            data: _.zip(milestonesRange, team_increment_line)
+            lines:
+                fillColor : "rgba(153,51,51,0.3)"
+        })
+        client_increment_line = _.map(dataToDraw.milestones, (ml) -> -ml['team-increment']-ml['client-increment'])
+        data.push({
+            data: _.zip(milestonesRange, client_increment_line)
+            lines:
+                fillColor : "rgba(255,51,51,0.3)"
+        })
+
+        colors = [
+            "rgba(0,0,0,1)"
+            "rgba(120,120,120,0.2)"
+            "rgba(102,153,51,1)"
+            "rgba(153,51,51,1)"
+            "rgba(255,51,51,1)"
+        ]
+
+        options = {
+            grid: {
+                borderWidth: { top: 0, right: 1, left:0, bottom: 0 }
+                borderColor: '#ccc'
+            }
+            xaxis: {
+                ticks: _.zip(milestonesRange, milestones)
+                axisLabelUseCanvas: true
+                axisLabelFontSizePixels: 12
+                axisLabelFontFamily: 'Verdana, Arial, Helvetica, Tahoma, sans-serif'
+                axisLabelPadding: 5
+            }
+            series: {
+                shadowSize: 0
+                lines: {
+                    show: true
+                    fill: true
+                }
+                points: {
+                    show: true
+                    fill: true
+                    radius: 4
+                    lineWidth: 2
+                }
+            }
+            colors: colors
+        }
+
+        element.empty()
+        element.plot(data, options).data("plot")
+
+    link = ($scope, $el, $attrs) ->
+        element = angular.element($el)
+
+        $scope.$watch 'stats', (value) ->
+            if $scope.stats?
+                redrawChart(element, $scope.stats)
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {link: link}
+
+
 module = angular.module("taigaBacklog")
 module.directive("tgBacklog", ["$tgRepo", BacklogDirective])
 module.directive("tgBacklogSprint", ["$tgRepo", BacklogSprintDirective])
 module.directive("tgUsPoints", ["$tgRepo", UsPointsDirective])
 module.directive("tgUsRolePointsSelector", ["$rootScope", UsRolePointsSelectorDirective])
+module.directive("tgGmBacklogGraph", GmBacklogGraphDirective)
+
 
 module.controller("BacklogController", [
     "$scope",

@@ -58,7 +58,10 @@ paths = {
         "app/js/Sortable.js",
         "app/vendor/moment/min/moment-with-langs.js",
         "app/vendor/checksley/checksley.js",
-        "app/vendor/pikaday/pikaday.js"
+        "app/vendor/pikaday/pikaday.js",
+        "app/vendor/jquery-flot/jquery.flot.js",
+        "app/vendor/jquery-flot/jquery.flot.pie.js",
+        "app/vendor/jquery-flot/jquery.flot.time.js"
     ]
 }
 
