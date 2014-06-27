@@ -50,32 +50,36 @@ class MainTaigaController extends taiga.Controller
 
 MainTaigaDirective = ($log, $compile, $rootscope) ->
     template = _.template("""
-    <h1 class="logo"><a href="" title="Home"><img src="/images/logo.png" alt="Taiga"/></a></h1>
+    <h1 class="logo">
+        <a href="" title="Home">
+            <img src="/images/logo.png" alt="Taiga"/>
+        </a>
+    </h1>
     <ul class="main-nav">
-        <li data-name="search">
+        <li id="nav-search">
             <a href="" title="Search" tg-nav="project-search:project=project.slug">
                 <span class="icon icon-search"></span><span class="item">Search</span>
             </a>
         </li>
-        <li data-name="backlog" tg-nav="project-backlog:project=project.slug">
+        <li id="nav-backlog" tg-nav="project-backlog:project=project.slug">
             <a href="" title="Backlog" tg-nav="project-backlog:project=project.slug">
                 <span class="icon icon-backlog"></span>
                 <span class="item">Backlog</span>
             </a>
         </li>
-        <li data-name="kanban">
+        <li id="nav-kanban">
             <a href="" title="Kanban">
                 <span class="icon icon-kanban"></span><span class="item">Kanban</span></a></li>
-        <li data-name="issues">
+        <li id="nav-issues">
             <a href="" title="Issues" tg-nav="project-issues:project=project.slug">
                 <span class="icon icon-issues"></span><span class="item">Issues</span></a></li>
-        <li data-name="wiki">
+        <li id="nav-wiki">
             <a href="" title="Wiki">
                 <span class="icon icon-wiki"></span>
                 <span class="item">Wiki</span>
             </a>
         </li>
-        <li data-name="video">
+        <li id="nav-video">
             <a href="" title="Video">
                 <span class="icon icon-video"></span>
                 <span class="item">Video</span>
@@ -106,15 +110,15 @@ MainTaigaDirective = ($log, $compile, $rootscope) ->
     # content loaded signal is raised using inner scope.
     renderMainMenu = ($el, targetScope) ->
         container = $el.find(".master > .wrapper")
-        dom = $compile(template({}))(targetScope)
-
         menuDom = $el.find("nav.menu")
+
+        dom = $compile(template({}))(targetScope)
         menuDom.empty()
         menuDom.append(dom)
 
         sectionName = targetScope.section
         menuDom.find("a.active").removeClass("active")
-        menuDom.find("[data-name=#{sectionName}] > a").addClass("active")
+        menuDom.find("#nav-#{sectionName} > a").addClass("active")
 
     # Link function related to projects navigation
     # part of main menu.
