@@ -129,6 +129,9 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin)
         subtitle = us.subject
 
         @confirm.ask(title, subtitle).then =>
+            # We modify the userstories in scope so the user doesn't see the removed US for a while
+            @scope.userstories = _.without(@scope.userstories, us);
+            @filterVisibleUserstories()
             @.repo.remove(us).then =>
                 @.loadBacklog()
 
@@ -139,6 +142,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     addNewSprint: () ->
         @rootscope.$broadcast("sprintform:create")
+
 
 #############################################################################
 ## Backlog Directive
@@ -269,12 +273,15 @@ BacklogDirective = ($repo) ->
             $scope.sprints[0].user_stories = _.union(selectedUss, $scope.sprints[0].user_stories)
             $ctrl.filterVisibleUserstories()
             $repo.saveAll(selectedUss)
+            scopeDefer $scope, =>
+                $scope.$broadcast("doomline:redraw")
 
-        # FIXME: very large line sucks ;)
+
         # Enable move to current sprint only when there are selected us's
         $el.on "change", ".backlog-table-body .user-stories input:checkbox", (event) ->
             moveToCurrentSprintDom = $el.find("#move-to-current-sprint")
-            if $el.find(".backlog-table-body .user-stories input:checkbox:checked").length > 0 and $scope.sprints.length > 0
+            selectedUsDom = $el.find(".backlog-table-body .user-stories input:checkbox:checked")
+            if selectedUsDom.length > 0 and $scope.sprints.length > 0
                 moveToCurrentSprintDom.show()
             else
                 moveToCurrentSprintDom.hide()

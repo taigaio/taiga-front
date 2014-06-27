@@ -49,7 +49,6 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope) ->
             $scope.us = {
                 project: $scope.projectId
                 is_archived: false
-                order: 0
                 status: $scope.project.default_us_status
             }
             isNew = true
