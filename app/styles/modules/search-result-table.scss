@@ -1,14 +1,21 @@
 .search-result-table {
+
     .row {
+        @include table-flex;
         &:hover {
             background: lighten($green-taiga, 60%);
             @include transition (background .2s ease-in);
+        }
+        div {
+            @include table-flex-child(1, 0, 0);
         }
     }
     .row-selected {
         background: lighten($green-taiga, 60%);
         @include transition (background .2s ease-in);
     }
+
+      // TODO: refactor xaviju
     .user-story-name {
         flex-basis: 500px;
         input {

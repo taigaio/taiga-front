@@ -1,6 +1,5 @@
 section.search-in
     header
-        form
-            fieldset
-                input(type="text", placeholder="Search in...")
-                a.icon.icon-search(href="", title="search")
+        fieldset
+            input(type="text", placeholder="Search in...", ng-model="searchTerm")
+            a.icon.icon-search(href="", title="search")

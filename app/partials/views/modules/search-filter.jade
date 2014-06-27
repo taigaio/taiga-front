@@ -1,31 +1,30 @@
 section.search-filter
     ul
-        li
+        li.userstories(data-name="userstories")
             a.active(href="#")
                 span.icon.icon-bulk
-                | 20 User Stories
+                span.num 0
+                span.name User Stories
 
-        li
+        li.issues(data-name="issues")
             a(href="#")
                 span.icon.icon-issues
-                | 3 Issues
+                span.num 0
+                span.name Issues
 
-        li
+        li.tasks(data-name="tasks")
             a(href="#")
                 span.icon.icon-bulk
-                | 23 Task
+                span.num 0
+                span.name Task
 
-        li
+        li.wiki(data-name="wiki")
             a(href="#")
                 span.icon.icon-wiki
-                | 2 Wiki pages
+                span.num 0
+                span.name Wiki Pages
 
-        li
-            a(href="#")
-                span.icon.icon-edit
-                | 12 Documents
-
-        li
-            a(href="#")
-                span.icon.icon-edit
-                | 3 Users
+        // li
+        //     a(href="#")
+        //         span.icon.icon-edit
+        //         | 3 Users

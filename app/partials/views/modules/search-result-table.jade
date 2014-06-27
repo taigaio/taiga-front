@@ -1,14 +1,26 @@
-section.search-result-table.basic-table
-    div.row.title
-        div.user-stories.width-4 User Stories
-        div.status.width-2 Status
-        div.points.width-1 Points
-        div.points.width-1 Sprints
-    - for (var x = 0; x < 50; x++)
-        div.row.table-main
-            div.user-stories.width-4
-                div.user-story-name
-                    a(href="") Crear el perfil de usuario Senior en el admin
+section.search-result-table
+    div.search-result-table-header
+        div.row.title
+            div.user-stories.width-4 User Stories
             div.status.width-2 Status
-            div.points.width-1 12
-            div.points.width-1 54
+            div.points.width-1 Points
+            div.points.width-1 Sprints
+    div.search-result-table-body
+        - for (var x = 0; x < 50; x++)
+            div.row.table-main
+                div.user-stories.width-4
+                    div.user-story-name
+                        a(href="") Crear el perfil de usuario Senior en el admin
+                div.status.width-2 Status
+                div.points.width-1 12
+                div.points.width-1 54
+
+
+script(type="text/ng-template", id="search-issues")
+    div.row.table-main(ng-repeat="issue in issues track by issue.id")
+        div.user-stories.width-4
+            div.user-story-name
+                a(href="") Crear el perfil de usuario Senior en el admin
+        div.status.width-2 Status
+        div.points.width-1 12
+        div.points.width-1 54
