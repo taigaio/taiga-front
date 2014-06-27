@@ -85,6 +85,10 @@ joinStr = (str, coll) ->
     return _.str.join(str, coll)
 
 
+debounce = (wait, func) ->
+    return _.debounce(func, wait)
+
+
 taiga = @.taiga
 taiga.bindOnce = bindOnce
 taiga.mixOf = mixOf
@@ -95,3 +99,4 @@ taiga.timeout = timeout
 taiga.scopeDefer = scopeDefer
 taiga.toString = toString
 taiga.joinStr = joinStr
+taiga.debounce = debounce
