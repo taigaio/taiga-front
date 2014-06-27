@@ -207,6 +207,15 @@ IssuesDirective = ($log, $location) ->
                 $ctrl.selectFilter("page", $scope.page - 1)
                 $ctrl.loadIssues()
 
+        $el.on "click", ".issues-paginator li.page > a", (event) ->
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+            pagenum = target.data("pagenum")
+
+            $scope.$apply ->
+                $ctrl.selectFilter("page", pagenum)
+                $ctrl.loadIssues()
+
 
     #########################
     ## Issues Filters
