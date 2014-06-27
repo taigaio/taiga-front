@@ -2,12 +2,16 @@
 
     .row {
         @include table-flex;
+        padding: 20px;
         &:hover {
             background: lighten($green-taiga, 60%);
             @include transition (background .2s ease-in);
         }
-        div {
+        >div {
             @include table-flex-child(1, 0, 0);
+        }
+        .user-stories {
+            @include table-flex-child(5, 500px, 0, 500px);
         }
     }
     .row-selected {
@@ -17,7 +21,6 @@
 
       // TODO: refactor xaviju
     .user-story-name {
-        flex-basis: 500px;
         input {
             vertical-align: top;
         }
