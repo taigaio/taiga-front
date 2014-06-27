@@ -27,8 +27,23 @@ scopeDefer = @.taiga.scopeDefer
 bindOnce = @.taiga.bindOnce
 groupBy = @.taiga.groupBy
 
+module = angular.module("taigaBacklog")
+
+#############################################################################
+## Backlog Controller
+#############################################################################
 
 class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin)
+    @.$inject = [
+        "$scope",
+        "$rootScope",
+        "$tgRepo",
+        "$tgConfirm",
+        "$tgResources",
+        "$routeParams",
+        "$q"
+    ]
+
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q) ->
         _.bindAll(@)
 
@@ -139,6 +154,8 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     addNewSprint: () ->
         @rootscope.$broadcast("sprintform:create")
+
+module.controller("BacklogController", BacklogController)
 
 
 #############################################################################
@@ -698,7 +715,6 @@ GmBacklogGraphDirective = ->
     return {link: link}
 
 
-module = angular.module("taigaBacklog")
 module.directive("tgBacklog", ["$tgRepo", BacklogDirective])
 module.directive("tgBacklogSprint", ["$tgRepo", BacklogSprintDirective])
 module.directive("tgUsPoints", ["$tgRepo", UsPointsDirective])
@@ -706,13 +722,3 @@ module.directive("tgUsRolePointsSelector", ["$rootScope", UsRolePointsSelectorDi
 module.directive("tgGmBacklogGraph", GmBacklogGraphDirective)
 
 
-module.controller("BacklogController", [
-    "$scope",
-    "$rootScope",
-    "$tgRepo",
-    "$tgConfirm",
-    "$tgResources",
-    "$routeParams",
-    "$q",
-    BacklogController
-])
