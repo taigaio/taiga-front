@@ -22,6 +22,7 @@
 taiga = @.taiga
 mixOf = @.taiga.mixOf
 groupBy = @.taiga.groupBy
+bindOnce = @.taiga.bindOnce
 
 module = angular.module("taigaTaskboard", [])
 
@@ -76,10 +77,17 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
             @scope.project = project
-            @scope.points = _.sortBy(project.points, "order")
+
+            @scope.pointsList = _.sortBy(project.points, "order")
+            @scope.pointsById = groupBy(@scope.pointsList, (e) -> e.id)
+
+            @scope.roleList = _.sortBy(project.roles, "order")
+            @scope.roleById = groupBy(@scope.roleList, (e) -> e.id)
+
             @scope.taskStatusList = _.sortBy(project.task_statuses, "order")
+
             @scope.usStatusList = _.sortBy(project.us_statuses, "order")
-            @scope.usStatusById = groupBy(project.us_statuses, (e) -> e.id)
+            @scope.usStatusById = groupBy(@scope.usStatusList, (e) -> e.id)
 
             return project
 
@@ -131,7 +139,7 @@ TaskboardDirective = ->
 
 TaskboardRowSizeFixer = ->
     link = ($scope, $el, $attrs) ->
-        taiga.bindOnce $scope, "taskStatusList", (statuses) ->
+        bindOnce $scope, "taskStatusList", (statuses) ->
             itemSize = 300 + (10 * statuses.length)
             size = (1 + statuses.length) * itemSize
             $el.css("width", size + "px")
@@ -139,5 +147,90 @@ TaskboardRowSizeFixer = ->
     return {link: link}
 
 
+TaskboardUsPointsDirective = ($repo, $confirm) ->
+    pointsTemplate = _.template("""
+    <% _.each(usRolePoints, function(rolePoint) { %>
+    <li>
+        <%- rolePoint.role.name %> <span class="us-role-points"> <%- rolePoint.point.name %></span>
+        <ul class="popover pop-points">
+            <% _.each(points, function(point) { %>
+            <li>
+                <a href="" class="point" title="<%- point.name %>"
+                   data-point-id="<%- point.id %>" data-role-id="<%- rolePoint.role.id %>">
+                    <%- point.name %>
+                </a>
+            </li>
+            <% }); %>
+        </ul>
+    </li>
+    <% }); %>
+    """)
+    renderUserStoryPoints = ($el, $scope, us) ->
+        points = $scope.pointsList
+        usRolePoints = []
+
+        for role_id, point_id of us.points
+            role = $scope.roleById[role_id]
+            point = $scope.pointsById[point_id]
+            if role and point
+                usRolePoints.push({role: role, point: point})
+
+        bindOnce $scope, "project", (project) ->
+            html = pointsTemplate({
+                points: points
+                usRolePoints: usRolePoints
+            })
+            $el.html(html)
+
+    link = ($scope, $el, $attrs) ->
+        $ctrl = $el.controller()
+        us = $scope.$eval($attrs.tgTaskboardUsPoints)
+        renderUserStoryPoints($el, $scope, us)
+
+        $el.on "click", ".us-role-points", (event) ->
+            event.stopPropagation()
+
+            target = angular.element(event.currentTarget)
+            popover = target.parent().find(".pop-points")
+            popover.show()
+
+            body = angular.element("body")
+            body.one "click", (event) ->
+                popover.hide()
+
+        $el.on "click", ".point", (event) ->
+            event.preventDefault()
+            event.stopPropagation()
+
+            target = angular.element(event.currentTarget)
+            roleId = target.data("role-id")
+            pointId = target.data("point-id")
+            newPoints = _.clone(us.points, false)
+            newPoints[roleId] = pointId
+            us.points = newPoints
+
+            $el.find(".pop-points").hide()
+
+            $scope.$apply ->
+                onSuccess = ->
+                    $repo.refresh(us) ->
+                        # TODO: Remove me when backlog will be fixed
+                        $ctrl.loadSprintStats()
+
+                onError = ->
+                    $confirm.notify("error", "There is an error. Try it later.")
+                    us.revert()
+                    renderUserStoryPoints($el, $scope, us)
+
+                renderUserStoryPoints($el, $scope, us)
+                $repo.save(us).then(onSuccess, onError)
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {link: link}
+
+
 module.directive("tgTaskboard", TaskboardDirective)
 module.directive("tgTaskboardRowSizeFixer", TaskboardRowSizeFixer)
+module.directive("tgTaskboardUsPoints", ["$tgRepo", "$tgConfirm", TaskboardUsPointsDirective])

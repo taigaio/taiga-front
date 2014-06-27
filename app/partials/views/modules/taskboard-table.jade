@@ -12,17 +12,9 @@ div.taskboard-table
                     h3.us-title
                         span.us-ref(tg-bo-ref="us.ref")
                         span(ng-bind="us.subject")
-                    div.status(tg-us-status="us" on-update="ctrl.loadSprintState()")
+                    div.status(tg-us-status="us", on-update="ctrl.loadSprintState()")
                         a.us-status(href="", title="Status Name")
-                    ul.points-list
-                        li UX
-                            span 4.5
-                        li Diseño
-                            span 4.5
-                        li Front
-                            span 4.5
-                        li Back
-                            span 4.5
+                    ul.points-list(tg-taskboard-us-points="us")
                     include ../components/addnewtask
 
                 div.taskboard_task-playground.task-column(ng-repeat="s in taskStatusList track by s.id")
