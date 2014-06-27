@@ -5,7 +5,7 @@ form
     fieldset
         input(type="text", ng-model="us.subject", tg-i18n="placeholder:common.subject", data-required="true")
     fieldset
-        select(ng-model="us.status", ng-options="s.id as s.name for s in statusList",
+        select(ng-model="us.status", ng-options="s.id as s.name for s in usStatusList",
                tg-i18n="placeholder:common.status")
     fieldset
         input(type="text", placeholder="Tags", tg-tags, ng-model="us.tags")

@@ -20,10 +20,13 @@
 ###
 
 taiga = @.taiga
+
 mixOf = @.taiga.mixOf
 toggleText = @.taiga.toggleText
 scopeDefer = @.taiga.scopeDefer
 bindOnce = @.taiga.bindOnce
+groupBy = @.taiga.groupBy
+
 
 class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin)
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q) ->
@@ -77,15 +80,9 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin)
         return @rs.projects.get(@scope.projectId).then (project) =>
             @scope.project = project
             @scope.points = _.sortBy(project.points, "order")
-            @scope.pointsById = {}
-            for p in @scope.points
-                @scope.pointsById[p.id] = p
-
-            @scope.usStatusById = {}
-            for s in project.us_statuses
-                @scope.usStatusById[s.id] = s
-
-            @scope.statusList = _.sortBy(project.us_statuses, "id")
+            @scope.pointsById = groupBy(project.points, (x) -> x.id)
+            @scope.usStatusById = groupBy(project.us_statuses, (x) -> x.id)
+            @scope.usStatusList = _.sortBy(project.us_statuses, "id")
             return project
 
     loadInitialData: ->
