@@ -22,11 +22,22 @@
 
 taiga = @.taiga
 
-resourceProvider = ($repo) ->
+resourceProvider = ($repo, $urls, $http) ->
     service = {}
+
+    service.do = (projectId, term) ->
+        url = $urls.resolve("search")
+        params = {
+            project: projectId
+            text: term,
+            get_all: false
+        }
+
+        return $http.get(url, params).then (data) ->
+            return data.data
 
     return (instance) ->
         instance.search = service
 
 module = angular.module("taigaResources")
-module.factory("$tgSearchResourcesProvider", ["$tgRepo", resourceProvider])
+module.factory("$tgSearchResourcesProvider", ["$tgRepo", "$tgUrls", "$tgHttp", resourceProvider])

@@ -109,5 +109,6 @@ module.run([
     "$tgMdRenderResourcesProvider",
     "$tgTasksResourcesProvider",
     "$tgIssuesResourcesProvider",
+    "$tgSearchResourcesProvider",
     initResources
 ])
