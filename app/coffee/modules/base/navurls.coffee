@@ -35,7 +35,7 @@ class NavigationUrlsService extends taiga.Service
         return @.urls[name]
 
 
-NavigationUrlsDirective = ($navurls, $auth, $q) ->
+NavigationUrlsDirective = ($navurls, $auth, $q, $location) ->
     # Example:
     # link(tg-nav="project-backlog:project='sss',")
 
@@ -67,21 +67,26 @@ NavigationUrlsDirective = ($navurls, $auth, $q) ->
         return url.replace(/(:\w+)/g, replacer)
 
     link = ($scope, $el, $attrs) ->
-        parseNav($attrs.tgNav, $scope).then (result) ->
-            [name, options] = result
+        $el.on "click", (event) ->
+            event.preventDefault()
 
-            user = $auth.getUser()
-            options.user = user.username if user
+            parseNav($attrs.tgNav, $scope).then (result) ->
+                [name, options] = result
+                user = $auth.getUser()
+                options.user = user.username if user
 
-            url = $navurls.resolve(name)
-            fullUrl = formatUrl(url, options)
-            $el.attr("href", fullUrl)
+                url = $navurls.resolve(name)
+                fullUrl = formatUrl(url, options)
+                $location.url(fullUrl)
+
+        $scope.$on "$destroy", ->
+            $el.off()
 
     return {link: link}
 
 
 module = angular.module("taigaBase")
 module.service("$tgNavUrls", NavigationUrlsService)
-module.directive("tgNav", ["$tgNavUrls", "$tgAuth", "$q", NavigationUrlsDirective])
+module.directive("tgNav", ["$tgNavUrls", "$tgAuth", "$q", "$location", NavigationUrlsDirective])
 
 
