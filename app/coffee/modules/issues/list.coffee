@@ -216,7 +216,6 @@ IssuesDirective = ($log, $location) ->
                 $ctrl.selectFilter("page", pagenum)
                 $ctrl.loadIssues()
 
-
     #########################
     ## Issues Filters
     #########################

@@ -48,7 +48,6 @@ class MainTaigaController extends taiga.Controller
 ## Global Page Directive
 #############################################################################
 
-
 MainTaigaDirective = ($log, $compile, $rootscope) ->
     template = _.template("""
     <h1 class="logo"><a href="" title="Home"><img src="/images/logo.png" alt="Taiga"/></a></h1>
@@ -113,6 +112,8 @@ MainTaigaDirective = ($log, $compile, $rootscope) ->
         menuDom.empty()
         menuDom.append(dom)
 
+        $el.find("nav.menu").removeClass("hidden")
+
         sectionName = targetScope.section
         menuDom.find("a.active").removeClass("active")
         menuDom.find("[data-name=#{sectionName}] > a").addClass("active")
@@ -131,11 +132,18 @@ MainTaigaDirective = ($log, $compile, $rootscope) ->
             $el.toggleClass("closed-project-nav")
             $el.toggleClass("open-project-nav")
 
-    link = ($scope, $el, $attrs, $ctrl) ->
-        $scope.$on "$viewContentLoaded", (ctx) ->
-            renderMainMenu($el, ctx.targetScope.$$childHead)
+    linkMenuNav = ($scope, $el, $attrs, $ctrl) ->
+        $el.find("nav.menu").addClass("hidden")
 
+        $scope.$on "$viewContentLoaded", (ctx) ->
+            if ctx.targetScope.$$childHead is null
+                $log.error "No scope found for render menu."
+            else
+                renderMainMenu($el, ctx.targetScope.$$childHead)
+
+    link = ($scope, $el, $attrs, $ctrl) ->
         linkProjecsNav($scope, $el, $attrs, $ctrl)
+        linkMenuNav($scope, $el, $attrs, $ctrl)
 
     return {
         controller: MainTaigaController
