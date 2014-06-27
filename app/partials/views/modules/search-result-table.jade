@@ -6,21 +6,31 @@ section.search-result-table
             div.points.width-1 Points
             div.points.width-1 Sprints
     div.search-result-table-body
-        - for (var x = 0; x < 50; x++)
-            div.row.table-main
-                div.user-stories.width-4
-                    div.user-story-name
-                        a(href="") Crear el perfil de usuario Senior en el admin
-                div.status.width-2 Status
-                div.points.width-1 12
-                div.points.width-1 54
 
 
 script(type="text/ng-template", id="search-issues")
     div.row.table-main(ng-repeat="issue in issues track by issue.id")
         div.user-stories.width-4
             div.user-story-name
-                a(href="") Crear el perfil de usuario Senior en el admin
+                a(href="", tg-bo-html="issue.subject")
+        div.status.width-2 Status
+        div.points.width-1 12
+        div.points.width-1 54
+
+script(type="text/ng-template", id="search-userstories")
+    div.row.table-main(ng-repeat="us in userstories track by us.id")
+        div.user-stories.width-4
+            div.user-story-name
+                a(href="", tg-bo-html="us.subject")
+        div.status.width-2 Status
+        div.points.width-1 12
+        div.points.width-1 54
+
+script(type="text/ng-template", id="search-tasks")
+    div.row.table-main(ng-repeat="task in tasks track by task.id")
+        div.user-stories.width-4
+            div.user-story-name
+                a(href="", tg-bo-html="task.subject")
         div.status.width-2 Status
         div.points.width-1 12
         div.points.width-1 54
