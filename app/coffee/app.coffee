@@ -77,6 +77,7 @@ modules = [
     "taigaBacklog",
     "taigaTaskboard",
     "taigaIssues",
+    "taigaSearch",
 
     # Vendor modules
     "ngRoute",
