@@ -133,7 +133,7 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope) ->
 
     return {link: link}
 
-CreateBulkUserstroriesDirective = ($repo, $rs, $rootscope) ->
+CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope) ->
     link = ($scope, $el, attrs) ->
         $scope.form = {data: ""}
 
@@ -208,6 +208,8 @@ CreateSprint = ($repo, $rs, $rootscope) ->
 
 
 module = angular.module("taigaBacklog")
-module.directive("tgLbCreateEditUserstory", ["$tgRepo", "$tgModel", "$tgResources", "$rootScope", CreateEditUserstoryDirective])
-module.directive("tgLbCreateBulkUserstories", ["$tgRepo", "$tgResources", "$rootScope", CreateBulkUserstroriesDirective])
+module.directive("tgLbCreateEditUserstory", ["$tgRepo", "$tgModel", "$tgResources", "$rootScope",
+                                             CreateEditUserstoryDirective])
+module.directive("tgLbCreateBulkUserstories", ["$tgRepo", "$tgResources", "$rootScope",
+                                               CreateBulkUserstoriesDirective])
 module.directive("tgLbCreateSprint", ["$tgRepo", "$tgResources", "$rootScope", CreateSprint])
