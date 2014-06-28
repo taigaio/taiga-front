@@ -73,7 +73,26 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
     loadTasks: ->
         return @rs.tasks.list(@scope.projectId, @scope.sprintId).then (tasks) =>
             @scope.tasks = tasks
-            @scope.tasksByStatus = _.groupBy(tasks, "status")
+            @scope.usTasks = {}
+            @scope.unassignedTasks = {}
+
+            for us in @scope.userstories
+                @scope.usTasks[us.id] = {}
+
+                for status in @scope.taskStatusList
+                    @scope.usTasks[us.id][status.id] = []
+
+            for status in @scope.taskStatusList
+                @scope.unassignedTasks[status.id] = []
+
+            for task in @scope.tasks
+                if task.user_story == null
+                    @scope.unassignedTasks[task.status]?.push(task)
+                else
+                    # why? because a django-filters sucks
+                    if @scope.usTasks[task.user_story]?
+                        @scope.usTasks[task.user_story][task.status]?.push(task)
+
             return tasks
 
     loadProject: ->
@@ -97,7 +116,6 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
         return @q.all([
             @.loadSprintStats(),
             @.loadSprint()
-            # @.loadTasks(),
         ]).then(=> @.loadTasks())
 
     loadInitialData: ->
