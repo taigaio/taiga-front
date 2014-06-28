@@ -51,6 +51,13 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
         promise.then null, ->
             console.log "FAIL" #TODO
 
+        @scope.$on "taskform:new:success", =>
+            @.loadTaskboard()
+        @scope.$on "taskform:bulk:success", =>
+            @.loadTaskboard()
+        @scope.$on "taskform:edit:success", =>
+            @.loadTaskboard()
+
     loadSprintStats: ->
         return @rs.sprints.stats(@scope.projectId, @scope.sprintId).then (stats) =>
             totalPointsSum =_.reduce(_.values(stats.total_points), ((res, n) -> res + n), 0)
@@ -126,6 +133,16 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
         return promise.then(=> @.loadProject())
                       .then(=> @.loadUsersAndRoles())
                       .then(=> @.loadTaskboard())
+
+    ## Template actions
+
+    addNewTask: (type, us) ->
+        switch type
+            when "standard" then @rootscope.$broadcast("taskform:new", @scope.sprintId, us?.id)
+            when "bulk" then @rootscope.$broadcast("taskform:bulk", us.id)
+
+    editTask: (task) ->
+        @rootscope.$broadcast("taskform:edit", task)
 
 module.controller("TaskboardController", TaskboardController)
 

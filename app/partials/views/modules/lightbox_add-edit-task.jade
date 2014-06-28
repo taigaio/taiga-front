@@ -1,0 +1,34 @@
+a.close(href="", title="close")
+    span.icon.icon-delete
+form
+    h2.title(tg-i18n="task.title-new")
+    fieldset
+        input(type="text", ng-model="task.subject", placeholder="A task subject", data-required="true")
+    fieldset
+        select(ng-model="task.status", ng-options="s.id as s.name for s in taskStatusList",
+               placeholder="Task status")
+    // TODO: Assigned to
+    //fieldset
+    //    select(ng-model="task.assigned_to", ng-options="s.id as s.full_name for s in userList",
+    //           placeholder="Assigned to")
+    //        option(value)-------
+    fieldset
+        input(type="text", placeholder="Tags", tg-tags, ng-model="task.tags")
+    fieldset
+        div.markdown-preview
+            a.edit.active(href="", title="Edit") Edit
+            a.preview(href="", title="Preview") Preview
+        textarea.description(placeholder="Type a short description", ng-model="task.description")
+        div.description-preview.hidden
+    div.new-us-settings
+        fieldset
+            label.iocaine(for="iocaine-task icon-iocaine" data-icon="r") Iocaine
+            input(type="checkbox", ng-model="task.is_iocaine", name="iocaine-task", id="iocaine-task")
+        fieldset
+            label.blocked(for="blocked-task") Blocked
+            input(type="checkbox", ng-model="task.is_blocked", name="blocked-task", id="blocked-task")
+    fieldset.blocked-note.hidden
+        textarea(placeholder="Why is this task blocked?", ng-model="task.blocked_note")
+
+    a.button.button-green(href="", title="Save")
+        span Create

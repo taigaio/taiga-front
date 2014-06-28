@@ -14,3 +14,8 @@ block content
             include views/components/sprint-summary
             include views/modules/burndown
             include views/modules/taskboard-table
+
+        div.lightbox.lightbox_add-new-us.hidden(tg-lb-create-edit-task)
+            include views/modules/lightbox_add-edit-task
+        div.lightbox.lightbox_add-bulk.hidden(tg-lb-create-bulk-tasks)
+            include views/modules/lightbox_add-task-bulk

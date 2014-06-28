@@ -1,5 +1,7 @@
 div.new-task
-    a.button.button-green(href="", ng-click="ctrl.addNewTask('standard', us)", title="Add new task")
+    a.button.button-green(href="", ng-click="ctrl.addNewTask('standard', us)",
+                          title="Add new task")
         span.text + Add new Task
-    a.button.button-bulk(href="", ng-click="ctrl.addNewTask('bulk', us)", title="Add new tasks in bulk")
+    a.button.button-bulk(href="", ng-click="ctrl.addNewTask('bulk', us)", ng-if="us",
+                         title="Add new tasks in bulk")
         span.icon.icon-bulk

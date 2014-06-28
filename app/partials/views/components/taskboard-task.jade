@@ -9,5 +9,5 @@ div.taskboard-task(ng-repeat="task in usTasks[us.id][st.id] track by task.id")
         p.taskboard-text
             span.task-num(ng-bind="task.ref")
             span.task-name(ng-bind="task.subject")
-        a.icon.icon-edit(href="", title="Edit")
+        a.icon.icon-edit(href="", title="Edit", ng-click="ctrl.editTask(task)")
         a.icon.icon-drag-h(href="", title="Drag&Drop")

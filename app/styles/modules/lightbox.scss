@@ -96,7 +96,7 @@
             cursor: pointer;
             display: block;
         }
-        .requirement {
+        .requirement, .iocaine {
             &:hover {
                 @include transition(all .2s ease-in);
                 background: $fresh-taiga;
