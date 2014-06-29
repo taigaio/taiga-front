@@ -19,6 +19,11 @@
 # File: modules/controllerMixins.coffee
 ###
 
+taiga = @.taiga
+
+groupBy = @.taiga.groupBy
+
+
 class PageMixin
     loadUsersAndRoles: ->
         promise = @q.all([
@@ -29,16 +34,15 @@ class PageMixin
         return promise.then (results) =>
             [users, roles] = results
 
-            @scope.users = _.sortBy(users, "id")
-            @scope.roles = roles
+            @scope.users = _.sortBy(users, "full_name_display")
+            @scope.usersById = groupBy(@scope.users, (e) -> e.id)
 
-            @scope.usersById = {}
-            _.each(users, (x) => @scope.usersById[x.id] = x)
-
+            @scope.roles = _.sortBy(roles, "order")
             availableRoles = _(@scope.project.memberships).map("role").uniq().value()
             @scope.computableRoles = _(roles).filter("computable")
                                              .filter((x) -> _.contains(availableRoles, x.id))
                                              .value()
+
             return results
 
 
