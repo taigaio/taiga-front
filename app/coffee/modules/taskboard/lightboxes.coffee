@@ -51,6 +51,7 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootScope) ->
                 user_story: usId
                 is_archived: false
                 status: $scope.project.default_task_status
+                assigned_to: null
             }
             isNew = true
             editDescription($scope, $el)
