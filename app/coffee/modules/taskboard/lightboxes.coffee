@@ -114,7 +114,7 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootScope) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
             target.toggleClass("selected")
-            $scope.us.is_blocked = not $scope.us.is_blocked
+            $scope.task.is_blocked = not $scope.task.is_blocked
             $el.find(".blocked-note").toggle(400)
 
         $el.on "click", "label.iocaine", (event) ->
