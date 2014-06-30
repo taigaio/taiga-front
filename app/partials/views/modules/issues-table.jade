@@ -8,7 +8,8 @@ section.issues-table.basic-table
     div.row.table-main(ng-repeat="issue in issues track by issue.id")
         div.level-field(tg-issue-severity="issue")
         div.level-field(tg-issue-priority="issue")
-        div.subject(tg-bo-html="issue.subject")
+        div.subject
+            a(href="", tg-bo-html="issue.subject")
         div.issue-field(tg-issue-status="issue")
         div.assigned-field(tg-issue-assignedto="issue")
 
