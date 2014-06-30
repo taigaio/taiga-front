@@ -17,6 +17,18 @@
 }
 
 .filters {
+    h1 {
+        vertical-align: middle;
+        .subfilter {
+            @extend %large;
+        }
+        .icon {
+            margin: 0;
+        }
+        a {
+            vertical-align: middle;
+        }
+    }
     form {
         margin-bottom: 2rem;
         .icon-search {
@@ -30,4 +42,31 @@
 .filters-inner {
     opacity: 0;
     @include transition (all .1s ease-in);
+}
+
+.filters-cats {
+    li {
+        border-bottom: 1px solid $gray-light;
+        text-transform: uppercase;
+    }
+    a {
+        @include transition (color .2s ease-in);
+        color: $grayer;
+        display: block;
+        padding: 1rem 0 1rem 1rem;
+        &:hover {
+            @include transition (color .2s ease-in);
+            color: $green-taiga;
+            .icon {
+                @include transition (opacity .2s ease-in);
+                opacity: 1;
+            }
+        }
+    }
+    .icon {
+        @include transition (opacity .2s ease-in);
+        color: $grayer;
+        float: right;
+        opacity: 0;
+    }
 }

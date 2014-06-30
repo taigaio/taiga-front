@@ -1,0 +1,9 @@
+.issues {
+    .filters-bar {
+        @include table-flex-child(1, 260px, 0, 260px);
+    }
+    .filters-inner {
+        opacity: 1;
+        padding: 2em 1em;
+    }
+}
