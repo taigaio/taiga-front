@@ -14,7 +14,7 @@ section.sprints
         header
             div.sprint-summary
                 a.icon.icon-arrow-up(href="", title="compact Sprint")
-                span.sprint-name current sprint
+                span.sprint-name {{ sprint.name }}
                 span.sprint-date(tg-date-range="sprint.estimated_start,sprint.estimated_finish")
             ul
                 li
