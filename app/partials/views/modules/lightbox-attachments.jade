@@ -1,0 +1,17 @@
+fieldset.attachments
+    div.attachments-header
+        h3.attachments-title
+            span.icon.icon-attachment
+            span.attachments-num 1
+            span.attachments-text attachment
+            a.button.button-gray(href="", title="Add new attachment")
+                span + add attachment
+    div.attachment-body
+        - for(var x = 0; x < 1; x++)
+            div.single-attachment
+                div.attachment-name
+                    span.icon.icon-document
+                    a(href="", title="Attachment pefildeusuario.png") pefildeusuariopefildeusuariopefildeusuario.png
+                div.attachment-comment
+                    span Comentario sobre el contenido
+                    span.attachment-size (125kb.)

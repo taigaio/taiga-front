@@ -30,32 +30,33 @@
     }
 }
 
+.markdown-preview {
+    display: inline-block;
+    margin-bottom: .5rem;
+    a {
+        @extend %button;
+        @extend %small;
+        color: $gray-light;
+        padding: 3px 20px;
+        &:first-child {
+            border-right: 1px solid $gray-light;
+        }
+        &:hover {
+            color: $grayer;
+            @include transition(color .2s linear);
+        }
+    }
+    .active {
+        color: $grayer;
+    }
+}
+
 .lightbox_add-new-us {
     form {
         @include table-flex-child(0, 600px, 0, 600px);
     }
     fieldset {
         position: relative;
-    }
-    .markdown-preview {
-        display: inline-block;
-        margin-bottom: .5rem;
-        a {
-            @extend %button;
-            @extend %small;
-            color: $gray-light;
-            padding: 3px 20px;
-            &:first-child {
-                border-right: 1px solid $gray-light;
-            }
-            &:hover {
-                color: $grayer;
-                @include transition(color .2s linear);
-            }
-        }
-        .active {
-            color: $grayer;
-        }
     }
     textarea {
         margin-bottom: 1rem;
@@ -245,3 +246,24 @@
     }
 }
 
+.lightbox_add-issue {
+    form {
+        @include table-flex-child(0, 600px, 0, 600px);
+    }
+    .fieldset-row {
+        @include table-flex();
+        fieldset {
+            @include table-flex-child(1, 100px, 0, 30%);
+            margin-right: .5rem;
+            &:last-child {
+                margin: 0;
+            }
+        }
+    }
+    textarea {
+        margin-bottom: 1rem;
+        max-height: 12rem;
+        min-height: 8rem;
+    }
+
+}
