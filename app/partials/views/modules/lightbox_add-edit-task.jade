@@ -8,7 +8,7 @@ form
         select(ng-model="task.status", ng-options="s.id as s.name for s in taskStatusList",
                placeholder="Task status")
     fieldset
-        select(ng-model="task.assigned_to", ng-options="s.id as s.full_name_display for s in users",
+        select(ng-model="task.assigned_to", ng-options="s.id as s.full_name for s in users",
                placeholder="Assigned to")
             option(value="") Unassigned
     fieldset
