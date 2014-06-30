@@ -4,7 +4,7 @@ section.sprints
         div.summary
             ul
                 li
-                    span.number(tg-bo-html="stats.total_milestones") --
+                    span.number(ng-bind="milestonesCounter") --
                     span.description <br/>sprints
             div.new-sprint
               a.button.button-green(ng-click="ctrl.addNewSprint()", href="", title="Add New US")

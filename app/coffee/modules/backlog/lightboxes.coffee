@@ -166,6 +166,10 @@ CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope) ->
 
 CreateSprint = ($repo, $rs, $rootscope) ->
     link = ($scope, $el, attrs) ->
+        $scope.milestonesCounter = "--"
+        bindOnce $scope, "stats", (stats) ->
+            $scope.milestonesCounter = stats.milestones.length
+            
         submit = ->
             form = $el.find("form").checksley()
             if not form.validate()
@@ -173,6 +177,7 @@ CreateSprint = ($repo, $rs, $rootscope) ->
 
             promise = $repo.create("milestones", $scope.sprint)
             promise.then (data) ->
+                $scope.milestonesCounter += 1
                 $el.addClass("hidden")
                 $rootscope.$broadcast("sprintform:create:success", data)
 
@@ -191,7 +196,7 @@ CreateSprint = ($repo, $rs, $rootscope) ->
             lastSprintNameDom = $el.find(".last-sprint-name")
             sprintName = $scope.sprints?[0].name
             if sprintName?
-                lastSprintNameDom.text(" last sprint is <strong> #{sprintName} ;-) </strong>")
+                lastSprintNameDom.html(" last sprint is <strong> #{sprintName} ;-) </strong>")
 
         $el.on "click", ".close", (event) ->
             event.preventDefault()
