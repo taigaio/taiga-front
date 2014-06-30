@@ -1,10 +1,6 @@
 .backlog {
     .new-us {
-        @include clearfix;
-        margin-bottom: 2rem;
-        .new-us-inner {
-            float: right;
-        }
+        float: right;
     }
 }
 
