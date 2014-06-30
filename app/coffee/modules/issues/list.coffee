@@ -143,12 +143,12 @@ IssuesDirective = ($log, $location) ->
 
     linkPagination = ($scope, $el, $attrs, $ctrl) ->
         # Constants
-        afterCurrent = 5
-        beforeCurrent = 5
+        afterCurrent = 2
+        beforeCurrent = 4
         atBegin = 2
         atEnd = 2
 
-        $pagEl = $el.find("section.issues-paginator")
+        $pagEl = $el.find(".issues-paginator")
 
         getNumPages = ->
             numPages = $scope.count / $scope.paginatedBy

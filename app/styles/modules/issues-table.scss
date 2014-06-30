@@ -1,5 +1,6 @@
 .issues-table {
     @include table-flex();
+    margin-bottom: 2rem;
     .row {
         &:hover {
             background: lighten($green-taiga, 60%);

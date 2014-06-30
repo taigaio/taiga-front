@@ -1,0 +1,34 @@
+.paginator {
+    margin-bottom: 2rem;
+    ul {
+        margin-left: 1rem;
+    }
+    li {
+        display: inline-block;
+    }
+    a,
+    .active span,
+    .dots {
+        @include transition (all .3s linear);
+        background: $gray-light;
+        color: $white;
+        margin-right: .1rem;
+        padding: .5rem 1rem;
+    }
+    a {
+        &:hover {
+            @include transition (all .3s linear);
+            background: $button-gray-hover;
+            color: $white;
+        }
+    }
+    .active {
+        span {
+            background: $fresh-taiga;
+        }
+    }
+    .dots {
+        background: transparent;
+        color: $gray-light;
+    }
+}
