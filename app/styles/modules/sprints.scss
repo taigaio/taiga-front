@@ -13,29 +13,19 @@
         float: right;
     }
     .sprint-name {
-        @extend %large;
-        @extend %title;
-        display: inline-block;
-        margin-right: 3px;
-        max-width: 100px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        vertical-align: middle;
-        white-space: nowrap;
-    }
-    .sprint-date {
-        @extend %large;
-        @extend %title;
-        color: $gray-light;
+        span {
+            @extend %large;
+            @extend %title;
+            @include ellipsis($width: 90%);
+            display: inline-block;
+            margin-right: 3px;
+        }
     }
     .sprint {
         margin-bottom: 2rem;
-        .sprint-summary {
-            display: inline-block;
-            width: 65%;
-        }
         .icon {
             display: inline-block;
+            vertical-align: baseline;
             &:hover {
                 @include transform(rotate(180deg));
                 @include transition (all .2s ease-in);
@@ -49,9 +39,20 @@
             line-height: .6rem;
             margin-top: 5px;
         }
+        .sprint-summary {
+            @include table-flex();
+        }
+        .sprint-date {
+            @extend %large;
+            @extend %title;
+            @include table-flex-child(1, 0, 0);
+            color: $gray-light;
+        }
+        .sprint-points {
+            @include table-flex-child(1, 0, 0);
+        }
         ul {
             float: right;
-            width: 32%;
         }
         li {
             display: inline-block;
@@ -126,15 +127,16 @@
             text-align: right;
         }
     }
-    .button {
+    .button-gray {
         display: block;
+        margin-top: 1rem;
         text-align: center;
     }
 }
 
 // If Sprint is open but date is old
 .sprint-old-open {
-    .sprint-summary {
+    .sprint-name {
         .icon {
             @include transform(rotate(180deg));
             &:hover {
@@ -150,7 +152,7 @@
 
 // If sprint is closed and date is old
 .sprint-closed {
-    .sprint-summary {
+    .sprint-name {
         .icon {
             @include transform(rotate(180deg));
             &:hover {
@@ -170,5 +172,8 @@
     }
     .sprint-table {
         display: none;
+    }
+    .button-gray {
+        background: lighten($grayer, 40%);
     }
 }

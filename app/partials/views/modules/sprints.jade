@@ -12,17 +12,18 @@ section.sprints
 
     section.sprint(ng-repeat="sprint in sprints track by sprint.id", tg-backlog-sprint="sprint")
         header
-            div.sprint-summary
+            div.sprint-name
                 a.icon.icon-arrow-up(href="", title="compact Sprint")
-                span.sprint-name {{ sprint.name }}
-                span.sprint-date(tg-date-range="sprint.estimated_start,sprint.estimated_finish")
-            ul
-                li
-                    span.number(tg-bo-html="sprint.closed_points") --
-                    span.description closed<br />points
-                li
-                    span.number(tg-bo-html="sprint.total_points") --
-                    span.description total<br />points
+                span {{ sprint.name }}
+            div.sprint-summary
+                div.sprint-date(tg-date-range="sprint.estimated_start,sprint.estimated_finish")
+                ul
+                    li
+                        span.number(tg-bo-html="sprint.closed_points") --
+                        span.description closed
+                    li
+                        span.number(tg-bo-html="sprint.total_points") --
+                        span.description total
         div.sprint-progress-bar
             div.current-progress(tg-sprint-progressbar="sprint")
         div.sprint-table
