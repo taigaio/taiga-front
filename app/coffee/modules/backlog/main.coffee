@@ -319,7 +319,7 @@ BacklogDirective = ($repo, $rootscope) ->
         $el.on "click", "#show-filters-button", (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
-            $el.find("sidebar.filters-bar").toggle()
+            $el.find("sidebar.filters-bar").toggleClass("active")
             target.toggleClass("active")
             toggleText(target.find(".text"), ["Hide Filters", "Show Filters"]) # TODO: i18n
             $rootscope.$broadcast("resize")

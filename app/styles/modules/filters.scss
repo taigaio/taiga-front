@@ -1,9 +1,29 @@
-.filters-bar {
-    display: none;
+.menu-secondary {
+    &.filters-bar {
+        @include table-flex-child(0, 1px, 0, 1px);
+        @include transition(all .3s linear);
+        padding: 0;
+        &.active {
+            @include table-flex-child(1, 260px, 0, 260px);
+            @include transition(all .3s linear);
+            padding: 2em 1em;
+
+            .filters-inner {
+                @include transition (all .5s ease-in);
+                opacity: 1;
+            }
+        }
+    }
 }
 
 .filters {
+
     form {
         margin-bottom: 2rem;
     }
+}
+
+.filters-inner {
+    opacity: 0;
+    @include transition (all .1s ease-in);
 }
