@@ -162,7 +162,7 @@ module.controller("BacklogController", BacklogController)
 ## Backlog Directive
 #############################################################################
 
-BacklogDirective = ($repo) ->
+BacklogDirective = ($repo, $rootscope) ->
     #########################
     ## Doom line Link
     #########################
@@ -322,6 +322,7 @@ BacklogDirective = ($repo) ->
             $el.find("sidebar.filters-bar").toggle()
             target.toggleClass("active")
             toggleText(target.find(".text"), ["Hide Filters", "Show Filters"]) # TODO: i18n
+            $rootscope.$broadcast("resize")
 
         $el.on "click", "#show-tags", (event) ->
             event.preventDefault()
@@ -339,7 +340,7 @@ BacklogDirective = ($repo) ->
                 targetScope.tag.selected = not (targetScope.tag.selected or false)
                 $ctrl.filterVisibleUserstories()
 
-    link = ($scope, $el, $attrs) ->
+    link = ($scope, $el, $attrs, $rootscope) ->
         $ctrl = $el.controller()
         linkSortable($scope, $el, $attrs, $ctrl)
         linkMoveToCurrentSprint($scope, $el, $attrs, $ctrl)
@@ -709,13 +710,16 @@ GmBacklogGraphDirective = ->
             if $scope.stats?
                 redrawChart(element, $scope.stats)
 
+                $scope.$on "resize", ->
+                    redrawChart(element, $scope.stats)
+
         $scope.$on "$destroy", ->
             $el.off()
 
     return {link: link}
 
 
-module.directive("tgBacklog", ["$tgRepo", BacklogDirective])
+module.directive("tgBacklog", ["$tgRepo", "$rootScope", BacklogDirective])
 module.directive("tgBacklogSprint", ["$tgRepo", BacklogSprintDirective])
 module.directive("tgUsPoints", ["$tgRepo", UsPointsDirective])
 module.directive("tgUsRolePointsSelector", ["$rootScope", UsRolePointsSelectorDirective])

@@ -141,6 +141,9 @@ MainTaigaDirective = ($log, $compile, $rootscope) ->
         linkProjecsNav($scope, $el, $attrs, $ctrl)
         linkMenuNav($scope, $el, $attrs, $ctrl)
 
+    window.onresize = () ->
+        $rootscope.$broadcast("resize")
+
     return {
         controller: MainTaigaController
         link: link
