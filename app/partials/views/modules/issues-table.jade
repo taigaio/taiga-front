@@ -1,15 +1,15 @@
 section.issues-table.basic-table
     div.row.title
-        div.level-field.width-1 Severity
-        div.level-field.width-1 Priority
-        div.width-7.subject Subject
-        div.width-2 Status
-        div.width-2 Assigned to
+        div.level-field Severity
+        div.level-field Priority
+        div.subject Subject
+        div.issue-field Status
+        div.assigned-field Assigned to
     div.row.table-main(ng-repeat="issue in issues track by issue.id")
-        div.level-field.width-1(tg-issue-severity="issue")
-        div.level-field.width-1(tg-issue-priority="issue")
-        div.width-7.subject(tg-bo-html="issue.subject")
-        div.width-2(tg-issue-status="issue")
-        div.width-2(tg-issue-assignedto="issue")
+        div.level-field(tg-issue-severity="issue")
+        div.level-field(tg-issue-priority="issue")
+        div.subject(tg-bo-html="issue.subject")
+        div.issue-field(tg-issue-status="issue")
+        div.assigned-field(tg-issue-assignedto="issue")
 
 section.issues-paginator

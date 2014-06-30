@@ -1,4 +1,5 @@
 .issues-table {
+    @include table-flex();
     .row {
         &:hover {
             background: lighten($green-taiga, 60%);
@@ -39,9 +40,17 @@
         width: 18px;
     }
     .level-field {
+        @include table-flex-child(1, 50px, 0, 50px);
         text-align: center;
     }
     .subject {
+        @include table-flex-child(7, 300px, 0, 300px);
         padding-right: 1rem;
+    }
+    .issue-field,
+    .assigned-field {
+        @include table-flex-child(1, 150px, 0, 150px);
+        padding: 0 1rem;
+        text-align: left;
     }
 }
