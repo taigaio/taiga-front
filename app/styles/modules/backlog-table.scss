@@ -4,13 +4,11 @@
     width: 100%;
     .row {
         @include table-flex();
+        @extend %small;
+        border-bottom: 1px solid $gray-light;
         padding: 1rem 0 1rem 1rem;
         text-align: left;
         width: 100%;
-    }
-    .row { //Previously table-main
-        @extend %small;
-        border-bottom: 1px solid $gray-light;
     }
     .backlog-table-title,
     .backlog-table-subtitle,
@@ -76,11 +74,13 @@
 
 .backlog-table-body {
     .row {
+        position: relative;
         &:hover {
             @include transition (background .2s ease-in);
             background: lighten($green-taiga, 60%);
-            .us-settings {
-                @include transition (opacity .2s ease-in);
+            .us-settings,
+            .icon-drag-v {
+                @include transition (all .2s ease-in);
                 opacity: 1;
             }
         }
@@ -92,7 +92,8 @@
     .user-story-name {
         flex-basis: 500px;
         input {
-            vertical-align: top;
+            margin-right: 1rem;
+            vertical-align: middle;
         }
         span {
             display: inline-block;
@@ -100,13 +101,6 @@
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
-        }
-        .icon {
-            color: $gray-light;
-            &:hover {
-                color: $grayer;
-                @include transition (color .3s linear);
-            }
         }
     }
     .user-story-tags {
@@ -141,10 +135,26 @@
         margin: .5rem 0;
         width: 100%;
     }
+    .us-settings a,
+    .icon-drag-v {
+        @include transition (all .2s ease-in);
+        @extend %large;
+        color: $gray-light;
+        &:hover {
+            @include transition (all .2s ease-in);
+            color: $grayer;
+        }
+    }
     .us-settings {
         float: right;
         margin-right: 2rem;
         opacity: 0;
-        @include transition (opacity .2s ease-in);
+    }
+    .icon-drag-v {
+        cursor: move;
+        opacity: 0;
+        position: absolute;
+        right: .5rem;
+        top: 1rem;
     }
 }

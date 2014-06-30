@@ -87,7 +87,7 @@ gulp.task "template", ->
         .pipe(gulp.dest(paths.dist))
 
 gulp.task "scsslint", ->
-    gulp.src(paths.scssStyles, '!app/styles/bourbon/**/*.scss')
+    gulp.src([paths.scssStyles, '!app/styles/bourbon/**/*.scss'])
         .pipe(cache("scsslint"))
         .pipe(scsslint({
             config: "scsslint.yml"

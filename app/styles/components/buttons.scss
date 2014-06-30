@@ -19,7 +19,7 @@
     @extend %title;
     @include transition (background .3s linear);
     display: inline-block;
-    padding: 8px 40px;
+    padding: 7px 40px 6px;
     text-transform: uppercase;
     &:hover {
         @include transition (background .3s linear);
@@ -34,6 +34,7 @@
 
 .button-green {
     background: $green-taiga;
+    vertical-align: middle;
     &:hover {
         background: $fresh-taiga;
     }
