@@ -277,24 +277,27 @@ BacklogDirective = ($repo, $rootscope) ->
     ## Move to current sprint link
     ##############################
 
-    linkMoveToCurrentSprint = ($scope, $el, $attrs, $ctrl) ->
-
+    linkToolbar = ($scope, $el, $attrs, $ctrl) ->
         moveToCurrentSprint = (selectedUss) ->
             ussCurrent = _($scope.userstories)
+
             # Remove them from backlog
             $scope.userstories = ussCurrent.without.apply(ussCurrent, selectedUss).value()
+
             # Add them to current sprint
             $scope.sprints[0].user_stories = _.union(selectedUss, $scope.sprints[0].user_stories)
+
             $ctrl.filterVisibleUserstories()
             $repo.saveAll(selectedUss)
-            scopeDefer $scope, =>
-                $scope.$broadcast("doomline:redraw")
 
+            scopeDefer $scope, ->
+                $scope.$broadcast("doomline:redraw")
 
         # Enable move to current sprint only when there are selected us's
         $el.on "change", ".backlog-table-body .user-stories input:checkbox", (event) ->
             moveToCurrentSprintDom = $el.find("#move-to-current-sprint")
             selectedUsDom = $el.find(".backlog-table-body .user-stories input:checkbox:checked")
+
             if selectedUsDom.length > 0 and $scope.sprints.length > 0
                 moveToCurrentSprintDom.show()
             else
@@ -303,12 +306,21 @@ BacklogDirective = ($repo, $rootscope) ->
         $el.on "click", "#move-to-current-sprint", (event) =>
             # Calculating the us's to be modified
             ussDom = $el.find(".backlog-table-body .user-stories input:checkbox:checked")
+
             ussToMove = _.map ussDom, (item) ->
                 itemScope = angular.element(item).scope()
                 itemScope.us.milestone = $scope.sprints[0].id
                 return itemScope.us
 
             $scope.$apply(_.partial(moveToCurrentSprint, ussToMove))
+
+        $el.on "click", "#show-tags", (event) ->
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+            $el.find(".user-story-tags").toggle()
+            target.toggleClass("active")
+            toggleText(target.find(".text"), ["Hide Tags", "Show Tags"]) # TODO: i18n
+
 
     #########################
     ## Filters Link
@@ -324,13 +336,6 @@ BacklogDirective = ($repo, $rootscope) ->
             toggleText(target.find(".text"), ["Hide Filters", "Show Filters"]) # TODO: i18n
             $rootscope.$broadcast("resize")
 
-        $el.on "click", "#show-tags", (event) ->
-            event.preventDefault()
-            target = angular.element(event.currentTarget)
-            $el.find(".user-story-tags").toggle()
-            target.toggleClass("active")
-            toggleText(target.find(".text"), ["Hide Tags", "Show Tags"]) # TODO: i18n
-
         $el.on "click", "section.filters a.single-filter", (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
@@ -342,8 +347,9 @@ BacklogDirective = ($repo, $rootscope) ->
 
     link = ($scope, $el, $attrs, $rootscope) ->
         $ctrl = $el.controller()
+
+        linkToolbar($scope, $el, $attrs, $ctrl)
         linkSortable($scope, $el, $attrs, $ctrl)
-        linkMoveToCurrentSprint($scope, $el, $attrs, $ctrl)
         linkFilters($scope, $el, $attrs, $ctrl)
         linkDoomLine($scope, $el, $attrs, $ctrl)
 
@@ -474,6 +480,7 @@ UsRolePointsSelectorDirective = ($rootscope) ->
     """)
 
     link = ($scope, $el, $attrs) ->
+        # Watchers
         bindOnce $scope, "project", (project) ->
             roles = _.filter(project.roles, "computable")
             $el.append(selectionTemplate({ 'roles':  roles }))
@@ -486,6 +493,7 @@ UsRolePointsSelectorDirective = ($rootscope) ->
             $el.find(".popover").hide()
             $el.find(".header-points").text("Points") #TODO: i18n
 
+        # Dom Event Handlers
         $el.on "click", (event) ->
             target = angular.element(event.target)
 
@@ -536,50 +544,48 @@ UsPointsDirective = ($repo) ->
     </ul>
     """)
 
-    updatePointsValue = (usPoints, usTotalPoints, pointsById, pointsDomNode, selectedRoleId) ->
-        if not selectedRoleId?
-            pointsDomNode.text(usTotalPoints)
-        else
-            selectedPoints = pointsById[usPoints[selectedRoleId]]
-            selectedPointsValue = selectedPoints.value
-            selectedPointsValue = '?' if not selectedPointsValue?
-            pointsDomNode.text("#{selectedPointsValue}/#{usTotalPoints}")
-
-    calculateTotalPoints = (us, pointsById) ->
-        values = _.map(us.points, (v, k) -> pointsById[v].value)
-        return _.reduce(values, (acc, num) -> acc + num)
-
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
+
         us = $scope.$eval($attrs.tgUsPoints)
-
-        usPoints = us.points
-        usTotalPoints = us.total_points
-        pointsDom = $el.find("a")
-        selectedRoleId = null
         updatingSelectedRoleId = null
-        pointsById = $scope.pointsById
+        selectedRoleId = null
 
-        updatePointsValue(usPoints, usTotalPoints, pointsById, pointsDom, selectedRoleId)
+        updatePoints = (roleId) ->
+            pointsDom = $el.find("a > span.points-value")
+            if not roleId?
+                pointsDom.text(us.total_points)
+            else
+                pointId = us.points[roleId]
+                points = $scope.pointsById[pointId]
+                pointsDom.text("#{points.name}/#{us.total_points}")
+
+        calculateTotalPoints = ->
+            values = _.map(us.points, (v, k) -> $scope.pointsById[v].value)
+            return _.reduce(values, (acc, num) -> acc + num)
+
+        updatePoints(null)
 
         bindOnce $scope, "project", (project) ->
             roles = _.filter(project.roles, "computable")
             $el.append(selectionTemplate({ "roles":  roles }))
             $el.append(pointsTemplate({ "points":  project.points }))
 
-        $scope.$on "uspoints:select", (ctx, roleId,roleName) ->
+        $scope.$on "uspoints:select", (ctx, roleId, roleName) ->
+            updatePoints(roleId)
             selectedRoleId = roleId
-            updatePointsValue(usPoints, usTotalPoints, pointsById, pointsDom, selectedRoleId)
 
         $scope.$on "uspoints:clear-selection", (ctx) ->
+            updatePoints(null)
             selectedRoleId = null
-            updatePointsValue(usPoints, usTotalPoints, pointsById, pointsDom, selectedRoleId)
 
         $el.on "click", "a.us-points", (event) ->
             event.preventDefault()
             target = angular.element(event.target)
 
-            if target.is("a")
+            console.log target
+
+            if target.is("span")
                 event.stopPropagation()
 
             if selectedRoleId?
@@ -595,24 +601,34 @@ UsPointsDirective = ($repo) ->
         $el.on "click", ".role", (event) ->
             event.preventDefault()
             event.stopPropagation()
+
             target = angular.element(event.currentTarget)
             updatingSelectedRoleId = target.data("role-id")
+
             $el.find(".pop-points-open").show()
             $el.find(".pop-role").hide()
 
         $el.on "click", ".point", (event) ->
             event.preventDefault()
             event.stopPropagation()
+
             target = angular.element(event.currentTarget)
             $el.find(".pop-points-open").hide()
+
             $scope.$apply () ->
+                usPoints = _.clone(us.points, true)
                 usPoints[updatingSelectedRoleId] = target.data("point-id")
-                us.points = _.clone(usPoints, true)
-                usTotalPoints = calculateTotalPoints(us, $scope.pointsById)
+                us.points = usPoints
+
+                usTotalPoints = calculateTotalPoints(us)
                 us.total_points = usTotalPoints
-                updatePointsValue(usPoints, usTotalPoints, pointsById, pointsDom, selectedRoleId)
+
+                updatePoints(selectedRoleId)
+
                 $repo.save(us).then ->
-                    $ctrl.loadProjectStats()
+                    # Little Hack for refresh.
+                    $repo.refresh(us).then ->
+                        $ctrl.loadProjectStats()
 
         $scope.$on "$destroy", ->
             $el.off()
