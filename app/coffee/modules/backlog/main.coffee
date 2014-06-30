@@ -480,11 +480,11 @@ UsRolePointsSelectorDirective = ($rootscope) ->
 
         $scope.$on "uspoints:select", (ctx, roleId, roleName) ->
             $el.find(".popover").hide()
-            $el.find("span").text(roleName)
+            $el.find(".header-points").text(roleName)
 
         $scope.$on "uspoints:clear-selection", (ctx, roleId) ->
             $el.find(".popover").hide()
-            $el.find("span").text("Points") #TODO: i18n
+            $el.find(".header-points").text("Points") #TODO: i18n
 
         $el.on "click", (event) ->
             target = angular.element(event.target)

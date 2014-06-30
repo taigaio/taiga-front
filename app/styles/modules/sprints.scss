@@ -132,6 +132,21 @@
         margin-top: 1rem;
         text-align: center;
     }
+    .us-item-row {
+        .user-story-tags,
+        .us-settings,
+        .status,
+        .icon-drag-v,
+        .popover,
+        input {
+            display: none;
+        }
+        .user-story-name {
+            @extend %small;
+            line-height: 1rem;
+            margin-top: 5px;
+        }
+    }
 }
 
 // If Sprint is open but date is old
