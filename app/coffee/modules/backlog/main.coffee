@@ -378,7 +378,7 @@ BacklogSprintDirective = ($repo) ->
         $el.find(".current-progress").css("width", "#{progressPercentage}%")
 
         # Event Handlers
-        $el.on "click", ".sprint-summary > a", (event) ->
+        $el.on "click", ".sprint-name > a", (event) ->
             $el.find(".sprint-table").toggle()
 
     #########################
