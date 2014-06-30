@@ -1,12 +1,7 @@
 .lightbox {
-    @include background-opacity($white, .9);
-    align-content: center;
-    align-items: center;
+    @include background-opacity($white, .95);
+    @include table-flex(center, center, flex, row, wrap, center);
     bottom: 0;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
     left: 0;
     position: fixed;
     right: 0;
@@ -37,11 +32,7 @@
 
 .lightbox_add-new-us {
     form {
-        flex-basis: 0;
-        flex-grow: 0;
-        flex-shrink: 0;
-        min-width: 600px;
-        width: 600px;
+        @include table-flex-child(0, 600px, 0, 600px);
     }
     fieldset {
         position: relative;
@@ -95,6 +86,7 @@
             border: 1px solid $gray-light;
             cursor: pointer;
             display: block;
+            padding: 7px 30px;
         }
         .requirement,
         .iocaine {
@@ -133,11 +125,7 @@
 
 .lightbox_add-bulk {
     form {
-        flex-basis: 0;
-        flex-grow: 0;
-        flex-shrink: 0;
-        min-width: 600px;
-        width: 600px;
+        @include table-flex-child(0, 600px, 0, 600px);
     }
     textarea {
         margin-bottom: 1rem;
@@ -186,14 +174,20 @@
 
 .lightbox_add-sprint {
     form {
-        flex-basis: 0;
-        flex-grow: 0;
-        flex-shrink: 0;
-        min-width: 600px;
-        width: 600px;
+        @include table-flex-child(0, 600px, 0, 600px);
+    }
+    .sprint-name {
+        &:focus {
+            &+.last-sprint-name {
+                @include transition (opacity .3s linear);
+                opacity: 0;
+            }
+        }
     }
     .last-sprint-name {
+        @include transition (opacity .3s linear);
         color: $gray;
+        opacity: 1;
         position: absolute;
         right: 1rem;
         top: .5rem;
@@ -214,11 +208,7 @@
 
 .lightbox_confirm-delete {
     form {
-        flex-basis: 0;
-        flex-grow: 0;
-        flex-shrink: 0;
-        min-width: 420px;
-        width: 420px;
+        @include table-flex-child(0, 420px, 0, 420px);
     }
     .delete-question,
     .subtitle {
@@ -243,11 +233,7 @@
 
 .lightbox-generic-error {
     section {
-        flex-basis: 0;
-        flex-grow: 0;
-        flex-shrink: 0;
-        min-width: 420px;
-        width: 420px;
+        @include table-flex-child(0, 420px, 0, 420px);
     }
     .delete-options {
         @include table-flex();

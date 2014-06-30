@@ -2,6 +2,7 @@
     @extend %large;
     @include clearfix;
     @extend %title;
+    cursor: pointer;
     display: block;
     height: 32px;
     margin-bottom: 1rem;

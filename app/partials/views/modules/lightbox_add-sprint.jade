@@ -3,8 +3,8 @@ a.close(href="", title="close")
 form
     h2.title New Sprint
     fieldset
+        input.sprint-name(ng-model="sprint.name", type="text", placeholder="sprint name", name="name", data-required="true")
         label.last-sprint-name
-        input(ng-model="sprint.name", type="text", placeholder="sprint name", name="name", data-required="true")
     fieldset.dates
         input.date-start(tg-date-selector, ng-model="sprint.estimated_start", type="text", placeholder="Estimated Start", data-required="true")
         input.date-end(tg-date-selector, ng-model="sprint.estimated_finish", type="text", placeholder="Estimated End", data-required="true")

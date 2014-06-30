@@ -17,9 +17,13 @@
 }
 
 .filters {
-
     form {
         margin-bottom: 2rem;
+        .icon-search {
+            position: absolute;
+            right: .5rem;
+            top: .5rem;
+        }
     }
 }
 
