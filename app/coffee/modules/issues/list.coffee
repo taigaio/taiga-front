@@ -258,7 +258,7 @@ IssueAssignedtoDirective = ->
             $el.find("figcaption").html("Unassigned")
         else
             bindOnce $scope, "membersById", (membersById) ->
-                memberName = membersById[issue.assigned_to].full_name
+                memberName = membersById[issue.assigned_to].full_name_display
                 $el.find("figcaption").html(memberName)
 
     return {

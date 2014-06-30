@@ -34,7 +34,7 @@ class PageMixin
         return promise.then (results) =>
             [users, roles] = results
 
-            @scope.users = _.sortBy(users, "full_name")
+            @scope.users = _.sortBy(users, "full_name_display")
             @scope.usersById = groupBy(@scope.users, (e) -> e.id)
 
             @scope.roles = _.sortBy(roles, "order")
