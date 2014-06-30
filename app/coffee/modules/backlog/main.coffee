@@ -366,10 +366,10 @@ BacklogSprintDirective = ($repo) ->
         if $scope.$first
             $el.addClass("sprint-current")
 
-        if sprint.closed
+        else if sprint.closed
             $el.addClass("sprint-closed")
 
-        if not $scope.$first and not sprint.closed
+        else if not $scope.$first and not sprint.closed
             $el.addClass("sprint-old-open")
 
         # Update progress bars
@@ -720,5 +720,3 @@ module.directive("tgBacklogSprint", ["$tgRepo", BacklogSprintDirective])
 module.directive("tgUsPoints", ["$tgRepo", UsPointsDirective])
 module.directive("tgUsRolePointsSelector", ["$rootScope", UsRolePointsSelectorDirective])
 module.directive("tgGmBacklogGraph", GmBacklogGraphDirective)
-
-
