@@ -3,7 +3,7 @@ div.taskboard-tagline
 div.taskboard-task-inner
     figure.avatar
         a(href="", title="UserName")
-            img.avatar(src="{{ usersById[task.assigned_to].avatar_url }}", alt="{{ usersById[task.assigned_to].full_name_display }}")
+            img.avatar(src="{{ usersById[task.assigned_to].photo }}", alt="{{ usersById[task.assigned_to].full_name_display }}")
             figcaption {{ usersById[task.assigned_to].full_name_display }}
     p.taskboard-text
         span.task-num(ng-bind="task.ref")
