@@ -16,26 +16,36 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: modules/base/bindonce.coffee
+# File: modules/base/bind.coffee
 ###
 
 bindOnce = @.taiga.bindOnce
 
 # Html bind once directive
-BindHtmlDirective = ->
-    link = (scope, element, attrs) ->
-        bindOnce scope, attrs.tgBoHtml, (val) ->
-            element.html(val)
+BindOnceHtmlDirective = ->
+    link = ($scope, $el, $attrs) ->
+        bindOnce $scope, $attrs.tgBoHtml, (val) ->
+            $el.html(val)
 
     return {link:link}
 
 # Object reference bind once helper.
-BindRefDirective = ->
-    link = (scope, element, attrs) ->
-        bindOnce scope, attrs.tgBoRef, (val) ->
-            element.html("##{val} ")
+BindOnceRefDirective = ->
+    link = ($scope, $el, $attrs) ->
+        bindOnce $scope, $attrs.tgBoRef, (val) ->
+            $el.html("##{val} ")
     return {link:link}
 
+
+BindHtmlDirective = ->
+    link = ($scope, $el, $attrs) ->
+        $scope.$watch $attrs.tgBindHtml, (val) ->
+            $el.html(val) if val
+
+    return {link:link}
+
+
 module = angular.module("taigaBase")
-module.directive("tgBoHtml", BindHtmlDirective)
-module.directive("tgBoRef", BindRefDirective)
+module.directive("tgBoHtml", BindOnceHtmlDirective)
+module.directive("tgBoRef", BindOnceRefDirective)
+module.directive("tgBindHtml", BindHtmlDirective)
