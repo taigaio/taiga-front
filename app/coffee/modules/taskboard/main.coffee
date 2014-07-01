@@ -24,6 +24,7 @@ toggleText = @.taiga.toggleText
 mixOf = @.taiga.mixOf
 groupBy = @.taiga.groupBy
 bindOnce = @.taiga.bindOnce
+scopeDefer = @.taiga.scopeDefer
 
 module = angular.module("taigaTaskboard")
 
@@ -158,7 +159,26 @@ TaskboardDirective = ($rootscope) ->
     #########################
 
     linkSortable = ($scope, $el, $attrs, $ctrl) ->
-        console.log "TaskboardDirective.linkSortable" #TODO
+        onUpdateItem = (event) ->
+            #TODO
+            console.log "onUpdate", event
+
+        onAddItem = (event) ->
+            #TODO
+            console.log "onAddItem", event
+
+        onRemoveItem = (event) ->
+            #TODO
+            console.log "onRemoveItem", event
+
+        dom = $el.find(".taskboard-table-body")
+        sortable = new Sortable(dom[0], {
+            group: "taskboard",
+            selector: ".taskboard-task",
+            onUpdate: onUpdateItem
+            onAdd: onAddItem
+            onRemove: onRemoveItem
+        })
 
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()

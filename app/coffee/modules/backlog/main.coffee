@@ -446,6 +446,7 @@ BacklogSprintDirective = ($repo) ->
             itemScope.$destroy()
 
         dom = $el.find(".sprint-table")
+        
         sortable = new Sortable(dom[0], {
             group: "backlog",
             selector: ".milestone-us-item-row",
