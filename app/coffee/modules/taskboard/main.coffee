@@ -214,7 +214,11 @@ TaskboardUsPointsDirective = ($repo, $confirm) ->
     pointsTemplate = _.template("""
     <% _.each(usRolePoints, function(rolePoint) { %>
     <li>
-        <%- rolePoint.role.name %> <span class="us-role-points"> <%- rolePoint.point.name %></span>
+        <%- rolePoint.role.name %>
+        <a href="" class="us-role-points">
+            <%- rolePoint.point.name %>
+            <span class="icon icon-arrow-bottom"></span>
+        </a>
         <ul class="popover pop-points">
             <% _.each(points, function(point) { %>
             <li>
@@ -252,6 +256,7 @@ TaskboardUsPointsDirective = ($repo, $confirm) ->
 
         $el.on "click", ".us-role-points", (event) ->
             event.stopPropagation()
+            event.preventDefault()
 
             target = angular.element(event.currentTarget)
             popover = target.parent().find(".pop-points")

@@ -75,15 +75,19 @@ $column-margin: 0 10px 0 0;
         color: $green-taiga;
         margin-bottom: .5rem;
         position: relative;
+        .icon {
+            @include transition (opacity .2s linear);
+            opacity: 0;
+        }
+        &:hover {
+            .icon {
+                @include transition (opacity .2s linear);
+                opacity: 1;
+            }
+        }
     }
     .pop-status {
         @include popover(150px, 20px, 30px, '', '');
-    }
-    .points-list {
-        span {
-            color: $gray;
-            margin-left: .5rem;
-        }
     }
     .pop-points {
         @include popover(200px, 125px, 30px, '', '');
@@ -106,5 +110,22 @@ $column-margin: 0 10px 0 0;
     }
     .button-green {
         padding: 7px 80px;
+    }
+}
+
+.points-list {
+    a {
+        color: $green-taiga;
+        margin-left: .5rem;
+        &:hover {
+            span {
+                @include transition (opacity .2s linear);
+                opacity: 1;
+            }
+        }
+    }
+    span {
+        @include transition (opacity .2s linear);
+        opacity: 0;
     }
 }

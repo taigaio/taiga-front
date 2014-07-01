@@ -10,8 +10,9 @@ div.row.us-item-row(ng-repeat="us in visibleUserstories track by us.id")
             span.tag(ng-repeat="tag in us.tags") {{ tag }}
 
     div.status.width-2(tg-us-status="us" on-update="ctrl.loadProjectStats()")
-       a.us-status(href="", title="Status Name")
-           span.icon.icon-arrow-bottom
+        a.us-status(href="", title="Status Name")
+            span.us-status-bind
+            span.icon.icon-arrow-bottom
 
     div.points(tg-us-points="us")
         a.us-points(href="", title="Points")
