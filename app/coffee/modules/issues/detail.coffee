@@ -93,9 +93,6 @@ module.controller("IssueDetailController", IssueDetailController)
 IssueDirective = ($log, $location) ->
     linkSidebar = ($scope, $el, $attrs, $ctrl) ->
 
-
-
-
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
         linkSidebar($scope, $el, $attrs, $ctrl)
@@ -111,8 +108,46 @@ module.directive("tgIssueDetail", ["$log", "$tgLocation", IssueDirective])
 #############################################################################
 
 TagLineDirective = ($log) ->
-    link = ($scope, $el, $attrs) ->
+    template = _.template("""
+    <% _.each(tags, function(tag) { %>
+        <span class="tag"><%= tag.name %></span>
+    <% }); %>""")
 
-    return {link:link}
+    renderTags = ($el, tags) ->
+        tags = _.map(tags, (t) -> {name: t})
+        html = template({tags: tags})
+        $el.find("span.tags-container").html(html)
+
+    normalizeTags = (tags) ->
+        tags = _.map(tags, trim)
+        tags = _.map(tags, (x) -> x.toLowerCase())
+        return _.uniq(tags)
+
+    link = ($scope, $el, $attrs, $model) ->
+        $scope.$watch $attrs.ngModel, (val) ->
+            return if not val
+            renderTags($el, val)
+
+        if $attrs.tgTagLine != "editable"
+            $el.find("input").remove()
+
+        $el.on "keyup", "input", (event) ->
+            return if event.keyCode != 13
+            target = angular.element(event.currentTarget)
+            value = trim(target.val())
+
+            if value.length <= 0
+                return
+
+            tags = _.clone($model.$modelValue, false)
+            tags.push(value)
+
+            target.val("")
+
+            $scope.$apply ->
+                $model.$setViewValue(normalizeTags(tags))
+
+
+    return {link:link, require:"ngModel"}
 
 module.directive("tgTagLine", ["$log", TagLineDirective])

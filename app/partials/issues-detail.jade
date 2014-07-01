@@ -21,11 +21,10 @@ block content
                 //     p We need Pilar to make a prototype out of this or we are not sure
                 //     a.button.button-red.button-block(href="", title="Unblock US") Unblock
 
-                div.user-story-tags(tg-tag-line, ng-model="issue.tags")
-                    span
-                        - for(var y = 0; y < 6; y++)
-                            include views/components/tag
-                    input(type="text", placeholder="Write tag...")
+                div.user-story-tags(tg-tag-line="editable", ng-model="issue.tags")
+                    span.tags-container
+                    input.hidden(type="text", placeholder="Write tag...")
+
             section.us-content(tg-bind-html="issue.description_html")
 
             // include views/modules/attachments
