@@ -236,6 +236,7 @@ BacklogDirective = ($repo, $rootscope) ->
             resortAndSave()
 
         onAddItem = (event) ->
+            console.log "onAddItem", event
             item = angular.element(event.item)
             itemScope = item.scope()
             itemIndex = item.index()
@@ -251,6 +252,7 @@ BacklogDirective = ($repo, $rootscope) ->
             resortAndSave()
 
         onRemoveItem = (event) ->
+            console.log "onRemoveItem", event
             item = angular.element(event.item)
             itemScope = item.scope()
 

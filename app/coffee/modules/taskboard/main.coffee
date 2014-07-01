@@ -20,7 +20,7 @@
 ###
 
 taiga = @.taiga
-
+toggleText = @.taiga.toggleText
 mixOf = @.taiga.mixOf
 groupBy = @.taiga.groupBy
 bindOnce = @.taiga.bindOnce
@@ -151,7 +151,7 @@ module.controller("TaskboardController", TaskboardController)
 ## TaskboardDirective
 #############################################################################
 
-TaskboardDirective = ->
+TaskboardDirective = ($rootscope) ->
 
     #########################
     ## Drag & Drop Link
@@ -163,6 +163,12 @@ TaskboardDirective = ->
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
         linkSortable($scope, $el, $attrs, $ctrl)
+
+        $el.on "click", ".toggle-analytics-visibility", (event) ->
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+            toggleText(target, ["Hide statistics", "Show statistics"]) # TODO: i18n
+            $rootscope.$broadcast("taskboard:graph:toggle-visibility")
 
         $scope.$on "$destroy", ->
             $el.off()
@@ -268,6 +274,80 @@ TaskboardUsPointsDirective = ($repo, $confirm) ->
     return {link: link}
 
 
-module.directive("tgTaskboard", TaskboardDirective)
+#############################################################################
+## Sprint burndown graph directive
+#############################################################################
+
+SprintGraphDirective = ->
+    redrawChart = (element, dataToDraw) ->
+        width = element.width()
+        element.height(240)
+
+        days = _.map(dataToDraw, (x) -> moment(x.day))
+
+        data = []
+        data.unshift({
+            data: _.zip(days, _.map(dataToDraw, (d) -> d.optimal_points))
+            lines:
+                fillColor : "rgba(120,120,120,0.2)"
+        })
+        data.unshift({
+            data: _.zip(days, _.map(dataToDraw, (d) -> d.open_points))
+            lines:
+                fillColor : "rgba(102,153,51,0.3)"
+        })
+
+        options =
+            grid:
+                borderWidth: { top: 0, right: 1, left:0, bottom: 0 }
+                borderColor: '#ccc'
+            xaxis:
+                tickSize: [1, "day"]
+                min: days[0]
+                max: _.last(days)
+                mode: "time"
+                daysNames: days
+                axisLabel: 'Day'
+                axisLabelUseCanvas: true
+                axisLabelFontSizePixels: 12
+                axisLabelFontFamily: 'Verdana, Arial, Helvetica, Tahoma, sans-serif'
+                axisLabelPadding: 5
+            yaxis:
+                min: 0
+            series:
+                shadowSize: 0
+                lines:
+                    show: true
+                    fill: true
+                points:
+                    show: true
+                    fill: true
+                    radius: 4
+                    lineWidth: 2
+            colors: ["rgba(102,153,51,1)", "rgba(120,120,120,0.2)"]
+
+        element.empty()
+        element.plot(data, options).data("plot")
+
+    link = ($scope, $el, $attrs) ->
+        element = angular.element($el)
+        $scope.$watch 'stats', (value) ->
+            if $scope.stats?
+                redrawChart(element, $scope.stats.days)
+
+                $scope.$on "resize", ->
+                    redrawChart(element, $scope.stats.days)
+
+                $scope.$on "taskboard:graph:toggle-visibility", ->
+                    $el.toggle()
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {link: link}
+
+
+module.directive("tgTaskboard", ["$rootScope", TaskboardDirective])
 module.directive("tgTaskboardRowSizeFixer", TaskboardRowSizeFixer)
 module.directive("tgTaskboardUsPoints", ["$tgRepo", "$tgConfirm", TaskboardUsPointsDirective])
+module.directive("tgSprintGraph", SprintGraphDirective)

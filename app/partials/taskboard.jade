@@ -12,7 +12,11 @@ block content
                 span.green(tg-bo-html="sprint.name")
                 span.date(tg-date-range="sprint.estimated_start,sprint.estimated_finish")
             include views/components/sprint-summary
-            include views/modules/burndown
+
+            div.graphics-container
+                div.burndown.hidden(tg-sprint-graph)
+                    include views/modules/burndown
+
             include views/modules/taskboard-table
 
         div.lightbox.lightbox_add-new-us.hidden(tg-lb-create-edit-task)
