@@ -12,11 +12,14 @@ $column-margin: 0 10px 0 0;
 }
 
 .taskboard-table-header {
+    height: 40px;
     margin-bottom: .5rem;
+    position: relative;
     width: 100%;
     .taskboard-table-inner {
         @include table-flex();
         overflow: hidden;
+        position: absolute;
     }
     .task-colum_name {
         @include table-flex-child($column-flex, $column-width, $column-shrink, $column-width);
