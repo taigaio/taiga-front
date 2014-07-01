@@ -43,12 +43,16 @@ block content
                 include views/modules/comments
                 // include views/modules/activity
         sidebar.menu-secondary.sidebar
+            // TODO: should be replaced with correct html
+            // for issues detail
             h1
                 span Open
                 span.us-detail-status In progress
+
             div.us-detail-progress-bar
                 div.current-progress
                 span.tasks-completed 6/7 tasks completed
+
             ul.points-per-role
                 li.total
                     span.points 10
@@ -58,6 +62,8 @@ block content
                     span.points 10
                     span.role UX
 
+
+            // TODO: change clase
             section.us-detail-assigned-to
                 div.user-avatar
                     a.avatar(href="", title="Assigned to")
@@ -76,9 +82,10 @@ block content
                             div.watcher-avatar
                                 a.avatar(href="", title="Assigned to")
                                     img(src="http://thecodeplayer.com/u/uifaces/32.jpg", alt="username")
-                            a.watcher-name(href="", title="Jesús Espino") Jesús Espino
+                            a.watcher-name(href="", title="Jesús Espino") Jesús
 
-            section.us-detail-settings
-                a.button.button-gray(href="", title="Client requirement") Client requirement
-                a.button.button-gray(href="", title="Team requirement") Team requirement
-                a.button.button-red(href="", title="Block") Block
+            // NOTE: only for user story?
+            // section.us-detail-settings
+            //     a.button.button-gray(href="", title="Client requirement") Client requirement
+            //     a.button.button-gray(href="", title="Team requirement") Team requirement
+            //     a.button.button-red(href="", title="Block") Block
