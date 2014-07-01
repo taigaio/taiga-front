@@ -76,6 +76,7 @@ NavigationUrlsDirective = ($navurls, $auth, $q, $location) ->
                 options.user = user.username if user
 
                 url = $navurls.resolve(name)
+
                 fullUrl = formatUrl(url, options)
                 $location.url(fullUrl)
 

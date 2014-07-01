@@ -7,22 +7,18 @@ block content
     div.wrapper.issues(tg-issues, ng-controller="IssuesController as ctrl", ng-init="section='issues'")
         sidebar.menu-secondary.extrabar.filters-bar
             include views/modules/filters
-        //- TODO: Please delete this once filters are working correctly
-            sidebar.menu-secondary.sidebar.filters-container
-                // TODO: maybe everything related to this section
-                // should be done in one unique include?
-                header
-                    h1 Filters
-                include views/modules/search-in
-                include views/modules/filter-tags
+
         section.main.issues-page
             header
                 include views/components/mainTitle
+
             include views/modules/list-filters
             include views/modules/issues-table
+
+            // Paginator is rended using js.
             div.paginator.issues-paginator
-                //-Included paginator via JS
-    div.lightbox.lightbox_add-issue.hidden
+
+    div.hidden.lightbox.lightbox_add-issue
             include views/modules/lightbox_add-issue
     div.lightbox.lightbox_add-bulk
         include views/modules/lightbox_add-bulk

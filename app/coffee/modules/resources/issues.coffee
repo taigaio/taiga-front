@@ -25,6 +25,9 @@ taiga = @.taiga
 resourceProvider = ($repo) ->
     service = {}
 
+    service.get = (projectId, issueId) ->
+        return $repo.queryOne("issues", issueId)
+
     service.list = (projectId, filters) ->
         params = {project: projectId}
         params = _.extend({}, params, filters or {})

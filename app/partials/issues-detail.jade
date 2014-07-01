@@ -1,0 +1,84 @@
+extends dummy-layout
+
+block head
+    title Taiga  Project management web application with scrum in mind!
+
+block content
+    div.wrapper(tg-issue-detail, ng-controller="IssueDetailController as ctrl",
+                ng-init="section='issues'")
+        div.main.us-detail
+            div.us-detail-header
+                include views/components/mainTitle
+                a.button.button-green(href="", title="Edit") Edit
+            section.us-story-main-data
+                h2.us-title
+                    span.us-number(tg-bo-html="issue.ref")
+                    span.us-name(ng-bind="issue.subject")
+
+                // div.blocked-warning
+                //     span.icon.icon-warning
+                //     p.blocked Blocked!
+                //     p We need Pilar to make a prototype out of this or we are not sure
+                //     a.button.button-red.button-block(href="", title="Unblock US") Unblock
+
+                div.user-story-tags(tg-tag-line, ng-model="issue.tags")
+                    span
+                        - for(var y = 0; y < 6; y++)
+                            include views/components/tag
+                    input(type="text", placeholder="Write tag...")
+            section.us-content(tg-bind-html="issue.description_html")
+
+            // include views/modules/attachments
+            section.us-activity
+                ul.us-activity-tabs
+                    li
+                        a.active(href="#")
+                            span.icon.icon-bulk
+                            span.tab-title Comments
+
+                    li
+                        a(href="#")
+                            span.icon.icon-issues
+                            span.tab-title Activity
+                include views/modules/comments
+                // include views/modules/activity
+        sidebar.menu-secondary.sidebar
+            h1
+                span Open
+                span.us-detail-status In progress
+            div.us-detail-progress-bar
+                div.current-progress
+                span.tasks-completed 6/7 tasks completed
+            ul.points-per-role
+                li.total
+                    span.points 10
+                    span.role total
+
+                li(ng-repeat="role in roles track by role.id")
+                    span.points 10
+                    span.role UX
+
+            section.us-detail-assigned-to
+                div.user-avatar
+                    a.avatar(href="", title="Assigned to")
+                        img(src="http://thecodeplayer.com/u/uifaces/18.jpg", alt="username")
+                div.assigned-to
+                    span.assigned-title Assigned to
+                    span.user-assigned Anler Hernández
+
+            section.watchers
+                div.watchers-header
+                    span.title watchers
+                    a.icon.icon-plus(href="", title="Add watcher")
+                div.watchers-content
+                    - for(var y=0; y<5; y++)
+                        div.watcher-single
+                            div.watcher-avatar
+                                a.avatar(href="", title="Assigned to")
+                                    img(src="http://thecodeplayer.com/u/uifaces/32.jpg", alt="username")
+                            a.watcher-name(href="", title="Jesús Espino") Jesús Espino
+
+            section.us-detail-settings
+                a.button.button-gray(href="", title="Client requirement") Client requirement
+                a.button.button-gray(href="", title="Team requirement") Team requirement
+                a.button.button-red(href="", title="Block") Block

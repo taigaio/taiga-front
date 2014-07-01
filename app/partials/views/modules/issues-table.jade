@@ -9,6 +9,7 @@ section.issues-table.basic-table
         div.level-field(tg-issue-severity="issue")
         div.level-field(tg-issue-priority="issue")
         div.subject
-            a(href="", tg-bo-html="issue.subject")
+            a(href="", tg-nav="project-issues-detail:project=project.slug,ref=issue.ref",
+              tg-bo-html="issue.subject")
         div.issue-field(tg-issue-status="issue")
         div.assigned-field(tg-issue-assignedto="issue")
