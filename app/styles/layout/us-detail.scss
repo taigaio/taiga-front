@@ -206,21 +206,23 @@
     }
     .watcher-single {
         @include table-flex(center, center, flex, row, wrap, center);
+        @include transition(background .3s linear);
+        background: transparent;
         border-bottom: 1px solid $gray-light;
         padding: .5rem;
         vertical-align: middle;
         &:last-child {
             border: 0;
         }
-        .watcher-avatar {
-            @include table-flex-child(1, 0);
-        }
-        .watcher-name {
-            @include table-flex-child(8, 0);
-            @extend %medium;
-            color: $grayer;
-            margin-left: 1rem;
-        }
+    }
+    .watcher-name {
+        @include table-flex-child(8, 0);
+        @extend %medium;
+        color: $grayer;
+        margin-left: 1rem;
+    }
+    .watcher-avatar {
+        @include table-flex-child(1, 0);
     }
 }
 

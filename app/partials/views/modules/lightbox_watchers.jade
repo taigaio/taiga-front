@@ -1,0 +1,14 @@
+a.close(href="", title="close")
+    span.icon.icon-delete
+form
+    h2.title Add watchers
+    fieldset
+        input(type="text", data-maxlength="500", placeholder="Search for users")
+
+    div.watchers
+        - for(var y=0; y<5; y++)
+            div.watcher-single
+                div.watcher-avatar
+                    a.avatar(href="", title="Assigned to")
+                        img(src="http://thecodeplayer.com/u/uifaces/32.jpg", alt="username")
+                a.watcher-name(href="", title="Jesús Espino") Jesús

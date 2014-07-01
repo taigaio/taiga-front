@@ -72,17 +72,7 @@ block content
                     span.assigned-title Assigned to
                     span.user-assigned Anler Hernández
 
-            section.watchers
-                div.watchers-header
-                    span.title watchers
-                    a.icon.icon-plus(href="", title="Add watcher")
-                div.watchers-content
-                    - for(var y=0; y<5; y++)
-                        div.watcher-single
-                            div.watcher-avatar
-                                a.avatar(href="", title="Assigned to")
-                                    img(src="http://thecodeplayer.com/u/uifaces/32.jpg", alt="username")
-                            a.watcher-name(href="", title="Jesús Espino") Jesús
+            include views/modules/watchers
 
             // NOTE: only for user story?
             // section.us-detail-settings

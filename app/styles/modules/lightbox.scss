@@ -278,3 +278,23 @@
         min-height: 8rem;
     }
 }
+
+.lightbox_watchers {
+    form {
+        @include table-flex-child(0, 600px, 0, 600px);
+    }
+    .watchers {
+        margin-top: 1rem;
+        .watcher-name {
+            @include table-flex-child(12, 0);
+        }
+    }
+    .watcher-single {
+        &:hover,
+        &.active {
+            @include transition(background .3s linear);
+            background: lighten($green-taiga, 55%);
+            cursor: pointer;
+        }
+    }
+}
