@@ -267,3 +267,14 @@
     }
 
 }
+
+.lightbox_block {
+    form {
+        @include table-flex-child(0, 420px, 0, 420px);
+    }
+    textarea {
+        margin-bottom: 1rem;
+        max-height: 12rem;
+        min-height: 8rem;
+    }
+}
