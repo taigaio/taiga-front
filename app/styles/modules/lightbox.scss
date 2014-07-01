@@ -297,4 +297,10 @@
             cursor: pointer;
         }
     }
+    .more-watchers {
+        @extend %title;
+        @extend %medium;
+        padding: .5rem;
+        text-align: center;
+    }
 }
