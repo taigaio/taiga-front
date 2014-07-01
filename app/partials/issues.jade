@@ -22,5 +22,7 @@ block content
             include views/modules/issues-table
             div.paginator.issues-paginator
                 //-Included paginator via JS
-    div.lightbox.lightbox_add-issue
+    div.lightbox.lightbox_add-issue.hidden
             include views/modules/lightbox_add-issue
+    div.lightbox.lightbox_add-bulk
+        include views/modules/lightbox_add-bulk
