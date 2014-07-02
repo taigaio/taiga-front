@@ -8,7 +8,7 @@ The PRIMARY AUTHORS are:
 - Anler Hernández <hello@anler.me>
 - Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
 
-Special thanks to Kaleidos Open Source S.L. for provice time for taiga
+Special thanks to Kaleidos Open Source S.L. for provide time for taiga
 development.
 
 And here is an inevitably incomplete list of MUCH-APPRECIATED CONTRIBUTORS --
