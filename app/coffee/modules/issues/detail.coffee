@@ -210,10 +210,8 @@ WatchersDirective = ($rootscope, $confirm) ->
     link = ($scope, $el, $attrs, $model) ->
         editable = $attrs.editable?
         watcherIds = []
-        $scope.$watch $attrs.ngModel, (val) ->
-            watcherIds = val
-            if watcherIds?
-                renderWatchers($scope, $el, watcherIds, editable)
+        $scope.$watch $attrs.ngModel, (watcherIds) ->
+            renderWatchers($scope, $el, watcherIds, editable)
 
         if not editable
             $el.find(".add-watcher").remove()
