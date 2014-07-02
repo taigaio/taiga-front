@@ -33,13 +33,6 @@
             margin-left: 1rem;
         }
     }
-    .level {
-        background-color: $gray-light;
-        border-radius: 9px;
-        height: 18px;
-        margin: 0 auto;
-        width: 18px;
-    }
     .level-field {
         @include table-flex-child(1, 50px, 0, 50px);
         text-align: center;

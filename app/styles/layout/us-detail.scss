@@ -177,6 +177,27 @@
     }
 }
 
+.issue-data {
+    div {
+        @include clearfix();
+        background: darken($whitish, 5%);
+        margin-bottom: 1rem;
+        padding: .5rem;
+        &:last-child {
+            margin: 0;
+        }
+    }
+    .level {
+        display: inline-block;
+        margin-right: .5rem;
+        vertical-align: top;
+    }
+    .level-name {
+        color: darken($whitish, 20%);
+        float: right;
+    }
+}
+
 .us-detail-assigned-to {
     @include table-flex();
     margin-top: 2rem;

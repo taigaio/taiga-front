@@ -47,18 +47,19 @@ block content
                 span Open
                 span.us-detail-status In progress
 
-            div.us-detail-progress-bar
-                div.current-progress
-                span.tasks-completed 6/7 tasks completed
-
-            ul.points-per-role
-                li.total
-                    span.points 10
-                    span.role total
-
-                li(ng-repeat="role in roles track by role.id")
-                    span.points 10
-                    span.role UX
+            div.issue-data
+                div.severity-data
+                    span.level
+                    span.severity-status Important
+                    span.level-name severity
+                div.priority-data
+                    span.level
+                    span.priority-status low
+                    span.level-name priority
+                div.status-data
+                    span.level
+                    span.status-status new
+                    span.level-name status
 
             include views/components/assigned-to
             section.watchers(tg-watchers, ng-model="issue.watchers")
