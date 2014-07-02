@@ -1,4 +1,4 @@
-extends dummy-layout
+extends layout
 
 block head
     title Taiga  Project management web application with scrum in mind!
@@ -9,7 +9,8 @@ block content
         div.main.us-detail
             div.us-detail-header
                 include views/components/mainTitle
-                a.button.button-green(href="", title="Edit") Edit
+                a.button.button-green(href="", title="Edit", tg-nav="project-issues-detail-edit:project=project.slug,ref=issue.ref") Edit
+
             section.us-story-main-data
                 div.us-title
                     h2.us-title-text
@@ -74,6 +75,3 @@ block content
 
         div.lightbox.lightbox_block.hidden
             include views/modules/lightbox_block
-
-        div.lightbox.lightbox_watchers.hidden(tg-lb-add-watcher)
-            include views/modules/lightbox_watchers

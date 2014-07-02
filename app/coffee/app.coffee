@@ -29,7 +29,10 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide,
     $routeProvider.when("/project/:pslug/issues", {templateUrl: "/partials/issues.html"})
     $routeProvider.when("/project/:pslug/search", {templateUrl: "/partials/search.html"})
     $routeProvider.when("/project/:pslug/issues/:issueref",
-                        {templateUrl: "/partials/issues-detail.html"})
+                    {templateUrl: "/partials/issues-detail.html"})
+
+    $routeProvider.when("/project/:pslug/issues/:issueref/edit",
+                    {templateUrl: "/partials/issues-detail-edit.html"})
 
     $routeProvider.when("/login", {templateUrl: "/partials/login.html"})
     $routeProvider.when("/register", {templateUrl: "/partials/register.html"})

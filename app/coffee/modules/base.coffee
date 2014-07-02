@@ -165,7 +165,8 @@ urls = {
     "project-taskboard": "/project/:project/taskboard/:sprint",
     "project-issues": "/project/:project/issues",
     "project-search": "/project/:project/search",
-    "project-issues-detail": "/project/:project/issues/:ref"
+    "project-issues-detail": "/project/:project/issues/:ref",
+    "project-issues-detail-edit": "/project/:project/issues/:ref/edit"
 }
 
 init = ($log, $navurls) ->

@@ -90,17 +90,21 @@ module.controller("IssueDetailController", IssueDetailController)
 ## Issue Main Directive
 #############################################################################
 
-IssueDirective = ($log, $location) ->
+IssueDirective = ($tgrepo, $log, $location) ->
     linkSidebar = ($scope, $el, $attrs, $ctrl) ->
 
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
         linkSidebar($scope, $el, $attrs, $ctrl)
 
+        $el.on "click", ".save-issue", (event) ->
+            $tgrepo.save($scope.issue).then ->
+                console.log "TODO"
+
     return {link:link}
 
 
-module.directive("tgIssueDetail", ["$log", "$tgLocation", IssueDirective])
+module.directive("tgIssueDetail", ["$tgRepo", "$log", "$tgLocation", IssueDirective])
 
 
 #############################################################################
@@ -160,6 +164,19 @@ TagLineDirective = ($log) ->
             $scope.$apply ->
                 $model.$setViewValue(normalizeTags(tags))
 
+        $el.on "click", ".icon-delete", (event) ->
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+            value = trim(target.siblings(".tag-name").text())
+
+            if value.length <= 0
+                return
+
+            tags = _.clone($model.$modelValue, false)
+            tags = _.pull(tags, value)
+
+            $scope.$apply ->
+                $model.$setViewValue(normalizeTags(tags))
 
     return {
         link:link,
@@ -203,13 +220,13 @@ WatchersDirective = ($rootscope, $confirm) ->
     </div>""")
 
     renderWatchers = ($scope, $el, watcherIds, editable) ->
+        console.log "renderWatchers", watcherIds
         watchers = _.map(watcherIds, (watcherId) -> $scope.usersById[watcherId])
         html = template({watchers: watchers, editable:editable})
         $el.html(html)
 
     link = ($scope, $el, $attrs, $model) ->
         editable = $attrs.editable?
-        watcherIds = []
         $scope.$watch $attrs.ngModel, (watcherIds) ->
             renderWatchers($scope, $el, watcherIds, editable)
 
@@ -223,9 +240,9 @@ WatchersDirective = ($rootscope, $confirm) ->
             title = "Remove watcher"
             subtitle = $scope.usersById[watcherId].full_name_display
             $confirm.ask(title, subtitle).then =>
+                watcherIds = _.clone($model.$modelValue, false)
                 watcherIds = _.pull(watcherIds, watcherId)
-                $attrs.ngModel = watcherIds
-                renderWatchers($scope, $el, watcherIds, editable)
+                $model.$setViewValue(watcherIds)
 
         $el.on "click", ".add-watcher", (event) ->
             event.preventDefault()
@@ -233,10 +250,11 @@ WatchersDirective = ($rootscope, $confirm) ->
             $rootscope.$broadcast("watcher:add")
 
         $scope.$on "watcher:added", (ctx, watcher) ->
+            watcherIds = _.clone($model.$modelValue, false)
             watcherIds.push(watcher.id)
             watcherIds = _.uniq(watcherIds)
-            $attrs.ngModel = watcherIds
-            renderWatchers($scope, $el, watcherIds, editable)
+            $scope.$apply ->
+                $model.$setViewValue(watcherIds)
 
     return {link:link, require:"ngModel"}
 

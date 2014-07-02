@@ -9,11 +9,11 @@ block content
         div.main.us-detail
             div.us-detail-header
                 include views/components/mainTitle
-                a.button.button-green(href="", title="Edit") Edit
+                a.button.button-green.save-issue(href="", title="Save") Save
+
             section.us-story-main-data
                 div.us-title
-                    // TODO Placeholder should be issue.subject
-                    input(type="text", placeholder="issue.subject")
+                    input(type="text", ng-model="issue.subject")
 
                 // div.blocked-warning
                 //     span.icon.icon-warning
@@ -21,16 +21,11 @@ block content
                 //     p We need Pilar to make a prototype out of this or we are not sure
                 //     a.button.button-red.button-block(href="", title="Unblock US") Unblock
 
-                div.user-story-tags(tg-tag-line="editable", ng-model="issue.tags")
-                    div.tags-container
-                        div.tag
-                            span.tag-name attachments
-                            a.icon.icon-delete.hidden(href="", title="delete tag")
-                    input.hidden(type="text", placeholder="Write tag...")
+                div.user-story-tags(tg-tag-line, editable="true", ng-model="issue.tags")
 
             section.us-content
                 // TODO Placeholder should be a WYSIWYG with issue.description
-                textarea(placeholder="Write a description of your issue")
+                textarea(placeholder="Write a description of your issue", ng-model="issue.description")
 
             // include views/modules/attachments
             section.us-activity
@@ -53,22 +48,22 @@ block content
                 span Open
                 span.us-detail-status In progress
 
-            div.us-detail-progress-bar
-                div.current-progress
-                span.tasks-completed 6/7 tasks completed
-
-            ul.points-per-role
-                li.total
-                    span.points 10
-                    span.role total
-
-                li(ng-repeat="role in roles track by role.id")
-                    span.points 10
-                    span.role UX
+            div.issue-data
+                div.severity-data
+                    span.level
+                    span.severity-status Important
+                    span.level-name severity
+                div.priority-data
+                    span.level
+                    span.priority-status low
+                    span.level-name priority
+                div.status-data
+                    span.level
+                    span.status-status new
+                    span.level-name status
 
             include views/components/assigned-to
-            section.watchers
-                include views/components/watchers
+            section.watchers(tg-watchers, ng-model="issue.watchers", editable="true")
 
             // NOTE: only for user story?
             // section.us-detail-settings
@@ -76,8 +71,8 @@ block content
             //     a.button.button-gray(href="", title="Team requirement") Team requirement
             //     a.button.button-red(href="", title="Block") Block
 
-    div.lightbox.lightbox_block.hidden
-        include views/modules/lightbox_block
+        div.lightbox.lightbox_block.hidden
+            include views/modules/lightbox_block
 
-    div.lightbox.lightbox_watchers.hidden
-        include views/modules/lightbox_watchers
+        div.lightbox.lightbox_watchers.hidden(tg-lb-add-watcher)
+            include views/modules/lightbox_watchers
