@@ -171,7 +171,6 @@ ListItemAssignedtoDirective = ->
         else
             bindOnce $scope, "membersById", (membersById) ->
                 member = membersById[issue.assigned_to]
-                console.log member
                 $el.find("figcaption").html(member.full_name)
                 $el.find("img").attr("src", member.photo)
 
