@@ -11,8 +11,8 @@ script(type="text/ng-template", id="search-issues")
             div.user-stories.width-6
                 div.user-story-name
                     a(href="", tg-bo-html="issue.subject")
-            div.status.width-2(tg-issue-status="issue")
-            div.points.width-1(tg-issue-assignedto="issue")
+            div.status.width-2(tg-listitem-issue-status="issue")
+            div.points.width-1(tg-listitem-assignedto="issue")
 
 script(type="text/ng-template", id="search-userstories")
     div.search-result-table-header
@@ -25,21 +25,19 @@ script(type="text/ng-template", id="search-userstories")
             div.user-stories.width-4
                 div.user-story-name
                     a(href="", tg-bo-html="us.subject")
-            div.status.width-2 Status
-            div.points.width-1 12
+            div.status.width-2(tg-listitem-us-status="us")
+            div.points.width-1(tg-bo-html="us.total_points")
 
 script(type="text/ng-template", id="search-tasks")
     div.search-result-table-header
         div.row.title
-            div.user-stories.width-4 Tasks
+            div.user-stories.width-4 Task
             div.status.width-2 Status
-            div.points.width-1 Points
-            div.points.width-1 Sprints
+            div.points.width-1 Assigned to
     div.search-result-table-body
         div.row.table-main(ng-repeat="task in tasks track by task.id")
             div.user-stories.width-4
                 div.user-story-name
                     a(href="", tg-bo-html="task.subject")
-            div.status.width-2 Status
-            div.points.width-1 12
-            div.points.width-1 54
+            div.status.width-2(tg-listitem-task-status="task")
+            div.points.width-1(tg-listitem-assignedto="task")

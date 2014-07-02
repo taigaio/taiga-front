@@ -156,6 +156,24 @@ ListItemIssueStatusDirective = ->
     return {link:link}
 
 
+ListItemTaskStatusDirective = ->
+    link = ($scope, $el, $attrs) ->
+        task = $scope.$eval($attrs.tgListitemTaskStatus)
+        bindOnce $scope, "taskStatusById", (taskStatusById) ->
+            $el.html(taskStatusById[task.status].name)
+
+    return {link:link}
+
+
+ListItemUsStatusDirective = ->
+    link = ($scope, $el, $attrs) ->
+        us = $scope.$eval($attrs.tgListitemUsStatus)
+        bindOnce $scope, "usStatusById", (usStatusById) ->
+            $el.html(usStatusById[us.status].name)
+
+    return {link:link}
+
+
 ListItemAssignedtoDirective = ->
     template = """
     <figure class="avatar">
@@ -232,4 +250,5 @@ module.directive("tgListitemIssueStatus", ListItemIssueStatusDirective)
 module.directive("tgListitemAssignedto", ListItemAssignedtoDirective)
 module.directive("tgListitemPriority", ListItemPriorityDirective)
 module.directive("tgListitemSeverity", ListItemSeverityDirective)
-
+module.directive("tgListitemTaskStatus", ListItemTaskStatusDirective)
+module.directive("tgListitemUsStatus", ListItemUsStatusDirective)

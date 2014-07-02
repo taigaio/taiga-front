@@ -34,9 +34,16 @@ module = angular.module("taigaSearch", [])
 #############################################################################
 
 class SearchController extends mixOf(taiga.Controller, taiga.PageMixin)
-    @.$inject = ["$scope", "$tgRepo", "$tgResources", "$routeParams", "$q"]
+    @.$inject = [
+        "$scope",
+        "$tgRepo",
+        "$tgResources",
+        "$routeParams",
+        "$q",
+        "$location"
+    ]
 
-    constructor: (@scope, @repo, @rs, @params, @q) ->
+    constructor: (@scope, @repo, @rs, @params, @q, @location) ->
         @scope.sectionName = "Search"
 
         promise = @.loadInitialData()
@@ -60,11 +67,11 @@ class SearchController extends mixOf(taiga.Controller, taiga.PageMixin)
         return @rs.projects.get(@scope.projectId).then (project) =>
             @scope.project = project
             @scope.issueStatusById = groupBy(project.issue_statuses, (x) -> x.id)
+            @scope.taskStatusById = groupBy(project.task_statuses, (x) -> x.id)
             @scope.severityById = groupBy(project.severities, (x) -> x.id)
             @scope.priorityById = groupBy(project.priorities, (x) -> x.id)
             @scope.membersById = groupBy(project.memberships, (x) -> x.user)
             @scope.usStatusById = groupBy(project.us_statuses, (x) -> x.id)
-            # @scope.usStatusList = _.sortBy(project.us_statuses, "id")
             return project
 
     loadSearchData: (term) ->
