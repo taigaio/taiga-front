@@ -14,6 +14,7 @@
         @extend %large;
         @extend %text;
         background: $whitish;
+        margin-bottom: 1rem;
         padding: 2rem 1rem;
         text-transform: uppercase;
         .us-number {
@@ -72,9 +73,16 @@
 }
 
 .user-story-tags {
+    .tags-container {
+        display: inline-block;
+        vertical-align: middle;
+    }
     input {
         display: inline-block;
         width: 14rem;
+    }
+    .tag {
+        padding: .6rem .5rem;
     }
 }
 

@@ -3,7 +3,13 @@
     color: $white;
     display: inline-block;
     margin: 0 .5rem .5rem 0;
-    padding: 3px;
+    padding: .2rem .5rem;
     text-align: center;
-    width: 7rem;
+    .icon-delete {
+        color: $white;
+        margin-left: 1rem;
+        &:hover {
+            color: $red;
+        }
+    }
 }
