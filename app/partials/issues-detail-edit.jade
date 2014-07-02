@@ -1,4 +1,4 @@
-extends dummy-layout
+extends layout
 
 block head
     title Taiga  Project management web application with scrum in mind!
@@ -12,9 +12,8 @@ block content
                 a.button.button-green(href="", title="Edit") Edit
             section.us-story-main-data
                 div.us-title
-                    h2
-                        span.us-number(tg-bo-html="issue.ref")
-                        span.us-name(ng-bind="issue.subject")
+                    // TODO Placeholder should be issue.subject
+                    input(type="text", placeholder="issue.subject")
 
                 // div.blocked-warning
                 //     span.icon.icon-warning
@@ -26,7 +25,9 @@ block content
                     span.tags-container
                     input.hidden(type="text", placeholder="Write tag...")
 
-            section.us-content(tg-bind-html="issue.description_html")
+            section.us-content
+                // TODO Placeholder should be a WYSIWYG with issue.description
+                textarea(placeholder="Write a description of your issue")
 
             // include views/modules/attachments
             section.us-activity

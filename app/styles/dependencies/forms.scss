@@ -28,3 +28,7 @@ textarea {
 input[type="password"] {
     @extend %title;
 }
+
+textarea {
+    max-height: 10rem;
+}
