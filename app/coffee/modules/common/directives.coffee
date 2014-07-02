@@ -75,29 +75,32 @@ DateSelectorDirective =->
 ## User story status directive
 #############################################################################
 
+
+# TODO: change to less generic name.
+
 UsStatusDirective = ($repo) ->
-    ### Print the status of a US and a popover to change it.
-        - tg-us-status: The user story
-        - on-update: Method call after US is updated
+    ###
+    Print the status of a US and a popover to change it.
+    - tg-us-status: The user story
+    - on-update: Method call after US is updated
 
     Example:
 
-        div.status(tg-us-status="us" on-update="ctrl.loadSprintState()")
-            a.us-status(href="", title="Status Name")
+      div.status(tg-us-status="us" on-update="ctrl.loadSprintState()")
+        a.us-status(href="", title="Status Name")
 
     NOTE: This directive need 'usStatusById' and 'project'.
     ###
     selectionTemplate = _.template("""
-      <ul class="popover pop-status">
-          <% _.forEach(statuses, function(status) { %>
-          <li>
-              <a href="" class="status" title="<%- status.name %>" data-status-id="<%- status.id %>">
-                  <%- status.name %>
-              </a>
-          </li>
-          <% }); %>
-      </ul>
-    """)
+    <ul class="popover pop-status">
+        <% _.forEach(statuses, function(status) { %>
+        <li>
+            <a href="" class="status" title="<%- status.name %>" data-status-id="<%- status.id %>">
+                <%- status.name %>
+            </a>
+        </li>
+        <% }); %>
+    </ul>""")
 
     updateUsStatus = ($el, us, usStatusById) ->
         usStatusDomParent = $el.find(".us-status")
@@ -140,8 +143,94 @@ UsStatusDirective = ($repo) ->
     return {link: link}
 
 
+#############################################################################
+## List directives (Issues List, Search)
+#############################################################################
+
+ListItemIssueStatusDirective = ->
+    link = ($scope, $el, $attrs) ->
+        issue = $scope.$eval($attrs.tgListitemIssueStatus)
+        bindOnce $scope, "issueStatusById", (issueStatusById) ->
+            $el.html(issueStatusById[issue.status].name)
+
+    return {link:link}
+
+
+ListItemAssignedtoDirective = ->
+    template = """
+    <figure class="avatar">
+        <img src="" alt="username"/>
+        <figcaption>--</figcaption>
+    </figure>
+    """
+
+    link = ($scope, $el, $attrs) ->
+        issue = $scope.$eval($attrs.tgListitemAssignedto)
+        if issue.assigned_to is null
+            $el.find("figcaption").html("Unassigned")
+        else
+            bindOnce $scope, "membersById", (membersById) ->
+                member = membersById[issue.assigned_to]
+                console.log member
+                $el.find("figcaption").html(member.full_name)
+                $el.find("img").attr("src", member.photo)
+
+    return {
+        template: template
+        link:link
+    }
+
+
+ListItemPriorityDirective = ->
+    template = """
+    <div class="level"></div>
+    """
+
+    link = ($scope, $el, $attrs) ->
+        issue = $scope.$eval($attrs.tgListitemPriority)
+        bindOnce $scope, "priorityById", (priorityById) ->
+            priority = priorityById[issue.priority]
+
+            domNode = $el.find("div.level")
+            domNode.css("background-color", priority.color)
+            domNode.addClass(priority.name.toLowerCase())
+            domNode.attr("title", priority.name)
+
+    return {
+        link: link
+        template: template
+    }
+
+
+ListItemSeverityDirective = ->
+    template = """
+    <div class="level"></div>
+    """
+
+    link = ($scope, $el, $attrs) ->
+        issue = $scope.$eval($attrs.tgListitemSeverity)
+        bindOnce $scope, "severityById", (severityById) ->
+            severity = severityById[issue.severity]
+
+            domNode = $el.find("div.level")
+            domNode.css("background-color", severity.color)
+            domNode.addClass(severity.name.toLowerCase())
+            domNode.attr("title", severity.name)
+
+    return {
+        link: link
+        template: template
+    }
+
+
 module = angular.module("taigaCommon")
 module.directive("tgDateRange", DateRangeDirective)
 module.directive("tgSprintProgressbar", SprintProgressBarDirective)
 module.directive("tgDateSelector", DateSelectorDirective)
 module.directive("tgUsStatus", ["$tgRepo", UsStatusDirective])
+
+module.directive("tgListitemIssueStatus", ListItemIssueStatusDirective)
+module.directive("tgListitemAssignedto", ListItemAssignedtoDirective)
+module.directive("tgListitemPriority", ListItemPriorityDirective)
+module.directive("tgListitemSeverity", ListItemSeverityDirective)
+
