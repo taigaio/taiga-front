@@ -16,13 +16,23 @@
         background: $whitish;
         margin-bottom: 1rem;
         padding: 2rem 1rem;
-        text-transform: uppercase;
+        position: relative;
+        .us-title-text {
+            margin-bottom: 0;
+        }
         .us-number {
             color: $gray-light;
             margin-right: .5rem;
         }
         .us-name {
             color: $grayer;
+            display: inline-block;
+            line-height: 1.5rem;
+            max-width: 80%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-transform: uppercase;
+            white-space: nowrap;
         }
     }
     .blocked-warning {
@@ -53,6 +63,15 @@
             right: 1rem;
             top: 1rem;
         }
+    }
+}
+
+.issue-nav {
+    position: absolute;
+    right: 1rem;
+    top: 2rem;
+    a {
+        @extend %xlarge;
     }
 }
 
