@@ -108,15 +108,27 @@ module.directive("tgIssueDetail", ["$log", "$tgLocation", IssueDirective])
 #############################################################################
 
 TagLineDirective = ($log) ->
-    template = _.template("""
+    # Main directive template (rendered by angular)
+    template = """
+    <div class="tags-container"></div>
+    <input type="text" placeholder="Write tag..." class="hidden"/>
+    """
+
+    # Tags template (rendered manually using lodash)
+    templateTags = _.template("""
     <% _.each(tags, function(tag) { %>
-        <span class="tag"><%= tag.name %></span>
+        <div class="tag">
+            <span class="tag-name"><%- tag.name %></span>
+            <% if (editable) { %>
+            <a href="" title="delete tag" class="icon icon-delete"></a>
+            <% } %>
+        </div>
     <% }); %>""")
 
-    renderTags = ($el, tags) ->
+    renderTags = ($el, tags, editable) ->
         tags = _.map(tags, (t) -> {name: t})
-        html = template({tags: tags})
-        $el.find("span.tags-container").html(html)
+        html = templateTags({tags: tags, editable:editable})
+        $el.find("div.tags-container").html(html)
 
     normalizeTags = (tags) ->
         tags = _.map(tags, trim)
@@ -124,12 +136,13 @@ TagLineDirective = ($log) ->
         return _.uniq(tags)
 
     link = ($scope, $el, $attrs, $model) ->
+        editable = if $attrs.editable == "true" then true else false
+
         $scope.$watch $attrs.ngModel, (val) ->
             return if not val
-            renderTags($el, val)
+            renderTags($el, val, editable)
 
-        if $attrs.tgTagLine != "editable"
-            $el.find("input").remove()
+        $el.find("input").remove() if not editable
 
         $el.on "keyup", "input", (event) ->
             return if event.keyCode != 13
@@ -148,6 +161,10 @@ TagLineDirective = ($log) ->
                 $model.$setViewValue(normalizeTags(tags))
 
 
-    return {link:link, require:"ngModel"}
+    return {
+        link:link,
+        require:"ngModel"
+        template: template
+    }
 
 module.directive("tgTagLine", ["$log", TagLineDirective])
