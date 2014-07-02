@@ -53,6 +53,7 @@
         }
         ul {
             float: right;
+            margin: 0;
         }
         li {
             display: inline-block;
@@ -65,7 +66,7 @@
         background: $gray-light;
         border-radius: 2px;
         height: 8px;
-        margin-bottom: 0;
+        margin-bottom: 1rem;
         margin-top: .5rem;
         position: relative;
         width: 100%;
