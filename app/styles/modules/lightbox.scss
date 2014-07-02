@@ -63,6 +63,24 @@
         max-height: 9rem;
         min-height: 7rem;
     }
+    label {
+        @extend %button;
+        @include transition(all .2s ease-in);
+        border: 1px solid $gray-light;
+        color: $grayer;
+        cursor: pointer;
+        display: block;
+        padding: 7px 30px;
+        &:hover {
+            span {
+                color: $white;
+            }
+        }
+        span {
+            color: $grayer;
+            vertical-align: middle;
+        }
+    }
     .new-us-settings {
         align-content: flex-start;
         align-items: stretch;
@@ -81,14 +99,6 @@
                 margin: 0;
             }
         }
-        label {
-            @extend %button;
-            @include transition(all .2s ease-in);
-            border: 1px solid $gray-light;
-            cursor: pointer;
-            display: block;
-            padding: 7px 30px;
-        }
         .requirement,
         .iocaine {
             &:hover {
@@ -96,6 +106,7 @@
                 background: $fresh-taiga;
                 border: 1px solid $fresh-taiga;
                 color: $white;
+
             }
             &.selected {
                 @include transition(all .2s ease-in);

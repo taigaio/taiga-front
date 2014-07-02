@@ -1,5 +1,5 @@
 .taskboard {
-    .burndown-container {
-        display: none;
+    .graphics-container {
+        @include slide(300px, overflow-y);
     }
 }

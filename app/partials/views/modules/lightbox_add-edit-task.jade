@@ -21,7 +21,9 @@ form
         div.description-preview.hidden
     div.new-us-settings
         fieldset
-            label.iocaine(for="iocaine-task icon-iocaine" data-icon="r") Iocaine
+            label.iocaine
+                span.icon.icon-iocaine(for="iocaine-task icon-iocaine")
+                span Iocaine
             input(type="checkbox", ng-model="task.is_iocaine", name="iocaine-task", id="iocaine-task")
         fieldset
             label.blocked(for="blocked-task") Blocked

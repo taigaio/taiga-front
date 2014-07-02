@@ -40,3 +40,13 @@
         display: table;
     }
 }
+
+@mixin slide($max, $overflow, $min: 0) {
+    @include transition(max-height .5s ease-in);
+    max-height: $min;
+    #{$overflow}: hidden;
+    &.open {
+        @include transition(max-height .5s ease-in);
+        max-height: $max;
+    }
+}

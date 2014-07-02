@@ -369,7 +369,7 @@ SprintGraphDirective = ->
                     redrawChart(element, $scope.stats.days)
 
                 $scope.$on "taskboard:graph:toggle-visibility", ->
-                    $el.toggle()
+                    $el.parent().toggleClass('open');
 
         $scope.$on "$destroy", ->
             $el.off()
