@@ -169,7 +169,7 @@ CreateSprint = ($repo, $rs, $rootscope) ->
         $scope.milestonesCounter = "--"
         bindOnce $scope, "stats", (stats) ->
             $scope.milestonesCounter = stats.milestones.length
-            
+
         submit = ->
             form = $el.find("form").checksley()
             if not form.validate()

@@ -106,9 +106,13 @@ class RepositoryService extends taiga.Service
 
         return defered.promise
 
-    queryMany: (name, params) ->
+    queryMany: (name, params, options={}) ->
         url = @urls.resolve(name)
-        return @http.get(url, params).then (data) =>
+        httpOptions = {headers: {}}
+        if options.disablePagination?
+            httpOptions.headers["x-disable-pagination"] =  "1"
+
+        return @http.get(url, params, httpOptions).then (data) =>
             return _.map(data.data, (x) => @model.make_model(name, x))
 
     queryOne: (name, id, params) ->

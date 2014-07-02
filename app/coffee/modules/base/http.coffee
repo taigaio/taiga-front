@@ -35,36 +35,37 @@ class HttpService extends taiga.Service
 
     request: (options) ->
         options.headers = _.merge({}, options.headers or {}, @.headers())
+        console.log options
         if _.isPlainObject(options.data)
             options.data = JSON.stringify(options.data)
 
         return @http(options)
 
-    get: (url, params) ->
-        options = {method: "GET", url: url}
+    get: (url, params, options) ->
+        options = _.merge({method: "GET", url: url}, options)
         options.params = params if params
         return @.request(options)
 
-    post: (url, data, params) ->
-        options = {method: "POST", url: url}
+    post: (url, data, params, options) ->
+        options = _.merge({method: "POST", url: url}, options)
         options.data = data if data
         options.params = params if params
         return @.request(options)
 
-    put: (url, data, params) ->
-        options = {method: "PUT", url: url}
+    put: (url, data, params, options) ->
+        options = _.merge({method: "PUT", url: url}, options)
         options.data = data if data
         options.params = params if params
         return @.request(options)
 
-    patch: (url, data, params) ->
-        options = {method: "PATCH", url: url}
+    patch: (url, data, params, options) ->
+        options = _.merge({method: "PATCH", url: url}, options)
         options.data = data if data
         options.params = params if params
         return @.request(options)
 
-    delete: (url, data, params) ->
-        options = {method: "DELETE", url: url}
+    delete: (url, data, params, options) ->
+        options = _.merge({method: "DELETE", url: url}, options)
         options.data = data if data
         options.params = params if params
         return @.request(options)
