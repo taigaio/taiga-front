@@ -167,8 +167,8 @@ CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope) ->
 CreateSprint = ($repo, $rs, $rootscope) ->
     link = ($scope, $el, attrs) ->
         $scope.milestonesCounter = "--"
-        bindOnce $scope, "stats", (stats) ->
-            $scope.milestonesCounter = stats.milestones.length
+        bindOnce $scope, "sprints", (sprints) ->
+            $scope.milestonesCounter = sprints.length
 
         submit = ->
             form = $el.find("form").checksley()
