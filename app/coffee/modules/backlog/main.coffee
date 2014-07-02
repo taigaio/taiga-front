@@ -137,6 +137,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin)
         @rootscope.$broadcast("usform:edit", us)
 
     deleteUserStory: (us) ->
+        #TODO: i18n
         title = "Delete User Story"
         subtitle = us.subject
 
@@ -446,7 +447,7 @@ BacklogSprintDirective = ($repo) ->
             itemScope.$destroy()
 
         dom = $el.find(".sprint-table")
-        
+
         sortable = new Sortable(dom[0], {
             group: "backlog",
             selector: ".milestone-us-item-row",

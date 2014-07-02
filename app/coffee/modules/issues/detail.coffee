@@ -168,3 +168,78 @@ TagLineDirective = ($log) ->
     }
 
 module.directive("tgTagLine", ["$log", TagLineDirective])
+
+#############################################################################
+## Watchers directive
+#############################################################################
+
+WatchersDirective = ($rootscope, $confirm) ->
+    #TODO: i18n
+    template = _.template("""
+    <div class="watchers-header">
+        <span class="title">watchers</span>
+        <% if (editable) { %>
+        <a href="" title="Add watcher" class="icon icon-plus add-watcher">
+        </a>
+        <% } %>
+        <% _.each(watchers, function(watcher) { %>
+        <div class="watcher-single">
+            <div class="watcher-avatar">
+                <a class="avatar" href="" title="Assigned to">
+                    <img src="<%= watcher.photo %>" alt="<%= watcher.full_name_display %>">
+                </a>
+            </div>
+            <div class="watcher-name">
+                <a href="" title="<%= watcher.full_name_display %>">
+                    <%= watcher.full_name_display %>
+                </a>
+                <% if (editable) { %>
+                    <a class="icon icon-delete" data-watcher-id="<%= watcher.id %>" href="" title="delete-watcher">
+                <% } %>
+                </a>
+            </div>
+        </div>
+        <% }); %>
+    </div>""")
+
+    renderWatchers = ($scope, $el, watcherIds, editable) ->
+        watchers = _.map(watcherIds, (watcherId) -> $scope.usersById[watcherId])
+        html = template({watchers: watchers, editable:editable})
+        $el.html(html)
+
+    link = ($scope, $el, $attrs, $model) ->
+        editable = $attrs.editable?
+        watcherIds = []
+        $scope.$watch $attrs.ngModel, (val) ->
+            watcherIds = val
+            if watcherIds?
+                renderWatchers($scope, $el, watcherIds, editable)
+
+        if not editable
+            $el.find(".add-watcher").remove()
+
+        $el.on "click", ".icon-delete", (event) ->
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+            watcherId = target.data("watcher-id")
+            title = "Remove watcher"
+            subtitle = $scope.usersById[watcherId].full_name_display
+            $confirm.ask(title, subtitle).then =>
+                watcherIds = _.pull(watcherIds, watcherId)
+                $attrs.ngModel = watcherIds
+                renderWatchers($scope, $el, watcherIds, editable)
+
+        $el.on "click", ".add-watcher", (event) ->
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+            $rootscope.$broadcast("watcher:add")
+
+        $scope.$on "watcher:added", (ctx, watcher) ->
+            watcherIds.push(watcher.id)
+            watcherIds = _.uniq(watcherIds)
+            $attrs.ngModel = watcherIds
+            renderWatchers($scope, $el, watcherIds, editable)
+
+    return {link:link, require:"ngModel"}
+
+module.directive("tgWatchers", ["$rootScope", "$tgConfirm", WatchersDirective])
