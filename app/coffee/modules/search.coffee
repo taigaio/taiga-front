@@ -128,7 +128,7 @@ SearchDirective = ($log, $compile, $templatecache) ->
         }
 
         renderTableContent = (section) ->
-            oldElements = $el.find(".search-result-table-body").children()
+            oldElements = $el.find(".search-result-table").children()
             oldScope = oldElements.scope()
 
             if oldScope
@@ -140,7 +140,7 @@ SearchDirective = ($log, $compile, $templatecache) ->
 
             template = angular.element.parseHTML(trim(templates[section.name]))
             element = $compile(template)(scope)
-            $el.find(".search-result-table-body").html(element)
+            $el.find(".search-result-table").html(element)
 
         $scope.$watch "searchResults", (data) ->
             lastSeatchResults = data
