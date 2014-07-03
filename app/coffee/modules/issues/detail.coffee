@@ -219,15 +219,12 @@ WatchersDirective = ($rootscope, $confirm) ->
         <% }); %>
     </div>""")
 
-    renderWatchers = ($scope, $el, watcherIds, editable) ->
-        watchers = _.map(watcherIds, (watcherId) -> $scope.usersById[watcherId])
-        html = template({watchers: watchers, editable:editable})
-        $el.html(html)
-
     link = ($scope, $el, $attrs, $model) ->
         editable = $attrs.editable?
         $scope.$watch $attrs.ngModel, (watcherIds) ->
-            renderWatchers($scope, $el, watcherIds, editable)
+            watchers = _.map(watcherIds, (watcherId) -> $scope.usersById[watcherId])
+            html = template({watchers: watchers, editable:editable})
+            $el.html(html)
 
         if not editable
             $el.find(".add-watcher").remove()
@@ -263,7 +260,7 @@ module.directive("tgWatchers", ["$rootScope", "$tgConfirm", WatchersDirective])
 ## Assigned to directive
 #############################################################################
 
-AssignedToDirective = ($rootscope) ->
+AssignedToDirective = ($rootscope, $confirm) ->
     #TODO: i18n
     template = _.template("""
         <% if (assignedTo) { %>
@@ -287,16 +284,14 @@ AssignedToDirective = ($rootscope) ->
         </div>
     """)
 
-    renderAssignedTo = ($scope, $el, assignedToId, editable) ->
-        assignedTo = null
-        assignedTo = $scope.usersById[assignedToId] if assignedToId?
-        html = template({assignedTo: assignedTo, editable:editable})
-        $el.html(html)
-
     link = ($scope, $el, $attrs, $model) ->
         editable = $attrs.editable?
+
         $scope.$watch $attrs.ngModel, (assignedToId) ->
-            renderAssignedTo($scope, $el, assignedToId, editable)
+            assignedTo = null
+            assignedTo = $scope.usersById[assignedToId] if assignedToId?
+            html = template({assignedTo: assignedTo, editable:editable})
+            $el.html(html)
 
         $el.on "click", ".icon-edit", (event) ->
             event.preventDefault()
@@ -304,7 +299,9 @@ AssignedToDirective = ($rootscope) ->
 
         $el.on "click", ".icon-delete", (event) ->
             event.preventDefault()
-            $scope.$apply ->
+            title = "Remove assigned to"
+            subtitle = ""
+            $confirm.ask(title, subtitle).then =>
                 $model.$setViewValue(null)
 
         $scope.$on "assigned-to:added", (ctx, user) ->
@@ -314,4 +311,4 @@ AssignedToDirective = ($rootscope) ->
 
     return {link:link, require:"ngModel"}
 
-module.directive("tgAssignedTo", ["$rootScope", AssignedToDirective])
+module.directive("tgAssignedTo", ["$rootScope", "$tgConfirm", AssignedToDirective])
