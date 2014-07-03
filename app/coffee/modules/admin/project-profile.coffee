@@ -76,21 +76,34 @@ module.controller("ProjectProfileController", ProjectProfileController)
 ## Project Profile Directive
 #############################################################################
 
-ProjectProfileDirective = ($log) ->
+ProjectProfileDirective = ($log, $repo, $confirm) ->
     link = ($scope, $el, $attrs) ->
         $log.info "ProjectProfileDirective:link"
 
         form = $el.find("form").checksley()
+        console.log form, $el.find("form")
+
+        submit = =>
+            return if not form.validate()
+
+            promise = $repo.save($scope.project)
+            promise.then ->
+                $confirm.notify("success")
+
+            promise.then null, (data) ->
+                console.log "FAIL"
+                # TODO
 
         $el.on "submit", "form", (event) ->
             event.preventDefault()
-            $log.debug "ProjectProfileDirective:submit"
+            $log.error "ProjectProfileDirective:submit"
+            submit()
 
-        $el.on "click", "form .a.button-green", (event) ->
+        $el.on "click", "form a.button-green", (event) ->
             event.preventDefault()
-            $log.debug "ProjectProfileDirective:submit a button"
-
+            $log.error "ProjectProfileDirective:submit a button"
+            submit()
 
     return {link:link}
 
-module.directive("tgProjectProfile", ["$log", ProjectProfileDirective])
+module.directive("tgProjectProfile", ["$log", "$tgRepo", "$tgConfirm", ProjectProfileDirective])
