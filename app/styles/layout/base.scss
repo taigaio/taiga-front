@@ -60,7 +60,7 @@ body {
 .menu-secondary {
     @include table-flex-child(1, 260px, 0, 260px);
     background: $whitish;
-    padding: 2em 1em;
+    padding: 2rem 1rem;
 }
 
 .menu-tertiary {
@@ -71,12 +71,11 @@ body {
 
 .extrabar {
     background: $whitish;
-    // display: none;
 }
 
 .main {
     @include table-flex-child(8, 600px, 0, 600px);
-    padding: 2em;
+    padding: 2rem;
 }
 
 .icon {

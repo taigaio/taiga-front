@@ -14,6 +14,7 @@ $prefix-for-spec:      true;
 @import 'dependencies/typography';
 @import 'dependencies/elements';
 @import 'dependencies/mixins';
+@import 'dependencies/responsive';
 @import 'dependencies/forms';
 
 //Components
@@ -60,10 +61,6 @@ $prefix-for-spec:      true;
 @import 'modules/login-form';
 @import 'modules/register-form';
 @import 'modules/forgot-form';
-
-// Responsive
-@import 'responsive/mobile';
-@import 'responsive/screen';
 
 //Layout
 @import 'layout/base';
