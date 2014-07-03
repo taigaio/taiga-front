@@ -19,6 +19,7 @@ block content
                     div.issue-nav
                         a.icon.icon-arrow-left(href="", title="next issue")
                         a.icon.icon-arrow-right(href="", title="previous issue")
+
                 // div.blocked-warning
                 //     span.icon.icon-warning
                 //     p.blocked Blocked!
@@ -44,8 +45,6 @@ block content
                 include views/modules/comments
                 // include views/modules/activity
         sidebar.menu-secondary.sidebar
-            // TODO: should be replaced with correct html
-            // for issues detail
             h1
                 span Open
                 span.us-detail-status In progress
@@ -64,14 +63,13 @@ block content
                     span.status-status new
                     span.level-name status
 
-            include views/components/assigned-to
+            section.us-detail-assigned-to(tg-assigned-to, ng-model="issue.assigned_to")
             section.watchers(tg-watchers, ng-model="issue.watchers")
 
-            // NOTE: only for user story?
-            // section.us-detail-settings
-            //     a.button.button-gray(href="", title="Client requirement") Client requirement
-            //     a.button.button-gray(href="", title="Team requirement") Team requirement
-            //     a.button.button-red(href="", title="Block") Block
+            section.us-detail-settings
+                a.button.button-gray(href="", title="Client requirement") Client requirement
+                a.button.button-gray(href="", title="Team requirement") Team requirement
+                a.button.button-red(href="", title="Block") Block
 
         div.lightbox.lightbox_block.hidden
             include views/modules/lightbox_block

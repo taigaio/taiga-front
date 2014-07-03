@@ -71,3 +71,31 @@ AddWatcherDirective = () ->
     return {link:link}
 
 module.directive("tgLbAddWatcher", AddWatcherDirective)
+
+
+AddAssignedToDirective = () ->
+    link = ($scope, $el, $attrs) ->
+        $scope.watcherSearch = {}
+        console.log "ASDASDASD"
+        $scope.$on "assigned-to:add", ->
+            $el.removeClass("hidden")
+            $scope.$apply ->
+                $scope.watcherSearch = {}
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+        $el.on "click", ".close", (event) ->
+            event.preventDefault()
+            $el.addClass("hidden")
+
+        $el.on "click", ".watcher-single", (event) ->
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+            watcher = target.scope().user
+            $el.addClass("hidden")
+            $scope.$broadcast("assigned-to:added", watcher)
+
+    return {link:link}
+
+module.directive("tgLbAddAssignedTo", AddAssignedToDirective)

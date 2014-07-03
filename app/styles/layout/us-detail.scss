@@ -228,12 +228,6 @@
         @include table-flex-child(3, 0);
         margin-left: 1rem;
         margin-top: 15px;
-        &:hover {
-            .icon-edit {
-                @include transition(opacity .2s ease-in);
-                opacity: 1;
-            }
-        }
         .assigned-title {
             color: $gray-light;
             display: block;
@@ -243,9 +237,8 @@
             color: $green-taiga;
         }
         .icon-edit {
-            @include transition(opacity .2s ease-in);
             color: $gray-light;
-            opacity: 0;
+            opacity: 1;
             position: absolute;
             right: 1rem;
             top: 1rem;

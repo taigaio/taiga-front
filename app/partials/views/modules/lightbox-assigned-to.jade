@@ -1,0 +1,16 @@
+a.close(href="", title="close")
+    span.icon.icon-delete
+form
+    h2.title Select assigned to
+    fieldset
+        input(type="text", data-maxlength="500", placeholder="Search for users", ng-model="watcherSearch.$")
+
+    div.watchers
+        div.watcher-single(ng-repeat="user in users|filter:watcherSearch:strict|limitTo:5 track by user.id")
+            div.watcher-avatar
+                a.avatar(href="", title="Assigned to")
+                    img(tg-bo-src="user.photo", tg-bo-alt="user.photo")
+            a.watcher-name(href="", tg-bo-title="user.full_name_display", tg-bo-html="user.full_name_display")
+
+        div.more-watchers
+            span ...too many users, keep filtering
