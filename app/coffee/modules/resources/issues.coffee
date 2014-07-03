@@ -37,7 +37,7 @@ resourceProvider = ($repo) ->
         return $repo.queryOneRaw("projects", "#{projectId}/issues_stats")
 
     service.filtersData = (projectId) ->
-        return $repo.queryOneRaw("projects", "#{projectId}/issues_filters_data")
+        return $repo.queryOneRaw("projects", "#{projectId}/issue_filters_data")
 
     return (instance) ->
         instance.issues = service

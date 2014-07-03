@@ -22,6 +22,9 @@
 taiga = @.taiga
 
 groupBy = @.taiga.groupBy
+joinStr = @.taiga.joinStr
+trim = @.taiga.trim
+toString = @.taiga.toString
 
 
 class PageMixin
@@ -52,9 +55,8 @@ class FiltersMixin
     selectFilter: (name, value, load=false) ->
         params = @location.search()
         if params[name] != undefined and name != "page"
-            existing = _.map(params[name].split(","), trim)
-            existing.push(value)
-
+            existing = _.map(taiga.toString(params[name]).split(","), trim)
+            existing.push(taiga.toString(value))
             value = joinStr(",", _.uniq(existing))
 
         location = if load then @location else @location.noreload(@scope)
@@ -69,8 +71,8 @@ class FiltersMixin
         if value is undefined or value is null
             delete params[name]
 
-        parsedValues = _.map(params[name].split(","), trim)
-        newValues = _.reject(parsedValues, (x) -> x == toString(value))
+        parsedValues = _.map(taiga.toString(params[name]).split(","), trim)
+        newValues = _.reject(parsedValues, (x) -> x == taiga.toString(value))
 
         if _.isEmpty(newValues)
             value = null

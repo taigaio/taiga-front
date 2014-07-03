@@ -5,7 +5,7 @@ block head
 
 block content
     div.wrapper.issues(tg-issues, ng-controller="IssuesController as ctrl", ng-init="section='issues'")
-        sidebar.menu-secondary.extrabar.filters-bar
+        sidebar.menu-secondary.extrabar.filters-bar(tg-issues-filters)
             include views/modules/filters
 
         section.main.issues-page
@@ -20,5 +20,6 @@ block content
 
     div.hidden.lightbox.lightbox_add-issue
             include views/modules/lightbox_add-issue
-    div.lightbox.lightbox_add-bulk.hidden
+
+    div.hidden.lightbox.lightbox_add-bulk
         include views/modules/lightbox_add-bulk
