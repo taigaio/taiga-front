@@ -1,0 +1,53 @@
+//Table basic shared vars
+
+$column-width: 300px;
+$column-flex: 1;
+$column-shrink: 0;
+$column-margin: 0 10px 0 0;
+
+.kanban-table {
+    overflow: hidden;
+    width: 100%;
+}
+
+.kanban-table-header {
+    margin-bottom: .5rem;
+    position: relative;
+    width: 100%;
+    .task-colum_name {
+        @include table-flex-child($column-flex, $column-width, $column-shrink, $column-width);
+        @extend %large;
+        background: $whitish;
+        margin: $column-margin;
+        padding: .5rem 0;
+        text-align: center;
+        text-transform: uppercase;
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}
+
+.kanban-table-body {
+    height: 700px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    width: 100%;
+    .task-column {
+        @include table-flex-child($column-flex, $column-width, $column-shrink, $column-width);
+        margin: $column-margin;
+        padding: 1rem;
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+    .taskboard_task-playground {
+        background: $whitish;
+    }
+}
+
+.kanban-table-inner {
+    @include table-flex();
+    overflow: hidden;
+    position: absolute;
+}

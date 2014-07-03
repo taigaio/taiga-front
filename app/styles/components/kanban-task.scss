@@ -1,0 +1,66 @@
+.kanban-task {
+    background: $postit;
+    margin-bottom: 1rem;
+    position: relative;
+    &:hover {
+        .icon-edit,
+        .icon-drag-h {
+            @include transition(opacity .2s linear);
+            opacity: 1;
+        }
+    }
+    .kanban-tagline {
+        @include table-flex();
+    }
+    .taskboard-tag {
+        @include table-flex-child(1, 0, 0, 0);
+        background: $postit-hover; //Fallback
+        height: .3rem;
+    }
+    .kanban-task-inner {
+        padding: 1rem;
+    }
+    .task-num {
+        color: $postit-hover;
+        margin-right: .5em;
+    }
+    .task-text {
+        padding-right: 2rem;
+    }
+    .avatar {
+        vertical-align: middle;
+        img {
+            margin-right: 1rem;
+            max-width: 3rem;
+        }
+    }
+    .task-points {
+        @extend %large;
+        color: $postit-hover;
+        padding: .5rem 1rem;
+        position: absolute;
+        right: 0;
+        top: .5rem;
+    }
+    .icon-edit,
+    .icon-drag-h {
+        @include transition(opacity .2s linear);
+        @extend %large;
+        bottom: .2rem;
+        color: $postit-hover;
+        opacity: 0;
+        position: absolute;
+        &:hover {
+            @include transition(color .3s linear);
+            color: darken($postit-hover, 15%);
+        }
+    }
+    .icon-edit {
+        right: .5rem;
+    }
+    .icon-drag-h {
+        @extend %xlarge;
+        cursor: move;
+        right: 45%;
+    }
+}

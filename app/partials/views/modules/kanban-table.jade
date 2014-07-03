@@ -1,0 +1,49 @@
+div.kanban-table
+    div.kanban-table-header
+        div.kanban-table-inner
+            h2.task-colum_name Task
+            h2.task-colum_name Open
+            h2.task-colum_name Ready for test
+            h2.task-colum_name Closed
+    div.kanban-table-body
+        div.kanban-table-inner
+            div.taskboard_task-playground.task-column
+                div.kanban-task
+                    include ../components/kanban-task
+            div.taskboard_task-playground.task-column
+                div.kanban-task
+                    include ../components/kanban-task
+            div.taskboard_task-playground.task-column
+                div.kanban-task
+                    include ../components/kanban-task
+            div.taskboard_task-playground.task-column
+    //-
+        div.taskboard-table-body
+            div.taskboard-table-inner(tg-taskboard-row-size-fixer)
+                div.task-row(ng-repeat="us in userstories track by us.id", tg-taskboard-taskrow)
+                    div.taskboard_us-list.task-column
+                        div.tag-list
+                            span.tag(ng-repeat="tag in us.tags") {{ tag }}
+                        h3.us-title
+                            span.us-ref(tg-bo-ref="us.ref")
+                            span(ng-bind="us.subject")
+                        div.status(tg-us-status="us", on-update="ctrl.loadSprintState()")
+                            a.us-status(href="", title="Status Name")
+                                span.us-status-bind
+                                span.icon.icon-arrow-bottom
+                        ul.points-list(tg-taskboard-us-points="us")
+                        include ../components/addnewtask
+
+                    div.taskboard_task-playground.task-column(ng-repeat="st in taskStatusList track by st.id")
+                        div.taskboard-task(ng-repeat="task in usTasks[us.id][st.id] track by task.id")
+                            include ../components/taskboard-task
+
+                div.task-row(ng-init="us = null", tg-taskboard-taskrow)
+                    div.taskboard_us-list.task-column
+                        h3.us-title
+                            span Unassigned tasks
+                        include ../components/addnewtask
+
+                    div.taskboard_task-playground.task-column(ng-repeat="st in taskStatusList track by st.id")
+                        div.taskboard-task(ng-repeat="task in unassignedTasks[st.id] track by task.id")
+                            include ../components/taskboard-task

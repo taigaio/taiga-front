@@ -6,6 +6,7 @@
 // No clearfix or known hack fixes it
 // Could be because of flexbox?
 // height of the table has been set manually, wich is ugly.
-.taskboard-table-header {
+.taskboard-table-header,
+.kanban-table-header {
     height: 40px;
 }
