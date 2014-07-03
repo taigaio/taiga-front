@@ -94,14 +94,14 @@
 .user-story-tags {
     .tags-container {
         display: inline-block;
-        vertical-align: middle;
+        vertical-align: top;
     }
     input {
         display: inline-block;
         width: 14rem;
     }
     .tag {
-        padding: .6rem .5rem;
+        padding: 8px 8px 10px;
     }
 }
 
@@ -310,19 +310,19 @@
 }
 
 .us-status {
-    .severity-data{
+    .severity-data {
         position: relative;
         .pop-severity {
             @include popover(150px, '', 30px, '', '');
         }
     }
-    .priority-data{
+    .priority-data {
         position: relative;
         .pop-priority {
             @include popover(150px, '', 30px, '', '');
         }
     }
-    .status-data{
+    .status-data {
         position: relative;
         .pop-status {
             @include popover(150px, '', 30px, '', '');
