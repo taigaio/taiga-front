@@ -77,6 +77,8 @@ class ConfirmService extends taiga.Service
         # TODO: at this momment the message is ignored
         # because the notification message not permits
         # custom messages.
+        #
+        # Types: error, success
 
         selector = ".notification-message-#{type}"
 
