@@ -23,12 +23,42 @@
     }
     .sprint {
         margin-bottom: 2rem;
+        position: relative;
+        &:hover {
+            .icon-edit {
+                @include transition (opacity .2s ease-in);
+                opacity: 1;
+            }
+        }
         .icon {
             display: inline-block;
+        }
+        .icon-arrow-up {
+            @include transform(rotate(180deg));
+            vertical-align: baseline;
+            &:hover,
+            &.active {
+                @include transform(rotate(0));
+                @include transition (all .2s ease-in);
+            }
+            &.active {
+                &:hover {
+                    @include transition (all .2s ease-in);
+                    @include transform(rotate(180deg));
+                }
+            }
+        }
+        .icon-edit {
+            @include transition (opacity .2s ease-in);
+            color: $gray-light;
+            opacity: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
             vertical-align: baseline;
             &:hover {
-                @include transform(rotate(180deg));
-                @include transition (all .2s ease-in);
+                @include transition (color .2s ease-in);
+                color: $green-taiga;
             }
         }
         .number {
@@ -81,28 +111,10 @@
         }
     }
     .sprint-table {
-        align-content: stretch;
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        width: 100%;
-        @for $i from 1 through 8 {
-            .width-#{$i} {
-                flex-basis: 50px;
-                flex-grow: $i;
-                flex-shrink: 0;
-            }
-        }
+        @include slide(1000px, overflow-y);
         .row {
-            align-content: stretch;
-            align-items: stretch;
+            @include table-flex();
             border-bottom: 1px solid $gray-light;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            justify-content: flex-start;
             padding: .5em 0;
             text-align: left;
             width: 100%;
@@ -116,16 +128,18 @@
             }
         }
         .column-us {
+            @include table-flex-child(3, 0, 0);
             @extend %small;
             padding: 0 4px;
+        }
+        .column-points {
+            @include table-flex-child(1, 0, 0);
+            padding: 0 4px;
+            text-align: right;
         }
         .us-name {
             @include ellipsis(250px);
             display: block;
-        }
-        .column-points {
-            padding: 0 4px;
-            text-align: right;
         }
     }
     .button-gray {
@@ -153,27 +167,41 @@
 // If Sprint is open but date is old
 .sprint-old-open {
     .sprint-name {
-        .icon {
+        .icon-arrow-up {
             @include transform(rotate(180deg));
-            &:hover {
+            &:hover,
+            &.active {
                 @include transform(rotate(0));
                 @include transition (all .2s ease-in);
+            }
+            &.active {
+                &:hover {
+                    @include transform(rotate(180deg));
+                    @include transition (all .2s ease-in);
+                }
             }
         }
     }
     .sprint-table {
-        display: none;
+        @include slide(1000px, overflow-y);
     }
 }
 
 // If sprint is closed and date is old
 .sprint-closed {
     .sprint-name {
-        .icon {
+        .icon-arrow-up {
             @include transform(rotate(180deg));
-            &:hover {
+            &:hover,
+            &.active {
                 @include transform(rotate(0));
                 @include transition (all .2s ease-in);
+            }
+            &.active {
+                &:hover {
+                    @include transform(rotate(180deg));
+                    @include transition (all .2s ease-in);
+                }
             }
         }
     }
@@ -187,7 +215,7 @@
         }
     }
     .sprint-table {
-        display: none;
+        @include slide(1000px, overflow-y);
     }
     .button-gray {
         background: lighten($grayer, 40%);

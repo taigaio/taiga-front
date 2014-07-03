@@ -375,6 +375,7 @@ BacklogSprintDirective = ($repo) ->
         sprint = $scope.$eval($attrs.tgBacklogSprint)
         if $scope.$first
             $el.addClass("sprint-current")
+            $el.find(".sprint-table").addClass('open')
 
         else if sprint.closed
             $el.addClass("sprint-closed")
@@ -387,8 +388,10 @@ BacklogSprintDirective = ($repo) ->
         $el.find(".current-progress").css("width", "#{progressPercentage}%")
 
         # Event Handlers
-        $el.on "click", ".sprint-name > a", (event) ->
-            $el.find(".sprint-table").toggle()
+        $el.on "click", ".sprint-name > .icon-arrow-up", (event) ->
+            target = $(event.currentTarget)
+            target.toggleClass('active')
+            $el.find(".sprint-table").toggleClass('open')
 
     #########################
     ## Drag & Drop Link
@@ -571,7 +574,7 @@ UsPointsDirective = ($repo) ->
             values = _.filter(values, (num) -> num?)
             if values.length == 0
                 return "?"
-                
+
             return _.reduce(values, (acc, num) -> acc + num)
 
         updatePoints(null)
