@@ -270,16 +270,18 @@ AssignedToDirective = ($rootscope, $confirm) ->
         <% } %>
         <div class="assigned-to">
             <span class="assigned-title">Assigned to</span>
-            <span class="user-assigned">
+            <a href="" title="edit assignment" class="user-assigned">
             <% if (assignedTo) { %>
-            <%= assignedTo.full_name_display %>
+                <%= assignedTo.full_name_display %>
             <% } else { %>
-            Not assigned
+                Not assigned
             <% } %>
-            </span>
+            <% if (editable) { %>
+                <span class="icon icon-arrow-bottom"></span>
+            <% } %>
+            </a>
             <% if (editable) { %>
             <a href="" title="delete assignment" class="icon icon-delete"></a>
-            <a href="" title="edit assignment" class="icon icon-edit"></a>
             <% } %>
         </div>
     """)
@@ -293,7 +295,7 @@ AssignedToDirective = ($rootscope, $confirm) ->
             html = template({assignedTo: assignedTo, editable:editable})
             $el.html(html)
 
-        $el.on "click", ".icon-edit", (event) ->
+        $el.on "click", ".user-assigned", (event) ->
             event.preventDefault()
             $rootscope.$broadcast("assigned-to:add")
 

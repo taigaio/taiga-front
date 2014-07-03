@@ -217,38 +217,6 @@
     }
 }
 
-.us-detail-assigned-to {
-    @include table-flex();
-    margin-top: 2rem;
-    position: relative;
-    .user-avatar {
-        @include table-flex-child(1, 0);
-    }
-    .assigned-to {
-        @include table-flex-child(3, 0);
-        margin-left: 1rem;
-        margin-top: 15px;
-        .assigned-title {
-            color: $gray-light;
-            display: block;
-        }
-        .user-assigned {
-            @extend %large;
-            color: $green-taiga;
-        }
-        .icon-edit {
-            color: $gray-light;
-            opacity: 1;
-            position: absolute;
-            right: 1rem;
-            top: 1rem;
-            &:hover {
-                color: $green-taiga;
-            }
-        }
-    }
-}
-
 .watchers {
     margin-top: 2rem;
     .watchers-header {
