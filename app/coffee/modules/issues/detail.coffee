@@ -277,7 +277,7 @@ AssignedToDirective = ($rootscope) ->
             <% if (assignedTo) { %>
             <%= assignedTo.full_name_display %>
             <% } else { %>
-            --
+            Not assigned
             <% } %>
             </span>
             <% if (editable) { %>
