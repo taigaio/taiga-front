@@ -495,7 +495,12 @@ UsRolePointsSelectorDirective = ($rootscope) ->
         # Watchers
         bindOnce $scope, "project", (project) ->
             roles = _.filter(project.roles, "computable")
-            $el.append(selectionTemplate({ 'roles':  roles }))
+            numberOfRoles = _.size(roles)
+
+            if numberOfRoles > 1
+                $el.append(selectionTemplate({ 'roles':  roles }))
+            else
+                $el.find(".icon-arrow-bottom").remove()
 
         $scope.$on "uspoints:select", (ctx, roleId, roleName) ->
             $el.find(".popover").hide()
@@ -562,12 +567,17 @@ UsPointsDirective = ($repo) ->
         us = $scope.$eval($attrs.tgUsPoints)
         updatingSelectedRoleId = null
         selectedRoleId = null
+        numberOfRoles = _.size(us.points)
+
+        # Preselect the rol if we have only one
+        if numberOfRoles == 1
+            selectedRoleId = _.keys(us.points)[0]
 
         updatePoints = (roleId) ->
             pointsDom = $el.find("a > span.points-value")
             usTotalPoints = calculateTotalPoints(us)
             us.total_points = usTotalPoints
-            if not roleId?
+            if not roleId? or numberOfRoles == 1
                 pointsDom.text(us.total_points)
             else
                 pointId = us.points[roleId]
