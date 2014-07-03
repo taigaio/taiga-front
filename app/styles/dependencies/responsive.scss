@@ -1,0 +1,18 @@
+// - Hey, there is a mixin here instead of in mixins.scss!!! Are you drunk or what?
+// - I know, I know, but look it closer, it makes sense
+// - Oh, I see. It's ok for this time...
+
+$break-small: 320px;
+$break-large: 1024px;
+
+@mixin respond-to($media) {
+    @if $media == handhelds {
+        @media only screen and (max-width: $break-small) { @content; }
+    }
+    @else if $media == medium-screens {
+        @media only screen and (min-width: $break-small + 1) and (max-width: $break-large - 1) { @content; }
+    }
+    @else if $media == wide-screens {
+        @media only screen and (min-width: $break-large) { @content; }
+    }
+}
