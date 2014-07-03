@@ -557,6 +557,8 @@ UsPointsDirective = ($repo) ->
 
         updatePoints = (roleId) ->
             pointsDom = $el.find("a > span.points-value")
+            usTotalPoints = calculateTotalPoints(us)
+            us.total_points = usTotalPoints
             if not roleId?
                 pointsDom.text(us.total_points)
             else
@@ -566,6 +568,10 @@ UsPointsDirective = ($repo) ->
 
         calculateTotalPoints = ->
             values = _.map(us.points, (v, k) -> $scope.pointsById[v].value)
+            values = _.filter(values, (num) -> num?)
+            if values.length == 0
+                return "?"
+                
             return _.reduce(values, (acc, num) -> acc + num)
 
         updatePoints(null)
