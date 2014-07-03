@@ -20,10 +20,10 @@ section.sprints
                 div.sprint-date(tg-date-range="sprint.estimated_start,sprint.estimated_finish")
                 ul
                     li
-                        span.number(tg-bo-html="sprint.closed_points") --
+                        span.number(ng-bind="sprint.closed_points|default:''") --
                         span.description closed
                     li
-                        span.number(tg-bo-html="sprint.total_points") --
+                        span.number(ng-bind="sprint.total_points|default:''")
                         span.description total
         div.sprint-progress-bar
             div.current-progress(tg-sprint-progressbar="sprint")

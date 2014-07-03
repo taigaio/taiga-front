@@ -287,8 +287,13 @@ BacklogDirective = ($repo, $rootscope) ->
             # Remove them from backlog
             $scope.userstories = ussCurrent.without.apply(ussCurrent, selectedUss).value()
 
+            extraPoints = _.map(selectedUss, (v, k) -> v.total_points)
+            totalExtraPoints =  _.reduce(extraPoints, (acc, num) -> acc + num)
+
             # Add them to current sprint
             $scope.sprints[0].user_stories = _.union(selectedUss, $scope.sprints[0].user_stories)
+            # Update the total of points
+            $scope.sprints[0].total_points += totalExtraPoints
 
             $ctrl.filterVisibleUserstories()
             $repo.saveAll(selectedUss)
@@ -596,8 +601,6 @@ UsPointsDirective = ($repo) ->
             event.preventDefault()
             target = angular.element(event.target)
 
-            console.log target
-
             if target.is("span")
                 event.stopPropagation()
 
@@ -642,6 +645,9 @@ UsPointsDirective = ($repo) ->
                     # Little Hack for refresh.
                     $repo.refresh(us).then ->
                         $ctrl.loadProjectStats()
+
+                scopeDefer $scope, ->
+                    $scope.$emit("doomline:redraw")
 
         $scope.$on "$destroy", ->
             $el.off()
