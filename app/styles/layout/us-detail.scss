@@ -279,4 +279,25 @@
             background: $red;
         }
     }
+    label {
+        &+input {
+            display: none;
+        }
+    }
+    span {
+        &.button-gray,
+        &.button-gray:hover {
+            background: $gray-light;
+            &.active {
+                background: $gray;
+            }
+        }
+        &.button-red,
+        &.button-red:hover {
+            background: $red-light;
+            &.active {
+                background: $red;
+            }
+        }
+    }
 }
