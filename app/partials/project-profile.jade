@@ -1,0 +1,38 @@
+extends layout
+
+block head
+    title Taiga  Project management web application with scrum in mind!
+
+block content
+    div.wrapper(tg-project-profile, ng-controller="ProjectProfileController as ctrl")
+        sidebar.menu-secondary.sidebar
+            include views/modules/admin-menu
+
+        sidebar.menu-tertiary.sidebar
+            include views/modules/admin-submenu
+
+        section.main.project-details
+            header
+                include views/components/mainTitle
+
+            form
+                fieldset
+                    input(type="text", placeholder="Name", ng-model="project.name")
+
+                fieldset
+                    input(type="text", placeholder="Slug", ng-model="project.slug")
+
+                fieldset.half
+                    input(type="text", placeholder="Number of sprints",
+                          ng-model="project.total_milestones")
+
+                fieldset.half
+                    input(type="text", placeholder="Number of US points",
+                          ng-model="project.total_story_points")
+
+                fieldset
+                    textarea(placeholder="Description", ng-model="project.description")
+
+                input(type="submit", class="hidden")
+                a.button.button-green(href="")
+                    span Create

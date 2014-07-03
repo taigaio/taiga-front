@@ -34,6 +34,11 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide,
     $routeProvider.when("/project/:pslug/issues/:issueref/edit",
                     {templateUrl: "/partials/issues-detail-edit.html"})
 
+    # Admin
+    $routeProvider.when("/project/:pslug/admin/project-profile",
+                    {templateUrl: "/partials/project-profile.html"})
+
+    # Auth
     $routeProvider.when("/login", {templateUrl: "/partials/login.html"})
     $routeProvider.when("/register", {templateUrl: "/partials/register.html"})
 
@@ -85,6 +90,7 @@ modules = [
     "taigaTaskboard",
     "taigaIssues",
     "taigaSearch",
+    "taigaAdmin",
 
     # Vendor modules
     "ngRoute",
