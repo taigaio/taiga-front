@@ -301,3 +301,24 @@
         }
     }
 }
+
+.us-status {
+    .severity-data{
+        position: relative;
+        .pop-severity {
+            @include popover(150px, '', 30px, '', '');
+        }
+    }
+    .priority-data{
+        position: relative;
+        .pop-priority {
+            @include popover(150px, '', 30px, '', '');
+        }
+    }
+    .status-data{
+        position: relative;
+        .pop-status {
+            @include popover(150px, '', 30px, '', '');
+        }
+    }
+}

@@ -76,7 +76,6 @@ module.directive("tgLbAddWatcher", AddWatcherDirective)
 AddAssignedToDirective = () ->
     link = ($scope, $el, $attrs) ->
         $scope.watcherSearch = {}
-        console.log "ASDASDASD"
         $scope.$on "assigned-to:add", ->
             $el.removeClass("hidden")
             $scope.$apply ->

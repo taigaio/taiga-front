@@ -45,3 +45,11 @@ ol { list-style: decimal; }
 .icon {
     vertical-align: middle;
 }
+
+.clickable {
+    cursor:pointer;
+}
+
+.draggable {
+    cursor:move;
+}

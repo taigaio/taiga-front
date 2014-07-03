@@ -57,8 +57,11 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
             @scope.project = project
-            @scope.issueStatusById = groupBy(project.issue_statuses, (x) -> x.id)
+            @scope.statusList = project.issue_statuses
+            @scope.statusById = groupBy(project.issue_statuses, (x) -> x.id)
+            @scope.severityList = project.severities
             @scope.severityById = groupBy(project.severities, (x) -> x.id)
+            @scope.priorityList = project.priorities
             @scope.priorityById = groupBy(project.priorities, (x) -> x.id)
             @scope.membersById = groupBy(project.memberships, (x) -> x.user)
             return project
@@ -280,7 +283,7 @@ AssignedToDirective = ($rootscope, $confirm) ->
                 <span class="icon icon-arrow-bottom"></span>
             <% } %>
             </a>
-            <% if (editable) { %>
+            <% if (editable && assignedTo!==null) { %>
             <a href="" title="delete assignment" class="icon icon-delete"></a>
             <% } %>
         </div>
@@ -314,3 +317,141 @@ AssignedToDirective = ($rootscope, $confirm) ->
     return {link:link, require:"ngModel"}
 
 module.directive("tgAssignedTo", ["$rootScope", "$tgConfirm", AssignedToDirective])
+
+
+
+
+
+#############################################################################
+## Issue status directive
+#############################################################################
+
+IssueStatusDirective = () ->
+    #TODO: i18n
+    template = _.template("""
+        <h1>
+            <span>
+            <% if (status.is_closed) { %>
+            Closed
+            <% } else { %>
+            Open
+            <% } %>
+            <span class="us-detail-status"><%= status.name %></span>
+        </h1>
+        <div class="issue-data">
+            <div class="severity-data <% if (editable) { %>clickable<% } %>">
+                <span class="level" style="background-color:<%= severity.color %>"></span>
+                <span class="severity-status"><%= severity.name %></span>
+                <span class="level-name">severity</span>
+            </div>
+            <div class="priority-data <% if (editable) { %>clickable<% } %>">
+                <span class="level" style="background-color:<%= priority.color %>"></span>
+                <span class="priority-status"><%= priority.name %></span>
+                <span class="level-name">priority</span>
+            </div>
+            <div class="status-data <% if (editable) { %>clickable<% } %>">
+                <span class="level" style="background-color:<%= status.color %>"></span>
+                <span class="status-status"><%= status.name %></span>
+                <span class="level-name">status</span>
+            </div>
+        </div>
+    """)
+    selectionSeverityTemplate = _.template("""
+      <ul class="popover pop-severity">
+          <% _.each(severities, function(severity) { %>
+          <li><a href="" class="severity" title="<%- severity.name %>"
+                 data-severity-id="<%- severity.id %>"><%- severity.name %></a></li>
+          <% }); %>
+      </ul>
+    """)
+    selectionPriorityTemplate = _.template("""
+      <ul class="popover pop-priority">
+          <% _.each(priorities, function(priority) { %>
+          <li><a href="" class="priority" title="<%- priority.name %>"
+                 data-priority-id="<%- priority.id %>"><%- priority.name %></a></li>
+          <% }); %>
+      </ul>
+    """)
+    selectionStatusTemplate = _.template("""
+      <ul class="popover pop-status">
+          <% _.each(statuses, function(status) { %>
+          <li><a href="" class="status" title="<%- status.name %>"
+                 data-status-id="<%- status.id %>"><%- status.name %></a></li>
+          <% }); %>
+      </ul>
+    """)
+
+    link = ($scope, $el, $attrs, $model) ->
+        editable = $attrs.editable?
+
+        renderIssuestatus = (issue) ->
+            status = $scope.statusById[issue.status]
+            severity = $scope.severityById[issue.severity]
+            priority = $scope.priorityById[issue.priority]
+            html = template({
+                editable: editable
+                status: status
+                severity: severity
+                priority: priority
+            })
+            $el.html(html)
+            $el.find(".severity-data").append(selectionSeverityTemplate({severities:$scope.severityList}))
+            $el.find(".priority-data").append(selectionPriorityTemplate({priorities:$scope.priorityList}))
+            $el.find(".status-data").append(selectionStatusTemplate({statuses:$scope.statusList}))
+
+        $scope.$watch $attrs.ngModel, (issue) ->
+            if issue?
+                renderIssuestatus(issue)
+
+        if editable
+            $el.on "click", ".severity-data", (event) ->
+                event.preventDefault()
+                event.stopPropagation()
+                $el.find(".pop-severity").show()
+                body = angular.element("body")
+                body.one "click", (event) ->
+                    $el.find(".popover").hide()
+
+            $el.on "click", ".severity", (event) ->
+                event.preventDefault()
+                event.stopPropagation()
+                target = angular.element(event.currentTarget)
+                $model.$modelValue.severity = target.data("severity-id")
+                renderIssuestatus($model.$modelValue)
+                $el.find(".popover").hide()
+
+            $el.on "click", ".priority-data", (event) ->
+                event.preventDefault()
+                event.stopPropagation()
+                $el.find(".pop-priority").show()
+                body = angular.element("body")
+                body.one "click", (event) ->
+                    $el.find(".popover").hide()
+
+            $el.on "click", ".priority", (event) ->
+                event.preventDefault()
+                event.stopPropagation()
+                target = angular.element(event.currentTarget)
+                $model.$modelValue.priority = target.data("priority-id")
+                renderIssuestatus($model.$modelValue)
+                $el.find(".popover").hide()
+
+            $el.on "click", ".status-data", (event) ->
+                event.preventDefault()
+                event.stopPropagation()
+                $el.find(".pop-status").show()
+                body = angular.element("body")
+                body.one "click", (event) ->
+                    $el.find(".popover").hide()
+
+            $el.on "click", ".status", (event) ->
+                event.preventDefault()
+                event.stopPropagation()
+                target = angular.element(event.currentTarget)
+                $model.$modelValue.status = target.data("status-id")
+                renderIssuestatus($model.$modelValue)
+                $el.find(".popover").hide()
+
+    return {link:link, require:"ngModel"}
+
+module.directive("tgIssueStatus", IssueStatusDirective)

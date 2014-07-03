@@ -45,24 +45,7 @@ block content
                 include views/modules/comments
                 // include views/modules/activity
         sidebar.menu-secondary.sidebar
-            h1
-                span Open
-                span.us-detail-status In progress
-
-            div.issue-data
-                div.severity-data
-                    span.level
-                    span.severity-status Important
-                    span.level-name severity
-                div.priority-data
-                    span.level
-                    span.priority-status low
-                    span.level-name priority
-                div.status-data
-                    span.level
-                    span.status-status new
-                    span.level-name status
-
+            section.us-status(tg-issue-status, ng-model="issue")
             section.us-assigned-to(tg-assigned-to, ng-model="issue.assigned_to")
             section.watchers(tg-watchers, ng-model="issue.watchers")
 
