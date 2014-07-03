@@ -1,15 +1,16 @@
-extends layout
+extends dummy-layout
 
 block head
     title Taiga  Project management web application with scrum in mind!
 
 block content
-    div.wrapper(tg-project-profile, ng-controller="ProjectProfileController as ctrl")
-        sidebar.menu-secondary.sidebar
+    div.wrapper(tg-project-profile, ng-controller="ProjectProfileController as ctrl",
+                ng-init="section='admin'")
+        sidebar.menu-secondary.sidebar(tg-admin-navigation="project-profile")
             include views/modules/admin-menu
 
-        sidebar.menu-tertiary.sidebar
-            include views/modules/admin-submenu
+        sidebar.menu-tertiary.sidebar(tg-admin-navigation="details")
+            include views/modules/admin-submenu-project-profile
 
         section.main.project-details
             header
@@ -35,4 +36,4 @@ block content
 
                 input(type="submit", class="hidden")
                 a.button.button-green(href="")
-                    span Create
+                    span Save

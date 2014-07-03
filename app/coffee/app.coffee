@@ -35,8 +35,8 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide,
                     {templateUrl: "/partials/issues-detail-edit.html"})
 
     # Admin
-    $routeProvider.when("/project/:pslug/admin/project-profile",
-                    {templateUrl: "/partials/project-profile.html"})
+    $routeProvider.when("/project/:pslug/admin/project-profile/details",
+                    {templateUrl: "/partials/admin-project-profile.html"})
 
     # Auth
     $routeProvider.when("/login", {templateUrl: "/partials/login.html"})

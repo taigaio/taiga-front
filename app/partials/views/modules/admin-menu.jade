@@ -4,18 +4,23 @@ section.admin-menu
 
     nav
         ul
-            li
-                a(href="") Memberships
-                  span.icon.icon-arrow-right
-            li
-                a(href="") Role
-                  span.icon.icon-arrow-right
-            li
-                a(href="") Sprints
-                  span.icon.icon-arrow-right
-            li
-                a(href="") Project values
-                  span.icon.icon-arrow-right
-            li
-                a(href="") Project profiles
-                  span.icon.icon-arrow-right
+            li#adminmenu-project-profile
+                a(href="", tg-nav="project-admin-project-profile-details:project=project.slug")
+                    span.title Project profile
+                    span.icon.icon-arrow-right
+            li#adminmenu-memberships
+                a(href="")
+                    span.title Memberships
+                    span.icon.icon-arrow-right
+            li#adminmenu-roles
+                a(href="")
+                    span.title Roles
+                    span.icon.icon-arrow-right
+            li#adminmenu-sprints
+                a(href="")
+                    span.title Sprints
+                    span.icon.icon-arrow-right
+            li#adminmenu-project-values
+                a(href="")
+                    span.title Project values
+                    span.icon.icon-arrow-right

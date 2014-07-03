@@ -85,6 +85,12 @@ MainTaigaDirective = ($log, $compile, $rootscope) ->
                 <span class="item">Video</span>
             </a>
         </li>
+        <li id="nav-admin">
+            <a href="" tg-nav="project-admin-home:project=project.slug" title="Admin">
+                <span class="icon icon-video"></span>
+                <span class="item">Admin</span>
+            </a>
+        </li>
     </ul>
     <div class="user">
         <div class="user-settings">
@@ -166,7 +172,11 @@ urls = {
     "project-issues": "/project/:project/issues",
     "project-search": "/project/:project/search",
     "project-issues-detail": "/project/:project/issues/:ref",
-    "project-issues-detail-edit": "/project/:project/issues/:ref/edit"
+    "project-issues-detail-edit": "/project/:project/issues/:ref/edit",
+
+    # Admin
+    "project-admin-home": "/project/:project/admin/project-profile/details",
+    "project-admin-project-profile-details": "/project/:project/admin/project-profile/details"
 }
 
 init = ($log, $navurls) ->
