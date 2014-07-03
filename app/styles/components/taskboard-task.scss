@@ -45,7 +45,6 @@
         @extend %large;
         bottom: .2rem;
         color: $postit-hover;
-        cursor: move;
         display: none;
         position: absolute;
         &:hover {
@@ -58,6 +57,7 @@
     }
     .icon-drag-h {
         @extend %xlarge;
+        cursor: move;
         right: 45%;
     }
     &:hover {
