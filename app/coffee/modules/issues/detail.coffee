@@ -319,9 +319,6 @@ AssignedToDirective = ($rootscope, $confirm) ->
 module.directive("tgAssignedTo", ["$rootScope", "$tgConfirm", AssignedToDirective])
 
 
-
-
-
 #############################################################################
 ## Issue status directive
 #############################################################################

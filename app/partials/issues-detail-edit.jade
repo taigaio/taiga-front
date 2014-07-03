@@ -47,15 +47,18 @@ block content
             section.watchers(tg-watchers, ng-model="issue.watchers", editable="true")
 
             section.us-detail-settings
+                    //TODO: remove commented from issues-detail when copied to user-story-detail
+                    //fieldset
+                    //    label.clickable.button.button-green(for="client-requirement", ng-class="{true:'active', false:''}[issue.client_requirement]") Client requirement
+                    //    input(ng-model="issue.client_requirement", type="checkbox", id="client-requirement", name="client-requirement")
+                    //fieldset
+                    //    label.clickable.button.button-green(for="team-requirement", ng-class="{true:'active', false:''}[issue.team_requirement]") Team requirement
+                    //    input(ng-model="issue.team_requirement", type="checkbox", id="team-requirement", name="team-requirement")
                     fieldset
-                        label.button.button-gray(for="client-requirement") Client requirement
-                        input(type="checkbox", id="client-requirement")
-                    fieldset
-                        label.button.button-gray(for="team-requirement") Team requirement
-                        input(type="checkbox", id="client-requirement")
-                    fieldset
-                        label.button.button-red(for="Block") Block
-                        input(type="checkbox", id="Block")
+                        label.clickable.button.button-gray(for="blocked", ng-class="issue.is_blocked ? 'active' : ''") Block
+                        input(ng-model="issue.is_blocked", type="checkbox", id="blocked", name="blocked")
+
+                    a.button.button-red(href="") Delete
 
         div.lightbox.lightbox_block.hidden
             include views/modules/lightbox_block
