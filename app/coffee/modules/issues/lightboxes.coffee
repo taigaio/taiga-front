@@ -78,6 +78,7 @@ AddAssignedToDirective = () ->
         $scope.watcherSearch = {}
         $scope.$on "assigned-to:add", ->
             $el.removeClass("hidden")
+            $el.find("input").focus()
             $scope.$apply ->
                 $scope.watcherSearch = {}
 
