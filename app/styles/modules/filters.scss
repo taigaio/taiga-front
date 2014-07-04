@@ -30,7 +30,6 @@
         }
     }
     form {
-        margin-bottom: 2rem;
         .icon-search {
             position: absolute;
             right: .5rem;
@@ -44,7 +43,19 @@
     @include transition (all .1s ease-in);
 }
 
+.filters-applied {
+    margin-top: .5rem;
+    .single-filter {
+        margin-bottom: .5rem;
+    }
+}
+
+.filter-list {
+    margin-top: 2rem;
+}
+
 .filters-cats {
+    margin-top: 2rem;
     li {
         border-bottom: 1px solid $gray-light;
         text-transform: uppercase;
