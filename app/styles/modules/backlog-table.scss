@@ -28,7 +28,12 @@
     }
     .status,
     .points {
+        padding-right: 3rem;
         position: relative;
+        text-align: right;
+        .icon {
+            display: none;
+        }
     }
     .pop-role {
         @include popover(150px, '', 30px, 10px, '');

@@ -1,15 +1,15 @@
 div.row.us-item-row(ng-repeat="us in visibleUserstories track by us.id")
     div.user-stories
+        div.user-story-tags
+            span.tag(ng-repeat="tag in us.tags") {{ tag }}
         div.user-story-name
             input(type="checkbox", name="")
             a(href="", title="{{ us.subject }}") {{ us.subject }}
             span.us-settings
                 a.icon.icon-edit(href="", ng-click="ctrl.editUserStory(us)", title="Edit")
                 a.icon.icon-delete(href="", ng-click="ctrl.deleteUserStory(us)", title="Delete")
-        div.user-story-tags
-            span.tag(ng-repeat="tag in us.tags") {{ tag }}
 
-    div.status.width-2(tg-us-status="us" on-update="ctrl.loadProjectStats()")
+    div.status(tg-us-status="us" on-update="ctrl.loadProjectStats()")
         a.us-status(href="", title="Status Name")
             span.us-status-bind
             span.icon.icon-arrow-bottom
