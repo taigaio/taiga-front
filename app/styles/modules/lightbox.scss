@@ -216,6 +216,22 @@
             }
         }
     }
+    .delete-sprint {
+        @extend %small;
+        color: $grayer;
+        display: block;
+        margin-top: 1rem;
+        text-align: right;
+        a {
+            @include transition (color .3s linear);
+            color: $gray-light;
+            margin-left: .5rem;
+            &:hover {
+                @include transition (color .3s linear);
+                color: $red;
+            }
+        }
+    }
 }
 
 .lightbox_confirm-delete {

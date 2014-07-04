@@ -10,3 +10,6 @@ form
         input.date-end(tg-date-selector, ng-model="sprint.estimated_finish", type="text", placeholder="Estimated End", data-required="true")
     a.button.button-green(href="", title="Save")
         span Create
+    //-Should be only visible when in editable lightbox
+        span.delete-sprint Do you want to delete this sprint?
+            a.icon.icon-delete(href="", title="delete sprint")
