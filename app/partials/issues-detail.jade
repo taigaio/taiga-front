@@ -20,7 +20,7 @@ block content
                         a.icon.icon-arrow-left(href="", title="next issue")
                         a.icon.icon-arrow-right(href="", title="previous issue")
 
-                div.blocked-warning(ng-hide="!issue.is_blocked")
+                div.blocked-warning(ng-show="issue.is_blocked")
                     span.icon.icon-warning
                     p.blocked Blocked!
                     p(tg-bind-html="issue.blocked_note_html")

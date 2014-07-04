@@ -15,7 +15,7 @@ block content
                 div.us-title
                     input(type="text", ng-model="issue.subject")
 
-                div.blocked-warning(ng-hide="!issue.is_blocked")
+                div.blocked-warning(ng-show="issue.is_blocked")
                     span.icon.icon-warning
                     p.blocked Blocked!
                     p(tg-bind-html="issue.blocked_note_html")
@@ -55,8 +55,8 @@ block content
                     //    label.clickable.button.button-green(for="team-requirement", ng-class="{true:'active', false:''}[issue.team_requirement]") Team requirement
                     //    input(ng-model="issue.team_requirement", type="checkbox", id="team-requirement", name="team-requirement")
 
-                    a.button.button-gray.clickable(ng-hide="issue.is_blocked", ng-click="ctrl.block()") Block
-                    a.button.button-red(href="") Delete
+                    a.button.button-gray.clickable(ng-show="!issue.is_blocked", ng-click="ctrl.block()") Block
+                    a.button.button-red(ng-click="ctrl.delete()", href="") Delete
 
         div.lightbox.lightbox_block.hidden(tg-lb-block, title="Blocking issue", ng-model="issue")
             include views/modules/lightbox_block

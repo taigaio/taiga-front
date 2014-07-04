@@ -92,6 +92,15 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
     unblock: ->
         @rootscope.$broadcast("unblock", @scope.issue)
 
+    delete: ->
+        #TODO: i18n
+        title = "Delete Issue"
+        subtitle = @scope.issue.subject
+
+        @confirm.ask(title, subtitle).then =>
+            @.repo.remove(@scope.issue).then =>
+                @location.path("/project/#{@scope.project.slug}/issues")
+
 module.controller("IssueDetailController", IssueDetailController)
 
 
@@ -234,7 +243,6 @@ WatchersDirective = ($rootscope, $confirm) ->
             watchers = _.map(watcherIds, (watcherId) -> $scope.usersById[watcherId])
             html = template({watchers: watchers, editable:editable})
             $el.html(html)
-            console.log "--------", watchers, watchers.length
             if watchers.length == 0
                 if editable
                     $el.find(".title").text("Add watchers")
