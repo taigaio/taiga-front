@@ -46,7 +46,7 @@ BlockDirective = () ->
 
             $scope.$apply ->
                 $model.$modelValue.is_blocked = true
-                $model.$modelValue.blocked_note_html = $el.find(".reason").val()
+                $model.$modelValue.blocked_note = $el.find(".reason").val()
 
             $el.addClass("hidden")
 
