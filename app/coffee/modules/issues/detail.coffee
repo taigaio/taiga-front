@@ -234,6 +234,13 @@ WatchersDirective = ($rootscope, $confirm) ->
             watchers = _.map(watcherIds, (watcherId) -> $scope.usersById[watcherId])
             html = template({watchers: watchers, editable:editable})
             $el.html(html)
+            console.log "--------", watchers, watchers.length
+            if watchers.length == 0
+                if editable
+                    $el.find(".title").text("Add watchers")
+                    $el.find(".watchers-header").addClass("no-watchers")
+                else
+                    $el.find(".watchers-header").hide()
 
         if not editable
             $el.find(".add-watcher").remove()
