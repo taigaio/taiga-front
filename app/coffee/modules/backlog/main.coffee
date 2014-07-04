@@ -504,7 +504,7 @@ UsRolePointsSelectorDirective = ($rootscope) ->
 
         $scope.$on "uspoints:select", (ctx, roleId, roleName) ->
             $el.find(".popover").hide()
-            $el.find(".header-points").text(roleName)
+            $el.find(".header-points").text("#{roleName}/Total")
 
         $scope.$on "uspoints:clear-selection", (ctx, roleId) ->
             $el.find(".popover").hide()
@@ -582,7 +582,7 @@ UsPointsDirective = ($repo) ->
             else
                 pointId = us.points[roleId]
                 points = $scope.pointsById[pointId]
-                pointsDom.text("#{points.name}/#{us.total_points}")
+                pointsDom.text("#{points.name} / #{us.total_points}")
 
         calculateTotalPoints = ->
             values = _.map(us.points, (v, k) -> $scope.pointsById[v].value)
