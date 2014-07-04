@@ -10,11 +10,7 @@ form
     fieldset
         input(type="text", placeholder="Tags", tg-tags, ng-model="us.tags")
     fieldset
-        div.markdown-preview
-            a.edit.active(href="", title="Edit") Edit
-            a.preview(href="", title="Preview") Preview
         textarea.description(placeholder="One user story per line", ng-model="us.description")
-        div.description-preview.hidden
     div.new-us-settings
         fieldset
             label.requirement.team-requirement(for="team-requirement", tg-i18n="us.team-requirement")

@@ -23,24 +23,6 @@ taiga = @.taiga
 bindOnce = @.taiga.bindOnce
 
 CreateEditTaskDirective = ($repo, $model, $rs, $rootScope) ->
-    editDescription = ($scope, $el) ->
-        $el.find('.markdown-preview a').removeClass("active")
-        $el.find('.markdown-preview a.edit').addClass("active")
-        descriptionDOM = $el.find("textarea.description")
-        descriptionPreviewDOM = $el.find(".description-preview")
-        descriptionDOM.show()
-        descriptionPreviewDOM.hide()
-
-    previewDescription = ($scope, $el) ->
-        $el.find('.markdown-preview a').removeClass("active")
-        $el.find('.markdown-preview a.preview').addClass("active")
-        descriptionDOM = $el.find("textarea.description")
-        descriptionPreviewDOM = $el.find(".description-preview")
-        $rs.mdrender.render($scope.projectId, $scope.task.description).then (data) ->
-            descriptionDOM.hide()
-            descriptionPreviewDOM.html(data.data)
-            descriptionPreviewDOM.show()
-
     link = ($scope, $el, attrs) ->
         isNew = true
 
@@ -54,7 +36,6 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootScope) ->
                 assigned_to: null
             }
             isNew = true
-            editDescription($scope, $el)
             # Update texts for creation
             $el.find(".button-green span").html("Create") #TODO: i18n
             $el.find(".title").html("New task  ") #TODO: i18n
@@ -63,7 +44,6 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootScope) ->
         $scope.$on "taskform:edit", (ctx, task) ->
             $scope.task = task
             isNew = false
-            editDescription($scope, $el)
             # Update texts for edition
             $el.find(".button-green span").html("Save") #TODO: i18n
             $el.find(".title").html("Edit task  ") #TODO: i18n
@@ -80,14 +60,6 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootScope) ->
             $el.off()
 
         # Dom Event Handlers
-
-        $el.on "click", ".markdown-preview a.edit", (event) ->
-            event.preventDefault()
-            editDescription($scope, $el)
-
-        $el.on "click", ".markdown-preview a.preview", (event) ->
-            event.preventDefault()
-            previewDescription($scope, $el)
 
         $el.on "click", ".close", (event) ->
             event.preventDefault()
