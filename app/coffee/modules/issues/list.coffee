@@ -49,18 +49,35 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location) ->
         @scope.sprintId = @params.id
         @scope.sectionName = "Issues"
+        @scope.filters = {}
 
         promise = @.loadInitialData()
         promise.then null, ->
             console.log "FAIL" #TODO
 
+    loadProject: ->
+        return @rs.projects.get(@scope.projectId).then (project) =>
+            @scope.project = project
+            @scope.issueStatusById = groupBy(project.issue_statuses, (x) -> x.id)
+            @scope.severityById = groupBy(project.severities, (x) -> x.id)
+            @scope.priorityById = groupBy(project.priorities, (x) -> x.id)
+            @scope.membersById = groupBy(project.memberships, (x) -> x.user)
+            return project
+
+    getUrlFilters: ->
+        filters = _.pick(@location.search(), "page", "tags", "statuses", "types", "subject",
+                                             "severities", "priorities", "assignedTo")
+        filters.page = 1 if not filters.page
+        return filters
+
     loadFilters: ->
         return @rs.issues.filtersData(@scope.projectId).then (data) =>
-            console.log data
+            urlfilters = @.getUrlFilters()
 
             # Build selected filters (from url) fast lookup data structure
             searchdata = {}
-            for name, value of @.getFilters()
+
+            for name, value of urlfilters
                 if name == "page"
                     continue
 
@@ -75,43 +92,42 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                     return true
                 return false
 
-            console.log "2222", searchdata
-
             # Build filters data structure
-            filters = {}
-            filters.tags = _.map data.tags, (t) =>
+            @scope.filters.tags = _.map data.tags, (t) =>
                 obj = {id:t[0], name:t[0], count: t[1], type:"tags"}
                 obj.selected = true if isSelected("tags", obj.id)
                 return obj
 
-            filters.priorities = _.map data.priorities, (t) =>
+            @scope.filters.priorities = _.map data.priorities, (t) =>
                 obj = {id:t[0], name:@scope.priorityById[t[0]].name, count:t[1], type:"priorities"}
                 obj.selected = true if isSelected("priorities", obj.id)
                 return obj
 
-            filters.severities = _.map data.severities, (t) =>
+            @scope.filters.severities = _.map data.severities, (t) =>
                 obj = {id:t[0], name:@scope.severityById[t[0]].name, count:t[1], type:"severities"}
                 obj.selected = true if isSelected("severities", obj.id)
                 return obj
 
-            @scope.filters = filters
-            @rootscope.$broadcast("filters:loaded", filters)
+            @scope.filters.assignedTo = _.map data.assigned_to, (t) =>
+                obj = {id:t[0], count:t[1], type:"assignedTo"}
+                if t[0]
+                    obj.name = @scope.usersById[t[0]].full_name_display
+                else
+                    obj.name = "Unassigned"
+
+                obj.selected = true if isSelected("assignedTo", obj.id)
+                return obj
+
+            @scope.filters.statuses = _.map data.statuses, (t) =>
+                obj = {id:t[0], name:@scope.issueStatusById[t[0]].name, count:t[1], type:"statuses"}
+                obj.selected = true if isSelected("statuses", obj.id)
+                return obj
+
+            if urlfilters.subject
+                @scope.filters.subject = urlfilters.subject
+
+            @rootscope.$broadcast("filters:loaded", @scope.filters)
             return data
-
-    loadProject: ->
-        return @rs.projects.get(@scope.projectId).then (project) =>
-            @scope.project = project
-            @scope.issueStatusById = groupBy(project.issue_statuses, (x) -> x.id)
-            @scope.severityById = groupBy(project.severities, (x) -> x.id)
-            @scope.priorityById = groupBy(project.priorities, (x) -> x.id)
-            @scope.membersById = groupBy(project.memberships, (x) -> x.user)
-            return project
-
-    getFilters: ->
-        filters = _.pick(@location.search(), "page", "tags", "status", "type",
-                                             "severities", "priorities")
-        filters.page = 1 if not filters.page
-        return filters
 
     # Convert stored filters to http parameters
     # ready filters (the name difference exists
@@ -121,13 +137,19 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
     prepareFilters: ->
         filters = {}
 
-        for name, values of @.getFilters()
+        for name, values of @.getUrlFilters()
             if name == "severities"
                 name = "severity"
             else if name == "priorities"
                 name = "priority"
+            else if name == "assignedTo"
+                name = "assigned_to"
+            else if name == "statuses"
+                name = "status"
 
             filters[name] = values
+
+        console.log "filter query params:", filters
         return filters
 
     loadIssues: ->
@@ -340,7 +362,6 @@ IssuesFiltersDirective = ($log, $location) ->
     initializeSelectedFilters = ($el, filters) ->
         for name, values of filters
             for val in values
-                console.log "klkk", val.selected
                 selectedFilters.push(val) if val.selected
 
         renderSelectedFilters($el)

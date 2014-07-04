@@ -57,6 +57,7 @@ class FiltersMixin
         if params[name] != undefined and name != "page"
             existing = _.map(taiga.toString(params[name]).split(","), trim)
             existing.push(taiga.toString(value))
+            existing = _.compact(existing)
             value = joinStr(",", _.uniq(existing))
 
         location = if load then @location else @location.noreload(@scope)
@@ -73,6 +74,7 @@ class FiltersMixin
 
         parsedValues = _.map(taiga.toString(params[name]).split(","), trim)
         newValues = _.reject(parsedValues, (x) -> x == taiga.toString(value))
+        newValues = _.compact(newValues)
 
         if _.isEmpty(newValues)
             value = null
