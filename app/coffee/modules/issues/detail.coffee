@@ -86,6 +86,12 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
                       .then(=> @.loadUsersAndRoles())
                       .then(=> @.loadIssue())
 
+    block: ->
+        @rootscope.$broadcast("block", @scope.issue)
+
+    unblock: ->
+        @rootscope.$broadcast("unblock", @scope.issue)
+
 module.controller("IssueDetailController", IssueDetailController)
 
 

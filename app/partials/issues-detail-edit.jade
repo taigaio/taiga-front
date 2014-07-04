@@ -15,11 +15,11 @@ block content
                 div.us-title
                     input(type="text", ng-model="issue.subject")
 
-                // div.blocked-warning
-                //     span.icon.icon-warning
-                //     p.blocked Blocked!
-                //     p We need Pilar to make a prototype out of this or we are not sure
-                //     a.button.button-red.button-block(href="", title="Unblock US") Unblock
+                div.blocked-warning(ng-hide="!issue.is_blocked")
+                    span.icon.icon-warning
+                        p.blocked Blocked!
+                        p(tg-bind-html="issue.blocked_note_html")
+                        a.button.button-red.button-block.unblock(ng-click="ctrl.unblock()", href="", title="Unblock US") Unblock
 
                 div.user-story-tags(tg-tag-line, editable="true", ng-model="issue.tags")
 
@@ -54,13 +54,11 @@ block content
                     //fieldset
                     //    label.clickable.button.button-green(for="team-requirement", ng-class="{true:'active', false:''}[issue.team_requirement]") Team requirement
                     //    input(ng-model="issue.team_requirement", type="checkbox", id="team-requirement", name="team-requirement")
-                    fieldset
-                        label.clickable.button.button-gray(for="blocked", ng-class="issue.is_blocked ? 'active' : ''") Block
-                        input(ng-model="issue.is_blocked", type="checkbox", id="blocked", name="blocked")
 
+                    a.button.button-gray.clickable(ng-hide="issue.is_blocked", ng-click="ctrl.block()") Block
                     a.button.button-red(href="") Delete
 
-        div.lightbox.lightbox_block.hidden
+        div.lightbox.lightbox_block.hidden(tg-lb-block, title="Blocking issue", ng-model="issue")
             include views/modules/lightbox_block
 
         div.lightbox.lightbox_select_user.hidden(tg-lb-add-assigned-to)

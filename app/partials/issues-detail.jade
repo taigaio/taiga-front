@@ -20,11 +20,10 @@ block content
                         a.icon.icon-arrow-left(href="", title="next issue")
                         a.icon.icon-arrow-right(href="", title="previous issue")
 
-                // div.blocked-warning
-                //     span.icon.icon-warning
-                //     p.blocked Blocked!
-                //     p We need Pilar to make a prototype out of this or we are not sure
-                //     a.button.button-red.button-block(href="", title="Unblock US") Unblock
+                div.blocked-warning(ng-hide="!issue.is_blocked")
+                    span.icon.icon-warning
+                        p.blocked Blocked!
+                        p(tg-bind-html="issue.blocked_note_html")
 
                 div.user-story-tags(tg-tag-line, ng-model="issue.tags")
 
@@ -53,7 +52,6 @@ block content
                 //TODO: remove commented from issues-detail when copied to user-story-detail
                 //span.button.button-gray Client requirement
                 //span.button.button-gray Team requirement
-                span.button.button-gray Block
 
         div.lightbox.lightbox_block.hidden
             include views/modules/lightbox_block

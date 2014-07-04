@@ -91,6 +91,7 @@ modules = [
     "taigaIssues",
     "taigaSearch",
     "taigaAdmin",
+    "taigaLightboxes",
 
     # Vendor modules
     "ngRoute",
