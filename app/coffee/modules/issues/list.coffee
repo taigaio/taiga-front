@@ -27,6 +27,7 @@ toString = @.taiga.toString
 joinStr = @.taiga.joinStr
 groupBy = @.taiga.groupBy
 bindOnce = @.taiga.bindOnce
+debounce = @.taiga.debounce
 
 module = angular.module("taigaIssues")
 
@@ -124,7 +125,7 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 return obj
 
             if urlfilters.subject
-                @scope.filters.subject = urlfilters.subject
+                @scope.filtersSubject = urlfilters.subject
 
             @rootscope.$broadcast("filters:loaded", @scope.filters)
             return data
@@ -149,7 +150,6 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
             filters[name] = values
 
-        console.log "filter query params:", filters
         return filters
 
     loadIssues: ->
@@ -315,7 +315,9 @@ IssuesDirective = ($log, $location) ->
 
     return {link:link}
 
-
+#############################################################################
+## Issues Filters Directive
+#############################################################################
 
 IssuesFiltersDirective = ($log, $location) ->
     template = _.template("""
@@ -351,34 +353,34 @@ IssuesFiltersDirective = ($log, $location) ->
 
     selectedFilters = []
 
-    showFilters = ($el) ->
-        $el.find(".filters-cats").hide()
-        $el.find(".filter-list").show()
-
-    showCategories = ($el) ->
-        $el.find(".filters-cats").show()
-        $el.find(".filter-list").hide()
-
-    initializeSelectedFilters = ($el, filters) ->
-        for name, values of filters
-            for val in values
-                selectedFilters.push(val) if val.selected
-
-        renderSelectedFilters($el)
-
-    renderSelectedFilters = ($el) ->
-        html = templateSelected({filters:selectedFilters})
-        $el.find(".filters-applied").html(html)
-
-    renderFilters = ($el, filters) ->
-        html = template({filters:filters})
-        $el.find(".filter-list").html(html)
-
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.closest(".wrapper").controller()
 
-        $scope.$on "filters:loaded", (ctx, filters) ->
-            initializeSelectedFilters($el, filters)
+        showFilters = (title) ->
+            $el.find(".filters-cats").hide()
+            $el.find(".filter-list").show()
+            $el.find("h1 a.subfilter").removeClass("hidden")
+            $el.find("h1 a.subfilter span.title").html(title)
+
+        showCategories = ->
+            $el.find(".filters-cats").show()
+            $el.find(".filter-list").hide()
+            $el.find("h1 a.subfilter").addClass("hidden")
+
+        initializeSelectedFilters = (filters) ->
+            for name, values of filters
+                for val in values
+                    selectedFilters.push(val) if val.selected
+
+            renderSelectedFilters()
+
+        renderSelectedFilters = ->
+            html = templateSelected({filters:selectedFilters})
+            $el.find(".filters-applied").html(html)
+
+        renderFilters = (filters) ->
+            html = template({filters:filters})
+            $el.find(".filter-list").html(html)
 
         toggleFilterSelection = (type, id) ->
             filters = $scope.filters[type]
@@ -397,16 +399,31 @@ IssuesFiltersDirective = ($log, $location) ->
                     $ctrl.selectFilter("page", 1)
                     $ctrl.loadIssues()
 
-            renderSelectedFilters($el, selectedFilters)
-            renderFilters($el, filters)
+            renderSelectedFilters(selectedFilters)
+            renderFilters(_.reject(filters, "selected"))
 
+        # Angular Watchers
+        $scope.$on "filters:loaded", (ctx, filters) ->
+            initializeSelectedFilters(filters)
+
+        selectSubjectFilter = debounce 400, (value) ->
+            return if value is undefined
+            if value.length == 0
+                $ctrl.replaceFilter("subject", null)
+            else
+                $ctrl.replaceFilter("subject", value)
+            $ctrl.loadIssues()
+
+        $scope.$watch("filtersSubject", selectSubjectFilter)
+
+        # Dom Event Handlers
         $el.on "click", ".filters-cats > ul > li > a", (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
             tags = $scope.filters[target.data("type")]
 
-            renderFilters($el, tags)
-            showFilters($el)
+            renderFilters(_.reject(tags, "selected"))
+            showFilters(target.attr("title"))
 
         $el.on "click", ".filters-inner > h1 > a.title", (event) ->
             event.preventDefault()

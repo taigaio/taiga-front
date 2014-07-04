@@ -2,31 +2,22 @@ section.filters
     div.filters-inner
         h1
             a.title(href="", title="back to categories") filters
-            a.subfilter(href="", title="cat-name")
+            a.hidden.subfilter(href="", title="cat-name")
                 span.icon.icon-arrow-right
-                span status
+                span.title status
         form
             fieldset
-                input(type="text", placeholder="Search by subject...", ng-model="filters.subject")
+                input(type="text", placeholder="Search by subject...", ng-model="filtersSubject")
                 a.icon.icon-search(href="", title="search")
 
-        //- First step for selecting category
         div.filters-step-cat
-            //- $(.filters-applied) only visible when filters are being applied
             div.filters-applied
-                // a.single-filter.selected
-                //     span.name Filter23
-                //     span.icon.icon-delete
             div.filters-cats
                 ul
                     li
                         a(href="", title="Status", data-type="statuses")
                             span.title Status
                             span.icon.icon-arrow-right
-                    // li
-                    //     a(href="", title="Type", data-type="types")
-                    //         span.title Type
-                    //         span.icon.icon-arrow-right
                     li
                         a(href="", title="Severity", data-type="severities")
                             span.title Severity
@@ -44,5 +35,4 @@ section.filters
                             span.title Assigned to
                             span.icon.icon-arrow-right
 
-        //- Second step for selecting single filters to apply
         div.filter-list.hidden
