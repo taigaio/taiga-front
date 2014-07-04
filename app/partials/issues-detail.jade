@@ -22,8 +22,8 @@ block content
 
                 div.blocked-warning(ng-hide="!issue.is_blocked")
                     span.icon.icon-warning
-                        p.blocked Blocked!
-                        p(tg-bind-html="issue.blocked_note_html")
+                    p.blocked Blocked!
+                    p(tg-bind-html="issue.blocked_note_html")
 
                 div.user-story-tags(tg-tag-line, ng-model="issue.tags")
 

@@ -17,9 +17,9 @@ block content
 
                 div.blocked-warning(ng-hide="!issue.is_blocked")
                     span.icon.icon-warning
-                        p.blocked Blocked!
-                        p(tg-bind-html="issue.blocked_note_html")
-                        a.button.button-red.button-block.unblock(ng-click="ctrl.unblock()", href="", title="Unblock US") Unblock
+                    p.blocked Blocked!
+                    p(tg-bind-html="issue.blocked_note_html")
+                    a.button.button-red.button-block.unblock(ng-click="ctrl.unblock()", href="", title="Unblock US") Unblock
 
                 div.user-story-tags(tg-tag-line, editable="true", ng-model="issue.tags")
 
