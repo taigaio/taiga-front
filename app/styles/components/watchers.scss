@@ -15,6 +15,9 @@
             right: 1rem;
             top: 4px;
         }
+        &.no-watchers {
+            border-bottom: 0;
+        }
     }
     .watcher-single {
         @include table-flex(center, center, flex, row, wrap, center);

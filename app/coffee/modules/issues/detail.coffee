@@ -217,25 +217,25 @@ WatchersDirective = ($rootscope, $confirm) ->
         <a href="" title="Add watcher" class="icon icon-plus add-watcher">
         </a>
         <% } %>
-        <% _.each(watchers, function(watcher) { %>
-        <div class="watcher-single">
-            <div class="watcher-avatar">
-                <a class="avatar" href="" title="Assigned to">
-                    <img src="<%= watcher.photo %>" alt="<%= watcher.full_name_display %>">
-                </a>
-            </div>
-            <div class="watcher-name">
-                <a href="" title="<%= watcher.full_name_display %>">
-                    <%= watcher.full_name_display %>
-                </a>
-                <% if (editable) { %>
-                    <a class="icon icon-delete" data-watcher-id="<%= watcher.id %>" href="" title="delete-watcher">
-                <% } %>
-                </a>
-            </div>
+    </div>
+    <% _.each(watchers, function(watcher) { %>
+    <div class="watcher-single">
+        <div class="watcher-avatar">
+            <a class="avatar" href="" title="Assigned to">
+                <img src="<%= watcher.photo %>" alt="<%= watcher.full_name_display %>">
+            </a>
         </div>
-        <% }); %>
-    </div>""")
+        <div class="watcher-name">
+            <a href="" title="<%= watcher.full_name_display %>">
+                <%= watcher.full_name_display %>
+            </a>
+            <% if (editable) { %>
+                <a class="icon icon-delete" data-watcher-id="<%= watcher.id %>" href="" title="delete-watcher"></a>
+            <% } %>
+        </div>
+    </div>
+    <% }); %>
+    """)
 
     link = ($scope, $el, $attrs, $model) ->
         editable = $attrs.editable?
