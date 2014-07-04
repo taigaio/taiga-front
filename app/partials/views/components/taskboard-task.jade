@@ -2,11 +2,12 @@ div.taskboard-tagline
     a.taskboard-tag(ng-repeat="tag in task.tags" href="" title="{{ tag }}")
 div.taskboard-task-inner
     figure.avatar
-        a(href="", title="UserName")
-            img.avatar(src="{{ usersById[task.assigned_to].photo }}", alt="{{ usersById[task.assigned_to].full_name_display }}")
+        a(href="", title="See {{ usersById[task.assigned_to].username }}'s profile")
+            img.avatar(src="{{ usersById[task.assigned_to].photo }}",
+                       alt="{{ usersById[task.assigned_to].username }}'s avatar")
             figcaption {{ usersById[task.assigned_to].full_name_display }}
     p.taskboard-text
         span.task-num(ng-bind="task.ref")
-        a.task-name(href="", title="task.subject", ng-bind="task.subject")
-    a.icon.icon-edit(href="", title="Edit", ng-click="ctrl.editTask(task)")
+        a.task-name(href="", title="See task details", ng-bind="task.subject")
+    a.icon.icon-edit(href="", title="Edit task", ng-click="ctrl.editTask(task)")
     a.icon.icon-drag-h(href="", title="Drag&Drop")

@@ -220,7 +220,8 @@ TaskboardUsPointsDirective = ($repo, $confirm) ->
     <% _.each(usRolePoints, function(rolePoint) { %>
     <li>
         <%- rolePoint.role.name %>
-        <a href="" class="us-role-points">
+        <a href="" class="us-role-points"
+           title="Change user story points for role '<%- rolePoint.role.name %>'">
             <%- rolePoint.point.name %>
             <span class="icon icon-arrow-bottom"></span>
         </a>
@@ -236,7 +237,7 @@ TaskboardUsPointsDirective = ($repo, $confirm) ->
         </ul>
     </li>
     <% }); %>
-    """)
+    """) # TODO: i18n
     renderUserStoryPoints = ($el, $scope, us) ->
         points = $scope.pointsList
         usRolePoints = []
@@ -291,7 +292,7 @@ TaskboardUsPointsDirective = ($repo, $confirm) ->
                         $ctrl.loadSprintStats()
 
                 onError = ->
-                    $confirm.notify("error", "There is an error. Try it later.")
+                    $confirm.notify("error", "There is an error. Try it later.") # TODO: i18n
                     us.revert()
                     renderUserStoryPoints($el, $scope, us)
 
@@ -369,7 +370,7 @@ SprintGraphDirective = ->
                     redrawChart(element, $scope.stats.days)
 
                 $scope.$on "taskboard:graph:toggle-visibility", ->
-                    $el.parent().toggleClass('open');
+                    $el.parent().toggleClass('open')
 
         $scope.$on "$destroy", ->
             $el.off()
