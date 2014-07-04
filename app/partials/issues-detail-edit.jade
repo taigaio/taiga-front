@@ -28,19 +28,8 @@ block content
                 textarea(placeholder="Write a description of your issue", ng-model="issue.description")
 
             // include views/modules/attachments
-            section.us-activity
-                ul.us-activity-tabs
-                    li
-                        a.active(href="#")
-                            span.icon.icon-bulk
-                            span.tab-title Comments
+            textarea(ng-model="issue.comment", placeholder="Write here a new commet")
 
-                    li
-                        a(href="#")
-                            span.icon.icon-issues
-                            span.tab-title Activity
-                include views/modules/comments
-                // include views/modules/activity
         sidebar.menu-secondary.sidebar
             section.us-status(tg-issue-status, ng-model="issue", editable="true")
             section.us-assigned-to(tg-assigned-to, ng-model="issue.assigned_to", editable="true")

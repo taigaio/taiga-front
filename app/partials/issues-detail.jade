@@ -17,8 +17,8 @@ block content
                         span.us-number(tg-bo-html="issue.ref")
                         span.us-name(ng-bind="issue.subject")
                     div.issue-nav
-                        a.icon.icon-arrow-left(href="", title="next issue")
-                        a.icon.icon-arrow-right(href="", title="previous issue")
+                        a.icon.icon-arrow-left(ng-show="nextUrl", href="{{ nextUrl }}", title="next issue")
+                        a.icon.icon-arrow-right(ng-show="previousUrl",href="{{ previousUrl }}", title="previous issue")
 
                 div.blocked-warning(ng-show="issue.is_blocked")
                     span.icon.icon-warning

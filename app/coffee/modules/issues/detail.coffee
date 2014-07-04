@@ -69,7 +69,13 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
     loadIssue: ->
         return @rs.issues.get(@scope.projectId, @scope.issueId).then (issue) =>
             @scope.issue = issue
-            return issue
+            @scope.previousUrl = "/project/#{@scope.project.slug}/issues/#{@scope.issue.neighbors.previous.ref}" if @scope.issue.neighbors.previous.id?
+            @scope.nextUrl = "/project/#{@scope.project.slug}/issues/#{@scope.issue.neighbors.next.ref}" if @scope.issue.neighbors.next.id?
+
+    loadHistory: ->
+        return @rs.issues.history(@scope.issueId).then (history) =>
+            @scope.history = history.results
+            @scope.comments = _.filter(history.results, (historyEntry) -> historyEntry.comment != "")
 
     loadInitialData: ->
         params = {
@@ -85,6 +91,7 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         return promise.then(=> @.loadProject())
                       .then(=> @.loadUsersAndRoles())
                       .then(=> @.loadIssue())
+                      .then(=> @.loadHistory())
 
     block: ->
         @rootscope.$broadcast("block", @scope.issue)
@@ -117,10 +124,9 @@ IssueDirective = ($tgrepo, $log, $location) ->
 
         $el.on "click", ".save-issue", (event) ->
             $tgrepo.save($scope.issue).then ->
-                console.log "TODO"
+                $location.path("/project/#{$scope.project.slug}/issues/#{$scope.issue.ref}")
 
     return {link:link}
-
 
 module.directive("tgIssueDetail", ["$tgRepo", "$log", "$tgLocation", IssueDirective])
 

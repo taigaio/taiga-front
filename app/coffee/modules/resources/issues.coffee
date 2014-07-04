@@ -39,6 +39,9 @@ resourceProvider = ($repo) ->
     service.filtersData = (projectId) ->
         return $repo.queryOneRaw("projects", "#{projectId}/issue_filters_data")
 
+    service.history = (issueId) ->
+        return $repo.queryOneRaw("history/issue", issueId)
+
     return (instance) ->
         instance.issues = service
 
