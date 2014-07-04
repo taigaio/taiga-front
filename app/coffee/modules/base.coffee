@@ -87,7 +87,7 @@ MainTaigaDirective = ($log, $compile, $rootscope) ->
         </li>
         <li id="nav-admin">
             <a href="" tg-nav="project-admin-home:project=project.slug" title="Admin">
-                <span class="icon icon-video"></span>
+                <span class="icon icon-settings"></span>
                 <span class="item">Admin</span>
             </a>
         </li>
@@ -104,12 +104,7 @@ MainTaigaDirective = ($log, $compile, $rootscope) ->
             </a>
         </div>
     </div>
-    <div class="settings">
-        <a href="" title="User preferences">Pilar</a>
-        <a href="" title="Site preferences">
-            <span class="icon icon-settings"></span>
-        </a>
-    </div>""")
+    """)
 
     # WARNING: this code has traces of slighty hacky parts
     # This rerenders and compiles the navigation when ng-view
