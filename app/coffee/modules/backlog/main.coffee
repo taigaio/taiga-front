@@ -58,7 +58,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @scope.$on("sprintform:create:success", @.loadSprints)
         @scope.$on("sprintform:create:success", @.loadProjectStats)
         @scope.$on("sprintform:remove:success", @.loadSprints)
-        @scope.$on("sprintform:remove:success", @.loadProjectStats)        
+        @scope.$on("sprintform:remove:success", @.loadProjectStats)
         @scope.$on("usform:new:success", @.loadUserstories)
         @scope.$on("usform:edit:success", @.loadUserstories)
 
@@ -171,7 +171,6 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             console.log "statuses", obj
             return obj
 
-        console.log @scope.filters.statuses
         return @scope.filters
 
     ## Template actions
@@ -249,76 +248,6 @@ BacklogDirective = ($repo, $rootscope) ->
             $scope.$on("userstories:loaded", reloadDoomlineLocation)
             $scope.$on("doomline:redraw", reloadDoomlineLocation)
 
-    #########################
-    ## Drag & Drop Link
-    #########################
-
-    linkSortable = ($scope, $el, $attrs, $ctrl) ->
-        resortAndSave = ->
-            toSave = []
-            for item, i in $scope.userstories
-                if item.order == i
-                    continue
-                item.order = i
-
-            toSave = _.filter($scope.userstories, (x) -> x.isModified())
-            $repo.saveAll(toSave).then ->
-                console.log "FINISHED", arguments
-
-        onUpdateItem = (event) ->
-            console.log "onUpdate", event
-
-            item = angular.element(event.item)
-            itemScope = item.scope()
-
-            ids = _.map($scope.userstories, "id")
-            index = ids.indexOf(itemScope.us.id)
-
-            $scope.userstories.splice(index, 1)
-            $scope.userstories.splice(item.index(), 0, itemScope.us)
-
-            resortAndSave()
-
-        onAddItem = (event) ->
-            console.log "onAddItem", event
-            item = angular.element(event.item)
-            itemScope = item.scope()
-            itemIndex = item.index()
-
-            itemScope.us.milestone = null
-            userstories = $scope.userstories
-            userstories.splice(itemIndex, 0, itemScope.us)
-
-            item.remove()
-            item.off()
-
-            $scope.$apply()
-            resortAndSave()
-
-        onRemoveItem = (event) ->
-            console.log "onRemoveItem", event
-            item = angular.element(event.item)
-            itemScope = item.scope()
-
-            ids = _.map($scope.userstories, "id")
-            index = ids.indexOf(itemScope.us.id)
-
-            if index != -1
-                userstories = $scope.userstories
-                userstories.splice(index, 1)
-
-            item.off()
-            itemScope.$destroy()
-
-        dom = $el.find(".backlog-table-body")
-        sortable = new Sortable(dom[0], {
-            group: "backlog",
-            selector: ".us-item-row",
-            onUpdate: onUpdateItem
-            onAdd: onAddItem
-            onRemove: onRemoveItem
-        })
-
     ##############################
     ## Move to current sprint link
     ##############################
@@ -335,6 +264,7 @@ BacklogDirective = ($repo, $rootscope) ->
 
             # Add them to current sprint
             $scope.sprints[0].user_stories = _.union(selectedUss, $scope.sprints[0].user_stories)
+
             # Update the total of points
             $scope.sprints[0].total_points += totalExtraPoints
 
@@ -391,126 +321,15 @@ BacklogDirective = ($repo, $rootscope) ->
         $ctrl = $el.controller()
 
         linkToolbar($scope, $el, $attrs, $ctrl)
-        linkSortable($scope, $el, $attrs, $ctrl)
         linkFilters($scope, $el, $attrs, $ctrl)
         linkDoomLine($scope, $el, $attrs, $ctrl)
 
-        $scope.$on "$destroy", ->
-            $el.off()
-
-    return {link: link}
-
-#############################################################################
-## Sprint Directive
-#############################################################################
-
-BacklogSprintDirective = ($repo, $rootscope) ->
-
-    #########################
-    ## Common parts
-    #########################
-
-    linkCommon = ($scope, $el, $attrs, $ctrl) ->
-        sprint = $scope.$eval($attrs.tgBacklogSprint)
-        if $scope.$first
-            $el.addClass("sprint-current")
-            $el.find(".sprint-table").addClass('open')
-
-        else if sprint.closed
-            $el.addClass("sprint-closed")
-
-        else if not $scope.$first and not sprint.closed
-            $el.addClass("sprint-old-open")
-
-        # Update progress bars
-        progressPercentage = Math.round(100 * (sprint.closed_points / sprint.total_points))
-        $el.find(".current-progress").css("width", "#{progressPercentage}%")
-
-        # Event Handlers
-        $el.on "click", ".sprint-name > .icon-arrow-up", (event) ->
-            target = $(event.currentTarget)
-            target.toggleClass('active')
-            $el.find(".sprint-table").toggleClass('open')
-
-        $el.on "click", ".sprint-name > .icon-edit", (event) ->
-            $rootscope.$broadcast("sprintform:edit", sprint)
-
-    #########################
-    ## Drag & Drop Link
-    #########################
-
-    linkSortable = ($scope, $el, $attrs, $ctrl) ->
-        resortAndSave = ->
-            toSave = []
-            for item, i in $scope.sprint.user_stories
-                if item.order == i
-                    continue
-                item.order = i
-
-            toSave = _.filter($scope.sprint.user_stories, (x) -> x.isModified())
-            $repo.saveAll(toSave).then ->
-                console.log "FINISHED", arguments
-
-        onUpdateItem = (event) ->
-            item = angular.element(event.item)
-            itemScope = item.scope()
-
-            ids = _.map($scope.sprint.user_stories, {"id": itemScope.us.id})
-            index = ids.indexOf(itemScope.us.id)
-
-            $scope.sprint.user_stories.splice(index, 1)
-            $scope.sprint.user_stories.splice(item.index(), 0, itemScope.us)
-            resortAndSave()
-
-        onAddItem = (event) ->
-            item = angular.element(event.item)
-            itemScope = item.scope()
-            itemIndex = item.index()
-
-            itemScope.us.milestone = $scope.sprint.id
-            userstories = $scope.sprint.user_stories
-            userstories.splice(itemIndex, 0, itemScope.us)
-
-            item.remove()
-            item.off()
-
-            $scope.$apply()
-            resortAndSave()
-
-        onRemoveItem = (event) ->
-            item = angular.element(event.item)
-            itemScope = item.scope()
-
-            ids = _.map($scope.sprint.user_stories, "id")
-            index = ids.indexOf(itemScope.us.id)
-
-            if index != -1
-                userstories = $scope.sprint.user_stories
-                userstories.splice(index, 1)
-
-            item.off()
-            itemScope.$destroy()
-
-        dom = $el.find(".sprint-table")
-
-        sortable = new Sortable(dom[0], {
-            group: "backlog",
-            selector: ".milestone-us-item-row",
-            onUpdate: onUpdateItem,
-            onAdd: onAddItem,
-            onRemove: onRemoveItem,
-        })
-
-    link = ($scope, $el, $attrs) ->
-        $ctrl = $el.closest("div.wrapper").controller()
-        linkSortable($scope, $el, $attrs, $ctrl)
-        linkCommon($scope, $el, $attrs, $ctrl)
+        $el.find(".backlog-table-body").disableSelection()
 
         $scope.$on "$destroy", ->
             $el.off()
 
     return {link: link}
-
 
 #############################################################################
 ## User story points directive
@@ -576,6 +395,7 @@ UsRolePointsSelectorDirective = ($rootscope) ->
             $el.off()
 
     return {link: link}
+
 
 UsPointsDirective = ($repo) ->
     selectionTemplate = _.template("""
@@ -822,9 +642,7 @@ GmBacklogGraphDirective = ->
 
     return {link: link}
 
-
 module.directive("tgBacklog", ["$tgRepo", "$rootScope", BacklogDirective])
-module.directive("tgBacklogSprint", ["$tgRepo", "$rootScope", BacklogSprintDirective])
 module.directive("tgUsPoints", ["$tgRepo", UsPointsDirective])
 module.directive("tgUsRolePointsSelector", ["$rootScope", UsRolePointsSelectorDirective])
 module.directive("tgGmBacklogGraph", GmBacklogGraphDirective)

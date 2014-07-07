@@ -169,6 +169,7 @@ LoginDirective = ($auth, $confirm, $location) ->
 
         $el.on "submit", (event) ->
             event.preventDefault()
+            console.log "kaka"
             submit()
 
         $el.on "click", "a.button-login", (event) ->

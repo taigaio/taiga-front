@@ -5,13 +5,13 @@ block head
 
 block content
     div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
-                ng-init="section='backlog'")
+                ng-init="section='backlog'", tg-backlog-sortable)
         sidebar.menu-secondary.extrabar.filters-bar(tg-backlog-filters)
             include views/modules/backlog-filters
         section.main.backlog
             include views/components/mainTitle
             include views/components/summary
-            div.graphics-container
+            div.graphics-container.burndown-container
                 div.burndown(tg-gm-backlog-graph)
                     include views/modules/burndown
             div.backlog-menu

@@ -23,7 +23,11 @@
     }
     .sprint {
         margin-bottom: 2rem;
-        position: relative;
+
+        header {
+           position: relative;
+        }
+
         &:hover {
             .icon-edit {
                 @include transition (opacity .2s ease-in);

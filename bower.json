@@ -70,15 +70,14 @@
     "moment": "~2.6.0",
     "isMobile": "~0.3.1",
     "favico.js": "0.3.4",
-    "Sortable": "~0.1.8"
+    "Sortable": "~0.1.8",
+    "pikaday": "~1.2.0",
+    "jquery-ui": "~1.11.0"
   },
   "resolutions": {
     "lodash": "~2.4.1",
     "moment": "~2.6.0",
     "jquery": "~2.1.1"
   },
-  "private": true,
-  "devDependencies": {
-    "pikaday": "~1.2.0"
-  }
+  "private": true
 }
