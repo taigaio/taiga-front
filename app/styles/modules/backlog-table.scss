@@ -31,8 +31,12 @@
         padding-right: 3rem;
         position: relative;
         text-align: right;
+        .popover {
+            text-align: left;
+        }
         .icon {
-            display: none;
+            color: $gray-light;
+            margin-left: .2rem;
         }
     }
     .pop-role {
@@ -84,6 +88,11 @@
     }
     .points {
         cursor: pointer;
+    }
+    .header-points {
+        span {
+            color: $gray-light;
+        }
     }
 }
 
