@@ -135,8 +135,9 @@ CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope) ->
 
     return {link: link}
 
-CreateSprint = ($repo, $rs, $rootscope) ->
+CreateEditSprint = ($repo, $confirm, $rs, $rootscope) ->
     link = ($scope, $el, attrs) ->
+        createSprint = true
         $scope.milestonesCounter = "--"
         bindOnce $scope, "sprints", (sprints) ->
             $scope.milestonesCounter = sprints.length
@@ -146,17 +147,34 @@ CreateSprint = ($repo, $rs, $rootscope) ->
             if not form.validate()
                 return
 
-            promise = $repo.create("milestones", $scope.sprint)
+            if createSprint
+                promise = $repo.create("milestones", $scope.sprint)
+            else
+                promise = $repo.save($scope.sprint)
+
             promise.then (data) ->
-                $scope.milestonesCounter += 1
+                if createSprint
+                    $scope.milestonesCounter += 1
+
                 $el.addClass("hidden")
                 $rootscope.$broadcast("sprintform:create:success", data)
 
             promise.then null, (data) ->
                 form.setErrors(data)
 
+        remove = ->
+            #TODO: i18n
+            title = "Delete sprint"
+            subtitle = $scope.sprint.name
+
+            $confirm.ask(title, subtitle).then =>
+                $repo.remove($scope.sprint).then ->
+                    $scope.milestonesCounter -= 1
+                    $el.addClass("hidden")
+                    $rootscope.$broadcast("sprintform:remove:success")
+
         $scope.$on "sprintform:create", ->
-            $el.removeClass("hidden")
+            createSprint = true
             $scope.sprint = {
                 project: $scope.projectId
                 name: null
@@ -169,6 +187,21 @@ CreateSprint = ($repo, $rs, $rootscope) ->
             if sprintName?
                 lastSprintNameDom.html(" last sprint is <strong> #{sprintName} ;-) </strong>")
 
+            $el.find(".delete-sprint").hide()
+            $el.find(".title").text("New sprint") #TODO i18n
+            $el.find(".button-green").text("Create") #TODO i18n
+            $el.removeClass("hidden")
+
+        $scope.$on "sprintform:edit", (ctx, sprint) ->
+            createSprint = false
+            $scope.$apply ->
+                $scope.sprint = sprint
+
+            $el.find(".delete-sprint").show()
+            $el.find(".title").text("Edit sprint") #TODO i18n
+            $el.find(".button-green").text("Save") #TODO i18n
+            $el.removeClass("hidden")
+
         $el.on "click", ".close", (event) ->
             event.preventDefault()
             $el.addClass("hidden")
@@ -176,6 +209,10 @@ CreateSprint = ($repo, $rs, $rootscope) ->
         $el.on "click", ".button-green", (event) ->
             event.preventDefault()
             submit()
+
+        $el.on "click", ".delete-sprint .icon-delete", (event) ->
+            event.preventDefault()
+            remove()
 
         $scope.$on "$destroy", ->
             $el.off()
@@ -188,4 +225,4 @@ module.directive("tgLbCreateEditUserstory", ["$tgRepo", "$tgModel", "$tgResource
                                              CreateEditUserstoryDirective])
 module.directive("tgLbCreateBulkUserstories", ["$tgRepo", "$tgResources", "$rootScope",
                                                CreateBulkUserstoriesDirective])
-module.directive("tgLbCreateSprint", ["$tgRepo", "$tgResources", "$rootScope", CreateSprint])
+module.directive("tgLbCreateEditSprint", ["$tgRepo", "$tgConfirm", "$tgResources", "$rootScope", CreateEditSprint])

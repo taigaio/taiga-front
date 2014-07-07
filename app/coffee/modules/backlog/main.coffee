@@ -57,6 +57,8 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @scope.$on("usform:bulk:success", @.loadUserstories)
         @scope.$on("sprintform:create:success", @.loadSprints)
         @scope.$on("sprintform:create:success", @.loadProjectStats)
+        @scope.$on("sprintform:remove:success", @.loadSprints)
+        @scope.$on("sprintform:remove:success", @.loadProjectStats)        
         @scope.$on("usform:new:success", @.loadUserstories)
         @scope.$on("usform:edit:success", @.loadUserstories)
 
@@ -402,7 +404,7 @@ BacklogDirective = ($repo, $rootscope) ->
 ## Sprint Directive
 #############################################################################
 
-BacklogSprintDirective = ($repo) ->
+BacklogSprintDirective = ($repo, $rootscope) ->
 
     #########################
     ## Common parts
@@ -429,6 +431,9 @@ BacklogSprintDirective = ($repo) ->
             target = $(event.currentTarget)
             target.toggleClass('active')
             $el.find(".sprint-table").toggleClass('open')
+
+        $el.on "click", ".sprint-name > .icon-edit", (event) ->
+            $rootscope.$broadcast("sprintform:edit", sprint)
 
     #########################
     ## Drag & Drop Link
@@ -819,7 +824,7 @@ GmBacklogGraphDirective = ->
 
 
 module.directive("tgBacklog", ["$tgRepo", "$rootScope", BacklogDirective])
-module.directive("tgBacklogSprint", ["$tgRepo", BacklogSprintDirective])
+module.directive("tgBacklogSprint", ["$tgRepo", "$rootScope", BacklogSprintDirective])
 module.directive("tgUsPoints", ["$tgRepo", UsPointsDirective])
 module.directive("tgUsRolePointsSelector", ["$rootScope", UsRolePointsSelectorDirective])
 module.directive("tgGmBacklogGraph", GmBacklogGraphDirective)
