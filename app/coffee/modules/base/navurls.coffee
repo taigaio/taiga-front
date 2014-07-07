@@ -49,7 +49,10 @@ NavigationUrlsDirective = ($navurls, $auth, $q, $location) ->
 
     parseNav = (data, $scope) ->
         [name, params] = _.map(data.split(":"), trim)
-        params = _.map(params.split(","), trim)
+        if params
+            params = _.map(params.split(","), trim)
+        else
+            params = []
         values = _.map(params, (x) -> trim(x.split("=")[1]))
         promises = _.map(values, (x) -> bindOnceP($scope, x))
 
