@@ -67,10 +67,10 @@ BacklogFiltersDirective = ($log, $location) ->
     <% }) %>
     """)
 
-    selectedFilters = []
 
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.closest(".wrapper").controller()
+        selectedFilters = []
 
         showFilters = (title) ->
             $el.find(".filters-cats").hide()
