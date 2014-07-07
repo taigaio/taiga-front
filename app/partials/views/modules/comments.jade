@@ -3,16 +3,16 @@ section.us-comments
         textarea(placeholder="Write here a new commet")
         a.button.button-green(href="", title="Comment") Comment
     div.comment-list
-        div.comment-single(ng-repeat="comment in comments")
+        div.comment-single(tg-comment, ng-repeat="comment in comments")
             div.comment-user
-                a.avatar(href="", title="User preferences")
-                    img(src="http://thecodeplayer.com/u/uifaces/12.jpg", alt="username")
+                a.avatar(href="", tg-bo-title="ctrl.getUserFullName(comment.user.pk)")
+                    img(tg-bo-src="ctrl.getUserAvatar(comment.user.pk)", tg-bo-alt="ctrl.getUserFullName(comment.user.pk)")
             div.comment-content
-                a.username(href="", title="User name") User Name
+                a.username(href="TODO", tg-bo-title="ctrl.getUserFullName(comment.user.pk)" tg-bo-html="ctrl.getUserFullName(comment.user.pk)")
                 //- includes module activity
                 include comment-activity
                 p.comment {{ comment.comment }}
-                p.date 15 junio 2014 15:30h
+                p.date {{ comment.created_at | date:'yyyy-MM-dd HH:mm' }}
                 a.delete-comment.icon.icon-delete(href="", title="delete comment")
 
          //a.more-comments(href="", title="show more comments")

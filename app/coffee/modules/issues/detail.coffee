@@ -93,6 +93,20 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
                       .then(=> @.loadIssue())
                       .then(=> @.loadHistory())
 
+    getUserFullName: (userId) ->
+        return @scope.usersById[userId]?.full_name_display
+
+    getUserAvatar: (userId) ->
+        return @scope.usersById[userId]?.photo
+
+    buildChangesText: (comment) ->
+        size = Object.keys(comment.diff).length
+        #TODO: i18n
+        if size == 1
+            return "Made #{size} change"
+
+        return "Made #{size} changes"
+
     block: ->
         @rootscope.$broadcast("block", @scope.issue)
 
@@ -479,3 +493,22 @@ IssueStatusDirective = () ->
     return {link:link, require:"ngModel"}
 
 module.directive("tgIssueStatus", IssueStatusDirective)
+
+#############################################################################
+## Comment directive
+#############################################################################
+
+CommentDirective = () ->
+    link = ($scope, $el, $attrs, $model) ->
+        $el.on "click", ".activity-title", (event) ->
+            event.preventDefault()
+            $el.find(".activity-inner").toggle()
+            $el.find(".activity-inner").toggleClass("active")
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {link:link}
+
+
+module.directive("tgComment", CommentDirective)

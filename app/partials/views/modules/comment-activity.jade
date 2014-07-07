@@ -1,15 +1,13 @@
 div.us-activity
     a.activity-title(href="", title="Show activity")
-        span made {{ comment.diff }} changes
+        span(tg-bo-html="ctrl.buildChangesText(comment)")
         span.icon.icon-arrow-up
-    - for(var y = 0; y < 2; y++)
-        div.activity-inner
-            div.activity-changed
-                span US status
-            div.activity-fromto
-                p
-                    strong from <br />
-                    Este es el título que tenía la historia
-                p
-                    strong to <br />
-                    Este es el título que tenía la historia modificado
+
+    div.activity-inner(ng-repeat="(key, change) in comment.diff")
+        div.activity-changed
+            span(tg-bo-html="key")
+        div.activity-fromto
+            p
+                strong from <br /> {{ change[0] }}
+            p
+                strong to <br /> {{ change[1] }}
