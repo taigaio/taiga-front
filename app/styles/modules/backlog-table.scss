@@ -36,7 +36,7 @@
         }
     }
     .pop-role {
-        @include popover(150px, -100px, 30px, '', '');
+        @include popover(150px, -100px, 110px, '', '');
         a {
             &.active {
                 background: $fresh-taiga;
@@ -48,10 +48,10 @@
         @include popover(150px, '', 30px, 10px, '');
     }
     .pop-points {
-        @include popover(150px, 0px, 30px, 10px, '');
+        @include popover(150px, '', 30px, 10px, '');
     }
     .pop-points-open {
-        @include popover(200px, -100px, 180px, '', '');
+        @include popover(200px, -100px, 260px, '', '');
         li {
             display: inline-block;
             width: 23%;

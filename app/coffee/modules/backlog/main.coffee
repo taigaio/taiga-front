@@ -504,7 +504,7 @@ UsRolePointsSelectorDirective = ($rootscope) ->
 
         $scope.$on "uspoints:select", (ctx, roleId, roleName) ->
             $el.find(".popover").hide()
-            $el.find(".header-points").text("#{roleName}/Total")
+            $el.find(".header-points").html("#{roleName}/<span>Total</span>")
 
         $scope.$on "uspoints:clear-selection", (ctx, roleId) ->
             $el.find(".popover").hide()
@@ -581,7 +581,7 @@ UsPointsDirective = ($repo) ->
             $el.find(".pop-points-open a[data-point-id='#{us.points[updatingSelectedRoleId]}']").addClass("active")
             # If not showing role selection let's move to the left
             if not $el.find(".pop-role:visible").css('left')?
-                $el.find(".pop-points-open").css('left', '30px')
+                $el.find(".pop-points-open").css('left', '110px')
 
             $el.find(".pop-points-open").show()
 
@@ -607,7 +607,7 @@ UsPointsDirective = ($repo) ->
             else
                 pointId = us.points[roleId]
                 points = $scope.pointsById[pointId]
-                pointsDom.text("#{points.name} / #{us.total_points}")
+                pointsDom.html("#{points.name} / <span>#{us.total_points}</span>")
 
         calculateTotalPoints = ->
             values = _.map(us.points, (v, k) -> $scope.pointsById[v].value)
