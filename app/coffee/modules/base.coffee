@@ -160,6 +160,9 @@ module.directive("tgMain", ["$log", "$compile", "$rootScope", MainTaigaDirective
 
 urls = {
     "home": "/",
+    "logint": "/login",
+    "forgot-password": "/forgot-password",
+    "register": "/register",
     "profile": "/:user",
     "project": "/project/:project",
     "project-backlog": "/project/:project/backlog",

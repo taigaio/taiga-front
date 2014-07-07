@@ -1,8 +1,8 @@
-div.forgot-form-container
+div.forgot-form-container(tg-forgot-Password)
     p.forgot-text
         strong Don't worry, it happens even in the best families :-) <br />
         span Give us your mail and we'll sent you instructions to get a new one
-    form
+    form{ng-submit="ctrl.submit()"}
         fieldset
             input(type="text", placeholder="Your email")
         fieldset

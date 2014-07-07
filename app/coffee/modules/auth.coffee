@@ -185,5 +185,12 @@ RegisterDirective = ($auth, $confirm) ->
 
     return {link:link}
 
+
+ForgotPasswordDirective = ($auth, $confirm) ->
+    link = ($scope, $el, $attrs) ->
+        console.log "caca"
+
+
 module.directive("tgRegister", ["$tgAuth", "$tgConfirm", RegisterDirective])
 module.directive("tgLogin", ["$tgAuth", "$tgConfirm", "$location", LoginDirective])
+module.directive("tgForgotPassword", ["$tgAuth", "$tgConfirm", "$location", ForgotPasswordDirective])

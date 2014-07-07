@@ -41,6 +41,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide,
     # Auth
     $routeProvider.when("/login", {templateUrl: "/partials/login.html"})
     $routeProvider.when("/register", {templateUrl: "/partials/register.html"})
+    $routeProvider.when("/forgot-password", {templateUrl: "/partials/forgot-password.html"})
 
     $routeProvider.otherwise({redirectTo: '/login'})
     $locationProvider.html5Mode(true)
