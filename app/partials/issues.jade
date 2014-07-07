@@ -6,7 +6,7 @@ block head
 block content
     div.wrapper.issues(tg-issues, ng-controller="IssuesController as ctrl", ng-init="section='issues'")
         sidebar.menu-secondary.extrabar.filters-bar(tg-issues-filters)
-            include views/modules/filters
+            include views/modules/issues-filters
 
         section.main.issues-page
             header
