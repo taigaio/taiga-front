@@ -24,7 +24,7 @@ taiga = @.taiga
 module = angular.module("taigaAuth", ["taigaResources"])
 
 #############################################################################
-## Autghentication Service
+## Authentication Service
 #############################################################################
 
 class AuthService extends taiga.Service
@@ -93,6 +93,14 @@ class AuthService extends taiga.Service
             @.setUser(user)
             return user
 
+    forgotPassword: (data) ->
+        url = @urls.resolve("users-password-recovery")
+
+        data = _.clone(data, false)
+
+        return @http.post(url, data)
+
+
     # acceptInvitiationWithNewUser: (username, email, password, token) ->
     #     url = @urls.resolve("auth-register")
     #     data = _.extend(data, {
@@ -124,9 +132,14 @@ class AuthService extends taiga.Service
 
 module.service("$tgAuth", AuthService)
 
+
 #############################################################################
-## Auth related directives (login, reguister, invitation
+## Auth related directives (login, reguister, invitation)
 #############################################################################
+
+    ###################
+    ## Login Directive
+    ###################
 
 LoginDirective = ($auth, $confirm, $location) ->
     link = ($scope, $el, $attrs) ->
@@ -139,9 +152,9 @@ LoginDirective = ($auth, $confirm, $location) ->
 
             promise = $auth.login($scope.data)
             promise.then (response) ->
-                # TODO: finish this.
+                # TODO: finish this. Go tu user home page
                 $location.path("/project/project-example-0/backlog")
-
+                #
             promise.then null, (response) ->
                 if response.data._error_message
                     $confirm.error(response.data._error_message)
@@ -157,6 +170,10 @@ LoginDirective = ($auth, $confirm, $location) ->
     return {link:link}
 
 
+    ###################
+    ## Register Directive
+    ###################
+
 RegisterDirective = ($auth, $confirm) ->
     link = ($scope, $el, $attrs) ->
         $scope.data = {}
@@ -168,8 +185,9 @@ RegisterDirective = ($auth, $confirm) ->
 
             promise = $auth.publicRegister($scope.data)
             promise.then (response) ->
-                # TODO: finish this.
+                # TODO: finish this. Go to login and show success message
                 console.log response
+                #
 
             promise.then null, (response) ->
                 if response.data._error_message
@@ -186,9 +204,40 @@ RegisterDirective = ($auth, $confirm) ->
     return {link:link}
 
 
+    ###################
+    ## Forgot Password Directive
+    ###################
+
 ForgotPasswordDirective = ($auth, $confirm) ->
     link = ($scope, $el, $attrs) ->
-        console.log "caca"
+        $scope.data = {}
+        form = $el.find("form").checksley()
+
+        submit = ->
+            if not form.validate()
+                return
+
+            promise = $auth.forgotPassword($scope.data)
+            promise.then (response) ->
+                if response.data.detail
+                    # TODO: Show a success message and move to /login
+                    #$confirm.success(response.data.detail)
+                    console.log response.data.detail
+                    #
+
+            promise.then null, (response) ->
+                if response.data._error_message
+                    $confirm.error(response.data._error_message)
+
+        $el.on "submit", (event) ->
+            event.preventDefault()
+            submit()
+
+        $el.on "click", "a.button-forgot", (event) ->
+            event.preventDefault()
+            submit()
+
+    return {link:link}
 
 
 module.directive("tgRegister", ["$tgAuth", "$tgConfirm", RegisterDirective])
