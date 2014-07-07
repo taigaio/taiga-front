@@ -45,7 +45,7 @@ class Model
     getAttrs: (patch=false) ->
         if @._attrs.version?
             @._modifiedAttrs.version = @._attrs.version
-            
+
         if patch
             return _.extend({}, @._modifiedAttrs)
         return _.extend({}, @._attrs, @._modifiedAttrs)
