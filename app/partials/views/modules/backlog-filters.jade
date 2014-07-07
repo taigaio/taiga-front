@@ -1,0 +1,26 @@
+section.filters
+    div.filters-inner
+        h1
+            a.title(href="", title="back to categories") filters
+            a.hidden.subfilter(href="", title="cat-name")
+                span.icon.icon-arrow-right
+                span.title status
+        form
+            fieldset
+                input(type="text", placeholder="Search by subject...", ng-model="filtersSubject")
+                a.icon.icon-search(href="", title="search")
+
+        div.filters-step-cat
+            div.filters-applied
+            div.filters-cats
+                ul
+                    li
+                        a(href="", title="Status", data-type="statuses")
+                            span.title Status
+                            span.icon.icon-arrow-right
+                    li
+                        a(href="", title="Tags", data-type="tags")
+                            span.title Tags
+                            span.icon.icon-arrow-right
+
+        div.filter-list.hidden

@@ -33,7 +33,7 @@ module = angular.module("taigaBacklog")
 ## Backlog Controller
 #############################################################################
 
-class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin)
+class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.FiltersMixin)
     @.$inject = [
         "$scope",
         "$rootScope",
@@ -41,10 +41,11 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$tgConfirm",
         "$tgResources",
         "$routeParams",
-        "$q"
+        "$q",
+        "$tgLocation"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location) ->
         _.bindAll(@)
 
         @scope.sectionName = "Backlog"
@@ -74,9 +75,11 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin)
     loadUserstories: ->
         return @rs.userstories.listUnassigned(@scope.projectId).then (userstories) =>
             @scope.userstories = userstories
-            @scope.filters = @.generateFilters()
 
+            @.generateFilters()
             @.filterVisibleUserstories()
+
+            @rootscope.$broadcast("filters:loaded", @scope.filters)
             # The broadcast must be executed when the DOM has been fully reloaded.
             # We can't assure when this exactly happens so we need a defer
             scopeDefer @scope, =>
@@ -111,10 +114,11 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin)
                       .then(=> @.loadBacklog())
 
     filterVisibleUserstories: ->
+        @scope.visibleUserstories = []
+
+        # Filter by tags
         selectedTags = _.filter(@scope.filters.tags, "selected")
         selectedTags = _.map(selectedTags, "name")
-
-        @scope.visibleUserstories = []
 
         if selectedTags.length == 0
             @scope.visibleUserstories = _.clone(@scope.userstories, false)
@@ -122,14 +126,51 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.visibleUserstories = _.reject @scope.userstories, (us) =>
                 if _.intersection(selectedTags, us.tags).length == 0
                     return true
-                else
-                    return false
+                return false
+
+        # Filter by status
+        selectedStatuses = _.filter(@scope.filters.statuses, "selected")
+        selectedStatuses = _.map(selectedStatuses, "id")
+
+        if selectedStatuses.length > 0
+            @scope.visibleUserstories = _.reject @scope.visibleUserstories, (us) =>
+                res = _.find(selectedStatuses, (x) -> x == taiga.toString(us.status))
+                return not res
+
+    getUrlFilters: ->
+        return _.pick(@location.search(), "statuses", "tags")
 
     generateFilters: ->
-        filters = {}
+        searchdata = {}
+        for name, value of @.getUrlFilters()
+            if not searchdata[name]?
+                searchdata[name] = {}
+
+            for val in value.split(",")
+                searchdata[name][val] = true
+
+        isSelected = (type, id) ->
+            if searchdata[type]? and searchdata[type][id]
+                return true
+            return false
+
+        @scope.filters = {}
+
         plainTags = _.flatten(_.map(@scope.userstories, "tags"))
-        filters.tags = _.map(_.countBy(plainTags), (v, k) -> {name: k, count:v})
-        return filters
+        @scope.filters.tags = _.map _.countBy(plainTags), (v, k) ->
+            obj = {id:k, type:"tags", name: k, count:v}
+            obj.selected = true if isSelected("tags", obj.id)
+            return obj
+
+        plainStatuses = _.map(@scope.userstories, "status")
+        @scope.filters.statuses = _.map _.countBy(plainStatuses), (v, k) =>
+            obj = {id:k, type:"statuses", name: @scope.usStatusById[k].name, count:v}
+            obj.selected = true if isSelected("statuses", obj.id)
+            console.log "statuses", obj
+            return obj
+
+        console.log @scope.filters.statuses
+        return @scope.filters
 
     ## Template actions
 
@@ -343,15 +384,6 @@ BacklogDirective = ($repo, $rootscope) ->
             target.toggleClass("active")
             toggleText(target.find(".text"), ["Hide Filters", "Show Filters"]) # TODO: i18n
             $rootscope.$broadcast("resize")
-
-        $el.on "click", "section.filters a.single-filter", (event) ->
-            event.preventDefault()
-            target = angular.element(event.currentTarget)
-            targetScope = target.scope()
-
-            $scope.$apply ->
-                targetScope.tag.selected = not (targetScope.tag.selected or false)
-                $ctrl.filterVisibleUserstories()
 
     link = ($scope, $el, $attrs, $rootscope) ->
         $ctrl = $el.controller()

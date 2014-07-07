@@ -6,8 +6,8 @@ block head
 block content
     div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
                 ng-init="section='backlog'")
-        sidebar.menu-secondary.extrabar.filters-bar
-            include views/modules/filters
+        sidebar.menu-secondary.extrabar.filters-bar(tg-backlog-filters)
+            include views/modules/backlog-filters
         section.main.backlog
             include views/components/mainTitle
             include views/components/summary
