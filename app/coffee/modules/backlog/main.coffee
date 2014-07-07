@@ -543,9 +543,12 @@ UsRolePointsSelectorDirective = ($rootscope) ->
 UsPointsDirective = ($repo) ->
     selectionTemplate = _.template("""
     <ul class="popover pop-role">
-        <% _.each(roles, function(role) { %>
-        <li><a href="" class="role" title="<%- role.name %>"
-               data-role-id="<%- role.id %>"><%- role.name %></a>
+        <% _.each(rolePoints, function(rolePointsElement) { %>
+        <li><a href="" class="role" title="<%- rolePointsElement.name %>"
+               data-role-id="<%- rolePointsElement.id %>">
+               <%- rolePointsElement.name %>
+               (<%- rolePointsElement.points %>)
+            </a>
         </li>
         <% }); %>
     </ul>
@@ -563,7 +566,6 @@ UsPointsDirective = ($repo) ->
 
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
-
         us = $scope.$eval($attrs.tgUsPoints)
         updatingSelectedRoleId = null
         selectedRoleId = null
@@ -573,7 +575,30 @@ UsPointsDirective = ($repo) ->
         if numberOfRoles == 1
             selectedRoleId = _.keys(us.points)[0]
 
+        showPopPoints = () ->
+            $el.find(".pop-points-open").remove()
+            $el.append(pointsTemplate({ "points":  $scope.project.points }))
+            $el.find(".pop-points-open a[data-point-id='#{us.points[updatingSelectedRoleId]}']").addClass("active")
+            # If not showing role selection let's move to the left
+            if not $el.find(".pop-role:visible").css('left')?
+                $el.find(".pop-points-open").css('left', '30px')
+
+            $el.find(".pop-points-open").show()
+
+        showPopRoles = () ->
+            $el.find(".pop-role").remove()
+            rolePoints = _.clone(_.filter($scope.project.roles, "computable"), true)
+
+            undefinedToQuestion = (val) ->
+                return "?" if not val?
+                return val
+
+            _.map(rolePoints, (v, k) -> v.points = undefinedToQuestion($scope.pointsById[us.points[v.id]].value))
+            $el.append(selectionTemplate({ "rolePoints":  rolePoints }))
+            $el.find(".pop-role").show()
+
         updatePoints = (roleId) ->
+            # Update the dom with the points
             pointsDom = $el.find("a > span.points-value")
             usTotalPoints = calculateTotalPoints(us)
             us.total_points = usTotalPoints
@@ -594,11 +619,6 @@ UsPointsDirective = ($repo) ->
 
         updatePoints(null)
 
-        bindOnce $scope, "project", (project) ->
-            roles = _.filter(project.roles, "computable")
-            $el.append(selectionTemplate({ "roles":  roles }))
-            $el.append(pointsTemplate({ "points":  project.points }))
-
         $scope.$on "uspoints:select", (ctx, roleId, roleName) ->
             updatePoints(roleId)
             selectedRoleId = roleId
@@ -607,18 +627,17 @@ UsPointsDirective = ($repo) ->
             updatePoints(null)
             selectedRoleId = null
 
-        $el.on "click", "a.us-points", (event) ->
+        $el.on "click", "a.us-points span", (event) ->
             event.preventDefault()
             target = angular.element(event.target)
 
-            if target.is("span")
-                event.stopPropagation()
+            event.stopPropagation()
 
             if selectedRoleId?
                 updatingSelectedRoleId = selectedRoleId
-                $el.find(".pop-points-open").show()
+                showPopPoints()
             else
-                $el.find(".pop-role").show()
+                showPopRoles()
 
             body = angular.element("body")
             body.one "click", (event) ->
@@ -631,8 +650,10 @@ UsPointsDirective = ($repo) ->
             target = angular.element(event.currentTarget)
             updatingSelectedRoleId = target.data("role-id")
 
-            $el.find(".pop-points-open").show()
-            $el.find(".pop-role").hide()
+            popRolesDom = $el.find(".pop-role")
+            popRolesDom.find("a").removeClass("active")
+            popRolesDom.find("a[data-role-id='#{updatingSelectedRoleId}']").addClass("active")
+            showPopPoints()
 
         $el.on "click", ".point", (event) ->
             event.preventDefault()
@@ -640,6 +661,7 @@ UsPointsDirective = ($repo) ->
 
             target = angular.element(event.currentTarget)
             $el.find(".pop-points-open").hide()
+            $el.find(".pop-role").hide()
 
             $scope.$apply () ->
                 usPoints = _.clone(us.points, true)
