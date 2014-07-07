@@ -99,8 +99,16 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
     getUserAvatar: (userId) ->
         return @scope.usersById[userId]?.photo
 
+    countChanges: (comment) ->
+        return Object.keys(comment.values_diff).length
+
+    getChangeText: (change) ->
+        if _.isArray(change)
+            return change.join(", ")
+        return change
+
     buildChangesText: (comment) ->
-        size = Object.keys(comment.diff).length
+        size = @.countChanges(comment)
         #TODO: i18n
         if size == 1
             return "Made #{size} change"
@@ -139,6 +147,15 @@ IssueDirective = ($tgrepo, $log, $location) ->
         $el.on "click", ".save-issue", (event) ->
             $tgrepo.save($scope.issue).then ->
                 $location.path("/project/#{$scope.project.slug}/issues/#{$scope.issue.ref}")
+
+        $el.on "click", ".add-comment a.button-green", (event) ->
+            event.preventDefault()
+            $tgrepo.save($scope.issue).then ->
+                $ctrl.loadHistory()
+
+        $el.on "click", ".us-activity-tabs li a", (event) ->
+            $el.find(".us-activity-tabs li a").toggleClass("active")
+            $el.find(".us-activity section").toggleClass("hidden")
 
     return {link:link}
 
@@ -509,6 +526,5 @@ CommentDirective = () ->
             $el.off()
 
     return {link:link}
-
 
 module.directive("tgComment", CommentDirective)

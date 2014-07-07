@@ -41,8 +41,10 @@ block content
                         a(href="#")
                             span.icon.icon-issues
                             span.tab-title Activity
+
                 include views/modules/comments
-                // include views/modules/activity
+                include views/modules/activity
+
         sidebar.menu-secondary.sidebar
             section.us-status(tg-issue-status, ng-model="issue")
             section.us-assigned-to(tg-assigned-to, ng-model="issue.assigned_to")

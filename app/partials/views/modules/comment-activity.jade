@@ -1,13 +1,14 @@
 div.us-activity
-    a.activity-title(href="", title="Show activity")
+
+    a.activity-title(ng-show="ctrl.countChanges(comment)", href="", title="Show activity")
         span(tg-bo-html="ctrl.buildChangesText(comment)")
         span.icon.icon-arrow-up
 
-    div.activity-inner(ng-repeat="(key, change) in comment.diff")
+    div.activity-inner(ng-repeat="(key, change) in comment.values_diff")
         div.activity-changed
             span(tg-bo-html="key")
         div.activity-fromto
             p
-                strong from <br /> {{ change[0] }}
+                strong from <br /> {{ ctrl.getChangeText(change[0]) }}
             p
-                strong to <br /> {{ change[1] }}
+                strong to <br /> {{ ctrl.getChangeText(change[1]) }}

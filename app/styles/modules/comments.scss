@@ -2,17 +2,18 @@
     @include clearfix;
     textarea {
         @include transition(height .3s ease-in);
-        &:focus {
-            @include transition(height .3s ease-in);
-            height: 6rem;
-            +a {
-                display: inline-block;
-            }
-        }
+        // &:focus {
+        //     @include transition(height .3s ease-in);
+        //     height: 6rem;
+        //     +a {
+        //         display: inline-block;
+        //     }
+        // }
     }
     a {
         color: $white;
-        display: none;
+        // display: none;
+        display: inline-block;
         float: right;
     }
 }
