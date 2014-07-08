@@ -51,6 +51,9 @@
         background: $whitish;
         .activity-inner {
             display: none;
+            &.active {
+                display: flex;
+            }
         }
     }
     .date {

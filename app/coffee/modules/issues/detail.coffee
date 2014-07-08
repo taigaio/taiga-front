@@ -520,7 +520,6 @@ CommentDirective = () ->
     link = ($scope, $el, $attrs, $model) ->
         $el.on "click", ".activity-title", (event) ->
             event.preventDefault()
-            $el.find(".activity-inner").toggle()
             $el.find(".activity-inner").toggleClass("active")
 
         $scope.$on "$destroy", ->
