@@ -164,6 +164,8 @@ urls = {
     "forgot-password": "/forgot-password",
     "change-password": "/change-password/:token",
     "register": "/register",
+    "invitation": "/invitation/:token",
+
     "profile": "/:user",
     "project": "/project/:project",
     "project-backlog": "/project/:project/backlog",

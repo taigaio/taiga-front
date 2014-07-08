@@ -1,4 +1,4 @@
-extends login-layout
+extends dummy-layout
 
 block head
     title Taiga  Project management web application with scrum in mind!
@@ -7,36 +7,16 @@ block content
     div.wrapper
         div.invitation-main
             div.invitation-container
-                //h1.logo
-                    //img(src="/images/logo.png", alt="TAIGA")
+                h1.logo
+                    img(src="/images/logo.png", alt="TAIGA")
                 figure.avatar
                     a(href="", title="UserName")
                         img.avatar(src="http://thecodeplayer.com/u/uifaces/12.jpg", alt="username")
                         figcaption Username
-                p.invitation-text has sent you an invitation to join  the taiga project
+                p.invitation-text has sent you an invitation to join to the taiga project
                     span.project-name taiga
+
                 div.invitation-form
+                    include views/modules/invitation-login-form
+                    include views/modules/invitation-register-form
 
-                    form.login-form
-                        fieldset
-                            input(type="text", name="username", placeholder="User name")
-                        fieldset.login-password
-                            input(type="password", name="password", ng-model="form.password")
-                            a.forgot-pass(href="", title="Did you forgot your pass?") Forgot it?
-                        fieldset
-                            a.button.button-login.button-gray(href="", title="Log in") Enter
-
-                    form.register-form
-                        fieldset
-                            input(type="text" placeholder="Pick a username")
-                        fieldset
-                            input(type="text" placeholder="Your email")
-                        fieldset
-                            input(type="password"  placeholder="Set a password")
-                        fieldset
-                            a.button.button-register.button-gray(href="", title="Sign up") Sign up
-                        p.register-text
-                            span By clicking "Sign up", you agree to our <br />
-                            a(href="", title="See terms of service")  terms of service
-                            span  and
-                            a(href="", title="See privacy policy")  privacy policy.
