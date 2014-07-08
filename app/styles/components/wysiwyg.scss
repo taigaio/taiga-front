@@ -1,0 +1,39 @@
+.wysiwyg {
+    h1 {
+        @extend %xlarge;
+        @extend %text;
+        margin-bottom: .5rem;
+        text-transform: uppercase;
+    }
+    h2 {
+        @extend %large;
+        @extend %bold;
+        margin-bottom: .5rem;
+        text-transform: uppercase;
+    }
+    h3 {
+        @extend %bold;
+        text-transform: uppercase;
+    }
+    ul,
+    ol {
+        list-style-position: inside;
+    }
+    ul {
+        list-style-type: disc;
+    }
+    a {
+        color: $green-taiga;
+        &:hover {
+            color: $fresh-taiga;
+        }
+    }
+    pre {
+        background: $whitish;
+        direction: ltr;
+        font-family: 'courier new', 'monospace';
+        padding: 1rem;
+        unicode-bidi: embed;
+        white-space: pre;
+    }
+}

@@ -1,0 +1,24 @@
+.wiki-summary {
+    @include clearfix();
+    figure {
+        float: left;
+        margin-right: .5rem;
+        vertical-align: sub;
+        width: 32px;
+    }
+    .username-edition {
+        width: 240px;
+        span {
+            display: block;
+            float: none;
+        }
+        .username {
+            @extend %large;
+            color: $fresh-taiga;
+        }
+    }
+    .button {
+        color: $white;
+        float: right;
+    }
+}

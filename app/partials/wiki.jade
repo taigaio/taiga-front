@@ -1,0 +1,60 @@
+extends layout
+
+block head
+    title Taiga  Project management web application with scrum in mind!
+
+block content
+    div.wrapper
+        sidebar.menu-secondary.extrabar
+            include views/modules/wiki-nav
+        section.main.backlog
+            //Include views/components/mainTitle
+            header
+                h1
+                    span Taiga
+                    span.green Wiki
+            include views/modules/wiki-summary
+            section.wiki-content.wysiwyg
+                h1 Page title
+                p.
+                    Lorem fistrum pecador benemeritaar ese hombree diodeno ese que llega me cago en tus muelas.
+                    Benemeritaar torpedo diodenoo la caidita mamaar sexuarl condemor te voy a borrar el cerito al ataquerl papaar papaar.
+                    Pupita por la gloria de mi madre torpedo quietooor condemor apetecan.
+                    Mamaar por la gloria de mi madre se calle ustée la caidita de la pradera ese que llega caballo blanco caballo negroorl ese hombree jarl.
+                    No te digo trigo por no llamarte Rodrigor pecador te va a hasé pupitaa hasta luego Lucas está la cosa muy malar benemeritaar.
+                h2 Section Title
+                p.
+                    No puedor mamaar a wan de la pradera diodenoo jarl diodenoo ese hombree.
+                    Benemeritaar al ataquerl apetecan amatomaa ese que llega a peich al ataquerl torpedo a wan qué dise usteer mamaar.
+                    Qué dise usteer condemor pupita papaar papaar quietooor pupita.
+                    Papaar papaar va usté muy cargadoo está la cosa muy malar pecador jarl se calle ustée.
+                h3 Subsection title
+                p.
+                    Qué dise usteer ese pedazo de no puedor te voy a borrar el cerito condemor se calle ustée no puedor a gramenawer a wan.
+                    A wan no te digo trigo por no llamarte Rodrigor al ataquerl diodenoo la caidita está la cosa muy malar mamaar va usté muy cargadoo no te digo
+                    trigo por no llamarte Rodrigor diodeno.
+                    Se calle ustée caballo blanco caballo negroorl benemeritaar jarl amatomaa ahorarr pupita está la cosa muy malar.
+                ul
+                    li text in paragraphs
+                    li Qué dise usteer ese pedazo de no puedor te voy a borrar el cerito condemor se calle ustée no puedor a gramenawer a wan.
+                    li Se calle ustée caballo blanco caballo negroorl benemeritaar jarl amatomaa ahorarr pupita está la cosa muy malar.
+                    li text in paragraphs
+                    li text in paragraphs
+                ol
+                    li text in paragraphs
+                    li Qué dise usteer ese pedazo de no puedor te voy a borrar el cerito condemor se calle ustée no puedor a gramenawer a wan.
+                    li Se calle ustée caballo blanco caballo negroorl benemeritaar jarl amatomaa ahorarr pupita está la cosa muy malar.
+                    li text in paragraphs
+                    li text in paragraphs
+                p Se calle ustée caballo blanco caballo negroorl benemeritaar jarl amatomaa ahorarr pupita está la cosa muy malar.
+                     a(href="") Benemeritaar torpedo diodenoo la caidita mamaar
+                blockquote
+                    Pupita por la gloria de mi madre torpedo quietooor condemor apetecan.
+                pre.
+                    .button {
+                        color: $white;
+                        display: block;
+                        margin-bottom: .5rem;
+                        text-align: center;
+                    }
+            include views/modules/attachments

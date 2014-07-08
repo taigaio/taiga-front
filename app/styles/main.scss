@@ -32,6 +32,7 @@ $prefix-for-spec:      true;
 @import 'components/watchers';
 @import 'components/level';
 @import 'components/assigned-to';
+@import 'components/wysiwyg';
 
 //Modules
 @import 'modules/nav';
@@ -64,6 +65,8 @@ $prefix-for-spec:      true;
 @import 'modules/login-form';
 @import 'modules/register-form';
 @import 'modules/forgot-form';
+@import 'modules/wiki-nav';
+@import 'modules/wiki-summary';
 
 //Layout
 @import 'layout/base';
@@ -76,6 +79,7 @@ $prefix-for-spec:      true;
 @import 'layout/project-colors';
 @import 'layout/kanban';
 @import 'layout/issues';
+@import 'layout/wiki';
 
 //Shame
 @import 'shame/shame';

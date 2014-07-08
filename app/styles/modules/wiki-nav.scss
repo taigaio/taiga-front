@@ -1,0 +1,30 @@
+.wiki-nav {
+    li {
+        @extend %large;
+        @extend %title;
+        border-bottom: 1px solid #cdcdcd;
+        text-transform: uppercase;
+        &:hover {
+            .icon {
+                @include transition (opacity 1s linear);
+                opacity: 1;
+            }
+        }
+        a {
+            display: block;
+            padding: 1rem 0 1rem 1rem;
+        }
+        .icon {
+            @include transition (opacity 1s linear);
+            color: $blackish;
+            float: right;
+            opacity: 0;
+        }
+    }
+    .button {
+        color: $white;
+        display: block;
+        margin-bottom: .5rem;
+        text-align: center;
+    }
+}
