@@ -63,7 +63,9 @@ paths = {
         "app/vendor/pikaday/pikaday.js",
         "app/vendor/jquery-flot/jquery.flot.js",
         "app/vendor/jquery-flot/jquery.flot.pie.js",
-        "app/vendor/jquery-flot/jquery.flot.time.js"
+        "app/vendor/jquery-flot/jquery.flot.time.js",
+        "app/vendor/jquery-textcomplete/jquery.textcomplete.js",
+        "app/vendor/markitup/markitup/jquery.markitup.js"
     ]
 }
 
@@ -173,7 +175,7 @@ gulp.task "copy",  ->
     gulp.src("#{paths.app}/fonts/*")
         .pipe(gulp.dest("#{paths.dist}/fonts/"))
 
-    gulp.src("#{paths.app}/images/*")
+    gulp.src("#{paths.app}/images/**/*")
         .pipe(gulp.dest("#{paths.dist}/images/"))
 
 

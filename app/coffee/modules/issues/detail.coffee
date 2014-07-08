@@ -529,3 +529,138 @@ CommentDirective = () ->
     return {link:link}
 
 module.directive("tgComment", CommentDirective)
+
+#############################################################################
+## WYSIWYG markitup editor directive
+#############################################################################
+
+$i18next = {t: (key) -> key}
+
+tgMarkitupDirective = ($rootscope) ->
+    link = ($scope, $el, $attrs, $model) ->
+        openHelp = () ->
+            window.open($rootscope.urls.wikiHelpUrl(), '_blank')
+
+        markdownSettings =
+            nameSpace: 'markdown'
+            onShiftEnter: {keepDefault:false, openWith:'\n\n'}
+            markupSet: [
+                {
+                    name: $i18next.t('wiki-editor.heading-1')
+                    key: "1"
+                    placeHolder: $i18next.t('wiki-editor.placeholder')
+                    closeWith: (markItUp) -> markdownTitle(markItUp, '=')
+                },
+                {
+                    name: $i18next.t('wiki-editor.heading-2')
+                    key: "2"
+                    placeHolder: $i18next.t('wiki-editor.placeholder')
+                    closeWith: (markItUp) -> markdownTitle(markItUp, '-')
+                },
+                {
+                    name: $i18next.t('wiki-editor.heading-3')
+                    key: "3"
+                    openWith: '### '
+                    placeHolder: $i18next.t('wiki-editor.placeholder')
+                },
+                {
+                    separator: '---------------'
+                },
+                {
+                    name: $i18next.t('wiki-editor.bold')
+                    key: "B"
+                    openWith: '**'
+                    closeWith: '**'
+                },
+                {
+                    name: $i18next.t('wiki-editor.italic')
+                    key: "I"
+                    openWith: '_'
+                    closeWith: '_'
+                },
+                {
+                    name: $i18next.t('wiki-editor.strike')
+                    key: "S"
+                    openWith: '~~'
+                    closeWith: '~~'
+                },
+                {
+                    separator: '---------------'
+                },
+                {
+                    name: $i18next.t('wiki-editor.bulleted-list')
+                    openWith: '- '
+                },
+                {
+                    name: $i18next.t('wiki-editor.numeric-list')
+                    openWith: (markItUp) -> markItUp.line+'. '
+                },
+                {
+                    separator: '---------------'
+                },
+                {
+                    name: $i18next.t('wiki-editor.picture')
+                    key: "P"
+                    replaceWith: '![[![Alternative text]!]]([![Url:!:http://]!] "[![Title]!]")'
+                },
+                {
+                    name: $i18next.t('wiki-editor.link')
+                    key: "L"
+                    openWith: '['
+                    closeWith: ']([![Url:!:http://]!] "[![Title]!]")'
+                    placeHolder: $i18next.t('wiki-editor.link-placeholder')
+                },
+                {
+                    separator: '---------------'
+                },
+                {
+                    name: $i18next.t('wiki-editor.quotes')
+                    openWith: '> '
+                },
+                {
+                    name: $i18next.t('wiki-editor.code-block')
+                    openWith: '```\n'
+                    closeWith: '\n```'
+                },
+                {
+                    separator: '---------------'
+                },
+                # {
+                #     name: $i18next.t('wiki-editor.preview')
+                #     call: preview
+                #     className: "preview-icon"
+                # },
+                # {
+                #     separator: '---------------'
+                # },
+                # {
+                #     name: $i18next.t('wiki-editor.help')
+                #     call: openHelp
+                #     className: "help"
+                # }
+            ]
+            afterInsert: (event) ->
+                target = angular.element(event.textarea)
+                $model.$setViewValue(target.val())
+
+        markdownTitle = (markItUp, char) ->
+            heading = ''
+            n = $.trim(markItUp.selection or markItUp.placeHolder).length
+
+            for i in [0..n-1]
+                heading += char
+
+            return '\n'+heading+'\n'
+
+        element = angular.element($el)
+        element.markItUp(markdownSettings)
+
+        element.on "keypress", (event) ->
+            $scope.$apply()
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {link:link, require:"ngModel"}
+
+module.directive("tgMarkitup", ["$rootScope", tgMarkitupDirective])

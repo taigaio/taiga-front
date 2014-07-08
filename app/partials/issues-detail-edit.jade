@@ -25,7 +25,7 @@ block content
 
             section.us-content
                 // TODO Placeholder should be a WYSIWYG with issue.description
-                textarea(placeholder="Write a description of your issue", ng-model="issue.description")
+                textarea(placeholder="Write a description of your issue", ng-model="issue.description", tg-markitup)
 
             // include views/modules/attachments
             textarea(ng-model="issue.comment", placeholder="Write here a new commet")
