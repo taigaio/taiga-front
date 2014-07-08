@@ -137,7 +137,7 @@ module.controller("IssueDetailController", IssueDetailController)
 ## Issue Main Directive
 #############################################################################
 
-IssueDirective = ($tgrepo, $log, $location) ->
+IssueDirective = ($tgrepo, $log, $location, $confirm) ->
     linkSidebar = ($scope, $el, $attrs, $ctrl) ->
 
     link = ($scope, $el, $attrs) ->
@@ -146,6 +146,7 @@ IssueDirective = ($tgrepo, $log, $location) ->
 
         $el.on "click", ".save-issue", (event) ->
             $tgrepo.save($scope.issue).then ->
+                $confirm.notify("success")
                 $location.path("/project/#{$scope.project.slug}/issues/#{$scope.issue.ref}")
 
         $el.on "click", ".add-comment a.button-green", (event) ->
@@ -159,7 +160,7 @@ IssueDirective = ($tgrepo, $log, $location) ->
 
     return {link:link}
 
-module.directive("tgIssueDetail", ["$tgRepo", "$log", "$tgLocation", IssueDirective])
+module.directive("tgIssueDetail", ["$tgRepo", "$log", "$tgLocation", "$tgConfirm", IssueDirective])
 
 
 #############################################################################

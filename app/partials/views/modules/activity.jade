@@ -1,15 +1,15 @@
 section.us-activity.hidden
-    div.activity-single(tg-comment, ng-repeat="comment in comments")
+    div.activity-single(tg-comment, ng-repeat="change in history")
         div.activity-user
-            a.avatar(href="", tg-bo-title="ctrl.getUserFullName(comment.user.pk)")
-                img(tg-bo-src="ctrl.getUserAvatar(comment.user.pk)", tg-bo-alt="ctrl.getUserFullName(comment.user.pk)")
+            a.avatar(href="", tg-bo-title="ctrl.getUserFullName(change.user.pk)")
+                img(tg-bo-src="ctrl.getUserAvatar(change.user.pk)", tg-bo-alt="ctrl.getUserFullName(change.user.pk)")
 
         div.activity-content
             div.activity-username
-                a.username(href="TODO", tg-bo-title="ctrl.getUserFullName(comment.user.pk)" tg-bo-html="ctrl.getUserFullName(comment.user.pk)")
-                span.date {{ comment.created_at | date:'yyyy-MM-dd HH:mm' }}
+                a.username(href="TODO", tg-bo-title="ctrl.getUserFullName(change.user.pk)" tg-bo-html="ctrl.getUserFullName(change.user.pk)")
+                span.date {{ change.created_at | date:'yyyy-MM-dd HH:mm' }}
 
-            div.activity-inner(ng-repeat="(key, change) in comment.values_diff")
+            div.activity-inner(ng-repeat="(key, change) in change.values_diff")
                 div.activity-changed
                     span(tg-bo-html="key")
                 div.activity-fromto

@@ -81,17 +81,22 @@ class ConfirmService extends taiga.Service
         # Types: error, success
 
         selector = ".notification-message-#{type}"
+        @.el = angular.element(selector)
 
         body = angular.element("body")
         body.find(".notification-message").addClass("hidden")
         body.find(selector).removeClass("hidden")
 
         if @.tsem
-            cancelTimeout(@.tsem)
+            clearTimeout(@.tsem)
 
         @.tsem = timeout 4000, =>
             body.find(selector).addClass("hidden")
-            delete @.sem
+            delete @.tsem
+
+        @.el.on "click", ".icon-delete", (event) =>
+            body.find(selector).addClass("hidden")
+
 
 module = angular.module("taigaBase")
 module.service("$tgConfirm", ["$q", ConfirmService])
