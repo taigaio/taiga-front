@@ -101,6 +101,14 @@ class AuthService extends taiga.Service
         return @http.post(url, data)
 
 
+    changePasswordFromRecovery: (data) ->
+        url = @urls.resolve("users-change-password-from-recovery")
+
+        data = _.clone(data, false)
+
+        return @http.post(url, data)
+
+
     # acceptInvitiationWithNewUser: (username, email, password, token) ->
     #     url = @urls.resolve("auth-register")
     #     data = _.extend(data, {
@@ -242,6 +250,22 @@ ForgotPasswordDirective = ($auth, $confirm, $location) ->
     return {link:link}
 
 
+    ###################
+    ## Change Password from Recovery Directive
+    ###################
+
+ChangePasswordFromRecoveryDirective = ($auth, $confirm, $location) ->
+    link = ($scope, $el, $attrs) ->
+        $scope.data = {}
+        ###
+        TODO: We need UX
+        ###
+
+    return {link:link}
+
+
 module.directive("tgRegister", ["$tgAuth", "$tgConfirm", RegisterDirective])
 module.directive("tgLogin", ["$tgAuth", "$tgConfirm", "$location", LoginDirective])
 module.directive("tgForgotPassword", ["$tgAuth", "$tgConfirm", "$location", ForgotPasswordDirective])
+module.directive("tgChangePasswordFromRecovery", ["$tgAuth", "$tgConfirm", "$location",
+                                                  ChangePasswordFromRecoveryDirective])

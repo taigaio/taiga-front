@@ -162,6 +162,7 @@ urls = {
     "home": "/",
     "logint": "/login",
     "forgot-password": "/forgot-password",
+    "change-password": "/change-password/:token",
     "register": "/register",
     "profile": "/:user",
     "project": "/project/:project",
