@@ -185,7 +185,8 @@ RegisterDirective = ($auth, $confirm) ->
 
             promise = $auth.publicRegister($scope.data)
             promise.then (response) ->
-                # TODO: finish this. Go to login and show success message
+                # TODO: finish this. Authenticate user and go to projects page
+                #$confirm.notify("success", response.data.detail)
                 console.log response
                 #
 
@@ -208,7 +209,7 @@ RegisterDirective = ($auth, $confirm) ->
     ## Forgot Password Directive
     ###################
 
-ForgotPasswordDirective = ($auth, $confirm) ->
+ForgotPasswordDirective = ($auth, $confirm, $location) ->
     link = ($scope, $el, $attrs) ->
         $scope.data = {}
         form = $el.find("form").checksley()
@@ -220,8 +221,9 @@ ForgotPasswordDirective = ($auth, $confirm) ->
             promise = $auth.forgotPassword($scope.data)
             promise.then (response) ->
                 if response.data.detail
-                    # TODO: Show a success message and move to /login
-                    #$confirm.success(response.data.detail)
+                    # TODO: Show a success message (reset-pass.jade?) and move to /login
+                    #$confirm.notify("success", response.data.detail)
+                    $location.path("/login") # TODO: Use the future 'urls' service
                     console.log response.data.detail
                     #
 
