@@ -64,6 +64,10 @@ timeout = (wait, continuation) ->
     return window.setTimeout(continuation, wait)
 
 
+cancelTimeout = (timeoutVar) ->
+    window.clearTimeout(timeoutVar)
+
+
 scopeDefer = (scope, func) ->
     _.defer =>
         scope.$apply(func)
@@ -96,6 +100,7 @@ taiga.trim = trim
 taiga.toggleText = toggleText
 taiga.groupBy = groupBy
 taiga.timeout = timeout
+taiga.cancelTimeout = cancelTimeout
 taiga.scopeDefer = scopeDefer
 taiga.toString = toString
 taiga.joinStr = joinStr

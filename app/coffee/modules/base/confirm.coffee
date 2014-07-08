@@ -21,6 +21,7 @@
 
 taiga = @.taiga
 timeout = @.taiga.timeout
+cancelTimeout = @.taiga.cancelTimeout
 
 
 class ConfirmService extends taiga.Service
@@ -79,7 +80,6 @@ class ConfirmService extends taiga.Service
         # custom messages.
         #
         # Types: error, success
-
         selector = ".notification-message-#{type}"
         @.el = angular.element(selector)
 
@@ -96,6 +96,7 @@ class ConfirmService extends taiga.Service
 
         @.el.on "click", ".icon-delete", (event) =>
             body.find(selector).addClass("hidden")
+
 
 
 module = angular.module("taigaBase")
