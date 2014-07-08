@@ -534,12 +534,40 @@ module.directive("tgComment", CommentDirective)
 ## WYSIWYG markitup editor directive
 #############################################################################
 
+#TODO: fix when i18n is implemented
 $i18next = {t: (key) -> key}
 
-tgMarkitupDirective = ($rootscope) ->
+tgMarkitupDirective = ($rootscope, $rs) ->
+    previewTemplate = _.template("""
+      <div class="preview">
+          <div class="actions">
+              <a href="#" title="Edit">Edit</a>
+          </div>
+          <div class="content">
+              <%= data %>
+          </div>
+      </div>
+    """)
+
     link = ($scope, $el, $attrs, $model) ->
+        element = angular.element($el)
+        previewDomNode = $("<div/>", {class: "preview"})
+
         openHelp = () ->
             window.open($rootscope.urls.wikiHelpUrl(), '_blank')
+
+        preview = () ->
+            markdownDomNode = element.parents(".markdown")
+            markItUpDomNode = element.parents(".markItUp")
+            $rs.mdrender.render($scope.projectId, $model.$modelValue).then (data) ->
+                markdownDomNode.append(previewTemplate({data: data.data}))
+                markItUpDomNode.hide()
+
+                element.parents(".markdown").one "click", ".preview", (event) ->
+                    event.preventDefault()
+                    markdownDomNode.find(".preview").remove()
+                    markItUpDomNode.show()
+
 
         markdownSettings =
             nameSpace: 'markdown'
@@ -625,11 +653,11 @@ tgMarkitupDirective = ($rootscope) ->
                 {
                     separator: '---------------'
                 },
-                # {
-                #     name: $i18next.t('wiki-editor.preview')
-                #     call: preview
-                #     className: "preview-icon"
-                # },
+                {
+                    name: $i18next.t('wiki-editor.preview')
+                    call: preview
+                    className: "preview-icon"
+                },
                 # {
                 #     separator: '---------------'
                 # },
@@ -652,7 +680,6 @@ tgMarkitupDirective = ($rootscope) ->
 
             return '\n'+heading+'\n'
 
-        element = angular.element($el)
         element.markItUp(markdownSettings)
 
         element.on "keypress", (event) ->
@@ -663,4 +690,4 @@ tgMarkitupDirective = ($rootscope) ->
 
     return {link:link, require:"ngModel"}
 
-module.directive("tgMarkitup", ["$rootScope", tgMarkitupDirective])
+module.directive("tgMarkitup", ["$rootScope", "$tgResources", tgMarkitupDirective])

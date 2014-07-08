@@ -27,7 +27,7 @@ block content
 
                 div.user-story-tags(tg-tag-line, ng-model="issue.tags")
 
-            section.us-content(tg-bind-html="issue.description_html")
+            section.us-content.wysiwyg(tg-bind-html="issue.description_html")
 
             // include views/modules/attachments
             section.us-activity
