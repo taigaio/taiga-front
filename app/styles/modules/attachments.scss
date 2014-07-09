@@ -23,6 +23,7 @@
 .single-attachment {
     @include table-flex();
     @extend %small;
+    align-items: center;
     border-bottom: 1px solid #cdcdcd;
     padding: 1rem 0 1rem 1rem;
     position: relative;
@@ -49,21 +50,65 @@
         color: $gray-light;
         display: none;
     }
-    &:hover {
-        @include transition (background .2s ease-in);
-        background: lighten($green-taiga, 60%);
-        .settings {
-            @include transition (opacity .2s ease-in);
+    .editable {
+        @include table-flex-child(10, 300px);
+        display: none;
+    }
+    .attachment-delete {
+        @include table-flex-child(1, 10px);
+    }
+    .icon-delete {
+        @extend %large;
+        color: $gray-light;
+        &:hover {
+            color: $red;
+        }
+    }
+    .editable-attachment-deprecated {
+        padding-left: 1rem;
+        span {
+            color: $gray-light;
+        }
+        input {
+            margin-right: .5rem;
+            &:checked {
+                + span {
+                    color: $grayer;
+                }
+            }
+        }
+    }
+    .editable-attachment-comment {
+        input {
+            color: $white;
+        }
+    }
+    &.edit {
+        .settings,
+        .attachment-comment {
+            display: none;
+        }
+        .editable {
             display: block;
-            position: absolute;
-            top: 1rem;
         }
-        .icon-edit {
-            right: 4rem;
-        }
-        .icon-drag-v {
-            cursor: move;
-            right: 1rem;
+    }
+    &:hover {
+        &:not(.edit) {
+            @include transition (background .2s ease-in);
+            background: lighten($green-taiga, 60%);
+            .settings {
+                @include transition (opacity .2s ease-in);
+                display: block;
+                position: absolute;
+                top: 1rem;
+            }
+            .icon-edit {
+                right: 4rem;
+            }
+            .icon-drag-v {
+                cursor: move;
+                right: 1rem;
+            }
         }
     }
 }
