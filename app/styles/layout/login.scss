@@ -52,18 +52,6 @@
             background: $fresh-taiga;
         }
     }
-    .reset-pass-text {
-        display: none;
-        span,
-        strong {
-            display: block;
-            text-align: center;
-        }
-        .title {
-            @extend %large;
-            line-height: 2rem;
-        }
-    }
 }
 
 .login-error {

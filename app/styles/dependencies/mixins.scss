@@ -50,3 +50,7 @@
         max-height: $max;
     }
 }
+
+@mixin background($red: 255, $green: 255, $blue: 255, $opacity: 1) {
+    background: rgba($red, $green, $blue, $opacity);
+}

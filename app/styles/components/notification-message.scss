@@ -42,3 +42,39 @@
         vertical-align: sub;
     }
 }
+
+.notification-light {
+    @include transition(padding .2s linear);
+    background: rgba(0, 0, 0, .8);
+    color: $white;
+    left: calc(50% - 200px);
+    padding: 4% 1rem .2rem;
+    position: absolute;
+    top: 0;
+    width: 400px;
+    z-index: 999;
+    &.hidden {
+        @include transition (padding .2s linear);
+        padding: 1% 1rem .2rem;
+    }
+    .text {
+        display: inline-block;
+        margin-left: .5rem;
+        width: 80%;
+    }
+    .warning {
+        @extend %large;
+        @extend %bold;
+        color: $white;
+        line-height: 2.4rem;
+    }
+    .icon-delete {
+        color: $white;
+        position: absolute;
+        right: 1rem;
+    }
+}
+
+.notification-message-light-error {
+    @include background(240, 15, 8, .8);
+}
