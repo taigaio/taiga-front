@@ -370,7 +370,9 @@ AssignedToDirective = ($rootscope, $confirm) ->
 
         $el.on "click", ".user-assigned", (event) ->
             event.preventDefault()
-            $rootscope.$broadcast("assigned-to:add", $model.$modelValue)
+            $scope.$apply(
+                $rootscope.$broadcast("assigned-to:add", $model.$modelValue)
+            )
 
         $el.on "click", ".icon-delete", (event) ->
             event.preventDefault()

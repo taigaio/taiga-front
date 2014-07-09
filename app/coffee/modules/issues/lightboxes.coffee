@@ -75,30 +75,60 @@ module.directive("tgLbAddWatcher", AddWatcherDirective)
 
 EditAssignedToDirective = () ->
     link = ($scope, $el, $attrs) ->
-        $scope.usersSearch = {}
         editingElement = null
+
+        updateScopeFilteringUsers = (searchingText) ->
+            usersById = _.clone($scope.usersById, false)
+            #Exclude selected user
+            if $scope.selectedUser?
+                delete usersById[$scope.selectedUser.id]
+
+            #Filter text
+            usersById = _.filter(usersById,  (user) -> _.contains(user.full_name_display, searchingText))
+
+            #Return max of 5 elements
+            users = _.map(usersById, (user) -> user)
+            $scope.AssignedToUsersSearch = searchingText
+            $scope.filteringUsers = users.length > 5
+            $scope.filteredUsers = _.first(users, 5)
 
         $scope.$on "assigned-to:add", (ctx, element) ->
             editingElement = element
+            assignedToId = editingElement?.assigned_to
+            $scope.selectedUser = null
+            $scope.selectedUser = $scope.usersById[assignedToId] if assignedToId?
+            updateScopeFilteringUsers("")
             $el.removeClass("hidden")
             $el.find("input").focus()
-            $scope.usersSearch = {}
 
-        $scope.$on "$destroy", ->
-            $el.off()
-
-        $el.on "click", ".close", (event) ->
-            event.preventDefault()
-            $el.addClass("hidden")
+        $scope.$watch "AssignedToUsersSearch", (searchingText) ->
+            updateScopeFilteringUsers(searchingText)
 
         $el.on "click", ".watcher-single", (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
             if editingElement?
-                editingElement.assigned_to = target.scope().user.id
+                user = target.scope().user
+                editingElement.assigned_to = user.id
 
             $el.addClass("hidden")
             $scope.$broadcast("assigned-to:added", editingElement)
+
+        $el.on "click", ".remove-assigned-to", (event) ->
+            event.preventDefault()
+            event.stopPropagation()
+            if editingElement?
+                editingElement.assigned_to = null
+
+            $el.addClass("hidden")
+            $scope.$broadcast("assigned-to:added", editingElement)
+
+        $el.on "click", ".close", (event) ->
+            event.preventDefault()
+            $el.addClass("hidden")
+
+        $scope.$on "$destroy", ->
+            $el.off()
 
     return {link:link}
 
