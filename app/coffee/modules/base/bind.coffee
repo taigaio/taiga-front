@@ -60,7 +60,7 @@ BindOnceTitleDirective = ->
 BindHtmlDirective = ->
     link = ($scope, $el, $attrs) ->
         $scope.$watch $attrs.tgBindHtml, (val) ->
-            $el.html(val) if val
+            $el.html(val) if val?
 
     return {link:link}
 
