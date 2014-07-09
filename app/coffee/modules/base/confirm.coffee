@@ -105,12 +105,12 @@ class ConfirmService extends taiga.Service
         # because the notification message not permits
         # custom messages.
         #
-        # Types: error, success
+        # Types: error, success, light-error
         selector = ".notification-message-#{type}"
         @.el = angular.element(selector)
 
         body = angular.element("body")
-        body.find(".notification-message").addClass("hidden")
+        body.find(".notification-message, notification-light").addClass("hidden")
         body.find(selector).removeClass("hidden")
 
         if @.tsem

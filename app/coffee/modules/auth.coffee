@@ -165,7 +165,7 @@ LoginDirective = ($auth, $confirm, $location) ->
                 #
             promise.then null, (response) ->
                 if response.data._error_message
-                    $confirm.error(response.data._error_message)
+                    $confirm.notify("light-error", response.data._error_message)
 
         $el.on "submit", (event) ->
             event.preventDefault()
@@ -201,7 +201,7 @@ RegisterDirective = ($auth, $confirm) ->
 
             promise.then null, (response) ->
                 if response.data._error_message
-                    $confirm.error(response.data._error_message)
+                    $confirm.notify("light-error", response.data._error_message)
 
         $el.on "submit", (event) ->
             event.preventDefault()
@@ -230,15 +230,12 @@ ForgotPasswordDirective = ($auth, $confirm, $location) ->
             promise = $auth.forgotPassword($scope.data)
             promise.then (response) ->
                 if response.data.detail
-                    # TODO: Show a success message (reset-pass.jade?) and move to /login
-                    #$confirm.notify("success", response.data.detail)
                     $location.path("/login") # TODO: Use the future 'urls' service
-                    console.log response.data.detail
-                    #
+                    $confirm.success(response.data.detail)
 
             promise.then null, (response) ->
                 if response.data._error_message
-                    $confirm.error(response.data._error_message)
+                    $confirm.notify("light-error", response.data._error_message)
 
         $el.on "submit", (event) ->
             event.preventDefault()
