@@ -74,6 +74,27 @@ class ConfirmService extends taiga.Service
         @.el.removeClass("hidden")
         return defered.promise
 
+    success: (message) ->
+        @.el = angular.element(".lightbox-generic-success")
+
+        # Render content
+        @.el.find("h2.title").html(message)
+        defered = @q.defer()
+
+        # Assign event handlers
+        @.el.on "click.confirm-dialog", "a.button-green", (event) =>
+            event.preventDefault()
+            defered.resolve()
+            @.hide()
+
+        @.el.on "click.confirm-dialog", "a.close", (event) =>
+            event.preventDefault()
+            defered.resolve()
+            @.hide()
+
+        @.el.removeClass("hidden")
+        return defered.promise
+
     notify: (type, message) ->
         # TODO: at this momment the message is ignored
         # because the notification message not permits
@@ -96,7 +117,6 @@ class ConfirmService extends taiga.Service
 
         @.el.on "click", ".icon-delete", (event) =>
             body.find(selector).addClass("hidden")
-
 
 
 module = angular.module("taigaBase")

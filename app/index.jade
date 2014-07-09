@@ -14,10 +14,15 @@ html(lang="en", ng-app="taiga")
         nav.menu
         //- the content of nav.menu is in coffe.modules.base TaigaMain directive
         include partials/views/components/notification-message
+
         div.master(ng-view)
+
         div.hidden.lightbox.lightbox_confirm-delete
             include partials/views/modules/lightbox_confirm-delete
+        div.hidden.lightbox.lightbox-generic-success
+            include partials/views/modules/lightbox-generic-success
         div.hidden.lightbox.lightbox-generic-error
             include partials/views/modules/lightbox-generic-error
+
         script(src="/js/libs.js?v=#{v}")
         script(src="/js/app.js?v=#{v}")
