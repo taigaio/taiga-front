@@ -180,6 +180,7 @@ TaskboardRowSizeFixer = ->
 
 
 TaskboardUsPointsDirective = ($repo, $confirm) ->
+    # TODO: i18n
     pointsTemplate = _.template("""
     <% _.each(usRolePoints, function(rolePoint) { %>
     <li>
@@ -202,7 +203,8 @@ TaskboardUsPointsDirective = ($repo, $confirm) ->
         </ul>
     </li>
     <% }); %>
-    """) # TODO: i18n
+    """)
+
     renderUserStoryPoints = ($el, $scope, us) ->
         points = $scope.pointsList
         usRolePoints = []
@@ -223,6 +225,7 @@ TaskboardUsPointsDirective = ($repo, $confirm) ->
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
         us = $scope.$eval($attrs.tgTaskboardUsPoints)
+
         renderUserStoryPoints($el, $scope, us)
 
         $el.on "click", ".us-role-points", (event) ->
