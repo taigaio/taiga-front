@@ -125,10 +125,14 @@ CreateBulkTasksDirective = ($repo, $rs, $rootscope) ->
             projectId = $scope.projectId
             usId = $scope.form.usId
 
-            # FIXME: error handling?
-            $rs.tasks.bulkCreate(projectId, usId, data).then (result) ->
+            promise = $rs.tasks.bulkCreate(projectId, usId, data)
+            promise.then (result) ->
                 $rootscope.$broadcast("taskform:bulk:success", result)
                 $el.addClass("hidden")
+
+            # TODO: error handling
+            promise.then null, ->
+                console.log "FAIL"
 
         $scope.$on "$destroy", ->
             $el.off()

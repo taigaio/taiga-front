@@ -33,7 +33,8 @@ resourceProvider = ($repo, $http, $urls) ->
     service.bulkCreate = (projectId, usId, data) ->
         url = $urls.resolve("bulk-create-tasks")
         params = {projectId: projectId, usId: usId, bulkTasks: data}
-        return $http.post(url, params)
+        return $http.post(url, params).then (result) ->
+            return result.data
 
     return (instance) ->
         instance.tasks = service
