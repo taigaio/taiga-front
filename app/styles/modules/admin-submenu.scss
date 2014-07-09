@@ -3,7 +3,7 @@
         color: $white;
     }
     li {
-        @extend %xlarge;
+        @extend %larger;
         @extend %title;
         border-bottom: 1px solid #a6b2a7;
         text-transform: uppercase;

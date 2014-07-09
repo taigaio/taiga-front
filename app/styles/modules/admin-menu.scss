@@ -1,6 +1,6 @@
 .admin-menu {
     li {
-        @extend %xlarge;
+        @extend %larger;
         @extend %title;
         border-bottom: 1px solid $gray-light;
         text-transform: uppercase;

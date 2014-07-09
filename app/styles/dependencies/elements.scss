@@ -12,9 +12,9 @@ blockquote {
     margin: 0 0 20px;
     padding: 9px 20px 0 19px;
     cite {
+        @extend %small;
         color: #555;
         display: block;
-        font-size: 12px;
         &:before {
             content: '\2014 \0020';
         }
