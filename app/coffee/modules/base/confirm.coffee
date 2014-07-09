@@ -71,6 +71,11 @@ class ConfirmService extends taiga.Service
             defered.resolve()
             @.hide()
 
+        @.el.on "click.confirm-dialog", "a.close", (event) =>
+            event.preventDefault()
+            defered.resolve()
+            @.hide()
+
         @.el.removeClass("hidden")
         return defered.promise
 
