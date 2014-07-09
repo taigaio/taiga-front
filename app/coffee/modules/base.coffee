@@ -113,6 +113,9 @@ MainTaigaDirective = ($log, $compile, $rootscope) ->
         container = $el.find(".master > .wrapper")
         menuDom = $el.find("nav.menu")
 
+        if menuDom.hasClass("hidden")
+            menuDom.removeClass("hidden")
+
         dom = $compile(template({}))(targetScope)
         menuDom.empty()
         menuDom.append(dom)

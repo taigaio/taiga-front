@@ -11,8 +11,10 @@ html(lang="en", ng-app="taiga")
 
     body(tg-main)
         include partials/views/modules/project-nav
-        nav.menu
+
         //- the content of nav.menu is in coffe.modules.base TaigaMain directive
+        nav.menu.hidden
+
         include partials/views/components/notification-message
 
         div.master(ng-view)
