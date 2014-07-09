@@ -140,7 +140,6 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
                       .then(=> @.loadTaskboard())
 
     ## Template actions
-
     addNewTask: (type, us) ->
         switch type
             when "standard" then @rootscope.$broadcast("taskform:new", @scope.sprintId, us?.id)
@@ -160,36 +159,8 @@ module.controller("TaskboardController", TaskboardController)
 #############################################################################
 
 TaskboardDirective = ($rootscope) ->
-
-    #########################
-    ## Drag & Drop Link
-    #########################
-
-    linkSortable = ($scope, $el, $attrs, $ctrl) ->
-        onUpdateItem = (event) ->
-            #TODO
-            console.log "onUpdate", event
-
-        onAddItem = (event) ->
-            #TODO
-            console.log "onAddItem", event
-
-        onRemoveItem = (event) ->
-            #TODO
-            console.log "onRemoveItem", event
-
-        dom = $el.find(".taskboard-table-body")
-        sortable = new Sortable(dom[0], {
-            group: "taskboard",
-            selector: ".taskboard-task",
-            onUpdate: onUpdateItem
-            onAdd: onAddItem
-            onRemove: onRemoveItem
-        })
-
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
-        linkSortable($scope, $el, $attrs, $ctrl)
 
         $el.on "click", ".toggle-analytics-visibility", (event) ->
             event.preventDefault()
