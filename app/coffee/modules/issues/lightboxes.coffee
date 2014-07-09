@@ -48,11 +48,11 @@ module.directive("tgLbCreateIssue", [
 
 AddWatcherDirective = () ->
     link = ($scope, $el, $attrs) ->
-        $scope.watcherSearch = {}
+        $scope.usersSearch = {}
         $scope.$on "watcher:add", ->
             $el.removeClass("hidden")
             $scope.$apply ->
-                $scope.watcherSearch = {}
+                $scope.usersSearch = {}
 
         $scope.$on "$destroy", ->
             $el.off()
@@ -73,14 +73,16 @@ AddWatcherDirective = () ->
 module.directive("tgLbAddWatcher", AddWatcherDirective)
 
 
-AddAssignedToDirective = () ->
+EditAssignedToDirective = () ->
     link = ($scope, $el, $attrs) ->
-        $scope.watcherSearch = {}
-        $scope.$on "assigned-to:add", ->
+        $scope.usersSearch = {}
+        editingElement = null
+
+        $scope.$on "assigned-to:add", (ctx, element) ->
+            editingElement = element
             $el.removeClass("hidden")
             $el.find("input").focus()
-            $scope.$apply ->
-                $scope.watcherSearch = {}
+            $scope.usersSearch = {}
 
         $scope.$on "$destroy", ->
             $el.off()
@@ -92,10 +94,12 @@ AddAssignedToDirective = () ->
         $el.on "click", ".watcher-single", (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
-            watcher = target.scope().user
+            if editingElement?
+                editingElement.assigned_to = target.scope().user.id
+
             $el.addClass("hidden")
-            $scope.$broadcast("assigned-to:added", watcher)
+            $scope.$broadcast("assigned-to:added", editingElement)
 
     return {link:link}
 
-module.directive("tgLbAddAssignedTo", AddAssignedToDirective)
+module.directive("tgLbEditAssignedTo", EditAssignedToDirective)

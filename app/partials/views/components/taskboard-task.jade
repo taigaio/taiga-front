@@ -2,7 +2,7 @@ div.taskboard-tagline
     a.taskboard-tag(ng-repeat="tag in task.tags" href="" title="{{ tag }}")
 div.taskboard-task-inner
     figure.avatar
-        a(href="", title="See {{ usersById[task.assigned_to].username }}'s profile")
+        a(ng-click="ctrl.editTaskAssignedTo(task)", href="", title="See {{ usersById[task.assigned_to].username }}'s profile")
             img.avatar(src="{{ usersById[task.assigned_to].photo }}",
                        alt="{{ usersById[task.assigned_to].username }}'s avatar")
             figcaption {{ usersById[task.assigned_to].full_name_display }}

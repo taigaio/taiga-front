@@ -351,15 +351,19 @@ AssignedToDirective = ($rootscope, $confirm) ->
     link = ($scope, $el, $attrs, $model) ->
         editable = $attrs.editable?
 
-        $scope.$watch $attrs.ngModel, (assignedToId) ->
+        renderAssignedTo = (issue) ->
+            assignedToId = issue?.assigned_to
             assignedTo = null
             assignedTo = $scope.usersById[assignedToId] if assignedToId?
             html = template({assignedTo: assignedTo, editable:editable})
             $el.html(html)
 
+        $scope.$watch $attrs.ngModel, (issue) ->
+            renderAssignedTo(issue)
+
         $el.on "click", ".user-assigned", (event) ->
             event.preventDefault()
-            $rootscope.$broadcast("assigned-to:add")
+            $rootscope.$broadcast("assigned-to:add", $model.$modelValue)
 
         $el.on "click", ".icon-delete", (event) ->
             event.preventDefault()
@@ -368,10 +372,8 @@ AssignedToDirective = ($rootscope, $confirm) ->
             $confirm.ask(title, subtitle).then =>
                 $model.$setViewValue(null)
 
-        $scope.$on "assigned-to:added", (ctx, user) ->
-            $scope.$apply ->
-                $model.$setViewValue(user.id)
-
+        $scope.$on "assigned-to:added", (ctx, issue) ->
+            renderAssignedTo(issue)
 
     return {link:link, require:"ngModel"}
 

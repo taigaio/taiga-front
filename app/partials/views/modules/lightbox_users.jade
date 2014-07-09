@@ -3,10 +3,10 @@ a.close(href="", title="close")
 form
     h2.title Add watchers
     fieldset
-        input(type="text", data-maxlength="500", placeholder="Search for users", ng-model="watcherSearch.$")
+        input(type="text", data-maxlength="500", placeholder="Search for users", ng-model="usersSearch.$")
 
     div.watchers
-        div.watcher-single(ng-repeat="user in users|filter:watcherSearch:strict|limitTo:5 track by user.id")
+        div.watcher-single(ng-repeat="user in users|filter:usersSearch:strict|limitTo:5 track by user.id")
             div.watcher-avatar
                 a.avatar(href="", title="Assigned to")
                     img(tg-bo-src="user.photo", tg-bo-alt="user.photo")

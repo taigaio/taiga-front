@@ -58,6 +58,10 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
             @.loadTaskboard()
         @scope.$on "taskform:edit:success", =>
             @.loadTaskboard()
+        @scope.$on "assigned-to:added", (ctx, task) =>
+            @scope.$apply(
+                @repo.save(task)
+            )
 
     loadSprintStats: ->
         return @rs.sprints.stats(@scope.projectId, @scope.sprintId).then (stats) =>
@@ -144,6 +148,9 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     editTask: (task) ->
         @rootscope.$broadcast("taskform:edit", task)
+
+    editTaskAssignedTo: (task) ->
+        @rootscope.$broadcast("assigned-to:add", task)
 
 module.controller("TaskboardController", TaskboardController)
 

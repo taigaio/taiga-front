@@ -32,7 +32,7 @@ block content
 
         sidebar.menu-secondary.sidebar
             section.us-status(tg-issue-status, ng-model="issue", editable="true")
-            section.us-assigned-to(tg-assigned-to, ng-model="issue.assigned_to", editable="true")
+            section.us-assigned-to(tg-assigned-to, ng-model="issue", editable="true")
             section.watchers(tg-watchers, ng-model="issue.watchers", editable="true")
 
             section.us-detail-settings
@@ -50,7 +50,7 @@ block content
         div.lightbox.lightbox_block.hidden(tg-lb-block, title="Blocking issue", ng-model="issue")
             include views/modules/lightbox_block
 
-        div.lightbox.lightbox_select_user.hidden(tg-lb-add-assigned-to)
+        div.lightbox.lightbox_select_user.hidden(tg-lb-edit-assigned-to)
             include views/modules/lightbox-assigned-to
 
         div.lightbox.lightbox_select_user.hidden(tg-lb-add-watcher)
