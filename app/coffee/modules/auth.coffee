@@ -231,12 +231,11 @@ ForgotPasswordDirective = ($auth, $confirm, $location) ->
 
             promise = $auth.forgotPassword($scope.data)
             promise.then (response) ->
-                if response.data.detail
-                    $location.path("/login") # TODO: Use the future 'urls' service
-                    $confirm.success("<strong>Check your inbox!</strong><br />
-                                     We have sent a mail to<br />
-                                     <strong>#{data.email}</strong><br />
-                                     with the instructions to set a new password") #TODO: i18n
+                $location.path("/login") # TODO: Use the future 'urls' service
+                $confirm.success("<strong>Check your inbox!</strong><br />
+                                 We have sent a mail to<br />
+                                 <strong>#{response.data.email}</strong><br />
+                                 with the instructions to set a new password") #TODO: i18n
 
             promise.then null, (response) ->
                 if response.data._error_message
