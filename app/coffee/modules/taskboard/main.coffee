@@ -52,9 +52,12 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
         promise.then null, ->
             console.log "FAIL" #TODO
 
-        @scope.$on("taskform:new:success", => @.loadTaskboard())
+        # TODO: Reload entire taskboard after create/edit tasks seems
+        # a big overhead. It should be optimized in near future.
         @scope.$on("taskform:bulk:success", => @.loadTaskboard())
+        @scope.$on("taskform:new:success", => @.loadTaskboard())
         @scope.$on("taskform:edit:success", => @.loadTaskboard())
+
         @scope.$on("assigned-to:added", (task) => @scope.$apply(=> @repo.save(task)))
 
     loadSprintStats: ->
