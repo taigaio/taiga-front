@@ -168,10 +168,11 @@ TaskboardDirective = ($rootscope) ->
             toggleText(target, ["Hide statistics", "Show statistics"]) # TODO: i18n
             $rootscope.$broadcast("taskboard:graph:toggle-visibility")
 
-        taskboardTableBodyDom = $el.find(".taskboard-table-body")
-        taskboardTableHeaderInnerDom = $el.find(".taskboard-table-header .taskboard-table-inner")
-        taskboardTableBodyDom.scroll () ->
-            taskboardTableHeaderInnerDom.css('left', -1 * taskboardTableBodyDom.scrollLeft())
+        tableBodyDom = $el.find(".taskboard-table-body")
+        tableBodyDom.on "scroll", (event) ->
+            target = angular.element(event.currentTarget)
+            headerdom = $el.find(".taskboard-table-header .taskboard-table-inner")
+            headerdom.css("left", -1 * target.scrollLeft())
 
         $scope.$on "$destroy", ->
             $el.off()
