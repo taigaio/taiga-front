@@ -162,10 +162,12 @@ LoginDirective = ($auth, $confirm, $location) ->
             promise.then (response) ->
                 # TODO: finish this. Go tu user home page
                 $location.path("/project/project-example-0/backlog")
-                #
+
             promise.then null, (response) ->
                 if response.data._error_message
-                    $confirm.notify("light-error", response.data._error_message)
+                    $confirm.notify("light-error", "According to our Oompa Loompas,
+                                                    your username/email or password
+                                                    are incorrect.") #TODO: i18n
 
         $el.on "submit", (event) ->
             event.preventDefault()
@@ -195,13 +197,13 @@ RegisterDirective = ($auth, $confirm) ->
             promise = $auth.publicRegister($scope.data)
             promise.then (response) ->
                 # TODO: finish this. Authenticate user and go to projects page
-                #$confirm.notify("success", response.data.detail)
                 console.log response
-                #
 
             promise.then null, (response) ->
                 if response.data._error_message
-                    $confirm.notify("light-error", response.data._error_message)
+                    $confirm.notify("light-error", "According to our Oompa Loompas,
+                                                    your are not registered yet or
+                                                    type an invalid password.") #TODO: i18n
 
         $el.on "submit", (event) ->
             event.preventDefault()
@@ -231,11 +233,15 @@ ForgotPasswordDirective = ($auth, $confirm, $location) ->
             promise.then (response) ->
                 if response.data.detail
                     $location.path("/login") # TODO: Use the future 'urls' service
-                    $confirm.success(response.data.detail)
+                    $confirm.success("<strong>Check your inbox!</strong><br />
+                                     We have sent a mail to<br />
+                                     <strong>#{data.email}</strong><br />
+                                     with the instructions to set a new password") #TODO: i18n
 
             promise.then null, (response) ->
                 if response.data._error_message
-                    $confirm.notify("light-error", response.data._error_message)
+                    $confirm.notify("light-error", "According to our Oompa Loompas,
+                                                    your are not registered yet.") #TODO: i18n
 
         $el.on "submit", (event) ->
             event.preventDefault()
