@@ -94,6 +94,7 @@ modules = [
     "taigaIssues",
     "taigaSearch",
     "taigaAdmin",
+    "taigaNavMenu",
     "taigaLightboxes",
 
     # Vendor modules
