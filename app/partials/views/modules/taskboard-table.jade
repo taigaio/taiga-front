@@ -30,5 +30,5 @@ div.taskboard-table
                     include ../components/addnewtask
 
                 div.taskboard_task-playground.task-column(ng-repeat="st in taskStatusList track by st.id")
-                    div.taskboard-task(ng-repeat="task in unassignedTasks[st.id] track by task.id")
+                    div.taskboard-task(ng-repeat="task in usTasks[null][st.id] track by task.id")
                         include ../components/taskboard-task

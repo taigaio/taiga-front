@@ -86,42 +86,30 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
         return @rs.tasks.list(@scope.projectId, @scope.sprintId).then (tasks) =>
             @scope.tasks = tasks
             @scope.usTasks = {}
-            @scope.unassignedTasks = {}
 
-            for us in @scope.userstories
+            # Iterate over all userstories and
+            # null userstory for unassigned tasks
+            for us in _.union(@scope.userstories, [{id:null}])
                 @scope.usTasks[us.id] = {}
-
                 for status in @scope.taskStatusList
                     @scope.usTasks[us.id][status.id] = []
 
-            for status in @scope.taskStatusList
-                @scope.unassignedTasks[status.id] = []
-
             for task in @scope.tasks
-                if task.user_story == null
-                    @scope.unassignedTasks[task.status]?.push(task)
-                else
-                    # why? because a django-filters sucks
-                    if @scope.usTasks[task.user_story]?
-                        @scope.usTasks[task.user_story][task.status]?.push(task)
+                @scope.usTasks[task.user_story][task.status].push(task)
 
             return tasks
 
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
             @scope.project = project
-
+            # Not used at this momment
             @scope.pointsList = _.sortBy(project.points, "order")
-            @scope.pointsById = groupBy(@scope.pointsList, (e) -> e.id)
-
-            @scope.roleList = _.sortBy(project.roles, "order")
-            @scope.roleById = groupBy(@scope.roleList, (e) -> e.id)
-
+            # @scope.roleList = _.sortBy(project.roles, "order")
+            @scope.pointsById = groupBy(project.points, (e) -> e.id)
+            @scope.roleById = groupBy(project.roles, (e) -> e.id)
             @scope.taskStatusList = _.sortBy(project.task_statuses, "order")
-
             @scope.usStatusList = _.sortBy(project.us_statuses, "order")
-            @scope.usStatusById = groupBy(@scope.usStatusList, (e) -> e.id)
-
+            @scope.usStatusById = groupBy(project.us_statuses, (e) -> e.id)
             return project
 
     loadTaskboard: ->
