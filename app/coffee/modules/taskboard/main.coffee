@@ -235,7 +235,8 @@ TaskboardUsPointsDirective = ($repo, $confirm) ->
         <ul class="popover pop-points">
             <% _.each(points, function(point) { %>
             <li>
-                <a href="" class="point" title="<%- point.name %>"
+                <a href="" class="point <% if (point.id == rolePoint.point.id) { %>active<% } %>"
+                   title="<%- point.name %>"
                    data-point-id="<%- point.id %>" data-role-id="<%- rolePoint.role.id %>">
                     <%- point.name %>
                 </a>
@@ -294,7 +295,7 @@ TaskboardUsPointsDirective = ($repo, $confirm) ->
 
             $scope.$apply ->
                 onSuccess = ->
-                    $repo.refresh(us) ->
+                    $repo.refresh(us).then ->
                         # TODO: Remove me when backlog will be fixed
                         $ctrl.loadSprintStats()
 

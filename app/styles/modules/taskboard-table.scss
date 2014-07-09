@@ -100,7 +100,8 @@ $column-margin: 0 10px 0 0;
         a {
             display: block;
             text-align: center;
-            &:hover {
+            &:hover,
+            &.active {
                 background: $fresh-taiga;
                 color: $white;
             }
