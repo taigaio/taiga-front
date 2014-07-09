@@ -9,6 +9,8 @@ div.us-activity
             span(tg-bo-html="key")
         div.activity-fromto
             p
-                strong from <br /> {{ ctrl.getChangeText(change[0]) }}
+                strong from <br />
+                span(tg-bo-html="ctrl.getChangeText(change[0])")
             p
-                strong to <br /> {{ ctrl.getChangeText(change[1]) }}
+                strong to <br />
+                span(tg-bo-html="ctrl.getChangeText(change[1])")
