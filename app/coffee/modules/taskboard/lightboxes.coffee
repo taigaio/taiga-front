@@ -36,6 +36,7 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootScope) ->
                 assigned_to: null
             }
             isNew = true
+
             # Update texts for creation
             $el.find(".button-green span").html("Create") #TODO: i18n
             $el.find(".title").html("New task  ") #TODO: i18n
@@ -44,6 +45,7 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootScope) ->
         $scope.$on "taskform:edit", (ctx, task) ->
             $scope.task = task
             isNew = false
+
             # Update texts for edition
             $el.find(".button-green span").html("Save") #TODO: i18n
             $el.find(".title").html("Edit task  ") #TODO: i18n
@@ -53,11 +55,9 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootScope) ->
             if task.is_blocked
                 $el.find(".blocked-note").show()
                 $el.find("label.blocked").addClass("selected")
+
             if task.is_iocaine
                 $el.find("label.iocaine").addClass("selected")
-
-        $scope.$on "$destroy", ->
-            $el.off()
 
         # Dom Event Handlers
 
@@ -79,6 +79,7 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootScope) ->
                 promise = $repo.save($scope.task)
                 broadcastEvent = "taskform:edit:success"
 
+            # FIXME: error handling?
             promise.then (data) ->
                 $el.addClass("hidden")
                 $rootScope.$broadcast(broadcastEvent, data)
@@ -99,6 +100,7 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootScope) ->
             $el.off()
 
     return {link: link}
+
 
 CreateBulkTasksDirective = ($repo, $rs, $rootscope) ->
     link = ($scope, $el, attrs) ->
@@ -123,6 +125,7 @@ CreateBulkTasksDirective = ($repo, $rs, $rootscope) ->
             projectId = $scope.projectId
             usId = $scope.form.usId
 
+            # FIXME: error handling?
             $rs.tasks.bulkCreate(projectId, usId, data).then (result) ->
                 $rootscope.$broadcast("taskform:bulk:success", result)
                 $el.addClass("hidden")
@@ -134,7 +137,18 @@ CreateBulkTasksDirective = ($repo, $rs, $rootscope) ->
 
 
 module = angular.module("taigaTaskboard")
-module.directive("tgLbCreateEditTask", ["$tgRepo", "$tgModel", "$tgResources", "$rootScope",
-                                        CreateEditTaskDirective])
-module.directive("tgLbCreateBulkTasks", ["$tgRepo", "$tgResources", "$rootScope",
-                                               CreateBulkTasksDirective])
+
+module.directive("tgLbCreateEditTask", [
+    "$tgRepo",
+    "$tgModel",
+    "$tgResources",
+    "$rootScope",
+    CreateEditTaskDirective
+])
+
+module.directive("tgLbCreateBulkTasks", [
+    "$tgRepo",
+    "$tgResources",
+    "$rootScope",
+    CreateBulkTasksDirective
+])
