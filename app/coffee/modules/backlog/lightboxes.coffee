@@ -104,6 +104,7 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope) ->
 
     return {link: link}
 
+
 CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope) ->
     link = ($scope, $el, attrs) ->
         $scope.form = {data: ""}
@@ -135,12 +136,10 @@ CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope) ->
 
     return {link: link}
 
+
 CreateEditSprint = ($repo, $confirm, $rs, $rootscope) ->
     link = ($scope, $el, attrs) ->
         createSprint = true
-        $scope.milestonesCounter = "--"
-        bindOnce $scope, "sprints", (sprints) ->
-            $scope.milestonesCounter = sprints.length
 
         submit = ->
             form = $el.find("form").checksley()
@@ -153,9 +152,7 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope) ->
                 promise = $repo.save($scope.sprint)
 
             promise.then (data) ->
-                if createSprint
-                    $scope.milestonesCounter += 1
-
+                $scope.sprintsCounter += 1 if createSprint
                 $el.addClass("hidden")
                 $rootscope.$broadcast("sprintform:create:success", data)
 
@@ -221,8 +218,25 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope) ->
 
 
 module = angular.module("taigaBacklog")
-module.directive("tgLbCreateEditUserstory", ["$tgRepo", "$tgModel", "$tgResources", "$rootScope",
-                                             CreateEditUserstoryDirective])
-module.directive("tgLbCreateBulkUserstories", ["$tgRepo", "$tgResources", "$rootScope",
-                                               CreateBulkUserstoriesDirective])
-module.directive("tgLbCreateEditSprint", ["$tgRepo", "$tgConfirm", "$tgResources", "$rootScope", CreateEditSprint])
+module.directive("tgLbCreateEditUserstory", [
+    "$tgRepo",
+    "$tgModel",
+    "$tgResources",
+    "$rootScope",
+    CreateEditUserstoryDirective
+])
+
+module.directive("tgLbCreateBulkUserstories", [
+    "$tgRepo",
+    "$tgResources",
+    "$rootScope",
+    CreateBulkUserstoriesDirective
+])
+
+module.directive("tgLbCreateEditSprint", [
+    "$tgRepo",
+    "$tgConfirm",
+    "$tgResources",
+    "$rootScope",
+    CreateEditSprint
+])

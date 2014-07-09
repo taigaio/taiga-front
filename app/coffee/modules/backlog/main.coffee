@@ -72,6 +72,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
     loadSprints: ->
         return @rs.sprints.list(@scope.projectId).then (sprints) =>
             @scope.sprints = sprints
+            @scope.sprintsCounter = sprints.length
             return sprints
 
     loadUserstories: ->
