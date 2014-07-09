@@ -29,20 +29,21 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide,
     $routeProvider.when("/project/:pslug/issues", {templateUrl: "/partials/issues.html"})
     $routeProvider.when("/project/:pslug/search", {templateUrl: "/partials/search.html"})
     $routeProvider.when("/project/:pslug/issues/:issueref",
-                    {templateUrl: "/partials/issues-detail.html"})
+                        {templateUrl: "/partials/issues-detail.html"})
 
     $routeProvider.when("/project/:pslug/issues/:issueref/edit",
-                    {templateUrl: "/partials/issues-detail-edit.html"})
+                        {templateUrl: "/partials/issues-detail-edit.html"})
 
     # Admin
     $routeProvider.when("/project/:pslug/admin/project-profile/details",
-                    {templateUrl: "/partials/admin-project-profile.html"})
+                        {templateUrl: "/partials/admin-project-profile.html"})
 
     # Auth
     $routeProvider.when("/login", {templateUrl: "/partials/login.html"})
     $routeProvider.when("/register", {templateUrl: "/partials/register.html"})
     $routeProvider.when("/forgot-password", {templateUrl: "/partials/forgot-password.html"})
-    $routeProvider.when("/change-password/:token", {templateUrl: "/partials/change-password-from-recovery.html"})
+    $routeProvider.when("/change-password/:token",
+                        {templateUrl: "/partials/change-password-from-recovery.html"})
     $routeProvider.when("/invitation/:token", {templateUrl: "/partials/invitation.html"})
 
     $routeProvider.otherwise({redirectTo: '/login'})
