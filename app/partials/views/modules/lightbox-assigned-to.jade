@@ -11,7 +11,7 @@ form
                 a.avatar(href="", title="Assigned to")
                     img(src="{{ selectedUser.photo }}", alt="{{ selectedUser.full_name_display }}")
             a.watcher-name(href="", title="{{ selectedUser.full_name_display }}", ng-bind="selectedUser.full_name_display")
-            a.remove-assigned-to(href="", title="Remove assigned") Remove
+            a.icon.icon-delete.remove-assigned-to(href="", title="Remove assigned")
 
         div.watcher-single(ng-repeat="user in filteredUsers")
             div.watcher-avatar

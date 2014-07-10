@@ -6,11 +6,18 @@ block head
 block content
     div.wrapper
         section.main.kanban
-            h1
-                span ProjectName
-                span.green Sprint Name
-                span.date 02/10/2014-15/10/2014
-            include views/components/large-summary
+            div.kanban-detail-header
+                h1
+                    span ProjectName
+                    span.green Sprint Name
+                    span.date 02/10/2014-15/10/2014
+                div.kanban-settings
+                    a.button.button-trans(href="", title="Filter")
+                        span.icon.icon-filter
+                        span Filters
+                    a.button.button-gray(href="", title="Filter")
+                        span Show Statistics
+            //-include views/components/large-summary
             include views/modules/burndown
-            include views/modules/list-filters-kanban
+            //-include views/modules/list-filters-kanban
             include views/modules/kanban-table

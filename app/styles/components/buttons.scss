@@ -24,9 +24,6 @@
     &:hover {
         @include transition (background .3s linear);
     }
-    span {
-        color: $white;
-    }
     .icon {
         margin-right: .3rem;
     }
@@ -38,12 +35,18 @@
     &:hover {
         background: $fresh-taiga;
     }
+    span {
+        color: $white;
+    }
 }
 
 .button-gray {
     background: $button-gray;
     &:hover {
         background: $button-gray-hover;
+        color: $white;
+    }
+    span {
         color: $white;
     }
 }
@@ -54,6 +57,9 @@
         background: $red;
         color: $white;
     }
+    span {
+        color: $white;
+    }
 }
 
 .button-orange {
@@ -62,9 +68,12 @@
         background: lighten($orange, 10%);
         color: $white;
     }
+    span {
+        color: $white;
+    }
 }
 
-a.button-block {
+.button-block {
     background: $white;
     color: $red;
     &:hover {

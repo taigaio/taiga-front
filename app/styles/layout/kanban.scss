@@ -1,4 +1,12 @@
 .kanban {
+    .kanban-detail-header {
+        h1 {
+            display: inline-block;
+        }
+    }
+    .kanban-settings {
+        float: right;
+    }
     .burndown-container {
         display: none;
     }

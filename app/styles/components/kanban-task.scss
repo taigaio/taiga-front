@@ -2,6 +2,9 @@
     background: $postit;
     margin-bottom: 1rem;
     position: relative;
+    &:last-child {
+        margin: 0;
+    }
     &:hover {
         .icon-edit,
         .icon-drag-h {
@@ -25,7 +28,13 @@
         margin-right: .5em;
     }
     .task-text {
+        margin-bottom: .2rem;
         padding-right: 2rem;
+    }
+    .assigned-to {
+        @extend %small;
+        display: block;
+        margin-bottom: .5rem;
     }
     .avatar {
         vertical-align: middle;
