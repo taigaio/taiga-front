@@ -28,6 +28,7 @@ joinStr = @.taiga.joinStr
 groupBy = @.taiga.groupBy
 bindOnce = @.taiga.bindOnce
 debounce = @.taiga.debounce
+startswith = @.taiga.startswith
 
 module = angular.module("taigaIssues")
 
@@ -77,22 +78,32 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             return project
 
     getUrlFilters: ->
-        filters = _.pick(@location.search(), "page", "tags", "statuses", "types", "subject",
-                                             "severities", "priorities", "assignedTo")
+        filters = _.pick(@location.search(), "page", "tags", "statuses", "types",
+                                             "subject", "severities", "priorities",
+                                             "assignedTo", "orderBy")
         filters.page = 1 if not filters.page
         return filters
 
-    loadFilters: ->
-        return @rs.issues.filtersData(@scope.projectId).then (data) =>
-            urlfilters = @.getUrlFilters()
+    getUrlFilter: (name) ->
+        filters = _.pick(@location.search(), name)
+        return filters[name]
 
+    loadFilters: ->
+        # This function is executed only once when page is loads and
+        # it needs create all filters structure and know that
+        # filters are selected from url params.
+        urlfilters = @.getUrlFilters()
+
+        if urlfilters.subject
+            @scope.filtersSubject = urlfilters.subject
+
+        return @rs.issues.filtersData(@scope.projectId).then (data) =>
             # Build selected filters (from url) fast lookup data structure
             searchdata = {}
 
-            for name, value of urlfilters
-                if name == "page"
-                    continue
-
+            for name, value of _.omit(urlfilters, "page", "orderBy")
+                # if name == "page" or name == "orderBy"
+                #     continue
                 if not searchdata[name]?
                     searchdata[name] = {}
 
@@ -135,38 +146,33 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 obj.selected = true if isSelected("statuses", obj.id)
                 return obj
 
-            if urlfilters.subject
-                @scope.filtersSubject = urlfilters.subject
-
             @rootscope.$broadcast("filters:loaded", @scope.filters)
             return data
 
-    # Convert stored filters to http parameters
-    # ready filters (the name difference exists
-    # because of some automatic lookups and is
-    # the simplest way todo it without adding
-    # additional complexity to code.
-    prepareFilters: ->
-        filters = {}
+    loadIssues: ->
+        @scope.urlFilters = @.getUrlFilters()
 
-        for name, values of @.getUrlFilters()
+        # Convert stored filters to http parameters
+        # ready filters (the name difference exists
+        # because of some automatic lookups and is
+        # the simplest way todo it without adding
+        # additional complexity to code.
+        @scope.httpParams = {}
+        for name, values of @scope.urlFilters
             if name == "severities"
                 name = "severity"
+            else if name == "orderBy"
+                name = "order_by"
             else if name == "priorities"
                 name = "priority"
             else if name == "assignedTo"
                 name = "assigned_to"
             else if name == "statuses"
                 name = "status"
+            @scope.httpParams[name] = values
 
-            filters[name] = values
-
-        return filters
-
-    loadIssues: ->
-        filters = @.prepareFilters()
-
-        promise = @rs.issues.list(@scope.projectId, filters).then (data) =>
+        console.log "prepared filters", @scope.httpParams
+        promise = @rs.issues.list(@scope.projectId, @scope.httpParams).then (data) =>
             @scope.issues = data.models
             @scope.page = data.current
             @scope.count = data.count
@@ -319,9 +325,28 @@ IssuesDirective = ($log, $location) ->
     ## Issues Filters
     #########################
 
-    linkFilters = ($scope, $el, $attrs, $ctrl) ->
-        $scope.filters = {}
-        $scope.selectedFilters = []
+    linkOrdering = ($scope, $el, $attrs, $ctrl) ->
+        $el.on "click", ".row.title > div", (event) ->
+            target = angular.element(event.currentTarget)
+
+            currentOrder = $ctrl.getUrlFilter("orderBy")
+            newOrder = target.data("fieldname")
+            finalOrder = newOrder
+
+            if currentOrder is undefined
+                finalOrder = newOrder
+            else
+                reverse = true
+                if startswith(currentOrder, "-")
+                    reverse = false
+                    currentOrder = trim(currentOrder, "-")
+
+                if currentOrder == newOrder
+                    finalOrder = if reverse then "-#{newOrder}" else newOrder
+
+            $scope.$apply ->
+                $ctrl.replaceFilter("orderBy", finalOrder)
+                $ctrl.loadIssues()
 
     #########################
     ## Issues Link
@@ -329,8 +354,11 @@ IssuesDirective = ($log, $location) ->
 
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
-        linkFilters($scope, $el, $attrs, $ctrl)
+        linkOrdering($scope, $el, $attrs, $ctrl)
         linkPagination($scope, $el, $attrs, $ctrl)
+
+        $scope.$on "$destroy", ->
+            $el.off()
 
     return {link:link}
 

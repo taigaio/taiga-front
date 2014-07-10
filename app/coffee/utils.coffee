@@ -92,6 +92,8 @@ joinStr = (str, coll) ->
 debounce = (wait, func) ->
     return _.debounce(func, wait)
 
+startswith = (str1, str2) ->
+    return _.str.startsWith(str1, str2)
 
 taiga = @.taiga
 taiga.bindOnce = bindOnce
@@ -105,3 +107,4 @@ taiga.scopeDefer = scopeDefer
 taiga.toString = toString
 taiga.joinStr = joinStr
 taiga.debounce = debounce
+taiga.startswith = startswith
