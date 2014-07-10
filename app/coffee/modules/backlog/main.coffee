@@ -61,6 +61,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @scope.$on("sprintform:remove:success", @.loadProjectStats)
         @scope.$on("usform:new:success", @.loadUserstories)
         @scope.$on("usform:edit:success", @.loadUserstories)
+        @scope.$on("sprint:us:move", @.moveUs)
 
     loadProjectStats: ->
         return @rs.projects.stats(@scope.projectId).then (stats) =>
@@ -73,6 +74,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         return @rs.sprints.list(@scope.projectId).then (sprints) =>
             @scope.sprints = sprints
             @scope.sprintsCounter = sprints.length
+            @scope.sprintsById = groupBy(sprints, (x) -> x.id)
             return sprints
 
     loadUserstories: ->
@@ -140,6 +142,125 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
                 res = _.find(selectedStatuses, (x) -> x == taiga.toString(us.status))
                 return not res
 
+    prepareBulkUpdateData: (uses) ->
+         return _.map(uses, (x) -> [x.id, x.order])
+
+    resortUserStories: (uses) ->
+        items = []
+        for item, index in uses
+            item.order = index
+            if item.isModified()
+                items.push(item)
+
+        return items
+
+    moveUs: (ctx, us, newUsIndex, newSprintId) ->
+        oldSprintId = us.milestone
+
+        # In the same sprint or in the backlog
+        if newSprintId == oldSprintId
+            items = null
+            userstories = null
+
+            if newSprintId == null
+                userstories = @scope.userstories
+            else
+                userstories = @scope.sprintsById[newSprintId].user_stories
+
+            @scope.$apply ->
+                r = userstories.indexOf(us)
+                userstories.splice(r, 1)
+                userstories.splice(newUsIndex, 0, us)
+
+            # Rehash userstories order field
+            items = @.resortUserStories(userstories)
+            data = @.prepareBulkUpdateData(items)
+
+            # Persist in bulk all affected
+            # userstories with order change
+            promise = @rs.userstories.bulkUpdateOrder(us.project, data)
+            promise.then null, ->
+                console.log "FAIL"
+
+            return promise
+
+        # From sprint to backlog
+        if newSprintId == null
+            us.milestone = null
+
+            @scope.$apply =>
+                # Add new us to backlog userstories list
+                @scope.userstories.splice(newUsIndex, 0, us)
+                @scope.visibleUserstories.splice(newUsIndex, 0, us)
+
+                # Execute the prefiltering of user stories
+                @.filterVisibleUserstories()
+
+                # Remove the us from the sprint list.
+                sprint = @scope.sprintsById[oldSprintId]
+                r = sprint.user_stories.indexOf(us)
+                sprint.user_stories.splice(r, 1)
+
+            # Persist the milestone change of userstory
+            promise = @repo.save(us)
+
+            # Rehash userstories order field
+            # and persist in bulk all changes.
+            promise = promise.then =>
+                items = @.resortUserStories(@scope.userstories)
+                data = @.prepareBulkUpdateData(items)
+                return @rs.userstories.bulkUpdateOrder(us.project, data)
+
+            promise.then null, ->
+                # TODO
+                console.log "FAIL"
+
+            return promise
+
+        # From backlog to sprint
+        newSprint = @scope.sprintsById[newSprintId]
+        if us.milestone == null
+            us.milestone = newSprintId
+
+            @scope.$apply =>
+                # Add moving us to sprint user stories list
+                newSprint.user_stories.splice(newUsIndex, 0, us)
+
+                # Remove moving us from backlog userstories lists.
+                r = @scope.visibleUserstories.indexOf(us)
+                @scope.visibleUserstories.splice(r, 1)
+                r = @scope.userstories.indexOf(us)
+                @scope.userstories.splice(r, 1)
+
+        # From sprint to sprint
+        else
+            us.milestone = newSprintId
+
+            @scope.$apply =>
+                # Add new us to backlog userstories list
+                newSprint.user_stories.splice(newUsIndex, 0, us)
+
+                # Remove the us from the sprint list.
+                oldSprint = @scope.sprintsById[oldSprintId]
+                r = oldSprint.user_stories.indexOf(us)
+                oldSprint.user_stories.splice(r, 1)
+
+        # Persist the milestone change of userstory
+        promise = @repo.save(us)
+
+        # Rehash userstories order field
+        # and persist in bulk all changes.
+        promise = promise.then =>
+            items = @.resortUserStories(newSprint.user_stories)
+            data = @.prepareBulkUpdateData(items)
+            return @rs.userstories.bulkUpdateOrder(us.project, data)
+
+        promise.then null, ->
+            # TODO
+            console.log "FAIL"
+
+        return promise
+
     getUrlFilters: ->
         return _.pick(@location.search(), "statuses", "tags")
 
@@ -169,7 +290,6 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @scope.filters.statuses = _.map _.countBy(plainStatuses), (v, k) =>
             obj = {id:k, type:"statuses", name: @scope.usStatusById[k].name, count:v}
             obj.selected = true if isSelected("statuses", obj.id)
-            console.log "statuses", obj
             return obj
 
         return @scope.filters
