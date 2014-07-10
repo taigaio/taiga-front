@@ -1,11 +1,18 @@
 .notification-message {
-    background: $grayer;
+    @include transform(translateY(-100%));
+    @include transition (all .6s ease-in-out);
+    background: rgba($gray-light, .8);
     color: $white;
     padding: 1rem;
     padding-bottom: .5em;
-    position: relative;
+    position: absolute;
+    top: 0;
     width: 100%;
     z-index: 999;
+    &.active {
+        @include transform(translateY(0));
+        @include transition (all .6s ease-in-out);
+    }
     .text {
         display: inline-block;
         margin-left: .5rem;
@@ -26,7 +33,7 @@
 }
 
 .notification-message-success {
-    background: $fresh-taiga;
+    background: rgba($fresh-taiga, .8);
     .icon-notification-success {
         @extend %xxlarge;
         display: inline;
@@ -35,7 +42,7 @@
 }
 
 .notification-message-error {
-    background: $red;
+    background: rgba($red, .8);
     .icon-notification-error {
         @extend %xxlarge;
         display: inline;
@@ -44,18 +51,19 @@
 }
 
 .notification-light {
-    @include transition(padding .2s linear);
-    background: rgba(0, 0, 0, .8);
+    @include transform(translateY(-100%));
+    @include transition (all .6s ease-in-out);
+    background: rgba($gray-light, .8);
     color: $white;
     left: calc(50% - 200px);
-    padding: 4% 1rem .2rem;
+    padding: 1rem 1rem .2rem;
     position: absolute;
     top: 0;
     width: 400px;
     z-index: 999;
-    &.hidden {
-        @include transition (padding .2s linear);
-        padding: 1% 1rem .2rem;
+    &.active {
+        @include transform(translateY(0));
+        @include transition (all .6s ease-in-out);
     }
     .text {
         display: inline-block;
@@ -76,5 +84,5 @@
 }
 
 .notification-message-light-error {
-    @include background(240, 15, 8, .8);
+    background: rgba($red, .8);
 }
