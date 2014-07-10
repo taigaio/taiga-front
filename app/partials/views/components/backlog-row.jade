@@ -4,7 +4,7 @@ div.row.us-item-row(ng-repeat="us in visibleUserstories|orderBy:order track by u
             span.tag(ng-repeat="tag in us.tags") {{ tag }}
         div.user-story-name
             input(type="checkbox", name="")
-            a(href="", title="{{ us.subject }}") {{ us.subject }}
+            a.clickable(tg-nav="project-userstories-detail:project=project.slug,ref=us.ref", title="{{ us.subject }}") {{ us.subject }}
             span.us-settings
                 a.icon.icon-edit(href="", ng-click="ctrl.editUserStory(us)", title="Edit")
                 a.icon.icon-delete(href="", ng-click="ctrl.deleteUserStory(us)", title="Delete")

@@ -24,6 +24,9 @@ taiga = @.taiga
 resourceProvider = ($repo, $http, $urls) ->
     service = {}
 
+    service.get = (projectId, usId) ->
+        return $repo.queryOne("userstories", usId)
+
     service.listUnassigned = (projectId) ->
         params = {"project": projectId, "milestone": "null"}
         return $repo.queryMany("userstories", params)
@@ -37,6 +40,9 @@ resourceProvider = ($repo, $http, $urls) ->
         url = $urls.resolve("bulk-update-us-order")
         params = {projectId: projectId, bulkStories: data}
         return $http.post(url, params)
+
+    service.history = (usId) ->
+        return $repo.queryOneRaw("history/userstory", usId)
 
     return (instance) ->
         instance.userstories = service

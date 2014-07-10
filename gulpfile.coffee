@@ -43,6 +43,7 @@ paths = {
              "app/coffee/modules/backlog/*.coffee",
              "app/coffee/modules/taskboard/*.coffee",
              "app/coffee/modules/issues/*.coffee",
+             "app/coffee/modules/userstories/*.coffee",
              "app/coffee/modules/admin/*.coffee",
              "app/coffee/modules/locales/*.coffee",
              "app/coffee/modules/base/*.coffee",

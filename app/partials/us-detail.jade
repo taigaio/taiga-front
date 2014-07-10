@@ -1,39 +1,35 @@
-extends layout
+extends dummy-layout
 
 block head
     title Taiga  Project management web application with scrum in mind!
 
 block content
-    div.wrapper
+    div.wrapper(tg-us-detail, ng-controller="UserStoryDetailController as ctrl",
+                ng-init="section='backlog'")
         div.main.us-detail
             div.us-detail-header
-                h1
-                    span ProjectName
-                    span.green User Story
-                a.button.button-green(href="", title="Edit") Edit
+                include views/components/mainTitle
+                a.button.button-green(href="", title="Edit", tg-nav="project-userstories-detail-edit:project=project.slug,ref=us.ref") Edit
+
             section.us-story-main-data
-                h2.us-title
-                    span.us-number 125
-                    span.us-name Tagear contenido dentro de las catas privadas
-                div.blocked-warning
+                div.us-title
+                    h2.us-title-text
+                        span.us-number(tg-bo-html="us.ref")
+                        span.us-name(ng-bind="us.subject")
+                    div.issue-nav
+                        a.icon.icon-arrow-left(ng-show="nextUrl", href="{{ nextUrl }}", title="next user story")
+                        a.icon.icon-arrow-right(ng-show="previousUrl",href="{{ previousUrl }}", title="previous user story")
+
+                div.blocked-warning(ng-show="us.is_blocked")
                     span.icon.icon-warning
                     p.blocked Blocked!
-                    p We need Pilar to make a prototype out of this or we are not sure what to show at this part.
-                    a.button.button-red.button-block(href="", title="Unblock US") Unblock
-                div.user-story-tags
-                    - for(var y = 0; y < 6; y++)
-                        include views/components/tag
-                    input(type="text", placeholder="Add Tag")
-            section.us-content
-                p Hay que cambiar el texto "Hola NombreDelUsuario" por "Nivel de conexion al XX%"
-                p La propuesta que esperábamos de UX debía incluir nombre y nivel de conexión. Esperamos nueva propuesta corregida donde aparezca tanto el nombre como el % de conexión
-                p <strong>Test de aceptación</strong>
-                ul
-                    li Entro en la aplicación
-                    li Compruebo que el indicador crece
-                p <strong>Prototipos</strong><br /><a href="">share.axure.com/lalala</a>
-                p <strong>Prototipos</strong><br /><a href="">share.axure.com/lalala</a>
-            include views/modules/attachments
+                    p(tg-bind-html="us.blocked_note || 'This user story is blocked'")
+
+                div.user-story-tags(tg-tag-line, ng-model="us.tags")
+
+            section.us-content.wysiwyg(tg-bind-html="us.description_html")
+
+            //include views/modules/attachments
             section.us-activity
                 ul.us-activity-tabs
                     li
@@ -45,36 +41,31 @@ block content
                         a(href="#")
                             span.icon.icon-issues
                             span.tab-title Activity
-                //-include views/modules/comments
+                include views/modules/comments
                 include views/modules/activity
+
         sidebar.menu-secondary.sidebar
-             h1
-                 span Open
-                 span.us-detail-status In progress
-             div.us-detail-progress-bar
-                 div.current-progress
-                 span.tasks-completed 6/7 tasks completed
-             ul.points-per-role
-                 li.total
-                     span.points 10
-                     span.role total
-                 - for(var x=0; x<5; x++)
-                     li.total
-                         span.points 10
-                         span.role UX
-                 include views/components/assigned-to
-                 section.watchers
-                     div.watchers-header
-                         span.title watchers
-                         a.icon.icon-plus(href="", title="Add watcher")
-                     div.watchers-content
-                         - for(var y=0; y<5; y++)
-                             div.watcher-single
-                                 div.watcher-avatar
-                                     a.avatar(href="", title="Assigned to")
-                                         img(src="http://thecodeplayer.com/u/uifaces/32.jpg", alt="username")
-                                 a.watcher-name(href="", title="Jesús Espino") Jesús Espino
-                section.us-detail-settings
-                    span.button.button-gray(href="", title="Client requirement") Client requirement
-                    span.button.button-gray(href="", title="Team requirement") Team requirement
-                    span.button.button-red(href="", title="Block") Block
+            section.us-status(tg-us-status-detail, ng-model="us")
+
+            div.us-detail-progress-bar
+               div.current-progress
+               span.tasks-completed 6/7 tasks completed
+            ul.points-per-role
+               li.total
+                   span.points 10
+                   span.role total
+               - for(var x=0; x<5; x++)
+                   li.total
+                       span.points 10
+                       span.role UX
+
+            section.us-assigned-to(tg-assigned-to, ng-model="us")
+            section.watchers(tg-watchers, ng-model="us.watchers")
+
+            section.us-detail-settings
+                span.button.button-gray(href="", title="Client requirement") Client requirement
+                span.button.button-gray(href="", title="Team requirement") Team requirement
+                span.button.button-red(href="", title="Block") Block
+
+        div.lightbox.lightbox_block.hidden
+            include views/modules/lightbox_block
