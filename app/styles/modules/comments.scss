@@ -1,18 +1,15 @@
 .add-comment {
     @include clearfix;
     textarea {
-        @include transition(height .3s ease-in);
-        // &:focus {
-        //     @include transition(height .3s ease-in);
-        //     height: 6rem;
-        //     +a {
-        //         display: inline-block;
-        //     }
-        // }
+        float: left;
+        margin-bottom: .5rem;
+        &.active {
+            @include transition(height .3s ease-in);
+            height: 6rem;
+        }
     }
     a {
         color: $white;
-        // display: none;
         display: inline-block;
         float: right;
     }
