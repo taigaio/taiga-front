@@ -30,7 +30,7 @@ section.sprints
         div.sprint-table
             div.row.milestone-us-item-row(ng-repeat="us in sprint.user_stories|orderBy:order track by us.id")
                 div.column-us.width-8
-                    a.us-name(href="", title="")
+                    a.us-name.clickable(tg-nav="project-userstories-detail:project=project.slug,ref=us.ref", title="")
                         span(tg-bo-ref="us.ref")
                         span(tg-bo-html="us.subject")
                 div.column-points.width-1(tg-bo-html="us.total_points")
