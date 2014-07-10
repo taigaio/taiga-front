@@ -32,3 +32,11 @@ input[type="password"] {
 textarea {
     max-height: 10rem;
 }
+
+.checksley-error-list {
+    margin-bottom: 0;
+    li {
+        color: $white;
+        padding: .2rem;
+    }
+}

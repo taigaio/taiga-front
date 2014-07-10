@@ -1,4 +1,5 @@
 div.register-form-container(tg-register)
+    a.register-text-top(href="", title="Login", tg-nav="login") Are you already registered?
     form.register-form
         fieldset
             input(type="text", placeholder="Pick a username", ng-model="data.username",
@@ -11,10 +12,9 @@ div.register-form-container(tg-register)
         fieldset
             a.button.button-register.button-gray(href="", title="Sign up") Sign up
             input(type="submit", class="hidden")
-
-    p.register-text
-        // TODO
-        span By clicking "Sign up", you agree to our <br />
-        a(href="", title="See terms of service")  terms of service
-        span  and
-        a(href="", title="See privacy policy")  privacy policy.
+        p.register-text
+            // TODO
+            span By clicking "Sign up", you agree to our <br />
+            a(href="", title="See terms of service")  terms of service
+            span  and
+            a(href="", title="See privacy policy")  privacy policy.

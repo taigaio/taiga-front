@@ -8,6 +8,9 @@
     right: 0;
     top: 0;
     z-index: 999;
+    fieldset {
+        margin-bottom: 1rem;
+    }
     .login-container {
         @include table-flex-child(0, 400px, 0, 400px);
     }
@@ -28,7 +31,6 @@
     }
     input {
         background: $white;
-        margin-bottom: 1rem;
         @include placeholder {
             color: $gray-light;
         }
@@ -40,9 +42,6 @@
             color: $fresh-taiga;
         }
     }
-    .register-text {
-        @extend %small;
-    }
     .button {
         color: $white;
         display: block;
@@ -50,6 +49,11 @@
         text-align: center;
         &:hover {
             background: $fresh-taiga;
+        }
+    }
+    a {
+        &:hover {
+            color: $white;
         }
     }
 }

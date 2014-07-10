@@ -1,3 +1,10 @@
 .register-form-container {
     display: block;
+    .register-text-top {
+        display: block;
+        margin-bottom: 1rem;
+    }
+    .register-text {
+        @extend %small;
+    }
 }
