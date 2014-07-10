@@ -18,8 +18,8 @@ block content
             // Paginator is rended using js.
             div.paginator.issues-paginator
 
-    div.hidden.lightbox.lightbox_add-issue
+        div.hidden.lightbox.lightbox_add-issue(tg-lb-create-issue)
             include views/modules/lightbox_add-issue
 
-    div.hidden.lightbox.lightbox_add-bulk
-        include views/modules/lightbox_add-bulk
+        div.hidden.lightbox.lightbox_add-bulk(tg-lb-create-bulk-issues)
+            include views/modules/lightbox_add-bulk

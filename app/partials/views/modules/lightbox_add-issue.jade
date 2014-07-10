@@ -3,32 +3,24 @@ a.close(href="", title="close")
 form
     h2.title Add Issue
     fieldset
-        input(type="text", placeholder="Issue description")
+        input(type="text", ng-model="issue.subject", placeholder="Issue description",
+              data-required="true", data-maxlength="500")
     div.fieldset-row
+        // fieldset
+        //     select.type
+        //         option(value="Type") Type
         fieldset
-            select.type
-                option(value="Type") Type
+            select.priority(ng-model="issue.priority", ng-options="p.id as p.name for p in priorityList")
         fieldset
-            select.priority
-                option(value="priority") Priority
-        fieldset
-            select.severity
-                option(value="severity") Severity
-    //-
-        div.fieldset-row
-            fieldset
-                select.assigned-to
-                    option(value="assigned-to") Assigned to
-            fieldset
-                select.status
-                    option(value="status") Status
-            fieldset
-                input(type="checkbox", id="is-blocked")
-                label(for="is-blocked") is blocked?
+            select.severity(ng-model="issue.severity", ng-options="s.id as s.name for s in severityList")
+
     fieldset
-        input(type="text", placeholder="Add tags")
+        input(type="text", placeholder="Tags", tg-tags, ng-model="issue.tags")
+
     fieldset
-        textarea.description(placeholder="description")
-    include lightbox-attachments
+        textarea.description(placeholder="description", ng-model="issue.description")
+
+    // include lightbox-attachments
+    input(type="submit", style="display:none")
     a.button.button-green(href="", title="Save")
         span Create

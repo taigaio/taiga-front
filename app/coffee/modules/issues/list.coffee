@@ -56,12 +56,23 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         promise.then null, ->
             console.log "FAIL" #TODO
 
+        @scope.$on "issueform:new:succcess", =>
+            @.loadIssues()
+            @.loadFilters()
+
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
             @scope.project = project
+
+            # TODO: add issueTypeList and issueTypeById
             @scope.issueStatusById = groupBy(project.issue_statuses, (x) -> x.id)
+            @scope.issueStatusList = _.sortBy(project.issue_statuses, "order")
             @scope.severityById = groupBy(project.severities, (x) -> x.id)
+            @scope.severityList = _.sortBy(project.severities, "order")
             @scope.priorityById = groupBy(project.priorities, (x) -> x.id)
+            @scope.priorityList = _.sortBy(project.priorities, "order")
+
+            console.log @scope.priorityList
             @scope.membersById = groupBy(project.memberships, (x) -> x.user)
             return project
 
@@ -154,7 +165,6 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
     loadIssues: ->
         filters = @.prepareFilters()
-        console.log filters
 
         promise = @rs.issues.list(@scope.projectId, filters).then (data) =>
             @scope.issues = data.models
@@ -174,6 +184,15 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                       .then(=> @.loadUsersAndRoles())
                       .then(=> @.loadFilters())
                       .then(=> @.loadIssues())
+
+    # Functions used from templates
+    addNewIssue: ->
+        console.log "Kakita"
+        @rootscope.$broadcast("issueform:new")
+
+    addIssuesInBulk: ->
+        @rootscope.$broadcast("issueform:bulk")
+
 
 module.controller("IssuesController", IssuesController)
 

@@ -11,8 +11,8 @@ section.list-filters
         //         | SHOW GRAPH
 
     div.new-issue
-        a.button.button-green(href="")
+        a.button.button-green(href="", ng-click="ctrl.addNewIssue()")
             span.text
                 | + NEW ISSUE
-        a.button-bulk(href="")
+        a.button-bulk(href="", ng-click="ctrl.addIssuesInBulk()")
             span.icon.icon-bulk
