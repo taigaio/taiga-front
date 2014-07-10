@@ -22,7 +22,7 @@
 taiga = @.taiga
 bindOnce = @.taiga.bindOnce
 
-CreateEditTaskDirective = ($repo, $model, $rs, $rootScope) ->
+CreateEditTaskDirective = ($repo, $model, $rs, $rootscope) ->
     link = ($scope, $el, attrs) ->
         isNew = true
 
@@ -82,7 +82,7 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootScope) ->
             # FIXME: error handling?
             promise.then (data) ->
                 $el.addClass("hidden")
-                $rootScope.$broadcast(broadcastEvent, data)
+                $rootscope.$broadcast(broadcastEvent, data)
 
         $el.on "click", "label.blocked", (event) ->
             event.preventDefault()
