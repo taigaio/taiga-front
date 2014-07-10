@@ -81,7 +81,7 @@ class AuthService extends taiga.Service
             @.setUser(user)
             return user
 
-    publicRegister: (data) ->
+    register: (data) ->
         url = @urls.resolve("auth-register")
 
         data = _.clone(data, false)
@@ -194,10 +194,11 @@ RegisterDirective = ($auth, $confirm) ->
             if not form.validate()
                 return
 
-            promise = $auth.publicRegister($scope.data)
+            promise = $auth.register($scope.data)
             promise.then (response) ->
-                # TODO: finish this. Authenticate user and go to projects page
-                console.log response
+                $confirm.notify("success", "Our Oompa Loompas are happy, wellcome to Taiga.") #TODO: i18n
+                # TODO: finish this. Go tu user home page
+                $location.path("/project/project-example-0/backlog")
 
             promise.then null, (response) ->
                 if response.data._error_message
@@ -257,12 +258,40 @@ ForgotPasswordDirective = ($auth, $confirm, $location) ->
     ## Change Password from Recovery Directive
     ###################
 
-ChangePasswordFromRecoveryDirective = ($auth, $confirm, $location) ->
+ChangePasswordFromRecoveryDirective = ($auth, $confirm, $location, $params) ->
     link = ($scope, $el, $attrs) ->
         $scope.data = {}
-        ###
-        TODO: We need UX
-        ###
+
+        if $params.token?
+            $scope.tokenInParams = true
+            $scope.data.token = $params.token
+        else
+            $scope.tokenInParams = false
+
+        form = $el.find("form").checksley()
+
+        submit = ->
+            if not form.validate()
+                return
+
+            promise = $auth.changePasswordFromRecovery($scope.data)
+            promise.then (response) ->
+                $location.path("/login") # TODO: Use the future 'urls' service
+                $confirm.success("Our Oompa Loompas save your new password.<br />
+                                  Try to <strong>sign in</strong> with it.") #TODO: i18n
+
+            promise.then null, (response) ->
+                if response.data._error_message
+                    $confirm.notify("light-error", "One of our Oompa Loompas say
+                                    '#{response.data._error_message}'.") #TODO: i18n
+
+        $el.on "submit", (event) ->
+            event.preventDefault()
+            submit()
+
+        $el.on "click", "a.button-change-password", (event) ->
+            event.preventDefault()
+            submit()
 
     return {link:link}
 
@@ -270,5 +299,5 @@ ChangePasswordFromRecoveryDirective = ($auth, $confirm, $location) ->
 module.directive("tgRegister", ["$tgAuth", "$tgConfirm", RegisterDirective])
 module.directive("tgLogin", ["$tgAuth", "$tgConfirm", "$location", LoginDirective])
 module.directive("tgForgotPassword", ["$tgAuth", "$tgConfirm", "$location", ForgotPasswordDirective])
-module.directive("tgChangePasswordFromRecovery", ["$tgAuth", "$tgConfirm", "$location",
+module.directive("tgChangePasswordFromRecovery", ["$tgAuth", "$tgConfirm", "$location", "$routeParams",
                                                   ChangePasswordFromRecoveryDirective])

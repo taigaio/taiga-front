@@ -42,6 +42,8 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide,
     $routeProvider.when("/login", {templateUrl: "/partials/login.html"})
     $routeProvider.when("/register", {templateUrl: "/partials/register.html"})
     $routeProvider.when("/forgot-password", {templateUrl: "/partials/forgot-password.html"})
+    $routeProvider.when("/change-password",
+                        {templateUrl: "/partials/change-password-from-recovery.html"})
     $routeProvider.when("/change-password/:token",
                         {templateUrl: "/partials/change-password-from-recovery.html"})
     $routeProvider.when("/invitation/:token", {templateUrl: "/partials/invitation.html"})
