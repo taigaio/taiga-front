@@ -65,7 +65,7 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
     loadUs: ->
         return @rs.userstories.get(@scope.projectId, @scope.usId).then (us) =>
             @scope.us = us
-            @scope.commentModel = us            
+            @scope.commentModel = us
             @scope.previousUrl = "/project/#{@scope.project.slug}/us/#{@scope.us.neighbors.previous.ref}" if @scope.us.neighbors.previous.id?
             @scope.nextUrl = "/project/#{@scope.project.slug}/us/#{@scope.us.neighbors.next.ref}" if @scope.us.neighbors.next.id?
 
@@ -96,6 +96,28 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
                       .then(=> @.loadUsersAndRoles())
                       .then(=> @.loadUs())
                       .then(=> @.loadHistory())
+
+    getUserFullName: (userId) ->
+        return @scope.usersById[userId]?.full_name_display
+
+    getUserAvatar: (userId) ->
+        return @scope.usersById[userId]?.photo
+
+    countChanges: (comment) ->
+        return Object.keys(comment.values_diff).length
+
+    getChangeText: (change) ->
+        if _.isArray(change)
+            return change.join(", ")
+        return change
+
+    buildChangesText: (comment) ->
+        size = @.countChanges(comment)
+        #TODO: i18n
+        if size == 1
+            return "Made #{size} change"
+
+        return "Made #{size} changes"
 
 module.controller("UserStoryDetailController", UserStoryDetailController)
 
