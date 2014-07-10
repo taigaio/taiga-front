@@ -46,6 +46,13 @@ class ProjectsNavigationController extends taiga.Controller
 
 ProjectsNavigationDirective = ->
     link = ($scope, $el, $attrs, $ctrl) ->
+        body = angular.element("body")
+
+        $scope.$on "nav:projects-list:open", ->
+            body.toggleClass("open-projects-nav")
+
+        $el.on "click", ".projects-list > li > a", (event) ->
+            $el.toggleClass("open-projects-nav")
 
     return {
         link: link
@@ -146,6 +153,10 @@ ProjectMenuDirective = ($log, $compile, $rootscope) ->
 
     link = ($scope, $el, $attrs, $ctrl) ->
         renderMainMenu($el)
+
+        $el.on "click", ".logo > a", (event) ->
+            event.preventDefault()
+            $rootscope.$broadcast("nav:projects-list:open")
 
         $scope.$on "$viewContentLoaded", (ctx) ->
             if ctx.targetScope.$$childHead is null
