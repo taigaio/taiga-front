@@ -386,6 +386,11 @@ IssuesFiltersDirective = ($log, $location) ->
             filters = $scope.filters[type]
             filter = _.find(filters, {id:id})
             filter.selected = (not filter.selected)
+
+            # Convert id to null as string for properly
+            # put null value on url parameters
+            id = "null" if id is null
+
             if filter.selected
                 selectedFilters.push(filter)
                 $scope.$apply ->
@@ -433,7 +438,7 @@ IssuesFiltersDirective = ($log, $location) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
 
-            id = target.data("id")
+            id = target.data("id") or null
             type = target.data("type")
             toggleFilterSelection(type, id)
 
@@ -442,11 +447,10 @@ IssuesFiltersDirective = ($log, $location) ->
             target = angular.element(event.currentTarget)
             if target.hasClass("active")
                 target.removeClass("active")
-                # target.css("background-color")
             else
                 target.addClass("active")
 
-            id = target.data("id")
+            id = target.data("id") or null
             type = target.data("type")
             toggleFilterSelection(type, id)
 

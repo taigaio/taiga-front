@@ -55,7 +55,7 @@ class FiltersMixin
     selectFilter: (name, value, load=false) ->
         params = @location.search()
         if params[name] != undefined and name != "page"
-            existing = _.map(taiga.toString(params[name]).split(","), trim)
+            existing = _.map(taiga.toString(params[name]).split(","), (x) -> trim(x))
             existing.push(taiga.toString(value))
             existing = _.compact(existing)
             value = joinStr(",", _.uniq(existing))
@@ -76,7 +76,7 @@ class FiltersMixin
         if value is undefined or value is null
             delete params[name]
 
-        parsedValues = _.map(taiga.toString(params[name]).split(","), trim)
+        parsedValues = _.map(taiga.toString(params[name]).split(","), (x) -> trim(x))
         newValues = _.reject(parsedValues, (x) -> x == taiga.toString(value))
         newValues = _.compact(newValues)
 
