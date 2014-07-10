@@ -25,9 +25,10 @@ taiga = @.taiga
 resourceProvider = ($repo, $http, $urls) ->
     service = {}
 
-    service.list = (projectId, sprintId=null) ->
+    service.list = (projectId, sprintId=null, userStoryId=null) ->
         params = {project: projectId}
         params.milestone = sprintId if sprintId
+        params.user_story = userStoryId if userStoryId
         return $repo.queryMany("tasks", params)
 
     service.bulkCreate = (projectId, usId, data) ->

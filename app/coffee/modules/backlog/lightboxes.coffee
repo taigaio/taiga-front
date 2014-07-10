@@ -58,7 +58,7 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope) ->
                 $el.find("label.blocked").addClass("selected")
             if us.team_requirement
                 $el.find("label.team-requirement").addClass("selected")
-            if us.is_blocked
+            if us.client_requirement
                 $el.find("label.client-requirement").addClass("selected")
 
         $scope.$on "$destroy", ->

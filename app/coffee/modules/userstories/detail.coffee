@@ -55,11 +55,10 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.project = project
             @scope.statusList = project.issue_statuses
             @scope.statusById = groupBy(project.us_statuses, (x) -> x.id)
-            @scope.severityList = project.severities
-            @scope.severityById = groupBy(project.severities, (x) -> x.id)
-            @scope.priorityList = project.priorities
-            @scope.priorityById = groupBy(project.priorities, (x) -> x.id)
+            @scope.taskStatusById = groupBy(project.task_statuses, (x) -> x.id)
             @scope.membersById = groupBy(project.memberships, (x) -> x.user)
+            @scope.pointsList = _.sortBy(project.points, "order")
+            @scope.pointsById = groupBy(@scope.pointsList, (e) -> e.id)
             return project
 
     loadUs: ->
@@ -68,6 +67,15 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.commentModel = us
             @scope.previousUrl = "/project/#{@scope.project.slug}/us/#{@scope.us.neighbors.previous.ref}" if @scope.us.neighbors.previous.id?
             @scope.nextUrl = "/project/#{@scope.project.slug}/us/#{@scope.us.neighbors.next.ref}" if @scope.us.neighbors.next.id?
+
+    loadTasks: ->
+        # http://localhost:8000/api/v1/tasks?user_story=6
+        return @rs.tasks.list(@scope.projectId, null, @scope.usId).then (tasks) =>
+            @scope.tasks = tasks
+            @scope.totalTasks = tasks.length
+            closedTasks = _.filter(tasks, (task) => @scope.taskStatusById[task.status].is_closed)
+            @scope.totalClosedTasks = closedTasks.length
+            @scope.usProgress = 100 * @scope.totalClosedTasks / @scope.totalTasks
 
     loadHistory: ->
         return @rs.userstories.history(@scope.usId).then (history) =>
@@ -95,6 +103,7 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         return promise.then(=> @.loadProject())
                       .then(=> @.loadUsersAndRoles())
                       .then(=> @.loadUs())
+                      .then(=> @.loadTasks())
                       .then(=> @.loadHistory())
 
     getUserFullName: (userId) ->
@@ -222,3 +231,63 @@ UsStatusDetailDirective = () ->
     return {link:link, require:"ngModel"}
 
 module.directive("tgUsStatusDetail", UsStatusDetailDirective)
+
+
+
+
+
+
+
+
+
+
+
+
+#############################################################################
+## User story points detail directive
+#############################################################################
+
+USPointsDetailDirective = () ->
+    #TODO: i18n
+    template = _.template("""
+        <ul class="points-per-role">
+            <li class="total">
+                <span class="points"><%- totalPoints %></span>
+                <span class="role">total</span>
+            </li>
+            <% _.each(rolePoints, function(rolePoint) { %>
+            <li class="total">
+                <span class="points"><%- rolePoint.points %></span>
+                <span class="role"><%- rolePoint.name %></span></li>
+            <% }); %>
+        </ul>
+    """)
+
+    link = ($scope, $el, $attrs, $model) ->
+        editable = $attrs.editable?
+
+        renderUsPointsDetail = (us) ->
+
+            rolePoints = _.clone(_.filter($scope.project.roles, "computable"), true)
+            _.map rolePoints, (v, k) ->
+                  val = $scope.pointsById[us.points[v.id]].value
+                  val = "?" if not val?
+                  v.points = val
+
+            html = template({
+                editable: editable
+                totalPoints: us.total_points
+                rolePoints: rolePoints
+            })
+            $el.html(html)
+
+        $scope.$watch $attrs.ngModel, (us) ->
+            if us?
+                renderUsPointsDetail(us)
+
+        if editable
+            console.log "TODO"
+
+    return {link:link, require:"ngModel"}
+
+module.directive("tgUsPointsDetail", USPointsDetailDirective)

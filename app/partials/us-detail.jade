@@ -48,24 +48,16 @@ block content
             section.us-status(tg-us-status-detail, ng-model="us")
 
             div.us-detail-progress-bar
-               div.current-progress
-               span.tasks-completed 6/7 tasks completed
-            ul.points-per-role
-               li.total
-                   span.points 10
-                   span.role total
-               - for(var x=0; x<5; x++)
-                   li.total
-                       span.points 10
-                       span.role UX
+               div.current-progress(style="width:{{ usProgress }}%")
+               span.tasks-completed {{ totalClosedTasks }}/{{ totalTasks}} tasks completed
+            ul.points-per-role(tg-us-points-detail, ng-model="us")
 
             section.us-assigned-to(tg-assigned-to, ng-model="us")
             section.watchers(tg-watchers, ng-model="us.watchers")
 
             section.us-detail-settings
-                span.button.button-gray(href="", title="Client requirement") Client requirement
-                span.button.button-gray(href="", title="Team requirement") Team requirement
-                span.button.button-red(href="", title="Block") Block
+                span.button.button-gray(href="", title="Client requirement", ng-class="us.client_requirement ? 'active' : ''") Client requirement
+                span.button.button-gray(href="", title="Team requirement", ng-class="us.team_requirement ? 'active' : ''") Team requirement
 
         div.lightbox.lightbox_block.hidden
             include views/modules/lightbox_block
