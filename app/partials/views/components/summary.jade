@@ -2,17 +2,22 @@ div.summary
     div.summary-progress-bar
         div.current-progress
     div.data
-        span.number(ng-bind="stats.completedPercentage")
+        span.number(tg-bind-html="stats.completedPercentage")
+            span.placeholderx ͿͿ%
     ul
         li
-            span.number(ng-bind="stats.total_points|default:'--'")
+            span.number(tg-bind-html="stats.total_points")
+                span.placeholderx ͿͿͿ
             span.description project<br />points
         li
-            span.number(ng-bind="stats.defined_points|default:'--'")
+            span.number(tg-bind-html="stats.defined_points")
+                span.placeholderx ͿͿͿ
             span.description defined<br />points
         li
-            span.number(ng-bind="stats.assigned_points|default:'--'")
+            span.number(tg-bind-html="stats.assigned_points")
+                span.placeholderx ͿͿͿ
             span.description assigned<br />points
         li
-            span.number(ng-bind="stats.closed_points|default:'-- %'")
+            span.number(tg-bind-html="stats.closed_points")
+                span.placeholderx ͿͿ %
             span.description closed<br />points
