@@ -24,6 +24,18 @@ timeout = @.taiga.timeout
 cancelTimeout = @.taiga.cancelTimeout
 
 
+NOTIFICATION_MSG = {
+    "success":
+        title: "Everything is ok"
+        message: "Our oompa Loompas saved all your changes!"
+    "error":
+        title: "Oops, something happened..."
+        message: "Our oompa Loompas are sad, your changes were not saved!"
+    "light-error":
+        title: "Oops, something happened..."
+        message: "Our oompa Loompas are sad, your changes were not saved!"
+}
+
 class ConfirmService extends taiga.Service
     @.$inject = ["$q"]
 
@@ -100,14 +112,23 @@ class ConfirmService extends taiga.Service
         @.el.removeClass("hidden")
         return defered.promise
 
-    notify: (type, message) ->
-        # TODO: at this momment the message is ignored
-        # because the notification message not permits
-        # custom messages.
-        #
-        # Types: error, success, light-error
+    notify: (type, message, title) ->
+        # NOTE: Typesi are: error, success, light-error
+        #       See partials/components/notification-message.jade)
+        #       Add default texts to NOTIFICATION_MSG for new notification types
+
         selector = ".notification-message-#{type}"
         @.el = angular.element(selector)
+
+        if title
+           @.el.find("h4").html(title)
+        else
+           @.el.find("h4").html(NOTIFICATION_MSG[type].title)
+
+        if message
+            @.el.find("p").html(message)
+        else
+            @.el.find("p").html(NOTIFICATION_MSG[type].message)
 
         body = angular.element("body")
         body.find(".notification-message .notification-light").removeClass('active');
