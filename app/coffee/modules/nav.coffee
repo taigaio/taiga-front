@@ -46,8 +46,6 @@ class ProjectsNavigationController extends taiga.Controller
 
 ProjectsNavigationDirective = ->
     link = ($scope, $el, $attrs, $ctrl) ->
-        console.log "PROJECTS NAV"
-
 
     return {
         link: link

@@ -31,7 +31,6 @@ module = angular.module("taigaBase", ["taigaLocales"])
 
 TaigaMainDirective = ($rootscope, $window) ->
     link = ($scope, $el, $attrs) ->
-        console.log "MAIN KAKA"
         $window.onresize = () ->
             $rootscope.$broadcast("resize")
 
