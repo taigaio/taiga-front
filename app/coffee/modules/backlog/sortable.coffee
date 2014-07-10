@@ -42,18 +42,6 @@ BacklogSortableDirective = ($repo, $rs, $rootscope) ->
     # http://stackoverflow.com/questions/5791886/jquery-draggable-shows-
     # helper-in-wrong-place-when-scrolled-down-page
 
-    # resort = (uses) ->
-    #     items = []
-    #     for item, index in uses
-    #         item.order = index
-    #         if item.isModified()
-    #             items.push(item)
-    #
-    #     return items
-
-    # prepareBulkUpdateData = (uses) ->
-    #     return _.map(uses, (x) -> [x.id, x.order])
-
     linkSortable = ($scope, $el, $attrs, $ctrl) ->
         # State
         oldParentScope = null
@@ -67,7 +55,6 @@ BacklogSortableDirective = ($repo, $rs, $rootscope) ->
             itemEl.off()
             itemEl.remove()
 
-
         tdom.sortable({
             # handle: ".icon-drag-v",
             items: "div.sprint-table > div.row, .backlog-table-body > div.row"
@@ -75,7 +62,6 @@ BacklogSortableDirective = ($repo, $rs, $rootscope) ->
 
         tdom.on "sortstop", (event, ui) ->
             # Common state for stop event handler
-
             parentEl = ui.item.parent()
             itemEl = ui.item
             itemUs = itemEl.scope().us
