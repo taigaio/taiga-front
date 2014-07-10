@@ -22,6 +22,12 @@
 taiga = @.taiga
 bindOnce = @.taiga.bindOnce
 
+module = angular.module("taigaBacklog")
+
+#############################################################################
+## Create/Edit Userstory Lightbox Directive
+#############################################################################
+
 CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope) ->
     link = ($scope, $el, attrs) ->
         isNew = true
@@ -104,6 +110,17 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope) ->
 
     return {link: link}
 
+module.directive("tgLbCreateEditUserstory", [
+    "$tgRepo",
+    "$tgModel",
+    "$tgResources",
+    "$rootScope",
+    CreateEditUserstoryDirective
+])
+
+#############################################################################
+## Creare Bulk Userstories Lightbox Directive
+#############################################################################
 
 CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope) ->
     link = ($scope, $el, attrs) ->
@@ -136,11 +153,23 @@ CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope) ->
 
     return {link: link}
 
+module.directive("tgLbCreateBulkUserstories", [
+    "$tgRepo",
+    "$tgResources",
+    "$rootScope",
+    CreateBulkUserstoriesDirective
+])
+
+#############################################################################
+## Creare/Edit Sprint Lightbox Directive
+#############################################################################
 
 CreateEditSprint = ($repo, $confirm, $rs, $rootscope) ->
     link = ($scope, $el, attrs) ->
         createSprint = true
 
+        # FIXME: form should be initialized once and used in
+        # each submit...
         submit = ->
             form = $el.find("form").checksley()
             if not form.validate()
@@ -216,22 +245,6 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope) ->
 
     return {link: link}
 
-
-module = angular.module("taigaBacklog")
-module.directive("tgLbCreateEditUserstory", [
-    "$tgRepo",
-    "$tgModel",
-    "$tgResources",
-    "$rootScope",
-    CreateEditUserstoryDirective
-])
-
-module.directive("tgLbCreateBulkUserstories", [
-    "$tgRepo",
-    "$tgResources",
-    "$rootScope",
-    CreateBulkUserstoriesDirective
-])
 
 module.directive("tgLbCreateEditSprint", [
     "$tgRepo",
