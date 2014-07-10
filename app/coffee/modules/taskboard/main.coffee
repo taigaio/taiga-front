@@ -45,6 +45,8 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q) ->
+        _.bindAll(@)
+
         @scope.sprintId = @params.id
         @scope.sectionName = "Taskboard"
 
@@ -58,7 +60,8 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
         @scope.$on("taskform:new:success", => @.loadTaskboard())
         @scope.$on("taskform:edit:success", => @.loadTaskboard())
 
-        @scope.$on("assigned-to:added", (task) => @scope.$apply(=> @repo.save(task)))
+        @scope.$on("assigned-to:added", (ctx, task) => @scope.$apply(=> @repo.save(task)))
+        @scope.$on("taskboard:task:move", @.taskMove)
 
     loadSprintStats: ->
         return @rs.sprints.stats(@scope.projectId, @scope.sprintId).then (stats) =>
@@ -124,6 +127,24 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
                       .then(=> @.loadUsersAndRoles())
                       .then(=> @.loadTaskboard())
 
+    taskMove: (ctx, task, usId, statusId, order) ->
+        # Remove task from old position
+        r = @scope.usTasks[task.user_story][task.status].indexOf(task)
+        @scope.usTasks[task.user_story][task.status].splice(r, 1)
+
+        # Add task to new position
+        @scope.usTasks[usId][statusId].splice(order, 0, task)
+
+        task.user_story = usId
+        task.status = statusId
+        task.order = order
+
+        promise = @repo.save(task)
+        promise.then ->
+            console.log "SUCCESS TASK SAVE"
+        promise.then null, ->
+            console.log "FAIL TASK SAVE"
+
     ## Template actions
     addNewTask: (type, us) ->
         switch type
@@ -163,6 +184,17 @@ TaskboardDirective = ($rootscope) ->
             $el.off()
 
     return {link: link}
+
+
+TaskboardTaskDirective = ->
+    link = ($scope, $el, $attrs) ->
+        console.log "taskboard task"
+        $el.disableSelection()
+
+    return {link:link}
+
+
+module.directive("tgTaskboardTask", TaskboardTaskDirective)
 
 
 #############################################################################

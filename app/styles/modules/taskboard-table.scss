@@ -53,12 +53,12 @@ $column-margin: 0 10px 0 0;
         min-height: 30rem;
         width: 100%;
     }
-    .taskboard_task-playground {
+    .taskboard-tasks-box {
         background: $whitish;
     }
 }
 
-.taskboard_us-list {
+.taskboard-userstory-box {
     position: relative;
     .tag-list {
         display: none;
