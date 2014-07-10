@@ -3,7 +3,8 @@ a.close(href="", title="close")
 form
     h2.title(tg-i18n="task.title-new")
     fieldset
-        input(type="text", ng-model="task.subject", placeholder="A task subject", data-required="true", data-maxlength="500")
+        input(type="text", ng-model="task.subject", placeholder="A task subject",
+              data-required="true", data-maxlength="500")
     fieldset
         select(ng-model="task.status", ng-options="s.id as s.name for s in taskStatusList",
                placeholder="Task status")
