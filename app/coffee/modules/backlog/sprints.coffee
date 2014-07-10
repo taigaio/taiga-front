@@ -52,8 +52,10 @@ BacklogSprintDirective = ($repo, $rootscope) ->
             $el.addClass("sprint-old-open")
 
         # Update progress bars
-        progressPercentage = Math.round(100 * (sprint.closed_points / sprint.total_points))
-        $el.find(".current-progress").css("width", "#{progressPercentage}%")
+        $scope.$watch $attrs.tgBacklogSprint, (value) ->
+            sprint = $scope.$eval($attrs.tgBacklogSprint)
+            progressPercentage = Math.round(100 * (sprint.closed_points / sprint.total_points))
+            $el.find(".current-progress").css("width", "#{progressPercentage}%")
 
         $el.find(".sprint-table").disableSelection()
 

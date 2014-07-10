@@ -62,6 +62,8 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @scope.$on("usform:new:success", @.loadUserstories)
         @scope.$on("usform:edit:success", @.loadUserstories)
         @scope.$on("sprint:us:move", @.moveUs)
+        @scope.$on("sprint:us:moved", @.loadSprints)
+        @scope.$on("sprint:us:moved", @.loadProjectStats)
 
     loadProjectStats: ->
         return @rs.projects.stats(@scope.projectId).then (stats) =>
@@ -178,7 +180,9 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
             # Persist in bulk all affected
             # userstories with order change
-            promise = @rs.userstories.bulkUpdateOrder(us.project, data)
+            promise = @rs.userstories.bulkUpdateOrder(us.project, data).then =>
+                @rootscope.$broadcast("sprint:us:moved", us, oldSprintId, newSprintId)
+
             promise.then null, ->
                 console.log "FAIL"
 
@@ -209,7 +213,8 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             promise = promise.then =>
                 items = @.resortUserStories(@scope.userstories)
                 data = @.prepareBulkUpdateData(items)
-                return @rs.userstories.bulkUpdateOrder(us.project, data)
+                promise = @rs.userstories.bulkUpdateOrder(us.project, data).then =>
+                    @rootscope.$broadcast("sprint:us:moved", us, oldSprintId, newSprintId)
 
             promise.then null, ->
                 # TODO
@@ -253,7 +258,8 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         promise = promise.then =>
             items = @.resortUserStories(newSprint.user_stories)
             data = @.prepareBulkUpdateData(items)
-            return @rs.userstories.bulkUpdateOrder(us.project, data)
+            promise = @rs.userstories.bulkUpdateOrder(us.project, data).then =>
+                @rootscope.$broadcast("sprint:us:moved", us, oldSprintId, newSprintId)
 
         promise.then null, ->
             # TODO
@@ -343,8 +349,9 @@ BacklogDirective = ($repo, $rootscope) ->
             rowElements = $el.find('.backlog-table-body .us-item-row')
             return _.map(rowElements, (x) -> angular.element(x))
 
-        reloadDoomlineLocation = () ->
-            bindOnce $scope, "stats", (project) ->
+        # reloadDoomlineLocation = () ->
+        $scope.$watch "stats", (project) ->
+            if $scope.stats?
                 removeDoomlineDom()
 
                 elements = getUsItems()
@@ -364,10 +371,6 @@ BacklogDirective = ($repo, $rootscope) ->
                         addDoomLineDom(element)
                         break
 
-        bindOnce $scope, "stats", (project) ->
-            reloadDoomlineLocation()
-            $scope.$on("userstories:loaded", reloadDoomlineLocation)
-            $scope.$on("doomline:redraw", reloadDoomlineLocation)
 
     ##############################
     ## Move to current sprint link
@@ -384,16 +387,16 @@ BacklogDirective = ($repo, $rootscope) ->
             totalExtraPoints =  _.reduce(extraPoints, (acc, num) -> acc + num)
 
             # Add them to current sprint
-            $scope.sprints[0].user_stories = _.union(selectedUss, $scope.sprints[0].user_stories)
+            $scope.sprints[0].user_stories = _.union($scope.sprints[0].user_stories, selectedUss)
 
             # Update the total of points
             $scope.sprints[0].total_points += totalExtraPoints
 
             $ctrl.filterVisibleUserstories()
-            $repo.saveAll(selectedUss)
+            $repo.saveAll(selectedUss).then ->
+                $ctrl.loadSprints()
+                $ctrl.loadProjectStats()
 
-            scopeDefer $scope, ->
-                $scope.$broadcast("doomline:redraw")
 
         # Enable move to current sprint only when there are selected us's
         $el.on "change", ".backlog-table-body .user-stories input:checkbox", (event) ->
@@ -655,9 +658,6 @@ UsPointsDirective = ($repo) ->
                     # Little Hack for refresh.
                     $repo.refresh(us).then ->
                         $ctrl.loadProjectStats()
-
-                scopeDefer $scope, ->
-                    $scope.$emit("doomline:redraw")
 
         $scope.$on "$destroy", ->
             $el.off()
