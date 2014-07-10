@@ -669,7 +669,7 @@ UsPointsDirective = ($repo) ->
 ## Burndown graph directive
 #############################################################################
 
-GmBacklogGraphDirective = ->
+tgBacklogGraphDirective = ->
     redrawChart = (element, dataToDraw) ->
         width = element.width()
         element.height(width/6)
@@ -766,4 +766,4 @@ GmBacklogGraphDirective = ->
 module.directive("tgBacklog", ["$tgRepo", "$rootScope", BacklogDirective])
 module.directive("tgUsPoints", ["$tgRepo", UsPointsDirective])
 module.directive("tgUsRolePointsSelector", ["$rootScope", UsRolePointsSelectorDirective])
-module.directive("tgGmBacklogGraph", GmBacklogGraphDirective)
+module.directive("tgGmBacklogGraph", tgBacklogGraphDirective)
