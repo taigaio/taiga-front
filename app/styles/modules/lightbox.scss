@@ -254,22 +254,20 @@
             @include table-flex-child(1, 0, 0);
             padding: 8px 0;
             text-align: center;
+            &:first-child {
+                margin-right: .5rem;
+            }
         }
     }
 }
 
 
-.lightbox-generic-error {
+.lightbox-generic-success {
     section {
         @include table-flex-child(0, 420px, 0, 420px);
     }
-    .delete-options {
-        @include table-flex();
-        a {
-            @include table-flex-child(1, 0, 0);
-            padding: 8px 0;
-            text-align: center;
-        }
+    h2 {
+        line-height: 2rem;
     }
 }
 

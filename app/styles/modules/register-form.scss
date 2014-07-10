@@ -3,6 +3,7 @@
     .register-text-top {
         display: block;
         margin-bottom: 1rem;
+        text-align: center;
     }
     .register-text {
         @extend %small;
