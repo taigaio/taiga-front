@@ -23,6 +23,7 @@ taiga = @.taiga
 
 mixOf = @.taiga.mixOf
 groupBy = @.taiga.groupBy
+bindOnce = @.taiga.bindOnce
 
 module = angular.module("taigaUserStories")
 
@@ -53,7 +54,7 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
             @scope.project = project
-            @scope.statusList = project.issue_statuses
+            @scope.statusList = project.us_statuses
             @scope.statusById = groupBy(project.us_statuses, (x) -> x.id)
             @scope.taskStatusById = groupBy(project.task_statuses, (x) -> x.id)
             @scope.membersById = groupBy(project.memberships, (x) -> x.user)
@@ -69,13 +70,8 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.nextUrl = "/project/#{@scope.project.slug}/us/#{@scope.us.neighbors.next.ref}" if @scope.us.neighbors.next.id?
 
     loadTasks: ->
-        # http://localhost:8000/api/v1/tasks?user_story=6
         return @rs.tasks.list(@scope.projectId, null, @scope.usId).then (tasks) =>
             @scope.tasks = tasks
-            @scope.totalTasks = tasks.length
-            closedTasks = _.filter(tasks, (task) => @scope.taskStatusById[task.status].is_closed)
-            @scope.totalClosedTasks = closedTasks.length
-            @scope.usProgress = 100 * @scope.totalClosedTasks / @scope.totalTasks
 
     loadHistory: ->
         return @rs.userstories.history(@scope.usId).then (history) =>
@@ -128,6 +124,22 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
         return "Made #{size} changes"
 
+    block: ->
+        @rootscope.$broadcast("block", @scope.us)
+
+    unblock: ->
+        @rootscope.$broadcast("unblock", @scope.us)
+
+
+    delete: ->
+        #TODO: i18n
+        title = "Delete User Story"
+        subtitle = @scope.us.subject
+
+        @confirm.ask(title, subtitle).then =>
+            @.repo.remove(@scope.us).then =>
+                @location.path("/project/#{@scope.project.slug}/backlog")
+
 module.controller("UserStoryDetailController", UserStoryDetailController)
 
 
@@ -176,8 +188,28 @@ UsStatusDetailDirective = () ->
             <% } else { %>
             Open
             <% } %>
-            <span class="us-detail-status"><%= status.name %></span>
+            <span class="us-detail-status" style="color:<%= status.color %>"><%= status.name %></span>
         </h1>
+
+        <div class="us-detail-progress-bar">
+            <div class="current-progress" style="width:<%- usProgress %>%"/>
+            <span clasS="tasks-completed">
+                <%- totalClosedTasks %>/<%- totalTasks %> tasks completed
+            </span>
+        </div>
+
+        <ul class="points-per-role">
+            <li class="total">
+                <span class="points"><%- totalPoints %></span>
+                <span class="role">total</span>
+            </li>
+            <% _.each(rolePoints, function(rolePoint) { %>
+            <li class="total <% if (editable) { %>clickable<% } %>" data-role-id="<%- rolePoint.id %>">
+                <span class="points"><%- rolePoint.points %></span>
+                <span class="role"><%- rolePoint.name %></span></li>
+            <% }); %>
+        </ul>
+
         <div class="issue-data">
             <div class="status-data <% if (editable) { %>clickable<% } %>">
                 <span class="level" style="background-color:<%= status.color %>"></span>
@@ -187,29 +219,69 @@ UsStatusDetailDirective = () ->
         </div>
     """)
     selectionStatusTemplate = _.template("""
-      <ul class="popover pop-status">
-          <% _.each(statuses, function(status) { %>
-          <li><a href="" class="status" title="<%- status.name %>"
-                 data-status-id="<%- status.id %>"><%- status.name %></a></li>
-          <% }); %>
-      </ul>
+    <ul class="popover pop-status">
+        <% _.each(statuses, function(status) { %>
+        <li><a href="" class="status" title="<%- status.name %>"
+               data-status-id="<%- status.id %>"><%- status.name %></a></li>
+        <% }); %>
+    </ul>
+    """)
+    selectionPointsTemplate = _.template("""
+    <ul class="popover pop-points-open">
+        <% _.each(points, function(point) { %>
+        <li><a href="" class="point" title="<%- point.name %>"
+               data-point-id="<%- point.id %>"><%- point.name %></a>
+        </li>
+        <% }); %>
+    </ul>
     """)
 
     link = ($scope, $el, $attrs, $model) ->
         editable = $attrs.editable?
+        updatingSelectedRoleId = null
+
+        showSelectPoints = () ->
+            us = $model.$modelValue
+            $el.find(".pop-points-open").remove()
+            $el.find(".points-per-role").append(selectionPointsTemplate({ "points":  $scope.project.points }))
+            $el.find(".pop-points-open a[data-point-id='#{us.points[updatingSelectedRoleId]}']").addClass("active")
+            # If not showing role selection let's move to the left
+            $el.find(".pop-points-open").show()
+
+        calculateTotalPoints = (us)->
+            values = _.map(us.points, (v, k) -> $scope.pointsById[v].value)
+            values = _.filter(values, (num) -> num?)
+            if values.length == 0
+                return "?"
+
+            return _.reduce(values, (acc, num) -> acc + num)
 
         renderUsstatus = (us) ->
             status = $scope.statusById[us.status]
+            rolePoints = _.clone(_.filter($scope.project.roles, "computable"), true)
+            _.map rolePoints, (v, k) ->
+                  val = $scope.pointsById[us.points[v.id]].value
+                  val = "?" if not val?
+                  v.points = val
+
+            totalTasks = $scope.tasks.length
+            totalClosedTasks = _.filter($scope.tasks, (task) => $scope.taskStatusById[task.status].is_closed).length
             html = template({
                 editable: editable
                 status: status
+                totalPoints: us.total_points
+                rolePoints: rolePoints
+                totalTasks: totalTasks
+                totalClosedTasks: totalClosedTasks
+                usProgress: 100 * totalClosedTasks / totalTasks
             })
             $el.html(html)
             $el.find(".status-data").append(selectionStatusTemplate({statuses:$scope.statusList}))
 
-        $scope.$watch $attrs.ngModel, (us) ->
-            if us?
-                renderUsstatus(us)
+        bindOnce $scope, "tasks", (tasks) ->
+            $scope.$watch $attrs.ngModel, (us) ->
+                if us?
+                    renderUsstatus(us)
 
         if editable
             $el.on "click", ".status-data", (event) ->
@@ -228,66 +300,31 @@ UsStatusDetailDirective = () ->
                 renderUsstatus($model.$modelValue)
                 $el.find(".popover").hide()
 
+            $el.on "click", ".total.clickable", (event) ->
+                event.preventDefault()
+                event.stopPropagation()
+                target = angular.element(event.currentTarget)
+                updatingSelectedRoleId = target.data("role-id")
+                showSelectPoints()
+                body = angular.element("body")
+                body.one "click", (event) ->
+                    $el.find(".popover").hide()
+
+            $el.on "click", ".point", (event) ->
+                event.preventDefault()
+                event.stopPropagation()
+
+                target = angular.element(event.currentTarget)
+                $el.find(".popover").hide()
+
+                $scope.$apply () ->
+                    us = $model.$modelValue
+                    usPoints = _.clone(us.points, true)
+                    usPoints[updatingSelectedRoleId] = target.data("point-id")
+                    us.points = usPoints
+                    us.total_points = calculateTotalPoints(us)
+                    renderUsstatus(us)
+
     return {link:link, require:"ngModel"}
 
 module.directive("tgUsStatusDetail", UsStatusDetailDirective)
-
-
-
-
-
-
-
-
-
-
-
-
-#############################################################################
-## User story points detail directive
-#############################################################################
-
-USPointsDetailDirective = () ->
-    #TODO: i18n
-    template = _.template("""
-        <ul class="points-per-role">
-            <li class="total">
-                <span class="points"><%- totalPoints %></span>
-                <span class="role">total</span>
-            </li>
-            <% _.each(rolePoints, function(rolePoint) { %>
-            <li class="total">
-                <span class="points"><%- rolePoint.points %></span>
-                <span class="role"><%- rolePoint.name %></span></li>
-            <% }); %>
-        </ul>
-    """)
-
-    link = ($scope, $el, $attrs, $model) ->
-        editable = $attrs.editable?
-
-        renderUsPointsDetail = (us) ->
-
-            rolePoints = _.clone(_.filter($scope.project.roles, "computable"), true)
-            _.map rolePoints, (v, k) ->
-                  val = $scope.pointsById[us.points[v.id]].value
-                  val = "?" if not val?
-                  v.points = val
-
-            html = template({
-                editable: editable
-                totalPoints: us.total_points
-                rolePoints: rolePoints
-            })
-            $el.html(html)
-
-        $scope.$watch $attrs.ngModel, (us) ->
-            if us?
-                renderUsPointsDetail(us)
-
-        if editable
-            console.log "TODO"
-
-    return {link:link, require:"ngModel"}
-
-module.directive("tgUsPointsDetail", USPointsDetailDirective)

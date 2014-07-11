@@ -370,8 +370,8 @@ AssignedToDirective = ($rootscope, $confirm) ->
             html = template({assignedTo: assignedTo, editable:editable})
             $el.html(html)
 
-        $scope.$watch $attrs.ngModel, (issue) ->
-            renderAssignedTo(issue)
+        $scope.$watch $attrs.ngModel, (instance) ->
+            renderAssignedTo(instance)
 
         $el.on "click", ".user-assigned", (event) ->
             event.preventDefault()
@@ -384,7 +384,8 @@ AssignedToDirective = ($rootscope, $confirm) ->
             title = "Remove assigned to"
             subtitle = ""
             $confirm.ask(title, subtitle).then =>
-                $model.$setViewValue(null)
+                $model.$modelValue.assigned_to  = null
+                renderAssignedTo($model.$modelValue)
 
         $scope.$on "assigned-to:added", (ctx, issue) ->
             renderAssignedTo(issue)
@@ -408,7 +409,7 @@ IssueStatusDirective = () ->
             <% } else { %>
             Open
             <% } %>
-            <span class="us-detail-status"><%= status.name %></span>
+            <span class="us-detail-status" style="color:<%= status.color %>"><%= status.name %></span>
         </h1>
         <div class="issue-data">
             <div class="severity-data <% if (editable) { %>clickable<% } %>">

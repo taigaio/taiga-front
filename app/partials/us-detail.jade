@@ -46,12 +46,6 @@ block content
 
         sidebar.menu-secondary.sidebar
             section.us-status(tg-us-status-detail, ng-model="us")
-
-            div.us-detail-progress-bar
-               div.current-progress(style="width:{{ usProgress }}%")
-               span.tasks-completed {{ totalClosedTasks }}/{{ totalTasks}} tasks completed
-            ul.points-per-role(tg-us-points-detail, ng-model="us")
-
             section.us-assigned-to(tg-assigned-to, ng-model="us")
             section.watchers(tg-watchers, ng-model="us.watchers")
 

@@ -166,6 +166,7 @@
 }
 
 .points-per-role {
+    position: relative;
     li {
         border-right: 1px solid $grayer;
         display: inline-block;
@@ -193,6 +194,9 @@
         text-align: center;
         text-overflow: ellipsis;
         white-space: nowrap;
+    }
+    .pop-points-open {
+        @include popover(150px, '', 30px, '', '');
     }
 }
 

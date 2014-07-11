@@ -32,7 +32,8 @@
 .button-green {
     background: $green-taiga;
     vertical-align: middle;
-    &:hover {
+    &:hover,
+    &.active {
         background: $fresh-taiga;
     }
     span {
