@@ -1,13 +1,14 @@
 div.register-form-container(tg-register)
     form.register-form
         fieldset
-            input(type="text", placeholder="Pick a username", ng-model="data.username",
-                  data-required="true")
+            input(type="text", name="username", ng-model="data.username", data-required="true",
+                  placeholder="Pick a username")
         fieldset
-            input(type="text", placeholder="Your email", ng-model="data.email", data-required="true")
+            input(type="text", name="email", ng-model="data.email", data-required="true",
+                  placeholder="Your email")
         fieldset
-            input(type="password"  placeholder="Set a password", ng-model="data.password",
-                  data-required="true")
+            input(type="password", name="password", ng-model="data.password", data-required="true",
+                  placeholder="Set a password")
         fieldset
             a.button.button-register.button-gray(href="", title="Sign up") Sign up
             input(type="submit", class="hidden")
