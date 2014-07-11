@@ -11,8 +11,9 @@ $column-margin: 0 10px 0 0;
 }
 
 .kanban-table-header {
+    @include table-flex();
     margin-bottom: .5rem;
-    position: relative;
+    overflow: hidden;
     width: 100%;
     .task-colum_name {
         @include table-flex-child($column-flex, $column-width, $column-shrink, $column-width);
@@ -41,12 +42,13 @@ $column-margin: 0 10px 0 0;
 
 .kanban-table-body {
     height: 700px;
-    overflow-x: scroll;
-    overflow-y: scroll;
+    overflow: hidden;
+    overflow-x: auto;
     width: 100%;
     .task-column {
         @include table-flex-child($column-flex, $column-width, $column-shrink, $column-width);
         margin: $column-margin;
+        overflow-y: auto;
         padding: 1rem;
         &:last-child {
             margin-right: 0;
@@ -58,7 +60,5 @@ $column-margin: 0 10px 0 0;
 }
 
 .kanban-table-inner {
-    @include table-flex();
-    overflow: hidden;
-    position: absolute;
+    @include table-flex(stretch, stretch, flex, row,  nowrap, flex-start);
 }
