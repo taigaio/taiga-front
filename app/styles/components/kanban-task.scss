@@ -21,26 +21,25 @@
         height: .3rem;
     }
     .kanban-task-inner {
-        padding: 1rem;
+        padding: 1rem 1rem 2rem;
     }
     .task-num {
         color: $postit-hover;
         margin-right: .5em;
     }
     .task-text {
-        margin-bottom: .2rem;
+        margin-bottom: .5rem;
         padding-right: 2rem;
     }
     .assigned-to {
         @extend %small;
-        display: block;
-        margin-bottom: .5rem;
     }
     .avatar {
+        display: inline-block;
         vertical-align: middle;
         img {
-            margin-right: 1rem;
-            max-width: 3rem;
+            margin-right: .5rem;
+            max-width: 1.5rem;
         }
     }
     .task-points {
