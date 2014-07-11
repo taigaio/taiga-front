@@ -262,7 +262,8 @@
 }
 
 
-.lightbox-generic-success {
+.lightbox-generic-success,
+.lightbox-generic-error {
     section {
         @include table-flex-child(0, 420px, 0, 420px);
     }
