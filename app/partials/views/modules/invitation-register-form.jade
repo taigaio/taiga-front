@@ -1,13 +1,17 @@
 form.register-form
     fieldset
-        input(type="text" placeholder="Pick a username", data-required="true")
+        input(type="text", name="username", ng-model="dataRegister.username", data-required="true",
+              placeholder="Pick a username")
     fieldset
-        input(type="text" placeholder="Your email", data-required="true")
+        input(type="text", name="email", ng-model="dataRegister.email", data-required="true",
+              placeholder="Your email")
     fieldset
-        input(type="password"  placeholder="Set a password", data-required="true")
+        input(type="password", name="password", ng-model="dataRegister.password", data-required="true",
+              placeholder="Set a password")
     fieldset
         a.button.button-register.button-gray(href="", title="Sign up") Sign up
         input(type="submit", style="display:none")
+
     p.register-text
         // TODO
         span By clicking "Sign up", you agree to our <br />
