@@ -79,8 +79,9 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
                 #If description was modified take only the description_html field
                 if historyResult.values_diff.description?
                     historyResult.values_diff.description = historyResult.values_diff.description_html
-                    delete historyResult.values_diff.description_html
-                    delete historyResult.values_diff.description_diff
+
+                delete historyResult.values_diff.description_html
+                delete historyResult.values_diff.description_diff
 
             @scope.history = history.results
             @scope.comments = _.filter(history.results, (historyEntry) -> historyEntry.comment != "")
@@ -225,6 +226,7 @@ TagLineDirective = ($log) ->
                 return
 
             tags = _.clone($model.$modelValue, false)
+            tags = [] if not tags?
             tags.push(value)
 
             target.val("")

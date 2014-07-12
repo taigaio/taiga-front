@@ -35,6 +35,13 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide,
     $routeProvider.when("/project/:pslug/us/:usref/edit",
                     {templateUrl: "/partials/us-detail-edit.html"})
 
+    # Tasks
+    $routeProvider.when("/project/:pslug/tasks/:taskref",
+                {templateUrl: "/partials/task-detail.html"})
+
+    $routeProvider.when("/project/:pslug/tasks/:taskref/edit",
+                {templateUrl: "/partials/task-detail-edit.html"})
+
     # Issues
     $routeProvider.when("/project/:pslug/issues", {templateUrl: "/partials/issues.html"})
     $routeProvider.when("/project/:pslug/issues/:issueref",
@@ -105,6 +112,7 @@ modules = [
     "taigaTaskboard",
     "taigaIssues",
     "taigaUserStories",
+    "taigaTasks",
     "taigaSearch",
     "taigaAdmin",
     "taigaNavMenu",

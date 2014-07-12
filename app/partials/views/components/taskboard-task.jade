@@ -8,6 +8,6 @@ div.taskboard-task-inner
             figcaption {{ usersById[task.assigned_to].full_name_display }}
     p.taskboard-text
         span.task-num(ng-bind="task.ref")
-        a.task-name(href="", title="See task details", ng-bind="task.subject")
+        a.task-name(tg-nav="project-tasks-detail:project=project.slug,ref=task.ref" href="", title="See task details", ng-bind="task.subject")
     a.icon.icon-edit(href="", title="Edit task", ng-click="ctrl.editTask(task)")
     a.icon.icon-drag-h(href="", title="Drag&Drop")

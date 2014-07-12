@@ -1,0 +1,55 @@
+extends dummy-layout
+
+block head
+    title Taiga  Project management web application with scrum in mind!
+
+block content
+    div.wrapper(tg-us-detail, ng-controller="UserStoryDetailController as ctrl",
+                ng-init="section='backlog'")
+        div.main.us-detail
+            div.us-detail-header
+                include views/components/mainTitle
+                a.button.button-green.save-us(href="", title="Save") Save
+
+            section.us-story-main-data
+                div.us-title
+                    input(type="text", ng-model="us.subject")
+
+                div.blocked-warning(ng-show="us.is_blocked")
+                    span.icon.icon-warning
+                    p.blocked Blocked!
+                    p(tg-bind-html="us.blocked_note || 'This user story is blocked'")
+                    a.button.button-red.button-block.unblock(ng-click="ctrl.unblock()", href="", title="Unblock US") Unblock
+
+                div.user-story-tags(tg-tag-line, editable="true", ng-model="us.tags")
+
+            section.us-content
+                textarea(placeholder="Write a description of your user story", ng-model="us.description", tg-markitup)
+
+            // include views/modules/attachments
+            textarea(ng-model="us.comment", placeholder="Write here a new commet")
+
+        sidebar.menu-secondary.sidebar
+            section.us-status(tg-us-status-detail, ng-model="us", editable="true")
+            section.us-assigned-to(tg-assigned-to, ng-model="us", editable="true")
+            section.watchers(tg-watchers, ng-model="us.watchers", editable="true")
+
+            section.us-detail-settings
+                    fieldset
+                        label.clickable.button.button-green(for="client-requirement", ng-class="{true:'active', false:''}[us.client_requirement]") Client requirement
+                        input(ng-model="us.client_requirement", type="checkbox", id="client-requirement", name="client-requirement")
+                    fieldset
+                        label.clickable.button.button-green(for="team-requirement", ng-class="{true:'active', false:''}[us.team_requirement]") Team requirement
+                        input(ng-model="us.team_requirement", type="checkbox", id="team-requirement", name="team-requirement")
+
+                    a.button.button-gray.clickable(ng-show="!us.is_blocked", ng-click="ctrl.block()") Block
+                    a.button.button-red(ng-click="ctrl.delete()", href="") Delete
+
+        div.lightbox.lightbox_block.hidden(tg-lb-block, title="Blocking issue", ng-model="us")
+            include views/modules/lightbox_block
+
+        div.lightbox.lightbox_select_user.hidden(tg-lb-edit-assigned-to)
+            include views/modules/lightbox-assigned-to
+
+        div.lightbox.lightbox_select_user.hidden(tg-lb-add-watcher)
+            include views/modules/lightbox_users

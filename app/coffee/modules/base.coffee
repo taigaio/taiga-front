@@ -62,6 +62,9 @@ urls = {
     "project-userstories-detail": "/project/:project/us/:ref",
     "project-userstories-detail-edit": "/project/:project/us/:ref/edit",
 
+    "project-tasks-detail": "/project/:project/tasks/:ref",
+    "project-tasks-detail-edit": "/project/:project/tasks/:ref/edit",
+
     # Admin
     "project-admin-home": "/project/:project/admin/project-profile/details",
     "project-admin-project-profile-details": "/project/:project/admin/project-profile/details"

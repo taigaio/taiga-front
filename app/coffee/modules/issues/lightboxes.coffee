@@ -158,6 +158,7 @@ EditAssignedToDirective = ->
         editingElement = null
 
         updateScopeFilteringUsers = (searchingText) ->
+            console.log "updateScopeFilteringUsers", searchingText
             usersById = _.clone($scope.usersById, false)
             # Exclude selected user
             if $scope.selectedUser?
@@ -165,7 +166,7 @@ EditAssignedToDirective = ->
 
             # Filter text
             usersById = _.filter usersById,  (user) ->
-                return _.contains(user.full_name_display, searchingText)
+                return _.contains(user.full_name_display.toUpperCase(), searchingText.toUpperCase())
 
             # Return max of 5 elements
             users = _.map(usersById, (user) -> user)

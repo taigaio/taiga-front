@@ -1,0 +1,52 @@
+extends dummy-layout
+
+block head
+    title Taiga  Project management web application with scrum in mind!
+
+block content
+    div.wrapper(tg-task-detail, ng-controller="TaskDetailController as ctrl",
+                ng-init="section='backlog'")
+        div.main.us-detail
+            div.us-detail-header
+                include views/components/mainTitle
+                a.button.button-green.save-task(href="", title="Save") Save
+
+            section.us-story-main-data
+                div.us-title
+                    input(type="text", ng-model="task.subject")
+
+                div.blocked-warning(ng-show="task.is_blocked")
+                    span.icon.icon-warning
+                    p.blocked Blocked!
+                    p(tg-bind-html="task.blocked_note || 'This task is blocked'")
+                    a.button.button-red.button-block.unblock(ng-click="ctrl.unblock()", href="", title="Unblock US") Unblock
+
+                div.user-story-tags(tg-tag-line, editable="true", ng-model="task.tags")
+
+            section.us-content
+                textarea(placeholder="Write a description of your task", ng-model="task.description", tg-markitup)
+
+            // include views/modules/attachments
+            textarea(ng-model="task.comment", placeholder="Write here a new commet")
+
+        sidebar.menu-secondary.sidebar
+            section.us-status(tg-task-status, ng-model="task", editable="true")
+            section.us-assigned-to(tg-assigned-to, ng-model="task", editable="true")
+            section.watchers(tg-watchers, ng-model="task.watchers", editable="true")
+
+            section.us-detail-settings
+                  fieldset
+                      label.clickable.button.button-green(for="is-iocaine", ng-class="{true:'active', false:''}[task.is_iocaine]") Iocaine
+                      input(ng-model="task.is_iocaine", type="checkbox", id="is-iocaine", name="is-iocaine")
+
+                    a.button.button-gray.clickable(ng-show="!task.is_blocked", ng-click="ctrl.block()") Block
+                    a.button.button-red(ng-click="ctrl.delete()", href="") Delete
+
+        div.lightbox.lightbox_block.hidden(tg-lb-block, title="Blocking task", ng-model="task")
+            include views/modules/lightbox_block
+
+        div.lightbox.lightbox_select_user.hidden(tg-lb-edit-assigned-to)
+            include views/modules/lightbox-assigned-to
+
+        div.lightbox.lightbox_select_user.hidden(tg-lb-add-watcher)
+            include views/modules/lightbox_users

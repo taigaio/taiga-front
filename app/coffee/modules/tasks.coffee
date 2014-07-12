@@ -16,7 +16,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: modules/userstories.coffee
+# File: modules/tasks.coffee
 ###
 
-module = angular.module("taigaUserStories", [])
+module = angular.module("taigaTasks", [])

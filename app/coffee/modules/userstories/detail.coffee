@@ -79,8 +79,15 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
                 #If description was modified take only the description_html field
                 if historyResult.values_diff.description?
                     historyResult.values_diff.description = historyResult.values_diff.description_html
-                    delete historyResult.values_diff.description_html
-                    delete historyResult.values_diff.description_diff
+
+                if historyResult.values_diff.client_requirement
+                    historyResult.values_diff.client_requirement = _.map(historyResult.values_diff.client_requirement, (v) -> {true: 'Yes', false: 'No'}[v])
+
+                if historyResult.values_diff.team_requirement
+                    historyResult.values_diff.team_requirement = _.map(historyResult.values_diff.team_requirement, (v) -> {true: 'Yes', false: 'No'}[v])
+
+                delete historyResult.values_diff.description_html
+                delete historyResult.values_diff.description_diff
 
             @scope.history = history.results
             @scope.comments = _.filter(history.results, (historyEntry) -> historyEntry.comment != "")
@@ -266,6 +273,8 @@ UsStatusDetailDirective = () ->
 
             totalTasks = $scope.tasks.length
             totalClosedTasks = _.filter($scope.tasks, (task) => $scope.taskStatusById[task.status].is_closed).length
+            usProgress = 0
+            usProgress = 100 * totalClosedTasks / totalTasks if totalTasks > 0
             html = template({
                 editable: editable
                 status: status
@@ -273,7 +282,7 @@ UsStatusDetailDirective = () ->
                 rolePoints: rolePoints
                 totalTasks: totalTasks
                 totalClosedTasks: totalClosedTasks
-                usProgress: 100 * totalClosedTasks / totalTasks
+                usProgress: usProgress
             })
             $el.html(html)
             $el.find(".status-data").append(selectionStatusTemplate({statuses:$scope.statusList}))

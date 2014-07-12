@@ -25,6 +25,9 @@ taiga = @.taiga
 resourceProvider = ($repo, $http, $urls) ->
     service = {}
 
+    service.get = (projectId, taskId) ->
+        return $repo.queryOne("tasks", taskId)
+
     service.list = (projectId, sprintId=null, userStoryId=null) ->
         params = {project: projectId}
         params.milestone = sprintId if sprintId
@@ -36,6 +39,9 @@ resourceProvider = ($repo, $http, $urls) ->
         params = {projectId: projectId, usId: usId, bulkTasks: data}
         return $http.post(url, params).then (result) ->
             return result.data
+
+    service.history = (taskId) ->
+        return $repo.queryOneRaw("history/task", taskId)
 
     return (instance) ->
         instance.tasks = service
