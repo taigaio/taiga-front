@@ -89,9 +89,3 @@ body {
 .hidden {
     display: none;
 }
-
-//TODO If no reverted do refactor. Font-size should extend from previous font sizes in dependencies/typography.scss
-.placeholder {
-    color: #888;
-    font-size: 28px;
-}
