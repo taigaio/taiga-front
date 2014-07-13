@@ -26,6 +26,7 @@ class ResourcesService extends taiga.Service
 urls = {
     "auth": "/api/v1/auth"
     "auth-register": "/api/v1/auth/register"
+    "invitations": "/api/v1/invitations"
     "permissions": "/api/v1/permissions"
     "roles": "/api/v1/roles"
     "projects": "/api/v1/projects"
@@ -106,9 +107,10 @@ module.run([
     "$tgProjectsResourcesProvider",
     "$tgSprintsResourcesProvider",
     "$tgUserstoriesResourcesProvider",
-    "$tgMdRenderResourcesProvider",
     "$tgTasksResourcesProvider",
     "$tgIssuesResourcesProvider",
     "$tgSearchResourcesProvider",
+    "$tgMdRenderResourcesProvider",
+    "$tgInvitationsResourcesProvider",
     initResources
 ])
