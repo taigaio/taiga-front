@@ -28,9 +28,9 @@ module = angular.module("taigaAuth", ["taigaResources"])
 #############################################################################
 
 class AuthService extends taiga.Service
-    @.$inject = ["$rootScope", "$tgStorage", "$tgModel", "$tgHttp", "$tgUrls"]
+    @.$inject = ["$rootScope", "$tgStorage", "$tgModel", "$tgResources", "$tgHttp", "$tgUrls"]
 
-    constructor: (@rootscope, @storage, @model, @http, @urls) ->
+    constructor: (@rootscope, @storage, @model, @rs, @http, @urls) ->
         super()
 
     getUser: ->
@@ -108,6 +108,8 @@ class AuthService extends taiga.Service
 
         return @http.post(url, data)
 
+    getInvitation: (token) ->
+        return @rs.invitations.get(token)
 
     # acceptInvitiationWithNewUser: (username, email, password, token) ->
     #     url = @urls.resolve("auth-register")
