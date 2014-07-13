@@ -69,11 +69,11 @@ class AuthService extends taiga.Service
     ## Http interface
     ###################
 
-    login: (data) ->
+    login: (data, type) ->
         url = @urls.resolve("auth")
 
         data = _.clone(data, false)
-        data.type = "normal"
+        data.type = if type then type else "normal"
 
         return @http.post(url, data).then (data, status) =>
             user = @model.make_model("users", data.data)
@@ -81,11 +81,12 @@ class AuthService extends taiga.Service
             @.setUser(user)
             return user
 
-    register: (data) ->
+    register: (data, type) ->
         url = @urls.resolve("auth-register")
 
         data = _.clone(data, false)
-        data.type = "public"
+        data.type = if type then type else "public"
+        data.existing = false
 
         return @http.post(url, data).then (response) =>
             user = @model.make_model("users", response.data)
