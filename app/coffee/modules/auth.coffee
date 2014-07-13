@@ -298,8 +298,92 @@ ChangePasswordFromRecoveryDirective = ($auth, $confirm, $location, $params) ->
     return {link:link}
 
 
+    ###################
+    ## Invitation
+    ###################
+
+InvitationDirective = ($auth, $confirm, $location, $params) ->
+    link = ($scope, $el, $attrs) ->
+        token = $params.token
+
+        promise = $auth.getInvitation(token)
+        promise.then (invitation)->
+            $scope.invitation = invitation
+
+        promise.then null, (response) ->
+                $location.path("/login") # TODO: Use the future 'urls' service
+                $confirm.success("<strong>Ooops, we have a problems</strong><br />
+                                  Our Oompa Loompas can't find your invitations.") #TODO: i18n
+
+        #$##############
+        # Login form
+        ################
+        $scope.dataLogin = {token: token}
+        loginForm = $el.find("form.login-form").checksley()
+
+        submitLogin = ->
+            if not loginForm.validate()
+                return
+
+            promise = $auth.login($scope.dataLogin)
+            promise.then (response) ->
+                # TODO: finish this. Go tu project home page
+                $location.path("/project/#{$scope.invitation.project_slug}/backlog")
+                $confirm.notify("success", "You've successfully joined to this project",
+                                           "Wellcome to #{$scope.invitation.project_name}")
+
+            promise.then null, (response) ->
+                if response.data._error_message
+                    $confirm.notify("light-error", "According to our Oompa Loompas,
+                                                    your are not registered yet or
+                                                    type an invalid password.") #TODO: i18n
+
+        $el.on "submit", "form.login-form", (event) ->
+            event.preventDefault()
+            submitLogin()
+
+        $el.on "click", "a.button-login", (event) ->
+            event.preventDefault()
+            submitLogin()
+
+        #$##############
+        # Register form
+        #$##############
+        $scope.dataRegister = {token: token}
+        registerForm = $el.find("form.register-form").checksley()
+
+        submitRegister = ->
+            if not registerForm.validate()
+                return
+
+            promise = $auth.register($scope.dataRegister, "private")
+            promise.then (response) ->
+                # TODO: finish this. Go tu project home page
+                $location.path("/project/#{$scope.invitation.project_slug}/backlog")
+                $confirm.notify("success", "You've successfully joined to this project",
+                                           "Wellcome to #{$scope.invitation.project_name}")
+
+            promise.then null, (response) ->
+                if response.data._error_message
+                    $confirm.notify("light-error", "According to our Oompa Loompas,
+                                                    your username/email or password
+                                                    are incorrect.") #TODO: i18n
+
+        $el.on "submit", "form.register-form", (event) ->
+            event.preventDefault()
+            submitRegister
+
+        $el.on "click", "a.button-register", (event) ->
+            event.preventDefault()
+            submitRegister()
+
+    return {link:link}
+
+
 module.directive("tgRegister", ["$tgAuth", "$tgConfirm", RegisterDirective])
 module.directive("tgLogin", ["$tgAuth", "$tgConfirm", "$location", LoginDirective])
 module.directive("tgForgotPassword", ["$tgAuth", "$tgConfirm", "$location", ForgotPasswordDirective])
 module.directive("tgChangePasswordFromRecovery", ["$tgAuth", "$tgConfirm", "$location", "$routeParams",
                                                   ChangePasswordFromRecoveryDirective])
+module.directive("tgInvitation", ["$tgAuth", "$tgConfirm", "$location", "$routeParams",
+                                  InvitationDirective])
