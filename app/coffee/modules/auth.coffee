@@ -152,8 +152,10 @@ module.service("$tgAuth", AuthService)
     ## Login Directive
     ###################
 
-LoginDirective = ($auth, $confirm, $location) ->
+LoginDirective = ($auth, $confirm, $location, $config) ->
     link = ($scope, $el, $attrs) ->
+        $scope.allowPublicRegistration = $config.get("allowPublicRegistration")
+
         $scope.data = {}
         form = $el.find("form").checksley()
 
@@ -381,7 +383,7 @@ InvitationDirective = ($auth, $confirm, $location, $params) ->
 
 
 module.directive("tgRegister", ["$tgAuth", "$tgConfirm", RegisterDirective])
-module.directive("tgLogin", ["$tgAuth", "$tgConfirm", "$location", LoginDirective])
+module.directive("tgLogin", ["$tgAuth", "$tgConfirm", "$location", "$tgConfig", LoginDirective])
 module.directive("tgForgotPassword", ["$tgAuth", "$tgConfirm", "$location", ForgotPasswordDirective])
 module.directive("tgChangePasswordFromRecovery", ["$tgAuth", "$tgConfirm", "$location", "$routeParams",
                                                   ChangePasswordFromRecoveryDirective])
