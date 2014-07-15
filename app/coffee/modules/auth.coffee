@@ -169,10 +169,9 @@ LoginDirective = ($auth, $confirm, $location, $config) ->
                 $location.path("/project/project-example-0/backlog")
 
             promise.then null, (response) ->
-                if response.data._error_message
-                    $confirm.notify("light-error", "According to our Oompa Loompas,
-                                                    your username/email or password
-                                                    are incorrect.") #TODO: i18n
+                $confirm.notify("light-error", "According to our Oompa Loompas,
+                                                your username/email or password
+                                                are incorrect.") #TODO: i18n
 
         $el.on "submit", (event) ->
             event.preventDefault()
