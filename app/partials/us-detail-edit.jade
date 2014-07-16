@@ -35,15 +35,15 @@ block content
             section.watchers(tg-watchers, ng-model="us.watchers", editable="true")
 
             section.us-detail-settings
-                    fieldset
-                        label.clickable.button.button-green(for="client-requirement", ng-class="{true:'active', false:''}[us.client_requirement]") Client requirement
-                        input(ng-model="us.client_requirement", type="checkbox", id="client-requirement", name="client-requirement")
-                    fieldset
-                        label.clickable.button.button-green(for="team-requirement", ng-class="{true:'active', false:''}[us.team_requirement]") Team requirement
-                        input(ng-model="us.team_requirement", type="checkbox", id="team-requirement", name="team-requirement")
+                fieldset
+                    label.clickable.button.button-green(for="client-requirement", ng-class="{true:'active', false:''}[us.client_requirement]") Client requirement
+                    input(ng-model="us.client_requirement", type="checkbox", id="client-requirement", name="client-requirement")
+                fieldset
+                    label.clickable.button.button-green(for="team-requirement", ng-class="{true:'active', false:''}[us.team_requirement]") Team requirement
+                    input(ng-model="us.team_requirement", type="checkbox", id="team-requirement", name="team-requirement")
 
-                    a.button.button-gray.clickable(ng-show="!us.is_blocked", ng-click="ctrl.block()") Block
-                    a.button.button-red(ng-click="ctrl.delete()", href="") Delete
+                a.button.button-gray.clickable(ng-show="!us.is_blocked", ng-click="ctrl.block()") Block
+                a.button.button-red(ng-click="ctrl.delete()", href="") Delete
 
         div.lightbox.lightbox_block.hidden(tg-lb-block, title="Blocking issue", ng-model="us")
             include views/modules/lightbox_block
