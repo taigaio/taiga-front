@@ -411,6 +411,7 @@ IssueStatusDirective = () ->
             <% } else { %>
             Open
             <% } %>
+            </span>
             <span class="us-detail-status" style="color:<%= status.color %>"><%= status.name %></span>
         </h1>
         <div class="issue-data">
