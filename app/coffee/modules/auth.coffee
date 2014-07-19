@@ -81,18 +81,25 @@ class AuthService extends taiga.Service
             @.setUser(user)
             return user
 
-    register: (data, type) ->
+    register: (data, type, existing) ->
         url = @urls.resolve("auth-register")
 
         data = _.clone(data, false)
         data.type = if type then type else "public"
-        data.existing = false
+        if type == "private"
+            data.existing = if existing then existing else false
 
         return @http.post(url, data).then (response) =>
             user = @model.make_model("users", response.data)
             @.setToken(user.auth_token)
             @.setUser(user)
             return user
+
+    acceptInvitiationWithNewUser: (data) ->
+        return register(data, "private", false)
+
+    acceptInvitiationWithExistingUser: (data) ->
+        return register(data, "private", true)
 
     forgotPassword: (data) ->
         url = @urls.resolve("users-password-recovery")
@@ -112,34 +119,6 @@ class AuthService extends taiga.Service
     getInvitation: (token) ->
         return @rs.invitations.get(token)
 
-    # acceptInvitiationWithNewUser: (username, email, password, token) ->
-    #     url = @urls.resolve("auth-register")
-    #     data = _.extend(data, {
-    #         username: username,
-    #         password: password,
-    #         token: token
-    #         email: email
-    #         existing: "off"
-    #     }
-    #     return @http.post(url, data).then (response) =>
-    #         user = @model.make_model("users", response.data)
-    #         @.setToken(user.auth_token)
-    #         @.setUser(user)
-    #         return user
-
-    # acceptInvitiationWithExistingUser: (username, password, token) ->
-    #     url = @urls.resolve("auth-register")
-    #     data = _.extend(data, {
-    #         username: username,
-    #         password: password,
-    #         token: token,
-    #         existing: "on"
-    #     }
-    #     return @http.post(url, data).then (response) =>
-    #         user = @model.make_model("users", response.data)
-    #         @.setToken(user.auth_token)
-    #         @.setUser(user)
-    #         return user
 
 module.service("$tgAuth", AuthService)
 
@@ -204,10 +183,9 @@ RegisterDirective = ($auth, $confirm) ->
                 $location.path("/project/project-example-0/backlog")
 
             promise.then null, (response) ->
-                if response.data._error_message
-                    $confirm.notify("light-error", "According to our Oompa Loompas,
-                                                    your are not registered yet or
-                                                    type an invalid password.") #TODO: i18n
+                $confirm.notify("light-error", "According to our Oompa Loompas,
+                                                your are not registered yet or
+                                                type an invalid password.") #TODO: i18n
 
         $el.on "submit", (event) ->
             event.preventDefault()
@@ -242,9 +220,8 @@ ForgotPasswordDirective = ($auth, $confirm, $location) ->
                                  with the instructions to set a new password") #TODO: i18n
 
             promise.then null, (response) ->
-                if response.data._error_message
-                    $confirm.notify("light-error", "According to our Oompa Loompas,
-                                                    your are not registered yet.") #TODO: i18n
+                $confirm.notify("light-error", "According to our Oompa Loompas,
+                                                your are not registered yet.") #TODO: i18n
 
         $el.on "submit", (event) ->
             event.preventDefault()
@@ -284,9 +261,8 @@ ChangePasswordFromRecoveryDirective = ($auth, $confirm, $location, $params) ->
                                   Try to <strong>sign in</strong> with it.") #TODO: i18n
 
             promise.then null, (response) ->
-                if response.data._error_message
-                    $confirm.notify("light-error", "One of our Oompa Loompas say
-                                    '#{response.data._error_message}'.") #TODO: i18n
+                $confirm.notify("light-error", "One of our Oompa Loompas say
+                                '#{response.data._error_message}'.") #TODO: i18n
 
         $el.on "submit", (event) ->
             event.preventDefault()
@@ -326,7 +302,7 @@ InvitationDirective = ($auth, $confirm, $location, $params) ->
             if not loginForm.validate()
                 return
 
-            promise = $auth.login($scope.dataLogin)
+            promise = $auth.acceptInvitiationWithExistingUser($scope.dataLogin)
             promise.then (response) ->
                 # TODO: finish this. Go tu project home page
                 $location.path("/project/#{$scope.invitation.project_slug}/backlog")
@@ -357,7 +333,7 @@ InvitationDirective = ($auth, $confirm, $location, $params) ->
             if not registerForm.validate()
                 return
 
-            promise = $auth.register($scope.dataRegister, "private")
+            promise = $auth.acceptInvitiationWithNewUser($scope.dataRegister)
             promise.then (response) ->
                 # TODO: finish this. Go tu project home page
                 $location.path("/project/#{$scope.invitation.project_slug}/backlog")
@@ -365,10 +341,9 @@ InvitationDirective = ($auth, $confirm, $location, $params) ->
                                            "Wellcome to #{$scope.invitation.project_name}")
 
             promise.then null, (response) ->
-                if response.data._error_message
-                    $confirm.notify("light-error", "According to our Oompa Loompas,
-                                                    your username/email or password
-                                                    are incorrect.") #TODO: i18n
+                $confirm.notify("light-error", "According to our Oompa Loompas,
+                                                your username/email or password
+                                                are incorrect.") #TODO: i18n
 
         $el.on "submit", "form.register-form", (event) ->
             event.preventDefault()
