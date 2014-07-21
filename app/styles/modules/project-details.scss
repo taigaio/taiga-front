@@ -5,17 +5,24 @@
         background-color: $very-light-gray;
     }
     fieldset {
+        @include table-flex();
         margin-bottom: 1rem;
+    }
+    label {
+        @extend %title;
+        display: block;
+        margin-bottom: .5rem;
+    }
+    input[type="text"] {
+        width: 50%;
     }
     textarea {
         height: 10rem;
     }
     .button-green {
+        color: $white;
         display: block;
         padding: 12px;
         text-align: center;
-    }
-    .half {
-        width: 45%;
     }
 }
