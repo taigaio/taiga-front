@@ -50,7 +50,7 @@ $column-margin: 0 10px 0 0;
     .task-row {
         @include table-flex();
         margin-bottom: .5rem;
-        min-height: 30rem;
+        min-height: 17rem;
         width: 100%;
     }
     .taskboard-tasks-box {
