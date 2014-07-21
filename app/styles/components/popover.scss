@@ -28,6 +28,7 @@
         }
     }
     &:after {
+        @include transform(rotate(45deg));
         background: $blackish;
         bottom: #{$arrow-bottom};
         content: '';
@@ -35,7 +36,6 @@
         left: #{$arrow-left};
         position: absolute;
         top: #{$arrow-top};
-        transform: rotate(45deg);
         width: #{$arrow-width};
     }
 }

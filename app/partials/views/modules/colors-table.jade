@@ -1,41 +1,34 @@
-section.colors-table.basic-table
-    div.row.title
-        div.width-1.color-column Color
-        div.width-6 Name
-        div.width-2.is-closed-column Is closed?
-        div.width-1.options-column
+section.colors-table
+    div.table-header
+        div.row
+            div.color-column Color
+            div.status-name Name
+            div.is-closed-column Is closed?
+            div.options-column
 
-    div.row.table-main
-        div.width-1.color-column
-            div.color
-            div.popover.select-color
-                ul
-                    - for (var z = 0; z < 21; z++)
-                        li.color
-                input(type="text", placeholder="personalized colors")
-                div.selected-color(style="background-color: red")
+    div.table-main
+        div.row.row-edit
+            div.color-column
+                div.current-color
+                include ../components/select-color
 
-        div.width-6
-            input(type="text")
-        div.width-2.is-closed-column
-            input(type="checkbox")
-        div.width-1.options-column
-            a.icon.icon-floppy(href="#")
+            div.status-name
+                input(type="text")
+            div.is-closed-column
+                input(type="checkbox")
+            div.options-column
+                a.icon.icon-floppy(href="#")
+                a.icon.icon-delete(href="#")
 
     - for (var x = 0; x < 50; x++)
         div.row.table-main
-            div.width-1.color-column
-                div.color
-                div.popover.select-color
-                    ul
-                        - for (var z = 0; z < 21; z++)
-                            li.color
-                    input(type="text", placeholder="personalized colors")
-                    div.selected-color(style="background-color: red")
+            div.color-column
+                div.current-color
+                include ../components/select-color
 
-            div.width-6 Ready for test
-            div.width-2.is-closed-column
-                div.icon.icon-notification-success
-            div.width-1.options-column
-                a.icon.icon-delete(href="#")
+            div.status-name Ready for test
+            div.is-closed-column
+                div.icon.icon-check-square
+            div.options-column
                 a.icon.icon-edit(href="#")
+                a.icon.icon-delete(href="#")

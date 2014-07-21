@@ -1,0 +1,42 @@
+.select-color {
+    @include popover(323px, 0, 50px, '', '', 15px, 13px, -7px);
+    border-radius: 0 10px 10px 0;
+    padding: 15px;
+    li {
+        float: left;
+        margin: 0 .5rem .5rem 0;
+        &:nth-child(7n) {
+            margin-right: 0;
+        }
+        &:nth-last-child(-n+7) {
+            margin-bottom: 0;
+        }
+    }
+    .color {
+        background-color: $gray-light;
+        border-radius: 2px;
+        cursor: pointer;
+        height: 35px;
+        width: 35px;
+    }
+    ul {
+        float: left;
+        margin-bottom: 1rem;
+    }
+    input {
+        @extend %medium;
+        @extend %text;
+        background-color: $very-light-gray;
+        width: 243px;
+        @include placeholder {
+            color: $gray;
+        }
+    }
+    .selected-color {
+        background: $gray-light;
+        border-radius: 2px;
+        float: right;
+        height: 40px;
+        width: 40px;
+    }
+}

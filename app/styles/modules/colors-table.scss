@@ -1,93 +1,76 @@
 .colors-table {
-    .row {
-        &:hover {
-            background: lighten($green-taiga, 60%);
-            @include transition (background .2s ease-in);
-        }
-    }
-    .row-selected {
-        background: lighten($green-taiga, 60%);
-        @include transition (background .2s ease-in);
-    }
-    .title {
+    .table-header {
         @extend %medium;
         @extend %bold;
-        border-bottom: 1px solid $gray-light;
+        border-bottom: 2px solid $gray-light;
         &:hover {
             background: transparent;
         }
     }
+    .row {
+        @include table-flex(stretch, center, flex, row, wrap, center);
+        padding: 1rem;
+        &:hover {
+            background: lighten($green-taiga, 60%);
+            @include transition (background .2s ease-in);
+            .options-column {
+                @include transition (opacity .3s linear);
+                opacity: 1;
+            }
+        }
+        .color-column,
+        .is-closed-column,
+        .options-column {
+            @include table-flex-child(1, 100px, 0);
+        }
+        .color-column {
+            max-width: 100px;
+            position: relative;
+        }
+        .status-name {
+            @include table-flex-child(6, 300px, 0);
+        }
+        .options-column {
+            max-width: 100px;
+            opacity: 0;
+            text-align: right;
+        }
+        .is-closed-column {
+            max-width: 130px;
+            text-align: center;
+        }
+    }
+    .row-edit {
+        .options-column {
+            opacity: 1;
+        }
+    }
     .table-main {
-        @extend %small;
         border-bottom: 1px solid $gray-light;
     }
-    .color {
+    .current-color {
         background-color: $gray-light;
         border-radius: 2px;
         cursor: pointer;
-        height: 35px;
-        width: 35px;
+        height: 40px;
+        width: 40px;
     }
-    .icon-floppy,
-    .icon-delete,
-    .icon-edit {
+    .icon {
         @extend %large;
-        float: right;
-        margin-right: .5rem;
-    }
-    .icon-floppy {
+        color: $gray-light;
         margin-right: 1rem;
+        &:hover {
+            color: $green-taiga;
+        }
     }
     .icon-delete {
-        margin-right: 1rem;
         &:hover {
             color: $red;
         }
     }
-    .icon-notification-success {
+    .icon-check-square {
         @extend %large;
-        color: $fresh-taiga;
+        color: $green-taiga;
     }
-    .select-color {
-        @include popover(323px, 10px, 70px, '', '', 15px, 13px, -7px);
-        border-radius: 0 10px 10px 0;
-        padding: 15px;
-        li {
-            float: left;
-            margin: 0 .5rem .5rem 0;
-            &:nth-child(7n) {
-                margin-right: 0;
-            }
-            &:nth-last-child(-n+7) {
-                margin-bottom: 0;
-            }
-        }
-        ul {
-            float: left;
-            margin-bottom: 1rem;
-        }
-        input {
-            @extend %text;
-            background-color: $very-light-gray;
-            width: 243px;
-            @include placeholder {
-                color: $gray;
-            }
-        }
-        .selected-color {
-            float: right;
-            height: 40px;
-            width: 40px;
-        }
-    }
-    .color-column {
-        max-width: 100px;
-    }
-    .is-closed-column {
-        max-width: 130px;
-        text-align: center;
-    }
-    .options-column {
-        max-width: 100px;
-    }
+
 }
