@@ -54,6 +54,9 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide,
     $routeProvider.when("/project/:pslug/admin/project-profile/details",
                         {templateUrl: "/partials/admin-project-profile.html"})
 
+    $routeProvider.when("/project/:pslug/admin/project-profile/default-values",
+                    {templateUrl: "/partials/admin-project-default-values.html"})
+
     $routeProvider.when("/project/:pslug/admin/project-profile/features",
                         {templateUrl: "/partials/admin-project-features.html"})
 
