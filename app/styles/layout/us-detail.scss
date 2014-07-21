@@ -226,46 +226,6 @@
     }
 }
 
-.watchers {
-    margin-top: 2rem;
-    .watchers-header {
-        border-bottom: 2px solid $gray-light;
-        padding: .5rem;
-        position: relative;
-        .title {
-            @extend %large;
-            @extend %title;
-            text-transform: uppercase;
-        }
-        .icon {
-            @extend %large;
-            position: absolute;
-            right: 1rem;
-            top: 4px;
-        }
-    }
-    .watcher-single {
-        @include table-flex(center, center, flex, row, wrap, center);
-        @include transition(background .3s linear);
-        background: transparent;
-        border-bottom: 1px solid $gray-light;
-        padding: .5rem;
-        vertical-align: middle;
-        &:last-child {
-            border: 0;
-        }
-    }
-    .watcher-name {
-        @include table-flex-child(8, 0);
-        @extend %medium;
-        color: $grayer;
-        margin-left: 1rem;
-    }
-    .watcher-avatar {
-        @include table-flex-child(1, 0);
-    }
-}
-
 .us-detail-settings {
     margin-top: 2rem;
     .button {

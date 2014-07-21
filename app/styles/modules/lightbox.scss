@@ -319,9 +319,11 @@
         position: relative;
         &:hover,
         &.active {
-            @include transition(background .3s linear);
             background: lighten($green-taiga, 55%);
             cursor: pointer;
+        }
+        &:hover {
+            @include transition(background .3s linear);
         }
         &.active {
             .icon {

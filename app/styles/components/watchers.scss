@@ -21,7 +21,6 @@
     }
     .watcher-single {
         @include table-flex(center, center, flex, row, wrap, center);
-        @include transition(background .3s linear);
         background: transparent;
         border-bottom: 1px solid $gray-light;
         padding: .5rem;
