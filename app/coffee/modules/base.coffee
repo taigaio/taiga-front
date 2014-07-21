@@ -68,6 +68,7 @@ urls = {
     # Admin
     "project-admin-home": "/project/:project/admin/project-profile/details",
     "project-admin-project-profile-details": "/project/:project/admin/project-profile/details"
+    "project-admin-project-profile-features": "/project/:project/admin/project-profile/features"
 }
 
 init = ($log, $navurls) ->

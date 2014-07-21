@@ -74,7 +74,7 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
                 if historyResult.values_diff.is_iocaine
                     historyResult.values_diff.is_iocaine = _.map(historyResult.values_diff.is_iocaine, (v) -> {true: 'Yes', false: 'No'}[v])
-                    
+
                 delete historyResult.values_diff.description_html
                 delete historyResult.values_diff.description_diff
 

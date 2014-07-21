@@ -78,11 +78,7 @@ module.controller("ProjectProfileController", ProjectProfileController)
 
 ProjectProfileDirective = ($log, $repo, $confirm) ->
     link = ($scope, $el, $attrs) ->
-        $log.info "ProjectProfileDirective:link"
-
         form = $el.find("form").checksley()
-        console.log form, $el.find("form")
-
         submit = =>
             return if not form.validate()
 
@@ -96,14 +92,53 @@ ProjectProfileDirective = ($log, $repo, $confirm) ->
 
         $el.on "submit", "form", (event) ->
             event.preventDefault()
-            $log.error "ProjectProfileDirective:submit"
             submit()
 
         $el.on "click", "form a.button-green", (event) ->
             event.preventDefault()
-            $log.error "ProjectProfileDirective:submit a button"
             submit()
 
     return {link:link}
 
+#############################################################################
+## Project Features Directive
+#############################################################################
+
+ProjectFeaturesDirective = ($log, $repo, $confirm) ->
+    link = ($scope, $el, $attrs) ->
+        form = $el.find("form").checksley()
+        submit = =>
+            return if not form.validate()
+
+            promise = $repo.save($scope.project)
+            promise.then ->
+                $confirm.notify("success")
+
+            promise.then null, (data) ->
+                console.log "FAIL"
+                # TODO
+
+        $el.on "submit", "form", (event) ->
+            event.preventDefault()
+            submit()
+
+        $el.on "click", "form a.button-green", (event) ->
+            event.preventDefault()
+            submit()
+
+        $scope.$watch "isVideoconferenceActivated", (isVideoconferenceActivated) ->
+            if isVideoconferenceActivated
+                $el.find(".videoconference-attributes").show()
+            else
+                $el.find(".videoconference-attributes").hide()
+                $scope.project.videoconferences = null
+                $scope.project.videoconferences_salt = ""
+
+        $scope.$watch "project", (project) ->
+            if project.videoconferences?
+                $scope.isVideoconferenceActivated = true
+
+    return {link:link}
+
 module.directive("tgProjectProfile", ["$log", "$tgRepo", "$tgConfirm", ProjectProfileDirective])
+module.directive("tgProjectFeatures", ["$log", "$tgRepo", "$tgConfirm", ProjectFeaturesDirective])

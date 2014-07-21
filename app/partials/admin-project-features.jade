@@ -1,63 +1,64 @@
-extends layout
+extends dummy-layout
 
 block head
     title Taiga  Project management web application with scrum in mind!
 
 block content
-    div.wrapper
-        sidebar.menu-secondary.sidebar
+    div.wrapper(tg-project-features, ng-controller="ProjectProfileController as ctrl",
+                ng-init="section='admin'")
+        sidebar.menu-secondary.sidebar(tg-admin-navigation="project-profile")
             include views/modules/admin-menu
-        sidebar.menu-tertiary.sidebar
-            include views/modules/admin-submenu
+
+        sidebar.menu-tertiary.sidebar(tg-admin-navigation="features")
+            include views/modules/admin-submenu-project-profile
 
         section.main.admin-functionalities
             header
                 include views/components/mainTitle
 
-            section
-                div.functionality
+            form
+                div.functionality(ng-class="{true:'active', false:''}[project.is_backlog_activated]")
+                    input(type="checkbox", style="width:40px; height: 40px;", ng-model="project.is_backlog_activated")
                     div.icon.icon-backlog
                     div.desc
                         p
                             span Backlog
                             |  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sagittis quam augue, quis bibendum lectus porta eget. Nunc dictum imperdiet venenatis. Curabitur vitae augue ut est rhoncus pellentesque. Nunc sed ultricies est, tincidunt euismod nunc. Nunc nec posuere metus.
 
-                div.functionality.active
+                div.functionality(ng-class="{true:'active', false:''}[project.is_kanban_activated]")
+                    input(type="checkbox", style="width:40px; height: 40px;", ng-model="project.is_kanban_activated")
                     div.icon.icon-kanban
                     div.desc
                         p
                             span Kanban
                             |  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sagittis quam augue, quis bibendum lectus porta eget. Nunc dictum imperdiet venenatis. Curabitur vitae augue ut est rhoncus pellentesque. Nunc sed ultricies est, tincidunt euismod nunc. Nunc nec posuere metus.
 
-                div.functionality
+                div.functionality(ng-class="{true:'active', false:''}[project.is_issues_activated]")
+                    input(type="checkbox", style="width:40px; height: 40px;", ng-model="project.is_issues_activated")
                     div.icon.icon-issues
                     div.desc
                         p
                             span Issues
                             |  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sagittis quam augue, quis bibendum lectus porta eget. Nunc dictum imperdiet venenatis. Curabitur vitae augue ut est rhoncus pellentesque. Nunc sed ultricies est, tincidunt euismod nunc. Nunc nec posuere metus.
 
-                div.functionality.active
+                div.functionality(ng-class="{true:'active', false:''}[project.is_wiki_activated]")
+                    input(type="checkbox", style="width:40px; height: 40px;", ng-model="project.is_wiki_activated")
                     div.icon.icon-wiki
                     div.desc
                         p
                             span Wiki
                             |  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sagittis quam augue, quis bibendum lectus porta eget. Nunc dictum imperdiet venenatis. Curabitur vitae augue ut est rhoncus pellentesque. Nunc sed ultricies est, tincidunt euismod nunc. Nunc nec posuere metus.
 
-                div.functionality.active
+                div.functionality(ng-class="{true:'active', false:''}[isVideoconferenceActivated]")
+                    input(type="checkbox", style="width:40px; height: 40px;", ng-model="isVideoconferenceActivated")
                     div.icon.icon-video
                     div.desc
                         p
                             span Video
                             |  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sagittis quam augue, quis bibendum lectus porta eget. Nunc dictum imperdiet venenatis. Curabitur vitae augue ut est rhoncus pellentesque. Nunc sed ultricies est, tincidunt euismod nunc. Nunc nec posuere metus.
 
-                        select
-                            option Option 1
-                            option Option 2
-                            option Option 3
-                            option Option 4
-
-                        select
-                            option Option 1
-                            option Option 2
-                            option Option 3
-                            option Option 4
+                        div.videoconference-attributes.hidden
+                            select(ng-model="project.videoconferences", ng-options="e.id as e.name for e in [{'id':'appear-in', 'name':'AppearIn'},{'id':'talky', 'name': 'Talky'}]")
+                            input(ng-model="project.videoconferences_salt", placeholder="write a name for the chat room (ej. the name of the project)")
+                input(type="submit", class="hidden")
+                a.button.button-green(href="") Save
