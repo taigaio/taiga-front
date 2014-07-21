@@ -1,0 +1,42 @@
+//.project-values-table {}
+
+.project-values-row {
+    @include table-flex(stretch, center, flex, row, wrap, center);
+    border-bottom: 1px solid $whitish;
+}
+
+.project-values-header {
+    @extend %bold;
+    border-bottom: 2px solid $gray-light;
+}
+
+.project-values-name,
+.project-values-isclosed,
+.project-values-settings {
+    padding: 1rem;
+}
+
+.project-values-name {
+    @include table-flex-child(3, 0, 0);
+}
+
+.project-values-isclosed,
+.project-values-settings {
+    @include table-flex-child(1, 0, 0);
+    text-align: right;
+}
+
+.project-values-settings {
+    a {
+        @extend %large;
+        color: $gray;
+        margin-right: .5rem;
+        &:hover {
+            @include transition(color .3s linear);
+            color: $green-taiga;
+            &.icon-delete {
+                color: $red;
+            }
+        }
+    }
+}

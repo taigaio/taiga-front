@@ -71,6 +71,7 @@ $prefix-for-spec:      true;
 
 //modules admin
 @import 'modules/admin/default-values';
+@import 'modules/admin/project-values';
 
 //Layout
 @import 'layout/base';
