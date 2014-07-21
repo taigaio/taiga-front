@@ -70,6 +70,7 @@ urls = {
     "project-admin-project-profile-details": "/project/:project/admin/project-profile/details",
     "project-admin-project-profile-default-values": "/project/:project/admin/project-profile/default-values",
     "project-admin-project-profile-features": "/project/:project/admin/project-profile/features"
+    "project-admin-project-values-us-status": "/project/:project/admin/project-values/us-status"    
 }
 
 init = ($log, $navurls) ->

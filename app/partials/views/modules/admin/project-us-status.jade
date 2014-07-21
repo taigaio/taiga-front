@@ -1,0 +1,29 @@
+section.project-values-table
+    div.project-values-header
+        div.project-values-row
+            div.project-values-name
+                span Name
+            div.project-values-isclosed
+                span Is closed?
+            div.project-values-settings
+
+    div.project-values-body
+        div.project-values-row(ng-repeat="status in project.us_statuses")
+            div.project-values-name
+                 span {{ status.name }}
+            div.project-values-isclosed
+                span {{ status.is_closed|yesNo }}
+            div.project-values-settings
+                a.edit-us-status.icon.icon-edit(href="", title="Edit value")
+                a.delete-us-status.icon.icon-delete(href="", title="Delete value")
+
+        div.project-values-row.new-us-status.hidden
+            div.project-values-name
+                 input(type="text", placeholder="Write a name for the new status", ng-model="newUs.name")
+            div.project-values-isclosed
+                select(ng-model="newUs.is_closed")
+                    option(selected) No
+                    option Yes
+            div.project-values-settings
+                a.add-new.icon.icon-floppy(href="", title="Add")
+                a.delete-new.icon.icon-delete(href="", title="Delete")

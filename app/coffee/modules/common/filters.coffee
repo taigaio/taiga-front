@@ -19,6 +19,7 @@
 # File: modules/common/filters.coffee
 ###
 
+module = angular.module("taigaCommon")
 
 defaultFilter = ->
     return (value, defaultValue) ->
@@ -26,6 +27,14 @@ defaultFilter = ->
             return defaultValue
         return value
 
-module = angular.module("taigaCommon")
 module.filter("default", defaultFilter)
 
+yesNoFilter = ->
+    #TODO: i18n
+    return (value) ->
+        if value
+            return "Yes"
+
+        return "No"
+
+module.filter("yesNo", yesNoFilter)
