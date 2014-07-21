@@ -60,5 +60,5 @@ $column-margin: 0 10px 0 0;
 }
 
 .kanban-table-inner {
-    @include table-flex(stretch, stretch, flex, row,  nowrap, flex-start);
+    @include table-flex(stretch, stretch, flex, row, nowrap, flex-start);
 }

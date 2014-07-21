@@ -11,11 +11,10 @@ block content
                     a(href="", title="{{ invitation.invited_by.full_name_display }} profile")
                         img.avatar(src="{{ invitation.invited_by.photo }}",
                             alt="{{ invitation.invited_by.full_name_display }}")
-                        {{ invitation.invited_by.full_name_display }}
+                        | {{ invitation.invited_by.full_name_display }}
                 p.invitation-text has sent you an invitation to join to the taiga project
                     span.project-name(tg-bo-html="invitation.project_name")
 
                 div.invitation-form
                     include views/modules/invitation-login-form
                     include views/modules/invitation-register-form
-
