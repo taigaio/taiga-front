@@ -42,6 +42,7 @@ paths = {
              "app/coffee/modules/common/*.coffee",
              "app/coffee/modules/backlog/*.coffee",
              "app/coffee/modules/taskboard/*.coffee",
+             "app/coffee/modules/kanban/*.coffee",
              "app/coffee/modules/issues/*.coffee",
              "app/coffee/modules/userstories/*.coffee",
              "app/coffee/modules/tasks/*.coffee",

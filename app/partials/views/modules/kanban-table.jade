@@ -1,51 +1,13 @@
 div.kanban-table
     div.kanban-table-header
         div.kanban-table-inner
-            h2.task-colum_name
-                span Task
+            h2.task-colum_name(ng-repeat="s in usStatusList track by s.id")
+                span(tg-bo-html="s.name")
                 a.icon.icon-plus(href="", title="Add New task")
-            h2.task-colum_name
-                span Open
-                a.icon.icon-plus(href="", title="Add New task")
-            h2.task-colum_name
-                span Ready for test
-                a.icon.icon-plus(href="", title="Add New task")
-            h2.task-colum_name
-                span Closed
-                a.icon.icon-plus(href="", title="Add New task")
-            h2.task-colum_name
-                span Task
-                a.icon.icon-plus(href="", title="Add New task")
-            h2.task-colum_name
-                span Open
-                a.icon.icon-plus(href="", title="Add New task")
-            h2.task-colum_name
-                span Ready for test
-                a.icon.icon-plus(href="", title="Add New task")
-            h2.task-colum_name
-                span Closed
-                a.icon.icon-plus(href="", title="Add New task")
+
     div.kanban-table-body
         div.kanban-table-inner
-            div.taskboard_task-playground.task-column
-                div.kanban-task
-                    include ../components/kanban-task
-            div.taskboard_task-playground.task-column
-                div.kanban-task
-                    include ../components/kanban-task
-            div.taskboard_task-playground.task-column
-
-            div.taskboard_task-playground.task-column
-                div.kanban-task
-                    include ../components/kanban-task
-            div.taskboard_task-playground.task-column
-                div.kanban-task
-                    include ../components/kanban-task
-            div.taskboard_task-playground.task-column
-                div.kanban-task
-                    include ../components/kanban-task
-            div.taskboard_task-playground.task-column
-
-            div.taskboard_task-playground.task-column
-                div.kanban-task
+            div.taskboard_task-playground.task-column(ng-repeat="s in usStatusList track by s.id",
+                                                      tg-kanban-sortable)
+                div.kanban-task(ng-repeat="us in usByStatus[s.id] track by us.id")
                     include ../components/kanban-task

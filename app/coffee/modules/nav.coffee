@@ -82,7 +82,7 @@ ProjectMenuDirective = ($log, $compile, $rootscope) ->
         </a>
     </li>
     <li id="nav-kanban">
-        <a href="" title="Kanban">
+        <a href="" title="Kanban" tg-nav="project-kanban:project=project.slug">
             <span class="icon icon-kanban"></span><span class="item">Kanban</span>
         </a>
     </li>

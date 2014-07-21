@@ -1,23 +1,23 @@
-extends layout
+extends dummy-layout
 
 block head
     title Taiga  Project management web application with scrum in mind!
 
 block content
-    div.wrapper
+    div.wrapper(tg-kanban, ng-controller="KanbanController as ctrl")
         section.main.kanban
             div.kanban-detail-header
                 h1
-                    span ProjectName
-                    span.green Sprint Name
-                    span.date 02/10/2014-15/10/2014
+                    span(tg-bo-html="project.name")
+                    // span.green Sprint Name
+                    // span.date 02/10/2014-15/10/2014
                 div.kanban-settings
-                    a.button.button-trans(href="", title="Filter")
-                        span.icon.icon-filter
-                        span Filters
+                    // a.button.button-trans(href="", title="Filter")
+                    //     span.icon.icon-filter
+                    //     span Filters
                     a.button.button-gray(href="", title="Filter")
                         span Show Statistics
             //-include views/components/large-summary
-            include views/modules/burndown
+            //-include views/modules/burndown
             //-include views/modules/list-filters-kanban
             include views/modules/kanban-table
