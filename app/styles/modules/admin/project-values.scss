@@ -1,5 +1,3 @@
-//.project-values-table {}
-
 .project-values-row {
     @include table-flex(stretch, center, flex, row, wrap, center);
     border-bottom: 1px solid $whitish;
