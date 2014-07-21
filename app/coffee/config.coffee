@@ -31,7 +31,7 @@ class ConfigService extends taiga.Service
             "es": "Spanish"
             "en": "English"
         }
-        allowPublicRegistration: false
+        pubblicRegisterEnabled: false
     }
 
     initialize: (localconfig) ->

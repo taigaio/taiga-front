@@ -21,8 +21,7 @@
 
 @taiga = taiga = {}
 
-configure = ($routeProvider, $locationProvider, $httpProvider, $provide,
-             $compileProvider, $gmUrlsProvider) ->
+configure = ($routeProvider, $locationProvider, $httpProvider, $provide) ->
 
     $routeProvider.when("/project/:pslug/backlog", {templateUrl: "/partials/backlog.html"})
     $routeProvider.when("/project/:pslug/taskboard/:id", {templateUrl: "/partials/taskboard.html"})
@@ -87,14 +86,17 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide,
     $httpProvider.defaults.headers.put = defaultHeaders
     $httpProvider.defaults.headers.get = {}
 
-    # authHttpIntercept = ($q, $location) ->
-    #     return (promise) ->
-    #         return promise.then null, (response) ->
-    #             if response.status == 401 or response.status == 0
-    #                 $location.url("/login?next=#{$location.path()}")
-    #             return $q.reject(response)
-    # $provide.factory("authHttpIntercept", ["$q", "$location", authHttpIntercept])
-    # $httpProvider.responseInterceptors.push('authHttpIntercept')
+    # Add next param when user try to access to a secction need auth permissions.
+    authHttpIntercept = ($q, $location) ->
+        return (promise) ->
+            return promise.then null, (response) ->
+                if response.status == 401 or response.status == 0
+                    nextPath = $location.path()
+                    $location.url("/login").search("next=#{nextPath}")
+                return $q.reject(response)
+
+    $provide.factory("authHttpIntercept", ["$q", "$location", authHttpIntercept])
+    $httpProvider.responseInterceptors.push('authHttpIntercept')
 
 
 init = ($log, $i18n, $config, $rootscope) ->
@@ -139,6 +141,7 @@ module.config([
     "$routeProvider",
     "$locationProvider",
     "$httpProvider",
+    '$provide',
     configure
 ])
 
