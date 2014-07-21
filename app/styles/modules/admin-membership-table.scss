@@ -66,14 +66,24 @@
             }
         }
     }
-    .row-status,
-    .header-status {
-        width: 180px;
+    .row-admin {
+        input {
+            vertical-align: middle;
+        }
+        label {
+            @extend %small;
+        }
     }
     .row-member,
     .row-role,
     .header-member,
     .header-role {
+        flex: 3 0 50px;
+    }
+    .row-status,
+    .row-admin,
+    .header-admin,
+    .header-status {
         flex: 1 0 50px;
     }
 }
