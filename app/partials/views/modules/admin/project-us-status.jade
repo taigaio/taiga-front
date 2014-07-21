@@ -10,12 +10,16 @@ section.project-values-table
     div.project-values-body
         div.project-values-row(ng-repeat="status in project.us_statuses")
             div.project-values-name
-                 span {{ status.name }}
+                span.visualization {{ status.name }}
+                input.hidden.edition(type="text", placeholder="Write a name for the new status", ng-model="status.name")
             div.project-values-isclosed
-                span {{ status.is_closed|yesNo }}
+                span.visualization {{ status.is_closed|yesNo }}
+                select.hidden.edition(ng-model="status.is_closed")
             div.project-values-settings
-                a.edit-us-status.icon.icon-edit(href="", title="Edit value")
-                a.delete-us-status.icon.icon-delete(href="", title="Delete value")
+                a.visualization.edit-us-status.icon.icon-edit(href="", title="Edit value")
+                a.visualization.delete-us-status.icon.icon-delete(href="", title="Delete value")
+                a.hidden.edition.save.icon.icon-floppy(href="", title="Add")
+                a.hidden.edition.cancel.icon.icon-delete(href="", title="Delete")
 
         div.project-values-row.new-us-status.hidden
             div.project-values-name
@@ -24,6 +28,7 @@ section.project-values-table
                 select(ng-model="newUs.is_closed")
                     option(selected) No
                     option Yes
+
             div.project-values-settings
                 a.add-new.icon.icon-floppy(href="", title="Add")
                 a.delete-new.icon.icon-delete(href="", title="Delete")

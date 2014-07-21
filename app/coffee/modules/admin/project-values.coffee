@@ -113,6 +113,29 @@ ProjectUsStatusDirective = ($log, $repo, $confirm, $location, $model) ->
             event.preventDefault()
             $el.find(".new-us-status").hide()
 
+        $el.on "click", ".edit-us-status", (event) ->
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+            target.parents(".project-values-row").find(".visualization").hide()
+            target.parents(".project-values-row").find(".edition").show()
+
+        $el.on "click", ".save", (event) ->
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+            status = $model.make_model("userstory-statuses", target.scope().status)
+            status.setAttr("name", status.name)
+            status.setAttr("is_closed", status.is_closed)
+
+            $repo.save(status).then =>
+                target.parents(".project-values-row").find(".visualization").show()
+                target.parents(".project-values-row").find(".edition").hide()
+
+        $el.on "click", ".cancel", (event) ->
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+            target.parents(".project-values-row").find(".visualization").show()
+            target.parents(".project-values-row").find(".edition").hide()
+
         $el.on "click", ".delete-us-status", (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
@@ -124,6 +147,9 @@ ProjectUsStatusDirective = ($log, $repo, $confirm, $location, $model) ->
             $confirm.ask(title, subtitle).then =>
                 $repo.remove(status).then =>
                     $ctrl.loadProject()
+
+        $scope.$on "$destroy", ->
+            $el.off()
 
     return {link:link}
 
