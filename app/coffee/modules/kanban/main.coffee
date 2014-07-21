@@ -271,3 +271,60 @@ KanbanDirective = ($repo, $rootscope) ->
 
 
 module.directive("tgKanban", ["$tgRepo", "$rootScope", KanbanDirective])
+
+
+
+#############################################################################
+## Kanban User Directive
+#############################################################################
+
+
+KanbanUserDirective = ($log) ->
+    template = _.template("""
+    <figure class="avatar">
+        <a href="#" title="<%- name %>">
+            <img src="<%= imgurl %>" alt="<%- name %>" class="avatar">
+            <span class="assigned-to">
+                <span><%- name %></span>
+            </span>
+        </a>
+    </figure>
+    """)
+
+    uniqueId = _.uniqueId("user_photo")
+
+    link = ($scope, $el, $attrs) ->
+        if not $attrs.model?
+            return $log.error "KanbanUserDirective: no model attr is defined"
+
+        wtid = $scope.$watch $attrs.model, (v) ->
+            if not $scope.usersById?
+                $log.error "KanbanUserDirective requires userById set in scope."
+                wtid()
+            else
+                user = $scope.usersById[v]
+                render(user)
+
+        render = (user) ->
+            if user is undefined
+                ctx = {name: "Unassigned", imgurl: "http://thecodeplayer.com/u/uifaces/12.jpg"}
+            else
+                ctx = {name: user.full_name_display, imgurl: user.photo}
+
+            html = template(ctx)
+            $el.off(".#{uniqueId}")
+            $el.html(html)
+            $el.on "click.#{uniqueId}", "figure.avatar > a", (event) ->
+                if not $attrs.click?
+                    return $log.error "KanbanUserDirective: No click attr is defined."
+
+                $scope.$apply ->
+                    $scope.$eval($attrs.click)
+
+    return {
+        link: link
+        restrict: "AE"
+    }
+
+
+module.directive("tgKanbanUserAvatar", ["$log", KanbanUserDirective])
