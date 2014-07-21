@@ -4,36 +4,38 @@
         border-top: 1px solid $gray-light;
     }
     .resume {
+        @include table-flex();
         cursor: pointer;
-        display: flex;
         padding: 1rem;
         position: relative;
     }
     .resume-title {
-        line-height: 28px;
-        width: 280px;
+        @include table-flex-child(1, 280px, 0);
     }
     .count {
+        @include table-flex-child(1, 0, 0);
         color: $gray-light;
-        line-height: 28px;
     }
-    .progress {
-        background-color: $whitish;
-        margin-left: 1rem;
-        padding: 4px;
-        width: 220px;
-        span {
-            background-color: #9fcf0f;
-            display: block;
+    .summary-role {
+        @include table-flex-child(3, 280px, 0);
+        .role-summary-single {
+            background: $gray-light;
+            display: inline-block;
             height: 20px;
+            margin-right: .1rem;
+            width: 15px;
+            &.active {
+                background: $green-taiga;
+            }
+            &.inactive {
+                background: $gray;
+            }
         }
     }
     .icon {
+        @include table-flex-child(1, 0, 0);
         @extend %xlarge;
-        line-height: 28px;
-        position: absolute;
-        right: 1rem;
-        top: 1rem;
+        text-align: right;
     }
     .category-items {
         background-color: $whitish;
