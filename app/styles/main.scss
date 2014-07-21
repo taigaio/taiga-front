@@ -69,6 +69,9 @@ $prefix-for-spec:      true;
 @import 'modules/wiki-summary';
 @import 'modules/change-password-from-recovery';
 
+//modules admin
+@import 'modules/admin/default-values';
+
 //Layout
 @import 'layout/base';
 @import 'layout/login';
