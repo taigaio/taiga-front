@@ -59,8 +59,8 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         # @scope.$on("sprintform:create:success", @.loadProjectStats)
         # @scope.$on("sprintform:remove:success", @.loadSprints)
         # @scope.$on("sprintform:remove:success", @.loadProjectStats)
-        # @scope.$on("usform:new:success", @.loadUserstories)
-        # @scope.$on("usform:edit:success", @.loadUserstories)
+        @scope.$on("usform:new:success", @.onNewUserstory)
+        @scope.$on("usform:edit:success", @.onUserstoryEdited)
         @scope.$on("kanban:us:move", @.moveUs)
         # @scope.$on("sprint:us:moved", @.loadSprints)
         # @scope.$on("sprint:us:moved", @.loadProjectStats)
@@ -157,25 +157,19 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         return promise
 
     ## Template actions
-    # editUserStory: (us) ->
-    #     @rootscope.$broadcast("usform:edit", us)
+    editUserStory: (us) ->
+        @rootscope.$broadcast("usform:edit", us)
 
-    # deleteUserStory: (us) ->
-    #     #TODO: i18n
-    #     title = "Delete User Story"
-    #     subtitle = us.subject
+    addNewUs: (type, statusId) ->
+        switch type
+            when "standard" then @rootscope.$broadcast("usform:new", statusId)
+            when "bulk" then @rootscope.$broadcast("usform:bulk", statusId)
 
-    #     @confirm.ask(title, subtitle).then =>
-    #         # We modify the userstories in scope so the user doesn't see the removed US for a while
-    #         @scope.userstories = _.without(@scope.userstories, us);
-    #         @filterVisibleUserstories()
-    #         @.repo.remove(us).then =>
-    #             @.loadBacklog()
+    onNewUserstory: (ctx, us) ->
+        @scope.usByStatus[us.status].splice(0, 0, us)
 
-    # addNewUs: (type) ->
-    #     switch type
-    #         when "standard" then @rootscope.$broadcast("usform:new")
-    #         when "bulk" then @rootscope.$broadcast("usform:bulk")
+    onUserstoryEdited: (ctx, us) ->
+        @.loadUserstories()
 
 
 module.controller("KanbanController", KanbanController)
@@ -191,10 +185,23 @@ KanbanDirective = ($repo, $rootscope) ->
 
 module.directive("tgKanban", ["$tgRepo", "$rootScope", KanbanDirective])
 
+
+#############################################################################
+## Taskboard Task Directive
+#############################################################################
+
+KanbanUserstoryDirective = ->
+    link = ($scope, $el, $attrs) ->
+        $el.disableSelection()
+    return {link:link}
+
+
+module.directive("tgKanbanUserstory", KanbanUserstoryDirective)
+
+
 #############################################################################
 ## Kanban User Directive
 #############################################################################
-
 
 KanbanUserDirective = ($log) ->
     template = _.template("""

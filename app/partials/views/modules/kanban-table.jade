@@ -3,11 +3,13 @@ div.kanban-table
         div.kanban-table-inner
             h2.task-colum_name(ng-repeat="s in usStatusList track by s.id")
                 span(tg-bo-html="s.name")
-                a.icon.icon-plus(href="", title="Add New task")
+                a.icon.icon-plus(href="", title="Add New task",
+                                 ng-click="ctrl.addNewUs('standard', s.id)")
 
     div.kanban-table-body
         div.kanban-table-inner
             div.kanban-uses-box.task-column(ng-repeat="status in usStatusList track by status.id",
                                                       tg-kanban-sortable)
-                div.kanban-task(ng-repeat="us in usByStatus[status.id] track by us.id")
+                div.kanban-task(ng-repeat="us in usByStatus[status.id] track by us.id",
+                                tg-kanban-userstory)
                     include ../components/kanban-task

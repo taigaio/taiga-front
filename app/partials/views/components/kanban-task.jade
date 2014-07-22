@@ -3,10 +3,10 @@ div.kanban-tagline
 div.kanban-task-inner
     p.task-text
         span.task-num(tg-bo-ref="us.ref")
-        a.task-name(href="", title="", tg-bo-html="us.subject")
+        a.task-name(href="", title="", tg-bind-html="us.subject")
 
     tg-kanban-user-avatar(model="us.assigned_to")
 
-    a.icon.icon-edit(href="", title="Edit", ng-click="ctrl.editTask(task)")
+    a.icon.icon-edit(href="", title="Edit", ng-click="ctrl.editUserStory(us)")
     a.icon.icon-drag-h(href="", title="Drag&Drop")
-    a.task-points(href="", title="task points", tg-bo-html="us.total_points") --
+    a.task-points(href="", title="task points", tg-bind-html="us.total_points") --

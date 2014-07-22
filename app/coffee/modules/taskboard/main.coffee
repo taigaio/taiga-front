@@ -185,6 +185,12 @@ TaskboardDirective = ($rootscope) ->
 
     return {link: link}
 
+module.directive("tgTaskboard", ["$rootScope", TaskboardDirective])
+
+
+#############################################################################
+## Taskboard Task Directive
+#############################################################################
 
 TaskboardTaskDirective = ->
     link = ($scope, $el, $attrs) ->
@@ -198,7 +204,7 @@ module.directive("tgTaskboardTask", TaskboardTaskDirective)
 
 
 #############################################################################
-## Task Row Size Fixer Directive
+## Taskboard Task Row Size Fixer Directive
 #############################################################################
 
 TaskboardRowSizeFixer = ->
@@ -210,6 +216,12 @@ TaskboardRowSizeFixer = ->
 
     return {link: link}
 
+module.directive("tgTaskboardRowSizeFixer", TaskboardRowSizeFixer)
+
+
+#############################################################################
+## Taskboard us points Directive
+#############################################################################
 
 TaskboardUsPointsDirective = ($repo, $confirm) ->
     # TODO: i18n
@@ -305,6 +317,4 @@ TaskboardUsPointsDirective = ($repo, $confirm) ->
     return {link: link}
 
 
-module.directive("tgTaskboard", ["$rootScope", TaskboardDirective])
-module.directive("tgTaskboardRowSizeFixer", TaskboardRowSizeFixer)
 module.directive("tgTaskboardUsPoints", ["$tgRepo", "$tgConfirm", TaskboardUsPointsDirective])

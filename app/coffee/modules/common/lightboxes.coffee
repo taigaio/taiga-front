@@ -70,7 +70,7 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope) ->
             $scope.us = {
                 project: $scope.projectId
                 is_archived: false
-                status: $scope.project.default_us_status
+                status: statusId or $scope.project.default_us_status
             }
             isNew = true
             # Update texts for creation

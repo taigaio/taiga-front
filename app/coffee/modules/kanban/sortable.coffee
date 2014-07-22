@@ -41,6 +41,9 @@ KanbanSortableDirective = ($repo, $rs, $rootscope) ->
     #########################
 
     link = ($scope, $el, $attrs) ->
+        $el.css("height", "800px")
+        $el.closest(".kanban-table-body").css("height", "800px")
+
         oldParentScope = null
         newParentScope = null
         itemEl = null
