@@ -43,8 +43,9 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
     ]
 
     constructor: (@scope, @rootScope, @repo, @confirm, @rs, @params, @q, @location) ->
+        @scope.sectionName = "Memberships" #i18n
+        @scope.project = {}
         @scope.filters = {}
-        @scope.sectionName = "Memberships"
 
         promise = @.loadInitialData()
         promise.then null, ->
@@ -251,7 +252,7 @@ module.directive("tgMembershipsMemberAvatar", ["$log", MembershipsMemberAvatarDi
 ## Member Actions Directive
 #############################################################################
 
-MembershipsMemberActionsDirective = ($log) ->
+MembershipsMemberActionsDirective = ($log, $repo, $confirm) ->
     activedTemplate = _.template("""
     <div class="active">
         Active
@@ -265,7 +266,7 @@ MembershipsMemberActionsDirective = ($log) ->
         Pending
         <span class="icon icon-reload"></span>
     </a>
-    <a class="delete" href="">
+    <a class="delete" href="" title="Delete">
         <span class="icon icon-delete"></span>
     </a>
     """) # i18n
@@ -276,6 +277,8 @@ MembershipsMemberActionsDirective = ($log) ->
         return pendingTemplate()
 
     link = ($scope, $el, $attrs) ->
+        $ctrl = $el.controller()
+
         if not $attrs.tgMembershipsMemberActions?
             return $log.error "MembershipsMemberActionsDirective: the directive need a member"
 
@@ -283,13 +286,30 @@ MembershipsMemberActionsDirective = ($log) ->
         html = render(member)
         $el.html(html)
 
+        $el.on "click", ".pending", (event) ->
+            event.preventDefault()
+            #TODO: Re-send the invitation
+            console.log "re-sending the invitation to #{member.email}"
+
+        $el.on "click", ".delete", (event) ->
+            event.preventDefault()
+
+            title = "Delete member" # i18n
+            subtitle = if member.user then member.full_name else "the invitation to #{member.email}" # i18n
+
+            $confirm.ask(title, subtitle).then ->
+                $repo.remove(member).then ->
+                    $ctrl.loadMembers()
+                    $confirm.notify("success", null, "We've deleted #{subtitle}.") # i18n
+
         $scope.$on "$destroy", ->
             $el.off()
 
     return {link: link}
 
 
-module.directive("tgMembershipsMemberActions", ["$log", MembershipsMemberActionsDirective])
+module.directive("tgMembershipsMemberActions", ["$log", "$tgRepo", "$tgConfirm",
+                                                MembershipsMemberActionsDirective])
 
 
 #############################################################################
