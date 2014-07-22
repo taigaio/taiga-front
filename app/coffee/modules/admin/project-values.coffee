@@ -234,9 +234,13 @@ ProjectUsStatusDirective = ($log, $repo, $confirm, $location) ->
             status = target.scope().status
             $el.find(".select-color").hide()
             target.siblings(".select-color").show()
-            #body = angular.element("body")
-            #body.one "click", (event) ->
-            #    $el.find(".select-color").hide()
+            # Hide when click outside
+            body = angular.element("body")
+            body.on "click", (event) =>
+                if angular.element(event.target).parent(".select-color").length == 0
+                    $el.find(".select-color").hide()
+                    body.ubind("click")
+
 
         $el.on "click", ".select-color .color", (event) ->
             # Selecting one color on color selector
