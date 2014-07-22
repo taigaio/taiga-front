@@ -7,9 +7,7 @@ section.admin-membership-table.basic-table
 
     div.row(ng-repeat="member in memberships")
         div.row-member(tg-memberships-member-avatar="member")
-        div.row-admin
-            input(type="checkbox", id="is-admin" ng-model="member.is_admin")
-            label(for="is-admin") Is admin?
+        div.row-admin(tg-memberships-member-is-admin-checkbox="member")
         div.row-role
             select(ng-model="member.role")
                 option UX

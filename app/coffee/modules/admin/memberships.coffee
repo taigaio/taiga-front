@@ -283,9 +283,57 @@ MembershipsMemberActionsDirective = ($log) ->
         html = render(member)
         $el.html(html)
 
-    return {
-        link: link
-    }
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {link: link}
 
 
 module.directive("tgMembershipsMemberActions", ["$log", MembershipsMemberActionsDirective])
+
+
+#############################################################################
+## Member IsAdminCheckbox Directive
+#############################################################################
+
+MembershipsMemberIsAdminCheckboxDirective = ($log, $repo, $confirm) ->
+    template = _.template("""
+    <input type="checkbox" id="<%- inputId %>" />
+    <label for="<%- inputId %>">Is admin?</label>
+    """) # i18n
+
+    render = (member) ->
+        ctx = {inputId: "is-admin-#{member.id}"}
+
+        return template(ctx)
+
+    link = ($scope, $el, $attrs) ->
+        if not $attrs.tgMembershipsMemberIsAdminCheckbox?
+            return $log.error "MembershipsMemberIsAdminCheckboxDirective: the directive need a member"
+
+        member = $scope.$eval($attrs.tgMembershipsMemberIsAdminCheckbox)
+        html = render(member)
+        $el.html(html)
+
+        if member.is_admin
+            $el.find(":checkbox").prop("checked", true)
+
+        $el.on "click", ":checkbox", (event) =>
+            onSuccess = ->
+                $confirm.notify("success")
+
+            onError = ->
+                $confirm.notify("error")
+
+            target = angular.element(event.currentTarget)
+            member.is_admin = target.prop("checked")
+            $repo.save(member).then(onSuccess, onError)
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {link: link}
+
+
+module.directive("tgMembershipsMemberIsAdminCheckbox", ["$log", "$tgRepo", "$tgConfirm",
+                                                        MembershipsMemberIsAdminCheckboxDirective])
