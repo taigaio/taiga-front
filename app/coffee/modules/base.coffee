@@ -51,14 +51,13 @@ urls = {
     "invitation": "/invitation/:token",
 
     "profile": "/:user",
+
     "project": "/project/:project",
     "project-backlog": "/project/:project/backlog",
     "project-taskboard": "/project/:project/taskboard/:sprint",
     "project-kanban": "/project/:project/kanban",
     "project-issues": "/project/:project/issues",
     "project-search": "/project/:project/search",
-    "project-issues-detail": "/project/:project/issues/:ref",
-    "project-issues-detail-edit": "/project/:project/issues/:ref/edit",
 
     "project-userstories-detail": "/project/:project/us/:ref",
     "project-userstories-detail-edit": "/project/:project/us/:ref/edit",
@@ -66,12 +65,16 @@ urls = {
     "project-tasks-detail": "/project/:project/tasks/:ref",
     "project-tasks-detail-edit": "/project/:project/tasks/:ref/edit",
 
+    "project-issues-detail": "/project/:project/issues/:ref",
+    "project-issues-detail-edit": "/project/:project/issues/:ref/edit",
+
     # Admin
     "project-admin-home": "/project/:project/admin/project-profile/details",
     "project-admin-project-profile-details": "/project/:project/admin/project-profile/details",
     "project-admin-project-profile-default-values": "/project/:project/admin/project-profile/default-values",
-    "project-admin-project-profile-features": "/project/:project/admin/project-profile/features"
-    "project-admin-project-values-us-status": "/project/:project/admin/project-values/us-status"    
+    "project-admin-project-profile-features": "/project/:project/admin/project-profile/features",
+    "project-admin-project-values-us-status": "/project/:project/admin/project-values/us-status",
+    "project-admin-memberships": "/project/:project/admin/memberships"
 }
 
 init = ($log, $navurls) ->
