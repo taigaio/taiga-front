@@ -47,6 +47,7 @@ class ProjectValuesController extends mixOf(taiga.Controller, taiga.PageMixin)
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location) ->
+        @scope.sectionName = "Project Values" #i18n
         @scope.project = {}
 
         promise = @.loadInitialData()
