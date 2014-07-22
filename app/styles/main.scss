@@ -45,14 +45,16 @@ $prefix-for-spec:      true;
 @import 'modules/search-result-table';
 @import 'modules/search-in';
 @import 'modules/issues-table';
-@import 'modules/list-filters';
-@import 'modules/filter-tags';
 @import 'modules/colors-table';
 @import 'modules/category-config';
 @import 'modules/attachments';
 @import 'modules/comments';
 @import 'modules/comment-activity';
 @import 'modules/activity';
+
+//Filters
+@import 'modules/filters/list-filters';
+@import 'modules/filters/filter-tags';
 
 //Backlog
 @import 'modules/backlog/sprints';
