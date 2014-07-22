@@ -4,8 +4,8 @@ block head
     title Taiga  Project management web application with scrum in mind!
 
 block content
-    div.wrapper(ng-controller="MembershipsController as ctrl",
-                ng-init="section='admin'")
+    div.wrapper.memberships(ng-controller="MembershipsController as ctrl",
+                            ng-init="section='admin'", tg-memberships)
         sidebar.menu-secondary.sidebar(tg-admin-navigation="memberships")
             include views/modules/admin-menu
 
@@ -17,6 +17,8 @@ block content
                    span.text + New member
 
             include views/modules/admin/admin-membership-table
+
+            div.paginator.memberships-paginator
 
         div.lightbox.ligbox_add-member
             include views/modules/lightbox_add-member

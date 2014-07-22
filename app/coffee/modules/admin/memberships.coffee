@@ -30,7 +30,7 @@ module = angular.module("taigaAdmin")
 ## Project Memberships Controller
 #############################################################################
 
-class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin)
+class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.FiltersMixin)
     @.$inject = [
         "$scope",
         "$rootScope",
@@ -42,9 +42,8 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$location"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location) ->
-        _.bindAll(@)
-
+    constructor: (@scope, @rootScope, @repo, @confirm, @rs, @params, @q, @location) ->
+        @scope.filters = {}
         @scope.sectionName = "Memberships"
 
         promise = @.loadInitialData()
@@ -57,8 +56,12 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin)
             return project
 
     loadMembers: ->
-        return @rs.memberships.list(@scope.projectId).then (data) =>
+        httpFilters = @.getUrlFilters()
+        return @rs.memberships.list(@scope.projectId, httpFilters).then (data) =>
             @scope.memberships = data.models
+            @scope.page = data.current
+            @scope.count = data.count
+            @scope.paginatedBy = data.paginatedBy
             return data
 
     loadInitialData: ->
@@ -69,8 +72,138 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin)
         return promise.then(=> @.loadProject())
                       .then(=> @.loadMembers())
 
+    getUrlFilters: ->
+        filters = _.pick(@location.search(), "page")
+        filters.page = 1 if not filters.page
+        return filters
 
 module.controller("MembershipsController", MembershipsController)
+
+
+#############################################################################
+## Member Avatar Directive
+#############################################################################
+
+paginatorTemplate = """
+<ul class="paginator">
+    <% if (showPrevious) { %>
+    <li class="previous">
+        <a href="" class="previous next_prev_button" class="disabled">
+            <span i18next="pagination.prev">Prev</span>
+        </a>
+    </li>
+    <% } %>
+
+    <% _.each(pages, function(item) { %>
+    <li class="<%= item.classes %>">
+        <% if (item.type === "page") { %>
+        <a href="" data-pagenum="<%= item.num %>"><%= item.num %></a>
+        <% } else if (item.type === "page-active") { %>
+        <span class="active"><%= item.num %></span>
+        <% } else { %>
+        <span>...</span>
+        <% } %>
+    </li>
+    <% }); %>
+
+    <% if (showNext) { %>
+    <li class="next">
+        <a href="" class="next next_prev_button" class="disabled">
+            <span i18next="pagination.next">Next</span>
+        </a>
+    </li>
+    <% } %>
+</ul>
+"""
+
+MembershipsDirective =  ->
+    template = _.template(paginatorTemplate)
+
+    linkPagination = ($scope, $el, $attrs, $ctrl) ->
+        # Constants
+        afterCurrent = 2
+        beforeCurrent = 4
+        atBegin = 2
+        atEnd = 2
+
+        $pagEl = $el.find(".memberships-paginator")
+
+        getNumPages = ->
+            numPages = $scope.count / $scope.paginatedBy
+            if parseInt(numPages, 10) < numPages
+                numPages = parseInt(numPages, 10) + 1
+            else
+                numPages = parseInt(numPages, 10)
+
+            return numPages
+
+        renderPagination = ->
+            numPages = getNumPages()
+
+            if numPages <= 1
+                $pagEl.hide()
+                return
+
+            pages = []
+            options = {}
+            options.pages = pages
+            options.showPrevious = ($scope.page > 1)
+            options.showNext = not ($scope.page == numPages)
+
+            cpage = $scope.page
+
+            for i in [1..numPages]
+                if i == (cpage + afterCurrent) and numPages > (cpage + afterCurrent + atEnd)
+                    pages.push({classes: "dots", type: "dots"})
+                else if i == (cpage - beforeCurrent) and cpage > (atBegin + beforeCurrent)
+                    pages.push({classes: "dots", type: "dots"})
+                else if i > (cpage + afterCurrent) and i <= (numPages - atEnd)
+                else if i < (cpage - beforeCurrent) and i > atBegin
+                else if i == cpage
+                    pages.push({classes: "active", num: i, type: "page-active"})
+                else
+                    pages.push({classes: "page", num: i, type: "page"})
+
+            $pagEl.html(template(options))
+
+        $scope.$watch "memberships", (value) ->
+            # Do nothing if value is not logical true
+            return if not value
+
+            renderPagination()
+
+        $el.on "click", ".memberships-paginator a.next", (event) ->
+            event.preventDefault()
+
+            $scope.$apply ->
+                $ctrl.selectFilter("page", $scope.page + 1)
+                $ctrl.loadMembers()
+
+        $el.on "click", ".memberships-paginator a.previous", (event) ->
+            event.preventDefault()
+            $scope.$apply ->
+                $ctrl.selectFilter("page", $scope.page - 1)
+                $ctrl.loadMembers()
+
+        $el.on "click", ".memberships-paginator li.page > a", (event) ->
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+            pagenum = target.data("pagenum")
+
+            $scope.$apply ->
+                $ctrl.selectFilter("page", pagenum)
+                $ctrl.loadMembers()
+
+    link = ($scope, $el, $attrs) ->
+        $ctrl = $el.controller()
+        linkPagination($scope, $el, $attrs, $ctrl)
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {link:link}
+
+module.directive("tgMemberships", MembershipsDirective)
 
 
 #############################################################################
@@ -105,9 +238,10 @@ MembershipsMemberAvatarDirective = ($log) ->
         html = render(member)
         $el.html(html)
 
-    return {
-        link: link
-    }
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {link: link}
 
 
 module.directive("tgMembershipsMemberAvatar", ["$log", MembershipsMemberAvatarDirective])
@@ -125,7 +259,7 @@ MembershipsMemberActionsDirective = ($log) ->
     <a class="delete" href="">
         <span class="icon icon-delete"></span>
     </a>
-    """)
+    """) # i18n
     pendingTemplate = _.template("""
     <a class="pending" href="">
         Pending
@@ -134,7 +268,7 @@ MembershipsMemberActionsDirective = ($log) ->
     <a class="delete" href="">
         <span class="icon icon-delete"></span>
     </a>
-    """)
+    """) # i18n
 
     render = (member) ->
         if member.user
