@@ -6,7 +6,7 @@ form
         input(type="text", data-maxlength="500", placeholder="Search for users", ng-model="AssignedToUsersSearch")
 
     div.watchers
-        div.watcher-single.active(ng-show="selectedUser")
+        div.watcher-single.active(ng-if="selectedUser")
             div.watcher-avatar
                 a.avatar(href="", title="Assigned to")
                     img(src="{{ selectedUser.photo }}", alt="{{ selectedUser.full_name_display }}")
