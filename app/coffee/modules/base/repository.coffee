@@ -109,7 +109,7 @@ class RepositoryService extends taiga.Service
     queryMany: (name, params, options={}) ->
         url = @urls.resolve(name)
         httpOptions = {headers: {}}
-        if options.disablePagination?
+        if not options.enablePagination
             httpOptions.headers["x-disable-pagination"] =  "1"
 
         return @http.get(url, params, httpOptions).then (data) =>

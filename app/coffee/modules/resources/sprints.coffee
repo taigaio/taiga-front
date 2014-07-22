@@ -36,8 +36,7 @@ resourceProvider = ($repo, $model) ->
 
     service.list = (projectId) ->
         params = {"project": projectId}
-        options = {disablePagination:true}
-        return $repo.queryMany("milestones", params, options).then (milestones) =>
+        return $repo.queryMany("milestones", params).then (milestones) =>
             for m in milestones
                 uses = m.user_stories
                 uses = _.map(uses, (u) => $model.make_model("userstories", u))
