@@ -57,11 +57,12 @@ $prefix-for-spec:      true;
 @import 'modules/comments';
 @import 'modules/comment-activity';
 @import 'modules/activity';
-@import 'modules/login-form';
-@import 'modules/register-form';
-@import 'modules/forgot-form';
 
-@import 'modules/change-password-from-recovery';
+//Login modules
+@import 'modules/auth/login-form';
+@import 'modules/auth/register-form';
+@import 'modules/auth/forgot-form';
+@import 'modules/auth/change-password-from-recovery';
 
 //Wiki modules
 @import 'modules/wiki/wiki-nav';
