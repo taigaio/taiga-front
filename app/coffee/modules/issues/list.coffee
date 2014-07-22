@@ -192,7 +192,6 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
     # Functions used from templates
     addNewIssue: ->
-        console.log "Kakita"
         @rootscope.$broadcast("issueform:new")
 
     addIssuesInBulk: ->
