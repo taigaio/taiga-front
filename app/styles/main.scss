@@ -38,12 +38,8 @@ $prefix-for-spec:      true;
 //Modules
 @import 'modules/nav';
 @import 'modules/projects-nav';
-@import 'modules/sprints';
-@import 'modules/burndown';
-@import 'modules/backlog-table';
 @import 'modules/filters';
 @import 'modules/lightbox';
-@import 'modules/taskboard-table';
 @import 'modules/kanban-table';
 @import 'modules/search-filter';
 @import 'modules/search-result-table';
@@ -57,6 +53,12 @@ $prefix-for-spec:      true;
 @import 'modules/comments';
 @import 'modules/comment-activity';
 @import 'modules/activity';
+
+//Backlog
+@import 'modules/backlog/sprints';
+@import 'modules/backlog/burndown';
+@import 'modules/backlog/backlog-table';
+@import 'modules/backlog/taskboard-table';
 
 //Login modules
 @import 'modules/auth/login-form';
