@@ -8,7 +8,10 @@ $prefix-for-opera:     true;
 $prefix-for-spec:      true;
 @import 'bourbon/bourbon';
 
-//Dependencies
+//#################################################
+//             dependencies
+//#################################################
+
 @import 'dependencies/helpers';
 @import 'dependencies/colors';
 @import 'dependencies/typography';
@@ -17,7 +20,10 @@ $prefix-for-spec:      true;
 @import 'dependencies/responsive';
 @import 'dependencies/forms';
 
-//Components
+//#################################################
+//             components
+//#################################################
+
 @import 'components/buttons';
 @import 'components/avatar';
 @import 'components/summary';
@@ -35,12 +41,14 @@ $prefix-for-spec:      true;
 @import 'components/wysiwyg';
 @import 'components/select-color';
 
-//Modules
+//#################################################
+//             Modules
+//#################################################
+
+//Common modules
 @import 'modules/nav';
 @import 'modules/projects-nav';
 @import 'modules/lightbox';
-@import 'modules/kanban-table';
-@import 'modules/issues-table';
 @import 'modules/colors-table';
 @import 'modules/category-config';
 @import 'modules/attachments';
@@ -48,17 +56,23 @@ $prefix-for-spec:      true;
 @import 'modules/comment-activity';
 @import 'modules/activity';
 
-//Search
+//Issues modules
+@import 'modules/issues/issues-table';
+
+//Kanban modules
+@import 'modules/kanban/kanban-table';
+
+//Search modules
 @import 'modules/search/search-filter';
 @import 'modules/search/search-result-table';
 @import 'modules/search/search-in';
 
-//Filters
+//Filters modules
 @import 'modules/filters/filters';
 @import 'modules/filters/list-filters';
 @import 'modules/filters/filter-tags';
 
-//Backlog
+//Backlog modules
 @import 'modules/backlog/sprints';
 @import 'modules/backlog/burndown';
 @import 'modules/backlog/backlog-table';
@@ -87,7 +101,10 @@ $prefix-for-spec:      true;
 //Modules user Settings
 @import 'modules/user-settings/mail-notifications-table';
 
-//Layout
+//#################################################
+//             Layout
+//#################################################
+
 @import 'layout/base';
 @import 'layout/login';
 @import 'layout/invitation';
@@ -101,5 +118,8 @@ $prefix-for-spec:      true;
 @import 'layout/issues';
 @import 'layout/wiki';
 
-//Shame
+//#################################################
+//             Shame
+//#################################################
+
 @import 'shame/shame';
