@@ -242,7 +242,9 @@ ProjectUsStatusDirective = ($log, $repo, $confirm, $location) ->
             # Selecting one color on color selector
             event.preventDefault()
             target = angular.element(event.currentTarget)
-            console.log "TODO", target.data("color")
+            status = target.scope().status
+            $scope.$apply ->
+                status.color = target.data("color")
             $el.find(".select-color").hide()
 
     link = ($scope, $el, $attrs) ->
