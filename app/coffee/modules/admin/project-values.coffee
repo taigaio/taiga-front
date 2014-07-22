@@ -53,18 +53,37 @@ class ProjectValuesController extends mixOf(taiga.Controller, taiga.PageMixin)
         promise.then null, ->
             console.log "FAIL" #TODO
 
+        @scope.$on("admin:project-values:us-status:move", @.moveUsStatus)
+
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
             @scope.project = project
             return project
+
+    loadUsStatus: =>
+        return @rs.userstories.listStatuses(@scope.projectId).then (usStatuses) =>
+            @scope.usStatuses = usStatuses
+            @scope.maxUsStatusOrder = _.max(usStatuses, "order").order
 
     loadInitialData: ->
         promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
             @scope.projectId = data.project
             return data
 
-        return promise.then(=> @.loadProject())
+        return promise.then( => @q.all([
+            @.loadProject(),
+            @.loadUsStatus(),
+        ]))
 
+    moveUsStatus: (ctx, itemUsStatus, itemIndex) =>
+        usStatuses = @scope.usStatuses
+        r = usStatuses.indexOf(itemUsStatus)
+        usStatuses.splice(r, 1)
+        usStatuses.splice(itemIndex, 0, itemUsStatus)
+        _.each usStatuses, (usStatus, index) ->
+            usStatus.order = index
+
+        @repo.saveAll(usStatuses)
 
 module.controller("ProjectValuesController", ProjectValuesController)
 
@@ -72,15 +91,56 @@ module.controller("ProjectValuesController", ProjectValuesController)
 ## Project US Values Directive
 #############################################################################
 
-ProjectUsStatusDirective = ($log, $repo, $confirm, $location, $model) ->
-    link = ($scope, $el, $attrs) ->
-        $ctrl = $el.controller()
-        $scope.newUs = {
-            "name": ""
-            "is_closed": false
-            "project": $scope.project.id
-        }
+ProjectUsStatusDirective = ($log, $repo, $confirm, $location) ->
 
+    #########################
+    ## Drag & Drop Link
+    #########################
+
+    linkDragAndDrop = ($scope, $el, $attrs) ->
+        oldParentScope = null
+        newParentScope = null
+        itemEl = null
+        tdom = $el.find(".sortable")
+
+        deleteElement = (itemEl) ->
+            # Completelly remove item and its scope from dom
+            itemEl.scope().$destroy()
+            itemEl.off()
+            itemEl.remove()
+
+        tdom.sortable({
+            handle: ".project-values-row.visualization",
+            dropOnEmpty: true
+            connectWith: ".project-values-body"
+            revert: 400
+            axis: "y"
+        })
+
+        tdom.on "sortstop", (event, ui) ->
+            parentEl = ui.item.parent()
+            itemEl = ui.item
+            itemUsStatus = itemEl.scope().status
+            itemIndex = itemEl.index()
+            $scope.$broadcast("admin:project-values:us-status:move", itemUsStatus, itemIndex)
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    #########################
+    ## Status Link
+    #########################
+
+    linkStatus = ($scope, $el, $attrs) ->
+        $ctrl = $el.controller()
+
+        initializeNewUs = ->
+            $scope.newUs = {
+                "name": ""
+                "is_closed": false
+            }
+
+        initializeNewUs()
         submit = =>
             promise = $repo.save($scope.project)
             promise.then ->
@@ -104,53 +164,76 @@ ProjectUsStatusDirective = ($log, $repo, $confirm, $location, $model) ->
 
         $el.on "click", ".add-new", (event) ->
             event.preventDefault()
+            form = $el.find(".new-us-status").parents("form").checksley()
+            return if not form.validate()
+
             $scope.newUs.project = $scope.project.id
-            $repo.create("userstory-statuses", $scope.newUs).then =>
-                console.log "LOAD"
-                $ctrl.loadProject()
+            $scope.newUs.order = $scope.maxUsStatusOrder + 1
+            promise = $repo.create("userstory-statuses", $scope.newUs)
+            promise.then =>
+                $ctrl.loadUsStatus()
+                $el.find(".new-us-status").hide()
+                initializeNewUs()
+
+            promise.then null, (data) ->
+                form.setErrors(data)
 
         $el.on "click", ".delete-new", (event) ->
             event.preventDefault()
             $el.find(".new-us-status").hide()
+            initializeNewUs()
 
         $el.on "click", ".edit-us-status", (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
-            target.parents(".project-values-row").find(".visualization").hide()
-            target.parents(".project-values-row").find(".edition").show()
+
+            row = target.parents(".project-values-row")
+            row.hide()
+            row.siblings(".edition").css("display": "flex")
 
         $el.on "click", ".save", (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
-            status = $model.make_model("userstory-statuses", target.scope().status)
-            status.setAttr("name", status.name)
-            status.setAttr("is_closed", status.is_closed)
+            form = target.parents("form").checksley()
+            return if not form.validate()
 
-            $repo.save(status).then =>
-                target.parents(".project-values-row").find(".visualization").show()
-                target.parents(".project-values-row").find(".edition").hide()
+            status = target.scope().status
+            promise = $repo.save(status)
+            promise.then =>
+                row = target.parents(".project-values-row")
+                row.hide()
+                row.siblings(".visualization").css("display": "flex")
+
+            promise.then null, (data) ->
+                form.setErrors(data)
 
         $el.on "click", ".cancel", (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
-            target.parents(".project-values-row").find(".visualization").show()
-            target.parents(".project-values-row").find(".edition").hide()
+            row = target.parents(".project-values-row")
+            row.hide()
+            row.siblings(".visualization").css("display": "flex")
 
         $el.on "click", ".delete-us-status", (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
-            status = $model.make_model("userstory-statuses", target.scope().status)
+            status = target.scope().status
 
             #TODO: i18n
             title = "Delete User Story status"
             subtitle = status.name
             $confirm.ask(title, subtitle).then =>
                 $repo.remove(status).then =>
-                    $ctrl.loadProject()
+                    $ctrl.loadUsStatus()
+
+    link = ($scope, $el, $attrs) ->
+        linkDragAndDrop($scope, $el, $attrs)
+        linkStatus($scope, $el, $attrs)
 
         $scope.$on "$destroy", ->
             $el.off()
 
     return {link:link}
 
-module.directive("tgProjectUsStatus", ["$log", "$tgRepo", "$tgConfirm", "$tgLocation", "$tgModel", ProjectUsStatusDirective])
+
+module.directive("tgProjectUsStatus", ["$log", "$tgRepo", "$tgConfirm", "$tgLocation", ProjectUsStatusDirective])

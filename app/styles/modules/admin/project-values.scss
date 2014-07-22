@@ -1,6 +1,25 @@
 .project-values-row {
     @include table-flex(stretch, center, flex, row, wrap, center);
     border-bottom: 1px solid $whitish;
+    &:hover {
+        cursor: move;
+        @include transition (background .2s ease-in);
+        background: lighten($green-taiga, 60%);
+        .icon {
+            @include transition (opacity .2s ease-in);
+            opacity: 1;
+        }
+    }
+
+    .icon {
+        @extend %large;
+        color: $gray-light;
+        opacity: 0;
+        &:hover {
+            @include transition (all .2s ease-in);
+            color: $grayer;
+        }
+    }
 }
 
 .project-values-header {
