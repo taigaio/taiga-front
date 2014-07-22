@@ -4,10 +4,18 @@ block head
     title Taiga  Project management web application with scrum in mind!
 
 block content
-    div.wrapper(ng-controller="ProjectController as ctrl")
-        section.main.home-projects-list
-            ul
+    div.home-projects-list(ng-controller="ProjectController as ctrl")
+        .home-projects-list-inner
+            ul.recent-projects
                 li(ng-repeat="project in ctrl.projects")
-                    a(href="", tg-nav="project-backlog:project=project.slug")
-                        span(tg-bo-html="project.name")
-                        span.icon.icon-arrow-right
+                    .project-content
+                        h2(tg-bo-html="project.name")
+                        p(tg-bo-html="project.description")
+                    .project-link
+                        a.button.button-gray(href="", tg-nav="project-backlog:project=project.slug") Go to project
+
+            div.all-projects
+                h1 Projects
+                ul
+                    li(ng-repeat="project in ctrl.projects")
+                        a.button(href="", tg-bo-html="project.name", tg-nav="project-backlog:project=project.slug")

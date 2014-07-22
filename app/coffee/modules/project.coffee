@@ -5,6 +5,7 @@ class ProjectController extends taiga.Controller
     @.$inject = ["$scope", "$tgResources"]
 
     constructor: (@scope, @rs) ->
+        @scope.hideMenu = true
         @.projects = []
         @.loadInitialData()
 

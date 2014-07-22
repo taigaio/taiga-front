@@ -159,7 +159,7 @@ ProjectMenuDirective = ($log, $compile, $rootscope) ->
             $rootscope.$broadcast("nav:projects-list:open")
 
         $scope.$on "$viewContentLoaded", (ctx) ->
-            if ctx.targetScope.$$childHead is null
+            if ctx.targetScope.$$childHead is null || ctx.targetScope.$$childHead.hideMenu
                 $log.error "No scope found for render menu."
                 return
 
@@ -172,5 +172,3 @@ ProjectMenuDirective = ($log, $compile, $rootscope) ->
 
 
 module.directive("tgProjectMenu", ["$log", "$compile", "$rootScope", ProjectMenuDirective])
-
-
