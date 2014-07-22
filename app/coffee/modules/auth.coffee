@@ -157,8 +157,7 @@ LoginDirective = ($auth, $confirm, $location, $config, $routeParams) ->
             if $routeParams and $routeParams['next'] and $routeParams['next'] != '/login'
                 $location.url($routeParams['next'])
             else
-                console.log("TODO: Redirect to '/'") # TODO: Redirect to /
-                $location.path("/project/project-example-0/backlog")
+                $location.path("/")
 
         onErrorSubmit = (response) ->
             $confirm.notify("light-error", "According to our Oompa Loompas, your username/email or password
