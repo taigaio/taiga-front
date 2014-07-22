@@ -74,6 +74,9 @@ $prefix-for-spec:      true;
 @import 'modules/admin/default-values';
 @import 'modules/admin/project-values';
 
+//Modules user Settings
+@import 'modules/user-settings/mail-notifications-table';
+
 //Layout
 @import 'layout/base';
 @import 'layout/login';

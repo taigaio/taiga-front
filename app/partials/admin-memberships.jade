@@ -1,18 +1,20 @@
-extends layout
+extends dummy-layout
 
 block head
     title Taiga  Project management web application with scrum in mind!
 
 block content
-    div.wrapper
-        sidebar.menu-secondary.sidebar
+    div.wrapper(ng-controller="MembershipsController as ctrl",
+                ng-init="section='admin'")
+        sidebar.menu-secondary.sidebar(tg-admin-navigation="memberships")
             include views/modules/admin-menu
 
         section.main.admin-membership
             header
                 include views/components/mainTitle
-                a.button.button-green(title="Add New US" href="")
-                   span.text + New role
+
+                a.button.button-green(title="Add new member" href="")
+                   span.text + New member
 
             include views/modules/admin/admin-membership-table
 
