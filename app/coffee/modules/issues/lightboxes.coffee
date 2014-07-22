@@ -124,7 +124,13 @@ module.directive("tgLbCreateIssue", [
 AddWatcherDirective = ->
     link = ($scope, $el, $attrs) ->
         $scope.usersSearch = {}
+        watchers = []
+
+        updateScopeFilteringUsers = () ->
+            $scope.filteredUsers = _.difference($scope.users, watchers)
+
         $scope.$on "watcher:add", ->
+            updateScopeFilteringUsers()
             $el.removeClass("hidden")
             $scope.$apply ->
                 $scope.usersSearch = {}
@@ -140,6 +146,7 @@ AddWatcherDirective = ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
             watcher = target.scope().user
+            watchers.push watcher
             $el.addClass("hidden")
             $scope.$broadcast("watcher:added", watcher)
 
