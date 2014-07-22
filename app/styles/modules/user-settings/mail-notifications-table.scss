@@ -1,0 +1,49 @@
+.mail-notifications-table {
+    .mail-notifications-table-row {
+        @include table-flex(stretch, center, flex, row, wrap, center);
+        border-bottom: 1px solid $whitish;
+    }
+
+    .mail-notifications-table-header {
+        @extend %bold;
+        border-bottom: 2px solid $gray-light;
+    }
+
+    .mail-notifications-table-project ,
+    .mail-notifications-table-all,
+    .mail-notifications-table-involved,
+    .mail-notifications-table-none {
+        padding: 1rem;
+    }
+
+    .mail-notifications-table-project {
+        @include table-flex-child(3, 0, 0);
+    }
+
+    .mail-notifications-table-all,
+    .mail-notifications-table-involved,
+    .mail-notifications-table-none {
+        @include table-flex-child(1, 0, 0);
+    }
+    input {
+        display: none;
+        &:checked {
+            +label {
+                @include transition(background .3s linear);
+                background: $green-taiga;
+            }
+        }
+    }
+    label {
+        background: $gray-light;
+        border-radius: 5px;
+        color: $white;
+        display: block;
+        padding: .5rem;
+        &:hover {
+            @include transition(background .3s linear);
+            background: $fresh-taiga;
+            cursor: pointer;
+        }
+    }
+}

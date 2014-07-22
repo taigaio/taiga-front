@@ -1,0 +1,18 @@
+extends layout
+
+block head
+    title Taiga  Project management web application with scrum in mind!
+
+block content
+    div.wrapper(tg-project-us-status, ng-controller="ProjectValuesController as ctrl",
+                ng-init="section='admin'")
+        sidebar.menu-secondary.sidebar(tg-admin-navigation="project-values")
+            include views/modules/admin-menu
+
+        section.main.admin-roles
+            header
+                include views/components/mainTitle
+
+            p.total Notifications By Mail
+
+            include views/modules/user-settings/mail-notifications-table

@@ -1,0 +1,27 @@
+section.mail-notifications-table
+    div.mail-notifications-table-header
+        div.mail-notifications-table-row
+            div.mail-notifications-table-project
+                span Project
+            div.mail-notifications-table-all
+                span Receive All
+            div.mail-notifications-table-involved
+                span Only Involved
+            div.mail-notifications-table-none
+                span No notifications
+    div.mail-notifications-table-body
+        div.mail-notifications-table-row
+            div.mail-notifications-table-project
+                span Decathlon
+            div.mail-notifications-table-all
+                fieldset
+                    input(type="radio", name="mail-notifications", id="notifications-all")
+                    label(for="notifications-all") All
+            div.mail-notifications-table-involved
+                fieldset
+                    input(type="radio", name="mail-notifications", id="notifications-involved")
+                    label(for="notifications-involved") Involved
+            div.mail-notifications-table-none
+                fieldset
+                    input(type="radio", name="mail-notifications", id="notifications-none")
+                    label(for="notifications-none") None
