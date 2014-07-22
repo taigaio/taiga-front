@@ -126,7 +126,6 @@ modules = [
     "taigaSearch",
     "taigaAdmin",
     "taigaNavMenu",
-    "taigaLightboxes",
 
     # Vendor modules
     "ngRoute",

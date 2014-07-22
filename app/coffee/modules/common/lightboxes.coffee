@@ -19,13 +19,10 @@
 # File: modules/lightboxes.coffee
 ###
 
-
-# FIXME: this module should not be as the toplevel module.
-# It should be moved and to be part of taigaCommons module.
-module = angular.module("taigaLightboxes", [])
+module = angular.module("taigaCommon")
 
 
-BlockDirective = () ->
+BlockDirective = ->
     link = ($scope, $el, $attrs, $model) ->
         title = $attrs.title
         $el.find("h2.title").text(title)
