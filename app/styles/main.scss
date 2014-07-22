@@ -46,15 +46,15 @@ $prefix-for-spec:      true;
 //#################################################
 
 //Common modules
-@import 'modules/nav';
-@import 'modules/projects-nav';
-@import 'modules/lightbox';
-@import 'modules/colors-table';
-@import 'modules/category-config';
-@import 'modules/attachments';
-@import 'modules/comments';
-@import 'modules/comment-activity';
-@import 'modules/activity';
+@import 'modules/common/nav';
+@import 'modules/common/projects-nav';
+@import 'modules/common/lightbox';
+@import 'modules/common/colors-table';
+@import 'modules/common/category-config';
+@import 'modules/common/attachments';
+@import 'modules/common/comments';
+@import 'modules/common/comment-activity';
+@import 'modules/common/activity';
 
 //Issues modules
 @import 'modules/issues/issues-table';
