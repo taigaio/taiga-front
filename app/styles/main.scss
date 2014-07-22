@@ -51,7 +51,6 @@ $prefix-for-spec:      true;
 @import 'modules/issues-table';
 @import 'modules/list-filters';
 @import 'modules/filter-tags';
-
 @import 'modules/colors-table';
 @import 'modules/category-config';
 @import 'modules/attachments';
@@ -61,9 +60,12 @@ $prefix-for-spec:      true;
 @import 'modules/login-form';
 @import 'modules/register-form';
 @import 'modules/forgot-form';
-@import 'modules/wiki-nav';
-@import 'modules/wiki-summary';
+
 @import 'modules/change-password-from-recovery';
+
+//Wiki modules
+@import 'modules/wiki/wiki-nav';
+@import 'modules/wiki/wiki-summary';
 
 //modules admin
 @import 'modules/admin/admin-menu';
