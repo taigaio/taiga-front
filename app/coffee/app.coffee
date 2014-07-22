@@ -107,9 +107,6 @@ init = ($log, $i18n, $config, $rootscope) ->
 # Default Value for taiga local config module.
 angular.module("taigaLocalConfig", []).value("localconfig", {})
 
-# Default constructor for common module
-angular.module("taigaCommon", [])
-
 modules = [
     # Main Global Modules
     "taigaBase",

@@ -19,6 +19,9 @@
 # File: modules/lightboxes.coffee
 ###
 
+
+# FIXME: this module should not be as the toplevel module.
+# It should be moved and to be part of taigaCommons module.
 module = angular.module("taigaLightboxes", [])
 
 
