@@ -61,7 +61,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         # @scope.$on("sprintform:remove:success", @.loadProjectStats)
         # @scope.$on("usform:new:success", @.loadUserstories)
         # @scope.$on("usform:edit:success", @.loadUserstories)
-        # @scope.$on("sprint:us:move", @.moveUs)
+        @scope.$on("kanban:us:move", @.moveUs)
         # @scope.$on("sprint:us:moved", @.loadSprints)
         # @scope.$on("sprint:us:moved", @.loadProjectStats)
 
@@ -126,110 +126,29 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
         return items
 
-    moveUs: (ctx, us, newUsIndex, newSprintId) ->
-        oldSprintId = us.milestone
+    moveUs: (ctx, us, statusId, index) ->
+        if us.status != statusId
+            # Remove us from old status column
+            r = @scope.usByStatus[us.status].indexOf(us)
+            @scope.usByStatus[us.status].splice(r, 1)
 
-        # In the same sprint or in the backlog
-        if newSprintId == oldSprintId
-            items = null
-            userstories = null
+            # Add us to new status column.
+            @scope.usByStatus[statusId].splice(index, 0, us)
 
-            if newSprintId == null
-                userstories = @scope.userstories
-            else
-                userstories = @scope.sprintsById[newSprintId].user_stories
+            us.status = statusId
 
-            @scope.$apply ->
-                r = userstories.indexOf(us)
-                userstories.splice(r, 1)
-                userstories.splice(newUsIndex, 0, us)
-
-            # Rehash userstories order field
-            items = @.resortUserStories(userstories)
-            data = @.prepareBulkUpdateData(items)
-
-            # Persist in bulk all affected
-            # userstories with order change
-            promise = @rs.userstories.bulkUpdateOrder(us.project, data).then =>
-                @rootscope.$broadcast("sprint:us:moved", us, oldSprintId, newSprintId)
-
-            promise.then null, ->
-                console.log "FAIL"
-
-            return promise
-
-        # From sprint to backlog
-        if newSprintId == null
-            us.milestone = null
-
-            @scope.$apply =>
-                # Add new us to backlog userstories list
-                @scope.userstories.splice(newUsIndex, 0, us)
-                @scope.visibleUserstories.splice(newUsIndex, 0, us)
-
-                # Execute the prefiltering of user stories
-                @.filterVisibleUserstories()
-
-                # Remove the us from the sprint list.
-                sprint = @scope.sprintsById[oldSprintId]
-                r = sprint.user_stories.indexOf(us)
-                sprint.user_stories.splice(r, 1)
-
-            # Persist the milestone change of userstory
-            promise = @repo.save(us)
-
-            # Rehash userstories order field
-            # and persist in bulk all changes.
-            promise = promise.then =>
-                items = @.resortUserStories(@scope.userstories)
-                data = @.prepareBulkUpdateData(items)
-                promise = @rs.userstories.bulkUpdateOrder(us.project, data).then =>
-                    @rootscope.$broadcast("sprint:us:moved", us, oldSprintId, newSprintId)
-
-            promise.then null, ->
-                # TODO
-                console.log "FAIL"
-
-            return promise
-
-        # From backlog to sprint
-        newSprint = @scope.sprintsById[newSprintId]
-        if us.milestone == null
-            us.milestone = newSprintId
-
-            @scope.$apply =>
-                # Add moving us to sprint user stories list
-                newSprint.user_stories.splice(newUsIndex, 0, us)
-
-                # Remove moving us from backlog userstories lists.
-                r = @scope.visibleUserstories.indexOf(us)
-                @scope.visibleUserstories.splice(r, 1)
-                r = @scope.userstories.indexOf(us)
-                @scope.userstories.splice(r, 1)
-
-        # From sprint to sprint
-        else
-            us.milestone = newSprintId
-
-            @scope.$apply =>
-                # Add new us to backlog userstories list
-                newSprint.user_stories.splice(newUsIndex, 0, us)
-
-                # Remove the us from the sprint list.
-                oldSprint = @scope.sprintsById[oldSprintId]
-                r = oldSprint.user_stories.indexOf(us)
-                oldSprint.user_stories.splice(r, 1)
-
-        # Persist the milestone change of userstory
+        # Persist the userstory
         promise = @repo.save(us)
 
         # Rehash userstories order field
         # and persist in bulk all changes.
         promise = promise.then =>
-            items = @.resortUserStories(newSprint.user_stories)
+            items = @.resortUserStories(@scope.usByStatus[statusId])
             data = @.prepareBulkUpdateData(items)
-            promise = @rs.userstories.bulkUpdateOrder(us.project, data).then =>
-                @rootscope.$broadcast("sprint:us:moved", us, oldSprintId, newSprintId)
+
+            return @rs.userstories.bulkUpdateOrder(us.project, data).then =>
+                # @rootscope.$broadcast("sprint:us:moved", us, oldSprintId, newSprintId)
+                return items
 
         promise.then null, ->
             # TODO
@@ -271,8 +190,6 @@ KanbanDirective = ($repo, $rootscope) ->
 
 
 module.directive("tgKanban", ["$tgRepo", "$rootScope", KanbanDirective])
-
-
 
 #############################################################################
 ## Kanban User Directive

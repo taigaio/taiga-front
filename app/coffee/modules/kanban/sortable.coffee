@@ -55,27 +55,25 @@ KanbanSortableDirective = ($repo, $rs, $rootscope) ->
         tdom.sortable({
             handle: ".icon-drag-h",
             dropOnEmpty: true
-            connectWith: ".taskboard_task-playground"
+            connectWith: ".kanban-uses-box"
             revert: 400
         })
 
         tdom.on "sortstop", (event, ui) ->
-            # parentEl = ui.item.parent()
-            # itemEl = ui.item
-            # itemTask = itemEl.scope().task
-            # itemIndex = itemEl.index()
-            # newParentScope = parentEl.scope()
+            parentEl = ui.item.parent()
+            itemEl = ui.item
+            itemUs = itemEl.scope().us
+            itemIndex = itemEl.index()
+            newParentScope = parentEl.scope()
 
-            # oldUsId = if oldParentScope.us then oldParentScope.us.id else null
-            # oldStatusId = oldParentScope.st.id
-            # newUsId = if newParentScope.us then newParentScope.us.id else null
-            # newStatusId = newParentScope.st.id
+            newStatusId = newParentScope.status.id
+            oldStatusId = oldParentScope.status.id
 
-            # if newStatusId != oldStatusId or newUsId != oldUsId
-            #     deleteElement(itemEl)
+            if newStatusId != oldStatusId
+                deleteElement(itemEl)
 
-            # $scope.$apply ->
-            #     $rootscope.$broadcast("taskboard:task:move", itemTask, newUsId, newStatusId, itemIndex)
+            $scope.$apply ->
+                $rootscope.$broadcast("kanban:us:move", itemUs, newStatusId, itemIndex)
 
         tdom.on "sortstart", (event, ui) ->
             oldParentScope = ui.item.parent().scope()

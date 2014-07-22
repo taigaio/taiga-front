@@ -7,7 +7,7 @@ div.kanban-table
 
     div.kanban-table-body
         div.kanban-table-inner
-            div.taskboard_task-playground.task-column(ng-repeat="s in usStatusList track by s.id",
+            div.kanban-uses-box.task-column(ng-repeat="status in usStatusList track by status.id",
                                                       tg-kanban-sortable)
-                div.kanban-task(ng-repeat="us in usByStatus[s.id] track by us.id")
+                div.kanban-task(ng-repeat="us in usByStatus[status.id] track by us.id")
                     include ../components/kanban-task
