@@ -17,8 +17,8 @@
             padding-left: 50px;
         }
         &:hover {
-            background: lighten($green-taiga, 60%);
             @include transition (background .2s ease-in);
+            background: lighten($green-taiga, 60%);
             .options-column {
                 @include transition (opacity .3s linear);
                 opacity: 1;
@@ -27,6 +27,11 @@
         }
         &.hidden {
             display: none;
+        }
+        &.edition {
+            .current-color {
+                cursor: pointer;
+            }
         }
         .color-column,
         .is-closed-column,
@@ -62,7 +67,6 @@
     .current-color {
         background-color: $gray-light;
         border-radius: 2px;
-        cursor: pointer;
         height: 40px;
         width: 40px;
     }

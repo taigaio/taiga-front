@@ -51,14 +51,9 @@ $prefix-for-spec:      true;
 @import 'modules/issues-table';
 @import 'modules/list-filters';
 @import 'modules/filter-tags';
-@import 'modules/admin-menu';
-@import 'modules/admin-submenu';
-@import 'modules/admin-roles';
-@import 'modules/admin-functionalities';
-@import 'modules/admin-membership-table';
+
 @import 'modules/colors-table';
 @import 'modules/category-config';
-@import 'modules/project-details';
 @import 'modules/attachments';
 @import 'modules/comments';
 @import 'modules/comment-activity';
@@ -71,6 +66,12 @@ $prefix-for-spec:      true;
 @import 'modules/change-password-from-recovery';
 
 //modules admin
+@import 'modules/admin/admin-menu';
+@import 'modules/admin/admin-submenu';
+@import 'modules/admin/admin-roles';
+@import 'modules/admin/admin-functionalities';
+@import 'modules/admin/admin-membership-table';
+@import 'modules/admin/admin-project-profile';
 @import 'modules/admin/default-values';
 @import 'modules/admin/project-values';
 

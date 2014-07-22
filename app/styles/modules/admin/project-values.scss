@@ -2,9 +2,9 @@
     @include table-flex(stretch, center, flex, row, wrap, center);
     border-bottom: 1px solid $whitish;
     &:hover {
-        cursor: move;
         @include transition (background .2s ease-in);
         background: lighten($green-taiga, 60%);
+        cursor: move;
         .icon {
             @include transition (opacity .2s ease-in);
             opacity: 1;
