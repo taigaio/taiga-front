@@ -6,10 +6,16 @@
         &:hover {
             background: transparent;
         }
+        .row {
+            padding-left: 50px;
+        }
     }
     .row {
         @include table-flex(stretch, center, flex, row, wrap, center);
         padding: 1rem;
+        &.edition {
+            padding-left: 50px;
+        }
         &:hover {
             background: lighten($green-taiga, 60%);
             @include transition (background .2s ease-in);
@@ -17,6 +23,10 @@
                 @include transition (opacity .3s linear);
                 opacity: 1;
             }
+            cursor: move;
+        }
+        &.hidden {
+            display: none;
         }
         .color-column,
         .is-closed-column,
@@ -29,6 +39,7 @@
         }
         .status-name {
             @include table-flex-child(6, 300px, 0);
+            padding: 0 10px;
         }
         .options-column {
             max-width: 100px;

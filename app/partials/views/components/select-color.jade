@@ -2,5 +2,5 @@ div.popover.select-color
     ul
         - for (var z = 0; z < 21; z++)
             li.color
-    input(type="text", placeholder="personalized colors")
-    div.selected-color(style="background-color: red")
+    input(type="text", placeholder="personalized colors", ng-model="status.color")
+    div.selected-color(style="background-color: {{ status.color }}")

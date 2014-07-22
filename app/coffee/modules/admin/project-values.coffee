@@ -110,7 +110,7 @@ ProjectUsStatusDirective = ($log, $repo, $confirm, $location) ->
             itemEl.remove()
 
         tdom.sortable({
-            handle: ".project-values-row.visualization",
+            handle: ".row.table-main.visualization",
             dropOnEmpty: true
             connectWith: ".project-values-body"
             revert: 400
@@ -187,7 +187,7 @@ ProjectUsStatusDirective = ($log, $repo, $confirm, $location) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
 
-            row = target.parents(".project-values-row")
+            row = target.parents(".row.table-main")
             row.hide()
             row.siblings(".edition").css("display": "flex")
 
@@ -200,7 +200,7 @@ ProjectUsStatusDirective = ($log, $repo, $confirm, $location) ->
             status = target.scope().status
             promise = $repo.save(status)
             promise.then =>
-                row = target.parents(".project-values-row")
+                row = target.parents(".row.table-main")
                 row.hide()
                 row.siblings(".visualization").css("display": "flex")
 
@@ -210,7 +210,7 @@ ProjectUsStatusDirective = ($log, $repo, $confirm, $location) ->
         $el.on "click", ".cancel", (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
-            row = target.parents(".project-values-row")
+            row = target.parents(".row.table-main")
             row.hide()
             row.siblings(".visualization").css("display": "flex")
 
@@ -225,6 +225,25 @@ ProjectUsStatusDirective = ($log, $repo, $confirm, $location) ->
             $confirm.ask(title, subtitle).then =>
                 $repo.remove(status).then =>
                     $ctrl.loadUsStatus()
+
+        $el.on "click", ".edition .current-color", (event) ->
+            # Showing the color selector
+            event.preventDefault()
+            event.stopPropagation()
+            target = angular.element(event.currentTarget)
+            status = target.scope().status
+            $el.find(".select-color").hide()
+            target.siblings(".select-color").show()
+            #body = angular.element("body")
+            #body.one "click", (event) ->
+            #    $el.find(".select-color").hide()
+
+        $el.on "click", ".select-color .color", (event) ->
+            # Selecting one color on color selector
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+            console.log "TODO", target.data("color")
+            $el.find(".select-color").hide()
 
     link = ($scope, $el, $attrs) ->
         linkDragAndDrop($scope, $el, $attrs)
