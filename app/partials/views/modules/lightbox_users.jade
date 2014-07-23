@@ -3,14 +3,5 @@ a.close(href="", title="close")
 form
     h2.title Add watchers
     fieldset
-        input(type="text", data-maxlength="500", placeholder="Search for users", ng-model="usersSearch.$")
-
-    div.watchers
-        div.watcher-single(ng-repeat="user in filteredUsers|filter:usersSearch:strict|limitTo:5 track by user.id")
-            div.watcher-avatar
-                a.avatar(href="", title="Assigned to")
-                    img(tg-bo-src="user.photo", tg-bo-alt="user.photo")
-            a.watcher-name(href="", tg-bo-title="user.full_name_display", tg-bo-html="user.full_name_display")
-
-        div.more-watchers
-            span ...too many users, keep filtering
+        input(type="text", data-maxlength="500", placeholder="Search for users", ng-model="usersSearch")
+    div.watchers //- The content of this is rendered by directive

@@ -24,10 +24,10 @@ module = angular.module("taigaCommon")
 bindOnce = @.taiga.bindOnce
 
 #############################################################################
-## Block Directive
+## Block Lightbox Directive
 #############################################################################
 
-BlockDirective = ->
+BlockLightboxDirective = ->
     link = ($scope, $el, $attrs, $model) ->
         title = $attrs.title
         $el.find("h2.title").text(title)
@@ -55,9 +55,13 @@ BlockDirective = ->
 
             $el.addClass("hidden")
 
-    return {link:link, require:"ngModel"}
+    return {
+        templateUrl: "/partials/views/modules/lightbox_block.html"
+        link:link,
+        require:"ngModel"
+    }
 
-module.directive("tgLbBlock", BlockDirective)
+module.directive("tgLbBlock", BlockLightboxDirective)
 
 
 #############################################################################
@@ -203,43 +207,42 @@ module.directive("tgLbCreateBulkUserstories", [
 ## AssignedTo Lightbox Directive
 #############################################################################
 
+usersTemplate = _.template("""
+<% if (selected) { %>
+<div class="watcher-single active">
+    <div class="watcher-avatar">
+        <a href="" title="Assigned to" class="avatar">
+            <img src="<%= selected.photo %>"/>
+        </a>
+    </div>
+    <a href="" title="<%- selected.full_name_display %>" class="watcher-name">
+        <%-selected.full_name_display %>
+    </a>
+    <a href="" title="Remove assigned" class="icon icon-delete remove-assigned-to"></a>
+</div>
+<% } %>
+
+<% _.each(users, function(user) { %>
+<div class="watcher-single" data-user-id="<%- user.id %>">
+    <div class="watcher-avatar">
+        <a href="#" title="Assigned to" class="avatar">
+            <img src="<%= user.photo %>" />
+        </a>
+    </div>
+    <a href="" title="<%- user.full_name_display %>" class="watcher-name">
+        <%- user.full_name_display %>
+    </a>
+</div>
+<% }) %>
+
+<% if (showMore) { %>
+<div ng-show="filteringUsers" class="more-watchers">
+    <span>...too many users, keep filtering</span>
+</div>
+<% } %>
+""")
+
 AssignedToLightboxDirective = ($repo) ->
-    template = _.template("""
-    <% if (selected) { %>
-    <div class="watcher-single active">
-        <div class="watcher-avatar">
-            <a href="" title="Assigned to" class="avatar">
-                <img src="<%= selected.photo %>"/>
-            </a>
-        </div>
-        <a href="" title="<%- selected.full_name_display %>" class="watcher-name">
-            <%-selected.full_name_display %>
-        </a>
-        <a href="" title="Remove assigned" class="icon icon-delete remove-assigned-to"></a>
-    </div>
-    <% } %>
-
-    <% _.each(users, function(user) { %>
-    <div class="watcher-single" data-user-id="<%- user.id %>">
-        <div class="watcher-avatar">
-            <a href="#" title="Assigned to" class="avatar">
-                <img src="<%= user.photo %>" />
-            </a>
-        </div>
-        <a href="" title="<%- user.full_name_display %>" class="watcher-name">
-            <%- user.full_name_display %>
-        </a>
-    </div>
-    <% }) %>
-
-    <% if (showMore) { %>
-    <div ng-show="filteringUsers" class="more-watchers">
-        <span>...too many users, keep filtering</span>
-    </div>
-    <% } %>
-    """)
-
-
     link = ($scope, $el, $attrs) ->
         selectedUser = null
         selectedItem = null
@@ -262,10 +265,11 @@ AssignedToLightboxDirective = ($repo) ->
                 showMore: users.length > 5
             }
 
-            html = template(ctx)
+            html = usersTemplate(ctx)
             $el.find("div.watchers").html(html)
 
         $scope.$on "assigned-to:add", (ctx, item) ->
+            console.log $scope.usersSearch
             selectedItem = item
             assignedToId = item.assigned_to
             selectedUser = $scope.usersById[assignedToId]
@@ -322,3 +326,74 @@ AssignedToLightboxDirective = ($repo) ->
 
 
 module.directive("tgLbAssignedto", ["$tgRepo", AssignedToLightboxDirective])
+
+
+#############################################################################
+## Watchers Lightbox directive
+#############################################################################
+
+WatchersLightboxDirective = ($repo) ->
+    link = ($scope, $el, $attrs) ->
+        selectedItem = null
+
+        # Get prefiltered users by text
+        # and without now watched users.
+        getFilteredUsers = (text="") ->
+            _filterUsers = (text, user) ->
+                if _.find(selectedItem.watchers, (x) -> x == user.id)
+                    return false
+
+                username = user.full_name_display.toUpperCase()
+                text = text.toUpperCase()
+                return _.contains(username, text)
+
+            users = _.clone($scope.users, true)
+            users = _.filter(users, _.partial(_filterUsers, text))
+            return users
+
+        # Render the specific list of users.
+        render = (users) ->
+            $el.find("input").focus()
+            ctx = {
+                selected: false
+                users: _.first(users, 5)
+                showMore: users.length > 5
+            }
+
+            html = usersTemplate(ctx)
+            $el.find("div.watchers").html(html)
+
+        # updateScopeFilteringUsers = () ->
+        #     $scope.filteredUsers = _.difference($scope.users, watchers)
+
+        $scope.$on "watcher:add", (ctx, item) ->
+            console.log "JKAJA", item
+            selectedItem = item
+
+            users = getFilteredUsers()
+            render(users)
+
+            $el.removeClass("hidden")
+
+        $el.on "click", ".watcher-single", (event) ->
+            $el.addClass("hidden")
+
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+
+            $scope.$apply ->
+                $scope.$broadcast("watcher:added", target.data("user-id"))
+
+        $el.on "click", ".close", (event) ->
+            event.preventDefault()
+            $el.addClass("hidden")
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {
+        templateUrl: "/partials/views/modules/lightbox_users.html"
+        link:link
+    }
+
+module.directive("tgLbWatchers", ["$tgRepo", WatchersLightboxDirective])

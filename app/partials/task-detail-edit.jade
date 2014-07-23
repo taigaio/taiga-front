@@ -32,7 +32,7 @@ block content
         sidebar.menu-secondary.sidebar
             section.us-status(tg-task-status, ng-model="task", editable="true")
             section.us-assigned-to(tg-assigned-to, ng-model="task", editable="true")
-            section.watchers(tg-watchers, ng-model="task.watchers", editable="true")
+            section.watchers(tg-watchers, ng-model="task", editable="true")
 
             section.us-detail-settings
                   fieldset
@@ -43,10 +43,5 @@ block content
                     a.button.button-red(ng-click="ctrl.delete()", href="") Delete
 
         div.lightbox.lightbox_block.hidden(tg-lb-block, title="Blocking task", ng-model="task")
-            include views/modules/lightbox_block
-
         div.lightbox.lightbox_select_user.hidden(tg-lb-assignedto)
-            include views/modules/lightbox-assigned-to
-
-        div.lightbox.lightbox_select_user.hidden(tg-lb-add-watcher)
-            include views/modules/lightbox_users
+        div.lightbox.lightbox_select_user.hidden(tg-lb-watchers)

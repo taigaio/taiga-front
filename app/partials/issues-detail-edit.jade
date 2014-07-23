@@ -32,17 +32,12 @@ block content
         sidebar.menu-secondary.sidebar
             section.us-status(tg-issue-status, ng-model="issue", editable="true")
             section.us-assigned-to(tg-assigned-to, ng-model="issue", editable="true")
-            section.watchers(tg-watchers, ng-model="issue.watchers", editable="true")
+            section.watchers(tg-watchers, ng-model="issue", editable="true")
 
             section.us-detail-settings
                     a.button.button-gray.clickable(ng-show="!issue.is_blocked", ng-click="ctrl.block()") Block
                     a.button.button-red(ng-click="ctrl.delete()", href="") Delete
 
         div.lightbox.lightbox_block.hidden(tg-lb-block, title="Blocking issue", ng-model="issue")
-            include views/modules/lightbox_block
-
         div.lightbox.lightbox_select_user.hidden(tg-lb-assignedto)
-            include views/modules/lightbox-assigned-to
-
-        div.lightbox.lightbox_select_user.hidden(tg-lb-add-watcher)
-            include views/modules/lightbox_users
+        div.lightbox.lightbox_select_user.hidden(tg-lb-watchers)

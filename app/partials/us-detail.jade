@@ -47,11 +47,8 @@ block content
         sidebar.menu-secondary.sidebar
             section.us-status(tg-us-status-detail, ng-model="us")
             section.us-assigned-to(tg-assigned-to, ng-model="us")
-            section.watchers(tg-watchers, ng-model="us.watchers")
+            section.watchers(tg-watchers, ng-model="us")
 
             section.us-detail-settings
                 span.button.button-gray(href="", title="Client requirement", ng-class="us.client_requirement ? 'active' : ''") Client requirement
                 span.button.button-gray(href="", title="Team requirement", ng-class="us.team_requirement ? 'active' : ''") Team requirement
-
-        div.lightbox.lightbox_block.hidden
-            include views/modules/lightbox_block

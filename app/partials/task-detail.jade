@@ -48,10 +48,7 @@ block content
         sidebar.menu-secondary.sidebar
             section.us-status(tg-task-status, ng-model="task")
             section.us-assigned-to(tg-assigned-to, ng-model="task")
-            section.watchers(tg-watchers, ng-model="task.watchers")
+            section.watchers(tg-watchers, ng-model="task")
 
             section.us-detail-settings
                 span.button.button-gray(href="", title="Is iocaine", ng-class="task.is_iocaine ? 'active' : ''") Iocaine
-
-        div.lightbox.lightbox_block.hidden
-            include views/modules/lightbox_block
