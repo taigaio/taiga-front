@@ -5,7 +5,7 @@ div.kanban-task-inner
         span.task-num(tg-bo-ref="us.ref")
         a.task-name(href="", title="", tg-bind-html="us.subject")
 
-    tg-kanban-user-avatar(model="us.assigned_to")
+    tg-kanban-user-avatar(model="us.assigned_to", click="ctrl.changeUsAssignedTo(us)")
 
     a.icon.icon-edit(href="", title="Edit", ng-click="ctrl.editUserStory(us)")
     a.icon.icon-drag-h(href="", title="Drag&Drop")
