@@ -3,7 +3,8 @@ div.kanban-tagline
 div.kanban-task-inner
     p.task-text
         span.task-num(tg-bo-ref="us.ref")
-        a.task-name(href="", title="", tg-bind-html="us.subject")
+        a.task-name(href="", title="", tg-bind-html="us.subject",
+                    tg-nav="project-userstories-detail:project=project.slug,ref=us.ref")
 
     tg-kanban-user-avatar(model="us.assigned_to", click="ctrl.changeUsAssignedTo(us)")
 
