@@ -338,6 +338,8 @@
     }
     .watchers {
         margin-top: 1rem;
+        min-height: 440px;
+
         .watcher-name {
             @include table-flex-child(12, 0);
         }

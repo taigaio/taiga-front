@@ -21,6 +21,8 @@
 
 module = angular.module("taigaCommon")
 
+bindOnce = @.taiga.bindOnce
+
 #############################################################################
 ## Block Directive
 #############################################################################
@@ -201,60 +203,110 @@ module.directive("tgLbCreateBulkUserstories", [
 ## AssignedTo Lightbox Directive
 #############################################################################
 
-AssignedToLightboxDirective = ->
+AssignedToLightboxDirective = ($repo) ->
+    template = _.template("""
+    <% if (selected) { %>
+    <div class="watcher-single active">
+        <div class="watcher-avatar">
+            <a href="" title="Assigned to" class="avatar">
+                <img src="<%= selected.photo %>"/>
+            </a>
+        </div>
+        <a href="" title="<%- selected.full_name_display %>" class="watcher-name">
+            <%-selected.full_name_display %>
+        </a>
+        <a href="" title="Remove assigned" class="icon icon-delete remove-assigned-to"></a>
+    </div>
+    <% } %>
+
+    <% _.each(users, function(user) { %>
+    <div class="watcher-single" data-user-id="<%- user.id %>">
+        <div class="watcher-avatar">
+            <a href="#" title="Assigned to" class="avatar">
+                <img src="<%= user.photo %>" />
+            </a>
+        </div>
+        <a href="" title="<%- user.full_name_display %>" class="watcher-name">
+            <%- user.full_name_display %>
+        </a>
+    </div>
+    <% }) %>
+
+    <% if (showMore) { %>
+    <div ng-show="filteringUsers" class="more-watchers">
+        <span>...too many users, keep filtering</span>
+    </div>
+    <% } %>
+    """)
+
+
     link = ($scope, $el, $attrs) ->
-        editingElement = null
+        selectedUser = null
+        selectedItem = null
 
-        updateScopeFilteringUsers = (searchingText) ->
-            console.log "updateScopeFilteringUsers", searchingText
-            usersById = _.clone($scope.usersById, false)
-            # Exclude selected user
-            if $scope.selectedUser?
-                delete usersById[$scope.selectedUser.id]
+        filterUsers = (text, user) ->
+            username = user.full_name_display.toUpperCase()
+            text = text.toUpperCase()
+            return _.contains(username, text)
 
-            # Filter text
-            usersById = _.filter usersById,  (user) ->
-                return _.contains(user.full_name_display.toUpperCase(), searchingText.toUpperCase())
-
-            # Return max of 5 elements
-            users = _.map(usersById, (user) -> user)
-            $scope.AssignedToUsersSearch = searchingText
-            $scope.filteringUsers = users.length > 5
-            $scope.filteredUsers = _.first(users, 5)
-
-        $scope.$on "assigned-to:add", (ctx, element) ->
-            editingElement = element
-            assignedToId = editingElement?.assigned_to
-
-            $scope.selectedUser = null
-            $scope.selectedUser = $scope.usersById[assignedToId] if assignedToId?
-            updateScopeFilteringUsers("")
-
-            $el.removeClass("hidden")
+        render = (selected, text) ->
             $el.find("input").focus()
 
-        $scope.$watch "AssignedToUsersSearch", (searchingText) ->
-            updateScopeFilteringUsers(searchingText)
+            users = _.clone($scope.users, true)
+            users = _.reject(users, {"id": selected.id}) if selected?
+            users = _.filter(users, _.partial(filterUsers, text)) if text?
+
+            ctx = {
+                selected: selected
+                users: _.first(users, 5)
+                showMore: users.length > 5
+            }
+
+            html = template(ctx)
+            $el.find("div.watchers").html(html)
+
+        $scope.$on "assigned-to:add", (ctx, item) ->
+            selectedItem = item
+            assignedToId = item.assigned_to
+            selectedUser = $scope.usersById[assignedToId]
+
+            render(selectedUser)
+            $el.removeClass("hidden")
+
+        $scope.$watch "usersSearch", (searchingText) ->
+            render(selectedUser, searchingText) if searchingText?
 
         $el.on "click", ".watcher-single", (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
-            if editingElement?
-                user = target.scope().user
-                editingElement.assigned_to = user.id
 
             $el.addClass("hidden")
-            $scope.$broadcast("assigned-to:added", editingElement)
+            if not selectedItem?
+                return
+
+            selectedItem.assigned_to = target.data("user-id")
+            $scope.$apply ->
+                promise = $repo.save(selectedItem)
+                promise.then ->
+                    $scope.$broadcast("assigned-to:added", selectedItem)
+                promise.then null, ->
+                    console.log "FAIL" # TODO
 
         $el.on "click", ".remove-assigned-to", (event) ->
             event.preventDefault()
             event.stopPropagation()
 
-            if editingElement?
-                editingElement.assigned_to = null
-
             $el.addClass("hidden")
-            $scope.$broadcast("assigned-to:added", editingElement)
+            if not selectedItem?
+                return
+
+            selectedItem.assigned_to = null
+            $scope.$apply ->
+                promise = $repo.save(selectedItem)
+                promise.then ->
+                    $scope.$broadcast("assigned-to:added", selectedItem)
+                promise.then null, ->
+                    console.log "FAIL" # TODO
 
         $el.on "click", ".close", (event) ->
             event.preventDefault()
@@ -263,7 +315,10 @@ AssignedToLightboxDirective = ->
         $scope.$on "$destroy", ->
             $el.off()
 
-    return {link:link}
+    return {
+        templateUrl: "/partials/views/modules/lightbox-assigned-to.html"
+        link:link
+    }
 
 
-module.directive("tgLbAssignedto", AssignedToLightboxDirective)
+module.directive("tgLbAssignedto", ["$tgRepo", AssignedToLightboxDirective])

@@ -3,21 +3,7 @@ a.close(href="", title="close")
 form
     h2.title Select assigned to
     fieldset
-        input(type="text", data-maxlength="500", placeholder="Search for users", ng-model="AssignedToUsersSearch")
+        input(type="text", data-maxlength="500", placeholder="Search for users", ng-model="usersSearch")
 
+    //-This block is rendered by the directive
     div.watchers
-        div.watcher-single.active(ng-if="selectedUser")
-            div.watcher-avatar
-                a.avatar(href="", title="Assigned to")
-                    img(src="{{ selectedUser.photo }}", alt="{{ selectedUser.full_name_display }}")
-            a.watcher-name(href="", title="{{ selectedUser.full_name_display }}", ng-bind="selectedUser.full_name_display")
-            a.icon.icon-delete.remove-assigned-to(href="", title="Remove assigned")
-
-        div.watcher-single(ng-repeat="user in filteredUsers")
-            div.watcher-avatar
-                a.avatar(href="", title="Assigned to")
-                    img(tg-bo-src="user.photo", tg-bo-alt="user.photo")
-            a.watcher-name(href="", tg-bo-title="user.full_name_display", tg-bo-html="user.full_name_display")
-
-        div.more-watchers(ng-show="filteringUsers")
-            span ...too many users, keep filtering
