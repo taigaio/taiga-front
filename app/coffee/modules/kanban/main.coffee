@@ -54,16 +54,39 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         promise.then null, =>
             console.log "FAIL"
 
-        # @scope.$on("usform:bulk:success", @.loadUserstories)
-        # @scope.$on("sprintform:create:success", @.loadSprints)
-        # @scope.$on("sprintform:create:success", @.loadProjectStats)
-        # @scope.$on("sprintform:remove:success", @.loadSprints)
-        # @scope.$on("sprintform:remove:success", @.loadProjectStats)
         @scope.$on("usform:new:success", @.onNewUserstory)
         @scope.$on("usform:edit:success", @.onUserstoryEdited)
+        @scope.$on("assigned-to:added", @.onAssignedToChanged)
         @scope.$on("kanban:us:move", @.moveUs)
-        # @scope.$on("sprint:us:moved", @.loadSprints)
-        # @scope.$on("sprint:us:moved", @.loadProjectStats)
+
+    # Template actions
+
+    editUserStory: (us) ->
+        @rootscope.$broadcast("usform:edit", us)
+
+    addNewUs: (type, statusId) ->
+        switch type
+            when "standard" then @rootscope.$broadcast("usform:new", statusId)
+            when "bulk" then @rootscope.$broadcast("usform:bulk", statusId)
+
+    changeUsAssignedTo: (us) ->
+        @rootscope.$broadcast("assigned-to:add", us)
+
+    # Scope Events Handlers
+
+    onNewUserstory: (ctx, us) ->
+        @scope.usByStatus[us.status].splice(0, 0, us)
+
+    onAssignedToChanged: (ctx, userid, us) ->
+        us.assigned_to = userid
+        promise = @repo.save(us)
+        promise.then null, ->
+            console.log "FAIL" # TODO
+
+    onUserstoryEdited: (ctx, us) ->
+        @.loadUserstories()
+
+    # Load data methods
 
     loadProjectStats: ->
         return @rs.projects.stats(@scope.projectId).then (stats) =>
@@ -155,25 +178,6 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             console.log "FAIL"
 
         return promise
-
-    ## Template actions
-    editUserStory: (us) ->
-        @rootscope.$broadcast("usform:edit", us)
-
-    addNewUs: (type, statusId) ->
-        switch type
-            when "standard" then @rootscope.$broadcast("usform:new", statusId)
-            when "bulk" then @rootscope.$broadcast("usform:bulk", statusId)
-
-    changeUsAssignedTo: (us) ->
-        @rootscope.$broadcast("assigned-to:add", us)
-
-    # Scope Events Handlers
-    onNewUserstory: (ctx, us) ->
-        @scope.usByStatus[us.status].splice(0, 0, us)
-
-    onUserstoryEdited: (ctx, us) ->
-        @.loadUserstories()
 
 
 module.controller("KanbanController", KanbanController)
