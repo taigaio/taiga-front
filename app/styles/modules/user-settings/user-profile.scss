@@ -1,0 +1,30 @@
+.user-profile {
+    input[type="text"],
+    input[type="email"] {
+        @extend %title;
+        background-color: $very-light-gray;
+    }
+    fieldset {
+        margin-bottom: 1rem;
+        width: 50%;
+        &:last-child {
+            margin-top: 2rem;
+        }
+    }
+    label {
+        @extend %title;
+        display: block;
+        margin-bottom: .5rem;
+    }
+    .button-green {
+        color: $white;
+        display: block;
+        padding: 12px;
+        text-align: center;
+    }
+    .delete-account {
+        @extend %small;
+        display: block;
+        margin-top: 1rem;
+    }
+}
