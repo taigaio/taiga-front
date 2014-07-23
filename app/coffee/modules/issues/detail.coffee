@@ -114,7 +114,7 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         return @scope.usersById[userId]?.photo
 
     countChanges: (comment) ->
-        return Object.keys(comment.values_diff).length
+        return _.keys(comment.values_diff).length
 
     getChangeText: (change) ->
         if _.isArray(change)
