@@ -42,7 +42,7 @@ $column-margin: 0 10px 0 0;
 
 .kanban-table-body {
     @include table-flex();
-    height: 700px;
+    //height: 700px;
     overflow: hidden;
     overflow-x: auto;
     width: 100%;

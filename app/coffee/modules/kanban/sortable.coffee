@@ -41,8 +41,12 @@ KanbanSortableDirective = ($repo, $rs, $rootscope) ->
     #########################
 
     link = ($scope, $el, $attrs) ->
-        $el.css("height", "800px")
-        $el.closest(".kanban-table-body").css("height", "800px")
+        mainPadding = 32 # px
+        elementOffset = $el.offset().top
+        windowHeight = angular.element(window).height()
+        columnHeight = windowHeight - elementOffset - mainPadding
+
+        $el.css("height", "#{columnHeight}px")
 
         oldParentScope = null
         newParentScope = null
