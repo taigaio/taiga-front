@@ -286,6 +286,7 @@ AssignedToLightboxDirective = ->
             $el.addClass("hidden")
             $scope.$apply ->
                 $scope.$broadcast("assigned-to:added", target.data("user-id"), selectedItem)
+                $scope.usersSearch = null
 
         $el.on "click", ".remove-assigned-to", (event) ->
             event.preventDefault()
@@ -293,11 +294,14 @@ AssignedToLightboxDirective = ->
 
             $el.addClass("hidden")
             $scope.$apply ->
+                $scope.usersSearch = null
                 $scope.$broadcast("assigned-to:added", null, selectedItem)
 
         $el.on "click", ".close", (event) ->
             event.preventDefault()
             $el.addClass("hidden")
+            $scope.$apply ->
+                $scope.usersSearch = null
 
         $scope.$on "$destroy", ->
             $el.off()
@@ -364,11 +368,14 @@ WatchersLightboxDirective = ($repo) ->
             target = angular.element(event.currentTarget)
 
             $scope.$apply ->
+                $scope.usersSearch = null
                 $scope.$broadcast("watcher:added", target.data("user-id"))
 
         $el.on "click", ".close", (event) ->
             event.preventDefault()
             $el.addClass("hidden")
+            $scope.$apply ->
+                $scope.usersSearch = null
 
         $scope.$on "$destroy", ->
             $el.off()
