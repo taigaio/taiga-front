@@ -1,6 +1,7 @@
 .home-projects-list {
     align-items: center;
     background-image: url('/images/project-selector.jpg');
+    background-position: center center;
     background-size: cover;
     display: flex;
     height: 100%;
@@ -15,6 +16,7 @@
 .all-projects {
     background-color: rgba(0, 0, 0, .5);
     flex-grow: 0;
+    flex-wrap: wrap;
     margin-left: 2rem;
     min-width: 285px;
     padding: 1rem;
@@ -22,31 +24,70 @@
         color: $whitish;
         padding-left: 1rem;
     }
+    .pagination-list {
+        height: 385px;
+        overflow: hidden;
+    }
+    ul {
+        left: 0;
+        margin-bottom: 0;
+        position: relative;
+        top: 0;
+        width: 100%;
+    }
     li {
         border-bottom: 2px solid $gray;
-    }
-    a {
-        @extend %large;
-        @extend %title;
-        color: $whitish;
-        display: block;
-        padding: 1rem;
-        text-transform: uppercase;
-        width: 100%;
-        &.active,
-        &:hover {
-            @include transition (background-color .3s linear);
-            background-color: $gray;
-            .icon {
-                @include transition (opacity .3s linear);
-                opacity: 1;
+        a {
+            @extend %large;
+            @extend %title;
+            color: $whitish;
+            display: block;
+            padding: 1rem;
+            text-transform: uppercase;
+            width: 100%;
+            &.active,
+            &:hover {
+                @include transition (background-color .3s linear);
+                background-color: $gray;
+                .icon {
+                    @include transition (opacity .3s linear);
+                    opacity: 1;
+                }
             }
         }
+    }
+    .create-project-button-wrapper {
+        position: relative;
+        width: 100%;
+    }
+    .button-green {
+        color: $whitish;
+        left: 0;
+        position: absolute;
+        text-align: center;
+        top: 0;
+        width: 100%;
+    }
+    .pagination-next,
+    .pagination-previous {
+        background-color: $button-gray;
+        color: $whitish;
+        display: block;
+        padding: .1rem 0;
+        text-align: center;
+        visibility: hidden;
+        width: 100%;
+        &:hover {
+            @include transition (background .3s linear);
+            background-color: $button-gray / 2;
+        }
+    }
+    .pagination-next {
+        margin-bottom: 1rem;
     }
 }
 
 .home-projects-list-inner {
-    align-items: strech;
     display: flex;
     height: 575px;
     max-width: 1300px;
@@ -56,7 +97,6 @@
     display: flex;
     flex-grow: 0;
     flex-wrap: wrap;
-    justify-content: space-between;
     margin: 0;
     li {
         background-color: rgba(255, 255, 255, .5);
@@ -64,11 +104,15 @@
         flex-grow: 0;
         flex-shrink: 0;
         flex-wrap: wrap;
-        max-width: 32%;
         height: 280px;
+        margin-right: 1rem;
+        max-width: 23.5%;
         padding: 2rem;
-        &:nth-child(-n+3) {
+        &:nth-child(-n+4) {
             margin-bottom: 1rem;
+        }
+        &:nth-child(4n) {
+            margin-right: 0;
         }
     }
     h2,

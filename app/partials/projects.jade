@@ -7,7 +7,7 @@ block content
     div.home-projects-list(ng-controller="ProjectController as ctrl")
         .home-projects-list-inner
             ul.recent-projects
-                li(ng-repeat="project in ctrl.projects")
+                li(ng-repeat="project in ctrl.projects.recents")
                     .project-content
                         h2(tg-bo-html="project.name")
                         p(tg-bo-html="project.description")
@@ -16,6 +16,13 @@ block content
 
             div.all-projects
                 h1 Projects
-                ul
-                    li(ng-repeat="project in ctrl.projects")
-                        a.button(href="", tg-bo-html="project.name", tg-nav="project-backlog:project=project.slug")
+                div(tg-projects-pagination)
+                    a.pagination-previous.icon.icon-arrow-up(href="")
+                    .pagination-list
+                        ul
+                            li(ng-repeat="project in ctrl.projects.all")
+                                a.button(href="", tg-bo-html="project.name", tg-nav="project-backlog:project=project.slug")
+                    a.pagination-next.icon.icon-arrow-bottom(href="")
+
+                .create-project-button-wrapper
+                    a.button.button-green(href="", tg-nav="create-project") Create project
