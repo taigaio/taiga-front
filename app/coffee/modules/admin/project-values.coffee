@@ -31,10 +31,10 @@ bindOnce = @.taiga.bindOnce
 module = angular.module("taigaAdmin")
 
 #############################################################################
-## Project Values Controller
+## Project values status Controller
 #############################################################################
 
-class ProjectValuesController extends mixOf(taiga.Controller, taiga.PageMixin)
+class ProjectValuesStatusController extends mixOf(taiga.Controller, taiga.PageMixin)
     @.$inject = [
         "$scope",
         "$rootScope",
@@ -54,17 +54,18 @@ class ProjectValuesController extends mixOf(taiga.Controller, taiga.PageMixin)
         promise.then null, ->
             console.log "FAIL" #TODO
 
-        @scope.$on("admin:project-values:us-status:move", @.moveUsStatus)
+        @scope.$on("admin:project-values:status:move", @.moveStatus)
 
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
             @scope.project = project
             return project
 
-    loadUsStatus: =>
-        return @rs.userstories.listStatuses(@scope.projectId).then (usStatuses) =>
-            @scope.usStatuses = usStatuses
-            @scope.maxUsStatusOrder = _.max(usStatuses, "order").order
+    loadStatus: =>
+        #TODO:
+        return @rs[@scope.resource].listStatuses(@scope.projectId).then (statuses) =>
+            @scope.statuses = statuses
+            @scope.maxStatusOrder = _.max(statuses, "order").order
 
     loadInitialData: ->
         promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
@@ -73,26 +74,26 @@ class ProjectValuesController extends mixOf(taiga.Controller, taiga.PageMixin)
 
         return promise.then( => @q.all([
             @.loadProject(),
-            @.loadUsStatus(),
+            @.loadStatus(),
         ]))
 
-    moveUsStatus: (ctx, itemUsStatus, itemIndex) =>
-        usStatuses = @scope.usStatuses
-        r = usStatuses.indexOf(itemUsStatus)
-        usStatuses.splice(r, 1)
-        usStatuses.splice(itemIndex, 0, itemUsStatus)
-        _.each usStatuses, (usStatus, index) ->
+    moveStatus: (ctx, itemStatus, itemIndex) =>
+        statuses = @scope.statuses
+        r = statuses.indexOf(itemStatus)
+        statuses.splice(r, 1)
+        statuses.splice(itemIndex, 0, itemStatus)
+        _.each statuses, (usStatus, index) ->
             usStatus.order = index
 
-        @repo.saveAll(usStatuses)
+        @repo.saveAll(statuses)
 
-module.controller("ProjectValuesController", ProjectValuesController)
+module.controller("ProjectValuesStatusController", ProjectValuesStatusController)
 
 #############################################################################
-## Project US Values Directive
+## Project values status directive
 #############################################################################
 
-ProjectUsStatusDirective = ($log, $repo, $confirm, $location) ->
+ProjectStatusDirective = ($log, $repo, $confirm, $location) ->
 
     #########################
     ## Drag & Drop Link
@@ -121,9 +122,9 @@ ProjectUsStatusDirective = ($log, $repo, $confirm, $location) ->
         tdom.on "sortstop", (event, ui) ->
             parentEl = ui.item.parent()
             itemEl = ui.item
-            itemUsStatus = itemEl.scope().status
+            itemStatus = itemEl.scope().status
             itemIndex = itemEl.index()
-            $scope.$broadcast("admin:project-values:us-status:move", itemUsStatus, itemIndex)
+            $scope.$broadcast("admin:project-values:status:move", itemStatus, itemIndex)
 
         $scope.$on "$destroy", ->
             $el.off()
@@ -134,14 +135,15 @@ ProjectUsStatusDirective = ($log, $repo, $confirm, $location) ->
 
     linkStatus = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
+        statusType = $attrs.type
 
-        initializeNewUs = ->
-            $scope.newUs = {
+        initializeNewStatus = ->
+            $scope.newStatus = {
                 "name": ""
                 "is_closed": false
             }
 
-        initializeNewUs()
+        initializeNewStatus()
         submit = =>
             promise = $repo.save($scope.project)
             promise.then ->
@@ -161,30 +163,30 @@ ProjectUsStatusDirective = ($log, $repo, $confirm, $location) ->
 
         $el.on "click", ".show-add-new", (event) ->
             event.preventDefault()
-            $el.find(".new-us-status").css('display': 'flex')
+            $el.find(".new-status").css('display': 'flex')
 
         $el.on "click", ".add-new", (event) ->
             event.preventDefault()
-            form = $el.find(".new-us-status").parents("form").checksley()
+            form = $el.find(".new-status").parents("form").checksley()
             return if not form.validate()
 
-            $scope.newUs.project = $scope.project.id
-            $scope.newUs.order = $scope.maxUsStatusOrder + 1
-            promise = $repo.create("userstory-statuses", $scope.newUs)
+            $scope.newStatus.project = $scope.project.id
+            $scope.newStatus.order = $scope.maxStatusOrder + 1
+            promise = $repo.create(statusType, $scope.newStatus)
             promise.then =>
-                $ctrl.loadUsStatus()
-                $el.find(".new-us-status").hide()
-                initializeNewUs()
+                $ctrl.loadStatus()
+                $el.find(".new-status").hide()
+                initializeNewStatus()
 
             promise.then null, (data) ->
                 form.setErrors(data)
 
         $el.on "click", ".delete-new", (event) ->
             event.preventDefault()
-            $el.find(".new-us-status").hide()
-            initializeNewUs()
+            $el.find(".new-status").hide()
+            initializeNewStatus()
 
-        $el.on "click", ".edit-us-status", (event) ->
+        $el.on "click", ".edit-status", (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
 
@@ -215,42 +217,17 @@ ProjectUsStatusDirective = ($log, $repo, $confirm, $location) ->
             row.hide()
             row.siblings(".visualization").css("display": "flex")
 
-        $el.on "click", ".delete-us-status", (event) ->
+        $el.on "click", ".delete-status", (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
             status = target.scope().status
 
             #TODO: i18n
-            title = "Delete User Story status"
+            title = "Delete status"
             subtitle = status.name
             $confirm.ask(title, subtitle).then =>
                 $repo.remove(status).then =>
-                    $ctrl.loadUsStatus()
-
-        $el.on "click", ".edition .current-color", (event) ->
-            # Showing the color selector
-            event.preventDefault()
-            event.stopPropagation()
-            target = angular.element(event.currentTarget)
-            status = target.scope().status
-            $el.find(".select-color").hide()
-            target.siblings(".select-color").show()
-            # Hide when click outside
-            body = angular.element("body")
-            body.on "click", (event) =>
-                if angular.element(event.target).parent(".select-color").length == 0
-                    $el.find(".select-color").hide()
-                    body.ubind("click")
-
-
-        $el.on "click", ".select-color .color", (event) ->
-            # Selecting one color on color selector
-            event.preventDefault()
-            target = angular.element(event.currentTarget)
-            status = target.scope().status
-            $scope.$apply ->
-                status.color = target.data("color")
-            $el.find(".select-color").hide()
+                    $ctrl.loadStatus()
 
     link = ($scope, $el, $attrs) ->
         linkDragAndDrop($scope, $el, $attrs)
@@ -261,5 +238,50 @@ ProjectUsStatusDirective = ($log, $repo, $confirm, $location) ->
 
     return {link:link}
 
+module.directive("tgProjectStatus", ["$log", "$tgRepo", "$tgConfirm", "$tgLocation", ProjectStatusDirective])
 
-module.directive("tgProjectUsStatus", ["$log", "$tgRepo", "$tgConfirm", "$tgLocation", ProjectUsStatusDirective])
+
+#############################################################################
+## Color selection directive
+#############################################################################
+
+ColorSelectionDirective = () ->
+
+    #########################
+    ## Color selection Link
+    #########################
+
+    link = ($scope, $el, $attrs, $model) ->
+        $ctrl = $el.controller()
+
+        $el.on "click", ".current-color", (event) ->
+            # Showing the color selector
+            event.preventDefault()
+            event.stopPropagation()
+            target = angular.element(event.currentTarget)
+            $el.find(".select-color").hide()
+            target.siblings(".select-color").show()
+            # Hide when click outside
+            body = angular.element("body")
+            body.on "click", (event) =>
+                if angular.element(event.target).parent(".select-color").length == 0
+                    $el.find(".select-color").hide()
+                    body.unbind("click")
+
+        $el.on "click", ".select-color .color", (event) ->
+            # Selecting one color on color selector
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+            $scope.$apply ->
+                $model.$modelValue.color = target.data("color")
+            $el.find(".select-color").hide()
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+      return {
+          link: link
+          require:"ngModel"
+      }
+
+module.directive("tgColorSelection", ColorSelectionDirective)

@@ -13,7 +13,8 @@
     .row {
         @include table-flex(stretch, center, flex, row, wrap, center);
         padding: 1rem;
-        &.edition {
+        &.edition,
+        &.new-status {
             padding-left: 50px;
         }
         &:hover {

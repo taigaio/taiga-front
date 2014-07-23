@@ -8,7 +8,7 @@ section.colors-table
 
     div.table-main
         form.sortable
-            div(ng-repeat="status in usStatuses")
+            div(ng-repeat="status in statuses")
                 div.row.table-main.visualization
                     span.icon.icon-drag-v
                     div.color-column
@@ -16,15 +16,16 @@ section.colors-table
                     div.status-name
                         span {{ status.name }}
                     div.is-closed-column
-                        span {{ status.is_closed|yesNo }}
+                        div.icon.icon-check-square(ng-show="status.is_closed")
                     div.options-column
-                        a.edit-us-status.icon.icon-edit(href="", title="Edit value")
-                        a.delete-us-status.icon.icon-delete(href="", title="Delete value")
+                        a.edit-status.icon.icon-edit(href="", title="Edit value")
+                        a.delete-status.icon.icon-delete(href="", title="Delete value")
 
                 div.row.table-main.edition.hidden
-                    div.color-column
+                    div.color-column(tg-color-selection, ng-model="status")
                         div.current-color(style="background: {{ status.color }}")
                         include ../../components/select-color
+
                     div.status-name
                         input(name="name", type="text", placeholder="Write a name for the new status", ng-model="status.name", data-required="true", data-maxlength="255")
                     div.is-closed-column
@@ -34,14 +35,15 @@ section.colors-table
                         a.cancel.icon.icon-delete(href="", title="Delete")
 
         form
-            div.row.table-main.new-us-status.hidden
-                div.color-column
-                    div.current-color(style="background: {{ status.color }}")
+            div.row.table-main.new-status.hidden
+                div.color-column(tg-color-selection, ng-model="newStatus")
+                    div.current-color(style="background: {{ newStatus.color }}")
                     include ../../components/select-color
+
                 div.status-name
-                    input(name="name", type="text", placeholder="Write a name for the new status", ng-model="newUs.name", data-required="true", data-maxlength="255")
+                    input(name="name", type="text", placeholder="Write a name for the new status", ng-model="newStatus.name", data-required="true", data-maxlength="255")
                 div.is-closed-column
-                    select(name="is_closed", ng-model="newUs.is_closed", ng-options="e.id as e.name for e in [{'id':true, 'name':'Yes'},{'id':false, 'name': 'No'}]", data-required="true")
+                    select(name="is_closed", ng-model="newStatus.is_closed", ng-options="e.id as e.name for e in [{'id':true, 'name':'Yes'},{'id':false, 'name': 'No'}]", data-required="true")
                 div.options-column
                     a.add-new.icon.icon-floppy(href="", title="Add")
                     a.delete-new.icon.icon-delete(href="", title="Delete")
