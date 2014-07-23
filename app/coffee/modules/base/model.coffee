@@ -28,6 +28,12 @@ class Model
         @.setAttrs(data)
         @.initialize()
 
+    clone: ->
+        instance = new Model(@._name, @._attrs, @._dataTypes)
+        instance._modifiedAttrs = @._modifiedAttrs
+        instance._isModified = @._isModified
+        return instance
+
     applyCasts: ->
         for attrName, castName of @._dataTypes
             castMethod = service.casts[castName]
