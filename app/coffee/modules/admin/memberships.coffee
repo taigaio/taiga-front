@@ -16,7 +16,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: modules/admin/project-profile.coffee
+# File: modules/admin/project-profile.coffee TODO
 ###
 
 taiga = @.taiga
@@ -222,22 +222,22 @@ MembershipsMemberAvatarDirective = ($log) ->
     </figure>
     """)
 
-    render = (member) ->
+    render = ($el, member) ->
         ctx = {
-            full_name: if member.full_name then member.full_name else "------"
+            full_name: if member.full_name then member.full_name else ""
             email: member.email
             imgurl: if member.photo then member.photo else "http://thecodeplayer.com/u/uifaces/12.jpg"
         }
 
-        return template(ctx)
+        html = template(ctx)
+        $el.html(html)
 
     link = ($scope, $el, $attrs) ->
         if not $attrs.tgMembershipsMemberAvatar?
             return $log.error "MembershipsMemberAvatarDirective: the directive need a member"
 
         member = $scope.$eval($attrs.tgMembershipsMemberAvatar)
-        html = render(member)
-        $el.html(html)
+        render($el, member)
 
         $scope.$on "$destroy", ->
             $el.off()
@@ -271,10 +271,13 @@ MembershipsMemberActionsDirective = ($log, $repo, $confirm) ->
     </a>
     """) # i18n
 
-    render = (member) ->
+    render = ($el, member) ->
         if member.user
-            return activedTemplate()
-        return pendingTemplate()
+            html = activedTemplate()
+        else
+            html = pendingTemplate()
+
+        $el.html(html)
 
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
@@ -283,8 +286,7 @@ MembershipsMemberActionsDirective = ($log, $repo, $confirm) ->
             return $log.error "MembershipsMemberActionsDirective: the directive need a member"
 
         member = $scope.$eval($attrs.tgMembershipsMemberActions)
-        html = render(member)
-        $el.html(html)
+        render($el, member)
 
         $el.on "click", ".pending", (event) ->
             event.preventDefault()
@@ -322,18 +324,18 @@ MembershipsMemberIsAdminCheckboxDirective = ($log, $repo, $confirm) ->
     <label for="<%- inputId %>">Is admin?</label>
     """) # i18n
 
-    render = (member) ->
+    render = ($el, member) ->
         ctx = {inputId: "is-admin-#{member.id}"}
 
-        return template(ctx)
+        html = template(ctx)
+        $el.html(html)
 
     link = ($scope, $el, $attrs) ->
         if not $attrs.tgMembershipsMemberIsAdminCheckbox?
             return $log.error "MembershipsMemberIsAdminCheckboxDirective: the directive need a member"
 
         member = $scope.$eval($attrs.tgMembershipsMemberIsAdminCheckbox)
-        html = render(member)
-        $el.html(html)
+        html = render($el, member)
 
         if member.is_admin
             $el.find(":checkbox").prop("checked", true)
@@ -357,3 +359,59 @@ MembershipsMemberIsAdminCheckboxDirective = ($log, $repo, $confirm) ->
 
 module.directive("tgMembershipsMemberIsAdminCheckbox", ["$log", "$tgRepo", "$tgConfirm",
                                                         MembershipsMemberIsAdminCheckboxDirective])
+#############################################################################
+## Member RoleSelector Directive
+#############################################################################
+
+MembershipsMemberRoleSelectorDirective = ($log, $repo, $confirm) ->
+    template = _.template("""
+    <select>
+        <% _.each(roleList, function(role) { %>
+        <option value=<%- role.id %> <% if(selectedRole === role.id){ %>selected="selected"<% } %>>
+            <%- role.name %>
+        </option>
+        <% }); %>
+    </select>
+    """)
+
+    render = ($el, member, roleList) ->
+        ctx = {
+            roleList: roleList,
+            selectedRole: member.role
+        }
+
+        html = template(ctx)
+        $el.html(html)
+
+    link = ($scope, $el, $attrs) ->
+        $ctrl = $el.controller()
+
+        if not $attrs.tgMembershipsMemberRoleSelector?
+            return $log.error "MembershipsMemberRoleSelectorDirective: the directive need a member"
+
+        member = $scope.$eval($attrs.tgMembershipsMemberRoleSelector)
+        roleList = $ctrl.scope.project.roles
+        html = render($el, member, roleList)
+
+        $el.on "click", "select", (event) =>
+            onSuccess = ->
+                $confirm.notify("success")
+
+            onError = ->
+                $confirm.notify("error")
+
+            target = angular.element(event.currentTarget)
+            newRole = parseInt(target.val(), 10)
+
+            if member.role != newRole
+                member.role = newRole
+                $repo.save(member).then(onSuccess, onError)
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {link: link}
+
+
+module.directive("tgMembershipsMemberRoleSelector", ["$log", "$tgRepo", "$tgConfirm",
+                                                     MembershipsMemberRoleSelectorDirective])

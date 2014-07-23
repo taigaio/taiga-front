@@ -8,9 +8,5 @@ section.admin-membership-table.basic-table
     div.row(ng-repeat="member in memberships")
         div.row-member(tg-memberships-member-avatar="member")
         div.row-admin(tg-memberships-member-is-admin-checkbox="member")
-        div.row-role
-            select(ng-model="member.role")
-                option UX
-                option Front
-                option Back
+        div.row-role(tg-memberships-member-role-selector="member")
         div.row-status(tg-memberships-member-actions="member")
