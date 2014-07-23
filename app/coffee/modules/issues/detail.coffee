@@ -123,10 +123,9 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     buildChangesText: (comment) ->
         size = @.countChanges(comment)
-        #TODO: i18n
+        # TODO: i18n
         if size == 1
             return "Made #{size} change"
-
         return "Made #{size} changes"
 
     block: ->
@@ -136,7 +135,7 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         @rootscope.$broadcast("unblock", @scope.issue)
 
     delete: ->
-        #TODO: i18n
+        # TODO: i18n
         title = "Delete Issue"
         subtitle = @scope.issue.subject
 
@@ -261,205 +260,65 @@ TagLineDirective = ($log) ->
 
 module.directive("tgTagLine", ["$log", TagLineDirective])
 
-#############################################################################
-## Watchers directive
-#############################################################################
-
-WatchersDirective = ($rootscope, $confirm) ->
-    #TODO: i18n
-    template = _.template("""
-    <div class="watchers-header">
-        <span class="title">watchers</span>
-        <% if (editable) { %>
-        <a href="" title="Add watcher" class="icon icon-plus add-watcher">
-        </a>
-        <% } %>
-    </div>
-    <% _.each(watchers, function(watcher) { %>
-    <div class="watcher-single">
-        <div class="watcher-avatar">
-            <a class="avatar" href="" title="Assigned to">
-                <img src="<%= watcher.photo %>" alt="<%= watcher.full_name_display %>">
-            </a>
-        </div>
-        <div class="watcher-name">
-            <a href="" title="<%= watcher.full_name_display %>">
-                <%= watcher.full_name_display %>
-            </a>
-            <% if (editable) { %>
-                <a class="icon icon-delete" data-watcher-id="<%= watcher.id %>" href="" title="delete-watcher"></a>
-            <% } %>
-        </div>
-    </div>
-    <% }); %>
-    """)
-
-    link = ($scope, $el, $attrs, $model) ->
-        editable = $attrs.editable?
-        $scope.$watch $attrs.ngModel, (watcherIds) ->
-            watchers = _.map(watcherIds, (watcherId) -> $scope.usersById[watcherId])
-            html = template({watchers: watchers, editable:editable})
-            $el.html(html)
-            if watchers.length == 0
-                if editable
-                    $el.find(".title").text("Add watchers")
-                    $el.find(".watchers-header").addClass("no-watchers")
-                else
-                    $el.find(".watchers-header").hide()
-
-        if not editable
-            $el.find(".add-watcher").remove()
-
-        $el.on "click", ".icon-delete", (event) ->
-            event.preventDefault()
-            target = angular.element(event.currentTarget)
-            watcherId = target.data("watcher-id")
-            title = "Remove watcher"
-            subtitle = $scope.usersById[watcherId].full_name_display
-            $confirm.ask(title, subtitle).then =>
-                watcherIds = _.clone($model.$modelValue, false)
-                watcherIds = _.pull(watcherIds, watcherId)
-                $model.$setViewValue(watcherIds)
-
-        $el.on "click", ".add-watcher", (event) ->
-            event.preventDefault()
-            target = angular.element(event.currentTarget)
-            $rootscope.$broadcast("watcher:add")
-
-        $scope.$on "watcher:added", (ctx, watcher) ->
-            watcherIds = _.clone($model.$modelValue, false)
-            watcherIds.push(watcher.id)
-            watcherIds = _.uniq(watcherIds)
-            $scope.$apply ->
-                $model.$setViewValue(watcherIds)
-
-    return {link:link, require:"ngModel"}
-
-module.directive("tgWatchers", ["$rootScope", "$tgConfirm", WatchersDirective])
-
-#############################################################################
-## Assigned to directive
-#############################################################################
-
-AssignedToDirective = ($rootscope, $confirm) ->
-    #TODO: i18n
-    template = _.template("""
-        <% if (assignedTo) { %>
-        <div class="user-avatar">
-            <a href="" title="Assigned to" class="avatar"><img src="<%= assignedTo.photo %>" alt="<%= assignedTo.full_name_display %>"></a>
-        </div>
-        <% } %>
-        <div class="assigned-to">
-            <span class="assigned-title">Assigned to</span>
-            <a href="" title="edit assignment" class="user-assigned">
-            <% if (assignedTo) { %>
-                <%= assignedTo.full_name_display %>
-            <% } else { %>
-                Not assigned
-            <% } %>
-            <% if (editable) { %>
-                <span class="icon icon-arrow-bottom"></span>
-            <% } %>
-            </a>
-            <% if (editable && assignedTo!==null) { %>
-            <a href="" title="delete assignment" class="icon icon-delete"></a>
-            <% } %>
-        </div>
-    """)
-
-    link = ($scope, $el, $attrs, $model) ->
-        editable = $attrs.editable?
-
-        renderAssignedTo = (issue) ->
-            assignedToId = issue?.assigned_to
-            assignedTo = null
-            assignedTo = $scope.usersById[assignedToId] if assignedToId?
-            html = template({assignedTo: assignedTo, editable:editable})
-            $el.html(html)
-
-        $scope.$watch $attrs.ngModel, (instance) ->
-            renderAssignedTo(instance)
-
-        $el.on "click", ".user-assigned", (event) ->
-            event.preventDefault()
-            $scope.$apply(
-                $rootscope.$broadcast("assigned-to:add", $model.$modelValue)
-            )
-
-        $el.on "click", ".icon-delete", (event) ->
-            event.preventDefault()
-            title = "Remove assigned to"
-            subtitle = ""
-            $confirm.ask(title, subtitle).then =>
-                $model.$modelValue.assigned_to  = null
-                renderAssignedTo($model.$modelValue)
-
-        $scope.$on "assigned-to:added", (ctx, issue) ->
-            renderAssignedTo(issue)
-
-    return {link:link, require:"ngModel"}
-
-module.directive("tgAssignedTo", ["$rootScope", "$tgConfirm", AssignedToDirective])
-
 
 #############################################################################
 ## Issue status directive
 #############################################################################
 
 IssueStatusDirective = () ->
-    #TODO: i18n
+    # TODO: i18n
     template = _.template("""
-        <h1>
-            <span>
-            <% if (status.is_closed) { %>
-            Closed
-            <% } else { %>
-            Open
-            <% } %>
-            </span>
-            <span class="us-detail-status" style="color:<%= status.color %>"><%= status.name %></span>
-        </h1>
-        <div class="issue-data">
-            <div class="severity-data <% if (editable) { %>clickable<% } %>">
-                <span class="level" style="background-color:<%= severity.color %>"></span>
-                <span class="severity-status"><%= severity.name %></span>
-                <span class="level-name">severity</span>
-            </div>
-            <div class="priority-data <% if (editable) { %>clickable<% } %>">
-                <span class="level" style="background-color:<%= priority.color %>"></span>
-                <span class="priority-status"><%= priority.name %></span>
-                <span class="level-name">priority</span>
-            </div>
-            <div class="status-data <% if (editable) { %>clickable<% } %>">
-                <span class="level" style="background-color:<%= status.color %>"></span>
-                <span class="status-status"><%= status.name %></span>
-                <span class="level-name">status</span>
-            </div>
+    <h1>
+        <span>
+        <% if (status.is_closed) { %>
+        Closed
+        <% } else { %>
+        Open
+        <% } %>
+        </span>
+        <span class="us-detail-status" style="color:<%= status.color %>"><%= status.name %></span>
+    </h1>
+    <div class="issue-data">
+        <div class="severity-data <% if (editable) { %>clickable<% } %>">
+            <span class="level" style="background-color:<%= severity.color %>"></span>
+            <span class="severity-status"><%= severity.name %></span>
+            <span class="level-name">severity</span>
         </div>
+        <div class="priority-data <% if (editable) { %>clickable<% } %>">
+            <span class="level" style="background-color:<%= priority.color %>"></span>
+            <span class="priority-status"><%= priority.name %></span>
+            <span class="level-name">priority</span>
+        </div>
+        <div class="status-data <% if (editable) { %>clickable<% } %>">
+            <span class="level" style="background-color:<%= status.color %>"></span>
+            <span class="status-status"><%= status.name %></span>
+            <span class="level-name">status</span>
+        </div>
+    </div>
     """)
     selectionSeverityTemplate = _.template("""
-      <ul class="popover pop-severity">
-          <% _.each(severities, function(severity) { %>
-          <li><a href="" class="severity" title="<%- severity.name %>"
-                 data-severity-id="<%- severity.id %>"><%- severity.name %></a></li>
-          <% }); %>
-      </ul>
+    <ul class="popover pop-severity">
+        <% _.each(severities, function(severity) { %>
+        <li><a href="" class="severity" title="<%- severity.name %>"
+               data-severity-id="<%- severity.id %>"><%- severity.name %></a></li>
+        <% }); %>
+    </ul>
     """)
     selectionPriorityTemplate = _.template("""
-      <ul class="popover pop-priority">
-          <% _.each(priorities, function(priority) { %>
-          <li><a href="" class="priority" title="<%- priority.name %>"
-                 data-priority-id="<%- priority.id %>"><%- priority.name %></a></li>
-          <% }); %>
-      </ul>
+    <ul class="popover pop-priority">
+        <% _.each(priorities, function(priority) { %>
+        <li><a href="" class="priority" title="<%- priority.name %>"
+               data-priority-id="<%- priority.id %>"><%- priority.name %></a></li>
+        <% }); %>
+    </ul>
     """)
     selectionStatusTemplate = _.template("""
-      <ul class="popover pop-status">
-          <% _.each(statuses, function(status) { %>
-          <li><a href="" class="status" title="<%- status.name %>"
-                 data-status-id="<%- status.id %>"><%- status.name %></a></li>
-          <% }); %>
-      </ul>
+    <ul class="popover pop-status">
+        <% _.each(statuses, function(status) { %>
+        <li><a href="" class="status" title="<%- status.name %>"
+               data-status-id="<%- status.id %>"><%- status.name %></a></li>
+        <% }); %>
+    </ul>
     """)
 
     link = ($scope, $el, $attrs, $model) ->
@@ -541,7 +400,7 @@ module.directive("tgIssueStatus", IssueStatusDirective)
 ## Comment directive
 #############################################################################
 
-CommentDirective = () ->
+CommentDirective = ->
     link = ($scope, $el, $attrs, $model) ->
         $el.on "click", ".activity-title", (event) ->
             event.preventDefault()
