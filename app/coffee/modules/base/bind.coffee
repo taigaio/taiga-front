@@ -57,6 +57,13 @@ BindOnceTitleDirective = ->
             $el.attr("title", val)
     return {link:link}
 
+BindTitleDirective = ->
+    link = ($scope, $el, $attrs) ->
+        $scope.$watch $attrs.tgTitleHtml, (val) ->
+            $el.attr("title", val) if val?
+
+    return {link:link}
+
 BindHtmlDirective = ->
     link = ($scope, $el, $attrs) ->
         $scope.$watch $attrs.tgBindHtml, (val) ->
@@ -64,11 +71,11 @@ BindHtmlDirective = ->
 
     return {link:link}
 
-
 module = angular.module("taigaBase")
 module.directive("tgBoHtml", BindOnceHtmlDirective)
 module.directive("tgBoRef", BindOnceRefDirective)
 module.directive("tgBoSrc", BindOnceSrcDirective)
 module.directive("tgBoAlt", BindOnceAltDirective)
 module.directive("tgBoTitle", BindOnceTitleDirective)
+module.directive("tgBindTitle", BindTitleDirective)
 module.directive("tgBindHtml", BindHtmlDirective)
