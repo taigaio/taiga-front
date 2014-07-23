@@ -350,9 +350,6 @@ WatchersLightboxDirective = ($repo) ->
             html = usersTemplate(ctx)
             $el.find("div.watchers").html(html)
 
-        # updateScopeFilteringUsers = () ->
-        #     $scope.filteredUsers = _.difference($scope.users, watchers)
-
         $scope.$on "watcher:add", (ctx, item) ->
             selectedItem = item
 
