@@ -13,19 +13,20 @@
     .row {
         @include table-flex(stretch, center, flex, row, wrap, center);
         padding: 1rem;
-        &.edition,
-        &.new-status {
-            padding-left: 50px;
-        }
         &:hover {
-            @include transition (background .2s ease-in);
-            background: lighten($green-taiga, 60%);
             .options-column {
                 @include transition (opacity .3s linear);
                 opacity: 1;
             }
-            cursor: move;
         }
+        &.edition,
+        &.new-status {
+            padding-left: 50px;
+        }
+        &.edition {
+            padding-left: 50px;
+        }
+
         &.hidden {
             display: none;
         }
@@ -64,6 +65,13 @@
     }
     .table-main {
         border-bottom: 1px solid $gray-light;
+        .row {
+            &:hover {
+                @include transition (background .2s ease-in);
+                background: lighten($green-taiga, 60%);
+                cursor: move;
+            }
+        }
     }
     .current-color {
         background-color: $gray-light;
