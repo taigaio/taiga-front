@@ -26,6 +26,7 @@ toggleText = @.taiga.toggleText
 scopeDefer = @.taiga.scopeDefer
 bindOnce = @.taiga.bindOnce
 groupBy = @.taiga.groupBy
+timeout = @.taiga.timeout
 
 module = angular.module("taigaKanban")
 
@@ -41,12 +42,14 @@ KanbanSortableDirective = ($repo, $rs, $rootscope) ->
     #########################
 
     link = ($scope, $el, $attrs) ->
-        mainPadding = 32 # px
-        elementOffset = $el.offset().top
-        windowHeight = angular.element(window).height()
-        columnHeight = windowHeight - elementOffset - mainPadding
+        timeout 500, ->
+            mainPadding = 32 # px
+            elementOffset = $el.parent().parent().offset().top
+            windowHeight = angular.element(window).height()
+            columnHeight = windowHeight - elementOffset - mainPadding
 
-        $el.css("height", "#{columnHeight}px")
+            console.log elementOffset, windowHeight, columnHeight
+            $el.css("height", "#{columnHeight}px")
 
         oldParentScope = null
         newParentScope = null
