@@ -71,7 +71,10 @@ urls = {
     "userstory-statuses": "/api/v1/userstory-statuses"
     "task-statuses": "/api/v1/task-statuses"
     "issue-statuses": "/api/v1/issue-statuses"
-    
+    "issue-types": "/api/v1/issue-types"
+    "priorities": "/api/v1/priorities"
+    "severities": "/api/v1/severities"
+
     # History
     "history/userstory": "/api/v1/history/userstory"
     "history/issue": "/api/v1/history/issue"

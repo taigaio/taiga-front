@@ -4,8 +4,8 @@ block head
     title Taiga  Project management web application with scrum in mind!
 
 block content
-    div.wrapper(tg-project-status, ng-controller="ProjectValuesStatusController as ctrl",
-                ng-init="section='admin'; resource='userstories'; sectionName='Us Statuses'", 
+    div.wrapper(tg-project-values, ng-controller="ProjectValuesController as ctrl",
+                ng-init="section='admin'; resource='userstories'; type='userstory-statuses'; sectionName='Us Statuses'",
                 type="userstory-statuses")
         sidebar.menu-secondary.sidebar(tg-admin-navigation="project-values")
             include views/modules/admin-menu

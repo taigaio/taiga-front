@@ -42,9 +42,9 @@ resourceProvider = ($repo) ->
     service.history = (issueId) ->
         return $repo.queryOneRaw("history/issue", issueId)
 
-    service.listStatuses = (projectId) ->
+    service.listValues = (projectId, type) ->
         params = {"project": projectId}
-        return $repo.queryMany("issue-statuses", params)
+        return $repo.queryMany(type, params)
 
     return (instance) ->
         instance.issues = service

@@ -31,10 +31,10 @@ bindOnce = @.taiga.bindOnce
 module = angular.module("taigaAdmin")
 
 #############################################################################
-## Project values status Controller
+## Project values Controller
 #############################################################################
 
-class ProjectValuesStatusController extends mixOf(taiga.Controller, taiga.PageMixin)
+class ProjectValuesController extends mixOf(taiga.Controller, taiga.PageMixin)
     @.$inject = [
         "$scope",
         "$rootScope",
@@ -53,18 +53,17 @@ class ProjectValuesStatusController extends mixOf(taiga.Controller, taiga.PageMi
         promise.then null, ->
             console.log "FAIL" #TODO
 
-        @scope.$on("admin:project-values:status:move", @.moveStatus)
+        @scope.$on("admin:project-values:move", @.moveValue)
 
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
             @scope.project = project
             return project
 
-    loadStatus: =>
-        #TODO:
-        return @rs[@scope.resource].listStatuses(@scope.projectId).then (statuses) =>
-            @scope.statuses = statuses
-            @scope.maxStatusOrder = _.max(statuses, "order").order
+    loadValues: =>
+        return @rs[@scope.resource].listValues(@scope.projectId, @scope.type).then (values) =>
+            @scope.values = values
+            @scope.maxValueOrder = _.max(values, "order").order
 
     loadInitialData: ->
         promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
@@ -73,26 +72,26 @@ class ProjectValuesStatusController extends mixOf(taiga.Controller, taiga.PageMi
 
         return promise.then( => @q.all([
             @.loadProject(),
-            @.loadStatus(),
+            @.loadValues(),
         ]))
 
-    moveStatus: (ctx, itemStatus, itemIndex) =>
-        statuses = @scope.statuses
-        r = statuses.indexOf(itemStatus)
-        statuses.splice(r, 1)
-        statuses.splice(itemIndex, 0, itemStatus)
-        _.each statuses, (usStatus, index) ->
-            usStatus.order = index
+    moveValue: (ctx, itemValue, itemIndex) =>
+        values = @scope.values
+        r = values.indexOf(itemValue)
+        values.splice(r, 1)
+        values.splice(itemIndex, 0, itemValue)
+        _.each values, (value, index) ->
+            value.order = index
 
-        @repo.saveAll(statuses)
+        @repo.saveAll(values)
 
-module.controller("ProjectValuesStatusController", ProjectValuesStatusController)
+module.controller("ProjectValuesController", ProjectValuesController)
 
 #############################################################################
-## Project values status directive
+## Project values directive
 #############################################################################
 
-ProjectStatusDirective = ($log, $repo, $confirm, $location) ->
+ProjectValuesDirective = ($log, $repo, $confirm, $location) ->
 
     #########################
     ## Drag & Drop Link
@@ -121,28 +120,28 @@ ProjectStatusDirective = ($log, $repo, $confirm, $location) ->
         tdom.on "sortstop", (event, ui) ->
             parentEl = ui.item.parent()
             itemEl = ui.item
-            itemStatus = itemEl.scope().status
+            itemValue = itemEl.scope().value
             itemIndex = itemEl.index()
-            $scope.$broadcast("admin:project-values:status:move", itemStatus, itemIndex)
+            $scope.$broadcast("admin:project-values:move", itemValue, itemIndex)
 
         $scope.$on "$destroy", ->
             $el.off()
 
     #########################
-    ## Status Link
+    ## Value Link
     #########################
 
-    linkStatus = ($scope, $el, $attrs) ->
+    linkValue = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
-        statusType = $attrs.type
+        valueType = $attrs.type
 
-        initializeNewStatus = ->
-            $scope.newStatus = {
+        initializeNewValue = ->
+            $scope.newValue = {
                 "name": ""
                 "is_closed": false
             }
 
-        initializeNewStatus()
+        initializeNewValue()
         submit = =>
             promise = $repo.save($scope.project)
             promise.then ->
@@ -162,30 +161,30 @@ ProjectStatusDirective = ($log, $repo, $confirm, $location) ->
 
         $el.on "click", ".show-add-new", (event) ->
             event.preventDefault()
-            $el.find(".new-status").css('display': 'flex')
+            $el.find(".new-value").css('display': 'flex')
 
         $el.on "click", ".add-new", (event) ->
             event.preventDefault()
-            form = $el.find(".new-status").parents("form").checksley()
+            form = $el.find(".new-value").parents("form").checksley()
             return if not form.validate()
 
-            $scope.newStatus.project = $scope.project.id
-            $scope.newStatus.order = $scope.maxStatusOrder + 1
-            promise = $repo.create(statusType, $scope.newStatus)
+            $scope.newValue.project = $scope.project.id
+            $scope.newValue.order = $scope.maxValueOrder + 1
+            promise = $repo.create(valueType, $scope.newValue)
             promise.then =>
-                $ctrl.loadStatus()
-                $el.find(".new-status").hide()
-                initializeNewStatus()
+                $ctrl.loadValues()
+                $el.find(".new-value").hide()
+                initializeNewValue()
 
             promise.then null, (data) ->
                 form.setErrors(data)
 
         $el.on "click", ".delete-new", (event) ->
             event.preventDefault()
-            $el.find(".new-status").hide()
-            initializeNewStatus()
+            $el.find(".new-value").hide()
+            initializeNewValue()
 
-        $el.on "click", ".edit-status", (event) ->
+        $el.on "click", ".edit-value", (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
 
@@ -199,8 +198,8 @@ ProjectStatusDirective = ($log, $repo, $confirm, $location) ->
             form = target.parents("form").checksley()
             return if not form.validate()
 
-            status = target.scope().status
-            promise = $repo.save(status)
+            value = target.scope().value
+            promise = $repo.save(value)
             promise.then =>
                 row = target.parents(".row.table-main")
                 row.hide()
@@ -216,28 +215,28 @@ ProjectStatusDirective = ($log, $repo, $confirm, $location) ->
             row.hide()
             row.siblings(".visualization").css("display": "flex")
 
-        $el.on "click", ".delete-status", (event) ->
+        $el.on "click", ".delete-value", (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
-            status = target.scope().status
+            value = target.scope().value
 
             #TODO: i18n
-            title = "Delete status"
-            subtitle = status.name
+            title = "Delete"
+            subtitle = value.name
             $confirm.ask(title, subtitle).then =>
-                $repo.remove(status).then =>
-                    $ctrl.loadStatus()
+                $repo.remove(value).then =>
+                    $ctrl.loadValues()
 
     link = ($scope, $el, $attrs) ->
         linkDragAndDrop($scope, $el, $attrs)
-        linkStatus($scope, $el, $attrs)
+        linkValue($scope, $el, $attrs)
 
         $scope.$on "$destroy", ->
             $el.off()
 
     return {link:link}
 
-module.directive("tgProjectStatus", ["$log", "$tgRepo", "$tgConfirm", "$tgLocation", ProjectStatusDirective])
+module.directive("tgProjectValues", ["$log", "$tgRepo", "$tgConfirm", "$tgLocation", ProjectValuesDirective])
 
 
 #############################################################################
@@ -277,7 +276,7 @@ ColorSelectionDirective = () ->
 
         $el.on "click", ".select-color .selected-color", (event) ->
             event.preventDefault()
-            $el.find(".select-color").hide()          
+            $el.find(".select-color").hide()
 
         $scope.$on "$destroy", ->
             $el.off()
