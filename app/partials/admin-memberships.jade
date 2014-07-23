@@ -13,12 +13,12 @@ block content
             header
                 include views/components/mainTitle
 
-                a.button.button-green(title="Add new member" href="")
+                a.button.button-green(title="Add new member" href="" ng-click="ctrl.addNewMembers()")
                    span.text + New member
 
             include views/modules/admin/admin-membership-table
 
             div.paginator.memberships-paginator
 
-        div.lightbox.ligbox_add-member
+        div.lightbox.ligbox_add-member.hidden(tg-lb-create-members)
             include views/modules/lightbox_add-member

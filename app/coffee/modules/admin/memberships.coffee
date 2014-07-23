@@ -16,7 +16,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: modules/admin/project-profile.coffee TODO
+# File: modules/admin/memberships.coffee
 ###
 
 taiga = @.taiga
@@ -42,7 +42,7 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
         "$location"
     ]
 
-    constructor: (@scope, @rootScope, @repo, @confirm, @rs, @params, @q, @location) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location) ->
         @scope.sectionName = "Memberships" #i18n
         @scope.project = {}
         @scope.filters = {}
@@ -50,6 +50,8 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
         promise = @.loadInitialData()
         promise.then null, ->
             console.log "FAIL" #TODO
+
+        @scope.$on("membersform:new:success", @.onNewMembers)
 
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
@@ -77,6 +79,13 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
         filters = _.pick(@location.search(), "page")
         filters.page = 1 if not filters.page
         return filters
+
+    addNewMembers:  ->
+        @rootscope.$broadcast("membersform:new")
+
+    onNewMembers: ->
+        @.loadMembers()
+
 
 module.controller("MembershipsController", MembershipsController)
 
@@ -367,7 +376,7 @@ MembershipsMemberRoleSelectorDirective = ($log, $repo, $confirm) ->
     template = _.template("""
     <select>
         <% _.each(roleList, function(role) { %>
-        <option value=<%- role.id %> <% if(selectedRole === role.id){ %>selected="selected"<% } %>>
+        <option value="<%- role.id %>" <% if(selectedRole === role.id){ %>selected="selected"<% } %>>
             <%- role.name %>
         </option>
         <% }); %>
