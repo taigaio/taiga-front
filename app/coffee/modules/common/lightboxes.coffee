@@ -358,6 +358,13 @@ WatchersLightboxDirective = ($repo) ->
 
             $el.removeClass("hidden")
 
+        $scope.$watch "usersSearch", (searchingText) ->
+            if not searchingText?
+                return
+
+            users = getFilteredUsers(searchingText)
+            render(users)
+
         $el.on "click", ".watcher-single", (event) ->
             $el.addClass("hidden")
 
