@@ -70,8 +70,13 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         return @rs.issues.get(@scope.projectId, @scope.issueId).then (issue) =>
             @scope.issue = issue
             @scope.commentModel = issue
-            @scope.previousUrl = "/project/#{@scope.project.slug}/issues/#{@scope.issue.neighbors.previous.ref}" if @scope.issue.neighbors.previous.id?
-            @scope.nextUrl = "/project/#{@scope.project.slug}/issues/#{@scope.issue.neighbors.next.ref}" if @scope.issue.neighbors.next.id?
+
+            projSlug = @scope.project.slug
+            prev = @scope.issue.neighbors.previous
+            next = @scope.issue.neighbors.next
+
+            @scope.previousUrl = "/project/#{projSlug}/issues/#{prev.ref}" if prev.id?
+            @scope.nextUrl = "/project/#{@scope.project.slug}/issues/#{next.ref}" if next.id?
 
     loadHistory: ->
         return @rs.issues.history(@scope.issueId).then (history) =>
