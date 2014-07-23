@@ -11,5 +11,4 @@ div.kanban-table
             div.kanban-uses-box.task-column(ng-repeat="status in usStatusList track by status.id",
                                                       tg-kanban-sortable)
                 div.kanban-task(ng-repeat="us in usByStatus[status.id] track by us.id",
-                                tg-kanban-userstory)
-                    include ../components/kanban-task
+                                tg-kanban-userstory, ng-model="us")

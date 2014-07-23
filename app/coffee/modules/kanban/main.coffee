@@ -165,6 +165,10 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             when "standard" then @rootscope.$broadcast("usform:new", statusId)
             when "bulk" then @rootscope.$broadcast("usform:bulk", statusId)
 
+    changeUsAssignedTo: (us) ->
+        @rootscope.$broadcast("assigned-to:add", us)
+
+    # Scope Events Handlers
     onNewUserstory: (ctx, us) ->
         @scope.usByStatus[us.status].splice(0, 0, us)
 
@@ -191,9 +195,14 @@ module.directive("tgKanban", ["$tgRepo", "$rootScope", KanbanDirective])
 #############################################################################
 
 KanbanUserstoryDirective = ->
-    link = ($scope, $el, $attrs) ->
+    link = ($scope, $el, $attrs, $model) ->
         $el.disableSelection()
-    return {link:link}
+
+    return {
+        templateUrl: "/partials/views/components/kanban-task.html"
+        link:link
+        require: "ngModel"
+    }
 
 
 module.directive("tgKanbanUserstory", KanbanUserstoryDirective)
