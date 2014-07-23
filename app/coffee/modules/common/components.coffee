@@ -236,12 +236,14 @@ AssignedToDirective = ($rootscope, $confirm) ->
             event.preventDefault()
             title = "Remove assigned to"
             subtitle = ""
+
             $confirm.ask(title, subtitle).then =>
                 $model.$modelValue.assigned_to  = null
                 renderAssignedTo($model.$modelValue)
 
-        $scope.$on "assigned-to:added", (ctx, issue) ->
-            renderAssignedTo(issue)
+        $scope.$on "assigned-to:added", (ctx, userId) ->
+            $model.$modelValue.assigned_to = userId
+            renderAssignedTo($model.$modelValue)
 
     return {
         link:link,

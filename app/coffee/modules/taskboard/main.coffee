@@ -59,9 +59,13 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
         @scope.$on("taskform:bulk:success", => @.loadTaskboard())
         @scope.$on("taskform:new:success", => @.loadTaskboard())
         @scope.$on("taskform:edit:success", => @.loadTaskboard())
-
-        @scope.$on("assigned-to:added", (ctx, task) => @scope.$apply(=> @repo.save(task)))
         @scope.$on("taskboard:task:move", @.taskMove)
+
+        @scope.$on "assigned-to:added", (ctx, userId, task) =>
+            task.assigned_to = userId
+            promise = @repo.save(task)
+            promise.then null, ->
+                console.log "FAIL" # TODO
 
     loadSprintStats: ->
         return @rs.sprints.stats(@scope.projectId, @scope.sprintId).then (stats) =>

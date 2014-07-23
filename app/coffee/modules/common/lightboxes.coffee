@@ -242,7 +242,7 @@ usersTemplate = _.template("""
 <% } %>
 """)
 
-AssignedToLightboxDirective = ($repo) ->
+AssignedToLightboxDirective = ->
     link = ($scope, $el, $attrs) ->
         selectedUser = null
         selectedItem = null
@@ -269,7 +269,6 @@ AssignedToLightboxDirective = ($repo) ->
             $el.find("div.watchers").html(html)
 
         $scope.$on "assigned-to:add", (ctx, item) ->
-            console.log $scope.usersSearch
             selectedItem = item
             assignedToId = item.assigned_to
             selectedUser = $scope.usersById[assignedToId]
@@ -285,32 +284,16 @@ AssignedToLightboxDirective = ($repo) ->
             target = angular.element(event.currentTarget)
 
             $el.addClass("hidden")
-            if not selectedItem?
-                return
-
-            selectedItem.assigned_to = target.data("user-id")
             $scope.$apply ->
-                promise = $repo.save(selectedItem)
-                promise.then ->
-                    $scope.$broadcast("assigned-to:added", selectedItem)
-                promise.then null, ->
-                    console.log "FAIL" # TODO
+                $scope.$broadcast("assigned-to:added", target.data("user-id"), selectedItem)
 
         $el.on "click", ".remove-assigned-to", (event) ->
             event.preventDefault()
             event.stopPropagation()
 
             $el.addClass("hidden")
-            if not selectedItem?
-                return
-
-            selectedItem.assigned_to = null
             $scope.$apply ->
-                promise = $repo.save(selectedItem)
-                promise.then ->
-                    $scope.$broadcast("assigned-to:added", selectedItem)
-                promise.then null, ->
-                    console.log "FAIL" # TODO
+                $scope.$broadcast("assigned-to:added", null, selectedItem)
 
         $el.on "click", ".close", (event) ->
             event.preventDefault()
@@ -325,7 +308,7 @@ AssignedToLightboxDirective = ($repo) ->
     }
 
 
-module.directive("tgLbAssignedto", ["$tgRepo", AssignedToLightboxDirective])
+module.directive("tgLbAssignedto", AssignedToLightboxDirective)
 
 
 #############################################################################
@@ -367,7 +350,6 @@ WatchersLightboxDirective = ($repo) ->
         #     $scope.filteredUsers = _.difference($scope.users, watchers)
 
         $scope.$on "watcher:add", (ctx, item) ->
-            console.log "JKAJA", item
             selectedItem = item
 
             users = getFilteredUsers()
