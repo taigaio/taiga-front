@@ -252,6 +252,9 @@ ColorSelectionDirective = () ->
     link = ($scope, $el, $attrs, $model) ->
         $ctrl = $el.controller()
 
+        $scope.$watch $attrs.ngModel, (element) ->
+            $scope.color = element.color
+
         $el.on "click", ".current-color", (event) ->
             # Showing the color selector
             event.preventDefault()
@@ -276,6 +279,8 @@ ColorSelectionDirective = () ->
 
         $el.on "click", ".select-color .selected-color", (event) ->
             event.preventDefault()
+            $scope.$apply ->
+                $model.$modelValue.color = $scope.color            
             $el.find(".select-color").hide()
 
         $scope.$on "$destroy", ->
