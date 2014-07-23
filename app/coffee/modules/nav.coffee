@@ -40,7 +40,38 @@ class ProjectsNavigationController extends taiga.Controller
 
     loadInitialData: ->
         return @rs.projects.list().then (projects) =>
-            @scope.projects = projects
+            example = [
+                {'id': 200, 'name': 'sdfdsfs', 'slug': 'sdfsdf'},
+                {'id': 201, 'name': 'sdfdsfs1', 'slug': 'sdfsdf'},
+                {'id': 2001, 'name': 'sdfdsfs2', 'slug': 'sdfsdf'},
+                {'id': 2002, 'name': 'sdfdsfs3', 'slug': 'sdfsdf'},
+                {'id': 2003, 'name': 'sdfdsfs4', 'slug': 'sdfsdf'},
+                {'id': 2004, 'name': 'sdfdsfs5', 'slug': 'sdfsdf'},
+                {'id': 2005, 'name': 'sdfdsfs6', 'slug': 'sdfsdf'},
+                {'id': 2006, 'name': 'sdfdsfs7', 'slug': 'sdfsdf'},
+                {'id': 2007, 'name': 'sdfdsfs8', 'slug': 'sdfsdf'},
+                {'id': 2008, 'name': 'sdfdsfs9', 'slug': 'sdfsdf'},
+                {'id': 2009, 'name': 'sdfdsfs10', 'slug': 'sdfsdf'},
+                {'id': 20010, 'name': 'sdfdsfs11', 'slug': 'sdfsdf'},
+                {'id': 20011, 'name': 'sdfdsfs12', 'slug': 'sdfsdf'},
+                {'id': 20012, 'name': 'sdfdsfs13', 'slug': 'sdfsdf'},
+                {'id': 20013, 'name': 'sdfdsfs14', 'slug': 'sdfsdf'},
+                {'id': 20014, 'name': 'sdfdsfs15', 'slug': 'sdfsdf'},
+                {'id': 20015, 'name': 'sdfdsfs16', 'slug': 'sdfsdf'},
+                {'id': 20016, 'name': 'sdfdsfs17', 'slug': 'sdfsdf'},
+                {'id': 20017, 'name': 'sdfdsfs18', 'slug': 'sdfsdf'},
+                {'id': 20018, 'name': 'sdfdsfs19', 'slug': 'sdfsdf'},
+                {'id': 20019, 'name': 'sdfdsfs20', 'slug': 'sdfsdf'},
+                {'id': 20020, 'name': 'sdfdsfs21', 'slug': 'sdfsdf'},
+                {'id': 20021, 'name': 'sdfdsfs22', 'slug': 'sdfsdf'},
+                {'id': 20022, 'name': 'sdfdsfs23', 'slug': 'sdfsdf'},
+                {'id': 20023, 'name': 'sdfdsfs24', 'slug': 'sdfsdf'},
+                {'id': 20024, 'name': 'sdfdsfs25', 'slug': 'sdfsdf'},
+                {'id': 20025, 'name': 'sdfdsfs26', 'slug': 'sdfsdf'},
+                {'id': 20026, 'name': 'sdfdsfs27', 'slug': 'sdfsdf'}
+            ]
+
+            @scope.projects = projects.concat(example)
             return projects
 
 

@@ -24,9 +24,8 @@
         color: $whitish;
         padding-left: 1rem;
     }
-    .pagination-list {
+    .v-pagination-list {
         height: 385px;
-        overflow: hidden;
     }
     ul {
         left: 0;
@@ -68,21 +67,7 @@
         top: 0;
         width: 100%;
     }
-    .pagination-next,
-    .pagination-previous {
-        background-color: $button-gray;
-        color: $whitish;
-        display: block;
-        padding: .1rem 0;
-        text-align: center;
-        visibility: hidden;
-        width: 100%;
-        &:hover {
-            @include transition (background .3s linear);
-            background-color: $button-gray / 2;
-        }
-    }
-    .pagination-next {
+    .v-pagination-next {
         margin-bottom: 1rem;
     }
 }

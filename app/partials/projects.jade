@@ -16,13 +16,10 @@ block content
 
             div.all-projects
                 h1 Projects
-                div(tg-projects-pagination)
-                    a.pagination-previous.icon.icon-arrow-up(href="")
-                    .pagination-list
-                        ul
-                            li(ng-repeat="project in ctrl.projects.all")
-                                a.button(href="", tg-bo-html="project.name", tg-nav="project-backlog:project=project.slug")
-                    a.pagination-next.icon.icon-arrow-bottom(href="")
+                div(tg-projects-pagination, active="ctrl.projects.all.length")
+                    ul
+                        li(ng-repeat="project in ctrl.projects.all")
+                            a.button(href="", tg-bo-html="project.name", tg-nav="project-backlog:project=project.slug")
 
                 .create-project-button-wrapper
                     a.button.button-green(href="", tg-nav="create-project") Create project

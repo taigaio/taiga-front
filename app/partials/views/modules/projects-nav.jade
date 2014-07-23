@@ -5,7 +5,8 @@ nav.projects-nav(tg-projects-nav)
             input(type="text" placeholder="Search in...", ng-model="projectsSearch.$")
             a.icon.icon-search
 
-    ul.projects-list
-        li(ng-repeat="project in projects|filter:projectsSearch:strict track by project.id")
-            a(href="", tg-bo-html="project.name", tg-nav="project-backlog:project=project.slug")
-                span.icon.icon-arrow-right
+    div.projects-pagination(tg-projects-pagination, active="projects.length && !projectsSearch.$.length")
+        ul.projects-list
+            li(ng-repeat="project in projects|filter:projectsSearch:strict track by project.id")
+                a(href="", tg-bo-html="project.name", tg-nav="project-backlog:project=project.slug")
+                    span.icon.icon-arrow-right

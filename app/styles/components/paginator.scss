@@ -32,3 +32,22 @@
         color: $gray-light;
     }
 }
+
+.v-pagination-list {
+    overflow: hidden;
+}
+
+a.v-pagination-next,
+a.v-pagination-previous {
+    background-color: $button-gray;
+    color: $whitish;
+    display: block;
+    padding: .1rem 0;
+    text-align: center;
+    visibility: hidden;
+    width: 100%;
+    &:hover {
+        @include transition (background .3s linear);
+        background-color: $button-gray / 2;
+    }
+}
