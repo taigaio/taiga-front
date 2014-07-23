@@ -17,19 +17,19 @@ module.controller("ProjectController", ProjectController)
 
 ProjectsPaginationDirective = () ->
     itemsPerPage = 7
-    nextPage = (element, pageSize) ->
+    nextPage = (element, pageSize, callback) ->
         top = parseInt(element.css('top'), 10)
         newTop = top - pageSize
 
-        element.animate({"top": newTop});
+        element.animate({"top": newTop}, callback);
 
         return newTop
 
-    prevPage = (element, pageSize) ->
+    prevPage = (element, pageSize, callback) ->
         top = parseInt(element.css('top'), 10)
         newTop = top + pageSize
 
-        element.animate({"top": newTop});
+        element.animate({"top": newTop}, callback);
 
         return newTop
 
@@ -45,21 +45,37 @@ ProjectsPaginationDirective = () ->
         container = $el.find("ul")
         pageSize = $el.find(".pagination-list").height()
         containerSize = 0
+        animationInProgess = false
+
+        animationEnd = () ->
+            animationInProgess = false
 
         prevBtn.on "click", (event) ->
             event.preventDefault()
 
+            if animationInProgess
+                return
+
+            animationInProgess = true
             visible(nextBtn)
 
-            if -prevPage(container, pageSize) == 0
+            newTop = prevPage(container, pageSize, animationEnd)
+
+            if newTop == 0
                 hide(prevBtn)
 
         nextBtn.on "click", (event) ->
             event.preventDefault()
 
+            if animationInProgess
+                return
+
+            animationInProgess = true
             visible(prevBtn)
 
-            if -nextPage(container, pageSize) + pageSize > containerSize
+            newTop = nextPage(container, pageSize, animationEnd)
+
+            if -newTop + pageSize > containerSize
                 hide(nextBtn)
 
         $scope.$watch 'ctrl.projects', () ->
