@@ -69,7 +69,9 @@ urls = {
     "resolver": "/api/v1/resolver"
     "wiki-attachment": "/media/attachment-files/%s/wikipage/%s"
     "userstory-statuses": "/api/v1/userstory-statuses"
-
+    "task-statuses": "/api/v1/task-statuses"
+    "issue-statuses": "/api/v1/issue-statuses"
+    
     # History
     "history/userstory": "/api/v1/history/userstory"
     "history/issue": "/api/v1/history/issue"

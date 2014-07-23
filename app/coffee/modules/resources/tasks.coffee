@@ -43,6 +43,10 @@ resourceProvider = ($repo, $http, $urls) ->
     service.history = (taskId) ->
         return $repo.queryOneRaw("history/task", taskId)
 
+    service.listStatuses = (projectId) ->
+        params = {"project": projectId}
+        return $repo.queryMany("task-statuses", params)
+
     return (instance) ->
         instance.tasks = service
 

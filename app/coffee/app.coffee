@@ -63,6 +63,12 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide) ->
     $routeProvider.when("/project/:pslug/admin/project-values/us-status",
                     {templateUrl: "/partials/admin-project-values-us-status.html"})
 
+    $routeProvider.when("/project/:pslug/admin/project-values/task-status",
+                {templateUrl: "/partials/admin-project-values-task-status.html"})
+
+    $routeProvider.when("/project/:pslug/admin/project-values/issue-status",
+                {templateUrl: "/partials/admin-project-values-issue-status.html"})
+
     $routeProvider.when("/project/:pslug/admin/memberships",
                     {templateUrl: "/partials/admin-memberships.html"})
     # Auth

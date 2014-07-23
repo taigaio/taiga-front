@@ -74,6 +74,8 @@ urls = {
     "project-admin-project-profile-default-values": "/project/:project/admin/project-profile/default-values",
     "project-admin-project-profile-features": "/project/:project/admin/project-profile/features",
     "project-admin-project-values-us-status": "/project/:project/admin/project-values/us-status",
+    "project-admin-project-values-task-status": "/project/:project/admin/project-values/task-status",
+    "project-admin-project-values-issue-status": "/project/:project/admin/project-values/issue-status",
     "project-admin-memberships": "/project/:project/admin/memberships"
 }
 

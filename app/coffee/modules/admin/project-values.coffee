@@ -47,7 +47,6 @@ class ProjectValuesStatusController extends mixOf(taiga.Controller, taiga.PageMi
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location) ->
-        @scope.sectionName = "Project Values" #i18n
         @scope.project = {}
 
         promise = @.loadInitialData()
@@ -275,6 +274,10 @@ ColorSelectionDirective = () ->
             $scope.$apply ->
                 $model.$modelValue.color = target.data("color")
             $el.find(".select-color").hide()
+
+        $el.on "click", ".select-color .selected-color", (event) ->
+            event.preventDefault()
+            $el.find(".select-color").hide()          
 
         $scope.$on "$destroy", ->
             $el.off()
