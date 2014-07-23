@@ -6,7 +6,8 @@
         @include table-flex();
         @extend %small;
         border-bottom: 1px solid $gray-light;
-        padding: 1rem 0 1rem 1rem;
+        cursor: move;
+        padding: .5rem 0 .5rem .5rem;
         text-align: left;
         width: 100%;
     }
@@ -39,8 +40,11 @@
             margin-left: .2rem;
         }
     }
+    .pop-status {
+        @include popover(200px, '', 65%, '', 0);
+    }
     .pop-role {
-        @include popover(150px, -100px, 110px, '', '');
+        @include popover(200px, 0, 65%, '', '');
         a {
             &.active {
                 background: $fresh-taiga;
@@ -48,14 +52,11 @@
             }
         }
     }
-    .pop-status {
-        @include popover(150px, '', 30px, 10px, '');
-    }
     .pop-points {
         @include popover(150px, '', 30px, 10px, '');
     }
     .pop-points-open {
-        @include popover(200px, -100px, 260px, '', '');
+        @include popover(200px, 0, 260px, '', '');
         li {
             display: inline-block;
             width: 23%;
@@ -76,15 +77,7 @@
     .backlog-table-title {
         @extend %medium;
         @extend %bold;
-    }
-    .backlog-table-subtitle {
-        @extend %small;
-        @extend %text;
-        background: $whitish;
-        border-bottom: 2px solid $grayer;
-        &:hover {
-            background: $whitish;
-        }
+        border-bottom: 2px solid $gray-light;
     }
     .points {
         cursor: pointer;
@@ -118,6 +111,12 @@
         input {
             margin-right: 1rem;
             vertical-align: middle;
+            &:checked {
+                +a {
+                    @include transition (color .2s ease-in);
+                    color: $fresh-taiga;
+                }
+            }
         }
         span {
             display: inline-block;

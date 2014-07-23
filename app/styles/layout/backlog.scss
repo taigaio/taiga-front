@@ -8,14 +8,17 @@
     @include clearfix;
     background: $whitish;
     color: $blackish;
-    margin-bottom: 2rem;
-    padding: 1em;
+    margin-bottom: 1rem;
+    padding: .5rem;
     .trans-button {
         display: inline-block;
         margin-right: 1rem;
-        padding: 4px 0;
+        padding: .3rem 0;
         &.move-to-current-sprint {
             display: none;
+        }
+        span {
+            vertical-align: middle;
         }
     }
 }
