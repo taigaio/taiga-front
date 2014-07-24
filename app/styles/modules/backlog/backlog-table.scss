@@ -6,7 +6,6 @@
         @include table-flex();
         @extend %small;
         border-bottom: 1px solid $gray-light;
-        cursor: move;
         padding: .5rem 0 .5rem .5rem;
         text-align: left;
         width: 100%;
@@ -91,6 +90,7 @@
 
 .backlog-table-body {
     .row {
+        cursor: move;
         position: relative;
         &:hover {
             @include transition (background .2s ease-in);
@@ -154,12 +154,18 @@
         }
     }
     .doom-line {
-        background: $red;
-        border-bottom: 2px solid lighten($red, 10%);
-        border-top: 2px solid darken($red, 10%);
-        height: 4px;
-        margin: .5rem 0;
+        background: rgba($red, .5);
+        padding: .5rem 0;
+        position: relative;
         width: 100%;
+        span {
+            @extend %small;
+            @extend %title;
+            color: $white;
+            position: absolute;
+            right: .5rem;
+            top: -3px;
+        }
     }
     .us-settings a,
     .icon-drag-v {
@@ -181,6 +187,6 @@
         opacity: 0;
         position: absolute;
         right: .5rem;
-        top: 1rem;
+        top: .5rem;
     }
 }

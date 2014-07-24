@@ -336,6 +336,10 @@ BacklogDirective = ($repo, $rootscope) ->
     #########################
     ## Doom line Link
     #########################
+    #TODO: i18n
+    doomLineTemplate = _.template("""
+    <div class="doom-line"><span>Project Scope [Doomline]</span></div>
+    """)
 
     linkDoomLine = ($scope, $el, $attrs, $ctrl) ->
 
@@ -343,7 +347,7 @@ BacklogDirective = ($repo, $rootscope) ->
             $el.find(".doom-line").remove()
 
         addDoomLineDom = (element) ->
-            element?.before($( "<hr>", { class:"doom-line"}))
+            element?.before(doomLineTemplate({}))
 
         getUsItems = ->
             rowElements = $el.find('.backlog-table-body .us-item-row')
