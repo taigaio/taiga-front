@@ -36,6 +36,9 @@ $column-margin: 0 10px 0 0;
             &:hover {
                 color: $green-taiga;
             }
+            &.icon-plus {
+                right: 2rem;
+            }
         }
     }
 }

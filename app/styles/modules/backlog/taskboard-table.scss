@@ -26,10 +26,24 @@ $column-margin: 0 10px 0 0;
         background: $whitish;
         margin: $column-margin;
         padding: .5rem 0;
+        position: relative;
         text-align: center;
         text-transform: uppercase;
         &:last-child {
             margin-right: 0;
+        }
+        .icon {
+            @include transition(color .2s linear);
+            color: $gray-light;
+            position: absolute;
+            right: .5rem;
+            top: .5rem;
+            &:hover {
+                color: $green-taiga;
+            }
+            &.icon-plus {
+                right: 2rem;
+            }
         }
     }
 }
