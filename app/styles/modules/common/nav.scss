@@ -71,15 +71,6 @@
     }
     .user-settings {
         position: relative;
-        img {
-            border: 1px solid transparent;
-            border-radius: 50%;
-            width: 100%;
-            &:hover {
-                @include transition (all .6s ease-in-out);
-                border: 2px solid $fresh-taiga;
-            }
-        }
     }
     .settings {
         text-align: center;
