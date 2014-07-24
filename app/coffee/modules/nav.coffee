@@ -127,7 +127,7 @@ ProjectMenuDirective = ($log, $compile, $rootscope) ->
                 <li><a href="" title="Logout">Logout</a></li>
             </ul>
             <a href="" title="User preferences" class="avatar">
-                <img src="http://thecodeplayer.com/u/uifaces/12.jpg" alt="username"/>
+                <img src="/images/unnamed.png" alt="username"/>
             </a>
         </div>
     </div>

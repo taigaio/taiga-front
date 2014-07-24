@@ -255,7 +255,10 @@ module.directive("tgAssignedTo", ["$rootScope", "$tgConfirm", AssignedToDirectiv
 
 
 #############################################################################
-## List directives (Issues List, Search)
+## Common list directives
+#############################################################################
+## NOTE: These directives are used in issues and search and are
+##       completely bindonce, they only serves for visualization of data.
 #############################################################################
 
 ListItemIssueStatusDirective = ->
@@ -286,27 +289,26 @@ ListItemUsStatusDirective = ->
 
 
 ListItemAssignedtoDirective = ->
-    template = """
+    template = _.template("""
     <figure class="avatar">
-        <img src="" alt="username"/>
-        <figcaption>--</figcaption>
+        <img src="<%= imgurl %>" alt="<%- name %>"/>
+        <figcaption><%- name %></figcaption>
     </figure>
-    """
+    """)
 
     link = ($scope, $el, $attrs) ->
-        issue = $scope.$eval($attrs.tgListitemAssignedto)
-        if issue.assigned_to is null
-            $el.find("figcaption").html("Unassigned")
-        else
-            bindOnce $scope, "membersById", (membersById) ->
-                member = membersById[issue.assigned_to]
-                $el.find("figcaption").html(member.full_name)
-                $el.find("img").attr("src", member.photo)
+        bindOnce $scope, "membersById", (membersById) ->
+            item = $scope.$eval($attrs.tgListitemAssignedto)
+            ctx = {name: "Unassigned", imgurl: "/images/unnamed.png"}
 
-    return {
-        template: template
-        link:link
-    }
+            member = membersById[item.assigned_to]
+            if member
+                ctx.imgurl = member.photo
+                ctx.name = member.full_name
+
+            $el.html(template(ctx))
+
+    return {link:link}
 
 
 ListItemPriorityDirective = ->

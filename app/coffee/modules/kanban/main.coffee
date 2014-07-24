@@ -244,7 +244,7 @@ KanbanUserDirective = ($log) ->
 
         render = (user) ->
             if user is undefined
-                ctx = {name: "Unassigned", imgurl: "http://thecodeplayer.com/u/uifaces/12.jpg"}
+                ctx = {name: "Unassigned", imgurl: "/images/unnamed.png"}
             else
                 ctx = {name: user.full_name_display, imgurl: user.photo}
 
