@@ -45,6 +45,16 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide) ->
     $routeProvider.when("/project/:pslug/tasks/:taskref/edit",
                 {templateUrl: "/partials/task-detail-edit.html"})
 
+    # Wiki
+    $routeProvider.when("/project/:pslug/wiki",
+                {redirectTo: (params) -> "/project/#{params.pslug}/wiki/home"})
+
+    $routeProvider.when("/project/:pslug/wiki/:slug",
+                {templateUrl: "/partials/wiki.html"})
+
+    $routeProvider.when("/project/:pslug/wiki/:slug/edit",
+                {templateUrl: "/partials/wiki-edit.html"})
+
     # Issues
     $routeProvider.when("/project/:pslug/issues", {templateUrl: "/partials/issues.html"})
     $routeProvider.when("/project/:pslug/issues/:issueref",
@@ -147,6 +157,7 @@ modules = [
     "taigaIssues",
     "taigaUserStories",
     "taigaTasks",
+    "taigaWiki",
     "taigaSearch",
     "taigaAdmin",
     "taigaNavMenu",

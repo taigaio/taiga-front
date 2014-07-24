@@ -44,6 +44,10 @@ trim = (data, char) ->
     return _.str.trim(data, char)
 
 
+slugify = (data) ->
+    return _.str.slugify(data)
+
+
 toggleText = (element, texts) ->
     nextTextPosition = element.data('nextTextPosition')
     nextTextPosition = 0 if not nextTextPosition? or nextTextPosition >= texts.length
@@ -99,6 +103,7 @@ taiga = @.taiga
 taiga.bindOnce = bindOnce
 taiga.mixOf = mixOf
 taiga.trim = trim
+taiga.slugify = slugify
 taiga.toggleText = toggleText
 taiga.groupBy = groupBy
 taiga.timeout = timeout

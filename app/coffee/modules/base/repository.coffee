@@ -147,6 +147,7 @@ class RepositoryService extends taiga.Service
         params.task = options.taskref if options.taskref?
         params.issue = options.issueref if options.issueref?
         params.milestone = options.mlref if options.mlref?
+        params.wikipage = options.wikipage if options.wikipage?
         return @.queryOneRaw("resolver", null, params)
 
 

@@ -43,6 +43,13 @@ BindOnceSrcDirective = ->
             $el.attr("src", val)
     return {link:link}
 
+# Object href bind once helper.
+BindOnceHrefDirective = ->
+    link = ($scope, $el, $attrs) ->
+        bindOnce $scope, $attrs.tgBoHref, (val) ->
+            $el.attr("href", val)
+    return {link:link}
+
 # Object alt bind once helper.
 BindOnceAltDirective = ->
     link = ($scope, $el, $attrs) ->
@@ -75,6 +82,7 @@ module = angular.module("taigaBase")
 module.directive("tgBoHtml", BindOnceHtmlDirective)
 module.directive("tgBoRef", BindOnceRefDirective)
 module.directive("tgBoSrc", BindOnceSrcDirective)
+module.directive("tgBoHref", BindOnceHrefDirective)
 module.directive("tgBoAlt", BindOnceAltDirective)
 module.directive("tgBoTitle", BindOnceTitleDirective)
 module.directive("tgBindTitle", BindTitleDirective)

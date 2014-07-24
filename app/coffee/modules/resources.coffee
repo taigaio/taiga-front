@@ -44,6 +44,7 @@ urls = {
     "issues-restore": "/api/v1/issues/%s/restore"
     "wiki": "/api/v1/wiki"
     "wiki-restore": "/api/v1/wiki/%s/restore"
+    "wiki-links": "/api/v1/wiki-links"
     "choices/userstory-statuses": "/api/v1/userstory-statuses"
     "choices/userstory-statuses/bulk-update-order": "/api/v1/userstory-statuses/bulk_update_order"
     "choices/points": "/api/v1/points"
@@ -117,6 +118,7 @@ module.run([
     "$tgSprintsResourcesProvider",
     "$tgUserstoriesResourcesProvider",
     "$tgTasksResourcesProvider",
+    "$tgWikiResourcesProvider",
     "$tgIssuesResourcesProvider",
     "$tgSearchResourcesProvider",
     "$tgMdRenderResourcesProvider",

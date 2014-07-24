@@ -13,6 +13,9 @@
         a {
             display: block;
             padding: 1rem 0 1rem 1rem;
+            span {
+                cursor: pointer;
+            }
         }
         .icon {
             @include transition (opacity 1s linear);

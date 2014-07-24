@@ -4,7 +4,7 @@ block head
     title Taiga  Project management web application with scrum in mind!
 
 block content
-    div.wrapper(tg-wiki-detail, ng-controller="WikiDetailController as ctrl",
+    div.wrapper(tg-wiki-edit, ng-controller="WikiEditController as ctrl",
                 ng-init="section='wiki'")
         sidebar.menu-secondary.extrabar
             section.wiki-nav(tg-wiki-nav, ng-model="wikiLinks")
@@ -14,12 +14,10 @@ block content
                 h1
                     span(tg-bo-html="project.name")
                     span.green Wiki
-                    span.wiki-title(tg-bo-html='wiki.slug')
-                    a.button.button-red.edit-wiki(href="", title="Delete", ng-click="ctrl.delete()") Delete
-                    a.button.button-green.edit-wiki(href="", title="Edit", ng-click="ctrl.edit()") Edit
+                    span.green(tg-bo-html='wikiSlug')
+                    a.button.button-green.save-wiki(href="", title="Save", ng-click="ctrl.save()") Save
 
-            include views/modules/wiki-summary
-
-            section.wiki-content.wysiwyg(tg-bind-html="wiki.html")
+            section.wysiwyg
+                textarea(placeholder="Write a your wiki page", ng-model="wiki.content", tg-markitup)
 
             //include views/modules/attachments

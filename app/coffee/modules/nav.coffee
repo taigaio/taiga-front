@@ -92,7 +92,7 @@ ProjectMenuDirective = ($log, $compile, $rootscope) ->
         </a>
     </li>
     <li id="nav-wiki">
-        <a href="" title="Wiki">
+        <a href="" title="Wiki" tg-nav="project-wiki:project=project.slug">
             <span class="icon icon-wiki"></span>
             <span class="item">Wiki</span>
         </a>
