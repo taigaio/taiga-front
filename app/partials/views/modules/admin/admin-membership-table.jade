@@ -6,7 +6,7 @@ section.admin-membership-table.basic-table
         div.header-status Status
 
     div.row(ng-repeat="member in memberships")
-        div.row-member(tg-memberships-member-avatar="member")
-        div.row-admin(tg-memberships-member-is-admin-checkbox="member")
-        div.row-role(tg-memberships-member-role-selector="member")
-        div.row-status(tg-memberships-member-actions="member")
+        div.row-member(tg-memberships-row-avatar="member")
+        div.row-admin(tg-memberships-row-admin-checkbox="member")
+        div.row-role(tg-memberships-row-role-selector="member")
+        div.row-status(tg-memberships-row-actions="member")
