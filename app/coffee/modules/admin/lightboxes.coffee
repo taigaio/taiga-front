@@ -37,7 +37,7 @@ CreateMembersDirective = ($repo, $rootScope, $q, $confirm) ->
             <option value="<%- role.id %>"><%- role.name %></option>
             <% }); %>
         </select>
-        <a class="icon icon-plus" href=""></a>
+        <a class="icon icon-plus add-fieldset" href=""></a>
     </fieldset>
     """) # i18n
 
@@ -46,11 +46,15 @@ CreateMembersDirective = ($repo, $rootScope, $q, $confirm) ->
             ctx = {roleList: $scope.roles}
             return template(ctx)
 
-        $scope.$on "membersform:new",  ->
+        resetForm = ->
+            $el.find("form > fieldset").remove()
+
             title = $el.find("h2")
             fieldSet = createFieldSet()
             title.after(fieldSet)
 
+        $scope.$on "membersform:new",  ->
+            resetForm()
             $el.removeClass("hidden")
 
         $scope.$on "$destroy", ->
@@ -61,19 +65,19 @@ CreateMembersDirective = ($repo, $rootScope, $q, $confirm) ->
             event.preventDefault()
             $el.addClass("hidden")
 
-        $el.on "click", ".icon-delete", (event) ->
+        $el.on "click", ".delete-fieldset", (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
             fieldSet = target.parent()
 
             fieldSet.remove()
 
-        $el.on "click", ".icon-plus", (event) ->
+        $el.on "click", ".add-fieldset", (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
             fieldSet = target.parent()
 
-            target.removeClass("icon-plus").addClass("icon-delete")
+            target.removeClass("icon-plus add-fieldset").addClass("icon-delete delete-fieldset")
             newFieldSet = createFieldSet()
             fieldSet.after(newFieldSet)
 
