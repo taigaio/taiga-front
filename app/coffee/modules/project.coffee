@@ -1,7 +1,7 @@
 taiga = @.taiga
 module = angular.module("taigaProject", [])
 
-class ProjectController extends taiga.Controller
+class ProjectsController extends taiga.Controller
     @.$inject = ["$scope", "$tgResources"]
 
     constructor: (@scope, @rs) ->
@@ -12,6 +12,39 @@ class ProjectController extends taiga.Controller
     loadInitialData: ->
         return @rs.projects.list().then (projects) =>
             @.projects = {'recents': projects.slice(0, 8), 'all': projects.slice(6)}
+
+module.controller("ProjectsController", ProjectsController)
+
+class ProjectController extends taiga.Controller
+    @.$inject = ["$scope", "$tgResources", "$tgRepo", "$routeParams", "$q"]
+
+    constructor: (@scope, @rs, @repo, @params, @q) ->
+        @scope.hideMenu = true
+        @.loadInitialData()
+
+    loadInitialData: ->
+        # Resolve project slug
+        promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
+            @scope.projectId = data.project
+            return data
+
+        return promise.then(=> @.loadPageData())
+
+    loadPageData: ->
+        return @q.all([
+            @.loadProjectStats(),
+            @.loadProject()])
+
+    loadProject: ->
+        return @rs.projects.get(@scope.projectId).then (project) =>
+            @.project = project
+            return project
+
+    loadProjectStats: ->
+        return @rs.projects.stats(@scope.projectId).then (stats) =>
+            @.stats = stats
+            return stats
+
 
 module.controller("ProjectController", ProjectController)
 

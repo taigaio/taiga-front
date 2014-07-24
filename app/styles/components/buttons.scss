@@ -53,6 +53,18 @@ a.button-green {
     }
 }
 
+.button-blackish {
+    background: $blackish;
+    color: $whitish;
+    &:hover {
+        background: $button-gray-hover;
+        color: $white;
+    }
+    span {
+        color: $white;
+    }
+}
+
 .button-red {
     background: $red-light;
     &:hover {

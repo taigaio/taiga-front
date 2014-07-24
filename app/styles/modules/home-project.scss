@@ -1,0 +1,62 @@
+.home-project {
+    align-items: center;
+    display: flex;
+    .inner {
+        background-color: rgba(255, 255, 255, .2);
+        padding: 2rem;
+        width: 970px;
+    }
+    h1 {
+        font-weight: bold;
+        margin-bottom: 3rem;
+    }
+    li,
+    h1,
+    p {
+        color: $whitish;
+    }
+
+}
+
+.home-project-info-list {
+    display: flex;
+    .info-num {
+        @extend %xlarge;
+        font-family: 'DroidSans-Bold';
+        margin-right: .3rem;
+    }
+    .info-text {
+        @extend %small;
+        display: block;
+        line-height: 12px;
+        width: 55px;
+    }
+    li {
+        align-items: center;
+        display: flex;
+        margin-right: 1rem;
+    }
+}
+
+.home-project-bottom {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    img {
+        border-radius: 3px;
+        width: 40px;
+    }
+    li {
+        margin-right: .5rem;
+    }
+    ul {
+        display: flex;
+        flex-flow: row wrap;
+        margin-bottom: 0;
+        width: 50%;
+    }
+    .button-blackish {
+        color: $whitish;
+    }
+}

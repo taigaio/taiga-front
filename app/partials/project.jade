@@ -1,0 +1,33 @@
+extends dummy-layout
+
+block head
+    title Taiga  Project management web application with scrum in mind!
+
+block content
+    .home-project(ng-controller="ProjectController as ctrl")
+        .inner
+            h1(tg-bo-html="ctrl.project.name")
+
+            ul.home-project-info-list
+                li
+                    span.info-num(tg-bo-html="ctrl.stats.total_points")
+                    span.info-text projects points
+                li
+                    span.info-num(tg-bo-html="ctrl.stats.defined_points")
+                    span.info-text defined points
+                li
+                    span.info-num(tg-bo-html="ctrl.stats.assigned_points")
+                    span.info-text assigned points
+                li
+                    span.info-num(tg-bo-html="ctrl.stats.closed_points")
+                    span.info-text closed points
+
+
+            p.description(tg-bo-html="ctrl.project.description")
+
+            .home-project-bottom
+                ul
+                    li(ng-repeat="member in ctrl.project.memberships")
+                        img(src="http://www.gravatar.com/avatar/0601c5aa999eb9f589e3516ba7e31820?size=80&default=")
+
+                a.button.button-blackish(href="", tg-nav="project-backlog:project=ctrl.project.slug") GO TO PROJECT

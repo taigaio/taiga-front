@@ -4,7 +4,7 @@ block head
     title Taiga  Project management web application with scrum in mind!
 
 block content
-    div.home-projects-list(ng-controller="ProjectController as ctrl")
+    div.home-projects-list(ng-controller="ProjectsController as ctrl")
         .home-projects-list-inner
             ul.recent-projects
                 li(ng-repeat="project in ctrl.projects.recents")
@@ -12,14 +12,14 @@ block content
                         h2(tg-bo-html="project.name")
                         p(tg-bo-html="project.description")
                     .project-link
-                        a.button.button-gray(href="", tg-nav="project-backlog:project=project.slug") Go to project
+                        a.button.button-gray(href="", tg-nav="project:project=project.slug") Go to project
 
             div.all-projects
                 h1 Projects
                 div(tg-projects-pagination, active="ctrl.projects.all.length")
                     ul
                         li(ng-repeat="project in ctrl.projects.all")
-                            a.button(href="", tg-bo-html="project.name", tg-nav="project-backlog:project=project.slug")
+                            a.button(href="", tg-bo-html="project.name", tg-nav="project:project=project.slug")
 
                 .create-project-button-wrapper
                     a.button.button-green(href="", tg-nav="create-project") Create project
