@@ -41,18 +41,16 @@ CreateMembersDirective = ($repo, $rootScope, $q, $confirm) ->
     <fieldset>
     """) # i18n
 
-    createFieldSet = ($ctrl) ->
-        ctx = {roleList: $ctrl.scope.project.roles}
-        return template(ctx)
-
     link = ($scope, $el, $attrs) ->
-        $ctrl = $el.controller()
-
-        title = $el.find("h2")
-        fieldSet = createFieldSet($ctrl)
-        title.after(fieldSet)
+        createFieldSet = ->
+            ctx = {roleList: $scope.roles}
+            return template(ctx)
 
         $scope.$on "membersform:new",  ->
+            title = $el.find("h2")
+            fieldSet = createFieldSet()
+            title.after(fieldSet)
+
             $el.removeClass("hidden")
 
         $scope.$on "$destroy", ->
@@ -76,7 +74,7 @@ CreateMembersDirective = ($repo, $rootScope, $q, $confirm) ->
             fieldSet = target.parent()
 
             target.removeClass("icon-plus").addClass("icon-delete")
-            newFieldSet = createFieldSet($ctrl)
+            newFieldSet = createFieldSet()
             fieldSet.after(newFieldSet)
 
         $el.on "click", ".button-green", (event) ->
@@ -96,8 +94,7 @@ CreateMembersDirective = ($repo, $rootScope, $q, $confirm) ->
             if not form.validate()
                 return
 
-            form = angular.element($el.find("form"))
-            fieldSets = form.children("fieldset")
+            fieldSets = $el.find("form > fieldset")
 
             invitations = _.map fieldSets, (fs) ->
                 fieldset = angular.element(fs)
