@@ -40,7 +40,7 @@
         }
     }
     .pop-status {
-        @include popover(200px, '', 65%, '', 0);
+        @include popover(200px, 0, 65%, '', '');
     }
     .pop-role {
         @include popover(200px, 0, 65%, '', '');
@@ -187,6 +187,6 @@
         opacity: 0;
         position: absolute;
         right: .5rem;
-        top: .5rem;
+        top: .6rem;
     }
 }

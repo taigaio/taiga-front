@@ -1,14 +1,14 @@
 .notification-message {
     @include transform(translateY(-100%));
     @include transition (all .6s ease-in-out);
-    background: rgba($gray-light, .8);
+    background: rgba($gray-light, .95);
     color: $white;
     padding: 1rem;
     padding-bottom: .5em;
     position: absolute;
     top: 0;
     width: 100%;
-    z-index: 999;
+    z-index: 9999;
     &.active {
         @include transform(translateY(0));
         @include transition (all .6s ease-in-out);
@@ -33,7 +33,7 @@
 }
 
 .notification-message-success {
-    background: rgba($fresh-taiga, .8);
+    background: rgba($fresh-taiga, .95);
     .icon-notification-success {
         @extend %xxlarge;
         display: inline;
@@ -42,7 +42,7 @@
 }
 
 .notification-message-error {
-    background: rgba($red, .8);
+    background: rgba($red, .95);
     .icon-notification-error {
         @extend %xxlarge;
         display: inline;
@@ -53,7 +53,7 @@
 .notification-light {
     @include transform(translateY(-100%));
     @include transition (all .6s ease-in-out);
-    background: rgba($gray-light, .8);
+    background: rgba($gray-light, .95);
     color: $white;
     left: calc(50% - 200px);
     padding: 1rem 1rem .2rem;
@@ -84,5 +84,5 @@
 }
 
 .notification-message-light-error {
-    background: rgba($red, .8);
+    background: rgba($red, .95);
 }
