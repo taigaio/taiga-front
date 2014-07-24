@@ -50,8 +50,14 @@ $column-margin: 0 10px 0 0;
     .task-row {
         @include table-flex();
         margin-bottom: .5rem;
-        min-height: 17rem;
+        min-height: 10rem;
         width: 100%;
+        &:hover {
+            .new-task {
+                @include transition(opacity .3s linear);
+                opacity: 1;
+            }
+        }
     }
     .taskboard-tasks-box {
         background: $whitish;
@@ -108,8 +114,8 @@ $column-margin: 0 10px 0 0;
         }
     }
     .new-task {
-        bottom: 2rem;
-        position: absolute;
+        margin-top: 3rem;
+        opacity: 0;
     }
     .button-green {
         padding: 7px 80px;

@@ -12,11 +12,12 @@ div.taskboard-table
                     h3.us-title
                         span.us-ref(tg-bo-ref="us.ref")
                         span(ng-bind="us.subject")
-                    div.status(tg-us-status="us", on-update="ctrl.loadSprintState()")
-                        a.us-status(href="", title="Change user story status")
-                            span.us-status-bind
-                            span.icon.icon-arrow-bottom
-                    ul.points-list(tg-taskboard-us-points="us")
+                    //-
+                        div.status(tg-us-status="us", on-update="ctrl.loadSprintState()")
+                            a.us-status(href="", title="Change user story status")
+                                span.us-status-bind
+                                span.icon.icon-arrow-bottom
+                        ul.points-list(tg-taskboard-us-points="us")
                     include ../components/addnewtask
 
                 div.taskboard-tasks-box.task-column(ng-repeat="st in taskStatusList track by st.id", tg-taskboard-sortable)

@@ -29,8 +29,9 @@
     }
 }
 
-.button-green {
+a.button-green {
     background: $green-taiga;
+    color: $white;
     vertical-align: middle;
     &:hover,
     &.active {
