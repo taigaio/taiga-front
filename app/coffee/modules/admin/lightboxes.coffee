@@ -38,7 +38,7 @@ CreateMembersDirective = ($repo, $rootScope, $q, $confirm) ->
             <% }); %>
         </select>
         <a class="icon icon-plus" href=""></a>
-    <fieldset>
+    </fieldset>
     """) # i18n
 
     link = ($scope, $el, $attrs) ->
