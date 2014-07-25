@@ -39,7 +39,7 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
         "$tgResources",
         "$routeParams",
         "$q",
-        "$location"
+        "$tgLocation"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location) ->
