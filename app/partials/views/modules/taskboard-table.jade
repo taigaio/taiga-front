@@ -19,7 +19,13 @@ div.taskboard-table
                         span(ng-bind="us.total_points")
                         span points
 
-                div.taskboard-tasks-box.task-column(ng-repeat="st in taskStatusList track by st.id", tg-taskboard-sortable)
+                    a.icon.icon-plus(href="", title="Add new task",
+                                     ng-click="ctrl.addNewTask('standard', us)")
+                    a.icon.icon-bulk(href="", title="Add new tasks in bulk",
+                                     ng-click="ctrl.addNewTask('bulk', us)")
+
+                div.taskboard-tasks-box.task-column(ng-repeat="st in taskStatusList track by st.id",
+                                                    tg-taskboard-sortable)
                     div.taskboard-task(ng-repeat="task in usTasks[us.id][st.id] track by task.id",
                                        tg-taskboard-task)
                         include ../components/taskboard-task
@@ -30,7 +36,8 @@ div.taskboard-table
                         span Unassigned tasks
                     include ../components/addnewtask
 
-                div.taskboard-tasks-box.task-column(ng-repeat="st in taskStatusList track by st.id", tg-taskboard-sortable)
+                div.taskboard-tasks-box.task-column(ng-repeat="st in taskStatusList track by st.id",
+                                                    tg-taskboard-sortable)
                     div.taskboard-task(ng-repeat="task in usTasks[null][st.id] track by task.id",
                                        tg-taskboard-task)
                         include ../components/taskboard-task
