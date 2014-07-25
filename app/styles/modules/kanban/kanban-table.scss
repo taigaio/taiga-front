@@ -17,8 +17,9 @@ $column-margin: 0 10px 0 0;
     width: 100%;
     .task-colum_name {
         @include table-flex-child($column-flex, $column-width, $column-shrink, $column-width);
-        @extend %large;
+        @extend %medium;
         background: $whitish;
+        border-top: 3px solid $gray-light;
         margin: $column-margin;
         padding: .5rem 0;
         position: relative;
@@ -45,6 +46,7 @@ $column-margin: 0 10px 0 0;
 
 .kanban-table-body {
     @include table-flex();
+    @extend %medium;
     //height: 700px;
     overflow: hidden;
     overflow-x: auto;

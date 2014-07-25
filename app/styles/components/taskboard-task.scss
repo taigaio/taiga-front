@@ -18,6 +18,7 @@
         @include table-flex-child($flex-basis: 50px);
         a {
             @extend %small;
+            display: block;
             text-align: center;
         }
         img {
@@ -26,11 +27,9 @@
         figcaption {
             display: block;
             overflow: hidden;
-            position: relative;
             text-overflow: ellipsis;
-            top: 4px;
             white-space: nowrap;
-            width: 50px;
+            width: 100%;
         }
     }
     .task-num {
@@ -38,6 +37,7 @@
         margin-right: .5em;
     }
     .taskboard-text {
+        @extend %small;
         @include table-flex-child($flex-grow: 10, $flex-basis: 50px);
     }
     .icon-edit,
