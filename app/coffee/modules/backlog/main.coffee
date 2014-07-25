@@ -450,7 +450,7 @@ BacklogDirective = ($repo, $rootscope) ->
 
         linkToolbar($scope, $el, $attrs, $ctrl)
         linkFilters($scope, $el, $attrs, $ctrl)
-        linkDoomLine($scope, $el, $attrs, $ctrl)
+        # linkDoomLine($scope, $el, $attrs, $ctrl)
 
         $el.find(".backlog-table-body").disableSelection()
 
