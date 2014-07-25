@@ -4,8 +4,6 @@ div.taskboard-table
             h2.task-colum_name "User story"
             h2.task-colum_name(ng-repeat="s in taskStatusList track by s.id")
                 span(tg-bo-html="s.name")
-                a.icon.icon-plus(href="", title="Add New task")
-                a.icon.icon-bulk(href="", title="Add New bulk")
     div.taskboard-table-body
         div.taskboard-table-inner(tg-taskboard-row-size-fixer)
             div.task-row(ng-repeat="us in userstories track by us.id")
@@ -15,13 +13,9 @@ div.taskboard-table
                     h3.us-title
                         span.us-ref(tg-bo-ref="us.ref")
                         span(ng-bind="us.subject")
-                    //- TODO Delete all this buttons and logic
-                        div.status(tg-us-status="us", on-update="ctrl.loadSprintState()")
-                            a.us-status(href="", title="Change user story status")
-                                span.us-status-bind
-                                span.icon.icon-arrow-bottom
-                        ul.points-list(tg-taskboard-us-points="us")
-                    //- include ../components/addnewtask
+                    p.points-value
+                    a.icon.icon-plus(href="", title="Add New task")
+                    a.icon.icon-bulk(href="", title="Add New bulk")
 
                 div.taskboard-tasks-box.task-column(ng-repeat="st in taskStatusList track by st.id", tg-taskboard-sortable)
                     div.taskboard-task(ng-repeat="task in usTasks[us.id][st.id] track by task.id",

@@ -33,19 +33,7 @@ $column-margin: 0 10px 0 0;
         &:last-child {
             margin-right: 0;
         }
-        .icon {
-            @include transition(color .2s linear);
-            color: $gray-light;
-            position: absolute;
-            right: .5rem;
-            top: .5rem;
-            &:hover {
-                color: $green-taiga;
-            }
-            &.icon-plus {
-                right: 2rem;
-            }
-        }
+
     }
 }
 
@@ -77,6 +65,21 @@ $column-margin: 0 10px 0 0;
     .taskboard-tasks-box {
         background: $whitish;
     }
+    .taskboard-userstory-box {
+        .icon {
+            @include transition(color .2s linear);
+            color: $gray-light;
+            position: absolute;
+            right: .5rem;
+            top: 1rem;
+            &:hover {
+                color: $green-taiga;
+            }
+            &.icon-plus {
+                right: 2rem;
+            }
+        }
+    }
 }
 
 .taskboard-userstory-box {
@@ -88,8 +91,14 @@ $column-margin: 0 10px 0 0;
     .us-title {
         @extend %large;
         @extend %title;
-        margin-bottom: 1rem;
+        margin-bottom: 0;
+        margin-right: 3rem;
     }
+    .points-value {
+        @extend %large;
+        color: $gray-light;
+    }
+    /*
     .us-ref {
         color: $gray;
         margin-right: .5rem;
@@ -135,6 +144,7 @@ $column-margin: 0 10px 0 0;
     .button-green {
         padding: 7px 80px;
     }
+    */
 }
 
 .points-list {
