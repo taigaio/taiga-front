@@ -71,8 +71,7 @@
     "isMobile": "~0.3.1",
     "favico.js": "0.3.4",
     "Sortable": "~0.1.8",
-    "pikaday": "~1.2.0",
-    "jquery-ui": "~1.11.0"
+    "pikaday": "~1.2.0"
   },
   "resolutions": {
     "lodash": "~2.4.1",
