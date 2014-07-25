@@ -150,7 +150,6 @@ modules = [
     "taigaSearch",
     "taigaAdmin",
     "taigaNavMenu",
-    "taigaLightboxes",
     "taigaProject",
 
     # Vendor modules

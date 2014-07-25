@@ -27,7 +27,7 @@ block content
 
             .home-project-bottom
                 ul
-                    li(ng-repeat="member in ctrl.project.memberships")
-                        img(src="http://www.gravatar.com/avatar/0601c5aa999eb9f589e3516ba7e31820?size=80&default=")
+                    li(ng-repeat="member in ctrl.project.active_memberships")
+                        img(src="{{member.photo}}")
 
                 a.button.button-blackish(href="", tg-nav="project-backlog:project=ctrl.project.slug") GO TO PROJECT
