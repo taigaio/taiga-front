@@ -48,6 +48,38 @@ class ProjectController extends taiga.Controller
 
 module.controller("ProjectController", ProjectController)
 
+CreateProjectDirective = ($repo, $confirm, $location) ->
+    link = ($scope, $el, $attrs) ->
+        $scope.data = {}
+        form = $el.find("form").checksley()
+
+        onSuccessSubmit = (response) ->
+            $confirm.notify("success", "Our Oompa Loompas are happy, wellcome to Taiga.") #TODO: i18n
+            $location.path("/")
+
+        onErrorSubmit = (response) ->
+            $confirm.notify("light-error", "According to our Oompa Loompas, project name is
+                                            already in use.") #TODO: i18n
+
+        submit = ->
+            if not form.validate()
+                return
+
+            promise = $repo.create("projects", $scope.data)
+            promise.then(onSuccessSubmit, onErrorSubmit)
+
+        $el.on "submit", (event) ->
+            event.preventDefault()
+            submit()
+
+        $el.on "click", "a.button-create", (event) ->
+            event.preventDefault()
+            submit()
+
+    return {link:link}
+
+module.directive("tgCreateProject", ["$tgRepo", "$tgConfirm", "$location", CreateProjectDirective])
+
 ProjectsPaginationDirective = ($timeout) ->
     nextPage = (element, pageSize, callback) ->
         top = parseInt(element.css('top'), 10)
