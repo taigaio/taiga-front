@@ -31,6 +31,12 @@ class NavigationUrlsService extends taiga.Service
     update: (urls) ->
         @.urls = _.merge({}, @.urls, urls or {})
 
+    formatUrl: (url, ctx={}) ->
+        replacer = (match) ->
+            match = trim(match, ":")
+            return ctx[match] or "undefined"
+        return url.replace(/(:\w+)/g, replacer)
+
     resolve: (name) ->
         return @.urls[name]
 
@@ -63,12 +69,6 @@ NavigationUrlsDirective = ($navurls, $auth, $q, $location) ->
                 options[key] = $scope.$eval(value)
             return [name, options]
 
-    formatUrl = (url, ctx={}) ->
-        replacer = (match) ->
-            match = trim(match, ":")
-            return ctx[match] or "undefined"
-        return url.replace(/(:\w+)/g, replacer)
-
     link = ($scope, $el, $attrs) ->
         $el.on "click", (event) ->
             event.preventDefault()
@@ -80,7 +80,7 @@ NavigationUrlsDirective = ($navurls, $auth, $q, $location) ->
 
                 url = $navurls.resolve(name)
 
-                fullUrl = formatUrl(url, options)
+                fullUrl = $navurls.formatUrl(url, options)
                 $location.url(fullUrl)
 
         $scope.$on "$destroy", ->
@@ -92,5 +92,3 @@ NavigationUrlsDirective = ($navurls, $auth, $q, $location) ->
 module = angular.module("taigaBase")
 module.service("$tgNavUrls", NavigationUrlsService)
 module.directive("tgNav", ["$tgNavUrls", "$tgAuth", "$q", "$location", NavigationUrlsDirective])
-
-

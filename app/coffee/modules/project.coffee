@@ -11,7 +11,7 @@ class ProjectsController extends taiga.Controller
 
     loadInitialData: ->
         return @rs.projects.list().then (projects) =>
-            @.projects = {'recents': projects.slice(0, 8), 'all': projects.slice(6)}
+            @.projects = {'recents': projects.slice(0, 8), 'all': projects.slice(8)}
 
 module.controller("ProjectsController", ProjectsController)
 
@@ -48,14 +48,18 @@ class ProjectController extends taiga.Controller
 
 module.controller("ProjectController", ProjectController)
 
-CreateProjectDirective = ($repo, $confirm, $location) ->
+CreateProjectDirective = ($repo, $confirm, $location, $navurls) ->
     link = ($scope, $el, $attrs) ->
         $scope.data = {}
         form = $el.find("form").checksley()
 
         onSuccessSubmit = (response) ->
-            $confirm.notify("success", "Our Oompa Loompas are happy, wellcome to Taiga.") #TODO: i18n
-            $location.path("/")
+            $confirm.notify("success", "Success") #TODO: i18n
+
+            url = $navurls.resolve('project-backlog')
+            fullUrl = $navurls.formatUrl(url, {'project': response.slug})
+
+            $location.url(fullUrl)
 
         onErrorSubmit = (response) ->
             $confirm.notify("light-error", "According to our Oompa Loompas, project name is
@@ -78,7 +82,7 @@ CreateProjectDirective = ($repo, $confirm, $location) ->
 
     return {link:link}
 
-module.directive("tgCreateProject", ["$tgRepo", "$tgConfirm", "$location", CreateProjectDirective])
+module.directive("tgCreateProject", ["$tgRepo", "$tgConfirm", "$location", "$tgNavUrls", CreateProjectDirective])
 
 ProjectsPaginationDirective = ($timeout) ->
     nextPage = (element, pageSize, callback) ->
