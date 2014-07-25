@@ -15,9 +15,9 @@ div.taskboard-table
                     h3.us-title
                         span.us-ref(tg-bo-ref="us.ref")
                         span(ng-bind="us.subject")
-                    p.points-value 20 points
-                    a.icon.icon-plus(href="", title="Add New task")
-                    a.icon.icon-bulk(href="", title="Add New bulk")
+                    p.points-value
+                        span(ng-bind="us.total_points")
+                        span points
 
                 div.taskboard-tasks-box.task-column(ng-repeat="st in taskStatusList track by st.id", tg-taskboard-sortable)
                     div.taskboard-task(ng-repeat="task in usTasks[us.id][st.id] track by task.id",
