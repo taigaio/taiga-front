@@ -21,34 +21,48 @@
         height: .3rem;
     }
     .kanban-task-inner {
+        @include table-flex();
         padding: 1rem 1rem 2rem;
     }
     .task-num {
         color: $postit-hover;
         margin-right: .5em;
     }
-    .task-text {
-        margin-bottom: .5rem;
-        padding-right: 2rem;
-    }
-    .assigned-to {
-        @extend %small;
-    }
     .avatar {
-        display: inline-block;
-        vertical-align: middle;
+        @include table-flex-child($flex-basis: 50px);
+        a {
+            @extend %small;
+            text-align: center;
+        }
         img {
-            margin-right: .5rem;
-            max-width: 1.5rem;
+            margin: 0 auto;
+        }
+        .assigned-to {
+            color: darken($postit-hover, 15%);
+            display: block;
+            overflow: hidden;
+            position: relative;
+            text-overflow: ellipsis;
+            top: 4px;
+            white-space: nowrap;
+            width: 50px;
         }
     }
+    .task-text {
+        @include table-flex-child($flex-grow: 10, $flex-basis: 50px);
+        @extend %small;
+        padding: 0 .5rem 0 1rem;
+    }
     .task-points {
-        @extend %large;
-        color: $postit-hover;
-        padding: .5rem 1rem;
-        position: absolute;
-        right: 0;
-        top: .5rem;
+        @extend %small;
+        color: darken($postit-hover, 15%);
+        margin: 0;
+        span {
+            display: inline-block;
+            &:first-child {
+                padding-right: .2rem;
+            }
+        }
     }
     .icon-edit,
     .icon-drag-h {
