@@ -34,67 +34,51 @@ module = angular.module("taigaBacklog")
 ## Sortable Directive
 #############################################################################
 
-BacklogSortableDirective = ($repo, $rs, $rootscope) ->
+deleteElement = (el) ->
+    el.scope().$destroy()
+    el.off()
+    el.remove()
 
-    #########################
-    ## Drag & Drop Link
-    #########################
+
+BacklogSortableDirective = ($repo, $rs, $rootscope) ->
+    # Notes about jquery bug:
     # http://stackoverflow.com/questions/5791886/jquery-draggable-shows-
     # helper-in-wrong-place-when-scrolled-down-page
 
-    linkSortable = ($scope, $el, $attrs, $ctrl) ->
-        # State
-        oldParentScope = null
-        newParentScope = null
-        itemEl = null
-        tdom = $el
-
-        deleteElement = (itemEl) ->
-            # Completelly remove item and its scope from dom
-            itemEl.scope().$destroy()
-            itemEl.off()
-            itemEl.remove()
-
-        tdom.sortable({
-            # handle: ".icon-drag-v",
-            items: "div.sprint-table > div.row, .backlog-table-body > div.row"
+    link = ($scope, $el, $attrs) ->
+        $el.sortable({
+            connectWith: ".sprint-table"
+            handle: ".icon-drag-v",
+            containment: ".wrapper"
+            dropOnEmpty: true
+            # With scroll activated, it has strange behavior
+            # with not full screen browser window.
+            scroll: false
+            # A consequence of length of backlog user story item
+            # the default tolerance ("intersection") not works properly.
+            tolerance: "pointer"
+            # Revert on backlog is disabled bacause it works bad. Something
+            # on the current taiga backlog structure or style makes jquery ui
+            # works unexpectly (in some circumstances calculates wrong
+            # position for revert).
+            revert: false
         })
 
-        tdom.on "sortstop", (event, ui) ->
-            # Common state for stop event handler
-            parentEl = ui.item.parent()
-            itemEl = ui.item
-            itemUs = itemEl.scope().us
-            itemIndex = itemEl.index()
-            newParentScope = parentEl.scope()
+        $el.on "sortreceive", (event, ui) ->
+            itemUs = ui.item.scope().us
+            itemIndex = ui.item.index()
 
-            if itemEl.is(".milestone-us-item-row") and parentEl.is(".backlog-table-body")
-                deleteElement(itemEl)
-                $scope.$broadcast("sprint:us:move", itemUs, itemIndex, null)
+            deleteElement(ui.item)
+            $scope.$emit("sprint:us:move", itemUs, itemIndex, null)
 
-            else if itemEl.is(".us-item-row") and parentEl.is(".sprint-table")
-                deleteElement(itemEl)
-                $scope.$broadcast("sprint:us:move", itemUs, itemIndex, newParentScope.sprint.id)
+        $el.on "sortstop", (event, ui) ->
+            # When parent not exists, do nothing
+            if ui.item.parent().length == 0
+                return
 
-            else if parentEl.is(".sprint-table") and newParentScope.sprint.id != oldParentScope.sprint.id
-                deleteElement(itemEl)
-                $scope.$broadcast("sprint:us:move", itemUs, itemIndex, newParentScope.sprint.id)
-
-            else
-                $scope.$broadcast("sprint:us:move", itemUs, itemIndex, itemUs.milestone)
-
-        tdom.on "sortstart", (event, ui) ->
-            oldParentScope = ui.item.parent().scope()
-
-        tdom.on "sort", (event, ui) ->
-            ui.helper.css("background-color", "#ddd")
-
-        tdom.on "sortbeforestop", (event, ui) ->
-            ui.helper.css("background-color", "transparent")
-
-    link = ($scope, $el, $attrs) ->
-        $ctrl = $el.controller()
-        linkSortable($scope, $el, $attrs, $ctrl)
+            itemUs = ui.item.scope().us
+            itemIndex = ui.item.index()
+            $scope.$emit("sprint:us:move", itemUs, itemIndex, null)
 
         $scope.$on "$destroy", ->
             $el.off()
@@ -102,9 +86,43 @@ BacklogSortableDirective = ($repo, $rs, $rootscope) ->
     return {link: link}
 
 
+SprintSortableDirective = ($repo, $rs, $rootscope) ->
+    link = ($scope, $el, $attrs) ->
+        $el.sortable({
+            dropOnEmpty: true
+            connectWith: ".sprint-table,.backlog-table-body"
+        })
+
+        $el.on "sortreceive", (event, ui) ->
+            itemUs = ui.item.scope().us
+            itemIndex = ui.item.index()
+
+            deleteElement(ui.item)
+            $scope.$emit("sprint:us:move", itemUs, itemIndex, $scope.sprint.id)
+
+        $el.on "sortstop", (event, ui) ->
+            # When parent not exists, do nothing
+            if ui.item.parent().length == 0
+                return
+
+            itemUs = ui.item.scope().us
+            itemIndex = ui.item.index()
+
+            $scope.$emit("sprint:us:move", itemUs, itemIndex, $scope.sprint.id)
+
+    return {link:link}
+
+
 module.directive("tgBacklogSortable", [
     "$tgRepo",
     "$tgResources",
     "$rootScope",
     BacklogSortableDirective
+])
+
+module.directive("tgSprintSortable", [
+    "$tgRepo",
+    "$tgResources",
+    "$rootScope",
+    SprintSortableDirective
 ])

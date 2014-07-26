@@ -10,7 +10,8 @@ section.sprints
               a.button.button-green(ng-click="ctrl.addNewSprint()", href="", title="Add New US")
                 span.text + New sprint
 
-    section.sprint(ng-repeat="sprint in sprints track by sprint.id", tg-backlog-sprint="sprint")
+    section.sprint(ng-repeat="sprint in sprints track by sprint.id"
+                   tg-backlog-sprint="sprint")
         header
             div.sprint-name
                 a.icon.icon-arrow-up(href="", title="compact Sprint")
@@ -27,7 +28,7 @@ section.sprints
                         span.description total
         div.sprint-progress-bar
             div.current-progress(tg-sprint-progressbar="sprint")
-        div.sprint-table
+        div.sprint-table(tg-sprint-sortable)
             div.row.milestone-us-item-row(ng-repeat="us in sprint.user_stories|orderBy:order track by us.id")
                 div.column-us.width-8
                     a.us-name.clickable(tg-nav="project-userstories-detail:project=project.slug,ref=us.ref", title="")

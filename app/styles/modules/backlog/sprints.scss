@@ -116,6 +116,9 @@
     }
     .sprint-table {
         @include slide(1000px, overflow-y);
+        &.open {
+            min-height: 50px;
+        }
         .row {
             @include table-flex();
             border-bottom: 1px solid $gray-light;
