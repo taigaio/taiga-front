@@ -22,7 +22,7 @@
 
 taiga = @.taiga
 
-resourceProvider = ($repo) ->
+resourceProvider = ($repo, $http, $urls) ->
     service = {}
 
     service.get = (id) ->
@@ -33,9 +33,13 @@ resourceProvider = ($repo) ->
         params = _.extend({}, params, filters or {})
         return $repo.queryPaginated("memberships", params)
 
+    service.resendInvitation = (id) ->
+        url = $urls.resolve("memberships")
+        return $http.post("#{url}/#{id}/resend_invitation", {})
+
     return (instance) ->
         instance.memberships = service
 
 
 module = angular.module("taigaResources")
-module.factory("$tgMembershipsResourcesProvider", ["$tgRepo", resourceProvider])
+module.factory("$tgMembershipsResourcesProvider", ["$tgRepo", "$tgHttp", "$tgUrls", resourceProvider])

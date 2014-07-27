@@ -258,72 +258,6 @@ module.directive("tgMembershipsRowAvatar", ["$log", MembershipsRowAvatarDirectiv
 
 
 #############################################################################
-## Member Actions Directive
-#############################################################################
-
-MembershipsRowActionsDirective = ($log, $repo, $confirm) ->
-    activedTemplate = _.template("""
-    <div class="active">
-        Active
-    </div>
-    <a class="delete" href="">
-        <span class="icon icon-delete"></span>
-    </a>
-    """) # i18n
-
-    pendingTemplate = _.template("""
-    <a class="pending" href="">
-        Pending
-        <span class="icon icon-reload"></span>
-    </a>
-    <a class="delete" href="" title="Delete">
-        <span class="icon icon-delete"></span>
-    </a>
-    """) # i18n
-
-    link = ($scope, $el, $attrs) ->
-        render = (member) ->
-            if member.user
-                html = activedTemplate()
-            else
-                html = pendingTemplate()
-
-            $el.html(html)
-
-        if not $attrs.tgMembershipsRowActions?
-            return $log.error "MembershipsRowActionsDirective: the directive need a member"
-
-        $ctrl = $el.controller()
-        member = $scope.$eval($attrs.tgMembershipsRowActions)
-        render(member)
-
-        $el.on "click", ".pending", (event) ->
-            event.preventDefault()
-            #TODO: Re-send the invitation
-            console.log "re-sending the invitation to #{member.email}"
-
-        $el.on "click", ".delete", (event) ->
-            event.preventDefault()
-
-            title = "Delete member" # i18n
-            subtitle = if member.user then member.full_name else "the invitation to #{member.email}" # i18n
-
-            $confirm.ask(title, subtitle).then ->
-                $repo.remove(member).then ->
-                    $ctrl.loadMembers()
-                    $confirm.notify("success", null, "We've deleted #{subtitle}.") # i18n
-
-        $scope.$on "$destroy", ->
-            $el.off()
-
-    return {link: link}
-
-
-module.directive("tgMembershipsRowActions", ["$log", "$tgRepo", "$tgConfirm",
-                                             MembershipsRowActionsDirective])
-
-
-#############################################################################
 ## Member IsAdminCheckbox Directive
 #############################################################################
 
@@ -421,4 +355,75 @@ MembershipsRowRoleSelectorDirective = ($log, $repo, $confirm) ->
 
 
 module.directive("tgMembershipsRowRoleSelector", ["$log", "$tgRepo", "$tgConfirm",
-                                                     MembershipsRowRoleSelectorDirective])
+                                                  MembershipsRowRoleSelectorDirective])
+
+
+#############################################################################
+## Member Actions Directive
+#############################################################################
+
+MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm) ->
+    activedTemplate = _.template("""
+    <div class="active">
+        Active
+    </div>
+    <a class="delete" href="">
+        <span class="icon icon-delete"></span>
+    </a>
+    """) # i18n
+
+    pendingTemplate = _.template("""
+    <a class="pending" href="">
+        Pending
+        <span class="icon icon-reload"></span>
+    </a>
+    <a class="delete" href="" title="Delete">
+        <span class="icon icon-delete"></span>
+    </a>
+    """) # i18n
+
+    link = ($scope, $el, $attrs) ->
+        render = (member) ->
+            if member.user
+                html = activedTemplate()
+            else
+                html = pendingTemplate()
+
+            $el.html(html)
+
+        if not $attrs.tgMembershipsRowActions?
+            return $log.error "MembershipsRowActionsDirective: the directive need a member"
+
+        $ctrl = $el.controller()
+        member = $scope.$eval($attrs.tgMembershipsRowActions)
+        render(member)
+
+        $el.on "click", ".pending", (event) ->
+            event.preventDefault()
+            onSuccess = ->
+                # i18n
+                $confirm.notify("success", "We've sent the invitationi again to '#{$scope.member.email}'.")
+            onError = ->
+                $confirm.notify("error", "We haven't sent the invitation.") # i18n
+
+            $rs.memberships.resendInvitation($scope.member.id).then(onSuccess, onError)
+
+        $el.on "click", ".delete", (event) ->
+            event.preventDefault()
+
+            title = "Delete member" # i18n
+            subtitle = if member.user then member.full_name else "the invitation to #{member.email}" # i18n
+
+            $confirm.ask(title, subtitle).then ->
+                $repo.remove(member).then ->
+                    $ctrl.loadMembers()
+                    $confirm.notify("success", null, "We've deleted #{subtitle}.") # i18n
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {link: link}
+
+
+module.directive("tgMembershipsRowActions", ["$log", "$tgRepo", "$tgResources", "$tgConfirm",
+                                             MembershipsRowActionsDirective])
