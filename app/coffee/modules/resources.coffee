@@ -31,6 +31,7 @@ urls = {
     "roles": "/api/v1/roles"
     "projects": "/api/v1/projects"
     "memberships": "/api/v1/memberships"
+    "bulk-create-memberships": "/api/v1/memberships/bulk_create"
     "milestones": "/api/v1/milestones"
     "userstories": "/api/v1/userstories"
     "bulk-create-us": "/api/v1/userstories/bulk_create"

@@ -28,7 +28,7 @@ module = angular.module("taigaKanban")
 ## Create Members Lightbox Directive
 #############################################################################
 
-CreateMembersDirective = ($repo, $rootScope, $q, $confirm) ->
+CreateMembersDirective = ($rs, $rootScope, $confirm) ->
     template = _.template("""
     <fieldset>
         <input type="email" placeholder="Type an Email" data-required="true" />
@@ -104,16 +104,13 @@ CreateMembersDirective = ($repo, $rootScope, $q, $confirm) ->
                 fieldset = angular.element(fs)
                 return {
                     email: fieldset.children("input").val()
-                    role: fieldset.children("select").val()
-                    project: $ctrl.scope.project.id
+                    role_id: fieldset.children("select").val()
+                    project_id: $scope.project.id
                 }
 
-            promises = _.map invitations, (inv) ->
-                return $repo.create("memberships", inv)
-
-            $q.all(promises).then(onSuccess, onError)
+            $rs.memberships.bulkCreateMemberships(invitations).then(onSuccess, onError)
 
     return {link: link}
 
-module.directive("tgLbCreateMembers", ["$tgRepo", "$rootScope", "$q", "$tgConfirm",
+module.directive("tgLbCreateMembers", ["$tgResources", "$rootScope", "$tgConfirm",
                                        CreateMembersDirective])
