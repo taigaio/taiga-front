@@ -34,7 +34,7 @@ module = angular.module("taigaIssues")
 ## Issue Detail Controller
 #############################################################################
 
-class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
+class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.AttachmentsMixin)
     @.$inject = [
         "$scope",
         "$rootScope",
@@ -43,10 +43,13 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$tgResources",
         "$routeParams",
         "$q",
-        "$location"
+        "$location",
+        "$log"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @log) ->
+        @.attachmentsUrlName = "issues/attachments"
+
         @scope.issueRef = @params.issueref
         @scope.sectionName = "Issue Details"
 
@@ -105,6 +108,7 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         return promise.then(=> @.loadProject())
                       .then(=> @.loadUsersAndRoles())
                       .then(=> @.loadIssue())
+                      .then(=> @.loadAttachments(@scope.issueId))
                       .then(=> @.loadHistory())
 
     getUserFullName: (userId) ->
