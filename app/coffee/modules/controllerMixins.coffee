@@ -27,6 +27,10 @@ trim = @.taiga.trim
 toString = @.taiga.toString
 
 
+#############################################################################
+## Page Mixin
+#############################################################################
+
 class PageMixin
     loadUsersAndRoles: ->
         promise = @q.all([
@@ -48,8 +52,13 @@ class PageMixin
 
             return results
 
+taiga.PageMixin = PageMixin
 
-# This mixin requires @location and @scope
+
+#############################################################################
+## Filters Mixin
+#############################################################################
+# This mixin requires @location ($tgLocation) and @scope
 
 class FiltersMixin
     selectFilter: (name, value, load=false) ->
@@ -88,7 +97,31 @@ class FiltersMixin
         location = if load then @location else @location.noreload(@scope)
         location.search(name, value)
 
-
-taiga = @.taiga
-taiga.PageMixin = PageMixin
 taiga.FiltersMixin = FiltersMixin
+
+
+#############################################################################
+## Attachments Mixin
+#############################################################################
+# This mixin requires @rs ($tgResources), @scope and @log ($tgLog)
+# The mixin required @..attachmentsUrlName (p.e. 'issues/attachments',see resources.coffee)
+
+class AttachmentsMixin
+    loadAttachments: (objectId) ->
+        if not @.attachmentsUrlName
+            return @log.error "AttachmentsMixin: @.attachmentsUrlName is required"
+
+        @scope.attachmentsCount = 0
+        @scope.activeAttachmentsCount = 0
+        @scope.deprecatedAttachmentsCount = 0
+
+        return @rs.attachments.list(@.attachmentsUrlName, objectId).then (attachments) =>
+            @scope.attachments = _.sortBy(attachments, "order")
+            @scope.attachmentsCount = @scope.attachments.length
+            @scope.activeAttachments = _.filter(@scope.attachments, is_deprecated: false)
+            @scope.activeAttachmentsCount = @scope.activeAttachments.length
+            @scope.deprecatedAttachments = _.filter(@scope.attachments, is_deprecated: true)
+            @scope.deprecatedAttachmentsCount = @scope.deprecatedAttachments.length
+            return attachments
+
+taiga.AttachmentsMixin = AttachmentsMixin
