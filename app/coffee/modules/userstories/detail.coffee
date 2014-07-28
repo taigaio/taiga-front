@@ -45,7 +45,7 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location) ->
         @scope.issueRef = @params.issueref
-        @scope.sectionName = "User Story"
+        @scope.sectionName = "User Story Details"
 
         promise = @.loadInitialData()
         promise.then null, ->
