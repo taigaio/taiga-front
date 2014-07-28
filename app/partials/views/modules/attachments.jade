@@ -2,39 +2,35 @@ section.attachments
     div.attachments-header
         h3.attachments-title
             span.icon.icon-attachment
-            span.attachments-num 5
+            span.attachments-num {{ attachmentsCount }}
             span.attachments-text attachments
             a.button.button-gray(href="", title="Add new attachment")
                 span +new file
-    div.attachment-body
-        - for(var x = 0; x < 3; x++)
-            div.single-attachment
-                div.attachment-name
-                    span.icon.icon-document
-                    a(href="", title="Attachment pefildeusuario.png") pefildeusuariopefildeusuariopefildeusuario.png
-                div.attachment-comment
-                    span Comentario sobre el contenido
-                    span.attachment-size (125kb.)
-                a.settings.icon.icon-edit(href="","Edit")
-                a.settings.icon.icon-drag-v(href="","Drag")
 
-        div.single-attachment.edit
+    div.attachment-body
+        div.single-attachment(ng-repeat="attach in activeAttachments")
             div.attachment-name
                 span.icon.icon-document
-                a(href="", title="Attachment pefildeusuario.png") pefildeusuariopefildeusuariopefildeusuario.png
-            div.editable.editable-attachment-comment
-                input(type="text")
-            div.editable.editable-attachment-deprecated
-                label
-                    input(type="checkbox")
-                    span Deprecated?
-            div.editable.attachment-delete
-                a.icon.icon-delete(href="#")
+                a(href="{{ attach.url }}", title="{{ attach.name }}" target="_blank") {{ attach.name }}
             div.attachment-comment
-                span Comentario sobre el contenido
-                span.attachment-size (125kb.)
+                span {{ attach.description }}
+                span.attachment-size ({{ attach.size }} B)
             a.settings.icon.icon-edit(href="","Edit")
             a.settings.icon.icon-drag-v(href="","Drag")
+
+        //-div.single-attachment.edit
+        //-    div.attachment-name
+        //-        span.icon.icon-document
+        //-        a(href="", title="Attachment pefildeusuario.png") pefildeusuariopefuario.png
+        //-    div.editable.editable-attachment-comment
+        //-        input(type="text")
+        //-    div.editable.editable-attachment-deprecated
+        //-        label
+        //-            input(type="checkbox")
+        //-            span Deprecated?
+        //-    div.editable.attachment-delete
+        //-        a.icon.icon-delete(href="#")
+
         a.more-attachments(href="", title="show atachments history")
-            span + show atachments history
-            span.more-attachments-num (3 more)
+            span + show deprecated atachments
+            span.more-attachments-num ({{ deprecatedAttachmentsCount }} more)
