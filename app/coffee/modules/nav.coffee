@@ -69,47 +69,60 @@ module.directive("tgProjectsNav", ProjectsNavigationDirective)
 
 ProjectMenuDirective = ($log, $compile, $rootscope) ->
     menuEntriesTemplate = _.template("""
-    <ul class="main-nav">
-    <li id="nav-search">
-        <a href="" title="Search" tg-nav="project-search:project=project.slug">
-            <span class="icon icon-search"></span><span class="item">Search</span>
-        </a>
-    </li>
-    <li id="nav-backlog" tg-nav="project-backlog:project=project.slug">
-        <a href="" title="Backlog" tg-nav="project-backlog:project=project.slug">
-            <span class="icon icon-backlog"></span>
-            <span class="item">Backlog</span>
-        </a>
-    </li>
-    <li id="nav-kanban">
-        <a href="" title="Kanban" tg-nav="project-kanban:project=project.slug">
-            <span class="icon icon-kanban"></span><span class="item">Kanban</span>
-        </a>
-    </li>
-    <li id="nav-issues">
-        <a href="" title="Issues" tg-nav="project-issues:project=project.slug">
-            <span class="icon icon-issues"></span><span class="item">Issues</span>
-        </a>
-    </li>
-    <li id="nav-wiki">
-        <a href="" title="Wiki" tg-nav="project-wiki:project=project.slug">
-            <span class="icon icon-wiki"></span>
-            <span class="item">Wiki</span>
-        </a>
-    </li>
-    <li id="nav-video">
-        <a href="" title="Video">
-            <span class="icon icon-video"></span>
-            <span class="item">Video</span>
-        </a>
-    </li>
-    <li id="nav-admin">
-        <a href="" tg-nav="project-admin-home:project=project.slug" title="Admin">
-            <span class="icon icon-settings"></span>
-            <span class="item">Admin</span>
-        </a>
-    </li>
-    </ul>
+    <div class="menu-container">
+        <ul class="main-nav">
+        <li id="nav-search">
+            <a href="" title="Search" tg-nav="project-search:project=project.slug">
+                <span class="icon icon-search"></span><span class="item">Search</span>
+            </a>
+        </li>
+        <li id="nav-backlog" tg-nav="project-backlog:project=project.slug">
+            <a href="" title="Backlog" tg-nav="project-backlog:project=project.slug">
+                <span class="icon icon-backlog"></span>
+                <span class="item">Backlog</span>
+            </a>
+        </li>
+        <li id="nav-kanban">
+            <a href="" title="Kanban" tg-nav="project-kanban:project=project.slug">
+                <span class="icon icon-kanban"></span><span class="item">Kanban</span>
+            </a>
+        </li>
+        <li id="nav-issues">
+            <a href="" title="Issues" tg-nav="project-issues:project=project.slug">
+                <span class="icon icon-issues"></span><span class="item">Issues</span>
+            </a>
+        </li>
+        <li id="nav-wiki">
+            <a href="" title="Wiki">
+                <span class="icon icon-wiki"></span>
+                <span class="item">Wiki</span>
+            </a>
+        </li>
+        <li id="nav-video">
+            <a href="" title="Video">
+                <span class="icon icon-video"></span>
+                <span class="item">Video</span>
+            </a>
+        </li>
+        <li id="nav-admin">
+            <a href="" tg-nav="project-admin-home:project=project.slug" title="Admin">
+                <span class="icon icon-settings"></span>
+                <span class="item">Admin</span>
+            </a>
+        </li>
+        </ul>
+        <div class="user">
+            <div class="user-settings">
+                <ul class="popover">
+                    <li><a href="" title="Account settings", tg-nav="user-settings-user-profile:project=project.slug">Account settings</a></li>
+                    <li><a href="" title="Logout">Logout</a></li>
+                </ul>
+                <a href="" title="User preferences" class="avatar">
+                    <img src="/images/unnamed.png" alt="username"/>
+                </a>
+            </div>
+        </div>
+    </div>
     """)
 
     mainTemplate = _.template("""
@@ -118,19 +131,7 @@ ProjectMenuDirective = ($log, $compile, $rootscope) ->
             <img src="/images/logo.png" alt="Taiga"/>
         </a>
     </h1>
-    <ul class="main-nav"></ul>
-    <div class="user">
-        <div class="user-settings">
-            <ul class="popover">
-                <li><a href="" title="Change profile photo">Change profile photo</a></li>
-                <li><a href="" title="Account settings">Account settings</a></li>
-                <li><a href="" title="Logout">Logout</a></li>
-            </ul>
-            <a href="" title="User preferences" class="avatar">
-                <img src="/images/unnamed.png" alt="username"/>
-            </a>
-        </div>
-    </div>
+    <div class="menu-container"></div>
     """)
 
     renderMainMenu = ($el) ->
@@ -141,7 +142,7 @@ ProjectMenuDirective = ($log, $compile, $rootscope) ->
     # This rerenders and compiles the navigation when ng-view
     # content loaded signal is raised using inner scope.
     renderMenuEntries = ($el, targetScope) ->
-        container = $el.find("ul.main-nav")
+        container = $el.find(".menu-container")
         sectionName = targetScope.section
 
         dom = $compile(menuEntriesTemplate({}))(targetScope)
@@ -157,6 +158,16 @@ ProjectMenuDirective = ($log, $compile, $rootscope) ->
         $el.on "click", ".logo > a", (event) ->
             event.preventDefault()
             $rootscope.$broadcast("nav:projects-list:open")
+
+        $el.on "click", ".user-settings .avatar", (event) ->
+            event.preventDefault()
+            $el.find(".user-settings .popover").show()
+            # Hide when click outside
+            body = angular.element("body")
+            body.on "click", (event) =>
+                if angular.element(event.target).parents(".user-settings").length == 0
+                    $el.find(".popover").hide()
+                    body.unbind("click")
 
         $scope.$on "$viewContentLoaded", (ctx) ->
             if ctx.targetScope.$$childHead is null || ctx.targetScope.$$childHead.hideMenu

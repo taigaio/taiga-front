@@ -43,48 +43,52 @@ module.directive("tgMain", ["$rootScope", "$window", TaigaMainDirective])
 #############################################################################
 
 urls = {
-    "home": "/",
-    "login": "/login",
-    "forgot-password": "/forgot-password",
-    "change-password": "/change-password/:token",
-    "register": "/register",
-    "invitation": "/invitation/:token",
-    "create-project": "/create-project",
+    "home": "/"
+    "login": "/login"
+    "forgot-password": "/forgot-password"
+    "change-password": "/change-password/:token"
+    "register": "/register"
+    "invitation": "/invitation/:token"
+    "create-project": "/create-project"
 
-    "profile": "/:user",
+    "profile": "/:user"
 
-    "project": "/project/:project",
-    "project-backlog": "/project/:project/backlog",
-    "project-taskboard": "/project/:project/taskboard/:sprint",
-    "project-kanban": "/project/:project/kanban",
-    "project-issues": "/project/:project/issues",
-    "project-search": "/project/:project/search",
+    "project": "/project/:project"
+    "project-backlog": "/project/:project/backlog"
+    "project-taskboard": "/project/:project/taskboard/:sprint"
+    "project-kanban": "/project/:project/kanban"
+    "project-issues": "/project/:project/issues"
+    "project-search": "/project/:project/search"
 
-    "project-userstories-detail": "/project/:project/us/:ref",
-    "project-userstories-detail-edit": "/project/:project/us/:ref/edit",
+    "project-userstories-detail": "/project/:project/us/:ref"
+    "project-userstories-detail-edit": "/project/:project/us/:ref/edit"
 
-    "project-tasks-detail": "/project/:project/tasks/:ref",
-    "project-tasks-detail-edit": "/project/:project/tasks/:ref/edit",
+    "project-tasks-detail": "/project/:project/tasks/:ref"
+    "project-tasks-detail-edit": "/project/:project/tasks/:ref/edit"
 
     "project-wiki": "/project/:project/wiki",
     "project-wiki-page": "/project/:project/wiki/:slug",
 
-    "project-issues-detail": "/project/:project/issues/:ref",
-    "project-issues-detail-edit": "/project/:project/issues/:ref/edit",
-
     # Admin
-    "project-admin-home": "/project/:project/admin/project-profile/details",
-    "project-admin-project-profile-details": "/project/:project/admin/project-profile/details",
-    "project-admin-project-profile-default-values": "/project/:project/admin/project-profile/default-values",
-    "project-admin-project-profile-features": "/project/:project/admin/project-profile/features",
-    "project-admin-project-values-us-status": "/project/:project/admin/project-values/us-status",
-    "project-admin-project-values-us-points": "/project/:project/admin/project-values/us-points",
-    "project-admin-project-values-task-status": "/project/:project/admin/project-values/task-status",
-    "project-admin-project-values-issue-status": "/project/:project/admin/project-values/issue-status",
-    "project-admin-project-values-issue-types": "/project/:project/admin/project-values/issue-types",
-    "project-admin-project-values-issue-priorities": "/project/:project/admin/project-values/issue-priorities",
-    "project-admin-project-values-issue-severities": "/project/:project/admin/project-values/issue-severities",
+    "project-admin-home": "/project/:project/admin/project-profile/details"
+    "project-admin-project-profile-details": "/project/:project/admin/project-profile/details"
+    "project-admin-project-profile-default-values": "/project/:project/admin/project-profile/default-values"
+    "project-admin-project-profile-features": "/project/:project/admin/project-profile/features"
+    "project-admin-project-values-us-status": "/project/:project/admin/project-values/us-status"
+    "project-admin-project-values-us-points": "/project/:project/admin/project-values/us-points"
+    "project-admin-project-values-task-status": "/project/:project/admin/project-values/task-status"
+    "project-admin-project-values-issue-status": "/project/:project/admin/project-values/issue-status"
+    "project-admin-project-values-issue-types": "/project/:project/admin/project-values/issue-types"
+    "project-admin-project-values-issue-priorities": "/project/:project/admin/project-values/issue-priorities"
+    "project-admin-project-values-issue-severities": "/project/:project/admin/project-values/issue-severities"
     "project-admin-memberships": "/project/:project/admin/memberships"
+    "project-admin-project-profile-features": "/project/:project/admin/project-profile/features"
+    "project-admin-project-values-us-status": "/project/:project/admin/project-values/us-status"
+
+    # User settings
+    "user-settings-user-profile": "/project/:project/user-settings/user-profile"
+    "user-settings-mail-notifications": "/project/:project/user-settings/mail-notifications"
+
 }
 
 init = ($log, $navurls) ->

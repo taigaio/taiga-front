@@ -1,4 +1,4 @@
-extends layout
+extends dummy-layout
 
 block head
     title Taiga  Project management web application with scrum in mind!
@@ -6,10 +6,7 @@ block head
 block content
     div.wrapper
         sidebar.menu-secondary.sidebar
-            include views/modules/admin-menu
-
-        sidebar.menu-tertiary.sidebar
-            include views/modules/admin-submenu-project-profile
+            include views/modules/user-settings-menu
 
         section.main.user-profile
             header
@@ -32,5 +29,6 @@ block content
                     input(type="submit", class="hidden")
                     a.button.button-green(href="") Save
                     a.delete-account(href="", title="Delete Taiga account") Delete Taiga account
-    div.lightbox.lightbox-delete-account
+
+    div.lightbox.lightbox-delete-account.hidden
         include views/modules/lightbox-delete-account
