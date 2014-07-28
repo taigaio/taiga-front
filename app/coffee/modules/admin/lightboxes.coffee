@@ -71,6 +71,7 @@ CreateMembersDirective = ($rs, $rootScope, $confirm) ->
             fieldSet = target.parent()
 
             fieldSet.remove()
+            $el.find('.add-fieldset').show()
 
         $el.on "click", ".add-fieldset", (event) ->
             event.preventDefault()
@@ -80,6 +81,9 @@ CreateMembersDirective = ($rs, $rootScope, $confirm) ->
             target.removeClass("icon-plus add-fieldset").addClass("icon-delete delete-fieldset")
             newFieldSet = createFieldSet()
             fieldSet.after(newFieldSet)
+
+            if $el.find('fieldset').length == 6
+                $el.find('.add-fieldset').hide()
 
         $el.on "click", ".button-green", (event) ->
             event.preventDefault()
