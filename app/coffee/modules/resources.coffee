@@ -69,7 +69,6 @@ urls = {
     "users-change-password-from-recovery": "/api/v1/users/change_password_from_recovery"
     "users-change-password": "/api/v1/users/change_password"
     "resolver": "/api/v1/resolver"
-    "wiki-attachment": "/media/attachment-files/%s/wikipage/%s"
     "userstory-statuses": "/api/v1/userstory-statuses"
     "points": "/api/v1/points"
     "task-statuses": "/api/v1/task-statuses"
