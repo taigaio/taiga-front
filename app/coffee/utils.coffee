@@ -48,6 +48,10 @@ slugify = (data) ->
     return _.str.slugify(data)
 
 
+unslugify = (data) ->
+    return _.str.capitalize(data.replace(/-/g, ' '))
+
+
 toggleText = (element, texts) ->
     nextTextPosition = element.data('nextTextPosition')
     nextTextPosition = 0 if not nextTextPosition? or nextTextPosition >= texts.length
@@ -104,6 +108,7 @@ taiga.bindOnce = bindOnce
 taiga.mixOf = mixOf
 taiga.trim = trim
 taiga.slugify = slugify
+taiga.unslugify = unslugify
 taiga.toggleText = toggleText
 taiga.groupBy = groupBy
 taiga.timeout = timeout

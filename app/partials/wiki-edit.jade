@@ -8,14 +8,15 @@ block content
                 ng-init="section='wiki'")
         sidebar.menu-secondary.extrabar
             section.wiki-nav(tg-wiki-nav, ng-model="wikiLinks")
-        section.main.backlog
+        section.main.wiki
             //Include views/components/mainTitle
             header
                 h1
                     span(tg-bo-html="project.name")
                     span.green Wiki
-                    span.green(tg-bo-html='wikiSlug')
-                    a.button.button-green.save-wiki(href="", title="Save", ng-click="ctrl.save()") Save
+                    span.wiki-title(tg-bo-html='wikiSlug|unslugify')
+            .action-buttons
+                a.button.button-green.save-wiki(href="", title="Save", ng-click="ctrl.save()") Save
 
             section.wysiwyg
                 textarea(placeholder="Write a your wiki page", ng-model="wiki.content", tg-markitup)

@@ -8,15 +8,16 @@ block content
                 ng-init="section='wiki'")
         sidebar.menu-secondary.extrabar
             section.wiki-nav(tg-wiki-nav, ng-model="wikiLinks")
-        section.main.backlog
+        section.main.wiki
             //Include views/components/mainTitle
             header
                 h1
                     span(tg-bo-html="project.name")
                     span.green Wiki
-                    span.wiki-title(tg-bo-html='wiki.slug')
-                    a.button.button-red.edit-wiki(href="", title="Delete", ng-click="ctrl.delete()") Delete
-                    a.button.button-green.edit-wiki(href="", title="Edit", ng-click="ctrl.edit()") Edit
+                    span.wiki-title(tg-bo-html='wiki.slug|unslugify')
+            .action-buttons
+                a.button.button-red.delete-wiki(href="", title="Delete", ng-click="ctrl.delete()") Delete
+                a.button.button-green.edit-wiki(href="", title="Edit", ng-click="ctrl.edit()") Edit
 
             include views/modules/wiki-summary
 

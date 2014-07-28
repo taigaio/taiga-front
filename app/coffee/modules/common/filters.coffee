@@ -19,6 +19,8 @@
 # File: modules/common/filters.coffee
 ###
 
+taiga = @.taiga
+
 module = angular.module("taigaCommon")
 
 defaultFilter = ->
@@ -38,3 +40,8 @@ yesNoFilter = ->
         return "No"
 
 module.filter("yesNo", yesNoFilter)
+
+unslugify = ->
+    return taiga.unslugify
+
+module.filter("unslugify", unslugify)
