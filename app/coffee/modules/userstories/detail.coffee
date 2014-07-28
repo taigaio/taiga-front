@@ -31,7 +31,7 @@ module = angular.module("taigaUserStories")
 ## User story Detail Controller
 #############################################################################
 
-class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
+class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.AttachmentsMixin)
     @.$inject = [
         "$scope",
         "$rootScope",
@@ -40,10 +40,13 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$tgResources",
         "$routeParams",
         "$q",
-        "$location"
+        "$location",
+        "$log"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @log) ->
+        @.attachmentsUrlName = "userstories/attachments"
+
         @scope.issueRef = @params.issueref
         @scope.sectionName = "User Story Details"
 
@@ -107,6 +110,7 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
                       .then(=> @.loadUsersAndRoles())
                       .then(=> @.loadUs())
                       .then(=> @.loadTasks())
+                      .then(=> @.loadAttachments(@scope.usId))
                       .then(=> @.loadHistory())
 
     getUserFullName: (userId) ->
