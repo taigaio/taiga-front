@@ -114,13 +114,14 @@ module.run([
     "$tgResources",
     "$tgProjectsResourcesProvider",
     "$tgMembershipsResourcesProvider",
+    "$tgInvitationsResourcesProvider",
     "$tgSprintsResourcesProvider",
     "$tgUserstoriesResourcesProvider",
     "$tgTasksResourcesProvider",
-    "$tgWikiResourcesProvider",
     "$tgIssuesResourcesProvider",
+    "$tgWikiResourcesProvider",
     "$tgSearchResourcesProvider",
+    "$tgAttachmentsResourcesProvider",
     "$tgMdRenderResourcesProvider",
-    "$tgInvitationsResourcesProvider",
     initResources
 ])
