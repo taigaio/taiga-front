@@ -31,7 +31,7 @@ module = angular.module("taigaWiki")
 ## Wiki Detail Controller
 #############################################################################
 
-class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
+class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.AttachmentsMixin)
     @.$inject = [
         "$scope",
         "$rootScope",
@@ -42,9 +42,12 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$q",
         "$location",
         "$filter",
+        "$log"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @filter) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @filter, @log) ->
+        @.attachmentsUrlName = "wiki/attachments"
+
         @scope.projectSlug = @params.pslug
         @scope.wikiSlug = @params.slug
         @scope.sectionName = "Wiki"
@@ -85,6 +88,7 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
                       .then(=> @.loadUsersAndRoles())
                       .then(=> @.loadWikiLinks())
                       .then(=> @.loadWiki())
+                      .then(=> @.loadAttachments(@scope.wikiId))
 
     edit: ->
         @location.path("/project/#{@scope.projectSlug}/wiki/#{@scope.wikiSlug}/edit")
