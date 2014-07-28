@@ -30,7 +30,7 @@ module = angular.module("taigaTasks")
 ## Task Detail Controller
 #############################################################################
 
-class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
+class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.AttachmentsMixin)
     @.$inject = [
         "$scope",
         "$rootScope",
@@ -39,10 +39,13 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$tgResources",
         "$routeParams",
         "$q",
-        "$location"
+        "$location",
+        "$log"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @log) ->
+        @.attachmentsUrlName = "tasks/attachments"
+
         @scope.taskRef = @params.taskref
         @scope.sectionName = "Task Details"
 
@@ -95,6 +98,7 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         return promise.then(=> @.loadProject())
                       .then(=> @.loadUsersAndRoles())
                       .then(=> @.loadTask())
+                      .then(=> @.loadAttachments(@scope.taskId))
                       .then(=> @.loadHistory())
 
     getUserFullName: (userId) ->

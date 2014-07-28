@@ -26,7 +26,8 @@ block content
             section.us-content
                 textarea(placeholder="Write a description of your task", ng-model="task.description", tg-markitup)
 
-            // include views/modules/attachments
+            include views/modules/attachments
+
             textarea(ng-model="task.comment", placeholder="Write here a new commet")
 
         sidebar.menu-secondary.sidebar
