@@ -67,7 +67,7 @@ module.directive("tgProjectsNav", ProjectsNavigationDirective)
 ## Project
 #############################################################################
 
-ProjectMenuDirective = ($log, $compile, $rootscope) ->
+ProjectMenuDirective = ($log, $compile, $auth, $rootscope) ->
     menuEntriesTemplate = _.template("""
     <div class="menu-container">
         <ul class="main-nav">
@@ -118,7 +118,7 @@ ProjectMenuDirective = ($log, $compile, $rootscope) ->
                     <li><a href="" title="Logout">Logout</a></li>
                 </ul>
                 <a href="" title="User preferences" class="avatar">
-                    <img src="/images/unnamed.png" alt="username"/>
+                    <img src="<%- user.photo %>" alt="<%- user.full_name_display %>" />
                 </a>
             </div>
         </div>
@@ -145,7 +145,7 @@ ProjectMenuDirective = ($log, $compile, $rootscope) ->
         container = $el.find(".menu-container")
         sectionName = targetScope.section
 
-        dom = $compile(menuEntriesTemplate({}))(targetScope)
+        dom = $compile(menuEntriesTemplate({user: $auth.getUser()}))(targetScope)
         dom.find("a.active").removeClass("active")
         dom.find("#nav-#{sectionName} > a").addClass("active")
 
@@ -183,4 +183,4 @@ ProjectMenuDirective = ($log, $compile, $rootscope) ->
     return {link: link}
 
 
-module.directive("tgProjectMenu", ["$log", "$compile", "$rootScope", ProjectMenuDirective])
+module.directive("tgProjectMenu", ["$log", "$compile", "$tgAuth", "$rootScope", ProjectMenuDirective])
