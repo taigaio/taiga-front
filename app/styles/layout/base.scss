@@ -20,7 +20,6 @@ body {
         @include transition (transform 1s ease);
     }
     .master {
-        @include transform(translate3d(0, 0, 0));
         @include transition (transform 1s ease);
         &.ng-animate {
             @include transition();
