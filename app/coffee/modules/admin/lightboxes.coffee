@@ -23,6 +23,7 @@ taiga = @.taiga
 
 module = angular.module("taigaKanban")
 
+MAX_MEMBERSHIP_FIELDSETS = 6
 
 #############################################################################
 ## Create Members Lightbox Directive
@@ -71,19 +72,26 @@ CreateMembersDirective = ($rs, $rootScope, $confirm) ->
             fieldSet = target.parent()
 
             fieldSet.remove()
-            $el.find('.add-fieldset').show()
+
+            lastActionButton = $el.find("fieldset:last > a")
+            if lastActionButton.hasClass("icon-delete delete-fieldset")
+                lastActionButton.removeClass("icon-delete delete-fieldset")
+                                .addClass("icon-plus add-fieldset")
 
         $el.on "click", ".add-fieldset", (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
             fieldSet = target.parent()
 
-            target.removeClass("icon-plus add-fieldset").addClass("icon-delete delete-fieldset")
+            target.removeClass("icon-plus add-fieldset")
+                  .addClass("icon-delete delete-fieldset")
+
             newFieldSet = createFieldSet()
             fieldSet.after(newFieldSet)
 
-            if $el.find('fieldset').length == 6
-                $el.find('.add-fieldset').hide()
+            if $el.find("fieldset").length == MAX_MEMBERSHIP_FIELDSETS
+                $el.find("fieldset:last > a").removeClass("icon-plus add-fieldset")
+                                             .addClass("icon-delete delete-fieldset")
 
         $el.on "click", ".button-green", (event) ->
             event.preventDefault()
