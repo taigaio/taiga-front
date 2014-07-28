@@ -280,7 +280,7 @@ MembershipsRowAdminCheckboxDirective = ($log, $repo, $confirm) ->
         member = $scope.$eval($attrs.tgMembershipsRowAdminCheckbox)
         html = render(member)
 
-        if member.is_admin
+        if member.is_owner
             $el.find(":checkbox").prop("checked", true)
 
         $el.on "click", ":checkbox", (event) =>
@@ -291,7 +291,7 @@ MembershipsRowAdminCheckboxDirective = ($log, $repo, $confirm) ->
                 $confirm.notify("error")
 
             target = angular.element(event.currentTarget)
-            member.is_admin = target.prop("checked")
+            member.is_owner = target.prop("checked")
             $repo.save(member).then(onSuccess, onError)
 
         $scope.$on "$destroy", ->
