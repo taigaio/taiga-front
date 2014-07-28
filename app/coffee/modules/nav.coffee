@@ -160,6 +160,7 @@ ProjectMenuDirective = ($log, $compile, $rootscope) ->
 
         $scope.$on "$viewContentLoaded", (ctx) ->
             if ctx.targetScope.$$childHead is null || ctx.targetScope.$$childHead.hideMenu
+                $el.addClass("hidden")
                 $log.error "No scope found for render menu."
                 return
 
