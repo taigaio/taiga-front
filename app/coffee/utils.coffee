@@ -49,7 +49,9 @@ slugify = (data) ->
 
 
 unslugify = (data) ->
-    return _.str.capitalize(data.replace(/-/g, ' '))
+    if data
+        return _.str.capitalize(data.replace(/-/g, ' '))
+    return data
 
 
 toggleText = (element, texts) ->
