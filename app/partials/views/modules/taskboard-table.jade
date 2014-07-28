@@ -34,7 +34,10 @@ div.taskboard-table
                 div.taskboard-userstory-box.task-column
                     h3.us-title
                         span Unassigned tasks
-                    include ../components/addnewtask
+                    a.icon.icon-plus(href="", title="Add new task",
+                                     ng-click="ctrl.addNewTask('standard', us)")
+                    a.icon.icon-bulk(href="", title="Add new tasks in bulk",
+                                     ng-click="ctrl.addNewTask('bulk', us)")
 
                 div.taskboard-tasks-box.task-column(ng-repeat="st in taskStatusList track by st.id",
                                                     tg-taskboard-sortable)
