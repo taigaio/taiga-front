@@ -26,7 +26,8 @@ resourceProvider = ($repo) ->
     service = {}
 
     service.get = (projectId, issueId) ->
-        return $repo.queryOne("issues", issueId)
+        params = {project: projectId}
+        return $repo.queryOne("issues", issueId, params)
 
     service.list = (projectId, filters) ->
         params = {project: projectId}
