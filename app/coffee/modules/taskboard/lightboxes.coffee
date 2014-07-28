@@ -106,9 +106,9 @@ CreateBulkTasksDirective = ($repo, $rs, $rootscope) ->
     link = ($scope, $el, attrs) ->
         $scope.form = {data: "", usId: null}
 
-        $scope.$on "taskform:bulk", (ctx, usId)->
+        $scope.$on "taskform:bulk", (ctx, sprintId, usId)->
             $el.removeClass("hidden")
-            $scope.form = {data: "", usId: usId}
+            $scope.form = {data: "", sprintId: sprintId, usId: usId}
 
         $el.on "click", ".close", (event) ->
             event.preventDefault()
@@ -123,9 +123,10 @@ CreateBulkTasksDirective = ($repo, $rs, $rootscope) ->
 
             data = $scope.form.data
             projectId = $scope.projectId
+            sprintId = $scope.form.sprintId
             usId = $scope.form.usId
 
-            promise = $rs.tasks.bulkCreate(projectId, usId, data)
+            promise = $rs.tasks.bulkCreate(projectId, sprintId, usId, data)
             promise.then (result) ->
                 $rootscope.$broadcast("taskform:bulk:success", result)
                 $el.addClass("hidden")

@@ -153,7 +153,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
     addNewTask: (type, us) ->
         switch type
             when "standard" then @rootscope.$broadcast("taskform:new", @scope.sprintId, us?.id)
-            when "bulk" then @rootscope.$broadcast("taskform:bulk", us.id)
+            when "bulk" then @rootscope.$broadcast("taskform:bulk", @scope.sprintId, us?.id)
 
     editTask: (task) ->
         @rootscope.$broadcast("taskform:edit", task)
