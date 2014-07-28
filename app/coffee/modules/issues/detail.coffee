@@ -48,7 +48,7 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location) ->
         @scope.issueRef = @params.issueref
-        @scope.sectionName = "Issues"
+        @scope.sectionName = "Issue Details"
 
         promise = @.loadInitialData()
         promise.then null, ->
