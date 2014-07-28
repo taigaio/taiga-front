@@ -1,6 +1,7 @@
 taiga = @.taiga
 module = angular.module("taigaProject", [])
 
+
 class ProjectsController extends taiga.Controller
     @.$inject = ["$scope", "$tgResources"]
 
@@ -14,6 +15,7 @@ class ProjectsController extends taiga.Controller
             @.projects = {'recents': projects.slice(0, 8), 'all': projects.slice(8)}
 
 module.controller("ProjectsController", ProjectsController)
+
 
 class ProjectController extends taiga.Controller
     @.$inject = ["$scope", "$tgResources", "$tgRepo", "$routeParams", "$q"]
