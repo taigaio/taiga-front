@@ -44,7 +44,7 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location) ->
         @scope.taskRef = @params.taskref
-        @scope.sectionName = "Backlog"
+        @scope.sectionName = "Task Details"
 
         promise = @.loadInitialData()
         promise.then null, ->
