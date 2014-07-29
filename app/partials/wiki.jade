@@ -9,7 +9,6 @@ block content
         sidebar.menu-secondary.extrabar
             section.wiki-nav(tg-wiki-nav, ng-model="wikiLinks")
         section.main.wiki
-            //Include views/components/mainTitle
             header
                 h1
                     span(tg-bo-html="project.name")
@@ -23,4 +22,5 @@ block content
 
             section.wiki-content.wysiwyg(tg-bind-html="wiki.html")
 
+            - var attachModel = "wiki"
             include views/modules/attachments

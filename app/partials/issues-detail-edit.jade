@@ -26,6 +26,7 @@ block content
             section.us-content
                 textarea(placeholder="Write a description of your issue", ng-model="issue.description", tg-markitup)
 
+            - var attachModel = "issue"
             include views/modules/attachments
 
             textarea(ng-model="issue.comment", placeholder="Write here a new commet")
