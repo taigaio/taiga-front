@@ -19,18 +19,6 @@ blockquote {
             content: '\2014 \0020';
         }
     }
-    a,
-    a:visited {
-        color: #555;
-    }
-}
-
-a {
-    color: $blackish;
-    &:hover {
-        @include transition (color .3s linear);
-        color: $green-taiga;
-    }
 }
 
 // __Lists__

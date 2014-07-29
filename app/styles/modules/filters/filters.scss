@@ -32,8 +32,8 @@
     form {
         .icon-search {
             position: absolute;
-            right: .5rem;
-            top: .5rem;
+            right: .7rem;
+            top: .7rem;
         }
     }
 }
@@ -64,7 +64,7 @@
         @include transition (color .2s ease-in);
         color: $grayer;
         display: block;
-        padding: 1rem 0 1rem 1rem;
+        padding: .5rem 0 .5rem .5rem;
         &:hover {
             @include transition (color .2s ease-in);
             color: $green-taiga;

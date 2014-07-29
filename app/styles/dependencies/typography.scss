@@ -87,11 +87,14 @@ hr {
 }
 
 // __Links__
-
 a,
 a:visited {
-    color: #333;
+    color: $grayer;
     text-decoration: none;
+    &:hover {
+        @include transition (color .3s linear);
+        color: $green-taiga;
+    }
 }
 
 // Taiga Icons
