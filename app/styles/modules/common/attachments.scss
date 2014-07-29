@@ -47,11 +47,9 @@
     .settings {
         @extend %large;
         color: $gray-light;
-        display: none;
     }
     .editable {
         @include table-flex-child(10, 300px);
-        display: none;
     }
     .attachment-delete {
         @include table-flex-child(1, 10px);
