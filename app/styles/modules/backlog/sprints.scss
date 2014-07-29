@@ -39,17 +39,15 @@
         }
         .icon-arrow-up {
             @include transform(rotate(180deg));
+            @include transition (all .2s linear);
             vertical-align: baseline;
-            &:hover,
             &.active {
                 @include transform(rotate(0));
-                @include transition (all .2s ease-in);
+                @include transition (all .2s linear);
             }
-            &.active {
-                &:hover {
-                    @include transition (all .2s ease-in);
-                    @include transform(rotate(180deg));
-                }
+            &:hover {
+                @include transition(color .2s linear);
+                color: $fresh-taiga;
             }
         }
         .icon-edit {
@@ -176,16 +174,15 @@
     .sprint-name {
         .icon-arrow-up {
             @include transform(rotate(180deg));
-            &:hover,
+            @include transition (all .2s linear);
+            vertical-align: baseline;
             &.active {
                 @include transform(rotate(0));
-                @include transition (all .2s ease-in);
+                @include transition (all .2s linear);
             }
-            &.active {
-                &:hover {
-                    @include transform(rotate(180deg));
-                    @include transition (all .2s ease-in);
-                }
+            &:hover {
+                @include transition(color .2s linear);
+                color: $fresh-taiga;
             }
         }
     }
@@ -199,16 +196,15 @@
     .sprint-name {
         .icon-arrow-up {
             @include transform(rotate(180deg));
-            &:hover,
+            @include transition (all .2s linear);
+            vertical-align: baseline;
             &.active {
                 @include transform(rotate(0));
-                @include transition (all .2s ease-in);
+                @include transition (all .2s linear);
             }
-            &.active {
-                &:hover {
-                    @include transform(rotate(180deg));
-                    @include transition (all .2s ease-in);
-                }
+            &:hover {
+                @include transition(color .2s linear);
+                color: $fresh-taiga;
             }
         }
     }

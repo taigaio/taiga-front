@@ -41,3 +41,9 @@ ol { list-style: decimal; }
 .draggable {
     cursor: move;
 }
+
+// Background
+%triangled-bg {
+    background: url('/images/bg.png') no-repeat center center;
+    background-size: cover;
+}

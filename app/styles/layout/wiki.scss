@@ -3,10 +3,12 @@
 }
 .action-buttons {
     position: absolute;
-    top: 2rem;
     right: 2rem;
-    .delete-wiki, .edit-wiki, .save-wiki {
-        float:right;
+    top: 2rem;
+    .delete-wiki,
+    .edit-wiki,
+    .save-wiki {
+        float: right;
         margin-left: 10px;
     }
 }

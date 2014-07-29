@@ -1,7 +1,6 @@
 .create-project {
     @include table-flex(center, center, flex, row, wrap, center);
-    background: url('/images/bg.png') no-repeat center center;
-    background-size: cover;
+    @extend %triangled-bg;
     bottom: 0;
     left: 0;
     position: fixed;
@@ -15,8 +14,8 @@
         @include table-flex-child(0, 400px, 0, 400px);
     }
     h1 {
-        text-align: center;
         color: $white;
+        text-align: center;
     }
     .logo,
     .tagline {
