@@ -12,14 +12,12 @@ block content
                 a.button.button-green.save-issue(href="", title="Save") Save
 
             section.us-story-main-data
-                div.us-title
+                div.us-title(ng-class="{blocked: issue.is_blocked}")
                     input(type="text", ng-model="issue.subject")
-
-                div.blocked-warning(ng-show="issue.is_blocked")
-                    span.icon.icon-warning
-                    p.blocked Blocked!
-                    p(tg-bind-html="issue.blocked_note || 'This issue is blocked'")
-                    a.button.button-red.button-block.unblock(ng-click="ctrl.unblock()", href="", title="Unblock US") Unblock
+                    p.block-desc-container(ng-show="issue.is_blocked")
+                        span.block-description-title Blocked
+                        span.block-description(tg-bind-html="issue.blocked_note || 'This issue is blocked'")
+                        a.unblock(ng-click="ctrl.unblock()", href="", title="Unblock issue") Unblock
 
                 div.user-story-tags(tg-tag-line, editable="true", ng-model="issue.tags")
 

@@ -13,10 +13,33 @@
     .us-title {
         @extend %large;
         @extend %text;
+        @include transition(all .2s linear);
         background: $whitish;
-        margin-bottom: 1rem;
-        padding: 2rem 1rem;
+        margin-bottom: .5rem;
+        padding: 1rem;
         position: relative;
+        &.blocked {
+            background: $red;
+            vertical-align: middle;
+            @include transition(all .2s linear);
+            .us-title-text,
+            input {
+                margin-bottom: .5rem;
+            }
+            .us-number,
+            .us-name {
+                color: $white;
+            }
+            .unblock {
+                @extend %bold;
+                color: $white;
+                float: right;
+                &:hover {
+                    @include transition(color .3s linear);
+                    color: $red-light;
+                }
+            }
+        }
         input {
             background: $white;
         }
@@ -37,42 +60,44 @@
             text-transform: uppercase;
             white-space: nowrap;
         }
-    }
-    .blocked-warning {
-        background: $red;
-        color: $white;
-        margin-bottom: 1rem;
-        padding: 1rem;
-        position: relative;
-        .icon {
-            @extend %xxlarge;
-            display: inline;
-            left: 1rem;
-            position: absolute;
-            top: 1rem;
-        }
-        .blocked {
-            @extend %xlarge;
-            @extend %bold;
-            margin-bottom: .3em;
-        }
-        p {
+        .block-desc-container {
+            @extend %small;
             margin-bottom: 0;
-            margin-left: 4rem;
-            margin-right: 10rem;
         }
-        .button-block {
-            position: absolute;
-            right: 1rem;
-            top: 1rem;
+        .block-description-title {
+            @extend %bold;
+            color: $white;
+            margin-right: .5rem;
         }
+        .block-description {
+            color: $white;
+        }
+    }
+}
+
+.blocked-warning {
+    margin-bottom: 1rem;
+    .blocked {
+        @extend %title;
+        @extend %xlarge;
+        color: $red;
+        line-height: 2.5rem;
+        margin-bottom: .5rem;
+    }
+    .icon {
+        @extend %xlarge;
+        vertical-align: middle;
+    }
+    .block-description {
+        color: $grayer;
+        margin: 0;
     }
 }
 
 .issue-nav {
     position: absolute;
     right: 1rem;
-    top: 1.5rem;
+    top: .7rem;
     a {
         @extend %xlarge;
     }

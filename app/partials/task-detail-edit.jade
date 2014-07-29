@@ -12,14 +12,12 @@ block content
                 a.button.button-green.save-task(href="", title="Save") Save
 
             section.us-story-main-data
-                div.us-title
+                div.us-title(ng-class="{blocked: task.is_blocked}")
                     input(type="text", ng-model="task.subject")
-
-                div.blocked-warning(ng-show="task.is_blocked")
-                    span.icon.icon-warning
-                    p.blocked Blocked!
-                    p(tg-bind-html="task.blocked_note || 'This task is blocked'")
-                    a.button.button-red.button-block.unblock(ng-click="ctrl.unblock()", href="", title="Unblock US") Unblock
+                    p.block-desc-container(ng-show="task.is_blocked")
+                        span.block-description-title Blocked
+                        span.block-description(tg-bind-html="task.blocked_note || 'This task is blocked'")
+                        a.unblock(ng-click="ctrl.unblock()", href="", title="Unblock task") Unblock
 
                 div.user-story-tags(tg-tag-line, editable="true", ng-model="task.tags")
 

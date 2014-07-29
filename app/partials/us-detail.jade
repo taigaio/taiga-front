@@ -12,20 +12,20 @@ block content
                 a.button.button-green(href="", title="Edit", tg-nav="project-userstories-detail-edit:project=project.slug,ref=us.ref") Edit
 
             section.us-story-main-data
-                div.us-title
+                div.us-title(ng-class="{blocked: us.is_blocked}")
                     h2.us-title-text
                         span.us-number(tg-bo-html="us.ref")
                         span.us-name(ng-bind="us.subject")
+
+                    p.block-desc-container(ng-show="us.is_blocked")
+                        span.block-description-title Blocked
+                        span.block-description(tg-bind-html="us.blocked_note || 'This user story is blocked'")
                     div.issue-nav
                         a.icon.icon-arrow-left(ng-show="nextUrl", href="{{ nextUrl }}", title="next user story")
                         a.icon.icon-arrow-right(ng-show="previousUrl",href="{{ previousUrl }}", title="previous user story")
 
-                div.blocked-warning(ng-show="us.is_blocked")
-                    span.icon.icon-warning
-                    p.blocked Trolrororo!
-                    p(tg-bind-html="us.blocked_note || 'This user story is blocked'")
 
-                div.user-story-tags(tg-tag-line, ng-model="us.tags")
+                div.user-story-tags(tg-tag-line, ng-model="us.tags", ng-show="us.tags")
 
             section.us-content.wysiwyg(tg-bind-html="us.description_html")
 

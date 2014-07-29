@@ -12,20 +12,18 @@ block content
                 a.button.button-green(href="", title="Edit", tg-nav="project-tasks-detail-edit:project=project.slug,ref=task.ref") Edit
 
             section.us-story-main-data
-                div.us-title
+                div.us-title(ng-class="{blocked: task.is_blocked}")
                     h2.us-title-text
                         span.us-number(tg-bo-html="task.ref")
                         span.us-name(ng-bind="task.subject")
+                    p.block-desc-container(ng-show="task.is_blocked")
+                        span.block-description-title Blocked
+                        span.block-description(tg-bind-html="task.blocked_note || 'This task is blocked'")
                     div.issue-nav
                         a.icon.icon-arrow-left(ng-show="nextUrl", href="{{ nextUrl }}", title="next task")
                         a.icon.icon-arrow-right(ng-show="previousUrl",href="{{ previousUrl }}", title="previous task")
 
-                div.blocked-warning(ng-show="task.is_blocked")
-                    span.icon.icon-warning
-                    p.blocked Blocked!
-                    p(tg-bind-html="task.blocked_note || 'This task is blocked'")
-
-                div.user-story-tags(tg-tag-line, ng-model="task.tags")
+                div.user-story-tags(tg-tag-line, ng-model="task.tags", ng-show="task.tags")
 
             section.us-content.wysiwyg(tg-bind-html="task.description_html")
 
