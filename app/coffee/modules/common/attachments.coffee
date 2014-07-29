@@ -76,7 +76,7 @@ module.directive("tgAttachments", [AttachmentsDirective])
 ## Attachment Directive
 #############################################################################
 
-AttachmentDirective = ($log) ->
+AttachmentDirective = ($log, $repo, $rs, $confirm) ->
     singleAttachment = _.template("""
     <div class="attachment-name">
         <span class="icon.icon-document"></span>
@@ -98,10 +98,13 @@ AttachmentDirective = ($log) ->
     </div>
     <div class="editable editable-attachment-comment">
         <span class="attachment-size">(<%- size %>)</span>
-        <input type="text" />
+        <input type="text" name="description"
+               value="<%- description %>""
+               placeholder="Type a short description" />
     </div>
     <div class="editable editable-attachment-deprecated">
-        <input type="checkbox" id="attach-<%- id %>-is-deprecated" />
+        <input type="checkbox" name="is-deprecated" id="attach-<%- id %>-is-deprecated"
+               <% if (isDeprecated){ %>checked<% } %> />
         <label for="attach-<%- id %>-is-deprecated">Deprecated?</label>
     </div>
     <a class="editable icon icon-floppy" href="" title="Save"></a>
@@ -109,6 +112,8 @@ AttachmentDirective = ($log) ->
     """) # TODO: i18n
 
     link = ($scope, $el, $attrs, $model) ->
+        $ctrl = $el.controller()
+
         render = (attachment, isEditable=false) ->
             ctx = {
                 id: attachment.id
@@ -123,6 +128,7 @@ AttachmentDirective = ($log) ->
                 html = singleAttachmentEditable(ctx)
             else
                 html = singleAttachment(ctx)
+
             $el.html(html)
 
             if attachment.is_deprecated
@@ -140,6 +146,51 @@ AttachmentDirective = ($log) ->
         attachment = $scope.$eval($attrs.tgAttachment)
         render(attachment)
 
+        ## Actions (on view mode)
+        $el.on "click", "a.settings.icon-edit", (event) ->
+            event.preventDefault()
+            render(attachment, true)
+
+        $el.on "click", "a.settings.icon-delete", (event) ->
+            event.preventDefault()
+
+            title = "Delete attachment" # i18n
+            subtitle = "the attachment '#{attachment.name}'"
+
+            onSuccess = ->
+                $ctrl.loadAttachments(attachment.object_id)
+                $confirm.notify("success", null, "We've deleted #{subtitle}.") #TODO: i18in
+
+            onError = ->
+                $confirm.notify("error", null, "We have not been able to delete #{subtitle}.") #TODO: i18in
+
+            $confirm.ask(title, subtitle).then ->
+                $repo.remove(attachment).then(onSuccess, onError)
+
+        ## Actions (on edit mode)
+        $el.on "click", "a.editable.icon-delete", (event) ->
+            event.preventDefault()
+            render(attachment)
+
+        $el.on "click", "a.editable.icon-floppy", (event) ->
+            newDescription = $el.find("input[name='description']").val()
+            newIsDeprecated = $el.find("input[name='is-deprecated']").prop("checked")
+
+            if newDescription != attachment.description
+                attachment.setAttr("description", newDescription)
+            if newIsDeprecated != attachment.is_deprecated
+                attachment.setAttr("is_deprecated", newIsDeprecated)
+
+            onSuccess = ->
+                $ctrl.loadAttachments(attachment.object_id)
+                $confirm.notify("success")
+
+            onError = ->
+                $confirm.notify("error")
+
+            if attachment.isModified()
+                $repo.save(attachment).then(onSuccess, onError)
+
         ## On destroy
         $scope.$on "$destroy", ->
             $el.off()
@@ -149,4 +200,5 @@ AttachmentDirective = ($log) ->
         require: "ngModel"
     }
 
-module.directive("tgAttachment", ["$log", AttachmentDirective])
+module.directive("tgAttachment", ["$log", "$tgRepo", "$tgResources", "$tgConfirm",
+                                  AttachmentDirective])
