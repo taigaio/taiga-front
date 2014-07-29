@@ -1,36 +1,48 @@
-section.attachments
+//- NOTE: You must to define 'var attachModel' with the object model
+//-       that have attachments
+
+section.attachments(tg-attachments, ng-model=attachModel)
     div.attachments-header
         h3.attachments-title
             span.icon.icon-attachment
-            span.attachments-num {{ attachmentsCount }}
+            span.attachments-num 0
             span.attachments-text attachments
             a.button.button-gray(href="", title="Add new attachment")
                 span +new file
 
     div.attachment-body
-        div.single-attachment(ng-repeat="attach in activeAttachments")
-            div.attachment-name
-                span.icon.icon-document
-                a(href="{{ attach.url }}", title="{{ attach.name }}" target="_blank") {{ attach.name }}
-            div.attachment-comment
-                span {{ attach.description }}
-                span.attachment-size ({{ attach.size }} B)
-            a.settings.icon.icon-edit(href="","Edit")
-            a.settings.icon.icon-drag-v(href="","Drag")
+        div.hidden.single-attachment(ng-repeat="attach in attachments",
+                                     tg-attachment="attach",
+                                     ng-model=attachModel)
 
-        //-div.single-attachment.edit
+        //- An attachment ('deprecated' class for deprecxated attachments)
+        //-
+        //-div.single-attachment
+        //-    div.attachment-name
+        //-        span.icon.icon-document
+        //-        a(href="", title="Attachment pefildeusuario.png") pefildeusuariopefuario.png
+        //-    div.attachment-comment
+        //-        span.attachment-size (42 B)
+        //-        span A sort description
+        //-    a.settings.icon.icon-edit(href="", "Edit")
+        //-    a.settings.icon.icon-delete(href="", "Delete")
+        //-    a.settings.icon.icon-drag-v(href="", "Drag")
+
+        //- An edittable attachment ('deprecated' class for deprecxated attachments)
+        //-
+        //-div.single-attachment
         //-    div.attachment-name
         //-        span.icon.icon-document
         //-        a(href="", title="Attachment pefildeusuario.png") pefildeusuariopefuario.png
         //-    div.editable.editable-attachment-comment
+        //-        span.attachment-size (42 B)
         //-        input(type="text")
         //-    div.editable.editable-attachment-deprecated
-        //-        label
-        //-            input(type="checkbox")
-        //-            span Deprecated?
-        //-    div.editable.attachment-delete
-        //-        a.icon.icon-delete(href="#")
+        //-        label Deprecated?
+        //-        input(type="checkbox")
+        //-    a.editable.icon.icon-floppy(href="#", "Save")
+        //-    a.editable.icon.icon-delete(href="#", "Cancel")
 
-        a.more-attachments(href="", title="show atachments history")
-            span + show deprecated atachments
-            span.more-attachments-num ({{ deprecatedAttachmentsCount }} more)
+        a.hidden.more-attachments(href="", title="show atachments history")
+            span.text + show deprecated atachments
+            span.more-attachments-num (0 deprecated)
