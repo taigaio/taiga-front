@@ -16,19 +16,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: modules/admin/nav.coffee
+# File: modules/user-settings.coffee
 ###
 
-AdminNavigationDirective = ->
-    link = ($scope, $el, $attrs) ->
-        section = $attrs.tgAdminNavigation
-        $el.find(".active").removeClass("active")
-        $el.find("#adminmenu-#{section} a").addClass("active")
-
-        $scope.$on "$destroy", ->
-            $el.off()
-
-    return {link:link}
-
-module = angular.module("taigaAdmin")
-module.directive("tgAdminNavigation", AdminNavigationDirective)
+module = angular.module("taigaUserSettings", [])

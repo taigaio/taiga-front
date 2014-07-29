@@ -90,6 +90,7 @@ urls = {
 
     # User settings
     "user-settings-user-profile": "/project/:project/user-settings/user-profile"
+    "user-settings-user-avatar": "/project/:project/user-settings/user-avatar"
     "user-settings-mail-notifications": "/project/:project/user-settings/mail-notifications"
 
 }

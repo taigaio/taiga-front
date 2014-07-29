@@ -101,6 +101,9 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide) ->
     $routeProvider.when("/project/:pslug/user-settings/user-profile",
           {templateUrl: "/partials/user-profile.html"})
 
+    $routeProvider.when("/project/:pslug/user-settings/user-avatar",
+          {templateUrl: "/partials/user-avatar.html"})
+
     $routeProvider.when("/project/:pslug/user-settings/mail-notifications",
           {templateUrl: "/partials/mail-notifications.html"})
 
@@ -171,6 +174,7 @@ modules = [
     "taigaAdmin",
     "taigaNavMenu",
     "taigaProject",
+    "taigaUserSettings",
 
     # Vendor modules
     "ngRoute",

@@ -91,6 +91,9 @@ class AuthService extends taiga.Service
             @.setUser(user)
             return user
 
+    logout: ->
+        @.removeToken()
+
     register: (data, type, existing) ->
         url = @urls.resolve("auth-register")
 

@@ -4,8 +4,9 @@ block head
     title Taiga  Project management web application with scrum in mind!
 
 block content
-    div.wrapper
-        sidebar.menu-secondary.sidebar
+    div.wrapper(tg-user-profile, ng-controller="UserSettingsController as ctrl",
+                ng-init="section='user-settings'")
+        sidebar.menu-secondary.sidebar(tg-user-settings-navigation="user-profile")
             include views/modules/user-settings-menu
 
         section.main.user-profile
@@ -15,7 +16,7 @@ block content
             form
                 fieldset
                     label(for="user-email") Email
-                    input(type="text", placeholder="Email", id="user-email")
+                    input(type="text", placeholder="Email", id="user-email", ng-value="user.email")
                 fieldset
                     label(for="current-password") Current Password
                     input(type="password", placeholder="Password", id="current-password")

@@ -50,7 +50,8 @@ paths = {
              "app/coffee/modules/admin/*.coffee",
              "app/coffee/modules/locales/*.coffee",
              "app/coffee/modules/base/*.coffee",
-             "app/coffee/modules/resources/*.coffee"]
+             "app/coffee/modules/resources/*.coffee",
+             "app/coffee/modules/user-settings/*.coffee"]
     vendorJsLibs: [
         "app/vendor/jquery/dist/jquery.js",
         "app/vendor/lodash/dist/lodash.js",

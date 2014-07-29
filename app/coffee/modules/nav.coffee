@@ -67,7 +67,7 @@ module.directive("tgProjectsNav", ProjectsNavigationDirective)
 ## Project
 #############################################################################
 
-ProjectMenuDirective = ($log, $compile, $auth, $rootscope) ->
+ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location) ->
     menuEntriesTemplate = _.template("""
     <div class="menu-container">
         <ul class="main-nav">
@@ -115,9 +115,10 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope) ->
             <div class="user-settings">
                 <ul class="popover">
                     <li><a href="" title="Account settings", tg-nav="user-settings-user-profile:project=project.slug">Account settings</a></li>
-                    <li><a href="" title="Logout">Logout</a></li>
+                    <li><a href="" title="Change profile photo", tg-nav="user-settings-user-avatar:project=project.slug">Change profile photo</a></li>
+                    <li><a href="" title="Logout" class="logout">Logout</a></li>
                 </ul>
-                <a href="" title="User preferences" class="avatar">
+                <a href="" title="User preferences" class="avatar" id="nav-user-settings">
                     <img src="<%- user.photo %>" alt="<%- user.full_name_display %>" />
                 </a>
             </div>
@@ -151,7 +152,6 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope) ->
 
         container.replaceWith(dom)
 
-
     link = ($scope, $el, $attrs, $ctrl) ->
         renderMainMenu($el)
 
@@ -169,6 +169,12 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope) ->
                     $el.find(".popover").hide()
                     body.unbind("click")
 
+        $el.on "click", ".logout", (event) ->
+            event.preventDefault()
+            $auth.logout()
+            $scope.$apply ->
+                $location.path("/login")
+
         $scope.$on "$viewContentLoaded", (ctx) ->
             if ctx.targetScope.$$childHead is null || ctx.targetScope.$$childHead.hideMenu
                 $el.addClass("hidden")
@@ -183,4 +189,4 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope) ->
     return {link: link}
 
 
-module.directive("tgProjectMenu", ["$log", "$compile", "$tgAuth", "$rootScope", ProjectMenuDirective])
+module.directive("tgProjectMenu", ["$log", "$compile", "$tgAuth", "$rootScope", "$tgAuth", "$tgLocation", ProjectMenuDirective])
