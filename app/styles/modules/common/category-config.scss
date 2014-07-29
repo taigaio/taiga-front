@@ -38,9 +38,12 @@
         text-align: right;
     }
     .category-items {
+        @include slide(400px, overflow-y);
         background-color: $whitish;
-        padding: 2rem 1rem;
         width: 100%;
+        .items-container {
+            padding: 2rem 1rem;
+        }
     }
     .category-item {
         border-bottom: 1px dotted $gray;

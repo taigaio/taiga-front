@@ -1,48 +1,30 @@
-extends layout
+extends dummy-layout
 
 block head
     title Taiga  Project management web application with scrum in mind!
 
 block content
-    div.wrapper
-        sidebar.menu-secondary.sidebar
+    div.wrapper.roles(ng-controller="RolesController as ctrl",
+                            ng-init="section='admin'", tg-roles)
+        sidebar.menu-secondary.sidebar(tg-admin-navigation="roles")
             include views/modules/admin-menu
         sidebar.menu-tertiary.sidebar
-            include views/modules/admin-submenu
+            include views/modules/admin-submenu-roles
 
         section.main.admin-roles
             header
                 include views/components/mainTitle
 
+            a.button.button-red.delete-role(href="", title="Delete", ng-click="ctrl.delete()") Delete
+
             p.total
-                | UX
-                span (6 members with this role)
+                | {{ role.name }}
+                span ({{ role.members_count }} members with this role)
 
-            include views/modules/category-config
+            div.general-category
+                | Can do estimations?
+                div.check
+                    input(type="checkbox", ng-model="role.computable", ng-change="ctrl.setComputable()")
+                    div
 
-    script(type='text/javascript').
-        function randomIntFromInterval(min,max) {
-            return Math.floor(Math.random()*(max-min+1)+min);
-        }
-        (function() {
-            if(randomIntFromInterval(0, 4) !== 4) return true;
-
-            var inputs = document.querySelectorAll('input');
-
-            function change(input) {
-                var num = randomIntFromInterval(100, 600);
-
-                setTimeout(function() {
-                    if(input.hasAttribute('checked')) {
-                        input.removeAttribute('checked');
-                    } else {
-                        input.setAttribute('checked', 'checked');
-                    }
-                }, num);
-            }
-            setInterval(function() {
-                for(var i = 0; i < inputs.length; i++) {
-                    change(inputs[i]);
-            }
-            }, 500);
-        })()
+            div(tg-role-permissions, ng-model="role")

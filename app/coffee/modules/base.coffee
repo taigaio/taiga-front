@@ -85,6 +85,7 @@ urls = {
     "project-admin-project-values-issue-priorities": "/project/:project/admin/project-values/issue-priorities"
     "project-admin-project-values-issue-severities": "/project/:project/admin/project-values/issue-severities"
     "project-admin-memberships": "/project/:project/admin/memberships"
+    "project-admin-roles": "/project/:project/admin/roles"
     "project-admin-project-profile-features": "/project/:project/admin/project-profile/features"
     "project-admin-project-values-us-status": "/project/:project/admin/project-values/us-status"
 

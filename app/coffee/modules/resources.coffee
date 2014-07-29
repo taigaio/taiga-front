@@ -116,6 +116,7 @@ module.run([
     "$tgProjectsResourcesProvider",
     "$tgMembershipsResourcesProvider",
     "$tgInvitationsResourcesProvider",
+    "$tgRolesResourcesProvider",
     "$tgSprintsResourcesProvider",
     "$tgUserstoriesResourcesProvider",
     "$tgTasksResourcesProvider",

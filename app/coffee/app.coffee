@@ -97,6 +97,9 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide) ->
     $routeProvider.when("/project/:pslug/admin/memberships",
         {templateUrl: "/partials/admin-memberships.html"})
 
+    $routeProvider.when("/project/:pslug/admin/roles",
+        {templateUrl: "/partials/admin-roles.html"})
+
     # User settings
     $routeProvider.when("/project/:pslug/user-settings/user-profile",
           {templateUrl: "/partials/user-profile.html"})
