@@ -2,6 +2,11 @@
 .backlog-table-body {
     @include table-flex();
     width: 100%;
+    &.show-tags {
+        .user-story-tags {
+            display: block;
+        }
+    }
     .row {
         @include table-flex();
         @extend %small;
@@ -127,6 +132,7 @@
         }
     }
     .user-story-tags {
+        display: none;
         margin-top: .3rem;
         .tag {
             margin-right: .1rem;

@@ -6,5 +6,5 @@ section.backlog-table-header
             span.header-points Points
             span.icon.icon-arrow-bottom
 
-section.backlog-table-body(tg-backlog-sortable)
+section.backlog-table-body(tg-backlog-sortable, ng-class="{'show-tags': ctrl.showTags}")
     include ../components/backlog-row

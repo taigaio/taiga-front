@@ -1,6 +1,6 @@
 div.row.us-item-row(ng-repeat="us in visibleUserstories|orderBy:order track by us.id", tg-draggable)
     div.user-stories
-        div.user-story-tags(ng-show="ctrl.showTags")
+        div.user-story-tags
             span.tag(ng-repeat="tag in us.tags") {{ tag }}
         div.user-story-name
             input(type="checkbox", name="")
