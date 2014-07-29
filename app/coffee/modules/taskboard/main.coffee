@@ -144,9 +144,9 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
         task.order = order
 
         promise = @repo.save(task)
-        promise.then ->
-            console.log "SUCCESS TASK SAVE"
-        promise.then null, ->
+        promise.then =>
+            @.loadSprintStats()
+        promise.then null, =>
             console.log "FAIL TASK SAVE"
 
     ## Template actions
