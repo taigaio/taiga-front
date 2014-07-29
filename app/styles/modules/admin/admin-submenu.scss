@@ -1,5 +1,6 @@
 .admin-submenu {
     h1 {
+        @extend %xlarge;
         color: $white;
     }
     li {

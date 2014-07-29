@@ -135,7 +135,9 @@
         display: none;
         margin-top: .3rem;
         .tag {
+            @extend %small;
             margin-right: .1rem;
+            padding: .2rem .5rem;
         }
     }
     .blocked {
