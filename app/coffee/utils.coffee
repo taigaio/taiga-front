@@ -105,6 +105,22 @@ debounce = (wait, func) ->
 startswith = (str1, str2) ->
     return _.str.startsWith(str1, str2)
 
+
+sizeFormat = (input, precision=1) ->
+    if isNaN(parseFloat(input)) or not isFinite(input)
+        return "-"
+
+    if input == 0
+        return "0 bytes"
+
+    units = ["bytes", "KB", "MB", "GB", "TB", "PB"]
+    number = Math.floor(Math.log(input) / Math.log(1024))
+    if number > 5
+        number = 5
+    size = (input / Math.pow(1024, number)).toFixed(precision)
+    return  "#{size} #{units[number]}"
+
+
 taiga = @.taiga
 taiga.bindOnce = bindOnce
 taiga.mixOf = mixOf
@@ -120,3 +136,4 @@ taiga.toString = toString
 taiga.joinStr = joinStr
 taiga.debounce = debounce
 taiga.startswith = startswith
+taiga.sizeFormat = sizeFormat
