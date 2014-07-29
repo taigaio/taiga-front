@@ -22,7 +22,7 @@
 
 taiga = @.taiga
 
-resourceProvider = ($repo) ->
+resourceProvider = ($repo, $http, $urls) ->
     service = {}
 
     service.get = (projectId, issueId) ->
@@ -33,6 +33,11 @@ resourceProvider = ($repo) ->
         params = {project: projectId}
         params = _.extend({}, params, filters or {})
         return $repo.queryPaginated("issues", params)
+
+    service.bulkCreate = (projectId, data) ->
+        url = $urls.resolve("bulk-create-issues")
+        params = {projectId: projectId, bulkIssues: data}
+        return $http.post(url, params)
 
     service.stats = (projectId) ->
         return $repo.queryOneRaw("projects", "#{projectId}/issues_stats")
@@ -52,4 +57,4 @@ resourceProvider = ($repo) ->
 
 
 module = angular.module("taigaResources")
-module.factory("$tgIssuesResourcesProvider", ["$tgRepo", resourceProvider])
+module.factory("$tgIssuesResourcesProvider", ["$tgRepo", "$tgHttp", "$tgUrls", resourceProvider])

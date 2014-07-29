@@ -41,6 +41,7 @@ urls = {
     "bulk-create-tasks": "/api/v1/tasks/bulk_create"
     "tasks-restore": "/api/v1/tasks/%s/restore"
     "issues": "/api/v1/issues"
+    "bulk-create-issues": "/api/v1/issues/bulk_create"
     "issues-restore": "/api/v1/issues/%s/restore"
     "wiki": "/api/v1/wiki"
     "wiki-restore": "/api/v1/wiki/%s/restore"

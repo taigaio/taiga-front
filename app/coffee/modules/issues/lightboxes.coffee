@@ -81,12 +81,55 @@ CreateIssueDirective = ($repo, $model, $rs, $rootscope) ->
     return {link:link}
 
 
+CreateBulkIssuesDirective = ($repo, $rs, $rootscope) ->
+    link = ($scope, $el, attrs) ->
+        $scope.form = {data: "", usId: null}
+
+        $scope.$on "issueform:bulk", (ctx, sprintId, usId)->
+            $el.removeClass("hidden")
+            $scope.form = {data: "", sprintId: sprintId, usId: usId}
+
+        $el.on "click", ".close", (event) ->
+            event.preventDefault()
+            $el.addClass("hidden")
+
+        $el.on "click", ".button-green", (event) ->
+            event.preventDefault()
+
+            form = $el.find("form").checksley()
+            if not form.validate()
+                return
+
+            data = $scope.form.data
+            projectId = $scope.projectId
+
+            promise = $rs.issues.bulkCreate(projectId, data)
+            promise.then (result) ->
+                $rootscope.$broadcast("issueform:bulk:success", result)
+                $el.addClass("hidden")
+
+            # TODO: error handling
+            promise.then null, ->
+                console.log "FAIL"
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {link: link}
+
 module.directive("tgLbCreateIssue", [
     "$tgRepo",
     "$tgModel",
     "$tgResources",
     "$rootScope",
     CreateIssueDirective
+])
+
+module.directive("tgLbCreateBulkIssues", [
+    "$tgRepo",
+    "$tgResources",
+    "$rootScope",
+    CreateBulkIssuesDirective
 ])
 
 #############################################################################
@@ -114,4 +157,3 @@ module.directive("tgLbCreateIssue", [
 #     "$rootScope",
 #     CreateIssueDirective
 # ])
-
