@@ -265,7 +265,7 @@ MembershipsRowAdminCheckboxDirective = ($log, $repo, $confirm) ->
     template = _.template("""
     <input type="checkbox" id="<%- inputId %>" />
     <label for="<%- inputId %>">Is admin?</label>
-    """) # i18n
+    """) # TODO: i18n
 
     link = ($scope, $el, $attrs) ->
         render = (member) ->
@@ -370,7 +370,7 @@ MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm) ->
     <a class="delete" href="">
         <span class="icon icon-delete"></span>
     </a>
-    """) # i18n
+    """) # TODO: i18n
 
     pendingTemplate = _.template("""
     <a class="pending" href="">
@@ -380,7 +380,7 @@ MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm) ->
     <a class="delete" href="" title="Delete">
         <span class="icon icon-delete"></span>
     </a>
-    """) # i18n
+    """) # TODO: i18n
 
     link = ($scope, $el, $attrs) ->
         render = (member) ->
@@ -401,23 +401,29 @@ MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm) ->
         $el.on "click", ".pending", (event) ->
             event.preventDefault()
             onSuccess = ->
-                # i18n
+                # TODO: i18n
                 $confirm.notify("success", "We've sent the invitationi again to '#{$scope.member.email}'.")
             onError = ->
-                $confirm.notify("error", "We haven't sent the invitation.") # i18n
+                $confirm.notify("error", "We haven't sent the invitation.") # TODO: i18n
 
             $rs.memberships.resendInvitation($scope.member.id).then(onSuccess, onError)
 
         $el.on "click", ".delete", (event) ->
             event.preventDefault()
 
-            title = "Delete member" # i18n
-            subtitle = if member.user then member.full_name else "the invitation to #{member.email}" # i18n
+            title = "Delete member" # TODO: i18n
+            subtitle = if member.user then member.full_name else "the invitation to #{member.email}" # TODO: i18n
+
+            onSuccess = ->
+                $ctrl.loadMembers()
+                $confirm.notify("success", null, "We've deleted #{subtitle}.") # TODO: i18n
+
+            onError = ->
+                # TODO: i18in
+                $confirm.notify("error", null, "We have not been able to delete #{subtitle}.")
 
             $confirm.ask(title, subtitle).then ->
-                $repo.remove(member).then ->
-                    $ctrl.loadMembers()
-                    $confirm.notify("success", null, "We've deleted #{subtitle}.") # i18n
+                $repo.remove(member).then(onSuccess, onError)
 
         $scope.$on "$destroy", ->
             $el.off()
