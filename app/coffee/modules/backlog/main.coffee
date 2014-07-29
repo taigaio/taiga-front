@@ -80,7 +80,13 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             return sprints
 
     loadUserstories: ->
-        return @rs.userstories.listUnassigned(@scope.projectId).then (userstories) =>
+        @scope.urlFilters = @.getUrlFilters()
+
+        @scope.httpParams = {}
+        for name, values of @scope.urlFilters
+            @scope.httpParams[name] = values
+
+        return @rs.userstories.listUnassigned(@scope.projectId, @scope.httpParams).then (userstories) =>
             @scope.userstories = userstories
 
             @.generateFilters()
@@ -268,11 +274,16 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         return promise
 
     getUrlFilters: ->
-        return _.pick(@location.search(), "statuses", "tags")
+        return _.pick(@location.search(), "statuses", "tags", "subject")
 
     generateFilters: ->
+        urlfilters = @.getUrlFilters()
+
+        if urlfilters.subject
+            @scope.filtersSubject = urlfilters.subject
+
         searchdata = {}
-        for name, value of @.getUrlFilters()
+        for name, value of urlfilters
             if not searchdata[name]?
                 searchdata[name] = {}
 

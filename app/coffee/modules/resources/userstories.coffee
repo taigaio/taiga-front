@@ -27,8 +27,11 @@ resourceProvider = ($repo, $http, $urls) ->
     service.get = (projectId, usId) ->
         return $repo.queryOne("userstories", usId)
 
-    service.listUnassigned = (projectId) ->
+    service.listUnassigned = (projectId, filters) ->
         params = {"project": projectId, "milestone": "null"}
+
+        params = _.extend({}, params, filters or {})
+
         return $repo.queryMany("userstories", params)
 
     service.bulkCreate = (projectId, data) ->

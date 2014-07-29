@@ -116,6 +116,16 @@ BacklogFiltersDirective = ($log, $location) ->
             renderSelectedFilters(selectedFilters)
             renderFilters(_.reject(filters, "selected"))
 
+        selectSubjectFilter = debounce 400, (value) ->
+            return if value is undefined
+            if value.length == 0
+                $ctrl.replaceFilter("subject", null)
+            else
+                $ctrl.replaceFilter("subject", value)
+            $ctrl.loadUserstories()
+
+        $scope.$watch("filtersSubject", selectSubjectFilter)
+
         # Angular Watchers
         $scope.$on "filters:loaded", (ctx, filters) ->
             initializeSelectedFilters(filters)
