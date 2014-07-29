@@ -4,18 +4,27 @@
     position: relative;
     .user-avatar {
         @include table-flex-child(1, 0);
+        img {
+            border-radius: 8%;
+            width: 100%;
+        }
     }
     .assigned-to {
         @include table-flex-child(3, 0);
         margin-left: 1rem;
         margin-top: 15px;
         .assigned-title {
+            @extend %small;
             color: $gray-light;
             display: block;
         }
         .user-assigned {
             @extend %large;
             color: $green-taiga;
+            cursor: default;
+            &.editable {
+                cursor: pointer;
+            }
         }
         .icon-delete {
             color: $gray-light;

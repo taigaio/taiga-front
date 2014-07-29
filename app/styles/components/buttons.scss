@@ -42,7 +42,7 @@ a.button-green {
     }
 }
 
-.button-gray {
+a.button-gray {
     background: $button-gray;
     &:hover {
         background: $button-gray-hover;
@@ -53,7 +53,7 @@ a.button-green {
     }
 }
 
-.button-blackish {
+a.button-blackish {
     background: $blackish;
     color: $whitish;
     &:hover {
@@ -65,7 +65,7 @@ a.button-green {
     }
 }
 
-.button-red {
+a.button-red {
     background: $red-light;
     &:hover {
         background: $red;
@@ -76,7 +76,7 @@ a.button-green {
     }
 }
 
-.button-orange {
+a.button-orange {
     background: $orange;
     &:hover {
         background: lighten($orange, 10%);
@@ -87,7 +87,7 @@ a.button-green {
     }
 }
 
-.button-block {
+a.button-block {
     background: $white;
     color: $red;
     &:hover {
@@ -96,7 +96,7 @@ a.button-green {
     }
 }
 
-.button-bulk {
+a.button-bulk {
     @extend %button;
     background: $green-taiga;
     font-size: 22px;

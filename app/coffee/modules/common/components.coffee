@@ -112,9 +112,9 @@ WatchersDirective = ($rootscope, $confirm) ->
             </a>
         </div>
         <div class="watcher-name">
-            <a href="" title="<%- watcher.full_name_display %>">
+            <span>
                 <%- watcher.full_name_display %>
-            </a>
+            </span>
 
             <% if (editable) { %>
             <a class="icon icon-delete"
@@ -190,15 +190,14 @@ AssignedToDirective = ($rootscope, $confirm) ->
     template = _.template("""
     <% if (assignedTo) { %>
     <div class="user-avatar">
-        <a href="" title="Assigned to" class="avatar">
-            <img src="<%= assignedTo.photo %>" alt="<%- assignedTo.full_name_display %>" />
-        </a>
+        <img src="<%= assignedTo.photo %>" alt="<%- assignedTo.full_name_display %>" />
     </div>
     <% } %>
 
     <div class="assigned-to">
         <span class="assigned-title">Assigned to</span>
-        <a href="" title="edit assignment" class="user-assigned">
+
+        <a href="" title="edit assignment" class="user-assigned <% if (editable) { %> editable <% } %>">
         <% if (assignedTo) { %>
             <%- assignedTo.full_name_display %>
         <% } else { %>

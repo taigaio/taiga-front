@@ -17,6 +17,9 @@
         margin-bottom: 1rem;
         padding: 2rem 1rem;
         position: relative;
+        input {
+            background: $white;
+        }
         .us-title-text {
             margin-bottom: 0;
         }
@@ -76,6 +79,9 @@
 }
 
 .us-content {
+    textarea {
+        background: $white;
+    }
     ul {
         margin-left: 1rem;
     }
@@ -98,10 +104,12 @@
     }
     input {
         display: inline-block;
+        padding: .4rem;
         width: 14rem;
     }
     .tag {
-        padding: 2px 10px;
+        @extend %small;
+        padding: .5rem;
     }
 }
 
@@ -201,12 +209,14 @@
 }
 
 .issue-data {
+    @extend %small;
     div {
         @include clearfix();
         @include transition(background .2s ease-in);
         background: darken($whitish, 5%);
         margin-bottom: .5rem;
         padding: .5rem;
+        padding-right: 1rem;
         &:last-child {
             margin: 0;
         }
