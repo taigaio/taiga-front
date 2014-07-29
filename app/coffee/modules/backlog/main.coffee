@@ -49,6 +49,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         _.bindAll(@)
 
         @scope.sectionName = "Backlog"
+        @showTags = false
 
         promise = @.loadInitialData()
         promise.then null, =>
@@ -64,6 +65,10 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @scope.$on("sprint:us:move", @.moveUs)
         @scope.$on("sprint:us:moved", @.loadSprints)
         @scope.$on("sprint:us:moved", @.loadProjectStats)
+
+    toggleShowTags: ->
+        @scope.$apply () =>
+            @showTags = !@showTags
 
     loadProjectStats: ->
         return @rs.projects.stats(@scope.projectId).then (stats) =>
@@ -437,7 +442,8 @@ BacklogDirective = ($repo, $rootscope) ->
         $el.on "click", "#show-tags", (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
-            $el.find(".user-story-tags").toggle()
+            # $el.find(".user-story-tags").toggle()
+            $ctrl.toggleShowTags()
             target.toggleClass("active")
             toggleText(target.find(".text"), ["Hide Tags", "Show Tags"]) # TODO: i18n
 
