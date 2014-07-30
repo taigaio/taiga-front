@@ -1,0 +1,20 @@
+extends dummy-layout
+
+block head
+    title Taiga  Project management web application with scrum in mind!
+
+block content
+    div.wrapper(tg-user-avatar, ng-controller="UserSettingsController as ctrl",
+                ng-init="section='user-settings'")
+        sidebar.menu-secondary.sidebar(tg-user-settings-navigation="avatar")
+            include views/modules/user-settings-menu
+
+        section.main.user-avatar
+            header
+                include views/components/mainTitle
+
+            form
+                fieldset
+                    img.avatar(tg-bo-src="user.photo" alt="avatar")
+                    a.button.button-green Cambiar
+                    input(type="file", id="user-avatar", ng-value="user.photo", class="hidden")
