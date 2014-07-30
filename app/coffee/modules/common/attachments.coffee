@@ -29,9 +29,37 @@ module = angular.module("taigaCommon")
 ## Attachments Directive
 #############################################################################
 
-AttachmentsDirective = ->
+AttachmentsDirective = ($repo) ->
     link = ($scope, $el, $attrs, $model) ->
-        #$ctrl = $el.controller()
+        ## Drag & drop
+        tdom = $el.find("div.attachment-body.sortable")
+
+        tdom.sortable({
+            items: "div.single-attachment"
+            handle: "a.settings.icon.icon-drag-v"
+            dropOnEmpty: true
+            revert: false # '400' if we fix the strange effects
+            axis: "y"
+        })
+
+        tdom.on "sortstop", (event, ui) ->
+            attachment = ui.item.scope().attach
+            newIndex = ui.item.index()
+            index = $scope.attachments.indexOf(attachment)
+
+            if index != newIndex
+                # Move attachment to newIndex and recalculate order
+                $scope.attachments.splice(index, 1)
+                $scope.attachments.splice(newIndex, 0, attachment)
+                _.forEach $scope.attachments, (attach, idx) ->
+                    attach.order = idx+1
+
+                # Save or revert changes
+                $repo.saveAll($scope.attachments).then null, ->
+                    _.forEach $scope.attachments, attach ->
+                        attach.revert()
+                    _.sorBy($scope.attachments, 'order')
+
         ## Total attachments counter
         $scope.$watch "attachmentsCount", (attachmentsCount) ->
             $el.find("span.attachments-num").html(attachmentsCount)
@@ -69,7 +97,7 @@ AttachmentsDirective = ->
         require: "ngModel"
     }
 
-module.directive("tgAttachments", [AttachmentsDirective])
+module.directive("tgAttachments", ["$tgRepo", AttachmentsDirective])
 
 
 #############################################################################
