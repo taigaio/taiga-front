@@ -18,47 +18,67 @@ block content
 
             form
                 div.functionality(ng-class="{true:'active', false:''}[project.is_backlog_activated]")
-                    input(type="checkbox", style="width:40px; height: 40px;", ng-model="project.is_backlog_activated")
                     div.icon.icon-backlog
                     div.desc
                         p
                             span Backlog
                             |  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sagittis quam augue, quis bibendum lectus porta eget. Nunc dictum imperdiet venenatis. Curabitur vitae augue ut est rhoncus pellentesque. Nunc sed ultricies est, tincidunt euismod nunc. Nunc nec posuere metus.
+                        div.activate
+                            input.activate-input(type="checkbox", id="functionality-backlog", ng-model="project.is_backlog_activated")
+                            label.button.button-gray(ng-switch="project.is_backlog_activated", for="functionality-backlog")
+                                span(ng-switch-when="true") Disable
+                                span(ng-switch-when="false") Enable
 
                 div.functionality(ng-class="{true:'active', false:''}[project.is_kanban_activated]")
-                    input(type="checkbox", style="width:40px; height: 40px;", ng-model="project.is_kanban_activated")
                     div.icon.icon-kanban
                     div.desc
                         p
                             span Kanban
                             |  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sagittis quam augue, quis bibendum lectus porta eget. Nunc dictum imperdiet venenatis. Curabitur vitae augue ut est rhoncus pellentesque. Nunc sed ultricies est, tincidunt euismod nunc. Nunc nec posuere metus.
+                            div.activate
+                                input.activate-input(type="checkbox", id="functionality-kanban", ng-model="project.is_kanban_activated")
+                                label.button.button-gray(ng-switch="project.is_kanban_activated", for="functionality-kanban")
+                                    span(ng-switch-when="true") Disable
+                                    span(ng-switch-when="false") Enable
 
                 div.functionality(ng-class="{true:'active', false:''}[project.is_issues_activated]")
-                    input(type="checkbox", style="width:40px; height: 40px;", ng-model="project.is_issues_activated")
                     div.icon.icon-issues
                     div.desc
                         p
                             span Issues
                             |  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sagittis quam augue, quis bibendum lectus porta eget. Nunc dictum imperdiet venenatis. Curabitur vitae augue ut est rhoncus pellentesque. Nunc sed ultricies est, tincidunt euismod nunc. Nunc nec posuere metus.
+                        div.activate
+                            input.activate-input(type="checkbox", id="functionality-issues", ng-model="project.is_issues_activated")
+                            label.button.button-gray(ng-switch="project.is_issues_activated", for="functionality-issues")
+                                span(ng-switch-when="true") Disable
+                                span(ng-switch-when="false") Enable
 
                 div.functionality(ng-class="{true:'active', false:''}[project.is_wiki_activated]")
-                    input(type="checkbox", style="width:40px; height: 40px;", ng-model="project.is_wiki_activated")
                     div.icon.icon-wiki
                     div.desc
                         p
                             span Wiki
                             |  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sagittis quam augue, quis bibendum lectus porta eget. Nunc dictum imperdiet venenatis. Curabitur vitae augue ut est rhoncus pellentesque. Nunc sed ultricies est, tincidunt euismod nunc. Nunc nec posuere metus.
+                        div.activate
+                            input.activate-input(type="checkbox", id="functionality-wiki", ng-model="project.is_wiki_activated")
+                            label.button.button-gray(ng-switch="project.is_wiki_activated", for="functionality-wiki")
+                                span(ng-switch-when="true") Disable
+                                span(ng-switch-when="false") Enable
 
                 div.functionality(ng-class="{true:'active', false:''}[isVideoconferenceActivated]")
-                    input(type="checkbox", style="width:40px; height: 40px;", ng-model="isVideoconferenceActivated")
                     div.icon.icon-video
                     div.desc
                         p
                             span Video
                             |  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sagittis quam augue, quis bibendum lectus porta eget. Nunc dictum imperdiet venenatis. Curabitur vitae augue ut est rhoncus pellentesque. Nunc sed ultricies est, tincidunt euismod nunc. Nunc nec posuere metus.
+                        div.activate
+                            input.activate-input(type="checkbox", id="functionality-video", ng-model="isVideoconferenceActivated")
+                            label.button.button-gray(ng-switch="isVideoconferenceActivated", for="functionality-video")
+                                span(ng-switch-when="true") Disable
+                                span(ng-switch-when="false") Enable
 
                         div.videoconference-attributes.hidden
                             select(ng-model="project.videoconferences", ng-options="e.id as e.name for e in [{'id':'appear-in', 'name':'AppearIn'},{'id':'talky', 'name': 'Talky'}]")
-                            input(ng-model="project.videoconferences_salt", placeholder="write a name for the chat room (ej. the name of the project)")
+                            input(type="text", ng-model="project.videoconferences_salt", placeholder="write a name for the chat room (ej. the name of the project)")
                 input(type="submit", class="hidden")
                 a.button.button-green(href="") Save

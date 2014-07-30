@@ -1,32 +1,50 @@
 .admin-functionalities {
     .functionality {
+        @include transition(all .2s linear);
+        @include table-flex();
         background-color: $whitish;
-        display: flex;
         margin-bottom: 1rem;
-        padding: 2rem;
-        .icon,
-        .desc {
-            opacity: .5;
+        opacity: .5;
+        padding: 1rem;
+        position: relative;
+        &.active {
+            background-color: #e9f0da;
+            opacity: 1;
+            .icon {
+
+            }
         }
-        p {
-            margin-bottom: 0;
+        .icon {
+            @include table-flex-child(1, 0, 0);
+            @include transform(translate(1rem, 1rem));
+        }
+        .desc {
+            @include table-flex-child(10 , 0, 0);
+        }
+        .activate-input {
+            display: none;
+            +label {
+                color: $white;
+                cursor: pointer;
+            }
         }
         span {
             font-weight: bold;
         }
+        p {
+            margin-bottom: .5rem;
+        }
         select {
             margin-top: 1rem;
-        }
-        &.active {
-            background-color: #e9f0da;
-            div,
-            p {
-                opacity: 1;
-            }
         }
     }
     .icon {
         @extend %xxlarge;
         margin-right: 2rem;
+    }
+    .videoconference-attributes {
+        select {
+            margin-bottom: .5rem;
+        }
     }
 }
