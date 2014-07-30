@@ -4,28 +4,28 @@ block head
     title Taiga  Project management web application with scrum in mind!
 
 block content
-    .home-project(ng-controller="ProjectController as ctrl")
-        .inner
-            h1(tg-bo-html="ctrl.project.name")
-
-            ul.home-project-info-list
-                li
-                    span.info-num(tg-bo-html="stats.total_points")
-                    span.info-text projects points
-                li
-                    span.info-num(tg-bo-html="stats.defined_points")
-                    span.info-text defined points
-                li
-                    span.info-num(tg-bo-html="stats.assigned_points")
-                    span.info-text assigned points
-                li
-                    span.info-num(tg-bo-html="stats.closed_points")
-                    span.info-text closed points
-
-
-            p.description(tg-bo-html="project.description")
-
-            .home-project-bottom
+    div.wrapper(ng-controller="ProjectController as ctrl")
+        section.main.single-project
+            h1
+                span.green(tg-bo-html="ctrl.project.name")
+            div.summary
+                ul.home-project-info-list
+                    li
+                        span.info-num(tg-bo-html="stats.total_points")
+                        span.info-text project<br/> points
+                    li
+                        span.info-num(tg-bo-html="stats.defined_points")
+                        span.info-text defined<br/> points
+                    li
+                        span.info-num(tg-bo-html="stats.assigned_points")
+                        span.info-text assigned<br/> points
+                    li
+                        span.info-num(tg-bo-html="stats.closed_points")
+                        span.info-text closed<br/> points
+            div.project-data-container
+                p.description(tg-bo-html="project.description")
                 ul
                     li(ng-repeat="member in project.active_memberships")
-                        img(src="{{member.photo}}")
+                        figure.avatar
+                            img(src="{{member.photo}}", alt="{{member.full_name}}")
+

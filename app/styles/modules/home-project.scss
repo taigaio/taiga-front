@@ -1,62 +1,38 @@
-.home-project {
-    align-items: center;
-    display: flex;
-    .inner {
-        background-color: rgba(255, 255, 255, .2);
-        padding: 2rem;
-        width: 970px;
-    }
-    h1 {
-        font-weight: bold;
-        margin-bottom: 3rem;
-    }
-    li,
-    h1,
-    p {
-        color: $whitish;
-    }
-
-}
-
 .home-project-info-list {
-    display: flex;
+    @include table-flex();
+    li {
+        @include table-flex-child(1, 0, 0, auto);
+        margin-right: 1rem;
+    }
     .info-num {
         @extend %xlarge;
-        font-family: 'DroidSans-Bold';
+        @extend %bold;
+        float: left;
         margin-right: .3rem;
+        position: relative;
+        top: 5px;
     }
     .info-text {
         @extend %small;
-        display: block;
-        line-height: 12px;
-        width: 55px;
-    }
-    li {
-        align-items: center;
-        display: flex;
-        margin-right: 1rem;
+        float: left;
+        line-height: .9rem;
     }
 }
 
-.home-project-bottom {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-    margin-top: 2rem;
-    img {
-        border-radius: 3px;
-        width: 40px;
-    }
-    li {
-        margin-right: .5rem;
+.project-data-container {
+    @include table-flex();
+    p {
+        @include table-flex-child(3, 0, 0);
     }
     ul {
-        display: flex;
-        flex-flow: row wrap;
-        margin-bottom: 0;
-        width: 50%;
+        @include table-flex-child(1, 0, 0);
     }
-    .button-blackish {
-        color: $whitish;
+    li {
+        display: inline-block;
+        margin-right: .1rem;
+        width: 10%;
+        figure {
+            width: 100%;
+        }
     }
 }
