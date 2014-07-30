@@ -73,7 +73,12 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
     loadProjectStats: ->
         return @rs.projects.stats(@scope.projectId).then (stats) =>
             @scope.stats = stats
-            completedPercentage = Math.round(100 * stats.closed_points / stats.total_points)
+
+            if stats.total_points
+                completedPercentage = Math.round(100 * stats.closed_points / stats.total_points)
+            else
+                completedPercentage = 0
+
             @scope.stats.completedPercentage = "#{completedPercentage}%"
             return stats
 
