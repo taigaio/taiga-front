@@ -24,6 +24,7 @@ taiga = @.taiga
 mixOf = @.taiga.mixOf
 groupBy = @.taiga.groupBy
 bindOnce = @.taiga.bindOnce
+unslugify = @.taiga.unslugify
 
 module = angular.module("taigaWiki")
 
@@ -99,7 +100,14 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin, taig
             @location.path("/project/#{@scope.projectSlug}/wiki")
         onError = =>
             @confirm.notify("error")
-        @repo.remove(@scope.wiki).then onSuccess, onError
+
+
+        # TODO: i18n
+        title = "Delete Wiki Page"
+        subtitle = unslugify(@scope.wiki.slug)
+
+        @confirm.ask(title, subtitle).then =>
+            @repo.remove(@scope.wiki).then onSuccess, onError
 
 module.controller("WikiDetailController", WikiDetailController)
 

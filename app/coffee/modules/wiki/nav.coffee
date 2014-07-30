@@ -25,6 +25,7 @@ mixOf = @.taiga.mixOf
 groupBy = @.taiga.groupBy
 bindOnce = @.taiga.bindOnce
 slugify = @.taiga.slugify
+unslugify = @.taiga.slugify
 
 module = angular.module("taigaWiki")
 
@@ -86,9 +87,15 @@ WikiNavDirective = ($tgrepo, $log, $location, $confirm) ->
                 event.stopPropagation()
                 target = angular.element(event.currentTarget)
                 linkId = target.parents('.wiki-link').data('id')
-                $tgrepo.remove($scope.wikiLinks[linkId]).then ->
-                    $ctrl.loadWikiLinks().then ->
-                        render($scope.wikiLinks)
+
+                # TODO: i18n
+                title = "Delete Wiki Link"
+                subtitle = $scope.wikiLinks[linkId].title
+
+                $confirm.ask(title, subtitle).then =>
+                    $tgrepo.remove($scope.wikiLinks[linkId]).then ->
+                        $ctrl.loadWikiLinks().then ->
+                            render($scope.wikiLinks)
 
             $el.on "keyup", ".new input", (event) ->
                 event.preventDefault()
