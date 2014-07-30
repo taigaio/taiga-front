@@ -181,8 +181,8 @@ TaskboardDirective = ($rootscope) ->
         tableBodyDom = $el.find(".taskboard-table-body")
         tableBodyDom.on "scroll", (event) ->
             target = angular.element(event.currentTarget)
-            headerdom = $el.find(".taskboard-table-header .taskboard-table-inner")
-            headerdom.css("left", -1 * target.scrollLeft())
+            tableHeaderDom = $el.find(".taskboard-table-header .taskboard-table-inner")
+            tableHeaderDom.css("left", -1 * target.scrollLeft())
 
         $scope.$on "$destroy", ->
             $el.off()
@@ -216,109 +216,8 @@ TaskboardRowSizeFixer = ->
         bindOnce $scope, "taskStatusList", (statuses) ->
             itemSize = 300 + (10 * statuses.length)
             size = (1 + statuses.length) * itemSize
-            $el.css("width", size + "px")
+            $el.css("width", "#{size}px")
 
     return {link: link}
 
 module.directive("tgTaskboardRowSizeFixer", TaskboardRowSizeFixer)
-
-
-#############################################################################
-## Taskboard us points Directive
-#############################################################################
-
-TaskboardUsPointsDirective = ($repo, $confirm) ->
-    # TODO: i18n
-    pointsTemplate = _.template("""
-    <% _.each(usRolePoints, function(rolePoint) { %>
-    <li>
-        <%- rolePoint.role.name %>
-        <a href="" class="us-role-points"
-           title="Change user story points for role '<%- rolePoint.role.name %>'">
-            <%- rolePoint.point.name %>
-            <span class="icon icon-arrow-bottom"></span>
-        </a>
-        <ul class="popover pop-points">
-            <% _.each(points, function(point) { %>
-            <li>
-                <a href="" class="point <% if (point.id == rolePoint.point.id) { %>active<% } %>"
-                   title="<%- point.name %>"
-                   data-point-id="<%- point.id %>" data-role-id="<%- rolePoint.role.id %>">
-                    <%- point.name %>
-                </a>
-            </li>
-            <% }); %>
-        </ul>
-    </li>
-    <% }); %>
-    """)
-
-    renderUserStoryPoints = ($el, $scope, us) ->
-        points = $scope.pointsList
-        usRolePoints = []
-
-        for role_id, point_id of us.points
-            role = $scope.roleById[role_id]
-            point = $scope.pointsById[point_id]
-            if role and point
-                usRolePoints.push({role: role, point: point})
-
-        bindOnce $scope, "project", (project) ->
-            html = pointsTemplate({
-                points: points
-                usRolePoints: usRolePoints
-            })
-            $el.html(html)
-
-    link = ($scope, $el, $attrs) ->
-        $ctrl = $el.controller()
-        us = $scope.$eval($attrs.tgTaskboardUsPoints)
-
-        renderUserStoryPoints($el, $scope, us)
-
-        $el.on "click", ".us-role-points", (event) ->
-            event.stopPropagation()
-            event.preventDefault()
-
-            target = angular.element(event.currentTarget)
-            popover = target.parent().find(".pop-points")
-            popover.show()
-
-            body = angular.element("body")
-            body.one "click", (event) ->
-                popover.hide()
-
-        $el.on "click", ".point", (event) ->
-            event.preventDefault()
-            event.stopPropagation()
-
-            target = angular.element(event.currentTarget)
-            roleId = target.data("role-id")
-            pointId = target.data("point-id")
-            newPoints = _.clone(us.points, false)
-            newPoints[roleId] = pointId
-            us.points = newPoints
-
-            $el.find(".pop-points").hide()
-
-            $scope.$apply ->
-                onSuccess = ->
-                    $repo.refresh(us).then ->
-                        # TODO: Remove me when backlog will be fixed
-                        $ctrl.loadSprintStats()
-
-                onError = ->
-                    $confirm.notify("error", "There is an error. Try it later.") # TODO: i18n
-                    us.revert()
-                    renderUserStoryPoints($el, $scope, us)
-
-                renderUserStoryPoints($el, $scope, us)
-                $repo.save(us).then(onSuccess, onError)
-
-        $scope.$on "$destroy", ->
-            $el.off()
-
-    return {link: link}
-
-
-module.directive("tgTaskboardUsPoints", ["$tgRepo", "$tgConfirm", TaskboardUsPointsDirective])
