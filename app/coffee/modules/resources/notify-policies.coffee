@@ -26,30 +26,15 @@ resourceProvider = ($repo, $http, $urls) ->
     service = {}
 
     service.get = (id) ->
-        return $repo.queryOne("memberships", id)
+        return $repo.queryOne("notify-policies", id)
 
-    service.list = (projectId, filters) ->
-        params = {project: projectId}
+    service.list = (filters) ->
         params = _.extend({}, params, filters or {})
-        return $repo.queryPaginated("memberships", params)
-
-    service.listByUser = (userId, filters) ->
-        params = {user: userId}
-        params = _.extend({}, params, filters or {})
-        return $repo.queryPaginated("memberships", params)
-
-    service.resendInvitation = (id) ->
-        url = $urls.resolve("memberships")
-        return $http.post("#{url}/#{id}/resend_invitation", {})
-
-    service.bulkCreateMemberships = (projectId, data) ->
-        url = $urls.resolve("bulk-create-memberships")
-        params = {project_id: projectId, bulk_memberships: data}
-        return $http.post(url, params)
+        return $repo.queryMany("notify-policies", params)
 
     return (instance) ->
-        instance.memberships = service
+        instance.notifyPolicies = service
 
 
 module = angular.module("taigaResources")
-module.factory("$tgMembershipsResourcesProvider", ["$tgRepo", "$tgHttp", "$tgUrls", resourceProvider])
+module.factory("$tgNotifyPoliciesResourcesProvider", ["$tgRepo", "$tgHttp", "$tgUrls", resourceProvider])

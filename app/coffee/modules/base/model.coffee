@@ -113,6 +113,9 @@ class Model
     isModified: ->
         return this._isModified
 
+    isAttributeModified: (attribute) ->
+        return @._modifiedAttrs[attribute]?
+
     markSaved: () ->
         @._isModified = false
         @._attrs = @.getAttrs()

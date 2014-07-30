@@ -105,9 +105,9 @@ $prefix-for-spec:      true;
 @import 'modules/admin/project-values';
 
 //Modules user Settings
-@import 'modules/user-settings/mail-notifications-table';
 @import 'modules/user-settings/user-profile';
-@import 'modules/user-settings/user-avatar';
+@import 'modules/user-settings/user-change-password';
+@import 'modules/user-settings/mail-notifications-table';
 
 //#################################################
 //             Layout

@@ -155,12 +155,13 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location) -
         <div class="user">
             <div class="user-settings">
                 <ul class="popover">
-                    <li><a href="" title="Account settings", tg-nav="user-settings-user-profile:project=project.slug">Account settings</a></li>
-                    <li><a href="" title="Change profile photo", tg-nav="user-settings-user-avatar:project=project.slug">Change profile photo</a></li>
+                    <li><a href="" title="User Profile", tg-nav="user-settings-user-profile:project=project.slug">User Profile</a></li>
+                    <li><a href="" title="Change Password", tg-nav="user-settings-user-change-password:project=project.slug">Change Password</a></li>
+                    <li><a href="" title="Notifications", tg-nav="user-settings-mail-notifications:project=project.slug">Notifications</a></li>
                     <li><a href="" title="Logout" class="logout">Logout</a></li>
                 </ul>
                 <a href="" title="User preferences" class="avatar" id="nav-user-settings">
-                    <img src="<%- user.photo %>" alt="<%- user.full_name_display %>" />
+                    <img src="{{ user.photo }}" alt="{{ user.full_name_display }}" />
                 </a>
             </div>
         </div>

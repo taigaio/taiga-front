@@ -1,0 +1,14 @@
+extends dummy-layout
+
+block head
+    title Taiga  Project management web application with scrum in mind!
+
+block content
+    div.wrapper
+        div.login-main
+            div.login-container
+                h1.logo
+                    img(src="/images/logo.png", alt="TAIGA")
+                p.tagline Project management web application with scrum in mind!
+
+                include views/modules/change-email-form

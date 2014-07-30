@@ -54,9 +54,11 @@ class AuthService extends taiga.Service
         @rootscope.auth = user
         @rootscope.$broadcast("i18n:change", user.default_language)
         @storage.set("userInfo", user.getAttrs())
+        @rootscope.user = user
 
     clear: ->
         @rootscope.auth = null
+        @rootscope.user = null
         @storage.remove("userInfo")
 
     setToken: (token) ->
@@ -93,6 +95,7 @@ class AuthService extends taiga.Service
 
     logout: ->
         @.removeToken()
+        @.clear()
 
     register: (data, type, existing) ->
         url = @urls.resolve("auth-register")
@@ -121,21 +124,19 @@ class AuthService extends taiga.Service
 
     forgotPassword: (data) ->
         url = @urls.resolve("users-password-recovery")
-
         data = _.clone(data, false)
-
         @.removeToken()
-
         return @http.post(url, data)
-
 
     changePasswordFromRecovery: (data) ->
         url = @urls.resolve("users-change-password-from-recovery")
-
         data = _.clone(data, false)
-
         @.removeToken()
+        return @http.post(url, data)
 
+    changeEmail: (data) ->
+        url = @urls.resolve("users-change-email")
+        data = _.clone(data, false)
         return @http.post(url, data)
 
 
@@ -393,3 +394,44 @@ InvitationDirective = ($auth, $confirm, $location, $params) ->
 
 module.directive("tgInvitation", ["$tgAuth", "$tgConfirm", "$location", "$routeParams",
                                   InvitationDirective])
+
+###################
+## Change Email
+###################
+
+ChangeEmailDirective = ($repo, $model, $auth, $confirm, $location, $params) ->
+    link = ($scope, $el, $attrs) ->
+        $scope.data = {}
+        $scope.data.email_token = $params.email_token
+        form = $el.find("form").checksley()
+
+        onSuccessSubmit = (response) ->
+            $repo.queryOne("users", $auth.getUser().id).then (data) =>
+                $auth.setUser(data)
+                $location.path("/") # TODO: Use the future 'urls' service
+                $confirm.success("Our Oompa Loompas updated your email") #TODO: i18n
+
+        onErrorSubmit = (response) ->
+            console.log "ASDASDASDASD"
+            $confirm.notify("error", "One of our Oompa Loompas says
+                            '#{response.data._error_message}'.") #TODO: i18n
+
+        submit = ->
+            if not form.validate()
+                return
+
+            promise = $auth.changeEmail($scope.data)
+            promise.then(onSuccessSubmit, onErrorSubmit)
+
+        $el.on "submit", (event) ->
+            event.preventDefault()
+            submit()
+
+        $el.on "click", "a.button-change-email", (event) ->
+            event.preventDefault()
+            submit()
+
+    return {link:link}
+
+module.directive("tgChangeEmail", ["$tgRepo", "$tgModel", "$tgAuth", "$tgConfirm", "$location", "$routeParams",
+                                                  ChangeEmailDirective])

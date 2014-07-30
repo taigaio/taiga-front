@@ -25,31 +25,31 @@ taiga = @.taiga
 resourceProvider = ($repo, $http, $urls) ->
     service = {}
 
-    service.get = (id) ->
-        return $repo.queryOne("memberships", id)
+    service.changeAvatar = (attachmentModel) ->
+        data = new FormData()
+        data.append('avatar', attachmentModel)
+        options = {
+            transformRequest: angular.identity,
+            headers: {'Content-Type': undefined}
+        }
+        url = "#{$urls.resolve("users")}/change_avatar"
+        return $http.post(url, data, {}, options)
 
-    service.list = (projectId, filters) ->
-        params = {project: projectId}
-        params = _.extend({}, params, filters or {})
-        return $repo.queryPaginated("memberships", params)
+    service.removeAvatar = () ->
+        url = "#{$urls.resolve("users")}/remove_avatar"
+        return $http.post(url)
 
-    service.listByUser = (userId, filters) ->
-        params = {user: userId}
-        params = _.extend({}, params, filters or {})
-        return $repo.queryPaginated("memberships", params)
-
-    service.resendInvitation = (id) ->
-        url = $urls.resolve("memberships")
-        return $http.post("#{url}/#{id}/resend_invitation", {})
-
-    service.bulkCreateMemberships = (projectId, data) ->
-        url = $urls.resolve("bulk-create-memberships")
-        params = {project_id: projectId, bulk_memberships: data}
-        return $http.post(url, params)
+    service.changePassword = (currentPassword, newPassword) ->
+        url = "#{$urls.resolve("users")}/change_password"
+        data = {
+            current_password: currentPassword
+            password: newPassword
+        }
+        return $http.post(url, data)
 
     return (instance) ->
-        instance.memberships = service
+        instance.userSettings = service
 
 
 module = angular.module("taigaResources")
-module.factory("$tgMembershipsResourcesProvider", ["$tgRepo", "$tgHttp", "$tgUrls", resourceProvider])
+module.factory("$tgUserSettingsResourcesProvider", ["$tgRepo", "$tgHttp", "$tgUrls", resourceProvider])

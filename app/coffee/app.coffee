@@ -103,11 +103,17 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide) ->
     $routeProvider.when("/project/:pslug/user-settings/user-profile",
           {templateUrl: "/partials/user-profile.html"})
 
+    $routeProvider.when("/project/:pslug/user-settings/user-change-password",
+          {templateUrl: "/partials/user-change-password.html"})
+
     $routeProvider.when("/project/:pslug/user-settings/user-avatar",
           {templateUrl: "/partials/user-avatar.html"})
 
     $routeProvider.when("/project/:pslug/user-settings/mail-notifications",
           {templateUrl: "/partials/mail-notifications.html"})
+
+    $routeProvider.when("/change-email/:email_token",
+          {templateUrl: "/partials/change-email.html"})
 
     # Auth
     $routeProvider.when("/login", {templateUrl: "/partials/login.html"})

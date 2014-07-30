@@ -31,6 +31,7 @@ urls = {
     "roles": "/api/v1/roles"
     "projects": "/api/v1/projects"
     "memberships": "/api/v1/memberships"
+    "notify-policies": "/api/v1/notify-policies"
     "bulk-create-memberships": "/api/v1/memberships/bulk_create"
     "milestones": "/api/v1/milestones"
     "userstories": "/api/v1/userstories"
@@ -69,6 +70,7 @@ urls = {
     "users-password-recovery": "/api/v1/users/password_recovery"
     "users-change-password-from-recovery": "/api/v1/users/change_password_from_recovery"
     "users-change-password": "/api/v1/users/change_password"
+    "users-change-email": "/api/v1/users/change_email"
     "resolver": "/api/v1/resolver"
     "userstory-statuses": "/api/v1/userstory-statuses"
     "points": "/api/v1/points"
@@ -115,8 +117,10 @@ module.run([
     "$tgResources",
     "$tgProjectsResourcesProvider",
     "$tgMembershipsResourcesProvider",
+    "$tgNotifyPoliciesResourcesProvider",
     "$tgInvitationsResourcesProvider",
     "$tgRolesResourcesProvider",
+    "$tgUserSettingsResourcesProvider",
     "$tgSprintsResourcesProvider",
     "$tgUserstoriesResourcesProvider",
     "$tgTasksResourcesProvider",

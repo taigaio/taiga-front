@@ -4,14 +4,15 @@ block head
     title Taiga  Project management web application with scrum in mind!
 
 block content
-    div.wrapper(tg-user-profile, ng-controller="UserSettingsController as ctrl",
+    div.wrapper(tg-user-notifications, ng-controller="UserNotificationsController as ctrl",
                     ng-init="section='mail-notifications'")
         sidebar.menu-secondary.sidebar(tg-user-settings-navigation="mail-notifications")
             include views/modules/user-settings-menu
 
         section.main.admin-roles
             header
-                include views/components/mainTitle
+                h1
+                    span.green(tg-bo-html="sectionName")
 
             p.total Notifications By Mail
 

@@ -47,6 +47,7 @@ urls = {
     "login": "/login"
     "forgot-password": "/forgot-password"
     "change-password": "/change-password/:token"
+    "change-email": "/change-email/:token"
     "register": "/register"
     "invitation": "/invitation/:token"
     "create-project": "/create-project"
@@ -91,6 +92,7 @@ urls = {
 
     # User settings
     "user-settings-user-profile": "/project/:project/user-settings/user-profile"
+    "user-settings-user-change-password": "/project/:project/user-settings/user-change-password"
     "user-settings-user-avatar": "/project/:project/user-settings/user-avatar"
     "user-settings-mail-notifications": "/project/:project/user-settings/mail-notifications"
 

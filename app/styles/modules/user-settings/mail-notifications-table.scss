@@ -1,28 +1,28 @@
-.mail-notifications-table {
-    .mail-notifications-table-row {
+.policy-table {
+    .policy-table-row {
         @include table-flex(stretch, center, flex, row, wrap, center);
         border-bottom: 1px solid $whitish;
     }
 
-    .mail-notifications-table-header {
+    .policy-table-header {
         @extend %bold;
         border-bottom: 2px solid $gray-light;
     }
 
-    .mail-notifications-table-project ,
-    .mail-notifications-table-all,
-    .mail-notifications-table-involved,
-    .mail-notifications-table-none {
+    .policy-table-project ,
+    .policy-table-all,
+    .policy-table-involved,
+    .policy-table-none {
         padding: 1rem;
     }
 
-    .mail-notifications-table-project {
+    .policy-table-project {
         @include table-flex-child(3, 0, 0);
     }
 
-    .mail-notifications-table-all,
-    .mail-notifications-table-involved,
-    .mail-notifications-table-none {
+    .policy-table-all,
+    .policy-table-involved,
+    .policy-table-none {
         @include table-flex-child(1, 0, 0);
     }
     input {

@@ -65,6 +65,27 @@ class UserSettingsController extends mixOf(taiga.Controller, taiga.PageMixin)
 
           return promise.then(=> @.loadProject())
 
+      saveUserProfile: ->
+
+          updatingEmail = @scope.user.isAttributeModified("email")
+          promise = @repo.save(@scope.user)
+          promise.then =>
+              @auth.setUser(@scope.user)
+              if updatingEmail
+                  @confirm.success("<strong>Check your inbox!</strong><br />
+                         We have sent a mail to your account<br />
+                         with the instructions to set your new address") #TODO: i18n
+
+              else
+                  @confirm.notify('success')
+
+          promise.then null, (response) =>
+              @confirm.notify('error', response._error_message)
+              @scope.user = @auth.getUser()
+
+      openDeleteLightbox: ->
+          @rootscope.$broadcast("deletelightbox:new", @scope.user)
+
 
 module.controller("UserSettingsController", UserSettingsController)
 
@@ -74,6 +95,13 @@ module.controller("UserSettingsController", UserSettingsController)
 
 UserProfileDirective = () ->
     link = ($scope, $el, $attrs) ->
+        form = $el.find("form").checksley()
+
+        $el.on "click", ".user-profile form .save-profile", (event) ->
+            return if not form.validate()
+            target = angular.element(event.currentTarget)
+            $ctrl = $el.controller()
+            $ctrl.saveUserProfile()
 
         $scope.$on "$destroy", ->
             $el.off()
@@ -81,3 +109,52 @@ UserProfileDirective = () ->
     return {link:link}
 
 module.directive("tgUserProfile", UserProfileDirective)
+
+
+#############################################################################
+## User Avatar Directive
+#############################################################################
+
+UserAvatarDirective = ($auth, $model, $rs, $confirm) ->
+    link = ($scope, $el, $attrs) ->
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+        $el.on "click", ".button.change", ->
+            $el.find("#avatar-field").click()
+
+        $el.on "change", "#avatar-field", (event) ->
+            target = angular.element(event.currentTarget)
+
+            promise = $rs.userSettings.changeAvatar($scope.avatarAttachment)
+
+            promise.then (response) ->
+                user = $model.make_model("users", response.data)
+                $auth.setUser(user)
+                $scope.user = user
+                $confirm.notify('success')
+            promise.then null, (response) ->
+                console.log response
+                $confirm.notify('error', response.data._error_message)
+
+    return {link:link}
+
+module.directive("tgUserAvatar", ["$tgAuth", "$tgModel", "$tgResources", "$tgConfirm", UserAvatarDirective])
+
+#############################################################################
+## User Avatar Model Directive
+#############################################################################
+
+TaigaAvatarModelDirective = ($parse) ->
+    link = ($scope, $el, $attrs) ->
+        model = $parse($attrs.tgAvatarModel)
+        modelSetter = model.assign
+
+        $el.bind 'change', ->
+            $scope.$apply ->
+                modelSetter($scope, $el[0].files[0])
+
+    return {link:link}
+
+module.directive('tgAvatarModel', ['$parse', TaigaAvatarModelDirective])
