@@ -61,10 +61,10 @@ AttachmentsDirective = ($repo) ->
                     _.sorBy($scope.attachments, 'order')
 
         ## Total attachments counter
-        $scope.$watch "attachmentsCount", (attachmentsCount) ->
-            $el.find("span.attachments-num").html(attachmentsCount)
+        $scope.$watch "attachmentsCount", (count) ->
+            $el.find("span.attachments-num").html(count)
 
-        ## See deprecated attachments
+        ## Show/Hide deprecated attachments
         $scope.showDeprecatedAttachments = false
 
         $scope.$watch "deprecatedAttachmentsCount", (deprecatedAttachmentsCount) ->
@@ -83,9 +83,11 @@ AttachmentsDirective = ($repo) ->
 
             if $scope.showDeprecatedAttachments
                 target.find("span.text").html("- hide deprecated attachments") # TODO: i18n
+                                        .prop("title", "hide deprecated attachments") # TODO: i18n
                 $el.find("div.single-attachment.deprecated").removeClass("hidden")
             else
                 target.find("span.text").html("+ show deprecated attachments") # TODO: i18n
+                                        .prop("title", "show deprecated attachments") # TODO: i18n
                 $el.find("div.single-attachment.deprecated").addClass("hidden")
 
         ## On destroy
@@ -104,7 +106,7 @@ module.directive("tgAttachments", ["$tgRepo", AttachmentsDirective])
 ## Attachment Directive
 #############################################################################
 
-AttachmentDirective = ($log, $repo, $rs, $confirm) ->
+AttachmentDirective = ($log, $repo, $confirm) ->
     singleAttachment = _.template("""
     <div class="attachment-name">
         <span class="icon.icon-document"></span>
@@ -139,7 +141,7 @@ AttachmentDirective = ($log, $repo, $rs, $confirm) ->
     <a class="editable icon icon-delete" href="" title="Cancel"></a>
     """) # TODO: i18n
 
-    link = ($scope, $el, $attrs, $model) ->
+    link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
 
         render = (attachment, isEditable=false) ->
@@ -205,9 +207,9 @@ AttachmentDirective = ($log, $repo, $rs, $confirm) ->
             newIsDeprecated = $el.find("input[name='is-deprecated']").prop("checked")
 
             if newDescription != attachment.description
-                attachment.setAttr("description", newDescription)
+                attachment.description = newDescription
             if newIsDeprecated != attachment.is_deprecated
-                attachment.setAttr("is_deprecated", newIsDeprecated)
+                attachment.is_deprecated = newIsDeprecated
 
             onSuccess = ->
                 $ctrl.loadAttachments(attachment.object_id)
@@ -216,17 +218,13 @@ AttachmentDirective = ($log, $repo, $rs, $confirm) ->
             onError = ->
                 $confirm.notify("error")
 
-            if attachment.isModified()
-                $repo.save(attachment).then(onSuccess, onError)
+            $repo.save(attachment).then(onSuccess, onError)
 
         ## On destroy
         $scope.$on "$destroy", ->
             $el.off()
 
-    return {
-        link: link,
-        require: "ngModel"
-    }
+    return {link: link}
 
-module.directive("tgAttachment", ["$log", "$tgRepo", "$tgResources", "$tgConfirm",
+module.directive("tgAttachment", ["$log", "$tgRepo", "$tgConfirm",
                                   AttachmentDirective])
