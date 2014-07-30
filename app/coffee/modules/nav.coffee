@@ -52,7 +52,7 @@ ProjectsNavigationDirective = ->
             body.toggleClass("open-projects-nav")
 
         $el.on "click", ".projects-list > li > a", (event) ->
-            $el.toggleClass("open-projects-nav")
+            body.removeClass("open-projects-nav")
 
     return {
         link: link
