@@ -14,15 +14,14 @@ select,
 textarea {
     @extend %large;
     @extend %title;
-    background: $gray-light;
-    border: 0;
+    background: $whitish;
+    border: 1px solid $gray-light;
     color: $grayer;
-    //height: 40px;
     margin: 0;
     padding: 8px;
     width: 100%;
     @include placeholder {
-        color: $white;
+        color: $gray-light;
     }
 }
 input[type="password"] {
@@ -30,7 +29,8 @@ input[type="password"] {
 }
 
 textarea {
-    max-height: 10rem;
+    min-height: 10rem;
+    resize: vertical;
 }
 
 .checksley-error-list {
