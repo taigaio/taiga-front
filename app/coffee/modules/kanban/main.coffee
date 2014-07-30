@@ -55,6 +55,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             console.log "FAIL"
 
         @scope.$on("usform:new:success", @.onNewUserstory)
+        @scope.$on("usform:bulk:success", @.onNewUserstory)
         @scope.$on("usform:edit:success", @.onUserstoryEdited)
         @scope.$on("assigned-to:added", @.onAssignedToChanged)
         @scope.$on("kanban:us:move", @.moveUs)
@@ -66,16 +67,22 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
     addNewUs: (type, statusId) ->
         switch type
-            when "standard" then @rootscope.$broadcast("usform:new", statusId)
-            when "bulk" then @rootscope.$broadcast("usform:bulk", statusId)
+            when "standard" then @rootscope.$broadcast("usform:new", @scope.projectId, statusId)
+            when "bulk" then @rootscope.$broadcast("usform:bulk", @scope.projectId, statusId)
 
     changeUsAssignedTo: (us) ->
         @rootscope.$broadcast("assigned-to:add", us)
 
     # Scope Events Handlers
 
-    onNewUserstory: (ctx, us) ->
-        @scope.usByStatus[us.status].splice(0, 0, us)
+    onNewUserstory: (ctx, result) ->
+        if result.data
+            items = result.data
+        else
+            items = [result]
+
+        for us in items
+            @scope.usByStatus[us.status].splice(0, 0, us)
 
     onAssignedToChanged: (ctx, userid, us) ->
         us.assigned_to = userid

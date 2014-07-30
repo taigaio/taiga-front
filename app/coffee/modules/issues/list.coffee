@@ -57,7 +57,7 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         promise.then null, ->
             console.log "FAIL" #TODO
 
-        @scope.$on "issueform:new:succcess", =>
+        @scope.$on "issueform:new:success", =>
             @.loadIssues()
             @.loadFilters()
 
@@ -192,10 +192,10 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
     # Functions used from templates
     addNewIssue: ->
-        @rootscope.$broadcast("issueform:new")
+        @rootscope.$broadcast("issueform:new", @scope.project)
 
     addIssuesInBulk: ->
-        @rootscope.$broadcast("issueform:bulk")
+        @rootscope.$broadcast("issueform:bulk", @scope.projectId)
 
 
 module.controller("IssuesController", IssuesController)

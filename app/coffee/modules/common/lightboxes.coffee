@@ -72,11 +72,11 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope) ->
     link = ($scope, $el, attrs) ->
         isNew = true
 
-        $scope.$on "usform:new", (ctx, statusId) ->
+        $scope.$on "usform:new", (ctx, projectId, status) ->
             $scope.us = {
-                project: $scope.projectId
+                project: projectId
+                status: status
                 is_archived: false
-                status: statusId or $scope.project.default_us_status
             }
             isNew = true
             # Update texts for creation
@@ -113,7 +113,6 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope) ->
 
         $el.on "click", ".button-green", (event) ->
             event.preventDefault()
-
             form = $el.find("form").checksley()
             if not form.validate()
                 return
@@ -166,11 +165,13 @@ module.directive("tgLbCreateEditUserstory", [
 
 CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope) ->
     link = ($scope, $el, attrs) ->
-        $scope.form = {data: ""}
-
-        $scope.$on "usform:bulk", ->
+        $scope.$on "usform:bulk", (ctx, projectId, status) ->
+            $scope.new = {
+                projectId: projectId
+                statusId: status
+                bulk: ""
+            }
             $el.removeClass("hidden")
-            $scope.form = {data: ""}
 
         $el.on "click", ".close", (event) ->
             event.preventDefault()
@@ -183,10 +184,7 @@ CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope) ->
             if not form.validate()
                 return
 
-            data = $scope.form.data
-            projectId = $scope.projectId
-
-            $rs.userstories.bulkCreate(projectId, data).then (result) ->
+            $rs.userstories.bulkCreate($scope.new.projectId, $scope.new.statusId, $scope.new.bulk).then (result) ->
                 $rootscope.$broadcast("usform:bulk:success", result)
                 $el.addClass("hidden")
 

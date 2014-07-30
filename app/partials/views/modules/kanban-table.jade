@@ -5,7 +5,7 @@ div.kanban-table
                                ng-style="{'border-top-color':s.color}")
                 span(tg-bo-html="s.name")
                 a.icon.icon-plus(href="", title="Add New task", ng-click="ctrl.addNewUs('standard', s.id)")
-                a.icon.icon-bulk(href="", title="Add New bulk")
+                a.icon.icon-bulk(href="", title="Add New bulk", ng-click="ctrl.addNewUs('bulk', s.id)")
 
     div.kanban-table-body
         div.kanban-table-inner

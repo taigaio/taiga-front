@@ -33,16 +33,16 @@ CreateIssueDirective = ($repo, $model, $rs, $rootscope) ->
         form = $el.find("form").checksley()
         $scope.issue = {}
 
-        $scope.$on "issueform:new", ->
+        $scope.$on "issueform:new", (ctx, project)->
             $el.removeClass("hidden")
 
             $scope.issue = {
-                project: $scope.projectId
+                project: project.id
                 subject: ""
-                status: $scope.project.default_issue_status
-                type: $scope.project.default_issue_type
-                priority: $scope.project.default_priority
-                severity: $scope.project.default_severity
+                status: project.default_issue_status
+                type: project.default_issue_type
+                priority: project.default_priority
+                severity: project.default_severity
                 estimated_start: null
                 estimated_finish: null
             }
@@ -51,7 +51,6 @@ CreateIssueDirective = ($repo, $model, $rs, $rootscope) ->
             $el.off()
 
         submit = ->
-            console.log $scope.issue
             if not form.validate()
                 return
 
@@ -83,11 +82,12 @@ CreateIssueDirective = ($repo, $model, $rs, $rootscope) ->
 
 CreateBulkIssuesDirective = ($repo, $rs, $rootscope) ->
     link = ($scope, $el, attrs) ->
-        $scope.form = {data: "", usId: null}
-
-        $scope.$on "issueform:bulk", (ctx, sprintId, usId)->
+        $scope.$on "issueform:bulk", (ctx, projectId, status)->
             $el.removeClass("hidden")
-            $scope.form = {data: "", sprintId: sprintId, usId: usId}
+            $scope.new = {
+                projectId: projectId
+                bulk: ""
+            }
 
         $el.on "click", ".close", (event) ->
             event.preventDefault()
@@ -100,12 +100,12 @@ CreateBulkIssuesDirective = ($repo, $rs, $rootscope) ->
             if not form.validate()
                 return
 
-            data = $scope.form.data
-            projectId = $scope.projectId
+            data = $scope.new.bulk
+            projectId = $scope.new.projectId
 
             promise = $rs.issues.bulkCreate(projectId, data)
             promise.then (result) ->
-                $rootscope.$broadcast("issueform:bulk:success", result)
+                $rootscope.$broadcast("issueform:new:success", result)
                 $el.addClass("hidden")
 
             # TODO: error handling

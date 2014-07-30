@@ -34,10 +34,16 @@ resourceProvider = ($repo, $http, $urls) ->
 
         return $repo.queryMany("userstories", params)
 
-    service.bulkCreate = (projectId, data) ->
+    service.bulkCreate = (projectId, status, bulk) ->
+        data = {
+            projectId: projectId
+            statusId: status
+            bulkStories: bulk
+        }
+
         url = $urls.resolve("bulk-create-us")
-        params = {projectId: projectId, bulkStories: data}
-        return $http.post(url, params)
+
+        return $http.post(url, data)
 
     service.bulkUpdateOrder = (projectId, data) ->
         url = $urls.resolve("bulk-update-us-order")
