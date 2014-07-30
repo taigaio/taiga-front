@@ -103,12 +103,6 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location) ->
         itemEl = null
         tdom = $el.find(".sortable")
 
-        deleteElement = (itemEl) ->
-            # Completelly remove item and its scope from dom
-            itemEl.scope().$destroy()
-            itemEl.off()
-            itemEl.remove()
-
         tdom.sortable({
             handle: ".row.table-main.visualization",
             dropOnEmpty: true
@@ -118,7 +112,6 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location) ->
         })
 
         tdom.on "sortstop", (event, ui) ->
-            parentEl = ui.item.parent()
             itemEl = ui.item
             itemValue = itemEl.scope().value
             itemIndex = itemEl.index()
@@ -280,7 +273,7 @@ ColorSelectionDirective = () ->
         $el.on "click", ".select-color .selected-color", (event) ->
             event.preventDefault()
             $scope.$apply ->
-                $model.$modelValue.color = $scope.color            
+                $model.$modelValue.color = $scope.color
             $el.find(".select-color").hide()
 
         $scope.$on "$destroy", ->
