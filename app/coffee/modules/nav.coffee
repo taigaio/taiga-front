@@ -145,7 +145,6 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location) -
     renderMenuEntries = ($el, targetScope) ->
         container = $el.find(".menu-container")
         sectionName = targetScope.section
-
         dom = $compile(menuEntriesTemplate({user: $auth.getUser()}))(targetScope)
         dom.find("a.active").removeClass("active")
         dom.find("#nav-#{sectionName} > a").addClass("active")
