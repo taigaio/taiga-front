@@ -10,9 +10,6 @@
         &.active {
             background-color: #e9f0da;
             opacity: 1;
-            .icon {
-
-            }
         }
         .icon {
             @include table-flex-child(1, 0, 0);

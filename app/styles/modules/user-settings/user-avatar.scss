@@ -7,16 +7,16 @@
         }
     }
     img {
-        width: 300px;
         border: 2px solid $white;
         border-radius: 8%;
+        width: 300px;
     }
     .button {
-        width: 130px;
-        height: 34px;
-        position: absolute;
         bottom: 20px;
-        left: 85px;
         cursor: pointer;
+        height: 34px;
+        left: 85px;
+        position: absolute;
+        width: 130px;
     }
 }
