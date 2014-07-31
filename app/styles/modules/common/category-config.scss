@@ -4,7 +4,7 @@
         border-top: 1px solid $gray-light;
     }
     .resume {
-        @include table-flex();
+        @include table-flex($align-items: center);
         cursor: pointer;
         padding: 1rem;
         position: relative;
@@ -42,11 +42,12 @@
         background-color: $whitish;
         width: 100%;
         .items-container {
-            padding: 2rem 1rem;
+            padding: 1rem;
         }
     }
     .category-item {
-        border-bottom: 1px dotted $gray;
+        align-items: center;
+        border-bottom: 1px solid $very-light-gray;
         display: flex;
         justify-content: space-between;
         padding: .5rem .5rem .5rem 2rem;

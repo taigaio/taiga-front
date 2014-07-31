@@ -104,11 +104,13 @@ a.button-bulk {
     margin-left: 2px;
     padding: 5px;
     vertical-align: middle;
-    span {
-        color: $white;
-    }
     .icon {
+        color: $fresh-taiga;
         margin-right: 0;
+        &:hover {
+            @include transition(color .3s linear);
+            color: $green-taiga;
+        }
     }
     &:hover {
         @include transition (background .3s linear);

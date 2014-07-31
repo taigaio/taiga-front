@@ -1,13 +1,6 @@
 .backlog {
     .new-us {
         float: right;
-        .icon-bulk {
-            color: $fresh-taiga;
-            &:hover {
-                @include transition(color .3s linear);
-                color: $green-taiga;
-            }
-        }
     }
 }
 
