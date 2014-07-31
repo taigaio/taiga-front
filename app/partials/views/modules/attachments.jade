@@ -7,8 +7,9 @@ section.attachments(tg-attachments, ng-model=attachModel)
             span.icon.icon-attachment
             span.attachments-num 0
             span.attachments-text attachments
-            a.button.button-gray(href="", title="Add new attachment")
+            a.button.button-gray.add-attach(href="", title="Add new attachment")
                 span +new file
+            input.hidden.add-attach(type="file", multiple="multiple")
 
     div.attachment-body.sortable
         div.hidden.single-attachment(ng-repeat="attach in attachments",
@@ -19,7 +20,6 @@ section.attachments(tg-attachments, ng-model=attachModel)
         //- An attachment ('deprecated' class for deprecxated attachments)
         //-div.single-attachment
         //-    div.attachment-name
-        //-        span.icon.icon-document
         //-        a(href="", title="Attachment pefildeusuario.png") pefildeusuariopefuario.png
         //-    div.attachment-comment
         //-        span.attachment-size (42 B)
@@ -31,7 +31,6 @@ section.attachments(tg-attachments, ng-model=attachModel)
         //- An edittable attachment ('deprecated' class for deprecxated attachments)
         //-div.single-attachment
         //-    div.attachment-name
-        //-        span.icon.icon-document
         //-        a(href="", title="Attachment pefildeusuario.png") pefildeusuariopefuario.png
         //-    div.editable.editable-attachment-comment
         //-        span.attachment-size (42 B)
@@ -41,6 +40,16 @@ section.attachments(tg-attachments, ng-model=attachModel)
         //-        input(type="checkbox")
         //-    a.editable.icon.icon-floppy(href="#", "Save")
         //-    a.editable.icon.icon-delete(href="#", "Cancel")
+
+        //-TODO: XAVI, FIX ME :-)
+        div.single-attachment(ng-repeat="file in uploadingFiles")
+            div.attachment-name
+                span
+                a(href="", title="{{ file.name }}") file.name
+            div.attachment-comment
+                span.attachment-size ({{ file.size }})
+                span(ng-if="file.progressMessage", style="color:#72a114; font-weight: bold;") {{ file.progressMessage }}  |  {{ file.progressPercent }}%
+        //-END_TODO
 
         a.hidden.more-attachments(href="", title="show deprecated atachments")
             span.text + show deprecated atachments

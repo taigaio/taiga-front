@@ -29,9 +29,14 @@ module = angular.module("taigaCommon")
 ## Attachments Directive
 #############################################################################
 
-AttachmentsDirective = ($repo) ->
+AttachmentsDirective = ($repo, $rs) ->
     link = ($scope, $el, $attrs, $model) ->
+        $ctrl = $el.controller()
+        $scope.uploadingFiles = []
+
+        ###########
         ## Drag & drop
+        ###########
         tdom = $el.find("div.attachment-body.sortable")
 
         tdom.sortable({
@@ -47,24 +52,29 @@ AttachmentsDirective = ($repo) ->
             newIndex = ui.item.index()
             index = $scope.attachments.indexOf(attachment)
 
-            if index != newIndex
-                # Move attachment to newIndex and recalculate order
-                $scope.attachments.splice(index, 1)
-                $scope.attachments.splice(newIndex, 0, attachment)
-                _.forEach $scope.attachments, (attach, idx) ->
-                    attach.order = idx+1
+            return if index == newIndex
 
-                # Save or revert changes
-                $repo.saveAll($scope.attachments).then null, ->
-                    _.forEach $scope.attachments, attach ->
-                        attach.revert()
-                    _.sorBy($scope.attachments, 'order')
+            # Move attachment to newIndex and recalculate order
+            $scope.attachments.splice(index, 1)
+            $scope.attachments.splice(newIndex, 0, attachment)
+            _.forEach $scope.attachments, (attach, idx) ->
+                attach.order = idx+1
 
+            # Save or revert changes
+            $repo.saveAll($scope.attachments).then null, ->
+                _.forEach $scope.attachments, attach ->
+                    attach.revert()
+                _.sorBy($scope.attachments, 'order')
+
+        ###########
         ## Total attachments counter
+        ###########
         $scope.$watch "attachmentsCount", (count) ->
             $el.find("span.attachments-num").html(count)
 
+        ###########
         ## Show/Hide deprecated attachments
+        ###########
         $scope.showDeprecatedAttachments = false
 
         $scope.$watch "deprecatedAttachmentsCount", (deprecatedAttachmentsCount) ->
@@ -90,7 +100,42 @@ AttachmentsDirective = ($repo) ->
                                         .prop("title", "show deprecated attachments") # TODO: i18n
                 $el.find("div.single-attachment.deprecated").addClass("hidden")
 
+        ###########
+        ## Add Attachments
+        ###########
+        $el.on "click", "a.add-attach", ->
+            angular.element("input.add-attach").trigger("click")
+
+        $el.on "change", "input.add-attach", ->
+            files = _.map(event.target.files, (x) -> x)
+            return if files.length < 1
+
+            $scope.$apply =>
+                if not $scope.uploadingFiles or $scope.uploadingFiles.length == 0
+                    $scope.uploadingFiles = files
+                else
+                    $scope.uploadingFiles = scope.uploadingFiles.concat(files)
+
+            urlName = $ctrl.attachmentsUrlName
+            projectId = $scope.projectId
+            objectId = $model.$modelValue.id
+
+            _.forEach files, (file) ->
+                promise = $rs.attachments.create(urlName, projectId, objectId, file)
+
+                promise.then (data) ->
+                    $scope.uploadingFiles = _.without($scope.uploadingFiles, file)
+                    data.isCreatedRightNow = true
+                    $scope.attachments[$scope.attachments.length] = data
+                    $scope.attachmentsCount = $scope.attachments.length
+
+                promise.then null, (data) ->
+                    $scope.uploadingFiles = _.without($scope.uploadingFiles, file)
+                    $confirm.notify("error", null, "We have not been able to upload '#{file.name}'.") #TODO: i18in
+
+        ###########
         ## On destroy
+        ###########
         $scope.$on "$destroy", ->
             $el.off()
 
@@ -99,7 +144,7 @@ AttachmentsDirective = ($repo) ->
         require: "ngModel"
     }
 
-module.directive("tgAttachments", ["$tgRepo", AttachmentsDirective])
+module.directive("tgAttachments", ["$tgRepo", "$tgResources", AttachmentsDirective])
 
 
 #############################################################################
@@ -169,14 +214,18 @@ AttachmentDirective = ($log, $repo, $confirm) ->
                 $el.removeClass("deprecated")
                 $el.removeClass("hidden")
 
+        ###########
         ## Initialize
+        ###########
         if not $attrs.tgAttachment?
             return $log.error "AttachmentDirective the directive need an attachment"
 
         attachment = $scope.$eval($attrs.tgAttachment)
-        render(attachment)
+        render(attachment, attachment.isCreatedRightNow)
 
+        ###########
         ## Actions (on view mode)
+        ###########
         $el.on "click", "a.settings.icon-edit", (event) ->
             event.preventDefault()
             render(attachment, true)
@@ -197,7 +246,9 @@ AttachmentDirective = ($log, $repo, $confirm) ->
             $confirm.ask(title, subtitle).then ->
                 $repo.remove(attachment).then(onSuccess, onError)
 
+        ###########
         ## Actions (on edit mode)
+        ###########
         $el.on "click", "a.editable.icon-delete", (event) ->
             event.preventDefault()
             render(attachment)
@@ -220,7 +271,9 @@ AttachmentDirective = ($log, $repo, $confirm) ->
 
             $repo.save(attachment).then(onSuccess, onError)
 
+        ###########
         ## On destroy
+        ###########
         $scope.$on "$destroy", ->
             $el.off()
 

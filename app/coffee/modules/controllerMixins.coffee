@@ -112,7 +112,6 @@ class AttachmentsMixin
             return @log.error "AttachmentsMixin: @.attachmentsUrlName is required"
 
         @scope.attachmentsCount = 0
-        @scope.activeAttachmentsCount = 0
         @scope.deprecatedAttachmentsCount = 0
 
         return @rs.attachments.list(@.attachmentsUrlName, objectId).then (attachments) =>

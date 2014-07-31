@@ -21,17 +21,65 @@
 
 
 taiga = @.taiga
+sizeFormat = @.taiga.sizeFormat
 
-resourceProvider = ($repo) ->
+
+resourceProvider = ($rootScope, $urls, $repo, $auth, $q) ->
     service = {}
 
     service.list = (urlName, objectId) ->
         params = {object_id: objectId}
         return $repo.queryMany(urlName, params)
 
+    service.create = (urlName, projectId, objectId, file) ->
+        defered = $q.defer()
+
+        if file is undefined
+            defered.reject(null)
+            return defered.promise
+
+        uploadProgress = (evt) =>
+            $rootScope.$apply =>
+                file.status = "in-progress"
+                file.size = sizeFormat(evt.total)
+                file.progressMessage = "upload #{sizeFormat(evt.loaded)} of #{sizeFormat(evt.total)}"
+                file.progressPercent = Math.round((evt.loaded / evt.total) * 100)
+
+        uploadComplete = (evt) =>
+            $rootScope.$apply ->
+                file.status = "done"
+                try
+                    data = JSON.parse(evt.target.responseText)
+                catch
+                    data = {}
+                defered.resolve(data)
+
+        uploadFailed = (evt) =>
+            $rootScope.$apply ->
+                file.status = "error"
+                defered.reject("fail")
+
+        data = new FormData()
+        data.append("project", projectId)
+        data.append("object_id", objectId)
+        data.append("attached_file", file)
+
+        xhr = new XMLHttpRequest()
+        xhr.upload.addEventListener("progress", uploadProgress, false)
+        xhr.addEventListener("load", uploadComplete, false)
+        xhr.addEventListener("error", uploadFailed, false)
+
+        xhr.open("POST", $urls.resolve(urlName))
+        xhr.setRequestHeader("Authorization", "Bearer #{$auth.getToken()}")
+        xhr.setRequestHeader('Accept', 'application/json')
+        xhr.send(data)
+
+        return defered.promise
+
     return (instance) ->
         instance.attachments = service
 
 
 module = angular.module("taigaResources")
-module.factory("$tgAttachmentsResourcesProvider", ["$tgRepo", resourceProvider])
+module.factory("$tgAttachmentsResourcesProvider", ["$rootScope", "$tgUrls", "$tgRepo", "$tgAuth", "$q",
+                                                   resourceProvider])
