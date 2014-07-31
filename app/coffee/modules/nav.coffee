@@ -75,7 +75,7 @@ ProjectsNavigationDirective = ($rootscope) ->
             #animation hack
             setTimeout ( ->
                 $(document.body).toggleClass("open-projects-nav")
-            ), 0
+            ), 61
 
         $el.on "click", ".projects-list > li > a", (event) ->
             $(document.body)
