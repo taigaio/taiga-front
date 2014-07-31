@@ -404,13 +404,13 @@ IssuesFiltersDirective = ($log, $location) ->
         showFilters = (title) ->
             $el.find(".filters-cats").hide()
             $el.find(".filter-list").show()
-            $el.find("h1 a.subfilter").removeClass("hidden")
-            $el.find("h1 a.subfilter span.title").html(title)
+            $el.find("h2 a.subfilter").removeClass("hidden")
+            $el.find("h2 a.subfilter span.title").html(title)
 
         showCategories = ->
             $el.find(".filters-cats").show()
             $el.find(".filter-list").hide()
-            $el.find("h1 a.subfilter").addClass("hidden")
+            $el.find("h2 a.subfilter").addClass("hidden")
 
         initializeSelectedFilters = (filters) ->
             for name, values of filters

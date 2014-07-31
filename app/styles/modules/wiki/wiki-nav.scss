@@ -23,6 +23,13 @@
             float: right;
             opacity: 0;
         }
+        input {
+            background: $grayer;
+            color: $whitish;
+            @include placeholder {
+                color: $gray-light;
+            }
+        }
     }
     .button {
         color: $white;

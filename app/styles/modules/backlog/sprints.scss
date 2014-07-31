@@ -221,6 +221,6 @@
         @include slide(1000px, overflow-y);
     }
     .button-gray {
-        background: lighten($grayer, 40%);
+        background: $very-light-gray;
     }
 }

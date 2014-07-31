@@ -2,16 +2,15 @@ section.filters
     div.filters-inner
         h1
             a.title(href="", title="back to categories") filters
-            a.hidden.subfilter(href="", title="cat-name")
-                span.icon.icon-arrow-right
-                span.title status
         form
             fieldset
                 input(type="text", placeholder="Search by subject...", ng-model="filtersSubject")
                 a.icon.icon-search(href="", title="search")
-
         div.filters-step-cat
             div.filters-applied
+            h2
+                a.hidden.subfilter(href="", title="cat-name")
+                    span.title status
             div.filters-cats
                 ul
                     li

@@ -1,18 +1,18 @@
 // This template is now not used. It is replaced with
-// filters-issues.jade and filters-backlog.jade.
+// issues-filters.jade and filters-backlog.jade.
 
 section.filters
     div.filters-inner
         h1
             a.title(href="", title="back to categories") filters
-            a.hidden.subfilter(href="", title="cat-name")
-                span.icon.icon-arrow-right
-                span.title status
+
         form
             fieldset
                 input(type="text", placeholder="Search by subject...", ng-model="filtersSubject")
                 a.icon.icon-search(href="", title="search")
-
+        h2
+            a.hidden(href="", title="cat-name")
+                span.title status
         div.filters-step-cat
             div.filters-applied
             div.filters-cats

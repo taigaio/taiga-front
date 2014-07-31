@@ -19,9 +19,6 @@
 .filters {
     h1 {
         vertical-align: baseline;
-        .subfilter {
-            @extend %large;
-        }
         .icon {
             margin: 0;
         }
@@ -29,8 +26,21 @@
             vertical-align: baseline;
         }
     }
+    h2 {
+        margin-top: 1rem;
+        .subfilter {
+            @extend %large;
+        }
+    }
     form {
+        input {
+            background: $grayer;
+            @include placeholder {
+                color: $gray-light;
+            }
+        }
         .icon-search {
+            color: $gray-light;
             position: absolute;
             right: .7rem;
             top: .7rem;
@@ -48,10 +58,6 @@
     .single-filter {
         margin-bottom: .5rem;
     }
-}
-
-.filter-list {
-    margin-top: 2rem;
 }
 
 .filters-cats {
