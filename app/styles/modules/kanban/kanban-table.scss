@@ -11,10 +11,14 @@ $column-margin: 0 10px 0 0;
 }
 
 .kanban-table-header {
-    @include table-flex();
     margin-bottom: .5rem;
-    overflow: hidden;
+    position: relative;
     width: 100%;
+    .kanban-table-inner {
+        @include table-flex();
+        overflow: hidden;
+        position: absolute;
+    }
     .task-colum_name {
         @include table-flex-child($column-flex, $column-width, $column-shrink, $column-width);
         @extend %medium;
