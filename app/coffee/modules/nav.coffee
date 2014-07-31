@@ -28,7 +28,6 @@ module = angular.module("taigaNavMenu", [])
 #############################################################################
 ## Projects Navigation
 #############################################################################
-
 class ProjectsNavigationController extends taiga.Controller
     @.$inject = ["$scope", "$tgResources"]
 
@@ -44,15 +43,45 @@ class ProjectsNavigationController extends taiga.Controller
             return projects
 
 
-ProjectsNavigationDirective = ->
+ProjectsNavigationDirective = ($rootscope) ->
+    overlay = $(".projects-nav-overlay")
+    loadingStart = 0
+    hideMenu = () ->
+        if overlay.is(':visible')
+            difftime = new Date().getTime() - loadingStart
+            timeout = 0
+
+            if (difftime < 500)
+                timeout = 500 - timeout
+
+            setTimeout ( ->
+                overlay.one 'webkitTransitionEnd transitionend transitionEnd', () ->
+                    overlay.hide()
+
+                $(document.body)
+                    .removeClass("loading-project open-projects-nav")
+            ), timeout
+
     link = ($scope, $el, $attrs, $ctrl) ->
-        body = angular.element("body")
+        $rootscope.$on("project:loaded", hideMenu)
+
+        overlay.on 'click', () ->
+            hideMenu()
 
         $scope.$on "nav:projects-list:open", ->
-            body.toggleClass("open-projects-nav")
+            if !$(document.body).hasClass("open-projects-nav")
+                overlay.show()
+
+            #animation hack
+            setTimeout ( ->
+                $(document.body).toggleClass("open-projects-nav")
+            ), 0
 
         $el.on "click", ".projects-list > li > a", (event) ->
-            body.removeClass("open-projects-nav")
+            $(document.body)
+                .addClass('loading-project')
+
+            loadingStart = new Date().getTime()
 
     return {
         link: link
@@ -60,7 +89,7 @@ ProjectsNavigationDirective = ->
     }
 
 
-module.directive("tgProjectsNav", ProjectsNavigationDirective)
+module.directive("tgProjectsNav", ["$rootScope", ProjectsNavigationDirective])
 
 
 #############################################################################

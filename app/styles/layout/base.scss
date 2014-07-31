@@ -45,6 +45,22 @@ body {
             @include transform(translate3d(300px, 0, 0));
             @include transition (transform 1s ease);
         }
+        .projects-nav-overlay {
+            @include transform(translate3d(300px, 0, 0));
+            @include transition (all 1s ease);
+            opacity: .7;
+        }
+    }
+    &.loading-project {
+        .projects-nav-overlay {
+            @include transition (opacity 1s ease);
+            opacity: 1;
+            overflow: hidden;
+            div {
+                @include transition (opacity 1s ease);
+                opacity: 1;
+            }
+        }
     }
 }
 

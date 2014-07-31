@@ -18,9 +18,9 @@ module.controller("ProjectsController", ProjectsController)
 
 
 class ProjectController extends taiga.Controller
-    @.$inject = ["$scope", "$tgResources", "$tgRepo", "$routeParams", "$q"]
+    @.$inject = ["$scope", "$tgResources", "$tgRepo", "$routeParams", "$q", "$rootScope"]
 
-    constructor: (@scope, @rs, @repo, @params, @q) ->
+    constructor: (@scope, @rs, @repo, @params, @q, @rootscope) ->
         @scope.hideMenu = false
         @.loadInitialData()
 
@@ -30,7 +30,9 @@ class ProjectController extends taiga.Controller
             @scope.projectId = data.project
             return data
 
-        return promise.then(=> @.loadPageData())
+        return promise
+                .then(=> @.loadPageData())
+                .then(=> @rootscope.$broadcast("project:loaded"))
 
     loadPageData: ->
         return @q.all([
