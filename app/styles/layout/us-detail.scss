@@ -104,9 +104,6 @@
 }
 
 .us-content {
-    textarea {
-        background: $white;
-    }
     ul {
         margin-left: 1rem;
     }
@@ -117,6 +114,7 @@
         color: $green-taiga;
     }
     textarea {
+        background: $white;
         height: 10rem;
         margin-bottom: 2rem;
     }
