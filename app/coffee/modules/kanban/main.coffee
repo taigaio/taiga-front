@@ -200,10 +200,32 @@ module.controller("KanbanController", KanbanController)
 
 KanbanDirective = ($repo, $rootscope) ->
     link = ($scope, $el, $attrs) ->
+
+        tableBodyDom = $el.find(".kanban-table-body")
+        tableBodyDom.on "scroll", (event) ->
+            target = angular.element(event.currentTarget)
+            tableHeaderDom = $el.find(".kanban-table-header .kanban-table-inner")
+            tableHeaderDom.css("left", -1 * target.scrollLeft())
+
     return {link: link}
 
-
 module.directive("tgKanban", ["$tgRepo", "$rootScope", KanbanDirective])
+
+
+#############################################################################
+## Kanban Row Size Fixer Directive
+#############################################################################
+
+KanbanRowSizeFixer = ->
+    link = ($scope, $el, $attrs) ->
+        bindOnce $scope, "usStatusList", (statuses) ->
+            itemSize = 310
+            size = (statuses.length * itemSize) - 10
+            $el.css("width", "#{size}px")
+
+    return {link: link}
+
+module.directive("tgKanbanRowSizeFixer", KanbanRowSizeFixer)
 
 
 #############################################################################

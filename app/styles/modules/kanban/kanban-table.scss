@@ -21,7 +21,7 @@ $column-margin: 0 10px 0 0;
     }
     .task-colum_name {
         @include table-flex-child($column-flex, $column-width, $column-shrink, $column-width);
-        @extend %medium;
+        @extend %large;
         background: $whitish;
         border-top: 3px solid $gray-light;
         margin: $column-margin;
