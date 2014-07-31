@@ -147,86 +147,68 @@ a:visited {
     content: 'g';
 }
 .icon-move:before {
-    content: 'i';
-}
-.icon-filter:before {
-    content: 'j';
-}
-.icon-tag:before {
-    content: 'k';
-}
-.icon-bulk:before {
-    content: 'l';
-}
-.icon-arrow-up:before {
     content: 'h';
 }
+.icon-filter:before {
+    content: 'i';
+}
+.icon-arrow-up:before {
+    content: 'j';
+}
 .icon-arrow-right:before {
-    content: 'm';
+    content: 'k';
 }
 .icon-arrow-left:before {
-    content: 'n';
+    content: 'l';
 }
 .icon-arrow-bottom:before {
-    content: 'o';
+    content: 'm';
 }
 .icon-edit:before {
-    content: 'p';
+    content: 'n';
 }
 .icon-delete:before {
-    content: 'q';
+    content: 'o';
 }
 .icon-iocaine:before {
-    content: 'r';
+    content: 'p';
 }
 .icon-drag-h:before {
-    content: 's';
+    content: 'q';
 }
 .icon-drag-v:before {
-    content: 't';
-}
-.icon-fontawesome-webfont:before {
-    content: 'u';
+    content: 'r';
 }
 .icon-document:before {
-    content: 'v';
-}
-.icon-clipboard-notes:before {
-    content: 'w';
-}
-.icon-male:before {
-    content: 'x';
+    content: 's';
 }
 .icon-plus:before {
-    content: 'y';
+    content: 't';
 }
 .icon-attachment:before {
-    content: 'A';
+    content: 'u';
 }
 .icon-reload:before {
-    content: 'z';
-}
-.icon-graph:before {
-    content: 'B';
+    content: 'v';
 }
 .icon-warning:before {
-    content: 'C';
-}
-.icon-notification-success:before {
-    content: 'D';
+    content: 'w';
 }
 .icon-notification-error:before {
-    content: 'E';
-}
-.icon-floppy:before {
-    content: 'F';
+    content: 'x';
 }
 .icon-github:before {
-    content: 'G';
+    content: 'y';
 }
 .icon-check-square:before {
-    content: 'H';
+    content: 'z';
 }
 .icon-warning-alt:before {
-    content: 'I';
+    content: 'A';
+}
+.icon-floppy:before {
+    content: 'C';
+}
+.icon-bulk:before {
+    content: 'D';
 }
