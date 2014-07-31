@@ -117,10 +117,9 @@ CreateMembersDirective = ($rs, $rootScope, $confirm) ->
                 return {
                     email: fieldset.children("input").val()
                     role_id: fieldset.children("select").val()
-                    project_id: $scope.project.id
                 }
 
-            $rs.memberships.bulkCreateMemberships(invitations).then(onSuccess, onError)
+            $rs.memberships.bulkCreateMemberships($scope.project.id, invitations).then(onSuccess, onError)
 
     return {link: link}
 
