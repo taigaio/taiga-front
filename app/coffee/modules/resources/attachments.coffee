@@ -24,7 +24,7 @@ taiga = @.taiga
 sizeFormat = @.taiga.sizeFormat
 
 
-resourceProvider = ($rootScope, $urls, $repo, $auth, $q) ->
+resourceProvider = ($rootScope, $urls, $model, $repo, $auth, $q) ->
     service = {}
 
     service.list = (urlName, objectId) ->
@@ -52,7 +52,9 @@ resourceProvider = ($rootScope, $urls, $repo, $auth, $q) ->
                     data = JSON.parse(evt.target.responseText)
                 catch
                     data = {}
-                defered.resolve(data)
+
+                model =  $model.make_model(urlName, data)
+                defered.resolve(model)
 
         uploadFailed = (evt) =>
             $rootScope.$apply ->
@@ -81,5 +83,5 @@ resourceProvider = ($rootScope, $urls, $repo, $auth, $q) ->
 
 
 module = angular.module("taigaResources")
-module.factory("$tgAttachmentsResourcesProvider", ["$rootScope", "$tgUrls", "$tgRepo", "$tgAuth", "$q",
-                                                   resourceProvider])
+module.factory("$tgAttachmentsResourcesProvider", ["$rootScope", "$tgUrls", "$tgModel", "$tgRepo", "$tgAuth",
+                                                   "$q", resourceProvider])

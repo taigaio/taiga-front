@@ -235,6 +235,7 @@ AttachmentDirective = ($log, $repo, $confirm) ->
 
         attachment = $scope.$eval($attrs.tgAttachment)
         render(attachment, attachment.isCreatedRightNow)
+        delete attachment.isCreatedRightNow
 
         ###########
         ## Actions (on view mode)
@@ -246,8 +247,8 @@ AttachmentDirective = ($log, $repo, $confirm) ->
         $el.on "click", "a.settings.icon-delete", (event) ->
             event.preventDefault()
 
-            title = "Delete attachment" # i18n
-            subtitle = "the attachment '#{attachment.name}'"
+            title = "Delete attachment"  #TODO: i18in
+            subtitle = "the attachment '#{attachment.name}'" #TODO: i18in
 
             onSuccess = ->
                 $ctrl.loadAttachments(attachment.object_id)
