@@ -9,6 +9,8 @@ CreateProject = ($repo, $confirm, $location, $navurls) ->
         form = $el.find("form").checksley()
 
         onSuccessSubmit = (response) ->
+            $el.addClass("hidden")
+
             $confirm.notify("success", "Success") #TODO: i18n
 
             url = $navurls.resolve('project')
@@ -27,6 +29,7 @@ CreateProject = ($repo, $confirm, $location, $navurls) ->
             promise.then(onSuccessSubmit, onErrorSubmit)
 
         $scope.$on "projects:create", ->
+            $scope.data = {}
             $el.removeClass("hidden")
 
         $el.on "click", ".close", (event) ->

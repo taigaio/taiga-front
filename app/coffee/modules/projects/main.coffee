@@ -1,6 +1,16 @@
 taiga = @.taiga
 module = angular.module("taigaProject")
 
+class ProjectNavController extends taiga.Controller
+    @.$inject = ["$rootScope"]
+
+    constructor: (@rootscope) ->
+
+    newProject: ->
+        @rootscope.$broadcast("projects:create")
+
+module.controller("ProjectNavController", ProjectNavController)
+
 class ProjectsController extends taiga.Controller
     @.$inject = ["$scope", "$tgResources", "$rootScope"]
 
@@ -52,42 +62,6 @@ class ProjectController extends taiga.Controller
 
 
 module.controller("ProjectController", ProjectController)
-
-CreateProjectDirective = ($repo, $confirm, $location, $navurls) ->
-    link = ($scope, $el, $attrs) ->
-        $scope.data = {}
-        form = $el.find("form").checksley()
-
-        onSuccessSubmit = (response) ->
-            $confirm.notify("success", "Success") #TODO: i18n
-
-            url = $navurls.resolve('project-backlog')
-            fullUrl = $navurls.formatUrl(url, {'project': response.slug})
-
-            $location.url(fullUrl)
-
-        onErrorSubmit = (response) ->
-            $confirm.notify("light-error", "According to our Oompa Loompas, project name is
-                                            already in use.") #TODO: i18n
-
-        submit = ->
-            if not form.validate()
-                return
-
-            promise = $repo.create("projects", $scope.data)
-            promise.then(onSuccessSubmit, onErrorSubmit)
-
-        $el.on "submit", (event) ->
-            event.preventDefault()
-            submit()
-
-        $el.on "click", "a.button-create", (event) ->
-            event.preventDefault()
-            submit()
-
-    return {link:link}
-
-module.directive("tgCreateProject", ["$tgRepo", "$tgConfirm", "$location", "$tgNavUrls", CreateProjectDirective])
 
 ProjectsPaginationDirective = ($timeout) ->
     nextPage = (element, pageSize, callback) ->

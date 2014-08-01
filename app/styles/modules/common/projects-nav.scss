@@ -42,6 +42,13 @@
         flex-direction: column;
         margin-top: 1rem;
     }
+    .create-project-button {
+        margin-top: 1rem;
+        a {
+            text-align: center;
+            width: 100%;
+        }
+    }
     .v-pagination-previous,
     .v-pagination-next {
         flex-shrink: 0;
@@ -88,7 +95,7 @@
     right: 0;
     top: 0;
     width: 100%;
-    z-index: 99999;
+    z-index: 99900;
     div {
         margin: 10% auto;
         opacity: 0;

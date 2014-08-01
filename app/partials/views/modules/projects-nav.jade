@@ -3,12 +3,18 @@
         img(src="/images/logo.png", alt="TAIGA")
         p Loading project...
 
-nav.projects-nav(tg-projects-nav)
+div.lightbox.lightbox_create-project.hidden(tg-lb-create-project)
+    include lightbox_create-project
+
+nav.projects-nav(ng-controller="ProjectNavController as ctrl", tg-projects-nav)
     h1 Your projects
     form
         fieldset
             input(type="text" placeholder="Search in...", ng-model="projectsSearch.$")
             a.icon.icon-search
+
+    .create-project-button
+        a.button.button-green(href="", ng-click="ctrl.newProject()") Create project
 
     div.projects-pagination(tg-projects-pagination, active="projects.length && !projectsSearch.$.length")
         ul.projects-list
