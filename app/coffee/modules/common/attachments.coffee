@@ -154,16 +154,23 @@ module.directive("tgAttachments", ["$tgRepo", "$tgResources", AttachmentsDirecti
 AttachmentDirective = ($log, $repo, $confirm) ->
     singleAttachment = _.template("""
     <div class="attachment-name">
-        <span class="icon.icon-document"></span>
-        <a href="<%- url %>" title="<%- name %>" target="_blank"><%- name %></a>
+        <a href="<%- url %>" title="<%- name %>" target="_blank">
+            <span class="icon icon-documents"></span>
+            <span><%- name %><span>
+        </a>
     </div>
-    <div class="attachment-comment">
-        <span class="attachment-size">(<%- size %>)</span>
+    <div class="attachment-size">
+        <span class="attachment-size"><%- size %></span>
+    </div>
+    <div class="attachment-comments">
+        <span class="deprecated-file hidden">(deprecated)</span>
         <span><%- description %></span>
     </div>
-    <a class="settings icon icon-edit" href="" title="Edit"></a>
-    <a class="settings icon icon-delete" href="" title="Delete"></a>
-    <a class="settings icon icon-drag-v" href="" title=""Drag"></a>
+    <div class="attachment-settings">
+        <a class="settings icon icon-edit" href="" title="Edit"></a>
+        <a class="settings icon icon-delete" href="" title="Delete"></a>
+        <a class="settings icon icon-drag-v" href="" title=""Drag"></a>
+    </div>
     """) #TODO: i18n
 
     singleAttachmentEditable = _.template("""
@@ -171,8 +178,10 @@ AttachmentDirective = ($log, $repo, $confirm) ->
         <span class="icon.icon-document"></span>
         <a href="<%- url %>" title="<%- name %>" target="_blank"><%- name %></a>
     </div>
+    <div class="attachment-size">
+        <span class="attachment-size"><%- size %></span>
+    </div>
     <div class="editable editable-attachment-comment">
-        <span class="attachment-size">(<%- size %>)</span>
         <input type="text" name="description"
                value="<%- description %>""
                placeholder="Type a short description" />
@@ -182,8 +191,10 @@ AttachmentDirective = ($log, $repo, $confirm) ->
                <% if (isDeprecated){ %>checked<% } %> />
         <label for="attach-<%- id %>-is-deprecated">Deprecated?</label>
     </div>
-    <a class="editable icon icon-floppy" href="" title="Save"></a>
-    <a class="editable icon icon-delete" href="" title="Cancel"></a>
+    <div class="attachment-settings">
+        <a class="editable icon icon-floppy" href="" title="Save"></a>
+        <a class="editable icon icon-delete" href="" title="Cancel"></a>
+    </div>
     """) # TODO: i18n
 
     link = ($scope, $el, $attrs) ->
@@ -208,6 +219,7 @@ AttachmentDirective = ($log, $repo, $confirm) ->
 
             if attachment.is_deprecated
                 $el.addClass("deprecated")
+                $el.find(".deprecated-file").removeClass('hidden')
                 if $scope.showDeprecatedAttachments
                     $el.removeClass("hidden")
             else

@@ -29,25 +29,70 @@
     &:last-child {
         border: 0;
     }
+    &:hover {
+        .attachment-settings {
+            .settings {
+                @include transition (opacity .2s ease-in);
+                opacity: 1;
+            }
+        }
+    }
+    &.ui-sortable-helper {
+        @include transition (background .2s ease-in);
+        background: lighten($green-taiga, 60%);
+        box-shadow: 1px 1px 10px rgba($black, .1);
+    }
+    &.deprecated {
+        color: $gray-light;
+        .attachment-name a {
+            color: $gray-light;
+        }
+    }
     .attachment-name {
         @include ellipsis(200px);
-        @include table-flex-child(1, 200px);
+        @include table-flex-child(1, 300px);
+        @extend %bold;
         padding-right: 1rem;
         .icon {
             margin-right: .5rem;
         }
     }
-    .attachment-comment {
+    .attachment-size {
+        @include table-flex-child(1, 100px);
+        color: $gray-light;
+        margin-right: .5rem;
+    }
+    .attachment-comments {
         @include table-flex-child(10, 300px);
-        .attachment-size {
+    }
+    .attachment-settings {
+        @include table-flex-child(1, 100px);
+        .settings {
+            @extend %large;
             color: $gray-light;
-            margin-left: .5rem;
+            display: block;
+            opacity: 0;
+            position: absolute;
+            top: 1rem;
+            &:hover {
+                color: $green-taiga;
+            }
+        }
+        .icon-edit {
+            right: 4rem;
+        }
+        .icon-delete {
+            right: 2rem;
+            &:hover {
+                color: $red;
+            }
+        }
+        .icon-drag-v {
+            cursor: move;
+            right: 0;
         }
     }
-    .settings {
-        @extend %large;
-        color: $gray-light;
-    }
+    //  REFACTOR //
     .editable {
         @include table-flex-child(10, 300px);
     }
@@ -89,35 +134,23 @@
             display: block;
         }
     }
-    &:hover {
-        &:not(.edit) {
-            @include transition (background .2s ease-in);
-            background: lighten($green-taiga, 60%);
-            .settings {
-                @include transition (opacity .2s ease-in);
-                display: block;
-                position: absolute;
-                top: 1rem;
-            }
-            .icon-edit {
-                right: 4rem;
-            }
-            .icon-drag-v {
-                cursor: move;
-                right: 1rem;
-            }
-        }
-    }
+
 }
 
 .more-attachments {
     @extend %small;
     border-bottom: 1px solid $gray-light;
-    color: $gray-light;
     display: block;
     padding: 1rem 0 1rem 1rem;
+    span {
+        color: $gray-light;
+    }
     .more-attachments-num {
         color: $green-taiga;
         margin-left: .5rem;
+    }
+    &:hover {
+        @include transition (background .2s ease-in);
+        background: lighten($green-taiga, 60%);
     }
 }

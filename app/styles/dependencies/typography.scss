@@ -185,30 +185,36 @@ a:visited {
 .icon-plus:before {
     content: 't';
 }
-.icon-attachment:before {
+.icon-reload:before {
     content: 'u';
 }
-.icon-reload:before {
+.icon-warning:before {
     content: 'v';
 }
-.icon-warning:before {
+.icon-notification-error:before {
     content: 'w';
 }
-.icon-notification-error:before {
+.icon-github:before {
     content: 'x';
 }
-.icon-github:before {
+.icon-check-square:before {
     content: 'y';
 }
-.icon-check-square:before {
+.icon-warning-alt:before {
     content: 'z';
 }
-.icon-warning-alt:before {
+.icon-floppy:before {
     content: 'A';
 }
-.icon-floppy:before {
+.icon-bulk:before {
+    content: 'B';
+}
+.icon-comment:before {
     content: 'C';
 }
-.icon-bulk:before {
+.icon-documents:before {
     content: 'D';
+}
+.icon-attachments:before {
+    content: 'E';
 }
