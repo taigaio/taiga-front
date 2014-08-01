@@ -309,13 +309,24 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
         plainTags = _.flatten(_.map(@scope.userstories, "tags"))
         @scope.filters.tags = _.map _.countBy(plainTags), (v, k) ->
-            obj = {id:k, type:"tags", name: k, count:v}
+            obj = {
+                id: k,
+                type: "tags",
+                name: k,
+                count: v
+            }
             obj.selected = true if isSelected("tags", obj.id)
             return obj
 
         plainStatuses = _.map(@scope.userstories, "status")
         @scope.filters.statuses = _.map _.countBy(plainStatuses), (v, k) =>
-            obj = {id:k, type:"statuses", name: @scope.usStatusById[k].name, count:v}
+            obj = {
+                id: k,
+                type: "statuses",
+                name: @scope.usStatusById[k].name,
+                color: @scope.usStatusById[k].color,
+                count:v
+            }
             obj.selected = true if isSelected("statuses", obj.id)
             return obj
 
@@ -340,8 +351,10 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
     addNewUs: (type) ->
         switch type
-            when "standard" then @rootscope.$broadcast("usform:new", @scope.projectId, @scope.project.default_us_status)
-            when "bulk" then @rootscope.$broadcast("usform:bulk", @scope.projectId, @scope.project.default_us_status)
+            when "standard" then @rootscope.$broadcast("usform:new", @scope.projectId,
+                                                       @scope.project.default_us_status)
+            when "bulk" then @rootscope.$broadcast("usform:bulk", @scope.projectId,
+                                                   @scope.project.default_us_status)
 
     addNewSprint: () ->
         @rootscope.$broadcast("sprintform:create")
@@ -585,7 +598,9 @@ UsPointsDirective = ($repo) ->
         showPopPoints = () ->
             $el.find(".pop-points-open").remove()
             $el.append(pointsTemplate({ "points":  $scope.project.points }))
-            $el.find(".pop-points-open a[data-point-id='#{us.points[updatingSelectedRoleId]}']").addClass("active")
+            dataPointId = us.points[updatingSelectedRoleId]
+            $el.find(".pop-points-open a[data-point-id='#{dataPointId}']").addClass("active")
+
             # If not showing role selection let's move to the left
             if not $el.find(".pop-role:visible").css('left')?
                 $el.find(".pop-points-open").css('left', '110px')
@@ -600,7 +615,8 @@ UsPointsDirective = ($repo) ->
                 return "?" if not val?
                 return val
 
-            _.map(rolePoints, (v, k) -> v.points = undefinedToQuestion($scope.pointsById[us.points[v.id]].value))
+            _.map rolePoints, (v, k) ->
+                v.points = undefinedToQuestion($scope.pointsById[us.points[v.id]].value)
             $el.append(selectionTemplate({ "rolePoints":  rolePoints }))
             $el.find(".pop-role").show()
 
@@ -728,7 +744,8 @@ tgBacklogGraphDirective = ->
             lines:
                 fillColor : "rgba(153,51,51,0.3)"
         })
-        client_increment_line = _.map(dataToDraw.milestones, (ml) -> -ml['team-increment']-ml['client-increment'])
+        client_increment_line = _.map dataToDraw.milestones, (ml) ->
+            -ml['team-increment'] - ml['client-increment']
         data.push({
             data: _.zip(milestonesRange, client_increment_line)
             lines:

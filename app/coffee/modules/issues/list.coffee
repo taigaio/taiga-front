@@ -115,23 +115,44 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 return false
 
             # Build filters data structure
-            @scope.filters.tags = _.map data.tags, (t) =>
-                obj = {id:t[0], name:t[0], count: t[1], type:"tags"}
-                obj.selected = true if isSelected("tags", obj.id)
-                return obj
-
-            @scope.filters.priorities = _.map data.priorities, (t) =>
-                obj = {id:t[0], name:@scope.priorityById[t[0]].name, count:t[1], type:"priorities"}
-                obj.selected = true if isSelected("priorities", obj.id)
+            @scope.filters.statuses = _.map data.statuses, (t) =>
+                obj = {
+                    id: t[0],
+                    name: @scope.issueStatusById[t[0]].name,
+                    color: @scope.issueStatusById[t[0]].color,
+                    count: t[1],
+                    type: "statuses"}
+                obj.selected = true if isSelected("statuses", obj.id)
                 return obj
 
             @scope.filters.severities = _.map data.severities, (t) =>
-                obj = {id:t[0], name:@scope.severityById[t[0]].name, count:t[1], type:"severities"}
+                obj = {
+                    id: t[0],
+                    name: @scope.severityById[t[0]].name,
+                    color: @scope.severityById[t[0]].color,
+                    count: t[1],
+                    type: "severities"
+                }
                 obj.selected = true if isSelected("severities", obj.id)
                 return obj
 
+            @scope.filters.priorities = _.map data.priorities, (t) =>
+                obj = {
+                    id: t[0],
+                    name: @scope.priorityById[t[0]].name,
+                    color: @scope.priorityById[t[0]].color
+                    count: t[1],
+                    type: "priorities"
+                }
+                obj.selected = true if isSelected("priorities", obj.id)
+                return obj
+
             @scope.filters.assignedTo = _.map data.assigned_to, (t) =>
-                obj = {id:t[0], count:t[1], type:"assignedTo"}
+                obj = {
+                    id:t[0],
+                    count:t[1],
+                    type:"assignedTo"
+                }
                 if t[0]
                     obj.name = @scope.usersById[t[0]].full_name_display
                 else
@@ -140,10 +161,16 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 obj.selected = true if isSelected("assignedTo", obj.id)
                 return obj
 
-            @scope.filters.statuses = _.map data.statuses, (t) =>
-                obj = {id:t[0], name:@scope.issueStatusById[t[0]].name, count:t[1], type:"statuses"}
-                obj.selected = true if isSelected("statuses", obj.id)
+            @scope.filters.tags = _.map data.tags, (t) =>
+                obj = {
+                    id: t[0],
+                    name: t[0],
+                    count: t[1],
+                    type: "tags"
+                }
+                obj.selected = true if isSelected("tags", obj.id)
                 return obj
+
 
             @rootscope.$broadcast("filters:loaded", @scope.filters)
             return data
@@ -371,14 +398,18 @@ IssuesFiltersDirective = ($log, $location) ->
         <a class="single-filter active"
             data-type="<%= f.type %>"
             data-id="<%= f.id %>">
-            <span class="name"><%- f.name %></span>
+            <span class="name">
+                <%- f.name %>
+            </span>
             <span class="number"><%- f.count %></span>
         </a>
         <% } else { %>
         <a class="single-filter"
             data-type="<%= f.type %>"
             data-id="<%= f.id %>">
-            <span class="name"><%- f.name %></span>
+            <span class="name" <% if (f.color){ %>style="border-left: 3px solid <%- f.color %>;"<% } %>>
+                <%- f.name %>
+            </span>
             <span class="number"><%- f.count %></span>
         </a>
         <% } %>
@@ -390,7 +421,9 @@ IssuesFiltersDirective = ($log, $location) ->
     <a class="single-filter selected"
        data-type="<%= f.type %>"
        data-id="<%= f.id %>">
-        <span class="name"><%- f.name %></span>
+        <span class="name" <% if (f.color){ %>style="border-left: 3px solid <%= f.color %>;"<% } %>>
+            <%- f.name %>
+        </span>
         <span class="icon icon-delete"></span>
     </a>
     <% }) %>
@@ -454,6 +487,7 @@ IssuesFiltersDirective = ($log, $location) ->
 
         # Angular Watchers
         $scope.$on "filters:loaded", (ctx, filters) ->
+            console.log filters
             initializeSelectedFilters(filters)
 
         selectSubjectFilter = debounce 400, (value) ->
