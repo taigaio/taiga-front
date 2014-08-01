@@ -48,7 +48,7 @@ body {
         .projects-nav-overlay {
             @include transform(translate3d(300px, 0, 0));
             @include transition (all 1s ease);
-            opacity: .7;
+            opacity: .9;
         }
     }
     &.loading-project {

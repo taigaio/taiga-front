@@ -1,7 +1,6 @@
 .invitation-main {
     @include table-flex(center, center, flex, row, wrap, center);
-    background: url('/images/invitation_bg.jpg') no-repeat center center;
-    background-size: cover;
+    @extend %backgound-taiga;
     bottom: 0;
     left: 0;
     position: fixed;
