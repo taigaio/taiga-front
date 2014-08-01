@@ -51,6 +51,7 @@ BacklogSortableDirective = ($repo, $rs, $rootscope) ->
             handle: ".icon-drag-v",
             containment: ".wrapper"
             dropOnEmpty: true
+            placeholder: "row us-item-row us-item-drag sortable-placeholder"
             # With scroll activated, it has strange behavior
             # with not full screen browser window.
             scroll: false

@@ -14,6 +14,7 @@
         padding: .5rem 0 .5rem .5rem;
         text-align: left;
         width: 100%;
+
     }
     .backlog-table-title,
     .backlog-table-subtitle,
@@ -95,7 +96,6 @@
 
 .backlog-table-body {
     .row {
-        cursor: move;
         position: relative;
         &:hover {
             @include transition (background .2s ease-in);
@@ -105,6 +105,15 @@
                 @include transition (all .2s ease-in);
                 opacity: 1;
             }
+        }
+        &.sortable-placeholder {
+            background: $whitish;
+            height: 40px;
+        }
+        &.ui-sortable-helper {
+            @include transition (background .2s ease-in);
+            background: lighten($green-taiga, 60%);
+            box-shadow: 1px 1px 10px rgba($black, .1);
         }
     }
     .row-selected {
