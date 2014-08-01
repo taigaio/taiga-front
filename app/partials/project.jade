@@ -7,7 +7,7 @@ block content
     div.wrapper(ng-controller="ProjectController as ctrl")
         section.main.single-project
             h1
-                span.green(tg-bo-html="ctrl.project.name")
+                span.green(tg-bo-html="project.name")
             div.summary
                 ul.home-project-info-list
                     li
@@ -28,4 +28,3 @@ block content
                     li(ng-repeat="member in project.active_memberships")
                         figure.avatar
                             img(src="{{member.photo}}", alt="{{member.full_name}}")
-
