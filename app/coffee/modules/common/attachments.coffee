@@ -43,8 +43,9 @@ AttachmentsDirective = ($repo, $rs) ->
             items: "div.single-attachment"
             handle: "a.settings.icon.icon-drag-v"
             dropOnEmpty: true
-            revert: false # '400' if we fix the strange effects
+            revert: 400
             axis: "y"
+            placeholder: "sortable-placeholder single-attachment"
         })
 
         tdom.on "sortstop", (event, ui) ->
@@ -160,7 +161,7 @@ AttachmentDirective = ($log, $repo, $confirm) ->
         </a>
     </div>
     <div class="attachment-size">
-        <span class="attachment-size"><%- size %></span>
+        <span><%- size %></span>
     </div>
     <div class="attachment-comments">
         <span class="deprecated-file hidden">(deprecated)</span>
@@ -179,10 +180,10 @@ AttachmentDirective = ($log, $repo, $confirm) ->
         <a href="<%- url %>" title="<%- name %>" target="_blank"><%- name %></a>
     </div>
     <div class="attachment-size">
-        <span class="attachment-size"><%- size %></span>
+        <span><%- size %></span>
     </div>
     <div class="editable editable-attachment-comment">
-        <input type="text" name="description"
+        <input type="text" name="description" maxlength="140"
                value="<%- description %>""
                placeholder="Type a short description" />
     </div>
@@ -192,8 +193,8 @@ AttachmentDirective = ($log, $repo, $confirm) ->
         <label for="attach-<%- id %>-is-deprecated">Deprecated?</label>
     </div>
     <div class="attachment-settings">
-        <a class="editable icon icon-floppy" href="" title="Save"></a>
-        <a class="editable icon icon-delete" href="" title="Cancel"></a>
+        <a class="editable-settings icon icon-floppy" href="" title="Save"></a>
+        <a class="editable-settings icon icon-delete" href="" title="Cancel"></a>
     </div>
     """) # TODO: i18n
 
@@ -261,11 +262,11 @@ AttachmentDirective = ($log, $repo, $confirm) ->
         ###########
         ## Actions (on edit mode)
         ###########
-        $el.on "click", "a.editable.icon-delete", (event) ->
+        $el.on "click", "a.editable-settings.icon-delete", (event) ->
             event.preventDefault()
             render(attachment)
 
-        $el.on "click", "a.editable.icon-floppy", (event) ->
+        $el.on "click", "a.editable-settings.icon-floppy", (event) ->
             newDescription = $el.find("input[name='description']").val()
             newIsDeprecated = $el.find("input[name='is-deprecated']").prop("checked")
 

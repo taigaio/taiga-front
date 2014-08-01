@@ -48,6 +48,10 @@
             color: $gray-light;
         }
     }
+    &.sortable-placeholder {
+        background: $whitish;
+        height: 55px;
+    }
     .attachment-name {
         @include ellipsis(200px);
         @include table-flex-child(1, 300px);
@@ -67,18 +71,26 @@
     }
     .attachment-settings {
         @include table-flex-child(1, 100px);
-        .settings {
+        .settings,
+        .editable-settings {
             @extend %large;
             color: $gray-light;
             display: block;
-            opacity: 0;
             position: absolute;
-            top: 1rem;
             &:hover {
                 color: $green-taiga;
             }
         }
-        .icon-edit {
+        .settings {
+            opacity: 0;
+            top: 1rem;
+        }
+        .editable-settings {
+            opacity: 1;
+            top: 1.5rem;
+        }
+        .icon-edit,
+        .icon-floppy {
             right: 4rem;
         }
         .icon-delete {
@@ -92,12 +104,8 @@
             right: 0;
         }
     }
-    //  REFACTOR //
     .editable {
         @include table-flex-child(10, 300px);
-    }
-    .attachment-delete {
-        @include table-flex-child(1, 10px);
     }
     .icon-delete {
         @extend %large;
@@ -111,8 +119,9 @@
         span {
             color: $gray-light;
         }
-        input {
-            margin-right: .5rem;
+        input[type="checkbox"] {
+            margin-right: .2rem;
+            vertical-align: middle;
             &:checked {
                 + span {
                     color: $grayer;
@@ -120,21 +129,15 @@
             }
         }
     }
-    .editable-attachment-comment {
-        input {
-            color: $white;
-        }
+    .percentage {
+        background: rgba($green-taiga, .1);
+        bottom: 0;
+        height: 55px;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 45%;
     }
-    &.edit {
-        .settings,
-        .attachment-comment {
-            display: none;
-        }
-        .editable {
-            display: block;
-        }
-    }
-
 }
 
 .more-attachments {
