@@ -53,32 +53,3 @@
         }
     }
 }
-
-.login-error {
-    background: $red;
-    border-radius: 4px;
-    color: $white;
-    display: none;
-    padding: 1rem;
-    position: absolute;
-    right: 1rem;
-    top: 1rem;
-    width: 20%;
-    span {
-        display: block;
-    }
-    .title {
-        @extend %large;
-        @extend %bold;
-    }
-    .icon-delete {
-        color: $red-light;
-        position: absolute;
-        right: .5rem;
-        top: .5rem;
-        &:hover {
-            @include transition(color .3s linear);
-            color: $white;
-        }
-    }
-}

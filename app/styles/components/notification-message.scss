@@ -60,7 +60,7 @@
     position: absolute;
     top: 0;
     width: 400px;
-    z-index: 999;
+    z-index: 9999;
     &.active {
         @include transform(translateY(0));
         @include transition (all .6s ease-in-out);
