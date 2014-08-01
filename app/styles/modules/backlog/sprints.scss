@@ -131,6 +131,15 @@
             &:last-child {
                 border-bottom: 0;
             }
+            &.sortable-placeholder {
+                background: lighten($gray-light, 12%);
+                height: 40px;
+            }
+            &.ui-sortable-helper {
+                @include transition (background .2s ease-in);
+                background: lighten($green-taiga, 60%);
+                box-shadow: 1px 1px 10px rgba($black, .1);
+            }
         }
         .column-us {
             @include table-flex-child(3, 0, 0);
