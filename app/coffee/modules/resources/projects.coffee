@@ -31,6 +31,9 @@ resourceProvider = ($repo) ->
     service.list = ->
         return $repo.queryMany("projects")
 
+    service.templates = ->
+        return $repo.queryMany("project-templates")
+
     service.usersList = (projectId) ->
         params = {"project": projectId}
         return $repo.queryMany("users", params)

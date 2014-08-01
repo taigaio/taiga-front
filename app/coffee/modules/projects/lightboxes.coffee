@@ -3,9 +3,10 @@ bindOnce = @.taiga.bindOnce
 
 module = angular.module("taigaProject")
 
-CreateProject = ($repo, $confirm, $location, $navurls) ->
+CreateProject = ($repo, $confirm, $location, $navurls, $rs) ->
     link = ($scope, $el, attrs) ->
         $scope.data = {}
+        $scope.templates = []
         form = $el.find("form").checksley()
 
         onSuccessSubmit = (response) ->
@@ -25,11 +26,18 @@ CreateProject = ($repo, $confirm, $location, $navurls) ->
         submit = ->
             if not form.validate()
                 return
+
             promise = $repo.create("projects", $scope.data)
             promise.then(onSuccessSubmit, onErrorSubmit)
 
         $scope.$on "projects:create", ->
             $scope.data = {}
+
+            if !$scope.templates.length
+                $rs.projects.templates()
+                    .then (result) =>
+                        $scope.templates = _.map(result, (item) -> {"id": item.id, "name": item.name})
+
             $el.removeClass("hidden")
 
         $el.on "click", ".close", (event) ->
@@ -42,4 +50,11 @@ CreateProject = ($repo, $confirm, $location, $navurls) ->
 
     return {link:link}
 
-module.directive("tgLbCreateProject", ["$tgRepo", "$tgConfirm", "$location", "$tgNavUrls", CreateProject])
+module.directive("tgLbCreateProject", [
+    "$tgRepo",
+    "$tgConfirm",
+    "$location",
+    "$tgNavUrls",
+    "$tgResources",
+    CreateProject
+])

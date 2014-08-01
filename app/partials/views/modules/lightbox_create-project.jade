@@ -7,11 +7,20 @@ form
             input(type="text", name="name", ng-model="data.name", data-required="true",
                   placeholder="Name")
         fieldset
-            input(type="text", name="description", ng-model="data.description", data-required="true",
+            textarea(name="description", ng-model="data.description", data-required="true",
                   placeholder="Description")
         fieldset
             input(type="text", name="total_story_point", ng-model="data.total_story_point", data-required="true",
                   placeholder="Total story point")
+
+        fieldset
+            input(type="text", name="total_milestones", ng-model="data.total_milestones",
+                  placeholder="Total milestones")
+
+        fieldset
+            select(name="creation_template", ng-model="data.creation_template",
+                  ng-options="template.id as template.name for template in templates")
+
         fieldset
             a.button.button-green(href="", title="Create") Create
             input(type="submit", class="hidden")
