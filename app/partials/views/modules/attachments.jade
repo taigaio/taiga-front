@@ -16,47 +16,15 @@ section.attachments(tg-attachments, ng-model=attachModel)
                                      tg-attachment="attach")
 
         //- See modules/common/attachments.coffee - AttachmentDirective
-        //-
-        //- An attachment ('deprecated' class for deprecxated attachments)
-        //-div.single-attachment
-        //-    div.attachment-name
-        //-        a(href="", title="Attachment pefildeusuario.png") pefildeusuariopefuario.png
-        //-    div.attachment-comment
-        //-        span.attachment-size (42 B)
-        //-        span A sort description
-        //-    a.settings.icon.icon-edit(href="", "Edit")
-        //-    a.settings.icon.icon-delete(href="", "Delete")
-        //-    a.settings.icon.icon-drag-v(href="", "Drag")
-        //-
-        //- An edittable attachment ('deprecated' class for deprecxated attachments)
-        //-div.single-attachment
-        //-    div.attachment-name
-        //-        a(href="", title="Attachment pefildeusuario.png") pefildeusuariopefuario.png
-        //-    div.editable.editable-attachment-comment
-        //-        span.attachment-size (42 B)
-        //-        input(type="text")
-        //-    div.editable.editable-attachment-deprecated
-        //-        label Deprecated?
-        //-        input(type="checkbox")
-        //-    a.editable.icon.icon-floppy(href="#", "Save")
-        //-    a.editable.icon.icon-delete(href="#", "Cancel")
-
-        //- div.single-attachment(ng-repeat="file in uploadingFiles")
-        //-    div.attachment-name
-        //-        span
-        //-        a(href="", title="{{ file.name }}") file.name
-        //-    div.attachment-comment
-        //-        span.attachment-size ({{ file.size }})
-        //-        span(ng-if="file.progressMessage", style="color:#72a114; font-weight: bold;") {{ file.progressMessage }}  |  {{ file.progressPercent }}%
 
         div.single-attachment(ng-repeat="file in uploadingFiles")
             div.attachment-name
-                a(href="", title="{{ file.name }}") {{ file.name }}
+                a(href="", tg-bo-title="file.name", tg-bo-html="file.name")
             div.attachment-size
-                span.attachment-size {{ file.size }}
+                span.attachment-size(tg-bo-html="file.size")
             div.attachment-comments
-                span {{ file.progressMessage }}
-                div.percentage(style="width:  {{ file.progressPercent }}%")
+                span(ng-bind="file.progressMessage")
+                div.percentage(ng-style="{'width': file.progressPercent}")
             div.attachment-settings
 
         a.hidden.more-attachments(href="", title="show deprecated atachments")
