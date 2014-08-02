@@ -1,7 +1,7 @@
 //- NOTE: You must to define 'var attachModel' with the object model
 //-       that have attachments
 
-section.attachments(tg-attachments, ng-model=attachModel)
+section.attachments(tg-attachments, ng-model=attachModel, ng-if="#{attachModel}.id")
     div.attachments-header
         h3.attachments-title
             span.icon.icon-attachments
