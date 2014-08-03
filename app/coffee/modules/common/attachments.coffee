@@ -105,18 +105,21 @@ AttachmentsDirective = ($repo, $rs) ->
         ## Add Attachments
         ###########
         $el.on "click", "a.add-attach", ->
+            event.preventDefault()
             angular.element("input.add-attach").trigger("click")
 
         $el.on "change", "input.add-attach", ->
             files = _.map(event.target.files, (x) -> x)
             return if files.length < 1
 
+            # Add files to uploadingFiles array
             $scope.$apply =>
                 if not $scope.uploadingFiles or $scope.uploadingFiles.length == 0
                     $scope.uploadingFiles = files
                 else
                     $scope.uploadingFiles = scope.uploadingFiles.concat(files)
 
+            # Upload new files
             urlName = $ctrl.attachmentsUrlName
             projectId = $scope.projectId
             objectId = $model.$modelValue.id
@@ -125,13 +128,15 @@ AttachmentsDirective = ($repo, $rs) ->
                 promise = $rs.attachments.create(urlName, projectId, objectId, file)
 
                 promise.then (data) ->
-                    $scope.uploadingFiles = _.without($scope.uploadingFiles, file)
                     data.isCreatedRightNow = true
-                    $scope.attachments[$scope.attachments.length] = data
-                    $scope.attachmentsCount = $scope.attachments.length
+
+                    index = $scope.uploadingFiles.indexOf(file)
+                    $scope.uploadingFiles.splice(index, 1)
+                    $ctrl.onCreateAttachment(data)
 
                 promise.then null, (data) ->
-                    $scope.uploadingFiles = _.without($scope.uploadingFiles, file)
+                    index = $scope.uploadingFiles.indexOf(file)
+                    $scope.uploadingFiles.splice(index, 1)
                     $confirm.notify("error", null, "We have not been able to upload '#{file.name}'.") #TODO: i18in
 
         ###########
@@ -164,7 +169,7 @@ AttachmentDirective = ($log, $repo, $confirm) ->
         <span><%- size %></span>
     </div>
     <div class="attachment-comments">
-        <span class="deprecated-file hidden">(deprecated)</span>
+        <% if (isDeprecated){ %> <span class="deprecated-file">(deprecated)</span> <% } %>
         <span><%- description %></span>
     </div>
     <div class="attachment-settings">
@@ -220,9 +225,10 @@ AttachmentDirective = ($log, $repo, $confirm) ->
 
             if attachment.is_deprecated
                 $el.addClass("deprecated")
-                $el.find(".deprecated-file").removeClass('hidden')
                 if $scope.showDeprecatedAttachments
                     $el.removeClass("hidden")
+                else
+                    $el.addClass("hidden")
             else
                 $el.removeClass("deprecated")
                 $el.removeClass("hidden")
@@ -251,7 +257,7 @@ AttachmentDirective = ($log, $repo, $confirm) ->
             subtitle = "the attachment '#{attachment.name}'" #TODO: i18in
 
             onSuccess = ->
-                $ctrl.loadAttachments(attachment.object_id)
+                $ctrl.onDeleteAttachment(attachment)
                 $confirm.notify("success", null, "We've deleted #{subtitle}.") #TODO: i18in
 
             onError = ->
@@ -263,11 +269,9 @@ AttachmentDirective = ($log, $repo, $confirm) ->
         ###########
         ## Actions (on edit mode)
         ###########
-        $el.on "click", "a.editable-settings.icon-delete", (event) ->
-            event.preventDefault()
-            render(attachment)
-
         $el.on "click", "a.editable-settings.icon-floppy", (event) ->
+            event.preventDefault()
+
             newDescription = $el.find("input[name='description']").val()
             newIsDeprecated = $el.find("input[name='is-deprecated']").prop("checked")
 
@@ -277,13 +281,18 @@ AttachmentDirective = ($log, $repo, $confirm) ->
                 attachment.is_deprecated = newIsDeprecated
 
             onSuccess = ->
-                $ctrl.loadAttachments(attachment.object_id)
+                $ctrl.onEditAttachment(attachment)
+                render(attachment)
                 $confirm.notify("success")
 
             onError = ->
                 $confirm.notify("error")
 
             $repo.save(attachment).then(onSuccess, onError)
+
+        $el.on "click", "a.editable-settings.icon-delete", (event) ->
+            event.preventDefault()
+            render(attachment)
 
         ###########
         ## On destroy

@@ -116,8 +116,23 @@ class AttachmentsMixin
 
         return @rs.attachments.list(@.attachmentsUrlName, objectId).then (attachments) =>
             @scope.attachments = _.sortBy(attachments, "order")
-            @scope.attachmentsCount = @scope.attachments.length
-            @scope.deprecatedAttachmentsCount = _.filter(@scope.attachments, is_deprecated: true).length
+            @.updateAttachmentsCounters()
             return attachments
+
+    updateAttachmentsCounters: ->
+        @scope.attachmentsCount = @scope.attachments.length
+        @scope.deprecatedAttachmentsCount = _.filter(@scope.attachments, is_deprecated: true).length
+
+    onCreateAttachment: (attachment) ->
+        @scope.attachments[@scope.attachments.length] = attachment
+        @.updateAttachmentsCounters()
+
+    onEditAttachment: (attachment) ->
+        @.updateAttachmentsCounters()
+
+    onDeleteAttachment: (attachment) ->
+        index = @scope.attachments.indexOf(attachment)
+        @scope.attachments.splice(index, 1)
+        @.updateAttachmentsCounters()
 
 taiga.AttachmentsMixin = AttachmentsMixin
