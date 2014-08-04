@@ -8,7 +8,7 @@ section.us-comments
                 a.avatar(href="", tg-bo-title="ctrl.getUserFullName(comment.user.pk)")
                     img(tg-bo-src="ctrl.getUserAvatar(comment.user.pk)", tg-bo-alt="ctrl.getUserFullName(comment.user.pk)")
             div.comment-content
-                a.username(href="TODO", tg-bo-title="ctrl.getUserFullName(comment.user.pk)" tg-bo-html="ctrl.getUserFullName(comment.user.pk)")
+                a.username(href="TODO", tg-bo-title="ctrl.getUserFullName(comment.user.pk)" tg-bo-bind="ctrl.getUserFullName(comment.user.pk)")
                 //- includes module activity
                 include comment-activity
                 p.comment {{ comment.comment }}

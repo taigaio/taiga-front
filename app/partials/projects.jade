@@ -9,8 +9,8 @@ block content
             ul.recent-projects
                 li(ng-repeat="project in ctrl.projects.recents")
                     .project-content
-                        h2(tg-bo-html="project.name")
-                        p(tg-bo-html="project.description")
+                        h2(tg-bo-bind="project.name")
+                        p(tg-bo-bind="project.description")
                     .project-link
                         a.button.button-gray(href="", tg-nav="project:project=project.slug") Go to project
 
@@ -19,7 +19,7 @@ block content
                 div(tg-projects-pagination, active="ctrl.projects.all.length")
                     ul
                         li(ng-repeat="project in ctrl.projects.all")
-                            a.button(href="", tg-bo-html="project.name", tg-nav="project:project=project.slug")
+                            a.button(href="", tg-bo-bind="project.name", tg-nav="project:project=project.slug")
 
                 .create-project-button-wrapper
                     a.button.button-green(href="", ng-click="ctrl.newProject()") Create project

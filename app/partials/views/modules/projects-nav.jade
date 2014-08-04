@@ -19,5 +19,5 @@ nav.projects-nav(ng-controller="ProjectNavController as ctrl", tg-projects-nav)
     div.projects-pagination(tg-projects-pagination, active="projects.length && !projectsSearch.$.length")
         ul.projects-list
             li(ng-repeat="project in projects|filter:projectsSearch:strict track by project.id")
-                a(href="", tg-bo-html="project.name", tg-nav="project:project=project.slug")
+                a(href="", tg-bo-bind="project.name", tg-nav="project:project=project.slug")
                     span.icon.icon-arrow-right

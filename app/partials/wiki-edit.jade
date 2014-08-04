@@ -12,9 +12,9 @@ block content
             //Include views/components/mainTitle
             header
                 h1
-                    span(tg-bo-html="project.name")
+                    span(tg-bo-bind="project.name")
                     span.green Wiki
-                    span.wiki-title(tg-bo-html='wikiSlug|unslugify')
+                    span.wiki-title(tg-bo-bind='wikiSlug|unslugify')
             .action-buttons
                 a.button.button-green.save-wiki(href="", title="Save", ng-click="ctrl.save()") Save
 

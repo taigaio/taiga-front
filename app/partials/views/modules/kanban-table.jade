@@ -3,7 +3,7 @@ div.kanban-table
         div.kanban-table-inner(tg-kanban-row-size-fixer)
             h2.task-colum_name(ng-repeat="s in usStatusList track by s.id",
                                ng-style="{'border-top-color':s.color}")
-                span(tg-bo-html="s.name")
+                span(tg-bo-bind="s.name")
                 a.icon.icon-plus(href="", title="Add New task", ng-click="ctrl.addNewUs('standard', s.id)")
                 a.icon.icon-bulk(href="", title="Add New bulk", ng-click="ctrl.addNewUs('bulk', s.id)")
 

@@ -13,7 +13,7 @@ block content
                             alt="{{ invitation.invited_by.full_name_display }}")
                         | {{ invitation.invited_by.full_name_display }}
                 p.invitation-text has sent you an invitation to join to the taiga project
-                    span.project-name(tg-bo-html="invitation.project_name")
+                    span.project-name(tg-bo-bind="invitation.project_name")
 
                 div.invitation-form
                     include views/modules/invitation-login-form

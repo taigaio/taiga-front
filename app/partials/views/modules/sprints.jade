@@ -33,8 +33,8 @@ section.sprints
                 div.column-us.width-8
                     a.us-name.clickable(tg-nav="project-userstories-detail:project=project.slug,ref=us.ref", title="")
                         span(tg-bo-ref="us.ref")
-                        span(tg-bo-html="us.subject")
-                div.column-points.width-1(tg-bo-html="us.total_points")
+                        span(tg-bo-bind="us.subject")
+                div.column-points.width-1(tg-bo-bind="us.total_points")
         a.button.button-gray(href="", tg-nav="project-taskboard:project=project.slug,sprint=sprint.id",
                              title="Current Sprint Taskboard")
             span Sprint Taskboard

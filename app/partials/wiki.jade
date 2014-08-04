@@ -11,9 +11,9 @@ block content
         section.main.wiki
             header
                 h1
-                    span(tg-bo-html="project.name")
+                    span(tg-bo-bind="project.name")
                     span.green Wiki
-                    span.wiki-title(tg-bo-html='wiki.slug|unslugify')
+                    span.wiki-title(tg-bo-bind='wiki.slug|unslugify')
             .action-buttons
                 a.button.button-red.delete-wiki(href="", title="Delete", ng-click="ctrl.delete()") Delete
                 a.button.button-green.edit-wiki(href="", title="Edit", ng-click="ctrl.edit()") Edit

@@ -14,7 +14,7 @@ block content
             section.us-story-main-data
                 div.us-title(ng-class="{blocked: issue.is_blocked}")
                     h2.us-title-text
-                        span.us-number(tg-bo-html="issue.ref")
+                        span.us-number(tg-bo-bind="issue.ref")
                         span.us-name(ng-bind="issue.subject")
                     p.block-desc-container(ng-show="issue.is_blocked")
                         span.block-description-title Blocked

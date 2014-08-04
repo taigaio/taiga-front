@@ -21,6 +21,14 @@
 
 bindOnce = @.taiga.bindOnce
 
+# Escape Html bind once directive
+BindOnceBindDirective = ->
+    link = ($scope, $el, $attrs) ->
+        bindOnce $scope, $attrs.tgBoBind, (val) ->
+            $el.text(val)
+
+    return {link:link}
+
 # Html bind once directive
 BindOnceHtmlDirective = ->
     link = ($scope, $el, $attrs) ->
@@ -79,6 +87,7 @@ BindHtmlDirective = ->
     return {link:link}
 
 module = angular.module("taigaBase")
+module.directive("tgBoBind", BindOnceBindDirective)
 module.directive("tgBoHtml", BindOnceHtmlDirective)
 module.directive("tgBoRef", BindOnceRefDirective)
 module.directive("tgBoSrc", BindOnceSrcDirective)

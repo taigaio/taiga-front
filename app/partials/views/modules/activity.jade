@@ -6,19 +6,19 @@ section.us-activity.hidden
 
         div.activity-content
             div.activity-username
-                a.username(href="TODO", tg-bo-title="ctrl.getUserFullName(change.user.pk)" tg-bo-html="ctrl.getUserFullName(change.user.pk)")
+                a.username(href="TODO", tg-bo-title="ctrl.getUserFullName(change.user.pk)" tg-bo-bind="ctrl.getUserFullName(change.user.pk)")
                 span.date {{ change.created_at | date:'yyyy-MM-dd HH:mm' }}
 
             div.activity-inner(ng-repeat="(key, change) in change.values_diff")
                 div.activity-changed
-                    span(tg-bo-html="key")
+                    span(tg-bo-bind="key")
                 div.activity-fromto
                     p
                         strong from <br />
-                        span(tg-bo-html="ctrl.getChangeText(change[0])")
+                        span(tg-bo-bind="ctrl.getChangeText(change[0])")
                     p
                         strong to <br />
-                        span(tg-bo-html="ctrl.getChangeText(change[1])")
+                        span(tg-bo-bind="ctrl.getChangeText(change[1])")
 
     //a.more-activity(href="", title="show more comments")
     //     span show previous activity

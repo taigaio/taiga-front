@@ -1,9 +1,9 @@
 div.summary.wiki-summary
     ul
         li
-            span.number(tg-bo-html="wiki.editions")
+            span.number(tg-bo-bind="wiki.editions")
             span.description times <br />edited
         li
-            span.number(tg-bo-html="wiki.modified_date|date:'dd/MM/yyyy HH:mm'")
+            span.number(tg-bo-bind="wiki.modified_date|date:'dd/MM/yyyy HH:mm'")
             span.description last <br />edit
         li.username-edition(tg-wiki-user-info, ng-model='wiki')

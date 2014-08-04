@@ -19,9 +19,9 @@ section.attachments(tg-attachments, ng-model=attachModel, ng-if="#{attachModel}.
 
         div.single-attachment(ng-repeat="file in uploadingFiles")
             div.attachment-name
-                a(href="", tg-bo-title="file.name", tg-bo-html="file.name")
+                a(href="", tg-bo-title="file.name", tg-bo-bind="file.name")
             div.attachment-size
-                span.attachment-size(tg-bo-html="file.size")
+                span.attachment-size(tg-bo-bind="file.size")
             div.attachment-comments
                 span(ng-bind="file.progressMessage")
                 div.percentage(ng-style="{'width': file.progressPercent}")
