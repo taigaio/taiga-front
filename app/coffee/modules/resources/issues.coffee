@@ -36,7 +36,7 @@ resourceProvider = ($repo, $http, $urls) ->
 
     service.bulkCreate = (projectId, data) ->
         url = $urls.resolve("bulk-create-issues")
-        params = {projectId: projectId, bulkIssues: data}
+        params = {project_id: projectId, bulk_issues: data}
         return $http.post(url, params)
 
     service.stats = (projectId) ->
