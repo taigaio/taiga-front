@@ -224,7 +224,7 @@ RolePermissionsDirective = ($repo, $confirm) ->
                 { key: "modify_milestone", description: "Modify milestone" }
                 { key: "delete_last_milestone", description: "Delete last milestone" }
                 { key: "delete_milestone", description: "Delete milestone" }
-                { key: "add_us_to_milestone", description: "Add use to milestone" }
+                { key: "add_us_to_milestone", description: "Add us to milestone" }
                 { key: "remove_us_from_milestone", description: "Remove us from milestone" }
                 { key: "reorder_us_on_milestone", description: "Reorder us on milestone" }
             ]
