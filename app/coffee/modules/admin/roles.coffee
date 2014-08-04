@@ -213,11 +213,6 @@ RolePermissionsDirective = ($repo, $confirm) ->
 
             categories = []
 
-            projectPermissions = [
-                { key: "view_project", description: "View project" }
-            ]
-            categories.push({ name: "Project", permissions: setActivePermissions(projectPermissions) })
-
             milestonePermissions = [
                 { key: "view_milestones", description: "View milestones" }
                 { key: "add_milestone", description: "Add milestone" }
