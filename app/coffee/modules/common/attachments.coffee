@@ -258,7 +258,6 @@ AttachmentDirective = ($log, $repo, $confirm) ->
 
             onSuccess = ->
                 $ctrl.onDeleteAttachment(attachment)
-                $confirm.notify("success", null, "We've deleted #{subtitle}.") #TODO: i18in
 
             onError = ->
                 $confirm.notify("error", null, "We have not been able to delete #{subtitle}.") #TODO: i18in
@@ -283,7 +282,6 @@ AttachmentDirective = ($log, $repo, $confirm) ->
             onSuccess = ->
                 $ctrl.onEditAttachment(attachment)
                 render(attachment)
-                $confirm.notify("success")
 
             onError = ->
                 $confirm.notify("error")

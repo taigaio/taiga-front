@@ -284,8 +284,7 @@ MembershipsRowAdminCheckboxDirective = ($log, $repo, $confirm) ->
             $el.find(":checkbox").prop("checked", true)
 
         $el.on "click", ":checkbox", (event) =>
-            onSuccess = ->
-                $confirm.notify("success")
+            onSuccess = null
 
             onError = ->
                 $confirm.notify("error")
@@ -335,8 +334,7 @@ MembershipsRowRoleSelectorDirective = ($log, $repo, $confirm) ->
         html = render(member)
 
         $el.on "click", "select", (event) =>
-            onSuccess = ->
-                $confirm.notify("success")
+            onSuccess = null
 
             onError = ->
                 $confirm.notify("error")

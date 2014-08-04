@@ -91,12 +91,11 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
                 @confirm.notify('error')
 
     setComputable: ->
-        onSuccess = (role) =>
-            @confirm.notify('success')
+        onSuccess = null
 
         onError = =>
             @confirm.notify("error")
-            @scope.role.computable = !@scope.role.computable
+            @scope.role.revert()
 
         @repo.save(@scope.role).then onSuccess, onError
 
@@ -303,7 +302,6 @@ RolePermissionsDirective = ($repo, $confirm) ->
                 $scope.role.permissions = getActivePermissions()
 
                 onSuccess = (role) ->
-                    $confirm.notify('success')
                     categories = generateCategoriesFromRole(role)
                     categoryId = target.parents(".category-config").data("id")
                     renderResume(target.parents(".category-config"), categories[categoryId])
