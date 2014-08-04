@@ -36,9 +36,9 @@ resourceProvider = ($repo, $http, $urls) ->
 
     service.bulkCreate = (projectId, status, bulk) ->
         data = {
-            projectId: projectId
-            statusId: status
-            bulkStories: bulk
+            project_id: projectId
+            status_id: status
+            bulk_stories: bulk
         }
 
         url = $urls.resolve("bulk-create-us")
