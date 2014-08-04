@@ -434,11 +434,12 @@ IssuesFiltersDirective = ($log, $location) ->
         $ctrl = $el.closest(".wrapper").controller()
         selectedFilters = []
 
-        showFilters = (title) ->
+        showFilters = (title, type) ->
             $el.find(".filters-cats").hide()
             $el.find(".filter-list").show()
             $el.find("h2 a.subfilter").removeClass("hidden")
             $el.find("h2 a.subfilter span.title").html(title)
+            $el.find("h2 a.subfilter span.title").prop("data-type", type)
 
         showCategories = ->
             $el.find(".filters-cats").show()
@@ -483,7 +484,10 @@ IssuesFiltersDirective = ($log, $location) ->
                     $ctrl.loadIssues()
 
             renderSelectedFilters(selectedFilters)
-            renderFilters(_.reject(filters, "selected"))
+
+            currentFiltersType = $el.find("h2 a.subfilter span.title").prop('data-type')
+            if type == currentFiltersType
+                renderFilters(_.reject(filters, "selected"))
 
         # Angular Watchers
         $scope.$on "filters:loaded", (ctx, filters) ->
@@ -507,7 +511,7 @@ IssuesFiltersDirective = ($log, $location) ->
             tags = $scope.filters[target.data("type")]
 
             renderFilters(_.reject(tags, "selected"))
-            showFilters(target.attr("title"))
+            showFilters(target.attr("title"), target.data("type"))
 
         $el.on "click", ".filters-inner > h1 > a.title", (event) ->
             event.preventDefault()
