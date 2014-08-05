@@ -118,6 +118,7 @@ ProjectFeaturesDirective = ($log, $repo, $confirm) ->
             promise = $repo.save($scope.project)
             promise.then ->
                 $confirm.notify("success")
+                $scope.$emit("project:loaded", $scope.project)
 
             promise.then null, (data) ->
                 console.log "FAIL"
