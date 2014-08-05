@@ -43,7 +43,7 @@ class ProjectController extends taiga.Controller
 
         return promise
                 .then(=> @.loadPageData())
-                .then(=> @rootscope.$broadcast("project:loaded"))
+                .then(=> @scope.$emit("project:loaded", @scope.project))
 
     loadPageData: ->
         return @q.all([

@@ -58,6 +58,7 @@ class ProjectValuesController extends mixOf(taiga.Controller, taiga.PageMixin)
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
             @scope.project = project
+            @scope.$emit('project:loaded', project)
             return project
 
     loadValues: =>

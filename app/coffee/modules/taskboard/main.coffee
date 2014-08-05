@@ -106,6 +106,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
             @scope.project = project
+            @scope.$emit('project:loaded', project)
             # Not used at this momment
             @scope.pointsList = _.sortBy(project.points, "order")
             # @scope.roleList = _.sortBy(project.roles, "order")

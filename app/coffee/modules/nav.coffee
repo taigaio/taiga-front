@@ -105,34 +105,44 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location) -
                 <span class="icon icon-search"></span><span class="item">Search</span>
             </a>
         </li>
+        <% if (project.is_backlog_activated) { %>
         <li id="nav-backlog" tg-nav="project-backlog:project=project.slug">
             <a href="" title="Backlog" tg-nav="project-backlog:project=project.slug">
                 <span class="icon icon-backlog"></span>
                 <span class="item">Backlog</span>
             </a>
         </li>
+        <% } %>
+        <% if (project.is_kanban_activated) { %>
         <li id="nav-kanban">
             <a href="" title="Kanban" tg-nav="project-kanban:project=project.slug">
                 <span class="icon icon-kanban"></span><span class="item">Kanban</span>
             </a>
         </li>
+        <% } %>
+        <% if (project.is_issues_activated) { %>
         <li id="nav-issues">
             <a href="" title="Issues" tg-nav="project-issues:project=project.slug">
                 <span class="icon icon-issues"></span><span class="item">Issues</span>
             </a>
         </li>
+        <% } %>
+        <% if (project.is_wiki_activated) { %>
         <li id="nav-wiki">
             <a href="" title="Wiki" tg-nav="project-wiki:project=project.slug">
                 <span class="icon icon-wiki"></span>
                 <span class="item">Wiki</span>
             </a>
         </li>
+        <% } %>
+        <% if (project.videoconferences) { %>
         <li id="nav-video">
             <a href="" title="Video">
                 <span class="icon icon-video"></span>
                 <span class="item">Video</span>
             </a>
         </li>
+        <% } %>
         <li id="nav-admin">
             <a href="" tg-nav="project-admin-home:project=project.slug" title="Admin">
                 <span class="icon icon-settings"></span>
@@ -171,10 +181,10 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location) -
     # WARNING: this code has traces of slighty hacky parts
     # This rerenders and compiles the navigation when ng-view
     # content loaded signal is raised using inner scope.
-    renderMenuEntries = ($el, targetScope) ->
+    renderMenuEntries = ($el, targetScope, project={}) ->
         container = $el.find(".menu-container")
         sectionName = targetScope.section
-        dom = $compile(menuEntriesTemplate({user: $auth.getUser()}))(targetScope)
+        dom = $compile(menuEntriesTemplate({user: $auth.getUser(), project: project}))(targetScope)
         dom.find("a.active").removeClass("active")
         dom.find("#nav-#{sectionName} > a").addClass("active")
 
@@ -203,16 +213,11 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location) -
             $scope.$apply ->
                 $location.path("/login")
 
-        $scope.$on "$viewContentLoaded", (ctx) ->
-            if ctx.targetScope.$$childHead is null || ctx.targetScope.$$childHead.hideMenu
-                $el.addClass("hidden")
-                $log.error "No scope found for render menu."
-                return
-
+        $scope.$on "project:loaded", (ctx, project) ->
             if $el.hasClass("hidden")
                 $el.removeClass("hidden")
 
-            renderMenuEntries($el, ctx.targetScope.$$childHead)
+            renderMenuEntries($el, ctx.targetScope, project)
 
     return {link: link}
 

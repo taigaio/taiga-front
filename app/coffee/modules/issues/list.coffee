@@ -64,6 +64,7 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
             @scope.project = project
+            @scope.$emit('project:loaded', project)
 
             # TODO: add issueTypeList and issueTypeById
             @scope.issueStatusById = groupBy(project.issue_statuses, (x) -> x.id)

@@ -57,6 +57,7 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
             @scope.project = project
+            @scope.$emit('project:loaded', project)
             @scope.pointsList = _.sortBy(project.points, "order")
             @scope.usStatusList = _.sortBy(project.us_statuses, "order")
             @scope.taskStatusList = _.sortBy(project.task_statuses, "order")

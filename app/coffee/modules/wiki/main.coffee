@@ -60,6 +60,7 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin, taig
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
             @scope.project = project
+            @scope.$emit('project:loaded', project)
             @scope.membersById = groupBy(project.memberships, (x) -> x.user)
             return project
 

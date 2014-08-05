@@ -58,6 +58,7 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
             @scope.project = project
+            @scope.$emit('project:loaded', project)
             return project
 
     loadMembers: ->

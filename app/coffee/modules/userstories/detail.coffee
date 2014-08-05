@@ -57,6 +57,7 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin,
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
             @scope.project = project
+            @scope.$emit('project:loaded', project)
             @scope.statusList = project.us_statuses
             @scope.statusById = groupBy(project.us_statuses, (x) -> x.id)
             @scope.taskStatusById = groupBy(project.task_statuses, (x) -> x.id)
