@@ -52,6 +52,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @showTags = false
 
         promise = @.loadInitialData()
+
         promise.then null, =>
             console.log "FAIL"
 

@@ -21,8 +21,7 @@
 
 @taiga = taiga = {}
 
-configure = ($routeProvider, $locationProvider, $httpProvider, $provide) ->
-
+configure = ($routeProvider, $locationProvider, $httpProvider, $provide, tgLoaderProvider) ->
     $routeProvider.when("/", {templateUrl: "/partials/projects.html"})
     $routeProvider.when("/project/:pslug/", {templateUrl: "/partials/project.html"})
     $routeProvider.when("/project/:pslug/backlog", {templateUrl: "/partials/backlog.html"})
@@ -152,6 +151,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide) ->
 
     $provide.factory("authHttpIntercept", ["$q", "$location", authHttpIntercept])
     $httpProvider.responseInterceptors.push('authHttpIntercept')
+    $httpProvider.interceptors.push('loaderInterceptor');
 
 
 init = ($log, $i18n, $config, $rootscope) ->
@@ -196,7 +196,8 @@ module.config([
     "$routeProvider",
     "$locationProvider",
     "$httpProvider",
-    '$provide',
+    "$provide",
+    "tgLoaderProvider",
     configure
 ])
 
