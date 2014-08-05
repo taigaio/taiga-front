@@ -598,6 +598,7 @@ UsPointsDirective = ($repo) ->
             selectedRoleId = _.keys(us.points)[0]
 
         showPopPoints = () ->
+            $(".popover").hide()
             $el.find(".pop-points-open").remove()
             $el.append(pointsTemplate({ "points":  $scope.project.points }))
             dataPointId = us.points[updatingSelectedRoleId]
@@ -610,6 +611,7 @@ UsPointsDirective = ($repo) ->
             $el.find(".pop-points-open").show()
 
         showPopRoles = () ->
+            $(".popover").hide()
             $el.find(".pop-role").remove()
             rolePoints = _.clone(_.filter($scope.project.roles, "computable"), true)
 
