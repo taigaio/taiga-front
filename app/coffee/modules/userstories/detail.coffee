@@ -240,7 +240,6 @@ UsStatusDetailDirective = () ->
     """)
     selectionPointsTemplate = _.template("""
     <ul class="popover pop-points-open">
-        <li class="pop-points-selected"></li>
         <% _.each(points, function(point) { %>
         <li><a href="" class="point" title="<%- point.name %>"
                data-point-id="<%- point.id %>"><%- point.name %></a>
