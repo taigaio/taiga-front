@@ -105,7 +105,7 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location) -
                 <span class="icon icon-search"></span><span class="item">Search</span>
             </a>
         </li>
-        <% if (project.is_backlog_activated) { %>
+        <% if (project.is_backlog_activated && project.my_permissions.indexOf("view_us") != -1) { %>
         <li id="nav-backlog" tg-nav="project-backlog:project=project.slug">
             <a href="" title="Backlog" tg-nav="project-backlog:project=project.slug">
                 <span class="icon icon-backlog"></span>
@@ -113,21 +113,21 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location) -
             </a>
         </li>
         <% } %>
-        <% if (project.is_kanban_activated) { %>
+        <% if (project.is_kanban_activated && project.my_permissions.indexOf("view_us") != -1) { %>
         <li id="nav-kanban">
             <a href="" title="Kanban" tg-nav="project-kanban:project=project.slug">
                 <span class="icon icon-kanban"></span><span class="item">Kanban</span>
             </a>
         </li>
         <% } %>
-        <% if (project.is_issues_activated) { %>
+        <% if (project.is_issues_activated && project.my_permissions.indexOf("view_issues") != -1) { %>
         <li id="nav-issues">
             <a href="" title="Issues" tg-nav="project-issues:project=project.slug">
                 <span class="icon icon-issues"></span><span class="item">Issues</span>
             </a>
         </li>
         <% } %>
-        <% if (project.is_wiki_activated) { %>
+        <% if (project.is_wiki_activated && project.my_permissions.indexOf("view_wiki_pages") != -1) { %>
         <li id="nav-wiki">
             <a href="" title="Wiki" tg-nav="project-wiki:project=project.slug">
                 <span class="icon icon-wiki"></span>
@@ -143,12 +143,14 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location) -
             </a>
         </li>
         <% } %>
+        <% if (project.i_am_owner) { %>
         <li id="nav-admin">
             <a href="" tg-nav="project-admin-home:project=project.slug" title="Admin">
                 <span class="icon icon-settings"></span>
                 <span class="item">Admin</span>
             </a>
         </li>
+        <% } %>
         </ul>
         <div class="user">
             <div class="user-settings">
