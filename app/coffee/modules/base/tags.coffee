@@ -20,6 +20,9 @@
 ###
 
 taiga = @.taiga
+textToColor = @.taiga.textToColor
+
+module = angular.module("taigaBase")
 
 # Directive that parses/format tags inputfield.
 
@@ -45,6 +48,18 @@ TagsDirective = ->
         link: link
     }
 
-
-module = angular.module("taigaBase")
 module.directive("tgTags", TagsDirective)
+
+
+ColorizeTagDirective = ->
+    link = ($scope, $el, $attrs, $ctrl) ->
+        text = $scope.$eval($attrs.tgColorizeTag)
+        color = textToColor(text)
+        $el.css("background", color)
+
+    return {link: link}
+
+module.directive("tgColorizeTag", ColorizeTagDirective)
+
+
+

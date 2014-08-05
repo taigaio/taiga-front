@@ -1,5 +1,5 @@
 div.taskboard-tagline
-    a.taskboard-tag(ng-repeat="tag in task.tags", href="", tg-bo-title="tag")
+    a.taskboard-tag(ng-repeat="tag in task.tags", href="", tg-bo-title="tag", tg-colorize-tag="tag")
 div.taskboard-task-inner
     tg-taskboard-user-avatar(model="task.assigned_to", click="ctrl.editTaskAssignedTo(task)")
     p.taskboard-text

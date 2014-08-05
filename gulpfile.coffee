@@ -63,7 +63,6 @@ paths = {
         "app/vendor/angular-sanitize/angular-sanitize.js",
         "app/vendor/angular-animate/angular-animate.js",
         "app/vendor/i18next/i18next.js",
-        "app/js/Sortable.js",
         "app/vendor/moment/min/moment-with-langs.js",
         "app/vendor/checksley/checksley.js",
         "app/vendor/pikaday/pikaday.js",
@@ -72,7 +71,9 @@ paths = {
         "app/vendor/jquery-flot/jquery.flot.time.js",
         "app/vendor/jquery-textcomplete/jquery.textcomplete.js",
         "app/vendor/markitup/markitup/jquery.markitup.js"
+        "app/js/Sortable.js",
         "app/js/jquery.ui.git.js",
+        "app/js/sha1.js"
     ]
 }
 

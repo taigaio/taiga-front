@@ -26,6 +26,7 @@ toggleText = @.taiga.toggleText
 scopeDefer = @.taiga.scopeDefer
 bindOnce = @.taiga.bindOnce
 groupBy = @.taiga.groupBy
+textToColor = @.taiga.textToColor
 
 module = angular.module("taigaBacklog")
 
@@ -315,6 +316,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
                 id: k,
                 type: "tags",
                 name: k,
+                color: textToColor(k),
                 count: v
             }
             obj.selected = true if isSelected("tags", obj.id)

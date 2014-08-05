@@ -28,6 +28,7 @@ joinStr = @.taiga.joinStr
 groupBy = @.taiga.groupBy
 bindOnce = @.taiga.bindOnce
 typeIsArray = @.taiga.typeIsArray
+textToColor = @.taiga.textToColor
 
 module = angular.module("taigaIssues")
 
@@ -179,7 +180,7 @@ TagLineDirective = ($log) ->
     # Tags template (rendered manually using lodash)
     templateTags = _.template("""
     <% _.each(tags, function(tag) { %>
-        <div class="tag">
+        <div class="tag" style="background: <%- tag.color %>;">
             <span class="tag-name"><%- tag.name %></span>
             <% if (editable) { %>
             <a href="" title="delete tag" class="icon icon-delete"></a>
@@ -188,8 +189,11 @@ TagLineDirective = ($log) ->
     <% }); %>""")
 
     renderTags = ($el, tags, editable) ->
-        tags = _.map(tags, (t) -> {name: t})
-        html = templateTags({tags: tags, editable:editable})
+        ctx = {
+            tags: _.map(tags, (t) -> {name: t, color: textToColor(t)})
+            editable: editable
+        }
+        html = templateTags(ctx)
         $el.find("div.tags-container").html(html)
 
     normalizeTags = (tags) ->
@@ -496,7 +500,7 @@ CommentDirective = ->
                 changesText: buildChangesText(comment)
                 hasChanges: countChanges(comment) > 0
             })
-            
+
             $el.html(html)
             activityContentDom = $el.find(".comment-content .us-activity")
             _.each comment.values_diff, (modification, name) ->

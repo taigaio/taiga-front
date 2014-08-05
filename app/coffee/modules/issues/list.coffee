@@ -29,6 +29,7 @@ groupBy = @.taiga.groupBy
 bindOnce = @.taiga.bindOnce
 debounce = @.taiga.debounce
 startswith = @.taiga.startswith
+textToColor = @.taiga.textToColor
 
 module = angular.module("taigaIssues")
 
@@ -166,6 +167,7 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 obj = {
                     id: t[0],
                     name: t[0],
+                    color: textToColor(t[0]),
                     count: t[1],
                     type: "tags"
                 }

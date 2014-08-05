@@ -123,6 +123,21 @@ sizeFormat = (input, precision=1) ->
 
 typeIsArray = Array.isArray || ( value ) -> return {}.toString.call( value ) is '[object Array]'
 
+
+textToColor = (text) ->
+    hash = hex_sha1(text.trim().toLowerCase())
+    color = hash.substring(0,6)
+                .replace("0","8")
+                .replace("1","9")
+                .replace("2","a")
+                .replace("3","b")
+                .replace("4","c")
+                .replace("5","d")
+                .replace("6","e")
+                .replace("7","f")
+    return "##{color}"
+
+
 taiga = @.taiga
 taiga.bindOnce = bindOnce
 taiga.mixOf = mixOf
@@ -140,3 +155,4 @@ taiga.debounce = debounce
 taiga.startswith = startswith
 taiga.sizeFormat = sizeFormat
 taiga.typeIsArray = typeIsArray
+taiga.textToColor = textToColor
