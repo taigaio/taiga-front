@@ -143,6 +143,8 @@ ProjectFeaturesDirective = ($log, $repo, $confirm) ->
         $scope.$watch "project", (project) ->
             if project.videoconferences?
                 $scope.isVideoconferenceActivated = true
+            else
+                $scope.isVideoconferenceActivated = false
 
     return {link:link}
 
