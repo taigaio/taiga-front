@@ -1,13 +1,16 @@
 config = {
     host: "localhost:8000"
     scheme: "http"
+
     debug: true
-    pubblicRegisterEnabled: true
+
     defaultLanguage: "en"
     languageOptions: {
         "es": "Spanish"
         "en": "English"
     }
+
+    pubblicRegisterEnabled: true
 }
 
 angular.module("taigaLocalConfig", []).value("localconfig", config)

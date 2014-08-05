@@ -25,13 +25,19 @@ class ConfigService extends taiga.Service
     defaults: {
         host: "localhost:8000"
         scheme: "http"
-        defaultLanguage: "en"
+
         debug: false
+
+        defaultLanguage: "en"
         languageOptions: {
             "es": "Spanish"
             "en": "English"
         }
+
         pubblicRegisterEnabled: false
+
+        termsOfServiceUrl: null
+        privacyPolicyUrl: null
     }
 
     initialize: (localconfig) ->
@@ -41,10 +47,12 @@ class ConfigService extends taiga.Service
     get: (key, defaultValue=null) ->
         return @.config[key] || defaultValue
 
+
 # Initialize config loading local configuration.
 init = ($log, localconfig, config) ->
     $log.debug("Initializing configuration", localconfig)
     config.initialize(localconfig)
+
 
 module = angular.module("taigaConfig", ["taigaLocalConfig"])
 module.service("$tgConfig", ConfigService)

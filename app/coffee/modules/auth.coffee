@@ -191,8 +191,11 @@ module.directive("tgLogin", ["$tgAuth", "$tgConfirm", "$location", "$tgConfig", 
     ## Register Directive
     ###################
 
-RegisterDirective = ($auth, $confirm, $location) ->
+RegisterDirective = ($auth, $confirm, $location, $config) ->
     link = ($scope, $el, $attrs) ->
+        $scope.privacyPolicyUrl = $config.get("privacyPolicyUrl")
+        $scope.termsOfServiceUrl = $config.get("termsOfServiceUrl")
+
         $scope.data = {}
         form = $el.find("form").checksley()
 
@@ -222,7 +225,7 @@ RegisterDirective = ($auth, $confirm, $location) ->
 
     return {link:link}
 
-module.directive("tgRegister", ["$tgAuth", "$tgConfirm", "$location", RegisterDirective])
+module.directive("tgRegister", ["$tgAuth", "$tgConfirm", "$location", "$tgConfig", RegisterDirective])
 
 
     ###################
@@ -315,8 +318,11 @@ module.directive("tgChangePasswordFromRecovery", ["$tgAuth", "$tgConfirm", "$loc
     ## Invitation
     ###################
 
-InvitationDirective = ($auth, $confirm, $location, $params) ->
+InvitationDirective = ($auth, $confirm, $location, $params, $config) ->
     link = ($scope, $el, $attrs) ->
+        $scope.privacyPolicyUrl = $config.get("privacyPolicyUrl")
+        $scope.termsOfServiceUrl = $config.get("termsOfServiceUrl")
+
         token = $params.token
 
         promise = $auth.getInvitation(token)
@@ -392,7 +398,7 @@ InvitationDirective = ($auth, $confirm, $location, $params) ->
 
     return {link:link}
 
-module.directive("tgInvitation", ["$tgAuth", "$tgConfirm", "$location", "$routeParams",
+module.directive("tgInvitation", ["$tgAuth", "$tgConfirm", "$location", "$routeParams", "$tgConfig",
                                   InvitationDirective])
 
 ###################

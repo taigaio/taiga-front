@@ -15,10 +15,17 @@ div.register-form-container(tg-register)
         fieldset
             a.button.button-register.button-gray(href="", title="Sign up") Sign up
             input(type="submit", class="hidden")
-        p.register-text
-            // TODO
+
+        p.register-text(ng-if="termsOfServiceUrl && privacyPolicyUrl")
             span By clicking "Sign up", you agree to our <br />
-            a(href="", title="See terms of service")  terms of service
+            a(tg-bo-href="termsOfServiceUrl", title="See terms of service", target="_blank")  terms of service
             span  and
-            a(href="", title="See privacy policy")  privacy policy.
+            a(tg-bo-href="privacyPolicyUrl", title="See privacy policy", target="_blank")  privacy policy.
+        p.register-text(ng-if="termsOfServiceUrl && !privacyPolicyUrl")
+            span By clicking "Sign up", you agree to our <br />
+            a(tg-bo-href="termsOfServiceUrl", title="See terms of service", target="_blank")  terms of service
+        p.register-text(ng-if="!termsOfServiceUrl && privacyPolicyUrl")
+            span By clicking "Sign up", you agree to our <br />
+            a(tg-bo-href="privacyPolicyUrl", title="See privacy policy", target="_blank")  privacy policy.
+
         a.register-text-top(href="", title="Login", tg-nav="login") Are you already registered? Log in
