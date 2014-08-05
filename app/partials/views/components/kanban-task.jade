@@ -1,5 +1,5 @@
 div.kanban-tagline
-    a.taskboard-tag
+    a.taskboard-tag(ng-repeat="tag in us.tags", href="", tg-bo-title="tag")
 div.kanban-task-inner
     tg-kanban-user-avatar(model="us.assigned_to", click="ctrl.changeUsAssignedTo(us)")
     div.task-text
