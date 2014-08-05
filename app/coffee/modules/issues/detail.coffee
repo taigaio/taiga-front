@@ -27,6 +27,7 @@ toString = @.taiga.toString
 joinStr = @.taiga.joinStr
 groupBy = @.taiga.groupBy
 bindOnce = @.taiga.bindOnce
+typeIsArray = @.taiga.typeIsArray
 
 module = angular.module("taigaIssues")
 
@@ -111,27 +112,6 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin, tai
                       .then(=> @.loadIssue())
                       .then(=> @.loadAttachments(@scope.issueId))
                       .then(=> @.loadHistory())
-
-    getUserFullName: (userId) ->
-        return @scope.usersById[userId]?.full_name_display
-
-    getUserAvatar: (userId) ->
-        return @scope.usersById[userId]?.photo
-
-    countChanges: (comment) ->
-        return _.keys(comment.values_diff).length
-
-    getChangeText: (change) ->
-        if _.isArray(change)
-            return change.join(", ")
-        return change
-
-    buildChangesText: (comment) ->
-        size = @.countChanges(comment)
-        # TODO: i18n
-        if size == 1
-            return "Made #{size} change"
-        return "Made #{size} changes"
 
     block: ->
         @rootscope.$broadcast("block", @scope.issue)
@@ -401,12 +381,186 @@ IssueStatusDirective = () ->
 
 module.directive("tgIssueStatus", IssueStatusDirective)
 
+
 #############################################################################
 ## Comment directive
 #############################################################################
 
 CommentDirective = ->
+    # TODO: i18n
+    commentBaseTemplate = _.template("""
+    <div class="comment-user">
+        <a class="avatar" href="" title="<%- userFullName %>">
+            <img src="<%- avatar %>" alt="<%- userFullName %>">
+        </a>
+    </div>
+    <div class="comment-content">
+        <a class="username" href="TODO" title="<%- userFullName %>">
+            <%- userFullName %>
+        </a>
+        <% if(hasChanges){ %>
+        <div class="us-activity">
+            <a class="activity-title" href="" title="Show activity">
+              <span>
+                  <%- changesText %>
+              </span>
+              <span class="icon icon-arrow-up">
+              </span>
+            </a>
+        </div>
+        <% } %>
+
+        <p class="comment">
+            <%- comment %>
+        </p>
+        <p class="date">
+            <%- creationDate %>
+        </p>
+    </div>
+    """)
+    standardChangeFromToTemplate = _.template("""
+    <div class="activity-inner">
+        <div class="activity-changed">
+            <span><%- name %></span>
+        </div>
+        <div class="activity-fromto">
+            <p>
+                <strong> from </strong> <br />
+                <span><%= from %></span>
+            </p>
+            <p>
+                <strong> to </strong> <br />
+                <span><%= to %></span>
+            </p>
+        </div>
+        </div>
+    """)
+    descriptionChangeTemplate = _.template("""
+    <div class="activity-inner">
+        <div class="activity-changed">
+            <span><%- name %></span>
+        </div>
+        <div class="activity-fromto">
+            <p>
+                <span><%= diff %></span>
+            </p>
+        </div>
+    </div>
+    """)
+    pointsChangeTemplate = _.template("""
+    <% _.each(points, function(point, name) { %>
+    <div class="activity-inner">
+        <div class="activity-changed">
+            <span><%- name %> points</span>
+        </div>
+        <div class="activity-fromto">
+            <p>
+                <strong> from </strong> <br />
+                <span><%= point[0] %></span>
+            </p>
+            <p>
+                <strong> to </strong> <br />
+                <span><%= point[1] %></span>
+            </p>
+        </div>
+    </div>
+    <% }); %>
+    """)
+    attachmentTemplate = _.template("""
+    <div class="activity-inner">
+        <div class="activity-changed">
+            <span><%- name %></span>
+        </div>
+        <div class="activity-fromto">
+            <%- description %>
+        </div>
+    </div>
+    """)
     link = ($scope, $el, $attrs, $model) ->
+        countChanges = (comment) ->
+            return _.keys(comment.values_diff).length
+
+        buildChangesText = (comment) ->
+            size = countChanges(comment)
+            # TODO: i18n
+            if size == 1
+                return "Made #{size} change"
+            return "Made #{size} changes"
+
+        renderComment = (comment) ->
+            html = commentBaseTemplate({
+                avatar: getUserAvatar(comment.user.pk)
+                userFullName: getUserFullName(comment.user.pk)
+                creationDate: moment(comment.created_at).format("YYYY/MM/DD")
+                comment: comment.comment
+                changesText: buildChangesText(comment)
+                hasChanges: countChanges(comment) > 0
+            })
+            
+            $el.html(html)
+            activityContentDom = $el.find(".comment-content .us-activity")
+            _.each comment.values_diff, (modification, name) ->
+                if name == "description"
+                    activityContentDom.append(descriptionChangeTemplate({
+                        name: name
+                        diff: modification[1]
+                    }))
+                else if name == "points"
+                    activityContentDom.append(pointsChangeTemplate({
+                        points: modification
+                    }))
+                else if name == "attachments"
+                    _.each modification, (attachmentChanges, attachmentType) ->
+                        if attachmentType == "new"
+                            _.each attachmentChanges, (attachmentChange) ->
+                                activityContentDom.append(attachmentTemplate({
+                                    name: "New attachment"
+                                    description: attachmentChange.filename
+                                }))
+                        else if attachmentType == "deleted"
+                            _.each attachmentChanges, (attachmentChange) ->
+                                activityContentDom.append(attachmentTemplate({
+                                    name: "Deleted attachment"
+                                    description: attachmentChange.filename
+                                }))
+                        else
+                            name = "Updated attachment"
+                            _.each attachmentChanges, (attachmentChange) ->
+                                activityContentDom.append(attachmentTemplate({
+                                    name: "Updated attachment"
+                                    description: attachmentChange[0].filename
+                                }))
+
+                else
+                    activityContentDom.append(standardChangeFromToTemplate({
+                        name: name
+                        from: prettyPrintModification(modification[0])
+                        to: prettyPrintModification(modification[1])
+                    }))
+
+        getUserFullName = (userId) ->
+            return $scope.usersById[userId]?.full_name_display
+
+        getUserAvatar = (userId) ->
+            return $scope.usersById[userId]?.photo
+
+        prettyPrintModification = (value) ->
+            if typeIsArray(value)
+                if value.length == 0
+                  #TODO i18n
+                  return "None"
+                else
+                  return value.join(", ")
+
+            if value == ""
+                return "None"
+
+            return value
+
+        $scope.$watch $attrs.ngModel, (comment) ->
+            if comment?
+                renderComment(comment)
+
         $el.on "click", ".activity-title", (event) ->
             event.preventDefault()
             $el.find(".activity-inner").toggleClass("active")
@@ -414,6 +568,167 @@ CommentDirective = ->
         $scope.$on "$destroy", ->
             $el.off()
 
-    return {link:link}
+    return {link:link, require:"ngModel"}
 
 module.directive("tgComment", CommentDirective)
+
+
+#############################################################################
+## Change directive
+#############################################################################
+
+ChangeDirective = ->
+    # TODO: i18n
+    changeBaseTemplate = _.template("""
+    <div class="activity-user">
+        <a class="avatar" href="" title="<%- userFullName %>">
+            <img src="<%- avatar %>" alt="<%- userFullName %>">
+        </a>
+    </div>
+    <div class="activity-content">
+        <div class="activity-username">
+            <a class="username" href="TODO" title="<%- userFullName %>">
+                <%- userFullName %>
+            </a>
+            <span class="date">
+                <%- creationDate %>
+            </span>
+        </div>
+    </div>
+    """)
+    standardChangeFromToTemplate = _.template("""
+    <div class="activity-inner">
+        <div class="activity-changed">
+            <span><%- name %></span>
+        </div>
+        <div class="activity-fromto">
+            <p>
+                <strong> from </strong> <br />
+                <span><%= from %></span>
+            </p>
+            <p>
+                <strong> to </strong> <br />
+                <span><%= to %></span>
+            </p>
+        </div>
+    </div>
+    """)
+    descriptionChangeTemplate = _.template("""
+    <div class="activity-inner">
+        <div class="activity-changed">
+            <span><%- name %></span>
+        </div>
+        <div class="activity-fromto">
+            <p>
+                <span><%= diff %></span>
+            </p>
+        </div>
+    </div>
+    """)
+    pointsChangeTemplate = _.template("""
+    <% _.each(points, function(point, name) { %>
+    <div class="activity-inner">
+        <div class="activity-changed">
+            <span><%- name %> points</span>
+        </div>
+        <div class="activity-fromto">
+            <p>
+                <strong> from </strong> <br />
+                <span><%= point[0] %></span>
+            </p>
+            <p>
+                <strong> to </strong> <br />
+                <span><%= point[1] %></span>
+            </p>
+        </div>
+    </div>
+    <% }); %>
+    """)
+    attachmentTemplate = _.template("""
+    <div class="activity-inner">
+        <div class="activity-changed">
+            <span><%- name %></span>
+        </div>
+        <div class="activity-fromto">
+            <%- description %>
+        </div>
+    </div>
+    """)
+    link = ($scope, $el, $attrs, $model) ->
+        renderChange = (change) ->
+            html = changeBaseTemplate({
+                avatar: getUserAvatar(change.user.pk)
+                userFullName: getUserFullName(change.user.pk)
+                creationDate: moment(change.created_at).format("YYYY/MM/DD")
+            })
+
+            $el.html(html)
+            activityContentDom = $el.find(".activity-content")
+            _.each change.values_diff, (modification, name) ->
+                if name == "description"
+                    activityContentDom.append(descriptionChangeTemplate({
+                        name: name
+                        diff: modification[1]
+                    }))
+                else if name == "points"
+                    activityContentDom.append(pointsChangeTemplate({
+                        points: modification
+                    }))
+                else if name == "attachments"
+                    _.each modification, (attachmentChanges, attachmentType) ->
+                        if attachmentType == "new"
+                            _.each attachmentChanges, (attachmentChange) ->
+                                activityContentDom.append(attachmentTemplate({
+                                    name: "New attachment"
+                                    description: attachmentChange.filename
+                                }))
+                        else if attachmentType == "deleted"
+                            _.each attachmentChanges, (attachmentChange) ->
+                                activityContentDom.append(attachmentTemplate({
+                                    name: "Deleted attachment"
+                                    description: attachmentChange.filename
+                                }))
+                        else
+                            name = "Updated attachment"
+                            _.each attachmentChanges, (attachmentChange) ->
+                                activityContentDom.append(attachmentTemplate({
+                                    name: "Updated attachment"
+                                    description: attachmentChange[0].filename
+                                }))
+
+                else
+                    activityContentDom.append(standardChangeFromToTemplate({
+                        name: name
+                        from: prettyPrintModification(modification[0])
+                        to: prettyPrintModification(modification[1])
+                    }))
+
+        getUserFullName = (userId) ->
+            return $scope.usersById[userId]?.full_name_display
+
+        getUserAvatar = (userId) ->
+            return $scope.usersById[userId]?.photo
+
+        prettyPrintModification = (value) ->
+            if typeIsArray(value)
+                if value.length == 0
+                  #TODO i18n
+                  return "None"
+                else
+                  return value.join(", ")
+
+            if value == ""
+                return "None"
+
+            return value
+
+        $scope.$watch $attrs.ngModel, (change) ->
+            if change?
+                renderChange(change)
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {link:link, require:"ngModel"}
+
+module.directive("tgChange", ChangeDirective)

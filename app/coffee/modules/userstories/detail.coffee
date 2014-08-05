@@ -82,7 +82,7 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin,
             _.each history.results, (historyResult) ->
                 #If description was modified take only the description_html field
                 if historyResult.values_diff.description?
-                    historyResult.values_diff.description = historyResult.values_diff.description_html
+                    historyResult.values_diff.description = historyResult.values_diff.description_diff
 
                 if historyResult.values_diff.client_requirement
                     historyResult.values_diff.client_requirement = _.map(historyResult.values_diff.client_requirement, (v) -> {true: 'Yes', false: 'No'}[v])

@@ -121,6 +121,8 @@ sizeFormat = (input, precision=1) ->
     return  "#{size} #{units[number]}"
 
 
+typeIsArray = Array.isArray || ( value ) -> return {}.toString.call( value ) is '[object Array]'
+
 taiga = @.taiga
 taiga.bindOnce = bindOnce
 taiga.mixOf = mixOf
@@ -137,3 +139,4 @@ taiga.joinStr = joinStr
 taiga.debounce = debounce
 taiga.startswith = startswith
 taiga.sizeFormat = sizeFormat
+taiga.typeIsArray = typeIsArray
