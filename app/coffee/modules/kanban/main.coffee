@@ -26,6 +26,7 @@ toggleText = @.taiga.toggleText
 scopeDefer = @.taiga.scopeDefer
 bindOnce = @.taiga.bindOnce
 groupBy = @.taiga.groupBy
+timeout = @.taiga.timeout
 
 module = angular.module("taigaKanban")
 
@@ -149,6 +150,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         return promise.then(=> @.loadProject())
                       .then(=> @.loadUsersAndRoles())
                       .then(=> @.loadKanban())
+                      .then(=> @scope.$broadcast("redraw:wip"))
 
     prepareBulkUpdateData: (uses) ->
          return _.map(uses, (x) -> [x.id, x.order])
@@ -230,21 +232,46 @@ module.directive("tgKanbanRowSizeFixer", KanbanRowSizeFixer)
 
 
 #############################################################################
-## Taskboard Task Directive
+## Kaban User Story Directive
 #############################################################################
 
 KanbanUserstoryDirective = ->
-    link = ($scope, $el, $attrs, $model) ->
+    link = ($scope, $el, $attrs) ->
         $el.disableSelection()
 
     return {
         templateUrl: "/partials/views/components/kanban-task.html"
-        link:link
+        link: link
         require: "ngModel"
     }
 
 
 module.directive("tgKanbanUserstory", KanbanUserstoryDirective)
+
+
+#############################################################################
+## Kaban WIP Limit Directive
+#############################################################################
+
+KanbanWipLimitDirective = ->
+    link = ($scope, $el, $attrs) ->
+        $el.disableSelection()
+
+        redrawWipLimit = ->
+            $el.find('.kanban-wip-limit').remove()
+            timeout 200, ->
+                element = $el.find('.kanban-task')[$scope.status.wip_limit]
+                if element
+                        angular.element(element).before("<div class='kanban-wip-limit'></div>")
+
+        $scope.$on "redraw:wip", redrawWipLimit
+        $scope.$on "kanban:us:move", redrawWipLimit
+        $scope.$on "usform:new:success", redrawWipLimit
+        $scope.$on "usform:bulk:success", redrawWipLimit
+
+    return {link: link}
+
+module.directive("tgKanbanWipLimit", KanbanWipLimitDirective)
 
 
 #############################################################################

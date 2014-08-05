@@ -33,7 +33,8 @@
         }
         .color-column,
         .is-closed-column,
-        .options-column {
+        .options-column,
+        .status-wip-limit {
             @include table-flex-child(1, 100px, 0);
         }
         .color-column {
@@ -52,6 +53,11 @@
         .is-closed-column {
             max-width: 130px;
             text-align: center;
+        }
+        .status-wip-limit {
+            max-width: 130px;
+            text-align: center;
+            padding: 0 0 0 10px;
         }
     }
     .row-edit {

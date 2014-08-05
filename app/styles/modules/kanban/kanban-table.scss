@@ -63,6 +63,18 @@ $column-margin: 0 10px 0 0;
         &:last-child {
             margin-right: 0;
         }
+        .kanban-wip-limit {
+            @extend %xsmall;
+            @include table-flex();
+            background: $red;
+            border-radius: 2px;
+            bottom: 8px;
+            height: 4px;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            width: 100%;
+        }
     }
     .kanban-uses-box {
         background: $whitish;
