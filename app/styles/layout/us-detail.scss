@@ -199,13 +199,17 @@
 .points-per-role {
     position: relative;
     > li {
-        border-right: 1px solid $grayer;
+        @include transition(color .3s linear);
+        border-right: 1px solid rgba($grayer, .3);
+        color: rgba($grayer, .3);
         display: inline-block;
         margin: .5rem .1rem;
-        opacity: .3;
         position: relative;
         text-align: center;
         width: 18%;
+        &.active {
+            color: rgba($green-taiga, 1);
+        }
         &:first-child {
             opacity: 1;
         }

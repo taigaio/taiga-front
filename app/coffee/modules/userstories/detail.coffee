@@ -240,6 +240,7 @@ UsStatusDetailDirective = () ->
     """)
     selectionPointsTemplate = _.template("""
     <ul class="popover pop-points-open">
+        <li class="pop-points-selected"></li>
         <% _.each(points, function(point) { %>
         <li><a href="" class="point" title="<%- point.name %>"
                data-point-id="<%- point.id %>"><%- point.name %></a>
@@ -319,11 +320,13 @@ UsStatusDetailDirective = () ->
                 event.stopPropagation()
                 target = angular.element(event.currentTarget)
                 updatingSelectedRoleId = target.data("role-id")
+                target.siblings().removeClass('active')
+                target.addClass('active')
                 showSelectPoints()
                 body = angular.element("body")
                 body.one "click", (event) ->
                     $el.find(".popover").hide()
-
+                    target.removeClass('active')
             $el.on "click", ".point", (event) ->
                 event.preventDefault()
                 event.stopPropagation()
