@@ -2,6 +2,7 @@
     @include background-opacity($white, .95);
     @include table-flex(center, center, flex, row, wrap, center);
     bottom: 0;
+    display: none;
     left: 0;
     position: fixed;
     right: 0;
@@ -28,6 +29,9 @@
         display: block;
         padding: 12px;
         text-align: center;
+    }
+    &.open {
+        display: flex;
     }
 }
 

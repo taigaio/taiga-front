@@ -28,7 +28,7 @@ module = angular.module("taigaBacklog")
 ## Creare/Edit Sprint Lightbox Directive
 #############################################################################
 
-CreateEditSprint = ($repo, $confirm, $rs, $rootscope) ->
+CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService) ->
     link = ($scope, $el, attrs) ->
         createSprint = true
 
@@ -46,7 +46,7 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope) ->
 
             promise.then (data) ->
                 $scope.sprintsCounter += 1 if createSprint
-                $el.addClass("hidden")
+                lightboxService.close($el)
                 $rootscope.$broadcast("sprintform:create:success", data)
 
             promise.then null, (data) ->
@@ -60,7 +60,7 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope) ->
             $confirm.ask(title, subtitle).then =>
                 $repo.remove($scope.sprint).then ->
                     $scope.milestonesCounter -= 1
-                    $el.addClass("hidden")
+                    lightboxService.close($el)
                     $rootscope.$broadcast("sprintform:remove:success")
 
         $scope.$on "sprintform:create", ->
@@ -80,7 +80,7 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope) ->
             $el.find(".delete-sprint").hide()
             $el.find(".title").text("New sprint") #TODO i18n
             $el.find(".button-green").text("Create") #TODO i18n
-            $el.removeClass("hidden")
+            lightboxService.open($el)
 
         $scope.$on "sprintform:edit", (ctx, sprint) ->
             createSprint = false
@@ -90,11 +90,7 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope) ->
             $el.find(".delete-sprint").show()
             $el.find(".title").text("Edit sprint") #TODO i18n
             $el.find(".button-green").text("Save") #TODO i18n
-            $el.removeClass("hidden")
-
-        $el.on "click", ".close", (event) ->
-            event.preventDefault()
-            $el.addClass("hidden")
+            lightboxService.close($el)
 
         $el.on "click", ".button-green", (event) ->
             event.preventDefault()
@@ -115,5 +111,6 @@ module.directive("tgLbCreateEditSprint", [
     "$tgConfirm",
     "$tgResources",
     "$rootScope",
+    "lightboxService"
     CreateEditSprint
 ])

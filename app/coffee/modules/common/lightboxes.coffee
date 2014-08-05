@@ -23,16 +23,39 @@ module = angular.module("taigaCommon")
 
 bindOnce = @.taiga.bindOnce
 
+class LightboxService extends taiga.Service
+    open: (lightbox) ->
+        lightbox.addClass('open')
+
+    close: (lightbox) ->
+        lightbox.removeClass('open')
+
+module.service("lightboxService", LightboxService)
+
+LightboxDirective = (lightboxService) ->
+    link = ($scope, $el, $attrs) ->
+        $el.on "click", ".close", (event) ->
+            event.preventDefault()
+
+            lightboxService.close($el)
+
+    return {
+        restrict: "C",
+        link: link
+    }
+
+module.directive("lightbox", ["lightboxService", LightboxDirective])
+
 #############################################################################
 ## Block Lightbox Directive
 #############################################################################
 
-BlockLightboxDirective = ->
+BlockLightboxDirective = (lightboxService) ->
     link = ($scope, $el, $attrs, $model) ->
         title = $attrs.title
         $el.find("h2.title").text(title)
         $scope.$on "block", ->
-            $el.removeClass("hidden")
+            lightboxService.close($el)
 
         $scope.$on "unblock", ->
             $model.$modelValue.is_blocked = false
@@ -40,10 +63,6 @@ BlockLightboxDirective = ->
 
         $scope.$on "$destroy", ->
             $el.off()
-
-        $el.on "click", ".close", (event) ->
-            event.preventDefault()
-            $el.addClass("hidden")
 
         $el.on "click", ".button-green", (event) ->
             event.preventDefault()
@@ -53,7 +72,7 @@ BlockLightboxDirective = ->
                 $model.$modelValue.is_blocked = true
                 $model.$modelValue.blocked_note = $el.find(".reason").val()
 
-            $el.addClass("hidden")
+            lightboxService.close($el)
 
     return {
         templateUrl: "/partials/views/modules/lightbox_block.html"
@@ -61,14 +80,14 @@ BlockLightboxDirective = ->
         require:"ngModel"
     }
 
-module.directive("tgLbBlock", BlockLightboxDirective)
+module.directive("tgLbBlock", ["lightboxService", BlockLightboxDirective])
 
 
 #############################################################################
 ## Create/Edit Userstory Lightbox Directive
 #############################################################################
 
-CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope) ->
+CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService) ->
     link = ($scope, $el, attrs) ->
         isNew = true
 
@@ -82,7 +101,7 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope) ->
             # Update texts for creation
             $el.find(".button-green span").html("Create") #TODO: i18n
             $el.find(".title").html("New user story  ") #TODO: i18n
-            $el.removeClass("hidden")
+            lightboxService.open($el)
 
         $scope.$on "usform:edit", (ctx, us) ->
             $scope.us = us
@@ -90,7 +109,7 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope) ->
             # Update texts for edition
             $el.find(".button-green span").html("Save") #TODO: i18n
             $el.find(".title").html("Edit user story  ") #TODO: i18n
-            $el.removeClass("hidden")
+            lightboxService.open($el)
 
             # Update requirement info (team, client or blocked)
             if us.is_blocked
@@ -104,12 +123,6 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope) ->
 
         $scope.$on "$destroy", ->
             $el.off()
-
-        # Dom Event Handlers
-
-        $el.on "click", ".close", (event) ->
-            event.preventDefault()
-            $el.addClass("hidden")
 
         $el.on "click", ".button-green", (event) ->
             event.preventDefault()
@@ -125,7 +138,7 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope) ->
                 broadcastEvent = "usform:edit:success"
 
             promise.then (data) ->
-                $el.addClass("hidden")
+                lightboxService.close($el)
                 $rootScope.$broadcast(broadcastEvent, data)
 
         $el.on "click", "label.blocked", (event) ->
@@ -155,6 +168,7 @@ module.directive("tgLbCreateEditUserstory", [
     "$tgModel",
     "$tgResources",
     "$rootScope",
+    "lightboxService",
     CreateEditUserstoryDirective
 ])
 
@@ -163,7 +177,7 @@ module.directive("tgLbCreateEditUserstory", [
 ## Creare Bulk Userstories Lightbox Directive
 #############################################################################
 
-CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope) ->
+CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService) ->
     link = ($scope, $el, attrs) ->
         $scope.$on "usform:bulk", (ctx, projectId, status) ->
             $scope.new = {
@@ -171,11 +185,7 @@ CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope) ->
                 statusId: status
                 bulk: ""
             }
-            $el.removeClass("hidden")
-
-        $el.on "click", ".close", (event) ->
-            event.preventDefault()
-            $el.addClass("hidden")
+            lightboxService.close($el)
 
         $el.on "click", ".button-green", (event) ->
             event.preventDefault()
@@ -186,7 +196,7 @@ CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope) ->
 
             $rs.userstories.bulkCreate($scope.new.projectId, $scope.new.statusId, $scope.new.bulk).then (result) ->
                 $rootscope.$broadcast("usform:bulk:success", result)
-                $el.addClass("hidden")
+                lightboxService.close($el)
 
         $scope.$on "$destroy", ->
             $el.off()
@@ -197,6 +207,7 @@ module.directive("tgLbCreateBulkUserstories", [
     "$tgRepo",
     "$tgResources",
     "$rootScope",
+    "lightboxService",
     CreateBulkUserstoriesDirective
 ])
 
@@ -240,7 +251,7 @@ usersTemplate = _.template("""
 <% } %>
 """)
 
-AssignedToLightboxDirective = ->
+AssignedToLightboxDirective = (lightboxService) ->
     link = ($scope, $el, $attrs) ->
         selectedUser = null
         selectedItem = null
@@ -272,7 +283,7 @@ AssignedToLightboxDirective = ->
             selectedUser = $scope.usersById[assignedToId]
 
             render(selectedUser)
-            $el.removeClass("hidden")
+            lightboxService.open($el)
 
         $scope.$watch "usersSearch", (searchingText) ->
             render(selectedUser, searchingText) if searchingText?
@@ -281,7 +292,8 @@ AssignedToLightboxDirective = ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
 
-            $el.addClass("hidden")
+            lightboxService.close($el)
+
             $scope.$apply ->
                 $scope.$broadcast("assigned-to:added", target.data("user-id"), selectedItem)
                 $scope.usersSearch = null
@@ -290,14 +302,17 @@ AssignedToLightboxDirective = ->
             event.preventDefault()
             event.stopPropagation()
 
-            $el.addClass("hidden")
+            lightboxService.close($el)
+
             $scope.$apply ->
                 $scope.usersSearch = null
                 $scope.$broadcast("assigned-to:added", null, selectedItem)
 
         $el.on "click", ".close", (event) ->
             event.preventDefault()
-            $el.addClass("hidden")
+
+            lightboxService.close($el)
+
             $scope.$apply ->
                 $scope.usersSearch = null
 
@@ -310,14 +325,14 @@ AssignedToLightboxDirective = ->
     }
 
 
-module.directive("tgLbAssignedto", AssignedToLightboxDirective)
+module.directive("tgLbAssignedto", ["lightboxService", AssignedToLightboxDirective])
 
 
 #############################################################################
 ## Watchers Lightbox directive
 #############################################################################
 
-WatchersLightboxDirective = ($repo) ->
+WatchersLightboxDirective = ($repo, lightboxService) ->
     link = ($scope, $el, $attrs) ->
         selectedItem = null
 
@@ -354,7 +369,7 @@ WatchersLightboxDirective = ($repo) ->
             users = getFilteredUsers()
             render(users)
 
-            $el.removeClass("hidden")
+            lightboxService.open($el)
 
         $scope.$watch "usersSearch", (searchingText) ->
             if not searchingText?
@@ -364,7 +379,7 @@ WatchersLightboxDirective = ($repo) ->
             render(users)
 
         $el.on "click", ".watcher-single", (event) ->
-            $el.addClass("hidden")
+            lightboxService.close($el)
 
             event.preventDefault()
             target = angular.element(event.currentTarget)
@@ -375,7 +390,7 @@ WatchersLightboxDirective = ($repo) ->
 
         $el.on "click", ".close", (event) ->
             event.preventDefault()
-            $el.addClass("hidden")
+            lightboxService.close($el)
             $scope.$apply ->
                 $scope.usersSearch = null
 
@@ -387,4 +402,4 @@ WatchersLightboxDirective = ($repo) ->
         link:link
     }
 
-module.directive("tgLbWatchers", ["$tgRepo", WatchersLightboxDirective])
+module.directive("tgLbWatchers", ["$tgRepo", "lightboxService", WatchersLightboxDirective])

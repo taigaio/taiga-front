@@ -28,13 +28,13 @@ module = angular.module("taigaIssues")
 ## Issue Create Lightbox Directive
 #############################################################################
 
-CreateIssueDirective = ($repo, $model, $rs, $rootscope) ->
+CreateIssueDirective = ($repo, $model, $rs, $rootscope, lightboxService) ->
     link = ($scope, $el, $attrs) ->
         form = $el.find("form").checksley()
         $scope.issue = {}
 
         $scope.$on "issueform:new", (ctx, project)->
-            $el.removeClass("hidden")
+            lightboxService.open($el)
 
             $scope.issue = {
                 project: project.id
@@ -57,17 +57,13 @@ CreateIssueDirective = ($repo, $model, $rs, $rootscope) ->
             promise = $repo.create("issues", $scope.issue)
 
             promise.then (data) ->
-                $el.addClass("hidden")
+                lightboxService.close($el)
                 console.log "succcess", data
                 $rootscope.$broadcast("issueform:new:success", data)
 
             # FIXME: error handling?
             promise.then null, ->
                 console.log "FAIL"
-
-        $el.on "click", ".close", (event) ->
-            event.preventDefault()
-            $el.addClass("hidden")
 
         $el.on "click", ".button-green", (event) ->
             event.preventDefault()
@@ -80,18 +76,14 @@ CreateIssueDirective = ($repo, $model, $rs, $rootscope) ->
     return {link:link}
 
 
-CreateBulkIssuesDirective = ($repo, $rs, $rootscope) ->
+CreateBulkIssuesDirective = ($repo, $rs, $rootscope, lightboxService) ->
     link = ($scope, $el, attrs) ->
         $scope.$on "issueform:bulk", (ctx, projectId, status)->
-            $el.removeClass("hidden")
+            lightboxService.open($el)
             $scope.new = {
                 projectId: projectId
                 bulk: ""
             }
-
-        $el.on "click", ".close", (event) ->
-            event.preventDefault()
-            $el.addClass("hidden")
 
         $el.on "click", ".button-green", (event) ->
             event.preventDefault()
@@ -106,7 +98,7 @@ CreateBulkIssuesDirective = ($repo, $rs, $rootscope) ->
             promise = $rs.issues.bulkCreate(projectId, data)
             promise.then (result) ->
                 $rootscope.$broadcast("issueform:new:success", result)
-                $el.addClass("hidden")
+                lightboxService.close($el)
 
             # TODO: error handling
             promise.then null, ->
@@ -122,6 +114,7 @@ module.directive("tgLbCreateIssue", [
     "$tgModel",
     "$tgResources",
     "$rootScope",
+    "lightboxService",
     CreateIssueDirective
 ])
 
@@ -129,6 +122,7 @@ module.directive("tgLbCreateBulkIssues", [
     "$tgRepo",
     "$tgResources",
     "$rootScope",
+    "lightboxService",
     CreateBulkIssuesDirective
 ])
 

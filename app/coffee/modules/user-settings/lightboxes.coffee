@@ -28,10 +28,10 @@ module = angular.module("taigaUserSettings")
 ## Delete User Lightbox Directive
 #############################################################################
 
-DeleteUserDirective = ($repo, $rootscope, $auth, $location) ->
+DeleteUserDirective = ($repo, $rootscope, $auth, $location, lightboxService) ->
     link = ($scope, $el, $attrs) ->
         $scope.$on "deletelightbox:new", (ctx, user)->
-            $el.removeClass("hidden")
+            lightboxService.open($el)
 
         $scope.$on "$destroy", ->
             $el.off()
@@ -40,7 +40,7 @@ DeleteUserDirective = ($repo, $rootscope, $auth, $location) ->
             promise = $repo.remove($scope.user)
 
             promise.then (data) ->
-                $el.addClass("hidden")
+                lightboxService.close($el)
                 $auth.logout()
                 $location.path("/login")
 
@@ -48,13 +48,9 @@ DeleteUserDirective = ($repo, $rootscope, $auth, $location) ->
             promise.then null, ->
                 console.log "FAIL"
 
-        $el.on "click", ".close", (event) ->
-            event.preventDefault()
-            $el.addClass("hidden")
-
         $el.on "click", ".button-red", (event) ->
             event.preventDefault()
-            $el.addClass("hidden")
+            lightboxService.close($el)
 
         $el.on "click", ".button-green", (event) ->
             event.preventDefault()
@@ -63,4 +59,4 @@ DeleteUserDirective = ($repo, $rootscope, $auth, $location) ->
     return {link:link}
 
 
-module.directive("tgLbDeleteUser", ["$tgRepo", "$rootScope", "$tgAuth", "$location", DeleteUserDirective])
+module.directive("tgLbDeleteUser", ["$tgRepo", "$rootScope", "$tgAuth", "$location", "lightboxService", DeleteUserDirective])

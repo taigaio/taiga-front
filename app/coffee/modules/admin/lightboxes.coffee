@@ -56,15 +56,10 @@ CreateMembersDirective = ($rs, $rootScope, $confirm) ->
 
         $scope.$on "membersform:new",  ->
             resetForm()
-            $el.removeClass("hidden")
+            lightboxService.open($el)
 
         $scope.$on "$destroy", ->
             $el.off()
-
-        # Dom Event Handlers
-        $el.on "click", ".close", (event) ->
-            event.preventDefault()
-            $el.addClass("hidden")
 
         $el.on "click", ".delete-fieldset", (event) ->
             event.preventDefault()
@@ -97,12 +92,12 @@ CreateMembersDirective = ($rs, $rootScope, $confirm) ->
             event.preventDefault()
 
             onSuccess = (data) ->
-                $el.addClass("hidden")
+                lightboxService.close($el)
                 $confirm.notify("success")
                 $rootScope.$broadcast("membersform:new:success")
 
             onError = (data) ->
-                $el.addClass("hidden")
+                lightboxService.close($el)
                 $confirm.notify("error")
                 $rootScope.$broadcast("membersform:new:error")
 
@@ -123,5 +118,5 @@ CreateMembersDirective = ($rs, $rootScope, $confirm) ->
 
     return {link: link}
 
-module.directive("tgLbCreateMembers", ["$tgResources", "$rootScope", "$tgConfirm",
+module.directive("tgLbCreateMembers", ["$tgResources", "$rootScope", "$tgConfirm", "lightboxService",
                                        CreateMembersDirective])

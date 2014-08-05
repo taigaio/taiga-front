@@ -22,7 +22,7 @@
 taiga = @.taiga
 bindOnce = @.taiga.bindOnce
 
-CreateEditTaskDirective = ($repo, $model, $rs, $rootscope) ->
+CreateEditTaskDirective = ($repo, $model, $rs, $rootscope, lightboxService) ->
     link = ($scope, $el, attrs) ->
         isNew = true
 
@@ -40,7 +40,7 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootscope) ->
             # Update texts for creation
             $el.find(".button-green span").html("Create") #TODO: i18n
             $el.find(".title").html("New task  ") #TODO: i18n
-            $el.removeClass("hidden")
+            lightboxService.open($el)
 
         $scope.$on "taskform:edit", (ctx, task) ->
             $scope.task = task
@@ -49,7 +49,7 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootscope) ->
             # Update texts for edition
             $el.find(".button-green span").html("Save") #TODO: i18n
             $el.find(".title").html("Edit task  ") #TODO: i18n
-            $el.removeClass("hidden")
+            lightboxService.open($el)
 
             # Update requirement info (team, client or blocked)
             if task.is_blocked
@@ -58,12 +58,6 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootscope) ->
 
             if task.is_iocaine
                 $el.find("label.iocaine").addClass("selected")
-
-        # Dom Event Handlers
-
-        $el.on "click", ".close", (event) ->
-            event.preventDefault()
-            $el.addClass("hidden")
 
         $el.on "click", ".button-green", (event) ->
             event.preventDefault()
@@ -81,7 +75,7 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootscope) ->
 
             # FIXME: error handling?
             promise.then (data) ->
-                $el.addClass("hidden")
+                lightboxService.close($el)
                 $rootscope.$broadcast(broadcastEvent, data)
 
         $el.on "click", "label.blocked", (event) ->
@@ -102,17 +96,17 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootscope) ->
     return {link: link}
 
 
-CreateBulkTasksDirective = ($repo, $rs, $rootscope) ->
+CreateBulkTasksDirective = ($repo, $rs, $rootscope, lightboxService) ->
     link = ($scope, $el, attrs) ->
         $scope.form = {data: "", usId: null}
 
         $scope.$on "taskform:bulk", (ctx, sprintId, usId)->
-            $el.removeClass("hidden")
+            lightboxService.open($el)
             $scope.form = {data: "", sprintId: sprintId, usId: usId}
 
         $el.on "click", ".close", (event) ->
             event.preventDefault()
-            $el.addClass("hidden")
+            lightboxService.close($el)
 
         $el.on "click", ".button-green", (event) ->
             event.preventDefault()
@@ -129,7 +123,7 @@ CreateBulkTasksDirective = ($repo, $rs, $rootscope) ->
             promise = $rs.tasks.bulkCreate(projectId, sprintId, usId, data)
             promise.then (result) ->
                 $rootscope.$broadcast("taskform:bulk:success", result)
-                $el.addClass("hidden")
+                lightboxService.close($el)
 
             # TODO: error handling
             promise.then null, ->
@@ -148,6 +142,7 @@ module.directive("tgLbCreateEditTask", [
     "$tgModel",
     "$tgResources",
     "$rootScope",
+    "lightboxService",
     CreateEditTaskDirective
 ])
 
@@ -155,5 +150,6 @@ module.directive("tgLbCreateBulkTasks", [
     "$tgRepo",
     "$tgResources",
     "$rootScope",
+    "lightboxService",
     CreateBulkTasksDirective
 ])
