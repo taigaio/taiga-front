@@ -198,11 +198,12 @@
 
 .points-per-role {
     position: relative;
-    li {
+    > li {
         border-right: 1px solid $grayer;
         display: inline-block;
         margin: .5rem .1rem;
         opacity: .3;
+        position: relative;
         text-align: center;
         width: 18%;
         &:first-child {
@@ -227,7 +228,20 @@
         white-space: nowrap;
     }
     .pop-points-open {
-        @include popover(150px, '', 30px, '', '');
+        @include popover(200px, 60px, 40px, '', '');
+        li {
+            display: inline-block;
+            width: 23%;
+        }
+        a {
+            display: block;
+            text-align: center;
+            &:hover,
+            &.active {
+                background: $fresh-taiga;
+                color: $white;
+            }
+        }
     }
 }
 
