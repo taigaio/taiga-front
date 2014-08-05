@@ -71,7 +71,6 @@ paths = {
         "app/vendor/jquery-flot/jquery.flot.time.js",
         "app/vendor/jquery-textcomplete/jquery.textcomplete.js",
         "app/vendor/markitup/markitup/jquery.markitup.js"
-        "app/js/Sortable.js",
         "app/js/jquery.ui.git.js",
         "app/js/sha1.js"
     ]
