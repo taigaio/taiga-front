@@ -222,3 +222,56 @@ TaskboardRowSizeFixer = ->
     return {link: link}
 
 module.directive("tgTaskboardRowSizeFixer", TaskboardRowSizeFixer)
+
+#############################################################################
+## Taskboard User Directive
+#############################################################################
+
+TaskboardUserDirective = ($log) ->
+    template = _.template("""
+    <figure class="avatar">
+        <a href="#" title="<%- name %>">
+            <img src="<%= imgurl %>" alt="<%- name %>">
+            <figcaption><%- name %></figcaption>
+        </a>
+    </figure>
+    """)
+
+    uniqueId = _.uniqueId("user_photo")
+
+    link = ($scope, $el, $attrs) ->
+        if not $attrs.model?
+            return $log.error "TaskboardUserDirective: no model attr is defined"
+
+        wtid = $scope.$watch $attrs.model, (v) ->
+            if not $scope.usersById?
+                $log.error "TaskboardUserDirective requires userById set in scope."
+                wtid()
+            else
+                user = $scope.usersById[v]
+                render(user)
+
+        render = (user) ->
+            if user is undefined
+                ctx = {name: "Unassigned", imgurl: "/images/unnamed.png"}
+            else
+                ctx = {name: user.full_name_display, imgurl: user.photo}
+
+            html = template(ctx)
+            $el.off(".#{uniqueId}")
+            $el.html(html)
+
+            $el.on "click.#{uniqueId}", "figure.avatar > a", (event) ->
+                if not $attrs.click?
+                    return $log.error "TaskboardUserDirective: No click attr is defined."
+
+                $scope.$apply ->
+                    $scope.$eval($attrs.click)
+
+    return {
+        link: link
+        restrict: "AE"
+    }
+
+
+module.directive("tgTaskboardUserAvatar", ["$log", TaskboardUserDirective])
