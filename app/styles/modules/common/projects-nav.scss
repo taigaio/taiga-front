@@ -98,7 +98,8 @@
     width: 100%;
     z-index: 99900;
     div {
-        margin: 10% auto;
+        //@include transform(translateY(-50%));
+        margin: 20% auto;
         opacity: 0;
         text-align: center;
         width: 500px;
@@ -107,5 +108,10 @@
         @extend %large;
         color: $whitish;
         padding-top: 20px;
+    }
+    .icon {
+        @extend %xxlarge;
+        @include animation(spin 1s linear infinite);
+        color: $whitish;
     }
 }
