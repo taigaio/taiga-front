@@ -35,9 +35,9 @@
                 width: 100%;
             }
         }
-        &.submit {
-            width: 50%;
-        }
+    }
+    .submit {
+        width: 50%;
     }
     label {
         @extend %title;
