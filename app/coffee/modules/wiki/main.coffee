@@ -133,6 +133,7 @@ class WikiEditController extends WikiDetailController
         promise.then(=> @.loadProject())
                .then(=> @.loadUsersAndRoles())
                .then(=> @.loadWikiLinks())
+               .then(=> @.loadAttachments(@scope.wikiId))
 
         params = {
             pslug: @params.pslug
