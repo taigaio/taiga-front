@@ -63,7 +63,7 @@ KanbanSortableDirective = ($repo, $rs, $rootscope) ->
             itemEl.remove()
 
         tdom.sortable({
-            handle: ".icon-drag-h",
+            handle: ".icon-drag-h"
             dropOnEmpty: true
             connectWith: ".kanban-uses-box"
             revert: 400

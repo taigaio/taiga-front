@@ -1,7 +1,15 @@
 .taskboard-task {
+    @include transition (box-shadow .4s linear);
     background: $postit;
+    box-shadow: none;
     margin-bottom: 1rem;
     position: relative;
+    &.ui-sortable-helper {
+        box-shadow: 1px 1px 15px rgba($black, .2);
+    }
+    &.ui-sortable-placeholder {
+        background: $grayer;
+    }
     .taskboard-tagline {
         @include table-flex();
     }
@@ -15,16 +23,18 @@
         padding: 1rem .5rem;
     }
     .avatar {
-        @include table-flex-child($flex-basis: 50px);
+        @include table-flex-child($flex-basis: 70px);
         a {
             @extend %small;
             display: block;
             text-align: center;
         }
         img {
+            border: 2px solid $postit-hover;
             margin: 0 auto;
         }
         figcaption {
+            color: darken($postit-hover, 15%);
             display: block;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -39,6 +49,7 @@
     .taskboard-text {
         @extend %small;
         @include table-flex-child($flex-grow: 10, $flex-basis: 50px);
+        padding: 0 .5rem 0 1rem;
     }
     .icon-edit,
     .icon-drag-h {

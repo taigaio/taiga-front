@@ -64,6 +64,7 @@ $column-margin: 0 10px 0 0;
     .taskboard-tasks-box {
         background: $whitish;
     }
+
     .taskboard-userstory-box {
         .icon {
             @include transition(color .2s linear);
@@ -100,53 +101,6 @@ $column-margin: 0 10px 0 0;
             margin-right: .1rem;
         }
     }
-
-//    .us-ref {
-//        color: $gray;
-//        margin-right: .5rem;
-//    }
-//    .status {
-//        color: $green-taiga;
-//        margin-bottom: .5rem;
-//        position: relative;
-//        .icon {
-//            @include transition (opacity .2s linear);
-//            opacity: 0;
-//        }
-//        &:hover {
-//            .icon {
-//                @include transition (opacity .2s linear);
-//                opacity: 1;
-//            }
-//        }
-//    }
-//    .pop-status {
-//        @include popover(150px, 20px, 30px, '', '');
-//    }
-//    .pop-points {
-//        @include popover(200px, 125px, 30px, '', '');
-//        li {
-//            display: inline-block;
-//            width: 23%;
-//        }
-//        a {
-//            display: block;
-//            text-align: center;
-//            &:hover,
-//            &.active {
-//                background: $fresh-taiga;
-//                color: $white;
-//            }
-//        }
-//    }
-//    .new-task {
-//        margin-top: 3rem;
-//        opacity: 0;
-//    }
-//    .button-green {
-//        padding: 7px 80px;
-//    }
-
 }
 
 .points-list {
