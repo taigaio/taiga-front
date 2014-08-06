@@ -207,6 +207,7 @@ TaskStatusDirective = () ->
             $el.on "click", ".status-data", (event) ->
                 event.preventDefault()
                 event.stopPropagation()
+                $(".popover").hide()
                 $el.find(".pop-status").show()
                 body = angular.element("body")
                 body.one "click", (event) ->

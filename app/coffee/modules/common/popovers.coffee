@@ -71,6 +71,7 @@ UsStatusDirective = ($repo) ->
         $el.on "click", ".us-status", (event) ->
             event.preventDefault()
             event.stopPropagation()
+            $(".popover").hide()
             $el.find(".pop-status").show()
 
             body = angular.element("body")

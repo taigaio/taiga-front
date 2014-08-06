@@ -249,6 +249,7 @@ IssueStatusDirective = () ->
             $el.on "click", ".severity-data", (event) ->
                 event.preventDefault()
                 event.stopPropagation()
+                $(".popover").hide()
                 $el.find(".pop-severity").show()
                 body = angular.element("body")
                 body.one "click", (event) ->
@@ -265,6 +266,7 @@ IssueStatusDirective = () ->
             $el.on "click", ".priority-data", (event) ->
                 event.preventDefault()
                 event.stopPropagation()
+                $(".popover").hide()
                 $el.find(".pop-priority").show()
                 body = angular.element("body")
                 body.one "click", (event) ->
@@ -281,6 +283,7 @@ IssueStatusDirective = () ->
             $el.on "click", ".status-data", (event) ->
                 event.preventDefault()
                 event.stopPropagation()
+                $(".popover").hide()
                 $el.find(".pop-status").show()
                 body = angular.element("body")
                 body.one "click", (event) ->

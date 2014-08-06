@@ -235,6 +235,7 @@ UsStatusDetailDirective = () ->
             $el.find(".points-per-role").append(selectionPointsTemplate({ "points":  $scope.project.points }))
             $el.find(".pop-points-open a[data-point-id='#{us.points[updatingSelectedRoleId]}']").addClass("active")
             # If not showing role selection let's move to the left
+            $(".popover").hide()
             $el.find(".pop-points-open").show()
 
         calculateTotalPoints = (us)->
@@ -278,6 +279,7 @@ UsStatusDetailDirective = () ->
             $el.on "click", ".status-data", (event) ->
                 event.preventDefault()
                 event.stopPropagation()
+                $(".popover").hide()
                 $el.find(".pop-status").show()
                 body = angular.element("body")
                 body.one "click", (event) ->
