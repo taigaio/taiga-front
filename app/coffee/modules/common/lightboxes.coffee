@@ -25,10 +25,17 @@ bindOnce = @.taiga.bindOnce
 
 class LightboxService extends taiga.Service
     open: (lightbox) ->
-        lightbox.addClass('open')
+        lightbox.css('display', 'flex')
+
+        setTimeout ( ->
+            lightbox.addClass('open')
+        ), 70
 
     close: (lightbox) ->
-        lightbox.removeClass('open')
+        lightbox
+            .one "transitionend", () ->
+                lightbox.css('display', 'none')
+            .removeClass('open')
 
 module.service("lightboxService", LightboxService)
 

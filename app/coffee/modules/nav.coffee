@@ -55,7 +55,7 @@ ProjectsNavigationDirective = ($rootscope) ->
                 timeout = 500 - timeout
 
             setTimeout ( ->
-                overlay.one 'webkitTransitionEnd transitionend transitionEnd', () ->
+                overlay.one 'transitionend', () ->
                     overlay.hide()
 
                 $(document.body)

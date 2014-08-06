@@ -1,9 +1,11 @@
 .lightbox {
     @include background-opacity($white, .95);
     @include table-flex(center, center, flex, row, wrap, center);
+    @include transition (opacity .3s ease);
     bottom: 0;
     display: none;
     left: 0;
+    opacity: 0;
     position: fixed;
     right: 0;
     top: 0;
@@ -31,7 +33,8 @@
         text-align: center;
     }
     &.open {
-        display: flex;
+        @include transition (opacity .3s ease);
+        opacity: 1;
     }
 }
 
