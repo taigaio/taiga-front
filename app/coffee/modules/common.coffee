@@ -340,3 +340,30 @@ ChangeDirective = ->
     return {link:link, require:"ngModel"}
 
 module.directive("tgChange", ChangeDirective)
+
+
+#############################################################################
+## Permission directive, hide elements when necessary
+#############################################################################
+
+CheckPermissionDirective = ->
+    showElementIfPermission = (element, permission, project) ->
+        element.show() if project.my_permissions.indexOf(permission) > -1
+
+    link = ($scope, $el, $attrs) ->
+        $el.hide()
+        permission = $attrs.permission
+
+        #Sometimes this directive from a self included html template
+        if $scope.project?
+            showElementIfPermission($el, permission, $scope.project)
+
+        $scope.$on "project:loaded", (ctx, project) ->
+            showElementIfPermission($el, permission, project)
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {link:link}
+
+module.directive("tgCheckPermission", CheckPermissionDirective)

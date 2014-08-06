@@ -38,6 +38,10 @@ ol { list-style: decimal; }
     cursor: pointer;
 }
 
+.not-clickable {
+    cursor: default;
+}
+
 .draggable {
     cursor: move;
 }

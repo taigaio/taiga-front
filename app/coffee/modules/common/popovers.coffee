@@ -64,10 +64,6 @@ UsStatusDirective = ($repo) ->
         $ctrl = $el.controller()
         us = $scope.$eval($attrs.tgUsStatus)
 
-        taiga.bindOnce $scope, "project", (project) ->
-            $el.append(selectionTemplate({ 'statuses':  project.us_statuses }))
-            updateUsStatus($el, us, $scope.usStatusById)
-
         $el.on "click", ".us-status", (event) ->
             event.preventDefault()
             event.stopPropagation()
@@ -89,6 +85,15 @@ UsStatusDirective = ($repo) ->
             $scope.$apply () ->
                 $repo.save(us).then ->
                     $scope.$eval($attrs.onUpdate)
+
+        taiga.bindOnce $scope, "project", (project) ->
+            $el.append(selectionTemplate({ 'statuses':  project.us_statuses }))
+            updateUsStatus($el, us, $scope.usStatusById)
+
+            # If the user has not enough permissions the click events are unbinded
+            if project.my_permissions.indexOf("modify_us") == -1
+                $el.unbind("click")
+                $el.find("a").addClass("not-clickable")
 
         $scope.$on "$destroy", ->
             $el.off()

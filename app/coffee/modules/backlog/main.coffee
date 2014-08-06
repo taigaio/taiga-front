@@ -707,6 +707,12 @@ UsPointsDirective = ($repo) ->
                     $repo.refresh(us).then ->
                         $ctrl.loadProjectStats()
 
+        taiga.bindOnce $scope, "project", (project) ->
+            # If the user has not enough permissions the click events are unbinded
+            if project.my_permissions.indexOf("modify_us") == -1
+                $el.unbind("click")
+                $el.find("a").addClass("not-clickable")
+
         $scope.$on "$destroy", ->
             $el.off()
 
