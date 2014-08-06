@@ -67,8 +67,8 @@ ol { list-style: decimal; }
     .is-selected {
         .pika-button {
             background: $green-taiga;
-            box-shadow: inset 0 1px 3px $green-taiga;
             border-radius: 0 !important;
+            box-shadow: inset 0 1px 3px $green-taiga;
         }
     }
     .is-today {
