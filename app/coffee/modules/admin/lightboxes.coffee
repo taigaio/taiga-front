@@ -31,15 +31,19 @@ MAX_MEMBERSHIP_FIELDSETS = 6
 
 CreateMembersDirective = ($rs, $rootScope, $confirm, lightboxService) ->
     template = _.template("""
-    <fieldset>
-        <input type="email" placeholder="Type an Email" data-required="true" />
-        <select data-required="true">
-            <% _.each(roleList, function(role) { %>
-            <option value="<%- role.id %>"><%- role.name %></option>
-            <% }); %>
-        </select>
-        <a class="icon icon-plus add-fieldset" href=""></a>
-    </fieldset>
+    <div class="add-member-wrapper">
+        <fieldset>
+            <input type="email" placeholder="Type an Email" data-required="true" />
+        </fieldset>
+        <fieldset>
+            <select data-required="true">
+                <% _.each(roleList, function(role) { %>
+                <option value="<%- role.id %>"><%- role.name %></option>
+                <% }); %>
+            </select>
+            <a class="icon icon-plus add-fieldset" href=""></a>
+        </fieldset>
+    </div>
     """) # i18n
 
     link = ($scope, $el, $attrs) ->

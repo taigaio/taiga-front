@@ -154,27 +154,29 @@
     }
 }
 
-.ligbox_add-member {
+.lightbox_add-member {
+    .add-member-wrapper {
+        @include table-flex();
+    }
     fieldset {
-        @include clearfix;
-        margin-bottom: 1rem;
+        position: relative;
+        &:first-child {
+            @include table-flex-child(3, 400px);
+        }
+        &:last-child {
+            @include table-flex-child(1, 200px);
+            margin-left: .5rem;
+        }
     }
     input[type=email],
     select {
-        float: left;
         margin-bottom: 0;
     }
-    input[type=email] {
-        width: 430px;
-    }
     select {
-        margin-left: .5rem;
-        width: 255px;
+        width: 80%;
     }
     .icon {
         @extend %large;
-        float: left;
-        line-height: 40px;
         margin-left: .5rem;
     }
     .icon-delete {
@@ -183,11 +185,14 @@
         }
     }
     .button {
-        margin-top: 2rem;
+        margin-top: 1rem;
     }
     .help-text {
         @extend %small;
         padding: .5rem 1rem;
+    }
+    .checksley-error-list {
+        right: .5rem;
     }
 }
 

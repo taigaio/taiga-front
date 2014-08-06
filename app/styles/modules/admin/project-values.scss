@@ -1,6 +1,7 @@
 .project-values-row {
     @include table-flex(stretch, center, flex, row, wrap, center);
     border-bottom: 1px solid $whitish;
+    padding: 1rem;
     &:hover {
         @include transition (background .2s ease-in);
         background: lighten($green-taiga, 60%);
@@ -10,7 +11,13 @@
             opacity: 1;
         }
     }
-
+    div {
+        margin-left: 1rem;
+        position: relative;
+        &:first-child {
+            margin: 0;
+        }
+    }
     .icon {
         @extend %large;
         color: $gray-light;
@@ -27,14 +34,11 @@
     border-bottom: 2px solid $gray-light;
 }
 
-.project-values-name,
-.project-values-isclosed,
-.project-values-settings {
-    padding: 1rem;
-}
-
 .project-values-name {
     @include table-flex-child(3, 0, 0);
+}
+.project-values-value {
+    @include table-flex-child(1, 0, 0);
 }
 
 .project-values-isclosed,

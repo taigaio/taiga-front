@@ -35,6 +35,10 @@ textarea {
 
 .checksley-error-list {
     margin-bottom: 0;
+    position: absolute;
+    top: 10px;
+    right: 2rem;
+    font-size: .8rem;
     li {
         color: $red;
         padding: .2rem;
