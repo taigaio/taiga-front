@@ -23,7 +23,6 @@ taiga = @.taiga
 
 trim = @.taiga.trim
 typeIsArray = @.taiga.typeIsArray
-textToColor = @.taiga.textToColor
 
 module = angular.module("taigaCommon", [])
 
@@ -50,9 +49,9 @@ TagLineDirective = ($log) ->
         </div>
     <% }); %>""")
 
-    renderTags = ($el, tags, editable) ->
+    renderTags = ($el, tags, editable, tagsColors) ->
         ctx = {
-            tags: _.map(tags, (t) -> {name: t, color: textToColor(t)})
+            tags: _.map(tags, (t) -> {name: t, color: tagsColors[t]})
             editable: editable
         }
         html = templateTags(ctx)
@@ -68,7 +67,7 @@ TagLineDirective = ($log) ->
 
         $scope.$watch $attrs.ngModel, (val) ->
             return if not val
-            renderTags($el, val, editable)
+            renderTags($el, val, editable, $scope.project.tags_colors)
 
         $el.find("input").remove() if not editable
 

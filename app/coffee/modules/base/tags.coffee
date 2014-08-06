@@ -20,7 +20,6 @@
 ###
 
 taiga = @.taiga
-textToColor = @.taiga.textToColor
 
 module = angular.module("taigaBase")
 
@@ -54,7 +53,7 @@ module.directive("tgTags", TagsDirective)
 ColorizeTagBackgroundDirective = ->
     link = ($scope, $el, $attrs, $ctrl) ->
         text = $scope.$eval($attrs.tgColorizeTagBackground)
-        color = textToColor(text)
+        color = $scope.project.tags_colors[text]
         $el.css("background", color)
 
     return {link: link}
@@ -65,7 +64,7 @@ module.directive("tgColorizeTagBackground", ColorizeTagBackgroundDirective)
 ColorizeTagBorderLeftDirective = ->
     link = ($scope, $el, $attrs, $ctrl) ->
         text = $scope.$eval($attrs.tgColorizeTagBorderLeft)
-        color = textToColor(text)
+        color = $scope.project.tags_colors[text]
         $el.css("border-left", "5px solid #{color}")
 
     return {link: link}
