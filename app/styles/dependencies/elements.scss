@@ -52,3 +52,30 @@ ol { list-style: decimal; }
     background: url('/images/invitation_bg.jpg') no-repeat center center;
     background-size: cover;
 }
+
+
+//Datepicker
+.pika-single {
+    z-index: 999999;
+    .pika-title {
+        color: $grayer;
+    }
+    .is-selected {
+        .pika-button {
+            background: $green-taiga;
+            box-shadow: inset 0 1px 3px $green-taiga;
+        }
+    }
+    .is-today {
+        .pika-button {
+            color: $green-taiga;
+        }
+    }
+    .pika-button {
+        &:hover {
+            background: $fresh-taiga !important; //Important added because plugin has it :S
+            border-radius: 0;
+            box-shadow: inset 0 1px 3px $fresh-taiga !important; //Important added because plugin has it :S
+        }
+    }
+}
