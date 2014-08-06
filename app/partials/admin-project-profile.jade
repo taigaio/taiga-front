@@ -19,25 +19,25 @@ block content
             form
                 fieldset
                     label(for="project-name") Project Name
-                    input(type="text", placeholder="Project name", id="project-name" ng-model="project.name")
+                    input(type="text", placeholder="Project name", id="project-name" ng-model="project.name", data-required="true")
 
                 fieldset
                     label(for="project-slug") Project Slug
-                    input(type="text", placeholder="Slug", id="project-slug", ng-model="project.slug")
+                    input(type="text", placeholder="Slug", id="project-slug", ng-model="project.slug", data-required="true")
 
                 fieldset
                     label(for="project-sprints") Number of sprints
                     input(type="text", placeholder="Number of sprints",
-                          ng-model="project.total_milestones", id="project-sprints")
+                          ng-model="project.total_milestones", id="project-sprints", data-type="digits")
 
                 fieldset
                     label(for="total-story-points") Number of US points
                     input(type="text", placeholder="Number of US points",
-                          ng-model="project.total_story_points", id="total-story-points")
+                          ng-model="project.total_story_points", id="total-story-points", data-type="digits", data-required="true")
 
                 fieldset
                     label(for="project-description") Description
-                    textarea(placeholder="Description", ng-model="project.description", id="project-description")
+                    textarea(placeholder="Description", ng-model="project.description", id="project-description", data-required="true")
 
                 input(type="submit", class="hidden")
                 a.button.button-green(href="") Save
