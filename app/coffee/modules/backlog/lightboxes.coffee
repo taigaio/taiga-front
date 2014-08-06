@@ -90,7 +90,7 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService) ->
             $el.find(".delete-sprint").show()
             $el.find(".title").text("Edit sprint") #TODO i18n
             $el.find(".button-green").text("Save") #TODO i18n
-            lightboxService.close($el)
+            lightboxService.open($el)
 
         $el.on "click", ".button-green", (event) ->
             event.preventDefault()
