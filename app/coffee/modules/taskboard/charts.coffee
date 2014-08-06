@@ -96,6 +96,11 @@ SprintGraphDirective = ->
                 $scope.$on "taskboard:graph:toggle-visibility", ->
                     $el.parent().toggleClass('open')
 
+                    #fix chart overflow
+                    setTimeout ( ->
+                        redrawChart(element, $scope.stats.days)
+                    ), 100
+
         $scope.$on "$destroy", ->
             $el.off()
 
