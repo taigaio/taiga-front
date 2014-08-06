@@ -359,18 +359,8 @@ IssuesDirective = ($log, $location) ->
 
             currentOrder = $ctrl.getUrlFilter("orderBy")
             newOrder = target.data("fieldname")
-            finalOrder = newOrder
 
-            if currentOrder is undefined
-                finalOrder = newOrder
-            else
-                reverse = true
-                if startswith(currentOrder, "-")
-                    reverse = false
-                    currentOrder = trim(currentOrder, "-")
-
-                if currentOrder == newOrder
-                    finalOrder = if reverse then "-#{newOrder}" else newOrder
+            finalOrder = if currentOrder == newOrder then "-#{newOrder}" else newOrder
 
             $scope.$apply ->
                 $ctrl.replaceFilter("orderBy", finalOrder)
