@@ -29,7 +29,7 @@ MAX_MEMBERSHIP_FIELDSETS = 6
 ## Create Members Lightbox Directive
 #############################################################################
 
-CreateMembersDirective = ($rs, $rootScope, $confirm) ->
+CreateMembersDirective = ($rs, $rootScope, $confirm, lightboxService) ->
     template = _.template("""
     <fieldset>
         <input type="email" placeholder="Type an Email" data-required="true" />

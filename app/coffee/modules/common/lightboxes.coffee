@@ -192,7 +192,7 @@ CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService) ->
                 statusId: status
                 bulk: ""
             }
-            lightboxService.close($el)
+            lightboxService.open($el)
 
         $el.on "click", ".button-green", (event) ->
             event.preventDefault()

@@ -37,14 +37,15 @@ NOTIFICATION_MSG = {
 }
 
 class ConfirmService extends taiga.Service
-    @.$inject = ["$q"]
+    @.$inject = ["$q", "lightboxService"]
 
-    constructor: (@q) ->
+    constructor: (@q, @lightboxService) ->
         _.bindAll(@)
 
     hide: ->
         if @.el
-            @.el.addClass("hidden")
+            @lightboxService.close(@.el)
+
             @.el.off(".confirm-dialog")
             delete @.el
 
@@ -67,7 +68,8 @@ class ConfirmService extends taiga.Service
             defered.reject()
             @.hide()
 
-        @.el.removeClass("hidden")
+        @lightboxService.open(@.el)
+
         return defered.promise
 
     error: (message) ->
@@ -88,7 +90,8 @@ class ConfirmService extends taiga.Service
             defered.resolve()
             @.hide()
 
-        @.el.removeClass("hidden")
+        @lightboxService.open(@.el)
+
         return defered.promise
 
     success: (message) ->
@@ -109,7 +112,8 @@ class ConfirmService extends taiga.Service
             defered.resolve()
             @.hide()
 
-        @.el.removeClass("hidden")
+        @lightboxService.open(@.el)
+
         return defered.promise
 
     notify: (type, message, title) ->
@@ -146,4 +150,4 @@ class ConfirmService extends taiga.Service
 
 
 module = angular.module("taigaBase")
-module.service("$tgConfirm", ["$q", ConfirmService])
+module.service("$tgConfirm", ["$q", "lightboxService", ConfirmService])
