@@ -104,10 +104,6 @@ CreateBulkTasksDirective = ($repo, $rs, $rootscope, lightboxService) ->
             lightboxService.open($el)
             $scope.form = {data: "", sprintId: sprintId, usId: usId}
 
-        $el.on "click", ".close", (event) ->
-            event.preventDefault()
-            lightboxService.close($el)
-
         $el.on "click", ".button-green", (event) ->
             event.preventDefault()
 

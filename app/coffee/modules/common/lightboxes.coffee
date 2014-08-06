@@ -37,10 +37,10 @@ class LightboxService extends taiga.Service
 
                 if code == 27
                     @close(lightbox)
-                    $(document).off('lightbox')
 
 
     close: (lightbox) ->
+        $(document).off('.lightbox')
         lightbox
             .one "transitionend", () ->
                 lightbox.css('display', 'none')
