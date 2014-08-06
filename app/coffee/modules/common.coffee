@@ -118,7 +118,7 @@ module.directive("tgTagLine", ["$log", TagLineDirective])
 ChangeDirective = ->
     # TODO: i18n
     commentBaseTemplate = _.template("""
-    <div class="comment-user">
+    <div class="comment-user activity-comment">
         <a class="avatar" href="" title="<%- userFullName %>">
             <img src="<%- avatar %>" alt="<%- userFullName %>">
         </a>
@@ -161,8 +161,10 @@ ChangeDirective = ->
             <span class="date">
                 <%- creationDate %>
             </span>
-            <%- comment %>
         </div>
+        <p class="comment">
+            <%- comment %>
+        </p>
     </div>
     """)
     standardChangeFromToTemplate = _.template("""
