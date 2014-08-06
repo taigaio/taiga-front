@@ -18,6 +18,9 @@
         &:hover {
             background: transparent;
         }
+        div {
+            cursor: pointer;
+        }
     }
     .table-main {
         @extend %small;

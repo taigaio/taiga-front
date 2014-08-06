@@ -354,6 +354,12 @@ IssuesDirective = ($log, $location) ->
     #########################
 
     linkOrdering = ($scope, $el, $attrs, $ctrl) ->
+        # Draw the arrow the first time
+        currentOrder = $ctrl.getUrlFilter("orderBy")
+        icon = if startswith(currentOrder, "-") then "icon-arrow-up" else "icon-arrow-bottom"
+        colHeadElement = $el.find(".row.title > div[data-fieldname='#{trim(currentOrder, "-")}']")
+        colHeadElement.html("#{colHeadElement.html()}<span class='icon #{icon}'></span>")
+
         $el.on "click", ".row.title > div", (event) ->
             target = angular.element(event.currentTarget)
 
@@ -364,7 +370,11 @@ IssuesDirective = ($log, $location) ->
 
             $scope.$apply ->
                 $ctrl.replaceFilter("orderBy", finalOrder)
-                $ctrl.loadIssues()
+                $ctrl.loadIssues().then ->
+                    # Update the arrow
+                    $el.find(".row.title > div > span.icon").remove()
+                    icon = if startswith(finalOrder, "-") then "icon-arrow-up" else "icon-arrow-bottom"
+                    target.html("#{target.html()}<span class='icon #{icon}'></span>")
 
     #########################
     ## Issues Link
