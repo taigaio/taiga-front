@@ -5,7 +5,7 @@ block head
 
 block content
     div.wrapper(tg-project-profile, ng-controller="ProjectProfileController as ctrl",
-                ng-init="section='admin'")
+                ng-init="section='admin'; sectionName='Project details'")
         sidebar.menu-secondary.sidebar(tg-admin-navigation="project-profile")
             include views/modules/admin-menu
 
