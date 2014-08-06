@@ -29,7 +29,7 @@ module = angular.module("taigaCommon")
 ## Attachments Directive
 #############################################################################
 
-AttachmentsDirective = ($repo, $rs) ->
+AttachmentsDirective = ($repo, $rs, $confirm) ->
     link = ($scope, $el, $attrs, $model) ->
         $ctrl = $el.controller()
         $scope.uploadingFiles = []
@@ -150,7 +150,7 @@ AttachmentsDirective = ($repo, $rs) ->
         require: "ngModel"
     }
 
-module.directive("tgAttachments", ["$tgRepo", "$tgResources", AttachmentsDirective])
+module.directive("tgAttachments", ["$tgRepo", "$tgResources", "$tgConfirm", AttachmentsDirective])
 
 
 #############################################################################
