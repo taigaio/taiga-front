@@ -19,7 +19,8 @@ form
 
         fieldset
             select(name="creation_template", ng-model="data.creation_template",
-                  ng-options="template.id as template.name for template in templates")
+                   ng-options="template.id as template.name for template in templates")
+                option(value="") Not use template on project creation
 
         fieldset
             a.button.button-green(href="", title="Create") Create
