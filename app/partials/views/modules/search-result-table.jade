@@ -10,7 +10,8 @@ script(type="text/ng-template", id="search-issues")
         div.row.table-main(ng-repeat="issue in issues track by issue.id")
             div.user-stories.width-6
                 div.user-story-name
-                    a(href="", tg-bo-bind="issue.subject")
+                    a(href="", tg-nav="project-issues-detail:project=project.slug,ref=issue.ref",
+                      tg-bo-bind="issue.subject")
             div.status.width-2(tg-listitem-issue-status="issue")
             div.points.width-1(tg-listitem-assignedto="issue")
 
@@ -24,7 +25,8 @@ script(type="text/ng-template", id="search-userstories")
         div.row.table-main(ng-repeat="us in userstories track by us.id")
             div.user-stories.width-4
                 div.user-story-name
-                    a(href="", tg-bo-bind="us.subject")
+                    a(href="", tg-nav="project-userstories-detail:project=project.slug,ref=us.ref",
+                        tg-bo-bind="us.subject")
             div.status.width-2(tg-listitem-us-status="us")
             div.points.width-1(tg-bo-bind="us.total_points")
 
@@ -38,6 +40,7 @@ script(type="text/ng-template", id="search-tasks")
         div.row.table-main(ng-repeat="task in tasks track by task.id")
             div.user-stories.width-4
                 div.user-story-name
-                    a(href="", tg-bo-bind="task.subject")
+                    a(href="", tg-nav="project-tasks-detail:project=project.slug,ref=task.ref",
+                        tg-bo-bind="task.subject")
             div.status.width-2(tg-listitem-task-status="task")
             div.points.width-1(tg-listitem-assignedto="task")
