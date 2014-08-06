@@ -113,29 +113,6 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin,
                       .then(=> @.loadTasks())
                       .then(=> @.loadAttachments(@scope.usId))
                       .then(=> @.loadHistory())
-
-    getUserFullName: (userId) ->
-        return @scope.usersById[userId]?.full_name_display
-
-    getUserAvatar: (userId) ->
-        return @scope.usersById[userId]?.photo
-
-    countChanges: (comment) ->
-        return Object.keys(comment.values_diff).length
-
-    getChangeText: (change) ->
-        if _.isArray(change)
-            return change.join(", ")
-        return change
-
-    buildChangesText: (comment) ->
-        size = @.countChanges(comment)
-        #TODO: i18n
-        if size == 1
-            return "Made #{size} change"
-
-        return "Made #{size} changes"
-
     block: ->
         @rootscope.$broadcast("block", @scope.us)
 
