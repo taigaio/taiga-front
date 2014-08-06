@@ -31,6 +31,15 @@ class LightboxService extends taiga.Service
             lightbox.addClass('open')
         ), 70
 
+        $(document)
+            .on 'keydown.lightbox', (e) =>
+                code = if e.keyCode then e.keyCode else e.which
+
+                if code == 27
+                    @close(lightbox)
+                    $(document).off('lightbox')
+
+
     close: (lightbox) ->
         lightbox
             .one "transitionend", () ->
@@ -62,7 +71,7 @@ BlockLightboxDirective = (lightboxService) ->
         title = $attrs.title
         $el.find("h2.title").text(title)
         $scope.$on "block", ->
-            lightboxService.close($el)
+            lightboxService.open($el)
 
         $scope.$on "unblock", ->
             $model.$modelValue.is_blocked = false
