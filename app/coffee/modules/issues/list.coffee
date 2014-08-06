@@ -200,7 +200,6 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 name = "status"
             @scope.httpParams[name] = values
 
-        console.log "prepared filters", @scope.httpParams
         promise = @rs.issues.list(@scope.projectId, @scope.httpParams).then (data) =>
             @scope.issues = data.models
             @scope.page = data.current
@@ -355,8 +354,8 @@ IssuesDirective = ($log, $location) ->
 
     linkOrdering = ($scope, $el, $attrs, $ctrl) ->
         # Draw the arrow the first time
-        currentOrder = $ctrl.getUrlFilter("orderBy")
-        icon = if startswith(currentOrder, "-") then "icon-arrow-up" else "icon-arrow-bottom"
+        currentOrder = $ctrl.getUrlFilter("orderBy") or "subject"
+        icon = if startswith(currentOrder, "-") then "icon-caret-up" else "icon-caret-down"
         colHeadElement = $el.find(".row.title > div[data-fieldname='#{trim(currentOrder, "-")}']")
         colHeadElement.html("#{colHeadElement.html()}<span class='icon #{icon}'></span>")
 
@@ -373,7 +372,7 @@ IssuesDirective = ($log, $location) ->
                 $ctrl.loadIssues().then ->
                     # Update the arrow
                     $el.find(".row.title > div > span.icon").remove()
-                    icon = if startswith(finalOrder, "-") then "icon-arrow-up" else "icon-arrow-bottom"
+                    icon = if startswith(finalOrder, "-") then "icon-caret-up" else "icon-caret-down"
                     target.html("#{target.html()}<span class='icon #{icon}'></span>")
 
     #########################
@@ -494,7 +493,6 @@ IssuesFiltersDirective = ($log, $location) ->
 
         # Angular Watchers
         $scope.$on "filters:loaded", (ctx, filters) ->
-            console.log filters
             initializeSelectedFilters(filters)
 
         selectSubjectFilter = debounce 400, (value) ->
