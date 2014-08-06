@@ -35,6 +35,7 @@
     form {
         input {
             background: $grayer;
+            color: $white;
             @include placeholder {
                 color: $gray-light;
             }
