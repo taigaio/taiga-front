@@ -293,10 +293,10 @@ KanbanUserDirective = ($log) ->
     uniqueId = _.uniqueId("user_photo")
 
     link = ($scope, $el, $attrs) ->
-        if not $attrs.model?
-            return $log.error "KanbanUserDirective: no model attr is defined"
+        if not $attrs.tgKanbanUserAvatar
+            return $log.error "KanbanUserDirective: no attr is defined"
 
-        wtid = $scope.$watch $attrs.model, (v) ->
+        wtid = $scope.$watch $attrs.tgKanbanUserAvatar, (v) ->
             if not $scope.usersById?
                 $log.error "KanbanUserDirective requires userById set in scope."
                 wtid()
@@ -320,10 +320,7 @@ KanbanUserDirective = ($log) ->
                 $scope.$apply ->
                     $scope.$eval($attrs.click)
 
-    return {
-        link: link
-        restrict: "AE"
-    }
+    return {link: link}
 
 
 module.directive("tgKanbanUserAvatar", ["$log", KanbanUserDirective])

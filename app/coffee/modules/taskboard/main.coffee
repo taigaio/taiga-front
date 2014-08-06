@@ -240,10 +240,10 @@ TaskboardUserDirective = ($log) ->
     uniqueId = _.uniqueId("user_photo")
 
     link = ($scope, $el, $attrs) ->
-        if not $attrs.model?
-            return $log.error "TaskboardUserDirective: no model attr is defined"
+        if not $attrs.tgTaskboardUserAvatar?
+            return $log.error "TaskboardUserDirective: no attr is defined"
 
-        wtid = $scope.$watch $attrs.model, (v) ->
+        wtid = $scope.$watch $attrs.tgTaskboardUserAvatar, (v) ->
             if not $scope.usersById?
                 $log.error "TaskboardUserDirective requires userById set in scope."
                 wtid()
@@ -268,10 +268,7 @@ TaskboardUserDirective = ($log) ->
                 $scope.$apply ->
                     $scope.$eval($attrs.click)
 
-    return {
-        link: link
-        restrict: "AE"
-    }
+    return {link: link}
 
 
 module.directive("tgTaskboardUserAvatar", ["$log", TaskboardUserDirective])
