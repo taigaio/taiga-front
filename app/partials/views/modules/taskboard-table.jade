@@ -26,9 +26,9 @@ div.taskboard-table
 
                 div.taskboard-tasks-box.task-column(ng-repeat="st in taskStatusList track by st.id",
                                                     tg-taskboard-sortable)
-                    div.taskboard-task(ng-repeat="task in usTasks[us.id][st.id] track by task.id",
-                                       tg-taskboard-task)
-                        include ../components/taskboard-task
+                        div.taskboard-task(ng-repeat="task in usTasks[us.id][st.id] track by task.id",
+                                           tg-taskboard-task)
+                            include ../components/taskboard-task
 
             div.task-row(ng-init="us = null")
                 div.taskboard-userstory-box.task-column
@@ -39,8 +39,6 @@ div.taskboard-table
                     a.icon.icon-bulk(href="", title="Add new tasks in bulk",
                                      ng-click="ctrl.addNewTask('bulk', us)")
 
-                div.taskboard-tasks-box.task-column(ng-repeat="st in taskStatusList track by st.id",
-                                                    tg-taskboard-sortable)
-                    div.taskboard-task(ng-repeat="task in usTasks[null][st.id] track by task.id",
-                                       tg-taskboard-task)
-                        include ../components/taskboard-task
+                div.taskboard-tasks-box.task-column(ng-repeat="st in taskStatusList track by st.id", tg-taskboard-sortable)
+                        div.taskboard-task(ng-repeat="task in usTasks[null][st.id] track by task.id", tg-taskboard-task)
+                            include ../components/taskboard-task

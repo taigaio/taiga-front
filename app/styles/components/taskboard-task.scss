@@ -1,49 +1,61 @@
 .taskboard-task {
     @include transition (box-shadow .4s linear);
-    background: $postit;
+    background: $very-light-gray;
     box-shadow: none;
-    margin-bottom: 1rem;
+    min-height: 7rem;
     position: relative;
+    &:hover {
+        .icon {
+            @include transition(color .3s linear);
+            color: $gray-light;
+        }
+    }
     &.ui-sortable-helper {
-        box-shadow: 1px 1px 15px rgba($black, .2);
+        box-shadow: 1px 1px 15px rgba($black, .1);
     }
     &.ui-sortable-placeholder {
         background: $grayer;
     }
     .taskboard-tagline {
         @include table-flex();
+        height: .4rem;
     }
     .taskboard-tag {
         @include table-flex-child(1, 0, 0, 0);
         background: $postit-hover; //Fallback
-        height: .3rem;
+        height: .1rem;
     }
     .taskboard-task-inner {
         @include table-flex();
         padding: 1rem .5rem;
     }
     .avatar {
-        @include table-flex-child($flex-basis: 70px);
+        @include table-flex-child($flex-basis: 50px);
         a {
             @extend %small;
             display: block;
             text-align: center;
         }
         img {
-            border: 2px solid $postit-hover;
+            border: 0;
             margin: 0 auto;
         }
         figcaption {
             color: darken($postit-hover, 15%);
-            display: block;
+            display: none;
+            //display: block;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
             width: 100%;
         }
     }
+    .task-assigned {
+        @extend %bold;
+        display: block;
+    }
     .task-num {
-        color: $postit-hover;
+        color: $grayer;
         margin-right: .5em;
     }
     .taskboard-text {
@@ -51,20 +63,21 @@
         @include table-flex-child($flex-grow: 10, $flex-basis: 50px);
         padding: 0 .5rem 0 1rem;
     }
+    .icon {
+        @include transition(color .3s linear);
+    }
     .icon-edit,
     .icon-drag-h {
         @extend %large;
-        bottom: .2rem;
-        color: $postit-hover;
-        display: none;
+        bottom: .5rem;
+        color: $whitish;
         position: absolute;
         &:hover {
-            @include transition(color, .3s, linear);
-            color: darken($postit-hover, 15%);
+            color: $grayer;
         }
     }
     .icon-edit {
-        right: .5rem;
+        right: 1rem;
     }
     .icon-drag-h {
         @extend %xlarge;

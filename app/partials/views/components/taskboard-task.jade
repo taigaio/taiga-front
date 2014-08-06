@@ -3,6 +3,7 @@ div.taskboard-tagline
 div.taskboard-task-inner
     div(tg-taskboard-user-avatar="task.assigned_to", click="ctrl.editTaskAssignedTo(task)")
     p.taskboard-text
+        span.task-assigned Username
         span.task-num(tg-bo-ref="task.ref")
         a.task-name(href="", title="See task details", tg-bind-html="task.subject",
                     tg-nav="project-tasks-detail:project=project.slug,ref=task.ref")
