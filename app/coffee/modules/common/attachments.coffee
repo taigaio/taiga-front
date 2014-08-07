@@ -209,7 +209,7 @@ AttachmentDirective = ($log, $repo, $confirm) ->
         $ctrl = $el.controller()
 
         render = (attachment, isEditable=false) ->
-            modifyPermission = $scope.project.my_permissions.indexOf("modify_#{$attrs.ngModel}") > -1
+            modifyPermission = $scope.project.my_permissions.indexOf("modify_#{$attrs.permissionSuffix}") > -1
             ctx = {
                 id: attachment.id
                 name: attachment.name

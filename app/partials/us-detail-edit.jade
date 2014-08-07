@@ -25,6 +25,7 @@ block content
                 textarea(placeholder="Write a description of your user story", ng-model="us.description", tg-markitup)
 
             - var attachModel = "us"
+            - var permissionSuffix = "us"
             include views/modules/attachments
 
             textarea(ng-model="us.comment", placeholder="Write here a new commet")

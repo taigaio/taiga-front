@@ -15,12 +15,16 @@ block content
                     span.green Wiki
                     span.wiki-title(tg-bo-bind='wiki.slug|unslugify')
             .action-buttons
-                a.button.button-red.delete-wiki(href="", title="Delete", ng-click="ctrl.delete()") Delete
-                a.button.button-green.edit-wiki(href="", title="Edit", ng-click="ctrl.edit()") Edit
+                a.button.button-red.delete-wiki(tg-check-permission, permission="delete_wiki_page",
+                    href="", title="Delete", ng-click="ctrl.delete()") Delete
+
+                a.button.button-green.edit-wiki(tg-check-permission, permission="modify_wiki_page",
+                    href="", title="Edit", ng-click="ctrl.edit()") Edit
 
             include views/modules/wiki-summary
 
             section.wiki-content.wysiwyg(tg-bind-html="wiki.html")
 
             - var attachModel = "wiki"
+            - var permissionSuffix = "wiki_page"
             include views/modules/attachments

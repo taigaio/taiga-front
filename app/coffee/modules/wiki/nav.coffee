@@ -44,7 +44,9 @@ WikiNavDirective = ($tgrepo, $log, $location, $confirm) ->
         <li class="wiki-link" data-id="<%- index %>">
           <a title="<%- link.title %>">
               <span class="link-title"><%- link.title %></span>
+              <% if (deleteWikiLinkPermission) { %>
               <span class="icon icon-delete"></span>
+              <% } %>
           </a>
           <input type="text" placeholder="name" class="hidden" value="<%- link.title %>" />
         </li>
@@ -54,7 +56,9 @@ WikiNavDirective = ($tgrepo, $log, $location, $confirm) ->
         </li>
       </ul>
     </nav>
+    <% if (addWikiLinkPermission) { %>
     <a href="" title="Add link" class="add-button button button-gray">Add link</a>
+    <% } %>
     """)
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
@@ -63,7 +67,15 @@ WikiNavDirective = ($tgrepo, $log, $location, $confirm) ->
             return $log.error "WikiNavDirective: no ng-model attr is defined"
 
         render = (wikiLinks) ->
-            html = template({wikiLinks: wikiLinks, projectSlug: $scope.projectSlug})
+            addWikiLinkPermission = $scope.project.my_permissions.indexOf("add_wiki_link") > -1
+            deleteWikiLinkPermission = $scope.project.my_permissions.indexOf("delete_wiki_link") > -1
+
+            html = template({
+                wikiLinks: wikiLinks,
+                projectSlug: $scope.projectSlug
+                addWikiLinkPermission: addWikiLinkPermission
+                deleteWikiLinkPermission: deleteWikiLinkPermission
+            })
 
             $el.off()
             $el.html(html)
