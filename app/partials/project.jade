@@ -25,6 +25,6 @@ block content
             div.project-data-container
                 p.description(tg-bo-bind="project.description")
                 ul
-                    li(ng-repeat="member in project.active_memberships")
+                    li(ng-repeat="member in project.memberships")
                         figure.avatar
-                            img(src="{{member.photo}}", alt="{{member.full_name}}")
+                            img(tg-bo-src="member.photo", tg-bo-alt="member.full_name")
