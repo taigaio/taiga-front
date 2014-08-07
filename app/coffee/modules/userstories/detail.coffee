@@ -233,14 +233,13 @@ UsStatusDetailDirective = () ->
         editable = $attrs.editable?
         updatingSelectedRoleId = null
 
-        showSelectPoints = () ->
+        showSelectPoints = (onClose) ->
             us = $model.$modelValue
             $el.find(".pop-points-open").remove()
             $el.find(".points-per-role").append(selectionPointsTemplate({ "points":  $scope.project.points }))
             $el.find(".pop-points-open a[data-point-id='#{us.points[updatingSelectedRoleId]}']").addClass("active")
             # If not showing role selection let's move to the left
-            $(".popover").hide()
-            $el.find(".pop-points-open").show()
+            $el.find(".pop-points-open").popover().open(onClose)
 
         calculateTotalPoints = (us)->
             values = _.map(us.points, (v, k) -> $scope.pointsById[v].value)
@@ -283,11 +282,7 @@ UsStatusDetailDirective = () ->
             $el.on "click", ".status-data", (event) ->
                 event.preventDefault()
                 event.stopPropagation()
-                $(".popover").hide()
-                $el.find(".pop-status").show()
-                body = angular.element("body")
-                body.one "click", (event) ->
-                    $el.find(".popover").hide()
+                $el.find(".pop-status").popover().open()
 
             $el.on "click", ".status", (event) ->
                 event.preventDefault()
@@ -295,7 +290,7 @@ UsStatusDetailDirective = () ->
                 target = angular.element(event.currentTarget)
                 $model.$modelValue.status = target.data("status-id")
                 renderUsstatus($model.$modelValue)
-                $el.find(".popover").hide()
+                $.fn.popover().closeAll()
 
             $el.on "click", ".total.clickable", (event) ->
                 event.preventDefault()
@@ -304,17 +299,13 @@ UsStatusDetailDirective = () ->
                 updatingSelectedRoleId = target.data("role-id")
                 target.siblings().removeClass('active')
                 target.addClass('active')
-                showSelectPoints()
-                body = angular.element("body")
-                body.one "click", (event) ->
-                    $el.find(".popover").hide()
-                    target.removeClass('active')
+                showSelectPoints(() -> target.removeClass('active'))
             $el.on "click", ".point", (event) ->
                 event.preventDefault()
                 event.stopPropagation()
 
                 target = angular.element(event.currentTarget)
-                $el.find(".popover").hide()
+                $.fn.popover().closeAll()
 
                 $scope.$apply () ->
                     us = $model.$modelValue

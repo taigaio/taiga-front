@@ -202,13 +202,7 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location) -
 
         $el.on "click", ".user-settings .avatar", (event) ->
             event.preventDefault()
-            $el.find(".user-settings .popover").show()
-            # Hide when click outside
-            body = angular.element("body")
-            body.on "click", (event) =>
-                if angular.element(event.target).parents(".user-settings").length == 0
-                    $el.find(".popover").hide()
-                    body.unbind("click")
+            $el.find(".user-settings .popover").popover().open()
 
         $el.on "click", ".logout", (event) ->
             event.preventDefault()

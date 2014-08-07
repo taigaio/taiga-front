@@ -30,7 +30,7 @@ module = angular.module("taigaCommon")
 
 # FIXME: change to less generic name.
 
-UsStatusDirective = ($repo) ->
+UsStatusDirective = ($repo, popoverService) ->
     ###
     Print the status of a US and a popover to change it.
     - tg-us-status: The user story
@@ -67,19 +67,18 @@ UsStatusDirective = ($repo) ->
         $el.on "click", ".us-status", (event) ->
             event.preventDefault()
             event.stopPropagation()
-            $(".popover").hide()
-            $el.find(".pop-status").show()
 
-            body = angular.element("body")
-            body.one "click", (event) ->
-                $el.find(".popover").hide()
+            $el.find(".pop-status").popover().open()
+
+            # pop = $el.find(".pop-status")
+            # popoverService.open(pop)
 
         $el.on "click", ".status", (event) ->
             event.preventDefault()
             event.stopPropagation()
             target = angular.element(event.currentTarget)
             us.status = target.data("status-id")
-            $el.find(".pop-status").hide()
+            $el.find(".pop-status").popover().close()
             updateUsStatus($el, us, $scope.usStatusById)
 
             $scope.$apply () ->
@@ -101,3 +100,40 @@ UsStatusDirective = ($repo) ->
     return {link: link}
 
 module.directive("tgUsStatus", ["$tgRepo", UsStatusDirective])
+
+$.fn.popover = () ->
+    $el = @
+
+    closePopover = (onClose) =>
+        if onClose then onClose.call($el)
+
+        $el.fadeOut () =>
+            $el.removeClass("active")
+
+        $el.off("popup:close")
+
+
+    closeAll = () =>
+        $(".popover.active").each () ->
+            $(this).trigger("popup:close")
+
+    open = (onClose) =>
+        closeAll()
+
+        $el
+        .fadeIn () =>
+            $el.addClass("active")
+            $(document.body).off("popover")
+
+            $(document.body).one "click.popover", () =>
+                closeAll()
+
+
+        $el.on "popup:close", () => closePopover(onClose)
+
+
+
+    close = () =>
+        $el.trigger("popup:close")
+
+    return {open: open, close: close, closeAll: closeAll}

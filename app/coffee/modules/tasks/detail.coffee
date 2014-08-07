@@ -211,11 +211,7 @@ TaskStatusDirective = () ->
             $el.on "click", ".status-data", (event) ->
                 event.preventDefault()
                 event.stopPropagation()
-                $(".popover").hide()
-                $el.find(".pop-status").show()
-                body = angular.element("body")
-                body.one "click", (event) ->
-                    $el.find(".popover").hide()
+                $el.find(".pop-status").popover().open()
 
             $el.on "click", ".status", (event) ->
                 event.preventDefault()
@@ -223,7 +219,7 @@ TaskStatusDirective = () ->
                 target = angular.element(event.currentTarget)
                 $model.$modelValue.status = target.data("status-id")
                 renderTaskstatus($model.$modelValue)
-                $el.find(".popover").hide()
+                $el.find(".popover").popover().close()
 
     return {link:link, require:"ngModel"}
 

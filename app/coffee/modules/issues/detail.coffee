@@ -253,11 +253,7 @@ IssueStatusDirective = () ->
             $el.on "click", ".severity-data", (event) ->
                 event.preventDefault()
                 event.stopPropagation()
-                $(".popover").hide()
-                $el.find(".pop-severity").show()
-                body = angular.element("body")
-                body.one "click", (event) ->
-                    $el.find(".popover").hide()
+                $el.find(".pop-severity").popover().open()
 
             $el.on "click", ".severity", (event) ->
                 event.preventDefault()
@@ -265,16 +261,12 @@ IssueStatusDirective = () ->
                 target = angular.element(event.currentTarget)
                 $model.$modelValue.severity = target.data("severity-id")
                 renderIssuestatus($model.$modelValue)
-                $el.find(".popover").hide()
+                $.fn.popover().closeAll()
 
             $el.on "click", ".priority-data", (event) ->
                 event.preventDefault()
                 event.stopPropagation()
-                $(".popover").hide()
-                $el.find(".pop-priority").show()
-                body = angular.element("body")
-                body.one "click", (event) ->
-                    $el.find(".popover").hide()
+                $el.find(".pop-priority").popover().open()
 
             $el.on "click", ".priority", (event) ->
                 event.preventDefault()
@@ -282,16 +274,12 @@ IssueStatusDirective = () ->
                 target = angular.element(event.currentTarget)
                 $model.$modelValue.priority = target.data("priority-id")
                 renderIssuestatus($model.$modelValue)
-                $el.find(".popover").hide()
+                $.fn.popover().closeAll()
 
             $el.on "click", ".status-data", (event) ->
                 event.preventDefault()
                 event.stopPropagation()
-                $(".popover").hide()
-                $el.find(".pop-status").show()
-                body = angular.element("body")
-                body.one "click", (event) ->
-                    $el.find(".popover").hide()
+                $el.find(".pop-status").popover().open()
 
             $el.on "click", ".status", (event) ->
                 event.preventDefault()
@@ -299,7 +287,7 @@ IssueStatusDirective = () ->
                 target = angular.element(event.currentTarget)
                 $model.$modelValue.status = target.data("status-id")
                 renderIssuestatus($model.$modelValue)
-                $el.find(".popover").hide()
+                $.fn.popover().closeAll()
 
     return {link:link, require:"ngModel"}
 
