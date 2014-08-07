@@ -147,14 +147,24 @@ IssueDirective = ($tgrepo, $log, $location, $confirm) ->
             if not form.validate()
                 return
 
-            $tgrepo.save($scope.issue).then ->
+            onSuccess = ->
                 $confirm.notify("success")
                 $location.path("/project/#{$scope.project.slug}/issues/#{$scope.issue.ref}")
 
+            onError = ->
+                $confirm.notify("error")
+
+            $tgrepo.save($scope.issue).then(onSuccess, onError)
+
         $el.on "click", ".add-comment a.button-green", (event) ->
             event.preventDefault()
-            $tgrepo.save($scope.issue).then ->
+            onSuccess = ->
                 $ctrl.loadHistory()
+
+            onError = ->
+                $confirm.notify("error")
+
+            $tgrepo.save($scope.issue).then(onSuccess, onError)
 
         $el.on "focus", ".add-comment textarea", (event) ->
             $(this).addClass('active')
