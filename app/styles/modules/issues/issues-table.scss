@@ -43,6 +43,11 @@
     .subject {
         @include table-flex-child(7, 300px, 0, 300px);
         padding-right: 1rem;
+        span {
+            &:first-child {
+                margin-right: .5rem;
+            }
+        }
     }
     .issue-field,
     .assigned-field {
