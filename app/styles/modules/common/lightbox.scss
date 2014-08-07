@@ -362,7 +362,7 @@
 }
 
 .lightbox_block {
-    form {
+    .form {
         @include table-flex-child(0, 420px, 0, 420px);
     }
     textarea {
@@ -373,7 +373,7 @@
 }
 
 .lightbox_select_user {
-    form {
+    .form {
         @include table-flex-child(0, 600px, 0, 600px);
     }
     .watchers {
