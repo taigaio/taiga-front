@@ -55,7 +55,7 @@ ColorizeTagDirective = ->
     link = ($scope, $el, $attrs, $ctrl) ->
         text = $scope.$eval($attrs.tgColorizeTag)
         color = textToColor(text)
-        $el.css("background", color)
+        $el.css("border-left", "5px solid " + color)
 
     return {link: link}
 

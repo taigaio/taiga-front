@@ -1,12 +1,12 @@
 .tag {
-    background: $grayer; // Fallback
-    color: $white;
+    background: $whitish; // Fallback
+    color: $grayer;
     display: inline-block;
-    margin: 0 0 .5rem;
+    margin-right: .5rem;
     padding: .2rem .5rem;
     text-align: center;
     .icon-delete {
-        color: $white;
+        color: $gray-light;
         margin-left: 1rem;
         &:hover {
             color: $red;

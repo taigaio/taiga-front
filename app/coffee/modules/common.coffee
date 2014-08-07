@@ -42,7 +42,7 @@ TagLineDirective = ($log) ->
     # Tags template (rendered manually using lodash)
     templateTags = _.template("""
     <% _.each(tags, function(tag) { %>
-        <div class="tag" style="background: <%- tag.color %>;">
+        <div class="tag" style="border-left: 5px solid <%- tag.color %>;">
             <span class="tag-name"><%- tag.name %></span>
             <% if (editable) { %>
             <a href="" title="delete tag" class="icon icon-delete"></a>
