@@ -2,31 +2,38 @@ section.default-values
     form
         fieldset
             label(for="default-points") Default value for points selector
-            select(id="default-points", ng-model="project.default_points", ng-options="s.id as s.name for s in pointsList")
+            select(id="default-points", ng-model="project.default_points",
+                   ng-options="s.id as s.name for s in pointsList")
 
         fieldset
             label(for="default-value-us") Default value for US status selector
-            select(id="default-value-us", ng-model="project.default_us_status", ng-options="s.id as s.name for s in usStatusList")
+            select(id="default-value-us", ng-model="project.default_us_status",
+                   ng-options="s.id as s.name for s in usStatusList")
 
         fieldset
             label(for="default-value-task") Default value for task status selector
-            select(id="default-value-task", ng-model="project.default_task_status", ng-options="s.id as s.name for s in taskStatusList")
+            select(id="default-value-task", ng-model="project.default_task_status",
+                   ng-options="s.id as s.name for s in taskStatusList")
 
         fieldset
             label(for="default-value-priority") Default value for priority selector
-            select(id="default-value-priority", ng-model="project.default_priority", ng-options="s.id as s.name for s in prioritiesList")
+            select(id="default-value-priority", ng-model="project.default_priority",
+                   ng-options="s.id as s.name for s in prioritiesList")
 
         fieldset
             label(for="default-value-severity") Default value for severity selector
-            select(id="default-value-severity", ng-model="project.default_severity", ng-options="s.id as s.name for s in severitiesList")
+            select(id="default-value-severity", ng-model="project.default_severity",
+                   ng-options="s.id as s.name for s in severitiesList")
 
         fieldset
             label(for="default-value-issue-type") Default value for issue type selector
-            select(id="default-value-issue-type", ng-model="project.default_issue_type", ng-options="s.id as s.name for s in issueTypesList")
+            select(id="default-value-issue-type", ng-model="project.default_issue_type",
+                   ng-options="s.id as s.name for s in issueTypesList")
 
         fieldset
             label(for="default-value-issue-status") Default value for issue status selector
-            select(id="default-value-issue-status", ng-model="project.default_issue_status", ng-options="s.id as s.name for s in issueStatusList")
+            select(id="default-value-issue-status", ng-model="project.default_issue_status",
+                   ng-options="s.id as s.name for s in issueStatusList")
 
         fieldset
             input(type="submit", class="hidden")

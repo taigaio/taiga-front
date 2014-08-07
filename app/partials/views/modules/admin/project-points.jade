@@ -12,19 +12,26 @@ section.project-values-table
             div(ng-repeat="value in values")
                 div.project-values-row.row.table-main.visualization
                     span.icon.icon-drag-v
+
                     div.project-values-name
-                         span {{ value.name }}
+                        span {{ value.name }}
+
                     div.project-values-value
                         span {{ value.value }}
+
                     div.project-values-settings
                         a.edit-value.icon.icon-edit(href="", title="Edit value")
                         a.delete-value.icon.icon-delete(href="", title="Delete value")
 
                 div.project-values-row.row.table-main.edition.hidden
                     div.project-values-name
-                        input(name="name", type="text", placeholder="Name", ng-model="value.name")
+                        input(name="name", type="text", placeholder="Name", ng-model="value.name",
+                            data-required="true")
+
                     div.project-values-value
-                        input(name="name", type="text", placeholder="Value", ng-model="value.value")
+                        input(name="name", type="text", placeholder="Value", ng-model="value.value",
+                            data-type="number")
+
                     div.project-values-settings
                         a.save.icon.icon-floppy(href="", title="Add")
                         a.cancel.icon.icon-delete(href="", title="Delete")
@@ -32,9 +39,12 @@ section.project-values-table
         form
             div.project-values-row.new-value.hidden
                 div.project-values-name
-                     input(name="name", type="text", placeholder="Name", ng-model="newValue.name")
+                     input(name="name", type="text", placeholder="Name", ng-model="newValue.name",
+                         data-required="true")
+
                 div.project-values-value
-                    input("name=value", type="text", placeholder="Value", ng-model="newValue.value")
+                    input("name=value", type="text", placeholder="Value", ng-model="newValue.value",
+                          data-type="number")
 
                 div.project-values-settings
                     a.add-new.icon.icon-floppy(href="", title="Add")

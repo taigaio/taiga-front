@@ -12,14 +12,19 @@ section.colors-table
             div(ng-repeat="value in values")
                 div.row.table-main.visualization
                     span.icon.icon-drag-v
+
                     div.color-column
                         div.current-color(style="background: {{ value.color }}")
+
                     div.status-name
                         span {{ value.name }}
+
                     div.is-closed-column
                         div.icon.icon-check-square(ng-show="value.is_closed")
+
                     div.status-wip-limit
                         span {{ value.wip_limit }}
+
                     div.options-column
                         a.edit-value.icon.icon-edit(href="", title="Edit value")
                         a.delete-value.icon.icon-delete(href="", title="Delete value")
@@ -30,11 +35,16 @@ section.colors-table
                         include ../../components/select-color
 
                     div.status-name
-                        input(name="name", type="text", placeholder="Write a name for the new status", ng-model="value.name", data-required="true", data-maxlength="255")
+                        input(name="name", type="text", placeholder="Write a name for the new status",
+                            ng-model="value.name", data-required="true", data-maxlength="255")
+
                     div.is-closed-column
-                        select(name="is_closed", ng-model="value.is_closed", ng-options="e.id as e.name for e in [{'id':true, 'name':'Yes'},{'id':false, 'name': 'No'}]", data-required="true")
+                        select(name="is_closed", ng-model="value.is_closed", data-required="true",
+                               ng-options="e.id as e.name for e in [{'id':true, 'name':'Yes'},{'id':false, 'name': 'No'}]")
                     div.status-wip-limit
-                        input(name="wip_limit", type="text", placeholder="WIP Limit", ng-model="value.wip_limit")
+                        input(name="wip_limit", type="number", placeholder="WIP Limit",
+                            ng-model="value.wip_limit", data-type="digits")
+
                     div.options-column
                         a.save.icon.icon-floppy(href="", title="Add")
                         a.cancel.icon.icon-delete(href="", title="Delete")
@@ -46,9 +56,17 @@ section.colors-table
                     include ../../components/select-color
 
                 div.status-name
-                    input(name="name", type="text", placeholder="Write a name for the new status", ng-model="newValue.name", data-required="true", data-maxlength="255")
+                    input(name="name", type="text", placeholder="Write a name for the new status",
+                          ng-model="newValue.name", data-required="true", data-maxlength="255")
+
                 div.is-closed-column
-                    select(name="is_closed", ng-model="newValue.is_closed", ng-options="e.id as e.name for e in [{'id':true, 'name':'Yes'},{'id':false, 'name': 'No'}]", data-required="true")
+                    select(name="is_closed", ng-model="newValue.is_closed", data-required="true",
+                           ng-options="e.id as e.name for e in [{'id':true, 'name':'Yes'},{'id':false, 'name': 'No'}]")
+
+                div.status-wip-limit
+                    input(name="wip_limit", type="number", placeholder="WIP Limit",
+                          ng-model="newValue.wip_limit", data-type="digits")
+
                 div.options-column
                     a.add-new.icon.icon-floppy(href="", title="Add")
                     a.delete-new.icon.icon-delete(href="", title="Delete")

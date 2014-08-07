@@ -142,8 +142,7 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location) ->
                 $confirm.notify("success")
 
             promise.then null, (data) ->
-                console.log "FAIL"
-                # TODO
+                $confirm.notify("error", data._error_message)
 
         $el.on "submit", "form", (event) ->
             event.preventDefault()
@@ -171,6 +170,7 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location) ->
                 initializeNewValue()
 
             promise.then null, (data) ->
+                $confirm.notify("error")
                 form.setErrors(data)
 
         $el.on "click", ".delete-new", (event) ->
@@ -200,6 +200,7 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location) ->
                 row.siblings(".visualization").css("display": "flex")
 
             promise.then null, (data) ->
+                $confirm.notify("error")
                 form.setErrors(data)
 
         $el.on "click", ".cancel", (event) ->
@@ -218,8 +219,11 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location) ->
             title = "Delete"
             subtitle = value.name
             $confirm.ask(title, subtitle).then =>
-                $repo.remove(value).then =>
+                onSucces = ->
                     $ctrl.loadValues()
+                onError = ->
+                    $confirm.notify("error")
+                $repo.remove(value).then(onSucces, onError)
 
     link = ($scope, $el, $attrs) ->
         linkDragAndDrop($scope, $el, $attrs)

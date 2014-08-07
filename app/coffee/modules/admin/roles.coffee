@@ -115,7 +115,7 @@ RolesDirective =  ->
 
 module.directive("tgRoles", RolesDirective)
 
-NewRoleDirective = ($tgrepo) ->
+NewRoleDirective = ($tgrepo, $confirm) ->
     DEFAULT_PERMISSIONS = ["view_project", "view_milestones", "view_us", "view_tasks", "view_issues"]
 
     link = ($scope, $el, $attrs) ->
@@ -145,10 +145,15 @@ NewRoleDirective = ($tgrepo) ->
                 $el.find(".new").addClass("hidden")
                 $el.find(".new").val('')
 
-                $tgrepo.create("roles", newRole).then (role) ->
+                onSuccess = (role) ->
                     $scope.roles.push(role)
                     $ctrl.setRole(role)
-                $el.find(".add-button").show()
+                    $el.find(".add-button").show()
+
+                onError = ->
+                    $confirm.notify("error")
+
+                $tgrepo.create("roles", newRole).then(onSuccess, onError)
 
             else if event.keyCode == 27  # ESC key
                 target = angular.element(event.currentTarget)
@@ -158,44 +163,44 @@ NewRoleDirective = ($tgrepo) ->
 
     return {link:link}
 
-module.directive("tgNewRole", ["$tgRepo", NewRoleDirective])
+module.directive("tgNewRole", ["$tgRepo", "$tgConfirm", NewRoleDirective])
 
 
 # Use category-config.scss styles
 RolePermissionsDirective = ($repo, $confirm) ->
     resumeTemplate = _.template("""
-          <div class="resume-title"><%- category.name %></div>
-          <div class="count"><%- category.activePermissions %>/<%- category.permissions.length %></div>
-          <div class="summary-role">
-          <% _.each(category.permissions, function(permission) { %>
-            <div class="role-summary-single <% if(permission.active) { %>active<% } %>" title="<%- permission.description %>"></div>
-          <% }) %>
-          </div>
-          <div class="icon icon-arrow-bottom"></div>
+    <div class="resume-title"><%- category.name %></div>
+    <div class="count"><%- category.activePermissions %>/<%- category.permissions.length %></div>
+    <div class="summary-role">
+    <% _.each(category.permissions, function(permission) { %>
+        <div class="role-summary-single <% if(permission.active) { %>active<% } %>"
+             title="<%- permission.description %>"></div>
+    <% }) %>
+    </div>
+    <div class="icon icon-arrow-bottom"></div>
     """)
 
     categoryTemplate = _.template("""
-          <div class="category-config" data-id="<%- index %>">
-            <div class="resume">
-            </div>
-            <div class="category-items">
-              <div class="items-container">
-              <% _.each(category.permissions, function(permission) { %>
+    <div class="category-config" data-id="<%- index %>">
+        <div class="resume">
+        </div>
+        <div class="category-items">
+            <div class="items-container">
+            <% _.each(category.permissions, function(permission) { %>
                 <div class="category-item" data-id="<%- permission.key %>"> <%- permission.description %>
-                  <div class="check">
-                    <input type="checkbox" <% if(permission.active) { %>checked="checked"<% } %>/>
-                    <div></div>
-                  </div>
+                    <div class="check">
+                        <input type="checkbox" <% if(permission.active) { %>checked="checked"<% } %>/>
+                        <div></div>
+                    </div>
                 </div>
-              <% }) %>
-              </div>
+            <% }) %>
             </div>
-          </div>
+        </div>
+    </div>
     """)
 
     baseTemplate = _.template("""
-        <div class="category-config-list">
-        </div>
+    <div class="category-config-list"></div>
     """)
 
     link = ($scope, $el, $attrs) ->

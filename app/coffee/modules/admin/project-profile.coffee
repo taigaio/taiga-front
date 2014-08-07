@@ -119,8 +119,7 @@ ProjectFeaturesDirective = ($log, $repo, $confirm) ->
                 $scope.$emit("project:loaded", $scope.project)
 
             promise.then null, (data) ->
-                console.log "FAIL"
-                # TODO
+                $confirm.notify("error", data._error_message)
 
         $el.on "submit", "form", (event) ->
             event.preventDefault()
