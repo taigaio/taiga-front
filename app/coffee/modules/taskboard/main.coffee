@@ -232,7 +232,6 @@ TaskboardUserDirective = ($log) ->
     <figure class="avatar">
         <a href="#" title="<%- name %>" <% if (!clickable) {%>class="not-clickable"<% } %>>
             <img src="<%= imgurl %>" alt="<%- name %>">
-            <figcaption><%- name %></figcaption>
         </a>
     </figure>
     """)
@@ -259,7 +258,7 @@ TaskboardUserDirective = ($log) ->
 
             html = template(ctx)
             $el.html(html)
-
+            $el.parent().find("span.task-assigned").html(ctx.name)
 
         bindOnce $scope, "project", (project) ->
             if project.my_permissions.indexOf("modify_task") > -1

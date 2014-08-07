@@ -1,9 +1,9 @@
 div.kanban-tagline
     a.kanban-tag(ng-repeat="tag in us.tags", href="", tg-bo-title="tag", tg-colorize-tag-background="tag")
 div.kanban-task-inner
-    div(tg-kanban-user-avatar="us.assigned_to", ng-model="us")
+    div(tg-kanban-user-avatar="us.assigned_to", ng-model="us", click="ctrl.editUsAssignedTo(task)")
     div.task-text
-        span.task-assigned Username
+        span.task-assigned
         span.task-num(tg-bo-ref="us.ref")
         a.task-name(href="", title="", tg-bind-html="us.subject",
                     tg-nav="project-userstories-detail:project=project.slug,ref=us.ref")

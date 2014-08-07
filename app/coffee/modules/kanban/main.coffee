@@ -283,9 +283,6 @@ KanbanUserDirective = ($log) ->
     <figure class="avatar">
         <a href="#" title="<%- name %>" <% if (!clickable) {%>class="not-clickable"<% } %>>
             <img src="<%= imgurl %>" alt="<%- name %>" class="avatar">
-            <span class="assigned-to">
-                <span><%- name %></span>
-            </span>
         </a>
     </figure>
     """)
@@ -312,6 +309,7 @@ KanbanUserDirective = ($log) ->
 
             html = template(ctx)
             $el.html(html)
+            $el.parent().find("span.task-assigned").html(ctx.name)
 
         bindOnce $scope, "project", (project) ->
             if project.my_permissions.indexOf("modify_us") > -1
