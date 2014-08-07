@@ -27,6 +27,7 @@ scopeDefer = @.taiga.scopeDefer
 bindOnce = @.taiga.bindOnce
 groupBy = @.taiga.groupBy
 textToColor = @.taiga.textToColor
+bindOnce = @.taiga.bindOnce
 
 module = angular.module("taigaBacklog")
 
@@ -707,7 +708,7 @@ UsPointsDirective = ($repo) ->
                     $repo.refresh(us).then ->
                         $ctrl.loadProjectStats()
 
-        taiga.bindOnce $scope, "project", (project) ->
+        bindOnce $scope, "project", (project) ->
             # If the user has not enough permissions the click events are unbinded
             if project.my_permissions.indexOf("modify_us") == -1
                 $el.unbind("click")

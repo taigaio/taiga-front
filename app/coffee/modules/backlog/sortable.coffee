@@ -46,40 +46,44 @@ BacklogSortableDirective = ($repo, $rs, $rootscope) ->
     # helper-in-wrong-place-when-scrolled-down-page
 
     link = ($scope, $el, $attrs) ->
-        $el.sortable({
-            connectWith: ".sprint-table"
-            handle: ".icon-drag-v",
-            containment: ".wrapper"
-            dropOnEmpty: true
-            placeholder: "row us-item-row us-item-drag sortable-placeholder"
-            # With scroll activated, it has strange behavior
-            # with not full screen browser window.
-            scroll: false
-            # A consequence of length of backlog user story item
-            # the default tolerance ("intersection") not works properly.
-            tolerance: "pointer"
-            # Revert on backlog is disabled bacause it works bad. Something
-            # on the current taiga backlog structure or style makes jquery ui
-            # works unexpectly (in some circumstances calculates wrong
-            # position for revert).
-            revert: false
-        })
+        bindOnce $scope, "project", (project) ->
+            # If the user has not enough permissions we don't enable the sortable
+            if project.my_permissions.indexOf("modify_us") > -1
 
-        $el.on "sortreceive", (event, ui) ->
-            itemUs = ui.item.scope().us
-            itemIndex = ui.item.index()
+                $el.sortable({
+                    connectWith: ".sprint-table"
+                    handle: ".icon-drag-v",
+                    containment: ".wrapper"
+                    dropOnEmpty: true
+                    placeholder: "row us-item-row us-item-drag sortable-placeholder"
+                    # With scroll activated, it has strange behavior
+                    # with not full screen browser window.
+                    scroll: false
+                    # A consequence of length of backlog user story item
+                    # the default tolerance ("intersection") not works properly.
+                    tolerance: "pointer"
+                    # Revert on backlog is disabled bacause it works bad. Something
+                    # on the current taiga backlog structure or style makes jquery ui
+                    # works unexpectly (in some circumstances calculates wrong
+                    # position for revert).
+                    revert: false
+                })
 
-            deleteElement(ui.item)
-            $scope.$emit("sprint:us:move", itemUs, itemIndex, null)
+                $el.on "sortreceive", (event, ui) ->
+                    itemUs = ui.item.scope().us
+                    itemIndex = ui.item.index()
 
-        $el.on "sortstop", (event, ui) ->
-            # When parent not exists, do nothing
-            if ui.item.parent().length == 0
-                return
+                    deleteElement(ui.item)
+                    $scope.$emit("sprint:us:move", itemUs, itemIndex, null)
 
-            itemUs = ui.item.scope().us
-            itemIndex = ui.item.index()
-            $scope.$emit("sprint:us:move", itemUs, itemIndex, null)
+                $el.on "sortstop", (event, ui) ->
+                    # When parent not exists, do nothing
+                    if ui.item.parent().length == 0
+                        return
+
+                    itemUs = ui.item.scope().us
+                    itemIndex = ui.item.index()
+                    $scope.$emit("sprint:us:move", itemUs, itemIndex, null)
 
         $scope.$on "$destroy", ->
             $el.off()
@@ -89,27 +93,30 @@ BacklogSortableDirective = ($repo, $rs, $rootscope) ->
 
 SprintSortableDirective = ($repo, $rs, $rootscope) ->
     link = ($scope, $el, $attrs) ->
-        $el.sortable({
-            dropOnEmpty: true
-            connectWith: ".sprint-table,.backlog-table-body"
-        })
+        bindOnce $scope, "project", (project) ->
+            # If the user has not enough permissions we don't enable the sortable
+            if project.my_permissions.indexOf("modify_us") > -1
+                $el.sortable({
+                    dropOnEmpty: true
+                    connectWith: ".sprint-table,.backlog-table-body"
+                })
 
-        $el.on "sortreceive", (event, ui) ->
-            itemUs = ui.item.scope().us
-            itemIndex = ui.item.index()
+                $el.on "sortreceive", (event, ui) ->
+                    itemUs = ui.item.scope().us
+                    itemIndex = ui.item.index()
 
-            deleteElement(ui.item)
-            $scope.$emit("sprint:us:move", itemUs, itemIndex, $scope.sprint.id)
+                    deleteElement(ui.item)
+                    $scope.$emit("sprint:us:move", itemUs, itemIndex, $scope.sprint.id)
 
-        $el.on "sortstop", (event, ui) ->
-            # When parent not exists, do nothing
-            if ui.item.parent().length == 0
-                return
+                $el.on "sortstop", (event, ui) ->
+                    # When parent not exists, do nothing
+                    if ui.item.parent().length == 0
+                        return
 
-            itemUs = ui.item.scope().us
-            itemIndex = ui.item.index()
+                    itemUs = ui.item.scope().us
+                    itemIndex = ui.item.index()
 
-            $scope.$emit("sprint:us:move", itemUs, itemIndex, $scope.sprint.id)
+                    $scope.$emit("sprint:us:move", itemUs, itemIndex, $scope.sprint.id)
 
     return {link:link}
 
