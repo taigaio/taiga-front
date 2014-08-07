@@ -3,7 +3,7 @@ div.kanban-tagline
 div.kanban-task-inner
     div(tg-kanban-user-avatar="us.assigned_to", ng-model="us", click="ctrl.editUsAssignedTo(task)")
     div.task-text
-        span.task-assigned
+        a.task-assigned(href="", ng-click="ctrl.editUsAssignedTo(task)", title="Change assignation")
         span.task-num(tg-bo-ref="us.ref")
         a.task-name(href="", title="", tg-bind-html="us.subject",
                     tg-nav="project-userstories-detail:project=project.slug,ref=us.ref")

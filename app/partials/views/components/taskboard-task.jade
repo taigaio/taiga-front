@@ -3,7 +3,7 @@ div.taskboard-tagline
 div.taskboard-task-inner
     div(tg-taskboard-user-avatar="task.assigned_to", ng-model="task", click="ctrl.editTaskAssignedTo(task)")
     p.taskboard-text
-        span.task-assigned
+        a.task-assigned(href="", ng-click="ctrl.editTaskAssignedTo(task)", title="Change assignation")
         span.task-num(tg-bo-ref="task.ref")
         a.task-name(href="", title="See task details", tg-bind-html="task.subject",
                     tg-nav="project-tasks-detail:project=project.slug,ref=task.ref")

@@ -281,11 +281,11 @@ module.directive("tgKanbanWipLimit", KanbanWipLimitDirective)
 KanbanUserDirective = ($log) ->
     template = _.template("""
     <figure class="avatar">
-        <a href="#" title="<%- name %>" <% if (!clickable) {%>class="not-clickable"<% } %>>
+        <a href="#" title="Change assignation" <% if (!clickable) {%>class="not-clickable"<% } %>>
             <img src="<%= imgurl %>" alt="<%- name %>" class="avatar">
         </a>
     </figure>
-    """)
+    """) # TODO: i18n
 
     clickable = false
 
@@ -309,7 +309,7 @@ KanbanUserDirective = ($log) ->
 
             html = template(ctx)
             $el.html(html)
-            $el.parent().find("span.task-assigned").html(ctx.name)
+            $el.parent().find("a.task-assigned").html(ctx.name)
 
         bindOnce $scope, "project", (project) ->
             if project.my_permissions.indexOf("modify_us") > -1
