@@ -63,10 +63,10 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService) ->
                     lightboxService.close($el)
                     $rootscope.$broadcast("sprintform:remove:success")
 
-        $scope.$on "sprintform:create", ->
+        $scope.$on "sprintform:create", (event, projectId) ->
             createSprint = true
             $scope.sprint = {
-                project: $scope.projectId
+                project: projectId
                 name: null
                 estimated_start: null
                 estimated_finish: null

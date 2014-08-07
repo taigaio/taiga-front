@@ -362,7 +362,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
                                                    @scope.project.default_us_status)
 
     addNewSprint: () ->
-        @rootscope.$broadcast("sprintform:create")
+        @rootscope.$broadcast("sprintform:create", @scope.projectId)
 
 module.controller("BacklogController", BacklogController)
 
