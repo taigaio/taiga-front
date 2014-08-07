@@ -4,7 +4,7 @@ block head
     title Taiga  Project management web application with scrum in mind!
 
 block content
-    div.wrapper(tg-us-detail, ng-controller="UserStoryDetailController as ctrl",
+    form.wrapper(tg-us-detail, ng-controller="UserStoryDetailController as ctrl",
                 ng-init="section='backlog'")
         div.main.us-detail
             div.us-detail-header
@@ -13,7 +13,7 @@ block content
 
             section.us-story-main-data
                 div.us-title(ng-class="{blocked: us.is_blocked}")
-                    input(type="text", ng-model="us.subject")
+                    input(type="text", ng-model="us.subject", data-required="true", data-maxlength="500")
                     p.block-desc-container(ng-show="us.is_blocked")
                         span.block-description-title Blocked
                         span.block-description(tg-bind-html="us.blocked_note || 'This US is blocked'")

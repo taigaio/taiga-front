@@ -142,9 +142,13 @@ UsDirective = ($tgrepo, $log, $location, $confirm) ->
 
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
+        form = $el.checksley()
         linkSidebar($scope, $el, $attrs, $ctrl)
 
         $el.on "click", ".save-us", (event) ->
+            if not form.validate()
+                return
+
             $tgrepo.save($scope.us).then ->
                 $confirm.notify("success")
                 $location.path("/project/#{$scope.project.slug}/us/#{$scope.us.ref}")
