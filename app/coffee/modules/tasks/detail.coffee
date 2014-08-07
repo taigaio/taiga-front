@@ -129,8 +129,10 @@ TaskDirective = ($tgrepo, $log, $location, $confirm) ->
 
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
-        form = $el.checksley()
         linkSidebar($scope, $el, $attrs, $ctrl)
+
+        if $el.is("form")
+            form = $el.checksley()
 
         $el.on "click", ".save-task", (event) ->
             if not form.validate()
@@ -147,7 +149,6 @@ TaskDirective = ($tgrepo, $log, $location, $confirm) ->
 
         $el.on "focus", ".add-comment textarea", (event) ->
             $(this).addClass('active')
-
 
         $el.on "click", ".us-activity-tabs li a", (event) ->
             $el.find(".us-activity-tabs li a").toggleClass("active")
