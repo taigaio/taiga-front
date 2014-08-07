@@ -38,14 +38,13 @@
         }
         .assigned-to {
             color: darken($postit-hover, 15%);
-            display: block;
+            display: none;
             overflow: hidden;
             position: relative;
             text-overflow: ellipsis;
             top: -6px;
             white-space: nowrap;
             width: 50px;
-            display: none;
         }
     }
     .task-assigned {
