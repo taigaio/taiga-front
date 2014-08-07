@@ -51,15 +51,23 @@ TagsDirective = ->
 module.directive("tgTags", TagsDirective)
 
 
-ColorizeTagDirective = ->
+ColorizeTagBackgroundDirective = ->
     link = ($scope, $el, $attrs, $ctrl) ->
-        text = $scope.$eval($attrs.tgColorizeTag)
+        text = $scope.$eval($attrs.tgColorizeTagBackground)
         color = textToColor(text)
-        $el.css("border-left", "5px solid " + color)
+        $el.css("background", color)
 
     return {link: link}
 
-module.directive("tgColorizeTag", ColorizeTagDirective)
+module.directive("tgColorizeTagBackground", ColorizeTagBackgroundDirective)
 
 
+ColorizeTagBorderLeftDirective = ->
+    link = ($scope, $el, $attrs, $ctrl) ->
+        text = $scope.$eval($attrs.tgColorizeTagBorderLeft)
+        color = textToColor(text)
+        $el.css("border-left", "5px solid #{color}")
 
+    return {link: link}
+
+module.directive("tgColorizeTagBorderLeft", ColorizeTagBorderLeftDirective)

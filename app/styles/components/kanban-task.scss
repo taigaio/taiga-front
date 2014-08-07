@@ -13,8 +13,10 @@
     }
     .kanban-tagline {
         @include table-flex();
+        background: $gray-light; //Fallback
+        height: .3rem;
     }
-    .taskboard-tag {
+    .kanban-tag {
         @include table-flex-child(1, 0, 0, 0);
         background: $postit-hover; //Fallback
         height: .3rem;
