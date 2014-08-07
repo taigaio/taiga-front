@@ -1,7 +1,7 @@
 div.kanban-tagline
     a.taskboard-tag(ng-repeat="tag in us.tags", href="", tg-bo-title="tag", tg-colorize-tag="tag")
 div.kanban-task-inner
-    div(tg-kanban-user-avatar="us.assigned_to", click="ctrl.changeUsAssignedTo(us)")
+    div(tg-kanban-user-avatar="us.assigned_to", ng-model="us")
     div.task-text
         span.task-assigned Username
         span.task-num(tg-bo-ref="us.ref")
@@ -10,5 +10,5 @@ div.kanban-task-inner
         p.task-points
             span(tg-bind-html="us.total_points") --
             span points
-    a.icon.icon-edit(href="", title="Edit", ng-click="ctrl.editUserStory(us)")
-    a.icon.icon-drag-h(href="", title="Drag&Drop")
+    a.icon.icon-edit(tg-check-permission, permission="modify_us", href="", title="Edit", ng-click="ctrl.editUserStory(us)")
+    a.icon.icon-drag-h(tg-check-permission, permission="modify_us", href="", title="Drag&Drop")

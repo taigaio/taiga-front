@@ -281,7 +281,7 @@ module.directive("tgKanbanWipLimit", KanbanWipLimitDirective)
 KanbanUserDirective = ($log) ->
     template = _.template("""
     <figure class="avatar">
-        <a href="#" title="<%- name %>">
+        <a href="#" title="<%- name %>" <% if (!clickable) {%>class="not-clickable"<% } %>>
             <img src="<%= imgurl %>" alt="<%- name %>" class="avatar">
             <span class="assigned-to">
                 <span><%- name %></span>
@@ -291,8 +291,9 @@ KanbanUserDirective = ($log) ->
     """)
 
     uniqueId = _.uniqueId("user_photo")
+    clickable = false
 
-    link = ($scope, $el, $attrs) ->
+    link = ($scope, $el, $attrs, $model) ->
         if not $attrs.tgKanbanUserAvatar
             return $log.error "KanbanUserDirective: no attr is defined"
 
@@ -306,21 +307,23 @@ KanbanUserDirective = ($log) ->
 
         render = (user) ->
             if user is undefined
-                ctx = {name: "Unassigned", imgurl: "/images/unnamed.png"}
+                ctx = {name: "Unassigned", imgurl: "/images/unnamed.png", clickable: clickable}
             else
-                ctx = {name: user.full_name_display, imgurl: user.photo}
+                ctx = {name: user.full_name_display, imgurl: user.photo, clickable: clickable}
 
             html = template(ctx)
             $el.off(".#{uniqueId}")
             $el.html(html)
-            $el.on "click.#{uniqueId}", "figure.avatar > a", (event) ->
-                if not $attrs.click?
-                    return $log.error "KanbanUserDirective: No click attr is defined."
 
-                $scope.$apply ->
-                    $scope.$eval($attrs.click)
+        bindOnce $scope, "project", (project) ->
+            if project.my_permissions.indexOf("modify_us") > -1
+                clickable = true
+                $el.on "click", (event) =>
+                    us = $model.$modelValue
+                    $ctrl = $el.controller()
+                    $ctrl.changeUsAssignedTo(us)
 
-    return {link: link}
+    return {link: link, require:"ngModel"}
 
 
 module.directive("tgKanbanUserAvatar", ["$log", KanbanUserDirective])
