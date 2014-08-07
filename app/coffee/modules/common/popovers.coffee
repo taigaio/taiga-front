@@ -104,11 +104,32 @@ module.directive("tgUsStatus", ["$tgRepo", UsStatusDirective])
 $.fn.popover = () ->
     $el = @
 
+    isVisible = () =>
+        $el.css({
+            "display": "block",
+            "visibility": "hidden"
+        })
+
+        docViewTop = $(window).scrollTop()
+        docViewBottom = docViewTop + $(window).height()
+
+        elemTop = $el.offset().top
+        elemBottom = elemTop + $el.height()
+
+        $el.css({
+            "display": "none",
+            "visibility": "visible"
+        })
+
+        return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop))
+
     closePopover = (onClose) =>
         if onClose then onClose.call($el)
 
         $el.fadeOut () =>
-            $el.removeClass("active")
+            $el
+                .removeClass("active")
+                .removeClass("fix")
 
         $el.off("popup:close")
 
@@ -120,6 +141,9 @@ $.fn.popover = () ->
     open = (onClose) =>
         closeAll()
 
+        if !isVisible()
+            $el.addClass("fix")
+
         $el
         .fadeIn () =>
             $el.addClass("active")
@@ -128,10 +152,7 @@ $.fn.popover = () ->
             $(document.body).one "click.popover", () =>
                 closeAll()
 
-
         $el.on "popup:close", () => closePopover(onClose)
-
-
 
     close = () =>
         $el.trigger("popup:close")
