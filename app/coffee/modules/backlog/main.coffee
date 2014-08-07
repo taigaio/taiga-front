@@ -479,11 +479,19 @@ BacklogDirective = ($repo, $rootscope) ->
         $scope.filtersSearch = {}
         $el.on "click", "#show-filters-button", (event) ->
             event.preventDefault()
+
+            sidebar = $el.find("sidebar.filters-bar")
+            sidebar.one "transitionend", () ->
+                setTimeout ( ->
+                    $rootscope.$broadcast("resize")
+                    $('.burndown').css("visibility", "visible")
+                ), 150
+
             target = angular.element(event.currentTarget)
-            $el.find("sidebar.filters-bar").toggleClass("active")
+            $('.burndown').css("visibility", "hidden")
+            sidebar.toggleClass("active")
             target.toggleClass("active")
             toggleText(target.find(".text"), ["Hide Filters", "Show Filters"]) # TODO: i18n
-            $rootscope.$broadcast("resize")
 
     link = ($scope, $el, $attrs, $rootscope) ->
         $ctrl = $el.controller()

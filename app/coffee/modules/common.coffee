@@ -367,3 +367,32 @@ CheckPermissionDirective = ->
     return {link:link}
 
 module.directive("tgCheckPermission", CheckPermissionDirective)
+
+#############################################################################
+## Animation frame service, apply css changes in the next render frame
+#############################################################################
+AnimationFrame = () ->
+    animationFrame =
+        window.requestAnimationFrame       ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame
+
+    performAnimation = (time) =>
+        fn = tail.shift()
+        fn()
+
+        if (tail.length)
+            animationFrame(performAnimation)
+
+    tail = []
+
+    add = () ->
+        for fn in arguments
+            tail.push(fn)
+
+            if tail.length == 1
+                animationFrame(performAnimation)
+
+    return {add: add}
+
+module.factory("animationFrame", AnimationFrame)

@@ -43,7 +43,7 @@ class ProjectsNavigationController extends taiga.Controller
             return projects
 
 
-ProjectsNavigationDirective = ($rootscope) ->
+ProjectsNavigationDirective = ($rootscope, animationFrame) ->
     overlay = $(".projects-nav-overlay")
     loadingStart = 0
     hideMenu = () ->
@@ -70,12 +70,11 @@ ProjectsNavigationDirective = ($rootscope) ->
 
         $scope.$on "nav:projects-list:open", ->
             if !$(document.body).hasClass("open-projects-nav")
-                overlay.show()
+                animationFrame.add () ->
+                    overlay.show()
 
-            #animation hack
-            setTimeout ( ->
+            animationFrame.add () ->
                 $(document.body).toggleClass("open-projects-nav")
-            ), 61
 
         $el.on "click", ".projects-list > li > a", (event) ->
             $(document.body)
@@ -89,7 +88,7 @@ ProjectsNavigationDirective = ($rootscope) ->
     }
 
 
-module.directive("tgProjectsNav", ["$rootScope", ProjectsNavigationDirective])
+module.directive("tgProjectsNav", ["$rootScope", "animationFrame", ProjectsNavigationDirective])
 
 
 #############################################################################
