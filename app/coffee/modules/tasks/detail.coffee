@@ -138,14 +138,25 @@ TaskDirective = ($tgrepo, $log, $location, $confirm) ->
             if not form.validate()
                 return
 
-            $tgrepo.save($scope.task).then ->
+            onSuccess = ->
                 $confirm.notify("success")
                 $location.path("/project/#{$scope.project.slug}/tasks/#{$scope.task.ref}")
 
+            onError = ->
+                $confirm.notify("error")
+
+            $tgrepo.save($scope.task).then(onSuccess, onError)
+
         $el.on "click", ".add-comment a.button-green", (event) ->
             event.preventDefault()
-            $tgrepo.save($scope.task).then ->
+
+            onSuccess = ->
                 $ctrl.loadHistory()
+
+            onError = ->
+                $confirm.notify("error")
+
+            $tgrepo.save($scope.task).then(onSuccess, onError)
 
         $el.on "focus", ".add-comment textarea", (event) ->
             $(this).addClass('active')
