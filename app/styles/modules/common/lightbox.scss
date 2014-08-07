@@ -218,8 +218,9 @@
     }
     .dates {
         margin-bottom: 1rem;
-        input {
+        div {
             float: left;
+            position: relative;
             margin-right: 1%;
             width: 49%;
             &:last-child {
