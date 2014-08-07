@@ -1,13 +1,14 @@
 .taskboard-task {
     @include transition (box-shadow .4s linear);
-    background: $very-light-gray;
+    background: $postit;
     box-shadow: none;
     min-height: 7rem;
     position: relative;
     &:hover {
         .icon {
-            @include transition(color .3s linear);
-            color: $gray-light;
+            @include transition(coalor .3s linear, opacity .3s linear);
+            color: $postit-dark-hover;
+            opacity: 1;
         }
     }
     &.ui-sortable-helper {
@@ -18,15 +19,17 @@
     }
     .taskboard-tagline {
         @include table-flex();
-        height: .4rem;
+        background: $gray-light; //Fallback
+        height: .3rem;
     }
     .taskboard-tag {
         @include table-flex-child(1, 0, 0, 0);
         background: $postit-hover; //Fallback
-        height: .1rem;
+        height: .3rem;
     }
     .taskboard-task-inner {
         @include table-flex();
+        min-height: 7.5rem;
         padding: 1rem .5rem;
     }
     .avatar {
@@ -51,12 +54,17 @@
         }
     }
     .task-assigned {
-        @extend %bold;
+        @extend %small;
+        color: $postit-dark-hover;
         display: block;
     }
     .task-num {
         color: $grayer;
         margin-right: .5em;
+    }
+    .task-name {
+        @extend %bold;
+        color: $grayer;
     }
     .taskboard-text {
         @extend %small;
@@ -64,16 +72,17 @@
         padding: 0 .5rem 0 1rem;
     }
     .icon {
-        @include transition(color .3s linear);
+        @include transition(color .3s linear, opacity .3s linear);
     }
     .icon-edit,
     .icon-drag-h {
         @extend %large;
         bottom: .5rem;
-        color: $whitish;
+        color: $postit-hover;
+        opacity: 0;
         position: absolute;
         &:hover {
-            color: $grayer;
+            color: $postit-dark-hover;
         }
     }
     .icon-edit {
