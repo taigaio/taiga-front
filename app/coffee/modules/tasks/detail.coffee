@@ -129,9 +129,13 @@ TaskDirective = ($tgrepo, $log, $location, $confirm) ->
 
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
+        form = $el.checksley()
         linkSidebar($scope, $el, $attrs, $ctrl)
 
         $el.on "click", ".save-task", (event) ->
+            if not form.validate()
+                return
+
             $tgrepo.save($scope.task).then ->
                 $confirm.notify("success")
                 $location.path("/project/#{$scope.project.slug}/tasks/#{$scope.task.ref}")
