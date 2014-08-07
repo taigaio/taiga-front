@@ -151,14 +151,25 @@ UsDirective = ($tgrepo, $log, $location, $confirm) ->
             if not form.validate()
                 return
 
-            $tgrepo.save($scope.us).then ->
+            onSuccess = ->
                 $confirm.notify("success")
                 $location.path("/project/#{$scope.project.slug}/us/#{$scope.us.ref}")
 
+            onError = ->
+                $confirm.notify("error")
+
+            $tgrepo.save($scope.us).then(onSuccess, onError)
+
         $el.on "click", ".add-comment a.button-green", (event) ->
             event.preventDefault()
-            $tgrepo.save($scope.us).then ->
+
+            onSuccess = ->
                 $ctrl.loadHistory()
+
+            onError = ->
+                $confirm.notify("error")
+
+            $tgrepo.save($scope.us).then(onSuccess, onError)
 
         $el.on "click", ".us-activity-tabs li a", (event) ->
             $el.find(".us-activity-tabs li a").toggleClass("active")
