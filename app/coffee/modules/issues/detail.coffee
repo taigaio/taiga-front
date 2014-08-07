@@ -138,9 +138,13 @@ IssueDirective = ($tgrepo, $log, $location, $confirm) ->
 
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
+        form = $el.checksley()
         linkSidebar($scope, $el, $attrs, $ctrl)
 
         $el.on "click", ".save-issue", (event) ->
+            if not form.validate()
+                return
+
             $tgrepo.save($scope.issue).then ->
                 $confirm.notify("success")
                 $location.path("/project/#{$scope.project.slug}/issues/#{$scope.issue.ref}")
