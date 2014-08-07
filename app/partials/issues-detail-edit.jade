@@ -36,8 +36,8 @@ block content
             section.watchers(tg-watchers, ng-model="issue", editable="true")
 
             section.us-detail-settings
-                    a.button.button-gray.clickable(ng-show="!issue.is_blocked", ng-click="ctrl.block()") Block
-                    a.button.button-red(tg-check-permission, permission="delete_issue", ng-click="ctrl.delete()", href="") Delete
+                a.button.button-gray.clickable(ng-show="!issue.is_blocked", ng-click="ctrl.block()") Block
+                a.button.button-red(tg-check-permission, permission="delete_issue", ng-click="ctrl.delete()", href="") Delete
 
         div.lightbox.lightbox_block.hidden(tg-lb-block, title="Blocking issue", ng-model="issue")
         div.lightbox.lightbox_select_user.hidden(tg-lb-assignedto)

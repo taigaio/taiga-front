@@ -37,7 +37,7 @@ block content
 
             section.us-detail-settings
                   fieldset
-                      label.clickable.button.button-gray(for="is-iocaine", ng-class="{true:'active', false:''}[task.is_iocaine]") Iocaine
+                      label.clickable.button.button-gray(for="is-iocaine", ng-class="{'active': task.is_iocaine}") Iocaine
                       input(ng-model="task.is_iocaine", type="checkbox", id="is-iocaine", name="is-iocaine")
 
                   a.button.button-gray.clickable(ng-show="!task.is_blocked", ng-click="ctrl.block()") Block

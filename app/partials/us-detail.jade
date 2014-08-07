@@ -22,8 +22,8 @@ block content
                         span.block-description(tg-bind-html="us.blocked_note || 'This user story is blocked'")
                     div.issue-nav
                         a.icon.icon-arrow-left(ng-show="nextUrl", href="{{ nextUrl }}", title="next user story")
-                        a.icon.icon-arrow-right(ng-show="previousUrl",href="{{ previousUrl }}", title="previous user story")
-
+                        a.icon.icon-arrow-right(ng-show="previousUrl",href="{{ previousUrl }}",
+                                                title="previous user story")
 
                 div.user-story-tags(tg-tag-line, ng-model="us.tags", ng-show="us.tags")
 
@@ -55,5 +55,7 @@ block content
             section.watchers(tg-watchers, ng-model="us")
 
             section.us-detail-settings
-                span.button.button-gray(href="", title="Client requirement", ng-class="us.client_requirement ? 'active' : ''") Client requirement
-                span.button.button-gray(href="", title="Team requirement", ng-class="us.team_requirement ? 'active' : ''") Team requirement
+                span.button.button-gray(href="", title="Client requirement",
+                                        ng-class="{'active': us.client_requirement}") Client requirement
+                span.button.button-gray(href="", title="Team requirement",
+                                        ng-class="{'active': us.team_requirement}") Team requirement

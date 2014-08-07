@@ -4,10 +4,13 @@ div.row.us-item-row(ng-repeat="us in visibleUserstories|orderBy:order track by u
             span.tag(ng-repeat="tag in us.tags", tg-bind-html="tag", tg-colorize-tag-border-left="tag")
         div.user-story-name
             input(tg-check-permission, permission="modify_us", type="checkbox", name="")
-            a.clickable(tg-nav="project-userstories-detail:project=project.slug,ref=us.ref", title="{{ us.subject }}") {{ us.subject }}
+            a.clickable(tg-nav="project-userstories-detail:project=project.slug,ref=us.ref",
+                        title="{{ us.subject }}") {{ us.subject }}
             span.us-settings
-                a.icon.icon-edit(tg-check-permission, permission="modify_us", href="", ng-click="ctrl.editUserStory(us)", title="Edit")
-                a.icon.icon-delete(tg-check-permission, permission="delete_us", href="", ng-click="ctrl.deleteUserStory(us)", title="Delete")
+                a.icon.icon-edit(tg-check-permission, permission="modify_us", href="",
+                                 ng-click="ctrl.editUserStory(us)", title="Edit")
+                a.icon.icon-delete(tg-check-permission, permission="delete_us", href="",
+                                   ng-click="ctrl.deleteUserStory(us)", title="Delete")
 
     div.status(tg-us-status="us" on-update="ctrl.loadProjectStats()")
         a.us-status(href="", title="Status Name")

@@ -53,4 +53,4 @@ block content
             section.watchers(tg-watchers, ng-model="task")
 
             section.us-detail-settings
-                span.button.button-gray(href="", title="Is iocaine", ng-class="task.is_iocaine ? 'active' : ''") Iocaine
+                span.button.button-gray(href="", title="Is iocaine", ng-class="{'active': task.is_iocaine }") Iocaine
