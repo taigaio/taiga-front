@@ -9,7 +9,7 @@ block content
         div.main.us-detail
             div.us-detail-header
                 include views/components/mainTitle
-                a.button.button-green(href="", title="Edit", tg-nav="project-tasks-detail-edit:project=project.slug,ref=task.ref") Edit
+                a.button.button-green(tg-check-permission, permission="modify_task", href="", title="Edit", tg-nav="project-tasks-detail-edit:project=project.slug,ref=task.ref") Edit
 
             section.us-story-main-data
                 div.us-title(ng-class="{blocked: task.is_blocked}")
@@ -42,6 +42,7 @@ block content
                             span.icon.icon-issues
                             span.tab-title Activity
 
+                - var commentModel = "task"
                 include views/modules/comments
                 include views/modules/activity
 

@@ -5,7 +5,7 @@ div.kanban-table
                                ng-style="{'border-top-color':s.color}")
                 span(tg-bo-bind="s.name")
                 a.icon.icon-plus(tg-check-permission, permission="add_us", href="", title="Add New task", ng-click="ctrl.addNewUs('standard', s.id)")
-                a.icon.icon-bulk(tg-check-permission, permission="add_us",href="", title="Add New bulk", ng-click="ctrl.addNewUs('bulk', s.id)")
+                a.icon.icon-bulk(tg-check-permission, permission="add_us", href="", title="Add New bulk", ng-click="ctrl.addNewUs('bulk', s.id)")
 
     div.kanban-table-body
         div.kanban-table-inner(tg-kanban-row-size-fixer)

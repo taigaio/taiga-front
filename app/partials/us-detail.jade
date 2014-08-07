@@ -9,7 +9,7 @@ block content
         div.main.us-detail
             div.us-detail-header
                 include views/components/mainTitle
-                a.button.button-green(href="", title="Edit", tg-nav="project-userstories-detail-edit:project=project.slug,ref=us.ref") Edit
+                a.button.button-green(tg-check-permission, permission="modify_us", href="", title="Edit", tg-nav="project-userstories-detail-edit:project=project.slug,ref=us.ref") Edit
 
             section.us-story-main-data
                 div.us-title(ng-class="{blocked: us.is_blocked}")
@@ -43,6 +43,8 @@ block content
                         a(href="#")
                             span.icon.icon-issues
                             span.tab-title Activity
+
+                - var commentModel = "us"
                 include views/modules/comments
                 include views/modules/activity
 

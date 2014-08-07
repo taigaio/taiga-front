@@ -1,11 +1,14 @@
 div.taskboard-tagline
     a.taskboard-tag(ng-repeat="tag in task.tags", href="", tg-bo-title="tag", tg-colorize-tag="tag")
 div.taskboard-task-inner
-    div(tg-taskboard-user-avatar="task.assigned_to", click="ctrl.editTaskAssignedTo(task)")
+    div(tg-taskboard-user-avatar="task.assigned_to", ng-model="task", click="ctrl.editTaskAssignedTo(task)")
     p.taskboard-text
         span.task-assigned Username
         span.task-num(tg-bo-ref="task.ref")
         a.task-name(href="", title="See task details", tg-bind-html="task.subject",
                     tg-nav="project-tasks-detail:project=project.slug,ref=task.ref")
-    a.icon.icon-edit(href="", title="Edit task", ng-click="ctrl.editTask(task)")
-    a.icon.icon-drag-h(href="", title="Drag&Drop")
+    a.icon.icon-edit(tg-check-permission, permission="modify_task",
+        href="", title="Edit task", ng-click="ctrl.editTask(task)")
+
+    a.icon.icon-drag-h(tg-check-permission, permission="modify_task",
+        href="", title="Drag&Drop")

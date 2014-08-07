@@ -290,7 +290,6 @@ KanbanUserDirective = ($log) ->
     </figure>
     """)
 
-    uniqueId = _.uniqueId("user_photo")
     clickable = false
 
     link = ($scope, $el, $attrs, $model) ->
@@ -312,7 +311,6 @@ KanbanUserDirective = ($log) ->
                 ctx = {name: user.full_name_display, imgurl: user.photo, clickable: clickable}
 
             html = template(ctx)
-            $el.off(".#{uniqueId}")
             $el.html(html)
 
         bindOnce $scope, "project", (project) ->

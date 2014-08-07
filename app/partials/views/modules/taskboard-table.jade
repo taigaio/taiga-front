@@ -19,9 +19,11 @@ div.taskboard-table
                         span(ng-bind="us.total_points")
                         span points
 
-                    a.icon.icon-plus(href="", title="Add new task",
+                    a.icon.icon-plus(tg-check-permission, permission="add_task",
+                                     href="", title="Add new task",
                                      ng-click="ctrl.addNewTask('standard', us)")
-                    a.icon.icon-bulk(href="", title="Add new tasks in bulk",
+                    a.icon.icon-bulk(tg-check-permission, permission="add_task",
+                                     href="", title="Add new tasks in bulk",
                                      ng-click="ctrl.addNewTask('bulk', us)")
 
                 div.taskboard-tasks-box.task-column(ng-repeat="st in taskStatusList track by st.id",
@@ -34,9 +36,11 @@ div.taskboard-table
                 div.taskboard-userstory-box.task-column
                     h3.us-title
                         span Unassigned tasks
-                    a.icon.icon-plus(href="", title="Add new task",
+                    a.icon.icon-plus(tg-check-permission, permission="add_task",
+                                     href="", title="Add new task",
                                      ng-click="ctrl.addNewTask('standard', us)")
-                    a.icon.icon-bulk(href="", title="Add new tasks in bulk",
+                    a.icon.icon-bulk(tg-check-permission, permission="add_task",
+                                     href="", title="Add new tasks in bulk",
                                      ng-click="ctrl.addNewTask('bulk', us)")
 
                 div.taskboard-tasks-box.task-column(ng-repeat="st in taskStatusList track by st.id", tg-taskboard-sortable)

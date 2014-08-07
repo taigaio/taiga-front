@@ -43,7 +43,7 @@ block content
                     input(ng-model="us.team_requirement", type="checkbox", id="team-requirement", name="team-requirement")
 
                 a.button.button-gray.clickable(ng-show="!us.is_blocked", ng-click="ctrl.block()") Block
-                a.button.button-red(ng-click="ctrl.delete()", href="") Delete
+                a.button.button-red(tg-check-permission, permission="delete_us", ng-click="ctrl.delete()", href="") Delete
 
         div.lightbox.lightbox_block.hidden(tg-lb-block, title="Blocking issue", ng-model="us")
         div.lightbox.lightbox_select_user.hidden(tg-lb-assignedto)

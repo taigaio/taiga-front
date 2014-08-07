@@ -7,13 +7,13 @@ section.attachments(tg-attachments, ng-model=attachModel, ng-if="#{attachModel}.
             span.icon.icon-attachments
             span.attachments-num 0
             span.attachments-text attachments
-            a.button.button-gray.add-attach(href="", title="Add new attachment")
+            a.button.button-gray.add-attach(tg-check-permission, permission="modify_"+attachModel, href="", title="Add new attachment")
                 span +new file
             input.hidden.add-attach(type="file", multiple="multiple")
 
     div.attachment-body.sortable
         div.hidden.single-attachment(ng-repeat="attach in attachments",
-                                     tg-attachment="attach")
+                                     tg-attachment="attach", ng-model=attachModel)
 
         //- See modules/common/attachments.coffee - AttachmentDirective
 

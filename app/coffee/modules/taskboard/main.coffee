@@ -230,16 +230,16 @@ module.directive("tgTaskboardRowSizeFixer", TaskboardRowSizeFixer)
 TaskboardUserDirective = ($log) ->
     template = _.template("""
     <figure class="avatar">
-        <a href="#" title="<%- name %>">
+        <a href="#" title="<%- name %>" <% if (!clickable) {%>class="not-clickable"<% } %>>
             <img src="<%= imgurl %>" alt="<%- name %>">
             <figcaption><%- name %></figcaption>
         </a>
     </figure>
     """)
 
-    uniqueId = _.uniqueId("user_photo")
+    clickable = false
 
-    link = ($scope, $el, $attrs) ->
+    link = ($scope, $el, $attrs, $model) ->
         if not $attrs.tgTaskboardUserAvatar?
             return $log.error "TaskboardUserDirective: no attr is defined"
 
@@ -253,22 +253,23 @@ TaskboardUserDirective = ($log) ->
 
         render = (user) ->
             if user is undefined
-                ctx = {name: "Unassigned", imgurl: "/images/unnamed.png"}
+                ctx = {name: "Unassigned", imgurl: "/images/unnamed.png", clickable: clickable}
             else
-                ctx = {name: user.full_name_display, imgurl: user.photo}
+                ctx = {name: user.full_name_display, imgurl: user.photo, clickable: clickable}
 
             html = template(ctx)
-            $el.off(".#{uniqueId}")
             $el.html(html)
 
-            $el.on "click.#{uniqueId}", "figure.avatar > a", (event) ->
-                if not $attrs.click?
-                    return $log.error "TaskboardUserDirective: No click attr is defined."
 
-                $scope.$apply ->
-                    $scope.$eval($attrs.click)
+        bindOnce $scope, "project", (project) ->
+            if project.my_permissions.indexOf("modify_task") > -1
+                clickable = true
+                $el.on "click", (event) =>
+                    us = $model.$modelValue
+                    $ctrl = $el.controller()
+                    $ctrl.editTaskAssignedTo(us)
 
-    return {link: link}
+    return {link: link, require:"ngModel"}
 
 
 module.directive("tgTaskboardUserAvatar", ["$log", TaskboardUserDirective])

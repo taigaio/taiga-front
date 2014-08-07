@@ -172,11 +172,13 @@ AttachmentDirective = ($log, $repo, $confirm) ->
         <% if (isDeprecated){ %> <span class="deprecated-file">(deprecated)</span> <% } %>
         <span><%- description %></span>
     </div>
+    <% if (modifyPermission) {%>
     <div class="attachment-settings">
         <a class="settings icon icon-edit" href="" title="Edit"></a>
         <a class="settings icon icon-delete" href="" title="Delete"></a>
         <a class="settings icon icon-drag-v" href="" title=""Drag"></a>
     </div>
+    <% } %>
     """) #TODO: i18n
 
     singleAttachmentEditable = _.template("""
@@ -207,6 +209,7 @@ AttachmentDirective = ($log, $repo, $confirm) ->
         $ctrl = $el.controller()
 
         render = (attachment, isEditable=false) ->
+            modifyPermission = $scope.project.my_permissions.indexOf("modify_#{$attrs.ngModel}") > -1
             ctx = {
                 id: attachment.id
                 name: attachment.name
@@ -214,6 +217,7 @@ AttachmentDirective = ($log, $repo, $confirm) ->
                 size: sizeFormat(attachment.size)
                 description: attachment.description
                 isDeprecated: attachment.is_deprecated
+                modifyPermission: modifyPermission
             }
 
             if isEditable
