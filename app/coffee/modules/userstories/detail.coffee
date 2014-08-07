@@ -171,6 +171,9 @@ UsDirective = ($tgrepo, $log, $location, $confirm) ->
 
             $tgrepo.save($scope.us).then(onSuccess, onError)
 
+        $el.on "focus", ".add-comment textarea", (event) ->
+            $(this).addClass('active')
+
         $el.on "click", ".us-activity-tabs li a", (event) ->
             $el.find(".us-activity-tabs li a").toggleClass("active")
             $el.find(".us-activity section").toggleClass("hidden")
