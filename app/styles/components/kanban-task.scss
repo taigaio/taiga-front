@@ -1,6 +1,5 @@
 .kanban-task {
     background: $postit;
-    margin-bottom: 1rem;
     position: relative;
     &:last-child {
         margin: 0;
@@ -46,7 +45,21 @@
             top: -6px;
             white-space: nowrap;
             width: 50px;
+            display: none;
         }
+    }
+    .task-assigned {
+        @extend %small;
+        color: $postit-dark-hover;
+        display: block;
+    }
+    .task-num {
+        color: $grayer;
+        margin-right: .5em;
+    }
+    .task-name {
+        @extend %bold;
+        color: $grayer;
     }
     .task-text {
         @include table-flex-child($flex-grow: 10, $flex-basis: 50px);
