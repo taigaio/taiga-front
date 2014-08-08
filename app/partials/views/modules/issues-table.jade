@@ -1,11 +1,13 @@
 section.issues-table.basic-table
     div.row.title
+        div.level-field(data-fieldname="type") Type
         div.level-field(data-fieldname="severity") Severity
         div.level-field(data-fieldname="priority") Priority
         div.subject(data-fieldname="subject") Subject
         div.issue-field(data-fieldname="status") Status
         div.assigned-field(data-fieldname="assigned_to") Assigned to
     div.row.table-main(ng-repeat="issue in issues track by issue.id")
+        div.level-field(tg-listitem-type="issue")
         div.level-field(tg-listitem-severity="issue")
         div.level-field(tg-listitem-priority="issue")
         div.subject

@@ -351,7 +351,29 @@ ListItemSeverityDirective = ->
         template: template
     }
 
+ListItemTypeDirective = ->
+    template = """
+    <div class="level"></div>
+    """
 
+    link = ($scope, $el, $attrs) ->
+        issue = $scope.$eval($attrs.tgListitemType)
+
+        bindOnce $scope, "issueTypeById", (issueTypeById) ->
+            type = issueTypeById[issue.type]
+
+            domNode = $el.find("div.level")
+            domNode.css("background-color", type.color)
+            domNode.addClass(type.name.toLowerCase())
+            domNode.attr("title", type.name)
+
+    return {
+        link: link
+        template: template
+    }
+
+
+module.directive("tgListitemType", ListItemTypeDirective)
 module.directive("tgListitemIssueStatus", ListItemIssueStatusDirective)
 module.directive("tgListitemAssignedto", ListItemAssignedtoDirective)
 module.directive("tgListitemPriority", ListItemPriorityDirective)
