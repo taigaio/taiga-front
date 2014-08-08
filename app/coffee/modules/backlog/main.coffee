@@ -324,6 +324,10 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             return obj
 
         plainStatuses = _.map(@scope.userstories, "status")
+        plainStatuses = _.filter plainStatuses, (status) =>
+            if status
+                return status
+
         @scope.filters.statuses = _.map _.countBy(plainStatuses), (v, k) =>
             obj = {
                 id: k,
@@ -333,7 +337,9 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
                 count:v
             }
             obj.selected = true if isSelected("statuses", obj.id)
+
             return obj
+
 
         return @scope.filters
 

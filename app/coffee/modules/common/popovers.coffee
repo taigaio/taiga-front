@@ -57,8 +57,10 @@ UsStatusDirective = ($repo, popoverService) ->
     updateUsStatus = ($el, us, usStatusById) ->
         usStatusDomParent = $el.find(".us-status")
         usStatusDom = $el.find(".us-status .us-status-bind")
-        usStatusDom.text(usStatusById[us.status].name)
-        usStatusDomParent.css('color', usStatusById[us.status].color)
+
+        if usStatusById[us.status]
+            usStatusDom.text(usStatusById[us.status].name)
+            usStatusDomParent.css('color', usStatusById[us.status].color)
 
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()

@@ -6,7 +6,7 @@ block head
 block content
     div.wrapper(tg-project-values, ng-controller="ProjectValuesController as ctrl",
                 ng-init="section='admin'; resource='issues'; type='severities'; sectionName='Issue severities'",
-                type="priorities")
+                type="severities")
         sidebar.menu-secondary.sidebar(tg-admin-navigation="project-values")
             include views/modules/admin-menu
 
