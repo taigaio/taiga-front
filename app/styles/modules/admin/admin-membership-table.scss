@@ -43,6 +43,7 @@
         &:hover {
             @include transition (background-color .3s linear);
             background-color: $red;
+            color: $white;
         }
     }
     .header-role,
