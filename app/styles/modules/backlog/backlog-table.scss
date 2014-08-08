@@ -26,10 +26,10 @@
             @include table-flex-child(20, 100px, 0, 0);
         }
         .status {
-            @include table-flex-child(2, 100px, 0, 0);
+            @include table-flex-child(2, 150px, 0, 0);
         }
         .points {
-            @include table-flex-child(1, 100px, 0, 0);
+            @include table-flex-child(1, 80px, 0, 0);
         }
     }
     .status,
