@@ -363,7 +363,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
     addNewUs: (type) ->
         switch type
             when "standard" then @rootscope.$broadcast("usform:new", @scope.projectId,
-                                                       @scope.project.default_us_status)
+                                                       @scope.project.default_us_status, @scope.usStatusList)
             when "bulk" then @rootscope.$broadcast("usform:bulk", @scope.projectId,
                                                    @scope.project.default_us_status)
 

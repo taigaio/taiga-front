@@ -107,7 +107,9 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService)
     link = ($scope, $el, attrs) ->
         isNew = true
 
-        $scope.$on "usform:new", (ctx, projectId, status) ->
+        $scope.$on "usform:new", (ctx, projectId, status, statusList) ->
+            $scope.usStatusList = statusList
+
             $scope.us = {
                 project: projectId
                 status: status
