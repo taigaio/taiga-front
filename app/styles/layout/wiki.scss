@@ -5,10 +5,12 @@
     position: absolute;
     right: 2rem;
     top: 2rem;
-    .delete-wiki,
-    .edit-wiki,
-    .save-wiki {
+    .button {
+        color: $white;
         float: right;
         margin-left: 10px;
+        &:hover {
+            color: $white;
+        }
     }
 }
