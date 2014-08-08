@@ -1,4 +1,8 @@
 .project-details {
+    form {
+        max-width: 700px;
+        width: 100%;
+    }
     input[type="text"],
     textarea {
         @extend %title;
@@ -11,9 +15,6 @@
         @extend %title;
         display: block;
         margin-bottom: .2rem;
-    }
-    input[type="text"] {
-        width: 50%;
     }
     textarea {
         height: 10rem;
