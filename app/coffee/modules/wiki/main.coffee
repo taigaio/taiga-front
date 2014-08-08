@@ -95,6 +95,9 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin, taig
     edit: ->
         @location.path("/project/#{@scope.projectSlug}/wiki/#{@scope.wikiSlug}/edit")
 
+    cancel: ->
+        @location.path("/project/#{@scope.projectSlug}/wiki/#{@scope.wikiSlug}")
+
     delete: ->
         onSuccess = =>
             @confirm.notify("success")

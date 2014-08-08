@@ -17,7 +17,7 @@ block content
                     span.wiki-title(tg-bo-bind='wikiSlug|unslugify')
             .action-buttons
                 a.button.button-green.save-wiki(href="", title="Save", ng-click="ctrl.save()") Save
-                a.button.button-red.cancel-wiki(href="", title="CAncel", ng-click="") Cancel
+                a.button.button-red.cancel-wiki(href="", title="CAncel", ng-click="ctrl.cancel()") Cancel
 
             section.wysiwyg
                 textarea(placeholder="Write a your wiki page", ng-model="wiki.content", tg-markitup)
