@@ -325,6 +325,12 @@
 }
 
 .us-status {
+    .type-data {
+        position: relative;
+        .pop-type {
+            @include popover(150px, '', 30px, '', '');
+        }
+    }
     .severity-data {
         position: relative;
         .pop-severity {

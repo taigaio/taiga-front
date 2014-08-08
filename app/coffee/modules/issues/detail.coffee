@@ -62,6 +62,8 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin, tai
             @scope.$emit('project:loaded', project)
             @scope.statusList = project.issue_statuses
             @scope.statusById = groupBy(project.issue_statuses, (x) -> x.id)
+            @scope.typeById = groupBy(project.issue_types, (x) -> x.id)
+            @scope.typeList = _.sortBy(project.issue_types, "order")
             @scope.severityList = project.severities
             @scope.severityById = groupBy(project.severities, (x) -> x.id)
             @scope.priorityList = project.priorities
@@ -196,6 +198,11 @@ IssueStatusDirective = () ->
         <span class="us-detail-status" style="color:<%= status.color %>"><%= status.name %></span>
     </h1>
     <div class="issue-data">
+        <div class="type-data <% if (editable) { %>clickable<% } %>">
+            <span class="level" style="background-color:<%= type.color %>"></span>
+            <span class="type-status"><%= type.name %></span>
+            <span class="level-name">type</span>
+        </div>
         <div class="severity-data <% if (editable) { %>clickable<% } %>">
             <span class="level" style="background-color:<%= severity.color %>"></span>
             <span class="severity-status"><%= severity.name %></span>
@@ -212,6 +219,14 @@ IssueStatusDirective = () ->
             <span class="level-name">status</span>
         </div>
     </div>
+    """)
+    selectionTypeTemplate = _.template("""
+    <ul class="popover pop-type">
+        <% _.each(types, function(type) { %>
+        <li><a href="" class="type" title="<%- type.name %>"
+               data-type-id="<%- type.id %>"><%- type.name %></a></li>
+        <% }); %>
+    </ul>
     """)
     selectionSeverityTemplate = _.template("""
     <ul class="popover pop-severity">
@@ -242,6 +257,7 @@ IssueStatusDirective = () ->
         editable = $attrs.editable?
 
         renderIssuestatus = (issue) ->
+            type = $scope.typeById[issue.type]
             status = $scope.statusById[issue.status]
             severity = $scope.severityById[issue.severity]
             priority = $scope.priorityById[issue.priority]
@@ -250,8 +266,10 @@ IssueStatusDirective = () ->
                 status: status
                 severity: severity
                 priority: priority
+                type: type
             })
             $el.html(html)
+            $el.find(".type-data").append(selectionTypeTemplate({types:$scope.typeList}))
             $el.find(".severity-data").append(selectionSeverityTemplate({severities:$scope.severityList}))
             $el.find(".priority-data").append(selectionPriorityTemplate({priorities:$scope.priorityList}))
             $el.find(".status-data").append(selectionStatusTemplate({statuses:$scope.statusList}))
@@ -261,6 +279,19 @@ IssueStatusDirective = () ->
                 renderIssuestatus(issue)
 
         if editable
+            $el.on "click", ".type-data", (event) ->
+                event.preventDefault()
+                event.stopPropagation()
+                $el.find(".pop-type").popover().open()
+
+            $el.on "click", ".type", (event) ->
+                event.preventDefault()
+                event.stopPropagation()
+                target = angular.element(event.currentTarget)
+                $model.$modelValue.type = target.data("type-id")
+                renderIssuestatus($model.$modelValue)
+                $.fn.popover().closeAll()
+
             $el.on "click", ".severity-data", (event) ->
                 event.preventDefault()
                 event.stopPropagation()
