@@ -58,7 +58,7 @@
     position: absolute;
     width: 80px;
     .popover {
-        @include popover(150px, '', 30px, 30px);
+        @include popover(150px, '', 60px, 0, '', 15px, '', -6px, 25px);
         a {
             @extend %small;
             color: $white;
