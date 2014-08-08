@@ -165,7 +165,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
                 return not res
 
     prepareBulkUpdateData: (uses) ->
-         return _.map(uses, (x) -> [x.id, x.order])
+         return _.map(uses, (x) -> {"us_id": x.id, "order": x.order})
 
     resortUserStories: (uses) ->
         items = []

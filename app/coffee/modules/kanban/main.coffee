@@ -153,7 +153,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                       .then(=> @scope.$broadcast("redraw:wip"))
 
     prepareBulkUpdateData: (uses) ->
-         return _.map(uses, (x) -> [x.id, x.order])
+         return _.map(uses, (x) -> {"us_id": x.id, "order": x.order})
 
     resortUserStories: (uses) ->
         items = []

@@ -47,7 +47,7 @@ resourceProvider = ($repo, $http, $urls) ->
 
     service.bulkUpdateOrder = (projectId, data) ->
         url = $urls.resolve("bulk-update-us-order")
-        params = {projectId: projectId, bulkStories: data}
+        params = {project_id: projectId, bulk_stories: data}
         return $http.post(url, params)
 
     service.history = (usId) ->
