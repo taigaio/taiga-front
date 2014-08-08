@@ -10,6 +10,7 @@ block content
             div.us-detail-header
                 include views/components/mainTitle
                 a.button.button-green.save-us(href="", title="Save") Save
+                a.button.button-red.cancel(tg-nav="project-userstories-detail:project=project.slug,ref=us.ref", href="", title="Cancel") Cancel
 
             section.us-story-main-data
                 div.us-title(ng-class="{blocked: us.is_blocked}")
