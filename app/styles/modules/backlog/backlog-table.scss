@@ -161,7 +161,7 @@
             @include transition (background .2s ease-in);
         }
         a {
-            color: $white;
+            color: $white !important;
             &:hover {
                 color: $white;
             }

@@ -1,4 +1,4 @@
-div.row.us-item-row(ng-repeat="us in visibleUserstories|orderBy:order track by us.id", tg-draggable)
+div.row.us-item-row(ng-repeat="us in visibleUserstories|orderBy:order track by us.id", tg-draggable, ng-class="{blocked: us.is_blocked}")
     div.user-stories
         div.user-story-tags
             span.tag(ng-repeat="tag in us.tags", tg-bind-html="tag", tg-colorize-tag-border-left="tag")
