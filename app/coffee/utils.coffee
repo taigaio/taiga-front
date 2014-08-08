@@ -138,6 +138,12 @@ textToColor = (text) ->
     return "##{color}"
 
 
+# Generic method for generate hash from a arbitrary length
+# collection of parameters.
+generateHash = (components=[]) ->
+    components = _.map(components, (x) -> JSON.stringify(x))
+    return hex_sha1(components.join(":"))
+
 taiga = @.taiga
 taiga.bindOnce = bindOnce
 taiga.mixOf = mixOf
@@ -156,3 +162,4 @@ taiga.startswith = startswith
 taiga.sizeFormat = sizeFormat
 taiga.typeIsArray = typeIsArray
 taiga.textToColor = textToColor
+taiga.generateHash = generateHash
