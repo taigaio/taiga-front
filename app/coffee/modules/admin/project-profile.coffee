@@ -91,7 +91,9 @@ ProjectProfileDirective = ($log, $repo, $confirm) ->
                 $confirm.notify("success")
 
             promise.then null, (data) ->
-                $confirm.notify("error", data._error_message)
+                form.setErrors(data)
+                if data._error_message
+                    $confirm.notify("error", data._error_message)
 
         $el.on "submit", "form", (event) ->
             event.preventDefault()
