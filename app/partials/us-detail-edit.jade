@@ -38,10 +38,10 @@ block content
 
             section.us-detail-settings
                 fieldset
-                    label.clickable.button.button-green(for="client-requirement", ng-class="{'active': us.client_requirement}") Client requirement
+                    label.clickable.button.button-gray(for="client-requirement", ng-class="{'active': us.client_requirement}") Client requirement
                     input(ng-model="us.client_requirement", type="checkbox", id="client-requirement", name="client-requirement")
                 fieldset
-                    label.clickable.button.button-green(for="team-requirement", ng-class="{'active': us.team_requirement}") Team requirement
+                    label.clickable.button.button-gray(for="team-requirement", ng-class="{'active': us.team_requirement}") Team requirement
                     input(ng-model="us.team_requirement", type="checkbox", id="team-requirement", name="team-requirement")
 
                 a.button.button-gray.clickable(ng-show="!us.is_blocked", ng-click="ctrl.block()") Block
