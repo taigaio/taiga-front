@@ -176,6 +176,16 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 obj.selected = true if isSelected("tags", obj.id)
                 return obj
 
+            @scope.filters.types = _.map data.types, (t) =>
+                obj = {
+                    id: t[0],
+                    name: @scope.issueTypeById[t[0]].name,
+                    color: @scope.issueTypeById[t[0]].color
+                    count: t[1],
+                    type: "types"
+                }
+                obj.selected = true if isSelected("types", obj.id)
+                return obj
 
             @rootscope.$broadcast("filters:loaded", @scope.filters)
             return data
@@ -200,6 +210,8 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 name = "assigned_to"
             else if name == "statuses"
                 name = "status"
+            else if name == "types"
+                name = "type"
             @scope.httpParams[name] = values
 
         promise = @rs.issues.list(@scope.projectId, @scope.httpParams).then (data) =>
@@ -512,7 +524,6 @@ IssuesFiltersDirective = ($log, $location) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
             tags = $scope.filters[target.data("type")]
-
             renderFilters(_.reject(tags, "selected"))
             showFilters(target.attr("title"), target.data("type"))
 
