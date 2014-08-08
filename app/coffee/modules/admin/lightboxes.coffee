@@ -68,7 +68,7 @@ CreateMembersDirective = ($rs, $rootScope, $confirm, lightboxService) ->
         $el.on "click", ".delete-fieldset", (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
-            fieldSet = target.parent()
+            fieldSet = target.closest('.add-member-wrapper')
 
             fieldSet.remove()
 
@@ -80,7 +80,7 @@ CreateMembersDirective = ($rs, $rootScope, $confirm, lightboxService) ->
         $el.on "click", ".add-fieldset", (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
-            fieldSet = target.parent()
+            fieldSet = target.closest('.add-member-wrapper')
 
             target.removeClass("icon-plus add-fieldset")
                   .addClass("icon-delete delete-fieldset")
