@@ -115,6 +115,7 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService)
                 status: status
                 is_archived: false
             }
+
             isNew = true
             # Update texts for creation
             $el.find(".button-green span").html("Create") #TODO: i18n

@@ -68,7 +68,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
     addNewUs: (type, statusId) ->
         switch type
-            when "standard" then @rootscope.$broadcast("usform:new", @scope.projectId, statusId)
+            when "standard" then @rootscope.$broadcast("usform:new", @scope.projectId, statusId, @scope.usStatusList)
             when "bulk" then @rootscope.$broadcast("usform:bulk", @scope.projectId, statusId)
 
     changeUsAssignedTo: (us) ->
