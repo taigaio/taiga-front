@@ -10,11 +10,11 @@ form
             textarea(name="description", ng-model="data.description", data-required="true",
                   placeholder="Description")
         fieldset
-            input(type="text", name="total_story_point", ng-model="data.total_story_point",
+            input(type="number", name="total_story_point", min="0", ng-model="data.total_story_point",
                   data-type="digits", data-required="true", placeholder="Total story point")
 
         fieldset
-            input(type="text", name="total_milestones", ng-model="data.total_milestones",
+            input(type="number", name="total_milestones", min="0", ng-model="data.total_milestones",
                   data-type="digits", placeholder="Total milestones")
 
         fieldset
