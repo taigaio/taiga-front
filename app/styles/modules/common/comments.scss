@@ -92,3 +92,17 @@
         margin-left: .5rem;
     }
 }
+.comment-list.activeanimation {
+    .comment-single.ng-enter:first-child,
+    .comment-single.ng-leave:first-child {
+        @include transition(all .3s ease-in);
+    }
+    .comment-single.ng-enter:first-child,
+    .comment-single.ng-leave.ng-leave-active:first-child {
+        opacity: 0;
+    }
+    .comment-single.ng-leave:first-child,
+    .comment-single.ng-enter.ng-enter-active:first-child {
+        opacity: 1;
+    }
+}

@@ -118,34 +118,34 @@ module.directive("tgTagLine", ["$log", TagLineDirective])
 ChangeDirective = ->
     # TODO: i18n
     commentBaseTemplate = _.template("""
-    <div class="comment-user activity-comment">
-        <a class="avatar" href="" title="<%- userFullName %>">
-            <img src="<%- avatar %>" alt="<%- userFullName %>">
-        </a>
-    </div>
-    <div class="comment-content">
-        <a class="username" href="TODO" title="<%- userFullName %>">
-            <%- userFullName %>
-        </a>
-        <% if(hasChanges){ %>
-        <div class="us-activity">
-            <a class="activity-title" href="" title="Show activity">
-              <span>
-                  <%- changesText %>
-              </span>
-              <span class="icon icon-arrow-up">
-              </span>
+        <div class="comment-user activity-comment">
+            <a class="avatar" href="" title="<%- userFullName %>">
+                <img src="<%- avatar %>" alt="<%- userFullName %>">
             </a>
         </div>
-        <% } %>
+        <div class="comment-content">
+            <a class="username" href="TODO" title="<%- userFullName %>">
+                <%- userFullName %>
+            </a>
+            <% if(hasChanges){ %>
+            <div class="us-activity">
+                <a class="activity-title" href="" title="Show activity">
+                  <span>
+                      <%- changesText %>
+                  </span>
+                  <span class="icon icon-arrow-up">
+                  </span>
+                </a>
+            </div>
+            <% } %>
 
-        <p class="comment">
-            <%- comment %>
-        </p>
-        <p class="date">
-            <%- creationDate %>
-        </p>
-    </div>
+            <p class="comment">
+                <%- comment %>
+            </p>
+            <p class="date">
+                <%- creationDate %>
+            </p>
+        </div>
     """)
     changeBaseTemplate = _.template("""
     <div class="activity-user">

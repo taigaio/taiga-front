@@ -160,6 +160,9 @@ IssueDirective = ($tgrepo, $log, $location, $confirm) ->
 
         $el.on "click", ".add-comment a.button-green", (event) ->
             event.preventDefault()
+
+            $el.find(".comment-list").addClass("activeanimation")
+
             onSuccess = ->
                 $ctrl.loadHistory()
 

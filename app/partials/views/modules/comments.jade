@@ -5,6 +5,7 @@ section.us-comments
         textarea(placeholder="Write here a new commet", ng-model="commentModel.comment")
         a.button.button-green(href="", title="Comment") Comment
     div.comment-list
+        //common.coffee
         div.comment-single(tg-change, mode="comment", ng-model="comment", ng-repeat="comment in comments")
 
          //a.more-comments(href="", title="show more comments")
