@@ -63,6 +63,7 @@
             @extend %small;
             color: $white;
             text-align: left;
+            text-transform: none;
             &:hover {
                 @include transition (color .2s linear);
                 color: $fresh-taiga;

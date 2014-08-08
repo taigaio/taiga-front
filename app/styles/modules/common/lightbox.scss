@@ -118,12 +118,15 @@
             }
             &.selected {
                 @include transition(all .2s ease-in);
-                background: $green-taiga;
+                background: $fresh-taiga;
                 border: 1px solid $green-taiga;
-                color: $white;
+                span {
+                    color: $white;
+                }
             }
         }
         .blocked {
+            padding: 8px 30px;
             &:hover {
                 @include transition(all .2s ease-in);
                 background: $red-light;

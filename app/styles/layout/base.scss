@@ -83,7 +83,7 @@ body {
 }
 
 .menu-tertiary {
-    @include table-flex-child(1, 190px, 0, 190px);
+    @include table-flex-child(1, 210px, 0, 210px);
     background-color: $dark-grayish-lime-green;
     padding: 2em 1em;
 }
