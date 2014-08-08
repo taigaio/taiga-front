@@ -21,11 +21,15 @@
 
 taiga = @.taiga
 
-resourceProvider = ($repo, $model) ->
+generateHash = taiga.generateHash
+
+resourceProvider = ($repo, $model, $storage) ->
     service = {}
+    hashSuffixUserstories = "userstories-queryparams"
 
     service.get = (projectId, sprintId) ->
         return $repo.queryOne("milestones", sprintId).then (sprint) ->
+            service.storeUserstoriesQueryParams(projectId, {"milestone": sprintId})
             uses = sprint.user_stories
             uses = _.map(uses, (u) -> $model.make_model("userstories", u))
             sprint._attrs.user_stories = uses
@@ -43,9 +47,13 @@ resourceProvider = ($repo, $model) ->
                 m._attrs.user_stories = uses
             return milestones
 
+    service.storeUserstoriesQueryParams = (projectId, params) ->
+        ns = "#{projectId}:#{hashSuffixUserstories}"
+        hash = generateHash([projectId, ns])
+        $storage.set(hash, params)
 
     return (instance) ->
         instance.sprints = service
 
 module = angular.module("taigaResources")
-module.factory("$tgSprintsResourcesProvider", ["$tgRepo", "$tgModel", resourceProvider])
+module.factory("$tgSprintsResourcesProvider", ["$tgRepo", "$tgModel", "$tgStorage", resourceProvider])

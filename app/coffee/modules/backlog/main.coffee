@@ -99,6 +99,8 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         for name, values of @scope.urlFilters
             @scope.httpParams[name] = values
 
+        @rs.userstories.storeQueryParams(@scope.projectId, @scope.httpParams)
+
         return @rs.userstories.listUnassigned(@scope.projectId, @scope.httpParams).then (userstories) =>
             @scope.userstories = userstories
 
@@ -163,6 +165,13 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             @scope.visibleUserstories = _.reject @scope.visibleUserstories, (us) =>
                 res = _.find(selectedStatuses, (x) -> x == taiga.toString(us.status))
                 return not res
+
+        @rs.userstories.storeQueryParams(@scope.projectId, {
+            "status": selectedStatuses,
+            "tags": selectedTags,
+            "project": @scope.projectId
+            "milestone": "null"
+        })
 
     prepareBulkUpdateData: (uses) ->
          return _.map(uses, (x) -> {"us_id": x.id, "order": x.order})
