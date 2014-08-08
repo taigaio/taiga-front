@@ -3,15 +3,21 @@ a.close(href="", title="close")
 form
     h2.title New Sprint
     fieldset
-        input.sprint-name(ng-model="sprint.name", type="text", placeholder="sprint name", name="name", data-required="true")
+        input.sprint-name(type="text", name="name", placeholder="sprint name", ng-model="sprint.name",
+                          data-required="true", data-maxlength="500")
         label.last-sprint-name
+
     fieldset.dates
         div
-            input.date-start(tg-date-selector, ng-model="sprint.estimated_start", type="text", placeholder="Estimated Start", data-required="true")
+            input.date-start(type="text", name="estimated_start", placeholder="Estimated Start",
+                             ng-model="sprint.estimated_start", data-required="true", tg-date-selector)
         div
-            input.date-end(tg-date-selector, ng-model="sprint.estimated_finish", type="text", placeholder="Estimated End", data-required="true")
+            input.date-end(type="text", name="estimated_finish", placeholder="Estimated End",
+                           ng-model="sprint.estimated_finish", data-required="true", tg-date-selector)
+
     a.button.button-green(href="", title="Save")
         span Create
+
     div(tg-check-permission, permission="delete_milestone")
         span.delete-sprint.hidden Do you want to delete this sprint?
             a.icon.icon-delete(href="", title="delete sprint")
