@@ -3,30 +3,31 @@ a.close(href="", title="close")
 form
     h2.title(tg-i18n="us.title-new")
     fieldset
-        input(type="text", ng-model="us.subject", tg-i18n="placeholder:common.subject", data-required="true", data-maxlength="500")
+        input(type="text", name="subject", ng-model="us.subject", tg-i18n="placeholder:common.subject",
+              data-required="true", data-maxlength="500")
     fieldset
-        select(ng-model="us.status", ng-options="s.id as s.name for s in usStatusList",
+        select(name="status", ng-model="us.status", ng-options="s.id as s.name for s in usStatusList",
                tg-i18n="placeholder:common.status")
     fieldset
-        input(type="text", placeholder="Tags", tg-tags, ng-model="us.tags")
+        input(type="text", name="tags", placeholder="Tags", tg-tags, ng-model="us.tags")
     fieldset
-        textarea.description(placeholder="It's up to well-educated users to add a description description", ng-model="us.description")
+        textarea.description(name="description", ng-model="us.description",
+                             placeholder="It's up to well-educated users to add a description description")
     div.new-us-settings
         fieldset
             label.requirement.team-requirement(for="team-requirement", tg-i18n="us.team-requirement")
-            input(
-                type="checkbox", ng-model="us.team_requirement",
-                name="team-requirement", id="team-requirement")
+            input(type="checkbox", name="team_requirement", ng-model="us.team_requirement",
+                  id="team-requirement")
         fieldset
             label.requirement.client-requirement(for="client-requirement", tg-i18n="us.client-requirement")
-            input(
-                type="checkbox", ng-model="us.client_requirement",
-                name="client-requirement", id="client-requirement")
+            input(type="checkbox", name="client_requirement", ng-model="us.client_requirement",
+                  id="client-requirement")
         fieldset
             label.blocked(for="blocked-us", tg-i18n="common.blocked")
-            input(type="checkbox", ng-model="us.is_blocked", name="blocked-us", id="blocked-us")
+            input(type="checkbox", name="is_blocked", ng-model="us.is_blocked", id="blocked-us")
+
     fieldset.blocked-note.hidden
-        textarea(placeholder="Why is this user story blocked?", ng-model="us.blocked_note")
+        textarea(name="blocked_note", placeholder="Why is this user story blocked?", ng-model="us.blocked_note")
 
     a.button.button-green(href="", title="Save")
         span Create

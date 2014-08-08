@@ -139,9 +139,6 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService)
             if us.client_requirement
                 $el.find("label.client-requirement").addClass("selected")
 
-        $scope.$on "$destroy", ->
-            $el.off()
-
         $el.on "click", ".button-green", (event) ->
             event.preventDefault()
             form = $el.find("form").checksley()
@@ -158,6 +155,11 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService)
             promise.then (data) ->
                 lightboxService.close($el)
                 $rootScope.$broadcast(broadcastEvent, data)
+
+            promise.then null, (data) ->
+                form.setErrors(data)
+                if data._error_message
+                    $confirm.notify("error", data._error_message)
 
         $el.on "click", "label.blocked", (event) ->
             event.preventDefault()
@@ -212,9 +214,15 @@ CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService) ->
             if not form.validate()
                 return
 
-            $rs.userstories.bulkCreate($scope.new.projectId, $scope.new.statusId, $scope.new.bulk).then (result) ->
+            promise = $rs.userstories.bulkCreate($scope.new.projectId, $scope.new.statusId, $scope.new.bulk)
+            promise.then (result) ->
                 $rootscope.$broadcast("usform:bulk:success", result)
                 lightboxService.close($el)
+
+            promise.then null, (data) ->
+                form.setErrors(data)
+                if data._error_message
+                    $confirm.notify("error", data._error_message)
 
         $scope.$on "$destroy", ->
             $el.off()
@@ -328,9 +336,7 @@ AssignedToLightboxDirective = (lightboxService) ->
 
         $el.on "click", ".close", (event) ->
             event.preventDefault()
-
             lightboxService.close($el)
-
             $scope.$apply ->
                 $scope.usersSearch = null
 

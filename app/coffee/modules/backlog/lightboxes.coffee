@@ -51,6 +51,8 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService) ->
 
             promise.then null, (data) ->
                 form.setErrors(data)
+                if data._error_message
+                    $confirm.notify("error", data._error_message)
 
         remove = ->
             #TODO: i18n
@@ -58,10 +60,13 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService) ->
             subtitle = $scope.sprint.name
 
             $confirm.ask(title, subtitle).then =>
-                $repo.remove($scope.sprint).then ->
+                onSuccess = ->
                     $scope.milestonesCounter -= 1
                     lightboxService.close($el)
                     $rootscope.$broadcast("sprintform:remove:success")
+                onError = ->
+                    $confirm.notify("error")
+                $repo.remove($scope.sprint).then(onSuccess, onError)
 
         $scope.$on "sprintform:create", (event, projectId) ->
             createSprint = true
