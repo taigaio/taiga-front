@@ -1,7 +1,7 @@
 //- NOTE: You must to define 'var commentModel' with the object model
 
 section.us-comments
-    div.add-comment(tg-check-permission, permission="modify_"+commentModel)
+    div.add-comment(tg-check-permission, tg-toggle-comment, permission="modify_"+commentModel)
         textarea(placeholder="Write here a new commet", ng-model="commentModel.comment")
         a.button.button-green(href="", title="Comment") Comment
     div.comment-list

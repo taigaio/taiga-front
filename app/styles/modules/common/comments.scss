@@ -2,15 +2,25 @@
     @include clearfix;
     textarea {
         float: left;
+        height: 41px;
         margin-bottom: .5rem;
-        &.active {
-            @include transition(height .3s ease-in);
-            height: 6rem;
-        }
+        min-height: inherit;
     }
     a {
         color: $white;
         float: right;
+    }
+    .button-green {
+        display: none;
+    }
+    &.active {
+        .button-green {
+            display: block;
+        }
+        textarea {
+            @include transition(height .3s ease-in);
+            height: 6rem;
+        }
     }
 }
 

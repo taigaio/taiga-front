@@ -396,3 +396,16 @@ AnimationFrame = () ->
     return {add: add}
 
 module.factory("animationFrame", AnimationFrame)
+
+#############################################################################
+## Open/close comment
+#############################################################################
+
+ToggleCommentDirective = () ->
+    link = ($scope, $el, $attrs) ->
+        $el.find("textarea").on "focus", () ->
+            $el.addClass("active")
+
+    return {link:link}
+
+module.directive("tgToggleComment", ToggleCommentDirective)
