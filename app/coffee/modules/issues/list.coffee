@@ -74,6 +74,7 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @scope.severityList = _.sortBy(project.severities, "order")
             @scope.priorityById = groupBy(project.priorities, (x) -> x.id)
             @scope.priorityList = _.sortBy(project.priorities, "order")
+            @scope.issueTypes = _.sortBy(project.issue_types, "order")
 
             @scope.membersById = groupBy(project.memberships, (x) -> x.user)
             return project

@@ -6,9 +6,8 @@ form
         input(type="text", ng-model="issue.subject", placeholder="Issue description",
               data-required="true", data-maxlength="500")
     div.fieldset-row
-        // fieldset
-        //     select.type
-        //         option(value="Type") Type
+        fieldset
+            select.type(ng-model="issue.type", ng-options="t.id as t.name for t in issueTypes")
         fieldset
             select.priority(ng-model="issue.priority", ng-options="p.id as p.name for p in priorityList")
         fieldset
