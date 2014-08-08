@@ -13,8 +13,9 @@ div.taskboard-table
                     div.tag-list
                         span.tag(ng-repeat="tag in us.tags") {{ tag }}
                     h3.us-title
-                        span.us-ref(tg-bo-ref="us.ref")
-                        span(ng-bind="us.subject")
+                        a(href="", tg-nav="project-userstories-detail:project=project.slug,ref=us.ref", tg-bo-title="us.subject")
+                            span.us-ref(tg-bo-ref="us.ref")
+                            span(ng-bind="us.subject")
                     p.points-value
                         span(ng-bind="us.total_points")
                         span points
