@@ -44,7 +44,7 @@ class UserSettingsController extends mixOf(taiga.Controller, taiga.PageMixin)
       ]
 
       constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @auth) ->
-          @scope.sectionName = "User Settings" #i18n
+          @scope.sectionName = "User Profile" #i18n
           @scope.project = {}
           @scope.user = @auth.getUser()
 
