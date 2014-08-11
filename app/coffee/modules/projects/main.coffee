@@ -12,9 +12,12 @@ class ProjectNavController extends taiga.Controller
 module.controller("ProjectNavController", ProjectNavController)
 
 class ProjectsController extends taiga.Controller
-    @.$inject = ["$scope", "$tgResources", "$rootScope", "$tgNavUrls"]
+    @.$inject = ["$scope", "$tgResources", "$rootScope", "$tgNavUrls", "$tgAuth", "$location"]
 
-    constructor: (@scope, @rs, @rootscope, @navurls) ->
+    constructor: (@scope, @rs, @rootscope, @navurls, $auth, $location) ->
+        if !$auth.isAuthenticated()
+            $location.path("/login")
+
         @scope.hideMenu = true
         @.projects = []
         @.loadInitialData()
