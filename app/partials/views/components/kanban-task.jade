@@ -1,5 +1,4 @@
-div.kanban-tagline
-    a.kanban-tag(ng-repeat="tag in us.tags", href="", tg-bo-title="tag", tg-colorize-tag-background="tag")
+div.kanban-tagline(tg-colorize-tags="us.tags" tg-colorize-tags-type="kanban")
 div.kanban-task-inner
     div(tg-kanban-user-avatar="us.assigned_to", ng-model="us", click="ctrl.editUsAssignedTo(task)")
     div.task-text

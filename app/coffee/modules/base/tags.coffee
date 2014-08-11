@@ -50,38 +50,42 @@ TagsDirective = ->
 module.directive("tgTags", TagsDirective)
 
 
-ColorizeTagBackgroundDirective = ->
-    link = ($scope, $el, $attrs, $ctrl) ->
-        text = $scope.$eval($attrs.tgColorizeTagBackground)
-        color = $scope.project.tags_colors[text]
-        $el.css("background", color)
-
-    return {link: link}
-
-module.directive("tgColorizeTagBackground", ColorizeTagBackgroundDirective)
-
-
-ColorizeTagsBorderLeftDirective = ->
-    template = _.template("""
-        <% _.each(tags, function(tag) { %>
-            <span class="tag" style="border-left: 5px solid <%- tag.color %>"><%- tag.name %></span>
-        <% }) %>
-    """)
+ColorizeTagsDirective = ->
+    templates = {
+        backlog: _.template("""
+            <% _.each(tags, function(tag) { %>
+                <span class="tag" style="border-left: 5px solid <%- tag.color %>"><%- tag.name %></span>
+            <% }) %>
+        """)
+        kanban: _.template("""
+            <% _.each(tags, function(tag) { %>
+                <a class="kanban-tag" href="" style="background: <%- tag.color %>" title="<%- tag.name %>" />
+            <% }) %>
+        """)
+        taskboard: _.template("""
+            <% _.each(tags, function(tag) { %>
+                <a class="taskboard-tag" href="" style="background: <%- tag.color %>" title="<%- tag.name %>" />
+            <% }) %>
+        """)
+    }
     link = ($scope, $el, $attrs, $ctrl) ->
         render = (srcTags) ->
+            template = templates[$attrs.tgColorizeTagsType]
             tags = []
             for tag in srcTags
                 color = $scope.project.tags_colors[tag]
                 tags.push({name: tag, color: color})
             $el.html template({tags: tags})
 
-        $scope.$watch $attrs.tgColorizeTagsBorderLeft, ->
-            tags = $scope.$eval($attrs.tgColorizeTagsBorderLeft)
-            render(tags)
+        $scope.$watch $attrs.tgColorizeTags, ->
+            tags = $scope.$eval($attrs.tgColorizeTags)
+            if tags?
+                render(tags)
 
-        tags = $scope.$eval($attrs.tgColorizeTagsBorderLeft)
-        render(tags)
+        tags = $scope.$eval($attrs.tgColorizeTags)
+        if tags?
+            render(tags)
 
     return {link: link}
 
-module.directive("tgColorizeTagsBorderLeft", ColorizeTagsBorderLeftDirective)
+module.directive("tgColorizeTags", ColorizeTagsDirective)

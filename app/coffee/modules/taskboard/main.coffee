@@ -85,6 +85,10 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.stats.remainingTasks = remainingTasks
             return stats
 
+    refreshTagsColors: ->
+        return @rs.projects.tagsColors(@scope.projectId).then (tags_colors) =>
+            @scope.project.tags_colors = tags_colors
+
     loadSprint: ->
         return @rs.sprints.get(@scope.projectId, @scope.sprintId).then (sprint) =>
             @scope.sprint = sprint
@@ -92,21 +96,22 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
             return sprint
 
     loadTasks: ->
-        return @rs.tasks.list(@scope.projectId, @scope.sprintId).then (tasks) =>
-            @scope.tasks = tasks
-            @scope.usTasks = {}
+        return @.refreshTagsColors().then =>
+            return @rs.tasks.list(@scope.projectId, @scope.sprintId).then (tasks) =>
+                @scope.tasks = tasks
+                @scope.usTasks = {}
 
-            # Iterate over all userstories and
-            # null userstory for unassigned tasks
-            for us in _.union(@scope.userstories, [{id:null}])
-                @scope.usTasks[us.id] = {}
-                for status in @scope.taskStatusList
-                    @scope.usTasks[us.id][status.id] = []
+                # Iterate over all userstories and
+                # null userstory for unassigned tasks
+                for us in _.union(@scope.userstories, [{id:null}])
+                    @scope.usTasks[us.id] = {}
+                    for status in @scope.taskStatusList
+                        @scope.usTasks[us.id][status.id] = []
 
-            for task in @scope.tasks
-                @scope.usTasks[task.user_story][task.status].push(task)
+                for task in @scope.tasks
+                    @scope.usTasks[task.user_story][task.status].push(task)
 
-            return tasks
+                return tasks
 
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>

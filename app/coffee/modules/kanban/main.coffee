@@ -59,9 +59,9 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         promise.then null, =>
             console.log "FAIL"
 
-        @scope.$on("usform:new:success", @.onNewUserstory)
-        @scope.$on("usform:bulk:success", @.onNewUserstory)
-        @scope.$on("usform:edit:success", @.onUserstoryEdited)
+        @scope.$on("usform:new:success", @.loadUserstories)
+        @scope.$on("usform:bulk:success", @.loadUserstories)
+        @scope.$on("usform:edit:success", @.loadUserstories)
         @scope.$on("assigned-to:added", @.onAssignedToChanged)
         @scope.$on("kanban:us:move", @.moveUs)
 
@@ -80,23 +80,11 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
     # Scope Events Handlers
 
-    onNewUserstory: (ctx, result) ->
-        if result.data
-            items = result.data
-        else
-            items = [result]
-
-        for us in items
-            @scope.usByStatus[us.status].splice(0, 0, us)
-
     onAssignedToChanged: (ctx, userid, us) ->
         us.assigned_to = userid
         promise = @repo.save(us)
         promise.then null, ->
             console.log "FAIL" # TODO
-
-    onUserstoryEdited: (ctx, us) ->
-        @.loadUserstories()
 
     # Load data methods
 
@@ -112,22 +100,27 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @scope.stats.completedPercentage = "#{completedPercentage}%"
             return stats
 
+    refreshTagsColors: ->
+        return @rs.projects.tagsColors(@scope.projectId).then (tags_colors) =>
+            @scope.project.tags_colors = tags_colors
+
     loadUserstories: ->
-        return @rs.userstories.listUnassigned(@scope.projectId).then (userstories) =>
-            @scope.userstories = userstories
+        return @.refreshTagsColors().then =>
+            return @rs.userstories.listUnassigned(@scope.projectId).then (userstories) =>
+                @scope.userstories = userstories
 
-            @scope.usByStatus = _.groupBy(userstories, "status")
+                @scope.usByStatus = _.groupBy(userstories, "status")
 
-            for status in @scope.usStatusList
-                if not @scope.usByStatus[status.id]?
-                    @scope.usByStatus[status.id] = []
+                for status in @scope.usStatusList
+                    if not @scope.usByStatus[status.id]?
+                        @scope.usByStatus[status.id] = []
 
-            # The broadcast must be executed when the DOM has been fully reloaded.
-            # We can't assure when this exactly happens so we need a defer
-            scopeDefer @scope, =>
-                @scope.$broadcast("userstories:loaded")
+                # The broadcast must be executed when the DOM has been fully reloaded.
+                # We can't assure when this exactly happens so we need a defer
+                scopeDefer @scope, =>
+                    @scope.$broadcast("userstories:loaded")
 
-            return userstories
+                return userstories
 
     loadKanban: ->
         return @q.all([
