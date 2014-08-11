@@ -120,6 +120,12 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService)
             # Update texts for creation
             $el.find(".button-green span").html("Create") #TODO: i18n
             $el.find(".title").html("New user story  ") #TODO: i18n
+
+            $el.find(".blocked-note").hide()
+            $el.find("label.blocked").removeClass("selected")
+            $el.find("label.team-requirement").removeClass("selected")
+            $el.find("label.client-requirement").removeClass("selected")
+
             lightboxService.open($el)
 
         $scope.$on "usform:edit", (ctx, us) ->
@@ -128,17 +134,25 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService)
             # Update texts for edition
             $el.find(".button-green span").html("Save") #TODO: i18n
             $el.find(".title").html("Edit user story  ") #TODO: i18n
-            lightboxService.open($el)
 
             # Update requirement info (team, client or blocked)
             if us.is_blocked
                 $el.find(".blocked-note").show()
                 $el.find("label.blocked").addClass("selected")
+            else
+                $el.find(".blocked-note").hide()
+                $el.find("label.blocked").removeClass("selected")
 
             if us.team_requirement
                 $el.find("label.team-requirement").addClass("selected")
+            else
+                $el.find("label.team-requirement").removeClass("selected")
             if us.client_requirement
                 $el.find("label.client-requirement").addClass("selected")
+            else
+                $el.find("label.client-requirement").removeClass("selected")
+
+            lightboxService.open($el)
 
         $el.on "click", ".button-green", (event) ->
             event.preventDefault()
