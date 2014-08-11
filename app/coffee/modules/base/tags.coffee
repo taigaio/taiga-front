@@ -61,12 +61,27 @@ ColorizeTagBackgroundDirective = ->
 module.directive("tgColorizeTagBackground", ColorizeTagBackgroundDirective)
 
 
-ColorizeTagBorderLeftDirective = ->
+ColorizeTagsBorderLeftDirective = ->
+    template = _.template("""
+        <% _.each(tags, function(tag) { %>
+            <span class="tag" style="border-left: 5px solid <%- tag.color %>"><%- tag.name %></span>
+        <% }) %>
+    """)
     link = ($scope, $el, $attrs, $ctrl) ->
-        text = $scope.$eval($attrs.tgColorizeTagBorderLeft)
-        color = $scope.project.tags_colors[text]
-        $el.css("border-left", "5px solid #{color}")
+        render = (srcTags) ->
+            tags = []
+            for tag in srcTags
+                color = $scope.project.tags_colors[tag]
+                tags.push({name: tag, color: color})
+            $el.html template({tags: tags})
+
+        $scope.$watch $attrs.tgColorizeTagsBorderLeft, ->
+            tags = $scope.$eval($attrs.tgColorizeTagsBorderLeft)
+            render(tags)
+
+        tags = $scope.$eval($attrs.tgColorizeTagsBorderLeft)
+        render(tags)
 
     return {link: link}
 
-module.directive("tgColorizeTagBorderLeft", ColorizeTagBorderLeftDirective)
+module.directive("tgColorizeTagsBorderLeft", ColorizeTagsBorderLeftDirective)

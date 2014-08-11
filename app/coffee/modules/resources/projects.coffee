@@ -45,6 +45,9 @@ resourceProvider = ($repo) ->
     service.stats = (projectId) ->
         return $repo.queryOneRaw("projects", "#{projectId}/stats")
 
+    service.tagsColors = (id) ->
+        return $repo.queryOne("projects", "#{id}/tags_colors")
+
     return (instance) ->
         instance.projects = service
 

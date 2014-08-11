@@ -87,6 +87,10 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             @scope.stats.completedPercentage = "#{completedPercentage}%"
             return stats
 
+    refreshTagsColors: ->
+        return @rs.projects.tagsColors(@scope.projectId).then (tags_colors) =>
+            @scope.project.tags_colors = tags_colors
+
     loadSprints: ->
         return @rs.sprints.list(@scope.projectId).then (sprints) =>
             @scope.sprints = sprints
@@ -103,19 +107,20 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
         @rs.userstories.storeQueryParams(@scope.projectId, @scope.httpParams)
 
-        return @rs.userstories.listUnassigned(@scope.projectId, @scope.httpParams).then (userstories) =>
-            @scope.userstories = userstories
+        @.refreshTagsColors().then =>
+            @rs.userstories.listUnassigned(@scope.projectId, @scope.httpParams).then (userstories) =>
+                @scope.userstories = userstories
 
-            @.generateFilters()
-            @.filterVisibleUserstories()
+                @.generateFilters()
+                @.filterVisibleUserstories()
 
-            @rootscope.$broadcast("filters:loaded", @scope.filters)
-            # The broadcast must be executed when the DOM has been fully reloaded.
-            # We can't assure when this exactly happens so we need a defer
-            scopeDefer @scope, =>
-                @scope.$broadcast("userstories:loaded")
+                @rootscope.$broadcast("filters:loaded", @scope.filters)
+                # The broadcast must be executed when the DOM has been fully reloaded.
+                # We can't assure when this exactly happens so we need a defer
+                scopeDefer @scope, =>
+                    @scope.$broadcast("userstories:loaded")
 
-            return userstories
+                return userstories
 
     loadBacklog: ->
         return @q.all([
