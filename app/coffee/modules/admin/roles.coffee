@@ -248,7 +248,6 @@ RolePermissionsDirective = ($repo, $confirm) ->
                 { key: "add_issue", description: "Add issue" }
                 { key: "modify_issue", description: "Modify issue" }
                 { key: "delete_issue", description: "Delete issue" }
-                { key: "vote_issues", description: "Vote issues" }
             ]
             categories.push({ name: "Issues", permissions: setActivePermissions(issuePermissions) })
 
@@ -259,7 +258,6 @@ RolePermissionsDirective = ($repo, $confirm) ->
                 { key: "delete_wiki_page", description: "Delete wiki page" }
                 { key: "view_wiki_links", description: "View wiki links" }
                 { key: "add_wiki_link", description: "Add wiki link" }
-                { key: "modify_wiki_link", description: "Modify wiki link" }
                 { key: "delete_wiki_link", description: "Delete wiki link" }
             ]
             categories.push({ name: "Wiki", permissions: setActivePermissions(wikiPermissions) })
