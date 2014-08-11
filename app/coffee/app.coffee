@@ -126,8 +126,9 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, tgLoade
 
     $routeProvider.when("/invitation/:token", {templateUrl: "/partials/invitation.html"})
     $routeProvider.when("/error", {templateUrl: "/partials/error.html"})
+    $routeProvider.when("/not-found", {templateUrl: "/partials/not-found.html"})
 
-    $routeProvider.otherwise({redirectTo: '/login'})
+    $routeProvider.otherwise({redirectTo: '/not-found'})
     $locationProvider.html5Mode(true)
 
     defaultHeaders = {
@@ -147,7 +148,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, tgLoade
             return promise.then null, (response) ->
                 if response.status == 0
                     $confirm.notify("error", "One of our Oompa Loompas says we are having a network problem. Please, try again in a few moments.") #TODO: i18n
-                    $location.url("/error")
+                    $location.path("/error")
                 else if response.status == 401
                     nextPath = $location.path()
                     $location.url("/login").search("next=#{nextPath}")
