@@ -25,10 +25,6 @@
         @include table-flex();
         padding: 1rem 1rem 2rem;
     }
-    .task-num {
-        color: $postit-hover;
-        margin-right: .5em;
-    }
     .avatar {
         @include table-flex-child($flex-basis: 50px);
         a {
