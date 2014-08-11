@@ -43,10 +43,11 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin, taig
         "$q",
         "$location",
         "$filter",
-        "$log"
+        "$log",
+        "$appTitle"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @filter, @log) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @filter, @log, @appTitle) ->
         @.attachmentsUrlName = "wiki/attachments"
 
         @scope.projectSlug = @params.pslug
@@ -54,6 +55,10 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin, taig
         @scope.sectionName = "Wiki"
 
         promise = @.loadInitialData()
+
+        promise.then () =>
+            @appTitle.set("Wiki - " + @scope.project.name)
+
         promise.then null, ->
             console.log "FAIL" #TODO
 

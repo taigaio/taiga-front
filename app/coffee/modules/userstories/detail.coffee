@@ -41,16 +41,21 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin,
         "$routeParams",
         "$q",
         "$location",
-        "$log"
+        "$log",
+        "$appTitle"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @log) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @log, @appTitle) ->
         @.attachmentsUrlName = "userstories/attachments"
 
         @scope.issueRef = @params.issueref
         @scope.sectionName = "User Story Details"
 
         promise = @.loadInitialData()
+
+        promise.then () =>
+            @appTitle.set(@scope.us.subject + " - " + @scope.project.name)
+
         promise.then null, ->
             console.log "FAIL" #TODO
 

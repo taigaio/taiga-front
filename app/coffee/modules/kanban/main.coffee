@@ -43,15 +43,19 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         "$tgResources",
         "$routeParams",
         "$q",
-        "$tgLocation"
+        "$tgLocation",
+        "$appTitle"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @appTitle) ->
         _.bindAll(@)
 
         @scope.sectionName = "Kanban"
 
         promise = @.loadInitialData()
+        promise.then () =>
+            @appTitle.set("Kanban - " + @scope.project.name)
+
         promise.then null, =>
             console.log "FAIL"
 

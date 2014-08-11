@@ -12,9 +12,11 @@ class ProjectNavController extends taiga.Controller
 module.controller("ProjectNavController", ProjectNavController)
 
 class ProjectsController extends taiga.Controller
-    @.$inject = ["$scope", "$tgResources", "$rootScope", "$tgNavUrls", "$tgAuth", "$location"]
+    @.$inject = ["$scope", "$tgResources", "$rootScope", "$tgNavUrls", "$tgAuth", "$location", "$appTitle"]
 
-    constructor: (@scope, @rs, @rootscope, @navurls, $auth, $location) ->
+    constructor: (@scope, @rs, @rootscope, @navurls, $auth, $location, appTitle) ->
+        appTitle.set("Projects")
+
         if !$auth.isAuthenticated()
             $location.path("/login")
 
@@ -45,11 +47,13 @@ class ProjectsController extends taiga.Controller
 module.controller("ProjectsController", ProjectsController)
 
 class ProjectController extends taiga.Controller
-    @.$inject = ["$scope", "$tgResources", "$tgRepo", "$routeParams", "$q", "$rootScope"]
+    @.$inject = ["$scope", "$tgResources", "$tgRepo", "$routeParams", "$q", "$rootScope", "$appTitle"]
 
-    constructor: (@scope, @rs, @repo, @params, @q, @rootscope) ->
+    constructor: (@scope, @rs, @repo, @params, @q, @rootscope, @appTitle) ->
         @scope.hideMenu = false
         @.loadInitialData()
+            .then () =>
+                @appTitle.set(@scope.project.name)
 
     loadInitialData: ->
         # Resolve project slug

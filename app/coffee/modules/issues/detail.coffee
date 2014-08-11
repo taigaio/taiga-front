@@ -43,16 +43,21 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin, tai
         "$routeParams",
         "$q",
         "$location",
-        "$log"
+        "$log",
+        "$appTitle"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @log) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @log, @appTitle) ->
         @.attachmentsUrlName = "issues/attachments"
 
         @scope.issueRef = @params.issueref
         @scope.sectionName = "Issue Details"
 
         promise = @.loadInitialData()
+
+        promise.then () =>
+            @appTitle.set(@scope.issue.subject + " - " + @scope.project.name)
+
         promise.then null, ->
             console.log "FAIL" #TODO
 

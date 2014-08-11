@@ -39,10 +39,11 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
         "$tgResources",
         "$routeParams",
         "$q",
-        "$tgLocation"
+        "$tgLocation",
+        "$appTitle"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @appTitle) ->
         _.bindAll(@)
 
         @scope.sectionName = "Memberships" #i18n
@@ -50,6 +51,10 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
         @scope.filters = {}
 
         promise = @.loadInitialData()
+
+        promise.then () =>
+            @appTitle.set("Membership - " + @scope.project.name)
+
         promise.then null, ->
             console.log "FAIL" #TODO
 

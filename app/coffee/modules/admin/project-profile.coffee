@@ -43,13 +43,18 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$tgResources",
         "$routeParams",
         "$q",
-        "$location"
+        "$location",
+        "$appTitle"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @appTitle) ->
         @scope.project = {}
 
         promise = @.loadInitialData()
+
+        promise.then () =>
+            @appTitle.set("Project profile - " + @scope.sectionName + " - " + @scope.project.name)
+
         promise.then null, ->
             console.log "FAIL" #TODO
 

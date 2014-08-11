@@ -40,16 +40,21 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin, taig
         "$routeParams",
         "$q",
         "$location",
-        "$log"
+        "$log",
+        "$appTitle"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @log) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @log, @appTitle) ->
         @.attachmentsUrlName = "tasks/attachments"
 
         @scope.taskRef = @params.taskref
         @scope.sectionName = "Task Details"
 
         promise = @.loadInitialData()
+
+        promise.then () =>
+            @appTitle.set(@scope.task.subject + " - " + @scope.project.name)
+
         promise.then null, ->
             console.log "FAIL" #TODO
 

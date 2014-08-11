@@ -41,16 +41,21 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$tgConfirm",
         "$tgResources",
         "$routeParams",
-        "$q"
+        "$q",
+        "$appTitle"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @appTitle) ->
         _.bindAll(@)
 
         @scope.sprintId = @params.id
         @scope.sectionName = "Taskboard"
 
         promise = @.loadInitialData()
+
+        promise.then () =>
+            @appTitle.set("Taskboard - " + @scope.project.name)
+
         promise.then null, ->
             console.log "FAIL" #TODO
 

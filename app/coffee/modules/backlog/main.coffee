@@ -42,16 +42,20 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         "$tgResources",
         "$routeParams",
         "$q",
-        "$tgLocation"
+        "$tgLocation",
+        "$appTitle"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @appTitle) ->
         _.bindAll(@)
 
         @scope.sectionName = "Backlog"
         @showTags = false
 
         promise = @.loadInitialData()
+
+        promise.then () =>
+            @appTitle.set("Backlog - " + @scope.project.name)
 
         promise.then null, =>
             console.log "FAIL"

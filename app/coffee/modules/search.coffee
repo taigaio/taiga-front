@@ -40,13 +40,18 @@ class SearchController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$tgResources",
         "$routeParams",
         "$q",
-        "$location"
+        "$location",
+        "$appTitle"
     ]
 
-    constructor: (@scope, @repo, @rs, @params, @q, @location) ->
+    constructor: (@scope, @repo, @rs, @params, @q, @location, @appTitle) ->
         @scope.sectionName = "Search"
 
         promise = @.loadInitialData()
+
+        promise.then () =>
+            @appTitle.set("Search")
+
         promise.then null, ->
             console.log "FAIL" #TODO
 

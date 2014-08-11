@@ -40,16 +40,21 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
         "$tgResources",
         "$routeParams",
         "$q",
-        "$tgLocation"
+        "$tgLocation",
+        "$appTitle"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @appTitle) ->
         _.bindAll(@)
 
         @scope.sectionName = "Roles" #i18n
         @scope.project = {}
 
         promise = @.loadInitialData()
+
+        promise.then () =>
+            @appTitle.set("Roles - " + @scope.project.name)
+
         promise.then null, ->
             console.log "FAIL" #TODO
 
