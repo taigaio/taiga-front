@@ -33,7 +33,7 @@ CreateMembersDirective = ($rs, $rootScope, $confirm, lightboxService) ->
     template = _.template("""
     <div class="add-member-wrapper">
         <fieldset>
-            <input type="email" placeholder="Type an Email" data-required="true" />
+            <input type="email" placeholder="Type an Email" data-required="true" data-type="email"/>
         </fieldset>
         <fieldset>
             <select data-required="true">
@@ -52,7 +52,7 @@ CreateMembersDirective = ($rs, $rootScope, $confirm, lightboxService) ->
             return template(ctx)
 
         resetForm = ->
-            $el.find("form > fieldset").remove()
+            $el.find("form > .add-member-wrapper").remove()
 
             title = $el.find("h2")
             fieldSet = createFieldSet()
@@ -109,13 +109,13 @@ CreateMembersDirective = ($rs, $rootScope, $confirm, lightboxService) ->
             if not form.validate()
                 return
 
-            fieldSets = $el.find("form > fieldset")
+            memberWrappers = $el.find("form > .add-member-wrapper")
 
-            invitations = _.map fieldSets, (fs) ->
-                fieldset = angular.element(fs)
+            invitations = _.map memberWrappers, (mw) ->
+                memberWrapper = angular.element(mw)
                 return {
-                    email: fieldset.children("input").val()
-                    role_id: fieldset.children("select").val()
+                    email: memberWrapper.find("input").val()
+                    role_id: memberWrapper.find("select").val()
                 }
 
             $rs.memberships.bulkCreateMemberships($scope.project.id, invitations).then(onSuccess, onError)
