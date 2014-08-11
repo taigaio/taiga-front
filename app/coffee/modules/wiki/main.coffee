@@ -64,15 +64,7 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin, taig
             @scope.membersById = groupBy(project.memberships, (x) -> x.user)
             return project
 
-    loadWiki: ->
-        return @rs.wiki.get(@scope.wikiId).then (wiki) =>
-            @scope.wiki = wiki
-
-    loadWikiLinks: ->
-        return @rs.wiki.listLinks(@scope.projectId).then (wikiLinks) =>
-            @scope.wikiLinks = wikiLinks
-
-    loadInitialData: ->
+    loadWikiSlug: ->
         params = {
             pslug: @params.pslug
             wikipage: @params.slug
@@ -83,12 +75,32 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin, taig
             @scope.projectId = data.project
             return data
 
-        promise.then null, =>
+          promise.then null, =>
             @location.path("/project/#{@params.pslug}/wiki/#{@params.slug}/edit")
+
+    loadWiki: ->
+        if @scope.wikiId
+            return @rs.wiki.get(@scope.wikiId).then (wiki) =>
+                @scope.wiki = wiki
+        else
+            return @scope.wiki = {
+                content: ""
+            }
+
+    loadWikiLinks: ->
+        return @rs.wiki.listLinks(@scope.projectId).then (wikiLinks) =>
+            @scope.wikiLinks = wikiLinks
+
+    loadInitialData: ->
+        # Resolve project slug
+        promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
+            @scope.projectId = data.project
+            return data
 
         return promise.then(=> @.loadProject())
                       .then(=> @.loadUsersAndRoles())
                       .then(=> @.loadWikiLinks())
+                      .then(=> @.loadWikiSlug())
                       .then(=> @.loadWiki())
                       .then(=> @.loadAttachments(@scope.wikiId))
 
@@ -120,43 +132,6 @@ module.controller("WikiDetailController", WikiDetailController)
 #############################################################################
 
 class WikiEditController extends WikiDetailController
-    loadInitialData: ->
-        deferred = @q.defer()
-        params = {
-            pslug: @params.pslug
-        }
-
-        promise = @repo.resolve(params)
-
-        promise.then (data) =>
-            @scope.wikiId = data.wikipage
-            @scope.projectId = data.project
-            return data
-
-        promise.then(=> @.loadProject())
-               .then(=> @.loadUsersAndRoles())
-               .then(=> @.loadWikiLinks())
-               .then(=> @.loadAttachments(@scope.wikiId))
-
-        params = {
-            pslug: @params.pslug
-            wikipage: @params.slug
-        }
-
-        promise2 = @repo.resolve(params)
-
-        promise2.then (data) =>
-            @scope.wikiId = data.wikipage
-            return data
-
-        promise2.then => @.loadWiki()
-        promise2.then null, =>
-           @scope.wiki = {
-               content: ""
-           }
-
-        return @q.all(promise, promise2)
-
     save: ->
         onSuccess = =>
             @confirm.notify("success")
