@@ -136,7 +136,7 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location) -
         <% } %>
         <% if (project.videoconferences) { %>
         <li id="nav-video">
-            <a href="" title="Video">
+            <a href="<%- project.videoconferenceUrl %>" target="_parent" title="Video">
                 <span class="icon icon-video"></span>
                 <span class="item">Video</span>
             </a>
@@ -192,6 +192,22 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location) -
 
         container.replaceWith(dom)
 
+    videoConferenceUrl = (project) ->
+        if project.videoconferences == "appear-in"
+            baseUrl = "https://appear.in/"
+        else if project.videoconferences == "talky"
+            baseUrl = "https://talky.io/"
+        else
+            return ""
+
+        if project.videoconferences_salt
+            url = "#{project.slug}-#{project.videoconferences_salt}"
+        else
+            url = "#{project.slug}"
+
+        return baseUrl + url
+
+
     link = ($scope, $el, $attrs, $ctrl) ->
         renderMainMenu($el)
 
@@ -213,6 +229,7 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location) -
             if $el.hasClass("hidden")
                 $el.removeClass("hidden")
 
+            project.videoconferenceUrl = videoConferenceUrl(project)
             renderMenuEntries($el, ctx.targetScope, project)
 
     return {link: link}
