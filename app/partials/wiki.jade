@@ -6,7 +6,7 @@ block head
 block content
     div.wrapper(tg-wiki-detail, ng-controller="WikiDetailController as ctrl",
                 ng-init="section='wiki'")
-        sidebar.menu-secondary.extrabar
+        sidebar.menu-secondary.extrabar(tg-check-permission, permission="view_wiki_links")
             section.wiki-nav(tg-wiki-nav, ng-model="wikiLinks")
         section.main.wiki
             header
