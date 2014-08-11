@@ -12,9 +12,9 @@ class ProjectNavController extends taiga.Controller
 module.controller("ProjectNavController", ProjectNavController)
 
 class ProjectsController extends taiga.Controller
-    @.$inject = ["$scope", "$tgResources", "$rootScope"]
+    @.$inject = ["$scope", "$tgResources", "$rootScope", "$tgNavUrls"]
 
-    constructor: (@scope, @rs, @rootscope) ->
+    constructor: (@scope, @rs, @rootscope, @navurls) ->
         @scope.hideMenu = true
         @.projects = []
         @.loadInitialData()
@@ -22,6 +22,19 @@ class ProjectsController extends taiga.Controller
     loadInitialData: ->
         return @rs.projects.list().then (projects) =>
             @.projects = {'recents': projects.slice(0, 8), 'all': projects.slice(8)}
+            for project in projects
+                if project.is_backlog_activated and project.my_permissions.indexOf("view_us")>-1
+                    url = @navurls.resolve("project-backlog")
+                else if project.is_kanban_activated and project.my_permissions.indexOf("view_us")>-1
+                    url = @navurls.resolve("project-kanban")
+                else if project.is_wiki_activated and project.my_permissions.indexOf("view_wiki_pages")>-1
+                    url = @navurls.resolve("project-wiki")
+                else if project.is_issues_activated and project.my_permissions.indexOf("view_issues")>-1
+                    url = @navurls.resolve("project-issues")
+                else
+                    url = @navurls.resolve("project")
+
+                project.url = @navurls.formatUrl(url, {'project': project.slug})
 
     newProject: ->
         @rootscope.$broadcast("projects:create")

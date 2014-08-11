@@ -12,7 +12,7 @@ block content
                         h2(tg-bo-bind="project.name")
                         p(tg-bo-bind="project.description")
                     .project-link
-                        a.button.button-gray(href="", tg-nav="project:project=project.slug") Go to project
+                        a.button.button-gray(ng-href="{{project.url}}") Go to project
 
             div.all-projects
                 h1 Projects
