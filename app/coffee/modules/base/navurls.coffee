@@ -62,7 +62,7 @@ NavigationUrlsDirective = ($navurls, $auth, $q, $location) ->
         values = _.map(params, (x) -> trim(x.split("=")[1]))
         promises = _.map(values, (x) -> bindOnceP($scope, x))
 
-        return $q.all.apply($q, promises).then ->
+        return $q.all(promises).then ->
             options = {}
             for item in params
                 [key, value] = _.map(item.split("="), trim)
