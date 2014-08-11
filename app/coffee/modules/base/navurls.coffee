@@ -70,18 +70,29 @@ NavigationUrlsDirective = ($navurls, $auth, $q, $location) ->
             return [name, options]
 
     link = ($scope, $el, $attrs) ->
+        parseNav($attrs.tgNav, $scope).then (result) ->
+            [name, options] = result
+            user = $auth.getUser()
+            options.user = user.username if user
+
+            url = $navurls.resolve(name)
+            fullUrl = $navurls.formatUrl(url, options)
+
+            $el.data("fullUrl", fullUrl)
+
+            if $el.is("a")
+                $el.attr("href", fullUrl)
+
         $el.on "click", (event) ->
             event.preventDefault()
 
-            parseNav($attrs.tgNav, $scope).then (result) ->
-                [name, options] = result
-                user = $auth.getUser()
-                options.user = user.username if user
+            fullUrl = $(event.currentTarget).data('fullUrl')
 
-                url = $navurls.resolve(name)
-
-                fullUrl = $navurls.formatUrl(url, options)
+            if event.which != 2
                 $location.url(fullUrl)
+                $scope.$apply()
+            else
+                window.open fullUrl
 
         $scope.$on "$destroy", ->
             $el.off()

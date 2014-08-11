@@ -105,7 +105,7 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location) -
             </a>
         </li>
         <% if (project.is_backlog_activated && project.my_permissions.indexOf("view_us") != -1) { %>
-        <li id="nav-backlog" tg-nav="project-backlog:project=project.slug">
+        <li id="nav-backlog">
             <a href="" title="Backlog" tg-nav="project-backlog:project=project.slug">
                 <span class="icon icon-backlog"></span>
                 <span class="item">Backlog</span>
