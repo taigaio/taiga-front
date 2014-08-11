@@ -201,8 +201,7 @@ RegisterDirective = ($auth, $confirm, $location, $config) ->
 
         onSuccessSubmit = (response) ->
             $confirm.notify("success", "Our Oompa Loompas are happy, wellcome to Taiga.") #TODO: i18n
-            # TODO: finish this. Go tu '/'
-            $location.path("/project/project-example-0/backlog")
+            $location.path("/")
 
         onErrorSubmit = (response) ->
             $confirm.notify("light-error", "According to our Oompa Loompas, the username or email is
