@@ -125,6 +125,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, tgLoade
           {templateUrl: "/partials/change-password-from-recovery.html"})
 
     $routeProvider.when("/invitation/:token", {templateUrl: "/partials/invitation.html"})
+    $routeProvider.when("/error", {templateUrl: "/partials/error.html"})
 
     $routeProvider.otherwise({redirectTo: '/login'})
     $locationProvider.html5Mode(true)
@@ -141,15 +142,18 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, tgLoade
     $httpProvider.defaults.headers.get = {}
 
     # Add next param when user try to access to a secction need auth permissions.
-    authHttpIntercept = ($q, $location) ->
+    authHttpIntercept = ($q, $location, $confirm) ->
         return (promise) ->
             return promise.then null, (response) ->
-                if response.status == 401 or response.status == 0
+                if response.status == 0
+                    $confirm.notify("error", "One of our Oompa Loompas says we are having a network problem. Please, try again in a few moments.") #TODO: i18n
+                    $location.url("/error")
+                else if response.status == 401
                     nextPath = $location.path()
                     $location.url("/login").search("next=#{nextPath}")
                 return $q.reject(response)
 
-    $provide.factory("authHttpIntercept", ["$q", "$location", authHttpIntercept])
+    $provide.factory("authHttpIntercept", ["$q", "$location", "$tgConfirm", authHttpIntercept])
     $httpProvider.responseInterceptors.push('authHttpIntercept')
     $httpProvider.interceptors.push('loaderInterceptor');
 
