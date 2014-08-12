@@ -20,6 +20,7 @@ connect = require("gulp-connect")
 scsslint = require("gulp-scss-lint")
 newer = require("gulp-newer")
 cache = require("gulp-cached")
+jadeInheritance = require('gulp-jade-inheritance')
 
 paths = {
     app: "app"
@@ -76,17 +77,22 @@ paths = {
     ]
 }
 
-
-# Ordered list of vendor/external libraries.
-
-
-##############################################################################
+############################################################################
 # Layout/CSS Related tasks
 ##############################################################################
 
 gulp.task "jade", ->
     gulp.src(paths.jade)
         .pipe(plumber())
+        .pipe(cache("jade"))
+        .pipe(jade({pretty: true}))
+        .pipe(gulp.dest("#{paths.dist}/partials"))
+
+gulp.task "jade_watch", ->
+    gulp.src(paths.jade)
+        .pipe(plumber())
+        .pipe(cache("jade"))
+        .pipe(jadeInheritance({basedir: './app/'}))
         .pipe(jade({pretty: true}))
         .pipe(gulp.dest("#{paths.dist}/partials"))
 
@@ -211,7 +217,7 @@ gulp.task "express", ->
 
 # Rerun the task when a file changes
 gulp.task "watch", ->
-    gulp.watch(paths.jade, ["jade"])
+    gulp.watch(paths.jade, ["jade_watch"])
     gulp.watch(paths.scssStyles, ["scsslint", "styles", "csslint-app"])
     gulp.watch(paths.css, ["styles", "csslint-vendor"])
     gulp.watch(paths.coffee, ["coffee"])
