@@ -65,6 +65,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @scope.$on("sprintform:create:success", @.loadProjectStats)
         @scope.$on("sprintform:remove:success", @.loadSprints)
         @scope.$on("sprintform:remove:success", @.loadProjectStats)
+        @scope.$on("sprintform:remove:success", @.loadUserstories)
         @scope.$on("usform:new:success", @.loadUserstories)
         @scope.$on("usform:edit:success", @.loadUserstories)
         @scope.$on("sprint:us:move", @.moveUs)
