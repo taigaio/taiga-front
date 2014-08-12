@@ -72,6 +72,33 @@ class ConfirmService extends taiga.Service
 
         return defered.promise
 
+    askChoice: (title, subtitle, choices, lightboxSelector=".lightbox-ask-choice") ->
+        @.el = angular.element(lightboxSelector)
+
+        # Render content
+        @.el.find("h2.title").html(title)
+        @.el.find("span.subtitle").html(subtitle)
+        choicesField = @.el.find("select.choices")
+        choicesField.html('')
+        _.each choices, (value, key) ->
+            choicesField.append(angular.element("<option value='#{key}'>#{value}</option>"))
+        defered = @q.defer()
+
+        # Assign event handlers
+        @.el.on "click.confirm-dialog", "a.button-green", (event) =>
+            event.preventDefault()
+            defered.resolve(choicesField.val())
+            @.hide()
+
+        @.el.on "click.confirm-dialog", "a.button-red", (event) =>
+            event.preventDefault()
+            defered.reject()
+            @.hide()
+
+        @lightboxService.open(@.el)
+
+        return defered.promise
+
     error: (message) ->
         @.el = angular.element(".lightbox-generic-error")
 

@@ -219,16 +219,23 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
             value = target.scope().value
+            choices = {}
+            _.each $scope.values, (option) ->
+                if value.id != option.id
+                    choices[option.id] = option.name
 
             #TODO: i18n
             title = "Delete"
             subtitle = value.name
-            $confirm.ask(title, subtitle).then =>
-                onSucces = ->
-                    $ctrl.loadValues()
-                onError = ->
-                    $confirm.notify("error")
-                $repo.remove(value).then(onSucces, onError)
+            if _.keys(choices).length == 0
+                return $confirm.error("You can't delete all values.")
+            else
+                return $confirm.askChoice(title, subtitle, choices).then (selected) =>
+                    onSucces = ->
+                        $ctrl.loadValues()
+                    onError = ->
+                        $confirm.notify("error")
+                    $repo.remove(value, {"moveTo": selected}).then(onSucces, onError)
 
     link = ($scope, $el, $attrs) ->
         linkDragAndDrop($scope, $el, $attrs)

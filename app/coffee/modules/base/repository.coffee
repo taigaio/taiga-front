@@ -44,11 +44,11 @@ class RepositoryService extends taiga.Service
 
         return defered.promise
 
-    remove: (model) ->
+    remove: (model, params={}) ->
         defered = @q.defer()
         url = @.resolveUrlForModel(model)
 
-        promise = @http.delete(url)
+        promise = @http.delete(url, {}, params)
         promise.success (data, status) ->
             defered.resolve(model)
 
