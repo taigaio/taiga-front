@@ -1,0 +1,40 @@
+.spinner {
+    background: rgba($green-taiga, .9);
+    border-radius: 4%;
+    box-shadow: 1px 1px 10px rgba($fresh-taiga, .9);
+    height: 8rem;
+    margin: 0 auto;
+    padding: 1.5rem;
+    position: relative;
+    width: 7rem;
+    .icon {
+        @include animation(fadeIn infinite 6s ease-in-out);
+        @extend %xxlarge;
+        border-radius: 5%;
+        color: darken($green-taiga, 20%);
+        font-size: 75px;
+        height: 80%;
+        left: 15%;
+        margin: auto;
+        opacity: 0;
+        position: absolute;
+        top: 20%;
+        width: 80%;
+    }
+
+    .icon-kanban {
+        @include animation-delay(1s);
+    }
+    .icon-settings {
+        @include animation-delay(2s);
+    }
+    .icon-iocaine {
+        @include animation-delay(3s);
+    }
+    .icon-floppy {
+        @include animation-delay(4s);
+    }
+    .icon-wiki {
+        @include animation-delay(5s);
+    }
+}

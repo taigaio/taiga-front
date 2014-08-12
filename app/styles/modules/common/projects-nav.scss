@@ -98,21 +98,18 @@
     top: 0;
     width: 100%;
     z-index: 99900;
-    div {
-        //@include transform(translateY(-50%));
-        margin: 20% auto;
+    .container {
+        @include transform(translateY(-50%));
+        left: -200px;
+        margin: 0 auto;
+        margin-top: 15%;
         opacity: 0;
-        text-align: center;
-        width: 500px;
+        position: relative;
+        width: 150px;
     }
     p {
         @extend %large;
-        color: $whitish;
+        color: $fresh-taiga;
         padding-top: 20px;
-    }
-    .icon {
-        @extend %xxlarge;
-        @include animation(spin 1s linear infinite);
-        color: $whitish;
     }
 }

@@ -52,6 +52,7 @@ body {
         }
     }
     &.loading-project {
+        overflow: hidden;
         .projects-nav-overlay {
             @include transition (opacity 1s ease);
             opacity: 1;

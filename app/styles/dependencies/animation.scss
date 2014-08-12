@@ -1,5 +1,30 @@
+// Rotating loader
 @include keyframes(spin) {
     100% {
         @include transform(rotate(360deg));
+    }
+}
+
+//Spinner
+@include keyframes(fadeIn) {
+    0% {
+        @include transform(translateX(1rem));
+        opacity: 0;
+    }
+    1.6% {
+        opacity: 1;
+        @include transform(translateX(.2rem));
+    }
+    12% {
+        opacity: 1;
+        @include transform(translateX(-.2rem));
+    }
+    16% {
+        @include transform(translateX(-1rem));
+        opacity: 0;
+    }
+    100% {
+        @include transform(translateX(-1rem));
+        opacity: 0;
     }
 }

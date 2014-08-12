@@ -64,8 +64,8 @@ ProjectsNavigationDirective = ($rootscope, animationFrame) ->
             difftime = new Date().getTime() - loadingStart
             timeout = 0
 
-            if (difftime < 500)
-                timeout = 500 - timeout
+            if (difftime < 3500)
+                timeout = 3500 - timeout
 
             setTimeout ( ->
                 overlay.one 'transitionend', () ->

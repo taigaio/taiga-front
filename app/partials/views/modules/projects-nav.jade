@@ -1,8 +1,7 @@
 .projects-nav-overlay
-    div
-        img(src="/images/logo.png", alt="TAIGA")
-        p Loading project
-        span.icon.icon-spinner
+    div.container
+        include ../components/spinner
+        p Loading project...
 
 div.lightbox.lightbox_create-project.hidden(tg-lb-create-project)
     include lightbox_create-project
