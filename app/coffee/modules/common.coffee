@@ -139,7 +139,7 @@ ChangeDirective = ->
             <% } %>
 
             <p class="comment">
-                <%- comment %>
+                <%= comment %>
             </p>
             <p class="date">
                 <%- creationDate %>
@@ -162,7 +162,7 @@ ChangeDirective = ->
             </span>
         </div>
         <p class="comment">
-            <%- comment %>
+            <%= comment %>
         </p>
     </div>
     """)
@@ -280,7 +280,7 @@ ChangeDirective = ->
                 avatar: getUserAvatar(comment.user.pk)
                 userFullName: getUserFullName(comment.user.pk)
                 creationDate: moment(comment.created_at).format("YYYY/MM/DD HH:mm")
-                comment: comment.comment
+                comment: comment.comment_html
                 changesText: buildChangesText(comment)
                 hasChanges: countChanges(comment) > 0
             })
@@ -294,7 +294,7 @@ ChangeDirective = ->
                 avatar: getUserAvatar(change.user.pk)
                 userFullName: getUserFullName(change.user.pk)
                 creationDate: moment(change.created_at).format("YYYY/MM/DD HH:mm")
-                comment: change.comment
+                comment: change.comment_html
             })
 
             $el.html(html)
