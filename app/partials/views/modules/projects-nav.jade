@@ -6,18 +6,4 @@
 div.lightbox.lightbox_create-project.hidden(tg-lb-create-project)
     include lightbox_create-project
 
-nav.projects-nav(ng-controller="ProjectNavController as ctrl", tg-projects-nav)
-    h1 Your projects
-    form
-        fieldset
-            input(type="text" placeholder="Search in...", ng-model="projectsSearch.$")
-            a.icon.icon-search
-
-    .create-project-button
-        a.button.button-green(href="", ng-click="ctrl.newProject()") Create project
-
-    div.projects-pagination(tg-projects-pagination, active="projects.length && !projectsSearch.$.length")
-        ul.projects-list
-            li(ng-repeat="project in projects|filter:projectsSearch:strict track by project.id")
-                a(href="", tg-bo-bind="project.name", ng-href="{{ project.url }}")
-                    span.icon.icon-arrow-right
+nav.projects-nav(ng-controller="ProjectsNavigationController", tg-projects-nav)

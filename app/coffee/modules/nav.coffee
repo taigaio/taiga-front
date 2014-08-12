@@ -29,9 +29,9 @@ module = angular.module("taigaNavMenu", [])
 ## Projects Navigation
 #############################################################################
 class ProjectsNavigationController extends taiga.Controller
-    @.$inject = ["$scope", "$tgResources", "$tgNavUrls"]
+    @.$inject = ["$scope", "$rootScope", "$tgResources", "$tgNavUrls"]
 
-    constructor: (@scope, @rs, @navurls) ->
+    constructor: (@scope, @rootscope, @rs, @navurls) ->
         promise = @.loadInitialData()
         promise.then null, ->
             console.log "FAIL"
@@ -39,7 +39,6 @@ class ProjectsNavigationController extends taiga.Controller
 
     loadInitialData: ->
         return @rs.projects.list().then (projects) =>
-            @scope.projects = projects
             for project in projects
                 if project.is_backlog_activated and project.my_permissions.indexOf("view_us")>-1
                     url = @navurls.resolve("project-backlog")
@@ -53,12 +52,64 @@ class ProjectsNavigationController extends taiga.Controller
                     url = @navurls.resolve("project")
 
                 project.url = @navurls.formatUrl(url, {'project': project.slug})
+
+            @scope.projects = projects
+            @scope.filteredProjects = projects
+            @scope.filterText = ""
             return projects
 
+    newProject: ->
+        @rootscope.$broadcast("projects:create")
 
-ProjectsNavigationDirective = ($rootscope, animationFrame) ->
+    filterProjects: (text) ->
+        @scope.filteredProjects = _.filter(@scope.projects, (project) -> project.name.toLowerCase().indexOf(text) > -1)
+        @scope.filterText = text
+        @rootscope.$broadcast("projects:filtered")
+
+module.controller("ProjectsNavigationController", ProjectsNavigationController)
+
+
+ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout) ->
+    baseTemplate = _.template("""
+    <h1>Your projects</h1>
+    <form>
+        <fieldset>
+            <!--TODO-->
+            <input type="text" placeholder="Search in..." class="search-project"/>
+            <a class="icon icon-search"></a>
+        </fieldset>
+    </form>
+
+    <div class="create-project-button">
+        <a class="button button-green" href="">
+            Create project
+        </a>
+    </div>
+
+    <div class="projects-pagination">
+        <a class="v-pagination-previous icon icon-arrow-up " href=""></a>
+        <div class="v-pagination-list">
+            <ul class="projects-list">
+            </ul>
+        </div>
+        <a class="v-pagination-next icon icon-arrow-bottom" href=""></a>
+    </div>
+    """) # TODO: i18n
+
+    projectsTemplate = _.template("""
+    <% _.each(projects, function(project) { %>
+    <li>
+        <a href="<%- project.url %>">
+            <%- project.name %>
+            <span class="icon icon-arrow-right"/>
+        </a>
+    </li>
+    <% }) %>
+    """) # TODO: i18n
+
     overlay = $(".projects-nav-overlay")
     loadingStart = 0
+
     hideMenu = () ->
         if overlay.is(':visible')
             difftime = new Date().getTime() - loadingStart
@@ -75,7 +126,18 @@ ProjectsNavigationDirective = ($rootscope, animationFrame) ->
                     .removeClass("loading-project open-projects-nav")
             ), timeout
 
+    renderProjects  = ($el, projects) ->
+        html = projectsTemplate({projects: projects})
+        $el.find(".projects-list").html(html)
+
+    render = ($el, projects) ->
+        html = baseTemplate()
+        $el.html(html)
+        renderProjects($el, projects)
+
     link = ($scope, $el, $attrs, $ctrl) ->
+        $ctrl = $el.controller()
+
         $rootscope.$on("project:loaded", hideMenu)
 
         overlay.on 'click', () ->
@@ -95,13 +157,96 @@ ProjectsNavigationDirective = ($rootscope, animationFrame) ->
 
             loadingStart = new Date().getTime()
 
+        $el.on "click", ".create-project-button .button", (event) ->
+            event.preventDefault()
+            $ctrl.newProject()
+
+        $el.on "keyup", ".search-project", (event) ->
+            target = angular.element(event.currentTarget)
+            $ctrl.filterProjects(target.val())
+
+        $scope.$watch "projects", (projects) ->
+            render($el, $scope.projects) if projects?
+
+        bindOnce $scope, "projects", (projects) ->
+            prevBtn = $el.find(".v-pagination-previous")
+            nextBtn = $el.find(".v-pagination-next")
+            container = $el.find("ul")
+            pageSize = 0
+            containerSize = 0
+
+            nextPage = (element, pageSize, callback) ->
+                top = parseInt(element.css('top'), 10)
+                newTop = top - pageSize
+
+                element.animate({"top": newTop}, callback);
+
+                return newTop
+
+            prevPage = (element, pageSize, callback) ->
+                top = parseInt(element.css('top'), 10)
+                newTop = top + pageSize
+
+                element.animate({"top": newTop}, callback);
+
+                return newTop
+
+            visible = (element) ->
+                element.css('visibility', 'visible')
+
+            hide = (element) ->
+                element.css('visibility', 'hidden')
+
+            remove = () ->
+                container.css('top', 0)
+                hide(prevBtn)
+                hide(nextBtn)
+
+            $el.on "click", ".v-pagination-previous", (event) ->
+                event.preventDefault()
+
+                if container.is(':animated')
+                    return
+
+                visible(nextBtn)
+
+                newTop = prevPage(container, pageSize)
+
+                if newTop == 0
+                    hide(prevBtn)
+
+            $el.on "click", ".v-pagination-next", (event) ->
+                event.preventDefault()
+
+                if container.is(':animated')
+                    return
+
+                visible(prevBtn)
+
+                newTop = nextPage(container, pageSize)
+
+                if -newTop + pageSize > containerSize
+                    hide(nextBtn)
+
+            $scope.$on "projects:filtered", ->
+                renderProjects($el, $scope.filteredProjects)
+                #wait digest end
+                $timeout () ->
+                    if $scope.filteredProjects
+                        pageSize = $el.find(".v-pagination-list").height()
+                        containerSize = container.height()
+                        if containerSize > pageSize
+                            visible(nextBtn)
+                        else
+                            remove()
+                    else
+                        remove()
+
     return {
         link: link
-        controller: ProjectsNavigationController
     }
 
-
-module.directive("tgProjectsNav", ["$rootScope", "animationFrame", ProjectsNavigationDirective])
+module.directive("tgProjectsNav", ["$rootScope", "animationFrame", "$timeout", ProjectsNavigationDirective])
 
 
 #############################################################################
