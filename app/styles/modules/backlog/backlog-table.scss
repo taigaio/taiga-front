@@ -110,6 +110,9 @@
                 opacity: 1;
             }
         }
+        &:last-child {
+            border-bottom: 0;
+        }
         &.sortable-placeholder {
             background: $whitish;
             height: 40px;
@@ -128,7 +131,7 @@
         flex-basis: 500px;
         input {
             margin-right: 1rem;
-            vertical-align: middle;
+            vertical-align: super;
             &:checked {
                 +a {
                     @include transition (color .2s ease-in);
@@ -136,9 +139,9 @@
                 }
             }
         }
-        span {
+        a {
             display: inline-block;
-            max-width: 70%;
+            max-width: 85%;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
