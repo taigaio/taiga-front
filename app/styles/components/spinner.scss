@@ -11,15 +11,15 @@
         @include animation(fadeIn infinite 6s ease-in-out);
         @extend %xxlarge;
         border-radius: 5%;
-        color: darken($green-taiga, 20%);
-        font-size: 75px;
+        color: darken($green-taiga, 15%);
+        font-size: 60px;
         height: 80%;
-        left: 15%;
+        left: 24%;
         margin: auto;
         opacity: 0;
         position: absolute;
-        top: 20%;
-        width: 80%;
+        text-shadow: 1px 1px 3px $green-taiga, 0 0 0 $black, 1px 1px 3px darken($green-taiga, 15%);
+        top: 24%;
     }
 
     .icon-kanban {
