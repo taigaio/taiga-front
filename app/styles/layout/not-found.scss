@@ -1,0 +1,24 @@
+.error-main {
+    @include table-flex(center, center, flex, row, wrap, center);
+    @extend %backgound-taiga;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 999;
+    .error-container {
+        @include table-flex-child(0, 650px, 0, 650px);
+        color: $white;
+        text-align: center;
+    }
+    h1 {
+        color: $white;
+    }
+    a {
+        color: $green-taiga;
+        &:hover {
+            color: $fresh-taiga;
+        }
+    }
+}
