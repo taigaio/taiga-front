@@ -8,10 +8,31 @@
         .avatar-container {
             @include table-flex-child(1, 0, 0);
             margin-right: 1rem;
+            .image-container {
+                position: relative;
+            }
             img {
                 border: 2px solid $white;
                 border-radius: 8%;
                 width: 100%;
+            }
+            .overlay {
+                background: rgba($white, .9);
+                bottom: 0;
+                left: 0;
+                display: none;
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+            .icon-spinner {
+                @extend %xlarge;
+                //@include transform(translate(50%, 50%));
+                @include animation(spin infinite .8s linear);
+                color: $gray-light;
+                left: 40%;
+                position: absolute;
+                top: 40%;
             }
             p {
                 @extend %xsmall;

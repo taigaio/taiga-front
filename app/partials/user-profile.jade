@@ -18,7 +18,10 @@ block content
                 div.container
                     div.avatar-container
                         fieldset(tg-user-avatar)
-                            img.avatar(ng-src="{{user.big_photo}}" alt="avatar")
+                            .image-container
+                                img.avatar(ng-src="{{user.big_photo}}" alt="avatar")
+                                div.overlay
+                                    span.icon.icon-spinner
                             input(type="file", id="avatar-field", tg-avatar-model="avatarAttachment" class="hidden")
                             p The image will be cropped to 80x80 size.
                             a.button.button-green.change Change

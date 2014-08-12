@@ -128,14 +128,16 @@ UserAvatarDirective = ($auth, $model, $rs, $confirm) ->
             target = angular.element(event.currentTarget)
 
             promise = $rs.userSettings.changeAvatar($scope.avatarAttachment)
-
+            $el.find('.overlay').show();
             promise.then (response) ->
                 user = $model.make_model("users", response.data)
                 $auth.setUser(user)
                 $scope.user = user
+                $el.find('.overlay').hide();
                 $confirm.notify('success')
             promise.then null, (response) ->
                 console.log response
+                $el.find('.overlay').hide();
                 $confirm.notify('error', response.data._error_message)
 
     return {link:link}
