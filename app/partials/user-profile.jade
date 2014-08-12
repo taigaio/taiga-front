@@ -1,4 +1,4 @@
-extends dummy-layout
+    extends dummy-layout
 
 block head
     title Taiga  Project management web application with scrum in mind!
@@ -15,32 +15,32 @@ block content
                     span.green(tg-bo-html="sectionName")
 
             form
-                fieldset.avatar(tg-user-avatar)
-                    img.avatar(ng-src="{{user.big_photo}}" alt="avatar")
-                    input(type="file", id="avatar-field", tg-avatar-model="avatarAttachment" class="hidden")
-                    p The image will be cropped to 80x80 size.
-                    a.button.button-green.change Change
-                    a.use-gravatar Use gravatar image
+                div.container
+                    div.avatar-container
+                        fieldset(tg-user-avatar)
+                            img.avatar(ng-src="{{user.big_photo}}" alt="avatar")
+                            input(type="file", id="avatar-field", tg-avatar-model="avatarAttachment" class="hidden")
+                            p The image will be cropped to 80x80 size.
+                            a.button.button-green.change Change
+                            a.use-gravatar Use gravatar image
+                    div.data
+                        fieldset
+                            label(for="email") Email
+                            input(type="text", name="email", placeholder="email", id="email", ng-model="user.email", data-type="email")
 
-                fieldset
-                    label(for="email") Email
-                    input(type="text", name="email", placeholder="email", id="email",
-                          ng-model="user.email", data-type="email")
+                        fieldset
+                            label(for="full-name") Full name
+                            input(type="text", name="full_name", placeholder="Full name", id="full-name",
+                                  ng-model="user.full_name")
 
-                fieldset
-                    label(for="full-name") Full name
-                    input(type="text", name="full_name", placeholder="Full name", id="full-name",
-                          ng-model="user.full_name")
-
-                fieldset
-                    label(for="bio") Bio
-                    textarea(name="bio", placeholder="Bio", id="bio", ng-model="user.bio")
+                        fieldset
+                            label(for="bio") Bio
+                            textarea(name="bio", placeholder="Bio", id="bio", ng-model="user.bio")
 
                 fieldset.submit
                     input(type="submit", class="hidden")
                     a.button.button-green.save-profile(href="") Save
-                    a.delete-account(href="", title="Delete Taiga account",
-                                     ng-click="ctrl.openDeleteLightbox()") Delete Taiga account
+                    a.delete-account(href="", title="Delete Taiga account", ng-click="ctrl.openDeleteLightbox()") Delete Taiga account
 
     div.lightbox.lightbox-delete-account.hidden(tg-lb-delete-user)
         include views/modules/lightbox-delete-account
