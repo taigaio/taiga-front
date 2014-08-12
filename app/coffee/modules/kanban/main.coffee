@@ -150,7 +150,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                       .then(=> @scope.$broadcast("redraw:wip"))
 
     prepareBulkUpdateData: (uses) ->
-         return _.map(uses, (x) -> {"us_id": x.id, "order": x.order})
+        return _.map(uses, (x) -> {"us_id": x.id, "order": x.order})
 
     resortUserStories: (uses) ->
         items = []
@@ -171,6 +171,12 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @scope.usByStatus[statusId].splice(index, 0, us)
 
             us.status = statusId
+        else if not @scope.project.is_backlog_activated
+            current_position = @scope.usByStatus[us.status].indexOf(us)
+            new_position = index
+
+            @scope.usByStatus[us.status].splice(current_position, 1)
+            @scope.usByStatus[us.status].splice(new_position, 0, us)
 
         # Persist the userstory
         promise = @repo.save(us)
