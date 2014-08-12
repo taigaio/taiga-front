@@ -70,29 +70,38 @@ NavigationUrlsDirective = ($navurls, $auth, $q, $location) ->
             return [name, options]
 
     link = ($scope, $el, $attrs) ->
-        parseNav($attrs.tgNav, $scope).then (result) ->
-            [name, options] = result
-            user = $auth.getUser()
-            options.user = user.username if user
+        if $el.is("a")
+            $el.attr("href", "#")
 
-            url = $navurls.resolve(name)
-            fullUrl = $navurls.formatUrl(url, options)
+        $el.on "mouseenter", (event) ->
+            target = $(event.currentTarget)
 
-            $el.data("fullUrl", fullUrl)
+            if !target.data("fullUrl")
+                parseNav($attrs.tgNav, $scope).then (result) ->
+                    [name, options] = result
+                    user = $auth.getUser()
+                    options.user = user.username if user
 
-            if $el.is("a")
-                $el.attr("href", fullUrl)
+                    url = $navurls.resolve(name)
+                    fullUrl = $navurls.formatUrl(url, options)
+
+                    target.data("fullUrl", fullUrl)
+
+                    if target.is("a")
+                        target.attr("href", fullUrl)
 
         $el.on "click", (event) ->
             event.preventDefault()
+            target = $(event.currentTarget)
 
-            fullUrl = $(event.currentTarget).data('fullUrl')
+            fullUrl = target.data("fullUrl")
 
-            if event.which != 2
-                $location.url(fullUrl)
-                $scope.$apply()
-            else
-                window.open fullUrl
+            switch event.which
+                when 1
+                    $location.url(fullUrl)
+                    $scope.$apply()
+                when 2
+                    window.open fullUrl
 
         $scope.$on "$destroy", ->
             $el.off()
