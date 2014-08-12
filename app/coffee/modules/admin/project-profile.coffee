@@ -85,7 +85,7 @@ module.controller("ProjectProfileController", ProjectProfileController)
 ## Project Profile Directive
 #############################################################################
 
-ProjectProfileDirective = ($log, $repo, $confirm, $location) ->
+ProjectProfileDirective = ($log, $repo, $rootscope, $confirm, $location) ->
     link = ($scope, $el, $attrs) ->
         form = $el.find("form").checksley({"onlyOneErrorElement": true})
         submit = =>
@@ -95,6 +95,7 @@ ProjectProfileDirective = ($log, $repo, $confirm, $location) ->
             promise.then ->
                 $confirm.notify("success")
                 $location.path("/project/#{$scope.project.slug}/admin/project-profile/details")
+                $rootscope.$broadcast("projects:reload")
 
             promise.then null, (data) ->
                 form.setErrors(data)
@@ -153,5 +154,5 @@ ProjectFeaturesDirective = ($log, $repo, $confirm) ->
 
     return {link:link}
 
-module.directive("tgProjectProfile", ["$log", "$tgRepo", "$tgConfirm", "$location", ProjectProfileDirective])
+module.directive("tgProjectProfile", ["$log", "$tgRepo", "$rootScope", "$tgConfirm", "$location", ProjectProfileDirective])
 module.directive("tgProjectFeatures", ["$log", "$tgRepo", "$tgConfirm", ProjectFeaturesDirective])

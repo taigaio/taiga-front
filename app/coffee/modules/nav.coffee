@@ -37,6 +37,9 @@ class ProjectsNavigationController extends taiga.Controller
             console.log "FAIL"
             # TODO
 
+        @scope.$on "projects:reload", =>
+            @.loadInitialData()
+
     loadInitialData: ->
         return @rs.projects.list().then (projects) =>
             for project in projects
