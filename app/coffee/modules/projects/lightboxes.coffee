@@ -7,7 +7,7 @@ CreateProject = ($repo, $confirm, $location, $navurls, $rs, lightboxService) ->
     link = ($scope, $el, attrs) ->
         $scope.data = {}
         $scope.templates = []
-        form = $el.find("form").checksley()
+        form = $el.find("form").checksley({"onlyOneErrorElement": true})
 
         onSuccessSubmit = (response) ->
             lightboxService.close($el)
