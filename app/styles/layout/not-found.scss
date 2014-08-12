@@ -8,9 +8,12 @@
     top: 0;
     z-index: 999;
     .error-container {
-        @include table-flex-child(0, 650px, 0, 650px);
+        @include table-flex-child(0, 600px, 0, 600px);
         color: $white;
         text-align: center;
+    }
+    img {
+        margin-bottom: 3rem;
     }
     h1 {
         color: $white;
