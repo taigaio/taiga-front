@@ -9,22 +9,27 @@
 @include keyframes(fadeIn) {
     0% {
         @include transform(translateX(1rem));
+        @include filter(blur(5px));
         opacity: 0;
     }
     1.6% {
-        opacity: 1;
         @include transform(translateX(.2rem));
+        @include filter(blur(0));
+        opacity: 1;
     }
     12% {
-        opacity: 1;
         @include transform(translateX(-.2rem));
+        @include filter(blur(0));
+        opacity: 1;
     }
     16% {
         @include transform(translateX(-1rem));
+        @include filter(blur(5px));
         opacity: 0;
     }
     100% {
         @include transform(translateX(-1rem));
+        @include filter(blur(5px));
         opacity: 0;
     }
 }
