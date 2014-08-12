@@ -649,7 +649,7 @@ UsPointsDirective = ($repo) ->
                 return val
 
             _.map rolePoints, (v, k) ->
-                v.points = undefinedToQuestion($scope.pointsById[us.points[v.id]].value)
+                v.points = undefinedToQuestion($scope.pointsById[us.points[v.id]]?.value)
             $el.append(selectionTemplate({ "rolePoints":  rolePoints }))
 
             $el.find(".pop-role").popover().open(() -> $(this).remove())
