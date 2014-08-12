@@ -88,8 +88,16 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
         title = "Delete Role"
         subtitle = @scope.role.name
 
-        @confirm.ask(title, subtitle).then =>
-            promise = @repo.remove(@scope.role)
+        choices = {}
+        for role in @scope.roles
+            if role.id != @scope.role.id
+                choices[role.id] = role.name
+
+        if _.keys(choices).length == 0
+            return @confirm.error("You can't delete all values.")
+
+        return @confirm.askChoice(title, subtitle, choices).then (selected) =>
+            promise = @repo.remove(@scope.role, {moveTo: selected})
             promise.then =>
                 @confirm.notify('success')
                 @.loadRoles()
