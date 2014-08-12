@@ -87,7 +87,7 @@ module.controller("ProjectProfileController", ProjectProfileController)
 
 ProjectProfileDirective = ($log, $repo, $confirm, $location) ->
     link = ($scope, $el, $attrs) ->
-        form = $el.find("form").checksley()
+        form = $el.find("form").checksley({"onlyOneErrorElement": true})
         submit = =>
             return if not form.validate()
 

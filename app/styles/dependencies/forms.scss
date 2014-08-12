@@ -4,6 +4,11 @@ fieldset {
     padding: 0;
     position: relative;
     width: 100%;
+    label {
+        ~.checksley-error-list {
+            top: 31px;
+        }
+    }
 }
 
 input[type="text"],
