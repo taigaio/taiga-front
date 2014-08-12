@@ -14,9 +14,6 @@
     div {
         margin-left: 1rem;
         position: relative;
-        &:first-child {
-            margin: 0;
-        }
     }
     .icon {
         @extend %large;
