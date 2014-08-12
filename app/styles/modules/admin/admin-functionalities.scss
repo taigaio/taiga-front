@@ -8,6 +8,7 @@
         background-color: $whitish;
         display: inline-block;
         margin-bottom: .3rem;
+        min-height: 14px;
         opacity: .5;
         padding: 1rem;
         position: relative;
@@ -41,6 +42,7 @@
         }
         p {
             margin-bottom: 1rem;
+            min-height: 4.5rem
         }
         select {
             margin-top: 1rem;
