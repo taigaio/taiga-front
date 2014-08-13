@@ -29,8 +29,8 @@ block content
             section.backlog-table(ng-class="{'hidden': !visibleUserstories.length}")
                 include views/modules/backlog-table
             div.empty.empty-backlog(ng-class="{'hidden': visibleUserstories.length}")
-                span.icon.icon-idea
-                span Your backlog is empty.
+                span.icon.icon-backlog
+                span.title Your backlog is empty!
                 a(href="", title+"Create a new US", ng-click="ctrl.addNewUs('standard')", tg-check-permission="tg-check-permission", permission="add_us") Create a new User Story
         sidebar.menu-secondary.sidebar
             include views/modules/sprints

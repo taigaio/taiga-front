@@ -84,3 +84,26 @@ ol { list-style: decimal; }
         }
     }
 }
+
+
+//Empty
+.empty {
+    border: 1px dashed $gray-light;
+    color: $gray-light;
+    min-height: 10rem;
+    padding: 5% 0;
+    text-align: center;
+    .icon {
+        @extend %xxlarge;
+        margin-bottom: 2rem;
+    }
+    span {
+        display: block;
+        &.title {
+            @extend %xlarge;
+            @extend %title;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+    }
+}
