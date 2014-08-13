@@ -423,19 +423,7 @@ BacklogDirective = ($repo, $rootscope) ->
     """)
 
     linkDoomLine = ($scope, $el, $attrs, $ctrl) ->
-
-        removeDoomlineDom = ->
-            $el.find(".doom-line").remove()
-
-        addDoomLineDom = (element) ->
-            element?.before(doomLineTemplate({}))
-
-        getUsItems = ->
-            rowElements = $el.find('.backlog-table-body .us-item-row')
-            return _.map(rowElements, (x) -> angular.element(x))
-
-        # reloadDoomlineLocation = () ->
-        $scope.$watch "stats", (project) ->
+        reloadDoomLine = ->
             if $scope.stats?
                 removeDoomlineDom()
 
@@ -452,10 +440,23 @@ BacklogDirective = ($repo, $rootscope) ->
                         continue
 
                     current_sum += scope.us.total_points
+
                     if current_sum > total_points
                         addDoomLineDom(element)
                         break
 
+        removeDoomlineDom = ->
+            $el.find(".doom-line").remove()
+
+        addDoomLineDom = (element) ->
+            element?.before(doomLineTemplate({}))
+
+        getUsItems = ->
+            rowElements = $el.find('.backlog-table-body .us-item-row')
+            return _.map(rowElements, (x) -> angular.element(x))
+
+        $scope.$on("userstories:loaded", reloadDoomLine)
+        $scope.$watch "stats", reloadDoomLine
 
     ##############################
     ## Move to current sprint link
@@ -548,7 +549,7 @@ BacklogDirective = ($repo, $rootscope) ->
 
         linkToolbar($scope, $el, $attrs, $ctrl)
         linkFilters($scope, $el, $attrs, $ctrl)
-        # linkDoomLine($scope, $el, $attrs, $ctrl)
+        linkDoomLine($scope, $el, $attrs, $ctrl)
 
         $el.find(".backlog-table-body").disableSelection()
 
