@@ -20,8 +20,8 @@ block content
                         span.block-description-title Blocked
                         span.block-description(tg-bind-html="issue.blocked_note || 'This issue is blocked'")
                     div.issue-nav
-                        a.icon.icon-arrow-left(ng-show="nextUrl", href="{{ nextUrl }}", title="next issue")
-                        a.icon.icon-arrow-right(ng-show="previousUrl",href="{{ previousUrl }}", title="previous issue")
+                        a.icon.icon-arrow-left(ng-show="previousUrl",href="{{ previousUrl }}", title="previous issue")
+                        a.icon.icon-arrow-right(ng-show="nextUrl", href="{{ nextUrl }}", title="next issue")
 
                 div.user-story-tags(tg-tag-line, ng-model="issue.tags", ng-show="issue.tags")
 

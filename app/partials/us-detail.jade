@@ -21,9 +21,9 @@ block content
                         span.block-description-title Blocked
                         span.block-description(tg-bind-html="us.blocked_note || 'This user story is blocked'")
                     div.issue-nav
-                        a.icon.icon-arrow-left(ng-show="nextUrl", href="{{ nextUrl }}", title="next user story")
-                        a.icon.icon-arrow-right(ng-show="previousUrl",href="{{ previousUrl }}",
+                        a.icon.icon-arrow-left(ng-show="previousUrl",href="{{ previousUrl }}",
                                                 title="previous user story")
+                        a.icon.icon-arrow-right(ng-show="nextUrl", href="{{ nextUrl }}", title="next user story")
 
                 div.user-story-tags(tg-tag-line, ng-model="us.tags", ng-show="us.tags")
 

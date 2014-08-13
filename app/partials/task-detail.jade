@@ -20,8 +20,8 @@ block content
                         span.block-description-title Blocked
                         span.block-description(tg-bind-html="task.blocked_note || 'This task is blocked'")
                     div.issue-nav
-                        a.icon.icon-arrow-left(ng-show="nextUrl", href="{{ nextUrl }}", title="next task")
-                        a.icon.icon-arrow-right(ng-show="previousUrl",href="{{ previousUrl }}", title="previous task")
+                        a.icon.icon-arrow-left(ng-show="previousUrl",href="{{ previousUrl }}", title="previous task")
+                        a.icon.icon-arrow-right(ng-show="nextUrl", href="{{ nextUrl }}", title="next task")
 
                 div.user-story-tags(tg-tag-line, ng-model="task.tags", ng-show="task.tags")
 

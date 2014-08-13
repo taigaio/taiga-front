@@ -22,16 +22,22 @@
 
 taiga = @.taiga
 
-resourceProvider = ($repo, $http, $urls) ->
+generateHash = taiga.generateHash
+
+resourceProvider = ($repo, $http, $urls, $storage) ->
     service = {}
+    hashSuffix = "tasks-queryparams"
 
     service.get = (projectId, taskId) ->
-        return $repo.queryOne("tasks", taskId)
+        params = service.getQueryParams(projectId)
+        params.project = projectId
+        return $repo.queryOne("tasks", taskId, params)
 
     service.list = (projectId, sprintId=null, userStoryId=null) ->
         params = {project: projectId}
         params.milestone = sprintId if sprintId
         params.user_story = userStoryId if userStoryId
+        service.storeQueryParams(projectId, params)
         return $repo.queryMany("tasks", params)
 
     service.bulkCreate = (projectId, sprintId, usId, data) ->
@@ -47,9 +53,19 @@ resourceProvider = ($repo, $http, $urls) ->
         params = {"project": projectId}
         return $repo.queryMany(type, params)
 
+    service.storeQueryParams = (projectId, params) ->
+        ns = "#{projectId}:#{hashSuffix}"
+        hash = generateHash([projectId, ns])
+        $storage.set(hash, params)
+
+    service.getQueryParams = (projectId) ->
+        ns = "#{projectId}:#{hashSuffix}"
+        hash = generateHash([projectId, ns])
+        return $storage.get(hash) or {}
+
     return (instance) ->
         instance.tasks = service
 
 
 module = angular.module("taigaResources")
-module.factory("$tgTasksResourcesProvider", ["$tgRepo", "$tgHttp", "$tgUrls", resourceProvider])
+module.factory("$tgTasksResourcesProvider", ["$tgRepo", "$tgHttp", "$tgUrls", "$tgStorage", resourceProvider])
