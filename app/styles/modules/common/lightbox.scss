@@ -157,6 +157,15 @@
     }
 }
 
+.lightbox-search {
+    form {
+        @include table-flex-child(0, 600px, 0, 600px);
+    }
+    input {
+        margin-bottom: 1rem;
+    }
+}
+
 .lightbox_add-member {
     .add-member-wrapper {
         @include table-flex();
