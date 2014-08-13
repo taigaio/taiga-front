@@ -99,6 +99,26 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             @scope.sprintsById = groupBy(sprints, (x) -> x.id)
             return sprints
 
+    resetFilters: ->
+        @scope.$apply =>
+            selectedTags = _.filter(@scope.filters.tags, "selected")
+            selectedStatuses = _.filter(@scope.filters.statuses, "selected")
+
+            @scope.filtersSubject = ""
+
+            _.forEach [selectedTags, selectedStatuses], (filterGrp) =>
+                _.forEach filterGrp, (item) =>
+                    filters = @scope.filters[item.type]
+                    filter = _.find(filters, {id: taiga.toString(item.id)})
+                    filter.selected = false
+
+                    @.unselectFilter(item.type, item.id)
+
+            @.loadUserstories()
+
+            # @.filterVisibleUserstories()
+            # @rootscope.$broadcast("filters:loaded", @scope.filters)
+
     loadUserstories: ->
         @scope.urlFilters = @.getUrlFilters()
 
@@ -318,7 +338,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             if not searchdata[name]?
                 searchdata[name] = {}
 
-            for val in value.split(",")
+            for val in taiga.toString(value).split(",")
                 searchdata[name][val] = true
 
         isSelected = (type, id) ->
@@ -356,7 +376,6 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             obj.selected = true if isSelected("statuses", obj.id)
 
             return obj
-
 
         return @scope.filters
 
@@ -494,6 +513,24 @@ BacklogDirective = ($repo, $rootscope) ->
             toggleText(target.find(".text"), ["Hide Tags", "Show Tags"]) # TODO: i18n
 
 
+    showHideFilter = ($scope, $el, $ctrl) ->
+        sidebar = $el.find("sidebar.filters-bar")
+        sidebar.one "transitionend", () ->
+            setTimeout ( ->
+                $rootscope.$broadcast("resize")
+                $('.burndown').css("visibility", "visible")
+            ), 150
+
+        target = angular.element("#show-filters-button")
+        $('.burndown').css("visibility", "hidden")
+        sidebar.toggleClass("active")
+        target.toggleClass("active")
+
+        toggleText(target.find(".text"), ["Remove Filters", "Show Filters"]) # TODO: i18n
+
+        if !sidebar.hasClass("active")
+            $ctrl.resetFilters()
+
     #########################
     ## Filters Link
     #########################
@@ -503,18 +540,8 @@ BacklogDirective = ($repo, $rootscope) ->
         $el.on "click", "#show-filters-button", (event) ->
             event.preventDefault()
 
-            sidebar = $el.find("sidebar.filters-bar")
-            sidebar.one "transitionend", () ->
-                setTimeout ( ->
-                    $rootscope.$broadcast("resize")
-                    $('.burndown').css("visibility", "visible")
-                ), 150
+            showHideFilter($scope, $el, $ctrl)
 
-            target = angular.element(event.currentTarget)
-            $('.burndown').css("visibility", "hidden")
-            sidebar.toggleClass("active")
-            target.toggleClass("active")
-            toggleText(target.find(".text"), ["Hide Filters", "Show Filters"]) # TODO: i18n
 
     link = ($scope, $el, $attrs, $rootscope) ->
         $ctrl = $el.controller()
@@ -524,6 +551,13 @@ BacklogDirective = ($repo, $rootscope) ->
         # linkDoomLine($scope, $el, $attrs, $ctrl)
 
         $el.find(".backlog-table-body").disableSelection()
+
+        filters = $ctrl.getUrlFilters()
+
+        if filters.statuses ||
+           filters.tags ||
+           filters.subject
+            showHideFilter($scope, $el, $ctrl)
 
         $scope.$on "$destroy", ->
             $el.off()

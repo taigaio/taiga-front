@@ -90,6 +90,9 @@ BacklogFiltersDirective = ($log, $location) ->
             $el.find("h2 a.subfilter").addClass("hidden")
 
         initializeSelectedFilters = (filters) ->
+            showCategories()
+            selectedFilters = []
+
             for name, values of filters
                 for val in values
                     selectedFilters.push(val) if val.selected
@@ -124,6 +127,8 @@ BacklogFiltersDirective = ($log, $location) ->
             currentFiltersType = $el.find("h2 a.subfilter span.title").prop('data-type')
             if type == currentFiltersType
                 renderFilters(_.reject(filters, "selected"))
+
+            $ctrl.loadUserstories()
 
         selectSubjectFilter = debounce 400, (value) ->
             return if value is undefined
