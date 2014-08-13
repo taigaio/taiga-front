@@ -198,7 +198,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             "status": selectedStatuses,
             "tags": selectedTags,
             "project": @scope.projectId
-            "milestone": "null"
+            "milestone": null
         })
 
     prepareBulkUpdateData: (uses) ->
