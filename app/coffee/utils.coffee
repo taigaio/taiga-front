@@ -19,6 +19,10 @@
 # File: utils.coffee
 ###
 
+nl2br = (str) =>
+    breakTag = '<br />'
+    return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2')
+
 bindOnce = (scope, attr, continuation) =>
     val = scope.$eval(attr)
     if val != undefined
@@ -131,6 +135,7 @@ generateHash = (components=[]) ->
     return hex_sha1(components.join(":"))
 
 taiga = @.taiga
+taiga.nl2br = nl2br
 taiga.bindOnce = bindOnce
 taiga.mixOf = mixOf
 taiga.trim = trim
