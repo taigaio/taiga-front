@@ -105,12 +105,8 @@ module.controller("SearchController", SearchController)
 SearchBoxDirective = ($lightboxService, $navurls, $location)->
     link = ($scope, $el, $attrs) ->
         project = null
-        $scope.$on "search-box:show", (ctx, newProject)->
-            project = newProject
-            $lightboxService.open($el)
 
-        $el.on "click", ".button-green", (event) ->
-            event.preventDefault()
+        submit = ->
             form = $el.find("form").checksley()
             if not form.validate()
                 return
@@ -125,6 +121,17 @@ SearchBoxDirective = ($lightboxService, $navurls, $location)->
                 $location.path(url)
                 $location.search("text",text).path(url)
 
+        $scope.$on "search-box:show", (ctx, newProject)->
+            project = newProject
+            $lightboxService.open($el)
+
+        $el.on "submit", (event) ->
+            submit()
+
+        $el.on "click", ".button-green", (event) ->
+            event.preventDefault()
+            submit()
+
     return {link:link}
 
 
@@ -135,7 +142,7 @@ module.directive("tgSearchBox", ["lightboxService", "$tgNavUrls", "$tgLocation",
 ## Search Directive
 #############################################################################
 
-SearchDirective = ($log, $compile, $templatecache) ->
+SearchDirective = ($log, $compile, $templatecache, $routeparams) ->
     # linkFilters = ($scope, $el, $attrs, $ctrl) ->
     linkTable = ($scope, $el, $attrs, $ctrl) ->
         tabsDom = $el.find("section.search-filter")
@@ -215,13 +222,15 @@ SearchDirective = ($log, $compile, $templatecache) ->
                 renderTableContent(section)
                 markSectionTabActive(section)
 
-
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
         # linkFilters($scope, $el, $attrs, $ctrl)
         linkTable($scope, $el, $attrs, $ctrl)
 
+        $scope.$watch "projectId", (projectId) ->
+            $scope.searchTerm = $routeparams.text
+
     return {link:link}
 
 
-module.directive("tgSearch", ["$log", "$compile", "$templateCache", SearchDirective])
+module.directive("tgSearch", ["$log", "$compile", "$templateCache", "$routeParams", SearchDirective])
