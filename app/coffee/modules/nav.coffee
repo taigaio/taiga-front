@@ -37,7 +37,12 @@ class ProjectsNavigationController extends taiga.Controller
             console.log "FAIL"
             # TODO
 
+        # Listen when someone wants to reload all the projects
         @scope.$on "projects:reload", =>
+            @.loadInitialData()
+
+        # Listen when someone has reloaded a project
+        @scope.$on "project:loaded", (ctx, project) =>
             @.loadInitialData()
 
     loadInitialData: ->

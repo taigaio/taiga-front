@@ -3,7 +3,7 @@ bindOnce = @.taiga.bindOnce
 
 module = angular.module("taigaProject")
 
-CreateProject = ($repo, $confirm, $location, $navurls, $rs, lightboxService) ->
+CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, lightboxService) ->
     link = ($scope, $el, attrs) ->
         $scope.data = {}
         $scope.templates = []
@@ -18,6 +18,7 @@ CreateProject = ($repo, $confirm, $location, $navurls, $rs, lightboxService) ->
             fullUrl = $navurls.formatUrl(url, {'project': response.slug})
 
             $location.url(fullUrl)
+            $rootscope.$broadcast("projects:reload")
 
         onErrorSubmit = (response) ->
             $confirm.notify("light-error", "According to our Oompa Loompas, project name is
@@ -47,6 +48,7 @@ CreateProject = ($repo, $confirm, $location, $navurls, $rs, lightboxService) ->
     return {link:link}
 
 module.directive("tgLbCreateProject", [
+    "$rootScope",
     "$tgRepo",
     "$tgConfirm",
     "$location",

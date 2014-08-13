@@ -180,7 +180,7 @@ module.directive("tgNewRole", ["$tgRepo", "$tgConfirm", NewRoleDirective])
 
 
 # Use category-config.scss styles
-RolePermissionsDirective = ($repo, $confirm) ->
+RolePermissionsDirective = ($rootscope, $repo, $confirm) ->
     resumeTemplate = _.template("""
     <div class="resume-title"><%- category.name %></div>
     <div class="count"><%- category.activePermissions %>/<%- category.permissions.length %></div>
@@ -313,6 +313,7 @@ RolePermissionsDirective = ($repo, $confirm) ->
                     categories = generateCategoriesFromRole(role)
                     categoryId = target.parents(".category-config").data("id")
                     renderResume(target.parents(".category-config"), categories[categoryId])
+                    $rootscope.$broadcast("projects:reload")
 
                 onError = ->
                     $confirm.notify("error")
@@ -332,4 +333,4 @@ RolePermissionsDirective = ($repo, $confirm) ->
 
     return {link:link}
 
-module.directive("tgRolePermissions", ['$tgRepo', '$tgConfirm', RolePermissionsDirective])
+module.directive("tgRolePermissions", ["$rootScope", "$tgRepo", "$tgConfirm", RolePermissionsDirective])

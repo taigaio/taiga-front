@@ -85,7 +85,7 @@ module.controller("ProjectProfileController", ProjectProfileController)
 ## Project Profile Directive
 #############################################################################
 
-ProjectProfileDirective = ($log, $repo, $rootscope, $confirm, $location) ->
+ProjectProfileDirective = ($rootscope, $log, $repo, $confirm, $location) ->
     link = ($scope, $el, $attrs) ->
         form = $el.find("form").checksley({"onlyOneErrorElement": true})
         submit = =>
@@ -95,7 +95,7 @@ ProjectProfileDirective = ($log, $repo, $rootscope, $confirm, $location) ->
             promise.then ->
                 $confirm.notify("success")
                 $location.path("/project/#{$scope.project.slug}/admin/project-profile/details")
-                $rootscope.$broadcast("projects:reload")
+                $rootscope.$broadcast("project:loaded", $scope.project)
 
             promise.then null, (data) ->
                 form.setErrors(data)
@@ -116,7 +116,7 @@ ProjectProfileDirective = ($log, $repo, $rootscope, $confirm, $location) ->
 ## Project Features Directive
 #############################################################################
 
-ProjectFeaturesDirective = ($log, $repo, $confirm) ->
+ProjectFeaturesDirective = ($rootscope, $log, $repo, $confirm) ->
     link = ($scope, $el, $attrs) ->
         form = $el.find("form").checksley()
         submit = =>
@@ -125,7 +125,7 @@ ProjectFeaturesDirective = ($log, $repo, $confirm) ->
             promise = $repo.save($scope.project)
             promise.then ->
                 $confirm.notify("success")
-                $scope.$emit("project:loaded", $scope.project)
+                $rootscope.$broadcast("project:loaded", $scope.project)
 
             promise.then null, (data) ->
                 $confirm.notify("error", data._error_message)
@@ -154,5 +154,5 @@ ProjectFeaturesDirective = ($log, $repo, $confirm) ->
 
     return {link:link}
 
-module.directive("tgProjectProfile", ["$log", "$tgRepo", "$rootScope", "$tgConfirm", "$location", ProjectProfileDirective])
-module.directive("tgProjectFeatures", ["$log", "$tgRepo", "$tgConfirm", ProjectFeaturesDirective])
+module.directive("tgProjectProfile", ["$rootScope", "$log", "$tgRepo", "$tgConfirm", "$location", ProjectProfileDirective])
+module.directive("tgProjectFeatures", ["$rootScope", "$log", "$tgRepo", "$tgConfirm", ProjectFeaturesDirective])
