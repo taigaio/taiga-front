@@ -41,12 +41,12 @@ Loader = () ->
         auto: false
     }
 
-    log = _.merge({}, defaultLog);
-    config = _.merge({}, defaultConfig);
+    log = _.merge({}, defaultLog)
+    config = _.merge({}, defaultConfig)
 
     reset = () ->
-        log = _.merge({}, defaultLog);
-        config = _.merge({}, defaultConfig);
+        log = _.merge({}, defaultLog)
+        config = _.merge({}, defaultConfig)
 
     pageLoaded = () ->
         reset()
@@ -119,4 +119,4 @@ loaderInterceptor = (tgLoader) ->
             return response
     }
 
-module.factory('loaderInterceptor', ['tgLoader', loaderInterceptor]);
+module.factory('loaderInterceptor', ['tgLoader', loaderInterceptor])
