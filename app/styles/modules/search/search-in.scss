@@ -1,7 +1,15 @@
 .search-in {
-    .icon {
+    input {
+        background: $grayer;
+        color: $white;
+        @include placeholder {
+            color: $gray-light;
+        }
+    }
+    .icon-search {
+        color: $gray-light;
         position: absolute;
-        right: 10px;
-        top: 6px;
+        right: .7rem;
+        top: .7rem;
     }
 }

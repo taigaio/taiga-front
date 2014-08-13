@@ -1,5 +1,11 @@
 .search-result-table {
 
+    .empty {
+        .title {
+            border: 0;
+        }
+    }
+
     .row {
         @include table-flex;
         padding: 20px;
