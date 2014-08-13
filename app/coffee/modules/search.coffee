@@ -209,8 +209,6 @@ SearchDirective = ($log, $compile, $templatecache, $routeparams, $location) ->
 
         $el.on "click", ".search-filter li > a", (event) ->
             event.preventDefault()
-            # Do nothing if no results found.
-            return if not lastSeatchResults
             target = angular.element(event.currentTarget)
 
             sectionName = target.parent().data("name")
