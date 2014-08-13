@@ -1,6 +1,27 @@
+.empty-issues {
+    border: 1px dashed $gray-light;
+    color: $gray-light;
+    min-height: 10rem;
+    padding: 5% 0;
+    text-align: center;
+    .icon {
+        @extend %xxlarge;
+        margin-bottom: 2rem;
+    }
+    span {
+        display: block;
+        &:nth-child(2) {
+            margin-bottom: 1rem;
+        }
+    }
+}
+
 .issues-table {
     @include table-flex();
     margin-bottom: 2rem;
+    &.empty {
+        display: none;
+    }
     .row {
         &:hover {
             background: lighten($green-taiga, 60%);

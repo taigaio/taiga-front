@@ -1,4 +1,4 @@
-section.issues-table.basic-table
+section.issues-table.basic-table(ng-class="{empty: !issues.length}")
     div.row.title
         div.level-field(data-fieldname="type") Type
         div.level-field(data-fieldname="severity") Severity
@@ -16,3 +16,9 @@ section.issues-table.basic-table
                 span(tg-bo-bind="issue.subject")
         div.issue-field(tg-listitem-issue-status="issue")
         div.assigned-field(tg-listitem-assignedto="issue")
+
+section.empty.empty-issues(ng-class="{hidden: issues.length}")
+    span.icon.icon-issues
+    span Cool! Your project is out of issues!
+    span Did you find an issue?
+    a(href="", title+"Create a new US", ng-click="ctrl.addNewIssue()") Create a new Issue
