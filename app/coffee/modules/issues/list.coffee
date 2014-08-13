@@ -467,6 +467,7 @@ IssuesFiltersDirective = ($log, $location) ->
             $el.find("h2 a.subfilter").addClass("hidden")
 
         initializeSelectedFilters = (filters) ->
+            selectedFilters = []
             for name, values of filters
                 for val in values
                     selectedFilters.push(val) if val.selected
