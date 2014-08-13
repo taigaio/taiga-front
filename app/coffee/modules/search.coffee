@@ -99,6 +99,39 @@ module.controller("SearchController", SearchController)
 
 
 #############################################################################
+## Search box directive
+#############################################################################
+
+SearchBoxDirective = ($lightboxService, $navurls, $location)->
+    link = ($scope, $el, $attrs) ->
+        project = null
+        $scope.$on "search-box:show", (ctx, newProject)->
+            project = newProject
+            $lightboxService.open($el)
+
+        $el.on "click", ".button-green", (event) ->
+            event.preventDefault()
+            form = $el.find("form").checksley()
+            if not form.validate()
+                return
+
+            text = $el.find("#search-text").val()
+
+            url = $navurls.resolve("project-search")
+            url = $navurls.formatUrl(url, {'project': project.slug})
+
+            $lightboxService.close($el)
+            $scope.$apply ->
+                $location.path(url)
+                $location.search("text",text).path(url)
+
+    return {link:link}
+
+
+module.directive("tgSearchBox", ["lightboxService", "$tgNavUrls", "$tgLocation", SearchBoxDirective])
+
+
+#############################################################################
 ## Search Directive
 #############################################################################
 

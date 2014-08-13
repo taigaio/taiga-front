@@ -82,7 +82,6 @@ ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout) ->
     <h1>Your projects</h1>
     <form>
         <fieldset>
-            <!--TODO-->
             <input type="text" placeholder="Search in..." class="search-project"/>
             <a class="icon icon-search"></a>
         </fieldset>
@@ -266,7 +265,7 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location) -
     <div class="menu-container">
         <ul class="main-nav">
         <li id="nav-search">
-            <a href="" title="Search" tg-nav="project-search:project=project.slug">
+            <a href="" title="Search">
                 <span class="icon icon-search"></span><span class="item">Search</span>
             </a>
         </li>
@@ -376,6 +375,7 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location) -
 
     link = ($scope, $el, $attrs, $ctrl) ->
         renderMainMenu($el)
+        project = null
 
         $el.on "click", ".logo > a", (event) ->
             event.preventDefault()
@@ -391,7 +391,12 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location) -
             $scope.$apply ->
                 $location.path("/login")
 
-        $scope.$on "project:loaded", (ctx, project) ->
+        $el.on "click", "#nav-search > a", (event) ->
+            event.preventDefault()
+            $rootscope.$broadcast("search-box:show", project)
+
+        $scope.$on "project:loaded", (ctx, newProject) ->
+            project = newProject
             if $el.hasClass("hidden")
                 $el.removeClass("hidden")
 
