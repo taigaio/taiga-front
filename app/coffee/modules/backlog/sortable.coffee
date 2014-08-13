@@ -90,6 +90,31 @@ BacklogSortableDirective = ($repo, $rs, $rootscope) ->
 
     return {link: link}
 
+BacklogEmptySortableDirective = ($repo, $rs, $rootscope) ->
+    # Notes about jquery bug:
+    # http://stackoverflow.com/questions/5791886/jquery-draggable-shows-
+    # helper-in-wrong-place-when-scrolled-down-page
+
+    link = ($scope, $el, $attrs) ->
+        bindOnce $scope, "project", (project) ->
+            # If the user has not enough permissions we don't enable the sortable
+            if project.my_permissions.indexOf("modify_us") > -1
+                $el.sortable({
+                    dropOnEmpty: true
+                })
+
+                $el.on "sortreceive", (event, ui) ->
+                    itemUs = ui.item.scope().us
+                    itemIndex = ui.item.index()
+
+                    deleteElement(ui.item)
+                    $scope.$emit("sprint:us:move", itemUs, itemIndex, null)
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {link: link}
+
 
 SprintSortableDirective = ($repo, $rs, $rootscope) ->
     link = ($scope, $el, $attrs) ->
@@ -98,7 +123,7 @@ SprintSortableDirective = ($repo, $rs, $rootscope) ->
             if project.my_permissions.indexOf("modify_us") > -1
                 $el.sortable({
                     dropOnEmpty: true
-                    connectWith: ".sprint-table,.backlog-table-body"
+                    connectWith: ".sprint-table,.backlog-table-body,.empty-backlog"
                 })
 
                 $el.on "sortreceive", (event, ui) ->
@@ -126,6 +151,13 @@ module.directive("tgBacklogSortable", [
     "$tgResources",
     "$rootScope",
     BacklogSortableDirective
+])
+
+module.directive("tgBacklogEmptySortable", [
+    "$tgRepo",
+    "$tgResources",
+    "$rootScope",
+    BacklogEmptySortableDirective
 ])
 
 module.directive("tgSprintSortable", [
