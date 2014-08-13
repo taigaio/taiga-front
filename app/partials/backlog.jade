@@ -26,14 +26,12 @@ block content
                     span.icon.icon-tag
                     span.text Show Tags
                 include views/components/addnewus
-            section.backlog-table(ng-class="{'empty': !visibleUserstories.length}")
-
-                div.empty-container(ng-show="!visibleUserstories.length")
-                    span.icon.icon-idea
-                    span Your backlog is empty.
-                    a(href="", title+"Create a new US", ng-click="ctrl.addNewUs('standard')",
-                        tg-check-permission="tg-check-permission", permission="add_us") Create a new User Story
+            section.backlog-table(ng-class="{'hidden': !visibleUserstories.length}")
                 include views/modules/backlog-table
+            div.empty.empty-backlog(ng-class="{'hidden': visibleUserstories.length}")
+                span.icon.icon-idea
+                span Your backlog is empty.
+                a(href="", title+"Create a new US", ng-click="ctrl.addNewUs('standard')", tg-check-permission="tg-check-permission", permission="add_us") Create a new User Story
         sidebar.menu-secondary.sidebar
             include views/modules/sprints
     div.lightbox.lightbox_add-new-us(tg-lb-create-edit-userstory)

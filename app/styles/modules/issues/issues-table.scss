@@ -10,8 +10,11 @@
     }
     span {
         display: block;
-        &:nth-child(2) {
+        &.title {
+            @extend %xlarge;
+            @extend %title;
             margin-bottom: 1rem;
+            text-transform: uppercase;
         }
     }
 }

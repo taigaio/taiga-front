@@ -19,6 +19,6 @@ section.issues-table.basic-table(ng-class="{empty: !issues.length}")
 
 section.empty.empty-issues(ng-class="{hidden: issues.length}")
     span.icon.icon-issues
-    span Cool! Your project is out of issues!
+    span.title There are no issues to report :-)
     span Did you find an issue?
     a(href="", title+"Create a new US", ng-click="ctrl.addNewIssue()") Create a new Issue
