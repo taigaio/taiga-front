@@ -26,7 +26,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, tgLoade
     $routeProvider.when("/project/:pslug/", {templateUrl: "/partials/project.html"})
     $routeProvider.when("/project/:pslug/backlog", {templateUrl: "/partials/backlog.html"})
     $routeProvider.when("/project/:pslug/taskboard/:id", {templateUrl: "/partials/taskboard.html"})
-    $routeProvider.when("/project/:pslug/search", {templateUrl: "/partials/search.html"})
+    $routeProvider.when("/project/:pslug/search", {templateUrl: "/partials/search.html", reloadOnSearch: false})
     $routeProvider.when("/project/:pslug/kanban", {templateUrl: "/partials/kanban.html"})
 
     # User stories

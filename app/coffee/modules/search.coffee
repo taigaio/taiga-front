@@ -142,7 +142,7 @@ module.directive("tgSearchBox", ["lightboxService", "$tgNavUrls", "$tgLocation",
 ## Search Directive
 #############################################################################
 
-SearchDirective = ($log, $compile, $templatecache, $routeparams) ->
+SearchDirective = ($log, $compile, $templatecache, $routeparams, $location) ->
     # linkFilters = ($scope, $el, $attrs, $ctrl) ->
     linkTable = ($scope, $el, $attrs, $ctrl) ->
         tabsDom = $el.find("section.search-filter")
@@ -150,7 +150,6 @@ SearchDirective = ($log, $compile, $templatecache, $routeparams) ->
 
         getActiveSection = (data) ->
             maxVal = 0
-
             selectedSectionName = null
             selectedSectionData = null
 
@@ -158,9 +157,11 @@ SearchDirective = ($log, $compile, $templatecache, $routeparams) ->
                 continue if name == "count"
                 if value.length > maxVal
                     maxVal = value.length
-
-                    selectedSectionData = value
                     selectedSectionName = name
+                    selectedSectionData = value
+
+            if maxVal == 0
+                return {name: "userstories", value: []}
 
             return {name:selectedSectionName, value: selectedSectionData}
 
@@ -178,6 +179,7 @@ SearchDirective = ($log, $compile, $templatecache, $routeparams) ->
             issues: $templatecache.get("search-issues")
             tasks: $templatecache.get("search-tasks")
             userstories: $templatecache.get("search-userstories")
+            wikipages: $templatecache.get("search-wikipages")
         }
 
         renderTableContent = (section) ->
@@ -197,12 +199,13 @@ SearchDirective = ($log, $compile, $templatecache, $routeparams) ->
 
         $scope.$watch "searchResults", (data) ->
             lastSeatchResults = data
+            activeSection = getActiveSection(data)
+            renderFilterTabs(data)
+            renderTableContent(activeSection)
+            markSectionTabActive(activeSection)
 
-            if data
-                activeSection = getActiveSection(data)
-                renderFilterTabs(data)
-                renderTableContent(activeSection)
-                markSectionTabActive(activeSection)
+        $scope.$watch "searchTerm", (searchTerm) ->
+            $location.search("text", searchTerm) if searchTerm?
 
         $el.on "click", ".search-filter li > a", (event) ->
             event.preventDefault()
@@ -228,9 +231,9 @@ SearchDirective = ($log, $compile, $templatecache, $routeparams) ->
         linkTable($scope, $el, $attrs, $ctrl)
 
         $scope.$watch "projectId", (projectId) ->
-            $scope.searchTerm = $routeparams.text
+            $scope.searchTerm = $routeparams.text if projectId?
 
     return {link:link}
 
 
-module.directive("tgSearch", ["$log", "$compile", "$templateCache", "$routeParams", SearchDirective])
+module.directive("tgSearch", ["$log", "$compile", "$templateCache", "$routeParams", "$tgLocation", SearchDirective])
