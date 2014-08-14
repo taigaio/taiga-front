@@ -225,7 +225,9 @@ CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService) ->
         $el.on "click", ".button-green", (event) ->
             event.preventDefault()
 
-            form = $el.find("form").checksley()
+            form = $el.find("form").checksley({
+                onlyOneErrorElement: true
+            })
             if not form.validate()
                 return
 

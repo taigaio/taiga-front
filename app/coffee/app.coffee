@@ -157,6 +157,19 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, tgLoade
     $httpProvider.responseInterceptors.push('authHttpIntercept')
     $httpProvider.interceptors.push('loaderInterceptor');
 
+    window.checksley.updateValidators({
+        linewidth: (val, width) ->
+            lines = taiga.nl2br(val).split("<br />")
+
+            valid = _.every lines, (line) ->
+                line.length < width
+
+            return valid
+    })
+
+    window.checksley.updateMessages("default", {
+        linewidth: "The subject must have a maximum size of %s"
+    })
 
 init = ($log, $i18n, $config, $rootscope) ->
     $i18n.initialize($config.get("defaultLanguage"))
