@@ -37,7 +37,7 @@ Loader = () ->
 
     defaultConfig = {
         enabled: false,
-        minTime: 500,
+        minTime: 3000,
         auto: false
     }
 

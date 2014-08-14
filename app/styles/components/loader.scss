@@ -1,34 +1,40 @@
 .loader {
+    @include transition(opacity .5s linear);
+    background-color: $white;
     bottom: 0;
     display: none;
     height: 100%;
     left: 0;
+    opacity: 0;
     position: fixed;
     right: 0;
     top: 0;
     width: 100%;
-    .bg {
-        background-color: $black;
-        bottom: 0;
-        position: absolute;
-        right: 0;
-        top: 0;
-        width: 100%;
-        z-index: 20;
+    z-index: 99900;
+    .container {
+        margin: 0 auto;
+        margin-top: 15%;
+        position: relative;
+        width: 150px;
     }
-    .info {
-        background-color: $black;
-        color: $white;
-        padding: .5rem 3rem;
-        position: absolute;
-        right: 20px;
-        top: 20px;
-        z-index: 25;
+    .spinner {
+        background-color: $white;
+        box-shadow: 1px 1px 10px rgba($whitish, .9);
+        .icon {
+            color: $gray-light;
+            text-shadow: 1px 1px 3px $whitish, 0 0 0 $grayer, 1px 1px 3px $whitish;
+        }
+    }
+    p {
+        @extend %large;
+        color: $gray-light;
+        padding-top: 20px;
+        text-align: center;
     }
     &.active {
+        @include transition(opacity .5s linear);
+        background-color: rgba($white, .9);
         display: block;
-        .bg {
-            opacity: .7;
-        }
+        opacity: 1;
     }
 }
