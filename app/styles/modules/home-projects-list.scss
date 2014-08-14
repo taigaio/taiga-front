@@ -1,29 +1,70 @@
 .home-projects-list,
 .home-project {
-    align-items: center;
-    background-image: url('/images/project-selector.jpg');
+    @extend %backgound-taiga;
+    background-color: $black;
+    @include table-flex(center, center, flex, row, wrap, center);
     background-position: center center;
     background-size: cover;
-    display: flex;
     height: 100%;
-    justify-content: center;
     left: 0;
     padding: 0;
     position: fixed;
     top: 0;
     width: 100%;
 }
+.home-projects-wrapper {
+    @include table-flex-child(0, 1200px, 0, 1200px);
+}
+
+.home-projects-list-inner {
+    @include table-flex();
+}
+
+.recent-projects {
+    @include table-flex-child(8, 0, 0, 800px);
+    ul {
+        @include table-flex();
+        margin: 0;
+        padding: 0;
+    }
+    li {
+        @include table-flex-child(1, 230px, 0, 23.5%);
+        @include transition(background-color .3s linear);
+        background-color: rgba($white, .5);
+        color: $whitish;
+        margin-bottom: 1rem;
+        margin-right: 1rem;
+        overflow: hidden;
+        padding: 1rem;
+        position: relative;
+        &:hover {
+            @include transition(background-color .3s linear);
+            background-color: rgba($fresh-taiga, .5);
+            cursor: pointer;
+            p {
+                @include transition(color .3s linear);
+                color: $gray-light;
+            }
+        }
+    }
+    h2 {
+        color: $whitish;
+        line-height: 2rem;
+    }
+    p {
+        @include transition(color .3s linear);
+        color: $grayer;
+    }
+}
 
 .all-projects {
+    @include table-flex-child(1, 285px, 0, 285px);
     background-color: rgba(0, 0, 0, .5);
-    flex-grow: 0;
-    flex-wrap: wrap;
-    margin-left: 2rem;
-    min-width: 285px;
+    margin-left: 1rem;
     padding: 1rem;
     h1 {
         color: $whitish;
-        padding-left: 1rem;
+        text-align: center;
     }
     .v-pagination-list {
         height: 385px;
@@ -67,55 +108,11 @@
         text-align: center;
         top: 0;
         width: 100%;
+        &:hover {
+            color: $whitish;
+        }
     }
     .v-pagination-next {
         margin-bottom: 1rem;
-    }
-}
-
-.home-projects-list-inner {
-    display: flex;
-    height: 575px;
-    max-width: 1300px;
-}
-
-.recent-projects {
-    display: flex;
-    flex-grow: 0;
-    flex-wrap: wrap;
-    margin: 0;
-    li {
-        background-color: rgba(255, 255, 255, .5);
-        display: flex;
-        flex-grow: 0;
-        flex-shrink: 0;
-        flex-wrap: wrap;
-        height: 280px;
-        margin-right: 1rem;
-        max-width: 23.5%;
-        min-width: 231px;
-        padding: 2rem;
-        &:nth-child(-n+4) {
-            margin-bottom: 1rem;
-        }
-        &:nth-child(4n) {
-            margin-right: 0;
-        }
-    }
-    h2,
-    a,
-    p {
-        color: $whitish;
-    }
-    .project-content,
-    .project-link {
-        min-width: 100%;
-    }
-    .project-link {
-        align-self: flex-end;
-    }
-    .button-gray {
-        text-align: center;
-        width: 100%;
     }
 }

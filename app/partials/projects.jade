@@ -5,21 +5,21 @@ block head
 
 block content
     div.home-projects-list(ng-controller="ProjectsController as ctrl")
-        .home-projects-list-inner
-            ul.recent-projects
-                li(ng-repeat="project in ctrl.projects.recents")
-                    .project-content
-                        h2(tg-bo-bind="project.name")
-                        p(tg-bo-bind="project.description")
-                    .project-link
-                        a.button.button-gray(ng-href="{{project.url}}") Go to project
-
-            div.all-projects
-                h1 Projects
-                div(tg-projects-pagination, active="ctrl.projects.all.length")
+        .home-projects-wrapper
+            .home-projects-list-inner
+                div.recent-projects
                     ul
-                        li(ng-repeat="project in ctrl.projects.all")
-                            a.button(href="", tg-bo-bind="project.name", tg-nav="project:project=project.slug")
+                        li(ng-repeat="project in ctrl.projects.recents")
+                            .project-content(tg-nav="project:project=project.slug")
+                                h2(tg-bo-bind="project.name")
+                                p(tg-bo-bind="project.description")
 
-                .create-project-button-wrapper
-                    a.button.button-green(href="", ng-click="ctrl.newProject()") Create project
+                div.all-projects
+                    h1 Projects
+                    div(tg-projects-pagination, active="ctrl.projects.all.length")
+                        ul
+                            li(ng-repeat="project in ctrl.projects.all")
+                                a.button(href="", tg-bo-bind="project.name", tg-nav="project:project=project.slug")
+
+                    .create-project-button-wrapper
+                        a.button.button-green(href="", ng-click="ctrl.newProject()") Create project
