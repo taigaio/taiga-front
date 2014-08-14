@@ -147,7 +147,6 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, tgLoade
         return (promise) ->
             return promise.then null, (response) ->
                 if response.status == 0
-                    $confirm.notify("error", "One of our Oompa Loompas says we are having a network problem. Please, try again in a few moments.") #TODO: i18n
                     $location.path("/error")
                 else if response.status == 401
                     nextPath = $location.path()
