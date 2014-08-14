@@ -102,7 +102,7 @@ module.controller("SearchController", SearchController)
 ## Search box directive
 #############################################################################
 
-SearchBoxDirective = ($lightboxService, $navurls, $location)->
+SearchBoxDirective = ($lightboxService, $navurls, $location, $route)->
     link = ($scope, $el, $attrs) ->
         project = null
 
@@ -120,10 +120,12 @@ SearchBoxDirective = ($lightboxService, $navurls, $location)->
             $scope.$apply ->
                 $location.path(url)
                 $location.search("text",text).path(url)
+                $route.reload()
 
         $scope.$on "search-box:show", (ctx, newProject)->
             project = newProject
             $lightboxService.open($el)
+            $el.find("#search-text").val("")
 
         $el.on "submit", (event) ->
             submit()
@@ -135,7 +137,7 @@ SearchBoxDirective = ($lightboxService, $navurls, $location)->
     return {link:link}
 
 
-module.directive("tgSearchBox", ["lightboxService", "$tgNavUrls", "$tgLocation", SearchBoxDirective])
+module.directive("tgSearchBox", ["lightboxService", "$tgNavUrls", "$tgLocation", "$route", SearchBoxDirective])
 
 
 #############################################################################
@@ -205,7 +207,7 @@ SearchDirective = ($log, $compile, $templatecache, $routeparams, $location) ->
             markSectionTabActive(activeSection)
 
         $scope.$watch "searchTerm", (searchTerm) ->
-            $location.search("text", searchTerm) if searchTerm?
+            $location.search("text", searchTerm) if searchTerm
 
         $el.on "click", ".search-filter li > a", (event) ->
             event.preventDefault()
@@ -228,8 +230,9 @@ SearchDirective = ($log, $compile, $templatecache, $routeparams, $location) ->
         # linkFilters($scope, $el, $attrs, $ctrl)
         linkTable($scope, $el, $attrs, $ctrl)
 
+        searchText = $routeparams.text
         $scope.$watch "projectId", (projectId) ->
-            $scope.searchTerm = $routeparams.text if projectId?
+            $scope.searchTerm =  searchText if projectId?
 
     return {link:link}
 
