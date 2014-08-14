@@ -3,7 +3,7 @@ bindOnce = @.taiga.bindOnce
 
 module = angular.module("taigaProject")
 
-CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, lightboxService) ->
+CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $projectUrl, lightboxService) ->
     link = ($scope, $el, attrs) ->
         $scope.data = {}
         $scope.templates = []
@@ -11,13 +11,8 @@ CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, lightbox
 
         onSuccessSubmit = (response) ->
             lightboxService.close($el)
-
             $confirm.notify("success", "Success") #TODO: i18n
-
-            url = $navurls.resolve('project')
-            fullUrl = $navurls.formatUrl(url, {'project': response.slug})
-
-            $location.url(fullUrl)
+            $location.url($projectUrl.get(response))
             $rootscope.$broadcast("projects:reload")
 
         onErrorSubmit = (response) ->
@@ -54,6 +49,7 @@ module.directive("tgLbCreateProject", [
     "$location",
     "$tgNavUrls",
     "$tgResources",
+    "$projectUrl",
     "lightboxService",
     CreateProject
 ])

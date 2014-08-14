@@ -29,9 +29,9 @@ module = angular.module("taigaNavMenu", [])
 ## Projects Navigation
 #############################################################################
 class ProjectsNavigationController extends taiga.Controller
-    @.$inject = ["$scope", "$rootScope", "$tgResources", "$tgNavUrls"]
+    @.$inject = ["$scope", "$rootScope", "$tgResources", "$tgNavUrls", "$projectUrl"]
 
-    constructor: (@scope, @rootscope, @rs, @navurls) ->
+    constructor: (@scope, @rootscope, @rs, @navurls, @projectUrl) ->
         promise = @.loadInitialData()
         promise.then null, ->
             console.log "FAIL"
@@ -48,18 +48,7 @@ class ProjectsNavigationController extends taiga.Controller
     loadInitialData: ->
         return @rs.projects.list().then (projects) =>
             for project in projects
-                if project.is_backlog_activated and project.my_permissions.indexOf("view_us")>-1
-                    url = @navurls.resolve("project-backlog")
-                else if project.is_kanban_activated and project.my_permissions.indexOf("view_us")>-1
-                    url = @navurls.resolve("project-kanban")
-                else if project.is_wiki_activated and project.my_permissions.indexOf("view_wiki_pages")>-1
-                    url = @navurls.resolve("project-wiki")
-                else if project.is_issues_activated and project.my_permissions.indexOf("view_issues")>-1
-                    url = @navurls.resolve("project-issues")
-                else
-                    url = @navurls.resolve("project")
-
-                project.url = @navurls.formatUrl(url, {'project': project.slug})
+                project.url = @projectUrl.get(project)
 
             @scope.projects = projects
             @scope.filteredProjects = projects

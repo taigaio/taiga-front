@@ -3,9 +3,9 @@ module = angular.module("taigaProject")
 
 
 class ProjectsController extends taiga.Controller
-    @.$inject = ["$scope", "$tgResources", "$rootScope", "$tgNavUrls", "$tgAuth", "$location", "$appTitle"]
+    @.$inject = ["$scope", "$tgResources", "$rootScope", "$tgNavUrls", "$tgAuth", "$location", "$appTitle", "$projectUrl"]
 
-    constructor: (@scope, @rs, @rootscope, @navurls, $auth, $location, appTitle) ->
+    constructor: (@scope, @rs, @rootscope, @navurls, $auth, $location, appTitle, @projectUrl) ->
         appTitle.set("Projects")
 
         if !$auth.isAuthenticated()
@@ -19,18 +19,7 @@ class ProjectsController extends taiga.Controller
         return @rs.projects.list().then (projects) =>
             @.projects = {'recents': projects.slice(0, 8), 'all': projects.slice(8)}
             for project in projects
-                if project.is_backlog_activated and project.my_permissions.indexOf("view_us")>-1
-                    url = @navurls.resolve("project-backlog")
-                else if project.is_kanban_activated and project.my_permissions.indexOf("view_us")>-1
-                    url = @navurls.resolve("project-kanban")
-                else if project.is_wiki_activated and project.my_permissions.indexOf("view_wiki_pages")>-1
-                    url = @navurls.resolve("project-wiki")
-                else if project.is_issues_activated and project.my_permissions.indexOf("view_issues")>-1
-                    url = @navurls.resolve("project-issues")
-                else
-                    url = @navurls.resolve("project")
-
-                project.url = @navurls.formatUrl(url, {'project': project.slug})
+                project.url = @projectUrl.get(project)
 
     newProject: ->
         @rootscope.$broadcast("projects:create")
