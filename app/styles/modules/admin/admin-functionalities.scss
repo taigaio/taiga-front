@@ -1,5 +1,7 @@
 .admin-functionalities {
     form {
+        display: flex;
+        flex-wrap: wrap;
         width: 100%;
     }
     .functionality {
@@ -8,12 +10,16 @@
         background-color: $whitish;
         display: inline-block;
         margin-bottom: .3rem;
+        margin-right: .3rem;
         min-height: 14px;
         opacity: .5;
         padding: 1rem;
         position: relative;
         vertical-align: top;
-        width: 33%;
+        width: 32%;
+        &:nth-child(3n+1) {
+            margin-right: 0;
+        }
         &.active {
             background-color: #e9f0da;
             opacity: 1;
