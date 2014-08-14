@@ -7,11 +7,9 @@
     &:hover {
         .icon-edit,
         .icon-drag-h {
-            display: block;
-        }
-        .icon {
-            @include transition(coalor .3s linear, opacity .3s linear);
+            @include transition(color .3s linear, opacity .3s linear);
             color: $postit-dark-hover;
+            display: block;
             opacity: 1;
         }
     }
@@ -36,26 +34,43 @@
         min-height: 7.5rem;
         padding: 1rem .5rem;
     }
-    .avatar {
-        @include table-flex-child($flex-basis: 50px);
-        a {
-            @extend %small;
-            display: block;
-            text-align: center;
+    .taskboard-user-avatar {
+        .avatar {
+            @include table-flex-child($flex-basis: 50px);
+            a {
+                @extend %small;
+                display: block;
+                text-align: center;
+            }
+            img {
+                border: 0;
+                margin: 0 auto;
+            }
+            figcaption {
+                color: darken($postit-hover, 15%);
+                display: none;
+                //display: block;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                width: 100%;
+            }
         }
-        img {
-            border: 0;
-            margin: 0 auto;
+        &.iocaine {
+            img {
+                @include filter(hue-rotate(150deg) saturate(200%));
+            }
         }
-        figcaption {
-            color: darken($postit-hover, 15%);
-            display: none;
-            //display: block;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            width: 100%;
-        }
+    }
+    .icon-iocaine {
+        @extend %large;
+        position: absolute;
+        top: 1rem;
+        left: .2rem;
+        padding: .1rem;
+        color: $white;
+        background: $black;
+        border-radius: 5px;
     }
     .task-assigned {
         @extend %small;
