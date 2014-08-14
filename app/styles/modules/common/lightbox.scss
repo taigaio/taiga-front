@@ -371,6 +371,33 @@
     }
 }
 
+.lightbox-delete-project {
+    form {
+        @include table-flex-child(0, 420px, 0, 420px);
+    }
+    .delete-question,
+    .subtitle {
+        display: block;
+        line-height: 2rem;
+        text-align: center;
+    }
+    .subtitle {
+        @extend %large;
+        @extend %title;
+    }
+    .delete-options {
+        @include table-flex();
+        a {
+            @include table-flex-child(1, 0, 0);
+            padding: 8px 0;
+            text-align: center;
+            &:first-child {
+                margin-right: .5rem;
+            }
+        }
+    }
+}
+
 
 .lightbox-generic-success,
 .lightbox-generic-error {

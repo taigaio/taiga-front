@@ -78,6 +78,9 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
 
         return promise.then(=> @.loadProject())
 
+    openDeleteLightbox: ->
+        @rootscope.$broadcast("deletelightbox:new", @scope.project)
+
 
 module.controller("ProjectProfileController", ProjectProfileController)
 

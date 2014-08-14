@@ -45,3 +45,7 @@ block content
 
                 input(type="submit", class="hidden")
                 a.button.button-green(href="") Save
+                a.delete-project(href="", title="Delete this project", ng-click="ctrl.openDeleteLightbox()") Delete this project
+
+    div.lightbox.lightbox-delete-project.hidden(tg-lb-delete-project)
+        include views/modules/lightbox-delete-project

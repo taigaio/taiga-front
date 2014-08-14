@@ -57,3 +57,41 @@ module.directive("tgLbCreateProject", [
     "lightboxService",
     CreateProject
 ])
+
+#############################################################################
+## Delete Project Lightbox Directive
+#############################################################################
+
+DeleteProjectDirective = ($repo, $rootscope, $auth, $location, lightboxService) ->
+    link = ($scope, $el, $attrs) ->
+        projectToDelete = null
+        $scope.$on "deletelightbox:new", (ctx, project)->
+            lightboxService.open($el)
+            projectToDelete = project
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+        submit = ->
+            promise = $repo.remove(projectToDelete)
+
+            promise.then (data) ->
+                lightboxService.close($el)
+                $location.path("/")
+
+            # FIXME: error handling?
+            promise.then null, ->
+                console.log "FAIL"
+
+        $el.on "click", ".button-red", (event) ->
+            event.preventDefault()
+            lightboxService.close($el)
+
+        $el.on "click", ".button-green", (event) ->
+            event.preventDefault()
+            submit()
+
+    return {link:link}
+
+
+module.directive("tgLbDeleteProject", ["$tgRepo", "$rootScope", "$tgAuth", "$location", "lightboxService", DeleteProjectDirective])

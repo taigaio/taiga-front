@@ -24,4 +24,9 @@
         display: block;
         text-align: center;
     }
+    .delete-project {
+        @extend %small;
+        display: block;
+        margin-top: 1rem;
+    }
 }
