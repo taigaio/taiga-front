@@ -171,6 +171,19 @@ ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout) ->
             pageSize = 0
             containerSize = 0
 
+            renderNextAndPrev  = ->
+                #wait digest end
+                $timeout () ->
+                if $scope.filteredProjects
+                    pageSize = $el.find(".v-pagination-list").height()
+                    containerSize = container.height()
+                    if containerSize > pageSize
+                        visible(nextBtn)
+                    else
+                        remove()
+                else
+                    remove()
+
             nextPage = (element, pageSize, callback) ->
                 top = parseInt(element.css('top'), 10)
                 newTop = top - pageSize
@@ -224,19 +237,10 @@ ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout) ->
                 if -newTop + pageSize > containerSize
                     hide(nextBtn)
 
+            renderNextAndPrev()
             $scope.$on "projects:filtered", ->
                 renderProjects($el, $scope.filteredProjects)
-                #wait digest end
-                $timeout () ->
-                    if $scope.filteredProjects
-                        pageSize = $el.find(".v-pagination-list").height()
-                        containerSize = container.height()
-                        if containerSize > pageSize
-                            visible(nextBtn)
-                        else
-                            remove()
-                    else
-                        remove()
+                renderNextAndPrev()
 
     return {
         link: link
