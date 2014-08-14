@@ -98,7 +98,7 @@ ProjectProfileDirective = ($rootscope, $log, $repo, $confirm, $location) ->
             promise.then ->
                 $confirm.notify("success")
                 $location.path("/project/#{$scope.project.slug}/admin/project-profile/details")
-                $rootscope.$broadcast("project:loaded", $scope.project)
+                $scope.$emit("project:loaded", $scope.project)
 
             promise.then null, (data) ->
                 form.setErrors(data)
@@ -128,7 +128,7 @@ ProjectFeaturesDirective = ($rootscope, $log, $repo, $confirm) ->
             promise = $repo.save($scope.project)
             promise.then ->
                 $confirm.notify("success")
-                $rootscope.$broadcast("project:loaded", $scope.project)
+                $scope.$emit("project:loaded", $scope.project)
 
             promise.then null, (data) ->
                 $confirm.notify("error", data._error_message)
