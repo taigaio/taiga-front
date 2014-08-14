@@ -388,6 +388,10 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location) -
             event.preventDefault()
             $rootscope.$broadcast("search-box:show", project)
 
+        $scope.$on "projects:loaded", (listener) ->
+            $el.addClass("hidden")
+            listener.stopPropagation()
+
         $scope.$on "project:loaded", (ctx, newProject) ->
             project = newProject
             if $el.hasClass("hidden")

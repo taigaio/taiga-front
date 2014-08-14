@@ -11,9 +11,10 @@ class ProjectsController extends taiga.Controller
         if !$auth.isAuthenticated()
             $location.path("/login")
 
-        @scope.hideMenu = true
         @.projects = []
         @.loadInitialData()
+        .then () =>
+            @scope.$emit("projects:loaded")
 
     loadInitialData: ->
         return @rs.projects.list().then (projects) =>
@@ -30,7 +31,6 @@ class ProjectController extends taiga.Controller
     @.$inject = ["$scope", "$tgResources", "$tgRepo", "$routeParams", "$q", "$rootScope", "$appTitle"]
 
     constructor: (@scope, @rs, @repo, @params, @q, @rootscope, @appTitle) ->
-        @scope.hideMenu = false
         @.loadInitialData()
             .then () =>
                 @appTitle.set(@scope.project.name)

@@ -9,8 +9,8 @@ block content
             .home-projects-list-inner
                 div.recent-projects
                     ul
-                        li(ng-repeat="project in ctrl.projects.recents")
-                            .project-content(tg-nav="project:project=project.slug")
+                        li(ng-repeat="project in ctrl.projects.recents", tg-nav="project:project=project.slug")
+                            .project-content
                                 h2(tg-bo-bind="project.name")
                                 p(tg-bo-bind="project.description")
 
