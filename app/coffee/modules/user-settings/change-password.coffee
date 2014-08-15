@@ -78,13 +78,13 @@ class UserChangePasswordController extends mixOf(taiga.Controller, taiga.PageMix
 
 module.controller("UserChangePasswordController", UserChangePasswordController)
 
+
 #############################################################################
 ## User ChangePassword Directive
 #############################################################################
 
 UserChangePasswordDirective = () ->
     link = ($scope, $el, $attrs) ->
-
         $scope.$on "$destroy", ->
             $el.off()
 

@@ -20,9 +20,7 @@
 ###
 
 taiga = @.taiga
-
 mixOf = @.taiga.mixOf
-
 module = angular.module("taigaUserSettings")
 
 
@@ -66,7 +64,6 @@ class UserSettingsController extends mixOf(taiga.Controller, taiga.PageMixin)
           return promise.then(=> @.loadProject())
 
       saveUserProfile: ->
-
           updatingEmail = @scope.user.isAttributeModified("email")
           promise = @repo.save(@scope.user)
           promise.then =>
@@ -75,7 +72,6 @@ class UserSettingsController extends mixOf(taiga.Controller, taiga.PageMixin)
                   @confirm.success("<strong>Check your inbox!</strong><br />
                          We have sent a mail to your account<br />
                          with the instructions to set your new address") #TODO: i18n
-
               else
                   @confirm.notify('success')
 
@@ -86,8 +82,8 @@ class UserSettingsController extends mixOf(taiga.Controller, taiga.PageMixin)
       openDeleteLightbox: ->
           @rootscope.$broadcast("deletelightbox:new", @scope.user)
 
-
 module.controller("UserSettingsController", UserSettingsController)
+
 
 #############################################################################
 ## User Profile Directive
@@ -117,10 +113,6 @@ module.directive("tgUserProfile", UserProfileDirective)
 
 UserAvatarDirective = ($auth, $model, $rs, $confirm) ->
     link = ($scope, $el, $attrs) ->
-
-        $scope.$on "$destroy", ->
-            $el.off()
-
         $el.on "click", ".button.change", ->
             $el.find("#avatar-field").click()
 
@@ -128,21 +120,27 @@ UserAvatarDirective = ($auth, $model, $rs, $confirm) ->
             target = angular.element(event.currentTarget)
 
             promise = $rs.userSettings.changeAvatar($scope.avatarAttachment)
-            $el.find('.overlay').show();
+            $el.find('.overlay').show()
+
             promise.then (response) ->
                 user = $model.make_model("users", response.data)
                 $auth.setUser(user)
                 $scope.user = user
-                $el.find('.overlay').hide();
+
+                $el.find('.overlay').hide()
                 $confirm.notify('success')
+
             promise.then null, (response) ->
-                console.log response
-                $el.find('.overlay').hide();
+                $el.find('.overlay').hide()
                 $confirm.notify('error', response.data._error_message)
+
+        $scope.$on "$destroy", ->
+            $el.off()
 
     return {link:link}
 
 module.directive("tgUserAvatar", ["$tgAuth", "$tgModel", "$tgResources", "$tgConfirm", UserAvatarDirective])
+
 
 #############################################################################
 ## User Avatar Model Directive
