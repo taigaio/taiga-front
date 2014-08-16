@@ -16,11 +16,10 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: modules/user-settings/main.coffee
+# File: modules/user-settings/notifications.coffee
 ###
 
 taiga = @.taiga
-
 mixOf = @.taiga.mixOf
 bindOnce = @.taiga.bindOnce
 
@@ -74,19 +73,20 @@ class UserNotificationsController extends mixOf(taiga.Controller, taiga.PageMixi
 
 module.controller("UserNotificationsController", UserNotificationsController)
 
+
 #############################################################################
 ## User Notifications Directive
 #############################################################################
 
 UserNotificationsDirective = () ->
     link = ($scope, $el, $attrs) ->
-
         $scope.$on "$destroy", ->
             $el.off()
 
     return {link:link}
 
 module.directive("tgUserNotifications", UserNotificationsDirective)
+
 
 #############################################################################
 ## User Notifications List Directive
@@ -124,11 +124,12 @@ UserNotificationsListDirective = ($repo, $confirm) ->
         </div>
         <% }) %>
     """)
-    link = ($scope, $el, $attrs) ->
 
+    link = ($scope, $el, $attrs) ->
         render = ->
             $el.off()
             $el.html(template({notifyPolicies: $scope.notifyPolicies}))
+
             $el.on "change", "input[type=radio]", (event) ->
                 target = angular.element(event.currentTarget)
                 policyIndex = target.parents(".policy-table-row").data('index')
@@ -144,7 +145,6 @@ UserNotificationsListDirective = ($repo, $confirm) ->
 
         $scope.$on "$destroy", ->
             $el.off()
-
 
         bindOnce($scope, $attrs.ngModel, render)
 
