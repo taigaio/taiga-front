@@ -7,3 +7,4 @@ bower_components
 app/coffee/modules/locales/locale*.coffee
 *.swp
 *.swo
+tags
