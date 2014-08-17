@@ -372,10 +372,11 @@ IssuesDirective = ($log, $location) ->
 
     linkOrdering = ($scope, $el, $attrs, $ctrl) ->
         # Draw the arrow the first time
-        currentOrder = $ctrl.getUrlFilter("orderBy") or "subject"
-        icon = if startswith(currentOrder, "-") then "icon-caret-up" else "icon-caret-down"
-        colHeadElement = $el.find(".row.title > div[data-fieldname='#{trim(currentOrder, "-")}']")
-        colHeadElement.html("#{colHeadElement.html()}<span class='icon #{icon}'></span>")
+        currentOrder = $ctrl.getUrlFilter("orderBy")
+        if currentOrder
+            icon = if startswith(currentOrder, "-") then "icon-caret-up" else "icon-caret-down"
+            colHeadElement = $el.find(".row.title > div[data-fieldname='#{trim(currentOrder, "-")}']")
+            colHeadElement.html("#{colHeadElement.html()}<span class='icon #{icon}'></span>")
 
         $el.on "click", ".row.title > div", (event) ->
             target = angular.element(event.currentTarget)
