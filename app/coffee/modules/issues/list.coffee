@@ -89,7 +89,7 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
     getUrlFilters: ->
         filters = _.pick(@location.search(), "page", "tags", "statuses", "types",
                                              "subject", "severities", "priorities",
-                                             "assignedTo", "orderBy")
+                                             "assignedTo", "createdBy", "orderBy")
         filters.page = 1 if not filters.page
         return filters
 
@@ -171,6 +171,20 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 obj.selected = true if isSelected("assignedTo", obj.id)
                 return obj
 
+            @scope.filters.createdBy = _.map data.created_by, (t) =>
+                obj = {
+                    id:t[0],
+                    count:t[1],
+                    type:"createdBy"
+                }
+                if t[0]
+                    obj.name = @scope.usersById[t[0]].full_name_display
+                else
+                    obj.name = "Unknown"
+
+                obj.selected = true if isSelected("createdBy", obj.id)
+                return obj
+
             @scope.filters.tags = _.map data.tags, (t) =>
                 obj = {
                     id: t[0],
@@ -214,6 +228,8 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 name = "priority"
             else if name == "assignedTo"
                 name = "assigned_to"
+            else if name == "createdBy"
+                name = "owner"
             else if name == "statuses"
                 name = "status"
             else if name == "types"
