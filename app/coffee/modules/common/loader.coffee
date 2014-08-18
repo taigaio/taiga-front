@@ -5,15 +5,16 @@ module = angular.module("taigaCommon")
 
 LoaderDirective = (tgLoader) ->
     link = ($scope, $el, $attrs) ->
-        tgLoader.end () ->
+        tgLoader.onStart () ->
+            $(document.body).addClass("loader-active")
+            $el.addClass("active")
+
+        tgLoader.onEnd () ->
             $(document.body).removeClass("loader-active")
             $el.removeClass("active")
 
         $scope.$on "$routeChangeSuccess", () ->
-            tgLoader.start () ->
-                $(document.body).addClass("loader-active")
-                $el.addClass("active")
-
+            tgLoader.start()
 
     return {
         link: link
@@ -22,10 +23,6 @@ LoaderDirective = (tgLoader) ->
 module.directive("tgLoader", ["tgLoader", LoaderDirective])
 
 Loader = () ->
-    interval = null
-    onLoad = () ->
-    startLoadTime = 0
-
     defaultLog = {
         request: {
             count: 0,
@@ -38,7 +35,7 @@ Loader = () ->
     }
 
     defaultConfig = {
-        enabled: false,
+        enabled: true,
         minTime: 1000,
         auto: false
     }
@@ -46,55 +43,52 @@ Loader = () ->
     log = _.merge({}, defaultLog)
     config = _.merge({}, defaultConfig)
 
-    reset = () ->
-        log = _.merge({}, defaultLog)
-        config = _.merge({}, defaultConfig)
-
-    pageLoaded = () ->
-        reset()
-
-        endTime = new Date().getTime()
-        diff = endTime - startLoadTime
-
-        if diff < config.minTime
-            timeout = config.minTime - diff
-        else
-            timeout = 0
-
-        setTimeout ( ->
-            onLoad()
-        ), timeout
-
-    autoCheckLoad = () ->
-        interval = setInterval ( ->
-            currentDate = new Date().getTime()
-
-            if log.request.count == log.response.count && currentDate - log.response.time  > 200
-                clearInterval(interval)
-                pageLoaded()
-
-        ), 100
-
     @.add = (auto = false) ->
         return () ->
-            config.enabled = true
             config.auto = auto
 
-    @.$get = () ->
+    @.$get = ["$rootScope", ($rootscope) ->
+        interval = null
+        startLoadTime = 0
+
         return {
-            start: (callback) ->
+            pageLoaded: () ->
+                if config.enabled
+                    log = _.merge({}, defaultLog)
+                    config = _.merge({}, defaultConfig)
+
+                    endTime = new Date().getTime()
+                    diff = endTime - startLoadTime
+
+                    if diff < config.minTime
+                        timeout = config.minTime - diff
+                    else
+                        timeout = 0
+
+                    setTimeout ( ->
+                        $rootscope.$broadcast("loader:end");
+                    ), timeout
+
+            start: () ->
                 if config.enabled
                     if config.auto
-                        autoCheckLoad()
+                        interval = setInterval ( ->
+                            currentDate = new Date().getTime()
+
+                            if log.request.count == log.response.count && currentDate - log.response.time  > 200
+                                clearInterval(interval)
+                                pageLoaded()
+
+                        ), 100
 
                     startLoadTime = new Date().getTime()
-                    callback()
+                    $rootscope.$broadcast("loader:start");
 
-            end: (fn) ->
-                onLoad = fn
+            onStart: (fn) ->
+                $rootscope.$on("loader:start", fn);
 
-            pageLoaded: () ->
-                pageLoaded()
+            onEnd: (fn) ->
+                $rootscope.$on("loader:end", fn);
 
             logRequest: () ->
                 log.request.count++
@@ -103,11 +97,21 @@ Loader = () ->
             logResponse: () ->
                 log.response.count++
                 log.response.time = new Date().getTime()
+
+            isEneabled: () ->
+                config.enabled == true
+
+            disabled: () ->
+                config.enabled = false
+
+            enabled: () ->
+                config.enabled = true
         }
+    ]
 
     return
 
-module.provider("tgLoader", Loader)
+module.provider("tgLoader", [Loader])
 
 loaderInterceptor = (tgLoader) ->
     return {

@@ -66,7 +66,7 @@ class ProjectsNavigationController extends taiga.Controller
 module.controller("ProjectsNavigationController", ProjectsNavigationController)
 
 
-ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout) ->
+ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout, tgLoader) ->
     baseTemplate = _.template("""
     <h1>Your projects</h1>
     <form>
@@ -111,8 +111,8 @@ ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout) ->
             difftime = new Date().getTime() - loadingStart
             timeout = 0
 
-            if (difftime < 3500)
-                timeout = 3500 - timeout
+            if (difftime < 1000)
+                timeout = 1000 - timeout
 
             setTimeout ( ->
                 overlay.one 'transitionend', () ->
@@ -120,6 +120,8 @@ ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout) ->
 
                 $(document.body)
                     .removeClass("loading-project open-projects-nav")
+
+                tgLoader.enabled()
             ), timeout
 
     renderProjects  = ($el, projects) ->
@@ -150,6 +152,8 @@ ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout) ->
         $el.on "click", ".projects-list > li > a", (event) ->
             $(document.body)
                 .addClass('loading-project')
+
+            tgLoader.disabled()
 
             loadingStart = new Date().getTime()
 
@@ -246,7 +250,7 @@ ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout) ->
         link: link
     }
 
-module.directive("tgProjectsNav", ["$rootScope", "animationFrame", "$timeout", ProjectsNavigationDirective])
+module.directive("tgProjectsNav", ["$rootScope", "animationFrame", "$timeout", "tgLoader", ProjectsNavigationDirective])
 
 
 #############################################################################
