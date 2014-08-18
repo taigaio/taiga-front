@@ -97,7 +97,7 @@ module.controller("ProjectValuesController", ProjectValuesController)
 ## Project values directive
 #############################################################################
 
-ProjectValuesDirective = ($log, $repo, $confirm, $location) ->
+ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame) ->
 
     #########################
     ## Drag & Drop Link
@@ -141,6 +141,17 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location) ->
             }
 
         initializeNewValue()
+
+        goToBottomList = (focus = false) =>
+            table = $el.find(".table-main")
+
+            console.log(table.offset().top + table.height())
+
+            $(document.body).scrollTop(table.offset().top + table.height())
+
+            if focus
+                $(".new-value input").focus()
+
         submit = =>
             promise = $repo.save($scope.project)
             promise.then ->
@@ -161,6 +172,8 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location) ->
             event.preventDefault()
             $el.find(".new-value").css('display': 'flex')
 
+            goToBottomList(true)
+
         $el.on "click", ".add-new", (event) ->
             event.preventDefault()
             form = $el.find(".new-value").parents("form").checksley()
@@ -170,7 +183,10 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location) ->
             $scope.newValue.order = $scope.maxValueOrder + 1
             promise = $repo.create(valueType, $scope.newValue)
             promise.then =>
-                $ctrl.loadValues()
+                $ctrl.loadValues().then ->
+                    animationFrame.add () ->
+                         goToBottomList()
+
                 $el.find(".new-value").hide()
                 initializeNewValue()
 
@@ -246,7 +262,7 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location) ->
 
     return {link:link}
 
-module.directive("tgProjectValues", ["$log", "$tgRepo", "$tgConfirm", "$tgLocation", ProjectValuesDirective])
+module.directive("tgProjectValues", ["$log", "$tgRepo", "$tgConfirm", "$tgLocation", "animationFrame", ProjectValuesDirective])
 
 
 #############################################################################
