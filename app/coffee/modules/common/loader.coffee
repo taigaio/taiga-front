@@ -6,10 +6,12 @@ module = angular.module("taigaCommon")
 LoaderDirective = (tgLoader) ->
     link = ($scope, $el, $attrs) ->
         tgLoader.end () ->
+            $(document.body).removeClass("loader-active")
             $el.removeClass("active")
 
         $scope.$on "$routeChangeSuccess", () ->
             tgLoader.start () ->
+                $(document.body).addClass("loader-active")
                 $el.addClass("active")
 
 

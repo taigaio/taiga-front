@@ -43,10 +43,11 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         "$routeParams",
         "$q",
         "$tgLocation",
-        "$appTitle"
+        "$appTitle",
+        "tgLoader"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @appTitle) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @appTitle, tgLoader) ->
         _.bindAll(@)
 
         @scope.sectionName = "Backlog"
@@ -56,6 +57,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
         promise.then () =>
             @appTitle.set("Backlog - " + @scope.project.name)
+            tgLoader.pageLoaded()
 
         promise.then null, =>
             console.log "FAIL"

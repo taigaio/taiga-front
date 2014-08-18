@@ -24,10 +24,10 @@
 configure = ($routeProvider, $locationProvider, $httpProvider, $provide, tgLoaderProvider) ->
     $routeProvider.when("/", {templateUrl: "/partials/projects.html"})
     $routeProvider.when("/project/:pslug/", {templateUrl: "/partials/project.html"})
-    $routeProvider.when("/project/:pslug/backlog", {templateUrl: "/partials/backlog.html", resolve: {loader: tgLoaderProvider.add(true)}})
+    $routeProvider.when("/project/:pslug/backlog", {templateUrl: "/partials/backlog.html", resolve: {loader: tgLoaderProvider.add()}})
     $routeProvider.when("/project/:pslug/taskboard/:id", {templateUrl: "/partials/taskboard.html"})
     $routeProvider.when("/project/:pslug/search", {templateUrl: "/partials/search.html", reloadOnSearch: false})
-    $routeProvider.when("/project/:pslug/kanban", {templateUrl: "/partials/kanban.html"})
+    $routeProvider.when("/project/:pslug/kanban", {templateUrl: "/partials/kanban.html", resolve: {loader: tgLoaderProvider.add()}})
 
     # User stories
     $routeProvider.when("/project/:pslug/us/:usref",
@@ -54,7 +54,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, tgLoade
                 {templateUrl: "/partials/wiki-edit.html"})
 
     # Issues
-    $routeProvider.when("/project/:pslug/issues", {templateUrl: "/partials/issues.html", resolve: {loader: tgLoaderProvider.add(true)}})
+    $routeProvider.when("/project/:pslug/issues", {templateUrl: "/partials/issues.html", resolve: {loader: tgLoaderProvider.add()}})
     $routeProvider.when("/project/:pslug/issues/:issueref",
         {templateUrl: "/partials/issues-detail.html"})
 

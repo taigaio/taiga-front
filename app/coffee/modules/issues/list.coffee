@@ -46,10 +46,11 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         "$routeParams",
         "$q",
         "$location",
-        "$appTitle"
+        "$appTitle",
+        "tgLoader"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @appTitle) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @appTitle, tgLoader) ->
         @scope.sprintId = @params.id
         @scope.sectionName = "Issues"
         @scope.filters = {}
@@ -58,6 +59,7 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
         promise.then () =>
             @appTitle.set("Issues - " + @scope.project.name)
+            tgLoader.pageLoaded()
 
         promise.then null, ->
             console.log "FAIL" #TODO
