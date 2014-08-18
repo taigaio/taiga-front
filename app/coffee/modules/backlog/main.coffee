@@ -378,7 +378,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             obj.selected = true if isSelected("statuses", obj.id)
 
             return obj
-
+        
         return @scope.filters
 
     ## Template actions

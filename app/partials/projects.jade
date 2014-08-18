@@ -9,17 +9,18 @@ block content
             .home-projects-list-inner
                 div.recent-projects
                     ul
-                        li(ng-repeat="project in ctrl.projects.recents", tg-nav="project:project=project.slug")
+                        li(ng-repeat="project in ctrl.projects.recents")
                             .project-content
-                                h2(tg-bo-bind="project.name")
-                                p(tg-bo-bind="project.description")
+                                a(href="{{ project.url }}")
+                                    h2(tg-bo-bind="project.name")
+                                    p(tg-bo-bind="project.description")
 
                 div.all-projects
                     h1 Projects
                     div(tg-projects-pagination, active="ctrl.projects.all.length")
                         ul
                             li(ng-repeat="project in ctrl.projects.all")
-                                a.button(href="", tg-bo-bind="project.name", tg-nav="project:project=project.slug")
+                                a.button(tg-bo-bind="project.name", href="{{ project.url }}")
 
                     .create-project-button-wrapper
                         a.button.button-green(href="", ng-click="ctrl.newProject()") Create project
