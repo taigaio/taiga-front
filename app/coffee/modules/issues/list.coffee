@@ -147,7 +147,7 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                     else
                         obj.name = unknownOption
 
-                    obj.selected = true if isSelected("createdBy", obj.id)
+                    obj.selected = true if isSelected(type, obj.id)
                     return obj
                 unknownItem = _.remove(reformatedUsers, (u) -> not u.id)
                 reformatedUsers = _.sortBy(reformatedUsers, (u) -> u.name.toUpperCase())
