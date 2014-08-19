@@ -410,6 +410,8 @@ TgProgressBarDirective = ->
         element = angular.element($el)
 
         $scope.$watch $attrs.tgProgressBar, (percentage) ->
+            percentage = _.max([0 , percentage])
+            percentage = _.min([100, percentage])
             render($el, percentage)
 
         $scope.$on "$destroy", ->
