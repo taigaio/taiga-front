@@ -1,0 +1,13 @@
+.admin-header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    h1 {
+        span {
+            white-space: inherit;
+        }
+    }
+    .delete-button-wrapper {
+        flex-shrink: 0;
+    }
+}

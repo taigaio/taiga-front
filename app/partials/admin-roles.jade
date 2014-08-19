@@ -12,10 +12,10 @@ block content
             include views/modules/admin-submenu-roles
 
         section.main.admin-roles
-            header
+            .admin-header
                 include views/components/mainTitle
-
-            a.button.button-red.delete-role(href="", title="Delete", ng-click="ctrl.delete()") Delete
+                div.delete-button-wrapper
+                    a.button.button-red.delete-role(href="", title="Delete", ng-click="ctrl.delete()") Delete
 
             p.total
                 | {{ role.name }}
