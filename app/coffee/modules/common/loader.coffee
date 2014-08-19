@@ -72,10 +72,6 @@ Loader = () ->
     log = _.merge({}, defaultLog)
     config = _.merge({}, defaultConfig)
 
-    reset = () ->
-        log = _.merge({}, defaultLog)
-        config = _.merge({}, defaultConfig)
-
     @.add = (auto = false) ->
         return () ->
             if !forceDisabled
@@ -86,24 +82,31 @@ Loader = () ->
         interval = null
         startLoadTime = 0
 
+        reset = () ->
+            log = _.merge({}, defaultLog)
+            config = _.merge({}, defaultConfig)
+
+        pageLoaded = (force = false) ->
+            if startLoadTime
+                timeout = 0
+
+                if !force
+                    endTime = new Date().getTime()
+                    diff = endTime - startLoadTime
+
+                    if diff < config.minTime
+                        timeout = config.minTime - diff
+
+                setTimeout ( ->
+                    $rootscope.$broadcast("loader:end")
+                ), timeout
+
         return {
             reset: () ->
                 reset()
 
             pageLoaded: () ->
-                reset()
-
-                endTime = new Date().getTime()
-                diff = endTime - startLoadTime
-
-                if diff < config.minTime
-                    timeout = config.minTime - diff
-                else
-                    timeout = 0
-
-                setTimeout ( ->
-                    $rootscope.$broadcast("loader:end")
-                ), timeout
+                pageLoaded()
 
             start: () ->
                 if config.enabled
@@ -119,6 +122,8 @@ Loader = () ->
 
                     startLoadTime = new Date().getTime()
                     $rootscope.$broadcast("loader:start")
+                else
+                    pageLoaded(true)
 
             onStart: (fn) ->
                 $rootscope.$on("loader:start", fn)
