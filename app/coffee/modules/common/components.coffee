@@ -80,7 +80,14 @@ module.directive("tgSprintProgressbar", SprintProgressBarDirective)
 
 DateSelectorDirective =->
     link = ($scope, $el, $attrs, $model) ->
-        picker = new Pikaday({field: $el[0]})
+        $.selectedDate = null
+        $.picker = new Pikaday({
+          field: $el[0]
+          onSelect: (date) =>
+              $.selectedDate = date
+          onOpen: =>
+              $.picker.setDate($.selectedDate) if $.selectedDate?
+        })
 
     return {
         link: link
