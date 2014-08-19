@@ -35,7 +35,7 @@ Loader = () ->
     }
 
     defaultConfig = {
-        enabled: true,
+        enabled: false,
         minTime: 1000,
         auto: false
     }
@@ -46,6 +46,7 @@ Loader = () ->
     @.add = (auto = false) ->
         return () ->
             config.auto = auto
+            config.enabled = true
 
     @.$get = ["$rootScope", ($rootscope) ->
         interval = null
@@ -70,6 +71,7 @@ Loader = () ->
                     ), timeout
 
             start: () ->
+                config.enabled = false
                 if config.enabled
                     if config.auto
                         interval = setInterval ( ->
