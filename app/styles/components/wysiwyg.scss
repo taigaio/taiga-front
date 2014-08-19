@@ -36,4 +36,31 @@
         unicode-bidi: embed;
         white-space: pre;
     }
+    table {
+        border: $gray-light 1px solid;
+        margin-bottom: 1rem;
+        tbody {
+            tr:last-child {
+                border-bottom: 0;
+            }
+        }
+    }
+    tr {
+        border-bottom: $gray-light 1px solid;
+
+    }
+    th {
+        border-right: $gray-light 1px solid;
+        padding: 1rem 1rem 1rem .5rem;
+        &:last-child {
+            border-right: 0;
+        }
+    }
+    td {
+        border-right: $gray-light 1px solid;
+        padding: .5rem;
+        &:last-child {
+            border-right: 0;
+        }
+    }
 }
