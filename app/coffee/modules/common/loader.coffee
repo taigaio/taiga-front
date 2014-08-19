@@ -3,7 +3,7 @@ sizeFormat = @.taiga.sizeFormat
 
 module = angular.module("taigaCommon")
 
-LoaderDirective = (tgLoader) ->
+LoaderDirective = (tgLoader, $rootscope) ->
     link = ($scope, $el, $attrs) ->
         tgLoader.onStart () ->
             $(document.body).addClass("loader-active")
@@ -13,16 +13,21 @@ LoaderDirective = (tgLoader) ->
             $(document.body).removeClass("loader-active")
             $el.removeClass("active")
 
-        $scope.$on "$routeChangeSuccess", () ->
+        $rootscope.$on "$routeChangeSuccess", (e) ->
             tgLoader.start()
+
+        $rootscope.$on "$locationChangeSuccess", (e) ->
+            tgLoader.reset()
 
     return {
         link: link
     }
 
-module.directive("tgLoader", ["tgLoader", LoaderDirective])
+module.directive("tgLoader", ["tgLoader", "$rootScope", LoaderDirective])
 
 Loader = () ->
+    forceDisabled = false
+
     defaultLog = {
         request: {
             count: 0,
@@ -43,35 +48,40 @@ Loader = () ->
     log = _.merge({}, defaultLog)
     config = _.merge({}, defaultConfig)
 
+    reset = () ->
+        log = _.merge({}, defaultLog)
+        config = _.merge({}, defaultConfig)
+
     @.add = (auto = false) ->
         return () ->
-            config.auto = auto
-            config.enabled = true
+            if !forceDisabled
+                config.auto = auto
+                config.enabled = true
 
     @.$get = ["$rootScope", ($rootscope) ->
         interval = null
         startLoadTime = 0
 
         return {
+            reset: () ->
+                reset()
+
             pageLoaded: () ->
-                if config.enabled
-                    log = _.merge({}, defaultLog)
-                    config = _.merge({}, defaultConfig)
+                reset()
 
-                    endTime = new Date().getTime()
-                    diff = endTime - startLoadTime
+                endTime = new Date().getTime()
+                diff = endTime - startLoadTime
 
-                    if diff < config.minTime
-                        timeout = config.minTime - diff
-                    else
-                        timeout = 0
+                if diff < config.minTime
+                    timeout = config.minTime - diff
+                else
+                    timeout = 0
 
-                    setTimeout ( ->
-                        $rootscope.$broadcast("loader:end");
-                    ), timeout
+                setTimeout ( ->
+                    $rootscope.$broadcast("loader:end");
+                ), timeout
 
             start: () ->
-                config.enabled = false
                 if config.enabled
                     if config.auto
                         interval = setInterval ( ->
@@ -100,14 +110,11 @@ Loader = () ->
                 log.response.count++
                 log.response.time = new Date().getTime()
 
-            isEneabled: () ->
-                config.enabled == true
+            preventLoading: () ->
+                forceDisabled = true
 
-            disabled: () ->
-                config.enabled = false
-
-            enabled: () ->
-                config.enabled = true
+            disablePreventLoading: () ->
+                forceDisabled = false
         }
     ]
 

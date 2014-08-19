@@ -54,7 +54,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, tgLoade
                 {templateUrl: "/partials/wiki-edit.html"})
 
     # Issues
-    $routeProvider.when("/project/:pslug/issues/", {templateUrl: "/partials/issues.html", resolve: {loader: tgLoaderProvider.add()}})
+    $routeProvider.when("/project/:pslug/issues", {templateUrl: "/partials/issues.html", resolve: {loader: tgLoaderProvider.add()}})
     $routeProvider.when("/project/:pslug/issues/:issueref",
         {templateUrl: "/partials/issues-detail.html"})
 

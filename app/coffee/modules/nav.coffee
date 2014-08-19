@@ -121,7 +121,7 @@ ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout, tgLoader) -
                 $(document.body)
                     .removeClass("loading-project open-projects-nav")
 
-                tgLoader.enabled()
+                    tgLoader.disablePreventLoading()
             ), timeout
 
     renderProjects  = ($el, projects) ->
@@ -153,7 +153,7 @@ ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout, tgLoader) -
             $(document.body)
                 .addClass('loading-project')
 
-            tgLoader.disabled()
+            tgLoader.preventLoading()
 
             loadingStart = new Date().getTime()
 
