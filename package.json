@@ -41,7 +41,7 @@
     "gulp-plumber": "^0.6.2",
     "gulp-rename": "^1.2.0",
     "gulp-ruby-sass": "^0.4.3",
-    "gulp-scss-lint": "0.1.0",
+    "gulp-scss-lint": "0.1.1",
     "gulp-styledocco": "0.0.1",
     "gulp-template": "^0.1.1",
     "gulp-uglify": "~0.2.0",
