@@ -1,8 +1,7 @@
 div.summary
-    div.summary-progress-bar
-        div.current-progress
+    div.summary-progress-bar(tg-progress-bar="stats.completedPercentage")
     div.data
-        span.number(tg-bind-html="stats.completedPercentage")
+        span.number(tg-bind-html="stats.completedPercentage + '%'")
     ul
         li
             span.number(tg-bind-html="stats.total_points") --

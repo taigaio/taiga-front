@@ -83,6 +83,10 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.stats.completedPointsSum = completedPointsSum
             @scope.stats.remainingPointsSum = remainingPointsSum
             @scope.stats.remainingTasks = remainingTasks
+            if stats.totalPointsSum
+                @scope.stats.completedPercentage = Math.round(100 * stats.completedPointsSum / stats.totalPointsSum)
+            else
+                @scope.stats.completedPercentage = 0
             return stats
 
     refreshTagsColors: ->

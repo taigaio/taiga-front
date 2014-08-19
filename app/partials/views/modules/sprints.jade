@@ -26,8 +26,7 @@ section.sprints
                     li
                         span.number(ng-bind="sprint.total_points|default:''")
                         span.description total
-        div.sprint-progress-bar
-            div.current-progress(tg-sprint-progressbar="sprint")
+        div.sprint-progress-bar(tg-progress-bar="100 * sprint.closed_points / total_points")
         div.sprint-table(tg-sprint-sortable)
             div.row.milestone-us-item-row(ng-repeat="us in sprint.user_stories|orderBy:order track by us.id")
                 div.column-us.width-8

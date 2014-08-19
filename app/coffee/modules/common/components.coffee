@@ -47,34 +47,6 @@ module.directive("tgDateRange", DateRangeDirective)
 
 
 #############################################################################
-## Sprint Progress Bar Directive
-#############################################################################
-
-SprintProgressBarDirective = ->
-    renderProgress = ($el, percentage, visual_percentage) ->
-        if $el.is(".current-progress")
-            $el.css("width", "#{percentage}%")
-        else
-            $el.find(".current-progress").css("width", "#{visual_percentage}%")
-            $el.find(".number").html("#{percentage} %")
-
-    link = ($scope, $el, $attrs) ->
-        bindOnce $scope, $attrs.tgSprintProgressbar, (sprint) ->
-            closedPoints = sprint.closed_points
-            totalPoints = sprint.total_points
-            percentage = 0
-            percentage = Math.round(100 * (closedPoints/totalPoints)) if totalPoints != 0
-            visual_percentage = 0
-            #Visual hack for .current-progress bar
-            visual_percentage = Math.round(98 * (closedPoints/totalPoints)) if totalPoints != 0
-            renderProgress($el, percentage, visual_percentage)
-
-    return {link: link}
-
-module.directive("tgSprintProgressbar", SprintProgressBarDirective)
-
-
-#############################################################################
 ## Date Selector Directive (using pikaday)
 #############################################################################
 
@@ -422,6 +394,30 @@ ListItemTypeDirective = ->
     }
 
 
+#############################################################################
+## Progress bar directive
+#############################################################################
+
+TgProgressBarDirective = ->
+    template = _.template("""
+        <div class="current-progress" style="width: calc(<%- percentage %>% - 4px)"></div>
+    """)
+
+    render = (el, percentage) ->
+        el.html(template({percentage: percentage}))
+
+    link = ($scope, $el, $attrs) ->
+        element = angular.element($el)
+
+        $scope.$watch $attrs.tgProgressBar, (percentage) ->
+            render($el, percentage)
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {link: link}
+
+
 module.directive("tgListitemType", ListItemTypeDirective)
 module.directive("tgListitemIssueStatus", ListItemIssueStatusDirective)
 module.directive("tgListitemAssignedto", ListItemAssignedtoDirective)
@@ -429,3 +425,4 @@ module.directive("tgListitemPriority", ListItemPriorityDirective)
 module.directive("tgListitemSeverity", ListItemSeverityDirective)
 module.directive("tgListitemTaskStatus", ListItemTaskStatusDirective)
 module.directive("tgListitemUsStatus", ListItemUsStatusDirective)
+module.directive("tgProgressBar", TgProgressBarDirective)

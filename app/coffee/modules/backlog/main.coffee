@@ -83,11 +83,10 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             @scope.stats = stats
 
             if stats.total_points
-                completedPercentage = Math.round(100 * stats.closed_points / stats.total_points)
+                @scope.stats.completedPercentage = Math.round(100 * stats.closed_points / stats.total_points)
             else
-                completedPercentage = 0
+                @scope.stats.completedPercentage = 0
 
-            @scope.stats.completedPercentage = "#{completedPercentage}%"
             return stats
 
     refreshTagsColors: ->
@@ -879,6 +878,7 @@ tgBacklogGraphDirective = ->
             $el.off()
 
     return {link: link}
+
 
 module.directive("tgBacklog", ["$tgRepo", "$rootScope", BacklogDirective])
 module.directive("tgUsPoints", ["$tgRepo", UsPointsDirective])
