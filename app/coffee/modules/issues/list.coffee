@@ -181,7 +181,7 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
                 obj.selected = true if isSelected("assignedTo", obj.id)
                 return obj
-            @scope.filters.assignedTo = _.sortBy(@scope.filters.assignedTo, "name")
+            @scope.filters.assignedTo = _.sortBy(@scope.filters.assignedTo, (u) -> u.name.toUpperCase())
 
             @scope.filters.createdBy = _.map data.created_by, (t) =>
                 obj = {
@@ -196,7 +196,7 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
                 obj.selected = true if isSelected("createdBy", obj.id)
                 return obj
-            @scope.filters.createdBy = _.sortBy(@scope.filters.createdBy, "name")
+            @scope.filters.createdBy = _.sortBy(@scope.filters.createdBy, (u) -> u.name.toUpperCase())
 
             @scope.filters.tags = _.map data.tags, (t) =>
                 obj = {
