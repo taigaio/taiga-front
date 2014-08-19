@@ -43,8 +43,6 @@ CreateIssueDirective = ($repo, $model, $rs, $rootscope, lightboxService) ->
                 type: project.default_issue_type
                 priority: project.default_priority
                 severity: project.default_severity
-                estimated_start: null
-                estimated_finish: null
             }
 
         $scope.$on "$destroy", ->
