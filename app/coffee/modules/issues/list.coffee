@@ -43,6 +43,7 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         "$tgRepo",
         "$tgConfirm",
         "$tgResources",
+        "$tgUrls",
         "$routeParams",
         "$q",
         "$location",
@@ -50,10 +51,17 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         "tgLoader"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @appTitle, tgLoader) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @urls, @params, @q, @location, @appTitle, tgLoader) ->
         @scope.sprintId = @params.id
         @scope.sectionName = "Issues"
         @scope.filters = {}
+
+        if _.isEmpty(@location.search())
+            filters = @rs.issues.getFilters(@params.pslug)
+            filters.page = 1
+            @location.search(filters)
+            @location.replace()
+            return
 
         promise = @.loadInitialData()
 
@@ -67,6 +75,9 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         @scope.$on "issueform:new:success", =>
             @.loadIssues()
             @.loadFilters()
+
+    storeFilters: ->
+        @rs.issues.storeFilters(@params.pslug, @location.search())
 
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
@@ -116,7 +127,7 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 if not searchdata[name]?
                     searchdata[name] = {}
 
-                for val in value.split(",")
+                for val in "#{value}".split(",")
                     searchdata[name][val] = true
 
             isSelected = (type, id) ->
@@ -408,6 +419,7 @@ IssuesDirective = ($log, $location) ->
 
             $scope.$apply ->
                 $ctrl.replaceFilter("orderBy", finalOrder)
+                $ctrl.storeFilters()
                 $ctrl.loadIssues().then ->
                     # Update the arrow
                     $el.find(".row.title > div > span.icon").remove()
@@ -517,12 +529,14 @@ IssuesFiltersDirective = ($log, $location) ->
                 $scope.$apply ->
                     $ctrl.selectFilter(type, id)
                     $ctrl.selectFilter("page", 1)
+                    $ctrl.storeFilters()
                     $ctrl.loadIssues()
             else
                 selectedFilters = _.reject(selectedFilters, filter)
                 $scope.$apply ->
                     $ctrl.unselectFilter(type, id)
                     $ctrl.selectFilter("page", 1)
+                    $ctrl.storeFilters()
                     $ctrl.loadIssues()
 
             renderSelectedFilters(selectedFilters)
@@ -539,8 +553,10 @@ IssuesFiltersDirective = ($log, $location) ->
             return if value is undefined
             if value.length == 0
                 $ctrl.replaceFilter("subject", null)
+                $ctrl.storeFilters()
             else
                 $ctrl.replaceFilter("subject", value)
+                $ctrl.storeFilters()
             $ctrl.loadIssues()
 
         $scope.$watch("filtersSubject", selectSubjectFilter)

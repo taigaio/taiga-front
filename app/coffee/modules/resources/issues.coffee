@@ -27,6 +27,7 @@ generateHash = taiga.generateHash
 resourceProvider = ($repo, $http, $urls, $storage) ->
     service = {}
     hashSuffix = "issues-queryparams"
+    filtersHashSuffix = "issues-filters"
 
     service.get = (projectId, issueId) ->
         params = service.getQueryParams(projectId)
@@ -66,6 +67,16 @@ resourceProvider = ($repo, $http, $urls, $storage) ->
     service.getQueryParams = (projectId) ->
         ns = "#{projectId}:#{hashSuffix}"
         hash = generateHash([projectId, ns])
+        return $storage.get(hash) or {}
+
+    service.storeFilters = (projectSlug, params) ->
+        ns = "#{projectSlug}:#{filtersHashSuffix}"
+        hash = generateHash([projectSlug, ns])
+        $storage.set(hash, params)
+
+    service.getFilters = (projectSlug) ->
+        ns = "#{projectSlug}:#{filtersHashSuffix}"
+        hash = generateHash([projectSlug, ns])
         return $storage.get(hash) or {}
 
     return (instance) ->
