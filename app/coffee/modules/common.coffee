@@ -279,7 +279,7 @@ ChangeDirective = ->
             html = commentBaseTemplate({
                 avatar: getUserAvatar(comment.user.pk)
                 userFullName: getUserFullName(comment.user.pk)
-                creationDate: moment(comment.created_at).format("YYYY/MM/DD HH:mm")
+                creationDate: moment(comment.created_at).format("DD MMM YYYY HH:mm")
                 comment: taiga.nl2br(comment.comment_html)
                 changesText: buildChangesText(comment)
                 hasChanges: countChanges(comment) > 0
@@ -293,7 +293,7 @@ ChangeDirective = ->
             html = changeBaseTemplate({
                 avatar: getUserAvatar(change.user.pk)
                 userFullName: getUserFullName(change.user.pk)
-                creationDate: moment(change.created_at).format("YYYY/MM/DD HH:mm")
+                creationDate: moment(change.created_at).format("DD MMM YYYY HH:mm")
                 comment: change.comment_html
             })
 

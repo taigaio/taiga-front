@@ -30,8 +30,8 @@ module = angular.module("taigaCommon")
 
 DateRangeDirective = ->
     renderRange = ($el, first, second) ->
-        initDate = moment(first).format("YYYY/MM/DD")
-        endDate = moment(second).format("YYYY/MM/DD")
+        initDate = moment(first).format("DD MMM YYYY")
+        endDate = moment(second).format("DD MMM YYYY")
         $el.html("#{initDate}-#{endDate}")
 
     link = ($scope, $el, $attrs) ->
