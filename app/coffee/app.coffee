@@ -22,111 +22,104 @@
 @taiga = taiga = {}
 
 configure = ($routeProvider, $locationProvider, $httpProvider, $provide, tgLoaderProvider) ->
-    $routeProvider.when("/", {templateUrl: "/partials/projects.html"})
-    $routeProvider.when("/project/:pslug/", {templateUrl: "/partials/project.html"})
-    $routeProvider.when("/project/:pslug/backlog", {templateUrl: "/partials/backlog.html", resolve: {loader: tgLoaderProvider.add()}})
-    $routeProvider.when("/project/:pslug/taskboard/:id", {templateUrl: "/partials/taskboard.html"})
-    $routeProvider.when("/project/:pslug/search", {templateUrl: "/partials/search.html", reloadOnSearch: false})
-    $routeProvider.when("/project/:pslug/kanban", {templateUrl: "/partials/kanban.html", resolve: {loader: tgLoaderProvider.add()}})
+    $routeProvider.when("/",
+        {templateUrl: "/partials/projects.html"})
+    $routeProvider.when("/project/:pslug/",
+        {templateUrl: "/partials/project.html"})
+    $routeProvider.when("/project/:pslug/backlog",
+        {templateUrl: "/partials/backlog.html", resolve: {loader: tgLoaderProvider.add()}})
+    $routeProvider.when("/project/:pslug/taskboard/:id",
+        {templateUrl: "/partials/taskboard.html"})
+    $routeProvider.when("/project/:pslug/search",
+        {templateUrl: "/partials/search.html", reloadOnSearch: false})
+    $routeProvider.when("/project/:pslug/kanban",
+        {templateUrl: "/partials/kanban.html", resolve: {loader: tgLoaderProvider.add()}})
 
     # User stories
     $routeProvider.when("/project/:pslug/us/:usref",
         {templateUrl: "/partials/us-detail.html"})
-
     $routeProvider.when("/project/:pslug/us/:usref/edit",
         {templateUrl: "/partials/us-detail-edit.html"})
 
     # Tasks
     $routeProvider.when("/project/:pslug/tasks/:taskref",
         {templateUrl: "/partials/task-detail.html"})
-
     $routeProvider.when("/project/:pslug/tasks/:taskref/edit",
         {templateUrl: "/partials/task-detail-edit.html"})
 
     # Wiki
     $routeProvider.when("/project/:pslug/wiki",
-                {redirectTo: (params) -> "/project/#{params.pslug}/wiki/home"}, )
-
+        {redirectTo: (params) -> "/project/#{params.pslug}/wiki/home"}, )
     $routeProvider.when("/project/:pslug/wiki/:slug",
-                {templateUrl: "/partials/wiki.html"})
-
+        {templateUrl: "/partials/wiki.html"})
     $routeProvider.when("/project/:pslug/wiki/:slug/edit",
-                {templateUrl: "/partials/wiki-edit.html"})
+        {templateUrl: "/partials/wiki-edit.html"})
 
     # Issues
-    $routeProvider.when("/project/:pslug/issues", {templateUrl: "/partials/issues.html", resolve: {loader: tgLoaderProvider.add()}})
+    $routeProvider.when("/project/:pslug/issues",
+        {templateUrl: "/partials/issues.html", resolve: {loader: tgLoaderProvider.add()}})
     $routeProvider.when("/project/:pslug/issues/:issueref",
         {templateUrl: "/partials/issues-detail.html"})
-
     $routeProvider.when("/project/:pslug/issues/:issueref/edit",
         {templateUrl: "/partials/issues-detail-edit.html"})
 
     # Admin
     $routeProvider.when("/project/:pslug/admin/project-profile/details",
         {templateUrl: "/partials/admin-project-profile.html"})
-
     $routeProvider.when("/project/:pslug/admin/project-profile/default-values",
         {templateUrl: "/partials/admin-project-default-values.html"})
-
     $routeProvider.when("/project/:pslug/admin/project-profile/features",
         {templateUrl: "/partials/admin-project-features.html"})
-
     $routeProvider.when("/project/:pslug/admin/project-values/us-status",
         {templateUrl: "/partials/admin-project-values-us-status.html"})
-
     $routeProvider.when("/project/:pslug/admin/project-values/us-points",
         {templateUrl: "/partials/admin-project-values-us-points.html"})
-
     $routeProvider.when("/project/:pslug/admin/project-values/task-status",
         {templateUrl: "/partials/admin-project-values-task-status.html"})
-
     $routeProvider.when("/project/:pslug/admin/project-values/issue-status",
         {templateUrl: "/partials/admin-project-values-issue-status.html"})
-
     $routeProvider.when("/project/:pslug/admin/project-values/issue-types",
         {templateUrl: "/partials/admin-project-values-issue-types.html"})
-
     $routeProvider.when("/project/:pslug/admin/project-values/issue-priorities",
         {templateUrl: "/partials/admin-project-values-issue-priorities.html"})
-
     $routeProvider.when("/project/:pslug/admin/project-values/issue-severities",
         {templateUrl: "/partials/admin-project-values-issue-severities.html"})
-
     $routeProvider.when("/project/:pslug/admin/memberships",
         {templateUrl: "/partials/admin-memberships.html"})
-
     $routeProvider.when("/project/:pslug/admin/roles",
         {templateUrl: "/partials/admin-roles.html"})
 
     # User settings
     $routeProvider.when("/project/:pslug/user-settings/user-profile",
           {templateUrl: "/partials/user-profile.html"})
-
     $routeProvider.when("/project/:pslug/user-settings/user-change-password",
           {templateUrl: "/partials/user-change-password.html"})
-
     $routeProvider.when("/project/:pslug/user-settings/user-avatar",
           {templateUrl: "/partials/user-avatar.html"})
-
     $routeProvider.when("/project/:pslug/user-settings/mail-notifications",
           {templateUrl: "/partials/mail-notifications.html"})
-
     $routeProvider.when("/change-email/:email_token",
           {templateUrl: "/partials/change-email.html"})
 
     # Auth
-    $routeProvider.when("/login", {templateUrl: "/partials/login.html"})
-    $routeProvider.when("/register", {templateUrl: "/partials/register.html"})
-    $routeProvider.when("/forgot-password", {templateUrl: "/partials/forgot-password.html"})
+    $routeProvider.when("/login",
+        {templateUrl: "/partials/login.html"})
+    $routeProvider.when("/register",
+        {templateUrl: "/partials/register.html"})
+    $routeProvider.when("/forgot-password",
+        {templateUrl: "/partials/forgot-password.html"})
     $routeProvider.when("/change-password",
-          {templateUrl: "/partials/change-password-from-recovery.html"})
-
+        {templateUrl: "/partials/change-password-from-recovery.html"})
     $routeProvider.when("/change-password/:token",
-          {templateUrl: "/partials/change-password-from-recovery.html"})
+        {templateUrl: "/partials/change-password-from-recovery.html"})
+    $routeProvider.when("/invitation/:token",
+        {templateUrl: "/partials/invitation.html"})
 
-    $routeProvider.when("/invitation/:token", {templateUrl: "/partials/invitation.html"})
-    $routeProvider.when("/error", {templateUrl: "/partials/error.html"})
-    $routeProvider.when("/not-found", {templateUrl: "/partials/not-found.html"})
+    # Errors/Exceptions
+    $routeProvider.when("/error",
+        {templateUrl: "/partials/error.html"})
+    $routeProvider.when("/not-found",
+        {templateUrl: "/partials/not-found.html"})
 
     $routeProvider.otherwise({redirectTo: '/not-found'})
     $locationProvider.html5Mode(true)
@@ -155,7 +148,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, tgLoade
 
     $provide.factory("authHttpIntercept", ["$q", "$location", "$tgConfirm", authHttpIntercept])
     $httpProvider.responseInterceptors.push('authHttpIntercept')
-    $httpProvider.interceptors.push('loaderInterceptor');
+    $httpProvider.interceptors.push('loaderInterceptor')
 
     window.checksley.updateValidators({
         linewidth: (val, width) ->
