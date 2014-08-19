@@ -66,7 +66,7 @@ class ProjectsNavigationController extends taiga.Controller
 module.controller("ProjectsNavigationController", ProjectsNavigationController)
 
 
-ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout, tgLoader) ->
+ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout, tgLoader, $location) ->
     baseTemplate = _.template("""
     <h1>Your projects</h1>
     <form>
@@ -150,6 +150,16 @@ ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout, tgLoader) -
                 $(document.body).toggleClass("open-projects-nav")
 
         $el.on "click", ".projects-list > li > a", (event) ->
+            # HACK: to solve a problem with the loader when the next url
+            #       is equal to the current one
+            target = angular.element(event.currentTarget)
+            nextUrl = target.prop("href")
+            currentUrl = $location.absUrl()
+            if nextUrl == currentUrl
+                hideMenu()
+                return
+            # END HACK
+
             $(document.body)
                 .addClass('loading-project')
 
@@ -246,11 +256,10 @@ ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout, tgLoader) -
                 renderProjects($el, $scope.filteredProjects)
                 renderNextAndPrev()
 
-    return {
-        link: link
-    }
+    return {link: link}
 
-module.directive("tgProjectsNav", ["$rootScope", "animationFrame", "$timeout", "tgLoader", ProjectsNavigationDirective])
+module.directive("tgProjectsNav", ["$rootScope", "animationFrame", "$timeout", "tgLoader", "$location",
+                                   ProjectsNavigationDirective])
 
 
 #############################################################################
