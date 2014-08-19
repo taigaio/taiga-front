@@ -102,7 +102,7 @@ Loader = () ->
                     timeout = 0
 
                 setTimeout ( ->
-                    $rootscope.$broadcast("loader:end");
+                    $rootscope.$broadcast("loader:end")
                 ), timeout
 
             start: () ->
@@ -118,13 +118,13 @@ Loader = () ->
                         ), 100
 
                     startLoadTime = new Date().getTime()
-                    $rootscope.$broadcast("loader:start");
+                    $rootscope.$broadcast("loader:start")
 
             onStart: (fn) ->
-                $rootscope.$on("loader:start", fn);
+                $rootscope.$on("loader:start", fn)
 
             onEnd: (fn) ->
-                $rootscope.$on("loader:end", fn);
+                $rootscope.$on("loader:end", fn)
 
             logRequest: () ->
                 log.request.count++
