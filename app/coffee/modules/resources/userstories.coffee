@@ -33,7 +33,7 @@ resourceProvider = ($repo, $http, $urls, $storage) ->
         return $repo.queryOne("userstories", usId, params)
 
     service.listUnassigned = (projectId, filters) ->
-        params = {"project": projectId, "milestone": null}
+        params = {"project": projectId, "milestone": "null"}
         params = _.extend({}, params, filters or {})
         service.storeQueryParams(projectId, params)
         return $repo.queryMany("userstories", params)
