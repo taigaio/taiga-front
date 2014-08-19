@@ -135,6 +135,27 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                     return true
                 return false
 
+            usersFiltersFormat = (users, type, unknownOption) =>
+                reformatedUsers = _.map users, (t) =>
+                    obj = {
+                        id: t[0],
+                        count: t[1],
+                        type: type
+                    }
+                    if t[0]
+                        obj.name = @scope.usersById[t[0]].full_name_display
+                    else
+                        obj.name = unknownOption
+
+                    obj.selected = true if isSelected("createdBy", obj.id)
+                    return obj
+                unknownItem = _.remove(reformatedUsers, (u) -> not u.id)
+                reformatedUsers = _.sortBy(reformatedUsers, (u) -> u.name.toUpperCase())
+                if unknownItem.length > 0
+                    reformatedUsers.unshift(unknownItem[0])
+                return reformatedUsers
+
+
             # Build filters data structure
             @scope.filters.statuses = _.map data.statuses, (t) =>
                 obj = {
@@ -168,35 +189,9 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 obj.selected = true if isSelected("priorities", obj.id)
                 return obj
 
-            @scope.filters.assignedTo = _.map data.assigned_to, (t) =>
-                obj = {
-                    id:t[0],
-                    count:t[1],
-                    type:"assignedTo"
-                }
-                if t[0]
-                    obj.name = @scope.usersById[t[0]].full_name_display
-                else
-                    obj.name = "Unassigned"
+            @scope.filters.assignedTo = usersFiltersFormat data.assigned_to, "assignedTo", "Unassigned"
 
-                obj.selected = true if isSelected("assignedTo", obj.id)
-                return obj
-            @scope.filters.assignedTo = _.sortBy(@scope.filters.assignedTo, (u) -> u.name.toUpperCase())
-
-            @scope.filters.createdBy = _.map data.created_by, (t) =>
-                obj = {
-                    id:t[0],
-                    count:t[1],
-                    type:"createdBy"
-                }
-                if t[0]
-                    obj.name = @scope.usersById[t[0]].full_name_display
-                else
-                    obj.name = "Unknown"
-
-                obj.selected = true if isSelected("createdBy", obj.id)
-                return obj
-            @scope.filters.createdBy = _.sortBy(@scope.filters.createdBy, (u) -> u.name.toUpperCase())
+            @scope.filters.createdBy = usersFiltersFormat data.created_by, "createdBy", "Unknown"
 
             @scope.filters.tags = _.map data.tags, (t) =>
                 obj = {
