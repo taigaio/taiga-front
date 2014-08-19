@@ -13,8 +13,9 @@
         @include table-flex-child(1, 280px, 0);
     }
     .count {
-        @include table-flex-child(1, 0, 0);
         color: $gray-light;
+        float: left;
+        padding-right: 5px;
     }
     .summary-role {
         @include table-flex-child(3, 280px, 0);

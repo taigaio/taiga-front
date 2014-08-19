@@ -183,12 +183,12 @@ module.directive("tgNewRole", ["$tgRepo", "$tgConfirm", NewRoleDirective])
 RolePermissionsDirective = ($rootscope, $repo, $confirm) ->
     resumeTemplate = _.template("""
     <div class="resume-title"><%- category.name %></div>
-    <div class="count"><%- category.activePermissions %>/<%- category.permissions.length %></div>
     <div class="summary-role">
-    <% _.each(category.permissions, function(permission) { %>
-        <div class="role-summary-single <% if(permission.active) { %>active<% } %>"
-             title="<%- permission.description %>"></div>
-    <% }) %>
+        <div class="count"><%- category.activePermissions %>/<%- category.permissions.length %></div>
+        <% _.each(category.permissions, function(permission) { %>
+            <div class="role-summary-single <% if(permission.active) { %>active<% } %>"
+                 title="<%- permission.description %>"></div>
+        <% }) %>
     </div>
     <div class="icon icon-arrow-bottom"></div>
     """)
