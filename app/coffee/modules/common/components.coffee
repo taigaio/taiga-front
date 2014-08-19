@@ -429,7 +429,7 @@ ListItemTypeDirective = ->
 
 TgProgressBarDirective = ->
     template = _.template("""
-        <div class="current-progress" style="width: calc(<%- percentage %>% - 4px)"></div>
+        <div class="current-progress" style="width: <%- percentage %>%"></div>
     """)
 
     render = (el, percentage) ->
