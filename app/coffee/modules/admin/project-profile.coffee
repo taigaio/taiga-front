@@ -137,7 +137,7 @@ ProjectFeaturesDirective = ($rootscope, $log, $repo, $confirm) ->
             event.preventDefault()
             submit()
 
-        $el.on "click", "form a.button-green", (event) ->
+        $el.on "click", ".admin-functionalities a.button-green", (event) ->
             event.preventDefault()
             submit()
 
