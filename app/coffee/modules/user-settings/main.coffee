@@ -95,7 +95,6 @@ UserProfileDirective = () ->
 
         $el.on "click", ".user-profile form .save-profile", (event) ->
             return if not form.validate()
-            target = angular.element(event.currentTarget)
             $ctrl = $el.controller()
             $ctrl.saveUserProfile()
 
@@ -113,26 +112,30 @@ module.directive("tgUserProfile", UserProfileDirective)
 
 UserAvatarDirective = ($auth, $model, $rs, $confirm) ->
     link = ($scope, $el, $attrs) ->
+        onSuccess = (response) ->
+            user = $model.make_model("users", response.data)
+            $auth.setUser(user)
+            $scope.user = user
+
+            $el.find('.overlay').hide()
+            $confirm.notify('success')
+
+        onError = (response) ->
+            $el.find('.overlay').hide()
+            $confirm.notify('error', response.data._error_message)
+
+        # Change photo
         $el.on "click", ".button.change", ->
             $el.find("#avatar-field").click()
 
         $el.on "change", "#avatar-field", (event) ->
-            target = angular.element(event.currentTarget)
-
-            promise = $rs.userSettings.changeAvatar($scope.avatarAttachment)
             $el.find('.overlay').show()
+            $rs.userSettings.changeAvatar($scope.avatarAttachment).then(onSuccess, onError)
 
-            promise.then (response) ->
-                user = $model.make_model("users", response.data)
-                $auth.setUser(user)
-                $scope.user = user
-
-                $el.find('.overlay').hide()
-                $confirm.notify('success')
-
-            promise.then null, (response) ->
-                $el.find('.overlay').hide()
-                $confirm.notify('error', response.data._error_message)
+        # Use gravatar photo
+        $el.on "click", "a.use-gravatar", (event) ->
+            $el.find('.overlay').show()
+            $rs.userSettings.removeAvatar().then(onSuccess, onError)
 
         $scope.$on "$destroy", ->
             $el.off()
