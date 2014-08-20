@@ -9,17 +9,17 @@ block content
         sidebar.menu-secondary.extrabar(tg-check-permission, permission="view_wiki_links")
             section.wiki-nav(tg-wiki-nav, ng-model="wikiLinks")
         section.main.wiki
-            header
+            .header-with-actions
                 h1
                     span(tg-bo-bind="project.name")
                     span.green Wiki
                     span.wiki-title(tg-bo-bind='wiki.slug|unslugify')
-            .action-buttons
-                a.button.button-red.delete-wiki(tg-check-permission, permission="delete_wiki_page",
-                    href="", title="Delete", ng-click="ctrl.delete()") Delete
+                .action-buttons
+                    a.button.button-red.delete-wiki(tg-check-permission, permission="delete_wiki_page",
+                        href="", title="Delete", ng-click="ctrl.delete()") Delete
 
-                a.button.button-green.edit-wiki(tg-check-permission, permission="modify_wiki_page",
-                    href="", title="Edit", ng-click="ctrl.edit()") Edit
+                    a.button.button-green.edit-wiki(tg-check-permission, permission="modify_wiki_page",
+                        href="", title="Edit", ng-click="ctrl.edit()") Edit
 
             include views/modules/wiki-summary
 

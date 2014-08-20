@@ -108,3 +108,19 @@ body {
 .hidden {
     display: none;
 }
+
+.header-with-actions {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    h1 {
+        span {
+            white-space: inherit;
+        }
+    }
+    .action-buttons {
+        flex-shrink: 0;
+        margin-right: 2rem;
+        padding-left: 1rem;
+    }
+}
