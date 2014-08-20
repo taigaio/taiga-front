@@ -284,10 +284,14 @@ CreatedByDirective = ->
 
     link = ($scope, $el, $attrs, $model) ->
         renderAssignedTo = (instance) ->
-            ownerId = instance?.owner
             owner = null
-            owner = $scope.usersById?[ownerId]
-            date = moment(instance.created_date).format("DD MMM YYYY HH:mm")
+            date = null
+
+            if instance?
+                ownerId = instance.owner
+                date = moment(instance.created_date).format("DD MMM YYYY HH:mm")
+                owner = $scope.usersById?[ownerId]
+
             html = template({owner: owner, date: date})
             $el.html(html)
 
