@@ -123,7 +123,7 @@ ChangeDirective = ->
             </a>
         </div>
         <div class="comment-content">
-            <a class="username" href="TODO" title="<%- userFullName %>">
+            <a class="username" href="" title="<%- userFullName %>">
                 <%- userFullName %>
             </a>
             <% if(hasChanges){ %>
@@ -138,12 +138,12 @@ ChangeDirective = ->
             </div>
             <% } %>
 
-            <p class="comment">
+            <div class="comment wysiwyg">
                 <%= comment %>
-            </p>
-            <p class="date">
+            </div>
+            <div class="date">
                 <%- creationDate %>
-            </p>
+            </div>
         </div>
     """)
     changeBaseTemplate = _.template("""
@@ -154,16 +154,16 @@ ChangeDirective = ->
     </div>
     <div class="activity-content">
         <div class="activity-username">
-            <a class="username" href="TODO" title="<%- userFullName %>">
+            <a class="username" href="" title="<%- userFullName %>">
                 <%- userFullName %>
             </a>
             <span class="date">
                 <%- creationDate %>
             </span>
         </div>
-        <p class="comment">
+        <div class="comment wysiwyg">
             <%= comment %>
-        </p>
+        </div>
     </div>
     """)
     standardChangeFromToTemplate = _.template("""
@@ -310,12 +310,12 @@ ChangeDirective = ->
         prettyPrintModification = (value) ->
             if typeIsArray(value)
                 if value.length == 0
-                  #TODO i18n
-                  return "None"
-                else
-                  return value.join(", ")
+                    #TODO i18n
+                    return "None"
+                return value.join(", ")
 
             if value == ""
+                #TODO i18n
                 return "None"
 
             return value
