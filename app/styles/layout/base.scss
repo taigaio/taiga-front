@@ -113,14 +113,13 @@ body {
     align-items: center;
     display: flex;
     justify-content: space-between;
-    h1 {
-        span {
-            white-space: inherit;
-        }
-    }
+    margin-bottom: 1rem;
     .action-buttons {
         flex-shrink: 0;
         margin-right: 2rem;
         padding-left: 1rem;
+    }
+    h1 {
+        margin-bottom: 0;
     }
 }

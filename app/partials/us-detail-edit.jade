@@ -7,10 +7,11 @@ block content
     form.wrapper(tg-us-detail, ng-controller="UserStoryDetailController as ctrl",
                 ng-init="section='backlog'")
         div.main.us-detail
-            div.us-detail-header
+            div.us-detail-header.header-with-actions
                 include views/components/mainTitle
-                a.button.button-green.save-us(href="", title="Save") Save
-                a.button.button-red.cancel(tg-nav="project-userstories-detail:project=project.slug,ref=us.ref", href="", title="Cancel") Cancel
+                .action-buttons
+                    a.button.button-green.save-us(href="", title="Save") Save
+                    a.button.button-red.cancel(tg-nav="project-userstories-detail:project=project.slug,ref=us.ref", href="", title="Cancel") Cancel
 
             section.us-story-main-data
                 div.us-title(ng-class="{blocked: us.is_blocked}")

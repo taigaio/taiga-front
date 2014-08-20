@@ -43,12 +43,18 @@ h6 {
 h1 {
     @extend %xxlarge;
     @extend %title;
+    display: flex;
     line-height: 2.7rem;
     margin-bottom: 1rem;
     text-transform: uppercase;
     span {
-        display: inline;
         margin-right: .5rem;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        &.green, &:last-child {
+            flex-shrink: 0;
+        }
     }
     .green {
         color: $green-taiga;
