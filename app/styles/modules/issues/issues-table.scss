@@ -40,7 +40,7 @@
         }
     }
     .level-field {
-        @include table-flex-child(1, 50px, 0, 50px);
+        @include table-flex-child(1, 80px, 0, 80px);
         text-align: center;
     }
     .subject {
