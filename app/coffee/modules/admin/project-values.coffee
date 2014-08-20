@@ -93,6 +93,7 @@ class ProjectValuesController extends mixOf(taiga.Controller, taiga.PageMixin)
 
 module.controller("ProjectValuesController", ProjectValuesController)
 
+
 #############################################################################
 ## Project values directive
 #############################################################################
@@ -228,8 +229,11 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
             row = target.parents(".row.table-main")
-            row.hide()
-            row.siblings(".visualization").css("display": "flex")
+            value = target.scope().value
+            $scope.$apply ->
+                row.hide()
+                value.revert()
+                row.siblings(".visualization").css("display": "flex")
 
         $el.on "click", ".delete-value", (event) ->
             event.preventDefault()
@@ -262,7 +266,8 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame) ->
 
     return {link:link}
 
-module.directive("tgProjectValues", ["$log", "$tgRepo", "$tgConfirm", "$tgLocation", "animationFrame", ProjectValuesDirective])
+module.directive("tgProjectValues", ["$log", "$tgRepo", "$tgConfirm", "$tgLocation", "animationFrame",
+                                     ProjectValuesDirective])
 
 
 #############################################################################
