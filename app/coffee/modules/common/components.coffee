@@ -284,7 +284,7 @@ CreatedByDirective = ->
 
     link = ($scope, $el, $attrs, $model) ->
         renderAssignedTo = (instance) ->
-            owner = null
+            owner = {}
             date = null
 
             if instance?
