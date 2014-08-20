@@ -341,6 +341,7 @@ IssuesDirective = ($log, $location) ->
             if numPages <= 1
                 $pagEl.hide()
                 return
+            $pagEl.show()
 
             pages = []
             options = {}
