@@ -71,6 +71,7 @@ urls = {
     "users-change-password-from-recovery": "/api/v1/users/change_password_from_recovery"
     "users-change-password": "/api/v1/users/change_password"
     "users-change-email": "/api/v1/users/change_email"
+    "user-storage": "/api/v1/user-storage"
     "resolver": "/api/v1/resolver"
     "userstory-statuses": "/api/v1/userstory-statuses"
     "points": "/api/v1/points"
