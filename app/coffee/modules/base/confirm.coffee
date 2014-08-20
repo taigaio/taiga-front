@@ -163,17 +163,24 @@ class ConfirmService extends taiga.Service
 
         body = angular.element("body")
         body.find(".notification-message .notification-light").removeClass('active')
-        body.find(selector).addClass('active')
+        body.find(selector)
+            .removeClass('inactive')
+            .addClass('active')
 
         if @.tsem
             cancelTimeout(@.tsem)
 
         @.tsem = timeout 3500, =>
-            body.find(selector).removeClass('active')
+            body.find(selector)
+                .removeClass('active')
+                .addClass('inactive')
+
             delete @.tsem
 
         @.el.on "click", ".icon-delete", (event) =>
-            body.find(selector).removeClass('active')
+            body.find(selector)
+                .removeClass('active')
+                .addClass('inactive')
 
 
 module = angular.module("taigaBase")

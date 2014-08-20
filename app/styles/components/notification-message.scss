@@ -1,6 +1,5 @@
 .notification-message {
     @include transform(translateY(-100%));
-    @include transition (all .6s ease-in-out);
     background: rgba($gray-light, .95);
     color: $white;
     padding: 1rem;
@@ -9,6 +8,9 @@
     top: 0;
     width: 100%;
     z-index: 99920;
+    &.inactive {
+        @include transition (all .6s ease-in-out);
+    }
     &.active {
         @include transform(translateY(0));
         @include transition (all .6s ease-in-out);
