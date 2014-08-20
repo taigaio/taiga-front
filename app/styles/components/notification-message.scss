@@ -54,7 +54,6 @@
 
 .notification-light {
     @include transform(translateY(-100%));
-    @include transition (all .6s ease-in-out);
     background: rgba($gray-light, .95);
     color: $white;
     left: calc(50% - 200px);
@@ -63,6 +62,9 @@
     top: 0;
     width: 400px;
     z-index: 9999;
+    &.inactive {
+        @include transition (all .6s ease-in-out);
+    }
     &.active {
         @include transform(translateY(0));
         @include transition (all .6s ease-in-out);

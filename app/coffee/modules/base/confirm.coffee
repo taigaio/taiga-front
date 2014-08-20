@@ -162,7 +162,10 @@ class ConfirmService extends taiga.Service
             @.el.find("p").html(NOTIFICATION_MSG[type].message)
 
         body = angular.element("body")
-        body.find(".notification-message .notification-light").removeClass('active')
+        body.find(".notification-message .notification-light")
+            .removeClass('active')
+            .addClass('inactive')
+
         body.find(selector)
             .removeClass('inactive')
             .addClass('active')
