@@ -120,6 +120,7 @@ ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout, tgLoader, $
 
                 $(document.body)
                     .removeClass("loading-project open-projects-nav")
+                    .addClass("closed-projects-nav")
 
                     tgLoader.disablePreventLoading()
             ), timeout
