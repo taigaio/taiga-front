@@ -286,7 +286,7 @@ CreatedByDirective = ->
         renderAssignedTo = (instance) ->
             ownerId = instance?.owner
             owner = null
-            owner = $scope.usersById[ownerId]
+            owner = $scope.usersById?[ownerId]
             date = moment(instance.created_date).format("DD MMM YYYY HH:mm")
             html = template({owner: owner, date: date})
             $el.html(html)
