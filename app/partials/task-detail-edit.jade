@@ -7,10 +7,11 @@ block content
     form.wrapper(tg-task-detail, ng-controller="TaskDetailController as ctrl",
                 ng-init="section='backlog'")
         div.main.us-detail
-            div.us-detail-header
+            div.us-detail-header.header-with-actions
                 include views/components/mainTitle
-                a.button.button-green.save-task(href="", title="Save") Save
-                a.button.button-red.cancel(tg-nav="project-tasks-detail:project=project.slug,ref=task.ref", href="", title="Cancel") Cancel
+                .action-buttons
+                    a.button.button-green.save-task(href="", title="Save") Save
+                    a.button.button-red.cancel(tg-nav="project-tasks-detail:project=project.slug,ref=task.ref", href="", title="Cancel") Cancel
 
             section.us-story-main-data
                 div.us-title(ng-class="{blocked: task.is_blocked}")
@@ -29,7 +30,22 @@ block content
             - var permissionSuffix = "task"
             include views/modules/attachments
 
-            textarea(ng-model="task.comment", placeholder="Write here a new commet")
+            section.us-activity
+                ul.us-activity-tabs
+                    li
+                        a.active(href="#")
+                            span.icon.icon-bulk
+                            span.tab-title Comments
+
+                    li
+                        a(href="#")
+                            span.icon.icon-issues
+                            span.tab-title Activity
+
+                - var commentModel = "task"
+                - var noSaveButton = true
+                include views/modules/comments
+                include views/modules/activity
 
         sidebar.menu-secondary.sidebar
             section.us-status(tg-task-status, ng-model="task", editable="true")
