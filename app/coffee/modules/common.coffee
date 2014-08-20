@@ -280,7 +280,7 @@ ChangeDirective = ->
                 avatar: getUserAvatar(comment.user.pk)
                 userFullName: getUserFullName(comment.user.pk)
                 creationDate: moment(comment.created_at).format("DD MMM YYYY HH:mm")
-                comment: taiga.nl2br(comment.comment_html)
+                comment: comment.comment_html
                 changesText: buildChangesText(comment)
                 hasChanges: countChanges(comment) > 0
             })

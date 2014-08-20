@@ -38,7 +38,7 @@ tgMarkitupDirective = ($rootscope, $rs) ->
         <div class="actions">
             <a href="#" title="Edit">Edit</a>
         </div>
-        <div class="content">
+        <div class="content wysiwyg">
             <%= data %>
         </div>
     </div>
