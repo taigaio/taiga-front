@@ -314,7 +314,12 @@ KanbanUserDirective = ($log) ->
 
             html = template(ctx)
             $el.html(html)
-            $el.parent().find("a.task-assigned").html(ctx.name)
+            username_label = $el.parent().find("a.task-assigned")
+            username_label.html(ctx.name)
+            username_label.on "click", (event) ->
+                us = $model.$modelValue
+                $ctrl = $el.controller()
+                $ctrl.changeUsAssignedTo(us)
 
         bindOnce $scope, "project", (project) ->
             if project.my_permissions.indexOf("modify_us") > -1
