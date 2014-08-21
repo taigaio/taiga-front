@@ -42,9 +42,9 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, tgLoade
         {templateUrl: "/partials/us-detail-edit.html"})
 
     # Tasks
-    $routeProvider.when("/project/:pslug/tasks/:taskref",
+    $routeProvider.when("/project/:pslug/task/:taskref",
         {templateUrl: "/partials/task-detail.html"})
-    $routeProvider.when("/project/:pslug/tasks/:taskref/edit",
+    $routeProvider.when("/project/:pslug/task/:taskref/edit",
         {templateUrl: "/partials/task-detail-edit.html"})
 
     # Wiki
@@ -58,9 +58,9 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, tgLoade
     # Issues
     $routeProvider.when("/project/:pslug/issues",
         {templateUrl: "/partials/issues.html", resolve: {loader: tgLoaderProvider.add()}})
-    $routeProvider.when("/project/:pslug/issues/:issueref",
+    $routeProvider.when("/project/:pslug/issue/:issueref",
         {templateUrl: "/partials/issues-detail.html"})
-    $routeProvider.when("/project/:pslug/issues/:issueref/edit",
+    $routeProvider.when("/project/:pslug/issue/:issueref/edit",
         {templateUrl: "/partials/issues-detail-edit.html"})
 
     # Admin

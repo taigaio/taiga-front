@@ -64,11 +64,11 @@ urls = {
     "project-userstories-detail": "/project/:project/us/:ref"
     "project-userstories-detail-edit": "/project/:project/us/:ref/edit"
 
-    "project-tasks-detail": "/project/:project/tasks/:ref"
-    "project-tasks-detail-edit": "/project/:project/tasks/:ref/edit"
+    "project-tasks-detail": "/project/:project/task/:ref"
+    "project-tasks-detail-edit": "/project/:project/task/:ref/edit"
 
-    "project-issues-detail": "/project/:project/issues/:ref"
-    "project-issues-detail-edit": "/project/:project/issues/:ref/edit"
+    "project-issues-detail": "/project/:project/issue/:ref"
+    "project-issues-detail-edit": "/project/:project/issue/:ref/edit"
 
     "project-wiki": "/project/:project/wiki",
     "project-wiki-page": "/project/:project/wiki/:slug",
@@ -87,8 +87,6 @@ urls = {
     "project-admin-project-values-issue-severities": "/project/:project/admin/project-values/issue-severities"
     "project-admin-memberships": "/project/:project/admin/memberships"
     "project-admin-roles": "/project/:project/admin/roles"
-    "project-admin-project-profile-features": "/project/:project/admin/project-profile/features"
-    "project-admin-project-values-us-status": "/project/:project/admin/project-values/us-status"
 
     # User settings
     "user-settings-user-profile": "/project/:project/user-settings/user-profile"
