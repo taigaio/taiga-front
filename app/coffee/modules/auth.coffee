@@ -159,9 +159,12 @@ LoginDirective = ($auth, $confirm, $location, $config, $routeParams) ->
 
         onSuccessSubmit = (response) ->
             if $routeParams and $routeParams['next'] and $routeParams['next'] != '/login'
-                $location.url($routeParams['next'])
+                $el.find("form").attr('action', $routeParams['next'])
             else
-                $location.path("/")
+                $el.find("form").attr('action', "/")
+
+            $el.find("form")
+            .submit()
 
         onErrorSubmit = (response) ->
             $confirm.notify("light-error", "According to our Oompa Loompas, your username/email or password
@@ -173,10 +176,6 @@ LoginDirective = ($auth, $confirm, $location, $config, $routeParams) ->
 
             promise = $auth.login($scope.data)
             promise.then(onSuccessSubmit, onErrorSubmit)
-
-        $el.on "submit", (event) ->
-            event.preventDefault()
-            submit()
 
         $el.on "click", "a.button-login", (event) ->
             event.preventDefault()
