@@ -75,8 +75,7 @@
   "resolutions": {
     "lodash": "~2.4.1",
     "moment": "~2.6.0",
-    "jquery": "~2.1.1",
-    "angular": "1.2.21"
+    "jquery": "~2.1.1"
   },
   "private": true
 }

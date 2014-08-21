@@ -211,7 +211,7 @@ gulp.task "express", ->
 
     app.all "/*", (req, res, next) ->
         # Just send the index.html for other files to support HTML5Mode
-        res.sendfile("index.html", {root: "#{__dirname}/dist/"})
+        res.sendFile("index.html", {root: "#{__dirname}/dist/"})
 
     app.listen(9001)
 
