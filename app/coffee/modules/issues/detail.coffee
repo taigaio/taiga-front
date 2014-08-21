@@ -156,7 +156,7 @@ IssueDirective = ($tgrepo, $log, $location, $confirm) ->
 
             onSuccess = ->
                 $confirm.notify("success")
-                $location.path("/project/#{$scope.project.slug}/issues/#{$scope.issue.ref}")
+                $location.path("/project/#{$scope.project.slug}/issue/#{$scope.issue.ref}")
 
             onError = ->
                 $confirm.notify("error")

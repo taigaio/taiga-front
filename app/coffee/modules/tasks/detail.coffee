@@ -145,7 +145,7 @@ TaskDirective = ($tgrepo, $log, $location, $confirm) ->
 
             onSuccess = ->
                 $confirm.notify("success")
-                $location.path("/project/#{$scope.project.slug}/tasks/#{$scope.task.ref}")
+                $location.path("/project/#{$scope.project.slug}/task/#{$scope.task.ref}")
 
             onError = ->
                 $confirm.notify("error")
