@@ -34,16 +34,20 @@
             background: $white;
         }
         .us-title-text {
+            display: flex;
             margin-bottom: 0;
         }
         .us-number {
+            @extend %xlarge;
             color: $gray-light;
+            line-height: 2rem;
             margin-right: .5rem;
         }
         .us-name {
+            @extend %xlarge;
             color: $grayer;
             display: inline-block;
-            line-height: 1.5rem;
+            line-height: 2rem;
             max-width: 80%;
             overflow: hidden;
             text-overflow: ellipsis;
