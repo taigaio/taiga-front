@@ -17,10 +17,14 @@ block content
 
                 div.all-projects
                     h1 Projects
-                    div(tg-projects-pagination, active="ctrl.projects.all.length")
-                        ul
-                            li(ng-repeat="project in ctrl.projects.all")
-                                a.button(tg-bo-bind="project.name", href="{{ project.url }}")
+                    div(tg-projects-pagination, projects="ctrl.projects.all", active="ctrl.projects.all.length")
+                        .projects-pagination
+                            a.v-pagination-previous.icon.icon-arrow-up(href="")
+                            .v-pagination-list
+                                ul.projects-list
+                                    li(ng-repeat="project in ctrl.projects.all")
+                                        a.button(tg-bo-bind="project.name", href="{{ project.url }}")
+                            a.v-pagination-next.icon.icon-arrow-bottom(href="")
 
                     .create-project-button-wrapper
                         a.button.button-green(href="", ng-click="ctrl.newProject()") Create project

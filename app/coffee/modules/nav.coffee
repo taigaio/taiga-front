@@ -176,86 +176,12 @@ ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout, tgLoader, $
             target = angular.element(event.currentTarget)
             $ctrl.filterProjects(target.val())
 
+        $scope.$on "projects:filtered", ->
+            renderProjects($el, $scope.filteredProjects)
+            $el.trigger("regenerate:pagination")
+
         $scope.$watch "projects", (projects) ->
             render($el, $scope.projects) if projects?
-
-        bindOnce $scope, "projects", (projects) ->
-            prevBtn = $el.find(".v-pagination-previous")
-            nextBtn = $el.find(".v-pagination-next")
-            container = $el.find("ul")
-            pageSize = 0
-            containerSize = 0
-
-            renderNextAndPrev  = ->
-                #wait digest end
-                $timeout () ->
-                if $scope.filteredProjects
-                    pageSize = $el.find(".v-pagination-list").height()
-                    containerSize = container.height()
-                    if containerSize > pageSize
-                        visible(nextBtn)
-                    else
-                        remove()
-                else
-                    remove()
-
-            nextPage = (element, pageSize, callback) ->
-                top = parseInt(element.css('top'), 10)
-                newTop = top - pageSize
-
-                element.animate({"top": newTop}, callback);
-
-                return newTop
-
-            prevPage = (element, pageSize, callback) ->
-                top = parseInt(element.css('top'), 10)
-                newTop = top + pageSize
-
-                element.animate({"top": newTop}, callback);
-
-                return newTop
-
-            visible = (element) ->
-                element.css('visibility', 'visible')
-
-            hide = (element) ->
-                element.css('visibility', 'hidden')
-
-            remove = () ->
-                container.css('top', 0)
-                hide(prevBtn)
-                hide(nextBtn)
-
-            $el.on "click", ".v-pagination-previous", (event) ->
-                event.preventDefault()
-
-                if container.is(':animated')
-                    return
-
-                visible(nextBtn)
-
-                newTop = prevPage(container, pageSize)
-
-                if newTop == 0
-                    hide(prevBtn)
-
-            $el.on "click", ".v-pagination-next", (event) ->
-                event.preventDefault()
-
-                if container.is(':animated')
-                    return
-
-                visible(prevBtn)
-
-                newTop = nextPage(container, pageSize)
-
-                if -newTop + pageSize > containerSize
-                    hide(nextBtn)
-
-            renderNextAndPrev()
-            $scope.$on "projects:filtered", ->
-                renderProjects($el, $scope.filteredProjects)
-                renderNextAndPrev()
 
     return {link: link}
 

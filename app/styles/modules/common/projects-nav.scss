@@ -43,6 +43,7 @@
         margin-top: 1rem;
     }
     .create-project-button {
+        flex-shrink: 0;
         margin-top: 1rem;
         a {
             text-align: center;
