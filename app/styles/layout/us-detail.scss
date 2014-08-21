@@ -5,9 +5,10 @@
         @extend %text;
         @include transition(all .2s linear);
         background: $whitish;
+        display: flex;
+        justify-content: space-between;
         margin-bottom: .5rem;
         padding: 1rem;
-        position: relative;
         &.blocked {
             background: $red;
             vertical-align: middle;
@@ -40,6 +41,7 @@
         .us-number {
             @extend %xlarge;
             color: $gray-light;
+            flex-shrink: 0;
             line-height: 2rem;
             margin-right: .5rem;
         }
@@ -47,12 +49,9 @@
             @extend %xlarge;
             color: $grayer;
             display: inline-block;
-            line-height: 2rem;
-            max-width: 80%;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            line-height: 2.2rem;
+            padding-right: 1rem;
             text-transform: uppercase;
-            white-space: nowrap;
         }
         .block-desc-container {
             @extend %small;
@@ -89,9 +88,8 @@
 }
 
 .issue-nav {
-    position: absolute;
-    right: 1rem;
-    top: .7rem;
+    flex-shrink: 0;
+    width: 65px;
     a {
         @extend %xlarge;
     }
@@ -287,7 +285,7 @@
     }
     label {
         cursor: pointer;
-        &+input {
+        +input {
             display: none;
         }
     }
