@@ -286,7 +286,7 @@ module.directive("tgKanbanWipLimit", KanbanWipLimitDirective)
 KanbanUserDirective = ($log) ->
     template = _.template("""
     <figure class="avatar">
-        <a href="#" title="Change assignation" <% if (!clickable) {%>class="not-clickable"<% } %>>
+        <a href="#" title="Assign User Story" <% if (!clickable) {%>class="not-clickable"<% } %>>
             <img src="<%= imgurl %>" alt="<%- name %>" class="avatar">
         </a>
     </figure>

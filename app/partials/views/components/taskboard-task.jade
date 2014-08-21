@@ -1,9 +1,11 @@
 div.taskboard-tagline(tg-colorize-tags="task.tags", tg-colorize-tags-type="taskboard")
 div.taskboard-task-inner
-    div.taskboard-user-avatar(tg-taskboard-user-avatar="task.assigned_to", ng-model="task", click="ctrl.editTaskAssignedTo(task)", ng-class="{iocaine: task.is_iocaine}")
-    span.icon.icon-iocaine(ng-show="task.is_iocaine")
+    div.taskboard-user-avatar(tg-taskboard-user-avatar="task.assigned_to", ng-model="task",
+                             click="ctrl.editTaskAssignedTo(task)",
+                             ng-class="{iocaine: task.is_iocaine}")
+    span.icon.icon-iocaine(ng-if="task.is_iocaine")
     p.taskboard-text
-        a.task-assigned(href="", ng-click="ctrl.editTaskAssignedTo(task)", title="Change assignation")
+        a.task-assigned(href="", ng-click="ctrl.editTaskAssignedTo(task)", title="Assign task")
         span.task-num(tg-bo-ref="task.ref")
         a.task-name(href="", title="See task details", tg-bind-html="task.subject",
                     tg-nav="project-tasks-detail:project=project.slug,ref=task.ref")

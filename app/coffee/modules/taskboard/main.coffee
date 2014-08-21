@@ -244,7 +244,7 @@ module.directive("tgTaskboardRowSizeFixer", TaskboardRowSizeFixer)
 TaskboardUserDirective = ($log) ->
     template = _.template("""
     <figure class="avatar">
-        <a href="#" title="Change assignation" <% if (!clickable) {%>class="not-clickable"<% } %>>
+        <a href="#" title="Assign task" <% if (!clickable) {%>class="not-clickable"<% } %>>
             <img src="<%= imgurl %>" alt="<%- name %>">
         </a>
     </figure>
