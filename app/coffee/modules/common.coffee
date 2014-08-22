@@ -428,24 +428,22 @@ module.factory("$appTitle", AppTitle)
 
 ProjectUrl = ($navurls) ->
     get = (project) ->
-        if project.is_backlog_activated and project.my_permissions.indexOf("view_us")>-1
-            url = $navurls.resolve("project-backlog")
-        else if project.is_kanban_activated and project.my_permissions.indexOf("view_us")>-1
-            url = $navurls.resolve("project-kanban")
-        else if project.is_wiki_activated and project.my_permissions.indexOf("view_wiki_pages")>-1
-            url = $navurls.resolve("project-wiki")
-        else if project.is_issues_activated and project.my_permissions.indexOf("view_issues")>-1
-            url = $navurls.resolve("project-issues")
-        else
-            url = $navurls.resolve("project")
+        ctx = {project: project.slug}
 
-        return $navurls.formatUrl(url, {'project': project.slug})
+        if project.is_backlog_activated and project.my_permissions.indexOf("view_us") > -1
+            return $navurls.resolve("project-backlog", ctx)
+        if project.is_kanban_activated and project.my_permissions.indexOf("view_us") > -1
+            return $navurls.resolve("project-kanban", ctx)
+        if project.is_wiki_activated and project.my_permissions.indexOf("view_wiki_pages") > -1
+            return $navurls.resolve("project-wiki", ctx)
+        if project.is_issues_activated and project.my_permissions.indexOf("view_issues") > -1
+            return $navurls.resolve("project-issues", ctx)
+
+        return $navurls.resolve("project", ctx)
 
     return {get: get}
 
 module.factory("$projectUrl", ["$tgNavUrls", ProjectUrl])
-
-
 
 
 #############################################################################

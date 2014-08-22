@@ -19,10 +19,16 @@
 # File: modules/base/navurl.coffee
 ###
 
-
 taiga = @.taiga
 trim = @.taiga.trim
 bindOnce = @.taiga.bindOnce
+
+module = angular.module("taigaBase")
+
+
+#############################################################################
+## Navigation Urls Service
+#############################################################################
 
 class NavigationUrlsService extends taiga.Service
     constructor: ->
@@ -37,9 +43,18 @@ class NavigationUrlsService extends taiga.Service
             return ctx[match] or "undefined"
         return url.replace(/(:\w+)/g, replacer)
 
-    resolve: (name) ->
+    resolve: (name, ctx={}) ->
+        if ctx
+            return @formatUrl(@.urls[name], ctx)
         return @.urls[name]
 
+
+module.service("$tgNavUrls", NavigationUrlsService)
+
+
+#############################################################################
+## Navigation Urls Directive
+#############################################################################
 
 NavigationUrlsDirective = ($navurls, $auth, $q, $location) ->
     # Example:
@@ -108,7 +123,4 @@ NavigationUrlsDirective = ($navurls, $auth, $q, $location) ->
 
     return {link: link}
 
-
-module = angular.module("taigaBase")
-module.service("$tgNavUrls", NavigationUrlsService)
 module.directive("tgNav", ["$tgNavUrls", "$tgAuth", "$q", "$location", NavigationUrlsDirective])
