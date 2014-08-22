@@ -10,11 +10,13 @@ block content
             include views/modules/admin-menu
 
         section.main.admin-membership
-            header
-                include views/components/mainTitle
+            .header-with-actions
+                header
+                    include views/components/mainTitle
 
-            a.button.button-green(title="Add new member" href="" ng-click="ctrl.addNewMembers()")
-               span.text + New member
+                .action-buttons
+                    a.button.button-green(title="Add new member" href="" ng-click="ctrl.addNewMembers()")
+                       span.text + New member
 
             include views/modules/admin/admin-membership-table
 
