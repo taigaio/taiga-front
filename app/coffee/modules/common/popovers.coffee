@@ -141,20 +141,23 @@ $.fn.popover = () ->
             $(this).trigger("popup:close")
 
     open = (onClose) =>
-        closeAll()
+        if $el.hasClass("active")
+            close()
+        else
+            closeAll()
 
-        if !isVisible()
-            $el.addClass("fix")
+            if !isVisible()
+                $el.addClass("fix")
 
-        $el
-        .fadeIn () =>
-            $el.addClass("active")
-            $(document.body).off("popover")
+            $el
+            .fadeIn () =>
+                $el.addClass("active")
+                $(document.body).off("popover")
 
-            $(document.body).one "click.popover", () =>
-                closeAll()
+                $(document.body).one "click.popover", () =>
+                    closeAll()
 
-        $el.on "popup:close", () => closePopover(onClose)
+            $el.on "popup:close", (e) => closePopover(onClose)
 
     close = () =>
         $el.trigger("popup:close")
