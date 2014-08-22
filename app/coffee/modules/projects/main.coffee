@@ -3,9 +3,9 @@ module = angular.module("taigaProject")
 bindOnce = @.taiga.bindOnce
 
 class ProjectsController extends taiga.Controller
-    @.$inject = ["$scope", "$tgResources", "$rootScope", "$tgNavUrls", "$tgAuth", "$location", "$appTitle", "$projectUrl"]
+    @.$inject = ["$scope", "$tgResources", "$rootScope", "$tgNavUrls", "$tgAuth", "$location", "$appTitle", "$projectUrl", "tgLoader"]
 
-    constructor: (@scope, @rs, @rootscope, @navurls, $auth, $location, appTitle, @projectUrl) ->
+    constructor: (@scope, @rs, @rootscope, @navurls, $auth, $location, appTitle, @projectUrl, tgLoader) ->
         appTitle.set("Projects")
 
         if !$auth.isAuthenticated()
@@ -15,6 +15,7 @@ class ProjectsController extends taiga.Controller
         @.loadInitialData()
         .then () =>
             @scope.$emit("projects:loaded")
+            tgLoader.pageLoaded()
 
     loadInitialData: ->
         return @rs.projects.list().then (projects) =>

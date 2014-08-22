@@ -23,7 +23,7 @@
 
 configure = ($routeProvider, $locationProvider, $httpProvider, $provide, tgLoaderProvider) ->
     $routeProvider.when("/",
-        {templateUrl: "/partials/projects.html"})
+        {templateUrl: "/partials/projects.html", resolve: {loader: tgLoaderProvider.add()}})
     $routeProvider.when("/project/:pslug/",
         {templateUrl: "/partials/project.html"})
     $routeProvider.when("/project/:pslug/backlog",
