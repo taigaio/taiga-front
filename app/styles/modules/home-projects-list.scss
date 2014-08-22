@@ -27,15 +27,23 @@
         margin: 0;
         padding: 0;
     }
+    a {
+        height: 100%;
+        left: 0;
+        padding: 1rem;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
     li {
         @include table-flex-child(1, 230px, 0, 23.5%);
         @include transition(background-color .3s linear);
         background-color: rgba($white, .5);
         color: $whitish;
+        height: 121px;
         margin-bottom: 1rem;
         margin-right: 1rem;
         overflow: hidden;
-        padding: 1rem;
         position: relative;
         &:hover {
             @include transition(background-color .3s linear);
