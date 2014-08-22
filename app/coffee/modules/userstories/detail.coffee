@@ -59,6 +59,10 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin,
         promise.then null, ->
             console.log "FAIL" #TODO
 
+        @scope.$on "attachment:create", @loadHistory
+        @scope.$on "attachment:edit", @loadHistory
+        @scope.$on "attachment:delete", @loadHistory
+
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
             @scope.project = project
@@ -87,7 +91,7 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin,
         return @rs.tasks.list(@scope.projectId, null, @scope.usId).then (tasks) =>
             @scope.tasks = tasks
 
-    loadHistory: ->
+    loadHistory: =>
         return @rs.userstories.history(@scope.usId).then (history) =>
             _.each history.results, (historyResult) ->
                 #If description was modified take only the description_html field

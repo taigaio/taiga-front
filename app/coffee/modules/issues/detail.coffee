@@ -61,6 +61,10 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin, tai
         promise.then null, ->
             console.log "FAIL" #TODO
 
+        @scope.$on "attachment:create", @loadHistory
+        @scope.$on "attachment:edit", @loadHistory
+        @scope.$on "attachment:delete", @loadHistory
+
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
             @scope.project = project
@@ -88,7 +92,7 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin, tai
             @scope.previousUrl = "/project/#{projSlug}/issue/#{prev.ref}" if prev.id?
             @scope.nextUrl = "/project/#{projSlug}/issue/#{next.ref}" if next.id?
 
-    loadHistory: ->
+    loadHistory: =>
         return @rs.issues.history(@scope.issueId).then (history) =>
             _.each history.results, (historyResult) ->
                 #If description was modified take only the description_html field

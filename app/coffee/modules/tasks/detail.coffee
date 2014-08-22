@@ -58,6 +58,10 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin, taig
         promise.then null, ->
             console.log "FAIL" #TODO
 
+        @scope.$on "attachment:create", @loadHistory
+        @scope.$on "attachment:edit", @loadHistory
+        @scope.$on "attachment:delete", @loadHistory
+
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
             @scope.project = project
@@ -79,7 +83,7 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin, taig
             @scope.previousUrl = "/project/#{projSlug}/task/#{prev.ref}" if prev.id?
             @scope.nextUrl = "/project/#{projSlug}/task/#{next.ref}" if next.id?
 
-    loadHistory: ->
+    loadHistory: =>
         return @rs.tasks.history(@scope.taskId).then (history) =>
             _.each history.results, (historyResult) ->
                 #If description was modified take only the description_html field

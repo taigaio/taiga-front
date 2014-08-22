@@ -126,13 +126,16 @@ class AttachmentsMixin
     onCreateAttachment: (attachment) ->
         @scope.attachments[@scope.attachments.length] = attachment
         @.updateAttachmentsCounters()
+        @scope.$emit("attachment:create")
 
     onEditAttachment: (attachment) ->
         @.updateAttachmentsCounters()
+        @scope.$emit("attachment:edit")
 
     onDeleteAttachment: (attachment) ->
         index = @scope.attachments.indexOf(attachment)
         @scope.attachments.splice(index, 1)
         @.updateAttachmentsCounters()
+        @scope.$emit("attachment:delete")
 
 taiga.AttachmentsMixin = AttachmentsMixin
