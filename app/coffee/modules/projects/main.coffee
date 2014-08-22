@@ -74,7 +74,6 @@ ProjectsPaginationDirective = ($timeout) ->
             renderNextAndPrev  = ->
                 if projects.length
                     pageSize = $el.find(".v-pagination-list").height()
-                    console.log pageSize
                     containerSize = container.height()
                     if containerSize > pageSize
                         visible(nextBtn)
