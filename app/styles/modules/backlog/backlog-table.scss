@@ -8,9 +8,9 @@
         }
     }
     .row {
-        @include table-flex();
         @extend %small;
         border-bottom: 1px solid $gray-light;
+        display: flex;
         padding: .5rem 0 .5rem .5rem;
         text-align: left;
         width: 100%;
@@ -22,14 +22,33 @@
         &:hover {
             background: transparent;
         }
+        .user-story-name {
+            display: flex;
+            justify-content: space-between;
+            input,
+            .us-settings {
+                flex-shrink: 0;
+                white-space: nowrap;
+            }
+            a {
+                width: 100%;
+            }
+        }
         .user-stories {
-            @include table-flex-child(20, 100px, 0, 0);
+            width: 100%;
         }
         .status {
-            @include table-flex-child(2, 150px, 0, 0);
+            flex-shrink: 0;
+            width: 240px;
         }
         .points {
-            @include table-flex-child(1, 80px, 0, 0);
+            flex-shrink: 0;
+            width: 125px;
+        }
+        .icon-edit,
+        .icon-delete {
+            display: inline;
+            float: none;
         }
     }
     .status,
@@ -205,7 +224,7 @@
     }
     .us-settings {
         float: right;
-        margin-right: 2rem;
+        margin: 0 2rem;
         opacity: 0;
     }
     .icon-drag-v {
