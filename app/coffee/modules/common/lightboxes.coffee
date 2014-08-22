@@ -67,6 +67,45 @@ LightboxDirective = (lightboxService) ->
 
 module.directive("lightbox", ["lightboxService", LightboxDirective])
 
+class LightboxListNavigationService
+    stop: () ->
+        $(document).off "keydown.list-navigation"
+
+    init: ($el) ->
+        $(document).on "keydown.list-navigation", (e) =>
+            code = if e.keyCode then e.keyCode else e.which
+
+            if code == 40 || code == 38 || code == 13
+                e.preventDefault()
+
+                active = $el.find('.active')
+
+                if code == 13
+                    active.trigger('click')
+
+                if code == 40
+                    if active.length
+                        next = active.next('.watcher-single')
+
+                        if next.length
+                            active.removeClass('active')
+                            next.addClass('active')
+                    else
+                        $el.find('.watcher-single:first').addClass('active')
+
+                if code == 38
+                    if active.length
+                        prev = active.prev('.watcher-single')
+
+                        if prev.length
+                            active.removeClass('active')
+                            prev.addClass('active')
+                    else
+                        $el.find('.watcher-single:last').addClass('active')
+
+module.service("lightboxListNavigationService", LightboxListNavigationService)
+
+
 #############################################################################
 ## Block Lightbox Directive
 #############################################################################
@@ -299,7 +338,7 @@ usersTemplate = _.template("""
 <% } %>
 """)
 
-AssignedToLightboxDirective = (lightboxService) ->
+AssignedToLightboxDirective = (lightboxService, lightboxListNavigationService) ->
     link = ($scope, $el, $attrs) ->
         selectedUser = null
         selectedItem = null
@@ -324,6 +363,11 @@ AssignedToLightboxDirective = (lightboxService) ->
 
             html = usersTemplate(ctx)
             $el.find("div.watchers").html(html)
+            lightboxListNavigationService.init($el)
+
+        closeLightbox = () ->
+            lightboxListNavigationService.stop()
+            lightboxService.close($el)
 
         $scope.$on "assigned-to:add", (ctx, item) ->
             selectedItem = item
@@ -340,7 +384,7 @@ AssignedToLightboxDirective = (lightboxService) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
 
-            lightboxService.close($el)
+            closeLightbox()
 
             $scope.$apply ->
                 $scope.$broadcast("assigned-to:added", target.data("user-id"), selectedItem)
@@ -350,7 +394,7 @@ AssignedToLightboxDirective = (lightboxService) ->
             event.preventDefault()
             event.stopPropagation()
 
-            lightboxService.close($el)
+            closeLightbox()
 
             $scope.$apply ->
                 $scope.usersSearch = null
@@ -358,7 +402,9 @@ AssignedToLightboxDirective = (lightboxService) ->
 
         $el.on "click", ".close", (event) ->
             event.preventDefault()
-            lightboxService.close($el)
+
+            closeLightbox()
+
             $scope.$apply ->
                 $scope.usersSearch = null
 
@@ -371,14 +417,14 @@ AssignedToLightboxDirective = (lightboxService) ->
     }
 
 
-module.directive("tgLbAssignedto", ["lightboxService", AssignedToLightboxDirective])
+module.directive("tgLbAssignedto", ["lightboxService", "lightboxListNavigationService", AssignedToLightboxDirective])
 
 
 #############################################################################
 ## Watchers Lightbox directive
 #############################################################################
 
-WatchersLightboxDirective = ($repo, lightboxService) ->
+WatchersLightboxDirective = ($repo, lightboxService, lightboxListNavigationService) ->
     link = ($scope, $el, $attrs) ->
         selectedItem = null
 
@@ -409,6 +455,10 @@ WatchersLightboxDirective = ($repo, lightboxService) ->
             html = usersTemplate(ctx)
             $el.find("div.watchers").html(html)
 
+        closeLightbox = () ->
+            lightboxListNavigationService.stop()
+            lightboxService.close($el)
+
         $scope.$on "watcher:add", (ctx, item) ->
             selectedItem = item
 
@@ -416,6 +466,7 @@ WatchersLightboxDirective = ($repo, lightboxService) ->
             render(users)
 
             lightboxService.open($el)
+            lightboxListNavigationService.init($el)
 
         $scope.$watch "usersSearch", (searchingText) ->
             if not searchingText?
@@ -425,7 +476,7 @@ WatchersLightboxDirective = ($repo, lightboxService) ->
             render(users)
 
         $el.on "click", ".watcher-single", (event) ->
-            lightboxService.close($el)
+            closeLightbox()
 
             event.preventDefault()
             target = angular.element(event.currentTarget)
@@ -436,7 +487,9 @@ WatchersLightboxDirective = ($repo, lightboxService) ->
 
         $el.on "click", ".close", (event) ->
             event.preventDefault()
-            lightboxService.close($el)
+
+            closeLightbox()
+
             $scope.$apply ->
                 $scope.usersSearch = null
 
@@ -448,4 +501,4 @@ WatchersLightboxDirective = ($repo, lightboxService) ->
         link:link
     }
 
-module.directive("tgLbWatchers", ["$tgRepo", "lightboxService", WatchersLightboxDirective])
+module.directive("tgLbWatchers", ["$tgRepo", "lightboxService", "lightboxListNavigationService", WatchersLightboxDirective])
