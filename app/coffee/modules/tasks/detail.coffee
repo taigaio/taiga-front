@@ -71,8 +71,13 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin, taig
         return @rs.tasks.get(@scope.projectId, @scope.taskId).then (task) =>
             @scope.task = task
             @scope.commentModel = task
-            @scope.previousUrl = "/project/#{@scope.project.slug}/tasks/#{@scope.task.neighbors.previous.ref}" if @scope.task.neighbors.previous.id?
-            @scope.nextUrl = "/project/#{@scope.project.slug}/tasks/#{@scope.task.neighbors.next.ref}" if @scope.task.neighbors.next.id?
+
+            projSlug = @scope.project.slug
+            prev = @scope.task.neighbors.previous
+            next = @scope.task.neighbors.next
+
+            @scope.previousUrl = "/project/#{projSlug}/task/#{prev.ref}" if prev.id?
+            @scope.nextUrl = "/project/#{projSlug}/task/#{next.ref}" if next.id?
 
     loadHistory: ->
         return @rs.tasks.history(@scope.taskId).then (history) =>

@@ -75,8 +75,13 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin,
         return @rs.userstories.get(@scope.projectId, @scope.usId).then (us) =>
             @scope.us = us
             @scope.commentModel = us
-            @scope.previousUrl = "/project/#{@scope.project.slug}/us/#{@scope.us.neighbors.previous.ref}" if @scope.us.neighbors.previous.id?
-            @scope.nextUrl = "/project/#{@scope.project.slug}/us/#{@scope.us.neighbors.next.ref}" if @scope.us.neighbors.next.id?
+
+            projSlug = @scope.project.slug
+            prev = @scope.us.neighbors.previous
+            next = @scope.us.neighbors.next
+
+            @scope.previousUrl = "/project/#{projSlug}/us/#{prev.ref}" if prev.id?
+            @scope.nextUrl = "/project/#{projSlug}/us/#{next.ref}" if next.id?
 
     loadTasks: ->
         return @rs.tasks.list(@scope.projectId, null, @scope.usId).then (tasks) =>
