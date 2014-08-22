@@ -165,9 +165,12 @@ WatchersDirective = ($rootscope, $confirm) ->
             subtitle = $scope.usersById[watcherId].full_name_display
 
             $confirm.ask(title, subtitle).then =>
-                watcherIds = _.clone($model.$modelValue, false)
+                watcherIds = _.clone($model.$modelValue.watchers, false)
                 watcherIds = _.pull(watcherIds, watcherId)
-                $model.$setViewValue(watcherIds)
+
+                item = $model.$modelValue.clone()
+                item.watchers = watcherIds
+                $model.$setViewValue(item)
 
         $el.on "click", ".add-watcher", (event) ->
             event.preventDefault()
