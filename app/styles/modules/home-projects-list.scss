@@ -60,14 +60,18 @@
 .all-projects {
     @include table-flex-child(1, 285px, 0, 285px);
     background-color: rgba(0, 0, 0, .5);
+    display: flex;
+    flex-direction: column;
     margin-left: 1rem;
+    max-height: 396px;
     padding: 1rem;
     h1 {
         color: $whitish;
+        flex-shrink: 0;
         text-align: center;
     }
     .v-pagination-list {
-        height: 385px;
+        max-height: 221px;
     }
     ul {
         left: 0;
@@ -97,16 +101,16 @@
             }
         }
     }
+    .projects-pagination {
+        width: 100%;
+    }
     .create-project-button-wrapper {
         position: relative;
         width: 100%;
     }
     .button-green {
         color: $whitish;
-        left: 0;
-        position: absolute;
         text-align: center;
-        top: 0;
         width: 100%;
         &:hover {
             color: $whitish;
