@@ -40,9 +40,10 @@
         }
         .us-number {
             @extend %xlarge;
+            @extend %title;
             color: $gray-light;
             flex-shrink: 0;
-            line-height: 2rem;
+            line-height: 2.2rem;
             margin-right: .5rem;
         }
         .us-name {
