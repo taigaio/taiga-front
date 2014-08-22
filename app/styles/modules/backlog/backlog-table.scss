@@ -38,7 +38,10 @@
         position: relative;
         text-align: right;
         .popover {
-            text-align: left;
+            a {
+                text-align: left;
+                width: 100%;
+            }
         }
         .icon {
             color: $gray-light;
