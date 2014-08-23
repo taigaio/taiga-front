@@ -43,9 +43,9 @@ class NavigationUrlsService extends taiga.Service
             return ctx[match] or "undefined"
         return url.replace(/(:\w+)/g, replacer)
 
-    resolve: (name, ctx={}) ->
+    resolve: (name, ctx) ->
         if ctx
-            return @formatUrl(@.urls[name], ctx)
+            return @.formatUrl(@.urls[name], ctx)
         return @.urls[name]
 
 
