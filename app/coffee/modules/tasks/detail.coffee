@@ -41,10 +41,11 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin, taig
         "$q",
         "$location",
         "$log",
-        "$appTitle"
+        "$appTitle",
+        "$tgNavUrls"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @log, @appTitle) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @log, @appTitle, @navUrls) ->
         @.attachmentsUrlName = "tasks/attachments"
 
         @scope.taskRef = @params.taskref
@@ -76,12 +77,19 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin, taig
             @scope.task = task
             @scope.commentModel = task
 
-            projSlug = @scope.project.slug
-            prev = @scope.task.neighbors.previous
-            next = @scope.task.neighbors.next
+            if @scope.task.neighbors.previous.ref?
+                ctx = {
+                    project: @scope.project.slug
+                    ref: @scope.task.neighbors.previous.ref
+                }
+                @scope.previousUrl = @navUrls.resolve("project-tasks-detail", ctx)
 
-            @scope.previousUrl = "/project/#{projSlug}/task/#{prev.ref}" if prev.id?
-            @scope.nextUrl = "/project/#{projSlug}/task/#{next.ref}" if next.id?
+            if @scope.task.neighbors.next.ref?
+                ctx = {
+                    project: @scope.project.slug
+                    ref: @scope.task.neighbors.next.ref
+                }
+                @scope.nextUrl = @navUrls.resolve("project-tasks-detail", ctx)
 
     loadHistory: =>
         return @rs.tasks.history(@scope.taskId).then (history) =>

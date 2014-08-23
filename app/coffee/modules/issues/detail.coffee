@@ -44,10 +44,11 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin, tai
         "$q",
         "$location",
         "$log",
-        "$appTitle"
+        "$appTitle",
+        "$tgNavUrls"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @log, @appTitle) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @log, @appTitle, @navUrls) ->
         @.attachmentsUrlName = "issues/attachments"
 
         @scope.issueRef = @params.issueref
@@ -85,12 +86,19 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin, tai
             @scope.issue = issue
             @scope.commentModel = issue
 
-            projSlug = @scope.project.slug
-            prev = @scope.issue.neighbors.previous
-            next = @scope.issue.neighbors.next
+            if @scope.issue.neighbors.previous.ref?
+                ctx = {
+                    project: @scope.project.slug
+                    ref: @scope.issue.neighbors.previous.ref
+                }
+                @scope.previousUrl = @navUrls.resolve("project-issues-detail", ctx)
 
-            @scope.previousUrl = "/project/#{projSlug}/issue/#{prev.ref}" if prev.id?
-            @scope.nextUrl = "/project/#{projSlug}/issue/#{next.ref}" if next.id?
+            if @scope.issue.neighbors.next.ref?
+                ctx = {
+                    project: @scope.project.slug
+                    ref: @scope.issue.neighbors.next.ref
+                }
+                @scope.nextUrl = @navUrls.resolve("project-issues-detail", ctx)
 
     loadHistory: =>
         return @rs.issues.history(@scope.issueId).then (history) =>

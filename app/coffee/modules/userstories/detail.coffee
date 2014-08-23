@@ -42,10 +42,11 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin,
         "$q",
         "$location",
         "$log",
-        "$appTitle"
+        "$appTitle",
+        "$tgNavUrls"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @log, @appTitle) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @log, @appTitle, @navUrls) ->
         @.attachmentsUrlName = "userstories/attachments"
 
         @scope.issueRef = @params.issueref
@@ -80,12 +81,19 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin,
             @scope.us = us
             @scope.commentModel = us
 
-            projSlug = @scope.project.slug
-            prev = @scope.us.neighbors.previous
-            next = @scope.us.neighbors.next
+            if @scope.us.neighbors.previous.ref?
+                ctx = {
+                    project: @scope.project.slug
+                    ref: @scope.us.neighbors.previous.ref
+                }
+                @scope.previousUrl = @navUrls.resolve("project-userstories-detail", ctx)
 
-            @scope.previousUrl = "/project/#{projSlug}/us/#{prev.ref}" if prev.id?
-            @scope.nextUrl = "/project/#{projSlug}/us/#{next.ref}" if next.id?
+            if @scope.us.neighbors.next.ref?
+                ctx = {
+                    project: @scope.project.slug
+                    ref: @scope.us.neighbors.next.ref
+                }
+                @scope.nextUrl = @navUrls.resolve("project-userstories-detail", ctx)
 
     loadTasks: ->
         return @rs.tasks.list(@scope.projectId, null, @scope.usId).then (tasks) =>
