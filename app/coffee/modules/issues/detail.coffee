@@ -143,7 +143,7 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin, tai
 
         @confirm.ask(title, subtitle).then =>
             @.repo.remove(@scope.issue).then =>
-                @location.path("/project/#{@scope.project.slug}/issues")
+                @location.path(@navUrls.resolve("project-issues", {project: @scope.project.slug}))
 
 module.controller("IssueDetailController", IssueDetailController)
 
@@ -152,7 +152,7 @@ module.controller("IssueDetailController", IssueDetailController)
 ## Issue Main Directive
 #############################################################################
 
-IssueDirective = ($tgrepo, $log, $location, $confirm) ->
+IssueDirective = ($tgrepo, $log, $location, $confirm, $navUrls) ->
     linkSidebar = ($scope, $el, $attrs, $ctrl) ->
 
     link = ($scope, $el, $attrs) ->
@@ -168,7 +168,11 @@ IssueDirective = ($tgrepo, $log, $location, $confirm) ->
 
             onSuccess = ->
                 $confirm.notify("success")
-                $location.path("/project/#{$scope.project.slug}/issue/#{$scope.issue.ref}")
+                ctx = {
+                    project: $scope.project.slug
+                    ref: $scope.issue.ref
+                }
+                $location.path($navUrls.resolve("project-issues-detail", ctx))
 
             onError = ->
                 $confirm.notify("error")
@@ -197,7 +201,8 @@ IssueDirective = ($tgrepo, $log, $location, $confirm) ->
 
     return {link:link}
 
-module.directive("tgIssueDetail", ["$tgRepo", "$log", "$tgLocation", "$tgConfirm", IssueDirective])
+module.directive("tgIssueDetail", ["$tgRepo", "$log", "$tgLocation", "$tgConfirm", "$tgNavUrls",
+                                   IssueDirective])
 
 
 #############################################################################

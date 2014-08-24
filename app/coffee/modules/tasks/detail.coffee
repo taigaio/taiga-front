@@ -137,7 +137,7 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin, taig
 
         @confirm.ask(title, subtitle).then =>
             @.repo.remove(@scope.task).then =>
-                @location.path("/project/#{@scope.project.slug}/backlog")
+                @location.path(@navUrls.resolve("project-backlog", {project: @scope.project.slug}))
 
 module.controller("TaskDetailController", TaskDetailController)
 
@@ -146,7 +146,7 @@ module.controller("TaskDetailController", TaskDetailController)
 ## Task Main Directive
 #############################################################################
 
-TaskDirective = ($tgrepo, $log, $location, $confirm) ->
+TaskDirective = ($tgrepo, $log, $location, $confirm, $navUrls) ->
     linkSidebar = ($scope, $el, $attrs, $ctrl) ->
 
     link = ($scope, $el, $attrs) ->
@@ -162,7 +162,11 @@ TaskDirective = ($tgrepo, $log, $location, $confirm) ->
 
             onSuccess = ->
                 $confirm.notify("success")
-                $location.path("/project/#{$scope.project.slug}/task/#{$scope.task.ref}")
+                ctx = {
+                    project: $scope.project.slug
+                    ref: $scope.task.ref
+                }
+                $location.path($navUrls.resolve("project-tasks-detail", ctx))
 
             onError = ->
                 $confirm.notify("error")
@@ -189,7 +193,8 @@ TaskDirective = ($tgrepo, $log, $location, $confirm) ->
 
     return {link:link}
 
-module.directive("tgTaskDetail", ["$tgRepo", "$log", "$tgLocation", "$tgConfirm", TaskDirective])
+module.directive("tgTaskDetail", ["$tgRepo", "$log", "$tgLocation", "$tgConfirm", "$tgNavUrls",
+                                  TaskDirective])
 
 
 #############################################################################

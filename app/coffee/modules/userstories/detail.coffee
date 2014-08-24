@@ -149,7 +149,7 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin,
 
         @confirm.ask(title, subtitle).then =>
             @.repo.remove(@scope.us).then =>
-                @location.path("/project/#{@scope.project.slug}/backlog")
+                @location.path(@navUrls.resolve("project-backlog", {project: @scope.project.slug}))
 
 module.controller("UserStoryDetailController", UserStoryDetailController)
 
@@ -159,7 +159,7 @@ module.controller("UserStoryDetailController", UserStoryDetailController)
 ## User story Main Directive
 #############################################################################
 
-UsDirective = ($tgrepo, $log, $location, $confirm) ->
+UsDirective = ($tgrepo, $log, $location, $confirm, $navUrls) ->
     linkSidebar = ($scope, $el, $attrs, $ctrl) ->
 
     link = ($scope, $el, $attrs) ->
@@ -175,7 +175,11 @@ UsDirective = ($tgrepo, $log, $location, $confirm) ->
 
             onSuccess = ->
                 $confirm.notify("success")
-                $location.path("/project/#{$scope.project.slug}/us/#{$scope.us.ref}")
+                ctx = {
+                    project: $scope.project.slug
+                    ref: $scope.us.ref
+                }
+                $location.path($navUrls.resolve("project-userstories-detail", ctx))
 
             onError = ->
                 $confirm.notify("error")
@@ -202,7 +206,7 @@ UsDirective = ($tgrepo, $log, $location, $confirm) ->
 
     return {link:link}
 
-module.directive("tgUsDetail", ["$tgRepo", "$log", "$tgLocation", "$tgConfirm", UsDirective])
+module.directive("tgUsDetail", ["$tgRepo", "$log", "$tgLocation", "$tgConfirm", "$tgNavUrls", UsDirective])
 
 
 #############################################################################
