@@ -2,7 +2,7 @@ div.register-form-container(tg-register)
     form.register-form
         fieldset
             input(type="text", name="username", ng-model="data.username", data-required="true",
-                  placeholder="Pick a username")
+                  placeholder="Pick a username (case sensitive)")
         fieldset
             input(type="text", name="full_name", ng-model="data.full_name", data-required="true",
                   placeholder="Pick your full name")
@@ -11,7 +11,7 @@ div.register-form-container(tg-register)
                   placeholder="Your email")
         fieldset
             input(type="password", name="password", ng-model="data.password", data-required="true",
-                  placeholder="Set a password")
+                  placeholder="Set a password (case sensitive)")
         fieldset
             a.button.button-register.button-gray(href="", title="Sign up") Sign up
             input(type="submit", class="hidden")
