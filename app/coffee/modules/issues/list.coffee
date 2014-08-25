@@ -595,10 +595,6 @@ module.directive("tgIssuesFilters", ["$log", "$tgLocation", IssuesFiltersDirecti
 module.directive("tgIssues", ["$log", "$tgLocation", IssuesDirective])
 
 
-
-
-
-
 #############################################################################
 ## Issue status Directive (popover for change status)
 #############################################################################
@@ -669,3 +665,54 @@ IssueStatusInlineEditionDirective = ($repo, popoverService) ->
     return {link: link}
 
 module.directive("tgIssueStatusInlineEdition", ["$tgRepo", IssueStatusInlineEditionDirective])
+
+
+
+
+
+
+#############################################################################
+## Issue assigned to Directive
+#############################################################################
+
+IssueAssignedToInlineEditionDirective = ($repo, $rootscope, popoverService) ->
+    template = _.template("""
+    <img src="<%= imgurl %>" alt="<%- name %>"/>
+    <figcaption><%- name %></figcaption>
+    """)
+
+    link = ($scope, $el, $attrs) ->
+        updateIssue = (issue) ->
+            ctx = {name: "Unassigned", imgurl: "/images/unnamed.png"}
+            member = $scope.usersById[issue.assigned_to]
+            if member
+                ctx.imgurl = member.photo
+                ctx.name = member.full_name
+
+            $el.find(".avatar").html(template(ctx))
+
+        $ctrl = $el.controller()
+        issue = $scope.$eval($attrs.tgIssueAssignedToInlineEdition)
+        updateIssue(issue)
+
+        $el.on "click", ".issue-assignedto", (event) ->
+            $rootscope.$broadcast("assigned-to:add", issue)
+
+        taiga.bindOnce $scope, "project", (project) ->
+            # If the user has not enough permissions the click events are unbinded
+            if project.my_permissions.indexOf("modify_issue") == -1
+                $el.unbind("click")
+                $el.find("a").addClass("not-clickable")
+
+        $scope.$on "assigned-to:added", (ctx, userId, updatedIssue) =>
+            if updatedIssue.id == issue.id
+                updatedIssue.assigned_to = userId
+                $repo.save(updatedIssue)
+                updateIssue(updatedIssue)
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {link: link}
+
+module.directive("tgIssueAssignedToInlineEdition", ["$tgRepo", "$rootScope", IssueAssignedToInlineEditionDirective])
