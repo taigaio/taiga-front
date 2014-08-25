@@ -399,7 +399,7 @@ IssuesDirective = ($log, $location) ->
 
     linkOrdering = ($scope, $el, $attrs, $ctrl) ->
         # Draw the arrow the first time
-        currentOrder = $ctrl.getUrlFilter("orderBy")
+        currentOrder = $ctrl.getUrlFilter("orderBy") or "created_date"
         if currentOrder
             icon = if startswith(currentOrder, "-") then "icon-caret-up" else "icon-caret-down"
             colHeadElement = $el.find(".row.title > div[data-fieldname='#{trim(currentOrder, "-")}']")

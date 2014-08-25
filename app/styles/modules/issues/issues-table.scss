@@ -40,11 +40,11 @@
         }
     }
     .level-field {
-        @include table-flex-child(1, 80px, 0, 80px);
+        @include table-flex-child(1, 50px, 0, 50px);
         text-align: center;
     }
     .subject {
-        @include table-flex-child(7, 300px, 0, 300px);
+        @include table-flex-child(10, 300px, 0, 300px);
         padding-right: 1rem;
         span {
             &:first-child {
@@ -53,8 +53,9 @@
         }
     }
     .issue-field,
-    .assigned-field {
-        @include table-flex-child(1, 150px, 0, 150px);
+    .assigned-field,
+    .created-date {
+        @include table-flex-child(1, 100px, 0, 150px);
         padding: 0 1rem;
         text-align: left;
     }
