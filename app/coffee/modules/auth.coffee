@@ -153,21 +153,16 @@ LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls) -
         $scope.data = {}
 
         onSuccessSubmit = (response) ->
-            # NOTE: Hack to remember the login form values
-            form = $el.find("form")
-
-            form.attr("method", "POST")
             if $routeParams['next'] and $routeParams['next'] != $navUrls.resolve("login")
-                form.attr("action", $routeParams['next'])
+                nextUrl = $routeParams['next']
             else
-                form.attr("action", $navUrls.resolve("home"))
+                nextUrl = $navUrls.resolve("home")
 
-            form.submit()
+            $location.path(nextUrl)
 
         onErrorSubmit = (response) ->
             $confirm.notify("light-error", "According to our Oompa Loompas, your username/email
                                             or password are incorrect.") #TODO: i18n
-
         submit = ->
             form = $el.find("form").checksley()
             if not form.validate()
@@ -177,6 +172,10 @@ LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls) -
             promise.then(onSuccessSubmit, onErrorSubmit)
 
         $el.on "click", "a.button-login", (event) ->
+            event.preventDefault()
+            submit()
+
+        $el.on "submit", "form", (event) ->
             event.preventDefault()
             submit()
 
