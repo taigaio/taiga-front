@@ -1,6 +1,6 @@
 .us-created-by {
     @include table-flex();
-    margin-top: 2rem;
+    margin-top: .5rem;
     position: relative;
     .user-avatar {
         @include table-flex-child(1, 0);
