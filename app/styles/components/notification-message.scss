@@ -3,7 +3,6 @@
     background: rgba($gray-light, .95);
     color: $white;
     padding: 1rem;
-    padding-bottom: .5em;
     position: absolute;
     top: 0;
     width: 100%;
@@ -19,6 +18,9 @@
         display: inline-block;
         margin-left: .5rem;
         width: 80%;
+        p {
+            margin: 0;
+        }
     }
     .warning {
         @extend %xlarge;
@@ -35,7 +37,7 @@
 }
 
 .notification-message-success {
-    background: rgba($fresh-taiga, .95);
+    background: rgba($fresh-taiga, .9);
     .icon-notification-success {
         @extend %xxlarge;
         display: inline;
@@ -44,7 +46,7 @@
 }
 
 .notification-message-error {
-    background: rgba($red, .95);
+    background: rgba($red, .9);
     .icon-notification-error {
         @extend %xxlarge;
         display: inline;

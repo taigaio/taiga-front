@@ -173,7 +173,7 @@ class ConfirmService extends taiga.Service
         if @.tsem
             cancelTimeout(@.tsem)
 
-        @.tsem = timeout 3500, =>
+        @.tsem = timeout 1500, =>
             body.find(selector)
                 .removeClass('active')
                 .addClass('inactive')
