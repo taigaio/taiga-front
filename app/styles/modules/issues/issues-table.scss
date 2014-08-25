@@ -9,6 +9,9 @@
             background: lighten($green-taiga, 60%);
             @include transition (background .2s ease-in);
         }
+        .icon {
+            display: inline;
+        }
     }
     .row-selected {
         background: lighten($green-taiga, 60%);
@@ -58,5 +61,12 @@
         @include table-flex-child(1, 100px, 0, 150px);
         padding: 0 1rem;
         text-align: left;
+    }
+    .pop-status {
+        @include popover(200px, 0, 65%, '', '');
+        &.fix {
+            bottom: 0;
+            top: auto;
+        }
     }
 }

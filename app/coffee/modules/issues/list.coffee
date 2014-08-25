@@ -593,3 +593,79 @@ IssuesFiltersDirective = ($log, $location) ->
 
 module.directive("tgIssuesFilters", ["$log", "$tgLocation", IssuesFiltersDirective])
 module.directive("tgIssues", ["$log", "$tgLocation", IssuesDirective])
+
+
+
+
+
+
+#############################################################################
+## Issue status Directive (popover for change status)
+#############################################################################
+
+IssueStatusInlineEditionDirective = ($repo, popoverService) ->
+    ###
+    Print the status of a Issue and a popover to change it.
+    - tg-issue-status: The user story
+
+    Example:
+
+      div.status(tg-issue-status="issue")
+        a.issue-status(href="", title="Status Name")
+
+    NOTE: This directive need 'issueStatusById' and 'project'.
+    ###
+    selectionTemplate = _.template("""
+    <ul class="popover pop-status">
+        <% _.forEach(statuses, function(status) { %>
+        <li>
+            <a href="" class="status" title="<%- status.name %>" data-status-id="<%- status.id %>">
+                <%- status.name %>
+            </a>
+        </li>
+        <% }); %>
+    </ul>""")
+
+    updateIssueStatus = ($el, issue, issueStatusById) ->
+        issueStatusDomParent = $el.find(".issue-status")
+        issueStatusDom = $el.find(".issue-status .issue-status-bind")
+
+        if issueStatusById[issue.status]
+            issueStatusDom.text(issueStatusById[issue.status].name)
+            issueStatusDomParent.css('color', issueStatusById[issue.status].color)
+
+    link = ($scope, $el, $attrs) ->
+        $ctrl = $el.controller()
+        issue = $scope.$eval($attrs.tgIssueStatusInlineEdition)
+
+        $el.on "click", ".issue-status", (event) ->
+            event.preventDefault()
+            event.stopPropagation()
+            $el.find(".pop-status").popover().open()
+
+        $el.on "click", ".status", (event) ->
+            event.preventDefault()
+            event.stopPropagation()
+            target = angular.element(event.currentTarget)
+            issue.status = target.data("status-id")
+            $el.find(".pop-status").popover().close()
+            updateIssueStatus($el, issue, $scope.issueStatusById)
+
+            $scope.$apply () ->
+                $repo.save(issue).then
+
+        taiga.bindOnce $scope, "project", (project) ->
+            $el.append(selectionTemplate({ 'statuses':  project.issue_statuses }))
+            updateIssueStatus($el, issue, $scope.issueStatusById)
+
+            # If the user has not enough permissions the click events are unbinded
+            if project.my_permissions.indexOf("modify_issue") == -1
+                $el.unbind("click")
+                $el.find("a").addClass("not-clickable")
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {link: link}
+
+module.directive("tgIssueStatusInlineEdition", ["$tgRepo", IssueStatusInlineEditionDirective])

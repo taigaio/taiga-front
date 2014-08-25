@@ -28,8 +28,6 @@ module = angular.module("taigaCommon")
 ## UserStory status Directive (popover for change status)
 #############################################################################
 
-# FIXME: change to less generic name.
-
 UsStatusDirective = ($repo, popoverService) ->
     ###
     Print the status of a US and a popover to change it.
