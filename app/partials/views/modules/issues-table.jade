@@ -28,8 +28,6 @@ section.issues-table.basic-table(ng-class="{empty: !issues.length}")
                 figure.avatar
                 span.icon.icon-arrow-bottom(tg-check-permission, permission="modify_issue")
 
-    div.lightbox.lightbox_select_user.hidden(tg-lb-assignedto)
-
 section.empty.empty-issues(ng-class="{hidden: issues.length}")
     span.icon.icon-issues
     span.title There are no issues to report :-)
