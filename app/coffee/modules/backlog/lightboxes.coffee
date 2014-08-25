@@ -31,7 +31,12 @@ module = angular.module("taigaBacklog")
 CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService) ->
     link = ($scope, $el, attrs) ->
         createSprint = true
-
+        $scope.sprint = {
+            project: null
+            name: null
+            estimated_start: null
+            estimated_finish: null
+        }
         # FIXME: form should be initialized once and used in
         # each submit...
         submit = ->
@@ -70,12 +75,8 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService) ->
 
         $scope.$on "sprintform:create", (event, projectId) ->
             createSprint = true
-            $scope.sprint = {
-                project: projectId
-                name: null
-                estimated_start: null
-                estimated_finish: null
-            }
+            $scope.sprint.project = projectId
+            $scope.sprint.name = null
 
             lastSprintNameDom = $el.find(".last-sprint-name")
             sprintName = $scope.sprints?[0].name

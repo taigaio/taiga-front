@@ -82,13 +82,20 @@ module.directive("tgSprintProgressbar", SprintProgressBarDirective)
 DateSelectorDirective =->
     link = ($scope, $el, $attrs, $model) ->
         $.selectedDate = null
-        $.picker = new Pikaday({
+        $el.picker = new Pikaday({
           field: $el[0]
           onSelect: (date) =>
               $.selectedDate = date
           onOpen: =>
-              $.picker.setDate($.selectedDate) if $.selectedDate?
+              $el.picker.setDate($.selectedDate) if $.selectedDate?
         })
+
+        $scope.$on "sprints:loaded", (ctx, sprints) =>
+            if sprints.length > 0
+                estimatedStart = sprints[0].estimated_finish
+                $.selectedDate = estimatedStart
+                $el.val(estimatedStart)
+                $el.picker.setDate(estimatedStart)
 
     return {
         link: link

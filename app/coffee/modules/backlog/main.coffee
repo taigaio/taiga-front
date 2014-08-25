@@ -98,6 +98,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             @scope.sprints = sprints
             @scope.sprintsCounter = sprints.length
             @scope.sprintsById = groupBy(sprints, (x) -> x.id)
+            @rootscope.$broadcast("sprints:loaded", sprints)
             return sprints
 
     resetFilters: ->
@@ -377,7 +378,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             obj.selected = true if isSelected("statuses", obj.id)
 
             return obj
-        
+
         return @scope.filters
 
     ## Template actions
