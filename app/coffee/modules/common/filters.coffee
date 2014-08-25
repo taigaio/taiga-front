@@ -23,6 +23,7 @@ taiga = @.taiga
 
 module = angular.module("taigaCommon")
 
+
 defaultFilter = ->
     return (value, defaultValue) ->
         if value is [null, undefined]
@@ -30,6 +31,7 @@ defaultFilter = ->
         return value
 
 module.filter("default", defaultFilter)
+
 
 yesNoFilter = ->
     #TODO: i18n
@@ -41,7 +43,26 @@ yesNoFilter = ->
 
 module.filter("yesNo", yesNoFilter)
 
+
 unslugify = ->
     return taiga.unslugify
 
 module.filter("unslugify", unslugify)
+
+
+momentFormat = ->
+    return (input, format) ->
+        if input
+            return moment(input).format(format)
+        return ""
+
+module.filter("momentFormat", momentFormat)
+
+
+momentFromNow = ->
+    return (input, without_suffix) ->
+        if input
+            return moment(input).fromNow(without_suffix or false)
+        return ""
+
+module.filter("momentFromNow", momentFromNow)
