@@ -151,7 +151,7 @@ module.service("$tgAuth", AuthService)
     ## Login Directive
     ###################
 
-LoginDirective = ($auth, $confirm, $location, $config, $routeParams) ->
+LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls) ->
     link = ($scope, $el, $attrs) ->
         $scope.pubblicRegisterEnabled = $config.get("pubblicRegisterEnabled")
         $scope.data = {}
@@ -161,10 +161,10 @@ LoginDirective = ($auth, $confirm, $location, $config, $routeParams) ->
             form = $el.find("form")
 
             form.attr("method", "POST")
-            if $routeParams['next'] and $routeParams['next'] != '/login'
+            if $routeParams['next'] and $routeParams['next'] != $navUrls.resolve("login")
                 form.attr("action", $routeParams['next'])
             else
-                form.attr("action", "/")
+                form.attr("action", $navUrls.resolve("home"))
 
             form.submit()
 
@@ -186,14 +186,15 @@ LoginDirective = ($auth, $confirm, $location, $config, $routeParams) ->
 
     return {link:link}
 
-module.directive("tgLogin", ["$tgAuth", "$tgConfirm", "$location", "$tgConfig", "$routeParams", LoginDirective])
+module.directive("tgLogin", ["$tgAuth", "$tgConfirm", "$location", "$tgConfig", "$routeParams", "$tgNavUrls",
+                             LoginDirective])
 
 
     ###################
     ## Register Directive
     ###################
 
-RegisterDirective = ($auth, $confirm, $location, $config) ->
+RegisterDirective = ($auth, $confirm, $location, $config, $navUrls) ->
     link = ($scope, $el, $attrs) ->
         $scope.privacyPolicyUrl = $config.get("privacyPolicyUrl")
         $scope.termsOfServiceUrl = $config.get("termsOfServiceUrl")
@@ -203,7 +204,7 @@ RegisterDirective = ($auth, $confirm, $location, $config) ->
 
         onSuccessSubmit = (response) ->
             $confirm.notify("success", "Our Oompa Loompas are happy, wellcome to Taiga.") #TODO: i18n
-            $location.path("/")
+            $location.path($navUrls.resolve("home"))
 
         onErrorSubmit = (response) ->
             $confirm.notify("light-error", "According to our Oompa Loompas, the username or email is
@@ -226,20 +227,21 @@ RegisterDirective = ($auth, $confirm, $location, $config) ->
 
     return {link:link}
 
-module.directive("tgRegister", ["$tgAuth", "$tgConfirm", "$location", "$tgConfig", RegisterDirective])
+module.directive("tgRegister", ["$tgAuth", "$tgConfirm", "$location", "$tgConfig", "$tgNavUrls",
+                                RegisterDirective])
 
 
     ###################
     ## Forgot Password Directive
     ###################
 
-ForgotPasswordDirective = ($auth, $confirm, $location) ->
+ForgotPasswordDirective = ($auth, $confirm, $location, $navUrls) ->
     link = ($scope, $el, $attrs) ->
         $scope.data = {}
         form = $el.find("form").checksley()
 
         onSuccessSubmit = (response) ->
-            $location.path("/login") # TODO: Use the future 'urls' service
+            $location.path($navUrls.resolve("login"))
             $confirm.success("<strong>Check your inbox!</strong><br />
                              We have sent a mail to<br />
                              <strong>#{response.data.email}</strong><br />
@@ -266,14 +268,15 @@ ForgotPasswordDirective = ($auth, $confirm, $location) ->
 
     return {link:link}
 
-module.directive("tgForgotPassword", ["$tgAuth", "$tgConfirm", "$location", ForgotPasswordDirective])
+module.directive("tgForgotPassword", ["$tgAuth", "$tgConfirm", "$location", "$tgNavUrls",
+                                      ForgotPasswordDirective])
 
 
     ###################
     ## Change Password from Recovery Directive
     ###################
 
-ChangePasswordFromRecoveryDirective = ($auth, $confirm, $location, $params) ->
+ChangePasswordFromRecoveryDirective = ($auth, $confirm, $location, $params, $navUrls) ->
     link = ($scope, $el, $attrs) ->
         $scope.data = {}
 
@@ -286,7 +289,7 @@ ChangePasswordFromRecoveryDirective = ($auth, $confirm, $location, $params) ->
         form = $el.find("form").checksley()
 
         onSuccessSubmit = (response) ->
-            $location.path("/login") # TODO: Use the future 'urls' service
+            $location.path($navUrls.resolve("login"))
             $confirm.success("Our Oompa Loompas save your new password.<br />
                               Try to <strong>sign in</strong> with it.") #TODO: i18n
 
@@ -312,14 +315,14 @@ ChangePasswordFromRecoveryDirective = ($auth, $confirm, $location, $params) ->
     return {link:link}
 
 module.directive("tgChangePasswordFromRecovery", ["$tgAuth", "$tgConfirm", "$location", "$routeParams",
-                                                  ChangePasswordFromRecoveryDirective])
+                                                  "$tgNavUrls", ChangePasswordFromRecoveryDirective])
 
 
     ###################
     ## Invitation
     ###################
 
-InvitationDirective = ($auth, $confirm, $location, $params, $config) ->
+InvitationDirective = ($auth, $confirm, $location, $params, $config, $navUrls) ->
     link = ($scope, $el, $attrs) ->
         $scope.privacyPolicyUrl = $config.get("privacyPolicyUrl")
         $scope.termsOfServiceUrl = $config.get("termsOfServiceUrl")
@@ -331,7 +334,7 @@ InvitationDirective = ($auth, $confirm, $location, $params, $config) ->
             $scope.invitation = invitation
 
         promise.then null, (response) ->
-            $location.path("/login") # TODO: Use the future 'urls' service
+            $location.path($navUrls.resolve("login"))
             $confirm.success("<strong>Ooops, we have a problems</strong><br />
                               Our Oompa Loompas can't find your invitations.") #TODO: i18n
 
@@ -342,8 +345,7 @@ InvitationDirective = ($auth, $confirm, $location, $params, $config) ->
         loginForm = $el.find("form.login-form").checksley()
 
         onSuccessSubmitLogin = (response) ->
-            # TODO: finish this. Go to project home page
-            $location.path("/project/#{$scope.invitation.project_slug}/backlog")
+            $location.path($navUrls.resolve("project", {project: $scope.invitation.project_slug}))
             $confirm.notify("success", "You've successfully joined to this project",
                                        "Wellcome to #{$scope.invitation.project_name}")
 
@@ -373,8 +375,7 @@ InvitationDirective = ($auth, $confirm, $location, $params, $config) ->
         registerForm = $el.find("form.register-form").checksley()
 
         onSuccessSubmitRegister = (response) ->
-            # TODO: finish this. Go tu project home page
-            $location.path("/project/#{$scope.invitation.project_slug}/backlog")
+            $location.path($navUrls.resolve("project", {project: $scope.invitation.project_slug}))
             $confirm.notify("success", "You've successfully joined to this project",
                                        "Wellcome to #{$scope.invitation.project_name}")
 
@@ -400,13 +401,14 @@ InvitationDirective = ($auth, $confirm, $location, $params, $config) ->
     return {link:link}
 
 module.directive("tgInvitation", ["$tgAuth", "$tgConfirm", "$location", "$routeParams", "$tgConfig",
-                                  InvitationDirective])
+                                  "$tgNavUrls", InvitationDirective])
+
 
 ###################
 ## Change Email
 ###################
 
-ChangeEmailDirective = ($repo, $model, $auth, $confirm, $location, $params) ->
+ChangeEmailDirective = ($repo, $model, $auth, $confirm, $location, $params, $navUrls) ->
     link = ($scope, $el, $attrs) ->
         $scope.data = {}
         $scope.data.email_token = $params.email_token
@@ -415,11 +417,10 @@ ChangeEmailDirective = ($repo, $model, $auth, $confirm, $location, $params) ->
         onSuccessSubmit = (response) ->
             $repo.queryOne("users", $auth.getUser().id).then (data) =>
                 $auth.setUser(data)
-                $location.path("/") # TODO: Use the future 'urls' service
+                $location.path($navUrls.resolve("home")) # TODO: Use the future 'urls' service
                 $confirm.success("Our Oompa Loompas updated your email") #TODO: i18n
 
         onErrorSubmit = (response) ->
-            console.log "ASDASDASDASD"
             $confirm.notify("error", "One of our Oompa Loompas says
                             '#{response.data._error_message}'.") #TODO: i18n
 
@@ -441,4 +442,4 @@ ChangeEmailDirective = ($repo, $model, $auth, $confirm, $location, $params) ->
     return {link:link}
 
 module.directive("tgChangeEmail", ["$tgRepo", "$tgModel", "$tgAuth", "$tgConfirm", "$location", "$routeParams",
-                                                  ChangeEmailDirective])
+                                   "$tgNavUrls", ChangeEmailDirective])
