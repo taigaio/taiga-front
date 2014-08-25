@@ -144,12 +144,8 @@ module.service("$tgAuth", AuthService)
 
 
 #############################################################################
-## Auth related directives (login, reguister, invitation)
+## Login Directive
 #############################################################################
-
-    ###################
-    ## Login Directive
-    ###################
 
 LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls) ->
     link = ($scope, $el, $attrs) ->
@@ -157,21 +153,16 @@ LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls) -
         $scope.data = {}
 
         onSuccessSubmit = (response) ->
-            # NOTE: Hack to remember the login form values
-            form = $el.find("form")
-
-            form.attr("method", "POST")
             if $routeParams['next'] and $routeParams['next'] != $navUrls.resolve("login")
-                form.attr("action", $routeParams['next'])
+                nextUrl = $routeParams['next']
             else
-                form.attr("action", $navUrls.resolve("home"))
+                nextUrl = $navUrls.resolve("home")
 
-            form.submit()
+            $location.path(nextUrl)
 
         onErrorSubmit = (response) ->
             $confirm.notify("light-error", "According to our Oompa Loompas, your username/email
                                             or password are incorrect.") #TODO: i18n
-
         submit = ->
             form = $el.find("form").checksley()
             if not form.validate()
@@ -184,15 +175,18 @@ LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls) -
             event.preventDefault()
             submit()
 
+        $el.on "submit", "form", (event) ->
+            event.preventDefault()
+            submit()
+
     return {link:link}
 
 module.directive("tgLogin", ["$tgAuth", "$tgConfirm", "$location", "$tgConfig", "$routeParams", "$tgNavUrls",
                              LoginDirective])
 
-
-    ###################
-    ## Register Directive
-    ###################
+#############################################################################
+## Register Directive
+#############################################################################
 
 RegisterDirective = ($auth, $confirm, $location, $config, $navUrls) ->
     link = ($scope, $el, $attrs) ->
@@ -230,10 +224,9 @@ RegisterDirective = ($auth, $confirm, $location, $config, $navUrls) ->
 module.directive("tgRegister", ["$tgAuth", "$tgConfirm", "$location", "$tgConfig", "$tgNavUrls",
                                 RegisterDirective])
 
-
-    ###################
-    ## Forgot Password Directive
-    ###################
+#############################################################################
+## Forgot Password Directive
+#############################################################################
 
 ForgotPasswordDirective = ($auth, $confirm, $location, $navUrls) ->
     link = ($scope, $el, $attrs) ->
@@ -271,10 +264,9 @@ ForgotPasswordDirective = ($auth, $confirm, $location, $navUrls) ->
 module.directive("tgForgotPassword", ["$tgAuth", "$tgConfirm", "$location", "$tgNavUrls",
                                       ForgotPasswordDirective])
 
-
-    ###################
-    ## Change Password from Recovery Directive
-    ###################
+#############################################################################
+## Change Password from Recovery Directive
+#############################################################################
 
 ChangePasswordFromRecoveryDirective = ($auth, $confirm, $location, $params, $navUrls) ->
     link = ($scope, $el, $attrs) ->
@@ -317,10 +309,9 @@ ChangePasswordFromRecoveryDirective = ($auth, $confirm, $location, $params, $nav
 module.directive("tgChangePasswordFromRecovery", ["$tgAuth", "$tgConfirm", "$location", "$routeParams",
                                                   "$tgNavUrls", ChangePasswordFromRecoveryDirective])
 
-
-    ###################
-    ## Invitation
-    ###################
+#############################################################################
+## Invitation
+#############################################################################
 
 InvitationDirective = ($auth, $confirm, $location, $params, $config, $navUrls) ->
     link = ($scope, $el, $attrs) ->
@@ -338,9 +329,7 @@ InvitationDirective = ($auth, $confirm, $location, $params, $config, $navUrls) -
             $confirm.success("<strong>Ooops, we have a problems</strong><br />
                               Our Oompa Loompas can't find your invitations.") #TODO: i18n
 
-        #$##############
         # Login form
-        ################
         $scope.dataLogin = {token: token}
         loginForm = $el.find("form.login-form").checksley()
 
@@ -368,9 +357,7 @@ InvitationDirective = ($auth, $confirm, $location, $params, $config, $navUrls) -
             event.preventDefault()
             submitLogin()
 
-        #$##############
         # Register form
-        #$##############
         $scope.dataRegister = {token: token}
         registerForm = $el.find("form.register-form").checksley()
 
@@ -403,10 +390,9 @@ InvitationDirective = ($auth, $confirm, $location, $params, $config, $navUrls) -
 module.directive("tgInvitation", ["$tgAuth", "$tgConfirm", "$location", "$routeParams", "$tgConfig",
                                   "$tgNavUrls", InvitationDirective])
 
-
-###################
+#############################################################################
 ## Change Email
-###################
+#############################################################################
 
 ChangeEmailDirective = ($repo, $model, $auth, $confirm, $location, $params, $navUrls) ->
     link = ($scope, $el, $attrs) ->

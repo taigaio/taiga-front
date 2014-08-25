@@ -153,7 +153,7 @@ gulp.task "styles", ["css", "sass"], ->
 # JS Related tasks
 ##############################################################################
 
-gulp.task "coffee", ->
+gulp.task "coffee", ["locales"], ->
     gulp.src(paths.coffee)
         .pipe(plumber())
         .pipe(coffee())
@@ -227,12 +227,12 @@ gulp.task "watch", ->
 
 # The default task (called when you run gulp from cli)
 gulp.task "default", [
+    "locales",
     "jade",
     "template",
     "styles",
     "csslint-app",
     "copy",
-    "locales",
     "coffee",
     "jslibs",
     "connect",
