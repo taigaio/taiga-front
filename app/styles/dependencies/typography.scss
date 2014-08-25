@@ -53,10 +53,19 @@ h1 {
         margin-right: .5rem;
         overflow: hidden;
         text-overflow: ellipsis;
+        vertical-align: bottom;
         white-space: nowrap;
         &.green,
         &:last-child {
             flex-shrink: 0;
+        }
+        &.project-name {
+            display: inline-block;
+            max-width: 60%;
+        }
+        &.project-name-short {
+            display: inline-block;
+            max-width: 40%;
         }
     }
     .green {

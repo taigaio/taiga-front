@@ -11,7 +11,7 @@ block content
         section.main.wiki
             .header-with-actions
                 h1
-                    span(tg-bo-bind="project.name")
+                    span(tg-bo-bind="project.name", class="project-name-short")
                     span.green Wiki
                     span.wiki-title(tg-bo-bind='wiki.slug|unslugify')
                 .action-buttons

@@ -8,7 +8,7 @@ block content
                 ng-init="section='backlog'")
         section.main.taskboard
             h1
-                span(tg-bo-bind="project.name")
+                span(tg-bo-bind="project.name", class="project-name-short")
                 span.green(tg-bo-bind="sprint.name")
                 span.date(tg-date-range="sprint.estimated_start,sprint.estimated_finish")
             include views/components/sprint-summary

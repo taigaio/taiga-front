@@ -96,7 +96,7 @@ ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout, tgLoader, $
     <% _.each(projects, function(project) { %>
     <li>
         <a href="<%- project.url %>">
-            <%- project.name %>
+            <span class="project-name"><%- project.name %></span>
             <span class="icon icon-arrow-right"/>
         </a>
     </li>
