@@ -155,22 +155,25 @@ LoginDirective = ($auth, $confirm, $location, $config, $routeParams) ->
     link = ($scope, $el, $attrs) ->
         $scope.pubblicRegisterEnabled = $config.get("pubblicRegisterEnabled")
         $scope.data = {}
-        form = $el.find("form").checksley()
 
         onSuccessSubmit = (response) ->
-            if $routeParams and $routeParams['next'] and $routeParams['next'] != '/login'
-                $el.find("form").attr('action', $routeParams['next'])
-            else
-                $el.find("form").attr('action', "/")
+            # NOTE: Hack to remember the login form values
+            form = $el.find("form")
 
-            $el.find("form")
-            .submit()
+            form.attr("method", "POST")
+            if $routeParams['next'] and $routeParams['next'] != '/login'
+                form.attr("action", $routeParams['next'])
+            else
+                form.attr("action", "/")
+
+            form.submit()
 
         onErrorSubmit = (response) ->
-            $confirm.notify("light-error", "According to our Oompa Loompas, your username/email or password
-                                            are incorrect.") #TODO: i18n
+            $confirm.notify("light-error", "According to our Oompa Loompas, your username/email
+                                            or password are incorrect.") #TODO: i18n
 
         submit = ->
+            form = $el.find("form").checksley()
             if not form.validate()
                 return
 
