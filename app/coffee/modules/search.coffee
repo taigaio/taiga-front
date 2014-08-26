@@ -41,10 +41,11 @@ class SearchController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$routeParams",
         "$q",
         "$location",
-        "$appTitle"
+        "$appTitle",
+        "tgLoader"
     ]
 
-    constructor: (@scope, @repo, @rs, @params, @q, @location, @appTitle) ->
+    constructor: (@scope, @repo, @rs, @params, @q, @location, @appTitle, tgLoader) ->
         @scope.sectionName = "Search"
 
         promise = @.loadInitialData()
@@ -60,8 +61,10 @@ class SearchController extends mixOf(taiga.Controller, taiga.PageMixin)
         loadSearchData = debounce(200, (t) => @.loadSearchData(t))
 
         @scope.$watch "searchTerm", (term) ->
-            return if not term
-            loadSearchData(term)
+            if not term
+                tgLoader.pageLoaded()
+            else
+                loadSearchData(term)
 
     loadFilters: ->
         defered = @q.defer()
@@ -83,6 +86,7 @@ class SearchController extends mixOf(taiga.Controller, taiga.PageMixin)
     loadSearchData: (term) ->
         promise = @rs.search.do(@scope.projectId, term).then (data) =>
             @scope.searchResults = data
+            tgLoader.pageLoaded()
             return data
 
         return promise
