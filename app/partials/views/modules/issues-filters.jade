@@ -8,7 +8,7 @@ section.filters
                 a.icon.icon-search(href="", title="search")
         div.filters-step-cat
             div.filters-applied
-            a.hidden.button.save-filters(href="", title="save", ng-class="{hidden: filters.length}") save
+            a.hide.button.save-filters(href="", title="save", ng-class="{hide: filters.length}") save
             h2
                 a.hidden.subfilter(href="", title="cat-name")
                     span.title status
@@ -42,7 +42,7 @@ section.filters
                         a(href="", title="Created by", data-type="createdBy")
                             span.title Created by
                             span.icon.icon-arrow-right
-                    li
+                    li(ng-if="filters.myFilters.length")
                         a(href="", title="My filters", data-type="myFilters")
                             span.title My filters
                             span.icon.icon-arrow-right
