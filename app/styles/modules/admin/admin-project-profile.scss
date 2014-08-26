@@ -8,7 +8,6 @@
         @extend %title;
     }
     fieldset {
-        @include table-flex();
         margin-bottom: 1rem;
     }
     label {
@@ -18,6 +17,32 @@
     }
     textarea {
         height: 10rem;
+    }
+    .privacy-settings {
+        @include table-flex();
+        margin-bottom: 2rem;
+        div {
+            @include table-flex-child(1, 0, 0, 40%);
+            &:first-child {
+                margin-right: .5rem;
+            }
+        }
+        label {
+            @extend %title;
+            background: $white;
+            border: 1px solid $whitish;
+            cursor: pointer;
+            display: block;
+            text-align: center;
+        }
+        input {
+            &:checked {
+                +label {
+                    background: $green-taiga;
+                    color: $white;
+                }
+            }
+        }
     }
     .button-green {
         color: $white;

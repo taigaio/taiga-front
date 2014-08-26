@@ -43,6 +43,14 @@ block content
                     textarea(name="description", placeholder="Description", id="project-description",
                              ng-model="project.description", data-required="true")
 
+                div.privacy-settings
+                    div
+                        input.hidden(type="radio", id="public-project", name="project-privacy", ng-checked="!project.is_private")
+                        label.button(for="public-project") Public Project
+                    div
+                        input.hidden(type="radio", id="private-project", name="project-privacy", ng-checked="project.is_private")
+                        label.button(for="private-project") Private Project
+
                 input(type="submit", class="hidden")
                 a.button.button-green(href="") Save
                 a.delete-project(href="", title="Delete this project", ng-click="ctrl.openDeleteLightbox()") Delete this project
