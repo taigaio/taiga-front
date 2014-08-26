@@ -45,10 +45,12 @@ block content
 
                 div.privacy-settings
                     div
-                        input.hidden(type="radio", id="public-project", name="project-privacy", ng-checked="!project.is_private")
+                        input.hidden(type="radio", id="public-project", name="project-privacy",
+                                     ng-model="project.is_private", ng-value="false")
                         label.button(for="public-project") Public Project
                     div
-                        input.hidden(type="radio", id="private-project", name="project-privacy", ng-checked="project.is_private")
+                        input.hidden(type="radio", id="private-project", name="project-privacy",
+                                     ng-model="project.is_private", ng-value="true")
                         label.button(for="private-project") Private Project
 
                 input(type="submit", class="hidden")
