@@ -61,6 +61,21 @@
     }
 }
 
+.filters-step-cat {
+    .save-filters {
+        float: right;
+        padding: 8px 0px;
+    }
+    .my-filter-name {
+        background: $grayer;
+        color: $whitish;
+        width: 100%;
+        @include placeholder {
+            color: $gray-light;
+        }
+    }
+}
+
 .filters-cats {
     margin-top: 2rem;
     li {

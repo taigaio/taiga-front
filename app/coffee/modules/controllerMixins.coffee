@@ -76,6 +76,10 @@ class FiltersMixin
         location = if load then @location else @location.noreload(@scope)
         location.search(name, value)
 
+    replaceAllFilters: (filters, load=false) ->
+        location = if load then @location else @location.noreload(@scope)
+        location.search(filters)
+
     unselectFilter: (name, value, load=false) ->
         params = @location.search()
 

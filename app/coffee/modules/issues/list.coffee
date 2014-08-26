@@ -108,115 +108,97 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         filters = _.pick(@location.search(), name)
         return filters[name]
 
+    loadMyFilters: ->
+        deferred = @q.defer()
+        promise = @rs.issues.getMyFilters(@scope.projectId)
+        promise.then (filters) ->
+            result = _.map filters, (value, key) =>
+                obj = {
+                    id: key,
+                    name: key,
+                    type: "myFilters"
+                }
+                obj.selected = false
+                return obj
+            deferred.resolve(result)
+        return deferred.promise
+
+    markSelectedFilters: (filters, urlfilters) ->
+        # Build selected filters (from url) fast lookup data structure
+        searchdata = {}
+        for name, value of _.omit(urlfilters, "page", "orderBy")
+            if not searchdata[name]?
+                searchdata[name] = {}
+
+            for val in "#{value}".split(",")
+                searchdata[name][val] = true
+
+        isSelected = (type, id) ->
+            if searchdata[type]? and searchdata[type][id]
+                return true
+            return false
+
+        for key, value of filters
+            for obj in value
+                obj.selected = if isSelected(obj.type, obj.id) then true else undefined
+
     loadFilters: ->
-        # This function is executed only once when page is loads and
-        # it needs create all filters structure and know that
-        # filters are selected from url params.
+        deferred = @q.defer()
         urlfilters = @.getUrlFilters()
 
         if urlfilters.subject
             @scope.filtersSubject = urlfilters.subject
 
-        return @rs.issues.filtersData(@scope.projectId).then (data) =>
-            # Build selected filters (from url) fast lookup data structure
-            searchdata = {}
+        @.loadMyFilters().then (myFilters) =>
+            @scope.filters.myFilters = myFilters
+            @rs.issues.filtersData(@scope.projectId).then (data) =>
+                usersFiltersFormat = (users, type, unknownOption) =>
+                    reformatedUsers = _.map users, (t) =>
+                        return {
+                            id: t[0],
+                            count: t[1],
+                            type: type
+                            name: if t[0] then @scope.usersById[t[0]].full_name_display else unknownOption
+                        }
+                    unknownItem = _.remove(reformatedUsers, (u) -> not u.id)
+                    reformatedUsers = _.sortBy(reformatedUsers, (u) -> u.name.toUpperCase())
+                    if unknownItem.length > 0
+                        reformatedUsers.unshift(unknownItem[0])
+                    return reformatedUsers
 
-            for name, value of _.omit(urlfilters, "page", "orderBy")
-                # if name == "page" or name == "orderBy"
-                #     continue
-                if not searchdata[name]?
-                    searchdata[name] = {}
+                choicesFiltersFormat = (choices, type, byIdObject) =>
+                    _.map choices, (t) ->
+                        return {
+                            id: t[0],
+                            name: byIdObject[t[0]].name,
+                            color: byIdObject[t[0]].color,
+                            count: t[1],
+                            type: type}
 
-                for val in "#{value}".split(",")
-                    searchdata[name][val] = true
+                tagsFilterFormat = (tags) =>
+                    return _.map tags, (t) =>
+                        return {
+                            id: t[0],
+                            name: t[0],
+                            color: @scope.project.tags_colors[t[0]],
+                            count: t[1],
+                            type: "tags"
+                        }
 
-            isSelected = (type, id) ->
-                if searchdata[type]? and searchdata[type][id]
-                    return true
-                return false
+                # Build filters data structure
+                @scope.filters.statuses = choicesFiltersFormat data.statuses, "statuses", @scope.issueStatusById
+                @scope.filters.severities = choicesFiltersFormat data.severities, "severities", @scope.severityById
+                @scope.filters.priorities = choicesFiltersFormat data.priorities, "priorities", @scope.priorityById
+                @scope.filters.assignedTo = usersFiltersFormat data.assigned_to, "assignedTo", "Unassigned"
+                @scope.filters.createdBy = usersFiltersFormat data.created_by, "createdBy", "Unknown"
+                @scope.filters.types = choicesFiltersFormat data.types, "types", @scope.issueTypeById
+                @scope.filters.tags = tagsFilterFormat data.tags
 
-            usersFiltersFormat = (users, type, unknownOption) =>
-                reformatedUsers = _.map users, (t) =>
-                    obj = {
-                        id: t[0],
-                        count: t[1],
-                        type: type
-                    }
-                    if t[0]
-                        obj.name = @scope.usersById[t[0]].full_name_display
-                    else
-                        obj.name = unknownOption
+                @.markSelectedFilters(@scope.filters, urlfilters)
 
-                    obj.selected = true if isSelected(type, obj.id)
-                    return obj
-                unknownItem = _.remove(reformatedUsers, (u) -> not u.id)
-                reformatedUsers = _.sortBy(reformatedUsers, (u) -> u.name.toUpperCase())
-                if unknownItem.length > 0
-                    reformatedUsers.unshift(unknownItem[0])
-                return reformatedUsers
-
-
-            # Build filters data structure
-            @scope.filters.statuses = _.map data.statuses, (t) =>
-                obj = {
-                    id: t[0],
-                    name: @scope.issueStatusById[t[0]].name,
-                    color: @scope.issueStatusById[t[0]].color,
-                    count: t[1],
-                    type: "statuses"}
-                obj.selected = true if isSelected("statuses", obj.id)
-                return obj
-
-            @scope.filters.severities = _.map data.severities, (t) =>
-                obj = {
-                    id: t[0],
-                    name: @scope.severityById[t[0]].name,
-                    color: @scope.severityById[t[0]].color,
-                    count: t[1],
-                    type: "severities"
-                }
-                obj.selected = true if isSelected("severities", obj.id)
-                return obj
-
-            @scope.filters.priorities = _.map data.priorities, (t) =>
-                obj = {
-                    id: t[0],
-                    name: @scope.priorityById[t[0]].name,
-                    color: @scope.priorityById[t[0]].color
-                    count: t[1],
-                    type: "priorities"
-                }
-                obj.selected = true if isSelected("priorities", obj.id)
-                return obj
-
-            @scope.filters.assignedTo = usersFiltersFormat data.assigned_to, "assignedTo", "Unassigned"
-
-            @scope.filters.createdBy = usersFiltersFormat data.created_by, "createdBy", "Unknown"
-
-            @scope.filters.tags = _.map data.tags, (t) =>
-                obj = {
-                    id: t[0],
-                    name: t[0],
-                    color: @scope.project.tags_colors[t[0]],
-                    count: t[1],
-                    type: "tags"
-                }
-                obj.selected = true if isSelected("tags", obj.id)
-                return obj
-
-            @scope.filters.types = _.map data.types, (t) =>
-                obj = {
-                    id: t[0],
-                    name: @scope.issueTypeById[t[0]].name,
-                    color: @scope.issueTypeById[t[0]].color
-                    count: t[1],
-                    type: "types"
-                }
-                obj.selected = true if isSelected("types", obj.id)
-                return obj
-
-            @rootscope.$broadcast("filters:loaded", @scope.filters)
-            return data
+                @rootscope.$broadcast("filters:loaded", @scope.filters)
+                deferred.resolve()
+        return deferred.promise
 
     loadIssues: ->
         @scope.urlFilters = @.getUrlFilters()
@@ -262,6 +244,22 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                       .then(=> @.loadUsersAndRoles())
                       .then(=> @.loadFilters())
                       .then(=> @.loadIssues())
+
+    saveCurrentFiltersTo: (newFilter) ->
+        deferred = @q.defer()
+        @rs.issues.getMyFilters(@scope.projectId).then (filters) =>
+            filters[newFilter] = @location.search()
+            @rs.issues.storeMyFilters(@scope.projectId, filters).then =>
+                deferred.resolve()
+        return deferred.promise
+
+    deleteMyFilter: (filter) ->
+        deferred = @q.defer()
+        @rs.issues.getMyFilters(@scope.projectId).then (filters) =>
+            delete filters[filter]
+            @rs.issues.storeMyFilters(@scope.projectId, filters).then =>
+                deferred.resolve()
+        return deferred.promise
 
     # Functions used from templates
     addNewIssue: ->
@@ -440,29 +438,26 @@ IssuesDirective = ($log, $location) ->
 ## Issues Filters Directive
 #############################################################################
 
-IssuesFiltersDirective = ($log, $location) ->
+IssuesFiltersDirective = ($log, $location, $rs) ->
     template = _.template("""
     <% _.each(filters, function(f) { %>
-        <% if (f.selected) { %>
-        <a class="single-filter active"
-            data-type="<%= f.type %>"
-            data-id="<%= f.id %>">
-            <span class="name">
-                <%- f.name %>
-            </span>
-            <span class="number"><%- f.count %></span>
-        </a>
-        <% } else { %>
+        <% if (!f.selected) { %>
         <a class="single-filter"
             data-type="<%= f.type %>"
             data-id="<%= f.id %>">
             <span class="name" <% if (f.color){ %>style="border-left: 3px solid <%- f.color %>;"<% } %>>
                 <%- f.name %>
             </span>
+            <% if (f.count){ %>
             <span class="number"><%- f.count %></span>
+            <% } %>
+            <% if (f.type == "myFilters"){ %>
+            <span class="icon icon-delete"></span>
+            <% } %>
         </a>
         <% } %>
     <% }) %>
+    <input class="hidden my-filter-name" type="text" placeholder="filter name" />
     """)
 
     templateSelected = _.template("""
@@ -501,17 +496,34 @@ IssuesFiltersDirective = ($log, $location) ->
                 for val in values
                     selectedFilters.push(val) if val.selected
 
-            renderSelectedFilters()
+            renderSelectedFilters(selectedFilters)
 
-        renderSelectedFilters = ->
+        renderSelectedFilters = (selectedFilters) ->
             html = templateSelected({filters:selectedFilters})
             $el.find(".filters-applied").html(html)
+            if selectedFilters.length > 0
+                $el.find(".save-filters").show()
+            else
+                $el.find(".save-filters").hide()
 
         renderFilters = (filters) ->
             html = template({filters:filters})
             $el.find(".filter-list").html(html)
 
         toggleFilterSelection = (type, id) ->
+            if type == "myFilters"
+                $rs.issues.getMyFilters($scope.projectId).then (data) ->
+                    myFilters = data
+                    filters = myFilters[id]
+                    filters.page = 1
+                    $ctrl.replaceAllFilters(filters)
+                    $ctrl.storeFilters()
+                    $ctrl.loadIssues()
+                    $ctrl.markSelectedFilters($scope.filters, filters)
+                    initializeSelectedFilters($scope.filters)
+                return null
+
+
             filters = $scope.filters[type]
             filter = _.find(filters, {id:id})
             filter.selected = (not filter.selected)
@@ -580,18 +592,57 @@ IssuesFiltersDirective = ($log, $location) ->
         $el.on "click", ".filter-list .single-filter", (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
-            if target.hasClass("active")
-                target.removeClass("active")
-            else
-                target.addClass("active")
+            target.toggleClass("active")
 
             id = target.data("id") or null
             type = target.data("type")
+
+            # A saved filter can't be active
+            if type == "myFilters"
+                target.removeClass("active")
+
             toggleFilterSelection(type, id)
+
+        $el.on "click", ".filter-list .single-filter .icon-delete", (event) ->
+            event.preventDefault()
+            event.stopPropagation()
+            target = angular.element(event.currentTarget)
+            $ctrl.deleteMyFilter(target.parent().data('id')).then ->
+                $ctrl.loadMyFilters().then (filters) ->
+                    $scope.filters.myFilters = filters
+                    renderFilters($scope.filters.myFilters)
+
+        $el.on "click", ".save-filters", (event) ->
+            event.preventDefault()
+            renderFilters($scope.filters["myFilters"])
+            showFilters("My filters", "myFilters")
+            $el.find('.save-filters').hide()
+            $el.find('.my-filter-name').show()
+            $el.find('.my-filter-name').focus()
+
+        $el.on "keyup", ".my-filter-name", (event) ->
+            event.preventDefault()
+            if event.keyCode == 13
+                target = angular.element(event.currentTarget)
+                newFilter = target.val()
+                $ctrl.saveCurrentFiltersTo(newFilter).then ->
+                    $ctrl.loadMyFilters().then (filters) ->
+                        $scope.filters.myFilters = filters
+
+                        currentfilterstype = $el.find("h2 a.subfilter span.title").prop('data-type')
+                        if currentfilterstype == "myFilters"
+                            renderFilters($scope.filters.myFilters)
+
+                        $el.find('.my-filter-name').hide()
+                        $el.find('.save-filters').show()
+            else if event.keyCode == 27
+                $el.find('.my-filter-name').val('')
+                $el.find('.my-filter-name').hide()
+                $el.find('.save-filters').show()
 
     return {link:link}
 
-module.directive("tgIssuesFilters", ["$log", "$tgLocation", IssuesFiltersDirective])
+module.directive("tgIssuesFilters", ["$log", "$tgLocation", "$tgResources", IssuesFiltersDirective])
 module.directive("tgIssues", ["$log", "$tgLocation", IssuesDirective])
 
 
