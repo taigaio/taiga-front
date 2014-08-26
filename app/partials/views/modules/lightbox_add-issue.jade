@@ -3,7 +3,7 @@ a.close(href="", title="close")
 form
     h2.title Add Issue
     fieldset
-        input(type="text", ng-model="issue.subject", placeholder="Issue description",
+        input(type="text", ng-model="issue.subject", placeholder="Subject",
               data-required="true", data-maxlength="500")
     div.fieldset-row
         fieldset
@@ -17,7 +17,7 @@ form
         input(type="text", placeholder="Tags", tg-tags, ng-model="issue.tags")
 
     fieldset
-        textarea.description(placeholder="description", ng-model="issue.description")
+        textarea.description(placeholder="Description", ng-model="issue.description")
 
     // include lightbox-attachments
     input(type="submit", style="display:none")
