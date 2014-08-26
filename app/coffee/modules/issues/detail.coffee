@@ -226,21 +226,33 @@ IssueStatusDirective = () ->
         <div class="type-data <% if (editable) { %>clickable<% } %>">
             <span class="level" style="background-color:<%= type.color %>"></span>
             <span class="type-status"><%= type.name %></span>
+            <% if (editable) { %>
+                <span class="icon icon-arrow-bottom"></span>
+            <% } %>
             <span class="level-name">type</span>
         </div>
         <div class="severity-data <% if (editable) { %>clickable<% } %>">
             <span class="level" style="background-color:<%= severity.color %>"></span>
             <span class="severity-status"><%= severity.name %></span>
+            <% if (editable) { %>
+                <span class="icon icon-arrow-bottom"></span>
+            <% } %>
             <span class="level-name">severity</span>
         </div>
         <div class="priority-data <% if (editable) { %>clickable<% } %>">
             <span class="level" style="background-color:<%= priority.color %>"></span>
             <span class="priority-status"><%= priority.name %></span>
+            <% if (editable) { %>
+                <span class="icon icon-arrow-bottom"></span>
+            <% } %>
             <span class="level-name">priority</span>
         </div>
         <div class="status-data <% if (editable) { %>clickable<% } %>">
             <span class="level" style="background-color:<%= status.color %>"></span>
             <span class="status-status"><%= status.name %></span>
+            <% if (editable) { %>
+                <span class="icon icon-arrow-bottom"></span>
+            <% } %>
             <span class="level-name">status</span>
         </div>
     </div>
