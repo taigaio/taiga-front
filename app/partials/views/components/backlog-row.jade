@@ -4,7 +4,9 @@ div.row.us-item-row(ng-repeat="us in visibleUserstories|orderBy:order track by u
         div.user-story-name
             input(tg-check-permission, permission="modify_us", type="checkbox", name="")
             a.clickable(tg-nav="project-userstories-detail:project=project.slug,ref=us.ref",
-                        title="{{ us.subject }}", tg-bo-bind="us.subject")
+                        title="#{{ us.ref }} {{ us.subject }}")
+                span(tg-bo-ref="us.ref")
+                span(tg-bo-bind="us.subject")
             div.us-settings
                 a.icon.icon-edit(tg-check-permission, permission="modify_us", href="",
                                  ng-click="ctrl.editUserStory(us)", title="Edit")
