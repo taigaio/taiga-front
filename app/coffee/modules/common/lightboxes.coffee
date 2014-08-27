@@ -31,12 +31,18 @@ class LightboxService extends taiga.Service
             lightbox.addClass('open')
         ), 70
 
+        lightbox.on 'click', (e) =>
+            target = angular.element(e.target)
+            if target[0] == lightbox[0]
+                @close(lightbox)
+
         $(document)
             .on 'keydown.lightbox', (e) =>
                 code = if e.keyCode then e.keyCode else e.which
 
                 if code == 27
                     @close(lightbox)
+
 
     close: (lightbox) ->
         $(document).off('.lightbox')
@@ -46,7 +52,6 @@ class LightboxService extends taiga.Service
             .removeClass('open')
 
 module.service("lightboxService", LightboxService)
-
 
 LightboxDirective = (lightboxService) ->
     link = ($scope, $el, $attrs) ->
