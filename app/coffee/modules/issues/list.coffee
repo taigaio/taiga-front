@@ -451,11 +451,14 @@ IssuesDirective = ($log, $location) ->
 
     return {link:link}
 
+module.directive("tgIssues", ["$log", "$tgLocation", IssuesDirective])
+
+
 #############################################################################
 ## Issues Filters Directive
 #############################################################################
 
-IssuesFiltersDirective = ($log, $location, $rs) ->
+IssuesFiltersDirective = ($log, $location, $rs, $confirm) ->
     template = _.template("""
     <% _.each(filters, function(f) { %>
         <% if (!f.selected) { %>
@@ -623,11 +626,17 @@ IssuesFiltersDirective = ($log, $location, $rs) ->
         $el.on "click", ".filter-list .single-filter .icon-delete", (event) ->
             event.preventDefault()
             event.stopPropagation()
+
             target = angular.element(event.currentTarget)
-            $ctrl.deleteMyFilter(target.parent().data('id')).then ->
-                $ctrl.loadMyFilters().then (filters) ->
-                    $scope.filters.myFilters = filters
-                    renderFilters($scope.filters.myFilters)
+            customFilterName = target.parent().data('id')
+            title = "Delete custom filter" # TODO: i18n
+            subtitle = "the custom filter '#{customFilterName}'" # TODO: i18n
+
+            $confirm.ask(title, subtitle).then ->
+                $ctrl.deleteMyFilter(customFilterName).then ->
+                    $ctrl.loadMyFilters().then (filters) ->
+                        $scope.filters.myFilters = filters
+                        renderFilters($scope.filters.myFilters)
 
         $el.on "click", ".save-filters", (event) ->
             event.preventDefault()
@@ -659,8 +668,8 @@ IssuesFiltersDirective = ($log, $location, $rs) ->
 
     return {link:link}
 
-module.directive("tgIssuesFilters", ["$log", "$tgLocation", "$tgResources", IssuesFiltersDirective])
-module.directive("tgIssues", ["$log", "$tgLocation", IssuesDirective])
+module.directive("tgIssuesFilters", ["$log", "$tgLocation", "$tgResources", "$tgConfirm",
+                                     IssuesFiltersDirective])
 
 
 #############################################################################
@@ -733,10 +742,6 @@ IssueStatusInlineEditionDirective = ($repo, popoverService) ->
     return {link: link}
 
 module.directive("tgIssueStatusInlineEdition", ["$tgRepo", IssueStatusInlineEditionDirective])
-
-
-
-
 
 
 #############################################################################
