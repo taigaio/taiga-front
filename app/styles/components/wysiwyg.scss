@@ -18,9 +18,23 @@
     ul,
     ol {
         list-style-position: inside;
+        margin-left: 1rem;
     }
     ul {
         list-style-type: disc;
+    }
+    dl {
+        dt {
+            font-size: 1em;
+            font-style: italic;
+            font-weight: bold;
+            margin-top: 16px;
+            padding: 0;
+        }
+        dd {
+            margin-bottom: 16px;
+            padding: 0 16px;
+        }
     }
     a {
         color: $green-taiga;
@@ -28,13 +42,21 @@
             color: $fresh-taiga;
         }
     }
-    pre {
+    p {
+        margin-bottom: 1rem;
+    }
+    pre,
+    code {
         background: $whitish;
         direction: ltr;
         font-family: 'courier new', 'monospace';
-        padding: 1rem;
+        margin-bottom: 1rem;
         unicode-bidi: embed;
         white-space: pre;
+    }
+    pre {
+        line-height: 135%;
+        padding: .5rem;
     }
     table {
         border: $gray-light 1px solid;
