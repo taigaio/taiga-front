@@ -9,8 +9,8 @@
     }
     .row {
         @extend %small;
+        @include table-flex();
         border-bottom: 1px solid $gray-light;
-        display: flex;
         padding: .5rem 0 .5rem .5rem;
         text-align: left;
         width: 100%;
@@ -22,34 +22,16 @@
         &:hover {
             background: transparent;
         }
-        .user-story-name {
-            display: flex;
-            justify-content: space-between;
-            input,
-            .us-settings {
-                flex-shrink: 0;
-                white-space: nowrap;
-            }
-            a {
-                width: 100%;
-            }
-        }
         .user-stories {
-            width: 100%;
+            @include table-flex-child(20, 500px, 0);
         }
         .status {
-            flex-shrink: 0;
-            width: 240px;
+            @include table-flex-child(0, 150px, 0);
         }
         .points {
-            flex-shrink: 0;
-            width: 125px;
+            @include table-flex-child(0, 125px, 0);
         }
-        .icon-edit,
-        .icon-delete {
-            display: inline;
-            float: none;
-        }
+
     }
     .status,
     .points {
@@ -153,7 +135,7 @@
         background: lighten($green-taiga, 60%);
     }
     .user-story-name {
-        flex-basis: 500px;
+        position: relative;
         input {
             margin-right: 1rem;
             vertical-align: super;
@@ -166,7 +148,7 @@
         }
         a {
             display: inline-block;
-            max-width: 85%;
+            max-width: 90%;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
@@ -226,9 +208,11 @@
         }
     }
     .us-settings {
-        float: right;
-        margin: 0 2rem;
+        margin: 0 0 0 2rem;
         opacity: 0;
+        position: absolute;
+        right: 0;
+        top: -.1rem;
     }
     .icon-drag-v {
         cursor: move;
