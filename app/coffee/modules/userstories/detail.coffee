@@ -249,6 +249,9 @@ UsStatusDetailDirective = () ->
             <div class="status-data <% if (editable) { %>clickable<% } %>">
                 <span class="level" style="background-color:<%= status.color %>"></span>
                 <span class="status-status"><%= status.name %></span>
+                <% if (editable) { %>
+                    <span class="icon icon-arrow-bottom"></span>
+                <% } %>
                 <span class="level-name">status</span>
             </div>
         </div>
