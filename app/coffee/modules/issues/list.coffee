@@ -130,7 +130,7 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             if filterName == "page" or filterName == "orderBy"
                 continue
 
-            splittedValues = (parseInt(val) for val in "#{filterValue}".split(","))
+            splittedValues = _.map("#{filterValue}".split(","), (x) -> if x == "null" then null else parseInt(x))
             existingValues = _.intersection(splittedValues, _.map(@scope.filters[filterName], "id"))
             if splittedValues.length != existingValues.length
                 @location.search(filterName, existingValues.join())
