@@ -1,7 +1,7 @@
 section.filters
     div.filters-inner
         h1
-            a.title(href="", title="back to categories") filters
+            a.title filters
         form
             fieldset
                 input(type="text", placeholder="Search by subject...", ng-model="filtersSubject")
@@ -9,8 +9,10 @@ section.filters
         div.filters-step-cat
             div.filters-applied
             a.hide.button.save-filters(href="", title="save", ng-class="{hide: filters.length}") save
-            h2
-                a.hidden.subfilter(href="", title="cat-name")
+            h2.hidden.breadcrumb
+                a.back(href="", title="back to categories") Filters
+                span.icon-arrow-right
+                a.subfilter(href="", title="cat-name")
                     span.title status
             div.filters-cats
                 ul

@@ -481,14 +481,14 @@ IssuesFiltersDirective = ($log, $location, $rs) ->
         showFilters = (title, type) ->
             $el.find(".filters-cats").hide()
             $el.find(".filter-list").show()
-            $el.find("h2 a.subfilter").removeClass("hidden")
+            $el.find("h2.breadcrumb").removeClass("hidden")
             $el.find("h2 a.subfilter span.title").html(title)
             $el.find("h2 a.subfilter span.title").prop("data-type", type)
 
         showCategories = ->
             $el.find(".filters-cats").show()
             $el.find(".filter-list").hide()
-            $el.find("h2 a.subfilter").addClass("hidden")
+            $el.find("h2.breadcrumb").addClass("hidden")
 
         initializeSelectedFilters = (filters) ->
             selectedFilters = []
@@ -577,7 +577,7 @@ IssuesFiltersDirective = ($log, $location, $rs) ->
             renderFilters(_.reject(tags, "selected"))
             showFilters(target.attr("title"), target.data("type"))
 
-        $el.on "click", ".filters-inner > h1 > a.title", (event) ->
+        $el.on "click", ".filters-inner > .filters-step-cat > .breadcrumb > .back", (event) ->
             event.preventDefault()
             showCategories($el)
 

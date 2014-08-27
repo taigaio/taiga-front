@@ -74,6 +74,14 @@
             color: $gray-light;
         }
     }
+    .breadcrumb {
+        .back {
+            @extend %xlarge;
+        }
+        .icon-arrow-right {
+            @extend %large;
+        }
+    }
 }
 
 .filters-cats {
