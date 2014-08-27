@@ -1,0 +1,38 @@
+.related-tasks {
+    ul {
+        list-style: disc inside;
+    }
+    li {
+        margin-bottom: .5rem;
+        &.iocaine {
+            list-style: none inside;
+        }
+        &.blocked {
+            color: $red;
+            text-decoration: line-through;
+            a {
+                color: $red;
+            }
+        }
+        &.closed {
+            color: $gray-light;
+            text-decoration: line-through;
+            a,
+            .icon-iocaine {
+                color: $gray-light;
+            }
+        }
+        a {
+            color: $grayer;
+        }
+    }
+    .icon-iocaine {
+        color: $green-taiga;
+        margin-right: .3rem;
+        position: relative;
+        right: .3rem;
+    }
+    .blocked-text {
+        margin-left: .3rem;
+    }
+}

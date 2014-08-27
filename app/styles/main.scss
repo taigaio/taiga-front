@@ -59,6 +59,7 @@ $prefix-for-spec:      true;
 @import 'modules/common/comments';
 @import 'modules/common/comment-activity';
 @import 'modules/common/activity';
+@import 'modules/common/related-tasks';
 
 //Project modules
 @import 'modules/home-projects-list';

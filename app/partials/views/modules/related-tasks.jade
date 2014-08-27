@@ -1,0 +1,7 @@
+section.related-tasks
+    h2 Related Tasks
+    ul.task-list
+        li.single-related-task(ng-repeat="task in tasks", ng-class="{'closed': task.finished_date, 'blocked': task.is_blocked, 'iocaine': task.is_iocaine}")
+            span.icon.icon-iocaine(ng-show="task.is_iocaine")
+            a(href="", title="{{task.subject}}") {{task.subject}}
+            span.blocked-text(ng-show="task.is_iocaine") (Blocked)

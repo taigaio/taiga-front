@@ -30,6 +30,8 @@ block content
 
             section.us-content.wysiwyg(tg-bind-html="us.description_html")
 
+            include views/modules/related-tasks
+
             - var attachModel = "us"
             - var permissionSuffix = "us"
             include views/modules/attachments
