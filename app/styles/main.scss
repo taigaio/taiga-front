@@ -8,6 +8,9 @@ $prefix-for-opera:     true;
 $prefix-for-spec:      true;
 @import 'bourbon/bourbon';
 
+// Codehilite
+@import 'vendor/codehilite.github';
+
 //#################################################
 //             dependencies
 //#################################################
