@@ -89,6 +89,7 @@
         @extend %small;
         @include table-flex-child($flex-grow: 10, $flex-basis: 50px);
         padding: 0 .5rem 0 1rem;
+        word-wrap: break-word;
     }
     .icon {
         @include transition(color .3s linear, opacity .3s linear);

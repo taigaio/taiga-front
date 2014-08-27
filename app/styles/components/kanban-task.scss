@@ -57,11 +57,13 @@
     .task-name {
         @extend %bold;
         color: $grayer;
+        word-wrap: break-word;
     }
     .task-text {
         @include table-flex-child($flex-grow: 10, $flex-basis: 50px);
         @extend %small;
         padding: 0 .5rem 0 1rem;
+        word-wrap: break-word;
     }
     .task-points {
         @extend %small;
