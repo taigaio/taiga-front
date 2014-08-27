@@ -2,17 +2,6 @@
     header {
         position: relative;
     }
-    .icon-idea {
-        @include transition(color .2s linear);
-        position: absolute;
-        top: 0;
-        right: 0;
-        color: $gray-light;
-        &:hover {
-            @include transition(color .2s linear);
-            color: $green-taiga;
-        }
-    }
 }
 
 .project-values-options {
