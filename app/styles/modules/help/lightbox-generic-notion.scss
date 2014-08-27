@@ -1,0 +1,5 @@
+.lightbox-generic-notion {
+    section {
+        @include table-flex-child(0, 600px, 0);
+    }
+}
