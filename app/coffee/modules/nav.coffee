@@ -234,9 +234,9 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location) -
         <% } %>
         <% if (project.videoconferences) { %>
         <li id="nav-video">
-            <a href="<%- project.videoconferenceUrl %>" target="_blank" title="Video">
+            <a href="<%- project.videoconferenceUrl %>" target="_blank" title="Meet Up">
                 <span class="icon icon-video"></span>
-                <span class="item">Video</span>
+                <span class="item">Meet Up</span>
             </a>
         </li>
         <% } %>
