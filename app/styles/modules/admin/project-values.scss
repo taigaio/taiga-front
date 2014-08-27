@@ -2,15 +2,6 @@
     @include table-flex(stretch, center, flex, row, wrap, center);
     border-bottom: 1px solid $whitish;
     padding: 1rem;
-    &:hover {
-        @include transition (background .2s ease-in);
-        background: lighten($green-taiga, 60%);
-        cursor: move;
-        .icon {
-            @include transition (opacity .2s ease-in);
-            opacity: 1;
-        }
-    }
     div {
         margin-left: 1rem;
         position: relative;
@@ -29,6 +20,19 @@
 .project-values-header {
     @extend %bold;
     border-bottom: 2px solid $gray-light;
+}
+.project-values-body {
+    .project-values-row {
+        &:hover {
+            @include transition (background .2s ease-in);
+            background: lighten($green-taiga, 60%);
+            cursor: move;
+            .icon {
+                @include transition (opacity .2s ease-in);
+                opacity: 1;
+            }
+        }
+    }
 }
 
 .project-values-name {
