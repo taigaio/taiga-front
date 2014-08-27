@@ -1,7 +1,7 @@
 section.related-tasks
     h2 Related Tasks
     ul.task-list
-        li.single-related-task(ng-repeat="task in tasks", ng-class="{'closed': task.finished_date, 'blocked': task.is_blocked, 'iocaine': task.is_iocaine}")
+        li.single-related-task(ng-repeat="task in tasks", ng-class="{closed: task.is_closed, blocked: task.is_blocked, iocaine: task.is_iocaine}")
             span.icon.icon-iocaine(ng-show="task.is_iocaine")
-            a(href="", title="{{task.subject}}") {{task.subject}}
-            span.blocked-text(ng-show="task.is_iocaine") (Blocked)
+            a(href="", tg-bo-title="task.subject", tg-bo-bind="task.subject" tg-nav="project-tasks-detail:project=project.slug,ref=task.ref")
+            span.blocked-text(ng-show="task.is_blocked") (Blocked)
