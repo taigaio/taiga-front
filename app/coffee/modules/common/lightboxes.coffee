@@ -343,9 +343,20 @@ AssignedToLightboxDirective = (lightboxService, lightboxListNavigationService) -
         selectedUser = null
         selectedItem = null
 
+        normalizeString = (string) ->
+            normalizedString = string
+            normalizedString = normalizedString.replace("Á", "A").replace("Ä", "A").replace("À", "A")
+            normalizedString = normalizedString.replace("É", "E").replace("Ë", "E").replace("È", "E")
+            normalizedString = normalizedString.replace("Í", "I").replace("Ï", "I").replace("Ì", "I")
+            normalizedString = normalizedString.replace("Ó", "O").replace("Ö", "O").replace("Ò", "O")
+            normalizedString = normalizedString.replace("Ú", "U").replace("Ü", "U").replace("Ù", "U")
+            return normalizedString
+
         filterUsers = (text, user) ->
             username = user.full_name_display.toUpperCase()
+            username = normalizeString(username)
             text = text.toUpperCase()
+            text = normalizeString(text)
             return _.contains(username, text)
 
         render = (selected, text) ->
