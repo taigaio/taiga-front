@@ -123,6 +123,21 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             deferred.resolve(result)
         return deferred.promise
 
+    removeNotExistingFiltersFromUrl: ->
+        currentSearch = @location.search()
+        urlfilters = @.getUrlFilters()
+        for filterName, filterValue of urlfilters
+            if filterName == "page" or filterName == "orderBy"
+                continue
+
+            splittedValues = (parseInt(val) for val in "#{filterValue}".split(","))
+            existingValues = _.intersection(splittedValues, _.map(@scope.filters[filterName], "id"))
+            if splittedValues.length != existingValues.length
+                @location.search(filterName, existingValues.join())
+
+        if currentSearch != @location.search()
+           @location.replace()
+
     markSelectedFilters: (filters, urlfilters) ->
         # Build selected filters (from url) fast lookup data structure
         searchdata = {}
@@ -193,6 +208,8 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 @scope.filters.createdBy = usersFiltersFormat data.created_by, "createdBy", "Unknown"
                 @scope.filters.types = choicesFiltersFormat data.types, "types", @scope.issueTypeById
                 @scope.filters.tags = tagsFilterFormat data.tags
+
+                @.removeNotExistingFiltersFromUrl()
 
                 @.markSelectedFilters(@scope.filters, urlfilters)
 
