@@ -16,11 +16,15 @@ block content
         section.main.admin-roles
             header
                 include views/components/mainTitle
-                - var helpText = "About User Story (US) Points: Most people start off with 1 point = 1 man day of effort. If you're new to scrum & agile start there. After the first week if you and your team expected to accomplish 25 points (i.e. 5 people 5 full days) and only got half done, learn from your findings, and adjust expectations for the following week. By doing so you'll learn your teams true 'velocity.'"
-                include views/components/help
+
+                - var helpLightboxId = "notion-admin-project-values-us-points"
+                include views/components/help-notion-button
 
             div.project-values-options
                 a.button.button-green.show-add-new(href="", title="Add New")
                     span Add new point
 
             include views/modules/admin/project-points
+
+    div.hidden.lightbox.lightbox-generic-notion(id="notion-admin-project-values-us-points", tg-lb-notion)
+        include views/modules/help-notions/lightbox-notion-admin-project-values-us-points

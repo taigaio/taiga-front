@@ -513,3 +513,41 @@ WatchersLightboxDirective = ($repo, lightboxService, lightboxListNavigationServi
     }
 
 module.directive("tgLbWatchers", ["$tgRepo", "lightboxService", "lightboxListNavigationService", WatchersLightboxDirective])
+
+#############################################################################
+## Notion Lightbox Directive
+#############################################################################
+
+# Lightbox
+NotionLightboxDirective = (lightboxService) ->
+    link = ($scope, $el, $attrs, $model) ->
+        $scope.$on "notion:open", (event, lightboxId) ->
+            if $el.attr("id") == lightboxId
+                lightboxService.open($el)
+
+        $el.on "click", ".button-green", (event) ->
+            lightboxService.close($el)
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {link:link}
+
+module.directive("tgLbNotion", ["lightboxService", NotionLightboxDirective])
+
+
+# Button
+NotionButtonDirective = ($log, $rootScope) ->
+    link = ($scope, $el, $attrs, $model) ->
+        if not $attrs.tgLbNotionButton?
+            return $log.error "NotionButtonDirective: the directive need the id of the notion lightbox"
+
+        $el.on "click", ->
+            $rootScope.$broadcast("notion:open", $attrs.tgLbNotionButton)
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {link:link}
+
+module.directive("tgLbNotionButton", ["$log", "$rootScope", NotionButtonDirective])
