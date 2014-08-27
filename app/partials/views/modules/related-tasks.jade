@@ -1,4 +1,4 @@
-section.related-tasks
+section.related-tasks(ng-show="tasks")
     h2 Related Tasks
     ul.task-list
         li.single-related-task(ng-repeat="task in tasks", ng-class="{closed: task.is_closed, blocked: task.is_blocked, iocaine: task.is_iocaine}")
