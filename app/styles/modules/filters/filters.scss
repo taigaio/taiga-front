@@ -27,25 +27,25 @@
         }
     }
     h2 {
+        @extend %large;
         margin-top: 1rem;
-        .subfilter {
-            @extend %large;
+        .icon-arrow-right {
+            @extend %medium;
+            vertical-align: middle;
         }
     }
-    form {
-        input {
-            background: $grayer;
-            color: $white;
-            @include placeholder {
-                color: $gray-light;
-            }
-        }
-        .icon-search {
+    input[type="text"] {
+        background: $grayer;
+        color: $white;
+        @include placeholder {
             color: $gray-light;
-            position: absolute;
-            right: .7rem;
-            top: .7rem;
         }
+    }
+    .icon-search {
+        color: $gray-light;
+        position: absolute;
+        right: .7rem;
+        top: .7rem;
     }
 }
 
@@ -63,8 +63,9 @@
 
 .filters-step-cat {
     .save-filters {
-        float: right;
-        padding: 8 0;
+        color: $white;
+        display: block;
+        text-align: center;
     }
     .my-filter-name {
         background: $grayer;
@@ -74,14 +75,6 @@
             color: $gray-light;
         }
     }
-    .breadcrumb {
-        .back {
-            @extend %xlarge;
-        }
-        .icon-arrow-right {
-            @extend %large;
-        }
-    }
 }
 
 .filters-cats {
@@ -89,6 +82,11 @@
     li {
         border-bottom: 1px solid $gray-light;
         text-transform: uppercase;
+    }
+    .custom-filters {
+        .title {
+            color: $green-taiga;
+        }
     }
     a {
         @include transition (color .2s ease-in);

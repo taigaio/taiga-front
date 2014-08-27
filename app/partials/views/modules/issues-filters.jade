@@ -1,14 +1,14 @@
 section.filters
     div.filters-inner
         h1
-            a.title filters
+            span.title filters
         form
             fieldset
                 input(type="text", placeholder="Search by subject...", ng-model="filtersSubject")
                 a.icon.icon-search(href="", title="search")
         div.filters-step-cat
             div.filters-applied
-            a.hide.button.save-filters(href="", title="save", ng-class="{hide: filters.length}") save
+            a.hide.button.button-gray.save-filters(href="", title="save", ng-class="{hide: filters.length}") save as custom filter
             h2.hidden.breadcrumb
                 a.back(href="", title="back to categories") Filters
                 span.icon-arrow-right
@@ -44,9 +44,9 @@ section.filters
                         a(href="", title="Created by", data-type="createdBy")
                             span.title Created by
                             span.icon.icon-arrow-right
-                    li(ng-if="filters.myFilters.length")
-                        a(href="", title="My filters", data-type="myFilters")
-                            span.title My filters
+                    li.custom-filters(ng-if="filters.myFilters.length")
+                        a(href="", title="Custom filters", data-type="myFilters")
+                            span.title Custom filters
                             span.icon.icon-arrow-right
 
         div.filter-list.hidden
