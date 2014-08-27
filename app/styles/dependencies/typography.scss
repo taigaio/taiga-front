@@ -43,7 +43,7 @@ h6 {
 h1 {
     @extend %xxlarge;
     @extend %title;
-    display: flex;
+    //-display: flex; // Lo borro porque poner el flex a los h1 se carga los h1 que están centrados.
     line-height: 3.4rem;
     margin-bottom: 1rem;
     text-transform: uppercase;
