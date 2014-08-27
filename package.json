@@ -47,6 +47,8 @@
     "gulp-uglify": "~0.2.0",
     "gulp-util": "~2.2.14",
     "gulp-watch": "^0.5.4",
-    "gulp-wrap": "^0.3.0"
+    "gulp-wrap": "^0.3.0",
+    "readable-stream": "~1.0.31",
+    "through2": "~0.6.1"
   }
 }
