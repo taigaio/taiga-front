@@ -84,6 +84,7 @@ DateSelectorDirective =->
         $.selectedDate = null
         $el.picker = new Pikaday({
           field: $el[0]
+          format: "DD MMM YYYY"
           onSelect: (date) =>
               $.selectedDate = date
           onOpen: =>
@@ -94,7 +95,7 @@ DateSelectorDirective =->
             if sprints.length > 0
                 estimatedStart = sprints[0].estimated_finish
                 $.selectedDate = estimatedStart
-                $el.val(estimatedStart)
+                $el.val(moment(estimatedStart).format("DD MMM YYYY"))
                 $el.picker.setDate(estimatedStart)
 
     return {

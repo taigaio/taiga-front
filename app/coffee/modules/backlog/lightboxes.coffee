@@ -37,17 +37,23 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService) ->
             estimated_start: null
             estimated_finish: null
         }
-        # FIXME: form should be initialized once and used in
-        # each submit...
+
         submit = ->
             form = $el.find("form").checksley()
             if not form.validate()
                 return
 
+            newSprint = angular.copy($scope.sprint)
+
             if createSprint
-                promise = $repo.create("milestones", $scope.sprint)
+                newSprint.estimated_start = moment(newSprint.estimated_start).format("YYYY-MM-DD")
+                newSprint.estimated_finish = moment(newSprint.estimated_finish).format("YYYY-MM-DD")
+                promise = $repo.create("milestones", newSprint)
+
             else
-                promise = $repo.save($scope.sprint)
+                newSprint.setAttr("estimated_start", moment(newSprint.estimated_start).format("YYYY-MM-DD"))
+                newSprint.setAttr("estimated_finish", moment(newSprint.estimated_finish).format("YYYY-MM-DD"))
+                promise = $repo.save(newSprint)
 
             promise.then (data) ->
                 $scope.sprintsCounter += 1 if createSprint
@@ -77,6 +83,9 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService) ->
             createSprint = true
             $scope.sprint.project = projectId
             $scope.sprint.name = null
+            $scope.sprint.slug = null
+            $scope.sprint.estimated_start = moment($scope.sprint.estimated_start).format("DD MMM YYYY")
+            $scope.sprint.estimated_finish = moment($scope.sprint.estimated_finish).format("DD MMM YYYY")
 
             lastSprintNameDom = $el.find(".last-sprint-name")
             sprintName = $scope.sprints?[0].name
@@ -92,6 +101,8 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService) ->
             createSprint = false
             $scope.$apply ->
                 $scope.sprint = sprint
+                $scope.sprint.estimated_start = moment($scope.sprint.estimated_start).format("DD MMM YYYY")
+                $scope.sprint.estimated_finish = moment($scope.sprint.estimated_finish).format("DD MMM YYYY")
 
             $el.find(".delete-sprint").show()
             $el.find(".title").text("Edit sprint") #TODO i18n
