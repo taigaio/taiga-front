@@ -239,6 +239,18 @@ UsStatusDetailDirective = () ->
             </span>
         </div>
 
+        <div class="us-created-by">
+            <div class="user-avatar">
+                <img src="<%= owner.photo %>" alt="<%- owner.full_name_display %>" />
+            </div>
+
+            <div class="created-by">
+                <span class="created-title">Created by</span>
+                <span class="created-user"><%- owner.full_name_display %></span>
+                <span class="created-date"><%- date %></span>
+            </div>
+        </div>
+
         <ul class="points-per-role">
             <li class="total">
                 <span class="points"><%- totalPoints %></span>
@@ -301,6 +313,8 @@ UsStatusDetailDirective = () ->
             return _.reduce(values, (acc, num) -> acc + num)
 
         renderUsstatus = (us) ->
+            owner = $scope.usersById?[us.owner]
+            date = moment(us.created_date).format("DD MMM YYYY HH:mm")
             status = $scope.statusById[us.status]
             rolePoints = _.clone(_.filter($scope.project.roles, "computable"), true)
             _.map rolePoints, (v, k) ->
@@ -313,6 +327,8 @@ UsStatusDetailDirective = () ->
             usProgress = 0
             usProgress = 100 * totalClosedTasks / totalTasks if totalTasks > 0
             html = template({
+                owner: owner
+                date: date
                 editable: editable
                 status: status
                 totalPoints: us.total_points

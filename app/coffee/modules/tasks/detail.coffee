@@ -219,6 +219,17 @@ TaskStatusDirective = () ->
             <% } %>
             <span class="us-detail-status" style="color:<%= status.color %>"><%= status.name %></span>
         </h1>
+        <div class="us-created-by">
+            <div class="user-avatar">
+                <img src="<%= owner.photo %>" alt="<%- owner.full_name_display %>" />
+            </div>
+
+            <div class="created-by">
+                <span class="created-title">Created by</span>
+                <span class="created-user"><%- owner.full_name_display %></span>
+                <span class="created-date"><%- date %></span>
+            </div>
+        </div>
         <div class="issue-data">
             <div class="status-data <% if (editable) { %>clickable<% } %>">
                 <span class="level" style="background-color:<%= status.color %>"></span>
@@ -243,8 +254,12 @@ TaskStatusDirective = () ->
         editable = $attrs.editable?
 
         renderTaskstatus = (task) ->
+            owner = $scope.usersById?[task.owner]
+            date = moment(task.created_date).format("DD MMM YYYY HH:mm")
             status = $scope.statusById[task.status]
             html = template({
+                owner: owner
+                date: date
                 editable: editable
                 status: status
             })

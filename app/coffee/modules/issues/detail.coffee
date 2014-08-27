@@ -226,6 +226,16 @@ IssueStatusDirective = () ->
         </span>
         <span class="us-detail-status" style="color:<%= status.color %>"><%= status.name %></span>
     </h1>
+    <div class="us-created-by">
+        <div class="user-avatar">
+            <img src="<%= owner.photo %>" alt="<%- owner.full_name_display %>" />
+        </div>
+
+        <div class="created-by">
+            <span class="created-title">Created by <%- owner.full_name_display %></span>
+            <span class="created-date"><%- date %></span>
+        </div>
+    </div>
     <div class="issue-data">
         <div class="type-data <% if (editable) { %>clickable<% } %>">
             <span class="level" style="background-color:<%= type.color %>"></span>
@@ -298,11 +308,15 @@ IssueStatusDirective = () ->
         editable = $attrs.editable?
 
         renderIssuestatus = (issue) ->
+            owner = $scope.usersById?[issue.owner]
+            date = moment(issue.created_date).format("DD MMM YYYY HH:mm")
             type = $scope.typeById[issue.type]
             status = $scope.statusById[issue.status]
             severity = $scope.severityById[issue.severity]
             priority = $scope.priorityById[issue.priority]
             html = template({
+                owner: owner
+                date: date
                 editable: editable
                 status: status
                 severity: severity

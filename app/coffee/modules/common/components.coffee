@@ -272,52 +272,6 @@ AssignedToDirective = ($rootscope, $confirm) ->
 module.directive("tgAssignedTo", ["$rootScope", "$tgConfirm", AssignedToDirective])
 
 
-
-#############################################################################
-## Created by directive
-#############################################################################
-
-CreatedByDirective = ->
-    # TODO: i18n
-    template = _.template("""
-    <div class="user-avatar">
-        <img src="<%= owner.photo %>" alt="<%- owner.full_name_display %>" />
-    </div>
-
-    <div class="created-by">
-        <span class="assigned-title">Created by</span>
-        <a href="" title="edit assignment" class="user-assigned">
-            <%- owner.full_name_display %>
-        </a>
-        <span class="assigned-title"><%- date %></span>
-    </div>
-    """)
-
-    link = ($scope, $el, $attrs, $model) ->
-        renderAssignedTo = (instance) ->
-            owner = {}
-            date = null
-
-            if instance?
-                ownerId = instance.owner
-                date = moment(instance.created_date).format("DD MMM YYYY HH:mm")
-                owner = $scope.usersById?[ownerId]
-
-            html = template({owner: owner, date: date})
-            $el.html(html)
-
-        $scope.$watch $attrs.ngModel, (instance) ->
-            renderAssignedTo(instance)
-
-    return {
-        link:link,
-        require:"ngModel"
-    }
-
-
-module.directive("tgCreatedBy", CreatedByDirective)
-
-
 #############################################################################
 ## Common list directives
 #############################################################################
