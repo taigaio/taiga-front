@@ -127,7 +127,7 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         currentSearch = @location.search()
         urlfilters = @.getUrlFilters()
         for filterName, filterValue of urlfilters
-            if filterName == "page" or filterName == "orderBy"
+            if filterName == "page" or filterName == "orderBy" or filterName == "subject"
                 continue
 
             if filterName == "tags"
