@@ -93,16 +93,16 @@
     }
 }
 .comment-list.activeanimation {
-    .comment-single.ng-enter:first-child,
-    .comment-single.ng-leave:first-child {
+    .comment-single.ng-enter:last-child,
+    .comment-single.ng-leave:last-child {
         @include transition(all .3s ease-in);
     }
-    .comment-single.ng-enter:first-child,
-    .comment-single.ng-leave.ng-leave-active:first-child {
+    .comment-single.ng-enter:last-child,
+    .comment-single.ng-leave.ng-leave-active:last-child {
         opacity: 0;
     }
-    .comment-single.ng-leave:first-child,
-    .comment-single.ng-enter.ng-enter-active:first-child {
+    .comment-single.ng-leave:last-child,
+    .comment-single.ng-enter.ng-enter-active:last-child {
         opacity: 1;
     }
 }
