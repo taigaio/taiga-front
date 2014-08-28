@@ -105,7 +105,7 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin, taig
                 delete historyResult.values_diff.description_diff
 
             @scope.history = history.results
-            @scope.comments = _.filter(history.results, (historyEntry) -> historyEntry.comment != "")
+            @scope.comments = _.filter(history, (historyEntry) -> historyEntry.comment != "")
 
     loadInitialData: ->
         params = {

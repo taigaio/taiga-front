@@ -115,18 +115,23 @@ class RepositoryService extends taiga.Service
         return @http.get(url, params, httpOptions).then (data) =>
             return _.map(data.data, (x) => @model.make_model(name, x))
 
-    queryOne: (name, id, params) ->
+    queryOne: (name, id, params, options={}) ->
         url = @urls.resolve(name)
         url = "#{url}/#{id}" if id
+        httpOptions = {headers: {}}
+        if not options.enablePagination
+            httpOptions.headers["x-disable-pagination"] =  "1"
 
-        return @http.get(url, params).then (data) =>
+        return @http.get(url, params, httpOptions).then (data) =>
             return @model.make_model(name, data.data)
 
-    queryOneRaw: (name, id, params) ->
+    queryOneRaw: (name, id, params, options={}) ->
         url = @urls.resolve(name)
         url = "#{url}/#{id}" if id
-
-        return @http.get(url, params).then (data) =>
+        httpOptions = {headers: {}}
+        if not options.enablePagination
+            httpOptions.headers["x-disable-pagination"] =  "1"
+        return @http.get(url, params, httpOptions).then (data) =>
             return data.data
 
     queryPaginated: (name, params) ->

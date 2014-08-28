@@ -111,7 +111,7 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin, tai
                 delete historyResult.values_diff.description_diff
 
             @scope.history = history.results
-            @scope.comments = _.filter(history.results, (item) -> item.comment != "")
+            @scope.comments = _.filter(history, (item) -> item.comment != "")
 
     loadInitialData: ->
         params = {
