@@ -118,6 +118,10 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin, taig
             @scope.taskId = data.task
             return data
 
+        promise.then null, =>
+            @location.path("/not-found")
+            @location.replace()
+
         return promise.then(=> @.loadProject())
                       .then(=> @.loadUsersAndRoles())
                       .then(=> @.loadTask())

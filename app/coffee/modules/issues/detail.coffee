@@ -124,6 +124,10 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin, tai
             @scope.issueId = data.issue
             return data
 
+        promise.then null, =>
+            @location.path("/not-found")
+            @location.replace()
+
         return promise.then(=> @.loadProject())
                       .then(=> @.loadUsersAndRoles())
                       .then(=> @.loadIssue())

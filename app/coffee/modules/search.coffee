@@ -96,6 +96,10 @@ class SearchController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.projectId = data.project
             return data
 
+        promise.then null, =>
+            @location.path("/not-found")
+            @location.replace()
+
         return promise.then(=> @.loadProject())
                       .then(=> @.loadUsersAndRoles())
 

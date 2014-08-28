@@ -80,7 +80,7 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin, taig
             @scope.projectId = data.project
             return data
 
-          promise.then null, =>
+        promise.then null, =>
             @location.path("/project/#{@params.pslug}/wiki/#{@params.slug}/edit")
 
     loadWiki: ->
@@ -101,6 +101,10 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin, taig
         promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
             @scope.projectId = data.project
             return data
+
+        promise.then null, =>
+            @location.path("/not-found")
+            @location.replace()
 
         return promise.then(=> @.loadProject())
                       .then(=> @.loadUsersAndRoles())

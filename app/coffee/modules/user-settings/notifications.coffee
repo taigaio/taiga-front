@@ -68,6 +68,10 @@ class UserNotificationsController extends mixOf(taiga.Controller, taiga.PageMixi
               @scope.projectId = data.project
               return data
 
+          promise.then null, =>
+              @location.path("/not-found")
+              @location.replace()
+
           return promise.then(=> @.loadProject())
                         .then(=> @.loadNotifyPolicies())
 

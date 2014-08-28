@@ -129,6 +129,10 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin,
             @scope.usId = data.us
             return data
 
+        promise.then null, =>
+            @location.path("/not-found")
+            @location.replace()
+
         return promise.then(=> @.loadProject())
                       .then(=> @.loadUsersAndRoles())
                       .then(=> @.loadUs())

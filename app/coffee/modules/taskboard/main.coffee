@@ -43,9 +43,10 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$routeParams",
         "$q",
         "$appTitle"
+        "$tgLocation"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @appTitle) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @appTitle, @location) ->
         _.bindAll(@)
 
         @scope.sprintId = @params.id
@@ -141,6 +142,10 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
         promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
             @scope.projectId = data.project
             return data
+
+        promise.then null, =>
+            @location.path("/not-found")
+            @location.replace()
 
         return promise.then(=> @.loadProject())
                       .then(=> @.loadUsersAndRoles())

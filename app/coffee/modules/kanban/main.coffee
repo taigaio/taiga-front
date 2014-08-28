@@ -146,6 +146,10 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @scope.projectId = data.project
             return data
 
+        promise.then null, =>
+            @location.path("/not-found")
+            @location.replace()
+
         return promise.then(=> @.loadProject())
                       .then(=> @.loadUsersAndRoles())
                       .then(=> @.loadKanban())

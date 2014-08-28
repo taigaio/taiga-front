@@ -30,9 +30,9 @@ class ProjectsController extends taiga.Controller
 module.controller("ProjectsController", ProjectsController)
 
 class ProjectController extends taiga.Controller
-    @.$inject = ["$scope", "$tgResources", "$tgRepo", "$routeParams", "$q", "$rootScope", "$appTitle"]
+    @.$inject = ["$scope", "$tgResources", "$tgRepo", "$routeParams", "$q", "$rootScope", "$appTitle", "$tgLocation"]
 
-    constructor: (@scope, @rs, @repo, @params, @q, @rootscope, @appTitle) ->
+    constructor: (@scope, @rs, @repo, @params, @q, @rootscope, @appTitle, @location) ->
         @.loadInitialData()
             .then () =>
                 @appTitle.set(@scope.project.name)
@@ -42,6 +42,10 @@ class ProjectController extends taiga.Controller
         promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
             @scope.projectId = data.project
             return data
+
+        promise.then null, =>
+            @location.path("/not-found")
+            @location.replace()
 
         return promise
                 .then(=> @.loadPageData())
