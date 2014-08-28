@@ -46,7 +46,7 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         "$tgUrls",
         "$routeParams",
         "$q",
-        "$location",
+        "$tgLocation",
         "$appTitle",
         "tgLoader"
     ]

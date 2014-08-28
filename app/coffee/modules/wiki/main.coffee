@@ -41,7 +41,7 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin, taig
         "$tgResources",
         "$routeParams",
         "$q",
-        "$location",
+        "$tgLocation",
         "$filter",
         "$log",
         "$appTitle"

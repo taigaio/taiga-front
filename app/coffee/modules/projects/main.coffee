@@ -3,7 +3,7 @@ module = angular.module("taigaProject")
 bindOnce = @.taiga.bindOnce
 
 class ProjectsController extends taiga.Controller
-    @.$inject = ["$scope", "$tgResources", "$rootScope", "$tgNavUrls", "$tgAuth", "$location", "$appTitle", "$projectUrl", "tgLoader"]
+    @.$inject = ["$scope", "$tgResources", "$rootScope", "$tgNavUrls", "$tgAuth", "$tgLocation", "$appTitle", "$projectUrl", "tgLoader"]
 
     constructor: (@scope, @rs, @rootscope, @navurls, $auth, $location, appTitle, @projectUrl, tgLoader) ->
         appTitle.set("Projects")

@@ -39,7 +39,7 @@ class UserChangePasswordController extends mixOf(taiga.Controller, taiga.PageMix
           "$tgResources",
           "$routeParams",
           "$q",
-          "$location",
+          "$tgLocation",
           "$tgAuth"
       ]
 

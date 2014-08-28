@@ -39,7 +39,7 @@ class UserNotificationsController extends mixOf(taiga.Controller, taiga.PageMixi
           "$tgResources",
           "$routeParams",
           "$q",
-          "$location",
+          "$tgLocation",
           "$tgAuth"
       ]
 

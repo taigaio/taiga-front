@@ -39,7 +39,7 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin, taig
         "$tgResources",
         "$routeParams",
         "$q",
-        "$location",
+        "$tgLocation",
         "$log",
         "$appTitle",
         "$tgNavUrls"

@@ -59,4 +59,4 @@ DeleteUserDirective = ($repo, $rootscope, $auth, $location, lightboxService) ->
     return {link:link}
 
 
-module.directive("tgLbDeleteUser", ["$tgRepo", "$rootScope", "$tgAuth", "$location", "lightboxService", DeleteUserDirective])
+module.directive("tgLbDeleteUser", ["$tgRepo", "$rootScope", "$tgAuth", "$tgLocation", "lightboxService", DeleteUserDirective])

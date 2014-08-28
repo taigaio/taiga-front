@@ -123,4 +123,4 @@ NavigationUrlsDirective = ($navurls, $auth, $q, $location) ->
 
     return {link: link}
 
-module.directive("tgNav", ["$tgNavUrls", "$tgAuth", "$q", "$location", NavigationUrlsDirective])
+module.directive("tgNav", ["$tgNavUrls", "$tgAuth", "$q", "$tgLocation", NavigationUrlsDirective])

@@ -90,4 +90,4 @@ DeleteProjectDirective = ($repo, $rootscope, $auth, $location, lightboxService) 
     return {link:link}
 
 
-module.directive("tgLbDeleteProject", ["$tgRepo", "$rootScope", "$tgAuth", "$location", "lightboxService", DeleteProjectDirective])
+module.directive("tgLbDeleteProject", ["$tgRepo", "$rootScope", "$tgAuth", "$tgLocation", "lightboxService", DeleteProjectDirective])

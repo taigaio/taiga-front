@@ -181,7 +181,7 @@ LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls) -
 
     return {link:link}
 
-module.directive("tgLogin", ["$tgAuth", "$tgConfirm", "$location", "$tgConfig", "$routeParams", "$tgNavUrls",
+module.directive("tgLogin", ["$tgAuth", "$tgConfirm", "$tgLocation", "$tgConfig", "$routeParams", "$tgNavUrls",
                              LoginDirective])
 
 #############################################################################
@@ -221,7 +221,7 @@ RegisterDirective = ($auth, $confirm, $location, $config, $navUrls) ->
 
     return {link:link}
 
-module.directive("tgRegister", ["$tgAuth", "$tgConfirm", "$location", "$tgConfig", "$tgNavUrls",
+module.directive("tgRegister", ["$tgAuth", "$tgConfirm", "$tgLocation", "$tgConfig", "$tgNavUrls",
                                 RegisterDirective])
 
 #############################################################################
@@ -261,7 +261,7 @@ ForgotPasswordDirective = ($auth, $confirm, $location, $navUrls) ->
 
     return {link:link}
 
-module.directive("tgForgotPassword", ["$tgAuth", "$tgConfirm", "$location", "$tgNavUrls",
+module.directive("tgForgotPassword", ["$tgAuth", "$tgConfirm", "$tgLocation", "$tgNavUrls",
                                       ForgotPasswordDirective])
 
 #############################################################################
@@ -306,7 +306,7 @@ ChangePasswordFromRecoveryDirective = ($auth, $confirm, $location, $params, $nav
 
     return {link:link}
 
-module.directive("tgChangePasswordFromRecovery", ["$tgAuth", "$tgConfirm", "$location", "$routeParams",
+module.directive("tgChangePasswordFromRecovery", ["$tgAuth", "$tgConfirm", "$tgLocation", "$routeParams",
                                                   "$tgNavUrls", ChangePasswordFromRecoveryDirective])
 
 #############################################################################
@@ -387,7 +387,7 @@ InvitationDirective = ($auth, $confirm, $location, $params, $config, $navUrls) -
 
     return {link:link}
 
-module.directive("tgInvitation", ["$tgAuth", "$tgConfirm", "$location", "$routeParams", "$tgConfig",
+module.directive("tgInvitation", ["$tgAuth", "$tgConfirm", "$tgLocation", "$routeParams", "$tgConfig",
                                   "$tgNavUrls", InvitationDirective])
 
 #############################################################################
@@ -427,5 +427,5 @@ ChangeEmailDirective = ($repo, $model, $auth, $confirm, $location, $params, $nav
 
     return {link:link}
 
-module.directive("tgChangeEmail", ["$tgRepo", "$tgModel", "$tgAuth", "$tgConfirm", "$location", "$routeParams",
+module.directive("tgChangeEmail", ["$tgRepo", "$tgModel", "$tgAuth", "$tgConfirm", "$tgLocation", "$routeParams",
                                    "$tgNavUrls", ChangeEmailDirective])

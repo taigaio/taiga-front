@@ -40,7 +40,7 @@ class SearchController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$tgResources",
         "$routeParams",
         "$q",
-        "$location",
+        "$tgLocation",
         "$appTitle",
         "tgLoader"
     ]

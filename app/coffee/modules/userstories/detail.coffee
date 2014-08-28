@@ -40,7 +40,7 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin,
         "$tgResources",
         "$routeParams",
         "$q",
-        "$location",
+        "$tgLocation",
         "$log",
         "$appTitle",
         "$tgNavUrls"

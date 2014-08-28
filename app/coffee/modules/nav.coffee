@@ -185,7 +185,7 @@ ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout, tgLoader, $
 
     return {link: link}
 
-module.directive("tgProjectsNav", ["$rootScope", "animationFrame", "$timeout", "tgLoader", "$location",
+module.directive("tgProjectsNav", ["$rootScope", "animationFrame", "$timeout", "tgLoader", "$tgLocation",
                                    ProjectsNavigationDirective])
 
 

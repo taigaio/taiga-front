@@ -42,7 +42,7 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin, tai
         "$tgResources",
         "$routeParams",
         "$q",
-        "$location",
+        "$tgLocation",
         "$log",
         "$appTitle",
         "$tgNavUrls"

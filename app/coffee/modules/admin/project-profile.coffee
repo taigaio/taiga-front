@@ -43,7 +43,7 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$tgResources",
         "$routeParams",
         "$q",
-        "$location",
+        "$tgLocation",
         "$appTitle"
     ]
 
@@ -161,5 +161,5 @@ ProjectFeaturesDirective = ($rootscope, $log, $repo, $confirm) ->
 
     return {link:link}
 
-module.directive("tgProjectProfile", ["$rootScope", "$log", "$tgRepo", "$tgConfirm", "$location", ProjectProfileDirective])
+module.directive("tgProjectProfile", ["$rootScope", "$log", "$tgRepo", "$tgConfirm", "$tgLocation", ProjectProfileDirective])
 module.directive("tgProjectFeatures", ["$rootScope", "$log", "$tgRepo", "$tgConfirm", ProjectFeaturesDirective])
