@@ -22,9 +22,11 @@ block content
                 span ({{ role.members_count }} members with this role)
 
             div.general-category
-                | Can do estimations?
+                | When enabled, members assigned to this role will be able to estimate the point value for user stories
                 div.check
                     input(type="checkbox", ng-model="role.computable", ng-change="ctrl.setComputable()")
                     div
+                    span.check-text.check-yes Yes
+                    span.check-text.check-no No
 
             div(tg-role-permissions, ng-model="role")

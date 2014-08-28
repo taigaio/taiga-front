@@ -47,7 +47,7 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @appTitle) ->
         _.bindAll(@)
 
-        @scope.sectionName = "Roles" #i18n
+        @scope.sectionName = "Permissions" #i18n
         @scope.project = {}
 
         promise = @.loadInitialData()
@@ -208,6 +208,8 @@ RolePermissionsDirective = ($rootscope, $repo, $confirm) ->
                     <div class="check">
                         <input type="checkbox" <% if(permission.active) { %>checked="checked"<% } %>/>
                         <div></div>
+                        <span class="check-text check-yes">Yes</span>
+                        <span class="check-text check-no">No</span>
                     </div>
                 </div>
             <% }) %>
