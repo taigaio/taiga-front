@@ -102,7 +102,7 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin, tai
 
     loadHistory: =>
         return @rs.issues.history(@scope.issueId).then (history) =>
-            _.each history.results, (historyResult) ->
+            _.each history, (historyResult) ->
                 #If description was modified take only the description_html field
                 if historyResult.values_diff.description?
                     historyResult.values_diff.description = historyResult.values_diff.description_diff
@@ -110,7 +110,7 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin, tai
                 delete historyResult.values_diff.description_html
                 delete historyResult.values_diff.description_diff
 
-            @scope.history = history.results
+            @scope.history = history
             @scope.comments = _.filter(history, (item) -> item.comment != "")
 
     loadInitialData: ->
