@@ -225,8 +225,7 @@ TaskStatusDirective = () ->
             </div>
 
             <div class="created-by">
-                <span class="created-title">Created by</span>
-                <span class="created-user"><%- owner.full_name_display %></span>
+                <span class="created-title">Created by <%- owner.full_name_display %></span>
                 <span class="created-date"><%- date %></span>
             </div>
         </div>
