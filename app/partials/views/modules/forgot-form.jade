@@ -1,7 +1,9 @@
 div.forgot-form-container(tg-forgot-password)
     p.forgot-text
-        <strong>Oh! Did you forget your password?</strong><br />
-        Give us your username or email and we'll sent you instructions to get a new one
+        strong
+            | Oops, did you forget your password?
+        br
+        | Enter your username or email to get a new one
 
     form(ng-submit="ctrl.submit()")
         fieldset
@@ -11,4 +13,4 @@ div.forgot-form-container(tg-forgot-password)
             a.button.button-forgot.button-gray(href="", title="Reset Password") Reset Password
             input(type="submit", style="display:none")
 
-        a(href="", title="Login", tg-nav="login") No, I still keep my password, let's go to login page
+        a(href="", title="Login", tg-nav="login") Nah, take me back to the login page. I think I remember it.
