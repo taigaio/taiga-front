@@ -2,6 +2,14 @@
     header {
         position: relative;
     }
+    h1  {
+        margin-bottom: 0;
+    }
+    p {
+        @extend %title;
+        @extend %large;
+        color: $gray-light;
+    }
 }
 
 .project-values-options {

@@ -14,11 +14,11 @@ block content
             include views/modules/admin-submenu-project-values
 
         section.main.admin-roles
-            header
-                include views/components/mainTitle
+            include views/components/mainTitle
+            p.admin-subtitle Specify the numerical system you will use to indicate the level of difficulty for each User Story
 
-                - var helpLightboxId = "notion-admin-project-values-us-points"
-                include views/components/help-notion-button
+            - var helpLightboxId = "notion-admin-project-values-us-points"
+            include views/components/help-notion-button
 
             div.project-values-options
                 a.button.button-green.show-add-new(href="", title="Add New")
