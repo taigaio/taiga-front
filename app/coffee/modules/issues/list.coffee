@@ -99,7 +99,7 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
     getUrlFilters: ->
         filters = _.pick(@location.search(), "page", "tags", "statuses", "types",
-                                             "subject", "severities", "priorities",
+                                             "q", "severities", "priorities",
                                              "assignedTo", "createdBy", "orderBy")
         filters.page = 1 if not filters.page
         return filters
@@ -127,7 +127,7 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         currentSearch = @location.search()
         urlfilters = @.getUrlFilters()
         for filterName, filterValue of urlfilters
-            if filterName == "page" or filterName == "orderBy" or filterName == "subject"
+            if filterName == "page" or filterName == "orderBy" or filterName == "q"
                 continue
 
             if filterName == "tags"
@@ -165,8 +165,8 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         deferred = @q.defer()
         urlfilters = @.getUrlFilters()
 
-        if urlfilters.subject
-            @scope.filtersSubject = urlfilters.subject
+        if urlfilters.q
+            @scope.filtersQ = urlfilters.q
 
         @.loadMyFilters().then (myFilters) =>
             @scope.filters.myFilters = myFilters
@@ -581,17 +581,17 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm) ->
         $scope.$on "filters:loaded", (ctx, filters) ->
             initializeSelectedFilters(filters)
 
-        selectSubjectFilter = debounce 400, (value) ->
+        selectQFilter = debounce 400, (value) ->
             return if value is undefined
             if value.length == 0
-                $ctrl.replaceFilter("subject", null)
+                $ctrl.replaceFilter("q", null)
                 $ctrl.storeFilters()
             else
-                $ctrl.replaceFilter("subject", value)
+                $ctrl.replaceFilter("q", value)
                 $ctrl.storeFilters()
             $ctrl.loadIssues()
 
-        $scope.$watch("filtersSubject", selectSubjectFilter)
+        $scope.$watch("filtersQ", selectQFilter)
 
         # Dom Event Handlers
         $el.on "click", ".filters-cats > ul > li > a", (event) ->

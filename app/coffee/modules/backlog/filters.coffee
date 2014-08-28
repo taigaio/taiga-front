@@ -130,15 +130,15 @@ BacklogFiltersDirective = ($log, $location) ->
 
             $ctrl.loadUserstories()
 
-        selectSubjectFilter = debounce 400, (value) ->
+        selectQFilter = debounce 400, (value) ->
             return if value is undefined
             if value.length == 0
-                $ctrl.replaceFilter("subject", null)
+                $ctrl.replaceFilter("q", null)
             else
-                $ctrl.replaceFilter("subject", value)
+                $ctrl.replaceFilter("q", value)
             $ctrl.loadUserstories()
 
-        $scope.$watch("filtersSubject", selectSubjectFilter)
+        $scope.$watch("filtersQ", selectQFilter)
 
         ## Angular Watchers
         $scope.$on "filters:loaded", (ctx, filters) ->

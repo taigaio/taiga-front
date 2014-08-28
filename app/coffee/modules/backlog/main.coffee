@@ -106,7 +106,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             selectedTags = _.filter(@scope.filters.tags, "selected")
             selectedStatuses = _.filter(@scope.filters.statuses, "selected")
 
-            @scope.filtersSubject = ""
+            @scope.filtersQ = ""
 
             _.forEach [selectedTags, selectedStatuses], (filterGrp) =>
                 _.forEach filterGrp, (item) =>
@@ -327,13 +327,13 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         return promise
 
     getUrlFilters: ->
-        return _.pick(@location.search(), "statuses", "tags", "subject")
+        return _.pick(@location.search(), "statuses", "tags", "q")
 
     generateFilters: ->
         urlfilters = @.getUrlFilters()
 
-        if urlfilters.subject
-            @scope.filtersSubject = urlfilters.subject
+        if urlfilters.q
+            @scope.filtersQ = urlfilters.q
 
         searchdata = {}
         for name, value of urlfilters
@@ -393,7 +393,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
         @confirm.ask(title, subtitle).then =>
             # We modify the userstories in scope so the user doesn't see the removed US for a while
-            @scope.userstories = _.without(@scope.userstories, us);
+            @scope.userstories = _.without(@scope.userstories, us)
             @filterVisibleUserstories()
             @.repo.remove(us).then =>
                 @.loadBacklog()
@@ -559,7 +559,7 @@ BacklogDirective = ($repo, $rootscope) ->
 
         if filters.statuses ||
            filters.tags ||
-           filters.subject
+           filters.q
             showHideFilter($scope, $el, $ctrl)
 
         $scope.$on "$destroy", ->
