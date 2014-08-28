@@ -29,11 +29,12 @@ unslugify = @.taiga.slugify
 
 module = angular.module("taigaWiki")
 
+
 #############################################################################
 ## Wiki Main Directive
 #############################################################################
 
-WikiNavDirective = ($tgrepo, $log, $location, $confirm) ->
+WikiNavDirective = ($tgrepo, $log, $location, $confirm, $navUrls) ->
     template = _.template("""
     <header>
       <h1>Links</h1>
@@ -86,7 +87,11 @@ WikiNavDirective = ($tgrepo, $log, $location, $confirm) ->
                 linkId = target.parents('.wiki-link').data('id')
                 linkSlug = $scope.wikiLinks[linkId].href
                 $scope.$apply ->
-                    $location.path("/project/#{$scope.projectSlug}/wiki/#{linkSlug}")
+                    ctx = {
+                        project: $scope.projectSlug
+                        slug: linkSlug
+                    }
+                    $location.path($navUrls.resolve("project-wiki-page", ctx))
 
             $el.on "click", ".add-button", (event) ->
                 event.preventDefault()
@@ -134,4 +139,4 @@ WikiNavDirective = ($tgrepo, $log, $location, $confirm) ->
 
     return {link:link}
 
-module.directive("tgWikiNav", ["$tgRepo", "$log", "$tgLocation", "$tgConfirm", WikiNavDirective])
+module.directive("tgWikiNav", ["$tgRepo", "$log", "$tgLocation", "$tgConfirm", "$tgNavUrls", WikiNavDirective])

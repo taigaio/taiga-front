@@ -30,6 +30,7 @@ bindOnce = @.taiga.bindOnce
 
 module = angular.module("taigaAdmin")
 
+
 #############################################################################
 ## Project Profile Controller
 #############################################################################
@@ -85,14 +86,14 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
     openDeleteLightbox: ->
         @rootscope.$broadcast("deletelightbox:new", @scope.project)
 
-
 module.controller("ProjectProfileController", ProjectProfileController)
+
 
 #############################################################################
 ## Project Profile Directive
 #############################################################################
 
-ProjectProfileDirective = ($rootscope, $log, $repo, $confirm, $location) ->
+ProjectProfileDirective = ($rootscope, $log, $repo, $confirm) ->
     link = ($scope, $el, $attrs) ->
         form = $el.find("form").checksley({"onlyOneErrorElement": true})
         submit = =>
@@ -101,7 +102,6 @@ ProjectProfileDirective = ($rootscope, $log, $repo, $confirm, $location) ->
             promise = $repo.save($scope.project)
             promise.then ->
                 $confirm.notify("success")
-                $location.path("/project/#{$scope.project.slug}/admin/project-profile/details")
                 $scope.$emit("project:loaded", $scope.project)
 
             promise.then null, (data) ->
@@ -118,6 +118,9 @@ ProjectProfileDirective = ($rootscope, $log, $repo, $confirm, $location) ->
             submit()
 
     return {link:link}
+
+module.directive("tgProjectProfile", ["$rootScope", "$log", "$tgRepo", "$tgConfirm", ProjectProfileDirective])
+
 
 #############################################################################
 ## Project Features Directive
@@ -161,5 +164,4 @@ ProjectFeaturesDirective = ($rootscope, $log, $repo, $confirm) ->
 
     return {link:link}
 
-module.directive("tgProjectProfile", ["$rootScope", "$log", "$tgRepo", "$tgConfirm", "$tgLocation", ProjectProfileDirective])
 module.directive("tgProjectFeatures", ["$rootScope", "$log", "$tgRepo", "$tgConfirm", ProjectFeaturesDirective])

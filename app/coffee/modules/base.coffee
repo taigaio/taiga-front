@@ -72,6 +72,7 @@ urls = {
 
     "project-wiki": "/project/:project/wiki",
     "project-wiki-page": "/project/:project/wiki/:slug",
+    "project-wiki-page-edit": "/project/:project/wiki/:slug/edit",
 
     # Admin
     "project-admin-home": "/project/:project/admin/project-profile/details"

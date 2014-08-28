@@ -44,10 +44,12 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin, taig
         "$tgLocation",
         "$filter",
         "$log",
-        "$appTitle"
+        "$appTitle",
+        "$tgNavUrls"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @filter, @log, @appTitle) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @filter, @log, @appTitle,
+                  @navUrls) ->
         @.attachmentsUrlName = "wiki/attachments"
 
         @scope.projectSlug = @params.pslug
@@ -79,9 +81,12 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin, taig
             @scope.wikiId = data.wikipage
             @scope.projectId = data.project
             return data
-
         promise.then null, =>
-            @location.path("/project/#{@params.pslug}/wiki/#{@params.slug}/edit")
+            ctx = {
+                project: @params.pslug
+                slug: @params.slug
+            }
+            @location.path(@navUrls.resolve("project-wiki-page-edit", ctx))
 
     loadWiki: ->
         if @scope.wikiId
@@ -114,18 +119,27 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin, taig
                       .then(=> @.loadAttachments(@scope.wikiId))
 
     edit: ->
-        @location.path("/project/#{@scope.projectSlug}/wiki/#{@scope.wikiSlug}/edit")
+        ctx = {
+            project: @scope.projectSlug
+            slug: @scope.wikiSlug
+        }
+        @location.path(@navUrls.resolve("project-wiki-page-edit", ctx))
 
     cancel: ->
-        @location.path("/project/#{@scope.projectSlug}/wiki/#{@scope.wikiSlug}")
+        ctx = {
+            project: @scope.projectSlug
+            slug: @scope.wikiSlug
+        }
+        @location.path(@navUrls.resolve("project-wiki-page", ctx))
 
     delete: ->
         onSuccess = =>
+            ctx = {project: @scope.projectSlug}
+            @location.path(@navUrls.resolve("project-wiki", ctx))
             @confirm.notify("success")
-            @location.path("/project/#{@scope.projectSlug}/wiki")
+
         onError = =>
             @confirm.notify("error")
-
 
         # TODO: i18n
         title = "Delete Wiki Page"
@@ -143,12 +157,15 @@ module.controller("WikiDetailController", WikiDetailController)
 class WikiEditController extends WikiDetailController
     save: ->
         onSuccess = =>
+            ctx = {
+                project: @scope.projectSlug
+                slug: @scope.wiki.slug
+            }
+            @location.path(@navUrls.resolve("project-wiki-page", ctx))
             @confirm.notify("success")
-            @location.path("/project/#{@scope.projectSlug}/wiki/#{@scope.wiki.slug}")
 
         onError = =>
             @confirm.notify("error")
-            @location.path("/project/#{@scope.projectSlug}/wiki/#{@scope.wiki.slug}")
 
         if @scope.wiki.id
             @repo.save(@scope.wiki).then onSuccess, onError
@@ -157,8 +174,8 @@ class WikiEditController extends WikiDetailController
             @scope.wiki.slug = @scope.wikiSlug
             @repo.create("wiki", @scope.wiki).then onSuccess, onError
 
-
 module.controller("WikiEditController", WikiEditController)
+
 
 #############################################################################
 ## Wiki Main Directive
@@ -172,6 +189,7 @@ WikiDirective = ($tgrepo, $log, $location, $confirm) ->
 
 module.directive("tgWikiDetail", ["$tgRepo", "$log", "$tgLocation", "$tgConfirm", WikiDirective])
 
+
 #############################################################################
 ## Wiki Edit Main Directive
 #############################################################################
@@ -183,6 +201,7 @@ WikiEditDirective = ($tgrepo, $log, $location, $confirm) ->
     return {link:link}
 
 module.directive("tgWikiEdit", ["$tgRepo", "$log", "$tgLocation", "$tgConfirm", WikiEditDirective])
+
 
 #############################################################################
 ## Wiki User Info Directive
@@ -207,7 +226,7 @@ WikiUserInfoDirective = ($log) ->
             else
                 user = $scope.usersById[wiki.last_modifier]
             if user is undefined
-                ctx = {name: "Unassigned", imgurl: "/images/unnamed.png"}
+                ctx = {name: "unknown", imgurl: "/images/unnamed.png"}
             else
                 ctx = {name: user.full_name_display, imgurl: user.photo}
 

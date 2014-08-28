@@ -42,23 +42,15 @@ CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $project
 
     return {link:link}
 
-module.directive("tgLbCreateProject", [
-    "$rootScope",
-    "$tgRepo",
-    "$tgConfirm",
-    "$location",
-    "$tgNavUrls",
-    "$tgResources",
-    "$projectUrl",
-    "lightboxService",
-    CreateProject
-])
+module.directive("tgLbCreateProject", ["$rootScope", "$tgRepo", "$tgConfirm", "$location", "$tgNavUrls",
+                                       "$tgResources", "$projectUrl", "lightboxService", CreateProject])
+
 
 #############################################################################
 ## Delete Project Lightbox Directive
 #############################################################################
 
-DeleteProjectDirective = ($repo, $rootscope, $auth, $location, lightboxService) ->
+DeleteProjectDirective = ($repo, $rootscope, $auth, $location, $navUrls, lightboxService) ->
     link = ($scope, $el, $attrs) ->
         projectToDelete = null
         $scope.$on "deletelightbox:new", (ctx, project)->
@@ -73,7 +65,7 @@ DeleteProjectDirective = ($repo, $rootscope, $auth, $location, lightboxService) 
 
             promise.then (data) ->
                 lightboxService.close($el)
-                $location.path("/")
+                $location.path($navUrls.resolve("home"))
 
             # FIXME: error handling?
             promise.then null, ->
@@ -89,5 +81,5 @@ DeleteProjectDirective = ($repo, $rootscope, $auth, $location, lightboxService) 
 
     return {link:link}
 
-
-module.directive("tgLbDeleteProject", ["$tgRepo", "$rootScope", "$tgAuth", "$tgLocation", "lightboxService", DeleteProjectDirective])
+module.directive("tgLbDeleteProject", ["$tgRepo", "$rootScope", "$tgAuth", "$tgLocation", "$tgNavUrls",
+                                       "lightboxService", DeleteProjectDirective])

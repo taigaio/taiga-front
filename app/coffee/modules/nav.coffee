@@ -25,9 +25,11 @@ bindOnce = @.taiga.bindOnce
 
 module = angular.module("taigaNavMenu", [])
 
+
 #############################################################################
 ## Projects Navigation
 #############################################################################
+
 class ProjectsNavigationController extends taiga.Controller
     @.$inject = ["$scope", "$rootScope", "$tgResources", "$tgNavUrls", "$projectUrl"]
 
@@ -59,7 +61,9 @@ class ProjectsNavigationController extends taiga.Controller
         @rootscope.$broadcast("projects:create")
 
     filterProjects: (text) ->
-        @scope.filteredProjects = _.filter(@scope.projects, (project) -> project.name.toLowerCase().indexOf(text) > -1)
+        @scope.filteredProjects = _.filter @scope.projects, (project) ->
+            project.name.toLowerCase().indexOf(text) > -1
+
         @scope.filterText = text
         @rootscope.$broadcast("projects:filtered")
 
@@ -193,7 +197,7 @@ module.directive("tgProjectsNav", ["$rootScope", "animationFrame", "$timeout", "
 ## Project
 #############################################################################
 
-ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location) ->
+ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location, $navUrls) ->
     menuEntriesTemplate = _.template("""
     <div class="menu-container">
         <ul class="main-nav">
@@ -322,7 +326,7 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location) -
             event.preventDefault()
             $auth.logout()
             $scope.$apply ->
-                $location.path("/login")
+                $location.path($navUrls.resolve("login"))
 
         $el.on "click", "#nav-search > a", (event) ->
             event.preventDefault()
@@ -342,5 +346,5 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location) -
 
     return {link: link}
 
-
-module.directive("tgProjectMenu", ["$log", "$compile", "$tgAuth", "$rootScope", "$tgAuth", "$tgLocation", ProjectMenuDirective])
+module.directive("tgProjectMenu", ["$log", "$compile", "$tgAuth", "$rootScope", "$tgAuth", "$tgLocation",
+                                   "$tgNavUrls", ProjectMenuDirective])

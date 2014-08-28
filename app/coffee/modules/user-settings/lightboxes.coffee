@@ -24,11 +24,12 @@ bindOnce = @.taiga.bindOnce
 
 module = angular.module("taigaUserSettings")
 
+
 #############################################################################
 ## Delete User Lightbox Directive
 #############################################################################
 
-DeleteUserDirective = ($repo, $rootscope, $auth, $location, lightboxService) ->
+DeleteUserDirective = ($repo, $rootscope, $auth, $location, $navUrls, lightboxService) ->
     link = ($scope, $el, $attrs) ->
         $scope.$on "deletelightbox:new", (ctx, user)->
             lightboxService.open($el)
@@ -42,7 +43,7 @@ DeleteUserDirective = ($repo, $rootscope, $auth, $location, lightboxService) ->
             promise.then (data) ->
                 lightboxService.close($el)
                 $auth.logout()
-                $location.path("/login")
+                $location.path($navUrls.resolve("login"))
 
             # FIXME: error handling?
             promise.then null, ->
@@ -58,5 +59,5 @@ DeleteUserDirective = ($repo, $rootscope, $auth, $location, lightboxService) ->
 
     return {link:link}
 
-
-module.directive("tgLbDeleteUser", ["$tgRepo", "$rootScope", "$tgAuth", "$tgLocation", "lightboxService", DeleteUserDirective])
+module.directive("tgLbDeleteUser", ["$tgRepo", "$rootScope", "$tgAuth", "$tgLocation", "$tgNavUrls",
+                                    "lightboxService", DeleteUserDirective])

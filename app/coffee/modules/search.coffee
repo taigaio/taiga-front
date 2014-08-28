@@ -29,6 +29,7 @@ trim = @.taiga.trim
 
 module = angular.module("taigaSearch", [])
 
+
 #############################################################################
 ## Search Controller
 #############################################################################
@@ -121,13 +122,12 @@ SearchBoxDirective = ($lightboxService, $navurls, $location, $route)->
 
             text = $el.find("#search-text").val()
 
-            url = $navurls.resolve("project-search")
-            url = $navurls.formatUrl(url, {'project': project.slug})
+            url = $navurls.resolve("project-search", {project: project.slug})
 
             $lightboxService.close($el)
             $scope.$apply ->
                 $location.path(url)
-                $location.search("text",text).path(url)
+                $location.search("text", text).path(url)
                 $route.reload()
 
         $scope.$on "search-box:show", (ctx, newProject)->
@@ -144,7 +144,6 @@ SearchBoxDirective = ($lightboxService, $navurls, $location, $route)->
 
     return {link:link}
 
-
 module.directive("tgSearchBox", ["lightboxService", "$tgNavUrls", "$tgLocation", "$route", SearchBoxDirective])
 
 
@@ -153,7 +152,6 @@ module.directive("tgSearchBox", ["lightboxService", "$tgNavUrls", "$tgLocation",
 #############################################################################
 
 SearchDirective = ($log, $compile, $templatecache, $routeparams, $location) ->
-    # linkFilters = ($scope, $el, $attrs, $ctrl) ->
     linkTable = ($scope, $el, $attrs, $ctrl) ->
         tabsDom = $el.find("section.search-filter")
         lastSeatchResults = null
@@ -235,7 +233,6 @@ SearchDirective = ($log, $compile, $templatecache, $routeparams, $location) ->
 
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
-        # linkFilters($scope, $el, $attrs, $ctrl)
         linkTable($scope, $el, $attrs, $ctrl)
 
         searchText = $routeparams.text
@@ -244,5 +241,5 @@ SearchDirective = ($log, $compile, $templatecache, $routeparams, $location) ->
 
     return {link:link}
 
-
-module.directive("tgSearch", ["$log", "$compile", "$templateCache", "$routeParams", "$tgLocation", SearchDirective])
+module.directive("tgSearch", ["$log", "$compile", "$templateCache", "$routeParams", "$tgLocation",
+                              SearchDirective])

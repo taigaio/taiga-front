@@ -2,20 +2,31 @@ taiga = @.taiga
 module = angular.module("taigaProject")
 bindOnce = @.taiga.bindOnce
 
+
 class ProjectsController extends taiga.Controller
-    @.$inject = ["$scope", "$tgResources", "$rootScope", "$tgNavUrls", "$tgAuth", "$tgLocation", "$appTitle", "$projectUrl", "tgLoader"]
+    @.$inject = [
+        "$scope",
+        "$tgResources",
+        "$rootScope",
+        "$tgNavUrls",
+        "$tgAuth",
+        "$tgLocation",
+        "$appTitle",
+        "$projectUrl",
+        "tgLoader"
+    ]
 
-    constructor: (@scope, @rs, @rootscope, @navurls, $auth, $location, appTitle, @projectUrl, tgLoader) ->
-        appTitle.set("Projects")
+    constructor: (@scope, @rs, @rootscope, @navurls, @auth, @location, @appTitle, @projectUrl, @tgLoader) ->
+        @appTitle.set("Projects")
 
-        if !$auth.isAuthenticated()
-            $location.path("/login")
+        if !@auth.isAuthenticated()
+            @location.path(@navurls.resolve("login"))
 
         @.projects = []
         @.loadInitialData()
         .then () =>
             @scope.$emit("projects:loaded")
-            tgLoader.pageLoaded()
+            @tgLoader.pageLoaded()
 
     loadInitialData: ->
         return @rs.projects.list().then (projects) =>
@@ -29,8 +40,18 @@ class ProjectsController extends taiga.Controller
 
 module.controller("ProjectsController", ProjectsController)
 
+
 class ProjectController extends taiga.Controller
-    @.$inject = ["$scope", "$tgResources", "$tgRepo", "$routeParams", "$q", "$rootScope", "$appTitle", "$tgLocation"]
+    @.$inject = [
+        "$scope",
+        "$tgResources",
+        "$tgRepo",
+        "$routeParams",
+        "$q",
+        "$rootScope",
+        "$appTitle",
+        "$tgLocation"
+    ]
 
     constructor: (@scope, @rs, @repo, @params, @q, @rootscope, @appTitle, @location) ->
         @.loadInitialData()
@@ -66,8 +87,8 @@ class ProjectController extends taiga.Controller
             @scope.stats = stats
             return stats
 
-
 module.controller("ProjectController", ProjectController)
+
 
 ProjectsPaginationDirective = ($timeout) ->
     link = ($scope, $el, $attrs) ->
@@ -150,8 +171,6 @@ ProjectsPaginationDirective = ($timeout) ->
                 container = $el.find("ul")
 
                 renderNextAndPrev()
-
-
 
     return {
         link: link,

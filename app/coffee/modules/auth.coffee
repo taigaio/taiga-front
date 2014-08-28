@@ -403,7 +403,7 @@ ChangeEmailDirective = ($repo, $model, $auth, $confirm, $location, $params, $nav
         onSuccessSubmit = (response) ->
             $repo.queryOne("users", $auth.getUser().id).then (data) =>
                 $auth.setUser(data)
-                $location.path($navUrls.resolve("home")) # TODO: Use the future 'urls' service
+                $location.path($navUrls.resolve("home"))
                 $confirm.success("Our Oompa Loompas updated your email") #TODO: i18n
 
         onErrorSubmit = (response) ->
