@@ -70,6 +70,8 @@ paths = {
         "app/vendor/jquery-flot/jquery.flot.js",
         "app/vendor/jquery-flot/jquery.flot.pie.js",
         "app/vendor/jquery-flot/jquery.flot.time.js",
+        "app/vendor/jquery-flot/jquery.flot.time.js",
+        "app/vendor/flot-axislabels/jquery.flot.axislabels.js",
         "app/vendor/jquery-textcomplete/jquery.textcomplete.js",
         "app/vendor/markitup/markitup/jquery.markitup.js"
         "app/js/jquery.ui.git.js",

@@ -66,6 +66,7 @@
     "markitup": "~1.1.14",
     "jquery-textcomplete": "yuku-t/jquery-textcomplete#~0.1.1",
     "flot-orderBars": "emmerich/flot-orderBars",
+    "flot-axislabels": "markrcote/flot-axislabels",
     "moment": "~2.6.0",
     "isMobile": "~0.3.1",
     "favico.js": "0.3.4",

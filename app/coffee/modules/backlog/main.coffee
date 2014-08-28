@@ -793,8 +793,7 @@ tgBacklogGraphDirective = ->
     redrawChart = (element, dataToDraw) ->
         width = element.width()
         element.height(width/6)
-        milestones = _.map(dataToDraw.milestones, (ml) -> ml.name)
-        milestonesRange = [0..(milestones.length - 1)]
+        milestonesRange = [0..(dataToDraw.milestones.length - 1)]
         data = []
         zero_line = _.map(dataToDraw.milestones, (ml) -> 0)
         data.push({
@@ -844,11 +843,13 @@ tgBacklogGraphDirective = ->
                 borderColor: '#ccc'
             }
             xaxis: {
-                ticks: _.zip(milestonesRange, milestones)
+                ticks: dataToDraw.milestones.length
+                axisLabel: "Sprints"
                 axisLabelUseCanvas: true
-                axisLabelFontSizePixels: 12
+                axisLabelFontSizePixels: 14
                 axisLabelFontFamily: 'Verdana, Arial, Helvetica, Tahoma, sans-serif'
-                axisLabelPadding: 5
+                axisLabelPadding: 15
+                tickFormatter: (val, axis) -> ""
             }
             series: {
                 shadowSize: 0
