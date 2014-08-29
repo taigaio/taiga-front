@@ -253,7 +253,7 @@ module.directive("tgLbCreateEditUserstory", [
     "$tgResources",
     "$rootScope",
     "lightboxService",
-    "loadingService",
+    "$tgLoading",
     CreateEditUserstoryDirective
 ])
 

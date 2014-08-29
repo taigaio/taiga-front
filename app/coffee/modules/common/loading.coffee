@@ -21,7 +21,7 @@
 
 module = angular.module("taigaCommon")
 
-class LoadingService extends taiga.Service
+class TgLoadingService extends taiga.Service
     start: (target) ->
         target.data('loading-old-content', target.html())
         target.addClass('loading')
@@ -33,4 +33,4 @@ class LoadingService extends taiga.Service
         target.html(oldContent)
         target.removeClass('loading')
 
-module.service("loadingService", LoadingService)
+module.service("$tgLoading", TgLoadingService)
