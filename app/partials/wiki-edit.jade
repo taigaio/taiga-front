@@ -9,15 +9,14 @@ block content
         sidebar.menu-secondary.extrabar(tg-check-permission, permission="view_wiki_links")
             section.wiki-nav(tg-wiki-nav, ng-model="wikiLinks")
         section.main.wiki
-            //Include views/components/mainTitle
-            header
+            div.header-with-actions
                 h1
                     span(tg-bo-bind="project.name", class="project-name-short")
                     span.green Wiki
                     span.wiki-title(tg-bo-bind='wikiSlug|unslugify')
-            .action-buttons
-                a.button.button-green.save-wiki(href="", title="Save", ng-click="ctrl.save()") Save
-                a.button.button-red.cancel-wiki(href="", title="CAncel", ng-click="ctrl.cancel()") Cancel
+                .action-buttons
+                    a.button.button-green.save-wiki(href="", title="Save", ng-click="ctrl.save()") Save
+                    a.button.button-red.cancel-wiki(href="", title="CAncel", ng-click="ctrl.cancel()") Cancel
 
             section.wysiwyg
                 textarea(placeholder="Write a your wiki page", ng-model="wiki.content", tg-markitup)
