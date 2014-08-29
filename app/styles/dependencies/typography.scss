@@ -2,7 +2,7 @@
 
 // Font face
 
-@each $font-face in DroidSans, DroidSans-Bold, ostrichSans, OpenSans-CondLight-webfont, taiga {
+@each $font-face in DroidSans, DroidSans-Bold, OpenSans-CondLight-webfont, taiga {
     @font-face {
         font-family: '#{$font-face}';
         src: url('../fonts/#{$font-face}.eot?#iefix') format('embedded-opentype'),

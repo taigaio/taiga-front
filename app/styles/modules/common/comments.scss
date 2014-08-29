@@ -38,6 +38,9 @@
     &:first-child {
         margin-top: 0;
     }
+    &:last-child {
+        border: 0;
+    }
     .username {
         color: $green-taiga;
         display: block;
