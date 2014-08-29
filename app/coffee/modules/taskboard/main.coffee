@@ -49,7 +49,6 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @appTitle, @location) ->
         _.bindAll(@)
 
-        @scope.sprintId = @params.id
         @scope.sectionName = "Taskboard"
 
         promise = @.loadInitialData()
@@ -139,8 +138,14 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
         ]).then(=> @.loadTasks())
 
     loadInitialData: ->
-        promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
+        params = {
+            pslug: @params.pslug
+            sslug: @params.sslug
+        }
+
+        promise = @repo.resolve(params).then (data) =>
             @scope.projectId = data.project
+            @scope.sprintId = data.milestone
             return data
 
         promise.then null, =>

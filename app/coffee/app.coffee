@@ -28,7 +28,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, tgLoade
         {templateUrl: "/partials/project.html"})
     $routeProvider.when("/project/:pslug/backlog",
         {templateUrl: "/partials/backlog.html", resolve: {loader: tgLoaderProvider.add()}})
-    $routeProvider.when("/project/:pslug/taskboard/:id",
+    $routeProvider.when("/project/:pslug/taskboard/:sslug",
         {templateUrl: "/partials/taskboard.html"})
     $routeProvider.when("/project/:pslug/search",
         {templateUrl: "/partials/search.html", reloadOnSearch: false})
