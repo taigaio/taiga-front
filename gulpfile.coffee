@@ -197,6 +197,7 @@ gulp.task "copy",  ->
 gulp.task "connect", ->
     connect.server({
         root: paths.dist
+        port: 9000
         livereload: true
     })
 
