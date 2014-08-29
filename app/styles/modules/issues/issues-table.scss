@@ -60,6 +60,7 @@
     .created-field {
         @include table-flex-child(1, 100px, 0, 150px);
         padding: 0 1rem;
+        position: relative;
         text-align: left;
     }
     .assigned-field {
@@ -89,7 +90,7 @@
         }
     }
     .pop-status {
-        @include popover(200px, 0, 65%, '', '');
+        @include popover(200px, 20px, 0, '', '');
         &.fix {
             bottom: 0;
             top: auto;
