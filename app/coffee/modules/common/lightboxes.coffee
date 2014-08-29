@@ -146,7 +146,7 @@ module.directive("tgLbBlock", ["lightboxService", BlockLightboxDirective])
 ## Create/Edit Userstory Lightbox Directive
 #############################################################################
 
-CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService) ->
+CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService, $loading) ->
     link = ($scope, $el, attrs) ->
         isNew = true
 
@@ -202,32 +202,25 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService)
             form = $el.find("form").checksley()
             target = angular.element(event.currentTarget)
 
-            loading = "<span class='icon icon-spinner'></span>" #Create spinner item
-            finish = target.text() #Save current text
-
             if not form.validate()
                 return
 
+            $loading.start(target)
             if isNew
-                target.addClass('loading').html(loading) # Add item
-
                 promise = $repo.create("userstories", $scope.us)
                 broadcastEvent = "usform:new:success"
 
             else
-                target.addClass('loading').html(loading) # Add item
                 promise = $repo.save($scope.us)
                 broadcastEvent = "usform:edit:success"
 
             promise.then (data) ->
-                target.removeClass('loading').html(finish) # Add item
-
+                $loading.finish(target)
                 lightboxService.close($el)
                 $rootScope.$broadcast(broadcastEvent, data)
 
             promise.then null, (data) ->
-                target.removeClass('loading').html(finish) # Add item
-
+                $loading.finish(target)
                 form.setErrors(data)
                 if data._error_message
                     $confirm.notify("error", data._error_message)
@@ -260,6 +253,7 @@ module.directive("tgLbCreateEditUserstory", [
     "$tgResources",
     "$rootScope",
     "lightboxService",
+    "loadingService",
     CreateEditUserstoryDirective
 ])
 
