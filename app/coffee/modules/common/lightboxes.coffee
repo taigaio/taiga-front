@@ -200,21 +200,35 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService)
         $el.on "click", ".button-green", (event) ->
             event.preventDefault()
             form = $el.find("form").checksley()
+            target = angular.element(event.currentTarget)
+
+            loading = "<span class='icon icon-spinner'></span>" #Create spinner item
+            finish = target.text() #Save current text
+
             if not form.validate()
                 return
 
             if isNew
+                target.html(loading) # Add item
+
                 promise = $repo.create("userstories", $scope.us)
                 broadcastEvent = "usform:new:success"
+
             else
+                target.html(loading) # Add item
+
                 promise = $repo.save($scope.us)
                 broadcastEvent = "usform:edit:success"
 
             promise.then (data) ->
+                target.html(finish) # Add item
+
                 lightboxService.close($el)
                 $rootScope.$broadcast(broadcastEvent, data)
 
             promise.then null, (data) ->
+                target.html(loading) # Add item
+
                 form.setErrors(data)
                 if data._error_message
                     $confirm.notify("error", data._error_message)

@@ -5,6 +5,10 @@
     }
 }
 
+.icon-spinner {
+    @include animation(spin .5s linear);
+}
+
 //Spinner
 @include keyframes(fadeIn) {
     0% {
