@@ -28,7 +28,7 @@ module = angular.module("taigaBacklog")
 ## Creare/Edit Sprint Lightbox Directive
 #############################################################################
 
-CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService) ->
+CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading) ->
     link = ($scope, $el, attrs) ->
         createSprint = true
         $scope.sprint = {
@@ -38,7 +38,7 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService) ->
             estimated_finish: null
         }
 
-        submit = ->
+        submit = (event) ->
             form = $el.find("form").checksley()
             if not form.validate()
                 return
@@ -55,12 +55,17 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService) ->
                 newSprint.setAttr("estimated_finish", moment(newSprint.estimated_finish).format("YYYY-MM-DD"))
                 promise = $repo.save(newSprint)
 
+            target = angular.element(event.currentTarget)
+            $loading.start(target)
+
             promise.then (data) ->
+                $loading.finish(target)
                 $scope.sprintsCounter += 1 if createSprint
                 lightboxService.close($el)
                 $rootscope.$broadcast("sprintform:create:success", data)
 
             promise.then null, (data) ->
+                $loading.finish(target)
                 form.setErrors(data)
                 if data._error_message
                     $confirm.notify("error", data._error_message)
@@ -111,7 +116,7 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService) ->
 
         $el.on "click", ".button-green", (event) ->
             event.preventDefault()
-            submit()
+            submit(event)
 
         $el.on "click", ".delete-sprint .icon-delete", (event) ->
             event.preventDefault()
@@ -129,5 +134,6 @@ module.directive("tgLbCreateEditSprint", [
     "$tgResources",
     "$rootScope",
     "lightboxService"
+    "$tgLoading"
     CreateEditSprint
 ])
