@@ -114,9 +114,19 @@ module.directive("tgTagLine", ["$log", TagLineDirective])
 ## Change (comment and history mode) directive
 #############################################################################
 
-ChangeDirective = ->
+ChangesDirective = ->
     # TODO: i18n
+    containerTemplate = _.template("""
+    <div>
+        <% if (showMoreEnabled){ %>
+            <a href="" title="Show more" class="show-more">
+            Show <%- howManyMore %> more
+            </a>
+        <% } %>
+    </div>
+    """)
     commentBaseTemplate = _.template("""
+    <div class="entry comment-single <% if(hidden){ %>hidden<% }%>">
         <div class="comment-user activity-comment">
             <a class="avatar" href="" title="<%- userFullName %>">
                 <img src="<%- avatar %>" alt="<%- userFullName %>">
@@ -145,24 +155,27 @@ ChangeDirective = ->
                 <%- creationDate %>
             </div>
         </div>
+    </div>
     """)
     changeBaseTemplate = _.template("""
-    <div class="activity-user">
-        <a class="avatar" href="" title="<%- userFullName %>">
-            <img src="<%- avatar %>" alt="<%- userFullName %>">
-        </a>
-    </div>
-    <div class="activity-content">
-        <div class="activity-username">
-            <a class="username" href="" title="<%- userFullName %>">
-                <%- userFullName %>
+    <div class="entry activity-single <% if(hidden){ %>hidden<% }%>">
+        <div class="activity-user">
+            <a class="avatar" href="" title="<%- userFullName %>">
+                <img src="<%- avatar %>" alt="<%- userFullName %>">
             </a>
-            <span class="date">
-                <%- creationDate %>
-            </span>
         </div>
-        <div class="comment wysiwyg">
-            <%= comment %>
+        <div class="activity-content">
+            <div class="activity-username">
+                <a class="username" href="" title="<%- userFullName %>">
+                    <%- userFullName %>
+                </a>
+                <span class="date">
+                    <%- creationDate %>
+                </span>
+            </div>
+            <div class="comment wysiwyg">
+                <%= comment %>
+            </div>
         </div>
     </div>
     """)
@@ -225,6 +238,7 @@ ChangeDirective = ->
     </div>
     """)
     link = ($scope, $el, $attrs, $model) ->
+        $.uncollapsedEntries = null
         countChanges = (comment) ->
             return _.keys(comment.values_diff).length
 
@@ -275,7 +289,7 @@ ChangeDirective = ->
                         to: prettyPrintModification(modification[1])
                     }))
 
-        renderComment = (comment) ->
+        renderComment = (comment, containerDomNode, hidden) ->
             html = commentBaseTemplate({
                 avatar: getUserAvatar(comment.user.pk)
                 userFullName: getUserFullName(comment.user.pk)
@@ -283,23 +297,26 @@ ChangeDirective = ->
                 comment: comment.comment_html
                 changesText: buildChangesText(comment)
                 hasChanges: countChanges(comment) > 0
+                hidden: hidden
             })
-
-            $el.html(html)
-            activityContentDom = $el.find(".comment-content .us-activity")
+            entryDomNode = $(html)
+            activityContentDom = entryDomNode.find(".comment-content .us-activity")
             renderEntries(comment, activityContentDom)
+            console.log entryDomNode.html()
+            containerDomNode.append(entryDomNode)
 
-        renderChange = (change) ->
+        renderChange = (change, containerDomNode, hidden) ->
             html = changeBaseTemplate({
                 avatar: getUserAvatar(change.user.pk)
                 userFullName: getUserFullName(change.user.pk)
                 creationDate: moment(change.created_at).format("DD MMM YYYY HH:mm")
                 comment: change.comment_html
+                hidden: hidden
             })
-
-            $el.html(html)
-            activityContentDom = $el.find(".activity-content")
+            entryDomNode = $(html)
+            activityContentDom = entryDomNode.find(".activity-content")
             renderEntries(change, activityContentDom)
+            containerDomNode.append(entryDomNode)
 
         getUserFullName = (userId) ->
             return $scope.usersById[userId]?.full_name_display
@@ -320,25 +337,44 @@ ChangeDirective = ->
 
             return value
 
-        $scope.$watch $attrs.ngModel, (change) ->
-            if not change?
+        $scope.$watch $attrs.ngModel, (changes) ->
+            if not changes?
                 return
 
-            if $attrs.mode == "comment"
-                renderComment(change)
-            else
-                renderChange(change)
+            showMoreEnabled = $.uncollapsedEntries == null and changes.length > 2
+            howManyMore = changes.length - 2
+            html = containerTemplate({
+                showMoreEnabled: showMoreEnabled
+                howManyMore: howManyMore
+            })
+
+            containerDomNode = $(html)
+            _.each changes, (change, index) ->
+                hidden = showMoreEnabled and index < howManyMore
+                if $attrs.mode == "comment"
+                    renderComment(change, containerDomNode, hidden)
+                else
+                    renderChange(change, containerDomNode, hidden)
+
+            $el.html(containerDomNode)
 
         $el.on "click", ".activity-title", (event) ->
             event.preventDefault()
             $el.find(".activity-inner").toggleClass("active")
+
+        $el.on "click", ".show-more", (event) ->
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+            target.hide()
+            $el.find(".entry.hidden").removeClass("hidden")
+            $.uncollapsedEntries = true
 
         $scope.$on "$destroy", ->
             $el.off()
 
     return {link:link, require:"ngModel"}
 
-module.directive("tgChange", ChangeDirective)
+module.directive("tgChanges", ChangesDirective)
 
 
 #############################################################################
