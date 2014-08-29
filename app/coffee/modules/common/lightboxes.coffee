@@ -262,7 +262,7 @@ module.directive("tgLbCreateEditUserstory", [
 ## Creare Bulk Userstories Lightbox Directive
 #############################################################################
 
-CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService) ->
+CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService, $loading) ->
     link = ($scope, $el, attrs) ->
         $scope.$on "usform:bulk", (ctx, projectId, status) ->
             $scope.new = {
@@ -281,12 +281,18 @@ CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService) ->
             if not form.validate()
                 return
 
+            target = angular.element(event.currentTarget)
+
+            $loading.start(target)
+
             promise = $rs.userstories.bulkCreate($scope.new.projectId, $scope.new.statusId, $scope.new.bulk)
             promise.then (result) ->
+                $loading.finish(target)
                 $rootscope.$broadcast("usform:bulk:success", result)
                 lightboxService.close($el)
 
             promise.then null, (data) ->
+                $loading.finish(target)
                 form.setErrors(data)
                 if data._error_message
                     $confirm.notify("error", data._error_message)
@@ -301,6 +307,7 @@ module.directive("tgLbCreateBulkUserstories", [
     "$tgResources",
     "$rootScope",
     "lightboxService",
+    "$tgLoading",
     CreateBulkUserstoriesDirective
 ])
 
