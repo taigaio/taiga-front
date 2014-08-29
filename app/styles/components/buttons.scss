@@ -24,6 +24,12 @@
     &:hover {
         @include transition (background .3s linear);
     }
+    &.loading {
+        span {
+            @include animation (loading .5s linear);
+            @include animation (spin 1s linear infinite);
+        }
+    }
     .icon {
         margin-right: .3rem;
     }

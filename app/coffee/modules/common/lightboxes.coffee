@@ -209,25 +209,24 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService)
                 return
 
             if isNew
-                target.html(loading) # Add item
+                target.addClass('loading').html(loading) # Add item
 
                 promise = $repo.create("userstories", $scope.us)
                 broadcastEvent = "usform:new:success"
 
             else
-                target.html(loading) # Add item
-
+                target.addClass('loading').html(loading) # Add item
                 promise = $repo.save($scope.us)
                 broadcastEvent = "usform:edit:success"
 
             promise.then (data) ->
-                target.html(finish) # Add item
+                target.removeClass('loading').html(finish) # Add item
 
                 lightboxService.close($el)
                 $rootScope.$broadcast(broadcastEvent, data)
 
             promise.then null, (data) ->
-                target.html(loading) # Add item
+                target.removeClass('loading').html(finish) # Add item
 
                 form.setErrors(data)
                 if data._error_message
