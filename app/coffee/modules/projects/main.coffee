@@ -112,7 +112,7 @@ ProjectsPaginationDirective = ($timeout) ->
                 top = parseInt(element.css('top'), 10)
                 newTop = top - pageSize
 
-                element.animate({"top": newTop}, callback);
+                element.animate({"top": newTop}, callback)
 
                 return newTop
 
@@ -120,7 +120,7 @@ ProjectsPaginationDirective = ($timeout) ->
                 top = parseInt(element.css('top'), 10)
                 newTop = top + pageSize
 
-                element.animate({"top": newTop}, callback);
+                element.animate({"top": newTop}, callback)
 
                 return newTop
 
