@@ -7,17 +7,21 @@
     }
 
     .row {
-        @include table-flex;
-        padding: 20px;
+        @include table-flex($align-content: center, $align-items: center);
+        padding: .5rem;
         &:hover {
             background: lighten($green-taiga, 60%);
             @include transition (background .2s ease-in);
         }
-        >div {
-            @include table-flex-child(1, 0, 0);
-        }
         .user-stories {
             @include table-flex-child(5, 500px, 0, 500px);
+        }
+        .status,
+        .points {
+            @include table-flex-child(1, 0, 0);
+        }
+        .assigned-to {
+            @include table-flex-child(1, 250px, 0, 250px);
         }
     }
     .row-selected {
@@ -69,7 +73,11 @@
             flex-basis: 35px;
         }
         figcaption {
-            margin-left: 1rem;
+            display: inline-block;
+            margin-left: .5rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
     }
 }
