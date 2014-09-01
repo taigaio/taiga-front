@@ -75,9 +75,7 @@ class AuthService extends taiga.Service
             return true
         return false
 
-    ###################
     ## Http interface
-    ###################
 
     login: (data, type) ->
         url = @urls.resolve("auth")

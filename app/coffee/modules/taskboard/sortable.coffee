@@ -35,11 +35,6 @@ module = angular.module("taigaBacklog")
 #############################################################################
 
 TaskboardSortableDirective = ($repo, $rs, $rootscope) ->
-
-    #########################
-    ## Drag & Drop Link
-    #########################
-
     link = ($scope, $el, $attrs) ->
         oldParentScope = null
         newParentScope = null

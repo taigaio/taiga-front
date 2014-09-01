@@ -420,13 +420,11 @@ module.controller("BacklogController", BacklogController)
 #############################################################################
 
 BacklogDirective = ($repo, $rootscope) ->
-    #########################
     ## Doom line Link
-    #########################
-    #TODO: i18n
     doomLineTemplate = _.template("""
     <div class="doom-line"><span>Project Scope [Doomline]</span></div>
     """)
+    # TODO: i18n
 
     linkDoomLine = ($scope, $el, $attrs, $ctrl) ->
         reloadDoomLine = ->
@@ -464,9 +462,7 @@ BacklogDirective = ($repo, $rootscope) ->
         $scope.$on("userstories:loaded", reloadDoomLine)
         $scope.$watch "stats", reloadDoomLine
 
-    ##############################
     ## Move to current sprint link
-    ##############################
 
     linkToolbar = ($scope, $el, $attrs, $ctrl) ->
         moveToCurrentSprint = (selectedUss) ->
@@ -538,15 +534,12 @@ BacklogDirective = ($repo, $rootscope) ->
         if !sidebar.hasClass("active")
             $ctrl.resetFilters()
 
-    #########################
     ## Filters Link
-    #########################
 
     linkFilters = ($scope, $el, $attrs, $ctrl) ->
         $scope.filtersSearch = {}
         $el.on "click", "#show-filters-button", (event) ->
             event.preventDefault()
-
             showHideFilter($scope, $el, $ctrl)
 
 

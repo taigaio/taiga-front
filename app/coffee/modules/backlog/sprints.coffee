@@ -34,11 +34,7 @@ module = angular.module("taigaBacklog")
 #############################################################################
 
 BacklogSprintDirective = ($repo, $rootscope) ->
-
-    #########################
     ## Common parts
-    #########################
-
     linkCommon = ($scope, $el, $attrs, $ctrl) ->
         sprint = $scope.$eval($attrs.tgBacklogSprint)
         if $scope.$first

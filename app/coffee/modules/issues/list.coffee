@@ -333,11 +333,7 @@ paginatorTemplate = """
 """
 
 IssuesDirective = ($log, $location) ->
-
-    #########################
     ## Issues Pagination
-    #########################
-
     template = _.template(paginatorTemplate)
 
     linkPagination = ($scope, $el, $attrs, $ctrl) ->
@@ -416,10 +412,7 @@ IssuesDirective = ($log, $location) ->
                 $ctrl.selectFilter("page", pagenum)
                 $ctrl.loadIssues()
 
-    #########################
     ## Issues Filters
-    #########################
-
     linkOrdering = ($scope, $el, $attrs, $ctrl) ->
         # Draw the arrow the first time
         currentOrder = $ctrl.getUrlFilter("orderBy") or "created_date"
@@ -445,10 +438,7 @@ IssuesDirective = ($log, $location) ->
                     icon = if startswith(finalOrder, "-") then "icon-caret-up" else "icon-caret-down"
                     target.html("#{target.html()}<span class='icon #{icon}'></span>")
 
-    #########################
     ## Issues Link
-    #########################
-
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
         linkOrdering($scope, $el, $attrs, $ctrl)

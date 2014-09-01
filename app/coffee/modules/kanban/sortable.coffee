@@ -36,11 +36,6 @@ module = angular.module("taigaKanban")
 #############################################################################
 
 KanbanSortableDirective = ($repo, $rs, $rootscope) ->
-
-    #########################
-    ## Drag & Drop Link
-    #########################
-
     link = ($scope, $el, $attrs) ->
         timeout 500, ->
             mainPadding = 32 # px

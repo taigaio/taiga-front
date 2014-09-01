@@ -103,10 +103,7 @@ module.controller("ProjectValuesController", ProjectValuesController)
 #############################################################################
 
 ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame) ->
-
-    #########################
     ## Drag & Drop Link
-    #########################
 
     linkDragAndDrop = ($scope, $el, $attrs) ->
         oldParentScope = null
@@ -131,9 +128,7 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame) ->
         $scope.$on "$destroy", ->
             $el.off()
 
-    #########################
     ## Value Link
-    #########################
 
     linkValue = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
@@ -279,10 +274,7 @@ module.directive("tgProjectValues", ["$log", "$tgRepo", "$tgConfirm", "$tgLocati
 #############################################################################
 
 ColorSelectionDirective = () ->
-
-    #########################
     ## Color selection Link
-    #########################
 
     link = ($scope, $el, $attrs, $model) ->
         $ctrl = $el.controller()
