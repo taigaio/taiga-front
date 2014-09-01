@@ -21,6 +21,8 @@
 # File: modules/common/loader.coffee
 ###
 
+# FIXME: this code not follows any style and any good practices on coffeescript
+# and it should be rewritten in coffeescript style classes.
 
 taiga = @.taiga
 sizeFormat = @.taiga.sizeFormat
