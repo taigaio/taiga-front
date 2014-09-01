@@ -34,9 +34,7 @@ AttachmentsDirective = ($repo, $rs, $confirm) ->
         $ctrl = $el.controller()
         $scope.uploadingFiles = []
 
-        ###########
         ## Drag & drop
-        ###########
         tdom = $el.find("div.attachment-body.sortable")
 
         tdom.sortable({
@@ -67,15 +65,11 @@ AttachmentsDirective = ($repo, $rs, $confirm) ->
                     attach.revert()
                 _.sorBy($scope.attachments, 'order')
 
-        ###########
         ## Total attachments counter
-        ###########
         $scope.$watch "attachmentsCount", (count) ->
             $el.find("span.attachments-num").html(count)
 
-        ###########
         ## Show/Hide deprecated attachments
-        ###########
         $scope.showDeprecatedAttachments = false
 
         $scope.$watch "deprecatedAttachmentsCount", (deprecatedAttachmentsCount) ->
@@ -101,9 +95,7 @@ AttachmentsDirective = ($repo, $rs, $confirm) ->
                                         .prop("title", "show deprecated attachments") # TODO: i18n
                 $el.find("div.single-attachment.deprecated").addClass("hidden")
 
-        ###########
         ## Add Attachments
-        ###########
         $el.on "click", "a.add-attach", ->
             event.preventDefault()
             angular.element("input.add-attach").trigger("click")
@@ -139,9 +131,7 @@ AttachmentsDirective = ($repo, $rs, $confirm) ->
                     $scope.uploadingFiles.splice(index, 1)
                     $confirm.notify("error", null, "We have not been able to upload '#{file.name}'.") #TODO: i18in
 
-        ###########
         ## On destroy
-        ###########
         $scope.$on "$destroy", ->
             $el.off()
 
@@ -237,9 +227,7 @@ AttachmentDirective = ($log, $repo, $confirm) ->
                 $el.removeClass("deprecated")
                 $el.removeClass("hidden")
 
-        ###########
         ## Initialize
-        ###########
         if not $attrs.tgAttachment?
             return $log.error "AttachmentDirective the directive need an attachment"
 
@@ -247,9 +235,7 @@ AttachmentDirective = ($log, $repo, $confirm) ->
         render(attachment, attachment.isCreatedRightNow)
         delete attachment.isCreatedRightNow
 
-        ###########
         ## Actions (on view mode)
-        ###########
         $el.on "click", "a.settings.icon-edit", (event) ->
             event.preventDefault()
             render(attachment, true)
@@ -269,9 +255,7 @@ AttachmentDirective = ($log, $repo, $confirm) ->
             $confirm.ask(title, subtitle).then ->
                 $repo.remove(attachment).then(onSuccess, onError)
 
-        ###########
         ## Actions (on edit mode)
-        ###########
         $el.on "click", "a.editable-settings.icon-floppy", (event) ->
             event.preventDefault()
 
@@ -296,9 +280,7 @@ AttachmentDirective = ($log, $repo, $confirm) ->
             event.preventDefault()
             render(attachment)
 
-        ###########
         ## On destroy
-        ###########
         $scope.$on "$destroy", ->
             $el.off()
 
