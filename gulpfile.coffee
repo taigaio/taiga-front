@@ -36,7 +36,7 @@ paths = {
     images: "app/images/**/*"
     locales: "app/locales/**/*.json"
     coffee: ["app/coffee/app.coffee",
-             "config/main.coffee",
+             "app/config/*.coffee",
              "app/coffee/*.coffee",
              "app/coffee/modules/controllerMixins.coffee",
              "app/coffee/modules/*.coffee",
