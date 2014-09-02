@@ -19,7 +19,7 @@
   "devDependencies": {
     "coffee-script": "^1.7.1",
     "express": "^4.8.5",
-    "gulp": "^3.8.0",
+    "gulp": "^3.8.7",
     "gulp-cached": "0.0.3",
     "gulp-changed": "^0.4.0",
     "gulp-clean": "^0.2.4",
