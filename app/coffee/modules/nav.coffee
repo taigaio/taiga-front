@@ -146,6 +146,11 @@ ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout, tgLoader, $
         overlay.on 'click', () ->
             hideMenu()
 
+        $(document).on 'keydown', (e) =>
+            code = if e.keyCode then e.keyCode else e.which
+            if code == 27
+                hideMenu()
+
         $scope.$on "nav:projects-list:open", ->
             if !$(document.body).hasClass("open-projects-nav")
                 animationFrame.add () ->
