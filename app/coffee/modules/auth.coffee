@@ -188,9 +188,6 @@ module.directive("tgLogin", ["$tgAuth", "$tgConfirm", "$tgLocation", "$tgConfig"
 
 RegisterDirective = ($auth, $confirm, $location, $config, $navUrls) ->
     link = ($scope, $el, $attrs) ->
-        $scope.privacyPolicyUrl = $config.get("privacyPolicyUrl")
-        $scope.termsOfServiceUrl = $config.get("termsOfServiceUrl")
-
         $scope.data = {}
         form = $el.find("form").checksley()
 
@@ -313,9 +310,6 @@ module.directive("tgChangePasswordFromRecovery", ["$tgAuth", "$tgConfirm", "$tgL
 
 InvitationDirective = ($auth, $confirm, $location, $params, $config, $navUrls) ->
     link = ($scope, $el, $attrs) ->
-        $scope.privacyPolicyUrl = $config.get("privacyPolicyUrl")
-        $scope.termsOfServiceUrl = $config.get("termsOfServiceUrl")
-
         token = $params.token
 
         promise = $auth.getInvitation(token)
