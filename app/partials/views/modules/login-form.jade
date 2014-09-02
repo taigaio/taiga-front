@@ -13,6 +13,4 @@ div.login-form-container(tg-login)
             a.button.button-login.button-gray(href="", ng-click="ctrl.submit()", title="Sign in") Sign in
             input(type="submit", style="display:none")
 
-    p.login-text(ng-if="pubblicRegisterEnabled")
-        span Not registered yet?
-        a(href="", tg-nav="register", title="Register")  create your free account here
+    tg-public-register-message
