@@ -758,7 +758,7 @@ IssueAssignedToInlineEditionDirective = ($repo, $rootscope, popoverService) ->
             member = $scope.usersById[issue.assigned_to]
             if member
                 ctx.imgurl = member.photo
-                ctx.name = member.full_name
+                ctx.name = member.full_name_display
 
             $el.find(".avatar").html(template(ctx))
 
