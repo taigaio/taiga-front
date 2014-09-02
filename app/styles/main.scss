@@ -41,7 +41,6 @@ $prefix-for-spec:      true;
 @import 'components/paginator';
 @import 'components/watchers';
 @import 'components/level';
-@import 'components/assigned-to';
 @import 'components/created-by';
 @import 'components/wysiwyg';
 @import 'components/select-color';
@@ -54,6 +53,7 @@ $prefix-for-spec:      true;
 //#################################################
 
 //Common modules
+@import 'modules/common/assigned-to';
 @import 'modules/common/nav';
 @import 'modules/common/projects-nav';
 @import 'modules/common/lightbox';
