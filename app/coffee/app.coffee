@@ -193,6 +193,7 @@ modules = [
     "taigaNavMenu",
     "taigaProject",
     "taigaUserSettings",
+    "taigaPlugins",
 
     # Vendor modules
     "ngRoute",
