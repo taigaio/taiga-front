@@ -27,14 +27,15 @@ cancelTimeout = @.taiga.cancelTimeout
 NOTIFICATION_MSG = {
     "success":
         title: "Everything is ok"
-        message: "Our oompa Loompas saved all your changes!"
+        message: "Our Oompa Loompas saved all your changes!"
     "error":
         title: "Oops, something happened..."
-        message: "Our oompa Loompas are sad, your changes were not saved!"
+        message: "Our Oompa Loompas are sad, your changes were not saved!"
     "light-error":
         title: "Oops, something happened..."
-        message: "Our oompa Loompas are sad, your changes were not saved!"
+        message: "Our Oompa Loompas are sad, your changes were not saved!"
 }
+
 
 class ConfirmService extends taiga.Service
     @.$inject = ["$q", "lightboxService"]
