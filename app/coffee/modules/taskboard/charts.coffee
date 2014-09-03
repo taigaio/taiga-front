@@ -26,6 +26,7 @@ toggleText = @.taiga.toggleText
 scopeDefer = @.taiga.scopeDefer
 bindOnce = @.taiga.bindOnce
 groupBy = @.taiga.groupBy
+timeout = @.taiga.timeout
 
 module = angular.module("taigaTaskboard")
 
@@ -96,10 +97,8 @@ SprintGraphDirective = ->
                 $scope.$on "taskboard:graph:toggle-visibility", ->
                     $el.parent().toggleClass('open')
 
-                    #fix chart overflow
-                    setTimeout ( ->
-                        redrawChart(element, $scope.stats.days)
-                    ), 100
+                    # fix chart overflow
+                    timeout(100, -> redrawChart(element, $scope.stats.days))
 
         $scope.$on "$destroy", ->
             $el.off()
