@@ -143,10 +143,14 @@ UserNotificationsListDirective = ($repo, $confirm) ->
                 prev_level = policy.notify_level
                 policy.notify_level = parseInt(target.val(), 10)
 
-                $repo.save(policy).then ->
-                $repo.save(policy).then null, ->
+                onSuccess = ->
+                    $confirm.notify("success")
+
+                onError = ->
                     $confirm.notify("error")
                     target.parents(".policy-table-row").find("input[value=#{prev_level}]").prop("checked", true)
+
+                $repo.save(policy).then(onSuccess, onError)
 
         $scope.$on "$destroy", ->
             $el.off()
