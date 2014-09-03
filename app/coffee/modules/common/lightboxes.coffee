@@ -16,99 +16,109 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: modules/lightboxes.coffee
+# File: modules/common/lightboxes.coffee
 ###
 
 module = angular.module("taigaCommon")
 
 bindOnce = @.taiga.bindOnce
+timeout = @.taiga.timeout
+
+#############################################################################
+## Common Lightbox Services
+#############################################################################
 
 class LightboxService extends taiga.Service
-    open: (lightbox) ->
-        lightbox.css('display', 'flex')
+    open: ($el) ->
+        $el.css('display', 'flex')
+        timeout(70, -> $el.addClass("open"))
 
-        setTimeout ( ->
-            lightbox.addClass('open')
-        ), 70
+        docEl = angular.element(document)
+        docEl.on "keydown.lightbox", (e) =>
+            code = if e.keyCode then e.keyCode else e.which
+            @.close($el) if code == 27
 
-        $(document)
-            .on 'keydown.lightbox', (e) =>
-                code = if e.keyCode then e.keyCode else e.which
+    close: ($el) ->
+        docEl = angular.element(document)
+        docEl.off(".lightbox")
 
-                if code == 27
-                    @close(lightbox)
+        $el.one "transitionend", =>
+            $el.css('display', 'none')
 
-    close: (lightbox) ->
-        $(document).off('.lightbox')
-        lightbox
-            .one "transitionend", () ->
-                lightbox.css('display', 'none')
-            .removeClass('open')
+        $el.removeClass("open")
 
 module.service("lightboxService", LightboxService)
 
+
+class LightboxKeyboardNavigationService extends taiga.Service
+    stop: ->
+        docEl = angular.element(document)
+        docEl.off(".keyboard-navigation")
+
+    dispatch: ($el, code) ->
+        activeElement = $el.find(".active")
+
+        # Key: enter
+        if code == 13
+            activeElement.trigger("click")
+
+        # Key: down
+        else if code == 40
+            if not activeElement.length
+                $el.find('.watcher-single:first').addClass('active')
+            else
+                next = activeElement.next('.watcher-single')
+                if next.length
+                    activeElement.removeClass('active')
+                    next.addClass('active')
+        # Key: up
+        else if code == 38
+            if not activeElement.length
+                $el.find('.watcher-single:last').addClass('active')
+            else
+                prev = activeElement.prev('.watcher-single')
+
+                if prev.length
+                    activeElement.removeClass('active')
+                    prev.addClass('active')
+
+    init: ($el) ->
+        docEl = angular.element(document)
+        docEl.on "keydown.keyboard-navigation", (event) =>
+            code = if event.keyCode then event.keyCode else event.which
+            if code == 40 || code == 38 || code == 13
+                event.preventDefault()
+                @.dispatch($el, code)
+
+module.service("lightboxKeyboardNavigationService", LightboxKeyboardNavigationService)
+
+#############################################################################
+## Generic Lighthbox Directive
+#############################################################################
+
+# This adds generic behavior to all blocks with lightbox class like
+# close button event handlers.
 
 LightboxDirective = (lightboxService) ->
     link = ($scope, $el, $attrs) ->
         $el.on "click", ".close", (event) ->
             event.preventDefault()
-
             lightboxService.close($el)
 
-    return {
-        restrict: "C",
-        link: link
-    }
+    return {restrict: "C", link: link}
 
 module.directive("lightbox", ["lightboxService", LightboxDirective])
-
-class LightboxListNavigationService
-    stop: () ->
-        $(document).off "keydown.list-navigation"
-
-    init: ($el) ->
-        $(document).on "keydown.list-navigation", (e) =>
-            code = if e.keyCode then e.keyCode else e.which
-
-            if code == 40 || code == 38 || code == 13
-                e.preventDefault()
-
-                active = $el.find('.active')
-
-                if code == 13
-                    active.trigger('click')
-
-                if code == 40
-                    if active.length
-                        next = active.next('.watcher-single')
-
-                        if next.length
-                            active.removeClass('active')
-                            next.addClass('active')
-                    else
-                        $el.find('.watcher-single:first').addClass('active')
-
-                if code == 38
-                    if active.length
-                        prev = active.prev('.watcher-single')
-
-                        if prev.length
-                            active.removeClass('active')
-                            prev.addClass('active')
-                    else
-                        $el.find('.watcher-single:last').addClass('active')
-
-module.service("lightboxListNavigationService", LightboxListNavigationService)
-
 
 #############################################################################
 ## Block Lightbox Directive
 #############################################################################
 
+# Issue/Userstory blocking message lightbox directive.
+
 BlockLightboxDirective = (lightboxService) ->
     link = ($scope, $el, $attrs, $model) ->
-        title = $attrs.title
-        $el.find("h2.title").text(title)
+        $el.find("h2.title").text($attrs.title)
+
         $scope.$on "block", ->
             lightboxService.open($el)
 
@@ -121,7 +131,6 @@ BlockLightboxDirective = (lightboxService) ->
 
         $el.on "click", ".button-green", (event) ->
             event.preventDefault()
-            target = angular.element(event.currentTarget)
 
             $scope.$apply ->
                 $model.$modelValue.is_blocked = true
@@ -136,7 +145,6 @@ BlockLightboxDirective = (lightboxService) ->
     }
 
 module.directive("tgLbBlock", ["lightboxService", BlockLightboxDirective])
-
 
 #############################################################################
 ## Create/Edit Userstory Lightbox Directive
@@ -347,7 +355,7 @@ usersTemplate = _.template("""
 <% } %>
 """)
 
-AssignedToLightboxDirective = (lightboxService, lightboxListNavigationService) ->
+AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationService) ->
     link = ($scope, $el, $attrs) ->
         selectedUser = null
         selectedItem = null
@@ -383,10 +391,10 @@ AssignedToLightboxDirective = (lightboxService, lightboxListNavigationService) -
 
             html = usersTemplate(ctx)
             $el.find("div.watchers").html(html)
-            lightboxListNavigationService.init($el)
+            lightboxKeyboardNavigationService.init($el)
 
         closeLightbox = () ->
-            lightboxListNavigationService.stop()
+            lightboxKeyboardNavigationService.stop()
             lightboxService.close($el)
 
         $scope.$on "assigned-to:add", (ctx, item) ->
@@ -437,14 +445,14 @@ AssignedToLightboxDirective = (lightboxService, lightboxListNavigationService) -
     }
 
 
-module.directive("tgLbAssignedto", ["lightboxService", "lightboxListNavigationService", AssignedToLightboxDirective])
+module.directive("tgLbAssignedto", ["lightboxService", "lightboxKeyboardNavigationService", AssignedToLightboxDirective])
 
 
 #############################################################################
 ## Watchers Lightbox directive
 #############################################################################
 
-WatchersLightboxDirective = ($repo, lightboxService, lightboxListNavigationService) ->
+WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationService) ->
     link = ($scope, $el, $attrs) ->
         selectedItem = null
 
@@ -476,7 +484,7 @@ WatchersLightboxDirective = ($repo, lightboxService, lightboxListNavigationServi
             $el.find("div.watchers").html(html)
 
         closeLightbox = () ->
-            lightboxListNavigationService.stop()
+            lightboxKeyboardNavigationService.stop()
             lightboxService.close($el)
 
         $scope.$on "watcher:add", (ctx, item) ->
@@ -486,7 +494,7 @@ WatchersLightboxDirective = ($repo, lightboxService, lightboxListNavigationServi
             render(users)
 
             lightboxService.open($el)
-            lightboxListNavigationService.init($el)
+            lightboxKeyboardNavigationService.init($el)
 
         $scope.$watch "usersSearch", (searchingText) ->
             if not searchingText?
@@ -521,7 +529,7 @@ WatchersLightboxDirective = ($repo, lightboxService, lightboxListNavigationServi
         link:link
     }
 
-module.directive("tgLbWatchers", ["$tgRepo", "lightboxService", "lightboxListNavigationService", WatchersLightboxDirective])
+module.directive("tgLbWatchers", ["$tgRepo", "lightboxService", "lightboxKeyboardNavigationService", WatchersLightboxDirective])
 
 #############################################################################
 ## Notion Lightbox Directive
