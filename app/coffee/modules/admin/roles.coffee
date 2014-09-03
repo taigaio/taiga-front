@@ -109,7 +109,8 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
                 @confirm.notify('error')
 
     setComputable: ->
-        onSuccess = null
+        onSuccess = =>
+            @confirm.notify("success")
 
         onError = =>
             @confirm.notify("error")
@@ -306,12 +307,15 @@ RolePermissionsDirective = ($rootscope, $repo, $confirm) ->
 
             $el.on "change", ".category-item input", (event) ->
                 getActivePermissions = ->
-                    activePermissions = _.filter($el.find(".category-item input"), (t) -> angular.element(t).is(":checked"))
+                    activePermissions = _.filter($el.find(".category-item input"), (t) ->
+                        angular.element(t).is(":checked")
+                    )
                     activePermissions = _.sortBy(_.map(activePermissions, (t) ->
                         permission = angular.element(t).parents(".category-item").data("id")
                     ))
                     activePermissions.push("view_project")
                     return activePermissions
+
                 target = angular.element(event.currentTarget)
                 $scope.role.permissions = getActivePermissions()
 
@@ -320,6 +324,7 @@ RolePermissionsDirective = ($rootscope, $repo, $confirm) ->
                     categoryId = target.parents(".category-config").data("id")
                     renderResume(target.parents(".category-config"), categories[categoryId])
                     $rootscope.$broadcast("projects:reload")
+                    $confirm.notify("success")
 
                 onError = ->
                     $confirm.notify("error")
@@ -327,7 +332,6 @@ RolePermissionsDirective = ($rootscope, $repo, $confirm) ->
                     $scope.role.permissions = getActivePermissions()
 
                 $repo.save($scope.role).then onSuccess, onError
-
 
         $scope.$on "$destroy", ->
             $el.off()
