@@ -36,7 +36,7 @@ paths = {
     images: "app/images/**/*"
     locales: "app/locales/**/*.json"
     coffee: ["app/coffee/app.coffee",
-             "config/main.coffee",
+             "app/config/*.coffee",
              "app/coffee/*.coffee",
              "app/coffee/modules/controllerMixins.coffee",
              "app/coffee/modules/*.coffee",
@@ -53,7 +53,8 @@ paths = {
              "app/coffee/modules/locales/*.coffee",
              "app/coffee/modules/base/*.coffee",
              "app/coffee/modules/resources/*.coffee",
-             "app/coffee/modules/user-settings/*.coffee"]
+             "app/coffee/modules/user-settings/*.coffee"
+             "app/plugins/**/*.coffee"]
     vendorJsLibs: [
         "app/vendor/jquery/dist/jquery.js",
         "app/vendor/lodash/dist/lodash.js",
@@ -75,7 +76,8 @@ paths = {
         "app/vendor/jquery-textcomplete/jquery.textcomplete.js",
         "app/vendor/markitup/markitup/jquery.markitup.js"
         "app/js/jquery.ui.git.js",
-        "app/js/sha1.js"
+        "app/js/sha1.js",
+        "app/plugins/**/*.js"
     ]
 }
 

@@ -6,11 +6,12 @@ config = {
 
     defaultLanguage: "en"
     languageOptions: {
-        "es": "Spanish"
         "en": "English"
     }
 
     pubblicRegisterEnabled: true
+    privacyPolicyUrl: null
+    termsOfServiceUrl: null
 }
 
 angular.module("taigaLocalConfig", []).value("localconfig", config)
