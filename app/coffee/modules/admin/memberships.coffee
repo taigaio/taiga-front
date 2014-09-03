@@ -273,8 +273,12 @@ module.directive("tgMembershipsRowAvatar", ["$log", MembershipsRowAvatarDirectiv
 
 MembershipsRowAdminCheckboxDirective = ($log, $repo, $confirm) ->
     template = _.template("""
-    <input type="checkbox" id="<%- inputId %>" />
-    <label for="<%- inputId %>">Is admin?</label>
+    <div class="check">
+        <input type="checkbox" id="<%- inputId %>" />
+        <div></div>
+        <span class="check-text check-yes">Yes</span>
+        <span class="check-text check-no">No</span>
+    </div>
     """) # TODO: i18n
 
     link = ($scope, $el, $attrs) ->

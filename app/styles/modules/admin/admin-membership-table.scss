@@ -87,4 +87,59 @@
     .header-status {
         flex: 1 0 50px;
     }
+    .check {
+        background-color: darken($whitish, 10%);
+        border-radius: 2px;
+        cursor: pointer;
+        height: 1.5rem;
+        overflow: hidden;
+        position: relative;
+        width: 65px;
+        input[type=checkbox] {
+            cursor: pointer;
+            height: 500px;
+            left: -10px;
+            opacity: 0;
+            position: absolute;
+            top: -10px;
+            width: 500px;
+            z-index: 999;
+            + div {
+                @include transition (all .2s linear);
+                background-color: $button-gray;
+                height: 25px;
+                width: 50%;
+            }
+            ~ .check-text {
+                //@include transition(opacity .3s linear);
+                @extend %small;
+                color: $white;
+                position: absolute;
+                top: .1rem;
+            }
+            ~ .check-yes {
+                opacity: 0;
+                right: .5rem;
+            }
+            ~ .check-no {
+                left: .5rem;
+                opacity: .6;
+            }
+        }
+        input[type=checkbox]:checked {
+            + div {
+                @include transition (all .2s linear);
+                background-color: #74a218;
+                margin-left: 50%;
+            }
+            ~ .check-yes {
+                opacity: .6;
+                right: .4rem;
+            }
+            ~ .check-no {
+                left: .4rem;
+                opacity: 0;
+            }
+        }
+    }
 }
