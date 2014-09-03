@@ -87,18 +87,20 @@ SprintGraphDirective = ->
 
     link = ($scope, $el, $attrs) ->
         element = angular.element($el)
+
+        $scope.$on "resize", ->
+            redrawChart(element, $scope.stats.days)
+
+        $scope.$on "taskboard:graph:toggle-visibility", ->
+            $el.parent().toggleClass('open')
+
+            # fix chart overflow
+            timeout(100, -> redrawChart(element, $scope.stats.days))
+
         $scope.$watch 'stats', (value) ->
-            if $scope.stats?
-                redrawChart(element, $scope.stats.days)
-
-                $scope.$on "resize", ->
-                    redrawChart(element, $scope.stats.days)
-
-                $scope.$on "taskboard:graph:toggle-visibility", ->
-                    $el.parent().toggleClass('open')
-
-                    # fix chart overflow
-                    timeout(100, -> redrawChart(element, $scope.stats.days))
+            if not $scope.stats?
+                return
+            redrawChart(element, $scope.stats.days)
 
         $scope.$on "$destroy", ->
             $el.off()
