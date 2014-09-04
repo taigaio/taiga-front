@@ -48,21 +48,25 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin,
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @log, @appTitle, @navUrls) ->
         @.attachmentsUrlName = "userstories/attachments"
-
         @scope.issueRef = @params.issueref
         @scope.sectionName = "User Story Details"
 
         promise = @.loadInitialData()
 
-        promise.then () =>
+        # On Success
+        promise.then =>
             @appTitle.set(@scope.us.subject + " - " + @scope.project.name)
 
-        promise.then null, ->
-            console.log "FAIL" #TODO
+        # On Error
+        promise.then null, (xhr) =>
+            if xhr and xhr.status == 404
+                @location.path("/not-found")
+                @location.replace()
+            return @q.reject(xhr)
 
-        @scope.$on "attachment:create", @loadHistory
-        @scope.$on "attachment:edit", @loadHistory
-        @scope.$on "attachment:delete", @loadHistory
+        @scope.$on("attachment:create", => @loadHistory())
+        @scope.$on("attachment:edit", => @loadHistory())
+        @scope.$on("attachment:delete", => @loadHistory())
 
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
@@ -95,14 +99,17 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin,
                 }
                 @scope.nextUrl = @navUrls.resolve("project-userstories-detail", ctx)
 
+            return us
+
     loadTasks: ->
         return @rs.tasks.list(@scope.projectId, null, @scope.usId).then (tasks) =>
             @scope.tasks = tasks
+            return tasks
 
     loadHistory: =>
         return @rs.userstories.history(@scope.usId).then (history) =>
-            _.each history, (historyResult) ->
-                #If description was modified take only the description_html field
+            for historyResult in history
+                # If description was modified take only the description_html field
                 if historyResult.values_diff.description?
                     historyResult.values_diff.description = historyResult.values_diff.description_diff
 
@@ -117,6 +124,7 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin,
 
             @scope.history = history
             @scope.comments = _.filter(history, (historyEntry) -> historyEntry.comment != "")
+            return history
 
     loadInitialData: ->
         params = {
@@ -129,16 +137,12 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin,
             @scope.usId = data.us
             return data
 
-        promise.then null, =>
-            @location.path("/not-found")
-            @location.replace()
-
         return promise.then(=> @.loadProject())
-                      .then(=> @.loadUsersAndRoles())
-                      .then(=> @.loadUs())
-                      .then(=> @.loadTasks())
-                      .then(=> @.loadAttachments(@scope.usId))
-                      .then(=> @.loadHistory())
+                      .then(=> @q.all([@.loadUsersAndRoles(),
+                                       @.loadUs(),
+                                       @.loadTasks(),
+                                       @.loadAttachments(@scope.usId),
+                                       @.loadHistory()]))
     block: ->
         @rootscope.$broadcast("block", @scope.us)
 
