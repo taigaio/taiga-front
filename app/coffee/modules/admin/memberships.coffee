@@ -351,7 +351,8 @@ MembershipsRowRoleSelectorDirective = ($log, $repo, $confirm) ->
         html = render(member)
 
         $el.on "click", "select", (event) =>
-            onSuccess = null
+            onSuccess = ->
+                $confirm.notify("success")
 
             onError = ->
                 $confirm.notify("error")
