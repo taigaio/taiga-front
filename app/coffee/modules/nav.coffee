@@ -22,6 +22,7 @@
 taiga = @.taiga
 groupBy = @.taiga.groupBy
 bindOnce = @.taiga.bindOnce
+timeout = @.taiga.timeout
 
 module = angular.module("taigaNavMenu", [])
 
@@ -113,12 +114,12 @@ ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout, tgLoader, $
     hideMenu = () ->
         if overlay.is(':visible')
             difftime = new Date().getTime() - loadingStart
-            timeout = 0
+            timeoutValue = 0
 
             if (difftime < 1000)
-                timeout = 1000 - timeout
+                timeoutValue = 1000 - timeoutValue
 
-            setTimeout ( ->
+            timeout timeoutValue, ->
                 overlay.one 'transitionend', () ->
                     overlay.hide()
 
@@ -127,7 +128,6 @@ ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout, tgLoader, $
                     .addClass("closed-projects-nav")
 
                     tgLoader.disablePreventLoading()
-            ), timeout
 
     renderProjects  = ($el, projects) ->
         html = projectsTemplate({projects: projects})

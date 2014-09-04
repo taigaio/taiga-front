@@ -26,6 +26,7 @@
 
 taiga = @.taiga
 sizeFormat = @.taiga.sizeFormat
+timeout = @.taiga.timeout
 
 module = angular.module("taigaCommon")
 
@@ -90,18 +91,16 @@ Loader = () ->
 
         pageLoaded = (force = false) ->
             if startLoadTime
-                timeout = 0
+                timeoutValue = 0
 
                 if !force
                     endTime = new Date().getTime()
                     diff = endTime - startLoadTime
 
                     if diff < config.minTime
-                        timeout = config.minTime - diff
+                        timeoutValue = config.minTime - diff
 
-                setTimeout ( ->
-                    $rootscope.$broadcast("loader:end")
-                ), timeout
+                timeout(timeoutValue, -> $rootscope.$broadcast("loader:end"))
 
         return {
             reset: () ->

@@ -26,6 +26,7 @@ toggleText = @.taiga.toggleText
 scopeDefer = @.taiga.scopeDefer
 bindOnce = @.taiga.bindOnce
 groupBy = @.taiga.groupBy
+timeout = @.taiga.timeout
 
 module = angular.module("taigaBacklog")
 
@@ -519,10 +520,9 @@ BacklogDirective = ($repo, $rootscope) ->
     showHideFilter = ($scope, $el, $ctrl) ->
         sidebar = $el.find("sidebar.filters-bar")
         sidebar.one "transitionend", () ->
-            setTimeout ( ->
+            timeout 150, ->
                 $rootscope.$broadcast("resize")
                 $('.burndown').css("visibility", "visible")
-            ), 150
 
         target = angular.element("#show-filters-button")
         $('.burndown').css("visibility", "hidden")
@@ -541,7 +541,6 @@ BacklogDirective = ($repo, $rootscope) ->
         $el.on "click", "#show-filters-button", (event) ->
             event.preventDefault()
             showHideFilter($scope, $el, $ctrl)
-
 
     link = ($scope, $el, $attrs, $rootscope) ->
         $ctrl = $el.controller()
