@@ -215,6 +215,7 @@ gulp.task "express", ->
     app.use("/images", express.static("#{__dirname}/dist/images"))
     app.use("/partials", express.static("#{__dirname}/dist/partials"))
     app.use("/fonts", express.static("#{__dirname}/dist/fonts"))
+    app.use("/plugins", express.static("#{__dirname}/dist/plugins"))
 
     app.all "/*", (req, res, next) ->
         # Just send the index.html for other files to support HTML5Mode
