@@ -50,16 +50,21 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @appTitle, tgLoader) ->
         _.bindAll(@)
-
         @scope.sectionName = "Kanban"
 
         promise = @.loadInitialData()
-        promise.then () =>
+
+        # On Success
+        promise.then =>
             @appTitle.set("Kanban - " + @scope.project.name)
             tgLoader.pageLoaded()
 
-        promise.then null, =>
-            console.log "FAIL"
+        # On Error
+        promise.then null, (xhr) =>
+            if xhr and xhr.status == 404
+                @location.path("/not-found")
+                @location.replace()
+            return @q.reject(xhr)
 
         @scope.$on("usform:new:success", @.loadUserstories)
         @scope.$on("usform:bulk:success", @.loadUserstories)
@@ -84,6 +89,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
     onAssignedToChanged: (ctx, userid, us) ->
         us.assigned_to = userid
+
         promise = @repo.save(us)
         promise.then null, ->
             console.log "FAIL" # TODO
@@ -107,25 +113,24 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @scope.project.tags_colors = tags_colors
 
     loadUserstories: ->
-        return @.refreshTagsColors().then =>
-            return @rs.userstories.listUnassigned(@scope.projectId).then (userstories) =>
-                @scope.userstories = userstories
+        return @rs.userstories.listUnassigned(@scope.projectId).then (userstories) =>
+            @scope.userstories = userstories
+            @scope.usByStatus = _.groupBy(userstories, "status")
 
-                @scope.usByStatus = _.groupBy(userstories, "status")
+            for status in @scope.usStatusList
+                if not @scope.usByStatus[status.id]?
+                    @scope.usByStatus[status.id] = []
 
-                for status in @scope.usStatusList
-                    if not @scope.usByStatus[status.id]?
-                        @scope.usByStatus[status.id] = []
+            # The broadcast must be executed when the DOM has been fully reloaded.
+            # We can't assure when this exactly happens so we need a defer
+            scopeDefer @scope, =>
+                @scope.$broadcast("userstories:loaded")
 
-                # The broadcast must be executed when the DOM has been fully reloaded.
-                # We can't assure when this exactly happens so we need a defer
-                scopeDefer @scope, =>
-                    @scope.$broadcast("userstories:loaded")
-
-                return userstories
+            return userstories
 
     loadKanban: ->
         return @q.all([
+            @.refreshTagsColors(),
             @.loadProjectStats(),
             @.loadUserstories()
         ])
@@ -146,13 +151,9 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @scope.projectId = data.project
             return data
 
-        promise.then null, =>
-            @location.path("/not-found")
-            @location.replace()
-
         return promise.then(=> @.loadProject())
-                      .then(=> @.loadUsersAndRoles())
-                      .then(=> @.loadKanban())
+                      .then(=> @q.all([@.loadUsersAndRoles(),
+                                       @.loadKanban()]))
                       .then(=> @scope.$broadcast("redraw:wip"))
 
     prepareBulkUpdateData: (uses) ->
