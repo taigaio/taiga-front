@@ -16,7 +16,16 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: pluggins/main.coffee
+# File: plugins/humanshtml/humanshtml.coffee
 ###
 
-module = angular.module("taigaPlugins", ["ngRoute"])
+# Simple plugin example that extends the urlmappings
+# and add additional template.
+
+taiga = @.taiga
+module = angular.module("taigaPlugins")
+
+configure = ($routeProvider) ->
+    $routeProvider.when("/humans.html", {"templateUrl": "/plugins/humanshtml/templates/humans.html"})
+
+module.config(["$routeProvider", configure])

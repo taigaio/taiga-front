@@ -170,7 +170,6 @@ gulp.task "jslibs", ->
         .pipe(concat("libs.js"))
         .pipe(gulp.dest("dist/js/"))
 
-
 gulp.task "locales", ->
     gulp.src("app/locales/en/app.json")
         .pipe(wrap("angular.module('taigaLocales').constant('localesEnglish', <%= contents %>);"))
@@ -195,6 +194,9 @@ gulp.task "copy",  ->
     gulp.src("#{paths.app}/images/**/*")
         .pipe(gulp.dest("#{paths.dist}/images/"))
 
+    gulp.src("#{paths.app}/plugins/**/templates/*")
+        .pipe(gulp.dest("#{paths.dist}/plugins/"))
+
 
 gulp.task "connect", ->
     connect.server({
@@ -213,6 +215,7 @@ gulp.task "express", ->
     app.use("/images", express.static("#{__dirname}/dist/images"))
     app.use("/partials", express.static("#{__dirname}/dist/partials"))
     app.use("/fonts", express.static("#{__dirname}/dist/fonts"))
+    app.use("/plugins", express.static("#{__dirname}/dist/plugins"))
 
     app.all "/*", (req, res, next) ->
         # Just send the index.html for other files to support HTML5Mode
