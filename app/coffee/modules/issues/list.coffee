@@ -65,12 +65,17 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
         promise = @.loadInitialData()
 
-        promise.then () =>
+        # On Success
+        promise.then =>
             @appTitle.set("Issues - " + @scope.project.name)
             tgLoader.pageLoaded()
 
-        promise.then null, ->
-            console.log "FAIL" #TODO
+        # On Error
+        promise.then null, (xhr) =>
+            if xhr and xhr.status == 404
+                @location.path("/not-found")
+                @location.replace()
+            return @q.reject(xhr)
 
         @scope.$on "issueform:new:success", =>
             @.loadIssues()
@@ -109,23 +114,14 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         return filters[name]
 
     loadMyFilters: ->
-        deferred = @q.defer()
-        promise = @rs.issues.getMyFilters(@scope.projectId)
-        promise.then (filters) ->
-            result = _.map filters, (value, key) =>
-                obj = {
-                    id: key,
-                    name: key,
-                    type: "myFilters"
-                }
-                obj.selected = false
-                return obj
-            deferred.resolve(result)
-        return deferred.promise
+        return @rs.issues.getMyFilters(@scope.projectId).then (filters) =>
+            return _.map filters, (value, key) =>
+                return {id: key, name: key, type: "myFilters", selected: false}
 
     removeNotExistingFiltersFromUrl: ->
         currentSearch = @location.search()
         urlfilters = @.getUrlFilters()
+
         for filterName, filterValue of urlfilters
             if filterName == "page" or filterName == "orderBy" or filterName == "q"
                 continue
@@ -162,64 +158,67 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 obj.selected = if isSelected(obj.type, obj.id) then true else undefined
 
     loadFilters: ->
-        deferred = @q.defer()
         urlfilters = @.getUrlFilters()
 
         if urlfilters.q
             @scope.filtersQ = urlfilters.q
 
-        @.loadMyFilters().then (myFilters) =>
+        # Load My Filters
+        promise = @.loadMyFilters().then (myFilters) =>
             @scope.filters.myFilters = myFilters
-            @rs.issues.filtersData(@scope.projectId).then (data) =>
-                usersFiltersFormat = (users, type, unknownOption) =>
-                    reformatedUsers = _.map users, (t) =>
-                        return {
-                            id: t[0],
-                            count: t[1],
-                            type: type
-                            name: if t[0] then @scope.usersById[t[0]].full_name_display else unknownOption
-                        }
-                    unknownItem = _.remove(reformatedUsers, (u) -> not u.id)
-                    reformatedUsers = _.sortBy(reformatedUsers, (u) -> u.name.toUpperCase())
-                    if unknownItem.length > 0
-                        reformatedUsers.unshift(unknownItem[0])
-                    return reformatedUsers
+            return myFilters
 
-                choicesFiltersFormat = (choices, type, byIdObject) =>
-                    _.map choices, (t) ->
-                        return {
-                            id: t[0],
-                            name: byIdObject[t[0]].name,
-                            color: byIdObject[t[0]].color,
-                            count: t[1],
-                            type: type}
+        # Load default filters data
+        promise = promise.then =>
+            return @rs.issues.filtersData(@scope.projectId)
 
-                tagsFilterFormat = (tags) =>
-                    return _.map tags, (t) =>
-                        return {
-                            id: t[0],
-                            name: t[0],
-                            color: @scope.project.tags_colors[t[0]],
-                            count: t[1],
-                            type: "tags"
-                        }
+        # Format filters and set them on scope
+        return promise.then (data) =>
+            usersFiltersFormat = (users, type, unknownOption) =>
+                reformatedUsers = _.map users, (t) =>
+                    return {
+                        id: t[0],
+                        count: t[1],
+                        type: type
+                        name: if t[0] then @scope.usersById[t[0]].full_name_display else unknownOption
+                    }
+                unknownItem = _.remove(reformatedUsers, (u) -> not u.id)
+                reformatedUsers = _.sortBy(reformatedUsers, (u) -> u.name.toUpperCase())
+                if unknownItem.length > 0
+                    reformatedUsers.unshift(unknownItem[0])
+                return reformatedUsers
 
-                # Build filters data structure
-                @scope.filters.statuses = choicesFiltersFormat data.statuses, "statuses", @scope.issueStatusById
-                @scope.filters.severities = choicesFiltersFormat data.severities, "severities", @scope.severityById
-                @scope.filters.priorities = choicesFiltersFormat data.priorities, "priorities", @scope.priorityById
-                @scope.filters.assignedTo = usersFiltersFormat data.assigned_to, "assignedTo", "Unassigned"
-                @scope.filters.createdBy = usersFiltersFormat data.created_by, "createdBy", "Unknown"
-                @scope.filters.types = choicesFiltersFormat data.types, "types", @scope.issueTypeById
-                @scope.filters.tags = tagsFilterFormat data.tags
+            choicesFiltersFormat = (choices, type, byIdObject) =>
+                _.map choices, (t) ->
+                    return {
+                        id: t[0],
+                        name: byIdObject[t[0]].name,
+                        color: byIdObject[t[0]].color,
+                        count: t[1],
+                        type: type}
 
-                @.removeNotExistingFiltersFromUrl()
+            tagsFilterFormat = (tags) =>
+                return _.map tags, (t) =>
+                    return {
+                        id: t[0],
+                        name: t[0],
+                        color: @scope.project.tags_colors[t[0]],
+                        count: t[1],
+                        type: "tags"
+                    }
 
-                @.markSelectedFilters(@scope.filters, urlfilters)
+            # Build filters data structure
+            @scope.filters.statuses = choicesFiltersFormat(data.statuses, "statuses", @scope.issueStatusById)
+            @scope.filters.severities = choicesFiltersFormat(data.severities, "severities", @scope.severityById)
+            @scope.filters.priorities = choicesFiltersFormat(data.priorities, "priorities", @scope.priorityById)
+            @scope.filters.assignedTo = usersFiltersFormat(data.assigned_to, "assignedTo", "Unassigned")
+            @scope.filters.createdBy = usersFiltersFormat(data.created_by, "createdBy", "Unknown")
+            @scope.filters.types = choicesFiltersFormat(data.types, "types", @scope.issueTypeById)
+            @scope.filters.tags = tagsFilterFormat(data.tags)
 
-                @rootscope.$broadcast("filters:loaded", @scope.filters)
-                deferred.resolve()
-        return deferred.promise
+            @.removeNotExistingFiltersFromUrl()
+            @.markSelectedFilters(@scope.filters, urlfilters)
+            @rootscope.$broadcast("filters:loaded", @scope.filters)
 
     loadIssues: ->
         @scope.urlFilters = @.getUrlFilters()
@@ -247,28 +246,22 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 name = "type"
             @scope.httpParams[name] = values
 
-        promise = @rs.issues.list(@scope.projectId, @scope.httpParams).then (data) =>
+        return @rs.issues.list(@scope.projectId, @scope.httpParams).then (data) =>
             @scope.issues = data.models
             @scope.page = data.current
             @scope.count = data.count
             @scope.paginatedBy = data.paginatedBy
             return data
 
-        return promise
-
     loadInitialData: ->
         promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
             @scope.projectId = data.project
             return data
 
-        promise.then null, =>
-            @location.path("/not-found")
-            @location.replace()
-
         return promise.then(=> @.loadProject())
-                      .then(=> @.loadUsersAndRoles())
-                      .then(=> @.loadFilters())
-                      .then(=> @.loadIssues())
+                      .then(=> @q.all([@.loadUsersAndRoles(),
+                                       @.loadFilters(),
+                                       @.loadIssues()]))
 
     saveCurrentFiltersTo: (newFilter) ->
         deferred = @q.defer()
