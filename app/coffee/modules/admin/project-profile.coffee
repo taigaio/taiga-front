@@ -53,11 +53,14 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
 
         promise = @.loadInitialData()
 
-        promise.then () =>
+        promise.then =>
             @appTitle.set("Project profile - " + @scope.sectionName + " - " + @scope.project.name)
 
-        promise.then null, ->
-            console.log "FAIL" #TODO
+        promise.then null, (xhr) =>
+            if xhr and xhr.status == 404
+                @location.path("/not-found")
+                @location.replace()
+            return @q.reject(xhr)
 
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
@@ -76,10 +79,6 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
         promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
             @scope.projectId = data.project
             return data
-
-        promise.then null, =>
-            @location.path("/not-found")
-            @location.replace()
 
         return promise.then(=> @.loadProject())
 
