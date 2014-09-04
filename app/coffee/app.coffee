@@ -141,6 +141,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, tgLoade
             return promise.then null, (response) ->
                 if response.status == 0
                     $location.path($navUrls.resolve("error"))
+                    $location.replace()
                 else if response.status == 401
                     nextPath = $location.path()
                     $location.url($navUrls.resolve("login")).search("next=#{nextPath}")
