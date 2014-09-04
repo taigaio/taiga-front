@@ -145,6 +145,31 @@ module.service("$tgAuth", AuthService)
 ## Login Directive
 #############################################################################
 
+# Directive that manages the visualization of public register
+# message/link on login page.
+
+PublicRegisterMessageDirective = ($config) ->
+    template = _.template("""
+    <p class="login-text">
+        <span>Not registered yet?</span>
+        <a href="<%= url %>" tg-nav="register" title="Register"> create your free account here</a>
+    </p>""")
+
+    templateFn = ->
+        url = $config.get("publicRegisterEnabled")
+        if not url
+            return ""
+        return template({url:url})
+
+    return {
+        restrict: "AE"
+        scope: {}
+        template: templateFn
+    }
+
+
+module.directive("tgPublicRegisterMessage", ["$tgConfig", PublicRegisterMessageDirective])
+
 LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls) ->
     link = ($scope, $el, $attrs) ->
         $scope.pubblicRegisterEnabled = $config.get("pubblicRegisterEnabled")
