@@ -53,11 +53,16 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
 
         promise = @.loadInitialData()
 
-        promise.then () =>
+        # On Success
+        promise.then =>
             @appTitle.set("Taskboard - " + @scope.project.name)
 
-        promise.then null, ->
-            console.log "FAIL" #TODO
+        # On Error
+        promise.then null, (xhr) =>
+            if xhr and xhr.status == 404
+                @location.path("/not-found")
+                @location.replace()
+            return @q.reject(xhr)
 
         # TODO: Reload entire taskboard after create/edit tasks seems
         # a big overhead. It should be optimized in near future.
@@ -71,6 +76,20 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
             promise = @repo.save(task)
             promise.then null, ->
                 console.log "FAIL" # TODO
+
+    loadProject: ->
+        return @rs.projects.get(@scope.projectId).then (project) =>
+            @scope.project = project
+            @scope.$emit('project:loaded', project)
+            # Not used at this momment
+            @scope.pointsList = _.sortBy(project.points, "order")
+            # @scope.roleList = _.sortBy(project.roles, "order")
+            @scope.pointsById = groupBy(project.points, (e) -> e.id)
+            @scope.roleById = groupBy(project.roles, (e) -> e.id)
+            @scope.taskStatusList = _.sortBy(project.task_statuses, "order")
+            @scope.usStatusList = _.sortBy(project.us_statuses, "order")
+            @scope.usStatusById = groupBy(project.us_statuses, (e) -> e.id)
+            return project
 
     loadSprintStats: ->
         return @rs.sprints.stats(@scope.projectId, @scope.sprintId).then (stats) =>
@@ -100,42 +119,28 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
             return sprint
 
     loadTasks: ->
-        return @.refreshTagsColors().then =>
-            return @rs.tasks.list(@scope.projectId, @scope.sprintId).then (tasks) =>
-                @scope.tasks = tasks
-                @scope.usTasks = {}
+        return @rs.tasks.list(@scope.projectId, @scope.sprintId).then (tasks) =>
+            @scope.tasks = tasks
+            @scope.usTasks = {}
 
-                # Iterate over all userstories and
-                # null userstory for unassigned tasks
-                for us in _.union(@scope.userstories, [{id:null}])
-                    @scope.usTasks[us.id] = {}
-                    for status in @scope.taskStatusList
-                        @scope.usTasks[us.id][status.id] = []
+            # Iterate over all userstories and
+            # null userstory for unassigned tasks
+            for us in _.union(@scope.userstories, [{id:null}])
+                @scope.usTasks[us.id] = {}
+                for status in @scope.taskStatusList
+                    @scope.usTasks[us.id][status.id] = []
 
-                for task in @scope.tasks
-                    @scope.usTasks[task.user_story][task.status].push(task)
+            for task in @scope.tasks
+                @scope.usTasks[task.user_story][task.status].push(task)
 
-                return tasks
-
-    loadProject: ->
-        return @rs.projects.get(@scope.projectId).then (project) =>
-            @scope.project = project
-            @scope.$emit('project:loaded', project)
-            # Not used at this momment
-            @scope.pointsList = _.sortBy(project.points, "order")
-            # @scope.roleList = _.sortBy(project.roles, "order")
-            @scope.pointsById = groupBy(project.points, (e) -> e.id)
-            @scope.roleById = groupBy(project.roles, (e) -> e.id)
-            @scope.taskStatusList = _.sortBy(project.task_statuses, "order")
-            @scope.usStatusList = _.sortBy(project.us_statuses, "order")
-            @scope.usStatusById = groupBy(project.us_statuses, (e) -> e.id)
-            return project
+            return tasks
 
     loadTaskboard: ->
         return @q.all([
+            @.refreshTagsColors(),
             @.loadSprintStats(),
-            @.loadSprint()
-        ]).then(=> @.loadTasks())
+            @.loadSprint().then(=> @.loadTasks())
+        ])
 
     loadInitialData: ->
         params = {
@@ -148,13 +153,9 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.sprintId = data.milestone
             return data
 
-        promise.then null, =>
-            @location.path("/not-found")
-            @location.replace()
-
         return promise.then(=> @.loadProject())
-                      .then(=> @.loadUsersAndRoles())
-                      .then(=> @.loadTaskboard())
+                      .then(=> @q.all([@.loadUsersAndRoles(),
+                                       @.loadTaskboard()]))
 
     taskMove: (ctx, task, usId, statusId, order) ->
         # Remove task from old position

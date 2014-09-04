@@ -51,18 +51,22 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin, taig
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @filter, @log, @appTitle,
                   @navUrls) ->
         @.attachmentsUrlName = "wiki/attachments"
-
         @scope.projectSlug = @params.pslug
         @scope.wikiSlug = @params.slug
         @scope.sectionName = "Wiki"
 
         promise = @.loadInitialData()
 
+        # On Success
         promise.then () =>
             @appTitle.set("Wiki - " + @scope.project.name)
 
-        promise.then null, ->
-            console.log "FAIL" #TODO
+        # On Error
+        promise.then null, (xhr) =>
+            if xhr and xhr.status == 404
+                @location.path("/not-found")
+                @location.replace()
+            return @q.reject(xhr)
 
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
@@ -71,52 +75,50 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin, taig
             @scope.membersById = groupBy(project.memberships, (x) -> x.user)
             return project
 
-    loadWikiSlug: ->
-        params = {
-            pslug: @params.pslug
-            wikipage: @params.slug
-        }
-
-        promise = @repo.resolve(params).then (data) =>
-            @scope.wikiId = data.wikipage
-            @scope.projectId = data.project
-            return data
-        promise.then null, =>
-            ctx = {
-                project: @params.pslug
-                slug: @params.slug
-            }
-            @location.path(@navUrls.resolve("project-wiki-page-edit", ctx))
-
     loadWiki: ->
         if @scope.wikiId
             return @rs.wiki.get(@scope.wikiId).then (wiki) =>
                 @scope.wiki = wiki
-        else
-            return @scope.wiki = {
-                content: ""
-            }
+                return wiki
+
+        @scope.wiki = {content: ""}
+        return @scope.wiki
 
     loadWikiLinks: ->
         return @rs.wiki.listLinks(@scope.projectId).then (wikiLinks) =>
             @scope.wikiLinks = wikiLinks
 
     loadInitialData: ->
+        params = {
+            pslug: @params.pslug
+            wikipage: @params.slug
+        }
+
         # Resolve project slug
         promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
             @scope.projectId = data.project
             return data
 
-        promise.then null, =>
-            @location.path("/not-found")
-            @location.replace()
+        # Resolve wiki slug
+        # This should be done in two steps because is not same thing
+        # not found response for project and not found for wiki page
+        # and they should be hendled separately.
+        promise = promise.then =>
+            prom = @repo.resolve({wikipage: @params.slug, pslug: @params.pslug})
+
+            prom = prom.then (data) =>
+                @scope.wikiId = data.wikipage
+
+            return prom.then null, (xhr) =>
+                ctx = {project: @params.pslug, slug: @params.slug}
+                @location.path(@navUrls.resolve("project-wiki-page-edit", ctx))
+                return @q.reject()
 
         return promise.then(=> @.loadProject())
-                      .then(=> @.loadUsersAndRoles())
-                      .then(=> @.loadWikiLinks())
-                      .then(=> @.loadWikiSlug())
-                      .then(=> @.loadWiki())
-                      .then(=> @.loadAttachments(@scope.wikiId))
+                      .then(=> @q.all([@.loadUsersAndRoles(),
+                                       @.loadWikiLinks(),
+                                       @.loadWiki(),
+                                       @.loadAttachments(@scope.wikiId)]))
 
     edit: ->
         ctx = {
