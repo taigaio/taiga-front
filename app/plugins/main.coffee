@@ -19,4 +19,4 @@
 # File: pluggins/main.coffee
 ###
 
-module = angular.module("taigaPlugins", [])
+module = angular.module("taigaPlugins", ["ngRoute"])
