@@ -406,6 +406,7 @@ AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationServic
 
             render(selectedUser)
             lightboxService.open($el)
+            $el.find('input').focus()
 
         $scope.$watch "usersSearch", (searchingText) ->
             render(selectedUser, searchingText) if searchingText?
