@@ -56,12 +56,17 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
         promise = @.loadInitialData()
 
-        promise.then () =>
+        # On Success
+        promise.then =>
             @appTitle.set("Backlog - " + @scope.project.name)
             tgLoader.pageLoaded()
 
-        promise.then null, =>
-            console.log "FAIL"
+        # On Error
+        promise.then null, (xhr) =>
+            if xhr and xhr.status == 404
+                @location.path("/not-found")
+                @location.replace()
+            return @q.reject(xhr)
 
         @scope.$on("usform:bulk:success", @.loadUserstories)
         @scope.$on("sprintform:create:success", @.loadSprints)
@@ -109,8 +114,8 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
             @scope.filtersQ = ""
 
-            _.forEach [selectedTags, selectedStatuses], (filterGrp) =>
-                _.forEach filterGrp, (item) =>
+            _.each [selectedTags, selectedStatuses], (filterGrp) =>
+                _.each filterGrp, (item) =>
                     filters = @scope.filters[item.type]
                     filter = _.find(filters, {id: taiga.toString(item.id)})
                     filter.selected = false
@@ -119,32 +124,25 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
             @.loadUserstories()
 
-            # @.filterVisibleUserstories()
-            # @rootscope.$broadcast("filters:loaded", @scope.filters)
-
     loadUserstories: ->
-        @scope.urlFilters = @.getUrlFilters()
-
-        @scope.httpParams = {}
-        for name, values of @scope.urlFilters
-            @scope.httpParams[name] = values
-
+        @scope.httpParams = @.getUrlFilters()
         @rs.userstories.storeQueryParams(@scope.projectId, @scope.httpParams)
 
-        @.refreshTagsColors().then =>
-            @rs.userstories.listUnassigned(@scope.projectId, @scope.httpParams).then (userstories) =>
-                @scope.userstories = userstories
+        promise = @.refreshTagsColors().then =>
+            return @rs.userstories.listUnassigned(@scope.projectId, @scope.httpParams)
 
-                @.generateFilters()
-                @.filterVisibleUserstories()
+        return promise.then (userstories) =>
+            @scope.userstories = userstories
+            @.generateFilters()
+            @.filterVisibleUserstories()
 
-                @rootscope.$broadcast("filters:loaded", @scope.filters)
-                # The broadcast must be executed when the DOM has been fully reloaded.
-                # We can't assure when this exactly happens so we need a defer
-                scopeDefer @scope, =>
-                    @scope.$broadcast("userstories:loaded")
+            @rootscope.$broadcast("filters:loaded", @scope.filters)
+            # The broadcast must be executed when the DOM has been fully reloaded.
+            # We can't assure when this exactly happens so we need a defer
+            scopeDefer @scope, =>
+                @scope.$broadcast("userstories:loaded")
 
-                return userstories
+            return userstories
 
     loadBacklog: ->
         return @q.all([
@@ -169,13 +167,9 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             @scope.projectId = data.project
             return data
 
-        promise.then null, =>
-            @location.path("/not-found")
-            @location.replace()
-
-        return promise.then(=> @.loadProject())
-                      .then(=> @.loadUsersAndRoles())
-                      .then(=> @.loadBacklog())
+        return promise.then(=> @loadProject())
+                      .then(=> @q.all([@.loadUsersAndRoles(),
+                                       @.loadBacklog()]))
 
     filterVisibleUserstories: ->
         @scope.visibleUserstories = []
