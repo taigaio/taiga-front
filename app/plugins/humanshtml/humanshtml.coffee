@@ -16,7 +16,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: plugins/humanstxt/humanstxt.coffee
+# File: plugins/humanshtml/humanshtml.coffee
 ###
 
 # Simple plugin example that extends the urlmappings
@@ -26,6 +26,6 @@ taiga = @.taiga
 module = angular.module("taigaPlugins")
 
 configure = ($routeProvider) ->
-    $routeProvider.when("/humans.txt", {"templateUrl": "/plugins/humanstxt/templates/humanstxt.html"})
+    $routeProvider.when("/humans.html", {"templateUrl": "/plugins/humanshtml/templates/humans.html"})
 
 module.config(["$routeProvider", configure])
