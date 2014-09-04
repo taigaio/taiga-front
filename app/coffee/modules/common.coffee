@@ -115,7 +115,6 @@ module.directive("tgTagLine", ["$log", TagLineDirective])
 #############################################################################
 
 ChangesDirective = ->
-    # TODO: i18n
     containerTemplate = _.template("""
     <div>
         <% if (showMoreEnabled){ %>
@@ -124,7 +123,7 @@ ChangesDirective = ->
             </a>
         <% } %>
     </div>
-    """)
+    """) # TODO: i18n
     commentBaseTemplate = _.template("""
     <div class="entry comment-single <% if(hidden){ %>hidden<% }%>">
         <div class="comment-user activity-comment">
@@ -195,7 +194,7 @@ ChangesDirective = ->
             </p>
         </div>
         </div>
-    """)
+    """) # TODO: i18n
     descriptionChangeTemplate = _.template("""
     <div class="activity-inner">
         <div class="activity-changed">
@@ -226,7 +225,7 @@ ChangesDirective = ->
         </div>
     </div>
     <% }); %>
-    """)
+    """) # TODO: i18n
     attachmentTemplate = _.template("""
     <div class="activity-inner">
         <div class="activity-changed">
@@ -244,10 +243,9 @@ ChangesDirective = ->
 
         buildChangesText = (comment) ->
             size = countChanges(comment)
-            # TODO: i18n
             if size == 1
-                return "Made #{size} change"
-            return "Made #{size} changes"
+                return "Made #{size} change" # TODO: i18n
+            return "Made #{size} changes" # TODO: i18n
 
         renderEntries = (change, parentDomNode) ->
             _.each change.values_diff, (modification, name) ->
@@ -265,10 +263,10 @@ ChangesDirective = ->
                         if attachmentType == "new"
                             _.each attachmentChanges, (attachmentChange) ->
                                 parentDomNode.append(attachmentTemplate({
-                                    name: "New attachment"
+                                    name: "New attachment" # TODO: i18n
                                     description: attachmentChange.filename
                                 }))
-                        else if attachmentType == "deleted"
+                        else if attachmentType == "deleted" # TODO: i18n
                             _.each attachmentChanges, (attachmentChange) ->
                                 parentDomNode.append(attachmentTemplate({
                                     name: "Deleted attachment"
@@ -278,10 +276,15 @@ ChangesDirective = ->
                             name = "Updated attachment"
                             _.each attachmentChanges, (attachmentChange) ->
                                 parentDomNode.append(attachmentTemplate({
-                                    name: "Updated attachment"
+                                    name: "Updated attachment" # TODO: i18n
                                     description: attachmentChange[0].filename
                                 }))
-
+                else if name == "assigned_to"
+                    parentDomNode.append(standardChangeFromToTemplate({
+                        name: name
+                        from: prettyPrintModification(modification[0]) ? "Unassigned" # TODO: i18n
+                        to: prettyPrintModification(modification[1]) ? "Unassigned" # TODO: i18n
+                    }))
                 else
                     parentDomNode.append(standardChangeFromToTemplate({
                         name: name
@@ -302,7 +305,6 @@ ChangesDirective = ->
             entryDomNode = $(html)
             activityContentDom = entryDomNode.find(".comment-content .us-activity")
             renderEntries(comment, activityContentDom)
-            console.log entryDomNode.html()
             containerDomNode.append(entryDomNode)
 
         renderChange = (change, containerDomNode, hidden) ->
@@ -328,12 +330,12 @@ ChangesDirective = ->
             if typeIsArray(value)
                 if value.length == 0
                     #TODO i18n
-                    return "None"
+                    return "None" # TODO: i18n
                 return value.join(", ")
 
             if value == ""
                 #TODO i18n
-                return "None"
+                return "None" # TODO: i18n
 
             return value
 
