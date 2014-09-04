@@ -170,7 +170,6 @@ gulp.task "jslibs", ->
         .pipe(concat("libs.js"))
         .pipe(gulp.dest("dist/js/"))
 
-
 gulp.task "locales", ->
     gulp.src("app/locales/en/app.json")
         .pipe(wrap("angular.module('taigaLocales').constant('localesEnglish', <%= contents %>);"))
@@ -194,6 +193,9 @@ gulp.task "copy",  ->
 
     gulp.src("#{paths.app}/images/**/*")
         .pipe(gulp.dest("#{paths.dist}/images/"))
+
+    gulp.src("#{paths.app}/plugins/**/templates/*")
+        .pipe(gulp.dest("#{paths.dist}/plugins/"))
 
 
 gulp.task "connect", ->
