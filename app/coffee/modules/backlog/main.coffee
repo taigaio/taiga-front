@@ -168,8 +168,8 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             return data
 
         return promise.then(=> @loadProject())
-                      .then(=> @q.all([@.loadUsersAndRoles(),
-                                       @.loadBacklog()]))
+                      .then(=> @.loadUsersAndRoles())
+                      .then(=> @.loadBacklog())
 
     filterVisibleUserstories: ->
         @scope.visibleUserstories = []

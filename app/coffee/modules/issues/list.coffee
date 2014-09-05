@@ -259,8 +259,8 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             return data
 
         return promise.then(=> @.loadProject())
-                      .then(=> @q.all([@.loadUsersAndRoles(),
-                                       @.loadFilters(),
+                      .then(=> @.loadUsersAndRoles())
+                      .then(=> @q.all([@.loadFilters(),
                                        @.loadIssues()]))
 
     saveCurrentFiltersTo: (newFilter) ->

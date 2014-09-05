@@ -154,8 +154,8 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
             return data
 
         return promise.then(=> @.loadProject())
-                      .then(=> @q.all([@.loadUsersAndRoles(),
-                                       @.loadTaskboard()]))
+                      .then(=> @.loadUsersAndRoles())
+                      .then(=> @.loadTaskboard())
 
     taskMove: (ctx, task, usId, statusId, order) ->
         # Remove task from old position

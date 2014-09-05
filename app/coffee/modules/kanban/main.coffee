@@ -152,8 +152,8 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             return data
 
         return promise.then(=> @.loadProject())
-                      .then(=> @q.all([@.loadUsersAndRoles(),
-                                       @.loadKanban()]))
+                      .then(=> @.loadUsersAndRoles())
+                      .then(=> @.loadKanban())
                       .then(=> @scope.$broadcast("redraw:wip"))
 
     prepareBulkUpdateData: (uses) ->

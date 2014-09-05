@@ -138,8 +138,8 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin,
             return data
 
         return promise.then(=> @.loadProject())
-                      .then(=> @q.all([@.loadUsersAndRoles(),
-                                       @.loadUs(),
+                      .then(=> @.loadUsersAndRoles())
+                      .then(=> @q.all([@.loadUs(),
                                        @.loadTasks(),
                                        @.loadAttachments(@scope.usId),
                                        @.loadHistory()]))

@@ -115,8 +115,8 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin, taig
                 return @q.reject()
 
         return promise.then(=> @.loadProject())
-                      .then(=> @q.all([@.loadUsersAndRoles(),
-                                       @.loadWikiLinks(),
+                      .then(=> @.loadUsersAndRoles())
+                      .then(=> @q.all([@.loadWikiLinks(),
                                        @.loadWiki(),
                                        @.loadAttachments(@scope.wikiId)]))
 

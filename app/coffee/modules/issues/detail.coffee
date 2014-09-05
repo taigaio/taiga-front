@@ -130,8 +130,8 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin, tai
             return data
 
         return promise.then(=> @.loadProject())
-                      .then(=> @q.all([@.loadUsersAndRoles(),
-                                       @.loadIssue(),
+                      .then(=> @.loadUsersAndRoles())
+                      .then(=> @q.all([@.loadIssue(),
                                        @.loadAttachments(@scope.issueId),
                                        @.loadHistory()]))
 
