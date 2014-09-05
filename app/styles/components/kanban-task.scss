@@ -12,6 +12,15 @@
             opacity: 1;
         }
     }
+    &.blocked {
+        background: $red;
+        border: 1px solid darken($red, 10%);
+        color: $white;
+        a,
+        span {
+            color: $white;
+        }
+    }
     .kanban-tagline {
         @include table-flex();
         background: $gray-light; //Fallback

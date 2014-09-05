@@ -249,7 +249,8 @@ KanbanUserstoryDirective = ($rootscope) ->
                 return
             $scope.$apply ->
                 $rootscope.$broadcast("usform:edit", $model.$modelValue)
-
+        if $scope.us.is_blocked
+            $el.addClass('blocked')
         $el.disableSelection()
 
     return {
