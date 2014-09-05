@@ -39,7 +39,6 @@ deleteElement = (el) ->
     el.off()
     el.remove()
 
-
 BacklogSortableDirective = ($repo, $rs, $rootscope) ->
     # Notes about jquery bug:
     # http://stackoverflow.com/questions/5791886/jquery-draggable-shows-
@@ -48,46 +47,47 @@ BacklogSortableDirective = ($repo, $rs, $rootscope) ->
     link = ($scope, $el, $attrs) ->
         bindOnce $scope, "project", (project) ->
             # If the user has not enough permissions we don't enable the sortable
-            if project.my_permissions.indexOf("modify_us") > -1
+            if not (project.my_permissions.indexOf("modify_us") > -1)
+                return
 
-                $el.sortable({
-                    connectWith: ".sprint-table"
-                    containment: ".wrapper"
-                    dropOnEmpty: true
-                    placeholder: "row us-item-row us-item-drag sortable-placeholder"
-                    # With scroll activated, it has strange behavior
-                    # with not full screen browser window.
-                    scroll: false
-                    # A consequence of length of backlog user story item
-                    # the default tolerance ("intersection") not works properly.
-                    tolerance: "pointer"
-                    # Revert on backlog is disabled bacause it works bad. Something
-                    # on the current taiga backlog structure or style makes jquery ui
-                    # works unexpectly (in some circumstances calculates wrong
-                    # position for revert).
-                    revert: false
-                })
+            $el.sortable({
+                connectWith: ".sprint-table"
+                containment: ".wrapper"
+                dropOnEmpty: true
+                placeholder: "row us-item-row us-item-drag sortable-placeholder"
+                # With scroll activated, it has strange behavior
+                # with not full screen browser window.
+                scroll: false
+                # A consequence of length of backlog user story item
+                # the default tolerance ("intersection") not works properly.
+                tolerance: "pointer"
+                # Revert on backlog is disabled bacause it works bad. Something
+                # on the current taiga backlog structure or style makes jquery ui
+                # works unexpectly (in some circumstances calculates wrong
+                # position for revert).
+                revert: false
+            })
 
-                $el.on "sortreceive", (event, ui) ->
-                    itemUs = ui.item.scope().us
-                    itemIndex = ui.item.index()
+            $el.on "sortreceive", (event, ui) ->
+                itemUs = ui.item.scope().us
+                itemIndex = ui.item.index()
 
-                    deleteElement(ui.item)
-                    $scope.$emit("sprint:us:move", itemUs, itemIndex, null)
-                    ui.item.find('a').removeClass('noclick')
+                deleteElement(ui.item)
+                $scope.$emit("sprint:us:move", itemUs, itemIndex, null)
+                ui.item.find('a').removeClass('noclick')
 
-                $el.on "sortstop", (event, ui) ->
-                    # When parent not exists, do nothing
-                    if ui.item.parent().length == 0
-                        return
+            $el.on "sortstop", (event, ui) ->
+                # When parent not exists, do nothing
+                if ui.item.parent().length == 0
+                    return
 
-                    itemUs = ui.item.scope().us
-                    itemIndex = ui.item.index()
-                    $scope.$emit("sprint:us:move", itemUs, itemIndex, null)
-                    ui.item.find('a').removeClass('noclick')
+                itemUs = ui.item.scope().us
+                itemIndex = ui.item.index()
+                $scope.$emit("sprint:us:move", itemUs, itemIndex, null)
+                ui.item.find('a').removeClass('noclick')
 
-                $el.on "sortstart", (event, ui) ->
-                    ui.item.find('a').addClass('noclick')
+            $el.on "sortstart", (event, ui) ->
+                ui.item.find('a').addClass('noclick')
 
         $scope.$on "$destroy", ->
             $el.off()
