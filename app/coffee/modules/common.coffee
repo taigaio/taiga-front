@@ -118,8 +118,8 @@ ChangesDirective = ->
     containerTemplate = _.template("""
     <div>
         <% if (showMoreEnabled){ %>
-            <a href="" title="Show more" class="show-more">
-            Show <%- howManyMore %> more
+            <a href="" title="Show more" class="show-more show-more-comments">
+            + Show previous comments (<%- howManyMore %> more)
             </a>
         <% } %>
     </div>

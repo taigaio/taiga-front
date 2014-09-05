@@ -24,6 +24,19 @@
     }
 }
 
+a.show-more-comments {
+    @extend %small;
+    border-bottom: 1px solid $gray-light;
+    border-top: 1px solid $gray-light;
+    color: $gray-light;
+    display: block;
+    padding: 1rem 0 1rem 1rem;
+    &:hover {
+        @include transition (background .2s ease-in);
+        background: lighten($green-taiga, 60%);
+    }
+}
+
 .comment-single {
     @include table-flex;
     border-bottom: 2px solid $gray-light;
@@ -95,17 +108,19 @@
         margin-left: .5rem;
     }
 }
-.comment-list.activeanimation {
-    .comment-single.ng-enter:last-child,
-    .comment-single.ng-leave:last-child {
-        @include transition(all .3s ease-in);
-    }
-    .comment-single.ng-enter:last-child,
-    .comment-single.ng-leave.ng-leave-active:last-child {
-        opacity: 0;
-    }
-    .comment-single.ng-leave:last-child,
-    .comment-single.ng-enter.ng-enter-active:last-child {
-        opacity: 1;
+.comment-list {
+    &.activeanimation {
+        .comment-single.ng-enter:last-child,
+        .comment-single.ng-leave:last-child {
+            @include transition(all .3s ease-in);
+        }
+        .comment-single.ng-enter:last-child,
+        .comment-single.ng-leave.ng-leave-active:last-child {
+            opacity: 0;
+        }
+        .comment-single.ng-leave:last-child,
+        .comment-single.ng-enter.ng-enter-active:last-child {
+            opacity: 1;
+        }
     }
 }
