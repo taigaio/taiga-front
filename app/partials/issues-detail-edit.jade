@@ -15,8 +15,9 @@ block content
 
             section.us-story-main-data
                 div.us-title(ng-class="{blocked: issue.is_blocked}")
-                    span.us-number(tg-bo-ref="issue.ref")
-                    input(type="text", ng-model="issue.subject", data-required="true", data-maxlength="500")
+                    div.us-edit-name-inner
+                        span.us-number(tg-bo-ref="issue.ref")
+                        input(type="text", ng-model="issue.subject", data-required="true", data-maxlength="500")
                     p.block-desc-container(ng-show="issue.is_blocked")
                         span.block-description-title Blocked
                         span.block-description(tg-bind-html="issue.blocked_note || 'This issue is blocked'")

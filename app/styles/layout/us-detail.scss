@@ -35,8 +35,12 @@
                 }
             }
         }
+        .us-edit-name-inner {
+            @include table-flex();
+        }
         input {
             background: $white;
+            @include table-flex-child(1, 90%, 0);
         }
         .us-title-text {
             display: flex;
