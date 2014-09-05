@@ -1,8 +1,10 @@
 .taskboard-task {
     @include transition (box-shadow .4s linear);
     background: $postit;
+    border: 1px solid $postit-hover;
     box-shadow: none;
     cursor: move;
+    margin: .2rem;
     min-height: 7rem;
     position: relative;
     &:hover {
@@ -19,6 +21,15 @@
     }
     &.ui-sortable-placeholder {
         background: $grayer;
+    }
+    &.blocked {
+        background: $red;
+        border: 1px solid darken($red, 10%);
+        color: $white;
+        a,
+        span {
+            color: $white;
+        }
     }
     .taskboard-tagline {
         @include table-flex();

@@ -221,14 +221,14 @@ module.directive("tgTaskboard", ["$rootScope", TaskboardDirective])
 
 TaskboardTaskDirective = ($rootscope) ->
     link = ($scope, $el, $attrs, $model) ->
-        console.log "taskboard task"
+        $el.disableSelection()
+        if $scope.task.is_blocked
+            $el.addClass('blocked')
         $el.find(".icon-edit").on "click", (event) ->
             if $el.find('.icon-edit').hasClass('noclick')
                 return
             $scope.$apply ->
                 $rootscope.$broadcast("taskform:edit", $scope.task)
-
-        $el.disableSelection()
 
     return {link:link}
 
