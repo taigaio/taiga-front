@@ -150,7 +150,7 @@ module.controller("TaskDetailController", TaskDetailController)
 ## Task Main Directive
 #############################################################################
 
-TaskDirective = ($tgrepo, $log, $location, $confirm, $navUrls) ->
+TaskDirective = ($tgrepo, $log, $location, $confirm, $navUrls, $loading) ->
     linkSidebar = ($scope, $el, $attrs, $ctrl) ->
 
     link = ($scope, $el, $attrs) ->
@@ -165,6 +165,7 @@ TaskDirective = ($tgrepo, $log, $location, $confirm, $navUrls) ->
                 return
 
             onSuccess = ->
+                $loading.finish(target)
                 $confirm.notify("success")
                 ctx = {
                     project: $scope.project.slug
@@ -173,8 +174,11 @@ TaskDirective = ($tgrepo, $log, $location, $confirm, $navUrls) ->
                 $location.path($navUrls.resolve("project-tasks-detail", ctx))
 
             onError = ->
+                $loading.finish(target)
                 $confirm.notify("error")
 
+            target = angular.element(event.currentTarget)
+            $loading.start(target)
             $tgrepo.save($scope.task).then(onSuccess, onError)
 
         $el.on "click", ".add-comment a.button-green", (event) ->
@@ -200,7 +204,7 @@ TaskDirective = ($tgrepo, $log, $location, $confirm, $navUrls) ->
     return {link:link}
 
 module.directive("tgTaskDetail", ["$tgRepo", "$log", "$tgLocation", "$tgConfirm", "$tgNavUrls",
-                                  TaskDirective])
+                                  "$tgLoading", TaskDirective])
 
 
 #############################################################################

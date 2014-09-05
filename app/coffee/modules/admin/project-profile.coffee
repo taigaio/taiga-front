@@ -92,18 +92,22 @@ module.controller("ProjectProfileController", ProjectProfileController)
 ## Project Profile Directive
 #############################################################################
 
-ProjectProfileDirective = ($rootscope, $log, $repo, $confirm) ->
+ProjectProfileDirective = ($rootscope, $log, $repo, $confirm, $loading) ->
     link = ($scope, $el, $attrs) ->
         form = $el.find("form").checksley({"onlyOneErrorElement": true})
-        submit = =>
+        submit = (target) =>
             return if not form.validate()
+
+            $loading.start(target)
 
             promise = $repo.save($scope.project)
             promise.then ->
+                $loading.finish(target)
                 $confirm.notify("success")
                 $scope.$emit("project:loaded", $scope.project)
 
             promise.then null, (data) ->
+                $loading.finish(target)
                 form.setErrors(data)
                 if data._error_message
                     $confirm.notify("error", data._error_message)
@@ -112,31 +116,41 @@ ProjectProfileDirective = ($rootscope, $log, $repo, $confirm) ->
             event.preventDefault()
             submit()
 
-        $el.on "click", "form a.button-green", (event) ->
+        $el.on "click", ".default-values a.button-green", (event) ->
             event.preventDefault()
-            submit()
+            target = angular.element(event.currentTarget)
+            submit(target)
+
+        $el.on "click", ".project-details a.button-green", (event) ->
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+            submit(target)
 
     return {link:link}
 
-module.directive("tgProjectProfile", ["$rootScope", "$log", "$tgRepo", "$tgConfirm", ProjectProfileDirective])
+module.directive("tgProjectProfile", ["$rootScope", "$log", "$tgRepo", "$tgConfirm", "$tgLoading", ProjectProfileDirective])
 
 
 #############################################################################
 ## Project Features Directive
 #############################################################################
 
-ProjectFeaturesDirective = ($rootscope, $log, $repo, $confirm) ->
+ProjectFeaturesDirective = ($rootscope, $log, $repo, $confirm, $loading) ->
     link = ($scope, $el, $attrs) ->
         form = $el.find("form").checksley()
         submit = =>
             return if not form.validate()
+            target = angular.element(".admin-functionalities a.button-green")
+            $loading.start(target)
 
             promise = $repo.save($scope.project)
             promise.then ->
+                $loading.finish(target)
                 $confirm.notify("success")
                 $scope.$emit("project:loaded", $scope.project)
 
             promise.then null, (data) ->
+                $loading.finish(target)
                 $confirm.notify("error", data._error_message)
 
         $el.on "submit", "form", (event) ->
@@ -163,4 +177,4 @@ ProjectFeaturesDirective = ($rootscope, $log, $repo, $confirm) ->
 
     return {link:link}
 
-module.directive("tgProjectFeatures", ["$rootScope", "$log", "$tgRepo", "$tgConfirm", ProjectFeaturesDirective])
+module.directive("tgProjectFeatures", ["$rootScope", "$log", "$tgRepo", "$tgConfirm", "$tgLoading", ProjectFeaturesDirective])

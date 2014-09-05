@@ -157,7 +157,7 @@ module.controller("IssueDetailController", IssueDetailController)
 ## Issue Main Directive
 #############################################################################
 
-IssueDirective = ($tgrepo, $log, $location, $confirm, $navUrls) ->
+IssueDirective = ($tgrepo, $log, $location, $confirm, $navUrls, $loading) ->
     linkSidebar = ($scope, $el, $attrs, $ctrl) ->
 
     link = ($scope, $el, $attrs) ->
@@ -172,6 +172,7 @@ IssueDirective = ($tgrepo, $log, $location, $confirm, $navUrls) ->
                 return
 
             onSuccess = ->
+                $loading.finish(target)
                 $confirm.notify("success")
                 ctx = {
                     project: $scope.project.slug
@@ -180,8 +181,11 @@ IssueDirective = ($tgrepo, $log, $location, $confirm, $navUrls) ->
                 $location.path($navUrls.resolve("project-issues-detail", ctx))
 
             onError = ->
+                $loading.finish(target)
                 $confirm.notify("error")
 
+            target = angular.element(event.currentTarget)
+            $loading.start(target)
             $tgrepo.save($scope.issue).then(onSuccess, onError)
 
         $el.on "click", ".add-comment a.button-green", (event) ->
@@ -207,7 +211,7 @@ IssueDirective = ($tgrepo, $log, $location, $confirm, $navUrls) ->
     return {link:link}
 
 module.directive("tgIssueDetail", ["$tgRepo", "$log", "$tgLocation", "$tgConfirm", "$tgNavUrls",
-                                   IssueDirective])
+                                   "$tgLoading", IssueDirective])
 
 
 #############################################################################

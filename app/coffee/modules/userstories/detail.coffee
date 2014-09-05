@@ -167,7 +167,7 @@ module.controller("UserStoryDetailController", UserStoryDetailController)
 ## User story Main Directive
 #############################################################################
 
-UsDirective = ($tgrepo, $log, $location, $confirm, $navUrls) ->
+UsDirective = ($tgrepo, $log, $location, $confirm, $navUrls, $loading) ->
     linkSidebar = ($scope, $el, $attrs, $ctrl) ->
 
     link = ($scope, $el, $attrs) ->
@@ -182,6 +182,7 @@ UsDirective = ($tgrepo, $log, $location, $confirm, $navUrls) ->
                 return
 
             onSuccess = ->
+                $loading.finish(target)
                 $confirm.notify("success")
                 ctx = {
                     project: $scope.project.slug
@@ -190,8 +191,11 @@ UsDirective = ($tgrepo, $log, $location, $confirm, $navUrls) ->
                 $location.path($navUrls.resolve("project-userstories-detail", ctx))
 
             onError = ->
+                $loading.finish(target)
                 $confirm.notify("error")
 
+            target = angular.element(event.currentTarget)
+            $loading.start(target)
             $tgrepo.save($scope.us).then(onSuccess, onError)
 
         $el.on "click", ".add-comment a.button-green", (event) ->
@@ -216,7 +220,7 @@ UsDirective = ($tgrepo, $log, $location, $confirm, $navUrls) ->
 
     return {link:link}
 
-module.directive("tgUsDetail", ["$tgRepo", "$log", "$tgLocation", "$tgConfirm", "$tgNavUrls", UsDirective])
+module.directive("tgUsDetail", ["$tgRepo", "$log", "$tgLocation", "$tgConfirm", "$tgNavUrls", "$tgLoading", UsDirective])
 
 
 #############################################################################
