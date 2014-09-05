@@ -181,9 +181,6 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
             when "standard" then @rootscope.$broadcast("taskform:new", @scope.sprintId, us?.id)
             when "bulk" then @rootscope.$broadcast("taskform:bulk", @scope.sprintId, us?.id)
 
-    editTask: (task) ->
-        @rootscope.$broadcast("taskform:edit", task)
-
     editTaskAssignedTo: (task) ->
         @rootscope.$broadcast("assigned-to:add", task)
 
@@ -222,15 +219,21 @@ module.directive("tgTaskboard", ["$rootScope", TaskboardDirective])
 ## Taskboard Task Directive
 #############################################################################
 
-TaskboardTaskDirective = ->
-    link = ($scope, $el, $attrs) ->
+TaskboardTaskDirective = ($rootscope) ->
+    link = ($scope, $el, $attrs, $model) ->
         console.log "taskboard task"
+        $el.find(".icon-edit").on "click", (event) ->
+            if $el.find('.icon-edit').hasClass('noclick')
+                return
+            $scope.$apply ->
+                $rootscope.$broadcast("taskform:edit", $scope.task)
+
         $el.disableSelection()
 
     return {link:link}
 
 
-module.directive("tgTaskboardTask", TaskboardTaskDirective)
+module.directive("tgTaskboardTask", ["$rootScope", TaskboardTaskDirective])
 
 
 #############################################################################
@@ -283,13 +286,23 @@ TaskboardUserDirective = ($log) ->
 
             html = template(ctx)
             $el.html(html)
+            username_label = $el.parent().find("a.task-assigned")
+            username_label.html(ctx.name)
+            username_label.on "click", (event) ->
+                if $el.find('a').hasClass('noclick')
+                    return
 
-            $el.parent().find("a.task-assigned").html(ctx.name)
+                us = $model.$modelValue
+                $ctrl = $el.controller()
+                $ctrl.editTaskAssignedTo(us)
 
         bindOnce $scope, "project", (project) ->
             if project.my_permissions.indexOf("modify_task") > -1
                 clickable = true
                 $el.on "click", (event) =>
+                    if $el.find('a').hasClass('noclick')
+                        return
+
                     us = $model.$modelValue
                     $ctrl = $el.controller()
                     $ctrl.editTaskAssignedTo(us)

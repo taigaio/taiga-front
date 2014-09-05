@@ -1,5 +1,6 @@
 .kanban-task {
     background: $postit;
+    cursor: move;
     position: relative;
     &:last-child {
         margin: 0;

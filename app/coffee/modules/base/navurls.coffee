@@ -109,6 +109,9 @@ NavigationUrlsDirective = ($navurls, $auth, $q, $location) ->
             event.preventDefault()
             target = $(event.currentTarget)
 
+            if target.hasClass('noclick')
+                return
+
             fullUrl = target.data("fullUrl")
 
             switch event.which

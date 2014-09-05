@@ -58,7 +58,7 @@ KanbanSortableDirective = ($repo, $rs, $rootscope) ->
             itemEl.remove()
 
         tdom.sortable({
-            handle: ".icon-drag-h"
+            handle: ".kanban-task-inner"
             dropOnEmpty: true
             connectWith: ".kanban-uses-box"
             revert: 400
@@ -80,8 +80,11 @@ KanbanSortableDirective = ($repo, $rs, $rootscope) ->
             $scope.$apply ->
                 $rootscope.$broadcast("kanban:us:move", itemUs, newStatusId, itemIndex)
 
+            ui.item.find('a').removeClass('noclick')
+
         tdom.on "sortstart", (event, ui) ->
             oldParentScope = ui.item.parent().scope()
+            ui.item.find('a').addClass('noclick')
 
         $scope.$on "$destroy", ->
             $el.off()

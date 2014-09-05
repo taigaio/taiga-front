@@ -52,7 +52,6 @@ BacklogSortableDirective = ($repo, $rs, $rootscope) ->
 
                 $el.sortable({
                     connectWith: ".sprint-table"
-                    handle: ".icon-drag-v",
                     containment: ".wrapper"
                     dropOnEmpty: true
                     placeholder: "row us-item-row us-item-drag sortable-placeholder"
@@ -75,6 +74,7 @@ BacklogSortableDirective = ($repo, $rs, $rootscope) ->
 
                     deleteElement(ui.item)
                     $scope.$emit("sprint:us:move", itemUs, itemIndex, null)
+                    ui.item.find('a').removeClass('noclick')
 
                 $el.on "sortstop", (event, ui) ->
                     # When parent not exists, do nothing
@@ -84,6 +84,10 @@ BacklogSortableDirective = ($repo, $rs, $rootscope) ->
                     itemUs = ui.item.scope().us
                     itemIndex = ui.item.index()
                     $scope.$emit("sprint:us:move", itemUs, itemIndex, null)
+                    ui.item.find('a').removeClass('noclick')
+
+                $el.on "sortstart", (event, ui) ->
+                    ui.item.find('a').addClass('noclick')
 
         $scope.$on "$destroy", ->
             $el.off()
@@ -109,6 +113,7 @@ BacklogEmptySortableDirective = ($repo, $rs, $rootscope) ->
 
                     deleteElement(ui.item)
                     $scope.$emit("sprint:us:move", itemUs, itemIndex, null)
+                    ui.item.find('a').removeClass('noclick')
 
         $scope.$on "$destroy", ->
             $el.off()
@@ -132,6 +137,7 @@ SprintSortableDirective = ($repo, $rs, $rootscope) ->
 
                     deleteElement(ui.item)
                     $scope.$emit("sprint:us:move", itemUs, itemIndex, $scope.sprint.id)
+                    ui.item.find('a').removeClass('noclick')
 
                 $el.on "sortstop", (event, ui) ->
                     # When parent not exists, do nothing
@@ -142,6 +148,7 @@ SprintSortableDirective = ($repo, $rs, $rootscope) ->
                     itemIndex = ui.item.index()
 
                     $scope.$emit("sprint:us:move", itemUs, itemIndex, $scope.sprint.id)
+                    ui.item.find('a').removeClass('noclick')
 
     return {link:link}
 

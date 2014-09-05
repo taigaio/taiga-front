@@ -2,6 +2,7 @@
     @include transition (box-shadow .4s linear);
     background: $postit;
     box-shadow: none;
+    cursor: move;
     min-height: 7rem;
     position: relative;
     &:hover {

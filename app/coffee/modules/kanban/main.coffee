@@ -74,9 +74,6 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
     # Template actions
 
-    editUserStory: (us) ->
-        @rootscope.$broadcast("usform:edit", us)
-
     addNewUs: (type, statusId) ->
         switch type
             when "standard" then @rootscope.$broadcast("usform:new", @scope.projectId, statusId, @scope.usStatusList)
@@ -245,8 +242,14 @@ module.directive("tgKanbanRowSizeFixer", KanbanRowSizeFixer)
 ## Kaban User Story Directive
 #############################################################################
 
-KanbanUserstoryDirective = ->
-    link = ($scope, $el, $attrs) ->
+KanbanUserstoryDirective = ($rootscope) ->
+    link = ($scope, $el, $attrs, $model) ->
+        $el.find(".icon-edit").on "click", (event) ->
+            if $el.find('.icon-edit').hasClass('noclick')
+                return
+            $scope.$apply ->
+                $rootscope.$broadcast("usform:edit", $model.$modelValue)
+
         $el.disableSelection()
 
     return {
@@ -256,7 +259,7 @@ KanbanUserstoryDirective = ->
     }
 
 
-module.directive("tgKanbanUserstory", KanbanUserstoryDirective)
+module.directive("tgKanbanUserstory", ["$rootScope", KanbanUserstoryDirective])
 
 
 #############################################################################
@@ -322,6 +325,9 @@ KanbanUserDirective = ($log) ->
             username_label = $el.parent().find("a.task-assigned")
             username_label.html(ctx.name)
             username_label.on "click", (event) ->
+                if $el.find('a').hasClass('noclick')
+                    return
+
                 us = $model.$modelValue
                 $ctrl = $el.controller()
                 $ctrl.changeUsAssignedTo(us)
@@ -330,6 +336,9 @@ KanbanUserDirective = ($log) ->
             if project.my_permissions.indexOf("modify_us") > -1
                 clickable = true
                 $el.on "click", (event) =>
+                    if $el.find('a').hasClass('noclick')
+                        return
+
                     us = $model.$modelValue
                     $ctrl = $el.controller()
                     $ctrl.changeUsAssignedTo(us)

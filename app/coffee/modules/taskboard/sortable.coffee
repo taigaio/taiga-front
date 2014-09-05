@@ -48,7 +48,7 @@ TaskboardSortableDirective = ($repo, $rs, $rootscope) ->
             itemEl.remove()
 
         tdom.sortable({
-            handle: ".icon-drag-h",
+            handle: ".taskboard-task-inner",
             dropOnEmpty: true
             connectWith: ".taskboard-tasks-box"
             revert: 400
@@ -72,8 +72,11 @@ TaskboardSortableDirective = ($repo, $rs, $rootscope) ->
             $scope.$apply ->
                 $rootscope.$broadcast("taskboard:task:move", itemTask, newUsId, newStatusId, itemIndex)
 
+            ui.item.find('a').removeClass('noclick')
+
         tdom.on "sortstart", (event, ui) ->
             oldParentScope = ui.item.parent().scope()
+            ui.item.find('a').addClass('noclick')
 
         $scope.$on "$destroy", ->
             $el.off()

@@ -108,6 +108,7 @@
 
 .backlog-table-body {
     .row {
+        cursor: move;
         position: relative;
         &:hover {
             @include transition (background .2s ease-in);
