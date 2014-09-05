@@ -754,6 +754,7 @@ IssueAssignedToInlineEditionDirective = ($repo, $rootscope, popoverService) ->
                 ctx.name = member.full_name_display
 
             $el.find(".avatar").html(template(ctx))
+            $el.find(".issue-assignedto").attr('title', ctx.name)
 
         $ctrl = $el.controller()
         issue = $scope.$eval($attrs.tgIssueAssignedToInlineEdition)
