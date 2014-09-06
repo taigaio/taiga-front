@@ -148,6 +148,46 @@ BlockLightboxDirective = (lightboxService) ->
 
 module.directive("tgLbBlock", ["lightboxService", BlockLightboxDirective])
 
+
+#############################################################################
+## Generic Lightbox Blocking-Message Input Directive
+#############################################################################
+
+BlockingMessageInputDirective = ($log) ->
+    template = _.template("""
+    <fieldset class="blocked-note hidden">
+        <textarea name="blocked_note"
+            placeholder="Why is this user story blocked?"
+            ng-model="<%- ngmodel %>">
+        </textarea>
+    </fieldset>
+    """)
+
+    link = ($scope, $el, $attrs, $model) ->
+        if not $attrs.watch
+            return $log.error "No watch attribute on tg-blocking-message-input directive"
+
+        $scope.$watch $attrs.watch, (value) ->
+            return if value is undefined
+
+            if value == true
+                $el.find(".blocked-note").show(400)
+            else
+                $el.find(".blocked-note").hide(400)
+
+    templateFn = ($el, $attrs) ->
+        return template({ngmodel: $attrs.ngModel})
+
+    return {
+        template: templateFn
+        link: link
+        require: "ngModel"
+        restrict: "EA"
+    }
+
+module.directive("tgBlockingMessageInput", ["$log", BlockingMessageInputDirective])
+
+
 #############################################################################
 ## Create/Edit Userstory Lightbox Directive
 #############################################################################
