@@ -135,11 +135,12 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
             @scope.project = project
-            @scope.$emit('project:loaded', project)
             @scope.points = _.sortBy(project.points, "order")
             @scope.pointsById = groupBy(project.points, (x) -> x.id)
             @scope.usStatusById = groupBy(project.us_statuses, (x) -> x.id)
             @scope.usStatusList = _.sortBy(project.us_statuses, "order")
+
+            @scope.$emit("project:loaded", project)
             return project
 
     loadInitialData: ->
@@ -245,12 +246,12 @@ module.directive("tgKanbanRowSizeFixer", KanbanRowSizeFixer)
 KanbanUserstoryDirective = ($rootscope) ->
     link = ($scope, $el, $attrs, $model) ->
         $el.find(".icon-edit").on "click", (event) ->
-            if $el.find('.icon-edit').hasClass('noclick')
+            if $el.find(".icon-edit").hasClass("noclick")
                 return
             $scope.$apply ->
                 $rootscope.$broadcast("usform:edit", $model.$modelValue)
         if $scope.us.is_blocked
-            $el.addClass('blocked')
+            $el.addClass("blocked")
         $el.disableSelection()
 
     return {
@@ -272,11 +273,11 @@ KanbanWipLimitDirective = ->
         $el.disableSelection()
 
         redrawWipLimit = ->
-            $el.find('.kanban-wip-limit').remove()
+            $el.find(".kanban-wip-limit").remove()
             timeout 200, ->
-                element = $el.find('.kanban-task')[$scope.status.wip_limit]
+                element = $el.find(".kanban-task")[$scope.status.wip_limit]
                 if element
-                        angular.element(element).before("<div class='kanban-wip-limit'></div>")
+                    angular.element(element).before("<div class='kanban-wip-limit'></div>")
 
         $scope.$on "redraw:wip", redrawWipLimit
         $scope.$on "kanban:us:move", redrawWipLimit
@@ -326,7 +327,7 @@ KanbanUserDirective = ($log) ->
             username_label = $el.parent().find("a.task-assigned")
             username_label.html(ctx.name)
             username_label.on "click", (event) ->
-                if $el.find('a').hasClass('noclick')
+                if $el.find("a").hasClass("noclick")
                     return
 
                 us = $model.$modelValue
@@ -337,7 +338,7 @@ KanbanUserDirective = ($log) ->
             if project.my_permissions.indexOf("modify_us") > -1
                 clickable = true
                 $el.on "click", (event) =>
-                    if $el.find('a').hasClass('noclick')
+                    if $el.find("a").hasClass("noclick")
                         return
 
                     us = $model.$modelValue
