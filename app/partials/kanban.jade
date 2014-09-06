@@ -22,10 +22,10 @@ block content
             //-include views/modules/list-filters-kanban
             include views/modules/kanban-table
 
-        div.lightbox.lightbox_add-new-us.hidden(tg-lb-create-edit-userstory)
-            include views/modules/lightbox_add-new-us
+        div.lightbox.lightbox-generic-form(tg-lb-create-edit-userstory)
+            include views/modules/lightbox-us-create-edit
 
-        div.lightbox.lightbox_add-bulk.hidden(tg-lb-create-bulk-userstories)
-            include views/modules/lightbox_add-bulk
+        div.lightbox.lightbox-generic-bulk(tg-lb-create-bulk-userstories)
+            include views/modules/lightbox-us-bulk
 
-        div.lightbox.lightbox_select_user.hidden(tg-lb-assignedto)
+        div.lightbox.lightbox-select-user.hidden(tg-lb-assignedto)

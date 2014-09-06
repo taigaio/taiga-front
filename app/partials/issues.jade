@@ -18,10 +18,10 @@ block content
             // Paginator is rended using js.
             div.paginator.issues-paginator
 
-        div.hidden.lightbox.lightbox_select_user(tg-lb-assignedto)
+        div.lightbox.lightbox-select-user(tg-lb-assignedto)
 
-        div.hidden.lightbox.lightbox_add-issue(tg-lb-create-issue)
-            include views/modules/lightbox_add-issue
+        div.lightbox.lightbox-create-issue(tg-lb-create-issue)
+            include views/modules/lightbox-create-issue
 
-        div.hidden.lightbox.lightbox_add-bulk(tg-lb-create-bulk-issues)
-            include views/modules/lightbox_add-bulk
+        div.lightbox.lightbox-generic-bulk(tg-lb-create-bulk-issues)
+            include views/modules/lightbox-issue-bulk

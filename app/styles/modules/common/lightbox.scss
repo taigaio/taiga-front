@@ -59,18 +59,21 @@
     }
 }
 
-.lightbox_add-new-us {
+.lightbox-generic-form {
     form {
         @include table-flex-child(0, 600px, 0, 600px);
     }
+
     fieldset {
         position: relative;
     }
+
     textarea {
         margin-bottom: 1rem;
         max-height: 9rem;
         min-height: 7rem;
     }
+
     label {
         @extend %button;
         @include transition(all .2s ease-in);
@@ -89,7 +92,8 @@
             vertical-align: middle;
         }
     }
-    .new-us-settings {
+
+    .settings {
         align-content: flex-start;
         align-items: stretch;
         display: flex;
@@ -97,6 +101,7 @@
         flex-wrap: wrap;
         justify-content: flex-start;
         margin-bottom: 1rem;
+
         fieldset {
             flex-basis: 30%;
             flex-grow: 1;
@@ -107,6 +112,7 @@
                 margin: 0;
             }
         }
+
         .requirement,
         .iocaine {
             &:hover {
@@ -116,15 +122,8 @@
                 color: $white;
 
             }
-            &.selected {
-                @include transition(all .2s ease-in);
-                background: $fresh-taiga;
-                border: 1px solid $green-taiga;
-                span {
-                    color: $white;
-                }
-            }
         }
+
         .blocked {
             padding: 8px 30px;
             &:hover {
@@ -133,20 +132,40 @@
                 border: 1px solid $red-light;
                 color: $white;
             }
-            &.selected {
-                @include transition(all .2s ease-in);
-                background: $red;
-                border: 1px solid $red;
-                color: $white;
+        }
+
+
+        .client-requirement,
+        .team-requirement,
+        .iocaine-flag {
+            input {
+                &:checked {
+                    +label {
+                        background: $fresh-taiga;
+                        color: $white;
+                    }
+                }
             }
         }
+
+        .blocking-flag {
+            input {
+                &:checked {
+                    +label {
+                        background: $red;
+                        color: $white;
+                    }
+                }
+            }
+        }
+
         input[type="checkbox"] {
             display: none;
         }
     }
 }
 
-.lightbox_add-bulk {
+.lightbox-generic-bulk {
     form {
         @include table-flex-child(0, 600px, 0, 600px);
     }
@@ -208,7 +227,7 @@
     }
 }
 
-.lightbox_add-sprint {
+.lightbox-sprint-add-edit {
     form {
         @include table-flex-child(0, 600px, 0, 600px);
     }
@@ -409,10 +428,11 @@
     }
 }
 
-.lightbox_add-issue {
+.lightbox-create-issue {
     form {
         @include table-flex-child(0, 600px, 0, 600px);
     }
+
     .fieldset-row {
         @include table-flex();
         fieldset {
@@ -423,12 +443,12 @@
             }
         }
     }
+
     textarea {
         margin-bottom: 1rem;
         max-height: 12rem;
         min-height: 8rem;
     }
-
 }
 
 .lightbox_block {
@@ -442,7 +462,7 @@
     }
 }
 
-.lightbox_select_user {
+.lightbox-select-user {
     .form {
         @include table-flex-child(0, 600px, 0, 600px);
     }

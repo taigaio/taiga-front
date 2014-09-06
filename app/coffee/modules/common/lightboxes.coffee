@@ -271,23 +271,6 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
                 if data._error_message
                     $confirm.notify("error", data._error_message)
 
-        $el.on "click", "label.blocked", (event) ->
-            event.preventDefault()
-            target = angular.element(event.currentTarget)
-            target.toggleClass("selected")
-            $scope.us.is_blocked = not $scope.us.is_blocked
-            $el.find(".blocked-note").toggle(400)
-
-        $el.on "click", "label.team-requirement", (event) ->
-            event.preventDefault()
-            angular.element(event.currentTarget).toggleClass("selected")
-            $scope.us.team_requirement = not $scope.us.team_requirement
-
-        $el.on "click", "label.client-requirement", (event) ->
-            event.preventDefault()
-            angular.element(event.currentTarget).toggleClass("selected")
-            $scope.us.client_requirement = not $scope.us.client_requirement
-
         $scope.$on "$destroy", ->
             $el.off()
 
