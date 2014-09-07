@@ -32,21 +32,7 @@ block content
             - var permissionSuffix = "issue"
             include views/modules/attachments
 
-            section.us-activity
-                ul.us-activity-tabs
-                    li
-                        a.active(href="#")
-                            span.icon.icon-comment
-                            span.tab-title Comments
-
-                    li
-                        a(href="#")
-                            span.icon.icon-issues
-                            span.tab-title Activity
-
-                - var commentModel = "issue"
-                include views/modules/comments
-                include views/modules/activity
+            tg-history(ng-model="issue", type="issue")
 
         sidebar.menu-secondary.sidebar
             section.us-status(tg-issue-status, ng-model="issue")

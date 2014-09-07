@@ -36,21 +36,7 @@ block content
             - var permissionSuffix = "us"
             include views/modules/attachments
 
-            section.us-activity
-                ul.us-activity-tabs
-                    li
-                        a.active(href="#")
-                            span.icon.icon-bulk
-                            span.tab-title Comments
-
-                    li
-                        a(href="#")
-                            span.icon.icon-issues
-                            span.tab-title Activity
-
-                - var commentModel = "us"
-                include views/modules/comments
-                include views/modules/activity
+            tg-history(ng-model="us", type="us")
 
         sidebar.menu-secondary.sidebar
             section.us-status(tg-us-status-detail, ng-model="us")
