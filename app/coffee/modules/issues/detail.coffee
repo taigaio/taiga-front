@@ -105,19 +105,6 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin, tai
                 }
                 @scope.nextUrl = @navUrls.resolve("project-issues-detail", ctx)
 
-    loadHistory: =>
-        return @rs.issues.history(@scope.issueId).then (history) =>
-            for historyResult in history
-                # If description was modified take only the description_html field
-                if historyResult.values_diff.description?
-                    historyResult.values_diff.description = historyResult.values_diff.description_diff
-
-                delete historyResult.values_diff.description_html
-                delete historyResult.values_diff.description_diff
-
-            @scope.history = history
-            @scope.comments = _.filter(history, (item) -> item.comment != "")
-
     loadInitialData: ->
         params = {
             pslug: @params.pslug
@@ -132,8 +119,7 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin, tai
         return promise.then(=> @.loadProject())
                       .then(=> @.loadUsersAndRoles())
                       .then(=> @q.all([@.loadIssue(),
-                                       @.loadAttachments(@scope.issueId),
-                                       @.loadHistory()]))
+                                       @.loadAttachments(@scope.issueId)]))
 
     block: ->
         @rootscope.$broadcast("block", @scope.issue)
@@ -187,26 +173,6 @@ IssueDirective = ($tgrepo, $log, $location, $confirm, $navUrls, $loading) ->
             target = angular.element(event.currentTarget)
             $loading.start(target)
             $tgrepo.save($scope.issue).then(onSuccess, onError)
-
-        $el.on "click", ".add-comment a.button-green", (event) ->
-            event.preventDefault()
-
-            $el.find(".comment-list").addClass("activeanimation")
-
-            onSuccess = ->
-                $ctrl.loadHistory()
-
-            onError = ->
-                $confirm.notify("error")
-
-            $tgrepo.save($scope.issue).then(onSuccess, onError)
-
-        $el.on "focus", ".add-comment textarea", (event) ->
-            $(this).addClass('active')
-
-        $el.on "click", ".us-activity-tabs li a", (event) ->
-            $el.find(".us-activity-tabs li a").toggleClass("active")
-            $el.find(".us-activity section").toggleClass("hidden")
 
     return {link:link}
 

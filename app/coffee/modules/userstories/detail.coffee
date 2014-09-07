@@ -106,26 +106,6 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin,
             @scope.tasks = tasks
             return tasks
 
-    loadHistory: =>
-        return @rs.userstories.history(@scope.usId).then (history) =>
-            for historyResult in history
-                # If description was modified take only the description_html field
-                if historyResult.values_diff.description?
-                    historyResult.values_diff.description = historyResult.values_diff.description_diff
-
-                if historyResult.values_diff.client_requirement
-                    historyResult.values_diff.client_requirement = _.map(historyResult.values_diff.client_requirement, (v) -> {true: 'Yes', false: 'No'}[v])
-
-                if historyResult.values_diff.team_requirement
-                    historyResult.values_diff.team_requirement = _.map(historyResult.values_diff.team_requirement, (v) -> {true: 'Yes', false: 'No'}[v])
-
-                delete historyResult.values_diff.description_html
-                delete historyResult.values_diff.description_diff
-
-            @scope.history = history
-            @scope.comments = _.filter(history, (historyEntry) -> historyEntry.comment != "")
-            return history
-
     loadInitialData: ->
         params = {
             pslug: @params.pslug
@@ -141,8 +121,7 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin,
                       .then(=> @.loadUsersAndRoles())
                       .then(=> @q.all([@.loadUs(),
                                        @.loadTasks(),
-                                       @.loadAttachments(@scope.usId),
-                                       @.loadHistory()]))
+                                       @.loadAttachments(@scope.usId)]))
     block: ->
         @rootscope.$broadcast("block", @scope.us)
 
@@ -197,26 +176,6 @@ UsDirective = ($tgrepo, $log, $location, $confirm, $navUrls, $loading) ->
             target = angular.element(event.currentTarget)
             $loading.start(target)
             $tgrepo.save($scope.us).then(onSuccess, onError)
-
-        $el.on "click", ".add-comment a.button-green", (event) ->
-            event.preventDefault()
-
-            $el.find(".comment-list").addClass("activeanimation")
-
-            onSuccess = ->
-                $ctrl.loadHistory()
-
-            onError = ->
-                $confirm.notify("error")
-
-            $tgrepo.save($scope.us).then(onSuccess, onError)
-
-        $el.on "focus", ".add-comment textarea", (event) ->
-            $(this).addClass('active')
-
-        $el.on "click", ".us-activity-tabs li a", (event) ->
-            $el.find(".us-activity-tabs li a").toggleClass("active")
-            $el.find(".us-activity section").toggleClass("hidden")
 
     return {link:link}
 
