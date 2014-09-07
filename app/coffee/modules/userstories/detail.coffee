@@ -64,9 +64,9 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin,
                 @location.replace()
             return @q.reject(xhr)
 
-        @scope.$on("attachment:create", => @loadHistory())
-        @scope.$on("attachment:edit", => @loadHistory())
-        @scope.$on("attachment:delete", => @loadHistory())
+        @scope.$on("attachment:create", => @rootscope.$broadcast("history:reload"))
+        @scope.$on("attachment:edit", => @rootscope.$broadcast("history:reload"))
+        @scope.$on("attachment:delete", => @rootscope.$broadcast("history:reload"))
 
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
