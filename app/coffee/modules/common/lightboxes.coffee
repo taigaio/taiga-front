@@ -148,6 +148,46 @@ BlockLightboxDirective = (lightboxService) ->
 
 module.directive("tgLbBlock", ["lightboxService", BlockLightboxDirective])
 
+
+#############################################################################
+## Generic Lightbox Blocking-Message Input Directive
+#############################################################################
+
+BlockingMessageInputDirective = ($log) ->
+    template = _.template("""
+    <fieldset class="blocked-note hidden">
+        <textarea name="blocked_note"
+            placeholder="Why is this user story blocked?"
+            ng-model="<%- ngmodel %>">
+        </textarea>
+    </fieldset>
+    """)
+
+    link = ($scope, $el, $attrs, $model) ->
+        if not $attrs.watch
+            return $log.error "No watch attribute on tg-blocking-message-input directive"
+
+        $scope.$watch $attrs.watch, (value) ->
+            return if value is undefined
+
+            if value == true
+                $el.find(".blocked-note").show(400)
+            else
+                $el.find(".blocked-note").hide(400)
+
+    templateFn = ($el, $attrs) ->
+        return template({ngmodel: $attrs.ngModel})
+
+    return {
+        template: templateFn
+        link: link
+        require: "ngModel"
+        restrict: "EA"
+    }
+
+module.directive("tgBlockingMessageInput", ["$log", BlockingMessageInputDirective])
+
+
 #############################################################################
 ## Create/Edit Userstory Lightbox Directive
 #############################################################################
@@ -230,23 +270,6 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
                 form.setErrors(data)
                 if data._error_message
                     $confirm.notify("error", data._error_message)
-
-        $el.on "click", "label.blocked", (event) ->
-            event.preventDefault()
-            target = angular.element(event.currentTarget)
-            target.toggleClass("selected")
-            $scope.us.is_blocked = not $scope.us.is_blocked
-            $el.find(".blocked-note").toggle(400)
-
-        $el.on "click", "label.team-requirement", (event) ->
-            event.preventDefault()
-            angular.element(event.currentTarget).toggleClass("selected")
-            $scope.us.team_requirement = not $scope.us.team_requirement
-
-        $el.on "click", "label.client-requirement", (event) ->
-            event.preventDefault()
-            angular.element(event.currentTarget).toggleClass("selected")
-            $scope.us.client_requirement = not $scope.us.client_requirement
 
         $scope.$on "$destroy", ->
             $el.off()

@@ -51,14 +51,6 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootscope, lightboxService) ->
             $el.find(".title").html("Edit task  ") #TODO: i18n
             lightboxService.open($el)
 
-            # Update requirement info (team, client or blocked)
-            if task.is_blocked
-                $el.find(".blocked-note").show()
-                $el.find("label.blocked").addClass("selected")
-
-            if task.is_iocaine
-                $el.find("label.iocaine").addClass("selected")
-
         $el.on "click", ".button-green", (event) ->
             event.preventDefault()
 
@@ -77,18 +69,6 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootscope, lightboxService) ->
             promise.then (data) ->
                 lightboxService.close($el)
                 $rootscope.$broadcast(broadcastEvent, data)
-
-        $el.on "click", "label.blocked", (event) ->
-            event.preventDefault()
-            target = angular.element(event.currentTarget)
-            target.toggleClass("selected")
-            $scope.task.is_blocked = not $scope.task.is_blocked
-            $el.find(".blocked-note").toggle(400)
-
-        $el.on "click", "label.iocaine", (event) ->
-            event.preventDefault()
-            angular.element(event.currentTarget).toggleClass("selected")
-            $scope.task.is_iocaine = not $scope.task.is_iocaine
 
         $scope.$on "$destroy", ->
             $el.off()

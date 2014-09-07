@@ -19,9 +19,11 @@ block content
 
             include views/modules/taskboard-table
 
-        div.lightbox.lightbox_add-new-us.hidden(tg-lb-create-edit-task)
-            include views/modules/lightbox_add-edit-task
-        div.lightbox.lightbox_add-bulk.hidden(tg-lb-create-bulk-tasks)
-            include views/modules/lightbox_add-task-bulk
-        div.lightbox.lightbox_select_user.hidden(tg-lb-assignedto)
+        div.lightbox.lightbox-generic-form(tg-lb-create-edit-task)
+            include views/modules/lightbox-task-create-edit
+
+        div.lightbox.lightbox-generic-bulk.lightbox-task-bulk(tg-lb-create-bulk-tasks)
+            include views/modules/lightbox-task-bulk
+
+        div.lightbox.lightbox-select-user(tg-lb-assignedto)
             include views/modules/lightbox-assigned-to

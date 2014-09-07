@@ -5,28 +5,34 @@ form
     fieldset
         input(type="text", ng-model="task.subject", placeholder="A task subject",
               data-required="true", data-maxlength="500")
+
     fieldset
         select(ng-model="task.status", ng-options="s.id as s.name for s in taskStatusList",
                placeholder="Task status")
+
     fieldset
         select(ng-model="task.assigned_to", ng-options="s.id as s.full_name_display for s in users",
                placeholder="Assigned to")
             option(value="") Unassigned
+
     fieldset
         input(type="text", placeholder="Tags", tg-tags, ng-model="task.tags")
+
     fieldset
         textarea.description(placeholder="Type a short description", ng-model="task.description")
-    div.new-us-settings
-        fieldset
-            label.iocaine
+
+    div.settings
+        fieldset.iocaine-flag
+            input(type="checkbox", ng-model="task.is_iocaine", name="iocaine-task", id="iocaine-task", ng-value="true")
+            label.iocaine(for="iocaine-task")
                 span.icon.icon-iocaine(for="iocaine-task icon-iocaine")
                 span Iocaine
-            input(type="checkbox", ng-model="task.is_iocaine", name="iocaine-task", id="iocaine-task")
-        fieldset
-            label.blocked(for="blocked-task") Blocked
-            input(type="checkbox", ng-model="task.is_blocked", name="blocked-task", id="blocked-task")
-    fieldset.blocked-note.hidden
-        textarea(placeholder="Why is this task blocked?", ng-model="task.blocked_note")
+
+        fieldset.blocking-flag
+            input(type="checkbox", ng-model="task.is_blocked", name="blocked-task", id="blocked-task", ng-value="true")
+            label.blocked(for="blocked-task", tg-i18n="common.blocked")
+
+    tg-blocking-message-input(watch="task.is_blocked", ng-model="task.blocked_note")
 
     a.button.button-green(href="", title="Save")
         span Create
