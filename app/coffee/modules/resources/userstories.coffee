@@ -54,9 +54,6 @@ resourceProvider = ($repo, $http, $urls, $storage) ->
         params = {project_id: projectId, bulk_stories: data}
         return $http.post(url, params)
 
-    service.history = (usId) ->
-        return $repo.queryOneRaw("history/userstory", usId)
-
     service.listValues = (projectId, type) ->
         params = {"project": projectId}
         service.storeQueryParams(projectId, params)
