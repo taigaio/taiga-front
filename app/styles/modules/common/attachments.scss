@@ -54,7 +54,7 @@
     }
     .attachment-name {
         @include ellipsis(200px);
-        @include table-flex-child(1, 300px);
+        @include table-flex-child(1, 35%, 0);
         @extend %bold;
         padding-right: 1rem;
         .icon {
@@ -62,18 +62,18 @@
         }
     }
     .attachment-size {
-        @include table-flex-child(1, 100px);
+        @include table-flex-child(1, 15%, 0);
         color: $gray-light;
         margin-right: .5rem;
     }
     .attachment-comments {
-        @include table-flex-child(10, 300px);
+        @include table-flex-child(1, 35%, 0);
         span {
             color: $gray;
         }
     }
     .attachment-settings {
-        @include table-flex-child(1, 100px);
+        @include table-flex-child(1, 15%, 0);
         .settings,
         .editable-settings {
             @extend %large;
@@ -106,9 +106,6 @@
             cursor: move;
             right: 0;
         }
-    }
-    .editable {
-        @include table-flex-child(10, 300px);
     }
     .icon-delete {
         @extend %large;
