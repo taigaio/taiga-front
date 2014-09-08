@@ -116,7 +116,7 @@
         }
     }
     .sprint-table {
-        @include slide(1000px, overflow-y);
+        @include slide(1000px, overflow-x);
         &.open {
             min-height: 50px;
         }

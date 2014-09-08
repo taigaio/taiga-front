@@ -48,6 +48,10 @@
         }
         img {
             margin: 0 auto;
+            &:hover {
+                @include transition(border .3s linear);
+                border: 2px solid $green-taiga;
+            }
         }
         .assigned-to {
             color: darken($postit-hover, 15%);

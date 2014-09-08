@@ -56,8 +56,11 @@
                 text-align: center;
             }
             img {
-                border: 0;
                 margin: 0 auto;
+                &:hover {
+                    @include transition(border .3s linear);
+                    border: 2px solid $green-taiga;
+                }
             }
             figcaption {
                 color: darken($postit-hover, 15%);
