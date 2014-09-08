@@ -1,6 +1,7 @@
 .kanban-task {
     background: $postit;
     cursor: move;
+    margin: .2rem;
     position: relative;
     &:last-child {
         margin: 0;
@@ -11,6 +12,10 @@
             @include transition(opacity .2s linear);
             opacity: 1;
         }
+    }
+    &.ui-sortable-helper {
+        box-shadow: 1px 1px 15px rgba($black, .4);
+        @include transition(box-shadow .3s linear);
     }
     &.blocked {
         background: $red;

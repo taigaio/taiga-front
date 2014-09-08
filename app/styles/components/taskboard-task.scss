@@ -1,5 +1,5 @@
 .taskboard-task {
-    @include transition (box-shadow .4s linear);
+    @include transition (all .4s linear);
     background: $postit;
     border: 1px solid $postit-hover;
     box-shadow: none;
@@ -17,7 +17,8 @@
         }
     }
     &.ui-sortable-helper {
-        box-shadow: 1px 1px 15px rgba($black, .1);
+        box-shadow: 1px 1px 15px rgba($black, .4);
+        @include transition(box-shadow .3s linear);
     }
     &.ui-sortable-placeholder {
         background: $grayer;
