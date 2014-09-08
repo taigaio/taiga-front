@@ -82,7 +82,7 @@ urls = {
     "severities": "/api/v1/severities"
 
     # History
-    "history/userstory": "/api/v1/history/userstory"
+    "history/us": "/api/v1/history/userstory"
     "history/issue": "/api/v1/history/issue"
     "history/task": "/api/v1/history/task"
     "history/wiki": "/api/v1/history/wiki"
