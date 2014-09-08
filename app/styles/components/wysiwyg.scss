@@ -47,6 +47,7 @@
     }
     pre,
     code {
+        @extend %small;
         background: $whitish;
         direction: ltr;
         font-family: 'courier new', 'monospace';
