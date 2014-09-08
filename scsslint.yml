@@ -4,6 +4,8 @@ linters:
 
   CapitalizationInSelector:
     enabled: true
+    ignored_names:
+        - "mCS-minimal-dark"
 
   ColorKeyword:
     enabled: true

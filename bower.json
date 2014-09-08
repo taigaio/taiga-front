@@ -71,7 +71,8 @@
     "isMobile": "~0.3.1",
     "favico.js": "0.3.4",
     "Sortable": "~0.1.8",
-    "pikaday": "~1.2.0"
+    "pikaday": "~1.2.0",
+    "malihu-custom-scrollbar-plugin": "~3.0.4"
   },
   "resolutions": {
     "lodash": "~2.4.1",

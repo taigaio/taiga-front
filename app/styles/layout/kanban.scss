@@ -14,3 +14,12 @@
         margin-bottom: 1rem;
     }
 }
+
+.task-column {
+    height: 100vh;
+    overflow-x: auto;
+    padding-right: 17px;
+    .mCS-minimal-dark {
+        opacity: 1!important;
+    }
+}

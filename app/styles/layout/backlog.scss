@@ -22,3 +22,10 @@
         }
     }
 }
+
+
+.menu-secondary.sidebar,
+.backlog {
+    height: 100vh;
+    overflow-x: auto;
+}
