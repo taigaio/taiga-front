@@ -128,7 +128,7 @@ class RepositoryService extends taiga.Service
     queryOneRaw: (name, id, params, options={}) ->
         url = @urls.resolve(name)
         url = "#{url}/#{id}" if id
-        httpOptions = {headers: {}}
+        httpOptions = _.merge({headers: {}}, options)
         if not options.enablePagination
             httpOptions.headers["x-disable-pagination"] =  "1"
         return @http.get(url, params, httpOptions).then (data) =>
@@ -153,7 +153,7 @@ class RepositoryService extends taiga.Service
         params.issue = options.issueref if options.issueref?
         params.milestone = options.sslug if options.sslug?
         params.wikipage = options.wikipage if options.wikipage?
-        return @.queryOneRaw("resolver", null, params)
+        return @.queryOneRaw("resolver", null, params, {cache: true})
 
 
 module = angular.module("taigaBase")
