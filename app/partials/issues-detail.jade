@@ -24,7 +24,7 @@ block content
                         a.icon.icon-arrow-left(ng-show="previousUrl",href="{{ previousUrl }}", title="previous issue")
                         a.icon.icon-arrow-right(ng-show="nextUrl", href="{{ nextUrl }}", title="next issue")
 
-                div.user-story-tags(tg-tag-line, ng-model="issue.tags", ng-show="issue.tags")
+                div(tg-tag-line, ng-model="issue.tags", ng-show="issue.tags")
 
             section.us-content.wysiwyg(tg-bind-html="issue.description_html")
 

@@ -9,7 +9,7 @@ form
         select(name="status", ng-model="us.status", ng-options="s.id as s.name for s in usStatusList",
                tg-i18n="placeholder:common.status")
     fieldset
-        input(type="text", name="tags", placeholder="Tags", tg-tags, ng-model="us.tags")
+        div(tg-tag-line, editable="true", ng-model="us.tags")
 
     fieldset
         textarea.description(name="description", ng-model="us.description",

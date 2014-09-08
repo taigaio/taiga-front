@@ -23,7 +23,7 @@ block content
                         span.block-description(tg-bind-html="issue.blocked_note || 'This issue is blocked'")
                         a.unblock(ng-click="ctrl.unblock()", href="", title="Unblock issue") Unblock
 
-                div.user-story-tags(tg-tag-line, editable="true", ng-model="issue.tags")
+                div(tg-tag-line, editable="true", ng-model="issue.tags")
 
             section.us-content
                 textarea(placeholder="Write a description of your issue", ng-model="issue.description", tg-markitup)

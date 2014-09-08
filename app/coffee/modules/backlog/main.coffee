@@ -173,7 +173,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             @scope.projectId = data.project
             return data
 
-        return promise.then(=> @loadProject())
+        return promise.then(=> @.loadProject())
                       .then(=> @.loadUsersAndRoles())
                       .then(=> @.loadBacklog())
 

@@ -13,3 +13,33 @@
         }
     }
 }
+
+.ui-autocomplete {
+    z-index: 99910;
+    background: white;
+    border: 1px solid $gray-light;
+    .ui-state-focus {
+        background: $fresh-taiga;
+    }
+}
+
+.ui-helper-hidden-accessible {
+    display: none;
+}
+
+.tags-block {
+    .tags-container {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    input {
+        display: inline-block;
+        padding: .4rem;
+        width: 14rem;
+    }
+    .tag {
+        @extend %small;
+        margin: 0 .5rem .5rem 0;
+        padding: .5rem;
+    }
+}

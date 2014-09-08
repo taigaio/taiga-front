@@ -20,6 +20,7 @@
 ###
 
 taiga = @.taiga
+trim = @.taiga.trim
 
 module = angular.module("taigaBase")
 
@@ -88,3 +89,117 @@ ColorizeTagsDirective = ->
     return {link: link}
 
 module.directive("tgColorizeTags", ColorizeTagsDirective)
+
+#############################################################################
+## TagLine (possible should be moved as generic directive)
+#############################################################################
+
+TagLineDirective = ($log, $rs) ->
+    # Main directive template (rendered by angular)
+    template = """
+    <div class="tags-container"></div>
+    <input type="text" placeholder="Write tag..." class="tag-input" />
+    """
+
+    # Tags template (rendered manually using lodash)
+    templateTags = _.template("""
+    <% _.each(tags, function(tag) { %>
+        <div class="tag" style="border-left: 5px solid <%- tag.color %>;">
+            <span class="tag-name"><%- tag.name %></span>
+            <% if (editable) { %>
+            <a href="" title="delete tag" class="icon icon-delete"></a>
+            <% } %>
+        </div>
+    <% }); %>""")
+
+    renderTags = ($el, tags, editable, tagsColors) ->
+        ctx = {
+            tags: _.map(tags, (t) -> {name: t, color: tagsColors[t]})
+            editable: editable
+        }
+        html = templateTags(ctx)
+        $el.find("div.tags-container").html(html)
+
+    normalizeTags = (tags) ->
+        tags = _.map(tags, trim)
+        tags = _.map(tags, (x) -> x.toLowerCase())
+        return _.uniq(tags)
+
+    link = ($scope, $el, $attrs, $model) ->
+        editable = if $attrs.editable == "true" then true else false
+        $el.addClass('tags-block')
+
+        addValue = (value) ->
+            value = trim(value)
+            return if value.length <= 0
+
+            tags = _.clone($model.$modelValue, false)
+            tags = [] if not tags?
+            tags.push(value)
+
+            $scope.$apply ->
+                $model.$setViewValue(normalizeTags(tags))
+
+
+        $scope.$watch $attrs.ngModel, (val) ->
+            return if not val
+            renderTags($el, val, editable, $scope.project.tags_colors)
+
+        $scope.$watch "projectId", (val) ->
+            return if not val?
+            positioningFunction = (position, elements) ->
+                menu = elements.element.element
+                menu.css 'width', elements.target.width
+                menu.css 'top', position.top
+                menu.css 'left', position.left
+
+            promise = $rs.projects.tags($scope.projectId)
+            promise.then (data) ->
+                if editable
+                    $el.find("input").autocomplete({
+                        source: data,
+                        position:
+                            my: "left top",
+                            using: positioningFunction
+                        select: (event, ui) ->
+                            addValue(ui.item.value)
+                            ui.item.value = ""
+                    })
+
+        $el.find("input").remove() if not editable
+
+        $el.on "keypress", "input", (event) ->
+            return if event.keyCode != 13
+            event.preventDefault()
+
+        $el.on "keyup", "input", (event) ->
+            return if event.keyCode != 13
+            event.preventDefault()
+
+            target = angular.element(event.currentTarget)
+            addValue(target.val())
+            target.val("")
+            $el.find("input").autocomplete("close")
+
+
+        $el.on "click", ".icon-delete", (event) ->
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+            value = trim(target.siblings(".tag-name").text())
+
+            if value.length <= 0
+                return
+
+            tags = _.clone($model.$modelValue, false)
+            tags = _.pull(tags, value)
+
+            $scope.$apply ->
+                $model.$setViewValue(normalizeTags(tags))
+
+    return {
+        link:link,
+        require:"ngModel"
+        template: template
+    }
+
+module.directive("tgTagLine", ["$log", "$tgResources", TagLineDirective])

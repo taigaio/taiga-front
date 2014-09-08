@@ -16,7 +16,7 @@ form
             option(value="") Unassigned
 
     fieldset
-        input(type="text", placeholder="Tags", tg-tags, ng-model="task.tags")
+        div(tg-tag-line, editable="true", ng-model="task.tags")
 
     fieldset
         textarea.description(placeholder="Type a short description", ng-model="task.description")

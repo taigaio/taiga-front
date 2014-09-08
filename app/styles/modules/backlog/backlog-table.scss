@@ -3,7 +3,7 @@
     @include table-flex();
     width: 100%;
     &.show-tags {
-        .user-story-tags {
+        .tags-block {
             display: block;
         }
     }
@@ -156,7 +156,7 @@
             white-space: nowrap;
         }
     }
-    .user-story-tags {
+    .tags-block {
         display: none;
         margin-bottom: .3rem;
         .tag {
