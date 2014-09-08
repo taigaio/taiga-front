@@ -112,7 +112,6 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin, taig
             return prom.then null, (xhr) =>
                 ctx = {project: @params.pslug, slug: @params.slug}
                 @location.path(@navUrls.resolve("project-wiki-page-edit", ctx))
-                return @q.reject()
 
         return promise.then(=> @.loadProject())
                       .then(=> @.loadUsersAndRoles())
