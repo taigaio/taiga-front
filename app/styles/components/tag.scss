@@ -15,9 +15,9 @@
 }
 
 .ui-autocomplete {
-    z-index: 99910;
-    background: white;
+    background: $white;
     border: 1px solid $gray-light;
+    z-index: 99910;
     .ui-state-focus {
         background: $fresh-taiga;
     }
