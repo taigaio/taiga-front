@@ -1,0 +1,205 @@
+.history {
+    margin-bottom: 1rem;
+    padding: 0 1rem;
+}
+
+
+.changes-title {
+    display: block;
+    padding: .5rem;
+    &:hover {
+        .icon {
+            @include transform(rotate(180deg));
+            @include transition(all.2s linear);
+            color: $green-taiga;
+        }
+    }
+    .icon {
+        @include transform(rotate(0));
+        @include transition(all.2s linear);
+        color: $grayer;
+        float: right;
+    }
+}
+
+.change-entry {
+    @include table-flex;
+    border-bottom: 1px solid $gray-light;
+    padding: .5rem;
+    &:last-child {
+        border-bottom: 0;
+    }
+    .activity-changed,
+    .activity-fromto {
+        @include table-flex-child(1, 50px, 0);
+    }
+    .activity-changed {
+        @extend %bold;
+    }
+    .activity-fromto {
+        @extend %small;
+    }
+}
+
+.history-tabs {
+    @extend %title;
+    border-bottom: 3px solid $gray-light;
+    padding: .5rem 0;
+    li {
+        @extend %large;
+        display: inline-block;
+        &:first-child {
+            border-right: 1px solid $gray-light;
+        }
+    }
+    a {
+        @include transition(color .2s ease-in);
+        color: $gray-light;
+        padding: 0 2rem;
+        &.active {
+            color: $grayer;
+        }
+        &:hover {
+            @include transition(color .2s ease-in);
+            color: $green-taiga;
+        }
+    }
+    .icon {
+        margin-right: .5rem;
+    }
+}
+
+.add-comment {
+    @include clearfix;
+    textarea {
+        float: left;
+        height: 41px;
+        margin-bottom: .5rem;
+        min-height: inherit;
+    }
+    .save-comment {
+        color: $white;
+        float: right;
+    }
+    .button-green {
+        display: none;
+    }
+    &.active {
+        .button-green {
+            display: block;
+        }
+        textarea {
+            @include transition(height .3s ease-in);
+            height: 6rem;
+        }
+    }
+}
+
+a.show-more-comments {
+    @extend %small;
+    border-bottom: 1px solid $gray-light;
+    border-top: 1px solid $gray-light;
+    color: $gray-light;
+    display: block;
+    padding: 1rem 0 1rem 1rem;
+    &:hover {
+        @include transition (background .2s ease-in);
+        background: lighten($green-taiga, 60%);
+    }
+}
+
+.more-comments {
+    @extend %small;
+    border-bottom: 1px solid $gray-light;
+    color: $gray-light;
+    display: block;
+    padding: 1rem;
+    .prev-comments-num {
+        color: $green-taiga;
+        margin-left: .5rem;
+    }
+}
+
+.comment-list {
+    &.activeanimation {
+        .comment-single.ng-enter:last-child,
+        .comment-single.ng-leave:last-child {
+            @include transition(all .3s ease-in);
+        }
+        .comment-single.ng-enter:last-child,
+        .comment-single.ng-leave.ng-leave-active:last-child {
+            opacity: 0;
+        }
+        .comment-single.ng-leave:last-child,
+        .comment-single.ng-enter.ng-enter-active:last-child {
+            opacity: 1;
+        }
+    }
+}
+
+.activity-single {
+    @include table-flex;
+    border-bottom: 2px solid $gray-light;
+    padding: 2rem 0;
+    position: relative;
+    &:first-child {
+        margin-top: 0;
+    }
+    .username {
+        color: $green-taiga;
+        margin-bottom: 0.5rem;
+    }
+    .activity-user {
+        @include table-flex-child(1, 50px, 0);
+        img {
+            max-width: 70px;
+            width: 100%;
+        }
+    }
+    .activity-username {
+        color: $green-taiga;
+        margin-bottom: 1rem;
+    }
+
+    .activity-content {
+        @include table-flex-child(20, 150px, 0);
+    }
+
+    .changes {
+        background: $whitish;
+        .change-entry {
+            display: none;
+
+            &.active {
+                display: flex;
+            }
+        }
+    }
+    .date {
+        @extend %small;
+        color: $gray-light;
+        margin-left: 1rem;
+    }
+
+    .wysiwyg {
+        margin-bottom: 0px;
+    }
+
+    &.activity {
+        .change-entry {
+            display: flex;
+        }
+    }
+}
+
+.more-activity {
+    @extend %small;
+    border-bottom: 1px solid $gray-light;
+    color: $gray-light;
+    display: block;
+    padding: 1rem;
+    .prev-activity-num {
+        color: $green-taiga;
+        margin-left: .5rem;
+    }
+}

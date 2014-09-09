@@ -114,34 +114,6 @@
     }
 }
 
-.us-activity-tabs {
-    @extend %title;
-    border-bottom: 3px solid $gray-light;
-    padding: .5rem 0;
-    li {
-        @extend %large;
-        display: inline-block;
-        &:first-child {
-            border-right: 1px solid $gray-light;
-        }
-    }
-    a {
-        @include transition(color .2s ease-in);
-        color: $gray-light;
-        padding: 0 2rem;
-        &.active {
-            color: $grayer;
-        }
-        &:hover {
-            @include transition(color .2s ease-in);
-            color: $green-taiga;
-        }
-    }
-    .icon {
-        margin-right: .5rem;
-    }
-}
-
 .comment-list {
     padding: 1rem;
 }
