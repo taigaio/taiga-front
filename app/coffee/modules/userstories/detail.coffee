@@ -101,11 +101,6 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin,
 
             return us
 
-    loadTasks: ->
-        return @rs.tasks.list(@scope.projectId, null, @scope.usId).then (tasks) =>
-            @scope.tasks = tasks
-            return tasks
-
     loadInitialData: ->
         params = {
             pslug: @params.pslug
@@ -120,8 +115,8 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin,
         return promise.then(=> @.loadProject())
                       .then(=> @.loadUsersAndRoles())
                       .then(=> @q.all([@.loadUs(),
-                                       @.loadTasks(),
                                        @.loadAttachments(@scope.usId)]))
+
     block: ->
         @rootscope.$broadcast("block", @scope.us)
 
@@ -310,6 +305,11 @@ UsStatusDetailDirective = () ->
             $scope.$watch $attrs.ngModel, (us) ->
                 if us?
                     renderUsstatus(us)
+
+        $scope.$on "related-tasks:update", ->
+            us = $scope.$eval $attrs.ngModel
+            if us?
+                renderUsstatus(us)
 
         if editable
             $el.on "click", ".status-data", (event) ->
