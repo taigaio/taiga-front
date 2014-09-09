@@ -84,6 +84,7 @@ class LightboxKeyboardNavigationService extends taiga.Service
                     prev.addClass('active')
 
     init: ($el) ->
+        @stop()
         docEl = angular.element(document)
         docEl.on "keydown.keyboard-navigation", (event) =>
             code = if event.keyCode then event.keyCode else event.which
@@ -486,7 +487,7 @@ WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationS
         # and without now watched users.
         getFilteredUsers = (text="") ->
             _filterUsers = (text, user) ->
-                if _.find(selectedItem.watchers, (x) -> x == user.id)
+                if selectedItem && _.find(selectedItem.watchers, (x) -> x == user.id)
                     return false
 
                 username = user.full_name_display.toUpperCase()
