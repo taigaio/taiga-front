@@ -59,11 +59,11 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @appTitle.set("Kanban - " + @scope.project.name)
             tgLoader.pageLoaded()
 
-            $(".task-column").mCustomScrollbar({
-                theme: 'minimal-dark'
-                scrollInertia: 0
-                axis: 'y'
-            })
+            # $(".task-column").mCustomScrollbar({
+            #     theme: 'minimal-dark'
+            #     scrollInertia: 0
+            #     axis: 'y'
+            # });
 
 
         # On Error

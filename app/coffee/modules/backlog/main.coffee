@@ -60,11 +60,12 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         promise.then =>
             @appTitle.set("Backlog - " + @scope.project.name)
             tgLoader.pageLoaded()
-            $(".backlog, .sidebar").mCustomScrollbar({
-                theme: 'minimal-dark'
-                scrollInertia: 0
-                axis: 'y'
-            })
+
+            # $(".backlog, .sidebar").mCustomScrollbar({
+            #     theme: 'minimal-dark'
+            #     scrollInertia: 0
+            #     axis: 'y'
+            # });
 
         # On Error
         promise.then null, (xhr) =>
