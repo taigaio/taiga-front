@@ -114,7 +114,7 @@ gulp.task "scsslint", ->
             config: "scsslint.yml"
         }))
 
-gulp.task "sass", ->
+gulp.task "sass", ["scsslint"], ->
     gulp.src(paths.sassStylesMain)
         .pipe(plumber())
         .pipe(sass())
@@ -126,12 +126,12 @@ gulp.task "css", ->
         .pipe(concat("vendor.css"))
         .pipe(gulp.dest(paths.distStylesPath))
 
-gulp.task "csslint-vendor", ->
+gulp.task "csslint-vendor", ["css"], ->
     gulp.src(paths.css)
         .pipe(csslint("csslintrc.json"))
         .pipe(csslint.reporter())
 
-gulp.task "csslint-app", ->
+gulp.task "csslint-app", ["css", "sass"],  ->
     gulp.src(paths.distStylesPath + "/app.css")
         .pipe(csslint("csslintrc.json"))
         .pipe(csslint.reporter())
