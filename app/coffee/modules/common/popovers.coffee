@@ -101,6 +101,83 @@ UsStatusDirective = ($repo, popoverService) ->
 
 module.directive("tgUsStatus", ["$tgRepo", UsStatusDirective])
 
+RelatedTaskStatusDirective = ($repo, popoverService) ->
+    ###
+    Print the status of a related task and a popover to change it.
+    - tg-related-task-status: The related task
+    - on-update: Method call after US is updated
+
+    Example:
+
+      div.status(tg-related-task-status="task" on-update="ctrl.loadSprintState()")
+        a.task-status(href="", title="Status Name")
+
+    NOTE: This directive need 'taskStatusById' and 'project'.
+    ###
+    selectionTemplate = _.template("""
+    <ul class="popover pop-status">
+        <% _.forEach(statuses, function(status) { %>
+        <li>
+            <a href="" class="status" title="<%- status.name %>" data-status-id="<%- status.id %>">
+                <%- status.name %>
+            </a>
+        </li>
+        <% }); %>
+    </ul>""")
+
+    updateTaskStatus = ($el, task, taskStatusById) ->
+        taskStatusDomParent = $el.find(".us-status")
+        taskStatusDom = $el.find(".task-status .task-status-bind")
+
+        if taskStatusById[task.status]
+            taskStatusDom.text(taskStatusById[task.status].name)
+            taskStatusDomParent.css('color', taskStatusById[task.status].color)
+
+    link = ($scope, $el, $attrs) ->
+        $ctrl = $el.controller()
+        task = $scope.$eval($attrs.tgRelatedTaskStatus)
+        notAutoSave = $scope.$eval($attrs.notAutoSave)
+        autoSave = !notAutoSave
+
+        $el.on "click", ".task-status", (event) ->
+            event.preventDefault()
+            event.stopPropagation()
+
+            $el.find(".pop-status").popover().open()
+
+            # pop = $el.find(".pop-status")
+            # popoverService.open(pop)
+
+        $el.on "click", ".status", (event) ->
+            event.preventDefault()
+            event.stopPropagation()
+            target = angular.element(event.currentTarget)
+            task.status = target.data("status-id")
+            $el.find(".pop-status").popover().close()
+            updateTaskStatus($el, task, $scope.taskStatusById)
+
+            if autoSave
+                $scope.$apply () ->
+                    $repo.save(task).then ->
+                        $scope.$eval($attrs.onUpdate)
+                        $scope.$emit("related-tasks:status-changed")
+
+        taiga.bindOnce $scope, "project", (project) ->
+            $el.append(selectionTemplate({ 'statuses':  project.task_statuses }))
+            updateTaskStatus($el, task, $scope.taskStatusById)
+
+            # If the user has not enough permissions the click events are unbinded
+            if project.my_permissions.indexOf("modify_task") == -1
+                $el.unbind("click")
+                $el.find("a").addClass("not-clickable")
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {link: link}
+
+module.directive("tgRelatedTaskStatus", ["$tgRepo", RelatedTaskStatusDirective])
+
 $.fn.popover = () ->
     $el = @
 
