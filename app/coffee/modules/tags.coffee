@@ -22,7 +22,7 @@
 taiga = @.taiga
 trim = @.taiga.trim
 
-module = angular.module("taigaBase")
+module = angular.module("taigaTags", [])
 
 # Directive that parses/format tags inputfield.
 
