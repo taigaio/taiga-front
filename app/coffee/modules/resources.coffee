@@ -88,10 +88,10 @@ urls = {
     "history/wiki": "/api/v1/history/wiki"
 
     # Attachments
-    "userstories/attachments": "/api/v1/userstories/attachments"
-    "issues/attachments": "/api/v1/issues/attachments"
-    "tasks/attachments": "/api/v1/tasks/attachments"
-    "wiki/attachments": "/api/v1/wiki/attachments"
+    "attachments/us": "/api/v1/userstories/attachments"
+    "attachments/issue": "/api/v1/issues/attachments"
+    "attachments/task": "/api/v1/tasks/attachments"
+    "attachments/wiki_page": "/api/v1/wiki/attachments"
 }
 
 # Initialize api urls service

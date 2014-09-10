@@ -32,7 +32,7 @@ module = angular.module("taigaWiki")
 ## Wiki Detail Controller
 #############################################################################
 
-class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.AttachmentsMixin)
+class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
     @.$inject = [
         "$scope",
         "$rootScope",
@@ -50,7 +50,6 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin, taig
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @filter, @log, @appTitle,
                   @navUrls) ->
-        @.attachmentsUrlName = "wiki/attachments"
         @scope.projectSlug = @params.pslug
         @scope.wikiSlug = @params.slug
         @scope.sectionName = "Wiki"
@@ -116,8 +115,7 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin, taig
         return promise.then(=> @.loadProject())
                       .then(=> @.loadUsersAndRoles())
                       .then(=> @q.all([@.loadWikiLinks(),
-                                       @.loadWiki(),
-                                       @.loadAttachments(@scope.wikiId)]))
+                                       @.loadWiki()]))
 
     edit: ->
         ctx = {

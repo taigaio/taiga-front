@@ -30,7 +30,7 @@ module = angular.module("taigaTasks")
 ## Task Detail Controller
 #############################################################################
 
-class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.AttachmentsMixin)
+class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
     @.$inject = [
         "$scope",
         "$rootScope",
@@ -46,8 +46,6 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin, taig
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @log, @appTitle, @navUrls) ->
-        @.attachmentsUrlName = "tasks/attachments"
-
         @scope.taskRef = @params.taskref
         @scope.sectionName = "Task Details"
 
@@ -110,7 +108,6 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin, taig
         return promise.then(=> @.loadProject())
                       .then(=> @.loadUsersAndRoles())
                       .then(=> @.loadTask())
-                      .then(=> @.loadAttachments(@scope.taskId))
 
     block: ->
         @rootscope.$broadcast("block", @scope.task)

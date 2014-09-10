@@ -32,10 +32,7 @@ block content
 
             include views/modules/related-tasks
 
-            - var attachModel = "us"
-            - var permissionSuffix = "us"
-            include views/modules/attachments
-
+            tg-attachments(ng-model="us", type="us")
             tg-history(ng-model="us", type="us")
 
         sidebar.menu-secondary.sidebar

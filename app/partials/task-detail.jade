@@ -28,10 +28,7 @@ block content
 
             section.us-content.wysiwyg(tg-bind-html="task.description_html")
 
-            - var attachModel = "task"
-            - var permissionSuffix = "task"
-            include views/modules/attachments
-
+            tg-attachments(ng-model="task", type="task")
             tg-history(ng-model="task", type="task")
 
         sidebar.menu-secondary.sidebar
