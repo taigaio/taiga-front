@@ -126,12 +126,7 @@ gulp.task "css", ->
         .pipe(concat("vendor.css"))
         .pipe(gulp.dest(paths.distStylesPath))
 
-gulp.task "csslint-vendor", ["css"], ->
-    gulp.src(paths.css)
-        .pipe(csslint("csslintrc.json"))
-        .pipe(csslint.reporter())
-
-gulp.task "csslint-app", ["css", "sass"],  ->
+gulp.task "csslint-app", ["sass"],  ->
     gulp.src(paths.distStylesPath + "/app.css")
         .pipe(csslint("csslintrc.json"))
         .pipe(csslint.reporter())
@@ -149,7 +144,7 @@ gulp.task "imagemin", ->
         .pipe(imagemin({progressive: true}))
         .pipe(gulp.dest(paths.dist+"/images"))
 
-gulp.task "styles", ["css", "sass"], ->
+gulp.task "styles", ["css", "sass", "csslint-app"], ->
     gulp.src(paths.distStyles)
         .pipe(concat("main.css"))
         .pipe(gulp.dest(paths.distStylesPath))
@@ -227,20 +222,17 @@ gulp.task "express", ->
 # Rerun the task when a file changes
 gulp.task "watch", ->
     gulp.watch(paths.jade, ["jade_watch"])
-    gulp.watch(paths.scssStyles, ["scsslint", "styles", "csslint-app"])
-    gulp.watch(paths.css, ["styles", "csslint-vendor"])
+    gulp.watch(paths.scssStyles, ["sass", "csslint-app", "styles"])
+    gulp.watch(paths.css, ["css", "styles"])
     gulp.watch(paths.coffee, ["coffee"])
     gulp.watch(paths.vendorJsLibs, ["jslibs"])
     gulp.watch(paths.locales, ["locales"])
 
-
 # The default task (called when you run gulp from cli)
 gulp.task "default", [
-    "locales",
     "jade",
     "template",
     "styles",
-    "csslint-app",
     "copy",
     "coffee",
     "jslibs",
