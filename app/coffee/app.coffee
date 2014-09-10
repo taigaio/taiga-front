@@ -182,7 +182,6 @@ modules = [
     "taigaAuth",
 
     # Specific Modules
-    "taigaTags",
     "taigaBacklog",
     "taigaTaskboard",
     "taigaKanban"

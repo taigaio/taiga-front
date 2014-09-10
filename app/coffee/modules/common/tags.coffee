@@ -16,13 +16,13 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: modules/base/tags.coffee
+# File: modules/common/tags.coffee
 ###
 
 taiga = @.taiga
 trim = @.taiga.trim
 
-module = angular.module("taigaTags", [])
+module = angular.module("taigaCommon")
 
 # Directive that parses/format tags inputfield.
 
