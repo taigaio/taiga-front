@@ -34,7 +34,9 @@
         div {
             position: relative;
         }
-        .color-column,
+        .color-column {
+            @include table-flex-child(1, 60px, 0);
+        }
         .is-closed-column,
         .options-column,
         .status-wip-limit {
@@ -45,7 +47,7 @@
             position: relative;
         }
         .status-name {
-            @include table-flex-child(6, 300px, 0);
+            @include table-flex-child(6, 150px, 0);
             padding: 0 10px;
         }
         .options-column {
