@@ -10,10 +10,12 @@ form
     fieldset.dates
         div
             input.date-start(type="text", name="estimated_start", placeholder="Estimated Start",
-                             ng-model="sprint.estimated_start", data-required="true", tg-date-selector)
+                             ng-model="sprint.estimated_start", data-required="true", tg-date-selector,
+                             less-than="sprint.estimated_finish")
         div
             input.date-end(type="text", name="estimated_finish", placeholder="Estimated End",
-                           ng-model="sprint.estimated_finish", data-required="true", tg-date-selector)
+                           ng-model="sprint.estimated_finish", data-required="true", tg-date-selector
+                           greater-than="sprint.estimated_start")
 
     a.button.button-green(href="", title="Save")
         span Create
