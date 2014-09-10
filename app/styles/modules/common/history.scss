@@ -147,7 +147,7 @@ a.show-more-comments {
     }
     .username {
         color: $green-taiga;
-        margin-bottom: 0.5rem;
+        margin-bottom: .5rem;
     }
     .activity-user {
         @include table-flex-child(1, 50px, 0);
@@ -182,7 +182,7 @@ a.show-more-comments {
     }
 
     .wysiwyg {
-        margin-bottom: 0px;
+        margin-bottom: 0;
     }
 
     &.activity {

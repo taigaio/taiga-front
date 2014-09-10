@@ -53,9 +53,9 @@
     }
     fieldset {
         margin-bottom: 1rem;
-        &.submit {
-            margin-top: 2rem;
-        }
+    }
+    .submit {
+        margin-top: 2rem;
     }
     label {
         @extend %title;

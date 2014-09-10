@@ -59,14 +59,14 @@ h1 {
         &:last-child {
             flex-shrink: 0;
         }
-        &.project-name {
-            display: inline-block;
-            max-width: 60%;
-        }
-        &.project-name-short {
-            display: inline-block;
-            max-width: 40%;
-        }
+    }
+    .project-name {
+        display: inline-block;
+        max-width: 60%;
+    }
+    .project-name-short {
+        display: inline-block;
+        max-width: 40%;
     }
     .green {
         color: $green-taiga;
