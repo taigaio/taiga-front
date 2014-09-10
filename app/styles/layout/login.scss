@@ -1,7 +1,11 @@
 
 
 .login-main {
-    @include table-flex(center, center, flex, row, wrap, center);
+    //@include table-flex(center, center, flex, row, wrap, center);
+    @include display(flex);
+    @include align-items(center);
+    @include flex-direction(row);
+    @include justify-content(center);
     @extend %triangled-bg;
     bottom: 0;
     left: 0;
@@ -13,7 +17,7 @@
         margin-bottom: 1rem;
     }
     .login-container {
-        @include table-flex-child(0, 400px, 0, 400px);
+        @include flex-basis(400px);
     }
     .logo,
     .tagline {
