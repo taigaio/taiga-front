@@ -21,9 +21,6 @@
 
 taiga = @.taiga
 
-trim = @.taiga.trim
-typeIsArray = @.taiga.typeIsArray
-
 module = angular.module("taigaCommon", [])
 
 #############################################################################
