@@ -95,11 +95,6 @@ AttachmentsDirective = ($repo, $rs, $confirm) ->
                                         .prop("title", "show deprecated attachments") # TODO: i18n
                 $el.find("div.single-attachment.deprecated").addClass("hidden")
 
-        ## Add Attachments
-        $el.on "click", "a.add-attach", ->
-            event.preventDefault()
-            angular.element("input.add-attach").trigger("click")
-
         $el.on "change", "input.add-attach", ->
             files = _.map(event.target.files, (x) -> x)
             return if files.length < 1
