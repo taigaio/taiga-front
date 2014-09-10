@@ -36,15 +36,13 @@
         }
         .color-column {
             @include table-flex-child(1, 60px, 0);
+            max-width: 100px;
+            position: relative;
         }
         .is-closed-column,
         .options-column,
         .status-wip-limit {
             @include table-flex-child(1, 100px, 0);
-        }
-        .color-column {
-            max-width: 100px;
-            position: relative;
         }
         .status-name {
             @include table-flex-child(6, 150px, 0);
