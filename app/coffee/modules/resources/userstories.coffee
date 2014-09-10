@@ -69,6 +69,14 @@ resourceProvider = ($repo, $http, $urls, $storage) ->
         hash = generateHash([projectId, ns])
         return $storage.get(hash) or {}
 
+    service.storeShowTags = (projectId, showTags) ->
+        hash = generateHash([projectId, 'showTags'])
+        $storage.set(hash, showTags)
+
+    service.getShowTags = (projectId) ->
+        hash = generateHash([projectId, 'showTags'])
+        return $storage.get(hash) or null
+
     return (instance) ->
         instance.userstories = service
 

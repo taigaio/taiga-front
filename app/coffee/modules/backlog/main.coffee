@@ -59,6 +59,12 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         # On Success
         promise.then =>
             @appTitle.set("Backlog - " + @scope.project.name)
+
+            if @rs.userstories.getShowTags(@scope.projectId)
+                @showTags = true
+
+                @scope.$broadcast("showTags", @showTags)
+
             tgLoader.pageLoaded()
 
             # $(".backlog, .sidebar").mCustomScrollbar({
@@ -89,6 +95,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
     toggleShowTags: ->
         @scope.$apply () =>
             @showTags = !@showTags
+            @rs.userstories.storeShowTags(@scope.projectId, @showTags)
 
     loadProjectStats: ->
         return @rs.projects.stats(@scope.projectId).then (stats) =>
@@ -510,12 +517,20 @@ BacklogDirective = ($repo, $rootscope) ->
 
         $el.on "click", "#show-tags", (event) ->
             event.preventDefault()
-            target = angular.element(event.currentTarget)
-            # $el.find(".user-story-tags").toggle()
-            $ctrl.toggleShowTags()
-            target.toggleClass("active")
-            toggleText(target.find(".text"), ["Hide Tags", "Show Tags"]) # TODO: i18n
 
+            $ctrl.toggleShowTags()
+
+            showHideTags($ctrl);
+
+    showHideTags = ($ctrl) ->
+        elm = angular.element("#show-tags")
+
+        if $ctrl.showTags
+            elm.addClass("active")
+            elm.find(".text").text("Hide Tags") # TODO: i18n
+        else
+            elm.removeClass("active")
+            elm.find(".text").text("Show Tags") # TODO: i18n
 
     showHideFilter = ($scope, $el, $ctrl) ->
         sidebar = $el.find("sidebar.filters-bar")
@@ -557,6 +572,9 @@ BacklogDirective = ($repo, $rootscope) ->
            filters.tags ||
            filters.q
             showHideFilter($scope, $el, $ctrl)
+
+        $scope.$on "showTags", () ->
+            showHideTags($ctrl)
 
         $scope.$on "$destroy", ->
             $el.off()
