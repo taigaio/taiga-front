@@ -93,8 +93,6 @@ DateSelectorDirective =->
 
         if $attrs.greaterThan
             $scope.$watch $attrs.greaterThan, (val) ->
-                console.log "HOLA"
-                console.log val
                 $el.picker.setMinDate(moment(val))
 
         if $attrs.lessThan
