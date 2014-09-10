@@ -34,6 +34,7 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootscope, lightboxService) ->
                 is_archived: false
                 status: $scope.project.default_task_status
                 assigned_to: null
+                tags: []
             }
             isNew = true
 

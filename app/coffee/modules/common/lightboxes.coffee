@@ -204,6 +204,7 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
                 project: projectId
                 status: status
                 is_archived: false
+                tags: []
             }
 
             isNew = true
