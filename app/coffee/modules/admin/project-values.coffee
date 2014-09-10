@@ -180,7 +180,9 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame) ->
             return if not form.validate()
 
             $scope.newValue.project = $scope.project.id
-            $scope.newValue.order = $scope.maxValueOrder + 1
+
+            $scope.newValue.order = if $scope.maxValueOrder then $scope.maxValueOrder + 1 else 1
+
             promise = $repo.create(valueType, $scope.newValue)
             promise.then =>
                 $ctrl.loadValues().then ->
