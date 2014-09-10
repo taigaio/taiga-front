@@ -89,11 +89,17 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading)
             $scope.sprint.project = projectId
             $scope.sprint.name = null
             $scope.sprint.slug = null
-            $scope.sprint.estimated_start = moment($scope.sprint.estimated_start).format("DD MMM YYYY")
-            $scope.sprint.estimated_finish = moment($scope.sprint.estimated_finish).format("DD MMM YYYY")
+            if $scope.sprint.estimated_start
+                $scope.sprint.estimated_start = moment($scope.sprint.estimated_start).format("DD MMM YYYY")
+            else
+                $scope.sprint.estimated_start = moment().format("DD MMM YYYY")
+            if $scope.sprint.estimated_finish
+                $scope.sprint.estimated_finish = moment($scope.sprint.estimated_finish).format("DD MMM YYYY")
+            else
+                $scope.sprint.estimated_finish = moment().format("DD MMM YYYY")
 
             lastSprintNameDom = $el.find(".last-sprint-name")
-            sprintName = $scope.sprints?[0].name
+            sprintName = $scope.sprints?[0]?.name
             if sprintName?
                 lastSprintNameDom.html(" last sprint is <strong> #{sprintName} ;-) </strong>")
 
