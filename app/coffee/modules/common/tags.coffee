@@ -124,7 +124,7 @@ TagLineDirective = ($log, $rs) ->
 
     link = ($scope, $el, $attrs, $model) ->
         editable = if $attrs.editable == "true" then true else false
-        $el.addClass('tags-block')
+        $el.addClass("tags-block")
 
         addValue = (value) ->
             value = trim(value)
@@ -137,33 +137,34 @@ TagLineDirective = ($log, $rs) ->
             $scope.$apply ->
                 $model.$setViewValue(normalizeTags(tags))
 
-
         $scope.$watch $attrs.ngModel, (val) ->
-            return if not val
-            renderTags($el, val, editable, $scope.project.tags_colors)
+            console.log "WATCH", val
+            renderTags($el, val, editable, $scope.project.tags_colors) if val?
 
-        $scope.$watch "projectId", (val) ->
-            return if not val?
+        bindOnce $scope, "projectId", (projectId) ->
+            # If not editable, no tags preloading is needed.
+            return if not editable
+
             positioningFunction = (position, elements) ->
                 menu = elements.element.element
-                menu.css 'width', elements.target.width
-                menu.css 'top', position.top
-                menu.css 'left', position.left
+                menu.css("width", elements.target.width)
+                menu.css("top", position.top)
+                menu.css("left", position.left)
 
-            promise = $rs.projects.tags($scope.projectId)
-            promise.then (data) ->
-                if editable
-                    $el.find("input").autocomplete({
-                        source: data,
-                        position:
-                            my: "left top",
-                            using: positioningFunction
-                        select: (event, ui) ->
-                            addValue(ui.item.value)
-                            ui.item.value = ""
-                    })
+            $rs.projects.tags(projectId).then (data) ->
+                $el.find("input").autocomplete({
+                    source: data
+                    position: {
+                        my: "left top",
+                        using: positioningFunction
+                    }
+                    select: (event, ui) ->
+                        addValue(ui.item.value)
+                        ui.item.value = ""
+                })
 
-        $el.find("input").remove() if not editable
+        if not editable
+            $el.find("input").remove()
 
         $el.on "keypress", "input", (event) ->
             return if event.keyCode != 13
@@ -177,7 +178,6 @@ TagLineDirective = ($log, $rs) ->
             addValue(target.val())
             target.val("")
             $el.find("input").autocomplete("close")
-
 
         $el.on "click", ".icon-delete", (event) ->
             event.preventDefault()
