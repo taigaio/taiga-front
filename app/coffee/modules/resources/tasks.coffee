@@ -46,9 +46,6 @@ resourceProvider = ($repo, $http, $urls, $storage) ->
         return $http.post(url, params).then (result) ->
             return result.data
 
-    service.history = (taskId) ->
-        return $repo.queryOneRaw("history/task", taskId)
-
     service.listValues = (projectId, type) ->
         params = {"project": projectId}
         return $repo.queryMany(type, params)

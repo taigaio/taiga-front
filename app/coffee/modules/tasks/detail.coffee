@@ -59,9 +59,10 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin, taig
         promise.then null, ->
             console.log "FAIL" #TODO
 
-        @scope.$on "attachment:create", @loadHistory
-        @scope.$on "attachment:edit", @loadHistory
-        @scope.$on "attachment:delete", @loadHistory
+
+        @scope.$on("attachment:create", => @rootscope.$broadcast("history:reload"))
+        @scope.$on("attachment:edit", => @rootscope.$broadcast("history:reload"))
+        @scope.$on("attachment:delete", => @rootscope.$broadcast("history:reload"))
 
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
@@ -91,22 +92,6 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin, taig
                 }
                 @scope.nextUrl = @navUrls.resolve("project-tasks-detail", ctx)
 
-    loadHistory: =>
-        return @rs.tasks.history(@scope.taskId).then (history) =>
-            _.each history, (historyResult) ->
-                #If description was modified take only the description_html field
-                if historyResult.values_diff.description?
-                    historyResult.values_diff.description = historyResult.values_diff.description_diff
-
-                if historyResult.values_diff.is_iocaine
-                    historyResult.values_diff.is_iocaine = _.map(historyResult.values_diff.is_iocaine, (v) -> {true: 'Yes', false: 'No'}[v])
-
-                delete historyResult.values_diff.description_html
-                delete historyResult.values_diff.description_diff
-
-            @scope.history = history
-            @scope.comments = _.filter(history, (historyEntry) -> historyEntry.comment != "")
-
     loadInitialData: ->
         params = {
             pslug: @params.pslug
@@ -126,7 +111,6 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin, taig
                       .then(=> @.loadUsersAndRoles())
                       .then(=> @.loadTask())
                       .then(=> @.loadAttachments(@scope.taskId))
-                      .then(=> @.loadHistory())
 
     block: ->
         @rootscope.$broadcast("block", @scope.task)
@@ -180,26 +164,6 @@ TaskDirective = ($tgrepo, $log, $location, $confirm, $navUrls, $loading) ->
             target = angular.element(event.currentTarget)
             $loading.start(target)
             $tgrepo.save($scope.task).then(onSuccess, onError)
-
-        $el.on "click", ".add-comment a.button-green", (event) ->
-            event.preventDefault()
-
-            $el.find(".comment-list").addClass("activeanimation")
-
-            onSuccess = ->
-                $ctrl.loadHistory()
-
-            onError = ->
-                $confirm.notify("error")
-
-            $tgrepo.save($scope.task).then(onSuccess, onError)
-
-        $el.on "focus", ".add-comment textarea", (event) ->
-            $(this).addClass('active')
-
-        $el.on "click", ".us-activity-tabs li a", (event) ->
-            $el.find(".us-activity-tabs li a").toggleClass("active")
-            $el.find(".us-activity section").toggleClass("hidden")
 
     return {link:link}
 

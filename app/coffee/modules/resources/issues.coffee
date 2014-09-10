@@ -52,9 +52,6 @@ resourceProvider = ($repo, $http, $urls, $storage, $q) ->
     service.filtersData = (projectId) ->
         return $repo.queryOneRaw("projects", "#{projectId}/issue_filters_data")
 
-    service.history = (issueId) ->
-        return $repo.queryOneRaw("history/issue", issueId)
-
     service.listValues = (projectId, type) ->
         params = {"project": projectId}
         service.storeQueryParams(projectId, params)

@@ -60,10 +60,8 @@ $prefix-for-spec:      true;
 @import 'modules/common/colors-table';
 @import 'modules/common/category-config';
 @import 'modules/common/attachments';
-@import 'modules/common/comments';
-@import 'modules/common/comment-activity';
-@import 'modules/common/activity';
 @import 'modules/common/related-tasks';
+@import 'modules/common/history';
 
 //Project modules
 @import 'modules/home-projects-list';
