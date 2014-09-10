@@ -21,6 +21,7 @@
 
 taiga = @.taiga
 trim = @.taiga.trim
+bindOnce = @.taiga.bindOnce
 
 module = angular.module("taigaCommon")
 
@@ -53,38 +54,34 @@ module.directive("tgTags", TagsDirective)
 ColorizeTagsDirective = ->
     templates = {
         backlog: _.template("""
-            <% _.each(tags, function(tag) { %>
-                <span class="tag" style="border-left: 5px solid <%- tag.color %>"><%- tag.name %></span>
-            <% }) %>
+        <% _.each(tags, function(tag) { %>
+            <span class="tag" style="border-left: 5px solid <%- tag.color %>"><%- tag.name %></span>
+        <% }) %>
         """)
         kanban: _.template("""
-            <% _.each(tags, function(tag) { %>
-                <a class="kanban-tag" href="" style="background: <%- tag.color %>" title="<%- tag.name %>" />
-            <% }) %>
+        <% _.each(tags, function(tag) { %>
+            <a class="kanban-tag" href="" style="background: <%- tag.color %>" title="<%- tag.name %>" />
+        <% }) %>
         """)
         taskboard: _.template("""
-            <% _.each(tags, function(tag) { %>
-                <a class="taskboard-tag" href="" style="background: <%- tag.color %>" title="<%- tag.name %>" />
-            <% }) %>
+        <% _.each(tags, function(tag) { %>
+            <a class="taskboard-tag" href="" style="background: <%- tag.color %>" title="<%- tag.name %>" />
+        <% }) %>
         """)
     }
+
     link = ($scope, $el, $attrs, $ctrl) ->
         render = (srcTags) ->
             template = templates[$attrs.tgColorizeTagsType]
-            tags = []
-            for tag in srcTags
+            tags = _.map srcTags, (tag) ->
                 color = $scope.project.tags_colors[tag]
-                tags.push({name: tag, color: color})
-            $el.html template({tags: tags})
+                return {name: tag, color: color}
 
-        $scope.$watch $attrs.tgColorizeTags, ->
-            tags = $scope.$eval($attrs.tgColorizeTags)
-            if tags?
-                render(tags)
+            html = template({tags: tags})
+            $el.html(html)
 
-        tags = $scope.$eval($attrs.tgColorizeTags)
-        if tags?
-            render(tags)
+        $scope.$watch $attrs.tgColorizeTags, (tags) ->
+            render(tags) if tags?
 
     return {link: link}
 
