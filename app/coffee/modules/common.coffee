@@ -28,19 +28,15 @@ module = angular.module("taigaCommon", [])
 #############################################################################
 
 CheckPermissionDirective = ->
-    showElementIfPermission = (element, permission, project) ->
-        element.show() if project.my_permissions.indexOf(permission) > -1
+    render = ($el, project, permission) ->
+        $el.show() if project.my_permissions.indexOf(permission) > -1
 
     link = ($scope, $el, $attrs) ->
         $el.hide()
         permission = $attrs.tgCheckPermission
 
-        #Sometimes this directive from a self included html template
-        if $scope.project?
-            showElementIfPermission($el, permission, $scope.project)
-
-        $scope.$on "project:loaded", (ctx, project) ->
-            showElementIfPermission($el, permission, project)
+        $scope.$watch "project", (project) ->
+            render($el, project, permission) if project?
 
         $scope.$on "$destroy", ->
             $el.off()
