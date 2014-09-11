@@ -14,7 +14,7 @@ section.issues-table.basic-table(ng-class="{empty: !issues.length}")
         div.subject
             a(href="", tg-nav="project-issues-detail:project=project.slug,ref=issue.ref")
                 span(tg-bo-ref="issue.ref")
-                span(tg-bo-bind="issue.subject")
+                span(ng-bind="issue.subject")
 
         div.issue-field(tg-issue-status-inline-edition="issue")
             a.issue-status(href="", title="Change status")

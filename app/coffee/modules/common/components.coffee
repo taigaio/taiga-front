@@ -333,14 +333,19 @@ ListItemPriorityDirective = ->
     """
 
     link = ($scope, $el, $attrs) ->
-        issue = $scope.$eval($attrs.tgListitemPriority)
-        bindOnce $scope, "priorityById", (priorityById) ->
+        render = (priorityById, issue) ->
             priority = priorityById[issue.priority]
-
-            domNode = $el.find("div.level")
+            domNode = $el.find(".level")
             domNode.css("background-color", priority.color)
             domNode.addClass(priority.name.toLowerCase())
             domNode.attr("title", priority.name)
+
+        bindOnce $scope, "priorityById", (priorityById) ->
+            issue = $scope.$eval($attrs.tgListitemPriority)
+            render(priorityById, issue)
+
+        $scope.$watch $attrs.tgListitemPriority, (issue) ->
+            render($scope.priorityById, issue)
 
     return {
         link: link
@@ -354,14 +359,19 @@ ListItemSeverityDirective = ->
     """
 
     link = ($scope, $el, $attrs) ->
-        issue = $scope.$eval($attrs.tgListitemSeverity)
-        bindOnce $scope, "severityById", (severityById) ->
+        render = (severityById, issue) ->
             severity = severityById[issue.severity]
-
-            domNode = $el.find("div.level")
+            domNode = $el.find(".level")
             domNode.css("background-color", severity.color)
             domNode.addClass(severity.name.toLowerCase())
             domNode.attr("title", severity.name)
+
+        bindOnce $scope, "severityById", (severityById) ->
+            issue = $scope.$eval($attrs.tgListitemSeverity)
+            render(severityById, issue)
+
+        $scope.$watch $attrs.tgListitemSeverity, (issue) ->
+            render($scope.severityById, issue)
 
     return {
         link: link
@@ -374,15 +384,19 @@ ListItemTypeDirective = ->
     """
 
     link = ($scope, $el, $attrs) ->
-        issue = $scope.$eval($attrs.tgListitemType)
-
-        bindOnce $scope, "issueTypeById", (issueTypeById) ->
+        render = (issueTypeById, issue) ->
             type = issueTypeById[issue.type]
-
-            domNode = $el.find("div.level")
+            domNode = $el.find(".level")
             domNode.css("background-color", type.color)
             domNode.addClass(type.name.toLowerCase())
             domNode.attr("title", type.name)
+
+        bindOnce $scope, "issueTypeById", (issueTypeById) ->
+            issue = $scope.$eval($attrs.tgListitemType)
+            render(issueTypeById, issue)
+
+        $scope.$watch $attrs.tgListitemType, (issue) ->
+            render($scope.issueTypeById, issue)
 
     return {
         link: link

@@ -125,15 +125,6 @@ sizeFormat = (input, precision=1) ->
     return  "#{size} #{units[number]}"
 
 
-typeIsArray = Array.isArray || ( value ) -> return {}.toString.call( value ) is '[object Array]'
-
-
-# Generic method for generate hash from a arbitrary length
-# collection of parameters.
-generateHash = (components=[]) ->
-    components = _.map(components, (x) -> JSON.stringify(x))
-    return hex_sha1(components.join(":"))
-
 taiga = @.taiga
 taiga.nl2br = nl2br
 taiga.bindOnce = bindOnce
@@ -151,5 +142,3 @@ taiga.joinStr = joinStr
 taiga.debounce = debounce
 taiga.startswith = startswith
 taiga.sizeFormat = sizeFormat
-taiga.typeIsArray = typeIsArray
-taiga.generateHash = generateHash

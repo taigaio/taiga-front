@@ -171,7 +171,7 @@ PublicRegisterMessageDirective = ($config, $navUrls) ->
 module.directive("tgPublicRegisterMessage", ["$tgConfig", "$tgNavUrls", PublicRegisterMessageDirective])
 
 
-LoginDirective = ($auth, $confirm, $location, $routeParams, $navUrls) ->
+LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls, $events) ->
     link = ($scope, $el, $attrs) ->
         $scope.data = {}
 
@@ -181,6 +181,7 @@ LoginDirective = ($auth, $confirm, $location, $routeParams, $navUrls) ->
             else
                 nextUrl = $navUrls.resolve("home")
 
+            $events.setupConnection()
             $location.path(nextUrl)
 
         onErrorSubmit = (response) ->
@@ -204,8 +205,8 @@ LoginDirective = ($auth, $confirm, $location, $routeParams, $navUrls) ->
 
     return {link:link}
 
-module.directive("tgLogin", ["$tgAuth", "$tgConfirm", "$tgLocation", "$routeParams", "$tgNavUrls",
-                             LoginDirective])
+module.directive("tgLogin", ["$tgAuth", "$tgConfirm", "$tgLocation", "$tgConfig", "$routeParams",
+                             "$tgNavUrls", "$tgEvents", LoginDirective])
 
 #############################################################################
 ## Register Directive

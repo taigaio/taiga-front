@@ -46,11 +46,12 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$appTitle",
         "$tgLocation",
         "$tgNavUrls"
+        "$tgEvents"
         "tgLoader"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @appTitle, @location, @navUrls,
-                  tgLoader) ->
+                  @events, tgLoader) ->
         _.bindAll(@)
 
         @scope.sectionName = "Taskboard"
@@ -81,6 +82,11 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
             promise = @repo.save(task)
             promise.then null, ->
                 console.log "FAIL" # TODO
+
+    initializeSubscription: ->
+        routingKey = "changes.project.#{@scope.projectId}.tasks"
+        @events.subscribe @scope, routingKey, (message) =>
+            @.loadTaskboard()
 
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
@@ -157,6 +163,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
         promise = @repo.resolve(params).then (data) =>
             @scope.projectId = data.project
             @scope.sprintId = data.milestone
+            @.initializeSubscription()
             return data
 
         return promise.then(=> @.loadProject())
