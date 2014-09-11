@@ -1,38 +1,188 @@
 .related-tasks {
-    ul {
-        list-style: disc inside;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.related-tasks-header,
+.related-tasks-body {
+    width: 100%;
+    .row {
+        @extend %small;
+        @include table-flex(center, center, flex, row, wrap, center);
+        border-bottom: 1px solid $gray-light;
+        padding: .5rem 0 .5rem .5rem;
+        text-align: left;
+        width: 100%;
     }
-    li {
-        margin-bottom: .5rem;
-        &.iocaine {
-            list-style: none inside;
+    .row {
+        &:hover {
+            background: transparent;
         }
-        &.blocked {
-            color: $red;
-            text-decoration: line-through;
+        .tasks {
+            @include table-flex-child(10, 78%, 0);
+        }
+        .status {
+            @include table-flex-child(0, 10%, 0);
+        }
+        .assigned-to {
+            @include table-flex-child(0, 10%, 0);
+        }
+
+    }
+    .status {
+        position: relative;
+        text-align: left;
+        .popover {
             a {
-                color: $red;
+                text-align: left;
+                width: 100%;
+            }
+            .point {
+                text-align: center;
             }
         }
-        &.closed {
+        .icon {
             color: $gray-light;
-            text-decoration: line-through;
-            a,
-            .icon-iocaine {
-                color: $gray-light;
+            margin-left: .2rem;
+        }
+    }
+    .pop-status {
+        @include popover(200px, 0, 40%, '', '');
+        padding-right: 1rem;
+        &.fix {
+            bottom: 0;
+            top: auto;
+        }
+    }
+}
+
+.related-tasks-header {
+    .related-tasks-title {
+        @extend %medium;
+        @extend %bold;
+        border-bottom: 2px solid $gray-light;
+        margin-top: 1rem;
+    }
+}
+
+.related-tasks-body {
+    .row {
+        position: relative;
+        &:hover {
+            .task-settings {
+                @include transition (all .2s ease-in);
+                opacity: 1;
             }
         }
+        &:last-child {
+            border-bottom: 0;
+        }
+    }
+    .task-name {
+        position: relative;
         a {
-            color: $grayer;
+            display: inline-block;
+            max-width: 90%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        input {
+            margin-right: 1rem;
+            padding: 3px;
+            width: 85%;
+        }
+    }
+    .blocked,
+    .blocked:hover {
+        background: $red-light;
+        color: $white;
+        a {
+            color: $white !important;
+            &:hover {
+                color: $white;
+            }
+        }
+        .icon {
+            color: $white;
+            &:hover {
+                color: $white;
+            }
         }
     }
     .icon-iocaine {
-        color: $green-taiga;
-        margin-right: .3rem;
-        position: relative;
-        right: .3rem;
+        display: none;
     }
-    .blocked-text {
-        margin-left: .3rem;
+    .iocaine,
+    .iocaine:hover {
+        background: rgba($fresh-taiga, .3);
+        .icon-iocaine {
+            @extend %large;
+            display: inline-block;
+            margin-right: .5rem;
+            vertical-align: top;
+        }
+    }
+    .task-settings {
+        margin: 0 0 0 2rem;
+        opacity: 0;
+        position: absolute;
+        right: 0;
+        top: .1rem;
+        width: 10%;
+        a {
+            @include transition (all .2s ease-in);
+            @extend %large;
+            color: $gray-light;
+            &:hover {
+                @include transition (all .2s ease-in);
+                color: $grayer;
+            }
+        }
+    }
+    .assigned-to {
+        position: relative;
+        text-align: left;
+    }
+    .task-assignedto {
+        cursor: pointer;
+        position: relative;
+        &:hover {
+            .icon {
+                @include transition(opacity .3s linear);
+                opacity: 1;
+            }
+        }
+        figcaption {
+            max-width: 60%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .icon {
+            @include transition(opacity .3s linear);
+            opacity: 0;
+            position: absolute;
+            right: .5rem;
+            top: .5rem;
+        }
+    }
+    .avatar {
+        align-items: center;
+        display: flex;
+        img {
+            flex-basis: 35px;
+        }
+        figcaption {
+            margin-left: .5rem;
+        }
+    }
+}
+.related-tasks-buttons {
+    position: absolute;
+    right: 0;
+    top: 0;
+    .button {
+        cursor: pointer;
     }
 }
