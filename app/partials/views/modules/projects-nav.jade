@@ -3,7 +3,7 @@
         include ../components/spinner
         p Loading project...
 
-div.lightbox.lightbox_create-project.hidden(tg-lb-create-project)
-    include lightbox_create-project
+div.wizard-create-project.hidden(tg-lb-create-project)
+    include wizard-create-project
 
 nav.projects-nav(ng-controller="ProjectsNavigationController", tg-projects-nav, tg-projects-pagination, projects="projects")
