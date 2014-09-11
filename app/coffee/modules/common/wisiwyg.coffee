@@ -72,15 +72,14 @@ tgMarkitupDirective = ($rootscope, $rs) ->
                 keepDefault: false
                 replaceWith: (data) ->
                     lastLine = data.textarea.value[0..(data.caretPosition - 1)].split("\n").pop()
-
                     match = lastLine.match /^(\s*- ).*/
                     return "\n#{match[1]}" if match
 
                     match = lastLine.match /^(\s*\* ).*/
                     return "\n#{match[1]}" if match
 
-                    match = lastLine.match /^(\s*1\. ).*/
-                    return "\n#{match[1]}" if match
+                    match = lastLine.match /^(\d+)\./
+                    return "\n#{parseInt(match[1], 10) + 1}. " if match
 
                     return "\n"
 
