@@ -66,6 +66,7 @@ BacklogSortableDirective = ($repo, $rs, $rootscope) ->
                 # works unexpectly (in some circumstances calculates wrong
                 # position for revert).
                 revert: false
+                cursorAt: {right: 15}
             })
 
             $el.on "sortreceive", (event, ui) ->
