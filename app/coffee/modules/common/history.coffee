@@ -34,12 +34,15 @@ class HistoryController extends taiga.Controller
 
     constructor: (@scope, @repo) ->
 
-    # TODO: possible move to resources
+    initialize: (type, objectId) ->
+        @.type = type
+        @.objectId = objectId
+
     getHistory: (type, objectId) ->
         return @repo.queryOneRaw("history/#{type}", objectId)
 
-    loadHistory: (type, objectId) ->
-        return @.getHistory(type, objectId).then (history) =>
+    loadHistory: ->
+        return @.getHistory(@.type, @.objectId).then (history) =>
             for historyResult in history
                 # If description was modified take only the description_html field
                 if historyResult.values_diff.description?
@@ -200,7 +203,9 @@ HistoryDirective = ($log) ->
         bindOnce $scope, $attrs.ngModel, (model) ->
             type = $attrs.type
             objectId = model.id
-            $ctrl.loadHistory(type, objectId)
+
+            $ctrl.initialize(type, objectId)
+            $ctrl.loadHistory()
 
         # Helpers
 
@@ -325,9 +330,7 @@ HistoryDirective = ($log) ->
         $scope.$watch("comments", renderComments)
         $scope.$watch("history",  renderActivity)
 
-        $scope.$on "history:reload", ->
-            renderComments()
-            renderActivity()
+        $scope.$on("history:reload", -> $ctrl.loadHistory())
 
         # Events
 
@@ -336,7 +339,7 @@ HistoryDirective = ($log) ->
 
             $el.find(".comment-list").addClass("activeanimation")
             onSuccess = ->
-                $ctrl.loadHistory(type, objectId)
+                $ctrl.loadHistory()
 
             onError = ->
                 $confirm.notify("error")
