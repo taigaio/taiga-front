@@ -68,6 +68,29 @@ tgMarkitupDirective = ($rootscope, $rs) ->
         markdownSettings =
             nameSpace: 'markdown'
             onShiftEnter: {keepDefault:false, openWith:'\n\n'}
+            onEnter:
+                keepDefault: false
+                replaceWith: (data) ->
+                    lastLine = data.textarea.value[0..(data.caretPosition - 1)].split("\n").pop()
+
+                    match = lastLine.match /^(\s*- ).*/
+                    return "\n#{match[1]}" if match
+
+                    match = lastLine.match /^(\s*\* ).*/
+                    return "\n#{match[1]}" if match
+
+                    match = lastLine.match /^(\s*1\. ).*/
+                    return "\n#{match[1]}" if match
+
+                    return "\n"
+
+                afterInsert: (data) ->
+                    # Calculate the scroll position
+                    totalLines = data.textarea.value.split("\n").length
+                    line = data.textarea.value[0..(data.caretPosition - 1)].split("\n").length
+                    scrollRelation = line / totalLines
+                    $el.scrollTop((scrollRelation * $el[0].scrollHeight) - ($el.height() / 2))
+
             markupSet: [
                 {
                     name: $i18next.t('wiki-editor.heading-1')
