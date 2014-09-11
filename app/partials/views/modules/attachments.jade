@@ -7,7 +7,7 @@ section.attachments(tg-attachments, ng-model=attachModel, ng-if="#{attachModel}.
             span.icon.icon-attachments
             span.attachments-num 0
             span.attachments-text attachments
-            div.button.button-gray.add-attach(tg-check-permission, permission="modify_"+permissionSuffix, title="Add new attachment")
+            div.button.button-gray.add-attach(tg-check-permission="modify_"+permissionSuffix, title="Add new attachment")
                 span +new file
                 input.add-attach(type="file", multiple="multiple")
 

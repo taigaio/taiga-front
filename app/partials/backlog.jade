@@ -31,7 +31,7 @@ block content
             div.empty.empty-backlog(ng-class="{'hidden': visibleUserstories.length}", tg-backlog-empty-sortable)
                 span.icon.icon-backlog
                 span.title Your backlog is empty!
-                a(href="", title+"Create a new US", ng-click="ctrl.addNewUs('standard')", tg-check-permission="tg-check-permission", permission="add_us") You may want to create a new user story
+                a(href="", title+"Create a new US", ng-click="ctrl.addNewUs('standard')", tg-check-permission="add_us") You may want to create a new user story
         sidebar.menu-secondary.sidebar
             include views/modules/sprints
 
