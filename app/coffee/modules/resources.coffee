@@ -130,5 +130,6 @@ module.run([
     "$tgSearchResourcesProvider",
     "$tgAttachmentsResourcesProvider",
     "$tgMdRenderResourcesProvider",
+    "$tgHistoryResourcesProvider",
     initResources
 ])
