@@ -1,0 +1,204 @@
+.wizard-create-project {
+    @extend %lightbox;
+    background: url('/images/invitation_bg.jpg') no-repeat center center;
+    background-size: cover;
+    color: $white;
+    text-align: center;
+    form {
+        width: 500px;
+    }
+    .title {
+        width: 100%;
+    }
+    h1,
+    p {
+        color: $white;
+    }
+    h1 {
+        line-height: 1.5rem;
+    }
+    p {
+        @extend %small;
+        opacity: .8;
+    }
+    input,
+    textarea,
+    select {
+        background: rgba($white, .7);
+        @include placeholder {
+            color: $grayer;
+        }
+    }
+    .close {
+        color: $white;
+        &:hover {
+            color: $red-light;
+        }
+    }
+    .wizard-step {
+        display: none;
+        @include animation(formSlide .4s ease-in-out);
+        @include animation-direction(alternate-reverse);
+        &.active {
+            @include animation(formSlide .4s ease-in-out);
+            &.create-step1,
+            &.create-step3 {
+                @include table-flex();
+            }
+            &.create-step2 {
+                display: block;
+            }
+        }
+    }
+    .wizard-action {
+        div {
+            @include table-flex();
+        }
+        a {
+            @include table-flex-child(1, 40%, 0);
+            color: $white;
+            display: inline-block;
+            &:first-child {
+                margin-right: .5rem;
+            }
+        }
+    }
+    .create-step2 {
+        .template-inner {
+            @include table-flex();
+            fieldset {
+                @include table-flex-child(1, 0, 0);
+                &:first-child {
+                    margin-right: .5rem;
+                }
+            }
+        }
+        input[type="radio"] {
+            display: none;
+            &:checked {
+                +label {
+                    @include transition(background .3s ease-in);
+                    background: rgba($fresh-taiga, .7);
+                }
+            }
+            +label {
+                @include transition(background .3s ease-in);
+                background: rgba($whitish, .7);
+                cursor: pointer;
+                display: block;
+                margin-bottom: 1rem;
+                padding: 1rem;
+                text-align: center;
+                &:hover {
+                    @include transition(background .3s ease-in);
+                    background: rgba($green-taiga, .7);
+                }
+                .icon {
+                    @extend %xxlarge;
+                    color: $white;
+                }
+            }
+        }
+        h2 {
+            color: $white;
+            margin: 0;
+            margin-top: .5rem;
+            text-transform: uppercase;
+        }
+        p {
+            text-align: center;
+        }
+    }
+    .progress-bar {
+        bottom: 0;
+        height: .5rem;
+        left: 0;
+        position: absolute;
+        width: 100%;
+        &.step1 {
+            .bar {
+                @include transition(width .6s ease-in-out);
+                width: 25%;
+            }
+            .progress-state {
+                span {
+                    &:nth-child(1) {
+                        @include transition(color .3s ease-in-out);
+                        @include transition-delay(.6s);
+                        color: rgba($white, 1);
+                    }
+                }
+            }
+        }
+        &.step2 {
+            .bar {
+                @include transition(width .6s ease-in-out);
+                // width: 50%;
+                width: 75%;
+            }
+            .progress-state {
+                span {
+                    &:nth-child(1),
+                    &:nth-child(2) {
+                        @include transition(color .3s ease-in-out);
+                        @include transition-delay(.6s);
+                        color: rgba($white, 1);
+                    }
+                }
+            }
+        }
+        // &.step3 {
+        //     .bar {
+        //         @include transition(width .6s ease-in-out);
+        //         width: 75%;
+        //     }
+        //     .progress-state {
+        //         span {
+        //             &:nth-child(1),
+        //             &:nth-child(2),
+        //             &:nth-child(3) {
+        //                 @include transition(color .3s ease-in-out);
+        //                 @include transition-delay(.6s);
+        //                 color: rgba($white, 1);
+        //             }
+        //         }
+        //     }
+        // }
+    }
+    .progress-state {
+        position: absolute;
+        width: 100%;
+        span {
+            @include transition(all 1s ease-in);
+            color: rgba($white, .5);
+            display: inline-block;
+            margin-left: -100px;
+            position: absolute;
+            text-align: center;
+            top: -2rem;
+            width: 200px;
+            &:nth-child(1) {
+                left: 25%;
+            }
+            &:nth-child(2) {
+                // left: 50%;
+                left: 75%;
+            }
+            // &:nth-child(3) {
+            //     left: 75%;
+            // }
+        }
+    }
+    .progress-bar-wrapper {
+        background: rgba($white, .3);
+        height: .5rem;
+    }
+    .bar {
+        background: rgba($fresh-taiga, .9);
+        height: .5rem;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 0;
+    }
+}
