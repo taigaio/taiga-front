@@ -267,7 +267,7 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location, $
                     <li><a href="" title="Logout" class="logout">Logout</a></li>
                 </ul>
                 <a href="" title="User preferences" class="avatar" id="nav-user-settings">
-                    <img src="{{ user.photo }}" alt="{{ user.full_name_display }}" />
+                    <img src="<%= user.photo %>" alt="<%= user.full_name_display %>" />
                 </a>
             </div>
         </div>
