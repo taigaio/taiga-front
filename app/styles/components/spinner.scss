@@ -10,6 +10,7 @@
     .icon {
         @include animation(fadeIn 6s linear);
         @extend %xxlarge;
+        @include animation-iteration-count(infinite);
         border-radius: 5%;
         color: darken($green-taiga, 15%);
         font-size: 60px;
