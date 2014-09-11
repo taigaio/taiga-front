@@ -219,8 +219,9 @@
     .icon-drag-v {
         cursor: move;
         opacity: 0;
-        position: absolute;
-        right: .5rem;
-        top: .6rem;
+        padding: .1rem .5rem 0 0;
+        /* position: absolute; */
+        /* right: .5rem; */
+        /* top: .6rem; */
     }
 }
