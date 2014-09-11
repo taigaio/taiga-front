@@ -100,6 +100,10 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
                 }
                 @scope.nextUrl = @navUrls.resolve("project-userstories-detail", ctx)
 
+            if us.milestone
+                @rs.sprints.get(us.project, us.milestone).then (sprint) =>
+                    @scope.sprint = sprint
+
             return us
 
     loadTasks: ->

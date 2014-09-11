@@ -92,6 +92,14 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
                 }
                 @scope.nextUrl = @navUrls.resolve("project-tasks-detail", ctx)
 
+            if task.milestone
+                @rs.sprints.get(task.project, task.milestone).then (sprint) =>
+                    @scope.sprint = sprint
+
+            if task.user_story
+                @rs.userstories.get(task.project, task.user_story).then (us) =>
+                    @scope.us = us
+
     loadInitialData: ->
         params = {
             pslug: @params.pslug

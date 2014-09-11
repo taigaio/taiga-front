@@ -10,7 +10,15 @@ block content
             div.us-detail-header.header-with-actions
                 include views/components/mainTitle
                 .action-buttons
-                    a.button.button-green(tg-check-permission="modify_us", href="", title="Edit", tg-nav="project-userstories-detail-edit:project=project.slug,ref=us.ref") Edit
+                    a.button.button-gray(
+                        tg-check-permission="view_milestones",
+                        href="", title="Edit",
+                        tg-nav="project-taskboard:project=project.slug,sprint=sprint.slug",
+                        ng-if="sprint && project.is_backlog_activated") Taskboard
+                    a.button.button-green(
+                        tg-check-permission="modify_us", href="",
+                        title="Edit",
+                        tg-nav="project-userstories-detail-edit:project=project.slug,ref=us.ref") Edit
 
             section.us-story-main-data
                 div.us-title(ng-class="{blocked: us.is_blocked}")

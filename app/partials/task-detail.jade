@@ -10,13 +10,27 @@ block content
             div.us-detail-header.header-with-actions
                 include views/components/mainTitle
                 .action-buttons
-                    a.button.button-green(tg-check-permission="modify_task", href="", title="Edit", tg-nav="project-tasks-detail-edit:project=project.slug,ref=task.ref") Edit
+                    a.button.button-gray(
+                        tg-check-permission="view_milestones",
+                        href="", title="Go to taskboard",
+                        tg-nav="project-taskboard:project=project.slug,sprint=sprint.slug",
+                        ng-if="sprint && project.is_backlog_activated") Taskboard
+                    a.button.button-green(
+                        tg-check-permission="modify_task", href="",
+                        title="Edit",
+                        tg-nav="project-tasks-detail-edit:project=project.slug,ref=task.ref") Edit
 
             section.us-story-main-data
                 div.us-title(ng-class="{blocked: task.is_blocked}")
                     h2.us-title-text
                         span.us-number(tg-bo-ref="task.ref")
                         span.us-name(ng-bind="task.subject")
+                    h3.us-related-task This task belongs to
+                        a(tg-check-permission="view_us", href="", title="Go to user story",
+                        tg-nav="project-userstories-detail:project=project.slug, ref=us.ref",
+                        ng-if="us")
+                            span(tg-bo-ref="us.ref")
+                            span(tg-bo-bind="us.subject")
                     p.block-desc-container(ng-show="task.is_blocked")
                         span.block-description-title Blocked
                         span.block-description(tg-bind-html="task.blocked_note || 'This task is blocked'")
