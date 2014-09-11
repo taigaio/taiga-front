@@ -175,7 +175,7 @@ HistoryDirective = ($log) ->
         <section class="history-comments">
             <div class="comments-list"></div>
             <div tg-check-permission tg-toggle-comment permission="modify_<%- type %>" class="add-comment">
-                <textarea placeholder="Write here a new commet"
+                <textarea placeholder="Type a new comment here"
                     ng-model="<%- ngmodel %>.comment" tg-markitup="tg-markitup">
                 </textarea>
                 <% if (mode !== "edit") { %>
