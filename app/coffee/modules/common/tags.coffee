@@ -138,7 +138,6 @@ TagLineDirective = ($log, $rs) ->
                 $model.$setViewValue(normalizeTags(tags))
 
         $scope.$watch $attrs.ngModel, (val) ->
-            console.log "WATCH", val
             renderTags($el, val, editable, $scope.project.tags_colors) if val?
 
         bindOnce $scope, "projectId", (projectId) ->
