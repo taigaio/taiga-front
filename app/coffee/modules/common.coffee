@@ -36,7 +36,7 @@ CheckPermissionDirective = ->
 
     link = ($scope, $el, $attrs) ->
         $el.hide()
-        permission = $attrs.permission
+        permission = $attrs.tgCheckPermission
 
         #Sometimes this directive from a self included html template
         if $scope.project?

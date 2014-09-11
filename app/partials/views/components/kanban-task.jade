@@ -9,5 +9,5 @@ div.kanban-task-inner
         p.task-points
             span(tg-bind-html="us.total_points") --
             span points
-    a.icon.icon-edit(tg-check-permission, permission="modify_us", href="", title="Edit")
-    a.icon.icon-drag-h(tg-check-permission, permission="modify_us", href="", title="Drag&Drop")
+    a.icon.icon-edit(tg-check-permission="modify_us", href="", title="Edit")
+    a.icon.icon-drag-h(tg-check-permission="modify_us", href="", title="Drag&Drop")

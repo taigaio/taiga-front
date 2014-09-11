@@ -6,7 +6,7 @@ block head
 block content
     div.wrapper(tg-wiki-detail, ng-controller="WikiDetailController as ctrl",
                 ng-init="section='wiki'")
-        sidebar.menu-secondary.extrabar(tg-check-permission, permission="view_wiki_links")
+        sidebar.menu-secondary.extrabar(tg-check-permission="view_wiki_links")
             section.wiki-nav(tg-wiki-nav, ng-model="wikiLinks")
         section.main.wiki
             .header-with-actions
@@ -15,10 +15,10 @@ block content
                     span.green Wiki
                     span.wiki-title(tg-bo-bind='wiki.slug|unslugify')
                 .action-buttons
-                    a.button.button-red.delete-wiki(tg-check-permission, permission="delete_wiki_page",
+                    a.button.button-red.delete-wiki(tg-check-permission="delete_wiki_page",
                         href="", title="Delete", ng-click="ctrl.delete()") Delete
 
-                    a.button.button-green.edit-wiki(tg-check-permission, permission="modify_wiki_page",
+                    a.button.button-green.edit-wiki(tg-check-permission="modify_wiki_page",
                         href="", title="Edit", ng-click="ctrl.edit()") Edit
 
             include views/modules/wiki-summary

@@ -2,25 +2,25 @@ div.row.us-item-row(ng-repeat="us in visibleUserstories|orderBy:order track by u
     div.user-stories
         div.tags-block(tg-colorize-tags="us.tags", tg-colorize-tags-type="backlog")
         div.user-story-name
-            input(tg-check-permission, permission="modify_us", type="checkbox", name="")
+            input(tg-check-permission="modify_us", type="checkbox", name="")
             a.clickable(tg-nav="project-userstories-detail:project=project.slug,ref=us.ref",
                         title="#{{ us.ref }} {{ us.subject }}")
                 span(tg-bo-ref="us.ref")
                 span(tg-bo-bind="us.subject")
             div.us-settings
-                a.icon.icon-edit(tg-check-permission, permission="modify_us", href="",
+                a.icon.icon-edit(tg-check-permission="modify_us", href="",
                                  ng-click="ctrl.editUserStory(us)", title="Edit")
-                a.icon.icon-delete(tg-check-permission, permission="delete_us", href="",
+                a.icon.icon-delete(tg-check-permission="delete_us", href="",
                                    ng-click="ctrl.deleteUserStory(us)", title="Delete")
 
     div.status(tg-us-status="us" on-update="ctrl.loadProjectStats()")
         a.us-status(href="", title="Status Name")
             span.us-status-bind
-            span.icon.icon-arrow-bottom(tg-check-permission, permission="modify_us")
+            span.icon.icon-arrow-bottom(tg-check-permission="modify_us")
 
     div.points(tg-us-points="us")
         a.us-points(href="", title="Points")
             span.points-value 0
-            span.icon.icon-arrow-bottom(tg-check-permission, permission="modify_us")
+            span.icon.icon-arrow-bottom(tg-check-permission="modify_us")
 
-    a.icon.icon-drag-v(tg-check-permission, permission="modify_us", href="", title="Drag")
+    a.icon.icon-drag-v(tg-check-permission="modify_us", href="", title="Drag")

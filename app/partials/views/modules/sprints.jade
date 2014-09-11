@@ -7,7 +7,7 @@ section.sprints
                     span.number(tg-bind-html="sprintsCounter") --
                     span.description <br/>sprints
             div.new-sprint
-              a.button.button-green(tg-check-permission, permission="add_milestone", ng-click="ctrl.addNewSprint()", href="", title="Add New sprint")
+              a.button.button-green(tg-check-permission="add_milestone", ng-click="ctrl.addNewSprint()", href="", title="Add New sprint")
                 span.text + New sprint
 
     section.sprint(ng-repeat="sprint in sprints track by sprint.id"
@@ -16,7 +16,7 @@ section.sprints
             div.sprint-name
                 a.icon.icon-arrow-up(href="", title="compact Sprint")
                 span {{ sprint.name }}
-                a.icon.icon-edit(tg-check-permission, permission="modify_milestone", href="", title="Edit Sprint")
+                a.icon.icon-edit(tg-check-permission="modify_milestone", href="", title="Edit Sprint")
             div.sprint-summary
                 div.sprint-date(tg-date-range="sprint.estimated_start,sprint.estimated_finish")
                 ul
@@ -34,6 +34,6 @@ section.sprints
                         span(tg-bo-ref="us.ref")
                         span(tg-bo-bind="us.subject")
                 div.column-points.width-1(tg-bo-bind="us.total_points")
-        a.button.button-gray(tg-check-permission, permission="view_milestones", title="Current Sprint Taskboard"
+        a.button.button-gray(tg-check-permission="view_milestones", title="Current Sprint Taskboard"
                              href="", tg-nav="project-taskboard:project=project.slug,sprint=sprint.slug")
             span Sprint Taskboard

@@ -10,7 +10,7 @@ block content
             div.us-detail-header.header-with-actions
                 include views/components/mainTitle
                 .action-buttons
-                    a.button.button-green(tg-check-permission, permission="modify_issue", href="", title="Edit", tg-nav="project-issues-detail-edit:project=project.slug,ref=issue.ref") Edit
+                    a.button.button-green(tg-check-permission="modify_issue", href="", title="Edit", tg-nav="project-issues-detail-edit:project=project.slug,ref=issue.ref") Edit
 
             section.us-story-main-data
                 div.us-title(ng-class="{blocked: issue.is_blocked}")
