@@ -233,7 +233,7 @@
     }
     .sprint-name {
         &:focus {
-            &+.last-sprint-name {
+            +.last-sprint-name {
                 @include transition (opacity .3s linear);
                 opacity: 0;
             }
@@ -245,7 +245,7 @@
         opacity: 1;
         position: absolute;
         right: 1rem;
-        top: .5rem;
+        top: .7rem;
     }
     .dates {
         margin-bottom: 1rem;

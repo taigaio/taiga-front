@@ -52,7 +52,7 @@
             }
         }
         input:focus {
-            &+.forgot-pass {
+            +.forgot-pass {
                 @include transition(opacity .5s linear);
                 opacity: 0;
             }
