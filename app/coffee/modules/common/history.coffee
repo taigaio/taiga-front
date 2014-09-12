@@ -45,7 +45,7 @@ class HistoryController extends taiga.Controller
         return @.getHistory(@.type, @.objectId).then (history) =>
             for historyResult in history
                 # If description was modified take only the description_html field
-                if historyResult.values_diff.description?
+                if historyResult.values_diff.description_diff?
                     historyResult.values_diff.description = historyResult.values_diff.description_diff
 
                 delete historyResult.values_diff.description_html
