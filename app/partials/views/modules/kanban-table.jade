@@ -10,6 +10,8 @@ div.kanban-table
     div.kanban-table-body
         div.kanban-table-inner(tg-kanban-row-size-fixer)
             div.kanban-uses-box.task-column(ng-repeat="status in usStatusList track by status.id",
-                                                      tg-kanban-sortable, tg-kanban-wip-limit)
+                                            tg-kanban-sortable,
+                                            tg-kanban-wip-limit,
+                                            tg-kanban-column-height-fixer)
                 div.kanban-task(ng-repeat="us in usByStatus[status.id] track by us.id",
                                 tg-kanban-userstory, ng-model="us")

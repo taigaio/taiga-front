@@ -37,14 +37,6 @@ module = angular.module("taigaKanban")
 
 KanbanSortableDirective = ($repo, $rs, $rootscope) ->
     link = ($scope, $el, $attrs) ->
-        timeout 500, ->
-            mainPadding = 32 # px
-            elementOffset = $el.parent().parent().offset().top
-            windowHeight = angular.element(window).height()
-            columnHeight = windowHeight - elementOffset - mainPadding
-
-            $el.css("height", "#{columnHeight}px")
-
         oldParentScope = null
         newParentScope = null
         itemEl = null
