@@ -28,10 +28,7 @@ block content
             section.us-content
                 textarea(placeholder="Write a description of your user story", ng-model="us.description", tg-markitup)
 
-            - var attachModel = "us"
-            - var permissionSuffix = "us"
-            include views/modules/attachments
-
+            tg-attachments(ng-model="us", type="us")
             tg-history(ng-model="us", type="us", mode="edit")
 
         sidebar.menu-secondary.sidebar

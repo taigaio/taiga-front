@@ -33,7 +33,7 @@ module = angular.module("taigaIssues")
 ## Issue Detail Controller
 #############################################################################
 
-class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.AttachmentsMixin)
+class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
     @.$inject = [
         "$scope",
         "$rootScope",
@@ -49,8 +49,6 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin, tai
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @log, @appTitle, @navUrls) ->
-        @.attachmentsUrlName = "issues/attachments"
-
         @scope.issueRef = @params.issueref
         @scope.sectionName = "Issue Details"
 
@@ -118,8 +116,7 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin, tai
 
         return promise.then(=> @.loadProject())
                       .then(=> @.loadUsersAndRoles())
-                      .then(=> @q.all([@.loadIssue(),
-                                       @.loadAttachments(@scope.issueId)]))
+                      .then(=> @.loadIssue())
 
     block: ->
         @rootscope.$broadcast("block", @scope.issue)
