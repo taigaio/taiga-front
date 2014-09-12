@@ -43,7 +43,6 @@ KanbanSortableDirective = ($repo, $rs, $rootscope) ->
             windowHeight = angular.element(window).height()
             columnHeight = windowHeight - elementOffset - mainPadding
 
-            console.log elementOffset, windowHeight, columnHeight
             $el.css("height", "#{columnHeight}px")
 
         oldParentScope = null
