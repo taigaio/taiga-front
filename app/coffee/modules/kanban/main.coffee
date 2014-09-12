@@ -251,11 +251,12 @@ module.directive("tgKanbanRowWidthFixer", KanbanRowWidthFixerDirective)
 
 KanbanColumnHeightFixerDirective = ->
     mainPadding = 32 # px
+    scrollPadding = 0 # px
 
     renderSize = ($el) ->
         elementOffset = $el.parent().parent().offset().top
         windowHeight = angular.element(window).height()
-        columnHeight = windowHeight - elementOffset - mainPadding
+        columnHeight = windowHeight - elementOffset - mainPadding - scrollPadding
         $el.css("height", "#{columnHeight}px")
 
     link = ($scope, $el, $attrs) ->

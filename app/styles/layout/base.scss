@@ -103,6 +103,7 @@ body {
 .main {
     @include table-flex-child(8, 600px, 0, 600px);
     padding: 2rem;
+    padding-bottom: 1rem;
 }
 
 .icon {
