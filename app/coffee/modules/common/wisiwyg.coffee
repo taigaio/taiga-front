@@ -65,28 +65,84 @@ tgMarkitupDirective = ($rootscope, $rs) ->
                     markdownDomNode.find(".preview").remove()
                     markItUpDomNode.show()
 
+        markdownCaretPositon = false
+
+        setCaretPosition = (elm, caretPos) ->
+            if elm.createTextRange
+                range = elm.createTextRange()
+                range.move('character', caretPos)
+                range.select()
+
+            else if elm.selectionStart
+                elm.focus()
+                elm.setSelectionRange(caretPos, caretPos)
+
+        removeEmptyLine = (textarea, line, currentCaretPosition) ->
+            lines = textarea.value.split("\n")
+            removedLineLength = lines[line].length
+
+            lines[line] = ""
+
+            textarea.value = lines.join("\n")
+
+            #return the new position
+            return currentCaretPosition - removedLineLength + 1
+
         markdownSettings =
             nameSpace: 'markdown'
             onShiftEnter: {keepDefault:false, openWith:'\n\n'}
             onEnter:
                 keepDefault: false
-                replaceWith: (data) ->
-                    lastLine = data.textarea.value[0..(data.caretPosition - 1)].split("\n").pop()
+                replaceWith: (data) =>
+                    lines = data.textarea.value[0..(data.caretPosition - 1)].split("\n")
+                    lastLine = lines[lines.length - 1]
+
+                    # unordered list -
                     match = lastLine.match /^(\s*- ).*/
-                    return "\n#{match[1]}" if match
+                    if match
+                        emptyListItem = lastLine.match /^(\s*)\-\s$/
 
+                        if emptyListItem
+                            markdownCaretPositon = removeEmptyLine(data.textarea, lines.length - 1, data.caretPosition)
+                        else
+                            return "\n#{match[1]}" if match
+
+                    # unordered list *
                     match = lastLine.match /^(\s*\* ).*/
-                    return "\n#{match[1]}" if match
 
-                    match = lastLine.match /^(\d+)\./
-                    return "\n#{parseInt(match[1], 10) + 1}. " if match
+                    if match
+                        emptyListItem = lastLine.match /^(\s*\* )$/
+
+                        if emptyListItem
+                            markdownCaretPositon = removeEmptyLine(data.textarea, lines.length - 1, data.caretPosition)
+                        else
+                            return "\n#{match[1]}" if match
+
+                    # ordered list
+                    match = lastLine.match /^(\s*)(\d+)\.\s/
+
+                    if match
+                        emptyListItem = lastLine.match /^(\s*)(\d+)\.\s$/
+
+                        if emptyListItem
+                            markdownCaretPositon = removeEmptyLine(data.textarea, lines.length - 1, data.caretPosition)
+                        else
+                            return "\n#{match[1] + (parseInt(match[2], 10) + 1)}. "
 
                     return "\n"
 
                 afterInsert: (data) ->
                     # Calculate the scroll position
+
+                    if markdownCaretPositon
+                        setCaretPosition(data.textarea, markdownCaretPositon)
+                        caretPosition = markdownCaretPositon
+                        markdownCaretPositon = false
+                    else
+                        caretPosition = data.caretPosition
+
                     totalLines = data.textarea.value.split("\n").length
-                    line = data.textarea.value[0..(data.caretPosition - 1)].split("\n").length
+                    line = data.textarea.value[0..(caretPosition - 1)].split("\n").length
                     scrollRelation = line / totalLines
                     $el.scrollTop((scrollRelation * $el[0].scrollHeight) - ($el.height() / 2))
 
