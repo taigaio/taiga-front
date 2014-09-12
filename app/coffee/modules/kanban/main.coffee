@@ -234,7 +234,7 @@ module.directive("tgKanban", ["$tgRepo", "$rootScope", KanbanDirective])
 ## Kanban Row Size Fixer Directive
 #############################################################################
 
-KanbanRowSizeFixer = ->
+KanbanRowWidthFixerDirective = ->
     link = ($scope, $el, $attrs) ->
         bindOnce $scope, "usStatusList", (statuses) ->
             itemSize = 310
@@ -243,7 +243,7 @@ KanbanRowSizeFixer = ->
 
     return {link: link}
 
-module.directive("tgKanbanRowSizeFixer", KanbanRowSizeFixer)
+module.directive("tgKanbanRowWidthFixer", KanbanRowWidthFixerDirective)
 
 #############################################################################
 ## Kaban Column Height Fixer Directive

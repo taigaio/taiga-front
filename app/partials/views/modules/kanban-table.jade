@@ -1,6 +1,6 @@
 div.kanban-table
     div.kanban-table-header
-        div.kanban-table-inner(tg-kanban-row-size-fixer)
+        div.kanban-table-inner(tg-kanban-row-width-fixer)
             h2.task-colum_name(ng-repeat="s in usStatusList track by s.id",
                                ng-style="{'border-top-color':s.color}")
                 span(tg-bo-bind="s.name")
@@ -8,7 +8,7 @@ div.kanban-table
                 a.icon.icon-bulk(tg-check-permission="add_us", href="", title="Add New bulk", ng-click="ctrl.addNewUs('bulk', s.id)")
 
     div.kanban-table-body
-        div.kanban-table-inner(tg-kanban-row-size-fixer)
+        div.kanban-table-inner(tg-kanban-row-width-fixer)
             div.kanban-uses-box.task-column(ng-repeat="status in usStatusList track by status.id",
                                             tg-kanban-sortable,
                                             tg-kanban-wip-limit,
