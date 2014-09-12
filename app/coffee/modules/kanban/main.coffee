@@ -246,7 +246,7 @@ KanbanRowWidthFixerDirective = ->
 module.directive("tgKanbanRowWidthFixer", KanbanRowWidthFixerDirective)
 
 #############################################################################
-## Kaban Column Height Fixer Directive
+## Kanban Column Height Fixer Directive
 #############################################################################
 
 KanbanColumnHeightFixerDirective = ->
