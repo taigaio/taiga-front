@@ -8,9 +8,9 @@ block content
         div.invitation-main
             div.invitation-container(tg-invitation)
                 figure.avatar
-                    a(href="", title="{{ invitation.invited_by.full_name_display }} profile")
-                        img.avatar(src="{{ invitation.invited_by.photo }}",
-                            alt="{{ invitation.invited_by.full_name_display }}")
+                    a(href="", tg-bo-title="invitation.invited_by.full_name_display")
+                        img.avatar(tg-bo-src="invitation.invited_by.photo",
+                                   tg-bo-alt="invitation.invited_by.full_name_display")
                         | {{ invitation.invited_by.full_name_display }}
                 p.invitation-text has sent you an invitation to join to the taiga project
                     span.project-name(tg-bo-bind="invitation.project_name")
