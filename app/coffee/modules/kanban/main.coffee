@@ -161,13 +161,13 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                       .then(=> @.loadKanban())
                       .then(=> @scope.$broadcast("redraw:wip"))
 
-    prepareBulkUpdateData: (uses) ->
-        return _.map(uses, (x) -> {"us_id": x.id, "order": x.order})
+    prepareBulkUpdateData: (uses, field="kanban_order") ->
+        return _.map(uses, (x) -> {"us_id": x.id, "order": x[field]})
 
     resortUserStories: (uses) ->
         items = []
         for item, index in uses
-            item.order = index
+            item.kanban_order = index
             if item.isModified()
                 items.push(item)
 
@@ -199,7 +199,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             items = @.resortUserStories(@scope.usByStatus[statusId])
             data = @.prepareBulkUpdateData(items)
 
-            return @rs.userstories.bulkUpdateOrder(us.project, data).then =>
+            return @rs.userstories.bulkUpdateKanbanOrder(us.project, data).then =>
                 # @rootscope.$broadcast("sprint:us:moved", us, oldSprintId, newSprintId)
                 return items
 

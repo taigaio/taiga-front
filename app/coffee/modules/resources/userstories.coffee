@@ -55,8 +55,18 @@ resourceProvider = ($repo, $http, $urls, $storage) ->
 
         return $http.post(url, data)
 
-    service.bulkUpdateOrder = (projectId, data) ->
-        url = $urls.resolve("bulk-update-us-order")
+    service.bulkUpdateBacklogOrder = (projectId, data) ->
+        url = $urls.resolve("bulk-update-us-backlog-order")
+        params = {project_id: projectId, bulk_stories: data}
+        return $http.post(url, params)
+
+    service.bulkUpdateSprintOrder = (projectId, data) ->
+        url = $urls.resolve("bulk-update-us-sprint-order")
+        params = {project_id: projectId, bulk_stories: data}
+        return $http.post(url, params)
+
+    service.bulkUpdateKanbanOrder = (projectId, data) ->
+        url = $urls.resolve("bulk-update-us-kanban-order")
         params = {project_id: projectId, bulk_stories: data}
         return $http.post(url, params)
 

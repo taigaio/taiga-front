@@ -215,13 +215,13 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             "milestone": null
         })
 
-    prepareBulkUpdateData: (uses) ->
-         return _.map(uses, (x) -> {"us_id": x.id, "order": x.order})
+    prepareBulkUpdateData: (uses, field="backlog_order") ->
+         return _.map(uses, (x) -> {"us_id": x.id, "order": x[field]})
 
-    resortUserStories: (uses) ->
+    resortUserStories: (uses, field="backlog_order") ->
         items = []
         for item, index in uses
-            item.order = index
+            item[field] = index
             if item.isModified()
                 items.push(item)
 
@@ -245,17 +245,27 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
                 userstories.splice(r, 1)
                 userstories.splice(newUsIndex, 0, us)
 
-            # Rehash userstories order field
-            items = @.resortUserStories(userstories)
-            data = @.prepareBulkUpdateData(items)
+            # If in backlog
+            if newSprintId == null
+                # Rehash userstories order field
+                items = @.resortUserStories(userstories, "backlog_order")
+                data = @.prepareBulkUpdateData(items, "backlog_order")
 
-            # Persist in bulk all affected
-            # userstories with order change
-            promise = @rs.userstories.bulkUpdateOrder(us.project, data).then =>
-                @rootscope.$broadcast("sprint:us:moved", us, oldSprintId, newSprintId)
+                # Persist in bulk all affected
+                # userstories with order change
+                @rs.userstories.bulkUpdateBacklogOrder(us.project, data).then =>
+                    @rootscope.$broadcast("sprint:us:moved", us, oldSprintId, newSprintId)
 
-            promise.then null, ->
-                console.log "FAIL"
+            # For sprint
+            else
+                # Rehash userstories order field
+                items = @.resortUserStories(userstories, "sprint_order")
+                data = @.prepareBulkUpdateData(items, "sprint_order")
+
+                # Persist in bulk all affected
+                # userstories with order change
+                @rs.userstories.bulkUpdateSprintOrder(us.project, data).then =>
+                    @rootscope.$broadcast("sprint:us:moved", us, oldSprintId, newSprintId)
 
             return promise
 
@@ -282,14 +292,13 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             # Rehash userstories order field
             # and persist in bulk all changes.
             promise = promise.then =>
-                items = @.resortUserStories(@scope.userstories)
-                data = @.prepareBulkUpdateData(items)
-                promise = @rs.userstories.bulkUpdateOrder(us.project, data).then =>
+                items = @.resortUserStories(@scope.userstories, "backlog_order")
+                data = @.prepareBulkUpdateData(items, "backlog_order")
+                return @rs.userstories.bulkUpdateBacklogOrder(us.project, data).then =>
                     @rootscope.$broadcast("sprint:us:moved", us, oldSprintId, newSprintId)
 
             promise.then null, ->
-                # TODO
-                console.log "FAIL"
+                console.log "FAIL" # TODO
 
             return promise
 
@@ -327,14 +336,13 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         # Rehash userstories order field
         # and persist in bulk all changes.
         promise = promise.then =>
-            items = @.resortUserStories(newSprint.user_stories)
-            data = @.prepareBulkUpdateData(items)
-            promise = @rs.userstories.bulkUpdateOrder(us.project, data).then =>
+            items = @.resortUserStories(newSprint.user_stories, "sprint_order")
+            data = @.prepareBulkUpdateData(items, "sprint_order")
+            return @rs.userstories.bulkUpdateSprintOrder(us.project, data).then =>
                 @rootscope.$broadcast("sprint:us:moved", us, oldSprintId, newSprintId)
 
         promise.then null, ->
-            # TODO
-            console.log "FAIL"
+            console.log "FAIL" # TODO
 
         return promise
 
