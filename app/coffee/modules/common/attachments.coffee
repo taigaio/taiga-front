@@ -220,11 +220,7 @@ AttachmentsDirective = ($confirm) ->
             $ctrl.reorderAttachment(attachment, newIndex)
             $ctrl.saveAttachments()
 
-        $el.on "click", "a.add-attach", (event) ->
-            event.preventDefault()
-            $el.find("input.add-attach").trigger("click")
-
-        $el.on "change", "input.add-attach", (event) ->
+        $el.on "change", ".attachments-header input", (event) ->
             files = _.toArray(event.target.files)
             return if files.length < 1
 
