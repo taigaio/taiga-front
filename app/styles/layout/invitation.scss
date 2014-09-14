@@ -15,12 +15,14 @@
         width: 150px;
     }
     .avatar {
+        text-align: center;
         margin: 0 auto 1rem;
-        width: 150px;
-        a {
-            @extend %small;
+        width: 250px;
+        .person-name {
+            @extend %xlarge;
+            @extend %title;
             color: $white;
-            text-align: center;
+            text-transform: uppercase;
         }
         img {
             display: block;
@@ -32,7 +34,7 @@
         @extend %xlarge;
         @extend %title;
         color: $white;
-        line-height: 3rem;
+        line-height: 2rem;
         text-align: center;
         text-transform: uppercase;
         .project-name {
