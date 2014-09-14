@@ -16,7 +16,7 @@ imagemin = require("gulp-imagemin")
 watch = require("gulp-watch")
 size = require("gulp-filesize")
 notify = require("gulp-notify")
-connect = require("gulp-connect")
+# connect = require("gulp-connect")
 scsslint = require("gulp-scss-lint")
 newer = require("gulp-newer")
 cache = require("gulp-cached")
@@ -194,12 +194,12 @@ gulp.task "copy",  ->
         .pipe(gulp.dest("#{paths.dist}/plugins/"))
 
 
-gulp.task "connect", ->
-    connect.server({
-        root: paths.dist
-        port: 9000
-        livereload: true
-    })
+# gulp.task "connect", ->
+#     connect.server({
+#         root: paths.dist
+#         port: 9000
+#         livereload: true
+#     })
 
 
 gulp.task "express", ->
@@ -236,7 +236,7 @@ gulp.task "default", [
     "copy",
     "coffee",
     "jslibs",
-    "connect",
+    # "connect",
     "express",
     "watch"
 ]
