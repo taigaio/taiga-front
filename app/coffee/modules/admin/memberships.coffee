@@ -245,7 +245,7 @@ MembershipsRowAvatarDirective = ($log) ->
         render = (member) ->
             ctx = {
                 full_name: if member.full_name then member.full_name else ""
-                email: member.email
+                email: if member.user_email then member.user_email else member.email
                 imgurl: if member.photo then member.photo else "/images/unnamed.png"
             }
 
