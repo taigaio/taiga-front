@@ -26,7 +26,7 @@ paths = {
     app: "app"
     dist: "dist"
     html: "app/*.html"
-    jade: "app/partials/**/*.jade"
+    jade: ["app/index.jade", "app/partials/**/*.jade"]
     scssStyles: "app/styles/**/*.scss"
     distStylesPath: "dist/styles"
     distStyles: ["dist/styles/vendor.css",
@@ -97,15 +97,16 @@ gulp.task "jade_watch", ->
     gulp.src(paths.jade)
         .pipe(plumber())
         .pipe(cache("jade"))
-        .pipe(jadeInheritance({basedir: './app/'}))
+        .pipe(jadeInheritance({basedir: './app'}))
         .pipe(jade({pretty: true}))
-        .pipe(gulp.dest("#{paths.dist}/partials"))
+        .pipe(gulp.dest("#{paths.dist}"))
+        # .pipe(gulp.dest("#{paths.dist}/partials"))
 
 gulp.task "template", ->
     gulp.src("#{paths.app}/index.jade")
         .pipe(plumber())
         .pipe(jade({pretty: true, locals:{v:(new Date()).getTime()}}))
-        .pipe(gulp.dest(paths.dist))
+        .pipe(gulp.dest("#{paths.dist}"))
 
 gulp.task "scsslint", ->
     gulp.src([paths.scssStyles, '!app/styles/bourbon/**/*.scss'])
@@ -222,6 +223,7 @@ gulp.task "express", ->
 # Rerun the task when a file changes
 gulp.task "watch", ->
     gulp.watch(paths.jade, ["jade_watch"])
+    gulp.watch("#{paths.app}/index.jade", ["template"])
     gulp.watch(paths.scssStyles, ["sass", "csslint-app", "styles"])
     gulp.watch(paths.css, ["css", "styles"])
     gulp.watch(paths.coffee, ["coffee"])
