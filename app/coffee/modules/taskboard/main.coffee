@@ -25,6 +25,7 @@ mixOf = @.taiga.mixOf
 groupBy = @.taiga.groupBy
 bindOnce = @.taiga.bindOnce
 scopeDefer = @.taiga.scopeDefer
+timeout = @.taiga.timeout
 
 module = angular.module("taigaTaskboard")
 
@@ -241,7 +242,7 @@ module.directive("tgTaskboardTask", ["$rootScope", TaskboardTaskDirective])
 ## Taskboard Task Row Size Fixer Directive
 #############################################################################
 
-TaskboardRowSizeFixer = ->
+TaskboardRowWidthFixerDirective = ->
     link = ($scope, $el, $attrs) ->
         bindOnce $scope, "taskStatusList", (statuses) ->
             itemSize = 300 + (10 * statuses.length)
@@ -250,7 +251,29 @@ TaskboardRowSizeFixer = ->
 
     return {link: link}
 
-module.directive("tgTaskboardRowSizeFixer", TaskboardRowSizeFixer)
+module.directive("tgTaskboardRowWidthFixer", TaskboardRowWidthFixerDirective)
+
+#############################################################################
+## Taskboard Table Height Fixer Directive
+#############################################################################
+
+TaskboardTableHeightFixerDirective = ->
+    mainPadding = 32 # px
+
+    renderSize = ($el) ->
+        elementOffset = $el.offset().top
+        windowHeight = angular.element(window).height()
+        columnHeight = windowHeight - elementOffset - mainPadding
+        $el.css("height", "#{columnHeight}px")
+
+    link = ($scope, $el, $attrs) ->
+        timeout(500, -> renderSize($el))
+
+    return {link:link}
+
+
+module.directive("tgTaskboardTableHeightFixer", TaskboardTableHeightFixerDirective)
+
 
 #############################################################################
 ## Taskboard User Directive

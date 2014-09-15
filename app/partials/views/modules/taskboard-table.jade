@@ -1,13 +1,13 @@
 div.taskboard-table
     div.taskboard-table-header
-        div.taskboard-table-inner(tg-taskboard-row-size-fixer)
+        div.taskboard-table-inner(tg-taskboard-row-width-fixer)
             h2.task-colum_name "User story"
             h2.task-colum_name(ng-repeat="s in taskStatusList track by s.id",
                                ng-style="{'border-top-color':s.color}")
                 span(tg-bo-bind="s.name")
 
-    div.taskboard-table-body
-        div.taskboard-table-inner(tg-taskboard-row-size-fixer)
+    div.taskboard-table-body(tg-taskboard-table-height-fixer)
+        div.taskboard-table-inner(tg-taskboard-row-width-fixer)
             div.task-row(ng-repeat="us in userstories track by us.id")
                 div.taskboard-userstory-box.task-column
                     div.tag-list
