@@ -44,11 +44,6 @@ $column-margin: 0 10px 0 0;
             &.icon-plus {
                 right: 2rem;
             }
-            &.icon-maximize,
-            &.icon-minimize {
-                left: .5rem;
-                right: inherit;
-            }
         }
     }
 }
@@ -56,6 +51,7 @@ $column-margin: 0 10px 0 0;
 .kanban-table-body {
     @include table-flex();
     @extend %medium;
+    //height: 700px;
     overflow: hidden;
     overflow-x: auto;
     width: 100%;
