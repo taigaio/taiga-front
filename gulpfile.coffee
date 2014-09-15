@@ -86,21 +86,20 @@ paths = {
 # Layout/CSS Related tasks
 ##############################################################################
 
-gulp.task "jade", ->
+gulp.task "jade-deploy", ->
     gulp.src(paths.jade)
         .pipe(plumber())
         .pipe(cache("jade"))
-        .pipe(jade({pretty: true}))
+        .pipe(jade({pretty: false}))
         .pipe(gulp.dest("#{paths.dist}/partials"))
 
-gulp.task "jade_watch", ->
+gulp.task "jade-watch", ->
     gulp.src(paths.jade)
         .pipe(plumber())
         .pipe(cache("jade"))
-        .pipe(jadeInheritance({basedir: './app'}))
+        # .pipe(jadeInheritance({basedir: './app'}))
         .pipe(jade({pretty: true}))
-        .pipe(gulp.dest("#{paths.dist}"))
-        # .pipe(gulp.dest("#{paths.dist}/partials"))
+        .pipe(gulp.dest("#{paths.dist}/partials"))
 
 gulp.task "template", ->
     gulp.src("#{paths.app}/index.jade")
@@ -108,64 +107,55 @@ gulp.task "template", ->
         .pipe(jade({pretty: true, locals:{v:(new Date()).getTime()}}))
         .pipe(gulp.dest("#{paths.dist}"))
 
-gulp.task "scsslint", ->
+gulp.task "sass-lint", ->
     gulp.src([paths.scssStyles, '!app/styles/bourbon/**/*.scss'])
-        .pipe(cache("scsslint"))
-        .pipe(scsslint({
-            config: "scsslint.yml"
-        }))
+        .pipe(cache("sasslint"))
+        .pipe(scsslint({config: "scsslint.yml"}))
 
-gulp.task "sass", ["scsslint"], ->
+gulp.task "sass-watch", ["sass-lint"], ->
     gulp.src(paths.sassStylesMain)
         .pipe(plumber())
         .pipe(sass())
         .pipe(rename("app.css"))
         .pipe(gulp.dest(paths.distStylesPath))
 
-gulp.task "css", ->
+gulp.task "sass-deploy", ->
+    gulp.src(paths.sassStylesMain)
+        .pipe(plumber())
+        .pipe(sass())
+        .pipe(rename("app.css"))
+        .pipe(gulp.dest(paths.distStylesPath))
+
+gulp.task "css-vendor", ->
     gulp.src(paths.css)
         .pipe(concat("vendor.css"))
         .pipe(gulp.dest(paths.distStylesPath))
 
-gulp.task "csslint-app", ["sass"],  ->
+gulp.task "css-lint-app", ["sass-watch"],  ->
     gulp.src(paths.distStylesPath + "/app.css")
         .pipe(csslint("csslintrc.json"))
         .pipe(csslint.reporter())
 
-# # Minify CSS
-# gulp.task "minifyCSS", ["css", "sass"], ->
-#     gulp.src("dist/styles/main.css")
-#         .pipe(minifyCSS())
-#         .pipe(gulp.dest(paths.distStylesPath))
-#         .pipe(size())
+# gulp.task "imagemin", ->
+#     gulp.src(paths.images)
+#         .pipe(plumber())
+#         .pipe(imagemin({progressive: true}))
+#         .pipe(gulp.dest(paths.dist+"/images"))
 
-gulp.task "imagemin", ->
-    gulp.src(paths.images)
-        .pipe(plumber())
-        .pipe(imagemin({progressive: true}))
-        .pipe(gulp.dest(paths.dist+"/images"))
-
-gulp.task "styles", ["css", "sass", "csslint-app"], ->
+gulp.task "styles-watch", ["sass-watch", "css-vendor", "css-lint-app"], ->
     gulp.src(paths.distStyles)
         .pipe(concat("main.css"))
+        .pipe(gulp.dest(paths.distStylesPath))
+
+gulp.task "styles-deploy", ["sass-deploy", "css-vendor"], ->
+    gulp.src(paths.distStyles)
+        .pipe(concat("main.css"))
+        .pipe(minifyCSS())
         .pipe(gulp.dest(paths.distStylesPath))
 
 ##############################################################################
 # JS Related tasks
 ##############################################################################
-
-gulp.task "coffee", ["locales"], ->
-    gulp.src(paths.coffee)
-        .pipe(plumber())
-        .pipe(coffee())
-        .pipe(concat("app.js"))
-        .pipe(gulp.dest("dist/js/"))
-
-gulp.task "jslibs", ->
-    gulp.src(paths.vendorJsLibs)
-        .pipe(plumber())
-        .pipe(concat("libs.js"))
-        .pipe(gulp.dest("dist/js/"))
 
 gulp.task "locales", ->
     gulp.src("app/locales/en/app.json")
@@ -178,6 +168,33 @@ gulp.task "locales", ->
     #     .pipe(rename("locale.es.coffee"))
     #     .pipe(gulp.dest("app/coffee/"))
 
+gulp.task "coffee-watch", ["locales"], ->
+    gulp.src(paths.coffee)
+        .pipe(plumber())
+        .pipe(coffee())
+        .pipe(concat("app.js"))
+        .pipe(gulp.dest("dist/js/"))
+
+gulp.task "coffee-deploy", ["locales"], ->
+    gulp.src(paths.coffee)
+        .pipe(plumber())
+        .pipe(coffee())
+        .pipe(concat("app.js"))
+        .pipe(uglify({mangle:false, preserveComments: false}))
+        .pipe(gulp.dest("dist/js/"))
+
+gulp.task "jslibs-watch", ->
+    gulp.src(paths.vendorJsLibs)
+        .pipe(plumber())
+        .pipe(concat("libs.js"))
+        .pipe(gulp.dest("dist/js/"))
+
+gulp.task "jslibs-deploy", ->
+    gulp.src(paths.vendorJsLibs)
+        .pipe(plumber())
+        .pipe(concat("libs.js"))
+        .pipe(uglify({mangle:false, preserveComments: false}))
+        .pipe(gulp.dest("dist/js/"))
 
 ##############################################################################
 # Common tasks
@@ -193,14 +210,6 @@ gulp.task "copy",  ->
 
     gulp.src("#{paths.app}/plugins/**/templates/*")
         .pipe(gulp.dest("#{paths.dist}/plugins/"))
-
-
-# gulp.task "connect", ->
-#     connect.server({
-#         root: paths.dist
-#         port: 9000
-#         livereload: true
-#     })
 
 
 gulp.task "express", ->
@@ -222,23 +231,30 @@ gulp.task "express", ->
 
 # Rerun the task when a file changes
 gulp.task "watch", ->
-    gulp.watch(paths.jade, ["jade_watch"])
+    gulp.watch(paths.jade, ["jade-watch"])
     gulp.watch("#{paths.app}/index.jade", ["template"])
-    gulp.watch(paths.scssStyles, ["sass", "csslint-app", "styles"])
-    gulp.watch(paths.css, ["css", "styles"])
-    gulp.watch(paths.coffee, ["coffee"])
-    gulp.watch(paths.vendorJsLibs, ["jslibs"])
-    gulp.watch(paths.locales, ["locales"])
+    gulp.watch(paths.scssStyles, ["styles-watch"])
+    gulp.watch(paths.coffee, ["coffee-watch"])
+    gulp.watch(paths.vendorJsLibs, ["jslibs-watch"])
+    gulp.watch(paths.locales, ["coffee-watch"])
+
+gulp.task "deploy", [
+    "jade-deploy",
+    "template",
+    "copy",
+    "coffee-deploy",
+    "jslibs-deploy",
+    "styles-deploy"
+]
 
 # The default task (called when you run gulp from cli)
 gulp.task "default", [
-    "jade",
+    "jade-watch",
     "template",
-    "styles",
+    "styles-watch",
     "copy",
-    "coffee",
-    "jslibs",
-    # "connect",
+    "coffee-watch",
+    "jslibs-watch",
     "express",
     "watch"
 ]
