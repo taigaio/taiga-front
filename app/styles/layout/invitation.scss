@@ -15,8 +15,8 @@
         width: 150px;
     }
     .avatar {
-        text-align: center;
         margin: 0 auto 1rem;
+        text-align: center;
         width: 250px;
         .person-name {
             @extend %xlarge;

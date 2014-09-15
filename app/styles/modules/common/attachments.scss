@@ -159,10 +159,9 @@
 }
 
 .add-attach {
+    cursor: pointer;
     overflow: hidden;
     position: relative;
-    cursor: pointer;
-
     input {
         cursor: pointer;
         font-size: 99px;
