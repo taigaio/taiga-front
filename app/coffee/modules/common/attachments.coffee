@@ -208,7 +208,6 @@ AttachmentsDirective = ($confirm) ->
             items: "div.single-attachment"
             handle: "a.settings.icon.icon-drag-v"
             containment: ".attachments"
-            cursorAt: {right: 50}
             dropOnEmpty: true
             scroll: false
             tolerance: "pointer"
