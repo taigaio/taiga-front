@@ -4,14 +4,15 @@ div.kanban-table
             h2.task-colum_name(ng-repeat="s in usStatusList track by s.id",
                                ng-style="{'border-top-color':s.color}")
                 span(tg-bo-bind="s.name")
+                a.icon.icon-minimize(href="", title="Add New task")
+                //-a.icon.icon-maximize(href="", title="Add New task")
                 a.icon.icon-plus(tg-check-permission="add_us", href="", title="Add New task", ng-click="ctrl.addNewUs('standard', s.id)")
                 a.icon.icon-bulk(tg-check-permission="add_us", href="", title="Add New bulk", ng-click="ctrl.addNewUs('bulk', s.id)")
-
     div.kanban-table-body
         div.kanban-table-inner(tg-kanban-row-width-fixer)
             div.kanban-uses-box.task-column(ng-repeat="status in usStatusList track by status.id",
                                             tg-kanban-sortable,
                                             tg-kanban-wip-limit,
                                             tg-kanban-column-height-fixer)
-                div.kanban-task(ng-repeat="us in usByStatus[status.id] track by us.id",
-                                tg-kanban-userstory, ng-model="us")
+                div.kanban-task.kanban-task-maximized(ng-repeat="us in usByStatus[status.id] track by us.id",
+                                                      tg-kanban-userstory, ng-model="us")

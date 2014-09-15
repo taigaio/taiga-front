@@ -6,9 +6,9 @@
     @font-face {
         font-family: '#{$font-face}';
         src: url('../fonts/#{$font-face}.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/#{$font-face}.woff') format('woff'),
-        url('../fonts/#{$font-face}.ttf')  format('truetype'),
-        url('../fonts/#{$font-face}.svg#{$font-face}') format('svg');
+            url('../fonts/#{$font-face}.woff') format('woff'),
+            url('../fonts/#{$font-face}.ttf')  format('truetype'),
+            url('../fonts/#{$font-face}.svg#{$font-face}') format('svg');
     }
 }
 
@@ -88,7 +88,7 @@ p {
     img {
         margin: 0;
     }
-  }
+}
 
 em { font-style: italic; }
 strong {
@@ -246,4 +246,10 @@ a:visited {
 }
 .icon-spinner:before {
     content: 'E';
+}
+.icon-minimize:before {
+    content: 'J';
+}
+.icon-maximize:before {
+    content: 'K';
 }
