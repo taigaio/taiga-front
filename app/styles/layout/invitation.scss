@@ -85,6 +85,10 @@
     .register-form {
         @include table-flex-child(1, 200px, 0, 200px);
         padding: 1rem;
+
+        .form-header {
+            color: #999;
+        }
     }
     .register-text {
         @extend %small;
