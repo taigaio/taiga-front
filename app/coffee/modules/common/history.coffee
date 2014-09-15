@@ -232,6 +232,7 @@ HistoryDirective = ($log) ->
         getHumanizedFieldName = (field) ->
             humanizedFieldNames = {
                 # US
+                assigned_to: "assigned to"
                 is_closed: "is closed"
                 finish_date: "finish date"
                 client_requirement: "client requirement"
