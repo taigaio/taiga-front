@@ -4,10 +4,35 @@ div.kanban-task-inner
     div.task-text
         a.task-assigned(href="", title="Assign User Story")
         span.task-num(tg-bo-ref="us.ref")
-        a.task-name(href="", title="", tg-bind-html="us.subject",
+        a.task-name(href="", tg-bo-title="us.subject", tg-bind-html="us.subject",
                     tg-nav="project-userstories-detail:project=project.slug,ref=us.ref")
-        p.task-points
-            span(tg-bind-html="us.total_points") --
-            span points
+        ul.task-points-per-role
+            li
+                a(href="", title="Role Points")
+                    span User Experience
+                    span(tg-bind-html="us.total_points") --
+                    span points
+                    span.icon.icon-arrow-bottom
+            li
+                a(href="", title="Role Points")
+                    span Design
+                    span(tg-bind-html="us.total_points") --
+                    span points
+                    span.icon.icon-arrow-bottom
+            li
+                a(href="", title="Role Points")
+                    span Front
+                    span(tg-bind-html="us.total_points") --
+                    span points
+                    span.icon.icon-arrow-bottom
+            li
+                a(href="", title="Role Points")
+                    span Back
+                    span(tg-bind-html="us.total_points") --
+                    span points
+                    span.icon.icon-arrow-bottom
+        //-p.task-points
+        //-    span(tg-bind-html="us.total_points") --
+        //-    span points
     a.icon.icon-edit(tg-check-permission="modify_us", href="", title="Edit")
     a.icon.icon-drag-h(tg-check-permission="modify_us", href="", title="Drag&Drop")
