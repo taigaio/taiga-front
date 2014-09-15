@@ -131,7 +131,8 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
                     @scope.usTasks[us.id][status.id] = []
 
             for task in @scope.tasks
-                @scope.usTasks[task.user_story][task.status].push(task)
+                if @scope.usTasks[task.user_story]? and @scope.usTasks[task.user_story][task.status]?
+                    @scope.usTasks[task.user_story][task.status].push(task)
 
             return tasks
 
