@@ -25,9 +25,11 @@ bindOnce = @.taiga.bindOnce
 
 module = angular.module("taigaCommon")
 
+
 #############################################################################
 ## History Directive (Main)
 #############################################################################
+
 
 class HistoryController extends taiga.Controller
     @.$inject = ["$scope", "$tgRepo"]
@@ -73,7 +75,7 @@ HistoryDirective = ($log) ->
     <% _.each(points, function(point, name) { %>
     <div class="change-entry">
         <div class="activity-changed">
-            <span>points (<%- name.toLowerCase() %>)</span>
+            <span>US points (<%- name.toLowerCase() %>)</span>
         </div>
         <div class="activity-fromto">
             <p>
@@ -103,6 +105,25 @@ HistoryDirective = ($log) ->
                 <strong> to </strong> <br />
                 <span><%= to %></span>
             </p>
+        </div>
+    </div>
+    """)
+    templateChangeAttachment = _.template("""
+    <div class="change-entry">
+        <div class="activity-changed">
+            <span><%- name %></span>
+        </div>
+        <div class="activity-fromto">
+            <% _.each(diff, function(change) { %>
+                <p>
+                    <strong><%= change.name %> from </strong> <br />
+                    <span><%= change.from %></span>
+                </p>
+                <p>
+                    <strong><%= change.name %> to </strong> <br />
+                    <span><%= change.to %></span>
+                </p>
+            <% }) %>
         </div>
     </div>
     """)
@@ -208,6 +229,23 @@ HistoryDirective = ($log) ->
             $ctrl.loadHistory()
 
         # Helpers
+        getHumanizedFieldName = (field) ->
+            humanizedFieldNames = {
+                # US
+                is_closed: "is closed"
+                finish_date: "finish date"
+                client_requirement: "client requirement"
+                team_requirement: "team requirement"
+
+                # Task
+                milestone: "spreint"
+                user_story: "user story"
+                is_iocaine: "is iocaine"
+
+                # Attachment
+                is_deprecated: "is deprecated"
+            } # TODO i18n
+            return humanizedFieldNames[field] or field
 
         getUserFullName = (userId) ->
             return $scope.usersById[userId]?.full_name_display
@@ -227,39 +265,58 @@ HistoryDirective = ($log) ->
             if change == ""
                 return "nil"
 
+            if change == true
+                return "yes"
+
+            if change == false
+                return "no"
+
             return change
 
         # Render into string (operations without mutability)
 
-        renderAttachmentEntry = (field, value) ->
+        renderAttachmentEntry = (value) ->
             attachments = _.map value, (changes, type) ->
                 if type == "new"
                     return _.map changes, (change) ->
-                        return templateChangeDiff({name: "New attachment", diff: change.filename})
+                        # TODO: i18n
+                        return templateChangeDiff({name: "new attachment", diff: change.filename})
                 else if type == "deleted"
                     return _.map changes, (change) ->
-                        return templateChangeDiff({name: "Deleted attachment", diff: change.filename})
+                        # TODO: i18n
+                        return templateChangeDiff({name: "deleted attachment", diff: change.filename})
                 else
                     return _.map changes, (change) ->
-                        return templateChangeDiff({name: "Updated attachment", diff: change[0].filename})
+                        # TODO: i18n
+                        name = "updated attachment #{change.filename}"
+                        diff = _.map change.changes, (values, name) ->
+                            return {
+                                name: getHumanizedFieldName(name)
+                                from: formatChange(values[0])
+                                to: formatChange(values[1])
+                            }
+                        return templateChangeAttachment({name: name, diff: diff})
 
             return _.flatten(attachments).join("\n")
 
         renderChangeEntry = (field, value) ->
             if field == "description"
-                return templateChangeDiff({name: field, diff: value[1]})
+                # TODO: i18n
+                return templateChangeDiff({name: "description", diff: value[1]})
             else if field == "points"
                 return templateChangePoints({points: value})
             else if field == "attachments"
-                return renderAttachmentEntry(field, value)
+                return renderAttachmentEntry(value)
             else if field == "assigned_to"
+                name = getHumanizedFieldName(field)
                 from = formatChange(value[0] or "Unassigned")
                 to = formatChange(value[1] or "Unassigned")
-                return templateChangeGeneric({name:field, from:from, to: to})
+                return templateChangeGeneric({name:name, from:from, to: to})
             else
+                name = getHumanizedFieldName(field)
                 from = formatChange(value[0])
                 to = formatChange(value[1])
-                return templateChangeGeneric({name:field, from:from, to: to})
+                return templateChangeGeneric({name:name, from:from, to: to})
 
         renderChangeEntries = (change, join=true) ->
             entries = _.map(change.values_diff, (value, field) -> renderChangeEntry(field, value))
