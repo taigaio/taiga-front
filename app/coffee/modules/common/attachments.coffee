@@ -207,8 +207,11 @@ AttachmentsDirective = ($confirm) ->
         tdom.sortable({
             items: "div.single-attachment"
             handle: "a.settings.icon.icon-drag-v"
+            containment: ".attachments"
+            cursorAt: {right: 50}
             dropOnEmpty: true
-            axis: "y"
+            scroll: false
+            tolerance: "pointer"
             placeholder: "sortable-placeholder single-attachment"
         })
 
