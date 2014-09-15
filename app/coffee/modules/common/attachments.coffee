@@ -208,7 +208,6 @@ AttachmentsDirective = ($confirm) ->
             items: "div.single-attachment"
             handle: "a.settings.icon.icon-drag-v"
             dropOnEmpty: true
-            revert: 400
             axis: "y"
             placeholder: "sortable-placeholder single-attachment"
         })
