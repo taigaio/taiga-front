@@ -160,8 +160,10 @@
 }
 
 .points-per-role {
+    @include table-flex();
     position: relative;
     > li {
+        @include table-flex-child(1, 18%, 0);
         @include transition(color .3s linear);
         border-right: 1px solid rgba($grayer, .3);
         color: rgba($grayer, .3);
@@ -169,14 +171,13 @@
         margin: .5rem .1rem;
         position: relative;
         text-align: center;
-        width: 18%;
         &.active {
             color: rgba($green-taiga, 1);
         }
         &:first-child {
             opacity: 1;
         }
-        &:nth-child(5n) {
+        &:last-child {
             border: 0;
         }
     }

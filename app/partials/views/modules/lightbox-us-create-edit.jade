@@ -5,9 +5,25 @@ form
     fieldset
         input(type="text", name="subject", ng-model="us.subject", tg-i18n="placeholder:common.subject",
               data-required="true", data-maxlength="500")
-    fieldset
-        select(name="status", ng-model="us.status", ng-options="s.id as s.name for s in usStatusList",
-               tg-i18n="placeholder:common.status")
+    // Add estimation points
+    fieldset.estimation
+        ul.points-per-role
+            li.total
+                span.points 40
+                span.role UX
+            li.total
+                span.points 30
+                span.role Front
+            li.total
+                span.points 20
+                span.role Design
+            li.total
+                span.points 10
+                span.role Back
+    // Remove status input
+    //-fieldset
+    //-    select(name="status", ng-model="us.status", ng-options="s.id as s.name for s in usStatusList",
+    //-           tg-i18n="placeholder:common.status")
     fieldset
         div(tg-tag-line, editable="true", ng-model="us.tags")
 

@@ -115,23 +115,14 @@
         cursor: move;
         right: 45%;
     }
-    .task-points-per-role {
+    .task-points {
         @extend %small;
+        color: darken($postit-hover, 15%);
+        display: block;
         margin: 0;
-        a {
-            @include transition(color .2s linear);
-            color: darken($postit-hover, 15%);
-            &:hover {
-                @include transition(color .2s linear);
-                color: darken($postit-hover, 30%);
-            }
-        }
         span {
             display: inline-block;
-            padding-left: .2rem;
             &:first-child {
-                color: darken($postit-hover, 30%);
-                padding-left: 0;
                 padding-right: .2rem;
             }
         }
@@ -161,7 +152,7 @@
         white-space: nowrap;
         width: 70%;
     }
-    .task-points-per-role {
+    .task-points {
         display: none;
     }
     .icon-edit,
