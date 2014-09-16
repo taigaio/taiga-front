@@ -62,6 +62,19 @@
             line-height: 2.2rem;
             padding-right: 1rem;
         }
+        .us-related-task {
+            @extend %small;
+            color: $gray-light;
+            margin-top: .5rem;
+            a {
+                @include transition(color .3s linear);
+                color: lighten($grayer, 30%);
+                margin-left: .2rem;
+                &:hover {
+                    color: $green-taiga;
+                }
+            }
+        }
         .block-desc-container {
             @extend %small;
             margin: 0 0 1.2rem;
