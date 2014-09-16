@@ -97,7 +97,7 @@ gulp.task "jade-watch", ->
     gulp.src(paths.jade)
         .pipe(plumber())
         .pipe(cache("jade"))
-        # .pipe(jadeInheritance({basedir: './app'}))
+        .pipe(jadeInheritance({basedir: './app'}))
         .pipe(jade({pretty: true}))
         .pipe(gulp.dest("#{paths.dist}/partials"))
 
