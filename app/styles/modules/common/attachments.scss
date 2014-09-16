@@ -3,19 +3,26 @@
 }
 
 .attachments-header {
-    @include clearfix;
+    @include table-flex(space-between, center, flex, row, wrap, space-between);
     background: $whitish;
     padding: .5rem 1rem;
-    .button {
-        float: right;
+    .attachments-title {
+        @extend %medium;
+        @extend %bold;
+        color: $grayer;
     }
-    .icon,
     .attachments-num,
     .attachments-text {
-        @extend %medium;
-        margin-right: .5rem;
-        position: relative;
-        top: 2px;
+        margin-right: .1rem;
+    }
+    .icon {
+        @extend %large;
+        color: $grayer;
+        cursor: pointer;
+        &:hover {
+            @include transition (color .2s ease-in);
+            color: $green-taiga;
+        }
     }
 }
 
@@ -23,12 +30,9 @@
     @include table-flex();
     @extend %small;
     align-items: center;
-    border-bottom: 1px solid #cdcdcd;
+    border-bottom: 1px solid $whitish;
     padding: .5rem 0 .5rem 1rem;
     position: relative;
-    &:last-child {
-        border: 0;
-    }
     &:hover {
         .attachment-settings {
             .settings {
@@ -163,14 +167,6 @@
     overflow: hidden;
     position: relative;
     input {
-        cursor: pointer;
-        font-size: 99px;
-        height: 120%;
-        left: 0;
-        opacity: 0;
-        position: absolute;
-        top: -5px;
-        width: 100%;
-        z-index: 9999;
+        display: none;
     }
 }

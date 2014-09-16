@@ -208,6 +208,7 @@ RelatedTaskCreateFormDirective = ($repo, $compile, $confirm, $tgmodel) ->
 
             $el.html($compile(template())($scope))
             $el.find('input').focus().select()
+            $el.addClass('active')
 
             $el.on "keyup", "input", (event)->
                 if event.keyCode == 13
@@ -242,9 +243,7 @@ module.directive("tgRelatedTaskCreateForm", ["$tgRepo", "$compile", "$tgConfirm"
 
 RelatedTaskCreateButtonDirective = ($repo, $compile, $confirm, $tgmodel) ->
     template = _.template("""
-        <div class="related-tasks-buttons">
-            <a class="button button-green">+ Add new task</a>
-        </div>
+        <a class="icon icon-plus related-tasks-buttons"></a>
     """)
 
     link = ($scope, $el, $attrs) ->
@@ -256,7 +255,7 @@ RelatedTaskCreateButtonDirective = ($repo, $compile, $confirm, $tgmodel) ->
             else
                 $el.html("")
 
-            $el.on "click", ".button", (event)->
+            $el.on "click", ".icon", (event)->
                 $scope.$emit("related-tasks:add-new-clicked")
 
         $scope.$on "$destroy", ->

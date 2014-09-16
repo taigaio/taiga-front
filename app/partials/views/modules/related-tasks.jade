@@ -1,11 +1,8 @@
 section.related-tasks(tg-related-tasks)
-    h2 Related tasks
-    div(tg-related-task-create-button)
     div.related-tasks-header
-        .row.related-tasks-title
-            .tasks Task Name
-            .status Status
-            .assigned-to Assigned to
+        span.related-tasks-title Related tasks
+        div(tg-related-task-create-button)
     div.related-tasks-body
-        div.row.single-related-task(ng-repeat="task in tasks", ng-class="{closed: task.is_closed, blocked: task.is_blocked, iocaine: task.is_iocaine}", tg-related-task-row, ng-model="task")
-        div.row.single-related-task(tg-related-task-create-form)
+        div.row.single-related-task(ng-repeat="task in tasks", ng-class="{closed: task.is_closed, blocked: task.is_blocked, iocaine: task.is_iocaine}",
+                                    tg-related-task-row, ng-model="task")
+        div.row.single-related-task.related-task-create-form(tg-related-task-create-form)

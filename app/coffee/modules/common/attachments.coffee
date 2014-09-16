@@ -154,16 +154,13 @@ AttachmentsDirective = ($confirm) ->
     <section class="attachments">
         <div class="attachments-header">
             <h3 class="attachments-title">
-                <span class="icon icon-attachments"></span>
                 <span class="attachments-num" tg-bind-html="ctrl.attachmentsCount"></span>
                 <span class="attachments-text">attachments</span>
-
-                <div tg-check-permission="modify_<%- type %>"
-                    title="Add new attachment" class="button button-gray add-attach">
-                    <span>+new file</span>
-                    <input type="file" multiple="multiple"/>
-                </div>
             </h3>
+            <div tg-check-permission="modify_<%- type %>" title="Add new attachment" class="add-attach">
+                <label for="add-attach" class="icon icon-plus related-tasks-buttons"></label>
+                <input id="add-attach" type="file" multiple="multiple"/>
+            </div>
         </div>
 
         <div class="attachment-body sortable">

@@ -3,18 +3,44 @@
     position: relative;
 }
 
-.related-tasks-header,
+.related-tasks-header {
+    @include table-flex(space-between, center, flex, row, wrap, space-between);
+    background: $whitish;
+    padding: .5rem 1rem;
+    .related-tasks-title {
+        @extend %medium;
+        @extend %bold;
+    }
+    .icon {
+        @extend %large;
+        color: $grayer;
+        cursor: pointer;
+        &:hover {
+            @include transition (color .2s ease-in);
+            color: $green-taiga;
+        }
+    }
+}
+
 .related-tasks-body {
     width: 100%;
     .row {
         @extend %small;
         @include table-flex(center, center, flex, row, wrap, center);
-        border-bottom: 1px solid $gray-light;
+        border-bottom: 1px solid $whitish;
         padding: .5rem 0 .5rem .5rem;
+        position: relative;
         text-align: left;
         width: 100%;
         &:hover {
             background: transparent;
+            .task-settings {
+                @include transition (all .2s ease-in);
+                opacity: 1;
+            }
+        }
+        &:last-child {
+            border: 0;
         }
         .tasks {
             @include table-flex-child(10, 78%, 0);
@@ -25,7 +51,12 @@
         .assigned-to {
             @include table-flex-child(0, 10%, 0);
         }
-
+    }
+    .related-task-create-form {
+        padding: 0;
+        &.active {
+            padding: .5rem 0 .5rem .5rem;
+        }
     }
     .status {
         position: relative;
@@ -45,35 +76,11 @@
         }
     }
     .pop-status {
-        @include popover(200px, 0, 40%, '', '');
+        @include popover(200px, 0, 40%);
         padding-right: 1rem;
         &.fix {
             bottom: 0;
             top: auto;
-        }
-    }
-}
-
-.related-tasks-header {
-    .related-tasks-title {
-        @extend %medium;
-        @extend %bold;
-        border-bottom: 2px solid $gray-light;
-        margin-top: 1rem;
-    }
-}
-
-.related-tasks-body {
-    .row {
-        position: relative;
-        &:hover {
-            .task-settings {
-                @include transition (all .2s ease-in);
-                opacity: 1;
-            }
-        }
-        &:last-child {
-            border-bottom: 0;
         }
     }
     .task-name {
@@ -174,13 +181,5 @@
         figcaption {
             margin-left: .5rem;
         }
-    }
-}
-.related-tasks-buttons {
-    position: absolute;
-    right: 0;
-    top: 0;
-    .button {
-        cursor: pointer;
     }
 }
