@@ -194,20 +194,83 @@ module.directive("tgBlockingMessageInput", ["$log", BlockingMessageInputDirectiv
 #############################################################################
 
 CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService, $loading) ->
+    usPointsTemplate = _.template("""
+    <ul class="points-per-role">
+        <li class="total">
+            <span class="points"><%- totalPoints %></span>
+            <span class="role">total</span>
+        </li>
+        <% _.each(rolePoints, function(rolePoint) { %>
+        <li class="total clickable" data-role-id="<%- rolePoint.id %>">
+            <span class="points"><%- rolePoint.points %></span>
+            <span class="role"><%- rolePoint.name %></span></li>
+        <% }); %>
+    </ul>
+    """)
+
+    selectionPointsTemplate = _.template("""
+    <ul class="popover pop-points-open">
+        <% _.each(points, function(point) { %>
+        <li><a href="" class="point" title="<%- point.name %>"
+               data-point-id="<%- point.id %>" data-role-id="<%- roleId %>"><%- point.name %></a>
+        </li>
+        <% }); %>
+    </ul>
+    """)
+
+
     link = ($scope, $el, attrs) ->
         isNew = true
 
+        renderUSPoints = () ->
+            totalPoints = $scope.us.total_points or 0
+            rolePoints = _.clone(_.filter($scope.project.roles, "computable"), true)
+            _.map rolePoints, (v, k) ->
+                  val = $scope.pointsById[$scope.us.points[v.id]]?.name
+                  val = $scope.pointsById[$scope.project.default_points]?.name if not val
+                  val = "#" if not val
+                  v.points = val
+
+            html = usPointsTemplate({
+                totalPoints: totalPoints
+                rolePoints: rolePoints
+            })
+
+            $el.find("fieldset.estimation").html(html)
+
+        renderSelectPoints = (roleId, onCloseCallback) ->
+            html = selectionPointsTemplate({
+                roleId: roleId
+                points: $scope.project.points
+            })
+            $el.find(".pop-points-open").remove()
+            $el.find(".points-per-role").append(html)
+            $el.find(".pop-points-open a[data-point-id='#{$scope.us.points[roleId]}']").addClass("active")
+            # If not showing role selection let's move to the left
+            $el.find(".pop-points-open").popover().open(onCloseCallback)
+
+        calculateTotalPoints = ->
+            values = _.map($scope.us.points, (v, k) -> $scope.pointsById[v]?.value or 0)
+            if values.length == 0
+                return "0"
+
+            return _.reduce(values, (acc, num) -> acc + num)
+
         $scope.$on "usform:new", (ctx, projectId, status, statusList) ->
+            isNew = true
             $scope.usStatusList = statusList
 
             $scope.us = {
                 project: projectId
+                points : {}
                 status: status
                 is_archived: false
                 tags: []
             }
 
-            isNew = true
+            # Show role points
+            renderUSPoints()
+
             # Update texts for creation
             $el.find(".button-green span").html("Create") #TODO: i18n
             $el.find(".title").html("New user story  ") #TODO: i18n
@@ -222,6 +285,10 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
         $scope.$on "usform:edit", (ctx, us) ->
             $scope.us = us
             isNew = false
+
+            # Show role points
+            renderUSPoints()
+
             # Update texts for edition
             $el.find(".button-green span").html("Save") #TODO: i18n
             $el.find(".title").html("Edit user story  ") #TODO: i18n
@@ -245,6 +312,34 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
 
             lightboxService.open($el)
 
+        $el.on "click", ".total.clickable", (event) ->
+            event.preventDefault()
+            event.stopPropagation()
+            target = angular.element(event.currentTarget)
+
+            roleId = target.data("role-id")
+
+            target.siblings().removeClass('active')
+            target.addClass('active')
+            renderSelectPoints(roleId, () -> target.removeClass('active'))
+
+        $el.on "click", ".point", (event) ->
+            event.preventDefault()
+            event.stopPropagation()
+
+            target = angular.element(event.currentTarget)
+            roleId = target.data("role-id")
+            pointId = target.data("point-id")
+
+            $.fn.popover().closeAll()
+
+            $scope.$apply () ->
+                usPoints = _.clone($scope.us.points, true)
+                usPoints[roleId] = pointId
+                $scope.us.points = usPoints
+                $scope.us.total_points = calculateTotalPoints()
+                renderUSPoints()
+
         $el.on "click", ".button-green", (event) ->
             event.preventDefault()
             form = $el.find("form").checksley()
@@ -254,6 +349,7 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
                 return
 
             $loading.start(target)
+
             if isNew
                 promise = $repo.create("userstories", $scope.us)
                 broadcastEvent = "usform:new:success"
