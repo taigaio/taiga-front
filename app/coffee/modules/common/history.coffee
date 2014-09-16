@@ -32,19 +32,16 @@ module = angular.module("taigaCommon")
 
 
 class HistoryController extends taiga.Controller
-    @.$inject = ["$scope", "$tgRepo"]
+    @.$inject = ["$scope", "$tgRepo", "$tgResources"]
 
-    constructor: (@scope, @repo) ->
+    constructor: (@scope, @repo, @rs) ->
 
     initialize: (type, objectId) ->
         @.type = type
         @.objectId = objectId
 
-    getHistory: (type, objectId) ->
-        return @repo.queryOneRaw("history/#{type}", objectId)
-
-    loadHistory: ->
-        return @.getHistory(@.type, @.objectId).then (history) =>
+    loadHistory: (type, objectId) ->
+        return @rs.history.get(type, objectId).then (history) =>
             for historyResult in history
                 # If description was modified take only the description_html field
                 if historyResult.values_diff.description_diff?
@@ -55,6 +52,12 @@ class HistoryController extends taiga.Controller
 
             @scope.history = history
             @scope.comments = _.filter(history, (item) -> item.comment != "")
+
+    deleteComment: (type, objectId, activityId) ->
+        return @rs.history.deleteComment(type, objectId, activityId).then => @.loadHistory(type, objectId)
+
+    undeleteComment: (type, objectId, activityId) ->
+        return @rs.history.undeleteComment(type, objectId, activityId).then => @.loadHistory(type, objectId)
 
 
 HistoryDirective = ($log) ->
@@ -128,6 +131,21 @@ HistoryDirective = ($log) ->
     </div>
     """)
 
+    templateDeletedComment = _.template("""
+        <div class="activity-single comment deleted-comment">
+            <div>
+                <span>Comment deleted by <%- deleteCommentUser %> on <%- deleteCommentDate %></span>
+                <a href="" title="Show comment" class="show-deleted-comment">(Show deleted comment)</a>
+                <a href="" title="Show comment" class="hide-deleted-comment hidden">(Hide deleted comment)</a>
+                <div class="comment-body wysiwyg"><%= deleteComment %></div>
+            </div>
+            <a href="" class="comment-restore" data-activity-id="<%- activityId %>">
+                <span class="icon icon-reload"></span>
+                <span>Restore comment</span>
+            </a>
+        </div>
+    """)
+
     templateActivity = _.template("""
     <div class="activity-single <%- mode %>">
         <div class="activity-user">
@@ -146,9 +164,17 @@ HistoryDirective = ($log) ->
             </div>
 
             <% if (comment.length > 0) { %>
-            <div class="comment wysiwyg">
-                <%= comment %>
-            </div>
+                <% if ((deleteCommentDate || deleteCommentUser)) { %>
+                    <div class="deleted-comment">
+                        <span>Comment deleted by <%- deleteCommentUser %> on <%- deleteCommentDate %></span>
+                    </div>
+                <% } %>
+                <div class="comment wysiwyg">
+                    <%= comment %>
+                </div>
+                <% if (!deleteCommentDate && mode !== "activity") { %>
+                    <a href="" class="icon icon-delete comment-delete" data-activity-id="<%- activityId %>"></a>
+                <% } %>
             <% } %>
 
             <% if(changes.length > 0) { %>
@@ -170,6 +196,7 @@ HistoryDirective = ($log) ->
     """)
 
     templateBaseEntries = _.template("""
+
     <% if (showMore > 0) { %>
     <a href="" title="Show more" class="show-more show-more-comments">
     + Show previous entries (<%- showMore %> more)
@@ -226,7 +253,7 @@ HistoryDirective = ($log) ->
             objectId = model.id
 
             $ctrl.initialize(type, objectId)
-            $ctrl.loadHistory()
+            $ctrl.loadHistory(type, objectId)
 
         # Helpers
         getHumanizedFieldName = (field) ->
@@ -332,6 +359,14 @@ HistoryDirective = ($log) ->
             return "Made #{size} changes" # TODO: i18n
 
         renderComment = (comment) ->
+            if (comment.delete_comment_date or comment.delete_comment_user)
+                return templateDeletedComment({
+                    deleteCommentDate: moment(comment.delete_comment_date).format("DD MMM YYYY HH:mm")
+                    deleteCommentUser: getUserFullName(comment.delete_comment_user)
+                    deleteComment: comment.comment_html
+                    activityId: comment.id
+                })
+
             return templateActivity({
                 avatar: getUserAvatar(comment.user.pk)
                 userFullName: getUserFullName(comment.user.pk)
@@ -340,6 +375,9 @@ HistoryDirective = ($log) ->
                 changesText: renderChangesHelperText(comment)
                 changes: renderChangeEntries(comment, false)
                 mode: "comment"
+                deleteCommentDate: moment(comment.delete_comment_date).format("DD MMM YYYY HH:mm") if comment.delete_comment_date
+                deleteCommentUser: getUserFullName(comment.delete_comment_user) if comment.delete_comment_user
+                activityId: comment.id
             })
 
         renderChange = (change) ->
@@ -351,6 +389,9 @@ HistoryDirective = ($log) ->
                 changes: renderChangeEntries(change, false)
                 changesText: ""
                 mode: "activity"
+                deleteCommentDate: moment(change.delete_comment_date).format("DD MMM YYYY HH:mm") if change.delete_comment_date
+                deleteCommentUser: getUserFullName(change.delete_comment_user) if change.delete_comment_user
+                activityId: change.id
             })
 
         renderHistory = (entries, totalEntries) ->
@@ -388,7 +429,7 @@ HistoryDirective = ($log) ->
         $scope.$watch("comments", renderComments)
         $scope.$watch("history",  renderActivity)
 
-        $scope.$on("history:reload", -> $ctrl.loadHistory())
+        $scope.$on("history:reload", -> $ctrl.loadHistory(type, objectId))
 
         # Events
 
@@ -397,7 +438,7 @@ HistoryDirective = ($log) ->
 
             $el.find(".comment-list").addClass("activeanimation")
             onSuccess = ->
-                $ctrl.loadHistory()
+                $ctrl.loadHistory(type, objectId)
 
             onError = ->
                 $confirm.notify("error")
@@ -416,6 +457,20 @@ HistoryDirective = ($log) ->
                 showAllComments = not showAllComments
                 renderComments()
 
+        $el.on "click", ".show-deleted-comment", (event) ->
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+            target.parents('.activity-single').find('.hide-deleted-comment').show()
+            target.parents('.activity-single').find('.show-deleted-comment').hide()
+            target.parents('.activity-single').find('.comment-body').show()
+
+        $el.on "click", ".hide-deleted-comment", (event) ->
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+            target.parents('.activity-single').find('.hide-deleted-comment').hide()
+            target.parents('.activity-single').find('.show-deleted-comment').show()
+            target.parents('.activity-single').find('.comment-body').hide()
+
         $el.on "click", ".changes-title", (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
@@ -427,6 +482,16 @@ HistoryDirective = ($log) ->
         $el.on "click", ".history-tabs li a", (event) ->
             $el.find(".history-tabs li a").toggleClass("active")
             $el.find(".history section").toggleClass("hidden")
+
+        $el.on "click", ".comment-delete", (event) ->
+            target = angular.element(event.currentTarget)
+            activityId = target.data('activity-id')
+            $ctrl.deleteComment(type, objectId, activityId)
+
+        $el.on "click", ".comment-restore", (event) ->
+            target = angular.element(event.currentTarget)
+            activityId = target.data('activity-id')
+            $ctrl.undeleteComment(type, objectId, activityId)
 
         $scope.$on "$destroy", ->
             $el.off()
