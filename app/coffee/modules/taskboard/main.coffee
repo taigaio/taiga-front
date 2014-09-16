@@ -43,11 +43,12 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$tgResources",
         "$routeParams",
         "$q",
-        "$appTitle"
-        "$tgLocation"
+        "$appTitle",
+        "$tgLocation",
+        "tgLoader"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @appTitle, @location) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @appTitle, @location, tgLoader) ->
         _.bindAll(@)
 
         @scope.sectionName = "Taskboard"
@@ -57,6 +58,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
         # On Success
         promise.then =>
             @appTitle.set("Taskboard - " + @scope.project.name)
+            tgLoader.pageLoaded()
 
         # On Error
         promise.then null, (xhr) =>

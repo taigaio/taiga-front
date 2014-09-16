@@ -42,10 +42,11 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$tgLocation",
         "$log",
         "$appTitle",
-        "$tgNavUrls"
+        "$tgNavUrls",
+        "tgLoader"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @log, @appTitle, @navUrls) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @log, @appTitle, @navUrls, tgLoader) ->
         @scope.taskRef = @params.taskref
         @scope.sectionName = "Task Details"
 
@@ -53,6 +54,7 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
         promise.then () =>
             @appTitle.set(@scope.task.subject + " - " + @scope.project.name)
+            tgLoader.pageLoaded()
 
         promise.then null, ->
             console.log "FAIL" #TODO

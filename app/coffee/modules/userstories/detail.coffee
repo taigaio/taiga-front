@@ -43,10 +43,11 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$tgLocation",
         "$log",
         "$appTitle",
-        "$tgNavUrls"
+        "$tgNavUrls",
+        "tgLoader"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @log, @appTitle, @navUrls) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @log, @appTitle, @navUrls, tgLoader) ->
         @scope.issueRef = @params.issueref
         @scope.sectionName = "User Story Details"
 
@@ -55,6 +56,7 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         # On Success
         promise.then =>
             @appTitle.set(@scope.us.subject + " - " + @scope.project.name)
+            tgLoader.pageLoaded()
 
         # On Error
         promise.then null, (xhr) =>
