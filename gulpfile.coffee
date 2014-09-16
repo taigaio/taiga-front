@@ -99,7 +99,7 @@ gulp.task "jade-watch", ->
         .pipe(cache("jade"))
         .pipe(jadeInheritance({basedir: './app'}))
         .pipe(jade({pretty: true}))
-        .pipe(gulp.dest("#{paths.dist}/partials"))
+        .pipe(gulp.dest("#{paths.dist}"))
 
 gulp.task "template", ->
     gulp.src("#{paths.app}/index.jade")
@@ -249,7 +249,7 @@ gulp.task "deploy", [
 
 # The default task (called when you run gulp from cli)
 gulp.task "default", [
-    "jade-watch",
+    "jade-deploy",
     "template",
     "styles-watch",
     "copy",
