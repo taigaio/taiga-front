@@ -102,6 +102,11 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
             return us
 
+    loadTasks: ->
+        return @rs.tasks.list(@scope.projectId, null, @scope.usId).then (tasks) =>
+            @scope.tasks = tasks
+            return tasks
+
     loadInitialData: ->
         params = {
             pslug: @params.pslug
@@ -115,8 +120,8 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
         return promise.then(=> @.loadProject())
                       .then(=> @.loadUsersAndRoles())
-                      .then(=> @.loadUs())
-
+                      .then(=> @q.all([@.loadUs(),
+                                       @.loadTasks()]))
 
     block: ->
         @rootscope.$broadcast("block", @scope.us)
@@ -195,14 +200,12 @@ UsStatusDetailDirective = () ->
             <span class="us-detail-status" style="color:<%= status.color %>"><%= status.name %></span>
         </h1>
 
-        <% if (showTasks) { %>
         <div class="us-detail-progress-bar">
             <div class="current-progress" style="width:<%- usProgress %>%"/>
             <span clasS="tasks-completed">
                 <%- totalClosedTasks %>/<%- totalTasks %> tasks completed
             </span>
         </div>
-        <% } %>
 
         <div class="us-created-by">
             <div class="user-avatar">
@@ -286,13 +289,8 @@ UsStatusDetailDirective = () ->
                   val = "?" if not val?
                   v.points = val
 
-            if $scope.tasks
-                totalTasks = $scope.tasks.length
-                totalClosedTasks = _.filter($scope.tasks, (task) => $scope.taskStatusById[task.status].is_closed).length
-                showTasks = true
-            else
-                showTasks = false
-
+            totalTasks = $scope.tasks.length
+            totalClosedTasks = _.filter($scope.tasks, (task) => $scope.taskStatusById[task.status].is_closed).length
             usProgress = 0
             usProgress = 100 * totalClosedTasks / totalTasks if totalTasks > 0
             html = template({
@@ -304,17 +302,10 @@ UsStatusDetailDirective = () ->
                 rolePoints: rolePoints
                 totalTasks: totalTasks
                 totalClosedTasks: totalClosedTasks
-                totalTasks: totalTasks
-                totalClosedTasks: totalClosedTasks
-                showTasks: showTasks
                 usProgress: usProgress
             })
             $el.html(html)
             $el.find(".status-data").append(selectionStatusTemplate({statuses:$scope.statusList}))
-
-        $scope.$watch $attrs.ngModel, (us) ->
-            if us?
-                renderUsstatus(us)
 
         bindOnce $scope, "tasks", (tasks) ->
             $scope.$watch $attrs.ngModel, (us) ->
