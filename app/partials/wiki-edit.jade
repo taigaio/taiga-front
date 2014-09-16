@@ -21,4 +21,4 @@ block content
             section.wysiwyg
                 textarea(placeholder="Write a your wiki page", ng-model="wiki.content", tg-markitup)
 
-            tg-attachments(ng-model="wiki", type="wiki_page")
+            tg-attachments(ng-model="wiki", type="wiki_page", ng-if="wiki.id")

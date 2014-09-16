@@ -27,8 +27,8 @@ sizeFormat = @.taiga.sizeFormat
 resourceProvider = ($rootScope, $urls, $model, $repo, $auth, $q) ->
     service = {}
 
-    service.list = (urlName, objectId) ->
-        params = {object_id: objectId}
+    service.list = (urlName, objectId, projectId) ->
+        params = {object_id: objectId, project: projectId}
         return $repo.queryMany(urlName, params)
 
     service.create = (urlName, projectId, objectId, file) ->

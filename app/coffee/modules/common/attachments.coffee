@@ -33,6 +33,7 @@ class AttachmentsController extends taiga.Controller
         _.bindAll(@)
         @.type = null
         @.objectId = null
+        @.projectId = null
 
         @.uploadingAttachments = []
         @.attachments = []
@@ -43,12 +44,14 @@ class AttachmentsController extends taiga.Controller
     initialize: (type, objectId) ->
         @.type = type
         @.objectId = objectId
+        @.projectId = @scope.projectId
 
     loadAttachments: ->
-        urlname = "attachments/#{@.type}"
-        id = @.objectId
+        return @.attachments if not @.objectId
 
-        return @rs.attachments.list(urlname, id).then (attachments) =>
+        urlname = "attachments/#{@.type}"
+
+        return @rs.attachments.list(urlname, @.objectId, @.projectId).then (attachments) =>
             @.attachments = _.sortBy(attachments, "order")
             @.updateCounters()
             return attachments
@@ -58,10 +61,9 @@ class AttachmentsController extends taiga.Controller
         @.deprecatedAttachmentsCount = _.filter(@.attachments, {is_deprecated: true}).length
 
     _createAttachment: (attachment) ->
-        projectId = @scope.projectId
         urlName = "attachments/#{@.type}"
 
-        promise = @rs.attachments.create(urlName, projectId, @.objectId, attachment)
+        promise = @rs.attachments.create(urlName, @.projectId, @.objectId, attachment)
         promise = promise.then (data) =>
             data.isCreatedRightNow = true
 
