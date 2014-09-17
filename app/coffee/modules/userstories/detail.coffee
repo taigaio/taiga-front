@@ -289,9 +289,9 @@ UsStatusDetailDirective = () ->
             status = $scope.statusById[us.status]
             rolePoints = _.clone(_.filter($scope.project.roles, "computable"), true)
             _.map rolePoints, (v, k) ->
-                  val = $scope.pointsById[us.points[v.id]].value
-                  val = "?" if not val?
-                  v.points = val
+                  name = $scope.pointsById[us.points[v.id]].name
+                  name = "?" if not name?
+                  v.points = name
 
             totalTasks = $scope.tasks.length
             totalClosedTasks = _.filter($scope.tasks, (task) => $scope.taskStatusById[task.status].is_closed).length
