@@ -27,14 +27,12 @@
         }
     }
     .tagline {
-        margin-bottom: 1rem;
-        text-align: center;
-    }
-    .tagline {
         @extend %xlarge;
         @extend %title;
         color: $white;
         line-height: 2rem;
+        margin-bottom: 1rem;
+        text-align: center;
         text-transform: uppercase;
     }
     form {
