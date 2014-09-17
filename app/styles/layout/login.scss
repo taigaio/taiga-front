@@ -19,7 +19,13 @@
     .login-container {
         @include flex-basis(400px);
     }
-    .logo,
+    .logo {
+        margin-bottom: 1rem;
+        text-align: center;
+        img {
+            padding: 0 30%;
+        }
+    }
     .tagline {
         margin-bottom: 1rem;
         text-align: center;
