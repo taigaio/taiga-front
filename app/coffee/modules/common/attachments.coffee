@@ -334,16 +334,24 @@ AttachmentDirective = ->
             if attachment.is_deprecated
                 $el.addClass("deprecated")
 
-        ## Actions (on edit mode)
-        $el.on "click", "a.editable-settings.icon-floppy", (event) ->
-            event.preventDefault()
-
+        saveAttachment = ->
             attachment.description = $el.find("input[name='description']").val()
             attachment.is_deprecated = $el.find("input[name='is-deprecated']").prop("checked")
 
             $scope.$apply ->
                 $ctrl.updateAttachment(attachment).then ->
-                    render(attachment)
+                    render(attachment, false)
+
+        ## Actions (on edit mode)
+        $el.on "click", "a.editable-settings.icon-floppy", (event) ->
+            event.preventDefault()
+            saveAttachment()
+
+        $el.on "keyup", "input[name=description]", (event) ->
+            if event.keyCode == 13
+                saveAttachment()
+            else if event.keyCode == 27
+                render(attachment, false)
 
         $el.on "click", "a.editable-settings.icon-delete", (event) ->
             event.preventDefault()
@@ -353,6 +361,7 @@ AttachmentDirective = ->
         $el.on "click", "a.settings.icon-edit", (event) ->
             event.preventDefault()
             render(attachment, true)
+            $el.find("input[name='description']").focus().select()
 
         $el.on "click", "a.settings.icon-delete", (event) ->
             event.preventDefault()
@@ -365,6 +374,8 @@ AttachmentDirective = ->
         # Bootstrap
         attachment = $scope.$eval($attrs.tgAttachment)
         render(attachment, attachment.isCreatedRightNow)
+        if attachment.isCreatedRightNow
+            $el.find("input[name='description']").focus().select()
 
     return {
         link: link
