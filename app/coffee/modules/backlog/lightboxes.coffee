@@ -30,6 +30,7 @@ module = angular.module("taigaBacklog")
 
 CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading) ->
     link = ($scope, $el, attrs) ->
+        hasErrors = false
         createSprint = true
         $scope.sprint = {
             project: null
@@ -41,7 +42,10 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading)
         submit = (event) ->
             form = $el.find("form").checksley()
             if not form.validate()
+                hasErrors = true
+                $el.find(".last-sprint-name").addClass("disappear")
                 return
+            hasErrors = false
 
             newSprint = angular.copy($scope.sprint)
 
@@ -132,7 +136,7 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading)
             $el.find(".last-sprint-name").addClass("disappear")
 
         $el.on "keyup", ".sprint-name", (event) ->
-            if $el.find(".sprint-name").val().length > 0
+            if $el.find(".sprint-name").val().length > 0 or hasErrors
                 $el.find(".last-sprint-name").addClass("disappear")
             else
                 $el.find(".last-sprint-name").removeClass("disappear")
