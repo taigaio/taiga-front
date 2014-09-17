@@ -99,12 +99,9 @@ DateSelectorDirective =->
             $scope.$watch $attrs.lessThan, (val) ->
                 $el.picker.setMaxDate(moment(val))
 
-        $scope.$on "sprints:loaded", (ctx, sprints) =>
-            if sprints.length > 0
-                estimatedStart = sprints[0].estimated_finish
-                selectedDate = estimatedStart
-                $el.val(moment(estimatedStart).format("DD MMM YYYY"))
-                $el.picker.setDate(estimatedStart)
+
+        $scope.$watch $attrs.ngModel, (val) ->
+            $el.picker.setDate(val) if val?
 
     return {
         link: link

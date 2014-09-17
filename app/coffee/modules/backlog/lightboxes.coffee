@@ -49,7 +49,6 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading)
                 newSprint.estimated_start = moment(newSprint.estimated_start).format("YYYY-MM-DD")
                 newSprint.estimated_finish = moment(newSprint.estimated_finish).format("YYYY-MM-DD")
                 promise = $repo.create("milestones", newSprint)
-
             else
                 newSprint.setAttr("estimated_start", moment(newSprint.estimated_start).format("YYYY-MM-DD"))
                 newSprint.setAttr("estimated_finish", moment(newSprint.estimated_finish).format("YYYY-MM-DD"))
@@ -91,19 +90,26 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading)
             $scope.sprint.project = projectId
             $scope.sprint.name = null
             $scope.sprint.slug = null
+
+            lastSprint = $scope.sprints[0]
+
+            estimatedStart = moment()
             if $scope.sprint.estimated_start
-                $scope.sprint.estimated_start = moment($scope.sprint.estimated_start).format("DD MMM YYYY")
-            else
-                $scope.sprint.estimated_start = moment().format("DD MMM YYYY")
+                estimatedStart = moment($scope.sprint.estimated_start)
+            else if lastSprint?
+                estimatedStart = moment(lastSprint.estimated_finish)
+            $scope.sprint.estimated_start = estimatedStart.format("DD MMM YYYY")
+
+            estimatedFinish = moment().add(2, "weeks")
             if $scope.sprint.estimated_finish
-                $scope.sprint.estimated_finish = moment($scope.sprint.estimated_finish).format("DD MMM YYYY")
-            else
-                $scope.sprint.estimated_finish = moment().format("DD MMM YYYY")
+                estimatedFinish = moment($scope.sprint.estimated_finish)
+            else if lastSprint?
+                estimatedFinish = moment(lastSprint.estimated_finish).add(2, "weeks")
+            $scope.sprint.estimated_finish = estimatedFinish.format("DD MMM YYYY")
 
             lastSprintNameDom = $el.find(".last-sprint-name")
-            sprintName = $scope.sprints?[0]?.name
-            if sprintName?
-                lastSprintNameDom.html(" last sprint is <strong> #{sprintName} ;-) </strong>")
+            if lastSprint?.name?
+                lastSprintNameDom.html(" last sprint is <strong> #{lastSprint.name} ;-) </strong>")
 
             $el.find(".delete-sprint").hide()
             $el.find(".title").text("New sprint") #TODO i18n
