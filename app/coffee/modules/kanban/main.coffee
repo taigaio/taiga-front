@@ -30,6 +30,19 @@ timeout = @.taiga.timeout
 
 module = angular.module("taigaKanban")
 
+# Vars
+
+defaultViewMode = "maximized"
+defaultViewModes = {
+    maximized: {
+        cardClass: "kanban-task-maximized"
+    }
+    minimized: {
+        cardClass: "kanban-task-minimized"
+    }
+}
+
+
 #############################################################################
 ## Kanban Controller
 #############################################################################
@@ -147,6 +160,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @scope.usStatusById = groupBy(project.us_statuses, (x) -> x.id)
             @scope.usStatusList = _.sortBy(project.us_statuses, "order")
 
+            @.loadStatusViewMode()
             @scope.$emit("project:loaded", project)
             return project
 
@@ -160,6 +174,22 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                       .then(=> @.loadUsersAndRoles())
                       .then(=> @.loadKanban())
                       .then(=> @scope.$broadcast("redraw:wip"))
+
+    ## View Mode methods
+
+    loadStatusViewMode: ->
+        @scope.statusViewModes = {}
+        for status in @scope.usStatusList
+            @scope.statusViewModes[status.id] = defaultViewMode
+
+    updateStatusViewMode: (statusId, newViewMode) ->
+        @scope.statusViewModes[statusId] = newViewMode
+
+    getCardClass: (statusId)->
+        mode = @scope.statusViewModes[statusId] or defaultViewMode
+        return defaultViewModes[mode].cardClass or defaultViewModes[defaultViewMode].cardClass
+
+    # Utils methods
 
     prepareBulkUpdateData: (uses, field="kanban_order") ->
         return _.map(uses, (x) -> {"us_id": x.id, "order": x[field]})
