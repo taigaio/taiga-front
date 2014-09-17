@@ -64,6 +64,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @appTitle, tgLoader) ->
         _.bindAll(@)
         @scope.sectionName = "Kanban"
+        @scope.statusViewModes = {}
 
         promise = @.loadInitialData()
 
@@ -160,7 +161,8 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @scope.usStatusById = groupBy(project.us_statuses, (x) -> x.id)
             @scope.usStatusList = _.sortBy(project.us_statuses, "order")
 
-            @.loadStatusViewMode()
+            @.generateStatusViewModes()
+
             @scope.$emit("project:loaded", project)
             return project
 
@@ -177,13 +179,22 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
     ## View Mode methods
 
-    loadStatusViewMode: ->
+    generateStatusViewModes: ->
+        storedStatusViewModes = @rs.kanban.getStatusViewModes(@scope.projectId)
+
         @scope.statusViewModes = {}
         for status in @scope.usStatusList
-            @scope.statusViewModes[status.id] = defaultViewMode
+            mode = storedStatusViewModes[status.id]
+            @scope.statusViewModes[status.id] = if _.has(defaultViewModes, mode) then mode else defaultViewMode
+
+        @.storeStatusViewModes()
+
+    storeStatusViewModes: ->
+        @rs.kanban.storeStatusViewModes(@scope.projectId, @scope.statusViewModes)
 
     updateStatusViewMode: (statusId, newViewMode) ->
         @scope.statusViewModes[statusId] = newViewMode
+        @.storeStatusViewModes()
 
     getCardClass: (statusId)->
         mode = @scope.statusViewModes[statusId] or defaultViewMode

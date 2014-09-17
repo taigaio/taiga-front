@@ -133,5 +133,6 @@ module.run([
     "$tgAttachmentsResourcesProvider",
     "$tgMdRenderResourcesProvider",
     "$tgHistoryResourcesProvider",
+    "$tgKanbanResourcesProvider",
     initResources
 ])
