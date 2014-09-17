@@ -89,7 +89,6 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @scope.project = project
             @scope.$emit('project:loaded', project)
 
-            # TODO: add issueTypeList and issueTypeById
             @scope.issueStatusById = groupBy(project.issue_statuses, (x) -> x.id)
             @scope.issueStatusList = _.sortBy(project.issue_statuses, "order")
             @scope.severityById = groupBy(project.severities, (x) -> x.id)
