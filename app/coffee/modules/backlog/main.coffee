@@ -71,7 +71,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             #     theme: 'minimal-dark'
             #     scrollInertia: 0
             #     axis: 'y'
-            # });
+            # })
 
         # On Error
         promise.then null, (xhr) =>
@@ -520,7 +520,7 @@ BacklogDirective = ($repo, $rootscope) ->
 
             $ctrl.toggleShowTags()
 
-            showHideTags($ctrl);
+            showHideTags($ctrl)
 
     showHideTags = ($ctrl) ->
         elm = angular.element("#show-tags")
