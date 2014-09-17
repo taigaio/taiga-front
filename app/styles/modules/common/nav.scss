@@ -4,7 +4,7 @@
     background-position: left bottom;
     flex-wrap: wrap;
     height: 100%;
-    padding: 2rem .3rem;
+    padding: 0 .3rem;
     position: fixed;
     text-transform: uppercase;
     width: 90px;
@@ -13,9 +13,10 @@
 
 .logo {
     line-height: inherit;
-    margin: .5rem 0 2rem;
+    margin: 0 0 .9rem;
     img {
         width: 100%;
+        padding: 17%;
     }
 }
 
