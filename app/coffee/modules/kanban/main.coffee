@@ -117,7 +117,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @scope.project.tags_colors = tags_colors
 
     loadUserstories: ->
-        return @rs.userstories.listUnassigned(@scope.projectId).then (userstories) =>
+        return @rs.userstories.listAll(@scope.projectId).then (userstories) =>
             @scope.userstories = userstories
             @scope.usByStatus = _.groupBy(userstories, "status")
 

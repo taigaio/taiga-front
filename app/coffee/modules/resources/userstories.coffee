@@ -38,6 +38,12 @@ resourceProvider = ($repo, $http, $urls, $storage) ->
         service.storeQueryParams(projectId, params)
         return $repo.queryMany("userstories", params)
 
+    service.listAll = (projectId, filters) ->
+        params = {"project": projectId}
+        params = _.extend({}, params, filters or {})
+        service.storeQueryParams(projectId, params)
+        return $repo.queryMany("userstories", params)
+
     service.bulkCreate = (projectId, status, bulk) ->
         data = {
             project_id: projectId
