@@ -160,6 +160,29 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame) ->
             promise.then null, (data) ->
                 $confirm.notify("error", data._error_message)
 
+        saveValue = (target)->
+            form = target.parents("form").checksley()
+            return if not form.validate()
+
+            value = target.scope().value
+            promise = $repo.save(value)
+            promise.then =>
+                row = target.parents(".row.table-main")
+                row.hide()
+                row.siblings(".visualization").css("display": "flex")
+
+            promise.then null, (data) ->
+                $confirm.notify("error")
+                form.setErrors(data)
+
+        cancel = (target) ->
+            row = target.parents(".row.table-main")
+            value = target.scope().value
+            $scope.$apply ->
+                row.hide()
+                value.revert()
+                row.siblings(".visualization").css("display": "flex")
+
         $el.on "submit", "form", (event) ->
             event.preventDefault()
             submit()
@@ -207,34 +230,27 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame) ->
 
             row = target.parents(".row.table-main")
             row.hide()
-            row.siblings(".edition").css("display": "flex")
+            editionRow = row.siblings(".edition")
+            editionRow.css("display": "flex")
+            editionRow.find('input:visible').first().focus().select()
+
+        $el.on "keyup", ".edition input", (event) ->
+            if event.keyCode == 13
+                target = angular.element(event.currentTarget)
+                saveValue(target)
+            else if event.keyCode == 27
+                target = angular.element(event.currentTarget)
+                cancel(target)
 
         $el.on "click", ".save", (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
-            form = target.parents("form").checksley()
-            return if not form.validate()
-
-            value = target.scope().value
-            promise = $repo.save(value)
-            promise.then =>
-                row = target.parents(".row.table-main")
-                row.hide()
-                row.siblings(".visualization").css("display": "flex")
-
-            promise.then null, (data) ->
-                $confirm.notify("error")
-                form.setErrors(data)
+            saveValue(target)
 
         $el.on "click", ".cancel", (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
-            row = target.parents(".row.table-main")
-            value = target.scope().value
-            $scope.$apply ->
-                row.hide()
-                value.revert()
-                row.siblings(".visualization").css("display": "flex")
+            cancel(target)
 
         $el.on "click", ".delete-value", (event) ->
             event.preventDefault()
