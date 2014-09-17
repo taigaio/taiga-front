@@ -138,7 +138,8 @@ TagLineDirective = ($log, $rs) ->
                 $model.$setViewValue(normalizeTags(tags))
 
         $scope.$watch $attrs.ngModel, (val) ->
-            renderTags($el, val, editable, $scope.project.tags_colors) if val?
+            tags_colors = if $scope.project?.tags_colors? then $scope.project.tags_colors else []
+            renderTags($el, val, editable, tags_colors)
 
         bindOnce $scope, "projectId", (projectId) ->
             # If not editable, no tags preloading is needed.
