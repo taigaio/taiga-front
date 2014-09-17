@@ -231,14 +231,6 @@
     form {
         @include table-flex-child(0, 600px, 0, 600px);
     }
-    .sprint-name {
-        &:focus {
-            +.last-sprint-name {
-                @include transition (opacity .3s linear);
-                opacity: 0;
-            }
-        }
-    }
     .last-sprint-name {
         @include transition (opacity .3s linear);
         color: $gray;
@@ -246,6 +238,10 @@
         position: absolute;
         right: 1rem;
         top: .7rem;
+        &.disappear {
+            @include transition (opacity .3s linear);
+            opacity: 0;
+        }
     }
     .dates {
         margin-bottom: 1rem;

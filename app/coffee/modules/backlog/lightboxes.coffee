@@ -68,7 +68,9 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading)
                 $loading.finish(target)
                 form.setErrors(data)
                 if data._error_message
-                    $confirm.notify("error", data._error_message)
+                    $confirm.notify("light-error", data._error_message)
+                else if data.__all__
+                    $confirm.notify("light-error", data.__all__[0])
 
         remove = ->
             #TODO: i18n
@@ -107,6 +109,7 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading)
             $el.find(".title").text("New sprint") #TODO i18n
             $el.find(".button-green").text("Create") #TODO i18n
             lightboxService.open($el)
+            $el.find(".sprint-name").focus()
 
         $scope.$on "sprintform:edit", (ctx, sprint) ->
             createSprint = false
@@ -119,6 +122,14 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading)
             $el.find(".title").text("Edit sprint") #TODO i18n
             $el.find(".button-green").text("Save") #TODO i18n
             lightboxService.open($el)
+            $el.find(".sprint-name").focus().select()
+            $el.find(".last-sprint-name").addClass("disappear")
+
+        $el.on "keyup", ".sprint-name", (event) ->
+            if $el.find(".sprint-name").val().length > 0
+                $el.find(".last-sprint-name").addClass("disappear")
+            else
+                $el.find(".last-sprint-name").removeClass("disappear")
 
         $el.on "click", ".button-green", (event) ->
             event.preventDefault()
