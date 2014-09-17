@@ -7,16 +7,14 @@ block content
     div.wrapper(tg-kanban, ng-controller="KanbanController as ctrl"
                 ng-init="section='kanban'")
         section.main.kanban
-            div.kanban-detail-header
-                h1
-                    span(tg-bo-bind="project.name", class="project-name")
-                    span.green(tg-bo-bind="sectionName")
-                div.kanban-settings
-                    // a.button.button-trans(href="", title="Filter")
-                    //     span.icon.icon-filter
-                    //     span Filters
-                    //a.button.button-gray(href="", title="Filter")
-                    //    span Show Statistics
+            header
+                include views/components/mainTitle
+            //-    div.kanban-settings
+            //-        // a.button.button-trans(href="", title="Filter")
+            //-        //     span.icon.icon-filter
+            //-        //     span Filters
+            //-        //a.button.button-gray(href="", title="Filter")
+            //-        //    span Show Statistics
             //-include views/components/large-summary
             //-include views/modules/burndown
             //-include views/modules/list-filters-kanban
