@@ -52,7 +52,6 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @urls, @params, @q, @location, @appTitle, tgLoader) ->
-        @scope.sprintId = @params.id
         @scope.sectionName = "Issues"
         @scope.filters = {}
 
