@@ -139,10 +139,12 @@ HistoryDirective = ($log) ->
                 <a href="" title="Show comment" class="hide-deleted-comment hidden">(Hide deleted comment)</a>
                 <div class="comment-body wysiwyg"><%= deleteComment %></div>
             </div>
-            <a href="" class="comment-restore" data-activity-id="<%- activityId %>">
-                <span class="icon icon-reload"></span>
-                <span>Restore comment</span>
-            </a>
+            <% if (canRestoreComment) { %>
+                <a href="" class="comment-restore" data-activity-id="<%- activityId %>">
+                    <span class="icon icon-reload"></span>
+                    <span>Restore comment</span>
+                </a>
+            <% } %>
         </div>
     """)
 
@@ -172,7 +174,7 @@ HistoryDirective = ($log) ->
                 <div class="comment wysiwyg">
                     <%= comment %>
                 </div>
-                <% if (!deleteCommentDate && mode !== "activity") { %>
+                <% if (!deleteCommentDate && mode !== "activity" && canDeleteComment) { %>
                     <a href="" class="icon icon-delete comment-delete" data-activity-id="<%- activityId %>"></a>
                 <% } %>
             <% } %>
@@ -362,9 +364,10 @@ HistoryDirective = ($log) ->
             if (comment.delete_comment_date or comment.delete_comment_user)
                 return templateDeletedComment({
                     deleteCommentDate: moment(comment.delete_comment_date).format("DD MMM YYYY HH:mm")
-                    deleteCommentUser: getUserFullName(comment.delete_comment_user)
+                    deleteCommentUser: comment.delete_comment_user.name
                     deleteComment: comment.comment_html
                     activityId: comment.id
+                    canRestoreComment: comment.delete_comment_user.pk == $scope.user.id or $scope.project.my_permissions.indexOf("modify_project") > -1
                 })
 
             return templateActivity({
@@ -376,8 +379,9 @@ HistoryDirective = ($log) ->
                 changes: renderChangeEntries(comment, false)
                 mode: "comment"
                 deleteCommentDate: moment(comment.delete_comment_date).format("DD MMM YYYY HH:mm") if comment.delete_comment_date
-                deleteCommentUser: getUserFullName(comment.delete_comment_user) if comment.delete_comment_user
+                deleteCommentUser: comment.delete_comment_user.name if comment.delete_comment_user?.name
                 activityId: comment.id
+                canDeleteComment: comment.user.pk == $scope.user.id or $scope.project.my_permissions.indexOf("modify_project") > -1
             })
 
         renderChange = (change) ->
@@ -390,7 +394,7 @@ HistoryDirective = ($log) ->
                 changesText: ""
                 mode: "activity"
                 deleteCommentDate: moment(change.delete_comment_date).format("DD MMM YYYY HH:mm") if change.delete_comment_date
-                deleteCommentUser: getUserFullName(change.delete_comment_user) if change.delete_comment_user
+                deleteCommentUser: change.delete_comment_user.name if change.delete_comment_user?.name
                 activityId: change.id
             })
 
