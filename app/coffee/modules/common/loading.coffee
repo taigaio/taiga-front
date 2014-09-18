@@ -23,14 +23,16 @@ module = angular.module("taigaCommon")
 
 class TgLoadingService extends taiga.Service
     start: (target) ->
-        target.data('loading-old-content', target.html())
-        target.addClass('loading')
-        target.html("<span class='icon icon-spinner'></span>")
+        if not target.hasClass('loading')
+            target.data('loading-old-content', target.html())
+            target.addClass('loading')
+            target.html("<span class='icon icon-spinner'></span>")
 
     finish: (target) ->
-        oldContent = target.data('loading-old-content')
-        target.data('loading-old-content', null)
-        target.html(oldContent)
-        target.removeClass('loading')
+        if target.hasClass('loading')
+            oldContent = target.data('loading-old-content')
+            target.data('loading-old-content', null)
+            target.html(oldContent)
+            target.removeClass('loading')
 
 module.service("$tgLoading", TgLoadingService)
