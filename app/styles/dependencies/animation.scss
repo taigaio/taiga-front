@@ -45,3 +45,18 @@
         opacity: 1;
     }
 }
+
+@include keyframes(formSlide) {
+    0% {
+        @include filter(blur(5px));
+        @include transform(translateY(10rem));
+        opacity: 0;
+    }
+    50% {
+        @include filter(blur(0));
+    }
+    100% {
+        @include transform(translateY(0));
+        opacity: 1;
+    }
+}

@@ -1,6 +1,6 @@
 .us-assigned-to {
     @include table-flex();
-    margin-top: 2rem;
+    margin-top: 1rem;
     position: relative;
     .user-avatar {
         @include table-flex-child(1, 0);
@@ -30,8 +30,8 @@
             color: $gray-light;
             opacity: 1;
             position: absolute;
-            right: 1rem;
-            top: 1rem;
+            right: 0;
+            top: 0;
             &:hover {
                 color: $red;
             }

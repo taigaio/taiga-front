@@ -1,4 +1,5 @@
-.lightbox {
+.lightbox,
+%lightbox {
     @include background-opacity($white, .95);
     @include table-flex(center, center, flex, row, wrap, center);
     @include transition (opacity .3s ease);
@@ -27,7 +28,8 @@
     textarea {
         resize: vertical;
     }
-    .button-green {
+    .button-green,
+    .button-gray {
         display: block;
         padding: 12px;
         text-align: center;
@@ -493,12 +495,6 @@
         @extend %medium;
         padding: .5rem;
         text-align: center;
-    }
-}
-
-.lightbox_create-project {
-    form {
-        width: 600px;
     }
 }
 

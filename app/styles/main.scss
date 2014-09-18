@@ -62,6 +62,7 @@ $prefix-for-spec:      true;
 @import 'modules/common/attachments';
 @import 'modules/common/related-tasks';
 @import 'modules/common/history';
+@import 'modules/common/wizard';
 
 //Project modules
 @import 'modules/home-projects-list';

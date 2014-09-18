@@ -21,6 +21,7 @@
 
 taiga = @.taiga
 bindOnce = @.taiga.bindOnce
+timeout = @.taiga.timeout
 
 module = angular.module("taigaProject")
 
@@ -28,6 +29,7 @@ CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $project
     link = ($scope, $el, attrs) ->
         $scope.data = {}
         $scope.templates = []
+
         form = $el.find("form").checksley({"onlyOneErrorElement": true})
 
         onSuccessSubmit = (response) ->
@@ -37,8 +39,14 @@ CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $project
             $rootscope.$broadcast("projects:reload")
 
         onErrorSubmit = (response) ->
-            $confirm.notify("light-error", "According to our Oompa Loompas, project name is
-                                            already in use.") #TODO: i18n
+            form.setErrors(response)
+            selectors = []
+            for error_field in _.keys(response)
+                selectors.push("[name=#{error_field}]")
+            $el.find(".active").removeClass("active")
+            error_step = $el.find(selectors.join(",")).first().parents(".wizard-step")
+            error_step.addClass("active")
+            $el.find('.progress-bar').removeClass().addClass('progress-bar').addClass(error_step.data("step"))
 
         submit = ->
             if not form.validate()
@@ -48,18 +56,63 @@ CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $project
             promise.then(onSuccessSubmit, onErrorSubmit)
 
         $scope.$on "projects:create", ->
-            $scope.data = {}
+            $scope.$apply ->
+                $scope.data = {
+                    total_story_points: 100
+                    total_milestones: 5
+                }
 
             if !$scope.templates.length
-                $rs.projects.templates()
-                    .then (result) =>
-                        $scope.templates = _.map(result, (item) -> {"id": item.id, "name": item.name})
+                $rs.projects.templates().then (result) =>
+                    $scope.templates = result
+                    $scope.data.creation_template = _.head(_.filter($scope.templates, (x) -> x.slug == "scrum")).id
+            else
+                $scope.$apply ->
+                    $scope.data.creation_template = _.head(_.filter($scope.templates, (x) -> x.slug == "scrum")).id
+
+            $el.find(".active").removeClass("active")
+            $el.find(".create-step1").addClass("active")
 
             lightboxService.open($el)
+            timeout 600, ->
+                $el.find(".progress-bar").addClass('step1')
 
-        $el.on "click", "a.button-green", (event) ->
+        $el.on "click", ".button-next", (event) ->
+            event.preventDefault()
+
+            current = $el.find(".active")
+
+            valid = true
+            for field in form.fields
+                if current.find("[name=#{field.element.attr('name')}]").length
+                    valid = field.validate() != false and valid
+
+            if not valid
+                return
+
+            next = current.next()
+            current.toggleClass('active')
+            next.toggleClass('active')
+            step = next.data('step')
+            $el.find('.progress-bar').removeClass().addClass('progress-bar').addClass(step)
+
+        $el.on "click", ".button-prev", (event) ->
+            event.preventDefault()
+            current = $el.find(".active")
+            prev = current.prev()
+            current.toggleClass('active')
+            prev.toggleClass('active')
+            step = prev.data('step')
+            $el.find('.progress-bar').removeClass().addClass('progress-bar').addClass(step)
+
+
+        $el.on "click", ".button-submit", (event) ->
             event.preventDefault()
             submit()
+
+        $el.on "click", ".close", (event) ->
+            event.preventDefault()
+            lightboxService.close($el)
 
     return {link:link}
 
