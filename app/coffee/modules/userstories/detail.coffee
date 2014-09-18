@@ -365,7 +365,7 @@ UsStatusDetailDirective = () ->
 module.directive("tgUsStatusDetail", UsStatusDetailDirective)
 
 #############################################################################
-## User story status directive
+## User story estimation directive
 #############################################################################
 
 UsEstimationDirective = ($log) ->
@@ -409,7 +409,7 @@ UsEstimationDirective = ($log) ->
                 pointObj = $scope.pointsById[pointId]
 
                 role = _.clone(role, true)
-                role.points = if pointObj? and pointObj.value? then pointObj.value else "?"
+                role.points = if pointObj? and pointObj.name? then pointObj.name else "?"
                 return role
 
             html = mainTemplate({totalPoints: totalPoints, roles: roles})
