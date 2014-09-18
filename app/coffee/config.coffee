@@ -45,7 +45,9 @@ class ConfigService extends taiga.Service
         @.config = _.merge(defaults, localconfig)
 
     get: (key, defaultValue=null) ->
-        return @.config[key] || defaultValue
+        if _.has(@.config, key)
+            return @.config[key]
+        return defaultValue
 
 
 # Initialize config loading local configuration.

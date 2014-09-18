@@ -148,7 +148,7 @@ module.service("$tgAuth", AuthService)
 # Directive that manages the visualization of public register
 # message/link on login page.
 
-PublicRegisterMessageDirective = ($config) ->
+PublicRegisterMessageDirective = ($config, $navUrls) ->
     template = _.template("""
     <p class="login-text">
         <span>Not registered yet?</span>
@@ -156,10 +156,11 @@ PublicRegisterMessageDirective = ($config) ->
     </p>""")
 
     templateFn = ->
-        url = $config.get("publicRegisterEnabled")
-        if not url
+        publicRegisterEnabled = $config.get("publicRegisterEnabled")
+        console.log publicRegisterEnabled
+        if not publicRegisterEnabled
             return ""
-        return template({url:url})
+        return template({url:$navUrls.resolve("register")})
 
     return {
         restrict: "AE"
@@ -167,12 +168,11 @@ PublicRegisterMessageDirective = ($config) ->
         template: templateFn
     }
 
+module.directive("tgPublicRegisterMessage", ["$tgConfig", "$tgNavUrls", PublicRegisterMessageDirective])
 
-module.directive("tgPublicRegisterMessage", ["$tgConfig", PublicRegisterMessageDirective])
 
-LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls) ->
+LoginDirective = ($auth, $confirm, $location, $routeParams, $navUrls) ->
     link = ($scope, $el, $attrs) ->
-        $scope.pubblicRegisterEnabled = $config.get("pubblicRegisterEnabled")
         $scope.data = {}
 
         onSuccessSubmit = (response) ->
@@ -204,15 +204,19 @@ LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls) -
 
     return {link:link}
 
-module.directive("tgLogin", ["$tgAuth", "$tgConfirm", "$tgLocation", "$tgConfig", "$routeParams", "$tgNavUrls",
+module.directive("tgLogin", ["$tgAuth", "$tgConfirm", "$tgLocation", "$routeParams", "$tgNavUrls",
                              LoginDirective])
 
 #############################################################################
 ## Register Directive
 #############################################################################
 
-RegisterDirective = ($auth, $confirm, $location, $config, $navUrls) ->
+RegisterDirective = ($auth, $confirm, $location, $navUrls, $config) ->
     link = ($scope, $el, $attrs) ->
+        if not $config.get("publicRegisterEnabled")
+            $location.path("/not-found")
+            $location.replace()
+
         $scope.data = {}
         form = $el.find("form").checksley()
 
@@ -241,7 +245,7 @@ RegisterDirective = ($auth, $confirm, $location, $config, $navUrls) ->
 
     return {link:link}
 
-module.directive("tgRegister", ["$tgAuth", "$tgConfirm", "$tgLocation", "$tgConfig", "$tgNavUrls",
+module.directive("tgRegister", ["$tgAuth", "$tgConfirm", "$tgLocation", "$tgNavUrls", "$tgConfig",
                                 RegisterDirective])
 
 #############################################################################
@@ -333,7 +337,7 @@ module.directive("tgChangePasswordFromRecovery", ["$tgAuth", "$tgConfirm", "$tgL
 ## Invitation
 #############################################################################
 
-InvitationDirective = ($auth, $confirm, $location, $params, $config, $navUrls) ->
+InvitationDirective = ($auth, $confirm, $location, $params, $navUrls) ->
     link = ($scope, $el, $attrs) ->
         token = $params.token
 
@@ -404,7 +408,7 @@ InvitationDirective = ($auth, $confirm, $location, $params, $config, $navUrls) -
 
     return {link:link}
 
-module.directive("tgInvitation", ["$tgAuth", "$tgConfirm", "$tgLocation", "$routeParams", "$tgConfig",
+module.directive("tgInvitation", ["$tgAuth", "$tgConfirm", "$tgLocation", "$routeParams",
                                   "$tgNavUrls", InvitationDirective])
 
 #############################################################################
