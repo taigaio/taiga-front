@@ -26,6 +26,6 @@ div.kanban-table
                                             tg-kanban-sortable,
                                             tg-kanban-wip-limit,
                                             tg-kanban-column-height-fixer)
-                div.kanban-task(ng-repeat="us in usByStatus[status.id]|orderBy:'kanban_order' track by us.id",
+                div.kanban-task(ng-repeat="us in usByStatus[status.id] track by us.id",
                                 tg-kanban-userstory, ng-model="us",
                                 ng-class="ctrl.getCardClass(status.id)")

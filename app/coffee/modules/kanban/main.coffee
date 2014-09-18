@@ -133,6 +133,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             for status in @scope.usStatusList
                 if not @scope.usByStatus[status.id]?
                     @scope.usByStatus[status.id] = []
+                @scope.usByStatus[status.id] = _.sortBy(@scope.usByStatus[status.id], "kanban_order")
 
             # The broadcast must be executed when the DOM has been fully reloaded.
             # We can't assure when this exactly happens so we need a defer
@@ -217,7 +218,6 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
             # Add us to new status column.
             @scope.usByStatus[statusId].splice(index, 0, us)
-
             us.status = statusId
         else
             r = @scope.usByStatus[statusId].indexOf(us)
@@ -225,6 +225,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @scope.usByStatus[statusId].splice(index, 0, us)
 
         itemsToSave = @.resortUserStories(@scope.usByStatus[statusId])
+        @scope.usByStatus[statusId] = _.sortBy(@scope.usByStatus[statusId], "kanban_order")
 
         # Persist the userstory
         promise = @repo.save(us)
@@ -232,6 +233,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         # Rehash userstories order field
         # and persist in bulk all changes.
         promise = promise.then =>
+            itemsToSave = _.reject(itemsToSave, {"id": us.id})
             data = @.prepareBulkUpdateData(itemsToSave)
 
             return @rs.userstories.bulkUpdateKanbanOrder(us.project, data).then =>
