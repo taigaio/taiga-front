@@ -7,7 +7,8 @@ form
               data-required="true", data-maxlength="500")
 
     fieldset.estimation
-        //- Render by tg-lb-create-edit-userstory
+        tg-us-estimation(ng-model="us")
+            //- Render by tg-lb-create-edit-userstory
 
     fieldset
         select(name="status", ng-model="us.status", ng-options="s.id as s.name for s in usStatusList",
