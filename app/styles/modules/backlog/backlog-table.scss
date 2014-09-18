@@ -23,7 +23,7 @@
             background: transparent;
         }
         .user-stories {
-            @include table-flex-child(20, 500px, 0);
+            @include table-flex-child(20, 365px, 0);
         }
         .status {
             @include table-flex-child(0, 150px, 0);
@@ -95,6 +95,8 @@
         @extend %medium;
         @extend %bold;
         border-bottom: 2px solid $gray-light;
+        flex-wrap: nowrap;
+        padding-right: 30px;
     }
     .points {
         cursor: pointer;
@@ -109,6 +111,7 @@
 .backlog-table-body {
     .row {
         cursor: move;
+        flex-wrap: nowrap;
         position: relative;
         &:hover {
             @include transition (background .2s ease-in);
@@ -137,7 +140,7 @@
         background: lighten($green-taiga, 60%);
     }
     .user-story-name {
-        position: relative;
+        display: flex;
         input {
             margin-right: 1rem;
             vertical-align: super;
@@ -150,6 +153,7 @@
         }
         a {
             display: inline-block;
+            flex-grow: 20;
             max-width: 90%;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -204,17 +208,16 @@
         @include transition (all .2s ease-in);
         @extend %large;
         color: $gray-light;
+        width: 30px;
         &:hover {
             @include transition (all .2s ease-in);
             color: $grayer;
         }
     }
     .us-settings {
+        flex-shrink: 0;
         margin: 0 0 0 2rem;
         opacity: 0;
-        position: absolute;
-        right: 0;
-        top: .1rem;
     }
     .icon-drag-v {
         cursor: move;
