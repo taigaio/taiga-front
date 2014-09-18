@@ -14,11 +14,13 @@
             @include transition (background .2s ease-in);
         }
         .user-stories {
-            @include table-flex-child(5, 500px, 0, 500px);
+            @include table-flex-child(5, auto, 1);
         }
         .status,
         .points {
-            @include table-flex-child(1, 0, 0);
+            @include table-flex-child(0, 100px, 0);
+            padding: 0 1rem;
+            text-align: center;
         }
         .assigned-to {
             @include table-flex-child(1, 250px, 0, 250px);
