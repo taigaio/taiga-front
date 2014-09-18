@@ -40,10 +40,11 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
         "$routeParams",
         "$q",
         "$tgLocation",
+        "$tgNavUrls",
         "$appTitle"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @appTitle) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls, @appTitle) ->
         _.bindAll(@)
 
         @scope.sectionName = "Manage Members" #i18n
@@ -55,8 +56,11 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
         promise.then () =>
             @appTitle.set("Membership - " + @scope.project.name)
 
-        promise.then null, ->
-            console.log "FAIL" #TODO
+        promise.then null, (xhr) =>
+            if xhr and xhr.status == 404
+                @location.path(@navUrls.resolve("not-found"))
+                @location.replace()
+            return @q.reject(xhr)
 
         @scope.$on("membersform:new:success", @.loadMembers)
 
@@ -79,10 +83,6 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
         promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
             @scope.projectId = data.project
             return data
-
-        promise.then null, =>
-            @location.path("/not-found")
-            @location.replace()
 
         return promise.then(=> @.loadProject())
                       .then(=> @.loadUsersAndRoles())

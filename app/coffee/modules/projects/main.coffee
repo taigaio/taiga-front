@@ -26,6 +26,7 @@ bindOnce = @.taiga.bindOnce
 class ProjectsController extends taiga.Controller
     @.$inject = [
         "$scope",
+        "$q",
         "$tgResources",
         "$rootScope",
         "$tgNavUrls",
@@ -36,19 +37,27 @@ class ProjectsController extends taiga.Controller
         "tgLoader"
     ]
 
-    constructor: (@scope, @rs, @rootscope, @navurls, @auth, @location, @appTitle, @projectUrl, @tgLoader, @navUrls) ->
+    constructor: (@scope, @q, @rs, @rootscope, @navUrls, @auth, @location, @appTitle, @projectUrl,
+                  @tgLoader) ->
         @appTitle.set("Projects")
 
         if !@auth.isAuthenticated()
-            @location.path(@navurls.resolve("login"))
+            @location.path(@navUrls.resolve("login"))
 
         @.user = @auth.getUser()
 
         @.projects = []
-        @.loadInitialData()
-        .then () =>
+        promise = @.loadInitialData()
+
+        promise.then () =>
             @scope.$emit("projects:loaded")
             @tgLoader.pageLoaded()
+
+        promise.then null, (xhr) =>
+            if xhr and xhr.status == 404
+                @location.path(@navUrls.resolve("not-found"))
+                @location.replace()
+            return @q.reject(xhr)
 
     loadInitialData: ->
         return @rs.projects.list().then (projects) =>
@@ -57,12 +66,14 @@ class ProjectsController extends taiga.Controller
             for project in projects
                 project.url = @projectUrl.get(project)
 
+            return projects
+
     newProject: ->
         @rootscope.$broadcast("projects:create")
 
     logout: ->
         @auth.logout()
-        @location.path(@navurls.resolve("login"))
+        @location.path(@navUrls.resolve("login"))
 
 module.controller("ProjectsController", ProjectsController)
 
@@ -76,13 +87,21 @@ class ProjectController extends taiga.Controller
         "$q",
         "$rootScope",
         "$appTitle",
-        "$tgLocation"
+        "$tgLocation",
+        "$tgNavUrls"
     ]
 
-    constructor: (@scope, @rs, @repo, @params, @q, @rootscope, @appTitle, @location) ->
-        @.loadInitialData()
-            .then () =>
-                @appTitle.set(@scope.project.name)
+    constructor: (@scope, @rs, @repo, @params, @q, @rootscope, @appTitle, @location, @navUrls) ->
+        promise = @.loadInitialData()
+
+        promise.then () =>
+            @appTitle.set(@scope.project.name)
+
+        promise.then null, (xhr) =>
+            if xhr and xhr.status == 404
+                @location.path(@navUrls.resolve("not-found"))
+                @location.replace()
+            return @q.reject(xhr)
 
     loadInitialData: ->
         # Resolve project slug
@@ -90,13 +109,8 @@ class ProjectController extends taiga.Controller
             @scope.projectId = data.project
             return data
 
-        promise.then null, =>
-            @location.path("/not-found")
-            @location.replace()
-
-        return promise
-                .then(=> @.loadPageData())
-                .then(=> @scope.$emit("project:loaded", @scope.project))
+        return promise.then(=> @.loadPageData())
+                      .then(=> @scope.$emit("project:loaded", @scope.project))
 
     loadPageData: ->
         return @q.all([

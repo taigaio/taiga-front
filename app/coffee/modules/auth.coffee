@@ -214,7 +214,7 @@ module.directive("tgLogin", ["$tgAuth", "$tgConfirm", "$tgLocation", "$routePara
 RegisterDirective = ($auth, $confirm, $location, $navUrls, $config) ->
     link = ($scope, $el, $attrs) ->
         if not $config.get("publicRegisterEnabled")
-            $location.path("/not-found")
+            $location.path($navUrls.resolve("not-found"))
             $location.replace()
 
         $scope.data = {}

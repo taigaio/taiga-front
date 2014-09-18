@@ -45,6 +45,8 @@ module.directive("tgMain", ["$rootScope", "$window", TaigaMainDirective])
 urls = {
     "home": "/"
     "error": "/error"
+    "not-found": "/not-found"
+
     "login": "/login"
     "forgot-password": "/forgot-password"
     "change-password": "/change-password/:token"

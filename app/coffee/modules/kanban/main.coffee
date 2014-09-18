@@ -58,10 +58,12 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         "$q",
         "$tgLocation",
         "$appTitle",
+        "$tgNavUrls",
         "tgLoader"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @appTitle, tgLoader) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @appTitle, @navUrls,
+                  tgLoader) ->
         _.bindAll(@)
         @scope.sectionName = "Kanban"
         @scope.statusViewModes = {}
@@ -73,17 +75,10 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @appTitle.set("Kanban - " + @scope.project.name)
             tgLoader.pageLoaded()
 
-            # $(".task-column").mCustomScrollbar({
-            #     theme: 'minimal-dark'
-            #     scrollInertia: 0
-            #     axis: 'y'
-            # });
-
-
         # On Error
         promise.then null, (xhr) =>
             if xhr and xhr.status == 404
-                @location.path("/not-found")
+                @location.path(@navUrls.resolve("not-found"))
                 @location.replace()
             return @q.reject(xhr)
 

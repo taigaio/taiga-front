@@ -45,10 +45,12 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$q",
         "$appTitle",
         "$tgLocation",
+        "$tgNavUrls"
         "tgLoader"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @appTitle, @location, tgLoader) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @appTitle, @location, @navUrls,
+                  tgLoader) ->
         _.bindAll(@)
 
         @scope.sectionName = "Taskboard"
@@ -63,7 +65,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
         # On Error
         promise.then null, (xhr) =>
             if xhr and xhr.status == 404
-                @location.path("/not-found")
+                @location.path(@navUrls.resolve("not-found"))
                 @location.replace()
             return @q.reject(xhr)
 

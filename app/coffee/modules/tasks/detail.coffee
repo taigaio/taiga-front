@@ -46,7 +46,8 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "tgLoader"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @log, @appTitle, @navUrls, tgLoader) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @log, @appTitle, @navUrls,
+                  tgLoader) ->
         @scope.taskRef = @params.taskref
         @scope.sectionName = "Task Details"
 
@@ -56,8 +57,11 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             @appTitle.set(@scope.task.subject + " - " + @scope.project.name)
             tgLoader.pageLoaded()
 
-        promise.then null, ->
-            console.log "FAIL" #TODO
+        promise.then null, (xhr) =>
+            if xhr and xhr.status == 404
+                @location.path(@navUrls.resolve("not-found"))
+                @location.replace()
+            return @q.reject(xhr)
 
 
         @scope.$on("attachment:create", => @rootscope.$broadcast("history:reload"))
@@ -110,10 +114,6 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.projectId = data.project
             @scope.taskId = data.task
             return data
-
-        promise.then null, =>
-            @location.path("/not-found")
-            @location.replace()
 
         return promise.then(=> @.loadProject())
                       .then(=> @.loadUsersAndRoles())

@@ -48,10 +48,12 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         "$q",
         "$tgLocation",
         "$appTitle",
+        "$tgNavUrls",
         "tgLoader"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @urls, @params, @q, @location, @appTitle, tgLoader) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @urls, @params, @q, @location, @appTitle,
+                  @navUrls, tgLoader) ->
         @scope.sectionName = "Issues"
         @scope.filters = {}
 
@@ -72,7 +74,7 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         # On Error
         promise.then null, (xhr) =>
             if xhr and xhr.status == 404
-                @location.path("/not-found")
+                @location.path(@navUrls.resolve("not-found"))
                 @location.replace()
             return @q.reject(xhr)
 

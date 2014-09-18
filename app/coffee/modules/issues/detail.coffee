@@ -61,7 +61,7 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         # On Error
         promise.then null, (xhr) =>
             if xhr and xhr.status == 404
-                @location.path("/not-found")
+                @location.path(@navUrls.resolve("not-found"))
                 @location.replace()
             return @q.reject(xhr)
 

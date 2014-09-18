@@ -45,10 +45,11 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$routeParams",
         "$q",
         "$tgLocation",
+        "$tgNavUrls",
         "$appTitle"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @appTitle) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls, @appTitle) ->
         @scope.project = {}
 
         promise = @.loadInitialData()
@@ -58,7 +59,7 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
 
         promise.then null, (xhr) =>
             if xhr and xhr.status == 404
-                @location.path("/not-found")
+                @location.path(@navUrls.resolve("not-found"))
                 @location.replace()
             return @q.reject(xhr)
 

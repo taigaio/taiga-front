@@ -29,62 +29,63 @@ module = angular.module("taigaUserSettings")
 #############################################################################
 
 class UserSettingsController extends mixOf(taiga.Controller, taiga.PageMixin)
-      @.$inject = [
-          "$scope",
-          "$rootScope",
-          "$tgRepo",
-          "$tgConfirm",
-          "$tgResources",
-          "$routeParams",
-          "$q",
-          "$tgLocation",
-          "$tgAuth"
-      ]
+    @.$inject = [
+        "$scope",
+        "$rootScope",
+        "$tgRepo",
+        "$tgConfirm",
+        "$tgResources",
+        "$routeParams",
+        "$q",
+        "$tgLocation",
+        "$tgNavUrls",
+        "$tgAuth"
+    ]
 
-      constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @auth) ->
-          @scope.sectionName = "User Profile" #i18n
-          @scope.project = {}
-          @scope.user = @auth.getUser()
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls, @auth) ->
+        @scope.sectionName = "User Profile" #i18n
+        @scope.project = {}
+        @scope.user = @auth.getUser()
 
-          promise = @.loadInitialData()
-          promise.then null, ->
-              console.log "FAIL" #TODO
+        promise = @.loadInitialData()
 
-      loadProject: ->
-          return @rs.projects.get(@scope.projectId).then (project) =>
-              @scope.project = project
-              @scope.$emit('project:loaded', project)
-              return project
+        promise.then null, (xhr) =>
+            if xhr and xhr.status == 404
+                @location.path(@navUrls.resolve("not-found"))
+                @location.replace()
+            return @q.reject(xhr)
 
-      loadInitialData: ->
-          promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
-              @scope.projectId = data.project
-              return data
+    loadProject: ->
+        return @rs.projects.get(@scope.projectId).then (project) =>
+            @scope.project = project
+            @scope.$emit('project:loaded', project)
+            return project
 
-          promise.then null, =>
-              @location.path("/not-found")
-              @location.replace()
+    loadInitialData: ->
+        promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
+            @scope.projectId = data.project
+            return data
 
-          return promise.then(=> @.loadProject())
+        return promise.then(=> @.loadProject())
 
-      saveUserProfile: ->
-          updatingEmail = @scope.user.isAttributeModified("email")
-          promise = @repo.save(@scope.user)
-          promise.then =>
-              @auth.setUser(@scope.user)
-              if updatingEmail
-                  @confirm.success("<strong>Check your inbox!</strong><br />
-                         We have sent a mail to your account<br />
-                         with the instructions to set your new address") #TODO: i18n
-              else
-                  @confirm.notify('success')
+    saveUserProfile: ->
+        updatingEmail = @scope.user.isAttributeModified("email")
+        promise = @repo.save(@scope.user)
+        promise.then =>
+            @auth.setUser(@scope.user)
+            if updatingEmail
+                @confirm.success("<strong>Check your inbox!</strong><br />
+                       We have sent a mail to your account<br />
+                       with the instructions to set your new address") #TODO: i18n
+            else
+                @confirm.notify('success')
 
-          promise.then null, (response) =>
-              @confirm.notify('error', response._error_message)
-              @scope.user = @auth.getUser()
+        promise.then null, (response) =>
+            @confirm.notify('error', response._error_message)
+            @scope.user = @auth.getUser()
 
-      openDeleteLightbox: ->
-          @rootscope.$broadcast("deletelightbox:new", @scope.user)
+    openDeleteLightbox: ->
+        @rootscope.$broadcast("deletelightbox:new", @scope.user)
 
 module.controller("UserSettingsController", UserSettingsController)
 

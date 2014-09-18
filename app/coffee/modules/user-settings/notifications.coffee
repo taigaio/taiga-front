@@ -31,49 +31,50 @@ module = angular.module("taigaUserSettings")
 #############################################################################
 
 class UserNotificationsController extends mixOf(taiga.Controller, taiga.PageMixin)
-      @.$inject = [
-          "$scope",
-          "$rootScope",
-          "$tgRepo",
-          "$tgConfirm",
-          "$tgResources",
-          "$routeParams",
-          "$q",
-          "$tgLocation",
-          "$tgAuth"
-      ]
+    @.$inject = [
+        "$scope",
+        "$rootScope",
+        "$tgRepo",
+        "$tgConfirm",
+        "$tgResources",
+        "$routeParams",
+        "$q",
+        "$tgLocation",
+        "$tgNavUrls",
+        "$tgAuth"
+    ]
 
-      constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @auth) ->
-          @scope.sectionName = "Email Notifications" #i18n
-          @scope.project = {}
-          @scope.user = @auth.getUser()
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls, @auth) ->
+        @scope.sectionName = "Email Notifications" #i18n
+        @scope.project = {}
+        @scope.user = @auth.getUser()
 
-          promise = @.loadInitialData()
-          promise.then null, ->
-              console.log "FAIL" #TODO
+        promise = @.loadInitialData()
 
-      loadProject: ->
-          return @rs.projects.get(@scope.projectId).then (project) =>
-              @scope.project = project
-              @scope.$emit('project:loaded', project)
-              return project
+        promise.then null, (xhr) =>
+            if xhr and xhr.status == 404
+                @location.path(@navUrls.resolve("not-found"))
+                @location.replace()
+            return @q.reject(xhr)
 
-      loadNotifyPolicies: ->
-          return @rs.notifyPolicies.list().then (notifyPolicies) =>
-              @scope.notifyPolicies = notifyPolicies
-              return notifyPolicies
+    loadProject: ->
+        return @rs.projects.get(@scope.projectId).then (project) =>
+            @scope.project = project
+            @scope.$emit('project:loaded', project)
+            return project
 
-      loadInitialData: ->
-          promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
-              @scope.projectId = data.project
-              return data
+    loadNotifyPolicies: ->
+        return @rs.notifyPolicies.list().then (notifyPolicies) =>
+            @scope.notifyPolicies = notifyPolicies
+            return notifyPolicies
 
-          promise.then null, =>
-              @location.path("/not-found")
-              @location.replace()
+    loadInitialData: ->
+        promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
+            @scope.projectId = data.project
+            return data
 
-          return promise.then(=> @.loadProject())
-                        .then(=> @.loadNotifyPolicies())
+        return promise.then(=> @.loadProject())
+                      .then(=> @.loadNotifyPolicies())
 
 
 module.controller("UserNotificationsController", UserNotificationsController)

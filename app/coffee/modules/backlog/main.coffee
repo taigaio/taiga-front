@@ -45,10 +45,12 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         "$q",
         "$tgLocation",
         "$appTitle",
+        "$tgNavUrls",
         "tgLoader"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @appTitle, tgLoader) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @appTitle, @navUrls,
+                  tgLoader) ->
         _.bindAll(@)
 
         @scope.sectionName = "Backlog"
@@ -76,7 +78,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         # On Error
         promise.then null, (xhr) =>
             if xhr and xhr.status == 404
-                @location.path("/not-found")
+                @location.path(@navUrls.resolve("not-found"))
                 @location.replace()
             return @q.reject(xhr)
 
