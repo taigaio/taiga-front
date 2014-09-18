@@ -63,9 +63,10 @@ class ConfirmService extends taiga.Service
             event.preventDefault()
             target = angular.element(event.currentTarget)
             @loading.start(target)
-            defered.resolve =>
+            defered.resolve (ok=true) =>
                 @loading.finish(target)
-                @.hide(el)
+                if ok
+                    @.hide(el)
 
         el.on "click.confirm-dialog", "a.button-red", (event) =>
             event.preventDefault()

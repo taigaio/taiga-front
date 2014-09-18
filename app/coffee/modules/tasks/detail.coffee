@@ -136,6 +136,7 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
                 finish()
                 @location.path(@navUrls.resolve("project-backlog", {project: @scope.project.slug}))
             promise.then null, =>
+                finish(false)
                 @confirm.notify("error")
 
 module.controller("TaskDetailController", TaskDetailController)

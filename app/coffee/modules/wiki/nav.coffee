@@ -113,12 +113,14 @@ WikiNavDirective = ($tgrepo, $log, $location, $confirm, $navUrls) ->
                 $confirm.ask(title, subtitle).then (finish) =>
                     promise = $tgrepo.remove($scope.wikiLinks[linkId])
                     promise.then ->
-                        $ctrl.loadWikiLinks().then ->
+                        promise = $ctrl.loadWikiLinks()
+                        promise.then ->
                             finish()
                             render($scope.wikiLinks)
-                        $ctrl.loadWikiLinks().then null, ->
+                        promise.then null, ->
                             finish()
                     promise.then null, ->
+                        finish(false)
                         $confirm.notify("error")
 
             $el.on "keyup", ".new input", debounce 2000, (event) ->

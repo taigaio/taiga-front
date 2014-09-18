@@ -437,6 +437,7 @@ MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm) ->
                     $confirm.notify("success", null, "We've deleted #{subtitle}.") # TODO: i18n
 
                 onError = ->
+                    finish(false)
                     # TODO: i18in
                     $confirm.notify("error", null, "We have not been able to delete #{subtitle}.")
 
