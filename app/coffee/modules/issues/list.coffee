@@ -621,11 +621,18 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm) ->
             title = "Delete custom filter" # TODO: i18n
             subtitle = "the custom filter '#{customFilterName}'" # TODO: i18n
 
-            $confirm.ask(title, subtitle).then ->
-                $ctrl.deleteMyFilter(customFilterName).then ->
+            $confirm.ask(title, subtitle).then (finish) ->
+                promise = $ctrl.deleteMyFilter(customFilterName)
+                promise.then ->
                     $ctrl.loadMyFilters().then (filters) ->
+                        finish()
                         $scope.filters.myFilters = filters
                         renderFilters($scope.filters.myFilters)
+                    $ctrl.loadMyFilters().then null, ->
+                        finish()
+                promise.then null, ->
+                    $confirm.notify("error")
+
 
         $el.on "click", ".save-filters", (event) ->
             event.preventDefault()

@@ -133,10 +133,15 @@ RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope) ->
                 title = "Delete Task"
                 subtitle = task.subject
 
-                $confirm.ask(title, subtitle).then ->
-                    $repo.remove(task).then ->
+                $confirm.ask(title, subtitle).then (finish) ->
+                    promise = $repo.remove(task)
+                    promise.then ->
+                        finish()
                         $confirm.notify("success")
                         $scope.$emit("related-tasks:delete")
+
+                    promise.then null, ->
+                        $confirm.notify("error")
 
         $scope.$watch $attrs.ngModel, (val) ->
             return if not val

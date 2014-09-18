@@ -134,19 +134,20 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         @location.path(@navUrls.resolve("project-wiki-page", ctx))
 
     delete: ->
-        onSuccess = =>
-            ctx = {project: @scope.projectSlug}
-            @location.path(@navUrls.resolve("project-wiki", ctx))
-            @confirm.notify("success")
-
-        onError = =>
-            @confirm.notify("error")
-
         # TODO: i18n
         title = "Delete Wiki Page"
         subtitle = unslugify(@scope.wiki.slug)
 
-        @confirm.ask(title, subtitle).then =>
+        @confirm.ask(title, subtitle).then (finish) =>
+            onSuccess = =>
+                finish()
+                ctx = {project: @scope.projectSlug}
+                @location.path(@navUrls.resolve("project-wiki", ctx))
+                @confirm.notify("success")
+
+            onError = =>
+                @confirm.notify("error")
+
             @repo.remove(@scope.wiki).then onSuccess, onError
 
 module.controller("WikiDetailController", WikiDetailController)
