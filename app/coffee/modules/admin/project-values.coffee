@@ -267,12 +267,13 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame) ->
             if _.keys(choices).length == 0
                 return $confirm.error("You can't delete all values.")
 
-            return $confirm.askChoice(title, subtitle, choices).then (selected) =>
+            return $confirm.askChoice(title, subtitle, choices).then (response) ->
                 onSucces = ->
-                    $ctrl.loadValues()
+                    $ctrl.loadValues().finally ->
+                        response.finish()
                 onError = ->
                     $confirm.notify("error")
-                $repo.remove(value, {"moveTo": selected}).then(onSucces, onError)
+                $repo.remove(value, {"moveTo": response.selected}).then(onSucces, onError)
 
     link = ($scope, $el, $attrs) ->
         linkDragAndDrop($scope, $el, $attrs)

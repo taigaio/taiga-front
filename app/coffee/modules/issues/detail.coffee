@@ -129,9 +129,13 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         title = "Delete Issue"
         subtitle = @scope.issue.subject
 
-        @confirm.ask(title, subtitle).then =>
-            @.repo.remove(@scope.issue).then =>
+        @confirm.ask(title, subtitle).then (finish) =>
+            promise = @.repo.remove(@scope.issue)
+            promise.then =>
+                finish()
                 @location.path(@navUrls.resolve("project-issues", {project: @scope.project.slug}))
+            promise.then null, =>
+                @confirm.notify("error")
 
 module.controller("IssueDetailController", IssueDetailController)
 
