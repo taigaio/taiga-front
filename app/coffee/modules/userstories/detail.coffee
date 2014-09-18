@@ -199,7 +199,7 @@ UsStatusDetailDirective = () ->
     template = _.template("""
         <h1>
             <span>
-            <% if (status.is_closed) { %>
+            <% if (is_closed) { %>
             Closed
             <% } else { %>
             Open
@@ -304,6 +304,7 @@ UsStatusDetailDirective = () ->
                 owner: owner
                 date: date
                 editable: editable
+                is_closed: us.is_closed
                 status: status
                 totalPoints: us.total_points
                 rolePoints: rolePoints
