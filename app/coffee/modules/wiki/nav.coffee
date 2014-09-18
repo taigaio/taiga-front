@@ -26,6 +26,7 @@ groupBy = @.taiga.groupBy
 bindOnce = @.taiga.bindOnce
 slugify = @.taiga.slugify
 unslugify = @.taiga.slugify
+debounce = @.taiga.debounce
 
 module = angular.module("taigaWiki")
 
@@ -120,7 +121,7 @@ WikiNavDirective = ($tgrepo, $log, $location, $confirm, $navUrls) ->
                     promise.then null, ->
                         $confirm.notify("error")
 
-            $el.on "keyup", ".new input", (event) ->
+            $el.on "keyup", ".new input", debounce 2000, (event) ->
                 event.preventDefault()
                 if event.keyCode == 13
                     target = angular.element(event.currentTarget)

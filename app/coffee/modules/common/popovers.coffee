@@ -21,6 +21,7 @@
 
 taiga = @.taiga
 bindOnce = @.taiga.bindOnce
+debounce = @.taiga.debounce
 
 module = angular.module("taigaCommon")
 
@@ -73,7 +74,7 @@ UsStatusDirective = ($repo, popoverService) ->
             # pop = $el.find(".pop-status")
             # popoverService.open(pop)
 
-        $el.on "click", ".status", (event) ->
+        $el.on "click", ".status", debounce 2000, (event) ->
             event.preventDefault()
             event.stopPropagation()
             target = angular.element(event.currentTarget)
@@ -152,7 +153,7 @@ RelatedTaskStatusDirective = ($repo, popoverService) ->
             # pop = $el.find(".pop-status")
             # popoverService.open(pop)
 
-        $el.on "click", ".status", (event) ->
+        $el.on "click", ".status", debounce 2000, (event) ->
             event.preventDefault()
             event.stopPropagation()
             target = angular.element(event.currentTarget)

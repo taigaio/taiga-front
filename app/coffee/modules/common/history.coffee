@@ -22,6 +22,7 @@
 taiga = @.taiga
 trim = @.taiga.trim
 bindOnce = @.taiga.bindOnce
+debounce = @.taiga.debounce
 
 module = angular.module("taigaCommon")
 
@@ -437,7 +438,7 @@ HistoryDirective = ($log, $loading) ->
 
         # Events
 
-        $el.on "click", ".add-comment a.button-green", (event) ->
+        $el.on "click", ".add-comment a.button-green", debounce 2000, (event) ->
             event.preventDefault()
 
             target = angular.element(event.currentTarget)
@@ -492,12 +493,12 @@ HistoryDirective = ($log, $loading) ->
             $el.find(".history-tabs li a").toggleClass("active")
             $el.find(".history section").toggleClass("hidden")
 
-        $el.on "click", ".comment-delete", (event) ->
+        $el.on "click", ".comment-delete", debounce 2000, (event) ->
             target = angular.element(event.currentTarget)
             activityId = target.data('activity-id')
             $ctrl.deleteComment(type, objectId, activityId)
 
-        $el.on "click", ".comment-restore", (event) ->
+        $el.on "click", ".comment-restore", debounce 2000, (event) ->
             target = angular.element(event.currentTarget)
             activityId = target.data('activity-id')
             $ctrl.undeleteComment(type, objectId, activityId)

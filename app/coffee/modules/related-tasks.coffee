@@ -21,6 +21,7 @@
 
 taiga = @.taiga
 trim = @.taiga.trim
+debounce = @.taiga.debounce
 
 module = angular.module("taigaRelatedTasks", [])
 
@@ -86,7 +87,7 @@ RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope) ->
     """)
 
     link = ($scope, $el, $attrs, $model) ->
-        saveTask = (task) ->
+        saveTask = debounce 2000, (task) ->
             task.subject = $el.find('input').val()
             promise = $repo.save(task)
             promise.then =>
@@ -191,7 +192,7 @@ RelatedTaskCreateFormDirective = ($repo, $compile, $confirm, $tgmodel) ->
     }
 
     link = ($scope, $el, $attrs) ->
-        createTask = (task) ->
+        createTask = debounce 2000, (task) ->
             task.subject = $el.find('input').val()
             task.assigned_to = $scope.newTask.assigned_to
             task.status = $scope.newTask.status
@@ -330,7 +331,7 @@ RelatedTaskAssignedToInlineEditionDirective = ($repo, $rootscope, popoverService
                 $el.unbind("click")
                 $el.find("a").addClass("not-clickable")
 
-        $scope.$on "assigned-to:added", (ctx, userId, updatedRelatedTask) =>
+        $scope.$on "assigned-to:added", debounce 2000, (ctx, userId, updatedRelatedTask) =>
             if updatedRelatedTask.id == task.id
                 updatedRelatedTask.assigned_to = userId
                 if autoSave

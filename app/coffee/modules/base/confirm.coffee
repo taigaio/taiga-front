@@ -22,6 +22,7 @@
 taiga = @.taiga
 timeout = @.taiga.timeout
 cancelTimeout = @.taiga.cancelTimeout
+debounce = @.taiga.debounce
 
 
 NOTIFICATION_MSG = {
@@ -59,7 +60,7 @@ class ConfirmService extends taiga.Service
         defered = @q.defer()
 
         # Assign event handlers
-        @.el.on "click.confirm-dialog", "a.button-green", (event) =>
+        @.el.on "click.confirm-dialog", "a.button-green", debounce 2000, (event) =>
             event.preventDefault()
             target = angular.element(event.currentTarget)
             @loading.start(target)
@@ -89,7 +90,7 @@ class ConfirmService extends taiga.Service
         defered = @q.defer()
 
         # Assign event handlers
-        @.el.on "click.confirm-dialog", "a.button-green", (event) =>
+        @.el.on "click.confirm-dialog", "a.button-green", debounce 2000, (event) =>
             event.preventDefault()
             target = angular.element(event.currentTarget)
             @loading.start(target)

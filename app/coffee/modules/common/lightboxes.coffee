@@ -23,6 +23,7 @@ module = angular.module("taigaCommon")
 
 bindOnce = @.taiga.bindOnce
 timeout = @.taiga.timeout
+debounce = @.taiga.debounce
 
 #############################################################################
 ## Common Lightbox Services
@@ -247,7 +248,7 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
 
             lightboxService.open($el)
 
-        $el.on "click", ".button-green", (event) ->
+        $el.on "click", ".button-green", debounce 2000, (event) ->
             event.preventDefault()
             form = $el.find("form").checksley()
             target = angular.element(event.currentTarget)
@@ -306,7 +307,7 @@ CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService, $load
             }
             lightboxService.open($el)
 
-        $el.on "click", ".button-green", (event) ->
+        $el.on "click", ".button-green", debounce 2000, (event) ->
             event.preventDefault()
 
             form = $el.find("form").checksley({
@@ -439,7 +440,7 @@ AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationServic
         $scope.$watch "usersSearch", (searchingText) ->
             render(selectedUser, searchingText) if searchingText?
 
-        $el.on "click", ".watcher-single", (event) ->
+        $el.on "click", ".watcher-single", debounce 2000, (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
 
@@ -449,7 +450,7 @@ AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationServic
                 $scope.$broadcast("assigned-to:added", target.data("user-id"), selectedItem)
                 $scope.usersSearch = null
 
-        $el.on "click", ".remove-assigned-to", (event) ->
+        $el.on "click", ".remove-assigned-to", debounce 2000, (event) ->
             event.preventDefault()
             event.stopPropagation()
 
@@ -534,7 +535,7 @@ WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationS
             users = getFilteredUsers(searchingText)
             render(users)
 
-        $el.on "click", ".watcher-single", (event) ->
+        $el.on "click", ".watcher-single", debounce 2000, (event) ->
             closeLightbox()
 
             event.preventDefault()
