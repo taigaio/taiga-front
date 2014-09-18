@@ -101,6 +101,10 @@ UsStatusDirective = ($repo, popoverService) ->
 
 module.directive("tgUsStatus", ["$tgRepo", UsStatusDirective])
 
+#############################################################################
+## Related Task Status Directive
+#############################################################################
+
 RelatedTaskStatusDirective = ($repo, popoverService) ->
     ###
     Print the status of a related task and a popover to change it.
@@ -177,6 +181,10 @@ RelatedTaskStatusDirective = ($repo, popoverService) ->
     return {link: link}
 
 module.directive("tgRelatedTaskStatus", ["$tgRepo", RelatedTaskStatusDirective])
+
+#############################################################################
+## jQuery plugin for Popover
+#############################################################################
 
 $.fn.popover = () ->
     $el = @

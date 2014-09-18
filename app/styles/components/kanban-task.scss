@@ -28,20 +28,18 @@
     }
     .kanban-tagline {
         @include table-flex();
-        background: $gray-light; //Fallback
-        height: .3rem;
+        background: $postit-hover; //Fallback
+        //height: .3rem;
     }
     .kanban-tag {
         @include table-flex-child(1, 0, 0, 0);
         background: $postit-hover; //Fallback
-        height: .3rem;
+        //height: .3rem;
     }
     .kanban-task-inner {
         @include table-flex();
-        padding: 1rem 1rem 2rem;
     }
     .avatar {
-        @include table-flex-child($flex-basis: 50px);
         a {
             @extend %small;
             text-align: center;
@@ -69,37 +67,24 @@
         color: $postit-dark-hover;
         display: block;
     }
+    .task-text {
+        @include table-flex-child($flex-grow: 10, $flex-basis: 50px);
+        @extend %small;
+        padding: 0 .5rem 0 .8rem;
+        word-wrap: break-word;
+    }
     .task-num {
         color: $grayer;
-        margin-right: .5em;
+        margin-right: .3rem;
     }
     .task-name {
         @extend %bold;
         color: $grayer;
-        word-wrap: break-word;
-    }
-    .task-text {
-        @include table-flex-child($flex-grow: 10, $flex-basis: 50px);
-        @extend %small;
-        padding: 0 .5rem 0 1rem;
-        word-wrap: break-word;
-    }
-    .task-points {
-        @extend %small;
-        color: darken($postit-hover, 15%);
-        margin: 0;
-        span {
-            display: inline-block;
-            &:first-child {
-                padding-right: .2rem;
-            }
-        }
     }
     .icon-edit,
     .icon-drag-h {
         @include transition(opacity .2s linear);
         @extend %large;
-        bottom: .2rem;
         color: $postit-hover;
         opacity: 0;
         position: absolute;
@@ -108,12 +93,86 @@
             color: darken($postit-hover, 15%);
         }
     }
+}
+
+.kanban-task-maximized {
+    .kanban-task-inner {
+        padding: 1rem 1rem 2rem;
+    }
+    .avatar {
+        @include table-flex-child($flex-basis: 50px);
+    }
+    .task-name {
+        word-wrap: break-word;
+    }
     .icon-edit {
+        bottom: .2rem;
         right: .5rem;
     }
     .icon-drag-h {
         @extend %xlarge;
+        bottom: .2rem;
         cursor: move;
         right: 45%;
+    }
+    .task-points {
+        @extend %small;
+        color: darken($postit-hover, 15%);
+        display: block;
+        margin: 0;
+        span {
+            display: inline-block;
+            &:first-child {
+                padding-right: .2rem;
+            }
+        }
+    }
+    .kanban-tagline {
+        height: .3rem;
+    }
+    .kanban-tag {
+        height: .3rem;
+    }
+}
+
+.kanban-task-minimized {
+    .kanban-task-inner {
+        padding: .3rem;
+    }
+    .avatar {
+        @include table-flex-child($flex-basis: 40px);
+    }
+    .task-num {
+        vertical-align: top;
+    }
+    .task-name {
+        display: inline-block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 70%;
+    }
+    .task-points {
+        display: none;
+    }
+    .icon-edit,
+    .icon-drag-h {
+        top: 1.4rem;
+    }
+    .icon-edit {
+        bottom: .2rem;
+        right: 1rem;
+    }
+    .icon-drag-h {
+        @extend %medium;
+        @include transform(rotate(90deg));
+        cursor: move;
+        right: .1rem;
+    }
+    .kanban-tagline {
+        height: .2rem;
+    }
+    .kanban-tag {
+        height: .2rem;
     }
 }

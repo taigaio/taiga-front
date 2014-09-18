@@ -149,8 +149,6 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
 module.controller("UserStoryDetailController", UserStoryDetailController)
 
-
-
 #############################################################################
 ## User story Main Directive
 #############################################################################
@@ -188,8 +186,8 @@ UsDirective = ($tgrepo, $log, $location, $confirm, $navUrls, $loading) ->
 
     return {link:link}
 
-module.directive("tgUsDetail", ["$tgRepo", "$log", "$tgLocation", "$tgConfirm", "$tgNavUrls", "$tgLoading", UsDirective])
-
+module.directive("tgUsDetail", ["$tgRepo", "$log", "$tgLocation", "$tgConfirm",
+                                "$tgNavUrls", "$tgLoading", UsDirective])
 
 #############################################################################
 ## User story status directive
@@ -365,3 +363,129 @@ UsStatusDetailDirective = () ->
     return {link:link, require:"ngModel"}
 
 module.directive("tgUsStatusDetail", UsStatusDetailDirective)
+
+#############################################################################
+## User story estimation directive
+#############################################################################
+
+UsEstimationDirective = ($log) ->
+    mainTemplate = _.template("""
+    <ul class="points-per-role">
+        <li class="total">
+            <span class="points"><%- totalPoints %></span>
+            <span class="role">total</span>
+        </li>
+        <% _.each(roles, function(role) { %>
+        <li class="total clickable" data-role-id="<%- role.id %>">
+            <span class="points"><%- role.points %></span>
+            <span class="role"><%- role.name %></span></li>
+        <% }); %>
+    </ul>
+    """)
+
+    pointsTemplate = _.template("""
+    <ul class="popover pop-points-open">
+        <% _.each(points, function(point) { %>
+        <li>
+            <% if (point.selected) { %>
+            <a href="" class="point" title="<%- point.name %>"
+               data-point-id="<%- point.id %>" data-role-id="<%- roleId %>"><%- point.name %></a>
+            <% } else { %>
+            <a href="" class="point active" title="<%- point.name %>"
+               data-point-id="<%- point.id %>" data-role-id="<%- roleId %>"><%- point.name %></a>
+            <% } %>
+        </li>
+        <% }); %>
+    </ul>
+    """)
+
+    link = ($scope, $el, $attrs) ->
+        render = (us) ->
+            totalPoints = us.total_points or 0
+            computableRoles = _.filter($scope.project.roles, "computable")
+
+            roles = _.map computableRoles, (role) ->
+                pointId = us.points[role.id]
+                pointObj = $scope.pointsById[pointId]
+
+                role = _.clone(role, true)
+                role.points = if pointObj? and pointObj.name? then pointObj.name else "?"
+                return role
+
+            html = mainTemplate({totalPoints: totalPoints, roles: roles})
+            $el.html(html)
+
+        renderPoints = (us, roleId) ->
+            points = _.map $scope.project.points, (point) ->
+                point = _.clone(point, true)
+                point.selected = if us.points[roleId] == point.id then false else true
+                return point
+
+            html = pointsTemplate({"points": points, roleId: roleId})
+
+            # Remove any prevous state
+            $el.find(".popover").popover().close()
+            $el.find(".pop-points-open").remove()
+
+            # If not showing role selection let's move to the left
+            if not $el.find(".pop-role:visible").css("left")?
+                $el.find(".pop-points-open").css("left", "110px")
+
+            $el.find(".pop-points-open").remove()
+
+            # Render into DOM and show the new created element
+            $el.find(".points-per-role").append(html)
+
+            $el.find(".pop-points-open").popover().open(-> $(this).removeClass("active"))
+            $el.find(".pop-points-open").show()
+
+        calculateTotalPoints = (us) ->
+            values = _.map(us.points, (v, k) -> $scope.pointsById[v]?.value or 0)
+            if values.length == 0
+                return "0"
+            return _.reduce(values, (acc, num) -> acc + num)
+
+        $scope.$watch $attrs.ngModel, (us) ->
+            render(us) if us
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+        $el.on "click", ".total.clickable", (event) ->
+            event.preventDefault()
+            event.stopPropagation()
+            target = angular.element(event.currentTarget)
+            roleId = target.data("role-id")
+
+            us = $scope.$eval($attrs.ngModel)
+            renderPoints(us, roleId)
+
+            target.siblings().removeClass('active')
+            target.addClass('active')
+
+        $el.on "click", ".point", (event) ->
+            event.preventDefault()
+            event.stopPropagation()
+
+            us = $scope.$eval($attrs.ngModel)
+
+            target = angular.element(event.currentTarget)
+            roleId = target.data("role-id")
+            pointId = target.data("point-id")
+
+            $el.find(".popover").popover().close()
+
+            points = _.clone(us.points, true)
+            points[roleId] = pointId
+
+            $scope.$apply ->
+                us.points = points
+                us.total_points = calculateTotalPoints(us)
+                render(us)
+
+    return {
+        link: link
+        restrict: "EA"
+    }
+
+module.directive("tgUsEstimation", UsEstimationDirective)

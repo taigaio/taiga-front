@@ -5,9 +5,15 @@ form
     fieldset
         input(type="text", name="subject", ng-model="us.subject", tg-i18n="placeholder:common.subject",
               data-required="true", data-maxlength="500")
+
+    fieldset.estimation
+        tg-us-estimation(ng-model="us")
+            //- Render by tg-lb-create-edit-userstory
+
     fieldset
         select(name="status", ng-model="us.status", ng-options="s.id as s.name for s in usStatusList",
                tg-i18n="placeholder:common.status")
+
     fieldset
         div(tg-tag-line, editable="true", ng-model="us.tags")
 

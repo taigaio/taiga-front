@@ -593,6 +593,9 @@ BacklogDirective = ($repo, $rootscope) ->
 
     return {link: link}
 
+
+module.directive("tgBacklog", ["$tgRepo", "$rootScope", BacklogDirective])
+
 #############################################################################
 ## User story points directive
 #############################################################################
@@ -600,13 +603,15 @@ BacklogDirective = ($repo, $rootscope) ->
 UsRolePointsSelectorDirective = ($rootscope) ->
     #TODO: i18n
     selectionTemplate = _.template("""
-      <ul class="popover pop-role">
-          <li><a class="clear-selection" href="" title="All">All</a></li>
-          <% _.each(roles, function(role) { %>
-          <li><a href="" class="role" title="<%- role.name %>"
-                 data-role-id="<%- role.id %>"><%- role.name %></a></li>
-          <% }); %>
-      </ul>
+    <ul class="popover pop-role">
+        <li><a class="clear-selection" href="" title="All">All</a></li>
+        <% _.each(roles, function(role) { %>
+        <li>
+            <a href="" class="role" title="<%- role.name %>"
+               data-role-id="<%- role.id %>"><%- role.name %></a>
+        </li>
+        <% }); %>
+    </ul>
     """)
 
     link = ($scope, $el, $attrs) ->
@@ -616,7 +621,7 @@ UsRolePointsSelectorDirective = ($rootscope) ->
             numberOfRoles = _.size(roles)
 
             if numberOfRoles > 1
-                $el.append(selectionTemplate({ 'roles':  roles }))
+                $el.append(selectionTemplate({"roles":roles}))
             else
                 $el.find(".icon-arrow-bottom").remove()
 
@@ -655,15 +660,18 @@ UsRolePointsSelectorDirective = ($rootscope) ->
 
     return {link: link}
 
+module.directive("tgUsRolePointsSelector", ["$rootScope", UsRolePointsSelectorDirective])
+
 
 UsPointsDirective = ($repo) ->
-    selectionTemplate = _.template("""
+    rolesTemplate = _.template("""
     <ul class="popover pop-role">
-        <% _.each(rolePoints, function(rolePointsElement) { %>
-        <li><a href="" class="role" title="<%- rolePointsElement.name %>"
-               data-role-id="<%- rolePointsElement.id %>">
-               <%- rolePointsElement.name %>
-               (<%- rolePointsElement.points %>)
+        <% _.each(roles, function(role) { %>
+        <li>
+            <a href="" class="role" title="<%- role.name %>"
+               data-role-id="<%- role.id %>">
+                <%- role.name %>
+                (<%- role.points %>)
             </a>
         </li>
         <% }); %>
@@ -673,8 +681,14 @@ UsPointsDirective = ($repo) ->
     pointsTemplate = _.template("""
     <ul class="popover pop-points-open">
         <% _.each(points, function(point) { %>
-        <li><a href="" class="point" title="<%- point.name %>"
+        <li>
+            <% if (point.selected) { %>
+            <a href="" class="point" title="<%- point.name %>"
                data-point-id="<%- point.id %>"><%- point.name %></a>
+            <% } else { %>
+            <a href="" class="point active" title="<%- point.name %>"
+               data-point-id="<%- point.id %>"><%- point.name %></a>
+            <% } %>
         </li>
         <% }); %>
     </ul>
@@ -682,95 +696,116 @@ UsPointsDirective = ($repo) ->
 
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
-        us = $scope.$eval($attrs.tgUsPoints)
+
+        us = $scope.$eval($attrs.tgBacklogUsPoints)
+
         updatingSelectedRoleId = null
         selectedRoleId = null
         numberOfRoles = _.size(us.points)
 
-        # Preselect the rol if we have only one
+        # Preselect the role if we have only one
         if numberOfRoles == 1
             selectedRoleId = _.keys(us.points)[0]
 
-        showPopPoints = () ->
-            $(".popover").popover().close()
+        renderPointsSelector = (us, roleId) ->
+            # Prepare data for rendering
+            points = _.map $scope.project.points, (point) ->
+                point = _.clone(point, true)
+                point.selected = if us.points[roleId] == point.id then false else true
+                return point
+
+            html = pointsTemplate({"points": points})
+
+            # Remove any prevous state
+            $el.find(".popover").popover().close()
             $el.find(".pop-points-open").remove()
-            $el.append(pointsTemplate({ "points":  $scope.project.points }))
-            dataPointId = us.points[updatingSelectedRoleId]
-            $el.find(".pop-points-open a[data-point-id='#{dataPointId}']").addClass("active")
+
+            # Render into DOM and show the new created element
+            $el.append(html)
 
             # If not showing role selection let's move to the left
-            if not $el.find(".pop-role:visible").css('left')?
-                $el.find(".pop-points-open").css('left', '110px')
+            if not $el.find(".pop-role:visible").css("left")?
+                $el.find(".pop-points-open").css("left", "110px")
 
             $el.find(".pop-points-open").show()
 
-        showPopRoles = () ->
-            $el.find(".pop-role").remove()
-            rolePoints = _.clone(_.filter($scope.project.roles, "computable"), true)
+        renderRolesSelector = (us) ->
+            # Prepare data for rendering
+            computableRoles = _.filter($scope.project.roles, "computable")
 
-            undefinedToQuestion = (val) ->
-                return "?" if not val?
-                return val
+            roles = _.map computableRoles, (role) ->
+                pointId = us.points[role.id]
+                pointObj = $scope.pointsById[pointId]
 
-            _.map rolePoints, (v, k) ->
-                v.points = undefinedToQuestion($scope.pointsById[us.points[v.id]]?.value)
-            $el.append(selectionTemplate({ "rolePoints":  rolePoints }))
+                role = _.clone(role, true)
+                role.points = if pointObj.value? then pointObj.value else "?"
+                return role
 
+            html = rolesTemplate({"roles": roles})
+
+            # Render into DOM and show the new created element
+            $el.append(html)
             $el.find(".pop-role").popover().open(() -> $(this).remove())
 
-        updatePoints = (roleId) ->
-            # Update the dom with the points
-            pointsDom = $el.find("a > span.points-value")
-            usTotalPoints = calculateTotalPoints(us)
-            us.total_points = usTotalPoints
-            if not roleId? or numberOfRoles == 1
-                pointsDom.text(us.total_points)
+        renderPoints = (us, roleId) ->
+            dom = $el.find("a > span.points-value")
+
+            totalPoints = calculateTotalPoints(us)
+            if roleId == null or numberOfRoles == 1
+                dom.text(us.total_points)
             else
                 pointId = us.points[roleId]
-                points = $scope.pointsById[pointId]
-                pointsDom.html("#{points.name} / <span>#{us.total_points}</span>")
+                pointObj = $scope.pointsById[pointId]
+                dom.html("#{pointObj.name} / <span>#{us.total_points}</span>")
 
         calculateTotalPoints = ->
             values = _.map(us.points, (v, k) -> $scope.pointsById[v].value)
             values = _.filter(values, (num) -> num?)
+
             if values.length == 0
                 return "?"
 
             return _.reduce(values, (acc, num) -> acc + num)
 
-        updatePoints(null)
+        $scope.$watch $attrs.tgBacklogUsPoints, (us) ->
+            renderPoints(us, selectedRoleId) if us
 
         $scope.$on "uspoints:select", (ctx, roleId, roleName) ->
-            updatePoints(roleId)
+            us = $scope.$eval($attrs.tgBacklogUsPoints)
+            renderPoints(us, roleId)
             selectedRoleId = roleId
 
         $scope.$on "uspoints:clear-selection", (ctx) ->
-            updatePoints(null)
+            us = $scope.$eval($attrs.tgBacklogUsPoints)
+            renderPoints(us, null)
             selectedRoleId = null
 
         $el.on "click", "a.us-points span", (event) ->
             event.preventDefault()
-            target = angular.element(event.target)
-
             event.stopPropagation()
 
+            us = $scope.$eval($attrs.tgBacklogUsPoints)
+            updatingSelectedRoleId = selectedRoleId
+
             if selectedRoleId?
-                updatingSelectedRoleId = selectedRoleId
-                showPopPoints()
+                renderPointsSelector(us, selectedRoleId)
             else
-                showPopRoles()
+                renderRolesSelector(us)
 
         $el.on "click", ".role", (event) ->
             event.preventDefault()
             event.stopPropagation()
-
             target = angular.element(event.currentTarget)
+
+            us = $scope.$eval($attrs.tgBacklogUsPoints)
+
             updatingSelectedRoleId = target.data("role-id")
 
             popRolesDom = $el.find(".pop-role")
             popRolesDom.find("a").removeClass("active")
             popRolesDom.find("a[data-role-id='#{updatingSelectedRoleId}']").addClass("active")
-            showPopPoints()
+
+            renderPointsSelector(us, updatingSelectedRoleId)
 
         $el.on "click", ".point", (event) ->
             event.preventDefault()
@@ -780,15 +815,16 @@ UsPointsDirective = ($repo) ->
             $el.find(".pop-points-open").hide()
             $el.find(".pop-role").hide()
 
-            $scope.$apply () ->
-                usPoints = _.clone(us.points, true)
-                usPoints[updatingSelectedRoleId] = target.data("point-id")
-                us.points = usPoints
+            us = $scope.$eval($attrs.tgBacklogUsPoints)
 
-                usTotalPoints = calculateTotalPoints(us)
-                us.total_points = usTotalPoints
+            points = _.clone(us.points, true)
+            points[updatingSelectedRoleId] = target.data("point-id")
 
-                updatePoints(selectedRoleId)
+            $scope.$apply ->
+                us.points = points
+                us.total_points = calculateTotalPoints(us)
+
+                renderPoints(us, selectedRoleId)
 
                 $repo.save(us).then ->
                     # Little Hack for refresh.
@@ -806,6 +842,7 @@ UsPointsDirective = ($repo) ->
 
     return {link: link}
 
+module.directive("tgBacklogUsPoints", ["$tgRepo", UsPointsDirective])
 
 #############################################################################
 ## Burndown graph directive
@@ -837,14 +874,14 @@ tgBacklogGraphDirective = ->
             lines:
                 fillColor : "rgba(102,153,51,0.3)"
         })
-        team_increment_line = _.map(dataToDraw.milestones, (ml) -> -ml['team-increment'])
+        team_increment_line = _.map(dataToDraw.milestones, (ml) -> -ml["team-increment"])
         data.push({
             data: _.zip(milestonesRange, team_increment_line)
             lines:
                 fillColor : "rgba(153,51,51,0.3)"
         })
         client_increment_line = _.map dataToDraw.milestones, (ml) ->
-            -ml['team-increment'] - ml['client-increment']
+            -ml["team-increment"] - ml["client-increment"]
         data.push({
             data: _.zip(milestonesRange, client_increment_line)
             lines:
@@ -862,14 +899,14 @@ tgBacklogGraphDirective = ->
         options = {
             grid: {
                 borderWidth: { top: 0, right: 1, left:0, bottom: 0 }
-                borderColor: '#ccc'
+                borderColor: "#ccc"
             }
             xaxis: {
                 ticks: dataToDraw.milestones.length
                 axisLabel: "Sprints"
                 axisLabelUseCanvas: true
                 axisLabelFontSizePixels: 14
-                axisLabelFontFamily: 'Verdana, Arial, Helvetica, Tahoma, sans-serif'
+                axisLabelFontFamily: "Verdana, Arial, Helvetica, Tahoma, sans-serif"
                 axisLabelPadding: 15
                 tickFormatter: (val, axis) -> ""
             }
@@ -895,7 +932,7 @@ tgBacklogGraphDirective = ->
     link = ($scope, $el, $attrs) ->
         element = angular.element($el)
 
-        $scope.$watch 'stats', (value) ->
+        $scope.$watch "stats", (value) ->
             if $scope.stats?
                 redrawChart(element, $scope.stats)
 
@@ -908,7 +945,4 @@ tgBacklogGraphDirective = ->
     return {link: link}
 
 
-module.directive("tgBacklog", ["$tgRepo", "$rootScope", BacklogDirective])
-module.directive("tgUsPoints", ["$tgRepo", UsPointsDirective])
-module.directive("tgUsRolePointsSelector", ["$rootScope", UsRolePointsSelectorDirective])
 module.directive("tgGmBacklogGraph", tgBacklogGraphDirective)
