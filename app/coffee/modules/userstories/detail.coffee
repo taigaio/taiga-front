@@ -149,8 +149,6 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
 module.controller("UserStoryDetailController", UserStoryDetailController)
 
-
-
 #############################################################################
 ## User story Main Directive
 #############################################################################
@@ -188,8 +186,8 @@ UsDirective = ($tgrepo, $log, $location, $confirm, $navUrls, $loading) ->
 
     return {link:link}
 
-module.directive("tgUsDetail", ["$tgRepo", "$log", "$tgLocation", "$tgConfirm", "$tgNavUrls", "$tgLoading", UsDirective])
-
+module.directive("tgUsDetail", ["$tgRepo", "$log", "$tgLocation", "$tgConfirm",
+                                "$tgNavUrls", "$tgLoading", UsDirective])
 
 #############################################################################
 ## User story status directive
