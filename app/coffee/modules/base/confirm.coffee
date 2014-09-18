@@ -44,53 +44,52 @@ class ConfirmService extends taiga.Service
     constructor: (@q, @lightboxService, @loading) ->
         _.bindAll(@)
 
-    hide: ->
-        if @.el
-            @lightboxService.close(@.el)
+    hide: (el)->
+        if el
+            @lightboxService.close(el)
 
-            @.el.off(".confirm-dialog")
-            delete @.el
+            el.off(".confirm-dialog")
 
     ask: (title, subtitle, lightboxSelector=".lightbox_confirm-delete") ->
-        @.el = angular.element(lightboxSelector)
+        el = angular.element(lightboxSelector)
 
         # Render content
-        @.el.find("h2.title").html(title)
-        @.el.find("span.subtitle").html(subtitle)
+        el.find("h2.title").html(title)
+        el.find("span.subtitle").html(subtitle)
         defered = @q.defer()
 
         # Assign event handlers
-        @.el.on "click.confirm-dialog", "a.button-green", debounce 2000, (event) =>
+        el.on "click.confirm-dialog", "a.button-green", debounce 2000, (event) =>
             event.preventDefault()
             target = angular.element(event.currentTarget)
             @loading.start(target)
             defered.resolve =>
                 @loading.finish(target)
-                @.hide()
+                @.hide(el)
 
-        @.el.on "click.confirm-dialog", "a.button-red", (event) =>
+        el.on "click.confirm-dialog", "a.button-red", (event) =>
             event.preventDefault()
             defered.reject()
-            @.hide()
+            @.hide(el)
 
-        @lightboxService.open(@.el)
+        @lightboxService.open(el)
 
         return defered.promise
 
     askChoice: (title, subtitle, choices, lightboxSelector=".lightbox-ask-choice") ->
-        @.el = angular.element(lightboxSelector)
+        el = angular.element(lightboxSelector)
 
         # Render content
-        @.el.find("h2.title").html(title)
-        @.el.find("span.subtitle").html(subtitle)
-        choicesField = @.el.find("select.choices")
+        el.find("h2.title").html(title)
+        el.find("span.subtitle").html(subtitle)
+        choicesField = el.find("select.choices")
         choicesField.html('')
         _.each choices, (value, key) ->
             choicesField.append(angular.element("<option value='#{key}'>#{value}</option>"))
         defered = @q.defer()
 
         # Assign event handlers
-        @.el.on "click.confirm-dialog", "a.button-green", debounce 2000, (event) =>
+        el.on "click.confirm-dialog", "a.button-green", debounce 2000, (event) =>
             event.preventDefault()
             target = angular.element(event.currentTarget)
             @loading.start(target)
@@ -98,59 +97,59 @@ class ConfirmService extends taiga.Service
                 selected: choicesField.val()
                 finish: =>
                     @loading.finish(target)
-                    @.hide()
+                    @.hide(el)
             }
 
-        @.el.on "click.confirm-dialog", "a.button-red", (event) =>
+        el.on "click.confirm-dialog", "a.button-red", (event) =>
             event.preventDefault()
             defered.reject()
-            @.hide()
+            @.hide(el)
 
-        @lightboxService.open(@.el)
+        @lightboxService.open(el)
 
         return defered.promise
 
     error: (message) ->
-        @.el = angular.element(".lightbox-generic-error")
+        el = angular.element(".lightbox-generic-error")
 
         # Render content
-        @.el.find("h2.title").html(message)
+        el.find("h2.title").html(message)
         defered = @q.defer()
 
         # Assign event handlers
-        @.el.on "click.confirm-dialog", "a.button-green", (event) =>
+        el.on "click.confirm-dialog", "a.button-green", (event) =>
             event.preventDefault()
             defered.resolve()
-            @.hide()
+            @.hide(el)
 
-        @.el.on "click.confirm-dialog", "a.close", (event) =>
+        el.on "click.confirm-dialog", "a.close", (event) =>
             event.preventDefault()
             defered.resolve()
-            @.hide()
+            @.hide(el)
 
-        @lightboxService.open(@.el)
+        @lightboxService.open(el)
 
         return defered.promise
 
     success: (message) ->
-        @.el = angular.element(".lightbox-generic-success")
+        el = angular.element(".lightbox-generic-success")
 
         # Render content
-        @.el.find("h2.title").html(message)
+        el.find("h2.title").html(message)
         defered = @q.defer()
 
         # Assign event handlers
-        @.el.on "click.confirm-dialog", "a.button-green", (event) =>
+        el.on "click.confirm-dialog", "a.button-green", (event) =>
             event.preventDefault()
             defered.resolve()
-            @.hide()
+            @.hide(el)
 
-        @.el.on "click.confirm-dialog", "a.close", (event) =>
+        el.on "click.confirm-dialog", "a.close", (event) =>
             event.preventDefault()
             defered.resolve()
-            @.hide()
+            @.hide(el)
 
-        @lightboxService.open(@.el)
+        @lightboxService.open(el)
 
         return defered.promise
 
@@ -160,17 +159,17 @@ class ConfirmService extends taiga.Service
         #       Add default texts to NOTIFICATION_MSG for new notification types
 
         selector = ".notification-message-#{type}"
-        @.el = angular.element(selector)
+        el = angular.element(selector)
 
         if title
-           @.el.find("h4").html(title)
+           el.find("h4").html(title)
         else
-           @.el.find("h4").html(NOTIFICATION_MSG[type].title)
+           el.find("h4").html(NOTIFICATION_MSG[type].title)
 
         if message
-            @.el.find("p").html(message)
+            el.find("p").html(message)
         else
-            @.el.find("p").html(NOTIFICATION_MSG[type].message)
+            el.find("p").html(NOTIFICATION_MSG[type].message)
 
         body = angular.element("body")
         body.find(".notification-message .notification-light")
@@ -193,7 +192,7 @@ class ConfirmService extends taiga.Service
 
             delete @.tsem
 
-        @.el.on "click", ".icon-delete", (event) =>
+        el.on "click", ".icon-delete", (event) =>
             body.find(selector)
                 .removeClass('active')
                 .addClass('inactive')
