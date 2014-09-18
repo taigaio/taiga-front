@@ -449,7 +449,7 @@ module.directive("tgIssues", ["$log", "$tgLocation", IssuesDirective])
 ## Issues Filters Directive
 #############################################################################
 
-IssuesFiltersDirective = ($log, $location, $rs, $confirm) ->
+IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading) ->
     template = _.template("""
     <% _.each(filters, function(f) { %>
         <% if (!f.selected) { %>
@@ -468,7 +468,9 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm) ->
         </a>
         <% } %>
     <% }) %>
-    <input class="hidden my-filter-name" type="text" placeholder="filter name" />
+    <span class="new">
+        <input class="hidden my-filter-name" type="text" placeholder="filter name" />
+    </span>
     """)
 
     templateSelected = _.template("""
@@ -646,13 +648,17 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm) ->
             $el.find('.my-filter-name').show()
             $el.find('.my-filter-name').focus()
 
-        $el.on "keyup", ".my-filter-name", (event) ->
+        $el.on "keyup", ".new .my-filter-name", (event) ->
             event.preventDefault()
             if event.keyCode == 13
                 target = angular.element(event.currentTarget)
                 newFilter = target.val()
-                $ctrl.saveCurrentFiltersTo(newFilter).then ->
-                    $ctrl.loadMyFilters().then (filters) ->
+                $loading.start($el.find(".new"))
+                promise = $ctrl.saveCurrentFiltersTo(newFilter)
+                promise.then ->
+                    loadPromise = $ctrl.loadMyFilters()
+                    loadPromise.then (filters) ->
+                        $loading.finish($el.find(".new"))
                         $scope.filters.myFilters = filters
 
                         currentfilterstype = $el.find("h2 a.subfilter span.title").prop('data-type')
@@ -661,6 +667,16 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm) ->
 
                         $el.find('.my-filter-name').hide()
                         $el.find('.save-filters').show()
+
+                    loadPromise.then null, ->
+                        $loading.finish($el.find(".new"))
+                        $confirm.notify("error", "Error loading custom filters")
+
+                promise.then null, ->
+                    $loading.finish($el.find(".new"))
+                    $el.find(".my-filter-name").val(newFilter).focus().select()
+                    $confirm.notify("error", "Filter not saved")
+
             else if event.keyCode == 27
                 $el.find('.my-filter-name').val('')
                 $el.find('.my-filter-name').hide()
@@ -668,7 +684,7 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm) ->
 
     return {link:link}
 
-module.directive("tgIssuesFilters", ["$log", "$tgLocation", "$tgResources", "$tgConfirm",
+module.directive("tgIssuesFilters", ["$log", "$tgLocation", "$tgResources", "$tgConfirm", "$tgLoading",
                                      IssuesFiltersDirective])
 
 
