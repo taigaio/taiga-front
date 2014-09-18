@@ -11,6 +11,35 @@
     position: fixed;
     top: 0;
     width: 100%;
+    .welcome-user {
+        display: flex;
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        p {
+            color: $whitish;
+            margin-bottom: 0;
+            span {
+                &:before {
+                    content: ' ';
+                }
+            }
+        }
+        .logout {
+            @extend %small;
+            float: right;
+            &:hover {
+                color: $red-light;
+            }
+        }
+        .info {
+            padding: 10px 5px;
+            padding-right: 1rem;
+        }
+        img {
+            width: 60px;
+        }
+    }
 }
 .home-projects-wrapper {
     @include table-flex-child(0, 1200px, 0, 1200px);

@@ -23,7 +23,6 @@ taiga = @.taiga
 module = angular.module("taigaProject")
 bindOnce = @.taiga.bindOnce
 
-
 class ProjectsController extends taiga.Controller
     @.$inject = [
         "$scope",
@@ -37,11 +36,13 @@ class ProjectsController extends taiga.Controller
         "tgLoader"
     ]
 
-    constructor: (@scope, @rs, @rootscope, @navurls, @auth, @location, @appTitle, @projectUrl, @tgLoader) ->
+    constructor: (@scope, @rs, @rootscope, @navurls, @auth, @location, @appTitle, @projectUrl, @tgLoader, @navUrls) ->
         @appTitle.set("Projects")
 
         if !@auth.isAuthenticated()
             @location.path(@navurls.resolve("login"))
+
+        @.user = @auth.getUser()
 
         @.projects = []
         @.loadInitialData()
@@ -58,6 +59,10 @@ class ProjectsController extends taiga.Controller
 
     newProject: ->
         @rootscope.$broadcast("projects:create")
+
+    logout: ->
+        @auth.logout()
+        @location.path(@navurls.resolve("login"))
 
 module.controller("ProjectsController", ProjectsController)
 

@@ -6,6 +6,16 @@ block head
 block content
     div.home-projects-list(ng-controller="ProjectsController as ctrl")
         .home-projects-wrapper
+            div.welcome-user
+                div.info
+                    p
+                        | Welcome
+                        span(tg-bo-bind="ctrl.user.full_name_display")
+                    a.logout(ng-click="ctrl.logout()" href="", title="Logout") logout
+
+                .avatar(href="", title="User preferences")
+                    img(ng-src="{{ctrl.user.photo}}", alt="username")
+
             .home-projects-list-inner
                 div.recent-projects
                     ul
