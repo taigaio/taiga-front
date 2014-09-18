@@ -17,7 +17,7 @@ section.issues-table.basic-table(ng-class="{empty: !issues.length}")
                 span(tg-bo-bind="issue.subject")
 
         div.issue-field(tg-issue-status-inline-edition="issue")
-            a.issue-status(href="", title="Status Name")
+            a.issue-status(href="", title="Change status")
                 span.issue-status-bind
                 span.icon.icon-arrow-bottom(tg-check-permission="modify_issue")
 

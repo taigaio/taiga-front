@@ -678,13 +678,13 @@ module.directive("tgIssuesFilters", ["$log", "$tgLocation", "$tgResources", "$tg
 
 IssueStatusInlineEditionDirective = ($repo, popoverService) ->
     ###
-    Print the status of a Issue and a popover to change it.
-    - tg-issue-status: The user story
+    Print the status of an Issue and a popover to change it.
+    - tg-issue-status-inline-edition: The issue
 
     Example:
 
-      div.status(tg-issue-status="issue")
-        a.issue-status(href="", title="Status Name")
+      div.status(tg-issue-status-inline-edition="issue")
+        a.issue-status(href="")
 
     NOTE: This directive need 'issueStatusById' and 'project'.
     ###
@@ -703,9 +703,12 @@ IssueStatusInlineEditionDirective = ($repo, popoverService) ->
         issueStatusDomParent = $el.find(".issue-status")
         issueStatusDom = $el.find(".issue-status .issue-status-bind")
 
-        if issueStatusById[issue.status]
-            issueStatusDom.text(issueStatusById[issue.status].name)
-            issueStatusDomParent.css('color', issueStatusById[issue.status].color)
+        status = issueStatusById[issue.status]
+
+        if status
+            issueStatusDom.text(status.name)
+            issueStatusDom.prop("title", status.name)
+            issueStatusDomParent.css('color', status.color)
 
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
