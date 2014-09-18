@@ -21,6 +21,7 @@
 
 taiga = @.taiga
 bindOnce = @.taiga.bindOnce
+debounce = @.taiga.debounce
 
 module = angular.module("taigaIssues")
 
@@ -49,7 +50,7 @@ CreateIssueDirective = ($repo, $confirm, $rootscope, lightboxService) ->
         $scope.$on "$destroy", ->
             $el.off()
 
-        submit = ->
+        submit = debounce 2000, ->
             if not form.validate()
                 return
 
@@ -90,7 +91,7 @@ CreateBulkIssuesDirective = ($repo, $rs, $confirm, $rootscope, lightboxService) 
                 bulk: ""
             }
 
-        $el.on "click", ".button-green", (event) ->
+        $el.on "click", ".button-green", debounce 2000, (event) ->
             event.preventDefault()
 
             form = $el.find("form").checksley()

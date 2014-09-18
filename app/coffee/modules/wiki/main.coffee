@@ -25,6 +25,7 @@ mixOf = @.taiga.mixOf
 groupBy = @.taiga.groupBy
 bindOnce = @.taiga.bindOnce
 unslugify = @.taiga.unslugify
+debounce = @.taiga.debounce
 
 module = angular.module("taigaWiki")
 
@@ -157,7 +158,7 @@ module.controller("WikiDetailController", WikiDetailController)
 #############################################################################
 
 class WikiEditController extends WikiDetailController
-    save: ->
+    save: debounce 2000, ->
         onSuccess = =>
             ctx = {
                 project: @scope.projectSlug

@@ -21,6 +21,7 @@
 
 taiga = @.taiga
 bindOnce = @.taiga.bindOnce
+debounce = @.taiga.debounce
 
 module = angular.module("taigaUserSettings")
 
@@ -53,7 +54,7 @@ DeleteUserDirective = ($repo, $rootscope, $auth, $location, $navUrls, lightboxSe
             event.preventDefault()
             lightboxService.close($el)
 
-        $el.on "click", ".button-green", (event) ->
+        $el.on "click", ".button-green", debounce 2000, (event) ->
             event.preventDefault()
             submit()
 

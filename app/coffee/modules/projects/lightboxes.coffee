@@ -22,6 +22,7 @@
 taiga = @.taiga
 bindOnce = @.taiga.bindOnce
 timeout = @.taiga.timeout
+debounce = @.taiga.debounce
 
 module = angular.module("taigaProject")
 
@@ -106,7 +107,7 @@ CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $project
             $el.find('.progress-bar').removeClass().addClass('progress-bar').addClass(step)
 
 
-        $el.on "click", ".button-submit", (event) ->
+        $el.on "click", ".button-submit", debounce 2000, (event) ->
             event.preventDefault()
             submit()
 

@@ -27,6 +27,7 @@ toString = @.taiga.toString
 joinStr = @.taiga.joinStr
 groupBy = @.taiga.groupBy
 bindOnce = @.taiga.bindOnce
+debounce = @.taiga.debounce
 
 module = angular.module("taigaAdmin")
 
@@ -85,7 +86,7 @@ class ProjectValuesController extends mixOf(taiga.Controller, taiga.PageMixin)
             @.loadValues(),
         ]))
 
-    moveValue: (ctx, itemValue, itemIndex) =>
+    moveValue: debounce 2000, (ctx, itemValue, itemIndex) =>
         values = @scope.values
         r = values.indexOf(itemValue)
         values.splice(r, 1)
@@ -152,7 +153,7 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame) ->
             if focus
                 $(".new-value input").focus()
 
-        submit = =>
+        submit = debounce 2000, =>
             promise = $repo.save($scope.project)
             promise.then ->
                 $confirm.notify("success")
@@ -160,7 +161,7 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame) ->
             promise.then null, (data) ->
                 $confirm.notify("error", data._error_message)
 
-        saveValue = (target)->
+        saveValue = debounce 2000, (target) ->
             form = target.parents("form").checksley()
             return if not form.validate()
 
@@ -197,7 +198,7 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame) ->
 
             goToBottomList(true)
 
-        $el.on "click", ".add-new", (event) ->
+        $el.on "click", ".add-new", debounce 2000, (event) ->
             event.preventDefault()
             form = $el.find(".new-value").parents("form").checksley()
             return if not form.validate()

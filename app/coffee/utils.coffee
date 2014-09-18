@@ -104,7 +104,7 @@ joinStr = (str, coll) ->
 
 
 debounce = (wait, func) ->
-    return _.debounce(func, wait)
+    return _.debounce(func, wait, {leading: true, trailing: false})
 
 startswith = (str1, str2) ->
     return _.str.startsWith(str1, str2)

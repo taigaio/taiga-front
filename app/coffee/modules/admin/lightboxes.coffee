@@ -20,6 +20,7 @@
 ###
 
 taiga = @.taiga
+debounce = @.taiga.debounce
 
 module = angular.module("taigaKanban")
 
@@ -92,7 +93,7 @@ CreateMembersDirective = ($rs, $rootScope, $confirm, lightboxService) ->
                 $el.find("fieldset:last > a").removeClass("icon-plus add-fieldset")
                                              .addClass("icon-delete delete-fieldset")
 
-        $el.on "click", ".button-green", (event) ->
+        $el.on "click", ".button-green", debounce 2000, (event) ->
             event.preventDefault()
 
             onSuccess = (data) ->

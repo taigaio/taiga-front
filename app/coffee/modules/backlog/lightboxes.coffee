@@ -21,6 +21,7 @@
 
 taiga = @.taiga
 bindOnce = @.taiga.bindOnce
+debounce = @.taiga.debounce
 
 module = angular.module("taigaBacklog")
 
@@ -143,7 +144,7 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading)
             else
                 $el.find(".last-sprint-name").removeClass("disappear")
 
-        $el.on "click", ".button-green", (event) ->
+        $el.on "click", ".button-green", debounce 2000, (event) ->
             event.preventDefault()
             submit(event)
 

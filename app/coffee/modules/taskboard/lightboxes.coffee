@@ -21,6 +21,7 @@
 
 taiga = @.taiga
 bindOnce = @.taiga.bindOnce
+debounce = @.taiga.debounce
 
 CreateEditTaskDirective = ($repo, $model, $rs, $rootscope, lightboxService) ->
     link = ($scope, $el, attrs) ->
@@ -52,7 +53,7 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootscope, lightboxService) ->
             $el.find(".title").html("Edit task  ") #TODO: i18n
             lightboxService.open($el)
 
-        $el.on "click", ".button-green", (event) ->
+        $el.on "click", ".button-green", debounce 2000, (event) ->
             event.preventDefault()
 
             form = $el.find("form").checksley()
@@ -85,7 +86,7 @@ CreateBulkTasksDirective = ($repo, $rs, $rootscope, lightboxService) ->
             lightboxService.open($el)
             $scope.form = {data: "", sprintId: sprintId, usId: usId}
 
-        $el.on "click", ".button-green", (event) ->
+        $el.on "click", ".button-green", debounce 2000, (event) ->
             event.preventDefault()
 
             form = $el.find("form").checksley()
