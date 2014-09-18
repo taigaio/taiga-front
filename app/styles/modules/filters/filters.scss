@@ -63,8 +63,8 @@
         text-align: center;
         width: 100%;
         .icon-spinner {
-            float: none;
             color: $whitish;
+            float: none;
         }
         span {
             @include animation (loading .5s linear);
