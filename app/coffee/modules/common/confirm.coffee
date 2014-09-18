@@ -198,5 +198,5 @@ class ConfirmService extends taiga.Service
                 .addClass('inactive')
 
 
-module = angular.module("taigaBase")
+module = angular.module("taigaCommon")
 module.service("$tgConfirm", ConfirmService)
