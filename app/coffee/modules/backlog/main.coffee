@@ -697,7 +697,7 @@ UsPointsDirective = ($repo) ->
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
 
-        us = $scope.$eval($attrs.tgUsPoints)
+        us = $scope.$eval($attrs.tgBacklogUsPoints)
 
         updatingSelectedRoleId = null
         selectedRoleId = null
@@ -767,16 +767,16 @@ UsPointsDirective = ($repo) ->
 
             return _.reduce(values, (acc, num) -> acc + num)
 
-        $scope.$watch $attrs.tgUsPoints, (us) ->
+        $scope.$watch $attrs.tgBacklogUsPoints, (us) ->
             renderPoints(us, selectedRoleId) if us
 
         $scope.$on "uspoints:select", (ctx, roleId, roleName) ->
-            us = $scope.$eval($attrs.tgUsPoints)
+            us = $scope.$eval($attrs.tgBacklogUsPoints)
             renderPoints(us, roleId)
             selectedRoleId = roleId
 
         $scope.$on "uspoints:clear-selection", (ctx) ->
-            us = $scope.$eval($attrs.tgUsPoints)
+            us = $scope.$eval($attrs.tgBacklogUsPoints)
             renderPoints(us, null)
             selectedRoleId = null
 
@@ -784,7 +784,7 @@ UsPointsDirective = ($repo) ->
             event.preventDefault()
             event.stopPropagation()
 
-            us = $scope.$eval($attrs.tgUsPoints)
+            us = $scope.$eval($attrs.tgBacklogUsPoints)
             updatingSelectedRoleId = selectedRoleId
 
             if selectedRoleId?
@@ -797,7 +797,7 @@ UsPointsDirective = ($repo) ->
             event.stopPropagation()
             target = angular.element(event.currentTarget)
 
-            us = $scope.$eval($attrs.tgUsPoints)
+            us = $scope.$eval($attrs.tgBacklogUsPoints)
 
             updatingSelectedRoleId = target.data("role-id")
 
@@ -815,7 +815,7 @@ UsPointsDirective = ($repo) ->
             $el.find(".pop-points-open").hide()
             $el.find(".pop-role").hide()
 
-            us = $scope.$eval($attrs.tgUsPoints)
+            us = $scope.$eval($attrs.tgBacklogUsPoints)
 
             points = _.clone(us.points, true)
             points[updatingSelectedRoleId] = target.data("point-id")
@@ -842,7 +842,7 @@ UsPointsDirective = ($repo) ->
 
     return {link: link}
 
-module.directive("tgUsPoints", ["$tgRepo", UsPointsDirective])
+module.directive("tgBacklogUsPoints", ["$tgRepo", UsPointsDirective])
 
 #############################################################################
 ## Burndown graph directive

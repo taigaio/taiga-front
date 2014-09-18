@@ -18,7 +18,7 @@ div.row.us-item-row(ng-repeat="us in visibleUserstories|orderBy:order track by u
             span.us-status-bind
             span.icon.icon-arrow-bottom(tg-check-permission="modify_us")
 
-    div.points(tg-us-points="us")
+    div.points(tg-backlog-us-points="us")
         a.us-points(href="", title="Points")
             span.points-value 0
             span.icon.icon-arrow-bottom(tg-check-permission="modify_us")
