@@ -60,7 +60,7 @@ class HistoryController extends taiga.Controller
         return @rs.history.undeleteComment(type, objectId, activityId).then => @.loadHistory(type, objectId)
 
 
-HistoryDirective = ($log) ->
+HistoryDirective = ($log, $loading) ->
     templateChangeDiff = _.template("""
     <div class="change-entry">
         <div class="activity-changed">
@@ -440,14 +440,19 @@ HistoryDirective = ($log) ->
         $el.on "click", ".add-comment a.button-green", (event) ->
             event.preventDefault()
 
+            target = angular.element(event.currentTarget)
+
             $el.find(".comment-list").addClass("activeanimation")
             onSuccess = ->
-                $ctrl.loadHistory(type, objectId)
+                $ctrl.loadHistory(type, objectId).finally ->
+                    $loading.finish(target)
 
             onError = ->
+                $loading.finish(target)
                 $confirm.notify("error")
 
             model = $scope.$eval($attrs.ngModel)
+            $loading.start(target)
             $ctrl.repo.save(model).then(onSuccess, onError)
 
         $el.on "click", ".show-more", (event) ->
@@ -512,4 +517,4 @@ HistoryDirective = ($log) ->
     }
 
 
-module.directive("tgHistory", ["$log", HistoryDirective])
+module.directive("tgHistory", ["$log", "$tgLoading", HistoryDirective])
