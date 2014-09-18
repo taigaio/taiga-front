@@ -219,12 +219,12 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @scope.usByStatus[statusId].splice(index, 0, us)
 
             us.status = statusId
-        else if not @scope.project.is_backlog_activated
-            current_position = @scope.usByStatus[us.status].indexOf(us)
-            new_position = index
+        else
+            r = @scope.usByStatus[statusId].indexOf(us)
+            @scope.usByStatus[statusId].splice(r, 1)
+            @scope.usByStatus[statusId].splice(index, 0, us)
 
-            @scope.usByStatus[us.status].splice(current_position, 1)
-            @scope.usByStatus[us.status].splice(new_position, 0, us)
+        itemsToSave = @.resortUserStories(@scope.usByStatus[statusId])
 
         # Persist the userstory
         promise = @repo.save(us)
@@ -232,16 +232,10 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         # Rehash userstories order field
         # and persist in bulk all changes.
         promise = promise.then =>
-            items = @.resortUserStories(@scope.usByStatus[statusId])
-            data = @.prepareBulkUpdateData(items)
+            data = @.prepareBulkUpdateData(itemsToSave)
 
             return @rs.userstories.bulkUpdateKanbanOrder(us.project, data).then =>
-                # @rootscope.$broadcast("sprint:us:moved", us, oldSprintId, newSprintId)
-                return items
-
-        promise.then null, ->
-            # TODO
-            console.log "FAIL"
+                return itemsToSave
 
         return promise
 
