@@ -138,6 +138,7 @@ class AttachmentsController extends taiga.Controller
                 @rootscope.$broadcast("attachment:delete")
 
             onError = =>
+                finish(false)
                 @confirm.notify("error", null, "We have not been able to delete #{subtitle}.")
                 return @q.reject()
 

@@ -422,6 +422,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
                 finish()
                 @.loadBacklog()
             promise.then null, =>
+                finish(false)
                 @confirm.notify("error")
 
     addNewUs: (type) ->

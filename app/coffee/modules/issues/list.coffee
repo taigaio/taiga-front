@@ -626,13 +626,15 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm) ->
             $confirm.ask(title, subtitle).then (finish) ->
                 promise = $ctrl.deleteMyFilter(customFilterName)
                 promise.then ->
-                    $ctrl.loadMyFilters().then (filters) ->
+                    promise = $ctrl.loadMyFilters()
+                    promise.then (filters) ->
                         finish()
                         $scope.filters.myFilters = filters
                         renderFilters($scope.filters.myFilters)
-                    $ctrl.loadMyFilters().then null, ->
+                    promise.then null, ->
                         finish()
                 promise.then null, ->
+                    finish(false)
                     $confirm.notify("error")
 
 

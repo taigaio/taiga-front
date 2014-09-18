@@ -147,6 +147,7 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
                 @confirm.notify("success")
 
             onError = =>
+                finish(false)
                 @confirm.notify("error")
 
             @repo.remove(@scope.wiki).then onSuccess, onError

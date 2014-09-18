@@ -89,6 +89,7 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading)
                     $rootscope.$broadcast("sprintform:remove:success")
 
                 onError = ->
+                    finish(false)
                     $confirm.notify("error")
                 $repo.remove($scope.sprint).then(onSuccess, onError)
 
