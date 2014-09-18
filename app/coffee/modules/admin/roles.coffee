@@ -149,7 +149,7 @@ NewRoleDirective = ($tgrepo, $confirm) ->
             $el.find(".new").focus()
             $el.find(".add-button").hide()
 
-        $el.on "keyup", ".new", debounce 2000, (event) ->
+        $el.on "keyup", ".new", (event) ->
             event.preventDefault()
             if event.keyCode == 13  # Enter key
                 target = angular.element(event.currentTarget)
@@ -306,7 +306,7 @@ RolePermissionsDirective = ($rootscope, $repo, $confirm) ->
                 target = angular.element(event.currentTarget)
                 target.next().toggleClass("open")
 
-            $el.on "change", ".category-item input", debounce 2000, (event) ->
+            $el.on "change", ".category-item input", (event) ->
                 getActivePermissions = ->
                     activePermissions = _.filter($el.find(".category-item input"), (t) ->
                         angular.element(t).is(":checked")
