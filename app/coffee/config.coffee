@@ -34,7 +34,7 @@ class ConfigService extends taiga.Service
             "en": "English"
         }
 
-        pubblicRegisterEnabled: false
+        publicRegisterEnabled: false
 
         termsOfServiceUrl: null
         privacyPolicyUrl: null

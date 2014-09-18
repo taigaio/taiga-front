@@ -9,7 +9,7 @@ config = {
         "en": "English"
     }
 
-    pubblicRegisterEnabled: true
+    publicRegisterEnabled: true
     privacyPolicyUrl: null
     termsOfServiceUrl: null
 }
