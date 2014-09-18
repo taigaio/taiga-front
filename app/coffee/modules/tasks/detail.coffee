@@ -130,9 +130,13 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         title = "Delete Task"
         subtitle = @scope.task.subject
 
-        @confirm.ask(title, subtitle).then =>
-            @.repo.remove(@scope.task).then =>
+        @confirm.ask(title, subtitle).then (finish) =>
+            promise = @.repo.remove(@scope.task)
+            promise.then =>
+                finish()
                 @location.path(@navUrls.resolve("project-backlog", {project: @scope.project.slug}))
+            promise.then null, =>
+                @confirm.notify("error")
 
 module.controller("TaskDetailController", TaskDetailController)
 

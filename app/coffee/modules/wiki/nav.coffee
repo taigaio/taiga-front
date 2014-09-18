@@ -109,10 +109,16 @@ WikiNavDirective = ($tgrepo, $log, $location, $confirm, $navUrls) ->
                 title = "Delete Wiki Link"
                 subtitle = $scope.wikiLinks[linkId].title
 
-                $confirm.ask(title, subtitle).then =>
-                    $tgrepo.remove($scope.wikiLinks[linkId]).then ->
+                $confirm.ask(title, subtitle).then (finish) =>
+                    promise = $tgrepo.remove($scope.wikiLinks[linkId])
+                    promise.then ->
                         $ctrl.loadWikiLinks().then ->
+                            finish()
                             render($scope.wikiLinks)
+                        $ctrl.loadWikiLinks().then null, ->
+                            finish()
+                    promise.then null, ->
+                        $confirm.notify("error")
 
             $el.on "keyup", ".new input", (event) ->
                 event.preventDefault()

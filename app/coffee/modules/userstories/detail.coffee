@@ -139,9 +139,13 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         title = "Delete User Story"
         subtitle = @scope.us.subject
 
-        @confirm.ask(title, subtitle).then =>
-            @.repo.remove(@scope.us).then =>
+        @confirm.ask(title, subtitle).then (finish) =>
+            promise = @.repo.remove(@scope.us)
+            promise.then =>
+                finish()
                 @location.path(@navUrls.resolve("project-backlog", {project: @scope.project.slug}))
+            promise.then null, =>
+                $confirm.notify("error")
 
 module.controller("UserStoryDetailController", UserStoryDetailController)
 

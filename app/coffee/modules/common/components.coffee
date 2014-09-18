@@ -177,7 +177,8 @@ WatchersDirective = ($rootscope, $confirm) ->
             title = "Remove watcher"
             subtitle = $scope.usersById[watcherId].full_name_display
 
-            $confirm.ask(title, subtitle).then =>
+            $confirm.ask(title, subtitle).then (finish) =>
+                finish()
                 watcherIds = _.clone($model.$modelValue.watchers, false)
                 watcherIds = _.pull(watcherIds, watcherId)
 
@@ -260,7 +261,8 @@ AssignedToDirective = ($rootscope, $confirm) ->
             title = "Remove assigned to"
             subtitle = ""
 
-            $confirm.ask(title, subtitle).then =>
+            $confirm.ask(title, subtitle).then (finish) =>
+                finish()
                 $model.$modelValue.assigned_to  = null
                 renderAssignedTo($model.$modelValue)
 

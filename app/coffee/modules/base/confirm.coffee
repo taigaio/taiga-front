@@ -38,9 +38,9 @@ NOTIFICATION_MSG = {
 
 
 class ConfirmService extends taiga.Service
-    @.$inject = ["$q", "lightboxService"]
+    @.$inject = ["$q", "lightboxService", "$tgLoading"]
 
-    constructor: (@q, @lightboxService) ->
+    constructor: (@q, @lightboxService, @loading) ->
         _.bindAll(@)
 
     hide: ->
@@ -61,8 +61,11 @@ class ConfirmService extends taiga.Service
         # Assign event handlers
         @.el.on "click.confirm-dialog", "a.button-green", (event) =>
             event.preventDefault()
-            defered.resolve()
-            @.hide()
+            target = angular.element(event.currentTarget)
+            @loading.start(target)
+            defered.resolve =>
+                @loading.finish(target)
+                @.hide()
 
         @.el.on "click.confirm-dialog", "a.button-red", (event) =>
             event.preventDefault()
@@ -88,8 +91,14 @@ class ConfirmService extends taiga.Service
         # Assign event handlers
         @.el.on "click.confirm-dialog", "a.button-green", (event) =>
             event.preventDefault()
-            defered.resolve(choicesField.val())
-            @.hide()
+            target = angular.element(event.currentTarget)
+            @loading.start(target)
+            defered.resolve {
+                selected: choicesField.val()
+                finish: =>
+                    @loading.finish(target)
+                    @.hide()
+            }
 
         @.el.on "click.confirm-dialog", "a.button-red", (event) =>
             event.preventDefault()
@@ -190,4 +199,4 @@ class ConfirmService extends taiga.Service
 
 
 module = angular.module("taigaBase")
-module.service("$tgConfirm", ["$q", "lightboxService", ConfirmService])
+module.service("$tgConfirm", ConfirmService)

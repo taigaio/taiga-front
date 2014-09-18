@@ -80,11 +80,13 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading)
             title = "Delete sprint"
             subtitle = $scope.sprint.name
 
-            $confirm.ask(title, subtitle).then =>
+            $confirm.ask(title, subtitle).then (finish) =>
                 onSuccess = ->
+                    finish()
                     $scope.milestonesCounter -= 1
                     lightboxService.close($el)
                     $rootscope.$broadcast("sprintform:remove:success")
+
                 onError = ->
                     $confirm.notify("error")
                 $repo.remove($scope.sprint).then(onSuccess, onError)

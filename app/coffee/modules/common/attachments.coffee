@@ -129,17 +129,18 @@ class AttachmentsController extends taiga.Controller
         title = "Delete attachment"  #TODO: i18in
         subtitle = "the attachment '#{attachment.name}'" #TODO: i18in
 
-        onSuccess = =>
-            index = @.attachments.indexOf(attachment)
-            @.attachments.splice(index, 1)
-            @.updateCounters()
-            @rootscope.$broadcast("attachment:delete")
+        return @confirm.ask(title, subtitle).then (finish) =>
+            onSuccess = =>
+                finish()
+                index = @.attachments.indexOf(attachment)
+                @.attachments.splice(index, 1)
+                @.updateCounters()
+                @rootscope.$broadcast("attachment:delete")
 
-        onError = =>
-            @confirm.notify("error", null, "We have not been able to delete #{subtitle}.")
-            return @q.reject()
+            onError = =>
+                @confirm.notify("error", null, "We have not been able to delete #{subtitle}.")
+                return @q.reject()
 
-        return @confirm.ask(title, subtitle).then =>
             return @repo.remove(attachment).then(onSuccess, onError)
 
     # Function used in template for filter visible attachments
