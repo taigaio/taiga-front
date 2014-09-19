@@ -25,7 +25,7 @@ debounce = @.taiga.debounce
 
 module = angular.module("taigaRelatedTasks", [])
 
-RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope) ->
+RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope, $loading) ->
     templateView = _.template("""
         <div class="tasks">
             <div class="task-name">
@@ -89,27 +89,34 @@ RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope) ->
     link = ($scope, $el, $attrs, $model) ->
         saveTask = debounce 2000, (task) ->
             task.subject = $el.find('input').val()
+
+            $loading.start($el.find('.task-name'))
+
             promise = $repo.save(task)
             promise.then =>
+                $loading.finish($el.find('.task-name'))
                 $confirm.notify("success")
                 $rootscope.$broadcast("related-tasks:update")
 
             promise.then null, =>
+                $loading.finish($el.find('.task-name'))
+                $el.find('input').val(task.subject)
                 $confirm.notify("error")
+            return promise
 
         renderEdit = (task) ->
             $el.html($compile(templateEdit({task: task}))($scope))
 
             $el.on "keyup", "input", (event) ->
                 if event.keyCode == 13
-                    saveTask($model.$modelValue)
-                    renderView($model.$modelValue)
+                    saveTask($model.$modelValue).then ->
+                        renderView($model.$modelValue)
                 else if event.keyCode == 27
                     renderView($model.$modelValue)
 
             $el.on "click", ".icon-floppy", (event) ->
-                saveTask($model.$modelValue)
-                renderView($model.$modelValue)
+                saveTask($model.$modelValue).then ->
+                    renderView($model.$modelValue)
 
             $el.on "click", ".cancel-edit", (event) ->
                 renderView($model.$modelValue)
@@ -159,9 +166,9 @@ RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope) ->
 
     return {link:link, require:"ngModel"}
 
-module.directive("tgRelatedTaskRow", ["$tgRepo", "$compile", "$tgConfirm", "$rootScope", RelatedTaskRowDirective])
+module.directive("tgRelatedTaskRow", ["$tgRepo", "$compile", "$tgConfirm", "$rootScope", "$tgLoading", RelatedTaskRowDirective])
 
-RelatedTaskCreateFormDirective = ($repo, $compile, $confirm, $tgmodel) ->
+RelatedTaskCreateFormDirective = ($repo, $compile, $confirm, $tgmodel, $loading) ->
     template = _.template("""
         <div class="tasks">
             <div class="task-name">
@@ -199,12 +206,16 @@ RelatedTaskCreateFormDirective = ($repo, $compile, $confirm, $tgmodel) ->
             $scope.newTask.status = $scope.project.default_task_status
             $scope.newTask.assigned_to = null
 
+            $loading.start($el.find('.task-name'))
             promise = $repo.create("tasks", task)
             promise.then ->
+                $loading.finish($el.find('.task-name'))
                 $scope.$emit("related-tasks:add")
                 $confirm.notify("success")
 
             promise.then null, ->
+                $el.find('input').val(task.subject)
+                $loading.finish($el.find('.task-name'))
                 $confirm.notify("error")
 
             return promise
@@ -245,7 +256,7 @@ RelatedTaskCreateFormDirective = ($repo, $compile, $confirm, $tgmodel) ->
             $el.off()
 
     return {link: link}
-module.directive("tgRelatedTaskCreateForm", ["$tgRepo", "$compile", "$tgConfirm", "$tgModel", RelatedTaskCreateFormDirective])
+module.directive("tgRelatedTaskCreateForm", ["$tgRepo", "$compile", "$tgConfirm", "$tgModel", "$tgLoading", RelatedTaskCreateFormDirective])
 
 RelatedTaskCreateButtonDirective = ($repo, $compile, $confirm, $tgmodel) ->
     template = _.template("""

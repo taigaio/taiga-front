@@ -34,7 +34,7 @@ module = angular.module("taigaWiki")
 ## Wiki Main Directive
 #############################################################################
 
-WikiNavDirective = ($tgrepo, $log, $location, $confirm, $navUrls) ->
+WikiNavDirective = ($tgrepo, $log, $location, $confirm, $navUrls, $loading) ->
     template = _.template("""
     <header>
       <h1>Links</h1>
@@ -128,13 +128,32 @@ WikiNavDirective = ($tgrepo, $log, $location, $confirm, $navUrls) ->
                     target = angular.element(event.currentTarget)
                     newLink = target.val()
 
-                    $el.find(".new").addClass("hidden")
-                    $el.find(".new input").val('')
+                    $loading.start($el.find(".new"))
 
-                    $tgrepo.create("wiki-links", {project: $scope.projectId, title: newLink, href: slugify(newLink)}).then ->
-                        $ctrl.loadWikiLinks().then ->
+                    promise = $tgrepo.create("wiki-links", {project: $scope.projectId, title: newLink, href: slugify(newLink)})
+                    promise.then ->
+                        loadPromise = $ctrl.loadWikiLinks()
+                        loadPromise.then ->
+                            $loading.finish($el.find(".new"))
+                            $el.find(".new").addClass("hidden")
+                            $el.find(".new input").val('')
+                            $el.find(".add-button").show()
                             render($scope.wikiLinks)
-                    $el.find(".add-button").show()
+                        loadPromise.then null, ->
+                            $loading.finish($el.find(".new"))
+                            $el.find(".new").addClass("hidden")
+                            $el.find(".new input").val('')
+                            $el.find(".add-button").show()
+                            $confirm.notify("error", "Error loading wiki links")
+
+                    promise.then null, (error) ->
+                        $loading.finish($el.find(".new"))
+                        $el.find(".new input").val(newLink)
+                        $el.find(".new input").focus().select()
+                        if error?.__all__?[0]?
+                            $confirm.notify("error", "The link already exists")
+                        else
+                            $confirm.notify("error")
 
                 else if event.keyCode == 27
                     target = angular.element(event.currentTarget)
@@ -147,4 +166,4 @@ WikiNavDirective = ($tgrepo, $log, $location, $confirm, $navUrls) ->
 
     return {link:link}
 
-module.directive("tgWikiNav", ["$tgRepo", "$log", "$tgLocation", "$tgConfirm", "$tgNavUrls", WikiNavDirective])
+module.directive("tgWikiNav", ["$tgRepo", "$log", "$tgLocation", "$tgConfirm", "$tgNavUrls", "$tgLoading", WikiNavDirective])

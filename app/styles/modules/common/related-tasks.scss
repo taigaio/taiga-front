@@ -97,6 +97,16 @@
             padding: 3px;
             width: 85%;
         }
+        &.loading {
+            margin: 0;
+            padding: 8px;
+            text-align: center;
+            width: 100%;
+            span {
+                @include animation (loading .5s linear);
+                @include animation (spin 1s linear infinite);
+            }
+        }
     }
     .blocked,
     .blocked:hover {
