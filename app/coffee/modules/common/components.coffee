@@ -91,15 +91,6 @@ DateSelectorDirective =->
               $el.picker.setDate(selectedDate) if selectedDate?
         })
 
-        if $attrs.greaterThan
-            $scope.$watch $attrs.greaterThan, (val) ->
-                $el.picker.setMinDate(moment(val))
-
-        if $attrs.lessThan
-            $scope.$watch $attrs.lessThan, (val) ->
-                $el.picker.setMaxDate(moment(val))
-
-
         $scope.$watch $attrs.ngModel, (val) ->
             $el.picker.setDate(val) if val?
 

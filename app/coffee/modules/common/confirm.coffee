@@ -184,7 +184,7 @@ class ConfirmService extends taiga.Service
         if @.tsem
             cancelTimeout(@.tsem)
 
-        time = if type == 'error' then 3500 else 1500
+        time = if type == 'error' or type == 'light-error' then 3500 else 1500
 
         @.tsem = timeout time, =>
             body.find(selector)
