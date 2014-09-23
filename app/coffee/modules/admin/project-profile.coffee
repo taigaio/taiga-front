@@ -133,10 +133,10 @@ module.directive("tgProjectProfile", ["$rootScope", "$log", "$tgRepo", "$tgConfi
 
 
 #############################################################################
-## Project Features Directive
+## Project Modules Directive
 #############################################################################
 
-ProjectFeaturesDirective = ($rootscope, $log, $repo, $confirm, $loading) ->
+ProjectModulesDirective = ($rootscope, $log, $repo, $confirm, $loading) ->
     link = ($scope, $el, $attrs) ->
         form = $el.find("form").checksley()
         submit = =>
@@ -178,4 +178,4 @@ ProjectFeaturesDirective = ($rootscope, $log, $repo, $confirm, $loading) ->
 
     return {link:link}
 
-module.directive("tgProjectFeatures", ["$rootScope", "$log", "$tgRepo", "$tgConfirm", "$tgLoading", ProjectFeaturesDirective])
+module.directive("tgProjectModules", ["$rootScope", "$log", "$tgRepo", "$tgConfirm", "$tgLoading", ProjectModulesDirective])

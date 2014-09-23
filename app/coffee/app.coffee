@@ -68,8 +68,8 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, tgLoade
         {templateUrl: "/partials/admin-project-profile.html"})
     $routeProvider.when("/project/:pslug/admin/project-profile/default-values",
         {templateUrl: "/partials/admin-project-default-values.html"})
-    $routeProvider.when("/project/:pslug/admin/project-profile/features",
-        {templateUrl: "/partials/admin-project-features.html"})
+    $routeProvider.when("/project/:pslug/admin/project-profile/modules",
+        {templateUrl: "/partials/admin-project-modules.html"})
     $routeProvider.when("/project/:pslug/admin/project-values/us-status",
         {templateUrl: "/partials/admin-project-values-us-status.html"})
     $routeProvider.when("/project/:pslug/admin/project-values/us-points",

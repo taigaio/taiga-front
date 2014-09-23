@@ -101,7 +101,7 @@ module.factory("$appTitle", AppTitle)
 
 #############################################################################
 ## Get the appropiate section url for a project
-## according to his enabled features and user permisions
+## according to his enabled modules and user permisions
 #############################################################################
 
 ProjectUrl = ($navurls) ->
