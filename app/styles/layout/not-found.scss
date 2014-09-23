@@ -1,6 +1,9 @@
 .error-main {
-    @include table-flex(center, center, flex, row, wrap, center);
-    @extend %backgound-taiga;
+    @include display(flex);
+    @include align-items(center);
+    @include flex-direction(row);
+    @include justify-content(center);
+    @extend %background-taiga;
     bottom: 0;
     left: 0;
     position: fixed;
@@ -8,17 +11,18 @@
     top: 0;
     z-index: 999;
     .error-container {
-        @include table-flex-child(0, 600px, 0, 600px);
+        @include flex-basis(400px);
         color: $white;
         text-align: center;
     }
-    img {
-        margin-bottom: 3rem;
-        padding: 0 25%;
+    .logo-svg {
+        padding: 0 32%;
+        text-align: center;
         width: 100%;
     }
     h1 {
         color: $white;
+        margin-bottom: 3rem;
     }
     a {
         color: $green-taiga;

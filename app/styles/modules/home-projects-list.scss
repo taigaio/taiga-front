@@ -1,6 +1,6 @@
 .home-projects-list,
 .home-project {
-    @extend %backgound-taiga;
+    @extend %background-taiga;
     background-color: $black;
     @include table-flex(center, center, flex, row, wrap, center);
     background-position: center center;
