@@ -14,17 +14,23 @@
     top: 0;
     z-index: 999;
     fieldset {
-        margin-bottom: 1rem;
+        margin-bottom: .5rem;
     }
     .login-container {
         @include flex-basis(400px);
     }
+    .logo-svg {
+        padding: 0 30%;
+        text-align: center;
+        width: 100%;
+    }
     .logo {
+        @extend %xxlarge;
+        @extend %title;
+        color: $white;
         margin-bottom: 1rem;
         text-align: center;
-        img {
-            padding: 0 30%;
-        }
+
     }
     .tagline {
         @extend %xlarge;
@@ -36,7 +42,7 @@
         text-transform: uppercase;
     }
     form {
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
     }
     input {
         background: $white;
