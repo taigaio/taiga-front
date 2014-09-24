@@ -34,6 +34,7 @@ paths = {
     sassStylesMain: "app/styles/main.scss"
     css:  "app/styles/vendor/*.css"
     images: "app/images/**/*"
+    svg: "app/svg/**/*"
     locales: "app/locales/**/*.json"
     coffee: ["app/coffee/app.coffee",
              "app/config/*.coffee",
@@ -200,6 +201,11 @@ gulp.task "jslibs-deploy", ->
 # Common tasks
 ##############################################################################
 
+# SVG
+gulp.task "svg",  ->
+    gulp.src("#{paths.app}/svg/**/*")
+        .pipe(gulp.dest("#{paths.dist}/svg/"))
+
 # Copy Files
 gulp.task "copy",  ->
     gulp.src("#{paths.app}/fonts/*")
@@ -219,6 +225,7 @@ gulp.task "express", ->
     app.use("/js", express.static("#{__dirname}/dist/js"))
     app.use("/styles", express.static("#{__dirname}/dist/styles"))
     app.use("/images", express.static("#{__dirname}/dist/images"))
+    app.use("/svg", express.static("#{__dirname}/dist/svg"))
     app.use("/partials", express.static("#{__dirname}/dist/partials"))
     app.use("/fonts", express.static("#{__dirname}/dist/fonts"))
     app.use("/plugins", express.static("#{__dirname}/dist/plugins"))
@@ -234,6 +241,7 @@ gulp.task "watch", ->
     gulp.watch(paths.jade, ["jade-watch"])
     gulp.watch("#{paths.app}/index.jade", ["template"])
     gulp.watch(paths.scssStyles, ["styles-watch"])
+    gulp.watch(paths.svg, ["svg"])
     gulp.watch(paths.coffee, ["coffee-watch"])
     gulp.watch(paths.vendorJsLibs, ["jslibs-watch"])
     gulp.watch(paths.locales, ["coffee-watch"])
@@ -252,6 +260,7 @@ gulp.task "default", [
     "jade-deploy",
     "template",
     "styles-watch",
+    "svg",
     "copy",
     "coffee-watch",
     "jslibs-watch",
