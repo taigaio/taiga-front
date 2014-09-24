@@ -17,14 +17,6 @@
         position: relative;
         width: 150px;
     }
-    .spinner {
-        background-color: $white;
-        box-shadow: 1px 1px 10px rgba($whitish, .9);
-        .icon {
-            color: $gray-light;
-            text-shadow: 1px 1px 3px $whitish, 0 0 0 $grayer, 1px 1px 3px $whitish;
-        }
-    }
     p {
         @extend %large;
         color: $gray-light;
