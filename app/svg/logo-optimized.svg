@@ -2,26 +2,10 @@
   <defs id="defs4649"/>
   <metadata id="metadata4652"/>
   <style>
-      .top {
-          transform-origin: 193px 164px;
-          -webkit-animation: rotate 4s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
-          -webkit-transform-origin: 50% 50%;
-          animation: rotate 6s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
-      }
       .top rect {
           fill-opacity: 1;
           fill: #fff;
           opacity: .6
-      }
-      @-webkit-keyframes rotate {
-          50% {
-              -webkit-transform: rotate(360deg);
-          }
-      }
-      @keyframes rotate {
-          50% {
-              transform: rotate(360deg);
-          }
       }
   </style>
   <g id="layer1" transform="translate(-307.87667,-465.22863)">
