@@ -63,10 +63,12 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
                 @location.replace()
             return @q.reject(xhr)
 
+        @scope.$on "project:loaded", =>
+            @appTitle.set("Project profile - " + @scope.sectionName + " - " + @scope.project.name)
+
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
             @scope.project = project
-            @scope.$emit('project:loaded', project)
             @scope.pointsList = _.sortBy(project.points, "order")
             @scope.usStatusList = _.sortBy(project.us_statuses, "order")
             @scope.taskStatusList = _.sortBy(project.task_statuses, "order")
@@ -105,7 +107,7 @@ ProjectProfileDirective = ($rootscope, $log, $repo, $confirm, $loading) ->
             promise.then ->
                 $loading.finish(target)
                 $confirm.notify("success")
-                $scope.$emit("project:loaded", $scope.project)
+                $rootscope.$broadcast("project:loaded", $scope.project)
 
             promise.then null, (data) ->
                 $loading.finish(target)
