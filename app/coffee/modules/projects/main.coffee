@@ -61,8 +61,7 @@ class ProjectsController extends taiga.Controller
 
     loadInitialData: ->
         return @rs.projects.list().then (projects) =>
-            @.projects = {'recents': projects.slice(0, 8), 'all': projects.slice(8)}
-
+            @.projects = {'recents': projects.slice(0, 8), 'all': projects}
             for project in projects
                 project.url = @projectUrl.get(project)
 
