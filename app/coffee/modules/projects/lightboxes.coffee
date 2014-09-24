@@ -57,11 +57,10 @@ CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $project
             promise.then(onSuccessSubmit, onErrorSubmit)
 
         $scope.$on "projects:create", ->
-            $scope.$apply ->
-                $scope.data = {
-                    total_story_points: 100
-                    total_milestones: 5
-                }
+            $scope.data = {
+                total_story_points: 100
+                total_milestones: 5
+            }
 
             if !$scope.templates.length
                 $rs.projects.templates().then (result) =>
