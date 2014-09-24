@@ -34,10 +34,10 @@ CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $project
         form = $el.find("form").checksley({"onlyOneErrorElement": true})
 
         onSuccessSubmit = (response) ->
-            lightboxService.close($el)
+            $rootscope.$broadcast("projects:reload")
             $confirm.notify("success", "Success") #TODO: i18n
             $location.url($projectUrl.get(response))
-            $rootscope.$broadcast("projects:reload")
+            lightboxService.close($el)
 
         onErrorSubmit = (response) ->
             form.setErrors(response)
@@ -124,7 +124,7 @@ module.directive("tgLbCreateProject", ["$rootScope", "$tgRepo", "$tgConfirm", "$
 ## Delete Project Lightbox Directive
 #############################################################################
 
-DeleteProjectDirective = ($repo, $rootscope, $auth, $location, $navUrls, lightboxService) ->
+DeleteProjectDirective = ($repo, $rootscope, $auth, $location, $navUrls, $confirm, lightboxService) ->
     link = ($scope, $el, $attrs) ->
         projectToDelete = null
         $scope.$on "deletelightbox:new", (ctx, project)->
@@ -139,11 +139,14 @@ DeleteProjectDirective = ($repo, $rootscope, $auth, $location, $navUrls, lightbo
 
             promise.then (data) ->
                 lightboxService.close($el)
+                $rootscope.$broadcast("projects:reload")
                 $location.path($navUrls.resolve("home"))
+                $confirm.notify("success")
 
             # FIXME: error handling?
             promise.then null, ->
-                console.log "FAIL"
+                $confirm.notify("error")
+                lightboxService.close($el)
 
         $el.on "click", ".button-red", (event) ->
             event.preventDefault()
@@ -156,4 +159,4 @@ DeleteProjectDirective = ($repo, $rootscope, $auth, $location, $navUrls, lightbo
     return {link:link}
 
 module.directive("tgLbDeleteProject", ["$tgRepo", "$rootScope", "$tgAuth", "$tgLocation", "$tgNavUrls",
-                                       "lightboxService", DeleteProjectDirective])
+                                       "$tgConfirm", "lightboxService", DeleteProjectDirective])
