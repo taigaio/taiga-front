@@ -116,6 +116,10 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
     loadSprints: ->
         return @rs.sprints.list(@scope.projectId).then (sprints) =>
+            # NOTE: Fix order of USs because the filter orderBy does not work propertly in partials files
+            for sprint in sprints
+                sprint.user_stories = _.sortBy(sprint.user_stories, "sprint_order")
+
             @scope.sprints = sprints
             @scope.sprintsCounter = sprints.length
             @scope.sprintsById = groupBy(sprints, (x) -> x.id)
@@ -147,7 +151,9 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             return @rs.userstories.listUnassigned(@scope.projectId, @scope.httpParams)
 
         return promise.then (userstories) =>
-            @scope.userstories = userstories
+            # NOTE: Fix order of USs because the filter orderBy does not work propertly in the partials files
+            @scope.userstories = _.sortBy(userstories, "backlog_order")
+
             @.generateFilters()
             @.filterVisibleUserstories()
 
