@@ -71,10 +71,11 @@ class ProjectValuesController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.$emit('project:loaded', project)
             return project
 
-    loadValues: =>
+    loadValues: ->
         return @rs[@scope.resource].listValues(@scope.projectId, @scope.type).then (values) =>
             @scope.values = values
             @scope.maxValueOrder = _.max(values, "order").order
+            return values
 
     loadInitialData: ->
         promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
@@ -86,7 +87,7 @@ class ProjectValuesController extends mixOf(taiga.Controller, taiga.PageMixin)
             @.loadValues(),
         ]))
 
-    moveValue: debounce 2000, (ctx, itemValue, itemIndex) =>
+    moveValue: (ctx, itemValue, itemIndex) =>
         values = @scope.values
         r = values.indexOf(itemValue)
         values.splice(r, 1)
