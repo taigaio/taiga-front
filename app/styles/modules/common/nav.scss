@@ -10,13 +10,17 @@
     width: 90px;
     z-index: 999;
 }
-
-.logo {
-    line-height: inherit;
-    margin: 0 0 .9rem;
+.logo-container {
+    margin: 20%;
+    object,
     img {
-        padding: 17%;
         width: 100%;
+    }
+    span {
+        @extend %large;
+        color: $white;
+        display: block;
+        text-align: center;
     }
 }
 

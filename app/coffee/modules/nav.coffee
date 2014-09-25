@@ -275,11 +275,10 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location, $
     """)
 
     mainTemplate = _.template("""
-    <h1 class="logo">
-        <a href="" title="Home">
-            <img src="/images/logo.png" alt="Taiga"/>
-        </a>
-    </h1>
+    <div class="logo-container logo">
+        <img src="/svg/logo-nav.svg" alt="TAIGA" />
+        <span class="item">taiga</span>
+    </div>
     <div class="menu-container"></div>
     """)
 
@@ -319,8 +318,10 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location, $
         renderMainMenu($el)
         project = null
 
-        $el.on "click", ".logo > a", (event) ->
+        $el.on "click", ".logo", (event) ->
             event.preventDefault()
+            target = angular.element(event.currentTarget)
+            console.log target
             $rootscope.$broadcast("nav:projects-list:open")
 
         $el.on "click", ".user-settings .avatar", (event) ->
