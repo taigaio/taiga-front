@@ -49,6 +49,12 @@ class LightboxService extends taiga.Service
 
         $el.removeClass("open")
 
+    closeAll: ->
+        docEl = angular.element(document)
+        for lightboxEl in docEl.find(".lightbox.open")
+            @.close($(lightboxEl))
+
+
 module.service("lightboxService", LightboxService)
 
 
