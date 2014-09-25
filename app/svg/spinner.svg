@@ -1,82 +1,74 @@
-<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" id="svg4647" version="1.1" viewBox=".." preserveAspectRatio="xMidYMid meet">
-  <defs id="defs4649"/>
-  <metadata id="metadata4652"/>
-  <style>
-      .top {
-          transform-origin: 193px 164px;
-          -webkit-animation: rotate 4s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
-          -webkit-transform-origin: 50% 50%;
-          animation: rotate 6s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
-      }
-      .bottom rect {
-          fill-opacity: 1;
-          fill: #9dce0a;
-          opacity: .2;
-      }
-      .top rect {
-          fill-opacity: 1;
-          fill: #9dce0a;
-          opacity: .6;
-          animation: colorize 10s linear infinite alternate;
-          -webkit-animation: colorize 10s linear infinite alternate;
-      }
-      .braktearo {
-          fill-opacity: 1;
-          fill: #9dce0a;
-          opacity: .9;
-      }
-      @-webkit-keyframes rotate {
-          50% {
-              -webkit-transform: rotate(360deg);
-          }
-      }
-      @keyframes rotate {
-          50% {
-              transform: rotate(360deg);
-          }
-      }
-      @-webkit-keyframes colorize {
-          0% {
-              opacity: .6;
-          }
-          60% {
-              opacity: .0;
-          }
-          80% {
-              opacity: .6;
-          }
-      }
-      @keyframes colorize {
-          0% {
-              opacity: .6;
-          }
-          60% {
-              opacity: .0;
-          }
-          80% {
-              opacity: .6;
-          }
-      }
-  </style>
-  <g id="layer1" transform="translate(-307.87667,-465.22863)">
-    <g transform="matrix(0.135464,0,0,0.135464,307.268,457.53699)" id="layer1-1" display="inline">
-      <g transform="matrix(1.1783562,0,0,1.1783562,2450.4425,-1298.9778)" id="g6368" display="inline">
-        <g id="g6358" transform="translate(-905.09668,1190.7678)">
-          <g class="bottom">
-              <rect transform="matrix(-0.1406648,0.99005728,-0.99005728,0.14066481,0,0)" y="453.99191" x="19.390564" height="263.03665" width="263.03665" id="rect6306" />
-              <rect transform="matrix(0.1406648,-0.99005728,0.99005728,-0.14066481,0,0)" y="-980.32068" x="-545.35144" height="263.03665" width="263.03665" id="rect6298" />
-              <rect transform="matrix(0.99005728,0.1406648,0.14066481,0.99005728,0,0)" y="239.36371" x="-1091.8109" height="263.03665" width="263.03665" id="rect6290" />
-              <rect transform="matrix(-0.99005728,-0.1406648,-0.14066481,-0.99005728,0,0)" y="-765.04388" x="565.75031" height="263.03665" width="263.03665" id="rect6302" />
-          </g>
-          <g class="top">
-              <rect id="rect6300" width="263.03665" height="263.03665" x="123.24944" y="-1124.9786" transform="matrix(-0.60061118,-0.79954125,0.60061117,-0.79954125,0,0)" />
-              <rect id="rect6304" width="263.03665" height="263.03665" x="522.39832" y="-110.13736" transform="matrix(-0.79954125,0.60061118,-0.79954125,-0.60061117,0,0)" />
-              <rect id="rect6288" width="263.03665" height="263.03665" x="-649.58295" y="599.28192" transform="matrix(0.60061118,0.79954125,-0.60061118,0.79954125,0,0)" />
-              <rect id="rect6296" width="263.03665" height="263.03665" x="-1048.9221" y="-415.20911" transform="matrix(0.79954125,-0.60061118,0.79954125,0.60061117,0,0)" />
-          </g>
+<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 134.2 134.3" preserveAspectRatio="xMidYMid meet">
+    <style>
+        .top {
+            transform-origin: 193px 164px;
+            -webkit-animation: rotate 4s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
+            -webkit-transform-origin: 50% 50%;
+            animation: rotate 6s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
+        }
+        .bottom path {
+            fill-opacity: 1;
+            fill: #9dce0a;
+            opacity: .2;
+        }
+        .top path {
+            fill-opacity: 1;
+            fill: #9dce0a;
+            opacity: .6;
+            animation: colorize 10s linear infinite alternate;
+            -webkit-animation: colorize 10s linear infinite alternate;
+        }
+        .braktearo {
+            fill-opacity: 1;
+            fill: #9dce0a;
+            opacity: .9;
+        }
+        @-webkit-keyframes rotate {
+            50% {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+        @keyframes rotate {
+            50% {
+                transform: rotate(360deg);
+            }
+        }
+        @-webkit-keyframes colorize {
+            0% {
+                opacity: .6;
+            }
+            60% {
+                opacity: .0;
+            }
+            80% {
+                opacity: .6;
+            }
+        }
+        @keyframes colorize {
+            0% {
+                opacity: .6;
+            }
+            60% {
+                opacity: .0;
+            }
+            80% {
+                opacity: .6;
+            }
+        }
+    </style>
+    <g transform="translate(-307.87667,-465.22863)">
+        <g class="bottom">
+            <path transform="matrix(-0.14066483,0.99005727,-0.99005727,0.14066483,0,0)" d="m561.8-506.6 42 0 0 42-42 0z" />
+            <path transform="matrix(0.14066483,-0.99005727,0.99005727,-0.14066483,0,0)" d="m-645.7 422.6 42 0 0 42-42 0z" />
+            <path transform="matrix(0.99005727,0.14066483,0.14066483,0.99005727,0,0)" d="m266.6 451.9 42 0 0 42-42 0z" />
+            <path transform="matrix(-0.99005727,-0.14066483,-0.14066483,-0.99005727,0,0)" d="m-350.6-535.9 42 0 0 42-42 0z" />
         </g>
-        <rect class="braktearo" id="rect6286" width="141.42136" height="141.42136" x="-130.17999" y="2210.6592" transform="matrix(0.70710678,0.70710678,-0.70710678,0.70710678,0,0)" />
-      </g>
+        <g class="top">
+            <path transform="matrix(-0.60061118,-0.79954125,0.60061118,-0.79954125,0,0)" d="m-687.1-62.7 42 0 0 42-42 0z" />
+            <path transform="matrix(-0.79954125,0.60061118,-0.79954125,-0.60061118,0,0)" d="m166.6-719.6 42 0 0 42-42 0z" />
+            <path transform="matrix(0.60061118,0.79954125,-0.60061118,0.79954125,0,0)" d="m603.1-21.3 42 0 0 42-42 0z" />
+            <path transform="matrix(0.79954125,-0.60061118,0.79954125,0.60061118,0,0)" d="m-250.7 635.8 42 0 0 42-42 0z" />
+            <path transform="matrix(0.70710678,0.70710678,-0.70710678,0.70710678,0,0)" d="m630.3 100 22.6 0 0 22.6-22.6 0z" />
+        </g>
     </g>
-  </g>
 </svg>
