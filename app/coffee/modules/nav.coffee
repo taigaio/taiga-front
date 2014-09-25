@@ -276,7 +276,39 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location, $
 
     mainTemplate = _.template("""
     <div class="logo-container logo">
-        <img src="/svg/logo-nav.svg" alt="TAIGA" />
+        <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 134.2 134.3" version="1.1" preserveAspectRatio="xMidYMid meet">
+            <style>
+                path {
+                    fill:#f5f5f5;
+                    opacity:0.7;
+                }
+            </style>
+            <g transform="translate(-307.87667,-465.22863)">
+                <g class="bottom">
+                    <path transform="matrix(-0.14066483,0.99005727,-0.99005727,0.14066483,0,0)"
+                          d="m561.8-506.6 42 0 0 42-42 0z" />
+                    <path transform="matrix(0.14066483,-0.99005727,0.99005727,-0.14066483,0,0)"
+                          d="m-645.7 422.6 42 0 0 42-42 0z" />
+                    <path transform="matrix(0.99005727,0.14066483,0.14066483,0.99005727,0,0)"
+                          d="m266.6 451.9 42 0 0 42-42 0z" />
+                    <path transform="matrix(-0.99005727,-0.14066483,-0.14066483,-0.99005727,0,0)"
+                          d="m-350.6-535.9 42 0 0 42-42 0z" />
+                </g>
+                <g class="top">
+                    <path transform="matrix(-0.60061118,-0.79954125,0.60061118,-0.79954125,0,0)"
+                          d="m-687.1-62.7 42 0 0 42-42 0z" />
+                    <path transform="matrix(-0.79954125,0.60061118,-0.79954125,-0.60061118,0,0)"
+                          d="m166.6-719.6 42 0 0 42-42 0z" />
+                    <path transform="matrix(0.60061118,0.79954125,-0.60061118,0.79954125,0,0)"
+                          d="m603.1-21.3 42 0 0 42-42 0z" />
+                    <path transform="matrix(0.79954125,-0.60061118,0.79954125,0.60061118,0,0)"
+                          d="m-250.7 635.8 42 0 0 42-42 0z" />
+                    <path transform="matrix(0.70710678,0.70710678,-0.70710678,0.70710678,0,0)"
+                          d="m630.3 100 22.6 0 0 22.6-22.6 0z" />
+                </g>
+            </g>
+        </svg>
         <span class="item">taiga</span>
     </div>
     <div class="menu-container"></div>
