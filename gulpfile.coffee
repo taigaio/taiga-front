@@ -250,6 +250,7 @@ gulp.task "deploy", [
     "jade-deploy",
     "template",
     "copy",
+    "svg",
     "coffee-deploy",
     "jslibs-deploy",
     "styles-deploy"
