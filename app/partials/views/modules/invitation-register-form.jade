@@ -2,7 +2,7 @@ form.register-form
     p.form-header Register a new Taiga account (free)
     fieldset
         input(type="text", name="username", ng-model="dataRegister.username",
-              data-required="true", data-maxlength="30", data-regexp="^[\\w.-]+$",
+              data-required="true", data-maxlength="255", data-regexp="^[\\w.-]+$",
               placeholder="Pick a username (case sensitive)")
 
     fieldset
@@ -11,8 +11,9 @@ form.register-form
               placeholder="Pick your full name")
 
     fieldset
-        input(type="text", name="email", ng-model="dataRegister.email", data-required="true",
-            placeholder="Your email")
+        input(type="text", name="email", ng-model="dataRegister.email",
+              data-required="true", data-maxlength="255",
+              placeholder="Your email")
 
     fieldset
         input(type="password", name="password", ng-model="dataRegister.password", data-required="true",

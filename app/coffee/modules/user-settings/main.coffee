@@ -68,22 +68,6 @@ class UserSettingsController extends mixOf(taiga.Controller, taiga.PageMixin)
 
         return promise.then(=> @.loadProject())
 
-    saveUserProfile: ->
-        updatingEmail = @scope.user.isAttributeModified("email")
-        promise = @repo.save(@scope.user)
-        promise.then =>
-            @auth.setUser(@scope.user)
-            if updatingEmail
-                @confirm.success("<strong>Check your inbox!</strong><br />
-                       We have sent a mail to your account<br />
-                       with the instructions to set your new address") #TODO: i18n
-            else
-                @confirm.notify('success')
-
-        promise.then null, (response) =>
-            @confirm.notify('error', response._error_message)
-            @scope.user = @auth.getUser()
-
     openDeleteLightbox: ->
         @rootscope.$broadcast("deletelightbox:new", @scope.user)
 
@@ -94,21 +78,35 @@ module.controller("UserSettingsController", UserSettingsController)
 ## User Profile Directive
 #############################################################################
 
-UserProfileDirective = () ->
+UserProfileDirective = ($confirm, $auth, $repo) ->
     link = ($scope, $el, $attrs) ->
-        form = $el.find("form").checksley()
-
         $el.on "click", ".user-profile form .save-profile", (event) ->
+            form = $el.find("form").checksley()
             return if not form.validate()
-            $ctrl = $el.controller()
-            $ctrl.saveUserProfile()
+
+            changeEmail = $scope.user.isAttributeModified("email")
+
+            onSuccess = (data) =>
+                $auth.setUser($scope.user)
+                if changeEmail
+                    $confirm.success("<strong>Check your inbox!</strong><br />
+                           We have sent a mail to your account<br />
+                           with the instructions to set your new address") #TODO: i18n
+                else
+                    $confirm.notify('success')
+
+            onError = (data) =>
+                form.setErrors(data)
+                $confirm.notify('error', data._error_message)
+
+            $repo.save($scope.user).then(onSuccess, onError)
 
         $scope.$on "$destroy", ->
             $el.off()
 
     return {link:link}
 
-module.directive("tgUserProfile", UserProfileDirective)
+module.directive("tgUserProfile", ["$tgConfirm", "$tgAuth", "$tgRepo",  UserProfileDirective])
 
 
 #############################################################################
