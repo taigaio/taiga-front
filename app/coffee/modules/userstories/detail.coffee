@@ -269,6 +269,7 @@ UsStatusDetailDirective = () ->
     link = ($scope, $el, $attrs, $model) ->
         editable = $attrs.editable?
         updatingSelectedRoleId = null
+        $ctrl = $el.controller()
 
         showSelectPoints = (onClose) ->
             us = $model.$modelValue
@@ -323,6 +324,8 @@ UsStatusDetailDirective = () ->
         $scope.$on "related-tasks:update", ->
             us = $scope.$eval $attrs.ngModel
             if us?
+                # Reload the us because the status could have changed
+                $ctrl.loadUs()
                 renderUsstatus(us)
 
         if editable
