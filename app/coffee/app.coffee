@@ -136,10 +136,11 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, tgLoade
     $httpProvider.defaults.headers.get = {}
 
     # Add next param when user try to access to a secction need auth permissions.
-    authHttpIntercept = ($q, $location, $confirm, $navUrls) ->
+    authHttpIntercept = ($q, $location, $confirm, $navUrls, $lightboxService) ->
         return (promise) ->
             return promise.then null, (response) ->
                 if response.status == 0
+                    $lightboxService.closeAll()
                     $location.path($navUrls.resolve("error"))
                     $location.replace()
                 else if response.status == 401
@@ -147,7 +148,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, tgLoade
                     $location.url($navUrls.resolve("login")).search("next=#{nextPath}")
                 return $q.reject(response)
 
-    $provide.factory("authHttpIntercept", ["$q", "$location", "$tgConfirm", "$tgNavUrls", authHttpIntercept])
+    $provide.factory("authHttpIntercept", ["$q", "$location", "$tgConfirm", "$tgNavUrls", "lightboxService", authHttpIntercept])
     $httpProvider.responseInterceptors.push('authHttpIntercept')
     $httpProvider.interceptors.push('loaderInterceptor')
 
