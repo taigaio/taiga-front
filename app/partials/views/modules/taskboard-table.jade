@@ -13,19 +13,14 @@ div.taskboard-table
                     div.tag-list
                         span.tag(ng-repeat="tag in us.tags") {{ tag }}
                     h3.us-title
-                        a(href="", tg-nav="project-userstories-detail:project=project.slug,ref=us.ref", tg-bo-title="us.subject")
+                        a(href="", tg-nav="project-userstories-detail:project=project.slug,ref=us.ref",
+                          tg-bo-title="'#' + us.ref + ' ' + us.subject")
                             span.us-ref(tg-bo-ref="us.ref")
                             span(ng-bind="us.subject")
                     p.points-value
                         span(ng-bind="us.total_points")
                         span points
-
-                    a.icon.icon-plus(tg-check-permission="add_task",
-                                     href="", title="Add new task",
-                                     ng-click="ctrl.addNewTask('standard', us)")
-                    a.icon.icon-bulk(tg-check-permission="add_task",
-                                     href="", title="Add new tasks in bulk",
-                                     ng-click="ctrl.addNewTask('bulk', us)")
+                    include ../components/addnewtask.jade
 
                 div.taskboard-tasks-box.task-column(ng-repeat="st in taskStatusList track by st.id",
                                                     tg-taskboard-sortable)
@@ -37,13 +32,10 @@ div.taskboard-table
                 div.taskboard-userstory-box.task-column
                     h3.us-title
                         span Unassigned tasks
-                    a.icon.icon-plus(tg-check-permission="add_task",
-                                     href="", title="Add new task",
-                                     ng-click="ctrl.addNewTask('standard', us)")
-                    a.icon.icon-bulk(tg-check-permission="add_task",
-                                     href="", title="Add new tasks in bulk",
-                                     ng-click="ctrl.addNewTask('bulk', us)")
+                    include ../components/addnewtask.jade
 
-                div.taskboard-tasks-box.task-column(ng-repeat="st in taskStatusList track by st.id", tg-taskboard-sortable)
-                        div.taskboard-task(ng-repeat="task in usTasks[null][st.id] track by task.id", tg-taskboard-task)
-                            include ../components/taskboard-task
+                div.taskboard-tasks-box.task-column(ng-repeat="st in taskStatusList track by st.id",
+                                                    tg-taskboard-sortable)
+                    div.taskboard-task(ng-repeat="task in usTasks[null][st.id] track by task.id",
+                                       tg-taskboard-task)
+                        include ../components/taskboard-task

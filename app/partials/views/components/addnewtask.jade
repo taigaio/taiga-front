@@ -1,7 +1,6 @@
-div.new-task
-    a.button.button-green(href="", ng-click="ctrl.addNewTask('standard', us)",
-                          title="Add new task")
-        span.text + Add new Task
-    a.button.button-bulk(href="", ng-click="ctrl.addNewTask('bulk', us)", ng-if="us",
-                         title="Add new tasks in bulk")
-        span.icon.icon-bulk
+a.icon.icon-plus(tg-check-permission="add_task",
+                 href="", title="Add a new Task",
+                 ng-click="ctrl.addNewTask('standard', us)")
+a.icon.icon-bulk(tg-check-permission="add_task",
+                 href="", title="Add some new Tasks in bulk",
+                 ng-click="ctrl.addNewTask('bulk', us)")

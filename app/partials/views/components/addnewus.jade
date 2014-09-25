@@ -1,5 +1,9 @@
 div.new-us
-    a.button.button-green(tg-check-permission="add_us", href="", ng-click="ctrl.addNewUs('standard')", title="Add a new User Story")
+    a.button.button-green(href="", title="Add a new User Story",
+                          ng-click="ctrl.addNewUs('standard')",
+                          tg-check-permission="add_us")
         span.text + Add a new User Story
-    a.button.button-bulk(tg-check-permission="add_us", href="", ng-click="ctrl.addNewUs('bulk')", title="Bulk")
+    a.button.button-bulk(href="", title="Add some new User Stories in bulk",
+                         ng-click="ctrl.addNewUs('bulk')",
+                         tg-check-permission="add_us")
         span.icon.icon-bulk

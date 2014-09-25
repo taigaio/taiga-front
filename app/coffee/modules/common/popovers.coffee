@@ -59,6 +59,7 @@ UsStatusDirective = ($repo, popoverService) ->
 
         if usStatusById[us.status]
             usStatusDom.text(usStatusById[us.status].name)
+            usStatusDomParent.prop("title", usStatusById[us.status].name)
             usStatusDomParent.css('color', usStatusById[us.status].color)
 
     link = ($scope, $el, $attrs) ->

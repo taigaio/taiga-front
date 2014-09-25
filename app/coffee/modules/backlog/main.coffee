@@ -759,13 +759,14 @@ UsPointsDirective = ($repo) ->
         renderPoints = (us, roleId) ->
             dom = $el.find("a > span.points-value")
 
-            totalPoints = calculateTotalPoints(us)
             if roleId == null or numberOfRoles == 1
                 dom.text(us.total_points)
+                dom.parent().prop("title", us.total_points)
             else
                 pointId = us.points[roleId]
                 pointObj = $scope.pointsById[pointId]
                 dom.html("#{pointObj.name} / <span>#{us.total_points}</span>")
+                dom.parent().prop("title", "#{pointObj.name} / #{us.total_points}")
 
         calculateTotalPoints = ->
             values = _.map(us.points, (v, k) -> $scope.pointsById[v].value)
