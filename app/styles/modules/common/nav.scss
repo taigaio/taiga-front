@@ -11,11 +11,12 @@
     z-index: 999;
 }
 .logo-container {
-    margin: 20%;
     cursor: pointer;
+    margin: 20%;
     object,
     img,
     svg {
+        height: 100%;
         width: 100%;
     }
     span {
