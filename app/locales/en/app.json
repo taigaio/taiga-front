@@ -24,18 +24,36 @@
         "rangecheck": "You must select between %s and %s choices.",
         "equalto": "This value should be the same."
     },
-    "pagination": {
-        "next": "Next",
-        "prev": "Previous"
-    },
     "common": {
-        "subject": "Subject"
+        "subject": "Subject",
         "save": "Save",
         "blocked": "Blocked",
         "cancel": "Cancel",
         "status": "Status",
         "new-bulk": "New bulk insert",
         "one-item-line": "One item per line..."
+    },
+    "pagination": {
+        "next": "Next",
+        "prev": "Previous"
+    },
+    "markdown-editor": {
+        "heading-1": "First Level Heading",
+        "heading-2": "Second Level Heading",
+        "heading-3": "Third Level Heading",
+        "bold": "Bold",
+        "italic": "Italic",
+        "strike": "Strike",
+        "bulleted-list": "Bulleted List",
+        "numeric-list": "Numeric List",
+        "picture": "Picture",
+        "link": "Link",
+        "quotes": "Quotes",
+        "code-block": "Code Block / Code",
+        "preview": "Preview",
+        "help": "Help",
+        "placeholder": "Your title here...",
+        "link-placeholder": "Your text to link here..."
     },
     "us": {
         "title-new": "New User Story",
