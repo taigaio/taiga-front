@@ -176,9 +176,7 @@ BlockingMessageInputDirective = ($log) ->
             return $log.error "No watch attribute on tg-blocking-message-input directive"
 
         $scope.$watch $attrs.watch, (value) ->
-            return if value is undefined
-
-            if value == true
+            if value is not undefined and value == true
                 $el.find(".blocked-note").show(400)
             else
                 $el.find(".blocked-note").hide(400)
