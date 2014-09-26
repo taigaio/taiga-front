@@ -416,6 +416,35 @@ TgProgressBarDirective = ->
     return {link: link}
 
 
+#############################################################################
+## Main title directive
+#############################################################################
+
+TgMainTitleDirective = ->
+    template = _.template("""
+        <span class="project-name"><%- projectName %></span>
+        <span class="green"><%- sectionName %></span>
+    """)
+
+    render = (el, projectName, sectionName) ->
+        el.html(template({
+            projectName: projectName
+            sectionName: sectionName
+        }))
+    link = ($scope, $el, $attrs) ->
+        element = angular.element($el)
+        $scope.$watch "project", (project) ->
+            render($el, project.name, $scope.sectionName)
+
+        $scope.$on "project:loaded", (ctx, project) =>
+            render($el, project.name, $scope.sectionName)
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {link: link}
+
+
 module.directive("tgListitemType", ListItemTypeDirective)
 module.directive("tgListitemIssueStatus", ListItemIssueStatusDirective)
 module.directive("tgListitemAssignedto", ListItemAssignedtoDirective)
@@ -424,3 +453,4 @@ module.directive("tgListitemSeverity", ListItemSeverityDirective)
 module.directive("tgListitemTaskStatus", ListItemTaskStatusDirective)
 module.directive("tgListitemUsStatus", ListItemUsStatusDirective)
 module.directive("tgProgressBar", TgProgressBarDirective)
+module.directive("tgMainTitle", TgMainTitleDirective)
