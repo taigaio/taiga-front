@@ -200,15 +200,23 @@ $.fn.popover = () ->
         docViewTop = $(window).scrollTop()
         docViewBottom = docViewTop + $(window).height()
 
+        docViewWidth = $(window).width()
+        docViewRight = docViewWidth
+        docViewLeft = 0
+
         elemTop = $el.offset().top
         elemBottom = elemTop + $el.height()
+
+        elemWidth = $el.width()
+        elemLeft = $el.offset().left
+        elemRight = $el.offset().left + elemWidth
 
         $el.css({
             "display": "none",
             "visibility": "visible"
         })
 
-        return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop))
+        return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop) && (elemLeft >= docViewLeft) && (elemRight <= docViewRight))
 
     closePopover = (onClose) =>
         if onClose then onClose.call($el)
@@ -234,8 +242,7 @@ $.fn.popover = () ->
             if !isVisible()
                 $el.addClass("fix")
 
-            $el
-            .fadeIn () =>
+            $el.fadeIn () =>
                 $el.addClass("active")
                 $(document.body).off("popover")
 

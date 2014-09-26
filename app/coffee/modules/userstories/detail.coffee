@@ -271,13 +271,14 @@ UsStatusDetailDirective = () ->
         updatingSelectedRoleId = null
         $ctrl = $el.controller()
 
-        showSelectPoints = (onClose) ->
+        showSelectPoints = (target) ->
             us = $model.$modelValue
             $el.find(".pop-points-open").remove()
-            $el.find(".points-per-role").append(selectionPointsTemplate({ "points":  $scope.project.points }))
+            $el.find(target).append(selectionPointsTemplate({ "points":  $scope.project.points }))
+            target.removeClass('active')
             $el.find(".pop-points-open a[data-point-id='#{us.points[updatingSelectedRoleId]}']").addClass("active")
             # If not showing role selection let's move to the left
-            $el.find(".pop-points-open").popover().open(onClose)
+            $el.find(".pop-points-open").popover().open()
 
         calculateTotalPoints = (us)->
             values = _.map(us.points, (v, k) -> $scope.pointsById[v].value)
@@ -293,9 +294,9 @@ UsStatusDetailDirective = () ->
             status = $scope.statusById[us.status]
             rolePoints = _.clone(_.filter($scope.project.roles, "computable"), true)
             _.map rolePoints, (v, k) ->
-                  name = $scope.pointsById[us.points[v.id]].name
-                  name = "?" if not name?
-                  v.points = name
+                name = $scope.pointsById[us.points[v.id]].name
+                name = "?" if not name?
+                v.points = name
 
             totalTasks = $scope.tasks.length
             totalClosedTasks = _.filter($scope.tasks, (task) => $scope.taskStatusById[task.status].is_closed).length
@@ -349,7 +350,8 @@ UsStatusDetailDirective = () ->
                 updatingSelectedRoleId = target.data("role-id")
                 target.siblings().removeClass('active')
                 target.addClass('active')
-                showSelectPoints(() -> target.removeClass('active'))
+                showSelectPoints(target)
+
             $el.on "click", ".point", (event) ->
                 event.preventDefault()
                 event.stopPropagation()

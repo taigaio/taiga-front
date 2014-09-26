@@ -195,8 +195,8 @@
         text-overflow: ellipsis;
         white-space: nowrap;
     }
-    .pop-points-open {
-        @include popover(200px, 60px, 40px, '', '');
+    .popover {
+        @include popover(200px, $top: 105%, $left: 35%, $arrow-width: 10px, $arrow-top: -5px, $arrow-left: 10px);
         li {
             display: inline-block;
             width: 23%;
@@ -209,6 +209,9 @@
                 background: $fresh-taiga;
                 color: $white;
             }
+        }
+        &.fix {
+            @include popover(200px, $top: 105%, $left: -160px, $arrow-width: 10px, $arrow-top: -5px, $arrow-left: 90%);
         }
     }
 }
