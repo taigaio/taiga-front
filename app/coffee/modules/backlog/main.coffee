@@ -736,7 +736,7 @@ UsPointsDirective = ($repo) ->
             if not $el.find(".pop-role:visible").css("left")?
                 $el.find(".pop-points-open").css("left", "110px")
 
-            $el.find(".pop-points-open").show()
+            $el.find(".pop-points-open").popover().open()
 
         renderRolesSelector = (us) ->
             # Prepare data for rendering
