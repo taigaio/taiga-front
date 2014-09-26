@@ -440,6 +440,7 @@ HistoryDirective = ($log, $loading) ->
 
         $el.on "click", ".add-comment a.button-green", debounce 2000, (event) ->
             event.preventDefault()
+            $scope.$broadcast("markdown-editor:submit")
 
             target = angular.element(event.currentTarget)
 

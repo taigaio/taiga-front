@@ -69,8 +69,15 @@ tgMarkitupDirective = ($rootscope, $rs) ->
         element = angular.element($el)
         previewDomNode = $("<div/>", {class: "preview"})
 
-        openHelp = ->
-            window.open($rootscope.urls.wikiHelpUrl(), '_blank')
+        #openHelp = ->
+        #    window.open($rootscope.urls.wikiHelpUrl(), '_blank')
+
+        closePreviewMode = ->
+            element.parents(".markdown").find(".preview").remove()
+            element.parents(".markItUp").show()
+
+        $scope.$on "markdown-editor:submit", ->
+            closePreviewMode()
 
         preview = ->
             markdownDomNode = element.parents(".markdown")
@@ -83,8 +90,7 @@ tgMarkitupDirective = ($rootscope, $rs) ->
                 # function is better aproach for it
                 element.parents(".markdown").one "click", ".preview", (event) ->
                     event.preventDefault()
-                    markdownDomNode.find(".preview").remove()
-                    markItUpDomNode.show()
+                    closePreviewMode()
 
         markdownCaretPositon = false
 
