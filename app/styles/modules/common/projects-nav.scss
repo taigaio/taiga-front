@@ -97,7 +97,7 @@
 }
 
 .projects-nav-overlay {
-    @include transition (all 1s ease);
+    /* @include transition (all 1s ease); */
     @extend %background-taiga;
     //background-blend-mode: multiply;
     //background-color: $green-taiga;

@@ -121,13 +121,12 @@ ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout, tgLoader, $
 
             timeout timeoutValue, ->
                 overlay.one 'transitionend', () ->
+                    $(document.body).removeClass("loading-project open-projects-nav closed-projects-nav")
                     overlay.hide()
 
-                $(document.body)
-                    .removeClass("loading-project open-projects-nav")
-                    .addClass("closed-projects-nav")
+                $(document.body).addClass("closed-projects-nav")
 
-                    tgLoader.disablePreventLoading()
+                tgLoader.disablePreventLoading()
 
     renderProjects  = ($el, projects) ->
         html = projectsTemplate({projects: projects})
@@ -170,8 +169,7 @@ ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout, tgLoader, $
                 return
             # END HACK
 
-            $(document.body)
-                .addClass('loading-project')
+            $(document.body).addClass('loading-project')
 
             tgLoader.preventLoading()
 
