@@ -434,7 +434,7 @@ TgMainTitleDirective = ->
     link = ($scope, $el, $attrs) ->
         element = angular.element($el)
         $scope.$watch "project", (project) ->
-            render($el, project.name, $scope.sectionName)
+            render($el, project.name, $scope.sectionName) if project
 
         $scope.$on "project:loaded", (ctx, project) =>
             render($el, project.name, $scope.sectionName)
