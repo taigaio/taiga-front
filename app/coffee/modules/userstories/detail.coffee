@@ -420,7 +420,7 @@ UsEstimationDirective = ($log) ->
             html = mainTemplate({totalPoints: totalPoints, roles: roles})
             $el.html(html)
 
-        renderPoints = (us, roleId) ->
+        renderPoints = (target, us, roleId) ->
             points = _.map $scope.project.points, (point) ->
                 point = _.clone(point, true)
                 point.selected = if us.points[roleId] == point.id then false else true
@@ -439,7 +439,7 @@ UsEstimationDirective = ($log) ->
             $el.find(".pop-points-open").remove()
 
             # Render into DOM and show the new created element
-            $el.find(".points-per-role").append(html)
+            $el.find(target).append(html)
 
             $el.find(".pop-points-open").popover().open(-> $(this).removeClass("active"))
             $el.find(".pop-points-open").show()
@@ -463,7 +463,7 @@ UsEstimationDirective = ($log) ->
             roleId = target.data("role-id")
 
             us = $scope.$eval($attrs.ngModel)
-            renderPoints(us, roleId)
+            renderPoints(target, us, roleId)
 
             target.siblings().removeClass('active')
             target.addClass('active')
