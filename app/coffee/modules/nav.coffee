@@ -275,8 +275,11 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location, $
     mainTemplate = _.template("""
     <div class="logo-container logo">
         <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg"
-             viewBox="0 0 134.2 134.3" version="1.1" preserveAspectRatio="xMidYMid meet">
+             viewBox="0 0 134.2 134.3" version="1.1" preserveAspectRatio="xMidYMid meet" shape-rendering="geometricPrecision">
             <style>
+                svg {
+                    transform: rotate(0.01deg);
+                }
                 path {
                     fill:#f5f5f5;
                     opacity:0.7;
