@@ -278,7 +278,7 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location, $
              viewBox="0 0 134.2 134.3" version="1.1" preserveAspectRatio="xMidYMid meet" shape-rendering="geometricPrecision">
             <style>
                 svg {
-                    transform: rotate(0.01deg);
+                    transform: scale(.99);
                 }
                 path {
                     fill:#f5f5f5;
