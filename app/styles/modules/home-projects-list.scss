@@ -93,6 +93,16 @@
     }
 }
 
+.project-content {
+    h2 {
+        margin-bottom: .3rem;
+    }
+    p {
+        @extend %small;
+        line-height: 1rem;
+    }
+}
+
 .all-projects {
     @include table-flex-child(1, 285px, 0, 285px);
     background-color: rgba(0, 0, 0, .5);
