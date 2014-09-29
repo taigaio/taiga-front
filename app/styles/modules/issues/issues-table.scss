@@ -37,6 +37,7 @@
         display: flex;
         img {
             flex-basis: 35px;
+            flex-shrink: 0;
         }
         figcaption {
             margin-left: .5rem;
