@@ -59,11 +59,12 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         "$tgLocation",
         "$appTitle",
         "$tgNavUrls",
+        "$tgEvents",
         "tgLoader"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @appTitle, @navUrls,
-                  tgLoader) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
+                  @appTitle, @navUrls, @events, tgLoader) ->
         _.bindAll(@)
         @scope.sectionName = "Kanban"
         @scope.statusViewModes = {}
@@ -162,10 +163,16 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @scope.$emit("project:loaded", project)
             return project
 
+    initializeSubscription: ->
+        routingKey1 = "changes.project.#{@scope.projectId}.userstories"
+        @events.subscribe @scope, routingKey1, (message) =>
+            @.loadUserstories()
+
     loadInitialData: ->
         # Resolve project slug
         promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
             @scope.projectId = data.project
+            @.initializeSubscription()
             return data
 
         return promise.then(=> @.loadProject())

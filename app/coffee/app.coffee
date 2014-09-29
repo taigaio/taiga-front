@@ -21,7 +21,21 @@
 
 @taiga = taiga = {}
 
-configure = ($routeProvider, $locationProvider, $httpProvider, $provide, tgLoaderProvider) ->
+# Generic function for generate hash from a arbitrary length
+# collection of parameters.
+taiga.generateHash = (components=[]) ->
+    components = _.map(components, (x) -> JSON.stringify(x))
+    return hex_sha1(components.join(":"))
+
+taiga.generateUniqueSessionIdentifier = ->
+    date = (new Date()).getTime()
+    randomNumber = Math.floor(Math.random() * 0x9000000)
+    return taiga.generateHash([date, randomNumber])
+
+taiga.sessionId = taiga.generateUniqueSessionIdentifier()
+
+
+configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEventsProvider, tgLoaderProvider) ->
     $routeProvider.when("/",
         {templateUrl: "/partials/projects.html", resolve: {loader: tgLoaderProvider.add()}})
     $routeProvider.when("/project/:pslug/",
@@ -127,13 +141,18 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, tgLoade
     defaultHeaders = {
         "Content-Type": "application/json"
         "Accept-Language": "en"
+        "X-Session-Id": taiga.sessionId
     }
 
     $httpProvider.defaults.headers.delete = defaultHeaders
     $httpProvider.defaults.headers.patch = defaultHeaders
     $httpProvider.defaults.headers.post = defaultHeaders
     $httpProvider.defaults.headers.put = defaultHeaders
-    $httpProvider.defaults.headers.get = {}
+    $httpProvider.defaults.headers.get = {
+        "X-Session-Id": taiga.sessionId
+    }
+
+    $tgEventsProvider.setSessionId(taiga.sessionId)
 
     # Add next param when user try to access to a secction need auth permissions.
     authHttpIntercept = ($q, $location, $confirm, $navUrls, $lightboxService) ->
@@ -148,7 +167,8 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, tgLoade
                     $location.url($navUrls.resolve("login")).search("next=#{nextPath}")
                 return $q.reject(response)
 
-    $provide.factory("authHttpIntercept", ["$q", "$location", "$tgConfirm", "$tgNavUrls", "lightboxService", authHttpIntercept])
+    $provide.factory("authHttpIntercept", ["$q", "$location", "$tgConfirm", "$tgNavUrls",
+                                           "lightboxService", authHttpIntercept])
     $httpProvider.responseInterceptors.push('authHttpIntercept')
     $httpProvider.interceptors.push('loaderInterceptor')
 
@@ -166,9 +186,12 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, tgLoade
         linewidth: "The subject must have a maximum size of %s"
     })
 
-init = ($log, $i18n, $config, $rootscope) ->
+init = ($log, $i18n, $config, $rootscope, $auth, $events) ->
     $i18n.initialize($config.get("defaultLanguage"))
     $log.debug("Initialize application")
+
+    if $auth.isAuthenticated()
+        $events.setupConnection()
 
 # Default Value for taiga local config module.
 angular.module("taigaLocalConfig", []).value("localconfig", {})
@@ -181,6 +204,7 @@ modules = [
     "taigaResources",
     "taigaLocales",
     "taigaAuth",
+    "taigaEvents",
 
     # Specific Modules
     "taigaRelatedTasks",
@@ -211,6 +235,7 @@ module.config([
     "$locationProvider",
     "$httpProvider",
     "$provide",
+    "$tgEventsProvider",
     "tgLoaderProvider",
     configure
 ])
@@ -220,5 +245,7 @@ module.run([
     "$tgI18n",
     "$tgConfig",
     "$rootScope",
+    "$tgAuth",
+    "$tgEvents",
     init
 ])

@@ -46,11 +46,12 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         "$tgLocation",
         "$appTitle",
         "$tgNavUrls",
+        "$tgEvents",
         "tgLoader"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @appTitle, @navUrls,
-                  tgLoader) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q,
+                  @location, @appTitle, @navUrls, @events, tgLoader) ->
         _.bindAll(@)
 
         @scope.sectionName = "Backlog"
@@ -94,8 +95,18 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @scope.$on("sprint:us:moved", @.loadSprints)
         @scope.$on("sprint:us:moved", @.loadProjectStats)
 
+    initializeSubscription: ->
+        routingKey1 = "changes.project.#{@scope.projectId}.userstories"
+        @events.subscribe @scope, routingKey1, (message) =>
+            @.loadUserstories()
+            @.loadSprints()
+
+        routingKey2 = "changes.project.#{@scope.projectId}.milestones"
+        @events.subscribe @scope, routingKey2, (message) =>
+            @.loadSprints()
+
     toggleShowTags: ->
-        @scope.$apply () =>
+        @scope.$apply =>
             @showTags = !@showTags
             @rs.userstories.storeShowTags(@scope.projectId, @showTags)
 
@@ -186,6 +197,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         # Resolve project slug
         promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
             @scope.projectId = data.project
+            @.initializeSubscription()
             return data
 
         return promise.then(=> @.loadProject())

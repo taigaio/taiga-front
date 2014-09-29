@@ -49,11 +49,12 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         "$tgLocation",
         "$appTitle",
         "$tgNavUrls",
+        "$tgEvents",
         "tgLoader"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @urls, @params, @q, @location, @appTitle,
-                  @navUrls, tgLoader) ->
+                  @navUrls, @events, tgLoader) ->
         @scope.sectionName = "Issues"
         @scope.filters = {}
 
@@ -81,6 +82,11 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         @scope.$on "issueform:new:success", =>
             @.loadIssues()
             @.loadFilters()
+
+    initializeSubscription: ->
+        routingKey = "changes.project.#{@scope.projectId}.issues"
+        @events.subscribe @scope, routingKey, (message) =>
+            @.loadIssues()
 
     storeFilters: ->
         @rs.issues.storeFilters(@params.pslug, @location.search())
@@ -256,6 +262,7 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
     loadInitialData: ->
         promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
             @scope.projectId = data.project
+            @.initializeSubscription()
             return data
 
         return promise.then(=> @.loadProject())
@@ -755,6 +762,9 @@ IssueStatusInlineEditionDirective = ($repo, popoverService) ->
                 $el.unbind("click")
                 $el.find("a").addClass("not-clickable")
 
+        $scope.$watch $attrs.tgIssueStatusInlineEdition, (val) =>
+            updateIssueStatus($el, val, $scope.issueStatusById)
+
         $scope.$on "$destroy", ->
             $el.off()
 
@@ -802,6 +812,9 @@ IssueAssignedToInlineEditionDirective = ($repo, $rootscope, popoverService) ->
                 updatedIssue.assigned_to = userId
                 $repo.save(updatedIssue)
                 updateIssue(updatedIssue)
+
+        $scope.$watch $attrs.tgIssueAssignedToInlineEdition, (val) =>
+            updateIssue(val)
 
         $scope.$on "$destroy", ->
             $el.off()

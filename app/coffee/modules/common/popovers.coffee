@@ -42,9 +42,9 @@ UsStatusDirective = ($repo, popoverService) ->
 
     NOTE: This directive need 'usStatusById' and 'project'.
     ###
-    selectionTemplate = _.template("""
+    template = _.template("""
     <ul class="popover pop-status">
-        <% _.forEach(statuses, function(status) { %>
+        <% _.each(statuses, function(status) { %>
         <li>
             <a href="" class="status" title="<%- status.name %>" data-status-id="<%- status.id %>">
                 <%- status.name %>
@@ -53,51 +53,56 @@ UsStatusDirective = ($repo, popoverService) ->
         <% }); %>
     </ul>""")
 
-    updateUsStatus = ($el, us, usStatusById) ->
-        usStatusDomParent = $el.find(".us-status")
-        usStatusDom = $el.find(".us-status .us-status-bind")
-
-        if usStatusById[us.status]
-            usStatusDom.text(usStatusById[us.status].name)
-            usStatusDomParent.prop("title", usStatusById[us.status].name)
-            usStatusDomParent.css('color', usStatusById[us.status].color)
-
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
-        us = $scope.$eval($attrs.tgUsStatus)
+
+        render = (us) ->
+            usStatusDomParent = $el.find(".us-status")
+            usStatusDom = $el.find(".us-status .us-status-bind")
+            usStatusById = $scope.usStatusById
+
+            if usStatusById[us.status]
+                usStatusDom.text(usStatusById[us.status].name)
+                usStatusDomParent.css("color", usStatusById[us.status].color)
 
         $el.on "click", ".us-status", (event) ->
             event.preventDefault()
             event.stopPropagation()
-
             $el.find(".pop-status").popover().open()
-
-            # pop = $el.find(".pop-status")
-            # popoverService.open(pop)
 
         $el.on "click", ".status", debounce 2000, (event) ->
             event.preventDefault()
             event.stopPropagation()
+
             target = angular.element(event.currentTarget)
+
+            us = $scope.$eval($attrs.tgUsStatus)
             us.status = target.data("status-id")
+            render(us)
+
             $el.find(".pop-status").popover().close()
-            updateUsStatus($el, us, $scope.usStatusById)
 
             $scope.$apply () ->
                 $repo.save(us).then ->
                     $scope.$eval($attrs.onUpdate)
 
-        taiga.bindOnce $scope, "project", (project) ->
-            $el.append(selectionTemplate({ 'statuses':  project.us_statuses }))
-            updateUsStatus($el, us, $scope.usStatusById)
+
+        $scope.$on("userstories:loaded", -> render($scope.$eval($attrs.tgUsStatus)))
+        $scope.$on("$destroy", -> $el.off())
+
+        # Bootstrap
+        us = $scope.$eval($attrs.tgUsStatus)
+        render(us)
+
+        bindOnce $scope, "project", (project) ->
+            html = template({"statuses": project.us_statuses})
+            $el.append(html)
 
             # If the user has not enough permissions the click events are unbinded
-            if project.my_permissions.indexOf("modify_us") == -1
+            if $scope.project.my_permissions.indexOf("modify_us") == -1
                 $el.unbind("click")
                 $el.find("a").addClass("not-clickable")
 
-        $scope.$on "$destroy", ->
-            $el.off()
 
     return {link: link}
 
