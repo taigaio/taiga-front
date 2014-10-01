@@ -5,7 +5,7 @@
     "duplicate-properties": false,
     "font-sizes": false,
     "ids": true,
-    "known-properties": true,
+    "known-properties": false,
     "overqualified-elements": true,
     "shorthand": true,
     "text-indent": true,
