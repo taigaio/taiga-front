@@ -211,7 +211,8 @@ TaskboardDirective = ($rootscope) ->
         $el.on "click", ".toggle-analytics-visibility", (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
-            toggleText(target, ["Hide statistics", "Show statistics"]) # TODO: i18n
+            target.toggleClass('active');
+            #toggleText(target, ["Hide statistics", "Show statistics"]) # TODO: i18n
             $rootscope.$broadcast("taskboard:graph:toggle-visibility")
 
         tableBodyDom = $el.find(".taskboard-table-body")
