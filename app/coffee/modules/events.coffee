@@ -72,7 +72,7 @@ class EventsService
         if not @.connected
             return
 
-        messages = _.map(@.serialize, @.pendingMessages)
+        messages = _.map(@.pendingMessages, @.serialize)
         @.pendingMessages = []
 
         for msg in messages
