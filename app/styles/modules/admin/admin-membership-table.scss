@@ -3,13 +3,13 @@
         @extend %bold;
     }
     .avatar {
-        align-items: center;
-        display: flex;
+        @include table-flex(stretch, center, flex, row, wrap, flex-start);
         figcaption {
             margin-left: 1rem;
         }
         img {
-            flex-basis: 35px;
+            @include table-flex-child(1, 35px, 0);
+            max-width: 35px;
         }
         .name,
         .email {
@@ -54,12 +54,11 @@
         padding-right: 1rem;
     }
     .row-status {
-        display: flex;
+        @include table-flex();
         .delete {
             @extend %large;
-            align-items: center;
+            @include table-flex(stretch, center, flex, row, wrap, flex-start);
             color: $gray-light;
-            display: flex;
             margin-left: 15px;
             padding: 0 15px;
             &:hover {
@@ -79,13 +78,13 @@
     .row-role,
     .header-member,
     .header-role {
-        flex: 3 0 50px;
+        @include table-flex-child(3, 35px, 0);
     }
     .row-status,
     .row-admin,
     .header-admin,
     .header-status {
-        flex: 1 0 50px;
+        @include table-flex-child(1, 50px, 0);
     }
     .check {
         background-color: darken($whitish, 10%);
