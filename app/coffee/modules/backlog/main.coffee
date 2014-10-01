@@ -968,3 +968,34 @@ tgBacklogGraphDirective = ->
 
 
 module.directive("tgGmBacklogGraph", tgBacklogGraphDirective)
+
+
+#############################################################################
+## Backlog progress bar directive
+#############################################################################
+
+TgBacklogProgressBarDirective = ->
+    template = _.template("""
+        <div class="defined-points-progress" style="width: 100%; background: red; height: 24px; position: absolute; "></div>
+        <div class="project-points" style="width: 80%; background: gray; height: 24px; position: absolute; "></div>
+        <div class="project-points-progress" style="width: <%- percentage %>%; height: 24px; position: absolute; background: green"></div>
+        <!--<div class="current-progress" style="width: <%- percentage %>%"></div>-->
+    """)
+
+    render = (el, percentage) ->
+        el.html(template({percentage: percentage}))
+
+    link = ($scope, $el, $attrs) ->
+        element = angular.element($el)
+
+        $scope.$watch $attrs.tgBacklogProgressBar, (percentage) ->
+            percentage = _.max([0 , percentage])
+            percentage = _.min([100, percentage])
+            render($el, percentage)
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {link: link}
+
+module.directive("tgBacklogProgressBar", TgBacklogProgressBarDirective)

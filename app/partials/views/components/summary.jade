@@ -1,5 +1,5 @@
 div.summary
-    div.summary-progress-bar(tg-progress-bar="stats.completedPercentage")
+    div.summary-progress-bar(tg-backlog-progress-bar="stats.completedPercentage")
         div.current-progress(style="width: {{stats.completedPercentage}}")
     div.data
         span.number(tg-bind-html="stats.completedPercentage + '%'")
@@ -11,8 +11,8 @@ div.summary
             span.number(tg-bind-html="stats.defined_points") --
             span.description defined<br />points
         li
-            span.number(tg-bind-html="stats.assigned_points") --
-            span.description assigned<br />points
-        li
             span.number(tg-bind-html="stats.closed_points") --
             span.description closed<br />points
+        li
+            span.number(tg-bind-html="stats.speed") --
+            span.description points /<br />sprint
