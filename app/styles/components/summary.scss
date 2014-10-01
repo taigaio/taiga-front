@@ -59,6 +59,22 @@
         height: 24px;
         width: calc(30% - 4px);
     }
+    .defined-points{
+        width: 100%;
+        background: red;
+        height: 24px;
+        position: absolute;
+    }
+    .project-points-progress{
+        background: gray;
+        height: 24px;
+        position: absolute;
+    }
+    .closed-points-progress{
+        height: 24px;
+        position: absolute;
+        background: green;
+    }
 }
 
 

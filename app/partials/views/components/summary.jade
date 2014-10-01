@@ -1,6 +1,6 @@
 div.summary
-    div.summary-progress-bar(tg-backlog-progress-bar="stats.completedPercentage")
-        div.current-progress(style="width: {{stats.completedPercentage}}")
+    div.summary-progress-bar(tg-backlog-progress-bar="stats")
+
     div.data
         span.number(tg-bind-html="stats.completedPercentage + '%'")
     ul
