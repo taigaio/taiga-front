@@ -120,7 +120,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
                 @scope.stats.completedPercentage = Math.round(100 * stats.closed_points / stats.total_points)
             else
                 @scope.stats.completedPercentage = 0
-
+                
             return stats
 
     refreshTagsColors: ->

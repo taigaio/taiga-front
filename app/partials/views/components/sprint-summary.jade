@@ -15,8 +15,8 @@ div.summary.large-summary
     ul
         li
             span.icon.icon-bulk
-            span.number(ng-bind="stats.total_tasks|default:'--'")
-            span.description created<br />tasks
+            span.number(ng-bind="stats.openTasks|default:'--'")
+            span.description open<br />tasks
         li
             span.number(ng-bind="stats.completed_tasks|default:'--'")
             span.description closed<br />tasks
