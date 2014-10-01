@@ -1,0 +1,11 @@
+a.close(href="", title="close")
+    span.icon.icon-delete
+form
+    h2.title Tell us something...
+    fieldset
+        textarea(ng-model="feedback.comment", data-required="true",
+                 placeholder="...a bug, some suggestions, something cool... or even your worst nightmare with Taiga")
+    fieldset
+        input.hidden(type="submit")
+        a.button.button-green(href="", title="Send feedback")
+            span Send feedback

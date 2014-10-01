@@ -262,6 +262,7 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location, $
                     <li><a href="" title="User Profile", tg-nav="user-settings-user-profile:project=project.slug">User Profile</a></li>
                     <li><a href="" title="Change Password", tg-nav="user-settings-user-change-password:project=project.slug">Change Password</a></li>
                     <li><a href="" title="Notifications", tg-nav="user-settings-mail-notifications:project=project.slug">Notifications</a></li>
+                    <li><a href="" class="feedback" title="Feedback"">Feedback</a></li>
                     <li><a href="" title="Logout" class="logout">Logout</a></li>
                 </ul>
                 <a href="" title="User preferences" class="avatar" id="nav-user-settings">
@@ -370,6 +371,10 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location, $
         $el.on "click", "#nav-search > a", (event) ->
             event.preventDefault()
             $rootscope.$broadcast("search-box:show", project)
+
+        $el.on "click", ".feedback", (event) ->
+            event.preventDefault()
+            $rootscope.$broadcast("feedback:show", project)
 
         $scope.$on "projects:loaded", (listener) ->
             $el.addClass("hidden")
