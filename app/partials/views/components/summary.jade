@@ -14,5 +14,5 @@ div.summary
             span.number(tg-bind-html="stats.closed_points") --
             span.description closed<br />points
         li
-            span.number(tg-bind-html="stats.speed") --
+            span.number(tg-bind-html="stats.speed | number:0") --
             span.description points /<br />sprint
