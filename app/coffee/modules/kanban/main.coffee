@@ -257,12 +257,15 @@ module.controller("KanbanController", KanbanController)
 
 KanbanDirective = ($repo, $rootscope) ->
     link = ($scope, $el, $attrs) ->
-
         tableBodyDom = $el.find(".kanban-table-body")
+
         tableBodyDom.on "scroll", (event) ->
             target = angular.element(event.currentTarget)
             tableHeaderDom = $el.find(".kanban-table-header .kanban-table-inner")
             tableHeaderDom.css("left", -1 * target.scrollLeft())
+
+        $scope.$on "$destroy", ->
+            $el.off()
 
     return {link: link}
 
@@ -280,9 +283,13 @@ KanbanRowWidthFixerDirective = ->
             size = (statuses.length * itemSize) - 10
             $el.css("width", "#{size}px")
 
+        $scope.$on "$destroy", ->
+            $el.off()
+
     return {link: link}
 
 module.directive("tgKanbanRowWidthFixer", KanbanRowWidthFixerDirective)
+
 
 #############################################################################
 ## Kanban Column Height Fixer Directive
@@ -301,6 +308,9 @@ KanbanColumnHeightFixerDirective = ->
     link = ($scope, $el, $attrs) ->
         timeout(500, -> renderSize($el))
 
+        $scope.$on "$destroy", ->
+            $el.off()
+
     return {link:link}
 
 
@@ -312,21 +322,25 @@ module.directive("tgKanbanColumnHeightFixer", KanbanColumnHeightFixerDirective)
 
 KanbanUserstoryDirective = ($rootscope) ->
     link = ($scope, $el, $attrs, $model) ->
+        $el.disableSelection()
+
         $el.find(".icon-edit").on "click", (event) ->
             if $el.find(".icon-edit").hasClass("noclick")
                 return
+
             $scope.$apply ->
                 $rootscope.$broadcast("usform:edit", $model.$modelValue)
         if $scope.us.is_blocked
             $el.addClass("blocked")
-        $el.disableSelection()
+
+        $scope.$on "$destroy", ->
+            $el.off()
 
     return {
         templateUrl: "/partials/views/components/kanban-task.html"
         link: link
         require: "ngModel"
     }
-
 
 module.directive("tgKanbanUserstory", ["$rootScope", KanbanUserstoryDirective])
 
@@ -350,6 +364,9 @@ KanbanWipLimitDirective = ->
         $scope.$on "kanban:us:move", redrawWipLimit
         $scope.$on "usform:new:success", redrawWipLimit
         $scope.$on "usform:bulk:success", redrawWipLimit
+
+        $scope.$on "$destroy", ->
+            $el.off()
 
     return {link: link}
 
@@ -412,7 +429,9 @@ KanbanUserDirective = ($log) ->
                     $ctrl = $el.controller()
                     $ctrl.changeUsAssignedTo(us)
 
-    return {link: link, require:"ngModel"}
+        $scope.$on "$destroy", ->
+            $el.off()
 
+    return {link: link, require:"ngModel"}
 
 module.directive("tgKanbanUserAvatar", ["$log", KanbanUserDirective])
