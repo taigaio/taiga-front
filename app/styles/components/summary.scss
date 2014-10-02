@@ -54,6 +54,10 @@
     padding: 3px;
     position: relative;
     width: 15%;
+    .current-progress {
+        background: $fresh-taiga;
+        height: 24px;
+    }
     .defined-points {
         background: $red-light;
         height: 24px;
