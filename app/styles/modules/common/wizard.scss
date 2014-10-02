@@ -41,11 +41,11 @@
         @include animation-direction(alternate-reverse);
         &.active {
             @include animation(formSlide .4s ease-in-out);
-            &.create-step1,
+            &.create-step2,
             &.create-step3 {
                 @include table-flex();
             }
-            &.create-step2 {
+            &.create-step1 {
                 display: block;
             }
         }
@@ -63,7 +63,7 @@
             }
         }
     }
-    .create-step2 {
+    .create-step1 {
         .template-inner {
             @include table-flex();
             fieldset {
@@ -147,23 +147,6 @@
                 }
             }
         }
-        // &.step3 {
-        //     .bar {
-        //         @include transition(width .6s ease-in-out);
-        //         width: 75%;
-        //     }
-        //     .progress-state {
-        //         span {
-        //             &:nth-child(1),
-        //             &:nth-child(2),
-        //             &:nth-child(3) {
-        //                 @include transition(color .3s ease-in-out);
-        //                 @include transition-delay(.6s);
-        //                 color: rgba($white, 1);
-        //             }
-        //         }
-        //     }
-        // }
     }
     .progress-state {
         position: absolute;
