@@ -157,7 +157,6 @@ PublicRegisterMessageDirective = ($config, $navUrls) ->
 
     templateFn = ->
         publicRegisterEnabled = $config.get("publicRegisterEnabled")
-        console.log publicRegisterEnabled
         if not publicRegisterEnabled
             return ""
         return template({url:$navUrls.resolve("register")})
@@ -226,8 +225,7 @@ RegisterDirective = ($auth, $confirm, $location, $navUrls, $config) ->
             $location.path($navUrls.resolve("home"))
 
         onErrorSubmit = (response) ->
-            $confirm.notify("light-error", "According to our Oompa Loompas, the username or email is
-                                            already in use.") #TODO: i18n
+            $confirm.notify("light-error", "According to our Oompa Loompas there was an error. #{response.data._error_message}") #TODO: i18n
 
         submit = ->
             if not form.validate()
