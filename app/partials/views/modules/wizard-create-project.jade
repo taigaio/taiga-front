@@ -1,15 +1,5 @@
 form
-    section.wizard-step.create-step1.active(data-step="step1")
-        div.title
-            h1 Create Project
-            p Fresh and clean. So exciting!
-        fieldset
-            input(type="text", name="name", ng-model="data.name", data-required="true", placeholder="Name", maxlength="45")
-        fieldset
-            textarea(name="description", ng-model="data.description", data-required="true",  placeholder="Description")
-        fieldset
-            a.button-next.button.button-green(href="", title="Next") Next
-    section.wizard-step.create-step2(data-step="step2")
+    section.wizard-step.create-step1(data-step="step1")
         div.title
             h1 Choose a template
             p Which template would fit better in your project?
@@ -24,28 +14,26 @@ form
                         h2 {{ template.name }}
                     p {{ template.description }}
 
+        fieldset
+            a.button-next.button.button-green(href="", title="Next") Next
+
+    section.wizard-step.create-step2.active(data-step="step2")
+        div.title
+            h1 Create Project
+            p Fresh and clean. So exciting!
+        fieldset
+            input(type="text", name="name", ng-model="data.name", data-required="true", placeholder="Name", maxlength="45")
+        fieldset
+            textarea(name="description", ng-model="data.description", data-required="true",  placeholder="Description")
         fieldset.wizard-action
             div
                 a.button-prev.button.button-gray(href="", title="Prev") Prev
                 a.button-submit.button.button-green(href="", title="Create") Create
 
-    // section.wizard-step.create-step3(data-step="step3")
-    //     div.title
-    //         h1 Final Touch
-    //         p Give a final touch and make this project totally yours
-    //     fieldset
-    //         input(type="number", name="total_story_points", min="0", ng-model="data.total_story_points", data-type="digits", data-required="true", placeholder="Total story points")
-    //     fieldset
-    //         input(type="number", name="total_milestones", min="0", ng-model="data.total_milestones", data-type="digits", placeholder="Total milestones")
-    //     fieldset.wizard-action
-    //         div
-    //             a.button-prev.button.button-gray(href="", title="Prev") Prev
-    //             a.button-submit.button.button-green(href="", title="Create") Create
-
 div.progress-bar
     div.progress-state
-        span Name and description
         span Template selection
+        span Name and description
         // span Final touches
     div.progress-bar-wrapper
         div.bar
