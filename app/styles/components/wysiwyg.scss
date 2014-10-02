@@ -1,4 +1,5 @@
 .wysiwyg {
+    overflow-x: scroll;
     h1 {
         @extend %xlarge;
         @extend %text;
