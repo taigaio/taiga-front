@@ -269,7 +269,7 @@ HistoryDirective = ($log, $loading) ->
                 team_requirement: "team requirement"
 
                 # Task
-                milestone: "spreint"
+                milestone: "sprint"
                 user_story: "user story"
                 is_iocaine: "is iocaine"
 
