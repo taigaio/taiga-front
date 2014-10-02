@@ -324,14 +324,18 @@ KanbanUserstoryDirective = ($rootscope) ->
     link = ($scope, $el, $attrs, $model) ->
         $el.disableSelection()
 
+        $scope.$watch "us", (us) ->
+            if us.is_blocked and not $el.hasClass("blocked")
+                $el.addClass("blocked")
+            else if not us.is_blocked and $el.hasClass("blocked")
+                $el.removeClass("blocked")
+
         $el.find(".icon-edit").on "click", (event) ->
             if $el.find(".icon-edit").hasClass("noclick")
                 return
 
             $scope.$apply ->
                 $rootscope.$broadcast("usform:edit", $model.$modelValue)
-        if $scope.us.is_blocked
-            $el.addClass("blocked")
 
         $scope.$on "$destroy", ->
             $el.off()
