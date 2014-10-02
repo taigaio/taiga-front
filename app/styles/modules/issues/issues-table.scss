@@ -33,22 +33,21 @@
         border-bottom: 1px solid $gray-light;
     }
     .avatar {
-        align-items: center;
-        display: flex;
+        @include table-flex(stretch, stretch, flex, row, wrap, flex-start);
         img {
-            flex-basis: 35px;
-            flex-shrink: 0;
+            width: 35px;
         }
         figcaption {
+            @include table-flex-child(1, 60%, 0);
             margin-left: .5rem;
         }
     }
     .level-field {
-        @include table-flex-child(1, 70px, 0, 70px);
+        @include table-flex-child(1, 70px, 0);
         text-align: center;
     }
     .subject {
-        @include table-flex-child(7, 300px, 0, 300px);
+        @include table-flex-child(7, 300px, 0);
         padding-right: 1rem;
         span {
             &:first-child {
@@ -59,13 +58,13 @@
     .issue-field,
     .assigned-field,
     .created-field {
-        @include table-flex-child(1, 100px, 0, 150px);
+        @include table-flex-child(1, 100px, 0);
         padding: 0 1rem;
         position: relative;
         text-align: left;
     }
     .assigned-field {
-        @include table-flex-child(2, 100px, 0, 150px);
+        @include table-flex-child(2, 100px, 0);
     }
     .issue-assignedto {
         cursor: pointer;

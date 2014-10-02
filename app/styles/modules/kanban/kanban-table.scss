@@ -20,7 +20,7 @@ $column-margin: 0 10px 0 0;
         position: absolute;
     }
     .task-colum_name {
-        @include table-flex-child($column-flex, $column-width, $column-shrink, $column-width);
+        @include table-flex-child();
         @extend %large;
         background: $whitish;
         border-top: 3px solid $gray-light;
@@ -60,7 +60,7 @@ $column-margin: 0 10px 0 0;
     overflow-x: auto;
     width: 100%;
     .task-column {
-        @include table-flex-child($column-flex, $column-width, $column-shrink, $column-width);
+        @include table-flex-child();
         margin: $column-margin;
         overflow-y: auto;
         &:last-child {
@@ -80,5 +80,5 @@ $column-margin: 0 10px 0 0;
 }
 
 .kanban-table-inner {
-    @include table-flex(stretch, stretch, flex, row, nowrap, flex-start);
+    @include table-flex($flex-wrap: nowrap);
 }
