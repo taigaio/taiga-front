@@ -225,7 +225,10 @@ RegisterDirective = ($auth, $confirm, $location, $navUrls, $config) ->
             $location.path($navUrls.resolve("home"))
 
         onErrorSubmit = (response) ->
-            $confirm.notify("light-error", "According to our Oompa Loompas there was an error. #{response.data._error_message}") #TODO: i18n
+            if response.data._error_message?
+                $confirm.notify("light-error", "According to our Oompa Loompas there was an error. #{response.data._error_message}") #TODO: i18n
+                
+            form.setErrors(response.data)
 
         submit = ->
             if not form.validate()
