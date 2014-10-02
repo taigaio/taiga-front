@@ -1009,8 +1009,8 @@ TgBacklogProgressBarDirective = ->
                     projectPointsPercentaje = 100
                     closedPointsPercentaje = closedPoints * 100 / totalPoints
 
-                projectPointsPercentaje = adjustPercentaje(projectPointsPercentaje)
-                closedPointsPercentaje = adjustPercentaje(closedPointsPercentaje)
+                projectPointsPercentaje = adjustPercentaje(projectPointsPercentaje - 3)
+                closedPointsPercentaje = adjustPercentaje(closedPointsPercentaje - 3)
                 render($el, projectPointsPercentaje, closedPointsPercentaje)
 
         $scope.$on "$destroy", ->
