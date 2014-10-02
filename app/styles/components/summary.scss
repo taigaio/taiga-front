@@ -54,26 +54,21 @@
     padding: 3px;
     position: relative;
     width: 15%;
-    .current-progress {
+    .defined-points {
+        background: $red-light;
+        height: 24px;
+        position: absolute;
+        width: calc(100% - 6px);
+    }
+    .project-points-progress {
+        background: $white;
+        height: 24px;
+        position: absolute;
+    }
+    .closed-points-progress {
         background: $fresh-taiga;
         height: 24px;
-        width: calc(30% - 4px);
-    }
-    .defined-points{
-        width: 100%;
-        background: red;
-        height: 24px;
         position: absolute;
-    }
-    .project-points-progress{
-        background: gray;
-        height: 24px;
-        position: absolute;
-    }
-    .closed-points-progress{
-        height: 24px;
-        position: absolute;
-        background: green;
     }
 }
 
