@@ -221,7 +221,7 @@ RegisterDirective = ($auth, $confirm, $location, $navUrls, $config) ->
         form = $el.find("form").checksley()
 
         onSuccessSubmit = (response) ->
-            $confirm.notify("success", "Our Oompa Loompas are happy, Welcome to Taiga.") #TODO: i18n
+            $confirm.notify("success", "Our Oompa Loompas are happy, welcome to Taiga.") #TODO: i18n
             $location.path($navUrls.resolve("home"))
 
         onErrorSubmit = (response) ->
