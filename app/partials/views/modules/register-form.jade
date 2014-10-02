@@ -16,7 +16,8 @@ div.register-form-container(tg-register)
                   placeholder="Your email")
 
         fieldset
-            input(type="password", name="password", ng-model="data.password", data-required="true",
+            input(type="password", name="password", ng-model="data.password",
+                data-required="true", data-minlength="4", 
                 placeholder="Set a password (case sensitive)")
 
         fieldset
