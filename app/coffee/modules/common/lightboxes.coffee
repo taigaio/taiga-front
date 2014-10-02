@@ -32,6 +32,7 @@ debounce = @.taiga.debounce
 class LightboxService extends taiga.Service
     open: ($el) ->
         $el.css('display', 'flex')
+        $el.find('input,textarea').first().focus()
         timeout(70, -> $el.addClass("open"))
 
         docEl = angular.element(document)
