@@ -1,3 +1,24 @@
+###
+# Copyright (C) 2014 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014 David Barragán Merino <bameda@dbarragan.com>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, either version 3 of the
+# License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+#
+# File: modules/feedback.coffee
+###
+
 taiga = @.taiga
 
 groupBy = @.taiga.groupBy
@@ -8,28 +29,22 @@ trim = @.taiga.trim
 
 module = angular.module("taigaFeedback", [])
 
-FeedbackDirective = ($lightboxService, $navurls, $location, $route)->
+FeedbackDirective = ($lightboxService, $repo, $confirm)->
     link = ($scope, $el, $attrs) ->
         form = $el.find("form").checksley()
-        project = null
 
         submit = debounce 2000, ->
             if not form.validate()
                 return
 
-        $scope.$on "feedback:show", (ctx, newProject)->
-            project = newProject
+            promise = $repo.create("feedback", $scope.feedback)
 
-            $scope.$apply ->
-                $scope.issueTypes = _.sortBy(project.issue_types, "order")
+            promise.then (data) ->
+                $lightboxService.close($el)
+                $confirm.notify("success", "\\o/ we'll be happy to read your")
 
-                $scope.feedback = {
-                    project: project.id
-                    type: project.default_issue_type
-                }
-
-            $lightboxService.open($el)
-            $el.find("textarea").focus()
+            promise.then null, ->
+                $confirm.notify("error")
 
         $el.on "submit", (event) ->
             submit()
@@ -38,6 +53,16 @@ FeedbackDirective = ($lightboxService, $navurls, $location, $route)->
             event.preventDefault()
             submit()
 
+        $scope.$on "feedback:show", ->
+            $scope.$apply ->
+                $scope.feedback = {}
+
+            $lightboxService.open($el)
+            $el.find("textarea").focus()
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
     return {link:link}
 
-module.directive("tgFeedback", ["lightboxService", "$tgNavUrls", "$tgLocation", "$route", FeedbackDirective])
+module.directive("tgLbFeedback", ["lightboxService", "$tgRepo", "$tgConfirm", FeedbackDirective])

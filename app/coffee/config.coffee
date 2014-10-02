@@ -38,6 +38,8 @@ class ConfigService extends taiga.Service
 
         termsOfServiceUrl: null
         privacyPolicyUrl: null
+
+        feedbackEnabled: true
     }
 
     initialize: (localconfig) ->
