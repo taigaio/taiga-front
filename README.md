@@ -34,5 +34,6 @@ And go in your browser to: http://localhost:9001/
 
 ## Community ##
 
-If you have any doubts or any questions related to taiga's software, you can use this
-[Mailing List](http://groups.google.com/d/forum/taigaio).
+[Taiga has a mailing list](http://groups.google.com/d/forum/taigaio). Feel free to join it and ask any questions you may have.
+
+To subscribe for announcements of releases, important changes and so on, please follow [@taigaio](https://twitter.com/taigaio) on Twitter.
