@@ -2,9 +2,6 @@
 
 ![Kaleidos Project](http://kaleidos.net/static/img/badge.png "Kaleidos Project")
 
-If you have any doubts or any questions related to taiga's software, you can use this
-[Mailing List](http://groups.google.com/d/forum/taigaio).
-
 ## Setup initial environment ##
 
 Install requirements:
@@ -33,3 +30,9 @@ $ gulp
 ```
 
 And go in your browser to: http://localhost:9001/
+
+
+## Community ##
+
+If you have any doubts or any questions related to taiga's software, you can use this
+[Mailing List](http://groups.google.com/d/forum/taigaio).
