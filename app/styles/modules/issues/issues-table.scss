@@ -33,7 +33,7 @@
         border-bottom: 1px solid $gray-light;
     }
     .avatar {
-        @include table-flex(stretch, stretch, flex, row, wrap, flex-start);
+        @include table-flex(stretch, center, flex, row, wrap, flex-start);
         img {
             width: 35px;
         }
