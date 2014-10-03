@@ -6,7 +6,7 @@ div.taskboard-task-inner
     p.taskboard-text
         a.task-assigned(href="", title="Assign task")
         span.task-num(tg-bo-ref="task.ref")
-        a.task-name(href="", title="See task details", tg-bind-html="task.subject",
+        a.task-name(href="", title="See task details", ng-bind="task.subject",
                     tg-nav="project-tasks-detail:project=project.slug,ref=task.ref")
     a.icon.icon-edit(tg-check-permission="modify_task",
         href="", title="Edit task")
