@@ -96,7 +96,7 @@ module.controller("ProjectProfileController", ProjectProfileController)
 ## Project Profile Directive
 #############################################################################
 
-ProjectProfileDirective = ($rootscope, $log, $repo, $confirm, $loading) ->
+ProjectProfileDirective = ($repo, $confirm, $loading) ->
     link = ($scope, $el, $attrs) ->
         form = $el.find("form").checksley({"onlyOneErrorElement": true})
         submit = (target) =>
@@ -108,7 +108,7 @@ ProjectProfileDirective = ($rootscope, $log, $repo, $confirm, $loading) ->
             promise.then ->
                 $loading.finish(target)
                 $confirm.notify("success")
-                $rootscope.$broadcast("project:loaded", $scope.project)
+                $scope.$emit("project:loaded", $scope.project)
 
             promise.then null, (data) ->
                 $loading.finish(target)
@@ -132,14 +132,14 @@ ProjectProfileDirective = ($rootscope, $log, $repo, $confirm, $loading) ->
 
     return {link:link}
 
-module.directive("tgProjectProfile", ["$rootScope", "$log", "$tgRepo", "$tgConfirm", "$tgLoading", ProjectProfileDirective])
+module.directive("tgProjectProfile", ["$tgRepo", "$tgConfirm", "$tgLoading", ProjectProfileDirective])
 
 
 #############################################################################
 ## Project Modules Directive
 #############################################################################
 
-ProjectModulesDirective = ($rootscope, $log, $repo, $confirm, $loading) ->
+ProjectModulesDirective = ($repo, $confirm, $loading) ->
     link = ($scope, $el, $attrs) ->
         form = $el.find("form").checksley()
         submit = =>
@@ -181,4 +181,4 @@ ProjectModulesDirective = ($rootscope, $log, $repo, $confirm, $loading) ->
 
     return {link:link}
 
-module.directive("tgProjectModules", ["$rootScope", "$log", "$tgRepo", "$tgConfirm", "$tgLoading", ProjectModulesDirective])
+module.directive("tgProjectModules", ["$tgRepo", "$tgConfirm", "$tgLoading", ProjectModulesDirective])
