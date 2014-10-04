@@ -18,6 +18,8 @@
     }
     &.open {
         @include table-flex(center, center, flex, row, wrap, center);
+        @include transition (opacity .3s ease);
+        opacity: 1;
     }
     .title {
         text-align: center;
@@ -35,10 +37,6 @@
         display: block;
         padding: 12px;
         text-align: center;
-    }
-    &.open {
-        @include transition (opacity .3s ease);
-        opacity: 1;
     }
 }
 
