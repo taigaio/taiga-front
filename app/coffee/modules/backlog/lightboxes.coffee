@@ -33,6 +33,7 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading)
     link = ($scope, $el, attrs) ->
         hasErrors = false
         createSprint = true
+
         $scope.sprint = {
             project: null
             name: null
@@ -41,35 +42,41 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading)
         }
 
         submit = (event) ->
+            target = angular.element(event.currentTarget)
             form = $el.find("form").checksley()
+
             if not form.validate()
                 hasErrors = true
                 $el.find(".last-sprint-name").addClass("disappear")
                 return
-            hasErrors = false
 
+            hasErrors = false
             newSprint = angular.copy($scope.sprint)
+            broadcastEvent = null
 
             if createSprint
                 newSprint.estimated_start = moment(newSprint.estimated_start).format("YYYY-MM-DD")
                 newSprint.estimated_finish = moment(newSprint.estimated_finish).format("YYYY-MM-DD")
                 promise = $repo.create("milestones", newSprint)
+                broadcastEvent = "sprintform:create:success"
             else
                 newSprint.setAttr("estimated_start", moment(newSprint.estimated_start).format("YYYY-MM-DD"))
                 newSprint.setAttr("estimated_finish", moment(newSprint.estimated_finish).format("YYYY-MM-DD"))
                 promise = $repo.save(newSprint)
+                broadcastEvent = "sprintform:edit:success"
 
-            target = angular.element(event.currentTarget)
             $loading.start(target)
 
             promise.then (data) ->
                 $loading.finish(target)
                 $scope.sprintsCounter += 1 if createSprint
+                $rootscope.$broadcast(broadcastEvent, data)
+
                 lightboxService.close($el)
-                $rootscope.$broadcast("sprintform:create:success", data)
 
             promise.then null, (data) ->
                 $loading.finish(target)
+
                 form.setErrors(data)
                 if data._error_message
                     $confirm.notify("light-error", data._error_message)

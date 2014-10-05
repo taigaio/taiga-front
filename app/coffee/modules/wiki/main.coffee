@@ -47,11 +47,12 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$log",
         "$appTitle",
         "$tgNavUrls",
+        "$tgAnalytics",
         "tgLoader"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @filter, @log, @appTitle,
-                  @navUrls, tgLoader) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
+                  @filter, @log, @appTitle, @navUrls, @analytics, tgLoader) ->
         @scope.projectSlug = @params.pslug
         @scope.wikiSlug = @params.slug
         @scope.sectionName = "Wiki"
@@ -174,6 +175,7 @@ class WikiEditController extends WikiDetailController
         if @scope.wiki.id
             @repo.save(@scope.wiki).then onSuccess, onError
         else
+            @analytics.trackEvent("wikipage", "create", "create wiki page", 1)
             @scope.wiki.project = @scope.projectId
             @scope.wiki.slug = @scope.wikiSlug
             @repo.create("wiki", @scope.wiki).then onSuccess, onError

@@ -45,12 +45,15 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$tgLocation",
         "$log",
         "$appTitle",
+        "$tgAnalytics",
         "$tgNavUrls"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @log, @appTitle, @navUrls) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
+                  @log, @appTitle, @analytics, @navUrls) ->
         @scope.issueRef = @params.issueref
         @scope.sectionName = "Issue Details"
+        @.initializeEventHandlers()
 
         promise = @.loadInitialData()
 
@@ -65,10 +68,20 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
                 @location.replace()
             return @q.reject(xhr)
 
-        @scope.$on "attachment:create", => @rootscope.$broadcast("history:reload")
-        @scope.$on "attachment:edit", => @rootscope.$broadcast("history:reload")
-        @scope.$on "attachment:delete", => @rootscope.$broadcast("history:reload")
+
+    initializeEventHandlers: ->
+        @scope.$on "attachment:create", =>
+            @rootscope.$broadcast("history:reload")
+            @analytics.trackEvent("attachment", "create", "create attachment on issue", 1)
+
+        @scope.$on "attachment:edit", =>
+            @rootscope.$broadcast("history:reload")
+
+        @scope.$on "attachment:delete", =>
+            @rootscope.$broadcast("history:reload")
+
         @scope.$on "promote-issue-to-us:success", =>
+            @analytics.trackEvent("issue", "promoteToUserstory", "promote issue to userstory", 1)
             @rootscope.$broadcast("history:reload")
             @.loadIssue()
 
