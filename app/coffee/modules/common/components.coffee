@@ -337,7 +337,6 @@ ListItemPriorityDirective = ->
             priority = priorityById[issue.priority]
             domNode = $el.find(".level")
             domNode.css("background-color", priority.color)
-            domNode.addClass(priority.name.toLowerCase())
             domNode.attr("title", priority.name)
 
         bindOnce $scope, "priorityById", (priorityById) ->
@@ -363,7 +362,6 @@ ListItemSeverityDirective = ->
             severity = severityById[issue.severity]
             domNode = $el.find(".level")
             domNode.css("background-color", severity.color)
-            domNode.addClass(severity.name.toLowerCase())
             domNode.attr("title", severity.name)
 
         bindOnce $scope, "severityById", (severityById) ->
@@ -388,7 +386,6 @@ ListItemTypeDirective = ->
             type = issueTypeById[issue.type]
             domNode = $el.find(".level")
             domNode.css("background-color", type.color)
-            domNode.addClass(type.name.toLowerCase())
             domNode.attr("title", type.name)
 
         bindOnce $scope, "issueTypeById", (issueTypeById) ->
