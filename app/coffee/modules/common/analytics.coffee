@@ -1,0 +1,83 @@
+###
+# Copyright (C) 2014 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014 David Barragán Merino <bameda@dbarragan.com>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, either version 3 of the
+# License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+#
+# File: modules/common/analytics.coffee
+###
+
+taiga = @.taiga
+module = angular.module("taigaCommon")
+
+
+class AnalyticsService extends taiga.Service
+    @.$inject = ["$rootScope", "$log", "$tgConfig", "$window", "$document", "$location"]
+
+    constructor: (@rootscope, @log, @config, @win, @doc, @location) ->
+        @.initialized = false
+
+        conf = @config.get("analytics", {})
+
+        @.accountId = conf.accountId
+        @.pageEvent = conf.pageEvent or "$routeChangeSuccess"
+        @.trackRoutes = conf.trackRoutes or true
+        @.ignoreFirstPageLoad = conf.ignoreFirstPageLoad or false
+
+    initialize: ->
+        if not @.accountId
+            @log.debug "Analytics: no acount id provided. Disabling."
+            return
+
+        @.injectAnalytics()
+
+        @win.ga("create", @.accountId, "auto")
+        @win.ga("require", "displayfeatures")
+
+        if @.trackRoutes and (not @.ignoreFirstPageLoad)
+            @win.ga("send", "pageview", @.getUrl());
+
+        # activates page tracking
+        if @.trackRoutes
+            @rootscope.$on @.pageEvent, =>
+                @.trackPage(@.getUrl())
+
+        @.initialized = true
+
+    getUrl: ->
+        return @location.path()
+
+    injectAnalytics: ->
+        fn = `(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments);},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m);})`
+        fn(window, document, "script", "//www.google-analytics.com/analytics.js", "ga")
+
+    trackPage: (url, title) ->
+        return if not @.initialized
+
+        title = title or @doc[0].title
+        @win.ga("send", "pageview", {
+            "page": url,
+            "title": title
+        })
+
+    trackEvent: (category, action, label, value) ->
+        return if not @.initialized
+        @win.ga("send", "event", category, action, label, value)
+
+
+module.service("$tgAnalytics", AnalyticsService)
+

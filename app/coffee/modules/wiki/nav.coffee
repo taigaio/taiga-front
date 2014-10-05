@@ -34,7 +34,7 @@ module = angular.module("taigaWiki")
 ## Wiki Main Directive
 #############################################################################
 
-WikiNavDirective = ($tgrepo, $log, $location, $confirm, $navUrls, $loading) ->
+WikiNavDirective = ($tgrepo, $log, $location, $confirm, $navUrls, $analytics, $loading) ->
     template = _.template("""
     <header>
       <h1>Links</h1>
@@ -132,6 +132,7 @@ WikiNavDirective = ($tgrepo, $log, $location, $confirm, $navUrls, $loading) ->
 
                     promise = $tgrepo.create("wiki-links", {project: $scope.projectId, title: newLink, href: slugify(newLink)})
                     promise.then ->
+                        $analytics.trackEvent("wikilink", "create", "create wiki link", 1)
                         loadPromise = $ctrl.loadWikiLinks()
                         loadPromise.then ->
                             $loading.finish($el.find(".new"))
@@ -166,4 +167,5 @@ WikiNavDirective = ($tgrepo, $log, $location, $confirm, $navUrls, $loading) ->
 
     return {link:link}
 
-module.directive("tgWikiNav", ["$tgRepo", "$log", "$tgLocation", "$tgConfirm", "$tgNavUrls", "$tgLoading", WikiNavDirective])
+module.directive("tgWikiNav", ["$tgRepo", "$log", "$tgLocation", "$tgConfirm", "$tgNavUrls",
+                               "$tgAnalytics", "$tgLoading", WikiNavDirective])

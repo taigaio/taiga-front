@@ -43,13 +43,15 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$log",
         "$appTitle",
         "$tgNavUrls",
+        "$tgAnalytics",
         "tgLoader"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @log, @appTitle, @navUrls,
-                  tgLoader) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
+                  @log, @appTitle, @navUrls, @analytics, tgLoader) ->
         @scope.taskRef = @params.taskref
         @scope.sectionName = "Task Details"
+        @.initializeEventHandlers()
 
         promise = @.loadInitialData()
 
@@ -63,10 +65,14 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
                 @location.replace()
             return @q.reject(xhr)
 
-
-        @scope.$on("attachment:create", => @rootscope.$broadcast("history:reload"))
-        @scope.$on("attachment:edit", => @rootscope.$broadcast("history:reload"))
-        @scope.$on("attachment:delete", => @rootscope.$broadcast("history:reload"))
+    initializeEventHandlers: ->
+        @scope.$on "attachment:create", =>
+            @analytics.trackEvent("attachment", "create", "create attachment on task", 1)
+            @rootscope.$broadcast("history:reload")
+        @scope.$on "attachment:edit", =>
+            @rootscope.$broadcast("history:reload")
+        @scope.$on "attachment:delete", =>
+            @rootscope.$broadcast("history:reload")
 
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>

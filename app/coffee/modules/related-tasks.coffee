@@ -25,7 +25,7 @@ debounce = @.taiga.debounce
 
 module = angular.module("taigaRelatedTasks", [])
 
-RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope, $loading) ->
+RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope, $loading, $analytics) ->
     templateView = _.template("""
         <div class="tasks">
             <div class="task-name">
@@ -168,29 +168,29 @@ RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope, $loading) ->
 
 module.directive("tgRelatedTaskRow", ["$tgRepo", "$compile", "$tgConfirm", "$rootScope", "$tgLoading", RelatedTaskRowDirective])
 
-RelatedTaskCreateFormDirective = ($repo, $compile, $confirm, $tgmodel, $loading) ->
+RelatedTaskCreateFormDirective = ($repo, $compile, $confirm, $tgmodel, $loading, $analytics) ->
     template = _.template("""
-        <div class="tasks">
-            <div class="task-name">
-                <input type="text" placeholder="Type the new task subject" />
-                <div class="task-settings">
-                    <a href="" title="Save" class="icon icon-floppy"></a>
-                    <a href="" title="Cancel" class="icon icon-delete cancel-edit"></a>
-                </div>
+    <div class="tasks">
+        <div class="task-name">
+            <input type="text" placeholder="Type the new task subject" />
+            <div class="task-settings">
+                <a href="" title="Save" class="icon icon-floppy"></a>
+                <a href="" title="Cancel" class="icon icon-delete cancel-edit"></a>
             </div>
         </div>
-        <div tg-related-task-status="newTask" ng-model="newTask" class="status" not-auto-save="true">
-            <a href="" title="Status Name" class="task-status">
-                <span class="task-status-bind"></span>
-                <span class="icon icon-arrow-bottom"></span>
-            </a>
+    </div>
+    <div tg-related-task-status="newTask" ng-model="newTask" class="status" not-auto-save="true">
+        <a href="" title="Status Name" class="task-status">
+            <span class="task-status-bind"></span>
+            <span class="icon icon-arrow-bottom"></span>
+        </a>
+    </div>
+    <div tg-related-task-assigned-to-inline-edition="newTask" class="assigned-to" not-auto-save="true">
+        <div title="Assigned to" class="task-assignedto">
+            <figure class="avatar"></figure>
+            <span class="icon icon-arrow-bottom"></span>
         </div>
-        <div tg-related-task-assigned-to-inline-edition="newTask" class="assigned-to" not-auto-save="true">
-            <div title="Assigned to" class="task-assignedto">
-                <figure class="avatar"></figure>
-                <span class="icon icon-arrow-bottom"></span>
-            </div>
-        </div>
+    </div>
     """)
 
     newTask = {
@@ -209,6 +209,7 @@ RelatedTaskCreateFormDirective = ($repo, $compile, $confirm, $tgmodel, $loading)
             $loading.start($el.find('.task-name'))
             promise = $repo.create("tasks", task)
             promise.then ->
+                $analytics.trackEvent("task", "create", "task create on taskboard", 1)
                 $loading.finish($el.find('.task-name'))
                 $scope.$emit("related-tasks:add")
                 $confirm.notify("success")

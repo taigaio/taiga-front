@@ -60,15 +60,16 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         "$appTitle",
         "$tgNavUrls",
         "$tgEvents",
+        "$tgAnalytics",
         "tgLoader"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
-                  @appTitle, @navUrls, @events, tgLoader) ->
+                  @appTitle, @navUrls, @events, @analytics, tgLoader) ->
         _.bindAll(@)
         @scope.sectionName = "Kanban"
         @scope.statusViewModes = {}
-
+        @.initializeEventHandlers()
         promise = @.loadInitialData()
 
         # On Success
@@ -83,8 +84,16 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 @location.replace()
             return @q.reject(xhr)
 
-        @scope.$on("usform:new:success", @.loadUserstories)
-        @scope.$on("usform:bulk:success", @.loadUserstories)
+
+    initializeEventHandlers: ->
+        @scope.$on "usform:new:success", =>
+            @.loadUserstories()
+            @analytics.trackEvent("userstory", "create", "create userstory on kanban", 1)
+
+        @scope.$on "usform:bulk:success", =>
+            @.loadUserstories()
+            @analytics.trackEvent("userstory", "create", "bulk create userstory on kanban", 1)
+
         @scope.$on("usform:edit:success", @.loadUserstories)
         @scope.$on("assigned-to:added", @.onAssignedToChanged)
         @scope.$on("kanban:us:move", @.moveUs)
