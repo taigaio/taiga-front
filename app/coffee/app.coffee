@@ -220,6 +220,7 @@ modules = [
     "taigaNavMenu",
     "taigaProject",
     "taigaUserSettings",
+    "taigaFeedback",
     "taigaPlugins",
 
     # Vendor modules
