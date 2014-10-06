@@ -227,6 +227,12 @@
     }
     .checksley-error-list {
         right: .5rem;
+        li {
+            display: none;
+            &:first-child {
+                display: block;
+            }
+        }
     }
 }
 
