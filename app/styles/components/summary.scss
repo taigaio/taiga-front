@@ -15,7 +15,7 @@
     }
     .data {
         float: left;
-        margin-right: 1.5em;
+        margin-right: 1em;
         margin-top: 4px;
         .number {
             color: $fresh-taiga;
@@ -53,11 +53,26 @@
     margin-right: 10px;
     padding: 3px;
     position: relative;
-    width: 20%;
+    width: 15%;
     .current-progress {
         background: $fresh-taiga;
         height: 24px;
-        width: calc(30% - 4px);
+    }
+    .defined-points {
+        background: $red-light;
+        height: 24px;
+        position: absolute;
+        width: calc(100% - 6px);
+    }
+    .project-points-progress {
+        background: $white;
+        height: 24px;
+        position: absolute;
+    }
+    .closed-points-progress {
+        background: $fresh-taiga;
+        height: 24px;
+        position: absolute;
     }
 }
 
@@ -67,7 +82,7 @@
         border-right: 1px solid $whitish;
         margin-right: 1rem;
         vertical-align: top;
-        &:last-child {
+        &:last-of-type {
             border: 0;
             margin: 0;
         }
@@ -75,8 +90,22 @@
     .icon {
         @extend %xlarge;
         margin-right: .4rem;
-    }
-    .button {
-        color: $white;
+        &.icon-stats {
+            @include transition(color .3s linear);
+            color: $gray;
+            display: inline-block;
+            float: right;
+            &:hover {
+                @include transition(color .3s linear);
+                color: $fresh-taiga;
+            }
+            &.active {
+                color: $fresh-taiga;
+                &:hover {
+                    @include transition(color .3s linear);
+                    color: $gray;
+                }
+            }
+        }
     }
 }

@@ -11,17 +11,11 @@ div.summary.large-summary
         li
             span.number(ng-bind="stats.completedPointsSum|default:'--'")
             span.description completed<br />points
-        li
-            span.number(ng-bind="stats.remainingPointsSum|default:'--'")
-            span.description remaining<br />points
 
     ul
         li
             span.icon.icon-bulk
-            span.number(ng-bind="stats.total_tasks|default:'--'")
-            span.description created<br />tasks
-        li
-            span.number(ng-bind="stats.remainingTasks|default:'--'")
+            span.number(ng-bind="stats.openTasks|default:'--'")
             span.description open<br />tasks
         li
             span.number(ng-bind="stats.completed_tasks|default:'--'")
@@ -33,4 +27,4 @@ div.summary.large-summary
             span.number(ng-bind="stats.iocaine_doses|default:'--'")
             span.description iocaine<br />doses
 
-    a.button.button-green.toggle-analytics-visibility(href="", title="Show statistics") Show statistics
+    a.icon.icon-stats.toggle-analytics-visibility(href="", title="Show statistics")

@@ -91,6 +91,8 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @scope.$on("sprintform:remove:success", @.loadUserstories)
         @scope.$on("usform:new:success", @.loadUserstories)
         @scope.$on("usform:edit:success", @.loadUserstories)
+        @scope.$on("usform:new:success", @.loadProjectStats)
+        @scope.$on("usform:bulk:success", @.loadProjectStats)
         @scope.$on("sprint:us:move", @.moveUs)
         @scope.$on("sprint:us:moved", @.loadSprints)
         @scope.$on("sprint:us:moved", @.loadProjectStats)
@@ -968,3 +970,52 @@ tgBacklogGraphDirective = ->
 
 
 module.directive("tgGmBacklogGraph", tgBacklogGraphDirective)
+
+
+#############################################################################
+## Backlog progress bar directive
+#############################################################################
+
+TgBacklogProgressBarDirective = ->
+    template = _.template("""
+        <div class="defined-points" title="Excess of points"></div>
+        <div class="project-points-progress" title="Pending Points" style="width: <%- projectPointsPercentaje %>%"></div>
+        <div class="closed-points-progress" title="Closed points" style="width: <%- closedPointsPercentaje %>%"></div>
+    """)
+
+    render = (el, projectPointsPercentaje, closedPointsPercentaje) ->
+        el.html(template({
+            projectPointsPercentaje: projectPointsPercentaje,
+            closedPointsPercentaje:closedPointsPercentaje
+        }))
+
+    adjustPercentaje = (percentage) ->
+        adjusted = _.max([0 , percentage])
+        adjusted = _.min([100, adjusted])
+        return Math.round(adjusted)
+
+    link = ($scope, $el, $attrs) ->
+        element = angular.element($el)
+
+        $scope.$watch $attrs.tgBacklogProgressBar, (stats) ->
+            if stats?
+                totalPoints = stats.total_points
+                definedPoints = stats.defined_points
+                closedPoints = stats.closed_points
+                if definedPoints > totalPoints
+                    projectPointsPercentaje = totalPoints * 100 / definedPoints
+                    closedPointsPercentaje = closedPoints * 100 / definedPoints
+                else
+                    projectPointsPercentaje = 100
+                    closedPointsPercentaje = closedPoints * 100 / totalPoints
+
+                projectPointsPercentaje = adjustPercentaje(projectPointsPercentaje - 3)
+                closedPointsPercentaje = adjustPercentaje(closedPointsPercentaje - 3)
+                render($el, projectPointsPercentaje, closedPointsPercentaje)
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {link: link}
+
+module.directive("tgBacklogProgressBar", TgBacklogProgressBarDirective)
