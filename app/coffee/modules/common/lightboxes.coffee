@@ -46,9 +46,10 @@ class LightboxService extends taiga.Service
         docEl.off(".keyboard-navigation") # Hack: to fix problems in the WYSIWYG textareas when press ENTER
 
         $el.one "transitionend", =>
-            $el.css('display', 'none')
+            $el.removeAttr('style')
+            $el.removeClass("open").removeClass('close')
 
-        $el.removeClass("open")
+        $el.addClass('close')
 
     closeAll: ->
         docEl = angular.element(document)

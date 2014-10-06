@@ -1,7 +1,6 @@
 .lightbox,
 %lightbox {
     @include background-opacity($white, .95);
-    @include transition (opacity .3s ease);
     bottom: 0;
     display: none;
     left: 0;
@@ -20,6 +19,10 @@
         @include table-flex(center, center, flex, row, wrap, center);
         @include transition (opacity .3s ease);
         opacity: 1;
+    }
+    &.close {
+        @include transition (opacity .3s ease);
+        opacity: 0;
     }
     .title {
         text-align: center;

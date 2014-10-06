@@ -59,7 +59,8 @@ class ProjectsNavigationController extends taiga.Controller
             return projects
 
     newProject: ->
-        @rootscope.$broadcast("projects:create")
+        @scope.$apply () =>
+            @rootscope.$broadcast("projects:create")
 
     filterProjects: (text) ->
         @scope.filteredProjects = _.filter @scope.projects, (project) ->
