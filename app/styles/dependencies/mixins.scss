@@ -22,7 +22,7 @@
 @mixin table-flex-child($flex-grow: 1, $flex-basis: 300px, $flex-shrink: 0, $width:'') {
     @include flex($flex-grow);
     @include flex-basis($flex-basis);
-    flex-shrink: $flex-shrink;
+    @include flex-shrink($flex-shrink);
     width: $flex-basis;
     @if #{$width} != null {
         width: #{$width};
