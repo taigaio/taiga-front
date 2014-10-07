@@ -88,6 +88,12 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
         @events.subscribe @scope, routingKey, (message) =>
             @.loadTaskboard()
 
+        routingKey1 = "changes.project.#{@scope.projectId}.userstories"
+        @events.subscribe @scope, routingKey1, (message) =>
+            @.refreshTagsColors()
+            @.loadSprintStats()
+            @.loadSprint()
+
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
             @scope.project = project
