@@ -54,7 +54,7 @@ class ProjectsController extends taiga.Controller
             @tgLoader.pageLoaded()
 
         promise.then null, (xhr) =>
-            if xhr and xhr.status == 404
+            if xhr and (xhr.status == 404 or xhr.status == 403)
                 @location.path(@navUrls.resolve("not-found"))
                 @location.replace()
             return @q.reject(xhr)
@@ -97,7 +97,7 @@ class ProjectController extends taiga.Controller
             @appTitle.set(@scope.project.name)
 
         promise.then null, (xhr) =>
-            if xhr and xhr.status == 404
+            if xhr and (xhr.status == 404 or xhr.status == 403)
                 @location.path(@navUrls.resolve("not-found"))
                 @location.replace()
             return @q.reject(xhr)

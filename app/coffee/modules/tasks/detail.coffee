@@ -58,7 +58,7 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             tgLoader.pageLoaded()
 
         promise.then null, (xhr) =>
-            if xhr and xhr.status == 404
+            if xhr and (xhr.status == 404 || xhr.status == 403)
                 @location.path(@navUrls.resolve("not-found"))
                 @location.replace()
             return @q.reject(xhr)

@@ -78,7 +78,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
         # On Error
         promise.then null, (xhr) =>
-            if xhr and xhr.status == 404
+            if xhr and (xhr.status == 404 or xhr.status == 403)
                 @location.path(@navUrls.resolve("not-found"))
                 @location.replace()
             return @q.reject(xhr)

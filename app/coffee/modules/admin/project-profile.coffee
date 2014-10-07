@@ -58,7 +58,7 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
             @appTitle.set("Project profile - " + @scope.sectionName + " - " + @scope.project.name)
 
         promise.then null, (xhr) =>
-            if xhr and xhr.status == 404
+            if xhr and (xhr.status == 404 or xhr.status == 403)
                 @location.path(@navUrls.resolve("not-found"))
                 @location.replace()
             return @q.reject(xhr)
