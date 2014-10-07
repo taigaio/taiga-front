@@ -13,8 +13,8 @@ block content
                         span(tg-bo-bind="ctrl.user.full_name_display")
                     a.logout(ng-click="ctrl.logout()" href="", title="Logout") logout
 
-                .avatar(href="", title="User preferences")
-                    img(ng-src="{{ctrl.user.photo}}", alt="username")
+                .avatar
+                    img(tg-bo-src="ctrl.user.photo", tg-bo-alt="ctrl.user.full_name_display")
 
             .home-projects-list-inner
                 div.recent-projects
