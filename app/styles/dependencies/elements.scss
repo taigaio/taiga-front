@@ -75,6 +75,11 @@ ol { list-style: decimal; }
         .pika-button {
             color: $green-taiga;
         }
+        &.is-selected {
+            button {
+                color: $white;
+            }
+        }
     }
     .pika-button {
         &:hover {

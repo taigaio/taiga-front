@@ -12,7 +12,7 @@
     top: 0;
     width: 100%;
     .welcome-user {
-        display: flex;
+        @include table-flex();
         position: absolute;
         right: 1rem;
         top: 1rem;
@@ -90,6 +90,16 @@
     p {
         @include transition(color .3s linear);
         color: $grayer;
+    }
+}
+
+.project-content {
+    h2 {
+        margin-bottom: .5rem;
+    }
+    p {
+        @extend %small;
+        line-height: 1rem;
     }
 }
 

@@ -59,7 +59,8 @@ class ProjectsNavigationController extends taiga.Controller
             return projects
 
     newProject: ->
-        @rootscope.$broadcast("projects:create")
+        @scope.$apply () =>
+            @rootscope.$broadcast("projects:create")
 
     filterProjects: (text) ->
         @scope.filteredProjects = _.filter @scope.projects, (project) ->
@@ -200,7 +201,7 @@ module.directive("tgProjectsNav", ["$rootScope", "animationFrame", "$timeout", "
 ## Project
 #############################################################################
 
-ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location, $navUrls) ->
+ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location, $navUrls, $config) ->
     menuEntriesTemplate = _.template("""
     <div class="menu-container">
         <ul class="main-nav">
@@ -262,6 +263,9 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location, $
                     <li><a href="" title="User Profile", tg-nav="user-settings-user-profile:project=project.slug">User Profile</a></li>
                     <li><a href="" title="Change Password", tg-nav="user-settings-user-change-password:project=project.slug">Change Password</a></li>
                     <li><a href="" title="Notifications", tg-nav="user-settings-mail-notifications:project=project.slug">Notifications</a></li>
+                    <% if (feedbackEnabled) { %>
+                    <li><a href="" class="feedback" title="Feedback"">Feedback</a></li>
+                    <% } %>
                     <li><a href="" title="Logout" class="logout">Logout</a></li>
                 </ul>
                 <a href="" title="User preferences" class="avatar" id="nav-user-settings">
@@ -275,8 +279,11 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location, $
     mainTemplate = _.template("""
     <div class="logo-container logo">
         <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg"
-             viewBox="0 0 134.2 134.3" version="1.1" preserveAspectRatio="xMidYMid meet">
+             viewBox="0 0 134.2 134.3" version="1.1" preserveAspectRatio="xMidYMid meet" shape-rendering="geometricPrecision">
             <style>
+                svg {
+                    transform: scale(.99);
+                }
                 path {
                     fill:#f5f5f5;
                     opacity:0.7;
@@ -322,7 +329,14 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location, $
     renderMenuEntries = ($el, targetScope, project={}) ->
         container = $el.find(".menu-container")
         sectionName = targetScope.section
-        dom = $compile(menuEntriesTemplate({user: $auth.getUser(), project: project}))(targetScope)
+
+        ctx = {
+            user: $auth.getUser(),
+            project: project,
+            feedbackEnabled: $config.get("feedbackEnabled")
+        }
+        dom = $compile(menuEntriesTemplate(ctx))(targetScope)
+
         dom.find("a.active").removeClass("active")
         dom.find("#nav-#{sectionName} > a").addClass("active")
 
@@ -368,6 +382,10 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location, $
             event.preventDefault()
             $rootscope.$broadcast("search-box:show", project)
 
+        $el.on "click", ".feedback", (event) ->
+            event.preventDefault()
+            $rootscope.$broadcast("feedback:show")
+
         $scope.$on "projects:loaded", (listener) ->
             $el.addClass("hidden")
             listener.stopPropagation()
@@ -383,4 +401,4 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location, $
     return {link: link}
 
 module.directive("tgProjectMenu", ["$log", "$compile", "$tgAuth", "$rootScope", "$tgAuth", "$tgLocation",
-                                   "$tgNavUrls", ProjectMenuDirective])
+                                   "$tgNavUrls", "$tgConfig", ProjectMenuDirective])

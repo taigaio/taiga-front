@@ -1,8 +1,6 @@
 .lightbox,
 %lightbox {
     @include background-opacity($white, .95);
-    @include table-flex(center, center, flex, row, wrap, center);
-    @include transition (opacity .3s ease);
     bottom: 0;
     display: none;
     left: 0;
@@ -16,6 +14,15 @@
         position: absolute;
         right: 2rem;
         top: 2rem;
+    }
+    &.open {
+        @include table-flex(center, center, flex, row, wrap, center);
+        @include transition (opacity .3s ease);
+        opacity: 1;
+    }
+    &.close {
+        @include transition (opacity .3s ease);
+        opacity: 0;
     }
     .title {
         text-align: center;
@@ -33,10 +40,6 @@
         display: block;
         padding: 12px;
         text-align: center;
-    }
-    &.open {
-        @include transition (opacity .3s ease);
-        opacity: 1;
     }
 }
 
@@ -96,18 +99,11 @@
     }
 
     .settings {
-        align-content: flex-start;
-        align-items: stretch;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: flex-start;
+        @include table-flex(flex-start, stretch, flex, row, wrap, flex-start);
         margin-bottom: 1rem;
 
         fieldset {
-            flex-basis: 30%;
-            flex-grow: 1;
-            flex-shrink: 0;
+            @include table-flex-child(1, 30%, 0);
             margin-right: .5rem;
             text-align: center;
             &:last-child {
@@ -231,6 +227,12 @@
     }
     .checksley-error-list {
         right: .5rem;
+        li {
+            display: none;
+            &:first-child {
+                display: block;
+            }
+        }
     }
 }
 

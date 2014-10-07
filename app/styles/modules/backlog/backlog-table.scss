@@ -140,7 +140,7 @@
         background: lighten($green-taiga, 60%);
     }
     .user-story-name {
-        display: flex;
+        @include table-flex();
         input {
             margin-right: 1rem;
             vertical-align: super;
@@ -171,6 +171,7 @@
     }
     .blocked {
         background: $red-light;
+        border-bottom: 1px solid $white;
         color: $white;
         &:hover {
             background: $red;
@@ -190,8 +191,9 @@
         }
     }
     .doom-line {
-        background: rgba($red, .5);
-        padding: .5rem 0;
+        background: $red;
+        margin: .2rem 0;
+        padding: .6rem 0;
         position: relative;
         width: 100%;
         span {

@@ -12,11 +12,8 @@ minifyHTML = require("gulp-minify-html")
 sass = require("gulp-ruby-sass")
 csslint = require("gulp-csslint")
 minifyCSS = require("gulp-minify-css")
-imagemin = require("gulp-imagemin")
 watch = require("gulp-watch")
-size = require("gulp-filesize")
 notify = require("gulp-notify")
-# connect = require("gulp-connect")
 scsslint = require("gulp-scss-lint")
 newer = require("gulp-newer")
 cache = require("gulp-cached")
@@ -136,12 +133,6 @@ gulp.task "css-lint-app", ["sass-watch"],  ->
     gulp.src(paths.distStylesPath + "/app.css")
         .pipe(csslint("csslintrc.json"))
         .pipe(csslint.reporter())
-
-# gulp.task "imagemin", ->
-#     gulp.src(paths.images)
-#         .pipe(plumber())
-#         .pipe(imagemin({progressive: true}))
-#         .pipe(gulp.dest(paths.dist+"/images"))
 
 gulp.task "styles-watch", ["sass-watch", "css-vendor", "css-lint-app"], ->
     gulp.src(paths.distStyles)

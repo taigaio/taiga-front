@@ -43,7 +43,6 @@ h6 {
 h1 {
     @extend %xxlarge;
     @extend %title;
-    //-display: flex; // Lo borro porque poner el flex a los h1 se carga los h1 que están centrados.
     line-height: 3.4rem;
     margin-bottom: 1rem;
     text-transform: uppercase;
@@ -233,19 +232,19 @@ a:visited {
     content: 'D';
 }
 .icon-caret-up:before {
-    content: 'F';
+    content: 'E';
 }
 .icon-caret-down:before {
-    content: 'G';
+    content: 'F';
 }
 .icon-bulk:before {
-    content: 'H';
+    content: 'G';
 }
 .icon-idea:before {
-    content: 'I';
+    content: 'H';
 }
 .icon-spinner:before {
-    content: 'E';
+    content: 'I';
 }
 .icon-minimize:before {
     content: 'J';
@@ -253,3 +252,7 @@ a:visited {
 .icon-maximize:before {
     content: 'K';
 }
+.icon-stats:before {
+    content: 'L';
+}
+

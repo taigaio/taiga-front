@@ -96,6 +96,7 @@ TagLineDirective = ($log, $rs) ->
     template = """
     <div class="tags-container"></div>
     <input type="text" placeholder="Write tag..." class="tag-input" />
+    <a href="" title="Save" class="save icon icon-floppy"></a>
     """
 
     # Tags template (rendered manually using lodash)
@@ -137,6 +138,14 @@ TagLineDirective = ($log, $rs) ->
             $scope.$apply ->
                 $model.$setViewValue(normalizeTags(tags))
 
+        saveInputTag = () ->
+            input = $el.find('input')
+
+            addValue(input.val())
+            input.val("")
+            input.autocomplete("close")
+            $el.find('.save').hide()
+
         $scope.$watch $attrs.ngModel, (val) ->
             tags_colors = if $scope.project?.tags_colors? then $scope.project.tags_colors else []
             renderTags($el, val, editable, tags_colors)
@@ -171,13 +180,16 @@ TagLineDirective = ($log, $rs) ->
             event.preventDefault()
 
         $el.on "keyup", "input", (event) ->
-            return if event.keyCode != 13
-            event.preventDefault()
-
             target = angular.element(event.currentTarget)
-            addValue(target.val())
-            target.val("")
-            $el.find("input").autocomplete("close")
+
+            if event.keyCode == 13
+                saveInputTag()
+            else if target.val().length
+                $el.find('.save').show()
+            else
+                $el.find('.save').hide()
+
+        $el.on "click", ".save", saveInputTag
 
         $el.on "click", ".icon-delete", (event) ->
             event.preventDefault()

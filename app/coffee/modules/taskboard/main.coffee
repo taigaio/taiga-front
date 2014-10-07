@@ -46,11 +46,12 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$appTitle",
         "$tgLocation",
         "$tgNavUrls"
+        "$tgEvents"
         "tgLoader"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @appTitle, @location, @navUrls,
-                  tgLoader) ->
+                  @events, tgLoader) ->
         _.bindAll(@)
 
         @scope.sectionName = "Taskboard"
@@ -82,6 +83,17 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
             promise.then null, ->
                 console.log "FAIL" # TODO
 
+    initializeSubscription: ->
+        routingKey = "changes.project.#{@scope.projectId}.tasks"
+        @events.subscribe @scope, routingKey, (message) =>
+            @.loadTaskboard()
+
+        routingKey1 = "changes.project.#{@scope.projectId}.userstories"
+        @events.subscribe @scope, routingKey1, (message) =>
+            @.refreshTagsColors()
+            @.loadSprintStats()
+            @.loadSprint()
+
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
             @scope.project = project
@@ -111,6 +123,8 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
                 @scope.stats.completedPercentage = Math.round(100 * stats.completedPointsSum / stats.totalPointsSum)
             else
                 @scope.stats.completedPercentage = 0
+
+            @scope.stats.openTasks = stats.total_tasks - stats.completed_tasks
             return stats
 
     refreshTagsColors: ->
@@ -157,6 +171,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
         promise = @repo.resolve(params).then (data) =>
             @scope.projectId = data.project
             @scope.sprintId = data.milestone
+            @.initializeSubscription()
             return data
 
         return promise.then(=> @.loadProject())
@@ -204,7 +219,8 @@ TaskboardDirective = ($rootscope) ->
         $el.on "click", ".toggle-analytics-visibility", (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
-            toggleText(target, ["Hide statistics", "Show statistics"]) # TODO: i18n
+            target.toggleClass('active');
+            #toggleText(target, ["Hide statistics", "Show statistics"]) # TODO: i18n
             $rootscope.$broadcast("taskboard:graph:toggle-visibility")
 
         tableBodyDom = $el.find(".taskboard-table-body")

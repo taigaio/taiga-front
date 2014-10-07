@@ -170,7 +170,7 @@ PublicRegisterMessageDirective = ($config, $navUrls) ->
 module.directive("tgPublicRegisterMessage", ["$tgConfig", "$tgNavUrls", PublicRegisterMessageDirective])
 
 
-LoginDirective = ($auth, $confirm, $location, $routeParams, $navUrls) ->
+LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls, $events) ->
     link = ($scope, $el, $attrs) ->
         $scope.data = {}
 
@@ -180,6 +180,7 @@ LoginDirective = ($auth, $confirm, $location, $routeParams, $navUrls) ->
             else
                 nextUrl = $navUrls.resolve("home")
 
+            $events.setupConnection()
             $location.path(nextUrl)
 
         onErrorSubmit = (response) ->
@@ -203,8 +204,8 @@ LoginDirective = ($auth, $confirm, $location, $routeParams, $navUrls) ->
 
     return {link:link}
 
-module.directive("tgLogin", ["$tgAuth", "$tgConfirm", "$tgLocation", "$routeParams", "$tgNavUrls",
-                             LoginDirective])
+module.directive("tgLogin", ["$tgAuth", "$tgConfirm", "$tgLocation", "$tgConfig", "$routeParams",
+                             "$tgNavUrls", "$tgEvents", LoginDirective])
 
 #############################################################################
 ## Register Directive
@@ -220,7 +221,7 @@ RegisterDirective = ($auth, $confirm, $location, $navUrls, $config) ->
         form = $el.find("form").checksley()
 
         onSuccessSubmit = (response) ->
-            $confirm.notify("success", "Our Oompa Loompas are happy, wellcome to Taiga.") #TODO: i18n
+            $confirm.notify("success", "Our Oompa Loompas are happy, welcome to Taiga.") #TODO: i18n
             $location.path($navUrls.resolve("home"))
 
         onErrorSubmit = (response) ->
@@ -307,7 +308,7 @@ ChangePasswordFromRecoveryDirective = ($auth, $confirm, $location, $params, $nav
 
         onSuccessSubmit = (response) ->
             $location.path($navUrls.resolve("login"))
-            $confirm.success("Our Oompa Loompas save your new password.<br />
+            $confirm.success("Our Oompa Loompas saved your new password.<br />
                               Try to <strong>sign in</strong> with it.") #TODO: i18n
 
         onErrorSubmit = (response) ->
@@ -348,8 +349,8 @@ InvitationDirective = ($auth, $confirm, $location, $params, $navUrls) ->
 
         promise.then null, (response) ->
             $location.path($navUrls.resolve("login"))
-            $confirm.success("<strong>Ooops, we have a problems</strong><br />
-                              Our Oompa Loompas can't find your invitations.") #TODO: i18n
+            $confirm.success("<strong>Ooops, we have a problem</strong><br />
+                              Our Oompa Loompas can't find your invitation.") #TODO: i18n
 
         # Login form
         $scope.dataLogin = {token: token}
@@ -357,12 +358,12 @@ InvitationDirective = ($auth, $confirm, $location, $params, $navUrls) ->
 
         onSuccessSubmitLogin = (response) ->
             $location.path($navUrls.resolve("project", {project: $scope.invitation.project_slug}))
-            $confirm.notify("success", "You've successfully joined to this project",
-                                       "Wellcome to #{$scope.invitation.project_name}")
+            $confirm.notify("success", "You've successfully joined this project",
+                                       "Welcome to #{$scope.invitation.project_name}")
 
         onErrorSubmitLogin = (response) ->
             $confirm.notify("light-error", "According to our Oompa Loompas, your are not registered yet or
-                                            type an invalid password.") #TODO: i18n
+                                            typed an invalid password.") #TODO: i18n
 
         submitLogin = ->
             if not loginForm.validate()
@@ -385,11 +386,11 @@ InvitationDirective = ($auth, $confirm, $location, $params, $navUrls) ->
 
         onSuccessSubmitRegister = (response) ->
             $location.path($navUrls.resolve("project", {project: $scope.invitation.project_slug}))
-            $confirm.notify("success", "You've successfully joined to this project",
-                                       "Wellcome to #{$scope.invitation.project_name}")
+            $confirm.notify("success", "You've successfully joined this project",
+                                       "Welcome to #{$scope.invitation.project_name}")
 
         onErrorSubmitRegister = (response) ->
-            $confirm.notify("light-error", "According to our Oompa Loompas, the
+            $confirm.notify("light-error", "According to our Oompa Loompas, that
                                             username or email is already in use.") #TODO: i18n
 
         submitRegister = ->

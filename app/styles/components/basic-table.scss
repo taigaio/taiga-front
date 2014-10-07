@@ -1,27 +1,15 @@
 .basic-table {
-    align-content: stretch;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: flex-start;
+    @include table-flex(stretch, center, flex, column, wrap, flex-start);
     width: 100%;
     .row {
-        align-content: stretch;
-        align-items: center;
+        @include table-flex(stretch, center, flex, row, nowrap, flex-start);
         border-bottom: 1px solid $gray-light;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        justify-content: flex-start;
         padding: .5rem 0;
         text-align: left;
         width: 100%;
         @for $i from 1 through 8 {
             .width-#{$i} {
-                flex-basis: 50px;
-                flex-grow: $i;
-                flex-shrink: 0;
+                @include table-flex-child($i, 50px, 0);
             }
         }
         &:last-child {

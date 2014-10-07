@@ -11,12 +11,12 @@
 
 // Table Flex - http://devbryce.com/site/flexbox/
 @mixin table-flex($align-content: stretch, $align-items: stretch, $display: flex, $flex-direction: row, $flex-wrap: wrap, $justify-content: flex-start) {
-    align-content: $align-content; // flex-start, flex-end, center, space-between, space-around, stretch
-    align-items: $align-items; //flex-start, flex-end, center, baseline, stretch
-    display: $display;
-    flex-direction: $flex-direction; //row | row-reverse | column | column-reverse
-    flex-wrap: $flex-wrap; // nowrap | wrap | wrap-reverse
-    justify-content: $justify-content; //flex-start | flex-end | center | space-between | space-around
+    @include display($display);
+    @include align-content($align-content);
+    @include align-items($align-items);
+    @include flex-direction($flex-direction);
+    @include flex-wrap($flex-wrap);
+    @include justify-content($justify-content);
 }
 
 @mixin table-flex-child($flex-grow: 1, $flex-basis: 300px, $flex-shrink: 0, $width:'') {

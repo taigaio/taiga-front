@@ -67,8 +67,7 @@ CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $project
                     $scope.templates = result
                     $scope.data.creation_template = _.head(_.filter($scope.templates, (x) -> x.slug == "scrum")).id
             else
-                $scope.$apply ->
-                    $scope.data.creation_template = _.head(_.filter($scope.templates, (x) -> x.slug == "scrum")).id
+                $scope.data.creation_template = _.head(_.filter($scope.templates, (x) -> x.slug == "scrum")).id
 
             $el.find(".active").removeClass("active")
             $el.find(".create-step1").addClass("active")

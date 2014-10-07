@@ -94,6 +94,9 @@ urls = {
     "attachments/issue": "/api/v1/issues/attachments"
     "attachments/task": "/api/v1/tasks/attachments"
     "attachments/wiki_page": "/api/v1/wiki/attachments"
+
+    # Feedback
+    "feedback": "/api/v1/feedback"
 }
 
 # Initialize api urls service

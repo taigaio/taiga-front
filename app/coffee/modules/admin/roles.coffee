@@ -241,12 +241,12 @@ RolePermissionsDirective = ($rootscope, $repo, $confirm) ->
             categories = []
 
             milestonePermissions = [
-                { key: "view_milestones", description: "View milestones" }
-                { key: "add_milestone", description: "Add milestone" }
-                { key: "modify_milestone", description: "Modify milestone" }
-                { key: "delete_milestone", description: "Delete milestone" }
+                { key: "view_milestones", description: "View sprints" }
+                { key: "add_milestone", description: "Add sprint" }
+                { key: "modify_milestone", description: "Modify sprint" }
+                { key: "delete_milestone", description: "Delete sprint" }
             ]
-            categories.push({ name: "Milestones", permissions: setActivePermissions(milestonePermissions) })
+            categories.push({ name: "Sprints", permissions: setActivePermissions(milestonePermissions) })
 
             userStoryPermissions = [
                 { key: "view_us", description: "View user story" }

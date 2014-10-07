@@ -125,12 +125,10 @@ body {
 }
 
 .header-with-actions {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
+    @include table-flex(stretch, center, flex, row, wrap, space-between);
     margin-bottom: 1rem;
     .action-buttons {
-        flex-shrink: 0;
+        @include flex-shrink(0);
         padding-left: 1rem;
     }
     h1 {

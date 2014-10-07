@@ -241,8 +241,7 @@ RelatedTaskCreateFormDirective = ($repo, $compile, $confirm, $tgmodel, $loading)
                 createTask(newTask).then ->
                     $el.html("")
 
-        $scope.$watch "us", (val) ->
-            return if not val
+        taiga.bindOnce $scope, "us", (val) ->
             newTask["status"] = $scope.project.default_task_status
             newTask["project"] = $scope.project.id
             newTask["user_story"] = $scope.us.id
@@ -299,8 +298,7 @@ RelatedTasksDirective = ($repo, $rs, $rootscope) ->
         $scope.$on "related-tasks:add-new-clicked", ->
             $scope.$broadcast("related-tasks:show-form")
 
-        $scope.$watch "us", (val) ->
-            return if not val
+        taiga.bindOnce $scope, "us", (val) ->
             loadTasks()
 
         $scope.$on "$destroy", ->

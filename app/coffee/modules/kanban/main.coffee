@@ -59,11 +59,12 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         "$tgLocation",
         "$appTitle",
         "$tgNavUrls",
+        "$tgEvents",
         "tgLoader"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @appTitle, @navUrls,
-                  tgLoader) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
+                  @appTitle, @navUrls, @events, tgLoader) ->
         _.bindAll(@)
         @scope.sectionName = "Kanban"
         @scope.statusViewModes = {}
@@ -162,10 +163,16 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @scope.$emit("project:loaded", project)
             return project
 
+    initializeSubscription: ->
+        routingKey1 = "changes.project.#{@scope.projectId}.userstories"
+        @events.subscribe @scope, routingKey1, (message) =>
+            @.loadUserstories()
+
     loadInitialData: ->
         # Resolve project slug
         promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
             @scope.projectId = data.project
+            @.initializeSubscription()
             return data
 
         return promise.then(=> @.loadProject())
@@ -250,12 +257,15 @@ module.controller("KanbanController", KanbanController)
 
 KanbanDirective = ($repo, $rootscope) ->
     link = ($scope, $el, $attrs) ->
-
         tableBodyDom = $el.find(".kanban-table-body")
+
         tableBodyDom.on "scroll", (event) ->
             target = angular.element(event.currentTarget)
             tableHeaderDom = $el.find(".kanban-table-header .kanban-table-inner")
             tableHeaderDom.css("left", -1 * target.scrollLeft())
+
+        $scope.$on "$destroy", ->
+            $el.off()
 
     return {link: link}
 
@@ -273,9 +283,13 @@ KanbanRowWidthFixerDirective = ->
             size = (statuses.length * itemSize) - 10
             $el.css("width", "#{size}px")
 
+        $scope.$on "$destroy", ->
+            $el.off()
+
     return {link: link}
 
 module.directive("tgKanbanRowWidthFixer", KanbanRowWidthFixerDirective)
+
 
 #############################################################################
 ## Kanban Column Height Fixer Directive
@@ -294,6 +308,9 @@ KanbanColumnHeightFixerDirective = ->
     link = ($scope, $el, $attrs) ->
         timeout(500, -> renderSize($el))
 
+        $scope.$on "$destroy", ->
+            $el.off()
+
     return {link:link}
 
 
@@ -305,21 +322,29 @@ module.directive("tgKanbanColumnHeightFixer", KanbanColumnHeightFixerDirective)
 
 KanbanUserstoryDirective = ($rootscope) ->
     link = ($scope, $el, $attrs, $model) ->
+        $el.disableSelection()
+
+        $scope.$watch "us", (us) ->
+            if us.is_blocked and not $el.hasClass("blocked")
+                $el.addClass("blocked")
+            else if not us.is_blocked and $el.hasClass("blocked")
+                $el.removeClass("blocked")
+
         $el.find(".icon-edit").on "click", (event) ->
             if $el.find(".icon-edit").hasClass("noclick")
                 return
+
             $scope.$apply ->
                 $rootscope.$broadcast("usform:edit", $model.$modelValue)
-        if $scope.us.is_blocked
-            $el.addClass("blocked")
-        $el.disableSelection()
+
+        $scope.$on "$destroy", ->
+            $el.off()
 
     return {
         templateUrl: "/partials/views/components/kanban-task.html"
         link: link
         require: "ngModel"
     }
-
 
 module.directive("tgKanbanUserstory", ["$rootScope", KanbanUserstoryDirective])
 
@@ -343,6 +368,9 @@ KanbanWipLimitDirective = ->
         $scope.$on "kanban:us:move", redrawWipLimit
         $scope.$on "usform:new:success", redrawWipLimit
         $scope.$on "usform:bulk:success", redrawWipLimit
+
+        $scope.$on "$destroy", ->
+            $el.off()
 
     return {link: link}
 
@@ -405,7 +433,9 @@ KanbanUserDirective = ($log) ->
                     $ctrl = $el.controller()
                     $ctrl.changeUsAssignedTo(us)
 
-    return {link: link, require:"ngModel"}
+        $scope.$on "$destroy", ->
+            $el.off()
 
+    return {link: link, require:"ngModel"}
 
 module.directive("tgKanbanUserAvatar", ["$log", KanbanUserDirective])

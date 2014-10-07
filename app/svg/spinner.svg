@@ -1,7 +1,7 @@
 <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 134.2 134.3" preserveAspectRatio="xMidYMid meet">
     <style>
         .top {
-            transform-origin: 193px 164px;
+            transform-origin: 375px 532px;
             -webkit-animation: rotate 4s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
             -webkit-transform-origin: 50% 50%;
             animation: rotate 6s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
