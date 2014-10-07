@@ -37,45 +37,49 @@ module = angular.module("taigaKanban")
 
 KanbanSortableDirective = ($repo, $rs, $rootscope) ->
     link = ($scope, $el, $attrs) ->
-        oldParentScope = null
-        newParentScope = null
-        itemEl = null
-        tdom = $el
+        bindOnce $scope, "project", (project) ->
+            if not (project.my_permissions.indexOf("modify_us") > -1)
+                return
 
-        deleteElement = (itemEl) ->
-            # Completelly remove item and its scope from dom
-            itemEl.scope().$destroy()
-            itemEl.off()
-            itemEl.remove()
+            oldParentScope = null
+            newParentScope = null
+            itemEl = null
+            tdom = $el
 
-        tdom.sortable({
-            handle: ".kanban-task-inner"
-            dropOnEmpty: true
-            connectWith: ".kanban-uses-box"
-            revert: 400
-        })
+            deleteElement = (itemEl) ->
+                # Completelly remove item and its scope from dom
+                itemEl.scope().$destroy()
+                itemEl.off()
+                itemEl.remove()
 
-        tdom.on "sortstop", (event, ui) ->
-            parentEl = ui.item.parent()
-            itemEl = ui.item
-            itemUs = itemEl.scope().us
-            itemIndex = itemEl.index()
-            newParentScope = parentEl.scope()
+            tdom.sortable({
+                handle: ".kanban-task-inner"
+                dropOnEmpty: true
+                connectWith: ".kanban-uses-box"
+                revert: 400
+            })
 
-            newStatusId = newParentScope.status.id
-            oldStatusId = oldParentScope.status.id
+            tdom.on "sortstop", (event, ui) ->
+                parentEl = ui.item.parent()
+                itemEl = ui.item
+                itemUs = itemEl.scope().us
+                itemIndex = itemEl.index()
+                newParentScope = parentEl.scope()
 
-            if newStatusId != oldStatusId
-                deleteElement(itemEl)
+                newStatusId = newParentScope.status.id
+                oldStatusId = oldParentScope.status.id
 
-            $scope.$apply ->
-                $rootscope.$broadcast("kanban:us:move", itemUs, newStatusId, itemIndex)
+                if newStatusId != oldStatusId
+                    deleteElement(itemEl)
 
-            ui.item.find('a').removeClass('noclick')
+                $scope.$apply ->
+                    $rootscope.$broadcast("kanban:us:move", itemUs, newStatusId, itemIndex)
 
-        tdom.on "sortstart", (event, ui) ->
-            oldParentScope = ui.item.parent().scope()
-            ui.item.find('a').addClass('noclick')
+                ui.item.find('a').removeClass('noclick')
+
+            tdom.on "sortstart", (event, ui) ->
+                oldParentScope = ui.item.parent().scope()
+                ui.item.find('a').addClass('noclick')
 
         $scope.$on "$destroy", ->
             $el.off()
