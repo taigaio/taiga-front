@@ -193,14 +193,10 @@ init = ($log, $i18n, $config, $rootscope, $auth, $events) ->
     if $auth.isAuthenticated()
         $events.setupConnection()
 
-# Default Value for taiga local config module.
-angular.module("taigaLocalConfig", []).value("localconfig", {})
-
 modules = [
     # Main Global Modules
     "taigaBase",
     "taigaCommon",
-    "taigaConfig",
     "taigaResources",
     "taigaLocales",
     "taigaAuth",

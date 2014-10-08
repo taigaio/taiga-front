@@ -8,4 +8,6 @@ app/coffee/modules/locales/locale*.coffee
 *.swp
 *.swo
 tags
+tmp/
+conf/
 app/config/main.coffee
