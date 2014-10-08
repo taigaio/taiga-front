@@ -242,24 +242,25 @@ AssignedToDirective = ($rootscope, $confirm) ->
         $scope.$watch $attrs.ngModel, (instance) ->
             renderAssignedTo(instance)
 
-        $el.on "click", ".user-assigned", (event) ->
-            event.preventDefault()
-            $scope.$apply ->
-                $rootscope.$broadcast("assigned-to:add", $model.$modelValue)
+        if editable
+            $el.on "click", ".user-assigned", (event) ->
+                event.preventDefault()
+                $scope.$apply ->
+                    $rootscope.$broadcast("assigned-to:add", $model.$modelValue)
 
-        $el.on "click", ".icon-delete", (event) ->
-            event.preventDefault()
-            title = "Remove assigned to"
-            subtitle = ""
+            $el.on "click", ".icon-delete", (event) ->
+                event.preventDefault()
+                title = "Remove assigned to"
+                subtitle = ""
 
-            $confirm.ask(title, subtitle).then (finish) =>
-                finish()
-                $model.$modelValue.assigned_to  = null
+                $confirm.ask(title, subtitle).then (finish) =>
+                    finish()
+                    $model.$modelValue.assigned_to  = null
+                    renderAssignedTo($model.$modelValue)
+
+            $scope.$on "assigned-to:added", (ctx, userId) ->
+                $model.$modelValue.assigned_to = userId
                 renderAssignedTo($model.$modelValue)
-
-        $scope.$on "assigned-to:added", (ctx, userId) ->
-            $model.$modelValue.assigned_to = userId
-            renderAssignedTo($model.$modelValue)
 
     return {
         link:link,
