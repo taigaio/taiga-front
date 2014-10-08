@@ -73,6 +73,7 @@ urls = {
     "users-change-password-from-recovery": "/users/change_password_from_recovery"
     "users-change-password": "/users/change_password"
     "users-change-email": "/users/change_email"
+    "users-cancel-account": "/users/cancel"
     "user-storage": "/user-storage"
     "resolver": "/resolver"
     "userstory-statuses": "/userstory-statuses"

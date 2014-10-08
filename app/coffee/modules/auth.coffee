@@ -137,6 +137,10 @@ class AuthService extends taiga.Service
         data = _.clone(data, false)
         return @http.post(url, data)
 
+    cancelAccount: (data) ->
+        url = @urls.resolve("users-cancel-account")
+        data = _.clone(data, false)
+        return @http.post(url, data)
 
 module.service("$tgAuth", AuthService)
 
@@ -458,3 +462,41 @@ ChangeEmailDirective = ($repo, $model, $auth, $confirm, $location, $params, $nav
 
 module.directive("tgChangeEmail", ["$tgRepo", "$tgModel", "$tgAuth", "$tgConfirm", "$tgLocation", "$routeParams",
                                    "$tgNavUrls", ChangeEmailDirective])
+
+#############################################################################
+## Cancel account
+#############################################################################
+
+CancelAccountDirective = ($repo, $model, $auth, $confirm, $location, $params, $navUrls) ->
+    link = ($scope, $el, $attrs) ->
+        $scope.data = {}
+        $scope.data.cancel_token = $params.cancel_token
+        form = $el.find("form").checksley()
+
+        onSuccessSubmit = (response) ->
+            $location.path($navUrls.resolve("home"))
+            $confirm.success("Our Oompa Loompas removed your account") #TODO: i18n
+
+        onErrorSubmit = (response) ->
+            $confirm.notify("error", "One of our Oompa Loompas says
+                            '#{response.data._error_message}'.") #TODO: i18n
+
+        submit = ->
+            if not form.validate()
+                return
+
+            promise = $auth.cancelAccount($scope.data)
+            promise.then(onSuccessSubmit, onErrorSubmit)
+
+        $el.on "submit", (event) ->
+            event.preventDefault()
+            submit()
+
+        $el.on "click", "a.button-cancel-account", (event) ->
+            event.preventDefault()
+            submit()
+
+    return {link:link}
+
+module.directive("tgCancelAccount", ["$tgRepo", "$tgModel", "$tgAuth", "$tgConfirm", "$tgLocation", "$routeParams",
+                                   "$tgNavUrls", CancelAccountDirective])

@@ -114,6 +114,8 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
           {templateUrl: "/partials/mail-notifications.html"})
     $routeProvider.when("/change-email/:email_token",
           {templateUrl: "/partials/change-email.html"})
+    $routeProvider.when("/cancel-account/:cancel_token",
+        {templateUrl: "/partials/cancel-account.html"})
 
     # Auth
     $routeProvider.when("/login",
