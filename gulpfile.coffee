@@ -19,66 +19,72 @@ newer = require("gulp-newer")
 cache = require("gulp-cached")
 jadeInheritance = require('gulp-jade-inheritance')
 
-paths = {
-    app: "app"
-    dist: "dist"
-    html: "app/*.html"
-    jade: ["app/index.jade", "app/partials/**/*.jade"]
-    scssStyles: "app/styles/**/*.scss"
-    distStylesPath: "dist/styles"
-    distStyles: ["dist/styles/vendor.css",
-                 "dist/styles/app.css"]
-    sassStylesMain: "app/styles/main.scss"
-    css:  "app/styles/vendor/*.css"
-    images: "app/images/**/*"
-    svg: "app/svg/**/*"
-    locales: "app/locales/**/*.json"
-    coffee: ["app/coffee/app.coffee",
-             "app/config/*.coffee",
-             "app/coffee/*.coffee",
-             "app/coffee/modules/controllerMixins.coffee",
-             "app/coffee/modules/*.coffee",
-             "app/coffee/modules/common/*.coffee",
-             "app/coffee/modules/backlog/*.coffee",
-             "app/coffee/modules/taskboard/*.coffee",
-             "app/coffee/modules/kanban/*.coffee",
-             "app/coffee/modules/issues/*.coffee",
-             "app/coffee/modules/userstories/*.coffee",
-             "app/coffee/modules/tasks/*.coffee",
-             "app/coffee/modules/wiki/*.coffee",
-             "app/coffee/modules/admin/*.coffee",
-             "app/coffee/modules/projects/*.coffee",
-             "app/coffee/modules/locales/*.coffee",
-             "app/coffee/modules/base/*.coffee",
-             "app/coffee/modules/resources/*.coffee",
-             "app/coffee/modules/user-settings/*.coffee"
-             "app/plugins/**/*.coffee"]
-    vendorJsLibs: [
-        "app/vendor/jquery/dist/jquery.js",
-        "app/vendor/lodash/dist/lodash.js",
-        "app/vendor/emoticons/lib/emoticons.js",
-        "app/vendor/underscore.string/lib/underscore.string.js",
-        "app/vendor/angular/angular.js",
-        "app/vendor/angular-route/angular-route.js",
-        "app/vendor/angular-sanitize/angular-sanitize.js",
-        "app/vendor/angular-animate/angular-animate.js",
-        "app/vendor/i18next/i18next.js",
-        "app/vendor/moment/min/moment-with-langs.js",
-        "app/vendor/checksley/checksley.js",
-        "app/vendor/pikaday/pikaday.js",
-        "app/vendor/jquery-flot/jquery.flot.js",
-        "app/vendor/jquery-flot/jquery.flot.pie.js",
-        "app/vendor/jquery-flot/jquery.flot.time.js",
-        "app/vendor/jquery-flot/jquery.flot.time.js",
-        "app/vendor/flot-axislabels/jquery.flot.axislabels.js",
-        "app/vendor/jquery-textcomplete/jquery.textcomplete.js",
-        "app/vendor/markitup/markitup/jquery.markitup.js",
-        "app/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js",
-        "app/js/jquery.ui.git.js",
-        "app/js/sha1.js",
-        "app/plugins/**/*.js"
-    ]
-}
+paths = {}
+paths.app = "app/"
+paths.dist = "dist/"
+paths.tmp = "tmp/"
+
+paths.jade = [
+    paths.app + "index.jade",
+    paths.app + "partials/**/*.jade"
+]
+
+paths.images = paths.app + "images/**/*"
+paths.svg = paths.app + "svg/**/*"
+paths.css = paths.app + "app/styles/vendor/*.css"
+paths.locales = paths.app + "locales/**/*.json"
+paths.sass = [
+    paths.app + "styles/**/*.scss"
+    "!#{paths.app}/styles/bourbon/**/*.scss"
+]
+
+paths.coffee = [
+    paths.app + "coffee/app.coffee",
+    paths.app + "coffee/*.coffee",
+    paths.app + "coffee/modules/controllerMixins.coffee",
+    paths.app + "coffee/modules/*.coffee",
+    paths.app + "coffee/modules/common/*.coffee",
+    paths.app + "coffee/modules/backlog/*.coffee",
+    paths.app + "coffee/modules/taskboard/*.coffee",
+    paths.app + "coffee/modules/kanban/*.coffee",
+    paths.app + "coffee/modules/issues/*.coffee",
+    paths.app + "coffee/modules/userstories/*.coffee",
+    paths.app + "coffee/modules/tasks/*.coffee",
+    paths.app + "coffee/modules/wiki/*.coffee",
+    paths.app + "coffee/modules/admin/*.coffee",
+    paths.app + "coffee/modules/projects/*.coffee",
+    paths.app + "coffee/modules/locales/*.coffee",
+    paths.app + "coffee/modules/base/*.coffee",
+    paths.app + "coffee/modules/resources/*.coffee",
+    paths.app + "coffee/modules/user-settings/*.coffee"
+    paths.app + "plugins/**/*.coffee"
+]
+
+paths.js = [
+    paths.app + "vendor/jquery/dist/jquery.js",
+    paths.app + "vendor/lodash/dist/lodash.js",
+    paths.app + "vendor/emoticons/lib/emoticons.js",
+    paths.app + "vendor/underscore.string/lib/underscore.string.js",
+    paths.app + "vendor/angular/angular.js",
+    paths.app + "vendor/angular-route/angular-route.js",
+    paths.app + "vendor/angular-sanitize/angular-sanitize.js",
+    paths.app + "vendor/angular-animate/angular-animate.js",
+    paths.app + "vendor/i18next/i18next.js",
+    paths.app + "vendor/moment/min/moment-with-langs.js",
+    paths.app + "vendor/checksley/checksley.js",
+    paths.app + "vendor/pikaday/pikaday.js",
+    paths.app + "vendor/jquery-flot/jquery.flot.js",
+    paths.app + "vendor/jquery-flot/jquery.flot.pie.js",
+    paths.app + "vendor/jquery-flot/jquery.flot.time.js",
+    paths.app + "vendor/jquery-flot/jquery.flot.time.js",
+    paths.app + "vendor/flot-axislabels/jquery.flot.axislabels.js",
+    paths.app + "vendor/jquery-textcomplete/jquery.textcomplete.js",
+    paths.app + "vendor/markitup/markitup/jquery.markitup.js",
+    paths.app + "vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js",
+    paths.app + "js/jquery.ui.git.js",
+    paths.app + "js/sha1.js",
+    paths.app + "plugins/**/*.js"
+]
 
 ############################################################################
 # Layout/CSS Related tasks
@@ -89,125 +95,153 @@ gulp.task "jade-deploy", ->
         .pipe(plumber())
         .pipe(cache("jade"))
         .pipe(jade({pretty: false}))
-        .pipe(gulp.dest("#{paths.dist}/partials"))
+        .pipe(gulp.dest(paths.dist + "partials/"))
 
 gulp.task "jade-watch", ->
     gulp.src(paths.jade)
         .pipe(plumber())
         .pipe(cache("jade"))
-        .pipe(jadeInheritance({basedir: './app'}))
+        .pipe(jadeInheritance({basedir: "./app"}))
         .pipe(jade({pretty: true}))
-        .pipe(gulp.dest("#{paths.dist}"))
+        .pipe(gulp.dest(paths.dist))
 
-gulp.task "template", ->
-    gulp.src("#{paths.app}/index.jade")
+gulp.task "templates", ->
+    gulp.src(paths.app + "index.jade")
         .pipe(plumber())
         .pipe(jade({pretty: true, locals:{v:(new Date()).getTime()}}))
-        .pipe(gulp.dest("#{paths.dist}"))
+        .pipe(gulp.dest(paths.dist))
 
 gulp.task "sass-lint", ->
-    gulp.src([paths.scssStyles, '!app/styles/bourbon/**/*.scss'])
+    gulp.src(paths.sass)
         .pipe(cache("sasslint"))
         .pipe(scsslint({config: "scsslint.yml"}))
 
 gulp.task "sass-watch", ["sass-lint"], ->
-    gulp.src(paths.sassStylesMain)
+    gulp.src(paths.app + "styles/main.scss")
         .pipe(plumber())
         .pipe(sass())
         .pipe(rename("app.css"))
-        .pipe(gulp.dest(paths.distStylesPath))
+        .pipe(gulp.dest(paths.tmp))
 
 gulp.task "sass-deploy", ->
-    gulp.src(paths.sassStylesMain)
+    gulp.src(paths.app + "styles/main.scss")
         .pipe(plumber())
         .pipe(sass())
         .pipe(rename("app.css"))
-        .pipe(gulp.dest(paths.distStylesPath))
+        .pipe(gulp.dest(paths.tmp))
 
 gulp.task "css-vendor", ->
     gulp.src(paths.css)
         .pipe(concat("vendor.css"))
-        .pipe(gulp.dest(paths.distStylesPath))
+        .pipe(gulp.dest(paths.tmp))
 
 gulp.task "css-lint-app", ["sass-watch"],  ->
-    gulp.src(paths.distStylesPath + "/app.css")
+    gulp.src(paths.tmp + "app.css")
         .pipe(csslint("csslintrc.json"))
         .pipe(csslint.reporter())
 
 gulp.task "styles-watch", ["sass-watch", "css-vendor", "css-lint-app"], ->
-    gulp.src(paths.distStyles)
+    _paths = [
+        paths.tmp + "vendor.css",
+        paths.tmp + "app.css"
+    ]
+
+    gulp.src(_paths)
         .pipe(concat("main.css"))
-        .pipe(gulp.dest(paths.distStylesPath))
+        .pipe(gulp.dest(paths.dist + "styles/"))
 
 gulp.task "styles-deploy", ["sass-deploy", "css-vendor"], ->
-    gulp.src(paths.distStyles)
+    _paths = [
+        paths.tmp + "vendor.css",
+        paths.tmp + "app.css"
+    ]
+
+    gulp.src(_paths)
         .pipe(concat("main.css"))
         .pipe(minifyCSS())
-        .pipe(gulp.dest(paths.distStylesPath))
+        .pipe(gulp.dest(paths.dist + "styles/"))
 
 ##############################################################################
 # JS Related tasks
 ##############################################################################
 
+gulp.task "conf", ->
+    gulp.src("conf/main.json")
+        .pipe(wrap("angular.module('taigaBase').value('localconf', <%= contents %>);"))
+        .pipe(concat("conf.js"))
+        .pipe(gulp.dest(paths.tmp));
+
 gulp.task "locales", ->
     gulp.src("app/locales/en/app.json")
-        .pipe(wrap("angular.module('taigaLocales').constant('localesEnglish', <%= contents %>);"))
-        .pipe(rename("localeEnglish.coffee"))
-        .pipe(gulp.dest("app/coffee/modules/locales"))
+        .pipe(wrap("angular.module('taigaBase').value('localesEn', <%= contents %>);"))
+        .pipe(rename("locales.en.js"))
+        .pipe(gulp.dest(paths.tmp))
 
-    # gulp.src("app/locales/es/app.json")
-    #     .pipe(wrap("angular.module('locales.es', []).constant('locales.es', <%= contents %>);"))
-    #     .pipe(rename("locale.es.coffee"))
-    #     .pipe(gulp.dest("app/coffee/"))
-
-gulp.task "coffee-watch", ["locales"], ->
+gulp.task "coffee", ->
     gulp.src(paths.coffee)
         .pipe(plumber())
         .pipe(coffee())
         .pipe(concat("app.js"))
-        .pipe(gulp.dest("dist/js/"))
-
-gulp.task "coffee-deploy", ["locales"], ->
-    gulp.src(paths.coffee)
-        .pipe(plumber())
-        .pipe(coffee())
-        .pipe(concat("app.js"))
-        .pipe(uglify({mangle:false, preserveComments: false}))
-        .pipe(gulp.dest("dist/js/"))
+        .pipe(gulp.dest(paths.tmp))
 
 gulp.task "jslibs-watch", ->
-    gulp.src(paths.vendorJsLibs)
+    gulp.src(paths.js)
         .pipe(plumber())
         .pipe(concat("libs.js"))
         .pipe(gulp.dest("dist/js/"))
 
 gulp.task "jslibs-deploy", ->
-    gulp.src(paths.vendorJsLibs)
+    gulp.src(paths.js)
         .pipe(plumber())
         .pipe(concat("libs.js"))
         .pipe(uglify({mangle:false, preserveComments: false}))
         .pipe(gulp.dest("dist/js/"))
+
+gulp.task "app-watch", ["coffee", "conf", "locales"], ->
+    _paths = [
+        paths.tmp + "app.js",
+        paths.tmp + "conf.js",
+        paths.tmp + "locales.en.js"
+    ]
+
+    gulp.src(_paths)
+        .pipe(concat("app.js"))
+        .pipe(gulp.dest(paths.dist + "js/"));
+
+gulp.task "app-deploy", ["coffee", "conf", "locales"], ->
+    _paths = [
+        paths.tmp + "app.js",
+        paths.tmp + "conf.js",
+        paths.tmp + "locales.en.js"
+    ]
+
+    gulp.src(_paths)
+        .pipe(concat("app.js"))
+        .pipe(uglify({mangle:false, preserveComments: false}))
+        .pipe(gulp.dest(paths.dist + "js/"));
 
 ##############################################################################
 # Common tasks
 ##############################################################################
 
 # SVG
-gulp.task "svg",  ->
+gulp.task "copy-svg",  ->
     gulp.src("#{paths.app}/svg/**/*")
         .pipe(gulp.dest("#{paths.dist}/svg/"))
 
-# Copy Files
-gulp.task "copy",  ->
+gulp.task "copy-fonts",  ->
     gulp.src("#{paths.app}/fonts/*")
         .pipe(gulp.dest("#{paths.dist}/fonts/"))
 
+gulp.task "copy-images",  ->
     gulp.src("#{paths.app}/images/**/*")
         .pipe(gulp.dest("#{paths.dist}/images/"))
 
+gulp.task "copy-plugin-templates",  ->
     gulp.src("#{paths.app}/plugins/**/templates/*")
         .pipe(gulp.dest("#{paths.dist}/plugins/"))
 
+gulp.task "copy", ["copy-fonts", "copy-images", "copy-plugin-templates", "copy-svg"]
 
 gulp.task "express", ->
     express = require("express")
@@ -230,32 +264,33 @@ gulp.task "express", ->
 # Rerun the task when a file changes
 gulp.task "watch", ->
     gulp.watch(paths.jade, ["jade-watch"])
-    gulp.watch("#{paths.app}/index.jade", ["template"])
-    gulp.watch(paths.scssStyles, ["styles-watch"])
-    gulp.watch(paths.svg, ["svg"])
-    gulp.watch(paths.coffee, ["coffee-watch"])
-    gulp.watch(paths.vendorJsLibs, ["jslibs-watch"])
-    gulp.watch(paths.locales, ["coffee-watch"])
+    gulp.watch(paths.app + "index.jade", ["templates"])
+    gulp.watch(paths.sass, ["styles-watch"])
+    gulp.watch(paths.svg, ["copy-svg"])
+    gulp.watch(paths.coffee, ["app-watch"])
+    gulp.watch(paths.js, ["jslibs-watch"])
+    gulp.watch(paths.locales, ["app-watch"])
+    gulp.watch(paths.images, ["copy-images"])
+    gulp.watch(paths.fonts, ["copy-fonts"])
+
 
 gulp.task "deploy", [
-    "jade-deploy",
-    "template",
+    "templates",
     "copy",
-    "svg",
-    "coffee-deploy",
+    "jade-deploy",
+    "app-deploy",
     "jslibs-deploy",
     "styles-deploy"
 ]
 
 # The default task (called when you run gulp from cli)
 gulp.task "default", [
-    "jade-deploy",
-    "template",
-    "styles-watch",
-    "svg",
     "copy",
-    "coffee-watch",
+    "templates",
+    "styles-watch",
+    "app-watch",
     "jslibs-watch",
+    "jade-deploy",
     "express",
     "watch"
 ]

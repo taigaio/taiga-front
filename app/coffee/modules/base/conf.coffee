@@ -16,35 +16,20 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: config.coffee
+# File: modules/base/conf.coffee
 ###
 
-taiga = @.taiga
+defaults = {
+    api: "http://localhost:8000/api/v1/"
+    debug: true
+    lang: "en"
+}
 
-class ConfigService extends taiga.Service
-    defaults: {
-        host: "localhost:8000"
-        scheme: "http"
+class ConfigurationService
+    @.$inject = ["localconf"]
 
-        debug: false
-
-        defaultLanguage: "en"
-        languageOptions: {
-            "es": "Spanish"
-            "en": "English"
-        }
-
-        publicRegisterEnabled: false
-
-        termsOfServiceUrl: null
-        privacyPolicyUrl: null
-
-        feedbackEnabled: true
-    }
-
-    initialize: (localconfig) ->
-        defaults = _.clone(@.defaults, true)
-        @.config = _.merge(defaults, localconfig)
+    constructor: (localconf) ->
+        @.config = _.merge(_.clone(defaults, true), localconf)
 
     get: (key, defaultValue=null) ->
         if _.has(@.config, key)
@@ -52,12 +37,7 @@ class ConfigService extends taiga.Service
         return defaultValue
 
 
-# Initialize config loading local configuration.
-init = ($log, localconfig, config) ->
-    $log.debug("Initializing configuration", localconfig)
-    config.initialize(localconfig)
+module = angular.module("taigaBase")
+module.service("$tgConfig", ConfigurationService)
+module.value("localconf", null)
 
-
-module = angular.module("taigaConfig", ["taigaLocalConfig"])
-module.service("$tgConfig", ConfigService)
-module.run(["$log", "localconfig", "$tgConfig", init])
