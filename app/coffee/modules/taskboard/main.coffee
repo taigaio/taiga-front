@@ -134,7 +134,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
     loadSprint: ->
         return @rs.sprints.get(@scope.projectId, @scope.sprintId).then (sprint) =>
             @scope.sprint = sprint
-            @scope.userstories = sprint.user_stories
+            @scope.userstories = _.sortBy(sprint.user_stories, "sprint_order")
             return sprint
 
     loadTasks: ->
