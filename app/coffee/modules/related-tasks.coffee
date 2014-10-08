@@ -111,6 +111,7 @@ RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope, $loading) ->
                 if event.keyCode == 13
                     saveTask($model.$modelValue).then ->
                         renderView($model.$modelValue)
+                        renderEdit() if not task
                 else if event.keyCode == 27
                     renderView($model.$modelValue)
 
