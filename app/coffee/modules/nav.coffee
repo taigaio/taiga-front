@@ -314,7 +314,7 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location, $
                 </g>
             </g>
         </svg>
-        <span class="item">taiga</span>
+        <span class="item">taiga<sup>[beta]</sup></span>
     </div>
     <div class="menu-container"></div>
     """)
