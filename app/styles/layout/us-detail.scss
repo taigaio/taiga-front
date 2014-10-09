@@ -17,8 +17,16 @@
                 margin-bottom: .5rem;
             }
             .us-number,
-            .us-name {
+            .us-name,
+            .us-related-task {
                 color: $white;
+                a {
+                    @include transition(color .3s linear);
+                    color: $white;
+                    &:hover {
+                        color: $red-light;
+                    }
+                }
             }
             .unblock {
                 @extend %bold;
@@ -34,6 +42,9 @@
                     color: $white;
                 }
             }
+        }
+        p {
+            margin-bottom: 0;
         }
         .us-edit-name-inner {
             @include table-flex();
@@ -68,16 +79,18 @@
             margin-top: .5rem;
             a {
                 @include transition(color .3s linear);
-                color: lighten($grayer, 30%);
-                margin-left: .2rem;
+                border-left: 1px solid $gray-light;
+                padding: 0 .2rem;
                 &:hover {
                     color: $green-taiga;
+                }
+                &:first-child {
+                    border: 0;
                 }
             }
         }
         .block-desc-container {
             @extend %small;
-            margin: 0 0 1.2rem;
         }
         .block-description-title {
             @extend %bold;

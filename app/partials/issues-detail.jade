@@ -17,21 +17,11 @@ block content
                     h2.us-title-text
                         span.us-number(tg-bo-ref="issue.ref")
                         span.us-name(ng-bind="issue.subject")
-                    //- TODO: FIX ME
-                    h3.us-related-task(ng-if="issue.generated_user_stories")
-                        | From this issue have been generated the user stories
-                        //- a(tg-check-permission="view_us", href="", title="Go to user story",
-                        //- tg-nav="project-userstories-detail:project=project.slug, ref=us.ref",
-                        //- ng-if="us")
-                        //-     span(tg-bo-ref="us.ref")
-                        //-     span(tg-bo-bind="us.subject")
-                        ul
-                            li(ng-repeat="us in issue.generated_user_stories")
-                                a(tg-check-permission="view_us", href="", title="Go to user story",
-                                  tg-nav="project-userstories-detail:project=project.slug, ref=us.ref")
-                                    span(tg-bo-ref="us.ref")
-                                    span(tg-bo-bind="us.subject")
-                    //- END TODO
+
+                    p.us-related-task(ng-if="issue.generated_user_stories") This issue has been promoted to US:
+                        a(ng-repeat="us in issue.generated_user_stories", tg-check-permission="view_us", href="",
+                          tg-bo-title="us.subject", tg-nav="project-userstories-detail:project=project.slug, ref=us.ref")
+                              span(tg-bo-ref="us.ref")
 
                     p.block-desc-container(ng-show="issue.is_blocked")
                         span.block-description-title Blocked
@@ -54,9 +44,8 @@ block content
             section.watchers(tg-watchers, ng-model="issue")
 
             section.us-detail-settings
-                a.button.button-green.clickable(tg-check-permission="add_us", ng-click="ctrl.promoteToUs()",
-                                                href="")
-                    Promote to User Story
+                a.button.button-gray.clickable(tg-check-permission="add_us",
+                                                ng-click="ctrl.promoteToUs()", href="") Promote to User Story
 
         div.lightbox.lightbox-generic-form.lb-create-edit-userstory(tg-lb-create-edit-userstory)
             include views/modules/lightbox-us-create-edit
