@@ -44,8 +44,4 @@ block content
             section.watchers(tg-watchers, ng-model="issue")
 
             section.us-detail-settings
-                a.button.button-gray.clickable(tg-check-permission="add_us",
-                                                ng-click="ctrl.promoteToUs()", href="") Promote to User Story
-
-        div.lightbox.lightbox-generic-form.lb-create-edit-userstory(tg-lb-create-edit-userstory)
-            include views/modules/lightbox-us-create-edit
+               tg-promote-issue-to-us-button(ng-model="issue")
