@@ -69,23 +69,35 @@ BacklogSortableDirective = ($repo, $rs, $rootscope) ->
                 cursorAt: {right: 15}
             })
 
-            $el.on "sortreceive", (event, ui) ->
+            $el.on "multiplesortreceive", (event, ui) ->
                 itemUs = ui.item.scope().us
                 itemIndex = ui.item.index()
 
                 deleteElement(ui.item)
-                $scope.$emit("sprint:us:move", itemUs, itemIndex, null)
+
+                $scope.$emit("sprint:us:move", [itemUs], itemIndex, null)
                 ui.item.find('a').removeClass('noclick')
 
-            $el.on "sortstop", (event, ui) ->
+            $el.on "multiplesortstop", (event, ui) ->
                 # When parent not exists, do nothing
-                if ui.item.parent().length == 0
+                if $(ui.items[0]).parent().length == 0
                     return
 
-                itemUs = ui.item.scope().us
-                itemIndex = ui.item.index()
-                $scope.$emit("sprint:us:move", itemUs, itemIndex, null)
-                ui.item.find('a').removeClass('noclick')
+                items = _.sortBy ui.items, (item) ->
+                    return $(item).index()
+
+                index = _.min _.map items, (item) ->
+                    return $(item).index()
+
+                us = _.map items, (item) ->
+                    item = $(item)
+                    itemUs = item.scope().us
+
+                    item.find('a').removeClass('noclick')
+
+                    return itemUs
+
+                $scope.$emit("sprint:us:move", us, index, null)
 
             $el.on "sortstart", (event, ui) ->
                 ui.item.find('a').addClass('noclick')
@@ -113,7 +125,7 @@ BacklogEmptySortableDirective = ($repo, $rs, $rootscope) ->
                     itemIndex = ui.item.index()
 
                     deleteElement(ui.item)
-                    $scope.$emit("sprint:us:move", itemUs, itemIndex, null)
+                    $scope.$emit("sprint:us:move", [itemUs], itemIndex, null)
                     ui.item.find('a').removeClass('noclick')
 
         $scope.$on "$destroy", ->
@@ -132,24 +144,33 @@ SprintSortableDirective = ($repo, $rs, $rootscope) ->
                     connectWith: ".sprint-table,.backlog-table-body,.empty-backlog"
                 })
 
-                $el.on "sortreceive", (event, ui) ->
-                    itemUs = ui.item.scope().us
-                    itemIndex = ui.item.index()
+                $el.on "multiplesortreceive", (event, ui) ->
+                    items = _.sortBy ui.items, (item) ->
+                        return $(item).index()
 
-                    deleteElement(ui.item)
-                    $scope.$emit("sprint:us:move", itemUs, itemIndex, $scope.sprint.id)
-                    ui.item.find('a').removeClass('noclick')
+                    index = _.min _.map items, (item) ->
+                        return $(item).index()
 
-                $el.on "sortstop", (event, ui) ->
+                    us = _.map items, (item) ->
+                        item = $(item)
+                        itemUs = item.scope().us
+
+                        deleteElement(item)
+                        item.find('a').removeClass('noclick')
+
+                        return itemUs
+
+                    $scope.$emit("sprint:us:move", us, index, $scope.sprint.id)
+
+                $el.on "multiplesortstop", (event, ui) ->
                     # When parent not exists, do nothing
                     if ui.item.parent().length == 0
                         return
 
                     itemUs = ui.item.scope().us
                     itemIndex = ui.item.index()
-
-                    $scope.$emit("sprint:us:move", itemUs, itemIndex, $scope.sprint.id)
                     ui.item.find('a').removeClass('noclick')
+                    $scope.$emit("sprint:us:move", [itemUs], itemIndex, $scope.sprint.id)
 
     return {link:link}
 
