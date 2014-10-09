@@ -31,8 +31,8 @@ ul { list-style: none outside; }
 ol { list-style: decimal; }
 
 sup {
-    vertical-align: super;
     @extend %small;
+    vertical-align: super;
 }
 
 .icon {
