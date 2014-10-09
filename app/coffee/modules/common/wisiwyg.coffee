@@ -28,32 +28,7 @@ module = angular.module("taigaCommon")
 #############################################################################
 ## WYSIWYG markitup editor directive
 #############################################################################
-
-# TODO: fix when i18n is implemented
-$i18next = {
-    t: (key) ->
-        keywords = {
-            "markdown-editor.heading-1": "First Level Heading",
-            "markdown-editor.heading-2": "Second Level Heading",
-            "markdown-editor.heading-3": "Third Level Heading",
-            "markdown-editor.bold": "Bold",
-            "markdown-editor.italic": "Italic",
-            "markdown-editor.strike": "Strike",
-            "markdown-editor.bulleted-list": "Bulleted List",
-            "markdown-editor.numeric-list": "Numeric List",
-            "markdown-editor.picture": "Picture",
-            "markdown-editor.link": "Link",
-            "markdown-editor.quotes": "Quotes",
-            "markdown-editor.code-block": "Code Block / Code",
-            "markdown-editor.preview": "Preview",
-            "markdown-editor.help": "Help",
-            "markdown-editor.placeholder": "Your title here...",
-            "markdown-editor.link-placeholder": "Your text to link here..."
-        }
-        return keywords[key] or key
-}
-
-tgMarkitupDirective = ($rootscope, $rs) ->
+tgMarkitupDirective = ($rootscope, $rs, $tr) ->
     previewTemplate = _.template("""
     <div class="preview">
         <div class="actions">
@@ -70,7 +45,7 @@ tgMarkitupDirective = ($rootscope, $rs) ->
         previewDomNode = $("<div/>", {class: "preview"})
 
         #openHelp = ->
-        #    window.open($rootscope.urls.wikiHelpUrl(), '_blank')
+        #    window.open($rootscope.urls.wikiHelpUrl(), "_blank")
 
         closePreviewMode = ->
             element.parents(".markdown").find(".preview").remove()
@@ -97,7 +72,7 @@ tgMarkitupDirective = ($rootscope, $rs) ->
         setCaretPosition = (elm, caretPos) ->
             if elm.createTextRange
                 range = elm.createTextRange()
-                range.move('character', caretPos)
+                range.move("character", caretPos)
                 range.select()
 
             else if elm.selectionStart
@@ -116,8 +91,8 @@ tgMarkitupDirective = ($rootscope, $rs) ->
             return currentCaretPosition - removedLineLength + 1
 
         markdownSettings =
-            nameSpace: 'markdown'
-            onShiftEnter: {keepDefault:false, openWith:'\n\n'}
+            nameSpace: "markdown"
+            onShiftEnter: {keepDefault:false, openWith:"\n\n"}
             onEnter:
                 keepDefault: false
                 replaceWith: (data) =>
@@ -175,95 +150,95 @@ tgMarkitupDirective = ($rootscope, $rs) ->
 
             markupSet: [
                 {
-                    name: $i18next.t('markdown-editor.heading-1')
+                    name: $tr.t("markdown-editor.heading-1")
                     key: "1"
-                    placeHolder: $i18next.t('markdown-editor.placeholder')
-                    closeWith: (markItUp) -> markdownTitle(markItUp, '=')
+                    placeHolder: $tr.t("markdown-editor.placeholder")
+                    closeWith: (markItUp) -> markdownTitle(markItUp, "=")
                 },
                 {
-                    name: $i18next.t('markdown-editor.heading-2')
+                    name: $tr.t("markdown-editor.heading-2")
                     key: "2"
-                    placeHolder: $i18next.t('markdown-editor.placeholder')
-                    closeWith: (markItUp) -> markdownTitle(markItUp, '-')
+                    placeHolder: $tr.t("markdown-editor.placeholder")
+                    closeWith: (markItUp) -> markdownTitle(markItUp, "-")
                 },
                 {
-                    name: $i18next.t('markdown-editor.heading-3')
+                    name: $tr.t("markdown-editor.heading-3")
                     key: "3"
-                    openWith: '### '
-                    placeHolder: $i18next.t('markdown-editor.placeholder')
+                    openWith: "### "
+                    placeHolder: $tr.t("markdown-editor.placeholder")
                 },
                 {
-                    separator: '---------------'
+                    separator: "---------------"
                 },
                 {
-                    name: $i18next.t('markdown-editor.bold')
+                    name: $tr.t("markdown-editor.bold")
                     key: "B"
-                    openWith: '**'
-                    closeWith: '**'
+                    openWith: "**"
+                    closeWith: "**"
                 },
                 {
-                    name: $i18next.t('markdown-editor.italic')
+                    name: $tr.t("markdown-editor.italic")
                     key: "I"
-                    openWith: '_'
-                    closeWith: '_'
+                    openWith: "_"
+                    closeWith: "_"
                 },
                 {
-                    name: $i18next.t('markdown-editor.strike')
+                    name: $tr.t("markdown-editor.strike")
                     key: "S"
-                    openWith: '~~'
-                    closeWith: '~~'
+                    openWith: "~~"
+                    closeWith: "~~"
                 },
                 {
-                    separator: '---------------'
+                    separator: "---------------"
                 },
                 {
-                    name: $i18next.t('markdown-editor.bulleted-list')
-                    openWith: '- '
+                    name: $tr.t("markdown-editor.bulleted-list")
+                    openWith: "- "
                 },
                 {
-                    name: $i18next.t('markdown-editor.numeric-list')
-                    openWith: (markItUp) -> markItUp.line+'. '
+                    name: $tr.t("markdown-editor.numeric-list")
+                    openWith: (markItUp) -> markItUp.line+". "
                 },
                 {
-                    separator: '---------------'
+                    separator: "---------------"
                 },
                 {
-                    name: $i18next.t('markdown-editor.picture')
+                    name: $tr.t("markdown-editor.picture")
                     key: "P"
                     replaceWith: '![[![Alternative text]!]]([![Url:!:http://]!] "[![Title]!]")'
                 },
                 {
-                    name: $i18next.t('markdown-editor.link')
+                    name: $tr.t("markdown-editor.link")
                     key: "L"
-                    openWith: '['
+                    openWith: "["
                     closeWith: ']([![Url:!:http://]!] "[![Title]!]")'
-                    placeHolder: $i18next.t('markdown-editor.link-placeholder')
+                    placeHolder: $tr.t("markdown-editor.link-placeholder")
                 },
                 {
-                    separator: '---------------'
+                    separator: "---------------"
                 },
                 {
-                    name: $i18next.t('markdown-editor.quotes')
-                    openWith: '> '
+                    name: $tr.t("markdown-editor.quotes")
+                    openWith: "> "
                 },
                 {
-                    name: $i18next.t('markdown-editor.code-block')
-                    openWith: '```\n'
-                    closeWith: '\n```'
+                    name: $tr.t("markdown-editor.code-block")
+                    openWith: "```\n"
+                    closeWith: "\n```"
                 },
                 {
-                    separator: '---------------'
+                    separator: "---------------"
                 },
                 {
-                    name: $i18next.t('markdown-editor.preview')
+                    name: $tr.t("markdown-editor.preview")
                     call: preview
                     className: "preview-icon"
                 },
                 # {
-                #     separator: '---------------'
+                #     separator: "---------------"
                 # },
                 # {
-                #     name: $i18next.t('markdown-editor.help')
+                #     name: $tr.t("markdown-editor.help")
                 #     call: openHelp
                 #     className: "help"
                 # }
@@ -273,16 +248,15 @@ tgMarkitupDirective = ($rootscope, $rs) ->
                 $model.$setViewValue(target.val())
 
         markdownTitle = (markItUp, char) ->
-            heading = ''
+            heading = ""
             n = $.trim(markItUp.selection or markItUp.placeHolder).length
 
             for i in [0..n-1]
                 heading += char
 
-            return '\n'+heading+'\n'
+            return "\n"+heading+"\n"
 
         element.markItUp(markdownSettings)
-
         element.on "keypress", (event) ->
             $scope.$apply()
 
@@ -291,4 +265,4 @@ tgMarkitupDirective = ($rootscope, $rs) ->
 
     return {link:link, require:"ngModel"}
 
-module.directive("tgMarkitup", ["$rootScope", "$tgResources", tgMarkitupDirective])
+module.directive("tgMarkitup", ["$rootScope", "$tgResources", "$tgI18n", tgMarkitupDirective])

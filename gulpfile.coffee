@@ -31,7 +31,7 @@ paths.jade = [
 
 paths.images = paths.app + "images/**/*"
 paths.svg = paths.app + "svg/**/*"
-paths.css = paths.app + "app/styles/vendor/*.css"
+paths.css = paths.app + "styles/vendor/*.css"
 paths.locales = paths.app + "locales/**/*.json"
 paths.sass = [
     paths.app + "styles/**/*.scss"
