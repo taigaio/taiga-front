@@ -26,14 +26,11 @@ block content
                         span.us-number(tg-bo-ref="us.ref")
                         span.us-name(ng-bind="us.subject")
 
-                    //- TODO: FIX ME
-                    h3.us-related-task(ng-if="us.origin_issue")
-                        | This user story comes from the issue
+                    p.us-related-task(ng-if="us.origin_issue") This US has been promoted from Issue
                         a(tg-check-permission="view_us", href="", title="Go to issue",
-                          tg-nav="project-issues-detail:project=project.slug, ref=us.origin_issue.ref")
+                          tg-nav="project-issues-detail:project=project.slug, ref=us.origin_issue.ref"
+                          tg-bo-title="us.origin_issue.subject")
                             span(tg-bo-ref="us.origin_issue.ref")
-                            span(tg-bo-bind="us.origin_issue.subject")
-                    //- END TODO
 
                     p.block-desc-container(ng-show="us.is_blocked")
                         span.block-description-title Blocked
