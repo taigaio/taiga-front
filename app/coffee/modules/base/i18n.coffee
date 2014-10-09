@@ -53,18 +53,14 @@ I18nDirective = ($rootscope, $i18n) ->
     link = ($scope, $el, $attrs) ->
         values = $attrs.tr.split(",")
         options = $attrs.trOpts or '{}'
+        opts = $scope.$eval(options)
 
-        applyTranslation = ->
-            opts = $scope.$eval(options)
-            for v in values
-                if v.indexOf(":") == -1
-                    $el.html(_.escape($scope.t(v, opts)))
-                else
-                    [ns, v] = v.split(":")
-                    $el.attr(ns, _.escape($scope.t(v, opts)))
-
-        bindOnce($scope, "t", applyTranslation)
-        $scope.$on("i18n:changeLang", applyTranslation)
+        for v in values
+            if v.indexOf(":") == -1
+                $el.html(_.escape($i18n.t(v, opts)))
+            else
+                [ns, v] = v.split(":")
+                $el.attr(ns, _.escape($i18n.t(v, opts)))
 
     return {
         link: link
