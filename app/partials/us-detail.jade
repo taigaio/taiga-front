@@ -29,7 +29,7 @@ block content
                     p.us-related-task(ng-if="us.origin_issue") This US has been promoted from Issue
                         a(tg-check-permission="view_us", href="", title="Go to issue",
                           tg-nav="project-issues-detail:project=project.slug, ref=us.origin_issue.ref"
-                          tg-bo-title="us.origin_issue.subject")
+                          tg-bo-title="'#' + us.origin_issue.ref + ' ' + us.origin_issue.subject")
                             span(tg-bo-ref="us.origin_issue.ref")
 
                     p.block-desc-container(ng-show="us.is_blocked")

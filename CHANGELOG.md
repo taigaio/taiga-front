@@ -1,5 +1,11 @@
 # Changelog #
 
+## 1.1.0 (2014-10-19)
+
+### Features
+- Promote an issue to a user story
+
+
 ## 1.0.0 (2014-10-07)
 
 ### Misc
