@@ -37,7 +37,6 @@ block content
             section.watchers(tg-watchers, ng-model="issue", editable="true")
 
             section.us-detail-settings
-                a.button.button-green.clickable() Promote to User Story
                 a.button.button-gray.clickable(title="Click to block the issue", ng-show="!issue.is_blocked", ng-click="ctrl.block()") Block
                 a.button.button-red(title="Click to delete the issue", tg-check-permission="delete_issue", ng-click="ctrl.delete()", href="") Delete
 
