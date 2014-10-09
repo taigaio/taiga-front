@@ -45,7 +45,7 @@ tgMarkitupDirective = ($rootscope, $rs, $tr) ->
         previewDomNode = $("<div/>", {class: "preview"})
 
         #openHelp = ->
-        #    window.open($rootscope.urls.wikiHelpUrl(), '_blank')
+        #    window.open($rootscope.urls.wikiHelpUrl(), "_blank")
 
         closePreviewMode = ->
             element.parents(".markdown").find(".preview").remove()
@@ -72,7 +72,7 @@ tgMarkitupDirective = ($rootscope, $rs, $tr) ->
         setCaretPosition = (elm, caretPos) ->
             if elm.createTextRange
                 range = elm.createTextRange()
-                range.move('character', caretPos)
+                range.move("character", caretPos)
                 range.select()
 
             else if elm.selectionStart
@@ -91,8 +91,8 @@ tgMarkitupDirective = ($rootscope, $rs, $tr) ->
             return currentCaretPosition - removedLineLength + 1
 
         markdownSettings =
-            nameSpace: 'markdown'
-            onShiftEnter: {keepDefault:false, openWith:'\n\n'}
+            nameSpace: "markdown"
+            onShiftEnter: {keepDefault:false, openWith:"\n\n"}
             onEnter:
                 keepDefault: false
                 replaceWith: (data) =>
@@ -168,28 +168,28 @@ tgMarkitupDirective = ($rootscope, $rs, $tr) ->
                     placeHolder: $tr.t("markdown-editor.placeholder")
                 },
                 {
-                    separator: '---------------'
+                    separator: "---------------"
                 },
                 {
                     name: $tr.t("markdown-editor.bold")
                     key: "B"
-                    openWith: '**'
-                    closeWith: '**'
+                    openWith: "**"
+                    closeWith: "**"
                 },
                 {
                     name: $tr.t("markdown-editor.italic")
                     key: "I"
-                    openWith: '_'
-                    closeWith: '_'
+                    openWith: "_"
+                    closeWith: "_"
                 },
                 {
                     name: $tr.t("markdown-editor.strike")
                     key: "S"
-                    openWith: '~~'
-                    closeWith: '~~'
+                    openWith: "~~"
+                    closeWith: "~~"
                 },
                 {
-                    separator: '---------------'
+                    separator: "---------------"
                 },
                 {
                     name: $tr.t("markdown-editor.bulleted-list")
@@ -200,7 +200,7 @@ tgMarkitupDirective = ($rootscope, $rs, $tr) ->
                     openWith: (markItUp) -> markItUp.line+". "
                 },
                 {
-                    separator: '---------------'
+                    separator: "---------------"
                 },
                 {
                     name: $tr.t("markdown-editor.picture")
@@ -210,12 +210,12 @@ tgMarkitupDirective = ($rootscope, $rs, $tr) ->
                 {
                     name: $tr.t("markdown-editor.link")
                     key: "L"
-                    openWith: '['
+                    openWith: "["
                     closeWith: ']([![Url:!:http://]!] "[![Title]!]")'
                     placeHolder: $tr.t("markdown-editor.link-placeholder")
                 },
                 {
-                    separator: '---------------'
+                    separator: "---------------"
                 },
                 {
                     name: $tr.t("markdown-editor.quotes")
@@ -227,7 +227,7 @@ tgMarkitupDirective = ($rootscope, $rs, $tr) ->
                     closeWith: "\n```"
                 },
                 {
-                    separator: '---------------'
+                    separator: "---------------"
                 },
                 {
                     name: $tr.t("markdown-editor.preview")
@@ -235,7 +235,7 @@ tgMarkitupDirective = ($rootscope, $rs, $tr) ->
                     className: "preview-icon"
                 },
                 # {
-                #     separator: '---------------'
+                #     separator: "---------------"
                 # },
                 # {
                 #     name: $tr.t("markdown-editor.help")
@@ -248,16 +248,15 @@ tgMarkitupDirective = ($rootscope, $rs, $tr) ->
                 $model.$setViewValue(target.val())
 
         markdownTitle = (markItUp, char) ->
-            heading = ''
+            heading = ""
             n = $.trim(markItUp.selection or markItUp.placeHolder).length
 
             for i in [0..n-1]
                 heading += char
 
-            return '\n'+heading+'\n'
+            return "\n"+heading+"\n"
 
         element.markItUp(markdownSettings)
-
         element.on "keypress", (event) ->
             $scope.$apply()
 
