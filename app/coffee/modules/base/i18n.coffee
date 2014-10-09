@@ -45,6 +45,9 @@ class I18nService extends taiga.Service
         i18n.init(@.options)
         @rootscope.t = i18n.t
 
+    t: (path, opts) ->
+        return i18n.t(path, opts)
+
 
 I18nDirective = ($rootscope, $i18n) ->
     link = ($scope, $el, $attrs) ->
