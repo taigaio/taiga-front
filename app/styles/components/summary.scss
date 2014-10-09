@@ -93,7 +93,6 @@
         &.icon-stats {
             @include transition(color .3s linear);
             color: $gray;
-            display: inline-block;
             float: right;
             &:hover {
                 @include transition(color .3s linear);
