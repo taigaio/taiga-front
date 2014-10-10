@@ -52,7 +52,6 @@ class ProjectsNavigationController extends taiga.Controller
         return @rs.projects.list().then (projects) =>
             for project in projects
                 project.url = @projectUrl.get(project)
-
             @scope.projects = projects
             @scope.filteredProjects = projects
             @scope.filterText = ""
@@ -138,9 +137,8 @@ ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout, tgLoader, $
         $el.html(html)
         renderProjects($el, projects)
 
-    link = ($scope, $el, $attrs, $ctrl) ->
-        $ctrl = $el.controller()
-
+    link = ($scope, $el, $attrs, $ctrls) ->
+        $ctrl = $ctrls[0]
         $rootscope.$on("project:loaded", hideMenu)
 
         overlay.on 'click', () ->
@@ -189,9 +187,13 @@ ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout, tgLoader, $
             $el.trigger("regenerate:pagination")
 
         $scope.$watch "projects", (projects) ->
-            render($el, $scope.projects) if projects?
+            render($el, projects) if projects?
 
-    return {link: link}
+    return {
+        controller: ProjectsNavigationController
+        link: link
+    }
+
 
 module.directive("tgProjectsNav", ["$rootScope", "animationFrame", "$timeout", "tgLoader", "$tgLocation",
                                    ProjectsNavigationDirective])
