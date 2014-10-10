@@ -106,6 +106,9 @@ joinStr = (str, coll) ->
 debounce = (wait, func) ->
     return _.debounce(func, wait, {leading: true, trailing: false})
 
+debounceLeading = (wait, func) ->
+    return _.debounce(func, wait, {leading: false, trailing: true})
+
 startswith = (str1, str2) ->
     return _.str.startsWith(str1, str2)
 
@@ -140,5 +143,6 @@ taiga.scopeDefer = scopeDefer
 taiga.toString = toString
 taiga.joinStr = joinStr
 taiga.debounce = debounce
+taiga.debounceLeading = debounceLeading
 taiga.startswith = startswith
 taiga.sizeFormat = sizeFormat
