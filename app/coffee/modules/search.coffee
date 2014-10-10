@@ -24,7 +24,7 @@ taiga = @.taiga
 groupBy = @.taiga.groupBy
 bindOnce = @.taiga.bindOnce
 mixOf = @.taiga.mixOf
-debounce = @.taiga.debounce
+debounceLeading = @.taiga.debounceLeading
 trim = @.taiga.trim
 
 module = angular.module("taigaSearch", [])
@@ -63,7 +63,7 @@ class SearchController extends mixOf(taiga.Controller, taiga.PageMixin)
 
         # Search input watcher
         @scope.searchTerm = ""
-        loadSearchData = debounce(200, (t) => @.loadSearchData(t))
+        loadSearchData = debounceLeading(100, (t) => @.loadSearchData(t))
 
         @scope.$watch "searchTerm", (term) =>
             if not term

@@ -26,7 +26,7 @@ toggleText = @.taiga.toggleText
 scopeDefer = @.taiga.scopeDefer
 bindOnce = @.taiga.bindOnce
 groupBy = @.taiga.groupBy
-debounce = @.taiga.debounce
+debounceLeading = @.taiga.debounceLeading
 
 
 module = angular.module("taigaBacklog")
@@ -130,7 +130,7 @@ BacklogFiltersDirective = ($log, $location) ->
 
             $ctrl.loadUserstories()
 
-        selectQFilter = debounce 400, (value) ->
+        selectQFilter = debounceLeading 100, (value) ->
             return if value is undefined
             if value.length == 0
                 $ctrl.replaceFilter("q", null)

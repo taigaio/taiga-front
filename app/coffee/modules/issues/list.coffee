@@ -27,7 +27,7 @@ toString = @.taiga.toString
 joinStr = @.taiga.joinStr
 groupBy = @.taiga.groupBy
 bindOnce = @.taiga.bindOnce
-debounce = @.taiga.debounce
+debounceLeading = @.taiga.debounceLeading
 startswith = @.taiga.startswith
 
 module = angular.module("taigaIssues")
@@ -577,7 +577,7 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading) ->
         $scope.$on "filters:loaded", (ctx, filters) ->
             initializeSelectedFilters(filters)
 
-        selectQFilter = debounce 400, (value) ->
+        selectQFilter = debounceLeading 100, (value) ->
             return if value is undefined
             if value.length == 0
                 $ctrl.replaceFilter("q", null)
