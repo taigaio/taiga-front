@@ -186,12 +186,15 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         linewidth: "The subject must have a maximum size of %s"
     })
 
-init = ($log, $i18n, $config, $rootscope, $auth, $events) ->
+init = ($log, $i18n, $config, $rootscope, $auth, $events, $analytics) ->
     $i18n.initialize($config.get("defaultLanguage"))
     $log.debug("Initialize application")
 
     if $auth.isAuthenticated()
         $events.setupConnection()
+
+    $analytics.initialize()
+
 
 modules = [
     # Main Global Modules
@@ -244,5 +247,6 @@ module.run([
     "$rootScope",
     "$tgAuth",
     "$tgEvents",
+    "$tgAnalytics",
     init
 ])

@@ -47,14 +47,16 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$tgLocation",
         "$tgNavUrls"
         "$tgEvents"
+        "$tgAnalytics",
         "tgLoader"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @appTitle, @location, @navUrls,
-                  @events, tgLoader) ->
+                  @events, @analytics, tgLoader) ->
         _.bindAll(@)
 
         @scope.sectionName = "Taskboard"
+        @.initializeEventHandlers()
 
         promise = @.loadInitialData()
 
@@ -70,10 +72,17 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
                 @location.replace()
             return @q.reject(xhr)
 
+    initializeEventHandlers: ->
         # TODO: Reload entire taskboard after create/edit tasks seems
         # a big overhead. It should be optimized in near future.
-        @scope.$on("taskform:bulk:success", => @.loadTaskboard())
-        @scope.$on("taskform:new:success", => @.loadTaskboard())
+        @scope.$on "taskform:bulk:success", =>
+            @.loadTaskboard()
+            @analytics.trackEvent("task", "create", "bulk create task on taskboard", 1)
+
+        @scope.$on "taskform:new:success", =>
+            @.loadTaskboard()
+            @analytics.trackEvent("task", "create", "create task on taskboard", 1)
+
         @scope.$on("taskform:edit:success", => @.loadTaskboard())
         @scope.$on("taskboard:task:move", @.taskMove)
 

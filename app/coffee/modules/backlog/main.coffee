@@ -47,15 +47,18 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         "$appTitle",
         "$tgNavUrls",
         "$tgEvents",
+        "$tgAnalytics",
         "tgLoader"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q,
-                  @location, @appTitle, @navUrls, @events, tgLoader) ->
+                  @location, @appTitle, @navUrls, @events, @analytics, tgLoader) ->
         _.bindAll(@)
 
         @scope.sectionName = "Backlog"
         @showTags = false
+
+        @.initializeEventHandlers()
 
         promise = @.loadInitialData()
 
@@ -70,12 +73,6 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
             tgLoader.pageLoaded()
 
-            # $(".backlog, .sidebar").mCustomScrollbar({
-            #     theme: 'minimal-dark'
-            #     scrollInertia: 0
-            #     axis: 'y'
-            # })
-
         # On Error
         promise.then null, (xhr) =>
             if xhr and xhr.status == 404
@@ -83,16 +80,33 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
                 @location.replace()
             return @q.reject(xhr)
 
-        @scope.$on("usform:bulk:success", @.loadUserstories)
-        @scope.$on("sprintform:create:success", @.loadSprints)
-        @scope.$on("sprintform:create:success", @.loadProjectStats)
-        @scope.$on("sprintform:remove:success", @.loadSprints)
-        @scope.$on("sprintform:remove:success", @.loadProjectStats)
-        @scope.$on("sprintform:remove:success", @.loadUserstories)
-        @scope.$on("usform:new:success", @.loadUserstories)
-        @scope.$on("usform:edit:success", @.loadUserstories)
-        @scope.$on("usform:new:success", @.loadProjectStats)
-        @scope.$on("usform:bulk:success", @.loadProjectStats)
+    initializeEventHandlers: ->
+        @scope.$on "usform:bulk:success", =>
+            @.loadUserstories()
+            @.loadProjectStats()
+            @analytics.trackEvent("userstory", "create", "bulk create userstory on backlog", 1)
+
+        @scope.$on "sprintform:create:success", =>
+            @.loadSprints()
+            @.loadProjectStats()
+            @analytics.trackEvent("sprint", "create", "create sprint on backlog", 1)
+
+        @scope.$on "usform:new:success", =>
+            @.loadUserstories()
+            @.loadProjectStats()
+            @analytics.trackEvent("userstory", "create", "create userstory on backlog", 1)
+
+        @scope.$on "sprintform:edit:success", =>
+            @.loadProjectStats()
+
+        @scope.$on "sprintform:remove:success", =>
+            @.loadSprints()
+            @.loadProjectStats()
+            @.loadUserstories()
+
+        @scope.$on "usform:edit:success", =>
+            @.loadUserstories()
+
         @scope.$on("sprint:us:move", @.moveUs)
         @scope.$on("sprint:us:moved", @.loadSprints)
         @scope.$on("sprint:us:moved", @.loadProjectStats)
