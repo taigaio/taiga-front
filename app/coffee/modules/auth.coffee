@@ -172,9 +172,7 @@ module.directive("tgPublicRegisterMessage", ["$tgConfig", "$tgNavUrls", PublicRe
 
 LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls, $events) ->
     link = ($scope, $el, $attrs) ->
-        $scope.data = {}
-
-        onSuccessSubmit = (response) ->
+        onSuccess = (response) ->
             if $routeParams['next'] and $routeParams['next'] != $navUrls.resolve("login")
                 nextUrl = $routeParams['next']
             else
@@ -183,16 +181,21 @@ LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls, $
             $events.setupConnection()
             $location.path(nextUrl)
 
-        onErrorSubmit = (response) ->
+        onError = (response) ->
             $confirm.notify("light-error", "According to our Oompa Loompas, your username/email
                                             or password are incorrect.") #TODO: i18n
         submit = ->
-            form = $el.find("form").checksley()
+            form = new checksley.Form($el.find("form.login-form"))
             if not form.validate()
                 return
 
-            promise = $auth.login($scope.data)
-            promise.then(onSuccessSubmit, onErrorSubmit)
+            data = {
+                "username": $el.find("form.login-form input[name=username]").val(),
+                "password": $el.find("form.login-form input[name=password]").val()
+            }
+
+            promise = $auth.login(data)
+            return promise.then(onSuccess, onError)
 
         $el.on "click", "a.button-login", (event) ->
             event.preventDefault()
@@ -227,7 +230,7 @@ RegisterDirective = ($auth, $confirm, $location, $navUrls, $config) ->
         onErrorSubmit = (response) ->
             if response.data._error_message?
                 $confirm.notify("light-error", "According to our Oompa Loompas there was an error. #{response.data._error_message}") #TODO: i18n
-                
+
             form.setErrors(response.data)
 
         submit = ->
