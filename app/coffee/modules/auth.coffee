@@ -172,9 +172,7 @@ module.directive("tgPublicRegisterMessage", ["$tgConfig", "$tgNavUrls", PublicRe
 
 LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls, $events) ->
     link = ($scope, $el, $attrs) ->
-        $scope.data = {}
-
-        onSuccessSubmit = (response) ->
+        onSuccess = (response) ->
             if $routeParams['next'] and $routeParams['next'] != $navUrls.resolve("login")
                 nextUrl = $routeParams['next']
             else
@@ -183,16 +181,21 @@ LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls, $
             $events.setupConnection()
             $location.path(nextUrl)
 
-        onErrorSubmit = (response) ->
+        onError = (response) ->
             $confirm.notify("light-error", "According to our Oompa Loompas, your username/email
                                             or password are incorrect.") #TODO: i18n
         submit = ->
-            form = $el.find("form").checksley()
+            form = new checksley.Form($el.find("form.login-form"))
             if not form.validate()
                 return
 
-            promise = $auth.login($scope.data)
-            promise.then(onSuccessSubmit, onErrorSubmit)
+            data = {
+                "username": $el.find("form.login-form input[name=username]").val(),
+                "password": $el.find("form.login-form input[name=password]").val()
+            }
+
+            promise = $auth.login(data)
+            return promise.then(onSuccess, onError)
 
         $el.on "click", "a.button-login", (event) ->
             event.preventDefault()
@@ -211,7 +214,7 @@ module.directive("tgLogin", ["$tgAuth", "$tgConfirm", "$tgLocation", "$tgConfig"
 ## Register Directive
 #############################################################################
 
-RegisterDirective = ($auth, $confirm, $location, $navUrls, $config) ->
+RegisterDirective = ($auth, $confirm, $location, $navUrls, $config, $analytics) ->
     link = ($scope, $el, $attrs) ->
         if not $config.get("publicRegisterEnabled")
             $location.path($navUrls.resolve("not-found"))
@@ -221,13 +224,14 @@ RegisterDirective = ($auth, $confirm, $location, $navUrls, $config) ->
         form = $el.find("form").checksley()
 
         onSuccessSubmit = (response) ->
+            $analytics.trackEvent("auth", "register", "user registration", 1)
             $confirm.notify("success", "Our Oompa Loompas are happy, welcome to Taiga.") #TODO: i18n
             $location.path($navUrls.resolve("home"))
 
         onErrorSubmit = (response) ->
             if response.data._error_message?
                 $confirm.notify("light-error", "According to our Oompa Loompas there was an error. #{response.data._error_message}") #TODO: i18n
-                
+
             form.setErrors(response.data)
 
         submit = ->
@@ -248,7 +252,7 @@ RegisterDirective = ($auth, $confirm, $location, $navUrls, $config) ->
     return {link:link}
 
 module.directive("tgRegister", ["$tgAuth", "$tgConfirm", "$tgLocation", "$tgNavUrls", "$tgConfig",
-                                RegisterDirective])
+                                "$tgAnalytics", RegisterDirective])
 
 #############################################################################
 ## Forgot Password Directive
@@ -339,7 +343,7 @@ module.directive("tgChangePasswordFromRecovery", ["$tgAuth", "$tgConfirm", "$tgL
 ## Invitation
 #############################################################################
 
-InvitationDirective = ($auth, $confirm, $location, $params, $navUrls) ->
+InvitationDirective = ($auth, $confirm, $location, $params, $navUrls, $analytics) ->
     link = ($scope, $el, $attrs) ->
         token = $params.token
 
@@ -357,6 +361,7 @@ InvitationDirective = ($auth, $confirm, $location, $params, $navUrls) ->
         loginForm = $el.find("form.login-form").checksley()
 
         onSuccessSubmitLogin = (response) ->
+            $analytics.trackEvent("auth", "invitationAccept", "invitation accept with existing user", 1)
             $location.path($navUrls.resolve("project", {project: $scope.invitation.project_slug}))
             $confirm.notify("success", "You've successfully joined this project",
                                        "Welcome to #{$scope.invitation.project_name}")
@@ -385,6 +390,7 @@ InvitationDirective = ($auth, $confirm, $location, $params, $navUrls) ->
         registerForm = $el.find("form.register-form").checksley()
 
         onSuccessSubmitRegister = (response) ->
+            $analytics.trackEvent("auth", "invitationAccept", "invitation accept with new user", 1)
             $location.path($navUrls.resolve("project", {project: $scope.invitation.project_slug}))
             $confirm.notify("success", "You've successfully joined this project",
                                        "Welcome to #{$scope.invitation.project_name}")
@@ -411,7 +417,7 @@ InvitationDirective = ($auth, $confirm, $location, $params, $navUrls) ->
     return {link:link}
 
 module.directive("tgInvitation", ["$tgAuth", "$tgConfirm", "$tgLocation", "$routeParams",
-                                  "$tgNavUrls", InvitationDirective])
+                                  "$tgNavUrls", "$tgAnalytics", InvitationDirective])
 
 #############################################################################
 ## Change Email

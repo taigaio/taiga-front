@@ -45,12 +45,15 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$tgLocation",
         "$log",
         "$appTitle",
+        "$tgAnalytics",
         "$tgNavUrls"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @log, @appTitle, @navUrls) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
+                  @log, @appTitle, @analytics, @navUrls) ->
         @scope.issueRef = @params.issueref
         @scope.sectionName = "Issue Details"
+        @.initializeEventHandlers()
 
         promise = @.loadInitialData()
 
@@ -65,9 +68,22 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
                 @location.replace()
             return @q.reject(xhr)
 
-        @scope.$on("attachment:create", => @rootscope.$broadcast("history:reload"))
-        @scope.$on("attachment:edit", => @rootscope.$broadcast("history:reload"))
-        @scope.$on("attachment:delete", => @rootscope.$broadcast("history:reload"))
+
+    initializeEventHandlers: ->
+        @scope.$on "attachment:create", =>
+            @rootscope.$broadcast("history:reload")
+            @analytics.trackEvent("attachment", "create", "create attachment on issue", 1)
+
+        @scope.$on "attachment:edit", =>
+            @rootscope.$broadcast("history:reload")
+
+        @scope.$on "attachment:delete", =>
+            @rootscope.$broadcast("history:reload")
+
+        @scope.$on "promote-issue-to-us:success", =>
+            @analytics.trackEvent("issue", "promoteToUserstory", "promote issue to userstory", 1)
+            @rootscope.$broadcast("history:reload")
+            @.loadIssue()
 
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
@@ -362,3 +378,59 @@ IssueStatusDirective = () ->
     return {link:link, require:"ngModel"}
 
 module.directive("tgIssueStatus", IssueStatusDirective)
+
+
+#############################################################################
+## Promote Issue to US button directive
+#############################################################################
+
+PromoteIssueToUsButtonDirective = ($rootScope, $repo, $confirm) ->
+    template = _.template("""
+        <a class="button button-gray clickable" tg-check-permission="add_us">
+            Promote to User Story
+        </a>
+    """)  # TODO: i18n
+
+    link = ($scope, $el, $attrs, $model) ->
+        $el.on "click", "a", (event) ->
+            event.preventDefault()
+            issue = $model.$modelValue
+
+            title = "Promote this issue to a new user story" # TODO: i18n
+            message = "Are you sure you want to create a new US from this Issue?" # TODO: i18n
+            subtitle = issue.subject
+
+            $confirm.ask(title, subtitle, message).then (finish) =>
+                data = {
+                    generated_from_issue: issue.id
+                    project: issue.project,
+                    subject: issue.subject
+                    description: issue.description
+                    tags: issue.tags
+                    is_blocked: issue.is_blocked
+                    blocked_note: issue.blocked_note
+                }
+
+                onSuccess = ->
+                    finish()
+                    $confirm.notify("success")
+                    $rootScope.$broadcast("promote-issue-to-us:success")
+
+                onError = ->
+                    finish(false)
+                    $confirm.notify("error")
+
+                $repo.create("userstories", data).then(onSuccess, onError)
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {
+        restrict: "AE"
+        require: "ngModel"
+        template: template
+        link: link
+    }
+
+module.directive("tgPromoteIssueToUsButton", ["$rootScope", "$tgRepo", "$tgConfirm",
+                                              PromoteIssueToUsButtonDirective])

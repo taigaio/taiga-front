@@ -26,51 +26,49 @@ defaults = {
     ns: "app"
     fallbackLng: "en"
     async: false
+    lng: "en"
 }
 
-
 class I18nService extends taiga.Service
-    constructor: (@rootscope, @localeEn) ->
+    constructor: (@rootscope, localesEn) ->
+        @.options = _.clone(defaults, true)
+        @.options.resStore = {
+            en: { app: localesEn }
+        }
 
     setLanguage: (language) ->
-        options = _.clone(defaults, true)
-        i18n.setLng(language, options)
-
+        i18n.setLng(language)
         @rootscope.currentLang = language
         @rootscope.$broadcast("i18n:changeLang", language)
 
-    initialize: (defaultLang="en") ->
-        options = _.clone(defaults, true)
-        options.lng = defaultLang
-        options.resStore = {
-            en: { app: @localeEn }
-        }
-
-        i18n.init(options)
+    initialize: ->
+        i18n.init(@.options)
         @rootscope.t = i18n.t
+
+    t: (path, opts) ->
+        return i18n.t(path, opts)
 
 
 I18nDirective = ($rootscope, $i18n) ->
     link = ($scope, $el, $attrs) ->
-        values = $attrs.tgI18n.split(",")
-        options = $attrs.tgI18nOptions or '{}'
+        values = $attrs.tr.split(",")
+        options = $attrs.trOpts or '{}'
+        opts = $scope.$eval(options)
 
-        applyTranslation = ->
-            opts = $scope.$eval(options)
+        for v in values
+            if v.indexOf(":") == -1
+                $el.html(_.escape($i18n.t(v, opts)))
+            else
+                [ns, v] = v.split(":")
+                $el.attr(ns, _.escape($i18n.t(v, opts)))
 
-            for v in values
-                if v.indexOf(":") == -1
-                    $el.html($scope.t(v, opts))
-                else
-                    [ns, v] = v.split(":")
-                    $el.attr(ns, $scope.t(v, opts))
-
-        bindOnce($scope, "t", applyTranslation)
-        $scope.$on("i18n:changeLang", applyTranslation)
-
-    return {link: link}
+    return {
+        link: link
+        restrict: "A"
+        scope: false
+    }
 
 
 module = angular.module("taigaBase")
-module.service("$tgI18n", ["$rootScope", "localesEnglish", I18nService])
-module.directive("tgI18n", ["$rootScope", "$tgI18n", I18nDirective])
+module.service("$tgI18n", ["$rootScope", "localesEn", I18nService])
+module.directive("tr", ["$rootScope", "$tgI18n", I18nDirective])

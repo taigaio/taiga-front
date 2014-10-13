@@ -30,6 +30,11 @@ ol {
 ul { list-style: none outside; }
 ol { list-style: decimal; }
 
+sup {
+    @extend %small;
+    vertical-align: super;
+}
+
 .icon {
     vertical-align: middle;
 }

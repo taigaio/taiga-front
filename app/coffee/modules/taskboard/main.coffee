@@ -47,14 +47,16 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$tgLocation",
         "$tgNavUrls"
         "$tgEvents"
+        "$tgAnalytics",
         "tgLoader"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @appTitle, @location, @navUrls,
-                  @events, tgLoader) ->
+                  @events, @analytics, tgLoader) ->
         _.bindAll(@)
 
         @scope.sectionName = "Taskboard"
+        @.initializeEventHandlers()
 
         promise = @.loadInitialData()
 
@@ -70,10 +72,17 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
                 @location.replace()
             return @q.reject(xhr)
 
+    initializeEventHandlers: ->
         # TODO: Reload entire taskboard after create/edit tasks seems
         # a big overhead. It should be optimized in near future.
-        @scope.$on("taskform:bulk:success", => @.loadTaskboard())
-        @scope.$on("taskform:new:success", => @.loadTaskboard())
+        @scope.$on "taskform:bulk:success", =>
+            @.loadTaskboard()
+            @analytics.trackEvent("task", "create", "bulk create task on taskboard", 1)
+
+        @scope.$on "taskform:new:success", =>
+            @.loadTaskboard()
+            @analytics.trackEvent("task", "create", "create task on taskboard", 1)
+
         @scope.$on("taskform:edit:success", => @.loadTaskboard())
         @scope.$on("taskboard:task:move", @.taskMove)
 
@@ -134,7 +143,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
     loadSprint: ->
         return @rs.sprints.get(@scope.projectId, @scope.sprintId).then (sprint) =>
             @scope.sprint = sprint
-            @scope.userstories = sprint.user_stories
+            @scope.userstories = _.sortBy(sprint.user_stories, "sprint_order")
             return sprint
 
     loadTasks: ->
@@ -244,8 +253,13 @@ module.directive("tgTaskboard", ["$rootScope", TaskboardDirective])
 TaskboardTaskDirective = ($rootscope) ->
     link = ($scope, $el, $attrs, $model) ->
         $el.disableSelection()
-        if $scope.task.is_blocked
-            $el.addClass('blocked')
+
+        $scope.$watch "task", (task) ->
+            if task.is_blocked and not $el.hasClass("blocked")
+                $el.addClass("blocked")
+            else if not task.is_blocked and $el.hasClass("blocked")
+                $el.removeClass("blocked")
+
         $el.find(".icon-edit").on "click", (event) ->
             if $el.find('.icon-edit').hasClass('noclick')
                 return

@@ -23,7 +23,12 @@
         @extend %large;
         color: $white;
         display: block;
+        margin-top: -4px;
         text-align: center;
+    }
+    sup {
+        display: block;
+        line-height: .7rem;
     }
 }
 

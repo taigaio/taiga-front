@@ -1,7 +1,7 @@
 a.close(href="", title="close")
     span.icon.icon-delete
 form
-    h2.title(tg-i18n="task.title-new")
+    h2.title(tr="task.title-new")
     fieldset
         input(type="text", ng-model="task.subject", placeholder="A task subject",
               data-required="true", data-maxlength="500")
@@ -30,7 +30,7 @@ form
 
         fieldset.blocking-flag
             input(type="checkbox", ng-model="task.is_blocked", name="blocked-task", id="blocked-task", ng-value="true")
-            label.blocked(for="blocked-task", tg-i18n="common.blocked")
+            label.blocked(for="blocked-task", tr="common.blocked")
 
     tg-blocking-message-input(watch="task.is_blocked", ng-model="task.blocked_note")
 

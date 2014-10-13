@@ -30,8 +30,7 @@ class UrlsService extends taiga.Service
 
     constructor: (@config) ->
         @.urls = {}
-        @.host = config.get("host")
-        @.scheme = config.get("scheme")
+        @.mainUrl = config.get("api")
 
     update: (urls) ->
         @.urls = _.merge(@.urls, urls)
@@ -44,7 +43,11 @@ class UrlsService extends taiga.Service
 
         name = args.slice(0, 1)[0]
         url = format(@.urls[name], args.slice(1))
-        return format("%s://%s%s", [@.scheme, @.host, url])
+
+        return format("%s/%s", [
+            _.str.rtrim(@.mainUrl, "/"),
+            _.str.ltrim(url, "/")
+        ])
 
 
 module = angular.module("taigaBase")

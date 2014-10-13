@@ -1,0 +1,8 @@
+{
+    "api": "http://localhost:8000/api/v1/",
+    "eventsUrl": "ws://localhost:8888/events",
+    "debug": "true",
+    "publicRegisterEnabled": true,
+    "privacyPolicyUrl": null,
+    "termsOfServiceUrl": null
+}
