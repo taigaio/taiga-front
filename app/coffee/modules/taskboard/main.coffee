@@ -303,6 +303,9 @@ TaskboardTableHeightFixerDirective = ->
     link = ($scope, $el, $attrs) ->
         timeout(500, -> renderSize($el))
 
+        $scope.$on "resize", ->
+            renderSize($el)
+
     return {link:link}
 
 
