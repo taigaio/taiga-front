@@ -20,7 +20,7 @@ $column-margin: 0 10px 0 0;
         overflow: hidden;
         position: absolute;
     }
-    .task-colum_name {
+    .task-colum-name {
         @include table-flex-child($column-flex, $column-width, $column-shrink, $column-width);
         @extend %large;
         background: $whitish;

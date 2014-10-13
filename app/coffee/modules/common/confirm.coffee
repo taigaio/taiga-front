@@ -50,7 +50,7 @@ class ConfirmService extends taiga.Service
 
             el.off(".confirm-dialog")
 
-    ask: (title, subtitle, message=null, lightboxSelector=".lightbox_confirm-delete") ->
+    ask: (title, subtitle, message=null, lightboxSelector=".lightbox-confirm-delete") ->
         el = angular.element(lightboxSelector)
 
         # Render content
