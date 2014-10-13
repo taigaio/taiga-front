@@ -127,25 +127,6 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
     unblock: ->
         @rootscope.$broadcast("unblock", @scope.task)
 
-    delete: ->
-        #TODO: i18n
-        title = "Delete Task"
-        message = @scope.task.subject
-
-        @confirm.askOnDelete(title, message).then (finish) =>
-            promise = @.repo.remove(@scope.task)
-            promise.then =>
-                finish()
-
-                if @scope.task.milestone
-                    @location.path(@navUrls.resolve("project-taskboard", {project: @scope.project.slug, sprint: @scope.sprint.slug}))
-                else if @scope.us
-                    @location.path(@navUrls.resolve("project-userstories-detail", {project: @scope.project.slug, ref: @scope.us.ref}))
-
-            promise.then null, =>
-                finish(false)
-                @confirm.notify("error")
-
 module.controller("TaskDetailController", TaskDetailController)
 
 
@@ -273,3 +254,78 @@ TaskStatusDirective = () ->
     return {link:link, require:"ngModel"}
 
 module.directive("tgTaskStatus", TaskStatusDirective)
+
+TaskButtonsDirective = ($rootscope, $tgrepo, $confirm, $navurls, $location) ->
+    template = _.template("""
+      <fieldset title="Feeling a bit overwhelmed by a task? Make sure others know about it by clicking on Iocaine when editing a task. It's possible to become immune to this (fictional) deadly poison by consuming small amounts over time just as it's possible to get better at what you do by occasionally taking on extra challenges!">
+        <label for="is-iocaine" class="clickable button button-gray is-iocaine">Iocaine</label>
+        <input type="checkbox" id="is-iocaine" name="is-iocaine"/>
+      </fieldset>
+      <a class="button button-gray clickable task-block">Block</a>
+      <a class="button button-red clickable task-unblock">Unblock</a>
+      <% if (deletePerm) { %>
+        <a href="" class="button button-red task-delete">Delete</a>
+      <% } %>
+    """)
+
+    link = ($scope, $el, $attrs, $model) ->
+        render = _.once (us) ->
+            deletePerm = $scope.project.my_permissions.indexOf("delete_us") != -1
+            html = template({deletePerm: deletePerm})
+            $el.html(html)
+
+        refresh = (us) ->
+            if us?.is_blocked
+                $el.find('.task-block').hide()
+                $el.find('.task-unblock').show()
+            else
+                $el.find('.task-block').show()
+                $el.find('.task-unblock').hide()
+
+            if us?.is_iocaine
+                $el.find('.is-iocaine').addClass('active')
+            else
+                $el.find('.is-iocaine').removeClass('active')
+
+        $scope.$watch $attrs.ngModel, (us) ->
+            return if not us
+            render(us)
+            refresh(us)
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+        $el.on "click", ".is-iocaine", (event) ->
+            us = $model.$modelValue.clone()
+            us.is_iocaine = not us.is_iocaine
+            $model.$setViewValue(us)
+            $tgrepo.save($model.$modelValue).then ->
+                $rootscope.$broadcast("history:reload")
+
+        $el.on "click", ".task-block", (event) ->
+            $rootscope.$broadcast("block", $model.$modelValue)
+
+        $el.on "click", ".task-unblock", (event) ->
+            $rootscope.$broadcast("unblock", $model.$modelValue)
+
+        $el.on "click", ".task-delete", (event) ->
+            #TODO: i18n
+            title = "Delete Task"
+            subtitle = $model.$modelValue.subject
+
+            $confirm.ask(title, subtitle).then (finish) =>
+                promise = $tgrepo.remove($model.$modelValue)
+                promise.then =>
+                    finish()
+                    $location.path($navurls.resolve("project-backlog", {project: $scope.project.slug}))
+                promise.then null, =>
+                    finish(false)
+                    $confirm.notify("error")
+
+    return {
+        link: link
+        restrict: "EA"
+        require: "ngModel"
+    }
+
+module.directive("tgTaskButtons", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgNavUrls", "$tgLocation", TaskButtonsDirective])
