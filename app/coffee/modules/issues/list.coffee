@@ -50,11 +50,12 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         "$appTitle",
         "$tgNavUrls",
         "$tgEvents",
+        "$tgAnalytics",
         "tgLoader"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @urls, @params, @q, @location, @appTitle,
-                  @navUrls, @events, tgLoader) ->
+                  @navUrls, @events, @analytics, tgLoader) ->
         @scope.sectionName = "Issues"
         @scope.filters = {}
 
@@ -80,8 +81,10 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             return @q.reject(xhr)
 
         @scope.$on "issueform:new:success", =>
+            @analytics.trackEvent("issue", "create", "create issue on issues list", 1)
             @.loadIssues()
             @.loadFilters()
+
 
     initializeSubscription: ->
         routingKey = "changes.project.#{@scope.projectId}.issues"
