@@ -25,7 +25,7 @@ debounce = @.taiga.debounce
 
 module = angular.module("taigaRelatedTasks", [])
 
-RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope, $loading, $analytics) ->
+RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope, $loading) ->
     templateView = _.template("""
     <div class="tasks">
         <div class="task-name">
@@ -256,7 +256,7 @@ RelatedTaskCreateFormDirective = ($repo, $compile, $confirm, $tgmodel, $loading,
             $el.off()
 
     return {link: link}
-module.directive("tgRelatedTaskCreateForm", ["$tgRepo", "$compile", "$tgConfirm", "$tgModel", "$tgLoading", RelatedTaskCreateFormDirective])
+module.directive("tgRelatedTaskCreateForm", ["$tgRepo", "$compile", "$tgConfirm", "$tgModel", "$tgLoading", "$tgAnalytics", RelatedTaskCreateFormDirective])
 
 RelatedTaskCreateButtonDirective = ($repo, $compile, $confirm, $tgmodel) ->
     template = _.template("""
