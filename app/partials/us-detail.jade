@@ -54,12 +54,8 @@ block content
             section.us-assigned-to(tg-assigned-to, ng-model="us")
             section.us-created-by(tg-created-by, ng-model="us")
             section.watchers(tg-watchers, ng-model="us")
+            section.us-detail-settings(tg-us-buttons, ng-model="us")
 
-            section.us-detail-settings
-                span.button.button-gray(href="", title="Client requirement",
-                                        ng-class="{'active': us.client_requirement}") Client requirement
-                span.button.button-gray(href="", title="Team requirement",
-                                        ng-class="{'active': us.team_requirement}") Team requirement
-
+        div.lightbox.lightbox_block.hidden(tg-lb-block, title="Blocking issue", ng-model="us")
         div.lightbox.lightbox-select-user.hidden(tg-lb-assignedto)
         div.lightbox.lightbox-select-user.hidden(tg-lb-watchers)
