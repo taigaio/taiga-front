@@ -2,8 +2,9 @@
     @include transform(translateY(-100%));
     background: rgba($gray-light, .95);
     color: $white;
+    opacity: 0;
     padding: 1rem;
-    position: absolute;
+    position: fixed;
     top: 0;
     width: 100%;
     z-index: 99920;
@@ -13,6 +14,7 @@
     &.active {
         @include transform(translateY(0));
         @include transition (all .6s ease-in-out);
+        opacity: 1;
     }
     .text {
         display: inline-block;
