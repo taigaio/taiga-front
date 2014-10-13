@@ -12,7 +12,7 @@
 }
 .logo-container {
     cursor: pointer;
-    margin: 20%;
+    margin: 20% 20% .7rem;
     object,
     img,
     svg {
@@ -23,12 +23,12 @@
         @extend %large;
         color: $white;
         display: block;
-        margin-top: -4px;
+        margin-top: -5px;
         text-align: center;
     }
     sup {
         display: block;
-        line-height: .7rem;
+        line-height: 1rem;
     }
 }
 
