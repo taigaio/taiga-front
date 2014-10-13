@@ -41,10 +41,12 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
         "$q",
         "$tgLocation",
         "$tgNavUrls",
+        "$tgAnalytics",
         "$appTitle"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls, @appTitle) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q,
+                  @location, @navUrls, @analytics, @appTitle) ->
         _.bindAll(@)
 
         @scope.sectionName = "Manage Members" #i18n
@@ -53,7 +55,7 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
 
         promise = @.loadInitialData()
 
-        promise.then () =>
+        promise.then  =>
             @appTitle.set("Membership - " + @scope.project.name)
 
         promise.then null, (xhr) =>
@@ -62,7 +64,9 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
                 @location.replace()
             return @q.reject(xhr)
 
-        @scope.$on("membersform:new:success", @.loadMembers)
+        @scope.$on "membersform:new:success", =>
+            @.loadMembers()
+            @analytics.trackEvent("membership", "create", "create memberships on admin", 1)
 
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
@@ -136,7 +140,7 @@ paginatorTemplate = """
 </ul>
 """
 
-MembershipsDirective =  ->
+MembershipsDirective = ->
     template = _.template(paginatorTemplate)
 
     linkPagination = ($scope, $el, $attrs, $ctrl) ->
