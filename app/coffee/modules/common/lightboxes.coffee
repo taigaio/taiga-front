@@ -267,7 +267,6 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
             if isNew
                 promise = $repo.create("userstories", $scope.us)
                 broadcastEvent = "usform:new:success"
-
             else
                 promise = $repo.save($scope.us)
                 broadcastEvent = "usform:edit:success"
@@ -315,14 +314,11 @@ CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService, $load
 
         $el.on "click", ".button-green", debounce 2000, (event) ->
             event.preventDefault()
+            target = angular.element(event.currentTarget)
 
-            form = $el.find("form").checksley({
-                onlyOneErrorElement: true
-            })
+            form = $el.find("form").checksley({onlyOneErrorElement: true})
             if not form.validate()
                 return
-
-            target = angular.element(event.currentTarget)
 
             $loading.start(target)
 
