@@ -52,7 +52,7 @@ class AnalyticsService extends taiga.Service
         # activates page tracking
         if @.trackRoutes
             @rootscope.$on @.pageEvent, =>
-                @.trackPage(@.getUrl())
+                @.trackPage(@.getUrl(), "Taiga")
 
         @.initialized = true
 
