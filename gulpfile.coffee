@@ -26,7 +26,8 @@ paths.tmp = "tmp/"
 
 paths.jade = [
     paths.app + "index.jade",
-    paths.app + "partials/**/*.jade"
+    paths.app + "partials/**/*.jade",
+    paths.app + "plugins/**/*.jade"
 ]
 
 paths.images = paths.app + "images/**/*"

@@ -58,7 +58,10 @@ DeleteUserDirective = ($repo, $rootscope, $auth, $location, $navUrls, lightboxSe
             event.preventDefault()
             submit()
 
-    return {link:link}
+    return {
+        link: link,
+        templateUrl: "/partials/views/modules/lightbox-delete-account.html"
+    }
 
 module.directive("tgLbDeleteUser", ["$tgRepo", "$rootScope", "$tgAuth", "$tgLocation", "$tgNavUrls",
                                     "lightboxService", DeleteUserDirective])
