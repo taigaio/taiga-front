@@ -364,7 +364,7 @@ InvitationDirective = ($auth, $confirm, $location, $params, $navUrls, $analytics
             $analytics.trackEvent("auth", "invitationAccept", "invitation accept with existing user", 1)
             $location.path($navUrls.resolve("project", {project: $scope.invitation.project_slug}))
             $confirm.notify("success", "You've successfully joined this project",
-                                       "Welcome to #{$scope.invitation.project_name}")
+                                       "Welcome to #{_.escape($scope.invitation.project_name)}")
 
         onErrorSubmitLogin = (response) ->
             $confirm.notify("light-error", "According to our Oompa Loompas, your are not registered yet or
@@ -393,7 +393,7 @@ InvitationDirective = ($auth, $confirm, $location, $params, $navUrls, $analytics
             $analytics.trackEvent("auth", "invitationAccept", "invitation accept with new user", 1)
             $location.path($navUrls.resolve("project", {project: $scope.invitation.project_slug}))
             $confirm.notify("success", "You've successfully joined this project",
-                                       "Welcome to #{$scope.invitation.project_name}")
+                                       "Welcome to #{_.escape($scope.invitation.project_name)}")
 
         onErrorSubmitRegister = (response) ->
             $confirm.notify("light-error", "According to our Oompa Loompas, that
