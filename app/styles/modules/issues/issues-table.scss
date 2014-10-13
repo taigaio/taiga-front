@@ -30,7 +30,7 @@
     }
     .table-main {
         @extend %small;
-        border-bottom: 1px solid $gray-light;
+        border-bottom: 1px solid darken($whitish, 4%);
     }
     .avatar {
         @include table-flex(stretch, center, flex, row, wrap, flex-start);

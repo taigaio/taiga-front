@@ -3,8 +3,8 @@
     width: 100%;
     .row {
         @include table-flex(stretch, center, flex, row, nowrap, flex-start);
-        border-bottom: 1px solid $gray-light;
-        padding: .5rem 0;
+        border-bottom: 1px solid darken($whitish, 4%);
+        padding: .3rem 0;
         text-align: left;
         width: 100%;
         @for $i from 1 through 8 {
