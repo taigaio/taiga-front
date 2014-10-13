@@ -153,7 +153,9 @@ class RepositoryService extends taiga.Service
         params.issue = options.issueref if options.issueref?
         params.milestone = options.sslug if options.sslug?
         params.wikipage = options.wikipage if options.wikipage?
-        return @.queryOneRaw("resolver", null, params, {cache: true})
+
+        cache = not (options.wikipage or options.sslug)
+        return @.queryOneRaw("resolver", null, params, {cache: cache})
 
 
 module = angular.module("taigaBase")
