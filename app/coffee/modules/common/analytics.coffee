@@ -67,6 +67,7 @@ class AnalyticsService extends taiga.Service
 
     trackPage: (url, title) ->
         return if not @.initialized
+        return if not @win.ga
 
         title = title or @doc[0].title
         @win.ga("send", "pageview", {
@@ -76,6 +77,8 @@ class AnalyticsService extends taiga.Service
 
     trackEvent: (category, action, label, value) ->
         return if not @.initialized
+        return if not @win.ga
+
         @win.ga("send", "event", category, action, label, value)
 
 
