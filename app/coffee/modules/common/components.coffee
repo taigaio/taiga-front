@@ -106,14 +106,15 @@ module.directive("tgDateSelector", DateSelectorDirective)
 ## Watchers directive
 #############################################################################
 
-WatchersDirective = ($rootscope, $confirm) ->
+WatchersDirective = ($rootscope, $confirm, $tgrepo) ->
+    # You have to include a div with the tg-lb-watchers directive in the page
+    # where use this directive
+    #
     # TODO: i18n
     template = _.template("""
     <div class="watchers-header">
         <span class="title">watchers</span>
-        <% if (editable) { %>
         <a href="" title="Add watcher" class="icon icon-plus add-watcher"></a>
-        <% } %>
     </div>
 
     <% _.each(watchers, function(watcher) { %>
@@ -124,41 +125,40 @@ WatchersDirective = ($rootscope, $confirm) ->
             </a>
         </div>
         <div class="watcher-name">
-            <span>
-                <%- watcher.full_name_display %>
-            </span>
+            <span><%- watcher.full_name_display %></span>
 
-            <% if (editable) { %>
             <a class="icon icon-delete"
                data-watcher-id="<%= watcher.id %>" href="" title="delete-watcher">
             </a>
-            <% } %>
         </div>
     </div>
     <% }); %>
     """)
 
     link = ($scope, $el, $attrs, $model) ->
-        editable = $attrs.editable?
+        save = (model) ->
+            promise = $tgrepo.save($model.$modelValue)
+            promise.then ->
+                $confirm.notify("success")
+                watchers = _.map(model.watchers, (watcherId) -> $scope.usersById[watcherId])
+                renderWatchers(watchers)
+                $rootscope.$broadcast("history:reload")
+            promise.then null, ->
+                model.revert()
+                $confirm.notify("error")
 
         renderWatchers = (watchers) ->
-            html = template({watchers: watchers, editable:editable})
+            html = template({watchers: watchers})
             $el.html(html)
 
             if watchers.length == 0
-                if editable
-                    $el.find(".title").text("Add watchers")
-                    $el.find(".watchers-header").addClass("no-watchers")
-                else
-                    $el.find(".watchers-header").hide()
+                $el.find(".title").text("Add watchers")
+                $el.find(".watchers-header").addClass("no-watchers")
 
         $scope.$watch $attrs.ngModel, (item) ->
             return if not item?
             watchers = _.map(item.watchers, (watcherId) -> $scope.usersById[watcherId])
             renderWatchers(watchers)
-
-        if not editable
-            $el.find(".add-watcher").remove()
 
         $el.on "click", ".icon-delete", (event) ->
             event.preventDefault()
@@ -176,6 +176,7 @@ WatchersDirective = ($rootscope, $confirm) ->
                 item = $model.$modelValue.clone()
                 item.watchers = watcherIds
                 $model.$setViewValue(item)
+                save(item)
 
         $el.on "click", ".add-watcher", (event) ->
             event.preventDefault()
@@ -191,17 +192,21 @@ WatchersDirective = ($rootscope, $confirm) ->
             item.watchers = watchers
 
             $model.$setViewValue(item)
+            save(item)
 
     return {link:link, require:"ngModel"}
 
-module.directive("tgWatchers", ["$rootScope", "$tgConfirm", WatchersDirective])
+module.directive("tgWatchers", ["$rootScope", "$tgConfirm", "$tgRepo", WatchersDirective])
 
 
 #############################################################################
 ## Assigned to directive
 #############################################################################
 
-AssignedToDirective = ($rootscope, $confirm) ->
+AssignedToDirective = ($rootscope, $confirm, $tgrepo) ->
+    # You have to include a div with the tg-lb-assignedto directive in the page
+    # where use this directive
+    #
     # TODO: i18n
     template = _.template("""
     <% if (assignedTo) { %>
@@ -213,54 +218,59 @@ AssignedToDirective = ($rootscope, $confirm) ->
     <div class="assigned-to">
         <span class="assigned-title">Assigned to</span>
 
-        <a href="" title="edit assignment" class="user-assigned <% if (editable) { %> editable <% } %>">
+        <a href="" title="edit assignment" class="user-assigned editable">
         <% if (assignedTo) { %>
             <%- assignedTo.full_name_display %>
         <% } else { %>
             Not assigned
         <% } %>
-        <% if (editable) { %>
             <span class="icon icon-arrow-bottom"></span>
-        <% } %>
         </a>
-        <% if (editable && assignedTo!==null) { %>
+        <% if (assignedTo!==null) { %>
         <a href="" title="delete assignment" class="icon icon-delete"></a>
         <% } %>
     </div>
     """)
 
     link = ($scope, $el, $attrs, $model) ->
-        editable = $attrs.editable?
+        save = (model) ->
+            promise = $tgrepo.save($model.$modelValue)
+            promise.then ->
+                $confirm.notify("success")
+                renderAssignedTo(model)
+                $rootscope.$broadcast("history:reload")
+            promise.then null, ->
+                model.revert()
+                $confirm.notify("error")
 
         renderAssignedTo = (issue) ->
             assignedToId = issue?.assigned_to
             assignedTo = null
             assignedTo = $scope.usersById[assignedToId] if assignedToId?
-            html = template({assignedTo: assignedTo, editable:editable})
+            html = template({assignedTo: assignedTo})
             $el.html(html)
 
         $scope.$watch $attrs.ngModel, (instance) ->
             renderAssignedTo(instance)
 
-        if editable
-            $el.on "click", ".user-assigned", (event) ->
-                event.preventDefault()
-                $scope.$apply ->
-                    $rootscope.$broadcast("assigned-to:add", $model.$modelValue)
+        $el.on "click", ".user-assigned", (event) ->
+            event.preventDefault()
+            $scope.$apply ->
+                $rootscope.$broadcast("assigned-to:add", $model.$modelValue)
 
-            $el.on "click", ".icon-delete", (event) ->
-                event.preventDefault()
-                title = "Delete assignetion"
-                message = ""
+        $el.on "click", ".icon-delete", (event) ->
+            event.preventDefault()
+            title = "Remove assigned to"
+            subtitle = ""
 
-                $confirm.askOnDelete(title, message).then (finish) =>
-                    finish()
-                    $model.$modelValue.assigned_to  = null
-                    renderAssignedTo($model.$modelValue)
+            $confirm.ask(title, subtitle).then (finish) =>
+                finish()
+                $model.$modelValue.assigned_to  = null
+                save($model.$modelValue)
 
-            $scope.$on "assigned-to:added", (ctx, userId) ->
-                $model.$modelValue.assigned_to = userId
-                renderAssignedTo($model.$modelValue)
+        $scope.$on "assigned-to:added", (ctx, userId) ->
+            $model.$modelValue.assigned_to = userId
+            save($model.$modelValue)
 
     return {
         link:link,
@@ -268,7 +278,7 @@ AssignedToDirective = ($rootscope, $confirm) ->
     }
 
 
-module.directive("tgAssignedTo", ["$rootScope", "$tgConfirm", AssignedToDirective])
+module.directive("tgAssignedTo", ["$rootScope", "$tgConfirm", "$tgRepo", AssignedToDirective])
 
 
 #############################################################################
