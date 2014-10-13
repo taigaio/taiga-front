@@ -151,7 +151,7 @@ BlockLightboxDirective = (lightboxService) ->
             lightboxService.close($el)
 
     return {
-        templateUrl: "/partials/views/modules/lightbox_block.html"
+        templateUrl: "/partials/views/modules/lightbox-block.html"
         link:link,
         require:"ngModel"
     }
@@ -559,7 +559,7 @@ WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationS
             $el.off()
 
     return {
-        templateUrl: "/partials/views/modules/lightbox_users.html"
+        templateUrl: "/partials/views/modules/lightbox-users.html"
         link:link
     }
 

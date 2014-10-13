@@ -1,8 +1,8 @@
 div.taskboard-table
     div.taskboard-table-header
         div.taskboard-table-inner(tg-taskboard-row-width-fixer)
-            h2.task-colum_name "User story"
-            h2.task-colum_name(ng-repeat="s in taskStatusList track by s.id",
+            h2.task-colum-name "User story"
+            h2.task-colum-name(ng-repeat="s in taskStatusList track by s.id",
                                ng-style="{'border-top-color':s.color}")
                 span(tg-bo-bind="s.name")
 
