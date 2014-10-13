@@ -44,6 +44,6 @@ block content
                   a.button.button-gray.clickable(ng-show="!task.is_blocked", ng-click="ctrl.block()") Block
                   a.button.button-red(tg-check-permission="delete_task", ng-click="ctrl.delete()", href="") Delete
 
-        div.lightbox.lightbox_block.hidden(tg-lb-block, title="Blocking task", ng-model="task")
+        div.lightbox.lightbox-block.hidden(tg-lb-block, title="Blocking task", ng-model="task")
         div.lightbox.lightbox-select-user.hidden(tg-lb-assignedto)
         div.lightbox.lightbox-select-user.hidden(tg-lb-watchers)

@@ -188,7 +188,7 @@
     }
 }
 
-.lightbox_add-member {
+.lightbox-add-member {
     .add-member-wrapper {
         @include table-flex();
     }
@@ -283,7 +283,7 @@
     }
 }
 
-.lightbox_confirm-delete {
+.lightbox-confirm-delete {
     form {
         @include table-flex-child(0, 420px, 0, 420px);
     }
@@ -341,7 +341,7 @@
     }
 }
 
-.lightbox_confirm-use-gravatar {
+.lightbox-confirm-use-gravatar {
     form {
         @include table-flex-child(0, 420px, 0, 420px);
     }
@@ -456,7 +456,7 @@
     }
 }
 
-.lightbox_block {
+.lightbox-block {
     .form {
         @include table-flex-child(0, 420px, 0, 420px);
     }
