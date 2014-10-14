@@ -249,6 +249,131 @@ TaskStatusDirective = () ->
 
 module.directive("tgTaskStatus", TaskStatusDirective)
 
+
+#############################################################################
+## Task status display directive
+#############################################################################
+
+TaskStatusDisplayDirective = ->
+    # Display if a Task is open or closed and its taskboard status.
+    #
+    # Example:
+    #     tg-task-status-display(ng-model="task")
+    #
+    # Requirements:
+    #   - Task object (ng-model)
+    #   - scope.statusById object
+
+    template = _.template("""
+    <span>
+        <% if (status.is_closed) { %>
+            Closed
+        <% } else { %>
+            Open
+        <% } %>
+    </span>
+    <span class="us-detail-status" style="color:<%= status.color %>">
+        <%= status.name %>
+    </span>
+    """) # TODO: i18n
+
+    link = ($scope, $el, $attrs) ->
+        render = (task) ->
+            html = template({
+                status: $scope.statusById[task.status]
+            })
+            $el.html(html)
+
+        $scope.$watch $attrs.ngModel, (task) ->
+            render(task) if task?
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {
+        link: link
+        restrict: "EA"
+        require: "ngModel"
+    }
+
+module.directive("tgTaskStatusDisplay", TaskStatusDisplayDirective)
+
+
+#############################################################################
+## Task status button directive
+#############################################################################
+
+TaskStatusButtonDirective = ($rootScope, $repo) ->
+    # Display the status of Task and you can edit it.
+    #
+    # Example:
+    #     tg-task-status-button(ng-model="task")
+    #
+    # Requirements:
+    #   - Task object (ng-model)
+    #   - scope.statusById object
+
+    template = _.template("""
+    <div class="status-data clickable">
+        <span class="level" style="background-color:<%= status.color %>"></span>
+        <span class="status-status"><%= status.name %></span>
+        <span class="icon icon-arrow-bottom"></span>
+        <span class="level-name">status</span>
+
+        <ul class="popover pop-status">
+            <% _.each(statuses, function(st) { %>
+            <li><a href="" class="status" title="<%- st.name %>"
+                   data-status-id="<%- st.id %>"><%- st.name %></a></li>
+            <% }); %>
+        </ul>
+    </div>
+    """) #TODO: i18n
+
+    link = ($scope, $el, $attrs, $model) ->
+        render = (task) =>
+            status = $scope.statusById[task.status]
+
+            html = template({
+                status: status
+                statuses: $scope.statusList
+            })
+            $el.html(html)
+
+        $el.on "click", ".status-data", (event) ->
+            event.preventDefault()
+            event.stopPropagation()
+
+            $el.find(".pop-status").popover().open()
+
+        $el.on "click", ".status", (event) ->
+            event.preventDefault()
+            event.stopPropagation()
+            target = angular.element(event.currentTarget)
+
+            $.fn.popover().closeAll()
+
+            us = $model.$modelValue.clone()
+            us.status = target.data("status-id")
+
+            $model.$setViewValue(us)
+            $repo.save($model.$modelValue).then ->
+                $rootScope.$broadcast("history:reload")
+
+        $scope.$watch $attrs.ngModel, (task) ->
+            render(task) if task
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {
+        link: link
+        restrict: "EA"
+        require: "ngModel"
+    }
+
+module.directive("tgTaskStatusButton", ["$rootScope", "$tgRepo", TaskStatusButtonDirective])
+
+
 TaskIsIocaineButtonDirective = ($rootscope, $tgrepo) ->
     template = _.template("""
       <fieldset title="Feeling a bit overwhelmed by a task? Make sure others know about it by clicking on Iocaine when editing a task. It's possible to become immune to this (fictional) deadly poison by consuming small amounts over time just as it's possible to get better at what you do by occasionally taking on extra challenges!">

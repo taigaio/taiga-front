@@ -46,9 +46,15 @@ block content
             tg-history(ng-model="task", type="task")
 
         sidebar.menu-secondary.sidebar
-            section.us-status(tg-task-status, ng-model="task")
+            section.us-status
+                h1(tg-task-status-display, ng-model="task")
+                tg-created-by-display.us-created-by(ng-model="task")
+                tg-task-status-button.issue-data(ng-model="task")
+
             section.us-assigned-to(tg-assigned-to, ng-model="task")
+
             section.watchers(tg-watchers, ng-model="task")
+
             section.us-detail-settings
                fieldset(tg-task-is-iocaine-button, ng-model="task")
                div(tg-block-button, ng-model="task")
