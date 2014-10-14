@@ -47,6 +47,33 @@ module.directive("tgDateRange", DateRangeDirective)
 
 
 #############################################################################
+## Date Selector Directive (using pikaday)
+#############################################################################
+
+DateSelectorDirective =->
+    link = ($scope, $el, $attrs, $model) ->
+        selectedDate = null
+        $el.picker = new Pikaday({
+          field: $el[0]
+          format: "DD MMM YYYY"
+          onSelect: (date) =>
+              selectedDate = date
+          onOpen: =>
+              $el.picker.setDate(selectedDate) if selectedDate?
+        })
+
+        $scope.$watch $attrs.ngModel, (val) ->
+            $el.picker.setDate(val) if val?
+
+    return {
+        link: link
+        require: "ngModel"
+    }
+
+module.directive("tgDateSelector", DateSelectorDirective)
+
+
+#############################################################################
 ## Sprint Progress Bar Directive
 #############################################################################
 
@@ -76,30 +103,48 @@ module.directive("tgSprintProgressbar", SprintProgressBarDirective)
 
 
 #############################################################################
-## Date Selector Directive (using pikaday)
+## Created-by display directive
 #############################################################################
 
-DateSelectorDirective =->
-    link = ($scope, $el, $attrs, $model) ->
-        selectedDate = null
-        $el.picker = new Pikaday({
-          field: $el[0]
-          format: "DD MMM YYYY"
-          onSelect: (date) =>
-              selectedDate = date
-          onOpen: =>
-              $el.picker.setDate(selectedDate) if selectedDate?
-        })
+CreatedByDisplayDirective = ->
+    # Display the owner information (full name and photo) and the date of
+    # creation of an object (like USs, tasks and issues).
+    #
+    # Example:
+    #     div.us-created-by(tg-created-by-display, ng-model="us")
+    #
+    # Requirements:
+    #   - model object must have the attributes 'created_date' and 'owner'
+    #   - scope.usersById object is required.
 
-        $scope.$watch $attrs.ngModel, (val) ->
-            $el.picker.setDate(val) if val?
+    template = _.template("""
+    <div class="user-avatar">
+        <img src="<%= owner.photo %>" alt="<%- owner.full_name_display %>" />
+    </div>
 
-    return {
-        link: link
-        require: "ngModel"
-    }
+    <div class="created-by">
+        <span class="created-title">Created by <%- owner.full_name_display %></span>
+        <span class="created-date"><%- date %></span>
+    </div>
+    """) # TODO: i18n
 
-module.directive("tgDateSelector", DateSelectorDirective)
+    link = ($scope, $el, $attrs) ->
+        render = (model) ->
+            html = template({
+                owner: $scope.usersById?[model.owner]
+                date: moment(model.created_date).format("DD MMM YYYY HH:mm")
+            })
+            $el.html(html)
+
+        bindOnce $scope, $attrs.ngModel, (model) ->
+            render(model) if model?
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {link:link, require:"ngModel"}
+
+module.directive("tgCreatedByDisplay", CreatedByDisplayDirective)
 
 
 #############################################################################
@@ -194,6 +239,9 @@ WatchersDirective = ($rootscope, $confirm, $tgrepo) ->
             $model.$setViewValue(item)
             save(item)
 
+        $scope.$on "$destroy", ->
+            $el.off()
+
     return {link:link, require:"ngModel"}
 
 module.directive("tgWatchers", ["$rootScope", "$tgConfirm", "$tgRepo", WatchersDirective])
@@ -272,6 +320,9 @@ AssignedToDirective = ($rootscope, $confirm, $tgrepo) ->
             $model.$modelValue.assigned_to = userId
             save($model.$modelValue)
 
+        $scope.$on "$destroy", ->
+            $el.off()
+
     return {
         link:link,
         require:"ngModel"
@@ -307,14 +358,14 @@ BlockButtonDirective = ($rootscope) ->
             render(item)
             refresh(item)
 
-        $scope.$on "$destroy", ->
-            $el.off()
-
         $el.on "click", ".item-block", (event) ->
             $rootscope.$broadcast("block", $model.$modelValue)
 
         $el.on "click", ".item-unblock", (event) ->
             $rootscope.$broadcast("unblock", $model.$modelValue)
+
+        $scope.$on "$destroy", ->
+            $el.off()
 
     return {
         link: link
