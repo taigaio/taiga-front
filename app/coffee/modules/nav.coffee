@@ -190,6 +190,7 @@ ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout, tgLoader, $
             render($el, projects) if projects?
 
     return {
+        require: ["tgProjectsNav"]
         controller: ProjectsNavigationController
         link: link
     }
