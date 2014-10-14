@@ -125,132 +125,6 @@ module.controller("TaskDetailController", TaskDetailController)
 
 
 #############################################################################
-## Task Main Directive
-#############################################################################
-
-TaskDirective = ($tgrepo, $log, $location, $confirm, $navUrls, $loading) ->
-    linkSidebar = ($scope, $el, $attrs, $ctrl) ->
-
-    link = ($scope, $el, $attrs) ->
-        $ctrl = $el.controller()
-        linkSidebar($scope, $el, $attrs, $ctrl)
-
-        if $el.is("form")
-            form = $el.checksley()
-
-        $el.on "click", ".save-task", (event) ->
-            if not form.validate()
-                return
-
-            onSuccess = ->
-                $loading.finish(target)
-                $confirm.notify("success")
-                ctx = {
-                    project: $scope.project.slug
-                    ref: $scope.task.ref
-                }
-                $location.path($navUrls.resolve("project-tasks-detail", ctx))
-
-            onError = ->
-                $loading.finish(target)
-                $confirm.notify("error")
-
-            target = angular.element(event.currentTarget)
-            $loading.start(target)
-            $tgrepo.save($scope.task).then(onSuccess, onError)
-
-    return {link:link}
-
-module.directive("tgTaskDetail", ["$tgRepo", "$log", "$tgLocation", "$tgConfirm", "$tgNavUrls",
-                                  "$tgLoading", TaskDirective])
-
-
-#############################################################################
-## Task status directive
-#############################################################################
-
-TaskStatusDirective = () ->
-    #TODO: i18n
-    template = _.template("""
-        <h1>
-            <span>
-            <% if (status.is_closed) { %>
-            Closed
-            <% } else { %>
-            Open
-            <% } %>
-            <span class="us-detail-status" style="color:<%= status.color %>"><%= status.name %></span>
-        </h1>
-        <div class="us-created-by">
-            <div class="user-avatar">
-                <img src="<%= owner.photo %>" alt="<%- owner.full_name_display %>" />
-            </div>
-
-            <div class="created-by">
-                <span class="created-title">Created by <%- owner.full_name_display %></span>
-                <span class="created-date"><%- date %></span>
-            </div>
-        </div>
-        <div class="issue-data">
-            <div class="status-data <% if (editable) { %>clickable<% } %>">
-                <span class="level" style="background-color:<%= status.color %>"></span>
-                <span class="status-status"><%= status.name %></span>
-                <% if (editable) { %>
-                    <span class="icon icon-arrow-bottom"></span>
-                <% } %>
-                <span class="level-name">status</span>
-            </div>
-        </div>
-    """)
-    selectionStatusTemplate = _.template("""
-      <ul class="popover pop-status">
-          <% _.each(statuses, function(status) { %>
-          <li><a href="" class="status" title="<%- status.name %>"
-                 data-status-id="<%- status.id %>"><%- status.name %></a></li>
-          <% }); %>
-      </ul>
-    """)
-
-    link = ($scope, $el, $attrs, $model) ->
-        editable = $attrs.editable?
-
-        renderTaskstatus = (task) ->
-            owner = $scope.usersById?[task.owner]
-            date = moment(task.created_date).format("DD MMM YYYY HH:mm")
-            status = $scope.statusById[task.status]
-            html = template({
-                owner: owner
-                date: date
-                editable: editable
-                status: status
-            })
-            $el.html(html)
-            $el.find(".status-data").append(selectionStatusTemplate({statuses:$scope.statusList}))
-
-        $scope.$watch $attrs.ngModel, (task) ->
-            if task?
-                renderTaskstatus(task)
-
-        if editable
-            $el.on "click", ".status-data", (event) ->
-                event.preventDefault()
-                event.stopPropagation()
-                $el.find(".pop-status").popover().open()
-
-            $el.on "click", ".status", (event) ->
-                event.preventDefault()
-                event.stopPropagation()
-                target = angular.element(event.currentTarget)
-                $model.$modelValue.status = target.data("status-id")
-                renderTaskstatus($model.$modelValue)
-                $el.find(".popover").popover().close()
-
-    return {link:link, require:"ngModel"}
-
-module.directive("tgTaskStatus", TaskStatusDirective)
-
-
-#############################################################################
 ## Task status display directive
 #############################################################################
 
@@ -352,10 +226,10 @@ TaskStatusButtonDirective = ($rootScope, $repo) ->
 
             $.fn.popover().closeAll()
 
-            us = $model.$modelValue.clone()
-            us.status = target.data("status-id")
+            task = $model.$modelValue.clone()
+            task.status = target.data("status-id")
 
-            $model.$setViewValue(us)
+            $model.$setViewValue(task)
             $repo.save($model.$modelValue).then ->
                 $rootScope.$broadcast("history:reload")
 

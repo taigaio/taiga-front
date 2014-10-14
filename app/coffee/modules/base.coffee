@@ -69,7 +69,6 @@ urls = {
     "project-userstories-detail": "/project/:project/us/:ref"
 
     "project-tasks-detail": "/project/:project/task/:ref"
-    "project-tasks-detail-edit": "/project/:project/task/:ref/edit"
 
     "project-issues-detail": "/project/:project/issue/:ref"
     "project-issues-detail-edit": "/project/:project/issue/:ref/edit"

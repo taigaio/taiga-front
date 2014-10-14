@@ -56,8 +56,6 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     # Tasks
     $routeProvider.when("/project/:pslug/task/:taskref",
         {templateUrl: "/partials/task-detail.html", resolve: {loader: tgLoaderProvider.add()}})
-    $routeProvider.when("/project/:pslug/task/:taskref/edit",
-        {templateUrl: "/partials/task-detail-edit.html"})
 
     # Wiki
     $routeProvider.when("/project/:pslug/wiki",
