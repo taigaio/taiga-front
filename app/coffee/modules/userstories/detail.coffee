@@ -460,7 +460,18 @@ module.directive("tgUsTasksProgressDisplay", UsTasksProgressDisplayDirective)
 ## User story estimation directive
 #############################################################################
 
-UsEstimationDirective = ($log) ->
+UsEstimationDirective = ($rootScope, $repo, $confirm) ->
+    # Display the points of a US and you can edit it.
+    #
+    # Example:
+    #     tg-us-estimation-progress-bar(ng-model="us")
+    #
+    # Requirements:
+    #   - Us object (ng-model)
+    #   - scope.project object
+    # Optionals:
+    #   - save-after-modify (boolean): save object after modify
+
     mainTemplate = _.template("""
     <ul class="points-per-role">
         <li class="total">
@@ -491,8 +502,11 @@ UsEstimationDirective = ($log) ->
     </ul>
     """)
 
-    link = ($scope, $el, $attrs) ->
+    link = ($scope, $el, $attrs, $model) ->
+        saveAfterModify = $attrs.saveAfterModify or false
+
         render = (us) ->
+            console.log us.points
             totalPoints = us.total_points or 0
             computableRoles = _.filter($scope.project.roles, "computable")
 
@@ -537,19 +551,13 @@ UsEstimationDirective = ($log) ->
                 return "0"
             return _.reduce(values, (acc, num) -> acc + num)
 
-        $scope.$watch $attrs.ngModel, (us) ->
-            render(us) if us
-
-        $scope.$on "$destroy", ->
-            $el.off()
-
         $el.on "click", ".total.clickable", (event) ->
             event.preventDefault()
             event.stopPropagation()
             target = angular.element(event.currentTarget)
             roleId = target.data("role-id")
 
-            us = $scope.$eval($attrs.ngModel)
+            us = $model.$modelValue
             renderPoints(target, us, roleId)
 
             target.siblings().removeClass('active')
@@ -559,28 +567,48 @@ UsEstimationDirective = ($log) ->
             event.preventDefault()
             event.stopPropagation()
 
-            us = $scope.$eval($attrs.ngModel)
-
             target = angular.element(event.currentTarget)
             roleId = target.data("role-id")
             pointId = target.data("point-id")
 
             $el.find(".popover").popover().close()
 
+            us = $model.$modelValue
+
             points = _.clone(us.points, true)
             points[roleId] = pointId
 
+            # NOTE: your past self wants that you make a refactor of this
             $scope.$apply ->
                 us.points = points
                 us.total_points = calculateTotalPoints(us)
-                render(us)
+
+                if saveAfterModify
+                    onSuccess = ->
+                        $repo.refresh(us).then ->
+                            render(us)
+                        $rootScope.$broadcast("history:reload")
+                    onError = ->
+                        $repo.refresh(us).then ->
+                            render(us)
+                        $confirm.notify("error")
+                    $repo.save(us).then(onSuccess, onError)
+                else
+                    render(us)
+
+        $scope.$watch $attrs.ngModel, (us) ->
+            render(us) if us
+
+        $scope.$on "$destroy", ->
+            $el.off()
 
     return {
         link: link
         restrict: "EA"
+        require: "ngModel"
     }
 
-module.directive("tgUsEstimation", UsEstimationDirective)
+module.directive("tgUsEstimation", ["$rootScope", "$tgRepo", "$tgConfirm", UsEstimationDirective])
 
 
 #############################################################################
