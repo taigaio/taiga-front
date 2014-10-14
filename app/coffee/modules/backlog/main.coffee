@@ -771,6 +771,20 @@ UsPointsDirective = ($repo) ->
         if numberOfRoles == 1
             selectedRoleId = _.keys(us.points)[0]
 
+        computableRoles = _.filter($scope.project.roles, "computable")
+
+        roles = _.map computableRoles, (role) ->
+            pointId = us.points[role.id]
+            pointObj = $scope.pointsById[pointId]
+
+            role = _.clone(role, true)
+            role.points = if pointObj.value? then pointObj.value else "?"
+            return role
+
+        if roles.length == 0
+            $el.find(".icon-arrow-bottom").remove()
+            $el.find("a.us-points").addClass("not-clickable")
+
         renderPointsSelector = (us, roleId) ->
             # Prepare data for rendering
             points = _.map $scope.project.points, (point) ->
@@ -794,17 +808,6 @@ UsPointsDirective = ($repo) ->
             $el.find(".pop-points-open").popover().open()
 
         renderRolesSelector = (us) ->
-            # Prepare data for rendering
-            computableRoles = _.filter($scope.project.roles, "computable")
-
-            roles = _.map computableRoles, (role) ->
-                pointId = us.points[role.id]
-                pointObj = $scope.pointsById[pointId]
-
-                role = _.clone(role, true)
-                role.points = if pointObj.value? then pointObj.value else "?"
-                return role
-
             html = rolesTemplate({"roles": roles})
 
             # Render into DOM and show the new created element
@@ -845,56 +848,57 @@ UsPointsDirective = ($repo) ->
             renderPoints(us, null)
             selectedRoleId = null
 
-        $el.on "click", "a.us-points span", (event) ->
-            event.preventDefault()
-            event.stopPropagation()
+        if roles.length > 0
+            $el.on "click", "a.us-points span", (event) ->
+                event.preventDefault()
+                event.stopPropagation()
 
-            us = $scope.$eval($attrs.tgBacklogUsPoints)
-            updatingSelectedRoleId = selectedRoleId
+                us = $scope.$eval($attrs.tgBacklogUsPoints)
+                updatingSelectedRoleId = selectedRoleId
 
-            if selectedRoleId?
-                renderPointsSelector(us, selectedRoleId)
-            else
-                renderRolesSelector(us)
+                if selectedRoleId?
+                    renderPointsSelector(us, selectedRoleId)
+                else
+                    renderRolesSelector(us)
 
-        $el.on "click", ".role", (event) ->
-            event.preventDefault()
-            event.stopPropagation()
-            target = angular.element(event.currentTarget)
+            $el.on "click", ".role", (event) ->
+                event.preventDefault()
+                event.stopPropagation()
+                target = angular.element(event.currentTarget)
 
-            us = $scope.$eval($attrs.tgBacklogUsPoints)
+                us = $scope.$eval($attrs.tgBacklogUsPoints)
 
-            updatingSelectedRoleId = target.data("role-id")
+                updatingSelectedRoleId = target.data("role-id")
 
-            popRolesDom = $el.find(".pop-role")
-            popRolesDom.find("a").removeClass("active")
-            popRolesDom.find("a[data-role-id='#{updatingSelectedRoleId}']").addClass("active")
+                popRolesDom = $el.find(".pop-role")
+                popRolesDom.find("a").removeClass("active")
+                popRolesDom.find("a[data-role-id='#{updatingSelectedRoleId}']").addClass("active")
 
-            renderPointsSelector(us, updatingSelectedRoleId)
+                renderPointsSelector(us, updatingSelectedRoleId)
 
-        $el.on "click", ".point", (event) ->
-            event.preventDefault()
-            event.stopPropagation()
+            $el.on "click", ".point", (event) ->
+                event.preventDefault()
+                event.stopPropagation()
 
-            target = angular.element(event.currentTarget)
-            $el.find(".pop-points-open").hide()
-            $el.find(".pop-role").hide()
+                target = angular.element(event.currentTarget)
+                $el.find(".pop-points-open").hide()
+                $el.find(".pop-role").hide()
 
-            us = $scope.$eval($attrs.tgBacklogUsPoints)
+                us = $scope.$eval($attrs.tgBacklogUsPoints)
 
-            points = _.clone(us.points, true)
-            points[updatingSelectedRoleId] = target.data("point-id")
+                points = _.clone(us.points, true)
+                points[updatingSelectedRoleId] = target.data("point-id")
 
-            $scope.$apply ->
-                us.points = points
-                us.total_points = calculateTotalPoints(us)
+                $scope.$apply ->
+                    us.points = points
+                    us.total_points = calculateTotalPoints(us)
 
-                renderPoints(us, selectedRoleId)
+                    renderPoints(us, selectedRoleId)
 
-                $repo.save(us).then ->
-                    # Little Hack for refresh.
-                    $repo.refresh(us).then ->
-                        $ctrl.loadProjectStats()
+                    $repo.save(us).then ->
+                        # Little Hack for refresh.
+                        $repo.refresh(us).then ->
+                            $ctrl.loadProjectStats()
 
         bindOnce $scope, "project", (project) ->
             # If the user has not enough permissions the click events are unbinded

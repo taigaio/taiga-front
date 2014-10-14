@@ -21,6 +21,8 @@ block content
                 | {{ role.name }}
                 span ({{ role.members_count }} members with this role)
 
+            div(ng-hide="anyComputableRole") Be careful, no role in your project have can affect the user story estimation points.
+
             div.general-category
                 | When enabled, members assigned to this role will be able to estimate the point value for user stories
                 div.check
