@@ -52,8 +52,6 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     # User stories
     $routeProvider.when("/project/:pslug/us/:usref",
         {templateUrl: "/partials/us-detail.html", resolve: {loader: tgLoaderProvider.add()}})
-    $routeProvider.when("/project/:pslug/us/:usref/edit",
-        {templateUrl: "/partials/us-detail-edit.html"})
 
     # Tasks
     $routeProvider.when("/project/:pslug/task/:taskref",

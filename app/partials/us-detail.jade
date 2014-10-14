@@ -4,7 +4,7 @@ block head
     title Taiga  Your agile, free, and open source project management tool
 
 block content
-    div.wrapper(tg-us-detail, ng-controller="UserStoryDetailController as ctrl",
+    div.wrapper(ng-controller="UserStoryDetailController as ctrl",
                 ng-init="section='backlog'")
         div.main.us-detail
             div.us-detail-header.header-with-actions
@@ -15,10 +15,6 @@ block content
                         href="", title="Go to taskboard",
                         tg-nav="project-taskboard:project=project.slug,sprint=sprint.slug",
                         ng-if="sprint && project.is_backlog_activated") Taskboard
-                    a.button.button-green(
-                        tg-check-permission="modify_us", href="",
-                        title="Edit",
-                        tg-nav="project-userstories-detail-edit:project=project.slug,ref=us.ref") Edit
 
             section.us-story-main-data
                 div.us-title(ng-class="{blocked: us.is_blocked}")
