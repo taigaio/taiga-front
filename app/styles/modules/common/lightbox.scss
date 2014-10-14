@@ -382,6 +382,17 @@
         @extend %large;
         @extend %title;
     }
+    .newsletter-delete {
+        margin-top: 1rem;
+        text-align: center;
+        input {
+            margin-right: .5rem;
+            +label {
+                @extend %small;
+                @extend %text;
+            }
+        }
+    }
     .delete-options {
         @include table-flex();
         a {
