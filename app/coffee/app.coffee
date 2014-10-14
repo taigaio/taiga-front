@@ -70,8 +70,6 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         {templateUrl: "/partials/issues.html", resolve: {loader: tgLoaderProvider.add()}})
     $routeProvider.when("/project/:pslug/issue/:issueref",
         {templateUrl: "/partials/issues-detail.html"})
-    $routeProvider.when("/project/:pslug/issue/:issueref/edit",
-        {templateUrl: "/partials/issues-detail-edit.html"})
 
     # Admin
     $routeProvider.when("/project/:pslug/admin/project-profile/details",

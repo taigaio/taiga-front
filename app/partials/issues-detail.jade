@@ -4,13 +4,11 @@ block head
     title Taiga  Your agile, free, and open source project management tool
 
 block content
-    div.wrapper(tg-issue-detail, ng-controller="IssueDetailController as ctrl",
+    div.wrapper(ng-controller="IssueDetailController as ctrl",
                 ng-init="section='issues'")
         div.main.us-detail
             div.us-detail-header.header-with-actions
                 include views/components/mainTitle
-                .action-buttons
-                    a.button.button-green(tg-check-permission="modify_issue", href="", title="Edit", tg-nav="project-issues-detail-edit:project=project.slug,ref=issue.ref") Edit
 
             section.us-story-main-data
                 div.us-title(ng-class="{blocked: issue.is_blocked}")

@@ -71,7 +71,6 @@ urls = {
     "project-tasks-detail": "/project/:project/task/:ref"
 
     "project-issues-detail": "/project/:project/issue/:ref"
-    "project-issues-detail-edit": "/project/:project/issue/:ref/edit"
 
     "project-wiki": "/project/:project/wiki",
     "project-wiki-page": "/project/:project/wiki/:slug",
