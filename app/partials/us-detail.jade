@@ -53,7 +53,7 @@ block content
             section.us-status
                 h1(tg-us-status-display, ng-model="us")
                 div.us-detail-progress-bar(tg-us-tasks-progress-display, ng-model="tasks")
-                div.us-created-by(tg-created-by-display, ng-model="us")
+                tg-created-by-display.us-created-by(ng-model="us")
                 tg-us-estimation(ng-model="us", save-after-modify="true")
                 tg-us-status-button.issue-data(ng-model="us")
 

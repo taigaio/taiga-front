@@ -372,10 +372,10 @@ UsStatusDisplayDirective = ->
     # Display if a US is open or closed and its kanban status.
     #
     # Example:
-    #     h1(tg-us-status-display, ng-model="us")
+    #     tg-us-status-display(ng-model="us")
     #
     # Requirements:
-    #   - US object
+    #   - US object (ng-model)
     #   - scope.statusById object
 
     template = _.template("""
@@ -405,7 +405,11 @@ UsStatusDisplayDirective = ->
         $scope.$on "$destroy", ->
             $el.off()
 
-    return {link:link, require:"ngModel"}
+    return {
+        link: link
+        restrict: "EA"
+        require: "ngModel"
+    }
 
 module.directive("tgUsStatusDisplay", UsStatusDisplayDirective)
 
@@ -418,10 +422,10 @@ UsTasksProgressDisplayDirective = ->
     # Display a progress bar with the stats of completed tasks.
     #
     # Example:
-    #     div.us-detail-progress-bar(tg-us-tasks-progress-display, ng-model="tasks")
+    #     tg-us-tasks-progress-display(ng-model="tasks")
     #
     # Requirements:
-    #   - Task object list
+    #   - Task object list (ng-model)
     #   - scope.taskStatusById object
 
     template = _.template("""
@@ -451,7 +455,11 @@ UsTasksProgressDisplayDirective = ->
         $scope.$on "$destroy", ->
             $el.off()
 
-    return {link:link, require:"ngModel"}
+    return {
+        link: link
+        restrict: "EA"
+        require: "ngModel"
+    }
 
 module.directive("tgUsTasksProgressDisplay", UsTasksProgressDisplayDirective)
 
@@ -506,7 +514,6 @@ UsEstimationDirective = ($rootScope, $repo, $confirm) ->
         saveAfterModify = $attrs.saveAfterModify or false
 
         render = (us) ->
-            console.log us.points
             totalPoints = us.total_points or 0
             computableRoles = _.filter($scope.project.roles, "computable")
 

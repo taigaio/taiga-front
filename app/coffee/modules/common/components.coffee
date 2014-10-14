@@ -114,7 +114,8 @@ CreatedByDisplayDirective = ->
     #     div.us-created-by(tg-created-by-display, ng-model="us")
     #
     # Requirements:
-    #   - model object must have the attributes 'created_date' and 'owner'
+    #   - model object must have the attributes 'created_date' and
+    #     'owner'(ng-model)
     #   - scope.usersById object is required.
 
     template = _.template("""
@@ -142,7 +143,11 @@ CreatedByDisplayDirective = ->
         $scope.$on "$destroy", ->
             $el.off()
 
-    return {link:link, require:"ngModel"}
+    return {
+        link: link
+        restrict: "EA"
+        require: "ngModel"
+    }
 
 module.directive("tgCreatedByDisplay", CreatedByDisplayDirective)
 
