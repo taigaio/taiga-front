@@ -41,8 +41,16 @@ block content
             tg-history(ng-model="issue", type="issue")
 
         sidebar.menu-secondary.sidebar
-            section.us-status(tg-issue-status, ng-model="issue")
+            section.us-status
+                h1(tg-issue-status-display, ng-model="issue")
+                tg-created-by-display.us-created-by(ng-model="issue")
+                tg-issue-type-button.issue-data(ng-model="issue")
+                tg-issue-severity-button.issue-data(ng-model="issue")
+                tg-issue-priority-button.issue-data(ng-model="issue")
+                tg-issue-status-button.issue-data(ng-model="issue")
+
             section.us-assigned-to(tg-assigned-to, ng-model="issue")
+
             section.watchers(tg-watchers, ng-model="issue")
 
             section.us-detail-settings
