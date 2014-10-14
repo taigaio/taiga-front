@@ -37,7 +37,7 @@ block content
                         span.block-description(tg-bind-html="us.blocked_note || 'This user story is blocked'")
                     div.issue-nav
                         a.icon.icon-arrow-left(ng-show="previousUrl",href="{{ previousUrl }}",
-                                                title="previous user story")
+                                               title="previous user story")
                         a.icon.icon-arrow-right(ng-show="nextUrl", href="{{ nextUrl }}", title="next user story")
 
                 div(tg-tag-line, ng-model="us.tags", ng-show="us.tags")
@@ -50,10 +50,15 @@ block content
             tg-history(ng-model="us", type="us")
 
         sidebar.menu-secondary.sidebar
-            section.us-status(tg-us-status-detail, ng-model="us")
+            section.us-status
+                h1(tg-us-status-display, ng-model="us")
+                div.us-detail-progress-bar(tg-us-tasks-progress-display, ng-model="tasks")
+
             section.us-assigned-to(tg-assigned-to, ng-model="us")
             section.us-created-by(tg-created-by, ng-model="us")
+
             section.watchers(tg-watchers, ng-model="us")
+
             section.us-detail-settings
                 fieldset(tg-us-team-requirement-button, ng-model="us")
                 fieldset(tg-us-client-requirement-button, ng-model="us")

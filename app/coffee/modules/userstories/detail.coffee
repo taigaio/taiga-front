@@ -65,6 +65,10 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         promise.then null, @.onInitialDataError.bind(@)
 
     initializeEventHandlers: ->
+        @scope.$on "related-tasks:update", =>
+            @.loadUs()
+            @scope.tasks = _.clone(@scope.tasks, false)
+
         @scope.$on "attachment:create", =>
             @analytics.trackEvent("attachment", "create", "create attachment on userstory", 1)
             @rootscope.$broadcast("history:reload")
@@ -135,6 +139,7 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
 module.controller("UserStoryDetailController", UserStoryDetailController)
 
+
 #############################################################################
 ## User story Main Directive
 #############################################################################
@@ -174,6 +179,7 @@ UsDirective = ($tgrepo, $log, $location, $confirm, $navUrls, $loading) ->
 
 module.directive("tgUsDetail", ["$tgRepo", "$log", "$tgLocation", "$tgConfirm",
                                 "$tgNavUrls", "$tgLoading", UsDirective])
+
 
 #############################################################################
 ## User story status directive
@@ -356,6 +362,100 @@ UsStatusDetailDirective = () ->
 
 module.directive("tgUsStatusDetail", UsStatusDetailDirective)
 
+
+
+#############################################################################
+## User story status display directive
+#############################################################################
+
+UsStatusDisplayDirective = ->
+    # Display if a US is open or closed and its kanban status.
+    #
+    # Example:
+    #     h1(tg-us-status-display, ng-model="us")
+    #
+    # Requirements:
+    #   - US object
+    #   - scope.statusById object
+
+    template = _.template("""
+    <span>
+        <% if (is_closed) { %>
+            Closed
+        <% } else { %>
+            Open
+        <% } %>
+    </span>
+    <span class="us-detail-status" style="color:<%= status.color %>">
+        <%= status.name %>
+    </span>
+    """) # TODO: i18n
+
+    link = ($scope, $el, $attrs) ->
+        render = (us) ->
+            html = template({
+                is_closed: us.is_closed
+                status: $scope.statusById[us.status]
+            })
+            $el.html(html)
+
+        $scope.$watch $attrs.ngModel, (us) ->
+            render(us) if us?
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {link:link, require:"ngModel"}
+
+module.directive("tgUsStatusDisplay", UsStatusDisplayDirective)
+
+
+#############################################################################
+## User story related tasts progress splay Directive
+#############################################################################
+
+UsTasksProgressDisplayDirective = ->
+    # Display a progress bar with the stats of completed tasks.
+    #
+    # Example:
+    #     div.us-detail-progress-bar(tg-us-tasks-progress-display, ng-model="tasks")
+    #
+    # Requirements:
+    #   - Task object list
+    #   - scope.taskStatusById object
+
+    template = _.template("""
+    <div class="current-progress" style="width:<%- progress %>%" />
+    <span clasS="tasks-completed">
+        <%- totalClosedTasks %>/<%- totalTasks %> tasks completed
+    </span>
+    """) # TODO: i18n
+
+    link = ($scope, $el, $attrs) ->
+        render = (tasks) ->
+            totalTasks = tasks.length
+            totalClosedTasks = _.filter(tasks, (task) => $scope.taskStatusById[task.status].is_closed).length
+
+            progress = if totalTasks > 0 then 100 * totalClosedTasks / totalTasks else 0
+
+            html = template({
+                totalTasks: totalTasks
+                totalClosedTasks: totalClosedTasks
+                progress: progress
+            })
+            $el.html(html)
+
+        $scope.$watch $attrs.ngModel, (tasks) ->
+            render(tasks) if tasks?
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {link:link, require:"ngModel"}
+
+module.directive("tgUsTasksProgressDisplay", UsTasksProgressDisplayDirective)
+
+
 #############################################################################
 ## User story estimation directive
 #############################################################################
@@ -482,6 +582,11 @@ UsEstimationDirective = ($log) ->
 
 module.directive("tgUsEstimation", UsEstimationDirective)
 
+
+#############################################################################
+## User story team requirements button directive
+#############################################################################
+
 UsTeamRequirementButtonDirective = ($rootscope, $tgrepo) ->
     template = _.template("""
       <label for="team-requirement" class="button button-gray team-requirement">Team requirement</label>
@@ -518,7 +623,13 @@ UsTeamRequirementButtonDirective = ($rootscope, $tgrepo) ->
         restrict: "EA"
         require: "ngModel"
     }
+
 module.directive("tgUsTeamRequirementButton", ["$rootScope", "$tgRepo", UsTeamRequirementButtonDirective])
+
+
+#############################################################################
+## User story client requirements button directive
+#############################################################################
 
 UsClientRequirementButtonDirective = ($rootscope, $tgrepo) ->
     template = _.template("""
