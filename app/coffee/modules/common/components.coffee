@@ -280,6 +280,91 @@ AssignedToDirective = ($rootscope, $confirm, $tgrepo) ->
 
 module.directive("tgAssignedTo", ["$rootScope", "$tgConfirm", "$tgRepo", AssignedToDirective])
 
+#############################################################################
+## Block Button directive
+#############################################################################
+
+BlockButtonDirective = ($rootscope) ->
+    template = _.template("""
+      <a class="button button-gray item-block">Block</a>
+      <a class="button button-red item-unblock">Unblock</a>
+    """)
+
+    link = ($scope, $el, $attrs, $model) ->
+        render = _.once (item) ->
+            $el.html(template())
+
+        refresh = (item) ->
+            if item?.is_blocked
+                $el.find('.item-block').hide()
+                $el.find('.item-unblock').show()
+            else
+                $el.find('.item-block').show()
+                $el.find('.item-unblock').hide()
+
+        $scope.$watch $attrs.ngModel, (item) ->
+            return if not item
+            render(item)
+            refresh(item)
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+        $el.on "click", ".item-block", (event) ->
+            $rootscope.$broadcast("block", $model.$modelValue)
+
+        $el.on "click", ".item-unblock", (event) ->
+            $rootscope.$broadcast("unblock", $model.$modelValue)
+
+    return {
+        link: link
+        restrict: "EA"
+        require: "ngModel"
+    }
+
+module.directive("tgBlockButton", ["$rootScope", BlockButtonDirective])
+
+#############################################################################
+## Delete Button directive
+#############################################################################
+
+DeleteButtonDirective = ($tgrepo, $confirm, $navurls, $location) ->
+    template = _.template("""
+      <a href="" class="button button-red">Delete</a>
+    """)
+
+    link = ($scope, $el, $attrs, $model) ->
+        render = _.once (item) ->
+            $el.html(template())
+
+        $scope.$watch $attrs.ngModel, (item) ->
+            return if not item
+            render(item)
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+        $el.on "click", ".button", (event) ->
+            #TODO: i18n
+            title = "Delete User Story"
+            subtitle = $model.$modelValue.subject
+
+            $confirm.ask(title, subtitle).then (finish) =>
+                promise = $tgrepo.remove($model.$modelValue)
+                promise.then =>
+                    finish()
+                    $location.path($navurls.resolve($attrs.onDeleteGoToUrl, {project: $attrs.projectSlug}))
+                promise.then null, =>
+                    finish(false)
+                    $confirm.notify("error")
+
+    return {
+        link: link
+        restrict: "EA"
+        require: "ngModel"
+    }
+
+module.directive("tgDeleteButton", ["$tgRepo", "$tgConfirm", "$tgNavUrls", "$tgLocation", DeleteButtonDirective])
 
 #############################################################################
 ## Common list directives

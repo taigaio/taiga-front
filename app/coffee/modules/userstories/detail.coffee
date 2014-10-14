@@ -482,46 +482,59 @@ UsEstimationDirective = ($log) ->
 
 module.directive("tgUsEstimation", UsEstimationDirective)
 
-UsButtonsDirective = ($rootscope, $tgrepo, $confirm, $navurls, $location) ->
+UsTeamRequirementButtonDirective = ($rootscope, $tgrepo) ->
     template = _.template("""
-      <fieldset>
-        <label for="client-requirement" class="button button-gray client-requirement">Client requirement</label>
-        <input type="checkbox" id="client-requirement" name="client-requirement"/>
-      </fieldset>
-      <fieldset>
-        <label for="team-requirement" class="button button-gray team-requirement">Team requirement</label>
-        <input type="checkbox" id="team-requirement" name="team-requirement"/>
-      </fieldset>
-      <a class="button button-gray us-block">Block</a>
-      <a class="button button-red us-unblock">Unblock</a>
-      <% if (deletePerm) { %>
-        <a href="" class="button button-red us-delete">Delete</a>
-      <% } %>
+      <label for="team-requirement" class="button button-gray team-requirement">Team requirement</label>
+      <input type="checkbox" id="team-requirement" name="team-requirement"/>
     """)
 
     link = ($scope, $el, $attrs, $model) ->
         render = _.once (us) ->
-            deletePerm = $scope.project.my_permissions.indexOf("delete_us") != -1
-            html = template({deletePerm: deletePerm})
-            $el.html(html)
+            $el.html(template())
 
         refresh = (us) ->
-            if us?.is_blocked
-                $el.find('.us-block').hide()
-                $el.find('.us-unblock').show()
-            else
-                $el.find('.us-block').show()
-                $el.find('.us-unblock').hide()
-
-            if us?.client_requirement
-                $el.find('.client-requirement').addClass('active')
-            else
-                $el.find('.client-requirement').removeClass('active')
-
             if us?.team_requirement
                 $el.find('.team-requirement').addClass('active')
             else
                 $el.find('.team-requirement').removeClass('active')
+
+        $scope.$watch $attrs.ngModel, (us) ->
+            return if not us
+            render(us)
+            refresh(us)
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+        $el.on "click", ".team-requirement", (event) ->
+            us = $model.$modelValue.clone()
+            us.team_requirement = not us.team_requirement
+            $model.$setViewValue(us)
+            $tgrepo.save($model.$modelValue).then ->
+                $rootscope.$broadcast("history:reload")
+
+    return {
+        link: link
+        restrict: "EA"
+        require: "ngModel"
+    }
+module.directive("tgUsTeamRequirementButton", ["$rootScope", "$tgRepo", UsTeamRequirementButtonDirective])
+
+UsClientRequirementButtonDirective = ($rootscope, $tgrepo) ->
+    template = _.template("""
+      <label for="client-requirement" class="button button-gray client-requirement">Client requirement</label>
+      <input type="checkbox" id="client-requirement" name="client-requirement"/>
+    """)
+
+    link = ($scope, $el, $attrs, $model) ->
+        render = _.once (us) ->
+            $el.html(template())
+
+        refresh = (us) ->
+            if us?.client_requirement
+                $el.find('.client-requirement').addClass('active')
+            else
+                $el.find('.client-requirement').removeClass('active')
 
         $scope.$watch $attrs.ngModel, (us) ->
             return if not us
@@ -538,37 +551,9 @@ UsButtonsDirective = ($rootscope, $tgrepo, $confirm, $navurls, $location) ->
             $tgrepo.save($model.$modelValue).then ->
                 $rootscope.$broadcast("history:reload")
 
-        $el.on "click", ".team-requirement", (event) ->
-            us = $model.$modelValue.clone()
-            us.team_requirement = not us.team_requirement
-            $model.$setViewValue(us)
-            $tgrepo.save($model.$modelValue).then ->
-                $rootscope.$broadcast("history:reload")
-
-        $el.on "click", ".us-block", (event) ->
-            $rootscope.$broadcast("block", $model.$modelValue)
-
-        $el.on "click", ".us-unblock", (event) ->
-            $rootscope.$broadcast("unblock", $model.$modelValue)
-
-        $el.on "click", ".us-delete", (event) ->
-            #TODO: i18n
-            title = "Delete User Story"
-            subtitle = $model.$modelValue.subject
-
-            $confirm.ask(title, subtitle).then (finish) =>
-                promise = $tgrepo.remove($model.$modelValue)
-                promise.then =>
-                    finish()
-                    $location.path($navurls.resolve("project-backlog", {project: $scope.project.slug}))
-                promise.then null, =>
-                    finish(false)
-                    $confirm.notify("error")
-
     return {
         link: link
         restrict: "EA"
         require: "ngModel"
     }
-
-module.directive("tgUsButtons", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgNavUrls", "$tgLocation", UsButtonsDirective])
+module.directive("tgUsClientRequirementButton", ["$rootScope", "$tgRepo", UsClientRequirementButtonDirective])

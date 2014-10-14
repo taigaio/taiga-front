@@ -130,26 +130,6 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
                       .then(=> @.loadUsersAndRoles())
                       .then(=> @.loadIssue())
 
-    block: ->
-        @rootscope.$broadcast("block", @scope.issue)
-
-    unblock: ->
-        @rootscope.$broadcast("unblock", @scope.issue)
-
-    delete: ->
-        # TODO: i18n
-        title = "Delete Issue"
-        message = @scope.issue.subject
-
-        @confirm.askOnDelete(title, message).then (finish) =>
-            promise = @.repo.remove(@scope.issue)
-            promise.then =>
-                finish()
-                @location.path(@navUrls.resolve("project-issues", {project: @scope.project.slug}))
-            promise.then null, =>
-                finish(false)
-                @confirm.notify("error")
-
 module.controller("IssueDetailController", IssueDetailController)
 
 

@@ -54,8 +54,14 @@ block content
             section.us-assigned-to(tg-assigned-to, ng-model="us")
             section.us-created-by(tg-created-by, ng-model="us")
             section.watchers(tg-watchers, ng-model="us")
-            section.us-detail-settings(tg-us-buttons, ng-model="us")
+            section.us-detail-settings
+                fieldset(tg-us-team-requirement-button, ng-model="us")
+                fieldset(tg-us-client-requirement-button, ng-model="us")
+                div(tg-block-button, ng-model="us")
+                div(tg-check-permission="delete_us", tg-delete-button,
+                    on-delete-go-to-url="project-backlog",
+                    project-slug="{{ project.slug }}" ng-model="us")
 
-        div.lightbox.lightbox-block.hidden(tg-lb-block, title="Blocking issue", ng-model="us")
+        div.lightbox.lightbox-block.hidden(tg-lb-block, title="Blocking us", ng-model="us")
         div.lightbox.lightbox-select-user.hidden(tg-lb-assignedto)
         div.lightbox.lightbox-select-user.hidden(tg-lb-watchers)

@@ -121,12 +121,6 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
                       .then(=> @.loadUsersAndRoles())
                       .then(=> @.loadTask())
 
-    block: ->
-        @rootscope.$broadcast("block", @scope.task)
-
-    unblock: ->
-        @rootscope.$broadcast("unblock", @scope.task)
-
 module.controller("TaskDetailController", TaskDetailController)
 
 
@@ -255,33 +249,19 @@ TaskStatusDirective = () ->
 
 module.directive("tgTaskStatus", TaskStatusDirective)
 
-TaskButtonsDirective = ($rootscope, $tgrepo, $confirm, $navurls, $location) ->
+TaskIsIocaineButtonDirective = ($rootscope, $tgrepo) ->
     template = _.template("""
       <fieldset title="Feeling a bit overwhelmed by a task? Make sure others know about it by clicking on Iocaine when editing a task. It's possible to become immune to this (fictional) deadly poison by consuming small amounts over time just as it's possible to get better at what you do by occasionally taking on extra challenges!">
         <label for="is-iocaine" class="clickable button button-gray is-iocaine">Iocaine</label>
         <input type="checkbox" id="is-iocaine" name="is-iocaine"/>
       </fieldset>
-      <a class="button button-gray clickable task-block">Block</a>
-      <a class="button button-red clickable task-unblock">Unblock</a>
-      <% if (deletePerm) { %>
-        <a href="" class="button button-red task-delete">Delete</a>
-      <% } %>
     """)
 
     link = ($scope, $el, $attrs, $model) ->
         render = _.once (us) ->
-            deletePerm = $scope.project.my_permissions.indexOf("delete_us") != -1
-            html = template({deletePerm: deletePerm})
-            $el.html(html)
+            $el.html(template())
 
         refresh = (us) ->
-            if us?.is_blocked
-                $el.find('.task-block').hide()
-                $el.find('.task-unblock').show()
-            else
-                $el.find('.task-block').show()
-                $el.find('.task-unblock').hide()
-
             if us?.is_iocaine
                 $el.find('.is-iocaine').addClass('active')
             else
@@ -302,25 +282,6 @@ TaskButtonsDirective = ($rootscope, $tgrepo, $confirm, $navurls, $location) ->
             $tgrepo.save($model.$modelValue).then ->
                 $rootscope.$broadcast("history:reload")
 
-        $el.on "click", ".task-block", (event) ->
-            $rootscope.$broadcast("block", $model.$modelValue)
-
-        $el.on "click", ".task-unblock", (event) ->
-            $rootscope.$broadcast("unblock", $model.$modelValue)
-
-        $el.on "click", ".task-delete", (event) ->
-            #TODO: i18n
-            title = "Delete Task"
-            subtitle = $model.$modelValue.subject
-
-            $confirm.ask(title, subtitle).then (finish) =>
-                promise = $tgrepo.remove($model.$modelValue)
-                promise.then =>
-                    finish()
-                    $location.path($navurls.resolve("project-backlog", {project: $scope.project.slug}))
-                promise.then null, =>
-                    finish(false)
-                    $confirm.notify("error")
 
     return {
         link: link
@@ -328,4 +289,4 @@ TaskButtonsDirective = ($rootscope, $tgrepo, $confirm, $navurls, $location) ->
         require: "ngModel"
     }
 
-module.directive("tgTaskButtons", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgNavUrls", "$tgLocation", TaskButtonsDirective])
+module.directive("tgTaskIsIocaineButton", ["$rootScope", "$tgRepo", TaskIsIocaineButtonDirective])
