@@ -688,6 +688,7 @@ UsRolePointsSelectorDirective = ($rootscope) ->
                 $el.append(selectionTemplate({"roles":roles}))
             else
                 $el.find(".icon-arrow-bottom").remove()
+                $el.find(".header-points").addClass("not-clickable")
 
         $scope.$on "uspoints:select", (ctx, roleId, roleName) ->
             $el.find(".popover").popover().close()
