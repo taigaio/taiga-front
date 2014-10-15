@@ -240,7 +240,6 @@ WatchersDirective = ($rootscope, $confirm, $tgrepo) ->
 
             item = $model.$modelValue.clone()
             item.watchers = watchers
-
             $model.$setViewValue(item)
             save(item)
 
@@ -451,8 +450,7 @@ EditableSubjectDirective = ($rootscope, $tgrepo, $confirm, $navurls, $location) 
 
         $scope.$watch $attrs.ngModel, (item) ->
             return if not item
-            scope.item = item.clone()
-            scope.item.revert()
+            scope.item = item
             render()
 
         $scope.$on "$destroy", ->
@@ -516,8 +514,7 @@ EditableDescriptionDirective = ($rootscope, $tgrepo, $confirm, $navurls, $locati
 
         $scope.$watch $attrs.ngModel, (item) ->
             return if not item
-            scope.item = item.clone()
-            scope.item.revert()
+            scope.item = item
             render()
 
         $scope.$on "$destroy", ->

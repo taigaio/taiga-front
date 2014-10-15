@@ -52,8 +52,8 @@ block content
             section.watchers(tg-watchers, ng-model="issue")
 
             section.us-detail-settings
-               tg-promote-issue-to-us-button(ng-model="issue")
-               div(tg-block-button, ng-model="issue")
+               tg-promote-issue-to-us-button(tg-check-permission="add_us", ng-model="issue")
+               div(tg-check-permission="modify_issue", tg-block-button, ng-model="issue")
                div(tg-check-permission="delete_issue", tg-delete-button,
                    on-delete-go-to-url="project-issues",
                    project-slug="{{ project.slug }}" ng-model="issue")

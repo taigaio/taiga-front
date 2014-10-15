@@ -482,6 +482,8 @@ UsTeamRequirementButtonDirective = ($rootscope, $tgrepo) ->
     link = ($scope, $el, $attrs, $model) ->
         render = _.once (us) ->
             $el.html(template())
+            if $scope.project.my_permissions.indexOf("modify_us") == -1
+                $el.find('label').css("cursor", "auto")
 
         refresh = (us) ->
             if us?.team_requirement
@@ -498,11 +500,12 @@ UsTeamRequirementButtonDirective = ($rootscope, $tgrepo) ->
             $el.off()
 
         $el.on "click", ".team-requirement", (event) ->
-            us = $model.$modelValue.clone()
-            us.team_requirement = not us.team_requirement
-            $model.$setViewValue(us)
-            $tgrepo.save($model.$modelValue).then ->
-                $rootscope.$broadcast("history:reload")
+            if $scope.project.my_permissions.indexOf("modify_us") != -1
+                us = $model.$modelValue.clone()
+                us.team_requirement = not us.team_requirement
+                $model.$setViewValue(us)
+                $tgrepo.save($model.$modelValue).then ->
+                    $rootscope.$broadcast("history:reload")
 
     return {
         link: link
@@ -526,6 +529,8 @@ UsClientRequirementButtonDirective = ($rootscope, $tgrepo) ->
     link = ($scope, $el, $attrs, $model) ->
         render = _.once (us) ->
             $el.html(template())
+            if $scope.project.my_permissions.indexOf("modify_us") == -1
+                $el.find('label').css("cursor", "auto")
 
         refresh = (us) ->
             if us?.client_requirement
@@ -542,11 +547,12 @@ UsClientRequirementButtonDirective = ($rootscope, $tgrepo) ->
             $el.off()
 
         $el.on "click", ".client-requirement", (event) ->
-            us = $model.$modelValue.clone()
-            us.client_requirement = not us.client_requirement
-            $model.$setViewValue(us)
-            $tgrepo.save($model.$modelValue).then ->
-                $rootscope.$broadcast("history:reload")
+            if $scope.project.my_permissions.indexOf("modify_us") != -1
+                us = $model.$modelValue.clone()
+                us.client_requirement = not us.client_requirement
+                $model.$setViewValue(us)
+                $tgrepo.save($model.$modelValue).then ->
+                    $rootscope.$broadcast("history:reload")
 
     return {
         link: link

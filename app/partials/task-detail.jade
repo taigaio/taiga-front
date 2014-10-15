@@ -52,8 +52,8 @@ block content
             section.watchers(tg-watchers, ng-model="task")
 
             section.us-detail-settings
-               fieldset(tg-task-is-iocaine-button, ng-model="task")
-               div(tg-block-button, ng-model="task")
+               fieldset(tg-task-is-iocaine-button, tg-check-permission="modify_task", ng-model="task")
+               div(tg-check-permission="modify_task", tg-block-button, ng-model="task")
                div(tg-check-permission="delete_task", tg-delete-button,
                    on-delete-go-to-url="project-backlog",
                    project-slug="{{ project.slug }}" ng-model="task")
