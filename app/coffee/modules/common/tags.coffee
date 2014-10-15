@@ -91,7 +91,7 @@ module.directive("tgColorizeTags", ColorizeTagsDirective)
 ## TagLine (possible should be moved as generic directive)
 #############################################################################
 
-TagLineDirective = ($log, $rs) ->
+TagLineDirective = ($log, $rs, $tgrepo) ->
     # Main directive template (rendered by angular)
     template = """
     <div class="tags-container"></div>
@@ -125,6 +125,7 @@ TagLineDirective = ($log, $rs) ->
 
     link = ($scope, $el, $attrs, $model) ->
         editable = if $attrs.editable == "true" then true else false
+
         $el.addClass("tags-block")
 
         addValue = (value) ->
@@ -137,6 +138,9 @@ TagLineDirective = ($log, $rs) ->
 
             $scope.$apply ->
                 $model.$setViewValue(normalizeTags(tags))
+                autosaveModel = $scope.$eval($attrs.autosaveModel)
+                if autosaveModel
+                    $tgrepo.save(autosaveModel)
 
         saveInputTag = () ->
             input = $el.find('input')
@@ -204,6 +208,9 @@ TagLineDirective = ($log, $rs) ->
 
             $scope.$apply ->
                 $model.$setViewValue(normalizeTags(tags))
+                autosaveModel = $scope.$eval($attrs.autosaveModel)
+                if autosaveModel
+                    $tgrepo.save(autosaveModel)
 
     return {
         link:link,
@@ -211,4 +218,4 @@ TagLineDirective = ($log, $rs) ->
         template: template
     }
 
-module.directive("tgTagLine", ["$log", "$tgResources", TagLineDirective])
+module.directive("tgTagLine", ["$log", "$tgResources", "$tgRepo", TagLineDirective])

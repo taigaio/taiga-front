@@ -31,7 +31,7 @@ block content
                         a.icon.icon-arrow-left(ng-show="previousUrl",href="{{ previousUrl }}", title="previous issue")
                         a.icon.icon-arrow-right(ng-show="nextUrl", href="{{ nextUrl }}", title="next issue")
 
-                div(tg-tag-line, ng-model="issue.tags", ng-show="issue.tags")
+                div(tg-tag-line, editable="true", autosave-model="issue", ng-model="issue.tags")
 
             section.us-content.wysiwyg(tg-bind-html="issue.description_html")
 

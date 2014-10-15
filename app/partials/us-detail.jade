@@ -36,7 +36,7 @@ block content
                                                title="previous user story")
                         a.icon.icon-arrow-right(ng-show="nextUrl", href="{{ nextUrl }}", title="next user story")
 
-                div(tg-tag-line, ng-model="us.tags", ng-show="us.tags")
+                div(tg-tag-line, editable="true", autosave-model="us", ng-model="us.tags")
 
             section.us-content.wysiwyg(tg-bind-html="us.description_html")
 
