@@ -91,7 +91,7 @@ module.directive("tgColorizeTags", ColorizeTagsDirective)
 ## TagLine (possible should be moved as generic directive)
 #############################################################################
 
-TagLineDirective = ($log, $rs, $tgrepo) ->
+TagLineDirective = ($rootscope, $log, $rs, $tgrepo) ->
     # Main directive template (rendered by angular)
     template = """
     <div class="tags-container"></div>
@@ -124,7 +124,7 @@ TagLineDirective = ($log, $rs, $tgrepo) ->
         return _.uniq(tags)
 
     link = ($scope, $el, $attrs, $model) ->
-        editable = if $attrs.editable == "true" then true else false
+        editable = false
 
         $el.addClass("tags-block")
 
@@ -140,7 +140,8 @@ TagLineDirective = ($log, $rs, $tgrepo) ->
                 $model.$setViewValue(normalizeTags(tags))
                 autosaveModel = $scope.$eval($attrs.autosaveModel)
                 if autosaveModel
-                    $tgrepo.save(autosaveModel)
+                    $tgrepo.save(autosaveModel).then ->
+                        $rootscope.$broadcast("history:reload")
 
         saveInputTag = () ->
             input = $el.find('input')
@@ -154,9 +155,14 @@ TagLineDirective = ($log, $rs, $tgrepo) ->
             tags_colors = if $scope.project?.tags_colors? then $scope.project.tags_colors else []
             renderTags($el, val, editable, tags_colors)
 
-        bindOnce $scope, "projectId", (projectId) ->
+        bindOnce $scope, "project", (project) ->
             # If not editable, no tags preloading is needed.
-            return if not editable
+            editable = if $attrs.editable == "true" then true else false
+            editable = editable and project.my_permissions.indexOf($attrs.requiredPerm) != -1
+
+            if not editable
+                $el.find("input").remove()
+                return
 
             positioningFunction = (position, elements) ->
                 menu = elements.element.element
@@ -164,7 +170,7 @@ TagLineDirective = ($log, $rs, $tgrepo) ->
                 menu.css("top", position.top)
                 menu.css("left", position.left)
 
-            $rs.projects.tags(projectId).then (data) ->
+            $rs.projects.tags(project.id).then (data) ->
                 $el.find("input").autocomplete({
                     source: data
                     position: {
@@ -175,9 +181,6 @@ TagLineDirective = ($log, $rs, $tgrepo) ->
                         addValue(ui.item.value)
                         ui.item.value = ""
                 })
-
-        if not editable
-            $el.find("input").remove()
 
         $el.on "keypress", "input", (event) ->
             return if event.keyCode != 13
@@ -210,7 +213,8 @@ TagLineDirective = ($log, $rs, $tgrepo) ->
                 $model.$setViewValue(normalizeTags(tags))
                 autosaveModel = $scope.$eval($attrs.autosaveModel)
                 if autosaveModel
-                    $tgrepo.save(autosaveModel)
+                    $tgrepo.save(autosaveModel).then ->
+                        $rootscope.$broadcast("history:reload")
 
     return {
         link:link,
@@ -218,4 +222,4 @@ TagLineDirective = ($log, $rs, $tgrepo) ->
         template: template
     }
 
-module.directive("tgTagLine", ["$log", "$tgResources", "$tgRepo", TagLineDirective])
+module.directive("tgTagLine", ["$rootScope", "$log", "$tgResources", "$tgRepo", TagLineDirective])
