@@ -7,6 +7,7 @@ uglify = require("gulp-uglify")
 plumber = require("gulp-plumber")
 wrap = require("gulp-wrap")
 rename = require("gulp-rename")
+flatten = require('gulp-flatten')
 
 minifyHTML = require("gulp-minify-html")
 sass = require("gulp-ruby-sass")
@@ -37,6 +38,7 @@ paths.locales = paths.app + "locales/**/*.json"
 paths.sass = [
     paths.app + "styles/**/*.scss"
     "!#{paths.app}/styles/bourbon/**/*.scss"
+    paths.app + "plugins/**/*.scss"
 ]
 
 paths.coffee = [
@@ -119,15 +121,17 @@ gulp.task "sass-lint", ->
         .pipe(scsslint({config: "scsslint.yml"}))
 
 gulp.task "sass-watch", ["sass-lint"], ->
-    gulp.src(paths.app + "styles/main.scss")
+    gulp.src(["#{paths.app}/styles/main.scss", "#{paths.app}/plugins/**/*.scss"])
         .pipe(plumber())
+        .pipe(concat("all.scss"))
         .pipe(sass())
         .pipe(rename("app.css"))
         .pipe(gulp.dest(paths.tmp))
 
 gulp.task "sass-deploy", ->
-    gulp.src(paths.app + "styles/main.scss")
+    gulp.src(["#{paths.app}/styles/main.scss", "#{paths.app}/plugins/**/*.scss"])
         .pipe(plumber())
+        .pipe(concat("all.scss"))
         .pipe(sass())
         .pipe(rename("app.css"))
         .pipe(gulp.dest(paths.tmp))
@@ -237,6 +241,10 @@ gulp.task "copy-fonts",  ->
 
 gulp.task "copy-images",  ->
     gulp.src("#{paths.app}/images/**/*")
+        .pipe(gulp.dest("#{paths.dist}/images/"))
+
+    gulp.src("#{paths.app}/plugins/**/images/*")
+        .pipe(flatten())
         .pipe(gulp.dest("#{paths.dist}/images/"))
 
 gulp.task "copy-plugin-templates",  ->
