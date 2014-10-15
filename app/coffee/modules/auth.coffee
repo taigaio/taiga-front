@@ -474,6 +474,7 @@ CancelAccountDirective = ($repo, $model, $auth, $confirm, $location, $params, $n
         form = $el.find("form").checksley()
 
         onSuccessSubmit = (response) ->
+            $auth.logout()
             $location.path($navUrls.resolve("home"))
             $confirm.success("Our Oompa Loompas removed your account") #TODO: i18n
 
