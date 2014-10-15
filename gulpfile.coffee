@@ -82,8 +82,9 @@ paths.js = [
     paths.app + "vendor/jquery-textcomplete/jquery.textcomplete.js",
     paths.app + "vendor/markitup/markitup/jquery.markitup.js",
     paths.app + "vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js",
-    paths.app + "js/jquery.ui.git.js",
-    paths.app + "js/sha1.js",
+    paths.app + "js/jquery.ui.git-custom.js",
+    paths.app + "js/jquery-ui.drag-multiple-custom.js",
+    paths.app + "js/sha1-custom.js",
     paths.app + "plugins/**/*.js"
 ]
 

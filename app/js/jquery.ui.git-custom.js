@@ -789,7 +789,6 @@ $.Widget.prototype = {
 				}
 			}
 		}
-
 		this.element.trigger( event, data );
 		return !( $.isFunction( callback ) &&
 			callback.apply( this.element[0], [ event ].concat( data ) ) === false ||
@@ -2368,11 +2367,9 @@ $.ui.ddmanager = {
 		if ( draggable.options.refreshPositions ) {
 			$.ui.ddmanager.prepareOffsets( draggable, event );
 		}
-
 		// Run through all droppables and check their positions based on specific tolerance options
 		$.each( $.ui.ddmanager.droppables[ draggable.options.scope ] || [], function() {
-
-			if ( this.options.disabled || this.greedyChild || !this.visible ) {
+			if ( this.options.disabled || this.greedyChild || !this.visible || $(this).data('dragMultipleActive')) {
 				return;
 			}
 
@@ -4107,11 +4104,15 @@ return $.widget("ui.sortable", $.ui.mouse, {
 
 		//Rearrange
 		for (i = this.items.length - 1; i >= 0; i--) {
-
 			//Cache variables and intersection, continue if no intersection
 			item = this.items[i];
 			itemElement = item.item[0];
 			intersection = this._intersectsWithPointer(item);
+
+            if (item.item.data('dragMultipleActive')) {
+                continue;
+            }
+
 			if (!intersection) {
 				continue;
 			}
@@ -4166,7 +4167,6 @@ return $.widget("ui.sortable", $.ui.mouse, {
 	},
 
 	_mouseStop: function(event, noPropagation) {
-
 		if(!event) {
 			return;
 		}
@@ -4471,6 +4471,9 @@ return $.widget("ui.sortable", $.ui.mouse, {
 
 		for (i = this.items.length - 1; i >= 0; i--){
 			item = this.items[i];
+            if ($(item.item).data('dragMultipleActive')) {
+                continue;
+            }
 
 			//We ignore calculating positions of all connected containers when we're not over them
 			if(item.instance !== this.currentContainer && this.currentContainer && item.item[0] !== this.currentItem[0]) {
@@ -4536,7 +4539,6 @@ return $.widget("ui.sortable", $.ui.mouse, {
 					return element;
 				},
 				update: function(container, p) {
-
 					// 1. If a className is set as 'placeholder option, we don't force sizes - the class is responsible for that
 					// 2. The option 'forcePlaceholderSize can be enabled to force it even if a class name is specified
 					if(className && !o.forcePlaceholderSize) {
@@ -4661,7 +4663,6 @@ return $.widget("ui.sortable", $.ui.mouse, {
 	},
 
 	_createHelper: function(event) {
-
 		var o = this.options,
 			helper = $.isFunction(o.helper) ? $(o.helper.apply(this.element[0], [event, this.currentItem])) : (o.helper === "clone" ? this.currentItem.clone() : this.currentItem);
 
@@ -4888,7 +4889,6 @@ return $.widget("ui.sortable", $.ui.mouse, {
 	},
 
 	_rearrange: function(event, i, a, hardRefresh) {
-
 		a ? a[0].appendChild(this.placeholder[0]) : i.item[0].parentNode.insertBefore(this.placeholder[0], (this.direction === "down" ? i.item[0] : i.item[0].nextSibling));
 
 		//Various things done here to improve the performance:
