@@ -14,7 +14,7 @@ block content
                 div.us-title(ng-class="{blocked: issue.is_blocked}")
                     h2.us-title-text
                         span.us-number(tg-bo-ref="issue.ref")
-                        span.us-name(ng-bind="issue.subject")
+                        span.us-name(tg-editable-subject, ng-model="issue", required-perm="modify_issue")
 
                     p.us-related-task(ng-if="issue.generated_user_stories") This issue has been promoted to US:
                         a(ng-repeat="us in issue.generated_user_stories",
@@ -33,7 +33,7 @@ block content
 
                 div(tg-tag-line, editable="true", autosave-model="issue", ng-model="issue.tags")
 
-            section.us-content.wysiwyg(tg-bind-html="issue.description_html")
+            section.us-content.wysiwyg(tg-editable-description, ng-model="issue", required-perm="modify_issue")
 
             tg-attachments(ng-model="issue", type="issue")
             tg-history(ng-model="issue", type="issue")

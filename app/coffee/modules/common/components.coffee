@@ -423,6 +423,134 @@ DeleteButtonDirective = ($tgrepo, $confirm, $navurls, $location) ->
 module.directive("tgDeleteButton", ["$tgRepo", "$tgConfirm", "$tgNavUrls", "$tgLocation", DeleteButtonDirective])
 
 #############################################################################
+## Editable subject directive
+#############################################################################
+
+EditableSubjectDirective = ($rootscope, $tgrepo, $confirm, $navurls, $location) ->
+    viewTemplate = _.template("""
+      <%- item.subject %>
+      <% if (canEdit) { %>
+        <a class="save icon icon-edit" href="" title="Edit" />
+      <% } %>
+    """)
+
+    editTemplate = _.template("""
+      <input type="text" value="<%- item.subject %>" data-required="true" data-maxlength="500"/>
+    """)
+
+    link = ($scope, $el, $attrs, $model) ->
+        editing = false
+        scope = $scope.$new()
+
+        render = ->
+            if editing
+                $el.html(editTemplate({item: scope.item}))
+            else
+                canEdit = $scope.project.my_permissions.indexOf($attrs.requiredPerm) != -1
+                $el.html(viewTemplate({item: scope.item, canEdit: canEdit}))
+
+        $scope.$watch $attrs.ngModel, (item) ->
+            return if not item
+            scope.item = item.clone()
+            scope.item.revert()
+            render()
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+        $el.click ->
+            if not editing and $scope.project.my_permissions.indexOf($attrs.requiredPerm) != -1
+                editing = true
+                render()
+                $el.find('input').focus()
+
+        $el.on "keyup", "input", ->
+            if event.keyCode == 13
+                scope.item.subject = $el.find('input').val()
+                $tgrepo.save(scope.item).then ->
+                    $rootscope.$broadcast("history:reload")
+                    editing = false
+                    render()
+            else if event.keyCode == 27
+                editing = false
+                scope.item.revert()
+                render()
+
+    return {
+        link: link
+        restrict: "EA"
+        require: "ngModel"
+    }
+
+module.directive("tgEditableSubject", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgNavUrls", "$tgLocation", EditableSubjectDirective])
+
+#############################################################################
+## Editable subject directive
+#############################################################################
+
+EditableDescriptionDirective = ($rootscope, $tgrepo, $confirm, $navurls, $location, $compile) ->
+    viewTemplate = _.template("""
+      <section class="us-content wysiwyg"><%= descriptionHtml %></section>
+      <% if (canEdit) { %>
+        <span class="edit icon icon-edit" href="" title="Edit" />
+      <% } %>
+    """)
+
+    editTemplate = _.template("""
+      <textarea placeholder="Write a description of your user story"
+                ng-model="item.description"
+                tg-markitup="tg-markitup"><%- item.description %></textarea>
+      <a class="save icon icon-floppy" href="" title="Save" />
+    """)
+
+    link = ($scope, $el, $attrs, $model) ->
+        editing = false
+        scope = $scope.$new()
+
+        render = ->
+            if editing
+                $el.html($compile(editTemplate({item: scope.item}))(scope))
+            else
+                canEdit = $scope.project.my_permissions.indexOf($attrs.requiredPerm) != -1
+                $el.html(viewTemplate({descriptionHtml: scope.item.description_html, canEdit: canEdit}))
+
+        $scope.$watch $attrs.ngModel, (item) ->
+            return if not item
+            scope.item = item.clone()
+            scope.item.revert()
+            render()
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+        $el.click ->
+            if not editing and $scope.project.my_permissions.indexOf($attrs.requiredPerm) != -1
+                editing = true
+                render()
+                $el.find('textarea').focus()
+
+        $el.on "click", ".save", ->
+            $tgrepo.save(scope.item).then ->
+                $rootscope.$broadcast("history:reload")
+                editing = false
+                render()
+
+        $el.on "keyup", "textarea", ->
+            if event.keyCode == 27
+                editing = false
+                scope.item.revert()
+                render()
+
+
+    return {
+        link: link
+        restrict: "EA"
+        require: "ngModel"
+    }
+
+module.directive("tgEditableDescription", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgNavUrls", "$tgLocation", "$compile", EditableDescriptionDirective])
+
+#############################################################################
 ## Common list directives
 #############################################################################
 ## NOTE: These directives are used in issues and search and are

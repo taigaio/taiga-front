@@ -20,7 +20,7 @@ block content
                 div.us-title(ng-class="{blocked: us.is_blocked}")
                     h2.us-title-text
                         span.us-number(tg-bo-ref="us.ref")
-                        span.us-name(ng-bind="us.subject")
+                        span.us-name(tg-editable-subject, ng-model="us", required-perm="modify_us")
 
                     p.us-related-task(ng-if="us.origin_issue") This US has been promoted from Issue
                         a(tg-check-permission="view_us", href="", title="Go to issue",
@@ -38,7 +38,7 @@ block content
 
                 div(tg-tag-line, editable="true", autosave-model="us", ng-model="us.tags")
 
-            section.us-content.wysiwyg(tg-bind-html="us.description_html")
+            section.us-content.wysiwyg(tg-editable-description, ng-model="us", required-perm="modify_us")
 
             include views/modules/related-tasks
 
