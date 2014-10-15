@@ -446,11 +446,10 @@ EditableSubjectDirective = ($rootscope, $tgrepo, $confirm, $navurls, $location) 
                 $el.html(editTemplate({item: scope.item}))
             else
                 canEdit = $scope.project.my_permissions.indexOf($attrs.requiredPerm) != -1
-                $el.html(viewTemplate({item: scope.item, canEdit: canEdit}))
+                $el.html(viewTemplate({item: $model.$modelValue, canEdit: canEdit}))
 
         $scope.$watch $attrs.ngModel, (item) ->
             return if not item
-            scope.item = item
             render()
 
         $scope.$on "$destroy", ->
@@ -459,19 +458,23 @@ EditableSubjectDirective = ($rootscope, $tgrepo, $confirm, $navurls, $location) 
         $el.click ->
             if not editing and $scope.project.my_permissions.indexOf($attrs.requiredPerm) != -1
                 editing = true
+                scope.item = {subject: $model.$modelValue.subject}
                 render()
                 $el.find('input').focus()
 
         $el.on "keyup", "input", ->
             if event.keyCode == 13
-                scope.item.subject = $el.find('input').val()
-                $tgrepo.save(scope.item).then ->
+                $model.$modelValue.subject = $el.find('input').val()
+                promise = $tgrepo.save($model.$modelValue)
+                promise.then ->
                     $rootscope.$broadcast("history:reload")
                     editing = false
                     render()
+                promise.then null, ->
+                    $confirm.notify("error")
             else if event.keyCode == 27
                 editing = false
-                scope.item.revert()
+                $model.$modelValue.revert()
                 render()
 
     return {
@@ -510,11 +513,10 @@ EditableDescriptionDirective = ($rootscope, $tgrepo, $confirm, $navurls, $locati
                 $el.html($compile(editTemplate({item: scope.item}))(scope))
             else
                 canEdit = $scope.project.my_permissions.indexOf($attrs.requiredPerm) != -1
-                $el.html(viewTemplate({descriptionHtml: scope.item.description_html, canEdit: canEdit}))
+                $el.html(viewTemplate({descriptionHtml: $model.$modelValue.description_html, canEdit: canEdit}))
 
         $scope.$watch $attrs.ngModel, (item) ->
             return if not item
-            scope.item = item
             render()
 
         $scope.$on "$destroy", ->
@@ -523,21 +525,25 @@ EditableDescriptionDirective = ($rootscope, $tgrepo, $confirm, $navurls, $locati
         $el.click ->
             if not editing and $scope.project.my_permissions.indexOf($attrs.requiredPerm) != -1
                 editing = true
+                scope.item = {description: $model.$modelValue.description}
                 render()
                 $el.find('textarea').focus()
 
         $el.on "click", ".save", ->
-            $tgrepo.save(scope.item).then ->
+            $model.$modelValue.description = scope.item.description
+            promise = $tgrepo.save($model.$modelValue)
+            promise.then ->
                 $rootscope.$broadcast("history:reload")
                 editing = false
                 render()
+            promise.then null, ->
+                $confirm.notify("error")
 
         $el.on "keyup", "textarea", ->
             if event.keyCode == 27
                 editing = false
-                scope.item.revert()
+                $model.$modelValue.revert()
                 render()
-
 
     return {
         link: link

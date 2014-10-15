@@ -248,7 +248,7 @@ TaskStatusButtonDirective = ($rootScope, $repo) ->
 module.directive("tgTaskStatusButton", ["$rootScope", "$tgRepo", TaskStatusButtonDirective])
 
 
-TaskIsIocaineButtonDirective = ($rootscope, $tgrepo) ->
+TaskIsIocaineButtonDirective = ($rootscope, $tgrepo, $confirm) ->
     template = _.template("""
       <fieldset title="Feeling a bit overwhelmed by a task? Make sure others know about it by clicking on Iocaine when editing a task. It's possible to become immune to this (fictional) deadly poison by consuming small amounts over time just as it's possible to get better at what you do by occasionally taking on extra challenges!">
         <label for="is-iocaine" class="clickable button button-gray is-iocaine">Iocaine</label>
@@ -278,9 +278,11 @@ TaskIsIocaineButtonDirective = ($rootscope, $tgrepo) ->
             us = $model.$modelValue.clone()
             us.is_iocaine = not us.is_iocaine
             $model.$setViewValue(us)
-            $tgrepo.save($model.$modelValue).then ->
+            promise = $tgrepo.save($model.$modelValue)
+            promise.then ->
                 $rootscope.$broadcast("history:reload")
-
+            promise.then null, ->
+                $confirm.notify("error")
 
     return {
         link: link
@@ -288,4 +290,4 @@ TaskIsIocaineButtonDirective = ($rootscope, $tgrepo) ->
         require: "ngModel"
     }
 
-module.directive("tgTaskIsIocaineButton", ["$rootScope", "$tgRepo", TaskIsIocaineButtonDirective])
+module.directive("tgTaskIsIocaineButton", ["$rootScope", "$tgRepo", "$tgConfirm", TaskIsIocaineButtonDirective])

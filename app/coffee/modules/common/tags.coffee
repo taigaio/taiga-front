@@ -91,7 +91,7 @@ module.directive("tgColorizeTags", ColorizeTagsDirective)
 ## TagLine (possible should be moved as generic directive)
 #############################################################################
 
-TagLineDirective = ($rootscope, $log, $rs, $tgrepo) ->
+TagLineDirective = ($rootscope, $log, $rs, $tgrepo, $confirm) ->
     # Main directive template (rendered by angular)
     template = """
     <div class="tags-container"></div>
@@ -140,8 +140,11 @@ TagLineDirective = ($rootscope, $log, $rs, $tgrepo) ->
                 $model.$setViewValue(normalizeTags(tags))
                 autosaveModel = $scope.$eval($attrs.autosaveModel)
                 if autosaveModel
-                    $tgrepo.save(autosaveModel).then ->
+                    promise = $tgrepo.save(autosaveModel)
+                    promise.then ->
                         $rootscope.$broadcast("history:reload")
+                    promise.then null, ->
+                        $confirm.notify("error")
 
         saveInputTag = () ->
             input = $el.find('input')
@@ -213,8 +216,11 @@ TagLineDirective = ($rootscope, $log, $rs, $tgrepo) ->
                 $model.$setViewValue(normalizeTags(tags))
                 autosaveModel = $scope.$eval($attrs.autosaveModel)
                 if autosaveModel
-                    $tgrepo.save(autosaveModel).then ->
+                    promise = $tgrepo.save(autosaveModel)
+                    promise.then ->
                         $rootscope.$broadcast("history:reload")
+                    promise.then null, ->
+                        $confirm.notify("error")
 
     return {
         link:link,
@@ -222,4 +228,4 @@ TagLineDirective = ($rootscope, $log, $rs, $tgrepo) ->
         template: template
     }
 
-module.directive("tgTagLine", ["$rootScope", "$log", "$tgResources", "$tgRepo", TagLineDirective])
+module.directive("tgTagLine", ["$rootScope", "$log", "$tgResources", "$tgRepo", "$tgConfirm", TagLineDirective])
