@@ -177,7 +177,7 @@ module.directive("tgTaskStatusDisplay", TaskStatusDisplayDirective)
 ## Task status button directive
 #############################################################################
 
-TaskStatusButtonDirective = ($rootScope, $repo) ->
+TaskStatusButtonDirective = ($rootScope, $repo, $confirm) ->
     # Display the status of Task and you can edit it.
     #
     # Example:
@@ -186,12 +186,13 @@ TaskStatusButtonDirective = ($rootScope, $repo) ->
     # Requirements:
     #   - Task object (ng-model)
     #   - scope.statusById object
+    #   - $scope.project.my_permissions
 
     template = _.template("""
-    <div class="status-data clickable">
+    <div class="status-data <% if(editable){ %>clickable<% }%>">
         <span class="level" style="background-color:<%= status.color %>"></span>
         <span class="status-status"><%= status.name %></span>
-        <span class="icon icon-arrow-bottom"></span>
+        <% if(editable){ %><span class="icon icon-arrow-bottom"></span><% }%>
         <span class="level-name">status</span>
 
         <ul class="popover pop-status">
@@ -204,34 +205,47 @@ TaskStatusButtonDirective = ($rootScope, $repo) ->
     """) #TODO: i18n
 
     link = ($scope, $el, $attrs, $model) ->
+        isEditable = ->
+            return $scope.project.my_permissions.indexOf("modify_task") != -1
+
         render = (task) =>
             status = $scope.statusById[task.status]
 
             html = template({
                 status: status
                 statuses: $scope.statusList
+                editable: isEditable()
             })
             $el.html(html)
 
         $el.on "click", ".status-data", (event) ->
             event.preventDefault()
             event.stopPropagation()
+            return if not isEditable()
 
             $el.find(".pop-status").popover().open()
 
         $el.on "click", ".status", (event) ->
             event.preventDefault()
             event.stopPropagation()
+            return if not isEditable()
+
             target = angular.element(event.currentTarget)
 
             $.fn.popover().closeAll()
 
             task = $model.$modelValue.clone()
             task.status = target.data("status-id")
-
             $model.$setViewValue(task)
-            $repo.save($model.$modelValue).then ->
+
+            onSuccess = ->
+                $confirm.notify("success")
                 $rootScope.$broadcast("history:reload")
+            onError = ->
+                $confirm.notify("error")
+                task.revert()
+                $model.$setViewValue(task)
+            $repo.save($model.$modelValue).then(onSuccess, onError)
 
         $scope.$watch $attrs.ngModel, (task) ->
             render(task) if task
@@ -245,7 +259,7 @@ TaskStatusButtonDirective = ($rootScope, $repo) ->
         require: "ngModel"
     }
 
-module.directive("tgTaskStatusButton", ["$rootScope", "$tgRepo", TaskStatusButtonDirective])
+module.directive("tgTaskStatusButton", ["$rootScope", "$tgRepo", "$tgConfirm", TaskStatusButtonDirective])
 
 
 TaskIsIocaineButtonDirective = ($rootscope, $tgrepo, $confirm) ->
