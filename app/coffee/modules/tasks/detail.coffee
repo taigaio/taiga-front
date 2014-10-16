@@ -262,7 +262,7 @@ TaskStatusButtonDirective = ($rootScope, $repo, $confirm) ->
 module.directive("tgTaskStatusButton", ["$rootScope", "$tgRepo", "$tgConfirm", TaskStatusButtonDirective])
 
 
-TaskIsIocaineButtonDirective = ($rootscope, $tgrepo, $confirm) ->
+TaskIsIocaineButtonDirective = ($rootscope, $tgrepo, $confirm, $loading) ->
     template = _.template("""
       <fieldset title="Feeling a bit overwhelmed by a task? Make sure others know about it by clicking on Iocaine when editing a task. It's possible to become immune to this (fictional) deadly poison by consuming small amounts over time just as it's possible to get better at what you do by occasionally taking on extra challenges!">
         <label for="is-iocaine" class="clickable button button-gray is-iocaine">Iocaine</label>
@@ -271,32 +271,39 @@ TaskIsIocaineButtonDirective = ($rootscope, $tgrepo, $confirm) ->
     """)
 
     link = ($scope, $el, $attrs, $model) ->
-        render = _.once (us) ->
+        render = _.once (task) ->
             $el.html(template())
 
-        refresh = (us) ->
-            if us?.is_iocaine
+        refresh = (task) ->
+            if task?.is_iocaine
                 $el.find('.is-iocaine').addClass('active')
             else
                 $el.find('.is-iocaine').removeClass('active')
 
-        $scope.$watch $attrs.ngModel, (us) ->
-            return if not us
-            render(us)
-            refresh(us)
+        $scope.$watch $attrs.ngModel, (task) ->
+            return if not task
+            render(task)
+            refresh(task)
 
         $scope.$on "$destroy", ->
             $el.off()
 
         $el.on "click", ".is-iocaine", (event) ->
-            us = $model.$modelValue.clone()
-            us.is_iocaine = not us.is_iocaine
-            $model.$setViewValue(us)
+            task = $model.$modelValue.clone()
+            task.is_iocaine = not task.is_iocaine
+            $model.$setViewValue(task)
+            $loading.start($el.find('label'))
+
             promise = $tgrepo.save($model.$modelValue)
             promise.then ->
+                $confirm.notify("success")
                 $rootscope.$broadcast("history:reload")
+
             promise.then null, ->
                 $confirm.notify("error")
+
+            promise.finally ->
+                $loading.finish($el.find('label'))
 
     return {
         link: link
@@ -304,4 +311,4 @@ TaskIsIocaineButtonDirective = ($rootscope, $tgrepo, $confirm) ->
         require: "ngModel"
     }
 
-module.directive("tgTaskIsIocaineButton", ["$rootScope", "$tgRepo", "$tgConfirm", TaskIsIocaineButtonDirective])
+module.directive("tgTaskIsIocaineButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", TaskIsIocaineButtonDirective])
