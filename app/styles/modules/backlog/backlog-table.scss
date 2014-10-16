@@ -134,6 +134,14 @@
             background: lighten($green-taiga, 60%);
             box-shadow: 1px 1px 10px rgba($black, .1);
         }
+        .points {
+            .not-clickable {
+                &:hover {
+                    color: $black;
+                    cursor: text;
+                }
+            }
+        }
     }
     .row-selected {
         @include transition (background .2s ease-in);
