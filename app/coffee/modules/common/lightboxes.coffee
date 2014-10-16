@@ -127,7 +127,7 @@ module.directive("lightbox", ["lightboxService", LightboxDirective])
 
 # Issue/Userstory blocking message lightbox directive.
 
-BlockLightboxDirective = ($rootscope, $tgrepo, $confirm, lightboxService) ->
+BlockLightboxDirective = ($rootscope, $tgrepo, $confirm, lightboxService, $loading) ->
     link = ($scope, $el, $attrs, $model) ->
         $el.find("h2.title").text($attrs.title)
 
@@ -135,21 +135,25 @@ BlockLightboxDirective = ($rootscope, $tgrepo, $confirm, lightboxService) ->
             $el.find(".reason").val($model.$modelValue.blocked_note)
             lightboxService.open($el)
 
-        $scope.$on "unblock", ->
+        $scope.$on "unblock", (event, model, finishCallback) ->
             item = $model.$modelValue.clone()
             item.is_blocked = false
             item.blocked_note = ""
-            $model.$setViewValue(item)
 
-            promise = $tgrepo.save($model.$modelValue)
+            promise = $tgrepo.save(item)
             promise.then ->
                 $confirm.notify("success")
                 $rootscope.$broadcast("history:reload")
+                $model.$setViewValue(item)
+                finishCallback()
 
             promise.then null, ->
                 $confirm.notify("error")
                 item.revert()
                 $model.$setViewValue(item)
+
+            promise.finally ->
+                finishCallback()
 
         $scope.$on "$destroy", ->
             $el.off()
@@ -162,6 +166,8 @@ BlockLightboxDirective = ($rootscope, $tgrepo, $confirm, lightboxService) ->
             item.blocked_note = $el.find(".reason").val()
             $model.$setViewValue(item)
 
+            $loading.start($el.find(".button-green"))
+
             promise = $tgrepo.save($model.$modelValue)
             promise.then ->
                 $confirm.notify("success")
@@ -172,7 +178,9 @@ BlockLightboxDirective = ($rootscope, $tgrepo, $confirm, lightboxService) ->
                 item.revert()
                 $model.$setViewValue(item)
 
-            lightboxService.close($el)
+            promise.finally ->
+                $loading.finish($el.find(".button-green"))
+                lightboxService.close($el)
 
     return {
         templateUrl: "/partials/views/modules/lightbox-block.html"
@@ -180,7 +188,7 @@ BlockLightboxDirective = ($rootscope, $tgrepo, $confirm, lightboxService) ->
         require: "ngModel"
     }
 
-module.directive("tgLbBlock", ["$rootScope", "$tgRepo", "$tgConfirm", "lightboxService", BlockLightboxDirective])
+module.directive("tgLbBlock", ["$rootScope", "$tgRepo", "$tgConfirm", "lightboxService", "$tgLoading", BlockLightboxDirective])
 
 
 #############################################################################

@@ -339,7 +339,7 @@ module.directive("tgAssignedTo", ["$rootScope", "$tgConfirm", "$tgRepo", Assigne
 ## Block Button directive
 #############################################################################
 
-BlockButtonDirective = ($rootscope) ->
+BlockButtonDirective = ($rootscope, $loading) ->
     template = _.template("""
       <a class="button button-gray item-block">Block</a>
       <a class="button button-red item-unblock">Unblock</a>
@@ -366,7 +366,11 @@ BlockButtonDirective = ($rootscope) ->
             $rootscope.$broadcast("block", $model.$modelValue)
 
         $el.on "click", ".item-unblock", (event) ->
-            $rootscope.$broadcast("unblock", $model.$modelValue)
+            $loading.start($el.find(".item-unblock"))
+            finish = ->
+                $loading.finish($el.find(".item-unblock"))
+
+            $rootscope.$broadcast("unblock", $model.$modelValue, finish)
 
         $scope.$on "$destroy", ->
             $el.off()
@@ -377,7 +381,7 @@ BlockButtonDirective = ($rootscope) ->
         require: "ngModel"
     }
 
-module.directive("tgBlockButton", ["$rootScope", BlockButtonDirective])
+module.directive("tgBlockButton", ["$rootScope", "$tgLoading", BlockButtonDirective])
 
 #############################################################################
 ## Delete Button directive
