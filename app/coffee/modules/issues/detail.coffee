@@ -186,7 +186,7 @@ module.directive("tgIssueStatusDisplay", IssueStatusDisplayDirective)
 ## Issue status button directive
 #############################################################################
 
-IssueStatusButtonDirective = ($rootScope, $repo, $confirm) ->
+IssueStatusButtonDirective = ($rootScope, $repo, $confirm, $loading) ->
     # Display the status of Issue and you can edit it.
     #
     # Example:
@@ -247,13 +247,19 @@ IssueStatusButtonDirective = ($rootScope, $repo, $confirm) ->
             issue.status = target.data("status-id")
             $model.$setViewValue(issue)
 
+            $scope.$apply()
+
             onSuccess = ->
                 $confirm.notify("success")
                 $rootScope.$broadcast("history:reload")
+                $loading.finish($el.find(".level-name"))
             onError = ->
                 $confirm.notify("error")
                 issue.revert()
                 $model.$setViewValue(issue)
+                $loading.finish($el.find(".level-name"))
+
+            $loading.start($el.find(".level-name"))
             $repo.save($model.$modelValue).then(onSuccess, onError)
 
         $scope.$watch $attrs.ngModel, (issue) ->
@@ -268,13 +274,13 @@ IssueStatusButtonDirective = ($rootScope, $repo, $confirm) ->
         require: "ngModel"
     }
 
-module.directive("tgIssueStatusButton", ["$rootScope", "$tgRepo", "$tgConfirm", IssueStatusButtonDirective])
+module.directive("tgIssueStatusButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", IssueStatusButtonDirective])
 
 #############################################################################
 ## Issue type button directive
 #############################################################################
 
-IssueTypeButtonDirective = ($rootScope, $repo, $confirm) ->
+IssueTypeButtonDirective = ($rootScope, $repo, $confirm, $loading) ->
     # Display the type of Issue and you can edit it.
     #
     # Example:
@@ -335,13 +341,18 @@ IssueTypeButtonDirective = ($rootScope, $repo, $confirm) ->
             issue.type = target.data("type-id")
             $model.$setViewValue(issue)
 
+            $scope.$apply()
+
             onSuccess = ->
                 $confirm.notify("success")
                 $rootScope.$broadcast("history:reload")
+                $loading.finish($el.find(".level-name"))
             onError = ->
                 $confirm.notify("error")
                 issue.revert()
                 $model.$setViewValue(issue)
+                $loading.finish($el.find(".level-name"))
+            $loading.start($el.find(".level-name"))
             $repo.save($model.$modelValue).then(onSuccess, onError)
 
         $scope.$watch $attrs.ngModel, (issue) ->
@@ -356,14 +367,14 @@ IssueTypeButtonDirective = ($rootScope, $repo, $confirm) ->
         require: "ngModel"
     }
 
-module.directive("tgIssueTypeButton", ["$rootScope", "$tgRepo", "$tgConfirm", IssueTypeButtonDirective])
+module.directive("tgIssueTypeButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", IssueTypeButtonDirective])
 
 
 #############################################################################
 ## Issue severity button directive
 #############################################################################
 
-IssueSeverityButtonDirective = ($rootScope, $repo, $confirm) ->
+IssueSeverityButtonDirective = ($rootScope, $repo, $confirm, $loading) ->
     # Display the severity of Issue and you can edit it.
     #
     # Example:
@@ -424,13 +435,18 @@ IssueSeverityButtonDirective = ($rootScope, $repo, $confirm) ->
             issue.severity = target.data("severity-id")
             $model.$setViewValue(issue)
 
+            $scope.$apply()
+
             onSuccess = ->
                 $confirm.notify("success")
                 $rootScope.$broadcast("history:reload")
+                $loading.finish($el.find(".level-name"))
             onError = ->
                 $confirm.notify("error")
                 issue.revert()
                 $model.$setViewValue(issue)
+                $loading.finish($el.find(".level-name"))
+            $loading.start($el.find(".level-name"))
             $repo.save($model.$modelValue).then(onSuccess, onError)
 
         $scope.$watch $attrs.ngModel, (issue) ->
@@ -445,14 +461,14 @@ IssueSeverityButtonDirective = ($rootScope, $repo, $confirm) ->
         require: "ngModel"
     }
 
-module.directive("tgIssueSeverityButton", ["$rootScope", "$tgRepo", "$tgConfirm", IssueSeverityButtonDirective])
+module.directive("tgIssueSeverityButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", IssueSeverityButtonDirective])
 
 
 #############################################################################
 ## Issue priority button directive
 #############################################################################
 
-IssuePriorityButtonDirective = ($rootScope, $repo, $confirm) ->
+IssuePriorityButtonDirective = ($rootScope, $repo, $confirm, $loading) ->
     # Display the priority of Issue and you can edit it.
     #
     # Example:
@@ -513,13 +529,18 @@ IssuePriorityButtonDirective = ($rootScope, $repo, $confirm) ->
             issue.priority = target.data("priority-id")
             $model.$setViewValue(issue)
 
+            $scope.$apply()
+
             onSuccess = ->
                 $confirm.notify("success")
                 $rootScope.$broadcast("history:reload")
+                $loading.finish($el.find(".level-name"))
             onError = ->
                 $confirm.notify("error")
                 issue.revert()
                 $model.$setViewValue(issue)
+                $loading.finish($el.find(".level-name"))
+            $loading.start($el.find(".level-name"))
             $repo.save($model.$modelValue).then(onSuccess, onError)
 
         $scope.$watch $attrs.ngModel, (issue) ->
@@ -534,7 +555,7 @@ IssuePriorityButtonDirective = ($rootScope, $repo, $confirm) ->
         require: "ngModel"
     }
 
-module.directive("tgIssuePriorityButton", ["$rootScope", "$tgRepo", "$tgConfirm", IssuePriorityButtonDirective])
+module.directive("tgIssuePriorityButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", IssuePriorityButtonDirective])
 
 
 #############################################################################

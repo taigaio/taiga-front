@@ -177,7 +177,7 @@ module.directive("tgTaskStatusDisplay", TaskStatusDisplayDirective)
 ## Task status button directive
 #############################################################################
 
-TaskStatusButtonDirective = ($rootScope, $repo, $confirm) ->
+TaskStatusButtonDirective = ($rootScope, $repo, $confirm, $loading) ->
     # Display the status of Task and you can edit it.
     #
     # Example:
@@ -238,13 +238,20 @@ TaskStatusButtonDirective = ($rootScope, $repo, $confirm) ->
             task.status = target.data("status-id")
             $model.$setViewValue(task)
 
+            $scope.$apply()
+
             onSuccess = ->
                 $confirm.notify("success")
                 $rootScope.$broadcast("history:reload")
+                $loading.finish($el.find(".level-name"))
+
             onError = ->
                 $confirm.notify("error")
                 task.revert()
                 $model.$setViewValue(task)
+                $loading.finish($el.find(".level-name"))
+
+            $loading.start($el.find(".level-name"))
             $repo.save($model.$modelValue).then(onSuccess, onError)
 
         $scope.$watch $attrs.ngModel, (task) ->
@@ -259,7 +266,7 @@ TaskStatusButtonDirective = ($rootScope, $repo, $confirm) ->
         require: "ngModel"
     }
 
-module.directive("tgTaskStatusButton", ["$rootScope", "$tgRepo", "$tgConfirm", TaskStatusButtonDirective])
+module.directive("tgTaskStatusButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", TaskStatusButtonDirective])
 
 
 TaskIsIocaineButtonDirective = ($rootscope, $tgrepo, $confirm, $loading) ->

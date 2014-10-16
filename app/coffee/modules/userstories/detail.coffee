@@ -398,7 +398,7 @@ module.directive("tgUsEstimation", ["$rootScope", "$tgRepo", "$tgConfirm", UsEst
 ## User story status button directive
 #############################################################################
 
-UsStatusButtonDirective = ($rootScope, $repo, $confirm) ->
+UsStatusButtonDirective = ($rootScope, $repo, $confirm, $loading) ->
     # Display the status of a US and you can edit it.
     #
     # Example:
@@ -460,13 +460,20 @@ UsStatusButtonDirective = ($rootScope, $repo, $confirm) ->
             us.status = target.data("status-id")
             $model.$setViewValue(us)
 
+            $scope.$apply()
+
             onSuccess = ->
                 $confirm.notify("success")
                 $rootScope.$broadcast("history:reload")
+                $loading.finish($el.find(".level-name"))
+
             onError = ->
                 $confirm.notify("error")
                 us.revert()
                 $model.$setViewValue(us)
+                $loading.finish($el.find(".level-name"))
+
+            $loading.start($el.find(".level-name"))
             $repo.save($model.$modelValue).then(onSuccess, onError)
 
         $scope.$watch $attrs.ngModel, (us) ->
@@ -481,7 +488,7 @@ UsStatusButtonDirective = ($rootScope, $repo, $confirm) ->
         require: "ngModel"
     }
 
-module.directive("tgUsStatusButton", ["$rootScope", "$tgRepo", "$tgConfirm", UsStatusButtonDirective])
+module.directive("tgUsStatusButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", UsStatusButtonDirective])
 
 
 #############################################################################

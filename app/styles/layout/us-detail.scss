@@ -259,6 +259,10 @@
     .level-name {
         color: darken($whitish, 20%);
         float: right;
+        &.loading span {
+            @include animation (loading .5s linear);
+            @include animation (spin 1s linear infinite);
+        }
     }
 }
 
