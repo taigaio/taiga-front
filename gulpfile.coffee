@@ -24,6 +24,7 @@ paths = {}
 paths.app = "app/"
 paths.dist = "dist/"
 paths.tmp = "tmp/"
+paths.extras = "extras/"
 
 paths.jade = [
     paths.app + "index.jade",
@@ -175,7 +176,7 @@ gulp.task "conf", ->
     gulp.src("conf/main.json")
         .pipe(wrap("angular.module('taigaBase').value('localconf', <%= contents %>);"))
         .pipe(concat("conf.js"))
-        .pipe(gulp.dest(paths.tmp));
+        .pipe(gulp.dest(paths.tmp))
 
 gulp.task "locales", ->
     gulp.src("app/locales/en/app.json")
@@ -212,7 +213,7 @@ gulp.task "app-watch", ["coffee", "conf", "locales"], ->
 
     gulp.src(_paths)
         .pipe(concat("app.js"))
-        .pipe(gulp.dest(paths.dist + "js/"));
+        .pipe(gulp.dest(paths.dist + "js/"))
 
 gulp.task "app-deploy", ["coffee", "conf", "locales"], ->
     _paths = [
@@ -224,7 +225,7 @@ gulp.task "app-deploy", ["coffee", "conf", "locales"], ->
     gulp.src(_paths)
         .pipe(concat("app.js"))
         .pipe(uglify({mangle:false, preserveComments: false}))
-        .pipe(gulp.dest(paths.dist + "js/"));
+        .pipe(gulp.dest(paths.dist + "js/"))
 
 ##############################################################################
 # Common tasks
@@ -251,7 +252,12 @@ gulp.task "copy-plugin-templates",  ->
     gulp.src("#{paths.app}/plugins/**/templates/*")
         .pipe(gulp.dest("#{paths.dist}/plugins/"))
 
-gulp.task "copy", ["copy-fonts", "copy-images", "copy-plugin-templates", "copy-svg"]
+gulp.task "copy-extras", ->
+    gulp.src("#{paths.extras}/*")
+        .pipe(gulp.dest("#{paths.dist}/"))
+
+
+gulp.task "copy", ["copy-fonts", "copy-images", "copy-plugin-templates", "copy-svg", "copy-extras"]
 
 gulp.task "express", ->
     express = require("express")
