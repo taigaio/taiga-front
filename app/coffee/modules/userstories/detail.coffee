@@ -488,7 +488,7 @@ module.directive("tgUsStatusButton", ["$rootScope", "$tgRepo", "$tgConfirm", UsS
 ## User story team requirements button directive
 #############################################################################
 
-UsTeamRequirementButtonDirective = ($rootscope, $tgrepo, $confirm) ->
+UsTeamRequirementButtonDirective = ($rootscope, $tgrepo, $confirm, $loading) ->
     template = _.template("""
       <label for="team-requirement" class="button button-gray team-requirement">Team requirement</label>
       <input type="checkbox" id="team-requirement" name="team-requirement"/>
@@ -519,10 +519,13 @@ UsTeamRequirementButtonDirective = ($rootscope, $tgrepo, $confirm) ->
                 us = $model.$modelValue.clone()
                 us.team_requirement = not us.team_requirement
                 $model.$setViewValue(us)
+                $loading.start($el.find('label'))
                 promise = $tgrepo.save($model.$modelValue)
                 promise.then ->
+                    $loading.finish($el.find('label'))
                     $rootscope.$broadcast("history:reload")
                 promise.then null, ->
+                    $loading.finish($el.find('label'))
                     $confirm.notify("error")
                     us.revert()
                     $model.$setViewValue(us)
@@ -533,14 +536,14 @@ UsTeamRequirementButtonDirective = ($rootscope, $tgrepo, $confirm) ->
         require: "ngModel"
     }
 
-module.directive("tgUsTeamRequirementButton", ["$rootScope", "$tgRepo", "$tgConfirm", UsTeamRequirementButtonDirective])
+module.directive("tgUsTeamRequirementButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", UsTeamRequirementButtonDirective])
 
 
 #############################################################################
 ## User story client requirements button directive
 #############################################################################
 
-UsClientRequirementButtonDirective = ($rootscope, $tgrepo, $confirm) ->
+UsClientRequirementButtonDirective = ($rootscope, $tgrepo, $confirm, $loading) ->
     template = _.template("""
       <label for="client-requirement" class="button button-gray client-requirement">Client requirement</label>
       <input type="checkbox" id="client-requirement" name="client-requirement"/>
@@ -571,17 +574,22 @@ UsClientRequirementButtonDirective = ($rootscope, $tgrepo, $confirm) ->
                 us = $model.$modelValue.clone()
                 us.client_requirement = not us.client_requirement
                 $model.$setViewValue(us)
+                $loading.start($el.find("label"))
                 promise = $tgrepo.save($model.$modelValue)
                 promise.then ->
+                    $loading.finish($el.find("label"))
                     $rootscope.$broadcast("history:reload")
+                    refresh(us)
                 promise.then null, ->
+                    $loading.finish($el.find("label"))
                     $confirm.notify("error")
                     us.revert()
                     $model.$setViewValue(us)
+                    refresh(us)
 
     return {
         link: link
         restrict: "EA"
         require: "ngModel"
     }
-module.directive("tgUsClientRequirementButton", ["$rootScope", "$tgRepo", "$tgConfirm", UsClientRequirementButtonDirective])
+module.directive("tgUsClientRequirementButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", UsClientRequirementButtonDirective])
