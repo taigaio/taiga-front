@@ -186,7 +186,7 @@ module.directive("tgIssueStatusDisplay", IssueStatusDisplayDirective)
 ## Issue status button directive
 #############################################################################
 
-IssueStatusButtonDirective = ($rootScope, $repo) ->
+IssueStatusButtonDirective = ($rootScope, $repo, $confirm) ->
     # Display the status of Issue and you can edit it.
     #
     # Example:
@@ -195,12 +195,13 @@ IssueStatusButtonDirective = ($rootScope, $repo) ->
     # Requirements:
     #   - Issue object (ng-model)
     #   - scope.statusById object
+    #   - $scope.project.my_permissions
 
     template = _.template("""
-    <div class="status-data clickable">
+    <div class="status-data <% if(editable){ %>clickable<% }%>">
         <span class="level" style="background-color:<%= status.color %>"></span>
         <span class="status-status"><%= status.name %></span>
-        <span class="icon icon-arrow-bottom"></span>
+        <% if(editable){ %><span class="icon icon-arrow-bottom"></span><% }%>
         <span class="level-name">status</span>
 
         <ul class="popover pop-status">
@@ -213,34 +214,47 @@ IssueStatusButtonDirective = ($rootScope, $repo) ->
     """) #TODO: i18n
 
     link = ($scope, $el, $attrs, $model) ->
+        isEditable = ->
+            return $scope.project.my_permissions.indexOf("modify_issue") != -1
+
         render = (issue) =>
             status = $scope.statusById[issue.status]
 
             html = template({
                 status: status
                 statuses: $scope.statusList
+                editable: isEditable()
             })
             $el.html(html)
 
         $el.on "click", ".status-data", (event) ->
             event.preventDefault()
             event.stopPropagation()
+            return if not isEditable()
 
             $el.find(".pop-status").popover().open()
 
         $el.on "click", ".status", (event) ->
             event.preventDefault()
             event.stopPropagation()
+            return if not isEditable()
+
             target = angular.element(event.currentTarget)
 
             $.fn.popover().closeAll()
 
             issue = $model.$modelValue.clone()
             issue.status = target.data("status-id")
-
             $model.$setViewValue(issue)
-            $repo.save($model.$modelValue).then ->
+
+            onSuccess = ->
+                $confirm.notify("success")
                 $rootScope.$broadcast("history:reload")
+            onError = ->
+                $confirm.notify("error")
+                issue.revert()
+                $model.$setViewValue(issue)
+            $repo.save($model.$modelValue).then(onSuccess, onError)
 
         $scope.$watch $attrs.ngModel, (issue) ->
             render(issue) if issue
@@ -254,13 +268,13 @@ IssueStatusButtonDirective = ($rootScope, $repo) ->
         require: "ngModel"
     }
 
-module.directive("tgIssueStatusButton", ["$rootScope", "$tgRepo", IssueStatusButtonDirective])
+module.directive("tgIssueStatusButton", ["$rootScope", "$tgRepo", "$tgConfirm", IssueStatusButtonDirective])
 
 #############################################################################
 ## Issue type button directive
 #############################################################################
 
-IssueTypeButtonDirective = ($rootScope, $repo) ->
+IssueTypeButtonDirective = ($rootScope, $repo, $confirm) ->
     # Display the type of Issue and you can edit it.
     #
     # Example:
@@ -269,12 +283,13 @@ IssueTypeButtonDirective = ($rootScope, $repo) ->
     # Requirements:
     #   - Issue object (ng-model)
     #   - scope.typeById object
+    #   - $scope.project.my_permissions
 
     template = _.template("""
-    <div class="type-data clickable">
+    <div class="type-data <% if(editable){ %>clickable<% }%>">
         <span class="level" style="background-color:<%= type.color %>"></span>
         <span class="type-type"><%= type.name %></span>
-        <span class="icon icon-arrow-bottom"></span>
+        <% if(editable){ %><span class="icon icon-arrow-bottom"></span><% }%>
         <span class="level-name">type</span>
 
         <ul class="popover pop-type">
@@ -287,34 +302,47 @@ IssueTypeButtonDirective = ($rootScope, $repo) ->
     """) #TODO: i18n
 
     link = ($scope, $el, $attrs, $model) ->
+        isEditable = ->
+            return $scope.project.my_permissions.indexOf("modify_issue") != -1
+
         render = (issue) =>
             type = $scope.typeById[issue.type]
 
             html = template({
                 type: type
                 typees: $scope.typeList
+                editable: isEditable()
             })
             $el.html(html)
 
         $el.on "click", ".type-data", (event) ->
             event.preventDefault()
             event.stopPropagation()
+            return if not isEditable()
 
             $el.find(".pop-type").popover().open()
 
         $el.on "click", ".type", (event) ->
             event.preventDefault()
             event.stopPropagation()
+            return if not isEditable()
+
             target = angular.element(event.currentTarget)
 
             $.fn.popover().closeAll()
 
             issue = $model.$modelValue.clone()
             issue.type = target.data("type-id")
-
             $model.$setViewValue(issue)
-            $repo.save($model.$modelValue).then ->
+
+            onSuccess = ->
+                $confirm.notify("success")
                 $rootScope.$broadcast("history:reload")
+            onError = ->
+                $confirm.notify("error")
+                issue.revert()
+                $model.$setViewValue(issue)
+            $repo.save($model.$modelValue).then(onSuccess, onError)
 
         $scope.$watch $attrs.ngModel, (issue) ->
             render(issue) if issue
@@ -328,14 +356,14 @@ IssueTypeButtonDirective = ($rootScope, $repo) ->
         require: "ngModel"
     }
 
-module.directive("tgIssueTypeButton", ["$rootScope", "$tgRepo", IssueTypeButtonDirective])
+module.directive("tgIssueTypeButton", ["$rootScope", "$tgRepo", "$tgConfirm", IssueTypeButtonDirective])
 
 
 #############################################################################
 ## Issue severity button directive
 #############################################################################
 
-IssueSeverityButtonDirective = ($rootScope, $repo) ->
+IssueSeverityButtonDirective = ($rootScope, $repo, $confirm) ->
     # Display the severity of Issue and you can edit it.
     #
     # Example:
@@ -344,12 +372,13 @@ IssueSeverityButtonDirective = ($rootScope, $repo) ->
     # Requirements:
     #   - Issue object (ng-model)
     #   - scope.severityById object
+    #   - $scope.project.my_permissions
 
     template = _.template("""
-    <div class="severity-data clickable">
+    <div class="severity-data <% if(editable){ %>clickable<% }%>">
         <span class="level" style="background-color:<%= severity.color %>"></span>
         <span class="severity-severity"><%= severity.name %></span>
-        <span class="icon icon-arrow-bottom"></span>
+        <% if(editable){ %><span class="icon icon-arrow-bottom"></span><% }%>
         <span class="level-name">severity</span>
 
         <ul class="popover pop-severity">
@@ -362,34 +391,47 @@ IssueSeverityButtonDirective = ($rootScope, $repo) ->
     """) #TODO: i18n
 
     link = ($scope, $el, $attrs, $model) ->
+        isEditable = ->
+            return $scope.project.my_permissions.indexOf("modify_issue") != -1
+
         render = (issue) =>
             severity = $scope.severityById[issue.severity]
 
             html = template({
                 severity: severity
                 severityes: $scope.severityList
+                editable: isEditable()
             })
             $el.html(html)
 
         $el.on "click", ".severity-data", (event) ->
             event.preventDefault()
             event.stopPropagation()
+            return if not isEditable()
 
             $el.find(".pop-severity").popover().open()
 
         $el.on "click", ".severity", (event) ->
             event.preventDefault()
             event.stopPropagation()
+            return if not isEditable()
+
             target = angular.element(event.currentTarget)
 
             $.fn.popover().closeAll()
 
             issue = $model.$modelValue.clone()
             issue.severity = target.data("severity-id")
-
             $model.$setViewValue(issue)
-            $repo.save($model.$modelValue).then ->
+
+            onSuccess = ->
+                $confirm.notify("success")
                 $rootScope.$broadcast("history:reload")
+            onError = ->
+                $confirm.notify("error")
+                issue.revert()
+                $model.$setViewValue(issue)
+            $repo.save($model.$modelValue).then(onSuccess, onError)
 
         $scope.$watch $attrs.ngModel, (issue) ->
             render(issue) if issue
@@ -403,14 +445,14 @@ IssueSeverityButtonDirective = ($rootScope, $repo) ->
         require: "ngModel"
     }
 
-module.directive("tgIssueSeverityButton", ["$rootScope", "$tgRepo", IssueSeverityButtonDirective])
+module.directive("tgIssueSeverityButton", ["$rootScope", "$tgRepo", "$tgConfirm", IssueSeverityButtonDirective])
 
 
 #############################################################################
 ## Issue priority button directive
 #############################################################################
 
-IssuePriorityButtonDirective = ($rootScope, $repo) ->
+IssuePriorityButtonDirective = ($rootScope, $repo, $confirm) ->
     # Display the priority of Issue and you can edit it.
     #
     # Example:
@@ -419,12 +461,13 @@ IssuePriorityButtonDirective = ($rootScope, $repo) ->
     # Requirements:
     #   - Issue object (ng-model)
     #   - scope.priorityById object
+    #   - $scope.project.my_permissions
 
     template = _.template("""
-    <div class="priority-data clickable">
+    <div class="priority-data <% if(editable){ %>clickable<% }%>">
         <span class="level" style="background-color:<%= priority.color %>"></span>
         <span class="priority-priority"><%= priority.name %></span>
-        <span class="icon icon-arrow-bottom"></span>
+        <% if(editable){ %><span class="icon icon-arrow-bottom"></span><% }%>
         <span class="level-name">priority</span>
 
         <ul class="popover pop-priority">
@@ -437,34 +480,47 @@ IssuePriorityButtonDirective = ($rootScope, $repo) ->
     """) #TODO: i18n
 
     link = ($scope, $el, $attrs, $model) ->
+        isEditable = ->
+            return $scope.project.my_permissions.indexOf("modify_issue") != -1
+
         render = (issue) =>
             priority = $scope.priorityById[issue.priority]
 
             html = template({
                 priority: priority
                 priorityes: $scope.priorityList
+                editable: isEditable()
             })
             $el.html(html)
 
         $el.on "click", ".priority-data", (event) ->
             event.preventDefault()
             event.stopPropagation()
+            return if not isEditable()
 
             $el.find(".pop-priority").popover().open()
 
         $el.on "click", ".priority", (event) ->
             event.preventDefault()
             event.stopPropagation()
+            return if not isEditable()
+
             target = angular.element(event.currentTarget)
 
             $.fn.popover().closeAll()
 
             issue = $model.$modelValue.clone()
             issue.priority = target.data("priority-id")
-
             $model.$setViewValue(issue)
-            $repo.save($model.$modelValue).then ->
+
+            onSuccess = ->
+                $confirm.notify("success")
                 $rootScope.$broadcast("history:reload")
+            onError = ->
+                $confirm.notify("error")
+                issue.revert()
+                $model.$setViewValue(issue)
+            $repo.save($model.$modelValue).then(onSuccess, onError)
 
         $scope.$watch $attrs.ngModel, (issue) ->
             render(issue) if issue
@@ -478,7 +534,7 @@ IssuePriorityButtonDirective = ($rootScope, $repo) ->
         require: "ngModel"
     }
 
-module.directive("tgIssuePriorityButton", ["$rootScope", "$tgRepo", IssuePriorityButtonDirective])
+module.directive("tgIssuePriorityButton", ["$rootScope", "$tgRepo", "$tgConfirm", IssuePriorityButtonDirective])
 
 
 #############################################################################
