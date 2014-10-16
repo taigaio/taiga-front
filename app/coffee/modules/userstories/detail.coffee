@@ -441,7 +441,6 @@ UsStatusButtonDirective = ($rootScope, $repo, $confirm, $loading) ->
         render = (us) =>
             status = $scope.statusById[us.status]
 
-            console.log isEditable()
             html = template({
                 status: status
                 statuses: $scope.statusList
