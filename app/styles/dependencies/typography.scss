@@ -2,7 +2,7 @@
 
 // Font face
 
-@each $font-face in DroidSans, DroidSans-Bold, OpenSans-CondLight-webfont, taiga {
+@each $font-face in OpenSans-CondLight, opensans-regular, opensans-semibold, taiga {
     @font-face {
         font-family: '#{$font-face}';
         src: url('../fonts/#{$font-face}.eot?#iefix') format('embedded-opentype'),
@@ -35,9 +35,9 @@ h6 {
 %xxlarge {font-size: 3rem;}
 
 // __Font Types__ //
-%title {font-family: 'OpenSans-CondLight-webfont';}
-%text {font-family: 'DroidSans';}
-%bold {font-family: 'DroidSans-Bold';}
+%title {font-family: 'OpenSans-CondLight';}
+%text {font-family: 'opensans-regular'; line-height: 1.3rem;}
+%bold {font-family: 'opensans-semibold';}
 %taiga {font-family: 'taiga';}
 
 h1 {
