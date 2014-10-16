@@ -236,9 +236,11 @@
         @include clearfix();
         @include transition(background .2s ease-in);
         background: darken($whitish, 5%);
-        margin-bottom: .5rem;
         padding: .5rem;
         padding-right: 1rem;
+        div {
+            margin-bottom: .5rem;
+        }
         &:last-child {
             margin: 0;
         }
