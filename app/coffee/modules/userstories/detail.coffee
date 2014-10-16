@@ -263,7 +263,7 @@ UsEstimationDirective = ($rootScope, $repo, $confirm) ->
             <span class="role">total</span>
         </li>
         <% _.each(roles, function(role) { %>
-        <li class="total clickable" data-role-id="<%- role.id %>">
+        <li class="total <% if(editable){ %>clickable<% } %>" data-role-id="<%- role.id %>">
             <span class="points"><%- role.points %></span>
             <span class="role"><%- role.name %></span></li>
         <% }); %>
@@ -289,6 +289,11 @@ UsEstimationDirective = ($rootScope, $repo, $confirm) ->
     link = ($scope, $el, $attrs, $model) ->
         saveAfterModify = $attrs.saveAfterModify or false
 
+        isEditable = ->
+            if $model.$modelValue.id
+                return $scope.project.my_permissions.indexOf("modify_us") != -1
+            return $scope.project.my_permissions.indexOf("add_us") != -1
+
         render = (us) ->
             totalPoints = us.total_points or 0
             computableRoles = _.filter($scope.project.roles, "computable")
@@ -301,7 +306,12 @@ UsEstimationDirective = ($rootScope, $repo, $confirm) ->
                 role.points = if pointObj? and pointObj.name? then pointObj.name else "?"
                 return role
 
-            html = mainTemplate({totalPoints: totalPoints, roles: roles})
+            ctx = {
+                totalPoints: totalPoints
+                roles: roles
+                editable: isEditable()
+            }
+            html = mainTemplate(ctx)
             $el.html(html)
 
         renderPoints = (target, us, roleId) ->
@@ -337,6 +347,8 @@ UsEstimationDirective = ($rootScope, $repo, $confirm) ->
         $el.on "click", ".total.clickable", (event) ->
             event.preventDefault()
             event.stopPropagation()
+            return if not isEditable()
+
             target = angular.element(event.currentTarget)
             roleId = target.data("role-id")
 
@@ -349,6 +361,7 @@ UsEstimationDirective = ($rootScope, $repo, $confirm) ->
         $el.on "click", ".point", (event) ->
             event.preventDefault()
             event.stopPropagation()
+            return if not isEditable()
 
             target = angular.element(event.currentTarget)
             roleId = target.data("role-id")
@@ -356,28 +369,24 @@ UsEstimationDirective = ($rootScope, $repo, $confirm) ->
 
             $el.find(".popover").popover().close()
 
-            us = $model.$modelValue
+            us = angular.copy($model.$modelValue)
+            us.points[roleId] = pointId
+            us.total_points = calculateTotalPoints(us)
+            $model.$setViewValue(us)
 
-            points = _.clone(us.points, true)
-            points[roleId] = pointId
-
-            # NOTE: your past self wants that you make a refactor of this
-            $scope.$apply ->
-                us.points = points
-                us.total_points = calculateTotalPoints(us)
-
-                if saveAfterModify
-                    onSuccess = ->
-                        $repo.refresh(us).then ->
-                            render(us)
-                        $rootScope.$broadcast("history:reload")
-                    onError = ->
-                        $repo.refresh(us).then ->
-                            render(us)
-                        $confirm.notify("error")
-                    $repo.save(us).then(onSuccess, onError)
-                else
-                    render(us)
+            if saveAfterModify
+                # Edit in the detail page
+                onSuccess = ->
+                    $confirm.notify("success")
+                    $rootScope.$broadcast("history:reload")
+                onError = ->
+                    $confirm.notify("error")
+                    us.revert()
+                    $model.$setViewValue(us)
+                $repo.save($model.$modelValue).then(onSuccess, onError)
+            else
+                # Create or eedit in the lightbox
+                render($model.$modelValue)
 
         $scope.$watch $attrs.ngModel, (us) ->
             render(us) if us
