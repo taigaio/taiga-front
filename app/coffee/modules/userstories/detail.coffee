@@ -398,7 +398,7 @@ module.directive("tgUsEstimation", ["$rootScope", "$tgRepo", "$tgConfirm", UsEst
 ## User story status button directive
 #############################################################################
 
-UsStatusButtonDirective = ($rootScope, $repo) ->
+UsStatusButtonDirective = ($rootScope, $repo, $confirm) ->
     # Display the status of a US and you can edit it.
     #
     # Example:
@@ -407,12 +407,13 @@ UsStatusButtonDirective = ($rootScope, $repo) ->
     # Requirements:
     #   - Us object (ng-model)
     #   - scope.statusById object
+    #   - $scope.project.my_permissions
 
     template = _.template("""
-    <div class="status-data clickable">
+    <div class="status-data <% if(editable){ %>clickable<% }%>">
         <span class="level" style="background-color:<%= status.color %>"></span>
         <span class="status-status"><%= status.name %></span>
-        <span class="icon icon-arrow-bottom"></span>
+        <% if(editable){ %><span class="icon icon-arrow-bottom"></span><% }%>
         <span class="level-name">status</span>
 
         <ul class="popover pop-status">
@@ -425,34 +426,48 @@ UsStatusButtonDirective = ($rootScope, $repo) ->
     """) #TODO: i18n
 
     link = ($scope, $el, $attrs, $model) ->
+        isEditable = ->
+            return $scope.project.my_permissions.indexOf("modify_us") != -1
+
         render = (us) =>
             status = $scope.statusById[us.status]
 
+            console.log isEditable()
             html = template({
                 status: status
                 statuses: $scope.statusList
+                editable: isEditable()
             })
             $el.html(html)
 
         $el.on "click", ".status-data", (event) ->
             event.preventDefault()
             event.stopPropagation()
+            return if not isEditable()
 
             $el.find(".pop-status").popover().open()
 
         $el.on "click", ".status", (event) ->
             event.preventDefault()
             event.stopPropagation()
+            return if not isEditable()
+
             target = angular.element(event.currentTarget)
 
             $.fn.popover().closeAll()
 
             us = $model.$modelValue.clone()
             us.status = target.data("status-id")
-
             $model.$setViewValue(us)
-            $repo.save($model.$modelValue).then ->
+
+            onSuccess = ->
+                $confirm.notify("success")
                 $rootScope.$broadcast("history:reload")
+            onError = ->
+                $confirm.notify("error")
+                us.revert()
+                $model.$setViewValue(us)
+            $repo.save($model.$modelValue).then(onSuccess, onError)
 
         $scope.$watch $attrs.ngModel, (us) ->
             render(us) if us
@@ -466,7 +481,7 @@ UsStatusButtonDirective = ($rootScope, $repo) ->
         require: "ngModel"
     }
 
-module.directive("tgUsStatusButton", ["$rootScope", "$tgRepo", UsStatusButtonDirective])
+module.directive("tgUsStatusButton", ["$rootScope", "$tgRepo", "$tgConfirm", UsStatusButtonDirective])
 
 
 #############################################################################
