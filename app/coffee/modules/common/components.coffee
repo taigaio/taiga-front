@@ -255,7 +255,7 @@ module.directive("tgWatchers", ["$rootScope", "$tgConfirm", "$tgRepo", WatchersD
 ## Assigned to directive
 #############################################################################
 
-AssignedToDirective = ($rootscope, $confirm, $tgrepo) ->
+AssignedToDirective = ($rootscope, $confirm, $tgrepo, $loading) ->
     # You have to include a div with the tg-lb-assignedto directive in the page
     # where use this directive
     #
@@ -286,14 +286,18 @@ AssignedToDirective = ($rootscope, $confirm, $tgrepo) ->
 
     link = ($scope, $el, $attrs, $model) ->
         save = (model) ->
+            $loading.start($el)
+
             promise = $tgrepo.save($model.$modelValue)
             promise.then ->
+                $loading.finish($el)
                 $confirm.notify("success")
                 renderAssignedTo(model)
                 $rootscope.$broadcast("history:reload")
             promise.then null, ->
                 model.revert()
                 $confirm.notify("error")
+                $loading.finish($el)
 
         renderAssignedTo = (issue) ->
             assignedToId = issue?.assigned_to
@@ -333,7 +337,7 @@ AssignedToDirective = ($rootscope, $confirm, $tgrepo) ->
     }
 
 
-module.directive("tgAssignedTo", ["$rootScope", "$tgConfirm", "$tgRepo", AssignedToDirective])
+module.directive("tgAssignedTo", ["$rootScope", "$tgConfirm", "$tgRepo", "$tgLoading", AssignedToDirective])
 
 #############################################################################
 ## Block Button directive

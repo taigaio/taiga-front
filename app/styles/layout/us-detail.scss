@@ -338,3 +338,16 @@
         }
     }
 }
+.us-assigned-to {
+    &.loading {
+        width: 100%;
+        span {
+            width: 100%;
+            text-align: center;
+            padding: 20px 0px;
+            font-size: 30px;
+            @include animation (loading .5s linear);
+            @include animation (spin 1s linear infinite);
+        }
+    }
+}
