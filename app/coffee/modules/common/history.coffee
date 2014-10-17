@@ -282,7 +282,10 @@ HistoryDirective = ($log, $loading) ->
             return $scope.usersById[userId]?.full_name_display
 
         getUserAvatar = (userId) ->
-            return $scope.usersById[userId]?.photo
+            if $scope.usersById[userId]?
+                return $scope.usersById[userId].photo
+            else
+                return "/images/unnamed.png"
 
         countChanges = (comment) ->
             return _.keys(comment.values_diff).length
@@ -373,7 +376,7 @@ HistoryDirective = ($log, $loading) ->
 
             return templateActivity({
                 avatar: getUserAvatar(comment.user.pk)
-                userFullName: getUserFullName(comment.user.pk)
+                userFullName: comment.user.name
                 creationDate: moment(comment.created_at).format("DD MMM YYYY HH:mm")
                 comment: comment.comment_html
                 changesText: renderChangesHelperText(comment)
@@ -388,7 +391,7 @@ HistoryDirective = ($log, $loading) ->
         renderChange = (change) ->
             return templateActivity({
                 avatar: getUserAvatar(change.user.pk)
-                userFullName: getUserFullName(change.user.pk)
+                userFullName: change.user.name
                 creationDate: moment(change.created_at).format("DD MMM YYYY HH:mm")
                 comment: change.comment_html
                 changes: renderChangeEntries(change, false)
