@@ -433,7 +433,7 @@ module.directive("tgDeleteButton", ["$tgRepo", "$tgConfirm", "$tgNavUrls", "$tgL
 ## Editable subject directive
 #############################################################################
 
-EditableSubjectDirective = ($rootscope, $tgrepo, $confirm, $navurls, $location) ->
+EditableSubjectDirective = ($rootscope, $tgrepo, $confirm, $navurls, $location, $loading) ->
     viewTemplate = _.template("""
       <%- item.subject %>
       <% if (canEdit) { %>
@@ -443,6 +443,9 @@ EditableSubjectDirective = ($rootscope, $tgrepo, $confirm, $navurls, $location) 
 
     editTemplate = _.template("""
       <input type="text" value="<%- item.subject %>" data-required="true" data-maxlength="500"/>
+      <div class="save-container">
+        <a class="save icon icon-floppy" href="" title="Save" />
+      </div>
     """)
 
     link = ($scope, $el, $attrs, $model) ->
@@ -455,6 +458,19 @@ EditableSubjectDirective = ($rootscope, $tgrepo, $confirm, $navurls, $location) 
             else
                 canEdit = $scope.project.my_permissions.indexOf($attrs.requiredPerm) != -1
                 $el.html(viewTemplate({item: $model.$modelValue, canEdit: canEdit}))
+
+        save = ->
+            $model.$modelValue.subject = $el.find('input').val()
+            $loading.start($el.find('.save-container'))
+            promise = $tgrepo.save($model.$modelValue)
+            promise.then ->
+                $rootscope.$broadcast("history:reload")
+                editing = false
+                $loading.finish($el.find('.save-container'))
+                render()
+            promise.then null, ->
+                $confirm.notify("error")
+                $loading.finish($el.find('.save-container'))
 
         $scope.$watch $attrs.ngModel, (item) ->
             return if not item
@@ -470,16 +486,12 @@ EditableSubjectDirective = ($rootscope, $tgrepo, $confirm, $navurls, $location) 
                 render()
                 $el.find('input').focus()
 
+        $el.on "click", ".save", ->
+            save()
+
         $el.on "keyup", "input", ->
             if event.keyCode == 13
-                $model.$modelValue.subject = $el.find('input').val()
-                promise = $tgrepo.save($model.$modelValue)
-                promise.then ->
-                    $rootscope.$broadcast("history:reload")
-                    editing = false
-                    render()
-                promise.then null, ->
-                    $confirm.notify("error")
+                save()
             else if event.keyCode == 27
                 editing = false
                 $model.$modelValue.revert()
@@ -491,13 +503,13 @@ EditableSubjectDirective = ($rootscope, $tgrepo, $confirm, $navurls, $location) 
         require: "ngModel"
     }
 
-module.directive("tgEditableSubject", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgNavUrls", "$tgLocation", EditableSubjectDirective])
+module.directive("tgEditableSubject", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgNavUrls", "$tgLocation", "$tgLoading", EditableSubjectDirective])
 
 #############################################################################
 ## Editable subject directive
 #############################################################################
 
-EditableDescriptionDirective = ($rootscope, $tgrepo, $confirm, $navurls, $location, $compile) ->
+EditableDescriptionDirective = ($rootscope, $tgrepo, $confirm, $navurls, $location, $compile, $loading) ->
     viewTemplate = _.template("""
       <section class="us-content wysiwyg"><%= descriptionHtml %></section>
       <% if (canEdit) { %>
@@ -509,7 +521,9 @@ EditableDescriptionDirective = ($rootscope, $tgrepo, $confirm, $navurls, $locati
       <textarea placeholder="Write a description of your user story"
                 ng-model="item.description"
                 tg-markitup="tg-markitup"><%- item.description %></textarea>
-      <a class="save icon icon-floppy" href="" title="Save" />
+      <div class="save-container">
+          <a class="save icon icon-floppy" href="" title="Save" />
+      </div>
     """)
 
     link = ($scope, $el, $attrs, $model) ->
@@ -539,13 +553,16 @@ EditableDescriptionDirective = ($rootscope, $tgrepo, $confirm, $navurls, $locati
 
         $el.on "click", ".save", ->
             $model.$modelValue.description = scope.item.description
+            $loading.start($el.find('.save-container'))
             promise = $tgrepo.save($model.$modelValue)
             promise.then ->
                 $rootscope.$broadcast("history:reload")
                 editing = false
+                $loading.finish($el.find('.save-container'))
                 render()
             promise.then null, ->
                 $confirm.notify("error")
+                $loading.finish($el.find('.save-container'))
 
         $el.on "keyup", "textarea", ->
             if event.keyCode == 27
@@ -559,7 +576,7 @@ EditableDescriptionDirective = ($rootscope, $tgrepo, $confirm, $navurls, $locati
         require: "ngModel"
     }
 
-module.directive("tgEditableDescription", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgNavUrls", "$tgLocation", "$compile", EditableDescriptionDirective])
+module.directive("tgEditableDescription", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgNavUrls", "$tgLocation", "$compile", "$tgLoading", EditableDescriptionDirective])
 
 #############################################################################
 ## Common list directives

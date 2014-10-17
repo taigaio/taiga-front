@@ -57,6 +57,12 @@
             display: flex;
             margin-bottom: 0;
             max-width: 94%;
+            .save-container {
+                &.loading span {
+                    @include animation (loading .5s linear);
+                    @include animation (spin 1s linear infinite);
+                }
+            }
         }
         .us-number {
             @extend %xlarge;
@@ -138,6 +144,12 @@
         background: $white;
         height: 10rem;
         margin-bottom: 2rem;
+    }
+    .save-container {
+        &.loading span {
+            @include animation (loading .5s linear);
+            @include animation (spin 1s linear infinite);
+        }
     }
 }
 
