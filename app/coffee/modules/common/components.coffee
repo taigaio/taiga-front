@@ -438,56 +438,45 @@ module.directive("tgDeleteButton", ["$tgRepo", "$tgConfirm", "$tgNavUrls", "$tgL
 #############################################################################
 
 EditableSubjectDirective = ($rootscope, $repo, $confirm, $loading) ->
-    viewTemplate = _.template("""
-        <%- item.subject %>
-        <% if (canEdit) { %>
+    template = """
+        <div class="view-subject">
+            {{ item.subject }}
             <a class="edit icon icon-edit" href="" title="Edit" />
-        <% } %>
-    """)
-
-    editTemplate = _.template("""
-        <input type="text" value="<%- item.subject %>" data-required="true" data-maxlength="500"/>
-        <a class="save icon icon-floppy" href="" title="Save" />
-    """)
+        </div>
+        <div class="edit-subject">
+            <input type="text" ng-model="item.subject" data-required="true" data-maxlength="500"/>
+            <a class="save icon icon-floppy" href="" title="Save" />
+        </div>
+    """
 
     link = ($scope, $el, $attrs, $model) ->
-        editing = false
-        scope = $scope.$new()
-
-        render = ->
-            if editing
-                $el.html(editTemplate({item: scope.item}))
-            else
-                canEdit = $scope.project.my_permissions.indexOf($attrs.requiredPerm) != -1
-                $el.html(viewTemplate({item: $model.$modelValue, canEdit: canEdit}))
-
         save = ->
-            $model.$modelValue.subject = $el.find('input').val()
+            $model.$modelValue.subject = $scope.item.subject
             $loading.start($el.find('.save-container'))
             promise = $repo.save($model.$modelValue)
             promise.then ->
                 $confirm.notify("success")
                 $rootscope.$broadcast("history:reload")
-                editing = false
-                $loading.finish($el.find('.save-container'))
-                render()
+                $el.find('div.edit-subject').hide()
+                $el.find('div.view-subject').show()
             promise.then null, ->
                 $confirm.notify("error")
+            promise.finally ->
                 $loading.finish($el.find('.save-container'))
 
-        $scope.$watch $attrs.ngModel, (item) ->
-            return if not item
-            render()
+        $scope.$watch $attrs.ngModel, (value) ->
+            return if not value
+            $scope.item = value
+            if $scope.project.my_permissions.indexOf($attrs.requiredPerm) != -1
+                $el.find('div.view-subject span.edit').show()
 
         $scope.$on "$destroy", ->
             $el.off()
 
         $el.click ->
-            if not editing and $scope.project.my_permissions.indexOf($attrs.requiredPerm) != -1
-                editing = true
-                scope.item = {subject: $model.$modelValue.subject}
-                render()
-                $el.find('input').focus()
+            $el.find('div.edit-subject').show()
+            $el.find('div.view-subject').hide()
+            $el.find('input').focus()
 
         $el.on "click", ".save", ->
             save()
@@ -496,14 +485,18 @@ EditableSubjectDirective = ($rootscope, $repo, $confirm, $loading) ->
             if event.keyCode == 13
                 save()
             else if event.keyCode == 27
-                editing = false
                 $model.$modelValue.revert()
-                render()
+                $el.find('div.edit-subject').hide()
+                $el.find('div.view-subject').show()
+
+        $el.find('div.edit-subject').hide()
+        $el.find('div.view-subject span.edit').hide()
 
     return {
         link: link
         restrict: "EA"
         require: "ngModel"
+        template: template
     }
 
 module.directive("tgEditableSubject", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading",
