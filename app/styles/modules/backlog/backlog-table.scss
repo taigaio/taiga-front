@@ -110,6 +110,7 @@
 
 .backlog-table-body {
     .row {
+        border-bottom: 1px solid darken($whitish, 4%);
         cursor: move;
         flex-wrap: nowrap;
         position: relative;
@@ -133,6 +134,14 @@
             @include transition (background .2s ease-in);
             background: lighten($green-taiga, 60%);
             box-shadow: 1px 1px 10px rgba($black, .1);
+        }
+        .points {
+            .not-clickable {
+                &:hover {
+                    color: $black;
+                    cursor: text;
+                }
+            }
         }
     }
     .row-selected {

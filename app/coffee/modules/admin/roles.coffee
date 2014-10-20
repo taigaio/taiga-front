@@ -51,6 +51,7 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
 
         @scope.sectionName = "Permissions" #i18n
         @scope.project = {}
+        @scope.anyComputableRole = true
 
         promise = @.loadInitialData()
 
@@ -67,6 +68,8 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
         return @rs.projects.get(@scope.projectId).then (project) =>
             @scope.project = project
             @scope.$emit('project:loaded', project)
+            @scope.anyComputableRole = _.some(_.map(project.roles, (point) -> point.computable))
+
             return project
 
     loadRoles: ->
@@ -104,6 +107,7 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
         return @confirm.askChoice(title, subtitle, choices).then (response) =>
             promise = @repo.remove(@scope.role, {moveTo: response.selected})
             promise.then =>
+                @.loadProject()
                 @.loadRoles().finally ->
                     response.finish()
             promise.then null, =>
@@ -112,6 +116,7 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
     setComputable: debounce 2000, ->
         onSuccess = =>
             @confirm.notify("success")
+            @.loadProject()
 
         onError = =>
             @confirm.notify("error")
@@ -168,6 +173,7 @@ NewRoleDirective = ($tgrepo, $confirm) ->
                     $scope.roles.push(role)
                     $ctrl.setRole(role)
                     $el.find(".add-button").show()
+                    $ctrl.loadProject()
 
                 onError = ->
                     $confirm.notify("error")
@@ -326,6 +332,7 @@ RolePermissionsDirective = ($rootscope, $repo, $confirm) ->
                     renderResume(target.parents(".category-config"), categories[categoryId])
                     $rootscope.$broadcast("projects:reload")
                     $confirm.notify("success")
+                    $ctrl.loadProject()
 
                 onError = ->
                     $confirm.notify("error")

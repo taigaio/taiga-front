@@ -1,8 +1,10 @@
 .wysiwyg {
+    line-height: 1.4rem;
+    overflow: auto;
     h1 {
         @extend %xlarge;
         @extend %text;
-        margin-bottom: .5rem;
+        line-height: 2.5rem;
         text-transform: uppercase;
     }
     h2 {
@@ -43,6 +45,7 @@
         }
     }
     p {
+        line-height: 1.4rem;
         margin-bottom: 1rem;
     }
     pre,
@@ -56,7 +59,7 @@
         white-space: pre;
     }
     pre {
-        line-height: 135%;
+        line-height: 1.4rem;
         padding: .5rem;
     }
     table {

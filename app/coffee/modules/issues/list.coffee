@@ -229,7 +229,12 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @.markSelectedFilters(@scope.filters, urlfilters)
             @rootscope.$broadcast("filters:loaded", @scope.filters)
 
-    loadIssues: ->
+    # We need to guarantee that the last petition done here is the finally used
+    # When searching by text loadIssues can be called fastly with different parameters and
+    # can be resolved in a different order than generated
+    # We count the requests made and only if the callback is for the last one data is updated
+    loadIssuesRequests: 0
+    loadIssues: =>
         @scope.urlFilters = @.getUrlFilters()
 
         # Convert stored filters to http parameters
@@ -255,11 +260,15 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 name = "type"
             @scope.httpParams[name] = values
 
-        return @rs.issues.list(@scope.projectId, @scope.httpParams).then (data) =>
-            @scope.issues = data.models
-            @scope.page = data.current
-            @scope.count = data.count
-            @scope.paginatedBy = data.paginatedBy
+        promise = @rs.issues.list(@scope.projectId, @scope.httpParams)
+        @.loadIssuesRequests += 1
+        promise.index = @.loadIssuesRequests
+        promise.then (data) =>
+            if promise.index == @.loadIssuesRequests
+                @scope.issues = data.models
+                @scope.page = data.current
+                @scope.count = data.count
+                @scope.paginatedBy = data.paginatedBy
             return data
 
     loadInitialData: ->

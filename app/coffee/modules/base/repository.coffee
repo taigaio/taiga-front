@@ -134,9 +134,10 @@ class RepositoryService extends taiga.Service
         return @http.get(url, params, httpOptions).then (data) =>
             return data.data
 
-    queryPaginated: (name, params) ->
+    queryPaginated: (name, params, options={}) ->
         url = @urls.resolve(name)
-        return @http.get(url, params).then (data) =>
+        httpOptions = _.merge({headers: {}}, options)
+        return @http.get(url, params, httpOptions).then (data) =>
             headers = data.headers()
             result = {}
             result.models = _.map(data.data, (x) => @model.make_model(name, x))

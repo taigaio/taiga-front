@@ -317,6 +317,9 @@ KanbanColumnHeightFixerDirective = ->
     link = ($scope, $el, $attrs) ->
         timeout(500, -> renderSize($el))
 
+        $scope.$on "resize", ->
+            renderSize($el)
+
         $scope.$on "$destroy", ->
             $el.off()
 

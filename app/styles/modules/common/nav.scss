@@ -86,6 +86,10 @@
     img {
         margin: 0 5px 10px;
         width: 80%;
+        &:hover {
+            @include transition(border-color .3s linear);
+            border-color: $fresh-taiga;
+        }
     }
     .user-settings {
         position: relative;

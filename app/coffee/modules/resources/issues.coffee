@@ -35,11 +35,11 @@ resourceProvider = ($repo, $http, $urls, $storage, $q) ->
         params.project = projectId
         return $repo.queryOne("issues", issueId, params)
 
-    service.list = (projectId, filters) ->
+    service.list = (projectId, filters, options) ->
         params = {project: projectId}
         params = _.extend({}, params, filters or {})
         service.storeQueryParams(projectId, params)
-        return $repo.queryPaginated("issues", params)
+        return $repo.queryPaginated("issues", params, options)
 
     service.bulkCreate = (projectId, data) ->
         url = $urls.resolve("bulk-create-issues")

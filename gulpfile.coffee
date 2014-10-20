@@ -7,6 +7,7 @@ uglify = require("gulp-uglify")
 plumber = require("gulp-plumber")
 wrap = require("gulp-wrap")
 rename = require("gulp-rename")
+flatten = require('gulp-flatten')
 
 minifyHTML = require("gulp-minify-html")
 sass = require("gulp-ruby-sass")
@@ -23,10 +24,12 @@ paths = {}
 paths.app = "app/"
 paths.dist = "dist/"
 paths.tmp = "tmp/"
+paths.extras = "extras/"
 
 paths.jade = [
     paths.app + "index.jade",
-    paths.app + "partials/**/*.jade"
+    paths.app + "partials/**/*.jade",
+    paths.app + "plugins/**/*.jade"
 ]
 
 paths.images = paths.app + "images/**/*"
@@ -36,6 +39,7 @@ paths.locales = paths.app + "locales/**/*.json"
 paths.sass = [
     paths.app + "styles/**/*.scss"
     "!#{paths.app}/styles/bourbon/**/*.scss"
+    paths.app + "plugins/**/*.scss"
 ]
 
 paths.coffee = [
@@ -81,8 +85,9 @@ paths.js = [
     paths.app + "vendor/jquery-textcomplete/jquery.textcomplete.js",
     paths.app + "vendor/markitup/markitup/jquery.markitup.js",
     paths.app + "vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js",
-    paths.app + "js/jquery.ui.git.js",
-    paths.app + "js/sha1.js",
+    paths.app + "js/jquery.ui.git-custom.js",
+    paths.app + "js/jquery-ui.drag-multiple-custom.js",
+    paths.app + "js/sha1-custom.js",
     paths.app + "plugins/**/*.js"
 ]
 
@@ -117,15 +122,17 @@ gulp.task "sass-lint", ->
         .pipe(scsslint({config: "scsslint.yml"}))
 
 gulp.task "sass-watch", ["sass-lint"], ->
-    gulp.src(paths.app + "styles/main.scss")
+    gulp.src(["#{paths.app}/styles/main.scss", "#{paths.app}/plugins/**/*.scss"])
         .pipe(plumber())
+        .pipe(concat("all.scss"))
         .pipe(sass())
         .pipe(rename("app.css"))
         .pipe(gulp.dest(paths.tmp))
 
 gulp.task "sass-deploy", ->
-    gulp.src(paths.app + "styles/main.scss")
+    gulp.src(["#{paths.app}/styles/main.scss", "#{paths.app}/plugins/**/*.scss"])
         .pipe(plumber())
+        .pipe(concat("all.scss"))
         .pipe(sass())
         .pipe(rename("app.css"))
         .pipe(gulp.dest(paths.tmp))
@@ -169,7 +176,7 @@ gulp.task "conf", ->
     gulp.src("conf/main.json")
         .pipe(wrap("angular.module('taigaBase').value('localconf', <%= contents %>);"))
         .pipe(concat("conf.js"))
-        .pipe(gulp.dest(paths.tmp));
+        .pipe(gulp.dest(paths.tmp))
 
 gulp.task "locales", ->
     gulp.src("app/locales/en/app.json")
@@ -206,7 +213,7 @@ gulp.task "app-watch", ["coffee", "conf", "locales"], ->
 
     gulp.src(_paths)
         .pipe(concat("app.js"))
-        .pipe(gulp.dest(paths.dist + "js/"));
+        .pipe(gulp.dest(paths.dist + "js/"))
 
 gulp.task "app-deploy", ["coffee", "conf", "locales"], ->
     _paths = [
@@ -218,7 +225,7 @@ gulp.task "app-deploy", ["coffee", "conf", "locales"], ->
     gulp.src(_paths)
         .pipe(concat("app.js"))
         .pipe(uglify({mangle:false, preserveComments: false}))
-        .pipe(gulp.dest(paths.dist + "js/"));
+        .pipe(gulp.dest(paths.dist + "js/"))
 
 ##############################################################################
 # Common tasks
@@ -237,11 +244,20 @@ gulp.task "copy-images",  ->
     gulp.src("#{paths.app}/images/**/*")
         .pipe(gulp.dest("#{paths.dist}/images/"))
 
+    gulp.src("#{paths.app}/plugins/**/images/*")
+        .pipe(flatten())
+        .pipe(gulp.dest("#{paths.dist}/images/"))
+
 gulp.task "copy-plugin-templates",  ->
     gulp.src("#{paths.app}/plugins/**/templates/*")
         .pipe(gulp.dest("#{paths.dist}/plugins/"))
 
-gulp.task "copy", ["copy-fonts", "copy-images", "copy-plugin-templates", "copy-svg"]
+gulp.task "copy-extras", ->
+    gulp.src("#{paths.extras}/*")
+        .pipe(gulp.dest("#{paths.dist}/"))
+
+
+gulp.task "copy", ["copy-fonts", "copy-images", "copy-plugin-templates", "copy-svg", "copy-extras"]
 
 gulp.task "express", ->
     express = require("express")
