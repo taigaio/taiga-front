@@ -57,13 +57,21 @@
             display: flex;
             margin-bottom: 0;
             max-width: 94%;
-            .save-container {
-                &.loading span {
-                    @include animation (loading .5s linear);
-                    @include animation (spin 1s linear infinite);
+            &:hover {
+                .save {
+                    @include transition(opacity .3s linear);
+                    opacity: 1;
                 }
             }
         }
+        //.save-container {
+        //    &.loading {
+        //        span {
+        //            @include animation (loading .5s linear);
+        //            @include animation (spin 1s linear infinite);
+        //        }
+        //    }
+        //}
         .us-number {
             @extend %xlarge;
             @extend %title;
@@ -78,6 +86,12 @@
             display: inline-block;
             line-height: 2.2rem;
             padding-right: 1rem;
+        }
+        .save {
+            @extend %large;
+            color: $gray-light;
+            margin-left: .5rem;
+            opacity: 0;
         }
         .us-related-task {
             @extend %small;
