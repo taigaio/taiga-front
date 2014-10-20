@@ -396,7 +396,7 @@ module.directive("tgBlockButton", ["$rootScope", "$tgLoading", BlockButtonDirect
 
 DeleteButtonDirective = ($repo, $confirm, $navurls, $location) ->
     template = _.template("""
-      <a href="" class="button button-red">Delete</a>
+        <a href="" class="button button-red">Delete</a>
     """)
 
     link = ($scope, $el, $attrs, $model) ->
@@ -439,17 +439,15 @@ module.directive("tgDeleteButton", ["$tgRepo", "$tgConfirm", "$tgNavUrls", "$tgL
 
 EditableSubjectDirective = ($rootscope, $repo, $confirm, $loading) ->
     viewTemplate = _.template("""
-      <%- item.subject %>
-      <% if (canEdit) { %>
-        <a class="edit icon icon-edit" href="" title="Edit" />
-      <% } %>
+        <%- item.subject %>
+        <% if (canEdit) { %>
+            <a class="edit icon icon-edit" href="" title="Edit" />
+        <% } %>
     """)
 
     editTemplate = _.template("""
-      <input type="text" value="<%- item.subject %>" data-required="true" data-maxlength="500"/>
-      <div class="save-container">
+        <input type="text" value="<%- item.subject %>" data-required="true" data-maxlength="500"/>
         <a class="save icon icon-floppy" href="" title="Save" />
-      </div>
     """)
 
     link = ($scope, $el, $attrs, $model) ->
@@ -528,9 +526,7 @@ EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading)
       <textarea placeholder="Write a description of your user story"
                 ng-model="item.description"
                 tg-markitup="tg-markitup"><%- item.description %></textarea>
-      <div class="save-container">
-          <a class="save icon icon-floppy" href="" title="Save" />
-      </div>
+      <a class="save icon icon-floppy" href="" title="Save" />
     """)
 
     link = ($scope, $el, $attrs, $model) ->

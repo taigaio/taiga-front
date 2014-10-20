@@ -86,8 +86,10 @@
             display: inline-block;
             line-height: 2.2rem;
             padding-right: 1rem;
+            width: 100%;
         }
-        .save {
+        .icon-edit,
+        .icon-floppy {
             @extend %large;
             color: $gray-light;
             margin-left: .5rem;
@@ -150,6 +152,17 @@
     top: 1rem;
     a {
         @extend %xlarge;
+    }
+}
+
+.tags-block {
+    .icon-plus {
+        @extend %large;
+        color: $gray-light;
+        vertical-align: top;
+        &:hover {
+            color: $fresh-taiga;
+        }
     }
 }
 

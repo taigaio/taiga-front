@@ -95,19 +95,20 @@ TagLineDirective = ($rootscope, $log, $rs, $tgrepo, $confirm) ->
     # Main directive template (rendered by angular)
     template = """
     <div class="tags-container"></div>
-    <input type="text" placeholder="Write tag..." class="tag-input" />
+    <a href="#" class="add-tag icon icon-plus" title="Add tag"></a>
+    <input type="text" placeholder="Write tag..." class="tag-input hidden" />
     <a href="" title="Save" class="save icon icon-floppy"></a>
     """
 
     # Tags template (rendered manually using lodash)
     templateTags = _.template("""
     <% _.each(tags, function(tag) { %>
-        <div class="tag" style="border-left: 5px solid <%- tag.color %>;">
+        <span class="tag" style="border-left: 5px solid <%- tag.color %>;">
             <span class="tag-name"><%- tag.name %></span>
             <% if (editable) { %>
             <a href="" title="delete tag" class="icon icon-delete"></a>
             <% } %>
-        </div>
+        </span>
     <% }); %>""")
 
     renderTags = ($el, tags, editable, tagsColors) ->
@@ -200,6 +201,12 @@ TagLineDirective = ($rootscope, $log, $rs, $tgrepo, $confirm) ->
                 $el.find('.save').hide()
 
         $el.on "click", ".save", saveInputTag
+
+        $el.on "click", ".add-tag", (event) ->
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+            target.hide()
+            target.siblings('input').removeClass('hidden')
 
         $el.on "click", ".icon-delete", (event) ->
             event.preventDefault()
