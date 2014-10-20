@@ -17,7 +17,11 @@ section.sprints
         header
             div.sprint-name
                 a.icon.icon-arrow-up(href="", title="Compact Sprint")
-                span {{ sprint.name }}
+                a(href="", tg-bo-title="'Go to Taskboard of ' + sprint.name",
+                       tg-nav="project-taskboard:project=project.slug,sprint=sprint.slug",
+                       tg-check-permission="view_milestones")
+                    span {{ sprint.name }}
+
                 a.icon.icon-edit(tg-check-permission="modify_milestone", href="", title="Edit Sprint")
             div.sprint-summary
                 div.sprint-date(tg-date-range="sprint.estimated_start,sprint.estimated_finish")
