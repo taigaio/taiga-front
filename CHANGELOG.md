@@ -1,5 +1,15 @@
 # Changelog #
 
+## 1.2.0 (Unreleased)
+
+### Features
+- Multiple User stories Drag & Drop in the backlog.
+- Added beta ribbon.
+
+### Misc
+- Lots of small and not so small bugfixes
+
+
 ## 1.1.0 (2014-10-13)
 
 ### Misc ###

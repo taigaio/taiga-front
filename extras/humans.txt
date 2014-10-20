@@ -4,7 +4,7 @@
 
 /* TEAM */
 
-  Taiga Engineer: Lord Juan Francisco Alcántara
+  Taiga Engineer & Digital Hermit: Lord Juan Francisco Alcántara
   Site: http://www.kaleidos.net/40826D/
   Twitter: nil
   Location: Madrid, Spain
@@ -49,11 +49,11 @@
   Twitter: @elhombretecla
   Location: Madrid, Spain
 
-  Taiga CEO & Community Manager: Ricky Posner
+  Taiga CEO, Community Manager & Chico Almodobar: Ricky Posner
   Twitter: @eposner
   Location: Madrid, Spain
 
-  Taiga CEO: Lord Pablo Ruiz Múzquiz
+  Taiga CEO & Dungeon Master: Lord Pablo Ruiz Múzquiz
   Site: http://kaleidos.net/761CEC/
   Twitter: @diacritica
   Location: Madrid, Spain
