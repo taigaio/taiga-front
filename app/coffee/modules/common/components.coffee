@@ -515,69 +515,63 @@ module.directive("tgEditableSubject", ["$rootScope", "$tgRepo", "$tgConfirm", "$
 #############################################################################
 
 EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading) ->
-    viewTemplate = _.template("""
-      <section class="us-content wysiwyg"><%= descriptionHtml %></section>
-      <% if (canEdit) { %>
-        <span class="edit icon icon-edit" href="" title="Edit" />
-      <% } %>
-    """)
-
-    editTemplate = _.template("""
-      <textarea placeholder="Write a description of your user story"
-                ng-model="item.description"
-                tg-markitup="tg-markitup"><%- item.description %></textarea>
-      <a class="save icon icon-floppy" href="" title="Save" />
-    """)
+    template = """
+        <div class="view-description">
+            <section class="us-content wysiwyg" tg-bind-html="item.description_html"></section>
+            <span class="edit icon icon-edit" href="" title="Edit" />
+        </div>
+        <div class="edit-description">
+            <textarea placeholder="Write a description of your user story"
+                      ng-model="item.description"
+                      tg-markitup="tg-markitup"></textarea>
+            <a class="save icon icon-floppy" href="" title="Save" />
+        </div>
+    """
 
     link = ($scope, $el, $attrs, $model) ->
-        editing = false
-        scope = $scope.$new()
-
-        render = ->
-            if editing
-                $el.html($compile(editTemplate({item: scope.item}))(scope))
-            else
-                canEdit = $scope.project.my_permissions.indexOf($attrs.requiredPerm) != -1
-                $el.html(viewTemplate({descriptionHtml: $model.$modelValue.description_html, canEdit: canEdit}))
-
-        $scope.$watch $attrs.ngModel, (item) ->
-            return if not item
-            render()
-
         $scope.$on "$destroy", ->
             $el.off()
 
         $el.on "click", ".edit", ->
-            if not editing and $scope.project.my_permissions.indexOf($attrs.requiredPerm) != -1
-                editing = true
-                scope.item = {description: $model.$modelValue.description}
-                render()
-                $el.find('textarea').focus()
+            $el.find('div.edit-description').show()
+            $el.find('div.view-description').hide()
+            $el.find('textarea').focus()
 
         $el.on "click", ".save", ->
-            $model.$modelValue.description = scope.item.description
+            $model.$modelValue.description = $scope.item.description
+
             $loading.start($el.find('.save-container'))
             promise = $repo.save($model.$modelValue)
             promise.then ->
                 $confirm.notify("success")
                 $rootscope.$broadcast("history:reload")
-                editing = false
-                $loading.finish($el.find('.save-container'))
-                render()
+                $el.find('div.edit-description').hide()
+                $el.find('div.view-description').show()
             promise.then null, ->
                 $confirm.notify("error")
+            promise.finally ->
                 $loading.finish($el.find('.save-container'))
 
         $el.on "keyup", "textarea", ->
             if event.keyCode == 27
-                editing = false
-                $model.$modelValue.revert()
-                render()
+                $scope.item.revert()
+                $el.find('div.edit-description').hide()
+                $el.find('div.view-description').show()
+
+        $scope.$watch $attrs.ngModel, (value) ->
+            return if not value
+            $scope.item = value
+            if $scope.project.my_permissions.indexOf($attrs.requiredPerm) != -1
+                $el.find('div.view-description span.edit').show()
+
+        $el.find('div.edit-description').hide()
+        $el.find('div.view-description span.edit').hide()
 
     return {
         link: link
         restrict: "EA"
         require: "ngModel"
+        template: template
     }
 
 module.directive("tgEditableDescription", ["$rootScope", "$tgRepo", "$tgConfirm", "$compile", "$tgLoading",
