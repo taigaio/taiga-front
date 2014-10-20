@@ -24,6 +24,7 @@ bindOnce = @.taiga.bindOnce
 
 module = angular.module("taigaCommon")
 
+
 #############################################################################
 ## Date Range Directive (used mainly for sprint date range)
 #############################################################################
@@ -156,7 +157,7 @@ module.directive("tgCreatedByDisplay", CreatedByDisplayDirective)
 ## Watchers directive
 #############################################################################
 
-WatchersDirective = ($rootscope, $confirm, $tgrepo) ->
+WatchersDirective = ($rootscope, $confirm, $repo) ->
     # You have to include a div with the tg-lb-watchers directive in the page
     # where use this directive
     #
@@ -187,7 +188,7 @@ WatchersDirective = ($rootscope, $confirm, $tgrepo) ->
 
     link = ($scope, $el, $attrs, $model) ->
         save = (model) ->
-            promise = $tgrepo.save($model.$modelValue)
+            promise = $repo.save($model.$modelValue)
             promise.then ->
                 $confirm.notify("success")
                 watchers = _.map(model.watchers, (watcherId) -> $scope.usersById[watcherId])
@@ -255,7 +256,7 @@ module.directive("tgWatchers", ["$rootScope", "$tgConfirm", "$tgRepo", WatchersD
 ## Assigned to directive
 #############################################################################
 
-AssignedToDirective = ($rootscope, $confirm, $tgrepo, $loading) ->
+AssignedToDirective = ($rootscope, $confirm, $repo, $loading) ->
     # You have to include a div with the tg-lb-assignedto directive in the page
     # where use this directive
     #
@@ -288,7 +289,7 @@ AssignedToDirective = ($rootscope, $confirm, $tgrepo, $loading) ->
         save = (model) ->
             $loading.start($el)
 
-            promise = $tgrepo.save($model.$modelValue)
+            promise = $repo.save($model.$modelValue)
             promise.then ->
                 $loading.finish($el)
                 $confirm.notify("success")
@@ -339,6 +340,7 @@ AssignedToDirective = ($rootscope, $confirm, $tgrepo, $loading) ->
 
 module.directive("tgAssignedTo", ["$rootScope", "$tgConfirm", "$tgRepo", "$tgLoading", AssignedToDirective])
 
+
 #############################################################################
 ## Block Button directive
 #############################################################################
@@ -387,11 +389,12 @@ BlockButtonDirective = ($rootscope, $loading) ->
 
 module.directive("tgBlockButton", ["$rootScope", "$tgLoading", BlockButtonDirective])
 
+
 #############################################################################
 ## Delete Button directive
 #############################################################################
 
-DeleteButtonDirective = ($tgrepo, $confirm, $navurls, $location) ->
+DeleteButtonDirective = ($repo, $confirm, $navurls, $location) ->
     template = _.template("""
       <a href="" class="button button-red">Delete</a>
     """)
@@ -413,7 +416,7 @@ DeleteButtonDirective = ($tgrepo, $confirm, $navurls, $location) ->
             subtitle = $model.$modelValue.subject
 
             $confirm.ask(title, subtitle).then (finish) =>
-                promise = $tgrepo.remove($model.$modelValue)
+                promise = $repo.remove($model.$modelValue)
                 promise.then =>
                     finish()
                     $location.path($navurls.resolve($attrs.onDeleteGoToUrl, {project: $attrs.projectSlug}))
@@ -429,15 +432,16 @@ DeleteButtonDirective = ($tgrepo, $confirm, $navurls, $location) ->
 
 module.directive("tgDeleteButton", ["$tgRepo", "$tgConfirm", "$tgNavUrls", "$tgLocation", DeleteButtonDirective])
 
+
 #############################################################################
 ## Editable subject directive
 #############################################################################
 
-EditableSubjectDirective = ($rootscope, $tgrepo, $confirm, $navurls, $location, $loading) ->
+EditableSubjectDirective = ($rootscope, $repo, $confirm, $loading) ->
     viewTemplate = _.template("""
       <%- item.subject %>
       <% if (canEdit) { %>
-        <a class="save icon icon-edit" href="" title="Edit" />
+        <a class="edit icon icon-edit" href="" title="Edit" />
       <% } %>
     """)
 
@@ -462,8 +466,9 @@ EditableSubjectDirective = ($rootscope, $tgrepo, $confirm, $navurls, $location, 
         save = ->
             $model.$modelValue.subject = $el.find('input').val()
             $loading.start($el.find('.save-container'))
-            promise = $tgrepo.save($model.$modelValue)
+            promise = $repo.save($model.$modelValue)
             promise.then ->
+                $confirm.notify("success")
                 $rootscope.$broadcast("history:reload")
                 editing = false
                 $loading.finish($el.find('.save-container'))
@@ -503,13 +508,15 @@ EditableSubjectDirective = ($rootscope, $tgrepo, $confirm, $navurls, $location, 
         require: "ngModel"
     }
 
-module.directive("tgEditableSubject", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgNavUrls", "$tgLocation", "$tgLoading", EditableSubjectDirective])
+module.directive("tgEditableSubject", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading",
+                                       EditableSubjectDirective])
+
 
 #############################################################################
 ## Editable subject directive
 #############################################################################
 
-EditableDescriptionDirective = ($rootscope, $tgrepo, $confirm, $navurls, $location, $compile, $loading) ->
+EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading) ->
     viewTemplate = _.template("""
       <section class="us-content wysiwyg"><%= descriptionHtml %></section>
       <% if (canEdit) { %>
@@ -544,7 +551,7 @@ EditableDescriptionDirective = ($rootscope, $tgrepo, $confirm, $navurls, $locati
         $scope.$on "$destroy", ->
             $el.off()
 
-        $el.click ->
+        $el.on "click", ".edit", ->
             if not editing and $scope.project.my_permissions.indexOf($attrs.requiredPerm) != -1
                 editing = true
                 scope.item = {description: $model.$modelValue.description}
@@ -554,8 +561,9 @@ EditableDescriptionDirective = ($rootscope, $tgrepo, $confirm, $navurls, $locati
         $el.on "click", ".save", ->
             $model.$modelValue.description = scope.item.description
             $loading.start($el.find('.save-container'))
-            promise = $tgrepo.save($model.$modelValue)
+            promise = $repo.save($model.$modelValue)
             promise.then ->
+                $confirm.notify("success")
                 $rootscope.$broadcast("history:reload")
                 editing = false
                 $loading.finish($el.find('.save-container'))
@@ -576,7 +584,9 @@ EditableDescriptionDirective = ($rootscope, $tgrepo, $confirm, $navurls, $locati
         require: "ngModel"
     }
 
-module.directive("tgEditableDescription", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgNavUrls", "$tgLocation", "$compile", "$tgLoading", EditableDescriptionDirective])
+module.directive("tgEditableDescription", ["$rootScope", "$tgRepo", "$tgConfirm", "$compile", "$tgLoading",
+                                           EditableDescriptionDirective])
+
 
 #############################################################################
 ## Common list directives
@@ -683,6 +693,7 @@ ListItemSeverityDirective = ->
         link: link
         template: template
     }
+
 
 ListItemTypeDirective = ->
     template = """

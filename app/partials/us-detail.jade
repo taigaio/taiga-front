@@ -32,9 +32,9 @@ block content
                         span.block-description-title Blocked
                         span.block-description(tg-bind-html="us.blocked_note || 'This user story is blocked'")
                     div.issue-nav
-                        a.icon.icon-arrow-left(ng-show="previousUrl",href="{{ previousUrl }}",
+                        a.icon.icon-arrow-left(ng-show="previousUrl", tg-bo-href="previousUrl",
                                                title="previous user story")
-                        a.icon.icon-arrow-right(ng-show="nextUrl", href="{{ nextUrl }}", title="next user story")
+                        a.icon.icon-arrow-right(ng-show="nextUrl", tg-bo-href="nextUrl", title="next user story")
 
                 div(tg-tag-line, editable="true", autosave-model="us", ng-model="us.tags", required-perm="modify_us")
 
