@@ -267,7 +267,7 @@ module.directive("tgAttachments", ["$tgConfirm", AttachmentsDirective])
 AttachmentDirective = ->
     template = _.template("""
     <div class="attachment-name">
-        <a href="<%- url %>" title="<%- name %>" target="_blank">
+        <a href="<%- url %>" title="<%- name %> uploaded on <%- created_date %>" target="_blank">
             <span class="icon icon-documents"></span>
             <span><%- name %><span>
         </a>
@@ -291,7 +291,7 @@ AttachmentDirective = ->
     templateEdit = _.template("""
     <div class="attachment-name">
         <span class="icon.icon-document"></span>
-        <a href="<%- url %>" title="<%- name %>" target="_blank"><%- name %></a>
+        <a href="<%- url %>" title="<%- name %> uploaded on <%- created_date %>" target="_blank"><%- name %></a>
     </div>
     <div class="attachment-size">
         <span><%- size %></span>
@@ -320,6 +320,7 @@ AttachmentDirective = ->
             ctx = {
                 id: attachment.id
                 name: attachment.name
+                created_date: moment(attachment.created_date).format("DD MMM YYYY [at] hh:mm") #TODO: i18n
                 url: attachment.url
                 size: sizeFormat(attachment.size)
                 description: attachment.description
