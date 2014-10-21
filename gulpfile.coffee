@@ -1,6 +1,6 @@
 gulp = require("gulp")
 jade = require("gulp-jade")
-
+gutil = require("gulp-util")
 coffee = require("gulp-coffee")
 concat = require("gulp-concat")
 uglify = require("gulp-uglify")
@@ -19,6 +19,7 @@ scsslint = require("gulp-scss-lint")
 newer = require("gulp-newer")
 cache = require("gulp-cached")
 jadeInheritance = require('gulp-jade-inheritance')
+sourcemaps = require('gulp-sourcemaps')
 
 paths = {}
 paths.app = "app/"
@@ -201,8 +202,10 @@ gulp.task "jslibs-watch", ->
 gulp.task "jslibs-deploy", ->
     gulp.src(paths.js)
         .pipe(plumber())
+        .pipe(sourcemaps.init())
         .pipe(concat("libs.js"))
         .pipe(uglify({mangle:false, preserveComments: false}))
+        .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest("dist/js/"))
 
 gulp.task "app-watch", ["coffee", "conf", "locales"], ->
@@ -224,8 +227,10 @@ gulp.task "app-deploy", ["coffee", "conf", "locales"], ->
     ]
 
     gulp.src(_paths)
-        .pipe(concat("app.js"))
-        .pipe(uglify({mangle:false, preserveComments: false}))
+        .pipe(sourcemaps.init())
+            .pipe(concat("app.js"))
+            .pipe(uglify({mangle:false, preserveComments: false}))
+        .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest(paths.dist + "js/"))
 
 ##############################################################################
