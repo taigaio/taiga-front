@@ -60,7 +60,7 @@ block content
             section.us-detail-settings
                 tg-us-team-requirement-button(ng-model="us")
                 tg-us-client-requirement-button(ng-model="us")
-                div(tg-check-permission="modify_us", tg-block-button, ng-model="us")
+                tg-block-button(tg-check-permission="modify_us", ng-model="us")
                 tg-delete-button(tg-check-permission="delete_us",
                                  on-delete-go-to-url="project-backlog",
                                  project-slug="{{ project.slug }}",

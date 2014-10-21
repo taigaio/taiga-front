@@ -270,27 +270,21 @@ module.directive("tgTaskStatusButton", ["$rootScope", "$tgRepo", "$tgConfirm", "
 
 
 TaskIsIocaineButtonDirective = ($rootscope, $tgrepo, $confirm, $loading) ->
-    template = _.template("""
+    template = """
       <fieldset title="Feeling a bit overwhelmed by a task? Make sure others know about it by clicking on Iocaine when editing a task. It's possible to become immune to this (fictional) deadly poison by consuming small amounts over time just as it's possible to get better at what you do by occasionally taking on extra challenges!">
         <label for="is-iocaine" class="clickable button button-gray is-iocaine">Iocaine</label>
         <input type="checkbox" id="is-iocaine" name="is-iocaine"/>
       </fieldset>
-    """)
+    """
 
     link = ($scope, $el, $attrs, $model) ->
-        render = _.once (task) ->
-            $el.html(template())
+        $scope.$watch $attrs.ngModel, (task) ->
+            return if not task
 
-        refresh = (task) ->
-            if task?.is_iocaine
+            if task.is_iocaine
                 $el.find('.is-iocaine').addClass('active')
             else
                 $el.find('.is-iocaine').removeClass('active')
-
-        $scope.$watch $attrs.ngModel, (task) ->
-            return if not task
-            render(task)
-            refresh(task)
 
         $scope.$on "$destroy", ->
             $el.off()
@@ -316,6 +310,7 @@ TaskIsIocaineButtonDirective = ($rootscope, $tgrepo, $confirm, $loading) ->
         link: link
         restrict: "EA"
         require: "ngModel"
+        template: tempalte
     }
 
 module.directive("tgTaskIsIocaineButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", TaskIsIocaineButtonDirective])

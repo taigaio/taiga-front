@@ -346,27 +346,21 @@ module.directive("tgAssignedTo", ["$rootScope", "$tgConfirm", "$tgRepo", "$tgLoa
 #############################################################################
 
 BlockButtonDirective = ($rootscope, $loading) ->
-    template = _.template("""
+    template = """
       <a class="button button-gray item-block">Block</a>
       <a class="button button-red item-unblock">Unblock</a>
-    """)
+    """
 
     link = ($scope, $el, $attrs, $model) ->
-        render = _.once (item) ->
-            $el.html(template())
+        $scope.$watch $attrs.ngModel, (item) ->
+            return if not item
 
-        refresh = (item) ->
-            if item?.is_blocked
+            if item.is_blocked
                 $el.find('.item-block').hide()
                 $el.find('.item-unblock').show()
             else
                 $el.find('.item-block').show()
                 $el.find('.item-unblock').hide()
-
-        $scope.$watch $attrs.ngModel, (item) ->
-            return if not item
-            render(item)
-            refresh(item)
 
         $el.on "click", ".item-block", (event) ->
             $rootscope.$broadcast("block", $model.$modelValue)
@@ -385,6 +379,7 @@ BlockButtonDirective = ($rootscope, $loading) ->
         link: link
         restrict: "EA"
         require: "ngModel"
+        template: template
     }
 
 module.directive("tgBlockButton", ["$rootScope", "$tgLoading", BlockButtonDirective])
