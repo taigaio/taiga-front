@@ -23,7 +23,7 @@
             background: transparent;
         }
         .user-stories {
-            @include table-flex-child(20, 365px, 0);
+            width: 100%;
         }
         .status {
             @include table-flex-child(0, 150px, 0);
@@ -149,8 +149,9 @@
         background: lighten($green-taiga, 60%);
     }
     .user-story-name {
-        @include table-flex();
+        @include table-flex($flex-wrap: nowrap);
         input {
+            @include flex-shrink(0);
             margin-right: 1rem;
             vertical-align: super;
             &:checked {
