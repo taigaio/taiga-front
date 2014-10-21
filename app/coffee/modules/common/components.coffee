@@ -349,8 +349,8 @@ module.directive("tgAssignedTo", ["$rootScope", "$tgConfirm", "$tgRepo", "$tgLoa
 
 BlockButtonDirective = ($rootscope, $loading) ->
     template = """
-      <a class="button button-gray item-block">Block</a>
-      <a class="button button-red item-unblock">Unblock</a>
+      <a href="#" class="button button-gray item-block">Block</a>
+      <a href="#" class="button button-red item-unblock">Unblock</a>
     """
 
     link = ($scope, $el, $attrs, $model) ->
@@ -365,9 +365,11 @@ BlockButtonDirective = ($rootscope, $loading) ->
                 $el.find('.item-unblock').hide()
 
         $el.on "click", ".item-block", (event) ->
+            event.preventDefault()
             $rootscope.$broadcast("block", $model.$modelValue)
 
         $el.on "click", ".item-unblock", (event) ->
+            event.preventDefault()
             $loading.start($el.find(".item-unblock"))
             finish = ->
                 $loading.finish($el.find(".item-unblock"))

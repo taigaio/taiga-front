@@ -58,7 +58,7 @@
             margin-bottom: 0;
             max-width: 94%;
             &:hover {
-                .save {
+                .edit {
                     @include transition(opacity .3s linear);
                     opacity: 1;
                 }
