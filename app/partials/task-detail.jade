@@ -44,8 +44,9 @@ block content
         sidebar.menu-secondary.sidebar
             section.us-status
                 h1(tg-task-status-display, ng-model="task")
-                tg-created-by-display.us-created-by(ng-model="task")
-                tg-task-status-button.issue-data(ng-model="task")
+                div.us-created-by(tg-created-by-display, ng-model="task")
+                div.duty-data-container
+                    div.duty-data(tg-task-status-button, ng-model="task")
 
             section.duty-assigned-to(tg-assigned-to, ng-model="task")
 

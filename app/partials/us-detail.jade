@@ -51,7 +51,8 @@ block content
                 div.us-detail-progress-bar(tg-us-tasks-progress-display, ng-model="tasks")
                 tg-created-by-display.us-created-by(ng-model="us")
                 tg-us-estimation(ng-model="us", save-after-modify="true")
-                tg-us-status-button.issue-data(ng-model="us")
+                div.duty-data-container
+                    div.duty-data(tg-us-status-button.issue-data, ng-model="us")
 
             section.duty-assigned-to(tg-assigned-to, ng-model="us")
 
