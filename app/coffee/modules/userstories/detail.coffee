@@ -369,20 +369,28 @@ UsEstimationDirective = ($rootScope, $repo, $confirm) ->
 
             $el.find(".popover").popover().close()
 
+            # NOTE: This block of code is strange and, sometimes, repetitive
+            #       but is the only solution I find to update the object
+            #       corectly
             us = angular.copy($model.$modelValue)
-            us.points[roleId] = pointId
+            points = _.clone($model.$modelValue.points, true)
+            points[roleId] = pointId
+            us.setAttr('points', points) if us.setAttr?
+            us.points = points
             us.total_points = calculateTotalPoints(us)
             $model.$setViewValue(us)
 
             if saveAfterModify
                 # Edit in the detail page
+                $loading.start($el)
+
                 onSuccess = ->
                     $confirm.notify("success")
                     $rootScope.$broadcast("history:reload")
                 onError = ->
-                    $confirm.notify("error")
                     us.revert()
                     $model.$setViewValue(us)
+                    $confirm.notify("error")
                 $repo.save($model.$modelValue).then(onSuccess, onError)
             else
                 # Create or eedit in the lightbox
@@ -496,7 +504,8 @@ UsStatusButtonDirective = ($rootScope, $repo, $confirm, $loading) ->
         require: "ngModel"
     }
 
-module.directive("tgUsStatusButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", UsStatusButtonDirective])
+module.directive("tgUsStatusButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading",
+                                      UsStatusButtonDirective])
 
 
 #############################################################################
@@ -611,4 +620,5 @@ UsClientRequirementButtonDirective = ($rootscope, $tgrepo, $confirm, $loading) -
         template: template
     }
 
-module.directive("tgUsClientRequirementButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", UsClientRequirementButtonDirective])
+module.directive("tgUsClientRequirementButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading",
+                                                 UsClientRequirementButtonDirective])
