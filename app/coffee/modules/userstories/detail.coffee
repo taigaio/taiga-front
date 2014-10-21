@@ -539,10 +539,6 @@ UsTeamRequirementButtonDirective = ($rootscope, $tgrepo, $confirm, $loading) ->
             promise.then =>
                 $loading.finish($el.find("label"))
                 $rootscope.$broadcast("history:reload")
-                if us.team_requirement
-                    $el.find('.team-requirement').addClass('active')
-                else
-                    $el.find('.team-requirement').removeClass('active')
             promise.then null, ->
                 $loading.finish($el.find("label"))
                 $confirm.notify("error")
@@ -600,10 +596,6 @@ UsClientRequirementButtonDirective = ($rootscope, $tgrepo, $confirm, $loading) -
             promise.then =>
                 $loading.finish($el.find("label"))
                 $rootscope.$broadcast("history:reload")
-                if us.client_requirement
-                    $el.find('.client-requirement').addClass('active')
-                else
-                    $el.find('.client-requirement').removeClass('active')
             promise.then null, ->
                 $loading.finish($el.find("label"))
                 $confirm.notify("error")
