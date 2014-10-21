@@ -166,11 +166,23 @@
     }
 }
 
-.us-content {
+.duty-content {
+    position: relative;
     textarea {
         background: $white;
         height: 10rem;
         margin-bottom: 2rem;
+    }
+    a.save {
+        color: $blackish;
+        opacity: .8;
+        position: absolute;
+        right: 1rem;
+        top: .6rem;
+        &:hover {
+            @include transition(opacity .2s linear);
+            opacity: .3;
+        }
     }
     .save-container {
         &.loading span {
