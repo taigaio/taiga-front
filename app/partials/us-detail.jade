@@ -58,8 +58,8 @@ block content
             section.watchers(tg-watchers, ng-model="us")
 
             section.us-detail-settings
-                fieldset(tg-us-team-requirement-button, ng-model="us")
-                fieldset(tg-us-client-requirement-button, ng-model="us")
+                tg-us-team-requirement-button(ng-model="us")
+                tg-us-client-requirement-button(ng-model="us")
                 div(tg-check-permission="modify_us", tg-block-button, ng-model="us")
                 div(tg-check-permission="delete_us", tg-delete-button,
                     on-delete-go-to-url="project-backlog",

@@ -504,107 +504,119 @@ module.directive("tgUsStatusButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$t
 #############################################################################
 
 UsTeamRequirementButtonDirective = ($rootscope, $tgrepo, $confirm, $loading) ->
-    template = _.template("""
+    template = """
       <label for="team-requirement" class="button button-gray team-requirement">Team requirement</label>
       <input type="checkbox" id="team-requirement" name="team-requirement"/>
-    """)
+    """
 
     link = ($scope, $el, $attrs, $model) ->
-        render = _.once (us) ->
-            $el.html(template())
-            if $scope.project.my_permissions.indexOf("modify_us") == -1
-                $el.find('label').css("cursor", "auto")
-
-        refresh = (us) ->
-            if us?.team_requirement
-                $el.find('.team-requirement').addClass('active')
-            else
-                $el.find('.team-requirement').removeClass('active')
+        canEdit = ->
+            return $scope.project.my_permissions.indexOf("modify_us") != -1
 
         $scope.$watch $attrs.ngModel, (us) ->
             return if not us
-            render(us)
-            refresh(us)
+
+            if canEdit()
+                $el.find('label').css("cursor", "pointer")
+
+            if us.team_requirement
+                $el.find('.team-requirement').addClass('active')
+            else
+                $el.find('.team-requirement').removeClass('active')
 
         $scope.$on "$destroy", ->
             $el.off()
 
         $el.on "click", ".team-requirement", (event) ->
-            if $scope.project.my_permissions.indexOf("modify_us") != -1
-                us = $model.$modelValue.clone()
-                us.team_requirement = not us.team_requirement
+            return if not canEdit()
+
+            us = $model.$modelValue.clone()
+            us.team_requirement = not us.team_requirement
+            $model.$setViewValue(us)
+
+            $loading.start($el.find("label"))
+            promise = $tgrepo.save($model.$modelValue)
+            promise.then =>
+                $loading.finish($el.find("label"))
+                $rootscope.$broadcast("history:reload")
+                if us.team_requirement
+                    $el.find('.team-requirement').addClass('active')
+                else
+                    $el.find('.team-requirement').removeClass('active')
+            promise.then null, ->
+                $loading.finish($el.find("label"))
+                $confirm.notify("error")
+                us.revert()
                 $model.$setViewValue(us)
-                $loading.start($el.find('label'))
-                promise = $tgrepo.save($model.$modelValue)
-                promise.then ->
-                    $loading.finish($el.find('label'))
-                    $rootscope.$broadcast("history:reload")
-                promise.then null, ->
-                    $loading.finish($el.find('label'))
-                    $confirm.notify("error")
-                    us.revert()
-                    $model.$setViewValue(us)
+
+        $el.find('label').css("cursor", "auto")
 
     return {
         link: link
         restrict: "EA"
         require: "ngModel"
+        template: template
     }
 
 module.directive("tgUsTeamRequirementButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", UsTeamRequirementButtonDirective])
-
 
 #############################################################################
 ## User story client requirements button directive
 #############################################################################
 
 UsClientRequirementButtonDirective = ($rootscope, $tgrepo, $confirm, $loading) ->
-    template = _.template("""
+    template = """
       <label for="client-requirement" class="button button-gray client-requirement">Client requirement</label>
       <input type="checkbox" id="client-requirement" name="client-requirement"/>
-    """)
+    """
 
     link = ($scope, $el, $attrs, $model) ->
-        render = _.once (us) ->
-            $el.html(template())
-            if $scope.project.my_permissions.indexOf("modify_us") == -1
-                $el.find('label').css("cursor", "auto")
+        canEdit = ->
+            return $scope.project.my_permissions.indexOf("modify_us") != -1
 
-        refresh = (us) ->
+        $scope.$watch $attrs.ngModel, (us) ->
+            return if not us
+
+            if canEdit()
+                $el.find('label').css("cursor", "pointer")
+
             if us?.client_requirement
                 $el.find('.client-requirement').addClass('active')
             else
                 $el.find('.client-requirement').removeClass('active')
 
-        $scope.$watch $attrs.ngModel, (us) ->
-            return if not us
-            render(us)
-            refresh(us)
-
         $scope.$on "$destroy", ->
             $el.off()
 
         $el.on "click", ".client-requirement", (event) ->
-            if $scope.project.my_permissions.indexOf("modify_us") != -1
-                us = $model.$modelValue.clone()
-                us.client_requirement = not us.client_requirement
+            return if not canEdit()
+
+            us = $model.$modelValue.clone()
+            us.client_requirement = not us.client_requirement
+            $model.$setViewValue(us)
+
+            $loading.start($el.find("label"))
+            promise = $tgrepo.save($model.$modelValue)
+            promise.then =>
+                $loading.finish($el.find("label"))
+                $rootscope.$broadcast("history:reload")
+                if us.client_requirement
+                    $el.find('.client-requirement').addClass('active')
+                else
+                    $el.find('.client-requirement').removeClass('active')
+            promise.then null, ->
+                $loading.finish($el.find("label"))
+                $confirm.notify("error")
+                us.revert()
                 $model.$setViewValue(us)
-                $loading.start($el.find("label"))
-                promise = $tgrepo.save($model.$modelValue)
-                promise.then ->
-                    $loading.finish($el.find("label"))
-                    $rootscope.$broadcast("history:reload")
-                    refresh(us)
-                promise.then null, ->
-                    $loading.finish($el.find("label"))
-                    $confirm.notify("error")
-                    us.revert()
-                    $model.$setViewValue(us)
-                    refresh(us)
+
+        $el.find('label').css("cursor", "auto")
 
     return {
         link: link
         restrict: "EA"
         require: "ngModel"
+        template: template
     }
+
 module.directive("tgUsClientRequirementButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", UsClientRequirementButtonDirective])
