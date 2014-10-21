@@ -1,7 +1,18 @@
-.us-assigned-to {
+.duty-assigned-to {
     @include table-flex();
     margin-top: 1rem;
     position: relative;
+    &.loading {
+        width: 100%;
+        span {
+            font-size: 30px;
+            padding: 20px 0;
+            text-align: center;
+            width: 100%;
+            @include animation (loading .5s linear);
+            @include animation (spin 1s linear infinite);
+        }
+    }
     .user-avatar {
         @include table-flex-child(1, 0);
         img {
@@ -25,6 +36,10 @@
             &.editable {
                 cursor: pointer;
             }
+        }
+        .assigned-name {
+            @include ellipsis(80%);
+            display: inline-block;
         }
         .icon-delete {
             color: $gray-light;

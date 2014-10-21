@@ -271,23 +271,23 @@
 
 .issue-data {
     @extend %small;
-    div {
-        @include clearfix();
-        @include transition(background .2s ease-in);
-        background: darken($whitish, 5%);
-        padding: .5rem;
-        padding-right: 1rem;
-        div {
-            margin-bottom: .5rem;
-        }
+    margin-bottom: 1rem;
+    .duty-data {
+        margin-bottom: .5rem;
         &:last-child {
             margin: 0;
         }
-    }
-    .clickable {
-        &:hover {
+        div {
             @include transition(background .2s ease-in);
-            background: darken($whitish, 10%);
+            background: darken($whitish, 5%);
+            padding: .5rem;
+            padding-right: 1rem;
+        }
+        .clickable {
+            &:hover {
+                @include transition(background .2s ease-in);
+                background: darken($whitish, 10%);
+            }
         }
     }
     .level {
@@ -374,19 +374,6 @@
         position: relative;
         .pop-status {
             @include popover(150px, '', 30px, '', '');
-        }
-    }
-}
-.us-assigned-to {
-    &.loading {
-        width: 100%;
-        span {
-            font-size: 30px;
-            padding: 20px 0;
-            text-align: center;
-            width: 100%;
-            @include animation (loading .5s linear);
-            @include animation (spin 1s linear infinite);
         }
     }
 }

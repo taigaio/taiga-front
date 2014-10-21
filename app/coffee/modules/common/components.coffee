@@ -272,11 +272,13 @@ AssignedToDirective = ($rootscope, $confirm, $repo, $loading) ->
         <span class="assigned-title">Assigned to</span>
 
         <a href="" title="edit assignment" class="user-assigned editable">
-        <% if (assignedTo) { %>
-            <%- assignedTo.full_name_display %>
-        <% } else { %>
-            Not assigned
-        <% } %>
+            <span class="assigned-name">
+            <% if (assignedTo) { %>
+                <%- assignedTo.full_name_display %>
+            <% } else { %>
+                Not assigned
+            <% } %>
+            </span>
             <span class="icon icon-arrow-bottom"></span>
         </a>
         <% if (assignedTo!==null) { %>
