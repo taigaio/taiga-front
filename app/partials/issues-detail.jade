@@ -55,9 +55,10 @@ block content
             section.us-detail-settings
                tg-promote-issue-to-us-button(tg-check-permission="add_us", ng-model="issue")
                div(tg-check-permission="modify_issue", tg-block-button, ng-model="issue")
-               div(tg-check-permission="delete_issue", tg-delete-button,
-                   on-delete-go-to-url="project-issues",
-                   project-slug="{{ project.slug }}" ng-model="issue")
+               tg-delete-button(tg-check-permission="delete_issue",
+                                on-delete-go-to-url="project-issues",
+                                project-slug="{{ project.slug }}",
+                                ng-model="issue")
 
         div.lightbox.lightbox-block.hidden(tg-lb-block, title="Blocking issue", ng-model="issue")
         div.lightbox.lightbox-select-user(tg-lb-assignedto)

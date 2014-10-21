@@ -395,18 +395,11 @@ module.directive("tgBlockButton", ["$rootScope", "$tgLoading", BlockButtonDirect
 #############################################################################
 
 DeleteButtonDirective = ($repo, $confirm, $navurls, $location) ->
-    template = _.template("""
+    template = """
         <a href="" class="button button-red">Delete</a>
-    """)
+    """
 
     link = ($scope, $el, $attrs, $model) ->
-        render = _.once (item) ->
-            $el.html(template())
-
-        $scope.$watch $attrs.ngModel, (item) ->
-            return if not item
-            render(item)
-
         $scope.$on "$destroy", ->
             $el.off()
 
@@ -419,7 +412,8 @@ DeleteButtonDirective = ($repo, $confirm, $navurls, $location) ->
                 promise = $repo.remove($model.$modelValue)
                 promise.then =>
                     finish()
-                    $location.path($navurls.resolve($attrs.onDeleteGoToUrl, {project: $attrs.projectSlug}))
+                    url = $navurls.resolve($attrs.onDeleteGoToUrl, {project: $attrs.projectSlug})
+                    $location.path(url)
                 promise.then null, =>
                     finish(false)
                     $confirm.notify("error")
@@ -428,6 +422,7 @@ DeleteButtonDirective = ($repo, $confirm, $navurls, $location) ->
         link: link
         restrict: "EA"
         require: "ngModel"
+        template: template
     }
 
 module.directive("tgDeleteButton", ["$tgRepo", "$tgConfirm", "$tgNavUrls", "$tgLocation", DeleteButtonDirective])

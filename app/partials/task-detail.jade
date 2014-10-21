@@ -54,9 +54,10 @@ block content
             section.us-detail-settings
                fieldset(tg-task-is-iocaine-button, tg-check-permission="modify_task", ng-model="task")
                div(tg-check-permission="modify_task", tg-block-button, ng-model="task")
-               div(tg-check-permission="delete_task", tg-delete-button,
-                   on-delete-go-to-url="project-backlog",
-                   project-slug="{{ project.slug }}" ng-model="task")
+               tg-delete-button(tg-check-permission="delete_task",
+                                on-delete-go-to-url="project-backlog",
+                                project-slug="{{ project.slug }}",
+                                ng-model="task")
 
         div.lightbox.lightbox-block.hidden(tg-lb-block, title="Blocking task", ng-model="task")
         div.lightbox.lightbox-select-user(tg-lb-assignedto)
