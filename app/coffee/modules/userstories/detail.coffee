@@ -382,8 +382,6 @@ UsEstimationDirective = ($rootScope, $repo, $confirm) ->
 
             if saveAfterModify
                 # Edit in the detail page
-                $loading.start($el)
-
                 onSuccess = ->
                     $confirm.notify("success")
                     $rootScope.$broadcast("history:reload")
