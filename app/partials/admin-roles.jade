@@ -17,9 +17,16 @@ block content
                 .action-buttons
                     a.button.button-red.delete-role(href="", title="Delete", ng-click="ctrl.delete()") Delete
 
-            p.total
-                | {{ role.name }}
-                span ({{ role.members_count }} members with this role)
+
+            div(tg-edit-role)
+                .edit-role.hidden
+                    input(type="text", value="{{ role.name }}")
+                    a.save.icon.icon-floppy(href="", title="Save")
+
+                p.total
+                    | {{ role.name }}
+                    a.edit-value.icon.icon-edit
+                    span ({{ role.members_count }} members with this role)
 
             div.any-computable-role(ng-hide="anyComputableRole") Be careful, no role in your project will be able to estimate the point value for user stories
 
