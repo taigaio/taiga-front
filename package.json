@@ -39,6 +39,7 @@
     "gulp-rename": "^1.2.0",
     "gulp-ruby-sass": "^0.4.3",
     "gulp-scss-lint": "0.1.1",
+    "gulp-sourcemaps": "^1.2.4",
     "gulp-styledocco": "0.0.1",
     "gulp-template": "^0.1.1",
     "gulp-uglify": "~0.2.0",
