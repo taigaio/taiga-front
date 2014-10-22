@@ -504,7 +504,8 @@ module.directive("tgEditableSubject", ["$rootScope", "$tgRepo", "$tgConfirm", "$
 EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading) ->
     template = """
         <div class="view-description">
-            <section class="us-content wysiwyg" tg-bind-html="item.description_html"></section>
+            <section class="us-content wysiwyg"
+                     tg-bind-html="item.description_html || noDescriptionMsg"></section>
             <span class="edit icon icon-edit" href="" title="Edit" />
         </div>
         <div class="edit-description">
@@ -513,11 +514,24 @@ EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading)
                       tg-markitup="tg-markitup"></textarea>
             <a class="save icon icon-floppy" href="" title="Save" />
         </div>
-    """
+    """ # TODO: i18n
+    noDescriptionMegEditMode = """
+    <p class="no-description">
+        -- no description yet, why don't you add a good one clicking here? --
+    </p>
+    """ # TODO: i18n
+    noDescriptionMegReadMode = """
+    <p class="no-description">
+        -- no description yet --
+    </p>
+    """ # TODO: i18n
 
     link = ($scope, $el, $attrs, $model) ->
-        $scope.$on "$destroy", ->
-            $el.off()
+        $el.find('div.edit-description').hide()
+        $el.find('div.view-description span.edit').hide()
+
+        isEditable = ->
+            return $scope.project.my_permissions.indexOf($attrs.requiredPerm) != -1
 
         $el.on "click", ".view-description", (event) ->
             # We want to dettect the a inside the div so we use the target and
@@ -552,11 +566,15 @@ EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading)
         $scope.$watch $attrs.ngModel, (value) ->
             return if not value
             $scope.item = value
-            if $scope.project.my_permissions.indexOf($attrs.requiredPerm) != -1
-                $el.find('div.view-description span.edit').show()
 
-        $el.find('div.edit-description').hide()
-        $el.find('div.view-description span.edit').hide()
+            if isEditable
+                $el.find('div.view-description span.edit').show()
+                $scope.noDescriptionMsg = noDescriptionMegEditMode
+            else
+                $scope.noDescriptionMsg = noDescriptionMegReadMode
+
+        $scope.$on "$destroy", ->
+            $el.off()
 
     return {
         link: link
