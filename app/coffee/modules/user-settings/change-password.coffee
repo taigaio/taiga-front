@@ -51,11 +51,7 @@ class UserChangePasswordController extends mixOf(taiga.Controller, taiga.PageMix
 
         promise = @.loadInitialData()
 
-        promise.then null, (xhr) =>
-            if xhr and xhr.status == 404
-                @location.path(@navUrls.resolve("not-found"))
-                @location.replace()
-            return @q.reject(xhr)
+        promise.then null, @.onInitialDataError.bind(@)
 
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>

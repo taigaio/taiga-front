@@ -59,11 +59,7 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             @appTitle.set(@scope.task.subject + " - " + @scope.project.name)
             tgLoader.pageLoaded()
 
-        promise.then null, (xhr) =>
-            if xhr and xhr.status == 404
-                @location.path(@navUrls.resolve("not-found"))
-                @location.replace()
-            return @q.reject(xhr)
+        promise.then null, @.onInitialDataError.bind(@)
 
     initializeEventHandlers: ->
         @scope.$on "attachment:create", =>

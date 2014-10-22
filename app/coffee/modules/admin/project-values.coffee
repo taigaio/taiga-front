@@ -57,11 +57,7 @@ class ProjectValuesController extends mixOf(taiga.Controller, taiga.PageMixin)
         promise.then () =>
             @appTitle.set("Project values - " + @scope.sectionName + " - " + @scope.project.name)
 
-        promise.then null, (xhr) =>
-            if xhr and xhr.status == 404
-                @location.path(@navUrls.resolve("not-found"))
-                @location.replace()
-            return @q.reject(xhr)
+        promise.then null, @.onInitialDataError.bind(@)
 
         @scope.$on("admin:project-values:move", @.moveValue)
 

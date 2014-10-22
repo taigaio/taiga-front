@@ -136,6 +136,8 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         {templateUrl: "/partials/error.html"})
     $routeProvider.when("/not-found",
         {templateUrl: "/partials/not-found.html"})
+    $routeProvider.when("/permission-denied",
+        {templateUrl: "/partials/permission-denied.html"})
 
     $routeProvider.otherwise({redirectTo: '/not-found'})
     $locationProvider.html5Mode(true)
