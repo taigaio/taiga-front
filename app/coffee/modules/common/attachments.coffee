@@ -127,9 +127,9 @@ class AttachmentsController extends taiga.Controller
     # Remove one concrete attachment.
     removeAttachment: (attachment) ->
         title = "Delete attachment"  #TODO: i18in
-        subtitle = "the attachment '#{attachment.name}'" #TODO: i18in
+        message = "the attachment '#{attachment.name}'" #TODO: i18in
 
-        return @confirm.ask(title, subtitle).then (finish) =>
+        return @confirm.askOnDelete(title, message).then (finish) =>
             onSuccess = =>
                 finish()
                 index = @.attachments.indexOf(attachment)
@@ -139,7 +139,7 @@ class AttachmentsController extends taiga.Controller
 
             onError = =>
                 finish(false)
-                @confirm.notify("error", null, "We have not been able to delete #{subtitle}.")
+                @confirm.notify("error", null, "We have not been able to delete #{message}.")
                 return @q.reject()
 
             return @repo.remove(attachment).then(onSuccess, onError)

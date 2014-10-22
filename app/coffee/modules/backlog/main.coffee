@@ -469,9 +469,9 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
     deleteUserStory: (us) ->
         #TODO: i18n
         title = "Delete User Story"
-        subtitle = us.subject
+        message = us.subject
 
-        @confirm.ask(title, subtitle).then (finish) =>
+        @confirm.askOnDelete(title, message).then (finish) =>
             # We modify the userstories in scope so the user doesn't see the removed US for a while
             @scope.userstories = _.without(@scope.userstories, us)
             @filterVisibleUserstories()

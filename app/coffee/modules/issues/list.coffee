@@ -642,9 +642,9 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading) ->
             target = angular.element(event.currentTarget)
             customFilterName = target.parent().data('id')
             title = "Delete custom filter" # TODO: i18n
-            subtitle = "the custom filter '#{customFilterName}'" # TODO: i18n
+            message = "the custom filter '#{customFilterName}'" # TODO: i18n
 
-            $confirm.ask(title, subtitle).then (finish) ->
+            $confirm.askOnDelete(title, message).then (finish) ->
                 promise = $ctrl.deleteMyFilter(customFilterName)
                 promise.then ->
                     promise = $ctrl.loadMyFilters()

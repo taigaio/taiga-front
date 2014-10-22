@@ -134,9 +134,9 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
     delete: ->
         #TODO: i18n
         title = "Delete Task"
-        subtitle = @scope.task.subject
+        message = @scope.task.subject
 
-        @confirm.ask(title, subtitle).then (finish) =>
+        @confirm.askOnDelete(title, message).then (finish) =>
             promise = @.repo.remove(@scope.task)
             promise.then =>
                 finish()

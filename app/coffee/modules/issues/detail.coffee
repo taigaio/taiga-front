@@ -143,9 +143,9 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
     delete: ->
         # TODO: i18n
         title = "Delete Issue"
-        subtitle = @scope.issue.subject
+        message = @scope.issue.subject
 
-        @confirm.ask(title, subtitle).then (finish) =>
+        @confirm.askOnDelete(title, message).then (finish) =>
             promise = @.repo.remove(@scope.issue)
             promise.then =>
                 finish()

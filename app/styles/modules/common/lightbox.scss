@@ -283,12 +283,12 @@
     }
 }
 
-.lightbox-confirm-delete {
+.lightbox-generic-ask {
     form {
         @include table-flex-child(0, 420px, 0, 420px);
     }
-    .delete-question,
-    .subtitle {
+    .subtitle,
+    .message {
         display: block;
         line-height: 2rem;
         text-align: center;
@@ -297,7 +297,7 @@
         @extend %large;
         @extend %title;
     }
-    .delete-options {
+    .options {
         @include table-flex();
         a {
             @include table-flex-child(1, 0, 0);
@@ -314,7 +314,7 @@
     form {
         @include table-flex-child(0, 420px, 0, 420px);
     }
-    .delete-question,
+    .question,
     .subtitle {
         display: block;
         line-height: 2rem;
@@ -328,7 +328,7 @@
         display: block;
         text-align: center;
     }
-    .delete-options {
+    .options {
         @include table-flex();
         a {
             @include table-flex-child(1, 0, 0);
@@ -345,7 +345,7 @@
     form {
         @include table-flex-child(0, 420px, 0, 420px);
     }
-    .delete-question,
+    .question,
     .subtitle {
         display: block;
         line-height: 2rem;
@@ -372,7 +372,7 @@
     form {
         @include table-flex-child(0, 420px, 0, 420px);
     }
-    .delete-question,
+    .question,
     .subtitle {
         display: block;
         line-height: 2rem;
@@ -382,7 +382,7 @@
         @extend %large;
         @extend %title;
     }
-    .newsletter-delete {
+    .newsletter {
         margin-top: 1rem;
         text-align: center;
         input {
@@ -393,7 +393,7 @@
             }
         }
     }
-    .delete-options {
+    .options {
         @include table-flex();
         a {
             @include table-flex-child(1, 0, 0);
@@ -410,7 +410,7 @@
     form {
         @include table-flex-child(0, 420px, 0, 420px);
     }
-    .delete-question,
+    .question,
     .subtitle {
         display: block;
         line-height: 2rem;
@@ -420,7 +420,7 @@
         @extend %large;
         @extend %title;
     }
-    .delete-options {
+    .options {
         @include table-flex();
         a {
             @include table-flex-child(1, 0, 0);

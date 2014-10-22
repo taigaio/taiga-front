@@ -432,18 +432,18 @@ MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm) ->
             event.preventDefault()
 
             title = "Delete member" # TODO: i18n
-            subtitle = if member.user then member.full_name else "the invitation to #{member.email}" # TODO: i18n
+            message = if member.user then member.full_name else "the invitation to #{member.email}" # TODO: i18n
 
-            $confirm.ask(title, subtitle).then (finish) ->
+            $confirm.askOnDelete(title, message).then (finish) ->
                 onSuccess = ->
                     finish()
                     $ctrl.loadMembers()
-                    $confirm.notify("success", null, "We've deleted #{subtitle}.") # TODO: i18n
+                    $confirm.notify("success", null, "We've deleted #{message}.") # TODO: i18n
 
                 onError = ->
                     finish(false)
                     # TODO: i18in
-                    $confirm.notify("error", null, "We have not been able to delete #{subtitle}.")
+                    $confirm.notify("error", null, "We have not been able to delete #{message}.")
 
                 $repo.remove(member).then(onSuccess, onError)
 

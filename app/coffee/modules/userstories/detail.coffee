@@ -146,9 +146,9 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
     delete: ->
         #TODO: i18n
         title = "Delete User Story"
-        subtitle = @scope.us.subject
+        message = @scope.us.subject
 
-        @confirm.ask(title, subtitle).then (finish) =>
+        @confirm.askOnDelete(title, message).then (finish) =>
             promise = @.repo.remove(@scope.us)
             promise.then =>
                 finish()
