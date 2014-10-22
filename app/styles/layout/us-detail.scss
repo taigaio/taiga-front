@@ -58,7 +58,7 @@
             margin-bottom: 0;
             max-width: 94%;
             &:hover {
-                .edit {
+                .icon-edit {
                     @include transition(opacity .3s linear);
                     opacity: 1;
                 }
@@ -93,6 +93,8 @@
             @extend %large;
             color: $gray-light;
             margin-left: .5rem;
+        }
+        .icon-edit {
             opacity: 0;
         }
         .us-related-task {
@@ -168,10 +170,35 @@
 
 .duty-content {
     position: relative;
+    &:hover {
+        cursor: pointer;
+        p {
+            @include transition(background .2s linear);
+            background: $whitish;
+        }
+        .edit {
+            @include transition(all .2s linear);
+            opacity: 1;
+            top: -1.5rem;
+        }
+    }
+    &.wysiwyg {
+        overflow: visible;
+    }
     textarea {
         background: $white;
         height: 10rem;
         margin-bottom: 2rem;
+    }
+    .edit {
+        @include transition(all .2s linear);
+        background: $whitish;
+        color: $grayer;
+        left: 0;
+        opacity: 0;
+        padding: .2rem .5rem;
+        position: absolute;
+        top: -0;
     }
     a.save {
         color: $blackish;

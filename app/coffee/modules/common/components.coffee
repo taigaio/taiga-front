@@ -519,10 +519,12 @@ EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading)
         $scope.$on "$destroy", ->
             $el.off()
 
-        $el.on "click", ".edit", ->
-            $el.find('div.edit-description').show()
-            $el.find('div.view-description').hide()
-            $el.find('textarea').focus()
+        $el.on "click", ".view-description", (event) ->
+            target = angular.element(event.currentTarget)
+            if target.not('a')
+                $el.find('div.edit-description').show()
+                $el.find('div.view-description').hide()
+                $el.find('textarea').focus()
 
         $el.on "click", ".save", ->
             $model.$modelValue.description = $scope.item.description
