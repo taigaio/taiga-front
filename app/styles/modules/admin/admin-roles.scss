@@ -53,6 +53,18 @@
             }
         }
     }
+    .total {
+        @extend %large;
+        @extend %title;
+        background-color: $whitish;
+        color: $grayer;
+        padding: 1rem;
+        span {
+            @extend %medium;
+            @extend %text;
+            padding-left: .5rem;
+        }
+    }
     .any-computable-role {
         background: $red;
         color: $white;
