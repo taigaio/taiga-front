@@ -150,16 +150,19 @@
 .lightbox-add-member {
     .add-member-wrapper {
         @include table-flex();
+        fieldset {
+            position: relative;
+            &:first-child {
+                @include table-flex-child(3, 400px);
+            }
+            &:last-child {
+                @include table-flex-child(1, 200px);
+                margin-left: .5rem;
+            }
+        }
     }
-    fieldset {
-        position: relative;
-        &:first-child {
-            @include table-flex-child(3, 400px);
-        }
-        &:last-child {
-            @include table-flex-child(1, 200px);
-            margin-left: .5rem;
-        }
+    .extra-text {
+        margin-top: 1rem;
     }
     input[type=email],
     select {
