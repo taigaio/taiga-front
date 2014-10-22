@@ -149,17 +149,6 @@
     }
 }
 
-.tags-block {
-    .icon-plus {
-        @extend %large;
-        color: $gray-light;
-        vertical-align: top;
-        &:hover {
-            color: $fresh-taiga;
-        }
-    }
-}
-
 .duty-content {
     position: relative;
     &:hover {

@@ -41,7 +41,21 @@
         margin: 0 .5rem .5rem 0;
         padding: .5rem;
     }
+    .add-tag {
+        color: $gray-light;
+        &:hover {
+            color: $fresh-taiga;
+        }
+    }
+    .icon-plus {
+        @extend %large;
+    }
+    .add-tag-text {
+        @extend %small;
+    }
     .save {
         display: none;
     }
 }
+
+

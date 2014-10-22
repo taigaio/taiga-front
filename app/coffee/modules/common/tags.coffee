@@ -95,7 +95,10 @@ TagLineDirective = ($rootscope, $log, $rs, $tgrepo, $confirm) ->
     # Main directive template (rendered by angular)
     template = """
     <div class="tags-container"></div>
-    <a href="#" class="add-tag icon icon-plus" title="Add tag"></a>
+    <a href="#" class="add-tag" title="Add tag">
+        <span class="icon icon-plus"></span>
+        <span class="add-tag-text">Add tag</span>
+    </a>
     <input type="text" placeholder="Write tag..." class="tag-input hidden" />
     <a href="" title="Save" class="save icon icon-floppy"></a>
     """
