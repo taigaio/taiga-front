@@ -95,6 +95,7 @@
         .block-description-title {
             @extend %bold;
             color: $white;
+            margin-right: .5rem;
         }
         .block-description {
             color: $white;
