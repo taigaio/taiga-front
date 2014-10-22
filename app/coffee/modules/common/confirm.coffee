@@ -50,14 +50,13 @@ class ConfirmService extends taiga.Service
 
             el.off(".confirm-dialog")
 
-    ask: (title, subtitle, message=null, lightboxSelector=".lightbox-confirm-delete") ->
+    ask: (title, subtitle, message, lightboxSelector=".lightbox-generic-ask") ->
         el = angular.element(lightboxSelector)
 
         # Render content
         el.find("h2.title").html(title)
         el.find("span.subtitle").html(subtitle)
-        if message
-            el.find("span.delete-question").html(message)
+        el.find("span.message").html(message)
 
         defered = @q.defer()
 
@@ -79,6 +78,9 @@ class ConfirmService extends taiga.Service
         @lightboxService.open(el)
 
         return defered.promise
+
+    askOnDelete: (title, message) ->
+        return @.ask(title, "Are you sure you want to delete?", message) #TODO: i18n
 
     askChoice: (title, subtitle, choices, lightboxSelector=".lightbox-ask-choice") ->
         el = angular.element(lightboxSelector)

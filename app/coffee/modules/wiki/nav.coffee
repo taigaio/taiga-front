@@ -107,9 +107,9 @@ WikiNavDirective = ($tgrepo, $log, $location, $confirm, $navUrls, $analytics, $l
 
                 # TODO: i18n
                 title = "Delete Wiki Link"
-                subtitle = $scope.wikiLinks[linkId].title
+                message = $scope.wikiLinks[linkId].title
 
-                $confirm.ask(title, subtitle).then (finish) =>
+                $confirm.askOnDelete(title, message).then (finish) =>
                     promise = $tgrepo.remove($scope.wikiLinks[linkId])
                     promise.then ->
                         promise = $ctrl.loadWikiLinks()

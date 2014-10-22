@@ -165,10 +165,10 @@ WatchersDirective = ($rootscope, $confirm) ->
             target = angular.element(event.currentTarget)
             watcherId = target.data("watcher-id")
 
-            title = "Remove watcher"
-            subtitle = $scope.usersById[watcherId].full_name_display
+            title = "Delete watcher"
+            message = $scope.usersById[watcherId].full_name_display
 
-            $confirm.ask(title, subtitle).then (finish) =>
+            $confirm.askOnDelete(title, message).then (finish) =>
                 finish()
                 watcherIds = _.clone($model.$modelValue.watchers, false)
                 watcherIds = _.pull(watcherIds, watcherId)
@@ -250,10 +250,10 @@ AssignedToDirective = ($rootscope, $confirm) ->
 
             $el.on "click", ".icon-delete", (event) ->
                 event.preventDefault()
-                title = "Remove assigned to"
-                subtitle = ""
+                title = "Delete assignetion"
+                message = ""
 
-                $confirm.ask(title, subtitle).then (finish) =>
+                $confirm.askOnDelete(title, message).then (finish) =>
                     finish()
                     $model.$modelValue.assigned_to  = null
                     renderAssignedTo($model.$modelValue)

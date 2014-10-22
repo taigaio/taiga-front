@@ -139,9 +139,9 @@ RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope, $loading) ->
                 #TODO: i18n
                 task = $model.$modelValue
                 title = "Delete Task"
-                subtitle = task.subject
+                message = task.subject
 
-                $confirm.ask(title, subtitle).then (finish) ->
+                $confirm.askOnDelete(title, message).then (finish) ->
                     promise = $repo.remove(task)
                     promise.then ->
                         finish()

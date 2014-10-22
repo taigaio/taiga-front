@@ -138,9 +138,9 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
     delete: ->
         # TODO: i18n
         title = "Delete Wiki Page"
-        subtitle = unslugify(@scope.wiki.slug)
+        message = unslugify(@scope.wiki.slug)
 
-        @confirm.ask(title, subtitle).then (finish) =>
+        @confirm.askOnDelete(title, message).then (finish) =>
             onSuccess = =>
                 finish()
                 ctx = {project: @scope.projectSlug}

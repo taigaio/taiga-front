@@ -86,9 +86,9 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading)
         remove = ->
             #TODO: i18n
             title = "Delete sprint"
-            subtitle = $scope.sprint.name
+            message = $scope.sprint.name
 
-            $confirm.ask(title, subtitle).then (finish) =>
+            $confirm.askOnDelete(title, message).then (finish) =>
                 onSuccess = ->
                     finish()
                     $scope.milestonesCounter -= 1
