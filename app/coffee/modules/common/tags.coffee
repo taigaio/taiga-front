@@ -43,6 +43,9 @@ TagsDirective = ->
         $ctrl.$formatters.push(formatter)
         $ctrl.$parsers.push(parser)
 
+        $scope.$on "$destroy", ->
+            $el.off()
+
     return {
         require: "ngModel"
         link: link
@@ -83,6 +86,9 @@ ColorizeTagsDirective = ->
         $scope.$watch $attrs.tgColorizeTags, (tags) ->
             render(tags) if tags?
 
+        $scope.$on "$destroy", ->
+            $el.off()
+
     return {link: link}
 
 module.directive("tgColorizeTags", ColorizeTagsDirective)
@@ -99,7 +105,7 @@ TagLineDirective = ($rootscope, $log, $rs, $tgrepo, $confirm) ->
         <span class="icon icon-plus"></span>
         <span class="add-tag-text">Add tag</span>
     </a>
-    <input type="text" placeholder="Write tag..." class="tag-input hidden" />
+    <input type="text" placeholder="Write tag..." class="tag-input" />
     <a href="" title="Save" class="save icon icon-floppy"></a>
     """
 
@@ -114,23 +120,24 @@ TagLineDirective = ($rootscope, $log, $rs, $tgrepo, $confirm) ->
         </span>
     <% }); %>""")
 
-    renderTags = ($el, tags, editable, tagsColors) ->
-        ctx = {
-            tags: _.map(tags, (t) -> {name: t, color: tagsColors[t]})
-            editable: editable
-        }
-        html = templateTags(ctx)
-        $el.find("div.tags-container").html(html)
-
-    normalizeTags = (tags) ->
-        tags = _.map(tags, trim)
-        tags = _.map(tags, (x) -> x.toLowerCase())
-        return _.uniq(tags)
-
     link = ($scope, $el, $attrs, $model) ->
         editable = false
 
         $el.addClass("tags-block")
+        $el.find("input").hide()
+
+        renderTags = ($el, tags, editable, tagsColors) ->
+            ctx = {
+                tags: _.map(tags, (t) -> {name: t, color: tagsColors[t]})
+                editable: editable
+            }
+            html = templateTags(ctx)
+            $el.find("div.tags-container").html(html)
+
+        normalizeTags = (tags) ->
+            tags = _.map(tags, trim)
+            tags = _.map(tags, (x) -> x.toLowerCase())
+            return _.uniq(tags)
 
         addValue = (value) ->
             value = trim(value)
@@ -158,20 +165,9 @@ TagLineDirective = ($rootscope, $log, $rs, $tgrepo, $confirm) ->
             input.autocomplete("close")
             $el.find('.save').hide()
 
-        $scope.$watch $attrs.ngModel, (val) ->
-            tags_colors = if $scope.project?.tags_colors? then $scope.project.tags_colors else []
-            renderTags($el, val, editable, tags_colors)
-
-            if val? and val.length > 0
-                $el.find("span.add-tag-text").hide()
-            else
-                $el.find("span.add-tag-text").show()
-
-
         bindOnce $scope, "project", (project) ->
             # If not editable, no tags preloading is needed.
-            editable = if $attrs.editable == "true" then true else false
-            editable = editable and project.my_permissions.indexOf($attrs.requiredPerm) != -1
+            editable = $attrs.editable == "true" and project.my_permissions.indexOf($attrs.requiredPerm) != -1
 
             if not editable
                 $el.find("input").remove()
@@ -196,7 +192,7 @@ TagLineDirective = ($rootscope, $log, $rs, $tgrepo, $confirm) ->
                 })
 
         $el.on "keypress", "input", (event) ->
-            return if event.keyCode != 13
+            return if event.keyCode not in [13, 27]
             event.preventDefault()
 
         $el.on "keyup", "input", (event) ->
@@ -204,6 +200,11 @@ TagLineDirective = ($rootscope, $log, $rs, $tgrepo, $confirm) ->
 
             if event.keyCode == 13
                 saveInputTag()
+            else if event.keyCode == 27
+                $el.find('.save').hide()
+                $el.find("input").hide()
+                $el.find("input").val('')
+                $el.find('.add-tag').show()
             else if target.val().length
                 $el.find('.save').show()
             else
@@ -215,7 +216,7 @@ TagLineDirective = ($rootscope, $log, $rs, $tgrepo, $confirm) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
             target.hide()
-            target.siblings('input').removeClass('hidden')
+            target.siblings('input').show()
 
         $el.on "click", ".icon-delete", (event) ->
             event.preventDefault()
@@ -237,6 +238,18 @@ TagLineDirective = ($rootscope, $log, $rs, $tgrepo, $confirm) ->
                         $rootscope.$broadcast("history:reload")
                     promise.then null, ->
                         $confirm.notify("error")
+
+        $scope.$watch $attrs.ngModel, (val) ->
+            tags_colors = if $scope.project?.tags_colors? then $scope.project.tags_colors else []
+            renderTags($el, val, editable, tags_colors)
+
+            if val? and val.length > 0
+                $el.find("span.add-tag-text").hide()
+            else
+                $el.find("span.add-tag-text").show()
+
+        $scope.$on "$destroy", ->
+            $el.off()
 
     return {
         link:link,
