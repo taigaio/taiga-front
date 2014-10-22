@@ -5,7 +5,8 @@
 ### Features
 - Multiple User stories Drag & Drop in the backlog.
 - Add visual difference to closed USs in backlog panel.
-- Added beta ribbon.
+- Show crerated date of attachments in the hover of the filename.
+- Add beta ribbon.
 
 ### Misc
 - Lots of small and not so small bugfixes
