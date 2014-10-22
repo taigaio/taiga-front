@@ -162,6 +162,12 @@ TagLineDirective = ($rootscope, $log, $rs, $tgrepo, $confirm) ->
             tags_colors = if $scope.project?.tags_colors? then $scope.project.tags_colors else []
             renderTags($el, val, editable, tags_colors)
 
+            if val? and val.length > 0
+                $el.find("span.add-tag-text").hide()
+            else
+                $el.find("span.add-tag-text").show()
+
+
         bindOnce $scope, "project", (project) ->
             # If not editable, no tags preloading is needed.
             editable = if $attrs.editable == "true" then true else false
