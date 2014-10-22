@@ -19,3 +19,16 @@
         }
     }
 }
+
+.markItUpContainer {
+    padding: 0;
+}
+
+.preview {
+    .actions {
+        background: $whitish;
+        margin-top: .5rem;
+        min-height: 2rem;
+        padding: .3rem;
+    }
+}
