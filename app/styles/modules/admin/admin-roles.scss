@@ -1,4 +1,18 @@
 .admin-roles {
+    .edit-value {
+        cursor: pointer;
+        margin-left: .5rem;
+    }
+    .edit-role {
+        @include table-flex(stretch, left, center, row, wrap);
+        margin-bottom: 1rem;
+        input {
+            width: auto;
+        }
+        .icon-floppy {
+            margin-left: .5rem;
+        }
+    }
     .total {
         @extend %large;
         @extend %title;

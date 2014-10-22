@@ -123,6 +123,43 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
 
 module.controller("RolesController", RolesController)
 
+EditRoleDirective = ($repo, $confirm) ->
+    link = ($scope, $el, $attrs) ->
+        toggleView = ->
+            $el.find('.total').toggle()
+            $el.find('.edit-role').toggle()
+
+        submit = () ->
+            $scope.role.name = $el.find("input").val()
+
+            promise = $repo.save($scope.role)
+
+            promise.then ->
+                $confirm.notify("success")
+
+            promise.then null, (data) ->
+                $confirm.notify("error")
+
+            toggleView()
+
+        $el.on "click", "a.icon-edit", ->
+            toggleView()
+            $el.find("input").focus()
+
+        $el.on "click", "a.save", submit
+
+        $el.on "keyup", "input", ->
+            if event.keyCode == 13  # Enter key
+                submit()
+            else if event.keyCode == 27  # ESC key
+                toggleView()
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {link:link}
+
+module.directive("tgEditRole", ["$tgRepo", "$tgConfirm", EditRoleDirective])
 
 RolesDirective =  ->
     link = ($scope, $el, $attrs) ->
