@@ -42,9 +42,9 @@ resourceProvider = ($repo, $http, $urls) ->
         url = $urls.resolve("memberships")
         return $http.post("#{url}/#{id}/resend_invitation", {})
 
-    service.bulkCreateMemberships = (projectId, data) ->
+    service.bulkCreateMemberships = (projectId, data, invitation_extra_text) ->
         url = $urls.resolve("bulk-create-memberships")
-        params = {project_id: projectId, bulk_memberships: data}
+        params = {project_id: projectId, bulk_memberships: data, invitation_extra_text: invitation_extra_text}
         return $http.post(url, params)
 
     return (instance) ->

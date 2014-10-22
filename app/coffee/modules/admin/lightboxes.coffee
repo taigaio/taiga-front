@@ -31,6 +31,12 @@ MAX_MEMBERSHIP_FIELDSETS = 6
 #############################################################################
 
 CreateMembersDirective = ($rs, $rootScope, $confirm, lightboxService) ->
+    extraTextTemplate = """
+    <fieldset class="extra-text">
+        <textarea placeholder="Additional text to the invitation"></textarea>
+    </fieldset>
+    """
+
     template = _.template("""
     <div class="add-member-wrapper">
         <fieldset>
@@ -53,11 +59,14 @@ CreateMembersDirective = ($rs, $rootScope, $confirm, lightboxService) ->
             return template(ctx)
 
         resetForm = ->
-            $el.find("form > .add-member-wrapper").remove()
+            $el.find("form textarea").remove("")
+            $el.find("form .add-member-wrapper").remove()
 
-            title = $el.find("h2")
+            invitations = $el.find(".add-member-forms")
+            invitations.html(extraTextTemplate)
+
             fieldSet = createFieldSet()
-            title.after(fieldSet)
+            invitations.prepend(fieldSet)
 
         $scope.$on "membersform:new",  ->
             resetForm()
@@ -112,12 +121,10 @@ CreateMembersDirective = ($rs, $rootScope, $confirm, lightboxService) ->
             #checksley find new fields
             form.destroy()
             form.initialize()
-
             if not form.validate()
                 return
 
-            memberWrappers = $el.find("form > .add-member-wrapper")
-
+            memberWrappers = $el.find("form .add-member-wrapper")
             memberWrappers = _.filter memberWrappers, (mw) ->
                 angular.element(mw).find("input").hasClass('checksley-ok')
 
@@ -132,7 +139,9 @@ CreateMembersDirective = ($rs, $rootScope, $confirm, lightboxService) ->
                 }
 
             if invitations.length
-                $rs.memberships.bulkCreateMemberships($scope.project.id, invitations).then(onSuccess, onError)
+                invitation_extra_text = $el.find("form textarea").val()
+
+                $rs.memberships.bulkCreateMemberships($scope.project.id, invitations, invitation_extra_text).then(onSuccess, onError)
 
     return {link: link}
 
