@@ -14,7 +14,7 @@ form
             select.severity(ng-model="issue.severity", ng-options="s.id as s.name for s in severityList")
 
     fieldset
-        div(tg-tag-line, editable="true", ng-model="issue.tags")
+        div(tg-tag-line, ng-model="issue.tags", required-perm="add_issue")
 
     fieldset
         textarea.description(placeholder="Description", ng-model="issue.description")

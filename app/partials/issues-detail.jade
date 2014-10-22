@@ -31,7 +31,7 @@ block content
                         a.icon.icon-arrow-left(ng-show="previousUrl", tg-bo-href="previousUrl", title="previous issue")
                         a.icon.icon-arrow-right(ng-show="nextUrl", tg-bo-href="nextUrl", title="next issue")
 
-                div(tg-tag-line, editable="true", autosave-model="issue", ng-model="issue.tags", required-perm="modify_issue")
+                div(tg-tag-line, autosave-model="issue", ng-model="issue.tags", required-perm="modify_issue")
 
             section.duty-content.wysiwyg(tg-editable-description, ng-model="issue", required-perm="modify_issue")
 

@@ -167,11 +167,15 @@ TagLineDirective = ($rootscope, $log, $rs, $tgrepo, $confirm) ->
 
         bindOnce $scope, "project", (project) ->
             # If not editable, no tags preloading is needed.
-            editable = $attrs.editable == "true" and project.my_permissions.indexOf($attrs.requiredPerm) != -1
+            editable = project.my_permissions.indexOf($attrs.requiredPerm) != -1
+
+            if not $scope.$eval($attrs.autosaveModel)?
+                $el.find("a.save").remove()
 
             if not editable
                 $el.find("input").remove()
                 return
+
 
             positioningFunction = (position, elements) ->
                 menu = elements.element.element

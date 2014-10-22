@@ -234,10 +234,10 @@ module.directive("tgBlockingMessageInput", ["$log", BlockingMessageInputDirectiv
 
 CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService, $loading) ->
     link = ($scope, $el, attrs) ->
-        isNew = true
+        $scope.isNew = true
 
         $scope.$on "usform:new", (ctx, projectId, status, statusList) ->
-            isNew = true
+            $scope.isNew = true
             $scope.usStatusList = statusList
 
             $scope.us = {
@@ -261,7 +261,7 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
 
         $scope.$on "usform:edit", (ctx, us) ->
             $scope.us = us
-            isNew = false
+            $scope.isNew = false
 
             # Update texts for edition
             $el.find(".button-green span").html("Save") #TODO: i18n
@@ -296,7 +296,7 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
 
             $loading.start(target)
 
-            if isNew
+            if $scope.isNew
                 promise = $repo.create("userstories", $scope.us)
                 broadcastEvent = "usform:new:success"
             else
