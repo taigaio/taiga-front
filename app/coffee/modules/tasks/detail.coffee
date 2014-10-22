@@ -140,7 +140,12 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             promise = @.repo.remove(@scope.task)
             promise.then =>
                 finish()
-                @location.path(@navUrls.resolve("project-backlog", {project: @scope.project.slug}))
+
+                if @scope.task.milestone
+                    @location.path(@navUrls.resolve("project-taskboard", {project: @scope.project.slug, sprint: @scope.sprint.slug}))
+                else if @scope.us
+                    @location.path(@navUrls.resolve("project-userstories-detail", {project: @scope.project.slug, ref: @scope.us.ref}))
+
             promise.then null, =>
                 finish(false)
                 @confirm.notify("error")
