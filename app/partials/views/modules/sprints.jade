@@ -12,39 +12,23 @@ section.sprints
                                       tg-check-permission="add_milestone")
                     span.text + New sprint
 
-    section.sprint(ng-repeat="sprint in sprints track by sprint.id"
-                   tg-backlog-sprint="sprint")
-        header
-            div.sprint-name
-                a.icon.icon-arrow-up(href="", title="Compact Sprint")
-                a(href="", tg-bo-title="'Go to Taskboard of ' + sprint.name",
-                       tg-nav="project-taskboard:project=project.slug,sprint=sprint.slug",
-                       tg-check-permission="view_milestones")
-                    span {{ sprint.name }}
+    section.sprint(ng-repeat="sprint in sprints track by sprint.id" tg-backlog-sprint="sprint")
+        header(tg-backlog-sprint-header, ng-model="sprint")
 
-                a.icon.icon-edit(tg-check-permission="modify_milestone", href="", title="Edit Sprint")
-            div.sprint-summary
-                div.sprint-date(tg-date-range="sprint.estimated_start,sprint.estimated_finish")
-                ul
-                    li
-                        span.number(ng-bind="sprint.closed_points|default:''") --
-                        span.description closed
-                    li
-                        span.number(ng-bind="sprint.total_points|default:''")
-                        span.description total
-
-        div.sprint-progress-bar(tg-progress-bar="100 * sprint.closed_points / total_points")
+        div.sprint-progress-bar(tg-progress-bar="100 * sprint.closed_points / sprint.total_points")
 
         div.sprint-table(tg-sprint-sortable)
             div.row.milestone-us-item-row(ng-repeat="us in sprint.user_stories track by us.id")
                 div.column-us.width-8
                     a.us-name.clickable(tg-nav="project-userstories-detail:project=project.slug,ref=us.ref",
-                                        tg-bo-title="'#' + us.ref + ' ' +  us.subject")
+                                        tg-bo-title="'#' + us.ref + ' ' +  us.subject",
+                                        ng-class="{closed: us.is_closed}")
                         span(tg-bo-ref="us.ref")
                         span(tg-bo-bind="us.subject")
-                div.column-points.width-1(tg-bo-bind="us.total_points")
+                div.column-points.width-1(tg-bo-bind="us.total_points", ng-class="{closed: us.is_closed}")
 
-        a.button.button-gray(href="", tg-bo-title="'Go to Taskboard of ' + sprint.name",
+        a.button.button-gray(tg-bo-title="'Go to Taskboard of ' + sprint.name",
                              tg-nav="project-taskboard:project=project.slug,sprint=sprint.slug",
                              tg-check-permission="view_milestones")
+
             span Sprint Taskboard

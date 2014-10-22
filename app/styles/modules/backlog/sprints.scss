@@ -16,7 +16,7 @@
         }
     }
     .sprint-name {
-        span {
+        a {
             @extend %large;
             @extend %title;
             @include ellipsis($width: 90%);
@@ -153,10 +153,16 @@
             @include table-flex-child(1, 0, 0);
             padding: 0 4px;
             text-align: right;
+            &.closed {
+                color: lighten($gray-light, 5%);
+            }
         }
         .us-name {
             @include ellipsis(250px);
             display: block;
+            &.closed {
+                color: lighten($gray-light, 5%);
+            }
         }
     }
     .button-gray {

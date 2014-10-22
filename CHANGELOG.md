@@ -4,6 +4,7 @@
 
 ### Features
 - Multiple User stories Drag & Drop in the backlog.
+- Add visual difference to closed USs in backlog panel.
 - Added beta ribbon.
 
 ### Misc
