@@ -1,6 +1,5 @@
 .history {
     margin-bottom: 1rem;
-    padding: 0 1rem;
 }
 .changes-title {
     display: block;
@@ -66,7 +65,22 @@
 }
 .add-comment {
     @include clearfix;
+    &.active {
+        .button-green {
+            display: block;
+        }
+        textarea {
+            @include transition(height .3s ease-in);
+            height: 6rem;
+        }
+        .preview-icon {
+            opacity: 1;
+            position: absolute;
+            right: 1rem;
+        }
+    }
     textarea {
+        background: $white;
         float: left;
         height: 41px;
         margin-bottom: .5rem;
@@ -79,14 +93,11 @@
     .button-green {
         display: none;
     }
-    &.active {
-        .button-green {
-            display: block;
-        }
-        textarea {
-            @include transition(height .3s ease-in);
-            height: 6rem;
-        }
+    .edit,
+    .preview-icon {
+        opacity: 0;
+        position: absolute;
+        right: 1rem;
     }
 }
 a.show-more-comments {
