@@ -152,7 +152,13 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             promise = @.repo.remove(@scope.us)
             promise.then =>
                 finish()
-                @location.path(@navUrls.resolve("project-backlog", {project: @scope.project.slug}))
+
+                if @scope.us.milestone
+                    @location.path(@navUrls.resolve("project-taskboard", {project: @scope.project.slug, sprint: @scope.sprint.slug}))
+                else if @scope.project.is_backlog_activated
+                    @location.path(@navUrls.resolve("project-backlog", {project: @scope.project.slug}))
+                else
+                    @location.path(@navUrls.resolve("project-kanban", {project: @scope.project.slug}))
             promise.then null, =>
                 finish(false)
                 $confirm.notify("error")
