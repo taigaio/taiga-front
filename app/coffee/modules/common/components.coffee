@@ -520,8 +520,10 @@ EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading)
             $el.off()
 
         $el.on "click", ".view-description", (event) ->
-            target = angular.element(event.currentTarget)
-            if target.not('a')
+            # We want to dettect the a inside the div so we use the target and
+            # not the currentTarget
+            target = angular.element(event.target)
+            if not target.is('a')
                 $el.find('div.edit-description').show()
                 $el.find('div.view-description').hide()
                 $el.find('textarea').focus()
