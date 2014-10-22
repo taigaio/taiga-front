@@ -95,9 +95,11 @@
     }
     .edit,
     .preview-icon {
-        opacity: 0;
         position: absolute;
         right: 1rem;
+    }
+    .preview-icon {
+        opacity: 0;
     }
 }
 a.show-more-comments {

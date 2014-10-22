@@ -41,8 +41,12 @@
             @extend %large;
             color: $green-taiga;
             cursor: default;
+            line-height: 1.5rem;
             &.editable {
                 cursor: pointer;
+            }
+            .icon {
+                vertical-align: top;
             }
         }
         .assigned-name {
