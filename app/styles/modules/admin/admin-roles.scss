@@ -1,36 +1,56 @@
 .admin-roles {
+    .total {
+        background-color: $whitish;
+        padding: 1rem;
+        &:hover {
+            .edit-value {
+                @include transition(opacity .3s linear);
+                opacity: 1;
+            }
+        }
+    }
+    .role-name {
+        @extend %xlarge;
+        @extend %title;
+        color: $grayer;
+    }
     .edit-value {
+        @include transition(opacity .3s linear);
+        @extend %medium;
+        color: $gray-light;
         cursor: pointer;
         margin-left: .5rem;
+        opacity: 0;
     }
     .edit-role {
         @include table-flex(stretch, left, center, row, wrap);
 <<<<<<< HEAD
+<<<<<<< HEAD
         margin-bottom: 1rem;
         input {
 =======
+=======
+>>>>>>> Admin roles design and UX
         background-color: $whitish;
         margin-bottom: 1rem;
         padding: .5rem;
         input {
             background-color: $white;
+<<<<<<< HEAD
 >>>>>>> fix #1397 - rename role
             width: auto;
+=======
+            width: 50%;
+>>>>>>> Admin roles design and UX
         }
         .icon-floppy {
+            @include transition(color.3s linear);
+            color: $gray-light;
             margin-left: .5rem;
-        }
-    }
-    .total {
-        @extend %large;
-        @extend %title;
-        background-color: $whitish;
-        color: $grayer;
-        padding: 1rem;
-        span {
-            @extend %medium;
-            @extend %text;
-            padding-left: .5rem;
+            &:hover {
+                @include transition(color.3s linear);
+                color: $green-taiga;
+            }
         }
     }
     .any-computable-role {

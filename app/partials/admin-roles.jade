@@ -24,9 +24,8 @@ block content
                     a.save.icon.icon-floppy(href="", title="Save")
 
                 p.total
-                    | {{ role.name }}
+                    span.role-name(title="{{ role.members_count }} members with this role") {{ role.name }}
                     a.edit-value.icon.icon-edit
-                    span ({{ role.members_count }} members with this role)
 
             div.any-computable-role(ng-hide="anyComputableRole") Be careful, no role in your project will be able to estimate the point value for user stories
 
