@@ -524,7 +524,7 @@ EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading)
         </div>
     """ # TODO: i18n
     noDescriptionMegEditMode = """
-    <p class="no-description">
+    <p class="no-description editable">
         No description yet, why don't you add a good one clicking here?
     </p>
     """ # TODO: i18n
@@ -535,8 +535,8 @@ EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading)
     """ # TODO: i18n
 
     link = ($scope, $el, $attrs, $model) ->
-        $el.find('div.edit-description').hide()
-        $el.find('div.view-description span.edit').hide()
+        $el.find('.edit-description').hide()
+        $el.find('.view-description .edit').hide()
 
         isEditable = ->
             return $scope.project.my_permissions.indexOf($attrs.requiredPerm) != -1
@@ -547,8 +547,8 @@ EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading)
             return if not isEditable()
             target = angular.element(event.target)
             if not target.is('a')
-                $el.find('div.edit-description').show()
-                $el.find('div.view-description').hide()
+                $el.find('.edit-description').show()
+                $el.find('.view-description').hide()
                 $el.find('textarea').focus()
 
         $el.on "click", ".save", ->
@@ -559,8 +559,8 @@ EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading)
             promise.then ->
                 $confirm.notify("success")
                 $rootscope.$broadcast("history:reload")
-                $el.find('div.edit-description').hide()
-                $el.find('div.view-description').show()
+                $el.find('.edit-description').hide()
+                $el.find('.view-description').show()
             promise.then null, ->
                 $confirm.notify("error")
             promise.finally ->
@@ -569,17 +569,17 @@ EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading)
         $el.on "keyup", "textarea", ->
             if event.keyCode == 27
                 $scope.item.revert()
-                $el.find('div.edit-description').hide()
-                $el.find('div.view-description').show()
+                $el.find('.edit-description').hide()
+                $el.find('.view-description').show()
 
         $scope.$watch $attrs.ngModel, (value) ->
             return if not value
             $scope.item = value
 
             if isEditable()
-                $el.find('div.view-description span.edit').show()
-                $scope.noDescriptionMsg = noDescriptionMegEditMode
+                $el.find('.view-description .edit').show()
                 $el.find('.view-description p').addClass('editable')
+                $scope.noDescriptionMsg = noDescriptionMegEditMode
             else
                 $scope.noDescriptionMsg = noDescriptionMegReadMode
 
