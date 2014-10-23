@@ -24,7 +24,7 @@ debounce = @.taiga.debounce
 
 module = angular.module("taigaKanban")
 
-MAX_MEMBERSHIP_FIELDSETS = 6
+MAX_MEMBERSHIP_FIELDSETS = 4
 
 #############################################################################
 ## Create Members Lightbox Directive
@@ -33,7 +33,7 @@ MAX_MEMBERSHIP_FIELDSETS = 6
 CreateMembersDirective = ($rs, $rootScope, $confirm, lightboxService) ->
     extraTextTemplate = """
     <fieldset class="extra-text">
-        <textarea placeholder="Additional text to the invitation"></textarea>
+        <textarea placeholder="(Optional) Add a personalized text to to the invitation"></textarea>
     </fieldset>
     """
 
@@ -100,7 +100,7 @@ CreateMembersDirective = ($rs, $rootScope, $confirm, lightboxService) ->
             fieldSet.after(newFieldSet)
 
             if $el.find(".add-member-wrapper").length == MAX_MEMBERSHIP_FIELDSETS
-                $el.find("fieldset:last > a").removeClass("icon-plus add-fieldset")
+                $el.find(".add-member-wrapper fieldset:last > a").removeClass("icon-plus add-fieldset")
                                              .addClass("icon-delete delete-fieldset")
 
         $el.on "click", ".button-green", debounce 2000, (event) ->

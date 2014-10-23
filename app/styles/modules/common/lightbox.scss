@@ -150,6 +150,10 @@
 .lightbox-add-member {
     .add-member-wrapper {
         @include table-flex();
+        margin-bottom: .5rem;
+        &:last-child {
+            margin-bottom: 0;
+        }
         fieldset {
             position: relative;
             &:first-child {
