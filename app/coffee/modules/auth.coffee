@@ -20,6 +20,7 @@
 ###
 
 taiga = @.taiga
+debounce = @.taiga.debounce
 
 module = angular.module("taigaAuth", ["taigaResources"])
 
@@ -238,7 +239,7 @@ RegisterDirective = ($auth, $confirm, $location, $navUrls, $config, $analytics) 
 
             form.setErrors(response.data)
 
-        submit = ->
+        submit = debounce 2000, =>
             if not form.validate()
                 return
 
@@ -278,7 +279,7 @@ ForgotPasswordDirective = ($auth, $confirm, $location, $navUrls) ->
             $confirm.notify("light-error", "According to our Oompa Loompas,
                                             your are not registered yet.") #TODO: i18n
 
-        submit = ->
+        submit = debounce 2000, =>
             if not form.validate()
                 return
 
@@ -323,7 +324,7 @@ ChangePasswordFromRecoveryDirective = ($auth, $confirm, $location, $params, $nav
             $confirm.notify("light-error", "One of our Oompa Loompas say
                             '#{response.data._error_message}'.") #TODO: i18n
 
-        submit = ->
+        submit = debounce 2000, =>
             if not form.validate()
                 return
 
@@ -362,7 +363,7 @@ InvitationDirective = ($auth, $confirm, $location, $params, $navUrls, $analytics
 
         # Login form
         $scope.dataLogin = {token: token}
-        loginForm = $el.find("form.login-form").checksley()
+        loginForm = $el.find("form.login-form").checksley({onlyOneErrorElement: true})
 
         onSuccessSubmitLogin = (response) ->
             $analytics.trackEvent("auth", "invitationAccept", "invitation accept with existing user", 1)
@@ -374,7 +375,7 @@ InvitationDirective = ($auth, $confirm, $location, $params, $navUrls, $analytics
             $confirm.notify("light-error", "According to our Oompa Loompas, your are not registered yet or
                                             typed an invalid password.") #TODO: i18n
 
-        submitLogin = ->
+        submitLogin = debounce 2000, =>
             if not loginForm.validate()
                 return
 
@@ -403,7 +404,7 @@ InvitationDirective = ($auth, $confirm, $location, $params, $navUrls, $analytics
             $confirm.notify("light-error", "According to our Oompa Loompas, that
                                             username or email is already in use.") #TODO: i18n
 
-        submitRegister = ->
+        submitRegister = debounce 2000, =>
             if not registerForm.validate()
                 return
 
