@@ -15,9 +15,8 @@ form
                placeholder="Assigned to")
             option(value="") Unassigned
 
-    fieldset(ng-switch="isNew")
-        div(ng-switch-when="true", tg-tag-line, ng-model="task.tags", required-perm="add_task")
-        div(ng-switch-default, tg-tag-line, ng-model="task.tags", required-perm="modify_task")
+    fieldset
+        div.tags-block(tg-lb-tag-line, ng-model="task.tags")
 
     fieldset
         textarea.description(placeholder="Type a short description", ng-model="task.description")
