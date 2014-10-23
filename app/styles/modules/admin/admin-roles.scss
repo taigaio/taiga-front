@@ -27,24 +27,12 @@
     }
     .edit-role {
         @include table-flex(stretch, left, center, row, wrap);
-<<<<<<< HEAD
-<<<<<<< HEAD
-        margin-bottom: 1rem;
-        input {
-=======
-=======
->>>>>>> Admin roles design and UX
         background-color: $whitish;
         margin-bottom: 1rem;
         padding: .5rem;
         input {
             background-color: $white;
-<<<<<<< HEAD
->>>>>>> fix #1397 - rename role
-            width: auto;
-=======
             width: 50%;
->>>>>>> Admin roles design and UX
         }
         .icon-floppy {
             @include transition(color.3s linear);
