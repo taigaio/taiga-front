@@ -74,11 +74,7 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             tgLoader.pageLoaded()
 
         # On Error
-        promise.then null, (xhr) =>
-            if xhr and xhr.status == 404
-                @location.path(@navUrls.resolve("not-found"))
-                @location.replace()
-            return @q.reject(xhr)
+        promise.then null, @.onInitialDataError.bind(@)
 
         @scope.$on "issueform:new:success", =>
             @analytics.trackEvent("issue", "create", "create issue on issues list", 1)

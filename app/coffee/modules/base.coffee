@@ -46,6 +46,7 @@ urls = {
     "home": "/"
     "error": "/error"
     "not-found": "/not-found"
+    "permission-denied": "/permission-denied"
 
     "login": "/login"
     "forgot-password": "/forgot-password"

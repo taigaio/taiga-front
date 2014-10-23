@@ -58,11 +58,7 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
         promise.then  =>
             @appTitle.set("Membership - " + @scope.project.name)
 
-        promise.then null, (xhr) =>
-            if xhr and xhr.status == 404
-                @location.path(@navUrls.resolve("not-found"))
-                @location.replace()
-            return @q.reject(xhr)
+        promise.then null, @.onInitialDataError.bind(@)
 
         @scope.$on "membersform:new:success", =>
             @.loadMembers()

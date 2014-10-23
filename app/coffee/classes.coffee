@@ -22,6 +22,16 @@
 class TaigaBase
 class TaigaService extends TaigaBase
 class TaigaController extends TaigaBase
+    onInitialDataError: (xhr) =>
+        if xhr
+            if xhr.status == 404
+                @location.path(@navUrls.resolve("not-found"))
+                @location.replace()
+            else if xhr.status == 403
+                @location.path(@navUrls.resolve("permission-denied"))
+                @location.replace()
+
+        return @q.reject(xhr)
 
 @.taiga.Base = TaigaBase
 @.taiga.Service = TaigaService
