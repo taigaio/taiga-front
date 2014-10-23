@@ -89,8 +89,10 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
 
     delete: ->
         # TODO: i18n
-        title = "Delete Role"
+        title = "Delete Role" # TODO: i18n
         subtitle = @scope.role.name
+        replacement = "All the users with this role will be moved to" # TODO: i18n
+        warning = "<strong>Be careful, all role estimations will be removed</strong>" # TODO: i18n
 
         choices = {}
         for role in @scope.roles
@@ -98,9 +100,9 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
                 choices[role.id] = role.name
 
         if _.keys(choices).length == 0
-            return @confirm.error("You can't delete all values.")
+            return @confirm.error("You can't delete all values.") # TODO: i18n
 
-        return @confirm.askChoice(title, subtitle, choices).then (response) =>
+        return @confirm.askChoice(title, subtitle, choices, replacement, warning).then (response) =>
             promise = @repo.remove(@scope.role, {moveTo: response.selected})
             promise.then =>
                 @.loadProject()

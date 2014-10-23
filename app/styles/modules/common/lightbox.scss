@@ -311,13 +311,14 @@
 }
 
 .lightbox-ask-choice {
+    text-align: center;
     form {
-        @include table-flex-child(0, 420px, 0, 420px);
+        @include table-flex-child(0, 420px, 0);
     }
     .question,
     .subtitle {
         display: block;
-        line-height: 2rem;
+        line-height: 1.5rem;
         text-align: center;
     }
     .subtitle {
@@ -326,7 +327,9 @@
     }
     .replacement {
         display: block;
-        text-align: center;
+        span {
+            display: block;
+        }
     }
     .options {
         @include table-flex();
