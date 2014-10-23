@@ -129,7 +129,17 @@ body {
     margin-bottom: 1rem;
     .action-buttons {
         @include flex-shrink(0);
-        padding-left: 1rem;
+    }
+    .button {
+        color: $white;
+        float: right;
+        margin-left: 10px;
+        &:first-child {
+            margin-left: 0;
+        }
+        &:hover {
+            color: $white;
+        }
     }
     h1 {
         margin-bottom: 0;
