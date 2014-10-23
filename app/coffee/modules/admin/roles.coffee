@@ -154,6 +154,10 @@ EditRoleDirective = ($repo, $confirm) ->
             else if event.keyCode == 27  # ESC key
                 toggleView()
 
+        $scope.$on "role:changed", ->
+            if $el.find('.edit-role').is(":visible")
+                toggleView()
+
         $scope.$on "$destroy", ->
             $el.off()
 
