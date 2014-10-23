@@ -43,6 +43,7 @@
     }
     .add-tag {
         color: $gray-light;
+        vertical-align: initial;
         &:hover {
             color: $fresh-taiga;
         }

@@ -152,21 +152,26 @@
 .duty-content {
     position: relative;
     &:hover {
-        cursor: pointer;
         .view-description {
             .edit {
                 @include transition(all .2s linear);
                 opacity: 1;
                 top: -1.5rem;
             }
-            p {
-                @include transition(background .2s linear);
+            .no-description {
+                color: $grayer;
+            }
+            .editable {
                 background: $whitish;
+                cursor: pointer;
             }
         }
     }
     &.wysiwyg {
         overflow: visible;
+    }
+    .no-description {
+        color: $gray-light;
     }
     textarea {
         background: $white;

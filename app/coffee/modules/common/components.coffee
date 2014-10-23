@@ -444,6 +444,10 @@ EditableSubjectDirective = ($rootscope, $repo, $confirm, $loading) ->
     """
 
     link = ($scope, $el, $attrs, $model) ->
+
+        isEditable = ->
+            return $scope.project.my_permissions.indexOf($attrs.requiredPerm) != -1
+
         save = ->
             $model.$modelValue.subject = $scope.item.subject
             $loading.start($el.find('.save-container'))
@@ -451,25 +455,17 @@ EditableSubjectDirective = ($rootscope, $repo, $confirm, $loading) ->
             promise.then ->
                 $confirm.notify("success")
                 $rootscope.$broadcast("history:reload")
-                $el.find('div.edit-subject').hide()
-                $el.find('div.view-subject').show()
+                $el.find('.edit-subject').hide()
+                $el.find('.view-subject').show()
             promise.then null, ->
                 $confirm.notify("error")
             promise.finally ->
                 $loading.finish($el.find('.save-container'))
 
-        $scope.$watch $attrs.ngModel, (value) ->
-            return if not value
-            $scope.item = value
-            if $scope.project.my_permissions.indexOf($attrs.requiredPerm) != -1
-                $el.find('div.view-subject span.edit').show()
-
-        $scope.$on "$destroy", ->
-            $el.off()
-
         $el.click ->
-            $el.find('div.edit-subject').show()
-            $el.find('div.view-subject').hide()
+            return if not isEditable()
+            $el.find('.edit-subject').show()
+            $el.find('.view-subject').hide()
             $el.find('input').focus()
 
         $el.on "click", ".save", ->
@@ -485,6 +481,18 @@ EditableSubjectDirective = ($rootscope, $repo, $confirm, $loading) ->
 
         $el.find('div.edit-subject').hide()
         $el.find('div.view-subject span.edit').hide()
+
+
+        $scope.$watch $attrs.ngModel, (value) ->
+            return if not value
+            $scope.item = value
+
+            if not isEditable()
+                $el.find('.view-subject .edit').remove()
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
 
     return {
         link: link
@@ -517,12 +525,12 @@ EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading)
     """ # TODO: i18n
     noDescriptionMegEditMode = """
     <p class="no-description">
-        -- no description yet, why don't you add a good one clicking here? --
+        No description yet, why don't you add a good one clicking here?
     </p>
     """ # TODO: i18n
     noDescriptionMegReadMode = """
     <p class="no-description">
-        -- no description yet --
+        No description
     </p>
     """ # TODO: i18n
 
@@ -536,6 +544,7 @@ EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading)
         $el.on "click", ".view-description", (event) ->
             # We want to dettect the a inside the div so we use the target and
             # not the currentTarget
+            return if not isEditable()
             target = angular.element(event.target)
             if not target.is('a')
                 $el.find('div.edit-description').show()
@@ -567,9 +576,10 @@ EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading)
             return if not value
             $scope.item = value
 
-            if isEditable
+            if isEditable()
                 $el.find('div.view-description span.edit').show()
                 $scope.noDescriptionMsg = noDescriptionMegEditMode
+                $el.find('.view-description p').addClass('editable')
             else
                 $scope.noDescriptionMsg = noDescriptionMegReadMode
 
