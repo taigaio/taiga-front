@@ -89,8 +89,10 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
 
     delete: ->
         # TODO: i18n
-        title = "Delete Role"
+        title = "Delete Role" # TODO: i18n
         subtitle = @scope.role.name
+        replacement = "All the users with this role will be moved to" # TODO: i18n
+        warning = "<strong>Be careful, all role estimations will be removed</strong>" # TODO: i18n
 
         choices = {}
         for role in @scope.roles
@@ -98,9 +100,9 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
                 choices[role.id] = role.name
 
         if _.keys(choices).length == 0
-            return @confirm.error("You can't delete all values.")
+            return @confirm.error("You can't delete all values.") # TODO: i18n
 
-        return @confirm.askChoice(title, subtitle, choices).then (response) =>
+        return @confirm.askChoice(title, subtitle, choices, replacement, warning).then (response) =>
             promise = @repo.remove(@scope.role, {moveTo: response.selected})
             promise.then =>
                 @.loadProject()
@@ -123,6 +125,47 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
 
 module.controller("RolesController", RolesController)
 
+EditRoleDirective = ($repo, $confirm) ->
+    link = ($scope, $el, $attrs) ->
+        toggleView = ->
+            $el.find('.total').toggle()
+            $el.find('.edit-role').toggle()
+
+        submit = () ->
+            $scope.role.name = $el.find("input").val()
+
+            promise = $repo.save($scope.role)
+
+            promise.then ->
+                $confirm.notify("success")
+
+            promise.then null, (data) ->
+                $confirm.notify("error")
+
+            toggleView()
+
+        $el.on "click", "a.icon-edit", ->
+            toggleView()
+            $el.find("input").focus()
+
+        $el.on "click", "a.save", submit
+
+        $el.on "keyup", "input", ->
+            if event.keyCode == 13  # Enter key
+                submit()
+            else if event.keyCode == 27  # ESC key
+                toggleView()
+
+        $scope.$on "role:changed", ->
+            if $el.find('.edit-role').is(":visible")
+                toggleView()
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {link:link}
+
+module.directive("tgEditRole", ["$tgRepo", "$tgConfirm", EditRoleDirective])
 
 RolesDirective =  ->
     link = ($scope, $el, $attrs) ->

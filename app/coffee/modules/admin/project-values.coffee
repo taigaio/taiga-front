@@ -260,12 +260,13 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame) ->
                     choices[option.id] = option.name
 
             #TODO: i18n
-            title = "Delete"
+            title = "Delete value"
             subtitle = value.name
+            replacement = "All items with this value will be changed to"
             if _.keys(choices).length == 0
                 return $confirm.error("You can't delete all values.")
 
-            return $confirm.askChoice(title, subtitle, choices).then (response) ->
+            return $confirm.askChoice(title, subtitle, choices, replacement).then (response) ->
                 onSucces = ->
                     $ctrl.loadValues().finally ->
                         response.finish()
