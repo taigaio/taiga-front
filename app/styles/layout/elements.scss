@@ -39,6 +39,10 @@ sup {
     vertical-align: middle;
 }
 
+.icon-spinner {
+    @include animation (spin 1s linear infinite);
+}
+
 .clickable {
     cursor: pointer;
 }

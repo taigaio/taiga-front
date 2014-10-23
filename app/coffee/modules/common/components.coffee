@@ -439,7 +439,9 @@ EditableSubjectDirective = ($rootscope, $repo, $confirm, $loading) ->
         </div>
         <div class="edit-subject">
             <input type="text" ng-model="item.subject" data-required="true" data-maxlength="500"/>
-            <a class="save icon icon-floppy" href="" title="Save" />
+            <span class="save-container">
+                <a class="save icon icon-floppy" href="" title="Save" />
+            </span>
         </div>
     """
 
@@ -520,7 +522,9 @@ EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading)
             <textarea placeholder="Write a description of your user story"
                       ng-model="item.description"
                       tg-markitup="tg-markitup"></textarea>
-            <a class="save icon icon-floppy" href="" title="Save" />
+            <span class="save-container">
+                <a class="save icon icon-floppy" href="" title="Save" />
+            </span>
         </div>
     """ # TODO: i18n
     noDescriptionMegEditMode = """
@@ -578,7 +582,7 @@ EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading)
 
             if isEditable()
                 $el.find('.view-description .edit').show()
-                $el.find('.view-description p').addClass('editable')
+                $el.find('.view-description .us-content').addClass('editable')
                 $scope.noDescriptionMsg = noDescriptionMegEditMode
             else
                 $scope.noDescriptionMsg = noDescriptionMegReadMode

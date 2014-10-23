@@ -81,7 +81,8 @@
             width: 100%;
         }
         .icon-edit,
-        .icon-floppy {
+        .icon-floppy,
+        .icon-spinner {
             @extend %large;
             color: $gray-light;
             margin-left: .5rem;
@@ -178,21 +179,18 @@
         height: 10rem;
         margin-bottom: 2rem;
     }
-    a.save {
-        color: $blackish;
-        opacity: .6;
+    .save-container {
         position: absolute;
         right: 1rem;
-        top: .6rem;
+        top: .2rem;
+        .save {
+            color: $blackish;
+            opacity: .6;
+            top: 0;
+        }
         &:hover {
             @include transition(opacity .2s linear);
             opacity: .3;
-        }
-    }
-    .save-container {
-        &.loading span {
-            @include animation (loading .5s linear);
-            @include animation (spin 1s linear infinite);
         }
     }
     .edit {
