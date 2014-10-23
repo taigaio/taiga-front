@@ -225,7 +225,7 @@ RegisterDirective = ($auth, $confirm, $location, $navUrls, $config, $analytics) 
             $location.replace()
 
         $scope.data = {}
-        form = $el.find("form").checksley()
+        form = $el.find("form").checksley({onlyOneErrorElement: true})
 
         onSuccessSubmit = (response) ->
             $analytics.trackEvent("auth", "register", "user registration", 1)
