@@ -288,15 +288,15 @@ TagLineDirective = ($rootScope, $repo, $rs, $confirm) ->
             $scope.$apply ->
                 $model.$setViewValue(tags)
 
-                autosaveModel = $scope.$eval($attrs.autosaveModel)
-                if autosaveModel
-                    onSuccess = ->
-                        $rootScope.$broadcast("history:reload")
-                    onError = ->
-                        $confirm.notify("error")
-                        $scope.$apply ->
-                            autosaveModel.revert()
-                    $repo.save(autosaveModel).then(onSuccess, onError)
+            autosaveModel = $scope.$eval($attrs.autosaveModel)
+            if autosaveModel
+                onSuccess = ->
+                    $rootScope.$broadcast("history:reload")
+                onError = ->
+                    $confirm.notify("error")
+                    $scope.$apply ->
+                        autosaveModel.revert()
+                $repo.save(autosaveModel).then(onSuccess, onError)
 
         saveInputTag = () ->
             value = $el.find("input").val()
@@ -345,15 +345,15 @@ TagLineDirective = ($rootScope, $repo, $rs, $confirm) ->
             $scope.$apply ->
                 $model.$setViewValue(tags)
 
-                autosaveModel = $scope.$eval($attrs.autosaveModel)
-                if autosaveModel
-                    onSuccess = ->
-                        $rootScope.$broadcast("history:reload")
-                    onError = ->
-                        $confirm.notify("error")
-                        $scope.$apply ->
-                            autosaveModel.revert()
-                    $repo.save(autosaveModel).then(onSuccess, onError)
+            autosaveModel = $scope.$eval($attrs.autosaveModel)
+            if autosaveModel
+                onSuccess = ->
+                    $rootScope.$broadcast("history:reload")
+                onError = ->
+                    $confirm.notify("error")
+                    $scope.$apply ->
+                        autosaveModel.revert()
+                $repo.save(autosaveModel).then(onSuccess, onError)
 
         bindOnce $scope, "project", (project) ->
             if not isEditable()

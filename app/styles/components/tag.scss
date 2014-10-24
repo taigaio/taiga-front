@@ -30,7 +30,6 @@
 .tags-block {
     .tags-container {
         display: inline-block;
-        vertical-align: middle;
     }
     input {
         padding: .4rem;
@@ -43,7 +42,6 @@
     }
     .add-tag {
         color: $gray-light;
-        vertical-align: initial;
         &:hover {
             color: $fresh-taiga;
         }
