@@ -57,6 +57,7 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
         promise.then () =>
             @appTitle.set(@scope.task.subject + " - " + @scope.project.name)
+            @.initializeOnDeleteGoToUrl()
             tgLoader.pageLoaded()
 
         promise.then null, @.onInitialDataError.bind(@)
@@ -69,6 +70,21 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             @rootscope.$broadcast("history:reload")
         @scope.$on "attachment:delete", =>
             @rootscope.$broadcast("history:reload")
+
+    initializeOnDeleteGoToUrl: ->
+        ctx = {project: @scope.project.slug}
+        @scope.onDeleteGoToUrl = @navUrls.resolve("project", ctx)
+        if @scope.project.is_backlog_activated
+            if @scope.task.milestone
+                ctx.sprint = @scope.sprint.slug
+                @scope.onDeleteGoToUrl = @navUrls.resolve("project-taskboard", ctx)
+            else if @scope.task.us
+                ctx.ref = @scope.us.ref
+                @scope.onDeleteGoToUrl = @navUrls.resolve("project-userstories-detail", ctx)
+        else if @scope.project.is_kanban_activated
+            if @scope.us
+                ctx.ref = @scope.us.ref
+                @scope.onDeleteGoToUrl = @navUrls.resolve("project-userstories-detail", ctx)
 
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>

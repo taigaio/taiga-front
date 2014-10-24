@@ -393,29 +393,33 @@ module.directive("tgBlockButton", ["$rootScope", "$tgLoading", BlockButtonDirect
 ## Delete Button directive
 #############################################################################
 
-DeleteButtonDirective = ($repo, $confirm, $navurls, $location) ->
+DeleteButtonDirective = ($log, $repo, $confirm, $location) ->
     template = """
         <a href="" class="button button-red">Delete</a>
-    """
+    """ #TODO: i18n
 
     link = ($scope, $el, $attrs, $model) ->
-        $scope.$on "$destroy", ->
-            $el.off()
+        if not $attrs.onDeleteGoToUrl
+            return $log.error "DeleteButtonDirective requires on-delete-go-to-url set in scope."
+        if not $attrs.onDeleteTitle
+            return $log.error "DeleteButtonDirective requires on-delete-title set in scope."
 
         $el.on "click", ".button", (event) ->
-            #TODO: i18n
-            title = "Delete User Story"
+            title = $scope.$eval($attrs.onDeleteTitle)
             subtitle = $model.$modelValue.subject
 
-            $confirm.ask(title, subtitle).then (finish) =>
+            $confirm.askOnDelete(title, subtitle).then (finish) =>
                 promise = $repo.remove($model.$modelValue)
                 promise.then =>
                     finish()
-                    url = $navurls.resolve($attrs.onDeleteGoToUrl, {project: $attrs.projectSlug})
+                    url = $scope.$eval($attrs.onDeleteGoToUrl)
                     $location.path(url)
                 promise.then null, =>
                     finish(false)
                     $confirm.notify("error")
+
+        $scope.$on "$destroy", ->
+            $el.off()
 
     return {
         link: link
@@ -424,7 +428,7 @@ DeleteButtonDirective = ($repo, $confirm, $navurls, $location) ->
         template: template
     }
 
-module.directive("tgDeleteButton", ["$tgRepo", "$tgConfirm", "$tgNavUrls", "$tgLocation", DeleteButtonDirective])
+module.directive("tgDeleteButton", ["$log", "$tgRepo", "$tgConfirm", "$tgLocation", DeleteButtonDirective])
 
 
 #############################################################################

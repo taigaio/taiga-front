@@ -56,8 +56,8 @@ block content
                tg-promote-issue-to-us-button(tg-check-permission="add_us", ng-model="issue")
                tg-block-button(tg-check-permission="modify_issue", ng-model="issue")
                tg-delete-button(tg-check-permission="delete_issue",
-                                on-delete-go-to-url="project-issues",
-                                project-slug="{{ project.slug }}",
+                                on-delete-title="'Delete issue'",
+                                on-delete-go-to-url="onDeleteGoToUrl",
                                 ng-model="issue")
 
         div.lightbox.lightbox-block.hidden(tg-lb-block, title="Blocking issue", ng-model="issue")

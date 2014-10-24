@@ -61,11 +61,11 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         # On Success
         promise.then =>
             @appTitle.set(@scope.issue.subject + " - " + @scope.project.name)
+            @.initializeOnDeleteGoToUrl()
             tgLoader.pageLoaded()
 
         # On Error
         promise.then null, @.onInitialDataError.bind(@)
-
 
     initializeEventHandlers: ->
         @scope.$on "attachment:create", =>
@@ -82,6 +82,13 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             @analytics.trackEvent("issue", "promoteToUserstory", "promote issue to userstory", 1)
             @rootscope.$broadcast("history:reload")
             @.loadIssue()
+
+    initializeOnDeleteGoToUrl: ->
+       ctx = {project: @scope.project.slug}
+       if @scope.project.is_issues_activated
+           @scope.onDeleteGoToUrl = @navUrls.resolve("project-issues", ctx)
+       else
+           @scope.onDeleteGoToUrl = @navUrls.resolve("project", ctx)
 
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>

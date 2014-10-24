@@ -59,6 +59,7 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         # On Success
         promise.then =>
             @appTitle.set(@scope.us.subject + " - " + @scope.project.name)
+            @.initializeOnDeleteGoToUrl()
             tgLoader.pageLoaded()
 
         # On Error
@@ -78,6 +79,18 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
         @scope.$on "attachment:delete", =>
             @rootscope.$broadcast("history:reload")
+
+    initializeOnDeleteGoToUrl: ->
+        ctx = {project: @scope.project.slug}
+        @scope.onDeleteGoToUrl = @navUrls.resolve("project", ctx)
+        if @scope.project.is_backlog_activated
+            if @scope.us.milestone
+                ctx.sprint = @scope.sprint.slug
+                @scope.onDeleteGoToUrl = @navUrls.resolve("project-taskboard", ctx)
+            else
+                @scope.onDeleteGoToUrl = @navUrls.resolve("project-backlog", ctx)
+        else if @scope.project.is_kanban_activated
+            @scope.onDeleteGoToUrl = @navUrls.resolve("project-kanban", ctx)
 
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>

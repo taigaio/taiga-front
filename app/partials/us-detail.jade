@@ -63,8 +63,8 @@ block content
                 tg-us-client-requirement-button(ng-model="us")
                 tg-block-button(tg-check-permission="modify_us", ng-model="us")
                 tg-delete-button(tg-check-permission="delete_us",
-                                 on-delete-go-to-url="project-backlog",
-                                 project-slug="{{ project.slug }}",
+                                 on-delete-title="'Delete User Story'",
+                                 on-delete-go-to-url="onDeleteGoToUrl",
                                  ng-model="us")
 
         div.lightbox.lightbox-block.hidden(tg-lb-block, title="Blocking us", ng-model="us")
