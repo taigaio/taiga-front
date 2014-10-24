@@ -46,11 +46,12 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$log",
         "$appTitle",
         "$tgAnalytics",
-        "$tgNavUrls"
+        "$tgNavUrls",
+        "tgLoader"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
-                  @log, @appTitle, @analytics, @navUrls) ->
+                  @log, @appTitle, @analytics, @navUrls, tgLoader) ->
         @scope.issueRef = @params.issueref
         @scope.sectionName = "Issue Details"
         @.initializeEventHandlers()
@@ -60,6 +61,7 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         # On Success
         promise.then =>
             @appTitle.set(@scope.issue.subject + " - " + @scope.project.name)
+            tgLoader.pageLoaded()
 
         # On Error
         promise.then null, @.onInitialDataError.bind(@)
