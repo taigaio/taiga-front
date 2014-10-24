@@ -97,14 +97,19 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
                     ref: @scope.task.neighbors.next.ref
                 }
                 @scope.nextUrl = @navUrls.resolve("project-tasks-detail", ctx)
+            return task
 
-            if task.milestone
-                @rs.sprints.get(task.project, task.milestone).then (sprint) =>
-                    @scope.sprint = sprint
+    loadSprint: ->
+        if @scope.task.milestone
+            return @rs.sprints.get(@scope.task.project, @scope.task.milestone).then (sprint) =>
+                @scope.sprint = sprint
+                return sprint
 
-            if task.user_story
-                @rs.userstories.get(task.project, task.user_story).then (us) =>
-                    @scope.us = us
+    loadUserStory: ->
+        if @scope.task.user_story
+            return @rs.userstories.get(@scope.task.project, @scope.task.user_story).then (us) =>
+                @scope.us = us
+                return us
 
     loadInitialData: ->
         params = {
@@ -119,7 +124,8 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
         return promise.then(=> @.loadProject())
                       .then(=> @.loadUsersAndRoles())
-                      .then(=> @.loadTask())
+                      .then(=> @.loadTask().then(=> @q.all([@.loadUserStory(),
+                                                            @.loadSprint()])))
 
 module.controller("TaskDetailController", TaskDetailController)
 

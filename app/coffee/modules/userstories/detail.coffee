@@ -110,11 +110,13 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
                 }
                 @scope.nextUrl = @navUrls.resolve("project-userstories-detail", ctx)
 
-            if us.milestone
-                @rs.sprints.get(us.project, us.milestone).then (sprint) =>
-                    @scope.sprint = sprint
-
             return us
+
+    loadSprint: ->
+        if @scope.us.milestone
+            return @rs.sprints.get(@scope.us.project, @scope.us.milestone).then (sprint) =>
+                @scope.sprint = sprint
+                return sprint
 
     loadTasks: ->
         return @rs.tasks.list(@scope.projectId, null, @scope.usId).then (tasks) =>
@@ -134,7 +136,7 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
         return promise.then(=> @.loadProject())
                       .then(=> @.loadUsersAndRoles())
-                      .then(=> @q.all([@.loadUs(),
+                      .then(=> @q.all([@.loadUs().then(=> @.loadSprint()),
                                        @.loadTasks()]))
 
 module.controller("UserStoryDetailController", UserStoryDetailController)
