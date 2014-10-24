@@ -310,7 +310,7 @@ TaskIsIocaineButtonDirective = ($rootscope, $tgrepo, $confirm, $loading) ->
         link: link
         restrict: "EA"
         require: "ngModel"
-        template: tempalte
+        template: template
     }
 
 module.directive("tgTaskIsIocaineButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", TaskIsIocaineButtonDirective])
