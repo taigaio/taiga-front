@@ -28,10 +28,12 @@ block content
                         span.block-description(tg-bind-html="issue.blocked_note || 'This issue is blocked'")
 
                     div.issue-nav
-                        a.icon.icon-arrow-left(ng-show="previousUrl", tg-bo-href="previousUrl", title="previous issue")
-                        a.icon.icon-arrow-right(ng-show="nextUrl", tg-bo-href="nextUrl", title="next issue")
+                        a.icon.icon-arrow-left(ng-show="previousUrl", tg-bo-href="previousUrl",
+                                               title="previous issue")
+                        a.icon.icon-arrow-right(ng-show="nextUrl", tg-bo-href="nextUrl",
+                                                title="next issue")
 
-                div.tags-block(tg-tag-line, autosave-model="issue", ng-model="issue.tags", required-perm="modify_issue")
+                div.tags-block(tg-tag-line, ng-model="issue", required-perm="modify_issue")
 
             section.duty-content.wysiwyg(tg-editable-description, ng-model="issue", required-perm="modify_issue")
 

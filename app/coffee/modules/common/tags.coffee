@@ -118,6 +118,7 @@ LbTagLineDirective = ($rs) ->
     """) # TODO: i18n
 
     link = ($scope, $el, $attrs, $model) ->
+        ## Render
         renderTags = (tags, tagsColors) ->
             ctx = {
                 tags: _.map(tags, (t) -> {name: t, color: tagsColors[t]})
@@ -132,6 +133,7 @@ LbTagLineDirective = ($rs) ->
             $el.find("input").val("")
             $el.find("input").autocomplete("close")
 
+        ## Aux methods
         addValue = (value) ->
             value = trim(value.toLowerCase())
             return if value.length == 0
@@ -143,6 +145,16 @@ LbTagLineDirective = ($rs) ->
             $scope.$apply ->
                 $model.$setViewValue(tags)
 
+        deleteValue = (value) ->
+            value = trim(value.toLowerCase())
+            return if value.length == 0
+
+            tags = _.clone($model.$modelValue, false)
+            tags = _.pull(tags, value)
+
+            $scope.$apply ->
+                $model.$setViewValue(tags)
+
         saveInputTag = () ->
             value = $el.find("input").val()
 
@@ -150,6 +162,7 @@ LbTagLineDirective = ($rs) ->
             resetInput()
             hideSaveButton()
 
+        ## Events
         $el.on "keypress", "input", (event) ->
             return if event.keyCode != ENTER_KEY
             event.preventDefault()
@@ -167,18 +180,14 @@ LbTagLineDirective = ($rs) ->
 
         $el.on "click", ".save", (event) ->
             event.preventDefault()
-            saveInputTag
+            saveInputTag()
 
         $el.on "click", ".icon-delete", (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
 
             value = target.siblings(".tag-name").text()
-            tags = _.clone($model.$modelValue, false)
-            tags = _.pull(tags, value)
-
-            $scope.$apply ->
-                $model.$setViewValue(tags)
+            deleteValue(value)
 
         bindOnce $scope, "project", (project) ->
             positioningFunction = (position, elements) ->
@@ -249,6 +258,7 @@ TagLineDirective = ($rootScope, $repo, $rs, $confirm) ->
         isEditable = ->
             return $scope.project.my_permissions.indexOf($attrs.requiredPerm) != -1
 
+        ## Render
         renderTags = (tags, tagsColors) ->
             ctx = {
                 tags: _.map(tags, (t) -> {name: t, color: tagsColors[t]})
@@ -277,26 +287,45 @@ TagLineDirective = ($rootScope, $repo, $rs, $confirm) ->
             $el.find("input").val("")
             $el.find("input").autocomplete("close")
 
+        ## Aux methods
         addValue = (value) ->
             value = trim(value.toLowerCase())
             return if value.length == 0
 
-            tags = _.clone($model.$modelValue, false)
+            tags = _.clone($model.$modelValue.tags, false)
             tags = [] if not tags?
             tags.push(value) if value not in tags
 
-            $scope.$apply ->
-                $model.$setViewValue(tags)
+            model = $model.$modelValue.clone()
+            model.tags = tags
+            $model.$setViewValue(model)
 
-            autosaveModel = $scope.$eval($attrs.autosaveModel)
-            if autosaveModel
-                onSuccess = ->
-                    $rootScope.$broadcast("history:reload")
-                onError = ->
-                    $confirm.notify("error")
-                    $scope.$apply ->
-                        autosaveModel.revert()
-                $repo.save(autosaveModel).then(onSuccess, onError)
+            onSuccess = ->
+                $rootScope.$broadcast("history:reload")
+            onError = ->
+                $confirm.notify("error")
+                model.revert()
+                $model.$setViewValue(model)
+            $repo.save(model).then(onSuccess, onError)
+
+        deleteValue = (value) ->
+            value = trim(value.toLowerCase())
+            return if value.length == 0
+
+            tags = _.clone($model.$modelValue.tags, false)
+            tags = _.pull(tags, value)
+
+            model = $model.$modelValue.clone()
+            model.tags = tags
+            $model.$setViewValue(model)
+
+            onSuccess = ->
+                $rootScope.$broadcast("history:reload")
+            onError = ->
+                $confirm.notify("error")
+                model.revert()
+                $model.$setViewValue(model)
+            $repo.save(model).then(onSuccess, onError)
 
         saveInputTag = () ->
             value = $el.find("input").val()
@@ -305,6 +334,7 @@ TagLineDirective = ($rootScope, $repo, $rs, $confirm) ->
             resetInput()
             hideSaveButton()
 
+        ## Events
         $el.on "keypress", "input", (event) ->
             return if event.keyCode not in [ENTER_KEY, ESC_KEY]
             event.preventDefault()
@@ -339,21 +369,7 @@ TagLineDirective = ($rootScope, $repo, $rs, $confirm) ->
             target = angular.element(event.currentTarget)
 
             value = target.siblings(".tag-name").text()
-            tags = _.clone($model.$modelValue, false)
-            tags = _.pull(tags, value)
-
-            $scope.$apply ->
-                $model.$setViewValue(tags)
-
-            autosaveModel = $scope.$eval($attrs.autosaveModel)
-            if autosaveModel
-                onSuccess = ->
-                    $rootScope.$broadcast("history:reload")
-                onError = ->
-                    $confirm.notify("error")
-                    $scope.$apply ->
-                        autosaveModel.revert()
-                $repo.save(autosaveModel).then(onSuccess, onError)
+            deleteValue(value)
 
         bindOnce $scope, "project", (project) ->
             if not isEditable()
@@ -380,17 +396,16 @@ TagLineDirective = ($rootScope, $repo, $rs, $confirm) ->
                         ui.item.value = ""
                 })
 
-        $scope.$watch $attrs.ngModel, (tags) ->
-            return if not tags
+        $scope.$watch $attrs.ngModel, (model) ->
+            return if not model
 
-            if tags.length
+            if model.tags.length
                 hideAddTagButtonText()
             else
                 showAddTagButtonText()
 
             tagsColors = $scope.project?.tags_colors or []
-            renderTags(tags, tagsColors)
-
+            renderTags(model.tags, tagsColors)
 
         $scope.$on "$destroy", ->
             $el.off()
