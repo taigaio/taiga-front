@@ -34,7 +34,7 @@ a.button-green {
 a.button-gray {
     background: $button-gray;
     &:hover {
-        background: $button-gray-hover;
+        background: $fresh-taiga;
         color: $white;
     }
     span {
@@ -100,5 +100,20 @@ a.button-bulk {
     &:hover {
         @include transition (background .3s linear);
         background: $fresh-taiga;
+    }
+}
+.button-github {
+    @extend %button;
+    background: $grayer;
+    vertical-align: middle;
+    .icon {
+        @extend %large;
+        color: $white;
+        margin-right: .5rem;
+        vertical-align: text-bottom;
+    }
+    &:hover {
+        @include transition (background .3s linear);
+        background: $black;
     }
 }

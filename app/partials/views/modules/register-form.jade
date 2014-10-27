@@ -17,12 +17,18 @@ div.register-form-container(tg-register)
 
         fieldset
             input(type="password", name="password", ng-model="data.password",
-                data-required="true", data-minlength="4", 
+                data-required="true", data-minlength="4",
                 placeholder="Set a password (case sensitive)")
 
         fieldset
             a.button.button-register.button-gray(href="", title="Sign up") Sign up
             input(type="submit", class="hidden")
+
+        fieldset
+            a.button.button-github(href="", title="enter with your github account")
+                span.icon.icon-github
+                span Sign Up with Github
+            input(type="submit", style="display:none")
 
         // Only displays terms notice when terms plugin is loaded.
         tg-terms-notice
