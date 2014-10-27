@@ -196,17 +196,16 @@ LbTagLineDirective = ($rs) ->
                 menu.css("top", position.top)
                 menu.css("left", position.left)
 
-            $rs.projects.tags(project.id).then (data) ->
-                $el.find("input").autocomplete({
-                    source: data
-                    position: {
-                        my: "left top",
-                        using: positioningFunction
-                    }
-                    select: (event, ui) ->
-                        addValue(ui.item.value)
-                        ui.item.value = ""
-                })
+            $el.find("input").autocomplete({
+                source: _.keys(project.tags_colors)
+                position: {
+                    my: "left top",
+                    using: positioningFunction
+                }
+                select: (event, ui) ->
+                    addValue(ui.item.value)
+                    ui.item.value = ""
+            })
 
         $scope.$watch $attrs.ngModel, (tags) ->
             tagsColors = $scope.project?.tags_colors or []
@@ -384,17 +383,16 @@ TagLineDirective = ($rootScope, $repo, $rs, $confirm) ->
                 menu.css("top", position.top)
                 menu.css("left", position.left)
 
-            $rs.projects.tags(project.id).then (data) ->
-                $el.find("input").autocomplete({
-                    source: data
-                    position: {
-                        my: "left top",
-                        using: positioningFunction
-                    }
-                    select: (event, ui) ->
-                        addValue(ui.item.value)
-                        ui.item.value = ""
-                })
+            $el.find("input").autocomplete({
+                source: _.keys(project.tags_colors)
+                position: {
+                    my: "left top",
+                    using: positioningFunction
+                }
+                select: (event, ui) ->
+                    addValue(ui.item.value)
+                    ui.item.value = ""
+            })
 
         $scope.$watch $attrs.ngModel, (model) ->
             return if not model
