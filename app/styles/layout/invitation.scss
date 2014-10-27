@@ -44,10 +44,12 @@
     }
     .invitation-form {
         @include table-flex();
+        fieldset {
+            margin-bottom: .5rem;
+        }
         input {
             background: $white;
             color: $gray;
-            margin-bottom: 1rem;
             position: relative;
             @include placeholder {
                 color: $gray-light;
@@ -80,14 +82,26 @@
                 background: $fresh-taiga;
             }
         }
+        .button-github {
+            &:hover {
+                background: $black;
+            }
+        }
     }
     .login-form,
     .register-form {
         @include table-flex-child(1, 200px, 0, 200px);
         padding: 1rem;
-
+        text-align: center;
         .form-header {
             color: #999;
+        }
+    }
+    .register-form {
+        fieldset {
+            &:last-child {
+                margin-bottom: 1rem;
+            }
         }
     }
     .register-text {
