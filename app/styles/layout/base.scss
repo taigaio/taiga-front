@@ -98,6 +98,21 @@ body {
     @include table-flex-child(1, 260px, 0, 260px);
     background: $whitish;
     padding: 2rem 1rem;
+    &.filters-bar {
+        @include table-flex-child(0, 1px, 0, 1px);
+        @include transition(all .2s linear);
+        padding: 0;
+        &.active {
+            @include table-flex-child(1, 260px, 0, 260px);
+            @include transition(all .2s linear);
+            padding: 2em 1em;
+
+            .filters-inner {
+                @include transition (all .4s ease-in);
+                opacity: 1;
+            }
+        }
+    }
 }
 
 .menu-tertiary {

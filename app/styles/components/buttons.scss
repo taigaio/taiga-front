@@ -13,26 +13,8 @@
     }
 }
 
-%button,
 .button {
-    @extend %medium;
-    @extend %title;
-    @include transition (background .3s linear);
-    display: inline-block;
-    padding: 7px 40px 6px;
-    text-transform: uppercase;
-    &:hover {
-        @include transition (background .3s linear);
-    }
-    &.loading {
-        span {
-            @include animation (loading .5s linear);
-            @include animation (spin 1s linear infinite);
-        }
-    }
-    .icon {
-        margin-right: .3rem;
-    }
+    @extend %button;
 }
 
 a.button-green {

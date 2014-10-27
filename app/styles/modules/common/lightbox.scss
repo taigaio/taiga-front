@@ -1,46 +1,5 @@
-.lightbox,
-%lightbox {
-    @include background-opacity($white, .95);
-    bottom: 0;
-    display: none;
-    left: 0;
-    opacity: 0;
-    position: fixed;
-    right: 0;
-    top: 0;
-    z-index: 99910;
-    .close {
-        @extend %large;
-        position: absolute;
-        right: 2rem;
-        top: 2rem;
-    }
-    &.open {
-        @include table-flex(center, center, flex, row, wrap, center);
-        @include transition (opacity .3s ease);
-        opacity: 1;
-    }
-    &.close {
-        @include transition (opacity .3s ease);
-        opacity: 0;
-    }
-    .title {
-        text-align: center;
-    }
-    input,
-    textarea,
-    select {
-        margin-bottom: 1rem;
-    }
-    textarea {
-        resize: vertical;
-    }
-    .button-green,
-    .button-gray {
-        display: block;
-        padding: 12px;
-        text-align: center;
-    }
+.lightbox {
+    @extend %lightbox;
 }
 
 .markdown-preview {

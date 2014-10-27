@@ -1,8 +1,3 @@
-// FTW
-* {
-    box-sizing: border-box;
-}
-
 //Flexbox FTW
 %table-flex {
     align-content: stretch;
@@ -20,132 +15,94 @@
     width: 300px;
 }
 
-// #Reset & Basics (Inspired by E. Meyers)
-//==================================================
-a,
-abbr,
-acronym,
-address,
-applet,
-article,
-aside,
-audio,
-b,
-big,
-blockquote,
-body,
-canvas,
-caption,
-center,
-cite,
-code,
-dd,
-del,
-details,
-dfn,
-div,
-dl,
-dt,
-em,
-embed,
-fieldset,
-figcaption,
-figure,
-footer,
-form,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-header,
-hgroup,
-html,
-i,
-iframe,
-img,
-ins,
-kbd,
-label,
-legend,
-li,
-mark,
-menu,
-nav,
-object,
-ol,
-output,
-p,
-pre,
-q,
-ruby,
-s,
-samp,
-section,
-small,
-span,
-strike,
-strong,
-sub,
-summary,
-sup,
-table,
-tbody,
-td,
-tfoot,
-th,
-thead,
-time,
-tr,
-tt,
-u,
-ul,
-var,
-video {
-    border: 0;
-    font: inherit;
-    font-size: 100%;
-    margin: 0;
-    padding: 0;
-    vertical-align: baseline;
+
+// __Font Sizes__ //
+%xsmall {font-size: .5rem;}
+%small {font-size: .8rem;}
+%medium {font-size: 1rem;}
+%large {font-size: 1.2rem;}
+%larger {font-size: 1.6rem;}
+%xlarge {font-size: 2rem;}
+%xxlarge {font-size: 3rem;}
+
+// __Font Types__ //
+%title {font-family: 'OpenSans-CondLight';}
+%text {font-family: 'opensans-regular'; line-height: 1.3rem;}
+%bold {font-family: 'opensans-semibold';}
+%taiga {font-family: 'taiga';}
+
+%lightbox {
+    background: rgba($white, .95);
+    bottom: 0;
+    display: none;
+    left: 0;
+    opacity: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 99910;
+    .close {
+        @extend %large;
+        position: absolute;
+        right: 2rem;
+        top: 2rem;
+    }
+    &.open {
+        @include table-flex(center, center, flex, row, wrap, center);
+        @include transition (opacity .3s ease);
+        opacity: 1;
+    }
+    &.close {
+        @include transition (opacity .3s ease);
+        opacity: 0;
+    }
+    .title {
+        text-align: center;
+    }
+    input,
+    textarea,
+    select {
+        margin-bottom: 1rem;
+    }
+    textarea {
+        resize: vertical;
+    }
+    .button-green,
+    .button-gray {
+        display: block;
+        padding: 12px;
+        text-align: center;
+    }
 }
 
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
-    display: block;
-}
-body {
-    line-height: 1;
-}
-
-ol,
-ul {
-    list-style: none;
-}
-
-blockquote,
-q {
-    quotes: none;
+%button {
+    @extend %medium;
+    @extend %title;
+    @include transition (background .3s linear);
+    display: inline-block;
+    padding: 7px 40px 6px;
+    text-transform: uppercase;
+    &:hover {
+        @include transition (background .3s linear);
+    }
+    &.loading {
+        span {
+            @include animation (loading .5s linear);
+            @include animation (spin 1s linear infinite);
+        }
+    }
+    .icon {
+        margin-right: .3rem;
+    }
 }
 
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-    content: '';
+// Background
+%triangled-bg {
+    background: url('/images/bg.png') no-repeat center center;
+    background-size: cover;
 }
 
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
+%background-taiga {
+    background: url('/images/invitation_bg.jpg') no-repeat center center;
+    background-size: cover;
 }

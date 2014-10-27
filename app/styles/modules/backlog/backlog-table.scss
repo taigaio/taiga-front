@@ -14,7 +14,6 @@
         padding: .5rem 0 .5rem .5rem;
         text-align: left;
         width: 100%;
-
     }
     .backlog-table-title,
     .backlog-table-subtitle,
@@ -24,6 +23,7 @@
         }
         .user-stories {
             width: 100%;
+
         }
         .status {
             @include table-flex-child(0, 150px, 0);
