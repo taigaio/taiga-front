@@ -169,4 +169,8 @@
     input {
         display: none;
     }
+    span {
+        @extend %small;
+        color: $gray-light;
+    }
 }
