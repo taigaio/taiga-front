@@ -515,7 +515,7 @@ module.directive("tgEditableSubject", ["$rootScope", "$tgRepo", "$tgConfirm", "$
 ## Editable subject directive
 #############################################################################
 
-EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading) ->
+EditableDescriptionDirective = ($window, $document, $rootscope, $repo, $confirm, $compile, $loading) ->
     template = """
         <div class="view-description">
             <section class="us-content wysiwyg"
@@ -549,15 +549,24 @@ EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading)
         isEditable = ->
             return $scope.project.my_permissions.indexOf($attrs.requiredPerm) != -1
 
-        $el.on "click", ".view-description", (event) ->
+        getSelectedText = ->
+            if $window.getSelection
+                return $window.getSelection().toString()
+            else if $document.selection
+                return $document.selection.createRange().text
+            return null
+
+        $el.on "mouseup", ".view-description", (event) ->
             # We want to dettect the a inside the div so we use the target and
             # not the currentTarget
-            return if not isEditable()
             target = angular.element(event.target)
-            if not target.is('a')
-                $el.find('.edit-description').show()
-                $el.find('.view-description').hide()
-                $el.find('textarea').focus()
+            return if not isEditable()
+            return if target.is('a')
+            return if getSelectedText()
+
+            $el.find('.edit-description').show()
+            $el.find('.view-description').hide()
+            $el.find('textarea').focus()
 
         $el.on "click", ".save", ->
             $model.$modelValue.description = $scope.item.description
@@ -601,8 +610,8 @@ EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading)
         template: template
     }
 
-module.directive("tgEditableDescription", ["$rootScope", "$tgRepo", "$tgConfirm", "$compile", "$tgLoading",
-                                           EditableDescriptionDirective])
+module.directive("tgEditableDescription", ["$window", "$document", "$rootScope", "$tgRepo", "$tgConfirm",
+                                           "$compile", "$tgLoading", EditableDescriptionDirective])
 
 
 #############################################################################
