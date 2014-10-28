@@ -147,43 +147,64 @@ module.controller("WikiDetailController", WikiDetailController)
 
 
 #############################################################################
-## Wiki User Info Directive
+## Wiki Summary Directive
 #############################################################################
 
-WikiUserInfoDirective = ($log) ->
+WikiSummaryDirective = ($log) ->
     template = _.template("""
-    <figure class="avatar">
-        <img src="<%= imgurl %>" alt="<%- name %>">
-    </figure>
-    <span class="description">last modification</span>
-    <span class="username"><%- name %></span>
+    <ul>
+        <li>
+            <span class="number"><%- totalEditions %></span>
+            <span class="description">times <br />edited</span>
+        </li>
+        <li>
+            <span class="number"><%- lastModifiedDate %></span>
+            <span class="description"> last <br />edit</span>
+        </li>
+        <li class="username-edition">
+            <figure class="avatar">
+                <img src="<%= user.imgUrl %>" alt="<%- user.name %>">
+            </figure>
+            <span class="description">last modification</span>
+            <span class="username"><%- user.name %></span>
+        </li>
+    </ul>
     """)
 
-    link = ($scope, $el, $attrs) ->
-        if not $attrs.ngModel?
-            return $log.error "WikiUserDirective: no ng-model attr is defined"
-
+    link = ($scope, $el, $attrs, $model) ->
         render = (wiki) ->
             if not $scope.usersById?
-                $log.error "WikiUserDirective requires userById set in scope."
+                $log.error "WikiSummaryDirective requires userById set in scope."
             else
                 user = $scope.usersById[wiki.last_modifier]
-            if user is undefined
-                ctx = {name: "unknown", imgurl: "/images/unnamed.png"}
-            else
-                ctx = {name: user.full_name_display, imgurl: user.photo}
 
+            if user is undefined
+                user = {name: "unknown", imgUrl: "/images/unnamed.png"}
+            else
+                user = {name: user.full_name_display, imgUrl: user.photo}
+
+            ctx = {
+                totalEditions: wiki.editions
+                lastModifiedDate: moment(wiki.modified_date).format("DD MMM YYYY HH:mm")
+                user: user
+            }
             html = template(ctx)
             $el.html(html)
 
-        bindOnce($scope, $attrs.ngModel, render)
+        $scope.$watch $attrs.ngModel, (wikiPage) ->
+            return if not wikiPage
+            render(wikiPage)
+
+        $scope.$on "$destroy", ->
+            $el.off()
 
     return {
         link: link
-        restrict: "AE"
+        restrict: "EA"
+        require: "ngModel"
     }
 
-module.directive("tgWikiUserInfo", ["$tgRepo", "$log", "$tgLocation", "$tgConfirm", WikiUserInfoDirective])
+module.directive("tgWikiSummary", ["$log", WikiSummaryDirective])
 
 
 #############################################################################

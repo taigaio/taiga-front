@@ -15,8 +15,7 @@ block content
                     span.green Wiki
                     span.wiki-title(tg-bo-bind='wikiSlug|unslugify')
 
-            include views/modules/wiki-summary
-
-            section.wiki-content(tg-editable-wiki-content ng-model="wiki")
+            div.summary.wiki-summary(tg-wiki-summary, ng-model="wiki", ng-if="wiki.id")
+            section.wiki-content(tg-editable-wiki-content, ng-model="wiki")
 
             tg-attachments(ng-model="wiki", type="wiki_page", ng-if="wiki.id")
