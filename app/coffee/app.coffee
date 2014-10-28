@@ -62,8 +62,6 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         {redirectTo: (params) -> "/project/#{params.pslug}/wiki/home"}, )
     $routeProvider.when("/project/:pslug/wiki/:slug",
         {templateUrl: "/partials/wiki.html", resolve: {loader: tgLoaderProvider.add()}})
-    $routeProvider.when("/project/:pslug/wiki/:slug/edit",
-        {templateUrl: "/partials/wiki-edit.html"})
 
     # Issues
     $routeProvider.when("/project/:pslug/issues",
