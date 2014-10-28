@@ -18,4 +18,6 @@ block content
             div.summary.wiki-summary(tg-wiki-summary, ng-model="wiki", ng-if="wiki.id")
             section.wiki-content(tg-editable-wiki-content, ng-model="wiki")
 
+            button.remove(ng-click="ctrl.delete()", ng-if="wiki.id") Remove this wiki page.
+
             tg-attachments(ng-model="wiki", type="wiki_page", ng-if="wiki.id")
