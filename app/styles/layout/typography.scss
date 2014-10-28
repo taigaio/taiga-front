@@ -25,21 +25,6 @@ h6 {
     }
 }
 
-// __Font Sizes__ //
-%xsmall {font-size: .5rem;}
-%small {font-size: .8rem;}
-%medium {font-size: 1rem;}
-%large {font-size: 1.2rem;}
-%larger {font-size: 1.6rem;}
-%xlarge {font-size: 2rem;}
-%xxlarge {font-size: 3rem;}
-
-// __Font Types__ //
-%title {font-family: 'OpenSans-CondLight';}
-%text {font-family: 'opensans-regular'; line-height: 1.3rem;}
-%bold {font-family: 'opensans-semibold';}
-%taiga {font-family: 'taiga';}
-
 h1 {
     @extend %xxlarge;
     @extend %title;
@@ -255,4 +240,3 @@ a:visited {
 .icon-stats:before {
     content: 'L';
 }
-
