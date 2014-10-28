@@ -25,8 +25,8 @@ block content
                             input(type="file", id="avatar-field", class="hidden",
                                 tg-avatar-model="avatarAttachment")
                             p The image will be cropped to 80x80px.<br>
-                                span.hidden Maximum upload size is 700Kb
-                            a.button.button-green.change(title="Maximum upload size is 700Kb") Change
+                                span.size-info.hidden(tg-bo-html="maxFileSizeMsg")
+                            a.button.button-green.change(tg-bo-title="'Change photo. ' + maxFileSizeMsg") Change
                             a.use-gravatar Use gravatar image
 
                     div.data
