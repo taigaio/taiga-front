@@ -6,6 +6,13 @@
         @include table-flex(stretch, center, flex, row, wrap, flex-start);
         figcaption {
             margin-left: 1rem;
+            width: 75%;
+            span {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                width: 100%;
+            }
         }
         img {
             @include table-flex-child(1, 35px, 0);
@@ -23,29 +30,6 @@
             color: $gray-light;
         }
     }
-    .active,
-    .pending {
-        padding: 8px;
-        width: 115px;
-        .icon {
-            @extend %large;
-        }
-    }
-    .active {
-        background-color: $whitish;
-    }
-    .pending {
-        background-color: $red-light;
-        color: $white;
-        .icon {
-            float: right;
-        }
-        &:hover {
-            @include transition (background-color .3s linear);
-            background-color: $red;
-            color: $white;
-        }
-    }
     .header-role,
     .header-status {
         padding-left: .5rem;
@@ -54,16 +38,32 @@
         padding-right: 1rem;
     }
     .row-status {
-        @include table-flex();
-        .delete {
-            @extend %large;
-            @include table-flex(stretch, center, flex, row, wrap, flex-start);
-            color: $gray-light;
-            margin-left: 15px;
-            padding: 0 15px;
-            &:hover {
-                color: $red;
-            }
+        @include table-flex($justify-content: space-between, $align-items: center);
+    }
+    .active,
+    .pending {
+        padding: 8px;
+    }
+    .active {
+        background-color: $whitish;
+    }
+    .pending {
+        background-color: $red-light;
+        color: $white;
+        .icon {
+            float: rsdsdfdvsdvight;
+        }
+        &:hover {
+            @include transition (background-color .3s linear);
+            background-color: $red;
+            color: $white;
+        }
+    }
+    .delete {
+        @extend %large;
+        color: $gray-light;
+        &:hover {
+            color: $red;
         }
     }
     .row-admin {
@@ -78,14 +78,17 @@
     .row-role,
     .header-member,
     .header-role {
-        @include table-flex-child(3, 35px, 0);
+        @include table-flex-child(4, 0, 0);
+    }
+    .row-admin,
+    .header-admin {
+        @include table-flex-child(1, 0, 0);
     }
     .row-status,
-    .row-admin,
-    .header-admin,
     .header-status {
         @include table-flex-child(1, 50px, 0);
     }
+
     .check {
         background-color: darken($whitish, 10%);
         border-radius: 2px;
