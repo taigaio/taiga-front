@@ -26,7 +26,7 @@ debounce = @.taiga.debounce
 
 module = angular.module("taigaProject")
 
-CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $projectUrl, lightboxService) ->
+CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $projectUrl, lightboxService, $cacheFactory) ->
     link = ($scope, $el, attrs) ->
         $scope.data = {}
         $scope.templates = []
@@ -34,6 +34,11 @@ CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $project
         form = $el.find("form").checksley({"onlyOneErrorElement": true})
 
         onSuccessSubmit = (response) ->
+            # remove all $http cache
+            # This is necessary when a project is created with the same name
+            # than another deleted in the same session
+            $cacheFactory.get('$http').removeAll()
+
             $rootscope.$broadcast("projects:reload")
             $confirm.notify("success", "Success") #TODO: i18n
             $location.url($projectUrl.get(response))
@@ -116,7 +121,7 @@ CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $project
     return {link:link}
 
 module.directive("tgLbCreateProject", ["$rootScope", "$tgRepo", "$tgConfirm", "$location", "$tgNavUrls",
-                                       "$tgResources", "$projectUrl", "lightboxService", CreateProject])
+                                       "$tgResources", "$projectUrl", "lightboxService", "$cacheFactory", CreateProject])
 
 
 #############################################################################
