@@ -21,6 +21,7 @@
 
 taiga = @.taiga
 mixOf = @.taiga.mixOf
+sizeFormat = @.taiga.sizeFormat
 module = angular.module("taigaUserSettings")
 
 
@@ -32,6 +33,7 @@ class UserSettingsController extends mixOf(taiga.Controller, taiga.PageMixin)
     @.$inject = [
         "$scope",
         "$rootScope",
+        "$tgConfig",
         "$tgRepo",
         "$tgConfirm",
         "$tgResources",
@@ -42,10 +44,14 @@ class UserSettingsController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$tgAuth"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls, @auth) ->
+    constructor: (@scope, @rootscope, @config, @repo, @confirm, @rs, @params, @q, @location, @navUrls, @auth) ->
         @scope.sectionName = "User Profile" #i18n
         @scope.project = {}
         @scope.user = @auth.getUser()
+
+        maxFileSize = @config.get("maxUploadFileSize", null)
+        if maxFileSize
+            @scope.maxFileSizeMsg = "[Max, size: #{sizeFormat(maxFileSize)}" # TODO: i18n
 
         promise = @.loadInitialData()
 
@@ -111,6 +117,9 @@ module.directive("tgUserProfile", ["$tgConfirm", "$tgAuth", "$tgRepo",  UserProf
 
 UserAvatarDirective = ($auth, $model, $rs, $confirm) ->
     link = ($scope, $el, $attrs) ->
+        showSizeInfo = ->
+            $el.find(".size-info").removeClass("hidden")
+
         onSuccess = (response) ->
             user = $model.make_model("users", response.data)
             $auth.setUser(user)
@@ -120,6 +129,7 @@ UserAvatarDirective = ($auth, $model, $rs, $confirm) ->
             $confirm.notify('success')
 
         onError = (response) ->
+            showSizeInfo() if response.status == 413
             $el.find('.overlay').hide()
             $confirm.notify('error', response.data._error_message)
 

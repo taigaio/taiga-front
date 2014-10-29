@@ -24,9 +24,9 @@ block content
                                     span.icon.icon-spinner
                             input(type="file", id="avatar-field", class="hidden",
                                 tg-avatar-model="avatarAttachment")
-
-                            p The image will be cropped to 80x80 size.
-                            a.button.button-green.change Change
+                            p The image will be cropped to 80x80px.<br>
+                                span.size-info.hidden(tg-bo-html="maxFileSizeMsg")
+                            a.button.button-green.change(tg-bo-title="'Change photo. ' + maxFileSizeMsg") Change
                             a.use-gravatar Use gravatar image
 
                     div.data
@@ -60,7 +60,7 @@ block content
                     a.delete-account(href="", title="Delete Taiga account",
                                      ng-click="ctrl.openDeleteLightbox()") Delete Taiga account
 
-    div.lightbox.lightbox-delete-account.hidden(tg-lb-delete-user)        
+    div.lightbox.lightbox-delete-account.hidden(tg-lb-delete-user)
 
     div.lightbox.lightbox-confirm-use-gravatar.hidden
         include views/modules/lightbox-use-gravatar

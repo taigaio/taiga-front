@@ -21,13 +21,26 @@
 
 
 taiga = @.taiga
+sizeFormat = @.taiga.sizeFormat
 
-resourceProvider = ($repo, $http, $urls) ->
+
+resourceProvider = ($config, $repo, $http, $urls, $q) ->
     service = {}
 
-    service.changeAvatar = (attachmentModel) ->
+    service.changeAvatar = (file) ->
+        maxFileSize = $config.get("maxUploadFileSize", null)
+        if maxFileSize and file.size > maxFileSize
+            response = {
+                status: 413,
+                data: _error_message: "'#{file.name}' (#{sizeFormat(file.size)}) is too heavy for our oompa
+                                       loompas, try it with a smaller than {#{sizeFormat(maxFileSize)})"
+            }
+            defered = $q.defer()
+            defered.reject(response)
+            return defered.promise
+
         data = new FormData()
-        data.append('avatar', attachmentModel)
+        data.append('avatar', file)
         options = {
             transformRequest: angular.identity,
             headers: {'Content-Type': undefined}
@@ -52,4 +65,5 @@ resourceProvider = ($repo, $http, $urls) ->
 
 
 module = angular.module("taigaResources")
-module.factory("$tgUserSettingsResourcesProvider", ["$tgRepo", "$tgHttp", "$tgUrls", resourceProvider])
+module.factory("$tgUserSettingsResourcesProvider", ["$tgConfig", "$tgRepo", "$tgHttp", "$tgUrls", "$q",
+                                                    resourceProvider])

@@ -36,8 +36,12 @@
             }
             p {
                 @extend %xsmall;
-                margin-bottom: 0;
+                line-height: .8rem;
+                margin-bottom: .3rem;
                 text-align: center;
+            }
+            span {
+                @extend %bold;
             }
             .use-gravatar {
                 @extend %small;
