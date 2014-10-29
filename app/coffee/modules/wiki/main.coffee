@@ -215,9 +215,9 @@ EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $
                                 $analytics) ->
     template = """
         <div class="view-wiki-content">
-            <section class="wiki-content wysiwyg"
+            <section class="wysiwyg"
                      tg-bind-html="wiki.html"></section>
-            <span class="edit icon icon-edit" href="" title="Edit"  style="display: none;"/>
+            <span class="edit icon icon-edit" title="Edit"></span>
         </div>
         <div class="edit-wiki-content" style="display: none;">
             <textarea placeholder="Write your wiki page here"
@@ -299,7 +299,9 @@ EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $
             return if not wikiPage
             $scope.wiki = wikiPage
 
-            if not isEditable()
+            if isEditable()
+                $el.addClass('editable')
+            else if not isEditable()
                 disableEdition()
             else if not wikiPage.id?
                 switchToEditMode()
