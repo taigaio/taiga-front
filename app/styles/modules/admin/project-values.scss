@@ -56,7 +56,7 @@
         &:hover {
             @include transition(color .3s linear);
             color: $green-taiga;
-            &.icon-delete {
+            .icon-delete {
                 color: $red;
             }
         }
