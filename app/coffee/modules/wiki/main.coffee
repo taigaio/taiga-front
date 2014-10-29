@@ -301,10 +301,10 @@ EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $
 
             if isEditable()
                 $el.addClass('editable')
-            else if not isEditable()
+                if not wikiPage.id?
+                    switchToEditMode()
+            else
                 disableEdition()
-            else if not wikiPage.id?
-                switchToEditMode()
 
         $scope.$on "$destroy", ->
             $el.off()
