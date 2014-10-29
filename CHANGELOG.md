@@ -7,6 +7,7 @@
 - Add visual difference to closed USs in backlog panel.
 - Show crerated date of attachments in the hover of the filename.
 - Add beta ribbon.
+- Support for custom text when inviting users.
 
 ### Misc
 - Lots of small and not so small bugfixes
