@@ -6,6 +6,7 @@
 - Multiple User stories Drag & Drop in the backlog.
 - Add visual difference to closed USs in backlog panel.
 - Show crerated date of attachments in the hover of the filename.
+- Show info about maximun size allowed for avatar and attachments files.
 - Add beta ribbon.
 
 ### Misc
