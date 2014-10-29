@@ -167,8 +167,8 @@ gulp.task "css-join", ["css-lint-app"], ->
         .pipe(concat("app.css"))
         .pipe(gulp.dest(paths.tmp))
 
-gulp.task "css-app", ->
-    runSequence("sass-compile", "css-join")
+gulp.task "css-app", (cb) ->
+    runSequence("sass-compile", "css-join", cb)
 
 gulp.task "css-vendor", ->
     gulp.src(paths.css)
