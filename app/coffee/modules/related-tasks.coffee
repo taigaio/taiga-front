@@ -53,7 +53,7 @@ RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope, $loading) ->
         </a>
     </div>
     <div tg-related-task-assigned-to-inline-edition="task" class="assigned-to">
-        <div title="Assigned to" class="task-assignedto">
+        <div title="Assigned to" class="task-assignedto <% if(perms.modify_task) { %>editable<% } %>">
             <figure class="avatar"></figure>
             <% if(perms.modify_task) { %>
                 <span class="icon icon-arrow-bottom"></span>
