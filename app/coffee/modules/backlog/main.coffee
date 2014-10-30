@@ -427,6 +427,8 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @scope.filters = {}
 
         plainTags = _.flatten(_.filter(_.map(@scope.userstories, "tags")))
+        plainTags.sort()
+
         @scope.filters.tags = _.map _.countBy(plainTags), (v, k) =>
             obj = {
                 id: k,

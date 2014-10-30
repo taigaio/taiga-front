@@ -76,6 +76,7 @@ ColorizeTagsDirective = ->
     link = ($scope, $el, $attrs, $ctrl) ->
         render = (srcTags) ->
             template = templates[$attrs.tgColorizeTagsType]
+            srcTags.sort()
             tags = _.map srcTags, (tag) ->
                 color = $scope.project.tags_colors[tag]
                 return {name: tag, color: color}
