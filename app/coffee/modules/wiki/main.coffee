@@ -276,6 +276,7 @@ EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $
                 if not $scope.wiki.id?
                     $analytics.trackEvent("wikipage", "create", "create wiki page", 1)
 
+                $scope.wiki = wikiPage
                 $model.setModelValue = $scope.wiki
                 $confirm.notify("success")
                 switchToReadMode()
@@ -284,7 +285,10 @@ EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $
                 $confirm.notify("error")
 
             $loading.start($el.find('.save-container'))
-            promise = $repo.save($scope.wiki).then(onSuccess, onError)
+            if $scope.wiki.id?
+                promise = $repo.save($scope.wiki).then(onSuccess, onError)
+            else
+                promise = $repo.create("wiki", $scope.wiki).then(onSuccess, onError)
             promise.finally ->
                 $loading.finish($el.find('.save-container'))
 
