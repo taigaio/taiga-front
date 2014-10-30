@@ -163,30 +163,41 @@ WatchersDirective = ($rootscope, $confirm, $repo) ->
     #
     # TODO: i18n
     template = _.template("""
+    <% if(isEditable){ %>
     <div class="watchers-header">
         <span class="title">watchers</span>
         <a href="" title="Add watcher" class="icon icon-plus add-watcher"></a>
     </div>
+    <% } else if(watchers.length > 0){ %>
+    <div class="watchers-header">
+        <span class="title">watchers</span>
+    </div>
+    <% }; %>
 
     <% _.each(watchers, function(watcher) { %>
     <div class="watcher-single">
         <div class="watcher-avatar">
-            <a class="avatar" href="" title="Assigned to">
+            <span class="avatar" href="" title="<%- watcher.full_name_display %>">
                 <img src="<%= watcher.photo %>" alt="<%- watcher.full_name_display %>">
-            </a>
+            </span>
         </div>
         <div class="watcher-name">
             <span><%- watcher.full_name_display %></span>
 
+            <% if(isEditable){ %>
             <a class="icon icon-delete"
                data-watcher-id="<%= watcher.id %>" href="" title="delete-watcher">
             </a>
+            <% }; %>
         </div>
     </div>
     <% }); %>
     """)
 
     link = ($scope, $el, $attrs, $model) ->
+        isEditable = ->
+            return $scope.project?.my_permissions?.indexOf($attrs.requiredPerm) != -1
+
         save = (model) ->
             promise = $repo.save($model.$modelValue)
             promise.then ->
@@ -199,20 +210,20 @@ WatchersDirective = ($rootscope, $confirm, $repo) ->
                 $confirm.notify("error")
 
         renderWatchers = (watchers) ->
-            html = template({watchers: watchers})
+            ctx = {
+                watchers: watchers
+                isEditable: isEditable()
+            }
+            html = template(ctx)
             $el.html(html)
 
-            if watchers.length == 0
+            if isEditable() and watchers.length == 0
                 $el.find(".title").text("Add watchers")
                 $el.find(".watchers-header").addClass("no-watchers")
 
-        $scope.$watch $attrs.ngModel, (item) ->
-            return if not item?
-            watchers = _.map(item.watchers, (watcherId) -> $scope.usersById[watcherId])
-            renderWatchers(watchers)
-
         $el.on "click", ".icon-delete", (event) ->
             event.preventDefault()
+            return if not isEditable()
             target = angular.element(event.currentTarget)
             watcherId = target.data("watcher-id")
 
@@ -231,6 +242,7 @@ WatchersDirective = ($rootscope, $confirm, $repo) ->
 
         $el.on "click", ".add-watcher", (event) ->
             event.preventDefault()
+            return if not isEditable()
             $scope.$apply ->
                 $rootscope.$broadcast("watcher:add", $model.$modelValue)
 
@@ -243,6 +255,11 @@ WatchersDirective = ($rootscope, $confirm, $repo) ->
             item.watchers = watchers
             $model.$setViewValue(item)
             save(item)
+
+        $scope.$watch $attrs.ngModel, (item) ->
+            return if not item?
+            watchers = _.map(item.watchers, (watcherId) -> $scope.usersById[watcherId])
+            renderWatchers(watchers)
 
         $scope.$on "$destroy", ->
             $el.off()
@@ -271,7 +288,7 @@ AssignedToDirective = ($rootscope, $confirm, $repo, $loading) ->
     <div class="assigned-to">
         <span class="assigned-title">Assigned to</span>
 
-        <a href="" title="edit assignment" class="user-assigned editable">
+        <a href="" title="edit assignment" class="user-assigned <% if(isEditable){ %>editable<% }; %>">
             <span class="assigned-name">
             <% if (assignedTo) { %>
                 <%- assignedTo.full_name_display %>
@@ -279,15 +296,18 @@ AssignedToDirective = ($rootscope, $confirm, $repo, $loading) ->
                 Not assigned
             <% } %>
             </span>
-            <span class="icon icon-arrow-bottom"></span>
+            <% if(isEditable){ %><span class="icon icon-arrow-bottom"></span><% }; %>
         </a>
-        <% if (assignedTo!==null) { %>
+        <% if (assignedTo!==null && isEditable) { %>
         <a href="" title="delete assignment" class="icon icon-delete"></a>
         <% } %>
     </div>
-    """)
+    """) # TODO: i18n
 
     link = ($scope, $el, $attrs, $model) ->
+        isEditable = ->
+            return $scope.project?.my_permissions?.indexOf($attrs.requiredPerm) != -1
+
         save = (model) ->
             $loading.start($el)
 
@@ -304,25 +324,27 @@ AssignedToDirective = ($rootscope, $confirm, $repo, $loading) ->
 
         renderAssignedTo = (issue) ->
             assignedToId = issue?.assigned_to
-            assignedTo = null
-            assignedTo = $scope.usersById[assignedToId] if assignedToId?
-            html = template({assignedTo: assignedTo})
-            $el.html(html)
+            assignedTo = if assignedToId? then $scope.usersById[assignedToId] else null
 
-        $scope.$watch $attrs.ngModel, (instance) ->
-            renderAssignedTo(instance)
+            ctx = {
+                assignedTo: assignedTo
+                isEditable: isEditable()
+            }
+            html = template(ctx)
+            $el.html(html)
 
         $el.on "click", ".user-assigned", (event) ->
             event.preventDefault()
+            return if not isEditable()
             $scope.$apply ->
                 $rootscope.$broadcast("assigned-to:add", $model.$modelValue)
 
         $el.on "click", ".icon-delete", (event) ->
             event.preventDefault()
-            title = "Remove assigned to"
-            subtitle = ""
+            return if not isEditable()
+            title = "Are you sure you want to leave it unassigned?" # TODO: i18n
 
-            $confirm.ask(title, subtitle).then (finish) =>
+            $confirm.ask(title).then (finish) =>
                 finish()
                 $model.$modelValue.assigned_to  = null
                 save($model.$modelValue)
@@ -331,6 +353,9 @@ AssignedToDirective = ($rootscope, $confirm, $repo, $loading) ->
             $model.$modelValue.assigned_to = userId
             save($model.$modelValue)
 
+        $scope.$watch $attrs.ngModel, (instance) ->
+            renderAssignedTo(instance)
+
         $scope.$on "$destroy", ->
             $el.off()
 
@@ -338,7 +363,6 @@ AssignedToDirective = ($rootscope, $confirm, $repo, $loading) ->
         link:link,
         require:"ngModel"
     }
-
 
 module.directive("tgAssignedTo", ["$rootScope", "$tgConfirm", "$tgRepo", "$tgLoading", AssignedToDirective])
 

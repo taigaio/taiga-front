@@ -50,9 +50,9 @@ block content
                 div.duty-data-container
                     div.duty-data(tg-task-status-button, ng-model="task")
 
-            section.duty-assigned-to(tg-assigned-to, ng-model="task")
+            section.duty-assigned-to(tg-assigned-to, ng-model="task", required-perm="modify_task")
 
-            section.watchers(tg-watchers, ng-model="task")
+            section.watchers(tg-watchers, ng-model="task", required-perm="modify_task")
 
             section.us-detail-settings
                fieldset(tg-task-is-iocaine-button, tg-check-permission="modify_task", ng-model="task")

@@ -50,9 +50,9 @@ block content
                     div.duty-data(tg-issue-priority-button, ng-model="issue")
                     div.duty-data(tg-issue-status-button, ng-model="issue")
 
-            section.duty-assigned-to(tg-assigned-to, ng-model="issue")
+            section.duty-assigned-to(tg-assigned-to, ng-model="issue", required-perm="modify_issue")
 
-            section.watchers(tg-watchers, ng-model="issue")
+            section.watchers(tg-watchers, ng-model="issue", required-perm="modify_issue")
 
             section.us-detail-settings
                tg-promote-issue-to-us-button(tg-check-permission="add_us", ng-model="issue")

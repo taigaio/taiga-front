@@ -55,9 +55,9 @@ block content
                 div.duty-data-container
                     div.duty-data(tg-us-status-button, ng-model="us")
 
-            section.duty-assigned-to(tg-assigned-to, ng-model="us")
+            section.duty-assigned-to(tg-assigned-to, ng-model="us", required-perm="modify_us")
 
-            section.watchers(tg-watchers, ng-model="us")
+            section.watchers(tg-watchers, ng-model="us", required-perm="modify_us")
 
             section.us-detail-settings
                 tg-us-team-requirement-button(ng-model="us")
