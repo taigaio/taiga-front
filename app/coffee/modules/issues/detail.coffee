@@ -573,7 +573,7 @@ module.directive("tgIssuePriorityButton", ["$rootScope", "$tgRepo", "$tgConfirm"
 
 PromoteIssueToUsButtonDirective = ($rootScope, $repo, $confirm) ->
     template = _.template("""
-        <a class="button button-gray clickable" tg-check-permission="add_us">
+        <a class="button button-gray editable" tg-check-permission="add_us">
             Promote to User Story
         </a>
     """)  # TODO: i18n
