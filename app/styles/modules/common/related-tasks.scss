@@ -61,6 +61,11 @@
     .status {
         position: relative;
         text-align: left;
+        .not-clickable {
+            &:hover {
+                color: $grayer;
+            }
+        }
         .popover {
             a {
                 text-align: left;
