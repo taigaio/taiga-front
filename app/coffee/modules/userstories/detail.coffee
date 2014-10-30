@@ -539,7 +539,7 @@ UsTeamRequirementButtonDirective = ($rootscope, $tgrepo, $confirm, $loading) ->
             return if not us
 
             if canEdit()
-                $el.find('label').css("cursor", "pointer")
+                $el.find('label').addClass('editable')
 
             if us.team_requirement
                 $el.find('.team-requirement').addClass('active')
@@ -566,8 +566,6 @@ UsTeamRequirementButtonDirective = ($rootscope, $tgrepo, $confirm, $loading) ->
                 $confirm.notify("error")
                 us.revert()
                 $model.$setViewValue(us)
-
-        $el.find('label').css("cursor", "auto")
 
     return {
         link: link
@@ -596,7 +594,7 @@ UsClientRequirementButtonDirective = ($rootscope, $tgrepo, $confirm, $loading) -
             return if not us
 
             if canEdit()
-                $el.find('label').css("cursor", "pointer")
+                $el.find('label').addClass('editable')
 
             if us?.client_requirement
                 $el.find('.client-requirement').addClass('active')
@@ -623,8 +621,6 @@ UsClientRequirementButtonDirective = ($rootscope, $tgrepo, $confirm, $loading) -
                 $confirm.notify("error")
                 us.revert()
                 $model.$setViewValue(us)
-
-        $el.find('label').css("cursor", "auto")
 
     return {
         link: link

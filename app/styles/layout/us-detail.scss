@@ -356,9 +356,25 @@
     }
     .button-gray {
         background: $gray-light;
-        &:hover,
+        &:hover {
+            background: $gray-light;
+        }
+        &.editable {
+            &:hover {
+                background: $grayer;
+                cursor: pointer;
+            }
+        }
         &.active {
-            background: $grayer;
+            background: $green-taiga;
+        }
+    }
+    .item-block {
+        &.editable {
+            &:hover {
+                background: $red;
+                cursor: pointer;
+            }
         }
     }
     .button-red {
@@ -368,7 +384,9 @@
         }
     }
     label {
-        cursor: pointer;
+        &.editable {
+            cursor: pointer;
+        }
         +input {
             display: none;
         }

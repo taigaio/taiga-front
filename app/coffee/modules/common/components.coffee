@@ -378,8 +378,14 @@ BlockButtonDirective = ($rootscope, $loading) ->
     """
 
     link = ($scope, $el, $attrs, $model) ->
+        isEditable = ->
+            return $scope.project.my_permissions.indexOf("modify_us") != -1
+
         $scope.$watch $attrs.ngModel, (item) ->
             return if not item
+
+            if isEditable()
+                $el.find('.item-block').addClass('editable')
 
             if item.is_blocked
                 $el.find('.item-block').hide()
