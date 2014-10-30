@@ -551,9 +551,8 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading) ->
                     initializeSelectedFilters($scope.filters)
                 return null
 
-
             filters = $scope.filters[type]
-            filter = _.find(filters, {id:id})
+            filter = _.find(filters, {id: taiga.toString(id)})
             filter.selected = (not filter.selected)
 
             # Convert id to null as string for properly
