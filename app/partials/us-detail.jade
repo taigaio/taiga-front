@@ -68,6 +68,6 @@ block content
                                  on-delete-go-to-url="onDeleteGoToUrl",
                                  ng-model="us")
 
-        div.lightbox.lightbox-block.hidden(tg-lb-block, title="Blocking us", ng-model="us")
-        div.lightbox.lightbox-select-user.hidden(tg-lb-assignedto)
-        div.lightbox.lightbox-select-user.hidden(tg-lb-watchers)
+        div.lightbox.lightbox-block(tg-lb-block, title="Blocking us", ng-model="us")
+        div.lightbox.lightbox-select-user(tg-lb-assignedto)
+        div.lightbox.lightbox-select-user(tg-lb-watchers)

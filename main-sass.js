@@ -111,6 +111,7 @@ exports.files = function () {
 
         //modules admin
         'modules/admin/admin-menu',
+        'modules/admin/admin-common',
         'modules/admin/admin-submenu',
         'modules/admin/admin-submenu-roles',
         'modules/admin/admin-roles',
