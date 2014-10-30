@@ -55,7 +55,7 @@ block content
             section.watchers(tg-watchers, ng-model="task", required-perm="modify_task")
 
             section.us-detail-settings
-               fieldset(tg-task-is-iocaine-button, tg-check-permission="modify_task", ng-model="task")
+               tg-task-is-iocaine-button(ng-model="task")
                tg-block-button(tg-check-permission="modify_task", ng-model="task")
                tg-delete-button(tg-check-permission="delete_task",
                                 on-delete-title="'Delete Task'",

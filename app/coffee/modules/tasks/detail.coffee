@@ -288,30 +288,25 @@ TaskStatusButtonDirective = ($rootScope, $repo, $confirm, $loading) ->
         require: "ngModel"
     }
 
-module.directive("tgTaskStatusButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", TaskStatusButtonDirective])
+module.directive("tgTaskStatusButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading",
+                                        TaskStatusButtonDirective])
 
 
 TaskIsIocaineButtonDirective = ($rootscope, $tgrepo, $confirm, $loading) ->
     template = """
       <fieldset title="Feeling a bit overwhelmed by a task? Make sure others know about it by clicking on Iocaine when editing a task. It's possible to become immune to this (fictional) deadly poison by consuming small amounts over time just as it's possible to get better at what you do by occasionally taking on extra challenges!">
-        <label for="is-iocaine" class="clickable button button-gray is-iocaine">Iocaine</label>
+        <label for="is-iocaine" class="button button-gray is-iocaine">Iocaine</label>
         <input type="checkbox" id="is-iocaine" name="is-iocaine"/>
       </fieldset>
     """
 
     link = ($scope, $el, $attrs, $model) ->
-        $scope.$watch $attrs.ngModel, (task) ->
-            return if not task
-
-            if task.is_iocaine
-                $el.find('.is-iocaine').addClass('active')
-            else
-                $el.find('.is-iocaine').removeClass('active')
-
-        $scope.$on "$destroy", ->
-            $el.off()
+        isEditable = ->
+            return $scope.project.my_permissions.indexOf("modify_task") != -1
 
         $el.on "click", ".is-iocaine", (event) ->
+            return if not isEditable()
+
             task = $model.$modelValue.clone()
             task.is_iocaine = not task.is_iocaine
             $model.$setViewValue(task)
@@ -327,6 +322,22 @@ TaskIsIocaineButtonDirective = ($rootscope, $tgrepo, $confirm, $loading) ->
 
             promise.finally ->
                 $loading.finish($el.find('label'))
+
+        $scope.$watch $attrs.ngModel, (task) ->
+            return if not task
+
+            if isEditable()
+                $el.find('.is-iocaine').addClass('editable')
+            else
+                $el.find('.is-iocaine').removeClass('editable')
+
+            if task.is_iocaine
+                $el.find('.is-iocaine').addClass('active')
+            else
+                $el.find('.is-iocaine').removeClass('active')
+
+        $scope.$on "$destroy", ->
+            $el.off()
 
     return {
         link: link
