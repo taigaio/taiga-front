@@ -53,6 +53,8 @@ exports.files = function () {
         'components/spinner',
         'components/help-notion-button',
         'components/beta',
+        'components/markitup',
+
 
         //#################################################
         //             Modules

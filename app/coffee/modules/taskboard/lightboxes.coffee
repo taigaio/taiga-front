@@ -25,7 +25,7 @@ debounce = @.taiga.debounce
 
 CreateEditTaskDirective = ($repo, $model, $rs, $rootscope, lightboxService) ->
     link = ($scope, $el, attrs) ->
-        isNew = true
+        $scope.isNew = true
 
         $scope.$on "taskform:new", (ctx, sprintId, usId) ->
             $scope.task = {
@@ -37,7 +37,7 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootscope, lightboxService) ->
                 assigned_to: null
                 tags: []
             }
-            isNew = true
+            $scope.isNew = true
 
             # Update texts for creation
             $el.find(".button-green span").html("Create") #TODO: i18n
@@ -46,7 +46,7 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootscope, lightboxService) ->
 
         $scope.$on "taskform:edit", (ctx, task) ->
             $scope.task = task
-            isNew = false
+            $scope.isNew = false
 
             # Update texts for edition
             $el.find(".button-green span").html("Save") #TODO: i18n
@@ -60,7 +60,7 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootscope, lightboxService) ->
             if not form.validate()
                 return
 
-            if isNew
+            if $scope.isNew
                 promise = $repo.create("tasks", $scope.task)
                 broadcastEvent = "taskform:new:success"
             else

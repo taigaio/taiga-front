@@ -57,6 +57,12 @@
             display: flex;
             margin-bottom: 0;
             max-width: 94%;
+            &:hover {
+                .icon-edit {
+                    @include transition(opacity .3s linear);
+                    opacity: 1;
+                }
+            }
         }
         .us-number {
             @extend %xlarge;
@@ -72,6 +78,17 @@
             display: inline-block;
             line-height: 2.2rem;
             padding-right: 1rem;
+            width: 100%;
+        }
+        .icon-edit,
+        .icon-floppy,
+        .icon-spinner {
+            @extend %large;
+            color: $gray-light;
+            margin-left: .5rem;
+        }
+        .icon-edit {
+            opacity: 0;
         }
         .us-related-task {
             @extend %small;
@@ -133,11 +150,73 @@
     }
 }
 
-.us-content {
+.duty-content {
+    position: relative;
+    &:hover {
+        .view-description {
+            .edit {
+                @include transition(all .2s linear);
+                opacity: 1;
+                top: -1.5rem;
+            }
+            .editable {
+                background: $whitish;
+                cursor: pointer;
+                .no-description {
+                    color: $grayer;
+                }
+            }
+        }
+    }
+    &.wysiwyg {
+        overflow: visible;
+    }
+    .no-description {
+        color: $gray-light;
+    }
     textarea {
         background: $white;
         height: 10rem;
         margin-bottom: 2rem;
+    }
+    .save-container {
+        position: absolute;
+        right: 1rem;
+        top: .2rem;
+        .save {
+            color: $blackish;
+            opacity: .6;
+            top: 0;
+        }
+        &:hover {
+            @include transition(opacity .2s linear);
+            opacity: .3;
+        }
+    }
+    .edit {
+        color: $grayer;
+    }
+    .view-description {
+        .edit {
+            @include transition(all .2s linear);
+            background: $whitish;
+            left: 0;
+            opacity: 0;
+            padding: .2rem .5rem;
+            position: absolute;
+            top: 0;
+        }
+    }
+    .edit-description {
+        .save {
+            top: .4rem;
+        }
+        .edit {
+            @include transition(all .2s linear);
+            position: absolute;
+            right: 2.5rem;
+            top: .4rem;
+        }
     }
 }
 
@@ -230,23 +309,25 @@
     }
 }
 
-.issue-data {
+.duty-data-container {
     @extend %small;
-    div {
-        @include clearfix();
-        @include transition(background .2s ease-in);
-        background: darken($whitish, 5%);
+    margin-bottom: 1rem;
+    .duty-data {
         margin-bottom: .5rem;
-        padding: .5rem;
-        padding-right: 1rem;
         &:last-child {
             margin: 0;
         }
-    }
-    .clickable {
-        &:hover {
+        div {
             @include transition(background .2s ease-in);
-            background: darken($whitish, 10%);
+            background: darken($whitish, 5%);
+            padding: .5rem;
+            padding-right: 1rem;
+        }
+        .clickable {
+            &:hover {
+                @include transition(background .2s ease-in);
+                background: darken($whitish, 10%);
+            }
         }
     }
     .level {
@@ -257,6 +338,10 @@
     .level-name {
         color: darken($whitish, 20%);
         float: right;
+        &.loading span {
+            @include animation (loading .5s linear);
+            @include animation (spin 1s linear infinite);
+        }
     }
 }
 
@@ -271,9 +356,25 @@
     }
     .button-gray {
         background: $gray-light;
-        &:hover,
+        &:hover {
+            background: $gray-light;
+        }
+        &.editable {
+            &:hover {
+                background: $grayer;
+                cursor: pointer;
+            }
+        }
         &.active {
-            background: $grayer;
+            background: $green-taiga;
+        }
+    }
+    .item-block {
+        &.editable {
+            &:hover {
+                background: $red;
+                cursor: pointer;
+            }
         }
     }
     .button-red {
@@ -283,7 +384,9 @@
         }
     }
     label {
-        cursor: pointer;
+        &.editable {
+            cursor: pointer;
+        }
         +input {
             display: none;
         }

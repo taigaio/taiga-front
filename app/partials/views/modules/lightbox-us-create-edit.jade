@@ -8,14 +8,13 @@ form
 
     fieldset.estimation
         tg-us-estimation(ng-model="us")
-            //- Render by tg-lb-create-edit-userstory
 
     fieldset
         select(name="status", ng-model="us.status", ng-options="s.id as s.name for s in usStatusList",
                tr="placeholder:common.status")
 
     fieldset
-        div(tg-tag-line, editable="true", ng-model="us.tags")
+        div.tags-block(tg-lb-tag-line, ng-model="us.tags")
 
     fieldset
         textarea.description(name="description", ng-model="us.description",

@@ -4,7 +4,7 @@ block head
     title Taiga  Your agile, free, and open source project management tool
 
 block content
-    div.wrapper(tg-task-detail, ng-controller="TaskDetailController as ctrl",
+    div.wrapper(ng-controller="TaskDetailController as ctrl",
                 ng-init="section='backlog'")
         div.main.us-detail
             div.us-detail-header.header-with-actions
@@ -15,16 +15,12 @@ block content
                         href="", title="Go to taskboard",
                         tg-nav="project-taskboard:project=project.slug,sprint=sprint.slug",
                         ng-if="sprint && project.is_backlog_activated") Taskboard
-                    a.button.button-green(
-                        tg-check-permission="modify_task", href="",
-                        title="Edit",
-                        tg-nav="project-tasks-detail-edit:project=project.slug,ref=task.ref") Edit
 
             section.us-story-main-data
                 div.us-title(ng-class="{blocked: task.is_blocked}")
                     h2.us-title-text
                         span.us-number(tg-bo-ref="task.ref")
-                        span.us-name(ng-bind="task.subject")
+                        span.us-name(tg-editable-subject, ng-model="task", required-perm="modify_task")
                     h3.us-related-task This task belongs to
                         a(tg-check-permission="view_us", href="", title="Go to user story",
                         tg-nav="project-userstories-detail:project=project.slug, ref=us.ref",
@@ -35,20 +31,37 @@ block content
                         span.block-description-title Blocked
                         span.block-description(tg-bind-html="task.blocked_note || 'This task is blocked'")
                     div.issue-nav
-                        a.icon.icon-arrow-left(ng-show="previousUrl",href="{{ previousUrl }}", title="previous task")
-                        a.icon.icon-arrow-right(ng-show="nextUrl", href="{{ nextUrl }}", title="next task")
+                        a.icon.icon-arrow-left(ng-show="previousUrl", tg-bo-href="previousUrl",
+                                               title="previous task")
+                        a.icon.icon-arrow-right(ng-show="nextUrl", tg-bo-href="nextUrl",
+                                                title="next task")
 
-                div(tg-tag-line, ng-model="task.tags", ng-show="task.tags")
+                div.tags-block(tg-tag-line, ng-model="task", required-perm="modify_task")
 
-            section.us-content.wysiwyg(tg-bind-html="task.description_html")
+            section.duty-content.wysiwyg(tg-editable-description, ng-model="task", required-perm="modify_task")
 
             tg-attachments(ng-model="task", type="task")
             tg-history(ng-model="task", type="task")
 
         sidebar.menu-secondary.sidebar
-            section.us-status(tg-task-status, ng-model="task")
-            section.us-assigned-to(tg-assigned-to, ng-model="task")
-            section.watchers(tg-watchers, ng-model="task")
+            section.us-status
+                h1(tg-task-status-display, ng-model="task")
+                div.us-created-by(tg-created-by-display, ng-model="task")
+                div.duty-data-container
+                    div.duty-data(tg-task-status-button, ng-model="task")
+
+            section.duty-assigned-to(tg-assigned-to, ng-model="task", required-perm="modify_task")
+
+            section.watchers(tg-watchers, ng-model="task", required-perm="modify_task")
 
             section.us-detail-settings
-                span.button.button-gray(href="", ng-class="{'active': task.is_iocaine }", title="Feeling a bit overwhelmed by a task? Make sure others know about it by clicking on Iocaine when editing a task. It's possible to become immune to this (fictional) deadly poison by consuming small amounts over time just as it's possible to get better at what you do by occasionally taking on extra challenges!") Iocaine
+               tg-task-is-iocaine-button(ng-model="task")
+               tg-block-button(tg-check-permission="modify_task", ng-model="task")
+               tg-delete-button(tg-check-permission="delete_task",
+                                on-delete-title="'Delete Task'",
+                                on-delete-go-to-url="onDeleteGoToUrl",
+                                ng-model="task")
+
+        div.lightbox.lightbox-block.hidden(tg-lb-block, title="Blocking task", ng-model="task")
+        div.lightbox.lightbox-select-user(tg-lb-assignedto)
+        div.lightbox.lightbox-select-user(tg-lb-watchers)

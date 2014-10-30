@@ -3,6 +3,7 @@
 ## 1.2.0 (Unreleased)
 
 ### Features
+- US/Task/Issue visualization and edition refactor. Now only one view for both.
 - Multiple User stories Drag & Drop in the backlog.
 - Add visual difference to closed USs in backlog panel.
 - Show crerated date of attachments in the hover of the filename.

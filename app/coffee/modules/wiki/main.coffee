@@ -38,6 +38,7 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$scope",
         "$rootScope",
         "$tgRepo",
+        "$tgModel",
         "$tgConfirm",
         "$tgResources",
         "$routeParams",
@@ -51,7 +52,7 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "tgLoader"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
+    constructor: (@scope, @rootscope, @repo, @model, @confirm, @rs, @params, @q, @location,
                   @filter, @log, @appTitle, @navUrls, @analytics, tgLoader) ->
         @scope.projectSlug = @params.pslug
         @scope.wikiSlug = @params.slug
@@ -80,7 +81,15 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
                 @scope.wiki = wiki
                 return wiki
 
-        @scope.wiki = {content: ""}
+        if @scope.project.my_permissions.indexOf("add_wiki_page") == -1
+            return null
+
+        data = {
+            project: @scope.projectId
+            slug: @scope.wikiSlug
+            content: ""
+        }
+        @scope.wiki = @model.make_model("wiki", data)
         return @scope.wiki
 
     loadWikiLinks: ->
@@ -109,27 +118,12 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
                 @scope.wikiId = data.wikipage
 
             return prom.then null, (xhr) =>
-                ctx = {project: @params.pslug, slug: @params.slug}
-                @location.path(@navUrls.resolve("project-wiki-page-edit", ctx))
+                @scope.wikiId = null
 
         return promise.then(=> @.loadProject())
                       .then(=> @.loadUsersAndRoles())
                       .then(=> @q.all([@.loadWikiLinks(),
                                        @.loadWiki()]))
-
-    edit: ->
-        ctx = {
-            project: @scope.projectSlug
-            slug: @scope.wikiSlug
-        }
-        @location.path(@navUrls.resolve("project-wiki-page-edit", ctx))
-
-    cancel: ->
-        ctx = {
-            project: @scope.projectSlug
-            slug: @scope.wikiSlug
-        }
-        @location.path(@navUrls.resolve("project-wiki-page", ctx))
 
     delete: ->
         # TODO: i18n
@@ -151,95 +145,181 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
 module.controller("WikiDetailController", WikiDetailController)
 
-#############################################################################
-## Wiki Edit Controller
-#############################################################################
-
-class WikiEditController extends WikiDetailController
-    save: debounce 2000, ->
-        onSuccess = =>
-            ctx = {
-                project: @scope.projectSlug
-                slug: @scope.wiki.slug
-            }
-            @location.path(@navUrls.resolve("project-wiki-page", ctx))
-            @confirm.notify("success")
-
-        onError = =>
-            @confirm.notify("error")
-
-        if @scope.wiki.id
-            @repo.save(@scope.wiki).then onSuccess, onError
-        else
-            @analytics.trackEvent("wikipage", "create", "create wiki page", 1)
-            @scope.wiki.project = @scope.projectId
-            @scope.wiki.slug = @scope.wikiSlug
-            @repo.create("wiki", @scope.wiki).then onSuccess, onError
-
-module.controller("WikiEditController", WikiEditController)
-
 
 #############################################################################
-## Wiki Main Directive
+## Wiki Summary Directive
 #############################################################################
 
-WikiDirective = ($tgrepo, $log, $location, $confirm) ->
-    link = ($scope, $el, $attrs) ->
-        $ctrl = $el.controller()
-
-    return {link:link}
-
-module.directive("tgWikiDetail", ["$tgRepo", "$log", "$tgLocation", "$tgConfirm", WikiDirective])
-
-
-#############################################################################
-## Wiki Edit Main Directive
-#############################################################################
-
-WikiEditDirective = ($tgrepo, $log, $location, $confirm) ->
-    link = ($scope, $el, $attrs) ->
-        $ctrl = $el.controller()
-
-    return {link:link}
-
-module.directive("tgWikiEdit", ["$tgRepo", "$log", "$tgLocation", "$tgConfirm", WikiEditDirective])
-
-
-#############################################################################
-## Wiki User Info Directive
-#############################################################################
-
-WikiUserInfoDirective = ($log) ->
+WikiSummaryDirective = ($log) ->
     template = _.template("""
-    <figure class="avatar">
-        <img src="<%= imgurl %>" alt="<%- name %>">
-    </figure>
-    <span class="description">last modification</span>
-    <span class="username"><%- name %></span>
+    <ul>
+        <li>
+            <span class="number"><%- totalEditions %></span>
+            <span class="description">times <br />edited</span>
+        </li>
+        <li>
+            <span class="number"><%- lastModifiedDate %></span>
+            <span class="description"> last <br />edit</span>
+        </li>
+        <li class="username-edition">
+            <figure class="avatar">
+                <img src="<%= user.imgUrl %>" alt="<%- user.name %>">
+            </figure>
+            <span class="description">last modification</span>
+            <span class="username"><%- user.name %></span>
+        </li>
+    </ul>
     """)
 
-    link = ($scope, $el, $attrs) ->
-        if not $attrs.ngModel?
-            return $log.error "WikiUserDirective: no ng-model attr is defined"
-
+    link = ($scope, $el, $attrs, $model) ->
         render = (wiki) ->
             if not $scope.usersById?
-                $log.error "WikiUserDirective requires userById set in scope."
+                $log.error "WikiSummaryDirective requires userById set in scope."
             else
                 user = $scope.usersById[wiki.last_modifier]
-            if user is undefined
-                ctx = {name: "unknown", imgurl: "/images/unnamed.png"}
-            else
-                ctx = {name: user.full_name_display, imgurl: user.photo}
 
+            if user is undefined
+                user = {name: "unknown", imgUrl: "/images/unnamed.png"}
+            else
+                user = {name: user.full_name_display, imgUrl: user.photo}
+
+            ctx = {
+                totalEditions: wiki.editions
+                lastModifiedDate: moment(wiki.modified_date).format("DD MMM YYYY HH:mm")
+                user: user
+            }
             html = template(ctx)
             $el.html(html)
 
-        bindOnce($scope, $attrs.ngModel, render)
+        $scope.$watch $attrs.ngModel, (wikiPage) ->
+            return if not wikiPage
+            render(wikiPage)
+
+        $scope.$on "$destroy", ->
+            $el.off()
 
     return {
         link: link
-        restrict: "AE"
+        restrict: "EA"
+        require: "ngModel"
     }
 
-module.directive("tgWikiUserInfo", ["$tgRepo", "$log", "$tgLocation", "$tgConfirm", WikiUserInfoDirective])
+module.directive("tgWikiSummary", ["$log", WikiSummaryDirective])
+
+
+#############################################################################
+## Editable Wiki Content Directive
+#############################################################################
+
+EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $location, $navUrls,
+                                $analytics) ->
+    template = """
+        <div class="view-wiki-content">
+            <section class="wysiwyg"
+                     tg-bind-html="wiki.html"></section>
+            <span class="edit icon icon-edit" title="Edit"></span>
+        </div>
+        <div class="edit-wiki-content" style="display: none;">
+            <textarea placeholder="Write your wiki page here"
+                      ng-model="wiki.content"
+                      tg-markitup="tg-markitup"></textarea>
+            <span class="action-container">
+                <a class="save icon icon-floppy" href="" title="Save" />
+                <a class="cancel icon icon-delete" href="" title="Cancel" />
+            </span>
+        </div>
+    """ # TODO: i18n
+
+    link = ($scope, $el, $attrs, $model) ->
+        isEditable = ->
+            return $scope.project.my_permissions.indexOf("modify_wiki_page") != -1
+
+        switchToEditMode = ->
+            $el.find('.edit-wiki-content').show()
+            $el.find('.view-wiki-content').hide()
+            $el.find('textarea').focus()
+
+        switchToReadMode = ->
+            $el.find('.edit-wiki-content').hide()
+            $el.find('.view-wiki-content').show()
+
+        disableEdition = ->
+            $el.find(".view-wiki-content .edit").remove()
+            $el.find(".edit-wiki-content").remove()
+
+        cancelEdition = ->
+            if $scope.wiki.id
+                $scope.wiki.revert()
+                switchToReadMode()
+            else
+                ctx = {project: $scope.projectSlug}
+                $location.path($navUrls.resolve("project-wiki", ctx))
+
+        getSelectedText = ->
+            if $window.getSelection
+                return $window.getSelection().toString()
+            else if $document.selection
+                return $document.selection.createRange().text
+            return null
+
+        $el.on "mouseup", ".view-wiki-content", (event) ->
+            # We want to dettect the a inside the div so we use the target and
+            # not the currentTarget
+            target = angular.element(event.target)
+            return if not isEditable()
+            return if target.is('a')
+            return if getSelectedText()
+            switchToEditMode()
+
+        $el.on "click", ".save", debounce 2000, ->
+            onSuccess = (wikiPage) ->
+                if not $scope.wiki.id?
+                    $analytics.trackEvent("wikipage", "create", "create wiki page", 1)
+
+                $scope.wiki = wikiPage
+                $model.setModelValue = $scope.wiki
+                $confirm.notify("success")
+                switchToReadMode()
+
+            onError = ->
+                $confirm.notify("error")
+
+            $loading.start($el.find('.save-container'))
+            if $scope.wiki.id?
+                promise = $repo.save($scope.wiki).then(onSuccess, onError)
+            else
+                promise = $repo.create("wiki", $scope.wiki).then(onSuccess, onError)
+            promise.finally ->
+                $loading.finish($el.find('.save-container'))
+
+        $el.on "click", ".cancel", ->
+            cancelEdition()
+
+        $el.on "keyup", "textarea", ->
+            if event.keyCode == 27
+                cancelEdition()
+
+        $scope.$watch $attrs.ngModel, (wikiPage) ->
+            return if not wikiPage
+            $scope.wiki = wikiPage
+
+            if isEditable()
+                $el.addClass('editable')
+                if not wikiPage.id?
+                    switchToEditMode()
+            else
+                disableEdition()
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {
+        link: link
+        restrict: "EA"
+        require: "ngModel"
+        template: template
+    }
+
+module.directive("tgEditableWikiContent", ["$window", "$document", "$tgRepo", "$tgConfirm", "$tgLoading",
+                                           "$tgLocation", "$tgNavUrls", "$tgAnalytics",
+                                           EditableWikiContentDirective])

@@ -32,7 +32,7 @@ tgMarkitupDirective = ($rootscope, $rs, $tr) ->
     previewTemplate = _.template("""
     <div class="preview">
         <div class="actions">
-            <a href="#" title="Edit">Edit</a>
+            <a href="#" title="Edit" class="icon icon-edit edit"></a>
         </div>
         <div class="content wysiwyg">
             <%= data %>

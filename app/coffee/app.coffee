@@ -52,30 +52,22 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     # User stories
     $routeProvider.when("/project/:pslug/us/:usref",
         {templateUrl: "/partials/us-detail.html", resolve: {loader: tgLoaderProvider.add()}})
-    $routeProvider.when("/project/:pslug/us/:usref/edit",
-        {templateUrl: "/partials/us-detail-edit.html"})
 
     # Tasks
     $routeProvider.when("/project/:pslug/task/:taskref",
         {templateUrl: "/partials/task-detail.html", resolve: {loader: tgLoaderProvider.add()}})
-    $routeProvider.when("/project/:pslug/task/:taskref/edit",
-        {templateUrl: "/partials/task-detail-edit.html"})
 
     # Wiki
     $routeProvider.when("/project/:pslug/wiki",
         {redirectTo: (params) -> "/project/#{params.pslug}/wiki/home"}, )
     $routeProvider.when("/project/:pslug/wiki/:slug",
         {templateUrl: "/partials/wiki.html", resolve: {loader: tgLoaderProvider.add()}})
-    $routeProvider.when("/project/:pslug/wiki/:slug/edit",
-        {templateUrl: "/partials/wiki-edit.html"})
 
     # Issues
     $routeProvider.when("/project/:pslug/issues",
         {templateUrl: "/partials/issues.html", resolve: {loader: tgLoaderProvider.add()}})
     $routeProvider.when("/project/:pslug/issue/:issueref",
-        {templateUrl: "/partials/issues-detail.html"})
-    $routeProvider.when("/project/:pslug/issue/:issueref/edit",
-        {templateUrl: "/partials/issues-detail-edit.html"})
+        {templateUrl: "/partials/issues-detail.html", resolve: {loader: tgLoaderProvider.add()}})
 
     # Admin
     $routeProvider.when("/project/:pslug/admin/project-profile/details",

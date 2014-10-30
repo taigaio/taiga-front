@@ -127,16 +127,33 @@ module.directive("lightbox", ["lightboxService", LightboxDirective])
 
 # Issue/Userstory blocking message lightbox directive.
 
-BlockLightboxDirective = (lightboxService) ->
+BlockLightboxDirective = ($rootscope, $tgrepo, $confirm, lightboxService, $loading) ->
     link = ($scope, $el, $attrs, $model) ->
         $el.find("h2.title").text($attrs.title)
 
         $scope.$on "block", ->
+            $el.find(".reason").val($model.$modelValue.blocked_note)
             lightboxService.open($el)
 
-        $scope.$on "unblock", ->
-            $model.$modelValue.is_blocked = false
-            $model.$modelValue.blocked_note_html = ""
+        $scope.$on "unblock", (event, model, finishCallback) ->
+            item = $model.$modelValue.clone()
+            item.is_blocked = false
+            item.blocked_note = ""
+
+            promise = $tgrepo.save(item)
+            promise.then ->
+                $confirm.notify("success")
+                $rootscope.$broadcast("history:reload")
+                $model.$setViewValue(item)
+                finishCallback()
+
+            promise.then null, ->
+                $confirm.notify("error")
+                item.revert()
+                $model.$setViewValue(item)
+
+            promise.finally ->
+                finishCallback()
 
         $scope.$on "$destroy", ->
             $el.off()
@@ -144,19 +161,34 @@ BlockLightboxDirective = (lightboxService) ->
         $el.on "click", ".button-green", (event) ->
             event.preventDefault()
 
-            $scope.$apply ->
-                $model.$modelValue.is_blocked = true
-                $model.$modelValue.blocked_note = $el.find(".reason").val()
+            item = $model.$modelValue.clone()
+            item.is_blocked = true
+            item.blocked_note = $el.find(".reason").val()
+            $model.$setViewValue(item)
 
-            lightboxService.close($el)
+            $loading.start($el.find(".button-green"))
+
+            promise = $tgrepo.save($model.$modelValue)
+            promise.then ->
+                $confirm.notify("success")
+                $rootscope.$broadcast("history:reload")
+
+            promise.then null, ->
+                $confirm.notify("error")
+                item.revert()
+                $model.$setViewValue(item)
+
+            promise.finally ->
+                $loading.finish($el.find(".button-green"))
+                lightboxService.close($el)
 
     return {
         templateUrl: "/partials/views/modules/lightbox-block.html"
-        link:link,
-        require:"ngModel"
+        link: link
+        require: "ngModel"
     }
 
-module.directive("tgLbBlock", ["lightboxService", BlockLightboxDirective])
+module.directive("tgLbBlock", ["$rootScope", "$tgRepo", "$tgConfirm", "lightboxService", "$tgLoading", BlockLightboxDirective])
 
 
 #############################################################################
@@ -202,10 +234,10 @@ module.directive("tgBlockingMessageInput", ["$log", BlockingMessageInputDirectiv
 
 CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService, $loading) ->
     link = ($scope, $el, attrs) ->
-        isNew = true
+        $scope.isNew = true
 
         $scope.$on "usform:new", (ctx, projectId, status, statusList) ->
-            isNew = true
+            $scope.isNew = true
             $scope.usStatusList = statusList
 
             $scope.us = {
@@ -229,7 +261,7 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
 
         $scope.$on "usform:edit", (ctx, us) ->
             $scope.us = us
-            isNew = false
+            $scope.isNew = false
 
             # Update texts for edition
             $el.find(".button-green span").html("Save") #TODO: i18n
@@ -264,7 +296,7 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
 
             $loading.start(target)
 
-            if isNew
+            if $scope.isNew
                 promise = $repo.create("userstories", $scope.us)
                 broadcastEvent = "usform:new:success"
             else

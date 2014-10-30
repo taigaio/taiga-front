@@ -30,10 +30,8 @@
 .tags-block {
     .tags-container {
         display: inline-block;
-        vertical-align: middle;
     }
     input {
-        display: inline-block;
         padding: .4rem;
         width: 14rem;
     }
@@ -42,7 +40,18 @@
         margin: 0 .5rem .5rem 0;
         padding: .5rem;
     }
-    .save {
-        display: none;
+    .add-tag {
+        color: $gray-light;
+        &:hover {
+            color: $fresh-taiga;
+        }
+    }
+    .icon-plus {
+        @extend %large;
+    }
+    .add-tag-text {
+        @extend %small;
     }
 }
+
+
