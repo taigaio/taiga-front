@@ -293,16 +293,31 @@ module.directive("tgTaskStatusButton", ["$rootScope", "$tgRepo", "$tgConfirm", "
 
 
 TaskIsIocaineButtonDirective = ($rootscope, $tgrepo, $confirm, $loading) ->
-    template = """
+    template = _.template("""
       <fieldset title="Feeling a bit overwhelmed by a task? Make sure others know about it by clicking on Iocaine when editing a task. It's possible to become immune to this (fictional) deadly poison by consuming small amounts over time just as it's possible to get better at what you do by occasionally taking on extra challenges!">
-        <label for="is-iocaine" class="button button-gray is-iocaine">Iocaine</label>
+        <label for="is-iocaine"
+              class="button button-gray is-iocaine <% if(isEditable){ %>editable<% }; %> <% if(isIocaine){ %>active<% }; %>">
+              Iocaine
+        </label>
         <input type="checkbox" id="is-iocaine" name="is-iocaine"/>
       </fieldset>
-    """
+    """)
 
     link = ($scope, $el, $attrs, $model) ->
         isEditable = ->
             return $scope.project.my_permissions.indexOf("modify_task") != -1
+
+        render = (task) ->
+            if not isEditable() and not task.is_iocaine
+                $el.html("")
+                return
+
+            ctx = {
+                isIocaine: task.is_iocaine
+                isEditable: isEditable()
+            }
+            html = template(ctx)
+            $el.html(html)
 
         $el.on "click", ".is-iocaine", (event) ->
             return if not isEditable()
@@ -318,23 +333,15 @@ TaskIsIocaineButtonDirective = ($rootscope, $tgrepo, $confirm, $loading) ->
                 $rootscope.$broadcast("history:reload")
 
             promise.then null, ->
+                task.revert()
+                $model.$setViewValue(task)
                 $confirm.notify("error")
 
             promise.finally ->
                 $loading.finish($el.find('label'))
 
         $scope.$watch $attrs.ngModel, (task) ->
-            return if not task
-
-            if isEditable()
-                $el.find('.is-iocaine').addClass('editable')
-            else
-                $el.find('.is-iocaine').removeClass('editable')
-
-            if task.is_iocaine
-                $el.find('.is-iocaine').addClass('active')
-            else
-                $el.find('.is-iocaine').removeClass('active')
+            render(task) if task
 
         $scope.$on "$destroy", ->
             $el.off()
@@ -343,7 +350,6 @@ TaskIsIocaineButtonDirective = ($rootscope, $tgrepo, $confirm, $loading) ->
         link: link
         restrict: "EA"
         require: "ngModel"
-        template: template
     }
 
 module.directive("tgTaskIsIocaineButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", TaskIsIocaineButtonDirective])

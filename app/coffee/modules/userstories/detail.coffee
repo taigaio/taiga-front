@@ -526,28 +526,29 @@ module.directive("tgUsStatusButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$t
 #############################################################################
 
 UsTeamRequirementButtonDirective = ($rootscope, $tgrepo, $confirm, $loading) ->
-    template = """
-      <label for="team-requirement" class="button button-gray team-requirement">Team requirement</label>
-      <input type="checkbox" id="team-requirement" name="team-requirement"/>
-    """
+    template = _.template("""
+    <label for="team-requirement"
+           class="button button-gray team-requirement <% if(canEdit){ %>editable<% }; %> <% if(isRequired){ %>active<% }; %>">
+        Team requirement
+    </label>
+    <input type="checkbox" id="team-requirement" name="team-requirement"/>
+    """) #TODO: i18n
 
     link = ($scope, $el, $attrs, $model) ->
         canEdit = ->
             return $scope.project.my_permissions.indexOf("modify_us") != -1
 
-        $scope.$watch $attrs.ngModel, (us) ->
-            return if not us
+        render = (us) ->
+            if not canEdit() and not us.team_requirement
+                $el.html("")
+                return
 
-            if canEdit()
-                $el.find('label').addClass('editable')
-
-            if us.team_requirement
-                $el.find('.team-requirement').addClass('active')
-            else
-                $el.find('.team-requirement').removeClass('active')
-
-        $scope.$on "$destroy", ->
-            $el.off()
+            ctx = {
+                canEdit: canEdit()
+                isRequired: us.team_requirement
+            }
+            html = template(ctx)
+            $el.html(html)
 
         $el.on "click", ".team-requirement", (event) ->
             return if not canEdit()
@@ -567,11 +568,16 @@ UsTeamRequirementButtonDirective = ($rootscope, $tgrepo, $confirm, $loading) ->
                 us.revert()
                 $model.$setViewValue(us)
 
+        $scope.$watch $attrs.ngModel, (us) ->
+            render(us) if us
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
     return {
         link: link
         restrict: "EA"
         require: "ngModel"
-        template: template
     }
 
 module.directive("tgUsTeamRequirementButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", UsTeamRequirementButtonDirective])
@@ -581,28 +587,29 @@ module.directive("tgUsTeamRequirementButton", ["$rootScope", "$tgRepo", "$tgConf
 #############################################################################
 
 UsClientRequirementButtonDirective = ($rootscope, $tgrepo, $confirm, $loading) ->
-    template = """
-      <label for="client-requirement" class="button button-gray client-requirement">Client requirement</label>
-      <input type="checkbox" id="client-requirement" name="client-requirement"/>
-    """
+    template = _.template("""
+    <label for="client-requirement"
+           class="button button-gray client-requirement <% if(canEdit){ %>editable<% }; %> <% if(isRequired){ %>active<% }; %>">
+        Client requirement
+    </label>
+    <input type="checkbox" id="client-requirement" name="client-requirement"/>
+    """) #TODO: i18n
 
     link = ($scope, $el, $attrs, $model) ->
         canEdit = ->
             return $scope.project.my_permissions.indexOf("modify_us") != -1
 
-        $scope.$watch $attrs.ngModel, (us) ->
-            return if not us
+        render = (us) ->
+            if not canEdit() and not us.client_requirement
+                $el.html("")
+                return
 
-            if canEdit()
-                $el.find('label').addClass('editable')
-
-            if us?.client_requirement
-                $el.find('.client-requirement').addClass('active')
-            else
-                $el.find('.client-requirement').removeClass('active')
-
-        $scope.$on "$destroy", ->
-            $el.off()
+            ctx = {
+                canEdit: canEdit()
+                isRequired: us.client_requirement
+            }
+            html = template(ctx)
+            $el.html(html)
 
         $el.on "click", ".client-requirement", (event) ->
             return if not canEdit()
@@ -622,11 +629,16 @@ UsClientRequirementButtonDirective = ($rootscope, $tgrepo, $confirm, $loading) -
                 us.revert()
                 $model.$setViewValue(us)
 
+        $scope.$watch $attrs.ngModel, (us) ->
+            render(us) if us
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
     return {
         link: link
         restrict: "EA"
         require: "ngModel"
-        template: template
     }
 
 module.directive("tgUsClientRequirementButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading",
