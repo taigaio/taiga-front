@@ -84,11 +84,11 @@ HistoryDirective = ($log, $loading) ->
         <div class="activity-fromto">
             <p>
                 <strong> from </strong> <br />
-                <span><%= point[0] %></span>
+                <span><%- point[0] %></span>
             </p>
             <p>
                 <strong> to </strong> <br />
-                <span><%= point[1] %></span>
+                <span><%- point[1] %></span>
             </p>
         </div>
     </div>
@@ -103,11 +103,11 @@ HistoryDirective = ($log, $loading) ->
         <div class="activity-fromto">
             <p>
                 <strong> from </strong> <br />
-                <span><%= from %></span>
+                <span><%- from %></span>
             </p>
             <p>
                 <strong> to </strong> <br />
-                <span><%= to %></span>
+                <span><%- to %></span>
             </p>
         </div>
     </div>
@@ -121,11 +121,11 @@ HistoryDirective = ($log, $loading) ->
             <% _.each(diff, function(change) { %>
                 <p>
                     <strong><%= change.name %> from </strong> <br />
-                    <span><%= change.from %></span>
+                    <span><%- change.from %></span>
                 </p>
                 <p>
                     <strong><%= change.name %> to </strong> <br />
-                    <span><%= change.to %></span>
+                    <span><%- change.to %></span>
                 </p>
             <% }) %>
         </div>
