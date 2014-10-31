@@ -38,8 +38,8 @@ section.colors-table
                                ng-options="e.id as e.name for e in [{'id':true, 'name':'Yes'},{'id':false, 'name': 'No'}]")
 
                     div.options-column
-                        a.save.icon.icon-floppy(href="", title="Add")
-                        a.cancel.icon.icon-delete(href="", title="Delete")
+                        a.save.icon.icon-floppy(href="", title="Save changes")
+                        a.cancel.icon.icon-delete(href="", title="Cancel")
 
         form
             div.row.table-main.new-value.hidden
@@ -57,4 +57,4 @@ section.colors-table
 
                 div.options-column
                     a.add-new.icon.icon-floppy(href="", title="Add")
-                    a.delete-new.icon.icon-delete(href="", title="Delete")
+                    a.delete-new.icon.icon-delete(href="", title="Cancel")
