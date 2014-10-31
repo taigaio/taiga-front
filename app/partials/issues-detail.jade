@@ -62,6 +62,6 @@ block content
                                 on-delete-go-to-url="onDeleteGoToUrl",
                                 ng-model="issue")
 
-        div.lightbox.lightbox-block.hidden(tg-lb-block, title="Blocking issue", ng-model="issue")
+        div.lightbox.lightbox-block(tg-lb-block, title="Blocking issue", ng-model="issue")
         div.lightbox.lightbox-select-user(tg-lb-assignedto)
         div.lightbox.lightbox-select-user(tg-lb-watchers)

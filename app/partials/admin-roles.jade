@@ -11,7 +11,7 @@ block content
         sidebar.menu-tertiary.sidebar
             include views/modules/admin-submenu-roles
 
-        section.main.admin-roles
+        section.main.admin-roles.admin-common
             .header-with-actions
                 include views/components/mainTitle
                 .action-buttons
@@ -19,7 +19,7 @@ block content
 
 
             div(tg-edit-role)
-                .edit-role.hidden
+                .edit-role
                     input(type="text", value="{{ role.name }}")
                     a.save.icon.icon-floppy(href="", title="Save")
 

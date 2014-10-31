@@ -21,13 +21,13 @@ html(lang="en", ng-app="taiga")
 
         div.master(ng-view)
 
-        div.hidden.lightbox.lightbox-generic-ask
+        div.lightbox.lightbox-generic-ask
             include partials/views/modules/lightbox-generic-ask
-        div.hidden.lightbox.lightbox-ask-choice
+        div.lightbox.lightbox-ask-choice
             include partials/views/modules/lightbox-ask-choice
-        div.hidden.lightbox.lightbox-generic-success
+        div.lightbox.lightbox-generic-success
             include partials/views/modules/lightbox-generic-success
-        div.hidden.lightbox.lightbox-generic-error
+        div.lightbox.lightbox-generic-error
             include partials/views/modules/lightbox-generic-error
         div.lightbox.lightbox-search(tg-search-box)
             include partials/views/modules/lightbox-search

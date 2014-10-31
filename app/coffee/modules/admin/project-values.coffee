@@ -166,8 +166,8 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame) ->
             promise = $repo.save(value)
             promise.then =>
                 row = target.parents(".row.table-main")
-                row.hide()
-                row.siblings(".visualization").css("display": "flex")
+                row.addClass("hidden")
+                row.siblings(".visualization").removeClass('hidden')
 
             promise.then null, (data) ->
                 $confirm.notify("error")
@@ -177,9 +177,9 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame) ->
             row = target.parents(".row.table-main")
             value = target.scope().value
             $scope.$apply ->
-                row.hide()
+                row.addClass("hidden")
                 value.revert()
-                row.siblings(".visualization").css("display": "flex")
+                row.siblings(".visualization").removeClass('hidden')
 
         $el.on "submit", "form", (event) ->
             event.preventDefault()
@@ -191,7 +191,7 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame) ->
 
         $el.on "click", ".show-add-new", (event) ->
             event.preventDefault()
-            $el.find(".new-value").css('display': 'flex')
+            $el.find(".new-value").removeClass('hidden')
 
             goToBottomList(true)
 
@@ -227,9 +227,10 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame) ->
             target = angular.element(event.currentTarget)
 
             row = target.parents(".row.table-main")
-            row.hide()
+            row.addClass("hidden")
+
             editionRow = row.siblings(".edition")
-            editionRow.css("display": "flex")
+            editionRow.removeClass('hidden')
             editionRow.find('input:visible').first().focus().select()
 
         $el.on "keyup", ".edition input", (event) ->

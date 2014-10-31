@@ -1,17 +1,4 @@
 .admin-roles {
-    .total {
-        @extend %large;
-        @extend %title;
-        background-color: $whitish;
-        color: $grayer;
-        padding: 1rem;
-        &:hover {
-            .edit-value {
-                @include transition(opacity .3s linear);
-                opacity: 1;
-            }
-        }
-    }
     .role-name {
         @extend %xlarge;
         @extend %title;
@@ -28,6 +15,7 @@
     .edit-role {
         @include table-flex(stretch, left, center, row, wrap);
         background-color: $whitish;
+        display: none;
         margin-bottom: 1rem;
         padding: .5rem;
         input {
