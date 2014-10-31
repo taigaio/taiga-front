@@ -43,7 +43,7 @@ resourceProvider = ($rootScope, $config, $urls, $model, $repo, $auth, $q) ->
             response = {
                 status: 413,
                 data: _error_message: "'#{file.name}' (#{sizeFormat(file.size)}) is too heavy for our oompa
-                                       loompas, try it with a smaller than {#{sizeFormat(maxFileSize)})"
+                                       loompas, try it with a smaller than (#{sizeFormat(maxFileSize)})"
             }
             defered.reject(response)
             return defered.promise
