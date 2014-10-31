@@ -186,7 +186,7 @@ gulp.task "styles-watch", ["css-app", "css-vendor"], ->
 
     gulp.src(_paths)
         .pipe(concat("main.css"))
-        .pipe(gulpif(isDeploy, minifyCSS()))
+        .pipe(gulpif(isDeploy, minifyCSS({noAdvanced: true})))
         .pipe(gulp.dest(paths.dist + "styles/"))
 
 gulp.task "styles", ["delete-tmp-styles"], ->
