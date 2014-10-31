@@ -163,7 +163,7 @@ WikiSummaryDirective = ($log) ->
         </li>
         <li class="username-edition">
             <figure class="avatar">
-                <img src="<%= user.imgUrl %>" alt="<%- user.name %>">
+                <img src="<%- user.imgUrl %>" alt="<%- user.name %>">
             </figure>
             <span class="description">last modification</span>
             <span class="username"><%- user.name %></span>

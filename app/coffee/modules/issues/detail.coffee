@@ -164,8 +164,8 @@ IssueStatusDisplayDirective = ->
             Open
         <% } %>
     </span>
-    <span class="us-detail-status" style="color:<%= status.color %>">
-        <%= status.name %>
+    <span class="us-detail-status" style="color:<%- status.color %>">
+        <%- status.name %>
     </span>
     """) # TODO: i18n
 
@@ -208,8 +208,8 @@ IssueStatusButtonDirective = ($rootScope, $repo, $confirm, $loading) ->
 
     template = _.template("""
     <div class="status-data <% if(editable){ %>clickable<% }%>">
-        <span class="level" style="background-color:<%= status.color %>"></span>
-        <span class="status-status"><%= status.name %></span>
+        <span class="level" style="background-color:<%- status.color %>"></span>
+        <span class="status-status"><%- status.name %></span>
         <% if(editable){ %><span class="icon icon-arrow-bottom"></span><% }%>
         <span class="level-name">status</span>
 
@@ -302,8 +302,8 @@ IssueTypeButtonDirective = ($rootScope, $repo, $confirm, $loading) ->
 
     template = _.template("""
     <div class="type-data <% if(editable){ %>clickable<% }%>">
-        <span class="level" style="background-color:<%= type.color %>"></span>
-        <span class="type-type"><%= type.name %></span>
+        <span class="level" style="background-color:<%- type.color %>"></span>
+        <span class="type-type"><%- type.name %></span>
         <% if(editable){ %><span class="icon icon-arrow-bottom"></span><% }%>
         <span class="level-name">type</span>
 
@@ -396,8 +396,8 @@ IssueSeverityButtonDirective = ($rootScope, $repo, $confirm, $loading) ->
 
     template = _.template("""
     <div class="severity-data <% if(editable){ %>clickable<% }%>">
-        <span class="level" style="background-color:<%= severity.color %>"></span>
-        <span class="severity-severity"><%= severity.name %></span>
+        <span class="level" style="background-color:<%- severity.color %>"></span>
+        <span class="severity-severity"><%- severity.name %></span>
         <% if(editable){ %><span class="icon icon-arrow-bottom"></span><% }%>
         <span class="level-name">severity</span>
 
@@ -490,8 +490,8 @@ IssuePriorityButtonDirective = ($rootScope, $repo, $confirm, $loading) ->
 
     template = _.template("""
     <div class="priority-data <% if(editable){ %>clickable<% }%>">
-        <span class="level" style="background-color:<%= priority.color %>"></span>
-        <span class="priority-priority"><%= priority.name %></span>
+        <span class="level" style="background-color:<%- priority.color %>"></span>
+        <span class="priority-priority"><%- priority.name %></span>
         <% if(editable){ %><span class="icon icon-arrow-bottom"></span><% }%>
         <span class="level-name">priority</span>
 

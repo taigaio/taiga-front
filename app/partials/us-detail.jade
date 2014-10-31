@@ -30,7 +30,7 @@ block content
 
                     p.block-desc-container(ng-show="us.is_blocked")
                         span.block-description-title Blocked
-                        span.block-description(tg-bind-html="us.blocked_note || 'This user story is blocked'")
+                        span.block-description(ng-bind="us.blocked_note || 'This user story is blocked'")
                     div.issue-nav
                         a.icon.icon-arrow-left(ng-show="previousUrl", tg-bo-href="previousUrl",
                                                title="previous user story")

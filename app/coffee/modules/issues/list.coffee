@@ -319,11 +319,11 @@ paginatorTemplate = """
     <% } %>
 
     <% _.each(pages, function(item) { %>
-    <li class="<%= item.classes %>">
+    <li class="<%- item.classes %>">
         <% if (item.type === "page") { %>
-        <a href="" data-pagenum="<%= item.num %>"><%= item.num %></a>
+        <a href="" data-pagenum="<%- item.num %>"><%- item.num %></a>
         <% } else if (item.type === "page-active") { %>
-        <span class="active"><%= item.num %></span>
+        <span class="active"><%- item.num %></span>
         <% } else { %>
         <span>...</span>
         <% } %>
@@ -469,8 +469,8 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading) ->
     <% _.each(filters, function(f) { %>
         <% if (!f.selected) { %>
         <a class="single-filter"
-            data-type="<%= f.type %>"
-            data-id="<%= f.id %>">
+            data-type="<%- f.type %>"
+            data-id="<%- f.id %>">
             <span class="name" <% if (f.color){ %>style="border-left: 3px solid <%- f.color %>;"<% } %>>
                 <%- f.name %>
             </span>
@@ -491,9 +491,9 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading) ->
     templateSelected = _.template("""
     <% _.each(filters, function(f) { %>
     <a class="single-filter selected"
-       data-type="<%= f.type %>"
-       data-id="<%= f.id %>">
-        <span class="name" <% if (f.color){ %>style="border-left: 3px solid <%= f.color %>;"<% } %>>
+       data-type="<%- f.type %>"
+       data-id="<%- f.id %>">
+        <span class="name" <% if (f.color){ %>style="border-left: 3px solid <%- f.color %>;"<% } %>>
             <%- f.name %>
         </span>
         <span class="icon icon-delete"></span>
@@ -786,7 +786,7 @@ module.directive("tgIssueStatusInlineEdition", ["$tgRepo", IssueStatusInlineEdit
 
 IssueAssignedToInlineEditionDirective = ($repo, $rootscope, popoverService) ->
     template = _.template("""
-    <img src="<%= imgurl %>" alt="<%- name %>"/>
+    <img src="<%- imgurl %>" alt="<%- name %>"/>
     <figcaption><%- name %></figcaption>
     """)
 

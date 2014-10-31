@@ -157,7 +157,7 @@ PublicRegisterMessageDirective = ($config, $navUrls) ->
     template = _.template("""
     <p class="login-text">
         <span>Not registered yet?</span>
-        <a href="<%= url %>" tg-nav="register" title="Register"> create your free account here</a>
+        <a href="<%- url %>" tg-nav="register" title="Register"> create your free account here</a>
     </p>""")
 
     templateFn = ->

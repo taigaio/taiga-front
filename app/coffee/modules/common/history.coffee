@@ -120,11 +120,11 @@ HistoryDirective = ($log, $loading) ->
         <div class="activity-fromto">
             <% _.each(diff, function(change) { %>
                 <p>
-                    <strong><%= change.name %> from </strong> <br />
+                    <strong><%- change.name %> from </strong> <br />
                     <span><%- change.from %></span>
                 </p>
                 <p>
-                    <strong><%= change.name %> to </strong> <br />
+                    <strong><%- change.name %> to </strong> <br />
                     <span><%- change.to %></span>
                 </p>
             <% }) %>
