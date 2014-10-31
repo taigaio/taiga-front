@@ -398,7 +398,7 @@ TagLineDirective = ($rootScope, $repo, $rs, $confirm) ->
         $scope.$watch $attrs.ngModel, (model) ->
             return if not model
 
-            if model.tags.length
+            if model.tags?.length
                 hideAddTagButtonText()
             else
                 showAddTagButtonText()
