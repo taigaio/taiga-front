@@ -390,7 +390,7 @@ usersTemplate = _.template("""
 <div class="watcher-single active">
     <div class="watcher-avatar">
         <a href="" title="Assigned to" class="avatar">
-            <img src="<%= selected.photo %>"/>
+            <img src="<%- selected.photo %>"/>
         </a>
     </div>
     <a href="" title="<%- selected.full_name_display %>" class="watcher-name">
@@ -404,7 +404,7 @@ usersTemplate = _.template("""
 <div class="watcher-single" data-user-id="<%- user.id %>">
     <div class="watcher-avatar">
         <a href="#" title="Assigned to" class="avatar">
-            <img src="<%= user.photo %>" />
+            <img src="<%- user.photo %>" />
         </a>
     </div>
     <a href="" title="<%- user.full_name_display %>" class="watcher-name">

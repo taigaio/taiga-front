@@ -2,7 +2,7 @@ div.summary.large-summary
     div
         div.summary-progress-bar(tg-progress-bar="stats.completedPercentage")
         div.data
-            span.number(tg-bind-html="stats.completedPercentage + '%'")
+            span.number(ng-bind="stats.completedPercentage + '%'")
 
     ul
         li

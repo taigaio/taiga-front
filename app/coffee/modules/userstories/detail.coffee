@@ -177,8 +177,8 @@ UsStatusDisplayDirective = ->
             Open
         <% } %>
     </span>
-    <span class="us-detail-status" style="color:<%= status.color %>">
-        <%= status.name %>
+    <span class="us-detail-status" style="color:<%- status.color %>">
+        <%- status.name %>
     </span>
     """) # TODO: i18n
 
@@ -441,8 +441,8 @@ UsStatusButtonDirective = ($rootScope, $repo, $confirm, $loading) ->
 
     template = _.template("""
     <div class="status-data <% if(editable){ %>clickable<% }%>">
-        <span class="level" style="background-color:<%= status.color %>"></span>
-        <span class="status-status"><%= status.name %></span>
+        <span class="level" style="background-color:<%- status.color %>"></span>
+        <span class="status-status"><%- status.name %></span>
         <% if(editable){ %><span class="icon icon-arrow-bottom"></span><% }%>
         <span class="level-name">status</span>
 

@@ -316,7 +316,7 @@ TaskboardUserDirective = ($log) ->
     template = _.template("""
     <figure class="avatar">
         <a href="#" title="Assign task" <% if (!clickable) {%>class="not-clickable"<% } %>>
-            <img src="<%= imgurl %>" alt="<%- name %>">
+            <img src="<%- imgurl %>" alt="<%- name %>">
         </a>
     </figure>
     """) # TODO: i18n

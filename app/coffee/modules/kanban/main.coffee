@@ -392,7 +392,7 @@ KanbanUserDirective = ($log) ->
     template = _.template("""
     <figure class="avatar">
         <a href="#" title="Assign User Story" <% if (!clickable) {%>class="not-clickable"<% } %>>
-            <img src="<%= imgurl %>" alt="<%- name %>" class="avatar">
+            <img src="<%- imgurl %>" alt="<%- name %>" class="avatar">
         </a>
     </figure>
     """) # TODO: i18n

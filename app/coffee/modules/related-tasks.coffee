@@ -310,7 +310,7 @@ module.directive("tgRelatedTasks", ["$tgRepo", "$tgResources", "$rootScope", Rel
 
 RelatedTaskAssignedToInlineEditionDirective = ($repo, $rootscope, popoverService) ->
     template = _.template("""
-    <img src="<%= imgurl %>" alt="<%- name %>"/>
+    <img src="<%- imgurl %>" alt="<%- name %>"/>
     <figcaption><%- name %></figcaption>
     """)
 

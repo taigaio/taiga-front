@@ -115,11 +115,11 @@ paginatorTemplate = """
     <% } %>
 
     <% _.each(pages, function(item) { %>
-    <li class="<%= item.classes %>">
+    <li class="<%- item.classes %>">
         <% if (item.type === "page") { %>
-        <a href="" data-pagenum="<%= item.num %>"><%= item.num %></a>
+        <a href="" data-pagenum="<%- item.num %>"><%- item.num %></a>
         <% } else if (item.type === "page-active") { %>
-        <span class="active"><%= item.num %></span>
+        <span class="active"><%- item.num %></span>
         <% } else { %>
         <span>...</span>
         <% } %>
@@ -233,7 +233,7 @@ module.directive("tgMemberships", MembershipsDirective)
 MembershipsRowAvatarDirective = ($log) ->
     template = _.template("""
     <figure class="avatar">
-        <img src="<%= imgurl %>" alt="<%- full_name %>">
+        <img src="<%- imgurl %>" alt="<%- full_name %>">
         <figcaption>
             <span class="name"><%- full_name %></span>
             <span class="email"><%- email %></span>

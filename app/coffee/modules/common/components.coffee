@@ -121,7 +121,7 @@ CreatedByDisplayDirective = ->
 
     template = _.template("""
     <div class="user-avatar">
-        <img src="<%= owner.photo %>" alt="<%- owner.full_name_display %>" />
+        <img src="<%- owner.photo %>" alt="<%- owner.full_name_display %>" />
     </div>
 
     <div class="created-by">
@@ -178,7 +178,7 @@ WatchersDirective = ($rootscope, $confirm, $repo) ->
     <div class="watcher-single">
         <div class="watcher-avatar">
             <span class="avatar" href="" title="<%- watcher.full_name_display %>">
-                <img src="<%= watcher.photo %>" alt="<%- watcher.full_name_display %>">
+                <img src="<%- watcher.photo %>" alt="<%- watcher.full_name_display %>">
             </span>
         </div>
         <div class="watcher-name">
@@ -186,7 +186,7 @@ WatchersDirective = ($rootscope, $confirm, $repo) ->
 
             <% if(isEditable){ %>
             <a class="icon icon-delete"
-               data-watcher-id="<%= watcher.id %>" href="" title="delete-watcher">
+               data-watcher-id="<%- watcher.id %>" href="" title="delete-watcher">
             </a>
             <% }; %>
         </div>
@@ -281,7 +281,7 @@ AssignedToDirective = ($rootscope, $confirm, $repo, $loading) ->
     template = _.template("""
     <% if (assignedTo) { %>
     <div class="user-avatar">
-        <img src="<%= assignedTo.photo %>" alt="<%- assignedTo.full_name_display %>" />
+        <img src="<%- assignedTo.photo %>" alt="<%- assignedTo.full_name_display %>" />
     </div>
     <% } %>
 
@@ -681,7 +681,7 @@ ListItemUsStatusDirective = ->
 ListItemAssignedtoDirective = ->
     template = _.template("""
     <figure class="avatar">
-        <img src="<%= imgurl %>" alt="<%- name %>"/>
+        <img src="<%- imgurl %>" alt="<%- name %>"/>
         <figcaption><%- name %></figcaption>
     </figure>
     """)

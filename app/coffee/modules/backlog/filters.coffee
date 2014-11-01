@@ -40,18 +40,18 @@ BacklogFiltersDirective = ($log, $location) ->
     <% _.each(filters, function(f) { %>
         <% if (f.selected) { %>
         <a class="single-filter active"
-            data-type="<%= f.type %>"
-            data-id="<%= f.id %>">
-            <span class="name" <% if (f.color){ %>style="border-left: 3px solid <%= f.color %>;"<% } %>>
+            data-type="<%- f.type %>"
+            data-id="<%- f.id %>">
+            <span class="name" <% if (f.color){ %>style="border-left: 3px solid <%- f.color %>;"<% } %>>
                 <%- f.name %>
             </span>
             <span class="number"><%- f.count %></span>
         </a>
         <% } else { %>
         <a class="single-filter"
-            data-type="<%= f.type %>"
-            data-id="<%= f.id %>">
-            <span class="name" <% if (f.color){ %>style="border-left: 3px solid <%= f.color %>;"<% } %>>
+            data-type="<%- f.type %>"
+            data-id="<%- f.id %>">
+            <span class="name" <% if (f.color){ %>style="border-left: 3px solid <%- f.color %>;"<% } %>>
                 <%- f.name %>
             </span>
             <span class="number"><%- f.count %></span>
@@ -63,9 +63,9 @@ BacklogFiltersDirective = ($log, $location) ->
     templateSelected = _.template("""
     <% _.each(filters, function(f) { %>
     <a class="single-filter selected"
-       data-type="<%= f.type %>"
-       data-id="<%= f.id %>">
-        <span class="name" <% if (f.color){ %>style="border-left: 3px solid <%= f.color %>;"<% } %>>
+       data-type="<%- f.type %>"
+       data-id="<%- f.id %>">
+        <span class="name" <% if (f.color){ %>style="border-left: 3px solid <%- f.color %>;"<% } %>>
             <%- f.name %></span>
         <span class="icon icon-delete"></span>
     </a>

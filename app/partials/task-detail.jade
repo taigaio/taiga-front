@@ -29,7 +29,7 @@ block content
                             span(tg-bo-bind="us.subject")
                     p.block-desc-container(ng-show="task.is_blocked")
                         span.block-description-title Blocked
-                        span.block-description(tg-bind-html="task.blocked_note || 'This task is blocked'")
+                        span.block-description(ng-bind="task.blocked_note || 'This task is blocked'")
                     div.issue-nav
                         a.icon.icon-arrow-left(ng-show="previousUrl", tg-bo-href="previousUrl",
                                                title="previous task")
