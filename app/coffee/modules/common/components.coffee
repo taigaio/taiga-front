@@ -553,7 +553,7 @@ EditableDescriptionDirective = ($window, $document, $rootscope, $repo, $confirm,
             <span class="edit icon icon-edit" href="" title="Edit" />
         </div>
         <div class="edit-description">
-            <textarea placeholder="Write a description of your user story"
+            <textarea placeholder="Empty space is so boring... go on be descriptive... A rose by any other name would smell as sweet..."
                       ng-model="item.description"
                       tg-markitup="tg-markitup"></textarea>
             <span class="save-container">
@@ -563,12 +563,14 @@ EditableDescriptionDirective = ($window, $document, $rootscope, $repo, $confirm,
     """ # TODO: i18n
     noDescriptionMegEditMode = """
     <p class="no-description editable">
-        No description yet, why don't you add a good one clicking here?
+        Empty space is so boring...
+        go on be descriptive...
+        A rose by any other name would smell as sweet...
     </p>
     """ # TODO: i18n
     noDescriptionMegReadMode = """
     <p class="no-description">
-        No description
+        No description yet.
     </p>
     """ # TODO: i18n
 
