@@ -281,8 +281,8 @@ TagLineDirective = ($rootScope, $repo, $rs, $confirm) ->
         showSaveButton = -> $el.find(".save").removeClass("hidden")
         hideSaveButton = -> $el.find(".save").addClass("hidden")
 
-        showInput = -> $el.find("input").removeClass("hidden")
-        hideInput = -> $el.find("input").addClass("hidden")
+        showInput = -> $el.find("input").removeClass("hidden").focus()
+        hideInput = -> $el.find("input").addClass("hidden").blur()
         resetInput = ->
             $el.find("input").val("")
             $el.find("input").autocomplete("close")
