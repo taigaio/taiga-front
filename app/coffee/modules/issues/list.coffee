@@ -508,14 +508,14 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading) ->
 
         showFilters = (title, type) ->
             $el.find(".filters-cats").hide()
-            $el.find(".filter-list").addClass("hidden")
+            $el.find(".filter-list").removeClass("hidden")
             $el.find("h2.breadcrumb").removeClass("hidden")
             $el.find("h2 a.subfilter span.title").html(title)
             $el.find("h2 a.subfilter span.title").prop("data-type", type)
 
         showCategories = ->
             $el.find(".filters-cats").show()
-            $el.find(".filter-list").removeClass("hidden")
+            $el.find(".filter-list").addClass("hidden")
             $el.find("h2.breadcrumb").addClass("hidden")
 
         initializeSelectedFilters = (filters) ->
@@ -552,7 +552,9 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading) ->
                 return null
 
             filters = $scope.filters[type]
-            filter = _.find(filters, {id: taiga.toString(id)})
+            filterId = if type == 'tags' then taiga.toString(id) else id
+            filter = _.find(filters, {id: filterId})
+
             filter.selected = (not filter.selected)
 
             # Convert id to null as string for properly
