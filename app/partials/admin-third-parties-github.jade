@@ -1,0 +1,88 @@
+block head
+    title Taiga  Your agile, free, and open source project management tool
+
+block content
+    div.wrapper.roles(ng-controller="GithubController as ctrl",
+                            ng-init="section='admin'")
+        sidebar.menu-secondary.sidebar(tg-admin-navigation="third-parties")
+            include views/modules/admin-menu
+        sidebar.menu-tertiary.sidebar(tg-admin-navigation="third-parties-github")
+            include views/modules/admin-submenu-third-parties
+
+        section.main.admin-common.admin-third-parties
+            include views/components/mainTitle
+
+            form
+                fieldset
+                    label(for="secret-key") Secret key
+                    input(type="text", name="secret-key", placeholder="Secret key", id="secret-key")
+
+                fieldset
+                    .select-input-text(tg-select-input-text)
+                        div
+                            label(for="payload-url") Payload URL
+                            .field-with-option
+                                input(type="text", name="payload-url", readonly="readonly", placeholder="Payload URL", id="payload-url")
+                                .option-wrapper.select-input-content
+                                    .icon.icon-copy
+                            .help-copy Copy to clipboard: Ctrl+C
+
+                input(type="submit", class="hidden")
+                a.button.button-green(href="") Save
+
+
+            .help
+                h2 How to use it
+
+                h3 Configure Taiga
+                ol
+                   li Fill
+                       span  Secret key.
+                   li Copy the
+                       span  Payload URL field.
+
+                h3 Configure Github
+                ol
+                    li Go to your github repository.
+                    li Click on
+                        span  Settings
+                        |  >
+                        span  Webhooks
+                        |  >
+                        span  Services
+                        |  >
+                        span  Add webhook
+
+                    li On that screen set the payload url with the payload url of this screen.
+                    li Secret must be filled with the same content as the secret field of this screen.
+                    li Content type must be
+                        span  application/json.
+                    li You must check
+                        span  "Send me everything".
+
+                .img
+                    .alt-image Github Webhooke page
+                    img(src="/images/github-help.png", alt="webhook")
+
+                h3 Commit message
+
+                p The commits message must have this command.
+
+                code
+                    | TG-REF #STATUS
+
+                ul.code-info
+                    li
+                        span REF
+                        |  US/Issue/Task reference
+                    li
+                        span STATUS
+                        |  Status slug, you can get the status slug in
+                        a(href="", tg-nav="project-admin-project-values-us-status:project=project.slug")  US STATUSES.
+
+                h3 Example
+
+                code
+                    | TG-123 #closed
+
+                p In this example, 123 is an issue and with this command, the issue will change its status to closed.
