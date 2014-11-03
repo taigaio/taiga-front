@@ -349,7 +349,8 @@ AssignedToDirective = ($rootscope, $confirm, $repo, $loading) ->
                 $model.$modelValue.assigned_to  = null
                 save($model.$modelValue)
 
-        $scope.$on "assigned-to:added", (ctx, userId) ->
+        $scope.$on "assigned-to:added", (ctx, userId, item) ->
+            return if item.id != $model.$modelValue.id
             $model.$modelValue.assigned_to = userId
             save($model.$modelValue)
 
