@@ -120,8 +120,9 @@
         width: 150px;
     }
     p {
-        @extend %large;
+        @extend %medium;
         color: $fresh-taiga;
         padding-top: 20px;
+        text-align: center;
     }
 }
