@@ -104,7 +104,7 @@ LbTagLineDirective = ($rs) ->
 
     template = """
     <div class="tags-container"></div>
-    <input type="text" placeholder="Write tag..." class="tag-input" />
+    <input type="text" placeholder="I'm it! Tag me..." class="tag-input" />
     <a href="" title="Save" class="save icon icon-floppy hidden"></a>
     """ # TODO: i18n
 
@@ -238,7 +238,7 @@ TagLineDirective = ($rootScope, $repo, $rs, $confirm) ->
         <span class="icon icon-plus"></span>
         <span class="add-tag-text">Add tag</span>
     </a>
-    <input type="text" placeholder="Write tag..." class="tag-input hidden" />
+    <input type="text" placeholder="I'm it! Tag me..." class="tag-input hidden" />
     <a href="" title="Save" class="save icon icon-floppy hidden"></a>
     """ # TODO: i18n
 
