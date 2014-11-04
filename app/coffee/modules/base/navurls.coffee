@@ -44,10 +44,10 @@ class NavigationUrlsService extends taiga.Service
         return url.replace(/(:\w+)/g, replacer)
 
     resolve: (name, ctx) ->
-        if ctx
-            return @.formatUrl(@.urls[name], ctx)
-        return @.urls[name]
-
+        url = @.urls[name]
+        return "" if not url
+        return @.formatUrl(url, ctx) if ctx
+        return url
 
 module.service("$tgNavUrls", NavigationUrlsService)
 
