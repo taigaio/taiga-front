@@ -73,6 +73,7 @@ paths.coffee = [
     paths.app + "coffee/modules/base/*.coffee",
     paths.app + "coffee/modules/resources/*.coffee",
     paths.app + "coffee/modules/user-settings/*.coffee"
+    paths.app + "coffee/modules/integrations/*.coffee"
     paths.app + "plugins/**/*.coffee"
 ]
 
