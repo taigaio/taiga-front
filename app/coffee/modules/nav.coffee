@@ -357,7 +357,6 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location, $
         $el.on "click", ".logo", (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
-            console.log target
             $rootscope.$broadcast("nav:projects-list:open")
 
         $el.on "click", ".user-settings .avatar", (event) ->

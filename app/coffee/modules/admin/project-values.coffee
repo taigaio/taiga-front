@@ -143,8 +143,6 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame) ->
         goToBottomList = (focus = false) =>
             table = $el.find(".table-main")
 
-            console.log(table.offset().top + table.height())
-
             $(document.body).scrollTop(table.offset().top + table.height())
 
             if focus
