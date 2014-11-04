@@ -39,7 +39,7 @@ deleteElement = (el) ->
     el.off()
     el.remove()
 
-BacklogSortableDirective = ($repo, $rs, $rootscope) ->
+BacklogSortableDirective = ($repo, $rs, $rootscope, $tgConfirm) ->
     # Notes about jquery bug:
     # http://stackoverflow.com/questions/5791886/jquery-draggable-shows-
     # helper-in-wrong-place-when-scrolled-down-page
@@ -49,6 +49,9 @@ BacklogSortableDirective = ($repo, $rs, $rootscope) ->
             # If the user has not enough permissions we don't enable the sortable
             if not (project.my_permissions.indexOf("modify_us") > -1)
                 return
+
+            filterError = ->
+                $tgConfirm.notify("error", "You can't drop on backlog when filters are open") #TODO: i18n
 
             $el.sortable({
                 connectWith: ".sprint-table"
@@ -67,9 +70,19 @@ BacklogSortableDirective = ($repo, $rs, $rootscope) ->
                 # position for revert).
                 revert: false
                 cursorAt: {right: 15}
+                stop: () ->
+                    if $el.hasClass("active-filters")
+                        $el.sortable("cancel")
+                        filterError()
             })
 
             $el.on "multiplesortreceive", (event, ui) ->
+                if $el.hasClass("active-filters")
+                    ui.source.sortable("cancel")
+                    filterError()
+
+                    return
+
                 itemUs = ui.item.scope().us
                 itemIndex = ui.item.index()
 
@@ -179,6 +192,7 @@ module.directive("tgBacklogSortable", [
     "$tgRepo",
     "$tgResources",
     "$rootScope",
+    "$tgConfirm",
     BacklogSortableDirective
 ])
 

@@ -94,7 +94,8 @@
 
                 $(this.currentContainer.element).trigger('multiplesortreceive', {
                     'item': current,
-                    'items': elms
+                    'items': elms,
+                    'source': this.element
                 });
             } else if (current.hasClass(multipleSortableClass)) {
                 // sort in the same list
