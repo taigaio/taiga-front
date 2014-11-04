@@ -484,7 +484,8 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading) ->
         <% } %>
     <% }) %>
     <span class="new">
-        <input class="hidden my-filter-name" type="text" placeholder="filter name" />
+        <input class="hidden my-filter-name" type="text"
+               placeholder="Type a descriptive filter name and press Enter" />
     </span>
     """)
 
@@ -661,7 +662,7 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading) ->
             renderFilters($scope.filters["myFilters"])
             showFilters("My filters", "myFilters")
             $el.find('.save-filters').hide()
-            $el.find('.my-filter-name').show()
+            $el.find('.my-filter-name').removeClass("hidden")
             $el.find('.my-filter-name').focus()
 
         $el.on "keyup", ".new .my-filter-name", (event) ->
@@ -681,7 +682,7 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading) ->
                         if currentfilterstype == "myFilters"
                             renderFilters($scope.filters.myFilters)
 
-                        $el.find('.my-filter-name').hide()
+                        $el.find('.my-filter-name').addClass("hidden")
                         $el.find('.save-filters').show()
 
                     loadPromise.then null, ->
@@ -695,7 +696,7 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading) ->
 
             else if event.keyCode == 27
                 $el.find('.my-filter-name').val('')
-                $el.find('.my-filter-name').hide()
+                $el.find('.my-filter-name').addClass("hidden")
                 $el.find('.save-filters').show()
 
     return {link:link}
