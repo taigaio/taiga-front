@@ -138,8 +138,9 @@ UserAvatarDirective = ($auth, $model, $rs, $confirm) ->
             $el.find("#avatar-field").click()
 
         $el.on "change", "#avatar-field", (event) ->
-            $el.find('.overlay').show()
-            $rs.userSettings.changeAvatar($scope.avatarAttachment).then(onSuccess, onError)
+            if $scope.avatarAttachment
+                $el.find('.overlay').show()
+                $rs.userSettings.changeAvatar($scope.avatarAttachment).then(onSuccess, onError)
 
         # Use gravatar photo
         $el.on "click", "a.use-gravatar", (event) ->
