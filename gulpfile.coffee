@@ -303,7 +303,7 @@ gulp.task "express", ->
         # Just send the index.html for other files to support HTML5Mode
         res.sendFile("index.html", {root: "#{__dirname}/dist/"})
 
-    app.listen(9011)
+    app.listen(9001)
 
 # Rerun the task when a file changes
 gulp.task "watch", ->
