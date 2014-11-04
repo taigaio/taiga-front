@@ -50,14 +50,13 @@ class ConfirmService extends taiga.Service
 
             el.off(".confirm-dialog")
 
-    ask: (title, subtitle, message=null, lightboxSelector=".lightbox-confirm-delete") ->
+    ask: (title, subtitle, message, lightboxSelector=".lightbox-generic-ask") ->
         el = angular.element(lightboxSelector)
 
         # Render content
         el.find("h2.title").html(title)
         el.find("span.subtitle").html(subtitle)
-        if message
-            el.find("span.delete-question").html(message)
+        el.find("span.message").html(message)
 
         defered = @q.defer()
 
@@ -80,13 +79,27 @@ class ConfirmService extends taiga.Service
 
         return defered.promise
 
-    askChoice: (title, subtitle, choices, lightboxSelector=".lightbox-ask-choice") ->
+    askOnDelete: (title, message) ->
+        return @.ask(title, "Are you sure you want to delete?", message) #TODO: i18n
+
+    askChoice: (title, subtitle, choices, replacement, warning, lightboxSelector=".lightbox-ask-choice") ->
         el = angular.element(lightboxSelector)
 
         # Render content
-        el.find("h2.title").html(title)
-        el.find("span.subtitle").html(subtitle)
-        choicesField = el.find("select.choices")
+        el.find(".title").html(title)
+        el.find(".subtitle").html(subtitle)
+
+        if replacement
+            el.find(".replacement").html(replacement)
+        else
+            el.find(".replacement").remove()
+
+        if warning
+            el.find(".warning").html(warning)
+        else
+            el.find(".warning").remove()
+
+        choicesField = el.find(".choices")
         choicesField.html('')
         _.each choices, (value, key) ->
             choicesField.append(angular.element("<option value='#{key}'>#{value}</option>"))
@@ -166,9 +179,9 @@ class ConfirmService extends taiga.Service
         el = angular.element(selector)
 
         if title
-           el.find("h4").html(title)
+            el.find("h4").html(title)
         else
-           el.find("h4").html(NOTIFICATION_MSG[type].title)
+            el.find("h4").html(NOTIFICATION_MSG[type].title)
 
         if message
             el.find("p").html(message)

@@ -61,6 +61,17 @@
     .status {
         position: relative;
         text-align: left;
+        &:hover {
+            .icon {
+                @include transition (opacity .2s ease-in);
+                opacity: 1;
+            }
+        }
+        .not-clickable {
+            &:hover {
+                color: $grayer;
+            }
+        }
         .popover {
             a {
                 text-align: left;
@@ -73,6 +84,7 @@
         .icon {
             color: $gray-light;
             margin-left: .2rem;
+            opacity: 0;
         }
     }
     .pop-status {
@@ -160,8 +172,10 @@
         text-align: left;
     }
     .task-assignedto {
-        cursor: pointer;
         position: relative;
+        &.editable {
+            cursor: pointer;
+        }
         &:hover {
             .icon {
                 @include transition(opacity .3s linear);

@@ -32,7 +32,7 @@ tgMarkitupDirective = ($rootscope, $rs, $tr) ->
     previewTemplate = _.template("""
     <div class="preview">
         <div class="actions">
-            <a href="#" title="Edit">Edit</a>
+            <a href="#" title="Edit" class="icon icon-edit edit"></a>
         </div>
         <div class="content wysiwyg">
             <%= data %>
@@ -96,18 +96,24 @@ tgMarkitupDirective = ($rootscope, $rs, $tr) ->
             onEnter:
                 keepDefault: false
                 replaceWith: (data) =>
-                    lines = data.textarea.value[0..(data.caretPosition - 1)].split("\n")
-                    lastLine = lines[lines.length - 1]
+                    lines = data.textarea.value.split("\n")
+                    cursorLine = data.textarea.value[0..(data.caretPosition - 1)].split("\n").length
+                    newLineContent = data.textarea.value[data.caretPosition..].split("\n")[0]
+                    lastLine = lines[cursorLine - 1]
 
                     # unordered list -
                     match = lastLine.match /^(\s*- ).*/
+
                     if match
                         emptyListItem = lastLine.match /^(\s*)\-\s$/
 
                         if emptyListItem
                             markdownCaretPositon = removeEmptyLine(data.textarea, lines.length - 1, data.caretPosition)
                         else
-                            return "\n#{match[1]}" if match
+                            breakLineAtBeginning = newLineContent.match /^(\s*)\-\s/
+
+                            if !breakLineAtBeginning
+                                return "\n#{match[1]}" if match
 
                     # unordered list *
                     match = lastLine.match /^(\s*\* ).*/
@@ -118,7 +124,10 @@ tgMarkitupDirective = ($rootscope, $rs, $tr) ->
                         if emptyListItem
                             markdownCaretPositon = removeEmptyLine(data.textarea, lines.length - 1, data.caretPosition)
                         else
-                            return "\n#{match[1]}" if match
+                            breakLineAtBeginning = newLineContent.match /^(\s*)\*\s/
+
+                            if !breakLineAtBeginning
+                                return "\n#{match[1]}" if match
 
                     # ordered list
                     match = lastLine.match /^(\s*)(\d+)\.\s/
@@ -129,7 +138,10 @@ tgMarkitupDirective = ($rootscope, $rs, $tr) ->
                         if emptyListItem
                             markdownCaretPositon = removeEmptyLine(data.textarea, lines.length - 1, data.caretPosition)
                         else
-                            return "\n#{match[1] + (parseInt(match[2], 10) + 1)}. "
+                            breakLineAtBeginning = newLineContent.match /^(\s*)(\d+)\.\s/
+
+                            if !breakLineAtBeginning
+                                return "\n#{match[1] + (parseInt(match[2], 10) + 1)}. "
 
                     return "\n"
 

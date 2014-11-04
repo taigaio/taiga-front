@@ -39,6 +39,10 @@ sup {
     vertical-align: middle;
 }
 
+.icon-spinner {
+    @include animation (spin 1s linear infinite);
+}
+
 .clickable {
     cursor: pointer;
 }
@@ -50,18 +54,6 @@ sup {
 .draggable {
     cursor: move;
 }
-
-// Background
-%triangled-bg {
-    background: url('/images/bg.png') no-repeat center center;
-    background-size: cover;
-}
-
-%background-taiga {
-    background: url('/images/invitation_bg.jpg') no-repeat center center;
-    background-size: cover;
-}
-
 
 //Datepicker
 .pika-single {

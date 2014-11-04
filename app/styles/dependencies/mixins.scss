@@ -5,18 +5,14 @@
     text-overflow: ellipsis;
 }
 
-@mixin background-opacity($color: $white, $opacity: .3) {
-    background: rgba($color, $opacity);
-}
-
 // Table Flex - http://devbryce.com/site/flexbox/
 @mixin table-flex($align-content: stretch, $align-items: stretch, $display: flex, $flex-direction: row, $flex-wrap: wrap, $justify-content: flex-start) {
     @include display($display);
-    @include align-content($align-content);
-    @include align-items($align-items);
-    @include flex-direction($flex-direction);
-    @include flex-wrap($flex-wrap);
-    @include justify-content($justify-content);
+    @include align-content($align-content); //flex-start | flex-end | center | space-between | space-around | stretch
+    @include align-items($align-items); //flex-start | flex-end | center | baseline | stretch
+    @include flex-direction($flex-direction); //row | row-reverse | column | column-reverse
+    @include flex-wrap($flex-wrap); //nowrap | wrap | wrap-reverse
+    @include justify-content($justify-content); //flex-start | flex-end | center | space-between | space-around
 }
 
 @mixin table-flex-child($flex-grow: 1, $flex-basis: 300px, $flex-shrink: 0, $width:'') {
@@ -53,4 +49,46 @@
 
 @mixin background($red: 255, $green: 255, $blue: 255, $opacity: 1) {
     background: rgba($red, $green, $blue, $opacity);
+}
+
+@mixin popover($width, $top: '', $left: '', $bottom: '', $right: '', $arrow-width: 0, $arrow-top: '', $arrow-left: '', $arrow-bottom: '') {
+    @extend %text;
+    background: $blackish;
+    bottom: #{$bottom};
+    color: $white;
+    display: none;
+    left: #{$left};
+    list-style-type: none;
+    margin: 0;
+    padding: 10px;
+    position: absolute;
+    right: #{$right};
+    top: #{$top};
+    width: $width;
+    z-index: 99;
+    a {
+        @extend %small;
+        border-bottom: 1px solid $grayer;
+        color: $white;
+        display: block;
+        padding: 10px 2px;
+        &:last-child {
+            border: 0;
+        }
+        &:hover {
+            color: $fresh-taiga;
+            @include transition (color .3s linear);
+        }
+    }
+    &:after {
+        @include transform(rotate(45deg));
+        background: $blackish;
+        bottom: #{$arrow-bottom};
+        content: '';
+        height: 15px;
+        left: #{$arrow-left};
+        position: absolute;
+        top: #{$arrow-top};
+        width: #{$arrow-width};
+    }
 }

@@ -1,0 +1,24 @@
+.admin-common {
+    header {
+        h1 {
+            margin-bottom: 0;
+        }
+    }
+    .admin-subtitle {
+        color: $gray-light;
+        margin: 0;
+    }
+    .total {
+        @extend %large;
+        @extend %title;
+        background-color: $whitish;
+        color: $grayer;
+        padding: 1rem;
+        &:hover {
+            .edit-value {
+                @include transition(opacity .3s linear);
+                opacity: 1;
+            }
+        }
+    }
+}

@@ -1,46 +1,5 @@
-.lightbox,
-%lightbox {
-    @include background-opacity($white, .95);
-    bottom: 0;
-    display: none;
-    left: 0;
-    opacity: 0;
-    position: fixed;
-    right: 0;
-    top: 0;
-    z-index: 99910;
-    .close {
-        @extend %large;
-        position: absolute;
-        right: 2rem;
-        top: 2rem;
-    }
-    &.open {
-        @include table-flex(center, center, flex, row, wrap, center);
-        @include transition (opacity .3s ease);
-        opacity: 1;
-    }
-    &.close {
-        @include transition (opacity .3s ease);
-        opacity: 0;
-    }
-    .title {
-        text-align: center;
-    }
-    input,
-    textarea,
-    select {
-        margin-bottom: 1rem;
-    }
-    textarea {
-        resize: vertical;
-    }
-    .button-green,
-    .button-gray {
-        display: block;
-        padding: 12px;
-        text-align: center;
-    }
+.lightbox {
+    @extend %lightbox;
 }
 
 .markdown-preview {
@@ -191,16 +150,23 @@
 .lightbox-add-member {
     .add-member-wrapper {
         @include table-flex();
-    }
-    fieldset {
-        position: relative;
-        &:first-child {
-            @include table-flex-child(3, 400px);
-        }
+        margin-bottom: .5rem;
         &:last-child {
-            @include table-flex-child(1, 200px);
-            margin-left: .5rem;
+            margin-bottom: 0;
         }
+        fieldset {
+            position: relative;
+            &:first-child {
+                @include table-flex-child(3, 400px);
+            }
+            &:last-child {
+                @include table-flex-child(1, 200px);
+                margin-left: .5rem;
+            }
+        }
+    }
+    .extra-text {
+        margin-top: 1rem;
     }
     input[type=email],
     select {
@@ -283,70 +249,12 @@
     }
 }
 
-.lightbox-confirm-delete {
+.lightbox-generic-ask {
     form {
         @include table-flex-child(0, 420px, 0, 420px);
     }
-    .delete-question,
-    .subtitle {
-        display: block;
-        line-height: 2rem;
-        text-align: center;
-    }
-    .subtitle {
-        @extend %large;
-        @extend %title;
-    }
-    .delete-options {
-        @include table-flex();
-        a {
-            @include table-flex-child(1, 0, 0);
-            padding: 8px 0;
-            text-align: center;
-            &:first-child {
-                margin-right: .5rem;
-            }
-        }
-    }
-}
-
-.lightbox-ask-choice {
-    form {
-        @include table-flex-child(0, 420px, 0, 420px);
-    }
-    .delete-question,
-    .subtitle {
-        display: block;
-        line-height: 2rem;
-        text-align: center;
-    }
-    .subtitle {
-        @extend %large;
-        @extend %title;
-    }
-    .replacement {
-        display: block;
-        text-align: center;
-    }
-    .delete-options {
-        @include table-flex();
-        a {
-            @include table-flex-child(1, 0, 0);
-            padding: 8px 0;
-            text-align: center;
-            &:first-child {
-                margin-right: .5rem;
-            }
-        }
-    }
-}
-
-.lightbox-confirm-use-gravatar {
-    form {
-        @include table-flex-child(0, 420px, 0, 420px);
-    }
-    .delete-question,
-    .subtitle {
+    .subtitle,
+    .message {
         display: block;
         line-height: 2rem;
         text-align: center;
@@ -368,11 +276,45 @@
     }
 }
 
+.lightbox-ask-choice {
+    text-align: center;
+    form {
+        @include table-flex-child(0, 420px, 0);
+    }
+    .question,
+    .subtitle {
+        display: block;
+        line-height: 1.5rem;
+        text-align: center;
+    }
+    .subtitle {
+        @extend %large;
+        @extend %title;
+    }
+    .replacement {
+        display: block;
+        span {
+            display: block;
+        }
+    }
+    .options {
+        @include table-flex();
+        a {
+            @include table-flex-child(1, 0, 0);
+            padding: 8px 0;
+            text-align: center;
+            &:first-child {
+                margin-right: .5rem;
+            }
+        }
+    }
+}
+
 .lightbox-delete-account {
     form {
         @include table-flex-child(0, 420px, 0, 420px);
     }
-    .delete-question,
+    .question,
     .subtitle {
         display: block;
         line-height: 2rem;
@@ -382,7 +324,7 @@
         @extend %large;
         @extend %title;
     }
-    .newsletter-delete {
+    .newsletter {
         margin-top: 1rem;
         text-align: center;
         input {
@@ -393,7 +335,7 @@
             }
         }
     }
-    .delete-options {
+    .options {
         @include table-flex();
         a {
             @include table-flex-child(1, 0, 0);
@@ -410,7 +352,7 @@
     form {
         @include table-flex-child(0, 420px, 0, 420px);
     }
-    .delete-question,
+    .question,
     .subtitle {
         display: block;
         line-height: 2rem;
@@ -420,7 +362,7 @@
         @extend %large;
         @extend %title;
     }
-    .delete-options {
+    .options {
         @include table-flex();
         a {
             @include table-flex-child(1, 0, 0);

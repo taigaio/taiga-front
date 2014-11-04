@@ -24,7 +24,7 @@ taiga = @.taiga
 sizeFormat = @.taiga.sizeFormat
 
 
-resourceProvider = ($rootScope, $urls, $model, $repo, $auth, $q) ->
+resourceProvider = ($rootScope, $config, $urls, $model, $repo, $auth, $q) ->
     service = {}
 
     service.list = (urlName, objectId, projectId) ->
@@ -36,6 +36,16 @@ resourceProvider = ($rootScope, $urls, $model, $repo, $auth, $q) ->
 
         if file is undefined
             defered.reject(null)
+            return defered.promise
+
+        maxFileSize = $config.get("maxUploadFileSize", null)
+        if maxFileSize and file.size > maxFileSize
+            response = {
+                status: 413,
+                data: _error_message: "'#{file.name}' (#{sizeFormat(file.size)}) is too heavy for our oompa
+                                       loompas, try it with a smaller than (#{sizeFormat(maxFileSize)})"
+            }
+            defered.reject(response)
             return defered.promise
 
         uploadProgress = (evt) =>
@@ -83,5 +93,5 @@ resourceProvider = ($rootScope, $urls, $model, $repo, $auth, $q) ->
 
 
 module = angular.module("taigaResources")
-module.factory("$tgAttachmentsResourcesProvider", ["$rootScope", "$tgUrls", "$tgModel", "$tgRepo", "$tgAuth",
-                                                   "$q", resourceProvider])
+module.factory("$tgAttachmentsResourcesProvider", ["$rootScope", "$tgConfig", "$tgUrls", "$tgModel", "$tgRepo",
+                                                   "$tgAuth", "$q", resourceProvider])

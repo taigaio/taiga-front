@@ -53,11 +53,7 @@ class ProjectsController extends taiga.Controller
             @scope.$emit("projects:loaded")
             @tgLoader.pageLoaded()
 
-        promise.then null, (xhr) =>
-            if xhr and xhr.status == 404
-                @location.path(@navUrls.resolve("not-found"))
-                @location.replace()
-            return @q.reject(xhr)
+        promise.then null, @.onInitialDataError.bind(@)
 
     loadInitialData: ->
         return @rs.projects.list().then (projects) =>
@@ -96,11 +92,7 @@ class ProjectController extends taiga.Controller
         promise.then () =>
             @appTitle.set(@scope.project.name)
 
-        promise.then null, (xhr) =>
-            if xhr and xhr.status == 404
-                @location.path(@navUrls.resolve("not-found"))
-                @location.replace()
-            return @q.reject(xhr)
+        promise.then null, @.onInitialDataError.bind(@)
 
     loadInitialData: ->
         # Resolve project slug

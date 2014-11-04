@@ -1,5 +1,5 @@
 .watchers {
-    margin-top: 2rem;
+    margin-top: 1rem;
     .watchers-header {
         border-bottom: 2px solid $gray-light;
         padding: .5rem;
@@ -13,7 +13,6 @@
             @extend %large;
             position: absolute;
             right: 1rem;
-            top: 4px;
         }
         &.no-watchers {
             border-bottom: 0;

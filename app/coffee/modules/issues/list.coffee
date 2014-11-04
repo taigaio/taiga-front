@@ -74,11 +74,7 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             tgLoader.pageLoaded()
 
         # On Error
-        promise.then null, (xhr) =>
-            if xhr and xhr.status == 404
-                @location.path(@navUrls.resolve("not-found"))
-                @location.replace()
-            return @q.reject(xhr)
+        promise.then null, @.onInitialDataError.bind(@)
 
         @scope.$on "issueform:new:success", =>
             @analytics.trackEvent("issue", "create", "create issue on issues list", 1)
@@ -323,11 +319,11 @@ paginatorTemplate = """
     <% } %>
 
     <% _.each(pages, function(item) { %>
-    <li class="<%= item.classes %>">
+    <li class="<%- item.classes %>">
         <% if (item.type === "page") { %>
-        <a href="" data-pagenum="<%= item.num %>"><%= item.num %></a>
+        <a href="" data-pagenum="<%- item.num %>"><%- item.num %></a>
         <% } else if (item.type === "page-active") { %>
-        <span class="active"><%= item.num %></span>
+        <span class="active"><%- item.num %></span>
         <% } else { %>
         <span>...</span>
         <% } %>
@@ -473,8 +469,8 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading) ->
     <% _.each(filters, function(f) { %>
         <% if (!f.selected) { %>
         <a class="single-filter"
-            data-type="<%= f.type %>"
-            data-id="<%= f.id %>">
+            data-type="<%- f.type %>"
+            data-id="<%- f.id %>">
             <span class="name" <% if (f.color){ %>style="border-left: 3px solid <%- f.color %>;"<% } %>>
                 <%- f.name %>
             </span>
@@ -495,9 +491,9 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading) ->
     templateSelected = _.template("""
     <% _.each(filters, function(f) { %>
     <a class="single-filter selected"
-       data-type="<%= f.type %>"
-       data-id="<%= f.id %>">
-        <span class="name" <% if (f.color){ %>style="border-left: 3px solid <%= f.color %>;"<% } %>>
+       data-type="<%- f.type %>"
+       data-id="<%- f.id %>">
+        <span class="name" <% if (f.color){ %>style="border-left: 3px solid <%- f.color %>;"<% } %>>
             <%- f.name %>
         </span>
         <span class="icon icon-delete"></span>
@@ -512,14 +508,14 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading) ->
 
         showFilters = (title, type) ->
             $el.find(".filters-cats").hide()
-            $el.find(".filter-list").show()
+            $el.find(".filter-list").removeClass("hidden")
             $el.find("h2.breadcrumb").removeClass("hidden")
             $el.find("h2 a.subfilter span.title").html(title)
             $el.find("h2 a.subfilter span.title").prop("data-type", type)
 
         showCategories = ->
             $el.find(".filters-cats").show()
-            $el.find(".filter-list").hide()
+            $el.find(".filter-list").addClass("hidden")
             $el.find("h2.breadcrumb").addClass("hidden")
 
         initializeSelectedFilters = (filters) ->
@@ -555,9 +551,10 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading) ->
                     initializeSelectedFilters($scope.filters)
                 return null
 
-
             filters = $scope.filters[type]
-            filter = _.find(filters, {id:id})
+            filterId = if type == 'tags' then taiga.toString(id) else id
+            filter = _.find(filters, {id: filterId})
+
             filter.selected = (not filter.selected)
 
             # Convert id to null as string for properly
@@ -642,9 +639,9 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading) ->
             target = angular.element(event.currentTarget)
             customFilterName = target.parent().data('id')
             title = "Delete custom filter" # TODO: i18n
-            subtitle = "the custom filter '#{customFilterName}'" # TODO: i18n
+            message = "the custom filter '#{customFilterName}'" # TODO: i18n
 
-            $confirm.ask(title, subtitle).then (finish) ->
+            $confirm.askOnDelete(title, message).then (finish) ->
                 promise = $ctrl.deleteMyFilter(customFilterName)
                 promise.then ->
                     promise = $ctrl.loadMyFilters()
@@ -791,7 +788,7 @@ module.directive("tgIssueStatusInlineEdition", ["$tgRepo", IssueStatusInlineEdit
 
 IssueAssignedToInlineEditionDirective = ($repo, $rootscope, popoverService) ->
     template = _.template("""
-    <img src="<%= imgurl %>" alt="<%- name %>"/>
+    <img src="<%- imgurl %>" alt="<%- name %>"/>
     <figcaption><%- name %></figcaption>
     """)
 

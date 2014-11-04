@@ -15,13 +15,17 @@
             @extend %large;
             @extend %title;
             opacity: .4;
-            &.active,
             &:hover {
                 @include transition (opacity .3s linear);
                 color: $blackish;
                 opacity: 1;
 
             }
+        }
+        .active {
+            @include transition (opacity .3s linear);
+            color: $blackish;
+            opacity: 1;
         }
         .icon {
             padding-right: .5rem;

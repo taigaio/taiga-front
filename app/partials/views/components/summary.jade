@@ -2,17 +2,17 @@ div.summary
     div.summary-progress-bar(tg-backlog-progress-bar="stats")
 
     div.data
-        span.number(tg-bind-html="stats.completedPercentage + '%'")
+        span.number(ng-bind="stats.completedPercentage + '%'")
     ul
         li
-            span.number(tg-bind-html="stats.total_points") --
+            span.number(ng-bind="stats.total_points") --
             span.description project<br />points
         li
-            span.number(tg-bind-html="stats.defined_points") --
+            span.number(ng-bind="stats.defined_points") --
             span.description defined<br />points
         li
-            span.number(tg-bind-html="stats.closed_points") --
+            span.number(ng-bind="stats.closed_points") --
             span.description closed<br />points
         li
-            span.number(tg-bind-html="stats.speed | number:0") --
+            span.number(ng-bind="stats.speed | number:0") --
             span.description points /<br />sprint

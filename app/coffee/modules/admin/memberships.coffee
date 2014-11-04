@@ -58,11 +58,7 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
         promise.then  =>
             @appTitle.set("Membership - " + @scope.project.name)
 
-        promise.then null, (xhr) =>
-            if xhr and xhr.status == 404
-                @location.path(@navUrls.resolve("not-found"))
-                @location.replace()
-            return @q.reject(xhr)
+        promise.then null, @.onInitialDataError.bind(@)
 
         @scope.$on "membersform:new:success", =>
             @.loadMembers()
@@ -119,11 +115,11 @@ paginatorTemplate = """
     <% } %>
 
     <% _.each(pages, function(item) { %>
-    <li class="<%= item.classes %>">
+    <li class="<%- item.classes %>">
         <% if (item.type === "page") { %>
-        <a href="" data-pagenum="<%= item.num %>"><%= item.num %></a>
+        <a href="" data-pagenum="<%- item.num %>"><%- item.num %></a>
         <% } else if (item.type === "page-active") { %>
-        <span class="active"><%= item.num %></span>
+        <span class="active"><%- item.num %></span>
         <% } else { %>
         <span>...</span>
         <% } %>
@@ -237,7 +233,7 @@ module.directive("tgMemberships", MembershipsDirective)
 MembershipsRowAvatarDirective = ($log) ->
     template = _.template("""
     <figure class="avatar">
-        <img src="<%= imgurl %>" alt="<%- full_name %>">
+        <img src="<%- imgurl %>" alt="<%- full_name %>">
         <figcaption>
             <span class="name"><%- full_name %></span>
             <span class="email"><%- email %></span>
@@ -432,18 +428,18 @@ MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm) ->
             event.preventDefault()
 
             title = "Delete member" # TODO: i18n
-            subtitle = if member.user then member.full_name else "the invitation to #{member.email}" # TODO: i18n
+            message = if member.user then member.full_name else "the invitation to #{member.email}" # TODO: i18n
 
-            $confirm.ask(title, subtitle).then (finish) ->
+            $confirm.askOnDelete(title, message).then (finish) ->
                 onSuccess = ->
                     finish()
                     $ctrl.loadMembers()
-                    $confirm.notify("success", null, "We've deleted #{subtitle}.") # TODO: i18n
+                    $confirm.notify("success", null, "We've deleted #{message}.") # TODO: i18n
 
                 onError = ->
                     finish(false)
                     # TODO: i18in
-                    $confirm.notify("error", null, "We have not been able to delete #{subtitle}.")
+                    $confirm.notify("error", null, "We have not been able to delete #{message}.")
 
                 $repo.remove(member).then(onSuccess, onError)
 

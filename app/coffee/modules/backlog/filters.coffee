@@ -40,18 +40,18 @@ BacklogFiltersDirective = ($log, $location) ->
     <% _.each(filters, function(f) { %>
         <% if (f.selected) { %>
         <a class="single-filter active"
-            data-type="<%= f.type %>"
-            data-id="<%= f.id %>">
-            <span class="name" <% if (f.color){ %>style="border-left: 3px solid <%= f.color %>;"<% } %>>
+            data-type="<%- f.type %>"
+            data-id="<%- f.id %>">
+            <span class="name" <% if (f.color){ %>style="border-left: 3px solid <%- f.color %>;"<% } %>>
                 <%- f.name %>
             </span>
             <span class="number"><%- f.count %></span>
         </a>
         <% } else { %>
         <a class="single-filter"
-            data-type="<%= f.type %>"
-            data-id="<%= f.id %>">
-            <span class="name" <% if (f.color){ %>style="border-left: 3px solid <%= f.color %>;"<% } %>>
+            data-type="<%- f.type %>"
+            data-id="<%- f.id %>">
+            <span class="name" <% if (f.color){ %>style="border-left: 3px solid <%- f.color %>;"<% } %>>
                 <%- f.name %>
             </span>
             <span class="number"><%- f.count %></span>
@@ -63,9 +63,9 @@ BacklogFiltersDirective = ($log, $location) ->
     templateSelected = _.template("""
     <% _.each(filters, function(f) { %>
     <a class="single-filter selected"
-       data-type="<%= f.type %>"
-       data-id="<%= f.id %>">
-        <span class="name" <% if (f.color){ %>style="border-left: 3px solid <%= f.color %>;"<% } %>>
+       data-type="<%- f.type %>"
+       data-id="<%- f.id %>">
+        <span class="name" <% if (f.color){ %>style="border-left: 3px solid <%- f.color %>;"<% } %>>
             <%- f.name %></span>
         <span class="icon icon-delete"></span>
     </a>
@@ -79,14 +79,14 @@ BacklogFiltersDirective = ($log, $location) ->
 
         showFilters = (title, type) ->
             $el.find(".filters-cats").hide()
-            $el.find(".filter-list").show()
+            $el.find(".filter-list").removeClass("hidden")
             $el.find("h2.breadcrumb").removeClass("hidden")
             $el.find("h2 a.subfilter span.title").html(title)
             $el.find("h2 a.subfilter span.title").prop("data-type", type)
 
         showCategories = ->
             $el.find(".filters-cats").show()
-            $el.find(".filter-list").hide()
+            $el.find(".filter-list").addClass("hidden")
             $el.find("h2.breadcrumb").addClass("hidden")
 
         initializeSelectedFilters = (filters) ->

@@ -1,7 +1,26 @@
-.us-assigned-to {
+.duty-assigned-to {
     @include table-flex();
     margin-top: 1rem;
     position: relative;
+    &:hover {
+        .assigned-to {
+            .icon-delete {
+                @include transition (opacity .3s linear);
+                opacity: 1;
+            }
+        }
+    }
+    &.loading {
+        width: 100%;
+        span {
+            font-size: 30px;
+            padding: 20px 0;
+            text-align: center;
+            width: 100%;
+            @include animation (loading .5s linear);
+            @include animation (spin 1s linear infinite);
+        }
+    }
     .user-avatar {
         @include table-flex-child(1, 0);
         img {
@@ -22,13 +41,21 @@
             @extend %large;
             color: $green-taiga;
             cursor: default;
+            line-height: 1.5rem;
             &.editable {
                 cursor: pointer;
             }
+            .icon {
+                vertical-align: top;
+            }
+        }
+        .assigned-name {
+            @include ellipsis(80%);
+            display: inline-block;
         }
         .icon-delete {
             color: $gray-light;
-            opacity: 1;
+            opacity: 0;
             position: absolute;
             right: 0;
             top: 0;

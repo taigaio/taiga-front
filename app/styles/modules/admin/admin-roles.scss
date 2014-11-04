@@ -1,14 +1,35 @@
 .admin-roles {
-    .total {
-        @extend %large;
+    .role-name {
+        @extend %xlarge;
         @extend %title;
-        background-color: $whitish;
         color: $grayer;
-        padding: .5rem 1rem;
-        span {
-            @extend %medium;
-            @extend %text;
-            padding-left: .5rem;
+    }
+    .edit-value {
+        @include transition(opacity .3s linear);
+        @extend %medium;
+        color: $gray-light;
+        cursor: pointer;
+        margin-left: .5rem;
+        opacity: 0;
+    }
+    .edit-role {
+        @include table-flex(stretch, left, center, row, wrap);
+        background-color: $whitish;
+        display: none;
+        margin-bottom: 1rem;
+        padding: .5rem;
+        input {
+            background-color: $white;
+            width: 50%;
+        }
+        .icon-floppy {
+            @include transition(color.3s linear);
+            color: $gray-light;
+            margin-left: .5rem;
+            &:hover {
+                @include transition(color.3s linear);
+                color: $green-taiga;
+            }
         }
     }
     .any-computable-role {

@@ -46,11 +46,12 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$log",
         "$appTitle",
         "$tgAnalytics",
-        "$tgNavUrls"
+        "$tgNavUrls",
+        "tgLoader"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
-                  @log, @appTitle, @analytics, @navUrls) ->
+                  @log, @appTitle, @analytics, @navUrls, tgLoader) ->
         @scope.issueRef = @params.issueref
         @scope.sectionName = "Issue Details"
         @.initializeEventHandlers()
@@ -60,14 +61,11 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         # On Success
         promise.then =>
             @appTitle.set(@scope.issue.subject + " - " + @scope.project.name)
+            @.initializeOnDeleteGoToUrl()
+            tgLoader.pageLoaded()
 
         # On Error
-        promise.then null, (xhr) =>
-            if xhr and xhr.status == 404
-                @location.path(@navUrls.resolve("not-found"))
-                @location.replace()
-            return @q.reject(xhr)
-
+        promise.then null, @.onInitialDataError.bind(@)
 
     initializeEventHandlers: ->
         @scope.$on "attachment:create", =>
@@ -84,6 +82,13 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             @analytics.trackEvent("issue", "promoteToUserstory", "promote issue to userstory", 1)
             @rootscope.$broadcast("history:reload")
             @.loadIssue()
+
+    initializeOnDeleteGoToUrl: ->
+       ctx = {project: @scope.project.slug}
+       if @scope.project.is_issues_activated
+           @scope.onDeleteGoToUrl = @navUrls.resolve("project-issues", ctx)
+       else
+           @scope.onDeleteGoToUrl = @navUrls.resolve("project", ctx)
 
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
@@ -134,250 +139,432 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
                       .then(=> @.loadUsersAndRoles())
                       .then(=> @.loadIssue())
 
-    block: ->
-        @rootscope.$broadcast("block", @scope.issue)
-
-    unblock: ->
-        @rootscope.$broadcast("unblock", @scope.issue)
-
-    delete: ->
-        # TODO: i18n
-        title = "Delete Issue"
-        subtitle = @scope.issue.subject
-
-        @confirm.ask(title, subtitle).then (finish) =>
-            promise = @.repo.remove(@scope.issue)
-            promise.then =>
-                finish()
-                @location.path(@navUrls.resolve("project-issues", {project: @scope.project.slug}))
-            promise.then null, =>
-                finish(false)
-                @confirm.notify("error")
-
 module.controller("IssueDetailController", IssueDetailController)
 
 
 #############################################################################
-## Issue Main Directive
+## Issue status display directive
 #############################################################################
 
-IssueDirective = ($tgrepo, $log, $location, $confirm, $navUrls, $loading) ->
-    linkSidebar = ($scope, $el, $attrs, $ctrl) ->
+IssueStatusDisplayDirective = ->
+    # Display if a Issue is open or closed and its issueboard status.
+    #
+    # Example:
+    #     tg-issue-status-display(ng-model="issue")
+    #
+    # Requirements:
+    #   - Issue object (ng-model)
+    #   - scope.statusById object
+
+    template = _.template("""
+    <span>
+        <% if (status.is_closed) { %>
+            Closed
+        <% } else { %>
+            Open
+        <% } %>
+    </span>
+    <span class="us-detail-status" style="color:<%- status.color %>">
+        <%- status.name %>
+    </span>
+    """) # TODO: i18n
 
     link = ($scope, $el, $attrs) ->
-        $ctrl = $el.controller()
-        linkSidebar($scope, $el, $attrs, $ctrl)
-
-        if $el.is("form")
-            form = $el.checksley()
-
-        $el.on "click", ".save-issue", (event) ->
-            if not form.validate()
-                return
-
-            onSuccess = ->
-                $loading.finish(target)
-                $confirm.notify("success")
-                ctx = {
-                    project: $scope.project.slug
-                    ref: $scope.issue.ref
-                }
-                $location.path($navUrls.resolve("project-issues-detail", ctx))
-
-            onError = ->
-                $loading.finish(target)
-                $confirm.notify("error")
-
-            target = angular.element(event.currentTarget)
-            $loading.start(target)
-            $tgrepo.save($scope.issue).then(onSuccess, onError)
-
-    return {link:link}
-
-module.directive("tgIssueDetail", ["$tgRepo", "$log", "$tgLocation", "$tgConfirm", "$tgNavUrls",
-                                   "$tgLoading", IssueDirective])
-
-
-#############################################################################
-## Issue status directive
-#############################################################################
-
-IssueStatusDirective = () ->
-    # TODO: i18n
-    template = _.template("""
-    <h1>
-        <span>
-        <% if (status.is_closed) { %>
-        Closed
-        <% } else { %>
-        Open
-        <% } %>
-        </span>
-        <span class="us-detail-status" style="color:<%= status.color %>"><%= status.name %></span>
-    </h1>
-    <div class="us-created-by">
-        <div class="user-avatar">
-            <img src="<%= owner.photo %>" alt="<%- owner.full_name_display %>" />
-        </div>
-
-        <div class="created-by">
-            <span class="created-title">Created by <%- owner.full_name_display %></span>
-            <span class="created-date"><%- date %></span>
-        </div>
-    </div>
-    <div class="issue-data">
-        <div class="type-data <% if (editable) { %>clickable<% } %>">
-            <span class="level" style="background-color:<%= type.color %>"></span>
-            <span class="type-status"><%= type.name %></span>
-            <% if (editable) { %>
-                <span class="icon icon-arrow-bottom"></span>
-            <% } %>
-            <span class="level-name">type</span>
-        </div>
-        <div class="severity-data <% if (editable) { %>clickable<% } %>">
-            <span class="level" style="background-color:<%= severity.color %>"></span>
-            <span class="severity-status"><%= severity.name %></span>
-            <% if (editable) { %>
-                <span class="icon icon-arrow-bottom"></span>
-            <% } %>
-            <span class="level-name">severity</span>
-        </div>
-        <div class="priority-data <% if (editable) { %>clickable<% } %>">
-            <span class="level" style="background-color:<%= priority.color %>"></span>
-            <span class="priority-status"><%= priority.name %></span>
-            <% if (editable) { %>
-                <span class="icon icon-arrow-bottom"></span>
-            <% } %>
-            <span class="level-name">priority</span>
-        </div>
-        <div class="status-data <% if (editable) { %>clickable<% } %>">
-            <span class="level" style="background-color:<%= status.color %>"></span>
-            <span class="status-status"><%= status.name %></span>
-            <% if (editable) { %>
-                <span class="icon icon-arrow-bottom"></span>
-            <% } %>
-            <span class="level-name">status</span>
-        </div>
-    </div>
-    """)
-    selectionTypeTemplate = _.template("""
-    <ul class="popover pop-type">
-        <% _.each(types, function(type) { %>
-        <li><a href="" class="type" title="<%- type.name %>"
-               data-type-id="<%- type.id %>"><%- type.name %></a></li>
-        <% }); %>
-    </ul>
-    """)
-    selectionSeverityTemplate = _.template("""
-    <ul class="popover pop-severity">
-        <% _.each(severities, function(severity) { %>
-        <li><a href="" class="severity" title="<%- severity.name %>"
-               data-severity-id="<%- severity.id %>"><%- severity.name %></a></li>
-        <% }); %>
-    </ul>
-    """)
-    selectionPriorityTemplate = _.template("""
-    <ul class="popover pop-priority">
-        <% _.each(priorities, function(priority) { %>
-        <li><a href="" class="priority" title="<%- priority.name %>"
-               data-priority-id="<%- priority.id %>"><%- priority.name %></a></li>
-        <% }); %>
-    </ul>
-    """)
-    selectionStatusTemplate = _.template("""
-    <ul class="popover pop-status">
-        <% _.each(statuses, function(status) { %>
-        <li><a href="" class="status" title="<%- status.name %>"
-               data-status-id="<%- status.id %>"><%- status.name %></a></li>
-        <% }); %>
-    </ul>
-    """)
-
-    link = ($scope, $el, $attrs, $model) ->
-        editable = $attrs.editable?
-
-        renderIssuestatus = (issue) ->
-            owner = $scope.usersById?[issue.owner]
-            date = moment(issue.created_date).format("DD MMM YYYY HH:mm")
-            type = $scope.typeById[issue.type]
-            status = $scope.statusById[issue.status]
-            severity = $scope.severityById[issue.severity]
-            priority = $scope.priorityById[issue.priority]
+        render = (issue) ->
             html = template({
-                owner: owner
-                date: date
-                editable: editable
-                status: status
-                severity: severity
-                priority: priority
-                type: type
+                status: $scope.statusById[issue.status]
             })
             $el.html(html)
-            $el.find(".type-data").append(selectionTypeTemplate({types:$scope.typeList}))
-            $el.find(".severity-data").append(selectionSeverityTemplate({severities:$scope.severityList}))
-            $el.find(".priority-data").append(selectionPriorityTemplate({priorities:$scope.priorityList}))
-            $el.find(".status-data").append(selectionStatusTemplate({statuses:$scope.statusList}))
 
         $scope.$watch $attrs.ngModel, (issue) ->
-            if issue?
-                renderIssuestatus(issue)
+            render(issue) if issue?
 
-        if editable
-            $el.on "click", ".type-data", (event) ->
-                event.preventDefault()
-                event.stopPropagation()
-                $el.find(".pop-type").popover().open()
+        $scope.$on "$destroy", ->
+            $el.off()
 
-            $el.on "click", ".type", (event) ->
-                event.preventDefault()
-                event.stopPropagation()
-                target = angular.element(event.currentTarget)
-                $model.$modelValue.type = target.data("type-id")
-                renderIssuestatus($model.$modelValue)
-                $.fn.popover().closeAll()
+    return {
+        link: link
+        restrict: "EA"
+        require: "ngModel"
+    }
 
-            $el.on "click", ".severity-data", (event) ->
-                event.preventDefault()
-                event.stopPropagation()
-                $el.find(".pop-severity").popover().open()
+module.directive("tgIssueStatusDisplay", IssueStatusDisplayDirective)
 
-            $el.on "click", ".severity", (event) ->
-                event.preventDefault()
-                event.stopPropagation()
-                target = angular.element(event.currentTarget)
-                $model.$modelValue.severity = target.data("severity-id")
-                renderIssuestatus($model.$modelValue)
-                $.fn.popover().closeAll()
 
-            $el.on "click", ".priority-data", (event) ->
-                event.preventDefault()
-                event.stopPropagation()
-                $el.find(".pop-priority").popover().open()
+#############################################################################
+## Issue status button directive
+#############################################################################
 
-            $el.on "click", ".priority", (event) ->
-                event.preventDefault()
-                event.stopPropagation()
-                target = angular.element(event.currentTarget)
-                $model.$modelValue.priority = target.data("priority-id")
-                renderIssuestatus($model.$modelValue)
-                $.fn.popover().closeAll()
+IssueStatusButtonDirective = ($rootScope, $repo, $confirm, $loading) ->
+    # Display the status of Issue and you can edit it.
+    #
+    # Example:
+    #     tg-issue-status-button(ng-model="issue")
+    #
+    # Requirements:
+    #   - Issue object (ng-model)
+    #   - scope.statusById object
+    #   - $scope.project.my_permissions
 
-            $el.on "click", ".status-data", (event) ->
-                event.preventDefault()
-                event.stopPropagation()
-                $el.find(".pop-status").popover().open()
+    template = _.template("""
+    <div class="status-data <% if(editable){ %>clickable<% }%>">
+        <span class="level" style="background-color:<%- status.color %>"></span>
+        <span class="status-status"><%- status.name %></span>
+        <% if(editable){ %><span class="icon icon-arrow-bottom"></span><% }%>
+        <span class="level-name">status</span>
 
-            $el.on "click", ".status", (event) ->
-                event.preventDefault()
-                event.stopPropagation()
-                target = angular.element(event.currentTarget)
-                $model.$modelValue.status = target.data("status-id")
-                renderIssuestatus($model.$modelValue)
-                $.fn.popover().closeAll()
+        <ul class="popover pop-status">
+            <% _.each(statuses, function(st) { %>
+            <li><a href="" class="status" title="<%- st.name %>"
+                   data-status-id="<%- st.id %>"><%- st.name %></a></li>
+            <% }); %>
+        </ul>
+    </div>
+    """) #TODO: i18n
 
-    return {link:link, require:"ngModel"}
+    link = ($scope, $el, $attrs, $model) ->
+        isEditable = ->
+            return $scope.project.my_permissions.indexOf("modify_issue") != -1
 
-module.directive("tgIssueStatus", IssueStatusDirective)
+        render = (issue) =>
+            status = $scope.statusById[issue.status]
+
+            html = template({
+                status: status
+                statuses: $scope.statusList
+                editable: isEditable()
+            })
+            $el.html(html)
+
+        $el.on "click", ".status-data", (event) ->
+            event.preventDefault()
+            event.stopPropagation()
+            return if not isEditable()
+
+            $el.find(".pop-status").popover().open()
+
+        $el.on "click", ".status", (event) ->
+            event.preventDefault()
+            event.stopPropagation()
+            return if not isEditable()
+
+            target = angular.element(event.currentTarget)
+
+            $.fn.popover().closeAll()
+
+            issue = $model.$modelValue.clone()
+            issue.status = target.data("status-id")
+            $model.$setViewValue(issue)
+
+            $scope.$apply()
+
+            onSuccess = ->
+                $confirm.notify("success")
+                $rootScope.$broadcast("history:reload")
+                $loading.finish($el.find(".level-name"))
+            onError = ->
+                $confirm.notify("error")
+                issue.revert()
+                $model.$setViewValue(issue)
+                $loading.finish($el.find(".level-name"))
+
+            $loading.start($el.find(".level-name"))
+            $repo.save($model.$modelValue).then(onSuccess, onError)
+
+        $scope.$watch $attrs.ngModel, (issue) ->
+            render(issue) if issue
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {
+        link: link
+        restrict: "EA"
+        require: "ngModel"
+    }
+
+module.directive("tgIssueStatusButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", IssueStatusButtonDirective])
+
+#############################################################################
+## Issue type button directive
+#############################################################################
+
+IssueTypeButtonDirective = ($rootScope, $repo, $confirm, $loading) ->
+    # Display the type of Issue and you can edit it.
+    #
+    # Example:
+    #     tg-issue-type-button(ng-model="issue")
+    #
+    # Requirements:
+    #   - Issue object (ng-model)
+    #   - scope.typeById object
+    #   - $scope.project.my_permissions
+
+    template = _.template("""
+    <div class="type-data <% if(editable){ %>clickable<% }%>">
+        <span class="level" style="background-color:<%- type.color %>"></span>
+        <span class="type-type"><%- type.name %></span>
+        <% if(editable){ %><span class="icon icon-arrow-bottom"></span><% }%>
+        <span class="level-name">type</span>
+
+        <ul class="popover pop-type">
+            <% _.each(typees, function(tp) { %>
+            <li><a href="" class="type" title="<%- tp.name %>"
+                   data-type-id="<%- tp.id %>"><%- tp.name %></a></li>
+            <% }); %>
+        </ul>
+    </div>
+    """) #TODO: i18n
+
+    link = ($scope, $el, $attrs, $model) ->
+        isEditable = ->
+            return $scope.project.my_permissions.indexOf("modify_issue") != -1
+
+        render = (issue) =>
+            type = $scope.typeById[issue.type]
+
+            html = template({
+                type: type
+                typees: $scope.typeList
+                editable: isEditable()
+            })
+            $el.html(html)
+
+        $el.on "click", ".type-data", (event) ->
+            event.preventDefault()
+            event.stopPropagation()
+            return if not isEditable()
+
+            $el.find(".pop-type").popover().open()
+
+        $el.on "click", ".type", (event) ->
+            event.preventDefault()
+            event.stopPropagation()
+            return if not isEditable()
+
+            target = angular.element(event.currentTarget)
+
+            $.fn.popover().closeAll()
+
+            issue = $model.$modelValue.clone()
+            issue.type = target.data("type-id")
+            $model.$setViewValue(issue)
+
+            $scope.$apply()
+
+            onSuccess = ->
+                $confirm.notify("success")
+                $rootScope.$broadcast("history:reload")
+                $loading.finish($el.find(".level-name"))
+            onError = ->
+                $confirm.notify("error")
+                issue.revert()
+                $model.$setViewValue(issue)
+                $loading.finish($el.find(".level-name"))
+            $loading.start($el.find(".level-name"))
+            $repo.save($model.$modelValue).then(onSuccess, onError)
+
+        $scope.$watch $attrs.ngModel, (issue) ->
+            render(issue) if issue
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {
+        link: link
+        restrict: "EA"
+        require: "ngModel"
+    }
+
+module.directive("tgIssueTypeButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", IssueTypeButtonDirective])
+
+
+#############################################################################
+## Issue severity button directive
+#############################################################################
+
+IssueSeverityButtonDirective = ($rootScope, $repo, $confirm, $loading) ->
+    # Display the severity of Issue and you can edit it.
+    #
+    # Example:
+    #     tg-issue-severity-button(ng-model="issue")
+    #
+    # Requirements:
+    #   - Issue object (ng-model)
+    #   - scope.severityById object
+    #   - $scope.project.my_permissions
+
+    template = _.template("""
+    <div class="severity-data <% if(editable){ %>clickable<% }%>">
+        <span class="level" style="background-color:<%- severity.color %>"></span>
+        <span class="severity-severity"><%- severity.name %></span>
+        <% if(editable){ %><span class="icon icon-arrow-bottom"></span><% }%>
+        <span class="level-name">severity</span>
+
+        <ul class="popover pop-severity">
+            <% _.each(severityes, function(sv) { %>
+            <li><a href="" class="severity" title="<%- sv.name %>"
+                   data-severity-id="<%- sv.id %>"><%- sv.name %></a></li>
+            <% }); %>
+        </ul>
+    </div>
+    """) #TODO: i18n
+
+    link = ($scope, $el, $attrs, $model) ->
+        isEditable = ->
+            return $scope.project.my_permissions.indexOf("modify_issue") != -1
+
+        render = (issue) =>
+            severity = $scope.severityById[issue.severity]
+
+            html = template({
+                severity: severity
+                severityes: $scope.severityList
+                editable: isEditable()
+            })
+            $el.html(html)
+
+        $el.on "click", ".severity-data", (event) ->
+            event.preventDefault()
+            event.stopPropagation()
+            return if not isEditable()
+
+            $el.find(".pop-severity").popover().open()
+
+        $el.on "click", ".severity", (event) ->
+            event.preventDefault()
+            event.stopPropagation()
+            return if not isEditable()
+
+            target = angular.element(event.currentTarget)
+
+            $.fn.popover().closeAll()
+
+            issue = $model.$modelValue.clone()
+            issue.severity = target.data("severity-id")
+            $model.$setViewValue(issue)
+
+            $scope.$apply()
+
+            onSuccess = ->
+                $confirm.notify("success")
+                $rootScope.$broadcast("history:reload")
+                $loading.finish($el.find(".level-name"))
+            onError = ->
+                $confirm.notify("error")
+                issue.revert()
+                $model.$setViewValue(issue)
+                $loading.finish($el.find(".level-name"))
+            $loading.start($el.find(".level-name"))
+            $repo.save($model.$modelValue).then(onSuccess, onError)
+
+        $scope.$watch $attrs.ngModel, (issue) ->
+            render(issue) if issue
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {
+        link: link
+        restrict: "EA"
+        require: "ngModel"
+    }
+
+module.directive("tgIssueSeverityButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", IssueSeverityButtonDirective])
+
+
+#############################################################################
+## Issue priority button directive
+#############################################################################
+
+IssuePriorityButtonDirective = ($rootScope, $repo, $confirm, $loading) ->
+    # Display the priority of Issue and you can edit it.
+    #
+    # Example:
+    #     tg-issue-priority-button(ng-model="issue")
+    #
+    # Requirements:
+    #   - Issue object (ng-model)
+    #   - scope.priorityById object
+    #   - $scope.project.my_permissions
+
+    template = _.template("""
+    <div class="priority-data <% if(editable){ %>clickable<% }%>">
+        <span class="level" style="background-color:<%- priority.color %>"></span>
+        <span class="priority-priority"><%- priority.name %></span>
+        <% if(editable){ %><span class="icon icon-arrow-bottom"></span><% }%>
+        <span class="level-name">priority</span>
+
+        <ul class="popover pop-priority">
+            <% _.each(priorityes, function(pr) { %>
+            <li><a href="" class="priority" title="<%- pr.name %>"
+                   data-priority-id="<%- pr.id %>"><%- pr.name %></a></li>
+            <% }); %>
+        </ul>
+    </div>
+    """) #TODO: i18n
+
+    link = ($scope, $el, $attrs, $model) ->
+        isEditable = ->
+            return $scope.project.my_permissions.indexOf("modify_issue") != -1
+
+        render = (issue) =>
+            priority = $scope.priorityById[issue.priority]
+
+            html = template({
+                priority: priority
+                priorityes: $scope.priorityList
+                editable: isEditable()
+            })
+            $el.html(html)
+
+        $el.on "click", ".priority-data", (event) ->
+            event.preventDefault()
+            event.stopPropagation()
+            return if not isEditable()
+
+            $el.find(".pop-priority").popover().open()
+
+        $el.on "click", ".priority", (event) ->
+            event.preventDefault()
+            event.stopPropagation()
+            return if not isEditable()
+
+            target = angular.element(event.currentTarget)
+
+            $.fn.popover().closeAll()
+
+            issue = $model.$modelValue.clone()
+            issue.priority = target.data("priority-id")
+            $model.$setViewValue(issue)
+
+            $scope.$apply()
+
+            onSuccess = ->
+                $confirm.notify("success")
+                $rootScope.$broadcast("history:reload")
+                $loading.finish($el.find(".level-name"))
+            onError = ->
+                $confirm.notify("error")
+                issue.revert()
+                $model.$setViewValue(issue)
+                $loading.finish($el.find(".level-name"))
+            $loading.start($el.find(".level-name"))
+            $repo.save($model.$modelValue).then(onSuccess, onError)
+
+        $scope.$watch $attrs.ngModel, (issue) ->
+            render(issue) if issue
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {
+        link: link
+        restrict: "EA"
+        require: "ngModel"
+    }
+
+module.directive("tgIssuePriorityButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", IssuePriorityButtonDirective])
 
 
 #############################################################################
@@ -386,7 +573,7 @@ module.directive("tgIssueStatus", IssueStatusDirective)
 
 PromoteIssueToUsButtonDirective = ($rootScope, $repo, $confirm) ->
     template = _.template("""
-        <a class="button button-gray clickable" tg-check-permission="add_us">
+        <a class="button button-gray editable" tg-check-permission="add_us">
             Promote to User Story
         </a>
     """)  # TODO: i18n

@@ -1,6 +1,6 @@
 gulp = require("gulp")
 jade = require("gulp-jade")
-
+gutil = require("gulp-util")
 coffee = require("gulp-coffee")
 concat = require("gulp-concat")
 uglify = require("gulp-uglify")
@@ -8,6 +8,7 @@ plumber = require("gulp-plumber")
 wrap = require("gulp-wrap")
 rename = require("gulp-rename")
 flatten = require('gulp-flatten')
+gulpif = require('gulp-if')
 
 minifyHTML = require("gulp-minify-html")
 sass = require("gulp-ruby-sass")
@@ -19,11 +20,20 @@ scsslint = require("gulp-scss-lint")
 newer = require("gulp-newer")
 cache = require("gulp-cached")
 jadeInheritance = require('gulp-jade-inheritance')
+sourcemaps = require('gulp-sourcemaps')
+insert = require("gulp-insert")
+runSequence = require('run-sequence')
+lazypipe = require('lazypipe')
+rimraf = require('rimraf')
+
+mainSass = require("./main-sass").files
 
 paths = {}
 paths.app = "app/"
 paths.dist = "dist/"
 paths.tmp = "tmp/"
+paths.tmpStyles = paths.tmp + "styles/"
+paths.tmpStylesExtras = "#{paths.tmpStyles}/taiga-front-extras/**/*.css"
 paths.extras = "extras/"
 
 paths.jade = [
@@ -37,9 +47,11 @@ paths.svg = paths.app + "svg/**/*"
 paths.css = paths.app + "styles/vendor/*.css"
 paths.locales = paths.app + "locales/**/*.json"
 paths.sass = [
-    paths.app + "styles/**/*.scss"
+    "#{paths.app}/styles/**/*.scss"
+    "#{paths.app}/plugins/**/*.scss"
     "!#{paths.app}/styles/bourbon/**/*.scss"
-    paths.app + "plugins/**/*.scss"
+    "!#{paths.app}/styles/dependencies/**/*.scss"
+    "!#{paths.app}/styles/extras/**/*.scss"
 ]
 
 paths.coffee = [
@@ -85,11 +97,14 @@ paths.js = [
     paths.app + "vendor/jquery-textcomplete/jquery.textcomplete.js",
     paths.app + "vendor/markitup/markitup/jquery.markitup.js",
     paths.app + "vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js",
+    paths.app + "vendor/raven-js/dist/raven.js",
     paths.app + "js/jquery.ui.git-custom.js",
     paths.app + "js/jquery-ui.drag-multiple-custom.js",
     paths.app + "js/sha1-custom.js",
     paths.app + "plugins/**/*.js"
 ]
+
+isDeploy = process.argv[process.argv.length - 1] == 'deploy'
 
 ############################################################################
 # Layout/CSS Related tasks
@@ -116,38 +131,54 @@ gulp.task "templates", ->
         .pipe(jade({pretty: true, locals:{v:(new Date()).getTime()}}))
         .pipe(gulp.dest(paths.dist))
 
+##############################################################################
+# CSS Related tasks
+##############################################################################
+
 gulp.task "sass-lint", ->
     gulp.src(paths.sass)
         .pipe(cache("sasslint"))
-        .pipe(scsslint({config: "scsslint.yml"}))
+        .pipe(gulpif(!isDeploy, scsslint({config: "scsslint.yml"})))
 
-gulp.task "sass-watch", ["sass-lint"], ->
-    gulp.src(["#{paths.app}/styles/main.scss", "#{paths.app}/plugins/**/*.scss"])
+gulp.task "sass-compile", ["sass-lint"], ->
+    gulp.src(paths.sass)
         .pipe(plumber())
-        .pipe(concat("all.scss"))
-        .pipe(sass())
-        .pipe(rename("app.css"))
+        .pipe(cache("scss"))
+        .pipe(insert.prepend('@import "dependencies";'))
+        .pipe(sass({
+            'sourcemap=none': true,
+            loadPath: [
+                "#{paths.app}styles/extras/"
+            ]
+        }))
+        .pipe(gulp.dest(paths.tmpStyles))
+
+csslintChannel = lazypipe()
+  .pipe(csslint, "csslintrc.json")
+  .pipe(csslint.reporter)
+
+gulp.task "css-lint-app", ->
+    gulp.src(mainSass.concat([paths.tmpStylesExtras]))
+        .pipe(cache("csslint"))
+        .pipe(gulpif(!isDeploy, csslintChannel()))
+
+gulp.task "css-join", ["css-lint-app"], ->
+    gulp.src(mainSass.concat([paths.tmpStylesExtras]))
+        .pipe(concat("app.css"))
         .pipe(gulp.dest(paths.tmp))
 
-gulp.task "sass-deploy", ->
-    gulp.src(["#{paths.app}/styles/main.scss", "#{paths.app}/plugins/**/*.scss"])
-        .pipe(plumber())
-        .pipe(concat("all.scss"))
-        .pipe(sass())
-        .pipe(rename("app.css"))
-        .pipe(gulp.dest(paths.tmp))
+gulp.task "css-app", (cb) ->
+    runSequence("sass-compile", "css-join", cb)
 
 gulp.task "css-vendor", ->
     gulp.src(paths.css)
         .pipe(concat("vendor.css"))
         .pipe(gulp.dest(paths.tmp))
 
-gulp.task "css-lint-app", ["sass-watch"],  ->
-    gulp.src(paths.tmp + "app.css")
-        .pipe(csslint("csslintrc.json"))
-        .pipe(csslint.reporter())
+gulp.task "delete-tmp-styles", (cb) ->
+    rimraf(paths.tmpStyles, cb)
 
-gulp.task "styles-watch", ["sass-watch", "css-vendor", "css-lint-app"], ->
+gulp.task "styles-watch", ["css-app", "css-vendor"], ->
     _paths = [
         paths.tmp + "vendor.css",
         paths.tmp + "app.css"
@@ -155,18 +186,11 @@ gulp.task "styles-watch", ["sass-watch", "css-vendor", "css-lint-app"], ->
 
     gulp.src(_paths)
         .pipe(concat("main.css"))
+        .pipe(gulpif(isDeploy, minifyCSS({noAdvanced: true})))
         .pipe(gulp.dest(paths.dist + "styles/"))
 
-gulp.task "styles-deploy", ["sass-deploy", "css-vendor"], ->
-    _paths = [
-        paths.tmp + "vendor.css",
-        paths.tmp + "app.css"
-    ]
-
-    gulp.src(_paths)
-        .pipe(concat("main.css"))
-        .pipe(minifyCSS())
-        .pipe(gulp.dest(paths.dist + "styles/"))
+gulp.task "styles", ["delete-tmp-styles"], ->
+    gulp.start("styles-watch")
 
 ##############################################################################
 # JS Related tasks
@@ -200,8 +224,10 @@ gulp.task "jslibs-watch", ->
 gulp.task "jslibs-deploy", ->
     gulp.src(paths.js)
         .pipe(plumber())
+        .pipe(sourcemaps.init())
         .pipe(concat("libs.js"))
         .pipe(uglify({mangle:false, preserveComments: false}))
+        .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest("dist/js/"))
 
 gulp.task "app-watch", ["coffee", "conf", "locales"], ->
@@ -223,8 +249,10 @@ gulp.task "app-deploy", ["coffee", "conf", "locales"], ->
     ]
 
     gulp.src(_paths)
-        .pipe(concat("app.js"))
-        .pipe(uglify({mangle:false, preserveComments: false}))
+        .pipe(sourcemaps.init())
+            .pipe(concat("app.js"))
+            .pipe(uglify({mangle:false, preserveComments: false}))
+        .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest(paths.dist + "js/"))
 
 ##############################################################################
@@ -291,19 +319,21 @@ gulp.task "watch", ->
 
 
 gulp.task "deploy", [
+    "delete-tmp-styles",
     "templates",
     "copy",
     "jade-deploy",
     "app-deploy",
     "jslibs-deploy",
-    "styles-deploy"
+    "styles"
 ]
 
 # The default task (called when you run gulp from cli)
 gulp.task "default", [
+    "delete-tmp-styles",
     "copy",
     "templates",
-    "styles-watch",
+    "styles",
     "app-watch",
     "jslibs-watch",
     "jade-deploy",

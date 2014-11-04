@@ -72,10 +72,12 @@ class AttachmentsController extends taiga.Controller
             @.attachments.push(data)
             @rootscope.$broadcast("attachment:create")
 
-        promise = promise.then null, (data) ->
+        promise = promise.then null, (data) =>
+            @scope.$emit("attachments:size-error") if data.status == 413
             index = @.uploadingAttachments.indexOf(attachment)
             @.uploadingAttachments.splice(index, 1)
-            @confirm.notify("error", null, "We have not been able to upload '#{attachment.name}'.")
+            @confirm.notify("error", "We have not been able to upload '#{attachment.name}'.
+                                      #{data.data._error_message}")
             return @q.reject(data)
 
         return promise
@@ -109,7 +111,8 @@ class AttachmentsController extends taiga.Controller
             @.updateCounters()
             @rootscope.$broadcast("attachment:edit")
 
-        onError = =>
+        onError = (response) =>
+            $scope.$emit("attachments:size-error") if response.status == 413
             @confirm.notify("error")
             return @q.reject()
 
@@ -127,9 +130,9 @@ class AttachmentsController extends taiga.Controller
     # Remove one concrete attachment.
     removeAttachment: (attachment) ->
         title = "Delete attachment"  #TODO: i18in
-        subtitle = "the attachment '#{attachment.name}'" #TODO: i18in
+        message = "the attachment '#{attachment.name}'" #TODO: i18in
 
-        return @confirm.ask(title, subtitle).then (finish) =>
+        return @confirm.askOnDelete(title, message).then (finish) =>
             onSuccess = =>
                 finish()
                 index = @.attachments.indexOf(attachment)
@@ -139,7 +142,7 @@ class AttachmentsController extends taiga.Controller
 
             onError = =>
                 finish(false)
-                @confirm.notify("error", null, "We have not been able to delete #{subtitle}.")
+                @confirm.notify("error", null, "We have not been able to delete #{message}.")
                 return @q.reject()
 
             return @repo.remove(attachment).then(onSuccess, onError)
@@ -151,7 +154,7 @@ class AttachmentsController extends taiga.Controller
         return not item.is_deprecated
 
 
-AttachmentsDirective = ($confirm) ->
+AttachmentsDirective = ($config, $confirm) ->
     template = _.template("""
     <section class="attachments">
         <div class="attachments-header">
@@ -159,7 +162,11 @@ AttachmentsDirective = ($confirm) ->
                 <span class="attachments-num" tg-bind-html="ctrl.attachmentsCount"></span>
                 <span class="attachments-text">attachments</span>
             </h3>
-            <div tg-check-permission="modify_<%- type %>" title="Add new attachment" class="add-attach">
+            <div tg-check-permission="modify_<%- type %>" class="add-attach"
+                 title="Add new attachment. <%- maxFileSizeMsg %>">
+                <% if (maxFileSize){ %>
+                <span class="size-info hidden">[Max. size:  <%- maxFileSize %>]</span>
+                <% }; %>
                 <label for="add-attach" class="icon icon-plus related-tasks-buttons"></label>
                 <input id="add-attach" type="file" multiple="multiple"/>
             </div>
@@ -195,7 +202,6 @@ AttachmentsDirective = ($confirm) ->
         </div>
     </section>""")
 
-
     link = ($scope, $el, $attrs, $ctrls) ->
         $ctrl = $ctrls[0]
         $model = $ctrls[1]
@@ -221,6 +227,12 @@ AttachmentsDirective = ($confirm) ->
 
             $ctrl.reorderAttachment(attachment, newIndex)
             $ctrl.saveAttachments()
+
+        showSizeInfo = ->
+            $el.find(".size-info").removeClass("hidden")
+
+        $scope.$on "attachments:size-error", ->
+            showSizeInfo()
 
         $el.on "change", ".attachments-header input", (event) ->
             files = _.toArray(event.target.files)
@@ -249,7 +261,16 @@ AttachmentsDirective = ($confirm) ->
             $el.off()
 
     templateFn = ($el, $attrs) ->
-        return template({type: $attrs.type})
+        maxFileSize = $config.get("maxUploadFileSize", null)
+        maxFileSize = sizeFormat(maxFileSize) if maxFileSize
+        maxFileSizeMsg = if maxFileSize then "Maximum upload size is #{maxFileSize}" else "" # TODO: i18n
+
+        ctx = {
+            type: $attrs.type
+            maxFileSize: maxFileSize
+            maxFileSizeMsg: maxFileSizeMsg
+        }
+        return template(ctx)
 
     return {
         require: ["tgAttachments", "ngModel"]
@@ -261,13 +282,13 @@ AttachmentsDirective = ($confirm) ->
         template: templateFn
     }
 
-module.directive("tgAttachments", ["$tgConfirm", AttachmentsDirective])
+module.directive("tgAttachments", ["$tgConfig", "$tgConfirm", AttachmentsDirective])
 
 
 AttachmentDirective = ->
     template = _.template("""
     <div class="attachment-name">
-        <a href="<%- url %>" title="<%- name %>" target="_blank">
+        <a href="<%- url %>" title="<%- name %> uploaded on <%- created_date %>" target="_blank">
             <span class="icon icon-documents"></span>
             <span><%- name %><span>
         </a>
@@ -291,7 +312,7 @@ AttachmentDirective = ->
     templateEdit = _.template("""
     <div class="attachment-name">
         <span class="icon.icon-document"></span>
-        <a href="<%- url %>" title="<%- name %>" target="_blank"><%- name %></a>
+        <a href="<%- url %>" title="<%- name %> uploaded on <%- created_date %>" target="_blank"><%- name %></a>
     </div>
     <div class="attachment-size">
         <span><%- size %></span>
@@ -320,6 +341,7 @@ AttachmentDirective = ->
             ctx = {
                 id: attachment.id
                 name: attachment.name
+                created_date: moment(attachment.created_date).format("DD MMM YYYY [at] hh:mm") #TODO: i18n
                 url: attachment.url
                 size: sizeFormat(attachment.size)
                 description: attachment.description

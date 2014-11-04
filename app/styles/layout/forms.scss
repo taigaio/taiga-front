@@ -16,9 +16,9 @@ input[type="number"],
 input[type="password"],
 input[type="email"],
 input[type="date"],
+input[type="password"],
 select,
 textarea {
-    @extend %large;
     @extend %title;
     background: $whitish;
     border: 1px solid $gray-light;
@@ -29,9 +29,6 @@ textarea {
     @include placeholder {
         color: $gray-light;
     }
-}
-input[type="password"] {
-    @extend %title;
 }
 
 textarea {

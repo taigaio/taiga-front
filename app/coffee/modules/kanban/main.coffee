@@ -78,12 +78,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             tgLoader.pageLoaded()
 
         # On Error
-        promise.then null, (xhr) =>
-            if xhr and xhr.status == 404
-                @location.path(@navUrls.resolve("not-found"))
-                @location.replace()
-            return @q.reject(xhr)
-
+        promise.then null, @.onInitialDataError.bind(@)
 
     initializeEventHandlers: ->
         @scope.$on "usform:new:success", =>
@@ -397,7 +392,7 @@ KanbanUserDirective = ($log) ->
     template = _.template("""
     <figure class="avatar">
         <a href="#" title="Assign User Story" <% if (!clickable) {%>class="not-clickable"<% } %>>
-            <img src="<%= imgurl %>" alt="<%- name %>" class="avatar">
+            <img src="<%- imgurl %>" alt="<%- name %>" class="avatar">
         </a>
     </figure>
     """) # TODO: i18n

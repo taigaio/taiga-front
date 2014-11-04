@@ -53,7 +53,7 @@ RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope, $loading) ->
         </a>
     </div>
     <div tg-related-task-assigned-to-inline-edition="task" class="assigned-to">
-        <div title="Assigned to" class="task-assignedto">
+        <div title="Assigned to" class="task-assignedto <% if(perms.modify_task) { %>editable<% } %>">
             <figure class="avatar"></figure>
             <% if(perms.modify_task) { %>
                 <span class="icon icon-arrow-bottom"></span>
@@ -139,9 +139,9 @@ RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope, $loading) ->
                 #TODO: i18n
                 task = $model.$modelValue
                 title = "Delete Task"
-                subtitle = task.subject
+                message = task.subject
 
-                $confirm.ask(title, subtitle).then (finish) ->
+                $confirm.askOnDelete(title, message).then (finish) ->
                     promise = $repo.remove(task)
                     promise.then ->
                         finish()
@@ -166,7 +166,7 @@ RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope, $loading) ->
 
     return {link:link, require:"ngModel"}
 
-module.directive("tgRelatedTaskRow", ["$tgRepo", "$compile", "$tgConfirm", "$rootScope", "$tgLoading", RelatedTaskRowDirective])
+module.directive("tgRelatedTaskRow", ["$tgRepo", "$compile", "$tgConfirm", "$rootScope", "$tgLoading", "$tgAnalytics", RelatedTaskRowDirective])
 
 RelatedTaskCreateFormDirective = ($repo, $compile, $confirm, $tgmodel, $loading, $analytics) ->
     template = _.template("""
@@ -310,7 +310,7 @@ module.directive("tgRelatedTasks", ["$tgRepo", "$tgResources", "$rootScope", Rel
 
 RelatedTaskAssignedToInlineEditionDirective = ($repo, $rootscope, popoverService) ->
     template = _.template("""
-    <img src="<%= imgurl %>" alt="<%- name %>"/>
+    <img src="<%- imgurl %>" alt="<%- name %>"/>
     <figcaption><%- name %></figcaption>
     """)
 

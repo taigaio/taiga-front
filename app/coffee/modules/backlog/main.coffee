@@ -74,11 +74,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             tgLoader.pageLoaded()
 
         # On Error
-        promise.then null, (xhr) =>
-            if xhr and xhr.status == 404
-                @location.path(@navUrls.resolve("not-found"))
-                @location.replace()
-            return @q.reject(xhr)
+        promise.then null, @.onInitialDataError.bind(@)
 
     initializeEventHandlers: ->
         @scope.$on "usform:bulk:success", =>
@@ -431,6 +427,8 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @scope.filters = {}
 
         plainTags = _.flatten(_.filter(_.map(@scope.userstories, "tags")))
+        plainTags.sort()
+
         @scope.filters.tags = _.map _.countBy(plainTags), (v, k) =>
             obj = {
                 id: k,
@@ -469,9 +467,9 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
     deleteUserStory: (us) ->
         #TODO: i18n
         title = "Delete User Story"
-        subtitle = us.subject
+        message = us.subject
 
-        @confirm.ask(title, subtitle).then (finish) =>
+        @confirm.askOnDelete(title, message).then (finish) =>
             # We modify the userstories in scope so the user doesn't see the removed US for a while
             @scope.userstories = _.without(@scope.userstories, us)
             @filterVisibleUserstories()

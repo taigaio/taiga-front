@@ -4,7 +4,7 @@ block head
     title Taiga  Your agile, free, and open source project management tool
 
 block content
-    div.wrapper(tg-us-detail, ng-controller="UserStoryDetailController as ctrl",
+    div.wrapper(ng-controller="UserStoryDetailController as ctrl",
                 ng-init="section='backlog'")
         div.main.us-detail
             div.us-detail-header.header-with-actions
@@ -15,16 +15,12 @@ block content
                         href="", title="Go to taskboard",
                         tg-nav="project-taskboard:project=project.slug,sprint=sprint.slug",
                         ng-if="sprint && project.is_backlog_activated") Taskboard
-                    a.button.button-green(
-                        tg-check-permission="modify_us", href="",
-                        title="Edit",
-                        tg-nav="project-userstories-detail-edit:project=project.slug,ref=us.ref") Edit
 
             section.us-story-main-data
                 div.us-title(ng-class="{blocked: us.is_blocked}")
                     h2.us-title-text
                         span.us-number(tg-bo-ref="us.ref")
-                        span.us-name(ng-bind="us.subject")
+                        span.us-name(tg-editable-subject, ng-model="us", required-perm="modify_us")
 
                     p.us-related-task(ng-if="us.origin_issue") This US has been promoted from Issue
                         a(tg-check-permission="view_us", href="", title="Go to issue",
@@ -34,15 +30,16 @@ block content
 
                     p.block-desc-container(ng-show="us.is_blocked")
                         span.block-description-title Blocked
-                        span.block-description(tg-bind-html="us.blocked_note || 'This user story is blocked'")
+                        span.block-description(ng-bind="us.blocked_note || 'This user story is blocked'")
                     div.issue-nav
-                        a.icon.icon-arrow-left(ng-show="previousUrl",href="{{ previousUrl }}",
-                                                title="previous user story")
-                        a.icon.icon-arrow-right(ng-show="nextUrl", href="{{ nextUrl }}", title="next user story")
+                        a.icon.icon-arrow-left(ng-show="previousUrl", tg-bo-href="previousUrl",
+                                               title="previous user story")
+                        a.icon.icon-arrow-right(ng-show="nextUrl", tg-bo-href="nextUrl",
+                                                title="next user story")
 
-                div(tg-tag-line, ng-model="us.tags", ng-show="us.tags")
+                div.tags-block(tg-tag-line, ng-model="us", required-perm="modify_us")
 
-            section.us-content.wysiwyg(tg-bind-html="us.description_html")
+            section.duty-content.wysiwyg(tg-editable-description, ng-model="us", required-perm="modify_us")
 
             include views/modules/related-tasks
 
@@ -50,15 +47,27 @@ block content
             tg-history(ng-model="us", type="us")
 
         sidebar.menu-secondary.sidebar
-            section.us-status(tg-us-status-detail, ng-model="us")
-            section.us-assigned-to(tg-assigned-to, ng-model="us")
-            section.us-created-by(tg-created-by, ng-model="us")
-            section.watchers(tg-watchers, ng-model="us")
+            section.us-status
+                h1(tg-us-status-display, ng-model="us")
+                div.us-detail-progress-bar(tg-us-tasks-progress-display, ng-model="tasks")
+                tg-created-by-display.us-created-by(ng-model="us")
+                tg-us-estimation(ng-model="us", save-after-modify="true")
+                div.duty-data-container
+                    div.duty-data(tg-us-status-button, ng-model="us")
+
+            section.duty-assigned-to(tg-assigned-to, ng-model="us", required-perm="modify_us")
+
+            section.watchers(tg-watchers, ng-model="us", required-perm="modify_us")
 
             section.us-detail-settings
-                span.button.button-gray(href="", title="Client requirement",
-                                        ng-class="{'active': us.client_requirement}") Client requirement
-                span.button.button-gray(href="", title="Team requirement",
-                                        ng-class="{'active': us.team_requirement}") Team requirement
+                tg-us-team-requirement-button(ng-model="us")
+                tg-us-client-requirement-button(ng-model="us")
+                tg-block-button(tg-check-permission="modify_us", ng-model="us")
+                tg-delete-button(tg-check-permission="delete_us",
+                                 on-delete-title="'Delete User Story'",
+                                 on-delete-go-to-url="onDeleteGoToUrl",
+                                 ng-model="us")
 
-        div.lightbox.lightbox-select-user.hidden(tg-lb-assignedto)
+        div.lightbox.lightbox-block(tg-lb-block, title="Blocking us", ng-model="us")
+        div.lightbox.lightbox-select-user(tg-lb-assignedto)
+        div.lightbox.lightbox-select-user(tg-lb-watchers)

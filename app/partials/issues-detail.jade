@@ -4,19 +4,17 @@ block head
     title Taiga  Your agile, free, and open source project management tool
 
 block content
-    div.wrapper(tg-issue-detail, ng-controller="IssueDetailController as ctrl",
+    div.wrapper(ng-controller="IssueDetailController as ctrl",
                 ng-init="section='issues'")
         div.main.us-detail
             div.us-detail-header.header-with-actions
                 include views/components/mainTitle
-                .action-buttons
-                    a.button.button-green(tg-check-permission="modify_issue", href="", title="Edit", tg-nav="project-issues-detail-edit:project=project.slug,ref=issue.ref") Edit
 
             section.us-story-main-data
                 div.us-title(ng-class="{blocked: issue.is_blocked}")
                     h2.us-title-text
                         span.us-number(tg-bo-ref="issue.ref")
-                        span.us-name(ng-bind="issue.subject")
+                        span.us-name(tg-editable-subject, ng-model="issue", required-perm="modify_issue")
 
                     p.us-related-task(ng-if="issue.generated_user_stories") This issue has been promoted to US:
                         a(ng-repeat="us in issue.generated_user_stories",
@@ -27,23 +25,43 @@ block content
 
                     p.block-desc-container(ng-show="issue.is_blocked")
                         span.block-description-title Blocked
-                        span.block-description(tg-bind-html="issue.blocked_note || 'This issue is blocked'")
+                        span.block-description(ng-bind="issue.blocked_note || 'This issue is blocked'")
 
                     div.issue-nav
-                        a.icon.icon-arrow-left(ng-show="previousUrl",href="{{ previousUrl }}", title="previous issue")
-                        a.icon.icon-arrow-right(ng-show="nextUrl", href="{{ nextUrl }}", title="next issue")
+                        a.icon.icon-arrow-left(ng-show="previousUrl", tg-bo-href="previousUrl",
+                                               title="previous issue")
+                        a.icon.icon-arrow-right(ng-show="nextUrl", tg-bo-href="nextUrl",
+                                                title="next issue")
 
-                div(tg-tag-line, ng-model="issue.tags", ng-show="issue.tags")
+                div.tags-block(tg-tag-line, ng-model="issue", required-perm="modify_issue")
 
-            section.us-content.wysiwyg(tg-bind-html="issue.description_html")
+            section.duty-content.wysiwyg(tg-editable-description, ng-model="issue", required-perm="modify_issue")
 
             tg-attachments(ng-model="issue", type="issue")
             tg-history(ng-model="issue", type="issue")
 
         sidebar.menu-secondary.sidebar
-            section.us-status(tg-issue-status, ng-model="issue")
-            section.us-assigned-to(tg-assigned-to, ng-model="issue")
-            section.watchers(tg-watchers, ng-model="issue")
+            section.us-status
+                h1(tg-issue-status-display, ng-model="issue")
+                tg-created-by-display.us-created-by(ng-model="issue")
+                div.duty-data-container
+                    div.duty-data(tg-issue-type-button, ng-model="issue")
+                    div.duty-data(tg-issue-severity-button, ng-model="issue")
+                    div.duty-data(tg-issue-priority-button, ng-model="issue")
+                    div.duty-data(tg-issue-status-button, ng-model="issue")
+
+            section.duty-assigned-to(tg-assigned-to, ng-model="issue", required-perm="modify_issue")
+
+            section.watchers(tg-watchers, ng-model="issue", required-perm="modify_issue")
 
             section.us-detail-settings
-               tg-promote-issue-to-us-button(ng-model="issue")
+               tg-promote-issue-to-us-button(tg-check-permission="add_us", ng-model="issue")
+               tg-block-button(tg-check-permission="modify_issue", ng-model="issue")
+               tg-delete-button(tg-check-permission="delete_issue",
+                                on-delete-title="'Delete issue'",
+                                on-delete-go-to-url="onDeleteGoToUrl",
+                                ng-model="issue")
+
+        div.lightbox.lightbox-block(tg-lb-block, title="Blocking issue", ng-model="issue")
+        div.lightbox.lightbox-select-user(tg-lb-assignedto)
+        div.lightbox.lightbox-select-user(tg-lb-watchers)

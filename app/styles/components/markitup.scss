@@ -1,0 +1,38 @@
+.markItUpHeader {
+    ul {
+        background: $whitish;
+        padding: .3rem;
+        li {
+            display: inline-block;
+            float: none;
+            a {
+                opacity: .8;
+                &:hover {
+                    @include transition(opacity .2s linear);
+                    opacity: .3;
+                }
+            }
+        }
+        .preview-icon {
+            position: absolute;
+            right: 2.5rem;
+        }
+    }
+}
+
+.markItUpContainer {
+    padding: 0;
+}
+
+.markdown {
+    position: relative;
+}
+
+.preview {
+    .actions {
+        background: $whitish;
+        margin-top: .5rem;
+        min-height: 2rem;
+        padding: .3rem;
+    }
+}

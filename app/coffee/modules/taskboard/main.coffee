@@ -66,11 +66,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
             tgLoader.pageLoaded()
 
         # On Error
-        promise.then null, (xhr) =>
-            if xhr and xhr.status == 404
-                @location.path(@navUrls.resolve("not-found"))
-                @location.replace()
-            return @q.reject(xhr)
+        promise.then null, @.onInitialDataError.bind(@)
 
     initializeEventHandlers: ->
         # TODO: Reload entire taskboard after create/edit tasks seems
@@ -320,7 +316,7 @@ TaskboardUserDirective = ($log) ->
     template = _.template("""
     <figure class="avatar">
         <a href="#" title="Assign task" <% if (!clickable) {%>class="not-clickable"<% } %>>
-            <img src="<%= imgurl %>" alt="<%- name %>">
+            <img src="<%- imgurl %>" alt="<%- name %>">
         </a>
     </figure>
     """) # TODO: i18n

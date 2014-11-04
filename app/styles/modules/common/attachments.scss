@@ -98,7 +98,7 @@
         }
         .icon-edit,
         .icon-floppy {
-            right: 4rem;
+            right: 3.5rem;
         }
         .icon-delete {
             right: 2rem;
@@ -168,5 +168,9 @@
     position: relative;
     input {
         display: none;
+    }
+    span {
+        @extend %small;
+        color: $gray-light;
     }
 }

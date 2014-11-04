@@ -21,44 +21,25 @@
 
 taiga = @.taiga
 
-mixOf = @.taiga.mixOf
-toggleText = @.taiga.toggleText
-scopeDefer = @.taiga.scopeDefer
-bindOnce = @.taiga.bindOnce
-groupBy = @.taiga.groupBy
-
 module = angular.module("taigaBacklog")
 
+
 #############################################################################
-## Sprint Directive
+## Sprint Actions Directive
 #############################################################################
 
 BacklogSprintDirective = ($repo, $rootscope) ->
-    ## Common parts
-    linkCommon = ($scope, $el, $attrs, $ctrl) ->
-        sprint = $scope.$eval($attrs.tgBacklogSprint)
-        if $scope.$first
-            $el.addClass("sprint-current")
-            $el.find(".sprint-table").addClass('open')
-
-        else if sprint.closed
-            $el.addClass("sprint-closed")
-
-        else if not $scope.$first and not sprint.closed
-            $el.addClass("sprint-old-open")
-
-        # Update progress bars
-        $scope.$watch $attrs.tgBacklogSprint, (value) ->
+    link = ($scope, $el, $attrs) ->
+        $scope.$watch $attrs.tgBacklogSprint, (sprint) ->
             sprint = $scope.$eval($attrs.tgBacklogSprint)
 
-            if sprint.total_points
-                progressPercentage = Math.round(100 * (sprint.closed_points / sprint.total_points))
-            else
-                progressPercentage = 0
-
-            $el.find(".current-progress").css("width", "#{progressPercentage}%")
-
-        $el.find(".sprint-table").disableSelection()
+            if $scope.$first
+                $el.addClass("sprint-current")
+                $el.find(".sprint-table").addClass('open')
+            else if sprint.closed
+                $el.addClass("sprint-closed")
+            else if not $scope.$first and not sprint.closed
+                $el.addClass("sprint-old-open")
 
         # Event Handlers
         $el.on "click", ".sprint-name > .icon-arrow-up", (event) ->
@@ -67,11 +48,8 @@ BacklogSprintDirective = ($repo, $rootscope) ->
             $el.find(".sprint-table").toggleClass('open')
 
         $el.on "click", ".sprint-name > .icon-edit", (event) ->
+            sprint = $scope.$eval($attrs.tgBacklogSprint)
             $rootscope.$broadcast("sprintform:edit", sprint)
-
-    link = ($scope, $el, $attrs) ->
-        $ctrl = $el.closest("div.wrapper").controller()
-        linkCommon($scope, $el, $attrs, $ctrl)
 
         $scope.$on "$destroy", ->
             $el.off()
@@ -79,3 +57,83 @@ BacklogSprintDirective = ($repo, $rootscope) ->
     return {link: link}
 
 module.directive("tgBacklogSprint", ["$tgRepo", "$rootScope", BacklogSprintDirective])
+
+
+#############################################################################
+## Sprint Header Directive
+#############################################################################
+
+BacklogSprintHeaderDirective = ($navUrls) ->
+    template = _.template("""
+    <div class="sprint-name">
+        <a class="icon icon-arrow-up" href="" title="Compact Sprint"></a>
+
+        <% if(isVisible){ %>
+        <a href="<%- taskboardUrl %>" title="'Go to the taskboard of '<%- name %>'">
+            <span><%- name %></span>
+        </a>
+        <% } %>
+
+        <% if(isEditable){ %>
+        <a class="icon icon-edit" href="" title="Edit Sprint"></a>
+        <% } %>
+    </div>
+
+    <div class="sprint-summary">
+        <div class="sprint-date"><%- estimatedDateRange %></div>
+        <ul>
+            <li>
+                <span class="number"><%- closedPoints %></span>
+                <span class="description">closed</span>
+            </li>
+            <li>
+                <span class="number"><%- totalPoints %></span>
+                <span class="description">total</span>
+            </li>
+        </ul>
+    </div>
+    """)
+
+    link = ($scope, $el, $attrs, $model) ->
+        isEditable = ->
+            return $scope.project.my_permissions.indexOf("modify_milestone") != -1
+
+        isVisible = ->
+            return $scope.project.my_permissions.indexOf("view_milestones") != -1
+
+        render = (sprint) ->
+            taskboardUrl = $navUrls.resolve("project-taskboard",
+                                            {project: $scope.project.slug, sprint: sprint.slug})
+
+            start = moment(sprint.estimated_start).format("DD MMM YYYY")
+            finish = moment(sprint.estimated_finish).format("DD MMM YYYY")
+            estimatedDateRange = "#{start}-#{finish}"
+
+            ctx = {
+                name: sprint.name
+                taskboardUrl: taskboardUrl
+                estimatedDateRange: estimatedDateRange
+                closedPoints: sprint.closed_points or 0
+                totalPoints: sprint.total_points or 0
+                isVisible: isVisible()
+                isEditable: isEditable()
+            }
+            $el.html(template(ctx))
+
+
+        $scope.$watch $attrs.ngModel, (sprint) ->
+            render(sprint)
+
+        $scope.$on "sprintform:edit:success", ->
+            render($model.$modelValue)
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {
+        link: link
+        restrict: "EA"
+        require: "ngModel"
+    }
+
+module.directive("tgBacklogSprintHeader", ["$tgNavUrls", "$tgRepo", "$rootScope", BacklogSprintHeaderDirective])
