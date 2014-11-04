@@ -508,7 +508,7 @@ EditableSubjectDirective = ($rootscope, $repo, $confirm, $loading) ->
         $el.on "click", ".save", ->
             save()
 
-        $el.on "keyup", "input", ->
+        $el.on "keyup", "input", (event) ->
             if event.keyCode == 13
                 save()
             else if event.keyCode == 27
@@ -616,7 +616,7 @@ EditableDescriptionDirective = ($window, $document, $rootscope, $repo, $confirm,
             promise.finally ->
                 $loading.finish($el.find('.save-container'))
 
-        $el.on "keyup", "textarea", ->
+        $el.on "keyup", "textarea", (event) ->
             if event.keyCode == 27
                 $scope.item.revert()
                 $el.find('.edit-description').hide()

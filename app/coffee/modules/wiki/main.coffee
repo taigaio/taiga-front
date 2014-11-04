@@ -295,7 +295,7 @@ EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $
         $el.on "click", ".cancel", ->
             cancelEdition()
 
-        $el.on "keyup", "textarea", ->
+        $el.on "keyup", "textarea", (event) ->
             if event.keyCode == 27
                 cancelEdition()
 

@@ -150,7 +150,7 @@ EditRoleDirective = ($repo, $confirm) ->
 
         $el.on "click", "a.save", submit
 
-        $el.on "keyup", "input", ->
+        $el.on "keyup", "input", (event) ->
             if event.keyCode == 13  # Enter key
                 submit()
             else if event.keyCode == 27  # ESC key
