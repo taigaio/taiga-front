@@ -126,7 +126,7 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading)
             if lastSprint?.name?
                 lastSprintNameDom.html(" last sprint is <strong> #{lastSprint.name} ;-) </strong>")
 
-            $el.find(".delete-sprint").hide()
+            $el.find(".delete-sprint").addClass("hidden")
             $el.find(".title").text("New sprint") #TODO i18n
             $el.find(".button-green").text("Create") #TODO i18n
             lightboxService.open($el)
@@ -139,7 +139,7 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading)
                 $scope.sprint.estimated_start = moment($scope.sprint.estimated_start).format("DD MMM YYYY")
                 $scope.sprint.estimated_finish = moment($scope.sprint.estimated_finish).format("DD MMM YYYY")
 
-            $el.find(".delete-sprint").show()
+            $el.find(".delete-sprint").removeClass("hidden")
             $el.find(".title").text("Edit sprint") #TODO i18n
             $el.find(".button-green").text("Save") #TODO i18n
             lightboxService.open($el)
