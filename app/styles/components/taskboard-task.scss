@@ -34,13 +34,15 @@
     }
     .taskboard-tagline {
         @include table-flex();
-        background: $gray-light; //Fallback
-        height: .3rem;
+        border-color: $postit-hover; //Fallback
+        height: .6rem;
     }
     .taskboard-tag {
         @include table-flex-child(1, 0, 0, 0);
-        background: $postit-hover; //Fallback
-        height: .3rem;
+        border-color: $postit-hover; //Fallback
+        z-index: 100;
+        height: .6rem;
+        border-top: .3rem solid;
     }
     .taskboard-task-inner {
         @include table-flex();

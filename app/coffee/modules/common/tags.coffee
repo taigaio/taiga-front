@@ -63,12 +63,12 @@ ColorizeTagsDirective = ->
         """)
         kanban: _.template("""
         <% _.each(tags, function(tag) { %>
-            <a class="kanban-tag" href="" style="background: <%- tag.color %>" title="<%- tag.name %>" />
+            <a class="kanban-tag" href="" style="border-color: <%- tag.color %>" title="<%- tag.name %>" />
         <% }) %>
         """)
         taskboard: _.template("""
         <% _.each(tags, function(tag) { %>
-            <a class="taskboard-tag" href="" style="background: <%- tag.color %>" title="<%- tag.name %>" />
+            <a class="taskboard-tag" href="" style="border-color: <%- tag.color %>" title="<%- tag.name %>" />
         <% }) %>
         """)
     }
