@@ -166,7 +166,6 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     $provide.factory("authHttpIntercept", ["$q", "$location", "$tgConfirm", "$tgNavUrls",
                                            "lightboxService", authHttpIntercept])
     $httpProvider.responseInterceptors.push('authHttpIntercept')
-    $httpProvider.interceptors.push('loaderInterceptor')
 
     window.checksley.updateValidators({
         linewidth: (val, width) ->

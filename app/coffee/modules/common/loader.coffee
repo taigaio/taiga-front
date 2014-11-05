@@ -41,7 +41,7 @@ LoaderDirective = (tgLoader, $rootscope) ->
             $el.removeClass("active")
 
         $rootscope.$on "$routeChangeSuccess", (e) ->
-            tgLoader.start()
+            tgLoader.startCurrentPageLoader()
 
         $rootscope.$on "$locationChangeSuccess", (e) ->
             tgLoader.reset()
@@ -55,38 +55,22 @@ module.directive("tgLoader", ["tgLoader", "$rootScope", LoaderDirective])
 Loader = () ->
     forceDisabled = false
 
-    defaultLog = {
-        request: {
-            count: 0,
-            time: 0
-        }
-        response: {
-            count: 0,
-            time: 0
-        }
-    }
-
     defaultConfig = {
         enabled: false,
-        minTime: 1000,
-        auto: false
+        minTime: 1000
     }
 
-    log = _.merge({}, defaultLog)
     config = _.merge({}, defaultConfig)
 
-    @.add = (auto = false) ->
+    @.add = () ->
         return () ->
             if !forceDisabled
-                config.auto = auto
                 config.enabled = true
 
     @.$get = ["$rootScope", ($rootscope) ->
-        interval = null
         startLoadTime = 0
 
         reset = () ->
-            log = _.merge({}, defaultLog)
             config = _.merge({}, defaultConfig)
 
         pageLoaded = (force = false) ->
@@ -102,27 +86,17 @@ Loader = () ->
 
                 timeout(timeoutValue, -> $rootscope.$broadcast("loader:end"))
 
+        start = () ->
+            startLoadTime = new Date().getTime()
+            $rootscope.$broadcast("loader:start")
+
         return {
-            reset: () ->
-                reset()
-
-            pageLoaded: () ->
-                pageLoaded()
-
-            start: () ->
+            reset: reset
+            pageLoaded: pageLoaded
+            start: start
+            startCurrentPageLoader: () ->
                 if config.enabled
-                    if config.auto
-                        interval = setInterval ( ->
-                            currentDate = new Date().getTime()
-
-                            if log.request.count == log.response.count && currentDate - log.response.time  > 200
-                                clearInterval(interval)
-                                pageLoaded()
-
-                        ), 100
-
-                    startLoadTime = new Date().getTime()
-                    $rootscope.$broadcast("loader:start")
+                    start()
                 else
                     pageLoaded(true)
 
@@ -131,14 +105,6 @@ Loader = () ->
 
             onEnd: (fn) ->
                 $rootscope.$on("loader:end", fn)
-
-            logRequest: () ->
-                log.request.count++
-                log.request.time = new Date().getTime()
-
-            logResponse: () ->
-                log.response.count++
-                log.response.time = new Date().getTime()
 
             preventLoading: () ->
                 forceDisabled = true
@@ -151,17 +117,3 @@ Loader = () ->
     return
 
 module.provider("tgLoader", [Loader])
-
-loaderInterceptor = (tgLoader) ->
-    return {
-        request: (config) ->
-            tgLoader.logRequest()
-
-            return config
-        response: (response) ->
-            tgLoader.logResponse()
-
-            return response
-    }
-
-module.factory('loaderInterceptor', ['tgLoader', loaderInterceptor])
