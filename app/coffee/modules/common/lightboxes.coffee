@@ -314,6 +314,19 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
                 if data._error_message
                     $confirm.notify("error", data._error_message)
 
+        $el.on "click", ".close", (event) ->
+            event.preventDefault()
+            $scope.$apply ->
+                $scope.us.revert()
+            lightboxService.close($el)
+
+        $el.keydown (event) ->
+            code = if event.keyCode then event.keyCode else event.which
+            if code == 27
+                lightboxService.close($el)
+                $scope.$apply ->
+                    $scope.us.revert()
+
         $scope.$on "$destroy", ->
             $el.off()
 
