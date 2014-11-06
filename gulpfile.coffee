@@ -66,6 +66,7 @@ paths.coffee = [
     paths.app + "coffee/modules/issues/*.coffee",
     paths.app + "coffee/modules/userstories/*.coffee",
     paths.app + "coffee/modules/tasks/*.coffee",
+    paths.app + "coffee/modules/team/*.coffee",
     paths.app + "coffee/modules/wiki/*.coffee",
     paths.app + "coffee/modules/admin/*.coffee",
     paths.app + "coffee/modules/projects/*.coffee",

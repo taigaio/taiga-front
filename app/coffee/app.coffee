@@ -63,6 +63,10 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     $routeProvider.when("/project/:pslug/wiki/:slug",
         {templateUrl: "/partials/wiki.html", resolve: {loader: tgLoaderProvider.add()}})
 
+    # Team
+    $routeProvider.when("/project/:pslug/team",
+        {templateUrl: "/partials/views/team/team.html", resolve: {loader: tgLoaderProvider.add()}})
+
     # Issues
     $routeProvider.when("/project/:pslug/issues",
         {templateUrl: "/partials/issues.html", resolve: {loader: tgLoaderProvider.add()}})
@@ -214,6 +218,7 @@ modules = [
     "taigaIssues",
     "taigaUserStories",
     "taigaTasks",
+    "taigaTeam",
     "taigaWiki",
     "taigaSearch",
     "taigaAdmin",
