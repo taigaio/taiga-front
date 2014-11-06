@@ -28,8 +28,11 @@ class RepositoryService extends taiga.Service
         super()
 
     resolveUrlForModel: (model) ->
-        idAttrName = model.getIdAttrName()
-        return "#{@urls.resolve(model.getName())}/#{model[idAttrName]}"
+        if model.parent
+            return @urls.resolve(model.getName(), model.parent)
+        else
+            idAttrName = model.getIdAttrName()
+            return "#{@urls.resolve(model.getName())}/#{model[idAttrName]}"
 
     create: (name, data, dataTypes={}, extraParams={}) ->
         defered = @q.defer()
@@ -89,6 +92,37 @@ class RepositoryService extends taiga.Service
 
         return defered.promise
 
+    saveAttribute: (model, attribute, patch=true) ->
+        defered = @q.defer()
+
+        if not model.isModified() and patch
+            defered.resolve(model)
+            return defered.promise
+
+        url = @.resolveUrlForModel(model)
+
+        data = {}
+
+        data[attribute] = model.getAttrs()
+
+        if patch
+            promise = @http.patch(url, data)
+        else
+            promise = @http.put(url, data)
+
+        promise.success (data, status) =>
+            model._isModified = false
+            model._attrs = _.extend(model.getAttrs(), data)
+            model._modifiedAttrs = {}
+
+            model.applyCasts()
+            defered.resolve(model)
+
+        promise.error (data, status) ->
+            defered.reject(data)
+
+        return defered.promise
+
     refresh: (model) ->
         defered = @q.defer()
 
@@ -114,6 +148,19 @@ class RepositoryService extends taiga.Service
 
         return @http.get(url, params, httpOptions).then (data) =>
             return _.map(data.data, (x) => @model.make_model(name, x))
+
+    queryOneAttribute: (name, id, attribute, params, options={}) ->
+        url = @urls.resolve(name, id)
+        httpOptions = {headers: {}}
+
+        if not options.enablePagination
+            httpOptions.headers["x-disable-pagination"] =  "1"
+
+        return @http.get(url, params, httpOptions).then (data) =>
+            model = @model.make_model(name, data.data[attribute])
+            model.parent = id
+
+            return model
 
     queryOne: (name, id, params, options={}) ->
         url = @urls.resolve(name)

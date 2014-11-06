@@ -57,6 +57,10 @@ class GithubController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
         promise.then null, @.onInitialDataError.bind(@)
 
+    loadModules: ->
+        return @rs.modules.list(@scope.projectId, "github").then (github) =>
+            @scope.github = github
+
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
             @scope.project = project
@@ -71,10 +75,10 @@ class GithubController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             return data
 
         return promise.then(=> @.loadProject())
+                      .then(=> @.loadModules())
 
 
 module.controller("GithubController", GithubController)
-
 
 SelectInputText =  ->
     link = ($scope, $el, $attrs) ->
@@ -85,3 +89,40 @@ SelectInputText =  ->
     return {link:link}
 
 module.directive("tgSelectInputText", SelectInputText)
+
+#############################################################################
+## GithubWebhooks Directive
+#############################################################################
+
+GithubWebhooksDirective = ($repo, $confirm, $loading, $navurls, $location) ->
+    link = ($scope, $el, $attrs) ->
+        form = $el.find("form").checksley({"onlyOneErrorElement": true})
+        submit = (target) =>
+            return if not form.validate()
+
+            $loading.start(target)
+
+            promise = $repo.saveAttribute($scope.github, "github")
+            promise.then ->
+                $loading.finish(target)
+                $confirm.notify("success")
+
+            promise.then null, (data) ->
+                $loading.finish(target)
+                form.setErrors(data)
+                if data._error_message
+                    $confirm.notify("error", data._error_message)
+
+
+        $el.on "click", "a.button-green", (event) ->
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+            submit(target)
+
+        $el.on "submit", "form", (event) ->
+            event.preventDefault()
+            submit()
+
+    return {link:link}
+
+module.directive("tgGithubWebhooks", ["$tgRepo", "$tgConfirm", "$tgLoading", "$tgNavUrls", "$tgLocation", GithubWebhooksDirective])

@@ -83,6 +83,7 @@ urls = {
     "issue-types": "/issue-types"
     "priorities": "/priorities"
     "severities": "/severities"
+    "project-modules": "/projects/%s/modules"
 
     # History
     "history/us": "/history/userstory"
@@ -138,5 +139,6 @@ module.run([
     "$tgMdRenderResourcesProvider",
     "$tgHistoryResourcesProvider",
     "$tgKanbanResourcesProvider",
+    "$tgModulesResourcesProvider",
     initResources
 ])
