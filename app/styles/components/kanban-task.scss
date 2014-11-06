@@ -28,13 +28,13 @@
     }
     .kanban-tagline {
         @include table-flex();
-        background: $postit-hover; //Fallback
-        //height: .3rem;
+        border-color: $postit-hover;
+        height: .6rem;
     }
     .kanban-tag {
         @include table-flex-child(1, 0, 0, 0);
-        background: $postit-hover; //Fallback
-        //height: .3rem;
+        border-color: $postit-hover;
+        height: .6rem;
     }
     .kanban-task-inner {
         @include table-flex();
@@ -127,17 +127,14 @@
             }
         }
     }
-    .kanban-tagline {
-        height: .3rem;
-    }
     .kanban-tag {
-        height: .3rem;
+        border-top: .3rem solid;
     }
 }
 
 .kanban-task-minimized {
     .kanban-task-inner {
-        padding: .3rem;
+        padding: 0 .3rem;
     }
     .avatar {
         @include table-flex-child($flex-basis: 40px);
@@ -169,10 +166,7 @@
         cursor: move;
         right: .1rem;
     }
-    .kanban-tagline {
-        height: .2rem;
-    }
     .kanban-tag {
-        height: .2rem;
+        border-top: .2rem solid;
     }
 }
