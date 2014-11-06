@@ -7,6 +7,7 @@
     }
     .attribute {
         @include table-flex-child(1, 0, 0);
+        position: relative;
         text-align: center;
         .icon,
         .points {
@@ -20,6 +21,11 @@
         .top {
             color: $fresh-taiga;
             opacity: 1;
+        }
+        &:hover {
+            .popover {
+                display: block;
+            }
         }
     }
     .team-header {
@@ -40,7 +46,7 @@
         }
         figcaption {
             margin-left: 1rem;
-            width: 75%;
+            width: 65%;
             span {
                 overflow: hidden;
                 text-overflow: ellipsis;
@@ -59,5 +65,9 @@
         .position {
             color: $gray-light;
         }
+    }
+    .popover {
+        @include popover(100%, '', 0, 30px, '', 15px, '', 50%, -5px);
+        @extend %small;
     }
 }
