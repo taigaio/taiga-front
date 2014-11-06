@@ -5,4 +5,6 @@ block head
 
 block content
     div.wrapper(ng-controller="TeamController as ctrl", ng-init="section='team'")
-        div Team
+        sidebar.menu-secondary
+            include ../modules/team/team-filters
+        section.main.backlog

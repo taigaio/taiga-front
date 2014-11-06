@@ -129,6 +129,9 @@ exports.files = function () {
         'modules/user-settings/user-change-password',
         'modules/user-settings/mail-notifications-table',
 
+        //Team
+        'modules/team/team-filters',
+
         //#################################################
         //             Help
         //#################################################
