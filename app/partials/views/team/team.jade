@@ -7,4 +7,6 @@ block content
     div.wrapper(ng-controller="TeamController as ctrl", ng-init="section='team'")
         sidebar.menu-secondary
             include ../modules/team/team-filters
-        section.main.backlog
+        section.main.team
+            include ../components/mainTitle
+            include ../modules/team/team-table

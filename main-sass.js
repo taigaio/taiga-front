@@ -28,6 +28,7 @@ exports.files = function () {
         'layout/issues',
         'layout/wiki',
         'layout/wiki-edit',
+        'layout/team',
 
         //#################################################
         //             components
@@ -131,6 +132,7 @@ exports.files = function () {
 
         //Team
         'modules/team/team-filters',
+        'modules/team/team-table',
 
         //#################################################
         //             Help

@@ -1,0 +1,63 @@
+.table-team {
+    .row {
+        padding: .5rem;
+    }
+    .username {
+        @include table-flex-child(3, 0, 0);
+    }
+    .attribute {
+        @include table-flex-child(1, 0, 0);
+        text-align: center;
+        .icon,
+        .points {
+            @extend %xlarge;
+            color: $grayer;
+        }
+        .points {
+            @extend %title;
+            @extend %bold;
+        }
+        .top {
+            color: $fresh-taiga;
+            opacity: 1;
+        }
+    }
+    .team-header {
+        @extend %title;
+        @extend %bold;
+        border-bottom: 0;
+    }
+    .hero {
+        background: $very-light-gray;
+        border-bottom: 0;
+        margin: 1rem 0;
+    }
+    .avatar {
+        @include table-flex(stretch, center, flex, row, wrap, flex-start);
+        img {
+            @include table-flex-child(1, 66px, 0);
+            max-width: 66px;
+        }
+        figcaption {
+            margin-left: 1rem;
+            width: 75%;
+            span {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                width: 100%;
+            }
+        }
+        .name,
+        .position {
+            display: block;
+            width: 100%;
+        }
+        .name {
+            @extend %bold;
+        }
+        .position {
+            color: $gray-light;
+        }
+    }
+}
