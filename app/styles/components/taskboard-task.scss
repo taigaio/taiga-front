@@ -34,20 +34,19 @@
     }
     .taskboard-tagline {
         @include table-flex();
-        border-color: $postit-hover; //Fallback
+        border-color: $postit-hover;
         height: .6rem;
     }
     .taskboard-tag {
         @include table-flex-child(1, 0, 0, 0);
-        border-color: $postit-hover; //Fallback
-        z-index: 100;
+        border-top: .3rem solid $postit-hover;
         height: .6rem;
-        border-top: .3rem solid;
+        z-index: 100;
     }
     .taskboard-task-inner {
         @include table-flex();
-        min-height: 7.5rem;
-        padding: 1rem .5rem;
+        min-height: 7rem;
+        padding: .5rem;
     }
     .taskboard-user-avatar {
         .avatar {

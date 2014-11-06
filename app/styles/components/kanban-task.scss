@@ -28,13 +28,12 @@
     }
     .kanban-tagline {
         @include table-flex();
-        border-color: $postit-hover; //Fallback
+        border-color: $postit-hover;
         height: .6rem;
     }
     .kanban-tag {
         @include table-flex-child(1, 0, 0, 0);
-        border-color: $postit-hover; //Fallback
-        z-index: 100;
+        border-color: $postit-hover;
         height: .6rem;
     }
     .kanban-task-inner {
@@ -135,7 +134,7 @@
 
 .kanban-task-minimized {
     .kanban-task-inner {
-        padding: .3rem;
+        padding: 0 .3rem;
     }
     .avatar {
         @include table-flex-child($flex-basis: 40px);
