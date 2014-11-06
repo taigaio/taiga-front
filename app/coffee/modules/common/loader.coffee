@@ -97,8 +97,6 @@ Loader = () ->
             startCurrentPageLoader: () ->
                 if config.enabled
                     start()
-                else
-                    pageLoaded(true)
 
             onStart: (fn) ->
                 $rootscope.$on("loader:start", fn)
