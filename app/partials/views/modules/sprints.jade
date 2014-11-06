@@ -19,13 +19,13 @@ section.sprints
 
         div.sprint-table(tg-sprint-sortable)
             div.row.milestone-us-item-row(ng-repeat="us in sprint.user_stories track by us.id")
-                div.column-us.width-8
+                div.column-us
                     a.us-name.clickable(tg-nav="project-userstories-detail:project=project.slug,ref=us.ref",
                                         tg-bo-title="'#' + us.ref + ' ' +  us.subject",
-                                        ng-class="{closed: us.is_closed}")
+                                        ng-class="{closed: us.is_closed, blocked: us.is_blocked}")
                         span(tg-bo-ref="us.ref")
                         span(tg-bo-bind="us.subject")
-                div.column-points.width-1(tg-bo-bind="us.total_points", ng-class="{closed: us.is_closed}")
+                div.column-points.width-1(tg-bo-bind="us.total_points", ng-class="{closed: us.is_closed, blocked: us.is_blocked}")
 
         a.button.button-gray(tg-bo-title="'Go to Taskboard of ' + sprint.name",
                              tg-nav="project-taskboard:project=project.slug,sprint=sprint.slug",

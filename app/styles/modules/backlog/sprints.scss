@@ -143,11 +143,22 @@
                 background: lighten($green-taiga, 60%);
                 box-shadow: 1px 1px 10px rgba($black, .1);
             }
+
         }
         .column-us {
             @include table-flex-child(3, 0, 0);
             @extend %small;
             padding: 0 4px;
+        }
+        .us-name {
+            @include ellipsis(250px);
+            display: block;
+            &.closed {
+                color: lighten($gray-light, 5%);
+            }
+            &.blocked {
+                color: $red;
+            }
         }
         .column-points {
             @include table-flex-child(1, 0, 0);
@@ -156,12 +167,8 @@
             &.closed {
                 color: lighten($gray-light, 5%);
             }
-        }
-        .us-name {
-            @include ellipsis(250px);
-            display: block;
-            &.closed {
-                color: lighten($gray-light, 5%);
+            &.blocked {
+                color: $red;
             }
         }
     }
