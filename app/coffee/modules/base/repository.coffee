@@ -28,11 +28,11 @@ class RepositoryService extends taiga.Service
         super()
 
     resolveUrlForModel: (model) ->
-        if model.parent
-            return @urls.resolve(model.getName(), model.parent)
-        else
-            idAttrName = model.getIdAttrName()
-            return "#{@urls.resolve(model.getName())}/#{model[idAttrName]}"
+        idAttrName = model.getIdAttrName()
+        return "#{@urls.resolve(model.getName())}/#{model[idAttrName]}"
+
+    resolveUrlForAttributeModel: (model) ->
+        return @urls.resolve(model.getName(), model.parent)
 
     create: (name, data, dataTypes={}, extraParams={}) ->
         defered = @q.defer()
@@ -99,7 +99,7 @@ class RepositoryService extends taiga.Service
             defered.resolve(model)
             return defered.promise
 
-        url = @.resolveUrlForModel(model)
+        url = @.resolveUrlForAttributeModel(model)
 
         data = {}
 

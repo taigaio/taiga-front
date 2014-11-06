@@ -113,7 +113,6 @@ GithubWebhooksDirective = ($repo, $confirm, $loading, $navurls, $location) ->
                 if data._error_message
                     $confirm.notify("error", data._error_message)
 
-
         $el.on "click", "a.button-green", (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
