@@ -57,6 +57,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
         @scope.sectionName = "Backlog"
         @showTags = false
+        @activeFilters = false
 
         @.initializeEventHandlers()
 
@@ -122,6 +123,9 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             @showTags = !@showTags
             @rs.userstories.storeShowTags(@scope.projectId, @showTags)
 
+    toggleActiveFilters: ->
+        @activeFilters = !@activeFilters
+
     loadProjectStats: ->
         return @rs.projects.stats(@scope.projectId).then (stats) =>
             @scope.stats = stats
@@ -150,21 +154,20 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             return sprints
 
     resetFilters: ->
-        @scope.$apply =>
-            selectedTags = _.filter(@scope.filters.tags, "selected")
-            selectedStatuses = _.filter(@scope.filters.statuses, "selected")
+        selectedTags = _.filter(@scope.filters.tags, "selected")
+        selectedStatuses = _.filter(@scope.filters.statuses, "selected")
 
-            @scope.filtersQ = ""
+        @scope.filtersQ = ""
 
-            _.each [selectedTags, selectedStatuses], (filterGrp) =>
-                _.each filterGrp, (item) =>
-                    filters = @scope.filters[item.type]
-                    filter = _.find(filters, {id: taiga.toString(item.id)})
-                    filter.selected = false
+        _.each [selectedTags, selectedStatuses], (filterGrp) =>
+            _.each filterGrp, (item) =>
+                filters = @scope.filters[item.type]
+                filter = _.find(filters, {id: taiga.toString(item.id)})
+                filter.selected = false
 
-                    @.unselectFilter(item.type, item.id)
+                @.unselectFilter(item.type, item.id)
 
-            @.loadUserstories()
+        @.loadUserstories()
 
     loadUserstories: ->
         @scope.httpParams = @.getUrlFilters()
@@ -623,13 +626,16 @@ BacklogDirective = ($repo, $rootscope) ->
         if !sidebar.hasClass("active")
             $ctrl.resetFilters()
 
+        $ctrl.toggleActiveFilters()
+
     ## Filters Link
 
     linkFilters = ($scope, $el, $attrs, $ctrl) ->
         $scope.filtersSearch = {}
         $el.on "click", "#show-filters-button", (event) ->
             event.preventDefault()
-            showHideFilter($scope, $el, $ctrl)
+            $scope.$apply ->
+                showHideFilter($scope, $el, $ctrl)
 
     link = ($scope, $el, $attrs, $rootscope) ->
         $ctrl = $el.controller()
