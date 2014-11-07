@@ -776,15 +776,18 @@ UsPointsDirective = ($repo) ->
         if numberOfRoles == 1
             selectedRoleId = _.keys(us.points)[0]
 
+        roles = []
+        updatePointsRoles = ->
+            roles = _.map computableRoles, (role) ->
+                pointId = us.points[role.id]
+                pointObj = $scope.pointsById[pointId]
+
+                role = _.clone(role, true)
+                role.points = if pointObj.value? then pointObj.value else "?"
+                return role
+
         computableRoles = _.filter($scope.project.roles, "computable")
-
-        roles = _.map computableRoles, (role) ->
-            pointId = us.points[role.id]
-            pointObj = $scope.pointsById[pointId]
-
-            role = _.clone(role, true)
-            role.points = if pointObj.value? then pointObj.value else "?"
-            return role
+        updatePointsRoles()
 
         if roles.length == 0
             $el.find(".icon-arrow-bottom").remove()
@@ -813,6 +816,8 @@ UsPointsDirective = ($repo) ->
             $el.find(".pop-points-open").popover().open()
 
         renderRolesSelector = (us) ->
+            updatePointsRoles()
+
             html = rolesTemplate({"roles": roles})
 
             # Render into DOM and show the new created element
