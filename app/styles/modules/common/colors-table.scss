@@ -31,9 +31,6 @@
                 cursor: pointer;
             }
         }
-        div {
-            position: relative;
-        }
         .color-column {
             @include table-flex-child(1, 60px, 0);
             max-width: 100px;
