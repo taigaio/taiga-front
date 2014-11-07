@@ -4,7 +4,7 @@ div.kanban-task-inner
     div.task-text
         a.task-assigned(href="", title="Assign User Story")
         span.task-num(tg-bo-ref="us.ref")
-        a.task-name(href="", tg-bo-title="us.subject", ng-bind="us.subject",
+        a.task-name(href="", title="See user story detail", ng-bind="us.subject",
                     tg-nav="project-userstories-detail:project=project.slug,ref=us.ref")
         a.task-points(href="", title="Total Us points")
             span(ng-bind="us.total_points") --
