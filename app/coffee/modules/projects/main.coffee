@@ -91,6 +91,7 @@ class ProjectController extends taiga.Controller
 
         promise.then () =>
             @appTitle.set(@scope.project.name)
+            @scope.$emit("regenerate:project-pagination")
 
         promise.then null, @.onInitialDataError.bind(@)
 
@@ -123,91 +124,160 @@ module.controller("ProjectController", ProjectController)
 
 ProjectsPaginationDirective = ($timeout) ->
     link = ($scope, $el, $attrs) ->
-        bindOnce $scope, "projects", (projects) ->
-            container = nextBtn = prevBtn = null
-            pageSize = 0
-            containerSize = 0
+        prevBtn = $el.find(".v-pagination-previous")
+        nextBtn = $el.find(".v-pagination-next")
+        container = $el.find("ul")
 
-            renderNextAndPrev  = ->
-                if projects.length
-                    pageSize = $el.find(".v-pagination-list").height()
-                    containerSize = container.height()
-                    if containerSize > pageSize
+        pageSize = 0
+        containerSize = 0
+
+        render  = ->
+            pageSize = $el.find(".v-pagination-list").height()
+
+            if container.find("li").length
+                if hasPagination()
+                    if hasNextPage()
                         visible(nextBtn)
                     else
-                        remove()
+                        hide(nextBtn)
+
+                    if hasPrevPage()
+                        visible(prevBtn)
+                    else
+                        hide(prevBtn)
                 else
                     remove()
+            else
+                remove()
 
-            nextPage = (element, pageSize, callback) ->
-                top = parseInt(element.css('top'), 10)
-                newTop = top - pageSize
+        hasPagination = ->
+            containerSize = container.height()
 
-                element.animate({"top": newTop}, callback)
+            return containerSize > pageSize
 
-                return newTop
+        hasPrevPage = (top) ->
+            if !top?
+                top = -parseInt(container.css('top'), 10) || 0
 
-            prevPage = (element, pageSize, callback) ->
-                top = parseInt(element.css('top'), 10)
-                newTop = top + pageSize
+            return top != 0
 
-                element.animate({"top": newTop}, callback)
+        hasNextPage = (top) ->
+            containerSize = container.height()
 
-                return newTop
+            if !top
+                top = -parseInt(container.css('top'), 10) || 0
 
-            visible = (element) ->
-                element.css('visibility', 'visible')
+            return containerSize > pageSize && top + pageSize < containerSize
 
-            hide = (element) ->
-                element.css('visibility', 'hidden')
+        nextPage = (callback) ->
+            top = parseInt(container.css('top'), 10)
+            newTop = top - pageSize
 
-            remove = () ->
-                container.css('top', 0)
+            lastLi = $el.find(".v-pagination-list li:last-child")
+            maxTop = -((lastLi.position().top + lastLi.outerHeight()) - pageSize)
+
+            newTop = maxTop if newTop < maxTop
+
+            container.animate({"top": newTop}, callback)
+
+            return newTop
+
+        prevPage = (callback) ->
+            top = parseInt(container.css('top'), 10)
+
+            newTop = top + pageSize
+
+            newTop = 0 if newTop > 0
+
+            container.animate({"top": newTop}, callback)
+
+            return newTop
+
+        visible = (element) ->
+            element.css('visibility', 'visible')
+
+        hide = (element) ->
+            element.css('visibility', 'hidden')
+
+        checkButtonVisibility = () ->
+
+        remove = () ->
+            container.css('top', 0)
+            hide(prevBtn)
+            hide(nextBtn)
+
+        $el.on "click", ".v-pagination-previous", (event) ->
+            event.preventDefault()
+
+            if container.is(':animated')
+                return
+
+            visible(nextBtn)
+
+            newTop = prevPage()
+
+            if !hasPrevPage(newTop)
                 hide(prevBtn)
+
+        $el.on "click", ".v-pagination-next", (event) ->
+            event.preventDefault()
+
+            if container.is(':animated')
+                return
+
+            visible(prevBtn)
+
+            newTop = -nextPage()
+
+            if !hasNextPage(newTop)
                 hide(nextBtn)
 
-            $el.on "click", ".v-pagination-previous", (event) ->
-                event.preventDefault()
+        $scope.$on "regenerate:project-pagination", ->
+            remove()
+            render()
 
-                if container.is(':animated')
-                    return
+        $(window).on "resize.projects-pagination", render
 
-                visible(nextBtn)
-
-                newTop = prevPage(container, pageSize)
-
-                if newTop == 0
-                    hide(prevBtn)
-
-            $el.on "click", ".v-pagination-next", (event) ->
-                event.preventDefault()
-
-                if container.is(':animated')
-                    return
-
-                visible(prevBtn)
-
-                newTop = nextPage(container, pageSize)
-
-                if -newTop + pageSize > containerSize
-                    hide(nextBtn)
-
-            $el.on "regenerate:pagination", () =>
-                renderNextAndPrev()
-
-            #wait digest end
-            $timeout () =>
-                prevBtn = $el.find(".v-pagination-previous")
-                nextBtn = $el.find(".v-pagination-next")
-                container = $el.find("ul")
-
-                renderNextAndPrev()
+        $scope.$on "$destroy", ->
+            $(window).off "resize.projects-pagination"
 
     return {
-        link: link,
-        scope: {
-            projects: "="
-        }
+        link: link
     }
 
 module.directive("tgProjectsPagination", ['$timeout', ProjectsPaginationDirective])
+
+ProjectsListDirective = ($compile) ->
+    template = _.template("""
+        <div tg-projects-pagination>
+            <div class="projects-pagination">
+                <a class="v-pagination-previous icon icon-arrow-up" href=""></a>
+                <div class="v-pagination-list">
+                    <ul class="projects-list">
+                        <% _.each(projects, function(project) { %>
+                        <li>
+                            <a class="button" href="<%- project.url %>">
+                                <%- project.name %>
+                            </a>
+                        </li>
+                        <% }) %>
+                    </ul>
+                </div>
+                <a class="v-pagination-next icon icon-arrow-bottom" href=""></a>
+            </div>
+        </div>
+    """)
+
+    link = ($scope, $el, $attrs, $ctrls) ->
+        render = (projects) ->
+            $el.html($compile(template({projects: projects}))($scope))
+            $scope.$emit("regenerate:project-pagination")
+
+        $scope.$watch "projects", (projects) ->
+            render(projects) if projects?
+
+    return {
+        link: link
+    }
+
+module.directive("tgProjectsList", ["$compile", ProjectsListDirective])

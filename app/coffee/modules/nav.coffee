@@ -71,7 +71,7 @@ class ProjectsNavigationController extends taiga.Controller
 module.controller("ProjectsNavigationController", ProjectsNavigationController)
 
 
-ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout, tgLoader, $location) ->
+ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout, tgLoader, $location, $compile) ->
     baseTemplate = _.template("""
     <h1>Your projects</h1>
     <form>
@@ -87,7 +87,7 @@ ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout, tgLoader, $
         </a>
     </div>
 
-    <div class="projects-pagination">
+    <div class="projects-pagination" tg-projects-pagination>
         <a class="v-pagination-previous icon icon-arrow-up " href=""></a>
         <div class="v-pagination-list">
             <ul class="projects-list">
@@ -128,18 +128,20 @@ ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout, tgLoader, $
 
                 tgLoader.disablePreventLoading()
 
-    renderProjects  = ($el, projects) ->
-        html = projectsTemplate({projects: projects})
-        $el.find(".projects-list").html(html)
-
-    render = ($el, projects) ->
-        html = baseTemplate()
-        $el.html(html)
-        renderProjects($el, projects)
 
     link = ($scope, $el, $attrs, $ctrls) ->
         $ctrl = $ctrls[0]
         $rootscope.$on("project:loaded", hideMenu)
+
+        renderProjects  = (projects) ->
+            html = projectsTemplate({projects: projects})
+            $el.find(".projects-list").html(html)
+
+            $scope.$emit("regenerate:project-pagination")
+
+        render = (projects) ->
+            $el.html($compile(baseTemplate())($scope))
+            renderProjects(projects)
 
         overlay.on 'click', () ->
             hideMenu()
@@ -184,10 +186,9 @@ ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout, tgLoader, $
 
         $scope.$on "projects:filtered", ->
             renderProjects($el, $scope.filteredProjects)
-            $el.trigger("regenerate:pagination")
 
         $scope.$watch "projects", (projects) ->
-            render($el, projects) if projects?
+            render(projects) if projects?
 
     return {
         require: ["tgProjectsNav"]
@@ -196,8 +197,7 @@ ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout, tgLoader, $
     }
 
 
-module.directive("tgProjectsNav", ["$rootScope", "animationFrame", "$timeout", "tgLoader", "$tgLocation",
-                                   ProjectsNavigationDirective])
+module.directive("tgProjectsNav", ["$rootScope", "animationFrame", "$timeout", "tgLoader", "$tgLocation", "$compile", ProjectsNavigationDirective])
 
 
 #############################################################################
