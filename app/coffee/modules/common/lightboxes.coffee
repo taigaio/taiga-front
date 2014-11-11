@@ -211,9 +211,9 @@ BlockingMessageInputDirective = ($log) ->
 
         $scope.$watch $attrs.watch, (value) ->
             if value is not undefined and value == true
-                $el.find(".blocked-note").show(400)
+                $el.find(".blocked-note").removeClass("hidden")
             else
-                $el.find(".blocked-note").hide(400)
+                $el.find(".blocked-note").addClass("hidden")
 
     templateFn = ($el, $attrs) ->
         return template({ngmodel: $attrs.ngModel})
@@ -252,7 +252,7 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
             $el.find(".button-green span").html("Create") #TODO: i18n
             $el.find(".title").html("New user story  ") #TODO: i18n
 
-            $el.find(".blocked-note").hide()
+            $el.find(".blocked-note").addClass("hidden")
             $el.find("label.blocked").removeClass("selected")
             $el.find("label.team-requirement").removeClass("selected")
             $el.find("label.client-requirement").removeClass("selected")
@@ -269,10 +269,10 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
 
             # Update requirement info (team, client or blocked)
             if us.is_blocked
-                $el.find(".blocked-note").show()
+                $el.find(".blocked-note").removeClass("hidden")
                 $el.find("label.blocked").addClass("selected")
             else
-                $el.find(".blocked-note").hide()
+                $el.find(".blocked-note").addClass("hidden")
                 $el.find("label.blocked").removeClass("selected")
 
             if us.team_requirement
