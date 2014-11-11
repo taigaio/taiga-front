@@ -59,6 +59,25 @@ $column-margin: 0 10px 0 0;
                 opacity: 1;
             }
         }
+        &.blocked {
+            .taskboard-userstory-box {
+                background: rgba($red, .6);
+                border-radius: 3px;
+                a,
+                .points-value {
+                    @include transition(color .3s linear);
+                    color: rgba($white, .9);
+                    &:hover {
+                        @include transition(color .3s linear);
+                        color: rgba($white, 1);
+                    }
+                }
+            }
+            .taskboard-tasks-box {
+                //@include filter(saturate(20%));
+                background: rgba($red, .1);
+            }
+        }
     }
     .taskboard-tasks-box {
         background: $whitish;
@@ -66,6 +85,7 @@ $column-margin: 0 10px 0 0;
     }
 
     .taskboard-userstory-box {
+        padding: .5rem;
         .icon {
             @include transition(color .2s linear);
             color: $gray-light;
