@@ -8,10 +8,10 @@ div.taskboard-table
 
     div.taskboard-table-body(tg-taskboard-table-height-fixer)
         div.taskboard-table-inner(tg-taskboard-row-width-fixer)
-            div.task-row(ng-repeat="us in userstories track by us.id")
-                div.taskboard-userstory-box.task-column
+            div.task-row(ng-repeat="us in userstories track by us.id", ng-class="{blocked: us.is_blocked}")
+                div.taskboard-userstory-box.task-column(tg-bo-title="us.blocked_note")
                     div.tag-list
-                        span.tag(ng-repeat="tag in us.tags") {{ tag }}
+                        span.tag(ng-repeat="tag in us.tags", tg-bo-bind="tag")
                     h3.us-title
                         a(href="", tg-nav="project-userstories-detail:project=project.slug,ref=us.ref",
                           tg-bo-title="'#' + us.ref + ' ' + us.subject")
