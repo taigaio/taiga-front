@@ -47,8 +47,8 @@ GithubLoginButtonDirective = ($window, $params, $location, $config, $events, $co
     """ #TODO: i18n
 
     link = ($scope, $el, $attrs) ->
-        redirectToUri = $location.absUrl()
         clientId = $config.get("gitHubClientId", null)
+        return if not clientId
 
         renderGitHubButton = ->
             $el.html(template) if clientId
@@ -93,6 +93,7 @@ GithubLoginButtonDirective = ($window, $params, $location, $config, $events, $co
         loginWithGitHubAccount()
 
         $el.on "click", ".button-github", (event) ->
+            redirectToUri = $location.absUrl()
             url = "#{AUTH_URL}?client_id=#{clientId}&redirect_uri=#{redirectToUri}&state=github&scope=user:email"
             $window.location.href = url
 
