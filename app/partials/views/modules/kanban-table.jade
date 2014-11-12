@@ -1,24 +1,26 @@
-div.kanban-table
+div.kanban-table //-.fold
     div.kanban-table-header
         div.kanban-table-inner(tg-kanban-row-width-fixer)
             h2.task-colum-name(ng-repeat="s in usStatusList track by s.id",
                                ng-style="{'border-top-color':s.color}")
                 span(tg-bo-bind="s.name")
+                div.options
+                    a.icon.icon-vfold.hfold(href="", title="Fold")
+                    a.icon.icon-vunfold.hunfold(href="", title="Unfold") //-.hidden
+                    a.icon.icon-vfold(href="", title="Minimize",
+                                         ng-if="statusViewModes[s.id] == 'maximized'",
+                                         ng-click="ctrl.updateStatusViewMode(s.id, 'minimized')")
+                    a.icon.icon-vunfold(href="", title="Maximize",
+                                         ng-if="statusViewModes[s.id] == 'minimized'",
+                                         ng-click="ctrl.updateStatusViewMode(s.id, 'maximized')")
 
-                a.icon.icon-minimize(href="", title="Minimize",
-                                     ng-if="statusViewModes[s.id] == 'maximized'",
-                                     ng-click="ctrl.updateStatusViewMode(s.id, 'minimized')")
-                a.icon.icon-maximize(href="", title="Maximize",
-                                     ng-if="statusViewModes[s.id] == 'minimized'",
-                                     ng-click="ctrl.updateStatusViewMode(s.id, 'maximized')")
+                    a.icon.icon-plus(href="", title="Add New task",
+                                     ng-click="ctrl.addNewUs('standard', s.id)",
+                                     tg-check-permission="add_us")
 
-                a.icon.icon-plus(href="", title="Add New task",
-                                 ng-click="ctrl.addNewUs('standard', s.id)",
-                                 tg-check-permission="add_us")
-
-                a.icon.icon-bulk(href="", title="Add New bulk",
-                                 ng-click="ctrl.addNewUs('bulk', s.id)",
-                                 tg-check-permission="add_us")
+                    a.icon.icon-bulk(href="", title="Add New bulk",
+                                     ng-click="ctrl.addNewUs('bulk', s.id)",
+                                     tg-check-permission="add_us")
 
     div.kanban-table-body
         div.kanban-table-inner(tg-kanban-row-width-fixer)

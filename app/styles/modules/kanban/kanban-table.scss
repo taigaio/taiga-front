@@ -8,6 +8,37 @@ $column-margin: 0 10px 0 0;
 .kanban-table {
     overflow: hidden;
     width: 100%;
+    &.fold {
+        @include table-flex();
+        .task-colum-name {
+            @include transition(opacity .3s linear);
+            cursor: pointer;
+            opacity: .8;
+            &:hover {
+                @include transition(opacity .3s linear);
+                opacity: 1;
+            }
+        }
+        .task-colum-name,
+        .task-column {
+            @include table-flex-child(1, 0, 0);
+            border: 0;
+            max-width: 30px;
+            min-height: 2.5rem;
+            width: 30px;
+        }
+        .kanban-table-header {
+            .task-colum-name {
+                div,
+                span {
+                    display: none;
+                }
+            }
+        }
+        .kanban-task {
+            display: none;
+        }
+    }
 }
 
 .kanban-table-header {
@@ -21,33 +52,30 @@ $column-margin: 0 10px 0 0;
     }
     .task-colum-name {
         @include table-flex-child();
+        @include table-flex();
+        @include justify-content(space-between);
         @extend %large;
         background: $whitish;
         border-top: 3px solid $gray-light;
         margin: $column-margin;
-        padding: .5rem 0;
+        padding: .5rem .5rem .5rem 1rem;
         position: relative;
-        text-align: center;
         text-transform: uppercase;
         &:last-child {
             margin-right: 0;
         }
         .icon {
+            @extend %medium;
             @include transition(color .2s linear);
             color: $gray-light;
-            position: absolute;
-            right: .5rem;
-            top: .5rem;
+            margin-right: .3rem;
             &:hover {
                 color: $green-taiga;
             }
-            &.icon-plus {
-                right: 2rem;
-            }
-            &.icon-maximize,
-            &.icon-minimize {
-                left: .5rem;
-                right: inherit;
+            &.hfold,
+            &.hunfold {
+                @include transform(rotate(90deg));
+                display: inline-block;
             }
         }
     }
