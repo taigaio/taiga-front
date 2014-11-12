@@ -16,14 +16,12 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: modules/admin/memberships.coffee
+# File: modules/admin/third-parties.coffee
 ###
 
 taiga = @.taiga
 
 mixOf = @.taiga.mixOf
-bindOnce = @.taiga.bindOnce
-debounce = @.taiga.debounce
 
 module = angular.module("taigaAdmin")
 
@@ -38,12 +36,10 @@ class GithubController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         "$tgRepo",
         "$tgResources",
         "$routeParams",
-        "$q",
-        "$tgNavUrls",
         "$appTitle"
     ]
 
-    constructor: (@scope, @repo, @rs, @params, @q, @navUrls, @appTitle) ->
+    constructor: (@scope, @repo, @rs, @params, @appTitle) ->
         _.bindAll(@)
 
         @scope.sectionName = "Github" #i18n
@@ -94,7 +90,7 @@ module.directive("tgSelectInputText", SelectInputText)
 ## GithubWebhooks Directive
 #############################################################################
 
-GithubWebhooksDirective = ($repo, $confirm, $loading, $navurls, $location) ->
+GithubWebhooksDirective = ($repo, $confirm, $loading) ->
     link = ($scope, $el, $attrs) ->
         form = $el.find("form").checksley({"onlyOneErrorElement": true})
         submit = (target) =>
@@ -124,4 +120,4 @@ GithubWebhooksDirective = ($repo, $confirm, $loading, $navurls, $location) ->
 
     return {link:link}
 
-module.directive("tgGithubWebhooks", ["$tgRepo", "$tgConfirm", "$tgLoading", "$tgNavUrls", "$tgLocation", GithubWebhooksDirective])
+module.directive("tgGithubWebhooks", ["$tgRepo", "$tgConfirm", "$tgLoading", GithubWebhooksDirective])
