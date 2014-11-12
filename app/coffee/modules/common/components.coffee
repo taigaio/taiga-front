@@ -175,6 +175,7 @@ WatchersDirective = ($rootscope, $confirm, $repo) ->
     <% }; %>
 
     <% _.each(watchers, function(watcher) { %>
+    <% if(watcher) { %>
     <div class="watcher-single">
         <div class="watcher-avatar">
             <span class="avatar" href="" title="<%- watcher.full_name_display %>">
@@ -191,6 +192,7 @@ WatchersDirective = ($rootscope, $confirm, $repo) ->
             <% }; %>
         </div>
     </div>
+    <% } %>
     <% }); %>
     """)
 
@@ -214,6 +216,7 @@ WatchersDirective = ($rootscope, $confirm, $repo) ->
                 watchers: watchers
                 isEditable: isEditable()
             }
+
             html = template(ctx)
             $el.html(html)
 
