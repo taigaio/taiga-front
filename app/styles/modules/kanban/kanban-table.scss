@@ -8,9 +8,8 @@ $column-margin: 0 10px 0 0;
 .kanban-table {
     overflow: hidden;
     width: 100%;
-    &.fold {
-        @include table-flex();
-        .task-colum-name {
+    .fold {
+        &.task-colum-name {
             @include transition(opacity .3s linear);
             cursor: pointer;
             opacity: .8;
@@ -18,22 +17,18 @@ $column-margin: 0 10px 0 0;
                 @include transition(opacity .3s linear);
                 opacity: 1;
             }
+            div,
+            span {
+                display: none;
+            }
         }
-        .task-colum-name,
-        .task-column {
+        &.task-colum-name,
+        &.task-column {
             @include table-flex-child(1, 0, 0);
             border: 0;
             max-width: 30px;
             min-height: 2.5rem;
             width: 30px;
-        }
-        .kanban-table-header {
-            .task-colum-name {
-                div,
-                span {
-                    display: none;
-                }
-            }
         }
         .kanban-task {
             display: none;

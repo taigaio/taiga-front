@@ -1,16 +1,15 @@
-div.kanban-table //-.fold
+div.kanban-table
     div.kanban-table-header
         div.kanban-table-inner(tg-kanban-row-width-fixer)
-            h2.task-colum-name(ng-repeat="s in usStatusList track by s.id",
-                               ng-style="{'border-top-color':s.color}")
+            h2.task-colum-name(ng-repeat="s in usStatusList track by s.id", ng-style="{'border-top-color':s.color}") //Add '.fold' class here if folded
                 span(tg-bo-bind="s.name")
                 div.options
-                    a.icon.icon-vfold.hfold(href="", title="Fold")
-                    a.icon.icon-vunfold.hunfold(href="", title="Unfold") //-.hidden
-                    a.icon.icon-vfold(href="", title="Minimize",
+                    a.icon.icon-vfold.hfold(href="", title="Fold Column") //Toggle hidden class if folded
+                    a.icon.icon-vunfold.hunfold.hidden(href="", title="Unfold Column") //Toggle hidden class if folded
+                    a.icon.icon-vfold(href="", title="Fold Cards",
                                          ng-if="statusViewModes[s.id] == 'maximized'",
                                          ng-click="ctrl.updateStatusViewMode(s.id, 'minimized')")
-                    a.icon.icon-vunfold(href="", title="Maximize",
+                    a.icon.icon-vunfold(href="", title="Unfold Cards",
                                          ng-if="statusViewModes[s.id] == 'minimized'",
                                          ng-click="ctrl.updateStatusViewMode(s.id, 'maximized')")
 
@@ -27,7 +26,7 @@ div.kanban-table //-.fold
             div.kanban-uses-box.task-column(ng-repeat="status in usStatusList track by status.id",
                                             tg-kanban-sortable,
                                             tg-kanban-wip-limit,
-                                            tg-kanban-column-height-fixer)
+                                            tg-kanban-column-height-fixer) //Add '.fold' class here if folded
                 div.kanban-task(ng-repeat="us in usByStatus[status.id] track by us.id",
                                 tg-kanban-userstory, ng-model="us",
                                 ng-class="ctrl.getCardClass(status.id)")
