@@ -5,36 +5,7 @@ section.team-filters
 
         form.search-in
             fieldset
-                input(type="text", placeholder="Search by username or role...")
+                input(type="text", placeholder="Search by username or role...", ng-model="filtersQ")
                 a.icon.icon-search(href="", title="search")
 
-        nav
-            ul
-                li
-                    a(href="", title="")
-                        span.title Team
-                        span.icon.icon-arrow-right
-                li
-                    a(href="", title="")
-                        span.title UX
-                        span.icon.icon-arrow-right
-                li
-                    a(href="", title="")
-                        span.title Design
-                        span.icon.icon-arrow-right
-                li
-                    a(href="", title="")
-                        span.title Front
-                        span.icon.icon-arrow-right
-                li
-                    a(href="", title="")
-                        span.title Back
-                        span.icon.icon-arrow-right
-                li
-                    a(href="", title="")
-                        span.title Product Owner
-                        span.icon.icon-arrow-right
-                li
-                    a(href="", title="")
-                        span.title StakeHolders
-                        span.icon.icon-arrow-right
+        nav(tg-team-filters)

@@ -16,7 +16,10 @@
         a {
             display: block;
             padding: 1rem 0 1rem 1rem;
-            &:hover {
+            &:hover,
+            &.active {
+                @include transition (color .3s linear);
+                color: $green-taiga;
                 .icon {
                     @include transition (opacity .3s linear);
                     opacity: 1;

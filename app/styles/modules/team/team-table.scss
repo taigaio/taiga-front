@@ -28,15 +28,31 @@
             }
         }
     }
+    .leave-project {
+        display: block;
+        margin-top: .3rem;
+        .icon {
+            margin-right: .2rem;
+        }
+        &:hover {
+            .icon {
+                @include transition (color .3s linear);
+                color: $red;
+            }
+        }
+    }
     .team-header {
         @extend %title;
         @extend %bold;
         border-bottom: 0;
     }
     .hero {
-        background: $very-light-gray;
-        border-bottom: 0;
-        margin: 1rem 0;
+        width: 100%;
+        .row {
+            background: $very-light-gray;
+            border-bottom: 0;
+            margin: 1rem 0;
+        }
     }
     .avatar {
         @include table-flex(stretch, center, flex, row, wrap, flex-start);
