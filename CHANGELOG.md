@@ -3,9 +3,12 @@
 ## 1.3.0 Dryas hookeriana (Unreleased)
 
 ### Features
+- GitHub integration (Phase I):
+  + Add button to login/singin with a GitHub account.
+  + Create Admin Panel with the GitHub webhooks settings.
 - Differentiate blocked user stories on a milestone.
 
-### Misc               
+### Misc
 - Lots of small and not so small bugfixes.
 
 
@@ -27,12 +30,12 @@
 
 ## 1.1.0 Alnus maximowiczii (2014-10-13)
 
-### Features ###
+### Features
 - Promote an issue to a user story.
 - Changed configuration format from coffeescript file to json.
 - Add builtin analytics support.
 
-### Misc ###
+### Misc
 - Fix bug related to stange behavior of browser autofill and angularjs on login page.
 - Fix bug on userstories ordering on sprints.
 - Fix bug of projects list visualization on project nav on first page loading.
@@ -40,10 +43,10 @@
 
 ## 1.0.0 (2014-10-07)
 
-### Features ###
+### Features
 - Redesign for taskboard and backlog summaries
 - Allow feedback for users from the platform
 - Real time changes for backlog, taskboard, kanban and issues
 
-### Misc ###
+### Misc
 - Lots of small and not so small bugfixes
