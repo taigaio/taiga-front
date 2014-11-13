@@ -1,5 +1,16 @@
 # Changelog #
 
+## 1.3.0 Dryas hookeriana (Unreleased)
+
+### Features
+
+- Differentiate blocked user stories on a milestone.
+
+### Misc               
+
+- Lots of small and not so small bugfixes.
+
+
 ## 1.2.0 Picea obovata (2014-11-04)
 
 ### Features
