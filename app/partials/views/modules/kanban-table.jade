@@ -26,7 +26,7 @@ div.kanban-table(tg-kanban-squish-column)
             div.kanban-uses-box.task-column(ng-repeat="status in usStatusList track by status.id",
                                             tg-kanban-sortable,
                                             tg-kanban-wip-limit,
-                                            tg-kanban-column-height-fixer) //Add '.fold' class here if folded
+                                            tg-kanban-column-height-fixer)
                 div.kanban-task(ng-repeat="us in usByStatus[status.id] track by us.id",
                                 tg-kanban-userstory, ng-model="us",
                                 ng-class="ctrl.getCardClass(status.id)")

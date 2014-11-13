@@ -361,27 +361,33 @@ module.directive("tgKanbanUserstory", ["$rootScope", KanbanUserstoryDirective])
 
 KanbanSquishColumnDirective = ->
     link = ($scope, $el, $attrs) ->
-        buttonFold = $el.find(".hfold")
-        buttonUnfold = $el.find(".hunfold")
 
-        buttonFold.on "click", (event) ->
+        #TODO: Only header is folding/unfolding so
+        # 1. Fold/Unfold also related column (.task-colum-name and .task-colum)
+        # 2. Save folded/unfolded column status
+        # 3. Recalculate container width
+
+        $el.on "click", ".hfold", (event) ->
             target = angular.element(event.currentTarget)
             fold(target)
 
-        buttonUnfold.on "click", (event) ->
+        $el.on "click", ".hunfold", (event) ->
             target = angular.element(event.currentTarget)
             unfold(target)
 
     fold = (target) ->
-        console.log 'fold'
+        target.closest('.task-colum-name').addClass('fold')
+        target.toggleClass('hidden')
+        target.siblings('.hunfold').toggleClass('hidden')
 
     unfold = (target) ->
-        console.log 'unfold'
+        target.closest('.task-colum-name').removeClass('fold')
+        target.toggleClass('hidden')
+        target.siblings('.hfold').toggleClass('hidden')
 
     return {link: link}
 
 module.directive("tgKanbanSquishColumn", KanbanSquishColumnDirective)
-
 
 #############################################################################
 ## Kaban WIP Limit Directive
