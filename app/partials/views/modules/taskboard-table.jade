@@ -2,9 +2,12 @@ div.taskboard-table
     div.taskboard-table-header
         div.taskboard-table-inner(tg-taskboard-row-width-fixer)
             h2.task-colum-name "User story"
+            //- Add class .colum-hfold in .task-column
             h2.task-colum-name(ng-repeat="s in taskStatusList track by s.id",
-                               ng-style="{'border-top-color':s.color}")
+                               ng-style="{'border-top-color':s.color}", tg-bo-title="s.name")
                 span(tg-bo-bind="s.name")
+                a.icon.icon-vfold.hfold(href="", title="Fold Column")
+                a.icon.icon-vunfold.hunfold.hidden(href="", title="Unfold Column")
 
     div.taskboard-table-body(tg-taskboard-table-height-fixer)
         div.taskboard-table-inner(tg-taskboard-row-width-fixer)
@@ -19,7 +22,7 @@ div.taskboard-table
                         span(ng-bind="us.total_points")
                         span points
                     include ../components/addnewtask.jade
-
+                //- Add class .colum-hfold in .task-column
                 div.taskboard-tasks-box.task-column(ng-repeat="st in taskStatusList track by st.id",
                                                     tg-taskboard-sortable)
                         div.taskboard-task(ng-repeat="task in usTasks[us.id][st.id] track by task.id",
@@ -31,7 +34,7 @@ div.taskboard-table
                     h3.us-title
                         span Unassigned tasks
                     include ../components/addnewtask.jade
-
+                //- Add class .colum-hfold in .task-column
                 div.taskboard-tasks-box.task-column(ng-repeat="st in taskStatusList track by st.id",
                                                     tg-taskboard-sortable)
                     div.taskboard-task(ng-repeat="task in usTasks[null][st.id] track by task.id",

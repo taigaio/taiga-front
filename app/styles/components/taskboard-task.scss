@@ -45,7 +45,6 @@
     }
     .taskboard-task-inner {
         @include table-flex();
-        min-height: 7rem;
         padding: .5rem;
     }
     .taskboard-user-avatar {

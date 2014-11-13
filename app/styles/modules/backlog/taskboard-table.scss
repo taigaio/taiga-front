@@ -1,6 +1,7 @@
 //Table basic shared vars
 
 $column-width: 300px;
+$column-folded-width: 45px;
 $column-flex: 1;
 $column-shrink: 0;
 $column-margin: 0 10px 0 0;
@@ -21,17 +22,62 @@ $column-margin: 0 10px 0 0;
         position: absolute;
     }
     .task-colum-name {
-        @extend %large;
         @include table-flex-child($column-flex, $column-width, $column-shrink, $column-width);
+        @include table-flex();
+        @include justify-content(space-between);
+        @extend %large;
         background: $whitish;
         border-top: 3px solid $gray-light;
+        cursor: pointer;
         margin: $column-margin;
-        padding: .5rem 0;
+        max-width: $column-width;
+        padding: .5rem 1rem;
         position: relative;
-        text-align: center;
         text-transform: uppercase;
+        width: $column-width;
         &:last-child {
             margin-right: 0;
+        }
+        &:hover {
+            .icon {
+                &.hfold,
+                &.hunfold {
+                    @include transition(opacity .2s linear);
+                    opacity: 1;
+                }
+            }
+        }
+        .icon {
+            @extend %medium;
+            @include transition(color .2s linear);
+            color: $gray-light;
+            margin-right: .3rem;
+            &:hover {
+                color: $green-taiga;
+            }
+            &.hfold,
+            &.hunfold {
+                @include transition(opacity .2s linear);
+                @include transform(rotate(90deg));
+                display: inline-block;
+                opacity: 0;
+            }
+        }
+        &.column-hfold {
+            @include align-items(center);
+            @include justify-content(center);
+            max-width: $column-folded-width;
+            padding: .3rem 0;
+            width: $column-folded-width;
+            span {
+                display: none;
+            }
+            .icon {
+                &.hfold,
+                &.hunfold {
+                    margin: 0;
+                }
+            }
         }
     }
 }
@@ -42,10 +88,39 @@ $column-margin: 0 10px 0 0;
     overflow-y: scroll;
     width: 100%;
     .task-column {
-        @include table-flex-child($column-flex, $column-width, $column-shrink, $column-width);
+        @include table-flex-child();
         margin: $column-margin;
+        max-width: $column-width;
+        width: $column-width;
         &:last-child {
             margin-right: 0;
+        }
+        &.colum-hfold {
+            max-width: $column-folded-width;
+            width: $column-folded-width;
+            .taskboard-task {
+                background: none;
+                border: 0;
+                margin: 0;
+                min-height: 0;
+                .taskboard-task-inner {
+                    padding: .2rem;
+                }
+                .taskboard-tagline,
+                .taskboard-text {
+                    display: none;
+                }
+                .avatar {
+                    height: 35px;
+                    width: 35px;
+                }
+                .icon {
+                    display: none;
+                }
+                &.ui-sortable-helper {
+                    box-shadow: none;
+                }
+            }
         }
     }
     .task-row {
@@ -74,14 +149,12 @@ $column-margin: 0 10px 0 0;
                 }
             }
             .taskboard-tasks-box {
-                //@include filter(saturate(20%));
                 background: rgba($red, .1);
             }
         }
     }
     .taskboard-tasks-box {
         background: $whitish;
-        //background: $very-light-gray;
     }
 
     .taskboard-userstory-box {
