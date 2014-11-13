@@ -63,7 +63,7 @@ $column-margin: 0 10px 0 0;
                 opacity: 0;
             }
         }
-        &.column-hfold {
+        &.column-fold {
             @include align-items(center);
             @include justify-content(center);
             max-width: $column-folded-width;
@@ -95,7 +95,7 @@ $column-margin: 0 10px 0 0;
         &:last-child {
             margin-right: 0;
         }
-        &.colum-hfold {
+        &.colum-fold {
             max-width: $column-folded-width;
             width: $column-folded-width;
             .taskboard-task {
@@ -152,24 +152,70 @@ $column-margin: 0 10px 0 0;
                 background: rgba($red, .1);
             }
         }
+        &.row-fold {
+            min-height: 0;
+            .taskboard-userstory-box {
+                .us-title {
+                    @include ellipsis(100%);
+                }
+                .points-value,
+                .icon-plus,
+                .icon-bulk {
+                    display: none;
+                }
+            }
+            .task-column {
+                @include table-flex();
+                @include flex-direction(row);
+            }
+            .taskboard-task {
+                background: none;
+                border: 0;
+                margin: 0;
+                max-width: 40px;
+                min-height: 0;
+                width: 40px;
+                .taskboard-task-inner {
+                    padding: .2rem;
+                }
+                .taskboard-tagline,
+                .taskboard-text {
+                    display: none;
+                }
+                .avatar {
+                    height: 35px;
+                    width: 35px;
+                }
+                .icon {
+                    display: none;
+                }
+                &.ui-sortable-helper {
+                    box-shadow: none;
+                }
+            }
+        }
     }
     .taskboard-tasks-box {
         background: $whitish;
     }
 
     .taskboard-userstory-box {
-        padding: .5rem;
+        padding: .5rem .5rem .5rem 1.5rem;
         .icon {
             @include transition(color .2s linear);
             color: $gray-light;
             position: absolute;
             right: .5rem;
-            top: 1rem;
+            top: .7rem;
             &:hover {
                 color: $green-taiga;
             }
             &.icon-plus {
                 right: 2rem;
+            }
+            &.icon-vfold {
+                left: 0;
+                right: inherit;
             }
         }
     }
