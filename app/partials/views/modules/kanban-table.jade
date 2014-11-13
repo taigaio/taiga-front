@@ -1,11 +1,11 @@
-div.kanban-table
+div.kanban-table(tg-kanban-squish-column)
     div.kanban-table-header
         div.kanban-table-inner(tg-kanban-row-width-fixer)
-            h2.task-colum-name(ng-repeat="s in usStatusList track by s.id", ng-style="{'border-top-color':s.color}") //Add '.fold' class here if folded
+            h2.task-colum-name(ng-repeat="s in usStatusList track by s.id", ng-style="{'border-top-color':s.color}")
                 span(tg-bo-bind="s.name")
                 div.options
-                    a.icon.icon-vfold.hfold(href="", title="Fold Column") //Toggle hidden class if folded
-                    a.icon.icon-vunfold.hunfold.hidden(href="", title="Unfold Column") //Toggle hidden class if folded
+                    a.icon.icon-vfold.hfold(href="", title="Fold Column")
+                    a.icon.icon-vunfold.hunfold.hidden(href="", title="Unfold Column")
                     a.icon.icon-vfold(href="", title="Fold Cards",
                                          ng-if="statusViewModes[s.id] == 'maximized'",
                                          ng-click="ctrl.updateStatusViewMode(s.id, 'minimized')")

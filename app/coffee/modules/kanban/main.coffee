@@ -355,6 +355,33 @@ KanbanUserstoryDirective = ($rootscope) ->
 
 module.directive("tgKanbanUserstory", ["$rootScope", KanbanUserstoryDirective])
 
+#############################################################################
+## Kanban Squish Column Directive
+#############################################################################
+
+KanbanSquishColumnDirective = ->
+    link = ($scope, $el, $attrs) ->
+        buttonFold = $el.find(".hfold")
+        buttonUnfold = $el.find(".hunfold")
+
+        buttonFold.on "click", (event) ->
+            target = angular.element(event.currentTarget)
+            fold(target)
+
+        buttonUnfold.on "click", (event) ->
+            target = angular.element(event.currentTarget)
+            unfold(target)
+
+    fold = (target) ->
+        console.log 'fold'
+
+    unfold = (target) ->
+        console.log 'unfold'
+
+    return {link: link}
+
+module.directive("tgKanbanSquishColumn", KanbanSquishColumnDirective)
+
 
 #############################################################################
 ## Kaban WIP Limit Directive
