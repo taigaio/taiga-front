@@ -240,13 +240,13 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
             $scope.isNew = true
             $scope.usStatusList = statusList
 
-            $scope.us = {
+            $scope.us = $model.make_model("userstories", {
                 project: projectId
                 points : {}
                 status: status
                 is_archived: false
                 tags: []
-            }
+            })
 
             # Update texts for creation
             $el.find(".button-green span").html("Create") #TODO: i18n
