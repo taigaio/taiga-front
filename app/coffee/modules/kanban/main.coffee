@@ -360,30 +360,17 @@ module.directive("tgKanbanUserstory", ["$rootScope", KanbanUserstoryDirective])
 #############################################################################
 
 KanbanSquishColumnDirective = ->
+
+    #TODO: Only header is folding/unfolding so
+    # 1. Save folded/unfolded column status.
+    # 2. Recalculate container width.
+
     link = ($scope, $el, $attrs) ->
-
-        #TODO: Only header is folding/unfolding so
-        # 1. Fold/Unfold also related column (.task-colum-name and .task-colum)
-        # 2. Save folded/unfolded column status
-        # 3. Recalculate container width
-
-        $el.on "click", ".hfold", (event) ->
-            target = angular.element(event.currentTarget)
-            fold(target)
-
-        $el.on "click", ".hunfold", (event) ->
-            target = angular.element(event.currentTarget)
-            unfold(target)
-
-    fold = (target) ->
-        target.closest('.task-colum-name').addClass('fold')
-        target.toggleClass('hidden')
-        target.siblings('.hunfold').toggleClass('hidden')
-
-    unfold = (target) ->
-        target.closest('.task-colum-name').removeClass('fold')
-        target.toggleClass('hidden')
-        target.siblings('.hfold').toggleClass('hidden')
+        $scope.folds = []
+        $scope.foldStatus = (status) ->
+            $scope.folds[status.id] = !!!$scope.folds[status.id]
+            if $scope.folds[status.id]
+                fold()
 
     return {link: link}
 

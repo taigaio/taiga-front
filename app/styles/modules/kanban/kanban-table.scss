@@ -1,6 +1,7 @@
 //Table basic shared vars
 
 $column-width: 300px;
+$column-folded-width: 30px;
 $column-flex: 1;
 $column-shrink: 0;
 $column-margin: 0 10px 0 0;
@@ -8,16 +9,22 @@ $column-margin: 0 10px 0 0;
 .kanban-table {
     overflow: hidden;
     width: 100%;
-    .fold {
+    .vfold {
         &.task-colum-name {
+            @include align-items(center);
+            @include justify-content(center);
             @include transition(opacity .3s linear);
             cursor: pointer;
             opacity: .8;
+            padding: .5rem;
             &:hover {
                 @include transition(opacity .3s linear);
                 opacity: 1;
             }
-            div,
+            .icon-plus,
+            .icon-bulk,
+            .icon-vfold,
+            .icon-vunfold,
             span {
                 display: none;
             }
@@ -25,10 +32,9 @@ $column-margin: 0 10px 0 0;
         &.task-colum-name,
         &.task-column {
             @include table-flex-child(1, 0, 0);
-            border: 0;
-            max-width: 30px;
+            max-width: $column-folded-width;
             min-height: 2.5rem;
-            width: 30px;
+            width: $column-folded-width;
         }
         .kanban-task {
             display: none;
