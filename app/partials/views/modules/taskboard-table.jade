@@ -1,3 +1,19 @@
+//
+    Column fold integration:
+    1. If click on column fold button search all TODOS and add class .colum-fold fold where indicated in comments.
+    2. Hide column fold button and show column unfold button (sibling)
+    3. Recalculate container table width.
+
+    Row Fold integration:
+    1. If click on row fold button search all TODOS and add class .row-fold fold where indicated in comments.
+    2. Hide row fold button and show column unfold button (sibling)
+    3. Recalculate container table width.
+
+    Row and column integration
+    1. I think we will need to do som JS calcs to fix this. Not sure at the moment.
+
+
+
 div.taskboard-table
     div.taskboard-table-header
         div.taskboard-table-inner(tg-taskboard-row-width-fixer)
@@ -12,7 +28,7 @@ div.taskboard-table
     div.taskboard-table-body(tg-taskboard-table-height-fixer)
         div.taskboard-table-inner(tg-taskboard-row-width-fixer)
             //- TODO: Add class .row-fold in .task-column
-            div.task-row.row-fold(ng-repeat="us in userstories track by us.id", ng-class="{blocked: us.is_blocked}")
+            div.task-row(ng-repeat="us in userstories track by us.id", ng-class="{blocked: us.is_blocked}")
                 div.taskboard-userstory-box.task-column(tg-bo-title="us.blocked_note")
                     a.icon.icon-vfold.vfold(href="", title="Fold Row")
                     a.icon.icon-vunfold.vunfold.hidden(href="", title="Unfold Row")
@@ -33,7 +49,7 @@ div.taskboard-table
                             include ../components/taskboard-task
 
             //- TODO: Add class .row-fold in .task-Column
-            div.task-row.row-fold(ng-init="us = null")
+            div.task-row(ng-init="us = null")
                 div.taskboard-userstory-box.task-column
                     h3.us-title
                         span Unassigned tasks
