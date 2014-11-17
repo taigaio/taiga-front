@@ -18,12 +18,6 @@ $column-margin: 0 10px 0 0;
             cursor: pointer;
             opacity: .8;
             padding: .5rem 0;
-            &:hover {
-                .icon.hunfold {
-                    @include transition(opacity .3s linear);
-                    opacity: 1;
-                }
-            }
             .icon-plus,
             .icon-bulk,
             .icon-vfold,
@@ -32,9 +26,7 @@ $column-margin: 0 10px 0 0;
                 display: none;
             }
             .hunfold {
-                @include transition(opacity .3s linear);
                 margin: 0;
-                opacity: 0;
             }
         }
         &.task-colum-name,
