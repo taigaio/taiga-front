@@ -21,7 +21,7 @@
 
 taiga = @.taiga
 
-module = angular.module("taigaPlugins")
+module = angular.module("taigaPlugins", ["ngRoute"])
 
 template = _.template("""
 <p class="register-text">
