@@ -1,6 +1,6 @@
 div.kanban-table(tg-kanban-squish-column)
     div.kanban-table-header
-        div.kanban-table-inner(tg-kanban-row-width-fixer)
+        div.kanban-table-inner
             h2.task-colum-name(ng-repeat="s in usStatusList track by s.id", ng-style="{'border-top-color':s.color}", tg-bo-title="s.name", ng-class='{vfold:folds[s.id]}')
                 span(tg-bo-bind="s.name")
                 div.options
