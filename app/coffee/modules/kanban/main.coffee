@@ -359,22 +359,22 @@ module.directive("tgKanbanUserstory", ["$rootScope", KanbanUserstoryDirective])
 ## Kanban Squish Column Directive
 #############################################################################
 
-KanbanSquishColumnDirective = ->
+KanbanSquishColumnDirective = (rs) ->
 
     #TODO: Only header is folding/unfolding so
-    # 1. Save folded/unfolded column status.
-    # 2. Recalculate container width.
+    # 1. Recalculate container width.
 
     link = ($scope, $el, $attrs) ->
-        $scope.folds = []
+        $scope.$on "project:loaded", (event, project) ->
+            $scope.folds = rs.kanban.getStatusColumnModes(project.id)
+
         $scope.foldStatus = (status) ->
             $scope.folds[status.id] = !!!$scope.folds[status.id]
-            if $scope.folds[status.id]
-                fold()
+            rs.kanban.storeStatusColumnModes($scope.projectId, $scope.folds)
 
     return {link: link}
 
-module.directive("tgKanbanSquishColumn", KanbanSquishColumnDirective)
+module.directive("tgKanbanSquishColumn", ["$tgResources", KanbanSquishColumnDirective])
 
 #############################################################################
 ## Kaban WIP Limit Directive
