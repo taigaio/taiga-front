@@ -11,10 +11,10 @@ div.kanban-table(tg-kanban-squish-column)
 
 
                     a.icon.icon-vfold(href="", title="Fold Cards",
-                                         ng-if="statusViewModes[s.id] == 'maximized'",
+                                         ng-class="{hidden:statusViewModes[s.id] == 'minimized'}",
                                          ng-click="ctrl.updateStatusViewMode(s.id, 'minimized')")
                     a.icon.icon-vunfold(href="", title="Unfold Cards",
-                                         ng-if="statusViewModes[s.id] == 'minimized'",
+                                         ng-class="{hidden:statusViewModes[s.id] == 'maximized'}",
                                          ng-click="ctrl.updateStatusViewMode(s.id, 'maximized')")
 
                     a.icon.icon-plus(href="", title="Add New task",
