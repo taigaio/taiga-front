@@ -11,15 +11,18 @@ $column-margin: 0 10px 0 0;
     width: 100%;
     .vfold {
         &.task-colum-name {
+            @include table-flex();
             @include align-items(center);
             @include justify-content(center);
             @include transition(opacity .3s linear);
             cursor: pointer;
             opacity: .8;
-            padding: .5rem;
+            padding: .5rem 0;
             &:hover {
-                @include transition(opacity .3s linear);
-                opacity: 1;
+                .icon.hunfold {
+                    @include transition(opacity .3s linear);
+                    opacity: 1;
+                }
             }
             .icon-plus,
             .icon-bulk,
@@ -27,6 +30,11 @@ $column-margin: 0 10px 0 0;
             .icon-vunfold,
             span {
                 display: none;
+            }
+            .hunfold {
+                @include transition(opacity .3s linear);
+                margin: 0;
+                opacity: 0;
             }
         }
         &.task-colum-name,
