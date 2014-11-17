@@ -23,7 +23,7 @@
 # and add additional template.
 
 taiga = @.taiga
-module = angular.module("taigaPlugins")
+module = angular.module("taigaPlugins", ["ngRoute"])
 
 configure = ($routeProvider) ->
     $routeProvider.when("/humans.html", {"templateUrl": "/plugins/humanshtml/templates/humans.html"})
