@@ -283,9 +283,14 @@ module.directive("tgKanban", ["$tgRepo", "$rootScope", KanbanDirective])
 KanbanRowWidthFixerDirective = ->
     link = ($scope, $el, $attrs) ->
         bindOnce $scope, "usStatusList", (statuses) ->
-            itemSize = 310
-            size = (statuses.length * itemSize) - 10
-            $el.css("width", "#{size}px")
+            columnWidths = _.map statuses, (status) ->
+                if $scope.folds[status.id]
+                    return 40
+                else
+                    return 310
+            totalWidth = _.reduce columnWidths, (total, width) ->
+                return total + width
+            $el.css("width", totalWidth)
 
         $scope.$on "$destroy", ->
             $el.off()

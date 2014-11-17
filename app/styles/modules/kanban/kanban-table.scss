@@ -34,6 +34,7 @@ $column-margin: 0 10px 0 0;
             @include table-flex-child(1, 0, 0);
             max-width: $column-folded-width;
             min-height: 2.5rem;
+            min-width: $column-folded-width;
             width: $column-folded-width;
         }
         .kanban-task {
