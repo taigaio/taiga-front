@@ -89,6 +89,7 @@ urls = {
     "project-admin-project-values-issue-severities": "/project/:project/admin/project-values/issue-severities"
     "project-admin-memberships": "/project/:project/admin/memberships"
     "project-admin-roles": "/project/:project/admin/roles"
+    "project-admin-third-parties-github": "/project/:project/admin/third-parties/github"
 
     # User settings
     "user-settings-user-profile": "/project/:project/user-settings/user-profile"

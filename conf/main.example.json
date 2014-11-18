@@ -6,5 +6,6 @@
     "feedbackEnabled": true,
     "privacyPolicyUrl": null,
     "termsOfServiceUrl": null,
-    "maxUploadFileSize": null
+    "maxUploadFileSize": null,
+    "gitHubClientId": null
 }

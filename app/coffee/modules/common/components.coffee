@@ -132,8 +132,12 @@ CreatedByDisplayDirective = ->
 
     link = ($scope, $el, $attrs) ->
         render = (model) ->
+            owner = $scope.usersById?[model.owner] or {
+                full_name_display: "external user"
+                photo: "/images/unnamed.png"
+            }
             html = template({
-                owner: $scope.usersById?[model.owner]
+                owner: owner
                 date: moment(model.created_date).format("DD MMM YYYY HH:mm")
             })
             $el.html(html)

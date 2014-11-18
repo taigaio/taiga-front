@@ -23,6 +23,10 @@ block content
                           tg-nav="project-userstories-detail:project=project.slug, ref=us.ref")
                               span(tg-bo-ref="us.ref")
 
+                    p.external-reference(ng-if="issue.external_reference") This issue has been created from
+                        a(target="_blank", tg-bo-href="issue.external_reference[1]", title="Go to origin")
+                            span {{ issue.external_reference[1] }}
+
                     p.block-desc-container(ng-show="issue.is_blocked")
                         span.block-description-title Blocked
                         span.block-description(ng-bind="issue.blocked_note || 'This issue is blocked'")

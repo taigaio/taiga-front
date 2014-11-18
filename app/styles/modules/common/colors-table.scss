@@ -50,6 +50,10 @@
                 display: block;
             }
         }
+        .status-slug {
+            @include table-flex-child(6, 150px, 0);
+            padding: 0 10px;
+        }
         .options-column {
             max-width: 100px;
             opacity: 0;
