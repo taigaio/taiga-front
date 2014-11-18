@@ -828,8 +828,9 @@ UsPointsDirective = ($repo) ->
             dom = $el.find("a > span.points-value")
 
             if roleId == null or numberOfRoles == 1
-                dom.text(us.total_points)
-                dom.parent().prop("title", us.total_points)
+                totalPoints = if us.total_points? then us.total_points else "?"
+                dom.text(totalPoints)
+                dom.parent().prop("title", totalPoints)
             else
                 pointId = us.points[roleId]
                 pointObj = $scope.pointsById[pointId]
