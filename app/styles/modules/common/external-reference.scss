@@ -1,0 +1,29 @@
+.blocked {
+    .external-reference {
+        color: $white;
+        a {
+            @include transition(color .3s linear);
+            color: $white;
+            &:hover {
+                color: $red-light;
+            }
+        }
+    }
+}
+
+.external-reference {
+    @extend %small;
+    color: $gray-light;
+    margin-top: .5rem;
+    a {
+        @include transition(color .3s linear);
+        border-left: 1px solid $gray-light;
+        padding: 0 .2rem;
+        &:hover {
+            color: $green-taiga;
+        }
+        &:first-child {
+            border: 0;
+        }
+    }
+}

@@ -94,18 +94,20 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         {templateUrl: "/partials/admin-memberships.html"})
     $routeProvider.when("/project/:pslug/admin/roles",
         {templateUrl: "/partials/admin-roles.html"})
+    $routeProvider.when("/project/:pslug/admin/third-parties/github",
+        {templateUrl: "/partials/admin-third-parties-github.html"})
 
     # User settings
     $routeProvider.when("/project/:pslug/user-settings/user-profile",
-          {templateUrl: "/partials/user-profile.html"})
+        {templateUrl: "/partials/user-profile.html"})
     $routeProvider.when("/project/:pslug/user-settings/user-change-password",
-          {templateUrl: "/partials/user-change-password.html"})
+        {templateUrl: "/partials/user-change-password.html"})
     $routeProvider.when("/project/:pslug/user-settings/user-avatar",
-          {templateUrl: "/partials/user-avatar.html"})
+        {templateUrl: "/partials/user-avatar.html"})
     $routeProvider.when("/project/:pslug/user-settings/mail-notifications",
-          {templateUrl: "/partials/mail-notifications.html"})
+        {templateUrl: "/partials/mail-notifications.html"})
     $routeProvider.when("/change-email/:email_token",
-          {templateUrl: "/partials/change-email.html"})
+        {templateUrl: "/partials/change-email.html"})
     $routeProvider.when("/cancel-account/:cancel_token",
         {templateUrl: "/partials/cancel-account.html"})
 
@@ -216,6 +218,7 @@ modules = [
     "taigaUserSettings",
     "taigaFeedback",
     "taigaPlugins",
+    "taigaIntegrations",
 
     # Vendor modules
     "ngRoute",

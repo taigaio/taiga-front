@@ -3,6 +3,7 @@ section.colors-table
         div.row
             div.color-column Color
             div.status-name Name
+            div.status-slug Slug
             div.is-closed-column Is closed?
             div.options-column
 
@@ -16,6 +17,9 @@ section.colors-table
 
                     div.status-name
                         span {{ value.name }}
+
+                    div.status-slug
+                        span {{ value.slug }}
 
                     div.is-closed-column
                         div.icon.icon-check-square(ng-show="value.is_closed")
