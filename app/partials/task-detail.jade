@@ -21,12 +21,18 @@ block content
                     h2.us-title-text
                         span.us-number(tg-bo-ref="task.ref")
                         span.us-name(tg-editable-subject, ng-model="task", required-perm="modify_task")
+
                     h3.us-related-task This task belongs to
                         a(tg-check-permission="view_us", href="", title="Go to user story",
                         tg-nav="project-userstories-detail:project=project.slug, ref=us.ref",
                         ng-if="us")
                             span(tg-bo-ref="us.ref")
                             span(tg-bo-bind="us.subject")
+
+                    p.external-reference(ng-if="task.external_reference") This task has been created from
+                        a(target="_blank", tg-bo-href="task.external_reference[1]", title="Go to origin")
+                            span {{ task.external_reference[1] }}
+
                     p.block-desc-container(ng-show="task.is_blocked")
                         span.block-description-title Blocked
                         span.block-description(ng-bind="task.blocked_note || 'This task is blocked'")

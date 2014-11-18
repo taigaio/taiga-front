@@ -71,6 +71,7 @@ exports.files = function () {
         'modules/common/related-tasks',
         'modules/common/history',
         'modules/common/wizard',
+        'modules/common/external-reference',
 
         //Project modules
         'modules/home-projects-list',

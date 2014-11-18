@@ -28,6 +28,10 @@ block content
                           tg-bo-title="'#' + us.origin_issue.ref + ' ' + us.origin_issue.subject")
                             span(tg-bo-ref="us.origin_issue.ref")
 
+                    p.external-reference(ng-if="us.external_reference") This US has been created from
+                        a(target="_blank", tg-bo-href="us.external_reference[1]", title="Go to origin")
+                            span {{ us.external_reference[1] }}
+
                     p.block-desc-container(ng-show="us.is_blocked")
                         span.block-description-title Blocked
                         span.block-description(ng-bind="us.blocked_note || 'This user story is blocked'")
