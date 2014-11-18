@@ -2,7 +2,7 @@
 
 $column-width: 300px;
 $column-folded-width: 30px;
-$column-flex: 1;
+$column-flex: 0;
 $column-shrink: 0;
 $column-margin: 0 10px 0 0;
 
@@ -53,7 +53,7 @@ $column-margin: 0 10px 0 0;
         position: absolute;
     }
     .task-colum-name {
-        @include table-flex-child();
+        @include table-flex-child($column-flex, $column-width, $column-shrink, $column-width);
         @include table-flex();
         @include justify-content(space-between);
         @extend %large;
@@ -90,7 +90,7 @@ $column-margin: 0 10px 0 0;
     overflow-x: auto;
     width: 100%;
     .task-column {
-        @include table-flex-child();
+        @include table-flex-child($column-flex, $column-width, $column-shrink, $column-width);
         margin: $column-margin;
         overflow-y: auto;
         &:last-child {
