@@ -210,7 +210,7 @@ UsEstimationDirective = ($rootScope, $repo, $confirm) ->
             return $scope.project.my_permissions.indexOf("modify_us") != -1
 
         render = (us) ->
-            totalPoints = us.total_points or 0
+            totalPoints = if us.total_points? then us.total_points else "?"
             computableRoles = _.filter($scope.project.roles, "computable")
 
             roles = _.map computableRoles, (role) ->
@@ -254,10 +254,15 @@ UsEstimationDirective = ($rootScope, $repo, $confirm) ->
             $el.find(".pop-points-open").show()
 
         calculateTotalPoints = (us) ->
-            values = _.map(us.points, (v, k) -> $scope.pointsById[v]?.value or 0)
+            values = _.map(us.points, (v, k) -> $scope.pointsById[v]?.value)
             if values.length == 0
                 return "0"
-            return _.reduce(values, (acc, num) -> acc + num)
+
+            notNullValues = _.filter(values, (v) -> v?)
+            if notNullValues.length == 0
+                return "?"
+
+            return _.reduce(notNullValues, (acc, num) -> acc + num)
 
         $el.on "click", ".total.clickable", (event) ->
             event.preventDefault()
