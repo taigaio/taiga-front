@@ -305,7 +305,7 @@ KanbanColumnHeightFixerDirective = ->
 module.directive("tgKanbanColumnHeightFixer", KanbanColumnHeightFixerDirective)
 
 #############################################################################
-## Kaban User Story Directive
+## Kanban User Story Directive
 #############################################################################
 
 KanbanUserstoryDirective = ($rootscope) ->
@@ -368,7 +368,7 @@ KanbanSquishColumnDirective = (rs) ->
 module.directive("tgKanbanSquishColumn", ["$tgResources", KanbanSquishColumnDirective])
 
 #############################################################################
-## Kaban WIP Limit Directive
+## Kanban WIP Limit Directive
 #############################################################################
 
 KanbanWipLimitDirective = ->
@@ -378,7 +378,7 @@ KanbanWipLimitDirective = ->
         redrawWipLimit = ->
             $el.find(".kanban-wip-limit").remove()
             timeout 200, ->
-                element = $el.find(".kanban-task")[$scope.status.wip_limit]
+                element = $el.find(".kanban-task")[$scope.$eval($attrs.tgKanbanWipLimit)]
                 if element
                     angular.element(element).before("<div class='kanban-wip-limit'></div>")
 
