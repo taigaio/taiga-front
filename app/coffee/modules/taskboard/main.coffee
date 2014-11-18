@@ -103,7 +103,6 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
             @scope.project = project
-            @scope.$emit('project:loaded', project)
             # Not used at this momment
             @scope.pointsList = _.sortBy(project.points, "order")
             # @scope.roleList = _.sortBy(project.roles, "order")
@@ -112,6 +111,9 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.taskStatusList = _.sortBy(project.task_statuses, "order")
             @scope.usStatusList = _.sortBy(project.us_statuses, "order")
             @scope.usStatusById = groupBy(project.us_statuses, (e) -> e.id)
+
+            @scope.$emit('project:loaded', project)
+
             return project
 
     loadSprintStats: ->
@@ -218,6 +220,8 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
 
         promise = @repo.save(task)
 
+        @rootscope.$broadcast("sprint:task:moved", task)
+
         promise.then =>
             @.refreshTasksOrder(tasks)
             @.loadSprintStats()
@@ -291,22 +295,6 @@ TaskboardTaskDirective = ($rootscope) ->
 
 module.directive("tgTaskboardTask", ["$rootScope", TaskboardTaskDirective])
 
-
-#############################################################################
-## Taskboard Task Row Size Fixer Directive
-#############################################################################
-
-TaskboardRowWidthFixerDirective = ->
-    link = ($scope, $el, $attrs) ->
-        bindOnce $scope, "taskStatusList", (statuses) ->
-            itemSize = 300 + (10 * statuses.length)
-            size = (1 + statuses.length) * itemSize
-            $el.css("width", "#{size}px")
-
-    return {link: link}
-
-module.directive("tgTaskboardRowWidthFixer", TaskboardRowWidthFixerDirective)
-
 #############################################################################
 ## Taskboard Table Height Fixer Directive
 #############################################################################
@@ -331,64 +319,156 @@ TaskboardTableHeightFixerDirective = ->
 
 module.directive("tgTaskboardTableHeightFixer", TaskboardTableHeightFixerDirective)
 
+#############################################################################
+## Taskboard Squish Column Directive
+#############################################################################
+
+TaskboardSquishColumnDirective = (rs) ->
+    avatarWidth = 40
+
+    link = ($scope, $el, $attrs) ->
+        $scope.$on "sprint:task:moved", () =>
+            recalculateTaskboardWidth()
+
+        bindOnce $scope, "usTasks", (project) ->
+            $scope.statusesFolded = rs.tasks.getStatusColumnModes($scope.project.id)
+            $scope.usFolded = rs.tasks.getUsRowModes($scope.project.id, $scope.sprintId)
+
+            recalculateTaskboardWidth()
+
+        $scope.foldStatus = (status) ->
+            $scope.statusesFolded[status.id] = !!!$scope.statusesFolded[status.id]
+            rs.tasks.storeStatusColumnModes($scope.projectId, $scope.statusesFolded)
+
+            recalculateTaskboardWidth()
+
+        $scope.foldUs = (us) ->
+            if !us
+                $scope.usFolded["unassigned"] = !!!$scope.usFolded["unassigned"]
+            else
+                $scope.usFolded[us.id] = !!!$scope.usFolded[us.id]
+
+            rs.tasks.storeUsRowModes($scope.projectId, $scope.sprintId, $scope.usFolded)
+
+            recalculateTaskboardWidth()
+
+        getCeilWidth = (usId, statusId) =>
+            tasks = $scope.usTasks[usId][statusId].length
+
+            if $scope.statusesFolded[statusId]
+                if tasks and $scope.usFolded[usId]
+                    tasksMatrixSize = Math.round(Math.sqrt(tasks))
+                    width = avatarWidth * tasksMatrixSize
+                else
+                    width = avatarWidth
+
+                return width
+
+            return 0
+
+        setStatusColumnWidth = (statusId, width) =>
+            column = $el.find(".squish-status-#{statusId}")
+
+            if width
+                column.css('max-width', width)
+            else
+                column.removeAttr("style")
+
+        refreshTaskboardTableWidth = () =>
+            columnWidths = []
+
+            columns = $el.find(".task-colum-name")
+
+            columnWidths = _.map columns, (column) ->
+                return $(column).outerWidth(true)
+
+            totalWidth = _.reduce columnWidths, (total, width) ->
+                return total + width
+
+            $el.find('.taskboard-table-inner').css("width", totalWidth)
+
+        recalculateStatusColumnWidth = (statusId) =>
+            statusFoldedWidth = 0
+
+            _.forEach $scope.userstories, (us) ->
+                width = getCeilWidth(us.id, statusId)
+
+                statusFoldedWidth = width if width > statusFoldedWidth
+
+            setStatusColumnWidth(statusId, statusFoldedWidth)
+
+        recalculateTaskboardWidth = () =>
+            _.forEach $scope.taskStatusList, (status) ->
+                recalculateStatusColumnWidth(status.id)
+
+            refreshTaskboardTableWidth()
+
+            return
+
+    return {link: link}
+
+module.directive("tgTaskboardSquishColumn", ["$tgResources", TaskboardSquishColumnDirective])
 
 #############################################################################
 ## Taskboard User Directive
 #############################################################################
 
 TaskboardUserDirective = ($log) ->
-    template = _.template("""
-    <figure class="avatar">
-        <a href="#" title="Assign task" <% if (!clickable) {%>class="not-clickable"<% } %>>
-            <img src="<%- imgurl %>" alt="<%- name %>">
+    template = """
+    <figure class="avatar avatar-assigned-to">
+       <a href="#" title="Assign task" ng-class="{'not-clickable': !clickable}">
+            <img ng-src="{{imgurl}}">
         </a>
     </figure>
-    """) # TODO: i18n
+
+    <figure class="avatar avatar-task-link">
+       <a tg-nav="project-tasks-detail:project=project.slug,ref=task.ref" ng-attr-title="{{task.subject}}">
+            <img ng-src="{{imgurl}}">
+        </a>
+    </figure>
+    """ # TODO: i18n
 
     clickable = false
 
-    link = ($scope, $el, $attrs, $model) ->
-        if not $attrs.tgTaskboardUserAvatar?
-            return $log.error "TaskboardUserDirective: no attr is defined"
+    link = ($scope, $el, $attrs) ->
+        username_label = $el.parent().find("a.task-assigned")
+        username_label.on "click", (event) ->
+            if $el.find('a').hasClass('noclick')
+                return
 
-        wtid = $scope.$watch $attrs.tgTaskboardUserAvatar, (v) ->
-            if not $scope.usersById?
-                $log.error "TaskboardUserDirective requires userById set in scope."
-                wtid()
-            else
-                user = $scope.usersById[v]
-                render(user)
+            $ctrl = $el.controller()
+            $ctrl.editTaskAssignedTo($scope.task)
 
-        render = (user) ->
+        $scope.$watch 'task.assigned_to', (assigned_to) ->
+            user = $scope.usersById[assigned_to]
+
             if user is undefined
-                ctx = {name: "Unassigned", imgurl: "/images/unnamed.png", clickable: clickable}
+                _.assign($scope, {name: "Unassigned", imgurl: "/images/unnamed.png", clickable: clickable})
             else
-                ctx = {name: user.full_name_display, imgurl: user.photo, clickable: clickable}
+                _.assign($scope, {name: user.full_name_display, imgurl: user.photo, clickable: clickable})
 
-            html = template(ctx)
-            $el.html(html)
-            username_label = $el.parent().find("a.task-assigned")
-            username_label.html(ctx.name)
-            username_label.on "click", (event) ->
-                if $el.find('a').hasClass('noclick')
-                    return
+            username_label.text($scope.name)
 
-                us = $model.$modelValue
-                $ctrl = $el.controller()
-                $ctrl.editTaskAssignedTo(us)
 
         bindOnce $scope, "project", (project) ->
             if project.my_permissions.indexOf("modify_task") > -1
                 clickable = true
-                $el.on "click", (event) =>
+                $el.find(".avatar-assigned-to").on "click", (event) =>
                     if $el.find('a').hasClass('noclick')
                         return
 
-                    us = $model.$modelValue
                     $ctrl = $el.controller()
-                    $ctrl.editTaskAssignedTo(us)
+                    $ctrl.editTaskAssignedTo($scope.task)
 
-    return {link: link, require:"ngModel"}
+    return {
+        link: link,
+        template: template,
+        scope: {
+            "usersById": "=users",
+            "project": "=",
+            "task": "=",
+        }
+    }
 
 
 module.directive("tgTaskboardUserAvatar", ["$log", TaskboardUserDirective])

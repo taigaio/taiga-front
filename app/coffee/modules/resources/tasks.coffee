@@ -27,6 +27,8 @@ generateHash = taiga.generateHash
 resourceProvider = ($repo, $http, $urls, $storage) ->
     service = {}
     hashSuffix = "tasks-queryparams"
+    hashSuffixStatusColumnModes = "tasks-statuscolumnmodels"
+    hashSuffixUsRowModes = "tasks-usrowmodels"
 
     service.get = (projectId, taskId) ->
         params = service.getQueryParams(projectId)
@@ -63,6 +65,28 @@ resourceProvider = ($repo, $http, $urls, $storage) ->
     service.getQueryParams = (projectId) ->
         ns = "#{projectId}:#{hashSuffix}"
         hash = generateHash([projectId, ns])
+        return $storage.get(hash) or {}
+
+    service.storeStatusColumnModes = (projectId, params) ->
+        ns = "#{projectId}:#{hashSuffixStatusColumnModes}"
+        hash = generateHash([projectId, ns])
+        $storage.set(hash, params)
+
+    service.getStatusColumnModes = (projectId) ->
+        ns = "#{projectId}:#{hashSuffixStatusColumnModes}"
+        hash = generateHash([projectId, ns])
+        return $storage.get(hash) or {}
+
+    service.storeUsRowModes = (projectId, sprintId, params) ->
+        ns = "#{projectId}:#{hashSuffixUsRowModes}"
+        hash = generateHash([projectId, sprintId, ns])
+
+        $storage.set(hash, params)
+
+    service.getUsRowModes = (projectId, sprintId) ->
+        ns = "#{projectId}:#{hashSuffixUsRowModes}"
+        hash = generateHash([projectId, sprintId, ns])
+
         return $storage.get(hash) or {}
 
     return (instance) ->

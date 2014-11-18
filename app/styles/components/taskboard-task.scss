@@ -1,5 +1,4 @@
 .taskboard-task {
-    @include transition (all .4s linear);
     background: $postit;
     border: 1px solid $postit-hover;
     box-shadow: none;

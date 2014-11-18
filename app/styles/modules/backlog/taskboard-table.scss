@@ -1,11 +1,46 @@
 //Table basic shared vars
 
 $column-width: 300px;
-$column-folded-width: 45px;
-$column-flex: 1;
+$column-flex: 0;
 $column-shrink: 0;
 $column-margin: 0 10px 0 0;
 
+%fold {
+    .taskboard-task {
+        background: none;
+        border: 0;
+        margin: 0;
+        min-height: 0;
+        .taskboard-task-inner {
+            padding: .2rem;
+        }
+        .taskboard-tagline,
+        .taskboard-text {
+            display: none;
+        }
+        .avatar {
+            height: 35px;
+            width: 35px;
+        }
+        .icon {
+            display: none;
+        }
+        &.ui-sortable-helper {
+            box-shadow: none;
+        }
+    }
+    &.task-column,
+    .task-column {
+        @include table-flex(flex-start);
+        @include flex-direction(row);
+    }
+    .avatar-task-link {
+        display: block;
+    }
+    .avatar-assigned-to {
+        display: none;
+    }
+}
 
 .taskboard-table {
     overflow: hidden;
@@ -28,7 +63,6 @@ $column-margin: 0 10px 0 0;
         @extend %large;
         background: $whitish;
         border-top: 3px solid $gray-light;
-        cursor: pointer;
         margin: $column-margin;
         max-width: $column-width;
         padding: .5rem 1rem;
@@ -37,15 +71,6 @@ $column-margin: 0 10px 0 0;
         width: $column-width;
         &:last-child {
             margin-right: 0;
-        }
-        &:hover {
-            .icon {
-                &.hfold,
-                &.hunfold {
-                    @include transition(opacity .2s linear);
-                    opacity: 1;
-                }
-            }
         }
         .icon {
             @extend %medium;
@@ -57,18 +82,14 @@ $column-margin: 0 10px 0 0;
             }
             &.hfold,
             &.hunfold {
-                @include transition(opacity .2s linear);
                 @include transform(rotate(90deg));
                 display: inline-block;
-                opacity: 0;
             }
         }
         &.column-fold {
             @include align-items(center);
             @include justify-content(center);
-            max-width: $column-folded-width;
             padding: .3rem 0;
-            width: $column-folded-width;
             span {
                 display: none;
             }
@@ -88,39 +109,22 @@ $column-margin: 0 10px 0 0;
     overflow-y: scroll;
     width: 100%;
     .task-column {
-        @include table-flex-child();
+        @include table-flex-child($column-flex, $column-width, $column-shrink, $column-width);
         margin: $column-margin;
         max-width: $column-width;
         width: $column-width;
         &:last-child {
             margin-right: 0;
         }
-        &.colum-fold {
-            max-width: $column-folded-width;
-            width: $column-folded-width;
-            .taskboard-task {
-                background: none;
-                border: 0;
-                margin: 0;
-                min-height: 0;
-                .taskboard-task-inner {
-                    padding: .2rem;
-                }
-                .taskboard-tagline,
-                .taskboard-text {
-                    display: none;
-                }
-                .avatar {
-                    height: 35px;
-                    width: 35px;
-                }
-                .icon {
-                    display: none;
-                }
-                &.ui-sortable-helper {
-                    box-shadow: none;
-                }
-            }
+    }
+    .row-fold {
+        @extend %fold;
+    }
+    .column-fold {
+        @extend %fold;
+        .taskboard-task {
+            max-width: 40px;
+            width: 40px;
         }
     }
     .task-row {
@@ -164,35 +168,6 @@ $column-margin: 0 10px 0 0;
                     display: none;
                 }
             }
-            .task-column {
-                @include table-flex();
-                @include flex-direction(row);
-            }
-            .taskboard-task {
-                background: none;
-                border: 0;
-                margin: 0;
-                max-width: 40px;
-                min-height: 0;
-                width: 40px;
-                .taskboard-task-inner {
-                    padding: .2rem;
-                }
-                .taskboard-tagline,
-                .taskboard-text {
-                    display: none;
-                }
-                .avatar {
-                    height: 35px;
-                    width: 35px;
-                }
-                .icon {
-                    display: none;
-                }
-                &.ui-sortable-helper {
-                    box-shadow: none;
-                }
-            }
         }
     }
     .taskboard-tasks-box {
@@ -213,11 +188,18 @@ $column-margin: 0 10px 0 0;
             &.icon-plus {
                 right: 2rem;
             }
-            &.icon-vfold {
+            &.icon-vfold,
+            &.icon-vunfold {
                 left: 0;
                 right: inherit;
             }
         }
+    }
+    .avatar-task-link {
+        display: none;
+    }
+    .avatar-assigned-to {
+        display: block;
     }
 }
 
