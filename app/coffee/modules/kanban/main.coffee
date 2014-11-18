@@ -277,25 +277,6 @@ module.directive("tgKanban", ["$tgRepo", "$rootScope", KanbanDirective])
 
 
 #############################################################################
-## Kanban Row Size Fixer Directive
-#############################################################################
-
-KanbanRowWidthFixerDirective = ->
-    link = ($scope, $el, $attrs) ->
-        bindOnce $scope, "usStatusList", (statuses) ->
-            itemSize = 310
-            size = (statuses.length * itemSize) - 10
-            $el.css("width", "#{size}px")
-
-        $scope.$on "$destroy", ->
-            $el.off()
-
-    return {link: link}
-
-module.directive("tgKanbanRowWidthFixer", KanbanRowWidthFixerDirective)
-
-
-#############################################################################
 ## Kanban Column Height Fixer Directive
 #############################################################################
 
@@ -355,6 +336,36 @@ KanbanUserstoryDirective = ($rootscope) ->
 
 module.directive("tgKanbanUserstory", ["$rootScope", KanbanUserstoryDirective])
 
+#############################################################################
+## Kanban Squish Column Directive
+#############################################################################
+
+KanbanSquishColumnDirective = (rs) ->
+
+    link = ($scope, $el, $attrs) ->
+        $scope.$on "project:loaded", (event, project) ->
+            $scope.folds = rs.kanban.getStatusColumnModes(project.id)
+            updateTableWidth()
+
+        $scope.foldStatus = (status) ->
+            $scope.folds[status.id] = !!!$scope.folds[status.id]
+            rs.kanban.storeStatusColumnModes($scope.projectId, $scope.folds)
+            updateTableWidth()
+            return
+
+        updateTableWidth = ->
+            columnWidths = _.map $scope.usStatusList, (status) ->
+                if $scope.folds[status.id]
+                    return 40
+                else
+                    return 310
+            totalWidth = _.reduce columnWidths, (total, width) ->
+                return total + width
+            $el.find('.kanban-table-inner').css("width", totalWidth)
+
+    return {link: link}
+
+module.directive("tgKanbanSquishColumn", ["$tgResources", KanbanSquishColumnDirective])
 
 #############################################################################
 ## Kaban WIP Limit Directive

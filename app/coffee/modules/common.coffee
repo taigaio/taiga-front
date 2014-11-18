@@ -29,10 +29,10 @@ module = angular.module("taigaCommon", [])
 
 CheckPermissionDirective = ->
     render = ($el, project, permission) ->
-        $el.show() if project.my_permissions.indexOf(permission) > -1
+        $el.removeClass('hidden') if project.my_permissions.indexOf(permission) > -1
 
     link = ($scope, $el, $attrs) ->
-        $el.hide()
+        $el.addClass('hidden')
         permission = $attrs.tgCheckPermission
 
         $scope.$watch "project", (project) ->

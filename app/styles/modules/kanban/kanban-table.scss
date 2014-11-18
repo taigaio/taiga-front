@@ -1,13 +1,46 @@
 //Table basic shared vars
 
 $column-width: 300px;
-$column-flex: 1;
+$column-folded-width: 30px;
+$column-flex: 0;
 $column-shrink: 0;
 $column-margin: 0 10px 0 0;
 
 .kanban-table {
     overflow: hidden;
     width: 100%;
+    .vfold {
+        &.task-colum-name {
+            @include table-flex();
+            @include align-items(center);
+            @include justify-content(center);
+            @include transition(opacity .3s linear);
+            cursor: pointer;
+            opacity: .8;
+            padding: .5rem 0;
+            .icon-plus,
+            .icon-bulk,
+            .icon-vfold,
+            .icon-vunfold,
+            span {
+                display: none;
+            }
+            .hunfold {
+                margin: 0;
+            }
+        }
+        &.task-colum-name,
+        &.task-column {
+            @include table-flex-child(1, 0, 0);
+            max-width: $column-folded-width;
+            min-height: 2.5rem;
+            min-width: $column-folded-width;
+            width: $column-folded-width;
+        }
+        .kanban-task {
+            display: none;
+        }
+    }
 }
 
 .kanban-table-header {
@@ -20,34 +53,31 @@ $column-margin: 0 10px 0 0;
         position: absolute;
     }
     .task-colum-name {
-        @include table-flex-child();
+        @include table-flex-child($column-flex, $column-width, $column-shrink, $column-width);
+        @include table-flex();
+        @include justify-content(space-between);
         @extend %large;
         background: $whitish;
         border-top: 3px solid $gray-light;
         margin: $column-margin;
-        padding: .5rem 0;
+        padding: .5rem .5rem .5rem 1rem;
         position: relative;
-        text-align: center;
         text-transform: uppercase;
         &:last-child {
             margin-right: 0;
         }
         .icon {
+            @extend %medium;
             @include transition(color .2s linear);
             color: $gray-light;
-            position: absolute;
-            right: .5rem;
-            top: .5rem;
+            margin-right: .3rem;
             &:hover {
                 color: $green-taiga;
             }
-            &.icon-plus {
-                right: 2rem;
-            }
-            &.icon-maximize,
-            &.icon-minimize {
-                left: .5rem;
-                right: inherit;
+            &.hfold,
+            &.hunfold {
+                @include transform(rotate(90deg));
+                display: inline-block;
             }
         }
     }
@@ -60,7 +90,7 @@ $column-margin: 0 10px 0 0;
     overflow-x: auto;
     width: 100%;
     .task-column {
-        @include table-flex-child();
+        @include table-flex-child($column-flex, $column-width, $column-shrink, $column-width);
         margin: $column-margin;
         overflow-y: auto;
         &:last-child {
