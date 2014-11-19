@@ -83,13 +83,17 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
     initializeEventHandlers: ->
         @scope.$on "usform:new:success", =>
             @.loadUserstories()
+            @.refreshTagsColors()
             @analytics.trackEvent("userstory", "create", "create userstory on kanban", 1)
 
         @scope.$on "usform:bulk:success", =>
             @.loadUserstories()
             @analytics.trackEvent("userstory", "create", "bulk create userstory on kanban", 1)
 
-        @scope.$on("usform:edit:success", @.loadUserstories)
+        @scope.$on "usform:edit:success", =>
+            @.loadUserstories()
+            @.refreshTagsColors()
+
         @scope.$on("assigned-to:added", @.onAssignedToChanged)
         @scope.$on("kanban:us:move", @.moveUs)
 
