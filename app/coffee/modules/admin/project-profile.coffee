@@ -165,9 +165,9 @@ ProjectModulesDirective = ($repo, $confirm, $loading) ->
 
         $scope.$watch "isVideoconferenceActivated", (isVideoconferenceActivated) ->
             if isVideoconferenceActivated
-                $el.find(".videoconference-attributes").show()
+                $el.find(".videoconference-attributes").removeClass("hidden")
             else
-                $el.find(".videoconference-attributes").hide()
+                $el.find(".videoconference-attributes").addClass("hidden")
                 $scope.project.videoconferences = null
                 $scope.project.videoconferences_salt = ""
 
