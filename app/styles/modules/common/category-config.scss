@@ -4,13 +4,14 @@
         border-top: 1px solid $gray-light;
     }
     .resume {
-        @include table-flex($align-items: center);
+        @include display(flex);
+        @include align-items(space-between);
         cursor: pointer;
         padding: 1rem;
         position: relative;
     }
     .resume-title {
-        @include table-flex-child(1, 280px, 0);
+        width: 280px;
     }
     .count {
         color: $gray-light;
@@ -18,7 +19,8 @@
         padding-right: 5px;
     }
     .summary-role {
-        @include table-flex-child(3, 280px, 0);
+        @include flex(1);
+        width: 280px;
         .role-summary-single {
             background: $gray-light;
             display: inline-block;
@@ -34,7 +36,7 @@
         }
     }
     .icon {
-        @include table-flex-child(1, 0, 0);
+        @include flex(1);
         @extend %xlarge;
         text-align: right;
     }
@@ -47,10 +49,10 @@
         }
     }
     .category-item {
-        align-items: center;
+        @include display(flex);
+        @include justify-content(space-between);
+        @include align-items(center);
         border-bottom: 1px solid $very-light-gray;
-        display: flex;
-        justify-content: space-between;
         padding: .5rem .5rem .5rem 2rem;
         &:last-child {
             border-bottom: 0;
