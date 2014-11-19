@@ -251,7 +251,8 @@ RolePermissionsDirective = ($rootscope, $repo, $confirm) ->
         <div class="category-items">
             <div class="items-container">
             <% _.each(category.permissions, function(permission) { %>
-                <div class="category-item" data-id="<%- permission.key %>"> <%- permission.description %>
+                <div class="category-item" data-id="<%- permission.key %>">
+                    <span><%- permission.description %></span>
                     <div class="check">
                         <input type="checkbox" <% if(permission.active) { %>checked="checked"<% } %>/>
                         <div></div>

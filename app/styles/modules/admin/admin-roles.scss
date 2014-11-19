@@ -39,9 +39,9 @@
         padding: .5rem;
     }
     .general-category {
-        align-items: center;
-        display: flex;
-        justify-content: flex-end;
+        @include display(flex);
+        @include align-items(center);
+        @include justify-content(flex-end);
         padding-bottom: 2rem;
         .check {
             margin-left: .5rem;
