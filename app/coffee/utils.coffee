@@ -23,6 +23,7 @@ nl2br = (str) =>
     breakTag = '<br />'
     return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2')
 
+
 bindOnce = (scope, attr, continuation) =>
     val = scope.$eval(attr)
     if val != undefined
@@ -106,8 +107,10 @@ joinStr = (str, coll) ->
 debounce = (wait, func) ->
     return _.debounce(func, wait, {leading: true, trailing: false})
 
+
 debounceLeading = (wait, func) ->
     return _.debounce(func, wait, {leading: false, trailing: true})
+
 
 startswith = (str1, str2) ->
     return _.str.startsWith(str1, str2)

@@ -20,6 +20,7 @@
 ###
 
 taiga = @.taiga
+startswith = @.taiga.startswith
 
 module = angular.module("taigaEvents", [])
 
@@ -41,7 +42,18 @@ class EventsService
     setupConnection: ->
         @.stopExistingConnection()
 
-        url = @config.get("eventsUrl", "ws://localhost:8888/events")
+        url = @config.get("eventsUrl")
+
+        # This allows disable events in case
+        # url is not found on the configuration.
+        return if not url
+
+        # This allows relative urls in configuration.
+        if not startswith(url, "ws:") and not startswith(url, "wss:")
+            loc = @win.location
+            scheme = if loc.protocol == "https:" then "wss:" else "ws:"
+            path = _.str.ltrim(url, "/")
+            url = "#{scheme}//#{loc.host}/#{path}"
 
         @.ws = new @win.WebSocket(url)
         @.ws.addEventListener("open", @.onOpen)
