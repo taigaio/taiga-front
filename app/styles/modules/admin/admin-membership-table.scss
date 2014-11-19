@@ -78,11 +78,13 @@
     .row-role,
     .header-member,
     .header-role {
-        @include table-flex-child(4, 0, 0);
+        @include table-flex-child(3, 0, 0);
+        min-width: 210px;
     }
     .row-admin,
     .header-admin {
         @include table-flex-child(1, 0, 0);
+        min-width: 70px;
     }
     .row-status,
     .header-status {
