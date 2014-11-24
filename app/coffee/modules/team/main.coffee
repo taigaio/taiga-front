@@ -74,6 +74,24 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
 
             return project
 
+    loadMemberStats: ->
+        return @rs.projects.memberStats(@scope.projectId).then (stats) =>
+            @scope.stats = @.processStats(stats)
+
+    processStat: (stat) ->
+        max = _.max(stat)
+        singleStat = _.map stat, (value, key) ->
+            if value == max
+                return [key, 1]
+            return [key, (value * 0.3) / max]
+        singleStat = _.object(singleStat)
+        return singleStat
+
+    processStats: (stats) ->
+        for key,value of stats
+            stats[key] = @.processStat(value)
+        return stats
+
     loadInitialData: ->
         promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
             @scope.projectId = data.project
@@ -82,6 +100,7 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
         return promise.then(=> @.loadProject())
                       .then(=> @.loadUsersAndRoles())
                       .then(=> @.loadMembers())
+                      .then(=> @.loadMemberStats())
 
 module.controller("TeamController", TeamController)
 
@@ -131,7 +150,7 @@ TeamMembersDirective = () ->
                 </figure>
             </div>
             <div class="attribute">
-                <span class="icon icon-github"></span>
+                <span class="icon icon-edit" ng-style="{'opacity': stats.closed_tasks[user.user_id]}"></span>
             </div>
             <div class="attribute">
                 <span class="icon icon-github"></span>
@@ -152,7 +171,7 @@ TeamMembersDirective = () ->
     """
     return {
         link: (scope) ->
-            if !_.isArray(scope.memberships)
+            if not _.isArray(scope.memberships)
                 scope.memberships = [scope.memberships]
 
         template: template
@@ -160,7 +179,8 @@ TeamMembersDirective = () ->
             memberships: "=",
             filtersQ: "=filtersq",
             filtersRole: "=filtersrole",
-            currentUser: "@currentuser"
+            currentUser: "@currentuser",
+            stats: "="
         }
     }
 
