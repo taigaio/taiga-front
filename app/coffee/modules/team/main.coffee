@@ -80,10 +80,13 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     processStat: (stat) ->
         max = _.max(stat)
+        min = _.min(stat)
         singleStat = _.map stat, (value, key) ->
             if value == max
                 return [key, 1]
-            return [key, (value * 0.3) / max]
+            else if value == min
+                return [key, 0.1]
+            return [key, (value * 0.5) / max]
         singleStat = _.object(singleStat)
         return singleStat
 
@@ -150,22 +153,22 @@ TeamMembersDirective = () ->
                 </figure>
             </div>
             <div class="attribute">
-                <span class="icon icon-edit" ng-style="{'opacity': stats.closed_tasks[user.user_id]}"></span>
+                <span class="icon icon-briefcase" ng-style="{'opacity': stats.closed_bugs[user.user]}" ng-class="{'top': stats.closed_bugs[user.user] == 1}"></span>
             </div>
             <div class="attribute">
-                <span class="icon icon-github"></span>
+                <span class="icon icon-iocaine" ng-style="{'opacity': stats.iocaine_tasks[user.user]}" ng-class="{'top': stats.iocaine_tasks[user.user] == 1}"></span>
             </div>
             <div class="attribute">
-                <span class="icon icon-github"></span>
+                <span class="icon icon-writer" ng-style="{'opacity': stats.wiki_changes[user.user]}" ng-class="{'top': stats.wiki_changes[user.user] == 1}"></span>
             </div>
             <div class="attribute">
-                <span class="icon icon-github"></span>
+                <span class="icon icon-bug" ng-style="{'opacity': stats.created_bugs[user.user]}" ng-class="{'top': stats.created_bugs[user.user] == 1}"></span>
             </div>
             <div class="attribute">
-                <span class="icon icon-github top"></span>
+                <span class="icon icon-tasks" ng-style="{'opacity': stats.closed_tasks[user.user]}" ng-class="{'top': stats.closed_tasks[user.user] == 1}"></span>
             </div>
             <div class="attribute">
-                <span class="points">666</span>
+                <span class="points"></span>
             </div>
         </div>
     """

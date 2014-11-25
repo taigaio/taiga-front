@@ -13,6 +13,9 @@
         .points {
             @extend %xlarge;
             color: $grayer;
+            &.top {
+                color: $fresh-taiga;
+            }
         }
         .points {
             @extend %title;
