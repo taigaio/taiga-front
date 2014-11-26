@@ -90,10 +90,10 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
         max = _.max(stat)
         min = _.min(stat)
         singleStat = _.map stat, (value, key) ->
+            if value == min
+                return [key, 0.1]
             if value == max
                 return [key, 1]
-            else if value == min
-                return [key, 0.1]
             return [key, (value * 0.5) / max]
         singleStat = _.object(singleStat)
         return singleStat
@@ -150,19 +150,19 @@ module.directive("tgTeamFilters", [TeamFiltersDirective])
 TeamMemberStatsDirective = () ->
     template = """
         <div class="attribute">
-            <span class="icon icon-briefcase" ng-style="{'opacity': stats.closed_bugs[userId]}" ng-class="{'top': stats.closed_bugs[user.user] == 1}"></span>
+            <span class="icon icon-briefcase" ng-style="{'opacity': stats.closed_bugs[userId]}" ng-class="{'top': stats.closed_bugs[userId] == 1}"></span>
         </div>
         <div class="attribute">
-            <span class="icon icon-iocaine" ng-style="{'opacity': stats.iocaine_tasks[userId]}" ng-class="{'top': stats.iocaine_tasks[user.user] == 1}"></span>
+            <span class="icon icon-iocaine" ng-style="{'opacity': stats.iocaine_tasks[userId]}" ng-class="{'top': stats.iocaine_tasks[userId] == 1}"></span>
         </div>
         <div class="attribute">
-            <span class="icon icon-writer" ng-style="{'opacity': stats.wiki_changes[userId]}" ng-class="{'top': stats.wiki_changes[user.user] == 1}"></span>
+            <span class="icon icon-writer" ng-style="{'opacity': stats.wiki_changes[userId]}" ng-class="{'top': stats.wiki_changes[userId] == 1}"></span>
         </div>
         <div class="attribute">
-            <span class="icon icon-bug" ng-style="{'opacity': stats.created_bugs[userId]}" ng-class="{'top': stats.created_bugs[user.user] == 1}"></span>
+            <span class="icon icon-bug" ng-style="{'opacity': stats.created_bugs[userId]}" ng-class="{'top': stats.created_bugs[userId] == 1}"></span>
         </div>
         <div class="attribute">
-            <span class="icon icon-tasks" ng-style="{'opacity': stats.closed_tasks[userId]}" ng-class="{'top': stats.closed_tasks[user.user] == 1}"></span>
+            <span class="icon icon-tasks" ng-style="{'opacity': stats.closed_tasks[userId]}" ng-class="{'top': stats.closed_tasks[userId] == 1}"></span>
         </div>
         <div class="attribute">
             <span class="points"></span>
