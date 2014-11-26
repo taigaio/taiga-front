@@ -56,12 +56,6 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
         # On Error
         promise.then null, @.onInitialDataError.bind(@)
 
-<<<<<<< HEAD
-=======
-        @scope.currentUser = @auth.getUser()
-        @scope.projectId = @rootscope.projectId
-
->>>>>>> Allowing leave project
     setRole: (role) ->
         if role
             @scope.filtersRole = role
