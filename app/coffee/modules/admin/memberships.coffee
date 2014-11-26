@@ -302,8 +302,10 @@ MembershipsRowAdminCheckboxDirective = ($log, $repo, $confirm) ->
             onSuccess = ->
                 $confirm.notify("success")
 
-            onError = ->
-                $confirm.notify("error")
+            onError = (data) ->
+                member.revert()
+                $el.find(":checkbox").prop("checked", member.is_owner)
+                $confirm.notify("error", data.is_owner[0])
 
             target = angular.element(event.currentTarget)
             member.is_owner = target.prop("checked")
