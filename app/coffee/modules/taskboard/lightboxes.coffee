@@ -54,6 +54,15 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootscope, lightboxService) ->
             lightboxService.open($el)
 
         $el.on "click", ".button-green", debounce 2000, (event) ->
+            formSubmitted event
+
+        $el.on "submit", "form", debounce 2000, (event) ->
+            formSubmitted event
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+        formSubmitted = (event) ->
             event.preventDefault()
 
             form = $el.find("form").checksley()
@@ -71,9 +80,6 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootscope, lightboxService) ->
             promise.then (data) ->
                 lightboxService.close($el)
                 $rootscope.$broadcast(broadcastEvent, data)
-
-        $scope.$on "$destroy", ->
-            $el.off()
 
     return {link: link}
 
