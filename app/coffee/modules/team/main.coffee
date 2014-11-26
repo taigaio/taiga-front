@@ -55,8 +55,6 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
         # On Error
         promise.then null, @.onInitialDataError.bind(@)
 
-        @scope.currentUser = @auth.getUser()
-
     setRole: (role) ->
         if role
             @scope.filtersRole = role
@@ -65,7 +63,15 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     loadMembers: ->
         return @rs.memberships.list(@scope.projectId, {}, false).then (data) =>
-            @scope.memberships = _.filter(data, (membership) => membership.user?)
+            currentUser = @auth.getUser()
+
+            @scope.currentUser = _.find data, (membership) =>
+                return membership.user == currentUser.id
+
+            @scope.memberships = _.filter data, (membership) =>
+                if membership.user && membership.user != currentUser.id
+                    return membership
+
             return data
 
     loadProject: ->
@@ -172,7 +178,7 @@ TeamMemberStatsDirective = () ->
 module.directive("tgTeamMemberStats", TeamMemberStatsDirective)
 
 #############################################################################
-## Team Member Directive
+## Team Current User Directive
 #############################################################################
 
 TeamMemberCurrentUserDirective = () ->
@@ -180,14 +186,15 @@ TeamMemberCurrentUserDirective = () ->
         <div class="row">
             <div class="username">
                 <figure class="avatar">
-                    <img tg-bo-src="currentUser.photo", tg-bo-alt="currentUser.username" />
+                    <img tg-bo-src="currentUser.photo", tg-bo-alt="currentUser.full_name" />
                     <figcaption>
-                        <span class="name" tg-bo-bind="currentUser.username"></span>
+                        <span class="name" tg-bo-bind="currentUser.full_name"></span>
+                        <span class="position" tg-bo-bind="currentUser.role_name"></span>
                         <div tg-leave-project></div>
                     </figcaption>
                 </figure>
             </div>
-            <div class="member-stats" tg-team-member-stats stats="stats" user="currentUser.id"></div>
+            <div class="member-stats" tg-team-member-stats stats="stats" user="currentUser.user"></div>
         </div>
     """
     return {
