@@ -90,7 +90,6 @@
     .header-status {
         @include table-flex-child(1, 50px, 0);
     }
-
     .check {
         background-color: darken($whitish, 10%);
         border-radius: 2px;

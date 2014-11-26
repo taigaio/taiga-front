@@ -137,53 +137,90 @@ TeamFiltersDirective = () ->
 module.directive("tgTeamFilters", [TeamFiltersDirective])
 
 #############################################################################
+## Team Member Stats Directive
+#############################################################################
+
+TeamMemberStatsDirective = () ->
+    template = """
+        <div class="attribute">
+            <span class="icon icon-briefcase" ng-style="{'opacity': stats.closed_bugs[user.user]}" ng-class="{'top': stats.closed_bugs[user.user] == 1}"></span>
+        </div>
+        <div class="attribute">
+            <span class="icon icon-iocaine" ng-style="{'opacity': stats.iocaine_tasks[user.user]}" ng-class="{'top': stats.iocaine_tasks[user.user] == 1}"></span>
+        </div>
+        <div class="attribute">
+            <span class="icon icon-writer" ng-style="{'opacity': stats.wiki_changes[user.user]}" ng-class="{'top': stats.wiki_changes[user.user] == 1}"></span>
+        </div>
+        <div class="attribute">
+            <span class="icon icon-bug" ng-style="{'opacity': stats.created_bugs[user.user]}" ng-class="{'top': stats.created_bugs[user.user] == 1}"></span>
+        </div>
+        <div class="attribute">
+            <span class="icon icon-tasks" ng-style="{'opacity': stats.closed_tasks[user.user]}" ng-class="{'top': stats.closed_tasks[user.user] == 1}"></span>
+        </div>
+        <div class="attribute">
+            <span class="points"></span>
+        </div>
+    """
+    return {
+        template: template
+    }
+
+module.directive("tgTeamMemberStats", TeamMemberStatsDirective)
+
+#############################################################################
+## Team Member Directive
+#############################################################################
+
+TeamMemberCurrentUserDirective = () ->
+    template = """
+        <div class="row">
+            <div class="username">
+                <figure class="avatar">
+                    <img tg-bo-src="currentUser.photo", tg-bo-alt="currentUser.username" />
+                    <figcaption>
+                        <span class="name" tg-bo-bind="currentUser.username"></span>
+                        <div tg-leave-project></div>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="member-stats" tg-team-member-stats></div>
+        </div>
+    """
+    return {
+        template: template
+        scope: {
+            currentUser: "=currentuser",
+            stats: "="
+        }
+    }
+
+module.directive("tgTeamCurrentUser", TeamMemberCurrentUserDirective)
+
+#############################################################################
 ## Team Members Directive
 #############################################################################
 
 TeamMembersDirective = () ->
     template = """
-        <div class="row" ng-repeat="user in memberships | filter:filtersQ | filter:{role: filtersRole.id}">
+        <div class="row member" ng-repeat="user in memberships | filter:filtersQ | filter:{role: filtersRole.id}">
             <div class="username">
                 <figure class="avatar">
                     <img tg-bo-src="user.photo", tg-bo-alt="user.full_name" />
                     <figcaption>
                         <span class="name" tg-bo-bind="user.full_name"></span>
                         <span class="position" tg-bo-bind="user.role_name"></span>
-                        <tg-leave-project ng-if="currentUser"></tg-leave-project>
                     </figcaption>
                 </figure>
             </div>
-            <div class="attribute">
-                <span class="icon icon-briefcase" ng-style="{'opacity': stats.closed_bugs[user.user]}" ng-class="{'top': stats.closed_bugs[user.user] == 1}"></span>
-            </div>
-            <div class="attribute">
-                <span class="icon icon-iocaine" ng-style="{'opacity': stats.iocaine_tasks[user.user]}" ng-class="{'top': stats.iocaine_tasks[user.user] == 1}"></span>
-            </div>
-            <div class="attribute">
-                <span class="icon icon-writer" ng-style="{'opacity': stats.wiki_changes[user.user]}" ng-class="{'top': stats.wiki_changes[user.user] == 1}"></span>
-            </div>
-            <div class="attribute">
-                <span class="icon icon-bug" ng-style="{'opacity': stats.created_bugs[user.user]}" ng-class="{'top': stats.created_bugs[user.user] == 1}"></span>
-            </div>
-            <div class="attribute">
-                <span class="icon icon-tasks" ng-style="{'opacity': stats.closed_tasks[user.user]}" ng-class="{'top': stats.closed_tasks[user.user] == 1}"></span>
-            </div>
-            <div class="attribute">
-                <span class="points"></span>
-            </div>
+            <div class="member-stats" tg-team-member-stats></div>
         </div>
     """
     return {
-        link: (scope) ->
-            if not _.isArray(scope.memberships)
-                scope.memberships = [scope.memberships]
-
         template: template
         scope: {
             memberships: "=",
             filtersQ: "=filtersq",
             filtersRole: "=filtersrole",
-            currentUser: "@currentuser",
             stats: "="
         }
     }
@@ -208,8 +245,6 @@ LeaveProjectDirective = ($repo, $confirm, $location) ->
                     console.log "TODO"
     return {
         scope: {},
-        restrict: "EA",
-        replace: true,
         template: template,
         link: link
     }

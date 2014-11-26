@@ -5,6 +5,10 @@
     .username {
         @include table-flex-child(3, 0, 0);
     }
+    .member-stats {
+        @include table-flex(stretch, center, flex, row, wrap, flex-start);
+        @include table-flex-child(6, 0, 0);
+    }
     .attribute {
         @include table-flex-child(1, 0, 0);
         position: relative;
