@@ -32,6 +32,7 @@ module = angular.module("taigaTeam")
 class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
     @.$inject = [
         "$scope",
+        "$rootScope",
         "$tgRepo",
         "$tgResources",
         "$routeParams",
@@ -41,7 +42,7 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
         "tgLoader"
     ]
 
-    constructor: (@scope, @repo, @rs, @params, @q, @appTitle, @auth, tgLoader) ->
+    constructor: (@scope, @rootscope, @repo, @rs, @params, @q, @appTitle, @auth, tgLoader) ->
         @scope.sectionName = "Team"
 
         promise = @.loadInitialData()
@@ -55,6 +56,12 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
         # On Error
         promise.then null, @.onInitialDataError.bind(@)
 
+<<<<<<< HEAD
+=======
+        @scope.currentUser = @auth.getUser()
+        @scope.projectId = @rootscope.projectId
+
+>>>>>>> Allowing leave project
     setRole: (role) ->
         if role
             @scope.filtersRole = role
@@ -190,7 +197,7 @@ TeamMemberCurrentUserDirective = () ->
                     <figcaption>
                         <span class="name" tg-bo-bind="currentUser.full_name"></span>
                         <span class="position" tg-bo-bind="currentUser.role_name"></span>
-                        <div tg-leave-project></div>
+                        <div tg-leave-project projectid="{{projectId}}"></div>
                     </figcaption>
                 </figure>
             </div>
@@ -200,6 +207,7 @@ TeamMemberCurrentUserDirective = () ->
     return {
         template: template
         scope: {
+            projectId: "=projectid",
             currentUser: "=currentuser",
             stats: "="
         }
@@ -242,22 +250,32 @@ module.directive("tgTeamMembers", TeamMembersDirective)
 ## Leave project Directive
 #############################################################################
 
-LeaveProjectDirective = ($repo, $confirm, $location) ->
+LeaveProjectDirective = ($repo, $confirm, $location, $rs, $navurls) ->
     template= """
         <a ng-click="leave()" href="" class="leave-project">
             <span class="icon icon-delete"></span>Leave this project
         </a>
     """ #TODO: i18n
 
-    link = ($scope) ->
+    link = ($scope, $el, $attrs) ->
         $scope.leave = () ->
-            $confirm.ask("Leave this project", "Are you sure you want to leave the project?")#TODO: i18n
-                .then (finish) =>
-                    console.log "TODO"
+            #TODO: i18n
+            $confirm.ask("Leave this project", "Are you sure you want to leave the project?").then (finish) =>
+                promise = $rs.projects.leave($attrs.projectid)
+
+                promise.then =>
+                    finish()
+                    $confirm.notify("success")
+                    $location.path($navurls.resolve("home"))
+
+                promise.then null, (response) ->
+                    finish()
+                    $confirm.notify('error', response.data._error_message)
+
     return {
         scope: {},
         template: template,
         link: link
     }
 
-module.directive("tgLeaveProject", ["$tgRepo", "$tgConfirm", "$tgLocation", LeaveProjectDirective])
+module.directive("tgLeaveProject", ["$tgRepo", "$tgConfirm", "$tgLocation", "$tgResources", "$tgNavUrls", LeaveProjectDirective])
