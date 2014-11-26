@@ -45,6 +45,9 @@ resourceProvider = ($repo) ->
     service.stats = (projectId) ->
         return $repo.queryOneRaw("projects", "#{projectId}/stats")
 
+    service.leave = (projectId) ->
+        return $repo.queryOneRaw("projects", "#{projectId}/leave")
+
     service.memberStats = (projectId) ->
         return $repo.queryOneRaw("projects", "#{projectId}/member_stats")
 
