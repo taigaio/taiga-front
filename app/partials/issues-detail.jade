@@ -16,7 +16,7 @@ block content
                         span.us-number(tg-bo-ref="issue.ref")
                         span.us-name(tg-editable-subject, ng-model="issue", required-perm="modify_issue")
 
-                    p.us-related-task(ng-if="issue.generated_user_stories") This issue has been promoted to US:
+                    p.us-related-task(ng-if="issue.generated_user_stories.length") This issue has been promoted to US:
                         a(ng-repeat="us in issue.generated_user_stories",
                           tg-check-permission="view_us", href="",
                           tg-bo-title="'#' + us.ref + ' ' + us.subject",

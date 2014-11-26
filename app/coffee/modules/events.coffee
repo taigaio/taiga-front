@@ -21,13 +21,14 @@
 
 taiga = @.taiga
 startswith = @.taiga.startswith
+bindMethods = @.taiga.bindMethods
 
 module = angular.module("taigaEvents", [])
 
 
 class EventsService
     constructor: (@win, @log, @config, @auth) ->
-        _.bindAll(@)
+        bindMethods(@)
 
     initialize: (sessionId) ->
         @.sessionId = sessionId

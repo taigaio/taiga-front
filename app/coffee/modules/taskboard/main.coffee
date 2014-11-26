@@ -26,6 +26,7 @@ groupBy = @.taiga.groupBy
 bindOnce = @.taiga.bindOnce
 scopeDefer = @.taiga.scopeDefer
 timeout = @.taiga.timeout
+bindMethods = @.taiga.bindMethods
 
 module = angular.module("taigaTaskboard")
 
@@ -53,7 +54,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @appTitle, @location, @navUrls,
                   @events, @analytics, tgLoader) ->
-        _.bindAll(@)
+        bindMethods(@)
 
         @scope.sectionName = "Taskboard"
         @.initializeEventHandlers()

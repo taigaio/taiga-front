@@ -27,6 +27,7 @@ scopeDefer = @.taiga.scopeDefer
 bindOnce = @.taiga.bindOnce
 groupBy = @.taiga.groupBy
 timeout = @.taiga.timeout
+bindMethods = @.taiga.bindMethods
 
 module = angular.module("taigaBacklog")
 
@@ -53,7 +54,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q,
                   @location, @appTitle, @navUrls, @events, @analytics, tgLoader) ->
-        _.bindAll(@)
+        bindMethods(@)
 
         @scope.sectionName = "Backlog"
         @showTags = false
@@ -444,6 +445,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             return obj
 
         plainStatuses = _.map(@scope.userstories, "status")
+
         plainStatuses = _.filter plainStatuses, (status) =>
             if status
                 return status

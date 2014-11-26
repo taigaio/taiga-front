@@ -134,7 +134,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         {templateUrl: "/partials/permission-denied.html"})
 
     $routeProvider.otherwise({redirectTo: '/not-found'})
-    $locationProvider.html5Mode(true)
+    $locationProvider.html5Mode({enabled: true, requireBase: false})
 
     defaultHeaders = {
         "Content-Type": "application/json"
@@ -154,20 +154,24 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
 
     # Add next param when user try to access to a secction need auth permissions.
     authHttpIntercept = ($q, $location, $confirm, $navUrls, $lightboxService) ->
-        return (promise) ->
-            return promise.then null, (response) ->
-                if response.status == 0
-                    $lightboxService.closeAll()
-                    $location.path($navUrls.resolve("error"))
-                    $location.replace()
-                else if response.status == 401
-                    nextPath = $location.path()
-                    $location.url($navUrls.resolve("login")).search("next=#{nextPath}")
-                return $q.reject(response)
+        httpResponseError = (response) ->
+            if response.status == 0
+                $lightboxService.closeAll()
+                $location.path($navUrls.resolve("error"))
+                $location.replace()
+            else if response.status == 401
+                nextPath = $location.path()
+                $location.url($navUrls.resolve("login")).search("next=#{nextPath}")
+            return $q.reject(response)
+
+        return {
+            responseError: httpResponseError
+        }
 
     $provide.factory("authHttpIntercept", ["$q", "$location", "$tgConfirm", "$tgNavUrls",
                                            "lightboxService", authHttpIntercept])
-    $httpProvider.responseInterceptors.push('authHttpIntercept')
+
+    $httpProvider.interceptors.push('authHttpIntercept');
 
     window.checksley.updateValidators({
         linewidth: (val, width) ->

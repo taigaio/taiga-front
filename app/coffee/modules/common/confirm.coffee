@@ -23,7 +23,7 @@ taiga = @.taiga
 timeout = @.taiga.timeout
 cancelTimeout = @.taiga.cancelTimeout
 debounce = @.taiga.debounce
-
+bindMethods = @.taiga.bindMethods
 
 NOTIFICATION_MSG = {
     "success":
@@ -42,7 +42,7 @@ class ConfirmService extends taiga.Service
     @.$inject = ["$q", "lightboxService", "$tgLoading"]
 
     constructor: (@q, @lightboxService, @loading) ->
-        _.bindAll(@)
+        bindMethods(@)
 
     hide: (el)->
         if el
