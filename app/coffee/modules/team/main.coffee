@@ -48,6 +48,7 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
 
         # On Success
         promise.then =>
+            #TODO: i18n
             @appTitle.set("Team - " + @scope.project.name)
             tgLoader.pageLoaded()
 
@@ -63,8 +64,8 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.filtersRole = ""
 
     loadMembers: ->
-        return @rs.memberships.list(@scope.projectId).then (data) =>
-            @scope.memberships = data.models
+        return @rs.memberships.list(@scope.projectId, {}, false).then (data) =>
+            @scope.memberships = _.filter(data, (membership) => membership.user?)
             return data
 
     loadProject: ->
