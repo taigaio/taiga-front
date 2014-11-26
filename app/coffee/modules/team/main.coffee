@@ -143,26 +143,30 @@ module.directive("tgTeamFilters", [TeamFiltersDirective])
 TeamMemberStatsDirective = () ->
     template = """
         <div class="attribute">
-            <span class="icon icon-briefcase" ng-style="{'opacity': stats.closed_bugs[user.user]}" ng-class="{'top': stats.closed_bugs[user.user] == 1}"></span>
+            <span class="icon icon-briefcase" ng-style="{'opacity': stats.closed_bugs[userId]}" ng-class="{'top': stats.closed_bugs[user.user] == 1}"></span>
         </div>
         <div class="attribute">
-            <span class="icon icon-iocaine" ng-style="{'opacity': stats.iocaine_tasks[user.user]}" ng-class="{'top': stats.iocaine_tasks[user.user] == 1}"></span>
+            <span class="icon icon-iocaine" ng-style="{'opacity': stats.iocaine_tasks[userId]}" ng-class="{'top': stats.iocaine_tasks[user.user] == 1}"></span>
         </div>
         <div class="attribute">
-            <span class="icon icon-writer" ng-style="{'opacity': stats.wiki_changes[user.user]}" ng-class="{'top': stats.wiki_changes[user.user] == 1}"></span>
+            <span class="icon icon-writer" ng-style="{'opacity': stats.wiki_changes[userId]}" ng-class="{'top': stats.wiki_changes[user.user] == 1}"></span>
         </div>
         <div class="attribute">
-            <span class="icon icon-bug" ng-style="{'opacity': stats.created_bugs[user.user]}" ng-class="{'top': stats.created_bugs[user.user] == 1}"></span>
+            <span class="icon icon-bug" ng-style="{'opacity': stats.created_bugs[userId]}" ng-class="{'top': stats.created_bugs[user.user] == 1}"></span>
         </div>
         <div class="attribute">
-            <span class="icon icon-tasks" ng-style="{'opacity': stats.closed_tasks[user.user]}" ng-class="{'top': stats.closed_tasks[user.user] == 1}"></span>
+            <span class="icon icon-tasks" ng-style="{'opacity': stats.closed_tasks[userId]}" ng-class="{'top': stats.closed_tasks[user.user] == 1}"></span>
         </div>
         <div class="attribute">
             <span class="points"></span>
         </div>
     """
     return {
-        template: template
+        template: template,
+        scope: {
+            "stats": "=",
+            "userId": "=user"
+        }
     }
 
 module.directive("tgTeamMemberStats", TeamMemberStatsDirective)
@@ -183,7 +187,7 @@ TeamMemberCurrentUserDirective = () ->
                     </figcaption>
                 </figure>
             </div>
-            <div class="member-stats" tg-team-member-stats></div>
+            <div class="member-stats" tg-team-member-stats stats="stats" user="currentUser.id"></div>
         </div>
     """
     return {
@@ -212,7 +216,7 @@ TeamMembersDirective = () ->
                     </figcaption>
                 </figure>
             </div>
-            <div class="member-stats" tg-team-member-stats></div>
+            <div class="member-stats" tg-team-member-stats stats="stats" user="user.user"></div>
         </div>
     """
     return {
