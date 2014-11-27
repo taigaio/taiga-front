@@ -23,7 +23,7 @@ taiga = @.taiga
 bindOnce = @.taiga.bindOnce
 debounce = @.taiga.debounce
 
-CreateEditTaskDirective = ($repo, $model, $rs, $rootscope, lightboxService) ->
+CreateEditTaskDirective = ($repo, $model, $rs, $rootscope, $loading, lightboxService) ->
     link = ($scope, $el, attrs) ->
         $scope.isNew = true
 
@@ -53,16 +53,10 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootscope, lightboxService) ->
             $el.find(".title").html("Edit task  ") #TODO: i18n
             lightboxService.open($el)
 
-        $el.on "click", ".button-green", debounce 2000, (event) ->
-            formSubmitted event
 
-        $el.on "submit", "form", debounce 2000, (event) ->
-            formSubmitted event
+        submitButton = $el.find(".submit-button")
 
-        $scope.$on "$destroy", ->
-            $el.off()
-
-        formSubmitted = (event) ->
+        submit = debounce 2000, (event) =>
             event.preventDefault()
 
             form = $el.find("form").checksley()
@@ -76,28 +70,35 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootscope, lightboxService) ->
                 promise = $repo.save($scope.task)
                 broadcastEvent = "taskform:edit:success"
 
+            $loading.start(submitButton)
+
             # FIXME: error handling?
             promise.then (data) ->
+                $loading.finish(submitButton)
                 lightboxService.close($el)
                 $rootscope.$broadcast(broadcastEvent, data)
+
+        $el.on "submit", "form", submit
+        $el.on "click", ".submit-button", submit
+
+        $scope.$on "$destroy", ->
+            $el.off()
 
     return {link: link}
 
 
-CreateBulkTasksDirective = ($repo, $rs, $rootscope, lightboxService) ->
+CreateBulkTasksDirective = ($repo, $rs, $rootscope, $loading, lightboxService) ->
     link = ($scope, $el, attrs) ->
         $scope.form = {data: "", usId: null}
 
-        $scope.$on "taskform:bulk", (ctx, sprintId, usId)->
-            lightboxService.open($el)
-            $scope.form = {data: "", sprintId: sprintId, usId: usId}
-
-        $el.on "click", ".button-green", debounce 2000, (event) ->
+        submit = debounce 2000, (event) =>
             event.preventDefault()
 
             form = $el.find("form").checksley()
             if not form.validate()
                 return
+
+            $loading.start(submitButton)
 
             data = $scope.form.data
             projectId = $scope.projectId
@@ -106,12 +107,23 @@ CreateBulkTasksDirective = ($repo, $rs, $rootscope, lightboxService) ->
 
             promise = $rs.tasks.bulkCreate(projectId, sprintId, usId, data)
             promise.then (result) ->
+                $loading.finish(submitButton)
                 $rootscope.$broadcast("taskform:bulk:success", result)
                 lightboxService.close($el)
 
             # TODO: error handling
             promise.then null, ->
+                $loading.finish(submitButton)
                 console.log "FAIL"
+
+        $scope.$on "taskform:bulk", (ctx, sprintId, usId)->
+            lightboxService.open($el)
+            $scope.form = {data: "", sprintId: sprintId, usId: usId}
+
+        submitButton = $el.find(".submit-button")
+
+        $el.on "submit", "form", submit
+        $el.on "click", ".submit-button", submit
 
         $scope.$on "$destroy", ->
             $el.off()
@@ -126,6 +138,7 @@ module.directive("tgLbCreateEditTask", [
     "$tgModel",
     "$tgResources",
     "$rootScope",
+    "$tgLoading",
     "lightboxService",
     CreateEditTaskDirective
 ])
@@ -134,6 +147,7 @@ module.directive("tgLbCreateBulkTasks", [
     "$tgRepo",
     "$tgResources",
     "$rootScope",
+    "$tgLoading",
     "lightboxService",
     CreateBulkTasksDirective
 ])

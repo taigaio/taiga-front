@@ -15,7 +15,8 @@ form
             input.date-end(type="text", name="estimated_finish", placeholder="Estimated End",
                            ng-model="sprint.estimated_finish", data-required="true", tg-date-selector)
 
-    a.button.button-green(href="", title="Save")
+    button(type="submit", class="hidden")
+    a.button.button-green.submit-button(href="", title="Create")
         span Create
 
     div(tg-check-permission="delete_milestone")

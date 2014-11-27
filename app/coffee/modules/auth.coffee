@@ -189,7 +189,9 @@ LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls, $
         onError = (response) ->
             $confirm.notify("light-error", "According to our Oompa Loompas, your username/email
                                             or password are incorrect.") #TODO: i18n
-        submit = ->
+        submit = debounce 2000, (event) =>
+            event.preventDefault()
+
             form = new checksley.Form($el.find("form.login-form"))
             if not form.validate()
                 return
@@ -202,13 +204,8 @@ LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls, $
             promise = $auth.login(data)
             return promise.then(onSuccess, onError)
 
-        $el.on "click", "a.button-login", (event) ->
-            event.preventDefault()
-            submit()
-
-        $el.on "submit", "form", (event) ->
-            event.preventDefault()
-            submit()
+        $el.on "submit", "form", submit
+        $el.on "click", ".submit-button", submit
 
     return {link:link}
 
@@ -239,20 +236,17 @@ RegisterDirective = ($auth, $confirm, $location, $navUrls, $config, $analytics) 
 
             form.setErrors(response.data)
 
-        submit = debounce 2000, =>
+        submit = debounce 2000, (event) =>
+            event.preventDefault()
+
             if not form.validate()
                 return
 
             promise = $auth.register($scope.data)
             promise.then(onSuccessSubmit, onErrorSubmit)
 
-        $el.on "submit", (event) ->
-            event.preventDefault()
-            submit()
-
-        $el.on "click", "a.button-register", (event) ->
-            event.preventDefault()
-            submit()
+        $el.on "submit", "form", submit
+        $el.on "click", ".submit-button", submit
 
     return {link:link}
 
@@ -279,20 +273,17 @@ ForgotPasswordDirective = ($auth, $confirm, $location, $navUrls) ->
             $confirm.notify("light-error", "According to our Oompa Loompas,
                                             your are not registered yet.") #TODO: i18n
 
-        submit = debounce 2000, =>
+        submit = debounce 2000, (event) =>
+            event.preventDefault()
+
             if not form.validate()
                 return
 
             promise = $auth.forgotPassword($scope.data)
             promise.then(onSuccessSubmit, onErrorSubmit)
 
-        $el.on "submit", (event) ->
-            event.preventDefault()
-            submit()
-
-        $el.on "click", "a.button-forgot", (event) ->
-            event.preventDefault()
-            submit()
+        $el.on "submit", "form", submit
+        $el.on "click", ".submit-button", submit
 
     return {link:link}
 
@@ -324,20 +315,17 @@ ChangePasswordFromRecoveryDirective = ($auth, $confirm, $location, $params, $nav
             $confirm.notify("light-error", "One of our Oompa Loompas say
                             '#{response.data._error_message}'.") #TODO: i18n
 
-        submit = debounce 2000, =>
+        submit = debounce 2000, (event) =>
+            event.preventDefault()
+
             if not form.validate()
                 return
 
             promise = $auth.changePasswordFromRecovery($scope.data)
             promise.then(onSuccessSubmit, onErrorSubmit)
 
-        $el.on "submit", (event) ->
-            event.preventDefault()
-            submit()
-
-        $el.on "click", "a.button-change-password", (event) ->
-            event.preventDefault()
-            submit()
+        $el.on "submit", "form", submit
+        $el.on "click", ".submit-button", submit
 
     return {link:link}
 
@@ -375,20 +363,17 @@ InvitationDirective = ($auth, $confirm, $location, $params, $navUrls, $analytics
             $confirm.notify("light-error", "According to our Oompa Loompas, your are not registered yet or
                                             typed an invalid password.") #TODO: i18n
 
-        submitLogin = debounce 2000, =>
+        submitLogin = debounce 2000, (event) =>
+            event.preventDefault()
+
             if not loginForm.validate()
                 return
 
             promise = $auth.acceptInvitiationWithExistingUser($scope.dataLogin)
             promise.then(onSuccessSubmitLogin, onErrorSubmitLogin)
 
-        $el.on "submit", "form.login-form", (event) ->
-            event.preventDefault()
-            submitLogin()
-
-        $el.on "click", "a.button-login", (event) ->
-            event.preventDefault()
-            submitLogin()
+        $el.on "submit", "form.login-form", submitLogin
+        $el.on "click", ".button-login", submitLogin
 
         # Register form
         $scope.dataRegister = {token: token}
@@ -404,20 +389,17 @@ InvitationDirective = ($auth, $confirm, $location, $params, $navUrls, $analytics
             $confirm.notify("light-error", "According to our Oompa Loompas, that
                                             username or email is already in use.") #TODO: i18n
 
-        submitRegister = debounce 2000, =>
+        submitRegister = debounce 2000, (event) =>
+            event.preventDefault()
+
             if not registerForm.validate()
                 return
 
             promise = $auth.acceptInvitiationWithNewUser($scope.dataRegister)
             promise.then(onSuccessSubmitRegister, onErrorSubmitRegister)
 
-        $el.on "submit", "form.register-form", (event) ->
-            event.preventDefault()
-            submitRegister
-
-        $el.on "click", "a.button-register", (event) ->
-            event.preventDefault()
-            submitRegister()
+        $el.on "submit", "form.register-form", submitRegister
+        $el.on "click", ".button-register", submitRegister
 
     return {link:link}
 
@@ -483,20 +465,17 @@ CancelAccountDirective = ($repo, $model, $auth, $confirm, $location, $params, $n
             $confirm.notify("error", "One of our Oompa Loompas says
                             '#{response.data._error_message}'.") #TODO: i18n
 
-        submit = ->
+        submit = debounce 2000, (event) =>
+            event.preventDefault()
+
             if not form.validate()
                 return
 
             promise = $auth.cancelAccount($scope.data)
             promise.then(onSuccessSubmit, onErrorSubmit)
 
-        $el.on "submit", (event) ->
-            event.preventDefault()
-            submit()
-
-        $el.on "click", "a.button-cancel-account", (event) ->
-            event.preventDefault()
-            submit()
+        $el.on "submit", "form", submit
+        $el.on "click", ".submit-button", submit
 
     return {link:link}
 

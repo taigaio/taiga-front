@@ -23,7 +23,7 @@ taiga = @.taiga
 mixOf = @.taiga.mixOf
 sizeFormat = @.taiga.sizeFormat
 module = angular.module("taigaUserSettings")
-
+debounce = @.taiga.debounce
 
 #############################################################################
 ## User settings Controller
@@ -82,7 +82,9 @@ module.controller("UserSettingsController", UserSettingsController)
 
 UserProfileDirective = ($confirm, $auth, $repo) ->
     link = ($scope, $el, $attrs) ->
-        $el.on "click", ".user-profile form .save-profile", (event) ->
+        submit = debounce 2000, (event) =>
+            event.preventDefault()
+
             form = $el.find("form").checksley()
             return if not form.validate()
 
@@ -102,6 +104,10 @@ UserProfileDirective = ($confirm, $auth, $repo) ->
                 $confirm.notify('error', data._error_message)
 
             $repo.save($scope.user).then(onSuccess, onError)
+
+        $el.on "submit", "form", submit
+
+        $el.on "click", ".submit-button", submit
 
         $scope.$on "$destroy", ->
             $el.off()

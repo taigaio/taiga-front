@@ -26,7 +26,7 @@ debounce = @.taiga.debounce
 
 module = angular.module("taigaProject")
 
-CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $projectUrl, lightboxService, $cacheFactory) ->
+CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $projectUrl, $loading, lightboxService, $cacheFactory) ->
     link = ($scope, $el, attrs) ->
         $scope.data = {}
         $scope.templates = []
@@ -39,12 +39,14 @@ CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $project
             # than another deleted in the same session
             $cacheFactory.get('$http').removeAll()
 
+            $loading.finish(submitButton)
             $rootscope.$broadcast("projects:reload")
             $confirm.notify("success", "Success") #TODO: i18n
             $location.url($projectUrl.get(response))
             lightboxService.close($el)
 
         onErrorSubmit = (response) ->
+            $loading.finish(submitButton)
             form.setErrors(response)
             selectors = []
             for error_field in _.keys(response)
@@ -54,9 +56,13 @@ CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $project
             error_step.addClass("active")
             $el.find('.progress-bar').removeClass().addClass('progress-bar').addClass(error_step.data("step"))
 
-        submit = ->
+        submit = (event) =>
+            event.preventDefault()
+
             if not form.validate()
                 return
+
+            $loading.start(submitButton)
 
             promise = $repo.create("projects", $scope.data)
             promise.then(onSuccessSubmit, onErrorSubmit)
@@ -109,10 +115,10 @@ CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $project
             step = prev.data('step')
             $el.find('.progress-bar').removeClass().addClass('progress-bar').addClass(step)
 
+        submitButton = $el.find(".submit-button")
 
-        $el.on "click", ".button-submit", debounce 2000, (event) ->
-            event.preventDefault()
-            submit()
+        $el.on "submit", "form", submit
+        $el.on "click", ".submit-button", submit
 
         $el.on "click", ".close", (event) ->
             event.preventDefault()
@@ -121,7 +127,7 @@ CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $project
     return {link:link}
 
 module.directive("tgLbCreateProject", ["$rootScope", "$tgRepo", "$tgConfirm", "$location", "$tgNavUrls",
-                                       "$tgResources", "$projectUrl", "lightboxService", "$cacheFactory", CreateProject])
+                                       "$tgResources", "$projectUrl", "$tgLoading", "lightboxService", "$cacheFactory", CreateProject])
 
 
 #############################################################################

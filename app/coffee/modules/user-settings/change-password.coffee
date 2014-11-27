@@ -22,6 +22,7 @@
 taiga = @.taiga
 
 mixOf = @.taiga.mixOf
+debounce = @.taiga.debounce
 
 module = angular.module("taigaUserSettings")
 
@@ -66,18 +67,6 @@ class UserChangePasswordController extends mixOf(taiga.Controller, taiga.PageMix
 
         return promise.then(=> @.loadProject())
 
-    save: ->
-        if @scope.newPassword1 != @scope.newPassword2
-            @confirm.notify('error', "The passwords dosn't match")
-            return
-
-        promise = @rs.userSettings.changePassword(@scope.currentPassword, @scope.newPassword1)
-        promise.then =>
-            @confirm.notify('success')
-        promise.then null, (response) =>
-            @confirm.notify('error', response.data._error_message)
-
-
 module.controller("UserChangePasswordController", UserChangePasswordController)
 
 
@@ -85,11 +74,36 @@ module.controller("UserChangePasswordController", UserChangePasswordController)
 ## User ChangePassword Directive
 #############################################################################
 
-UserChangePasswordDirective = () ->
-    link = ($scope, $el, $attrs) ->
+UserChangePasswordDirective = ($rs, $confirm, $loading) ->
+    link = ($scope, $el, $attrs, ctrl) ->
+        submit = debounce 2000, (event) =>
+            event.preventDefault()
+
+            if $scope.newPassword1 != $scope.newPassword2
+                $confirm.notify('error', "The passwords dosn't match")
+                return
+
+            $loading.start(submitButton)
+
+            promise = $rs.userSettings.changePassword($scope.currentPassword, $scope.newPassword1)
+            promise.then =>
+                $loading.finish(submitButton)
+                $confirm.notify('success')
+
+            promise.then null, (response) =>
+                $loading.finish(submitButton)
+                $confirm.notify('error', response.data._error_message)
+
+        submitButton = $el.find(".submit-button")
+
+        $el.on "submit", "form", submit
+        $el.on "click", ".submit-button", submit
+
         $scope.$on "$destroy", ->
             $el.off()
 
-    return {link:link}
+    return {
+        link:link
+    }
 
-module.directive("tgUserChangePassword", UserChangePasswordDirective)
+module.directive("tgUserChangePassword", ["$tgResources", "$tgConfirm", "$tgLoading", UserChangePasswordDirective])

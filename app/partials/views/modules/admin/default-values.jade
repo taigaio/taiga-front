@@ -36,5 +36,5 @@ section.default-values
                    ng-options="s.id as s.name for s in issueStatusList")
 
         fieldset
-            input(type="submit", class="hidden")
-            a.button.button-green(href="", title="Save") Save
+            button(type="submit", class="hidden")
+            a.button.button-green.submit-button(href="", title="Save") Save

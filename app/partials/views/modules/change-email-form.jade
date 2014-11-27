@@ -3,10 +3,10 @@ div.change-email-form-container(tg-change-email)
         strong Change your email <br />
         span One click more and your email will be updated!
 
-    form(ng-submit="ctrl.submit()")
+    form
         fieldset
             input(type="hidden", name="email_token", ng-model="data.email_token", data-required="true",
                   placeholder="change email token")
 
             a.button.button-change-email.button-gray(href="", title="Change email") Change email
-            input(type="submit", style="display:none")
+            button(type="submit", class="hidden")

@@ -3,10 +3,10 @@ div.change-email-form-container(tg-cancel-account)
         strong Cancel your account <br />
         span We're sorry you are leaving the taiga, we hope you enjoyed your stay :)
 
-    form(ng-submit="ctrl.submit()")
+    form
         fieldset
             input(type="hidden", name="cancel_token", ng-model="data.cancel_token", data-required="true",
                   placeholder="cancel account token")
 
             a.button.button-cancel-account.button-gray(href="", title="Yes, I'm leaving") Yes, I'm leaving!
-            input(type="submit", style="display:none")
+            button(type="submit", class="hidden")

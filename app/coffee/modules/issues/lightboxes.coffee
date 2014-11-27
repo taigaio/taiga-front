@@ -29,7 +29,7 @@ module = angular.module("taigaIssues")
 ## Issue Create Lightbox Directive
 #############################################################################
 
-CreateIssueDirective = ($repo, $confirm, $rootscope, lightboxService) ->
+CreateIssueDirective = ($repo, $confirm, $rootscope, lightboxService, $loading) ->
     link = ($scope, $el, $attrs) ->
         form = $el.find("form").checksley()
         $scope.issue = {}
@@ -50,31 +50,35 @@ CreateIssueDirective = ($repo, $confirm, $rootscope, lightboxService) ->
         $scope.$on "$destroy", ->
             $el.off()
 
-        submit = debounce 2000, ->
+        submit = debounce 2000, (event) =>
+            event.preventDefault()
+
             if not form.validate()
                 return
 
+            $loading.start(submitButton)
             promise = $repo.create("issues", $scope.issue)
 
             promise.then (data) ->
+                $loading.finish(submitButton)
                 $rootscope.$broadcast("issueform:new:success", data)
                 lightboxService.close($el)
                 $confirm.notify("success")
 
             promise.then null, ->
+                $loading.finish(submitButton)
                 $confirm.notify("error")
 
-        $el.on "click", ".button-green", (event) ->
-            event.preventDefault()
-            submit()
 
-        $el.on "submit", "form", (event) ->
-            event.preventDefault()
-            submit()
+        submitButton = $el.find(".submit-button")
+
+        $el.on "submit", "form", submit
+        $el.on "click", ".submit-button", submit
+
 
     return {link:link}
 
-module.directive("tgLbCreateIssue", ["$tgRepo", "$tgConfirm", "$rootScope", "lightboxService",
+module.directive("tgLbCreateIssue", ["$tgRepo", "$tgConfirm", "$rootScope", "lightboxService", "$tgLoading",
                                      CreateIssueDirective])
 
 
@@ -82,7 +86,7 @@ module.directive("tgLbCreateIssue", ["$tgRepo", "$tgConfirm", "$rootScope", "lig
 ## Issue Bulk Create Lightbox Directive
 #############################################################################
 
-CreateBulkIssuesDirective = ($repo, $rs, $confirm, $rootscope, lightboxService) ->
+CreateBulkIssuesDirective = ($repo, $rs, $confirm, $rootscope, $loading, lightboxService) ->
     link = ($scope, $el, attrs) ->
         $scope.$on "issueform:bulk", (ctx, projectId, status)->
             lightboxService.open($el)
@@ -91,29 +95,38 @@ CreateBulkIssuesDirective = ($repo, $rs, $confirm, $rootscope, lightboxService) 
                 bulk: ""
             }
 
-        $el.on "click", ".button-green", debounce 2000, (event) ->
+        submit = debounce 2000, (event) =>
             event.preventDefault()
 
             form = $el.find("form").checksley()
             if not form.validate()
                 return
 
+            $loading.start(submitButton)
+
             data = $scope.new.bulk
             projectId = $scope.new.projectId
 
             promise = $rs.issues.bulkCreate(projectId, data)
             promise.then (result) ->
+                $loading.finish(submitButton)
                 $rootscope.$broadcast("issueform:new:success", result)
                 lightboxService.close($el)
                 $confirm.notify("success")
 
             promise.then null, ->
+                $loading.finish(submitButton)
                 $confirm.notify("error")
+
+        submitButton = $el.find(".submit-button")
+
+        $el.on "submit", "form", submit
+        $el.on "click", ".submit-button", submit
 
         $scope.$on "$destroy", ->
             $el.off()
 
     return {link: link}
 
-module.directive("tgLbCreateBulkIssues", ["$tgRepo", "$tgResources", "$tgConfirm", "$rootScope",
+module.directive("tgLbCreateBulkIssues", ["$tgRepo", "$tgResources", "$tgConfirm", "$rootScope", "$tgLoading",
                                           "lightboxService", CreateBulkIssuesDirective])

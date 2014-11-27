@@ -27,6 +27,7 @@ toString = @.taiga.toString
 joinStr = @.taiga.joinStr
 groupBy = @.taiga.groupBy
 bindOnce = @.taiga.bindOnce
+debounce = @.taiga.debounce
 
 module = angular.module("taigaAdmin")
 
@@ -95,14 +96,16 @@ module.controller("ProjectProfileController", ProjectProfileController)
 ProjectProfileDirective = ($repo, $confirm, $loading, $navurls, $location) ->
     link = ($scope, $el, $attrs) ->
         form = $el.find("form").checksley({"onlyOneErrorElement": true})
-        submit = (target) =>
+        submit = debounce 2000, (event) =>
+            event.preventDefault()
+
             return if not form.validate()
 
-            $loading.start(target)
+            $loading.start(submitButton)
 
             promise = $repo.save($scope.project)
             promise.then ->
-                $loading.finish(target)
+                $loading.finish(submitButton)
                 $confirm.notify("success")
                 newUrl = $navurls.resolve("project-admin-project-profile-details", {project: $scope.project.slug})
                 $location.path(newUrl)
@@ -114,24 +117,51 @@ ProjectProfileDirective = ($repo, $confirm, $loading, $navurls, $location) ->
                 if data._error_message
                     $confirm.notify("error", data._error_message)
 
-        $el.on "submit", "form", (event) ->
-            event.preventDefault()
-            submit()
+        submitButton = $el.find(".submit-button");
 
-        $el.on "click", ".default-values a.button-green", (event) ->
-            event.preventDefault()
-            target = angular.element(event.currentTarget)
-            submit(target)
-
-        $el.on "click", ".project-details a.button-green", (event) ->
-            event.preventDefault()
-            target = angular.element(event.currentTarget)
-            submit(target)
+        $el.on "submit", "form", submit
+        $el.on "click", ".submit-button", submit
 
     return {link:link}
 
 module.directive("tgProjectProfile", ["$tgRepo", "$tgConfirm", "$tgLoading", "$tgNavUrls", "$tgLocation", ProjectProfileDirective])
 
+#############################################################################
+## Project Default Values Directive
+#############################################################################
+
+ProjectDefaultValuesDirective = ($repo, $confirm, $loading) ->
+    link = ($scope, $el, $attrs) ->
+        form = $el.find("form").checksley({"onlyOneErrorElement": true})
+        submit = debounce 2000, (event) =>
+            event.preventDefault()
+
+            return if not form.validate()
+
+            $loading.start(submitButton)
+
+            promise = $repo.save($scope.project)
+            promise.then ->
+                $loading.finish(submitButton)
+                $confirm.notify("success")
+
+            promise.then null, (data) ->
+                $loading.finish(target)
+                form.setErrors(data)
+                if data._error_message
+                    $confirm.notify("error", data._error_message)
+
+        submitButton = $el.find(".submit-button")
+
+        $el.on "submit", "form", submit
+        $el.on "click", ".submit-button", submit
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {link:link}
+
+module.directive("tgProjectDefaultValues", ["$tgRepo", "$tgConfirm", "$tgLoading", ProjectDefaultValuesDirective])
 
 #############################################################################
 ## Project Modules Directive

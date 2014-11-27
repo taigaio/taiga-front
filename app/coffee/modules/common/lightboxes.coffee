@@ -285,15 +285,14 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
 
             lightboxService.open($el)
 
-        $el.on "click", ".button-green", debounce 2000, (event) ->
+        submit = debounce 2000, (event) =>
             event.preventDefault()
-            form = $el.find("form").checksley()
-            target = angular.element(event.currentTarget)
 
+            form = $el.find("form").checksley()
             if not form.validate()
                 return
 
-            $loading.start(target)
+            $loading.start(submitButton)
 
             if $scope.isNew
                 promise = $repo.create("userstories", $scope.us)
@@ -303,15 +302,20 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
                 broadcastEvent = "usform:edit:success"
 
             promise.then (data) ->
-                $loading.finish(target)
+                $loading.finish(submitButton)
                 lightboxService.close($el)
                 $rootScope.$broadcast(broadcastEvent, data)
 
             promise.then null, (data) ->
-                $loading.finish(target)
+                $loading.finish(submitButton)
                 form.setErrors(data)
                 if data._error_message
                     $confirm.notify("error", data._error_message)
+
+        submitButton = $el.find(".submit-button")
+
+        $el.on "submit", "form", submit
+        $el.on "click", ".submit-button", submit
 
         $el.on "click", ".close", (event) ->
             event.preventDefault()
@@ -356,27 +360,31 @@ CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService, $load
             }
             lightboxService.open($el)
 
-        $el.on "click", ".button-green", debounce 2000, (event) ->
+        submit = debounce 2000, (event) =>
             event.preventDefault()
-            target = angular.element(event.currentTarget)
 
             form = $el.find("form").checksley({onlyOneErrorElement: true})
             if not form.validate()
                 return
 
-            $loading.start(target)
+            $loading.start(submitButton)
 
             promise = $rs.userstories.bulkCreate($scope.new.projectId, $scope.new.statusId, $scope.new.bulk)
             promise.then (result) ->
-                $loading.finish(target)
+                $loading.finish(submitButton)
                 $rootscope.$broadcast("usform:bulk:success", result)
                 lightboxService.close($el)
 
             promise.then null, (data) ->
-                $loading.finish(target)
+                $loading.finish(submitButton)
                 form.setErrors(data)
                 if data._error_message
                     $confirm.notify("error", data._error_message)
+
+        submitButton = $el.find(".submit-button")
+
+        $el.on "submit", "form", submit
+        $el.on "click", ".submit-button", submit
 
         $scope.$on "$destroy", ->
             $el.off()

@@ -6,6 +6,6 @@ form
         textarea(ng-model="feedback.comment", data-required="true",
                  placeholder="...a bug, some suggestions, something cool... or even your worst nightmare with Taiga")
     fieldset
-        input.hidden(type="submit")
-        a.button.button-green(href="", title="Send feedback")
+        button(type="submit", class="hidden")
+        a.button.button-green.submit-button(href="", title="Send feedback")
             span Send feedback
