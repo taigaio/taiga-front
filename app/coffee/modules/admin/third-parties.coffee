@@ -23,6 +23,7 @@ taiga = @.taiga
 
 mixOf = @.taiga.mixOf
 bindMethods = @.taiga.bindMethods
+debounce = @.taiga.debounce
 
 module = angular.module("taigaAdmin")
 
@@ -94,30 +95,28 @@ module.directive("tgSelectInputText", SelectInputText)
 GithubWebhooksDirective = ($repo, $confirm, $loading) ->
     link = ($scope, $el, $attrs) ->
         form = $el.find("form").checksley({"onlyOneErrorElement": true})
-        submit = (target) =>
+        submit = debounce 2000, (event) =>
+            event.preventDefault()
+
             return if not form.validate()
 
-            $loading.start(target)
+            $loading.start(submitButton)
 
             promise = $repo.saveAttribute($scope.github, "github")
             promise.then ->
-                $loading.finish(target)
+                $loading.finish(submitButton)
                 $confirm.notify("success")
 
             promise.then null, (data) ->
-                $loading.finish(target)
+                $loading.finish(submitButton)
                 form.setErrors(data)
                 if data._error_message
                     $confirm.notify("error", data._error_message)
 
-        $el.on "click", "a.button-green", (event) ->
-            event.preventDefault()
-            target = angular.element(event.currentTarget)
-            submit(target)
+        submitButton = $el.find(".submit-button")
 
-        $el.on "submit", "form", (event) ->
-            event.preventDefault()
-            submit()
+        $el.on "submit", "form", submit
+        $el.on "click", ".submit-button", submit
 
     return {link:link}
 

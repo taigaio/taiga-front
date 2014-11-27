@@ -34,6 +34,6 @@ form
 
     tg-blocking-message-input(watch="task.is_blocked", ng-model="task.blocked_note")
 
-    button(title="Save" style="display: none;")
-    a.button.button-green(href="", title="Save")
+    button(type="submit", class="hidden")
+    a.button.button-green.submit-button(href="", title="Save")
         span Create

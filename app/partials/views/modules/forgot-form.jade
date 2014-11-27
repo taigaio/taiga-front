@@ -10,7 +10,7 @@ div.forgot-form-container(tg-forgot-password)
             input(type="text", name="username", ng-model="data.username", data-required="true",
                   placeholder="Username or email")
         fieldset
-            a.button.button-forgot.button-gray(href="", title="Reset Password") Reset Password
-            input(type="submit", style="display:none")
+            button(type="submit", class="hidden")
+            a.button.button-gray.submit-button.button-forgot(href="", title="Reset Password") Reset Password
 
         a(href="", title="Login", tg-nav="login") Nah, take me back. I think I remember it.

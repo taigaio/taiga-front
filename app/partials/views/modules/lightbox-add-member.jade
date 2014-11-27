@@ -6,7 +6,9 @@ form
     //- Form is set in a directive
     .add-member-forms
 
-    a.button.button-green(href="", title="Save")
-        span Create
+
+    button(type="submit", class="hidden")
+    a.button.button-green.submit-button(href="", title="Create")
+            span Create
 
     p.help-text If users are already registered on Taiga, they will be added automatically. Otherwise they will receive an invitation.

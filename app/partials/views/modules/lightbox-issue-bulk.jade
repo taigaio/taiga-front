@@ -4,5 +4,6 @@ form
     h2.title(tr="common.new-bulk")
     fieldset
         textarea(cols="200", wrap="off", tg-limit-line-length, tr="placeholder:common.one-item-line", ng-model="new.bulk", data-required="true", data-linewidth="200")
-    a.button.button-green(href="", tr="title:common.save")
-        span(tr="common.save")
+
+    button(type="submit", class="hidden")
+    a.button.button-green.submit-button(href="", title="Save") Save

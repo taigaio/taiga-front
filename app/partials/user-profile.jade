@@ -55,8 +55,8 @@ block content
                                      ng-model="user.bio")
 
                 fieldset.submit
-                    input(type="submit", class="hidden")
-                    a.button.button-green.save-profile(href="") Save
+                    button(type="submit", title="Save", class="hidden")
+                    a.button.button-green.save-profile.submit-button(href="") Save
                     a.delete-account(href="", title="Delete Taiga account",
                                      ng-click="ctrl.openDeleteLightbox()") Delete Taiga account
 
