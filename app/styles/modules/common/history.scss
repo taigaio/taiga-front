@@ -73,6 +73,10 @@
             @include transition(height .3s ease-in);
             height: 6rem;
         }
+        .help-markdown {
+            @include transition(opacity .3s linear);
+            opacity: 1;
+        }
         .preview-icon {
             opacity: 1;
             position: absolute;
@@ -85,6 +89,25 @@
         height: 41px;
         margin-bottom: .5rem;
         min-height: inherit;
+    }
+    .help-markdown {
+        @extend %small;
+        color: $gray-light;
+        opacity: 0;
+        &:hover {
+            span {
+                @include transition(color .2s linear);
+                color: $grayer;
+            }
+            .icon {
+                @include transition(color .2s linear);
+                color: $fresh-taiga;
+            }
+        }
+        .icon {
+            color: $gray-light;
+            margin-right: .2rem;
+        }
     }
     .save-comment {
         color: $white;
