@@ -28,7 +28,7 @@ section.table-team.basic-table
 
     div.hero(tg-team-current-user, stats="stats", currentuser="currentUser", projectid="projectId")
 
-h2
+h2(ng-show="memberships")
     span Team >
     span  {{filtersRole.name || "All"}}
 
