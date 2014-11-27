@@ -3,14 +3,18 @@
         padding: .5rem;
     }
     .username {
-        @include table-flex-child(3, 0, 0);
+        @include flex(5);
+        min-width: 300px;
     }
     .member-stats {
-        @include table-flex(stretch, center, flex, row, wrap, flex-start);
-        @include table-flex-child(6, 0, 0);
+        @include display(flex);
+        @include align-content(center);
+        @include align-items(center);
+        @include justify-content(flex-end);
+        @include flex(6);
     }
     .attribute {
-        @include table-flex-child(1, 0, 0);
+        @include flex(1);
         position: relative;
         text-align: center;
         .icon,
@@ -36,8 +40,9 @@
         }
     }
     .leave-project {
+        @extend %small;
+        color: $gray-light;
         display: block;
-        margin-top: .3rem;
         .icon {
             margin-right: .2rem;
         }
