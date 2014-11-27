@@ -54,6 +54,7 @@ exports.files = function () {
         'components/help-notion-button',
         'components/beta',
         'components/markitup',
+        'components/markdown-help',
 
 
         //#################################################

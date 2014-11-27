@@ -1,0 +1,18 @@
+a.help-markdown {
+    @extend %small;
+    color: $gray-light;
+    &:hover {
+        span {
+            @include transition(color .2s linear);
+            color: $grayer;
+        }
+        .icon {
+            @include transition(color .2s linear);
+            color: $fresh-taiga;
+        }
+    }
+    .icon {
+        color: $gray-light;
+        margin-right: .2rem;
+    }
+}

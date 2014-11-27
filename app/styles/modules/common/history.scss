@@ -85,28 +85,12 @@
     }
     textarea {
         background: $white;
-        margin-bottom: .5rem;
         height: 5rem;
+        margin-bottom: .5rem;
         min-height: 41px;
     }
     .help-markdown {
-        @extend %small;
-        color: $gray-light;
         opacity: 0;
-        &:hover {
-            span {
-                @include transition(color .2s linear);
-                color: $grayer;
-            }
-            .icon {
-                @include transition(color .2s linear);
-                color: $fresh-taiga;
-            }
-        }
-        .icon {
-            color: $gray-light;
-            margin-right: .2rem;
-        }
     }
     .save-comment {
         color: $white;
