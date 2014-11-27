@@ -1,23 +1,23 @@
 section.table-team.basic-table
     header.row.team-header
         div.username
-        div.attribute.attribute-name
+        div.attribute.attribute-name(ng-if="issuesEnabled")
             span Mr. Wolf
             div.popover.attribute-explanation
                 span I see, you solve issues!
-        div.attribute
+        div.attribute(ng-if="tasksEnabled")
             span Poison Drinker
             div.popover.attribute-explanation
                 span Hey, are you a iocaine-holic?
-        div.attribute
+        div.attribute(ng-if="wikiEnabled")
             span Cervantes
             div.popover.attribute-explanation
                 span You have no fear to the blank page!
-        div.attribute
+        div.attribute(ng-if="issuesEnabled")
             Total Bug Hunter
             div.popover.attribute-explanation
                 span Thaks to you, this project still alive.
-        div.attribute
+        div.attribute(ng-if="tasksEnabled")
             span Night Shift
             div.popover.attribute-explanation
                 span Poor Devil, you work too much.
@@ -26,10 +26,10 @@ section.table-team.basic-table
             div.popover.attribute-explanation
                 span How far did you go into this Taiga?
 
-    div.hero(tg-team-current-user, stats="stats", currentuser="currentUser", projectid="projectId")
+    div.hero(tg-team-current-user, stats="stats", currentuser="currentUser", projectid="projectId", issuesEnabled="issuesEnabled", tasksenabled="tasksEnabled", wikienabled="wikiEnabled")
 
 h2(ng-show="memberships")
     span Team >
     span  {{filtersRole.name || "All"}}
 
-section.table-team.basic-table(tg-team-members, memberships="memberships", stats="stats", filtersq="filtersQ", filtersrole="filtersRole")
+section.table-team.basic-table(tg-team-members, memberships="memberships", stats="stats", filtersq="filtersQ", filtersrole="filtersRole", issuesEnabled="issuesEnabled", tasksenabled="tasksEnabled", wikienabled="wikiEnabled")

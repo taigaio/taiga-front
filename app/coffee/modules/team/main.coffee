@@ -90,6 +90,10 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.project = project
             @scope.$emit('project:loaded', project)
 
+            @scope.issuesEnabled = project.is_issues_activated
+            @scope.tasksEnabled = project.is_kanban_activated or project.is_backlog_activated
+            @scope.wikiEnabled = project.is_wiki_activated
+
             return project
 
     loadMemberStats: ->
@@ -166,19 +170,19 @@ module.directive("tgTeamFilters", [TeamFiltersDirective])
 
 TeamMemberStatsDirective = () ->
     template = """
-        <div class="attribute">
+        <div class="attribute" ng-if="issuesEnabled">
             <span class="icon icon-briefcase" ng-style="{'opacity': stats.closed_bugs[userId]}" ng-class="{'top': stats.closed_bugs[userId] == 1}"></span>
         </div>
-        <div class="attribute">
+        <div class="attribute" ng-if="tasksEnabled">
             <span class="icon icon-iocaine" ng-style="{'opacity': stats.iocaine_tasks[userId]}" ng-class="{'top': stats.iocaine_tasks[userId] == 1}"></span>
         </div>
-        <div class="attribute">
+        <div class="attribute" ng-if="wikiEnabled">
             <span class="icon icon-writer" ng-style="{'opacity': stats.wiki_changes[userId]}" ng-class="{'top': stats.wiki_changes[userId] == 1}"></span>
         </div>
-        <div class="attribute">
+        <div class="attribute" ng-if="issuesEnabled">
             <span class="icon icon-bug" ng-style="{'opacity': stats.created_bugs[userId]}" ng-class="{'top': stats.created_bugs[userId] == 1}"></span>
         </div>
-        <div class="attribute">
+        <div class="attribute" ng-if="tasksEnabled">
             <span class="icon icon-tasks" ng-style="{'opacity': stats.closed_tasks[userId]}" ng-class="{'top': stats.closed_tasks[userId] == 1}"></span>
         </div>
         <div class="attribute">
@@ -188,8 +192,11 @@ TeamMemberStatsDirective = () ->
     return {
         template: template,
         scope: {
-            "stats": "=",
-            "userId": "=user"
+            stats: "=",
+            userId: "=user"
+            issuesEnabled: "=issuesenabled"
+            tasksEnabled: "=tasksenabled"
+            wikiEnabled: "=wikienabled"
         }
     }
 
@@ -212,7 +219,7 @@ TeamMemberCurrentUserDirective = () ->
                     </figcaption>
                 </figure>
             </div>
-            <div class="member-stats" tg-team-member-stats stats="stats" user="currentUser.user"></div>
+            <div class="member-stats" tg-team-member-stats stats="stats" user="currentUser.user" issuesEnabled="issuesEnabled", tasksenabled="tasksEnabled", wikienabled="wikiEnabled"></div>
         </div>
     """
     return {
@@ -221,6 +228,9 @@ TeamMemberCurrentUserDirective = () ->
             projectId: "=projectid",
             currentUser: "=currentuser",
             stats: "="
+            issuesEnabled: "=issuesenabled"
+            tasksEnabled: "=tasksenabled"
+            wikiEnabled: "=wikienabled"
         }
     }
 
@@ -242,7 +252,7 @@ TeamMembersDirective = () ->
                     </figcaption>
                 </figure>
             </div>
-            <div class="member-stats" tg-team-member-stats stats="stats" user="user.user"></div>
+            <div class="member-stats" tg-team-member-stats stats="stats" user="user.user" issuesEnabled="issuesEnabled", tasksenabled="tasksEnabled", wikienabled="wikiEnabled"></div>
         </div>
     """
     return {
@@ -252,6 +262,9 @@ TeamMembersDirective = () ->
             filtersQ: "=filtersq",
             filtersRole: "=filtersrole",
             stats: "="
+            issuesEnabled: "=issuesenabled"
+            tasksEnabled: "=tasksenabled"
+            wikiEnabled: "=wikienabled"
         }
     }
 
