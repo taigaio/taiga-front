@@ -22,6 +22,7 @@
 taiga = @.taiga
 
 mixOf = @.taiga.mixOf
+bindMethods = @.taiga.bindMethods
 
 module = angular.module("taigaAdmin")
 
@@ -40,7 +41,7 @@ class GithubController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
     ]
 
     constructor: (@scope, @repo, @rs, @params, @appTitle) ->
-        _.bindAll(@)
+        bindMethods(@)
 
         @scope.sectionName = "Github" #i18n
         @scope.project = {}

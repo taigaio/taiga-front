@@ -24,6 +24,7 @@ taiga = @.taiga
 mixOf = @.taiga.mixOf
 bindOnce = @.taiga.bindOnce
 debounce = @.taiga.debounce
+bindMethods = @.taiga.bindMethods
 
 module = angular.module("taigaAdmin")
 
@@ -47,7 +48,7 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls, @appTitle) ->
-        _.bindAll(@)
+        bindMethods(@)
 
         @scope.sectionName = "Permissions" #i18n
         @scope.project = {}

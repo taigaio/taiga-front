@@ -22,6 +22,7 @@
 taiga = @.taiga
 sizeFormat = @.taiga.sizeFormat
 bindOnce = @.taiga.bindOnce
+bindMethods = @.taiga.bindMethods
 
 module = angular.module("taigaCommon")
 
@@ -30,7 +31,7 @@ class AttachmentsController extends taiga.Controller
     @.$inject = ["$scope", "$rootScope", "$tgRepo", "$tgResources", "$tgConfirm", "$q"]
 
     constructor: (@scope, @rootscope, @repo, @rs, @confirm, @q) ->
-        _.bindAll(@)
+        bindMethods(@)
         @.type = null
         @.objectId = null
         @.projectId = null
