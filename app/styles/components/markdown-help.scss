@@ -1,4 +1,5 @@
-a.help-markdown {
+a.help-markdown,
+a.help-button {
     @extend %small;
     color: $gray-light;
     &:hover {
