@@ -3,7 +3,7 @@
         padding: .5rem;
     }
     .username {
-        @include flex(5);
+        @include flex(3);
         min-width: 300px;
     }
     .member-stats {
