@@ -215,14 +215,17 @@ EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $
                                 $analytics) ->
     template = """
         <div class="view-wiki-content">
-            <section class="wysiwyg"
-                     tg-bind-html="wiki.html"></section>
+            <section class="wysiwyg" tg-bind-html="wiki.html"></section>
             <span class="edit icon icon-edit" title="Edit"></span>
         </div>
         <div class="edit-wiki-content" style="display: none;">
             <textarea placeholder="Write your wiki page here"
                       ng-model="wiki.content"
                       tg-markitup="tg-markitup"></textarea>
+            <a class="help-markdown" href="https://taiga.io/support/taiga-markdown-syntax/" target="_blank" title="Mardown syntax help">
+                <span class="icon icon-help"></span>
+                <span>Markdown syntax help</span>
+            </a>
             <span class="action-container">
                 <a class="save icon icon-floppy" href="" title="Save" />
                 <a class="cancel icon icon-delete" href="" title="Cancel" />

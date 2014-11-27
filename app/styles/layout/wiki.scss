@@ -1,5 +1,6 @@
 .wiki {
-    .remove {
+    .remove,
+    .help-markdown {
         @extend %small;
         color: $gray-light;
         &:hover {
@@ -9,12 +10,25 @@
             }
             .icon {
                 @include transition(color .2s linear);
-                color: $red;
             }
         }
         .icon {
             color: $gray-light;
-            margin-right: .3rem;
+            margin-right: .2rem;
+        }
+    }
+    .remove {
+        &:hover {
+            .icon {
+                color: $red;
+            }
+        }
+    }
+    .help-markdown {
+        &:hover {
+            .icon {
+                color: $fresh-taiga;
+            }
         }
     }
 }
