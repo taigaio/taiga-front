@@ -1,5 +1,14 @@
 # Changelog #
 
+## 1.4.0 Unknown (Unknown)
+
+### Features
+- Upgrade to AngularJS 1.3
+- Use enter to submit lightboxes forms
+
+### Misc
+- Lots of small and not so small bugfixes.
+
 ## 1.3.0 Dryas hookeriana (2014-11-18)
 
 ### Features
