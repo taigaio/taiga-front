@@ -311,6 +311,22 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location, $
     <div class="menu-container"></div>
     """)
 
+    # If the last page was kanban or backlog and
+    # the new one is the task detail or the us details
+    # this method preserve the last section name.
+    getSectionName = ($el, sectionName, project) ->
+        oldSectionName = $el.find("a.active").parent().attr("id")?.replace("nav-", "")
+
+        if  sectionName  == "backlog-kanban"
+            if oldSectionName in ["backlog", "kanban"]
+                sectionName = oldSectionName
+            else if project.is_backlog_activated && !project.is_kanban_activated
+                sectionName = "backlog"
+            else if !project.is_backlog_activated && project.is_kanban_activated
+                sectionName = "kanban"
+
+        return sectionName
+
     renderMainMenu = ($el) ->
         html = mainTemplate({})
         $el.html(html)
@@ -320,7 +336,7 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location, $
     # content loaded signal is raised using inner scope.
     renderMenuEntries = ($el, targetScope, project={}) ->
         container = $el.find(".menu-container")
-        sectionName = targetScope.section
+        sectionName = getSectionName($el, targetScope.section, project)
 
         ctx = {
             user: $auth.getUser(),
