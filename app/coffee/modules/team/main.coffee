@@ -65,13 +65,23 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
     loadMembers: ->
         return @rs.memberships.list(@scope.projectId, {}, false).then (data) =>
             currentUser = @auth.getUser()
+            if not currentUser.photo?
+                currentUser.photo = "/images/unnamed.png"
 
             @scope.currentUser = _.find data, (membership) =>
                 return membership.user == currentUser.id
 
+            @scope.totals = {}
+            _.forEach data, (membership) =>
+                @scope.totals[membership.user] = 0
+
             @scope.memberships = _.filter data, (membership) =>
                 if membership.user && membership.user != currentUser.id
                     return membership
+
+            for membership in @scope.memberships
+                if not membership.user.photo?
+                    membership.user.photo = "/images/unnamed.png"
 
             return data
 
@@ -84,7 +94,14 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     loadMemberStats: ->
         return @rs.projects.memberStats(@scope.projectId).then (stats) =>
-            @scope.stats = @.processStats(stats)
+          totals = {}
+          _.forEach @scope.totals, (total, userId) =>
+              vals = _.map(stats, (memberStats, statsKey) -> memberStats[userId])
+              total = _.reduce(vals, (sum, el) -> sum + el)
+              @scope.totals[userId] = total
+
+          @scope.stats = @.processStats(stats)
+          @scope.stats.totals = @scope.totals
 
     processStat: (stat) ->
         max = _.max(stat)
@@ -165,7 +182,7 @@ TeamMemberStatsDirective = () ->
             <span class="icon icon-tasks" ng-style="{'opacity': stats.closed_tasks[userId]}" ng-class="{'top': stats.closed_tasks[userId] == 1}"></span>
         </div>
         <div class="attribute">
-            <span class="points"></span>
+            <span class="points" ng-bind="stats.totals[userId]"></span>
         </div>
     """
     return {
@@ -187,7 +204,7 @@ TeamMemberCurrentUserDirective = () ->
         <div class="row">
             <div class="username">
                 <figure class="avatar">
-                    <img tg-bo-src="currentUser.photo", tg-bo-alt="currentUser.full_name" />
+                    <img tg-bo-src="currentUser.photo" tg-bo-alt="currentUser.full_name" />
                     <figcaption>
                         <span class="name" tg-bo-bind="currentUser.full_name"></span>
                         <span class="position" tg-bo-bind="currentUser.role_name"></span>
@@ -218,7 +235,7 @@ TeamMembersDirective = () ->
         <div class="row member" ng-repeat="user in memberships | filter:filtersQ | filter:{role: filtersRole.id}">
             <div class="username">
                 <figure class="avatar">
-                    <img tg-bo-src="user.photo", tg-bo-alt="user.full_name" />
+                    <img tg-bo-src="user.photo" tg-bo-alt="user.full_name" />
                     <figcaption>
                         <span class="name" tg-bo-bind="user.full_name"></span>
                         <span class="position" tg-bo-bind="user.role_name"></span>
