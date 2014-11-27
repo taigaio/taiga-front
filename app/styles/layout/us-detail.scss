@@ -177,7 +177,6 @@
     textarea {
         background: $white;
         height: 10rem;
-        margin-bottom: 2rem;
     }
     .save-container {
         position: absolute;
@@ -216,6 +215,24 @@
             position: absolute;
             right: 2.5rem;
             top: .4rem;
+        }
+        .help-markdown {
+            @extend %small;
+            color: $gray-light;
+            &:hover {
+                span {
+                    @include transition(color .2s linear);
+                    color: $grayer;
+                }
+                .icon {
+                    @include transition(color .2s linear);
+                    color: $fresh-taiga;
+                }
+            }
+            .icon {
+                color: $gray-light;
+                margin-right: .2rem;
+            }
         }
     }
 }

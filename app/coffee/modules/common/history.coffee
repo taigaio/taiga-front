@@ -233,6 +233,10 @@ HistoryDirective = ($log, $loading) ->
                     ng-model="<%- ngmodel %>.comment" tg-markitup="tg-markitup">
                 </textarea>
                 <% if (mode !== "edit") { %>
+                <a class="help-markdown" href="https://taiga.io/support/taiga-markdown-syntax/" target="_blank" title="Mardown syntax help">
+                    <span class="icon icon-help"></span>
+                    <span>Markdown syntax help</span>
+                </a>
                 <a href="" title="Comment" class="button button-green save-comment">Comment</a>
                 <% } %>
             </div>

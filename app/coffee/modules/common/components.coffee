@@ -564,6 +564,10 @@ EditableDescriptionDirective = ($window, $document, $rootscope, $repo, $confirm,
             <textarea placeholder="Empty space is so boring... go on be descriptive... A rose by any other name would smell as sweet..."
                       ng-model="item.description"
                       tg-markitup="tg-markitup"></textarea>
+            <a class="help-markdown" href="https://taiga.io/support/taiga-markdown-syntax/" target="_blank" title="Mardown syntax help">
+                <span class="icon icon-help"></span>
+                <span>Markdown syntax help</span>
+            </a>
             <span class="save-container">
                 <a class="save icon icon-floppy" href="" title="Save" />
             </span>
