@@ -3,8 +3,9 @@
 ## 1.4.0 Unknown (Unknown)
 
 ### Features
-- Upgrade to AngularJS 1.3
-- Use enter to submit lightboxes forms
+- Upgrade to AngularJS 1.3.
+- Use enter to submit lightboxes forms.
+- Added team members section.
 
 ### Misc
 - Lots of small and not so small bugfixes.
