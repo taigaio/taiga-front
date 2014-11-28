@@ -24,6 +24,21 @@ taiga = @.taiga
 module = angular.module("taigaCommon", [])
 
 #############################################################################
+## Get the selected text
+#############################################################################
+SelectedText = ($window, $document) ->
+    get = () ->
+        if $window.getSelection
+            return $window.getSelection().toString()
+        else if $document.selection
+            return $document.selection.createRange().text
+        return ""
+
+    return {get: get}
+
+module.factory("$selectedText", ["$window", "$document", SelectedText])
+
+#############################################################################
 ## Permission directive, hide elements when necessary
 #############################################################################
 
