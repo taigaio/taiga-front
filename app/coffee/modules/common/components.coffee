@@ -553,7 +553,7 @@ module.directive("tgEditableSubject", ["$rootScope", "$tgRepo", "$tgConfirm", "$
 ## Editable subject directive
 #############################################################################
 
-EditableDescriptionDirective = ($window, $document, $rootscope, $repo, $confirm, $compile, $loading) ->
+EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading, $selectedText) ->
     template = """
         <div class="view-description">
             <section class="us-content wysiwyg"
@@ -593,20 +593,13 @@ EditableDescriptionDirective = ($window, $document, $rootscope, $repo, $confirm,
         isEditable = ->
             return $scope.project.my_permissions.indexOf($attrs.requiredPerm) != -1
 
-        getSelectedText = ->
-            if $window.getSelection
-                return $window.getSelection().toString()
-            else if $document.selection
-                return $document.selection.createRange().text
-            return null
-
         $el.on "mouseup", ".view-description", (event) ->
             # We want to dettect the a inside the div so we use the target and
             # not the currentTarget
             target = angular.element(event.target)
             return if not isEditable()
             return if target.is('a')
-            return if getSelectedText()
+            return if $selectedText.get().length
 
             $el.find('.edit-description').show()
             $el.find('.view-description').hide()
@@ -654,8 +647,8 @@ EditableDescriptionDirective = ($window, $document, $rootscope, $repo, $confirm,
         template: template
     }
 
-module.directive("tgEditableDescription", ["$window", "$document", "$rootScope", "$tgRepo", "$tgConfirm",
-                                           "$compile", "$tgLoading", EditableDescriptionDirective])
+module.directive("tgEditableDescription", ["$rootScope", "$tgRepo", "$tgConfirm",
+                                           "$compile", "$tgLoading", "$selectedText", EditableDescriptionDirective])
 
 
 #############################################################################
