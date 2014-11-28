@@ -28,10 +28,13 @@ resourceProvider = ($repo, $http, $urls) ->
     service.get = (id) ->
         return $repo.queryOne("memberships", id)
 
-    service.list = (projectId, filters) ->
+    service.list = (projectId, filters, enablePagination=true) ->
         params = {project: projectId}
         params = _.extend({}, params, filters or {})
-        return $repo.queryPaginated("memberships", params)
+        if enablePagination
+            return $repo.queryPaginated("memberships", params)
+
+        return $repo.queryMany("memberships", params, options={enablePagination:enablePagination})
 
     service.listByUser = (userId, filters) ->
         params = {user: userId}

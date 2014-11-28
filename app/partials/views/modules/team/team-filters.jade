@@ -1,0 +1,11 @@
+section.team-filters
+    div.team-filters-inner
+        header
+            h1 filters
+
+        form.search-in
+            fieldset
+                input(type="text", placeholder="Search by username or role...", ng-model="filtersQ")
+                a.icon.icon-search(href="", title="search")
+
+        nav(tg-team-filters)

@@ -72,8 +72,11 @@ urls = {
 
     "project-issues-detail": "/project/:project/issue/:ref"
 
-    "project-wiki": "/project/:project/wiki",
-    "project-wiki-page": "/project/:project/wiki/:slug",
+    "project-wiki": "/project/:project/wiki"
+    "project-wiki-page": "/project/:project/wiki/:slug"
+
+    # Team
+    "project-team": "/project/:project/team"
 
     # Admin
     "project-admin-home": "/project/:project/admin/project-profile/details"

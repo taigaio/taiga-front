@@ -28,6 +28,7 @@ exports.files = function () {
         'layout/issues',
         'layout/wiki',
         'layout/wiki-edit',
+        'layout/team',
 
         //#################################################
         //             components
@@ -128,6 +129,10 @@ exports.files = function () {
         'modules/user-settings/user-profile',
         'modules/user-settings/user-change-password',
         'modules/user-settings/mail-notifications-table',
+
+        //Team
+        'modules/team/team-filters',
+        'modules/team/team-table',
 
         //#################################################
         //             Help

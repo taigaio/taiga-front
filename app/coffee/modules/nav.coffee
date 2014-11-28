@@ -243,6 +243,12 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location, $
             </a>
         </li>
         <% } %>
+        <li id="nav-team">
+            <a href="" title="Team" tg-nav="project-team:project=project.slug">
+                <span class="icon icon-team"></span>
+                <span class="item">Team</span>
+            </a>
+        </li>
         <% if (project.videoconferences) { %>
         <li id="nav-video">
             <a href="<%- project.videoconferenceUrl %>" target="_blank" title="Meet Up">
