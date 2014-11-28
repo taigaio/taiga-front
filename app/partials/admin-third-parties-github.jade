@@ -31,65 +31,6 @@ block content
                 a.button.button-green.submit-button(href="", title="Save") Save
 
 
-            .help
-                h2 How to use it
-
-                h3 Configure Taiga
-                ol
-                   li Fill
-                       span  Secret key
-                       |  or use the auto generated one
-
-                   li Copy the
-                       span  Payload URL field.
-
-                h3 Configure Github
-                ol
-                    li Go to your github repository.
-                    li Click on
-                        span  Settings
-                        |  >
-                        span  Webhooks & Services
-                        |  >
-                        span  Add webhook
-
-                    li On that screen set the payload url with the payload url of this screen.
-                    li Secret must be filled with the same content as the secret field of this screen.
-                    li Content type must be
-                        span  application/json.
-                    li Taiga currently listen for three different kind of events:
-                        ol
-                            li Push events: changing element status via commit message
-                            li Issues: issues created in github appear automatically in Taiga
-                            li Issue comment: issue comments created in github appear automatically in Taiga
-
-                        p Just check "send me everything" or just the events you want Taiga to listen for.
-
-                .img
-                    .alt-image Github Webhooke page
-                    img(src="/images/github-help.png", alt="webhook")
-
-                h2 Changing elements status via commit message
-
-                p
-                    | The status of any issue, task or user story can be changed via commit message.
-                    | Just add to your commit message something like:
-
-                code
-                    | TG-REF #STATUS
-
-                ul.code-info
-                    li
-                        span REF:
-                        |  US/Issue/Task reference of the element you want to modify
-                    li
-                        span STATUS:
-                        |  New status slug to set, you can find all of them in:
-                        a(href="", tg-nav="project-admin-project-values-us-status:project=project.slug")  US STATUSES.
-
-                h3 An example please!
-
-                code
-                    | TG-123 #closed
-
-                p In this example, 123 is an issue reference and with this command, the issue will change its status to closed.
+            a.help-button(href="https://taiga.io/support/github-integration/", target="_blank")
+                span.icon.icon-help
+                span Do you need help? Check out our support page!
