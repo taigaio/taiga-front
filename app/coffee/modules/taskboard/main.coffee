@@ -145,7 +145,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     loadTasks: ->
         return @rs.tasks.list(@scope.projectId, @scope.sprintId).then (tasks) =>
-            @scope.tasks = tasks
+            @scope.tasks = _.sortBy(tasks, 'taskboard_order')
             @scope.usTasks = {}
 
             # Iterate over all userstories and
@@ -194,7 +194,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
 
         task.user_story = usId
         task.status = statusId
-        task.order = order
+        task.taskboard_order = order
 
         promise = @repo.save(task)
         promise.then =>
