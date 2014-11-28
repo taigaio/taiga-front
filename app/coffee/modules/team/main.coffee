@@ -37,12 +37,14 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$tgResources",
         "$routeParams",
         "$q",
+        "$location",
+        "$tgNavUrls",
         "$appTitle",
-        "$tgAuth"
+        "$tgAuth",
         "tgLoader"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @rs, @params, @q, @appTitle, @auth, tgLoader) ->
+    constructor: (@scope, @rootscope, @repo, @rs, @params, @q, @location, @navUrls, @appTitle, @auth, tgLoader) ->
         @scope.sectionName = "Team"
 
         promise = @.loadInitialData()
@@ -80,8 +82,8 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
                     return membership
 
             for membership in @scope.memberships
-                if not membership.user.photo?
-                    membership.user.photo = "/images/unnamed.png"
+                if not membership.photo?
+                    membership.photo = "/images/unnamed.png"
 
             return data
 
