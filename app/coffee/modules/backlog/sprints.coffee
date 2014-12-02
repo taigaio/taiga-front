@@ -29,23 +29,44 @@ module = angular.module("taigaBacklog")
 #############################################################################
 
 BacklogSprintDirective = ($repo, $rootscope) ->
+    sprintTableMinHeight = 50
+    slideOptions = {
+        duration: 500,
+        easing: 'linear'
+    }
+
+    refreshSprintTableHeight = (sprintTable) =>
+        if !sprintTable.find(".row").length
+            sprintTable.css("height", sprintTableMinHeight)
+        else
+            sprintTable.css("height", "auto")
+
+    toggleSprint = ($el) =>
+        sprintTable = $el.find(".sprint-table")
+        sprintArrow = $el.find(".icon-arrow-up")
+
+        sprintArrow.toggleClass('active')
+        sprintTable.toggleClass('open')
+
+        refreshSprintTableHeight(sprintTable)
+
     link = ($scope, $el, $attrs) ->
         $scope.$watch $attrs.tgBacklogSprint, (sprint) ->
             sprint = $scope.$eval($attrs.tgBacklogSprint)
 
             if $scope.$first
-                $el.addClass("sprint-current")
-                $el.find(".sprint-table").addClass('open')
+                toggleSprint($el)
             else if sprint.closed
                 $el.addClass("sprint-closed")
             else if not $scope.$first and not sprint.closed
+                toggleSprint($el)
                 $el.addClass("sprint-old-open")
 
         # Event Handlers
         $el.on "click", ".sprint-name > .icon-arrow-up", (event) ->
-            target = $(event.currentTarget)
-            target.toggleClass('active')
-            $el.find(".sprint-table").toggleClass('open')
+            toggleSprint($el)
+
+            $el.find(".sprint-table").slideToggle(slideOptions)
 
         $el.on "click", ".sprint-name > .icon-edit", (event) ->
             sprint = $scope.$eval($attrs.tgBacklogSprint)
