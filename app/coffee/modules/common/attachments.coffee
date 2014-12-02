@@ -86,7 +86,7 @@ class AttachmentsController extends taiga.Controller
     # Create attachments in bulk
     createAttachments: (attachments) ->
         promises = _.map(attachments, (x) => @._createAttachment(x))
-        return @q.all.apply(null, promises).then =>
+        return @q.all(promises).then =>
             @.updateCounters()
 
     # Add uploading attachment tracking.

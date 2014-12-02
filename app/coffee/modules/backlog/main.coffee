@@ -390,14 +390,14 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
         # Rehash userstories order field
         # and persist in bulk all changes.
-        promise = @q.all.apply(null, promises).then =>
+        promise = @q.all(promises).then =>
             items = @.resortUserStories(newSprint.user_stories, "sprint_order")
             data = @.prepareBulkUpdateData(items, "sprint_order")
 
-            return @rs.userstories.bulkUpdateSprintOrder(project, data).then =>
+            @rs.userstories.bulkUpdateSprintOrder(project, data).then =>
                 @rootscope.$broadcast("sprint:us:moved", us, oldSprintId, newSprintId)
 
-            return @rs.userstories.bulkUpdateBacklogOrder(project, data).then =>
+            @rs.userstories.bulkUpdateBacklogOrder(project, data).then =>
                 for us in usList
                     @rootscope.$broadcast("sprint:us:moved", us, oldSprintId, newSprintId)
 

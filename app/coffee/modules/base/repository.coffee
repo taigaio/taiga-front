@@ -62,7 +62,7 @@ class RepositoryService extends taiga.Service
 
     saveAll: (models, patch=true) ->
         promises = _.map(models, (x) => @.save(x, true))
-        return @q.all.apply(@q, promises)
+        return @q.all(promises)
 
     save: (model, patch=true) ->
         defered = @q.defer()
