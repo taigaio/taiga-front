@@ -184,21 +184,44 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
                       .then(=> @.loadUsersAndRoles())
                       .then(=> @.loadTaskboard())
 
+    refreshTasksOrder: (tasks) ->
+            items = @.resortTasks(tasks)
+            data = @.prepareBulkUpdateData(items)
+
+            return @rs.tasks.bulkUpdateTaskTaskboardOrder(@scope.project.id, data)
+
+    resortTasks: (tasks) ->
+        items = []
+
+        for item, index in tasks
+            item["taskboard_order"] = index
+            if item.isModified()
+                items.push(item)
+
+        return items
+
+    prepareBulkUpdateData: (uses) ->
+         return _.map(uses, (x) -> {"task_id": x.id, "order": x["taskboard_order"]})
+
     taskMove: (ctx, task, usId, statusId, order) ->
         # Remove task from old position
         r = @scope.usTasks[task.user_story][task.status].indexOf(task)
         @scope.usTasks[task.user_story][task.status].splice(r, 1)
 
         # Add task to new position
-        @scope.usTasks[usId][statusId].splice(order, 0, task)
+        tasks = @scope.usTasks[usId][statusId]
+        tasks.splice(order, 0, task)
 
         task.user_story = usId
         task.status = statusId
         task.taskboard_order = order
 
         promise = @repo.save(task)
+
         promise.then =>
+            @.refreshTasksOrder(tasks)
             @.loadSprintStats()
+
         promise.then null, =>
             console.log "FAIL TASK SAVE"
 
