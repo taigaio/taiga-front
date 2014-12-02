@@ -46,7 +46,6 @@ class GithubController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
         @scope.sectionName = "Github" #i18n
         @scope.project = {}
-        @scope.anyComputableRole = true
 
         promise = @.loadInitialData()
 
@@ -63,8 +62,6 @@ class GithubController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         return @rs.projects.get(@scope.projectId).then (project) =>
             @scope.project = project
             @scope.$emit('project:loaded', project)
-            @scope.anyComputableRole = _.some(_.map(project.roles, (point) -> point.computable))
-
             return project
 
     loadInitialData: ->
@@ -97,8 +94,6 @@ class GitlabController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
         @scope.sectionName = "Gitlab" #i18n
         @scope.project = {}
-        @scope.anyComputableRole = true
-
         promise = @.loadInitialData()
 
         promise.then () =>
@@ -117,8 +112,6 @@ class GitlabController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         return @rs.projects.get(@scope.projectId).then (project) =>
             @scope.project = project
             @scope.$emit('project:loaded', project)
-            @scope.anyComputableRole = _.some(_.map(project.roles, (point) -> point.computable))
-
             return project
 
     loadInitialData: ->
@@ -151,8 +144,6 @@ class BitbucketController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
 
         @scope.sectionName = "Bitbucket" #i18n
         @scope.project = {}
-        @scope.anyComputableRole = true
-
         promise = @.loadInitialData()
 
         promise.then () =>
@@ -171,8 +162,6 @@ class BitbucketController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
         return @rs.projects.get(@scope.projectId).then (project) =>
             @scope.project = project
             @scope.$emit('project:loaded', project)
-            @scope.anyComputableRole = _.some(_.map(project.roles, (point) -> point.computable))
-
             return project
 
     loadInitialData: ->
