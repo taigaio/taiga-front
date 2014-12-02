@@ -302,3 +302,24 @@ BitbucketWebhooksDirective = ($repo, $confirm, $loading) ->
     return {link:link}
 
 module.directive("tgBitbucketWebhooks", ["$tgRepo", "$tgConfirm", "$tgLoading", BitbucketWebhooksDirective])
+
+
+#############################################################################
+## Valid Origin IP's Directive
+#############################################################################
+ValidOriginIpsDirective = ->
+    link = ($scope, $el, $attrs, $ngModel) ->
+      $ngModel.$parsers.push (value) ->
+          value = $.trim(value)
+          if value == ""
+              return []
+
+          return value.split(",")
+
+    return {
+        link: link
+        restrict: "EA"
+        require: "ngModel"
+    }
+
+module.directive("tgValidOriginIps", ValidOriginIpsDirective)

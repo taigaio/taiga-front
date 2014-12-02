@@ -14,6 +14,10 @@ block content
 
             form
                 fieldset
+                    label(for="valid-origin-ips") Valid origin ips (separated by ,) <br/>Bitbucket requests are not signed so the best way of verifying the origin is by IP. If the field is empty there will be no IP validation.
+                    input(type="text", name="valid-origin-ips", tg-valid-origin-ips, ng-model="bitbucket.valid_origin_ips", placeholder="Valid origin ips", id="valid-origin-ips")
+
+                fieldset
                     label(for="secret-key") Secret key
                     input(type="text", name="secret-key", ng-model="bitbucket.secret", placeholder="Secret key", id="secret-key")
 
