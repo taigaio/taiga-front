@@ -25,8 +25,8 @@
             opacity: 1;
         }
         .icon {
-            @include table-flex-child(1, 120px, 0, 100%);
             @extend %xxlarge;
+            @include table-flex-child(1, 120px, 0, 100%);
             margin: 0 auto;
             min-height: 60px;
             text-align: center;

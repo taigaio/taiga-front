@@ -1,9 +1,9 @@
 .error-main {
+    @extend %background-taiga;
     @include display(flex);
     @include align-items(center);
     @include flex-direction(row);
     @include justify-content(center);
-    @extend %background-taiga;
     bottom: 0;
     left: 0;
     position: fixed;

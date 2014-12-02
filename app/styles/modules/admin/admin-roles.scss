@@ -5,8 +5,8 @@
         color: $grayer;
     }
     .edit-value {
-        @include transition(opacity .3s linear);
         @extend %medium;
+        @include transition(opacity .3s linear);
         color: $gray-light;
         cursor: pointer;
         margin-left: .5rem;

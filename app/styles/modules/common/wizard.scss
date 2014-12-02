@@ -36,9 +36,9 @@
         }
     }
     .wizard-step {
-        display: none;
         @include animation(formSlide .4s ease-in-out);
         @include animation-direction(alternate-reverse);
+        display: none;
         &.active {
             @include animation(formSlide .4s ease-in-out);
             &.create-step2,

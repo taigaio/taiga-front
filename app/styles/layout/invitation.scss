@@ -1,6 +1,6 @@
 .invitation-main {
-    @include table-flex(center, center, flex, row, wrap, center);
     @extend %background-taiga;
+    @include table-flex(center, center, flex, row, wrap, center);
     bottom: 0;
     left: 0;
     position: fixed;
@@ -62,8 +62,8 @@
             }
         }
         .forgot-pass {
-            @include transition(all .3s linear);
             @extend %small;
+            @include transition(all .3s linear);
             color: $gray-light;
             opacity: 1;
             position: absolute;

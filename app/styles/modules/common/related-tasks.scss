@@ -158,8 +158,8 @@
         top: .1rem;
         width: 10%;
         a {
-            @include transition (all .2s ease-in);
             @extend %large;
+            @include transition (all .2s ease-in);
             color: $gray-light;
             &:hover {
                 @include transition (all .2s ease-in);

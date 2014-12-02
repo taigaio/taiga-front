@@ -17,8 +17,8 @@
         }
     }
     &.ui-sortable-helper {
-        box-shadow: 1px 1px 15px rgba($black, .4);
         @include transition(box-shadow .3s linear);
+        box-shadow: 1px 1px 15px rgba($black, .4);
     }
     &.ui-sortable-placeholder {
         background: $grayer;
