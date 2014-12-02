@@ -100,6 +100,10 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         {templateUrl: "/partials/admin-roles.html"})
     $routeProvider.when("/project/:pslug/admin/third-parties/github",
         {templateUrl: "/partials/admin-third-parties-github.html"})
+    $routeProvider.when("/project/:pslug/admin/third-parties/gitlab",
+        {templateUrl: "/partials/admin-third-parties-gitlab.html"})
+    $routeProvider.when("/project/:pslug/admin/third-parties/bitbucket",
+        {templateUrl: "/partials/admin-third-parties-bitbucket.html"})
 
     # User settings
     $routeProvider.when("/project/:pslug/user-settings/user-profile",
