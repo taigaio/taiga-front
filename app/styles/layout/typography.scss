@@ -56,8 +56,8 @@ h1 {
         color: $green-taiga;
     }
     .date {
-        color: $gray-light;
         @include ellipsis(500px);
+        color: $gray-light;
     }
 }
 

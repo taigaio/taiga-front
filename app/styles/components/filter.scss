@@ -1,7 +1,7 @@
 .single-filter {
     @extend %large;
-    @include clearfix;
     @extend %title;
+    @include clearfix;
     cursor: pointer;
     display: block;
     height: 32px;

@@ -95,7 +95,7 @@
         }
     }
     .popover {
-        @include popover(100%, '', 0, 30px, '', 15px, '', 50%, -5px);
         @extend %small;
+        @include popover(100%, '', 0, 30px, '', 15px, '', 50%, -5px);
     }
 }

@@ -9,9 +9,9 @@
         padding: 1rem;
         position: relative;
         &.blocked {
+            @include transition(all .2s linear);
             background: $red;
             vertical-align: middle;
-            @include transition(all .2s linear);
             .us-title-text,
             input {
                 margin-bottom: .5rem;
@@ -50,8 +50,8 @@
             @include table-flex();
         }
         input {
-            background: $white;
             @include table-flex-child(1, 90%, 0);
+            background: $white;
         }
         .us-title-text {
             display: flex;

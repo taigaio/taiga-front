@@ -36,8 +36,8 @@
         }
     }
     .icon {
-        @include flex(1);
         @extend %xlarge;
+        @include flex(1);
         text-align: right;
     }
     .category-items {

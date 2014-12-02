@@ -35,8 +35,8 @@
         }
     }
     .watcher-name {
-        @include table-flex-child(8, 0);
         @extend %small;
+        @include table-flex-child(8, 0);
         color: $grayer;
         margin-left: 1rem;
         position: relative;

@@ -13,12 +13,12 @@
     &.loading {
         width: 100%;
         span {
+            @include animation (loading .5s linear);
+            @include animation (spin 1s linear infinite);
             font-size: 30px;
             padding: 20px 0;
             text-align: center;
             width: 100%;
-            @include animation (loading .5s linear);
-            @include animation (spin 1s linear infinite);
         }
     }
     .user-avatar {
