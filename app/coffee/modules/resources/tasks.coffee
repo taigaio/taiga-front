@@ -46,6 +46,11 @@ resourceProvider = ($repo, $http, $urls, $storage) ->
         return $http.post(url, params).then (result) ->
             return result.data
 
+    service.bulkUpdateTaskTaskboardOrder = (projectId, data) ->
+        url = $urls.resolve("bulk-update-task-taskboard-order")
+        params = {project_id: projectId, bulk_tasks: data}
+        return $http.post(url, params)
+
     service.listValues = (projectId, type) ->
         params = {"project": projectId}
         return $repo.queryMany(type, params)
