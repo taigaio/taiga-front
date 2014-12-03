@@ -11,7 +11,7 @@ block content
                 span(tg-bo-bind="project.name", class="project-name-short")
                 span.green(tg-bo-bind="sprint.name")
                 span.date(tg-date-range="sprint.estimated_start,sprint.estimated_finish")
-            include views/components/sprint-summary
+            //- include views/components/sprint-summary
 
             div.graphics-container
                 div.burndown(tg-sprint-graph)

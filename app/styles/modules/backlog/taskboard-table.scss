@@ -1,10 +1,46 @@
 //Table basic shared vars
 
 $column-width: 300px;
-$column-flex: 1;
+$column-flex: 0;
 $column-shrink: 0;
 $column-margin: 0 10px 0 0;
 
+%fold {
+    .taskboard-task {
+        background: none;
+        border: 0;
+        margin: 0;
+        min-height: 0;
+        .taskboard-task-inner {
+            padding: .2rem;
+        }
+        .taskboard-tagline,
+        .taskboard-text {
+            display: none;
+        }
+        .avatar {
+            height: 35px;
+            width: 35px;
+        }
+        .icon {
+            display: none;
+        }
+        &.ui-sortable-helper {
+            box-shadow: none;
+        }
+    }
+    &.task-column,
+    .task-column {
+        @include table-flex(flex-start);
+        @include flex-direction(row);
+    }
+    .avatar-task-link {
+        display: block;
+    }
+    .avatar-assigned-to {
+        display: none;
+    }
+}
 
 .taskboard-table {
     overflow: hidden;
@@ -21,17 +57,48 @@ $column-margin: 0 10px 0 0;
         position: absolute;
     }
     .task-colum-name {
-        @extend %large;
         @include table-flex-child($column-flex, $column-width, $column-shrink, $column-width);
+        @include table-flex();
+        @include justify-content(space-between);
+        @extend %large;
         background: $whitish;
         border-top: 3px solid $gray-light;
         margin: $column-margin;
-        padding: .5rem 0;
+        max-width: $column-width;
+        padding: .5rem 1rem;
         position: relative;
-        text-align: center;
         text-transform: uppercase;
+        width: $column-width;
         &:last-child {
             margin-right: 0;
+        }
+        .icon {
+            @extend %medium;
+            @include transition(color .2s linear);
+            color: $gray-light;
+            margin-right: .3rem;
+            &:hover {
+                color: $green-taiga;
+            }
+            &.hfold,
+            &.hunfold {
+                @include transform(rotate(90deg));
+                display: inline-block;
+            }
+        }
+        &.column-fold {
+            @include align-items(center);
+            @include justify-content(center);
+            padding: .3rem 0;
+            span {
+                display: none;
+            }
+            .icon {
+                &.hfold,
+                &.hunfold {
+                    margin: 0;
+                }
+            }
         }
     }
 }
@@ -44,8 +111,20 @@ $column-margin: 0 10px 0 0;
     .task-column {
         @include table-flex-child($column-flex, $column-width, $column-shrink, $column-width);
         margin: $column-margin;
+        max-width: $column-width;
+        width: $column-width;
         &:last-child {
             margin-right: 0;
+        }
+    }
+    .row-fold {
+        @extend %fold;
+    }
+    .column-fold {
+        @extend %fold;
+        .taskboard-task {
+            max-width: 40px;
+            width: 40px;
         }
     }
     .task-row {
@@ -74,31 +153,53 @@ $column-margin: 0 10px 0 0;
                 }
             }
             .taskboard-tasks-box {
-                //@include filter(saturate(20%));
                 background: rgba($red, .1);
+            }
+        }
+        &.row-fold {
+            min-height: 0;
+            .taskboard-userstory-box {
+                .us-title {
+                    @include ellipsis(100%);
+                }
+                .points-value,
+                .icon-plus,
+                .icon-bulk {
+                    display: none;
+                }
             }
         }
     }
     .taskboard-tasks-box {
         background: $whitish;
-        //background: $very-light-gray;
     }
 
     .taskboard-userstory-box {
-        padding: .5rem;
+        padding: .5rem .5rem .5rem 1.5rem;
         .icon {
             @include transition(color .2s linear);
             color: $gray-light;
             position: absolute;
             right: .5rem;
-            top: 1rem;
+            top: .7rem;
             &:hover {
                 color: $green-taiga;
             }
             &.icon-plus {
                 right: 2rem;
             }
+            &.icon-vfold,
+            &.icon-vunfold {
+                left: 0;
+                right: inherit;
+            }
         }
+    }
+    .avatar-task-link {
+        display: none;
+    }
+    .avatar-assigned-to {
+        display: block;
     }
 }
 

@@ -1,7 +1,6 @@
 div.taskboard-tagline(tg-colorize-tags="task.tags", tg-colorize-tags-type="taskboard")
 div.taskboard-task-inner
-    div.taskboard-user-avatar(tg-taskboard-user-avatar="task.assigned_to", ng-model="task",
-                             ng-class="{iocaine: task.is_iocaine}")
+    div.taskboard-user-avatar(tg-taskboard-user-avatar, users="usersById", task="task", project="project", ng-class="{iocaine: task.is_iocaine}")
     span.icon.icon-iocaine(ng-if="task.is_iocaine", title="Feeling a bit overwhelmed by a task? Make sure others know about it by clicking on Iocaine when editing a task. It's possible to become immune to this (fictional) deadly poison by consuming small amounts over time just as it's possible to get better at what you do by occasionally taking on extra challenges!")
     p.taskboard-text
         a.task-assigned(href="", title="Assign task")
