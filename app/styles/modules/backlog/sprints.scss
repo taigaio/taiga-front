@@ -116,10 +116,6 @@
         }
     }
     .sprint-table {
-        @include slide(1000px, overflow-x);
-        &.open {
-            min-height: 50px;
-        }
         .row {
             @include table-flex();
             border-bottom: 1px solid $gray-light;
@@ -211,13 +207,13 @@
             }
         }
     }
-    .sprint-table {
-        @include slide(1000px, overflow-y);
-    }
 }
 
 // If sprint is closed and date is old
 .sprint-closed {
+    .sprint-table {
+        display: none;
+    }
     .sprint-name {
         .icon-arrow-up {
             @include transform(rotate(180deg));
@@ -241,9 +237,6 @@
         .current-progress {
             background: darken($gray-light, 10%);
         }
-    }
-    .sprint-table {
-        @include slide(1000px, overflow-y);
     }
     .button-gray {
         background: $gray-light;

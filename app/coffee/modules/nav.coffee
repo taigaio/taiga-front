@@ -121,7 +121,10 @@ ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout, tgLoader, $
 
             timeout timeoutValue, ->
                 overlay.one 'transitionend', () ->
-                    $(document.body).removeClass("loading-project open-projects-nav closed-projects-nav")
+                    $(document.body)
+                        .removeClass("loading-project open-projects-nav closed-projects-nav")
+                        .css("overflow-x", "visible")
+
                     overlay.hide()
 
                 $(document.body).addClass("closed-projects-nav")
@@ -153,11 +156,12 @@ ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout, tgLoader, $
 
         $scope.$on "nav:projects-list:open", ->
             if !$(document.body).hasClass("open-projects-nav")
-                animationFrame.add () ->
-                    overlay.show()
+                animationFrame.add () => overlay.show()
 
-            animationFrame.add () ->
-                $(document.body).toggleClass("open-projects-nav")
+            animationFrame.add(
+                () => $(document.body).css("overflow-x", "hidden")
+                () => $(document.body).toggleClass("open-projects-nav")
+            )
 
         $el.on "click", ".projects-list > li > a", (event) ->
             # HACK: to solve a problem with the loader when the next url
