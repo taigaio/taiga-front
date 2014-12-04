@@ -158,3 +158,32 @@ LimitLineLengthDirective = () ->
     return {link:link}
 
 module.directive("tgLimitLineLength", LimitLineLengthDirective)
+
+#############################################################################
+## Queue Q promises
+#############################################################################
+
+Qqueue = ($q) ->
+    deferred = $q.defer()
+    deferred.resolve()
+
+    lastPromise = deferred.promise
+
+    qqueue = {
+        bindAdd: (fn) =>
+            return (args...) =>
+                lastPromise = lastPromise.then () => fn.apply(@, args)
+
+            return qqueue
+        add: (fn) =>
+            if !lastPromise
+                lastPromise = fn()
+            else
+                lastPromise = lastPromise.then(fn)
+
+            return qqueue
+    }
+
+    return qqueue
+
+module.factory("$tgQqueue", ["$q", Qqueue])

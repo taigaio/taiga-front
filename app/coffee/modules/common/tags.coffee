@@ -228,7 +228,7 @@ module.directive("tgLbTagLine", ["$tgResources", LbTagLineDirective])
 ## TagLine  Directive (for detail pages)
 #############################################################################
 
-TagLineDirective = ($rootScope, $repo, $rs, $confirm) ->
+TagLineDirective = ($rootScope, $repo, $rs, $confirm, $qqueue) ->
     ENTER_KEY = 13
     ESC_KEY = 27
 
@@ -288,7 +288,7 @@ TagLineDirective = ($rootScope, $repo, $rs, $confirm) ->
             $el.find("input").autocomplete("close")
 
         ## Aux methods
-        addValue = (value) ->
+        addValue = $qqueue.bindAdd (value) ->
             value = trim(value.toLowerCase())
             return if value.length == 0
 
@@ -308,7 +308,7 @@ TagLineDirective = ($rootScope, $repo, $rs, $confirm) ->
                 $model.$setViewValue(model)
             $repo.save(model).then(onSuccess, onError)
 
-        deleteValue = (value) ->
+        deleteValue = $qqueue.bindAdd (value) ->
             value = trim(value.toLowerCase())
             return if value.length == 0
 
@@ -325,7 +325,8 @@ TagLineDirective = ($rootScope, $repo, $rs, $confirm) ->
                 $confirm.notify("error")
                 model.revert()
                 $model.$setViewValue(model)
-            $repo.save(model).then(onSuccess, onError)
+
+            return $repo.save(model).then(onSuccess, onError)
 
         saveInputTag = () ->
             value = $el.find("input").val()
@@ -369,6 +370,7 @@ TagLineDirective = ($rootScope, $repo, $rs, $confirm) ->
             target = angular.element(event.currentTarget)
 
             value = target.siblings(".tag-name").text()
+
             deleteValue(value)
 
         bindOnce $scope, "project", (project) ->
@@ -415,4 +417,4 @@ TagLineDirective = ($rootScope, $repo, $rs, $confirm) ->
         template: template
     }
 
-module.directive("tgTagLine", ["$rootScope", "$tgRepo", "$tgResources", "$tgConfirm", TagLineDirective])
+module.directive("tgTagLine", ["$rootScope", "$tgRepo", "$tgResources", "$tgConfirm", "$tgQqueue", TagLineDirective])

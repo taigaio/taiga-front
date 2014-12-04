@@ -61,7 +61,7 @@ class HistoryController extends taiga.Controller
         return @rs.history.undeleteComment(type, objectId, activityId).then => @.loadHistory(type, objectId)
 
 
-HistoryDirective = ($log, $loading) ->
+HistoryDirective = ($log, $loading, $qqueue) ->
     templateChangeDiff = _.template("""
     <div class="change-entry">
         <div class="activity-changed">
@@ -436,6 +436,24 @@ HistoryDirective = ($log, $loading) ->
             html = renderHistory(changes, totalChanges)
             $el.find(".changes-list").html(html)
 
+        save = $qqueue.bindAdd (target) =>
+            $scope.$broadcast("markdown-editor:submit")
+
+            $el.find(".comment-list").addClass("activeanimation")
+
+            onSuccess = ->
+                $ctrl.loadHistory(type, objectId).finally ->
+                    $loading.finish(target)
+
+            onError = ->
+                $loading.finish(target)
+                $confirm.notify("error")
+
+            model = $scope.$eval($attrs.ngModel)
+            $loading.start(target)
+
+            $ctrl.repo.save(model).then(onSuccess, onError)
+
         # Watchers
 
         $scope.$watch("comments", renderComments)
@@ -447,22 +465,10 @@ HistoryDirective = ($log, $loading) ->
 
         $el.on "click", ".add-comment a.button-green", debounce 2000, (event) ->
             event.preventDefault()
-            $scope.$broadcast("markdown-editor:submit")
 
             target = angular.element(event.currentTarget)
 
-            $el.find(".comment-list").addClass("activeanimation")
-            onSuccess = ->
-                $ctrl.loadHistory(type, objectId).finally ->
-                    $loading.finish(target)
-
-            onError = ->
-                $loading.finish(target)
-                $confirm.notify("error")
-
-            model = $scope.$eval($attrs.ngModel)
-            $loading.start(target)
-            $ctrl.repo.save(model).then(onSuccess, onError)
+            save(target)
 
         $el.on "click", ".show-more", (event) ->
             event.preventDefault()
@@ -526,4 +532,4 @@ HistoryDirective = ($log, $loading) ->
     }
 
 
-module.directive("tgHistory", ["$log", "$tgLoading", HistoryDirective])
+module.directive("tgHistory", ["$log", "$tgLoading", "$tgQqueue", HistoryDirective])

@@ -126,19 +126,11 @@ module.directive("lightbox", ["lightboxService", LightboxDirective])
 
 # Issue/Userstory blocking message lightbox directive.
 
-BlockLightboxDirective = ($rootscope, $tgrepo, $confirm, lightboxService, $loading) ->
+BlockLightboxDirective = ($rootscope, $tgrepo, $confirm, lightboxService, $loading, $qqueue) ->
     link = ($scope, $el, $attrs, $model) ->
         $el.find("h2.title").text($attrs.title)
 
-        $scope.$on "block", ->
-            $el.find(".reason").val($model.$modelValue.blocked_note)
-            lightboxService.open($el)
-
-        $scope.$on "unblock", (event, model, finishCallback) ->
-            item = $model.$modelValue.clone()
-            item.is_blocked = false
-            item.blocked_note = ""
-
+        unblock = $qqueue.bindAdd (item, finishCallback) =>
             promise = $tgrepo.save(item)
             promise.then ->
                 $confirm.notify("success")
@@ -154,15 +146,9 @@ BlockLightboxDirective = ($rootscope, $tgrepo, $confirm, lightboxService, $loadi
             promise.finally ->
                 finishCallback()
 
-        $scope.$on "$destroy", ->
-            $el.off()
+            return promise
 
-        $el.on "click", ".button-green", (event) ->
-            event.preventDefault()
-
-            item = $model.$modelValue.clone()
-            item.is_blocked = true
-            item.blocked_note = $el.find(".reason").val()
+        block = $qqueue.bindAdd (item) =>
             $model.$setViewValue(item)
 
             $loading.start($el.find(".button-green"))
@@ -181,13 +167,36 @@ BlockLightboxDirective = ($rootscope, $tgrepo, $confirm, lightboxService, $loadi
                 $loading.finish($el.find(".button-green"))
                 lightboxService.close($el)
 
+        $scope.$on "block", ->
+            $el.find(".reason").val($model.$modelValue.blocked_note)
+            lightboxService.open($el)
+
+        $scope.$on "unblock", (event, model, finishCallback) =>
+            item = $model.$modelValue.clone()
+            item.is_blocked = false
+            item.blocked_note = ""
+
+            unblock(item, finishCallback)
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+        $el.on "click", ".button-green", (event) ->
+            event.preventDefault()
+
+            item = $model.$modelValue.clone()
+            item.is_blocked = true
+            item.blocked_note = $el.find(".reason").val()
+
+            block(item)
+
     return {
         templateUrl: "/partials/views/modules/lightbox-block.html"
         link: link
         require: "ngModel"
     }
 
-module.directive("tgLbBlock", ["$rootScope", "$tgRepo", "$tgConfirm", "lightboxService", "$tgLoading", BlockLightboxDirective])
+module.directive("tgLbBlock", ["$rootScope", "$tgRepo", "$tgConfirm", "lightboxService", "$tgLoading", "$tgQqueue", BlockLightboxDirective])
 
 
 #############################################################################
