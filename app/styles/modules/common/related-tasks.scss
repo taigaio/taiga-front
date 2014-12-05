@@ -96,7 +96,7 @@
         }
     }
     .task-name {
-        display: flex;
+        @include display(flex);
         position: relative;
         a {
             display: inline-block;
@@ -198,10 +198,10 @@
         }
     }
     .avatar {
-        align-items: center;
-        display: flex;
+        @include align-items(center);
+        @include display(flex);
         img {
-            flex-basis: 35px;
+          @include flex-basis(35px)
         }
         figcaption {
             margin-left: .5rem;
