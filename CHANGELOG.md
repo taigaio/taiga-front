@@ -1,8 +1,12 @@
 # Changelog #
 
-## 1.4.0 Unknown (Unknown)
+## 1.4.0 Unknown (Unreleased)
 
 ### Features
+- Gitlab integration:
+  + Create Admin Panel with the Gitlab webhooks settings.
+- Bitbucket integration:
+  + Create Admin Panel with the Bitbucket webhooks settings.
 - Upgrade to AngularJS 1.3.
 - Use enter to submit lightboxes forms.
 - Added team members section.
@@ -10,12 +14,14 @@
 ### Misc
 - Lots of small and not so small bugfixes.
 
+
 ## 1.3.0 Dryas hookeriana (2014-11-18)
 
 ### Features
 - GitHub integration (Phase I):
   + Add button to login/singin with a GitHub account.
   + Create Admin Panel with the GitHub webhooks settings.
+- Show/Hide columns in the Kanban view.
 - Differentiate blocked user stories on a milestone.
 
 ### Misc
