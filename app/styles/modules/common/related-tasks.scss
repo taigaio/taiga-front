@@ -96,6 +96,7 @@
         }
     }
     .task-name {
+        display: flex;
         position: relative;
         a {
             display: inline-block;
