@@ -98,7 +98,6 @@
     }
     .task-name {
         @extend %bold;
-        color: $grayer;
     }
     .taskboard-text {
         @extend %small;
