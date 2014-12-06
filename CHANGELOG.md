@@ -7,11 +7,12 @@
   + Create Admin Panel with the Gitlab webhooks settings.
 - Bitbucket integration:
   + Create Admin Panel with the Bitbucket webhooks settings.
-- Upgrade to AngularJS 1.3.
-- Use enter to submit lightboxes forms.
 - Added team members section.
+- Taskboard enhancements: Collapse of columns (task statuses) and rows (user stories).
+- Use enter to submit lightboxes forms.
 
 ### Misc
+- Upgrade to AngularJS 1.3.
 - Lots of small and not so small bugfixes.
 
 
