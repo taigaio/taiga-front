@@ -170,13 +170,15 @@ class ConfirmService extends taiga.Service
 
         return defered.promise
 
-    notify: (type, message, title) ->
+    notify: (type, message, title, time) ->
         # NOTE: Typesi are: error, success, light-error
         #       See partials/components/notification-message.jade)
         #       Add default texts to NOTIFICATION_MSG for new notification types
 
         selector = ".notification-message-#{type}"
         el = angular.element(selector)
+
+        return if el.hasClass("active")
 
         if title
             el.find("h4").html(title)
@@ -200,7 +202,8 @@ class ConfirmService extends taiga.Service
         if @.tsem
             cancelTimeout(@.tsem)
 
-        time = if type == 'error' or type == 'light-error' then 3500 else 1500
+        if !time
+            time = if type == 'error' or type == 'light-error' then 3500 else 1500
 
         @.tsem = timeout time, =>
             body.find(selector)

@@ -161,7 +161,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     $tgEventsProvider.setSessionId(taiga.sessionId)
 
     # Add next param when user try to access to a secction need auth permissions.
-    authHttpIntercept = ($q, $location, $confirm, $navUrls, $lightboxService) ->
+    authHttpIntercept = ($q, $location, $navUrls, $lightboxService) ->
         httpResponseError = (response) ->
             if response.status == 0
                 $lightboxService.closeAll()
@@ -170,16 +170,36 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
             else if response.status == 401
                 nextPath = $location.path()
                 $location.url($navUrls.resolve("login")).search("next=#{nextPath}")
+
             return $q.reject(response)
 
         return {
             responseError: httpResponseError
         }
 
-    $provide.factory("authHttpIntercept", ["$q", "$location", "$tgConfirm", "$tgNavUrls",
-                                           "lightboxService", authHttpIntercept])
+    $provide.factory("authHttpIntercept", ["$q", "$location", "$tgNavUrls", "lightboxService", authHttpIntercept])
 
     $httpProvider.interceptors.push('authHttpIntercept');
+
+    # If there is an error in the version throw a notify error
+    versionCheckHttpIntercept = ($q, $confirm) ->
+        versionErrorMsg = "Someone inside Taiga has changed this before and our Oompa Loompas cannot apply your changes. Please reload and apply your changes again (they will be lost)." #TODO: i18n
+
+        httpResponseError = (response) ->
+            if response.status == 400 && response.data.version
+                $confirm.notify("error", versionErrorMsg, null, 10000)
+
+                return $q.reject(response)
+
+            return $q.reject(response)
+
+        return {
+            responseError: httpResponseError
+        }
+
+    $provide.factory("versionCheckHttpIntercept", ["$q", "$tgConfirm", versionCheckHttpIntercept])
+
+    $httpProvider.interceptors.push('versionCheckHttpIntercept');
 
     window.checksley.updateValidators({
         linewidth: (val, width) ->
