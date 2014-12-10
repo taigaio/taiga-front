@@ -5,27 +5,27 @@ section.table-team.basic-table
             div.attribute.attribute-name(ng-if="issuesEnabled")
                 span Mr. Wolf
                 div.popover.attribute-explanation
-                    span I see, you solve issues!
+                    span Closed issues
             div.attribute(ng-if="tasksEnabled")
                 span Iocaine Drinker
                 div.popover.attribute-explanation
-                    span Hey, are you a iocaine-holic?
+                    span Iocaine doses ingested
             div.attribute(ng-if="wikiEnabled")
                 span Cervantes
                 div.popover.attribute-explanation
-                    span You have no fear to the blank page!
+                    span Wiki pages edited
             div.attribute(ng-if="issuesEnabled")
                 Total Bug Hunter
                 div.popover.attribute-explanation
-                    span Thaks to you, this project still alive.
+                    span Bugs reported
             div.attribute(ng-if="tasksEnabled")
                 span Night Shift
                 div.popover.attribute-explanation
-                    span Poor Devil, you work too much.
+                    span Tasks closed
             div.attribute
                 Total Power
                 div.popover.attribute-explanation
-                    span How far did you go into this Taiga?
+                    span Total Points
 
     div.hero(tg-team-current-user, stats="stats", currentuser="currentUser", projectid="projectId", issuesEnabled="issuesEnabled", tasksenabled="tasksEnabled", wikienabled="wikiEnabled")
 
