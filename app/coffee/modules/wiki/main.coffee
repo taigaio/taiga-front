@@ -251,8 +251,10 @@ EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $
             $el.find(".edit-wiki-content").remove()
 
         cancelEdition = ->
+            return if !$scope.wiki.html
+
             if $scope.wiki.id
-                $scope.wiki.revert()
+                $scope.$apply () => $scope.wiki.revert()
                 switchToReadMode()
             else
                 ctx = {project: $scope.projectSlug}
@@ -303,7 +305,7 @@ EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $
         $el.on "click", ".cancel", ->
             cancelEdition()
 
-        $el.on "keyup", "textarea", (event) ->
+        $el.on "keydown", "textarea", (event) ->
             if event.keyCode == 27
                 cancelEdition()
 
