@@ -134,7 +134,7 @@ module.directive("tgLbCreateProject", ["$rootScope", "$tgRepo", "$tgConfirm", "$
 ## Delete Project Lightbox Directive
 #############################################################################
 
-DeleteProjectDirective = ($repo, $rootscope, $auth, $location, $navUrls, $confirm, lightboxService) ->
+DeleteProjectDirective = ($repo, $rootscope, $auth, $location, $navUrls, $confirm, lightboxService, tgLoader) ->
     link = ($scope, $el, $attrs) ->
         projectToDelete = null
         $scope.$on "deletelightbox:new", (ctx, project)->
@@ -145,10 +145,13 @@ DeleteProjectDirective = ($repo, $rootscope, $auth, $location, $navUrls, $confir
             $el.off()
 
         submit = ->
+            tgLoader.start()
+            lightboxService.close($el)
+
             promise = $repo.remove(projectToDelete)
 
             promise.then (data) ->
-                lightboxService.close($el)
+                tgLoader.pageLoaded()
                 $rootscope.$broadcast("projects:reload")
                 $location.path($navUrls.resolve("home"))
                 $confirm.notify("success")
@@ -169,4 +172,4 @@ DeleteProjectDirective = ($repo, $rootscope, $auth, $location, $navUrls, $confir
     return {link:link}
 
 module.directive("tgLbDeleteProject", ["$tgRepo", "$rootScope", "$tgAuth", "$tgLocation", "$tgNavUrls",
-                                       "$tgConfirm", "lightboxService", DeleteProjectDirective])
+                                       "$tgConfirm", "lightboxService", "tgLoader", DeleteProjectDirective])
