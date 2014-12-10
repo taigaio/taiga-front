@@ -86,24 +86,27 @@ body {
 }
 
 .wrapper {
-    @include table-flex();
+    @include display(flex);
     min-height: 100vh;
     padding-left: 90px;
 }
 
 .menu-secondary {
-    @include table-flex-child(1, 260px, 0, 260px);
+    @include flex(1);
     background: $whitish;
+    min-width: 0;
     padding: 2rem 1rem;
+    width: 260px;
     &.filters-bar {
-        @include table-flex-child(0, 1px, 0, 1px);
+        @include flex(0);
         @include transition(all .2s linear);
         padding: 0;
+        width: 0;
         &.active {
-            @include table-flex-child(1, 260px, 0, 260px);
+            @include flex(1);
             @include transition(all .2s linear);
             padding: 2em 1em;
-
+            width: 260px;
             .filters-inner {
                 @include transition (all .4s ease-in);
                 opacity: 1;
@@ -113,7 +116,7 @@ body {
 }
 
 .menu-tertiary {
-    @include table-flex-child(1, 210px, 0, 210px);
+    @include flex(1);
     background-color: $dark-grayish-lime-green;
     padding: 2em 1em;
 }
@@ -123,9 +126,10 @@ body {
 }
 
 .main {
-    @include table-flex-child(8, 600px, 0, 600px);
+    @include flex(4);
     padding: 2rem;
     padding-bottom: 1rem;
+    min-width: 600px;
 }
 
 .icon {
@@ -137,7 +141,7 @@ body {
 }
 
 .header-with-actions {
-    @include table-flex(stretch, center, flex, row, wrap, space-between);
+    @include display(flex);
     margin-bottom: 1rem;
     .action-buttons {
         @include flex-shrink(0);
