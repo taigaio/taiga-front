@@ -161,7 +161,7 @@ module.directive("tgCreatedByDisplay", CreatedByDisplayDirective)
 ## Watchers directive
 #############################################################################
 
-WatchersDirective = ($rootscope, $confirm, $repo) ->
+WatchersDirective = ($rootscope, $confirm, $repo, $qqueue) ->
     # You have to include a div with the tg-lb-watchers directive in the page
     # where use this directive
     #
@@ -204,16 +204,36 @@ WatchersDirective = ($rootscope, $confirm, $repo) ->
         isEditable = ->
             return $scope.project?.my_permissions?.indexOf($attrs.requiredPerm) != -1
 
-        save = (model) ->
+        save = $qqueue.bindAdd (watchers) =>
+            item = $model.$modelValue.clone()
+            item.watchers = watchers
+            $model.$setViewValue(item)
+
             promise = $repo.save($model.$modelValue)
             promise.then ->
                 $confirm.notify("success")
-                watchers = _.map(model.watchers, (watcherId) -> $scope.usersById[watcherId])
+                watchers = _.map(watchers, (watcherId) -> $scope.usersById[watcherId])
+                renderWatchers(watchers)
+                $rootscope.$broadcast("history:reload")
+
+            promise.then null, ->
+                $model.$modelValue.revert()
+
+        deleteWatcher = $qqueue.bindAdd (watcherIds) =>
+            item = $model.$modelValue.clone()
+            item.watchers = watcherIds
+            $model.$setViewValue(item)
+
+            promise = $repo.save($model.$modelValue)
+            promise.then ->
+                $confirm.notify("success")
+                watchers = _.map(item.watchers, (watcherId) -> $scope.usersById[watcherId])
                 renderWatchers(watchers)
                 $rootscope.$broadcast("history:reload")
             promise.then null, ->
-                model.revert()
+                item.revert()
                 $confirm.notify("error")
+
 
         renderWatchers = (watchers) ->
             ctx = {
@@ -239,13 +259,11 @@ WatchersDirective = ($rootscope, $confirm, $repo) ->
 
             $confirm.askOnDelete(title, message).then (finish) =>
                 finish()
+
                 watcherIds = _.clone($model.$modelValue.watchers, false)
                 watcherIds = _.pull(watcherIds, watcherId)
 
-                item = $model.$modelValue.clone()
-                item.watchers = watcherIds
-                $model.$setViewValue(item)
-                save(item)
+                deleteWatcher(watcherIds)
 
         $el.on "click", ".add-watcher", (event) ->
             event.preventDefault()
@@ -258,10 +276,7 @@ WatchersDirective = ($rootscope, $confirm, $repo) ->
             watchers.push(watcherId)
             watchers = _.uniq(watchers)
 
-            item = $model.$modelValue.clone()
-            item.watchers = watchers
-            $model.$setViewValue(item)
-            save(item)
+            save(watchers)
 
         $scope.$watch $attrs.ngModel, (item) ->
             return if not item?
@@ -273,14 +288,14 @@ WatchersDirective = ($rootscope, $confirm, $repo) ->
 
     return {link:link, require:"ngModel"}
 
-module.directive("tgWatchers", ["$rootScope", "$tgConfirm", "$tgRepo", WatchersDirective])
+module.directive("tgWatchers", ["$rootScope", "$tgConfirm", "$tgRepo", "$tgQqueue", WatchersDirective])
 
 
 #############################################################################
 ## Assigned to directive
 #############################################################################
 
-AssignedToDirective = ($rootscope, $confirm, $repo, $loading) ->
+AssignedToDirective = ($rootscope, $confirm, $repo, $loading, $qqueue) ->
     # You have to include a div with the tg-lb-assignedto directive in the page
     # where use this directive
     #
@@ -315,19 +330,23 @@ AssignedToDirective = ($rootscope, $confirm, $repo, $loading) ->
         isEditable = ->
             return $scope.project?.my_permissions?.indexOf($attrs.requiredPerm) != -1
 
-        save = (model) ->
+        save = $qqueue.bindAdd (userId) =>
+            $model.$modelValue.assigned_to = userId
+
             $loading.start($el)
 
             promise = $repo.save($model.$modelValue)
             promise.then ->
                 $loading.finish($el)
                 $confirm.notify("success")
-                renderAssignedTo(model)
+                renderAssignedTo($model.$modelValue)
                 $rootscope.$broadcast("history:reload")
             promise.then null, ->
-                model.revert()
+                $model.$modelValue.revert()
                 $confirm.notify("error")
                 $loading.finish($el)
+
+            return promise
 
         renderAssignedTo = (issue) ->
             assignedToId = issue?.assigned_to
@@ -354,12 +373,12 @@ AssignedToDirective = ($rootscope, $confirm, $repo, $loading) ->
             $confirm.ask(title).then (finish) =>
                 finish()
                 $model.$modelValue.assigned_to  = null
-                save($model.$modelValue)
+                save(null)
 
         $scope.$on "assigned-to:added", (ctx, userId, item) ->
             return if item.id != $model.$modelValue.id
-            $model.$modelValue.assigned_to = userId
-            save($model.$modelValue)
+
+            save(userId)
 
         $scope.$watch $attrs.ngModel, (instance) ->
             renderAssignedTo(instance)
@@ -372,7 +391,7 @@ AssignedToDirective = ($rootscope, $confirm, $repo, $loading) ->
         require:"ngModel"
     }
 
-module.directive("tgAssignedTo", ["$rootScope", "$tgConfirm", "$tgRepo", "$tgLoading", AssignedToDirective])
+module.directive("tgAssignedTo", ["$rootScope", "$tgConfirm", "$tgRepo", "$tgLoading", "$tgQqueue", AssignedToDirective])
 
 
 #############################################################################
@@ -473,7 +492,7 @@ module.directive("tgDeleteButton", ["$log", "$tgRepo", "$tgConfirm", "$tgLocatio
 ## Editable subject directive
 #############################################################################
 
-EditableSubjectDirective = ($rootscope, $repo, $confirm, $loading) ->
+EditableSubjectDirective = ($rootscope, $repo, $confirm, $loading, $qqueue) ->
     template = """
         <div class="view-subject">
             {{ item.subject }}
@@ -492,9 +511,11 @@ EditableSubjectDirective = ($rootscope, $repo, $confirm, $loading) ->
         isEditable = ->
             return $scope.project.my_permissions.indexOf($attrs.requiredPerm) != -1
 
-        save = ->
-            $model.$modelValue.subject = $scope.item.subject
+        save = $qqueue.bindAdd (subject) =>
+            $model.$modelValue.subject = subject
+
             $loading.start($el.find('.save-container'))
+
             promise = $repo.save($model.$modelValue)
             promise.then ->
                 $confirm.notify("success")
@@ -506,6 +527,8 @@ EditableSubjectDirective = ($rootscope, $repo, $confirm, $loading) ->
             promise.finally ->
                 $loading.finish($el.find('.save-container'))
 
+            return promise
+
         $el.click ->
             return if not isEditable()
             $el.find('.edit-subject').show()
@@ -513,11 +536,13 @@ EditableSubjectDirective = ($rootscope, $repo, $confirm, $loading) ->
             $el.find('input').focus()
 
         $el.on "click", ".save", ->
-            save()
+            subject = $scope.item.subject
+            save(subject)
 
         $el.on "keyup", "input", (event) ->
             if event.keyCode == 13
-                save()
+                subject = $scope.item.subject
+                save(subject)
             else if event.keyCode == 27
                 $model.$modelValue.revert()
                 $el.find('div.edit-subject').hide()
@@ -545,7 +570,7 @@ EditableSubjectDirective = ($rootscope, $repo, $confirm, $loading) ->
         template: template
     }
 
-module.directive("tgEditableSubject", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading",
+module.directive("tgEditableSubject", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", "$tgQqueue",
                                        EditableSubjectDirective])
 
 
@@ -553,7 +578,7 @@ module.directive("tgEditableSubject", ["$rootScope", "$tgRepo", "$tgConfirm", "$
 ## Editable subject directive
 #############################################################################
 
-EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading, $selectedText) ->
+EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading, $selectedText, $qqueue) ->
     template = """
         <div class="view-description">
             <section class="us-content wysiwyg"
@@ -593,6 +618,21 @@ EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading,
         isEditable = ->
             return $scope.project.my_permissions.indexOf($attrs.requiredPerm) != -1
 
+        save = $qqueue.bindAdd (description) =>
+            $model.$modelValue.description = description
+
+            $loading.start($el.find('.save-container'))
+            promise = $repo.save($model.$modelValue)
+            promise.then ->
+                $confirm.notify("success")
+                $rootscope.$broadcast("history:reload")
+                $el.find('.edit-description').hide()
+                $el.find('.view-description').show()
+            promise.then null, ->
+                $confirm.notify("error")
+            promise.finally ->
+                $loading.finish($el.find('.save-container'))
+
         $el.on "mouseup", ".view-description", (event) ->
             # We want to dettect the a inside the div so we use the target and
             # not the currentTarget
@@ -606,19 +646,8 @@ EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading,
             $el.find('textarea').focus()
 
         $el.on "click", ".save", ->
-            $model.$modelValue.description = $scope.item.description
-
-            $loading.start($el.find('.save-container'))
-            promise = $repo.save($model.$modelValue)
-            promise.then ->
-                $confirm.notify("success")
-                $rootscope.$broadcast("history:reload")
-                $el.find('.edit-description').hide()
-                $el.find('.view-description').show()
-            promise.then null, ->
-                $confirm.notify("error")
-            promise.finally ->
-                $loading.finish($el.find('.save-container'))
+            description = $scope.item.description
+            save(description)
 
         $el.on "keyup", "textarea", (event) ->
             if event.keyCode == 27
@@ -648,7 +677,7 @@ EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading,
     }
 
 module.directive("tgEditableDescription", ["$rootScope", "$tgRepo", "$tgConfirm",
-                                           "$compile", "$tgLoading", "$selectedText", EditableDescriptionDirective])
+                                           "$compile", "$tgLoading", "$selectedText", "$tgQqueue", EditableDescriptionDirective])
 
 
 #############################################################################
