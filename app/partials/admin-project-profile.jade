@@ -54,8 +54,8 @@ block content
 
                     p All projects are private during Taiga's beta period.
 
-                input(type="submit", class="hidden")
-                a.button.button-green(href="") Save
+                button(type="submit", class="hidden")
+                a.button.button-green.submit-button(href="", title="Save") Save
                 a.delete-project(href="", title="Delete this project", ng-click="ctrl.openDeleteLightbox()") Delete this project
 
     div.lightbox.lightbox-delete-project(tg-lb-delete-project)

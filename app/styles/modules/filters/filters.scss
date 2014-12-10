@@ -32,8 +32,8 @@
 }
 
 .filters-inner {
-    opacity: 0;
     @include transition (all .1s ease-in);
+    opacity: 0;
     .loading {
         background: $grayer;
         border: 1px solid #b8b8b8;

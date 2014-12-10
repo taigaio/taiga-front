@@ -23,6 +23,17 @@ nl2br = (str) =>
     breakTag = '<br />'
     return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2')
 
+bindMethods = (object) =>
+    dependencies = _.keys(object)
+
+    methods = []
+
+    _.forIn object, (value, key) =>
+        if key not in dependencies
+            methods.push(key)
+
+    _.bindAll(object, methods)
+
 bindOnce = (scope, attr, continuation) =>
     val = scope.$eval(attr)
     if val != undefined
@@ -106,8 +117,10 @@ joinStr = (str, coll) ->
 debounce = (wait, func) ->
     return _.debounce(func, wait, {leading: true, trailing: false})
 
+
 debounceLeading = (wait, func) ->
     return _.debounce(func, wait, {leading: false, trailing: true})
+
 
 startswith = (str1, str2) ->
     return _.str.startsWith(str1, str2)
@@ -130,6 +143,7 @@ sizeFormat = (input, precision=1) ->
 
 taiga = @.taiga
 taiga.nl2br = nl2br
+taiga.bindMethods = bindMethods
 taiga.bindOnce = bindOnce
 taiga.mixOf = mixOf
 taiga.trim = trim

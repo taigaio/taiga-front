@@ -1,8 +1,8 @@
 .home-projects-list,
 .home-project {
     @extend %background-taiga;
-    background-color: $black;
     @include table-flex(center, center, flex, row, wrap, center);
+    background-color: $black;
     background-position: center center;
     background-size: cover;
     height: 100%;

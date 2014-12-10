@@ -121,7 +121,10 @@ ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout, tgLoader, $
 
             timeout timeoutValue, ->
                 overlay.one 'transitionend', () ->
-                    $(document.body).removeClass("loading-project open-projects-nav closed-projects-nav")
+                    $(document.body)
+                        .removeClass("loading-project open-projects-nav closed-projects-nav")
+                        .css("overflow-x", "visible")
+
                     overlay.hide()
 
                 $(document.body).addClass("closed-projects-nav")
@@ -153,11 +156,12 @@ ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout, tgLoader, $
 
         $scope.$on "nav:projects-list:open", ->
             if !$(document.body).hasClass("open-projects-nav")
-                animationFrame.add () ->
-                    overlay.show()
+                animationFrame.add () => overlay.show()
 
-            animationFrame.add () ->
-                $(document.body).toggleClass("open-projects-nav")
+            animationFrame.add(
+                () => $(document.body).css("overflow-x", "hidden")
+                () => $(document.body).toggleClass("open-projects-nav")
+            )
 
         $el.on "click", ".projects-list > li > a", (event) ->
             # HACK: to solve a problem with the loader when the next url
@@ -243,6 +247,12 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location, $
             </a>
         </li>
         <% } %>
+        <li id="nav-team">
+            <a href="" title="Team" tg-nav="project-team:project=project.slug">
+                <span class="icon icon-team"></span>
+                <span class="item">Team</span>
+            </a>
+        </li>
         <% if (project.videoconferences) { %>
         <li id="nav-video">
             <a href="<%- project.videoconferenceUrl %>" target="_blank" title="Meet Up">
@@ -309,6 +319,22 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location, $
     <div class="menu-container"></div>
     """)
 
+    # If the last page was kanban or backlog and
+    # the new one is the task detail or the us details
+    # this method preserve the last section name.
+    getSectionName = ($el, sectionName, project) ->
+        oldSectionName = $el.find("a.active").parent().attr("id")?.replace("nav-", "")
+
+        if  sectionName  == "backlog-kanban"
+            if oldSectionName in ["backlog", "kanban"]
+                sectionName = oldSectionName
+            else if project.is_backlog_activated && !project.is_kanban_activated
+                sectionName = "backlog"
+            else if !project.is_backlog_activated && project.is_kanban_activated
+                sectionName = "kanban"
+
+        return sectionName
+
     renderMainMenu = ($el) ->
         html = mainTemplate({})
         $el.html(html)
@@ -318,7 +344,7 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location, $
     # content loaded signal is raised using inner scope.
     renderMenuEntries = ($el, targetScope, project={}) ->
         container = $el.find(".menu-container")
-        sectionName = targetScope.section
+        sectionName = getSectionName($el, targetScope.section, project)
 
         ctx = {
             user: $auth.getUser(),

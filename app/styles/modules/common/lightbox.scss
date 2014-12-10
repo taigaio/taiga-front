@@ -14,8 +14,8 @@
             border-right: 1px solid $gray-light;
         }
         &:hover {
-            color: $grayer;
             @include transition(color .2s linear);
+            color: $grayer;
         }
     }
     .active {

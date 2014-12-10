@@ -56,8 +56,8 @@ h1 {
         color: $green-taiga;
     }
     .date {
-        color: $gray-light;
         @include ellipsis(500px);
+        color: $gray-light;
     }
 }
 
@@ -251,4 +251,19 @@ a:visited {
 }
 .icon-video:before {
     content: 'P';
+}
+.icon-help:before {
+    content: 'U';
+}
+.icon-bug:before {
+    content: 'Q';
+}
+.icon-briefcase:before {
+    content: 'R';
+}
+.icon-writer:before {
+    content: 'S';
+}
+.icon-tasks:before {
+    content: 'T';
 }

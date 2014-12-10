@@ -27,8 +27,8 @@
 }
 
 .single-attachment {
-    @include table-flex();
     @extend %small;
+    @include table-flex();
     align-items: center;
     border-bottom: 1px solid $whitish;
     padding: .5rem 0 .5rem 1rem;
@@ -57,9 +57,9 @@
         height: 40px;
     }
     .attachment-name {
+        @extend %bold;
         @include ellipsis(200px);
         @include table-flex-child(1, 35%, 0);
-        @extend %bold;
         padding-right: 1rem;
         .icon {
             margin-right: .5rem;

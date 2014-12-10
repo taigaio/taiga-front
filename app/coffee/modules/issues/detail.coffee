@@ -195,7 +195,7 @@ module.directive("tgIssueStatusDisplay", IssueStatusDisplayDirective)
 ## Issue status button directive
 #############################################################################
 
-IssueStatusButtonDirective = ($rootScope, $repo, $confirm, $loading) ->
+IssueStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue) ->
     # Display the status of Issue and you can edit it.
     #
     # Example:
@@ -236,6 +236,21 @@ IssueStatusButtonDirective = ($rootScope, $repo, $confirm, $loading) ->
             })
             $el.html(html)
 
+        save = $qqueue.bindAdd (value, issue) =>
+            onSuccess = ->
+                $confirm.notify("success")
+                $rootScope.$broadcast("history:reload")
+                $loading.finish($el.find(".level-name"))
+            onError = ->
+                $confirm.notify("error")
+                issue.revert()
+                $model.$setViewValue(issue)
+                $loading.finish($el.find(".level-name"))
+
+            $loading.start($el.find(".level-name"))
+
+            $repo.save(value).then(onSuccess, onError)
+
         $el.on "click", ".status-data", (event) ->
             event.preventDefault()
             event.stopPropagation()
@@ -256,20 +271,7 @@ IssueStatusButtonDirective = ($rootScope, $repo, $confirm, $loading) ->
             issue.status = target.data("status-id")
             $model.$setViewValue(issue)
 
-            $scope.$apply()
-
-            onSuccess = ->
-                $confirm.notify("success")
-                $rootScope.$broadcast("history:reload")
-                $loading.finish($el.find(".level-name"))
-            onError = ->
-                $confirm.notify("error")
-                issue.revert()
-                $model.$setViewValue(issue)
-                $loading.finish($el.find(".level-name"))
-
-            $loading.start($el.find(".level-name"))
-            $repo.save($model.$modelValue).then(onSuccess, onError)
+            save($model.$modelValue, issue)
 
         $scope.$watch $attrs.ngModel, (issue) ->
             render(issue) if issue
@@ -283,13 +285,13 @@ IssueStatusButtonDirective = ($rootScope, $repo, $confirm, $loading) ->
         require: "ngModel"
     }
 
-module.directive("tgIssueStatusButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", IssueStatusButtonDirective])
+module.directive("tgIssueStatusButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", "$tgQqueue", IssueStatusButtonDirective])
 
 #############################################################################
 ## Issue type button directive
 #############################################################################
 
-IssueTypeButtonDirective = ($rootScope, $repo, $confirm, $loading) ->
+IssueTypeButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue) ->
     # Display the type of Issue and you can edit it.
     #
     # Example:
@@ -330,6 +332,26 @@ IssueTypeButtonDirective = ($rootScope, $repo, $confirm, $loading) ->
             })
             $el.html(html)
 
+        save = $qqueue.bindAdd (type) =>
+            $.fn.popover().closeAll()
+            issue = $model.$modelValue.clone()
+            issue.type = type
+
+            $model.$setViewValue(issue)
+
+            onSuccess = ->
+                $confirm.notify("success")
+                $rootScope.$broadcast("history:reload")
+                $loading.finish($el.find(".level-name"))
+            onError = ->
+                $confirm.notify("error")
+                issue.revert()
+                $model.$setViewValue(issue)
+                $loading.finish($el.find(".level-name"))
+            $loading.start($el.find(".level-name"))
+
+            $repo.save($model.$modelValue).then(onSuccess, onError)
+
         $el.on "click", ".type-data", (event) ->
             event.preventDefault()
             event.stopPropagation()
@@ -343,26 +365,8 @@ IssueTypeButtonDirective = ($rootScope, $repo, $confirm, $loading) ->
             return if not isEditable()
 
             target = angular.element(event.currentTarget)
-
-            $.fn.popover().closeAll()
-
-            issue = $model.$modelValue.clone()
-            issue.type = target.data("type-id")
-            $model.$setViewValue(issue)
-
-            $scope.$apply()
-
-            onSuccess = ->
-                $confirm.notify("success")
-                $rootScope.$broadcast("history:reload")
-                $loading.finish($el.find(".level-name"))
-            onError = ->
-                $confirm.notify("error")
-                issue.revert()
-                $model.$setViewValue(issue)
-                $loading.finish($el.find(".level-name"))
-            $loading.start($el.find(".level-name"))
-            $repo.save($model.$modelValue).then(onSuccess, onError)
+            type = target.data("type-id")
+            save(type)
 
         $scope.$watch $attrs.ngModel, (issue) ->
             render(issue) if issue
@@ -376,14 +380,14 @@ IssueTypeButtonDirective = ($rootScope, $repo, $confirm, $loading) ->
         require: "ngModel"
     }
 
-module.directive("tgIssueTypeButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", IssueTypeButtonDirective])
+module.directive("tgIssueTypeButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", "$tgQqueue", IssueTypeButtonDirective])
 
 
 #############################################################################
 ## Issue severity button directive
 #############################################################################
 
-IssueSeverityButtonDirective = ($rootScope, $repo, $confirm, $loading) ->
+IssueSeverityButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue) ->
     # Display the severity of Issue and you can edit it.
     #
     # Example:
@@ -424,6 +428,26 @@ IssueSeverityButtonDirective = ($rootScope, $repo, $confirm, $loading) ->
             })
             $el.html(html)
 
+        save = $qqueue.bindAdd (severity) =>
+            $.fn.popover().closeAll()
+
+            issue = $model.$modelValue.clone()
+            issue.severity = severity
+            $model.$setViewValue(issue)
+
+            onSuccess = ->
+                $confirm.notify("success")
+                $rootScope.$broadcast("history:reload")
+                $loading.finish($el.find(".level-name"))
+            onError = ->
+                $confirm.notify("error")
+                issue.revert()
+                $model.$setViewValue(issue)
+                $loading.finish($el.find(".level-name"))
+            $loading.start($el.find(".level-name"))
+
+            $repo.save($model.$modelValue).then(onSuccess, onError)
+
         $el.on "click", ".severity-data", (event) ->
             event.preventDefault()
             event.stopPropagation()
@@ -437,26 +461,9 @@ IssueSeverityButtonDirective = ($rootScope, $repo, $confirm, $loading) ->
             return if not isEditable()
 
             target = angular.element(event.currentTarget)
+            severity = target.data("severity-id")
 
-            $.fn.popover().closeAll()
-
-            issue = $model.$modelValue.clone()
-            issue.severity = target.data("severity-id")
-            $model.$setViewValue(issue)
-
-            $scope.$apply()
-
-            onSuccess = ->
-                $confirm.notify("success")
-                $rootScope.$broadcast("history:reload")
-                $loading.finish($el.find(".level-name"))
-            onError = ->
-                $confirm.notify("error")
-                issue.revert()
-                $model.$setViewValue(issue)
-                $loading.finish($el.find(".level-name"))
-            $loading.start($el.find(".level-name"))
-            $repo.save($model.$modelValue).then(onSuccess, onError)
+            save(severity)
 
         $scope.$watch $attrs.ngModel, (issue) ->
             render(issue) if issue
@@ -470,14 +477,14 @@ IssueSeverityButtonDirective = ($rootScope, $repo, $confirm, $loading) ->
         require: "ngModel"
     }
 
-module.directive("tgIssueSeverityButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", IssueSeverityButtonDirective])
+module.directive("tgIssueSeverityButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", "$tgQqueue", IssueSeverityButtonDirective])
 
 
 #############################################################################
 ## Issue priority button directive
 #############################################################################
 
-IssuePriorityButtonDirective = ($rootScope, $repo, $confirm, $loading) ->
+IssuePriorityButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue) ->
     # Display the priority of Issue and you can edit it.
     #
     # Example:
@@ -518,6 +525,26 @@ IssuePriorityButtonDirective = ($rootScope, $repo, $confirm, $loading) ->
             })
             $el.html(html)
 
+        save = $qqueue.bindAdd (priority) =>
+            $.fn.popover().closeAll()
+
+            issue = $model.$modelValue.clone()
+            issue.priority = priority
+            $model.$setViewValue(issue)
+
+            onSuccess = ->
+                $confirm.notify("success")
+                $rootScope.$broadcast("history:reload")
+                $loading.finish($el.find(".level-name"))
+            onError = ->
+                $confirm.notify("error")
+                issue.revert()
+                $model.$setViewValue(issue)
+                $loading.finish($el.find(".level-name"))
+            $loading.start($el.find(".level-name"))
+
+            $repo.save($model.$modelValue).then(onSuccess, onError)
+
         $el.on "click", ".priority-data", (event) ->
             event.preventDefault()
             event.stopPropagation()
@@ -531,26 +558,9 @@ IssuePriorityButtonDirective = ($rootScope, $repo, $confirm, $loading) ->
             return if not isEditable()
 
             target = angular.element(event.currentTarget)
+            priority = target.data("priority-id")
 
-            $.fn.popover().closeAll()
-
-            issue = $model.$modelValue.clone()
-            issue.priority = target.data("priority-id")
-            $model.$setViewValue(issue)
-
-            $scope.$apply()
-
-            onSuccess = ->
-                $confirm.notify("success")
-                $rootScope.$broadcast("history:reload")
-                $loading.finish($el.find(".level-name"))
-            onError = ->
-                $confirm.notify("error")
-                issue.revert()
-                $model.$setViewValue(issue)
-                $loading.finish($el.find(".level-name"))
-            $loading.start($el.find(".level-name"))
-            $repo.save($model.$modelValue).then(onSuccess, onError)
+            save(priority)
 
         $scope.$watch $attrs.ngModel, (issue) ->
             render(issue) if issue
@@ -564,14 +574,14 @@ IssuePriorityButtonDirective = ($rootScope, $repo, $confirm, $loading) ->
         require: "ngModel"
     }
 
-module.directive("tgIssuePriorityButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", IssuePriorityButtonDirective])
+module.directive("tgIssuePriorityButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", "$tgQqueue", IssuePriorityButtonDirective])
 
 
 #############################################################################
 ## Promote Issue to US button directive
 #############################################################################
 
-PromoteIssueToUsButtonDirective = ($rootScope, $repo, $confirm) ->
+PromoteIssueToUsButtonDirective = ($rootScope, $repo, $confirm, $qqueue) ->
     template = _.template("""
         <a class="button button-gray editable" tg-check-permission="add_us">
             Promote to User Story
@@ -579,6 +589,30 @@ PromoteIssueToUsButtonDirective = ($rootScope, $repo, $confirm) ->
     """)  # TODO: i18n
 
     link = ($scope, $el, $attrs, $model) ->
+
+        save = $qqueue.bindAdd (issue, finish) =>
+            data = {
+                generated_from_issue: issue.id
+                project: issue.project,
+                subject: issue.subject
+                description: issue.description
+                tags: issue.tags
+                is_blocked: issue.is_blocked
+                blocked_note: issue.blocked_note
+            }
+
+            onSuccess = ->
+                finish()
+                $confirm.notify("success")
+                $rootScope.$broadcast("promote-issue-to-us:success")
+
+            onError = ->
+                finish(false)
+                $confirm.notify("error")
+
+            $repo.create("userstories", data).then(onSuccess, onError)
+
+
         $el.on "click", "a", (event) ->
             event.preventDefault()
             issue = $model.$modelValue
@@ -588,26 +622,8 @@ PromoteIssueToUsButtonDirective = ($rootScope, $repo, $confirm) ->
             subtitle = issue.subject
 
             $confirm.ask(title, subtitle, message).then (finish) =>
-                data = {
-                    generated_from_issue: issue.id
-                    project: issue.project,
-                    subject: issue.subject
-                    description: issue.description
-                    tags: issue.tags
-                    is_blocked: issue.is_blocked
-                    blocked_note: issue.blocked_note
-                }
+                save(issue, finish)
 
-                onSuccess = ->
-                    finish()
-                    $confirm.notify("success")
-                    $rootScope.$broadcast("promote-issue-to-us:success")
-
-                onError = ->
-                    finish(false)
-                    $confirm.notify("error")
-
-                $repo.create("userstories", data).then(onSuccess, onError)
 
         $scope.$on "$destroy", ->
             $el.off()
@@ -619,5 +635,5 @@ PromoteIssueToUsButtonDirective = ($rootScope, $repo, $confirm) ->
         link: link
     }
 
-module.directive("tgPromoteIssueToUsButton", ["$rootScope", "$tgRepo", "$tgConfirm",
+module.directive("tgPromoteIssueToUsButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgQqueue",
                                               PromoteIssueToUsButtonDirective])

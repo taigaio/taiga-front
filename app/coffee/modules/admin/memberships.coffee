@@ -22,6 +22,7 @@
 taiga = @.taiga
 
 mixOf = @.taiga.mixOf
+bindMethods = @.taiga.bindMethods
 
 module = angular.module("taigaAdmin")
 
@@ -47,7 +48,7 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q,
                   @location, @navUrls, @analytics, @appTitle) ->
-        _.bindAll(@)
+        bindMethods(@)
 
         @scope.sectionName = "Manage Members" #i18n
         @scope.project = {}
@@ -301,8 +302,10 @@ MembershipsRowAdminCheckboxDirective = ($log, $repo, $confirm) ->
             onSuccess = ->
                 $confirm.notify("success")
 
-            onError = ->
-                $confirm.notify("error")
+            onError = (data) ->
+                member.revert()
+                $el.find(":checkbox").prop("checked", member.is_owner)
+                $confirm.notify("error", data.is_owner[0])
 
             target = angular.element(event.currentTarget)
             member.is_owner = target.prop("checked")

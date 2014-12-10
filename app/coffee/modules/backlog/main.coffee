@@ -27,6 +27,7 @@ scopeDefer = @.taiga.scopeDefer
 bindOnce = @.taiga.bindOnce
 groupBy = @.taiga.groupBy
 timeout = @.taiga.timeout
+bindMethods = @.taiga.bindMethods
 
 module = angular.module("taigaBacklog")
 
@@ -53,7 +54,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q,
                   @location, @appTitle, @navUrls, @events, @analytics, tgLoader) ->
-        _.bindAll(@)
+        bindMethods(@)
 
         @scope.sectionName = "Backlog"
         @showTags = false
@@ -389,14 +390,14 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
         # Rehash userstories order field
         # and persist in bulk all changes.
-        promise = @q.all.apply(null, promises).then =>
+        promise = @q.all(promises).then =>
             items = @.resortUserStories(newSprint.user_stories, "sprint_order")
             data = @.prepareBulkUpdateData(items, "sprint_order")
 
-            return @rs.userstories.bulkUpdateSprintOrder(project, data).then =>
+            @rs.userstories.bulkUpdateSprintOrder(project, data).then =>
                 @rootscope.$broadcast("sprint:us:moved", us, oldSprintId, newSprintId)
 
-            return @rs.userstories.bulkUpdateBacklogOrder(project, data).then =>
+            @rs.userstories.bulkUpdateBacklogOrder(project, data).then =>
                 for us in usList
                     @rootscope.$broadcast("sprint:us:moved", us, oldSprintId, newSprintId)
 
@@ -444,6 +445,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             return obj
 
         plainStatuses = _.map(@scope.userstories, "status")
+
         plainStatuses = _.filter plainStatuses, (status) =>
             if status
                 return status

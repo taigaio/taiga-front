@@ -1,7 +1,7 @@
 .sprints {
     .summary {
-        background: $gray-light;
         @include clearfix;
+        background: $gray-light;
         ul {
             width: 40%;
         }
@@ -116,10 +116,6 @@
         }
     }
     .sprint-table {
-        @include slide(1000px, overflow-x);
-        &.open {
-            min-height: 50px;
-        }
         .row {
             @include table-flex();
             border-bottom: 1px solid $gray-light;
@@ -127,8 +123,8 @@
             text-align: left;
             width: 100%;
             &:hover {
-                background: lighten($gray-light, 12%);
                 @include transition (background .2s ease-in);
+                background: lighten($gray-light, 12%);
                 cursor: move;
             }
             &:last-child {
@@ -146,8 +142,8 @@
 
         }
         .column-us {
-            @include table-flex-child(3, 0, 0);
             @extend %small;
+            @include table-flex-child(3, 0, 0);
             padding: 0 4px;
         }
         .us-name {
@@ -211,13 +207,13 @@
             }
         }
     }
-    .sprint-table {
-        @include slide(1000px, overflow-y);
-    }
 }
 
 // If sprint is closed and date is old
 .sprint-closed {
+    .sprint-table {
+        display: none;
+    }
     .sprint-name {
         .icon-arrow-up {
             @include transform(rotate(180deg));
@@ -241,9 +237,6 @@
         .current-progress {
             background: darken($gray-light, 10%);
         }
-    }
-    .sprint-table {
-        @include slide(1000px, overflow-y);
     }
     .button-gray {
         background: $gray-light;

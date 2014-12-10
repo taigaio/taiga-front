@@ -1,5 +1,4 @@
 .taskboard-task {
-    @include transition (all .4s linear);
     background: $postit;
     border: 1px solid $postit-hover;
     box-shadow: none;
@@ -17,8 +16,8 @@
         }
     }
     &.ui-sortable-helper {
-        box-shadow: 1px 1px 15px rgba($black, .4);
         @include transition(box-shadow .3s linear);
+        box-shadow: 1px 1px 15px rgba($black, .4);
     }
     &.ui-sortable-placeholder {
         background: $grayer;
@@ -45,7 +44,6 @@
     }
     .taskboard-task-inner {
         @include table-flex();
-        min-height: 7rem;
         padding: .5rem;
     }
     .taskboard-user-avatar {
@@ -100,7 +98,6 @@
     }
     .task-name {
         @extend %bold;
-        color: $grayer;
     }
     .taskboard-text {
         @extend %small;

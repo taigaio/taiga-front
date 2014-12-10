@@ -208,7 +208,7 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame) ->
                     animationFrame.add () ->
                          goToBottomList()
 
-                $el.find(".new-value").hide()
+                $el.find(".new-value").addClass("hidden")
                 initializeNewValue()
 
             promise.then null, (data) ->

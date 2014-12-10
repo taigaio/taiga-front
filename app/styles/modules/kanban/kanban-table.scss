@@ -53,10 +53,10 @@ $column-margin: 0 10px 0 0;
         position: absolute;
     }
     .task-colum-name {
+        @extend %large;
         @include table-flex-child($column-flex, $column-width, $column-shrink, $column-width);
         @include table-flex();
         @include justify-content(space-between);
-        @extend %large;
         background: $whitish;
         border-top: 3px solid $gray-light;
         margin: $column-margin;
@@ -84,8 +84,8 @@ $column-margin: 0 10px 0 0;
 }
 
 .kanban-table-body {
-    @include table-flex();
     @extend %medium;
+    @include table-flex();
     overflow: hidden;
     overflow-x: auto;
     width: 100%;

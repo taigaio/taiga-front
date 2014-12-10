@@ -6,16 +6,16 @@
     }
     .row {
         &:hover {
-            background: lighten($green-taiga, 60%);
             @include transition (background .2s ease-in);
+            background: lighten($green-taiga, 60%);
         }
         .icon {
             display: inline;
         }
     }
     .row-selected {
-        background: lighten($green-taiga, 60%);
         @include transition (background .2s ease-in);
+        background: lighten($green-taiga, 60%);
     }
     .title {
         @extend %medium;

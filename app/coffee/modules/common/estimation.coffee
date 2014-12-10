@@ -165,7 +165,7 @@ module.directive("tgLbUsEstimation", ["$rootScope", "$tgRepo", "$tgConfirm", LbU
 ## User story estimation directive
 #############################################################################
 
-UsEstimationDirective = ($rootScope, $repo, $confirm) ->
+UsEstimationDirective = ($rootScope, $repo, $confirm, $qqueue) ->
     # Display the points of a US and you can edit it.
     #
     # Example:
@@ -264,6 +264,29 @@ UsEstimationDirective = ($rootScope, $repo, $confirm) ->
 
             return _.reduce(notNullValues, (acc, num) -> acc + num)
 
+        save = $qqueue.bindAdd (roleId, pointId) =>
+            $el.find(".popover").popover().close()
+
+            # Hell starts here
+            us = angular.copy($model.$modelValue)
+            points = _.clone($model.$modelValue.points, true)
+            points[roleId] = pointId
+            us.setAttr('points', points)
+            us.points = points
+            us.total_points = calculateTotalPoints(us)
+            $model.$setViewValue(us)
+            # Hell ends here
+
+            onSuccess = ->
+                $confirm.notify("success")
+                $rootScope.$broadcast("history:reload")
+            onError = ->
+                $confirm.notify("error")
+                us.revert()
+                $model.$setViewValue(us)
+
+            $repo.save($model.$modelValue).then(onSuccess, onError)
+
         $el.on "click", ".total.clickable", (event) ->
             event.preventDefault()
             event.stopPropagation()
@@ -287,26 +310,7 @@ UsEstimationDirective = ($rootScope, $repo, $confirm) ->
             roleId = target.data("role-id")
             pointId = target.data("point-id")
 
-            $el.find(".popover").popover().close()
-
-            # Hell starts here
-            us = angular.copy($model.$modelValue)
-            points = _.clone($model.$modelValue.points, true)
-            points[roleId] = pointId
-            us.setAttr('points', points)
-            us.points = points
-            us.total_points = calculateTotalPoints(us)
-            $model.$setViewValue(us)
-            # Hell ends here
-
-            onSuccess = ->
-                $confirm.notify("success")
-                $rootScope.$broadcast("history:reload")
-            onError = ->
-                $confirm.notify("error")
-                us.revert()
-                $model.$setViewValue(us)
-            $repo.save($model.$modelValue).then(onSuccess, onError)
+            save(roleId, pointId)
 
         $scope.$watch $attrs.ngModel, (us) ->
             render(us) if us
@@ -320,4 +324,4 @@ UsEstimationDirective = ($rootScope, $repo, $confirm) ->
         require: "ngModel"
     }
 
-module.directive("tgUsEstimation", ["$rootScope", "$tgRepo", "$tgConfirm", UsEstimationDirective])
+module.directive("tgUsEstimation", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgQqueue", UsEstimationDirective])

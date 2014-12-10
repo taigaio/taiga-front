@@ -1,10 +1,10 @@
 .login-main {
+    @extend %triangled-bg;
     //@include table-flex(center, center, flex, row, wrap, center);
     @include display(flex);
     @include align-items(center);
     @include flex-direction(row);
     @include justify-content(center);
-    @extend %triangled-bg;
     bottom: 0;
     left: 0;
     position: fixed;

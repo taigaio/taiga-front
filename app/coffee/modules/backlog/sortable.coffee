@@ -58,9 +58,7 @@ BacklogSortableDirective = ($repo, $rs, $rootscope, $tgConfirm) ->
                 containment: ".wrapper"
                 dropOnEmpty: true
                 placeholder: "row us-item-row us-item-drag sortable-placeholder"
-                # With scroll activated, it has strange behavior
-                # with not full screen browser window.
-                scroll: false
+                scroll: true
                 # A consequence of length of backlog user story item
                 # the default tolerance ("intersection") not works properly.
                 tolerance: "pointer"
@@ -153,6 +151,7 @@ SprintSortableDirective = ($repo, $rs, $rootscope) ->
             # If the user has not enough permissions we don't enable the sortable
             if project.my_permissions.indexOf("modify_us") > -1
                 $el.sortable({
+                    scroll: true
                     dropOnEmpty: true
                     connectWith: ".sprint-table,.backlog-table-body,.empty-backlog"
                 })

@@ -4,7 +4,7 @@ block head
     title Taiga  Your agile, free, and open source project management tool
 
 block content
-    div.wrapper(tg-project-profile, ng-controller="ProjectProfileController as ctrl",
+    div.wrapper(tg-project-default-values, ng-controller="ProjectProfileController as ctrl",
                 ng-init="section='admin'; sectionName='Default values'")
         sidebar.menu-secondary.sidebar(tg-admin-navigation="project-profile")
             include views/modules/admin-menu

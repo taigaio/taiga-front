@@ -26,6 +26,7 @@ bindOnce = @.taiga.bindOnce
 mixOf = @.taiga.mixOf
 debounceLeading = @.taiga.debounceLeading
 trim = @.taiga.trim
+debounce = @.taiga.debounce
 
 module = angular.module("taigaSearch", [])
 
@@ -111,7 +112,9 @@ SearchBoxDirective = ($lightboxService, $navurls, $location, $route)->
     link = ($scope, $el, $attrs) ->
         project = null
 
-        submit = ->
+        submit = debounce 2000, (event) =>
+            event.preventDefault()
+
             form = $el.find("form").checksley()
             if not form.validate()
                 return
@@ -131,12 +134,8 @@ SearchBoxDirective = ($lightboxService, $navurls, $location, $route)->
             $lightboxService.open($el)
             $el.find("#search-text").val("")
 
-        $el.on "submit", (event) ->
-            submit()
-
-        $el.on "click", ".button-green", (event) ->
-            event.preventDefault()
-            submit()
+        $el.on "submit", "form", submit
+        $el.on "click", ".submit-button", submit
 
     return {link:link}
 

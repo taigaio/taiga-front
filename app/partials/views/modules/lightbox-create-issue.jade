@@ -20,6 +20,6 @@ form
         textarea.description(placeholder="Description", ng-model="issue.description")
 
     // include lightbox-attachments
-    input(type="submit", style="display:none")
-    a.button.button-green(href="", title="Save")
+    button(type="submit", class="hidden")
+    a.button.button-green.submit-button(href="", title="Save")
         span Create

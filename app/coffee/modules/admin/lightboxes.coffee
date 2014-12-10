@@ -30,7 +30,7 @@ MAX_MEMBERSHIP_FIELDSETS = 4
 ## Create Members Lightbox Directive
 #############################################################################
 
-CreateMembersDirective = ($rs, $rootScope, $confirm, lightboxService) ->
+CreateMembersDirective = ($rs, $rootScope, $confirm, $loading ,lightboxService) ->
     extraTextTemplate = """
     <fieldset class="extra-text">
         <textarea placeholder="(Optional) Add a personalized text to the invitation. Tell something lovely to your new members ;-)"></textarea>
@@ -103,15 +103,19 @@ CreateMembersDirective = ($rs, $rootScope, $confirm, lightboxService) ->
                 $el.find(".add-member-wrapper fieldset:last > a").removeClass("icon-plus add-fieldset")
                                              .addClass("icon-delete delete-fieldset")
 
-        $el.on "click", ".button-green", debounce 2000, (event) ->
+        submit = debounce 2000, (event) =>
             event.preventDefault()
 
+            $loading.start(submitButton)
+
             onSuccess = (data) ->
+                $loading.finish(submitButton)
                 lightboxService.close($el)
                 $confirm.notify("success")
                 $rootScope.$broadcast("membersform:new:success")
 
             onError = (data) ->
+                $loading.finish(submitButton)
                 lightboxService.close($el)
                 $confirm.notify("error")
                 $rootScope.$broadcast("membersform:new:error")
@@ -143,7 +147,12 @@ CreateMembersDirective = ($rs, $rootScope, $confirm, lightboxService) ->
 
                 $rs.memberships.bulkCreateMemberships($scope.project.id, invitations, invitation_extra_text).then(onSuccess, onError)
 
+        submitButton = $el.find(".submit-button")
+
+        $el.on "submit", "form", submit
+        $el.on "click", ".submit-button", submit
+
     return {link: link}
 
-module.directive("tgLbCreateMembers", ["$tgResources", "$rootScope", "$tgConfirm", "lightboxService",
+module.directive("tgLbCreateMembers", ["$tgResources", "$rootScope", "$tgConfirm", "$tgLoading", "lightboxService",
                                        CreateMembersDirective])

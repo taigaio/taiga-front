@@ -126,19 +126,11 @@ module.directive("lightbox", ["lightboxService", LightboxDirective])
 
 # Issue/Userstory blocking message lightbox directive.
 
-BlockLightboxDirective = ($rootscope, $tgrepo, $confirm, lightboxService, $loading) ->
+BlockLightboxDirective = ($rootscope, $tgrepo, $confirm, lightboxService, $loading, $qqueue) ->
     link = ($scope, $el, $attrs, $model) ->
         $el.find("h2.title").text($attrs.title)
 
-        $scope.$on "block", ->
-            $el.find(".reason").val($model.$modelValue.blocked_note)
-            lightboxService.open($el)
-
-        $scope.$on "unblock", (event, model, finishCallback) ->
-            item = $model.$modelValue.clone()
-            item.is_blocked = false
-            item.blocked_note = ""
-
+        unblock = $qqueue.bindAdd (item, finishCallback) =>
             promise = $tgrepo.save(item)
             promise.then ->
                 $confirm.notify("success")
@@ -154,15 +146,9 @@ BlockLightboxDirective = ($rootscope, $tgrepo, $confirm, lightboxService, $loadi
             promise.finally ->
                 finishCallback()
 
-        $scope.$on "$destroy", ->
-            $el.off()
+            return promise
 
-        $el.on "click", ".button-green", (event) ->
-            event.preventDefault()
-
-            item = $model.$modelValue.clone()
-            item.is_blocked = true
-            item.blocked_note = $el.find(".reason").val()
+        block = $qqueue.bindAdd (item) =>
             $model.$setViewValue(item)
 
             $loading.start($el.find(".button-green"))
@@ -181,13 +167,36 @@ BlockLightboxDirective = ($rootscope, $tgrepo, $confirm, lightboxService, $loadi
                 $loading.finish($el.find(".button-green"))
                 lightboxService.close($el)
 
+        $scope.$on "block", ->
+            $el.find(".reason").val($model.$modelValue.blocked_note)
+            lightboxService.open($el)
+
+        $scope.$on "unblock", (event, model, finishCallback) =>
+            item = $model.$modelValue.clone()
+            item.is_blocked = false
+            item.blocked_note = ""
+
+            unblock(item, finishCallback)
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+        $el.on "click", ".button-green", (event) ->
+            event.preventDefault()
+
+            item = $model.$modelValue.clone()
+            item.is_blocked = true
+            item.blocked_note = $el.find(".reason").val()
+
+            block(item)
+
     return {
         templateUrl: "/partials/views/modules/lightbox-block.html"
         link: link
         require: "ngModel"
     }
 
-module.directive("tgLbBlock", ["$rootScope", "$tgRepo", "$tgConfirm", "lightboxService", "$tgLoading", BlockLightboxDirective])
+module.directive("tgLbBlock", ["$rootScope", "$tgRepo", "$tgConfirm", "lightboxService", "$tgLoading", "$tgQqueue", BlockLightboxDirective])
 
 
 #############################################################################
@@ -285,15 +294,14 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
 
             lightboxService.open($el)
 
-        $el.on "click", ".button-green", debounce 2000, (event) ->
+        submit = debounce 2000, (event) =>
             event.preventDefault()
-            form = $el.find("form").checksley()
-            target = angular.element(event.currentTarget)
 
+            form = $el.find("form").checksley()
             if not form.validate()
                 return
 
-            $loading.start(target)
+            $loading.start(submitButton)
 
             if $scope.isNew
                 promise = $repo.create("userstories", $scope.us)
@@ -303,15 +311,20 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
                 broadcastEvent = "usform:edit:success"
 
             promise.then (data) ->
-                $loading.finish(target)
+                $loading.finish(submitButton)
                 lightboxService.close($el)
                 $rootScope.$broadcast(broadcastEvent, data)
 
             promise.then null, (data) ->
-                $loading.finish(target)
+                $loading.finish(submitButton)
                 form.setErrors(data)
                 if data._error_message
                     $confirm.notify("error", data._error_message)
+
+        submitButton = $el.find(".submit-button")
+
+        $el.on "submit", "form", submit
+        $el.on "click", ".submit-button", submit
 
         $el.on "click", ".close", (event) ->
             event.preventDefault()
@@ -356,27 +369,31 @@ CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService, $load
             }
             lightboxService.open($el)
 
-        $el.on "click", ".button-green", debounce 2000, (event) ->
+        submit = debounce 2000, (event) =>
             event.preventDefault()
-            target = angular.element(event.currentTarget)
 
             form = $el.find("form").checksley({onlyOneErrorElement: true})
             if not form.validate()
                 return
 
-            $loading.start(target)
+            $loading.start(submitButton)
 
             promise = $rs.userstories.bulkCreate($scope.new.projectId, $scope.new.statusId, $scope.new.bulk)
             promise.then (result) ->
-                $loading.finish(target)
+                $loading.finish(submitButton)
                 $rootscope.$broadcast("usform:bulk:success", result)
                 lightboxService.close($el)
 
             promise.then null, (data) ->
-                $loading.finish(target)
+                $loading.finish(submitButton)
                 form.setErrors(data)
                 if data._error_message
                     $confirm.notify("error", data._error_message)
+
+        submitButton = $el.find(".submit-button")
+
+        $el.on "submit", "form", submit
+        $el.on "click", ".submit-button", submit
 
         $scope.$on "$destroy", ->
             $el.off()

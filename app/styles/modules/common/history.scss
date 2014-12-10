@@ -73,6 +73,10 @@
             @include transition(height .3s ease-in);
             height: 6rem;
         }
+        .help-markdown {
+            @include transition(opacity .3s linear);
+            opacity: 1;
+        }
         .preview-icon {
             opacity: 1;
             position: absolute;
@@ -81,10 +85,12 @@
     }
     textarea {
         background: $white;
-        float: left;
-        height: 41px;
+        height: 5rem;
         margin-bottom: .5rem;
-        min-height: inherit;
+        min-height: 41px;
+    }
+    .help-markdown {
+        opacity: 0;
     }
     .save-comment {
         color: $white;

@@ -27,6 +27,7 @@ scopeDefer = @.taiga.scopeDefer
 bindOnce = @.taiga.bindOnce
 groupBy = @.taiga.groupBy
 timeout = @.taiga.timeout
+bindMethods = @.taiga.bindMethods
 
 module = angular.module("taigaKanban")
 
@@ -66,7 +67,9 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
                   @appTitle, @navUrls, @events, @analytics, tgLoader) ->
-        _.bindAll(@)
+
+        bindMethods(@)
+
         @scope.sectionName = "Kanban"
         @scope.statusViewModes = {}
         @.initializeEventHandlers()

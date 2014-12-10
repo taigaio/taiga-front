@@ -66,6 +66,7 @@ paths.coffee = [
     paths.app + "coffee/modules/issues/*.coffee",
     paths.app + "coffee/modules/userstories/*.coffee",
     paths.app + "coffee/modules/tasks/*.coffee",
+    paths.app + "coffee/modules/team/*.coffee",
     paths.app + "coffee/modules/wiki/*.coffee",
     paths.app + "coffee/modules/admin/*.coffee",
     paths.app + "coffee/modules/projects/*.coffee",
@@ -155,8 +156,8 @@ gulp.task "sass-compile", ["sass-lint"], ->
         .pipe(gulp.dest(paths.tmpStyles))
 
 csslintChannel = lazypipe()
-  .pipe(csslint, "csslintrc.json")
-  .pipe(csslint.reporter)
+    .pipe(csslint, "csslintrc.json")
+    .pipe(csslint.reporter)
 
 gulp.task "css-lint-app", ->
     gulp.src(mainSass.concat([paths.tmpStylesExtras]))

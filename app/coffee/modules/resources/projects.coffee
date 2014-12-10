@@ -22,7 +22,7 @@
 
 taiga = @.taiga
 
-resourceProvider = ($repo) ->
+resourceProvider = ($repo, $http, $urls) ->
     service = {}
 
     service.get = (id) ->
@@ -45,6 +45,13 @@ resourceProvider = ($repo) ->
     service.stats = (projectId) ->
         return $repo.queryOneRaw("projects", "#{projectId}/stats")
 
+    service.leave = (projectId) ->
+        url = "#{$urls.resolve("projects")}/#{projectId}/leave"
+        return $http.post(url)
+
+    service.memberStats = (projectId) ->
+        return $repo.queryOneRaw("projects", "#{projectId}/member_stats")
+
     service.tagsColors = (id) ->
         return $repo.queryOne("projects", "#{id}/tags_colors")
 
@@ -53,4 +60,4 @@ resourceProvider = ($repo) ->
 
 
 module = angular.module("taigaResources")
-module.factory("$tgProjectsResourcesProvider", ["$tgRepo", resourceProvider])
+module.factory("$tgProjectsResourcesProvider", ["$tgRepo", "$tgHttp", "$tgUrls", resourceProvider])

@@ -9,8 +9,8 @@
         }
     }
     .forgot-pass {
-        @include transition(all .3s linear);
         @extend %small;
+        @include transition(all .3s linear);
         color: $gray-light;
         opacity: 1;
         position: absolute;

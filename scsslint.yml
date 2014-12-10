@@ -124,5 +124,10 @@ linters:
   ZeroUnit:
     enabled: true
 
+  NestingDepth:
+    enabled: true
+    max_depth: 4
+
   Compass::*:
     enabled: false
+

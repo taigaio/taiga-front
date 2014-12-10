@@ -62,7 +62,7 @@ class RepositoryService extends taiga.Service
 
     saveAll: (models, patch=true) ->
         promises = _.map(models, (x) => @.save(x, true))
-        return @q.all.apply(@q, promises)
+        return @q.all(promises)
 
     save: (model, patch=true) ->
         defered = @q.defer()
@@ -143,6 +143,7 @@ class RepositoryService extends taiga.Service
     queryMany: (name, params, options={}) ->
         url = @urls.resolve(name)
         httpOptions = {headers: {}}
+
         if not options.enablePagination
             httpOptions.headers["x-disable-pagination"] =  "1"
 

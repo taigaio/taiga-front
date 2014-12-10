@@ -1,0 +1,101 @@
+.table-team {
+    .row {
+        padding: .5rem;
+    }
+    .username {
+        @include flex(3);
+        min-width: 300px;
+    }
+    .member-stats {
+        @include display(flex);
+        @include align-content(center);
+        @include align-items(center);
+        @include justify-content(flex-end);
+        @include flex(6);
+    }
+    .attribute {
+        @include flex(1);
+        position: relative;
+        text-align: center;
+        .icon,
+        .points {
+            @extend %xlarge;
+            color: $grayer;
+            &.top {
+                color: $fresh-taiga;
+            }
+        }
+        .points {
+            @extend %title;
+            @extend %bold;
+        }
+        .top {
+            color: $fresh-taiga;
+            opacity: 1;
+        }
+        &:hover {
+            .popover {
+                display: block;
+            }
+        }
+    }
+    .leave-project {
+        @extend %small;
+        color: $gray-light;
+        display: block;
+        .icon {
+            margin-right: .2rem;
+        }
+        &:hover {
+            .icon {
+                @include transition (color .3s linear);
+                color: $red;
+            }
+        }
+    }
+    .team-header {
+        @extend %title;
+        @extend %bold;
+        border-bottom: 0;
+    }
+    .hero {
+        width: 100%;
+        .row {
+            background: $very-light-gray;
+            border-bottom: 0;
+            margin: 1rem 0;
+        }
+    }
+    .avatar {
+        @include table-flex(stretch, center, flex, row, wrap, flex-start);
+        img {
+            @include table-flex-child(1, 66px, 0);
+            max-width: 66px;
+        }
+        figcaption {
+            margin-left: 1rem;
+            width: 65%;
+            span {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                width: 100%;
+            }
+        }
+        .name,
+        .position {
+            display: block;
+            width: 100%;
+        }
+        .name {
+            @extend %bold;
+        }
+        .position {
+            color: $gray-light;
+        }
+    }
+    .popover {
+        @extend %small;
+        @include popover(100%, '', 0, 30px, '', 15px, '', 50%, -5px);
+    }
+}

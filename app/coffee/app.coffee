@@ -63,6 +63,10 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     $routeProvider.when("/project/:pslug/wiki/:slug",
         {templateUrl: "/partials/wiki.html", resolve: {loader: tgLoaderProvider.add()}})
 
+    # Team
+    $routeProvider.when("/project/:pslug/team",
+        {templateUrl: "/partials/views/team/team.html", resolve: {loader: tgLoaderProvider.add()}})
+
     # Issues
     $routeProvider.when("/project/:pslug/issues",
         {templateUrl: "/partials/issues.html", resolve: {loader: tgLoaderProvider.add()}})
@@ -96,6 +100,10 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         {templateUrl: "/partials/admin-roles.html"})
     $routeProvider.when("/project/:pslug/admin/third-parties/github",
         {templateUrl: "/partials/admin-third-parties-github.html"})
+    $routeProvider.when("/project/:pslug/admin/third-parties/gitlab",
+        {templateUrl: "/partials/admin-third-parties-gitlab.html"})
+    $routeProvider.when("/project/:pslug/admin/third-parties/bitbucket",
+        {templateUrl: "/partials/admin-third-parties-bitbucket.html"})
 
     # User settings
     $routeProvider.when("/project/:pslug/user-settings/user-profile",
@@ -134,7 +142,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         {templateUrl: "/partials/permission-denied.html"})
 
     $routeProvider.otherwise({redirectTo: '/not-found'})
-    $locationProvider.html5Mode(true)
+    $locationProvider.html5Mode({enabled: true, requireBase: false})
 
     defaultHeaders = {
         "Content-Type": "application/json"
@@ -153,21 +161,45 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     $tgEventsProvider.setSessionId(taiga.sessionId)
 
     # Add next param when user try to access to a secction need auth permissions.
-    authHttpIntercept = ($q, $location, $confirm, $navUrls, $lightboxService) ->
-        return (promise) ->
-            return promise.then null, (response) ->
-                if response.status == 0
-                    $lightboxService.closeAll()
-                    $location.path($navUrls.resolve("error"))
-                    $location.replace()
-                else if response.status == 401
-                    nextPath = $location.path()
-                    $location.url($navUrls.resolve("login")).search("next=#{nextPath}")
+    authHttpIntercept = ($q, $location, $navUrls, $lightboxService) ->
+        httpResponseError = (response) ->
+            if response.status == 0
+                $lightboxService.closeAll()
+                $location.path($navUrls.resolve("error"))
+                $location.replace()
+            else if response.status == 401
+                nextPath = $location.path()
+                $location.url($navUrls.resolve("login")).search("next=#{nextPath}")
+
+            return $q.reject(response)
+
+        return {
+            responseError: httpResponseError
+        }
+
+    $provide.factory("authHttpIntercept", ["$q", "$location", "$tgNavUrls", "lightboxService", authHttpIntercept])
+
+    $httpProvider.interceptors.push('authHttpIntercept');
+
+    # If there is an error in the version throw a notify error
+    versionCheckHttpIntercept = ($q, $confirm) ->
+        versionErrorMsg = "Someone inside Taiga has changed this before and our Oompa Loompas cannot apply your changes. Please reload and apply your changes again (they will be lost)." #TODO: i18n
+
+        httpResponseError = (response) ->
+            if response.status == 400 && response.data.version
+                $confirm.notify("error", versionErrorMsg, null, 10000)
+
                 return $q.reject(response)
 
-    $provide.factory("authHttpIntercept", ["$q", "$location", "$tgConfirm", "$tgNavUrls",
-                                           "lightboxService", authHttpIntercept])
-    $httpProvider.responseInterceptors.push('authHttpIntercept')
+            return $q.reject(response)
+
+        return {
+            responseError: httpResponseError
+        }
+
+    $provide.factory("versionCheckHttpIntercept", ["$q", "$tgConfirm", versionCheckHttpIntercept])
+
+    $httpProvider.interceptors.push('versionCheckHttpIntercept');
 
     window.checksley.updateValidators({
         linewidth: (val, width) ->
@@ -210,6 +242,7 @@ modules = [
     "taigaIssues",
     "taigaUserStories",
     "taigaTasks",
+    "taigaTeam",
     "taigaWiki",
     "taigaSearch",
     "taigaAdmin",

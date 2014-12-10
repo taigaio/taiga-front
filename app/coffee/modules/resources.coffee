@@ -42,6 +42,7 @@ urls = {
     "userstories-restore": "/userstories/%s/restore"
     "tasks": "/tasks"
     "bulk-create-tasks": "/tasks/bulk_create"
+    "bulk-update-task-taskboard-order": "/tasks/bulk_update_taskboard_order"
     "tasks-restore": "/tasks/%s/restore"
     "issues": "/issues"
     "bulk-create-issues": "/issues/bulk_create"

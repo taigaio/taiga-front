@@ -199,7 +199,7 @@ module.directive("tgTaskStatusDisplay", TaskStatusDisplayDirective)
 ## Task status button directive
 #############################################################################
 
-TaskStatusButtonDirective = ($rootScope, $repo, $confirm, $loading) ->
+TaskStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue) ->
     # Display the status of Task and you can edit it.
     #
     # Example:
@@ -240,6 +240,26 @@ TaskStatusButtonDirective = ($rootScope, $repo, $confirm, $loading) ->
             })
             $el.html(html)
 
+        save = $qqueue.bindAdd (status) =>
+            task = $model.$modelValue.clone()
+            task.status = status
+
+            $model.$setViewValue(task)
+
+            onSuccess = ->
+                $confirm.notify("success")
+                $rootScope.$broadcast("history:reload")
+                $loading.finish($el.find(".level-name"))
+
+            onError = ->
+                $confirm.notify("error")
+                task.revert()
+                $model.$setViewValue(task)
+                $loading.finish($el.find(".level-name"))
+
+            $loading.start($el.find(".level-name"))
+            $repo.save($model.$modelValue).then(onSuccess, onError)
+
         $el.on "click", ".status-data", (event) ->
             event.preventDefault()
             event.stopPropagation()
@@ -256,25 +276,7 @@ TaskStatusButtonDirective = ($rootScope, $repo, $confirm, $loading) ->
 
             $.fn.popover().closeAll()
 
-            task = $model.$modelValue.clone()
-            task.status = target.data("status-id")
-            $model.$setViewValue(task)
-
-            $scope.$apply()
-
-            onSuccess = ->
-                $confirm.notify("success")
-                $rootScope.$broadcast("history:reload")
-                $loading.finish($el.find(".level-name"))
-
-            onError = ->
-                $confirm.notify("error")
-                task.revert()
-                $model.$setViewValue(task)
-                $loading.finish($el.find(".level-name"))
-
-            $loading.start($el.find(".level-name"))
-            $repo.save($model.$modelValue).then(onSuccess, onError)
+            save(target.data("status-id"))
 
         $scope.$watch $attrs.ngModel, (task) ->
             render(task) if task
@@ -288,11 +290,11 @@ TaskStatusButtonDirective = ($rootScope, $repo, $confirm, $loading) ->
         require: "ngModel"
     }
 
-module.directive("tgTaskStatusButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading",
+module.directive("tgTaskStatusButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", "$tgQqueue",
                                         TaskStatusButtonDirective])
 
 
-TaskIsIocaineButtonDirective = ($rootscope, $tgrepo, $confirm, $loading) ->
+TaskIsIocaineButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $qqueue) ->
     template = _.template("""
       <fieldset title="Feeling a bit overwhelmed by a task? Make sure others know about it by clicking on Iocaine when editing a task. It's possible to become immune to this (fictional) deadly poison by consuming small amounts over time just as it's possible to get better at what you do by occasionally taking on extra challenges!">
         <label for="is-iocaine"
@@ -319,15 +321,15 @@ TaskIsIocaineButtonDirective = ($rootscope, $tgrepo, $confirm, $loading) ->
             html = template(ctx)
             $el.html(html)
 
-        $el.on "click", ".is-iocaine", (event) ->
-            return if not isEditable()
-
+        save = $qqueue.bindAdd (is_iocaine) =>
             task = $model.$modelValue.clone()
-            task.is_iocaine = not task.is_iocaine
+            task.is_iocaine = is_iocaine
+
             $model.$setViewValue(task)
             $loading.start($el.find('label'))
 
-            promise = $tgrepo.save($model.$modelValue)
+            promise = $tgrepo.save(task)
+
             promise.then ->
                 $confirm.notify("success")
                 $rootscope.$broadcast("history:reload")
@@ -339,6 +341,12 @@ TaskIsIocaineButtonDirective = ($rootscope, $tgrepo, $confirm, $loading) ->
 
             promise.finally ->
                 $loading.finish($el.find('label'))
+
+        $el.on "click", ".is-iocaine", (event) ->
+            return if not isEditable()
+
+            is_iocaine = not $model.$modelValue.is_iocaine
+            save(is_iocaine)
 
         $scope.$watch $attrs.ngModel, (task) ->
             render(task) if task
@@ -352,4 +360,4 @@ TaskIsIocaineButtonDirective = ($rootscope, $tgrepo, $confirm, $loading) ->
         require: "ngModel"
     }
 
-module.directive("tgTaskIsIocaineButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", TaskIsIocaineButtonDirective])
+module.directive("tgTaskIsIocaineButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", "$tgQqueue", TaskIsIocaineButtonDirective])

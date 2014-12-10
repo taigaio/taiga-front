@@ -212,17 +212,20 @@ module.directive("tgWikiSummary", ["$log", WikiSummaryDirective])
 #############################################################################
 
 EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $location, $navUrls,
-                                $analytics) ->
+                                $analytics, $qqueue) ->
     template = """
         <div class="view-wiki-content">
-            <section class="wysiwyg"
-                     tg-bind-html="wiki.html"></section>
+            <section class="wysiwyg" tg-bind-html="wiki.html"></section>
             <span class="edit icon icon-edit" title="Edit"></span>
         </div>
         <div class="edit-wiki-content" style="display: none;">
             <textarea placeholder="Write your wiki page here"
                       ng-model="wiki.content"
                       tg-markitup="tg-markitup"></textarea>
+            <a class="help-markdown" href="https://taiga.io/support/taiga-markdown-syntax/" target="_blank" title="Mardown syntax help">
+                <span class="icon icon-help"></span>
+                <span>Markdown syntax help</span>
+            </a>
             <span class="action-container">
                 <a class="save icon icon-floppy" href="" title="Save" />
                 <a class="cancel icon icon-delete" href="" title="Cancel" />
@@ -262,6 +265,29 @@ EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $
                 return $document.selection.createRange().text
             return null
 
+        save = $qqueue.bindAdd (wiki) ->
+            onSuccess = (wikiPage) ->
+                if not wiki.id?
+                    $analytics.trackEvent("wikipage", "create", "create wiki page", 1)
+
+                $scope.wiki = wikiPage
+                $model.setModelValue = wiki
+                $confirm.notify("success")
+                switchToReadMode()
+
+            onError = ->
+                $confirm.notify("error")
+
+            $loading.start($el.find('.save-container'))
+
+            if wiki.id?
+                promise = $repo.save(wiki).then(onSuccess, onError)
+            else
+                promise = $repo.create("wiki", wiki).then(onSuccess, onError)
+
+            promise.finally ->
+                $loading.finish($el.find('.save-container'))
+
         $el.on "mouseup", ".view-wiki-content", (event) ->
             # We want to dettect the a inside the div so we use the target and
             # not the currentTarget
@@ -272,25 +298,7 @@ EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $
             switchToEditMode()
 
         $el.on "click", ".save", debounce 2000, ->
-            onSuccess = (wikiPage) ->
-                if not $scope.wiki.id?
-                    $analytics.trackEvent("wikipage", "create", "create wiki page", 1)
-
-                $scope.wiki = wikiPage
-                $model.setModelValue = $scope.wiki
-                $confirm.notify("success")
-                switchToReadMode()
-
-            onError = ->
-                $confirm.notify("error")
-
-            $loading.start($el.find('.save-container'))
-            if $scope.wiki.id?
-                promise = $repo.save($scope.wiki).then(onSuccess, onError)
-            else
-                promise = $repo.create("wiki", $scope.wiki).then(onSuccess, onError)
-            promise.finally ->
-                $loading.finish($el.find('.save-container'))
+            save($scope.wiki)
 
         $el.on "click", ".cancel", ->
             cancelEdition()
@@ -321,5 +329,5 @@ EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $
     }
 
 module.directive("tgEditableWikiContent", ["$window", "$document", "$tgRepo", "$tgConfirm", "$tgLoading",
-                                           "$tgLocation", "$tgNavUrls", "$tgAnalytics",
+                                           "$tgLocation", "$tgNavUrls", "$tgAnalytics", "$tgQqueue",
                                            EditableWikiContentDirective])
