@@ -35,6 +35,8 @@ CreateIssueDirective = ($repo, $confirm, $rootscope, lightboxService, $loading) 
         $scope.issue = {}
 
         $scope.$on "issueform:new", (ctx, project)->
+            $el.find(".tag-input").val("")
+
             lightboxService.open($el)
 
             $scope.issue = {
