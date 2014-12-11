@@ -189,7 +189,7 @@ ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout, tgLoader, $
             $ctrl.filterProjects(target.val())
 
         $scope.$on "projects:filtered", ->
-            renderProjects($el, $scope.filteredProjects)
+            renderProjects($scope.filteredProjects)
 
         $scope.$watch "projects", (projects) ->
             render(projects) if projects?
