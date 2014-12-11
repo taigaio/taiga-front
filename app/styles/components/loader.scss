@@ -1,8 +1,6 @@
 .loader {
-    @include transition(opacity .5s linear);
     background-color: $white;
     bottom: 0;
-    display: none;
     height: 100%;
     left: 0;
     opacity: 0;
@@ -10,23 +8,22 @@
     right: 0;
     top: 0;
     width: 100%;
-    z-index: 99900;
+    z-index: -100;
     .container {
-        margin: 0 auto;
-        margin-top: 15%;
-        position: relative;
-        width: 150px;
+        @include display(flex);
+        @include align-items(center);
+        @include justify-content(center);
+        height: 100%;
+        width: 100%;
     }
     p {
         @extend %large;
-        color: $gray-light;
-        padding-top: 20px;
+        color: $gray;
         text-align: center;
     }
     &.active {
-        @include transition(opacity .5s linear);
-        background-color: rgba($white, .9);
-        display: block;
+        background-color: rgba($white, .95);
         opacity: 1;
+        z-index: 99900;
     }
 }

@@ -1,6 +1,7 @@
 .issues {
     .filters-bar {
-        @include table-flex-child(1, 260px, 0, 260px);
+        @include flex(1);
+        width: 210px;
     }
     .filters-inner {
         opacity: 1;
