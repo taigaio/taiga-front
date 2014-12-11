@@ -42,6 +42,8 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootscope, $loading, lightboxSer
             # Update texts for creation
             $el.find(".button-green span").html("Create") #TODO: i18n
             $el.find(".title").html("New task  ") #TODO: i18n
+            $el.find(".tag-input").val("")
+
             lightboxService.open($el)
 
         $scope.$on "taskform:edit", (ctx, task) ->
@@ -51,6 +53,8 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootscope, $loading, lightboxSer
             # Update texts for edition
             $el.find(".button-green span").html("Save") #TODO: i18n
             $el.find(".title").html("Edit task  ") #TODO: i18n
+            $el.find(".tag-input").val("")
+
             lightboxService.open($el)
 
 
