@@ -250,7 +250,12 @@ UsEstimationDirective = ($rootScope, $repo, $confirm, $qqueue) ->
             # Render into DOM and show the new created element
             $el.find(target).append(html)
 
-            $el.find(".pop-points-open").popover().open(-> $(this).removeClass("active"))
+            $el.find(".pop-points-open").popover().open ->
+                $(this)
+                    .removeClass("active")
+                    .closest("li").removeClass("active")
+
+
             $el.find(".pop-points-open").show()
 
         calculateTotalPoints = (us) ->
