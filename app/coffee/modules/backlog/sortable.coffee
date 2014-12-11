@@ -104,7 +104,11 @@ BacklogSortableDirective = ($repo, $rs, $rootscope, $tgConfirm) ->
                     item = $(item)
                     itemUs = item.scope().us
 
-                    item.find('a').removeClass('noclick')
+                    # HACK: setTimeout prevents that firefox click
+                    # event fires just after drag ends
+                    setTimeout ( =>
+                        item.find('a').removeClass('noclick')
+                    ), 300
 
                     return itemUs
 
@@ -137,6 +141,7 @@ BacklogEmptySortableDirective = ($repo, $rs, $rootscope) ->
 
                     deleteElement(ui.item)
                     $scope.$emit("sprint:us:move", [itemUs], itemIndex, null)
+
                     ui.item.find('a').removeClass('noclick')
 
         $scope.$on "$destroy", ->
@@ -168,7 +173,6 @@ SprintSortableDirective = ($repo, $rs, $rootscope) ->
                         itemUs = item.scope().us
 
                         deleteElement(item)
-                        item.find('a').removeClass('noclick')
 
                         return itemUs
 
@@ -181,8 +185,17 @@ SprintSortableDirective = ($repo, $rs, $rootscope) ->
 
                     itemUs = ui.item.scope().us
                     itemIndex = ui.item.index()
-                    ui.item.find('a').removeClass('noclick')
+
+                    # HACK: setTimeout prevents that firefox click
+                    # event fires just after drag ends
+                    setTimeout ( =>
+                        ui.item.find('a').removeClass('noclick')
+                    ), 300
+
                     $scope.$emit("sprint:us:move", [itemUs], itemIndex, $scope.sprint.id)
+
+                $el.on "sortstart", (event, ui) ->
+                    ui.item.find('a').addClass('noclick')
 
     return {link:link}
 
