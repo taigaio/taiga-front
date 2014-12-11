@@ -475,7 +475,7 @@ AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationServic
         render = (selected, text) ->
             $el.find("input").focus()
 
-            users = _.clone($scope.users, true)
+            users = _.clone($scope.activeUsers, true)
             users = _.reject(users, {"id": selected.id}) if selected?
             users = _.filter(users, _.partial(filterUsers, text)) if text?
 
@@ -564,7 +564,7 @@ WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationS
                 text = text.toUpperCase()
                 return _.contains(username, text)
 
-            users = _.clone($scope.users, true)
+            users = _.clone($scope.activeUsers, true)
             users = _.filter(users, _.partial(_filterUsers, text))
             return users
 

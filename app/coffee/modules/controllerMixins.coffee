@@ -33,6 +33,10 @@ toString = @.taiga.toString
 
 class PageMixin
     fillUsersAndRoles: (users, roles) ->
+        activeUsers = _.filter(users, (user) => user.is_active)
+        @scope.activeUsers = _.sortBy(activeUsers, "full_name_display")
+        @scope.activeUsersById = groupBy(@scope.activeUsers, (e) -> e.id)
+
         @scope.users = _.sortBy(users, "full_name_display")
         @scope.usersById = groupBy(@scope.users, (e) -> e.id)
 

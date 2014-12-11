@@ -74,7 +74,7 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
     loadMembers: ->
         httpFilters = @.getUrlFilters()
         return @rs.memberships.list(@scope.projectId, httpFilters).then (data) =>
-            @scope.memberships = data.models
+            @scope.memberships = _.filter(data.models, (membership) -> membership.user == null or membership.is_user_active)
             @scope.page = data.current
             @scope.count = data.count
             @scope.paginatedBy = data.paginatedBy
