@@ -372,7 +372,7 @@ TaskboardSquishColumnDirective = (rs) ->
             if width
                 column.css('max-width', width)
             else
-                column.removeAttr("style")
+                column.css("max-width", 'none')
 
         refreshTaskboardTableWidth = () =>
             columnWidths = []
