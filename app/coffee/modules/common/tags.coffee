@@ -101,6 +101,7 @@ module.directive("tgColorizeTags", ColorizeTagsDirective)
 
 LbTagLineDirective = ($rs) ->
     ENTER_KEY = 13
+    COMMA_KEY = 188
 
     template = """
     <div class="tags-container"></div>
@@ -163,6 +164,10 @@ LbTagLineDirective = ($rs) ->
             resetInput()
             hideSaveButton()
 
+        removeInputLastCharacter = (input) =>
+            inputValue = input.val()
+            input.val inputValue.substring(0, inputValue.length - 1)
+
         ## Events
         $el.on "keypress", "input", (event) ->
             return if event.keyCode != ENTER_KEY
@@ -172,6 +177,9 @@ LbTagLineDirective = ($rs) ->
             target = angular.element(event.currentTarget)
 
             if event.keyCode == ENTER_KEY
+                saveInputTag()
+            else if event.keyCode == COMMA_KEY
+                removeInputLastCharacter(target)
                 saveInputTag()
             else
                 if target.val().length
@@ -231,6 +239,7 @@ module.directive("tgLbTagLine", ["$tgResources", LbTagLineDirective])
 TagLineDirective = ($rootScope, $repo, $rs, $confirm, $qqueue) ->
     ENTER_KEY = 13
     ESC_KEY = 27
+    COMMA_KEY = 188
 
     template = """
     <div class="tags-container"></div>
@@ -335,6 +344,10 @@ TagLineDirective = ($rootScope, $repo, $rs, $confirm, $qqueue) ->
             resetInput()
             hideSaveButton()
 
+        removeInputLastCharacter = (input) =>
+            inputValue = input.val()
+            input.val inputValue.substring(0, inputValue.length - 1)
+
         ## Events
         $el.on "keypress", "input", (event) ->
             return if event.keyCode not in [ENTER_KEY, ESC_KEY]
@@ -344,6 +357,9 @@ TagLineDirective = ($rootScope, $repo, $rs, $confirm, $qqueue) ->
             target = angular.element(event.currentTarget)
 
             if event.keyCode == ENTER_KEY
+                saveInputTag()
+            else if event.keyCode == COMMA_KEY
+                removeInputLastCharacter(target)
                 saveInputTag()
             else if event.keyCode == ESC_KEY
                 resetInput()
