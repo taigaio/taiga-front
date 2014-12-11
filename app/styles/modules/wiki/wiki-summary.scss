@@ -6,8 +6,14 @@
         vertical-align: sub;
         width: 32px;
     }
+    ul {
+        @include display(flex);
+        @include align-items(flex-start);
+        @include flex-direction(row);
+        @include justify-content(flex-start);
+    }
     .username-edition {
-        width: 240px;
+        min-width: 240px;
         span {
             display: block;
             float: none;
@@ -15,6 +21,7 @@
         .username {
             @extend %large;
             color: $fresh-taiga;
+            white-space: nowrap;
         }
     }
     .button {
