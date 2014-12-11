@@ -1,6 +1,6 @@
 # Changelog #
 
-## 1.4.0 Unknown (Unreleased)
+## 1.4.0 Abies veitchii (2014-12-10)
 
 ### Features
 - Gitlab integration:
@@ -8,8 +8,10 @@
 - Bitbucket integration:
   + Create Admin Panel with the Bitbucket webhooks settings.
 - Added team members section.
+  + Exit a project feature.
 - Taskboard enhancements: Collapse of columns (task statuses) and rows (user stories).
 - Use enter to submit lightboxes forms.
+- Improved concurrent edition to avoid double edition.
 
 ### Misc
 - Upgrade to AngularJS 1.3.
