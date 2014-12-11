@@ -257,7 +257,7 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
             })
 
             # Update texts for creation
-            $el.find(".button-green span").html("Create") #TODO: i18n
+            $el.find(".button-green").html("Create") #TODO: i18n
             $el.find(".title").html("New user story  ") #TODO: i18n
 
             $el.find(".blocked-note").addClass("hidden")
@@ -272,7 +272,7 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
             $scope.isNew = false
 
             # Update texts for edition
-            $el.find(".button-green span").html("Save") #TODO: i18n
+            $el.find(".button-green").html("Save") #TODO: i18n
             $el.find(".title").html("Edit user story  ") #TODO: i18n
 
             # Update requirement info (team, client or blocked)
