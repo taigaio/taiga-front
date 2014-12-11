@@ -51,7 +51,7 @@ exports.files = function () {
         'components/wysiwyg',
         'components/select-color',
         'components/loader',
-        'components/spinner',
+        'components/loading-bar',
         'components/help-notion-button',
         'components/beta',
         'components/markitup',

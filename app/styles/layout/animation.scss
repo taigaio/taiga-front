@@ -1,39 +1,3 @@
-// Rotating loader
-@include keyframes(spin) {
-    100% {
-        @include transform(rotate(360deg));
-    }
-}
-
-//Spinner
-@include keyframes(fadeIn) {
-    0% {
-        @include transform(translateX(1rem));
-        @include filter(blur(5px));
-        opacity: 0;
-    }
-    1.6% {
-        @include transform(translateX(.2rem));
-        @include filter(blur(0));
-        opacity: 1;
-    }
-    12% {
-        @include transform(translateX(-.2rem));
-        @include filter(blur(0));
-        opacity: 1;
-    }
-    16% {
-        @include transform(translateX(-1rem));
-        @include filter(blur(5px));
-        opacity: 0;
-    }
-    100% {
-        @include transform(translateX(-1rem));
-        @include filter(blur(5px));
-        opacity: 0;
-    }
-}
-
 //Loading
 @include keyframes(loading) {
     0% {
@@ -58,5 +22,18 @@
     100% {
         @include transform(translateY(0));
         opacity: 1;
+    }
+}
+
+//Bar loading
+@include keyframes(loadBar) {
+    0% {
+        @include flex(1);
+    }
+    10% {
+        @include flex(10);
+    }
+    20% {
+        @include flex(1);
     }
 }
