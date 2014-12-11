@@ -57,7 +57,7 @@ Loader = () ->
 
     defaultConfig = {
         enabled: false,
-        minTime: 1000
+        minTime: 300
     }
 
     config = _.merge({}, defaultConfig)

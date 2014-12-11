@@ -80,6 +80,7 @@ body {
 }
 
 .master {
+    background: $white;
     height: 100%;
     min-height: 100%;
     position: relative;
@@ -106,7 +107,7 @@ body {
             @include flex(1);
             @include transition(all .2s linear);
             padding: 2em 1em;
-            width: 260px;
+            width: 210px;
             .filters-inner {
                 @include transition (all .4s ease-in);
                 opacity: 1;
