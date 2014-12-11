@@ -544,7 +544,8 @@ EditableSubjectDirective = ($rootscope, $repo, $confirm, $loading, $qqueue) ->
                 subject = $scope.item.subject
                 save(subject)
             else if event.keyCode == 27
-                $model.$modelValue.revert()
+                $scope.$apply () => $model.$modelValue.revert()
+
                 $el.find('div.edit-subject').hide()
                 $el.find('div.view-subject').show()
 
@@ -649,9 +650,9 @@ EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading,
             description = $scope.item.description
             save(description)
 
-        $el.on "keyup", "textarea", (event) ->
+        $el.on "keydown", "textarea", (event) ->
             if event.keyCode == 27
-                $scope.item.revert()
+                $scope.$apply () => $scope.item.revert()
                 $el.find('.edit-description').hide()
                 $el.find('.view-description').show()
 
