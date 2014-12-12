@@ -143,6 +143,10 @@ body {
 
 .header-with-actions {
     @include display(flex);
+    @include align-content(stretch);
+    @include align-items(center);
+    @include flex-wrap(wrap);
+    @include justify-content(space-between);
     margin-bottom: 1rem;
     .action-buttons {
         @include flex-shrink(0);
