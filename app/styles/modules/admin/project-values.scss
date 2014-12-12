@@ -40,6 +40,12 @@
 }
 .project-values-value {
     @include table-flex-child(1, 0, 0);
+    .checksley-error-list {
+        left: 0;
+        top: 35px;
+        right: auto;
+        white-space: nowrap;
+    }
 }
 
 .project-values-isclosed,
