@@ -25,6 +25,7 @@ insert = require("gulp-insert")
 runSequence = require('run-sequence')
 lazypipe = require('lazypipe')
 rimraf = require('rimraf')
+imagemin = require('gulp-imagemin')
 
 mainSass = require("./main-sass").files
 
@@ -272,6 +273,7 @@ gulp.task "copy-fonts",  ->
 
 gulp.task "copy-images",  ->
     gulp.src("#{paths.app}/images/**/*")
+        .pipe(imagemin({progressive: true}))
         .pipe(gulp.dest("#{paths.dist}/images/"))
 
     gulp.src("#{paths.app}/plugins/**/images/*")
