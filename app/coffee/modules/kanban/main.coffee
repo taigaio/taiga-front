@@ -120,19 +120,6 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             console.log "FAIL" # TODO
 
     # Load data methods
-
-    loadProjectStats: ->
-        return @rs.projects.stats(@scope.projectId).then (stats) =>
-            @scope.stats = stats
-
-            if stats.total_points
-                completedPercentage = Math.round(100 * stats.closed_points / stats.total_points)
-            else
-                completedPercentage = 0
-
-            @scope.stats.completedPercentage = "#{completedPercentage}%"
-            return stats
-
     refreshTagsColors: ->
         return @rs.projects.tagsColors(@scope.projectId).then (tags_colors) =>
             @scope.project.tags_colors = tags_colors
@@ -157,7 +144,6 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
     loadKanban: ->
         return @q.all([
             @.refreshTagsColors(),
-            @.loadProjectStats(),
             @.loadUserstories()
         ])
 
