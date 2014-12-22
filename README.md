@@ -31,6 +31,7 @@ $ gulp
 
 And go in your browser to: http://localhost:9001/
 
+All the information about the different installation methods (production, development, vagrant, docker...) can be found here http://taigaio.github.io/taiga-doc/dist/#_installation_guide. 
 
 ## Community ##
 
