@@ -69,61 +69,43 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         promise.then null, @.onInitialDataError.bind(@)
 
     loadProject: ->
-        return @rs.projects.get(@scope.projectId).then (project) =>
+        return @rs.projects.getBySlug(@params.pslug).then (project) =>
             @scope.project = project
             @scope.$emit('project:loaded', project)
             @scope.membersById = groupBy(project.memberships, (x) -> x.user)
             return project
 
     loadWiki: ->
-        if @scope.wikiId
-            return @rs.wiki.get(@scope.wikiId).then (wiki) =>
-                @scope.wiki = wiki
-                return wiki
+        promise = @rs.wiki.getBySlug(@scope.projectId, @params.slug)
+        promise.then (wiki) =>
+            @scope.wiki = wiki
+            @scope.wikiId = wiki.id
+            return @scope.wiki
 
-        if @scope.project.my_permissions.indexOf("add_wiki_page") == -1
-            return null
+        promise.then null, (xhr) =>
+            @scope.wikiId = null
 
-        data = {
-            project: @scope.projectId
-            slug: @scope.wikiSlug
-            content: ""
-        }
-        @scope.wiki = @model.make_model("wiki", data)
-        return @scope.wiki
+            if @scope.project.my_permissions.indexOf("add_wiki_page") == -1
+                return null
+
+            data = {
+                project: @scope.projectId
+                slug: @scope.wikiSlug
+                content: ""
+            }
+            @scope.wiki = @model.make_model("wiki", data)
+            return @scope.wiki
 
     loadWikiLinks: ->
         return @rs.wiki.listLinks(@scope.projectId).then (wikiLinks) =>
             @scope.wikiLinks = wikiLinks
 
     loadInitialData: ->
-        params = {
-            pslug: @params.pslug
-            wikipage: @params.slug
-        }
-
-        # Resolve project slug
-        promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
-            @scope.projectId = data.project
-            return data
-
-        # Resolve wiki slug
-        # This should be done in two steps because is not same thing
-        # not found response for project and not found for wiki page
-        # and they should be hendled separately.
-        promise = promise.then =>
-            prom = @repo.resolve({wikipage: @params.slug, pslug: @params.pslug})
-
-            prom = prom.then (data) =>
-                @scope.wikiId = data.wikipage
-
-            return prom.then null, (xhr) =>
-                @scope.wikiId = null
-
-        return promise.then(=> @.loadProject())
-                      .then(=> @.loadUsersAndRoles())
-                      .then(=> @q.all([@.loadWikiLinks(),
-                                       @.loadWiki()]))
+        promise = @.loadProject()
+        return promise.then (project) =>
+            @scope.projectId = project.id
+            @.fillUsersAndRoles(project.users, project.roles)
+            @q.all([@.loadWikiLinks(), @.loadWiki()])
 
     delete: ->
         # TODO: i18n
