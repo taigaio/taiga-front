@@ -174,10 +174,10 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @scope.httpParams = @.getUrlFilters()
         @rs.userstories.storeQueryParams(@scope.projectId, @scope.httpParams)
 
-        promise = @.refreshTagsColors().then =>
-            return @rs.userstories.listUnassigned(@scope.projectId, @scope.httpParams)
+        promise = @q.all([@.refreshTagsColors(), @rs.userstories.listUnassigned(@scope.projectId, @scope.httpParams)])
 
-        return promise.then (userstories) =>
+        return promise.then (data) =>
+            userstories = data[1]
             # NOTE: Fix order of USs because the filter orderBy does not work propertly in the partials files
             @scope.userstories = _.sortBy(userstories, "backlog_order")
 
