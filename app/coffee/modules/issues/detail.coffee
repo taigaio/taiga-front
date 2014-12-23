@@ -91,7 +91,7 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
            @scope.onDeleteGoToUrl = @navUrls.resolve("project", ctx)
 
     loadProject: ->
-        return @rs.projects.get(@scope.projectId).then (project) =>
+        return @rs.projects.getBySlug(@params.pslug).then (project) =>
             @scope.project = project
             @scope.$emit('project:loaded', project)
             @scope.statusList = project.issue_statuses
@@ -106,8 +106,9 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             return project
 
     loadIssue: ->
-        return @rs.issues.get(@scope.projectId, @scope.issueId).then (issue) =>
+        return @rs.issues.getByRef(@scope.projectId, @params.issueref).then (issue) =>
             @scope.issue = issue
+            @scope.issueId = issue.id
             @scope.commentModel = issue
 
             if @scope.issue.neighbors.previous.ref?
@@ -125,19 +126,12 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
                 @scope.nextUrl = @navUrls.resolve("project-issues-detail", ctx)
 
     loadInitialData: ->
-        params = {
-            pslug: @params.pslug
-            issueref: @params.issueref
-        }
+        promise = @.loadProject()
+        return promise.then (project) =>
+            @scope.projectId = project.id
+            @.fillUsersAndRoles(project.users, project.roles)
+            @.loadIssue()
 
-        promise = @repo.resolve(params).then (data) =>
-            @scope.projectId = data.project
-            @scope.issueId = data.issue
-            return data
-
-        return promise.then(=> @.loadProject())
-                      .then(=> @.loadUsersAndRoles())
-                      .then(=> @.loadIssue())
 
 module.controller("IssueDetailController", IssueDetailController)
 
