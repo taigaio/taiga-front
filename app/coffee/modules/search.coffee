@@ -74,7 +74,7 @@ class SearchController extends mixOf(taiga.Controller, taiga.PageMixin)
         return defered.promise
 
     loadProject: ->
-        return @rs.projects.get(@scope.projectId).then (project) =>
+        return @rs.projects.getBySlug(@params.pslug).then (project) =>
             @scope.project = project
             @scope.$emit('project:loaded', project)
             @scope.issueStatusById = groupBy(project.issue_statuses, (x) -> x.id)
@@ -94,12 +94,9 @@ class SearchController extends mixOf(taiga.Controller, taiga.PageMixin)
         return promise
 
     loadInitialData: ->
-        promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
-            @scope.projectId = data.project
-            return data
-
-        return promise.then(=> @.loadProject())
-                      .then(=> @.loadUsersAndRoles())
+        return @.loadProject().then (project) =>
+            @scope.projectId = project.id
+            @.fillUsersAndRoles(project.users, project.roles)
 
 module.controller("SearchController", SearchController)
 

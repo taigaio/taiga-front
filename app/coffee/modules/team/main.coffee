@@ -88,7 +88,7 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
             return data
 
     loadProject: ->
-        return @rs.projects.get(@scope.projectId).then (project) =>
+        return @rs.projects.getBySlug(@params.pslug).then (project) =>
             @scope.project = project
             @scope.$emit('project:loaded', project)
 
@@ -127,14 +127,11 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
         return stats
 
     loadInitialData: ->
-        promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
-            @scope.projectId = data.project
-            return data
-
-        return promise.then(=> @.loadProject())
-                      .then(=> @.loadUsersAndRoles())
-                      .then(=> @.loadMembers())
-                      .then(=> @.loadMemberStats())
+        promise = @.loadProject()
+        return promise.then (project) =>
+            @scope.projectId = project.id
+            @.fillUsersAndRoles(project.users, project.roles)
+            return @.loadMembers().then(=> @.loadMemberStats())
 
 module.controller("TeamController", TeamController)
 
