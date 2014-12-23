@@ -87,7 +87,7 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
                 @scope.onDeleteGoToUrl = @navUrls.resolve("project-userstories-detail", ctx)
 
     loadProject: ->
-        return @rs.projects.getBySlug(@params.pslug).then (project) =>
+        return @rs.projects.get(@scope.projectId).then (project) =>
             @scope.project = project
             @scope.$emit('project:loaded', project)
             @scope.statusList = project.task_statuses
@@ -96,9 +96,8 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             return project
 
     loadTask: ->
-        return @rs.tasks.getByRef(@scope.projectId, @params.taskref).then (task) =>
+        return @rs.tasks.get(@scope.projectId, @scope.taskId).then (task) =>
             @scope.task = task
-            @scope.taskId = task.id
             @scope.commentModel = task
 
             if @scope.task.neighbors.previous.ref?
@@ -129,7 +128,6 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
                 return us
 
     loadInitialData: ->
-        ###
         params = {
             pslug: @params.pslug
             taskref: @params.taskref
@@ -144,12 +142,6 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
                       .then(=> @.loadUsersAndRoles())
                       .then(=> @.loadTask().then(=> @q.all([@.loadUserStory(),
                                                             @.loadSprint()])))
-        ###
-        promise = @.loadProject()
-        return promise.then (project) =>
-            @scope.projectId = project.id
-            @.fillUsersAndRoles(project.users, project.roles)
-            @.loadTask().then(=> @q.all([@.loadSprint(), @.loadUserStory()]))
 
 module.controller("TaskDetailController", TaskDetailController)
 

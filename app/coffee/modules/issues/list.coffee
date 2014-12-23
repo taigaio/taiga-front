@@ -91,7 +91,7 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         @rs.issues.storeFilters(@params.pslug, @location.search())
 
     loadProject: ->
-        return @rs.projects.getBySlug(@params.pslug).then (project) =>
+        return @rs.projects.get(@scope.projectId).then (project) =>
             @scope.project = project
             @scope.$emit('project:loaded', project)
 
@@ -268,12 +268,15 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             return data
 
     loadInitialData: ->
-        promise = @.loadProject()
-        return promise.then (project) =>
-            @scope.projectId = project.id
-            @.fillUsersAndRoles(project.users, project.roles)
+        promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
+            @scope.projectId = data.project
             @.initializeSubscription()
-            return @q.all([@.loadFilters(), @.loadIssues()])
+            return data
+
+        return promise.then(=> @.loadProject())
+                      .then(=> @.loadUsersAndRoles())
+                      .then(=> @q.all([@.loadFilters(),
+                                       @.loadIssues()]))
 
     saveCurrentFiltersTo: (newFilter) ->
         deferred = @q.defer()

@@ -200,7 +200,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         ])
 
     loadProject: ->
-        return @rs.projects.getBySlug(@params.pslug).then (project) =>
+        return @rs.projects.get(@scope.projectId).then (project) =>
             @scope.project = project
             @scope.$emit('project:loaded', project)
             @scope.points = _.sortBy(project.points, "order")
@@ -210,13 +210,15 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             return project
 
     loadInitialData: ->
-        promise = @.loadProject()
-        promise.then (project) =>
-            @scope.projectId = project.id
-            @.fillUsersAndRoles(project.users, project.roles)
+        # Resolve project slug
+        promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
+            @scope.projectId = data.project
             @.initializeSubscription()
+            return data
 
-        return promise.then(=> @.loadBacklog())
+        return promise.then(=> @.loadProject())
+                      .then(=> @.loadUsersAndRoles())
+                      .then(=> @.loadBacklog())
 
     filterVisibleUserstories: ->
         @scope.visibleUserstories = []

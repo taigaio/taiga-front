@@ -148,7 +148,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         ])
 
     loadProject: ->
-        return @rs.projects.getBySlug(@params.pslug).then (project) =>
+        return @rs.projects.get(@scope.projectId).then (project) =>
             @scope.project = project
             @scope.points = _.sortBy(project.points, "order")
             @scope.pointsById = groupBy(project.points, (x) -> x.id)
@@ -166,13 +166,16 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @.loadUserstories()
 
     loadInitialData: ->
-        promise = @.loadProject()
-        return promise.then (project) =>
-            @scope.projectId = project.id
-            @.fillUsersAndRoles(project.users, project.roles)
+        # Resolve project slug
+        promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
+            @scope.projectId = data.project
             @.initializeSubscription()
-            @.loadKanban().then( => @scope.$broadcast("redraw:wip"))
+            return data
 
+        return promise.then(=> @.loadProject())
+                      .then(=> @.loadUsersAndRoles())
+                      .then(=> @.loadKanban())
+                      .then(=> @scope.$broadcast("redraw:wip"))
 
     ## View Mode methods
 

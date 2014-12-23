@@ -32,15 +32,6 @@ toString = @.taiga.toString
 #############################################################################
 
 class PageMixin
-    fillUsersAndRoles: (users, roles) ->
-        @scope.users = _.sortBy(users, "full_name_display")
-        @scope.usersById = groupBy(@scope.users, (e) -> e.id)
-
-        @scope.roles = _.sortBy(roles, "order")
-        availableRoles = _(@scope.project.memberships).map("role").uniq().value()
-        @scope.computableRoles = _(roles).filter("computable")
-                                         .filter((x) -> _.contains(availableRoles, x.id))
-                                         .value()
     loadUsersAndRoles: ->
         promise = @q.all([
             @rs.projects.usersList(@scope.projectId),
@@ -49,7 +40,16 @@ class PageMixin
 
         return promise.then (results) =>
             [users, roles] = results
-            @.fillUsersAndRoles(users, roles)
+
+            @scope.users = _.sortBy(users, "full_name_display")
+            @scope.usersById = groupBy(@scope.users, (e) -> e.id)
+
+            @scope.roles = _.sortBy(roles, "order")
+            availableRoles = _(@scope.project.memberships).map("role").uniq().value()
+            @scope.computableRoles = _(roles).filter("computable")
+                                             .filter((x) -> _.contains(availableRoles, x.id))
+                                             .value()
+
             return results
 
 taiga.PageMixin = PageMixin

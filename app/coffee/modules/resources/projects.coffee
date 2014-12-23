@@ -28,9 +28,6 @@ resourceProvider = ($repo, $http, $urls) ->
     service.get = (id) ->
         return $repo.queryOne("projects", id)
 
-    service.getBySlug = (slug) ->
-        return $repo.queryOneRaw("projects", "by_slug?slug=#{slug}")
-
     service.list = ->
         return $repo.queryMany("projects")
 
