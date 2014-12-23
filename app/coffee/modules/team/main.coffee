@@ -78,7 +78,7 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
                 @scope.totals[membership.user] = 0
 
             @scope.memberships = _.filter data, (membership) =>
-                if membership.user && membership.user != currentUser.id
+                if membership.user && membership.user != currentUser.id && membership.is_user_active
                     return membership
 
             for membership in @scope.memberships
