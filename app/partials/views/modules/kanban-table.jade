@@ -17,7 +17,7 @@ div.kanban-table(tg-kanban-squish-column)
                                          ng-class="{hidden:statusViewModes[s.id] == 'maximized'}",
                                          ng-click="ctrl.updateStatusViewMode(s.id, 'maximized')")
 
-                    a.icon.icon-plus(href="", title="Add New task",
+                    a.icon.icon-plus(href="", title="Add New User Story",
                                      ng-click="ctrl.addNewUs('standard', s.id)",
                                      tg-check-permission="add_us")
 
