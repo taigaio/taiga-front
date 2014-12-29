@@ -158,3 +158,33 @@ BacklogSprintHeaderDirective = ($navUrls) ->
     }
 
 module.directive("tgBacklogSprintHeader", ["$tgNavUrls", "$tgRepo", "$rootScope", BacklogSprintHeaderDirective])
+
+#############################################################################
+## Toggle Closed Sprints Directive
+#############################################################################
+
+ToggleExcludeClosedSprintsVisualization = ($rootscope, $loading) ->
+    excludeClosedSprints = false
+
+    link = ($scope, $el, $attrs) ->
+        # Event Handlers
+        $el.on "click", "", (event) ->
+            $loading.start($el)
+            $rootscope.$broadcast("backlog:toggle-closed-sprints-visualization")
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+        $scope.$on "sprints:loaded", (ctx, sprints) =>
+            closedSprints = _.filter(sprints, (sprint) -> sprint.closed)
+            $loading.finish($el)
+            
+            #TODO: i18n
+            if closedSprints.length > 0
+                $el.text("Hide closed sprints")
+            else
+                $el.text("Show closed sprints")
+
+    return {link: link}
+
+module.directive("tgBacklogToggleClosedSprintsVisualization", ["$rootScope", "$tgLoading", ToggleExcludeClosedSprintsVisualization])

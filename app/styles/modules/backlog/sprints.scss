@@ -15,6 +15,12 @@
             padding: .5rem 1.5rem;
         }
     }
+    .filter-closed-sprints {
+        font-family: 'OpenSans-CondLight', Arial, Helvetica, sans-serif;
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        margin-top: 2rem;
+    }
     .sprint-name {
         a {
             @extend %large;

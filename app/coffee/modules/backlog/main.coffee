@@ -59,6 +59,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @scope.sectionName = "Backlog"
         @showTags = false
         @activeFilters = false
+        @excludeClosedSprints = true
 
         @.initializeEventHandlers()
 
@@ -109,6 +110,8 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @scope.$on("sprint:us:moved", @.loadSprints)
         @scope.$on("sprint:us:moved", @.loadProjectStats)
 
+        @scope.$on("backlog:toggle-closed-sprints-visualization", @.toggleClosedSprintsVisualization)
+
     initializeSubscription: ->
         routingKey1 = "changes.project.#{@scope.projectId}.userstories"
         @events.subscribe @scope, routingKey1, (message) =>
@@ -143,12 +146,18 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             @scope.project.tags_colors = tags_colors
 
     loadSprints: ->
-        return @rs.sprints.list(@scope.projectId).then (sprints) =>
+        params = {}
+        if @excludeClosedSprints
+            params["closed"] = false
+
+        return @rs.sprints.list(@scope.projectId, params).then (sprints) =>
             # NOTE: Fix order of USs because the filter orderBy does not work propertly in partials files
             for sprint in sprints
                 sprint.user_stories = _.sortBy(sprint.user_stories, "sprint_order")
 
             @scope.sprints = sprints
+            @scope.openSprints = _.filter(sprints, (sprint) => not sprint.closed)
+            @scope.closedSprints =  _.filter(sprints, (sprint) => sprint.closed)
             @scope.sprintsCounter = sprints.length
             @scope.sprintsById = groupBy(sprints, (x) -> x.id)
             @rootscope.$broadcast("sprints:loaded", sprints)
@@ -217,6 +226,10 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             @.initializeSubscription()
 
         return promise.then(=> @.loadBacklog())
+
+    toggleClosedSprintsVisualization: ->
+        @excludeClosedSprints = not @excludeClosedSprints
+        @.loadSprints()
 
     filterVisibleUserstories: ->
         @scope.visibleUserstories = []
