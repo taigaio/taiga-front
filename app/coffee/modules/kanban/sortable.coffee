@@ -73,7 +73,7 @@ KanbanSortableDirective = ($repo, $rs, $rootscope) ->
                     deleteElement(itemEl)
 
                 $scope.$apply ->
-                    $rootscope.$broadcast("kanban:us:move", itemUs, newStatusId, itemIndex)
+                    $rootscope.$broadcast("kanban:us:move", itemUs, itemUs.status, newStatusId, itemIndex)
 
                 ui.item.find('a').removeClass('noclick')
 
