@@ -136,6 +136,7 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame) ->
             $scope.newValue = {
                 "name": ""
                 "is_closed": false
+                "is_archived": false
             }
 
         initializeNewValue()

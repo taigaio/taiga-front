@@ -5,6 +5,7 @@ section.colors-table
             div.status-name Name
             div.status-slug Slug
             div.is-closed-column Is closed?
+            div.is-archived-column Is archived?
             div.status-wip-limit WIP Limit
             div.options-column
 
@@ -26,6 +27,9 @@ section.colors-table
                     div.is-closed-column
                         div.icon.icon-check-square(ng-show="value.is_closed")
 
+                    div.is-archived-column
+                        div.icon.icon-check-square(ng-show="value.is_archived")
+
                     div.status-wip-limit
                         span {{ value.wip_limit }}
 
@@ -45,6 +49,11 @@ section.colors-table
                     div.is-closed-column
                         select(name="is_closed", ng-model="value.is_closed", data-required="true",
                                ng-options="e.id as e.name for e in [{'id':true, 'name':'Yes'},{'id':false, 'name': 'No'}]")
+
+                    div.is-archived-column
+                        select(name="is_archived", ng-model="value.is_archived", data-required="true",
+                               ng-options="e.id as e.name for e in [{'id':true, 'name':'Yes'},{'id':false, 'name': 'No'}]")
+
                     div.status-wip-limit
                         input(name="wip_limit", type="number", placeholder="WIP Limit",
                             ng-model="value.wip_limit", data-type="digits")
@@ -65,6 +74,10 @@ section.colors-table
 
                 div.is-closed-column
                     select(name="is_closed", ng-model="newValue.is_closed", data-required="true",
+                           ng-options="e.id as e.name for e in [{'id':true, 'name':'Yes'},{'id':false, 'name': 'No'}]")
+
+                div.is-archived-column
+                    select(name="is_archived", ng-model="newValue.is_archived", data-required="true",
                            ng-options="e.id as e.name for e in [{'id':true, 'name':'Yes'},{'id':false, 'name': 'No'}]")
 
                 div.status-wip-limit
