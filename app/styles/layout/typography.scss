@@ -126,144 +126,150 @@ a:visited {
     text-transform: none !important;
 }
 
-.icon-backlog:before {
+.icon-bug:before {
     content: 'a';
 }
-.icon-issues:before {
+.icon-copy:before {
     content: 'b';
 }
-.icon-kanban:before {
+.icon-minimize:before {
     content: 'c';
 }
-.icon-search:before {
+.icon-maximize:before {
     content: 'd';
 }
-.icon-wiki:before {
+.icon-comment:before {
     content: 'e';
 }
-.icon-settings:before {
+.icon-plus:before {
     content: 'f';
 }
-.icon-move:before {
+.icon-attachments:before {
     content: 'g';
 }
-.icon-filter:before {
+.icon-edit:before {
     content: 'h';
 }
-.icon-arrow-up:before {
+.icon-documents:before {
     content: 'i';
 }
-.icon-arrow-right:before {
+.icon-delete:before {
     content: 'j';
 }
-.icon-arrow-left:before {
+.icon-arrow-bottom:before {
     content: 'k';
 }
-.icon-arrow-bottom:before {
+.icon-arrow-left:before {
     content: 'l';
 }
-.icon-edit:before {
+.icon-arrow-right:before {
     content: 'm';
 }
-.icon-delete:before {
+.icon-arrow-up:before {
     content: 'n';
 }
-.icon-iocaine:before {
+.icon-briefcase:before {
     content: 'o';
 }
-.icon-drag-h:before {
+.icon-caret-down:before {
     content: 'p';
 }
-.icon-drag-v:before {
+.icon-caret-up:before {
     content: 'q';
 }
-.icon-document:before {
+.icon-check-square:before {
     content: 'r';
 }
-.icon-plus:before {
+.icon-notification-error:before {
     content: 's';
 }
-.icon-reload:before {
+.icon-settings:before {
     content: 't';
 }
-.icon-warning:before {
+.icon-document:before {
     content: 'u';
 }
-.icon-notification-error:before {
+.icon-warning:before {
     content: 'v';
 }
-.icon-github:before {
+.icon-move:before {
     content: 'w';
 }
-.icon-check-square:before {
+.icon-drag-h:before {
     content: 'x';
 }
-.icon-warning-alt:before {
+.icon-drag-v:before {
     content: 'y';
 }
-.icon-floppy:before {
+.icon-filter:before {
     content: 'z';
 }
-.icon-comment:before {
+.icon-github:before {
     content: 'A';
 }
-.icon-documents:before {
+.icon-help:before {
     content: 'B';
 }
-.icon-attachments:before {
+.icon-reload:before {
     content: 'C';
 }
-.icon-caret-up:before {
+.icon-writer:before {
     content: 'D';
 }
-.icon-caret-down:before {
+.icon-stats:before {
     content: 'E';
 }
-.icon-bulk:before {
+.icon-floppy:before {
     content: 'F';
 }
 .icon-idea:before {
     content: 'G';
 }
-.icon-spinner:before {
+.icon-warning-alt:before {
     content: 'H';
 }
-.icon-minimize:before {
+.icon-video:before {
     content: 'I';
 }
-.icon-maximize:before {
-    content: 'J';
-}
-.icon-stats:before {
+.icon-bulk:before {
     content: 'K';
 }
-.icon-copy:before {
+.icon-vunfold:before {
+    content: 'M';
+}
+.icon-tasks:before {
+    content: 'O';
+}
+.icon-kanban:before {
+    content: 'P';
+}
+.icon-search:before {
+    content: 'Q';
+}
+.icon-wiki:before {
     content: 'L';
 }
 .icon-team:before {
-    content: 'M';
+    content: 'T';
 }
-.icon-vfold:before {
+.icon-spinner:before {
+    content: 'J';
+}
+.icon-fold:before {
     content: 'N';
 }
-.icon-vunfold:before {
-    content: 'O';
-}
-.icon-video:before {
-    content: 'P';
-}
-.icon-help:before {
+.icon-issues:before {
     content: 'U';
 }
-.icon-bug:before {
-    content: 'Q';
-}
-.icon-briefcase:before {
+.icon-backlog:before {
     content: 'R';
 }
-.icon-writer:before {
+.icon-iocaine:before {
     content: 'S';
 }
-.icon-tasks:before {
-    content: 'T';
+.icon-closed-eye:before {
+    content: 'V';
+}
+.icon-open-eye:before {
+    content: 'W';
 }
