@@ -148,6 +148,7 @@ EditRoleDirective = ($repo, $confirm) ->
         $el.on "click", "a.icon-edit", ->
             toggleView()
             $el.find("input").focus()
+            $el.find("input").val($scope.role.name)
 
         $el.on "click", "a.save", submit
 
