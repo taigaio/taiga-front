@@ -88,6 +88,7 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     loadProject: ->
         return @rs.projects.getBySlug(@params.pslug).then (project) =>
+            @scope.projectId = project.id
             @scope.project = project
             @scope.$emit('project:loaded', project)
             @scope.statusList = project.task_statuses
@@ -129,25 +130,8 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
                 return us
 
     loadInitialData: ->
-        ###
-        params = {
-            pslug: @params.pslug
-            taskref: @params.taskref
-        }
-
-        promise = @repo.resolve(params).then (data) =>
-            @scope.projectId = data.project
-            @scope.taskId = data.task
-            return data
-
-        return promise.then(=> @.loadProject())
-                      .then(=> @.loadUsersAndRoles())
-                      .then(=> @.loadTask().then(=> @q.all([@.loadUserStory(),
-                                                            @.loadSprint()])))
-        ###
         promise = @.loadProject()
         return promise.then (project) =>
-            @scope.projectId = project.id
             @.fillUsersAndRoles(project.users, project.roles)
             @.loadTask().then(=> @q.all([@.loadSprint(), @.loadUserStory()]))
 

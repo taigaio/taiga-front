@@ -149,6 +149,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
     loadProject: ->
         return @rs.projects.getBySlug(@params.pslug).then (project) =>
+            @scope.projectId = project.id
             @scope.project = project
             @scope.points = _.sortBy(project.points, "order")
             @scope.pointsById = groupBy(project.points, (x) -> x.id)
@@ -168,7 +169,6 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
     loadInitialData: ->
         promise = @.loadProject()
         return promise.then (project) =>
-            @scope.projectId = project.id
             @.fillUsersAndRoles(project.users, project.roles)
             @.initializeSubscription()
             @.loadKanban().then( => @scope.$broadcast("redraw:wip"))
