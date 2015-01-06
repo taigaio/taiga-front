@@ -94,6 +94,7 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     loadProject: ->
         return @rs.projects.getBySlug(@params.pslug).then (project) =>
+            @scope.projectId = project.id
             @scope.project = project
             @scope.$emit('project:loaded', project)
             @scope.statusList = project.us_statuses
@@ -140,7 +141,6 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
     loadInitialData: ->
         promise = @.loadProject()
         return promise.then (project) =>
-            @scope.projectId = project.id
             @.fillUsersAndRoles(project.users, project.roles)
             @.loadUs().then(=> @q.all([@.loadSprint(), @.loadTasks()]))
 
