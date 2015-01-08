@@ -6,9 +6,9 @@ div.kanban-task-inner
         span.task-num(tg-bo-ref="us.ref")
         a.task-name(href="", title="See user story detail", ng-bind="us.subject",
                     tg-nav="project-userstories-detail:project=project.slug,ref=us.ref")
-        a.task-points(href="", title="Total Us points")
-            span(ng-bind="us.total_points", ng-if="us.total_points !== null")
-            span(ng-if="us.total_points === null") --
-            span points
+        p.task-points(href="", title="Total Us points")
+            span(ng-if="us.total_points !== null", ng-bind="us.total_points")
+            span(ng-if="us.total_points !== null") points
+            span(ng-if="us.total_points === null") Not estimated
     a.icon.icon-edit(tg-check-permission="modify_us", href="", title="Edit")
     a.icon.icon-drag-h(tg-check-permission="modify_us", href="", title="Drag&Drop")

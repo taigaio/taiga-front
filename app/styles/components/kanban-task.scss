@@ -117,8 +117,6 @@
     .task-points {
         @extend %small;
         color: darken($postit-hover, 15%);
-        cursor: move;
-        display: block;
         margin: 0;
         span {
             display: inline-block;
