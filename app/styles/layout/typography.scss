@@ -255,7 +255,7 @@ a:visited {
 .icon-spinner:before {
     content: 'J';
 }
-.icon-vfold:before {
+.icon-fold:before {
     content: 'N';
 }
 .icon-issues:before {
@@ -272,4 +272,7 @@ a:visited {
 }
 .icon-open-eye:before {
     content: 'W';
+}
+.icon-archive:before {
+    content: 'X';
 }
