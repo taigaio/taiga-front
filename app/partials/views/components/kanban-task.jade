@@ -7,7 +7,8 @@ div.kanban-task-inner
         a.task-name(href="", title="See user story detail", ng-bind="us.subject",
                     tg-nav="project-userstories-detail:project=project.slug,ref=us.ref")
         a.task-points(href="", title="Total Us points")
-            span(ng-bind="us.total_points") --
+            span(ng-bind="us.total_points", ng-if="us.total_points !== null")
+            span(ng-if="us.total_points === null") --
             span points
     a.icon.icon-edit(tg-check-permission="modify_us", href="", title="Edit")
     a.icon.icon-drag-h(tg-check-permission="modify_us", href="", title="Drag&Drop")
