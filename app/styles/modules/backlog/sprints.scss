@@ -16,10 +16,19 @@
         }
     }
     .filter-closed-sprints {
-        font-family: 'OpenSans-CondLight', Arial, Helvetica, sans-serif;
-        font-size: 1.2rem;
-        margin-bottom: 2rem;
-        margin-top: 2rem;
+        @extend %small;
+        display: block;
+        padding-bottom: 1rem;
+        text-align: center;
+        .icon-kanban {
+            margin-right: .3rem;
+            vertical-align: middle;
+        }
+        .load {
+            display: inline-block;
+            margin-left: .3rem;
+            vertical-align: middle;
+        }
     }
     .sprint-name {
         a {

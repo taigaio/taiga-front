@@ -169,7 +169,7 @@ ToggleExcludeClosedSprintsVisualization = ($rootscope, $loading) ->
     link = ($scope, $el, $attrs) ->
         # Event Handlers
         $el.on "click", "", (event) ->
-            $loading.start($el)
+            $loading.start($el.siblings('.load'))
             $rootscope.$broadcast("backlog:toggle-closed-sprints-visualization")
 
         $scope.$on "$destroy", ->
@@ -177,8 +177,8 @@ ToggleExcludeClosedSprintsVisualization = ($rootscope, $loading) ->
 
         $scope.$on "sprints:loaded", (ctx, sprints) =>
             closedSprints = _.filter(sprints, (sprint) -> sprint.closed)
-            $loading.finish($el)
-            
+            $loading.finish($el.siblings('.load'))
+
             #TODO: i18n
             if closedSprints.length > 0
                 $el.text("Hide closed sprints")
