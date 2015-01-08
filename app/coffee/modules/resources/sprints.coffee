@@ -38,8 +38,9 @@ resourceProvider = ($repo, $model, $storage) ->
     service.stats = (projectId, sprintId) ->
         return $repo.queryOneRaw("milestones", "#{sprintId}/stats")
 
-    service.list = (projectId) ->
+    service.list = (projectId, filters) ->
         params = {"project": projectId}
+        params = _.extend({}, params, filters or {})
         return $repo.queryMany("milestones", params).then (milestones) =>
             for m in milestones
                 uses = m.user_stories
