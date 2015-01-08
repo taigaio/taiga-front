@@ -15,7 +15,7 @@ section.sprints
     section.sprint(ng-repeat="sprint in openSprints track by sprint.id" tg-backlog-sprint="sprint")
         include sprint
 
-    div(class="filter-closed-sprints", ng-show="openSprints.length > 1")
+    div(class="filter-closed-sprints", ng-show="project.total_closed_milestones")
         a(href="", tg-backlog-toggle-closed-sprints-visualization="ctrl.excludeClosedSprints") Show closed sprints
 
     section.sprint(ng-repeat="sprint in closedSprints track by sprint.id" tg-backlog-sprint="sprint")
