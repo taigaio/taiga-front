@@ -179,7 +179,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
 
     $provide.factory("authHttpIntercept", ["$q", "$location", "$tgNavUrls", "lightboxService", authHttpIntercept])
 
-    $httpProvider.interceptors.push('authHttpIntercept');
+    $httpProvider.interceptors.push('authHttpIntercept')
 
     # If there is an error in the version throw a notify error
     versionCheckHttpIntercept = ($q, $confirm) ->
