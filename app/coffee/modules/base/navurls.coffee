@@ -105,21 +105,21 @@ NavigationUrlsDirective = ($navurls, $auth, $q, $location) ->
                     if target.is("a")
                         target.attr("href", fullUrl)
 
-        $el.on "click", (event) ->
-            event.preventDefault()
-            target = $(event.currentTarget)
+                    $el.on "click", (event) ->
+                        event.preventDefault()
+                        target = $(event.currentTarget)
 
-            if target.hasClass('noclick')
-                return
+                        if target.hasClass('noclick')
+                            return
 
-            fullUrl = target.data("fullUrl")
+                        fullUrl = target.data("fullUrl")
 
-            switch event.which
-                when 1
-                    $location.url(fullUrl)
-                    $scope.$apply()
-                when 2
-                    window.open fullUrl
+                        switch event.which
+                            when 1
+                                $location.url(fullUrl)
+                                $scope.$apply()
+                            when 2
+                                window.open fullUrl
 
         $scope.$on "$destroy", ->
             $el.off()
