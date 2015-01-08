@@ -60,10 +60,10 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         promise.then =>
             @appTitle.set(@scope.us.subject + " - " + @scope.project.name)
             @.initializeOnDeleteGoToUrl()
-            tgLoader.pageLoaded()
 
         # On Error
         promise.then null, @.onInitialDataError.bind(@)
+        promise.finally tgLoader.pageLoaded
 
     initializeEventHandlers: ->
         @scope.$on "related-tasks:update", =>

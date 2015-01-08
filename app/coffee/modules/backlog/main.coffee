@@ -74,10 +74,11 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
                 @scope.$broadcast("showTags", @showTags)
 
-            tgLoader.pageLoaded()
-
         # On Error
         promise.then null, @.onInitialDataError.bind(@)
+
+        # Finally
+        promise.finally tgLoader.pageLoaded
 
     initializeEventHandlers: ->
         @scope.$on "usform:bulk:success", =>

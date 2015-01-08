@@ -58,9 +58,10 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         promise.then () =>
             @appTitle.set(@scope.task.subject + " - " + @scope.project.name)
             @.initializeOnDeleteGoToUrl()
-            tgLoader.pageLoaded()
 
         promise.then null, @.onInitialDataError.bind(@)
+
+        promise.finally tgLoader.pageLoaded
 
     initializeEventHandlers: ->
         @scope.$on "attachment:create", =>
