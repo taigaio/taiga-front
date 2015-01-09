@@ -64,10 +64,12 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
         # On Success
         promise.then =>
             @appTitle.set("Taskboard - " + @scope.project.name)
-            tgLoader.pageLoaded()
 
         # On Error
         promise.then null, @.onInitialDataError.bind(@)
+
+        # Finally
+        promise.finally tgLoader.pageLoaded
 
     initializeEventHandlers: ->
         # TODO: Reload entire taskboard after create/edit tasks seems

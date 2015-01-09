@@ -53,10 +53,12 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
         promise.then =>
             #TODO: i18n
             @appTitle.set("Team - " + @scope.project.name)
-            tgLoader.pageLoaded()
 
         # On Error
         promise.then null, @.onInitialDataError.bind(@)
+
+        # Finally
+        promise.finally tgLoader.pageLoaded
 
     setRole: (role) ->
         if role

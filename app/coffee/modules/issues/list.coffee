@@ -71,10 +71,12 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         # On Success
         promise.then =>
             @appTitle.set("Issues - " + @scope.project.name)
-            tgLoader.pageLoaded()
 
         # On Error
         promise.then null, @.onInitialDataError.bind(@)
+
+        # Finally
+        promise.finally tgLoader.pageLoaded
 
         @scope.$on "issueform:new:success", =>
             @analytics.trackEvent("issue", "create", "create issue on issues list", 1)

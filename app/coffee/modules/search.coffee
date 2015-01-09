@@ -88,8 +88,10 @@ class SearchController extends mixOf(taiga.Controller, taiga.PageMixin)
     loadSearchData: (term) ->
         promise = @rs.search.do(@scope.projectId, term).then (data) =>
             @scope.searchResults = data
-            @tgLoader.pageLoaded()
             return data
+
+        promise.finally =>
+            @tgLoader.pageLoaded()
 
         return promise
 

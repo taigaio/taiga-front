@@ -78,10 +78,12 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         # On Success
         promise.then =>
             @appTitle.set("Kanban - " + @scope.project.name)
-            tgLoader.pageLoaded()
 
         # On Error
         promise.then null, @.onInitialDataError.bind(@)
+
+        # Finally
+        promise.finally tgLoader.pageLoaded
 
     initializeEventHandlers: ->
         @scope.$on "usform:new:success", =>

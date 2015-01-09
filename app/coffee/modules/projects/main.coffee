@@ -38,7 +38,7 @@ class ProjectsController extends taiga.Controller
     ]
 
     constructor: (@scope, @q, @rs, @rootscope, @navUrls, @auth, @location, @appTitle, @projectUrl,
-                  @tgLoader) ->
+                  tgLoader) ->
         @appTitle.set("Projects")
 
         if !@auth.isAuthenticated()
@@ -51,9 +51,11 @@ class ProjectsController extends taiga.Controller
 
         promise.then () =>
             @scope.$emit("projects:loaded")
-            @tgLoader.pageLoaded()
 
         promise.then null, @.onInitialDataError.bind(@)
+
+        # Finally
+        promise.finally tgLoader.pageLoaded
 
     loadInitialData: ->
         return @rs.projects.list().then (projects) =>

@@ -63,10 +63,10 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         # On Success
         promise.then () =>
             @appTitle.set("Wiki - " + @scope.project.name)
-            tgLoader.pageLoaded()
 
         # On Error
         promise.then null, @.onInitialDataError.bind(@)
+        promise.finally tgLoader.pageLoaded
 
     loadProject: ->
         return @rs.projects.getBySlug(@params.pslug).then (project) =>
