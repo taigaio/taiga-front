@@ -50,7 +50,7 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
                   @log, @appTitle, @navUrls, @analytics, tgLoader) ->
-        @scope.issueRef = @params.issueref
+        @scope.usRef = @params.usref
         @scope.sectionName = "User Story Details"
         @.initializeEventHandlers()
 
