@@ -23,8 +23,8 @@
         text-align: center;
     }
     &.active {
-        display: block;
         background-color: rgba($white, .95);
+        display: block;
         opacity: 1;
         z-index: 99900;
     }
