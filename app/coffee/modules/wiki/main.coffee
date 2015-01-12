@@ -276,6 +276,12 @@ EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $
             promise.finally ->
                 $loading.finish($el.find('.save-container'))
 
+        $el.on "mousedown", ".view-wiki-content", (event) ->
+            # Prepare the scroll movement detection
+            target = angular.element(event.target)
+            if target.is('pre')
+                target.data("scroll-pos", target[0].scrollLeft)
+
         $el.on "mouseup", ".view-wiki-content", (event) ->
             # We want to dettect the a inside the div so we use the target and
             # not the currentTarget
@@ -283,6 +289,12 @@ EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $
             return if not isEditable()
             return if target.is('a')
             return if getSelectedText()
+            if target.is('pre')
+                prevPos = target.data("scroll-pos")
+                target.data("scroll-pos", null)
+                if prevPos != target[0].scrollLeft
+                    return
+
             switchToEditMode()
 
         $el.on "click", ".save", debounce 2000, ->
