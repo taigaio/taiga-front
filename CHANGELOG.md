@@ -1,5 +1,14 @@
 # Changelog #
 
+## 1.5.0 ??? (unreleased)
+
+### Features
+- Archived milestones in the backlog view.
+
+### Misc
+- Lots of small and not so small bugfixes.
+
+
 ## 1.4.0 Abies veitchii (2014-12-10)
 
 ### Features
