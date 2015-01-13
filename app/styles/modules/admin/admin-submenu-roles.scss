@@ -20,8 +20,8 @@
         &:hover {
             color: $blackish;
             .icon {
-                @include transition (opacity .3s linear);
                 opacity: 1;
+                transition: opacity .3s linear;
             }
         }
     }

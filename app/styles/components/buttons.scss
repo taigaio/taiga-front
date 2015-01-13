@@ -5,8 +5,8 @@
     text-transform: uppercase;
     &:hover,
     &.active {
-        @include transition (color .3s linear);
         color: $green-taiga;
+        transition: color .3s linear;
     }
     .icon {
         margin-right: .3rem;
@@ -98,8 +98,8 @@ a.button-bulk {
         margin-right: 0;
     }
     &:hover {
-        @include transition (background .3s linear);
         background: $fresh-taiga;
+        transition: background .3s linear;
     }
 }
 .button-github {
@@ -113,7 +113,7 @@ a.button-bulk {
         vertical-align: text-bottom;
     }
     &:hover {
-        @include transition (background .3s linear);
         background: $black;
+        transition: background .3s linear;
     }
 }

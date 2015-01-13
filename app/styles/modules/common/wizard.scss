@@ -36,11 +36,11 @@
         }
     }
     .wizard-step {
-        @include animation(formSlide .4s ease-in-out);
-        @include animation-direction(alternate-reverse);
+        animation: formSlide .4s ease-in-out;
+        animation-direction: alternate-reverse;
         display: none;
         &.active {
-            @include animation(formSlide .4s ease-in-out);
+            animation: formSlide .4s ease-in-out;
             &.create-step2,
             &.create-step3 {
                 @include table-flex();
@@ -77,21 +77,21 @@
             display: none;
             &:checked {
                 +label {
-                    @include transition(background .3s ease-in);
                     background: rgba($fresh-taiga, .7);
+                    transition: background .3s ease-in;
                 }
             }
             +label {
-                @include transition(background .3s ease-in);
                 background: rgba($whitish, .7);
                 cursor: pointer;
                 display: block;
                 margin-bottom: 1rem;
                 padding: 1rem;
                 text-align: center;
+                transition: background .3s ease-in;
                 &:hover {
-                    @include transition(background .3s ease-in);
                     background: rgba($green-taiga, .7);
+                    transition: background .3s ease-in;
                 }
                 .icon {
                     @extend %xxlarge;
@@ -117,22 +117,22 @@
         width: 100%;
         &.step1 {
             .bar {
-                @include transition(width .6s ease-in-out);
+                transition: width .6s ease-in-out;
                 width: 25%;
             }
             .progress-state {
                 span {
                     &:nth-child(1) {
-                        @include transition(color .3s ease-in-out);
-                        @include transition-delay(.6s);
                         color: rgba($white, 1);
+                        transition: color .3s ease-in-out;
+                        transition-delay: .6s;
                     }
                 }
             }
         }
         &.step2 {
             .bar {
-                @include transition(width .6s ease-in-out);
+                transition: width .6s ease-in-out;
                 // width: 50%;
                 width: 75%;
             }
@@ -140,9 +140,9 @@
                 span {
                     &:nth-child(1),
                     &:nth-child(2) {
-                        @include transition(color .3s ease-in-out);
-                        @include transition-delay(.6s);
                         color: rgba($white, 1);
+                        transition: color .3s ease-in-out;
+                        transition-delay: .6s;
                     }
                 }
             }
@@ -152,13 +152,13 @@
         position: absolute;
         width: 100%;
         span {
-            @include transition(all 1s ease-in);
             color: rgba($white, .5);
             display: inline-block;
             margin-left: -100px;
             position: absolute;
             text-align: center;
             top: -2rem;
+            transition: all 1s ease-in;
             width: 200px;
             &:nth-child(1) {
                 left: 25%;

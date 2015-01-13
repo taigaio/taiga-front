@@ -12,15 +12,15 @@
         @extend %title;
         opacity: .2;
         &:hover {
-            @include transition (opacity .3s linear);
             color: $blackish;
             opacity: 1;
+            transition: opacity .3s linear;
         }
     }
     .active {
-        @include transition (opacity .3s linear);
         color: $blackish;
         opacity: 1;
+        transition : opacity .3s linear;
     }
     .icon {
         margin-right: .4rem;

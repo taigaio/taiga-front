@@ -26,23 +26,23 @@
     }
     .select-input-text {
         .field-with-option {
-            @include display(flex);
+            display: flex;
         }
         .option-wrapper {
-            @include display(flex);
-            @include align-items(center);
+            align-items: center;
             border: 1px solid $gray-light;
             border-left: 0;
             border-radius: 0 5px 5px 0;
             cursor: pointer;
+            display: flex;
             padding: 0 1rem;
         }
         .help-copy {
             @extend %small;
             opacity: 0;
             &.visible {
-                @include transition(opacity .2s linear);
                 opacity: 1;
+                transition: opacity .2s linear;
             }
         }
     }

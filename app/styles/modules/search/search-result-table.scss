@@ -10,8 +10,8 @@
         @include table-flex($align-content: center, $align-items: center);
         padding: .5rem;
         &:hover {
-            @include transition (background .2s ease-in);
             background: lighten($green-taiga, 60%);
+            transition: background .2s ease-in;
         }
         .user-stories {
             @include table-flex-child(5, 0, 1);
@@ -27,8 +27,8 @@
         }
     }
     .row-selected {
-        @include transition (background .2s ease-in);
         background: lighten($green-taiga, 60%);
+        transition: background .2s ease-in;
     }
 
       // TODO: refactor xaviju
@@ -47,8 +47,8 @@
             @extend %medium;
             color: $gray-light;
             &:hover {
-                @include transition (color .3s linear);
                 color: $grayer;
+                transition: color .3s linear;
             }
         }
     }

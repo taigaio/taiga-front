@@ -12,12 +12,12 @@ $column-margin: 0 10px 0 0;
     .vfold {
         &.task-colum-name {
             @include table-flex();
-            @include align-items(center);
-            @include justify-content(center);
-            @include transition(opacity .3s linear);
+            align-items: center;
             cursor: pointer;
+            justify-content: center;
             opacity: .8;
             padding: .5rem 0;
+            transition: opacity .3s linear;
             .icon-plus,
             .icon-bulk,
             .icon-vfold,
@@ -56,9 +56,9 @@ $column-margin: 0 10px 0 0;
         @extend %large;
         @include table-flex-child($column-flex, $column-width, $column-shrink, $column-width);
         @include table-flex();
-        @include justify-content(space-between);
         background: $whitish;
         border-top: 3px solid $gray-light;
+        justify-content: space-between;
         margin: $column-margin;
         padding: .5rem .5rem .5rem 1rem;
         position: relative;
@@ -68,16 +68,16 @@ $column-margin: 0 10px 0 0;
         }
         .icon {
             @extend %medium;
-            @include transition(color .2s linear);
             color: $gray-light;
             margin-right: .3rem;
+            transition: color .2s linear;
             &:hover {
                 color: $green-taiga;
             }
             &.hfold,
             &.hunfold {
-                @include transform(rotate(90deg));
                 display: inline-block;
+                transform: rotate(90deg);
             }
         }
     }

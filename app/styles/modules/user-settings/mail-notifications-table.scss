@@ -29,8 +29,8 @@
         display: none;
         &:checked {
             +label {
-                @include transition(background .3s linear);
                 background: $green-taiga;
+                transition: background .3s linear;
             }
         }
     }
@@ -41,9 +41,9 @@
         display: block;
         padding: .5rem;
         &:hover {
-            @include transition(background .3s linear);
             background: $fresh-taiga;
             cursor: pointer;
+            transition: background .3s linear;
         }
     }
 }

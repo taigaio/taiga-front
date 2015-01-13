@@ -9,17 +9,17 @@
     a,
     .active span,
     .dots {
-        @include transition (all .3s linear);
         background: $gray-light;
         color: $white;
         margin-right: .1rem;
         padding: .5rem 1rem;
+        transition: all .3s linear;
     }
     a {
         &:hover {
-            @include transition (all .3s linear);
             background: $button-gray-hover;
             color: $white;
+            transition: all .3s linear;
         }
     }
     .active {
@@ -47,7 +47,7 @@ a.v-pagination-previous {
     visibility: hidden;
     width: 100%;
     &:hover {
-        @include transition (background .3s linear);
         background-color: $button-gray / 2;
+        transition: background .3s linear;
     }
 }

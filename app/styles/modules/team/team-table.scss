@@ -3,18 +3,18 @@
         padding: .5rem;
     }
     .username {
-        @include flex(3);
+        flex: 3;
         min-width: 300px;
     }
     .member-stats {
-        @include display(flex);
-        @include align-content(center);
-        @include align-items(center);
-        @include justify-content(flex-end);
-        @include flex(6);
+        align-content: center;
+        align-items: center;
+        display: flex;
+        flex: 6;
+        justify-content: flex-end;
     }
     .attribute {
-        @include flex(1);
+        flex: 1;
         position: relative;
         text-align: center;
         .icon,
@@ -48,8 +48,8 @@
         }
         &:hover {
             .icon {
-                @include transition (color .3s linear);
                 color: $red;
+                transition : color .3s linear;
             }
         }
     }

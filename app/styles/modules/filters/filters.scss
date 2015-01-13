@@ -32,8 +32,8 @@
 }
 
 .filters-inner {
-    @include transition (all .1s ease-in);
     opacity: 0;
+    transition : all .1s ease-in;
     .loading {
         background: $grayer;
         border: 1px solid #b8b8b8;
@@ -47,8 +47,8 @@
             float: none;
         }
         span {
-            @include animation (loading .5s linear);
-            @include animation (spin 1s linear infinite);
+            animation : loading .5s linear;
+            animation : spin 1s linear infinite;
         }
     }
 }
@@ -88,23 +88,23 @@
         }
     }
     a {
-        @include transition (color .2s ease-in);
         color: $grayer;
         display: block;
         padding: .5rem 0 .5rem .5rem;
+        transition : color .2s ease-in;
         &:hover {
-            @include transition (color .2s ease-in);
             color: $green-taiga;
+            transition : color .2s ease-in;
             .icon {
-                @include transition (opacity .2s ease-in);
                 opacity: 1;
+                transition : opacity .2s ease-in;
             }
         }
     }
     .icon {
-        @include transition (opacity .2s ease-in);
         color: $grayer;
         float: right;
         opacity: 0;
+        transition : opacity .2s ease-in;
     }
 }

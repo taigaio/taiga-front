@@ -6,8 +6,8 @@
         text-transform: uppercase;
         &:hover {
             .icon {
-                @include transition (opacity 1s linear);
                 opacity: 1;
+                transition: opacity 1s linear;
             }
         }
         a {
@@ -18,10 +18,10 @@
             }
         }
         .icon {
-            @include transition (opacity 1s linear);
             color: $blackish;
             float: right;
             opacity: 0;
+            transition: opacity 1s linear;
         }
         input {
             background: $grayer;
@@ -42,8 +42,8 @@
                 float: none;
             }
             span {
-                @include animation (loading .5s linear);
-                @include animation (spin 1s linear infinite);
+                animation: loading .5s linear;
+                animation: spin 1s linear infinite;
             }
         }
     }

@@ -1,5 +1,4 @@
 .projects-nav {
-    @include transform(translate3d(-300px, 0, 0));
     background-color: #232323;
     display: flex;
     flex-direction: column;
@@ -9,6 +8,7 @@
     padding: 2rem 1rem;
     position: fixed;
     top: 0;
+    transform: translate3d(-300px, 0, 0);
     width: 300px;
     z-index: 99;
     form {
@@ -68,12 +68,12 @@
         width: 100%;
         &.active,
         &:hover {
-            @include transition (background-color .3s linear);
             background-color: $gray;
             color: $green-taiga;
+            transition: background-color .3s linear;
             .icon {
-                @include transition (opacity .3s linear);
                 opacity: 1;
+                transition: opacity .3s linear;
             }
         }
         .project-name {
@@ -111,12 +111,12 @@
     width: 100%;
     z-index: 99900;
     .container {
-        @include transform(translateY(-50%));
         left: -200px;
         margin: 0 auto;
         margin-top: 15%;
         opacity: 0;
         position: relative;
+        transform: translateY(-50%);
         width: 150px;
     }
     p {

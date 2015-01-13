@@ -16,8 +16,8 @@
         padding: 1rem;
         &:hover {
             .edit-value {
-                @include transition(opacity .3s linear);
                 opacity: 1;
+                transition: opacity .3s linear;
             }
         }
     }

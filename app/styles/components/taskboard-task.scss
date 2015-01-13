@@ -9,15 +9,15 @@
     &:hover {
         .icon-edit,
         .icon-drag-h {
-            @include transition(color .3s linear, opacity .3s linear);
             color: $postit-dark-hover;
             display: block;
             opacity: 1;
+            transition: color .3s linear, opacity .3s linear;
         }
     }
     &.ui-sortable-helper {
-        @include transition(box-shadow .3s linear);
         box-shadow: 1px 1px 15px rgba($black, .4);
+        transition: box-shadow .3s linear;
     }
     &.ui-sortable-placeholder {
         background: $grayer;
@@ -57,8 +57,8 @@
             img {
                 margin: 0 auto;
                 &:hover {
-                    @include transition(border .3s linear);
                     border: 2px solid $green-taiga;
+                    transition: border .3s linear;
                 }
             }
             figcaption {
@@ -73,7 +73,7 @@
         }
         &.iocaine {
             img {
-                @include filter(hue-rotate(150deg) saturate(200%));
+                filter: hue-rotate(150deg) saturate(200%);
             }
         }
     }
@@ -106,7 +106,7 @@
         word-wrap: break-word;
     }
     .icon {
-        @include transition(color .3s linear, opacity .3s linear);
+        transition: color .3s linear, opacity .3s linear;
     }
     .icon-edit,
     .icon-drag-h {

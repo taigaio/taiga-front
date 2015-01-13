@@ -1,15 +1,15 @@
 .loading {
-    @include display(flex);
-    @include align-items(stretch);
-    @include flex-direction(row);
-    @include justify-content(flex-start);
+    align-items: stretch;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
     .item {
-        @include animation-duration(5s);
-        @include animation-iteration-count(infinite);
-        @include animation-name(loadBar);
-        @include animation-timing-function(ease-in);
-        @include flex(1);
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+        animation-name: loadBar;
+        animation-timing-function: ease-in;
         background: $gray;
+        flex: 1;
         height: 5px;
     }
 
@@ -17,7 +17,7 @@
     @each $current-color in $colors-list {
         $i: index($colors-list, $current-color) - 1;
         .item-#{$i} {
-            @include animation-delay(#{$i}s);
+            animation-delay: #{$i}s;
             background: $current-color;
         }
     }

@@ -5,7 +5,6 @@
         width: 100%;
     }
     .functionality {
-        @include transition(all .2s linear);
         @include table-flex(center, center, flex, column, wrap, center);
         background-color: $whitish;
         display: inline-block;
@@ -15,6 +14,7 @@
         opacity: .5;
         padding: 1rem;
         position: relative;
+        transition: all .2s linear;
         vertical-align: top;
         width: 32%;
         &:nth-child(3n+1) {

@@ -7,10 +7,10 @@
         width: 32px;
     }
     ul {
-        @include display(flex);
-        @include align-items(flex-start);
-        @include flex-direction(row);
-        @include justify-content(flex-start);
+        align-items: flex-start;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
     }
     .username-edition {
         min-width: 240px;

@@ -20,8 +20,8 @@
         color: $grayer;
         cursor: pointer;
         &:hover {
-            @include transition (color .2s ease-in);
             color: $green-taiga;
+            transition: color .2s ease-in;
         }
     }
 }
@@ -36,15 +36,15 @@
     &:hover {
         .attachment-settings {
             .settings {
-                @include transition (opacity .2s ease-in);
                 opacity: 1;
+                transition: opacity .2s ease-in;
             }
         }
     }
     &.ui-sortable-helper {
-        @include transition (background .2s ease-in);
         background: lighten($green-taiga, 60%);
         box-shadow: 1px 1px 10px rgba($black, .1);
+        transition: background .2s ease-in;
     }
     &.deprecated {
         color: $gray-light;
@@ -157,8 +157,8 @@
         margin-left: .5rem;
     }
     &:hover {
-        @include transition (background .2s ease-in);
         background: lighten($green-taiga, 60%);
+        transition: background .2s ease-in;
     }
 }
 

@@ -1,11 +1,11 @@
 .login-main {
     @extend %triangled-bg;
     //@include table-flex(center, center, flex, row, wrap, center);
-    @include display(flex);
-    @include align-items(center);
-    @include flex-direction(row);
-    @include justify-content(center);
+    align-items: center;
     bottom: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     left: 0;
     position: fixed;
     right: 0;
@@ -15,7 +15,7 @@
         margin-bottom: .5rem;
     }
     .login-container {
-        @include flex-basis(400px);
+        flex-basis: 400px;
     }
     .logo-svg {
         padding: 0 33%;
@@ -72,4 +72,3 @@
         }
     }
 }
-

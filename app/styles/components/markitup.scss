@@ -8,8 +8,8 @@
             a {
                 opacity: .8;
                 &:hover {
-                    @include transition(opacity .2s linear);
                     opacity: .3;
+                    transition: opacity .2s linear;
                 }
             }
         }

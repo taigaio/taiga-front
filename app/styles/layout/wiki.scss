@@ -4,12 +4,12 @@
         color: $gray-light;
         &:hover {
             span {
-                @include transition(color .2s linear);
                 color: $grayer;
+                transition: color .2s linear;
             }
             .icon {
-                @include transition(color .2s linear);
                 color: $red;
+                transition: color .2s linear;
             }
         }
         .icon {
@@ -29,27 +29,27 @@
                 cursor: pointer;
             }
             .edit {
-                @include transition(all .2s linear);
                 opacity: 1;
                 top: -1.5rem;
+                transition: all .2s linear;
             }
         }
         .edit {
-            @include transition(all .2s linear);
             background: $whitish;
             left: 0;
             opacity: 0;
             padding: .2rem .5rem;
             position: absolute;
             top: 0;
+            transition: all .2s linear;
         }
     }
     .edit-wiki-content {
         .icon {
             &:hover {
-                @include transition(all .2s linear);
                 color: $grayer;
                 opacity: .3;
+                transition: all .2s linear;
             }
         }
         .preview-icon {
