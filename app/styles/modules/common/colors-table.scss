@@ -15,8 +15,8 @@
         padding: 1rem;
         &:hover {
             .options-column {
-                @include transition (opacity .3s linear);
                 opacity: 1;
+                transition: opacity .3s linear;
             }
         }
         &.edition,
@@ -78,9 +78,9 @@
         border-bottom: 1px solid $gray-light;
         .row {
             &:hover {
-                @include transition (background .2s ease-in);
                 background: lighten($green-taiga, 60%);
                 cursor: move;
+                transition: background .2s ease-in;
             }
         }
     }

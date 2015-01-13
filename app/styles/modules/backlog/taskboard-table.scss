@@ -32,7 +32,7 @@ $column-margin: 0 10px 0 0;
     &.task-column,
     .task-column {
         @include table-flex(flex-start);
-        @include flex-direction(row);
+        flex-direction: row;
     }
     .avatar-task-link {
         display: block;
@@ -57,12 +57,12 @@ $column-margin: 0 10px 0 0;
         position: absolute;
     }
     .task-colum-name {
+        @extend %large;
         @include table-flex-child($column-flex, $column-width, $column-shrink, $column-width);
         @include table-flex();
-        @include justify-content(space-between);
-        @extend %large;
         background: $whitish;
         border-top: 3px solid $gray-light;
+        justify-content: space-between;
         margin: $column-margin;
         max-width: $column-width;
         padding: .5rem 1rem;
@@ -74,21 +74,21 @@ $column-margin: 0 10px 0 0;
         }
         .icon {
             @extend %medium;
-            @include transition(color .2s linear);
             color: $gray-light;
             margin-right: .3rem;
+            transition: color .2s linear;
             &:hover {
                 color: $green-taiga;
             }
             &.hfold,
             &.hunfold {
-                @include transform(rotate(90deg));
                 display: inline-block;
+                transform: rotate(90deg);
             }
         }
         &.column-fold {
-            @include align-items(center);
-            @include justify-content(center);
+            align-items: center;
+            justify-content: center;
             padding: .3rem 0;
             span {
                 display: none;
@@ -134,8 +134,8 @@ $column-margin: 0 10px 0 0;
         width: 100%;
         &:hover {
             .new-task {
-                @include transition(opacity .3s linear);
                 opacity: 1;
+                transition: opacity .3s linear;
             }
         }
         &.blocked {
@@ -144,11 +144,11 @@ $column-margin: 0 10px 0 0;
                 border-radius: 3px;
                 a,
                 .points-value {
-                    @include transition(color .3s linear);
                     color: rgba($white, .9);
+                    transition: color .3s linear;
                     &:hover {
-                        @include transition(color .3s linear);
                         color: rgba($white, 1);
+                        transition: color .3s linear;
                     }
                 }
             }
@@ -177,11 +177,11 @@ $column-margin: 0 10px 0 0;
     .taskboard-userstory-box {
         padding: .5rem .5rem .5rem 1.5rem;
         .icon {
-            @include transition(color .2s linear);
             color: $gray-light;
             position: absolute;
             right: .5rem;
             top: .7rem;
+            transition: color .2s linear;
             &:hover {
                 color: $green-taiga;
             }
@@ -230,13 +230,13 @@ $column-margin: 0 10px 0 0;
         margin-left: .5rem;
         &:hover {
             span {
-                @include transition (opacity .2s linear);
                 opacity: 1;
+                transition: opacity .2s linear;
             }
         }
     }
     span {
-        @include transition (opacity .2s linear);
         opacity: 0;
+        transition: opacity .2s linear;
     }
 }

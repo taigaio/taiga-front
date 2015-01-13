@@ -13,63 +13,63 @@ body {
     -webkit-text-size-adjust: 100%;
     width: 100%;
     .master {
-        @include transition (transform 1s ease);
+        transition: transform 1s ease;
         &.ng-animate {
-            @include transition();
+            transition: 0;
         }
     }
     .menu {
-        @include transform(translate3d(0, 0, 0));
-        @include transition (transform 1s ease);
+        transform: translate3d(0, 0, 0);
+        transition: transform 1s ease;
     }
     &.open-projects-nav {
         .projects-nav {
-            @include transform(translate3d(0, 0, 0));
-            @include transition (transform 1s ease);
+            transform: translate3d(0, 0, 0);
+            transition: transform 1s ease;
         }
         .master {
-            @include transform(translate3d(300px, 0, 0));
-            @include transition (transform 1s ease);
+            transform: translate3d(300px, 0, 0);
+            transition: transform 1s ease;
             &.ng-animate {
-                @include transition();
+                transition: 0;
             }
         }
         .menu {
-            @include transform(translate3d(300px, 0, 0));
-            @include transition (transform 1s ease);
+            transform: translate3d(300px, 0, 0);
+            transition: transform 1s ease;
         }
         .projects-nav-overlay {
-            @include transform(translate3d(300px, 0, 0));
-            @include transition (all 1s ease);
             opacity: .9;
+            transform: translate3d(300px, 0, 0);
+            transition: all 1s ease;
         }
         &.closed-projects-nav {
             .projects-nav {
-                @include transform(translate3d(-300px, 0, 0));
-                @include transition (transform 1s ease);
+                transform: translate3d(-300px, 0, 0);
+                transition: transform 1s ease;
             }
             .projects-nav-overlay {
-                @include transition (all 1s ease);
-                @include transform(translate3d(0, 0, 0));
                 opacity: 0;
+                transform: translate3d(0, 0, 0);
+                transition: all 1s ease;
             }
             .master {
-                @include transform(translate3d(0, 0, 0));
+                transform: translate3d(0, 0, 0);
             }
             .menu {
-                @include transform(translate3d(0, 0, 0));
+                transform: translate3d(0, 0, 0);
             }
         }
     }
     &.loading-project {
         overflow: hidden;
         .projects-nav-overlay {
-            @include transition (opacity 1s ease);
             opacity: 1;
             overflow: hidden;
+            transition: opacity 1s ease;
             div {
-                @include transition (opacity 1s ease);
                 opacity: 1;
+                transition: opacity 1s ease;
             }
         }
     }
@@ -87,38 +87,38 @@ body {
 }
 
 .wrapper {
-    @include display(flex);
+    display: flex;
     min-height: 100vh;
     padding-left: 90px;
 }
 
 .menu-secondary {
-    @include flex(1);
     background: $whitish;
+    flex: 1;
     min-width: 0;
     padding: 2rem 1rem;
     width: 260px;
     &.filters-bar {
-        @include flex(0);
-        @include transition(all .2s linear);
+        flex: 0;
         padding: 0;
+        transition: all .2s linear;
         width: 0;
         &.active {
-            @include flex(1);
-            @include transition(all .2s linear);
+            flex: 1;
             padding: 2em 1em;
+            transition: all .2s linear;
             width: 210px;
             .filters-inner {
-                @include transition (all .4s ease-in);
                 opacity: 1;
+                transition: all .4s ease-in;
             }
         }
     }
 }
 
 .menu-tertiary {
-    @include flex(1);
     background-color: $dark-grayish-lime-green;
+    flex: 1;
     padding: 2em 1em;
 }
 
@@ -127,10 +127,10 @@ body {
 }
 
 .main {
-    @include flex(4);
+    flex: 4;
+    min-width: 600px;
     padding: 2rem;
     padding-bottom: 1rem;
-    min-width: 600px;
 }
 
 .icon {
@@ -142,14 +142,14 @@ body {
 }
 
 .header-with-actions {
-    @include display(flex);
-    @include align-content(stretch);
-    @include align-items(center);
-    @include flex-wrap(wrap);
-    @include justify-content(space-between);
+    align-content: stretch;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     margin-bottom: 1rem;
     .action-buttons {
-        @include flex-shrink(0);
+        flex-shrink: 0;
     }
     .button {
         color: $white;

@@ -11,8 +11,8 @@
         color: $gray-light;
         opacity: 0;
         &:hover {
-            @include transition (all .2s ease-in);
             color: $grayer;
+            transition: all .2s ease-in;
         }
     }
 }
@@ -24,12 +24,12 @@
 .project-values-body {
     .project-values-row {
         &:hover {
-            @include transition (background .2s ease-in);
             background: lighten($green-taiga, 60%);
             cursor: move;
+            transition: background .2s ease-in;
             .icon {
-                @include transition (opacity .2s ease-in);
                 opacity: 1;
+                transition: opacity .2s ease-in;
             }
         }
     }
@@ -42,8 +42,8 @@
     @include table-flex-child(1, 0, 0);
     .checksley-error-list {
         left: 0;
-        top: 35px;
         right: auto;
+        top: 35px;
         white-space: nowrap;
     }
 }
@@ -60,8 +60,8 @@
         color: $gray;
         margin-right: .5rem;
         &:hover {
-            @include transition(color .3s linear);
             color: $green-taiga;
+            transition: color .3s linear;
             .icon-delete {
                 color: $red;
             }

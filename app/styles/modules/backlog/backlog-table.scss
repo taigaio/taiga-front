@@ -115,12 +115,12 @@
         flex-wrap: nowrap;
         position: relative;
         &:hover {
-            @include transition (background .2s ease-in);
             background: lighten($green-taiga, 60%);
+            transition: background .2s ease-in;
             .us-settings,
             .icon-drag-v {
-                @include transition (all .2s ease-in);
                 opacity: 1;
+                transition: all .2s ease-in;
             }
         }
         &:last-child {
@@ -131,9 +131,9 @@
             height: 40px;
         }
         &.ui-sortable-helper {
-            @include transition (background .2s ease-in);
             background: lighten($green-taiga, 60%);
             box-shadow: 1px 1px 10px rgba($black, .1);
+            transition: background .2s ease-in;
         }
         .points {
             .not-clickable {
@@ -145,19 +145,19 @@
         }
     }
     .row-selected {
-        @include transition (background .2s ease-in);
         background: lighten($green-taiga, 60%);
+        transition: background .2s ease-in;
     }
     .user-story-name {
         @include table-flex($flex-wrap: nowrap);
         input {
-            @include flex-shrink(0);
+            flex-shrink: 0;
             margin-right: 1rem;
             vertical-align: super;
             &:checked {
                 +a {
-                    @include transition (color .2s ease-in);
                     color: $fresh-taiga;
+                    transition: color .2s ease-in;
                 }
             }
         }
@@ -184,8 +184,8 @@
         border-bottom: 1px solid $white;
         color: $white;
         &:hover {
-            @include transition (background .2s ease-in);
             background: $red;
+            transition: background .2s ease-in;
         }
         a {
             color: $white !important;
@@ -218,12 +218,12 @@
     .us-settings a,
     .icon-drag-v {
         @extend %large;
-        @include transition (all .2s ease-in);
         color: $gray-light;
+        transition: all .2s ease-in;
         width: 30px;
         &:hover {
-            @include transition (all .2s ease-in);
             color: $grayer;
+            transition: all .2s ease-in;
         }
     }
     .us-settings {

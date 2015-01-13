@@ -49,12 +49,12 @@
     }
     &.open {
         @include table-flex(center, center, flex, row, wrap, center);
-        @include transition (opacity .3s ease);
         opacity: 1;
+        transition: opacity .3s ease;
     }
     &.close {
-        @include transition (opacity .3s ease);
         opacity: 0;
+        transition: opacity .3s ease;
     }
     .title {
         text-align: center;
@@ -78,17 +78,17 @@
 %button {
     @extend %medium;
     @extend %title;
-    @include transition (background .3s linear);
     display: inline-block;
     padding: 7px 40px 6px;
+    transition: background .3s linear;
     text-transform: uppercase;
     &:hover {
-        @include transition (background .3s linear);
+        transition: background .3s linear;
     }
     &.loading {
         span {
-            @include animation (loading .5s linear);
-            @include animation (spin 1s linear infinite);
+            animation: loading .5s linear;
+            animation: spin 1s linear infinite;
         }
     }
     .icon {

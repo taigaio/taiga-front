@@ -54,9 +54,9 @@
             float: rsdsdfdvsdvight;
         }
         &:hover {
-            @include transition (background-color .3s linear);
             background-color: $red;
             color: $white;
+            transition: background-color .3s linear;
         }
     }
     .delete {
@@ -108,9 +108,9 @@
             width: 500px;
             z-index: 999;
             + div {
-                @include transition (all .2s linear);
                 background-color: $button-gray;
                 height: 25px;
+                transition: all .2s linear;
                 width: 50%;
             }
             ~ .check-text {
@@ -131,9 +131,9 @@
         }
         input[type=checkbox]:checked {
             + div {
-                @include transition (all .2s linear);
                 background-color: #74a218;
                 margin-left: 50%;
+                transition: all .2s linear;
             }
             ~ .check-yes {
                 opacity: .6;

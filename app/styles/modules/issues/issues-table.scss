@@ -6,16 +6,16 @@
     }
     .row {
         &:hover {
-            @include transition (background .2s ease-in);
             background: lighten($green-taiga, 60%);
+            transition : background .2s ease-in;
         }
         .icon {
             display: inline;
         }
     }
     .row-selected {
-        @include transition (background .2s ease-in);
         background: lighten($green-taiga, 60%);
+        transition : background .2s ease-in;
     }
     .title {
         @extend %medium;
@@ -71,8 +71,8 @@
         position: relative;
         &:hover {
             .icon {
-                @include transition(opacity .3s linear);
                 opacity: 1;
+                transition: opacity .3s linear;
             }
         }
         figcaption {
@@ -82,11 +82,11 @@
             white-space: nowrap;
         }
         .icon {
-            @include transition(opacity .3s linear);
             opacity: 0;
             position: absolute;
             right: 0;
             top: .5rem;
+            transition: opacity .3s linear;
         }
     }
     .pop-status {

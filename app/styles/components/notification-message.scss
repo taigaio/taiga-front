@@ -1,20 +1,20 @@
 .notification-message {
-    @include transform(translateY(-100%));
     background: rgba($gray-light, .95);
     color: $white;
     opacity: 0;
     padding: 1rem;
     position: fixed;
     top: 0;
+    transform: translateY(-100%);
     width: 100%;
     z-index: 99920;
     &.inactive {
-        @include transition (all .6s ease-in-out);
+        transition: all .6s ease-in-out;
     }
     &.active {
-        @include transform(translateY(0));
-        @include transition (all .6s ease-in-out);
         opacity: 1;
+        transform: translateY(0);
+        transition: all .6s ease-in-out;
     }
     .text {
         display: inline-block;
@@ -57,21 +57,21 @@
 }
 
 .notification-light {
-    @include transform(translateY(-100%));
     background: rgba($gray-light, .95);
     color: $white;
     left: calc(50% - 200px);
     padding: 1rem 1rem .2rem;
     position: absolute;
     top: 0;
+    transform: translateY(-100%);
     width: 400px;
     z-index: 99999;
     &.inactive {
-        @include transition (all .6s ease-in-out);
+        transition: all .6s ease-in-out;
     }
     &.active {
-        @include transform(translateY(0));
-        @include transition (all .6s ease-in-out);
+        transform: translateY(0);
+        transition: all .6s ease-in-out;
     }
     .text {
         display: inline-block;

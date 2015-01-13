@@ -48,37 +48,37 @@
 
         &:hover {
             .icon-edit {
-                @include transition (opacity .2s ease-in);
                 opacity: 1;
+                transition: opacity .2s ease-in;
             }
         }
         .icon {
             display: inline-block;
         }
         .icon-arrow-up {
-            @include transform(rotate(180deg));
-            @include transition (all .2s linear);
+            transform: rotate(180deg);
+            transition: all .2s linear;
             vertical-align: baseline;
             &.active {
-                @include transform(rotate(0));
-                @include transition (all .2s linear);
+                transform: rotate(0);
+                transition: all .2s linear;
             }
             &:hover {
-                @include transition(color .2s linear);
                 color: $fresh-taiga;
+                transition: color .2s linear;
             }
         }
         .icon-edit {
-            @include transition (opacity .2s ease-in);
             color: $gray-light;
             opacity: 0;
             position: absolute;
             right: 0;
             top: 0;
+            transition: opacity .2s ease-in;
             vertical-align: baseline;
             &:hover {
-                @include transition (color .2s ease-in);
                 color: $green-taiga;
+                transition: color .2s ease-in;
             }
         }
         .number {
@@ -138,9 +138,9 @@
             text-align: left;
             width: 100%;
             &:hover {
-                @include transition (background .2s ease-in);
                 background: lighten($gray-light, 12%);
                 cursor: move;
+                transition: background .2s ease-in;
             }
             &:last-child {
                 border-bottom: 0;
@@ -150,9 +150,9 @@
                 height: 40px;
             }
             &.ui-sortable-helper {
-                @include transition (background .2s ease-in);
                 background: lighten($green-taiga, 60%);
                 box-shadow: 1px 1px 10px rgba($black, .1);
+                transition: background .2s ease-in;
             }
 
         }
@@ -209,16 +209,16 @@
 .sprint-old-open {
     .sprint-name {
         .icon-arrow-up {
-            @include transform(rotate(180deg));
-            @include transition (all .2s linear);
+            transform: rotate(180deg);
+            transition: all .2s linear;
             vertical-align: baseline;
             &.active {
-                @include transform(rotate(0));
-                @include transition (all .2s linear);
+                transform: rotate(0);
+                transition: all .2s linear;
             }
             &:hover {
-                @include transition(color .2s linear);
                 color: $fresh-taiga;
+                transition: color .2s linear;
             }
         }
     }
@@ -231,16 +231,16 @@
     }
     .sprint-name {
         .icon-arrow-up {
-            @include transform(rotate(180deg));
-            @include transition (all .2s linear);
+            transform: rotate(180deg);
+            transition: all .2s linear;
             vertical-align: baseline;
             &.active {
-                @include transform(rotate(0));
-                @include transition (all .2s linear);
+                transform: rotate(0);
+                transition: all .2s linear;
             }
             &:hover {
-                @include transition(color .2s linear);
                 color: $fresh-taiga;
+                transition: color .2s linear;
             }
         }
     }

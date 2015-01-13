@@ -40,7 +40,7 @@ sup {
 }
 
 .icon-spinner {
-    @include animation (spin 1s linear infinite);
+    animation: spin 1s linear infinite;
 }
 
 .clickable {

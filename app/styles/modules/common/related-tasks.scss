@@ -16,8 +16,8 @@
         color: $grayer;
         cursor: pointer;
         &:hover {
-            @include transition (color .2s ease-in);
             color: $green-taiga;
+            transition: color .2s ease-in;
         }
     }
 }
@@ -35,8 +35,8 @@
         &:hover {
             background: transparent;
             .task-settings {
-                @include transition (all .2s ease-in);
                 opacity: 1;
+                transition: all .2s ease-in;
             }
         }
         &:last-child {
@@ -63,8 +63,8 @@
         text-align: left;
         &:hover {
             .icon {
-                @include transition (opacity .2s ease-in);
                 opacity: 1;
+                transition: opacity .2s ease-in;
             }
         }
         .not-clickable {
@@ -96,7 +96,7 @@
         }
     }
     .task-name {
-        @include display(flex);
+        display: flex;
         position: relative;
         a {
             display: inline-block;
@@ -116,8 +116,8 @@
             text-align: center;
             width: 100%;
             span {
-                @include animation (loading .5s linear);
-                @include animation (spin 1s linear infinite);
+                animation: loading .5s linear;
+                animation: spin 1s linear infinite;
             }
         }
     }
@@ -160,11 +160,11 @@
         width: 10%;
         a {
             @extend %large;
-            @include transition (all .2s ease-in);
             color: $gray-light;
+            transition: all .2s ease-in;
             &:hover {
-                @include transition (all .2s ease-in);
                 color: $grayer;
+                transition: all .2s ease-in;
             }
         }
     }
@@ -179,8 +179,8 @@
         }
         &:hover {
             .icon {
-                @include transition(opacity .3s linear);
                 opacity: 1;
+                transition: opacity .3s linear;
             }
         }
         figcaption {
@@ -190,18 +190,18 @@
             white-space: nowrap;
         }
         .icon {
-            @include transition(opacity .3s linear);
             opacity: 0;
             position: absolute;
             right: .5rem;
             top: .5rem;
+            transition: opacity .3s linear;
         }
     }
     .avatar {
-        @include align-items(center);
-        @include display(flex);
+        align-items: center;
+        display: flex;
         img {
-          @include flex-basis(35px)
+            flex-basis: 35px;
         }
         figcaption {
             margin-left: .5rem;

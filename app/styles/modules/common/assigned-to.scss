@@ -5,16 +5,16 @@
     &:hover {
         .assigned-to {
             .icon-delete {
-                @include transition (opacity .3s linear);
                 opacity: 1;
+                transition: opacity .3s linear;
             }
         }
     }
     &.loading {
         width: 100%;
         span {
-            @include animation (loading .5s linear);
-            @include animation (spin 1s linear infinite);
+            animation: loading .5s linear;
+            animation: spin 1s linear infinite;
             font-size: 30px;
             padding: 20px 0;
             text-align: center;

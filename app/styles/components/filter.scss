@@ -9,15 +9,15 @@
     opacity: .5;
     position: relative;
     &:hover {
-        @include transition (opacity .2s linear);
         color: $grayer;
         opacity: 1;
+        transition: opacity .2s linear;
     }
     &.selected,
     &.active {
-        @include transition (opacity .2s linear);
         color: $grayer;
         opacity: 1;
+        transition: opacity .2s linear;
     }
     .name,
     .number {
@@ -35,14 +35,14 @@
         top: 0;
     }
     .icon-delete {
-        @include transition(color .3s linear);
         color: $grayer;
         position: absolute;
         right: .5rem;
         top: .5rem;
+        transition: color .3s linear;
         &:hover {
-            @include transition(color .3s linear);
             color: $red;
+            transition: color .3s linear;
         }
     }
 }

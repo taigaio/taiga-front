@@ -65,7 +65,6 @@
     }
     li {
         @include table-flex-child(1, 230px, 0, 23.5%);
-        @include transition(background-color .3s linear);
         background-color: rgba($white, .5);
         color: $whitish;
         height: 130px;
@@ -73,13 +72,14 @@
         margin-right: 1rem;
         overflow: hidden;
         position: relative;
+        transition: background-color .3s linear;
         &:hover {
-            @include transition(background-color .3s linear);
             background-color: rgba($fresh-taiga, .5);
             cursor: pointer;
+            transition: background-color .3s linear;
             p {
-                @include transition(color .3s linear);
                 color: $gray-light;
+                transition: color .3s linear;
             }
         }
     }
@@ -88,8 +88,8 @@
         line-height: 2rem;
     }
     p {
-        @include transition(color .3s linear);
         color: $grayer;
+        transition: color .3s linear;
     }
 }
 
@@ -138,11 +138,11 @@
             width: 100%;
             &.active,
             &:hover {
-                @include transition (background-color .3s linear);
                 background-color: $gray;
+                transition: background-color .3s linear;
                 .icon {
-                    @include transition (opacity .3s linear);
                     opacity: 1;
+                    transition: opacity .3s linear;
                 }
             }
         }

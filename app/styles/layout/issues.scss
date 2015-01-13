@@ -1,6 +1,6 @@
 .issues {
     .filters-bar {
-        @include flex(1);
+        flex: 1;
         width: 210px;
     }
     .filters-inner {

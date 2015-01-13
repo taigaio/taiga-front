@@ -16,16 +16,16 @@
             @extend %title;
             opacity: .4;
             &:hover {
-                @include transition (opacity .3s linear);
                 color: $blackish;
                 opacity: 1;
+                transition : opacity .3s linear;
 
             }
         }
         .active {
-            @include transition (opacity .3s linear);
             color: $blackish;
             opacity: 1;
+            transition : opacity .3s linear;
         }
         .icon {
             padding-right: .5rem;

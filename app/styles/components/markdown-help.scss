@@ -4,12 +4,12 @@ a.help-button {
     color: $gray-light;
     &:hover {
         span {
-            @include transition(color .2s linear);
             color: $grayer;
+            transition: color .2s linear;
         }
         .icon {
-            @include transition(color .2s linear);
             color: $fresh-taiga;
+            transition: color .2s linear;
         }
     }
     .icon {

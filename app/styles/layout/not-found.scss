@@ -1,18 +1,18 @@
 .error-main {
     @extend %background-taiga;
-    @include display(flex);
-    @include align-items(center);
-    @include flex-direction(row);
-    @include justify-content(center);
+    align-items: center;
     bottom: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     left: 0;
     position: fixed;
     right: 0;
     top: 0;
     z-index: 999;
     .error-container {
-        @include flex-basis(400px);
         color: $white;
+        flex-basis: 400px;
         text-align: center;
     }
     .logo-svg {

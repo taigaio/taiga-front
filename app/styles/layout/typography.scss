@@ -93,8 +93,8 @@ a:visited {
     color: $grayer;
     text-decoration: none;
     &:hover {
-        @include transition (color .3s linear);
         color: $green-taiga;
+        transition: color .3s linear;
     }
 }
 

@@ -45,8 +45,8 @@
         display: block;
         text-align: center;
         &:hover {
-            @include transition (color .3s linear);
             color: $fresh-taiga;
+            transition: color .3s linear;
         }
         span {
             display: block;
@@ -60,8 +60,8 @@
         }
     }
     .active {
-        @include transition (color .3s linear);
         color: $fresh-taiga;
+        transition: color .3s linear;
     }
 }
 
@@ -78,8 +78,8 @@
             text-align: left;
             text-transform: none;
             &:hover {
-                @include transition (color .2s linear);
                 color: $fresh-taiga;
+                transition: color .2s linear;
             }
         }
     }
@@ -87,8 +87,8 @@
         margin: 0 5px 10px;
         width: 80%;
         &:hover {
-            @include transition(border-color .3s linear);
             border-color: $fresh-taiga;
+            transition: border-color .3s linear;
         }
     }
     .user-settings {
@@ -100,8 +100,8 @@
             color: $whitish;
             margin-right: .5rem;
             &:hover {
-                @include transition (color .3s linear);
                 color: $fresh-taiga;
+                transition: color .3s linear;
             }
         }
     }

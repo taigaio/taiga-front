@@ -26,6 +26,7 @@ runSequence = require('run-sequence')
 lazypipe = require('lazypipe')
 rimraf = require('rimraf')
 imagemin = require('gulp-imagemin')
+autoprefixer = require('gulp-autoprefixer')
 
 mainSass = require("./main-sass").files
 
@@ -168,6 +169,9 @@ gulp.task "css-lint-app", ->
 gulp.task "css-join", ["css-lint-app"], ->
     gulp.src(mainSass.concat([paths.tmpStylesExtras]))
         .pipe(concat("app.css"))
+        .pipe(autoprefixer({
+            cascade: false
+        }))
         .pipe(gulp.dest(paths.tmp))
 
 gulp.task "css-app", (cb) ->

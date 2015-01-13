@@ -9,13 +9,13 @@
     &:hover {
         .icon-edit,
         .icon-drag-h {
-            @include transition(opacity .2s linear);
             opacity: 1;
+            transition: opacity .2s linear;
         }
     }
     &.ui-sortable-helper {
-        @include transition(box-shadow .3s linear);
         box-shadow: 1px 1px 15px rgba($black, .4);
+        transition: box-shadow .3s linear;
     }
     &.blocked {
         background: $red;
@@ -47,8 +47,8 @@
         img {
             margin: 0 auto;
             &:hover {
-                @include transition(border .3s linear);
                 border: 2px solid $green-taiga;
+                transition: border .3s linear;
             }
         }
         .assigned-to {
@@ -83,13 +83,13 @@
     .icon-edit,
     .icon-drag-h {
         @extend %large;
-        @include transition(opacity .2s linear);
         color: $postit-hover;
         opacity: 0;
         position: absolute;
+        transition: opacity .2s linear;
         &:hover {
-            @include transition(color .3s linear);
             color: darken($postit-hover, 15%);
+            transition: color .3s linear;
         }
     }
 }
@@ -160,9 +160,9 @@
     }
     .icon-drag-h {
         @extend %medium;
-        @include transform(rotate(90deg));
         cursor: move;
         right: .1rem;
+        transform: rotate(90deg);
     }
     .kanban-tag {
         border-top: .2rem solid;

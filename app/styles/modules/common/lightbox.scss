@@ -14,8 +14,8 @@
             border-right: 1px solid $gray-light;
         }
         &:hover {
-            @include transition(color .2s linear);
             color: $grayer;
+            transition: color .2s linear;
         }
     }
     .active {
@@ -40,12 +40,12 @@
 
     label {
         @extend %button;
-        @include transition(all .2s ease-in);
         border: 1px solid $gray-light;
         color: $grayer;
         cursor: pointer;
         display: block;
         padding: 7px 30px;
+        transition: all .2s ease-in;
         &:hover {
             span {
                 color: $white;
@@ -73,21 +73,20 @@
         .requirement,
         .iocaine {
             &:hover {
-                @include transition(all .2s ease-in);
                 background: $fresh-taiga;
                 border: 1px solid $fresh-taiga;
                 color: $white;
-
+                transition: all .2s ease-in;
             }
         }
 
         .blocked {
             padding: 8px 30px;
             &:hover {
-                @include transition(all .2s ease-in);
                 background: $red-light;
                 border: 1px solid $red-light;
                 color: $white;
+                transition: all .2s ease-in;
             }
         }
 
@@ -207,15 +206,15 @@
         @include table-flex-child(0, 600px, 0, 600px);
     }
     .last-sprint-name {
-        @include transition (opacity .3s linear);
         color: $gray;
         opacity: 1;
         position: absolute;
         right: 1rem;
         top: .7rem;
+        transition: opacity .3s linear;
         &.disappear {
-            @include transition (opacity .3s linear);
             opacity: 0;
+            transition: opacity .3s linear;
         }
     }
     .dates {
@@ -238,12 +237,12 @@
         margin-top: 1rem;
         text-align: right;
         a {
-            @include transition (color .3s linear);
             color: $gray-light;
             margin-left: .5rem;
+            transition: color .3s linear;
             &:hover {
-                @include transition (color .3s linear);
                 color: $red;
+                transition: color .3s linear;
             }
         }
     }
@@ -440,7 +439,7 @@
             cursor: pointer;
         }
         &:hover {
-            @include transition(background .3s linear);
+            transition: background .3s linear;
         }
         &.active {
             .icon {

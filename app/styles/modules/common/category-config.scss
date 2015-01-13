@@ -4,9 +4,9 @@
         border-top: 1px solid $gray-light;
     }
     .resume {
-        @include display(flex);
-        @include align-items(space-between);
+        align-items: space-between;
         cursor: pointer;
+        display: flex;
         padding: 1rem;
         position: relative;
     }
@@ -19,7 +19,7 @@
         padding-right: 5px;
     }
     .summary-role {
-        @include flex(1);
+        flex: 1;
         width: 280px;
         .role-summary-single {
             background: $gray-light;
@@ -36,8 +36,8 @@
         }
     }
     .icon {
-        @include flex(1);
         @extend %xlarge;
+        flex: 1;
         text-align: right;
     }
     .category-items {
@@ -49,10 +49,10 @@
         }
     }
     .category-item {
-        @include display(flex);
-        @include justify-content(space-between);
-        @include align-items(center);
+        align-items: center;
         border-bottom: 1px solid $very-light-gray;
+        display: flex;
+        justify-content: space-between;
         padding: .5rem .5rem .5rem 2rem;
         &:last-child {
             border-bottom: 0;

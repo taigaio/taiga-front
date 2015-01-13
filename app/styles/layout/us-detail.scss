@@ -3,14 +3,14 @@
     .us-title {
         @extend %large;
         @extend %text;
-        @include transition(all .2s linear);
         background: $whitish;
         margin-bottom: .5rem;
         padding: 1rem;
         position: relative;
+        transition: all .2s linear;
         &.blocked {
-            @include transition(all .2s linear);
             background: $red;
+            transition: all .2s linear;
             vertical-align: middle;
             .us-title-text,
             input {
@@ -21,8 +21,8 @@
             .us-related-task {
                 color: $white;
                 a {
-                    @include transition(color .3s linear);
                     color: $white;
+                    transition: color .3s linear;
                     &:hover {
                         color: $red-light;
                     }
@@ -33,8 +33,8 @@
                 color: $white;
                 float: right;
                 &:hover {
-                    @include transition(color .3s linear);
                     color: $red-light;
+                    transition: color .3s linear;
                 }
             }
             .issue-nav {
@@ -59,8 +59,8 @@
             max-width: 94%;
             &:hover {
                 .icon-edit {
-                    @include transition(opacity .3s linear);
                     opacity: 1;
+                    transition: opacity .3s linear;
                 }
             }
         }
@@ -95,9 +95,9 @@
             color: $gray-light;
             margin-top: .5rem;
             a {
-                @include transition(color .3s linear);
                 border-left: 1px solid $gray-light;
                 padding: 0 .2rem;
+                transition: color .3s linear;
                 &:hover {
                     color: $green-taiga;
                 }
@@ -155,9 +155,9 @@
     &:hover {
         .view-description {
             .edit {
-                @include transition(all .2s linear);
                 opacity: 1;
                 top: -1.5rem;
+                transition: all .2s linear;
             }
             .editable {
                 background: $whitish;
@@ -188,8 +188,8 @@
             top: 0;
         }
         &:hover {
-            @include transition(opacity .2s linear);
             opacity: .3;
+            transition: opacity .2s linear;
         }
     }
     .edit {
@@ -197,13 +197,13 @@
     }
     .view-description {
         .edit {
-            @include transition(all .2s linear);
             background: $whitish;
             left: 0;
             opacity: 0;
             padding: .2rem .5rem;
             position: absolute;
             top: 0;
+            transition: all .2s linear;
         }
     }
     .edit-description {
@@ -211,10 +211,10 @@
             top: .4rem;
         }
         .edit {
-            @include transition(all .2s linear);
             position: absolute;
             right: 2.5rem;
             top: .4rem;
+            transition: all .2s linear;
         }
     }
 }
@@ -256,13 +256,13 @@
     position: relative;
     > li {
         @include table-flex-child(1, 18%, 0);
-        @include transition(color .3s linear);
         border-right: 1px solid rgba($grayer, .3);
         color: rgba($grayer, .3);
         display: inline-block;
         margin: .5rem .1rem;
         position: relative;
         text-align: center;
+        transition: color .3s linear;
         &.active {
             color: rgba($green-taiga, 1);
         }
@@ -317,15 +317,15 @@
             margin: 0;
         }
         div {
-            @include transition(background .2s ease-in);
             background: darken($whitish, 5%);
             padding: .5rem;
             padding-right: 1rem;
+            transition: background .2s ease-in;
         }
         .clickable {
             &:hover {
-                @include transition(background .2s ease-in);
                 background: darken($whitish, 10%);
+                transition: background .2s ease-in;
             }
         }
     }
@@ -338,8 +338,8 @@
         color: darken($whitish, 20%);
         float: right;
         &.loading span {
-            @include animation (loading .5s linear);
-            @include animation (spin 1s linear infinite);
+            animation: loading .5s linear;
+            animation: spin 1s linear infinite;
         }
     }
 }

@@ -18,17 +18,17 @@
             padding: 1rem 0 1rem 1rem;
             &:hover,
             &.active {
-                @include transition (color .3s linear);
                 color: $green-taiga;
+                transition : color .3s linear;
                 .icon {
-                    @include transition (opacity .3s linear);
                     opacity: 1;
+                    transition : opacity .3s linear;
                 }
             }
         }
         .active {
-            @include transition (opacity .3s linear);
             opacity: 1;
+            transition : opacity .3s linear;
         }
         .icon {
             color: $blackish;

@@ -91,18 +91,18 @@
         @extend %xlarge;
         margin-right: .4rem;
         &.icon-stats {
-            @include transition(color .3s linear);
             color: $gray;
             float: right;
+            transition: color .3s linear;
             &:hover {
-                @include transition(color .3s linear);
                 color: $fresh-taiga;
+                transition: color .3s linear;
             }
             &.active {
                 color: $fresh-taiga;
                 &:hover {
-                    @include transition(color .3s linear);
                     color: $gray;
+                    transition: color .3s linear;
                 }
             }
         }
