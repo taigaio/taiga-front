@@ -95,6 +95,7 @@ body {
 .menu-secondary {
     background: $whitish;
     flex: 0 0 auto;
+    min-height: 100vh;
     min-width: 0;
     padding: 2rem 1rem;
     width: 320px;
@@ -118,6 +119,7 @@ body {
 .menu-tertiary {
     background-color: $dark-grayish-lime-green;
     flex: 0 0 auto;
+    min-height: 100vh;
     padding: 2em 1em;
     width: 255px;
 }
