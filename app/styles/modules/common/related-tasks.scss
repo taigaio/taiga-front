@@ -4,8 +4,11 @@
 }
 
 .related-tasks-header {
-    @include table-flex(space-between, center, flex, row, wrap, space-between);
+    align-content: space-between;
+    align-items: center;
     background: $whitish;
+    display: flex;
+    justify-content: space-between;
     padding: .5rem 1rem;
     .related-tasks-title {
         @extend %medium;
@@ -26,8 +29,11 @@
     width: 100%;
     .row {
         @extend %small;
-        @include table-flex(center, center, flex, row, wrap, center);
+        align-content: center;
+        align-items: center;
         border-bottom: 1px solid $whitish;
+        display: flex;
+        justify-content: center;
         padding: .5rem 0 .5rem .5rem;
         position: relative;
         text-align: left;
@@ -43,13 +49,14 @@
             border: 0;
         }
         .tasks {
-            @include table-flex-child(10, 78%, 0);
+            flex-basis: 78%;
+            flex-grow: 10;
         }
         .status {
-            @include table-flex-child(0, 10%, 0);
+            flex-basis: 10%;
         }
         .assigned-to {
-            @include table-flex-child(0, 10%, 0);
+            flex-basis: 10%;
         }
     }
     .related-task-create-form {

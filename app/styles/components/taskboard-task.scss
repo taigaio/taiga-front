@@ -32,49 +32,49 @@
         }
     }
     .taskboard-tagline {
-        @include table-flex();
         border-color: $postit-hover;
+        display: flex;
         height: .6rem;
     }
     .taskboard-tag {
-        @include table-flex-child(1, 0, 0, 0);
         border-top: .3rem solid $postit-hover;
+        flex-basis: 0;
+        flex-grow: 1;
         height: .6rem;
         z-index: 100;
     }
     .taskboard-task-inner {
-        @include table-flex();
+        display: flex;
         padding: .5rem;
     }
     .taskboard-user-avatar {
-        .avatar {
-            @include table-flex-child($flex-basis: 50px);
-            a {
-                @extend %small;
-                display: block;
-                text-align: center;
-            }
-            img {
-                margin: 0 auto;
-                &:hover {
-                    border: 2px solid $green-taiga;
-                    transition: border .3s linear;
-                }
-            }
-            figcaption {
-                color: darken($postit-hover, 15%);
-                display: none;
-                //display: block;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-                width: 100%;
+        flex-basis: 50px;
+        flex-grow: 1;
+        max-width: 55px;
+        a {
+            @extend %small;
+            display: block;
+            text-align: center;
+        }
+        img {
+            margin: 0 auto;
+            &:hover {
+                border: 2px solid $green-taiga;
+                transition: border .3s linear;
             }
         }
-        &.iocaine {
-            img {
-                filter: hue-rotate(150deg) saturate(200%);
-            }
+        figcaption {
+            color: darken($postit-hover, 15%);
+            display: none;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            width: 100%;
+        }
+    }
+    .iocaine {
+        img {
+            filter: hue-rotate(150deg) saturate(200%);
         }
     }
     .icon-iocaine {
@@ -101,7 +101,8 @@
     }
     .taskboard-text {
         @extend %small;
-        @include table-flex-child($flex-grow: 10, $flex-basis: 50px);
+        flex-basis: 50px;
+        flex-grow: 10;
         padding: 0 .5rem 0 1rem;
         word-wrap: break-word;
     }
