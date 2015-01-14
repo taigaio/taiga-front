@@ -202,6 +202,9 @@
         display: flex;
         img {
             flex-basis: 35px;
+            /* width & height they are only required for IE */
+            height: 35px;
+            width: 35px;
         }
         figcaption {
             margin-left: .5rem;
