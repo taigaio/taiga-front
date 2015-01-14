@@ -12,12 +12,12 @@
 }
 .logo-container {
     cursor: pointer;
-    margin: 20% 20% .7rem;
+    padding: 15px 15px 10px;
     object,
     img,
     svg {
-        height: 100%;
-        width: 100%;
+        height: 50px;
+        width: 50px;
     }
     span {
         @extend %large;
