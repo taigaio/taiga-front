@@ -7,23 +7,29 @@
     }
 
     .row {
-        @include table-flex($align-content: center, $align-items: center);
+        align-content: center;
+        align-items: center;
+        display: flex;
         padding: .5rem;
         &:hover {
             background: lighten($green-taiga, 60%);
             transition: background .2s ease-in;
         }
         .user-stories {
-            @include table-flex-child(5, 0, 1);
+            flex-basis: 0;
+            flex-grow: 10;
         }
         .status,
         .points {
-            @include table-flex-child(1, 100px, 0);
+            flex-basis:100px;
+            flex-grow: 1;
             padding: 0 1rem;
             text-align: center;
         }
         .assigned-to {
-            @include table-flex-child(1, 250px, 0);
+            flex-basis:150px;
+            flex-grow: 1;
+            padding: 0 1rem;
         }
     }
     .row-selected {
@@ -62,7 +68,7 @@
     }
     .table-main {
         @extend %small;
-        border-bottom: 1px solid $gray-light;
+        border-bottom: 1px solid $whitish;
     }
     .status,
     .points {
