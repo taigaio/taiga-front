@@ -29,11 +29,21 @@ debounce = @.taiga.debounce
 ## Common Lightbox Services
 #############################################################################
 
+# the lightboxContent hide/show doesn't have sense because is an IE hack
 class LightboxService extends taiga.Service
+    constructor: (@animationFrame) ->
+
     open: ($el) ->
+        lightboxContent = $el.children().not(".close")
+        lightboxContent.hide()
+
         $el.css('display', 'flex')
+
         $el.find('input,textarea').first().focus()
-        timeout(70, -> $el.addClass("open"))
+
+        @animationFrame.add =>
+            $el.addClass("open")
+            lightboxContent.show()
 
         docEl = angular.element(document)
         docEl.on "keydown.lightbox", (e) =>
@@ -56,7 +66,7 @@ class LightboxService extends taiga.Service
             @.close($(lightboxEl))
 
 
-module.service("lightboxService", LightboxService)
+module.service("lightboxService", ["animationFrame", LightboxService])
 
 
 class LightboxKeyboardNavigationService extends taiga.Service
