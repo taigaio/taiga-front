@@ -54,15 +54,17 @@ $column-margin: 0 10px 0 0;
     }
     .task-colum-name {
         @extend %large;
-        @include table-flex-child($column-flex, $column-width, $column-shrink, $column-width);
         @include table-flex();
         background: $whitish;
         border-top: 3px solid $gray-light;
+        flex: auto 0 auto;
         justify-content: space-between;
         margin: $column-margin;
+        max-width: $column-width;
         padding: .5rem .5rem .5rem 1rem;
         position: relative;
         text-transform: uppercase;
+        width: $column-width;
         &:last-child {
             margin-right: 0;
         }
