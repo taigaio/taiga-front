@@ -3,7 +3,7 @@
 ## 1.5.0 ??? (unreleased)
 
 ### Features
-- Archived milestones in the backlog view.
+- Not showing closed milestones by default in backlog view.
 
 ### Misc
 - Lots of small and not so small bugfixes.
