@@ -68,7 +68,6 @@ $column-margin: 0 10px 0 0;
         padding: .5rem .5rem .5rem 1rem;
         position: relative;
         text-transform: uppercase;
-        width: $column-width;
         &:last-child {
             margin-right: 0;
         }
@@ -100,8 +99,8 @@ $column-margin: 0 10px 0 0;
         flex-grow: $column-flex;
         flex-shrink: $column-shrink;
         margin: $column-margin;
+        max-width: $column-width;
         overflow-y: auto;
-        widows: $column-width;
         &:last-child {
             margin-right: 0;
         }
