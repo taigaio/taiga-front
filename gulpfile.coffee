@@ -204,10 +204,9 @@ gulp.task "styles", ["delete-tmp-styles"], ->
 ##############################################################################
 
 gulp.task "conf", ->
-    gulp.src("conf/main.json")
-        .pipe(wrap("angular.module('taigaBase').value('localconf', <%= contents %>);"))
-        .pipe(concat("conf.js"))
-        .pipe(gulp.dest(paths.tmp))
+    gulp.src("conf/conf.example.js")
+        .pipe(rename("conf.js"))
+        .pipe(gulp.dest(paths.dist + "js/"))
 
 gulp.task "locales", ->
     gulp.src("app/locales/en/app.json")
@@ -226,7 +225,7 @@ gulp.task "jslibs-watch", ->
     gulp.src(paths.js)
         .pipe(plumber())
         .pipe(concat("libs.js"))
-        .pipe(gulp.dest("dist/js/"))
+        .pipe(gulp.dest(paths.dist + "js/"))
 
 gulp.task "jslibs-deploy", ->
     gulp.src(paths.js)
@@ -235,7 +234,7 @@ gulp.task "jslibs-deploy", ->
         .pipe(concat("libs.js"))
         .pipe(uglify({mangle:false, preserveComments: false}))
         .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest("dist/js/"))
+        .pipe(gulp.dest(paths.dist + "js/"))
 
 gulp.task "app-watch", ["coffee", "conf", "locales"], ->
     _paths = [
