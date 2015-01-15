@@ -19,16 +19,16 @@
             &:hover,
             &.active {
                 color: $green-taiga;
-                transition : color .3s linear;
-                .icon {
-                    opacity: 1;
-                    transition : opacity .3s linear;
-                }
+                transition: color .3s linear;
+            }
+            &.active.icon {
+                opacity: 1;
+                transition: opacity .3s linear;
             }
         }
         .active {
             opacity: 1;
-            transition : opacity .3s linear;
+            transition: opacity .3s linear;
         }
         .icon {
             color: $blackish;

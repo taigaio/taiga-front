@@ -144,11 +144,14 @@
             padding: 1rem;
             text-transform: uppercase;
             width: 100%;
-            &.active,
             &:hover {
                 background-color: $gray;
                 transition: background-color .3s linear;
             }
+        }
+        .active {
+            background-color: $gray;
+            transition: background-color .3s linear;
         }
     }
     .projects-pagination {

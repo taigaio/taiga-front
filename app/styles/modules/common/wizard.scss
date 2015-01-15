@@ -55,8 +55,8 @@
         a {
             color: $white;
             display: inline-block;
-            flex-grow: 1;
             flex-basis: 40%;
+            flex-grow: 1;
             &:first-child {
                 margin-right: .5rem;
             }
@@ -121,12 +121,10 @@
             width: 25%;
         }
         .progress-state {
-            span {
-                &:nth-child(1) {
-                    color: rgba($white, 1);
-                    transition: color .3s ease-in-out;
-                    transition-delay: .6s;
-                }
+            span:nth-child(1) {
+                color: rgba($white, 1);
+                transition: color .3s ease-in-out;
+                transition-delay: .6s;
             }
         }
     }
@@ -137,13 +135,11 @@
             width: 75%;
         }
         .progress-state {
-            span {
-                &:nth-child(1),
-                &:nth-child(2) {
-                    color: rgba($white, 1);
-                    transition: color .3s ease-in-out;
-                    transition-delay: .6s;
-                }
+            span:nth-child(1),
+            span:nth-child(2) {
+                color: rgba($white, 1);
+                transition: color .3s ease-in-out;
+                transition-delay: .6s;
             }
         }
     }

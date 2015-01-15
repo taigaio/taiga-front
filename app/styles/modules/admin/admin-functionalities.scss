@@ -6,10 +6,10 @@
     .functionality {
         align-content: center;
         align-items: center;
+        background-color: $whitish;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        background-color: $whitish;
         margin-bottom: .3rem;
         margin-right: .3rem;
         opacity: .5;
@@ -24,8 +24,8 @@
         }
         .icon {
             @extend %xxlarge;
-            flex-grow: 1;
             flex-basis: 60px;
+            flex-grow: 1;
             margin: 0 auto;
             min-height: 60px;
         }
@@ -43,7 +43,7 @@
             }
         }
         span {
-            font-weight: bold;
+            @extend %bold;
             display: block;
         }
         select {

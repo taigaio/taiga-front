@@ -7,10 +7,7 @@ body {
     @extend %text;
     background: #fff; // fallback
     color: #444;
-    -webkit-font-smoothing: antialiased; // Fix for webkit renderin
     min-height: 100%;
-    -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
     width: 100%;
     .master {
         transition: transform 1s ease;

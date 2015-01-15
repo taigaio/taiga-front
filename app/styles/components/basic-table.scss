@@ -13,8 +13,8 @@
         width: 100%;
         @for $i from 1 through 8 {
             .width-#{$i} {
-                flex-grow: #{$i};
                 flex-basis: 50px;
+                flex-grow: #{$i};
             }
         }
         &:last-child {
