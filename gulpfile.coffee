@@ -239,7 +239,6 @@ gulp.task "jslibs-deploy", ->
 gulp.task "app-watch", ["coffee", "conf", "locales"], ->
     _paths = [
         paths.tmp + "app.js",
-        paths.tmp + "conf.js",
         paths.tmp + "locales.en.js"
     ]
 
@@ -250,7 +249,6 @@ gulp.task "app-watch", ["coffee", "conf", "locales"], ->
 gulp.task "app-deploy", ["coffee", "conf", "locales"], ->
     _paths = [
         paths.tmp + "app.js",
-        paths.tmp + "conf.js",
         paths.tmp + "locales.en.js"
     ]
 
