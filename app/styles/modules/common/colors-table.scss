@@ -36,6 +36,7 @@
             max-width: 100px;
             position: relative;
         }
+        .is-archived-column,
         .is-closed-column,
         .options-column,
         .status-wip-limit {
@@ -58,6 +59,11 @@
             max-width: 100px;
             opacity: 0;
             text-align: right;
+        }
+        .is-archived-column {
+            max-width: 130px;
+            padding: 0 0 0 10px;
+            text-align: center;
         }
         .is-closed-column {
             max-width: 130px;

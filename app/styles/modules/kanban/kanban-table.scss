@@ -22,6 +22,8 @@ $column-margin: 0 10px 0 0;
             .icon-bulk,
             .icon-vfold,
             .icon-vunfold,
+            .icon-open-eye,
+            .icon-closed-eye,
             span {
                 display: none;
             }
@@ -95,6 +97,15 @@ $column-margin: 0 10px 0 0;
         overflow-y: auto;
         &:last-child {
             margin-right: 0;
+        }
+        .kanban-column-intro {
+            @extend %bold;
+            @extend %small;
+            color: $gray-light;
+            margin: 1rem 2rem;
+            &.active {
+                color: $blackish;
+            }
         }
         .kanban-wip-limit {
             background: $red;

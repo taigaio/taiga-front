@@ -4,7 +4,7 @@
     margin: .2rem;
     position: relative;
     &:last-child {
-        margin: 0;
+        margin-bottom: 0;
     }
     &:hover {
         .icon-edit,
@@ -94,9 +94,36 @@
     }
 }
 
+
 .kanban-task-maximized {
     .kanban-task-inner {
         padding: 1rem 1rem 2rem;
+    }
+    .task-archived {
+        background: darken($whitish, 5%);
+        padding: .5rem;
+        text-align: left;
+        transition: background .3s linear;
+        &:hover {
+            background: darken($whitish, 8%);
+            transition: background .3s linear;
+        }
+        .task-archived-text {
+            flex: 1;
+        }
+        span {
+            color: $gray-light;
+        }
+        p {
+            @extend %small;
+            color: $gray-light;
+            margin: 0;
+            &:last-child {
+                color: $gray;
+                margin: .5rem 0;
+                text-align: center;
+            }
+        }
     }
     .avatar {
         @include table-flex-child($flex-basis: 50px);
@@ -133,6 +160,32 @@
 .kanban-task-minimized {
     .kanban-task-inner {
         padding: 0 .3rem;
+    }
+    .task-archived {
+        @extend %small;
+        background: darken($whitish, 5%);
+        padding: .3rem;
+        text-align: left;
+        .task-archived-text {
+            flex: 1;
+        }
+        span {
+            color: $gray-light;
+        }
+        .task-name {
+            display: inline-block;
+            max-width: 70%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        p {
+            color: $gray-light;
+            margin: 0;
+            &:last-child {
+                display: none;
+            }
+        }
     }
     .avatar {
         @include table-flex-child($flex-basis: 40px);
