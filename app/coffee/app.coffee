@@ -199,7 +199,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
 
     $provide.factory("versionCheckHttpIntercept", ["$q", "$tgConfirm", versionCheckHttpIntercept])
 
-    $httpProvider.interceptors.push('versionCheckHttpIntercept');
+    $httpProvider.interceptors.push('versionCheckHttpIntercept')
 
     window.checksley.updateValidators({
         linewidth: (val, width) ->
