@@ -94,20 +94,20 @@ body {
 
 .menu-secondary {
     background: $whitish;
-    flex: 1;
+    flex: 0 0 auto;
+    min-height: 100vh;
     min-width: 0;
     padding: 2rem 1rem;
-    width: 260px;
+    width: 320px;
     &.filters-bar {
-        flex: 0;
+        flex: 0 0 auto;
         padding: 0;
         transition: all .2s linear;
         width: 0;
         &.active {
-            flex: 1;
             padding: 2em 1em;
             transition: all .2s linear;
-            width: 210px;
+            width: 260px;
             .filters-inner {
                 opacity: 1;
                 transition: all .4s ease-in;
@@ -118,8 +118,10 @@ body {
 
 .menu-tertiary {
     background-color: $dark-grayish-lime-green;
-    flex: 1;
+    flex: 0 0 auto;
+    min-height: 100vh;
     padding: 2em 1em;
+    width: 255px;
 }
 
 .extrabar {
