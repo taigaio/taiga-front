@@ -4,6 +4,7 @@
 
 ### Features
 - Not showing closed milestones by default in backlog view.
+- In kanban view an archived user story status doesn't show his content by default.
 
 ### Misc
 - Lots of small and not so small bugfixes.
