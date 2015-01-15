@@ -29,7 +29,6 @@ class ConfigurationService
     @.$inject = ["localconf"]
 
     constructor: (localconf) ->
-        console.log localconf
         @.config = _.merge(_.clone(defaults, true), localconf)
 
     get: (key, defaultValue=null) ->
