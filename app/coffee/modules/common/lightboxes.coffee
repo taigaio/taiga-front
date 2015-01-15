@@ -505,7 +505,7 @@ AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationServic
         $scope.$watch "usersSearch", (searchingText) ->
             render(selectedUser, searchingText) if searchingText?
 
-        $el.on "click", ".watcher-single", debounce 2000, (event) ->
+        $el.on "click", ".watcher-single", (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
 
@@ -515,7 +515,7 @@ AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationServic
                 $scope.$broadcast("assigned-to:added", target.data("user-id"), selectedItem)
                 $scope.usersSearch = null
 
-        $el.on "click", ".remove-assigned-to", debounce 2000, (event) ->
+        $el.on "click", ".remove-assigned-to", (event) ->
             event.preventDefault()
             event.stopPropagation()
 
