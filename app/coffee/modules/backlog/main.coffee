@@ -159,6 +159,9 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             @scope.sprints = sprints
             @scope.openSprints = _.filter(sprints, (sprint) => not sprint.closed)
             @scope.closedSprints =  _.filter(sprints, (sprint) => sprint.closed)
+            if not @excludeClosedSprints
+                @scope.totalClosedMilestones = @scope.closedSprints.length
+                
             @scope.sprintsCounter = sprints.length
             @scope.sprintsById = groupBy(sprints, (x) -> x.id)
             @rootscope.$broadcast("sprints:loaded", sprints)
@@ -213,6 +216,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         return @rs.projects.getBySlug(@params.pslug).then (project) =>
             @scope.projectId = project.id
             @scope.project = project
+            @scope.totalClosedMilestones = project.total_closed_milestones
             @scope.$emit('project:loaded', project)
             @scope.points = _.sortBy(project.points, "order")
             @scope.pointsById = groupBy(project.points, (x) -> x.id)

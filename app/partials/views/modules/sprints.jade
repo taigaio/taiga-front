@@ -12,13 +12,13 @@ section.sprints
                                       tg-check-permission="add_milestone")
                     span.text + New sprint
 
-    div.sprint.sprint-open(ng-repeat="sprint in openSprints track by sprint.id" tg-backlog-sprint="sprint")
+    div.sprint.sprint-open(ng-repeat="sprint in openSprints track by sprint.id", tg-backlog-sprint="sprint", tg-sprint-sortable)
         include sprint
 
-    a.filter-closed-sprints(href="", ng-show="project.total_closed_milestones")
+    a.filter-closed-sprints(href="", ng-show="totalClosedMilestones")
         span.icon.icon-archive
         span(tg-backlog-toggle-closed-sprints-visualization="ctrl.excludeClosedSprints") Show closed sprints
         span.load
 
-    div.sprint.sprint-closed(ng-repeat="sprint in closedSprints track by sprint.id" tg-backlog-sprint="sprint")
+    div.sprint.sprint-closed(ng-repeat="sprint in closedSprints track by sprint.id" tg-backlog-sprint="sprint", tg-sprint-sortable)
         include sprint
