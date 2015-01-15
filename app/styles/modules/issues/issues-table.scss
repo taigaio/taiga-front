@@ -1,5 +1,5 @@
 .issues-table {
-    @include table-flex();
+    display: flex;
     margin-bottom: 2rem;
     &.empty {
         display: none;
@@ -7,7 +7,7 @@
     .row {
         &:hover {
             background: lighten($green-taiga, 60%);
-            transition : background .2s ease-in;
+            transition: background .2s ease-in;
         }
         .icon {
             display: inline;
@@ -15,7 +15,7 @@
     }
     .row-selected {
         background: lighten($green-taiga, 60%);
-        transition : background .2s ease-in;
+        transition: background .2s ease-in;
     }
     .title {
         @extend %medium;
@@ -33,21 +33,25 @@
         border-bottom: 1px solid darken($whitish, 4%);
     }
     .avatar {
-        @include table-flex(stretch, center, flex, row, wrap, flex-start);
+        align-items: center;
+        display: flex;
         img {
             width: 35px;
         }
         figcaption {
-            @include table-flex-child(1, 60%, 0);
+            flex-basis: 60%;
+            flex-grow: 1;
             margin-left: .5rem;
         }
     }
     .level-field {
-        @include table-flex-child(1, 70px, 0);
+        flex-basis: 70px;
+        flex-grow: 1;
         text-align: center;
     }
     .subject {
-        @include table-flex-child(7, 300px, 0);
+        flex-basis: 300px;
+        flex-grow: 7;
         padding-right: 1rem;
         span {
             &:first-child {
@@ -58,13 +62,15 @@
     .issue-field,
     .assigned-field,
     .created-field {
-        @include table-flex-child(1, 100px, 0);
+        flex-basis: 100px;
+        flex-grow: 1;
         padding: 0 1rem;
         position: relative;
         text-align: left;
     }
     .assigned-field {
-        @include table-flex-child(2, 100px, 0);
+        flex-basis: 100px;
+        flex-grow: 2;
     }
     .issue-assignedto {
         cursor: pointer;

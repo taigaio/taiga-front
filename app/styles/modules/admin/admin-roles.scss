@@ -13,7 +13,7 @@
         transition: opacity .3s linear;
     }
     .edit-role {
-        @include table-flex(stretch, left, center, row, wrap);
+        align-items: left;
         background-color: $whitish;
         display: none;
         margin-bottom: 1rem;
@@ -55,7 +55,7 @@
         overflow: hidden;
         position: relative;
         width: 65px;
-        input[type=checkbox] {
+        input {
             cursor: pointer;
             height: 500px;
             left: -10px;
@@ -86,7 +86,7 @@
                 opacity: .6;
             }
         }
-        input[type=checkbox]:checked {
+        input:checked {
             + div {
                 background-color: #74a218;
                 margin-left: 50%;

@@ -1,5 +1,5 @@
 .duty-assigned-to {
-    @include table-flex();
+    display: flex;
     margin-top: 1rem;
     position: relative;
     &:hover {
@@ -22,14 +22,14 @@
         }
     }
     .user-avatar {
-        @include table-flex-child(1, 0);
+        flex-grow: 1;
         img {
             border-radius: 8%;
             width: 100%;
         }
     }
     .assigned-to {
-        @include table-flex-child(3, 0);
+        flex-grow: 3;
         margin-left: 1rem;
         margin-top: 15px;
         .assigned-title {

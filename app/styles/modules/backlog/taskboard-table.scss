@@ -31,8 +31,9 @@ $column-margin: 0 10px 0 0;
     }
     &.task-column,
     .task-column {
-        @include table-flex(flex-start);
-        flex-direction: row;
+        align-content: flex-start;
+        display: flex;
+        flex-direction: column;
     }
     .avatar-task-link {
         display: block;
@@ -52,16 +53,25 @@ $column-margin: 0 10px 0 0;
     position: relative;
     width: 100%;
     .taskboard-table-inner {
-        @include table-flex();
+        display: flex;
         overflow: hidden;
         position: absolute;
     }
     .task-colum-name {
         @extend %large;
+<<<<<<< HEAD
         @include table-flex();
         background: $whitish;
         border-top: 3px solid $gray-light;
         flex: auto 0 auto;
+=======
+        background: $whitish;
+        border-top: 3px solid $gray-light;
+        display: flex;
+        flex-basis: $column-width;
+        flex-grow: $column-flex;
+        flex-shrink: $column-shrink;
+>>>>>>> Removed flexbox mixins to vanilla CSS
         justify-content: space-between;
         margin: $column-margin;
         max-width: $column-width;
@@ -93,11 +103,9 @@ $column-margin: 0 10px 0 0;
             span {
                 display: none;
             }
-            .icon {
-                &.hfold,
-                &.hunfold {
-                    margin: 0;
-                }
+            .hfold,
+            .hunfold {
+                margin: 0;
             }
         }
     }
@@ -109,7 +117,9 @@ $column-margin: 0 10px 0 0;
     overflow-y: scroll;
     width: 100%;
     .task-column {
-        @include table-flex-child($column-flex, $column-width, $column-shrink, $column-width);
+        flex-basis: $column-width;
+        flex-grow: $column-flex;
+        flex-shrink: $column-shrink;
         margin: $column-margin;
         max-width: $column-width;
         width: $column-width;
@@ -128,7 +138,7 @@ $column-margin: 0 10px 0 0;
         }
     }
     .task-row {
-        @include table-flex();
+        display: flex;
         margin-bottom: .5rem;
         min-height: 10rem;
         width: 100%;
@@ -142,15 +152,16 @@ $column-margin: 0 10px 0 0;
             .taskboard-userstory-box {
                 background: rgba($red, .6);
                 border-radius: 3px;
-                a,
-                .points-value {
-                    color: rgba($white, .9);
-                    transition: color .3s linear;
-                    &:hover {
-                        color: rgba($white, 1);
-                        transition: color .3s linear;
-                    }
-                }
+            }
+            a,
+            .points-value {
+                color: rgba($white, .9);
+                transition: color .3s linear;
+            }
+            a:hover,
+            .points-value:hover {
+                color: rgba($white, 1);
+                transition: color .3s linear;
             }
             .taskboard-tasks-box {
                 background: rgba($red, .1);
@@ -158,15 +169,13 @@ $column-margin: 0 10px 0 0;
         }
         &.row-fold {
             min-height: 0;
-            .taskboard-userstory-box {
-                .us-title {
-                    @include ellipsis(100%);
-                }
-                .points-value,
-                .icon-plus,
-                .icon-bulk {
-                    display: none;
-                }
+            .us-title {
+                @include ellipsis(100%);
+            }
+            .points-value,
+            .icon-plus,
+            .icon-bulk {
+                display: none;
             }
         }
     }

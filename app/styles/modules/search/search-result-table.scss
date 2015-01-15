@@ -17,7 +17,8 @@
         }
         .user-stories {
             flex-basis: 0;
-            flex-grow: 10;
+            flex-grow: 5;
+            flex-shrink: 1;
         }
         .status,
         .points {
@@ -27,9 +28,9 @@
             text-align: center;
         }
         .assigned-to {
-            flex-basis: 150px;
-            flex-grow: 1;
             padding: 0 1rem;
+            flex-basis: 250px;
+            flex-grow: 1;
         }
     }
     .row-selected {

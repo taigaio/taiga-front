@@ -1,6 +1,7 @@
 .backlog-table-header,
 .backlog-table-body {
-    @include table-flex();
+    display: flex;
+    flex-direction: column;
     width: 100%;
     &.show-tags {
         .tags-block {
@@ -9,8 +10,8 @@
     }
     .row {
         @extend %small;
-        @include table-flex();
         border-bottom: 1px solid $gray-light;
+        display: flex;
         padding: .5rem 0 .5rem .5rem;
         text-align: left;
         width: 100%;
@@ -26,10 +27,12 @@
 
         }
         .status {
-            @include table-flex-child(0, 150px, 0);
+            flex-basis: 150px;
+            flex-grow: 0;
         }
         .points {
-            @include table-flex-child(0, 125px, 0);
+            flex-basis: 125px;
+            flex-grow: 0;
         }
 
     }
@@ -136,11 +139,9 @@
             transition: background .2s ease-in;
         }
         .points {
-            .not-clickable {
-                &:hover {
-                    color: $black;
-                    cursor: text;
-                }
+            .not-clickable:hover {
+                color: $black;
+                cursor: text;
             }
         }
     }
@@ -149,16 +150,15 @@
         transition: background .2s ease-in;
     }
     .user-story-name {
-        @include table-flex($flex-wrap: nowrap);
+        display: flex;
+        flex-wrap: nowrap;
         input {
             flex-shrink: 0;
             margin-right: 1rem;
             vertical-align: super;
-            &:checked {
-                +a {
-                    color: $fresh-taiga;
-                    transition: color .2s ease-in;
-                }
+            &:checked+a {
+                color: $fresh-taiga;
+                transition: color .2s ease-in;
             }
         }
         a {

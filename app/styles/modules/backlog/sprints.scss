@@ -90,16 +90,16 @@
             margin-top: 5px;
         }
         .sprint-summary {
-            @include table-flex();
+            display: flex;
         }
         .sprint-date {
             @extend %large;
             @extend %title;
-            @include table-flex-child(1, 0, 0);
             color: $gray-light;
+            flex-flow: 1;
         }
         .sprint-points {
-            @include table-flex-child(1, 0, 0);
+            flex-grow: 1;
         }
         ul {
             float: right;
@@ -132,8 +132,8 @@
     }
     .sprint-table {
         .row {
-            @include table-flex();
             border-bottom: 1px solid $gray-light;
+            display: flex;
             padding: .5em 0;
             text-align: left;
             width: 100%;
@@ -158,7 +158,7 @@
         }
         .column-us {
             @extend %small;
-            @include table-flex-child(3, 0, 0);
+            flex-flow: 3;
             padding: 0 4px;
         }
         .us-name {
@@ -172,7 +172,7 @@
             }
         }
         .column-points {
-            @include table-flex-child(1, 0, 0);
+            flex-grow: 1;
             padding: 0 4px;
             text-align: right;
             &.closed {

@@ -1,28 +1,29 @@
 .home-projects-list,
 .home-project {
     @extend %background-taiga;
-    @include table-flex(center, center, flex, row, wrap, center);
+    align-content: center;
+    align-items: center;
     background-color: $black;
     background-position: center center;
     background-size: cover;
+    display: flex;
     height: 100%;
+    justify-content: center;
     left: 0;
     padding: 0;
     position: fixed;
     top: 0;
     width: 100%;
     .welcome-user {
-        @include table-flex();
+        display: flex;
         position: absolute;
         right: 1rem;
         top: 1rem;
         p {
             color: $whitish;
             margin-bottom: 0;
-            span {
-                &:before {
-                    content: ' ';
-                }
+            span:before {
+                content: ' ';
             }
         }
         .logout {
@@ -41,17 +42,20 @@
     }
 }
 .home-projects-wrapper {
-    @include table-flex-child(0, 1200px, 0, 1200px);
+    flex-grow: 1;
+    max-width: 1200px;
 }
 
 .home-projects-list-inner {
-    @include table-flex();
+    display: flex;
 }
 
 .recent-projects {
-    @include table-flex-child(8, 0, 0, 800px);
+    flex-grow: 8;
+    max-width: 800px;
     ul {
-        @include table-flex();
+        display: flex;
+        flex-wrap: wrap;
         margin: 0;
         padding: 0;
     }
@@ -64,15 +68,18 @@
         width: 100%;
     }
     li {
-        @include table-flex-child(1, 230px, 0, 23.5%);
         background-color: rgba($white, .5);
         color: $whitish;
+        flex-basis: 230px;
+        flex-grow: 1;
+        flex-shrink: 0;
         height: 130px;
         margin-bottom: 1rem;
         margin-right: 1rem;
         overflow: hidden;
         position: relative;
         transition: background-color .3s linear;
+        width: 23.5%;
         &:hover {
             background-color: rgba($fresh-taiga, .5);
             cursor: pointer;
@@ -104,13 +111,14 @@
 }
 
 .all-projects {
-    @include table-flex-child(1, 285px, 0, 285px);
     background-color: rgba(0, 0, 0, .5);
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
     margin-left: 1rem;
     max-height: 422px;
     padding: 1rem;
+    width: 285px;
     h1 {
         color: $whitish;
         flex-shrink: 0;
@@ -140,10 +148,6 @@
             &:hover {
                 background-color: $gray;
                 transition: background-color .3s linear;
-                .icon {
-                    opacity: 1;
-                    transition: opacity .3s linear;
-                }
             }
         }
     }

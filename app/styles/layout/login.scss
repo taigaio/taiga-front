@@ -1,6 +1,5 @@
 .login-main {
     @extend %triangled-bg;
-    //@include table-flex(center, center, flex, row, wrap, center);
     align-items: center;
     bottom: 0;
     display: flex;

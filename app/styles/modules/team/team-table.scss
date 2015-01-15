@@ -49,7 +49,7 @@
         &:hover {
             .icon {
                 color: $red;
-                transition : color .3s linear;
+                transition: color .3s linear;
             }
         }
     }
@@ -67,9 +67,11 @@
         }
     }
     .avatar {
-        @include table-flex(stretch, center, flex, row, wrap, flex-start);
+        align-items: center;
+        display: flex;
         img {
-            @include table-flex-child(1, 66px, 0);
+            flex-basis: 66px;
+            flex-grow: 1;
             max-width: 66px;
         }
         figcaption {

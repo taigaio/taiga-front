@@ -1,6 +1,8 @@
 .project-values-row {
-    @include table-flex(stretch, center, flex, row, wrap, center);
+    align-items: center;
     border-bottom: 1px solid $whitish;
+    display: flex;
+    justify-content: center;
     padding: 1rem;
     div {
         margin-left: 1rem;
@@ -36,10 +38,12 @@
 }
 
 .project-values-name {
-    @include table-flex-child(3, 0, 0);
+    flex-basis: 0;
+    flex-grow: 3;
 }
 .project-values-value {
-    @include table-flex-child(1, 0, 0);
+    flex-basis: 0;
+    flex-grow: 1;
     .checksley-error-list {
         left: 0;
         right: auto;
@@ -50,7 +54,8 @@
 
 .project-values-isclosed,
 .project-values-settings {
-    @include table-flex-child(1, 0, 0);
+    flex-basis: 0;
+    flex-grow: 1;
     text-align: right;
 }
 

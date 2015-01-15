@@ -19,15 +19,16 @@
     }
 }
 .change-entry {
-    @include table-flex;
     border-bottom: 1px solid $gray-light;
+    display: flex;
     padding: .5rem;
     &:last-child {
         border-bottom: 0;
     }
     .activity-changed,
     .activity-fromto {
-        @include table-flex-child(1, 50px, 0);
+        flex-basis: 50px;
+        flex-grow: 1;
     }
     .activity-changed {
         @extend %bold;
@@ -108,7 +109,7 @@
         opacity: 0;
     }
 }
-a.show-more-comments {
+.show-more-comments {
     @extend %small;
     border-bottom: 1px solid $gray-light;
     border-top: 1px solid $gray-light;
@@ -148,8 +149,8 @@ a.show-more-comments {
     }
 }
 .activity-single {
-    @include table-flex;
     border-bottom: 1px solid $gray-light;
+    display: flex;
     padding: 2rem 0;
     position: relative;
     &:hover {
@@ -212,7 +213,8 @@ a.show-more-comments {
         margin-bottom: .5rem;
     }
     .activity-user {
-        @include table-flex-child(1, 50px, 0);
+        flex-basis: 50px;
+        flex-grow: 1;
         img {
             max-width: 70px;
             width: 100%;
@@ -224,7 +226,8 @@ a.show-more-comments {
     }
 
     .activity-content {
-        @include table-flex-child(20, 150px, 0);
+        flex-basis: 150px;
+        flex-grow: 20;
     }
     .changes {
         background: $whitish;

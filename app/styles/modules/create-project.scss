@@ -1,7 +1,9 @@
 .create-project {
     @extend %triangled-bg;
-    @include table-flex(center, center, flex, row, wrap, center);
+    align-content: center;
+    align-items: center;
     bottom: 0;
+    justify-content: center;
     left: 0;
     position: fixed;
     right: 0;
@@ -11,7 +13,8 @@
         margin-bottom: 1rem;
     }
     .create-project-container {
-        @include table-flex-child(0, 400px, 0, 400px);
+        flex-basis: 400px;
+        flex-grow: 0;
     }
     h1 {
         color: $white;

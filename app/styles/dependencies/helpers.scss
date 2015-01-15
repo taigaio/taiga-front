@@ -1,21 +1,3 @@
-//Flexbox FTW
-%table-flex {
-    align-content: stretch;
-    align-items: stretch;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-}
-
-%table-flex-child {
-    flex-basis: 300px;
-    flex-grow: 1;
-    flex-shrink: 0;
-    width: 300px;
-}
-
-
 // __Font Sizes__ //
 %xsmall {font-size: .5rem;}
 %small {font-size: .8rem;}
@@ -48,7 +30,10 @@
         top: 2rem;
     }
     &.open {
-        @include table-flex(center, center, flex, row, wrap, center);
+        align-content: center;
+        align-items: center;
+        display: flex;
+        justify-content: center;
         opacity: 1;
         transition: opacity .3s ease;
     }
