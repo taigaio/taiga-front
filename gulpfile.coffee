@@ -284,7 +284,7 @@ gulp.task "copy-images",  ->
         .pipe(gulp.dest("#{paths.dist}/images/"))
 
 gulp.task "copy-plugin-templates",  ->
-    gulp.src("#{paths.app}/plugins/**/templates/*")
+    gulp.src("#{paths.app}/plugins/**/templates/**/*.html")
         .pipe(gulp.dest("#{paths.dist}/plugins/"))
 
 gulp.task "copy-extras", ->
