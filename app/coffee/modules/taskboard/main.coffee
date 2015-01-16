@@ -346,7 +346,7 @@ TaskboardSquishColumnDirective = (rs) ->
 
         $scope.foldUs = (us) ->
             if !us
-                $scope.usFolded["unassigned"] = !!!$scope.usFolded["unassigned"]
+                $scope.usFolded[null] = !!!$scope.usFolded[null]
             else
                 $scope.usFolded[us.id] = !!!$scope.usFolded[us.id]
 
@@ -390,11 +390,11 @@ TaskboardSquishColumnDirective = (rs) ->
             $el.find('.taskboard-table-inner').css("width", totalWidth)
 
         recalculateStatusColumnWidth = (statusId) =>
-            statusFoldedWidth = 0
+            #unassigned ceil
+            statusFoldedWidth = getCeilWidth(null, statusId)
 
             _.forEach $scope.userstories, (us) ->
                 width = getCeilWidth(us.id, statusId)
-
                 statusFoldedWidth = width if width > statusFoldedWidth
 
             setStatusColumnWidth(statusId, statusFoldedWidth)
