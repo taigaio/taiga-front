@@ -59,19 +59,12 @@ $column-margin: 0 10px 0 0;
     }
     .task-colum-name {
         @extend %large;
-<<<<<<< HEAD
-        @include table-flex();
-        background: $whitish;
-        border-top: 3px solid $gray-light;
-        flex: auto 0 auto;
-=======
         background: $whitish;
         border-top: 3px solid $gray-light;
         display: flex;
         flex-basis: $column-width;
         flex-grow: $column-flex;
         flex-shrink: $column-shrink;
->>>>>>> Removed flexbox mixins to vanilla CSS
         justify-content: space-between;
         margin: $column-margin;
         max-width: $column-width;

@@ -113,6 +113,7 @@
             white-space: nowrap;
         }
         input {
+            @extend %medium;
             margin-right: 1rem;
             padding: 3px;
             width: 85%;
@@ -123,8 +124,7 @@
             text-align: center;
             width: 100%;
             span {
-                animation: loading .5s linear;
-                animation: spin 1s linear infinite;
+                animation: loading .5s linear, spin 1s linear infinite;
             }
         }
     }
@@ -209,7 +209,7 @@
         display: flex;
         img {
             flex-basis: 35px;
-            /* width & height they are only required for IE */
+            // width & height they are only required for IE
             height: 35px;
             width: 35px;
         }
