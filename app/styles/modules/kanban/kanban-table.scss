@@ -101,6 +101,7 @@ $column-margin: 0 10px 0 0;
         margin: $column-margin;
         max-width: $column-width;
         overflow-y: auto;
+        widows: $column-width;
         &:last-child {
             margin-right: 0;
         }

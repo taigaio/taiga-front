@@ -100,6 +100,10 @@ urls = {
 
     # Feedback
     "feedback": "/feedback"
+
+    # Export/Import
+    "exporter": "/exporter"
+    "importer": "/importer/load_dump"
 }
 
 # Initialize api urls service

@@ -4,8 +4,14 @@ form
         input(type="text", placeholder="Search in...", class="search-project")
         a(class="icon icon-search")
 
-div(class="create-project-button")
-    a(class="button button-green" href="") Create project
+div(class="create-project-button-wrapper")
+   a(class="button button-green create-project-button" href="" title="Create new project")
+       Create project
+
+   div(tg-import-project-button)
+       a(class="button button-blackish import-project-button" href="" title="Import project")
+           span(class="icon icon-upload")
+       input(class="import-file hidden" type="file")
 
 div(class="projects-pagination" tg-projects-pagination)
     a(class="v-pagination-previous icon icon-arrow-up", href="")

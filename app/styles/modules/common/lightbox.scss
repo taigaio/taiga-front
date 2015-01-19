@@ -389,14 +389,56 @@
 
 
 .lightbox-generic-success,
-.lightbox-generic-error {
+.lightbox-generic-error,
+.lightbox-generic-loading {
     section {
-        flex-basis: 420px;
+        flex-basis: 500px;
         flex-grow: 0;
-        width: 420px;
+        flex-shrink: 0;
+        width: 500px;
     }
     h2 {
         line-height: 2rem;
+    }
+    p {
+        text-align: center;
+    }
+}
+
+.lightbox-generic-loading {
+    .spin {
+        margin: 1rem auto;
+        width: 5rem;
+        img {
+            @extend %loading-spinner;
+            max-height: 100%;
+            max-width: 100%;
+            width: 100%;
+        }
+    }
+    .progress-bar-wrapper {
+        background: darken($whitish, 5%);
+        height: 30px;
+        margin-bottom: 1rem;
+        padding: 3px;
+        position: relative;
+        .bar {
+            background: $fresh-taiga;
+            height: 24px;
+            position: absolute;
+            transition: width .1s linear;
+        }
+        .progress {
+            @extend %title;
+            @extend %bold;
+            @extend %large;
+            background: darken($whitish, 5%);
+            bottom: 35px;
+            color: $gray;
+            padding: .3rem;
+            position: absolute;
+            transition: left .1s linear;
+        }
     }
 }
 

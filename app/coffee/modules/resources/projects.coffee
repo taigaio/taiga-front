@@ -21,15 +21,17 @@
 
 
 taiga = @.taiga
+sizeFormat = @.taiga.sizeFormat
 
-resourceProvider = ($repo, $http, $urls) ->
+
+resourceProvider = ($config, $repo, $http, $urls, $auth, $q, $rootScope) ->
     service = {}
 
-    service.get = (id) ->
-        return $repo.queryOne("projects", id)
+    service.get = (projectId) ->
+        return $repo.queryOne("projects", projectId)
 
-    service.getBySlug = (slug) ->
-        return $repo.queryOne("projects", "by_slug?slug=#{slug}")
+    service.getBySlug = (projectSlug) ->
+        return $repo.queryOne("projects", "by_slug?slug=#{projectSlug}")
 
     service.list = ->
         return $repo.queryMany("projects")
@@ -55,12 +57,73 @@ resourceProvider = ($repo, $http, $urls) ->
     service.memberStats = (projectId) ->
         return $repo.queryOneRaw("projects", "#{projectId}/member_stats")
 
-    service.tagsColors = (id) ->
-        return $repo.queryOne("projects", "#{id}/tags_colors")
+    service.tagsColors = (projectId) ->
+        return $repo.queryOne("projects", "#{projectId}/tags_colors")
+
+    service.export = (projectId) ->
+        url = "#{$urls.resolve("exporter")}/#{projectId}"
+        return $http.get(url)
+
+    service.import = (file, statusUpdater) ->
+        defered = $q.defer()
+
+        maxFileSize = $config.get("maxUploadFileSize", null)
+        if maxFileSize and file.size > maxFileSize
+            response = {
+                status: 413,
+                data: _error_message: "'#{file.name}' (#{sizeFormat(file.size)}) is too heavy for our oompa
+                                       loompas, try it with a smaller than (#{sizeFormat(maxFileSize)})"
+            }
+            defered.reject(response)
+            return defered.promise
+
+        uploadProgress = (evt) =>
+            percent = Math.round((evt.loaded / evt.total) * 100)
+            message = "Uloaded #{sizeFormat(evt.loaded)} of #{sizeFormat(evt.total)}"
+            statusUpdater("in-progress", null, message, percent)
+
+        uploadComplete = (evt) =>
+            statusUpdater("done", "Importing Project", "This process can take a while, please keep the window open.") # i18n
+
+        uploadFailed = (evt) =>
+            statusUpdater("error")
+
+        complete = (evt) =>
+            response = {}
+            try
+                response.data = JSON.parse(evt.target.responseText)
+            catch
+                response.data = {}
+            response.status = evt.target.status
+
+            defered.resolve(response) if response.status in [201, 202]
+            defered.reject(response)
+
+        failed = (evt) =>
+            defered.reject("fail")
+
+        data = new FormData()
+        data.append('dump', file)
+
+        xhr = new XMLHttpRequest()
+        xhr.upload.addEventListener("progress", uploadProgress, false)
+        xhr.upload.addEventListener("load", uploadComplete, false)
+        xhr.upload.addEventListener("error", uploadFailed, false)
+        xhr.upload.addEventListener("abort", uploadFailed, false)
+        xhr.addEventListener("load", complete, false)
+        xhr.addEventListener("error", failed, false)
+
+        xhr.open("POST", $urls.resolve("importer"))
+        xhr.setRequestHeader("Authorization", "Bearer #{$auth.getToken()}")
+        xhr.setRequestHeader('Accept', 'application/json')
+        xhr.send(data)
+
+        return defered.promise
 
     return (instance) ->
         instance.projects = service
 
 
 module = angular.module("taigaResources")
-module.factory("$tgProjectsResourcesProvider", ["$tgRepo", "$tgHttp", "$tgUrls", resourceProvider])
+module.factory("$tgProjectsResourcesProvider", ["$tgConfig", "$tgRepo", "$tgHttp", "$tgUrls", "$tgAuth", "$q",
+                                                resourceProvider])

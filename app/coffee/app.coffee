@@ -81,6 +81,8 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         {templateUrl: "admin/admin-project-default-values.html"})
     $routeProvider.when("/project/:pslug/admin/project-profile/modules",
         {templateUrl: "admin/admin-project-modules.html"})
+    $routeProvider.when("/project/:pslug/admin/project-profile/export",
+        {templateUrl: "admin/admin-project-export.html"})
     $routeProvider.when("/project/:pslug/admin/project-values/us-status",
         {templateUrl: "admin/admin-project-values-us-status.html"})
     $routeProvider.when("/project/:pslug/admin/project-values/us-points",
@@ -186,7 +188,8 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
 
     # If there is an error in the version throw a notify error
     versionCheckHttpIntercept = ($q, $confirm) ->
-        versionErrorMsg = "Someone inside Taiga has changed this before and our Oompa Loompas cannot apply your changes. Please reload and apply your changes again (they will be lost)." #TODO: i18n
+        versionErrorMsg = "Someone inside Taiga has changed this before and our Oompa Loompas cannot apply your changes.
+                           Please reload and apply your changes again (they will be lost)." #TODO: i18n
 
         httpResponseError = (response) ->
             if response.status == 400 && response.data.version
@@ -202,7 +205,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
 
     $provide.factory("versionCheckHttpIntercept", ["$q", "$tgConfirm", versionCheckHttpIntercept])
 
-    $httpProvider.interceptors.push('versionCheckHttpIntercept')
+    $httpProvider.interceptors.push('versionCheckHttpIntercept');
 
     window.checksley.updateValidators({
         linewidth: (val, width) ->

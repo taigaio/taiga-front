@@ -10,16 +10,10 @@
             }
         }
     }
-    &.loading {
-        width: 100%;
-        span {
-            animation: loading .5s linear;
-            animation: spin 1s linear infinite;
-            font-size: 30px;
-            padding: 20px 0;
-            text-align: center;
-            width: 100%;
-        }
+    .loading-spinner {
+        @extend %loading-spinner;
+        margin: 0 auto;
+        max-width: 2rem;
     }
     .user-avatar {
         flex-grow: 1;

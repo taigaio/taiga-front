@@ -1,0 +1,21 @@
+div.wrapper(ng-controller="ProjectProfileController as ctrl",
+            ng-init="section='admin'; sectionName='Export'")
+    sidebar.menu-secondary.sidebar(tg-admin-navigation="project-profile")
+        include ../includes/modules/admin-menu
+
+    sidebar.menu-tertiary.sidebar(tg-admin-navigation="export")
+        include ../includes/modules/admin-submenu-project-profile
+
+    section.main.admin-common(tg-project-export)
+        header
+            include ../includes/components/mainTitle
+            p.admin-subtitle Export your project to save a backup or to create a new one based on this.
+
+        div.admin-project-export-buttons
+            a.button.button-green.button-export(href="", title="Export your project") Export
+
+        div.admin-project-export-result.hidden
+            div.spin.hidden
+                img(src="/svg/spinner-circle.svg", alt="loading...")
+            h3.result-title
+            p.result-message

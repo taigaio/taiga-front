@@ -31,18 +31,14 @@
             }
         }
         &.loading {
-            background: $grayer;
-            border: 1px solid #b8b8b8;
             margin: 0;
             padding: 8px;
             text-align: center;
             width: 100%;
-            .icon-spinner {
-                color: $whitish;
-                float: none;
-            }
-            span {
-                animation: loading .5s linear, spin 1s linear infinite;
+            .loading-spinner {
+                @extend %loading-spinner;
+                max-height: 1rem;
+                max-width: 1rem;
             }
         }
     }

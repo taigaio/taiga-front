@@ -1,0 +1,29 @@
+.admin-project-export-buttons {
+    margin-top: 2rem;
+}
+
+.admin-project-export-result {
+    margin-top: 1rem;
+    .spin {
+        margin: 0 auto;
+        width: 2.5rem;
+        img {
+            @extend %loading-spinner;
+            width: 100%;
+        }
+    }
+    h3 {
+        @extend %bold;
+        @extend %large;
+        background: $whitish;
+        color: $gray;
+        margin: .5rem;
+        padding: .5rem;
+        text-align: center;
+    }
+    p {
+        color: $gray-light;
+        margin: .5rem 0;
+        text-align: center;
+    }
+}
