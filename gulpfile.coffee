@@ -99,7 +99,7 @@ paths.js = [
     paths.app + "vendor/jquery-flot/jquery.flot.time.js",
     paths.app + "vendor/flot-axislabels/jquery.flot.axislabels.js",
     paths.app + "vendor/jquery-textcomplete/jquery.textcomplete.js",
-    paths.app + "vendor/markitup/markitup/jquery.markitup.js",
+    paths.app + "vendor/markitup-1x/markitup/jquery.markitup.js",
     paths.app + "vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js",
     paths.app + "vendor/raven-js/dist/raven.js",
     paths.app + "js/jquery.ui.git-custom.js",
