@@ -124,6 +124,7 @@ exports.files = function () {
         'modules/admin/default-values',
         'modules/admin/project-values',
         'modules/admin/third-parties',
+        'modules/admin/contrib',
 
         //Modules user Settings
         'modules/user-settings/user-profile',
