@@ -1,0 +1,14 @@
+div(class="status-data <% if(editable){ %>clickable<% }%>")
+    span.level(style!="background-color:<%- status.color %>")
+    span.status-status <%- status.name %>
+    <% if(editable){ %>
+    span.icon.icon-arrow-bottom
+    <% }%>
+    span.level-name status
+
+    ul.popover.pop-status
+        <% _.each(statuses, function(st) { %>
+        li
+            a(href="", class="status", title!="<%- st.name %>", data-status-id!="<%- st.id %>")
+                | <%- st.name %>
+        <% }); %>

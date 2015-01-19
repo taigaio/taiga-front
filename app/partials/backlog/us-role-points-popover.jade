@@ -1,0 +1,8 @@
+ul.popover.pop-role
+    li
+        a.clear-selection(href="", title="All") All
+    <% _.each(roles, function(role) { %>
+    li
+        a(href="", class="role", title!="<%- role.name %>", data-role-id!="<%- role.id %>")
+            | <%- role.name %>
+    <% }); %>

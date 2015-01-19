@@ -27,7 +27,7 @@ module = angular.module("taigaCommon")
 ## User story estimation directive (for Lightboxes)
 #############################################################################
 
-LbUsEstimationDirective = ($rootScope, $repo, $confirm) ->
+LbUsEstimationDirective = ($rootScope, $repo, $confirm, $template) ->
     # Display the points of a US and you can edit it.
     #
     # Example:
@@ -37,35 +37,8 @@ LbUsEstimationDirective = ($rootScope, $repo, $confirm) ->
     #   - Us object (ng-model)
     #   - scope.project object
 
-    mainTemplate = _.template("""
-    <ul class="points-per-role">
-        <li class="total">
-            <span class="points"><%- totalPoints %></span>
-            <span class="role">total</span>
-        </li>
-        <% _.each(roles, function(role) { %>
-        <li class="total clickable" data-role-id="<%- role.id %>">
-            <span class="points"><%- role.points %></span>
-            <span class="role"><%- role.name %></span></li>
-        <% }); %>
-    </ul>
-    """)
-
-    pointsTemplate = _.template("""
-    <ul class="popover pop-points-open">
-        <% _.each(points, function(point) { %>
-        <li>
-            <% if (point.selected) { %>
-            <a href="" class="point" title="<%- point.name %>"
-               data-point-id="<%- point.id %>" data-role-id="<%- roleId %>"><%- point.name %></a>
-            <% } else { %>
-            <a href="" class="point active" title="<%- point.name %>"
-               data-point-id="<%- point.id %>" data-role-id="<%- roleId %>"><%- point.name %></a>
-            <% } %>
-        </li>
-        <% }); %>
-    </ul>
-    """)
+    mainTemplate = $template.get("common/estimation/lb-us-estimation-points-per-role.html", true)
+    pointsTemplate = $template.get("common/estimation/lb-us-estimation-points.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
         render = (points) ->
@@ -158,14 +131,14 @@ LbUsEstimationDirective = ($rootScope, $repo, $confirm) ->
         require: "ngModel"
     }
 
-module.directive("tgLbUsEstimation", ["$rootScope", "$tgRepo", "$tgConfirm", LbUsEstimationDirective])
+module.directive("tgLbUsEstimation", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgTemplate", LbUsEstimationDirective])
 
 
 #############################################################################
 ## User story estimation directive
 #############################################################################
 
-UsEstimationDirective = ($rootScope, $repo, $confirm, $qqueue) ->
+UsEstimationDirective = ($rootScope, $repo, $confirm, $qqueue, $template) ->
     # Display the points of a US and you can edit it.
     #
     # Example:
@@ -175,35 +148,8 @@ UsEstimationDirective = ($rootScope, $repo, $confirm, $qqueue) ->
     #   - Us object (ng-model)
     #   - scope.project object
 
-    mainTemplate = _.template("""
-    <ul class="points-per-role">
-        <li class="total">
-            <span class="points"><%- totalPoints %></span>
-            <span class="role">total</span>
-        </li>
-        <% _.each(roles, function(role) { %>
-        <li class="total <% if(editable){ %>clickable<% } %>" data-role-id="<%- role.id %>">
-            <span class="points"><%- role.points %></span>
-            <span class="role"><%- role.name %></span></li>
-        <% }); %>
-    </ul>
-    """)
-
-    pointsTemplate = _.template("""
-    <ul class="popover pop-points-open">
-        <% _.each(points, function(point) { %>
-        <li>
-            <% if (point.selected) { %>
-            <a href="" class="point" title="<%- point.name %>"
-               data-point-id="<%- point.id %>" data-role-id="<%- roleId %>"><%- point.name %></a>
-            <% } else { %>
-            <a href="" class="point active" title="<%- point.name %>"
-               data-point-id="<%- point.id %>" data-role-id="<%- roleId %>"><%- point.name %></a>
-            <% } %>
-        </li>
-        <% }); %>
-    </ul>
-    """)
+    mainTemplate = $template.get("common/estimation/us-estimation-points-per-role.html", true)
+    pointsTemplate = $template.get("common/estimation/us-estimation-points.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
         isEditable = ->
@@ -329,4 +275,4 @@ UsEstimationDirective = ($rootScope, $repo, $confirm, $qqueue) ->
         require: "ngModel"
     }
 
-module.directive("tgUsEstimation", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgQqueue", UsEstimationDirective])
+module.directive("tgUsEstimation", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgQqueue", "$tgTemplate", UsEstimationDirective])

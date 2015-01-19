@@ -1,0 +1,14 @@
+h1 Your projects
+form
+    fieldset
+        input(type="text", placeholder="Search in...", class="search-project")
+        a(class="icon icon-search")
+
+div(class="create-project-button")
+    a(class="button button-green" href="") Create project
+
+div(class="projects-pagination" tg-projects-pagination)
+    a(class="v-pagination-previous icon icon-arrow-up", href="")
+    div(class="v-pagination-list")
+        ul(class="projects-list")
+    a(class="v-pagination-next icon icon-arrow-bottom" href="")

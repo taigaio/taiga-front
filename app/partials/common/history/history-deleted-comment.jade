@@ -1,0 +1,11 @@
+.activity-single.comment.deleted-comment
+    div
+        span Comment deleted by <%- deleteCommentUser %> on <%- deleteCommentDate %>
+        a(href="", title="Show comment", class="show-deleted-comment") (Show deleted comment)
+        a(href="", title="Show comment", class="hide-deleted-comment hidden") (Hide deleted comment)</a>
+        .comment-body.wysiwyg <%= deleteComment %>
+    <% if (canRestoreComment) { %>
+    a(href="", class="comment-restore", data-activity-id!="<%- activityId %>")
+        span.icon.icon-reload
+        span Restore comment
+    <% } %>

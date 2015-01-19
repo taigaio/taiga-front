@@ -1,0 +1,15 @@
+div(class!="severity-data <% if(editable){ %>clickable<% }%>")
+    span(class="level", style!="background-color:<%- severity.color %>")
+    span(class="severity-severity") <%- severity.name %>
+    <% if(editable){ %>
+    span(class="icon icon-arrow-bottom")
+    <% }%>
+    span(class="level-name") severity
+
+    ul(class="popover pop-severity")
+        <% _.each(severityes, function(sv) { %>
+        li
+            a(href="" class="severity" title!="<%- sv.name %>"
+               data-severity-id!="<%- sv.id %>")
+                <%- sv.name %>
+        <% }); %>

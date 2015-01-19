@@ -1,0 +1,19 @@
+.attachment-name
+    a(href!="<%- url %>", title!="<%- name %> uploaded on <%- created_date %>", target="_blank")
+        span.icon.icon-documents
+        span <%- name %>
+.attachment-size
+    span <%- size %>
+
+.attachment-comments
+    <% if (isDeprecated){ %>
+    span.deprecated-file (deprecated)
+    <% } %>
+    span <%- description %>
+
+<% if (modifyPermission) {%>
+.attachment-settings
+    a.settings.icon.icon-edit(href="", title="Edit")
+    a.settings.icon.icon-delete(href="", title="Delete")
+    a.settings.icon.icon-drag-v(href="", title="Drag")
+<% } %>

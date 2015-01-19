@@ -143,7 +143,7 @@ module.controller("TaskDetailController", TaskDetailController)
 ## Task status display directive
 #############################################################################
 
-TaskStatusDisplayDirective = ->
+TaskStatusDisplayDirective = ($template) ->
     # Display if a Task is open or closed and its taskboard status.
     #
     # Example:
@@ -153,18 +153,7 @@ TaskStatusDisplayDirective = ->
     #   - Task object (ng-model)
     #   - scope.statusById object
 
-    template = _.template("""
-    <span>
-        <% if (status.is_closed) { %>
-            Closed
-        <% } else { %>
-            Open
-        <% } %>
-    </span>
-    <span class="us-detail-status" style="color:<%- status.color %>">
-        <%- status.name %>
-    </span>
-    """) # TODO: i18n
+    template = $template.get("common/components/status-display.html", true)
 
     link = ($scope, $el, $attrs) ->
         render = (task) ->
@@ -185,7 +174,7 @@ TaskStatusDisplayDirective = ->
         require: "ngModel"
     }
 
-module.directive("tgTaskStatusDisplay", TaskStatusDisplayDirective)
+module.directive("tgTaskStatusDisplay", ["$tgTemplate", TaskStatusDisplayDirective])
 
 
 #############################################################################

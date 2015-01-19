@@ -99,25 +99,11 @@ module.directive("tgColorizeTags", ColorizeTagsDirective)
 ## TagLine  Directive (for Lightboxes)
 #############################################################################
 
-LbTagLineDirective = ($rs) ->
+LbTagLineDirective = ($rs, $template) ->
     ENTER_KEY = 13
     COMMA_KEY = 188
 
-    template = """
-    <div class="tags-container"></div>
-    <input type="text" placeholder="I'm it! Tag me..." class="tag-input" />
-    <a href="" title="Save" class="save icon icon-floppy hidden"></a>
-    """ # TODO: i18n
-
-    # Tags template (rendered manually using lodash)
-    templateTags = _.template("""
-    <% _.each(tags, function(tag) { %>
-        <span class="tag"  <% if (tag.color) { %> style="border-left: 5px solid <%- tag.color %>;"<% } %>>
-            <span class="tag-name"><%- tag.name %></span>
-            <a href="" title="delete tag" class="icon icon-delete"></a>
-        </span>
-    <% }); %>
-    """) # TODO: i18n
+    templateTags = $template.get("common/tag/lb-tag-line-tags.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
         ## Render
@@ -125,6 +111,11 @@ LbTagLineDirective = ($rs) ->
             ctx = {
                 tags: _.map(tags, (t) -> {name: t, color: tagsColors[t]})
             }
+
+            _.map ctx.tags, (tag) =>
+                if tag.color
+                    tag.style = "border-left: 5px solid #{tag.color}"
+
             html = templateTags(ctx)
             $el.find("div.tags-container").html(html)
 
@@ -226,42 +217,22 @@ LbTagLineDirective = ($rs) ->
     return {
         link:link,
         require:"ngModel"
-        template: template
+        templateUrl: "common/tag/lb-tag-line.html"
     }
 
-module.directive("tgLbTagLine", ["$tgResources", LbTagLineDirective])
+module.directive("tgLbTagLine", ["$tgResources", "$tgTemplate", LbTagLineDirective])
 
 
 #############################################################################
 ## TagLine  Directive (for detail pages)
 #############################################################################
 
-TagLineDirective = ($rootScope, $repo, $rs, $confirm, $qqueue) ->
+TagLineDirective = ($rootScope, $repo, $rs, $confirm, $qqueue, $template) ->
     ENTER_KEY = 13
     ESC_KEY = 27
     COMMA_KEY = 188
 
-    template = """
-    <div class="tags-container"></div>
-    <a href="#" class="add-tag hidden" title="Add tag">
-        <span class="icon icon-plus"></span>
-        <span class="add-tag-text">Add tag</span>
-    </a>
-    <input type="text" placeholder="I'm it! Tag me..." class="tag-input hidden" />
-    <a href="" title="Save" class="save icon icon-floppy hidden"></a>
-    """ # TODO: i18n
-
-    # Tags template (rendered manually using lodash)
-    templateTags = _.template("""
-    <% _.each(tags, function(tag) { %>
-        <span class="tag" style="border-left: 5px solid <%- tag.color %>;">
-            <span class="tag-name"><%- tag.name %></span>
-            <% if (isEditable) { %>
-            <a href="" title="delete tag" class="icon icon-delete"></a>
-            <% } %>
-        </span>
-    <% }); %>
-    """) # TODO: i18n
+    templateTags = $template.get("common/tag/tags-line-tags.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
         isEditable = ->
@@ -430,7 +401,7 @@ TagLineDirective = ($rootScope, $repo, $rs, $confirm, $qqueue) ->
     return {
         link:link,
         require:"ngModel"
-        template: template
+        templateUrl: "common/tag/tag-line.html"
     }
 
-module.directive("tgTagLine", ["$rootScope", "$tgRepo", "$tgResources", "$tgConfirm", "$tgQqueue", TagLineDirective])
+module.directive("tgTagLine", ["$rootScope", "$tgRepo", "$tgResources", "$tgConfirm", "$tgQqueue", "$tgTemplate", TagLineDirective])

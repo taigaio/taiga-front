@@ -18,8 +18,10 @@
   ],
   "devDependencies": {
     "coffee-script": "^1.8.0",
+    "del": "^1.1.1",
     "express": "^4.9.5",
-    "gulp": "^3.8.8",
+    "gulp": "^3.8.10",
+    "gulp-angular-templatecache": "^1.5.0",
     "gulp-autoprefixer": "^2.0.0",
     "gulp-cached": "0.0.3",
     "gulp-changed": "^0.4.0",
@@ -52,7 +54,6 @@
     "gulp-wrap": "^0.3.0",
     "lazypipe": "^0.2.2",
     "readable-stream": "~1.0.31",
-    "rimraf": "^2.2.8",
     "run-sequence": "^1.0.1",
     "through2": "~0.6.1",
     "gulp-replace": "^0.5.2"

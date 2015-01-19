@@ -1,0 +1,13 @@
+.row
+    .username
+        figure.avatar
+          img(tg-bo-src='currentUser.photo', tg-bo-alt='currentUser.full_name')
+
+          figcaption
+            span.name(tg-bo-bind='currentUser.full_name')
+
+            span.position(tg-bo-bind='currentUser.role_name')
+
+            div(tg-leave-project='', projectid='{{projectId}}')
+
+      .member-stats(tg-team-member-stats, stats="stats", user="currentUser.user", issuesEnabled="issuesEnabled", tasksenabled="tasksEnabled", wikienabled="wikiEnabled")

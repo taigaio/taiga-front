@@ -1,0 +1,91 @@
+div.wrapper(tg-project-modules, ng-controller="ProjectProfileController as ctrl",
+            ng-init="section='admin'; sectionName='Modules'")
+    sidebar.menu-secondary.sidebar(tg-admin-navigation="project-profile")
+        include ../includes/modules/admin-menu
+
+    sidebar.menu-tertiary.sidebar(tg-admin-navigation="modules")
+        include ../includes/modules/admin-submenu-project-profile
+
+    section.main.admin-functionalities
+        header
+            include ../includes/components/mainTitle
+
+        form
+            div.functionality(ng-class="{true:'active', false:''}[project.is_backlog_activated]")
+                div.icon.icon-backlog
+                div.desc
+                    p
+                        span Backlog
+                        |  Manage your user stories to maintain an organized view of upcoming and prioritized work.
+                    div.activate
+                        input.activate-input(type="checkbox", id="functionality-backlog",
+                                             ng-model="project.is_backlog_activated")
+                        label.button.button-gray(ng-switch="project.is_backlog_activated",
+                                                 for="functionality-backlog")
+                            span(ng-switch-when="true") Disable
+                            span(ng-switch-when="false") Enable
+
+            div.functionality(ng-class="{true:'active', false:''}[project.is_kanban_activated]")
+                div.icon.icon-kanban
+                div.desc
+                    p
+                        span Kanban
+                        |  Organize your project in a lean way with this board.
+                    div.activate
+                        input.activate-input(type="checkbox", id="functionality-kanban",
+                                             ng-model="project.is_kanban_activated")
+                        label.button.button-gray(ng-switch="project.is_kanban_activated",
+                                                 for="functionality-kanban")
+                            span(ng-switch-when="true") Disable
+                            span(ng-switch-when="false") Enable
+
+            div.functionality(ng-class="{true:'active', false:''}[project.is_issues_activated]")
+                div.icon.icon-issues
+                div.desc
+                    p
+                        span Issues
+                        |  Track the bugs, questions and enhancements related to your project. Don't miss anything!
+                    div.activate
+                        input.activate-input(type="checkbox", id="functionality-issues",
+                                             ng-model="project.is_issues_activated")
+                        label.button.button-gray(ng-switch="project.is_issues_activated",
+                                                 for="functionality-issues")
+                            span(ng-switch-when="true") Disable
+                            span(ng-switch-when="false") Enable
+
+            div.functionality(ng-class="{true:'active', false:''}[project.is_wiki_activated]")
+                div.icon.icon-wiki
+                div.desc
+                    p
+                        span Wiki
+                        |  Add, modify, or delete content in collaboration with others. This is the right place for your project documentation.
+                    div.activate
+                        input.activate-input(type="checkbox", id="functionality-wiki",
+                                             ng-model="project.is_wiki_activated")
+                        label.button.button-gray(ng-switch="project.is_wiki_activated",
+                                                 for="functionality-wiki")
+                            span(ng-switch-when="true") Disable
+                            span(ng-switch-when="false") Enable
+
+            div.functionality(ng-class="{true:'active', false:''}[isVideoconferenceActivated]")
+                div.icon.icon-video
+                div.desc
+                    p
+                        span Meet Up
+                        |  Choose your videoconference system. Even developers need face to face contact.
+                    div.activate
+                        input.activate-input(type="checkbox", id="functionality-video",
+                                             ng-model="isVideoconferenceActivated")
+                        label.button.button-gray(ng-switch="isVideoconferenceActivated",
+                                                 for="functionality-video")
+                            span(ng-switch-when="true") Disable
+                            span(ng-switch-when="false") Enable
+
+                    div.videoconference-attributes.hidden
+                        select(ng-model="project.videoconferences",
+                               ng-options="e.id as e.name for e in [{'id':'appear-in', 'name':'AppearIn'},{'id':'talky', 'name': 'Talky'}]")
+                            option(value="") Select a videoconference system
+                        input(type="text", ng-model="project.videoconferences_salt",
+                              placeholder="If you want you can append a salt code to the name of the chat room")
+        button(type="submit", class="hidden")
+        a.button.button-green.submit-button(href="", title="Save") Save

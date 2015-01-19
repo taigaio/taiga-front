@@ -1,0 +1,13 @@
+div(class!="priority-data <% if(editable){ %>clickable<% }%>")
+    span(class="level", style!="background-color:<%- priority.color %>")
+    span(class="priority-priority") <%- priority.name %>
+    <% if(editable){ %>
+    span(class="icon icon-arrow-bottom")
+    <% }%>
+    span(class="level-name") priority
+    ul(class="popover pop-priority")
+        <% _.each(priorityes, function(pr) { %>
+        li
+            a(href="", class="priority", title!="<%- pr.name %>",
+               data-priority-id!="<%- pr.id %>") <%- pr.name %>
+        <% }); %>

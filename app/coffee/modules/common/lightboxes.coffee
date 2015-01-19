@@ -201,7 +201,7 @@ BlockLightboxDirective = ($rootscope, $tgrepo, $confirm, lightboxService, $loadi
             block(item)
 
     return {
-        templateUrl: "/partials/views/modules/lightbox-block.html"
+        templateUrl: "common/lightbox/lightbox-block.html"
         link: link
         require: "ngModel"
     }
@@ -213,15 +213,8 @@ module.directive("tgLbBlock", ["$rootScope", "$tgRepo", "$tgConfirm", "lightboxS
 ## Generic Lightbox Blocking-Message Input Directive
 #############################################################################
 
-BlockingMessageInputDirective = ($log) ->
-    template = _.template("""
-    <fieldset class="blocked-note hidden">
-        <textarea name="blocked_note"
-            placeholder="Why is this user story blocked?"
-            ng-model="<%- ngmodel %>">
-        </textarea>
-    </fieldset>
-    """)
+BlockingMessageInputDirective = ($log, $template) ->
+    template = $template.get("common/lightbox/lightbox-blocking-message-input.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
         if not $attrs.watch
@@ -243,7 +236,7 @@ BlockingMessageInputDirective = ($log) ->
         restrict: "EA"
     }
 
-module.directive("tgBlockingMessageInput", ["$log", BlockingMessageInputDirective])
+module.directive("tgBlockingMessageInput", ["$log", "$tgTemplate", BlockingMessageInputDirective])
 
 
 #############################################################################
@@ -426,45 +419,11 @@ module.directive("tgLbCreateBulkUserstories", [
 ## AssignedTo Lightbox Directive
 #############################################################################
 
-usersTemplate = _.template("""
-<% if (selected) { %>
-<div class="watcher-single active">
-    <div class="watcher-avatar">
-        <a href="" title="Assigned to" class="avatar">
-            <img src="<%- selected.photo %>"/>
-        </a>
-    </div>
-    <a href="" title="<%- selected.full_name_display %>" class="watcher-name">
-        <%-selected.full_name_display %>
-    </a>
-    <a href="" title="Remove assigned" class="icon icon-delete remove-assigned-to"></a>
-</div>
-<% } %>
-
-<% _.each(users, function(user) { %>
-<div class="watcher-single" data-user-id="<%- user.id %>">
-    <div class="watcher-avatar">
-        <a href="#" title="Assigned to" class="avatar">
-            <img src="<%- user.photo %>" />
-        </a>
-    </div>
-    <a href="" title="<%- user.full_name_display %>" class="watcher-name">
-        <%- user.full_name_display %>
-    </a>
-</div>
-<% }) %>
-
-<% if (showMore) { %>
-<div ng-show="filteringUsers" class="more-watchers">
-    <span>...too many users, keep filtering</span>
-</div>
-<% } %>
-""")
-
-AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationService) ->
+AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationService, $template) ->
     link = ($scope, $el, $attrs) ->
         selectedUser = null
         selectedItem = null
+        usersTemplate = $template.get("common/lightbox/lightbox-assigned-to-users.html", true)
 
         normalizeString = (string) ->
             normalizedString = string
@@ -547,12 +506,12 @@ AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationServic
             $el.off()
 
     return {
-        templateUrl: "/partials/views/modules/lightbox-assigned-to.html"
+        templateUrl: "common/lightbox/lightbox-assigned-to.html"
         link:link
     }
 
 
-module.directive("tgLbAssignedto", ["lightboxService", "lightboxKeyboardNavigationService", AssignedToLightboxDirective])
+module.directive("tgLbAssignedto", ["lightboxService", "lightboxKeyboardNavigationService", "$tgTemplate", AssignedToLightboxDirective])
 
 
 #############################################################################
@@ -632,7 +591,7 @@ WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationS
             $el.off()
 
     return {
-        templateUrl: "/partials/views/modules/lightbox-users.html"
+        templateUrl: "common/lightbox/lightbox-users.html"
         link:link
     }
 

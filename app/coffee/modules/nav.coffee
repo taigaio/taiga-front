@@ -71,42 +71,9 @@ class ProjectsNavigationController extends taiga.Controller
 module.controller("ProjectsNavigationController", ProjectsNavigationController)
 
 
-ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout, tgLoader, $location, $compile) ->
-    baseTemplate = _.template("""
-    <h1>Your projects</h1>
-    <form>
-        <fieldset>
-            <input type="text" placeholder="Search in..." class="search-project"/>
-            <a class="icon icon-search"></a>
-        </fieldset>
-    </form>
-
-    <div class="create-project-button">
-        <a class="button button-green" href="">
-            Create project
-        </a>
-    </div>
-
-    <div class="projects-pagination" tg-projects-pagination>
-        <a class="v-pagination-previous icon icon-arrow-up " href=""></a>
-        <div class="v-pagination-list">
-            <ul class="projects-list">
-            </ul>
-        </div>
-        <a class="v-pagination-next icon icon-arrow-bottom" href=""></a>
-    </div>
-    """) # TODO: i18n
-
-    projectsTemplate = _.template("""
-    <% _.each(projects, function(project) { %>
-    <li>
-        <a href="<%- project.url %>">
-            <span class="project-name"><%- project.name %></span>
-            <span class="icon icon-arrow-right"/>
-        </a>
-    </li>
-    <% }) %>
-    """) # TODO: i18n
+ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout, tgLoader, $location, $compile, $template) ->
+    baseTemplate = $template.get("project/project-navigation-base.html", true)
+    projectsTemplate = $template.get("project/project-navigation-list.html", true)
 
     overlay = $(".projects-nav-overlay")
     loadingStart = 0
@@ -201,93 +168,15 @@ ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout, tgLoader, $
     }
 
 
-module.directive("tgProjectsNav", ["$rootScope", "animationFrame", "$timeout", "tgLoader", "$tgLocation", "$compile", ProjectsNavigationDirective])
+module.directive("tgProjectsNav", ["$rootScope", "animationFrame", "$timeout", "tgLoader", "$tgLocation", "$compile", "$tgTemplate", ProjectsNavigationDirective])
 
 
 #############################################################################
 ## Project
 #############################################################################
 
-ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location, $navUrls, $config) ->
-    menuEntriesTemplate = _.template("""
-    <div class="menu-container">
-        <ul class="main-nav">
-        <li id="nav-search">
-            <a href="" title="Search">
-                <span class="icon icon-search"></span><span class="item">Search</span>
-            </a>
-        </li>
-        <% if (project.is_backlog_activated && project.my_permissions.indexOf("view_us") != -1) { %>
-        <li id="nav-backlog">
-            <a href="" title="Backlog" tg-nav="project-backlog:project=project.slug">
-                <span class="icon icon-backlog"></span>
-                <span class="item">Backlog</span>
-            </a>
-        </li>
-        <% } %>
-        <% if (project.is_kanban_activated && project.my_permissions.indexOf("view_us") != -1) { %>
-        <li id="nav-kanban">
-            <a href="" title="Kanban" tg-nav="project-kanban:project=project.slug">
-                <span class="icon icon-kanban"></span><span class="item">Kanban</span>
-            </a>
-        </li>
-        <% } %>
-        <% if (project.is_issues_activated && project.my_permissions.indexOf("view_issues") != -1) { %>
-        <li id="nav-issues">
-            <a href="" title="Issues" tg-nav="project-issues:project=project.slug">
-                <span class="icon icon-issues"></span><span class="item">Issues</span>
-            </a>
-        </li>
-        <% } %>
-        <% if (project.is_wiki_activated && project.my_permissions.indexOf("view_wiki_pages") != -1) { %>
-        <li id="nav-wiki">
-            <a href="" title="Wiki" tg-nav="project-wiki:project=project.slug">
-                <span class="icon icon-wiki"></span>
-                <span class="item">Wiki</span>
-            </a>
-        </li>
-        <% } %>
-        <li id="nav-team">
-            <a href="" title="Team" tg-nav="project-team:project=project.slug">
-                <span class="icon icon-team"></span>
-                <span class="item">Team</span>
-            </a>
-        </li>
-        <% if (project.videoconferences) { %>
-        <li id="nav-video">
-            <a href="<%- project.videoconferenceUrl %>" target="_blank" title="Meet Up">
-                <span class="icon icon-video"></span>
-                <span class="item">Meet Up</span>
-            </a>
-        </li>
-        <% } %>
-        <% if (project.i_am_owner) { %>
-        <li id="nav-admin">
-            <a href="" tg-nav="project-admin-home:project=project.slug" title="Admin">
-                <span class="icon icon-settings"></span>
-                <span class="item">Admin</span>
-            </a>
-        </li>
-        <% } %>
-        </ul>
-        <div class="user">
-            <div class="user-settings">
-                <ul class="popover">
-                    <li><a href="" title="User Profile", tg-nav="user-settings-user-profile:project=project.slug">User Profile</a></li>
-                    <li><a href="" title="Change Password", tg-nav="user-settings-user-change-password:project=project.slug">Change Password</a></li>
-                    <li><a href="" title="Notifications", tg-nav="user-settings-mail-notifications:project=project.slug">Notifications</a></li>
-                    <% if (feedbackEnabled) { %>
-                    <li><a href="" class="feedback" title="Feedback"">Feedback</a></li>
-                    <% } %>
-                    <li><a href="" title="Logout" class="logout">Logout</a></li>
-                </ul>
-                <a href="" title="User preferences" class="avatar" id="nav-user-settings">
-                    <img src="<%- user.photo %>" alt="<%- user.full_name_display %>" />
-                </a>
-            </div>
-        </div>
-    </div>
-    """)
+ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location, $navUrls, $config, $template) ->
+    menuEntriesTemplate = $template.get("project/project-menu.html", true)
 
     mainTemplate = _.template("""
     <div class="logo-container logo">
@@ -416,4 +305,4 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location, $
     return {link: link}
 
 module.directive("tgProjectMenu", ["$log", "$compile", "$tgAuth", "$rootScope", "$tgAuth", "$tgLocation",
-                                   "$tgNavUrls", "$tgConfig", ProjectMenuDirective])
+                                   "$tgNavUrls", "$tgConfig", "$tgTemplate", ProjectMenuDirective])

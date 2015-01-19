@@ -25,66 +25,9 @@ debounce = @.taiga.debounce
 
 module = angular.module("taigaRelatedTasks", [])
 
-RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope, $loading) ->
-    templateView = _.template("""
-    <div class="tasks">
-        <div class="task-name">
-            <span class="icon icon-iocaine"></span>
-            <a tg-nav="project-tasks-detail:project=project.slug,ref=task.ref" title="<%- task.ref %> <%- task.subject %>" class="clickable">
-                <span>#<%- task.ref %></span>
-                <span><%- task.subject %></span>
-            </a>
-            <div class="task-settings">
-                <% if(perms.modify_task) { %>
-                    <a href="" title="Edit" class="icon icon-edit"></a>
-                <% } %>
-                <% if(perms.delete_task) { %>
-                    <a href="" title="Delete" class="icon icon-delete delete-task"></a>
-                <% } %>
-            </div>
-        </div>
-    </div>
-    <div tg-related-task-status="task" ng-model="task" class="status">
-        <a href="" title="Status Name" class="task-status">
-            <span class="task-status-bind"></span>
-            <% if(perms.modify_task) { %>
-                <span class="icon icon-arrow-bottom"></span>
-            <% } %>
-        </a>
-    </div>
-    <div tg-related-task-assigned-to-inline-edition="task" class="assigned-to">
-        <div title="Assigned to" class="task-assignedto <% if(perms.modify_task) { %>editable<% } %>">
-            <figure class="avatar"></figure>
-            <% if(perms.modify_task) { %>
-                <span class="icon icon-arrow-bottom"></span>
-            <% } %>
-        </div>
-    </div>
-    """)
-
-    templateEdit = _.template("""
-    <div class="tasks">
-        <div class="task-name">
-            <input type="text" value="<%- task.subject %>" placeholder="Type the task subject" />
-            <div class="task-settings">
-                <a href="" title="Save" class="icon icon-floppy"></a>
-                <a href="" title="Cancel" class="icon icon-delete cancel-edit"></a>
-            </div>
-        </div>
-    </div>
-    <div tg-related-task-status="task" ng-model="task" class="status">
-        <a href="" title="Status Name" class="task-status">
-            <span class="task-status-bind"></span>
-            <span class="icon icon-arrow-bottom"></span>
-        </a>
-    </div>
-    <div tg-related-task-assigned-to-inline-edition="task" class="assigned-to">
-        <div title="Assigned to" class="task-assignedto">
-            <figure class="avatar"></figure>
-            <span class="icon icon-arrow-bottom"></span>
-        </div>
-    </div>
-    """)
+RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope, $loading, $template) ->
+    templateView = $template.get("task/related-task-row.html", true)
+    templateEdit = $template.get("task/related-task-row-edit.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
         saveTask = debounce 2000, (task) ->
@@ -166,32 +109,10 @@ RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope, $loading) ->
 
     return {link:link, require:"ngModel"}
 
-module.directive("tgRelatedTaskRow", ["$tgRepo", "$compile", "$tgConfirm", "$rootScope", "$tgLoading", "$tgAnalytics", RelatedTaskRowDirective])
+module.directive("tgRelatedTaskRow", ["$tgRepo", "$compile", "$tgConfirm", "$rootScope", "$tgLoading", "$tgTemplate", RelatedTaskRowDirective])
 
-RelatedTaskCreateFormDirective = ($repo, $compile, $confirm, $tgmodel, $loading, $analytics) ->
-    template = _.template("""
-    <div class="tasks">
-        <div class="task-name">
-            <input type="text" placeholder="Type the new task subject" />
-            <div class="task-settings">
-                <a href="" title="Save" class="icon icon-floppy"></a>
-                <a href="" title="Cancel" class="icon icon-delete cancel-edit"></a>
-            </div>
-        </div>
-    </div>
-    <div tg-related-task-status="newTask" ng-model="newTask" class="status" not-auto-save="true">
-        <a href="" title="Status Name" class="task-status">
-            <span class="task-status-bind"></span>
-            <span class="icon icon-arrow-bottom"></span>
-        </a>
-    </div>
-    <div tg-related-task-assigned-to-inline-edition="newTask" class="assigned-to" not-auto-save="true">
-        <div title="Assigned to" class="task-assignedto">
-            <figure class="avatar"></figure>
-            <span class="icon icon-arrow-bottom"></span>
-        </div>
-    </div>
-    """)
+RelatedTaskCreateFormDirective = ($repo, $compile, $confirm, $tgmodel, $loading, $analytics, $template) ->
+    template = $template.get("task/related-task-create-form.html", true)
 
     newTask = {
         subject: ""
@@ -256,7 +177,7 @@ RelatedTaskCreateFormDirective = ($repo, $compile, $confirm, $tgmodel, $loading,
             $el.off()
 
     return {link: link}
-module.directive("tgRelatedTaskCreateForm", ["$tgRepo", "$compile", "$tgConfirm", "$tgModel", "$tgLoading", "$tgAnalytics", RelatedTaskCreateFormDirective])
+module.directive("tgRelatedTaskCreateForm", ["$tgRepo", "$compile", "$tgConfirm", "$tgModel", "$tgLoading", "$tgAnalytics", "$tgTemplate", RelatedTaskCreateFormDirective])
 
 RelatedTaskCreateButtonDirective = ($repo, $compile, $confirm, $tgmodel) ->
     template = _.template("""

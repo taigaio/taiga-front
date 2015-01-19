@@ -105,40 +105,8 @@ module.controller("MembershipsController", MembershipsController)
 ## Member Avatar Directive
 #############################################################################
 
-paginatorTemplate = """
-<ul class="paginator">
-    <% if (showPrevious) { %>
-    <li class="previous">
-        <a href="" class="previous next_prev_button" class="disabled">
-            <span i18next="pagination.prev">Prev</span>
-        </a>
-    </li>
-    <% } %>
-
-    <% _.each(pages, function(item) { %>
-    <li class="<%- item.classes %>">
-        <% if (item.type === "page") { %>
-        <a href="" data-pagenum="<%- item.num %>"><%- item.num %></a>
-        <% } else if (item.type === "page-active") { %>
-        <span class="active"><%- item.num %></span>
-        <% } else { %>
-        <span>...</span>
-        <% } %>
-    </li>
-    <% }); %>
-
-    <% if (showNext) { %>
-    <li class="next">
-        <a href="" class="next next_prev_button" class="disabled">
-            <span i18next="pagination.next">Next</span>
-        </a>
-    </li>
-    <% } %>
-</ul>
-"""
-
-MembershipsDirective = ->
-    template = _.template(paginatorTemplate)
+MembershipsDirective = ($template) ->
+    template = $template.get("admin/admin-membership-paginator.html", true)
 
     linkPagination = ($scope, $el, $attrs, $ctrl) ->
         # Constants
@@ -215,6 +183,7 @@ MembershipsDirective = ->
                 $ctrl.selectFilter("page", pagenum)
                 $ctrl.loadMembers()
 
+
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
         linkPagination($scope, $el, $attrs, $ctrl)
@@ -224,23 +193,15 @@ MembershipsDirective = ->
 
     return {link:link}
 
-module.directive("tgMemberships", MembershipsDirective)
+module.directive("tgMemberships", ["$tgTemplate", MembershipsDirective])
 
 
 #############################################################################
 ## Member Avatar Directive
 #############################################################################
 
-MembershipsRowAvatarDirective = ($log) ->
-    template = _.template("""
-    <figure class="avatar">
-        <img src="<%- imgurl %>" alt="<%- full_name %>">
-        <figcaption>
-            <span class="name"><%- full_name %></span>
-            <span class="email"><%- email %></span>
-        </figcaption>
-    </figure>
-    """)
+MembershipsRowAvatarDirective = ($log, $template) ->
+    template = $template.get("admin/memberships-row-avatar.html", true)
 
     link = ($scope, $el, $attrs) ->
         render = (member) ->
@@ -265,22 +226,15 @@ MembershipsRowAvatarDirective = ($log) ->
     return {link: link}
 
 
-module.directive("tgMembershipsRowAvatar", ["$log", MembershipsRowAvatarDirective])
+module.directive("tgMembershipsRowAvatar", ["$log", "$tgTemplate", MembershipsRowAvatarDirective])
 
 
 #############################################################################
 ## Member IsAdminCheckbox Directive
 #############################################################################
 
-MembershipsRowAdminCheckboxDirective = ($log, $repo, $confirm) ->
-    template = _.template("""
-    <div class="check">
-        <input type="checkbox" id="<%- inputId %>" />
-        <div></div>
-        <span class="check-text check-yes">Yes</span>
-        <span class="check-text check-no">No</span>
-    </div>
-    """) # TODO: i18n
+MembershipsRowAdminCheckboxDirective = ($log, $repo, $confirm, $template) ->
+    template = $template.get("admin/admin-memberships-row-checkbox.html", true)
 
     link = ($scope, $el, $attrs) ->
         render = (member) ->
@@ -317,7 +271,7 @@ MembershipsRowAdminCheckboxDirective = ($log, $repo, $confirm) ->
     return {link: link}
 
 
-module.directive("tgMembershipsRowAdminCheckbox", ["$log", "$tgRepo", "$tgConfirm",
+module.directive("tgMembershipsRowAdminCheckbox", ["$log", "$tgRepo", "$tgConfirm", "$tgTemplate",
                                                    MembershipsRowAdminCheckboxDirective])
 
 
