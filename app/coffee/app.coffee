@@ -80,6 +80,8 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         {templateUrl: "/partials/admin-project-default-values.html"})
     $routeProvider.when("/project/:pslug/admin/project-profile/modules",
         {templateUrl: "/partials/admin-project-modules.html"})
+    $routeProvider.when("/project/:pslug/admin/project-profile/export",
+        {templateUrl: "/partials/views/modules/admin/admin-project-export.html"})
     $routeProvider.when("/project/:pslug/admin/project-values/us-status",
         {templateUrl: "/partials/admin-project-values-us-status.html"})
     $routeProvider.when("/project/:pslug/admin/project-values/us-points",
@@ -199,7 +201,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
 
     $provide.factory("versionCheckHttpIntercept", ["$q", "$tgConfirm", versionCheckHttpIntercept])
 
-    $httpProvider.interceptors.push('versionCheckHttpIntercept')
+    $httpProvider.interceptors.push('versionCheckHttpIntercept');
 
     window.checksley.updateValidators({
         linewidth: (val, width) ->

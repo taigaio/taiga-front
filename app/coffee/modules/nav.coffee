@@ -81,9 +81,12 @@ ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout, tgLoader, $
         </fieldset>
     </form>
 
-    <div class="create-project-button">
-        <a class="button button-green" href="">
+    <div class="create-project-button-wrapper">
+        <a class="button button-green create-project-button" href="" title="Create new project">
             Create project
+        </a>
+        <a class="button button-blackish import-project-button" href="" title="Import previous project">
+            <span class="icon icon-upload"></span>
         </a>
     </div>
 

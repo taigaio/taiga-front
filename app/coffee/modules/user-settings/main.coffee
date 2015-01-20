@@ -145,7 +145,7 @@ UserAvatarDirective = ($auth, $model, $rs, $confirm) ->
 
         $el.on "change", "#avatar-field", (event) ->
             if $scope.avatarAttachment
-                $el.find('.overlay').show()
+                $el.find('.overlay').css('display', 'flex')
                 $rs.userSettings.changeAvatar($scope.avatarAttachment).then(onSuccess, onError)
 
         # Use gravatar photo

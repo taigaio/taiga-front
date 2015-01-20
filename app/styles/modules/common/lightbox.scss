@@ -385,6 +385,21 @@
     }
 }
 
+.lightbox-import {
+    section {
+        flex-basis: 500px;
+        flex-grow: 0;
+        flex-shrink: 0;
+        width: 500px;
+    }
+    h2 {
+        line-height: 2rem;
+    }
+    p {
+        text-align: center;
+    }
+}
+
 .lightbox-create-issue {
     form {
         @include table-flex-child(0, 600px, 0, 600px);

@@ -42,12 +42,24 @@
         flex-direction: column;
         margin-top: 1rem;
     }
-    .create-project-button {
+    .create-project-button-wrapper {
+        display: flex;
         flex-shrink: 0;
         margin-top: 1rem;
-        a {
+        .create-project-button {
+            flex-grow: 8;
+            margin-right: .2rem;
             text-align: center;
-            width: 100%;
+        }
+        .import-project-button {
+            flex-grow: 1;
+            padding-left: .5rem;
+            padding-right: .5rem;
+            text-align: center;
+            .icon {
+                color: $grayer;
+                margin: 0;
+            }
         }
     }
     .v-pagination-previous,

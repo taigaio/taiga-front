@@ -1,0 +1,32 @@
+
+block head
+    title Taiga  Your agile, free, and open source project management tool
+
+block content
+    div.wrapper(ng-controller="ProjectProfileController as ctrl",
+                ng-init="section='admin'; sectionName='Export'")
+        sidebar.menu-secondary.sidebar(tg-admin-navigation="project-profile")
+            include ../admin-menu
+
+        sidebar.menu-tertiary.sidebar(tg-admin-navigation="export")
+            include ../admin-submenu-project-profile
+
+        section.main.admin-common
+            header
+                include ../../components/mainTitle
+                p.admin-subtitle Export your project to save a backup or to create a new one based on this.
+
+            div.admin-project-export
+                a.button.button-green.button-export(href="", title="Export your project") Export
+
+            // Synchronous. Show when export. If export success, hide and show export button
+                div.admin-project-export-synchronous
+                    div.spin
+                        img(src="/svg/spinner-circle.svg", alt="loading...")
+                    h3 We are generating your dump file
+                    p Please don't close this page.</br> Your file will be automatically downloaded when ready.
+
+            // Asynchronous. Don't hide until user reloads.
+                div.admin-project-export-asynchronous
+                    h3 We are generating your dump file
+                    p We will send you an email to [ email ] when ready

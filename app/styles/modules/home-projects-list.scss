@@ -50,6 +50,7 @@
 
 .recent-projects {
     @include table-flex-child(8, 0, 0, 800px);
+    position: relative;
     ul {
         @include table-flex();
         margin: 0;
@@ -70,7 +71,6 @@
         height: 130px;
         margin-bottom: 1rem;
         margin-right: 1rem;
-        overflow: hidden;
         position: relative;
         transition: background-color .3s linear;
         &:hover {
@@ -90,6 +90,15 @@
     p {
         color: $grayer;
         transition: color .3s linear;
+    }
+    .import-badge {
+        background: rgba($gray-light, .8);
+        border-radius: 2px;
+        bottom: .3rem;
+        color: rgba($grayer, .8);
+        padding: .3rem .4rem;
+        position: absolute;
+        right: .3rem;
     }
 }
 
@@ -151,8 +160,24 @@
         width: 100%;
     }
     .create-project-button-wrapper {
-        position: relative;
-        width: 100%;
+        display: flex;
+        flex-shrink: 0;
+        margin-top: 1rem;
+        .create-project-button {
+            flex-grow: 8;
+            margin-right: .2rem;
+            text-align: center;
+        }
+        .import-project-button {
+            flex-grow: 1;
+            padding-left: .5rem;
+            padding-right: .5rem;
+            text-align: center;
+            .icon {
+                color: $grayer;
+                margin: 0;
+            }
+        }
     }
     .button-green {
         color: $whitish;

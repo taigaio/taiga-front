@@ -83,6 +83,7 @@ urls = {
     "project-admin-project-profile-details": "/project/:project/admin/project-profile/details"
     "project-admin-project-profile-default-values": "/project/:project/admin/project-profile/default-values"
     "project-admin-project-profile-modules": "/project/:project/admin/project-profile/modules"
+    "project-admin-project-profile-export": "/project/:project/admin/project-profile/export"
     "project-admin-project-values-us-status": "/project/:project/admin/project-values/us-status"
     "project-admin-project-values-us-points": "/project/:project/admin/project-values/us-points"
     "project-admin-project-values-task-status": "/project/:project/admin/project-values/task-status"

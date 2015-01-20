@@ -119,6 +119,7 @@ exports.files = function () {
         'modules/admin/admin-submenu-roles',
         'modules/admin/admin-roles',
         'modules/admin/admin-functionalities',
+        'modules/admin/admin-project-export',
         'modules/admin/admin-membership-table',
         'modules/admin/admin-project-profile',
         'modules/admin/default-values',
