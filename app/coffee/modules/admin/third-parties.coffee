@@ -174,6 +174,54 @@ class BitbucketController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
 
 module.controller("BitbucketController", BitbucketController)
 
+#############################################################################
+## Gogs Controller
+#############################################################################
+
+class GogsController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.FiltersMixin)
+    @.$inject = [
+        "$scope",
+        "$tgRepo",
+        "$tgResources",
+        "$routeParams",
+        "$appTitle"
+    ]
+
+    constructor: (@scope, @repo, @rs, @params, @appTitle) ->
+        bindMethods(@)
+
+        @scope.sectionName = "Gogs" #i18n
+        @scope.project = {}
+        promise = @.loadInitialData()
+
+        promise.then () =>
+            @appTitle.set("Gogs - " + @scope.project.name)
+
+        promise.then null, @.onInitialDataError.bind(@)
+
+        @scope.$on "project:modules:reload", =>
+            @.loadModules()
+
+    loadModules: ->
+        return @rs.modules.list(@scope.projectId, "gogs").then (gogs) =>
+            @scope.gogs = gogs
+
+    loadProject: ->
+        return @rs.projects.get(@scope.projectId).then (project) =>
+            @scope.project = project
+            @scope.$emit('project:loaded', project)
+            return project
+
+    loadInitialData: ->
+        promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
+            @scope.projectId = data.project
+            return data
+
+        return promise.then(=> @.loadProject())
+                      .then(=> @.loadModules())
+
+module.controller("GogsController", GogsController)
+
 
 SelectInputText =  ->
     link = ($scope, $el, $attrs) ->
@@ -291,6 +339,41 @@ BitbucketWebhooksDirective = ($repo, $confirm, $loading) ->
     return {link:link}
 
 module.directive("tgBitbucketWebhooks", ["$tgRepo", "$tgConfirm", "$tgLoading", BitbucketWebhooksDirective])
+
+#############################################################################
+## GogsWebhooks Directive
+#############################################################################
+
+GogsWebhooksDirective = ($repo, $confirm, $loading) ->
+    link = ($scope, $el, $attrs) ->
+        form = $el.find("form").checksley({"onlyOneErrorElement": true})
+        submit = debounce 2000, (event) =>
+            event.preventDefault()
+
+            return if not form.validate()
+
+            $loading.start(submitButton)
+
+            promise = $repo.saveAttribute($scope.gogs, "gogs")
+            promise.then ->
+                $loading.finish(submitButton)
+                $confirm.notify("success")
+                $scope.$emit("project:modules:reload")
+
+            promise.then null, (data) ->
+                $loading.finish(submitButton)
+                form.setErrors(data)
+                if data._error_message
+                    $confirm.notify("error", data._error_message)
+
+        submitButton = $el.find(".submit-button")
+
+        $el.on "submit", "form", submit
+        $el.on "click", ".submit-button", submit
+
+    return {link:link}
+
+module.directive("tgGogsWebhooks", ["$tgRepo", "$tgConfirm", "$tgLoading", GogsWebhooksDirective])
 
 
 #############################################################################

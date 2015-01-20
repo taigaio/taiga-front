@@ -104,6 +104,8 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         {templateUrl: "/partials/admin-third-parties-gitlab.html"})
     $routeProvider.when("/project/:pslug/admin/third-parties/bitbucket",
         {templateUrl: "/partials/admin-third-parties-bitbucket.html"})
+    $routeProvider.when("/project/:pslug/admin/third-parties/gogs",
+        {templateUrl: "/partials/admin-third-parties-gogs.html"})
 
     # User settings
     $routeProvider.when("/project/:pslug/user-settings/user-profile",
