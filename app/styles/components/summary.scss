@@ -100,10 +100,10 @@
             }
             &.active {
                 color: $fresh-taiga;
-                &:hover {
-                    color: $gray;
-                    transition: color .3s linear;
-                }
+            }
+            &.active:hover {
+                color: $gray;
+                transition: color .3s linear;
             }
         }
     }

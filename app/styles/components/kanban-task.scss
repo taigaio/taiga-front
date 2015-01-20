@@ -27,17 +27,17 @@
         }
     }
     .kanban-tagline {
-        @include table-flex();
         border-color: $postit-hover;
+        display: flex;
         height: .6rem;
     }
     .kanban-tag {
-        @include table-flex-child(1, 0, 0, 0);
         border-color: $postit-hover;
+        flex-grow: 1;
         height: .6rem;
     }
     .kanban-task-inner {
-        @include table-flex();
+        display: flex;
     }
     .avatar {
         a {
@@ -69,7 +69,8 @@
     }
     .task-text {
         @extend %small;
-        @include table-flex-child($flex-grow: 10, $flex-basis: 50px);
+        flex-basis: 50px;
+        flex-grow: 10;
         padding: 0 .5rem 0 .8rem;
         word-wrap: break-word;
     }
@@ -126,7 +127,9 @@
         }
     }
     .avatar {
-        @include table-flex-child($flex-basis: 50px);
+        flex-basis: 50px;
+        flex-grow: 1;
+        width: 55px;
     }
     .task-name {
         word-wrap: break-word;
@@ -188,7 +191,9 @@
         }
     }
     .avatar {
-        @include table-flex-child($flex-basis: 40px);
+        flex-basis: 50px;
+        flex-grow: 1;
+        width: 55px;
     }
     .task-num {
         vertical-align: top;

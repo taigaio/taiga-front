@@ -3,7 +3,9 @@
         @extend %bold;
     }
     .avatar {
-        @include table-flex(stretch, center, flex, row, wrap, flex-start);
+        align-items: center;
+        display: flex;
+        justify-content: flex-start;
         figcaption {
             margin-left: 1rem;
             width: 75%;
@@ -15,7 +17,8 @@
             }
         }
         img {
-            @include table-flex-child(1, 35px, 0);
+            flex-basis: 35px;
+            flex-grow: 1;
             max-width: 35px;
         }
         .name,
@@ -38,7 +41,9 @@
         padding-right: 1rem;
     }
     .row-status {
-        @include table-flex($justify-content: space-between, $align-items: center);
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
     }
     .active,
     .pending {
@@ -78,17 +83,20 @@
     .row-role,
     .header-member,
     .header-role {
-        @include table-flex-child(3, 0, 0);
+        flex-basis: 210px;
+        flex-grow: 3;
         min-width: 210px;
     }
     .row-admin,
     .header-admin {
-        @include table-flex-child(1, 0, 0);
+        flex-basis: 0;
+        flex-grow: 1;
         min-width: 70px;
     }
     .row-status,
     .header-status {
-        @include table-flex-child(1, 50px, 0);
+        flex-basis: 50px;
+        flex-grow: 1;
     }
     .check {
         background-color: darken($whitish, 10%);
@@ -98,7 +106,7 @@
         overflow: hidden;
         position: relative;
         width: 65px;
-        input[type=checkbox] {
+        input {
             cursor: pointer;
             height: 500px;
             left: -10px;
@@ -129,7 +137,7 @@
                 opacity: .6;
             }
         }
-        input[type=checkbox]:checked {
+        input:checked {
             + div {
                 background-color: #74a218;
                 margin-left: 50%;

@@ -42,8 +42,7 @@
                 float: none;
             }
             span {
-                animation: loading .5s linear;
-                animation: spin 1s linear infinite;
+                animation: loading .5s linear, spin 1s linear infinite;
             }
         }
     }

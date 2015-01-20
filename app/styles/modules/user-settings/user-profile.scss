@@ -3,10 +3,11 @@
         max-width: 700px;
         width: 100%;
         .container {
-            @include table-flex();
+            display: flex;
         }
         .avatar-container {
-            @include table-flex-child(1, 0, 0);
+            flex-basis: 0;
+            flex-grow: 1;
             margin-right: 1rem;
             .image-container {
                 position: relative;
@@ -51,7 +52,8 @@
             }
         }
         .data {
-            @include table-flex-child(3, 0, 0);
+            flex-basis: 0;
+            flex-grow: 3;
         }
     }
     fieldset {

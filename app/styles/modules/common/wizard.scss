@@ -42,9 +42,7 @@
         &.active {
             animation: formSlide .4s ease-in-out;
             &.create-step2,
-            &.create-step3 {
-                @include table-flex();
-            }
+            &.create-step3,
             &.create-step1 {
                 display: block;
             }
@@ -52,12 +50,13 @@
     }
     .wizard-action {
         div {
-            @include table-flex();
+            display: flex;
         }
         a {
-            @include table-flex-child(1, 40%, 0);
             color: $white;
             display: inline-block;
+            flex-basis: 40%;
+            flex-grow: 1;
             &:first-child {
                 margin-right: .5rem;
             }
@@ -65,38 +64,38 @@
     }
     .create-step1 {
         .template-inner {
-            @include table-flex();
-            fieldset {
-                @include table-flex-child(1, 0, 0);
-                &:first-child {
-                    margin-right: .5rem;
-                }
+            display: flex;
+        }
+        fieldset {
+            flex-grow: 1;
+            &:first-child {
+                margin-right: .5rem;
             }
         }
-        input[type="radio"] {
+        input {
             display: none;
-            &:checked {
-                +label {
-                    background: rgba($fresh-taiga, .7);
-                    transition: background .3s ease-in;
-                }
-            }
+        }
+        input:checked {
             +label {
-                background: rgba($whitish, .7);
-                cursor: pointer;
-                display: block;
-                margin-bottom: 1rem;
-                padding: 1rem;
-                text-align: center;
+                background: rgba($fresh-taiga, .7);
                 transition: background .3s ease-in;
-                &:hover {
-                    background: rgba($green-taiga, .7);
-                    transition: background .3s ease-in;
-                }
-                .icon {
-                    @extend %xxlarge;
-                    color: $white;
-                }
+            }
+        }
+        input+label {
+            background: rgba($whitish, .7);
+            cursor: pointer;
+            display: block;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            text-align: center;
+            transition: background .3s ease-in;
+            &:hover {
+                background: rgba($green-taiga, .7);
+                transition: background .3s ease-in;
+            }
+            .icon {
+                @extend %xxlarge;
+                color: $white;
             }
         }
         h2 {
@@ -115,39 +114,36 @@
         left: 0;
         position: absolute;
         width: 100%;
-        &.step1 {
-            .bar {
-                transition: width .6s ease-in-out;
-                width: 25%;
-            }
-            .progress-state {
-                span {
-                    &:nth-child(1) {
-                        color: rgba($white, 1);
-                        transition: color .3s ease-in-out;
-                        transition-delay: .6s;
-                    }
-                }
-            }
+    }
+    .step1 {
+        .bar {
+            transition: width .6s ease-in-out;
+            width: 25%;
         }
-        &.step2 {
-            .bar {
-                transition: width .6s ease-in-out;
-                // width: 50%;
-                width: 75%;
-            }
-            .progress-state {
-                span {
-                    &:nth-child(1),
-                    &:nth-child(2) {
-                        color: rgba($white, 1);
-                        transition: color .3s ease-in-out;
-                        transition-delay: .6s;
-                    }
-                }
+        .progress-state {
+            span:nth-child(1) {
+                color: rgba($white, 1);
+                transition: color .3s ease-in-out;
+                transition-delay: .6s;
             }
         }
     }
+    .step2 {
+        .bar {
+            transition: width .6s ease-in-out;
+            // width: 50%;
+            width: 75%;
+        }
+        .progress-state {
+            span:nth-child(1),
+            span:nth-child(2) {
+                color: rgba($white, 1);
+                transition: color .3s ease-in-out;
+                transition-delay: .6s;
+            }
+        }
+    }
+
     .progress-state {
         position: absolute;
         width: 100%;

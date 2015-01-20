@@ -19,9 +19,12 @@
         }
     }
     .watcher-single {
-        @include table-flex(center, center, flex, row, wrap, center);
+        align-content: center;
+        align-items: center;
         background: transparent;
         border-bottom: 1px solid $gray-light;
+        display: flex;
+        justify-content: center;
         padding: .5rem;
         vertical-align: middle;
         &:last-child {
@@ -36,13 +39,13 @@
     }
     .watcher-name {
         @extend %small;
-        @include table-flex-child(8, 0);
         color: $grayer;
+        flex-grow: 8;
         margin-left: 1rem;
         position: relative;
     }
     .watcher-avatar {
-        @include table-flex-child(1, 0);
+        flex-grow: 1;
     }
     .icon-delete {
         opacity: 0;

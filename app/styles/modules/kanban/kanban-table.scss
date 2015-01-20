@@ -11,9 +11,9 @@ $column-margin: 0 10px 0 0;
     width: 100%;
     .vfold {
         &.task-colum-name {
-            @include table-flex();
             align-items: center;
             cursor: pointer;
+            display: flex;
             justify-content: center;
             opacity: .8;
             padding: .5rem 0;
@@ -33,7 +33,7 @@ $column-margin: 0 10px 0 0;
         }
         &.task-colum-name,
         &.task-column {
-            @include table-flex-child(1, 0, 0);
+            flex-flow: 1;
             max-width: $column-folded-width;
             min-height: 2.5rem;
             min-width: $column-folded-width;
@@ -50,23 +50,24 @@ $column-margin: 0 10px 0 0;
     position: relative;
     width: 100%;
     .kanban-table-inner {
-        @include table-flex();
+        display: flex;
         overflow: hidden;
         position: absolute;
     }
     .task-colum-name {
         @extend %large;
-        @include table-flex();
         background: $whitish;
         border-top: 3px solid $gray-light;
-        flex: auto 0 auto;
+        display: flex;
+        flex-basis: $column-width;
+        flex-grow: $column-flex;
+        flex-shrink: $column-shrink;
         justify-content: space-between;
         margin: $column-margin;
         max-width: $column-width;
         padding: .5rem .5rem .5rem 1rem;
         position: relative;
         text-transform: uppercase;
-        width: $column-width;
         &:last-child {
             margin-right: 0;
         }
@@ -89,13 +90,16 @@ $column-margin: 0 10px 0 0;
 
 .kanban-table-body {
     @extend %medium;
-    @include table-flex();
+    display: flex;
     overflow: hidden;
     overflow-x: auto;
     width: 100%;
     .task-column {
-        @include table-flex-child($column-flex, $column-width, $column-shrink, $column-width);
+        flex-basis: $column-width;
+        flex-grow: $column-flex;
+        flex-shrink: $column-shrink;
         margin: $column-margin;
+        max-width: $column-width;
         overflow-y: auto;
         &:last-child {
             margin-right: 0;
@@ -123,5 +127,6 @@ $column-margin: 0 10px 0 0;
 }
 
 .kanban-table-inner {
-    @include table-flex($flex-wrap: nowrap);
+    display: flex;
+    flex-wrap: nowrap;
 }

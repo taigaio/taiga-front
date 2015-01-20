@@ -1,17 +1,19 @@
 .us-created-by {
-    @include table-flex();
+    display: flex;
     margin-bottom: 1rem;
     margin-top: .5rem;
     position: relative;
     .user-avatar {
-        @include table-flex-child(0, 40px, 0);
+        flex-basis: 40px;
+        flex-grow: 0;
         img {
             border-radius: 8%;
             width: 100%;
         }
     }
     .created-by {
-        @include table-flex-child(3, 70px, 0);
+        flex-basis: 70px;
+        flex-grow: 3;
         margin-left: .5rem;
         .created-title,
         .created-date {

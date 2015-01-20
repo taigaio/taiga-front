@@ -21,16 +21,18 @@ form
         div.title
             h1 Create Project
             p Fresh and clean. So exciting!
-        fieldset
-            input(type="text", name="name", ng-model="data.name", data-required="true", placeholder="Name", maxlength="45")
-        fieldset
-            textarea(name="description", ng-model="data.description", data-required="true",  placeholder="Description")
-        fieldset.wizard-action
-            div
-                a.button-prev.button.button-gray(href="", title="Prev") Prev
-                a.submit-button.button.button-green(href="", title="Create") Create
+        div.template-wrapper
+            div.template-inner
+                fieldset
+                    input(type="text", name="name", ng-model="data.name", data-required="true", placeholder="Name", maxlength="45")
+                fieldset
+                    textarea(name="description", ng-model="data.description", data-required="true",  placeholder="Description")
+                fieldset.wizard-action
+                    div
+                        a.button-prev.button.button-gray(href="", title="Prev") Prev
+                        a.submit-button.button.button-green(href="", title="Create") Create
 
-            button(type="submit", class="hidden")
+                    button(type="submit", class="hidden")
 
 div.progress-bar
     div.progress-state

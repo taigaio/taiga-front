@@ -20,48 +20,53 @@
             .us-name,
             .us-related-task {
                 color: $white;
-                a {
-                    color: $white;
-                    transition: color .3s linear;
-                    &:hover {
-                        color: $red-light;
-                    }
-                }
+            }
+            a {
+                color: $white;
+                transition: color .3s linear;
+            }
+            a:hover {
+                color: $red-light;
             }
             .unblock {
                 @extend %bold;
                 color: $white;
                 float: right;
-                &:hover {
-                    color: $red-light;
-                    transition: color .3s linear;
-                }
             }
-            .issue-nav {
-                a {
-                    color: $white;
-                }
+            .unblock:hover {
+                color: $red-light;
+                transition: color .3s linear;
             }
         }
         p {
             margin-bottom: 0;
         }
         .us-edit-name-inner {
-            @include table-flex();
+            display: flex;
+        }
+        .edit-subject {
+            align-content: center;
+            align-items: center;
+            display: flex;
         }
         input {
-            @include table-flex-child(1, 90%, 0);
             background: $white;
+            flex-grow: 9;
+        }
+        .save-container {
+            flex-grow: 1;
         }
         .us-title-text {
+            align-content: center;
+            align-items: center;
             display: flex;
             margin-bottom: 0;
             max-width: 94%;
-            &:hover {
-                .icon-edit {
-                    opacity: 1;
-                    transition: opacity .3s linear;
-                }
+        }
+        .us-title-text:hover {
+            .icon-edit {
+                opacity: 1;
+                transition: opacity .3s linear;
             }
         }
         .us-number {
@@ -98,12 +103,12 @@
                 border-left: 1px solid $gray-light;
                 padding: 0 .2rem;
                 transition: color .3s linear;
-                &:hover {
-                    color: $green-taiga;
-                }
-                &:first-child {
-                    border: 0;
-                }
+            }
+            a:hover {
+                color: $green-taiga;
+            }
+            a:first-child {
+                border: 0;
             }
         }
         .block-desc-container {
@@ -162,9 +167,9 @@
             .editable {
                 background: $whitish;
                 cursor: pointer;
-                .no-description {
-                    color: $grayer;
-                }
+            }
+            .no-description {
+                color: $grayer;
             }
         }
     }
@@ -252,17 +257,19 @@
 }
 
 .points-per-role {
-    @include table-flex();
+    display: flex;
     position: relative;
     > li {
-        @include table-flex-child(1, 18%, 0);
         border-right: 1px solid rgba($grayer, .3);
         color: rgba($grayer, .3);
         display: inline-block;
+        flex-basis: 18%;
+        flex-grow: 1;
         margin: .5rem .1rem;
         position: relative;
         text-align: center;
         transition: color .3s linear;
+        width: 18%;
         &.active {
             color: rgba($green-taiga, 1);
         }

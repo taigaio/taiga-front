@@ -18,14 +18,13 @@
             &:hover {
                 color: $blackish;
                 opacity: 1;
-                transition : opacity .3s linear;
-
+                transition: opacity .3s linear;
             }
         }
         .active {
             color: $blackish;
             opacity: 1;
-            transition : opacity .3s linear;
+            transition: opacity .3s linear;
         }
         .icon {
             padding-right: .5rem;

@@ -25,7 +25,9 @@
 
 .lightbox-generic-form {
     form {
-        @include table-flex-child(0, 600px, 0, 600px);
+        flex-basis: 600px;
+        flex-grow: 0;
+        max-width: 600px;
     }
 
     fieldset {
@@ -58,11 +60,15 @@
     }
 
     .settings {
-        @include table-flex(flex-start, stretch, flex, row, wrap, flex-start);
+        align-content: flex-start;
+        align-items: stretch;
+        display: flex;
+        justify-content: flex-start;
         margin-bottom: 1rem;
 
         fieldset {
-            @include table-flex-child(1, 30%, 0);
+            flex-basis: 30%;
+            flex-grow: 1;
             margin-right: .5rem;
             text-align: center;
             &:last-child {
@@ -94,28 +100,20 @@
         .client-requirement,
         .team-requirement,
         .iocaine-flag {
-            input {
-                &:checked {
-                    +label {
-                        background: $fresh-taiga;
-                        color: $white;
-                    }
-                }
+            input:checked+label {
+                background: $fresh-taiga;
+                color: $white;
             }
         }
 
         .blocking-flag {
-            input {
-                &:checked {
-                    +label {
-                        background: $red;
-                        color: $white;
-                    }
-                }
+            input:checked+label {
+                background: $red;
+                color: $white;
             }
         }
 
-        input[type="checkbox"] {
+        input {
             display: none;
         }
     }
@@ -128,7 +126,9 @@
 
 .lightbox-generic-bulk {
     form {
-        @include table-flex-child(0, 600px, 0, 600px);
+        flex-basis: 600px;
+        flex-grow: 0;
+        max-width: 600px;
     }
     textarea {
         margin-bottom: 1rem;
@@ -139,7 +139,9 @@
 
 .lightbox-search {
     form {
-        @include table-flex-child(0, 600px, 0, 600px);
+        flex-basis: 600px;
+        flex-grow: 0;
+        max-width: 600px;
     }
     input {
         margin-bottom: 1rem;
@@ -148,7 +150,7 @@
 
 .lightbox-add-member {
     .add-member-wrapper {
-        @include table-flex();
+        display: flex;
         margin-bottom: .5rem;
         &:last-child {
             margin-bottom: 0;
@@ -156,10 +158,12 @@
         fieldset {
             position: relative;
             &:first-child {
-                @include table-flex-child(3, 400px);
+                flex-basis: 400px;
+                flex-grow: 3;
             }
             &:last-child {
-                @include table-flex-child(1, 200px);
+                flex-basis: 200px;
+                flex-grow: 1;
                 margin-left: .5rem;
             }
         }
@@ -167,7 +171,7 @@
     .extra-text {
         margin-top: 1rem;
     }
-    input[type=email],
+    input,
     select {
         margin-bottom: 0;
     }
@@ -203,7 +207,9 @@
 
 .lightbox-sprint-add-edit {
     form {
-        @include table-flex-child(0, 600px, 0, 600px);
+        flex-basis: 600px;
+        flex-flow: 0;
+        max-width: 600px;
     }
     .last-sprint-name {
         color: $gray;
@@ -250,7 +256,9 @@
 
 .lightbox-generic-ask {
     form {
-        @include table-flex-child(0, 420px, 0, 420px);
+        flex-basis: 420px;
+        flex-flow: 0;
+        max-width: 420px;
     }
     .subtitle,
     .message {
@@ -263,9 +271,9 @@
         @extend %title;
     }
     .options {
-        @include table-flex();
+        display: flex;
         a {
-            @include table-flex-child(1, 0, 0);
+            flex-grow: 1;
             padding: 8px 0;
             text-align: center;
             &:first-child {
@@ -278,7 +286,8 @@
 .lightbox-ask-choice {
     text-align: center;
     form {
-        @include table-flex-child(0, 420px, 0);
+        flex-basis: 420px;
+        flex-grow: 0;
     }
     .question,
     .subtitle {
@@ -297,9 +306,9 @@
         }
     }
     .options {
-        @include table-flex();
+        display: flex;
         a {
-            @include table-flex-child(1, 0, 0);
+            flex-grow: 1;
             padding: 8px 0;
             text-align: center;
             &:first-child {
@@ -311,7 +320,9 @@
 
 .lightbox-delete-account {
     form {
-        @include table-flex-child(0, 420px, 0, 420px);
+        flex-basis: 420px;
+        flex-grow: 0;
+        width: 420px;
     }
     .question,
     .subtitle {
@@ -335,9 +346,9 @@
         }
     }
     .options {
-        @include table-flex();
+        display: flex;
         a {
-            @include table-flex-child(1, 0, 0);
+            flex-grow: 1;
             padding: 8px 0;
             text-align: center;
             &:first-child {
@@ -349,7 +360,9 @@
 
 .lightbox-delete-project {
     form {
-        @include table-flex-child(0, 420px, 0, 420px);
+        flex-basis: 420px;
+        flex-grow: 0;
+        width: 420px;
     }
     .question,
     .subtitle {
@@ -362,9 +375,9 @@
         @extend %title;
     }
     .options {
-        @include table-flex();
+        display: flex;
         a {
-            @include table-flex-child(1, 0, 0);
+            flex-grow: 1;
             padding: 8px 0;
             text-align: center;
             &:first-child {
@@ -378,7 +391,9 @@
 .lightbox-generic-success,
 .lightbox-generic-error {
     section {
-        @include table-flex-child(0, 420px, 0, 420px);
+        flex-basis: 420px;
+        flex-grow: 0;
+        width: 420px;
     }
     h2 {
         line-height: 2rem;
@@ -387,14 +402,18 @@
 
 .lightbox-create-issue {
     form {
-        @include table-flex-child(0, 600px, 0, 600px);
+        flex-basis: 600px;
+        flex-grow: 0;
+        width: 600px;
     }
 
     .fieldset-row {
-        @include table-flex();
+        display: flex;
         fieldset {
-            @include table-flex-child(1, 100px, 0, 30%);
+            flex-basis: 100px;
+            flex-grow: 1;
             margin-right: .5rem;
+            width: 30%;
             &:last-child {
                 margin: 0;
             }
@@ -410,7 +429,9 @@
 
 .lightbox-block {
     .form {
-        @include table-flex-child(0, 420px, 0, 420px);
+        flex-basis: 420px;
+        flex-grow: 0;
+        width: 420px;
     }
     textarea {
         margin-bottom: 1rem;
@@ -421,14 +442,16 @@
 
 .lightbox-select-user {
     .form {
-        @include table-flex-child(0, 600px, 0, 600px);
+        flex-basis: 600px;
+        flex-grow: 0;
+        width: 600px;
     }
     .watchers {
         margin-top: 1rem;
         min-height: 440px;
 
         .watcher-name {
-            @include table-flex-child(12, 0);
+            flex-grow: 12;
         }
     }
     .watcher-single {

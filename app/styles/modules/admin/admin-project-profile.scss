@@ -3,7 +3,7 @@
         max-width: 700px;
         width: 100%;
     }
-    input[type="text"],
+    input,
     textarea {
         @extend %title;
     }
@@ -19,10 +19,11 @@
         height: 10rem;
     }
     .privacy-settings {
-        @include table-flex();
+        display: flex;
         margin-bottom: 2rem;
         div {
-            @include table-flex-child(1, 0, 0, 40%);
+            flex-basis: 0;
+            flex-grow: 1;
             &:first-child {
                 margin-right: .5rem;
             }
@@ -36,11 +37,9 @@
             text-align: center;
         }
         input {
-            &:checked {
-                +label {
-                    background: $fresh-taiga;
-                    color: $white;
-                }
+            &:checked+label {
+                background: $fresh-taiga;
+                color: $white;
             }
         }
     }
