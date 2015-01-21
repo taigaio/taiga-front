@@ -73,7 +73,8 @@
     "Sortable": "~0.1.8",
     "pikaday": "~1.2.0",
     "malihu-custom-scrollbar-plugin": "~3.0.4",
-    "raven-js": "~1.1.16"
+    "raven-js": "~1.1.16",
+    "l.js": "~0.1.0"
   },
   "resolutions": {
     "lodash": "~2.4.1",

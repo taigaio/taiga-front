@@ -19,17 +19,9 @@
 # File: modules/base/conf.coffee
 ###
 
-defaults = {
-    api: "http://localhost:8000/api/v1/"
-    debug: true
-    lang: "en"
-}
-
 class ConfigurationService
-    @.$inject = ["localconf"]
-
-    constructor: (localconf) ->
-        @.config = _.merge(_.clone(defaults, true), localconf)
+    constructor: () ->
+        @.config = window.taigaConfig
 
     get: (key, defaultValue=null) ->
         if _.has(@.config, key)
@@ -39,4 +31,3 @@ class ConfigurationService
 
 module = angular.module("taigaBase")
 module.service("$tgConfig", ConfigurationService)
-module.value("localconf", null)

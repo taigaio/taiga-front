@@ -54,6 +54,7 @@
     "readable-stream": "~1.0.31",
     "rimraf": "^2.2.8",
     "run-sequence": "^1.0.1",
-    "through2": "~0.6.1"
+    "through2": "~0.6.1",
+    "gulp-replace": "^0.5.2"
   }
 }

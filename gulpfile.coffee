@@ -9,6 +9,7 @@ wrap = require("gulp-wrap")
 rename = require("gulp-rename")
 flatten = require('gulp-flatten')
 gulpif = require('gulp-if')
+replace = require("gulp-replace")
 
 minifyHTML = require("gulp-minify-html")
 sass = require("gulp-ruby-sass")
@@ -102,6 +103,7 @@ paths.js = [
     paths.app + "vendor/markitup-1x/markitup/jquery.markitup.js",
     paths.app + "vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js",
     paths.app + "vendor/raven-js/dist/raven.js",
+    paths.app + "vendor/l.js/l.js",
     paths.app + "js/jquery.ui.git-custom.js",
     paths.app + "js/jquery-ui.drag-multiple-custom.js",
     paths.app + "js/sha1-custom.js",
@@ -204,8 +206,13 @@ gulp.task "styles", ["delete-tmp-styles"], ->
 ##############################################################################
 
 gulp.task "conf", ->
-    gulp.src("conf/conf.example.js")
-        .pipe(rename("conf.js"))
+    gulp.src(["conf/conf.example.json"])
+        .pipe(gulp.dest(paths.dist + "js/"))
+
+gulp.task "app-loader", ->
+    gulp.src("app-loader/app-loader.coffee")
+        .pipe(replace("___VERSION___", (new Date()).getTime()))
+        .pipe(coffee())
         .pipe(gulp.dest(paths.dist + "js/"))
 
 gulp.task "locales", ->
@@ -236,7 +243,7 @@ gulp.task "jslibs-deploy", ->
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest(paths.dist + "js/"))
 
-gulp.task "app-watch", ["coffee", "conf", "locales"], ->
+gulp.task "app-watch", ["coffee", "conf", "locales", "app-loader"], ->
     _paths = [
         paths.tmp + "app.js",
         paths.tmp + "locales.en.js"
@@ -246,7 +253,7 @@ gulp.task "app-watch", ["coffee", "conf", "locales"], ->
         .pipe(concat("app.js"))
         .pipe(gulp.dest(paths.dist + "js/"))
 
-gulp.task "app-deploy", ["coffee", "conf", "locales"], ->
+gulp.task "app-deploy", ["coffee", "conf", "locales", "app-loader"], ->
     _paths = [
         paths.tmp + "app.js",
         paths.tmp + "locales.en.js"
