@@ -24,3 +24,7 @@ section.admin-menu
                 a(href="" tg-nav="project-admin-third-parties-github:project=project.slug")
                     span.title Third parties
                     span.icon.icon-arrow-right
+            li#adminmenu-contrib(ng-show="contribPlugins")
+                a(href="" tg-nav="project-admin-contrib:project=project.slug,plugin=contribPlugins[0].slug")
+                    span.title Contrib plugins
+                    span.icon.icon-arrow-right

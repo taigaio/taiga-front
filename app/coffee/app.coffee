@@ -20,6 +20,7 @@
 ###
 
 @taiga = taiga = {}
+@.taigaContribPlugins = @.taigaContribPlugins or []
 
 # Generic function for generate hash from a arbitrary length
 # collection of parameters.
@@ -104,6 +105,8 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         {templateUrl: "/partials/admin-third-parties-gitlab.html"})
     $routeProvider.when("/project/:pslug/admin/third-parties/bitbucket",
         {templateUrl: "/partials/admin-third-parties-bitbucket.html"})
+    $routeProvider.when("/project/:pslug/admin/contrib/:plugin",
+        {templateUrl: "/partials/contrib/main.html"})
 
     # User settings
     $routeProvider.when("/project/:pslug/user-settings/user-profile",
@@ -218,6 +221,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
 init = ($log, $i18n, $config, $rootscope, $auth, $events, $analytics) ->
     $i18n.initialize($config.get("defaultLanguage"))
     $log.debug("Initialize application")
+    $rootscope.contribPlugins = @.taigaContribPlugins
 
     if $auth.isAuthenticated()
         $events.setupConnection()
@@ -256,7 +260,7 @@ modules = [
     # Vendor modules
     "ngRoute",
     "ngAnimate",
-]
+].concat(_.map(@.taigaContribPlugins, (plugin) -> plugin.module))
 
 # Main module definition
 module = angular.module("taiga", modules)

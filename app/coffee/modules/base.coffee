@@ -95,6 +95,7 @@ urls = {
     "project-admin-third-parties-github": "/project/:project/admin/third-parties/github"
     "project-admin-third-parties-gitlab": "/project/:project/admin/third-parties/gitlab"
     "project-admin-third-parties-bitbucket": "/project/:project/admin/third-parties/bitbucket"
+    "project-admin-contrib": "/project/:project/admin/contrib/:plugin"
 
     # User settings
     "user-settings-user-profile": "/project/:project/user-settings/user-profile"
