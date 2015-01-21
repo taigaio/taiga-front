@@ -19,10 +19,8 @@ block content
             section.webhooks-table.basic-table
                 div.table-header
                     div.row
-                        div.webhook-service
-                            span Name
-                        div.webhook-url
-                            span URL
+                        div.webhook-service Name
+                        div.webhook-url URL
                         div.webhook-options
                 div.table-body
                     form.row
@@ -40,11 +38,12 @@ block content
                             span Slack
                         div.webhook-url
                             span http://slack.kjrw3543m/nwdlkw4m535/ffm
-                            a(href="", title="Test history") Test history
+                            a(href="", title="Test history") (See test history)
                         div.webhook-options
-                            a.icon.icon-floppy(href="", title="Save Webhook")
-                            a.icon.icon-edit(href="", title="Edit Webhook")
-                            a.icon.icon-cancel(href="", title="Cancel Webhook")
+                            div.webhook-options-wrapper
+                                a.icon.icon-floppy(href="", title="Save Webhook")
+                                a.icon.icon-edit(href="", title="Edit Webhook")
+                                a.icon.icon-delete(href="", title="Delete Webhook")
 
         //
             form
