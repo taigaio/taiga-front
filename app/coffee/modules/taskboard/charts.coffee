@@ -57,6 +57,7 @@ SprintGraphDirective = ->
             grid:
                 borderWidth: { top: 0, right: 1, left:0, bottom: 0 }
                 borderColor: '#ccc'
+                hoverable: true
             xaxis:
                 tickSize: [1, "day"]
                 min: days[0]
@@ -81,6 +82,17 @@ SprintGraphDirective = ->
                     radius: 4
                     lineWidth: 2
             colors: ["rgba(102,153,51,1)", "rgba(120,120,120,0.2)"]
+            tooltip: true
+            tooltipOpts:
+                content: (label, xval, yval, flotItem) ->
+                    #TODO: i18n
+                    formattedDate = moment(xval).format("DD MMM")
+                    roundedValue = Math.round(yval)
+                    if flotItem.seriesIndex == 1
+                        return "Optimal pending points for day #{formattedDate} should be #{roundedValue}"
+
+                    else
+                        return "Real pending points for day #{formattedDate} is #{roundedValue}"
 
         element.empty()
         element.plot(data, options).data("plot")

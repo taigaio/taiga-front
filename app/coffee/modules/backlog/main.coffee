@@ -994,6 +994,7 @@ tgBacklogGraphDirective = ->
             grid: {
                 borderWidth: { top: 0, right: 1, left:0, bottom: 0 }
                 borderColor: "#ccc"
+                hoverable: true
             }
             xaxis: {
                 ticks: dataToDraw.milestones.length
@@ -1018,6 +1019,22 @@ tgBacklogGraphDirective = ->
                 }
             }
             colors: colors
+            tooltip: true
+            tooltipOpts: {
+                content: (label, xval, yval, flotItem) ->
+                    #TODO: i18n
+                    if flotItem.seriesIndex == 1
+                        return "Optimal pending points for sprint #{xval} should be #{yval}"
+
+                    else if flotItem.seriesIndex == 2
+                        return "Real pending points for sprint #{xval} is #{yval}"
+
+                    else if flotItem.seriesIndex == 3
+                        return "Incremented points by team requirements for sprint #{xval} is #{Math.abs(yval)}"
+
+                    else
+                        return "Incremented points by client requirements for sprint #{xval} is #{Math.abs(yval)}"
+            }
         }
 
         element.empty()
