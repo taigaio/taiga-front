@@ -1,0 +1,34 @@
+.admin-webhooks {
+    .webhooks-options {
+        margin-bottom: 1rem;
+        text-align: right;
+    }
+
+    .webhook-service,
+    .webhook-url {
+        margin-right: .5rem;
+    }
+    .webhook-service {
+        flex-basis: 200px;
+        flex-grow: 0;
+        min-width: 200px;
+    }
+    .webhook-url {
+        flex-basis: 400px;
+        flex-grow: 8;
+    }
+    .webhook-options {
+        flex-basis: 100px;
+        flex-grow: 0;
+        min-width: 100px;
+        text-align: center;
+    }
+    .webhook-url-inputs {
+        display: flex;
+        flex-direction: row;
+        input {
+            flex-basis: 1;
+            margin-right: .3rem;
+        }
+    }
+}
