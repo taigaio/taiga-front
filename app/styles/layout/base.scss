@@ -10,7 +10,6 @@ body {
     min-height: 100%;
     width: 100%;
     .master {
-        transition: transform 1s ease;
         &.ng-animate {
             transition: 0;
         }
