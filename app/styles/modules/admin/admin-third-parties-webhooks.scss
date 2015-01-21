@@ -78,38 +78,119 @@
     .webhook-url-inputs {
         display: flex;
         flex-direction: row;
-        input {
-            flex-basis: 1;
+        flex-wrap: nowrap;
+        justify-content: center;
+        fieldset {
+            flex-grow: 1;
             margin-right: .3rem;
         }
     }
+
+    .webhooks-history{
+        @include slide(1000px, hidden, $min: 0);
+    }
+
+    .history-single-wrapper {
+        border-bottom: 1px solid $whitish;
+        margin-left: 22%;
+    }
     .history-single {
         align-items: center;
-        border-bottom: 1px solid $whitish;
         cursor: pointer;
         display: flex;
         justify-content: space-between;
-        margin-left: 22%;
         padding: .5rem;
         transition: background .2s linear;
         &:hover {
             background: rgba($fresh-taiga, .1);
             transition: background .2s linear;
         }
+        &.history-single-open {
+            &:hover {
+                background: none;
+            }
+            .icon-arrow-bottom {
+                transform: rotate(180deg);
+                transition: transform .3s linear;
+            }
+        }
+        .icon-arrow-bottom {
+            transform: rotate(0);
+            transition: transform .3s linear;
+        }
     }
-    .history-response {
+    .history-response-icon {
         background: $gray;
         border-radius: 25%;
         display: inline-block;
         height: .8rem;
         margin-right: .5rem;
-        vertical-align: middle;
         width: .8rem;
         &.history-success {
             background: $fresh-taiga;
         }
         &.history-error {
             background: $red;
+        }
+    }
+    .history-single-response {
+        @include slide(1000px, hidden, $min: 0);
+        &.open {
+            margin-top: 1rem;
+        }
+    }
+    .history-single-request-header,
+    .history-single-response-header {
+        display: flex;
+        justify-content: space-between;
+        padding: .5rem 0;
+        span:first-child {
+            @extend %bold;
+            color: $gray-light;
+        }
+        a {
+            @extend %small;
+            color: $gray-light;
+            &:hover {
+                color: $fresh-taiga;
+                transition: color .2s linear;
+            }
+        }
+        .icon {
+            margin-right: .3rem;
+            vertical-align: middle;
+        }
+    }
+    .history-single-request-body,
+    .history-single-response-body {
+        .response-container {
+            @extend %mono;
+            align-content: center;
+            align-items: center;
+            background: $whitish;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            margin-bottom: .5rem;
+        }
+        span {
+            @extend %small;
+            color: $gray-light;
+            flex-basis: 20%;
+            flex-grow: 1;
+            flex-shrink: 0;
+            text-align: center;
+        }
+        textarea {
+            @extend %mono;
+            border: 0;
+            flex-grow: 2;
+            min-height: 7.5rem;
+        }
+    }
+    .history-single-response-body {
+        textarea {
+            min-height: 10rem;
         }
     }
 }
