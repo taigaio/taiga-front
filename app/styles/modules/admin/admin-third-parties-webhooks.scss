@@ -1,6 +1,7 @@
 .admin-webhooks {
     .webhooks-table {
         .row {
+            border-bottom: 0;
             padding: .5rem 0;
         }
         .row:hover {
@@ -20,7 +21,9 @@
             color: $gray;
         }
     }
-
+    .single-webhook-wrapper {
+        border-bottom: 1px solid $whitish;
+    }
     .webhooks-options {
         margin-bottom: 1rem;
         text-align: right;
@@ -31,9 +34,8 @@
         margin-right: .5rem;
     }
     .webhook-service {
-        flex-basis: 200px;
+        flex-basis: 20%;
         flex-grow: 0;
-        min-width: 200px;
     }
     .webhook-url {
         flex-basis: 400px;
@@ -79,6 +81,35 @@
         input {
             flex-basis: 1;
             margin-right: .3rem;
+        }
+    }
+    .history-single {
+        align-items: center;
+        border-bottom: 1px solid $whitish;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        margin-left: 22%;
+        padding: .5rem;
+        transition: background .2s linear;
+        &:hover {
+            background: rgba($fresh-taiga, .1);
+            transition: background .2s linear;
+        }
+    }
+    .history-response {
+        background: $gray;
+        border-radius: 25%;
+        display: inline-block;
+        height: .8rem;
+        margin-right: .5rem;
+        vertical-align: middle;
+        width: .8rem;
+        &.history-success {
+            background: $fresh-taiga;
+        }
+        &.history-error {
+            background: $red;
         }
     }
 }
