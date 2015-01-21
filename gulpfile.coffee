@@ -27,6 +27,7 @@ lazypipe = require('lazypipe')
 rimraf = require('rimraf')
 imagemin = require('gulp-imagemin')
 autoprefixer = require('gulp-autoprefixer')
+fs = require('fs')
 
 mainSass = require("./main-sass").files
 
@@ -204,9 +205,10 @@ gulp.task "styles", ["delete-tmp-styles"], ->
 ##############################################################################
 
 gulp.task "conf", ->
-    gulp.src("conf/conf.example.js")
-        .pipe(rename("conf.js"))
-        .pipe(gulp.dest(paths.dist + "js/"))
+    if !fs.existsSync(paths.dist + "js/conf.js")
+        gulp.src("conf/conf.example.js")
+            .pipe(rename("conf.js"))
+            .pipe(gulp.dest(paths.dist + "js/"))
 
 gulp.task "locales", ->
     gulp.src("app/locales/en/app.json")

@@ -232,6 +232,7 @@ init = ($log, $i18n, $config, $rootscope, $auth, $events, $analytics) ->
 modules = [
     # Main Global Modules
     "taigaBase",
+    "taigaConf",
     "taigaCommon",
     "taigaResources",
     "taigaLocales",
