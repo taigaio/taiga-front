@@ -54,7 +54,7 @@ BacklogSortableDirective = ($repo, $rs, $rootscope, $tgConfirm) ->
                 $tgConfirm.notify("error", "You can't drop on backlog when filters are open") #TODO: i18n
 
             $el.sortable({
-                connectWith: ".sprint-table"
+                connectWith: ".sprint"
                 containment: ".wrapper"
                 dropOnEmpty: true
                 placeholder: "row us-item-row us-item-drag sortable-placeholder"
@@ -158,7 +158,8 @@ SprintSortableDirective = ($repo, $rs, $rootscope) ->
                 $el.sortable({
                     scroll: true
                     dropOnEmpty: true
-                    connectWith: ".sprint-table,.backlog-table-body,.empty-backlog"
+                    items: ".sprint-table .milestone-us-item-row",
+                    connectWith: ".sprint,.backlog-table-body,.empty-backlog"
                 })
 
                 $el.on "multiplesortreceive", (event, ui) ->
