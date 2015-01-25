@@ -19,7 +19,7 @@
   Twitter: @niwibe
   Location: Madrid, Russia
 
-  Taiga Engineer: Lord David Barragán Merino
+  Taiga Engineer & Grouchy Smurf: Lord David Barragán Merino
   Site: http://kaleidos.net/FFF8E7/
   Twitter: @bameda
   Location: Madrid, Spain
@@ -47,6 +47,11 @@
   Taiga UI Designer: Juan de la Cruz
   Site: http://kaleidos.net
   Twitter: @elhombretecla
+  Location: Madrid, Spain
+  
+  Taiga UX Consultan: Esther Moreno
+  Site: http://kaleidos.net
+  Twitter: @plumilla
   Location: Madrid, Spain
 
   Taiga CEO, Community Manager & Chico Almodóvar: Ricky Posner
