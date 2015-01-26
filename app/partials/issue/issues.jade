@@ -1,0 +1,21 @@
+div.wrapper.issues(tg-issues, ng-controller="IssuesController as ctrl", ng-init="section='issues'")
+    sidebar.menu-secondary.extrabar.filters-bar(tg-issues-filters)
+        include ../includes/modules/issues-filters
+
+    section.main.issues-page
+        header
+            include ../includes/components/mainTitle
+
+        include ../includes/modules/list-filters
+        include ../includes/modules/issues-table
+
+        // Paginator is rendered using js.
+        div.paginator.issues-paginator
+
+    div.lightbox.lightbox-select-user(tg-lb-assignedto)
+
+    div.lightbox.lightbox-create-issue(tg-lb-create-issue)
+        include ../includes/modules/lightbox-create-issue
+
+    div.lightbox.lightbox-generic-bulk(tg-lb-create-bulk-issues)
+        include ../includes/modules/lightbox-issue-bulk

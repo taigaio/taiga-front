@@ -1,0 +1,19 @@
+header
+  h1 Links
+
+nav
+  ul
+    <% _.each(wikiLinks, function(link, index) { %>
+    li.wiki-link(data-id!="<%- index %>")
+      a(title!="<%- link.title %>")
+          span.link-title <%- link.title %>
+          <% if (deleteWikiLinkPermission) { %>
+          span.icon.icon-delete
+          <% } %>
+      input(type="text" placeholder="name" class="hidden" value!="<%- link.title %>")
+    <% }) %>
+    li.new.hidden
+      input(type="text" placeholder="name")
+<% if (addWikiLinkPermission) { %>
+a(href="" title="Add link" class="add-button button button-gray") Add link
+<% } %>

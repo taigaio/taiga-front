@@ -25,9 +25,10 @@ sourcemaps = require('gulp-sourcemaps')
 insert = require("gulp-insert")
 runSequence = require('run-sequence')
 lazypipe = require('lazypipe')
-rimraf = require('rimraf')
+del = require('del')
 imagemin = require('gulp-imagemin')
 autoprefixer = require('gulp-autoprefixer')
+templateCache = require('gulp-angular-templatecache')
 
 mainSass = require("./main-sass").files
 
@@ -39,10 +40,11 @@ paths.tmpStyles = paths.tmp + "styles/"
 paths.tmpStylesExtras = "#{paths.tmpStyles}/taiga-front-extras/**/*.css"
 paths.extras = "extras/"
 
-paths.jade = [
-    paths.app + "index.jade",
-    paths.app + "partials/**/*.jade",
-    paths.app + "plugins/**/*.jade"
+paths.jade = "#{paths.app}/**/*.jade"
+
+paths.htmlPartials = [
+    "#{paths.tmp}/partials/**/*.html",
+    "!#{paths.tmp}/partials/{includes,includes/**}"
 ]
 
 paths.images = paths.app + "images/**/*"
@@ -116,26 +118,35 @@ isDeploy = process.argv[process.argv.length - 1] == 'deploy'
 # Layout/CSS Related tasks
 ##############################################################################
 
-gulp.task "jade-deploy", ->
+gulp.task "jade", ->
     gulp.src(paths.jade)
         .pipe(plumber())
         .pipe(cache("jade"))
-        .pipe(jade({pretty: false}))
-        .pipe(gulp.dest(paths.dist + "partials/"))
-
-gulp.task "jade-watch", ->
-    gulp.src(paths.jade)
-        .pipe(plumber())
-        .pipe(cache("jade"))
-        .pipe(jadeInheritance({basedir: "./app"}))
-        .pipe(jade({pretty: true}))
-        .pipe(gulp.dest(paths.dist))
-
-gulp.task "templates", ->
-    gulp.src(paths.app + "index.jade")
-        .pipe(plumber())
         .pipe(jade({pretty: true, locals:{v:(new Date()).getTime()}}))
+        .pipe(gulp.dest(paths.tmp))
+
+gulp.task "jade-inheritance", ->
+    gulp.src(paths.jade)
+        .pipe(plumber())
+        .pipe(cache("jade"))
+        .pipe(jadeInheritance({basedir: "./app/"}))
+        .pipe(jade({pretty: true, locals:{v:(new Date()).getTime()}}))
+        .pipe(gulp.dest(paths.tmp))
+
+gulp.task "copy-index", ->
+    gulp.src(paths.tmp + "index.html")
         .pipe(gulp.dest(paths.dist))
+
+gulp.task "template-cache", ->
+    gulp.src(paths.htmlPartials)
+        .pipe(templateCache({standalone: true}))
+        .pipe(gulp.dest(paths.dist + "js/"))
+
+gulp.task "jade-deploy", (cb) ->
+    runSequence("jade", "copy-index", "template-cache", cb)
+
+gulp.task "jade-watch", (cb) ->
+    runSequence("jade-inheritance", "copy-index", "template-cache", cb)
 
 ##############################################################################
 # CSS Related tasks
@@ -184,10 +195,8 @@ gulp.task "css-vendor", ->
         .pipe(concat("vendor.css"))
         .pipe(gulp.dest(paths.tmp))
 
-gulp.task "delete-tmp-styles", (cb) ->
-    rimraf(paths.tmpStyles, cb)
 
-gulp.task "styles-watch", ["css-app", "css-vendor"], ->
+gulp.task "styles", ["css-app", "css-vendor"], ->
     _paths = [
         paths.tmp + "vendor.css",
         paths.tmp + "app.css"
@@ -197,9 +206,6 @@ gulp.task "styles-watch", ["css-app", "css-vendor"], ->
         .pipe(concat("main.css"))
         .pipe(gulpif(isDeploy, minifyCSS({noAdvanced: true})))
         .pipe(gulp.dest(paths.dist + "styles/"))
-
-gulp.task "styles", ["delete-tmp-styles"], ->
-    gulp.start("styles-watch")
 
 ##############################################################################
 # JS Related tasks
@@ -320,8 +326,7 @@ gulp.task "express", ->
 # Rerun the task when a file changes
 gulp.task "watch", ->
     gulp.watch(paths.jade, ["jade-watch"])
-    gulp.watch(paths.app + "index.jade", ["templates"])
-    gulp.watch(paths.sass, ["styles-watch"])
+    gulp.watch(paths.sass, ["styles"])
     gulp.watch(paths.svg, ["copy-svg"])
     gulp.watch(paths.coffee, ["app-watch"])
     gulp.watch(paths.js, ["jslibs-watch"])
@@ -329,10 +334,10 @@ gulp.task "watch", ->
     gulp.watch(paths.images, ["copy-images"])
     gulp.watch(paths.fonts, ["copy-fonts"])
 
+# Remove the tmp directory
+del.sync(paths.tmp)
 
 gulp.task "deploy", [
-    "delete-tmp-styles",
-    "templates",
     "copy",
     "jade-deploy",
     "app-deploy",
@@ -342,9 +347,7 @@ gulp.task "deploy", [
 
 # The default task (called when you run gulp from cli)
 gulp.task "default", [
-    "delete-tmp-styles",
     "copy",
-    "templates",
     "styles",
     "app-watch",
     "jslibs-watch",

@@ -1,0 +1,16 @@
+.tasks
+    .task-name
+        input(type='text', placeholder='Type the new task subject')
+        .task-settings
+          a.icon.icon-floppy(href='', title='Save')
+          a.icon.icon-delete.cancel-edit(href='', title='Cancel')
+
+.status(tg-related-task-status='newTask', ng-model='newTask', not-auto-save='true')
+  a.task-status(href='', title='Status Name')
+    span.task-status-bind
+    span.icon.icon-arrow-bottom
+
+.assigned-to(tg-related-task-assigned-to-inline-edition='newTask', not-auto-save='true')
+  .task-assignedto(title='Assigned to')
+    figure.avatar
+    span.icon.icon-arrow-bottom

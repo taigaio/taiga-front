@@ -4,9 +4,9 @@ block head
 block content
     div.wrapper.roles(ng-init="section='admin'", ng-controller="ContribController as ctrl")
         sidebar.menu-secondary.sidebar(tg-admin-navigation="contrib")
-            include ../views/modules/admin-menu
+            include ../includes/modules/admin-menu
 
         sidebar.menu-tertiary.sidebar
-            include ../views/modules/admin-submenu-contrib
+            include ../includes/modules/admin/admin-submenu-contrib
 
         section.main.admin-common.admin-contrib(ng-include="pluginTemplate")

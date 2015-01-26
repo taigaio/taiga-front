@@ -1,0 +1,39 @@
+div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
+            ng-init="section='backlog'")
+    sidebar.menu-secondary.extrabar.filters-bar(tg-backlog-filters)
+        include ../includes/modules/backlog-filters
+    section.main.backlog
+        include ../includes/components/mainTitle
+        include ../includes/components/summary
+        div.graphics-container.burndown-container
+            div.burndown(tg-gm-backlog-graph)
+                include ../includes/modules/burndown
+        div.backlog-menu
+            a.trans-button.move-to-current-sprint(href="", title="Move to Current Sprint",
+                                                  id="move-to-current-sprint")
+                span.icon.icon-move
+                span.text Move to current Sprint
+            a.trans-button(href="", title="Show Filters", id="show-filters-button")
+                span.icon.icon-filter
+                span.text Show Filters
+            a.trans-button(href="", title="Show Tags", id="show-tags")
+                span.icon.icon-tag
+                span.text Show Tags
+            include ../includes/components/addnewus
+        section.backlog-table(ng-class="{'hidden': !visibleUserstories.length}")
+            include ../includes/modules/backlog-table
+        div.empty.empty-backlog(ng-class="{'hidden': visibleUserstories.length}", tg-backlog-empty-sortable)
+            span.icon.icon-backlog
+            span.title Your backlog is empty!
+            a(href="", title+"Create a new US", ng-click="ctrl.addNewUs('standard')", tg-check-permission="add_us") You may want to create a new user story
+    sidebar.menu-secondary.sidebar
+        include ../includes/modules/sprints
+
+    div.lightbox.lightbox-generic-form(tg-lb-create-edit-userstory)
+        include ../includes/modules/lightbox-us-create-edit
+
+    div.lightbox.lightbox-generic-bulk(tg-lb-create-bulk-userstories)
+        include ../includes/modules/lightbox-us-bulk
+
+    div.lightbox.lightbox-sprint-add-edit(tg-lb-create-edit-sprint)
+        include ../includes/modules/lightbox-sprint-add-edit

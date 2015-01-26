@@ -1,0 +1,23 @@
+<% if(isEditable){ %>
+.watchers-header
+    span.title watchers
+    a.icon.icon-plus.add-watcher(href="", title="Add watcher")
+<% } else if(watchers.length > 0){ %>
+.watchers-header
+    span.title watchers
+<% }; %>
+
+<% _.each(watchers, function(watcher) { %>
+<% if(watcher) { %>
+.watcher-single
+    .watcher-avatar
+        span.avatar(title!="<%- watcher.full_name_display %>")
+            img(src!="<%- watcher.photo %>" alt!="<%- watcher.full_name_display %>")
+    .watcher-name
+        span <%- watcher.full_name_display %>
+
+        <% if(isEditable){ %>
+        a.icon.icon-delete(data-watcher-id!="<%- watcher.id %>" href="" title="delete-watcher")
+        <% }; %>
+<% } %>
+<% }); %>

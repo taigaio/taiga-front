@@ -151,7 +151,7 @@ module.controller("UserStoryDetailController", UserStoryDetailController)
 ## User story status display directive
 #############################################################################
 
-UsStatusDisplayDirective = ->
+UsStatusDisplayDirective = ($template) ->
     # Display if a US is open or closed and its kanban status.
     #
     # Example:
@@ -161,18 +161,7 @@ UsStatusDisplayDirective = ->
     #   - US object (ng-model)
     #   - scope.statusById object
 
-    template = _.template("""
-    <span>
-        <% if (is_closed) { %>
-            Closed
-        <% } else { %>
-            Open
-        <% } %>
-    </span>
-    <span class="us-detail-status" style="color:<%- status.color %>">
-        <%- status.name %>
-    </span>
-    """) # TODO: i18n
+    template = $template.get("common/components/status-display.html", true)
 
     link = ($scope, $el, $attrs) ->
         render = (us) ->
@@ -194,14 +183,14 @@ UsStatusDisplayDirective = ->
         require: "ngModel"
     }
 
-module.directive("tgUsStatusDisplay", UsStatusDisplayDirective)
+module.directive("tgUsStatusDisplay", ["$tgTemplate", UsStatusDisplayDirective])
 
 
 #############################################################################
 ## User story related tasts progress splay Directive
 #############################################################################
 
-UsTasksProgressDisplayDirective = ->
+UsTasksProgressDisplayDirective = ($template) ->
     # Display a progress bar with the stats of completed tasks.
     #
     # Example:
@@ -211,12 +200,7 @@ UsTasksProgressDisplayDirective = ->
     #   - Task object list (ng-model)
     #   - scope.taskStatusById object
 
-    template = _.template("""
-    <div class="current-progress" style="width:<%- progress %>%" />
-    <span clasS="tasks-completed">
-        <%- totalClosedTasks %>/<%- totalTasks %> tasks completed
-    </span>
-    """) # TODO: i18n
+    template = $template.get("us/us-task-progress.html", true)
 
     link = ($scope, $el, $attrs) ->
         render = (tasks) ->
@@ -244,14 +228,14 @@ UsTasksProgressDisplayDirective = ->
         require: "ngModel"
     }
 
-module.directive("tgUsTasksProgressDisplay", UsTasksProgressDisplayDirective)
+module.directive("tgUsTasksProgressDisplay", ["$tgTemplate", UsTasksProgressDisplayDirective])
 
 
 #############################################################################
 ## User story status button directive
 #############################################################################
 
-UsStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue) ->
+UsStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $template) ->
     # Display the status of a US and you can edit it.
     #
     # Example:
@@ -262,21 +246,7 @@ UsStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue) ->
     #   - scope.statusById object
     #   - $scope.project.my_permissions
 
-    template = _.template("""
-    <div class="status-data <% if(editable){ %>clickable<% }%>">
-        <span class="level" style="background-color:<%- status.color %>"></span>
-        <span class="status-status"><%- status.name %></span>
-        <% if(editable){ %><span class="icon icon-arrow-bottom"></span><% }%>
-        <span class="level-name">status</span>
-
-        <ul class="popover pop-status">
-            <% _.each(statuses, function(st) { %>
-            <li><a href="" class="status" title="<%- st.name %>"
-                   data-status-id="<%- st.id %>"><%- st.name %></a></li>
-            <% }); %>
-        </ul>
-    </div>
-    """) #TODO: i18n
+    template = $template.get("us/us-status-button.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
         isEditable = ->
@@ -345,7 +315,7 @@ UsStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue) ->
         require: "ngModel"
     }
 
-module.directive("tgUsStatusButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading","$tgQqueue",
+module.directive("tgUsStatusButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading","$tgQqueue", "$tgTemplate",
                                       UsStatusButtonDirective])
 
 
@@ -353,14 +323,8 @@ module.directive("tgUsStatusButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$t
 ## User story team requirements button directive
 #############################################################################
 
-UsTeamRequirementButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $qqueue) ->
-    template = _.template("""
-    <label for="team-requirement"
-           class="button button-gray team-requirement <% if(canEdit){ %>editable<% }; %> <% if(isRequired){ %>active<% }; %>">
-        Team requirement
-    </label>
-    <input type="checkbox" id="team-requirement" name="team-requirement"/>
-    """) #TODO: i18n
+UsTeamRequirementButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $qqueue, $template) ->
+    template = $template.get("us/us-team-requirement-button.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
         canEdit = ->
@@ -416,20 +380,14 @@ UsTeamRequirementButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $qq
         require: "ngModel"
     }
 
-module.directive("tgUsTeamRequirementButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", "$tgQqueue", UsTeamRequirementButtonDirective])
+module.directive("tgUsTeamRequirementButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", "$tgQqueue", "$tgTemplate", UsTeamRequirementButtonDirective])
 
 #############################################################################
 ## User story client requirements button directive
 #############################################################################
 
-UsClientRequirementButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $qqueue) ->
-    template = _.template("""
-    <label for="client-requirement"
-           class="button button-gray client-requirement <% if(canEdit){ %>editable<% }; %> <% if(isRequired){ %>active<% }; %>">
-        Client requirement
-    </label>
-    <input type="checkbox" id="client-requirement" name="client-requirement"/>
-    """) #TODO: i18n
+UsClientRequirementButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $qqueue, $template) ->
+    template = $template.get("us/us-client-requirement-button.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
         canEdit = ->
@@ -482,5 +440,5 @@ UsClientRequirementButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $
         require: "ngModel"
     }
 
-module.directive("tgUsClientRequirementButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", "$tgQqueue",
+module.directive("tgUsClientRequirementButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", "$tgQqueue", "$tgTemplate",
                                                  UsClientRequirementButtonDirective])

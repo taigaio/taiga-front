@@ -686,19 +686,9 @@ module.directive("tgBacklog", ["$tgRepo", "$rootScope", BacklogDirective])
 ## User story points directive
 #############################################################################
 
-UsRolePointsSelectorDirective = ($rootscope) ->
+UsRolePointsSelectorDirective = ($rootscope, $template) ->
     #TODO: i18n
-    selectionTemplate = _.template("""
-    <ul class="popover pop-role">
-        <li><a class="clear-selection" href="" title="All">All</a></li>
-        <% _.each(roles, function(role) { %>
-        <li>
-            <a href="" class="role" title="<%- role.name %>"
-               data-role-id="<%- role.id %>"><%- role.name %></a>
-        </li>
-        <% }); %>
-    </ul>
-    """)
+    selectionTemplate = $template.get("backlog/us-role-points-popover.html", true)
 
     link = ($scope, $el, $attrs) ->
         # Watchers
@@ -747,39 +737,12 @@ UsRolePointsSelectorDirective = ($rootscope) ->
 
     return {link: link}
 
-module.directive("tgUsRolePointsSelector", ["$rootScope", UsRolePointsSelectorDirective])
+module.directive("tgUsRolePointsSelector", ["$rootScope", "$tgTemplate", UsRolePointsSelectorDirective])
 
 
-UsPointsDirective = ($repo) ->
-    rolesTemplate = _.template("""
-    <ul class="popover pop-role">
-        <% _.each(roles, function(role) { %>
-        <li>
-            <a href="" class="role" title="<%- role.name %>"
-               data-role-id="<%- role.id %>">
-                <%- role.name %>
-                (<%- role.points %>)
-            </a>
-        </li>
-        <% }); %>
-    </ul>
-    """)
-
-    pointsTemplate = _.template("""
-    <ul class="popover pop-points-open">
-        <% _.each(points, function(point) { %>
-        <li>
-            <% if (point.selected) { %>
-            <a href="" class="point" title="<%- point.name %>"
-               data-point-id="<%- point.id %>"><%- point.name %></a>
-            <% } else { %>
-            <a href="" class="point active" title="<%- point.name %>"
-               data-point-id="<%- point.id %>"><%- point.name %></a>
-            <% } %>
-        </li>
-        <% }); %>
-    </ul>
-    """)
+UsPointsDirective = ($repo, $tgTemplate) ->
+    rolesTemplate = $tgTemplate.get("backlog/us-points-roles-popover.html", true)
+    pointsTemplate = $tgTemplate.get("backlog/us-points-popover.html", true)
 
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
@@ -940,7 +903,7 @@ UsPointsDirective = ($repo) ->
 
     return {link: link}
 
-module.directive("tgBacklogUsPoints", ["$tgRepo", UsPointsDirective])
+module.directive("tgBacklogUsPoints", ["$tgRepo", "$tgTemplate", UsPointsDirective])
 
 #############################################################################
 ## Burndown graph directive
@@ -1067,12 +1030,8 @@ module.directive("tgGmBacklogGraph", tgBacklogGraphDirective)
 ## Backlog progress bar directive
 #############################################################################
 
-TgBacklogProgressBarDirective = ->
-    template = _.template("""
-        <div class="defined-points" title="Excess of points"></div>
-        <div class="project-points-progress" title="Pending Points" style="width: <%- projectPointsPercentaje %>%"></div>
-        <div class="closed-points-progress" title="Closed points" style="width: <%- closedPointsPercentaje %>%"></div>
-    """)
+TgBacklogProgressBarDirective = ($template) ->
+    template = $template.get("backlog/progress-bar.html", true)
 
     render = (el, projectPointsPercentaje, closedPointsPercentaje) ->
         el.html(template({
@@ -1109,4 +1068,4 @@ TgBacklogProgressBarDirective = ->
 
     return {link: link}
 
-module.directive("tgBacklogProgressBar", TgBacklogProgressBarDirective)
+module.directive("tgBacklogProgressBar", ["$tgTemplate", TgBacklogProgressBarDirective])

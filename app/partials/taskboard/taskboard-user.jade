@@ -1,0 +1,6 @@
+figure.avatar.avatar-assigned-to
+    a(href='#', title='Assign task', ng-class="{'not-clickable': !clickable}")
+        img(ng-src='{{imgurl}}')
+figure.avatar.avatar-task-link
+  a(tg-nav='project-tasks-detail:project=project.slug,ref=task.ref', ng-attr-title='{{task.subject}}')
+    img(ng-src='{{imgurl}}')

@@ -1,0 +1,20 @@
+.sprint-name
+    a.icon.icon-arrow-up(href="", title="Compact Sprint")
+    <% if(isVisible){ %>
+    a(href!="<%- taskboardUrl %>", title!="'Go to the taskboard of '<%- name %>'")
+        span <%- name %>
+    <% } %>
+
+    <% if(isEditable){ %>
+    a.icon.icon-edit(href="", title="Edit Sprint")
+    <% } %>
+
+.sprint-summary
+    .sprint-date <%- estimatedDateRange %>
+    ul
+        li
+            span.number <%- closedPoints %>
+            span.description closed
+        li
+            span.number <%- totalPoints %>
+            span.description total

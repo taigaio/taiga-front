@@ -35,43 +35,9 @@ module = angular.module("taigaBacklog")
 ## Issues Filters Directive
 #############################################################################
 
-BacklogFiltersDirective = ($log, $location) ->
-    template = _.template("""
-    <% _.each(filters, function(f) { %>
-        <% if (f.selected) { %>
-        <a class="single-filter active"
-            data-type="<%- f.type %>"
-            data-id="<%- f.id %>">
-            <span class="name" <% if (f.color){ %>style="border-left: 3px solid <%- f.color %>;"<% } %>>
-                <%- f.name %>
-            </span>
-            <span class="number"><%- f.count %></span>
-        </a>
-        <% } else { %>
-        <a class="single-filter"
-            data-type="<%- f.type %>"
-            data-id="<%- f.id %>">
-            <span class="name" <% if (f.color){ %>style="border-left: 3px solid <%- f.color %>;"<% } %>>
-                <%- f.name %>
-            </span>
-            <span class="number"><%- f.count %></span>
-        </a>
-        <% } %>
-    <% }) %>
-    """)
-
-    templateSelected = _.template("""
-    <% _.each(filters, function(f) { %>
-    <a class="single-filter selected"
-       data-type="<%- f.type %>"
-       data-id="<%- f.id %>">
-        <span class="name" <% if (f.color){ %>style="border-left: 3px solid <%- f.color %>;"<% } %>>
-            <%- f.name %></span>
-        <span class="icon icon-delete"></span>
-    </a>
-    <% }) %>
-    """)
-
+BacklogFiltersDirective = ($log, $location, $templates) ->
+    template = $templates.get("backlog/filters.html", true)
+    templateSelected = $templates.get("backlog/filter-selected.html", true)
 
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.closest(".wrapper").controller()
@@ -100,10 +66,18 @@ BacklogFiltersDirective = ($log, $location) ->
             renderSelectedFilters()
 
         renderSelectedFilters = ->
-            html = templateSelected({filters:selectedFilters})
+            _.map selectedFilters, (f) =>
+                if f.color
+                    f.style = "border-left: 3px solid #{f.color}"
+
+            html = templateSelected({filters: selectedFilters})
             $el.find(".filters-applied").html(html)
 
         renderFilters = (filters) ->
+            _.map filters, (f) =>
+                if f.color
+                    f.style = "border-left: 3px solid #{f.color}"
+
             html = template({filters:filters})
             $el.find(".filter-list").html(html)
 
@@ -178,4 +152,4 @@ BacklogFiltersDirective = ($log, $location) ->
 
     return {link:link}
 
-module.directive("tgBacklogFilters", ["$log", "$tgLocation", BacklogFiltersDirective])
+module.directive("tgBacklogFilters", ["$log", "$tgLocation", "$tgTemplate", BacklogFiltersDirective])

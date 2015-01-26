@@ -142,7 +142,7 @@ module.controller("IssueDetailController", IssueDetailController)
 ## Issue status display directive
 #############################################################################
 
-IssueStatusDisplayDirective = ->
+IssueStatusDisplayDirective = ($template)->
     # Display if a Issue is open or closed and its issueboard status.
     #
     # Example:
@@ -152,18 +152,7 @@ IssueStatusDisplayDirective = ->
     #   - Issue object (ng-model)
     #   - scope.statusById object
 
-    template = _.template("""
-    <span>
-        <% if (status.is_closed) { %>
-            Closed
-        <% } else { %>
-            Open
-        <% } %>
-    </span>
-    <span class="us-detail-status" style="color:<%- status.color %>">
-        <%- status.name %>
-    </span>
-    """) # TODO: i18n
+    template = $template.get("common/components/status-display.html", true)
 
     link = ($scope, $el, $attrs) ->
         render = (issue) ->
@@ -184,14 +173,14 @@ IssueStatusDisplayDirective = ->
         require: "ngModel"
     }
 
-module.directive("tgIssueStatusDisplay", IssueStatusDisplayDirective)
+module.directive("tgIssueStatusDisplay", ["$tgTemplate", IssueStatusDisplayDirective])
 
 
 #############################################################################
 ## Issue status button directive
 #############################################################################
 
-IssueStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue) ->
+IssueStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $template) ->
     # Display the status of Issue and you can edit it.
     #
     # Example:
@@ -202,21 +191,7 @@ IssueStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue) ->
     #   - scope.statusById object
     #   - $scope.project.my_permissions
 
-    template = _.template("""
-    <div class="status-data <% if(editable){ %>clickable<% }%>">
-        <span class="level" style="background-color:<%- status.color %>"></span>
-        <span class="status-status"><%- status.name %></span>
-        <% if(editable){ %><span class="icon icon-arrow-bottom"></span><% }%>
-        <span class="level-name">status</span>
-
-        <ul class="popover pop-status">
-            <% _.each(statuses, function(st) { %>
-            <li><a href="" class="status" title="<%- st.name %>"
-                   data-status-id="<%- st.id %>"><%- st.name %></a></li>
-            <% }); %>
-        </ul>
-    </div>
-    """) #TODO: i18n
+    template = $template.get("issue/issues-status-button.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
         isEditable = ->
@@ -281,13 +256,13 @@ IssueStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue) ->
         require: "ngModel"
     }
 
-module.directive("tgIssueStatusButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", "$tgQqueue", IssueStatusButtonDirective])
+module.directive("tgIssueStatusButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", "$tgQqueue", "$tgTemplate", IssueStatusButtonDirective])
 
 #############################################################################
 ## Issue type button directive
 #############################################################################
 
-IssueTypeButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue) ->
+IssueTypeButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $template) ->
     # Display the type of Issue and you can edit it.
     #
     # Example:
@@ -298,21 +273,7 @@ IssueTypeButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue) ->
     #   - scope.typeById object
     #   - $scope.project.my_permissions
 
-    template = _.template("""
-    <div class="type-data <% if(editable){ %>clickable<% }%>">
-        <span class="level" style="background-color:<%- type.color %>"></span>
-        <span class="type-type"><%- type.name %></span>
-        <% if(editable){ %><span class="icon icon-arrow-bottom"></span><% }%>
-        <span class="level-name">type</span>
-
-        <ul class="popover pop-type">
-            <% _.each(typees, function(tp) { %>
-            <li><a href="" class="type" title="<%- tp.name %>"
-                   data-type-id="<%- tp.id %>"><%- tp.name %></a></li>
-            <% }); %>
-        </ul>
-    </div>
-    """) #TODO: i18n
+    template = $template.get("issue/issue-type-button.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
         isEditable = ->
@@ -376,14 +337,14 @@ IssueTypeButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue) ->
         require: "ngModel"
     }
 
-module.directive("tgIssueTypeButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", "$tgQqueue", IssueTypeButtonDirective])
+module.directive("tgIssueTypeButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", "$tgQqueue", "$tgTemplate", IssueTypeButtonDirective])
 
 
 #############################################################################
 ## Issue severity button directive
 #############################################################################
 
-IssueSeverityButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue) ->
+IssueSeverityButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $template) ->
     # Display the severity of Issue and you can edit it.
     #
     # Example:
@@ -394,21 +355,7 @@ IssueSeverityButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue) 
     #   - scope.severityById object
     #   - $scope.project.my_permissions
 
-    template = _.template("""
-    <div class="severity-data <% if(editable){ %>clickable<% }%>">
-        <span class="level" style="background-color:<%- severity.color %>"></span>
-        <span class="severity-severity"><%- severity.name %></span>
-        <% if(editable){ %><span class="icon icon-arrow-bottom"></span><% }%>
-        <span class="level-name">severity</span>
-
-        <ul class="popover pop-severity">
-            <% _.each(severityes, function(sv) { %>
-            <li><a href="" class="severity" title="<%- sv.name %>"
-                   data-severity-id="<%- sv.id %>"><%- sv.name %></a></li>
-            <% }); %>
-        </ul>
-    </div>
-    """) #TODO: i18n
+    template = $template.get("issue/issue-severity-button.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
         isEditable = ->
@@ -473,14 +420,14 @@ IssueSeverityButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue) 
         require: "ngModel"
     }
 
-module.directive("tgIssueSeverityButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", "$tgQqueue", IssueSeverityButtonDirective])
+module.directive("tgIssueSeverityButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", "$tgQqueue", "$tgTemplate", IssueSeverityButtonDirective])
 
 
 #############################################################################
 ## Issue priority button directive
 #############################################################################
 
-IssuePriorityButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue) ->
+IssuePriorityButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $template) ->
     # Display the priority of Issue and you can edit it.
     #
     # Example:
@@ -491,21 +438,7 @@ IssuePriorityButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue) 
     #   - scope.priorityById object
     #   - $scope.project.my_permissions
 
-    template = _.template("""
-    <div class="priority-data <% if(editable){ %>clickable<% }%>">
-        <span class="level" style="background-color:<%- priority.color %>"></span>
-        <span class="priority-priority"><%- priority.name %></span>
-        <% if(editable){ %><span class="icon icon-arrow-bottom"></span><% }%>
-        <span class="level-name">priority</span>
-
-        <ul class="popover pop-priority">
-            <% _.each(priorityes, function(pr) { %>
-            <li><a href="" class="priority" title="<%- pr.name %>"
-                   data-priority-id="<%- pr.id %>"><%- pr.name %></a></li>
-            <% }); %>
-        </ul>
-    </div>
-    """) #TODO: i18n
+    template = $template.get("issue/issue-priority-button.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
         isEditable = ->
@@ -570,7 +503,7 @@ IssuePriorityButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue) 
         require: "ngModel"
     }
 
-module.directive("tgIssuePriorityButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", "$tgQqueue", IssuePriorityButtonDirective])
+module.directive("tgIssuePriorityButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", "$tgQqueue", "$tgTemplate", IssuePriorityButtonDirective])
 
 
 #############################################################################
@@ -578,12 +511,6 @@ module.directive("tgIssuePriorityButton", ["$rootScope", "$tgRepo", "$tgConfirm"
 #############################################################################
 
 PromoteIssueToUsButtonDirective = ($rootScope, $repo, $confirm, $qqueue) ->
-    template = _.template("""
-        <a class="button button-gray editable" tg-check-permission="add_us">
-            Promote to User Story
-        </a>
-    """)  # TODO: i18n
-
     link = ($scope, $el, $attrs, $model) ->
 
         save = $qqueue.bindAdd (issue, finish) =>
@@ -627,7 +554,7 @@ PromoteIssueToUsButtonDirective = ($rootScope, $repo, $confirm, $qqueue) ->
     return {
         restrict: "AE"
         require: "ngModel"
-        template: template
+        templateUrl: "issue/promote-issue-to-us-button.html"
         link: link
     }
 

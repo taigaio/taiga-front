@@ -61,191 +61,15 @@ class HistoryController extends taiga.Controller
         return @rs.history.undeleteComment(type, objectId, activityId).then => @.loadHistory(type, objectId)
 
 
-HistoryDirective = ($log, $loading, $qqueue) ->
-    templateChangeDiff = _.template("""
-    <div class="change-entry">
-        <div class="activity-changed">
-            <span><%- name %></span>
-        </div>
-        <div class="activity-fromto">
-            <p>
-                <span><%= diff %></span>
-            </p>
-        </div>
-    </div>
-    """)
-
-    templateChangePoints = _.template("""
-    <% _.each(points, function(point, name) { %>
-    <div class="change-entry">
-        <div class="activity-changed">
-            <span>US points (<%- name.toLowerCase() %>)</span>
-        </div>
-        <div class="activity-fromto">
-            <p>
-                <strong> from </strong> <br />
-                <span><%- point[0] %></span>
-            </p>
-            <p>
-                <strong> to </strong> <br />
-                <span><%- point[1] %></span>
-            </p>
-        </div>
-    </div>
-    <% }); %>
-    """)
-
-    templateChangeGeneric = _.template("""
-    <div class="change-entry">
-        <div class="activity-changed">
-            <span><%- name %></span>
-        </div>
-        <div class="activity-fromto">
-            <p>
-                <strong> from </strong> <br />
-                <span><%- from %></span>
-            </p>
-            <p>
-                <strong> to </strong> <br />
-                <span><%- to %></span>
-            </p>
-        </div>
-    </div>
-    """)
-    templateChangeAttachment = _.template("""
-    <div class="change-entry">
-        <div class="activity-changed">
-            <span><%- name %></span>
-        </div>
-        <div class="activity-fromto">
-            <% _.each(diff, function(change) { %>
-                <p>
-                    <strong><%- change.name %> from </strong> <br />
-                    <span><%- change.from %></span>
-                </p>
-                <p>
-                    <strong><%- change.name %> to </strong> <br />
-                    <span><%- change.to %></span>
-                </p>
-            <% }) %>
-        </div>
-    </div>
-    """)
-
-    templateDeletedComment = _.template("""
-        <div class="activity-single comment deleted-comment">
-            <div>
-                <span>Comment deleted by <%- deleteCommentUser %> on <%- deleteCommentDate %></span>
-                <a href="" title="Show comment" class="show-deleted-comment">(Show deleted comment)</a>
-                <a href="" title="Show comment" class="hide-deleted-comment hidden">(Hide deleted comment)</a>
-                <div class="comment-body wysiwyg"><%= deleteComment %></div>
-            </div>
-            <% if (canRestoreComment) { %>
-                <a href="" class="comment-restore" data-activity-id="<%- activityId %>">
-                    <span class="icon icon-reload"></span>
-                    <span>Restore comment</span>
-                </a>
-            <% } %>
-        </div>
-    """)
-
-    templateActivity = _.template("""
-    <div class="activity-single <%- mode %>">
-        <div class="activity-user">
-            <a class="avatar" href="" title="<%- userFullName %>">
-                <img src="<%- avatar %>" alt="<%- userFullName %>">
-            </a>
-        </div>
-        <div class="activity-content">
-            <div class="activity-username">
-                <a class="username" href="" title="<%- userFullName %>">
-                    <%- userFullName %>
-                </a>
-                <span class="date">
-                    <%- creationDate %>
-                </span>
-            </div>
-
-            <% if (comment.length > 0) { %>
-                <% if ((deleteCommentDate || deleteCommentUser)) { %>
-                    <div class="deleted-comment">
-                        <span>Comment deleted by <%- deleteCommentUser %> on <%- deleteCommentDate %></span>
-                    </div>
-                <% } %>
-                <div class="comment wysiwyg">
-                    <%= comment %>
-                </div>
-                <% if (!deleteCommentDate && mode !== "activity" && canDeleteComment) { %>
-                    <a href="" class="icon icon-delete comment-delete" data-activity-id="<%- activityId %>"></a>
-                <% } %>
-            <% } %>
-
-            <% if(changes.length > 0) { %>
-            <div class="changes">
-                <% if (mode != "activity") { %>
-                <a class="changes-title" href="" title="Show activity">
-                  <span><%- changesText %></span>
-                  <span class="icon icon-arrow-up"></span>
-                </a>
-                <% } %>
-
-                <% _.each(changes, function(change) { %>
-                    <%= change %>
-                <% }) %>
-            </div>
-            <% } %>
-        </div>
-    </div>
-    """)
-
-    templateBaseEntries = _.template("""
-
-    <% if (showMore > 0) { %>
-    <a href="" title="Show more" class="show-more show-more-comments">
-    + Show previous entries (<%- showMore %> more)
-    </a>
-    <% } %>
-    <% _.each(entries, function(entry) { %>
-        <%= entry %>
-    <% }) %>
-    """)
-
-    templateBase = _.template("""
-    <section class="history">
-        <ul class="history-tabs">
-            <li>
-                <a href="#" class="active">
-                    <span class="icon icon-comment"></span>
-                    <span class="tab-title">Comments</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <span class="icon icon-issues"></span>
-                    <span class="tab-title">Activity</span>
-                </a>
-            </li>
-        </ul>
-        <section class="history-comments">
-            <div class="comments-list"></div>
-            <div tg-check-permission="modify_<%- type %>" tg-toggle-comment class="add-comment">
-                <textarea placeholder="Type a new comment here"
-                    ng-model="<%- ngmodel %>.comment" tg-markitup="tg-markitup">
-                </textarea>
-                <% if (mode !== "edit") { %>
-                <a class="help-markdown" href="https://taiga.io/support/taiga-markdown-syntax/" target="_blank" title="Mardown syntax help">
-                    <span class="icon icon-help"></span>
-                    <span>Markdown syntax help</span>
-                </a>
-                <a href="" title="Comment" class="button button-green save-comment">Comment</a>
-                <% } %>
-            </div>
-        </section>
-        <section class="history-activity hidden">
-            <div class="changes-list"></div>
-        </section>
-    </section>
-    """)
+HistoryDirective = ($log, $loading, $qqueue, $template) ->
+    templateChangeDiff = $template.get("common/history/history-change-diff.html", true)
+    templateChangePoints = $template.get("common/history/history-change-points.html", true)
+    templateChangeGeneric = $template.get("common/history/history-change-generic.html", true)
+    templateChangeAttachment = $template.get("common/history/history-change-attachment.html", true)
+    templateDeletedComment = $template.get("common/history/history-deleted-comment.html", true)
+    templateActivity = $template.get("common/history/history-activity.html", true)
+    templateBaseEntries = $template.get("common/history/history-base-entries.html", true)
+    templateBase = $template.get("common/history/history-base.html", true)
 
     link = ($scope, $el, $attrs, $ctrl) ->
         # Bootstraping
@@ -332,7 +156,8 @@ HistoryDirective = ($log, $loading, $qqueue) ->
                                 name: getHumanizedFieldName(name)
                                 from: formatChange(values[0])
                                 to: formatChange(values[1])
-                            }
+                                }
+
                         return templateChangeAttachment({name: name, diff: diff})
 
             return _.flatten(attachments).join("\n")
@@ -532,4 +357,4 @@ HistoryDirective = ($log, $loading, $qqueue) ->
     }
 
 
-module.directive("tgHistory", ["$log", "$tgLoading", "$tgQqueue", HistoryDirective])
+module.directive("tgHistory", ["$log", "$tgLoading", "$tgQqueue", "$tgTemplate", HistoryDirective])

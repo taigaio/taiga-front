@@ -132,26 +132,8 @@ module.controller("WikiDetailController", WikiDetailController)
 ## Wiki Summary Directive
 #############################################################################
 
-WikiSummaryDirective = ($log) ->
-    template = _.template("""
-    <ul>
-        <li>
-            <span class="number"><%- totalEditions %></span>
-            <span class="description">times <br />edited</span>
-        </li>
-        <li>
-            <span class="number"><%- lastModifiedDate %></span>
-            <span class="description"> last <br />edit</span>
-        </li>
-        <li class="username-edition">
-            <figure class="avatar">
-                <img src="<%- user.imgUrl %>" alt="<%- user.name %>">
-            </figure>
-            <span class="description">last modification</span>
-            <span class="username"><%- user.name %></span>
-        </li>
-    </ul>
-    """)
+WikiSummaryDirective = ($log, $template) ->
+    template = $template.get("wiki/wiki-summary.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
         render = (wiki) ->
@@ -189,7 +171,7 @@ WikiSummaryDirective = ($log) ->
         require: "ngModel"
     }
 
-module.directive("tgWikiSummary", ["$log", WikiSummaryDirective])
+module.directive("tgWikiSummary", ["$log", "$tgTemplate", WikiSummaryDirective])
 
 
 #############################################################################
@@ -198,25 +180,6 @@ module.directive("tgWikiSummary", ["$log", WikiSummaryDirective])
 
 EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $location, $navUrls,
                                 $analytics, $qqueue) ->
-    template = """
-        <div class="view-wiki-content">
-            <section class="wysiwyg" tg-bind-html="wiki.html"></section>
-            <span class="edit icon icon-edit" title="Edit"></span>
-        </div>
-        <div class="edit-wiki-content" style="display: none;">
-            <textarea placeholder="Write your wiki page here"
-                      ng-model="wiki.content"
-                      tg-markitup="tg-markitup"></textarea>
-            <a class="help-markdown" href="https://taiga.io/support/taiga-markdown-syntax/" target="_blank" title="Mardown syntax help">
-                <span class="icon icon-help"></span>
-                <span>Markdown syntax help</span>
-            </a>
-            <span class="action-container">
-                <a class="save icon icon-floppy" href="" title="Save" />
-                <a class="cancel icon icon-delete" href="" title="Cancel" />
-            </span>
-        </div>
-    """ # TODO: i18n
 
     link = ($scope, $el, $attrs, $model) ->
         isEditable = ->
@@ -325,7 +288,7 @@ EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $
         link: link
         restrict: "EA"
         require: "ngModel"
-        template: template
+        templateUrl: "wiki/editable-wiki-content.html"
     }
 
 module.directive("tgEditableWikiContent", ["$window", "$document", "$tgRepo", "$tgConfirm", "$tgLoading",

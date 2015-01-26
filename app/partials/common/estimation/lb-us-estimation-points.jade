@@ -1,0 +1,13 @@
+ul.popover.pop-points-open
+    <% _.each(points, function(point) { %>
+    li
+        <% if (point.selected) { %>
+        a(href="", class="point", title!="<%- point.name %>",
+           data-point-id!="<%- point.id %>", data-role-id!="<%- roleId %>")
+            | <%- point.name %>
+        <% } else { %>
+        a(href="", class="point active", title!="<%- point.name %>",
+           data-point-id!="<%- point.id %>" data-role-id!="<%- roleId %>")
+            | <%- point.name %>
+        <% } %>
+    <% }); %>

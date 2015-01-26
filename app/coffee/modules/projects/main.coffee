@@ -249,26 +249,8 @@ ProjectsPaginationDirective = ($timeout) ->
 
 module.directive("tgProjectsPagination", ['$timeout', ProjectsPaginationDirective])
 
-ProjectsListDirective = ($compile) ->
-    template = _.template("""
-        <div tg-projects-pagination>
-            <div class="projects-pagination">
-                <a class="v-pagination-previous icon icon-arrow-up" href=""></a>
-                <div class="v-pagination-list">
-                    <ul class="projects-list">
-                        <% _.each(projects, function(project) { %>
-                        <li>
-                            <a class="button" href="<%- project.url %>">
-                                <%- project.name %>
-                            </a>
-                        </li>
-                        <% }) %>
-                    </ul>
-                </div>
-                <a class="v-pagination-next icon icon-arrow-bottom" href=""></a>
-            </div>
-        </div>
-    """)
+ProjectsListDirective = ($compile, $template) ->
+    template = $template.get('project/project-list.html', true)
 
     link = ($scope, $el, $attrs, $ctrls) ->
         render = (projects) ->
@@ -282,4 +264,4 @@ ProjectsListDirective = ($compile) ->
         link: link
     }
 
-module.directive("tgProjectsList", ["$compile", ProjectsListDirective])
+module.directive("tgProjectsList", ["$compile", "$tgTemplate", ProjectsListDirective])

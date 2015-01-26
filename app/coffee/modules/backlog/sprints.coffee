@@ -84,36 +84,8 @@ module.directive("tgBacklogSprint", ["$tgRepo", "$rootScope", BacklogSprintDirec
 ## Sprint Header Directive
 #############################################################################
 
-BacklogSprintHeaderDirective = ($navUrls) ->
-    template = _.template("""
-    <div class="sprint-name">
-        <a class="icon icon-arrow-up" href="" title="Compact Sprint"></a>
-
-        <% if(isVisible){ %>
-        <a href="<%- taskboardUrl %>" title="'Go to the taskboard of '<%- name %>'">
-            <span><%- name %></span>
-        </a>
-        <% } %>
-
-        <% if(isEditable){ %>
-        <a class="icon icon-edit" href="" title="Edit Sprint"></a>
-        <% } %>
-    </div>
-
-    <div class="sprint-summary">
-        <div class="sprint-date"><%- estimatedDateRange %></div>
-        <ul>
-            <li>
-                <span class="number"><%- closedPoints %></span>
-                <span class="description">closed</span>
-            </li>
-            <li>
-                <span class="number"><%- totalPoints %></span>
-                <span class="description">total</span>
-            </li>
-        </ul>
-    </div>
-    """)
+BacklogSprintHeaderDirective = ($navUrls, $template) ->
+    template = $template.get("backlog/sprint-header.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
         isEditable = ->
@@ -157,7 +129,7 @@ BacklogSprintHeaderDirective = ($navUrls) ->
         require: "ngModel"
     }
 
-module.directive("tgBacklogSprintHeader", ["$tgNavUrls", "$tgRepo", "$rootScope", BacklogSprintHeaderDirective])
+module.directive("tgBacklogSprintHeader", ["$tgNavUrls", "$tgTemplate", BacklogSprintHeaderDirective])
 
 #############################################################################
 ## Toggle Closed Sprints Directive

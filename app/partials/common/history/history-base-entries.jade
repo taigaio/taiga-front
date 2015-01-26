@@ -1,0 +1,7 @@
+<% if (showMore > 0) { %>
+a(href="" title="Show more" class="show-more show-more-comments")
+    | + Show previous entries (<%- showMore %> more)
+<% } %>
+<% _.each(entries, function(entry) { %>
+<%= entry %>
+<% }) %>

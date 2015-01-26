@@ -307,41 +307,9 @@ module.controller("IssuesController", IssuesController)
 ## Issues Directive
 #############################################################################
 
-paginatorTemplate = """
-<ul class="paginator">
-    <% if (showPrevious) { %>
-    <li class="previous">
-        <a href="" class="previous next_prev_button" class="disabled">
-            <span i18next="pagination.prev">Prev</span>
-        </a>
-    </li>
-    <% } %>
-
-    <% _.each(pages, function(item) { %>
-    <li class="<%- item.classes %>">
-        <% if (item.type === "page") { %>
-        <a href="" data-pagenum="<%- item.num %>"><%- item.num %></a>
-        <% } else if (item.type === "page-active") { %>
-        <span class="active"><%- item.num %></span>
-        <% } else { %>
-        <span>...</span>
-        <% } %>
-    </li>
-    <% }); %>
-
-    <% if (showNext) { %>
-    <li class="next">
-        <a href="" class="next next_prev_button" class="disabled">
-            <span i18next="pagination.next">Next</span>
-        </a>
-    </li>
-    <% } %>
-</ul>
-"""
-
-IssuesDirective = ($log, $location) ->
+IssuesDirective = ($log, $location, $template) ->
     ## Issues Pagination
-    template = _.template(paginatorTemplate)
+    template = $template.get("issue/issue-paginator.html", true)
 
     linkPagination = ($scope, $el, $attrs, $ctrl) ->
         # Constants
@@ -456,51 +424,16 @@ IssuesDirective = ($log, $location) ->
 
     return {link:link}
 
-module.directive("tgIssues", ["$log", "$tgLocation", IssuesDirective])
+module.directive("tgIssues", ["$log", "$tgLocation", "$tgTemplate", IssuesDirective])
 
 
 #############################################################################
 ## Issues Filters Directive
 #############################################################################
 
-IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading) ->
-    template = _.template("""
-    <% _.each(filters, function(f) { %>
-        <% if (!f.selected) { %>
-        <a class="single-filter"
-            data-type="<%- f.type %>"
-            data-id="<%- f.id %>">
-            <span class="name" <% if (f.color){ %>style="border-left: 3px solid <%- f.color %>;"<% } %>>
-                <%- f.name %>
-            </span>
-            <% if (f.count){ %>
-            <span class="number"><%- f.count %></span>
-            <% } %>
-            <% if (f.type == "myFilters"){ %>
-            <span class="icon icon-delete"></span>
-            <% } %>
-        </a>
-        <% } %>
-    <% }) %>
-    <span class="new">
-        <input class="hidden my-filter-name" type="text"
-               placeholder="Type a descriptive filter name and press Enter" />
-    </span>
-    """)
-
-    templateSelected = _.template("""
-    <% _.each(filters, function(f) { %>
-    <a class="single-filter selected"
-       data-type="<%- f.type %>"
-       data-id="<%- f.id %>">
-        <span class="name" <% if (f.color){ %>style="border-left: 3px solid <%- f.color %>;"<% } %>>
-            <%- f.name %>
-        </span>
-        <span class="icon icon-delete"></span>
-    </a>
-    <% }) %>
-    """)
-
+IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template) ->
+    template = $template.get("issue/issues-filters.html", true)
+    templateSelected = $template.get("issue/issues-filters-selected.html", true)
 
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.closest(".wrapper").controller()
@@ -527,14 +460,23 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading) ->
             renderSelectedFilters(selectedFilters)
 
         renderSelectedFilters = (selectedFilters) ->
+            _.filter selectedFilters, (f) =>
+                if f.color
+                    f.style = "border-left: 3px solid #{f.color}"
+
             html = templateSelected({filters:selectedFilters})
             $el.find(".filters-applied").html(html)
+
             if selectedFilters.length > 0
                 $el.find(".save-filters").show()
             else
                 $el.find(".save-filters").hide()
 
         renderFilters = (filters) ->
+            _.filter filters, (f) =>
+                if f.color
+                    f.style = "border-left: 3px solid #{f.color}"
+
             html = template({filters:filters})
             $el.find(".filter-list").html(html)
 
@@ -700,7 +642,7 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading) ->
 
     return {link:link}
 
-module.directive("tgIssuesFilters", ["$log", "$tgLocation", "$tgResources", "$tgConfirm", "$tgLoading",
+module.directive("tgIssuesFilters", ["$log", "$tgLocation", "$tgResources", "$tgConfirm", "$tgLoading", "$tgTemplate",
                                      IssuesFiltersDirective])
 
 
@@ -708,7 +650,7 @@ module.directive("tgIssuesFilters", ["$log", "$tgLocation", "$tgResources", "$tg
 ## Issue status Directive (popover for change status)
 #############################################################################
 
-IssueStatusInlineEditionDirective = ($repo, popoverService) ->
+IssueStatusInlineEditionDirective = ($repo, $template) ->
     ###
     Print the status of an Issue and a popover to change it.
     - tg-issue-status-inline-edition: The issue
@@ -720,16 +662,7 @@ IssueStatusInlineEditionDirective = ($repo, popoverService) ->
 
     NOTE: This directive need 'issueStatusById' and 'project'.
     ###
-    selectionTemplate = _.template("""
-    <ul class="popover pop-status">
-        <% _.forEach(statuses, function(status) { %>
-        <li>
-            <a href="" class="status" title="<%- status.name %>" data-status-id="<%- status.id %>">
-                <%- status.name %>
-            </a>
-        </li>
-        <% }); %>
-    </ul>""")
+    selectionTemplate = $template.get("issue/issue-status-inline-edition-selection.html", true)
 
     updateIssueStatus = ($el, issue, issueStatusById) ->
         issueStatusDomParent = $el.find(".issue-status")
@@ -779,7 +712,7 @@ IssueStatusInlineEditionDirective = ($repo, popoverService) ->
 
     return {link: link}
 
-module.directive("tgIssueStatusInlineEdition", ["$tgRepo", IssueStatusInlineEditionDirective])
+module.directive("tgIssueStatusInlineEdition", ["$tgRepo", "$tgTemplate", IssueStatusInlineEditionDirective])
 
 
 #############################################################################

@@ -1,0 +1,14 @@
+<% _.each(points, function(point, name) { %>
+.change-entry
+    .activity-changed
+        span US points (<%- name.toLowerCase() %>)
+    .activity-fromto
+        p
+            strong from
+            br
+            span <%- point[0] %>
+        p
+            strong  to
+            br
+            span <%- point[1] %>
+<% }); %>

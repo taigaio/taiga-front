@@ -28,17 +28,8 @@ module = angular.module("taigaCommon")
 #############################################################################
 ## WYSIWYG markitup editor directive
 #############################################################################
-tgMarkitupDirective = ($rootscope, $rs, $tr, $selectedText) ->
-    previewTemplate = _.template("""
-    <div class="preview">
-        <div class="actions">
-            <a href="#" title="Edit" class="icon icon-edit edit"></a>
-        </div>
-        <div class="content wysiwyg">
-            <%= data %>
-        </div>
-    </div>
-    """)
+tgMarkitupDirective = ($rootscope, $rs, $tr, $selectedText, $template) ->
+    previewTemplate = $template.get("common/wysiwyg/wysiwyg-markitup-preview.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
         element = angular.element($el)
@@ -283,4 +274,4 @@ tgMarkitupDirective = ($rootscope, $rs, $tr, $selectedText) ->
 
     return {link:link, require:"ngModel"}
 
-module.directive("tgMarkitup", ["$rootScope", "$tgResources", "$tgI18n", "$selectedText", tgMarkitupDirective])
+module.directive("tgMarkitup", ["$rootScope", "$tgResources", "$tgI18n", "$selectedText", "$tgTemplate", tgMarkitupDirective])

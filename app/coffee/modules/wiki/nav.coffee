@@ -34,33 +34,8 @@ module = angular.module("taigaWiki")
 ## Wiki Main Directive
 #############################################################################
 
-WikiNavDirective = ($tgrepo, $log, $location, $confirm, $navUrls, $analytics, $loading) ->
-    template = _.template("""
-    <header>
-      <h1>Links</h1>
-    </header>
-    <nav>
-      <ul>
-        <% _.each(wikiLinks, function(link, index) { %>
-        <li class="wiki-link" data-id="<%- index %>">
-          <a title="<%- link.title %>">
-              <span class="link-title"><%- link.title %></span>
-              <% if (deleteWikiLinkPermission) { %>
-              <span class="icon icon-delete"></span>
-              <% } %>
-          </a>
-          <input type="text" placeholder="name" class="hidden" value="<%- link.title %>" />
-        </li>
-        <% }) %>
-        <li class="new hidden">
-          <input type="text" placeholder="name"/>
-        </li>
-      </ul>
-    </nav>
-    <% if (addWikiLinkPermission) { %>
-    <a href="" title="Add link" class="add-button button button-gray">Add link</a>
-    <% } %>
-    """)
+WikiNavDirective = ($tgrepo, $log, $location, $confirm, $navUrls, $analytics, $loading, $template) ->
+    template = $template.get("wiki/wiki-nav.html", true)
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
 
@@ -168,4 +143,4 @@ WikiNavDirective = ($tgrepo, $log, $location, $confirm, $navUrls, $analytics, $l
     return {link:link}
 
 module.directive("tgWikiNav", ["$tgRepo", "$log", "$tgLocation", "$tgConfirm", "$tgNavUrls",
-                               "$tgAnalytics", "$tgLoading", WikiNavDirective])
+                               "$tgAnalytics", "$tgLoading", "$tgTemplate", WikiNavDirective])

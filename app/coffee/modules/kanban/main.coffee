@@ -445,7 +445,7 @@ KanbanUserstoryDirective = ($rootscope) ->
             $el.off()
 
     return {
-        templateUrl: "/partials/views/components/kanban-task.html"
+        templateUrl: "kanban/kanban-task.html"
         link: link
         require: "ngModel"
     }

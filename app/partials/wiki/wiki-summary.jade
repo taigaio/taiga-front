@@ -1,0 +1,13 @@
+ul
+    li
+        span.number <%- totalEditions %>
+        span.description times <br />edited
+    li
+        span.number <%- lastModifiedDate %>
+        span.description last <br />edit
+
+    li.username-edition
+        figure.avatar
+            img(src!="<%- user.imgUrl %>" alt!="<%- user.name %>")
+        span.description last modification
+        span.username <%- user.name %>

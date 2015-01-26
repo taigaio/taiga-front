@@ -1,0 +1,28 @@
+include ../includes/components/beta
+div.home-projects-list(ng-controller="ProjectsController as ctrl")
+    .home-projects-wrapper
+        div.welcome-user
+            div.info
+                p
+                    | Welcome
+                    span(tg-bo-bind="ctrl.user.full_name_display")
+                a.logout(ng-click="ctrl.logout()" href="", title="Logout") logout
+
+            .avatar
+                img(tg-bo-src="ctrl.user.photo", tg-bo-alt="ctrl.user.full_name_display")
+
+        .home-projects-list-inner
+            div.recent-projects
+                ul
+                    li(ng-repeat="project in ctrl.projects.recents")
+                        .project-content
+                            a(href="{{ project.url }}")
+                                h2(tg-bo-bind="project.name")
+                                p(tg-bo-bind="project.description")
+
+            div.all-projects
+                h1 Projects
+                div(tg-projects-list)
+
+                .create-project-button-wrapper
+                    a.button.button-green(href="", ng-click="ctrl.newProject()") Create project

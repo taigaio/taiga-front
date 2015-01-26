@@ -1,0 +1,63 @@
+div(class="menu-container")
+    ul(class="main-nav")
+        li(id="nav-search")
+            a(href="" title="Search")
+                span(class="icon icon-search")
+                span(class="item") Search
+        <% if (project.is_backlog_activated && project.my_permissions.indexOf("view_us") != -1) { %>
+        li(id="nav-backlog")
+            a(href="" title="Backlog" tg-nav="project-backlog:project=project.slug")
+                span(class="icon icon-backlog")
+                span(class="item") Backlog
+        <% } %>
+        <% if (project.is_kanban_activated && project.my_permissions.indexOf("view_us") != -1) { %>
+        li(id="nav-kanban")
+            a(href="" title="Kanban" tg-nav="project-kanban:project=project.slug")
+                span(class="icon icon-kanban")
+                span(class="item") Kanban
+        <% } %>
+        <% if (project.is_issues_activated && project.my_permissions.indexOf("view_issues") != -1) { %>
+        li(id="nav-issues")
+            a(href="" title="Issues" tg-nav="project-issues:project=project.slug")
+                span(class="icon icon-issues")
+                span(class="item") Issues
+        <% } %>
+        <% if (project.is_wiki_activated && project.my_permissions.indexOf("view_wiki_pages") != -1) { %>
+        li(id="nav-wiki")
+            a(href="" title="Wiki" tg-nav="project-wiki:project=project.slug")
+                span(class="icon icon-wiki")
+                span(class="item") Wiki
+        <% } %>
+        li(id="nav-team")
+            a(href="" title="Team" tg-nav="project-team:project=project.slug")
+                span(class="icon icon-team")
+                span(class="item") Team
+        <% if (project.videoconferences) { %>
+        li(id="nav-video")
+            a(href="<%- project.videoconferenceUrl %>" target="_blank" title="Meet Up")
+                span(class="icon icon-video")
+                span(class="item") Meet Up
+        <% } %>
+        <% if (project.i_am_owner) { %>
+        li(id="nav-admin")
+            a(href="" tg-nav="project-admin-home:project=project.slug" title="Admin")
+                span(class="icon icon-settings")
+                span(class="item") Admin
+        <% } %>
+    div(class="user")
+        div(class="user-settings")
+            ul(class="popover")
+                li
+                    a(href="" title="User Profile", tg-nav="user-settings-user-profile:project=project.slug") User Profile
+                li
+                    a(href="" title="Change Password", tg-nav="user-settings-user-change-password:project=project.slug") Change Password
+                li
+                    a(href="" title="Notifications", tg-nav="user-settings-mail-notifications:project=project.slug") Notifications
+                <% if (feedbackEnabled) { %>
+                li
+                    a(href="" class="feedback" title="Feedback") Feedback
+                <% } %>
+                li
+                    a(href="" title="Logout" class="logout") Logout
+            a(href="" title="User preferences" class="avatar" id="nav-user-settings")
+                img(src!="<%- user.photo %>" alt!="<%- user.full_name_display %>")

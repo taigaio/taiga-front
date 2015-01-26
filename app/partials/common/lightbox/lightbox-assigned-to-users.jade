@@ -1,0 +1,23 @@
+<% if (selected) { %>
+.watcher-single.active
+    .watcher-avatar
+        a(href="", title="Assigned to", class="avatar")
+            img(src!="<%- selected.photo %>")
+    a(href="", title!="<%- selected.full_name_display %>", class="watcher-name")
+        | <%-selected.full_name_display %>
+    a(href="", title="Remove assigned", class="icon icon-delete remove-assigned-to")
+<% } %>
+
+<% _.each(users, function(user) { %>
+.watcher-single(data-user-id!="<%- user.id %>")
+    .watcher-avatar
+        a(href="#", title="Assigned to", class="avatar")
+            img(src!="<%- user.photo %>")
+    a(href="", title!="<%- user.full_name_display %>", class="watcher-name")
+        | <%- user.full_name_display %>
+<% }) %>
+
+<% if (showMore) { %>
+div(ng-show="filteringUsers", class="more-watchers")
+    span ...too many users, keep filtering
+<% } %>

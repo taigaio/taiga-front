@@ -155,53 +155,8 @@ class AttachmentsController extends taiga.Controller
         return not item.is_deprecated
 
 
-AttachmentsDirective = ($config, $confirm) ->
-    template = _.template("""
-    <section class="attachments">
-        <div class="attachments-header">
-            <h3 class="attachments-title">
-                <span class="attachments-num" tg-bind-html="ctrl.attachmentsCount"></span>
-                <span class="attachments-text">attachments</span>
-            </h3>
-            <div tg-check-permission="modify_<%- type %>" class="add-attach"
-                 title="Add new attachment. <%- maxFileSizeMsg %>">
-                <% if (maxFileSize){ %>
-                <span class="size-info hidden">[Max. size:  <%- maxFileSize %>]</span>
-                <% }; %>
-                <label for="add-attach" class="icon icon-plus related-tasks-buttons"></label>
-                <input id="add-attach" type="file" multiple="multiple"/>
-            </div>
-        </div>
-
-        <div class="attachment-body sortable">
-            <div ng-repeat="attach in ctrl.attachments|filter:ctrl.filterAttachments track by attach.id"
-                tg-attachment="attach"
-                class="single-attachment">
-            </div>
-
-            <div ng-repeat="file in ctrl.uploadingAttachments" class="single-attachment">
-                <div class="attachment-name">
-                    <a href="" tg-bo-title="file.name" tg-bo-bind="file.name"></a>
-                </div>
-                <div class="attachment-size">
-                    <span tg-bo-bind="file.size" class="attachment-size"></span>
-                </div>
-                <div class="attachment-comments">
-                    <span ng-bind="file.progressMessage"></span>
-                    <div ng-style="{'width': file.progressPercent}" class="percentage"></div>
-                </div>
-            </div>
-
-            <a href="" title="show deprecated atachments" class="more-attachments"
-                ng-if="ctrl.deprecatedAttachmentsCount > 0">
-                <span class="text" data-type="show">+ show deprecated atachments</span>
-                <span class="text hidden" data-type="hide">- hide deprecated atachments</span>
-                <span class="more-attachments-num">
-                    ({{ctrl.deprecatedAttachmentsCount }} deprecated)
-                </span>
-            </a>
-        </div>
-    </section>""")
+AttachmentsDirective = ($config, $confirm, $templates) ->
+    template = $templates.get("attachment/attachments.html", true)
 
     link = ($scope, $el, $attrs, $ctrls) ->
         $ctrl = $ctrls[0]
@@ -283,56 +238,12 @@ AttachmentsDirective = ($config, $confirm) ->
         template: templateFn
     }
 
-module.directive("tgAttachments", ["$tgConfig", "$tgConfirm", AttachmentsDirective])
+module.directive("tgAttachments", ["$tgConfig", "$tgConfirm", "$tgTemplate", AttachmentsDirective])
 
 
-AttachmentDirective = ->
-    template = _.template("""
-    <div class="attachment-name">
-        <a href="<%- url %>" title="<%- name %> uploaded on <%- created_date %>" target="_blank">
-            <span class="icon icon-documents"></span>
-            <span><%- name %><span>
-        </a>
-    </div>
-    <div class="attachment-size">
-        <span><%- size %></span>
-    </div>
-    <div class="attachment-comments">
-        <% if (isDeprecated){ %> <span class="deprecated-file">(deprecated)</span> <% } %>
-        <span><%- description %></span>
-    </div>
-    <% if (modifyPermission) {%>
-    <div class="attachment-settings">
-        <a class="settings icon icon-edit" href="" title="Edit"></a>
-        <a class="settings icon icon-delete" href="" title="Delete"></a>
-        <a class="settings icon icon-drag-v" href="" title=""Drag"></a>
-    </div>
-    <% } %>
-    """)
-
-    templateEdit = _.template("""
-    <div class="attachment-name">
-        <span class="icon.icon-document"></span>
-        <a href="<%- url %>" title="<%- name %> uploaded on <%- created_date %>" target="_blank"><%- name %></a>
-    </div>
-    <div class="attachment-size">
-        <span><%- size %></span>
-    </div>
-    <div class="editable editable-attachment-comment">
-        <input type="text" name="description" maxlength="140"
-               value="<%- description %>""
-               placeholder="Type a short description" />
-    </div>
-    <div class="editable editable-attachment-deprecated">
-        <input type="checkbox" name="is-deprecated" id="attach-<%- id %>-is-deprecated"
-               <% if (isDeprecated){ %>checked<% } %> />
-        <label for="attach-<%- id %>-is-deprecated">Deprecated?</label>
-    </div>
-    <div class="attachment-settings">
-        <a class="editable-settings icon icon-floppy" href="" title="Save"></a>
-        <a class="editable-settings icon icon-delete" href="" title="Cancel"></a>
-    </div>
-    """)
+AttachmentDirective = ($template) ->
+    template = $template.get("attachment/attachment.html", true)
+    templateEdit = $template.get("attachment/attachment-edit.html", true)
 
     link = ($scope, $el, $attrs, $ctrl) ->
         render = (attachment, edit=false) ->
@@ -356,8 +267,10 @@ AttachmentDirective = ->
                 html = template(ctx)
 
             $el.html(html)
+
             if attachment.is_deprecated
                 $el.addClass("deprecated")
+                $el.find("input:checkbox").prop('checked', true)
 
         saveAttachment = ->
             attachment.description = $el.find("input[name='description']").val()
@@ -408,4 +321,4 @@ AttachmentDirective = ->
         restrict: "AE"
     }
 
-module.directive("tgAttachment", AttachmentDirective)
+module.directive("tgAttachment", ["$tgTemplate", AttachmentDirective])

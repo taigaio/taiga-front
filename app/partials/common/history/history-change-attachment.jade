@@ -1,0 +1,14 @@
+.change-entry
+    .activity-changed
+        span <%- name %>
+    .activity-fromto
+        <% _.each(diff, function(change) { %>
+        p
+            strong <%- change.name %> from
+            br
+            span <%- change.from %>
+            p
+                strong <%- change.name %> to
+                br
+                span <%- change.to %>
+        <% }) %>

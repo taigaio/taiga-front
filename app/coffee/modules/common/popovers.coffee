@@ -29,7 +29,7 @@ module = angular.module("taigaCommon")
 ## UserStory status Directive (popover for change status)
 #############################################################################
 
-UsStatusDirective = ($repo, popoverService) ->
+UsStatusDirective = ($repo, $template) ->
     ###
     Print the status of a US and a popover to change it.
     - tg-us-status: The user story
@@ -42,16 +42,7 @@ UsStatusDirective = ($repo, popoverService) ->
 
     NOTE: This directive need 'usStatusById' and 'project'.
     ###
-    template = _.template("""
-    <ul class="popover pop-status">
-        <% _.each(statuses, function(status) { %>
-        <li>
-            <a href="" class="status" title="<%- status.name %>" data-status-id="<%- status.id %>">
-                <%- status.name %>
-            </a>
-        </li>
-        <% }); %>
-    </ul>""")
+    template = $template.get("common/popover/popover-us-status.html", true)
 
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
@@ -106,13 +97,13 @@ UsStatusDirective = ($repo, popoverService) ->
 
     return {link: link}
 
-module.directive("tgUsStatus", ["$tgRepo", UsStatusDirective])
+module.directive("tgUsStatus", ["$tgRepo", "$tgTemplate", UsStatusDirective])
 
 #############################################################################
 ## Related Task Status Directive
 #############################################################################
 
-RelatedTaskStatusDirective = ($repo, popoverService) ->
+RelatedTaskStatusDirective = ($repo, $template) ->
     ###
     Print the status of a related task and a popover to change it.
     - tg-related-task-status: The related task
@@ -125,16 +116,7 @@ RelatedTaskStatusDirective = ($repo, popoverService) ->
 
     NOTE: This directive need 'taskStatusById' and 'project'.
     ###
-    selectionTemplate = _.template("""
-    <ul class="popover pop-status">
-        <% _.forEach(statuses, function(status) { %>
-        <li>
-            <a href="" class="status" title="<%- status.name %>" data-status-id="<%- status.id %>">
-                <%- status.name %>
-            </a>
-        </li>
-        <% }); %>
-    </ul>""")
+    selectionTemplate = $template.get("common/popover/popover-related-task-status.html", true)
 
     updateTaskStatus = ($el, task, taskStatusById) ->
         taskStatusDomParent = $el.find(".us-status")
@@ -187,7 +169,7 @@ RelatedTaskStatusDirective = ($repo, popoverService) ->
 
     return {link: link}
 
-module.directive("tgRelatedTaskStatus", ["$tgRepo", RelatedTaskStatusDirective])
+module.directive("tgRelatedTaskStatus", ["$tgRepo", "$tgTemplate", RelatedTaskStatusDirective])
 
 #############################################################################
 ## jQuery plugin for Popover

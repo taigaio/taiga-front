@@ -1,0 +1,6 @@
+ul.popover.pop-status
+    <% _.each(statuses, function(status) { %>
+    li
+        a(href="", class="status", title!="<%- status.name %>", data-status-id!="<%- status.id %>")
+            | <%- status.name %>
+    <% }); %>

@@ -1,0 +1,27 @@
+div(class="tasks")
+    div(class="task-name")
+        span(class="icon icon-iocaine")
+        a(tg-nav="project-tasks-detail:project=project.slug,ref=task.ref" title!="<%- task.ref %> <%- task.subject %>" class="clickable")
+            span #<%- task.ref %>
+            span <%- task.subject %>
+        div(class="task-settings")
+            <% if(perms.modify_task) { %>
+            a(href="" title="Edit" class="icon icon-edit")
+            <% } %>
+            <% if(perms.delete_task) { %>
+            a(href="" title="Delete" class="icon icon-delete delete-task")
+            <% } %>
+
+div(tg-related-task-status="task" ng-model="task" class="status")
+    a(href="" title="Status Name" class="task-status")
+        span(class="task-status-bind")
+        <% if(perms.modify_task) { %>
+        span(class="icon icon-arrow-bottom")
+        <% } %>
+
+div(tg-related-task-assigned-to-inline-edition="task" class="assigned-to")
+    div(title="Assigned to" class="task-assignedto <% if(perms.modify_task) { %>editable<% } %>")
+        figure(class="avatar")
+        <% if(perms.modify_task) { %>
+        span(class="icon icon-arrow-bottom")
+        <% } %>

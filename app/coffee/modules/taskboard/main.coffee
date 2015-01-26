@@ -416,20 +416,6 @@ module.directive("tgTaskboardSquishColumn", ["$tgResources", TaskboardSquishColu
 #############################################################################
 
 TaskboardUserDirective = ($log) ->
-    template = """
-    <figure class="avatar avatar-assigned-to">
-       <a href="#" title="Assign task" ng-class="{'not-clickable': !clickable}">
-            <img ng-src="{{imgurl}}">
-        </a>
-    </figure>
-
-    <figure class="avatar avatar-task-link">
-       <a tg-nav="project-tasks-detail:project=project.slug,ref=task.ref" ng-attr-title="{{task.subject}}">
-            <img ng-src="{{imgurl}}">
-        </a>
-    </figure>
-    """ # TODO: i18n
-
     clickable = false
 
     link = ($scope, $el, $attrs) ->
@@ -464,7 +450,7 @@ TaskboardUserDirective = ($log) ->
 
     return {
         link: link,
-        template: template,
+        template: "taskboard/taskboard-user.html",
         scope: {
             "usersById": "=users",
             "project": "=",

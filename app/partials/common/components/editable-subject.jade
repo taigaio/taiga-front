@@ -1,0 +1,7 @@
+.view-subject
+    | {{ item.subject }}
+    a.edit.icon.icon-edit(href="" title="Edit")
+.edit-subject
+    input(type="text", ng-model="item.subject", data-required="true", data-maxlength="500")
+    span.save-container
+        a.save.icon.icon-floppy(href="", title="Save")

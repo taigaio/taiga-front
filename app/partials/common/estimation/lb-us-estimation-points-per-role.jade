@@ -1,0 +1,9 @@
+ul.points-per-role
+  li.total
+    span.points <%- totalPoints %>
+    span.role total
+  <% _.each(roles, function(role) { %>
+  li.total.clickable(data-role-id!="<%- role.id %>")
+    span.points <%- role.points %>
+    span.role <%- role.name %>
+  <% }); %>
