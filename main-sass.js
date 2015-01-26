@@ -125,6 +125,7 @@ exports.files = function () {
         'modules/admin/default-values',
         'modules/admin/project-values',
         'modules/admin/third-parties',
+        'modules/admin/admin-third-parties-webhooks',
         'modules/admin/contrib',
 
         //Modules user Settings

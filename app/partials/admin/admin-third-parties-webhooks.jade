@@ -1,0 +1,99 @@
+block head
+    title Taiga  Your agile, free, and open source project management tool
+
+block content
+    div.wrapper.roles(ng-controller="WebhooksController as ctrl",
+                            ng-init="section='admin'")
+        sidebar.menu-secondary.sidebar(tg-admin-navigation="Webhooks")
+            include ../includes/modules/admin-menu
+        sidebar.menu-tertiary.sidebar(tg-admin-navigation="third-parties-webhooks")
+            include ../includes/modules/admin-submenu-third-parties
+
+        section.main.admin-common.admin-webhooks(tg-new-webhook)
+            include ../includes/components/mainTitle
+
+            p.admin-subtitle Webhooks notify external services about events in Taiga, like comments, user stories....
+            div.webhooks-options
+                a.button.button-green.hidden.add-webhook(href="",title="Add a New Webhook") Add Webhook
+
+            section.webhooks-table.basic-table
+                div.table-header
+                    div.row
+                        div.webhook-service Name
+                        div.webhook-url URL
+                        div.webhook-options
+                div.table-body
+                    div.single-webhook-wrapper(tg-webhook="webhook", ng-repeat="webhook in webhooks")
+                        div.edition-mode.hidden
+                            form.row
+                                fieldset.webhook-service
+                                    input(type="text", name="name", placeholder="Type the service name", data-required="true", ng-model="webhook.name")
+                                div.webhook-url
+                                    div.webhook-url-inputs
+                                        fieldset
+                                            input(type="text", name="url", data-type="url", placeholder="Type the service payload url", data-required="true", ng-model="webhook.url")
+                                        fieldset
+                                            input(type="text", name="key", placeholder="Type the service secret key", data-required="true", ng-model="webhook.key")
+                                div.webhook-options
+                                    a.edit-existing.icon.icon-floppy(href="", title="Save Webhook")
+                                    a.cancel-existing.icon.icon-delete(href="", title="Cancel Webhook")
+
+                        div.visualization-mode
+                            div.row
+                                div.webhook-service
+                                    span(ng-bind="webhook.name")
+                                div.webhook-url
+                                    span(ng-bind="webhook.url")
+                                    a.show-history.toggle-history(href="", title="Toggle history", ng-show="webhook.logs_counter") (Show history)
+
+                                div.webhook-options
+                                    div.webhook-options-wrapper
+                                        a.test-webhook.icon.icon-check-square(href="", title="Test Webhook")
+                                        a.edit-webhook.icon.icon-edit(href="", title="Edit Webhook")
+                                        a.delete-webhook.icon.icon-delete(href="", title="Delete Webhook")
+
+                            div.webhooks-history(ng-show="webhook.logs")
+                                div.history-single-wrapper(ng-repeat="log in webhook.logs")
+                                    div.history-single
+                                        div
+                                            span.history-response-icon(ng-class="log.validStatus ? 'history-success' : 'history-error'", title="{{log.status}}")
+                                            span.history-date(ng-bind="log.prettyDate")
+                                        span.toggle-log.icon.icon-arrow-bottom
+
+                                    div.history-single-response
+                                        div.history-single-request-header
+                                            span Request
+                                            a.resend-request(href="", title="Resend request", data-log="{{log.id}}")
+                                                span.icon.icon-reload
+                                                span Resend request
+                                        div.history-single-request-body
+                                            div.response-container
+                                                span.response-title Headers
+                                                textarea(name="headers", ng-bind="log.prettySentHeaders")
+
+                                            div.response-container
+                                                span.response-title Payload
+                                                textarea(name="payload", ng-bind="log.prettySentData")
+
+                                        div.history-single-response-header
+                                            span Response
+                                        div.history-single-response-body
+                                            div.response-container
+                                                textarea(name="response-data", ng-bind="log.response_data")
+
+                    form.new-webhook-form.row.hidden
+                        fieldset.webhook-service
+                            input(type="text", name="name", placeholder="Type the service name", data-required="true", ng-model="newValue.name")
+                        div.webhook-url
+                            div.webhook-url-inputs
+                                fieldset
+                                    input(type="text", name="url", data-type="url", placeholder="Type the service payload url", data-required="true", ng-model="newValue.url")
+                                fieldset
+                                    input(type="text", name="key", placeholder="Type the service secret key", data-required="true", ng-model="newValue.key")
+                        div.webhook-options
+                            a.add-new.icon.icon-floppy(href="", title="Save Webhook")
+                            a.cancel-new.icon.icon-delete(href="", title="Cancel Webhook")
+
+            a.help-button(href="https://taiga.io/support/webhooks/", target="_blank")
+                span.icon.icon-help
+                span Do you need help? Check out our support page!

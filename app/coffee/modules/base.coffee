@@ -93,6 +93,7 @@ urls = {
     "project-admin-project-values-issue-severities": "/project/:project/admin/project-values/issue-severities"
     "project-admin-memberships": "/project/:project/admin/memberships"
     "project-admin-roles": "/project/:project/admin/roles"
+    "project-admin-third-parties-webhooks": "/project/:project/admin/third-parties/webhooks"
     "project-admin-third-parties-github": "/project/:project/admin/third-parties/github"
     "project-admin-third-parties-gitlab": "/project/:project/admin/third-parties/gitlab"
     "project-admin-third-parties-bitbucket": "/project/:project/admin/third-parties/bitbucket"
