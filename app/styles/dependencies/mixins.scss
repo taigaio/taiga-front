@@ -56,8 +56,11 @@
             border: 0;
         }
         &:hover {
-            color: $white;
+            color: $fresh-taiga;
             transition: color .3s linear;
+            &.point {
+                color: $white;
+            }
         }
     }
     &:after {
