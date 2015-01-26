@@ -12,27 +12,29 @@
             .image-container {
                 position: relative;
             }
-            img {
-                border: 2px solid $white;
+            .avatar {
                 border-radius: 8%;
                 width: 100%;
             }
             .overlay {
-                background: rgba($white, .9);
+                align-content: center;
+                align-items: center;
+                background: rgba($blackish, .9);
                 bottom: 0;
                 display: none;
+                justify-content: center;
                 left: 0;
                 position: absolute;
                 right: 0;
                 top: 0;
+                width: 100%;
             }
-            .icon-spinner {
-                @extend %xlarge;
-                animation: spin infinite .8s linear;
-                color: $gray-light;
-                left: 40%;
-                position: absolute;
-                top: 40%;
+            .loading-spinner {
+                @extend %loading-spinner;
+                border: 0;
+                flex-grow: 0;
+                transform-origin: 32 32;
+                width: 30%;
             }
             p {
                 @extend %xsmall;

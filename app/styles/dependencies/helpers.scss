@@ -58,6 +58,9 @@
         padding: 12px;
         text-align: center;
     }
+    .loading-spinner {
+        @extend %loading-spinner;
+    }
 }
 
 %button {
@@ -90,4 +93,13 @@
 %background-taiga {
     background: url('/images/invitation_bg.jpg') no-repeat center center;
     background-size: cover;
+}
+
+%loading-spinner {
+    animation-timing-function: ease-in-out;
+    animation: rotate 1.5s cubic-bezier(.00, .05, .87, 1.04) infinite alternate;
+    margin: 0 auto;
+    max-height: 1rem;
+    max-width: 1rem;
+    transform-origin: 32 32;
 }

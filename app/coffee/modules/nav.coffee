@@ -147,7 +147,7 @@ ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout, tgLoader, $
 
             loadingStart = new Date().getTime()
 
-        $el.on "click", ".create-project-button .button", (event) ->
+        $el.on "click", ".create-project-button", (event) ->
             event.preventDefault()
             $ctrl.newProject()
 
@@ -168,7 +168,8 @@ ProjectsNavigationDirective = ($rootscope, animationFrame, $timeout, tgLoader, $
     }
 
 
-module.directive("tgProjectsNav", ["$rootScope", "animationFrame", "$timeout", "tgLoader", "$tgLocation", "$compile", "$tgTemplate", ProjectsNavigationDirective])
+module.directive("tgProjectsNav", ["$rootScope", "animationFrame", "$timeout", "tgLoader", "$tgLocation", "$compile",
+                                   "$tgTemplate", ProjectsNavigationDirective])
 
 
 #############################################################################

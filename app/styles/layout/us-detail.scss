@@ -86,8 +86,7 @@
             width: 100%;
         }
         .icon-edit,
-        .icon-floppy,
-        .icon-spinner {
+        .icon-floppy {
             @extend %large;
             color: $gray-light;
             margin-left: .5rem;
@@ -124,6 +123,11 @@
             display: inline-block;
             margin-right: 5rem;
         }
+    }
+    .loading-spinner {
+        @extend %loading-spinner;
+        max-height: 1.5rem;
+        max-width: 1.5rem;
     }
 }
 
@@ -187,14 +191,14 @@
         position: absolute;
         right: 1rem;
         top: .2rem;
-        .save {
-            color: $blackish;
-            opacity: .6;
-            top: 0;
-        }
         &:hover {
             opacity: .3;
             transition: opacity .2s linear;
+        }
+        .loading-spinner {
+            @extend %loading-spinner;
+            max-height: 1.5rem;
+            max-width: 1.5rem;
         }
     }
     .edit {
@@ -344,9 +348,8 @@
     .level-name {
         color: darken($whitish, 20%);
         float: right;
-        &.loading span {
-            animation: loading .5s linear;
-            animation: spin 1s linear infinite;
+        .loading-spinner {
+            @extend %loading-spinner;
         }
     }
 }
@@ -412,6 +415,9 @@
                 background: $red;
             }
         }
+    }
+    .loading-spinner {
+        @extend %loading-spinner;
     }
 }
 
