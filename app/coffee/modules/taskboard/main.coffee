@@ -450,7 +450,7 @@ TaskboardUserDirective = ($log) ->
 
     return {
         link: link,
-        template: "taskboard/taskboard-user.html",
+        templateUrl: "taskboard/taskboard-user.html",
         scope: {
             "usersById": "=users",
             "project": "=",
