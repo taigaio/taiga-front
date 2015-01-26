@@ -135,15 +135,12 @@
     }
     .history-single-response {
         @include slide(1000px, hidden, $min: 0);
-        &.open {
-            margin-top: 1rem;
-        }
     }
     .history-single-request-header,
     .history-single-response-header {
         display: flex;
         justify-content: space-between;
-        padding: .5rem 0;
+        padding: 1.5rem 0 .5rem 0;
         span:first-child {
             @extend %bold;
             color: $gray-light;

@@ -86,13 +86,11 @@ WebhookDirective = ($rs, $repo, $confirm, $loading) ->
 
         updateLogs = () ->
             $rs.webhooklogs.list(webhook.id).then (webhooklogs) =>
-                webhooklogs = webhooklogs.reverse()
-                for  log in webhooklogs
-                    statusText = String(log.status)
-                    log.validStatus = statusText.length==3 and statusText[0]="2"
+                for log in webhooklogs
+                    log.validStatus = 200 <= log.status < 300
+                    log.prettySentHeaders = _.map(_.pairs(log.request_headers), ([header, value]) -> "#{header}: #{value}").join("\n")
                     log.prettySentData = JSON.stringify(log.request_data.data, undefined, 2)
-                    log.prettySentHeaders = JSON.stringify(log.request_headers, undefined, 2)
-                    log.prettyDate = moment(log.created).format("DD MMM YYYY [at] hh:mm:ss")
+                    log.prettyDate = moment(log.created).format("DD MMM YYYY [at] hh:mm:ss") # TODO: i18n
 
                 webhook.logs_counter = webhooklogs.length
                 webhook.logs = webhooklogs
@@ -102,9 +100,9 @@ WebhookDirective = ($rs, $repo, $confirm, $loading) ->
             textElement = $el.find(".toggle-history")
             historyElement = textElement.parents(".single-webhook-wrapper").find(".webhooks-history")
             if historyElement.hasClass("open")
-                textElement.text("(Hide history)")
+                textElement.text("(Hide history)") # TODO: i18n
             else
-                textElement.text("(Show history)")
+                textElement.text("(Show history)") # TODO: i18n
 
         showVisualizationMode = () ->
             $el.find(".edition-mode").addClass("hidden")
@@ -160,8 +158,8 @@ WebhookDirective = ($rs, $repo, $confirm, $loading) ->
                 cancel(target)
 
         $el.on "click", ".delete-webhook", () ->
-            title = "Delete webhook"  #TODO: i18in
-            message = "Webhook '#{webhook.name}'" #TODO: i18in
+            title = "Delete webhook"  #TODO: i18n
+            message = "Webhook '#{webhook.name}'" #TODO: i18n
 
             $confirm.askOnDelete(title, message).then (finish) =>
                 onSucces = ->

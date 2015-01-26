@@ -56,7 +56,7 @@ block content
                                 div.history-single-wrapper(ng-repeat="log in webhook.logs")
                                     div.history-single
                                         div
-                                            span.history-response-icon(ng-class="validStatus ? 'history-success' : 'history-error'")
+                                            span.history-response-icon(ng-class="log.validStatus ? 'history-success' : 'history-error'", title="{{log.status}}")
                                             span.history-date(ng-bind="log.prettyDate")
                                         span.toggle-log.icon.icon-arrow-bottom
 
