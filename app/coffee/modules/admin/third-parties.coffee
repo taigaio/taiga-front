@@ -94,6 +94,7 @@ WebhookDirective = ($rs, $repo, $confirm, $loading) ->
                     log.prettySentHeaders = JSON.stringify(log.request_headers, undefined, 2)
                     log.prettyDate = moment(log.created).format("DD MMM YYYY [at] hh:mm:ss")
 
+                webhook.logs_counter = webhooklogs.length
                 webhook.logs = webhooklogs
                 updateShowHideHistoryText()
 
@@ -112,6 +113,9 @@ WebhookDirective = ($rs, $repo, $confirm, $loading) ->
         showEditMode = () ->
             $el.find(".visualization-mode").addClass("hidden")
             $el.find(".edition-mode").removeClass("hidden")
+
+        openHistory = () ->
+            $el.find(".webhooks-history").addClass("open")
 
         cancel = () ->
             showVisualizationMode()
@@ -132,10 +136,9 @@ WebhookDirective = ($rs, $repo, $confirm, $loading) ->
                 form.setErrors(data)
 
         $el.on "click", ".test-webhook", () ->
+            openHistory()
             $rs.webhooks.test(webhook.id).then =>
                 updateLogs()
-                $el.find(".webhooks-history").addClass("open")
-                updateShowHideHistoryText()
 
         $el.on "click", ".edit-webhook", () ->
             showEditMode()
