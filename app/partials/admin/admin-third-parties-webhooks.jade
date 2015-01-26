@@ -5,12 +5,12 @@ block content
     div.wrapper.roles(ng-controller="WebhooksController as ctrl",
                             ng-init="section='admin'")
         sidebar.menu-secondary.sidebar(tg-admin-navigation="Webhooks")
-            include ../admin-menu
+            include ../includes/modules/admin-menu
         sidebar.menu-tertiary.sidebar(tg-admin-navigation="third-parties-webhooks")
-            include ../admin-submenu-third-parties
+            include ../includes/modules/admin-submenu-third-parties
 
         section.main.admin-common.admin-webhooks(tg-new-webhook)
-            include ../../components/mainTitle
+            include ../includes/components/mainTitle
 
             p.admin-subtitle Webhooks notify external services about events in Taiga, like comments, user stories....
             div.webhooks-options
