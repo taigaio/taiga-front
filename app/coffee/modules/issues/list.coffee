@@ -606,7 +606,7 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template) -
             $el.find('.my-filter-name').removeClass("hidden")
             $el.find('.my-filter-name').focus()
 
-        $el.on "keyup", ".new .my-filter-name", (event) ->
+        $el.on "keyup", ".my-filter-name", (event) ->
             event.preventDefault()
             if event.keyCode == 13
                 target = angular.element(event.currentTarget)
