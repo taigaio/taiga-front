@@ -1,5 +1,5 @@
 .taskboard {
     .graphics-container {
-        @include slide(300px, overflow-y);
+        @include slide(300px, hidden);
     }
 }
