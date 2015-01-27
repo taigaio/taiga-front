@@ -1,4 +1,4 @@
-div(class="status-data <% if(editable){ %>clickable<% }%>")
+div(class!="status-data <% if(editable){ %>clickable<% }%>")
     span.level(style!="background-color:<%- status.color %>")
     span.status-status <%- status.name %>
     <% if(editable){ %>
