@@ -23,12 +23,13 @@
             background: transparent;
         }
         .user-stories {
+            overflow: hidden;
             width: 100%;
-
         }
         .status {
             flex-basis: 150px;
             flex-grow: 0;
+            flex-shrink: 0;
         }
         .points {
             flex-basis: 125px;
