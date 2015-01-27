@@ -3,6 +3,7 @@
     align-content: center;
     align-items: center;
     bottom: 0;
+    display: flex;
     justify-content: center;
     left: 0;
     position: fixed;
@@ -11,7 +12,6 @@
     z-index: 999;
     .invitation-container {
         flex-basis: 650px;
-        flex-grow: 1;
         width: 650px;
     }
     .logo {
