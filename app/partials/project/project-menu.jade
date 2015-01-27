@@ -34,7 +34,7 @@ div(class="menu-container")
                 span(class="item") Team
         <% if (project.videoconferences) { %>
         li(id="nav-video")
-            a(href="<%- project.videoconferenceUrl %>" target="_blank" title="Meet Up")
+            a(href!="<%- project.videoconferenceUrl %>" target="_blank" title="Meet Up")
                 span(class="icon icon-video")
                 span(class="item") Meet Up
         <% } %>
