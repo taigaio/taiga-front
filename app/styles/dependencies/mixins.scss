@@ -58,6 +58,9 @@
         &:hover {
             color: $fresh-taiga;
             transition: color .3s linear;
+            &.point {
+                color: $white;
+            }
         }
     }
     &:after {
