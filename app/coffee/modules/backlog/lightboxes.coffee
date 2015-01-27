@@ -133,6 +133,7 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading)
             $el.find(".button-green").text("Create") #TODO i18n
             lightboxService.open($el)
             $el.find(".sprint-name").focus()
+            $el.find(".last-sprint-name").removeClass("disappear")
 
         $scope.$on "sprintform:edit", (ctx, sprint) ->
             createSprint = false
