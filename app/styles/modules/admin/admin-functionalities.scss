@@ -25,13 +25,12 @@
         .icon {
             @extend %xxlarge;
             flex-basis: 60px;
-            flex-grow: 1;
             margin: 0 auto;
-            min-height: 60px;
+            min-width: 60px;
         }
         .desc {
-            flex-grow: 1;
             text-align: center;
+            width: 100%;
         }
         .activate-input {
             display: none;
