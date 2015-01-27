@@ -327,6 +327,7 @@ module.directive("tgTaskboardTableHeightFixer", TaskboardTableHeightFixerDirecti
 
 TaskboardSquishColumnDirective = (rs) ->
     avatarWidth = 40
+    maxColumnWidth = 300
 
     link = ($scope, $el, $attrs) ->
         $scope.$on "sprint:task:moved", () =>
@@ -374,7 +375,7 @@ TaskboardSquishColumnDirective = (rs) ->
             if width
                 column.css('max-width', width)
             else
-                column.css("max-width", 'none')
+                column.css("max-width", maxColumnWidth)
 
         refreshTaskboardTableWidth = () =>
             columnWidths = []
