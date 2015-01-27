@@ -518,9 +518,10 @@ module.directive("tgLbAssignedto", ["lightboxService", "lightboxKeyboardNavigati
 ## Watchers Lightbox directive
 #############################################################################
 
-WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationService) ->
+WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationService, $template) ->
     link = ($scope, $el, $attrs) ->
         selectedItem = null
+        usersTemplate = $template.get("common/lightbox/lightbox-assigned-to-users.html", true)
 
         # Get prefiltered users by text
         # and without now watched users.
@@ -595,7 +596,7 @@ WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationS
         link:link
     }
 
-module.directive("tgLbWatchers", ["$tgRepo", "lightboxService", "lightboxKeyboardNavigationService", WatchersLightboxDirective])
+module.directive("tgLbWatchers", ["$tgRepo", "lightboxService", "lightboxKeyboardNavigationService", "$tgTemplate", WatchersLightboxDirective])
 
 #############################################################################
 ## Notion Lightbox Directive
