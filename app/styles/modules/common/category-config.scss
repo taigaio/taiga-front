@@ -41,7 +41,7 @@
         text-align: right;
     }
     .category-items {
-        @include slide(400px, overflow-y);
+        @include slide(400px, hidden);
         background-color: $whitish;
         width: 100%;
         .items-container {
