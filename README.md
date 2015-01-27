@@ -2,6 +2,11 @@
 
 ![Kaleidos Project](http://kaleidos.net/static/img/badge.png "Kaleidos Project")
 
+## Get the compiled version ##
+
+You can get the compiled version of this code in the
+[taiga-front-dist](http://github.com/taigaio/taiga-front-dist) repository
+
 ## Setup initial environment ##
 
 Install requirements:
