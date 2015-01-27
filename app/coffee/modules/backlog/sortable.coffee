@@ -54,6 +54,7 @@ BacklogSortableDirective = ($repo, $rs, $rootscope, $tgConfirm) ->
                 $tgConfirm.notify("error", "You can't drop on backlog when filters are open") #TODO: i18n
 
             $el.sortable({
+                items: ".us-item-row",
                 connectWith: ".sprint"
                 containment: ".wrapper"
                 dropOnEmpty: true
