@@ -38,7 +38,7 @@ div.wrapper(ng-controller="TaskDetailController as ctrl",
 
             div.tags-block(tg-tag-line, ng-model="task", required-perm="modify_task")
 
-        section.duty-content.wysiwyg(tg-editable-description, ng-model="task", required-perm="modify_task")
+        section.duty-content(tg-editable-description, ng-model="task", required-perm="modify_task")
 
         tg-attachments(ng-model="task", type="task")
         tg-history(ng-model="task", type="task")

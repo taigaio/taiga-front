@@ -37,7 +37,7 @@ div.wrapper(ng-controller="UserStoryDetailController as ctrl",
 
             div.tags-block(tg-tag-line, ng-model="us", required-perm="modify_us")
 
-        section.duty-content.wysiwyg(tg-editable-description, ng-model="us", required-perm="modify_us")
+        section.duty-content(tg-editable-description, ng-model="us", required-perm="modify_us")
 
         include ../includes/modules/related-tasks
 
