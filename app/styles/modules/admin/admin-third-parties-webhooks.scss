@@ -86,7 +86,7 @@
         }
     }
 
-    .webhooks-history{
+    .webhooks-history {
         @include slide(1000px, hidden, $min: 0);
     }
 
@@ -140,7 +140,7 @@
     .history-single-response-header {
         display: flex;
         justify-content: space-between;
-        padding: 1.5rem 0 .5rem 0;
+        padding: 1.5rem 0 .5rem;
         span:first-child {
             @extend %bold;
             color: $gray-light;

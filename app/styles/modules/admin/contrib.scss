@@ -4,7 +4,7 @@
         max-width: 700px;
         width: 100%;
     }
-    input[type="text"],
+    input,
     textarea {
         @extend %title;
     }
