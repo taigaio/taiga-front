@@ -34,6 +34,7 @@ $column-margin: 0 10px 0 0;
         align-content: flex-start;
         display: flex;
         flex-direction: column;
+        flex-flow: row wrap;
     }
     .avatar-task-link {
         display: block;
