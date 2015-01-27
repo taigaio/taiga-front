@@ -69,10 +69,7 @@
     }
     .task-text {
         @extend %small;
-        flex-basis: 50px;
-        flex-grow: 10;
         padding: 0 .5rem 0 .8rem;
-        word-wrap: break-word;
     }
     .task-num {
         color: $grayer;
@@ -127,8 +124,6 @@
         }
     }
     .avatar {
-        flex-basis: 50px;
-        flex-grow: 1;
         width: 55px;
     }
     .task-name {
@@ -190,10 +185,13 @@
             }
         }
     }
-    .avatar {
+    .avatar-wrapper {
         flex-basis: 50px;
-        flex-grow: 1;
+        flex-grow: 0;
         width: 55px;
+        img {
+            width: 55px;
+        }
     }
     .task-num {
         vertical-align: top;
@@ -203,7 +201,7 @@
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        width: 70%;
+        width: 135px;
     }
     .task-points {
         display: none;
