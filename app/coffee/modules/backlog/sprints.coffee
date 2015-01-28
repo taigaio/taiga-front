@@ -69,6 +69,8 @@ BacklogSprintDirective = ($repo, $rootscope) ->
             $el.find(".sprint-table").slideToggle(slideOptions)
 
         $el.on "click", ".sprint-name > .icon-edit", (event) ->
+            event.preventDefault()
+
             sprint = $scope.$eval($attrs.tgBacklogSprint)
             $rootscope.$broadcast("sprintform:edit", sprint)
 
