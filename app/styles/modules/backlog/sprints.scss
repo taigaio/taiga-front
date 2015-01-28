@@ -91,6 +91,7 @@
         }
         .sprint-summary {
             display: flex;
+            justify-content: space-between;
         }
         .sprint-date {
             @extend %large;
@@ -102,7 +103,6 @@
             flex-grow: 1;
         }
         ul {
-            float: right;
             margin: 0;
         }
         li {
