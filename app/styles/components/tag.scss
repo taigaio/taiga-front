@@ -21,6 +21,9 @@
     .ui-state-focus {
         background: $fresh-taiga;
     }
+    li {
+        cursor: pointer;
+    }
 }
 
 .ui-helper-hidden-accessible {
@@ -53,5 +56,3 @@
         @extend %small;
     }
 }
-
-

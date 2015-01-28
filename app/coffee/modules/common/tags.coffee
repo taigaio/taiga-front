@@ -138,6 +138,8 @@ LbTagLineDirective = ($rs, $template) ->
             $scope.$apply ->
                 $model.$setViewValue(tags)
 
+            hideSaveButton()
+
         deleteValue = (value) ->
             value = trim(value.toLowerCase())
             return if value.length == 0
@@ -153,7 +155,6 @@ LbTagLineDirective = ($rs, $template) ->
 
             addValue(value)
             resetInput()
-            hideSaveButton()
 
         removeInputLastCharacter = (input) =>
             inputValue = input.val()
@@ -288,6 +289,8 @@ TagLineDirective = ($rootScope, $repo, $rs, $confirm, $qqueue, $template) ->
                 $model.$setViewValue(model)
             $repo.save(model).then(onSuccess, onError)
 
+            hideSaveButton()
+
         deleteValue = $qqueue.bindAdd (value) ->
             value = trim(value.toLowerCase())
             return if value.length == 0
@@ -313,7 +316,6 @@ TagLineDirective = ($rootScope, $repo, $rs, $confirm, $qqueue, $template) ->
 
             addValue(value)
             resetInput()
-            hideSaveButton()
 
         removeInputLastCharacter = (input) =>
             inputValue = input.val()
