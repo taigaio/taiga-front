@@ -63,14 +63,6 @@
                 transition: border .3s linear;
             }
         }
-        figcaption {
-            color: darken($postit-hover, 15%);
-            display: none;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            width: 100%;
-        }
     }
     .iocaine {
         img {

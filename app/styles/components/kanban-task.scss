@@ -1,5 +1,7 @@
 .kanban-task {
     background: $postit;
+    border: 1px solid $postit-hover;
+    box-shadow: none;
     cursor: move;
     margin: .2rem;
     position: relative;
@@ -9,13 +11,18 @@
     &:hover {
         .icon-edit,
         .icon-drag-h {
+            color: $postit-dark-hover;
+            display: block;
             opacity: 1;
-            transition: opacity .2s linear;
+            transition: color .3s linear, opacity .3s linear;
         }
     }
     &.ui-sortable-helper {
         box-shadow: 1px 1px 15px rgba($black, .4);
         transition: box-shadow .3s linear;
+    }
+    &.ui-sortable-placeholder {
+        background: $grayer;
     }
     &.blocked {
         background: $red;
@@ -32,12 +39,24 @@
         height: .6rem;
     }
     .kanban-tag {
-        border-color: $postit-hover;
+        border-top: .3rem solid $postit-hover;
+        flex-basis: 0;
         flex-grow: 1;
         height: .6rem;
+        z-index: 100;
     }
     .kanban-task-inner {
         display: flex;
+        padding: .5rem;
+    }
+    .avatar-wrapper {
+        flex-basis: 55px;
+        flex-grow: 0;
+        flex-shrink: 0;
+        width: 55px;
+        img {
+            width: 100%;
+        }
     }
     .avatar {
         a {
@@ -51,25 +70,15 @@
                 transition: border .3s linear;
             }
         }
-        .assigned-to {
-            color: darken($postit-hover, 15%);
-            display: none;
-            overflow: hidden;
-            position: relative;
-            text-overflow: ellipsis;
-            top: -6px;
-            white-space: nowrap;
-            width: 50px;
-        }
-    }
-    .task-assigned {
-        @extend %small;
-        color: $postit-dark-hover;
-        display: block;
     }
     .task-text {
         @extend %small;
+        flex-grow: 1;
         padding: 0 .5rem 0 .8rem;
+    }
+    .task-assigned {
+        color: $postit-dark-hover;
+        display: block;
     }
     .task-num {
         color: $grayer;
@@ -94,9 +103,6 @@
 
 
 .kanban-task-maximized {
-    .kanban-task-inner {
-        padding: 1rem 1rem 2rem;
-    }
     .task-archived {
         background: darken($whitish, 5%);
         padding: .5rem;
@@ -122,9 +128,6 @@
                 text-align: center;
             }
         }
-    }
-    .avatar {
-        width: 55px;
     }
     .task-name {
         word-wrap: break-word;
@@ -183,14 +186,6 @@
             &:last-child {
                 display: none;
             }
-        }
-    }
-    .avatar-wrapper {
-        flex-basis: 50px;
-        flex-grow: 0;
-        width: 55px;
-        img {
-            width: 55px;
         }
     }
     .task-num {
