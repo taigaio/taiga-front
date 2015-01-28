@@ -153,7 +153,7 @@ gulp.task "jade-watch", (cb) ->
 ##############################################################################
 
 gulp.task "sass-lint", ->
-    gulp.src(paths.sass)
+    gulp.src(paths.sass.concat("!#{paths.app}/styles/shame/**/*.scss"))
         .pipe(cache("sasslint"))
         .pipe(gulpif(!isDeploy, scsslint({config: "scsslint.yml"})))
 

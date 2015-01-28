@@ -10,3 +10,11 @@
 .kanban-table-header {
     height: 40px;
 }
+
+
+_:-ms-fullscreen,
+:root .taskboard-table-body {
+    .task-row {
+        min-height: auto;
+    }
+}
