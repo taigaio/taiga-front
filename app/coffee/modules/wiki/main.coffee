@@ -178,9 +178,7 @@ module.directive("tgWikiSummary", ["$log", "$tgTemplate", WikiSummaryDirective])
 ## Editable Wiki Content Directive
 #############################################################################
 
-EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $location, $navUrls,
-                                $analytics, $qqueue) ->
-
+EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $analytics, $qqueue) ->
     link = ($scope, $el, $attrs, $model) ->
         isEditable = ->
             return $scope.project.my_permissions.indexOf("modify_wiki_page") != -1
@@ -199,14 +197,11 @@ EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $
             $el.find(".edit-wiki-content").remove()
 
         cancelEdition = ->
-            return if !$scope.wiki.html
+            return if not $model.$modelValue.id
 
-            if $scope.wiki.id
-                $scope.$apply () => $scope.wiki.revert()
-                switchToReadMode()
-            else
-                ctx = {project: $scope.projectSlug}
-                $location.path($navUrls.resolve("project-wiki", ctx))
+            $scope.$apply () =>
+                $model.$modelValue.revert()
+            switchToReadMode()
 
         getSelectedText = ->
             if $window.getSelection
@@ -220,11 +215,11 @@ EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $
                 if not wiki.id?
                     $analytics.trackEvent("wikipage", "create", "create wiki page", 1)
 
-                $scope.wiki = wikiPage
-                $model.setModelValue = wiki
+                $model.$modelValue = wikiPage
+                $scope.$broadcast("wiki:edit", wikiPage)
+
                 $confirm.notify("success")
                 switchToReadMode()
-                $scope.$broadcast("wiki:edit", wikiPage)
 
             onError = ->
                 $confirm.notify("error")
@@ -272,7 +267,6 @@ EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $
 
         $scope.$watch $attrs.ngModel, (wikiPage) ->
             return if not wikiPage
-            $scope.wiki = wikiPage
 
             if isEditable()
                 $el.addClass('editable')
@@ -292,5 +286,4 @@ EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $
     }
 
 module.directive("tgEditableWikiContent", ["$window", "$document", "$tgRepo", "$tgConfirm", "$tgLoading",
-                                           "$tgLocation", "$tgNavUrls", "$tgAnalytics", "$tgQqueue",
-                                           EditableWikiContentDirective])
+                                           "$tgAnalytics", "$tgQqueue", EditableWikiContentDirective])
