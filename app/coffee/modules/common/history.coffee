@@ -61,7 +61,7 @@ class HistoryController extends taiga.Controller
         return @rs.history.undeleteComment(type, objectId, activityId).then => @.loadHistory(type, objectId)
 
 
-HistoryDirective = ($log, $loading, $qqueue, $template) ->
+HistoryDirective = ($log, $loading, $qqueue, $template, $confirm) ->
     templateChangeDiff = $template.get("common/history/history-change-diff.html", true)
     templateChangePoints = $template.get("common/history/history-change-points.html", true)
     templateChangeGeneric = $template.get("common/history/history-change-generic.html", true)
@@ -357,4 +357,4 @@ HistoryDirective = ($log, $loading, $qqueue, $template) ->
     }
 
 
-module.directive("tgHistory", ["$log", "$tgLoading", "$tgQqueue", "$tgTemplate", HistoryDirective])
+module.directive("tgHistory", ["$log", "$tgLoading", "$tgQqueue", "$tgTemplate", "$tgConfirm", HistoryDirective])
