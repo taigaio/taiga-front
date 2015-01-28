@@ -14,8 +14,8 @@ div.wrapper(tg-user-profile, ng-controller="UserSettingsController as ctrl",
                     fieldset(tg-user-avatar)
                         .image-container
                             img.avatar(ng-src="{{user.big_photo}}" alt="avatar")
-                            div.overlay
-                                span.icon.icon-spinner
+                            .overlay
+                                img.loading-spinner(src="/svg/spinner-circle.svg", alt="loading...")
                         input(type="file", id="avatar-field", class="hidden",
                             tg-avatar-model="avatarAttachment")
                         p The image will be cropped to 80x80px.<br>

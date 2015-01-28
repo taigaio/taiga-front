@@ -33,8 +33,9 @@
                 @extend %loading-spinner;
                 border: 0;
                 flex-grow: 0;
-                transform-origin: 32 32;
-                width: 30%;
+                max-height: 3rem;
+                max-width: 3rem;
+                transform-origin: center center;
             }
             p {
                 @extend %xsmall;
