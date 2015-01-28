@@ -429,7 +429,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         urlfilters = @.getUrlFilters()
 
         if urlfilters.q
-            @scope.filtersQ = urlfilters.q
+            @scope.filtersQ = @scope.filtersQ or urlfilters.q
 
         searchdata = {}
         for name, value of urlfilters
