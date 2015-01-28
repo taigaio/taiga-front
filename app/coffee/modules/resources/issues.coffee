@@ -36,7 +36,10 @@ resourceProvider = ($repo, $http, $urls, $storage, $q) ->
         return $repo.queryOne("issues", issueId, params)
 
     service.getByRef = (projectId, ref) ->
-        return $repo.queryOne("issues", "by_ref?project=#{projectId}&ref=#{ref}")
+        params = service.getQueryParams(projectId)
+        params.project = projectId
+        params.ref = ref
+        return $repo.queryOne("issues", "by_ref", params)
 
     service.list = (projectId, filters, options) ->
         params = {project: projectId}
