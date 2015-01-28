@@ -333,11 +333,15 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm) ->
             $el.find(".history section").toggleClass("hidden")
 
         $el.on "click", ".comment-delete", debounce 2000, (event) ->
+            event.preventDefault()
+
             target = angular.element(event.currentTarget)
             activityId = target.data('activity-id')
             $ctrl.deleteComment(type, objectId, activityId)
 
         $el.on "click", ".comment-restore", debounce 2000, (event) ->
+            event.preventDefault()
+
             target = angular.element(event.currentTarget)
             activityId = target.data('activity-id')
             $ctrl.undeleteComment(type, objectId, activityId)
