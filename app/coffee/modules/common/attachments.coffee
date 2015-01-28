@@ -126,7 +126,7 @@ class AttachmentsController extends taiga.Controller
         return @repo.saveAll(@.attachments).then null, =>
             for item in @.attachments
                 item.revert()
-            @.attachments = _.sorBy(@.attachments, "order")
+            @.attachments = _.sortBy(@.attachments, "order")
 
     # Remove one concrete attachment.
     removeAttachment: (attachment) ->
