@@ -182,7 +182,8 @@ AttachmentsDirective = ($config, $confirm, $templates) ->
             newIndex = ui.item.index()
 
             $ctrl.reorderAttachment(attachment, newIndex)
-            $ctrl.saveAttachments()
+            $ctrl.saveAttachments().then ->
+                $scope.$emit("attachment:edit")
 
         showSizeInfo = ->
             $el.find(".size-info").removeClass("hidden")
