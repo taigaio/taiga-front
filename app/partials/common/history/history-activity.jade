@@ -4,7 +4,7 @@ div(class!="activity-single <%- mode %>")
             img(src!="<%- avatar %>", alt!="<%- userFullName %>")
     .activity-content
         .activity-username
-            a.username(href="", title="<%- userFullName %>")
+            a.username(href="", title!="<%- userFullName %>")
                 | <%- userFullName %>
             span.date
                 | <%- creationDate %>
