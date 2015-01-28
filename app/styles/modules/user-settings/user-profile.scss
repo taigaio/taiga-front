@@ -19,7 +19,7 @@
             .overlay {
                 align-content: center;
                 align-items: center;
-                background: rgba($blackish, .9);
+                background: rgba($blackish, .8);
                 bottom: 0;
                 display: none;
                 justify-content: center;
@@ -33,8 +33,9 @@
                 @extend %loading-spinner;
                 border: 0;
                 flex-grow: 0;
-                transform-origin: 32 32;
-                width: 30%;
+                max-height: 3rem;
+                max-width: 3rem;
+                transform-origin: center center;
             }
             p {
                 @extend %xsmall;

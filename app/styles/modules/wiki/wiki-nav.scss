@@ -35,11 +35,6 @@
             padding: 8px;
             text-align: center;
             width: 100%;
-            .loading-spinner {
-                @extend %loading-spinner;
-                max-height: 1rem;
-                max-width: 1rem;
-            }
         }
     }
     .button {

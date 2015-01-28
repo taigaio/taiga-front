@@ -24,11 +24,15 @@
             margin-right: .3rem;
             vertical-align: middle;
         }
-        .load {
-            display: inline-block;
-            margin-left: .3rem;
-            vertical-align: middle;
-        }
+    }
+    .loading-spinner {
+        @extend %loading-spinner;
+        border: 0;
+        flex-grow: 0;
+        margin-bottom: 1rem;
+        max-height: 2rem;
+        max-width: 2rem;
+        transform-origin: center center;
     }
     .sprint-name {
         a {

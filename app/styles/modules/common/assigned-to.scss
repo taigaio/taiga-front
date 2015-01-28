@@ -12,7 +12,8 @@
     }
     .loading-spinner {
         @extend %loading-spinner;
-        margin: 0 auto;
+        margin: 1rem auto;
+        max-height: 2rem;
         max-width: 2rem;
     }
     .user-avatar {
