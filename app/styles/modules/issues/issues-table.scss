@@ -54,8 +54,13 @@
         flex-grow: 7;
         padding-right: 1rem;
         span {
+            vertical-align: middle;
             &:first-child {
                 margin-right: .5rem;
+            }
+            &:last-child {
+                @include ellipsis(80%);
+                display: inline-block;
             }
         }
     }
