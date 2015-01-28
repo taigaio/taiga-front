@@ -33,7 +33,7 @@ div.wrapper(ng-controller="IssueDetailController as ctrl",
 
             div.tags-block(tg-tag-line, ng-model="issue", required-perm="modify_issue")
 
-        section.duty-content.wysiwyg(tg-editable-description, ng-model="issue", required-perm="modify_issue")
+        section.duty-content(tg-editable-description, ng-model="issue", required-perm="modify_issue")
 
         tg-attachments(ng-model="issue", type="issue")
         tg-history(ng-model="issue", type="issue")
