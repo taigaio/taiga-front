@@ -349,9 +349,6 @@
     .level-name {
         color: darken($whitish, 20%);
         float: right;
-        .loading-spinner {
-            @extend %loading-spinner;
-        }
     }
 }
 

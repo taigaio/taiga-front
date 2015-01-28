@@ -59,9 +59,10 @@
         padding: 12px;
         text-align: center;
     }
-    .loading-spinner {
-        @extend %loading-spinner;
-    }
+}
+
+.loading-spinner {
+    @extend %loading-spinner;
 }
 
 %button {

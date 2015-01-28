@@ -108,12 +108,6 @@
     .preview-icon {
         opacity: 0;
     }
-    .loading-spinner {
-        @extend %loading-spinner;
-        max-height: 1rem;
-        max-width: 1rem;
-    }
-
 }
 .show-more-comments {
     @extend %small;
