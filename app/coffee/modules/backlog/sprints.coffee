@@ -54,13 +54,10 @@ BacklogSprintDirective = ($repo, $rootscope) ->
         $scope.$watch $attrs.tgBacklogSprint, (sprint) ->
             sprint = $scope.$eval($attrs.tgBacklogSprint)
 
-            if $scope.$first
-                toggleSprint($el)
-            else if sprint.closed
+            if sprint.closed
                 $el.addClass("sprint-closed")
-            else if not $scope.$first and not sprint.closed
+            else
                 toggleSprint($el)
-                $el.addClass("sprint-old-open")
 
         # Event Handlers
         $el.on "click", ".sprint-name > .icon-arrow-up", (event) ->

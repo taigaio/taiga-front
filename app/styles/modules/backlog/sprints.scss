@@ -60,11 +60,11 @@
             display: inline-block;
         }
         .icon-arrow-up {
-            transform: rotate(180deg);
+            transform: rotate(90deg);
             transition: all .2s linear;
             vertical-align: baseline;
             &.active {
-                transform: rotate(0);
+                transform: rotate(180deg);
                 transition: all .2s linear;
             }
             &:hover {
@@ -209,44 +209,10 @@
     }
 }
 
-// If Sprint is open but date is old
-.sprint-old-open {
-    .sprint-name {
-        .icon-arrow-up {
-            transform: rotate(180deg);
-            transition: all .2s linear;
-            vertical-align: baseline;
-            &.active {
-                transform: rotate(0);
-                transition: all .2s linear;
-            }
-            &:hover {
-                color: $fresh-taiga;
-                transition: color .2s linear;
-            }
-        }
-    }
-}
-
 // If sprint is closed and date is old
 .sprint-closed {
     .sprint-table {
         display: none;
-    }
-    .sprint-name {
-        .icon-arrow-up {
-            transform: rotate(180deg);
-            transition: all .2s linear;
-            vertical-align: baseline;
-            &.active {
-                transform: rotate(0);
-                transition: all .2s linear;
-            }
-            &:hover {
-                color: $fresh-taiga;
-                transition: color .2s linear;
-            }
-        }
     }
     .number,
     .description {
