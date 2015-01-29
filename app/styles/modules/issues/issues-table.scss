@@ -56,14 +56,18 @@
         flex-grow: 7;
         flex-shrink: 0;
         padding-right: 1rem;
+        a {
+            white-space: nowrap;
+        }
         span {
             vertical-align: middle;
             &:first-child {
                 margin-right: .5rem;
             }
             &:last-child {
-                @include ellipsis(250px);
+                @include ellipsis(100%);
                 display: inline-block;
+                padding-right: 2rem;
             }
         }
     }
