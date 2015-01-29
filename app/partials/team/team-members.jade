@@ -1,4 +1,4 @@
-.row.member(ng-repeat='user in memberships | filter:filtersQ | filter:{role: filtersRole.id}')
+.row.member(ng-repeat='user in memberships | filter:filtersQ | membersRoleFilter:filtersRole')
     .username
         figure.avatar
           img(tg-bo-src='user.photo', tg-bo-alt='user.full_name')
