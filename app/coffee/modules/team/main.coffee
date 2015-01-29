@@ -64,7 +64,7 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
         if role
             @scope.filtersRole = role
         else
-            @scope.filtersRole = ""
+            @scope.filtersRole = null
 
     loadMembers: ->
         return @rs.memberships.list(@scope.projectId, {}, false).then (data) =>
@@ -234,3 +234,9 @@ LeaveProjectDirective = ($repo, $confirm, $location, $rs, $navurls) ->
     }
 
 module.directive("tgLeaveProject", ["$tgRepo", "$tgConfirm", "$tgLocation", "$tgResources", "$tgNavUrls", LeaveProjectDirective])
+
+module.filter 'membersRoleFilter', () ->
+    (input, filtersRole) ->
+        if filtersRole?
+            return _.filter(input, {role: filtersRole.id})
+        return input
