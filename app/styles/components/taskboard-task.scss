@@ -30,6 +30,12 @@
         span {
             color: $white;
         }
+        &:hover {
+            .icon-edit,
+            .icon-drag-h {
+                color: $white;
+            }
+        }
     }
     .taskboard-tagline {
         border-color: $postit-hover;
