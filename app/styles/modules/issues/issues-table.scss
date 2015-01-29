@@ -55,19 +55,16 @@
         flex-basis: 300px;
         flex-grow: 7;
         flex-shrink: 0;
+        overflow: hidden;
         padding-right: 1rem;
         a {
-            white-space: nowrap;
+            @include ellipsis(100%);
+            display: block;
         }
         span {
             vertical-align: middle;
             &:first-child {
                 margin-right: .5rem;
-            }
-            &:last-child {
-                @include ellipsis(100%);
-                display: inline-block;
-                padding-right: 2rem;
             }
         }
     }
