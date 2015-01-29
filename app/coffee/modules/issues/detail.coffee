@@ -207,9 +207,15 @@ IssueStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $t
             })
             $el.html(html)
 
-        save = $qqueue.bindAdd (value, issue) =>
+        save = $qqueue.bindAdd (statusId) =>
+            $.fn.popover().closeAll()
+
+            issue = $model.$modelValue.clone()
+            issue.status = statusId
+
             onSuccess = ->
                 $confirm.notify("success")
+                $model.$setViewValue(issue)
                 $rootScope.$broadcast("history:reload")
                 $loading.finish($el.find(".level-name"))
             onError = ->
@@ -220,7 +226,7 @@ IssueStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $t
 
             $loading.start($el.find(".level-name"))
 
-            $repo.save(value).then(onSuccess, onError)
+            $repo.save(issue).then(onSuccess, onError)
 
         $el.on "click", ".status-data", (event) ->
             event.preventDefault()
@@ -236,13 +242,7 @@ IssueStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $t
 
             target = angular.element(event.currentTarget)
 
-            $.fn.popover().closeAll()
-
-            issue = $model.$modelValue.clone()
-            issue.status = target.data("status-id")
-            $model.$setViewValue(issue)
-
-            save($model.$modelValue, issue)
+            save(target.data("status-id"))
 
         $scope.$watch $attrs.ngModel, (issue) ->
             render(issue) if issue
@@ -294,12 +294,12 @@ IssueTypeButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $tem
             issue = $model.$modelValue.clone()
             issue.type = type
 
-            $model.$setViewValue(issue)
-
             onSuccess = ->
                 $confirm.notify("success")
+                $model.$setViewValue(issue)
                 $rootScope.$broadcast("history:reload")
                 $loading.finish($el.find(".level-name"))
+
             onError = ->
                 $confirm.notify("error")
                 issue.revert()
@@ -307,7 +307,7 @@ IssueTypeButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $tem
                 $loading.finish($el.find(".level-name"))
             $loading.start($el.find(".level-name"))
 
-            $repo.save($model.$modelValue).then(onSuccess, onError)
+            $repo.save(issue).then(onSuccess, onError)
 
         $el.on "click", ".type-data", (event) ->
             event.preventDefault()
@@ -376,10 +376,10 @@ IssueSeverityButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, 
 
             issue = $model.$modelValue.clone()
             issue.severity = severity
-            $model.$setViewValue(issue)
 
             onSuccess = ->
                 $confirm.notify("success")
+                $model.$setViewValue(issue)
                 $rootScope.$broadcast("history:reload")
                 $loading.finish($el.find(".level-name"))
             onError = ->
@@ -387,9 +387,10 @@ IssueSeverityButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, 
                 issue.revert()
                 $model.$setViewValue(issue)
                 $loading.finish($el.find(".level-name"))
+
             $loading.start($el.find(".level-name"))
 
-            $repo.save($model.$modelValue).then(onSuccess, onError)
+            $repo.save(issue).then(onSuccess, onError)
 
         $el.on "click", ".severity-data", (event) ->
             event.preventDefault()
@@ -459,10 +460,10 @@ IssuePriorityButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, 
 
             issue = $model.$modelValue.clone()
             issue.priority = priority
-            $model.$setViewValue(issue)
 
             onSuccess = ->
                 $confirm.notify("success")
+                $model.$setViewValue(issue)
                 $rootScope.$broadcast("history:reload")
                 $loading.finish($el.find(".level-name"))
             onError = ->
@@ -470,9 +471,10 @@ IssuePriorityButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, 
                 issue.revert()
                 $model.$setViewValue(issue)
                 $loading.finish($el.find(".level-name"))
+
             $loading.start($el.find(".level-name"))
 
-            $repo.save($model.$modelValue).then(onSuccess, onError)
+            $repo.save(issue).then(onSuccess, onError)
 
         $el.on "click", ".priority-data", (event) ->
             event.preventDefault()
