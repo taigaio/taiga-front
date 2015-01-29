@@ -136,7 +136,8 @@ body {
 }
 
 .hidden {
-    display: none !important;
+    visibility: hidden !important;
+    position: absolute;
 }
 
 .header-with-actions {
