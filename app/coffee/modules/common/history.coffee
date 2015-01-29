@@ -191,9 +191,9 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm) ->
             return "Made #{size} changes" # TODO: i18n
 
         renderComment = (comment) ->
-            if (comment.delete_comment_date or comment.delete_comment_user)
+            if (comment.delete_comment_date or comment.delete_comment_user?.name)
                 return templateDeletedComment({
-                    deleteCommentDate: moment(comment.delete_comment_date).format("DD MMM YYYY HH:mm")
+                    deleteCommentDate: moment(comment.delete_comment_date).format("DD MMM YYYY HH:mm") if comment.delete_comment_date
                     deleteCommentUser: comment.delete_comment_user.name
                     deleteComment: comment.comment_html
                     activityId: comment.id
