@@ -1,6 +1,6 @@
 # Changelog #
 
-## 1.5.0 Betula Pendula - FOSDEM 2015 (unreleased)
+## 1.5.0 Betula Pendula - FOSDEM 2015 (2015-01-29)
 
 ### Features
 - Taiga webhooks
@@ -8,6 +8,9 @@
 - Not showing closed milestones by default in backlog view.
 - In kanban view an archived user story status doesn't show his content by default.
 - Now you can export and import projects between Taiga instances.
+- Improving performance.
+- Email redesign.
+- Support for contrib plugins (existing yet: slack, hall and gogs).
 
 ### Misc
 - Lots of small and not so small bugfixes.
