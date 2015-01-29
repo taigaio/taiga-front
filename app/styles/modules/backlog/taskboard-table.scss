@@ -145,16 +145,17 @@ $column-margin: 0 10px 0 0;
         &.blocked {
             .taskboard-userstory-box {
                 background: rgba($red, .6);
-                border-radius: 3px;
+
             }
             a,
-            .points-value {
-                color: rgba($white, .9);
-                transition: color .3s linear;
-            }
             a:hover,
+            .points-value,
             .points-value:hover {
                 color: rgba($white, 1);
+                transition: color .3s linear;
+            }
+            .points-value {
+                color: $white;
                 transition: color .3s linear;
             }
             .taskboard-tasks-box {
