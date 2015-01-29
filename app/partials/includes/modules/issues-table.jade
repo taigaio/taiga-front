@@ -12,7 +12,7 @@ section.issues-table.basic-table(ng-class="{empty: !issues.length}")
         div.level-field(tg-listitem-severity="issue")
         div.level-field(tg-listitem-priority="issue")
         div.subject
-            a(href="", tg-nav="project-issues-detail:project=project.slug,ref=issue.ref")
+            a(href="", tg-nav="project-issues-detail:project=project.slug,ref=issue.ref", title="{{ ::issue.subject }}")
                 span(tg-bo-ref="issue.ref")
                 span(ng-bind="issue.subject")
 
