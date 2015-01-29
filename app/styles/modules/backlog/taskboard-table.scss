@@ -147,14 +147,10 @@ $column-margin: 0 10px 0 0;
                 background: rgba($red, .6);
 
             }
-            a,
-            a:hover,
+            .taskboard-userstory-box a,
+            .taskboard-userstory-box a:hover,
             .points-value,
             .points-value:hover {
-                color: rgba($white, 1);
-                transition: color .3s linear;
-            }
-            .points-value {
                 color: $white;
                 transition: color .3s linear;
             }
