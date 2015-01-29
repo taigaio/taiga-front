@@ -45,37 +45,42 @@
         }
     }
     .level-field {
-        flex-basis: 70px;
-        flex-grow: 1;
+        flex-basis: 75px;
+        flex-grow: 0;
+        flex-shrink: 0;
         text-align: center;
+        width: 75px;
     }
     .subject {
         flex-basis: 300px;
         flex-grow: 7;
+        flex-shrink: 0;
         padding-right: 1rem;
+        a {
+            white-space: nowrap;
+        }
         span {
             vertical-align: middle;
             &:first-child {
                 margin-right: .5rem;
             }
             &:last-child {
-                @include ellipsis(80%);
+                @include ellipsis(100%);
                 display: inline-block;
+                padding-right: 2rem;
             }
         }
     }
     .issue-field,
     .assigned-field,
-    .created-field {
-        flex-basis: 100px;
+    .created-field ,
+    .assigned-field {
+        flex-basis: 120px;
         flex-grow: 1;
+        flex-shrink: 0;
         padding: 0 1rem;
         position: relative;
         text-align: left;
-    }
-    .assigned-field {
-        flex-basis: 100px;
-        flex-grow: 2;
     }
     .issue-assignedto {
         cursor: pointer;
