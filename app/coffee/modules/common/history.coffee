@@ -181,11 +181,8 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm) ->
                 to = formatChange(value[1])
                 return templateChangeGeneric({name:name, from:from, to: to})
 
-        renderChangeEntries = (change, join=true) ->
-            entries = _.map(change.values_diff, (value, field) -> renderChangeEntry(field, value))
-            if join
-                return entries.join("\n")
-            return entries
+        renderChangeEntries = (change) ->
+            return _.map(change.values_diff, (value, field) -> renderChangeEntry(field, value))
 
         renderChangesHelperText = (change) ->
             size = countChanges(change)
@@ -209,7 +206,7 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm) ->
                 creationDate: moment(comment.created_at).format("DD MMM YYYY HH:mm")
                 comment: comment.comment_html
                 changesText: renderChangesHelperText(comment)
-                changes: renderChangeEntries(comment, false)
+                changes: renderChangeEntries(comment)
                 mode: "comment"
                 deleteCommentDate: moment(comment.delete_comment_date).format("DD MMM YYYY HH:mm") if comment.delete_comment_date
                 deleteCommentUser: comment.delete_comment_user.name if comment.delete_comment_user?.name
@@ -223,7 +220,7 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm) ->
                 userFullName: change.user.name
                 creationDate: moment(change.created_at).format("DD MMM YYYY HH:mm")
                 comment: change.comment_html
-                changes: renderChangeEntries(change, false)
+                changes: renderChangeEntries(change)
                 changesText: ""
                 mode: "activity"
                 deleteCommentDate: moment(change.delete_comment_date).format("DD MMM YYYY HH:mm") if change.delete_comment_date
