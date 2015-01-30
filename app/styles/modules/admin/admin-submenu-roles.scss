@@ -25,6 +25,10 @@
             }
         }
     }
+    .single-role {
+        @include ellipsis(175px);
+        display: inline-block;
+    }
     .icon {
         color: $white;
         float: right;
