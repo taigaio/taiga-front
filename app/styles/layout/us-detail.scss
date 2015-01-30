@@ -263,23 +263,27 @@
 
 .points-per-role {
     display: flex;
+    flex-wrap: wrap;
     position: relative;
     > li {
-        border-right: 1px solid rgba($grayer, .3);
+        background: rgba($gray-light, .1);
+        border-radius: 2px;
         color: rgba($grayer, .3);
-        display: inline-block;
-        flex-basis: 18%;
+        flex-basis: 80px;
         flex-grow: 1;
-        margin: .5rem .1rem;
+        flex-shrink: 0;
+        margin: .1rem;
+        padding: .5rem;
         position: relative;
         text-align: center;
         transition: color .3s linear;
-        width: 18%;
         &.active {
-            color: rgba($green-taiga, 1);
+            background: rgba($fresh-taiga, .9);
+            color: $whitish;
         }
         &:first-child {
-            opacity: 1;
+            background: rgba($grayer, .5);
+            color: $whitish;
         }
         &:last-child {
             border: 0;
@@ -289,15 +293,14 @@
         @extend %xlarge;
         @extend %title;
         display: block;
+        margin-bottom: .3rem;
         text-align: center;
     }
     .role {
+        @include ellipsis(90%);
         display: inline-block;
-        max-width: 90%;
-        overflow: hidden;
+        line-height: .8rem;
         text-align: center;
-        text-overflow: ellipsis;
-        white-space: nowrap;
     }
     .popover {
         @include popover(200px, $top: 105%, $left: 35%, $arrow-width: 10px, $arrow-top: -5px, $arrow-left: 10px);
