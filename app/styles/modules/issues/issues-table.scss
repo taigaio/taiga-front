@@ -52,11 +52,9 @@
         width: 75px;
     }
     .subject {
-        flex-basis: 300px;
-        flex-grow: 7;
-        flex-shrink: 0;
         overflow: hidden;
         padding-right: 1rem;
+        width: 100%;
         a {
             @include ellipsis(100%);
             display: block;
@@ -72,12 +70,16 @@
     .assigned-field,
     .created-field ,
     .assigned-field {
-        flex-basis: 120px;
+        flex-basis: 140px;
         flex-grow: 1;
         flex-shrink: 0;
         padding: 0 1rem;
         position: relative;
         text-align: left;
+    }
+    .assigned-field {
+        flex: 0 0 160px;
+        max-width: 160px;
     }
     .issue-assignedto {
         cursor: pointer;
