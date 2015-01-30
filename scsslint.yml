@@ -1,3 +1,8 @@
+exclude:
+    - 'app/styles/components/markitup.scss'
+    - 'app/styles/bourbon/**'
+    - 'app/styles/vendor/**'
+
 linters:
   BorderZero:
     enabled: true
@@ -76,6 +81,15 @@ linters:
   PropertySpelling:
     enabled: true
     extra_properties: []
+
+  QualifyingElement:
+    enabled: true
+    allow_element_with_attribute: true
+    exclude:
+        - 'app/styles/components/buttons.scss'
+        - 'app/styles/layout/forms.scss'
+        - 'app/styles/components/help-notion-button.scss'
+        - 'app/styles/components/markdown-help.scss'
 
   SelectorDepth:
     enabled: true
