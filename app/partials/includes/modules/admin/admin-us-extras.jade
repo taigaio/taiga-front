@@ -5,14 +5,20 @@ section.custom-fields-table.basic-table
             div.custom-description Description
             div.custom-options
     div.table-body
-        div.row
-            div.custom-name
+        div.row.single-custom-field
+            div.custom-name Name
             div.custom-description Description
             div.custom-options
+                div.custom-options-wrapper
+                    a.edit-webhook.icon.icon-edit(href="", title="Edit Custom Field")
+                    a.delete-webhook.icon.icon-delete(href="", title="Delete Custom Field")
         form.row
             fieldset.custom-name
-                input(type="text")
-            fieldset.custom-description Description
-                input(type="text")
+                input(type="text", placeholder="Set your custom field name")
+            fieldset.custom-description
+                input(type="text", placeholder="Set your custom field description")
             fieldset.custom-options
+                div.custom-options-wrapper
+                    a.edit-webhook.icon.icon-floppy(href="", title="Save Custom Field")
+                    a.delete-webhook.icon.icon-delete(href="", title="Delete Custom Field")
 

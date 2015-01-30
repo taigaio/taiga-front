@@ -1,3 +1,40 @@
 .custom-fields-table {
+    .row {
+        border-bottom: 0;
+        padding: .5rem 0;
+        &:hover {
+            .custom-options-wrapper {
+                opacity: 1;
+                transition: opacity .2s linear;
+            }
+        }
+    }
+    .table-header {
+        @extend %bold;
+        border-bottom: 1px solid $gray-light;
+    }
+    .single-custom-field {
+        border-bottom: 1px solid $whitish;
+        color: $gray;
+    }
+    .custom-name,
+    .custom-description {
+        color: $gray;
+        margin-right: .5rem;
+    }
+    .custom-name {
+        flex-grow: 1;
+    }
+    .custom-description {
+        flex-grow: 2;
+    }
+    .custom-options {
+        flex-basis: 200px;
+        flex-grow: 0;
+    }
+    .custom-options-wrapper {
+        opacity: 0;
+        transition: opacity .3s linear;
+    }
 
 }
