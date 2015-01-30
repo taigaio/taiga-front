@@ -30,7 +30,7 @@ class UrlsService extends taiga.Service
 
     constructor: (@config) ->
         @.urls = {}
-        @.mainUrl = config.get("api")
+        @.mainUrl = @config.get("api")
 
     update: (urls) ->
         @.urls = _.merge(@.urls, urls)
