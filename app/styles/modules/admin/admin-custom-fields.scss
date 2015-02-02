@@ -8,6 +8,10 @@
         border-bottom: 0;
         padding: .5rem 0;
         &:hover {
+            background: rgba($fresh-taiga, .05);
+            cursor: move;
+            transition: background .2s linear;
+            .icon-drag-v,
             .custom-options-wrapper {
                 opacity: 1;
                 transition: opacity .2s linear;
@@ -26,6 +30,18 @@
     .single-custom-field {
         border-bottom: 1px solid $whitish;
         color: $gray;
+    }
+    .icon-drag-v {
+        color: $gray-light;
+        opacity: 0;
+        padding: 0 .5rem;
+        transition: color .2s linear;
+        vertical-align: middle;
+        &:hover {
+            color: $gray;
+            cursor: move;
+            transition: color .2s linear;
+        }
     }
     .custom-name,
     .custom-description {
@@ -48,7 +64,7 @@
         text-align: center;
         a {
             color: $gray-light;
-            margin-right: 0.5rem;
+            margin-right: .5rem;
             transition: color .2s linear;
             vertical-align: middle;
             &:hover {
@@ -62,6 +78,10 @@
         transition: opacity .3s linear;
     }
     form {
+        &.row:hover {
+            background: none;
+            cursor: default;
+        }
         .custom-options-wrapper {
             opacity: 1;
         }
