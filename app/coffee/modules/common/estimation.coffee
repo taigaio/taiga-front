@@ -156,7 +156,7 @@ UsEstimationDirective = ($rootScope, $repo, $confirm, $qqueue, $template) ->
             return $scope.project.my_permissions.indexOf("modify_us") != -1
 
         render = (us) ->
-            totalPoints = if us.total_points? then us.total_points else "?"
+            totalPoints = calculateTotalPoints(us.points) or "?"
             computableRoles = _.filter($scope.project.roles, "computable")
 
             roles = _.map computableRoles, (role) ->
@@ -204,8 +204,8 @@ UsEstimationDirective = ($rootScope, $repo, $confirm, $qqueue, $template) ->
 
             $el.find(".pop-points-open").show()
 
-        calculateTotalPoints = (us) ->
-            values = _.map(us.points, (v, k) -> $scope.pointsById[v]?.value)
+        calculateTotalPoints = (points) ->
+            values = _.map(points, (v, k) -> $scope.pointsById[v]?.value)
             if values.length == 0
                 return "0"
 
@@ -218,15 +218,12 @@ UsEstimationDirective = ($rootScope, $repo, $confirm, $qqueue, $template) ->
         save = $qqueue.bindAdd (roleId, pointId) =>
             $el.find(".popover").popover().close()
 
-            # Hell starts here
-            us = angular.copy($model.$modelValue)
             points = _.clone($model.$modelValue.points, true)
             points[roleId] = pointId
-            us.setAttr('points', points)
+
+            us = $model.$modelValue.clone()
             us.points = points
-            us.total_points = calculateTotalPoints(us)
             $model.$setViewValue(us)
-            # Hell ends here
 
             onSuccess = ->
                 $confirm.notify("success")
@@ -236,7 +233,7 @@ UsEstimationDirective = ($rootScope, $repo, $confirm, $qqueue, $template) ->
                 us.revert()
                 $model.$setViewValue(us)
 
-            $repo.save($model.$modelValue).then(onSuccess, onError)
+            $repo.save(us).then(onSuccess, onError)
 
         $el.on "click", ".total.clickable", (event) ->
             event.preventDefault()
@@ -275,4 +272,5 @@ UsEstimationDirective = ($rootScope, $repo, $confirm, $qqueue, $template) ->
         require: "ngModel"
     }
 
-module.directive("tgUsEstimation", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgQqueue", "$tgTemplate", UsEstimationDirective])
+module.directive("tgUsEstimation", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgQqueue", "$tgTemplate",
+                                    UsEstimationDirective])
