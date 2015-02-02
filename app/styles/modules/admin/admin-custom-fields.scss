@@ -1,3 +1,8 @@
+.custom-field-options {
+    margin-bottom: 1rem;
+    text-align: right;
+}
+
 .custom-fields-table {
     .row {
         border-bottom: 0;
@@ -23,18 +28,38 @@
         margin-right: .5rem;
     }
     .custom-name {
-        flex-grow: 1;
+        flex-basis: 25%;
+        flex-shrink: 0;
     }
     .custom-description {
-        flex-grow: 2;
+        @include ellipsis(100%);
+        flex-basis: 90%;
+        flex-grow: 8;
     }
     .custom-options {
-        flex-basis: 200px;
+        flex-basis: 100px;
         flex-grow: 0;
+        flex-shrink: 0;
+        text-align: center;
+        a {
+            color: $gray-light;
+            margin-right: 0.5rem;
+            transition: color .2s linear;
+            vertical-align: middle;
+            &:hover {
+                color: $green-taiga;
+                transition: color .2s linear;
+            }
+        }
     }
     .custom-options-wrapper {
         opacity: 0;
         transition: opacity .3s linear;
+    }
+    form {
+        .custom-options-wrapper {
+            opacity: 1;
+        }
     }
 
 }
