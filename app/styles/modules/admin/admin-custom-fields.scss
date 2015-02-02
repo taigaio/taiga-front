@@ -7,7 +7,18 @@
     .row {
         border-bottom: 0;
         padding: .5rem 0;
-        &:hover {
+
+    }
+    .table-header {
+        @extend %bold;
+        border-bottom: 1px solid $gray-light;
+        .custom-name span,
+        .custom-description span {
+            padding-left: 1.1rem;
+        }
+    }
+    .table-body {
+        .row:hover {
             background: rgba($fresh-taiga, .05);
             cursor: move;
             transition: background .2s linear;
@@ -17,12 +28,12 @@
                 transition: opacity .2s linear;
             }
         }
-    }
-    .table-header {
-        @extend %bold;
-        border-bottom: 1px solid $gray-light;
-    }
-    .table-body {
+        form {
+            &.row:hover {
+                background: none;
+                cursor: default;
+            }
+        }
         .custom-description {
             color: $gray-light;
         }
@@ -34,7 +45,7 @@
     .icon-drag-v {
         color: $gray-light;
         opacity: 0;
-        padding: 0 .5rem;
+        padding: 0 .1rem;
         transition: color .2s linear;
         vertical-align: middle;
         &:hover {
@@ -78,10 +89,6 @@
         transition: opacity .3s linear;
     }
     form {
-        &.row:hover {
-            background: none;
-            cursor: default;
-        }
         .custom-options-wrapper {
             opacity: 1;
         }
