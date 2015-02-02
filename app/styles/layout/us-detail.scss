@@ -297,9 +297,10 @@
         text-align: center;
     }
     .role {
+        @extend %small;
         @include ellipsis(90%);
         display: inline-block;
-        line-height: .8rem;
+        line-height: 1rem;
         text-align: center;
     }
     .popover {
