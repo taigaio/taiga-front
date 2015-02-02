@@ -31,9 +31,11 @@ debounce = @.taiga.debounce
 
 # the lightboxContent hide/show doesn't have sense because is an IE hack
 class LightboxService extends taiga.Service
-    constructor: (@animationFrame) ->
+    constructor: (@animationFrame, @q) ->
 
     open: ($el) ->
+        defered = @q.defer()
+
         lightboxContent = $el.children().not(".close")
         lightboxContent.hide()
 
@@ -44,11 +46,14 @@ class LightboxService extends taiga.Service
         @animationFrame.add =>
             $el.addClass("open")
             lightboxContent.show()
+            defered.resolve()
 
         docEl = angular.element(document)
         docEl.on "keydown.lightbox", (e) =>
             code = if e.keyCode then e.keyCode else e.which
             @.close($el) if code == 27
+
+        return defered.promise
 
     close: ($el) ->
         docEl = angular.element(document)
@@ -66,7 +71,7 @@ class LightboxService extends taiga.Service
             @.close($(lightboxEl))
 
 
-module.service("lightboxService", ["animationFrame", LightboxService])
+module.service("lightboxService", ["animationFrame", "$q", LightboxService])
 
 
 class LightboxKeyboardNavigationService extends taiga.Service
@@ -442,8 +447,6 @@ AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationServic
             return _.contains(username, text)
 
         render = (selected, text) ->
-            $el.find("input").focus()
-
             users = _.clone($scope.activeUsers, true)
             users = _.reject(users, {"id": selected.id}) if selected?
             users = _.filter(users, _.partial(filterUsers, text)) if text?
@@ -468,11 +471,14 @@ AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationServic
             selectedUser = $scope.usersById[assignedToId]
 
             render(selectedUser)
-            lightboxService.open($el)
-            $el.find('input').focus()
+            lightboxService.open($el).then ->
+                $el.find('input').focus()
+
 
         $scope.$watch "usersSearch", (searchingText) ->
-            render(selectedUser, searchingText) if searchingText?
+            if searchingText?
+                render(selectedUser, searchingText)
+                $el.find('input').focus()
 
         $el.on "click", ".watcher-single", (event) ->
             event.preventDefault()
@@ -540,7 +546,6 @@ WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationS
 
         # Render the specific list of users.
         render = (users) ->
-            $el.find("input").focus()
             ctx = {
                 selected: false
                 users: _.first(users, 5)
@@ -560,7 +565,8 @@ WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationS
             users = getFilteredUsers()
             render(users)
 
-            lightboxService.open($el)
+            lightboxService.open($el).then ->
+                $el.find("input").focus()
             lightboxKeyboardNavigationService.init($el)
 
         $scope.$watch "usersSearch", (searchingText) ->
@@ -569,6 +575,7 @@ WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationS
 
             users = getFilteredUsers(searchingText)
             render(users)
+            $el.find("input").focus()
 
         $el.on "click", ".watcher-single", debounce 2000, (event) ->
             closeLightbox()
