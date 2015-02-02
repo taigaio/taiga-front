@@ -18,6 +18,11 @@
         @extend %bold;
         border-bottom: 1px solid $gray-light;
     }
+    .table-body {
+        .custom-description {
+            color: $gray-light;
+        }
+    }
     .single-custom-field {
         border-bottom: 1px solid $whitish;
         color: $gray;
