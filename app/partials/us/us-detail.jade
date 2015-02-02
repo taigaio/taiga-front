@@ -39,6 +39,9 @@ div.wrapper(ng-controller="UserStoryDetailController as ctrl",
 
         section.duty-content(tg-editable-description, ng-model="us", required-perm="modify_us")
 
+        // IF Custom Fields
+        include ../includes/modules/common/custom-fields
+
         include ../includes/modules/related-tasks
 
         tg-attachments(ng-model="us", type="us")

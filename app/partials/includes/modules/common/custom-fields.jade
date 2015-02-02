@@ -1,0 +1,21 @@
+section.duty-custom-fields
+    div.custom-fields-header
+        span Custom Fields
+        // Remove .open class on click on this button in both .icon and .custom-fields-body to close
+        a.icon.icon-arrow-bottom.open
+    div.custom-fields-body.open
+        div.custom-field-single
+            div.custom-field-data
+                span.custom-field-name Name
+                span.custom-field-description This is the description
+            div.custom-field-value
+                span Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec.
+            div.custom-field-options
+                a.icon.icon-edit(href="", title="Edit Custom Field")
+        form.custom-field-single
+            div.custom-field-data
+                label.custom-field-name(for="custom-field-description") Name
+            div.custom-field-value
+                input#custom-field-description(type="text", placeholder="This is the description")
+            div.custom-field-options
+                a.icon.icon-floppy(href="", title="Save Custom Field")

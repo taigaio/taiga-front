@@ -1,0 +1,76 @@
+.duty-custom-fields {
+    margin-bottom: 2rem;
+    .custom-fields-header {
+        @extend %bold;
+        align-content: space-between;
+        align-items: center;
+        background: $whitish;
+        display: flex;
+        justify-content: space-between;
+        padding: .5rem 1rem;
+        .icon-arrow-bottom {
+            @extend %large;
+            cursor: pointer;
+            transform: rotate(-90deg);
+            transition: transform .2s linear;
+            &.open {
+                transform: rotate(0);
+                transition: transform .2s linear;
+            }
+        }
+    }
+    .custom-fields-body {
+        @include slide(1000px, hidden, $min: 0);
+    }
+    .custom-field-single {
+        align-content: center;
+        align-items: center;
+        border-bottom: 1px solid $whitish;
+        display: flex;
+        padding: 1rem;
+        &:last-child {
+            border-bottom: 0;
+        }
+        &:hover {
+            .custom-field-options {
+                opacity: 1;
+            }
+        }
+        .custom-field-options {
+            opacity: 0;
+            transition: opacity .2s linear;
+            a {
+                color: $gray-light;
+            }
+            a:hover {
+                color: $green-taiga;
+            }
+        }
+    }
+    .custom-field-data {
+        flex: 0;
+        flex-basis: 200px;
+        .custom-field-name {
+            @extend %bold;
+            display: block;
+        }
+        .custom-field-description {
+            @extend %small;
+            color: $gray-light;
+            display: block;
+            line-height: .9rem;
+        }
+    }
+    .custom-field-value {
+        flex: 1;
+        padding-right: 2rem;
+    }
+    form {
+        label {
+            cursor: pointer;
+        }
+        input {
+            width: 100%;
+        }
+    }
+}
