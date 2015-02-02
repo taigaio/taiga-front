@@ -118,7 +118,6 @@ CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $project
         submitButton = $el.find(".submit-button")
 
         $el.on "submit", "form", submit
-        $el.on "click", ".submit-button", submit
 
         $el.on "click", ".close", (event) ->
             event.preventDefault()

@@ -17,8 +17,17 @@
     @extend %button;
 }
 
-a.button-green {
+button {
+    @extend %button;
+}
+
+.submit-button {
+    width: 100%;
+}
+
+.button-green {
     background: $green-taiga;
+    border: 0;
     color: $white;
     vertical-align: middle;
     &:hover,

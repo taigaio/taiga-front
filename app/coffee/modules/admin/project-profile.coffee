@@ -120,7 +120,6 @@ ProjectProfileDirective = ($repo, $confirm, $loading, $navurls, $location) ->
         submitButton = $el.find(".submit-button")
 
         $el.on "submit", "form", submit
-        $el.on "click", ".submit-button", submit
 
     return {link:link}
 
@@ -154,7 +153,6 @@ ProjectDefaultValuesDirective = ($repo, $confirm, $loading) ->
         submitButton = $el.find(".submit-button")
 
         $el.on "submit", "form", submit
-        $el.on "click", ".submit-button", submit
 
         $scope.$on "$destroy", ->
             $el.off()
