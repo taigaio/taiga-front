@@ -51,6 +51,13 @@ class HistoryController extends taiga.Controller
                 delete historyResult.values_diff.description_html
                 delete historyResult.values_diff.description_diff
 
+                # If block note was modified take only the blocked_note_html field
+                if historyResult.values_diff.blocked_note_diff?
+                    historyResult.values_diff.blocked_note = historyResult.values_diff.blocked_note_diff
+
+                delete historyResult.values_diff.blocked_note_html
+                delete historyResult.values_diff.blocked_note_diff
+
             @scope.history = history
             @scope.comments = _.filter(history, (item) -> item.comment != "")
 
@@ -66,6 +73,7 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm) ->
     templateChangePoints = $template.get("common/history/history-change-points.html", true)
     templateChangeGeneric = $template.get("common/history/history-change-generic.html", true)
     templateChangeAttachment = $template.get("common/history/history-change-attachment.html", true)
+    templateChangeList = $template.get("common/history/history-change-list.html", true)
     templateDeletedComment = $template.get("common/history/history-deleted-comment.html", true)
     templateActivity = $template.get("common/history/history-activity.html", true)
     templateBaseEntries = $template.get("common/history/history-base-entries.html", true)
@@ -103,6 +111,9 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm) ->
 
                 # Attachment
                 is_deprecated: "is deprecated"
+
+                blocked_note: "blocked note"
+                is_blocked: "is blocked"
             } # TODO i18n
             return humanizedFieldNames[field] or field
 
@@ -121,17 +132,17 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm) ->
         formatChange = (change) ->
             if _.isArray(change)
                 if change.length == 0
-                    return "nil"
+                    return "empty"
                 return change.join(", ")
 
             if change == ""
-                return "nil"
+                return "empty"
+
+            if not change? or change == false
+                return "no"
 
             if change == true
                 return "yes"
-
-            if change == false
-                return "no"
 
             return change
 
@@ -164,12 +175,18 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm) ->
 
         renderChangeEntry = (field, value) ->
             if field == "description"
-                # TODO: i18n
-                return templateChangeDiff({name: "description", diff: value[1]})
+                return templateChangeDiff({name: getHumanizedFieldName("description"), diff: value[1]})
+            else if field == "blocked_note"
+                return templateChangeDiff({name: getHumanizedFieldName("blocked_note"), diff: value[1]})
             else if field == "points"
                 return templateChangePoints({points: value})
             else if field == "attachments"
                 return renderAttachmentEntry(value)
+            else if field in ["tags", "watchers"]
+                name = getHumanizedFieldName(field)
+                removed = _.difference(value[0], value[1])
+                added = _.difference(value[1], value[0])
+                return templateChangeList({name:name, removed:removed, added: added})
             else if field == "assigned_to"
                 name = getHumanizedFieldName(field)
                 from = formatChange(value[0] or "Unassigned")
