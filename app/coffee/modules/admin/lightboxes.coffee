@@ -33,7 +33,9 @@ MAX_MEMBERSHIP_FIELDSETS = 4
 CreateMembersDirective = ($rs, $rootScope, $confirm, $loading ,lightboxService) ->
     extraTextTemplate = """
     <fieldset class="extra-text">
-        <textarea placeholder="(Optional) Add a personalized text to the invitation. Tell something lovely to your new members ;-)"></textarea>
+        <textarea placeholder="(Optional) Add a personalized text to the invitation. Tell something lovely to your new members ;-)"
+            maxlength="255">
+        </textarea>
     </fieldset>
     """
 
