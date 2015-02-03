@@ -45,6 +45,9 @@ BacklogSortableDirective = ($repo, $rs, $rootscope, $tgConfirm) ->
     # helper-in-wrong-place-when-scrolled-down-page
 
     link = ($scope, $el, $attrs) ->
+        getUsIndex = (us) =>
+            return $(us).index(".backlog-table-body .row")
+
         bindOnce $scope, "project", (project) ->
             # If the user has not enough permissions we don't enable the sortable
             if not (project.my_permissions.indexOf("modify_us") > -1)
@@ -83,7 +86,7 @@ BacklogSortableDirective = ($repo, $rs, $rootscope, $tgConfirm) ->
                     return
 
                 itemUs = ui.item.scope().us
-                itemIndex = ui.item.index()
+                itemIndex = getUsIndex(ui.item)
 
                 deleteElement(ui.item)
 
@@ -99,7 +102,7 @@ BacklogSortableDirective = ($repo, $rs, $rootscope, $tgConfirm) ->
                     return $(item).index()
 
                 index = _.min _.map items, (item) ->
-                    return $(item).index()
+                    return getUsIndex(item)
 
                 us = _.map items, (item) ->
                     item = $(item)
