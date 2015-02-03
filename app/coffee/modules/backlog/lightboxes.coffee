@@ -158,7 +158,6 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading)
         submitButton = $el.find(".submit-button")
 
         $el.on "submit", "form", submit
-        $el.on "click", ".submit-button", submit
 
         $el.on "click", ".delete-sprint .icon-delete", (event) ->
             event.preventDefault()

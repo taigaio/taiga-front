@@ -31,8 +31,7 @@ block content
                     label(for="valid-origin-ips") Valid origin ips (separated by ,)
                     input(type="text", name="valid-origin-ips", tg-valid-origin-ips, ng-model="gitlab.valid_origin_ips", placeholder="Gitlab requests are not signed so the best way of verifying the origin is by IP. If the field is empty there will be no IP validation.", id="valid-origin-ips")
 
-                button(type="submit", class="hidden")
-                a.button.button-green.submit-button(href="", title="Save") Save
+                button.button-green.submit-button(type="submit", title="Save") Save
 
             a.help-button(href="https://taiga.io/support/gitlab-integration/", target="_blank")
                 span.icon.icon-help

@@ -134,7 +134,6 @@ SearchBoxDirective = ($lightboxService, $navurls, $location, $route)->
             $el.find("#search-text").val("")
 
         $el.on "submit", "form", submit
-        $el.on "click", ".submit-button", submit
 
     return {link:link}
 

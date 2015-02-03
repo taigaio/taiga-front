@@ -107,8 +107,6 @@ UserProfileDirective = ($confirm, $auth, $repo) ->
 
         $el.on "submit", "form", submit
 
-        $el.on "click", ".submit-button", submit
-
         $scope.$on "$destroy", ->
             $el.off()
 

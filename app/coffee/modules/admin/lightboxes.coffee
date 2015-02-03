@@ -152,7 +152,6 @@ CreateMembersDirective = ($rs, $rootScope, $confirm, $loading ,lightboxService) 
         submitButton = $el.find(".submit-button")
 
         $el.on "submit", "form", submit
-        $el.on "click", ".submit-button", submit
 
     return {link: link}
 

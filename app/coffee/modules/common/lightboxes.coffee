@@ -334,7 +334,6 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
         submitButton = $el.find(".submit-button")
 
         $el.on "submit", "form", submit
-        $el.on "click", ".submit-button", submit
 
         $el.on "click", ".close", (event) ->
             event.preventDefault()
@@ -403,7 +402,6 @@ CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService, $load
         submitButton = $el.find(".submit-button")
 
         $el.on "submit", "form", submit
-        $el.on "click", ".submit-button", submit
 
         $scope.$on "$destroy", ->
             $el.off()

@@ -83,7 +83,6 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootscope, $loading, lightboxSer
                 $rootscope.$broadcast(broadcastEvent, data)
 
         $el.on "submit", "form", submit
-        $el.on "click", ".submit-button", submit
 
         $scope.$on "$destroy", ->
             $el.off()
@@ -127,7 +126,6 @@ CreateBulkTasksDirective = ($repo, $rs, $rootscope, $loading, lightboxService) -
         submitButton = $el.find(".submit-button")
 
         $el.on "submit", "form", submit
-        $el.on "click", ".submit-button", submit
 
         $scope.$on "$destroy", ->
             $el.off()

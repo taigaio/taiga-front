@@ -75,7 +75,6 @@ CreateIssueDirective = ($repo, $confirm, $rootscope, lightboxService, $loading) 
         submitButton = $el.find(".submit-button")
 
         $el.on "submit", "form", submit
-        $el.on "click", ".submit-button", submit
 
 
     return {link:link}
@@ -123,7 +122,6 @@ CreateBulkIssuesDirective = ($repo, $rs, $confirm, $rootscope, $loading, lightbo
         submitButton = $el.find(".submit-button")
 
         $el.on "submit", "form", submit
-        $el.on "click", ".submit-button", submit
 
         $scope.$on "$destroy", ->
             $el.off()

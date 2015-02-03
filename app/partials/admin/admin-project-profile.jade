@@ -48,8 +48,7 @@ div.wrapper(tg-project-profile, ng-controller="ProjectProfileController as ctrl"
 
                 p All projects are private during Taiga's beta period.
 
-            button(type="submit", class="hidden")
-            a.button.button-green.submit-button(href="", title="Save") Save
+            button.button-green.submit-button(type="submit", title="Save") Save
             a.delete-project(href="", title="Delete this project", ng-click="ctrl.openDeleteLightbox()") Delete this project
 
 div.lightbox.lightbox-delete-project(tg-lb-delete-project)

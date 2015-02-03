@@ -445,7 +445,6 @@ GithubWebhooksDirective = ($repo, $confirm, $loading) ->
         submitButton = $el.find(".submit-button")
 
         $el.on "submit", "form", submit
-        $el.on "click", ".submit-button", submit
 
     return {link:link}
 
@@ -481,7 +480,6 @@ GitlabWebhooksDirective = ($repo, $confirm, $loading) ->
         submitButton = $el.find(".submit-button")
 
         $el.on "submit", "form", submit
-        $el.on "click", ".submit-button", submit
 
     return {link:link}
 
@@ -517,7 +515,6 @@ BitbucketWebhooksDirective = ($repo, $confirm, $loading) ->
         submitButton = $el.find(".submit-button")
 
         $el.on "submit", "form", submit
-        $el.on "click", ".submit-button", submit
 
     return {link:link}
 
