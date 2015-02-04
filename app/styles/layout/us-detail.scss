@@ -305,7 +305,7 @@
         text-align: center;
     }
     .popover {
-        @include popover(200px, $top: 105%, $left: 35%, $arrow-width: 10px, $arrow-top: -5px, $arrow-left: 10px);
+        @include popover(200px, $top: 105%, $left: 35%, $arrow-width: 10px, $arrow-top: -5px, $arrow-left: 10px, $arrow-height: 10px);
         li {
             display: inline-block;
             width: 23%;
@@ -320,7 +320,7 @@
             }
         }
         &.fix {
-            @include popover(200px, $top: 105%, $left: -160px, $arrow-width: 10px, $arrow-top: -5px, $arrow-left: 90%);
+            @include popover(200px, $top: 105%, $left: -160px, $arrow-width: 10px, $arrow-top: -5px, $arrow-left: 90%, $arrow-height: 10px);
         }
     }
 }

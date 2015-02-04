@@ -31,7 +31,7 @@
     background: rgba($red, $green, $blue, $opacity);
 }
 
-@mixin popover($width, $top: '', $left: '', $bottom: '', $right: '', $arrow-width: 0, $arrow-top: '', $arrow-left: '', $arrow-bottom: '') {
+@mixin popover($width, $top: '', $left: '', $bottom: '', $right: '', $arrow-width: 0, $arrow-top: '', $arrow-left: '', $arrow-bottom: '', $arrow-height: 15px) {
     @extend %text;
     background: $blackish;
     bottom: #{$bottom};
@@ -67,7 +67,7 @@
         background: $blackish;
         bottom: #{$arrow-bottom};
         content: '';
-        height: 15px;
+        height: #{$arrow-height};
         left: #{$arrow-left};
         position: absolute;
         top: #{$arrow-top};
