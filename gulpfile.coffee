@@ -223,7 +223,7 @@ gulp.task "app-loader", ->
 
 gulp.task "locales", ->
     gulp.src("app/locales/en/app.json")
-        .pipe(wrap("angular.module('taigaBase').value('localesEn', <%= contents %>);"))
+        .pipe(wrap("angular.module('taigaBase').value('localesEn', <%= contents %>);", {}, {parse: false}))
         .pipe(rename("locales.en.js"))
         .pipe(gulp.dest(paths.tmp))
 
