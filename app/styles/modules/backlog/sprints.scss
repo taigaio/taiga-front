@@ -17,12 +17,13 @@
     }
     .filter-closed-sprints {
         @extend %small;
-        display: block;
+        align-content: center;
+        display: flex;
+        justify-content: center;
         padding-bottom: 1rem;
-        text-align: center;
-        .icon-kanban {
+        vertical-align: middle;
+        .icon-archive {
             margin-right: .3rem;
-            vertical-align: middle;
         }
     }
     .loading-spinner {
