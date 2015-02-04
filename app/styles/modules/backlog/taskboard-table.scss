@@ -45,12 +45,15 @@ $column-margin: 0 10px 0 0;
 }
 
 .taskboard-table {
+    display: flex;
+    flex-direction: column;
     overflow: hidden;
     width: 100%;
 }
 
 .taskboard-table-header {
     margin-bottom: .5rem;
+    min-height: 40px;
     position: relative;
     width: 100%;
     .taskboard-table-inner {

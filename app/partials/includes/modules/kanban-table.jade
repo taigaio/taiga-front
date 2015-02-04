@@ -32,7 +32,7 @@ div.kanban-table(tg-kanban-squish-column)
                                     tg-kanban-archived-status-header="s")
 
     div.kanban-table-body
-        div.kanban-table-inner(tg-kanban-row-width-fixer)
+        div.kanban-table-inner
             div.kanban-uses-box.task-column(ng-class='{vfold:folds[s.id]}',
                                             ng-repeat="s in usStatusList track by s.id",
                                             tg-kanban-sortable,

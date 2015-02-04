@@ -293,36 +293,6 @@ KanbanDirective = ($repo, $rootscope) ->
 
 module.directive("tgKanban", ["$tgRepo", "$rootScope", KanbanDirective])
 
-
-#############################################################################
-## Kanban Column Height Fixer Directive
-#############################################################################
-
-KanbanColumnHeightFixerDirective = ->
-    mainPadding = 32 # px
-    scrollPadding = 0 # px
-
-    renderSize = ($el) ->
-        elementOffset = $el.parent().parent().offset().top
-        windowHeight = angular.element(window).height()
-        columnHeight = windowHeight - elementOffset - mainPadding - scrollPadding
-        $el.css("height", "#{columnHeight}px")
-
-    link = ($scope, $el, $attrs) ->
-        timeout(500, -> renderSize($el))
-
-        $scope.$on "resize", ->
-            renderSize($el)
-
-        $scope.$on "$destroy", ->
-            $el.off()
-
-    return {link:link}
-
-
-module.directive("tgKanbanColumnHeightFixer", KanbanColumnHeightFixerDirective)
-
-
 #############################################################################
 ## Kanban Archived Status Column Header Control
 #############################################################################

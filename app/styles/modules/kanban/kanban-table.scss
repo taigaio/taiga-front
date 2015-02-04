@@ -7,6 +7,8 @@ $column-shrink: 0;
 $column-margin: 0 10px 0 0;
 
 .kanban-table {
+    display: flex;
+    flex-direction: column;
     overflow: hidden;
     width: 100%;
     .vfold {
@@ -48,6 +50,7 @@ $column-margin: 0 10px 0 0;
 .kanban-table-header {
     margin-bottom: .5rem;
     position: relative;
+    min-height: 40px;
     width: 100%;
     .kanban-table-inner {
         display: flex;
