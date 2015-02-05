@@ -26,8 +26,10 @@
             margin-right: .3rem;
         }
     }
+    .loading {
+        text-align: center;
+    }
     .loading-spinner {
-        @extend %loading-spinner;
         border: 0;
         flex-grow: 0;
         margin-bottom: 1rem;

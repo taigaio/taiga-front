@@ -14,7 +14,7 @@ div.wrapper(tg-user-profile, ng-controller="UserSettingsController as ctrl",
                     fieldset(tg-user-avatar)
                         .image-container
                             img.avatar(ng-src="{{user.big_photo}}" alt="avatar")
-                            .overlay
+                            .overlay.hidden
                                 img.loading-spinner(src="/svg/spinner-circle.svg", alt="loading...")
                         input(type="file", id="avatar-field", class="hidden",
                             tg-avatar-model="avatarAttachment")

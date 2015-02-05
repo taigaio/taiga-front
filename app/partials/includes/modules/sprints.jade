@@ -18,7 +18,6 @@ section.sprints
     a.filter-closed-sprints(tg-backlog-toggle-closed-sprints-visualization, href="", ng-show="totalClosedMilestones")
         span.icon.icon-archive
         span.text Show closed sprints
-    div.loading-spinner
 
     div.sprint.sprint-closed(ng-repeat="sprint in closedSprints track by sprint.id" tg-backlog-sprint="sprint", tg-sprint-sortable)
         include sprint
