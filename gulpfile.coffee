@@ -44,6 +44,7 @@ paths.jade = "#{paths.app}/**/*.jade"
 
 paths.htmlPartials = [
     "#{paths.tmp}/partials/**/*.html",
+    "#{paths.tmp}/plugins/**/*.html",
     "!#{paths.tmp}/partials/{includes,includes/**}"
 ]
 
