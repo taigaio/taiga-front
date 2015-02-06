@@ -37,8 +37,8 @@ LbUsEstimationDirective = ($rootScope, $repo, $confirm, $template) ->
     #   - Us object (ng-model)
     #   - scope.project object
 
-    mainTemplate = $template.get("common/estimation/lb-us-estimation-points-per-role.html", true)
-    pointsTemplate = $template.get("common/estimation/lb-us-estimation-points.html", true)
+    mainTemplate = $template.get("common/estimation/us-estimation-points-per-role.html", true)
+    pointsTemplate = $template.get("common/estimation/us-estimation-points.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
         render = (points) ->
@@ -56,6 +56,7 @@ LbUsEstimationDirective = ($rootScope, $repo, $confirm, $template) ->
             ctx = {
                 totalPoints: totalPoints
                 roles: roles
+                editable: true
             }
             html = mainTemplate(ctx)
             $el.html(html)
