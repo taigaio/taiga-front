@@ -298,30 +298,6 @@ TaskboardTaskDirective = ($rootscope) ->
 module.directive("tgTaskboardTask", ["$rootScope", TaskboardTaskDirective])
 
 #############################################################################
-## Taskboard Table Height Fixer Directive
-#############################################################################
-
-TaskboardTableHeightFixerDirective = ->
-    mainPadding = 32 # px
-
-    renderSize = ($el) ->
-        elementOffset = $el.offset().top
-        windowHeight = angular.element(window).height()
-        columnHeight = windowHeight - elementOffset - mainPadding
-        $el.css("height", "#{columnHeight}px")
-
-    link = ($scope, $el, $attrs) ->
-        timeout(500, -> renderSize($el))
-
-        $scope.$on "resize", ->
-            renderSize($el)
-
-    return {link:link}
-
-
-module.directive("tgTaskboardTableHeightFixer", TaskboardTableHeightFixerDirective)
-
-#############################################################################
 ## Taskboard Squish Column Directive
 #############################################################################
 
