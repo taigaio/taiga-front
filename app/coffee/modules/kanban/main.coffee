@@ -138,13 +138,20 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @scope.userstories = userstories
 
             usByStatus = _.groupBy(userstories, "status")
+            us_archived = []
             for status in @scope.usStatusList
                 if not usByStatus[status.id]?
                     usByStatus[status.id] = []
+                if @scope.usByStatus?
+                    for us in @scope.usByStatus[status.id]
+                        if us.status != status.id
+                            us_archived.push(us)
 
                 # Must preserve the archived columns if loaded
-                if status.is_archived and @scope.usByStatus?
-                    usByStatus[status.id]  = @scope.usByStatus[status.id]
+                if status.is_archived and @scope.usByStatus? and @scope.usByStatus[status.id].length != 0
+                    for us in @scope.usByStatus[status.id].concat(us_archived)
+                        if us.status == status.id
+                            usByStatus[status.id].push(us)
 
                 usByStatus[status.id] = _.sortBy(usByStatus[status.id], "kanban_order")
 
