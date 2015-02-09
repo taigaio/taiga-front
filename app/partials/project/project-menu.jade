@@ -44,6 +44,7 @@ div(class="menu-container")
                 span(class="icon icon-settings")
                 span(class="item") Admin
         <% } %>
+    <% if (user) { %>
     div(class="user")
         div(class="user-settings")
             ul(class="popover")
@@ -61,3 +62,4 @@ div(class="menu-container")
                     a(href="" title="Logout" class="logout") Logout
             a(href="" title="User preferences" class="avatar" id="nav-user-settings")
                 img(src="{{ user.photo }}" alt="{{ user.full_name_display }}")
+    <% } %>
