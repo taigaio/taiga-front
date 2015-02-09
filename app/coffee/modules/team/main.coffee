@@ -69,18 +69,18 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
     loadMembers: ->
         return @rs.memberships.list(@scope.projectId, {}, false).then (data) =>
             currentUser = @auth.getUser()
-            if currentUser? and not currentUser.photo?
+            if not currentUser.photo?
                 currentUser.photo = "/images/unnamed.png"
 
             @scope.currentUser = _.find data, (membership) =>
-                return currentUser? and membership.user == currentUser.id
+                return membership.user == currentUser.id
 
             @scope.totals = {}
             _.forEach data, (membership) =>
                 @scope.totals[membership.user] = 0
 
             @scope.memberships = _.filter data, (membership) =>
-                if membership.user && (not currentUser? or membership.user != currentUser.id) && membership.is_user_active
+                if membership.user && membership.user != currentUser.id && membership.is_user_active
                     return membership
 
             for membership in @scope.memberships
