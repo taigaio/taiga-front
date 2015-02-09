@@ -19,15 +19,14 @@ input[type="date"],
 input[type="password"],
 select,
 textarea {
-    @extend %title;
-    background: $whitish;
+    background: $very-light-gray;
     border: 1px solid $gray-light;
     color: $grayer;
     margin: 0;
     padding: 8px;
     width: 100%;
     @include placeholder {
-        color: $gray-light;
+        color: darken($gray-light, 10%);
     }
 }
 
