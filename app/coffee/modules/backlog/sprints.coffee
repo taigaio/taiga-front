@@ -138,12 +138,17 @@ ToggleExcludeClosedSprintsVisualization = ($rootscope, $loading) ->
     excludeClosedSprints = true
 
     link = ($scope, $el, $attrs) ->
+        # insert loading wrapper
+        loadingElm = $("<div>")
+        $el.after(loadingElm)
+
         # Event Handlers
         $el.on "click", (event) ->
             event.preventDefault()
             excludeClosedSprints  = not excludeClosedSprints
 
-            $loading.start($el.parent().siblings('.loading-spinner'))
+            $loading.start(loadingElm)
+
             if excludeClosedSprints
                 $rootscope.$broadcast("backlog:unload-closed-sprints")
             else
@@ -153,7 +158,7 @@ ToggleExcludeClosedSprintsVisualization = ($rootscope, $loading) ->
             $el.off()
 
         $scope.$on "closed-sprints:reloaded", (ctx, sprints) =>
-            $loading.finish($el.siblings('.loading-spinner'))
+            $loading.finish(loadingElm)
 
             #TODO: i18n
             if sprints.length > 0
