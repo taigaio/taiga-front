@@ -118,6 +118,11 @@ urls = {
     # Export/Import
     "exporter": "/exporter"
     "importer": "/importer/load_dump"
+
+    # CSV
+    "userstories-csv": "/userstories/csv?uuid=%s"
+    "tasks-csv": "/tasks/csv?uuid=%s"
+    "issues-csv": "/issues/csv?uuid=%s"
 }
 
 # Initialize api urls service

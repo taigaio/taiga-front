@@ -32,10 +32,10 @@ debounce = @.taiga.debounce
 module = angular.module("taigaAdmin")
 
 #############################################################################
-## Project values Controller
+## Project values section Controller
 #############################################################################
 
-class ProjectValuesController extends mixOf(taiga.Controller, taiga.PageMixin)
+class ProjectValuesSectionController extends mixOf(taiga.Controller, taiga.PageMixin)
     @.$inject = [
         "$scope",
         "$rootScope",
@@ -59,29 +59,44 @@ class ProjectValuesController extends mixOf(taiga.Controller, taiga.PageMixin)
 
         promise.then null, @.onInitialDataError.bind(@)
 
-        @scope.$on("admin:project-values:move", @.moveValue)
-
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
             @scope.project = project
             @scope.$emit('project:loaded', project)
             return project
 
-    loadValues: ->
-        return @rs[@scope.resource].listValues(@scope.projectId, @scope.type).then (values) =>
-            @scope.values = values
-            @scope.maxValueOrder = _.max(values, "order").order
-            return values
-
     loadInitialData: ->
         promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
             @scope.projectId = data.project
             return data
 
-        return promise.then( => @q.all([
-            @.loadProject(),
-            @.loadValues(),
-        ]))
+        return promise.then => @.loadProject()
+
+
+module.controller("ProjectValuesSectionController", ProjectValuesSectionController)
+
+#############################################################################
+## Project values Controller
+#############################################################################
+
+class ProjectValuesController extends taiga.Controller
+    @.$inject = [
+        "$scope",
+        "$rootScope",
+        "$tgRepo",
+        "$tgConfirm",
+        "$tgResources",
+    ]
+
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs) ->
+        @scope.$on("admin:project-values:move", @.moveValue)
+        @rootscope.$on("project:loaded", @.loadValues)
+
+    loadValues: =>
+        return @rs[@scope.resource].listValues(@scope.projectId, @scope.type).then (values) =>
+            @scope.values = values
+            @scope.maxValueOrder = _.max(values, "order").order
+            return values
 
     moveValue: (ctx, itemValue, itemIndex) =>
         values = @scope.values
@@ -147,7 +162,7 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame) ->
             $(document.body).scrollTop(table.offset().top + table.height())
 
             if focus
-                $(".new-value input").focus()
+                $el.find(".new-value input:visible").first().focus()
 
         saveValue = (target) ->
             form = target.parents("form").checksley()
@@ -161,7 +176,25 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame) ->
                 row.siblings(".visualization").removeClass('hidden')
 
             promise.then null, (data) ->
-                $confirm.notify("error")
+                form.setErrors(data)
+
+        saveNewValue = (target) ->
+            form = target.parents("form").checksley()
+            return if not form.validate()
+
+            $scope.newValue.project = $scope.project.id
+
+            $scope.newValue.order = if $scope.maxValueOrder then $scope.maxValueOrder + 1 else 1
+
+            promise = $repo.create(valueType, $scope.newValue)
+            promise.then (data) =>
+                target.addClass("hidden")
+
+                $scope.values.push(data)
+                $scope.maxValueOrder = data.order
+                initializeNewValue()
+
+            promise.then null, (data) ->
                 form.setErrors(data)
 
         cancel = (target) ->
@@ -180,24 +213,8 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame) ->
 
         $el.on "click", ".add-new", debounce 2000, (event) ->
             event.preventDefault()
-            form = $el.find(".new-value").parents("form").checksley()
-            return if not form.validate()
-
-            $scope.newValue.project = $scope.project.id
-
-            $scope.newValue.order = if $scope.maxValueOrder then $scope.maxValueOrder + 1 else 1
-
-            promise = $repo.create(valueType, $scope.newValue)
-            promise.then (data) =>
-                $el.find(".new-value").addClass("hidden")
-
-                $scope.values.push(data)
-                $scope.maxValueOrder = data.order
-                initializeNewValue()
-
-            promise.then null, (data) ->
-                $confirm.notify("error")
-                form.setErrors(data)
+            target = $el.find(".new-value")
+            saveNewValue(target)
 
         $el.on "click", ".delete-new", (event) ->
             event.preventDefault()
@@ -222,6 +239,14 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame) ->
             else if event.keyCode == 27
                 target = angular.element(event.currentTarget)
                 cancel(target)
+
+        $el.on "keyup", ".new-value input", (event) ->
+            if event.keyCode == 13
+                target = $el.find(".new-value")
+                saveNewValue(target)
+            else if event.keyCode == 27
+                $el.find(".new-value").addClass("hidden")
+                initializeNewValue()
 
         $el.on "click", ".save", (event) ->
             event.preventDefault()
@@ -321,7 +346,6 @@ ColorSelectionDirective = () ->
 
 module.directive("tgColorSelection", ColorSelectionDirective)
 
-
 #############################################################################
 ## Custom Attributes Controller
 #############################################################################
@@ -342,32 +366,9 @@ class ProjectCustomAttributesController extends mixOf(taiga.Controller, taiga.Pa
     constructor: (@scope, @rootscope, @repo, @rs, @params, @q, @location, @navUrls, @appTitle) ->
         @scope.project = {}
 
-        promise = @.loadInitialData()
-
-        promise.then () =>
+        @rootscope.$on "project:loaded", =>
+            @.loadCustomAttributes()
             @appTitle.set("Project Custom Attributes - " + @scope.sectionName + " - " + @scope.project.name)
-
-        promise.then null, @.onInitialDataError.bind(@)
-
-    loadInitialData: =>
-        promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
-            @scope.projectId = data.project
-            return data
-
-        return promise.then( => @q.all([
-            @.loadProject(),
-            @.loadCustomAttributes(),
-        ]))
-
-    #########################
-    # Project
-    #########################
-
-    loadProject: =>
-        return @rs.projects.get(@scope.projectId).then (project) =>
-            @scope.project = project
-            @scope.$emit('project:loaded', project)
-            return project
 
     #########################
     # Custom Attribute
@@ -438,6 +439,7 @@ ProjectCustomAttributesDirective = ($log, $confirm, animationFrame) ->
 
         showCreateForm = ->
             $el.find(".js-new-custom-field").removeClass("hidden")
+            $el.find(".js-new-custom-field input:visible").first().focus()
 
         hideCreateForm = ->
             $el.find(".js-new-custom-field").addClass("hidden")
@@ -469,7 +471,6 @@ ProjectCustomAttributesDirective = ($log, $confirm, animationFrame) ->
 
             onError = (data) =>
                 form.setErrors(data)
-                $confirm.notify("error")
 
             attr = $scope.newAttr
             attr.project = $scope.projectId
@@ -525,6 +526,7 @@ ProjectCustomAttributesDirective = ($log, $confirm, animationFrame) ->
         showEditForm = (formEl) ->
             formEl.find(".js-view-custom-field").addClass("hidden")
             formEl.find(".js-edit-custom-field").removeClass("hidden")
+            formEl.find(".js-edit-custom-field input:visible").first().focus().select()
 
         hideEditForm = (formEl) ->
             formEl.find(".js-edit-custom-field").addClass("hidden")
@@ -545,7 +547,6 @@ ProjectCustomAttributesDirective = ($log, $confirm, animationFrame) ->
 
             onError = (data) =>
                 form.setErrors(data)
-                $confirm.notify("error")
 
             attr = formEl.scope().attr
             $ctrl.saveCustomAttribute(attr).then(onSucces, onError)
@@ -616,3 +617,55 @@ ProjectCustomAttributesDirective = ($log, $confirm, animationFrame) ->
     return {link: link}
 
 module.directive("tgProjectCustomAttributes", ["$log", "$tgConfirm", "animationFrame", ProjectCustomAttributesDirective])
+
+#############################################################################
+## CSV Exporter directive
+#############################################################################
+
+class CsvExporterController extends taiga.Controller
+    @.$inject = [
+        "$scope",
+        "$rootScope",
+        "$tgUrls",
+        "$tgConfirm",
+        "$tgResources",
+    ]
+
+    constructor: (@scope, @rootscope, @urls, @confirm, @rs) ->
+        @rootscope.$on("project:loaded", @.setCsvUuid)
+        @scope.$watch "csvUuid", (value) =>
+            if value
+                @scope.csvUrl = @urls.resolve("#{@.type}-csv", value)
+            else
+                @scope.csvUrl = ""
+
+    setCsvUuid: =>
+        @scope.csvUuid = @scope.project["#{@.type}_csv_uuid"]
+
+    regenerateUuid: ->
+        #TODO: i18n
+        @confirm.ask("Change URL", "You going to change the CSV data access url. The previous url will be disabled. Are you sure?").then (finish) =>
+            promise = @rs.projects["regenerate_#{@.type}_csv_uuid"](@scope.projectId)
+
+            promise.then (data) =>
+                @scope.csvUuid = data.data?.uuid
+
+            promise.then null, =>
+                @confirm.notify("error")
+
+            promise.finally ->
+                finish()
+            return promise
+
+class CsvExporterUserstoriesController extends CsvExporterController
+    type: "userstories"
+
+class CsvExporterTasksController extends CsvExporterController
+    type: "tasks"
+
+class CsvExporterIssuesController extends CsvExporterController
+    type: "issues"
+
+module.controller("CsvExporterUserstoriesController", CsvExporterUserstoriesController)
+module.controller("CsvExporterTasksController", CsvExporterTasksController)
+module.controller("CsvExporterIssuesController", CsvExporterIssuesController)

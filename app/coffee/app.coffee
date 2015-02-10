@@ -89,28 +89,12 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         {templateUrl: "admin/admin-project-modules.html"})
     $routeProvider.when("/project/:pslug/admin/project-profile/export",
         {templateUrl: "admin/admin-project-export.html"})
-    # Admin Project Values
-    $routeProvider.when("/project/:pslug/admin/project-values/us-status",
-        {templateUrl: "admin/admin-project-values-us-status.html"})
-    $routeProvider.when("/project/:pslug/admin/project-values/us-points",
-        {templateUrl: "admin/admin-project-values-us-points.html"})
-    $routeProvider.when("/project/:pslug/admin/project-values/us-extras",
-        {templateUrl: "admin/admin-project-values-us-extras.html"})
-    $routeProvider.when("/project/:pslug/admin/project-values/task-status",
-        {templateUrl: "admin/admin-project-values-task-status.html"})
-    $routeProvider.when("/project/:pslug/admin/project-values/task-extras",
-        {templateUrl: "admin/admin-project-values-task-extras.html"})
-    $routeProvider.when("/project/:pslug/admin/project-values/issue-status",
-        {templateUrl: "admin/admin-project-values-issue-status.html"})
-    $routeProvider.when("/project/:pslug/admin/project-values/issue-types",
-        {templateUrl: "admin/admin-project-values-issue-types.html"})
-    $routeProvider.when("/project/:pslug/admin/project-values/issue-priorities",
-        {templateUrl: "admin/admin-project-values-issue-priorities.html"})
-    $routeProvider.when("/project/:pslug/admin/project-values/issue-severities",
-        {templateUrl: "admin/admin-project-values-issue-severities.html"})
-    $routeProvider.when("/project/:pslug/admin/project-values/issue-extras",
-        {templateUrl: "admin/admin-project-values-issue-extras.html"})
-    # Admin - Memberships
+    $routeProvider.when("/project/:pslug/admin/project-values/us",
+        {templateUrl: "admin/admin-project-values-us.html"})
+    $routeProvider.when("/project/:pslug/admin/project-values/task",
+        {templateUrl: "admin/admin-project-values-task.html"})
+    $routeProvider.when("/project/:pslug/admin/project-values/issue",
+        {templateUrl: "admin/admin-project-values-issue.html"})
     $routeProvider.when("/project/:pslug/admin/memberships",
         {templateUrl: "admin/admin-memberships.html"})
     # Admin - Roles
