@@ -747,8 +747,8 @@ module.directive("tgUsRolePointsSelector", ["$rootScope", "$tgTemplate", UsRoleP
 
 
 UsPointsDirective = ($repo, $tgTemplate) ->
-    rolesTemplate = $tgTemplate.get("backlog/us-points-roles-popover.html", true)
-    pointsTemplate = $tgTemplate.get("backlog/us-points-popover.html", true)
+    rolesTemplate = $tgTemplate.get("common/estimation/us-points-roles-popover.html", true)
+    pointsTemplate = $tgTemplate.get("common/estimation/us-estimation-points.html", true)
 
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
@@ -787,7 +787,7 @@ UsPointsDirective = ($repo, $tgTemplate) ->
                 point.selected = if us.points[roleId] == point.id then false else true
                 return point
 
-            html = pointsTemplate({"points": points})
+            html = pointsTemplate({"points": points, "roleId": roleId})
 
             # Remove any prevous state
             $el.find(".popover").popover().close()
