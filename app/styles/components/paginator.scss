@@ -17,7 +17,7 @@
     }
     a {
         &:hover {
-            background: $button-gray-hover;
+            background: $blackish;
             color: $white;
             transition: all .3s linear;
         }
@@ -39,7 +39,7 @@
 
 .v-pagination-next,
 .v-pagination-previous {
-    background-color: $button-gray;
+    background-color: $gray;
     color: $whitish;
     display: block;
     padding: .1rem 0;
@@ -47,7 +47,7 @@
     visibility: hidden;
     width: 100%;
     &:hover {
-        background-color: $button-gray / 2;
+        background-color: $blackish;
         transition: background .3s linear;
     }
 }
