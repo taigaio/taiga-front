@@ -41,7 +41,7 @@ button {
 
 .button-gray,
 a.button-gray {
-    background: $button-gray;
+    background: $gray;
     &:hover {
         background: $fresh-taiga;
         color: $white;
@@ -55,7 +55,7 @@ a.button-blackish {
     background: $blackish;
     color: $whitish;
     &:hover {
-        background: $button-gray-hover;
+        background: $blackish;
         color: $white;
     }
     span {
@@ -67,17 +67,6 @@ a.button-red {
     background: $red-light;
     &:hover {
         background: $red;
-        color: $white;
-    }
-    span {
-        color: $white;
-    }
-}
-
-a.button-orange {
-    background: $orange;
-    &:hover {
-        background: lighten($orange, 10%);
         color: $white;
     }
     span {

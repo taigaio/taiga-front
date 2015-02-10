@@ -26,7 +26,7 @@
     input {
         @extend %medium;
         @extend %text;
-        background-color: $very-light-gray;
+        background-color: $whitish;
         width: 243px;
         @include placeholder {
             color: $gray;
