@@ -212,6 +212,7 @@
         max-width: 600px;
     }
     .last-sprint-name {
+        @extend %small;
         color: $gray;
         opacity: 1;
         position: absolute;
