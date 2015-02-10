@@ -1,0 +1,5 @@
+a.us-points(href="", title!="<%= title %>", class!="<% if (!editable) { %>not-clickable<% } %>")
+    span.points-value <%= text %>
+    <% if (editable) { %>
+    span.icon.icon-arrow-bottom(tg-check-permission="modify_us")
+    <% } %>

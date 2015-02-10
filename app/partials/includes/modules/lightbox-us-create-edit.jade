@@ -7,7 +7,7 @@ form
               data-required="true", data-maxlength="500")
 
     fieldset.estimation
-        tg-lb-us-estimation(ng-model="us.points")
+        tg-lb-us-estimation(ng-model="us")
 
     fieldset
         select(name="status", ng-model="us.status", ng-options="s.id as s.name for s in usStatusList",

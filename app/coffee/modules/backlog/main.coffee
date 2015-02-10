@@ -733,7 +733,6 @@ UsRolePointsSelectorDirective = ($rootscope, $template) ->
         $el.on "click", ".role", (event) ->
             event.preventDefault()
             event.stopPropagation()
-
             target = angular.element(event.currentTarget)
             rolScope = target.scope()
             $rootscope.$broadcast("uspoints:select", target.data("role-id"), target.text())
@@ -746,170 +745,107 @@ UsRolePointsSelectorDirective = ($rootscope, $template) ->
 module.directive("tgUsRolePointsSelector", ["$rootScope", "$tgTemplate", UsRolePointsSelectorDirective])
 
 
-UsPointsDirective = ($repo, $tgTemplate) ->
+UsPointsDirective = ($tgEstimationsService, $repo, $tgTemplate) ->
     rolesTemplate = $tgTemplate.get("common/estimation/us-points-roles-popover.html", true)
-    pointsTemplate = $tgTemplate.get("common/estimation/us-estimation-points.html", true)
 
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
-
-        us = $scope.$eval($attrs.tgBacklogUsPoints)
-
         updatingSelectedRoleId = null
         selectedRoleId = null
-        numberOfRoles = _.size(us.points)
+        filteringRoleId = null
+        estimationProcess = null
 
-        # Preselect the role if we have only one
-        if numberOfRoles == 1
-            selectedRoleId = _.keys(us.points)[0]
+        $scope.$on "uspoints:select", (ctx, roleId, roleName) ->
+            us = $scope.$eval($attrs.tgBacklogUsPoints)
+            selectedRoleId = roleId
+            estimationProcess.render()
 
-        roles = []
-        updatePointsRoles = ->
-            roles = _.map computableRoles, (role) ->
-                pointId = us.points[role.id]
-                pointObj = $scope.pointsById[pointId]
+        $scope.$on "uspoints:clear-selection", (ctx) ->
+            us = $scope.$eval($attrs.tgBacklogUsPoints)
+            selectedRoleId = null
+            estimationProcess.render()
 
-                role = _.clone(role, true)
-                role.points = if pointObj.value? then pointObj.value else "?"
-                return role
+        $scope.$watch $attrs.tgBacklogUsPoints, (us) ->
+            if us
+                estimationProcess = $tgEstimationsService.create($el, us, $scope.project)
 
-        computableRoles = _.filter($scope.project.roles, "computable")
-        updatePointsRoles()
+                # Update roles
+                roles = estimationProcess.calculateRoles()
+                if roles.length == 0
+                    $el.find(".icon-arrow-bottom").remove()
+                    $el.find("a.us-points").addClass("not-clickable")
 
-        if roles.length == 0
-            $el.find(".icon-arrow-bottom").remove()
-            $el.find("a.us-points").addClass("not-clickable")
+                else if roles.length == 1
+                    # Preselect the role if we have only one
+                    selectedRoleId = _.keys(us.points)[0]
 
-        renderPointsSelector = (us, roleId) ->
-            # Prepare data for rendering
-            points = _.map $scope.project.points, (point) ->
-                point = _.clone(point, true)
-                point.selected = if us.points[roleId] == point.id then false else true
-                return point
+                if estimationProcess.isEditable
+                    bindClickElements()
 
-            html = pointsTemplate({"points": points, "roleId": roleId})
+                estimationProcess.onSelectedPointForRole = (roleId, pointId) ->
+                    @save(roleId, pointId).then ->
+                        $ctrl.loadProjectStats()
 
-            # Remove any prevous state
-            $el.find(".popover").popover().close()
-            $el.find(".pop-points-open").remove()
+                estimationProcess.render = () ->
+                    totalPoints = @calculateTotalPoints()
+                    if not selectedRoleId? or roles.length == 1
+                        text = totalPoints
+                        title = totalPoints
+                    else
+                        pointId = @us.points[selectedRoleId]
+                        pointObj = @pointsById[pointId]
+                        text = "#{pointObj.name} / <span>#{totalPoints}</span>"
+                        title = "#{pointObj.name} / #{totalPoints}"
 
-            # Render into DOM and show the new created element
-            $el.append(html)
+                    ctx = {
+                        totalPoints: totalPoints
+                        roles: @calculateRoles()
+                        editable: @isEditable
+                        text:  text
+                        title: title
+                    }
+                    mainTemplate = "common/estimation/us-estimation-total.html"
+                    template = $tgTemplate.get(mainTemplate, true)
+                    html = template(ctx)
+                    @$el.html(html)
 
-            # If not showing role selection let's move to the left
-            if not $el.find(".pop-role:visible").css("left")?
-                $el.find(".pop-points-open").css("left", "110px")
+                estimationProcess.render()
 
-            $el.find(".pop-points-open").popover().open()
-
-        renderRolesSelector = (us) ->
-            updatePointsRoles()
-
+        renderRolesSelector = () ->
+            roles = estimationProcess.calculateRoles()
             html = rolesTemplate({"roles": roles})
-
             # Render into DOM and show the new created element
             $el.append(html)
             $el.find(".pop-role").popover().open(() -> $(this).remove())
 
-        renderPoints = (us, roleId) ->
-            dom = $el.find("a > span.points-value")
-
-            if roleId == null or numberOfRoles == 1
-                totalPoints = if us.total_points? then us.total_points else "?"
-                dom.text(totalPoints)
-                dom.parent().prop("title", totalPoints)
-            else
-                pointId = us.points[roleId]
-                pointObj = $scope.pointsById[pointId]
-                dom.html("#{pointObj.name} / <span>#{us.total_points}</span>")
-                dom.parent().prop("title", "#{pointObj.name} / #{us.total_points}")
-
-        calculateTotalPoints = ->
-            values = _.map(us.points, (v, k) -> $scope.pointsById[v].value)
-            values = _.filter(values, (num) -> num?)
-
-            if values.length == 0
-                return "?"
-
-            return _.reduce(values, (acc, num) -> acc + num)
-
-        $scope.$watch $attrs.tgBacklogUsPoints, (us) ->
-            renderPoints(us, selectedRoleId) if us
-
-        $scope.$on "uspoints:select", (ctx, roleId, roleName) ->
-            us = $scope.$eval($attrs.tgBacklogUsPoints)
-            renderPoints(us, roleId)
-            selectedRoleId = roleId
-
-        $scope.$on "uspoints:clear-selection", (ctx) ->
-            us = $scope.$eval($attrs.tgBacklogUsPoints)
-            renderPoints(us, null)
-            selectedRoleId = null
-
-        if roles.length > 0
+        bindClickElements = () ->
             $el.on "click", "a.us-points span", (event) ->
                 event.preventDefault()
                 event.stopPropagation()
-
                 us = $scope.$eval($attrs.tgBacklogUsPoints)
                 updatingSelectedRoleId = selectedRoleId
-
                 if selectedRoleId?
-                    renderPointsSelector(us, selectedRoleId)
+                    estimationProcess.renderPointsSelector(selectedRoleId)
                 else
-                    renderRolesSelector(us)
+                    renderRolesSelector()
 
             $el.on "click", ".role", (event) ->
                 event.preventDefault()
                 event.stopPropagation()
                 target = angular.element(event.currentTarget)
-
                 us = $scope.$eval($attrs.tgBacklogUsPoints)
-
                 updatingSelectedRoleId = target.data("role-id")
-
                 popRolesDom = $el.find(".pop-role")
                 popRolesDom.find("a").removeClass("active")
                 popRolesDom.find("a[data-role-id='#{updatingSelectedRoleId}']").addClass("active")
-
-                renderPointsSelector(us, updatingSelectedRoleId)
-
-            $el.on "click", ".point", (event) ->
-                event.preventDefault()
-                event.stopPropagation()
-
-                target = angular.element(event.currentTarget)
-                $el.find(".pop-points-open").hide()
-                $el.find(".pop-role").hide()
-
-                us = $scope.$eval($attrs.tgBacklogUsPoints)
-
-                points = _.clone(us.points, true)
-                points[updatingSelectedRoleId] = target.data("point-id")
-
-                $scope.$apply ->
-                    us.points = points
-                    us.total_points = calculateTotalPoints(us)
-
-                    renderPoints(us, selectedRoleId)
-
-                    $repo.save(us).then ->
-                        # Little Hack for refresh.
-                        $repo.refresh(us).then ->
-                            $ctrl.loadProjectStats()
-
-        bindOnce $scope, "project", (project) ->
-            # If the user has not enough permissions the click events are unbinded
-            if project.my_permissions.indexOf("modify_us") == -1
-                $el.unbind("click")
-                $el.find("a").addClass("not-clickable")
+                estimationProcess.renderPointsSelector(updatingSelectedRoleId)
 
         $scope.$on "$destroy", ->
             $el.off()
 
     return {link: link}
 
-module.directive("tgBacklogUsPoints", ["$tgRepo", "$tgTemplate", UsPointsDirective])
+module.directive("tgBacklogUsPoints", ["$tgEstimationsService", "$tgRepo", "$tgTemplate", UsPointsDirective])
 
 #############################################################################
 ## Burndown graph directive

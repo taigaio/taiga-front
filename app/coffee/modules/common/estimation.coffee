@@ -20,6 +20,7 @@
 ###
 
 taiga = @.taiga
+groupBy = @.taiga.groupBy
 
 module = angular.module("taigaCommon")
 
@@ -27,7 +28,53 @@ module = angular.module("taigaCommon")
 ## User story estimation directive (for Lightboxes)
 #############################################################################
 
-LbUsEstimationDirective = ($rootScope, $repo, $confirm, $template) ->
+LbUsEstimationDirective = ($tgEstimationsService, $rootScope, $repo, $confirm, $template) ->
+    # Display the points of a US and you can edit it.
+    #
+    # Example:
+    #     tg-lb-us-estimation-progress-bar(ng-model="us")
+    #
+    # Requirements:
+    #   - Us object (ng-model)
+    #   - scope.project object
+
+    link = ($scope, $el, $attrs, $model) ->
+        $scope.$watch $attrs.ngModel, (us) ->
+            if us
+                estimationProcess = $tgEstimationsService.create($el, us, $scope.project)
+                estimationProcess.onSelectedPointForRole = (roleId, pointId) ->
+                    $scope.$apply ->
+                        $model.$setViewValue(us)
+
+                estimationProcess.render = () ->
+                    ctx = {
+                        totalPoints: @calculateTotalPoints()
+                        roles: @calculateRoles()
+                        editable: @isEditable
+                    }
+                    mainTemplate = "common/estimation/us-estimation-points-per-role.html"
+                    template = $template.get(mainTemplate, true)
+                    html = template(ctx)
+                    @$el.html(html)
+
+                estimationProcess.render()
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {
+        link: link
+        restrict: "EA"
+        require: "ngModel"
+    }
+
+module.directive("tgLbUsEstimation", ["$tgEstimationsService", "$rootScope", "$tgRepo", "$tgConfirm", "$tgTemplate", LbUsEstimationDirective])
+
+
+#############################################################################
+## User story estimation directive
+#############################################################################
+
+UsEstimationDirective = ($tgEstimationsService, $rootScope, $repo, $confirm, $qqueue, $template) ->
     # Display the points of a US and you can edit it.
     #
     # Example:
@@ -37,91 +84,26 @@ LbUsEstimationDirective = ($rootScope, $repo, $confirm, $template) ->
     #   - Us object (ng-model)
     #   - scope.project object
 
-    mainTemplate = $template.get("common/estimation/us-estimation-points-per-role.html", true)
-    pointsTemplate = $template.get("common/estimation/us-estimation-points.html", true)
-
     link = ($scope, $el, $attrs, $model) ->
-        render = (points) ->
-            totalPoints = calculateTotalPoints(points) or 0
-            computableRoles = _.filter($scope.project.roles, "computable")
+        $scope.$watch $attrs.ngModel, (us) ->
+            if us
+                estimationProcess = $tgEstimationsService.create($el, us, $scope.project)
+                estimationProcess.onSelectedPointForRole = (roleId, pointId) ->
+                    @save(roleId, pointId).then ->
+                        $rootScope.$broadcast("history:reload")
 
-            roles = _.map computableRoles, (role) ->
-                pointId = points[role.id]
-                pointObj = $scope.pointsById[pointId]
+                estimationProcess.render = () ->
+                    ctx = {
+                        totalPoints: @calculateTotalPoints()
+                        roles: @calculateRoles()
+                        editable: @isEditable
+                    }
+                    mainTemplate = "common/estimation/us-estimation-points-per-role.html"
+                    template = $template.get(mainTemplate, true)
+                    html = template(ctx)
+                    @$el.html(html)
 
-                role = _.clone(role, true)
-                role.points = if pointObj? and pointObj.name? then pointObj.name else "?"
-                return role
-
-            ctx = {
-                totalPoints: totalPoints
-                roles: roles
-                editable: true
-            }
-            html = mainTemplate(ctx)
-            $el.html(html)
-
-        renderPoints = (target, usPoints, roleId) ->
-            points = _.map $scope.project.points, (point) ->
-                point = _.clone(point, true)
-                point.selected = if usPoints[roleId] == point.id then false else true
-                return point
-
-            html = pointsTemplate({"points": points, roleId: roleId})
-
-            # Remove any prevous state
-            $el.find(".popover").popover().close()
-            $el.find(".pop-points-open").remove()
-
-            # If not showing role selection let's move to the left
-            if not $el.find(".pop-role:visible").css("left")?
-                $el.find(".pop-points-open").css("left", "110px")
-
-            $el.find(".pop-points-open").remove()
-
-            # Render into DOM and show the new created element
-            $el.find(target).append(html)
-
-            $el.find(".pop-points-open").popover().open(-> $(this).removeClass("active"))
-            $el.find(".pop-points-open").show()
-
-        calculateTotalPoints = (points) ->
-            values = _.map(points, (v, k) -> $scope.pointsById[v]?.value or 0)
-            if values.length == 0
-                return "0"
-            return _.reduce(values, (acc, num) -> acc + num)
-
-        $el.on "click", ".total.clickable", (event) ->
-            event.preventDefault()
-            event.stopPropagation()
-
-            target = angular.element(event.currentTarget)
-            roleId = target.data("role-id")
-
-            points = $model.$modelValue
-            renderPoints(target, points, roleId)
-
-            target.siblings().removeClass('active')
-            target.addClass('active')
-
-        $el.on "click", ".point", (event) ->
-            event.preventDefault()
-            event.stopPropagation()
-
-            target = angular.element(event.currentTarget)
-            roleId = target.data("role-id")
-            pointId = target.data("point-id")
-
-            $el.find(".popover").popover().close()
-
-            points = _.clone($model.$modelValue, true)
-            points[roleId] = pointId
-
-            $scope.$apply ->
-                $model.$setViewValue(points)
-
-        $scope.$watch $attrs.ngModel, (points) ->
-            render(points) if points
+                estimationProcess.render()
 
         $scope.$on "$destroy", ->
             $el.off()
@@ -132,81 +114,46 @@ LbUsEstimationDirective = ($rootScope, $repo, $confirm, $template) ->
         require: "ngModel"
     }
 
-module.directive("tgLbUsEstimation", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgTemplate", LbUsEstimationDirective])
+module.directive("tgUsEstimation", ["$tgEstimationsService", "$rootScope", "$tgRepo", "$tgConfirm", "$tgQqueue", "$tgTemplate",
+                                    UsEstimationDirective])
 
 
 #############################################################################
-## User story estimation directive
+## Estimations service
 #############################################################################
 
-UsEstimationDirective = ($rootScope, $repo, $confirm, $qqueue, $template) ->
-    # Display the points of a US and you can edit it.
-    #
-    # Example:
-    #     tg-us-estimation-progress-bar(ng-model="us")
-    #
-    # Requirements:
-    #   - Us object (ng-model)
-    #   - scope.project object
-
-    mainTemplate = $template.get("common/estimation/us-estimation-points-per-role.html", true)
+EstimationsService = ($template, $qqueue, $repo, $confirm, $q) ->
     pointsTemplate = $template.get("common/estimation/us-estimation-points.html", true)
 
-    link = ($scope, $el, $attrs, $model) ->
-        isEditable = ->
-            return $scope.project.my_permissions.indexOf("modify_us") != -1
+    class EstimationProcess
+        constructor: (@$el, @us, @project) ->
+            @isEditable = @project.my_permissions.indexOf("modify_us") != -1
+            @roles = @project.roles
+            @points = @project.points
+            @pointsById = groupBy(@points, (x) -> x.id)
+            @onSelectedPointForRole =  (roleId, pointId) ->
+            @render = () ->
 
-        render = (us) ->
-            totalPoints = calculateTotalPoints(us.points) or "?"
-            computableRoles = _.filter($scope.project.roles, "computable")
+        save: (roleId, pointId) ->
+            deferred = $q.defer()
+            $qqueue.add () =>
+                onSuccess = =>
+                    deferred.resolve()
+                    $confirm.notify("success")
 
-            roles = _.map computableRoles, (role) ->
-                pointId = us.points[role.id]
-                pointObj = $scope.pointsById[pointId]
+                onError = =>
+                    $confirm.notify("error")
+                    @us.revert()
+                    @render()
+                    deferred.reject()
 
-                role = _.clone(role, true)
-                role.points = if pointObj? and pointObj.name? then pointObj.name else "?"
-                return role
+                $repo.save(@us).then(onSuccess, onError)
 
-            ctx = {
-                totalPoints: totalPoints
-                roles: roles
-                editable: isEditable()
-            }
-            html = mainTemplate(ctx)
-            $el.html(html)
+            return deferred.promise
 
-        renderPoints = (target, us, roleId) ->
-            points = _.map $scope.project.points, (point) ->
-                point = _.clone(point, true)
-                point.selected = if us.points[roleId] == point.id then false else true
-                return point
+        calculateTotalPoints: () ->
+            values = _.map(@us.points, (v, k) => @pointsById[v]?.value)
 
-            html = pointsTemplate({"points": points, roleId: roleId})
-
-            # Remove any prevous state
-            $el.find(".popover").popover().close()
-            $el.find(".pop-points-open").remove()
-
-            # If not showing role selection let's move to the left
-            if not $el.find(".pop-role:visible").css("left")?
-                $el.find(".pop-points-open").css("left", "110px")
-
-            $el.find(".pop-points-open").remove()
-
-            # Render into DOM and show the new created element
-            $el.find(target).append(html)
-
-            $el.find(".pop-points-open").popover().open ->
-                $(this)
-                    .removeClass("active")
-                    .closest("li").removeClass("active")
-
-
-            $el.find(".pop-points-open").show()
-
-        calculateTotalPoints = (points) ->
-            values = _.map(points, (v, k) -> $scope.pointsById[v]?.value)
             if values.length == 0
                 return "0"
 
@@ -216,62 +163,74 @@ UsEstimationDirective = ($rootScope, $repo, $confirm, $qqueue, $template) ->
 
             return _.reduce(notNullValues, (acc, num) -> acc + num)
 
-        save = $qqueue.bindAdd (roleId, pointId) =>
-            $el.find(".popover").popover().close()
+        calculateRoles: () ->
+            computableRoles = _.filter(@project.roles, "computable")
+            roles = _.map computableRoles, (role) =>
+                pointId = @us.points[role.id]
+                pointObj = @pointsById[pointId]
+                role = _.clone(role, true)
+                role.points = if pointObj? and pointObj.name? then pointObj.name else "?"
+                return role
 
-            points = _.clone($model.$modelValue.points, true)
-            points[roleId] = pointId
+            return roles
 
-            us = $model.$modelValue.clone()
-            us.points = points
-            $model.$setViewValue(us)
+        bindClickEvents: =>
+            @$el.on "click", ".total.clickable", (event) =>
+                event.preventDefault()
+                event.stopPropagation()
+                target = angular.element(event.currentTarget)
+                roleId = target.data("role-id")
+                @renderPointsSelector(roleId, target)
+                target.siblings().removeClass('active')
+                target.addClass('active')
 
-            onSuccess = ->
-                $confirm.notify("success")
-                $rootScope.$broadcast("history:reload")
-            onError = ->
-                $confirm.notify("error")
-                us.revert()
-                $model.$setViewValue(us)
+            @$el.on "click", ".point", (event) =>
+                event.preventDefault()
+                event.stopPropagation()
+                target = angular.element(event.currentTarget)
+                roleId = target.data("role-id")
+                pointId = target.data("point-id")
+                @$el.find(".popover").popover().close()
+                points = _.clone(@us.points, true)
+                points[roleId] = pointId
+                @us.points = points
+                @render()
+                @onSelectedPointForRole(roleId, pointId)
 
-            $repo.save(us).then(onSuccess, onError)
+        renderPointsSelector: (roleId, target) ->
+            points = _.map @points, (point) =>
+                point = _.clone(point, true)
+                point.selected = if @us.points[roleId] == point.id then false else true
+                return point
 
-        $el.on "click", ".total.clickable", (event) ->
-            event.preventDefault()
-            event.stopPropagation()
-            return if not isEditable()
+            html = pointsTemplate({"points": points, roleId: roleId})
+            # Remove any previous state
+            @$el.find(".popover").popover().close()
+            @$el.find(".pop-points-open").remove()
+            # Render into DOM and show the new created element
+            if target?
+                @$el.find(target).append(html)
+            else
+                @$el.append(html)
 
-            target = angular.element(event.currentTarget)
-            roleId = target.data("role-id")
+            @$el.find(".pop-points-open").popover().open ->
+                $(this)
+                    .removeClass("active")
+                    .closest("li").removeClass("active")
 
-            us = $model.$modelValue
-            renderPoints(target, us, roleId)
+            @$el.find(".pop-points-open").show()
 
-            target.siblings().removeClass('active')
-            target.addClass('active')
+    create = ($el, us, project) ->
+        estimationProcess = new EstimationProcess($el, us, project)
+        if estimationProcess.isEditable
+            estimationProcess.bindClickEvents()
+        else
+            $el.unbind("click")
 
-        $el.on "click", ".point", (event) ->
-            event.preventDefault()
-            event.stopPropagation()
-            return if not isEditable()
-
-            target = angular.element(event.currentTarget)
-            roleId = target.data("role-id")
-            pointId = target.data("point-id")
-
-            save(roleId, pointId)
-
-        $scope.$watch $attrs.ngModel, (us) ->
-            render(us) if us
-
-        $scope.$on "$destroy", ->
-            $el.off()
+        return estimationProcess
 
     return {
-        link: link
-        restrict: "EA"
-        require: "ngModel"
+        create: create
     }
 
-module.directive("tgUsEstimation", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgQqueue", "$tgTemplate",
-                                    UsEstimationDirective])
+module.factory("$tgEstimationsService", ["$tgTemplate", "$tgQqueue",  "$tgRepo", "$tgConfirm", "$q", EstimationsService])
