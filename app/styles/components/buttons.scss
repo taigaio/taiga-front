@@ -87,6 +87,7 @@
         background: $red;
         color: $white;
     }
+<<<<<<< HEAD
     .icon {
         color: $white;
     }
@@ -99,6 +100,8 @@
         background: $red-light;
         color: $white;
     }
+=======
+>>>>>>> Desfault button refactor
 }
 
 .button-bulk {
@@ -113,6 +116,7 @@
     }
 }
 
+<<<<<<< HEAD
 
 .button-auth {
     @extend %button;
@@ -121,6 +125,12 @@
     img {
         @extend %large;
         color: $white;
+=======
+.button-auth {
+    @extend %button;
+    background: $grayer;
+    .icon {
+>>>>>>> Desfault button refactor
         margin-right: .5rem;
     }
     &:hover {
