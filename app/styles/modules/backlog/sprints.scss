@@ -1,19 +1,17 @@
 .sprints {
     .summary {
-        @include clearfix;
-        background: $gray-light;
-        ul {
-            width: 40%;
-        }
-        li {
-            color: $grayer;
-        }
+        background: darken($whitish, 10%);
+        display: flex;
+        justify-content: space-between;
     }
-    .new-sprint {
-        float: right;
-        .button {
-            padding: .5rem 1.5rem;
-        }
+    .total-sprints {
+        align-items: flex-start;
+        color: $grayer;
+        display: flex;
+    }
+    .add-sprint {
+        margin: 0;
+        padding: .3rem 1.5rem;
     }
     .filter-closed-sprints {
         @extend %small;

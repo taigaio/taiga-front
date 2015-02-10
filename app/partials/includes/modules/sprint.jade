@@ -12,7 +12,7 @@ div.sprint-table
                 span(tg-bo-bind="us.subject")
         div.column-points.width-1(tg-bo-bind="us.total_points", ng-class="{closed: us.is_closed, blocked: us.is_blocked}")
 
-a.button.button-gray(tg-bo-title="'Go to Taskboard of ' + sprint.name",
+a.button-gray(tg-bo-title="'Go to Taskboard of ' + sprint.name",
                      tg-nav="project-taskboard:project=project.slug,sprint=sprint.slug",
                      tg-check-permission="view_milestones")
 

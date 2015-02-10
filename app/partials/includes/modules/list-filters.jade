@@ -1,17 +1,6 @@
 section.list-filters(tg-check-permission="add_issue")
-    ul
-        // li
-        //     a(href="#").active
-        //         span.icon.icon-issues
-        //         | SHOW LIST
-
-        // li
-        //     a(href="#")
-        //         span.icon.icon-graph
-        //         | SHOW GRAPH
-
     div.new-issue
-        a.button.button-green(href="", ng-click="ctrl.addNewIssue()")
+        a.button-green(href="", ng-click="ctrl.addNewIssue()")
             span.text
                 | + NEW ISSUE
         a.button-bulk(href="", ng-click="ctrl.addIssuesInBulk()")
