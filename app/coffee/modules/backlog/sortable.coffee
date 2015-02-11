@@ -58,6 +58,7 @@ BacklogSortableDirective = ($repo, $rs, $rootscope, $tgConfirm) ->
 
             $el.sortable({
                 items: ".us-item-row",
+                cancel: ".popover"
                 connectWith: ".sprint"
                 containment: ".wrapper"
                 dropOnEmpty: true
