@@ -7,6 +7,7 @@
 - ...
 
 ### Misc
+- Plugin based authentication.
 - Added Taiga Style Guide in support Pages to enhance open source design.
 - Lots of small and not so small bugfixes.
 

@@ -100,11 +100,11 @@ a.button-bulk {
         transition: background .3s linear;
     }
 }
-.button-github {
+.button-auth {
     @extend %button;
     background: $grayer;
     vertical-align: middle;
-    .icon {
+    .icon, img {
         @extend %large;
         color: $white;
         margin-right: .5rem;

@@ -197,7 +197,9 @@ LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls, $
                 "password": $el.find("form.login-form input[name=password]").val()
             }
 
-            promise = $auth.login(data)
+            loginFormType = $config.get("loginFormType", "normal")
+
+            promise = $auth.login(data, loginFormType)
             return promise.then(onSuccess, onError)
 
         $el.on "submit", "form", submit

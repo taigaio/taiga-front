@@ -12,6 +12,6 @@ div.login-form-container(tg-login)
         fieldset
             button.button-green.submit-button(type="submit", title="Sign in") Sign in
 
-        fieldset(tg-github-login-button)
+        fieldset(ng-repeat="plugin in contribPlugins|filter:{type: 'auth'}", ng-include="plugin.template")
 
     tg-public-register-message
