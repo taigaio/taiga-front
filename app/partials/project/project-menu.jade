@@ -60,4 +60,4 @@ div(class="menu-container")
                 li
                     a(href="" title="Logout" class="logout") Logout
             a(href="" title="User preferences" class="avatar" id="nav-user-settings")
-                img(src!="<%- user.photo %>" alt!="<%- user.full_name_display %>")
+                img(src!="{{ user.photo }}" alt!="{{ user.full_name_display }}")
