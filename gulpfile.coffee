@@ -1,34 +1,30 @@
 gulp = require("gulp")
 jade = require("gulp-jade")
-gutil = require("gulp-util")
 coffee = require("gulp-coffee")
 concat = require("gulp-concat")
 uglify = require("gulp-uglify")
 plumber = require("gulp-plumber")
 wrap = require("gulp-wrap")
 rename = require("gulp-rename")
-flatten = require('gulp-flatten')
-gulpif = require('gulp-if')
+flatten = require("gulp-flatten")
+gulpif = require("gulp-if")
 replace = require("gulp-replace")
-
-minifyHTML = require("gulp-minify-html")
 sass = require("gulp-ruby-sass")
 csslint = require("gulp-csslint")
 minifyCSS = require("gulp-minify-css")
-watch = require("gulp-watch")
-notify = require("gulp-notify")
 scsslint = require("gulp-scss-lint")
-newer = require("gulp-newer")
 cache = require("gulp-cached")
-jadeInheritance = require('gulp-jade-inheritance')
-sourcemaps = require('gulp-sourcemaps')
+jadeInheritance = require("gulp-jade-inheritance")
+sourcemaps = require("gulp-sourcemaps")
 insert = require("gulp-insert")
-runSequence = require('run-sequence')
-lazypipe = require('lazypipe')
-del = require('del')
-imagemin = require('gulp-imagemin')
-autoprefixer = require('gulp-autoprefixer')
-templateCache = require('gulp-angular-templatecache')
+imagemin = require("gulp-imagemin")
+autoprefixer = require("gulp-autoprefixer")
+templateCache = require("gulp-angular-templatecache")
+changed = require("gulp-changed")
+
+runSequence = require("run-sequence")
+lazypipe = require("lazypipe")
+del = require("del")
 
 mainSass = require("./main-sass").files
 
@@ -36,84 +32,85 @@ paths = {}
 paths.app = "app/"
 paths.dist = "dist/"
 paths.tmp = "tmp/"
-paths.tmpStyles = paths.tmp + "styles/"
-paths.tmpStylesExtras = "#{paths.tmpStyles}/taiga-front-extras/**/*.css"
 paths.extras = "extras/"
 
-paths.jade = "#{paths.app}/**/*.jade"
-
-paths.htmlPartials = [
-    "#{paths.tmp}/partials/**/*.html",
-    "#{paths.tmp}/plugins/**/*.html",
-    "!#{paths.tmp}/partials/{includes,includes/**}"
+paths.jade = [
+    "#{paths.app}**/*.jade",
+    "!#{paths.app}partial/includes/**",
 ]
 
-paths.images = paths.app + "images/**/*"
-paths.svg = paths.app + "svg/**/*"
-paths.css = paths.app + "styles/vendor/*.css"
-paths.locales = paths.app + "locales/**/*.json"
+paths.htmlPartials = [
+    "#{paths.tmp}partials/**/*.html",
+    "#{paths.tmp}plugins/**/*.html"
+]
+
+paths.images = "#{paths.app}images/**/*"
+paths.svg = "#{paths.app}svg/**/*"
+paths.css = "#{paths.app}styles/vendor/*.css"
+paths.locales = "#{paths.app}locales/**/*.json"
+
 paths.sass = [
-    "#{paths.app}/styles/**/*.scss"
-    "#{paths.app}/plugins/**/*.scss"
+    "#{paths.app}**/*.scss"
     "!#{paths.app}/styles/bourbon/**/*.scss"
     "!#{paths.app}/styles/dependencies/**/*.scss"
     "!#{paths.app}/styles/extras/**/*.scss"
 ]
 
-paths.coffee = [
-    paths.app + "coffee/app.coffee",
-    paths.app + "coffee/*.coffee",
-    paths.app + "coffee/modules/controllerMixins.coffee",
-    paths.app + "coffee/modules/*.coffee",
-    paths.app + "coffee/modules/common/*.coffee",
-    paths.app + "coffee/modules/backlog/*.coffee",
-    paths.app + "coffee/modules/taskboard/*.coffee",
-    paths.app + "coffee/modules/kanban/*.coffee",
-    paths.app + "coffee/modules/issues/*.coffee",
-    paths.app + "coffee/modules/userstories/*.coffee",
-    paths.app + "coffee/modules/tasks/*.coffee",
-    paths.app + "coffee/modules/team/*.coffee",
-    paths.app + "coffee/modules/wiki/*.coffee",
-    paths.app + "coffee/modules/admin/*.coffee",
-    paths.app + "coffee/modules/projects/*.coffee",
-    paths.app + "coffee/modules/locales/*.coffee",
-    paths.app + "coffee/modules/base/*.coffee",
-    paths.app + "coffee/modules/resources/*.coffee",
-    paths.app + "coffee/modules/user-settings/*.coffee"
-    paths.app + "coffee/modules/integrations/*.coffee"
-    paths.app + "plugins/**/*.coffee"
-]
+paths.coffee = "#{paths.app}**/*.coffee"
 
 paths.js = [
-    paths.app + "vendor/jquery/dist/jquery.js",
-    paths.app + "vendor/lodash/dist/lodash.js",
-    paths.app + "vendor/emoticons/lib/emoticons.js",
-    paths.app + "vendor/underscore.string/lib/underscore.string.js",
-    paths.app + "vendor/angular/angular.js",
-    paths.app + "vendor/angular-route/angular-route.js",
-    paths.app + "vendor/angular-sanitize/angular-sanitize.js",
-    paths.app + "vendor/angular-animate/angular-animate.js",
-    paths.app + "vendor/i18next/i18next.js",
-    paths.app + "vendor/moment/min/moment-with-langs.js",
-    paths.app + "vendor/checksley/checksley.js",
-    paths.app + "vendor/pikaday/pikaday.js",
-    paths.app + "vendor/jquery-flot/jquery.flot.js",
-    paths.app + "vendor/jquery-flot/jquery.flot.pie.js",
-    paths.app + "vendor/jquery-flot/jquery.flot.time.js",
-    paths.app + "vendor/flot-axislabels/jquery.flot.axislabels.js",
-    paths.app + "vendor/flot.tooltip/js/jquery.flot.tooltip.js",
-    paths.app + "vendor/jquery-textcomplete/jquery.textcomplete.js",
-    paths.app + "vendor/markitup-1x/markitup/jquery.markitup.js",
-    paths.app + "vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js",
-    paths.app + "vendor/raven-js/dist/raven.js",
-    paths.app + "vendor/l.js/l.js",
-    paths.app + "js/jquery.ui.git-custom.js",
-    paths.app + "js/jquery-ui.drag-multiple-custom.js",
-    paths.app + "js/sha1-custom.js",
-    paths.app + "plugins/**/*.js"
+    "#{paths.tmp}coffee/app.js",
+    "#{paths.tmp}coffee/*.js",
+    "#{paths.tmp}coffee/modules/controllerMixins.js",
+    "#{paths.tmp}coffee/modules/*.js",
+    "#{paths.tmp}coffee/modules/common/*.js",
+    "#{paths.tmp}coffee/modules/backlog/*.js",
+    "#{paths.tmp}coffee/modules/taskboard/*.js",
+    "#{paths.tmp}coffee/modules/kanban/*.js",
+    "#{paths.tmp}coffee/modules/issues/*.js",
+    "#{paths.tmp}coffee/modules/userstories/*.js",
+    "#{paths.tmp}coffee/modules/tasks/*.js",
+    "#{paths.tmp}coffee/modules/team/*.js",
+    "#{paths.tmp}coffee/modules/wiki/*.js",
+    "#{paths.tmp}coffee/modules/admin/*.js",
+    "#{paths.tmp}coffee/modules/projects/*.js",
+    "#{paths.tmp}coffee/modules/locales/*.js",
+    "#{paths.tmp}coffee/modules/base/*.js",
+    "#{paths.tmp}coffee/modules/resources/*.js",
+    "#{paths.tmp}coffee/modules/user-settings/*.js",
+    "#{paths.tmp}coffee/modules/integrations/*.js",
+    "#{paths.tmp}plugins/**/*.js"
 ]
 
-isDeploy = process.argv[process.argv.length - 1] == 'deploy'
+paths.libs = [
+    "#{paths.app}vendor/jquery/dist/jquery.js",
+    "#{paths.app}vendor/lodash/dist/lodash.js",
+    "#{paths.app}vendor/emoticons/lib/emoticons.js",
+    "#{paths.app}vendor/underscore.string/lib/underscore.string.js",
+    "#{paths.app}vendor/angular/angular.js",
+    "#{paths.app}vendor/angular-route/angular-route.js",
+    "#{paths.app}vendor/angular-sanitize/angular-sanitize.js",
+    "#{paths.app}vendor/angular-animate/angular-animate.js",
+    "#{paths.app}vendor/i18next/i18next.js",
+    "#{paths.app}vendor/moment/min/moment-with-langs.js",
+    "#{paths.app}vendor/checksley/checksley.js",
+    "#{paths.app}vendor/pikaday/pikaday.js",
+    "#{paths.app}vendor/jquery-flot/jquery.flot.js",
+    "#{paths.app}vendor/jquery-flot/jquery.flot.pie.js",
+    "#{paths.app}vendor/jquery-flot/jquery.flot.time.js",
+    "#{paths.app}vendor/flot-axislabels/jquery.flot.axislabels.js",
+    "#{paths.app}vendor/flot.tooltip/js/jquery.flot.tooltip.js",
+    "#{paths.app}vendor/jquery-textcomplete/jquery.textcomplete.js",
+    "#{paths.app}vendor/markitup-1x/markitup/jquery.markitup.js",
+    "#{paths.app}vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js",
+    "#{paths.app}vendor/raven-js/dist/raven.js",
+    "#{paths.app}vendor/l.js/l.js",
+    "#{paths.app}js/jquery.ui.git-custom.js",
+    "#{paths.app}js/jquery-ui.drag-multiple-custom.js",
+    "#{paths.app}js/sha1-custom.js",
+]
+
+isDeploy = process.argv[process.argv.length - 1] == "deploy"
 
 ############################################################################
 # Layout/CSS Related tasks
@@ -122,14 +119,14 @@ isDeploy = process.argv[process.argv.length - 1] == 'deploy'
 gulp.task "jade", ->
     gulp.src(paths.jade)
         .pipe(plumber())
-        .pipe(cache("jade"))
+        .pipe(changed(paths.tmp, {extension: ".html"}))
         .pipe(jade({pretty: true, locals:{v:(new Date()).getTime()}}))
         .pipe(gulp.dest(paths.tmp))
 
 gulp.task "jade-inheritance", ->
     gulp.src(paths.jade)
         .pipe(plumber())
-        .pipe(cache("jade"))
+        .pipe(changed(paths.tmp, {extension: ".html"}))
         .pipe(jadeInheritance({basedir: "./app/"}))
         .pipe(jade({pretty: true, locals:{v:(new Date()).getTime()}}))
         .pipe(gulp.dest(paths.tmp))
@@ -153,35 +150,35 @@ gulp.task "jade-watch", (cb) ->
 # CSS Related tasks
 ##############################################################################
 
-gulp.task "sass-lint", ->
+gulp.task "scss-lint", ->
     gulp.src(paths.sass.concat("!#{paths.app}/styles/shame/**/*.scss"))
-        .pipe(cache("sasslint"))
+        .pipe(cache("scsslint"))
         .pipe(gulpif(!isDeploy, scsslint({config: "scsslint.yml"})))
 
-gulp.task "sass-compile", ["sass-lint"], ->
+gulp.task "sass-compile", ["scss-lint"], ->
     gulp.src(paths.sass)
         .pipe(plumber())
-        .pipe(cache("scss"))
+        .pipe(changed(paths.tmp, {extension: ".css"}))
         .pipe(insert.prepend('@import "dependencies";'))
         .pipe(sass({
-            'sourcemap=none': true,
+            "sourcemap=none": true,
             loadPath: [
                 "#{paths.app}styles/extras/"
             ]
         }))
-        .pipe(gulp.dest(paths.tmpStyles))
+        .pipe(gulp.dest(paths.tmp))
 
 csslintChannel = lazypipe()
     .pipe(csslint, "csslintrc.json")
     .pipe(csslint.reporter)
 
 gulp.task "css-lint-app", ->
-    gulp.src(mainSass.concat([paths.tmpStylesExtras]))
+    gulp.src(mainSass.concat(["#{paths.tmp}plugins/**/*.css"]))
         .pipe(cache("csslint"))
         .pipe(gulpif(!isDeploy, csslintChannel()))
 
 gulp.task "css-join", ["css-lint-app"], ->
-    gulp.src(mainSass.concat([paths.tmpStylesExtras]))
+    gulp.src(mainSass.concat(["#{paths.tmp}plugins/**/*.css"]))
         .pipe(concat("app.css"))
         .pipe(autoprefixer({
             cascade: false
@@ -195,7 +192,6 @@ gulp.task "css-vendor", ->
     gulp.src(paths.css)
         .pipe(concat("vendor.css"))
         .pipe(gulp.dest(paths.tmp))
-
 
 gulp.task "styles", ["css-app", "css-vendor"], ->
     _paths = [
@@ -231,46 +227,44 @@ gulp.task "locales", ->
 gulp.task "coffee", ->
     gulp.src(paths.coffee)
         .pipe(plumber())
+        .pipe(changed(paths.tmp, {extension: ".js"}))
         .pipe(coffee())
-        .pipe(concat("app.js"))
+        .pipe(gulp.dest(paths.tmp))
+
+gulp.task "plugins-js", ->
+    gulp.src("#{paths.app}plugins/**/*.js")
         .pipe(gulp.dest(paths.tmp))
 
 gulp.task "jslibs-watch", ->
-    gulp.src(paths.js)
+    gulp.src(paths.libs)
         .pipe(plumber())
         .pipe(concat("libs.js"))
         .pipe(gulp.dest(paths.dist + "js/"))
 
 gulp.task "jslibs-deploy", ->
-    gulp.src(paths.js)
+    gulp.src(paths.libs)
         .pipe(plumber())
         .pipe(sourcemaps.init())
         .pipe(concat("libs.js"))
         .pipe(uglify({mangle:false, preserveComments: false}))
-        .pipe(sourcemaps.write('./'))
+        .pipe(sourcemaps.write("./"))
         .pipe(gulp.dest(paths.dist + "js/"))
 
-gulp.task "app-watch", ["coffee", "conf", "locales", "app-loader"], ->
-    _paths = [
-        paths.tmp + "app.js",
-        paths.tmp + "locales.en.js"
-    ]
+gulp.task "app-watch", ["coffee", "plugins-js", "conf", "locales", "app-loader"], ->
+    _paths = paths.js.concat("#{paths.tmp}locales.en.js")
 
     gulp.src(_paths)
         .pipe(concat("app.js"))
         .pipe(gulp.dest(paths.dist + "js/"))
 
-gulp.task "app-deploy", ["coffee", "conf", "locales", "app-loader"], ->
-    _paths = [
-        paths.tmp + "app.js",
-        paths.tmp + "locales.en.js"
-    ]
+gulp.task "app-deploy", ["coffee", "plugins-js", "conf", "locales", "app-loader"], ->
+    _paths = paths.js.concat("#{paths.tmp}locales.en.js")
 
     gulp.src(_paths)
         .pipe(sourcemaps.init())
             .pipe(concat("app.js"))
             .pipe(uglify({mangle:false, preserveComments: false}))
-        .pipe(sourcemaps.write('./'))
+        .pipe(sourcemaps.write("./"))
         .pipe(gulp.dest(paths.dist + "js/"))
 
 ##############################################################################
@@ -278,31 +272,30 @@ gulp.task "app-deploy", ["coffee", "conf", "locales", "app-loader"], ->
 ##############################################################################
 
 # SVG
-gulp.task "copy-svg",  ->
+gulp.task "copy-svg", ->
     gulp.src("#{paths.app}/svg/**/*")
         .pipe(gulp.dest("#{paths.dist}/svg/"))
 
-gulp.task "copy-fonts",  ->
+gulp.task "copy-fonts", ->
     gulp.src("#{paths.app}/fonts/*")
         .pipe(gulp.dest("#{paths.dist}/fonts/"))
 
-gulp.task "copy-images",  ->
+gulp.task "copy-images", ->
     gulp.src("#{paths.app}/images/**/*")
-        .pipe(imagemin({progressive: true}))
+        .pipe(gulpif(isDeploy, imagemin({progressive: true})))
         .pipe(gulp.dest("#{paths.dist}/images/"))
 
     gulp.src("#{paths.app}/plugins/**/images/*")
         .pipe(flatten())
         .pipe(gulp.dest("#{paths.dist}/images/"))
 
-gulp.task "copy-plugin-templates",  ->
+gulp.task "copy-plugin-templates", ->
     gulp.src("#{paths.app}/plugins/**/templates/**/*.html")
         .pipe(gulp.dest("#{paths.dist}/plugins/"))
 
 gulp.task "copy-extras", ->
     gulp.src("#{paths.extras}/*")
         .pipe(gulp.dest("#{paths.dist}/"))
-
 
 gulp.task "copy", ["copy-fonts", "copy-images", "copy-plugin-templates", "copy-svg", "copy-extras"]
 
@@ -335,8 +328,8 @@ gulp.task "watch", ->
     gulp.watch(paths.images, ["copy-images"])
     gulp.watch(paths.fonts, ["copy-fonts"])
 
-# Remove the tmp directory
-del.sync(paths.tmp)
+if isDeploy
+    del.sync(paths.tmp)
 
 gulp.task "deploy", [
     "copy",
