@@ -517,7 +517,7 @@ KanbanUserDirective = ($log) ->
             html = template(ctx)
             $el.html(html)
             username_label = $el.parent().find("a.task-assigned")
-            username_label.html(ctx.name)
+            username_label.text(ctx.name)
             username_label.on "click", (event) ->
                 if $el.find("a").hasClass("noclick")
                     return
