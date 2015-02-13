@@ -28,17 +28,26 @@
                 margin-right: .5rem;
             }
         }
+        // TODO: This should change when public projects available
         label {
             @extend %title;
-            background: $white;
-            border: 1px solid $whitish;
-            cursor: pointer;
+            border: 1px solid $gray-light;
+            cursor: not-allowed;
             display: block;
             text-align: center;
+            transition: all .2s linear;
+            span {
+                color: $gray-light;
+            }
+            // &:hover {
+            //     border: 1px solid $fresh-taiga;
+            // }
         }
-        input {
-            &:checked+label {
-                background: $fresh-taiga;
+        input:checked+label {
+            background: $fresh-taiga;
+            border: 1px solid $fresh-taiga;
+            cursor: default;
+            span {
                 color: $white;
             }
         }

@@ -41,10 +41,12 @@ div.wrapper(tg-project-profile, ng-controller="ProjectProfileController as ctrl"
                 div.privacy-settings
                     div
                         input.hidden(type="radio", disabled="disabled")
-                        label.button(for="public-project") Public Project
+                        label.trans-button(for="public-project")
+                            span Public Project
                     div
                         input.hidden(type="radio", checked="checked", disabled="disabled")
-                        label.button(for="private-project") Private Project
+                        label.trans-button(for="private-project")
+                            span Private Project
 
                 p All projects are private during Taiga's beta period.
 
