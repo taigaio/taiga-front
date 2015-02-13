@@ -24,13 +24,13 @@ form
     div.settings
         fieldset.iocaine-flag(title="Feeling a bit overwhelmed by a task? Make sure others know about it by clicking on Iocaine when editing a task. It's possible to become immune to this (fictional) deadly poison by consuming small amounts over time just as it's possible to get better at what you do by occasionally taking on extra challenges!")
             input(type="checkbox", ng-model="task.is_iocaine", name="iocaine-task", id="iocaine-task", ng-value="true")
-            label.iocaine(for="iocaine-task")
+            label.iocaine.trans-button(for="iocaine-task")
                 span.icon.icon-iocaine(for="iocaine-task icon-iocaine")
                 span Iocaine
 
         fieldset.blocking-flag
             input(type="checkbox", ng-model="task.is_blocked", name="blocked-task", id="blocked-task", ng-value="true")
-            label.blocked(for="blocked-task", tr="common.blocked")
+            label.blocked.trans-button(for="blocked-task", tr="common.blocked")
 
     tg-blocking-message-input(watch="task.is_blocked", ng-model="task.blocked_note")
 
