@@ -2,27 +2,6 @@
     @extend %lightbox;
 }
 
-.markdown-preview {
-    display: inline-block;
-    margin-bottom: .5rem;
-    a {
-        @extend %button;
-        @extend %small;
-        color: $gray-light;
-        padding: 3px 20px;
-        &:first-child {
-            border-right: 1px solid $gray-light;
-        }
-        &:hover {
-            color: $grayer;
-            transition: color .2s linear;
-        }
-    }
-    .active {
-        color: $grayer;
-    }
-}
-
 .lightbox-generic-form {
     form {
         flex-basis: 600px;
@@ -41,7 +20,6 @@
     }
 
     label {
-        @extend %button;
         border: 1px solid $gray-light;
         color: $grayer;
         cursor: pointer;

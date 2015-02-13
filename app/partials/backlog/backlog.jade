@@ -9,16 +9,17 @@ div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
             div.burndown(tg-gm-backlog-graph)
                 include ../includes/modules/burndown
         div.backlog-menu
-            a.trans-button.move-to-current-sprint(href="", title="Move to Current Sprint",
-                                                  id="move-to-current-sprint")
-                span.icon.icon-move
-                span.text Move to current Sprint
-            a.trans-button(href="", title="Show Filters", id="show-filters-button")
-                span.icon.icon-filter
-                span.text Show Filters
-            a.trans-button(href="", title="Show Tags", id="show-tags")
-                span.icon.icon-tag
-                span.text Show Tags
+            div.backlog-table-options
+                a.trans-button.move-to-current-sprint(href="", title="Move to Current Sprint",
+                                                      id="move-to-current-sprint")
+                    span.icon.icon-move
+                    span.text Move to current Sprint
+                a.trans-button(href="", title="Show Filters", id="show-filters-button")
+                    span.icon.icon-filter
+                    span.text Show Filters
+                a.trans-button(href="", title="Show Tags", id="show-tags")
+                    span.icon.icon-tag
+                    span.text Show Tags
             include ../includes/components/addnewus
         section.backlog-table(ng-class="{'hidden': !visibleUserstories.length}")
             include ../includes/modules/backlog-table

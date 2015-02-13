@@ -61,31 +61,6 @@
     }
 }
 
-.loading-spinner {
-    @extend %loading-spinner;
-}
-
-%button {
-    @extend %medium;
-    @extend %title;
-    display: inline-block;
-    padding: 7px 40px 6px;
-    transition: background .3s linear;
-    text-transform: uppercase;
-    &:hover {
-        transition: background .3s linear;
-    }
-    &.loading {
-        span {
-            animation: loading .5s linear;
-            animation: spin 1s linear infinite;
-        }
-    }
-    .icon {
-        margin-right: .3rem;
-    }
-}
-
 // Background
 %triangled-bg {
     background: url('/images/bg.png') no-repeat center center;
@@ -104,4 +79,8 @@
     max-height: 1rem;
     max-width: 1rem;
     transform-origin: 32 32;
+}
+
+.loading-spinner {
+    @extend %loading-spinner;
 }

@@ -3,16 +3,16 @@ div.summary
 
     div.data
         span.number(ng-bind="stats.completedPercentage + '%'")
-    ul
-        li
-            span.number(ng-bind="stats.total_points") --
-            span.description project<br />points
-        li
-            span.number(ng-bind="stats.defined_points") --
-            span.description defined<br />points
-        li
-            span.number(ng-bind="stats.closed_points") --
-            span.description closed<br />points
-        li
-            span.number(ng-bind="stats.speed | number:0") --
-            span.description points /<br />sprint
+
+    div.summary-stats
+        span.number(ng-bind="stats.total_points") --
+        span.description project<br />points
+    div.summary-stats
+        span.number(ng-bind="stats.defined_points") --
+        span.description defined<br />points
+    div.summary-stats
+        span.number(ng-bind="stats.closed_points") --
+        span.description closed<br />points
+    div.summary-stats
+        span.number(ng-bind="stats.speed | number:0") --
+        span.description points /<br />sprint
