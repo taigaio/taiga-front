@@ -53,11 +53,11 @@
             flex-grow: 10;
         }
         .status {
-            flex-basis: 10%;
+            flex-basis: 100px;
         }
         .assigned-to {
             cursor: pointer;
-            flex-basis: 10%;
+            flex-basis: 150px;
         }
     }
     .related-task-create-form {
