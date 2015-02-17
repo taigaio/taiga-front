@@ -213,10 +213,10 @@
         margin-bottom: .5rem;
     }
     .activity-user {
-        flex-basis: 50px;
-        flex-grow: 1;
+        flex-basis: 60px;
+        flex-shrink: 0;
+        margin-right: 1rem;
         img {
-            max-width: 70px;
             width: 100%;
         }
     }
@@ -224,10 +224,9 @@
         color: $green-taiga;
         margin-bottom: .5rem;
     }
-
     .activity-content {
-        flex-basis: 150px;
-        flex-grow: 20;
+        flex-shrink: 0;
+        max-width: calc(100% - 80px);
     }
     .changes {
         background: $whitish;
