@@ -245,8 +245,9 @@ EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $
             # not the currentTarget
             target = angular.element(event.target)
             return if not isEditable()
-            return if target.is('a')
+            return if target.is('a', '.codehilite', 'pre')
             return if getSelectedText()
+            return if event.button == 2
             if target.is('pre')
                 prevPos = target.data("scroll-pos")
                 target.data("scroll-pos", null)
