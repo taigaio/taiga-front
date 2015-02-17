@@ -48,13 +48,18 @@
         line-height: 1.4rem;
         margin-bottom: 1rem;
     }
+    .codehilite {
+        overflow: auto;
+    }
     pre,
     code {
         @extend %small;
-        background: $whitish;
+        background: lighten($grayer, 10%);
+        color: $whitish;
         direction: ltr;
         font-family: 'courier new', 'monospace';
         margin-bottom: 1rem;
+        overflow: auto;
         unicode-bidi: embed;
         white-space: pre;
     }
