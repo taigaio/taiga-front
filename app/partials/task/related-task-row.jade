@@ -1,7 +1,7 @@
 div(class="tasks")
     div(class="task-name")
         span(class="icon icon-iocaine")
-        a(tg-nav="project-tasks-detail:project=project.slug,ref=task.ref" title!="<%- task.ref %> <%- task.subject %>" class="clickable")
+        a(tg-nav="project-tasks-detail:project=project.slug,ref=task.ref" title!="#<%- task.ref %> <%- task.subject %>" class="clickable")
             span #<%- task.ref %>&nbsp; 
             span <%- task.subject %>
         div(class="task-settings")
