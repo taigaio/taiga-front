@@ -11,8 +11,7 @@
 <% if(watcher) { %>
 .watcher-single
     .watcher-avatar
-        span.avatar(title!="<%- watcher.full_name_display %>")
-            img(src!="<%- watcher.photo %>" alt!="<%- watcher.full_name_display %>")
+        img(src!="<%- watcher.photo %>" alt!="<%- watcher.full_name_display %>")
     .watcher-name
         span <%- watcher.full_name_display %>
 
