@@ -35,6 +35,9 @@ div.wrapper(ng-controller="IssueDetailController as ctrl",
 
         section.duty-content(tg-editable-description, ng-model="issue", required-perm="modify_issue")
 
+        // Custom Fields
+        tg-custom-attributes-values(ng-model="issue", type="issue", project="project", required-edition-perm="modify_issue")
+
         tg-attachments(ng-model="issue", type="issue")
         tg-history(ng-model="issue", type="issue")
 

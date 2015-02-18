@@ -1,0 +1,14 @@
+form.custom-field-single
+    div.custom-field-data
+        label.custom-field-name(for="custom-field-description")
+            <%- name %>
+        <% if (description){ %>
+        span.custom-field-description
+            <%- description %>
+        <% } %>
+
+    div.custom-field-value
+        input#custom-field-description(name="description", type="text", placeholder!="<%- value %>")
+
+    div.custom-field-options
+        a.icon.icon-floppy(href="", title="Save Custom Field")
