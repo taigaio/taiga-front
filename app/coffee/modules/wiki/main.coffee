@@ -159,9 +159,6 @@ WikiSummaryDirective = ($log, $template) ->
             return if not wikiPage
             render(wikiPage)
 
-        $scope.$on "wiki:edit", (event, wikiPage) ->
-            render(wikiPage)
-
         $scope.$on "$destroy", ->
             $el.off()
 
@@ -215,8 +212,7 @@ EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $
                 if not wiki.id?
                     $analytics.trackEvent("wikipage", "create", "create wiki page", 1)
 
-                $model.$modelValue = wikiPage
-                $scope.$broadcast("wiki:edit", wikiPage)
+                $model.$setViewValue wikiPage
 
                 $confirm.notify("success")
                 switchToReadMode()
