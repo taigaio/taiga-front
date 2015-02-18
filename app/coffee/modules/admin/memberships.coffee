@@ -307,7 +307,7 @@ MembershipsRowRoleSelectorDirective = ($log, $repo, $confirm) ->
         member = $scope.$eval($attrs.tgMembershipsRowRoleSelector)
         html = render(member)
 
-        $el.on "click", "select", (event) =>
+        $el.on "change", "select", (event) =>
             onSuccess = ->
                 $confirm.notify("success")
 
