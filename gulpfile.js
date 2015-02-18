@@ -32,13 +32,13 @@ paths.tmp = "tmp/";
 paths.extras = "extras/";
 
 paths.jade = [
-    paths.app + "**/*.jade",
-    "!" + paths.app + "partial/includes/**",
+    paths.app + "**/*.jade"
 ];
 
 paths.htmlPartials = [
     paths.tmp + "partials/**/*.html",
-    paths.tmp + "plugins/**/*.html"
+    paths.tmp + "plugins/**/*.html",
+    "!" + paths.tmp + "partials/includes/**/*.html"
 ];
 
 paths.images = paths.app + "images/**/*";
@@ -115,20 +115,22 @@ var isDeploy = process.argv[process.argv.length - 1] == "deploy";
 ##############################################################################
 */
 
+var jadeIncludes = paths.app +'partials/includes/**/*';
+
 gulp.task("jade", function() {
     return gulp.src(paths.jade)
         .pipe(plumber())
         .pipe(cached("jade"))
-        .pipe(cache(jade({pretty: true, locals:{v:(new Date()).getTime()}})))
+        .pipe(jade({pretty: true, locals:{v:(new Date()).getTime()}}))
         .pipe(gulp.dest(paths.tmp));
 });
 
 gulp.task("jade-inheritance", function() {
     return gulp.src(paths.jade)
         .pipe(plumber())
-        .pipe(cached('jade'))
+        .pipe(cached("jade"))
         .pipe(jadeInheritance({basedir: "./app/"}))
-        .pipe(cache(jade({pretty: true, locals:{v:(new Date()).getTime()}})))
+        .pipe(jade({pretty: true, locals:{v:(new Date()).getTime()}}))
         .pipe(gulp.dest(paths.tmp));
 });
 
