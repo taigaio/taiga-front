@@ -1,4 +1,4 @@
-ul.popover.pop-points-open
+ul.popover.pop-points-open(class!="<% if (horizontal) { %>horizontal<% }; %>")
     <% _.each(points, function(point) { %>
     li
         <% if (point.selected) { %>

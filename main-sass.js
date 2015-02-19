@@ -56,6 +56,7 @@ exports.files = function () {
         'components/beta',
         'components/markitup',
         'components/markdown-help',
+        'components/popover-points',
 
 
         //#################################################
