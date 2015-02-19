@@ -62,7 +62,7 @@ taiga.PageMixin = PageMixin
 #############################################################################
 ## Filters Mixin
 #############################################################################
-# This mixin requires @location ($tgLocation) and @scope
+# This mixin requires @location ($tgLocation), and @scope
 
 class FiltersMixin
     selectFilter: (name, value, load=false) ->
@@ -73,16 +73,19 @@ class FiltersMixin
             existing = _.compact(existing)
             value = joinStr(",", _.uniq(existing))
 
-        location = if load then @location else @location.noreload(@scope)
-        location.search(name, value)
+        if !@location.isInCurrentRouteParams(name, value)
+            location = if load then @location else @location.noreload(@scope)
+            location.search(name, value)
 
     replaceFilter: (name, value, load=false) ->
-        location = if load then @location else @location.noreload(@scope)
-        location.search(name, value)
+        if !@location.isInCurrentRouteParams(name, value)
+            location = if load then @location else @location.noreload(@scope)
+            location.search(name, value)
 
     replaceAllFilters: (filters, load=false) ->
-        location = if load then @location else @location.noreload(@scope)
-        location.search(filters)
+        if !@location.isInCurrentRouteParams(name, value)
+            location = if load then @location else @location.noreload(@scope)
+            location.search(filters)
 
     unselectFilter: (name, value, load=false) ->
         params = @location.search()
