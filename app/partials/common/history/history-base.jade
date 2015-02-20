@@ -11,13 +11,13 @@ section.history
     section.history-comments
         .comments-list
         div(tg-check-permission!="modify_<%- type %>", tg-toggle-comment, class="add-comment")
-            textarea(placeholder="Type a new comment here",
-                ng-model!="<%- ngmodel %>.comment", tg-markitup="tg-markitup")
+            textarea(placeholder="Type a new comment here", ng-model!="<%- ngmodel %>.comment", tg-markitup="tg-markitup")
             <% if (mode !== "edit") { %>
             a(class="help-markdown", href="https://taiga.io/support/taiga-markdown-syntax/", target="_blank", title="Mardown syntax help")
                 span.icon.icon-help
                 span Markdown syntax help
-            a(href="", title="Comment", class="button button-green save-comment") Comment
+            a(href="", title="Comment", class="button button-green save-comment")
+                span Comment
             <% } %>
     section.history-activity.hidden
         .changes-list
