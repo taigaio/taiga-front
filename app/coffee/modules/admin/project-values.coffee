@@ -218,7 +218,7 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame) ->
 
         $el.on "click", ".delete-new", (event) ->
             event.preventDefault()
-            $el.find(".new-value").hide()
+            $el.find(".new-value").addClass("hidden")
             initializeNewValue()
 
         $el.on "click", ".edit-value", (event) ->
