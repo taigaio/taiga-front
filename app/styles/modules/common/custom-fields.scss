@@ -23,17 +23,18 @@
         @include slide(1000px, hidden, $min: 0);
     }
     .custom-field-single {
-        align-content: center;
-        align-items: center;
         border-bottom: 1px solid $whitish;
         display: flex;
         padding: 1rem;
-        &:last-child {
-            border-bottom: 0;
-        }
         &:hover {
             .custom-field-options {
                 opacity: 1;
+            }
+        }
+        &.editable {
+            .custom-field-options {
+                align-items: center;
+                display: flex;
             }
         }
         .custom-field-options {
@@ -63,7 +64,7 @@
     }
     .custom-field-value {
         flex: 1;
-        padding-right: 2rem;
+        padding: 0 1rem 0 2rem;
     }
     form {
         label {
