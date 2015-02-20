@@ -4,23 +4,31 @@
         max-width: 700px;
         width: 100%;
     }
-    input,
-    textarea {
-        @extend %title;
-    }
     fieldset {
         margin-bottom: 1rem;
+    }
+    .contrib-input {
+        flex: 1;
+    }
+    .contrib-test {
+        flex-basis: 7.5rem;
+        display: flex;
+        align-items: flex-end;
+        margin-left: .5rem;
+        text-align: center;
+        a {
+            padding: 0.6rem 2.5rem;
+        }
     }
     label {
         @extend %title;
         display: block;
         margin-bottom: .2rem;
     }
-    textarea {
-        height: 10rem;
+    .contrib-form-wrapper {
+        display: flex;
     }
-    .button-green {
-        color: $white;
+    .submit-button {
         display: block;
         text-align: center;
     }
