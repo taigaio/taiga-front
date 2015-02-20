@@ -145,7 +145,6 @@ CustomAttributeValueDirective = ($template, $selectedText) ->
 
         saveAttributeValue = ->
             attributeValue.value = $el.find("input").val()
-            $el.find('.custom-field-single').removeClass('editable')
 
             $scope.$apply ->
                 $ctrl.updateAttributeValue(attributeValue).then ->
@@ -168,7 +167,6 @@ CustomAttributeValueDirective = ($template, $selectedText) ->
             event.preventDefault()
             render(attributeValue, true)
             $el.find("input[name='description']").focus().select()
-            $el.find('.custom-field-single').addClass('editable')
 
         ## Actions (on edit mode)
         submit = debounce 2000, (event) =>
