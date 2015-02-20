@@ -116,21 +116,22 @@ CustomAttributesValuesDirective = ($templates, $storage) ->
 module.directive("tgCustomAttributesValues", ["$tgTemplate", "$tgStorage", CustomAttributesValuesDirective])
 
 
-CustomAttributeValueDirective = ($template) ->
+CustomAttributeValueDirective = ($template, $selectedText) ->
     template = $template.get("custom-attributes/custom-attribute-value.html", true)
     templateEdit = $template.get("custom-attributes/custom-attribute-value-edit.html", true)
 
     link = ($scope, $el, $attrs, $ctrl) ->
         render = (attributeValue, edit=false) ->
+            value = attributeValue.value
             ctx = {
                 id: attributeValue.id
                 name: attributeValue.name
                 description: attributeValue.description
-                value: attributeValue.value
+                value: value
                 isEditable: isEditable()
             }
 
-            if edit
+            if edit or not value
                 html = templateEdit(ctx)
             else
                 html = template(ctx)
@@ -158,6 +159,7 @@ CustomAttributeValueDirective = ($template) ->
         ## Actions (on view mode)
         $el.on "click", ".custom-field-value.read-mode", ->
             return if not isEditable()
+            return if $selectedText.get().length
             render(attributeValue, true)
             $el.find("input[name='description']").focus().select()
 
@@ -187,4 +189,4 @@ CustomAttributeValueDirective = ($template) ->
         restrict: "AE"
     }
 
-module.directive("tgCustomAttributeValue", ["$tgTemplate", CustomAttributeValueDirective])
+module.directive("tgCustomAttributeValue", ["$tgTemplate", "$selectedText", CustomAttributeValueDirective])

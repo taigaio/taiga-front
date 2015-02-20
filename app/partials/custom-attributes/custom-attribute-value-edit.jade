@@ -8,7 +8,7 @@ form.custom-field-single
         <% } %>
 
     div.custom-field-value
-        input#custom-field-description(name="description", type="text", placeholder!="<%- value %>")
+        input#custom-field-description(name="description", type="text", value!="<%- value %>")
 
     div.custom-field-options
         a.icon.icon-floppy(href="", title="Save Custom Field")
