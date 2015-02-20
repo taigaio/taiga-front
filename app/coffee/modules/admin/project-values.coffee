@@ -149,15 +149,7 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame) ->
             if focus
                 $(".new-value input").focus()
 
-        submit = debounce 2000, =>
-            promise = $repo.save($scope.project)
-            promise.then ->
-                $confirm.notify("success")
-
-            promise.then null, (data) ->
-                $confirm.notify("error", data._error_message)
-
-        saveValue = debounce 2000, (target) ->
+        saveValue = (target) ->
             form = target.parents("form").checksley()
             return if not form.validate()
 
@@ -180,14 +172,6 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame) ->
                 value.revert()
                 row.siblings(".visualization").removeClass('hidden')
 
-        $el.on "submit", "form", (event) ->
-            event.preventDefault()
-            submit()
-
-        $el.on "click", "form a.button-green", (event) ->
-            event.preventDefault()
-            submit()
-
         $el.on "click", ".show-add-new", (event) ->
             event.preventDefault()
             $el.find(".new-value").removeClass('hidden')
@@ -204,12 +188,11 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame) ->
             $scope.newValue.order = if $scope.maxValueOrder then $scope.maxValueOrder + 1 else 1
 
             promise = $repo.create(valueType, $scope.newValue)
-            promise.then =>
-                $ctrl.loadValues().then ->
-                    animationFrame.add () ->
-                         goToBottomList()
-
+            promise.then (data) =>
                 $el.find(".new-value").addClass("hidden")
+
+                $scope.values.push(data)
+                $scope.maxValueOrder = data.order
                 initializeNewValue()
 
             promise.then null, (data) ->
