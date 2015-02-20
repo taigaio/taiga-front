@@ -72,7 +72,8 @@ class CustomAttributesValuesController extends taiga.Controller
 
 CustomAttributesValuesDirective = ($templates, $storage) ->
     template = $templates.get("custom-attributes/custom-attributes-values.html", true)
-    collapsedHash = generateHash(["custom-attributes-collapsed"])
+    collapsedHash = (type) ->
+        return generateHash(["custom-attributes-collapsed", type])
 
     link = ($scope, $el, $attrs, $ctrls) ->
         $ctrl = $ctrls[0]
@@ -83,8 +84,9 @@ CustomAttributesValuesDirective = ($templates, $storage) ->
             $ctrl.loadCustomAttributesValues()
 
         $el.on "click", ".custom-fields-header a", ->
-            collapsed = not($storage.get(collapsedHash) or false)
-            $storage.set(collapsedHash, collapsed)
+            hash = collapsedHash($attrs.type)
+            collapsed = not($storage.get(hash) or false)
+            $storage.set(hash, collapsed)
             if collapsed
                 $el.find(".custom-fields-header a").removeClass("open")
                 $el.find(".custom-fields-body").removeClass("open")
@@ -96,7 +98,7 @@ CustomAttributesValuesDirective = ($templates, $storage) ->
             $el.off()
 
     templateFn = ($el, $attrs) ->
-        collapsed = $storage.get(collapsedHash) or false
+        collapsed = $storage.get(collapsedHash($attrs.type)) or false
 
         return template({
             requiredEditionPerm: $attrs.requiredEditionPerm
