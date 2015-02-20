@@ -126,7 +126,7 @@ exports.files = function () {
         'modules/admin/admin-membership-table',
         'modules/admin/admin-project-profile',
         'modules/admin/default-values',
-        'modules/admin/admin-custom-fields',
+        'modules/admin/admin-custom-attributes',
         'modules/admin/project-values',
         'modules/admin/third-parties',
         'modules/admin/admin-third-parties-webhooks',
