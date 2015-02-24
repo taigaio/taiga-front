@@ -23,24 +23,26 @@ section.custom-fields-table.basic-table
 
                 div.row.single-custom-field.js-edit-custom-field.hidden
                     fieldset.custom-name
-                        input(type="text", placeholder="Set your custom field name", ng-model="attr.name",
-                              data-required="true" data-maxlength="64")
+                        input(type="text", name="name", placeholder="Set your custom field name",
+                              ng-model="attr.name", data-required="true" data-maxlength="64")
                     fieldset.custom-description
-                        input(type="text", placeholder="Set your custom field description", ng-model="attr.description")
+                        input(type="text", name="description", placeholder="Set your custom field description",
+                              ng-model="attr.description")
 
                     fieldset.custom-options
                         div.custom-options-wrapper
                             a.js-update-custom-field-button.icon.icon-floppy(href="", title="Update Custom Field")
                             a.js-cancel-edit-custom-field-button.icon.icon-delete(href="", title="Cancel edition")
 
-        form.row.single-custom-field.js-new-custom-field.hidden(tg-new-custom-attribute)
+        form.row.single-custom-field.js-new-custom-field.hidden
             fieldset.custom-name
-                input(type="text", placeholder="Set your custom field name", ng-model="newAttr.name",
-                      data-required="true", data-maxlength="64")
+                input(type="text", name="name", placeholder="Set your custom field name",
+                      ng-model="newAttr.name", data-required="true", data-maxlength="64")
             fieldset.custom-description
-                input(type="text", placeholder="Set your custom field description", ng-model="newAttr.description")
+                input(type="text", name="description", placeholder="Set your custom field description",
+                      ng-model="newAttr.description")
 
             fieldset.custom-options
                 div.custom-options-wrapper
-                    a.js-save-custom-field-button.icon.icon-floppy(href="", title="Save Custom Field")
+                    a.js-create-custom-field-button.icon.icon-floppy(href="", title="Save Custom Field")
                     a.js-cancel-new-custom-field-button.icon.icon-delete(href="", title="Cancel creation")

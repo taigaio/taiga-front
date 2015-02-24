@@ -369,7 +369,6 @@ class ProjectCustomAttributesController extends mixOf(taiga.Controller, taiga.Pa
             @scope.$emit('project:loaded', project)
             return project
 
-
     #########################
     # Custom Attribute
     #########################
@@ -380,6 +379,14 @@ class ProjectCustomAttributesController extends mixOf(taiga.Controller, taiga.Pa
             @scope.maxOrder = _.max(customAttributes, "order").order
             return customAttributes
 
+    createCustomAttribute: (attrValues) =>
+        return @repo.create("custom-attributes/#{@scope.type}", attrValues)
+
+    saveCustomAttribute: (attrModel) =>
+        return @repo.save(attrModel)
+
+    deleteCustomAttribute: (attrModel) =>
+        return @repo.remove(attrModel)
 
     moveCustomAttributes: (attrModel, newIndex) =>
         customAttributes = @scope.customAttributes
@@ -392,11 +399,6 @@ class ProjectCustomAttributesController extends mixOf(taiga.Controller, taiga.Pa
 
         @repo.saveAll(customAttributes)
 
-    deleteCustomAttribute: (attrModel) =>
-        return @repo.remove(attrModel)
-
-    saveCustomAttribute: (attrModel) =>
-        return @repo.save(attrModel)
 
 module.controller("ProjectCustomAttributesController", ProjectCustomAttributesController)
 
@@ -434,6 +436,88 @@ ProjectCustomAttributesDirective = ($log, $confirm, animationFrame) ->
         # New custom attribute
         ##################################
 
+        showCreateForm = ->
+            $el.find(".js-new-custom-field").removeClass("hidden")
+
+        hideCreateForm = ->
+            $el.find(".js-new-custom-field").addClass("hidden")
+
+        showAddButton = ->
+            $el.find(".js-add-custom-field-button").removeClass("hidden")
+
+        hideAddButton = ->
+            $el.find(".js-add-custom-field-button").addClass("hidden")
+
+        showCancelButton = ->
+            $el.find(".js-cancel-new-custom-field-button").removeClass("hidden")
+
+        hideCancelButton = ->
+            $el.find(".js-cancel-new-custom-field-button").addClass("hidden")
+
+        resetNewAttr = ->
+            $scope.newAttr = {}
+
+        create = (formEl) ->
+            form = formEl.checksley()
+            return if not form.validate()
+
+            onSucces = =>
+                $ctrl.loadCustomAttributes()
+                hideCreateForm()
+                resetNewAttr()
+                $confirm.notify("success")
+
+            onError = (data) =>
+                form.setErrors(data)
+                $confirm.notify("error")
+
+            attr = $scope.newAttr
+            attr.project = $scope.projectId
+            attr.order = if $scope.maxOrder then $scope.maxOrder + 1 else 1
+
+            $ctrl.createCustomAttribute(attr).then(onSucces, onError)
+
+        cancelCreate = ->
+            hideCreateForm()
+            resetNewAttr()
+
+        $scope.$watch "customAttributes", (customAttributes) ->
+            return if not customAttributes
+
+            if customAttributes.length == 0
+                hideCancelButton()
+                hideAddButton()
+                showCreateForm()
+            else
+                hideCreateForm()
+                showAddButton()
+                showCancelButton()
+
+        $el.on "click", ".js-add-custom-field-button", (event) ->
+            event.preventDefault()
+
+            showCreateForm()
+
+        $el.on "click", ".js-create-custom-field-button", debounce 2000, (event) ->
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+            formEl = target.closest("form")
+
+            create(formEl)
+
+        $el.on "click", ".js-cancel-new-custom-field-button", (event) ->
+            event.preventDefault()
+
+            cancelCreate()
+
+        $el.on "keyup", ".js-new-custom-field input", (event) ->
+            if event.keyCode == 13 # Enter
+                target = angular.element(event.currentTarget)
+                formEl = target.closest("form")
+                create(formEl)
+            else if event.keyCode == 27 # Esc
+                cancelCreate()
+
         ##################################
         # Edit custom attribute
         ##################################
@@ -451,16 +535,24 @@ ProjectCustomAttributesDirective = ($log, $confirm, animationFrame) ->
                 formEl.scope().attr.revert()
 
         update = (formEl) ->
-            onSucces = ->
+            form = formEl.checksley()
+            return if not form.validate()
+
+            onSucces = =>
                 $ctrl.loadCustomAttributes()
                 hideEditForm(formEl)
                 $confirm.notify("success")
 
-            onError = ->
+            onError = (data) =>
+                form.setErrors(data)
                 $confirm.notify("error")
 
             attr = formEl.scope().attr
             $ctrl.saveCustomAttribute(attr).then(onSucces, onError)
+
+        cancelUpdate = (formEl) ->
+            hideEditForm(formEl)
+            revertChangesInCustomAttribute(formEl)
 
         $el.on "click", ".js-edit-custom-field-button", (event) ->
             event.preventDefault()
@@ -469,20 +561,29 @@ ProjectCustomAttributesDirective = ($log, $confirm, animationFrame) ->
 
             showEditForm(formEl)
 
-        $el.on "click", ".js-cancel-edit-custom-field-button", (event) ->
-            event.preventDefault()
-            target = angular.element(event.currentTarget)
-            formEl = target.closest("form")
-
-            hideEditForm(formEl)
-            revertChangesInCustomAttribute(formEl)
-
-        $el.on "click", ".js-update-custom-field-button", (event) ->
+        $el.on "click", ".js-update-custom-field-button", debounce 2000, (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
             formEl = target.closest("form")
 
             update(formEl)
+
+        $el.on "click", ".js-cancel-edit-custom-field-button", (event) ->
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+            formEl = target.closest("form")
+
+            cancelUpdate(formEl)
+
+        $el.on "keyup", ".js-edit-custom-field input", (event) ->
+            if event.keyCode == 13 # Enter
+                target = angular.element(event.currentTarget)
+                formEl = target.closest("form")
+                update(formEl)
+            else if event.keyCode == 27 # Esc
+                target = angular.element(event.currentTarget)
+                formEl = target.closest("form")
+                cancelUpdate(formEl)
 
         ##################################
         # Delete custom attribute
@@ -504,7 +605,7 @@ ProjectCustomAttributesDirective = ($log, $confirm, animationFrame) ->
 
                 $ctrl.deleteCustomAttribute(attr).then(onSucces, onError)
 
-        $el.on "click", ".js-delete-custom-field-button", (event) ->
+        $el.on "click", ".js-delete-custom-field-button", debounce 2000, (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
             formEl = target.closest("form")
