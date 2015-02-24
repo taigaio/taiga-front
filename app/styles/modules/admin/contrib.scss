@@ -11,13 +11,13 @@
         flex: 1;
     }
     .contrib-test {
-        flex-basis: 7.5rem;
-        display: flex;
         align-items: flex-end;
+        display: flex;
+        flex-basis: 7.5rem;
         margin-left: .5rem;
         text-align: center;
         a {
-            padding: 0.6rem 2.5rem;
+            padding: .6rem 2.5rem;
         }
     }
     label {
