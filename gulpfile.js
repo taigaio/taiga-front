@@ -262,8 +262,11 @@ gulp.task("locales", function() {
 
 gulp.task("coffee", function() {
     return gulp.src(paths.coffee)
-        .pipe(plumber())
         .pipe(cache(coffee()))
+        .on("error", function(err) {
+            console.log(err.toString());
+            this.emit("end");
+        })
         .pipe(gulp.dest(paths.tmp));
 });
 
