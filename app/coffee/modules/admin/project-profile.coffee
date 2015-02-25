@@ -231,7 +231,7 @@ ProjectExportDirective = ($window, $rs, $confirm) ->
         resultTitleEl = $el.find(".result-title")
         setLoadingTitle = -> resultTitleEl.html("We are generating your dump file") # TODO: i18n
         setAsyncTitle = -> resultTitleEl.html("We are generating your dump file") # TODO: i18n
-        setSyncTitle = -> resultTitleEl.html("Your dump file ir ready!") # TODO: i18n
+        setSyncTitle = -> resultTitleEl.html("Your dump file is ready!") # TODO: i18n
 
         resultMessageEl = $el.find(".result-message ")
         setLoadingMessage = -> resultMessageEl.html("Please don't close this page.") # TODO: i18n
