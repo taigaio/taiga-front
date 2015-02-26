@@ -103,12 +103,12 @@ urls = {
     "attachments/wiki_page": "/wiki/attachments"
 
     # Custom Attributess
-    "custom-attributes/us": "/userstory-custom-attributes"
+    "custom-attributes/userstory": "/userstory-custom-attributes"
     "custom-attributes/issue": "/issue-custom-attributes"
     "custom-attributes/task": "/task-custom-attributes"
 
     # Custom field values
-    "custom-attributes-values/us": "/userstories/custom-attributes-values"
+    "custom-attributes-values/userstory": "/userstories/custom-attributes-values"
     "custom-attributes-values/issue": "/issues/custom-attributes-values"
     "custom-attributes-values/task": "/tasks/custom-attributes-values"
 

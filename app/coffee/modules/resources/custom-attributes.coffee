@@ -29,8 +29,8 @@ resourceProvider = ($repo) ->
         return $repo.queryMany(resource, {project: projectId})
 
     service = {
-        us:{
-            list: (projectId) -> _list(projectId, "custom-attributes/us")
+        userstory:{
+            list: (projectId) -> _list(projectId, "custom-attributes/userstory")
         }
         task:{
             list: (projectId) -> _list(projectId, "custom-attributes/task")

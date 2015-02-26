@@ -47,7 +47,7 @@ class CustomAttributesValuesController extends taiga.Controller
 
     loadCustomAttributesValues: ->
         return @.customAttributesValues if not @.objectId
-        return @rs.customAttributesValues.get(@.type, @.objectId).then (customAttributesValues) =>
+        return @rs.customAttributesValues[@.type].get(@.objectId).then (customAttributesValues) =>
             @.customAttributes = @.project["#{@.type}_custom_attributes"]
             @.customAttributesValues = customAttributesValues
             return customAttributesValues
@@ -69,6 +69,7 @@ class CustomAttributesValuesController extends taiga.Controller
         @.customAttributesValues.attributes_values = attributesValues
         @.customAttributesValues.id = @.objectId
         return @repo.save(@.customAttributesValues).then(onSuccess, onError)
+
 
 CustomAttributesValuesDirective = ($templates, $storage) ->
     template = $templates.get("custom-attributes/custom-attributes-values.html", true)

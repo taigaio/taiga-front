@@ -21,15 +21,24 @@
 
 taiga = @.taiga
 
-resourceProvider = ($rootScope, $config, $urls, $model, $repo, $auth, $q) ->
-    service = {}
+resourceProvider = ($repo) ->
+    _get = (objectId, resource) ->
+        return $repo.queryOne(resource, objectId)
 
-    service.get = (type, objectId) ->
-        return $repo.queryOne("custom-attributes-values/#{type}", objectId)
+    service = {
+        userstory: {
+            get: (objectId) -> _get(objectId, "custom-attributes-values/userstory")
+        }
+        task: {
+            get: (objectId) -> _get(objectId, "custom-attributes-values/task")
+        }
+        issue: {
+            get: (objectId) -> _get(objectId, "custom-attributes-values/issue")
+        }
+    }
 
     return (instance) ->
         instance.customAttributesValues = service
 
 module = angular.module("taigaResources")
-module.factory("$tgCustomAttributesValuesResourcesProvider", ["$rootScope", "$tgConfig", "$tgUrls", "$tgModel", "$tgRepo",
-                                                   "$tgAuth", "$q", resourceProvider])
+module.factory("$tgCustomAttributesValuesResourcesProvider", ["$tgRepo", resourceProvider])
