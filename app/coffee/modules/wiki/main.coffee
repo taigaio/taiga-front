@@ -238,6 +238,7 @@ EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $
         $el.on "mouseup", ".view-wiki-content", (event) ->
             target = angular.element(event.target)
             return if getSelectedText()
+            return if not isEditable()
             return if target.is('a')
             return if target.is('pre')
 
