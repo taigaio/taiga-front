@@ -203,7 +203,10 @@ EstimationsService = ($template, $qqueue, $repo, $confirm, $q) ->
                 point.selected = if @us.points[roleId] == point.id then false else true
                 return point
 
-            html = pointsTemplate({"points": points, roleId: roleId})
+            maxPointLength = 5
+            horizontalList =  _.some points, (point) => point.name.length > maxPointLength
+
+            html = pointsTemplate({"points": points, roleId: roleId, horizontal: horizontalList})
             # Remove any previous state
             @$el.find(".popover").popover().close()
             @$el.find(".pop-points-open").remove()
