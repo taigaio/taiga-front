@@ -16,6 +16,9 @@
       "url": "https://github.com/taigaio/taiga-front/blob/master/LICENSE"
     }
   ],
+  "scripts": {
+    "scss-lint": "gulp scss-lint --fail"
+  },
   "devDependencies": {
     "coffee-script": "^1.9.0",
     "del": "^1.1.1",
@@ -45,8 +48,12 @@
     "gulp-template": "^2.1.0",
     "gulp-uglify": "~1.1.0",
     "gulp-wrap": "^0.10.1",
+    "pre-commit": "^1.0.5",
     "readable-stream": "~1.0.33",
     "run-sequence": "^1.0.2",
     "through2": "~0.6.3"
-  }
+  },
+  "pre-commit": [
+    "scss-lint"
+  ]
 }
