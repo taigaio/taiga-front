@@ -165,6 +165,8 @@ gulp.task("scss-lint", [], function() {
         "!" + paths.app + "/styles/components/markitup.scss"
     ];
 
+    var fail = process.argv.indexOf("--fail") !== -1;
+
     return gulp.src(paths.sass.concat(ignore))
         .pipe(gulpif(!isDeploy, cache(scsslint({endless: true, sync: true, config: "scsslint.yml"}), {
           success: function(scsslintFile) {
@@ -176,6 +178,7 @@ gulp.task("scss-lint", [], function() {
             };
           }
         })))
+        .pipe(gulpif(fail, scsslint.failReporter()))
 });
 
 gulp.task("sass-compile", ["scss-lint"], function() {
