@@ -33,8 +33,7 @@
         }
         &.editable {
             .custom-field-options {
-                align-items: center;
-                display: flex;
+                margin-top: .5rem;
             }
         }
         .custom-field-options {
@@ -61,6 +60,9 @@
             display: block;
             line-height: .9rem;
         }
+    }
+    .custom-field-options {
+        margin: 0;
     }
     .custom-field-value {
         flex: 1;

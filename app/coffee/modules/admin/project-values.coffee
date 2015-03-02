@@ -593,8 +593,9 @@ ProjectCustomAttributesDirective = ($log, $confirm, animationFrame) ->
             attr = formEl.scope().attr
 
             title = "Delete custom attribute" # i18n
+            subtitle = "Remeber that all values in this custom field will be deleted.</br> Are you sure you want to continue?"
             message = attr.name
-            $confirm.askOnDelete(title, message).then (finish) ->
+            $confirm.ask(title, subtitle, message).then (finish) ->
                 onSucces = ->
                     $ctrl.loadCustomAttributes().finally ->
                         finish()
