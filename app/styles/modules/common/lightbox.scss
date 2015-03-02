@@ -95,11 +95,6 @@
             display: none;
         }
     }
-    .points-per-role {
-        .popover {
-            @include popover(200px, $top: 105%, $left: 35%, $arrow-width: 10px, $arrow-top: -5px, $arrow-left: 10px);
-        }
-    }
 }
 
 .lightbox-generic-bulk {
