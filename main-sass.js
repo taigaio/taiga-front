@@ -108,6 +108,7 @@ exports.files = function () {
         'modules/auth/register-form',
         'modules/auth/forgot-form',
         'modules/auth/change-password-from-recovery',
+        'modules/auth/cancel-account',
 
         //Wiki modules
         'modules/wiki/wiki-nav',
