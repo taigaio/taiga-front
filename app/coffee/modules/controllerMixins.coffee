@@ -83,9 +83,8 @@ class FiltersMixin
             location.search(name, value)
 
     replaceAllFilters: (filters, load=false) ->
-        if !@location.isInCurrentRouteParams(name, value)
-            location = if load then @location else @location.noreload(@scope)
-            location.search(filters)
+        location = if load then @location else @location.noreload(@scope)
+        location.search(filters)
 
     unselectFilter: (name, value, load=false) ->
         params = @location.search()
