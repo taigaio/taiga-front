@@ -15,7 +15,7 @@ section.project-values-table
 
     div.project-values-body
         div.sortable
-            form(ng-repeat="value in values")
+            form(ng-repeat="value in values", tg-bind-scope)
                 div.project-values-row.row.table-main.visualization
                     span.icon.icon-drag-v
 

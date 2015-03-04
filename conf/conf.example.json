@@ -8,5 +8,6 @@
     "termsOfServiceUrl": null,
     "maxUploadFileSize": null,
     "gitHubClientId": null,
-    "contribPlugins": []
+    "contribPlugins": [],
+    "debugInfo": false
 }

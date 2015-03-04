@@ -1,4 +1,4 @@
-div.row.us-item-row(ng-repeat="us in visibleUserstories track by us.id", tg-draggable, ng-class="{blocked: us.is_blocked}")
+div.row.us-item-row(ng-repeat="us in visibleUserstories track by us.id", tg-bind-scope, ng-class="{blocked: us.is_blocked}")
     div.user-stories
         div.tags-block(tg-colorize-tags="us.tags", tg-colorize-tags-type="backlog")
         div.user-story-name
