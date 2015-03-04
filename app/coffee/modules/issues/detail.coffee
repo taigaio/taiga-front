@@ -85,6 +85,9 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             @rootscope.$broadcast("history:reload")
             @.loadIssue()
 
+        @scope.$on "custom-attributes-values:edit", =>
+            @rootscope.$broadcast("history:reload")
+
     initializeOnDeleteGoToUrl: ->
        ctx = {project: @scope.project.slug}
        if @scope.project.is_issues_activated

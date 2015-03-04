@@ -59,6 +59,8 @@ class CustomAttributesValuesController extends taiga.Controller
 
     updateAttributeValue: (attributeValue) ->
         onSuccess = =>
+            @rootscope.$broadcast("custom-attributes-values:edit")
+
         onError = (response) =>
             @confirm.notify("error")
             return @q.reject()

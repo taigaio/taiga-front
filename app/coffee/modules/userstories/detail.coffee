@@ -80,6 +80,9 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         @scope.$on "attachment:delete", =>
             @rootscope.$broadcast("history:reload")
 
+        @scope.$on "custom-attributes-values:edit", =>
+            @rootscope.$broadcast("history:reload")
+
     initializeOnDeleteGoToUrl: ->
         ctx = {project: @scope.project.slug}
         @scope.onDeleteGoToUrl = @navUrls.resolve("project", ctx)
