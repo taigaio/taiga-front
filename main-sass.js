@@ -75,6 +75,7 @@ exports.files = function () {
         'modules/common/history',
         'modules/common/wizard',
         'modules/common/external-reference',
+        'modules/common/custom-fields',
 
         //Project modules
         'modules/home-projects-list',
@@ -125,6 +126,7 @@ exports.files = function () {
         'modules/admin/admin-membership-table',
         'modules/admin/admin-project-profile',
         'modules/admin/default-values',
+        'modules/admin/admin-custom-attributes',
         'modules/admin/project-values',
         'modules/admin/third-parties',
         'modules/admin/admin-third-parties-webhooks',

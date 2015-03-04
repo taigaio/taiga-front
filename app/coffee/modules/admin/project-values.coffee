@@ -320,3 +320,299 @@ ColorSelectionDirective = () ->
       }
 
 module.directive("tgColorSelection", ColorSelectionDirective)
+
+
+#############################################################################
+## Custom Attributes Controller
+#############################################################################
+
+class ProjectCustomAttributesController extends mixOf(taiga.Controller, taiga.PageMixin)
+    @.$inject = [
+        "$scope",
+        "$rootScope",
+        "$tgRepo",
+        "$tgResources",
+        "$routeParams",
+        "$q",
+        "$tgLocation",
+        "$tgNavUrls",
+        "$appTitle",
+    ]
+
+    constructor: (@scope, @rootscope, @repo, @rs, @params, @q, @location, @navUrls, @appTitle) ->
+        @scope.project = {}
+
+        promise = @.loadInitialData()
+
+        promise.then () =>
+            @appTitle.set("Project Custom Attributes - " + @scope.sectionName + " - " + @scope.project.name)
+
+        promise.then null, @.onInitialDataError.bind(@)
+
+    loadInitialData: =>
+        promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
+            @scope.projectId = data.project
+            return data
+
+        return promise.then( => @q.all([
+            @.loadProject(),
+            @.loadCustomAttributes(),
+        ]))
+
+    #########################
+    # Project
+    #########################
+
+    loadProject: =>
+        return @rs.projects.get(@scope.projectId).then (project) =>
+            @scope.project = project
+            @scope.$emit('project:loaded', project)
+            return project
+
+    #########################
+    # Custom Attribute
+    #########################
+
+    loadCustomAttributes: =>
+        return @rs.customAttributes[@scope.type].list(@scope.projectId).then (customAttributes) =>
+            @scope.customAttributes = customAttributes
+            @scope.maxOrder = _.max(customAttributes, "order").order
+            return customAttributes
+
+    createCustomAttribute: (attrValues) =>
+        return @repo.create("custom-attributes/#{@scope.type}", attrValues)
+
+    saveCustomAttribute: (attrModel) =>
+        return @repo.save(attrModel)
+
+    deleteCustomAttribute: (attrModel) =>
+        return @repo.remove(attrModel)
+
+    moveCustomAttributes: (attrModel, newIndex) =>
+        customAttributes = @scope.customAttributes
+        r = customAttributes.indexOf(attrModel)
+        customAttributes.splice(r, 1)
+        customAttributes.splice(newIndex, 0, attrModel)
+
+        _.each customAttributes, (val, idx) ->
+            val.order = idx
+
+        @repo.saveAll(customAttributes)
+
+
+module.controller("ProjectCustomAttributesController", ProjectCustomAttributesController)
+
+
+#############################################################################
+## Custom Attributes Directive
+#############################################################################
+
+ProjectCustomAttributesDirective = ($log, $confirm, animationFrame) ->
+    link = ($scope, $el, $attrs) ->
+        $ctrl = $el.controller()
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+        ##################################
+        # Drag & Drop
+        ##################################
+        sortableEl = $el.find(".js-sortable")
+
+        sortableEl.sortable({
+            handle: ".js-view-custom-field",
+            dropOnEmpty: true
+            revert: 400
+            axis: "y"
+        })
+
+        sortableEl.on "sortstop", (event, ui) ->
+            itemEl = ui.item
+            itemAttr = itemEl.scope().attr
+            itemIndex = itemEl.index()
+            $ctrl.moveCustomAttributes(itemAttr, itemIndex)
+
+        ##################################
+        # New custom attribute
+        ##################################
+
+        showCreateForm = ->
+            $el.find(".js-new-custom-field").removeClass("hidden")
+
+        hideCreateForm = ->
+            $el.find(".js-new-custom-field").addClass("hidden")
+
+        showAddButton = ->
+            $el.find(".js-add-custom-field-button").removeClass("hidden")
+
+        hideAddButton = ->
+            $el.find(".js-add-custom-field-button").addClass("hidden")
+
+        showCancelButton = ->
+            $el.find(".js-cancel-new-custom-field-button").removeClass("hidden")
+
+        hideCancelButton = ->
+            $el.find(".js-cancel-new-custom-field-button").addClass("hidden")
+
+        resetNewAttr = ->
+            $scope.newAttr = {}
+
+        create = (formEl) ->
+            form = formEl.checksley()
+            return if not form.validate()
+
+            onSucces = =>
+                $ctrl.loadCustomAttributes()
+                hideCreateForm()
+                resetNewAttr()
+                $confirm.notify("success")
+
+            onError = (data) =>
+                form.setErrors(data)
+                $confirm.notify("error")
+
+            attr = $scope.newAttr
+            attr.project = $scope.projectId
+            attr.order = if $scope.maxOrder then $scope.maxOrder + 1 else 1
+
+            $ctrl.createCustomAttribute(attr).then(onSucces, onError)
+
+        cancelCreate = ->
+            hideCreateForm()
+            resetNewAttr()
+
+        $scope.$watch "customAttributes", (customAttributes) ->
+            return if not customAttributes
+
+            if customAttributes.length == 0
+                hideCancelButton()
+                hideAddButton()
+                showCreateForm()
+            else
+                hideCreateForm()
+                showAddButton()
+                showCancelButton()
+
+        $el.on "click", ".js-add-custom-field-button", (event) ->
+            event.preventDefault()
+
+            showCreateForm()
+
+        $el.on "click", ".js-create-custom-field-button", debounce 2000, (event) ->
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+            formEl = target.closest("form")
+
+            create(formEl)
+
+        $el.on "click", ".js-cancel-new-custom-field-button", (event) ->
+            event.preventDefault()
+
+            cancelCreate()
+
+        $el.on "keyup", ".js-new-custom-field input", (event) ->
+            if event.keyCode == 13 # Enter
+                target = angular.element(event.currentTarget)
+                formEl = target.closest("form")
+                create(formEl)
+            else if event.keyCode == 27 # Esc
+                cancelCreate()
+
+        ##################################
+        # Edit custom attribute
+        ##################################
+
+        showEditForm = (formEl) ->
+            formEl.find(".js-view-custom-field").addClass("hidden")
+            formEl.find(".js-edit-custom-field").removeClass("hidden")
+
+        hideEditForm = (formEl) ->
+            formEl.find(".js-edit-custom-field").addClass("hidden")
+            formEl.find(".js-view-custom-field").removeClass("hidden")
+
+        revertChangesInCustomAttribute = (formEl) ->
+            $scope.$apply ->
+                formEl.scope().attr.revert()
+
+        update = (formEl) ->
+            form = formEl.checksley()
+            return if not form.validate()
+
+            onSucces = =>
+                $ctrl.loadCustomAttributes()
+                hideEditForm(formEl)
+                $confirm.notify("success")
+
+            onError = (data) =>
+                form.setErrors(data)
+                $confirm.notify("error")
+
+            attr = formEl.scope().attr
+            $ctrl.saveCustomAttribute(attr).then(onSucces, onError)
+
+        cancelUpdate = (formEl) ->
+            hideEditForm(formEl)
+            revertChangesInCustomAttribute(formEl)
+
+        $el.on "click", ".js-edit-custom-field-button", (event) ->
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+            formEl = target.closest("form")
+
+            showEditForm(formEl)
+
+        $el.on "click", ".js-update-custom-field-button", debounce 2000, (event) ->
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+            formEl = target.closest("form")
+
+            update(formEl)
+
+        $el.on "click", ".js-cancel-edit-custom-field-button", (event) ->
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+            formEl = target.closest("form")
+
+            cancelUpdate(formEl)
+
+        $el.on "keyup", ".js-edit-custom-field input", (event) ->
+            if event.keyCode == 13 # Enter
+                target = angular.element(event.currentTarget)
+                formEl = target.closest("form")
+                update(formEl)
+            else if event.keyCode == 27 # Esc
+                target = angular.element(event.currentTarget)
+                formEl = target.closest("form")
+                cancelUpdate(formEl)
+
+        ##################################
+        # Delete custom attribute
+        ##################################
+
+        deleteCustomAttribute = (formEl) ->
+            attr = formEl.scope().attr
+
+            title = "Delete custom attribute" # i18n
+            subtitle = "Remeber that all values in this custom field will be deleted.</br> Are you sure you want to continue?"
+            message = attr.name
+            $confirm.ask(title, subtitle, message).then (finish) ->
+                onSucces = ->
+                    $ctrl.loadCustomAttributes().finally ->
+                        finish()
+
+                onError = ->
+                    finish(false)
+                    $confirm.notify("error", null, "We have not been able to delete '#{message}'.")
+
+                $ctrl.deleteCustomAttribute(attr).then(onSucces, onError)
+
+        $el.on "click", ".js-delete-custom-field-button", debounce 2000, (event) ->
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+            formEl = target.closest("form")
+
+            deleteCustomAttribute(formEl)
+
+    return {link: link}
+
+module.directive("tgProjectCustomAttributes", ["$log", "$tgConfirm", "animationFrame", ProjectCustomAttributesDirective])

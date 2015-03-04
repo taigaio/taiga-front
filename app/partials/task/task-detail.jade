@@ -40,6 +40,9 @@ div.wrapper(ng-controller="TaskDetailController as ctrl",
 
         section.duty-content(tg-editable-description, ng-model="task", required-perm="modify_task")
 
+        // Custom Fields
+        tg-custom-attributes-values(ng-model="task", type="task", project="project", required-edition-perm="modify_task")
+
         tg-attachments(ng-model="task", type="task")
         tg-history(ng-model="task", type="task")
 

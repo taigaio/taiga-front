@@ -173,6 +173,34 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm) ->
 
             return _.flatten(attachments).join("\n")
 
+        renderCustomAttributesEntry = (value) ->
+            customAttributes = _.map value, (changes, type) ->
+                if type == "new"
+                    return _.map changes, (change) ->
+                        return templateChangeGeneric({
+                            name: change.name,
+                            from: formatChange(""),
+                            to: formatChange(change.value)
+                        })
+                else if type == "deleted"
+                    return _.map changes, (change) ->
+                        # TODO: i18n
+                        return templateChangeDiff({
+                            name: "deleted custom attribute",
+                            diff: change.name
+                        })
+                else
+                    return _.map changes, (change) ->
+                        customAttrsChanges = _.map change.changes, (values) ->
+                            return templateChangeGeneric({
+                                name: change.name
+                                from: formatChange(values[0])
+                                to: formatChange(values[1])
+                            })
+                        return _.flatten(customAttrsChanges).join("\n")
+
+            return _.flatten(customAttributes).join("\n")
+
         renderChangeEntry = (field, value) ->
             if field == "description"
                 return templateChangeDiff({name: getHumanizedFieldName("description"), diff: value[1]})
@@ -182,6 +210,8 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm) ->
                 return templateChangePoints({points: value})
             else if field == "attachments"
                 return renderAttachmentEntry(value)
+            else if field == "custom_attributes"
+                return renderCustomAttributesEntry(value)
             else if field in ["tags", "watchers"]
                 name = getHumanizedFieldName(field)
                 removed = _.difference(value[0], value[1])
