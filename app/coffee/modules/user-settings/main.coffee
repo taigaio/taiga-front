@@ -91,7 +91,8 @@ UserProfileDirective = ($confirm, $auth, $repo) ->
             changeEmail = $scope.user.isAttributeModified("email")
 
             onSuccess = (data) =>
-                $auth.setUser($scope.user)
+                user = $model.make_model("users", data)
+                $auth.setUser(user)
                 if changeEmail
                     $confirm.success("<strong>Check your inbox!</strong><br />
                            We have sent a mail to your account<br />
