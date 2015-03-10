@@ -14,7 +14,7 @@ section.custom-fields-table.basic-table
 
     div.table-body
         div.js-sortable
-            form.js-form(ng-repeat="attr in customAttributes track by attr.id")
+            form.js-form(ng-repeat="attr in customAttributes track by attr.id", tg-bind-scope)
                 div.row.single-custom-field.js-view-custom-field
                     span.icon.icon-drag-v
                     div.custom-name

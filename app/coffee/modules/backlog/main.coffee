@@ -520,7 +520,6 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
 module.controller("BacklogController", BacklogController)
 
-
 #############################################################################
 ## Backlog Directive
 #############################################################################
@@ -537,29 +536,25 @@ BacklogDirective = ($repo, $rootscope) ->
             if $scope.stats?
                 removeDoomlineDom()
 
-                elements = getUsItems()
                 stats = $scope.stats
 
                 total_points = stats.total_points
                 current_sum = stats.assigned_points
 
-                for element in elements
-                    scope = element.scope()
-
-                    if not scope.us?
-                        continue
-
-                    current_sum += scope.us.total_points
+                for us, i in $scope.visibleUserstories
+                    current_sum += us.total_points
 
                     if current_sum > total_points
-                        addDoomLineDom(element)
+                        domElement = $el.find('.backlog-table-body .us-item-row')[i]
+                        addDoomLineDom(domElement)
+
                         break
 
         removeDoomlineDom = ->
             $el.find(".doom-line").remove()
 
         addDoomLineDom = (element) ->
-            element?.before(doomLineTemplate({}))
+            $(element).before(doomLineTemplate({}))
 
         getUsItems = ->
             rowElements = $el.find('.backlog-table-body .us-item-row')
