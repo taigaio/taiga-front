@@ -88,11 +88,13 @@
     }
     .table-main {
         border-bottom: 1px solid $whitish;
-        .row {
-            &:hover {
-                background: lighten($green-taiga, 60%);
-                cursor: move;
-                transition: background .2s ease-in;
+        .row:hover {
+            background: lighten($green-taiga, 60%);
+            cursor: move;
+            transition: background .2s ease-in;
+            .icon {
+                opacity: 1;
+                transition: opacity .2s ease-in;
             }
         }
     }
@@ -106,8 +108,10 @@
         @extend %large;
         color: $gray-light;
         margin-right: 1rem;
+        opacity: 0;
         &:hover {
             color: $green-taiga;
+            transition: all .2s ease-in;
         }
     }
     .icon-delete {
