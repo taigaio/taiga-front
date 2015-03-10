@@ -40,15 +40,13 @@ div.wrapper(tg-project-profile, ng-controller="ProjectProfileController as ctrl"
             tg-privacy-settings-inputs
                 div.privacy-settings
                     div
-                        input.hidden(type="radio", disabled="disabled")
+                        input.privacy-project(type="radio", name="private-project", ng-model="project.is_private", ng-value="false")
                         label.trans-button(for="public-project")
                             span Public Project
                     div
-                        input.hidden(type="radio", checked="checked", disabled="disabled")
+                        input.privacy-project(type="radio", name="private-project", ng-model="project.is_private", ng-value="true")
                         label.trans-button(for="private-project")
                             span Private Project
-
-                p All projects are private during Taiga's beta period.
 
             button.button-green.submit-button(type="submit", title="Save") Save
             a.delete-project(href="", title="Delete this project", ng-click="ctrl.openDeleteLightbox()") Delete this project

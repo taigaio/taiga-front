@@ -101,5 +101,11 @@
                 opacity: 0;
             }
         }
+        input:disabled {
+            cursor: auto;
+            + div {
+                background-color: #ccc;
+            }
+        }
     }
 }

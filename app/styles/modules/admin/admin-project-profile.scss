@@ -21,14 +21,15 @@
     .privacy-settings {
         display: flex;
         margin-bottom: 2rem;
-        div {
+        > div {
             flex-basis: 0;
             flex-grow: 1;
+            overflow: hidden;
+            position: relative;
             &:first-child {
                 margin-right: .5rem;
             }
         }
-        // TODO: This should change when public projects available
         label {
             @extend %title;
             border: 1px solid $gray-light;
@@ -39,14 +40,22 @@
             span {
                 color: $gray-light;
             }
-            // &:hover {
-            //     border: 1px solid $fresh-taiga;
-            // }
         }
-        input:checked+label {
+    }
+    .privacy-project {
+        cursor: pointer;
+        height: 500px;
+        left: -10px;
+        opacity: 0;
+        position: absolute;
+        top: -10px;
+        width: 500px;
+        z-index: 999;
+    }
+    .privacy-project:checked {
+        + label {
             background: $fresh-taiga;
             border: 1px solid $fresh-taiga;
-            cursor: default;
             span {
                 color: $white;
             }

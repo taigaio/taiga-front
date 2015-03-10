@@ -258,7 +258,7 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm) ->
                 deleteCommentDate: moment(comment.delete_comment_date).format("DD MMM YYYY HH:mm") if comment.delete_comment_date
                 deleteCommentUser: comment.delete_comment_user.name if comment.delete_comment_user?.name
                 activityId: comment.id
-                canDeleteComment: comment.user.pk == $scope.user.id or $scope.project.my_permissions.indexOf("modify_project") > -1
+                canDeleteComment: comment.user.pk == $scope.user?.id or $scope.project.my_permissions.indexOf("modify_project") > -1
             })
 
         renderChange = (change) ->
