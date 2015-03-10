@@ -37,7 +37,7 @@ div.wrapper(tg-project-profile, ng-controller="ProjectProfileController as ctrl"
                 textarea(name="description", placeholder="Description", id="project-description",
                          ng-model="project.description", data-required="true")
 
-            tg-privacy-settings-inputs
+            div
                 div.privacy-settings
                     div
                         input.privacy-project(type="radio", name="private-project", ng-model="project.is_private", ng-value="false")
