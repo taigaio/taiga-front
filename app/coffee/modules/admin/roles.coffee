@@ -402,8 +402,8 @@ RolePermissionsDirective = ($rootscope, $repo, $confirm) ->
 
                 $scope.role.permissions = getActivePermissions()
 
-                onSuccess = (role) ->
-                    categories = generateCategoriesFromRole(role)
+                onSuccess = () ->
+                    categories = generateCategoriesFromRole($scope.role)
                     categoryId = target.parents(".category-config").data("id")
                     renderResume(target.parents(".category-config"), categories[categoryId])
                     $rootscope.$broadcast("projects:reload")
@@ -420,7 +420,7 @@ RolePermissionsDirective = ($rootscope, $repo, $confirm) ->
                     $scope.project.anon_permissions = $scope.role.permissions.filter (permission) ->
                         return permission.indexOf("view_") == 0
 
-                    $repo.save($scope.project)
+                    $repo.save($scope.project).then onSuccess, onError
                 else
                     $repo.save($scope.role).then onSuccess, onError
 
