@@ -152,7 +152,7 @@ WebhookDirective = ($rs, $repo, $confirm, $loading) ->
         $el.on "keyup", ".edition-mode input", (event) ->
             if event.keyCode == 13
                 target = angular.element(event.currentTarget)
-                saveWebhook(target)
+                save(target)
             else if event.keyCode == 27
                 target = angular.element(event.currentTarget)
                 cancel(target)
@@ -231,8 +231,7 @@ NewWebhookDirective = ($rs, $repo, $confirm, $loading) ->
                     formDOMNode.addClass("hidden")
                     addWebhookDOMNode.removeClass("hidden")
 
-        formDOMNode.on "click", ".add-new", debounce 2000, (event) ->
-            event.preventDefault()
+        save = debounce 2000, () ->
             form = formDOMNode.checksley()
             return if not form.validate()
 
@@ -245,6 +244,14 @@ NewWebhookDirective = ($rs, $repo, $confirm, $loading) ->
             promise.then null, (data) ->
                 $confirm.notify("error")
                 form.setErrors(data)
+
+        formDOMNode.on "click", ".add-new", (event) ->
+            event.preventDefault()
+            save()
+
+        formDOMNode.on "keyup", "input", (event) ->
+            if event.keyCode == 13
+                save()
 
         formDOMNode.on "click", ".cancel-new", (event) ->
             $scope.$apply ->
