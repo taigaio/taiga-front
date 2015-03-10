@@ -5,6 +5,8 @@
 
 ### Features
 - Added custom fields per project for user stories, tasks and issues.
+- Add to the Admin Panel the export to CSV sections.
+- Reorganized the Admin Panel.
 
 ### Misc
 - New contrib plugin for hipchat (by Δndrea Stagi)

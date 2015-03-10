@@ -131,6 +131,7 @@ exports.files = function () {
         'modules/admin/third-parties',
         'modules/admin/admin-third-parties-webhooks',
         'modules/admin/contrib',
+        'modules/admin/project-csv',
 
         //Modules user Settings
         'modules/user-settings/user-profile',
