@@ -10,4 +10,4 @@ form.login-form
     fieldset
         button.button-login.button-gray.submit-button(type="submit", title="Enter") Enter
 
-    fieldset(tg-github-login-button)
+    fieldset(ng-repeat="plugin in contribPlugins|filter:{type: 'auth'}", ng-include="plugin.template")
