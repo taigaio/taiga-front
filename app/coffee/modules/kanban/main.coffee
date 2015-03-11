@@ -504,6 +504,9 @@ KanbanUserDirective = ($log) ->
     clickable = false
 
     link = ($scope, $el, $attrs, $model) ->
+        username_label = $el.parent().find("a.task-assigned")
+        username_label.addClass("not-clickable")
+
         if not $attrs.tgKanbanUserAvatar
             return $log.error "KanbanUserDirective: no attr is defined"
 
@@ -523,20 +526,21 @@ KanbanUserDirective = ($log) ->
 
             html = template(ctx)
             $el.html(html)
-            username_label = $el.parent().find("a.task-assigned")
             username_label.text(ctx.name)
-            username_label.on "click", (event) ->
-                if $el.find("a").hasClass("noclick")
-                    return
-
-                us = $model.$modelValue
-                $ctrl = $el.controller()
-                $ctrl.changeUsAssignedTo(us)
 
         bindOnce $scope, "project", (project) ->
             if project.my_permissions.indexOf("modify_us") > -1
                 clickable = true
                 $el.on "click", (event) =>
+                    if $el.find("a").hasClass("noclick")
+                        return
+
+                    us = $model.$modelValue
+                    $ctrl = $el.controller()
+                    $ctrl.changeUsAssignedTo(us)
+
+                username_label.removeClass("not-clickable")
+                username_label.on "click", (event) ->
                     if $el.find("a").hasClass("noclick")
                         return
 

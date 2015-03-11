@@ -397,12 +397,7 @@ TaskboardUserDirective = ($log) ->
 
     link = ($scope, $el, $attrs) ->
         username_label = $el.parent().find("a.task-assigned")
-        username_label.on "click", (event) ->
-            if $el.find('a').hasClass('noclick')
-                return
-
-            $ctrl = $el.controller()
-            $ctrl.editTaskAssignedTo($scope.task)
+        username_label.addClass("not-clickable")
 
         $scope.$watch 'task.assigned_to', (assigned_to) ->
             user = $scope.usersById[assigned_to]
@@ -424,6 +419,15 @@ TaskboardUserDirective = ($log) ->
 
                     $ctrl = $el.controller()
                     $ctrl.editTaskAssignedTo($scope.task)
+
+                username_label.removeClass("not-clickable")
+                username_label.on "click", (event) ->
+                    if $el.find('a').hasClass('noclick')
+                        return
+
+                    $ctrl = $el.controller()
+                    $ctrl.editTaskAssignedTo($scope.task)
+
 
     return {
         link: link,
