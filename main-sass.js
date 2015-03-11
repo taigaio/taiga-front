@@ -52,7 +52,6 @@ exports.files = function () {
         'components/select-color',
         'components/loader',
         'components/loading-bar',
-        'components/help-notion-button',
         'components/beta',
         'components/markitup',
         'components/markdown-help',

@@ -83,7 +83,6 @@ linters:
     exclude:
         - 'app/styles/components/buttons.scss'
         - 'app/styles/layout/forms.scss'
-        - 'app/styles/components/help-notion-button.scss'
         - 'app/styles/components/markdown-help.scss'
 
   SelectorDepth:
