@@ -204,8 +204,9 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             # NOTE: Fix order of USs because the filter orderBy does not work propertly in the partials files
             @scope.userstories = _.sortBy(userstories, "backlog_order")
 
-            @.generateFilters()
+            @.setSearchDataFilters()
             @.filterVisibleUserstories()
+            @.generateFilters()
 
             @rootscope.$broadcast("filters:loaded", @scope.filters)
             # The broadcast must be executed when the DOM has been fully reloaded.
@@ -246,32 +247,16 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @scope.visibleUserstories = []
 
         # Filter by tags
-        selectedTags = _.filter(@scope.filters.tags, "selected")
-        selectedTags = _.map(selectedTags, "name")
-
-        if selectedTags.length == 0
-            @scope.visibleUserstories = _.clone(@scope.userstories, false)
-        else
-            @scope.visibleUserstories = _.reject @scope.userstories, (us) =>
-                if _.intersection(selectedTags, us.tags).length == 0
-                    return true
-                return false
+        @scope.visibleUserstories = _.reject @scope.userstories, (us) =>
+            return _.some us.tags, (tag) =>
+                return @isFilterSelected("tag", tag)
 
         # Filter by status
-        selectedStatuses = _.filter(@scope.filters.statuses, "selected")
-        selectedStatuses = _.map(selectedStatuses, "id")
+        @scope.visibleUserstories = _.filter @scope.visibleUserstories, (us) =>
+            if @searchdata["statuses"] && Object.keys(@searchdata["statuses"]).length
+                return @isFilterSelected("statuses", taiga.toString(us.status))
 
-        if selectedStatuses.length > 0
-            @scope.visibleUserstories = _.reject @scope.visibleUserstories, (us) =>
-                res = _.find(selectedStatuses, (x) -> x == taiga.toString(us.status))
-                return not res
-
-        @rs.userstories.storeQueryParams(@scope.projectId, {
-            "status": selectedStatuses,
-            "tags": selectedTags,
-            "project": @scope.projectId
-            "milestone": null
-        })
+            return true
 
     prepareBulkUpdateData: (uses, field="backlog_order") ->
          return _.map(uses, (x) -> {"us_id": x.id, "order": x[field]})
@@ -428,31 +413,33 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
         return promise
 
-    getUrlFilters: ->
-        return _.pick(@location.search(), "statuses", "tags", "q")
+    isFilterSelected: (type, id) ->
+        if @searchdata[type]? and @searchdata[type][id]
+            return true
+        return false
 
-    generateFilters: ->
+    setSearchDataFilters: () ->
         urlfilters = @.getUrlFilters()
 
         if urlfilters.q
             @scope.filtersQ = @scope.filtersQ or urlfilters.q
 
-        searchdata = {}
+        @searchdata = {}
         for name, value of urlfilters
-            if not searchdata[name]?
-                searchdata[name] = {}
+            if not @searchdata[name]?
+                @searchdata[name] = {}
 
             for val in taiga.toString(value).split(",")
-                searchdata[name][val] = true
+                @searchdata[name][val] = true
 
-        isSelected = (type, id) ->
-            if searchdata[type]? and searchdata[type][id]
-                return true
-            return false
+    getUrlFilters: ->
+        return _.pick(@location.search(), "statuses", "tags", "q")
 
+    generateFilters: ->
         @scope.filters = {}
 
-        plainTags = _.flatten(_.filter(_.map(@scope.userstories, "tags")))
+        #tags
+        plainTags = _.flatten(_.filter(_.map(@scope.visibleUserstories, "tags")))
         plainTags.sort()
 
         @scope.filters.tags = _.map _.countBy(plainTags), (v, k) =>
@@ -463,10 +450,14 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
                 color: @scope.project.tags_colors[k],
                 count: v
             }
-            obj.selected = true if isSelected("tags", obj.id)
+            obj.selected = true if @isFilterSelected("tags", obj.id)
             return obj
 
-        plainStatuses = _.map(@scope.userstories, "status")
+        selectedTags = _.filter(@scope.filters.tags, "selected")
+        selectedTags = _.map(selectedTags, "name")
+
+        #status
+        plainStatuses = _.map(@scope.visibleUserstories, "status")
 
         plainStatuses = _.filter plainStatuses, (status) =>
             if status
@@ -480,11 +471,20 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
                 color: @scope.usStatusById[k].color,
                 count:v
             }
-            obj.selected = true if isSelected("statuses", obj.id)
+            obj.selected = true if @isFilterSelected("statuses", obj.id)
 
             return obj
 
-        return @scope.filters
+        selectedStatuses = _.filter(@scope.filters.statuses, "selected")
+        selectedStatuses = _.map(selectedStatuses, "id")
+
+        #store query params
+        @rs.userstories.storeQueryParams(@scope.projectId, {
+            "status": selectedStatuses,
+            "tags": selectedTags,
+            "project": @scope.projectId
+            "milestone": null
+        })
 
     ## Template actions
 
