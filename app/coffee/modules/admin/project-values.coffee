@@ -647,20 +647,25 @@ class CsvExporterController extends taiga.Controller
     setCsvUuid: =>
         @scope.csvUuid = @scope.project["#{@.type}_csv_uuid"]
 
+    _generateUuid: (finish) =>
+        promise = @rs.projects["regenerate_#{@.type}_csv_uuid"](@scope.projectId)
+
+        promise.then (data) =>
+            @scope.csvUuid = data.data?.uuid
+
+        promise.then null, =>
+            @confirm.notify("error")
+
+        promise.finally ->
+            finish()
+        return promise
+
     regenerateUuid: ->
         #TODO: i18n
-        @confirm.ask("Change URL", "You going to change the CSV data access url. The previous url will be disabled. Are you sure?").then (finish) =>
-            promise = @rs.projects["regenerate_#{@.type}_csv_uuid"](@scope.projectId)
-
-            promise.then (data) =>
-                @scope.csvUuid = data.data?.uuid
-
-            promise.then null, =>
-                @confirm.notify("error")
-
-            promise.finally ->
-                finish()
-            return promise
+        if @scope.csvUuid
+            @confirm.ask("Change URL", "You going to change the CSV data access url. The previous url will be disabled. Are you sure?").then @._generateUuid
+        else
+            @._generateUuid(_.identity)
 
 class CsvExporterUserstoriesController extends CsvExporterController
     type: "userstories"
