@@ -49,7 +49,7 @@ class ProjectsNavigationController extends taiga.Controller
             @.loadInitialData()
 
     loadInitialData: ->
-        return @rs.projects.list().then (projects) =>
+        return @rs.projects.listByMember(@rootscope.user.id).then (projects) =>
             for project in projects
                 project.url = @projectUrl.get(project)
             @scope.projects = projects

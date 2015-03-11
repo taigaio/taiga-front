@@ -58,7 +58,7 @@ class ProjectsController extends taiga.Controller
         promise.finally tgLoader.pageLoaded
 
     loadInitialData: ->
-        return @rs.projects.list().then (projects) =>
+        return @rs.projects.listByMember(@rootscope.user.id).then (projects) =>
             @.projects = {'recents': projects.slice(0, 8), 'all': projects}
             for project in projects
                 project.url = @projectUrl.get(project)
