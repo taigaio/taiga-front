@@ -89,12 +89,10 @@ BacklogFiltersDirective = ($log, $location, $templates) ->
                 selectedFilters.push(filter)
                 $scope.$apply ->
                     $ctrl.selectFilter(type, id)
-                    $ctrl.filterVisibleUserstories()
             else
                 selectedFilters = _.reject(selectedFilters, filter)
                 $scope.$apply ->
                     $ctrl.unselectFilter(type, id)
-                    $ctrl.filterVisibleUserstories()
 
             renderSelectedFilters(selectedFilters)
 
