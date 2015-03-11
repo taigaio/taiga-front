@@ -139,7 +139,7 @@ UserAvatarDirective = ($auth, $model, $rs, $confirm) ->
             $confirm.notify('error', response.data._error_message)
 
         # Change photo
-        $el.on "click", ".button.change", ->
+        $el.on "click", ".js-change-avatar", ->
             $el.find("#avatar-field").click()
 
         $el.on "change", "#avatar-field", (event) ->

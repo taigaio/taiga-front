@@ -20,7 +20,7 @@ div.wrapper(tg-user-profile, ng-controller="UserSettingsController as ctrl",
                             tg-avatar-model="avatarAttachment")
                         p The image will be cropped to 80x80px.<br>
                             span.size-info.hidden(tg-bo-html="maxFileSizeMsg")
-                        a.button-green.change(tg-bo-title="'Change photo. ' + maxFileSizeMsg") Change
+                        a.button-green.change.js-change-avatar(tg-bo-title="'Change photo. ' + maxFileSizeMsg") Change
                         a.use-gravatar Use gravatar image
 
                 div.data
