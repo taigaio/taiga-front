@@ -1,4 +1,5 @@
 var gulp = require("gulp"),
+    imagemin = require("gulp-imagemin"),
     jade = require("gulp-jade"),
     coffee = require("gulp-coffee"),
     concat = require("gulp-concat"),
@@ -337,16 +338,12 @@ gulp.task("copy-fonts", function() {
 });
 
 gulp.task("copy-images", function() {
-    var imageMin = gulp.src(paths.app + "/images/**/*");
+    return gulp.src(paths.app + "/images/**/*")
+        .pipe(imagemin({progressive: true}))
+        .pipe(gulp.dest(paths.dist + "/images/"));
+});
 
-    if (isDeploy) {
-        //require imagemin is very slow
-        var imagemin = require("gulp-imagemin");
-        imageMin.pipe(imagemin({progressive: true}))
-    }
-
-    imageMin.pipe(gulp.dest(paths.dist + "/images/"))
-
+gulp.task("copy-images-plugins", function() {
     return gulp.src(paths.app + "/plugins/**/images/*")
         .pipe(flatten())
         .pipe(gulp.dest(paths.dist + "/images/"));
@@ -362,7 +359,7 @@ gulp.task("copy-extras", function() {
         .pipe(gulp.dest(paths.dist + "/"));
 });
 
-gulp.task("copy", ["copy-fonts", "copy-images", "copy-plugin-templates", "copy-svg", "copy-extras"]);
+gulp.task("copy", ["copy-fonts", "copy-images", "copy-images-plugins", "copy-plugin-templates", "copy-svg", "copy-extras"]);
 
 gulp.task("express", function() {
     var express = require("express");
