@@ -165,10 +165,11 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame) ->
                 $el.find(".new-value input:visible").first().focus()
 
         saveValue = (target) ->
-            form = target.parents("form").checksley()
+            formEl = target.parents("form")
+            form = formEl.checksley()
             return if not form.validate()
 
-            value = target.scope().value
+            value = formEl.scope().value
             promise = $repo.save(value)
             promise.then =>
                 row = target.parents(".row.table-main")
@@ -179,7 +180,8 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame) ->
                 form.setErrors(data)
 
         saveNewValue = (target) ->
-            form = target.parents("form").checksley()
+            formEl = target.parents("form")
+            form = formEl.checksley()
             return if not form.validate()
 
             $scope.newValue.project = $scope.project.id
@@ -199,7 +201,8 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame) ->
 
         cancel = (target) ->
             row = target.parents(".row.table-main")
-            value = target.scope().value
+            formEl = target.parents("form")
+            value = formEl.scope().value
             $scope.$apply ->
                 row.addClass("hidden")
                 value.revert()
@@ -261,7 +264,9 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame) ->
         $el.on "click", ".delete-value", (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
-            value = target.scope().value
+            formEl = target.parents("form")
+            value = formEl.scope().value
+
             choices = {}
             _.each $scope.values, (option) ->
                 if value.id != option.id
