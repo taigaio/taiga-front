@@ -89,12 +89,22 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         {templateUrl: "admin/admin-project-modules.html"})
     $routeProvider.when("/project/:pslug/admin/project-profile/export",
         {templateUrl: "admin/admin-project-export.html"})
-    $routeProvider.when("/project/:pslug/admin/project-values/us",
-        {templateUrl: "admin/admin-project-values-us.html"})
-    $routeProvider.when("/project/:pslug/admin/project-values/task",
-        {templateUrl: "admin/admin-project-values-task.html"})
-    $routeProvider.when("/project/:pslug/admin/project-values/issue",
-        {templateUrl: "admin/admin-project-values-issue.html"})
+    $routeProvider.when("/project/:pslug/admin/project-profile/reports",
+        {templateUrl: "admin/admin-project-reports.html"})
+
+    $routeProvider.when("/project/:pslug/admin/project-values/status",
+        {templateUrl: "admin/admin-project-values-status.html"})
+    $routeProvider.when("/project/:pslug/admin/project-values/points",
+        {templateUrl: "admin/admin-project-values-points.html"})
+    $routeProvider.when("/project/:pslug/admin/project-values/priorities",
+        {templateUrl: "admin/admin-project-values-priorities.html"})
+    $routeProvider.when("/project/:pslug/admin/project-values/severities",
+        {templateUrl: "admin/admin-project-values-severities.html"})
+    $routeProvider.when("/project/:pslug/admin/project-values/types",
+        {templateUrl: "admin/admin-project-values-types.html"})
+    $routeProvider.when("/project/:pslug/admin/project-values/custom-fields",
+        {templateUrl: "admin/admin-project-values-custom-fields.html"})
+
     $routeProvider.when("/project/:pslug/admin/memberships",
         {templateUrl: "admin/admin-memberships.html"})
     # Admin - Roles
