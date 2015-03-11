@@ -640,7 +640,7 @@ class CsvExporterController extends taiga.Controller
         @rootscope.$on("project:loaded", @.setCsvUuid)
         @scope.$watch "csvUuid", (value) =>
             if value
-                @scope.csvUrl = @urls.resolve("#{@.type}-csv", value)
+                @scope.csvUrl = @urls.resolveAbsolute("#{@.type}-csv", value)
             else
                 @scope.csvUrl = ""
 
