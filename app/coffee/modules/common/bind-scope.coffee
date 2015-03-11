@@ -6,7 +6,9 @@ BindScope = (config) ->
 
     link = ($scope, $el) ->
         if !config.debugInfo
-            $el.data('scope', $scope)
+            $el
+                .data('scope', $scope)
+                .addClass('tg-scope')
 
     return {link: link}
 

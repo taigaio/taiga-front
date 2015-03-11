@@ -605,7 +605,8 @@ BacklogDirective = ($repo, $rootscope) ->
             ussDom = $el.find(".backlog-table-body .user-stories input:checkbox:checked")
 
             ussToMove = _.map ussDom, (item) ->
-                itemScope = angular.element(item).scope()
+                item =  $(item).closest('.tg-scope')
+                itemScope = item.scope()
                 itemScope.us.milestone = $scope.sprints[0].id
                 return itemScope.us
 
