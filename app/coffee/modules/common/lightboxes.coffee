@@ -45,6 +45,8 @@ class LightboxService extends taiga.Service
 
         @animationFrame.add =>
             $el.addClass("open")
+
+        @animationFrame.add =>
             lightboxContent.show()
             defered.resolve()
 
