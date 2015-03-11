@@ -2,7 +2,7 @@ section.project-csv(ng-controller='#{controller}  as ctrl', tg-select-input-text
     div.project-values-title
         h2 Export #{csvType} Data
             span (.csv format)
-        a.button.button-gray(title="Download #{csvType} CSV", ng-href="{{csvUrl}}")
+        a.button.button-gray(title="Download #{csvType} CSV", ng-href="{{csvUrl}}", ng-show="csvUrl")
             span Download CSV
 
     p Get all information about your project #{csvType}. Save all your data to a <em>.csv</em> file and open it in your favourite text editor or spreadsheet. You will be able to visualize and analize all your data easily.
