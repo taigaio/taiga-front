@@ -227,7 +227,7 @@
     }
     .activity-content {
         flex-shrink: 0;
-        max-width: calc(100% - 80px);
+        width: calc(100% - 80px);
     }
     .changes {
         background: $whitish;
