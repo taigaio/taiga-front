@@ -128,15 +128,16 @@ CustomAttributeValueDirective = ($template, $selectedText) ->
     link = ($scope, $el, $attrs, $ctrl) ->
         render = (attributeValue, edit=false) ->
             value = attributeValue.value
+            editable = isEditable()
             ctx = {
                 id: attributeValue.id
                 name: attributeValue.name
                 description: attributeValue.description
                 value: value
-                isEditable: isEditable()
+                isEditable: editable
             }
 
-            if edit or not value
+            if editable and (edit or not value)
                 html = templateEdit(ctx)
             else
                 html = template(ctx)
