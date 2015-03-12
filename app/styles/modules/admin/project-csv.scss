@@ -1,4 +1,5 @@
 .project-csv {
+    margin-bottom: 2.5rem;
     .project-values-title {
         margin-bottom: 1rem;
     }
@@ -10,8 +11,9 @@
         margin-bottom: 1rem;
         a {
             @extend %small;
+            min-width: 110px;
         }
-        span:first-child {
+        .icon {
             margin-right: .3rem;
         }
     }

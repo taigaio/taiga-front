@@ -1,20 +1,18 @@
 section.project-csv(ng-controller='#{controller}  as ctrl', tg-select-input-text)
     div.project-values-title
-        h2 Export #{csvType} Data
-            span (.csv format)
+        h2 #{csvType} reports
         a.button.button-gray(title="Download #{csvType} CSV", ng-href="{{csvUrl}}", ng-show="csvUrl")
             span Download CSV
 
     p Get all information about your project #{csvType}. Save all your data to a <em>.csv</em> file and open it in your favourite text editor or spreadsheet. You will be able to visualize and analize all your data easily.
+
     div.csv-regenerate-field
         .field-with-options
             input(type="text", placeholder="Please regenerate CSV url", readonly, ng-model="csvUrl")
             .option-wrapper.select-input-content
                 .icon.icon-copy
         a(href="", title="Regenerate CSV url", ng-click="ctrl.regenerateUuid()")
-           span.icon.icon-reload
-           span Regenerate
-
-    a.help-button(href="https://taiga.io/support/csv-reports/", target="_blank")
-        span.icon.icon-help
-        span How to use this on my own spreadsheet?
+           span.icon.icon-plus(ng-hide="csvUrl")
+           span(ng-hide="csvUrl") Generate URL
+           span.icon.icon-reload(ng-Show="csvUrl")
+           span(ng-Show="csvUrl") Regenerate

@@ -1,5 +1,5 @@
 div.wrapper(ng-controller="ProjectProfileController as ctrl",
-            ng-init="section='admin'; sectionName='Export'")
+            ng-init="section='admin'; sectionName='Reports'")
     sidebar.menu-secondary.sidebar(tg-admin-navigation="project-profile")
         include ../includes/modules/admin-menu
 
@@ -9,7 +9,7 @@ div.wrapper(ng-controller="ProjectProfileController as ctrl",
     section.main.admin-common(tg-project-export)
         header
             include ../includes/components/mainTitle
-            p.admin-subtitle Export your project data in CSV format.
+            p.admin-subtitle Export your project data in CSV format and make your own reports
 
         - var csvType = "US";
         - var controller = "CsvExporterUserstoriesController";
@@ -25,3 +25,6 @@ div.wrapper(ng-controller="ProjectProfileController as ctrl",
         - var controller = "CsvExporterIssuesController";
         div.admin-attributes-section
             include ../includes/modules/admin/project-csv
+            a.help-button(href="https://taiga.io/support/csv-reports/", target="_blank")
+                span.icon.icon-help
+                span How to use this on my own spreadsheet?
