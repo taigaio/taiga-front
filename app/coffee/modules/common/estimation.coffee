@@ -224,7 +224,12 @@ EstimationsService = ($template, $qqueue, $repo, $confirm, $q) ->
             @$el.find(".pop-points-open").show()
 
     create = ($el, us, project) ->
-        estimationProcess = new EstimationProcess($el, us, project)
+        estimationProcess = $el.data("estimationProcess")
+
+        if !estimationProcess
+            estimationProcess = new EstimationProcess($el, us, project)
+            $el.data("estimationProcess", estimationProcess)
+
         if estimationProcess.isEditable
             estimationProcess.bindClickEvents()
         else
