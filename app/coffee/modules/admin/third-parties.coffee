@@ -38,10 +38,12 @@ class WebhooksController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.
         "$tgRepo",
         "$tgResources",
         "$routeParams",
+        "$tgLocation",
+        "$tgNavUrls",
         "$appTitle"
     ]
 
-    constructor: (@scope, @repo, @rs, @params, @appTitle) ->
+    constructor: (@scope, @repo, @rs, @params, @location, @navUrls, @appTitle) ->
         bindMethods(@)
 
         @scope.sectionName = "Webhooks" #i18n
@@ -62,6 +64,9 @@ class WebhooksController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.
 
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
+            if not project.i_am_owner
+                @location.path(@navUrls.resolve("permission-denied"))
+
             @scope.project = project
             @scope.$emit('project:loaded', project)
             return project

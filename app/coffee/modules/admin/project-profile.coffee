@@ -65,6 +65,9 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
+            if not project.i_am_owner
+                @location.path(@navUrls.resolve("permission-denied"))
+
             @scope.project = project
             @scope.pointsList = _.sortBy(project.points, "order")
             @scope.usStatusList = _.sortBy(project.us_statuses, "order")

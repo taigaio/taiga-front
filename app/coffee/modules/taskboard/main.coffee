@@ -104,6 +104,9 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
+            if not project.is_backlog_activated
+                @location.path(@navUrls.resolve("permission-denied"))
+
             @scope.project = project
             # Not used at this momment
             @scope.pointsList = _.sortBy(project.points, "order")
