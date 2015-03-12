@@ -1,20 +1,20 @@
 h1 Your projects
 form
     fieldset
-        input(type="text", placeholder="Search in...", class="search-project")
-        a(class="icon icon-search")
+        input.search-project(type="text", placeholder="Search in...")
+        a.icon.icon-search
 
-div(class="create-project-button-wrapper")
-   a(class="button button-green create-project-button" href="" title="Create new project").
-       Create project
+div.create-project-button-wrapper
+   a.button-green.create-project-button(href="" title="Create new project")
+       span Create project
 
    div(tg-import-project-button)
-       a(class="button button-blackish import-project-button" href="" title="Import project")
-           span(class="icon icon-upload")
-       input(class="import-file hidden" type="file")
+       a.button-blackish.import-project-button(href="" title="Import project")
+           span.icon.icon-upload
+       input.import-file.hidden(type="file")
 
-div(class="projects-pagination" tg-projects-pagination)
-    a(class="v-pagination-previous icon icon-arrow-up", href="")
-    div(class="v-pagination-list")
-        ul(class="projects-list")
-    a(class="v-pagination-next icon icon-arrow-bottom" href="")
+div.projects-pagination(tg-projects-pagination)
+    a.v-pagination-previous.icon.icon-arrow-up(href="", title="Show previous projects")
+    div.v-pagination-list
+        ul.projects-list
+    a.v-pagination-next.icon.icon-arrow-bottom(href="", title="Show next projects")
