@@ -110,7 +110,8 @@ $column-margin: 0 10px 0 0;
 
 .taskboard-table-body {
     height: 700px;
-    overflow: auto;
+    overflow-x: scroll;
+    overflow-y: scroll;
     width: 100%;
     .task-column {
         flex-basis: $column-width;
