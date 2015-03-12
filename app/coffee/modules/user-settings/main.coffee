@@ -91,8 +91,8 @@ UserProfileDirective = ($confirm, $auth, $repo) ->
             changeEmail = $scope.user.isAttributeModified("email")
 
             onSuccess = (data) =>
-                user = $model.make_model("users", data)
-                $auth.setUser(user)
+                $auth.setUser(data)
+
                 if changeEmail
                     $confirm.success("<strong>Check your inbox!</strong><br />
                            We have sent a mail to your account<br />
@@ -113,7 +113,7 @@ UserProfileDirective = ($confirm, $auth, $repo) ->
 
     return {link:link}
 
-module.directive("tgUserProfile", ["$tgConfirm", "$tgAuth", "$tgRepo",  UserProfileDirective])
+module.directive("tgUserProfile", ["$tgConfirm", "$tgAuth", "$tgRepo", UserProfileDirective])
 
 
 #############################################################################
