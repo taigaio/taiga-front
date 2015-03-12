@@ -36,6 +36,10 @@ resourceProvider = ($config, $repo, $http, $urls, $auth, $q, $rootScope) ->
     service.list = ->
         return $repo.queryMany("projects")
 
+    service.listByMember = (memberId) ->
+        params = {"member": memberId}
+        return $repo.queryMany("projects", params)
+
     service.templates = ->
         return $repo.queryMany("project-templates")
 
