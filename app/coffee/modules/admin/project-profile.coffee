@@ -297,3 +297,67 @@ ProjectExportDirective = ($window, $rs, $confirm) ->
     return {link:link}
 
 module.directive("tgProjectExport", ["$window", "$tgResources", "$tgConfirm", ProjectExportDirective])
+
+
+#############################################################################
+## CSV Export Controllers
+#############################################################################
+
+class CsvExporterController extends taiga.Controller
+    @.$inject = [
+        "$scope",
+        "$rootScope",
+        "$tgUrls",
+        "$tgConfirm",
+        "$tgResources",
+    ]
+
+    constructor: (@scope, @rootscope, @urls, @confirm, @rs) ->
+        @rootscope.$on("project:loaded", @.setCsvUuid)
+        @scope.$watch "csvUuid", (value) =>
+            if value
+                @scope.csvUrl = @urls.resolveAbsolute("#{@.type}-csv", value)
+            else
+                @scope.csvUrl = ""
+
+    setCsvUuid: =>
+        @scope.csvUuid = @scope.project["#{@.type}_csv_uuid"]
+
+    _generateUuid: (finish) =>
+        promise = @rs.projects["regenerate_#{@.type}_csv_uuid"](@scope.projectId)
+
+        promise.then (data) =>
+            @scope.csvUuid = data.data?.uuid
+
+        promise.then null, =>
+            @confirm.notify("error")
+
+        promise.finally ->
+            finish()
+        return promise
+
+    regenerateUuid: ->
+        #TODO: i18n
+        if @scope.csvUuid
+            title = "Change URL"
+            subtitle = "You going to change the CSV data access url. The previous url will be disabled. Are you sure?"
+            @confirm.ask(title, subtitle).then @._generateUuid
+        else
+            @._generateUuid(_.identity)
+
+
+class CsvExporterUserstoriesController extends CsvExporterController
+    type: "userstories"
+
+
+class CsvExporterTasksController extends CsvExporterController
+    type: "tasks"
+
+
+class CsvExporterIssuesController extends CsvExporterController
+    type: "issues"
+
+
+module.controller("CsvExporterUserstoriesController", CsvExporterUserstoriesController)
+module.controller("CsvExporterTasksController", CsvExporterTasksController)
+module.controller("CsvExporterIssuesController", CsvExporterIssuesController)

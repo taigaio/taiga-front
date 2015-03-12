@@ -63,7 +63,7 @@ class ProjectValuesSectionController extends mixOf(taiga.Controller, taiga.PageM
         return @rs.projects.get(@scope.projectId).then (project) =>
             if not project.i_am_owner
                 @location.path(@navUrls.resolve("permission-denied"))
-                
+
             @scope.project = project
             @scope.$emit('project:loaded', project)
             return project
@@ -354,6 +354,7 @@ ColorSelectionDirective = () ->
 
 module.directive("tgColorSelection", ColorSelectionDirective)
 
+
 #############################################################################
 ## Custom Attributes Controller
 #############################################################################
@@ -625,60 +626,3 @@ ProjectCustomAttributesDirective = ($log, $confirm, animationFrame) ->
     return {link: link}
 
 module.directive("tgProjectCustomAttributes", ["$log", "$tgConfirm", "animationFrame", ProjectCustomAttributesDirective])
-
-#############################################################################
-## CSV Exporter directive
-#############################################################################
-
-class CsvExporterController extends taiga.Controller
-    @.$inject = [
-        "$scope",
-        "$rootScope",
-        "$tgUrls",
-        "$tgConfirm",
-        "$tgResources",
-    ]
-
-    constructor: (@scope, @rootscope, @urls, @confirm, @rs) ->
-        @rootscope.$on("project:loaded", @.setCsvUuid)
-        @scope.$watch "csvUuid", (value) =>
-            if value
-                @scope.csvUrl = @urls.resolveAbsolute("#{@.type}-csv", value)
-            else
-                @scope.csvUrl = ""
-
-    setCsvUuid: =>
-        @scope.csvUuid = @scope.project["#{@.type}_csv_uuid"]
-
-    _generateUuid: (finish) =>
-        promise = @rs.projects["regenerate_#{@.type}_csv_uuid"](@scope.projectId)
-
-        promise.then (data) =>
-            @scope.csvUuid = data.data?.uuid
-
-        promise.then null, =>
-            @confirm.notify("error")
-
-        promise.finally ->
-            finish()
-        return promise
-
-    regenerateUuid: ->
-        #TODO: i18n
-        if @scope.csvUuid
-            @confirm.ask("Change URL", "You going to change the CSV data access url. The previous url will be disabled. Are you sure?").then @._generateUuid
-        else
-            @._generateUuid(_.identity)
-
-class CsvExporterUserstoriesController extends CsvExporterController
-    type: "userstories"
-
-class CsvExporterTasksController extends CsvExporterController
-    type: "tasks"
-
-class CsvExporterIssuesController extends CsvExporterController
-    type: "issues"
-
-module.controller("CsvExporterUserstoriesController", CsvExporterUserstoriesController)
-module.controller("CsvExporterTasksController", CsvExporterTasksController)
-module.controller("CsvExporterIssuesController", CsvExporterIssuesController)
