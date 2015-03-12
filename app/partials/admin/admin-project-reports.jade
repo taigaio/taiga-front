@@ -9,7 +9,9 @@ div.wrapper(ng-controller="ProjectProfileController as ctrl",
     section.main.admin-common(tg-project-export)
         header
             include ../includes/components/mainTitle
-            p.admin-subtitle Export your project data in CSV format and make your own reports
+            p.admin-subtitle Export your project data in CSV format and make your own reports.
+
+        p Download a CSV file or copy the generated URL and open it in your favourite text editor or spreadsheet to make your own project data reports. You will be able to visualize and analize all your data easily.
 
         - var csvType = "US";
         - var controller = "CsvExporterUserstoriesController";
