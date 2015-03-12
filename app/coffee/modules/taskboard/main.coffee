@@ -116,6 +116,8 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
 
             @scope.$emit('project:loaded', project)
 
+            @.fillUsersAndRoles(project.users, project.roles)
+
             return project
 
     loadSprintStats: ->
@@ -185,7 +187,6 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
             return data
 
         return promise.then(=> @.loadProject())
-                      .then(=> @.loadUsersAndRoles())
                       .then(=> @.loadTaskboard())
 
     refreshTasksOrder: (tasks) ->
