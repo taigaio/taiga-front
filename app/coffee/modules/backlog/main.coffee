@@ -544,6 +544,8 @@ BacklogDirective = ($repo, $rootscope) ->
                 total_points = stats.total_points
                 current_sum = stats.assigned_points
 
+                return if not $scope.visibleUserstories
+
                 for us, i in $scope.visibleUserstories
                     current_sum += us.total_points
 
