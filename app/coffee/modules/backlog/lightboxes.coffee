@@ -103,6 +103,9 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading)
                 $repo.remove($scope.sprint).then(onSuccess, onError)
 
         $scope.$on "sprintform:create", (event, projectId) ->
+            form = $el.find("form").checksley()
+            form.reset()
+
             createSprint = true
             $scope.sprint.project = projectId
             $scope.sprint.name = null
