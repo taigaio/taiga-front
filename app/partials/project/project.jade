@@ -3,19 +3,18 @@ div.wrapper(ng-controller="ProjectController as ctrl")
         h1
             span.green(tg-bo-bind="project.name", class="project-name")
         div.summary
-            ul.home-project-info-list
-                li
-                    span.info-num(tg-bo-bind="stats.total_points")
-                    span.info-text project<br/> points
-                li
-                    span.info-num(tg-bo-bind="stats.defined_points")
-                    span.info-text defined<br/> points
-                li
-                    span.info-num(tg-bo-bind="stats.assigned_points")
-                    span.info-text assigned<br/> points
-                li
-                    span.info-num(tg-bo-bind="stats.closed_points")
-                    span.info-text closed<br/> points
+            div.summary-stats
+                span.info-num(tg-bo-bind="stats.total_points")
+                span.info-text project<br/> points
+            div.summary-stats
+                span.info-num(tg-bo-bind="stats.defined_points")
+                span.info-text defined<br/> points
+            div.summary-stats
+                span.info-num(tg-bo-bind="stats.assigned_points")
+                span.info-text assigned<br/> points
+            div.summary-stats
+                span.info-num(tg-bo-bind="stats.closed_points")
+                span.info-text closed<br/> points
         div.project-data-container
             p.description(tg-bo-bind="project.description")
             ul
