@@ -1,0 +1,32 @@
+div.wrapper(ng-controller="ProjectProfileController as ctrl",
+            ng-init="section='admin'; sectionName='Reports'")
+    sidebar.menu-secondary.sidebar(tg-admin-navigation="project-profile")
+        include ../includes/modules/admin-menu
+
+    sidebar.menu-tertiary.sidebar(tg-admin-navigation="reports")
+        include ../includes/modules/admin-submenu-project-profile
+
+    section.main.admin-common(tg-project-export)
+        header
+            include ../includes/components/mainTitle
+            p.admin-subtitle Export your project data in CSV format and make your own reports.
+
+        p Download a CSV file or copy the generated URL and open it in your favourite text editor or spreadsheet to make your own project data reports. You will be able to visualize and analize all your data easily.
+
+        - var csvType = "US";
+        - var controller = "CsvExporterUserstoriesController";
+        div.admin-attributes-section
+            include ../includes/modules/admin/project-csv
+
+        - var csvType = "Task";
+        - var controller = "CsvExporterTasksController";
+        div.admin-attributes-section
+            include ../includes/modules/admin/project-csv
+
+        - var csvType = "Issues";
+        - var controller = "CsvExporterIssuesController";
+        div.admin-attributes-section
+            include ../includes/modules/admin/project-csv
+            a.help-button(href="https://taiga.io/support/csv-reports/", target="_blank")
+                span.icon.icon-help
+                span How to use this on my own spreadsheet?

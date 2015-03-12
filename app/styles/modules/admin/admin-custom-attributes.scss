@@ -4,26 +4,31 @@
 }
 
 .custom-fields-table {
+    margin-bottom: 2em;
     .row {
         border-bottom: 0;
         padding: .5rem 0;
-
     }
     .table-header {
         @extend %bold;
-        border-bottom: 1px solid $gray-light;
+        border-bottom: 3px solid $whitish;
         .custom-name span,
         .custom-description span {
             padding-left: 1.1rem;
         }
     }
     .table-body {
+        form:last-child {
+            .row {
+                border: 0;
+            }
+        }
         .row:hover {
             background: rgba($fresh-taiga, .05);
             cursor: move;
             transition: background .2s linear;
             .icon-drag-v,
-            .custom-options-wrapper {
+            .custom-options {
                 opacity: 1;
                 transition: opacity .2s linear;
             }
@@ -72,6 +77,7 @@
         flex-basis: 100px;
         flex-grow: 0;
         flex-shrink: 0;
+        opacity: 0;
         text-align: center;
         a {
             color: $gray-light;

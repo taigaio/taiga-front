@@ -84,9 +84,15 @@ urls = {
     "project-admin-project-profile-default-values": "/project/:project/admin/project-profile/default-values"
     "project-admin-project-profile-modules": "/project/:project/admin/project-profile/modules"
     "project-admin-project-profile-export": "/project/:project/admin/project-profile/export"
-    "project-admin-project-values-us": "/project/:project/admin/project-values/us"
-    "project-admin-project-values-task": "/project/:project/admin/project-values/task"
-    "project-admin-project-values-issue": "/project/:project/admin/project-values/issue"
+    "project-admin-project-profile-reports": "/project/:project/admin/project-profile/reports"
+
+    "project-admin-project-values-status": "/project/:project/admin/project-values/status"
+    "project-admin-project-values-points": "/project/:project/admin/project-values/points"
+    "project-admin-project-values-priorities": "/project/:project/admin/project-values/priorities"
+    "project-admin-project-values-severities": "/project/:project/admin/project-values/severities"
+    "project-admin-project-values-types": "/project/:project/admin/project-values/types"
+    "project-admin-project-values-custom-fields": "/project/:project/admin/project-values/custom-fields"
+
     "project-admin-memberships": "/project/:project/admin/memberships"
     "project-admin-roles": "/project/:project/admin/roles"
     "project-admin-third-parties-webhooks": "/project/:project/admin/third-parties/webhooks"

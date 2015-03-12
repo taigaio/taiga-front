@@ -21,9 +21,16 @@
 
 .project-values-header {
     @extend %bold;
-    border-bottom: 2px solid $gray-light;
+    border-bottom: 3px solid $whitish;
 }
 .project-values-body {
+    form {
+        &:last-child {
+            .project-values-row {
+                border: 0;
+            }
+        }
+    }
     .project-values-row {
         &:hover {
             background: lighten($green-taiga, 60%);

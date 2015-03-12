@@ -2,7 +2,7 @@
     .table-header {
         @extend %medium;
         @extend %bold;
-        border-bottom: 2px solid $gray-light;
+        border-bottom: 3px solid $whitish;
         &:hover {
             background: transparent;
         }
@@ -10,15 +10,38 @@
             padding-left: 50px;
         }
     }
+    form {
+        &:last-child {
+            .row {
+                border: 0;
+            }
+        }
+    }
     .row {
         align-items: center;
+        border-bottom: 1px solid $whitish;
         display: flex;
         justify-content: center;
         padding: 1rem;
         &:hover {
+            background: lighten($green-taiga, 60%);
+            cursor: move;
+            transition: background .2s ease-in;
+            .icon {
+                opacity: 1;
+                transition: opacity .2s ease-in;
+            }
             .options-column {
                 opacity: 1;
                 transition: opacity .3s linear;
+            }
+        }
+        &:last-child {
+            border: 0;
+        }
+        &.edition {
+            .current-color {
+                cursor: pointer;
             }
         }
         &.edition,
@@ -27,11 +50,6 @@
         }
         &.hidden {
             display: none;
-        }
-        &.edition {
-            .current-color {
-                cursor: pointer;
-            }
         }
         .color-column {
             flex-basis: 60px;
@@ -86,18 +104,7 @@
             opacity: 1;
         }
     }
-    .table-main {
-        border-bottom: 1px solid $whitish;
-        .row:hover {
-            background: lighten($green-taiga, 60%);
-            cursor: move;
-            transition: background .2s ease-in;
-            .icon {
-                opacity: 1;
-                transition: opacity .2s ease-in;
-            }
-        }
-    }
+
     .current-color {
         background-color: $gray-light;
         border-radius: 2px;
