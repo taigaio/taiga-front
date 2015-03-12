@@ -225,6 +225,9 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
     loadProject: ->
         return @rs.projects.getBySlug(@params.pslug).then (project) =>
+            if not project.is_backlog_activated
+                @location.path(@navUrls.resolve("permission-denied"))
+
             @scope.projectId = project.id
             @scope.project = project
             @scope.totalClosedMilestones = project.total_closed_milestones
