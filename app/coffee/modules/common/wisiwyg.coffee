@@ -214,14 +214,18 @@ tgMarkitupDirective = ($rootscope, $rs, $tr, $selectedText, $template) ->
                 {
                     name: $tr.t("markdown-editor.picture")
                     key: "P"
-                    replaceWith: '![[![Alternative text]!]]([![Url:!:http://]!] "[![Title]!]")'
+                    replaceWith: '![[![Alternative text]!]](<<<[![Url:!:http://]!]>>> "[![Title]!]")'
+                    beforeInsert:(markItUp) -> prepareUrlFormatting(markItUp)
+                    afterInsert:(markItUp) -> urlFormatting(markItUp)
                 },
                 {
                     name: $tr.t("markdown-editor.link")
                     key: "L"
                     openWith: "["
-                    closeWith: ']([![Url:!:http://]!] "[![Title]!]")'
+                    closeWith: '](<<<[![Url:!:http://]!]>>> "[![Title]!]")'
                     placeHolder: $tr.t("markdown-editor.link-placeholder")
+                    beforeInsert:(markItUp) -> prepareUrlFormatting(markItUp)
+                    afterInsert:(markItUp) -> urlFormatting(markItUp)
                 },
                 {
                     separator: "---------------"
@@ -255,6 +259,45 @@ tgMarkitupDirective = ($rootscope, $rs, $tr, $selectedText, $template) ->
             afterInsert: (event) ->
                 target = angular.element(event.textarea)
                 $model.$setViewValue(target.val())
+
+        prepareUrlFormatting = (markItUp) ->
+            console.log(markItUp)
+            regex = /(<<<|>>>)/gi
+            result = 0
+            indices = []
+            (indices.push(result.index)) while ( (result = regex.exec(markItUp.textarea.value)) )
+            markItUp.donotparse = indices
+            console.log(indices)
+
+        urlFormatting = (markItUp) ->
+            console.log(markItUp.donotparse)
+            regex = /<<</gi
+            result = 0
+            startIndex = 0
+
+            loop
+                result = regex.exec(markItUp.textarea.value)
+                break if !result
+                if result.index not in markItUp.donotparse
+                    startIndex = result.index
+                    break
+
+            regex = />>>/gi
+            endIndex = 0
+            loop
+                result = regex.exec(markItUp.textarea.value)
+                break if !result
+                if result.index not in markItUp.donotparse
+                    endIndex = result.index
+                    break
+
+            value = markItUp.textarea.value
+            url = value.substring(startIndex, endIndex).replace('<<<', '').replace('>>>', '')
+            url = url.replace('(', '%28').replace(')', '%29')
+            url = url.replace('[', '%5B').replace(']', '%5D')
+            value = value.substring(0, startIndex) + url + value.substring(endIndex+3, value.length)
+            markItUp.textarea.value = value
+            markItUp.donotparse = undefined
 
         markdownTitle = (markItUp, char) ->
             heading = ""
