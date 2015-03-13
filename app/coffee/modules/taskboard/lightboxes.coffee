@@ -40,7 +40,7 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootscope, $loading, lightboxSer
             $scope.isNew = true
 
             # Update texts for creation
-            $el.find(".button-green span").html("Create") #TODO: i18n
+            $el.find(".button-green").html("Create") #TODO: i18n
             $el.find(".title").html("New task  ") #TODO: i18n
             $el.find(".tag-input").val("")
 
@@ -51,7 +51,7 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootscope, $loading, lightboxSer
             $scope.isNew = false
 
             # Update texts for edition
-            $el.find(".button-green span").html("Save") #TODO: i18n
+            $el.find(".button-green").html("Save") #TODO: i18n
             $el.find(".title").html("Edit task  ") #TODO: i18n
             $el.find(".tag-input").val("")
 
