@@ -1,7 +1,7 @@
 section.project-csv(ng-controller='#{controller} as ctrl', tg-select-input-text)
     div.project-values-title
         h2 #{csvType} reports
-        a.button.button-gray(title="Download #{csvType} CSV", ng-href="{{csvUrl}}", ng-show="csvUrl")
+        a.button.button-gray(title="Download #{csvType} CSV", ng-href="{{csvUrl}}", ng-show="csvUrl", target="_blank")
             span Download CSV
 
     div.csv-regenerate-field
