@@ -35,6 +35,7 @@
     }
     .activity-fromto {
         @extend %small;
+        word-wrap: break-word;
     }
 }
 .history-tabs {
