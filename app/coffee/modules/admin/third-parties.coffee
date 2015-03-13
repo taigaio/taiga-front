@@ -128,8 +128,6 @@ WebhookDirective = ($rs, $repo, $confirm, $loading) ->
         save = debounce 2000, (target) ->
             form = target.parents("form").checksley()
             return if not form.validate()
-
-            value = target.scope().value
             promise = $repo.save(webhook)
             promise.then =>
                 showVisualizationMode()
