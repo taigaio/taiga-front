@@ -247,9 +247,9 @@
     .options {
         display: flex;
         a {
-            flex-grow: 1;
             padding: 8px 0;
             text-align: center;
+            width: 100%;
             &:first-child {
                 margin-right: .5rem;
             }
