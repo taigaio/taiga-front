@@ -75,7 +75,7 @@ ClassPermissionDirective = ->
 
             if negation && project.my_permissions.indexOf(permission) == -1
                 $el.addClass(className)
-            else if project.my_permissions.indexOf(permission) != -1
+            else if !negation && project.my_permissions.indexOf(permission) != -1
                 $el.addClass(className)
             else
                 $el.removeClass(className)
