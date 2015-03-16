@@ -170,7 +170,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
             @scope.sprints = sprints
             @scope.openSprints = _.filter(sprints, (sprint) => not sprint.closed).reverse()
-            @scope.closedSprints =  []
+            @scope.closedSprints =  [] if !@scope.closedSprints
 
             @scope.sprintsCounter = sprints.length
             @scope.sprintsById = groupBy(sprints, (x) -> x.id)
