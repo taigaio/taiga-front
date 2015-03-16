@@ -536,7 +536,9 @@ EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading,
             $el.find('.view-description').hide()
             $el.find('textarea').focus()
 
-        $el.on "click", ".save", ->
+        $el.on "click", ".save", (e) ->
+            e.preventDefault()
+
             description = $scope.item.description
             save(description)
 
