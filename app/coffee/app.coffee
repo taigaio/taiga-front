@@ -234,7 +234,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         linewidth: "The subject must have a maximum size of %s"
     })
 
-    $compileProvider.debugInfoEnabled(window.taigaConfig.debugInfo)
+    $compileProvider.debugInfoEnabled(window.taigaConfig.debugInfo || false)
 
 init = ($log, $i18n, $config, $rootscope, $auth, $events, $analytics) ->
     $i18n.initialize($config.get("defaultLanguage"))
