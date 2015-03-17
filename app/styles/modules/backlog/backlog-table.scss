@@ -77,7 +77,7 @@
         padding-right: 3rem;
     }
     .pop-points-open {
-        @include popover(200px, 0, 260px, '', '');
+        @include popover(200px, 0, 30px, '', '');
         li {
             display: inline-block;
             width: 23%;
@@ -236,5 +236,9 @@
         cursor: move;
         opacity: 0;
         padding: .1rem .5rem 0 0;
+    }
+    .readonly {
+        cursor: auto;
+        padding-right: 45px;
     }
 }

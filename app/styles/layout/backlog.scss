@@ -1,13 +1,8 @@
-.backlog {
-    .new-us {
-        float: right;
-    }
-}
-
 .backlog-menu {
-    @include clearfix;
     background: $whitish;
     color: $blackish;
+    display: flex;
+    justify-content: space-between;
     margin-bottom: 1rem;
     padding: .5rem;
     .trans-button {
@@ -20,5 +15,8 @@
         span {
             vertical-align: middle;
         }
+    }
+    .button-bulk {
+        margin-left: .2rem;
     }
 }

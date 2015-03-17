@@ -36,47 +36,52 @@ module = angular.module("taigaBacklog")
 
 TaskboardSortableDirective = ($repo, $rs, $rootscope) ->
     link = ($scope, $el, $attrs) ->
-        oldParentScope = null
-        newParentScope = null
-        itemEl = null
-        tdom = $el
+        bindOnce $scope, "project", (project) ->
+            # If the user has not enough permissions we don't enable the sortable
+            if not (project.my_permissions.indexOf("modify_us") > -1)
+                return
 
-        deleteElement = (itemEl) ->
-            # Completelly remove item and its scope from dom
-            itemEl.scope().$destroy()
-            itemEl.off()
-            itemEl.remove()
+            oldParentScope = null
+            newParentScope = null
+            itemEl = null
+            tdom = $el
 
-        tdom.sortable({
-            handle: ".taskboard-task-inner",
-            dropOnEmpty: true
-            connectWith: ".taskboard-tasks-box"
-            revert: 400
-        })
+            deleteElement = (itemEl) ->
+                # Completelly remove item and its scope from dom
+                itemEl.scope().$destroy()
+                itemEl.off()
+                itemEl.remove()
 
-        tdom.on "sortstop", (event, ui) ->
-            parentEl = ui.item.parent()
-            itemEl = ui.item
-            itemTask = itemEl.scope().task
-            itemIndex = itemEl.index()
-            newParentScope = parentEl.scope()
+            tdom.sortable({
+                handle: ".taskboard-task-inner",
+                dropOnEmpty: true
+                connectWith: ".taskboard-tasks-box"
+                revert: 400
+            })
 
-            oldUsId = if oldParentScope.us then oldParentScope.us.id else null
-            oldStatusId = oldParentScope.st.id
-            newUsId = if newParentScope.us then newParentScope.us.id else null
-            newStatusId = newParentScope.st.id
+            tdom.on "sortstop", (event, ui) ->
+                parentEl = ui.item.parent()
+                itemEl = ui.item
+                itemTask = itemEl.scope().task
+                itemIndex = itemEl.index()
+                newParentScope = parentEl.scope()
 
-            if newStatusId != oldStatusId or newUsId != oldUsId
-                deleteElement(itemEl)
+                oldUsId = if oldParentScope.us then oldParentScope.us.id else null
+                oldStatusId = oldParentScope.st.id
+                newUsId = if newParentScope.us then newParentScope.us.id else null
+                newStatusId = newParentScope.st.id
 
-            $scope.$apply ->
-                $rootscope.$broadcast("taskboard:task:move", itemTask, newUsId, newStatusId, itemIndex)
+                if newStatusId != oldStatusId or newUsId != oldUsId
+                    deleteElement(itemEl)
 
-            ui.item.find('a').removeClass('noclick')
+                $scope.$apply ->
+                    $rootscope.$broadcast("taskboard:task:move", itemTask, newUsId, newStatusId, itemIndex)
 
-        tdom.on "sortstart", (event, ui) ->
-            oldParentScope = ui.item.parent().scope()
-            ui.item.find('a').addClass('noclick')
+                ui.item.find('a').removeClass('noclick')
+
+            tdom.on "sortstart", (event, ui) ->
+                oldParentScope = ui.item.parent().scope()
+                ui.item.find('a').addClass('noclick')
 
         $scope.$on "$destroy", ->
             $el.off()

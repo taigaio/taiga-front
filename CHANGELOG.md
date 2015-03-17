@@ -1,5 +1,19 @@
 # Changelog #
 
+
+## 1.6.0 Abies Bifolia (2015-03-17)
+
+### Features
+- Added custom fields per project for user stories, tasks and issues.
+- Add to the Admin Panel the export to CSV sections.
+- Reorganized the Admin Panel.
+
+### Misc
+- New contrib plugin for hipchat (by Δndrea Stagi)
+- Plugin based authentication.
+- Added Taiga Style Guide in support Pages to enhance open source design.
+- Lots of small and not so small bugfixes.
+
 ## 1.5.0 Betula Pendula - FOSDEM 2015 (2015-01-29)
 
 ### Features

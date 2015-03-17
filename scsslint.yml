@@ -77,6 +77,14 @@ linters:
     enabled: true
     extra_properties: []
 
+  QualifyingElement:
+    enabled: true
+    allow_element_with_attribute: true
+    exclude:
+        - 'app/styles/components/buttons.scss'
+        - 'app/styles/layout/forms.scss'
+        - 'app/styles/components/markdown-help.scss'
+
   SelectorDepth:
     enabled: true
     max_depth: 4
@@ -130,4 +138,3 @@ linters:
 
   Compass::*:
     enabled: false
-

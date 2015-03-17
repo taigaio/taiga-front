@@ -1,4 +1,10 @@
 section.colors-table
+
+    div.project-values-title
+        h2 {{ sectionName }}
+        a.button.button-gray.show-add-new(href="", title="Add New")
+            span Add new {{ objName }}
+
     div.table-header
         div.row
             div.color-column Color
@@ -7,7 +13,7 @@ section.colors-table
 
     div.table-main
         div.sortable
-            form(ng-repeat="value in values")
+            form(ng-repeat="value in values", tg-bind-scope)
                 div.row.table-main.visualization
                     span.icon.icon-drag-v
 

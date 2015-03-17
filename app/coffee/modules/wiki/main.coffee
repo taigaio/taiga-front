@@ -70,6 +70,9 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     loadProject: ->
         return @rs.projects.getBySlug(@params.pslug).then (project) =>
+            if not project.is_wiki_activated
+                @location.path(@navUrls.resolve("permission-denied"))
+
             @scope.projectId = project.id
             @scope.project = project
             @scope.$emit('project:loaded', project)
@@ -159,9 +162,6 @@ WikiSummaryDirective = ($log, $template) ->
             return if not wikiPage
             render(wikiPage)
 
-        $scope.$on "wiki:edit", (event, wikiPage) ->
-            render(wikiPage)
-
         $scope.$on "$destroy", ->
             $el.off()
 
@@ -215,8 +215,7 @@ EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $
                 if not wiki.id?
                     $analytics.trackEvent("wikipage", "create", "create wiki page", 1)
 
-                $model.$modelValue = wikiPage
-                $scope.$broadcast("wiki:edit", wikiPage)
+                $model.$setViewValue wikiPage
 
                 $confirm.notify("success")
                 switchToReadMode()
@@ -235,23 +234,16 @@ EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $
                 $loading.finish($el.find('.save-container'))
 
         $el.on "mousedown", ".view-wiki-content", (event) ->
-            # Prepare the scroll movement detection
-            target = angular.element(event.target)
-            if target.is('pre')
-                target.data("scroll-pos", target[0].scrollLeft)
-
-        $el.on "mouseup", ".view-wiki-content", (event) ->
-            # We want to dettect the a inside the div so we use the target and
-            # not the currentTarget
             target = angular.element(event.target)
             return if not isEditable()
-            return if target.is('a')
+            return if event.button == 2
+
+        $el.on "mouseup", ".view-wiki-content", (event) ->
+            target = angular.element(event.target)
             return if getSelectedText()
-            if target.is('pre')
-                prevPos = target.data("scroll-pos")
-                target.data("scroll-pos", null)
-                if prevPos != target[0].scrollLeft
-                    return
+            return if not isEditable()
+            return if target.is('a')
+            return if target.is('pre')
 
             switchToEditMode()
 

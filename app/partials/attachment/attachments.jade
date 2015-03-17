@@ -11,7 +11,7 @@ section.attachments
             input(id="add-attach", type="file", multiple="multiple")
 
     .attachment-body.sortable
-        .single-attachment(ng-repeat="attach in ctrl.attachments|filter:ctrl.filterAttachments track by attach.id" tg-attachment="attach")
+        .single-attachment(ng-repeat="attach in ctrl.attachments|filter:ctrl.filterAttachments track by attach.id" tg-attachment="attach", tg-bind-scope)
 
         .single-attachment(ng-repeat="file in ctrl.uploadingAttachments")
             .attachment-name

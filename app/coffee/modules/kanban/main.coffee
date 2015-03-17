@@ -138,13 +138,20 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @scope.userstories = userstories
 
             usByStatus = _.groupBy(userstories, "status")
+            us_archived = []
             for status in @scope.usStatusList
                 if not usByStatus[status.id]?
                     usByStatus[status.id] = []
+                if @scope.usByStatus?
+                    for us in @scope.usByStatus[status.id]
+                        if us.status != status.id
+                            us_archived.push(us)
 
                 # Must preserve the archived columns if loaded
-                if status.is_archived and @scope.usByStatus?
-                    usByStatus[status.id]  = @scope.usByStatus[status.id]
+                if status.is_archived and @scope.usByStatus? and @scope.usByStatus[status.id].length != 0
+                    for us in @scope.usByStatus[status.id].concat(us_archived)
+                        if us.status == status.id
+                            usByStatus[status.id].push(us)
 
                 usByStatus[status.id] = _.sortBy(usByStatus[status.id], "kanban_order")
 
@@ -176,6 +183,9 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
     loadProject: ->
         return @rs.projects.getBySlug(@params.pslug).then (project) =>
+            if not project.is_kanban_activated
+                @location.path(@navUrls.resolve("permission-denied"))
+
             @scope.projectId = project.id
             @scope.project = project
             @scope.projectId = project.id
@@ -292,36 +302,6 @@ KanbanDirective = ($repo, $rootscope) ->
     return {link: link}
 
 module.directive("tgKanban", ["$tgRepo", "$rootScope", KanbanDirective])
-
-
-#############################################################################
-## Kanban Column Height Fixer Directive
-#############################################################################
-
-KanbanColumnHeightFixerDirective = ->
-    mainPadding = 32 # px
-    scrollPadding = 0 # px
-
-    renderSize = ($el) ->
-        elementOffset = $el.parent().parent().offset().top
-        windowHeight = angular.element(window).height()
-        columnHeight = windowHeight - elementOffset - mainPadding - scrollPadding
-        $el.css("height", "#{columnHeight}px")
-
-    link = ($scope, $el, $attrs) ->
-        timeout(500, -> renderSize($el))
-
-        $scope.$on "resize", ->
-            renderSize($el)
-
-        $scope.$on "$destroy", ->
-            $el.off()
-
-    return {link:link}
-
-
-module.directive("tgKanbanColumnHeightFixer", KanbanColumnHeightFixerDirective)
-
 
 #############################################################################
 ## Kanban Archived Status Column Header Control
@@ -527,6 +507,9 @@ KanbanUserDirective = ($log) ->
     clickable = false
 
     link = ($scope, $el, $attrs, $model) ->
+        username_label = $el.parent().find("a.task-assigned")
+        username_label.addClass("not-clickable")
+
         if not $attrs.tgKanbanUserAvatar
             return $log.error "KanbanUserDirective: no attr is defined"
 
@@ -546,20 +529,21 @@ KanbanUserDirective = ($log) ->
 
             html = template(ctx)
             $el.html(html)
-            username_label = $el.parent().find("a.task-assigned")
-            username_label.html(ctx.name)
-            username_label.on "click", (event) ->
-                if $el.find("a").hasClass("noclick")
-                    return
-
-                us = $model.$modelValue
-                $ctrl = $el.controller()
-                $ctrl.changeUsAssignedTo(us)
+            username_label.text(ctx.name)
 
         bindOnce $scope, "project", (project) ->
             if project.my_permissions.indexOf("modify_us") > -1
                 clickable = true
                 $el.on "click", (event) =>
+                    if $el.find("a").hasClass("noclick")
+                        return
+
+                    us = $model.$modelValue
+                    $ctrl = $el.controller()
+                    $ctrl.changeUsAssignedTo(us)
+
+                username_label.removeClass("not-clickable")
+                username_label.on "click", (event) ->
                     if $el.find("a").hasClass("noclick")
                         return
 

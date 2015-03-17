@@ -94,6 +94,9 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
     loadProject: ->
         return @rs.projects.getBySlug(@params.pslug).then (project) =>
+            if not project.is_issues_activated
+                @location.path(@navUrls.resolve("permission-denied"))
+
             @scope.projectId = project.id
             @scope.project = project
             @scope.$emit('project:loaded', project)
@@ -530,6 +533,9 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template) -
 
         selectQFilter = debounceLeading 100, (value) ->
             return if value is undefined
+
+            $ctrl.replaceFilter("page", null)
+
             if value.length == 0
                 $ctrl.replaceFilter("q", null)
                 $ctrl.storeFilters()

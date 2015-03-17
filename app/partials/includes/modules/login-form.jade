@@ -10,9 +10,8 @@ div.login-form-container(tg-login)
             a.forgot-pass(href="", tg-nav="forgot-password", title="Did you forgot your password?") Forgot it?
 
         fieldset
-            button(type="submit", class="hidden")
-            a.button.button-login.button-gray.submit-button(href="", title="Sign in") Sign in
+            button.button-green.submit-button(type="submit", title="Sign in") Sign in
 
-        fieldset(tg-github-login-button)
+        fieldset(ng-repeat="plugin in contribPlugins|filter:{type: 'auth'}", ng-include="plugin.template")
 
     tg-public-register-message

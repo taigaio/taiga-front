@@ -1,4 +1,9 @@
-section.colors-table
+section.colors-table.admin-status-table
+    div.project-values-title
+        h2(ng-bind="sectionName")
+        a.button.button-gray.show-add-new(href="", title="Add New")
+            span Add new status
+
     div.table-header
         div.row
             div.color-column Color
@@ -9,7 +14,7 @@ section.colors-table
 
     div.table-main
         div.sortable
-            form(ng-repeat="value in values")
+            form(ng-repeat="value in values", tg-bind-scope)
                 div.row.table-main.visualization
                     span.icon.icon-drag-v
                     div.color-column

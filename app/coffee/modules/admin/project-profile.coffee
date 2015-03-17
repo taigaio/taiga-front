@@ -65,6 +65,9 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
+            if not project.i_am_owner
+                @location.path(@navUrls.resolve("permission-denied"))
+
             @scope.project = project
             @scope.pointsList = _.sortBy(project.points, "order")
             @scope.usStatusList = _.sortBy(project.us_statuses, "order")
@@ -120,7 +123,6 @@ ProjectProfileDirective = ($repo, $confirm, $loading, $navurls, $location) ->
         submitButton = $el.find(".submit-button")
 
         $el.on "submit", "form", submit
-        $el.on "click", ".submit-button", submit
 
     return {link:link}
 
@@ -154,7 +156,6 @@ ProjectDefaultValuesDirective = ($repo, $confirm, $loading) ->
         submitButton = $el.find(".submit-button")
 
         $el.on "submit", "form", submit
-        $el.on "click", ".submit-button", submit
 
         $scope.$on "$destroy", ->
             $el.off()
@@ -233,7 +234,7 @@ ProjectExportDirective = ($window, $rs, $confirm) ->
         resultTitleEl = $el.find(".result-title")
         setLoadingTitle = -> resultTitleEl.html("We are generating your dump file") # TODO: i18n
         setAsyncTitle = -> resultTitleEl.html("We are generating your dump file") # TODO: i18n
-        setSyncTitle = -> resultTitleEl.html("Your dump file ir ready!") # TODO: i18n
+        setSyncTitle = -> resultTitleEl.html("Your dump file is ready!") # TODO: i18n
 
         resultMessageEl = $el.find(".result-message ")
         setLoadingMessage = -> resultMessageEl.html("Please don't close this page.") # TODO: i18n
@@ -296,3 +297,67 @@ ProjectExportDirective = ($window, $rs, $confirm) ->
     return {link:link}
 
 module.directive("tgProjectExport", ["$window", "$tgResources", "$tgConfirm", ProjectExportDirective])
+
+
+#############################################################################
+## CSV Export Controllers
+#############################################################################
+
+class CsvExporterController extends taiga.Controller
+    @.$inject = [
+        "$scope",
+        "$rootScope",
+        "$tgUrls",
+        "$tgConfirm",
+        "$tgResources",
+    ]
+
+    constructor: (@scope, @rootscope, @urls, @confirm, @rs) ->
+        @rootscope.$on("project:loaded", @.setCsvUuid)
+        @scope.$watch "csvUuid", (value) =>
+            if value
+                @scope.csvUrl = @urls.resolveAbsolute("#{@.type}-csv", value)
+            else
+                @scope.csvUrl = ""
+
+    setCsvUuid: =>
+        @scope.csvUuid = @scope.project["#{@.type}_csv_uuid"]
+
+    _generateUuid: (finish) =>
+        promise = @rs.projects["regenerate_#{@.type}_csv_uuid"](@scope.projectId)
+
+        promise.then (data) =>
+            @scope.csvUuid = data.data?.uuid
+
+        promise.then null, =>
+            @confirm.notify("error")
+
+        promise.finally ->
+            finish()
+        return promise
+
+    regenerateUuid: ->
+        #TODO: i18n
+        if @scope.csvUuid
+            title = "Change URL"
+            subtitle = "You going to change the CSV data access url. The previous url will be disabled. Are you sure?"
+            @confirm.ask(title, subtitle).then @._generateUuid
+        else
+            @._generateUuid(_.identity)
+
+
+class CsvExporterUserstoriesController extends CsvExporterController
+    type: "userstories"
+
+
+class CsvExporterTasksController extends CsvExporterController
+    type: "tasks"
+
+
+class CsvExporterIssuesController extends CsvExporterController
+    type: "issues"
+
+
+module.controller("CsvExporterUserstoriesController", CsvExporterUserstoriesController)
+module.controller("CsvExporterTasksController", CsvExporterTasksController)
+module.controller("CsvExporterIssuesController", CsvExporterIssuesController)

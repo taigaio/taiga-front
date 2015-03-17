@@ -1,17 +1,5 @@
 // Shame SCSS decalrations to be refactorized
 
-////TASKBOARD-TABLE.SCSS && TASKBOARD-TABLE.JADE////
-
-//Taskboard table header brokes when added position relative and positionabsolute to its child
-// No clearfix or known hack fixes it
-// Could be because of flexbox?
-// height of the table has been set manually, wich is ugly.
-.taskboard-table-header,
-.kanban-table-header {
-    height: 40px;
-}
-
-
 _:-ms-fullscreen,
 :root .taskboard-table-body {
     .task-row {

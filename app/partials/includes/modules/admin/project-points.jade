@@ -1,4 +1,10 @@
 section.project-values-table
+
+    div.project-values-title
+        h2(ng-bind="sectionName")
+        a.button.button-gray.show-add-new(href="", title="Add New")
+            span Add new point
+
     div.project-values-header
         div.project-values-row
             div.project-values-name
@@ -9,7 +15,7 @@ section.project-values-table
 
     div.project-values-body
         div.sortable
-            form(ng-repeat="value in values")
+            form(ng-repeat="value in values", tg-bind-scope)
                 div.project-values-row.row.table-main.visualization
                     span.icon.icon-drag-v
 

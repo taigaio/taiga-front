@@ -25,10 +25,10 @@ div.home-projects-list(ng-controller="ProjectsController as ctrl")
                 div(tg-projects-list)
 
                 .create-project-button-wrapper
-                    a.button.button-green.create-project-button(href="", ng-click="ctrl.newProject()",
-                                                                title="Create new project") Create project
+                    a.button-green.create-project-button(href="", ng-click="ctrl.newProject()", title="Create new project")
+                        span Create project
                     div(tg-import-project-button)
-                        a.button.button-blackish.import-project-button(href="", title="Import project")
+                        a.button-blackish.import-project-button(href="", title="Import project")
                             span.icon.icon-upload
                         input.import-file.hidden(type="file")
 

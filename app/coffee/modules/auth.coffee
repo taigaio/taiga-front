@@ -197,11 +197,12 @@ LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls, $
                 "password": $el.find("form.login-form input[name=password]").val()
             }
 
-            promise = $auth.login(data)
+            loginFormType = $config.get("loginFormType", "normal")
+
+            promise = $auth.login(data, loginFormType)
             return promise.then(onSuccess, onError)
 
         $el.on "submit", "form", submit
-        $el.on "click", ".submit-button", submit
 
     return {link:link}
 
@@ -242,7 +243,6 @@ RegisterDirective = ($auth, $confirm, $location, $navUrls, $config, $analytics) 
             promise.then(onSuccessSubmit, onErrorSubmit)
 
         $el.on "submit", "form", submit
-        $el.on "click", ".submit-button", submit
 
     return {link:link}
 
@@ -279,7 +279,6 @@ ForgotPasswordDirective = ($auth, $confirm, $location, $navUrls) ->
             promise.then(onSuccessSubmit, onErrorSubmit)
 
         $el.on "submit", "form", submit
-        $el.on "click", ".submit-button", submit
 
     return {link:link}
 
@@ -321,7 +320,6 @@ ChangePasswordFromRecoveryDirective = ($auth, $confirm, $location, $params, $nav
             promise.then(onSuccessSubmit, onErrorSubmit)
 
         $el.on "submit", "form", submit
-        $el.on "click", ".submit-button", submit
 
     return {link:link}
 
@@ -471,7 +469,6 @@ CancelAccountDirective = ($repo, $model, $auth, $confirm, $location, $params, $n
             promise.then(onSuccessSubmit, onErrorSubmit)
 
         $el.on "submit", "form", submit
-        $el.on "click", ".submit-button", submit
 
     return {link:link}
 

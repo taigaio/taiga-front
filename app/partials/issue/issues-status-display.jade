@@ -1,9 +1,0 @@
-span
-    <% if (status.is_closed) { %>
-    | Closed
-    <% } else { %>
-    | Open
-    <% } %>
-
-span(class="us-detail-status", style!="color:<%- status.color %>")
-    | <%- status.name %>

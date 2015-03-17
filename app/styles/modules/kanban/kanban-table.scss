@@ -7,6 +7,9 @@ $column-shrink: 0;
 $column-margin: 0 10px 0 0;
 
 .kanban-table {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     overflow: hidden;
     width: 100%;
     .vfold {
@@ -42,11 +45,15 @@ $column-margin: 0 10px 0 0;
         .kanban-task {
             display: none;
         }
+        .kanban-column-intro {
+            display: none;
+        }
     }
 }
 
 .kanban-table-header {
     margin-bottom: .5rem;
+    min-height: 40px;
     position: relative;
     width: 100%;
     .kanban-table-inner {
@@ -91,6 +98,7 @@ $column-margin: 0 10px 0 0;
 .kanban-table-body {
     @extend %medium;
     display: flex;
+    height: 100%;
     overflow: hidden;
     overflow-x: auto;
     width: 100%;

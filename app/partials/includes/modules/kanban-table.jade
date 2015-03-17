@@ -32,15 +32,16 @@ div.kanban-table(tg-kanban-squish-column)
                                     tg-kanban-archived-status-header="s")
 
     div.kanban-table-body
-        div.kanban-table-inner(tg-kanban-row-width-fixer)
+        div.kanban-table-inner
             div.kanban-uses-box.task-column(ng-class='{vfold:folds[s.id]}',
                                             ng-repeat="s in usStatusList track by s.id",
                                             tg-kanban-sortable,
                                             tg-kanban-wip-limit="s.wip_limit",
-                                            tg-kanban-column-height-fixer)
+                                            tg-kanban-column-height-fixer,
+                                            tg-bind-scope)
 
                 div.kanban-task(ng-repeat="us in usByStatus[s.id] track by us.id",
-                                tg-kanban-userstory, ng-model="us",
+                                tg-kanban-userstory, ng-model="us", tg-bind-scope,
                                 ng-class="ctrl.getCardClass(s.id)")
 
                 div.kanban-column-intro(ng-if="s.is_archived", tg-kanban-archived-status-intro="s")

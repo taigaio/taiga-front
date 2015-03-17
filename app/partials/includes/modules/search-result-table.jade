@@ -1,7 +1,7 @@
 section.search-result-table
 
 script(type="text/ng-template", id="search-issues")
-    div.search-result-table-container(ng-class="{'hidden': !issues.length}")
+    div.search-result-table-container(ng-class="{'hidden': !issues.length}", tg-bind-scope)
         div.search-result-table-header
             div.row.title
                 div.user-stories Issues
@@ -23,7 +23,7 @@ script(type="text/ng-template", id="search-issues")
 
 
 script(type="text/ng-template", id="search-userstories")
-    div.search-result-table-container(ng-class="{'hidden': !userstories.length}")
+    div.search-result-table-container(ng-class="{'hidden': !userstories.length}", tg-bind-scope)
         div.search-result-table-header
             div.row.title
                 div.user-stories User Stories
@@ -44,7 +44,7 @@ script(type="text/ng-template", id="search-userstories")
                 span Maybe try one of the tabs above or search again
 
 script(type="text/ng-template", id="search-tasks")
-    div.search-result-table-container(ng-class="{'hidden': !tasks.length}")
+    div.search-result-table-container(ng-class="{'hidden': !tasks.length}", tg-bind-scope)
         div.search-result-table-header
             div.row.title
                 div.user-stories Task
@@ -65,7 +65,7 @@ script(type="text/ng-template", id="search-tasks")
                 span Maybe try one of the tabs above or search again
 
 script(type="text/ng-template", id="search-wikipages")
-    div.search-result-table-container(ng-class="{'hidden': !wikipages.length}")
+    div.search-result-table-container(ng-class="{'hidden': !wikipages.length}", tg-bind-scope)
         div.search-result-table-header
             div.row.title
                 div.user-stories Wiki page
@@ -80,4 +80,3 @@ script(type="text/ng-template", id="search-wikipages")
                 span.icon.icon-issues
                 span.title It looks like nothing was found with your search criteria.
                 span Maybe try one of the tabs above or search again
-

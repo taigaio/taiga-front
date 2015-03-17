@@ -93,7 +93,7 @@ body {
     flex: 0 0 auto;
     min-height: 100vh;
     min-width: 0;
-    padding: 2rem 1rem;
+    padding: 1rem;
     width: 320px;
     &.filters-bar {
         flex: 0 0 auto;
@@ -110,10 +110,13 @@ body {
             }
         }
     }
+    .search-in {
+        margin-top: .5rem;
+    }
 }
 
 .menu-tertiary {
-    background-color: $dark-grayish-lime-green;
+    background-color: $dark-taiga;
     flex: 0 0 auto;
     min-height: 100vh;
     padding: 2em 1em;
@@ -127,8 +130,7 @@ body {
 .main {
     flex: 4;
     min-width: 600px;
-    padding: 2rem;
-    padding-bottom: 1rem;
+    padding: 1rem 2rem;
 }
 
 .icon {

@@ -24,6 +24,33 @@ bindOnce = @.taiga.bindOnce
 
 module = angular.module("taigaCommon")
 
+# How to test lists (-, *, 1.)
+# test it with text after & before the list
+# + is the cursor position
+
+# CASE 1
+# - aa+
+# --> enter
+# - aa
+# - +
+
+# CASE 1
+# - +
+# --> enter
+
+# +
+
+# CASE 3
+# - bb+cc
+# --> enter
+# - bb
+# - cc
+
+# CASE 3
+# +- aa
+# --> enter
+
+# - aa
 
 #############################################################################
 ## WYSIWYG markitup editor directive
@@ -64,35 +91,52 @@ tgMarkitupDirective = ($rootscope, $rs, $tr, $selectedText, $template) ->
                     markdown.off(".preview")
                     closePreviewMode()
 
-        markdownCaretPositon = false
-
-        setCaretPosition = (elm, caretPos) ->
-            if elm.createTextRange
-                range = elm.createTextRange()
-                range.move("character", caretPos)
+        setCaretPosition = (textarea, caretPosition) ->
+            if textarea.createTextRange
+                range = textarea.createTextRange()
+                range.move("character", caretPosition)
                 range.select()
 
-            else if elm.selectionStart
-                elm.focus()
-                elm.setSelectionRange(caretPos, caretPos)
+            else if textarea.selectionStart
+                textarea.focus()
+                textarea.setSelectionRange(caretPosition, caretPosition)
 
-        removeEmptyLine = (textarea, line, currentCaretPosition) ->
+            # Calculate the scroll position
+            totalLines = textarea.value.split("\n").length
+            line = textarea.value[0..(caretPosition - 1)].split("\n").length
+            scrollRelation = line / totalLines
+            $el.scrollTop((scrollRelation * $el[0].scrollHeight) - ($el.height() / 2))
+
+        addLine = (textarea, nline, replace) ->
             lines = textarea.value.split("\n")
-            removedLineLength = lines[line].length
 
-            lines[line] = ""
+            if replace
+                lines[nline] = replace + lines[nline]
+            else
+                lines[nline] = ""
+
+            cursorPosition = 0
+
+            for line, key in lines
+                cursorPosition += line.length + 1 || 1
+
+                break if key == nline
 
             textarea.value = lines.join("\n")
 
             #return the new position
-            return currentCaretPosition - removedLineLength + 1
+            if replace
+                return cursorPosition - lines[nline].length + replace.length - 1
+            else
+                return cursorPosition
 
         markdownSettings =
             nameSpace: "markdown"
             onShiftEnter: {keepDefault:false, openWith:"\n\n"}
             onEnter:
-                keepDefault: false
-                replaceWith: (data) =>
+                keepDefault: false,
+                replaceWith: () -> "\n"
+                afterInsert: (data) ->
                     lines = data.textarea.value.split("\n")
                     cursorLine = data.textarea.value[0..(data.caretPosition - 1)].split("\n").length
                     newLineContent = data.textarea.value[data.caretPosition..].split("\n")[0]
@@ -105,12 +149,9 @@ tgMarkitupDirective = ($rootscope, $rs, $tr, $selectedText, $template) ->
                         emptyListItem = lastLine.match /^(\s*)\-\s$/
 
                         if emptyListItem
-                            markdownCaretPositon = removeEmptyLine(data.textarea, lines.length - 1, data.caretPosition)
+                            markdownCaretPositon = addLine(data.textarea, cursorLine - 1)
                         else
-                            breakLineAtBeginning = newLineContent.match /^(\s*)\-\s/
-
-                            if !breakLineAtBeginning
-                                return "\n#{match[1]}" if match
+                            markdownCaretPositon = addLine(data.textarea, cursorLine, "#{match[1]}")
 
                     # unordered list *
                     match = lastLine.match /^(\s*\* ).*/
@@ -119,12 +160,9 @@ tgMarkitupDirective = ($rootscope, $rs, $tr, $selectedText, $template) ->
                         emptyListItem = lastLine.match /^(\s*\* )$/
 
                         if emptyListItem
-                            markdownCaretPositon = removeEmptyLine(data.textarea, lines.length - 1, data.caretPosition)
+                            markdownCaretPositon = addLine(data.textarea, cursorLine - 1)
                         else
-                            breakLineAtBeginning = newLineContent.match /^(\s*)\*\s/
-
-                            if !breakLineAtBeginning
-                                return "\n#{match[1]}" if match
+                            markdownCaretPositon = addLine(data.textarea, cursorLine, "#{match[1]}")
 
                     # ordered list
                     match = lastLine.match /^(\s*)(\d+)\.\s/
@@ -133,29 +171,12 @@ tgMarkitupDirective = ($rootscope, $rs, $tr, $selectedText, $template) ->
                         emptyListItem = lastLine.match /^(\s*)(\d+)\.\s$/
 
                         if emptyListItem
-                            markdownCaretPositon = removeEmptyLine(data.textarea, lines.length - 1, data.caretPosition)
+                            markdownCaretPositon = addLine(data.textarea, cursorLine - 1)
                         else
-                            breakLineAtBeginning = newLineContent.match /^(\s*)(\d+)\.\s/
+                            markdownCaretPositon = addLine(data.textarea, cursorLine, "#{match[1] + (parseInt(match[2], 10) + 1)}. ")
 
-                            if !breakLineAtBeginning
-                                return "\n#{match[1] + (parseInt(match[2], 10) + 1)}. "
 
-                    return "\n"
-
-                afterInsert: (data) ->
-                    # Calculate the scroll position
-
-                    if markdownCaretPositon
-                        setCaretPosition(data.textarea, markdownCaretPositon)
-                        caretPosition = markdownCaretPositon
-                        markdownCaretPositon = false
-                    else
-                        caretPosition = data.caretPosition
-
-                    totalLines = data.textarea.value.split("\n").length
-                    line = data.textarea.value[0..(caretPosition - 1)].split("\n").length
-                    scrollRelation = line / totalLines
-                    $el.scrollTop((scrollRelation * $el[0].scrollHeight) - ($el.height() / 2))
+                    setCaretPosition(data.textarea, markdownCaretPositon) if markdownCaretPositon
 
             markupSet: [
                 {
@@ -214,14 +235,18 @@ tgMarkitupDirective = ($rootscope, $rs, $tr, $selectedText, $template) ->
                 {
                     name: $tr.t("markdown-editor.picture")
                     key: "P"
-                    replaceWith: '![[![Alternative text]!]]([![Url:!:http://]!] "[![Title]!]")'
+                    replaceWith: '![[![Alternative text]!]](<<<[![Url:!:http://]!]>>> "[![Title]!]")'
+                    beforeInsert:(markItUp) -> prepareUrlFormatting(markItUp)
+                    afterInsert:(markItUp) -> urlFormatting(markItUp)
                 },
                 {
                     name: $tr.t("markdown-editor.link")
                     key: "L"
                     openWith: "["
-                    closeWith: ']([![Url:!:http://]!] "[![Title]!]")'
+                    closeWith: '](<<<[![Url:!:http://]!]>>> "[![Title]!]")'
                     placeHolder: $tr.t("markdown-editor.link-placeholder")
+                    beforeInsert:(markItUp) -> prepareUrlFormatting(markItUp)
+                    afterInsert:(markItUp) -> urlFormatting(markItUp)
                 },
                 {
                     separator: "---------------"
@@ -255,6 +280,45 @@ tgMarkitupDirective = ($rootscope, $rs, $tr, $selectedText, $template) ->
             afterInsert: (event) ->
                 target = angular.element(event.textarea)
                 $model.$setViewValue(target.val())
+
+        prepareUrlFormatting = (markItUp) ->
+            console.log(markItUp)
+            regex = /(<<<|>>>)/gi
+            result = 0
+            indices = []
+            (indices.push(result.index)) while ( (result = regex.exec(markItUp.textarea.value)) )
+            markItUp.donotparse = indices
+            console.log(indices)
+
+        urlFormatting = (markItUp) ->
+            console.log(markItUp.donotparse)
+            regex = /<<</gi
+            result = 0
+            startIndex = 0
+
+            loop
+                result = regex.exec(markItUp.textarea.value)
+                break if !result
+                if result.index not in markItUp.donotparse
+                    startIndex = result.index
+                    break
+
+            regex = />>>/gi
+            endIndex = 0
+            loop
+                result = regex.exec(markItUp.textarea.value)
+                break if !result
+                if result.index not in markItUp.donotparse
+                    endIndex = result.index
+                    break
+
+            value = markItUp.textarea.value
+            url = value.substring(startIndex, endIndex).replace('<<<', '').replace('>>>', '')
+            url = url.replace('(', '%28').replace(')', '%29')
+            url = url.replace('[', '%5B').replace(']', '%5D')
+            value = value.substring(0, startIndex) + url + value.substring(endIndex+3, value.length)
+            markItUp.textarea.value = value
+            markItUp.donotparse = undefined
 
         markdownTitle = (markItUp, char) ->
             heading = ""

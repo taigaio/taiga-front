@@ -1,4 +1,4 @@
-div.row.us-item-row(ng-repeat="us in visibleUserstories track by us.id", tg-draggable, ng-class="{blocked: us.is_blocked}")
+div.row.us-item-row(ng-repeat="us in visibleUserstories track by us.id", tg-bind-scope, ng-class="{blocked: us.is_blocked}", tg-class-permission="{'readonly': '!modify_us'}")
     div.user-stories
         div.tags-block(tg-colorize-tags="us.tags", tg-colorize-tags-type="backlog")
         div.user-story-name
@@ -20,7 +20,5 @@ div.row.us-item-row(ng-repeat="us in visibleUserstories track by us.id", tg-drag
 
     div.points(tg-backlog-us-points="us")
         a.us-points(href="", title="Points")
-            span.points-value 0
-            span.icon.icon-arrow-bottom(tg-check-permission="modify_us")
 
     a.icon.icon-drag-v(tg-check-permission="modify_us", href="", title="Drag")

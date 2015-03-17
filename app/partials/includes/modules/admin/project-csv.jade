@@ -1,0 +1,16 @@
+section.project-csv(ng-controller='#{controller} as ctrl', tg-select-input-text)
+    div.project-values-title
+        h2 #{csvType} reports
+        a.button.button-gray(title="Download #{csvType} CSV", ng-href="{{csvUrl}}", ng-show="csvUrl", target="_blank")
+            span Download CSV
+
+    div.csv-regenerate-field
+        .field-with-options
+            input(type="text", placeholder="Please regenerate CSV url", readonly, ng-model="csvUrl")
+            .option-wrapper.select-input-content
+                .icon.icon-copy
+        a(href="", title="Regenerate CSV url", ng-click="ctrl.regenerateUuid()")
+           span.icon.icon-plus(ng-hide="csvUrl")
+           span(ng-hide="csvUrl") Generate URL
+           span.icon.icon-reload(ng-Show="csvUrl")
+           span(ng-Show="csvUrl") Regenerate

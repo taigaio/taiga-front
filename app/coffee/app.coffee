@@ -36,19 +36,25 @@ taiga.generateUniqueSessionIdentifier = ->
 taiga.sessionId = taiga.generateUniqueSessionIdentifier()
 
 
-configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEventsProvider, tgLoaderProvider) ->
+configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEventsProvider, tgLoaderProvider, $compileProvider) ->
     $routeProvider.when("/",
         {templateUrl: "project/projects.html", resolve: {loader: tgLoaderProvider.add()}})
+
     $routeProvider.when("/project/:pslug/",
         {templateUrl: "project/project.html"})
-    $routeProvider.when("/project/:pslug/backlog",
-        {templateUrl: "backlog/backlog.html", resolve: {loader: tgLoaderProvider.add()}})
-    $routeProvider.when("/project/:pslug/taskboard/:sslug",
-        {templateUrl: "taskboard/taskboard.html", resolve: {loader: tgLoaderProvider.add()}})
+
     $routeProvider.when("/project/:pslug/search",
         {templateUrl: "search/search.html", reloadOnSearch: false})
+
+    $routeProvider.when("/project/:pslug/backlog",
+        {templateUrl: "backlog/backlog.html", resolve: {loader: tgLoaderProvider.add()}})
+
     $routeProvider.when("/project/:pslug/kanban",
         {templateUrl: "kanban/kanban.html", resolve: {loader: tgLoaderProvider.add()}})
+
+    # Milestone
+    $routeProvider.when("/project/:pslug/taskboard/:sslug",
+        {templateUrl: "taskboard/taskboard.html", resolve: {loader: tgLoaderProvider.add()}})
 
     # User stories
     $routeProvider.when("/project/:pslug/us/:usref",
@@ -74,7 +80,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     $routeProvider.when("/project/:pslug/issue/:issueref",
         {templateUrl: "issue/issues-detail.html", resolve: {loader: tgLoaderProvider.add()}})
 
-    # Admin
+    # Admin - Project Profile
     $routeProvider.when("/project/:pslug/admin/project-profile/details",
         {templateUrl: "admin/admin-project-profile.html"})
     $routeProvider.when("/project/:pslug/admin/project-profile/default-values",
@@ -83,24 +89,28 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         {templateUrl: "admin/admin-project-modules.html"})
     $routeProvider.when("/project/:pslug/admin/project-profile/export",
         {templateUrl: "admin/admin-project-export.html"})
-    $routeProvider.when("/project/:pslug/admin/project-values/us-status",
-        {templateUrl: "admin/admin-project-values-us-status.html"})
-    $routeProvider.when("/project/:pslug/admin/project-values/us-points",
-        {templateUrl: "admin/admin-project-values-us-points.html"})
-    $routeProvider.when("/project/:pslug/admin/project-values/task-status",
-        {templateUrl: "admin/admin-project-values-task-status.html"})
-    $routeProvider.when("/project/:pslug/admin/project-values/issue-status",
-        {templateUrl: "admin/admin-project-values-issue-status.html"})
-    $routeProvider.when("/project/:pslug/admin/project-values/issue-types",
-        {templateUrl: "admin/admin-project-values-issue-types.html"})
-    $routeProvider.when("/project/:pslug/admin/project-values/issue-priorities",
-        {templateUrl: "admin/admin-project-values-issue-priorities.html"})
-    $routeProvider.when("/project/:pslug/admin/project-values/issue-severities",
-        {templateUrl: "admin/admin-project-values-issue-severities.html"})
+    $routeProvider.when("/project/:pslug/admin/project-profile/reports",
+        {templateUrl: "admin/admin-project-reports.html"})
+
+    $routeProvider.when("/project/:pslug/admin/project-values/status",
+        {templateUrl: "admin/admin-project-values-status.html"})
+    $routeProvider.when("/project/:pslug/admin/project-values/points",
+        {templateUrl: "admin/admin-project-values-points.html"})
+    $routeProvider.when("/project/:pslug/admin/project-values/priorities",
+        {templateUrl: "admin/admin-project-values-priorities.html"})
+    $routeProvider.when("/project/:pslug/admin/project-values/severities",
+        {templateUrl: "admin/admin-project-values-severities.html"})
+    $routeProvider.when("/project/:pslug/admin/project-values/types",
+        {templateUrl: "admin/admin-project-values-types.html"})
+    $routeProvider.when("/project/:pslug/admin/project-values/custom-fields",
+        {templateUrl: "admin/admin-project-values-custom-fields.html"})
+
     $routeProvider.when("/project/:pslug/admin/memberships",
         {templateUrl: "admin/admin-memberships.html"})
+    # Admin - Roles
     $routeProvider.when("/project/:pslug/admin/roles",
         {templateUrl: "admin/admin-roles.html"})
+    # Admin - Third Parties
     $routeProvider.when("/project/:pslug/admin/third-parties/webhooks",
         {templateUrl: "admin/admin-third-parties-webhooks.html"})
     $routeProvider.when("/project/:pslug/admin/third-parties/github",
@@ -109,6 +119,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         {templateUrl: "admin/admin-third-parties-gitlab.html"})
     $routeProvider.when("/project/:pslug/admin/third-parties/bitbucket",
         {templateUrl: "admin/admin-third-parties-bitbucket.html"})
+    # Admin - Contrib Plugins
     $routeProvider.when("/project/:pslug/admin/contrib/:plugin",
         {templateUrl: "contrib/main.html"})
 
@@ -223,6 +234,8 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         linewidth: "The subject must have a maximum size of %s"
     })
 
+    $compileProvider.debugInfoEnabled(window.taigaConfig.debugInfo || false)
+
 init = ($log, $i18n, $config, $rootscope, $auth, $events, $analytics) ->
     $i18n.initialize($config.get("defaultLanguage"))
     $log.debug("Initialize application")
@@ -280,6 +293,7 @@ module.config([
     "$provide",
     "$tgEventsProvider",
     "tgLoaderProvider",
+    "$compileProvider",
     configure
 ])
 

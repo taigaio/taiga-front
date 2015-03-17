@@ -61,6 +61,8 @@ BacklogSprintDirective = ($repo, $rootscope) ->
 
         # Event Handlers
         $el.on "click", ".sprint-name > .icon-arrow-up", (event) ->
+            event.preventDefault()
+
             toggleSprint($el)
 
             $el.find(".sprint-table").slideToggle(slideOptions)
@@ -135,26 +137,38 @@ module.directive("tgBacklogSprintHeader", ["$tgNavUrls", "$tgTemplate", BacklogS
 #############################################################################
 
 ToggleExcludeClosedSprintsVisualization = ($rootscope, $loading) ->
-    excludeClosedSprints = false
+    excludeClosedSprints = true
 
     link = ($scope, $el, $attrs) ->
+        # insert loading wrapper
+        loadingElm = $("<div>")
+        $el.after(loadingElm)
+
         # Event Handlers
-        $el.on "click", "", (event) ->
-            $loading.start($el.parent().siblings('.loading-spinner'))
-            $rootscope.$broadcast("backlog:toggle-closed-sprints-visualization")
+        $el.on "click", (event) ->
+            event.preventDefault()
+            excludeClosedSprints  = not excludeClosedSprints
+
+            $loading.start(loadingElm)
+
+            if excludeClosedSprints
+                $rootscope.$broadcast("backlog:unload-closed-sprints")
+            else
+                $rootscope.$broadcast("backlog:load-closed-sprints")
 
         $scope.$on "$destroy", ->
             $el.off()
 
-        $scope.$on "sprints:loaded", (ctx, sprints) =>
-            closedSprints = _.filter(sprints, (sprint) -> sprint.closed)
-            $loading.finish($el.parent().siblings('.loading-spinner'))
+        $scope.$on "closed-sprints:reloaded", (ctx, sprints) =>
+            $loading.finish(loadingElm)
 
             #TODO: i18n
-            if closedSprints.length > 0
-                $el.text("Hide closed sprints")
+            if sprints.length > 0
+                text = "Hide closed sprints"
             else
-                $el.text("Show closed sprints")
+                text = "Show closed sprints"
+
+            $el.find(".text").text(text)
 
     return {link: link}
 

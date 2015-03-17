@@ -25,6 +25,10 @@
             }
         }
     }
+    .single-role {
+        @include ellipsis(175px);
+        display: inline-block;
+    }
     .icon {
         color: $white;
         float: right;
@@ -34,7 +38,7 @@
         padding: .5rem 0;
         text-align: center;
         &:hover {
-            background-color: darken($button-gray-hover, 15%);
+            background-color: $blackish;
         }
     }
 }

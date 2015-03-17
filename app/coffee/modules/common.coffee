@@ -61,6 +61,42 @@ CheckPermissionDirective = ->
 module.directive("tgCheckPermission", CheckPermissionDirective)
 
 #############################################################################
+## Add class based on permissions
+#############################################################################
+
+ClassPermissionDirective = ->
+    name = "tgClassPermission"
+
+    link = ($scope, $el, $attrs) ->
+        checkPermissions = (project, className, permission) ->
+            negation = permission[0] == "!"
+
+            permission = permission.slice(1) if negation
+
+            if negation && project.my_permissions.indexOf(permission) == -1
+                $el.addClass(className)
+            else if !negation && project.my_permissions.indexOf(permission) != -1
+                $el.addClass(className)
+            else
+                $el.removeClass(className)
+
+        tgClassPermissionWatchAction = (project) ->
+            if project
+                unbindWatcher()
+
+                classes = $scope.$eval($attrs[name])
+
+                for className, permission of classes
+                    checkPermissions(project, className, permission)
+
+
+        unbindWatcher = $scope.$watch "project", tgClassPermissionWatchAction
+
+    return {link:link}
+
+module.directive("tgClassPermission", ClassPermissionDirective)
+
+#############################################################################
 ## Animation frame service, apply css changes in the next render frame
 #############################################################################
 AnimationFrame = () ->

@@ -2,27 +2,6 @@
     @extend %lightbox;
 }
 
-.markdown-preview {
-    display: inline-block;
-    margin-bottom: .5rem;
-    a {
-        @extend %button;
-        @extend %small;
-        color: $gray-light;
-        padding: 3px 20px;
-        &:first-child {
-            border-right: 1px solid $gray-light;
-        }
-        &:hover {
-            color: $grayer;
-            transition: color .2s linear;
-        }
-    }
-    .active {
-        color: $grayer;
-    }
-}
-
 .lightbox-generic-form {
     form {
         flex-basis: 600px;
@@ -41,7 +20,6 @@
     }
 
     label {
-        @extend %button;
         border: 1px solid $gray-light;
         color: $grayer;
         cursor: pointer;
@@ -115,11 +93,6 @@
 
         input {
             display: none;
-        }
-    }
-    .points-per-role {
-        .popover {
-            @include popover(200px, $top: 105%, $left: 35%, $arrow-width: 10px, $arrow-top: -5px, $arrow-left: 10px);
         }
     }
 }
@@ -212,6 +185,7 @@
         max-width: 600px;
     }
     .last-sprint-name {
+        @extend %small;
         color: $gray;
         opacity: 1;
         position: absolute;
@@ -273,9 +247,9 @@
     .options {
         display: flex;
         a {
-            flex-grow: 1;
             padding: 8px 0;
             text-align: center;
+            width: 100%;
             &:first-child {
                 margin-right: .5rem;
             }

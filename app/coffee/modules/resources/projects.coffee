@@ -36,6 +36,10 @@ resourceProvider = ($config, $repo, $http, $urls, $auth, $q, $rootScope) ->
     service.list = ->
         return $repo.queryMany("projects")
 
+    service.listByMember = (memberId) ->
+        params = {"member": memberId}
+        return $repo.queryMany("projects", params)
+
     service.templates = ->
         return $repo.queryMany("project-templates")
 
@@ -49,6 +53,18 @@ resourceProvider = ($config, $repo, $http, $urls, $auth, $q, $rootScope) ->
 
     service.stats = (projectId) ->
         return $repo.queryOneRaw("projects", "#{projectId}/stats")
+
+    service.regenerate_userstories_csv_uuid = (projectId) ->
+        url = "#{$urls.resolve("projects")}/#{projectId}/regenerate_userstories_csv_uuid"
+        return $http.post(url)
+
+    service.regenerate_issues_csv_uuid = (projectId) ->
+        url = "#{$urls.resolve("projects")}/#{projectId}/regenerate_issues_csv_uuid"
+        return $http.post(url)
+
+    service.regenerate_tasks_csv_uuid = (projectId) ->
+        url = "#{$urls.resolve("projects")}/#{projectId}/regenerate_tasks_csv_uuid"
+        return $http.post(url)
 
     service.leave = (projectId) ->
         url = "#{$urls.resolve("projects")}/#{projectId}/leave"

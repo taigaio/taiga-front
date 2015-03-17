@@ -1,0 +1,17 @@
+div.custom-field-single
+    div.custom-field-data
+        span.custom-field-name
+            <%- name %>
+        <% if (description){ %>
+        span.custom-field-description
+            <%- description %>
+        <% } %>
+
+    div.custom-field-value.read-mode
+        span
+            <%- value %>
+
+    <% if (isEditable) { %>
+    div.custom-field-options
+        a.icon.icon-edit(href="", title="Edit Custom Field")
+    <% } %>

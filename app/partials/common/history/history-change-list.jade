@@ -1,0 +1,17 @@
+.change-entry
+    .activity-changed
+        span <%- name %>
+     .activity-fromto
+         <% if (removed.length > 0) { %>
+         p
+            strong removed
+            br
+            span <%- removed %>
+         <% } %>
+
+         <% if (added.length > 0) { %>
+         p
+            strong added
+            br
+            span <%- added %>
+         <% } %>

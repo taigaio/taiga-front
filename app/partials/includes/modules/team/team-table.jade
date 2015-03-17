@@ -27,7 +27,7 @@ section.table-team.basic-table
                 div.popover.attribute-explanation
                     span Total Points
 
-    div.hero(tg-team-current-user, stats="stats", currentuser="currentUser", projectid="projectId", issuesEnabled="issuesEnabled", tasksenabled="tasksEnabled", wikienabled="wikiEnabled")
+    div.hero(tg-team-current-user, stats="stats", currentuser="currentUser", projectid="projectId", issuesEnabled="issuesEnabled", tasksenabled="tasksEnabled", wikienabled="wikiEnabled", ng-if="::currentUser")
 
 h2(ng-show="memberships.length")
     span Team >

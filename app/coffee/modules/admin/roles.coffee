@@ -63,17 +63,40 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
 
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
+            if not project.i_am_owner
+                @location.path(@navUrls.resolve("permission-denied"))
+                
             @scope.project = project
+
             @scope.$emit('project:loaded', project)
             @scope.anyComputableRole = _.some(_.map(project.roles, (point) -> point.computable))
 
             return project
 
+    loadExternalUserRole: (roles) ->
+        roles = roles.map (role) ->
+            role.external_user = false
+
+            return role
+
+        public_permission = {
+            "name": "External User",
+            "permissions": @scope.project.public_permissions,
+            "external_user": true
+        }
+
+        roles.push(public_permission)
+
+        return roles
+
     loadRoles: ->
-        return @rs.roles.list(@scope.projectId).then (data) =>
-            @scope.roles = data
-            @scope.role = @scope.roles[0]
-            return data
+        return @rs.roles.list(@scope.projectId)
+            .then @loadExternalUserRole
+            .then (roles) =>
+                @scope.roles = roles
+                @scope.role = @scope.roles[0]
+
+                return roles
 
     loadInitialData: ->
         promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
@@ -256,7 +279,7 @@ RolePermissionsDirective = ($rootscope, $repo, $confirm) ->
                 <div class="category-item" data-id="<%- permission.key %>">
                     <span><%- permission.description %></span>
                     <div class="check">
-                        <input type="checkbox" <% if(permission.active) { %>checked="checked"<% } %>/>
+                        <input type="checkbox" <% if(!permission.editable) { %>disabled="disabled"<% } %>  <% if(permission.active) { %>checked="checked"<% } %>/>
                         <div></div>
                         <span class="check-text check-yes">Yes</span>
                         <span class="check-text check-no">No</span>
@@ -279,10 +302,23 @@ RolePermissionsDirective = ($rootscope, $repo, $confirm) ->
             setActivePermissions = (permissions) ->
                 return _.map(permissions, (x) -> _.extend({}, x, {active: x["key"] in role.permissions}))
 
+            isPermissionEditable = (permission, role, project) ->
+                if role.external_user &&
+                   !project.is_private &&
+                   permission.key.indexOf("view_") == 0
+                    return false
+                else
+                    return true
+
             setActivePermissionsPerCategory = (category) ->
-                return _.map(category, (x) ->
-                    _.extend({}, x, {
-                        activePermissions: _.filter(x["permissions"], "active").length
+                return _.map(category, (cat) ->
+                    cat.permissions = cat.permissions.map (permission) ->
+                        permission.editable = isPermissionEditable(permission, role, $scope.project)
+
+                        return permission
+
+                    _.extend({}, cat, {
+                        activePermissions: _.filter(cat["permissions"], "active").length
                     })
                 )
 
@@ -366,10 +402,11 @@ RolePermissionsDirective = ($rootscope, $repo, $confirm) ->
                     return activePermissions
 
                 target = angular.element(event.currentTarget)
+
                 $scope.role.permissions = getActivePermissions()
 
-                onSuccess = (role) ->
-                    categories = generateCategoriesFromRole(role)
+                onSuccess = () ->
+                    categories = generateCategoriesFromRole($scope.role)
                     categoryId = target.parents(".category-config").data("id")
                     renderResume(target.parents(".category-config"), categories[categoryId])
                     $rootscope.$broadcast("projects:reload")
@@ -381,7 +418,14 @@ RolePermissionsDirective = ($rootscope, $repo, $confirm) ->
                     target.prop "checked", !target.prop("checked")
                     $scope.role.permissions = getActivePermissions()
 
-                $repo.save($scope.role).then onSuccess, onError
+                if $scope.role.external_user
+                    $scope.project.public_permissions = $scope.role.permissions
+                    $scope.project.anon_permissions = $scope.role.permissions.filter (permission) ->
+                        return permission.indexOf("view_") == 0
+
+                    $repo.save($scope.project).then onSuccess, onError
+                else
+                    $repo.save($scope.role).then onSuccess, onError
 
         $scope.$on "$destroy", ->
             $el.off()

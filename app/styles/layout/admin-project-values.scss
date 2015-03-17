@@ -1,3 +1,9 @@
+.admin-attributes {
+    .admin-attributes-section {
+        margin-bottom: 2rem;
+    }
+}
+
 .admin-roles {
     header {
         position: relative;
@@ -12,7 +18,27 @@
     }
 }
 
-.project-values-options {
-    margin-bottom: 1rem;
-    text-align: right;
+.project-values-title {
+    align-content: center;
+    align-items: center;
+    background: $whitish;
+    display: flex;
+    justify-content: space-between;
+    padding: .8em 1rem;
+    text-transform: uppercase;
+    h2 {
+        margin: 0;
+        span {
+            margin-left: .5rem;
+            text-transform: none;
+        }
+    }
+    a {
+        display: inline-block;
+    }
 }
+
+//.project-values-options {
+//    margin-bottom: 1rem;
+//    text-align: right;
+//}

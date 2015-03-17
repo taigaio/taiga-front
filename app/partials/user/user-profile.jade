@@ -14,13 +14,13 @@ div.wrapper(tg-user-profile, ng-controller="UserSettingsController as ctrl",
                     fieldset(tg-user-avatar)
                         .image-container
                             img.avatar(ng-src="{{user.big_photo}}" alt="avatar")
-                            .overlay
+                            .overlay.hidden
                                 img.loading-spinner(src="/svg/spinner-circle.svg", alt="loading...")
                         input(type="file", id="avatar-field", class="hidden",
                             tg-avatar-model="avatarAttachment")
                         p The image will be cropped to 80x80px.<br>
                             span.size-info.hidden(tg-bo-html="maxFileSizeMsg")
-                        a.button.button-green.change(tg-bo-title="'Change photo. ' + maxFileSizeMsg") Change
+                        a.button-green.change.js-change-avatar(tg-bo-title="'Change photo. ' + maxFileSizeMsg") Change
                         a.use-gravatar Use gravatar image
 
                 div.data
@@ -49,8 +49,7 @@ div.wrapper(tg-user-profile, ng-controller="UserSettingsController as ctrl",
                                  ng-model="user.bio")
 
             fieldset.submit
-                button(type="submit", title="Save", class="hidden")
-                a.button.button-green.save-profile.submit-button(href="") Save
+                button.button-green.submit-button(type="submit", title="Save") Save
                 a.delete-account(href="", title="Delete Taiga account",
                                  ng-click="ctrl.openDeleteLightbox()") Delete Taiga account
 

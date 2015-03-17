@@ -91,7 +91,8 @@ UserProfileDirective = ($confirm, $auth, $repo) ->
             changeEmail = $scope.user.isAttributeModified("email")
 
             onSuccess = (data) =>
-                $auth.setUser($scope.user)
+                $auth.setUser(data)
+
                 if changeEmail
                     $confirm.success("<strong>Check your inbox!</strong><br />
                            We have sent a mail to your account<br />
@@ -107,14 +108,12 @@ UserProfileDirective = ($confirm, $auth, $repo) ->
 
         $el.on "submit", "form", submit
 
-        $el.on "click", ".submit-button", submit
-
         $scope.$on "$destroy", ->
             $el.off()
 
     return {link:link}
 
-module.directive("tgUserProfile", ["$tgConfirm", "$tgAuth", "$tgRepo",  UserProfileDirective])
+module.directive("tgUserProfile", ["$tgConfirm", "$tgAuth", "$tgRepo", UserProfileDirective])
 
 
 #############################################################################
@@ -131,26 +130,26 @@ UserAvatarDirective = ($auth, $model, $rs, $confirm) ->
             $auth.setUser(user)
             $scope.user = user
 
-            $el.find('.overlay').hide()
+            $el.find('.overlay').addClass('hidden')
             $confirm.notify('success')
 
         onError = (response) ->
             showSizeInfo() if response.status == 413
-            $el.find('.overlay').hide()
+            $el.find('.overlay').addClass('hidden')
             $confirm.notify('error', response.data._error_message)
 
         # Change photo
-        $el.on "click", ".button.change", ->
+        $el.on "click", ".js-change-avatar", ->
             $el.find("#avatar-field").click()
 
         $el.on "change", "#avatar-field", (event) ->
             if $scope.avatarAttachment
-                $el.find('.overlay').css('display', 'flex')
+                $el.find('.overlay').removeClass('hidden')
                 $rs.userSettings.changeAvatar($scope.avatarAttachment).then(onSuccess, onError)
 
         # Use gravatar photo
         $el.on "click", "a.use-gravatar", (event) ->
-            $el.find('.overlay').show()
+            $el.find('.overlay').removeClass('hidden')
             $rs.userSettings.removeAvatar().then(onSuccess, onError)
 
         $scope.$on "$destroy", ->

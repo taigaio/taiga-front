@@ -38,10 +38,12 @@ class WebhooksController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.
         "$tgRepo",
         "$tgResources",
         "$routeParams",
+        "$tgLocation",
+        "$tgNavUrls",
         "$appTitle"
     ]
 
-    constructor: (@scope, @repo, @rs, @params, @appTitle) ->
+    constructor: (@scope, @repo, @rs, @params, @location, @navUrls, @appTitle) ->
         bindMethods(@)
 
         @scope.sectionName = "Webhooks" #i18n
@@ -62,6 +64,9 @@ class WebhooksController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.
 
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
+            if not project.i_am_owner
+                @location.path(@navUrls.resolve("permission-denied"))
+
             @scope.project = project
             @scope.$emit('project:loaded', project)
             return project
@@ -89,7 +94,7 @@ WebhookDirective = ($rs, $repo, $confirm, $loading) ->
                 for log in webhooklogs
                     log.validStatus = 200 <= log.status < 300
                     log.prettySentHeaders = _.map(_.pairs(log.request_headers), ([header, value]) -> "#{header}: #{value}").join("\n")
-                    log.prettySentData = JSON.stringify(log.request_data.data, undefined, 2)
+                    log.prettySentData = JSON.stringify(log.request_data)
                     log.prettyDate = moment(log.created).format("DD MMM YYYY [at] hh:mm:ss") # TODO: i18n
 
                 webhook.logs_counter = webhooklogs.length
@@ -123,8 +128,6 @@ WebhookDirective = ($rs, $repo, $confirm, $loading) ->
         save = debounce 2000, (target) ->
             form = target.parents("form").checksley()
             return if not form.validate()
-
-            value = target.scope().value
             promise = $repo.save(webhook)
             promise.then =>
                 showVisualizationMode()
@@ -152,7 +155,7 @@ WebhookDirective = ($rs, $repo, $confirm, $loading) ->
         $el.on "keyup", ".edition-mode input", (event) ->
             if event.keyCode == 13
                 target = angular.element(event.currentTarget)
-                saveWebhook(target)
+                save(target)
             else if event.keyCode == 27
                 target = angular.element(event.currentTarget)
                 cancel(target)
@@ -231,8 +234,7 @@ NewWebhookDirective = ($rs, $repo, $confirm, $loading) ->
                     formDOMNode.addClass("hidden")
                     addWebhookDOMNode.removeClass("hidden")
 
-        formDOMNode.on "click", ".add-new", debounce 2000, (event) ->
-            event.preventDefault()
+        save = debounce 2000, () ->
             form = formDOMNode.checksley()
             return if not form.validate()
 
@@ -245,6 +247,14 @@ NewWebhookDirective = ($rs, $repo, $confirm, $loading) ->
             promise.then null, (data) ->
                 $confirm.notify("error")
                 form.setErrors(data)
+
+        formDOMNode.on "click", ".add-new", (event) ->
+            event.preventDefault()
+            save()
+
+        formDOMNode.on "keyup", "input", (event) ->
+            if event.keyCode == 13
+                save()
 
         formDOMNode.on "click", ".cancel-new", (event) ->
             $scope.$apply ->
@@ -445,7 +455,6 @@ GithubWebhooksDirective = ($repo, $confirm, $loading) ->
         submitButton = $el.find(".submit-button")
 
         $el.on "submit", "form", submit
-        $el.on "click", ".submit-button", submit
 
     return {link:link}
 
@@ -481,7 +490,6 @@ GitlabWebhooksDirective = ($repo, $confirm, $loading) ->
         submitButton = $el.find(".submit-button")
 
         $el.on "submit", "form", submit
-        $el.on "click", ".submit-button", submit
 
     return {link:link}
 
@@ -517,7 +525,6 @@ BitbucketWebhooksDirective = ($repo, $confirm, $loading) ->
         submitButton = $el.find(".submit-button")
 
         $el.on "submit", "form", submit
-        $el.on "click", ".submit-button", submit
 
     return {link:link}
 

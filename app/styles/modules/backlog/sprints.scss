@@ -1,32 +1,33 @@
 .sprints {
     .summary {
-        @include clearfix;
-        background: $gray-light;
-        ul {
-            width: 40%;
-        }
-        li {
-            color: $grayer;
-        }
+        background: darken($whitish, 10%);
+        display: flex;
+        justify-content: space-between;
     }
-    .new-sprint {
-        float: right;
-        .button {
-            padding: .5rem 1.5rem;
-        }
+    .total-sprints {
+        align-items: flex-start;
+        color: $grayer;
+        display: flex;
+    }
+    .add-sprint {
+        margin: 0;
+        padding: .3rem 1.5rem;
     }
     .filter-closed-sprints {
         @extend %small;
-        display: block;
+        align-content: center;
+        display: flex;
+        justify-content: center;
         padding-bottom: 1rem;
-        text-align: center;
-        .icon-kanban {
+        vertical-align: middle;
+        .icon-archive {
             margin-right: .3rem;
-            vertical-align: middle;
         }
     }
+    .loading {
+        text-align: center;
+    }
     .loading-spinner {
-        @extend %loading-spinner;
         border: 0;
         flex-grow: 0;
         margin-bottom: 1rem;

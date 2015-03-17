@@ -24,20 +24,22 @@
             transition: opacity 1s linear;
         }
         input {
+            @extend %text;
+            @extend %medium;
             background: $grayer;
             color: $whitish;
             @include placeholder {
                 color: $gray-light;
             }
         }
-        &.loading {
+        .loading {
             margin: 0;
             padding: 8px;
             text-align: center;
             width: 100%;
         }
     }
-    .button {
+    .add-button {
         color: $white;
         display: block;
         margin-bottom: .5rem;

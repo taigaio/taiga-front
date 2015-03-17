@@ -59,7 +59,6 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @scope.sectionName = "Backlog"
         @showTags = false
         @activeFilters = false
-        @excludeClosedSprints = true
 
         @.initializeEventHandlers()
 
@@ -111,7 +110,8 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @scope.$on("sprint:us:moved", @.loadSprints)
         @scope.$on("sprint:us:moved", @.loadProjectStats)
 
-        @scope.$on("backlog:toggle-closed-sprints-visualization", @.toggleClosedSprintsVisualization)
+        @scope.$on("backlog:load-closed-sprints", @.loadClosedSprints)
+        @scope.$on("backlog:unload-closed-sprints", @.unloadClosedSprints)
 
     initializeSubscription: ->
         routingKey1 = "changes.project.#{@scope.projectId}.userstories"
@@ -146,11 +146,23 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         return @rs.projects.tagsColors(@scope.projectId).then (tags_colors) =>
             @scope.project.tags_colors = tags_colors
 
-    loadSprints: ->
-        params = {}
-        if @excludeClosedSprints
-            params["closed"] = false
+    unloadClosedSprints: ->
+        @scope.$apply =>
+            @scope.closedSprints =  []
+            @rootscope.$broadcast("closed-sprints:reloaded", [])
 
+    loadClosedSprints: ->
+        params = {closed: true}
+        return @rs.sprints.list(@scope.projectId, params).then (sprints) =>
+            # NOTE: Fix order of USs because the filter orderBy does not work propertly in partials files
+            for sprint in sprints
+                sprint.user_stories = _.sortBy(sprint.user_stories, "sprint_order")
+            @scope.closedSprints =  sprints
+            @rootscope.$broadcast("closed-sprints:reloaded", sprints)
+            return sprints
+
+    loadSprints: ->
+        params = {closed: false}
         return @rs.sprints.list(@scope.projectId, params).then (sprints) =>
             # NOTE: Fix order of USs because the filter orderBy does not work propertly in partials files
             for sprint in sprints
@@ -158,10 +170,8 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
             @scope.sprints = sprints
             @scope.openSprints = _.filter(sprints, (sprint) => not sprint.closed).reverse()
-            @scope.closedSprints =  _.filter(sprints, (sprint) => sprint.closed)
-            if not @excludeClosedSprints
-                @scope.totalClosedMilestones = @scope.closedSprints.length
-                
+            @scope.closedSprints =  [] if !@scope.closedSprints
+
             @scope.sprintsCounter = sprints.length
             @scope.sprintsById = groupBy(sprints, (x) -> x.id)
             @rootscope.$broadcast("sprints:loaded", sprints)
@@ -194,8 +204,9 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             # NOTE: Fix order of USs because the filter orderBy does not work propertly in the partials files
             @scope.userstories = _.sortBy(userstories, "backlog_order")
 
-            @.generateFilters()
+            @.setSearchDataFilters()
             @.filterVisibleUserstories()
+            @.generateFilters()
 
             @rootscope.$broadcast("filters:loaded", @scope.filters)
             # The broadcast must be executed when the DOM has been fully reloaded.
@@ -214,6 +225,9 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
     loadProject: ->
         return @rs.projects.getBySlug(@params.pslug).then (project) =>
+            if not project.is_backlog_activated
+                @location.path(@navUrls.resolve("permission-denied"))
+
             @scope.projectId = project.id
             @scope.project = project
             @scope.totalClosedMilestones = project.total_closed_milestones
@@ -232,40 +246,20 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
         return promise.then(=> @.loadBacklog())
 
-    toggleClosedSprintsVisualization: ->
-        @excludeClosedSprints = not @excludeClosedSprints
-        @.loadSprints()
-
     filterVisibleUserstories: ->
         @scope.visibleUserstories = []
 
         # Filter by tags
-        selectedTags = _.filter(@scope.filters.tags, "selected")
-        selectedTags = _.map(selectedTags, "name")
-
-        if selectedTags.length == 0
-            @scope.visibleUserstories = _.clone(@scope.userstories, false)
-        else
-            @scope.visibleUserstories = _.reject @scope.userstories, (us) =>
-                if _.intersection(selectedTags, us.tags).length == 0
-                    return true
-                return false
+        @scope.visibleUserstories = _.reject @scope.userstories, (us) =>
+            return _.some us.tags, (tag) =>
+                return @isFilterSelected("tag", tag)
 
         # Filter by status
-        selectedStatuses = _.filter(@scope.filters.statuses, "selected")
-        selectedStatuses = _.map(selectedStatuses, "id")
+        @scope.visibleUserstories = _.filter @scope.visibleUserstories, (us) =>
+            if @searchdata["statuses"] && Object.keys(@searchdata["statuses"]).length
+                return @isFilterSelected("statuses", taiga.toString(us.status))
 
-        if selectedStatuses.length > 0
-            @scope.visibleUserstories = _.reject @scope.visibleUserstories, (us) =>
-                res = _.find(selectedStatuses, (x) -> x == taiga.toString(us.status))
-                return not res
-
-        @rs.userstories.storeQueryParams(@scope.projectId, {
-            "status": selectedStatuses,
-            "tags": selectedTags,
-            "project": @scope.projectId
-            "milestone": null
-        })
+            return true
 
     prepareBulkUpdateData: (uses, field="backlog_order") ->
          return _.map(uses, (x) -> {"us_id": x.id, "order": x[field]})
@@ -422,31 +416,33 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
         return promise
 
-    getUrlFilters: ->
-        return _.pick(@location.search(), "statuses", "tags", "q")
+    isFilterSelected: (type, id) ->
+        if @searchdata[type]? and @searchdata[type][id]
+            return true
+        return false
 
-    generateFilters: ->
+    setSearchDataFilters: () ->
         urlfilters = @.getUrlFilters()
 
         if urlfilters.q
             @scope.filtersQ = @scope.filtersQ or urlfilters.q
 
-        searchdata = {}
+        @searchdata = {}
         for name, value of urlfilters
-            if not searchdata[name]?
-                searchdata[name] = {}
+            if not @searchdata[name]?
+                @searchdata[name] = {}
 
             for val in taiga.toString(value).split(",")
-                searchdata[name][val] = true
+                @searchdata[name][val] = true
 
-        isSelected = (type, id) ->
-            if searchdata[type]? and searchdata[type][id]
-                return true
-            return false
+    getUrlFilters: ->
+        return _.pick(@location.search(), "statuses", "tags", "q")
 
+    generateFilters: ->
         @scope.filters = {}
 
-        plainTags = _.flatten(_.filter(_.map(@scope.userstories, "tags")))
+        #tags
+        plainTags = _.flatten(_.filter(_.map(@scope.visibleUserstories, "tags")))
         plainTags.sort()
 
         @scope.filters.tags = _.map _.countBy(plainTags), (v, k) =>
@@ -457,10 +453,14 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
                 color: @scope.project.tags_colors[k],
                 count: v
             }
-            obj.selected = true if isSelected("tags", obj.id)
+            obj.selected = true if @isFilterSelected("tags", obj.id)
             return obj
 
-        plainStatuses = _.map(@scope.userstories, "status")
+        selectedTags = _.filter(@scope.filters.tags, "selected")
+        selectedTags = _.map(selectedTags, "name")
+
+        #status
+        plainStatuses = _.map(@scope.visibleUserstories, "status")
 
         plainStatuses = _.filter plainStatuses, (status) =>
             if status
@@ -474,11 +474,20 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
                 color: @scope.usStatusById[k].color,
                 count:v
             }
-            obj.selected = true if isSelected("statuses", obj.id)
+            obj.selected = true if @isFilterSelected("statuses", obj.id)
 
             return obj
 
-        return @scope.filters
+        selectedStatuses = _.filter(@scope.filters.statuses, "selected")
+        selectedStatuses = _.map(selectedStatuses, "id")
+
+        #store query params
+        @rs.userstories.storeQueryParams(@scope.projectId, {
+            "status": selectedStatuses,
+            "tags": selectedTags,
+            "project": @scope.projectId
+            "milestone": null
+        })
 
     ## Template actions
 
@@ -514,7 +523,6 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
 module.controller("BacklogController", BacklogController)
 
-
 #############################################################################
 ## Backlog Directive
 #############################################################################
@@ -531,29 +539,27 @@ BacklogDirective = ($repo, $rootscope) ->
             if $scope.stats?
                 removeDoomlineDom()
 
-                elements = getUsItems()
                 stats = $scope.stats
 
                 total_points = stats.total_points
                 current_sum = stats.assigned_points
 
-                for element in elements
-                    scope = element.scope()
+                return if not $scope.visibleUserstories
 
-                    if not scope.us?
-                        continue
-
-                    current_sum += scope.us.total_points
+                for us, i in $scope.visibleUserstories
+                    current_sum += us.total_points
 
                     if current_sum > total_points
-                        addDoomLineDom(element)
+                        domElement = $el.find('.backlog-table-body .us-item-row')[i]
+                        addDoomLineDom(domElement)
+
                         break
 
         removeDoomlineDom = ->
             $el.find(".doom-line").remove()
 
         addDoomLineDom = (element) ->
-            element?.before(doomLineTemplate({}))
+            $(element).before(doomLineTemplate({}))
 
         getUsItems = ->
             rowElements = $el.find('.backlog-table-body .us-item-row')
@@ -604,7 +610,8 @@ BacklogDirective = ($repo, $rootscope) ->
             ussDom = $el.find(".backlog-table-body .user-stories input:checkbox:checked")
 
             ussToMove = _.map ussDom, (item) ->
-                itemScope = angular.element(item).scope()
+                item =  $(item).closest('.tg-scope')
+                itemScope = item.scope()
                 itemScope.us.milestone = $scope.sprints[0].id
                 return itemScope.us
 
@@ -727,7 +734,6 @@ UsRolePointsSelectorDirective = ($rootscope, $template) ->
         $el.on "click", ".role", (event) ->
             event.preventDefault()
             event.stopPropagation()
-
             target = angular.element(event.currentTarget)
             rolScope = target.scope()
             $rootscope.$broadcast("uspoints:select", target.data("role-id"), target.text())
@@ -740,170 +746,107 @@ UsRolePointsSelectorDirective = ($rootscope, $template) ->
 module.directive("tgUsRolePointsSelector", ["$rootScope", "$tgTemplate", UsRolePointsSelectorDirective])
 
 
-UsPointsDirective = ($repo, $tgTemplate) ->
-    rolesTemplate = $tgTemplate.get("backlog/us-points-roles-popover.html", true)
-    pointsTemplate = $tgTemplate.get("backlog/us-points-popover.html", true)
+UsPointsDirective = ($tgEstimationsService, $repo, $tgTemplate) ->
+    rolesTemplate = $tgTemplate.get("common/estimation/us-points-roles-popover.html", true)
 
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
-
-        us = $scope.$eval($attrs.tgBacklogUsPoints)
-
         updatingSelectedRoleId = null
         selectedRoleId = null
-        numberOfRoles = _.size(us.points)
+        filteringRoleId = null
+        estimationProcess = null
 
-        # Preselect the role if we have only one
-        if numberOfRoles == 1
-            selectedRoleId = _.keys(us.points)[0]
+        $scope.$on "uspoints:select", (ctx, roleId, roleName) ->
+            us = $scope.$eval($attrs.tgBacklogUsPoints)
+            selectedRoleId = roleId
+            estimationProcess.render()
 
-        roles = []
-        updatePointsRoles = ->
-            roles = _.map computableRoles, (role) ->
-                pointId = us.points[role.id]
-                pointObj = $scope.pointsById[pointId]
+        $scope.$on "uspoints:clear-selection", (ctx) ->
+            us = $scope.$eval($attrs.tgBacklogUsPoints)
+            selectedRoleId = null
+            estimationProcess.render()
 
-                role = _.clone(role, true)
-                role.points = if pointObj.value? then pointObj.value else "?"
-                return role
+        $scope.$watch $attrs.tgBacklogUsPoints, (us) ->
+            if us
+                estimationProcess = $tgEstimationsService.create($el, us, $scope.project)
 
-        computableRoles = _.filter($scope.project.roles, "computable")
-        updatePointsRoles()
+                # Update roles
+                roles = estimationProcess.calculateRoles()
+                if roles.length == 0
+                    $el.find(".icon-arrow-bottom").remove()
+                    $el.find("a.us-points").addClass("not-clickable")
 
-        if roles.length == 0
-            $el.find(".icon-arrow-bottom").remove()
-            $el.find("a.us-points").addClass("not-clickable")
+                else if roles.length == 1
+                    # Preselect the role if we have only one
+                    selectedRoleId = _.keys(us.points)[0]
 
-        renderPointsSelector = (us, roleId) ->
-            # Prepare data for rendering
-            points = _.map $scope.project.points, (point) ->
-                point = _.clone(point, true)
-                point.selected = if us.points[roleId] == point.id then false else true
-                return point
+                if estimationProcess.isEditable
+                    bindClickElements()
 
-            html = pointsTemplate({"points": points})
+                estimationProcess.onSelectedPointForRole = (roleId, pointId) ->
+                    @save(roleId, pointId).then ->
+                        $ctrl.loadProjectStats()
 
-            # Remove any prevous state
-            $el.find(".popover").popover().close()
-            $el.find(".pop-points-open").remove()
+                estimationProcess.render = () ->
+                    totalPoints = @calculateTotalPoints()
+                    if not selectedRoleId? or roles.length == 1
+                        text = totalPoints
+                        title = totalPoints
+                    else
+                        pointId = @us.points[selectedRoleId]
+                        pointObj = @pointsById[pointId]
+                        text = "#{pointObj.name} / <span>#{totalPoints}</span>"
+                        title = "#{pointObj.name} / #{totalPoints}"
 
-            # Render into DOM and show the new created element
-            $el.append(html)
+                    ctx = {
+                        totalPoints: totalPoints
+                        roles: @calculateRoles()
+                        editable: @isEditable
+                        text:  text
+                        title: title
+                    }
+                    mainTemplate = "common/estimation/us-estimation-total.html"
+                    template = $tgTemplate.get(mainTemplate, true)
+                    html = template(ctx)
+                    @$el.html(html)
 
-            # If not showing role selection let's move to the left
-            if not $el.find(".pop-role:visible").css("left")?
-                $el.find(".pop-points-open").css("left", "110px")
+                estimationProcess.render()
 
-            $el.find(".pop-points-open").popover().open()
-
-        renderRolesSelector = (us) ->
-            updatePointsRoles()
-
+        renderRolesSelector = () ->
+            roles = estimationProcess.calculateRoles()
             html = rolesTemplate({"roles": roles})
-
             # Render into DOM and show the new created element
             $el.append(html)
             $el.find(".pop-role").popover().open(() -> $(this).remove())
 
-        renderPoints = (us, roleId) ->
-            dom = $el.find("a > span.points-value")
-
-            if roleId == null or numberOfRoles == 1
-                totalPoints = if us.total_points? then us.total_points else "?"
-                dom.text(totalPoints)
-                dom.parent().prop("title", totalPoints)
-            else
-                pointId = us.points[roleId]
-                pointObj = $scope.pointsById[pointId]
-                dom.html("#{pointObj.name} / <span>#{us.total_points}</span>")
-                dom.parent().prop("title", "#{pointObj.name} / #{us.total_points}")
-
-        calculateTotalPoints = ->
-            values = _.map(us.points, (v, k) -> $scope.pointsById[v].value)
-            values = _.filter(values, (num) -> num?)
-
-            if values.length == 0
-                return "?"
-
-            return _.reduce(values, (acc, num) -> acc + num)
-
-        $scope.$watch $attrs.tgBacklogUsPoints, (us) ->
-            renderPoints(us, selectedRoleId) if us
-
-        $scope.$on "uspoints:select", (ctx, roleId, roleName) ->
-            us = $scope.$eval($attrs.tgBacklogUsPoints)
-            renderPoints(us, roleId)
-            selectedRoleId = roleId
-
-        $scope.$on "uspoints:clear-selection", (ctx) ->
-            us = $scope.$eval($attrs.tgBacklogUsPoints)
-            renderPoints(us, null)
-            selectedRoleId = null
-
-        if roles.length > 0
+        bindClickElements = () ->
             $el.on "click", "a.us-points span", (event) ->
                 event.preventDefault()
                 event.stopPropagation()
-
                 us = $scope.$eval($attrs.tgBacklogUsPoints)
                 updatingSelectedRoleId = selectedRoleId
-
                 if selectedRoleId?
-                    renderPointsSelector(us, selectedRoleId)
+                    estimationProcess.renderPointsSelector(selectedRoleId)
                 else
-                    renderRolesSelector(us)
+                    renderRolesSelector()
 
             $el.on "click", ".role", (event) ->
                 event.preventDefault()
                 event.stopPropagation()
                 target = angular.element(event.currentTarget)
-
                 us = $scope.$eval($attrs.tgBacklogUsPoints)
-
                 updatingSelectedRoleId = target.data("role-id")
-
                 popRolesDom = $el.find(".pop-role")
                 popRolesDom.find("a").removeClass("active")
                 popRolesDom.find("a[data-role-id='#{updatingSelectedRoleId}']").addClass("active")
-
-                renderPointsSelector(us, updatingSelectedRoleId)
-
-            $el.on "click", ".point", (event) ->
-                event.preventDefault()
-                event.stopPropagation()
-
-                target = angular.element(event.currentTarget)
-                $el.find(".pop-points-open").hide()
-                $el.find(".pop-role").hide()
-
-                us = $scope.$eval($attrs.tgBacklogUsPoints)
-
-                points = _.clone(us.points, true)
-                points[updatingSelectedRoleId] = target.data("point-id")
-
-                $scope.$apply ->
-                    us.points = points
-                    us.total_points = calculateTotalPoints(us)
-
-                    renderPoints(us, selectedRoleId)
-
-                    $repo.save(us).then ->
-                        # Little Hack for refresh.
-                        $repo.refresh(us).then ->
-                            $ctrl.loadProjectStats()
-
-        bindOnce $scope, "project", (project) ->
-            # If the user has not enough permissions the click events are unbinded
-            if project.my_permissions.indexOf("modify_us") == -1
-                $el.unbind("click")
-                $el.find("a").addClass("not-clickable")
+                estimationProcess.renderPointsSelector(updatingSelectedRoleId)
 
         $scope.$on "$destroy", ->
             $el.off()
 
     return {link: link}
 
-module.directive("tgBacklogUsPoints", ["$tgRepo", "$tgTemplate", UsPointsDirective])
+module.directive("tgBacklogUsPoints", ["$tgEstimationsService", "$tgRepo", "$tgTemplate", UsPointsDirective])
 
 #############################################################################
 ## Burndown graph directive

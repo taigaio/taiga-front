@@ -52,10 +52,10 @@ exports.files = function () {
         'components/select-color',
         'components/loader',
         'components/loading-bar',
-        'components/help-notion-button',
         'components/beta',
         'components/markitup',
         'components/markdown-help',
+        'components/popover-points',
 
 
         //#################################################
@@ -74,6 +74,7 @@ exports.files = function () {
         'modules/common/history',
         'modules/common/wizard',
         'modules/common/external-reference',
+        'modules/common/custom-fields',
 
         //Project modules
         'modules/home-projects-list',
@@ -107,6 +108,7 @@ exports.files = function () {
         'modules/auth/register-form',
         'modules/auth/forgot-form',
         'modules/auth/change-password-from-recovery',
+        'modules/auth/cancel-account',
 
         //Wiki modules
         'modules/wiki/wiki-nav',
@@ -123,10 +125,12 @@ exports.files = function () {
         'modules/admin/admin-membership-table',
         'modules/admin/admin-project-profile',
         'modules/admin/default-values',
+        'modules/admin/admin-custom-attributes',
         'modules/admin/project-values',
         'modules/admin/third-parties',
         'modules/admin/admin-third-parties-webhooks',
         'modules/admin/contrib',
+        'modules/admin/project-csv',
 
         //Modules user Settings
         'modules/user-settings/user-profile',

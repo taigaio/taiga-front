@@ -1,89 +1,96 @@
-section.colors-table
-    div.table-header
-        div.row
-            div.color-column Color
-            div.status-name Name
-            div.status-slug Slug
-            div.is-closed-column Is closed?
-            div.is-archived-column Is archived?
-            div.status-wip-limit WIP Limit
-            div.options-column
+section.project-us-status
 
-    div.table-main
-        div.sortable
-            form(ng-repeat="value in values")
-                div.row.table-main.visualization
-                    span.icon.icon-drag-v
+    div.project-values-title
+        h2(ng-bind="sectionName")
+        a.button.button-gray.show-add-new(href="", title="Add New")
+            span Add new status
 
-                    div.color-column
-                        div.current-color(style="background: {{ value.color }}")
+    div.colors-table
+        div.table-header
+            div.row
+                div.color-column Color
+                div.status-name Name
+                div.status-slug Slug
+                div.is-closed-column Is closed?
+                div.is-archived-column Is archived?
+                div.status-wip-limit WIP Limit
+                div.options-column
 
-                    div.status-name
-                        span {{ value.name }}
+        div.table-main
+            div.sortable
+                form(ng-repeat="value in values", tg-bind-scope)
+                    div.row.table-main.visualization
+                        span.icon.icon-drag-v
 
-                    div.status-slug
-                        span {{ value.slug }}
+                        div.color-column
+                            div.current-color(style="background: {{ value.color }}")
 
-                    div.is-closed-column
-                        div.icon.icon-check-square(ng-show="value.is_closed")
+                        div.status-name
+                            span {{ value.name }}
 
-                    div.is-archived-column
-                        div.icon.icon-check-square(ng-show="value.is_archived")
+                        div.status-slug
+                            span {{ value.slug }}
 
-                    div.status-wip-limit
-                        span {{ value.wip_limit }}
+                        div.is-closed-column
+                            div.icon.icon-check-square(ng-show="value.is_closed")
 
-                    div.options-column
-                        a.edit-value.icon.icon-edit(href="", title="Edit value")
-                        a.delete-value.icon.icon-delete(href="", title="Delete value")
+                        div.is-archived-column
+                            div.icon.icon-check-square(ng-show="value.is_archived")
 
-                div.row.table-main.edition.hidden
-                    div.color-column(tg-color-selection, ng-model="value")
-                        div.current-color(style="background: {{ value.color }}")
+                        div.status-wip-limit
+                            span {{ value.wip_limit }}
+
+                        div.options-column
+                            a.edit-value.icon.icon-edit(href="", title="Edit value")
+                            a.delete-value.icon.icon-delete(href="", title="Delete value")
+
+                    div.row.table-main.edition.hidden
+                        div.color-column(tg-color-selection, ng-model="value")
+                            div.current-color(style="background: {{ value.color }}")
+                            include ../../components/select-color
+
+                        div.status-name
+                            input(name="name", type="text", placeholder="Write a name for the new status",
+                                ng-model="value.name", data-required="true", data-maxlength="255")
+
+                        div.is-closed-column
+                            select(name="is_closed", ng-model="value.is_closed", data-required="true",
+                                   ng-options="e.id as e.name for e in [{'id':true, 'name':'Yes'},{'id':false, 'name': 'No'}]")
+
+                        div.is-archived-column
+                            select(name="is_archived", ng-model="value.is_archived", data-required="true",
+                                   ng-options="e.id as e.name for e in [{'id':true, 'name':'Yes'},{'id':false, 'name': 'No'}]")
+
+                        div.status-wip-limit
+                            input(name="wip_limit", type="number", placeholder="WIP Limit",
+                                ng-model="value.wip_limit", data-type="digits")
+
+                        div.options-column
+                            a.save.icon.icon-floppy(href="", title="Save changes")
+                            a.cancel.icon.icon-delete(href="", title="Cancel")
+
+            form
+                div.row.table-main.new-value.hidden
+                    div.color-column(tg-color-selection, ng-model="newValue")
+                        div.current-color(style="background: {{ newValue.color }}")
                         include ../../components/select-color
 
                     div.status-name
                         input(name="name", type="text", placeholder="Write a name for the new status",
-                            ng-model="value.name", data-required="true", data-maxlength="255")
+                              ng-model="newValue.name", data-required="true", data-maxlength="255")
 
                     div.is-closed-column
-                        select(name="is_closed", ng-model="value.is_closed", data-required="true",
+                        select(name="is_closed", ng-model="newValue.is_closed", data-required="true",
                                ng-options="e.id as e.name for e in [{'id':true, 'name':'Yes'},{'id':false, 'name': 'No'}]")
 
                     div.is-archived-column
-                        select(name="is_archived", ng-model="value.is_archived", data-required="true",
+                        select(name="is_archived", ng-model="newValue.is_archived", data-required="true",
                                ng-options="e.id as e.name for e in [{'id':true, 'name':'Yes'},{'id':false, 'name': 'No'}]")
 
                     div.status-wip-limit
                         input(name="wip_limit", type="number", placeholder="WIP Limit",
-                            ng-model="value.wip_limit", data-type="digits")
+                              ng-model="newValue.wip_limit", data-type="digits")
 
                     div.options-column
-                        a.save.icon.icon-floppy(href="", title="Save changes")
-                        a.cancel.icon.icon-delete(href="", title="Cancel")
-
-        form
-            div.row.table-main.new-value.hidden
-                div.color-column(tg-color-selection, ng-model="newValue")
-                    div.current-color(style="background: {{ newValue.color }}")
-                    include ../../components/select-color
-
-                div.status-name
-                    input(name="name", type="text", placeholder="Write a name for the new status",
-                          ng-model="newValue.name", data-required="true", data-maxlength="255")
-
-                div.is-closed-column
-                    select(name="is_closed", ng-model="newValue.is_closed", data-required="true",
-                           ng-options="e.id as e.name for e in [{'id':true, 'name':'Yes'},{'id':false, 'name': 'No'}]")
-
-                div.is-archived-column
-                    select(name="is_archived", ng-model="newValue.is_archived", data-required="true",
-                           ng-options="e.id as e.name for e in [{'id':true, 'name':'Yes'},{'id':false, 'name': 'No'}]")
-
-                div.status-wip-limit
-                    input(name="wip_limit", type="number", placeholder="WIP Limit",
-                          ng-model="newValue.wip_limit", data-type="digits")
-
-                div.options-column
-                    a.add-new.icon.icon-floppy(href="", title="Add")
-                    a.delete-new.icon.icon-delete(href="", title="Cancel")
+                        a.add-new.icon.icon-floppy(href="", title="Add")
+                        a.delete-new.icon.icon-delete(href="", title="Cancel")

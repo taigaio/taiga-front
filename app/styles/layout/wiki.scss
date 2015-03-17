@@ -22,12 +22,16 @@
 .wiki-content {
     margin-bottom: 2rem;
     position: relative;
-    .view-wiki-content {
+    &.editable {
         &:hover {
             .wysiwyg {
                 background: $whitish;
                 cursor: pointer;
             }
+        }
+    }
+    .view-wiki-content {
+        &:hover {
             .edit {
                 opacity: 1;
                 top: -1.5rem;
@@ -66,5 +70,8 @@
             right: 3.5rem;
             top: .4rem;
         }
+    }
+    .preview {
+        padding-top: 1.8rem;
     }
 }

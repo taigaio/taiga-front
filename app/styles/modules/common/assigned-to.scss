@@ -26,7 +26,6 @@
     .assigned-to {
         flex-grow: 3;
         margin-left: 1rem;
-        margin-top: 15px;
         .assigned-title {
             @extend %small;
             color: $gray-light;

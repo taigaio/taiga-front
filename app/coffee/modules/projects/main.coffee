@@ -50,7 +50,7 @@ class ProjectsController extends taiga.Controller
         promise = @.loadInitialData()
 
         promise.then () =>
-            @scope.$emit("projects:loaded")
+            @scope.$emit("projects:loaded", @.projects)
 
         promise.then null, @.onInitialDataError.bind(@)
 
@@ -58,7 +58,7 @@ class ProjectsController extends taiga.Controller
         promise.finally tgLoader.pageLoaded
 
     loadInitialData: ->
-        return @rs.projects.list().then (projects) =>
+        return @rs.projects.listByMember(@rootscope.user?.id).then (projects) =>
             @.projects = {'recents': projects.slice(0, 8), 'all': projects}
             for project in projects
                 project.url = @projectUrl.get(project)
@@ -257,8 +257,8 @@ ProjectsListDirective = ($compile, $template) ->
             $el.html($compile(template({projects: projects}))($scope))
             $scope.$emit("regenerate:project-pagination")
 
-        $scope.$watch "projects", (projects) ->
-            render(projects) if projects?
+        $scope.$on "projects:loaded", (ctx, projects) ->
+            render(projects.all) if projects.all?
 
     return {
         link: link

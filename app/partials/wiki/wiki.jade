@@ -14,6 +14,6 @@ div.wrapper(ng-controller="WikiDetailController as ctrl",
 
         tg-attachments(ng-model="wiki", type="wiki_page", ng-if="wiki.id")
 
-        a.remove(href="", ng-click="ctrl.delete()", ng-if="wiki.id", title="Remove this wiki page")
+        a.remove(href="", ng-click="ctrl.delete()", ng-if="wiki.id", title="Remove this wiki page", tg-check-permission="delete_wiki_page")
             span.icon.icon-delete
             span Remove this wiki page

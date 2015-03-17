@@ -1,13 +1,14 @@
-ul
-    li
-        span.number <%- totalEditions %>
-        span.description times <br />edited
-    li
-        span.number <%- lastModifiedDate %>
-        span.description last <br />edit
+div.wiki-times-edited
+    span.number <%- totalEditions %>
+    span.description times <br />edited
 
-    li.username-edition
-        figure.avatar
-            img(src!="<%- user.imgUrl %>" alt!="<%- user.name %>")
+div.wiki-last-modified
+    span.number <%- lastModifiedDate %>
+    span.description last <br />edit
+
+div.wiki-username-edition
+    figure.avatar
+        img(src!="<%- user.imgUrl %>" alt!="<%- user.name %>")
+    div.wiki-user-modification
         span.description last modification
         span.username <%- user.name %>

@@ -1,82 +1,99 @@
-// Buttons components
-.trans-button {
-    @extend %large;
+.button,
+%button {
+    @extend %medium;
     @extend %title;
+    background: transparent;
+    border: 0;
+    color: $white;
+    display: inline-block;
+    padding: .4rem 2.5rem;
     text-transform: uppercase;
-    &:hover,
-    &.active {
-        color: $green-taiga;
-        transition: color .3s linear;
+    transition: all .3s linear;
+    vertical-align: middle;
+    &:hover {
+        color: $white;
+        transition: all .3s linear;
+    }
+    &.loading {
+        span {
+            animation: loading .5s linear;
+        }
+    }
+    span {
+        color: $white;
     }
     .icon {
+        color: $white;
         margin-right: .3rem;
     }
 }
 
-.button {
+.trans-button {
+    @extend %medium;
+    @extend %title;
     @extend %button;
+    span,
+    .icon {
+        color: $blackish;
+        transition: color .2s linear;
+    }
+    &:hover,
+    &.active {
+        span,
+        .icon {
+            color: $green-taiga;
+        }
+    }
 }
 
-a.button-green {
+
+.submit-button {
+    width: 100%;
+}
+
+.button-green {
+    @extend %button;
     background: $green-taiga;
-    color: $white;
-    vertical-align: middle;
     &:hover,
     &.active {
         background: $fresh-taiga;
-    }
-    span {
-        color: $white;
     }
 }
 
 .button-gray,
 a.button-gray {
-    background: $button-gray;
-    &:hover {
+    @extend %button;
+    background: $gray;
+    &:hover,
+    &.active {
         background: $fresh-taiga;
         color: $white;
     }
-    span {
-        color: $white;
-    }
 }
 
-a.button-blackish {
+.button-blackish {
+    @extend %button;
     background: $blackish;
     color: $whitish;
     &:hover {
-        background: $button-gray-hover;
-        color: $white;
-    }
-    span {
+        background: $blackish;
         color: $white;
     }
 }
 
-a.button-red {
+.button-red {
+    @extend %button;
     background: $red-light;
     &:hover {
         background: $red;
         color: $white;
     }
-    span {
+    .icon {
         color: $white;
     }
 }
 
-a.button-orange {
-    background: $orange;
-    &:hover {
-        background: lighten($orange, 10%);
-        color: $white;
-    }
-    span {
-        color: $white;
-    }
-}
-
-a.button-block {
+.button-block {
     background: $white;
     color: $red;
     &:hover {
@@ -85,35 +102,28 @@ a.button-block {
     }
 }
 
-a.button-bulk {
+.button-bulk {
     @extend %button;
     background: $green-taiga;
-    font-size: 22px;
-    margin-left: 2px;
-    padding: .3rem .5rem;
-    vertical-align: middle;
+    padding: .35rem .5rem;
     .icon {
-        @extend %medium;
-        color: $white;
         margin-right: 0;
     }
     &:hover {
         background: $fresh-taiga;
-        transition: background .3s linear;
     }
 }
-.button-github {
+
+.button-auth {
     @extend %button;
     background: $grayer;
-    vertical-align: middle;
-    .icon {
+    .icon,
+    img {
         @extend %large;
         color: $white;
         margin-right: .5rem;
-        vertical-align: text-bottom;
     }
     &:hover {
         background: $black;
-        transition: background .3s linear;
     }
 }

@@ -55,7 +55,6 @@ FeedbackDirective = ($lightboxService, $repo, $confirm, $loading)->
         submitButton = $el.find(".submit-button")
 
         $el.on "submit", "form", submit
-        $el.on "click", ".submit-button", submit
 
         $scope.$on "feedback:show", ->
             $scope.$apply ->

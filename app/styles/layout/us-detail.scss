@@ -100,8 +100,7 @@
             margin-top: .5rem;
             a {
                 border-left: 1px solid $gray-light;
-                padding: 0 .2rem;
-                transition: color .3s linear;
+                padding: 0 .2rem;                
             }
             a:hover {
                 color: $green-taiga;
@@ -226,6 +225,9 @@
             top: .4rem;
             transition: all .2s linear;
         }
+        .preview {
+            padding-top: 1.5rem;
+        }
     }
 }
 
@@ -273,7 +275,8 @@
         flex-grow: 1;
         flex-shrink: 0;
         margin: .1rem;
-        padding: .5rem;
+        max-width: 50%;
+        padding: .5rem 0 .1rem;
         position: relative;
         text-align: center;
         transition: color .3s linear;
@@ -297,13 +300,14 @@
         text-align: center;
     }
     .role {
+        @extend %small;
         @include ellipsis(90%);
         display: inline-block;
-        line-height: .8rem;
+        line-height: 1rem;
         text-align: center;
     }
     .popover {
-        @include popover(200px, $top: 105%, $left: 35%, $arrow-width: 10px, $arrow-top: -5px, $arrow-left: 10px);
+        @include popover(200px, $top: 105%, $left: 35%, $arrow-width: 10px, $arrow-top: -5px, $arrow-left: 10px, $arrow-height: 10px);
         li {
             display: inline-block;
             width: 23%;
@@ -318,9 +322,10 @@
             }
         }
         &.fix {
-            @include popover(200px, $top: 105%, $left: -160px, $arrow-width: 10px, $arrow-top: -5px, $arrow-left: 90%);
+            @include popover(200px, $top: 105%, $left: -160px, $arrow-width: 10px, $arrow-top: -5px, $arrow-left: 90%, $arrow-height: 10px);
         }
     }
+
 }
 
 .duty-data-container {

@@ -104,6 +104,9 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
+            if not project.is_backlog_activated
+                @location.path(@navUrls.resolve("permission-denied"))
+
             @scope.project = project
             # Not used at this momment
             @scope.pointsList = _.sortBy(project.points, "order")
@@ -115,6 +118,8 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.usStatusById = groupBy(project.us_statuses, (e) -> e.id)
 
             @scope.$emit('project:loaded', project)
+
+            @.fillUsersAndRoles(project.users, project.roles)
 
             return project
 
@@ -185,7 +190,6 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
             return data
 
         return promise.then(=> @.loadProject())
-                      .then(=> @.loadUsersAndRoles())
                       .then(=> @.loadTaskboard())
 
     refreshTasksOrder: (tasks) ->
@@ -298,30 +302,6 @@ TaskboardTaskDirective = ($rootscope) ->
 module.directive("tgTaskboardTask", ["$rootScope", TaskboardTaskDirective])
 
 #############################################################################
-## Taskboard Table Height Fixer Directive
-#############################################################################
-
-TaskboardTableHeightFixerDirective = ->
-    mainPadding = 32 # px
-
-    renderSize = ($el) ->
-        elementOffset = $el.offset().top
-        windowHeight = angular.element(window).height()
-        columnHeight = windowHeight - elementOffset - mainPadding
-        $el.css("height", "#{columnHeight}px")
-
-    link = ($scope, $el, $attrs) ->
-        timeout(500, -> renderSize($el))
-
-        $scope.$on "resize", ->
-            renderSize($el)
-
-    return {link:link}
-
-
-module.directive("tgTaskboardTableHeightFixer", TaskboardTableHeightFixerDirective)
-
-#############################################################################
 ## Taskboard Squish Column Directive
 #############################################################################
 
@@ -421,12 +401,7 @@ TaskboardUserDirective = ($log) ->
 
     link = ($scope, $el, $attrs) ->
         username_label = $el.parent().find("a.task-assigned")
-        username_label.on "click", (event) ->
-            if $el.find('a').hasClass('noclick')
-                return
-
-            $ctrl = $el.controller()
-            $ctrl.editTaskAssignedTo($scope.task)
+        username_label.addClass("not-clickable")
 
         $scope.$watch 'task.assigned_to', (assigned_to) ->
             user = $scope.usersById[assigned_to]
@@ -448,6 +423,15 @@ TaskboardUserDirective = ($log) ->
 
                     $ctrl = $el.controller()
                     $ctrl.editTaskAssignedTo($scope.task)
+
+                username_label.removeClass("not-clickable")
+                username_label.on "click", (event) ->
+                    if $el.find('a').hasClass('noclick')
+                        return
+
+                    $ctrl = $el.controller()
+                    $ctrl.editTaskAssignedTo($scope.task)
+
 
     return {
         link: link,

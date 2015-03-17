@@ -1,17 +1,7 @@
 div.wrapper(tg-kanban, ng-controller="KanbanController as ctrl"
             ng-init="section='kanban'")
     section.main.kanban
-        header
-            include ../includes/components/mainTitle
-        //-    div.kanban-settings
-        //-        // a.button.button-trans(href="", title="Filter")
-        //-        //     span.icon.icon-filter
-        //-        //     span Filters
-        //-        //a.button.button-gray(href="", title="Filter")
-        //-        //    span Show Statistics
-        //-include ../includes/components/large-summary
-        //-include ../includes/modules/burndown
-        //-include ../includes/modules/list-filters-kanban
+        include ../includes/components/mainTitle
         include ../includes/modules/kanban-table
 
     div.lightbox.lightbox-generic-form.lb-create-edit-userstory(tg-lb-create-edit-userstory)

@@ -67,6 +67,9 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
 
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
+            if not project.i_am_owner
+                @location.path(@navUrls.resolve("permission-denied"))
+
             @scope.project = project
             @scope.$emit('project:loaded', project)
             return project
@@ -307,7 +310,7 @@ MembershipsRowRoleSelectorDirective = ($log, $repo, $confirm) ->
         member = $scope.$eval($attrs.tgMembershipsRowRoleSelector)
         html = render(member)
 
-        $el.on "click", "select", (event) =>
+        $el.on "change", "select", (event) =>
             onSuccess = ->
                 $confirm.notify("success")
 

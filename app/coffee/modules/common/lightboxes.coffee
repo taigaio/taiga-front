@@ -45,6 +45,8 @@ class LightboxService extends taiga.Service
 
         @animationFrame.add =>
             $el.addClass("open")
+
+        @animationFrame.add =>
             lightboxContent.show()
             defered.resolve()
 
@@ -334,7 +336,6 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
         submitButton = $el.find(".submit-button")
 
         $el.on "submit", "form", submit
-        $el.on "click", ".submit-button", submit
 
         $el.on "click", ".close", (event) ->
             event.preventDefault()
@@ -403,7 +404,6 @@ CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService, $load
         submitButton = $el.find(".submit-button")
 
         $el.on "submit", "form", submit
-        $el.on "click", ".submit-button", submit
 
         $scope.$on "$destroy", ->
             $el.off()
@@ -604,41 +604,3 @@ WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationS
     }
 
 module.directive("tgLbWatchers", ["$tgRepo", "lightboxService", "lightboxKeyboardNavigationService", "$tgTemplate", WatchersLightboxDirective])
-
-#############################################################################
-## Notion Lightbox Directive
-#############################################################################
-
-# Lightbox
-NotionLightboxDirective = (lightboxService) ->
-    link = ($scope, $el, $attrs, $model) ->
-        $scope.$on "notion:open", (event, lightboxId) ->
-            if $el.attr("id") == lightboxId
-                lightboxService.open($el)
-
-        $el.on "click", ".button-green", (event) ->
-            lightboxService.close($el)
-
-        $scope.$on "$destroy", ->
-            $el.off()
-
-    return {link:link}
-
-module.directive("tgLbNotion", ["lightboxService", NotionLightboxDirective])
-
-
-# Button
-NotionButtonDirective = ($log, $rootScope) ->
-    link = ($scope, $el, $attrs, $model) ->
-        if not $attrs.tgLbNotionButton?
-            return $log.error "NotionButtonDirective: the directive need the id of the notion lightbox"
-
-        $el.on "click", ->
-            $rootScope.$broadcast("notion:open", $attrs.tgLbNotionButton)
-
-        $scope.$on "$destroy", ->
-            $el.off()
-
-    return {link:link}
-
-module.directive("tgLbNotionButton", ["$log", "$rootScope", NotionButtonDirective])

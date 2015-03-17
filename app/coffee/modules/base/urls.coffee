@@ -49,6 +49,14 @@ class UrlsService extends taiga.Service
             _.str.ltrim(url, "/")
         ])
 
+    resolveAbsolute: ->
+        url = @.resolve.apply(@, arguments)
+        if (/^https?:\/\//i).test(url)
+            return url
+        if (/^\//).test(url)
+            return "#{window.location.protocol}//#{window.location.host}#{url}"
+        return "#{window.location.protocol}//#{window.location.host}/#{url}"
+
 
 module = angular.module("taigaBase")
 module.service('$tgUrls', UrlsService)

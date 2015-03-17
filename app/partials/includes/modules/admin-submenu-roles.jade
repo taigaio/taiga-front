@@ -5,10 +5,11 @@ section.admin-submenu-roles
     nav
         ul
             li(ng-repeat="item in roles")
-                a(href="" ng-click="ctrl.setRole(item)", ng-class="{active: role.id == item.id}") {{ item.name }}
+                a(href="" ng-click="ctrl.setRole(item)", ng-class="{active: role.id == item.id}")
+                  span.single-role {{ item.name }}
                   span.icon.icon-arrow-right
 
         div(tg-new-role)
-            a.button.button-gray.add-button(href="", title="Add New Role")
+            a.button-gray.add-button(href="", title="Add New Role")
                 span.text + New role
             input(type="text", class="hidden new")

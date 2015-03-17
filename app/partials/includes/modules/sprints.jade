@@ -2,23 +2,18 @@ section.sprints
     header
         h1 SPRINTS
         div.summary
-            ul
-                li
-                    span.number(ng-bind="project.total_milestones") --
-                    span.description <br/>sprints
-            div.new-sprint
-                a.button.button-green(href="", title="Add New sprint",
-                                      ng-click="ctrl.addNewSprint()",
-                                      tg-check-permission="add_milestone")
-                    span.text + New sprint
+            div.total-sprints
+                span.number(ng-bind="project.total_milestones") --
+                span.description <br/>sprints
+            a.button-green.add-sprint(href="", title="Add New sprint", ng-click="ctrl.addNewSprint()", tg-check-permission="add_milestone")
+                span.text + New sprint
 
     div.sprint.sprint-open(ng-repeat="sprint in openSprints track by sprint.id", tg-backlog-sprint="sprint", tg-sprint-sortable)
         include sprint
 
-    a.filter-closed-sprints(href="", ng-show="totalClosedMilestones")
+    a.filter-closed-sprints(tg-backlog-toggle-closed-sprints-visualization, href="", ng-show="totalClosedMilestones")
         span.icon.icon-archive
-        span(tg-backlog-toggle-closed-sprints-visualization="ctrl.excludeClosedSprints") Show closed sprints
-    div.loading-spinner
+        span.text Show closed sprints
 
     div.sprint.sprint-closed(ng-repeat="sprint in closedSprints track by sprint.id" tg-backlog-sprint="sprint", tg-sprint-sortable)
         include sprint
