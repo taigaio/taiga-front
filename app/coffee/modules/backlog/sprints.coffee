@@ -61,6 +61,8 @@ BacklogSprintDirective = ($repo, $rootscope) ->
 
         # Event Handlers
         $el.on "click", ".sprint-name > .icon-arrow-up", (event) ->
+            event.preventDefault()
+
             toggleSprint($el)
 
             $el.find(".sprint-table").slideToggle(slideOptions)
