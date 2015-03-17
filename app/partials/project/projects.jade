@@ -1,12 +1,13 @@
+doctype html
+
 include ../includes/components/beta
 div.home-projects-list(ng-controller="ProjectsController as ctrl")
     .home-projects-wrapper
         div.welcome-user
             div.info
-                p
-                    | Welcome
+                p(translate="PROJECT.WELCOME")
                     span(tg-bo-bind="ctrl.user.full_name_display")
-                a.logout(ng-click="ctrl.logout()" href="", title="Logout") logout
+                a.logout(ng-click="ctrl.logout()" href="", title="{{'COMMON.LOGOUT' | translate}}", translate="COMMON.LOGOUT")
 
             .avatar
                 img(tg-bo-src="ctrl.user.photo", tg-bo-alt="ctrl.user.full_name_display")
@@ -21,14 +22,13 @@ div.home-projects-list(ng-controller="ProjectsController as ctrl")
                                 p(tg-bo-bind="project.description")
 
             div.all-projects
-                h1 Projects
+                h1(translate="PROJECT.SECTION_PROJECTS")
                 div(tg-projects-list)
 
                 .create-project-button-wrapper
-                    a.button-green.create-project-button(href="", ng-click="ctrl.newProject()", title="Create new project")
-                        span Create project
+                    a.button-green.create-project-button(href="", ng-click="ctrl.newProject()", title="{{'PROJECT.NAVIGATION.ACTION_CREATE_PROJECT' | translate}}")
+                        span(translate="PROJECT.NAVIGATION.ACTION_CREATE_PROJECT")
                     div(tg-import-project-button)
-                        a.button-blackish.import-project-button(href="", title="Import project")
+                        a.button-blackish.import-project-button(href="", title="{{'PROJECT.TITLE_ACTION_IMPORT' | translate}}")
                             span.icon.icon-upload
                         input.import-file.hidden(type="file")
-

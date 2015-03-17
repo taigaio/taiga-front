@@ -3,9 +3,9 @@
     span.edit.icon.icon-edit
 
 .edit-description
-    textarea(placeholder="Empty space is so boring... go on be descriptive... A rose by any other name would smell as sweet...", ng-model="item.description", tg-markitup="tg-markitup")
-    a.help-markdown(href="https://taiga.io/support/taiga-markdown-syntax/", target="_blank", title="Mardown syntax help")
+    textarea(placeholder="{{'COMMON.DESCRIPTION.EMPTY' | translate}}", ng-model="item.description", tg-markitup="tg-markitup")
+    a.help-markdown(href="https://taiga.io/support/taiga-markdown-syntax/", target="_blank", title="{{'COMMON.MARKDOWN_HELP' | translate}}")
         span.icon.icon-help
-        span Markdown syntax help
+        span(translate="COMMON.MARKDOWN_HELP")
     span.save-container
-        a.save.icon.icon-floppy(href="", title="Save")
+        a.save.icon.icon-floppy(href="", title="{{'COMMON.SAVE' | translate}}")

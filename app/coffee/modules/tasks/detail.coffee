@@ -145,7 +145,7 @@ module.controller("TaskDetailController", TaskDetailController)
 ## Task status display directive
 #############################################################################
 
-TaskStatusDisplayDirective = ($template) ->
+TaskStatusDisplayDirective = ($template, $compile) ->
     # Display if a Task is open or closed and its taskboard status.
     #
     # Example:
@@ -162,6 +162,9 @@ TaskStatusDisplayDirective = ($template) ->
             html = template({
                 status: $scope.statusById[task.status]
             })
+
+            html = $compile(html)($scope)
+
             $el.html(html)
 
         $scope.$watch $attrs.ngModel, (task) ->
@@ -176,14 +179,14 @@ TaskStatusDisplayDirective = ($template) ->
         require: "ngModel"
     }
 
-module.directive("tgTaskStatusDisplay", ["$tgTemplate", TaskStatusDisplayDirective])
+module.directive("tgTaskStatusDisplay", ["$tgTemplate", "$compile", TaskStatusDisplayDirective])
 
 
 #############################################################################
 ## Task status button directive
 #############################################################################
 
-TaskStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue) ->
+TaskStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $translate) ->
     # Display the status of Task and you can edit it.
     #
     # Example:
@@ -199,7 +202,7 @@ TaskStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue) ->
         <span class="level" style="background-color:<%- status.color %>"></span>
         <span class="status-status"><%- status.name %></span>
         <% if(editable){ %><span class="icon icon-arrow-bottom"></span><% }%>
-        <span class="level-name">status</span>
+        <span class="level-name" translate="COMMON.FIELDS.STATUS"></span>
 
         <ul class="popover pop-status">
             <% _.each(statuses, function(st) { %>
@@ -208,7 +211,7 @@ TaskStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue) ->
             <% }); %>
         </ul>
     </div>
-    """) #TODO: i18n
+    """)
 
     link = ($scope, $el, $attrs, $model) ->
         isEditable = ->
@@ -217,11 +220,12 @@ TaskStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue) ->
         render = (task) =>
             status = $scope.statusById[task.status]
 
-            html = template({
+            html = $compile(template({
                 status: status
                 statuses: $scope.statusList
                 editable: isEditable()
-            })
+            }))($scope)
+
             $el.html(html)
 
         save = $qqueue.bindAdd (status) =>
@@ -274,7 +278,7 @@ TaskStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue) ->
         require: "ngModel"
     }
 
-module.directive("tgTaskStatusButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", "$tgQqueue",
+module.directive("tgTaskStatusButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", "$tgQqueue", "$translate",
                                         TaskStatusButtonDirective])
 
 

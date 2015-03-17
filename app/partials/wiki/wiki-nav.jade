@@ -1,5 +1,5 @@
 header
-  h1 Links
+  h1(translate="WIKI.NAVIGATION.SECTION_NAME")
 
 nav
   ul
@@ -10,11 +10,11 @@ nav
           <% if (deleteWikiLinkPermission) { %>
           span.icon.icon-delete
           <% } %>
-      input(type="text" placeholder="name" class="hidden" value!="<%- link.title %>")
+      input(type="text" placeholder="{{'COMMON.FIELDS.NAME' | translate}}" class="hidden" value!="<%- link.title %>")
     <% }) %>
     li.new.hidden
-      input(type="text" placeholder="name")
+      input(type="text" placeholder="{{'COMMON.FIELDS.NAME' | translate}}")
 <% if (addWikiLinkPermission) { %>
-a(href="" title="Add link" class="add-button button-gray")
-    span Add link
+a(href="" title="{{'WIKI.NAVIGATION.ACTION_ADD_LINK' | translate}}" class="add-button button-gray")
+    span(translate="WIKI.NAVIGATION.ACTION_ADD_LINK")
 <% } %>

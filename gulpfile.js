@@ -89,6 +89,8 @@ paths.libs = [
     paths.app + "vendor/angular-route/angular-route.js",
     paths.app + "vendor/angular-sanitize/angular-sanitize.js",
     paths.app + "vendor/angular-animate/angular-animate.js",
+    paths.app + "vendor/angular-translate/angular-translate.js",
+    paths.app + "vendor/angular-translate-loader-static-files/angular-translate-loader-static-files.js",
     paths.app + "vendor/i18next/i18next.js",
     paths.app + "vendor/moment/min/moment-with-langs.js",
     paths.app + "vendor/checksley/checksley.js",
@@ -259,10 +261,8 @@ gulp.task("app-loader", function() {
 });
 
 gulp.task("locales", function() {
-    return gulp.src("app/locales/en/app.json")
-        .pipe(wrap("angular.module('taigaBase').value('localesEn', <%= contents %>);", {}, {parse: false}))
-        .pipe(rename("locales.en.js"))
-        .pipe(gulp.dest(paths.tmp));
+    return gulp.src(paths.locales)
+        .pipe(gulp.dest(paths.dist + "locales"));
 });
 
 gulp.task("coffee", function() {
@@ -298,17 +298,13 @@ gulp.task("jslibs-deploy", function() {
 });
 
 gulp.task("app-watch", ["coffee", "plugins-js", "conf", "locales", "app-loader"], function() {
-    var _paths = paths.js.concat(paths.tmp + "locales.en.js")
-
-    return gulp.src(_paths)
+    return gulp.src(paths.js)
         .pipe(concat("app.js"))
         .pipe(gulp.dest(paths.dist + "js/"));
 });
 
 gulp.task("app-deploy", ["coffee", "plugins-js", "conf", "locales", "app-loader"], function() {
-    var _paths = paths.js.concat(paths.tmp + "locales.en.js")
-
-    return gulp.src(_paths)
+    return gulp.src(paths.js)
         .pipe(sourcemaps.init())
             .pipe(concat("app.js"))
             .pipe(uglify({mangle:false, preserveComments: false}))
@@ -373,6 +369,7 @@ gulp.task("express", function() {
     app.use("/partials", express.static(__dirname + "/dist/partials"));
     app.use("/fonts", express.static(__dirname + "/dist/fonts"));
     app.use("/plugins", express.static(__dirname + "/dist/plugins"));
+    app.use("/locales", express.static(__dirname + "/dist/locales"));
 
     app.all("/*", function(req, res, next) {
         //Just send the index.html for other files to support HTML5Mode
@@ -389,7 +386,7 @@ gulp.task("watch", function() {
     gulp.watch(paths.svg, ["copy-svg"]);
     gulp.watch(paths.coffee, ["app-watch"]);
     gulp.watch(paths.libs, ["jslibs-watch"]);
-    gulp.watch(paths.locales, ["app-watch"]);
+    gulp.watch(paths.locales, ["locales"]);
     gulp.watch(paths.images, ["copy-images"]);
     gulp.watch(paths.fonts, ["copy-fonts"]);
 });

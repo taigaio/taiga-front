@@ -1,7 +1,10 @@
+doctype html
+
 div.error-main
     div.error-container
         object.logo-svg(type="image/svg+xml", data="/svg/logo.svg")
             img(src="/images/logo.png", alt="TAIGA")
         h1.logo Taiga
-        p.error-text Something happened and our Oompa Loompas are working on it.</br> Try reloading again soon.
-        a(href="/", title="") Take me home
+        p.error-text(translate="ERROR.TEXT1")
+        p.error-text(translate="ERROR.TEXT2")
+        a(href="/", title="", translate="COMMON.GO_HOME")

@@ -30,10 +30,10 @@ MAX_MEMBERSHIP_FIELDSETS = 4
 ## Create Members Lightbox Directive
 #############################################################################
 
-CreateMembersDirective = ($rs, $rootScope, $confirm, $loading ,lightboxService) ->
+CreateMembersDirective = ($rs, $rootScope, $confirm, $loading ,lightboxService, $compile) ->
     extraTextTemplate = """
     <fieldset class="extra-text">
-        <textarea placeholder="(Optional) Add a personalized text to the invitation. Tell something lovely to your new members ;-)"
+        <textarea placeholder="{{'LIGHTBOX.CREATE_MEMBER.PLACEHOLDER_INVITATION_TEXT' | translate}}"
             maxlength="255">
         </textarea>
     </fieldset>
@@ -42,7 +42,7 @@ CreateMembersDirective = ($rs, $rootScope, $confirm, $loading ,lightboxService) 
     template = _.template("""
     <div class="add-member-wrapper">
         <fieldset>
-            <input type="email" placeholder="Type an Email" <% if(required) { %> data-required="true" <% } %> data-type="email" />
+            <input type="email" placeholder="{{'LIGHTBOX.CREATE_MEMBER.PLACEHOLDER_TYPE_EMAIL'}}" <% if(required) { %> data-required="true" <% } %> data-type="email" />
         </fieldset>
         <fieldset>
             <select <% if(required) { %> data-required="true" <% } %> data-required="true">
@@ -53,19 +53,19 @@ CreateMembersDirective = ($rs, $rootScope, $confirm, $loading ,lightboxService) 
             <a class="icon icon-plus add-fieldset" href=""></a>
         </fieldset>
     </div>
-    """) # i18n
+    """)
 
     link = ($scope, $el, $attrs) ->
         createFieldSet = (required = true)->
             ctx = {roleList: $scope.roles, required: required}
-            return template(ctx)
+            return $compile(template(ctx))($scope)
 
         resetForm = ->
             $el.find("form textarea").remove("")
             $el.find("form .add-member-wrapper").remove()
 
             invitations = $el.find(".add-member-forms")
-            invitations.html(extraTextTemplate)
+            invitations.html($compile(extraTextTemplate)($scope))
 
             fieldSet = createFieldSet()
             invitations.prepend(fieldSet)
@@ -155,5 +155,5 @@ CreateMembersDirective = ($rs, $rootScope, $confirm, $loading ,lightboxService) 
 
     return {link: link}
 
-module.directive("tgLbCreateMembers", ["$tgResources", "$rootScope", "$tgConfirm", "$tgLoading", "lightboxService",
+module.directive("tgLbCreateMembers", ["$tgResources", "$rootScope", "$tgConfirm", "$tgLoading", "lightboxService", "$compile",
                                        CreateMembersDirective])

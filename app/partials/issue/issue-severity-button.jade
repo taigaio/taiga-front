@@ -4,7 +4,7 @@ div(class!="severity-data <% if(editable){ %>clickable<% }%>")
     <% if(editable){ %>
     span(class="icon icon-arrow-bottom")
     <% }%>
-    span(class="level-name") severity
+    span(class="level-name", translate="ISSUES.FIELDS.SEVERITY")
 
     ul(class="popover pop-severity")
         <% _.each(severityes, function(sv) { %>

@@ -4,18 +4,18 @@
 <% } %>
 
 .assigned-to
-    span.assigned-title Assigned to
+    span.assigned-title(translate="COMMON.FIELDS.ASSIGNED_TO")
 
     a(href="" title="edit assignment", class!="user-assigned <% if(isEditable){ %>editable<% }; %>")
         span.assigned-name
         <% if (assignedTo) { %>
         <%- assignedTo.full_name_display %>
         <% } else { %>
-        | Not assigned
+        | {{'COMMON.FIELDS.ASSIGNED_TO' | translate}}
         <% } %>
         <% if(isEditable){ %>
         span.icon.icon-arrow-bottom
         <% }; %>
     <% if (assignedTo!==null && isEditable) { %>
-    a.icon.icon-delete(href="" title="delete assignment")
+    a.icon.icon-delete(href="" title="{{'COMMON.ASSIGNED_TO.DELETE_ASSIGNMENT' | translate}}")
     <% } %>

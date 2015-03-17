@@ -1,7 +1,7 @@
 ul
     li
         a(ng-class='{active: !filtersRole.id}', ng-click='ctrl.setRole()', href='')
-          span.title All
+          span.title(translate="TEAM.SECTION_FILTER_ALL")
           span.icon.icon-arrow-right
 
       li(ng-repeat='role in roles')

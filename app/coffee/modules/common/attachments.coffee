@@ -220,8 +220,8 @@ AttachmentsDirective = ($config, $confirm, $templates) ->
     templateFn = ($el, $attrs) ->
         maxFileSize = $config.get("maxUploadFileSize", null)
         maxFileSize = sizeFormat(maxFileSize) if maxFileSize
-        maxFileSizeMsg = if maxFileSize then "Maximum upload size is #{maxFileSize}" else "" # TODO: i18n
-
+        maxFileSizeMsg = if maxFileSize then $translation.instant("ATTACHMENT.MAX_UPLOAD_SIZE") else ""
+        maxFileSize = 4000
         ctx = {
             type: $attrs.type
             maxFileSize: maxFileSize
@@ -242,7 +242,7 @@ AttachmentsDirective = ($config, $confirm, $templates) ->
 module.directive("tgAttachments", ["$tgConfig", "$tgConfirm", "$tgTemplate", AttachmentsDirective])
 
 
-AttachmentDirective = ($template) ->
+AttachmentDirective = ($template, $compile) ->
     template = $template.get("attachment/attachment.html", true)
     templateEdit = $template.get("attachment/attachment-edit.html", true)
 
@@ -254,7 +254,7 @@ AttachmentDirective = ($template) ->
             ctx = {
                 id: attachment.id
                 name: attachment.name
-                created_date: moment(attachment.created_date).format("DD MMM YYYY [at] hh:mm") #TODO: i18n
+                created_date: moment(attachment.created_date).format("ATTACHMENT.DATE")
                 url: attachment.url
                 size: sizeFormat(attachment.size)
                 description: attachment.description
@@ -263,9 +263,9 @@ AttachmentDirective = ($template) ->
             }
 
             if edit
-                html = templateEdit(ctx)
+                html = $compile(templateEdit(ctx))($scope)
             else
-                html = template(ctx)
+                html = $compile(template(ctx))($scope)
 
             $el.html(html)
 
@@ -322,4 +322,4 @@ AttachmentDirective = ($template) ->
         restrict: "AE"
     }
 
-module.directive("tgAttachment", ["$tgTemplate", AttachmentDirective])
+module.directive("tgAttachment", ["$tgTemplate", "$compile", AttachmentDirective])

@@ -1,6 +1,6 @@
 ul.popover.pop-role
     li
-        a.clear-selection(href="", title="All") All
+        a.clear-selection(href="", title="{{'COMMON.ROLES.ALL' | translate}}", translate="COMMON.ROLES.ALL")
     <% _.each(roles, function(role) { %>
     li
         a(href="", class="role", title!="<%- role.name %>", data-role-id!="<%- role.id %>")

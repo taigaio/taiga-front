@@ -47,21 +47,26 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$q",
         "$tgLocation",
         "$tgNavUrls",
-        "$appTitle"
+        "$appTitle",
+        "$translate"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls, @appTitle) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls, @appTitle, @translate) ->
         @scope.project = {}
 
         promise = @.loadInitialData()
 
         promise.then =>
-            @appTitle.set("Project profile - " + @scope.sectionName + " - " + @scope.project.name)
+            sectionName = @translate.instant( @scope.sectionName)
+            appTitle = @translate.instant("ADMIN.PROJECT_PROFILE.PAGE_TITLE", {sectionName: sectionName, projectName: @scope.project.name})
+            @appTitle.set(appTitle)
 
         promise.then null, @.onInitialDataError.bind(@)
 
         @scope.$on "project:loaded", =>
-            @appTitle.set("Project profile - " + @scope.sectionName + " - " + @scope.project.name)
+            sectionName = @translate.instant( @scope.sectionName)
+            appTitle = @translate.instant("ADMIN.PROJECT_PROFILE.PAGE_TITLE", {sectionName: sectionName, projectName: @scope.project.name})
+            @appTitle.set(appTitle)
 
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
@@ -217,7 +222,7 @@ module.directive("tgProjectModules", ["$tgRepo", "$tgConfirm", "$tgLoading", Pro
 ## Project Export Directive
 #############################################################################
 
-ProjectExportDirective = ($window, $rs, $confirm) ->
+ProjectExportDirective = ($window, $rs, $confirm, $translate) ->
     link = ($scope, $el, $attrs) ->
         buttonsEl = $el.find(".admin-project-export-buttons")
         showButtons = -> buttonsEl.removeClass("hidden")
@@ -232,16 +237,22 @@ ProjectExportDirective = ($window, $rs, $confirm) ->
         hideSpinner = -> spinnerEl.addClass("hidden")
 
         resultTitleEl = $el.find(".result-title")
-        setLoadingTitle = -> resultTitleEl.html("We are generating your dump file") # TODO: i18n
-        setAsyncTitle = -> resultTitleEl.html("We are generating your dump file") # TODO: i18n
-        setSyncTitle = -> resultTitleEl.html("Your dump file is ready!") # TODO: i18n
+
+
+        loading_title = $translate.instant("ADMIN.PROJECT_EXPORT.LOADING_TITLE")
+        loading_msg = $translate.instant("ADMIN.PROJECT_EXPORT.LOADING_MESSAGE")
+        dump_ready_text = -> resultTitleEl.html("ADMIN.PROJECT_EXPORT.DUMP_READY")
+        asyn_message = -> resultTitleEl.html("ADMIN.PROJECT_EXPORT.ASYN_MESSAGE")
+        syn_message = -> resultTitleEl.html("ADMIN.PROJECT_EXPORT.SYNC_MESSAGE", {url: url})
+
+        setLoadingTitle = -> resultTitleEl.html(loading_text)
+        setAsyncTitle = -> resultTitleEl.html(loading_text)
+        setSyncTitle = -> resultTitleEl.html(dump_ready_text)
 
         resultMessageEl = $el.find(".result-message ")
-        setLoadingMessage = -> resultMessageEl.html("Please don't close this page.") # TODO: i18n
-        setAsyncMessage = -> resultMessageEl.html("We will send you an email when ready.") # TODO: i18n
-        setSyncMessage = (url) -> resultMessageEl.html("If the download doesn't start automatically click
-                                                       <a href='#{url}' download title='Download
-                                                       the dump file'>here.") # TODO: i18n
+        setLoadingMessage = -> resultMessageEl.html(loading_msg)
+        setAsyncMessage = -> resultMessageEl.html(asyn_message)
+        setSyncMessage = (url) -> resultMessageEl.html(syn_message)
 
         showLoadingMode = ->
             showSpinner()
@@ -279,15 +290,12 @@ ProjectExportDirective = ($window, $rs, $confirm) ->
             onError = (result) =>
                 showErrorMode()
 
-                errorMsg = "Our oompa loompas have some problems generasting your dump.
-                            Please try again. " # TODO: i18n
+                errorMsg = $translate.instant("ADMIN.PROJECT_PROFILE.ERROR")
 
                 if result.status == 429  # TOO MANY REQUESTS
-                    errorMsg = "Sorry, our oompa loompas are very busy right now.
-                                Please try again in a few minutes. " # TODO: i18n
+                    errorMsg = $translate.instant("ADMIN.PROJECT_PROFILE.ERROR_BUSY")
                 else if result.data?._error_message
-                    errorMsg = "Our oompa loompas have some problems generasting your dump:
-                                #{result.data._error_message}" # TODO: i18n
+                    errorMsg = $translate.instant("ADMIN.PROJECT_PROFILE.ERROR_BUSY", {message: result.data._error_message})
 
                 $confirm.notify("error", errorMsg)
 
@@ -296,7 +304,7 @@ ProjectExportDirective = ($window, $rs, $confirm) ->
 
     return {link:link}
 
-module.directive("tgProjectExport", ["$window", "$tgResources", "$tgConfirm", ProjectExportDirective])
+module.directive("tgProjectExport", ["$window", "$tgResources", "$tgConfirm", "$translate", ProjectExportDirective])
 
 
 #############################################################################
@@ -310,9 +318,10 @@ class CsvExporterController extends taiga.Controller
         "$tgUrls",
         "$tgConfirm",
         "$tgResources",
+        "$translate"
     ]
 
-    constructor: (@scope, @rootscope, @urls, @confirm, @rs) ->
+    constructor: (@scope, @rootscope, @urls, @confirm, @rs, @translate) ->
         @rootscope.$on("project:loaded", @.setCsvUuid)
         @scope.$watch "csvUuid", (value) =>
             if value
@@ -337,10 +346,10 @@ class CsvExporterController extends taiga.Controller
         return promise
 
     regenerateUuid: ->
-        #TODO: i18n
         if @scope.csvUuid
-            title = "Change URL"
-            subtitle = "You going to change the CSV data access url. The previous url will be disabled. Are you sure?"
+            title = @translate.instant("ADMIN.REPORTS.REGENERATE_TITLE")
+            subtitle = @translate.instant("ADMIN.REPORTS.REGENERATE_SUBTITLE")
+
             @confirm.ask(title, subtitle).then @._generateUuid
         else
             @._generateUuid(_.identity)
@@ -361,3 +370,48 @@ class CsvExporterIssuesController extends CsvExporterController
 module.controller("CsvExporterUserstoriesController", CsvExporterUserstoriesController)
 module.controller("CsvExporterTasksController", CsvExporterTasksController)
 module.controller("CsvExporterIssuesController", CsvExporterIssuesController)
+
+
+
+#############################################################################
+## CSV Directive
+#############################################################################
+
+CsvUsDirective = () ->
+    link = ($scope) ->
+        $scope.csvType = "US"
+
+    return {
+        controller: "CsvExporterUserstoriesController",
+        templateUrl: "admin/project-csv.html",
+        link: link,
+        scope: true
+    }
+
+module.directive("tgCsvUs", [CsvUsDirective])
+
+CsvTaskDirective = () ->
+    link = ($scope) ->
+        $scope.csvType = "Task"
+
+    return {
+        controller: "CsvExporterTasksController",
+        templateUrl: "admin/project-csv.html",
+        link: link,
+        scope: true
+    }
+
+module.directive("tgCsvTask", [CsvTaskDirective])
+
+CsvIssueDirective = () ->
+    link = ($scope) ->
+        $scope.csvType = "Issues"
+
+    return {
+        controller: "CsvExporterIssuesController",
+        templateUrl: "admin/project-csv.html",
+        link: link,
+        scope: true
+    }
+
+module.directive("tgCsvIssue", [CsvIssueDirective])

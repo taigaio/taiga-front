@@ -55,7 +55,7 @@ module = angular.module("taigaCommon")
 #############################################################################
 ## WYSIWYG markitup editor directive
 #############################################################################
-tgMarkitupDirective = ($rootscope, $rs, $tr, $selectedText, $template) ->
+tgMarkitupDirective = ($rootscope, $rs, $selectedText, $template, $compile) ->
     previewTemplate = $template.get("common/wysiwyg/wysiwyg-markitup-preview.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
@@ -76,7 +76,10 @@ tgMarkitupDirective = ($rootscope, $rs, $tr, $selectedText, $template) ->
             markdownDomNode = element.parents(".markdown")
             markItUpDomNode = element.parents(".markItUp")
             $rs.mdrender.render($scope.projectId, $model.$modelValue).then (data) ->
-                markdownDomNode.append(previewTemplate({data: data.data}))
+                html = previewTemplate({data: data.data})
+                html = $compile(html)($scope)
+
+                markdownDomNode.append(html)
                 markItUpDomNode.hide()
 
                 markdown = element.closest(".markdown")
@@ -178,42 +181,43 @@ tgMarkitupDirective = ($rootscope, $rs, $tr, $selectedText, $template) ->
 
                     setCaretPosition(data.textarea, markdownCaretPositon) if markdownCaretPositon
 
+            #I18N
             markupSet: [
                 {
-                    name: $tr.t("markdown-editor.heading-1")
+                    name: "First Level Heading"
                     key: "1"
-                    placeHolder: $tr.t("markdown-editor.placeholder")
+                    placeHolder: "Your title here..."
                     closeWith: (markItUp) -> markdownTitle(markItUp, "=")
                 },
                 {
-                    name: $tr.t("markdown-editor.heading-2")
+                    name: "Second Level Heading"
                     key: "2"
-                    placeHolder: $tr.t("markdown-editor.placeholder")
+                    placeHolder: "Your title here..."
                     closeWith: (markItUp) -> markdownTitle(markItUp, "-")
                 },
                 {
-                    name: $tr.t("markdown-editor.heading-3")
+                    name: "Third Level Heading"
                     key: "3"
                     openWith: "### "
-                    placeHolder: $tr.t("markdown-editor.placeholder")
+                    placeHolder: "Your title here..."
                 },
                 {
                     separator: "---------------"
                 },
                 {
-                    name: $tr.t("markdown-editor.bold")
+                    name: "Bold"
                     key: "B"
                     openWith: "**"
                     closeWith: "**"
                 },
                 {
-                    name: $tr.t("markdown-editor.italic")
+                    name: "Italic"
                     key: "I"
                     openWith: "_"
                     closeWith: "_"
                 },
                 {
-                    name: $tr.t("markdown-editor.strike")
+                    name: "Strike"
                     key: "S"
                     openWith: "~~"
                     closeWith: "~~"
@@ -222,29 +226,29 @@ tgMarkitupDirective = ($rootscope, $rs, $tr, $selectedText, $template) ->
                     separator: "---------------"
                 },
                 {
-                    name: $tr.t("markdown-editor.bulleted-list")
+                    name: "Bulleted List"
                     openWith: "- "
                 },
                 {
-                    name: $tr.t("markdown-editor.numeric-list")
+                    name: "Numeric List"
                     openWith: (markItUp) -> markItUp.line+". "
                 },
                 {
                     separator: "---------------"
                 },
                 {
-                    name: $tr.t("markdown-editor.picture")
+                    name: "Picture"
                     key: "P"
                     replaceWith: '![[![Alternative text]!]](<<<[![Url:!:http://]!]>>> "[![Title]!]")'
                     beforeInsert:(markItUp) -> prepareUrlFormatting(markItUp)
                     afterInsert:(markItUp) -> urlFormatting(markItUp)
                 },
                 {
-                    name: $tr.t("markdown-editor.link")
+                    name: "Link"
                     key: "L"
                     openWith: "["
                     closeWith: '](<<<[![Url:!:http://]!]>>> "[![Title]!]")'
-                    placeHolder: $tr.t("markdown-editor.link-placeholder")
+                    placeHolder: "Your text to link here..."
                     beforeInsert:(markItUp) -> prepareUrlFormatting(markItUp)
                     afterInsert:(markItUp) -> urlFormatting(markItUp)
                 },
@@ -252,11 +256,11 @@ tgMarkitupDirective = ($rootscope, $rs, $tr, $selectedText, $template) ->
                     separator: "---------------"
                 },
                 {
-                    name: $tr.t("markdown-editor.quotes")
+                    name: "Quotes"
                     openWith: "> "
                 },
                 {
-                    name: $tr.t("markdown-editor.code-block")
+                    name: "Code Block / Code"
                     openWith: "```\n"
                     closeWith: "\n```"
                 },
@@ -264,7 +268,7 @@ tgMarkitupDirective = ($rootscope, $rs, $tr, $selectedText, $template) ->
                     separator: "---------------"
                 },
                 {
-                    name: $tr.t("markdown-editor.preview")
+                    name: "Preview"
                     call: preview
                     className: "preview-icon"
                 },
@@ -338,4 +342,4 @@ tgMarkitupDirective = ($rootscope, $rs, $tr, $selectedText, $template) ->
 
     return {link:link, require:"ngModel"}
 
-module.directive("tgMarkitup", ["$rootScope", "$tgResources", "$tgI18n", "$selectedText", "$tgTemplate", tgMarkitupDirective])
+module.directive("tgMarkitup", ["$rootScope", "$tgResources", "$selectedText", "$tgTemplate", tgMarkitupDirective])

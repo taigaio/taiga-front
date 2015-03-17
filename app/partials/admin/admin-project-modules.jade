@@ -1,5 +1,7 @@
+doctype html
+
 div.wrapper(tg-project-modules, ng-controller="ProjectProfileController as ctrl",
-            ng-init="section='admin'; sectionName='Modules'")
+            ng-init="section='admin'; sectionName='ADMIN.MODULES.TITLE'")
     sidebar.menu-secondary.sidebar(tg-admin-navigation="project-profile")
         include ../includes/modules/admin-menu
 
@@ -15,76 +17,76 @@ div.wrapper(tg-project-modules, ng-controller="ProjectProfileController as ctrl"
                 div.icon.icon-backlog
                 div.desc
                     p
-                        span Backlog
-                        |  Manage your user stories to maintain an organized view of upcoming and prioritized work.
+                        span.title(translate="ADMIN.MODULES.BACKLOG")
+                        span(translate="ADMIN.MODULES.BACKLOG_DESCRIPTION")
                     div.activate
                         input.activate-input(type="checkbox", id="functionality-backlog",
                                              ng-model="project.is_backlog_activated")
                         label.button.button-gray(ng-switch="project.is_backlog_activated",
                                                  for="functionality-backlog")
-                            span(ng-switch-when="true") Disable
-                            span(ng-switch-when="false") Enable
+                            span(ng-switch-when="true", translate="ADMIN.MODULES.DISABLE")
+                            span(ng-switch-when="false", translate="ADMIN.MODULES.ENABLE")
 
             div.functionality(ng-class="{true:'active', false:''}[project.is_kanban_activated]")
                 div.icon.icon-kanban
                 div.desc
                     p
-                        span Kanban
-                        |  Organize your project in a lean way with this board.
+                        span.title(translate="ADMIN.MODULES.KANBAN")
+                        span(translate="ADMIN.MODULES.KANBAN_DESCRIPTION")
                     div.activate
                         input.activate-input(type="checkbox", id="functionality-kanban",
                                              ng-model="project.is_kanban_activated")
                         label.button.button-gray(ng-switch="project.is_kanban_activated",
                                                  for="functionality-kanban")
-                            span(ng-switch-when="true") Disable
-                            span(ng-switch-when="false") Enable
+                            span(ng-switch-when="true", translate="ADMIN.MODULES.DISABLE")
+                            span(ng-switch-when="false", translate="ADMIN.MODULES.ENABLE")
 
             div.functionality(ng-class="{true:'active', false:''}[project.is_issues_activated]")
                 div.icon.icon-issues
                 div.desc
                     p
-                        span Issues
-                        |  Track the bugs, questions and enhancements related to your project. Don't miss anything!
+                        span.title(translate="COMMON.ISSUES")
+                        span(translate="ADMIN.MODULES.ISSUES_DESCRIPTION")
                     div.activate
                         input.activate-input(type="checkbox", id="functionality-issues",
                                              ng-model="project.is_issues_activated")
                         label.button.button-gray(ng-switch="project.is_issues_activated",
                                                  for="functionality-issues")
-                            span(ng-switch-when="true") Disable
-                            span(ng-switch-when="false") Enable
+                            span(ng-switch-when="true", translate="ADMIN.MODULES.DISABLE")
+                            span(ng-switch-when="false", translate="ADMIN.MODULES.ENABLE")
 
             div.functionality(ng-class="{true:'active', false:''}[project.is_wiki_activated]")
                 div.icon.icon-wiki
                 div.desc
                     p
-                        span Wiki
-                        |  Add, modify, or delete content in collaboration with others. This is the right place for your project documentation.
+                        span.title(translate="ADMIN.MODULES.WIKI")
+                        span(translate="ADMIN.MODULES.WIKI_DESCRIPTION")
                     div.activate
                         input.activate-input(type="checkbox", id="functionality-wiki",
                                              ng-model="project.is_wiki_activated")
                         label.button.button-gray(ng-switch="project.is_wiki_activated",
                                                  for="functionality-wiki")
-                            span(ng-switch-when="true") Disable
-                            span(ng-switch-when="false") Enable
+                            span(ng-switch-when="true", translate="ADMIN.MODULES.DISABLE")
+                            span(ng-switch-when="false", translate="ADMIN.MODULES.ENABLE")
 
             div.functionality(ng-class="{true:'active', false:''}[isVideoconferenceActivated]")
                 div.icon.icon-video
                 div.desc
                     p
-                        span Meet Up
-                        |  Choose your videoconference system. Even developers need face to face contact.
+                        span.title(translate="ADMIN.MODULES.MEETUP")
+                        span(translate="ADMIN.MODULES.MEETUP_DESCRIPTION")
                     div.activate
                         input.activate-input(type="checkbox", id="functionality-video",
                                              ng-model="isVideoconferenceActivated")
                         label.button.button-gray(ng-switch="isVideoconferenceActivated",
                                                  for="functionality-video")
-                            span(ng-switch-when="true") Disable
-                            span(ng-switch-when="false") Enable
+                            span(ng-switch-when="true", translate="ADMIN.MODULES.DISABLE")
+                            span(ng-switch-when="false", translate="ADMIN.MODULES.ENABLE")
 
                     div.videoconference-attributes.hidden
                         select(ng-model="project.videoconferences",
                                ng-options="e.id as e.name for e in [{'id':'appear-in', 'name':'AppearIn'},{'id':'talky', 'name': 'Talky'}]")
-                            option(value="") Select a videoconference system
+                            option(value="", translate="ADMIN.MODULES.SELECT_VIDEOCONFERENCE")
                         input(type="text", ng-model="project.videoconferences_salt",
-                              placeholder="If you want you can append a salt code to the name of the chat room")
-            button.button-green.submit-button(type="submit", title="Save") Save
+                              placeholder="{{'ADMIN.MODULES.SALT_CHAT_ROOM' | translate}}")
+            button.button-green.submit-button(type="submit", title="{{'COMMON.SAVE' | translate}}", translate="COMMON.SAVE")

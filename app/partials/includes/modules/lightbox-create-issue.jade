@@ -1,9 +1,9 @@
-a.close(href="", title="close")
+a.close(href="", title="{{'COMMON.CLOSE' | translate}}")
     span.icon.icon-delete
 form
-    h2.title Add Issue
+    h2.title(translate="LIGHTBOX.CREATE_ISSUE.TITLE")
     fieldset
-        input(type="text", ng-model="issue.subject", placeholder="Subject",
+        input(type="text", ng-model="issue.subject", placeholder="{{'COMMON.FIELDS.SUBJECT' | translate}}",
               data-required="true", data-maxlength="500")
     div.fieldset-row
         fieldset
@@ -17,7 +17,7 @@ form
         div.tags-block(tg-lb-tag-line, ng-model="issue.tags")
 
     fieldset
-        textarea.description(placeholder="Description", ng-model="issue.description")
+        textarea.description(placeholder="{{'COMMON.FIELDS.DESCRIPTION' | translate}}", ng-model="issue.description")
 
     // include lightbox-attachments
-    button.button-green.submit-button(type="submit", title="Create") Create
+    button.button-green.submit-button(type="submit", title="{{'COMMON.CREATE' | translate}}", translate="COMMON.CREATE")

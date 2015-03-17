@@ -6,13 +6,13 @@ div.summary
 
     div.summary-stats
         span.number(ng-bind="stats.total_points") --
-        span.description project<br />points
+        span.description(translate="BACKLOG.SUMMARY.PROJECT_POINTS")
     div.summary-stats
         span.number(ng-bind="stats.defined_points") --
-        span.description defined<br />points
+        span.description(translate="BACKLOG.SUMMARY.DEFINED_POINTS")
     div.summary-stats
         span.number(ng-bind="stats.closed_points") --
-        span.description closed<br />points
+        span.description(translate="BACKLOG.SUMMARY.CLOSED_POINTS")
     div.summary-stats
         span.number(ng-bind="stats.speed | number:0") --
-        span.description points /<br />sprint
+        span.description(translate="BACKLOG.SUMMARY.POINTS_PER_SPRINT")

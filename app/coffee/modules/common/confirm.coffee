@@ -27,21 +27,21 @@ bindMethods = @.taiga.bindMethods
 
 NOTIFICATION_MSG = {
     "success":
-        title: "Everything is ok"
-        message: "Our Oompa Loompas saved all your changes!"
+        title: "NOTIFICATION.OK"
+        message: "NOTIFICATION.SAVED"
     "error":
-        title: "Oops, something happened..."
-        message: "Our Oompa Loompas are sad, your changes were not saved!"
+        title: "NOTIFICATION.WARNING"
+        message: "NOTIFICATION.WARNING_TEXT"
     "light-error":
-        title: "Oops, something happened..."
-        message: "Our Oompa Loompas are sad, your changes were not saved!"
+        title: "NOTIFICATION.WARNING"
+        message: "NOTIFICATION.WARNING_TEXT"
 }
 
 
 class ConfirmService extends taiga.Service
-    @.$inject = ["$q", "lightboxService", "$tgLoading"]
+    @.$inject = ["$q", "lightboxService", "$tgLoading", "$translate"]
 
-    constructor: (@q, @lightboxService, @loading) ->
+    constructor: (@q, @lightboxService, @loading, @translate) ->
         bindMethods(@)
 
     hide: (el)->
@@ -51,14 +51,14 @@ class ConfirmService extends taiga.Service
             el.off(".confirm-dialog")
 
     ask: (title, subtitle, message, lightboxSelector=".lightbox-generic-ask") ->
+        defered = @q.defer()
+
         el = angular.element(lightboxSelector)
 
         # Render content
         el.find("h2.title").html(title)
         el.find("span.subtitle").html(subtitle)
         el.find("span.message").html(message)
-
-        defered = @q.defer()
 
         # Assign event handlers
         el.on "click.confirm-dialog", "a.button-green", debounce 2000, (event) =>
@@ -80,9 +80,11 @@ class ConfirmService extends taiga.Service
         return defered.promise
 
     askOnDelete: (title, message) ->
-        return @.ask(title, "Are you sure you want to delete?", message) #TODO: i18n
+        return @.ask(title, @translate.instant("NOTIFICATION.ASK_DELETE"), message)
 
     askChoice: (title, subtitle, choices, replacement, warning, lightboxSelector=".lightbox-ask-choice") ->
+        defered = @q.defer()
+
         el = angular.element(lightboxSelector)
 
         # Render content
@@ -103,7 +105,6 @@ class ConfirmService extends taiga.Service
         choicesField.html('')
         _.each choices, (value, key) ->
             choicesField.append(angular.element("<option value='#{key}'>#{value}</option>"))
-        defered = @q.defer()
 
         # Assign event handlers
         el.on "click.confirm-dialog", "a.button-green", debounce 2000, (event) =>
@@ -127,11 +128,12 @@ class ConfirmService extends taiga.Service
         return defered.promise
 
     error: (message) ->
+        defered = @q.defer()
+
         el = angular.element(".lightbox-generic-error")
 
         # Render content
         el.find("h2.title").html(message)
-        defered = @q.defer()
 
         # Assign event handlers
         el.on "click.confirm-dialog", "a.button-green", (event) =>
@@ -149,12 +151,13 @@ class ConfirmService extends taiga.Service
         return defered.promise
 
     success: (title, message) ->
+        defered = @q.defer()
+
         el = angular.element(".lightbox-generic-success")
 
         # Render content
         el.find("h2.title").html(title) if title
         el.find("p.message").html(message) if message
-        defered = @q.defer()
 
         # Assign event handlers
         el.on "click.confirm-dialog", "a.button-green", (event) =>
@@ -208,12 +211,12 @@ class ConfirmService extends taiga.Service
         if title
             el.find("h4").html(title)
         else
-            el.find("h4").html(NOTIFICATION_MSG[type].title)
+            el.find("h4").html(@translate.instant(NOTIFICATION_MSG[type].title))
 
         if message
             el.find("p").html(message)
         else
-            el.find("p").html(NOTIFICATION_MSG[type].message)
+            el.find("p").html(@translate.instant(NOTIFICATION_MSG[type].message))
 
         body = angular.element("body")
         body.find(".notification-message .notification-light")

@@ -2,11 +2,11 @@ section.policy-table
     div.policy-table-header
         div.policy-table-row
             div.policy-table-project
-                span Project
+                span(translate="USER_SETTINGS.NOTIFICATIONS.COLUMN_PROJECT")
             div.policy-table-all
-                span Receive All
+                span(translate="USER_SETTINGS.NOTIFICATIONS.COLUMN_RECEIVE_ALL")
             div.policy-table-involved
-                span Only Involved
+                span(translate="USER_SETTINGS.NOTIFICATIONS.COLUMN_ONLY_INVOLVED")
             div.policy-table-none
-                span No notifications
+                span(translate="USER_SETTINGS.NOTIFICATIONS.COLUMN_NO_NOTIFICATIONS")
     div.policy-table-body(tg-user-notifications-list, ng-model="notifyPolicies")

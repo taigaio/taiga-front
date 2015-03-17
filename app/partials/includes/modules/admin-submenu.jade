@@ -1,24 +1,24 @@
 section.admin-submenu
     header
-        h1 Roles
+        h1(translate) Roles
 
     nav
         ul
             li
-                a(href="") UX
+                a(href="", translate="ADMIN.SUBMENU.ROLE_UX")
                   span.icon.icon-arrow-right
             li
-                a(href="") Product Owner
+                a(href="", translate="ADMIN.SUBMENU.ROLE_PRODUCT_OWNER")
                   span.icon.icon-arrow-right
             li
-                a(href="") Designer
+                a(href="", translate="ADMIN.SUBMENU.ROLE_DESIGNER")
                   span.icon.icon-arrow-right
             li
-                a(href="") Back
+                a(href="", translate="ADMIN.SUBMENU.ROLE_BACK")
                   span.icon.icon-arrow-right
             li
-                a(href="") Front
+                a(href="", translate="ADMIN.SUBMENU.ROLE_FRONT")
                   span.icon.icon-arrow-right
 
-        a.button-gray(href="", title="Add New role")
-            span.text + New role
+        a.button-gray(href="", title="{{'ADMIN.SUBMENU.TITLE_ACTION_NEW_ROLE' | translate}}")
+            span.text(translate="ADMIN.SUBMENU.ACTION_NEW_ROLE")

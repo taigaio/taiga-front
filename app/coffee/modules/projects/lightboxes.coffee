@@ -26,7 +26,7 @@ debounce = @.taiga.debounce
 
 module = angular.module("taigaProject")
 
-CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $projectUrl, $loading, lightboxService, $cacheFactory) ->
+CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $projectUrl, $loading, lightboxService, $cacheFactory, $translate) ->
     link = ($scope, $el, attrs) ->
         $scope.data = {}
         $scope.templates = []
@@ -41,7 +41,9 @@ CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $project
 
             $loading.finish(submitButton)
             $rootscope.$broadcast("projects:reload")
-            $confirm.notify("success", "Success") #TODO: i18n
+
+            $confirm.notify("success", $translate.instant("COMMON.SAVE"))
+
             $location.url($projectUrl.get(response))
             lightboxService.close($el)
 
@@ -126,7 +128,7 @@ CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $project
     return {link:link}
 
 module.directive("tgLbCreateProject", ["$rootScope", "$tgRepo", "$tgConfirm", "$location", "$tgNavUrls",
-                                       "$tgResources", "$projectUrl", "$tgLoading", "lightboxService", "$cacheFactory", CreateProject])
+                                       "$tgResources", "$projectUrl", "$tgLoading", "lightboxService", "$cacheFactory", "$translate", CreateProject])
 
 
 #############################################################################

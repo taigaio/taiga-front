@@ -3,21 +3,21 @@ section.history
         li
             a(href="#", class="active")
                 span.icon.icon-comment
-                span.tab-title Comments
+                span.tab-title(translate="COMMENTS.TITLE")
         li
             a(href="#")
                 span.icon.icon-issues
-                span.tab-title Activity
+                span.tab-title(translate="ACTIVITY.TITLE")
     section.history-comments
         .comments-list
         div(tg-check-permission!="modify_<%- type %>", tg-toggle-comment, class="add-comment")
-            textarea(placeholder="Type a new comment here", ng-model!="<%- ngmodel %>.comment", tg-markitup="tg-markitup")
+            textarea(placeholder="{{'COMMENTS.TYPE_NEW_COMMENT' | translate}}", ng-model!="<%- ngmodel %>.comment", tg-markitup="tg-markitup")
             <% if (mode !== "edit") { %>
-            a(class="help-markdown", href="https://taiga.io/support/taiga-markdown-syntax/", target="_blank", title="Mardown syntax help")
+            a(class="help-markdown", href="https://taiga.io/support/taiga-markdown-syntax/", target="_blank", title="{{'COMMON.DESCRIPTION.MARKDOWN_HELP' | translate}}")
                 span.icon.icon-help
-                span Markdown syntax help
-            a(href="", title="Comment", class="button button-green save-comment")
-                span Comment
+                span(translate="COMMON.DESCRIPTION.MARKDOWN_HELP")
+            a(href="", title="{{'COMMENTS.COMMENT' | translate}}", class="button button-green save-comment")
+                span(translate="COMMENTS.COMMENT")
             <% } %>
     section.history-activity.hidden
         .changes-list

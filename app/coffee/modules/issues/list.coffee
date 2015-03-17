@@ -310,7 +310,7 @@ module.controller("IssuesController", IssuesController)
 ## Issues Directive
 #############################################################################
 
-IssuesDirective = ($log, $location, $template) ->
+IssuesDirective = ($log, $location, $template, $compile) ->
     ## Issues Pagination
     template = $template.get("issue/issue-paginator.html", true)
 
@@ -360,7 +360,11 @@ IssuesDirective = ($log, $location, $template) ->
                 else
                     pages.push({classes: "page", num: i, type: "page"})
 
-            $pagEl.html(template(options))
+
+            html = template(options)
+            html = $compile(html)($scope)
+
+            $pagEl.html(html)
 
         $scope.$watch "issues", (value) ->
             # Do nothing if value is not logical true
@@ -427,14 +431,14 @@ IssuesDirective = ($log, $location, $template) ->
 
     return {link:link}
 
-module.directive("tgIssues", ["$log", "$tgLocation", "$tgTemplate", IssuesDirective])
+module.directive("tgIssues", ["$log", "$tgLocation", "$tgTemplate", "$compile", IssuesDirective])
 
 
 #############################################################################
 ## Issues Filters Directive
 #############################################################################
 
-IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template) ->
+IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template, $translate) ->
     template = $template.get("issue/issues-filters.html", true)
     templateSelected = $template.get("issue/issues-filters-selected.html", true)
 
@@ -590,8 +594,8 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template) -
 
             target = angular.element(event.currentTarget)
             customFilterName = target.parent().data('id')
-            title = "Delete custom filter" # TODO: i18n
-            message = "the custom filter '#{customFilterName}'" # TODO: i18n
+            title = $translate.instant("ISSUES.FILTERS.CONFIRM_DELETE.TITLE")
+            message = $translate.instant("ISSUES.FILTERS.CONFIRM_DELETE.MESSAGE", {customFilterName: customFilterName})
 
             $confirm.askOnDelete(title, message).then (finish) ->
                 promise = $ctrl.deleteMyFilter(customFilterName)
@@ -652,7 +656,7 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template) -
 
     return {link:link}
 
-module.directive("tgIssuesFilters", ["$log", "$tgLocation", "$tgResources", "$tgConfirm", "$tgLoading", "$tgTemplate",
+module.directive("tgIssuesFilters", ["$log", "$tgLocation", "$tgResources", "$tgConfirm", "$tgLoading", "$tgTemplate", "$translate",
                                      IssuesFiltersDirective])
 
 

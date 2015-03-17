@@ -1,5 +1,8 @@
+doctype html
+
 div.wrapper(ng-controller="ProjectProfileController as ctrl",
-            ng-init="section='admin'; sectionName='Export'")
+            ng-init="section='admin'; sectionName='ADMIN.PROJECT_EXPORT.TITLE'")
+
     sidebar.menu-secondary.sidebar(tg-admin-navigation="project-profile")
         include ../includes/modules/admin-menu
 
@@ -9,18 +12,18 @@ div.wrapper(ng-controller="ProjectProfileController as ctrl",
     section.main.admin-common(tg-project-export)
         header
             include ../includes/components/mainTitle
-            p.admin-subtitle Export your project to save a backup or to create a new one based on this.
+            p.admin-subtitle(translate="ADMIN.PROJECT_EXPORT.SUBTITLE")
 
         div.admin-project-export-buttons
-            a.button-green.button-export(href="", title="Export your project")
-                span Export
+            a.button-green.button-export(href="", title="{{ 'ADMIN.PROJECT_EXPORT.EXPORT_BUTTON_TITLE' | translate }}")
+                span(translate="ADMIN.PROJECT_EXPORT.EXPORT_BUTTON")
 
         div.admin-project-export-result.hidden
             div.spin.hidden
-                img(src="/svg/spinner-circle.svg", alt="loading...")
+                img(src="/svg/spinner-circle.svg", alt="{{ 'COMMON.LOADING' | translate }}")
             h3.result-title
             p.result-message
 
         a.help-button(href="https://taiga.io/support/import-export-projects/", target="_blank")
             span.icon.icon-help
-            span Do you need help? Check out our support page!
+            span(translate="ADMIN.HELP")
