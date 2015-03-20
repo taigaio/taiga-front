@@ -531,6 +531,10 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template) -
         $scope.$on "filters:loaded", (ctx, filters) ->
             initializeSelectedFilters(filters)
 
+        $scope.$on "filters:issueupdate", (ctx, filters) ->
+            html = template({filters:filters.statuses})
+            $el.find(".filter-list").html(html)
+
         selectQFilter = debounceLeading 100, (value) ->
             return if value is undefined
 
@@ -656,7 +660,7 @@ module.directive("tgIssuesFilters", ["$log", "$tgLocation", "$tgResources", "$tg
 ## Issue status Directive (popover for change status)
 #############################################################################
 
-IssueStatusInlineEditionDirective = ($repo, $template) ->
+IssueStatusInlineEditionDirective = ($repo, $template, $rootscope) ->
     ###
     Print the status of an Issue and a popover to change it.
     - tg-issue-status-inline-edition: The issue
@@ -694,12 +698,22 @@ IssueStatusInlineEditionDirective = ($repo, $template) ->
             event.preventDefault()
             event.stopPropagation()
             target = angular.element(event.currentTarget)
+
+            for filter in $scope.filters.statuses
+                if filter.id == issue.status
+                    filter.count--
+
             issue.status = target.data("status-id")
             $el.find(".pop-status").popover().close()
             updateIssueStatus($el, issue, $scope.issueStatusById)
 
             $scope.$apply () ->
                 $repo.save(issue).then
+
+                for filter in $scope.filters.statuses
+                    if filter.id == issue.status
+                        filter.count++
+                $rootscope.$broadcast("filters:issueupdate", $scope.filters)
 
         taiga.bindOnce $scope, "project", (project) ->
             $el.append(selectionTemplate({ 'statuses':  project.issue_statuses }))
@@ -718,7 +732,7 @@ IssueStatusInlineEditionDirective = ($repo, $template) ->
 
     return {link: link}
 
-module.directive("tgIssueStatusInlineEdition", ["$tgRepo", "$tgTemplate", IssueStatusInlineEditionDirective])
+module.directive("tgIssueStatusInlineEdition", ["$tgRepo", "$tgTemplate", "$rootScope", IssueStatusInlineEditionDirective])
 
 
 #############################################################################
