@@ -1,17 +1,18 @@
 div.wrapper(tg-taskboard, ng-controller="TaskboardController as ctrl",
             ng-init="section='backlog'")
     section.main.taskboard
-        h1
-            span(tg-bo-bind="project.name", class="project-name-short")
-            span.green(tg-bo-bind="sprint.name")
-            span.date(tg-date-range="sprint.estimated_start,sprint.estimated_finish")
-        include ../includes/components/sprint-summary
+        .taskboard-inner
+            h1
+                span(tg-bo-bind="project.name", class="project-name-short")
+                span.green(tg-bo-bind="sprint.name")
+                span.date(tg-date-range="sprint.estimated_start,sprint.estimated_finish")
+            include ../includes/components/sprint-summary
 
-        div.graphics-container
-            div.burndown(tg-sprint-graph)
-                include ../includes/modules/burndown
+            div.graphics-container
+                div.burndown(tg-sprint-graph)
+                    include ../includes/modules/burndown
 
-        include ../includes/modules/taskboard-table
+            include ../includes/modules/taskboard-table
 
     div.lightbox.lightbox-generic-form(tg-lb-create-edit-task)
         include ../includes/modules/lightbox-task-create-edit

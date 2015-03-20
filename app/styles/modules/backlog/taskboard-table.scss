@@ -47,6 +47,7 @@ $column-margin: 0 10px 0 0;
 .taskboard-table {
     display: flex;
     flex-direction: column;
+    height: 100%;
     overflow: hidden;
     width: 100%;
 }
@@ -109,7 +110,7 @@ $column-margin: 0 10px 0 0;
 }
 
 .taskboard-table-body {
-    height: 700px;
+    height: 100%;
     overflow: auto;
     width: 100%;
     .task-column {
