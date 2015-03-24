@@ -1,0 +1,32 @@
+.profile {
+    display: flex;
+    min-height: 100vh;
+    padding: 2rem 0;
+    .profile-bar {
+        background: #f0f;
+        flex: 1;
+    }
+    .main {
+        background: #00f;
+        display: flex;
+        flex: 4;
+        flex-direction: column;
+        padding: 0;
+    }
+    .content-wrapper {
+        display: flex;
+        min-height: 100vh;
+    }
+    .hero {
+        background: #0ff;
+        min-height: 10vh;
+    }
+    .content {
+        background: #5dcd42;
+        flex: 4;
+    }
+    .sidebar {
+        background: #121212;
+        flex: .5;
+    }
+}

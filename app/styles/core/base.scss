@@ -82,6 +82,13 @@ body {
     position: relative;
 }
 
+.centered {
+    margin: 0 auto;
+    max-width: 1200px;
+    min-width: 960px;
+    width: 90%;
+}
+
 .wrapper {
     display: flex;
     min-height: 100vh;
