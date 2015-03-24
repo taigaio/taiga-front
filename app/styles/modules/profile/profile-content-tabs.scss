@@ -1,0 +1,25 @@
+.profile-content-tabs {
+    border-top: 1px solid $whitish;
+    .tab {
+        background: $white;
+        color: $gray-light;
+        display: inline-block;
+        padding: .3rem 1rem;
+        &:hover,
+        &.active {
+            color: $grayer;
+            .icon {
+                color: $green-taiga;
+            }
+        }
+        &.active {
+            border-left: 1px solid $whitish;
+            border-right: 1px solid $whitish;
+            position: relative;
+            top: 1px;
+        }
+    }
+    .icon {
+        margin-right: .3rem;
+    }
+}

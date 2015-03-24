@@ -1,0 +1,92 @@
+.profile-bar {
+    .profile-img {
+        max-width: 100%;
+    }
+    .button-green {
+        display: block;
+        margin-bottom: 1rem;
+    }
+    h1,
+    h2 {
+        @extend %bold;
+        @extend %small;
+        line-height: 1;
+        margin-bottom: .5rem;
+    }
+    h1 {
+        @extend %xlarge;
+        text-transform: none;
+    }
+    h2 {
+        @extend %large;
+        color: $gray-light;
+    }
+    .location {
+        color: $gray-light;
+        margin-bottom: 1rem;
+    }
+    .profile-stats {
+        background: $whitish;
+        border-radius: 5px;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+        padding: 1rem;
+        .stat {
+            padding: 0 .2rem;
+            text-align: center;
+        }
+        .stat-number {
+            @extend %xlarge;
+            @extend %title;
+            display: block;
+            margin-bottom: .3rem;
+        }
+        .stat-name {
+            @extend %title;
+            display: block;
+        }
+    }
+    .profile-badges {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+        .badge {
+            background: $gray-light;
+            border-radius: 5px;
+            height: 45px;
+            margin-right: .2rem;
+            width: 45px;
+        }
+    }
+
+    .profile-organizations {
+        border-bottom: 1px solid $whitish;
+        border-top: 1px solid $whitish;
+        margin-bottom: 1rem;
+        padding: 1rem 0;
+        h3 {
+            @extend %bold;
+            margin-bottom: .5rem;
+        }
+        .profile-organizations-wrapper {
+            display: flex;
+            justify-content: space-between;
+        }
+        .organization {
+            background: $gray-light;
+            border-radius: 5px;
+            height: 45px;
+            margin-right: .2rem;
+            width: 45px;
+        }
+    }
+
+    .profile-quote {
+        @extend %title;
+        @extend %xlarge;
+        background: url('/images/quote.png') no-repeat top left;
+        line-height: 1.2;
+        padding: .5rem;
+    }
+}
