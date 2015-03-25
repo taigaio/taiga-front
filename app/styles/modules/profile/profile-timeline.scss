@@ -1,0 +1,87 @@
+
+.profile-timeline {
+    border-top: 1px solid $whitish;
+    %profile-activity {
+        border-bottom: 1px solid $whitish;
+        padding: .8rem 1rem;
+        .activity-info {
+            align-items: center;
+            display: flex;
+        }
+        picture {
+            margin-right: .5rem;
+            vertical-align: center;
+            width: 35px;
+            img {
+                width: 100%;
+            }
+        }
+        p {
+            margin: 0;
+            a {
+                color: $green-taiga;
+            }
+        }
+    }
+    .activity-simple,
+    .activity-comment,
+    .activity-image,
+    .activity-notification,
+    .activity-member,
+    .activity-project {
+        @extend %profile-activity;
+    }
+    .activity-comment,
+    .activity-project,
+    .activity-image {
+        .activity-comment-quote,
+        .activity-comment-attachment {
+            @extend %small;
+            border-left: 2px solid $whitish;
+            color: $gray-light;
+            margin-bottom: .5rem;
+            margin-left: calc(35px + .5rem);
+            margin-top: .5rem;
+            padding: .2rem 1rem;
+            img {
+                max-height: 640px;
+                max-width: 100%;
+            }
+        }
+    }
+    .activity-notification {
+        .activity-notification-list {
+            border-left: 2px solid $whitish;
+            margin-bottom: .5rem;
+            margin-left: calc(30px + .5rem);
+            margin-top: .5rem;
+            padding: .2rem 1rem;
+            li {
+                margin-bottom: .5rem;
+            }
+        }
+    }
+    .activity-member {
+        .activity-member-view {
+            display: flex;
+            margin-bottom: .5rem;
+            margin-left: calc(30px + .5rem);
+            margin-top: .5rem;
+            picture {
+                margin-right: 1rem;
+                max-width: 64px;
+                min-width: 32px;
+                width: 100%;
+            }
+            .activity-member-info {
+                flex: 1;
+            }
+            a {
+                @extend %bold;
+            }
+            p {
+                color: $gray-light;
+            }
+        }
+    }
+}
