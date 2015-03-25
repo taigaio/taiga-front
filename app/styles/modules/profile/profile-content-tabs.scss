@@ -4,7 +4,7 @@
         background: $white;
         color: $gray-light;
         display: inline-block;
-        padding: .3rem 1rem;
+        padding: .4rem 1rem;
         &:hover,
         &.active {
             color: $grayer;
@@ -20,6 +20,6 @@
         }
     }
     .icon {
-        margin-right: .3rem;
+        margin-right: .4rem;
     }
 }

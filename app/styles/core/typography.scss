@@ -198,17 +198,11 @@ a:visited {
 .icon-move:before {
     content: 'w';
 }
-.icon-drag-h:before {
-    content: 'x';
-}
 .icon-drag-v:before {
     content: 'y';
 }
 .icon-filter:before {
     content: 'z';
-}
-.icon-github:before {
-    content: 'A';
 }
 .icon-help:before {
     content: 'B';
@@ -224,9 +218,6 @@ a:visited {
 }
 .icon-floppy:before {
     content: 'F';
-}
-.icon-idea:before {
-    content: 'G';
 }
 .icon-warning-alt:before {
     content: 'H';
@@ -255,9 +246,6 @@ a:visited {
 .icon-team:before {
     content: 'T';
 }
-.icon-spinner:before {
-    content: 'J';
-}
 .icon-vfold:before {
     content: 'N';
 }
@@ -284,4 +272,19 @@ a:visited {
 }
 .icon-upload:before {
     content: 'Z';
+}
+.icon-github:before {
+    content: 'A';
+}
+.icon-timeline:before {
+    content: 'x';
+}
+.icon-project:before {
+    content: 'G';
+}
+.icon-star-fill:before {
+    content: 'J';
+}
+.icon-star:before {
+    content: '0';
 }

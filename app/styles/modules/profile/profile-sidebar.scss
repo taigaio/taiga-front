@@ -1,0 +1,20 @@
+.profile-sidebar {
+    h4 {
+        @extend %bold;
+        background: $whitish;
+        color: $gray;
+        margin-bottom: .5rem;
+        padding: .5rem;
+        .icon {
+            color: $gray-light;
+            margin-right: .3rem;
+        }
+    }
+    p {
+        @extend %small;
+        color: $gray-light;
+    }
+    .trans-button {
+        margin-bottom: 1rem;
+    }
+}
