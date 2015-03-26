@@ -4,9 +4,18 @@
     %profile-activity {
         border-bottom: 1px solid $whitish;
         padding: .8rem 1rem;
+        position: relative;
         .activity-info {
             align-items: center;
             display: flex;
+            margin-right: 100px;
+        }
+        .activity-date {
+            @extend %xsmall;
+            color: $gray-light;
+            position: absolute;
+            right: .5rem;
+            top: .5rem;
         }
         picture {
             margin-right: .5rem;
@@ -17,7 +26,7 @@
             }
         }
         p {
-            margin: 0;
+            margin-bottom: .5rem;
             a {
                 color: $green-taiga;
             }
@@ -53,7 +62,7 @@
         .activity-notification-list {
             border-left: 2px solid $whitish;
             margin-bottom: .5rem;
-            margin-left: calc(30px + .5rem);
+            margin-left: calc(35px + .5rem);
             margin-top: .5rem;
             padding: .2rem 1rem;
             li {
@@ -65,7 +74,7 @@
         .activity-member-view {
             display: flex;
             margin-bottom: .5rem;
-            margin-left: calc(30px + .5rem);
+            margin-left: calc(35px + .5rem);
             margin-top: .5rem;
             picture {
                 margin-right: 1rem;

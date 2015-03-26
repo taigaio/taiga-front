@@ -2,6 +2,7 @@ section.profile-timeline
     - for (var x = 0; x < 3; x++)
         // Simple message for favorites, updates, etc.
         div.activity-simple
+            span.activity-date Yesterday 12.30h
             div.activity-info
                 picture
                     a(href="", title="{{ user.nickname }}")
@@ -13,6 +14,7 @@ section.profile-timeline
 
         // Added comment in us, task or issue.
         div.activity-comment
+            span.activity-date 3 days ago
             div.activity-info
                 picture
                     a(href="", title="{{ user.nickname }}")
@@ -26,6 +28,7 @@ section.profile-timeline
 
         // Added attachment type image in us, task or issue.
         div.activity-image
+            span.activity-date 5 days ago
             div.activity-info
                 picture
                     a(href="", title="{{ user.nickname }}")
@@ -40,6 +43,7 @@ section.profile-timeline
 
         // Multiple update message, etc.
         div.activity-notification
+            span.activity-date 6 days ago
             div.activity-info
                 picture
                     a(href="", title="{{ user.nickname }}")
@@ -59,6 +63,7 @@ section.profile-timeline
 
         // Added attachment type image in us, task or issue.
         div.activity-member
+            span.activity-date a week ago
             div.activity-info
                 picture
                     a(href="", title="{{ organization.nickname }}")
@@ -76,6 +81,7 @@ section.profile-timeline
 
         // Added comment in us, task or issue.
         div.activity-project
+            span.activity-date a week ago
             div.activity-info
                 picture
                     a(href="", title="{{ organization.nickname }}")
