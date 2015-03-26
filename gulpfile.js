@@ -105,6 +105,7 @@ paths.libs = [
     paths.app + "vendor/l.js/l.js",
     paths.app + "js/jquery.ui.git-custom.js",
     paths.app + "js/jquery-ui.drag-multiple-custom.js",
+    paths.app + "js/jquery.ui.touch-punch.min.js",
     paths.app + "js/sha1-custom.js"
 ];
 
