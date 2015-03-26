@@ -1,0 +1,40 @@
+section.profile-contacts
+    - for (var x = 0; x < 3; x++)
+        div.profile-contact-single
+            picture
+                a(href="", title="See {{ user.nickname }} profile")
+                    img(src="https://s3.amazonaws.com/uifaces/faces/twitter/koridhandy/128.jpg", alt="{{ user.nickname }}")
+            div.profile-contact-data
+                h1
+                    a(href="", title="See {{ user.nickname}} profile") Sebastián Molina
+                    span.your-contact Your contact
+                p Chief GIF Officer at myamazingpage.com. Tweet me at @sebas
+                div.extra-info
+                    span.position Back-end developer & Stakeholder
+                    span.location Madrid
+            div.profile-project-stats
+                div.stat-comments(title="2 comments")
+                    span.icon.icon-project
+                    span.stat-num 2
+                div.stat-viewer(title="2 followers")
+                    span.icon.icon-open-eye
+                    span.stat-num 4
+
+        div.profile-contact-single
+            picture
+                a(href="", title="See {{ user.nickname }} profile")
+                    img(src="https://s3.amazonaws.com/uifaces/faces/twitter/marktimemedia/128.jpg", alt="{{ user.nickname }}")
+            div.profile-contact-data
+                h1
+                    a(href="", title="See {{ user.nickname}} profile") Ane Moreno
+                p Have some experience working with sock monkeys in Orlando, FL. Crossed the country licensing bongos in Miami, FL. What gets me going now is deploying catfish in Bethesda, MD. Prior to my current job I was selling dandruff in Minneapolis, MN. In 2009 I was marketing Elvis Presley in Hanford, CA.
+                div.extra-info
+                    span.position Monkey Socker & Deployer
+                    span.location Miami
+            div.profile-project-stats
+                div.stat-comments(title="2 comments")
+                    span.icon.icon-project
+                    span.stat-num 2
+                div.stat-viewer(title="2 followers")
+                    span.icon.icon-open-eye
+                    span.stat-num 4

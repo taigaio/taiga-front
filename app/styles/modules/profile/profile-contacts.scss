@@ -1,0 +1,62 @@
+.profile-contacts {
+    border-top: 1px solid $whitish;
+}
+
+.profile-contact-single {
+    border-bottom: 1px solid $whitish;
+    display: flex;
+    flex-wrap: wrap;
+    padding: .8rem 1rem;
+    picture {
+        flex-grow: 0;
+        margin-right: 1rem;
+        max-width: 100px;
+        img {
+            width: 100%;
+        }
+    }
+    .profile-contact-data {
+        flex: 1;
+        h1 {
+            @extend %text;
+            @extend %xlarge;
+            align-items: center;
+            display: flex;
+            margin-bottom: 0;
+            text-transform: none;
+            span {
+                @extend %text;
+                @extend %small;
+                background: $whitish;
+                color: $gray;
+                margin-left: 1rem;
+                padding: .1rem .3rem;
+            }
+        }
+        p {
+            color: $gray;
+            margin-bottom: .3rem;
+        }
+        .extra-info {
+            color: $gray-light;
+        }
+        .position {
+            @extend %bold;
+            margin-right: .3rem;
+        }
+    }
+    .profile-project-stats {
+        display: flex;
+        flex-grow: 0;
+        margin-left: auto;
+        width: 100px;
+        div {
+            color: $gray-light;
+            margin-right: .5rem;
+            .icon {
+                margin-right: .2rem;
+                vertical-align: center;
+            }
+        }
+    }
+}
