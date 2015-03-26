@@ -2,24 +2,24 @@
     border-top: 1px solid $whitish;
     display: flex;
     flex-direction: column;
-    .profile-contacts-filters {
-        align-self: center;
-        display: flex;
-        a {
-            border-bottom: 2px solid $white;
-            color: $gray-light;
-            display: inline-block;
-            padding: 1rem 1.5rem;
-            transition: all .2s linear;
-            &:hover,
-            &.active {
-                border-bottom: 2px solid $gray-light;
-                color: $green-taiga;
-            }
+}
+
+.profile-contact-filters {
+    align-self: center;
+    display: flex;
+    a {
+        border-bottom: 2px solid $white;
+        color: $gray-light;
+        display: inline-block;
+        padding: 1rem 1.5rem;
+        transition: all .2s linear;
+        &:hover,
+        &.active {
+            border-bottom: 2px solid $gray-light;
+            color: $green-taiga;
         }
     }
 }
-
 .profile-contact-single {
     border-bottom: 1px solid $whitish;
     display: flex;
