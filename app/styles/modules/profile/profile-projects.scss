@@ -1,0 +1,78 @@
+.profile-projects {
+    border-top: 1px solid $whitish;
+    .profile-project-single {
+        border-bottom: 1px solid $whitish;
+        display: flex;
+        justify-content: center;
+        min-height: 10rem;
+        padding: .8rem 1rem;
+        position: relative;
+    }
+    .profile-projects-left,
+    .profile-projects-right {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.profile-projects-left {
+    align-content: space-between;
+    flex: 4;
+    h1 {
+        @extend %bold;
+        @extend %xlarge;
+        margin-bottom: 0;
+        text-transform: none;
+    }
+    p {
+        color: $gray-light;
+        max-width: 70%;
+    }
+    .profile-project-tags {
+        align-content: flex-end;
+        display: flex;
+        flex: 3;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+    .tag {
+        align-self: flex-end;
+        margin-bottom: .3rem;
+    }
+}
+
+.profile-projects-right {
+    justify-content: space-between;
+    .profile-project-stats {
+        align-self: flex-end;
+        display: flex;
+        div {
+            color: $gray-light;
+            margin-right: .5rem;
+            .icon {
+                margin-right: .2rem;
+                vertical-align: center;
+            }
+        }
+        .active {
+            .icon {
+                color: $star-fill;
+            }
+        }
+    }
+    .profile-project-members {
+        align-self: flex-end;
+        display: flex;
+        flex-grow: 0;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+        max-width: 160px;
+        a {
+            display: block;
+        }
+        img {
+            margin-right: .3rem;
+            width: 34px;
+        }
+    }
+}

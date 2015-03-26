@@ -1,0 +1,131 @@
+section.profile-projects
+    - for (var x = 0; x < 3; x++)
+    div.profile-project-single
+        div.profile-projects-left
+
+            div.profile-project-title
+                h1
+                    a(href="", title="View {{ project.title }}") My Side Project
+                p We plan to build a hundred of so called "telehubs" so people from all over the world can immediately relocate their physical self at any other telehub in microseconds. The technology and science behind this project is sound and we are now ready to build the first telehub and then massproduce them.
+
+            div.profile-project-tags.tags-container
+                    // Tag border style has to be set by JS
+                    span.tag(style='border-left: 5px solid #73d216;')
+                        span.tag-name python
+                    span.tag(style='border-left: 5px solid #cc0000;')
+                        span.tag-name groovy
+                    span.tag(style='border-left: 5px solid #25f45c;')
+                        span.tag-name opensource
+
+        div.profile-projects-right
+
+            div.profile-project-stats
+                div.stat-comments(title="2 comments")
+                    span.icon.icon-comment
+                    span.stat-num 2
+                div.stat-favorite.active(title="2 favorites")
+                    span.icon.icon-star-fill
+                    span.stat-num 4
+                div.stat-viewer(title="2 followers")
+                    span.icon.icon-open-eye
+                    span.stat-num 4
+
+            div.profile-project-members
+                a(href="", title="View {{ user.nickname }} profile")
+                    img(src="https://s3.amazonaws.com/uifaces/faces/twitter/mantia/128.jpg")
+                a(href="", title="View {{ user.nickname }} profile")
+                    img(src="https://s3.amazonaws.com/uifaces/faces/twitter/annapickard/128.jpg")
+                a(href="", title="View {{ user.nickname }} profile")
+                    img(src="https://s3.amazonaws.com/uifaces/faces/twitter/nexy_dre/128.jpg", alt="{{ user.nickname }}")
+                a(href="", title="View {{ user.nickname }} profile")
+                    img(src="https://s3.amazonaws.com/uifaces/faces/twitter/pixeliris/128.jpg", alt="{{ user.nickname }}")
+                a(href="", title="View {{ user.nickname }} profile")
+                    img(src="https://s3.amazonaws.com/uifaces/faces/twitter/cbillins/128.jpg", alt="{{ user.nickname }}")
+                a(href="", title="View {{ user.nickname }} profile")
+                    img(src="https://s3.amazonaws.com/uifaces/faces/twitter/allisongrayce/128.jpg", alt="{{ user.nickname }}")
+                a(href="", title="View {{ user.nickname }} profile")
+                    img(src="https://s3.amazonaws.com/uifaces/faces/twitter/uxceo/128.jpg", alt="{{ user.nickname }}")
+                a(href="", title="View {{ user.nickname }} profile")
+                    img(src="https://s3.amazonaws.com/uifaces/faces/twitter/syswarren/128.jpg", alt="{{ user.nickname }}")
+
+    div.profile-project-single
+        div.profile-projects-left
+            div.profile-project-title
+                h1
+                    a(href="", title="View {{ project.title }}") Teletransportation hubs
+
+            div.profile-project-tags.tags-container
+                    // Tag border style has to be set by JS
+                    span.tag(style='border-left: 5px solid #43d56f;')
+                        span.tag-name javascript
+                    span.tag(style='border-left: 5px solid #0000cc;')
+                        span.tag-name css
+                    span.tag(style='border-left: 5px solid #cc43fd;')
+                        span.tag-name design
+
+        div.profile-projects-right
+            div.profile-project-stats
+                div.stat-comments(title="2 comments")
+                    span.icon.icon-comment
+                    span.stat-num 2
+                div.stat-favorite(title="2 favorites")
+                    span.icon.icon-star-fill
+                    span.stat-num 4
+                div.stat-viewer(title="2 followers")
+                    span.icon.icon-open-eye
+                    span.stat-num 4
+            div.profile-project-members
+                a(href="", title="View {{ user.nickname }} profile")
+                    img(src="https://s3.amazonaws.com/uifaces/faces/twitter/mantia/128.jpg")
+                a(href="", title="View {{ user.nickname }} profile")
+                    img(src="https://s3.amazonaws.com/uifaces/faces/twitter/annapickard/128.jpg")
+
+    div.profile-project-single
+        div.profile-projects-left
+
+            div.profile-project-title
+                h1
+                    a(href="", title="View {{ project.title }}") Taiga
+                p Una plataforma social para crear comunidad entorno a la tienda. Esta comunidad está pensada para quedar a hacer deporte, compartir iniciativas.
+
+            div.profile-project-tags.tags-container
+                // Tag border style has to be set by JS
+                span.tag(style='border-left: 5px solid #11cd00;')
+                    span.tag-name PHP
+                span.tag(style='border-left: 5px solid #ff00dd;')
+                    span.tag-name marketing
+                span.tag(style='border-left: 5px solid #cdcd54;')
+                    span.tag-name wordpress
+        div.profile-projects-right
+
+            div.profile-project-stats
+                div.stat-comments
+                    span.icon.icon-comment
+                    span.stat-num 2
+                div.stat-favorite.active
+                    span.icon.icon-star-fill
+                    span.stat-num 4
+                div.stat-viewer
+                    span.icon.icon-open-eye
+                    span.stat-num 4
+
+            div.profile-project-members
+                - for (var x = 0; x < 2; x++)
+                    a(href="", title="View {{ user.nickname }} profile")
+                        img(src="https://s3.amazonaws.com/uifaces/faces/twitter/mantia/128.jpg")
+                    a(href="", title="View {{ user.nickname }} profile")
+                        img(src="https://s3.amazonaws.com/uifaces/faces/twitter/annapickard/128.jpg")
+                    a(href="", title="View {{ user.nickname }} profile")
+                        img(src="https://s3.amazonaws.com/uifaces/faces/twitter/nexy_dre/128.jpg", alt="{{ user.nickname }}")
+                    a(href="", title="View {{ user.nickname }} profile")
+                        img(src="https://s3.amazonaws.com/uifaces/faces/twitter/pixeliris/128.jpg", alt="{{ user.nickname }}")
+                    a(href="", title="View {{ user.nickname }} profile")
+                        img(src="https://s3.amazonaws.com/uifaces/faces/twitter/cbillins/128.jpg", alt="{{ user.nickname }}")
+                    a(href="", title="View {{ user.nickname }} profile")
+                        img(src="https://s3.amazonaws.com/uifaces/faces/twitter/allisongrayce/128.jpg", alt="{{ user.nickname }}")
+                    a(href="", title="View {{ user.nickname }} profile")
+                        img(src="https://s3.amazonaws.com/uifaces/faces/twitter/uxceo/128.jpg", alt="{{ user.nickname }}")
+                    a(href="", title="View {{ user.nickname }} profile")
+                        img(src="https://s3.amazonaws.com/uifaces/faces/twitter/syswarren/128.jpg", alt="{{ user.nickname }}")
+
+
