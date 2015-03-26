@@ -1,4 +1,9 @@
 section.profile-contacts
+    nav.profile-contacts-filters
+        a.active(href="", title="No Filter") all
+        a(href="", title="Only show your team") team
+        a(href="", title="Only show people you follow") following
+        a(href="", title="Only show people follow you") followers
     - for (var x = 0; x < 3; x++)
         div.profile-contact-single
             picture
