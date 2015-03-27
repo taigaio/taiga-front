@@ -6,20 +6,40 @@
         display: block;
         margin-bottom: 1rem;
     }
+    .profile-data {
+        position: relative;
+    }
+    .flag {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 12px;
+        path {
+            fill: $gray-light;
+            transition: all .2s linear;
+        }
+        &:hover {
+            path {
+                fill: $red;
+                transition: all .2s linear;
+            }
+        }
+    }
     h1,
     h2 {
         @extend %bold;
         @extend %small;
-        line-height: 1;
         margin-bottom: .5rem;
     }
     h1 {
         @extend %xlarge;
+        line-height: 1;
         text-transform: none;
     }
     h2 {
         @extend %large;
         color: $gray-light;
+        line-height: 1.2;
     }
     .location {
         color: $gray-light;

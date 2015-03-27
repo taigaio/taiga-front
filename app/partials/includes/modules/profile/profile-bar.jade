@@ -2,12 +2,17 @@ section.profile-bar
     img.profile-img(src="http://i.imgur.com/gPiHzHN.jpg", alt="{{ user.nickname }}")
     a.button-green
         span Follow
-    h1 Silvia Rodríguez
-    // If user has no defined role in its profile use all its project defined roles followed by an &
-    h2 Backend Developer & Stackeholder
-    div.location
-        // span.icon.icon-location
-        span Madrid
+    div.profile-data
+        h1 Silvia Rodríguez
+        // If user has no defined role in its profile use all its project defined roles followed by an &
+        h2 Backend Developer & Stackeholder
+        div.location
+            // span.icon.icon-location
+            span Madrid
+        // Remove Abuse Flag when a user is seeing itself
+        a.flag(href="", title="Report Abuse")
+            svg(xmlns:svg="http://www.w3.org/2000/svg", xmlns="http://www.w3.org/2000/svg", xml:space="preserve", enable-background="new 0 0 100 100" viewBox="0 0 14.7 20.3", y="0", x="0", version="1.1")
+                path(d="M2.9 4C2 4.5 1 5.4 0.8 5.6L0.7 5.5 0 5.9 8.3 20.3 9.1 19.9 5.4 13.6c0.2-0.2 1.2-1.1 2.1-1.6 1.8-1.1 2.7-0.8 4.5-1.9 1.8-1 2.6-2.3 2.6-2.3L10.2 0C10.2 0 9.3 1.2 7.5 2.2 5.7 3.3 4.7 2.9 2.9 4Z")
     // These values in profile stats are not defined yet in UX. Please ask
     div.profile-stats
         div.stat
