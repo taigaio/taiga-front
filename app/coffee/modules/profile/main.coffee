@@ -28,8 +28,17 @@ module = angular.module("taigaProfile")
 #############################################################################
 
 ProfileTabsDirective = () ->
+
     link = ($scope, $el, $attrs) ->
-        console.log $el
+
+        $scope.tabSelected = 'profile-timeline'
+
+        $scope.toggleTab = ->
+            target = angular.element(event.currentTarget)
+            tab = target.data("selected")
+            target.siblings().removeClass('active')
+            target.addClass('active')
+            $scope.tabSelected = tab
 
     return {link:link}
 

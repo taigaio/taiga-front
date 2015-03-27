@@ -1,22 +1,26 @@
 .profile-content-tabs {
     border-top: 1px solid $whitish;
+    z-index: 9;
     .tab {
-        background: $white;
         color: $gray-light;
         display: inline-block;
         padding: .4rem 1rem;
         &:hover,
         &.active {
             color: $grayer;
-            .icon {
-                color: $green-taiga;
-            }
+            transition: color .2s linear;
         }
         &.active {
+            background: $white;
             border-left: 1px solid $whitish;
             border-right: 1px solid $whitish;
             position: relative;
             top: 1px;
+            transition: color .2s linear;
+            .icon {
+                color: $green-taiga;
+                transition: color .2s linear;
+            }
         }
     }
     .icon {
