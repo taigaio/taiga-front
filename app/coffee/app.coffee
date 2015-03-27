@@ -333,6 +333,7 @@ modules = [
     "taigaPlugins",
     "taigaIntegrations",
     "taigaComponents",
+    "taigaProfile",
 
     # template cache
     "templates",

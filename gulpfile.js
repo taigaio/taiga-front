@@ -103,6 +103,7 @@ paths.coffee_order = [
     paths.app + "coffee/modules/admin/*.coffee",
     paths.app + "coffee/modules/projects/*.coffee",
     paths.app + "coffee/modules/locales/*.coffee",
+    paths.app + "coffee/modules/profile/*.js",
     paths.app + "coffee/modules/base/*.coffee",
     paths.app + "coffee/modules/resources/*.coffee",
     paths.app + "coffee/modules/user-settings/*.coffee",
