@@ -40,7 +40,6 @@ LbUsEstimationDirective = ($tgEstimationsService, $rootScope, $repo, $confirm, $
 
     link = ($scope, $el, $attrs, $model) ->
         $scope.$watch $attrs.ngModel, (us) ->
-            console.log "watch"
             if us
                 estimationProcess = $tgEstimationsService.create($el, us, $scope.project)
                 estimationProcess.onSelectedPointForRole = (roleId, pointId) ->
