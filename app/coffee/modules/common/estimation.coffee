@@ -40,11 +40,13 @@ LbUsEstimationDirective = ($tgEstimationsService, $rootScope, $repo, $confirm, $
 
     link = ($scope, $el, $attrs, $model) ->
         $scope.$watch $attrs.ngModel, (us) ->
+            console.log "watch"
             if us
                 estimationProcess = $tgEstimationsService.create($el, us, $scope.project)
                 estimationProcess.onSelectedPointForRole = (roleId, pointId) ->
                     $scope.$apply ->
                         $model.$setViewValue(us)
+
 
                 estimationProcess.render = () ->
                     ctx = {
@@ -224,16 +226,12 @@ EstimationsService = ($template, $qqueue, $repo, $confirm, $q) ->
             @$el.find(".pop-points-open").show()
 
     create = ($el, us, project) ->
-        estimationProcess = $el.data("estimationProcess")
+        $el.unbind("click")
 
-        if !estimationProcess
-            estimationProcess = new EstimationProcess($el, us, project)
-            $el.data("estimationProcess", estimationProcess)
+        estimationProcess = new EstimationProcess($el, us, project)
 
         if estimationProcess.isEditable
             estimationProcess.bindClickEvents()
-        else
-            $el.unbind("click")
 
         return estimationProcess
 
