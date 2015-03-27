@@ -4,7 +4,7 @@ section.profile-timeline
         div.activity-simple
             span.activity-date Yesterday 12.30h
             div.activity-info
-                picture
+                div.profile-contact-picture
                     a(href="", title="{{ user.nickname }}")
                         img(src="https://s3.amazonaws.com/uifaces/faces/twitter/gerrenlamson/128.jpg", alt="{{ user.nickname }}")
                 p
@@ -16,7 +16,7 @@ section.profile-timeline
         div.activity-comment
             span.activity-date 3 days ago
             div.activity-info
-                picture
+                div.profile-contact-picture
                     a(href="", title="{{ user.nickname }}")
                         img(src="https://s3.amazonaws.com/uifaces/faces/twitter/tonystubblebine/128.jpg", alt="{{ user.nickname }}")
                 p
@@ -30,7 +30,7 @@ section.profile-timeline
         div.activity-image
             span.activity-date 5 days ago
             div.activity-info
-                picture
+                div.profile-contact-picture
                     a(href="", title="{{ user.nickname }}")
                         img(src="https://s3.amazonaws.com/uifaces/faces/twitter/jina/128.jpg", alt="{{ user.nickname }}")
                 p
@@ -45,7 +45,7 @@ section.profile-timeline
         div.activity-notification
             span.activity-date 6 days ago
             div.activity-info
-                picture
+                div.profile-contact-picture
                     a(href="", title="{{ user.nickname }}")
                         img(src="https://s3.amazonaws.com/uifaces/faces/twitter/idiot/128.jpg", alt="{{ user.nickname }}")
                 p
@@ -65,14 +65,14 @@ section.profile-timeline
         div.activity-member
             span.activity-date a week ago
             div.activity-info
-                picture
+                div.profile-contact-picture
                     a(href="", title="{{ organization.nickname }}")
                         img(src="https://s3.amazonaws.com/uifaces/faces/twitter/tofslie/128.jpg", alt="{{ organization.nickname }}")
                 p
                     a(href="", title="See {{ organization.nickname }} profile") Mozilla
                     span  has a new member
             div.activity-member-view
-                picture
+                div.profile-member-picture
                     img(src="https://s3.amazonaws.com/uifaces/faces/twitter/BillSKenney/128.jpg", alt="{{ organization.nickname }}")
                 div.activity-member-info
                     a(href="", title="See {{ user.nickname }} profile")
@@ -83,7 +83,7 @@ section.profile-timeline
         div.activity-project
             span.activity-date a week ago
             div.activity-info
-                picture
+                div.profile-contact-picture
                     a(href="", title="{{ organization.nickname }}")
                         img(src="https://s3.amazonaws.com/uifaces/faces/twitter/ekvium/128.jpg", alt="{{ organization.nickname }}")
                 p

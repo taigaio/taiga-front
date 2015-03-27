@@ -17,7 +17,7 @@
             right: .5rem;
             top: .5rem;
         }
-        picture {
+        .profile-contact-picture {
             margin-right: .5rem;
             vertical-align: center;
             width: 35px;
@@ -76,12 +76,6 @@
             margin-bottom: .5rem;
             margin-left: calc(35px + .5rem);
             margin-top: .5rem;
-            picture {
-                margin-right: 1rem;
-                max-width: 64px;
-                min-width: 32px;
-                width: 100%;
-            }
             .activity-member-info {
                 flex: 1;
             }
@@ -90,6 +84,14 @@
             }
             p {
                 color: $gray-light;
+            }
+        }
+        .profile-member-picture {
+            img {
+                margin-right: 1rem;
+                max-width: 64px;
+                min-width: 32px;
+                width: 100%;
             }
         }
     }
