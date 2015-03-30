@@ -13,7 +13,7 @@ div.row.us-item-row(ng-repeat="us in visibleUserstories track by us.id", tg-bind
                 a.icon.icon-delete(tg-check-permission="delete_us", href="",
                                    ng-click="ctrl.deleteUserStory(us)", title="Delete")
 
-    div.status(tg-us-status="us" on-update="ctrl.loadProjectStats()")
+    div.status(tg-us-status="us" on-update="ctrl.updateUserStoryStatus()")
         a.us-status(href="", title="Status Name")
             span.us-status-bind
             span.icon.icon-arrow-bottom(tg-check-permission="modify_us")
