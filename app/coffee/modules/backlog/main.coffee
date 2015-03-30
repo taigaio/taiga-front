@@ -439,11 +439,15 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         return _.pick(@location.search(), "statuses", "tags", "q")
 
     generateFilters: ->
+        urlfilters = @.getUrlFilters()
         @scope.filters = {}
 
         #tags
         plainTags = _.flatten(_.filter(_.map(@scope.visibleUserstories, "tags")))
         plainTags.sort()
+
+        if plainTags.length == 0 and urlfilters["tags"]
+            plainTags.push(urlfilters["tags"])
 
         @scope.filters.tags = _.map _.countBy(plainTags), (v, k) =>
             obj = {
@@ -465,6 +469,9 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         plainStatuses = _.filter plainStatuses, (status) =>
             if status
                 return status
+
+        if plainStatuses.length == 0 and urlfilters["statuses"]
+            plainStatuses.push(urlfilters["statuses"])
 
         @scope.filters.statuses = _.map _.countBy(plainStatuses), (v, k) =>
             obj = {
