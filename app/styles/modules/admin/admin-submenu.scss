@@ -6,7 +6,7 @@
     li {
         @extend %larger;
         @extend %title;
-        border-bottom: 1px solid #a6b2a7;
+        border-bottom: 1px solid $gray-tower-gray;
         text-transform: uppercase;
         &:last-child {
             border-bottom: 0;

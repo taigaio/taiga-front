@@ -88,7 +88,7 @@
         }
         input:checked {
             + div {
-                background-color: #74a218;
+                background-color: $green-christi;
                 margin-left: 50%;
                 transition: all .2s linear;
             }
@@ -104,7 +104,7 @@
         input:disabled {
             cursor: auto;
             + div {
-                background-color: #ccc;
+                background-color: $gray80;
             }
         }
     }

@@ -3,17 +3,17 @@
 // Blockquotes
 blockquote,
 blockquote p {
-    color: #777;
+    color: $gray46-47;
     font-style: italic;
     line-height: 24px;
 }
 blockquote {
-    border-left: 1px solid #ddd;
+    border-left: 1px solid $gray87-88;
     margin: 0 0 20px;
     padding: 9px 20px 0 19px;
     cite {
         @extend %small;
-        color: #555;
+        color: $gray;
         display: block;
         &:before {
             content: '\2014 \0020';
