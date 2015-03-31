@@ -1,6 +1,19 @@
 .profile-bar {
+    .profile-image-wrapper {
+        position: relative;
+    }
     .profile-img {
         max-width: 100%;
+    }
+    .edit-profile {
+        @extend %large;
+        background: rgba(255, 255, 255, .6);
+        border-radius: 50%;
+        color: $grayer;
+        left: calc(50% - 1rem);
+        padding: 1rem;
+        position: absolute;
+        top: calc(50% - 1rem);
     }
     .button-green {
         display: block;

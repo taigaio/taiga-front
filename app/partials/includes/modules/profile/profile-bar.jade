@@ -1,5 +1,8 @@
 section.profile-bar
-    img.profile-img(src="http://i.imgur.com/gPiHzHN.jpg", alt="{{ user.nickname }}")
+    div.profile-image-wrapper
+        img.profile-img(src="http://i.imgur.com/gPiHzHN.jpg", alt="{{ user.nickname }}")
+        a.edit-profile(href="", title="Edit profile")
+            span.icon.icon-edit
     a.button-green
         span Follow
     div.profile-data
