@@ -136,6 +136,7 @@
         background: $red-light;
         color: $white;
         a {
+            // scss-lint:disable ImportantRule
             color: $white !important;
             &:hover {
                 color: $white;

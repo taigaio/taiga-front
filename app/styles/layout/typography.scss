@@ -101,6 +101,7 @@ a:visited {
 // Taiga Icons
 
 [data-icon]:before {
+    // scss-lint:disable ImportantRule
     content: attr(data-icon);
     font-family: 'taiga' !important;
     -moz-osx-font-smoothing: grayscale;
@@ -115,6 +116,7 @@ a:visited {
 
 [class^='icon-']:before,
 [class*=' icon-']:before {
+    // scss-lint:disable ImportantRule
     font-family: 'taiga' !important;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
