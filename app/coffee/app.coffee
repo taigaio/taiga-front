@@ -39,7 +39,7 @@ taiga.sessionId = taiga.generateUniqueSessionIdentifier()
 configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEventsProvider, tgLoaderProvider,
              $compileProvider, $translateProvider) ->
     $routeProvider.when("/",
-        {templateUrl: "home/home-logged-in.html"})
+        {templateUrl: "project/projects.html", resolve: {loader: tgLoaderProvider.add()}})
 
     $routeProvider.when("/project/:pslug/",
         {templateUrl: "project/project.html"})
@@ -137,6 +137,10 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         {templateUrl: "user/change-email.html"})
     $routeProvider.when("/cancel-account/:cancel_token",
         {templateUrl: "user/cancel-account.html"})
+
+    # User profile
+    $routeProvider.when("/profile",
+     {templateUrl: "home/home-logged-in.html"})
 
     # Auth
     $routeProvider.when("/login",

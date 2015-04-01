@@ -1,0 +1,191 @@
+.home-projects-list,
+.home-project {
+    @extend %background-taiga;
+    align-content: center;
+    align-items: center;
+    background-color: $black;
+    background-position: center center;
+    background-size: cover;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    .welcome-user {
+        display: flex;
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        p {
+            color: $whitish;
+            margin-bottom: 0;
+            span:before {
+                content: ' ';
+            }
+        }
+        .logout {
+            @extend %small;
+            float: right;
+            &:hover {
+                color: $red-light;
+            }
+        }
+        .info {
+            padding-right: 1rem;
+        }
+        img {
+            width: 40px;
+        }
+    }
+}
+.home-projects-wrapper {
+    width: 1200px;
+}
+
+.home-projects-list-inner {
+    display: flex;
+}
+
+.recent-projects {
+    flex-grow: 8;
+    max-width: 800px;
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0;
+        padding: 0;
+    }
+    a {
+        height: 100%;
+        left: 0;
+        padding: 1rem;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+    li {
+        background-color: rgba($white, .5);
+        color: $whitish;
+        flex-basis: 230px;
+        flex-grow: 1;
+        flex-shrink: 0;
+        height: 130px;
+        margin-bottom: 1rem;
+        margin-right: 1rem;
+        overflow: hidden;
+        position: relative;
+        transition: background-color .3s linear;
+        width: 23.5%;
+        &:hover {
+            background-color: rgba($fresh-taiga, .5);
+            cursor: pointer;
+            transition: background-color .3s linear;
+            p {
+                color: $gray-light;
+                transition: color .3s linear;
+            }
+        }
+    }
+    h2 {
+        color: $whitish;
+        line-height: 2rem;
+    }
+    p {
+        color: $grayer;
+        transition: color .3s linear;
+    }
+}
+
+.project-content {
+    h2 {
+        margin-bottom: .5rem;
+    }
+    p {
+        @extend %small;
+        line-height: 1rem;
+    }
+}
+
+.all-projects {
+    background-color: rgba(0, 0, 0, .5);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin-left: 1rem;
+    max-height: 422px;
+    padding: 1rem;
+    width: 285px;
+    h1 {
+        color: $whitish;
+        flex-shrink: 0;
+        line-height: 1;
+        text-align: center;
+    }
+    .v-pagination-list {
+        max-height: 221px;
+    }
+    ul {
+        left: 0;
+        margin-bottom: 0;
+        position: relative;
+        top: 0;
+        width: 100%;
+    }
+    li {
+        border-bottom: 2px solid $gray;
+        a {
+            @extend %large;
+            @extend %title;
+            color: $whitish;
+            display: block;
+            line-height: 1.2rem;
+            padding: 1rem;
+            text-transform: uppercase;
+            width: 100%;
+            &:hover {
+                background-color: $gray;
+                transition: background-color .3s linear;
+            }
+        }
+        .active {
+            background-color: $gray;
+            transition: background-color .3s linear;
+        }
+    }
+    .projects-pagination {
+        width: 100%;
+    }
+    .create-project-button-wrapper {
+        display: flex;
+        flex-shrink: 0;
+        .create-project-button {
+            flex-grow: 8;
+            margin-right: .2rem;
+            text-align: center;
+        }
+        .import-project-button {
+            flex-grow: 1;
+            padding-left: .5rem;
+            padding-right: .5rem;
+            text-align: center;
+            .icon {
+                color: $grayer;
+                margin: 0;
+            }
+        }
+    }
+    .button-green {
+        color: $whitish;
+        text-align: center;
+        width: 100%;
+        &:hover {
+            color: $whitish;
+        }
+    }
+    .v-pagination-next {
+        margin-bottom: 1rem;
+    }
+}

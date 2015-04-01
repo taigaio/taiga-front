@@ -5,7 +5,7 @@ div(tg-projects-pagination)
           ul.projects-list
             <% _.each(projects, function(project) { %>
             li
-              a.button(href!='<%- project.url %>')
+              a(href!='<%- project.url %>')
                 <%- project.name %>
              <% }) %>
         a.v-pagination-next.icon.icon-arrow-bottom(href='')
