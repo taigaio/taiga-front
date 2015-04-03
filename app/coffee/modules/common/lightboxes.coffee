@@ -86,7 +86,10 @@ class LightboxKeyboardNavigationService extends taiga.Service
 
         # Key: enter
         if code == 13
-            activeElement.trigger("click")
+            if $el.find(".watcher-single").length == 1
+                $el.find('.watcher-single:first').trigger("click")
+            else
+                activeElement.trigger("click")
 
         # Key: down
         else if code == 40
