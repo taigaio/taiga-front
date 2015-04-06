@@ -554,6 +554,7 @@ WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationS
 
             html = usersTemplate(ctx)
             $el.find("div.watchers").html(html)
+            lightboxKeyboardNavigationService.init($el)
 
         closeLightbox = () ->
             lightboxKeyboardNavigationService.stop()
