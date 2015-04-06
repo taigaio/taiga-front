@@ -1,13 +1,21 @@
 include ../includes/components/beta
 div.profile.centered
     include ../includes/modules/profile/profile-bar
-    div.main(tg-profile-tabs)
+    div.main
         div.hero
-        include ../includes/modules/profile/profile-content-tabs
-        div.content-wrapper
-            div.content
-                include ../includes/modules/profile/profile-timeline
-                include ../includes/modules/profile/profile-projects
-                include ../includes/modules/profile/profile-contacts
-                include ../includes/modules/profile/profile-favorites
-            include ../includes/modules/profile/profile-sidebar
+        div(tg-profile-tabs)
+            div.content-wrapper
+                div.content
+                    div(tg-profile-tab="activity", tab-title="Activity Tab", tab-icon="icon-timeline", tab-active)
+                        include ../includes/modules/profile/profile-timeline
+
+                    div(tg-profile-tab="projects", tab-title="Projects Tab", tab-icon="icon-project")
+                        include ../includes/modules/profile/profile-projects
+
+                    div(tg-profile-tab="contacts", tab-title="Contacts Tab", tab-icon="icon-team")
+                        include ../includes/modules/profile/profile-contacts
+
+                    div(tg-profile-tab="favorities", tab-title="Favorites Tab", tab-icon="icon-star-fill")
+                        include ../includes/modules/profile/profile-favorites
+
+                include ../includes/modules/profile/profile-sidebar

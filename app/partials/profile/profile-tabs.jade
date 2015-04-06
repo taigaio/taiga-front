@@ -1,0 +1,7 @@
+div
+    nav.profile-content-tabs
+        a.tab(ng-repeat="tab in tabs", href="", title="{{::tab.title}}", ng-class="{active: tab.active}" ng-click="toggleTab(tab)")
+            span.icon(ng-class="::tab.icon")
+            span {{::tab.name}}
+
+    ng-transclude

@@ -1,4 +1,4 @@
-section.profile-timeline(ng-show="tabSelected == 'profile-timeline'")
+section.profile-timeline
     - for (var x = 0; x < 3; x++)
         // Simple message for favorites, updates, etc.
         div.activity-simple
@@ -92,4 +92,3 @@ section.profile-timeline(ng-show="tabSelected == 'profile-timeline'")
                     a(href="", title="See {{ project.name }}")  Nanatubos
             div.activity-comment-quote
                 p We plan to build a hundred of so called "telehubs" so people from all over the world can immediately relocate their physical self at any other telehub in microseconds.
-

@@ -1,4 +1,4 @@
-section.profile-projects(ng-show="tabSelected == 'profile-projects'")
+section.profile-projects
     - for (var x = 0; x < 3; x++)
     div.profile-project-single
         div.profile-projects-left
@@ -127,5 +127,3 @@ section.profile-projects(ng-show="tabSelected == 'profile-projects'")
                         img(src="https://s3.amazonaws.com/uifaces/faces/twitter/uxceo/128.jpg", alt="{{ user.nickname }}")
                     a(href="", title="View {{ user.nickname }} profile")
                         img(src="https://s3.amazonaws.com/uifaces/faces/twitter/syswarren/128.jpg", alt="{{ user.nickname }}")
-
-
