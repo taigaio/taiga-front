@@ -3,12 +3,12 @@
 // Blockquotes
 blockquote,
 blockquote p {
-    color: $gray46-47;
+    color: $gray;
     font-style: italic;
     line-height: 24px;
 }
 blockquote {
-    border-left: 1px solid $gray87-88;
+    border-left: 1px solid $gray-light;
     margin: 0 0 20px;
     padding: 9px 20px 0 19px;
     cite {
