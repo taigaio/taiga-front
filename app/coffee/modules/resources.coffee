@@ -36,6 +36,8 @@ urls = {
     "users-change-password": "/users/change_password"
     "users-change-email": "/users/change_email"
     "users-cancel-account": "/users/cancel"
+    "contacts": "/users/%s/contacts"
+    "stats": "/users/%s/stats"
 
     # User - Notification
     "notify-policies": "/notify-policies"
@@ -58,6 +60,7 @@ urls = {
     "projects": "/projects"
     "project-templates": "/project-templates"
     "project-modules": "/projects/%s/modules"
+    "bulk-update-projects-order": "/projects/bulk_update_order"
 
     # Project Values - Choises
     "userstory-statuses": "/userstory-statuses"
@@ -125,6 +128,10 @@ urls = {
     "tasks-csv": "/tasks/csv?uuid=%s"
     "issues-csv": "/issues/csv?uuid=%s"
 
+    # Timeline
+    "timeline-profile": "/timeline/profile"
+    "timeline-project": "/timeline/project"
+
     # Search
     "search": "/search"
 
@@ -183,5 +190,6 @@ module.run([
     "$tgWebhooksResourcesProvider",
     "$tgWebhookLogsResourcesProvider",
     "$tgLocalesResourcesProvider",
+    "$tgTimelineResourcesProvider",
     initResources
 ])

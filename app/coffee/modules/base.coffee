@@ -58,6 +58,7 @@ urls = {
     "create-project": "/create-project"
 
     "profile": "/:user"
+    "user-profile": "profile/:username"
 
     "project": "/project/:project"
     "project-backlog": "/project/:project/backlog"
