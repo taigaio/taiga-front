@@ -26,6 +26,8 @@ TimelineItemDirective = ($tgTemplate, $compile, $navUrls) ->
         if event.type == 'change'
             if timeline.data.comment.length
                  template = "profile/timeline/comment-timeline.html"
+            else if timeline.data.values_diff.attachments
+                 template = "profile/timeline/attachment-timeline.html"
 
         return $tgTemplate.get(template)
 

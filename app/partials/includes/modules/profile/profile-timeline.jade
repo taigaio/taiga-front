@@ -1,95 +1,95 @@
 section.profile-timeline(ng-controller="ProfileTimeline as ctrl")
     div(ng-repeat="timeline in result.data", tg-timeline-item="timeline")
-    // - for (var x = 0; x < 3; x++)
-    //     // Simple message for favorites, updates, etc.
-    //     div.activity-simple)
-    //         span.activity-date Yesterday 12.30h
-    //         div.activity-info
-    //             div.profile-contact-picture
-    //                 a(href="", title="{{ user.nickname }}")
-    //                     img(src="https://s3.amazonaws.com/uifaces/faces/twitter/gerrenlamson/128.jpg", alt="{{ user.nickname }}")
-    //             p
-    //                 a(href="", title="See {{ user.nickname }} profile") Jesús Espino
-    //                 span  has updated the status of the US
-    //                 a(href="", title="See #{{ us.id }}{{ us.title }}")  #23 Web comercial/Ayuda from "UX" to "UX Done"
+    - for (var x = 0; x < 3; x++)
+        // Simple message for favorites, updates, etc.
+        div.activity-simple
+            span.activity-date Yesterday 12.30h
+            div.activity-info
+                div.profile-contact-picture
+                    a(href="", title="{{ user.nickname }}")
+                        img(src="https://s3.amazonaws.com/uifaces/faces/twitter/gerrenlamson/128.jpg", alt="{{ user.nickname }}")
+                p
+                    a(href="", title="See {{ user.nickname }} profile") Jesús Espino
+                    span  has updated the status of the US
+                    a(href="", title="See #{{ us.id }}{{ us.title }}")  #23 Web comercial/Ayuda from "UX" to "UX Done"
 
-    //     // Added comment in us, task or issue.
-    //     div.activity-comment
-    //         span.activity-date 3 days ago
-    //         div.activity-info
-    //             div.profile-contact-picture
-    //                 a(href="", title="{{ user.nickname }}")
-    //                     img(src="https://s3.amazonaws.com/uifaces/faces/twitter/tonystubblebine/128.jpg", alt="{{ user.nickname }}")
-    //             p
-    //                 a(href="", title="See {{ user.nickname }} profile") JuanFrancisco Alcántara
-    //                 span  has commented in the task
-    //                 a(href="", title="See #{{ us.id }}{{ us.title }}")  #15 Revisar el contraste de los grises
-    //         div.activity-comment-quote
-    //             p "He subido a GitLab unos wireframes. Echadle un vistazo por favor, a ver si falta algo o tenéis al"
+        // Added comment in us, task or issue.
+        div.activity-comment
+            span.activity-date 3 days ago
+            div.activity-info
+                div.profile-contact-picture
+                    a(href="", title="{{ user.nickname }}")
+                        img(src="https://s3.amazonaws.com/uifaces/faces/twitter/tonystubblebine/128.jpg", alt="{{ user.nickname }}")
+                p
+                    a(href="", title="See {{ user.nickname }} profile") JuanFrancisco Alcántara
+                    span  has commented in the task
+                    a(href="", title="See #{{ us.id }}{{ us.title }}")  #15 Revisar el contraste de los grises
+            div.activity-comment-quote
+                p "He subido a GitLab unos wireframes. Echadle un vistazo por favor, a ver si falta algo o tenéis al"
 
-    //     // Added attachment type image in us, task or issue.
-    //     div.activity-image
-    //         span.activity-date 5 days ago
-    //         div.activity-info
-    //             div.profile-contact-picture
-    //                 a(href="", title="{{ user.nickname }}")
-    //                     img(src="https://s3.amazonaws.com/uifaces/faces/twitter/jina/128.jpg", alt="{{ user.nickname }}")
-    //             p
-    //                 a(href="", title="See {{ user.nickname }} profile") Alejandro Alonso
-    //                 span  has uploaded an image in the US
-    //                 a(href="", title="See #{{ us.id }}{{ us.title }}")  US #23 Web comercial/Ayuda
-    //         div.activity-comment-attachment
-    //             p "Eh! Look at this amazing Taiga picture!"
-    //             img(src="https://ununsplash.imgix.net/photo-1423753623104-718aaace6772?q=75&fm=jpg&w=1080&fit=max&s=f655534aa0fe8bae35c687e80a2ed399", alt="{{ attachment.name }}")
+        // Added attachment type image in us, task or issue.
+        div.activity-image
+            span.activity-date 5 days ago
+            div.activity-info
+                div.profile-contact-picture
+                    a(href="", title="{{ user.nickname }}")
+                        img(src="https://s3.amazonaws.com/uifaces/faces/twitter/jina/128.jpg", alt="{{ user.nickname }}")
+                p
+                    a(href="", title="See {{ user.nickname }} profile") Alejandro Alonso
+                    span  has uploaded an image in the US
+                    a(href="", title="See #{{ us.id }}{{ us.title }}")  US #23 Web comercial/Ayuda
+            div.activity-comment-attachment
+                p "Eh! Look at this amazing Taiga picture!"
+                img(src="https://ununsplash.imgix.net/photo-1423753623104-718aaace6772?q=75&fm=jpg&w=1080&fit=max&s=f655534aa0fe8bae35c687e80a2ed399", alt="{{ attachment.name }}")
 
-    //     // Multiple update message, etc.
-    //     div.activity-notification
-    //         span.activity-date 6 days ago
-    //         div.activity-info
-    //             div.profile-contact-picture
-    //                 a(href="", title="{{ user.nickname }}")
-    //                     img(src="https://s3.amazonaws.com/uifaces/faces/twitter/idiot/128.jpg", alt="{{ user.nickname }}")
-    //             p
-    //                 a(href="", title="See {{ user.nickname }} profile") Jesús Espino
-    //                 span  closed
-    //          ul.activity-notification-list
-    //              li
-    //                  a(href="", title="See #{{ us.id }}{{ us.title }}") US #23 Web comercial/Ayuda
-    //              li
-    //                  a(href="", title="See #{{ us.id }}{{ us.title }}") #2156 Search Page UX is hardly understandable
-    //              li
-    //                  a(href="", title="See #{{ us.id }}{{ us.title }}") #456  Search for users
-    //              li
-    //                  a(href="", title="See #{{ us.id }}{{ us.title }}") #2140 Las notificaciones de cambios están fallando
+        // Multiple update message, etc.
+        div.activity-notification
+            span.activity-date 6 days ago
+            div.activity-info
+                div.profile-contact-picture
+                    a(href="", title="{{ user.nickname }}")
+                        img(src="https://s3.amazonaws.com/uifaces/faces/twitter/idiot/128.jpg", alt="{{ user.nickname }}")
+                p
+                    a(href="", title="See {{ user.nickname }} profile") Jesús Espino
+                    span  closed
+             ul.activity-notification-list
+                 li
+                     a(href="", title="See #{{ us.id }}{{ us.title }}") US #23 Web comercial/Ayuda
+                 li
+                     a(href="", title="See #{{ us.id }}{{ us.title }}") #2156 Search Page UX is hardly understandable
+                 li
+                     a(href="", title="See #{{ us.id }}{{ us.title }}") #456  Search for users
+                 li
+                     a(href="", title="See #{{ us.id }}{{ us.title }}") #2140 Las notificaciones de cambios están fallando
 
-    //     // Added attachment type image in us, task or issue.
-    //     div.activity-member
-    //         span.activity-date a week ago
-    //         div.activity-info
-    //             div.profile-contact-picture
-    //                 a(href="", title="{{ organization.nickname }}")
-    //                     img(src="https://s3.amazonaws.com/uifaces/faces/twitter/tofslie/128.jpg", alt="{{ organization.nickname }}")
-    //             p
-    //                 a(href="", title="See {{ organization.nickname }} profile") Mozilla
-    //                 span  has a new member
-    //         div.activity-member-view
-    //             div.profile-member-picture
-    //                 img(src="https://s3.amazonaws.com/uifaces/faces/twitter/BillSKenney/128.jpg", alt="{{ organization.nickname }}")
-    //             div.activity-member-info
-    //                 a(href="", title="See {{ user.nickname }} profile")
-    //                         span Andrés González
-    //                 p Back-end developer & Stake
+        // Added attachment type image in us, task or issue.
+        div.activity-member
+            span.activity-date a week ago
+            div.activity-info
+                div.profile-contact-picture
+                    a(href="", title="{{ organization.nickname }}")
+                        img(src="https://s3.amazonaws.com/uifaces/faces/twitter/tofslie/128.jpg", alt="{{ organization.nickname }}")
+                p
+                    a(href="", title="See {{ organization.nickname }} profile") Mozilla
+                    span  has a new member
+            div.activity-member-view
+                div.profile-member-picture
+                    img(src="https://s3.amazonaws.com/uifaces/faces/twitter/BillSKenney/128.jpg", alt="{{ organization.nickname }}")
+                div.activity-member-info
+                    a(href="", title="See {{ user.nickname }} profile")
+                            span Andrés González
+                    p Back-end developer & Stake
 
-    //     // Added comment in us, task or issue.
-    //     div.activity-project
-    //         span.activity-date a week ago
-    //         div.activity-info
-    //             div.profile-contact-picture
-    //                 a(href="", title="{{ organization.nickname }}")
-    //                     img(src="https://s3.amazonaws.com/uifaces/faces/twitter/ekvium/128.jpg", alt="{{ organization.nickname }}")
-    //             p
-    //                 a(href="", title="See {{ user.nickname }} profile") Redhat
-    //                 span  has a new project
-    //                 a(href="", title="See {{ project.name }}")  Nanatubos
-    //         div.activity-comment-quote
-    //             p We plan to build a hundred of so called "telehubs" so people from all over the world can immediately relocate their physical self at any other telehub in microseconds.
+        // Added comment in us, task or issue.
+        div.activity-project
+            span.activity-date a week ago
+            div.activity-info
+                div.profile-contact-picture
+                    a(href="", title="{{ organization.nickname }}")
+                        img(src="https://s3.amazonaws.com/uifaces/faces/twitter/ekvium/128.jpg", alt="{{ organization.nickname }}")
+                p
+                    a(href="", title="See {{ user.nickname }} profile") Redhat
+                    span  has a new project
+                    a(href="", title="See {{ project.name }}")  Nanatubos
+            div.activity-comment-quote
+                p We plan to build a hundred of so called "telehubs" so people from all over the world can immediately relocate their physical self at any other telehub in microseconds.

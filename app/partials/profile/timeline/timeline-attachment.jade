@@ -1,4 +1,4 @@
-div.activity-comment
+div.activity-image
     span.activity-date {{::timeline.created_formated}}
     div.activity-info
         div.profile-contact-picture
@@ -6,7 +6,7 @@ div.activity-comment
                 img(ng-src="{{::timeline.data.user.photo}}", alt="{{::timeline.data.user.name}}")
         p
             a(tg-nav="user-profile:username=timeline.data.user.username", title="See {{::timeline.data.user.name }} profile") {{::timeline.data.user.name}}
-            span  has commented in the {{::timeline.type }}
+            span  has uploaded an image in the {{::timeline.type }}
             a(href="{{::timeline.detail_url}}", title="See #{{::timeline.ref}} {{::timeline.subject}}")  \#{{::timeline.ref}} {{::timeline.subject}}
-    div.activity-comment-quote
-        p(ng-if="timeline.data.comment") "{{::timeline.data.comment}}"
+    div(ng-repeat="attachment in timeline.data.values_diff.attachments.new")
+        div(tg-timeline-attachment="attachment")
