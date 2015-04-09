@@ -33,15 +33,14 @@ defaultFilter = ->
 module.filter("default", defaultFilter)
 
 
-yesNoFilter = ->
-    #TODO: i18n
+yesNoFilter = ($translate) ->
     return (value) ->
         if value
-            return "Yes"
+            return $translate.instant("COMMON.YES")
 
-        return "No"
+        return $translate.instant("COMMON.NO")
 
-module.filter("yesNo", yesNoFilter)
+module.filter("yesNo", ["$translate", yesNoFilter])
 
 
 unslugify = ->

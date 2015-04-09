@@ -4,7 +4,7 @@ div(class!="status-data <% if(editable){ %>clickable<% }%>")
     <% if(editable){ %>
     span(class="icon icon-arrow-bottom")
     <% } %>
-    span(class="level-name") status
+    span(class="level-name", translate="COMMON.FIELDS.STATUS")
 
     ul(class="popover pop-status")
         <% _.each(statuses, function(st) { %>

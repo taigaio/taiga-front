@@ -20,9 +20,12 @@
     "scss-lint": "gulp scss-lint --fail"
   },
   "devDependencies": {
+    "bluebird": "^2.9.21",
+    "cli-color": "^0.3.3",
     "coffee-script": "^1.9.1",
     "del": "^1.1.1",
     "express": "^4.12.0",
+    "glob": "^5.0.3",
     "gulp": "^3.8.11",
     "gulp-angular-templatecache": "^1.5.0",
     "gulp-autoprefixer": "^2.1.0",
@@ -48,6 +51,7 @@
     "gulp-template": "^3.0.0",
     "gulp-uglify": "~1.1.0",
     "gulp-wrap": "^0.11.0",
+    "inquirer": "^0.8.2",
     "pre-commit": "^1.0.5",
     "readable-stream": "~1.0.33",
     "run-sequence": "^1.0.2",

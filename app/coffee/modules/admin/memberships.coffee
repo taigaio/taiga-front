@@ -50,7 +50,6 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
                   @location, @navUrls, @analytics, @appTitle) ->
         bindMethods(@)
 
-        @scope.sectionName = "Manage Members" #i18n
         @scope.project = {}
         @scope.filters = {}
 
@@ -338,32 +337,31 @@ module.directive("tgMembershipsRowRoleSelector", ["$log", "$tgRepo", "$tgConfirm
 ## Member Actions Directive
 #############################################################################
 
-MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm) ->
-    activedTemplate = _.template("""
-    <div class="active">
-        Active
+MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm, $compile, $translate) ->
+    activedTemplate = """
+    <div class="active", translate="ADMIN.MEMBERSHIP.STATUS_ACTIVE">
     </div>
     <a class="delete" href="">
         <span class="icon icon-delete"></span>
     </a>
-    """) # TODO: i18n
+    """
 
-    pendingTemplate = _.template("""
+    pendingTemplate = """
     <a class="pending" href="">
-        Pending
+        {{'ADMIN.MEMBERSHIP.STATUS_PENDING' | translate}}
         <span class="icon icon-reload"></span>
     </a>
-    <a class="delete" href="" title="Delete">
+    <a class="delete" href="">
         <span class="icon icon-delete"></span>
     </a>
-    """) # TODO: i18n
+    """
 
     link = ($scope, $el, $attrs) ->
         render = (member) ->
             if member.user
-                html = activedTemplate()
+                html = $compile(activedTemplate)($scope)
             else
-                html = pendingTemplate()
+                html = $compile(pendingTemplate)($scope)
 
             $el.html(html)
 
@@ -377,29 +375,34 @@ MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm) ->
         $el.on "click", ".pending", (event) ->
             event.preventDefault()
             onSuccess = ->
-                # TODO: i18n
-                $confirm.notify("success", "We've sent the invitationi again to '#{$scope.member.email}'.")
+                text = $translate.instant("ADMIN.MEMBERSHIP.SUCCESS_SEND_INVITATION", {email: $scope.member.email})
+                $confirm.notify("success", text)
             onError = ->
-                $confirm.notify("error", "We haven't sent the invitation.") # TODO: i18n
+                text = $translate.instant("ADMIM.MEMBERSHIP.ERROR_SEND_INVITATION")
+                $confirm.notify("error", text)
 
             $rs.memberships.resendInvitation($scope.member.id).then(onSuccess, onError)
 
         $el.on "click", ".delete", (event) ->
             event.preventDefault()
 
-            title = "Delete member" # TODO: i18n
-            message = if member.user then member.full_name else "the invitation to #{member.email}" # TODO: i18n
+            title = $translate.instant("ADMIN.MEMBERSHIP.DELETE_MEMBER")
+            defaultMsg = $translate.instant("ADMIN.MEMBERSHIP.DEFAULT_DELETE_MESSAGE")
+            message = if member.user then member.full_name else defaultMsg
 
             $confirm.askOnDelete(title, message).then (finish) ->
                 onSuccess = ->
                     finish()
                     $ctrl.loadMembers()
-                    $confirm.notify("success", null, "We've deleted #{message}.") # TODO: i18n
+
+                    text = $translate.instant("ADMIN.MEMBERSHIP.SUCCESS_DELETE")
+                    $confirm.notify("success", null, text)
 
                 onError = ->
                     finish(false)
-                    # TODO: i18in
-                    $confirm.notify("error", null, "We have not been able to delete #{message}.")
+
+                    text = $translate.instant("ADMIN.MEMBERSHIP.ERROR_DELETE", {message: message})
+                    $confirm.notify("error", null, text)
 
                 $repo.remove(member).then(onSuccess, onError)
 
@@ -409,5 +412,4 @@ MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm) ->
     return {link: link}
 
 
-module.directive("tgMembershipsRowActions", ["$log", "$tgRepo", "$tgResources", "$tgConfirm",
-                                             MembershipsRowActionsDirective])
+module.directive("tgMembershipsRowActions", ["$log", "$tgRepo", "$tgResources", "$tgConfirm", "$compile", "$translate", MembershipsRowActionsDirective])

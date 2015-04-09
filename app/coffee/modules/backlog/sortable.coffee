@@ -39,7 +39,7 @@ deleteElement = (el) ->
     el.off()
     el.remove()
 
-BacklogSortableDirective = ($repo, $rs, $rootscope, $tgConfirm) ->
+BacklogSortableDirective = ($repo, $rs, $rootscope, $tgConfirm, $translate) ->
     # Notes about jquery bug:
     # http://stackoverflow.com/questions/5791886/jquery-draggable-shows-
     # helper-in-wrong-place-when-scrolled-down-page
@@ -54,7 +54,8 @@ BacklogSortableDirective = ($repo, $rs, $rootscope, $tgConfirm) ->
                 return
 
             filterError = ->
-                $tgConfirm.notify("error", "You can't drop on backlog when filters are open") #TODO: i18n
+                text = $translate.instant("BACKLOG.SORTABLE_FILTER_ERROR")
+                $tgConfirm.notify(text)
 
             $el.sortable({
                 items: ".us-item-row",
@@ -211,6 +212,7 @@ module.directive("tgBacklogSortable", [
     "$tgResources",
     "$rootScope",
     "$tgConfirm",
+    "$translate",
     BacklogSortableDirective
 ])
 

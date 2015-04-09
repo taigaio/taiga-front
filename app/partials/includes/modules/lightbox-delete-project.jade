@@ -1,12 +1,12 @@
-a.close(href="", title="close")
+a.close(href="", title="{{'close' | translate}}")
     span.icon.icon-delete
 form
-    h2.title Delete project
+    h2.title(translate="LIGHTBOX.DELETE_PROJECT.TITLE")
     p
-        span.question Are you sure you want to delete this project?
-        span.subtitle All project data US/Tasks/Issues/Sprints/WikiPages will be lost! :-(
+        span.question(translate="LIGHTBOX.DELETE_PROJECT.QUESTION")
+        span.subtitle(translate="LIGHTBOX.DELETE_PROJECT.SUBTITLE")
     div.options
-        a.button-green(href="", title="Yes, I'm really sure")
-            span Yes, I'm really sure
-        a.button-red(href="", title="Cancel")
-            span Cancel
+        a.button-green(href="", title="{{'LIGHTBOX.DELETE_PROJECT.CONFIRM' | translate}}")
+            span(translate="LIGHTBOX.DELETE_PROJECT.CONFIRM")
+        a.button-red(href="", title="{{'COMMON.CANCEL' | translate}}")
+            span(translate="COMMON.CANCEL")

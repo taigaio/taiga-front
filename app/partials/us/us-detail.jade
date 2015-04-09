@@ -1,3 +1,5 @@
+doctype html
+
 div.wrapper(ng-controller="UserStoryDetailController as ctrl",
             ng-init="section='backlog-kanban'")
     div.main.us-detail
@@ -6,9 +8,9 @@ div.wrapper(ng-controller="UserStoryDetailController as ctrl",
             .action-buttons
                 a.button-gray(
                     tg-check-permission="view_milestones",
-                    href="", title="Go to taskboard",
+                    href="", title="{{'TASK.LINK_TASKBOARD' | translate}}",
                     tg-nav="project-taskboard:project=project.slug,sprint=sprint.slug",
-                    ng-if="sprint && project.is_backlog_activated") Taskboard
+                    ng-if="sprint && project.is_backlog_activated", translate="TASKBOARD.SECTION_NAME")
 
         section.us-story-main-data
             div.us-title(ng-class="{blocked: us.is_blocked}")
@@ -16,24 +18,24 @@ div.wrapper(ng-controller="UserStoryDetailController as ctrl",
                     span.us-number(tg-bo-ref="us.ref")
                     span.us-name(tg-editable-subject, ng-model="us", required-perm="modify_us")
 
-                p.us-related-task(ng-if="us.origin_issue") This US has been promoted from Issue
-                    a(tg-check-permission="view_us", href="", title="Go to issue",
+                p.us-related-task(ng-if="us.origin_issue", translate="US.PROMOTED")
+                    a(tg-check-permission="view_us", href="", title="{{'US.TITLE_LINK_GO_TO_ISSUE' | translate}}",
                       tg-nav="project-issues-detail:project=project.slug, ref=us.origin_issue.ref"
                       tg-bo-title="'#' + us.origin_issue.ref + ' ' + us.origin_issue.subject")
                         span(tg-bo-ref="us.origin_issue.ref")
 
-                p.external-reference(ng-if="us.external_reference") This US has been created from
-                    a(target="_blank", tg-bo-href="us.external_reference[1]", title="Go to origin")
+                p.external-reference(ng-if="us.external_reference", translate="US.EXTERNAL_REFERENCE")
+                    a(target="_blank", tg-bo-href="us.external_reference[1]", title="{{'US.GO_TO_EXTERNAL_REFERENCE' | translate}}")
                         span {{ us.external_reference[1] }}
 
                 p.block-desc-container(ng-show="us.is_blocked")
-                    span.block-description-title Blocked
-                    span.block-description(ng-bind="us.blocked_note || 'This user story is blocked'")
+                    span.block-description-title(translate="COMMON.BLOCKED")
+                    span.block-description(ng-bind="us.blocked_note || ('US.BLOCKED' | translate)")
                 div.issue-nav
                     a.icon.icon-arrow-left(ng-show="previousUrl", tg-bo-href="previousUrl",
-                                           title="previous user story")
+                                           title="{{'US.PREVIOUS' | translate}}")
                     a.icon.icon-arrow-right(ng-show="nextUrl", tg-bo-href="nextUrl",
-                                            title="next user story")
+                                            title="{{'US.NEXT' | translate}}")
 
             div.tags-block(tg-tag-line, ng-model="us", required-perm="modify_us")
 
@@ -65,10 +67,10 @@ div.wrapper(ng-controller="UserStoryDetailController as ctrl",
             tg-us-client-requirement-button(ng-model="us")
             tg-block-button(tg-check-permission="modify_us", ng-model="us")
             tg-delete-button(tg-check-permission="delete_us",
-                             on-delete-title="'Delete User Story'",
+                             on-delete-title="{{'Delete User Story' | translate}}",
                              on-delete-go-to-url="onDeleteGoToUrl",
                              ng-model="us")
 
-    div.lightbox.lightbox-block(tg-lb-block, title="Blocking us", ng-model="us")
+    div.lightbox.lightbox-block(tg-lb-block, title="US.LIGHTBOX_TITLE_BLOKING_US", ng-model="us")
     div.lightbox.lightbox-select-user(tg-lb-assignedto)
     div.lightbox.lightbox-select-user(tg-lb-watchers)

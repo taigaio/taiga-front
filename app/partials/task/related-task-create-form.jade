@@ -1,16 +1,16 @@
 .tasks
     .task-name
-        input(type='text', placeholder='Type the new task subject')
+        input(type='text', placeholder="{{'TASK.PLACEHOLDER_SUBJECT' | translate}}")
         .task-settings
-          a.icon.icon-floppy(href='', title='Save')
-          a.icon.icon-delete.cancel-edit(href='', title='Cancel')
+          a.icon.icon-floppy(href='', title="{{'COMMON.SAVE' | translate}}")
+          a.icon.icon-delete.cancel-edit(href='', title="{{'COMMON.CANCEL' | translate}}")
 
 .status(tg-related-task-status='newTask', ng-model='newTask', not-auto-save='true')
-  a.task-status(href='', title='Status Name')
+  a.task-status(href='', title="{{'TITLE_SELECT_STATUS' | translate}}")
     span.task-status-bind
     span.icon.icon-arrow-bottom
 
 .assigned-to(tg-related-task-assigned-to-inline-edition='newTask', not-auto-save='true')
-  .task-assignedto(title='Assigned to')
+  .task-assignedto(title="{{'COMMON.FIELDS.ASSIGNED_TO' | translate}}")
     figure.avatar
     span.icon.icon-arrow-bottom

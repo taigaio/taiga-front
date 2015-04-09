@@ -2,7 +2,6 @@
     img(src!="<%- owner.photo %>", alt!="<%- owner.full_name_display %>")
 
 .created-by
-    span.created-title
-      | Created by <%- owner.full_name_display %>
+    span.created-title(translate="COMMON.CREATED_BY", translate-values!="{ 'fullDisplayName': '<%- owner.full_name_display %>'}")
     span.created-date
       | <%- date %>

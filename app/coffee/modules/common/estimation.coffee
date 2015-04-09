@@ -28,7 +28,7 @@ module = angular.module("taigaCommon")
 ## User story estimation directive (for Lightboxes)
 #############################################################################
 
-LbUsEstimationDirective = ($tgEstimationsService, $rootScope, $repo, $confirm, $template) ->
+LbUsEstimationDirective = ($tgEstimationsService, $rootScope, $repo, $confirm, $template, $compile) ->
     # Display the points of a US and you can edit it.
     #
     # Example:
@@ -40,7 +40,6 @@ LbUsEstimationDirective = ($tgEstimationsService, $rootScope, $repo, $confirm, $
 
     link = ($scope, $el, $attrs, $model) ->
         $scope.$watch $attrs.ngModel, (us) ->
-            console.log "watch"
             if us
                 estimationProcess = $tgEstimationsService.create($el, us, $scope.project)
                 estimationProcess.onSelectedPointForRole = (roleId, pointId) ->
@@ -57,6 +56,7 @@ LbUsEstimationDirective = ($tgEstimationsService, $rootScope, $repo, $confirm, $
                     mainTemplate = "common/estimation/us-estimation-points-per-role.html"
                     template = $template.get(mainTemplate, true)
                     html = template(ctx)
+                    html = $compile(html)($scope)
                     @$el.html(html)
 
                 estimationProcess.render()
@@ -69,14 +69,14 @@ LbUsEstimationDirective = ($tgEstimationsService, $rootScope, $repo, $confirm, $
         require: "ngModel"
     }
 
-module.directive("tgLbUsEstimation", ["$tgEstimationsService", "$rootScope", "$tgRepo", "$tgConfirm", "$tgTemplate", LbUsEstimationDirective])
+module.directive("tgLbUsEstimation", ["$tgEstimationsService", "$rootScope", "$tgRepo", "$tgConfirm", "$tgTemplate", "$compile", LbUsEstimationDirective])
 
 
 #############################################################################
 ## User story estimation directive
 #############################################################################
 
-UsEstimationDirective = ($tgEstimationsService, $rootScope, $repo, $confirm, $qqueue, $template) ->
+UsEstimationDirective = ($tgEstimationsService, $rootScope, $repo, $confirm, $qqueue, $template, $compile) ->
     # Display the points of a US and you can edit it.
     #
     # Example:
@@ -103,6 +103,7 @@ UsEstimationDirective = ($tgEstimationsService, $rootScope, $repo, $confirm, $qq
                     mainTemplate = "common/estimation/us-estimation-points-per-role.html"
                     template = $template.get(mainTemplate, true)
                     html = template(ctx)
+                    html = $compile(html)($scope)
                     @$el.html(html)
 
                 estimationProcess.render()
@@ -116,7 +117,7 @@ UsEstimationDirective = ($tgEstimationsService, $rootScope, $repo, $confirm, $qq
         require: "ngModel"
     }
 
-module.directive("tgUsEstimation", ["$tgEstimationsService", "$rootScope", "$tgRepo", "$tgConfirm", "$tgQqueue", "$tgTemplate",
+module.directive("tgUsEstimation", ["$tgEstimationsService", "$rootScope", "$tgRepo", "$tgConfirm", "$tgQqueue", "$tgTemplate", "$compile"
                                     UsEstimationDirective])
 
 

@@ -1,9 +1,9 @@
 div.new-us
-    a.button-green(href="", title="Add a new User Story",
+    a.button-green(href="", title="{{'US.ADD' | translate}}",
                           ng-click="ctrl.addNewUs('standard')",
                           tg-check-permission="add_us")
-        span.text + Add a new User Story
-    a.button-bulk(href="", title="Add some new User Stories in bulk",
+        span.text {{'US.ADD' | translate}}
+    a.button-bulk(href="", title="{{'US.ADD_BULK' | translate}}",
                          ng-click="ctrl.addNewUs('bulk')",
                          tg-check-permission="add_us")
         span.icon.icon-bulk

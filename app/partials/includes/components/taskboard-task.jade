@@ -1,11 +1,11 @@
 div.taskboard-tagline(tg-colorize-tags="task.tags", tg-colorize-tags-type="taskboard")
 div.taskboard-task-inner
     div.taskboard-user-avatar(tg-taskboard-user-avatar, users="usersById", task="task", project="project", ng-class="{iocaine: task.is_iocaine}")
-    span.icon.icon-iocaine(ng-if="task.is_iocaine", title="Feeling a bit overwhelmed by a task? Make sure others know about it by clicking on Iocaine when editing a task. It's possible to become immune to this (fictional) deadly poison by consuming small amounts over time just as it's possible to get better at what you do by occasionally taking on extra challenges!")
+    span.icon.icon-iocaine(ng-if="task.is_iocaine", title="{{'COMMON.IOCAINE_TEXT' | translate}}")
     p.taskboard-text
-        a.task-assigned(href="", title="Assign task")
+        a.task-assigned(href="", title="{{'TASKBOARD.TITLE_ACTION_ASSIGN' | translate}}")
         span.task-num(tg-bo-ref="task.ref")
         a.task-name(href="", title="#{{ ::task.ref }} {{ ::task.subject }}", ng-bind="task.subject",
                     tg-nav="project-tasks-detail:project=project.slug,ref=task.ref")
     a.icon.icon-edit(tg-check-permission="modify_task",
-        href="", title="Edit task")
+        href="", title="{{'TASKBOARD.TITLE_ACTION_EDIT' | translate}}")

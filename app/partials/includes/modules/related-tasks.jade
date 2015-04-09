@@ -1,6 +1,6 @@
 section.related-tasks(tg-related-tasks)
     div.related-tasks-header
-        span.related-tasks-title Related tasks
+        span.related-tasks-title(translate="COMMON.RELATED_TASKS")
         div(tg-related-task-create-button)
     div.related-tasks-body
         div.row.single-related-task(ng-repeat="task in tasks", ng-class="{closed: task.is_closed, blocked: task.is_blocked, iocaine: task.is_iocaine}",

@@ -7,22 +7,22 @@ div.summary.large-summary
 
         div.summary-stats
             span.number(ng-bind="stats.totalPointsSum|default:'--'")
-            span.description total<br />points
+            span.description(translate="BACKLOG.SPRINT_SUMMARY.TOTAL_POINTS")
         div.summary-stats
             span.number(ng-bind="stats.completedPointsSum|default:'--'")
-            span.description completed<br />points
+            span.description(translate="BACKLOG.SPRINT_SUMMARY.COMPLETED_POINTS")
 
         div.summary-stats
             span.icon.icon-bulk
             span.number(ng-bind="stats.openTasks|default:'--'")
-            span.description open<br />tasks
+            span.description(translate="BACKLOG.SPRINT_SUMMARY.OPEN_TASKS")
         div.summary-stats
             span.number(ng-bind="stats.completed_tasks|default:'--'")
-            span.description closed<br />tasks
+            span.description(translate="BACKLOG.SPRINT_SUMMARY.CLOSED_TASKS")
 
-        div.summary-stats(title="Feeling a bit overwhelmed by a task? Make sure others know about it by clicking on Iocaine when editing a task. It's possible to become immune to this (fictional) deadly poison by consuming small amounts over time just as it's possible to get better at what you do by occasionally taking on extra challenges!")
+        div.summary-stats(title="{{'COMMON.IOCAINE_TEXT' | translate}}")
             span.icon.icon-iocaine
             span.number(ng-bind="stats.iocaine_doses|default:'--'")
-            span.description iocaine<br />doses
+            span.description(translate="BACKLOG.SPRINT_SUMMARY.IOCAINE_DOSES")
 
-    a.icon.icon-stats.toggle-analytics-visibility(href="", title="Show statistics")
+    a.icon.icon-stats.toggle-analytics-visibility(href="", title="{{'BACKLOG.SPRINT_SUMMARY.SHOW_STATISTICS_TITLE' | translate}}")

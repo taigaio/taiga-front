@@ -1,39 +1,38 @@
-a.close(href="", title="close")
+a.close(href="", title="{{'COMMON.CLOSE' | translate}}")
     span.icon.icon-delete
 form
-    h2.title(tr="us.title-new")
+    h2.title(translate="LIGHTBOX.CREATE_EDIT_US.TITLE")
     fieldset
-        input(type="text", name="subject", ng-model="us.subject", tr="placeholder:common.subject",
+        input(type="text", name="subject", ng-model="us.subject", placeholder="{{'COMMON.FIELDS.SUBJECT' | translate}}",
               data-required="true", data-maxlength="500")
 
     fieldset.estimation
         tg-lb-us-estimation(ng-model="us")
 
     fieldset
-        select(name="status", ng-model="us.status", ng-options="s.id as s.name for s in usStatusList",
-               tr="placeholder:common.status")
+        select(name="status", ng-model="us.status", ng-options="s.id as s.name for s in usStatusList")
 
     fieldset
         div.tags-block(tg-lb-tag-line, ng-model="us.tags")
 
     fieldset
         textarea.description(name="description", ng-model="us.description",
-                             placeholder="Please add descriptive text to help others better understand this US")
+                             placeholder="{{'LIGHTBOX.CREATE_EDIT_US.PLACEHOLDER_DESCRIPTION' | translate}}")
     div.settings
         fieldset.team-requirement
             input(type="checkbox", name="team_requirement", ng-model="us.team_requirement",
                   id="team-requirement", ng-value="true")
-            label.requirement.trans-button(for="team-requirement", tr="us.team-requirement")
+            label.requirement.trans-button(for="team-requirement", translate="US.FIELDS.TEAM_REQUIREMENT")
 
         fieldset.client-requirement
             input(type="checkbox", name="client_requirement", ng-model="us.client_requirement",
                   id="client-requirement", ng-value="true")
-            label.requirement.trans-button(for="client-requirement", tr="us.client-requirement")
+            label.requirement.trans-button(for="client-requirement", translate="US.FIELDS.CLIENT_REQUIREMENT")
 
         fieldset.blocking-flag
             input(type="checkbox", name="is_blocked", ng-model="us.is_blocked", id="blocked-us" ng-value="true")
-            label.blocked.trans-button(for="blocked-us", tr="common.blocked")
+            label.blocked.trans-button(for="blocked-us", translate="COMMON.BLOCKED")
 
     tg-blocking-message-input(watch="us.is_blocked", ng-model="us.blocked_note")
 
-    button.button-green.submit-button(type="submit", title="Create") Create
+    button.button-green.submit-button(type="submit", title="{{'COMMON.CREATE' | translate}}", translate="COMMON.CREATE")

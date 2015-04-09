@@ -36,7 +36,7 @@ taiga.generateUniqueSessionIdentifier = ->
 taiga.sessionId = taiga.generateUniqueSessionIdentifier()
 
 
-configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEventsProvider, tgLoaderProvider, $compileProvider) ->
+configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEventsProvider, tgLoaderProvider, $compileProvider, $translateProvider) ->
     $routeProvider.when("/",
         {templateUrl: "project/projects.html", resolve: {loader: tgLoaderProvider.add()}})
 
@@ -236,15 +236,26 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
 
     $compileProvider.debugInfoEnabled(window.taigaConfig.debugInfo || false)
 
-init = ($log, $i18n, $config, $rootscope, $auth, $events, $analytics) ->
-    $i18n.initialize($config.get("defaultLanguage"))
+    $translateProvider.useStaticFilesLoader({
+        prefix: '/locales/locale-',
+        suffix: '.json'
+    })
+
+    $translateProvider.preferredLanguage('en')
+
+init = ($log, $config, $rootscope, $auth, $events, $analytics, $translate) ->
     $log.debug("Initialize application")
     $rootscope.contribPlugins = @.taigaContribPlugins
 
     if $auth.isAuthenticated()
         $events.setupConnection()
 
+        user = $auth.getUser()
+
+        $translate.use(user.lang) if user.lang
+
     $analytics.initialize()
+
 
 
 modules = [
@@ -252,7 +263,6 @@ modules = [
     "taigaBase",
     "taigaCommon",
     "taigaResources",
-    "taigaLocales",
     "taigaAuth",
     "taigaEvents",
 
@@ -281,6 +291,7 @@ modules = [
     # Vendor modules
     "ngRoute",
     "ngAnimate",
+    "pascalprecht.translate"
 ].concat(_.map(@.taigaContribPlugins, (plugin) -> plugin.module))
 
 # Main module definition
@@ -294,16 +305,17 @@ module.config([
     "$tgEventsProvider",
     "tgLoaderProvider",
     "$compileProvider",
+    "$translateProvider",
     configure
 ])
 
 module.run([
     "$log",
-    "$tgI18n",
     "$tgConfig",
     "$rootScope",
     "$tgAuth",
     "$tgEvents",
     "$tgAnalytics",
+    "$translate"
     init
 ])

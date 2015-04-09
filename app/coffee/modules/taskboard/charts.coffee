@@ -85,14 +85,20 @@ SprintGraphDirective = ->
             tooltip: true
             tooltipOpts:
                 content: (label, xval, yval, flotItem) ->
-                    #TODO: i18n
                     formattedDate = moment(xval).format("DD MMM")
                     roundedValue = Math.round(yval)
+
                     if flotItem.seriesIndex == 1
-                        return "Optimal pending points for day #{formattedDate} should be #{roundedValue}"
+                        return $translate.instant("TASKBOARD.CHARTS.OPTIMAL", {
+                            formattedDate: formattedDate,
+                            roundedValue: roundedValue
+                        })
 
                     else
-                        return "Real pending points for day #{formattedDate} is #{roundedValue}"
+                        return $translate.instant("TASKBOARD.CHARTS.REAL", {
+                            formattedDate: formattedDate,
+                            roundedValue: roundedValue
+                        })
 
         element.empty()
         element.plot(data, options).data("plot")

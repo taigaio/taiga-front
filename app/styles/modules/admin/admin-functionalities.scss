@@ -41,7 +41,7 @@
                 text-align: center;
             }
         }
-        span {
+        .title {
             @extend %bold;
             display: block;
         }

@@ -1,4 +1,7 @@
-div.wrapper(ng-controller="ProjectValuesSectionController")
+doctype html
+
+div.wrapper(ng-controller="ProjectValuesSectionController",
+            ng-init="section='admin'; sectionName='ADMIN.PROJECT_VALUES_STATUS.TITLE'")
     sidebar.menu-secondary.sidebar(tg-admin-navigation="project-values")
         include ../includes/modules/admin-menu
 
@@ -7,19 +10,19 @@ div.wrapper(ng-controller="ProjectValuesSectionController")
 
     section.main.admin-common.admin-attributes
         include ../includes/components/mainTitle
-        p.admin-subtitle Specify the statuses your user stories, tasks and issues will go through
+        p.admin-subtitle(translate="ADMIN.PROJECT_VALUES_STATUS.SUBTITLE")
 
-        div.admin-attributes-section(tg-project-values, ng-controller="ProjectValuesController as ctrl",
-            ng-init="section='admin'; resource='userstories'; type='userstory-statuses'; sectionName='Us Statuses'",
-            type="userstory-statuses")
+        div.admin-attributes-section(tg-project-values, type="userstory-statuses",
+            ng-controller="ProjectValuesController as ctrl",
+            ng-init="section='admin'; resource='userstories'; type='userstory-statuses'; sectionName='ADMIN.PROJECT_VALUES_STATUS.US_TITLE'")
             include ../includes/modules/admin/project-us-status
 
-        div.admin-attributes-section(tg-project-values, ng-controller="ProjectValuesController as ctrl",
-            ng-init="section='admin'; resource='tasks'; type='task-statuses'; sectionName='Task Statuses'",
-            type="task-statuses")
+        div.admin-attributes-section(tg-project-values, type="task-statuses",
+            ng-controller="ProjectValuesController as ctrl",
+            ng-init="section='admin'; resource='tasks'; type='task-statuses'; sectionName='ADMIN.PROJECT_VALUES_STATUS.TASK_TITLE'")
             include ../includes/modules/admin/project-status
 
-        div.admin-attributes-section(tg-project-values, ng-controller="ProjectValuesController as ctrl",
-            ng-init="section='admin'; resource='issues'; type='issue-statuses'; sectionName='Issue Statuses'",
-            type="issue-statuses")
+        div.admin-attributes-section(tg-project-values, type="issue-statuses",
+            ng-controller="ProjectValuesController as ctrl",
+            ng-init="section='admin'; resource='issues'; type='issue-statuses'; sectionName='ADMIN.PROJECT_VALUES_STATUS.ISSUE_TITLE'")
             include ../includes/modules/admin/project-status

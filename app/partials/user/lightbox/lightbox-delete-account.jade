@@ -1,12 +1,12 @@
-a.close(href="", title="close")
+a.close(href="", title="{{'close' | translate}}")
     span.icon.icon-delete
 form
-    h2.title Delete Taiga Account
+    h2.title(translate="LIGHTBOX.DELETE_ACCOUNT.SECTION_NAME")
     p
-        span.question Are you sure you want to delete your Taiga account?
-        span.subtitle We're going to miss you! :-(
+        span.question(translate="LIGHBOX.DELETE_ACCOUNT.CONFIRM")
+        span.subtitle(translate="LIGHBOX.DELETE_ACCOUNT.SUBTITLE")
     div.options
-        a.button-green(href="", title="Accept")
-            span Accept
-        a.button-red(href="", title="Cancel")
-            span Cancel
+        a.button-green(href="", title="{{'COMMON.ACCEPT' | translate}}")
+            span(translate="COMMON.ACCEPT") Accept
+        a.button-red(href="", title="{{'Cancel' | translate}}", )
+            span(translate="COMMON.CANCEL") Accept

@@ -1,20 +1,16 @@
 .sprint-name
-    a.icon.icon-arrow-up(href="", title="Compact Sprint")
-    <% if(isVisible){ %>
-    a(href!="<%- taskboardUrl %>", title!="'Go to the taskboard of '<%- name %>'")
-        span <%- name %>
-    <% } %>
+    a.icon.icon-arrow-up(href="", title="{{'BACKLOG.COMPACT_SPRINT' | translate}}")
+    a(ng-if="::isVisible", href="{{::taskboardUrl}}", title="{{'BACKLOG.GO_TO_TASKBOARD' | translate}}")
+        span {{::name}}
 
-    <% if(isEditable){ %>
-    a.icon.icon-edit(href="", title="Edit Sprint")
-    <% } %>
+    a.icon.icon-edit(ng-if="::isEditable", href="", title="{{'BACKLOG.EDIT_SPRINT' | translate}}")
 
 .sprint-summary
-    .sprint-date <%- estimatedDateRange %>
+    .sprint-date {{::estimatedDateRange}}
     ul
         li
-            span.number <%- closedPoints %>
-            span.description closed
+            span.number {{::closedPoints}}
+            span.description(translate="BACKLOG.CLOSED_POINTS")
         li
-            span.number <%- totalPoints %>
-            span.description total
+            span.number {{::totalPoints}}
+            span.description(translate="BACKLOG.TOTAL_POINTS")
