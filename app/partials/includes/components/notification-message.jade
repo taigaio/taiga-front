@@ -12,19 +12,19 @@
 div.notification-message.notification-message-success
    div.icon.icon-notification-success
    div.text
-       h4.warning Everything is ok
-       p Our oompa Loompas saved all your changes!
-   a.icon.icon-delete(href="", title="Close notification")
+       h4.warning(translate="NOTIFICATION.OK")
+       p(translate="NOTIFICAION.SAVED")
+   a.icon.icon-delete(href="", title="{{'NOTIFICATION.CLOSE' | translate}}")
 
 div.notification-message.notification-message-error
     div.icon.icon-notification-error
     div.text
-        h4.warning Oops, something happened...
-        p Our oompa Loompas are sad, your changes were not saved!
-    a.icon.icon-delete(href="", title="Close notification")
+        h4.warning(translate="NOTIFICATION.WARNING")
+        p(translate="NOTIFICATION.WARNING_TEXT")
+    a.icon.icon-delete(href="", title="{{'NOTIFICATION.CLOSE' | translate}}")
 
 div.notification-light.notification-message-light-error
     div.text
-        h4.warning Oops, something happened...
-        p Our oompa Loompas are sad, your changes were not saved!
-    a.icon.icon-delete(href="", title="Close notification")
+        h4.warning(translate="NOTIFICATION.WARNING")
+        p(translate="NOTIFICATION.WARNING_TEXT")
+    a.icon.icon-delete(href="", title="{{'NOTIFICATION.CLOSE' | translate}}")

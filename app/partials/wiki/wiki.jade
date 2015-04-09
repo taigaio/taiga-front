@@ -1,3 +1,5 @@
+doctype html
+
 div.wrapper(ng-controller="WikiDetailController as ctrl",
             ng-init="section='wiki'")
     sidebar.menu-secondary.extrabar(tg-check-permission="view_wiki_links")
@@ -6,7 +8,7 @@ div.wrapper(ng-controller="WikiDetailController as ctrl",
         .header
             h1
                 span(tg-bo-bind="project.name")
-                span.green Wiki
+                span.green(translate="PROJECT.SECTION.WIKI")
                 span.wiki-title(tg-bo-bind='wikiSlug|unslugify')
 
         div.summary.wiki-summary(tg-wiki-summary, ng-model="wiki", ng-if="wiki.id")
@@ -14,6 +16,6 @@ div.wrapper(ng-controller="WikiDetailController as ctrl",
 
         tg-attachments(ng-model="wiki", type="wiki_page", ng-if="wiki.id")
 
-        a.remove(href="", ng-click="ctrl.delete()", ng-if="wiki.id", title="Remove this wiki page", tg-check-permission="delete_wiki_page")
+        a.remove(href="", ng-click="ctrl.delete()", ng-if="wiki.id", title="{{'WIKI.REMOVE' | translate}}", tg-check-permission="delete_wiki_page")
             span.icon.icon-delete
-            span Remove this wiki page
+            span(translate="WIKI.REMOVE")

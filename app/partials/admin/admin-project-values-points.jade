@@ -1,3 +1,5 @@
+doctype html
+
 div.wrapper(ng-controller="ProjectValuesSectionController")
     sidebar.menu-secondary.sidebar(tg-admin-navigation="project-values")
         include ../includes/modules/admin-menu
@@ -7,9 +9,9 @@ div.wrapper(ng-controller="ProjectValuesSectionController")
 
     section.main.admin-common.admin-attributes
         include ../includes/components/mainTitle
-        p.admin-subtitle Specify the points your user stories could be estimated to
+        p.admin-subtitle(translate="ADMIN.PROJECT_VALUES_POINTS.SUBTITLE")
 
         div.admin-attributes-section(tg-project-values, ng-controller="ProjectValuesController as ctrl",
-            ng-init="section='admin'; resource='userstories'; type='points'; sectionName='Us points'",
+            ng-init="section='admin'; resource='userstories'; type='points'; sectionName='ADMIN.PROJECT_VALUES_POINTS.TITLE'",
             type="points")
             include ../includes/modules/admin/project-points

@@ -1,7 +1,9 @@
+doctype html
+
 div.error-main
     div.error-container
         object.logo-svg(type="image/svg+xml", data="/svg/logo.svg")
             img(src="/images/logo.png", alt="TAIGA")
-        h1.logo Permission denied
-        p.error-text Error 403.
-        a(href="/", title="") Take me home
+        h1.logo(translate="ERROR.PERMISSION_DENIED")
+        p.error-text(translate="ERROR.PERMISSION_DENIED_CODE")
+        a(href="/", title="", translate="COMMON.GO_HOME")

@@ -1,15 +1,14 @@
 div.forgot-form-container(tg-forgot-password)
     p.forgot-text
-        strong
-            | Oops, did you forget your password?
+        strong(translate="FORGOT_PASSWORD_FORM.TITLE")
         br
-        | Enter your username or email to get a new one
+        strong(translate="FORGOT_PASSWORD_FORM.SUBTITLE")
 
     form(ng-submit="ctrl.submit()")
         fieldset
             input(type="text", name="username", ng-model="data.username", data-required="true",
-                  placeholder="Username or email")
+                  placeholder="{{'FORGOT_PASSWORD_FORM.PLACEHOLDER_FIELD' | translate}}")
         fieldset
-            button.button-gray.submit-button.button-forgot(type="submit", title="Reset Password") Reset Password
+            button.button-gray.submit-button.button-forgot(type="submit", title="{{'FORGOT_PASSWORD_FORM.ACTION_RESET_PASSWORD' | translate}}", translate="FORGOT_PASSWORD_FORM.ACTION_RESET_PASSWORD")
 
-        a(href="", title="Login", tg-nav="login") Nah, take me back. I think I remember it.
+        a(href="", tg-nav="login", translate="FORGOT_PASSWORD_FORM.LINK_CANCEL")

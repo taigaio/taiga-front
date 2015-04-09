@@ -1,15 +1,15 @@
 section.colors-table.admin-status-table
     div.project-values-title
-        h2(ng-bind="sectionName")
-        a.button.button-gray.show-add-new(href="", title="Add New")
-            span Add new status
+        h2 {{ sectionName | translate }}
+        a.button.button-gray.show-add-new(href="", title="{{'ADMIN.US_STATUS.ACTION_ADD_STATUS' | translate}}")
+            span(translate="ADMIN.US_STATUS.ACTION_ADD_STATUS")
 
     div.table-header
         div.row
-            div.color-column Color
-            div.status-name Name
-            div.status-slug Slug
-            div.is-closed-column Is closed?
+            div.color-column(translate="COMMON.FIELDS.COLOR")
+            div.status-name(translate="COMMON.FIELDS.NAME")
+            div.status-slug(translate="COMMON.FIELDS.SLUG")
+            div.is-closed-column(translate="COMMON.FIELDS.IS_CLOSED")
             div.options-column
 
     div.table-main
@@ -30,8 +30,8 @@ section.colors-table.admin-status-table
                         div.icon.icon-check-square(ng-show="value.is_closed")
 
                     div.options-column
-                        a.edit-value.icon.icon-edit(href="", title="Edit value")
-                        a.delete-value.icon.icon-delete(href="", title="Delete value")
+                        a.edit-value.icon.icon-edit(href="", title="{{'ADMIN.COMMON.TITLE_ACTION_EDIT_VALUE' | translate}}")
+                        a.delete-value.icon.icon-delete(href="", title="{{'ADMIN.COMMON.TITLE_ACTION_DELETE_VALUE' | translate}}")
 
                 div.row.table-main.edition.hidden
                     div.color-column(tg-color-selection, ng-model="value")
@@ -39,16 +39,16 @@ section.colors-table.admin-status-table
                         include ../../components/select-color
 
                     div.status-name
-                        input(name="name", type="text", placeholder="Write a name for the new status",
+                        input(name="name", type="text", placeholder="{{'ADMIN.STATUS.PLACEHOLDER_WRITE_STATUS_NAME' | translate}}",
                               ng-model="value.name", data-required="true", data-maxlength="255")
 
                     div.is-closed-column
                         select(name="is_closed", ng-model="value.is_closed", data-required="true",
-                               ng-options="e.id as e.name for e in [{'id':true, 'name':'Yes'},{'id':false, 'name': 'No'}]")
+                               ng-options="e.id as e.name | translate for e in [{'id':true, 'name':'COMMON.YES'},{'id':false, 'name': 'COMMON.NO'}]")
 
                     div.options-column
-                        a.save.icon.icon-floppy(href="", title="Save changes")
-                        a.cancel.icon.icon-delete(href="", title="Cancel")
+                        a.save.icon.icon-floppy(href="", title="{{'COMMON.SAVE' | translate}}")
+                        a.cancel.icon.icon-delete(href="", title="{{'COMMON.CANCEL' | translate}}")
 
         form
             div.row.table-main.new-value.hidden
@@ -57,13 +57,13 @@ section.colors-table.admin-status-table
                     include ../../components/select-color
 
                 div.status-name
-                    input(name="name", type="text", placeholder="Write a name for the new status",
+                    input(name="name", type="text", placeholder="{{'ADMIN.STATUS.PLACEHOLDER_WRITE_STATUS_NAME' | translate}}",
                           ng-model="newValue.name", data-required="true", data-maxlength="255")
 
                 div.is-closed-column
                     select(name="is_closed", ng-model="newValue.is_closed", data-required="true",
-                           ng-options="e.id as e.name for e in [{'id':true, 'name':'Yes'},{'id':false, 'name': 'No'}]")
+                           ng-options="e.id as e.name | translate for e in [{'id':true, 'name': 'COMMON.YES'},{'id':false, 'name': 'COMMON.NO'}]")
 
                 div.options-column
-                    a.add-new.icon.icon-floppy(href="", title="Add")
-                    a.delete-new.icon.icon-delete(href="", title="Cancel")
+                    a.add-new.icon.icon-floppy(href="", title="{{'COMMON.ADD' | translate}}")
+                    a.delete-new.icon.icon-delete(href="", title="{{'COMMON.CANCEL' | translate}}")

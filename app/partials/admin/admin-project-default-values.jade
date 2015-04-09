@@ -1,5 +1,7 @@
+doctype html
+
 div.wrapper(tg-project-default-values, ng-controller="ProjectProfileController as ctrl",
-            ng-init="section='admin'; sectionName='Default values'")
+            ng-init="section='admin'; sectionName='ADMIN.PROJECT_DEFAULT_VALUES.TITLE'")
     sidebar.menu-secondary.sidebar(tg-admin-navigation="project-profile")
         include ../includes/modules/admin-menu
 
@@ -9,7 +11,6 @@ div.wrapper(tg-project-default-values, ng-controller="ProjectProfileController a
     section.main.admin-common
         header
             include ../includes/components/mainTitle
-
-        p.total Default Values
+            p.admin-subtitle(translate="ADMIN.PROJECT_DEFAULT_VALUES.SUBTITLE")
 
         include ../includes/modules/admin/default-values

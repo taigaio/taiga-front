@@ -100,7 +100,7 @@
             margin-top: .5rem;
             a {
                 border-left: 1px solid $gray-light;
-                padding: 0 .2rem;                
+                padding: 0 .2rem;
             }
             a:hover {
                 color: $green-taiga;
@@ -357,6 +357,7 @@
     .level-name {
         color: darken($whitish, 20%);
         float: right;
+        text-transform: lowercase;
     }
 }
 

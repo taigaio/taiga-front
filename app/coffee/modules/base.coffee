@@ -23,7 +23,7 @@ taiga = @.taiga
 groupBy = @.taiga.groupBy
 bindOnce = @.taiga.bindOnce
 
-module = angular.module("taigaBase", ["taigaLocales"])
+module = angular.module("taigaBase", [])
 
 #############################################################################
 ## Main Directive

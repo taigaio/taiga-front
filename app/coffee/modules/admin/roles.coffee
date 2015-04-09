@@ -44,20 +44,22 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
         "$q",
         "$tgLocation",
         "$tgNavUrls",
-        "$appTitle"
+        "$appTitle",
+        "$translate"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls, @appTitle) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls, @appTitle, @translate) ->
         bindMethods(@)
 
-        @scope.sectionName = "Permissions" #i18n
+        @scope.sectionName = "ADMIN.MENU.PERMISSIONS"
         @scope.project = {}
         @scope.anyComputableRole = true
 
         promise = @.loadInitialData()
 
         promise.then () =>
-            @appTitle.set("Roles - " + @scope.project.name)
+            title = @translate.instant("ADMIN.ROLES.SECTION_NAME", {projectName: @scope.project.name})
+            @appTitle.set(title)
 
         promise.then null, @.onInitialDataError.bind(@)
 
@@ -65,7 +67,7 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
         return @rs.projects.get(@scope.projectId).then (project) =>
             if not project.i_am_owner
                 @location.path(@navUrls.resolve("permission-denied"))
-                
+
             @scope.project = project
 
             @scope.$emit('project:loaded', project)
@@ -112,11 +114,7 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
         @scope.$broadcast("role:changed", @scope.role)
 
     delete: ->
-        # TODO: i18n
-        title = "Delete Role" # TODO: i18n
         subtitle = @scope.role.name
-        replacement = "All the users with this role will be moved to" # TODO: i18n
-        warning = "<strong>Be careful, all role estimations will be removed</strong>" # TODO: i18n
 
         choices = {}
         for role in @scope.roles
@@ -124,9 +122,9 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
                 choices[role.id] = role.name
 
         if _.keys(choices).length == 0
-            return @confirm.error("You can't delete all values.") # TODO: i18n
+            return @confirm.error(@translate.instant("ADMIN.ROLES.ERROR_DELETE_ALL"))
 
-        return @confirm.askChoice(title, subtitle, choices, replacement, warning).then (response) =>
+        return @confirm.askChoice(@translate.instant("ADMIN.ROLES.TITLE_DELETE_ROLE"), subtitle, choices, @translate.instant("ADMIN.ROLES.REPLACEMENT_ROLE"), @translate.instant("ADMIN.ROLES.WARNING_DELETE_ROLE")).then (response) =>
             promise = @repo.remove(@scope.role, {moveTo: response.selected})
             promise.then =>
                 @.loadProject()

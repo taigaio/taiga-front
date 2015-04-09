@@ -121,7 +121,7 @@ CustomAttributesValuesDirective = ($templates, $storage) ->
 module.directive("tgCustomAttributesValues", ["$tgTemplate", "$tgStorage", CustomAttributesValuesDirective])
 
 
-CustomAttributeValueDirective = ($template, $selectedText) ->
+CustomAttributeValueDirective = ($template, $selectedText, $compile) ->
     template = $template.get("custom-attributes/custom-attribute-value.html", true)
     templateEdit = $template.get("custom-attributes/custom-attribute-value-edit.html", true)
 
@@ -139,8 +139,10 @@ CustomAttributeValueDirective = ($template, $selectedText) ->
 
             if editable and (edit or not value)
                 html = templateEdit(ctx)
+                html = $compile(html)($scope)
             else
                 html = template(ctx)
+                html = $compile(html)($scope)
 
             $el.html(html)
 
@@ -195,4 +197,4 @@ CustomAttributeValueDirective = ($template, $selectedText) ->
         restrict: "AE"
     }
 
-module.directive("tgCustomAttributeValue", ["$tgTemplate", "$selectedText", CustomAttributeValueDirective])
+module.directive("tgCustomAttributeValue", ["$tgTemplate", "$selectedText", "$compile", CustomAttributeValueDirective])

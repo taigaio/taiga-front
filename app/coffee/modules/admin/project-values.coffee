@@ -46,16 +46,24 @@ class ProjectValuesSectionController extends mixOf(taiga.Controller, taiga.PageM
         "$q",
         "$tgLocation",
         "$tgNavUrls",
-        "$appTitle"
+        "$appTitle",
+        "$translate"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls, @appTitle) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls, @appTitle, @translate) ->
         @scope.project = {}
 
         promise = @.loadInitialData()
 
         promise.then () =>
-            @appTitle.set("Project values - " + @scope.sectionName + " - " + @scope.project.name)
+            sectionName = @translate.instant(@scope.sectionName)
+
+            title = @translate.instant("ADMIN.PROJECT_VALUES.APP_TITLE", {
+                "sectionName": sectionName,
+                "projectName": @scope.project.name
+            })
+
+            @appTitle.set(title)
 
         promise.then null, @.onInitialDataError.bind(@)
 
@@ -275,14 +283,12 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame) ->
                 if value.id != option.id
                     choices[option.id] = option.name
 
-            #TODO: i18n
-            title = "Delete value"
             subtitle = value.name
-            replacement = "All items with this value will be changed to"
-            if _.keys(choices).length == 0
-                return $confirm.error("You can't delete all values.")
 
-            return $confirm.askChoice(title, subtitle, choices, replacement).then (response) ->
+            if _.keys(choices).length == 0
+                return $confirm.error("ADMIN.PROJECT_VALUES.ERROR_DELETE_ALL")
+
+            $confirm.askChoice("PROJECT.TITLE_ACTION_DELETE_VALUE", subtitle, choices, "ADMIN.PROJECT_VALUES.REPLACEMENT").then (response) ->
                 onSucces = ->
                     $ctrl.loadValues().finally ->
                         response.finish()
@@ -299,8 +305,7 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame) ->
 
     return {link:link}
 
-module.directive("tgProjectValues", ["$log", "$tgRepo", "$tgConfirm", "$tgLocation", "animationFrame",
-                                     ProjectValuesDirective])
+module.directive("tgProjectValues", ["$log", "$tgRepo", "$tgConfirm", "$tgLocation", "animationFrame", ProjectValuesDirective])
 
 
 #############################################################################
@@ -601,11 +606,9 @@ ProjectCustomAttributesDirective = ($log, $confirm, animationFrame) ->
 
         deleteCustomAttribute = (formEl) ->
             attr = formEl.scope().attr
-
-            title = "Delete custom attribute" # i18n
-            subtitle = "Remeber that all values in this custom field will be deleted.</br> Are you sure you want to continue?"
             message = attr.name
-            $confirm.ask(title, subtitle, message).then (finish) ->
+
+            $confirm.ask("COMMON.CUSTOM_ATTRIBUTES.DELETE", "COMMON.CUSTOM_ATTRIBUTES.CONFIRM_DELETE", message).then (finish) ->
                 onSucces = ->
                     $ctrl.loadCustomAttributes().finally ->
                         finish()

@@ -49,11 +49,12 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$appTitle",
         "$tgNavUrls",
         "$tgAnalytics",
-        "tgLoader"
+        "tgLoader",
+        "$translate"
     ]
 
     constructor: (@scope, @rootscope, @repo, @model, @confirm, @rs, @params, @q, @location,
-                  @filter, @log, @appTitle, @navUrls, @analytics, tgLoader) ->
+                  @filter, @log, @appTitle, @navUrls, @analytics, tgLoader, @translate) ->
         @scope.projectSlug = @params.pslug
         @scope.wikiSlug = @params.slug
         @scope.sectionName = "Wiki"
@@ -111,8 +112,7 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             @q.all([@.loadWikiLinks(), @.loadWiki()])
 
     delete: ->
-        # TODO: i18n
-        title = "Delete Wiki Page"
+        title = @translate.instant("WIKI.DELETE_LIGHTBOX_TITLE")
         message = unslugify(@scope.wiki.slug)
 
         @confirm.askOnDelete(title, message).then (finish) =>
@@ -135,7 +135,7 @@ module.controller("WikiDetailController", WikiDetailController)
 ## Wiki Summary Directive
 #############################################################################
 
-WikiSummaryDirective = ($log, $template) ->
+WikiSummaryDirective = ($log, $template, $compile) ->
     template = $template.get("wiki/wiki-summary.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
@@ -156,6 +156,7 @@ WikiSummaryDirective = ($log, $template) ->
                 user: user
             }
             html = template(ctx)
+            html = $compile(html)($scope)
             $el.html(html)
 
         $scope.$watch $attrs.ngModel, (wikiPage) ->
@@ -171,7 +172,7 @@ WikiSummaryDirective = ($log, $template) ->
         require: "ngModel"
     }
 
-module.directive("tgWikiSummary", ["$log", "$tgTemplate", WikiSummaryDirective])
+module.directive("tgWikiSummary", ["$log", "$tgTemplate", "$compile", WikiSummaryDirective])
 
 
 #############################################################################

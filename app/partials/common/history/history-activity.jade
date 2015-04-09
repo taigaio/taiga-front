@@ -12,8 +12,7 @@ div(class!="activity-single <%- mode %>")
         <% if (comment.length > 0) { %>
         <% if ((deleteCommentDate || deleteCommentUser)) { %>
         .deleted-comment
-            span
-                | Comment deleted by <%- deleteCommentUser %> on <%- deleteCommentDate %>
+            span(translate="COMMENTS.DELETED_INFO", translate-values!="{ deleteCommentUser: '<%- deleteCommentUser %>', deleteCommentDate: '<% deleteCommentDate %>'}")
         <% } %>
         .comment.wysiwyg
             | <%= comment %>
@@ -25,7 +24,7 @@ div(class!="activity-single <%- mode %>")
         <% if(changes.length > 0) { %>
         .changes
             <% if (mode != "activity") { %>
-            a.changes-title(href="", title="Show activity")
+            a.changes-title(href="", title="{{'ACTIVITY.SHOW_ACTIVITY' | translate}}")
                 span <%- changesText %>
                 span.icon.icon-arrow-up
             <% } %>

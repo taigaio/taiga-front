@@ -1,11 +1,11 @@
 section.team-filters
     div.team-filters-inner
         header
-            h1 filters
+            h1(translate="COMMON.FILTERS.TITLE")
 
         form.search-in
             fieldset
-                input(type="text", placeholder="Search by username or role...", ng-model="filtersQ")
-                a.icon.icon-search(href="", title="search")
+                input(type="text", placeholder="{{'TEAM.PLACEHOLDER_INPUT_SEARCH' | translate}}", ng-model="filtersQ")
+                a.icon.icon-search(href="", title="{{'COMMON.FILTERS.TITLE_ACTION_FILTER_BUTTON' | translate}}")
 
         nav(tg-team-filters)

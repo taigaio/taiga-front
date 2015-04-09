@@ -2,7 +2,7 @@ ul(class="paginator")
     <% if (showPrevious) { %>
     li(class="previous")
         a(href="", class="previous next_prev_button", class="disabled")
-            span(i18next="pagination.prev") Prev
+            span(translate="PAGINATION.PREVIOUS")
     <% } %>
     <% _.each(pages, function(item) { %>
     li(class!="<%- item.classes %>")
@@ -18,5 +18,5 @@ ul(class="paginator")
     <% if (showNext) { %>
     li(class="next")
         a(href="", class="next next_prev_button", class="disabled")
-            span(i18next="pagination.next") Next
+            span(translate="PAGINATION.NEXT")
     <% } %>

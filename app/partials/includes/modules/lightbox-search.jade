@@ -1,8 +1,8 @@
-a.close(href="", title="close")
+a.close(href="", title="{{'COMMON.CLOSE' | translate}}")
     span.icon.icon-delete
 form
-    h2.title Search
+    h2.title(translate="LIGHTBOX.SEARCH.TITLE")
     fieldset
-        input(type="text", name="text", id="search-text", placeholder="What are you looking for?", data-required="true")
+        input(type="text", name="text", id="search-text", placeholder="{{'LIGHTBOX.SEARCH.PLACEHOLDER_SEARCH' | translate}}", data-required="true")
     fieldset
-        button.button-green.submit-button(type="submit", title="Search") Search
+        button.button-green.submit-button(type="submit", title="{{' LIGHTBOX.SEARCH.TITLE' | translate}}", translate="LIGHTBOX.SEARCH.TITLE")

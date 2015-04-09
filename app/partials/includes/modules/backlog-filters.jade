@@ -1,29 +1,29 @@
 section.filters
     div.filters-inner
         h1
-            span.title filters
+            span.title(translate="COMMON.FILTERS.TITLE")
 
         form
             fieldset
-                input(type="text", placeholder="Subject or reference", ng-model="filtersQ")
-                a.icon.icon-search(href="", title="search")
+                input(type="text", placeholder="{{'COMMON.FILTERS.INPUT_PLACEHOLDER' | translate}}", ng-model="filtersQ")
+                a.icon.icon-search(href="", title="{{'COMMON.FILTERS.TITLE_ACTION_FILTER_BUTTON' | translate}}")
 
         div.filters-step-cat
             div.filters-applied
             h2.hidden.breadcrumb
-                a.back(href="", title="back to categories") Filters
+                a.back(href="", title="{{'COMMON.FILTERS.BREADCRUMB_TITLE' | translate}}", translate="BACKLOG.FILTERS.TITLE")
                 span.icon-arrow-right
-                a.subfilter(href="", title="cat-name")
-                    span.title status
+                a.subfilter(href="")
+                    span.title(translate="COMMON.FILTERS.BREADCRUMB_STATUS")
             div.filters-cats
                 ul
                     li
-                        a(href="", title="Status", data-type="statuses")
-                            span.title Status
+                        a(href="", title="{{'BACKLOG.FILTERS.FILTER_CATEGORY_STATUS' | translate}}", data-type="statuses")
+                            span.title(translate="BACKLOG.FILTERS.FILTER_CATEGORY_STATUS")
                             span.icon.icon-arrow-right
                     li
-                        a(href="", title="Tags", data-type="tags")
-                            span.title Tags
+                        a(href="", title="{{'BACKLOG.FILTERS.FILTER_CATEGORY_TAGS' | translate}}", data-type="tags")
+                            span.title(translate="BACKLOG.FILTERS.FILTER_CATEGORY_TAGS")
                             span.icon.icon-arrow-right
 
         div.filter-list.hidden

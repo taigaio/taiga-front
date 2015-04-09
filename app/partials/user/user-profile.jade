@@ -1,3 +1,5 @@
+doctype html
+
 div.wrapper(tg-user-profile, ng-controller="UserSettingsController as ctrl",
             ng-init="section='user-settings'")
     sidebar.menu-secondary.sidebar(tg-user-settings-navigation="user-profile")
@@ -6,7 +8,7 @@ div.wrapper(tg-user-profile, ng-controller="UserSettingsController as ctrl",
     section.main.user-profile
         header
             h1
-                span.green(tg-bo-html="sectionName")
+                span.green {{sectionName | translate}}
 
         form
             div.container
@@ -15,42 +17,47 @@ div.wrapper(tg-user-profile, ng-controller="UserSettingsController as ctrl",
                         .image-container
                             img.avatar(ng-src="{{user.big_photo}}" alt="avatar")
                             .overlay.hidden
-                                img.loading-spinner(src="/svg/spinner-circle.svg", alt="loading...")
+                                img.loading-spinner(src="/svg/spinner-circle.svg", alt="{{'COMMON.LOADING' | translate}}")
                         input(type="file", id="avatar-field", class="hidden",
                             tg-avatar-model="avatarAttachment")
-                        p The image will be cropped to 80x80px.<br>
+                        p(translate="USER_PROFILE.IMAGE_HELP")
                             span.size-info.hidden(tg-bo-html="maxFileSizeMsg")
-                        a.button-green.change.js-change-avatar(tg-bo-title="'Change photo. ' + maxFileSizeMsg") Change
-                        a.use-gravatar Use gravatar image
+                        a.button-green.change.js-change-avatar(title="{{'USER_PROFILE.CHANGE_PHOTO'}} + ' ' + maxFileSizeMsg", translate="USER_PROFILE.ACTION_CHANGE_IMAGE")
+                        a.use-gravatar(translate="USER_PROFILE.ACTION_USE_GRAVATAR")
 
                 div.data
                     fieldset
-                        label(for="email") Username
-                        input(type="text", name="username", id="username", placeholder="username",
+                        label(for="email", translate"USER_PROFILE.FIELD.USERNAME")
+                        input(type="text", name="username", id="username", placeholder="{{'USER_PROFILE.FIELD.USERNAME' | translate}}",
                             ng-model="user.username", data-required="true", data-maxlength="255",
                             data-regexp="^[\\w.-]+$")
 
                     fieldset
-                        label(for="email") Email
-                        input(type="text", name="email", id="email", placeholder="email",
+                        label(for="email", translate="USER_PROFILE.FIELD.EMAIL")
+                        input(type="text", name="email", id="email", placeholder="{{'USER_PROFILE.FIELD.EMAIL' | translate}}",
                               ng-model="user.email", data-type="email", data-required="true",
                               data-maxlength="255")
 
                     fieldset
-                        label(for="full-name") Full name
+                        label(for="full-name", translate="USER_PROFILE.FIELD.FULL_NAME")
                         input(type="text", name="full_name", id="full-name",
-                              placeholder="Set your full name (ex. Íñigo Montoya)",
+                              placeholder="{{'USER_PROFILE.FIELD.PLACEHOLDER_FULL_NAME' | translate}}",
                               ng-model="user.full_name", data-required="true",
                               data-maxlength="256")
 
                     fieldset
-                        label(for="bio") Bio
-                        textarea(name="bio", id="bio", placeholder="Tell us something about you",
+                        label(for="full-name", translate="USER_PROFILE.FIELD.LANGUAGE")
+                        select(data-required="true", ng-model="lang")
+                            option(value="en", translate="LANGUAGES.ENGLISH")
+
+                    fieldset
+                        label(for="bio", translate="USER_PROFILE.FIELD.BIO")
+                        textarea(name="bio", id="bio", placeholder="{{'USER_PROFILE.FIELD.PLACEHOLDER_BIO' | translate}}",
                                  ng-model="user.bio")
 
             fieldset.submit
-                button.button-green.submit-button(type="submit", title="Save") Save
-                a.delete-account(href="", title="Delete Taiga account",
-                                 ng-click="ctrl.openDeleteLightbox()") Delete Taiga account
+                button.button-green.submit-button(type="submit", title="{{'COMMON.SAVE' | translate}}", translate="COMMON.SAVE")
+                a.delete-account(href="", title="{{'USER_PROFILE.ACTION_DELETE_ACCOUNT' | translate}}",
+                                 ng-click="ctrl.openDeleteLightbox()", translate="USER_PROFILE.ACTION_DELETE_ACCOUNT")
 
 div.lightbox.lightbox-delete-account(tg-lb-delete-user)

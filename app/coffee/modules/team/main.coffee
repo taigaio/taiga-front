@@ -41,18 +41,19 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$tgNavUrls",
         "$appTitle",
         "$tgAuth",
-        "tgLoader"
+        "tgLoader",
+        "$translate"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @rs, @params, @q, @location, @navUrls, @appTitle, @auth, tgLoader) ->
-        @scope.sectionName = "Team"
+    constructor: (@scope, @rootscope, @repo, @rs, @params, @q, @location, @navUrls, @appTitle, @auth, tgLoader, @translate) ->
+        @scope.sectionName = "TEAM.SECTION_NAME"
 
         promise = @.loadInitialData()
 
         # On Success
         promise.then =>
-            #TODO: i18n
-            @appTitle.set("Team - " + @scope.project.name)
+            text = @translate.instant("TEAM.APP_TITLE", {"projectName": @scope.project.name})
+            @appTitle.set(text)
 
         # On Error
         promise.then null, @.onInitialDataError.bind(@)
@@ -211,11 +212,13 @@ module.directive("tgTeamMembers", TeamMembersDirective)
 ## Leave project Directive
 #############################################################################
 
-LeaveProjectDirective = ($repo, $confirm, $location, $rs, $navurls) ->
+LeaveProjectDirective = ($repo, $confirm, $location, $rs, $navurls, $translate) ->
     link = ($scope, $el, $attrs) ->
         $scope.leave = () ->
-            #TODO: i18n
-            $confirm.ask("Leave this project", "Are you sure you want to leave the project?").then (finish) =>
+            leave_project_text = $translate.instant("TEAM.ACTION_LEAVE_PROJECT")
+            confirm_leave_project_text = $translate.instant("TEAM.CONFIRM_LEAVE_PROJECT")
+
+            $confirm.ask(leave_project_text, confirm_leave_project_text).then (finish) =>
                 promise = $rs.projects.leave($attrs.projectid)
 
                 promise.then =>

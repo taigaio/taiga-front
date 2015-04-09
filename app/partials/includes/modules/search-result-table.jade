@@ -4,9 +4,9 @@ script(type="text/ng-template", id="search-issues")
     div.search-result-table-container(ng-class="{'hidden': !issues.length}", tg-bind-scope)
         div.search-result-table-header
             div.row.title
-                div.user-stories Issues
-                div.status Status
-                div.assigned-to Assigned to
+                div.user-stories(translate="SEARCH.FILTER_ISSUES")
+                div.status(translate="COMMON.FIELDS.STATUS")
+                div.assigned-to(translate="COMMON.FIELDS.ASSIGNED_TO")
         div.search-result-table-body
             div.row.table-main(ng-repeat="issue in issues track by issue.id")
                 div.user-stories
@@ -18,17 +18,17 @@ script(type="text/ng-template", id="search-issues")
 
     div.empty.empty-search-results(ng-class="{'hidden': issues.length}")
                 span.icon.icon-issues
-                span.title It looks like nothing was found with your search criteria.
-                span Maybe try one of the tabs above or search again
+                span.title(translate="SEARCH.EMPTY_TITLE")
+                span(translate="SEARCH.EMPTY_DESCRIPTION")
 
 
 script(type="text/ng-template", id="search-userstories")
     div.search-result-table-container(ng-class="{'hidden': !userstories.length}", tg-bind-scope)
         div.search-result-table-header
             div.row.title
-                div.user-stories User Stories
-                div.status Status
-                div.points Points
+                div.user-stories(translate="SEARCH.FILTER_USER_STORIES")
+                div.status(translate="COMMON.FIELDS.STATUS")
+                div.points(translate="COMMON.FIELDS.POINTS")
         div.search-result-table-body
             div.row.table-main(ng-repeat="us in userstories track by us.id")
                 div.user-stories
@@ -40,16 +40,16 @@ script(type="text/ng-template", id="search-userstories")
 
     div.empty.empty-search-results(ng-class="{'hidden': userstories.length}")
                 span.icon.icon-issues
-                span.title It looks like nothing was found with your search criteria.
-                span Maybe try one of the tabs above or search again
+                span.title(translate="SEARCH.EMPTY_TITLE")
+                span(translate="SEARCH.EMPTY_DESCRIPTION")
 
 script(type="text/ng-template", id="search-tasks")
     div.search-result-table-container(ng-class="{'hidden': !tasks.length}", tg-bind-scope)
         div.search-result-table-header
             div.row.title
-                div.user-stories Task
-                div.status Status
-                div.assigned-to Assigned to
+                div.user-stories(translate="SEARCH.FILTER_TASKS")
+                div.status(translate="COMMON.FIELDS.STATUS")
+                div.assigned-to(translate="COMMON.FIELDS.ASSIGNED_TO")
         div.search-result-table-body
             div.row.table-main(ng-repeat="task in tasks track by task.id")
                 div.user-stories
@@ -61,14 +61,14 @@ script(type="text/ng-template", id="search-tasks")
 
     div.empty.empty-search-results(ng-class="{'hidden': tasks.length}")
                 span.icon.icon-issues
-                span.title It looks like nothing was found with your search criteria.
-                span Maybe try one of the tabs above or search again
+                span.title(translate="SEARCH.EMPTY_TITLE")
+                span(translate="SEARCH.EMPTY_DESCRIPTION")
 
 script(type="text/ng-template", id="search-wikipages")
     div.search-result-table-container(ng-class="{'hidden': !wikipages.length}", tg-bind-scope)
         div.search-result-table-header
             div.row.title
-                div.user-stories Wiki page
+                div.user-stories(translate="SEARCH.FILTER_WIKI")
         div.search-result-table-body
             div.row.table-main(ng-repeat="wikipage in wikipages track by wikipage.id")
                 div.user-stories
@@ -78,5 +78,5 @@ script(type="text/ng-template", id="search-wikipages")
 
     div.empty.empty-search-results(ng-class="{'hidden': wikipages.length}")
                 span.icon.icon-issues
-                span.title It looks like nothing was found with your search criteria.
-                span Maybe try one of the tabs above or search again
+                span.title(translate="SEARCH.EMPTY_TITLE")
+                span(translate="SEARCH.EMPTY_DESCRIPTION")

@@ -42,11 +42,12 @@ class UserChangePasswordController extends mixOf(taiga.Controller, taiga.PageMix
         "$q",
         "$tgLocation",
         "$tgNavUrls",
-        "$tgAuth"
+        "$tgAuth",
+        "$translate"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls, @auth) ->
-        @scope.sectionName = "Change Password" #i18n
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls, @auth, @translate) ->
+        @scope.sectionName = @translate.instant("CHANGE_PASSWORD.SECTION_NAME")
         @scope.project = {}
         @scope.user = @auth.getUser()
 
@@ -74,13 +75,13 @@ module.controller("UserChangePasswordController", UserChangePasswordController)
 ## User ChangePassword Directive
 #############################################################################
 
-UserChangePasswordDirective = ($rs, $confirm, $loading) ->
+UserChangePasswordDirective = ($rs, $confirm, $loading, $translate) ->
     link = ($scope, $el, $attrs, ctrl) ->
         submit = debounce 2000, (event) =>
             event.preventDefault()
 
             if $scope.newPassword1 != $scope.newPassword2
-                $confirm.notify('error', "The passwords dosn't match")
+                $confirm.notify('error', $translate.instant("CHANGE_PASSWORD.ERROR_PASSWORD_MATCH"))
                 return
 
             $loading.start(submitButton)
