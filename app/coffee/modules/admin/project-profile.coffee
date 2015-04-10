@@ -241,18 +241,18 @@ ProjectExportDirective = ($window, $rs, $confirm, $translate) ->
 
         loading_title = $translate.instant("ADMIN.PROJECT_EXPORT.LOADING_TITLE")
         loading_msg = $translate.instant("ADMIN.PROJECT_EXPORT.LOADING_MESSAGE")
-        dump_ready_text = -> resultTitleEl.html("ADMIN.PROJECT_EXPORT.DUMP_READY")
-        asyn_message = -> resultTitleEl.html("ADMIN.PROJECT_EXPORT.ASYN_MESSAGE")
-        syn_message = -> resultTitleEl.html("ADMIN.PROJECT_EXPORT.SYNC_MESSAGE", {url: url})
+        dump_ready_text = -> resultTitleEl.html($translate.instant("ADMIN.PROJECT_EXPORT.DUMP_READY"))
+        asyn_message = -> resultTitleEl.html($translate.instant("ADMIN.PROJECT_EXPORT.ASYN_MESSAGE"))
+        syn_message = (url) -> resultTitleEl.html($translate.instant("ADMIN.PROJECT_EXPORT.SYNC_MESSAGE", {url: url}))
 
-        setLoadingTitle = -> resultTitleEl.html(loading_text)
-        setAsyncTitle = -> resultTitleEl.html(loading_text)
+        setLoadingTitle = -> resultTitleEl.html(loading_title)
+        setAsyncTitle = -> resultTitleEl.html(loading_msg)
         setSyncTitle = -> resultTitleEl.html(dump_ready_text)
 
         resultMessageEl = $el.find(".result-message ")
         setLoadingMessage = -> resultMessageEl.html(loading_msg)
         setAsyncMessage = -> resultMessageEl.html(asyn_message)
-        setSyncMessage = (url) -> resultMessageEl.html(syn_message)
+        setSyncMessage = (url) -> resultMessageEl.html(syn_message(url))
 
         showLoadingMode = ->
             showSpinner()
@@ -290,12 +290,12 @@ ProjectExportDirective = ($window, $rs, $confirm, $translate) ->
             onError = (result) =>
                 showErrorMode()
 
-                errorMsg = $translate.instant("ADMIN.PROJECT_PROFILE.ERROR")
+                errorMsg = $translate.instant("ADMIN.PROJECT_EXPORT.ERROR")
 
                 if result.status == 429  # TOO MANY REQUESTS
-                    errorMsg = $translate.instant("ADMIN.PROJECT_PROFILE.ERROR_BUSY")
+                    errorMsg = $translate.instant("ADMIN.PROJECT_EXPORT.ERROR_BUSY")
                 else if result.data?._error_message
-                    errorMsg = $translate.instant("ADMIN.PROJECT_PROFILE.ERROR_BUSY", {message: result.data._error_message})
+                    errorMsg = $translate.instant("ADMIN.PROJECT_EXPORT.ERROR_BUSY", {message: result.data._error_message})
 
                 $confirm.notify("error", errorMsg)
 
