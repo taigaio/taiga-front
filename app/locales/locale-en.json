@@ -42,7 +42,7 @@
         },
         "DESCRIPTION": {
             "EMPTY": "Empty space is so boring... go on be descriptive... A rose by any other name would smell as sweet...",
-            "MARKDOWN_HELP": "Markown syntax help",
+            "MARKDOWN_HELP": "Markdown syntax help",
             "NO_DESCRIPTION": "No description yet"
         },
         "FIELDS": {
