@@ -956,16 +956,16 @@ tgBacklogGraphDirective = ($translate) ->
             tooltipOpts: {
                 content: (label, xval, yval, flotItem) ->
                     if flotItem.seriesIndex == 1
-                        return $translate.instant("BACKLOG.OPTIMA", {xval: xval, yval: yval})
+                        return $translate.instant("BACKLOG.CHART.OPTIMAL", {xval: xval, yval: yval})
 
                     else if flotItem.seriesIndex == 2
-                        return $translate.instant("BACKLOG.REAL", {xval: xval, yval: yval})
+                        return $translate.instant("BACKLOG.CHART.REAL", {xval: xval, yval: yval})
 
                     else if flotItem.seriesIndex == 3
-                        return $translate.instant("BACKLOG.INCREMENT_TEAM", {xval: xval, yval: Math.abs(yval)})
+                        return $translate.instant("BACKLOG.CHART.INCREMENT_TEAM", {xval: xval, yval: Math.abs(yval)})
 
                     else
-                        return $translate.instant("BACKLOG.INCREMENT_CLIENT", {xval: xval, yval: Math.abs(yval)})
+                        return $translate.instant("BACKLOG.CHART.INCREMENT_CLIENT", {xval: xval, yval: Math.abs(yval)})
             }
         }
 
