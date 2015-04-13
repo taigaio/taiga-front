@@ -148,7 +148,7 @@
             "SYNC_MESSAGE": "If the download doesn't start automatically click <a href='{{url}}' download title='Download the dump file'>here.",
             "ERROR": "Our oompa loompas have some problems generating your dump. Please try it again.",
             "ERROR_BUSY": "Sorry, our oompa loompas are very busy right now. Please try again in a few minutes.",
-            "ERROR_MESSAGE": "Our oompa loompas have some problems generasting your dump: {{message}}"
+            "ERROR_MESSAGE": "Our oompa loompas have some problems generating your dump: {{message}}"
         },
         "MODULES": {
             "TITLE": "Modules",
