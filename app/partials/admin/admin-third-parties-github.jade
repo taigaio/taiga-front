@@ -2,6 +2,7 @@ doctype html
 
 div.wrapper.roles(tg-github-webhooks, ng-controller="GithubController as ctrl",
                         ng-init="section='admin'")
+    nav.menu.hidden(tg-project-menu)
     sidebar.menu-secondary.sidebar(tg-admin-navigation="third-parties")
         include ../includes/modules/admin-menu
     sidebar.menu-tertiary.sidebar(tg-admin-navigation="third-parties-github")

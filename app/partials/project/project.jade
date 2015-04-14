@@ -1,6 +1,7 @@
 doctype html
 
 div.wrapper(ng-controller="ProjectController as ctrl")
+    nav.menu.hidden(tg-project-menu)
     section.main.single-project
         h1
             span.green(tg-bo-bind="project.name", class="project-name")

@@ -1,6 +1,7 @@
 doctype html
 
 div.wrapper.roles(ng-init="section='admin'", ng-controller="ContribController as ctrl")
+    nav.menu.hidden(tg-project-menu)
     sidebar.menu-secondary.sidebar(tg-admin-navigation="contrib")
         include ../includes/modules/admin-menu
 

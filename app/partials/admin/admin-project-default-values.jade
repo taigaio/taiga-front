@@ -2,6 +2,7 @@ doctype html
 
 div.wrapper(tg-project-default-values, ng-controller="ProjectProfileController as ctrl",
             ng-init="section='admin'; sectionName='ADMIN.PROJECT_DEFAULT_VALUES.TITLE'")
+    nav.menu.hidden(tg-project-menu)
     sidebar.menu-secondary.sidebar(tg-admin-navigation="project-profile")
         include ../includes/modules/admin-menu
 

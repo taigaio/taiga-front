@@ -2,6 +2,7 @@ doctype html
 
 div.wrapper(ng-controller="WikiDetailController as ctrl",
             ng-init="section='wiki'")
+    nav.menu.hidden(tg-project-menu)
     sidebar.menu-secondary.extrabar(tg-check-permission="view_wiki_links")
         section.wiki-nav(tg-wiki-nav, ng-model="wikiLinks")
     section.main.wiki

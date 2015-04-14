@@ -2,13 +2,11 @@
     @extend %title;
     background-image: url('../images/menu.png');
     background-position: left bottom;
-    flex-wrap: wrap;
     height: 100%;
+    min-height: 100vh;
     padding: 0 .3rem;
-    position: fixed;
     text-transform: uppercase;
     width: 90px;
-    z-index: 999;
 }
 .logo-container {
     cursor: pointer;

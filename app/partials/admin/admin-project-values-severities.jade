@@ -1,6 +1,8 @@
 doctype html
 
 div.wrapper(ng-controller="ProjectValuesSectionController")
+    nav.menu.hidden(tg-project-menu)
+
     sidebar.menu-secondary.sidebar(tg-admin-navigation="project-values")
         include ../includes/modules/admin-menu
 

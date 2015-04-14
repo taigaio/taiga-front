@@ -2,6 +2,7 @@ doctype html
 
 div.wrapper(ng-controller="TaskDetailController as ctrl",
             ng-init="section='backlog-kanban'")
+    nav.menu.hidden(tg-project-menu)
     div.main.us-detail
         div.us-detail-header.header-with-actions
             include ../includes/components/mainTitle

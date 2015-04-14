@@ -14,49 +14,6 @@ body {
             transition: 0;
         }
     }
-    .menu {
-        transform: translate3d(0, 0, 0);
-        transition: transform 1s ease;
-    }
-    &.open-projects-nav {
-        .projects-nav {
-            transform: translate3d(0, 0, 0);
-            transition: transform 1s ease;
-        }
-        .master {
-            transform: translate3d(300px, 0, 0);
-            transition: transform 1s ease;
-            &.ng-animate {
-                transition: 0;
-            }
-        }
-        .menu {
-            transform: translate3d(300px, 0, 0);
-            transition: transform 1s ease;
-        }
-        .projects-nav-overlay {
-            opacity: .9;
-            transform: translate3d(300px, 0, 0);
-            transition: all 1s ease;
-        }
-        &.closed-projects-nav {
-            .projects-nav {
-                transform: translate3d(-300px, 0, 0);
-                transition: transform 1s ease;
-            }
-            .projects-nav-overlay {
-                opacity: 0;
-                transform: translate3d(0, 0, 0);
-                transition: all 1s ease;
-            }
-            .master {
-                transform: translate3d(0, 0, 0);
-            }
-            .menu {
-                transform: translate3d(0, 0, 0);
-            }
-        }
-    }
     &.loading-project {
         overflow: hidden;
         .projects-nav-overlay {
@@ -92,7 +49,6 @@ body {
 .wrapper {
     display: flex;
     min-height: 100vh;
-    padding-left: 90px;
 }
 
 .menu-secondary {

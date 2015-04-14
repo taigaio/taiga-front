@@ -2,7 +2,7 @@ doctype html
 
 div.wrapper(tg-search, ng-controller="SearchController as ctrl",
             ng-init="section='search'")
-
+    nav.menu.hidden(tg-project-menu)
     sidebar.menu-secondary.sidebar
         include ../includes/modules/search-in
 

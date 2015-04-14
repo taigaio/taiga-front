@@ -2,8 +2,11 @@ doctype html
 
 div.wrapper.roles(ng-controller="RolesController as ctrl",
                         ng-init="section='admin'", tg-roles)
+    nav.menu.hidden(tg-project-menu)
+
     sidebar.menu-secondary.sidebar(tg-admin-navigation="roles")
         include ../includes/modules/admin-menu
+
     sidebar.menu-tertiary.sidebar
         include ../includes/modules/admin-submenu-roles
 

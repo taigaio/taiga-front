@@ -2,6 +2,7 @@ doctype html
 
 div.wrapper(tg-taskboard, ng-controller="TaskboardController as ctrl",
             ng-init="section='backlog'")
+    nav.menu.hidden(tg-project-menu)
     section.main.taskboard
         .taskboard-inner
             h1

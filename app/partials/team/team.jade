@@ -1,6 +1,7 @@
 doctype html
 
 div.wrapper(ng-controller="TeamController as ctrl", ng-init="section='team'")
+    nav.menu.hidden(tg-project-menu)
     sidebar.menu-secondary
         include ../includes/modules/team/team-filters
     section.main.team

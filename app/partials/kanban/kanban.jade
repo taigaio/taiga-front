@@ -2,6 +2,7 @@ doctype html
 
 div.wrapper(tg-kanban, ng-controller="KanbanController as ctrl"
             ng-init="section='kanban'")
+    nav.menu.hidden(tg-project-menu)
     section.main.kanban
         include ../includes/components/mainTitle
         include ../includes/modules/kanban-table
