@@ -241,7 +241,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         suffix: '.json'
     })
 
-    $translateProvider.preferredLanguage('en')
+    $translateProvider.preferredLanguage(window.taigaConfig.defaultLanguage || 'en')
 
 init = ($log, $config, $rootscope, $auth, $events, $analytics, $translate) ->
     $log.debug("Initialize application")

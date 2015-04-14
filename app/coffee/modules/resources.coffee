@@ -123,6 +123,9 @@ urls = {
     "userstories-csv": "/userstories/csv?uuid=%s"
     "tasks-csv": "/tasks/csv?uuid=%s"
     "issues-csv": "/issues/csv?uuid=%s"
+
+    # locales
+    "locales": "/locales"
 }
 
 # Initialize api urls service
@@ -168,5 +171,6 @@ module.run([
     "$tgModulesResourcesProvider",
     "$tgWebhooksResourcesProvider",
     "$tgWebhookLogsResourcesProvider",
+    "$tgLocalesResourcesProvider",
     initResources
 ])
