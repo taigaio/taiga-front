@@ -841,7 +841,8 @@
             "PLACEHOLDER_FULL_NAME": "Set your full name (ex. Íñigo Montoya)",
             "BIO": "Bio",
             "PLACEHOLDER_BIO": "Tell us something about you",
-            "LANGUAGE": "Language"
+            "LANGUAGE": "Language",
+            "LANGUAGE_DEFAULT": "-- use default language --"
         }
     },
     "WIZARD": {
@@ -865,8 +866,5 @@
             "LAST_EDIT": "last <br />edit",
             "LAST_MODIFICATION": "last modification"
         }
-    },
-    "LANGUAGES": {
-        "ENGLISH": "English"
     }
 }
