@@ -69,29 +69,27 @@
             }
         }
     }
-    .activity-member {
-        .activity-member-view {
-            display: flex;
-            margin-bottom: .5rem;
-            margin-left: calc(35px + .5rem);
-            margin-top: .5rem;
-            .activity-member-info {
-                flex: 1;
-            }
-            a {
-                @extend %bold;
-            }
-            p {
-                color: $gray-light;
-            }
+    .activity-member-view {
+        display: flex;
+        margin-bottom: .5rem;
+        margin-left: calc(35px + .5rem);
+        margin-top: .5rem;
+        .activity-member-info {
+            flex: 1;
         }
-        .profile-member-picture {
-            img {
-                margin-right: 1rem;
-                max-width: 64px;
-                min-width: 32px;
-                width: 100%;
-            }
+        a {
+            @extend %bold;
+        }
+        p {
+            color: $gray-light;
+        }
+    }
+    .profile-member-picture {
+        img {
+            margin-right: 1rem;
+            max-width: 64px;
+            min-width: 32px;
+            width: 100%;
         }
     }
 }

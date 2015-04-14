@@ -140,6 +140,23 @@ sizeFormat = (input, precision=1) ->
     size = (input / Math.pow(1024, number)).toFixed(precision)
     return  "#{size} #{units[number]}"
 
+stripTags = (str, exception) ->
+    if exception
+        pattern = new RegExp('<(?!' + exception + '\s*\/?)[^>]+>', 'gi')
+        return String(str).replace(pattern, '')
+    else
+        return String(str).replace(/<\/?[^>]+>/g, '')
+
+replaceTags = (str, tags, replace) ->
+    # open tag
+    pattern = new RegExp('<(' + tags + ')>', 'gi')
+    str = str.replace(pattern, '<' + replace + '>')
+
+    # close tag
+    pattern = new RegExp('<\/(' + tags + ')>', 'gi')
+    str = str.replace(pattern, '</' + replace + '>')
+
+    return str
 
 taiga = @.taiga
 taiga.nl2br = nl2br
@@ -160,3 +177,5 @@ taiga.debounce = debounce
 taiga.debounceLeading = debounceLeading
 taiga.startswith = startswith
 taiga.sizeFormat = sizeFormat
+taiga.stripTags = stripTags
+taiga.replaceTags = replaceTags

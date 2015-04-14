@@ -1,16 +1,23 @@
-timelineTitle = (timeline, event) ->
-    title = [
+timelineType = (timeline, event) ->
+    types = [
         { # NewMember
             check: (timeline, event) ->
                 return event.obj == 'membership'
             key: 'TIMELINE.NEW_MEMBER',
             translate_params: ['project_name']
+            member: (timeline) ->
+                return {
+                    user: timeline.data.user,
+                    role: timeline.data.role
+                }
         },
         { # NewProject
             check: (timeline, event) ->
                 return event.obj == 'project' && event.type == 'create'
             key: 'TIMELINE.NEW_PROJECT',
-            translate_params: ['username', 'project_name']
+            translate_params: ['username', 'project_name'],
+            description: (timeline) ->
+                return timeline.data.project.description
         },
         { # NewAttachment
             check: (timeline, event) ->
@@ -46,19 +53,26 @@ timelineTitle = (timeline, event) ->
             check: (timeline, event) ->
                 return timeline.data.comment && event.obj == 'userstory'
             key: 'TIMELINE.NEW_COMMENT_US',
-            translate_params: ['username', 'obj_name']
+            translate_params: ['username', 'obj_name'],
+            description: (timeline) ->
+                return taiga.stripTags(timeline.data.comment_html, 'br|p')
         },
         { # NewIssueComment
             check: (timeline, event) ->
                 return timeline.data.comment && event.obj == 'issue'
             key: 'TIMELINE.NEW_COMMENT_ISSUE',
-            translate_params: ['username', 'obj_name']
+            translate_params: ['username', 'obj_name'],
+            description: (timeline) ->
+                text = taiga.replaceTags(timeline.data.comment_html, 'h1|h2|h3', 'p')
+                return taiga.stripTags(text, 'br|p')
         },
         { # NewTask
             check: (timeline, event) ->
                 return timeline.data.comment && event.obj == 'task'
             key: 'TIMELINE.NEW_COMMENT_TASK'
-            translate_params: ['username', 'obj_name']
+            translate_params: ['username', 'obj_name'],
+            description: (timeline) ->
+                return taiga.stripTags(timeline.data.comment_html, 'br|p')
         },
         { # UsToMilestone
             check: (timeline, event, field_name) ->
@@ -85,7 +99,9 @@ timelineTitle = (timeline, event) ->
 
                 return false
             key: 'TIMELINE.BLOCKED',
-            translate_params: ['username', 'obj_name']
+            translate_params: ['username', 'obj_name'],
+            description: (timeline) ->
+                return taiga.stripTags(timeline.data.values_diff.blocked_note_html[1], 'br')
         },
         { # UnBlocked
             check: (timeline, event) ->
@@ -131,7 +147,7 @@ timelineTitle = (timeline, event) ->
     if timeline.data.values_diff
         field_name = Object.keys(timeline.data.values_diff)[0]
 
-    return _.find title, (obj) ->
+    return _.find types, (obj) ->
         return obj.check(timeline, event, field_name)
 
 TimelineItemDirective = ($tgTemplate, $compile, $navUrls, $translate, $sce) ->
@@ -222,13 +238,12 @@ TimelineItemDirective = ($tgTemplate, $compile, $navUrls, $translate, $sce) ->
 
         return params
 
-    getTitle = (timeline, event) ->
-        type = timelineTitle(timeline, event)
-
+    getTitle = (timeline, event, type) ->
         return $translate.instant(type.key, getParams(timeline, event, type))
 
     link = ($scope, $el, $attrs) ->
         event = parseEventType($scope.timeline.event_type)
+        type = timelineType($scope.timeline, event)
 
         $scope.activity = {}
 
@@ -236,8 +251,14 @@ TimelineItemDirective = ($tgTemplate, $compile, $navUrls, $translate, $sce) ->
         $scope.activity.user = $scope.timeline.data.user
         $scope.activity.project = $scope.timeline.data.project
         $scope.activity.sprint = $scope.timeline.data.milestone
-        $scope.activity.title = getTitle($scope.timeline, event)
+        $scope.activity.title = getTitle($scope.timeline, event, type)
         $scope.activity.created_formated = moment($scope.timeline.created).fromNow()
+
+        if type.description
+            $scope.activity.description = $sce.trustAsHtml(type.description($scope.timeline))
+
+        if type.member
+            $scope.activity.member = type.member($scope.timeline)
 
         if $scope.timeline.data.values_diff?.attachments
             $scope.activity.attachments = $scope.timeline.data.values_diff.attachments.new
