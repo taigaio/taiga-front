@@ -12,6 +12,8 @@ TimelineAttachmentDirective = ($tgTemplate, $compile) ->
 
         if is_image
             template = $tgTemplate.get("profile/timeline/timeline-attachment-image.html")
+        else
+            template = $tgTemplate.get("profile/timeline/timeline-attachment.html")
 
         $el.html(template)
         $compile($el.contents())($scope)

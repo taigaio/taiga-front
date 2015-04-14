@@ -1,4 +1,151 @@
-TimelineItemDirective = ($tgTemplate, $compile, $navUrls) ->
+timelineTitle = (timeline, event) ->
+    title = [
+        { # NewMember
+            check: (timeline, event) ->
+                return event.obj == 'membership'
+            key: 'TIMELINE.NEW_MEMBER',
+            translate_params: ['project_name']
+        },
+        { # NewProject
+            check: (timeline, event) ->
+                return event.obj == 'project' && event.type == 'create'
+            key: 'TIMELINE.NEW_PROJECT',
+            translate_params: ['username', 'project_name']
+        },
+        { # NewAttachment
+            check: (timeline, event) ->
+                return event.type == 'change' && timeline.data.values_diff.attachments
+            key: 'TIMELINE.UPLOAD_ATTACHMENT',
+            translate_params: ['username', 'obj_name']
+        },
+        { # NewUs
+            check: (timeline, event) ->
+                return event.obj == 'userstory' && event.type == 'create'
+            key: 'TIMELINE.US_CREATED',
+            translate_params: ['username', 'project_name', 'obj_name']
+        },
+        { # NewIssue
+            check: (timeline, event) ->
+                return event.obj == 'issue' && event.type == 'create'
+            key: 'TIMELINE.ISSUE_CREATED',
+            translate_params: ['username', 'project_name', 'obj_name']
+        },
+        { # NewWiki
+            check: (timeline, event) ->
+                return event.obj == 'wikipage' && event.type == 'create'
+            key: 'TIMELINE.WIKI_CREATED',
+            translate_params: ['username', 'project_name', 'obj_name']
+        },
+        { # NewTask
+            check: (timeline, event) ->
+                return event.obj == 'task' && event.type == 'create'
+            key: 'TIMELINE.TASK_CREATED',
+            translate_params: ['username', 'project_name', 'obj_name']
+        },
+        { # NewUsComment
+            check: (timeline, event) ->
+                return timeline.data.comment && event.obj == 'userstory'
+            key: 'TIMELINE.NEW_COMMENT_US',
+            translate_params: ['username', 'obj_name']
+        },
+        { # NewIssueComment
+            check: (timeline, event) ->
+                return timeline.data.comment && event.obj == 'issue'
+            key: 'TIMELINE.NEW_COMMENT_ISSUE',
+            translate_params: ['username', 'obj_name']
+        },
+        { # NewTask
+            check: (timeline, event) ->
+                return timeline.data.comment && event.obj == 'task'
+            key: 'TIMELINE.NEW_COMMENT_TASK'
+            translate_params: ['username', 'obj_name']
+        },
+        { # UsToMilestone
+            check: (timeline, event, field_name) ->
+                if field_name == 'milestone' && event.type == 'change'
+                    return timeline.data.values_diff.milestone[0] == null
+
+                return false
+            key: 'TIMELINE.US_ADDED_MILESTONE',
+            translate_params: ['username', 'obj_name', 'sprint_name']
+        },
+        { # UsToBacklog
+            check: (timeline, event, field_name) ->
+                if field_name == 'milestone' && event.type == 'change'
+                    return timeline.data.values_diff.milestone[1] == null
+
+                return false
+            key: 'TIMELINE.US_REMOVED_FROM_MILESTONE',
+            translate_params: ['username', 'obj_name']
+        },
+        { # Blocked
+            check: (timeline, event) ->
+                if event.type == 'change' && timeline.data.values_diff.is_blocked
+                    return timeline.data.values_diff.is_blocked[1] == true
+
+                return false
+            key: 'TIMELINE.BLOCKED',
+            translate_params: ['username', 'obj_name']
+        },
+        { # UnBlocked
+            check: (timeline, event) ->
+                if event.type == 'change' && timeline.data.values_diff.is_blocked
+                    return timeline.data.values_diff.is_blocked[1] == false
+
+                return false
+            key: 'TIMELINE.UNBLOCKED',
+            translate_params: ['username', 'obj_name']
+        },
+        { # MilestoneUpdated
+            check: (timeline, event) ->
+                return event.obj == 'milestone' && event.type == 'change'
+            key: 'TIMELINE.MILESTONE_UPDATED',
+            translate_params: ['username', 'obj_name']
+        },
+        { # WikiUpdated
+            check: (timeline, event) ->
+                return event.obj == 'wikipage' && event.type == 'change'
+            key: 'TIMELINE.WIKI_UPDATED',
+            translate_params: ['username', 'obj_name']
+        },
+        { # UsUpdated
+            check: (timeline, event) ->
+                return event.obj == 'userstory' && event.type == 'change'
+            key: 'TIMELINE.US_UPDATED',
+            translate_params: ['username', 'field_name', 'obj_name']
+        },
+        { # IssueUpdated
+            check: (timeline, event) ->
+                return event.obj == 'issue' && event.type == 'change'
+            key: 'TIMELINE.ISSUE_UPDATED',
+            translate_params: ['username', 'field_name', 'obj_name']
+        },
+        { # TaskUpdated
+            check: (timeline, event) ->
+                return event.obj == 'task' && event.type == 'change'
+            key: 'TIMELINE.TASK_UPDATED',
+            translate_params: ['username', 'field_name', 'obj_name']
+        }
+    ]
+
+    if timeline.data.values_diff
+        field_name = Object.keys(timeline.data.values_diff)[0]
+
+    return _.find title, (obj) ->
+        return obj.check(timeline, event, field_name)
+
+TimelineItemDirective = ($tgTemplate, $compile, $navUrls, $translate, $sce) ->
+    fieldTranslationKey = {
+        'status': 'COMMON.FIELDS.STATUS',
+        'subject': 'COMMON.FIELDS.SUBJECT',
+        'description': 'COMMON.FIELDS.DESCRIPTION',
+        'points': 'COMMON.FIELDS.POINTS',
+        'severity': 'ISSUES.FIELDS.SEVERITY',
+        'priority': 'ISSUES.FIELDS.PRIORITY',
+        'type': 'ISSUES.FIELDS.TYPE',
+        'is_iocaine': 'TASK.FIELDS.IS_IOCAINE'
+    }
+
     parseEventType = (event_type) ->
         event_type = event_type.split(".")
 
@@ -8,53 +155,100 @@ TimelineItemDirective = ($tgTemplate, $compile, $navUrls) ->
             type: event_type[2]
         }
 
-    getUrl = (timeline, event) ->
+    getDetailObjUrl = (event) ->
         url = {
-            "issue": "project-issues-detail",
-            "wiki": "project-wiki-page",
-            "task": "project-tasks-detail",
-            "userstories": "project-userstories-detail"
+            "issue": ["project-issues-detail", ":project=activity.project.slug,ref=activity.obj.ref"],
+            "wikipage": ["project-wiki-page", ":project=activity.project.slug,slug=activity.obj.slug"],
+            "task": ["project-tasks-detail", ":project=activity.project.slug,ref=activity.obj.ref"],
+            "userstory": ["project-userstories-detail", ":project=activity.project.slug,ref=activity.obj.ref"],
+            "milestone": ["project-taskboard", ":project=activity.project.slug,sprint=activity.obj.slug"]
         }
 
-        params = {project: timeline.data.project.slug, ref: timeline.data[event.obj].ref}
+        return url[event.obj][0] + url[event.obj][1]
 
-        return $navUrls.resolve(url[event.obj], params)
+    getLink = (url, text, title) ->
+        title = title || text
 
-    getTemplate = (timeline, event) ->
-        template = ""
+        return $('<a>')
+            .attr('tg-nav', url)
+            .text(text)
+            .attr('title', title)
+            .prop('outerHTML')
 
-        if event.type == 'change'
-            if timeline.data.comment.length
-                 template = "profile/timeline/comment-timeline.html"
-            else if timeline.data.values_diff.attachments
-                 template = "profile/timeline/attachment-timeline.html"
+    translate_params = {
+        username: (timeline) ->
+            user = timeline.data.user
+            title_attr = $translate.instant('COMMON.SEE_USER_PROFILE', {username: user.username})
+            url = 'user-profile:username=activity.user.username'
+            return getLink(url, user.username, title_attr)
 
-        return $tgTemplate.get(template)
+        field_name: (timeline) ->
+            field_name = Object.keys(timeline.data.values_diff)[0]
+
+            return $translate.instant(fieldTranslationKey[field_name])
+
+        project_name: (timeline) ->
+            url = 'project:project=activity.project.slug'
+
+            return getLink(url, timeline.data.project.name)
+
+        sprint_name: (timeline) ->
+            url = 'project-taskboard:project=activity.project.slug,sprint=activity.sprint.slug'
+
+            return getLink(url, timeline.data.milestone.name)
+
+        obj_name: (timeline, event) ->
+            obj = getTimelineObj(timeline, event)
+            url = getDetailObjUrl(event)
+
+            if event.obj == 'wikipage'
+                text = obj.slug
+            else if event.obj == 'milestone'
+                text = obj.name
+            else
+                text = '#' + obj.ref + ' ' + obj.subject
+
+            return getLink(url, text)
+    }
+
+    getTimelineObj = (timeline, event) ->
+        return timeline.data[event.obj]
+
+    getParams = (timeline, event, timeline_type) ->
+        params = {}
+
+        timeline_type.translate_params.forEach (param) ->
+            params[param] = translate_params[param](timeline, event)
+
+        return params
+
+    getTitle = (timeline, event) ->
+        type = timelineTitle(timeline, event)
+
+        return $translate.instant(type.key, getParams(timeline, event, type))
 
     link = ($scope, $el, $attrs) ->
         event = parseEventType($scope.timeline.event_type)
-        template = getTemplate($scope.timeline, event)
 
-        if !template
-            return ""
+        $scope.activity = {}
 
-        obj = $scope.timeline.data[event.obj]
+        $scope.activity.obj = getTimelineObj($scope.timeline, event)
+        $scope.activity.user = $scope.timeline.data.user
+        $scope.activity.project = $scope.timeline.data.project
+        $scope.activity.sprint = $scope.timeline.data.milestone
+        $scope.activity.title = getTitle($scope.timeline, event)
+        $scope.activity.created_formated = moment($scope.timeline.created).fromNow()
 
-        $scope.timeline.subject = obj.subject
-        $scope.timeline.ref = obj.ref
-        $scope.timeline.type = event.obj
-        $scope.timeline.created_formated = moment($scope.timeline.created).fromNow()
-        $scope.timeline.detail_url = getUrl($scope.timeline, event)
-
-        $el.html(template)
-        $compile($el.contents())($scope)
+        if $scope.timeline.data.values_diff?.attachments
+            $scope.activity.attachments = $scope.timeline.data.values_diff.attachments.new
 
     return {
         link: link
+        templateUrl: "profile/timeline/timeline-item.html"
         scope: {
             timeline: "=tgTimelineItem"
         }
     }
 
 angular.module("taigaProfile")
-    .directive("tgTimelineItem", ["$tgTemplate", "$compile", "$tgNavUrls", TimelineItemDirective])
+    .directive("tgTimelineItem", ["$tgTemplate", "$compile", "$tgNavUrls", "$translate", "$sce", TimelineItemDirective])

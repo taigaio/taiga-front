@@ -1,0 +1,11 @@
+div.activity-image
+    span.activity-date {{::activity.created_formated}}
+    div.activity-info
+        div.profile-contact-picture
+            a(tg-nav="user-profile:username=activity.user.username", title="{{::activity.user.name }}")
+                img(ng-src="{{::activity.user.photo}}", alt="{{::activity.user.name}}")
+
+        p(tg-compile-html="activity.title")
+
+    div(ng-repeat="attachment in activity.attachments")
+        div(tg-timeline-attachment="attachment")

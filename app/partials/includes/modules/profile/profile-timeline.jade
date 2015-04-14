@@ -1,5 +1,5 @@
 section.profile-timeline(ng-controller="ProfileTimeline as ctrl")
-    div(ng-repeat="timeline in result.data", tg-timeline-item="timeline")
+    div(ng-repeat="timeline in timelineList", tg-timeline-item="timeline")
     - for (var x = 0; x < 3; x++)
         // Simple message for favorites, updates, etc.
         div.activity-simple

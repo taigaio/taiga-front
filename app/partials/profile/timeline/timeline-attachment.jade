@@ -1,12 +1,3 @@
-div.activity-image
-    span.activity-date {{::timeline.created_formated}}
-    div.activity-info
-        div.profile-contact-picture
-            a(tg-nav="user-profile:username=timeline.data.user.username", title="{{::timeline.data.user.name }}")
-                img(ng-src="{{::timeline.data.user.photo}}", alt="{{::timeline.data.user.name}}")
-        p
-            a(tg-nav="user-profile:username=timeline.data.user.username", title="See {{::timeline.data.user.name }} profile") {{::timeline.data.user.name}}
-            span  has uploaded an image in the {{::timeline.type }}
-            a(href="{{::timeline.detail_url}}", title="See #{{::timeline.ref}} {{::timeline.subject}}")  \#{{::timeline.ref}} {{::timeline.subject}}
-    div(ng-repeat="attachment in timeline.data.values_diff.attachments.new")
-        div(tg-timeline-attachment="attachment")
+p TODO: ATTACHMENT
+p
+    a(ng-href="attachment.url"){{attachment.filename}}

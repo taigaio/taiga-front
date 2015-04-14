@@ -30,16 +30,33 @@ class ProfileTimelineController extends mixOf(taiga.Controller, taiga.PageMixin,
         "$tgAuth"
     ]
 
+    valid_fields: ['status', 'subject', 'description', 'assigned_to', 'points', 'severity', 'priority', 'type', 'attachments', 'milestone', 'is_blocked', 'is_iocaine', 'content_diff', 'name', 'estimated_finish', 'estimated_start']
+
     constructor: (@scope, @rs, @auth) ->
         promise = @.loadTimeline()
         promise.then null, @.onInitialDataError.bind(@)
+
+    isValid: (values) =>
+        return _.some values, (value) => @valid_fields.indexOf(value) != -1
+
+    filterValidTimelineItems: (timeline) =>
+        if timeline.data.values_diff
+            values = Object.keys(timeline.data.values_diff)
+
+        if values && values.length
+            if !@isValid(values)
+                return false
+            else if values[0] == 'attachments' && timeline.data.values_diff.attachments.new.length == 0
+                return false
+
+        return true
 
     loadTimeline: () ->
         user = @auth.getUser()
 
         return @rs.timeline.profile(user.id).then (result) =>
-            @scope.result = result
-            console.log @scope.result.data
+            console.log result.data
+            @scope.timelineList = _.filter result.data, @filterValidTimelineItems
 
 angular.module("taigaProfile")
     .controller("ProfileTimeline", ProfileTimelineController)
