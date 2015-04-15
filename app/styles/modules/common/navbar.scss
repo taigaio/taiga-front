@@ -1,12 +1,14 @@
+$top-icon-color: #11241f;
+
 .navbar {
-    background: rgba($black, .2);
+    background: rgba($black, .5);
     display: flex;
     justify-content: space-between;
     overflow: hidden;
     position: relative;
     &:after {
-        background: url('../images/menu-vert.png') center center repeat;
-        background-size: cover;
+        background: url('../images/menu-vert.png') repeat top left;
+        background-size: 100%;
         bottom: 0;
         content: '';
         height: 100%;
@@ -23,32 +25,46 @@
         align-items: center;
         display: flex;
     }
+    .nav-left {
+        a {
+            padding: .5rem 1.5rem;
+            &.logo {
+                background: rgba($black, .2);
+                padding: .4rem .75rem;
+            }
+            svg {
+                height: 1.6rem;
+                max-width: 2rem;
+            }
+            path {
+                fill: $white;
+            }
+        }
+    }
+    .nav-right {
+        a {
+            padding: .5rem 2rem;
+        }
+    }
     a {
-        color: $gray-light;
+        color: $white;
         display: inline-block;
-        padding: .5rem 2rem;
+        transition: all .2s linear;
         &:hover {
-            background: rgba($gray, .3);
+            background: rgba($black, .2);
             color: $fresh-taiga;
             svg path {
-                fill: $gray-light;
+                fill: $white;
             }
         }
         &.user-avatar {
             padding: 0;
             padding-left: 2rem;
+            span {
+                padding-right: 1rem;
+            }
         }
 
-    }
-    .logo {
-        padding: 0 2rem;
-        svg {
-            height: 2rem;
-            max-width: 2rem;
-        }
-        path {
-            fill: $white;
-        }
     }
     img {
         height: 2.5rem;
@@ -59,7 +75,7 @@
         height: 1.2rem;
         max-width: 1.2rem;
         path {
-            fill: $gray;
+            fill: $dark-taiga;
             transition: all .2s;
         }
     }

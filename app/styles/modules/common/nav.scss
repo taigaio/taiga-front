@@ -5,9 +5,8 @@ $label-arrow-wh: 12px;
     background-position: center center;
     height: 100%;
     min-height: 100vh;
-    padding: 1rem .3rem;
+    padding: 1rem 0;
     text-transform: uppercase;
-    width: 50px;
 }
 
 .main-nav {
@@ -15,17 +14,15 @@ $label-arrow-wh: 12px;
     padding: 0;
     position: relative;
     text-align: center;
-    li {
-        margin-bottom: .75rem;
-    }
     a {
         color: $white;
         display: block;
+        padding: .75rem .8rem;
         position: relative;
-        text-align: center;
     }
     a:hover {
-        color: $fresh-taiga;
+        //color: $fresh-taiga;
+        background: rgba($black, .2);
         transition: color .3s linear;
         .helper {
             @extend %small;
@@ -33,7 +30,7 @@ $label-arrow-wh: 12px;
             background: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, .8) 100%);
             color: $white;
             display: block;
-            left: 45px;
+            left: 50px;
             opacity: 1;
             padding: .4rem 1rem;
             position: absolute;
@@ -67,6 +64,7 @@ $label-arrow-wh: 12px;
         @extend %large;
     }
     .active {
+        background: rgba($black, .2);
         color: $fresh-taiga;
         transition: color .3s linear;
     }
