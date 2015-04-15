@@ -1,6 +1,66 @@
 .navbar {
-    background: $black;
+    background: rgba($black, .2);
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+    position: relative;
+    &:after {
+        background: url('../images/menu-vert.png') center center repeat;
+        background-size: cover;
+        bottom: 0;
+        content: '';
+        height: 100%;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 200%;
+        z-index: -1;
+    }
+    .nav-left,
+    .nav-right {
+        align-content: center;
+        align-items: center;
+        display: flex;
+    }
+    a {
+        color: $gray-light;
+        display: inline-block;
+        padding: .5rem .75rem;
+        &:hover {
+            background: rgba($gray, .3);
+            color: $fresh-taiga;
+            svg path {
+                fill: $gray-light;
+            }
+        }
+        &.user-avatar {
+            padding: 0;
+            padding-left: .75rem;
+        }
+
+    }
     .logo {
-        max-width: 35px;
+        padding: 0 2rem;
+        svg {
+            height: 2rem;
+            max-width: 2rem;
+        }
+        path {
+            fill: $white;
+        }
+    }
+    img {
+        height: 2.5rem;
+        padding-left: .3rem;
+        vertical-align: middle;
+    }
+    svg {
+        height: 1.2rem;
+        max-width: 1.2rem;
+        path {
+            fill: $gray;
+            transition: all .2s;
+        }
     }
 }

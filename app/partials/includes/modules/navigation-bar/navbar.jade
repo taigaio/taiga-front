@@ -1,22 +1,16 @@
 nav.navbar
-    div.nav-left
-        img.logo(src="svg/logo-nav.svg", alt="Taiga")
-        a(href="#", title="Discover trending projects") Discover
-        a(href="#", title="Taiga Support Page") Help
-    div.nav-right
-        a(href="", title="Dashboard") Dashboard
-        a(href="", title="Projects") Projects
-            //ul.dropdown.projects-list
-            //    li
-            //        a(href="#", title="{{ project-name }}") Project Name
-            //    li
-            //        a(href="#", title="{{ project-name }}") Project Name
-            //    li
-            //        a(href="#", title="{{ project-name }}") Project Name
-            //    li
-            //        a(href="#", title="{{ project-name }}") Project Name
-
-        a(href="#", title="Organizations") Organizations
-        a(href="#", title="{{ user.fullname }} profile")
-            span Sebastián Sanchís
-            img(src="#", alt="{{ user.fullname }} picture")
+        div.nav-left
+            a.logo(href="#", title="Dashboard")
+                include ../../../../svg/logo.svg
+            a(href="#", title="Discover trending projects") Discover
+            a(href="#", title="Taiga Support Page") Help
+        div.nav-right
+            a(href="", title="Dashboard")
+               include ../../../../svg/dashboard.svg
+            a(href="", title="Projects")
+               include ../../../../svg/projects.svg
+            a(href="#", title="Organizations")
+               include ../../../../svg/organizations.svg
+            a.user-avatar(href="#", title="{{ user.fullname }} profile")
+                span Sebastián Sanchís
+                img(src="https://s3.amazonaws.com/uifaces/faces/twitter/brad_frost/128.jpg", alt="{{ user.fullname }} picture")
