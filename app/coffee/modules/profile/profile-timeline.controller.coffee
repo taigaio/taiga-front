@@ -25,18 +25,17 @@ mixOf = @.taiga.mixOf
 
 class ProfileTimelineController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.FiltersMixin)
     @.$inject = [
-        "$scope",
         "$tgResources",
         "$tgAuth"
     ]
 
     valid_fields: ['status', 'subject', 'description', 'assigned_to', 'points', 'severity', 'priority', 'type', 'attachments', 'milestone', 'is_blocked', 'is_iocaine', 'content_diff', 'name', 'estimated_finish', 'estimated_start']
 
-    constructor: (@scope, @rs, @auth) ->
-        promise = @.loadTimeline()
-        promise.then null, @.onInitialDataError.bind(@)
+    constructor: (@rs, @auth) ->
+        @timelineList = []
+        @pagination = {page: 1}
 
-    isValid: (values) =>
+    isValidField: (values) =>
         return _.some values, (value) => @valid_fields.indexOf(value) != -1
 
     filterValidTimelineItems: (timeline) =>
@@ -44,7 +43,7 @@ class ProfileTimelineController extends mixOf(taiga.Controller, taiga.PageMixin,
             values = Object.keys(timeline.data.values_diff)
 
         if values && values.length
-            if !@isValid(values)
+            if !@isValidField(values)
                 return false
             else if values[0] == 'attachments' && timeline.data.values_diff.attachments.new.length == 0
                 return false
@@ -54,9 +53,14 @@ class ProfileTimelineController extends mixOf(taiga.Controller, taiga.PageMixin,
     loadTimeline: () ->
         user = @auth.getUser()
 
-        return @rs.timeline.profile(user.id).then (result) =>
-            console.log result.data
-            @scope.timelineList = _.filter result.data, @filterValidTimelineItems
+        @loadingData = true
+
+        return @rs.timeline.profile(user.id, @pagination).then (result) =>
+            newTimelineList = _.filter result.data, @filterValidTimelineItems
+
+            @timelineList = @timelineList.concat(newTimelineList)
+            @pagination.page++
+            @loadingData = false
 
 angular.module("taigaProfile")
     .controller("ProfileTimeline", ProfileTimelineController)

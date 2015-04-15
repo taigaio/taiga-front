@@ -141,6 +141,7 @@ paths.libs = [
     paths.vendor + "raven-js/dist/raven.js",
     paths.vendor + "l.js/l.js",
     paths.vendor + "messageformat/locale/*.js",
+    paths.vendor + "ngInfiniteScroll/build/ng-infinite-scroll.js",
     paths.app + "js/jquery.ui.git-custom.js",
     paths.app + "js/jquery-ui.drag-multiple-custom.js",
     paths.app + "js/jquery.ui.touch-punch.min.js",

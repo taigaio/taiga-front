@@ -24,8 +24,8 @@ taiga = @.taiga
 resourceProvider = ($repo) ->
     service = {}
 
-    service.profile = (userId) ->
-        return $repo.queryOnePaginatedRaw("timeline-profile", userId)
+    service.profile = (userId, params) ->
+        return $repo.queryOnePaginatedRaw("timeline-profile", userId, params)
 
     return (instance) ->
         instance.timeline = service
