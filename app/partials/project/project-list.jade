@@ -1,11 +1,7 @@
 div(tg-projects-pagination)
-    .projects-pagination
-        a.v-pagination-previous.icon.icon-arrow-up(href='')
-        .v-pagination-list
-          ul.projects-list
-            <% _.each(projects, function(project) { %>
-            li
-              a(href!='<%- project.url %>')
-                <%- project.name %>
-             <% }) %>
-        a.v-pagination-next.icon.icon-arrow-bottom(href='')
+      ul.projects-list
+        <% _.each(projects, function(project) { %>
+        li
+          a.button(href!='<%- project.url %>')
+            <%- project.name %>
+         <% }) %>

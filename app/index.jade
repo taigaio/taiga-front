@@ -15,12 +15,12 @@ html(lang="en")
         //include partials/includes/modules/projects-nav
         include partials/includes/components/notification-message
 
+        include partials/includes/modules/navigation-bar/navbar
+
         //- the content of nav.menu is in coffe.modules.base TaigaMain directive
         //nav.menu.hidden(tg-project-menu)
 
-
         div.master(ng-view)
-            include partials/includes/modules/navigation-bar/navbar
 
         div.lightbox.lightbox-generic-ask
             include partials/includes/modules/lightbox-generic-ask
