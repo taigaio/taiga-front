@@ -376,13 +376,13 @@ IssuesDirective = ($log, $location, $template, $compile) ->
             event.preventDefault()
 
             $scope.$apply ->
-                $ctrl.selectFilter("page", $scope.page + 1)
+                $ctrl.selectFilter("page", $scope.page + 1, false, true)
                 $ctrl.loadIssues()
 
         $el.on "click", ".issues-paginator a.previous", (event) ->
             event.preventDefault()
             $scope.$apply ->
-                $ctrl.selectFilter("page", $scope.page - 1)
+                $ctrl.selectFilter("page", $scope.page - 1, false, true)
                 $ctrl.loadIssues()
 
         $el.on "click", ".issues-paginator li.page > a", (event) ->
@@ -391,7 +391,7 @@ IssuesDirective = ($log, $location, $template, $compile) ->
             pagenum = target.data("pagenum")
 
             $scope.$apply ->
-                $ctrl.selectFilter("page", pagenum)
+                $ctrl.selectFilter("page", pagenum, false, true)
                 $ctrl.loadIssues()
 
     ## Issues Filters
@@ -412,7 +412,7 @@ IssuesDirective = ($log, $location, $template, $compile) ->
             finalOrder = if currentOrder == newOrder then "-#{newOrder}" else newOrder
 
             $scope.$apply ->
-                $ctrl.replaceFilter("orderBy", finalOrder)
+                $ctrl.replaceFilter("orderBy", finalOrder, false, true)
                 $ctrl.storeFilters()
                 $ctrl.loadIssues().then ->
                     # Update the arrow
@@ -542,13 +542,13 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template, $
         selectQFilter = debounceLeading 100, (value) ->
             return if value is undefined
 
-            $ctrl.replaceFilter("page", null)
+            $ctrl.replaceFilter("page", null, false, true)
 
             if value.length == 0
-                $ctrl.replaceFilter("q", null)
+                $ctrl.replaceFilter("q", null, false, true)
                 $ctrl.storeFilters()
             else
-                $ctrl.replaceFilter("q", value)
+                $ctrl.replaceFilter("q", value, false, true)
                 $ctrl.storeFilters()
             $ctrl.loadIssues()
 
