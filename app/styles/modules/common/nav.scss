@@ -1,33 +1,13 @@
+$label-arrow-wh: 12px;
+
 .menu {
-    @extend %title;
     background-image: url('../images/menu.png');
-    background-position: left bottom;
+    background-position: center center;
     height: 100%;
     min-height: 100vh;
-    padding: 0 .3rem;
+    padding: 1rem .3rem;
     text-transform: uppercase;
-    width: 90px;
-}
-.logo-container {
-    cursor: pointer;
-    padding: 15px 15px 10px;
-    object,
-    img,
-    svg {
-        height: 50px;
-        width: 50px;
-    }
-    span {
-        @extend %large;
-        color: $white;
-        display: block;
-        margin-top: -5px;
-        text-align: center;
-    }
-    sup {
-        display: block;
-        line-height: 1rem;
-    }
+    width: 50px;
 }
 
 .main-nav {
@@ -36,26 +16,55 @@
     position: relative;
     text-align: center;
     li {
-        margin-bottom: 1rem;
+        margin-bottom: .75rem;
     }
     a {
         color: $white;
         display: block;
+        position: relative;
         text-align: center;
-        &:hover {
-            color: $fresh-taiga;
-            transition: color .3s linear;
-        }
-        span {
+    }
+    a:hover {
+        color: $fresh-taiga;
+        transition: color .3s linear;
+        .helper {
+            @extend %small;
+            animation: slideLeft 200ms ease-in-out both;
+            background: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, .8) 100%);
+            color: $white;
             display: block;
+            left: 45px;
+            opacity: 1;
+            padding: .4rem 1rem;
+            position: absolute;
+            top: 0;
+            transition: all .2s;
+            z-index: 99;
+            &:after {
+                background: rgba($blackish, 1);
+                content: '';
+                height: $label-arrow-wh;
+                left: calc(-#{$label-arrow-wh}/2);
+                position: absolute;
+                top: calc(50% - #{$label-arrow-wh}/2);
+                transform: rotate(45deg);
+                width: $label-arrow-wh;
+                z-index: 98;
+            }
         }
-        .icon {
-            @extend %xlarge;
-            line-height: 2.2rem;
-        }
-        .item {
-            @extend %large;
-        }
+    }
+    span {
+        display: block;
+    }
+    .helper {
+        display: none;
+    }
+    .icon {
+        font-size: 1.5rem;
+        line-height: 2.2rem;
+    }
+    .item {
+        @extend %large;
     }
     .active {
         color: $fresh-taiga;
@@ -63,44 +72,11 @@
     }
 }
 
-.user {
-    bottom: 1rem;
-    padding: 0 10px;
-    position: absolute;
-    width: 80px;
-    .popover {
-        @include popover(150px, '', 60px, 0, '', 15px, '', -6px, 25px);
-        a {
-            @extend %small;
-            color: $white;
-            text-align: left;
-            text-transform: none;
-            &:hover {
-                color: $fresh-taiga;
-                transition: color .2s linear;
-            }
-        }
+@keyframes slideLeft {
+    0% {
+        opacity: 0;
     }
-    img {
-        margin: 0 5px 10px;
-        width: 80%;
-        &:hover {
-            border-color: $fresh-taiga;
-            transition: border-color .3s linear;
-        }
-    }
-    .user-settings {
-        position: relative;
-    }
-    .settings {
-        text-align: center;
-        a {
-            color: $whitish;
-            margin-right: .5rem;
-            &:hover {
-                color: $fresh-taiga;
-                transition: color .3s linear;
-            }
-        }
+    100% {
+        opacity: 1;
     }
 }
