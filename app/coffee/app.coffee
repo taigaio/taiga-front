@@ -240,6 +240,7 @@ init = ($log, $i18n, $config, $rootscope, $auth, $events, $analytics) ->
     $i18n.initialize($config.get("defaultLanguage"))
     $log.debug("Initialize application")
     $rootscope.contribPlugins = @.taigaContribPlugins
+    $rootscope.adminPlugins = _.where(@.taigaContribPlugins, {"type": "admin"})
 
     if $auth.isAuthenticated()
         $events.setupConnection()
