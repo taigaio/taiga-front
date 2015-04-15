@@ -246,6 +246,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
 init = ($log, $config, $rootscope, $auth, $events, $analytics, $translate) ->
     $log.debug("Initialize application")
     $rootscope.contribPlugins = @.taigaContribPlugins
+    $rootscope.adminPlugins = _.where(@.taigaContribPlugins, {"type": "admin"})
 
     if $auth.isAuthenticated()
         $events.setupConnection()
