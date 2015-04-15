@@ -22,6 +22,8 @@ var gulp = require("gulp"),
     autoprefixer = require("gulp-autoprefixer"),
     templateCache = require("gulp-angular-templatecache"),
     runSequence = require("run-sequence"),
+    order = require("gulp-order"),
+    print = require('gulp-print'),
     del = require("del");
 
 var mainSass = require("./main-sass").files;
@@ -54,30 +56,35 @@ paths.sass = [
     "!" + paths.app + "/styles/extras/**/*.scss"
 ];
 
-paths.coffee = paths.app + "**/*.coffee";
+paths.coffee = [
+    paths.app + "coffee/**/*.coffee",
+    paths.app + "plugins/**/*.coffee",
+    "!" + paths.app + "**/*.spec.coffee",
+];
 
-paths.js = [
-    paths.tmp + "coffee/app.js",
-    paths.tmp + "coffee/*.js",
-    paths.tmp + "coffee/modules/controllerMixins.js",
-    paths.tmp + "coffee/modules/*.js",
-    paths.tmp + "coffee/modules/common/*.js",
-    paths.tmp + "coffee/modules/backlog/*.js",
-    paths.tmp + "coffee/modules/taskboard/*.js",
-    paths.tmp + "coffee/modules/kanban/*.js",
-    paths.tmp + "coffee/modules/issues/*.js",
-    paths.tmp + "coffee/modules/userstories/*.js",
-    paths.tmp + "coffee/modules/tasks/*.js",
-    paths.tmp + "coffee/modules/team/*.js",
-    paths.tmp + "coffee/modules/wiki/*.js",
-    paths.tmp + "coffee/modules/admin/*.js",
-    paths.tmp + "coffee/modules/projects/*.js",
-    paths.tmp + "coffee/modules/locales/*.js",
-    paths.tmp + "coffee/modules/base/*.js",
-    paths.tmp + "coffee/modules/resources/*.js",
-    paths.tmp + "coffee/modules/user-settings/*.js",
-    paths.tmp + "coffee/modules/integrations/*.js",
-    paths.tmp + "plugins/**/*.js"
+paths.coffee_order = [
+    paths.app + "coffee/app.coffee",
+    paths.app + "coffee/*.coffee",
+    paths.app + "coffee/modules/controllerMixins.coffee",
+    paths.app + "coffee/modules/*.coffee",
+    paths.app + "coffee/modules/common/*.coffee",
+    paths.app + "coffee/modules/backlog/*.coffee",
+    paths.app + "coffee/modules/taskboard/*.coffee",
+    paths.app + "coffee/modules/kanban/*.coffee",
+    paths.app + "coffee/modules/issues/*.coffee",
+    paths.app + "coffee/modules/userstories/*.coffee",
+    paths.app + "coffee/modules/tasks/*.coffee",
+    paths.app + "coffee/modules/team/*.coffee",
+    paths.app + "coffee/modules/wiki/*.coffee",
+    paths.app + "coffee/modules/admin/*.coffee",
+    paths.app + "coffee/modules/projects/*.coffee",
+    paths.app + "coffee/modules/locales/*.coffee",
+    paths.app + "coffee/modules/base/*.coffee",
+    paths.app + "coffee/modules/resources/*.coffee",
+    paths.app + "coffee/modules/user-settings/*.coffee",
+    paths.app + "coffee/modules/integrations/*.coffee",
+    paths.app + "plugins/*.coffee",
+    paths.app + "plugins/**/*.coffee"
 ];
 
 paths.libs = [
@@ -267,17 +274,16 @@ gulp.task("locales", function() {
 
 gulp.task("coffee", function() {
     return gulp.src(paths.coffee)
+        .pipe(order(paths.coffee_order, {base: '.'}))
+        .pipe(sourcemaps.init())
         .pipe(cache(coffee()))
         .on("error", function(err) {
             console.log(err.toString());
             this.emit("end");
         })
-        .pipe(gulp.dest(paths.tmp));
-});
-
-gulp.task("plugins-js", function() {
-    return gulp.src(paths.app + "plugins/**/*.js")
-        .pipe(gulp.dest(paths.tmp));
+        .pipe(concat("app.js"))
+        .pipe(sourcemaps.write('./maps'))
+        .pipe(gulp.dest(paths.dist + "js/"));
 });
 
 gulp.task("jslibs-watch", function() {
@@ -293,22 +299,19 @@ gulp.task("jslibs-deploy", function() {
         .pipe(sourcemaps.init())
         .pipe(concat("libs.js"))
         .pipe(uglify({mangle:false, preserveComments: false}))
-        .pipe(sourcemaps.write("./"))
+        .pipe(sourcemaps.write("./maps"))
         .pipe(gulp.dest(paths.dist + "js/"));
 });
 
-gulp.task("app-watch", ["coffee", "plugins-js", "conf", "locales", "app-loader"], function() {
-    return gulp.src(paths.js)
-        .pipe(concat("app.js"))
-        .pipe(gulp.dest(paths.dist + "js/"));
-});
+gulp.task("app-watch", ["coffee", "conf", "locales", "app-loader"]);
 
-gulp.task("app-deploy", ["coffee", "plugins-js", "conf", "locales", "app-loader"], function() {
-    return gulp.src(paths.js)
+gulp.task("app-deploy", ["coffee", "conf", "locales", "app-loader"], function() {
+    return gulp.src(paths.dist)
+        .pipe(order(paths.coffee_order, {base: '.'}))
         .pipe(sourcemaps.init())
             .pipe(concat("app.js"))
             .pipe(uglify({mangle:false, preserveComments: false}))
-        .pipe(sourcemaps.write("./"))
+        .pipe(sourcemaps.write("./maps"))
         .pipe(gulp.dest(paths.dist + "js/"));
 });
 
@@ -370,6 +373,7 @@ gulp.task("express", function() {
     app.use("/fonts", express.static(__dirname + "/dist/fonts"));
     app.use("/plugins", express.static(__dirname + "/dist/plugins"));
     app.use("/locales", express.static(__dirname + "/dist/locales"));
+    app.use("/maps", express.static(__dirname + "/dist/maps"));
 
     app.all("/*", function(req, res, next) {
         //Just send the index.html for other files to support HTML5Mode
