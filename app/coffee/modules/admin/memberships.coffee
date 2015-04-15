@@ -235,7 +235,7 @@ module.directive("tgMembershipsRowAvatar", ["$log", "$tgTemplate", MembershipsRo
 ## Member IsAdminCheckbox Directive
 #############################################################################
 
-MembershipsRowAdminCheckboxDirective = ($log, $repo, $confirm, $template) ->
+MembershipsRowAdminCheckboxDirective = ($log, $repo, $confirm, $template, $compile) ->
     template = $template.get("admin/admin-memberships-row-checkbox.html", true)
 
     link = ($scope, $el, $attrs) ->
@@ -243,6 +243,8 @@ MembershipsRowAdminCheckboxDirective = ($log, $repo, $confirm, $template) ->
             ctx = {inputId: "is-admin-#{member.id}"}
 
             html = template(ctx)
+            html = $compile(html)($scope)
+
             $el.html(html)
 
         if not $attrs.tgMembershipsRowAdminCheckbox?
@@ -273,8 +275,8 @@ MembershipsRowAdminCheckboxDirective = ($log, $repo, $confirm, $template) ->
     return {link: link}
 
 
-module.directive("tgMembershipsRowAdminCheckbox", ["$log", "$tgRepo", "$tgConfirm", "$tgTemplate",
-                                                   MembershipsRowAdminCheckboxDirective])
+module.directive("tgMembershipsRowAdminCheckbox", ["$log", "$tgRepo", "$tgConfirm",
+    "$tgTemplate", "$compile", MembershipsRowAdminCheckboxDirective])
 
 
 #############################################################################
