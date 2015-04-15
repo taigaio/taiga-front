@@ -4,7 +4,6 @@ $top-icon-color: #11241f;
     background: rgba($black, .5);
     display: flex;
     justify-content: space-between;
-    overflow: hidden;
     position: relative;
     &:after {
         background: url('../images/menu-vert.png') repeat top left;
@@ -56,6 +55,9 @@ $top-icon-color: #11241f;
             svg path {
                 fill: $white;
             }
+            +.dropdown {
+                display: block;
+            }
         }
         &.user-avatar {
             padding: 0;
@@ -78,5 +80,22 @@ $top-icon-color: #11241f;
             fill: $dark-taiga;
             transition: all .2s;
         }
+    }
+    .top-nav-dropdown {
+        position: relative;
+    }
+    %dropdown {
+        background: rgba($black, .85);
+        border: 1px solid $grayer;
+        border-radius: 2px;
+        display: none;
+        left: 0;
+        position: absolute;
+        top: 2rem;
+        width: 20vh;
+        z-index: 99;
+    }
+    .project-list {
+        @extend %dropdown;
     }
 }
