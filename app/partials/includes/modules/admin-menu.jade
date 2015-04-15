@@ -24,7 +24,7 @@ section.admin-menu
                 a(href="" tg-nav="project-admin-third-parties-webhooks:project=project.slug")
                     span.title(translate="ADMIN.MENU.INTEGRATIONS")
                     span.icon.icon-arrow-right
-            li#adminmenu-contrib(ng-show="contribPlugins.length > 0")
-                a(href="" tg-nav="project-admin-contrib:project=project.slug,plugin=contribPlugins[0].slug")
+            li#adminmenu-contrib(ng-show="adminPlugins.length > 0")
+                a(href="" tg-nav="project-admin-contrib:project=project.slug,plugin=adminPlugins[0].slug")
                     span.title(translate="COMMON.PLUGINS")
                     span.icon.icon-arrow-right
