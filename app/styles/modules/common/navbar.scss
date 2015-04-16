@@ -55,7 +55,7 @@ $top-icon-color: #11241f;
             svg path {
                 fill: $white;
             }
-            +.dropdown {
+            +.project-list {
                 display: block;
             }
         }
@@ -85,8 +85,6 @@ $top-icon-color: #11241f;
         position: relative;
     }
     %dropdown {
-        background: rgba($black, .85);
-        border: 1px solid $grayer;
         border-radius: 2px;
         display: none;
         left: 0;
@@ -97,5 +95,10 @@ $top-icon-color: #11241f;
     }
     .project-list {
         @extend %dropdown;
+        background: rgba($blackish, .9);
+        border: 1px solid $black;
+        ul {
+            @include arrow('bottom', rgba($blackish, .9), $black, 2px, 15px);
+        }
     }
 }

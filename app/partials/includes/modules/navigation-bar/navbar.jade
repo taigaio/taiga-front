@@ -10,10 +10,11 @@ nav.navbar
         div.top-nav-dropdown
             a(href="", title="Projects")
                 include ../../../../svg/projects.svg
-            ul.project-list
-                - for (var x = 0; x < 5; x++)
-                    li
-                        a(href="#", title="{{ project.title }}") Project 1
+            div.project-list
+                ul
+                    - for (var x = 0; x < 5; x++)
+                        li
+                            a(href="#", title="{{ project.title }}") Project 1
         a(href="#", title="Organizations")
             include ../../../../svg/organizations.svg
         a.user-avatar(href="#", title="{{ user.fullname }} profile")

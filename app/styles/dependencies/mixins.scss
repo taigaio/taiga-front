@@ -75,3 +75,29 @@
         width: #{$arrow-width};
     }
 }
+
+@mixin arrow($arrow-direction, $background-color, $border-color, $border-width, $border-size) {
+    &:after,
+    &:before {
+        #{$arrow-direction}: 100%;
+        left: 50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+    }
+    &:after {
+        border-color: rgba(136, 183, 213, 0);
+        border-#{$arrow-direction}-color: $background-color;
+        border-width: $border-size;
+        margin-left: -$border-size;
+    }
+    &:before {
+        border-color: rgba(0, 0, 0, 0);
+        border-#{$arrow-direction}-color: $border-color;
+        border-width: calc($border-size + $border-width);
+        margin-left: calc(-$border-size + $border-width);
+    }
+}
