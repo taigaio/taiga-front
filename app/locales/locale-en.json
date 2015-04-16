@@ -267,7 +267,6 @@
             "TYPE_SERVICE_SECRET": "Type the service secret key",
             "SAVE": "Save Webhook",
             "CANCEL": "Cancel Webhook",
-            "TOGGLE_HISTORY": "Toggle history",
             "SHOW_HISTORY": "(Show history)",
             "TEST": "Test Webhook",
             "EDIT": "Edit Webhook",
@@ -279,7 +278,9 @@
             "RESPONSE": "Response",
             "DATE": "DD MMM YYYY [at] hh:mm:ss",
             "ACTION_HIDE_HISTORY": "(Hide history)",
+            "ACTION_HIDE_HISTORY_TITLE": "Hide history details",
             "ACTION_SHOW_HISTORY": "(Show history)",
+            "ACTION_SHOW_HISTORY_TITLE": "Show history details",
             "WEBHOOK_NAME": "Webhook '{{name}}'"
         },
         "CUSTOM_ATTRIBUTES": {
@@ -482,7 +483,7 @@
         "TOTAL_POINTS": "total",
         "ADD": "+ Add a new User Story",
         "ADD_BULK": "Add some new User Stories in bulk",
-        "PROMOTED": "This US has been promoted from Issue",
+        "PROMOTED": "This US has been promoted from Issue:",
         "TITLE_LINK_GO_TO_ISSUE": "Go to issue",
         "EXTERNAL_REFERENCE": "This US has been created from",
         "GO_TO_EXTERNAL_REFERENCE": "Go to origin",
@@ -805,7 +806,7 @@
         "ERROR_PASSWORD_MATCH": "The passwords doesn't match"
     },
     "USER_SETTINGS": {
-        "AVATAR_MAX_SIZE": "[Max, size: {{maxFileSize}}}",
+        "AVATAR_MAX_SIZE": "[Max. size: {{maxFileSize}}]",
         "MENU": {
             "SECTION_TITLE": "User Settings",
             "USER_PROFILE": "User profile",
@@ -828,7 +829,7 @@
         }
     },
     "USER_PROFILE": {
-        "IMAGE_HELP": "The image will be cropped to 80x80px.<br>",
+        "IMAGE_HELP": "The image will be cropped to 80x80px.<br />",
         "ACTION_CHANGE_IMAGE": "Change",
         "ACTION_USE_GRAVATAR": "Use gravatar image",
         "ACTION_DELETE_ACCOUNT": "Delete Taiga account",

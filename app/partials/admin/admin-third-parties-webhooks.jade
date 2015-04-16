@@ -42,7 +42,7 @@ div.wrapper.roles(ng-controller="WebhooksController as ctrl",
                                 span(ng-bind="webhook.name")
                             div.webhook-url
                                 span(ng-bind="webhook.url")
-                                a.show-history.toggle-history(href="", title="{{'ADMIN.WEBHOOKS.TOOGLE_HISTORY' | translate}}", ng-show="webhook.logs_counter", translate="ADMIN.WEBHOOKS.SHOW_HISTORY")
+                                a.show-history.toggle-history(href="", title="{{'ADMIN.WEBHOOKS.SHOW_HISTORY_TITLE' | translate}}", ng-show="webhook.logs_counter", translate="ADMIN.WEBHOOKS.SHOW_HISTORY")
 
                             div.webhook-options
                                 div.webhook-options-wrapper

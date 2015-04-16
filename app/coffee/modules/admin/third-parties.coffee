@@ -108,12 +108,16 @@ WebhookDirective = ($rs, $repo, $confirm, $loading, $translate) ->
         updateShowHideHistoryText = () ->
             textElement = $el.find(".toggle-history")
             historyElement = textElement.parents(".single-webhook-wrapper").find(".webhooks-history")
+
             if historyElement.hasClass("open")
                 text = $translate.instant("ADMIN.WEBHOOKS.ACTION_HIDE_HISTORY")
-                textElement.text(text)
+                title = $translate.instant("ADMIN.WEBHOOKS.ACTION_HIDE_HISTORY_TITLE")
             else
                 text = $translate.instant("ADMIN.WEBHOOKS.ACTION_SHOW_HISTORY")
-                textElement.text(text)
+                title = $translate.instant("ADMIN.WEBHOOKS.ACTION_SHOW_HISTORY_TITLE")
+
+            textElement.text(text)
+            textElement.prop("title", title)
 
         showVisualizationMode = () ->
             $el.find(".edition-mode").addClass("hidden")
