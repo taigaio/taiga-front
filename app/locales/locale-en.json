@@ -145,10 +145,10 @@
             "DUMP_READY": "Your dump file is ready!",
             "LOADING_MESSAGE": "Please don't close this page.",
             "ASYNC_MESSAGE": "We will send you an email when ready.",
-            "SYNC_MESSAGE": "If the download doesn't start automatically click <a href='{{url}}' download title='Download the dump file'>here.",
-            "ERROR": "Our oompa loompas have some problems generating your dump. Please try it again.",
-            "ERROR_BUSY": "Sorry, our oompa loompas are very busy right now. Please try again in a few minutes.",
-            "ERROR_MESSAGE": "Our oompa loompas have some problems generating your dump: {{message}}"
+            "SYNC_MESSAGE": "If the download doesn't start automatically click <a href='{{url}}' download title='Download the dump file'>here</a>.",
+            "ERROR": "Our Oompa Loompas have some problems generating your dump. Please try it again.",
+            "ERROR_BUSY": "Sorry, our Oompa Loompas are very busy right now. Please try again in a few minutes.",
+            "ERROR_MESSAGE": "Our Oompa Loompas have some problems generating your dump: {{message}}"
         },
         "MODULES": {
             "TITLE": "Modules",
@@ -224,9 +224,9 @@
         },
         "PROJECT_VALUES_TYPES": {
             "TITLE": "Types",
-            "SUBTITLE": "Specify the types your user stories could be estimated to",
+            "SUBTITLE": "Specify the types your issues could be",
             "ISSUE_TITLE": "Issues types",
-	    "ACTION_ADD": "Add new {{objName}}"
+    	    "ACTION_ADD": "Add new {{objName}}"
         },
         "ROLES": {
             "SECTION_NAME": "Roles - {{projectName}}",
@@ -241,7 +241,7 @@
         "THIRD_PARTIES": {
             "SECRET_KEY": "Secret key",
             "PAYLOAD_URL": "Payload URL",
-            "VALID_IPS": "Valid origin ips (separated by ,)"
+            "VALID_IPS": "Valid origin IPs (separated by ,)"
         },
         "BITBUCKET": {
             "SECTION_NAME": "Bitbucket",
@@ -409,9 +409,9 @@
             "DESCRIPTION": "This process can take a while, please keep the window open.",
             "ASYNC_IN_PROGRESS_TITLE": "Our Oompa Loompas are importing your project",
             "ASYNC_IN_PROGRESS_MESSAGE": "This process could take a few minutes <br/> We will send you an email when ready",
-            "ERROR": "Our oompa loompas have some problems importing your dump data. Please try again.",
-            "ERROR_TOO_MANY_REQUEST": "Sorry, our oompa loompas are very busy right now. Please try again in a few minutes.",
-            "ERROR_MESSAGE": "Our oompa loompas have some problems importing your dump data: {{error_message}}",
+            "ERROR": "Our Oompa Loompas have some problems importing your dump data. Please try again.",
+            "ERROR_TOO_MANY_REQUEST": "Sorry, our Oompa Loompas are very busy right now. Please try again in a few minutes.",
+            "ERROR_MESSAGE": "Our Oompa Loompas have some problems importing your dump data: {{error_message}}",
             "SYNC_SUCCESS": "Your project has been imported successfuly"
         }
     },
@@ -424,7 +424,7 @@
         "DELETE_PROJECT": {
             "TITLE": "Delete project",
             "QUESTION": "Are you sure you want to delete this project?",
-            "SUBTITLE": "All project data US/Tasks/Issues/Sprints/WikiPages will be lost! :-(",
+            "SUBTITLE": "All project data (user stories, tasks, issues, sprints and wiki pages) will be lost! :-(",
             "CONFIRM": "Yes, I'm really sure"
         },
         "ASSIGNED_TO": {
@@ -637,8 +637,8 @@
     "NOTIFICATION": {
         "OK": "Everything is ok",
         "WARNING": "Oops, something happened...",
-        "WARNING_TEXT": "Our oompa Loompas are sad, your changes were not saved!",
-        "SAVED": "Our oompa Loompas saved all your changes!",
+        "WARNING_TEXT": "Our Oompa Loompas are sad, your changes were not saved!",
+        "SAVED": "Our Oompa Loompas saved all your changes!",
         "CLOSE": "Close notification",
         "MAIL": "Notifications By Mail",
         "ASK_DELETE": "Are you sure you want to delete?"
@@ -693,7 +693,7 @@
     },
     "INVITATION_LOGIN_FORM": {
         "NOT_FOUND": "<strong>Ooops, we have a problem</strong><br />Our Oompa Loompas can't find your invitation.",
-        "SUCCESS": "You've successfully joined this project, Welcome to {{project_name}",
+        "SUCCESS": "You've successfully joined this project, Welcome to {{project_name}}",
         "ERROR": "According to our Oompa Loompas, your are not registered yet or typed an invalid password."
     },
     "REGISTER_FORM": {
