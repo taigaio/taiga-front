@@ -76,7 +76,7 @@
     }
 }
 
-@mixin arrow($arrow-direction, $background-color, $border-color, $border-width, $border-size) {
+@mixin arrow($arrow-direction, $border-color, $background-color, $border-width, $border-size) {
     &:after,
     &:before {
         #{$arrow-direction}: 100%;
@@ -89,15 +89,15 @@
         pointer-events: none;
     }
     &:after {
-        border-color: rgba(136, 183, 213, 0);
+        border-color: rgba($background-color, 0);
         border-#{$arrow-direction}-color: $background-color;
-        border-width: $border-size;
-        margin-left: -$border-size;
+        border-width: #{$border-size}px;
+        margin-left: -#{$border-size}px;
     }
     &:before {
-        border-color: rgba(0, 0, 0, 0);
+        border-color: rgba($border-color, 0);
         border-#{$arrow-direction}-color: $border-color;
-        border-width: calc($border-size + $border-width);
-        margin-left: calc(-$border-size + $border-width);
+        border-width: calc(#{$border-size}px + #{$border-width}px);
+        margin-left: calc(-#{$border-size}px + #{$border-width}px);
     }
 }

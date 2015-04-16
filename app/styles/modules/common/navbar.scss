@@ -1,5 +1,3 @@
-$top-icon-color: #11241f;
-
 .navbar {
     background: rgba($black, .5);
     display: flex;
@@ -25,7 +23,7 @@ $top-icon-color: #11241f;
         display: flex;
     }
     .nav-left {
-        a {
+        >a {
             padding: .5rem 1.5rem;
             &.logo {
                 background: rgba($black, .2);
@@ -44,6 +42,11 @@ $top-icon-color: #11241f;
         a {
             padding: .5rem 2rem;
         }
+        .dropdown-project-list {
+            a {
+                padding: .8rem .5rem;
+            }
+        }
     }
     a {
         color: $white;
@@ -55,9 +58,7 @@ $top-icon-color: #11241f;
             svg path {
                 fill: $white;
             }
-            +.project-list {
-                display: block;
-            }
+
         }
         &.user-avatar {
             padding: 0;
@@ -83,22 +84,52 @@ $top-icon-color: #11241f;
     }
     .top-nav-dropdown {
         position: relative;
+        &:hover {
+            .dropdown-project-list {
+                display: block;
+            }
+        }
     }
     %dropdown {
         border-radius: 2px;
         display: none;
-        left: 0;
+        left: calc(50% - #{$dropdown-width}/2);
+        min-width: $dropdown-width;
         position: absolute;
-        top: 2rem;
-        width: 20vh;
+        top: 2.5rem;
         z-index: 99;
     }
-    .project-list {
-        @extend %dropdown;
-        background: rgba($blackish, .9);
-        border: 1px solid $black;
-        ul {
-            @include arrow('bottom', rgba($blackish, .9), $black, 2px, 15px);
+}
+
+.dropdown-project-list {
+    @extend %dropdown;
+    background: $blackish;
+    border: 1px solid $black;
+    padding: .3rem;
+    ul {
+        @include arrow('bottom', $blackish, $blackish, 1, 12);
+        margin: 0;
+        margin-bottom: .5rem;
+        padding: 0;
+    }
+    a {
+        color: $gray-light;
+        display: block;
+        &:hover {
+            background: rgba($white, .1);
+            color: $fresh-taiga;
+        }
+        &.see-more-projects-btn,
+        &.create-project-btn {
+            color: $white;
+            padding: .5rem;
+            text-align: center;
+            &:hover {
+                color: $white;
+            }
+        }
+        &.see-more-projects-btn {
+            margin-bottom: .3rem;
         }
     }
 }
