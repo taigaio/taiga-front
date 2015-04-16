@@ -1,0 +1,9 @@
+[main]
+host = https://www.transifex.com
+lang_map = sr@latin:sr_Latn, zh_CN:zh_Hans, zh_TW:zh_Hant
+
+[taiga-front.locale-enjson]
+file_filter = app/locales/locale-<lang>.json
+source_file = app/locales/locale-en.json
+source_lang = en
+type = PO
