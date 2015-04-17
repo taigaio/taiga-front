@@ -33,9 +33,7 @@ MAX_MEMBERSHIP_FIELDSETS = 4
 CreateMembersDirective = ($rs, $rootScope, $confirm, $loading ,lightboxService, $compile) ->
     extraTextTemplate = """
     <fieldset class="extra-text">
-        <textarea placeholder="{{'LIGHTBOX.CREATE_MEMBER.PLACEHOLDER_INVITATION_TEXT' | translate}}"
-            maxlength="255">
-        </textarea>
+        <textarea placeholder="{{'LIGHTBOX.CREATE_MEMBER.PLACEHOLDER_INVITATION_TEXT' | translate}}" maxlength="255"></textarea>
     </fieldset>
     """
 
@@ -61,7 +59,7 @@ CreateMembersDirective = ($rs, $rootScope, $confirm, $loading ,lightboxService, 
             return $compile(template(ctx))($scope)
 
         resetForm = ->
-            $el.find("form textarea").remove("")
+            $el.find("form textarea").remove()
             $el.find("form .add-member-wrapper").remove()
 
             invitations = $el.find(".add-member-forms")
