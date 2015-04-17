@@ -317,11 +317,6 @@
             "LABEL_ISSUE_TYPE": "Default value for issue type selector",
             "LABEL_ISSUE_STATUS": "Default value for issue status selector"
         },
-        "PROJECT": {
-            "COLORS": {
-                "ACTION_NEW_STATUS": "+ Add new status"
-            }
-        },
         "CSV": {
             "TITLE": "{{csvType}} reports",
             "DOWNLOAD": "Download CSV",
@@ -351,15 +346,6 @@
             "INTEGRATIONS": "Integrations",
             "PLUGINS": "Plugins"
         },
-        "SUBMENU": {
-            "ROLE_UX": "UX",
-            "ROLE_PRODUCT_OWNER": "Product Owner",
-            "ROLE_DESIGNER": "Designer",
-            "ROLE_BACK": "Back",
-            "ROLE_FRONT": "Front",
-            "ACTION_NEW_ROLE": "+ New role",
-            "TITLE_ACTION_NEW_ROLE": "Add new role"
-        },
         "SUBMENU_PROJECT_VALUES": {
             "STATUS": "Status",
             "POINTS": "Points",
@@ -372,7 +358,9 @@
             "TITLE": "Project Profile"
         },
         "SUBMENU_ROLES": {
-            "TITLE": "Roles"
+            "TITLE": "Roles",
+            "ACTION_NEW_ROLE": "+ New role",
+            "TITLE_ACTION_NEW_ROLE": "Add new role"
         },
         "SUBMENU_THIDPARTIES": {
             "TITLE": "Services"
