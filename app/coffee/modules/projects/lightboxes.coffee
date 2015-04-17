@@ -125,7 +125,15 @@ CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $project
             event.preventDefault()
             lightboxService.close($el)
 
-    return {link:link}
+
+    directive = {
+        link: link,
+        templateUrl: "project/wizard-create-project.html"
+        scope: {}
+    }
+
+    return directive
+
 
 module.directive("tgLbCreateProject", ["$rootScope", "$tgRepo", "$tgConfirm", "$location", "$tgNavUrls",
                                        "$tgResources", "$projectUrl", "$tgLoading", "lightboxService", "$cacheFactory", "$translate", CreateProject])

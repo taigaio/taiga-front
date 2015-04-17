@@ -1,0 +1,17 @@
+nav.navbar
+    div.nav-left
+        a.logo(href="#", tg-nav="home", title="Dashboard")
+            include ../../svg/logo.svg
+
+        //a(href="#", title="Discover trending projects") Discover
+        a(href="https://taiga.io/support/", target="_blank", title="Taiga Support Page") Help
+
+    div.nav-right
+        a(href="", tg-nav="home", title="Dashboard")
+            include ../../svg/dashboard.svg
+
+        div.topnav-dropdown-wrapper(tg-dropdown-project-list)
+        //div.topnav-dropdown-wrapper(tg-dropdown-organization-list)
+        div.topnav-dropdown-wrapper(tg-dropdown-user)
+
+div.wizard-create-project(tg-lb-create-project)

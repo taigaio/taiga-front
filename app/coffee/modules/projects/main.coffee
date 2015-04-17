@@ -34,10 +34,11 @@ class ProjectsController extends taiga.Controller
         "$tgLocation",
         "$appTitle",
         "$projectUrl",
+        "$tgConfig",
         "tgLoader"
     ]
 
-    constructor: (@scope, @q, @rs, @rootscope, @navUrls, @auth, @location, @appTitle, @projectUrl,
+    constructor: (@scope, @q, @rs, @rootscope, @navUrls, @auth, @location, @appTitle, @projectUrl, @config
                   tgLoader) ->
         @appTitle.set("Projects")
 
@@ -71,6 +72,12 @@ class ProjectsController extends taiga.Controller
     logout: ->
         @auth.logout()
         @location.path(@navUrls.resolve("login"))
+
+    isFeedbackEnabled: ->
+        return @config.get("feedbackEnabled")
+
+    sendFeedback: ->
+        @rootscope.$broadcast("feedback:show")
 
 module.controller("ProjectsController", ProjectsController)
 

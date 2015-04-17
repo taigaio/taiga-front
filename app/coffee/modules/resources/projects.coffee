@@ -37,7 +37,7 @@ resourceProvider = ($config, $repo, $http, $urls, $auth, $q, $translate) ->
         return $repo.queryMany("projects")
 
     service.listByMember = (memberId) ->
-        params = {"member": memberId}
+        params = {"member": memberId, "user_order": 1}
         return $repo.queryMany("projects", params)
 
     service.templates = ->
@@ -53,6 +53,10 @@ resourceProvider = ($config, $repo, $http, $urls, $auth, $q, $translate) ->
 
     service.stats = (projectId) ->
         return $repo.queryOneRaw("projects", "#{projectId}/stats")
+
+    service.bulkUpdateOrder = (bulkData) ->
+        url = $urls.resolve("bulk-update-projects-order")
+        return $http.post(url, bulkData)
 
     service.regenerate_userstories_csv_uuid = (projectId) ->
         url = "#{$urls.resolve("projects")}/#{projectId}/regenerate_userstories_csv_uuid"

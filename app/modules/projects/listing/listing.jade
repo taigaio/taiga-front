@@ -1,0 +1,11 @@
+a.create-project-btn.button-green(href="#", ng-click="vm.newProject()", title="Create project") Create project
+
+h2 Esto es sortable y persiste en el servidor! ;)
+
+ul.js-sortable
+    li(tg-bind-scope, ng-repeat="project in vm.projects.all")
+        span Private: {{project.is_private}}, tags: {{project.tags}}, link:
+
+        a(href="#",
+            ng-bind="::project.name"
+            tg-nav="project:project=project.slug")

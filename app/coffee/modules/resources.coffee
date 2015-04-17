@@ -40,6 +40,7 @@ urls = {
     "stats": "/users/%s/stats"
 
     # User - Notification
+    "permissions": "/permissions"
     "notify-policies": "/notify-policies"
 
     # User - Storage

@@ -57,9 +57,7 @@ FeedbackDirective = ($lightboxService, $repo, $confirm, $loading)->
         $el.on "submit", "form", submit
 
         $scope.$on "feedback:show", ->
-            $scope.$apply ->
-                $scope.feedback = {}
-
+            $scope.feedback = {}
             $lightboxService.open($el)
             $el.find("textarea").focus()
 

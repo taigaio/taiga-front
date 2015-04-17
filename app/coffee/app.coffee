@@ -39,7 +39,10 @@ taiga.sessionId = taiga.generateUniqueSessionIdentifier()
 configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEventsProvider, tgLoaderProvider,
              $compileProvider, $translateProvider) ->
     $routeProvider.when("/",
-        {templateUrl: "project/projects.html", resolve: {loader: tgLoaderProvider.add()}})
+        {templateUrl: "home/home.html", resolve: {loader: tgLoaderProvider.add()}})
+
+    $routeProvider.when("/projects/",
+        {templateUrl: "projects/projects.html", resolve: {loader: tgLoaderProvider.add()}})
 
     $routeProvider.when("/project/:pslug/",
         {templateUrl: "project/project.html"})
@@ -317,6 +320,8 @@ modules = [
     "taigaEvents",
 
     # Specific Modules
+    "taigaNavigationBar",
+    "taigaProjects",
     "taigaRelatedTasks",
     "taigaBacklog",
     "taigaTaskboard",

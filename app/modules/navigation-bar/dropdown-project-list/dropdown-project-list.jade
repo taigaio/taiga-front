@@ -1,0 +1,12 @@
+a(href="", title="Projects")
+    include ../../../svg/projects.svg
+
+div.navbar-dropdown.dropdown-project-list
+    ul
+        a(href="#",
+            ng-repeat="project in vm.projects.recents",
+            ng-bind="::project.name"
+            tg-nav="project:project=project.slug")
+
+    a.see-more-projects-btn.button-gray(tg-nav="projects", href="#", title="See more projects") See more
+    a.create-project-btn.button-green(href="#", ng-click="vm.newProject()", title="Create project") Create project

@@ -15,10 +15,7 @@ html(lang="en")
         //include partials/includes/modules/projects-nav
         include partials/includes/components/notification-message
 
-        include partials/includes/modules/navigation-bar/navbar
-
-        //- the content of nav.menu is in coffe.modules.base TaigaMain directive
-        //nav.menu.hidden(tg-project-menu)
+        div(tg-navigation-bar)
 
         div.master(ng-view)
 
