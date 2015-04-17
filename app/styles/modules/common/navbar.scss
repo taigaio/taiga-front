@@ -42,7 +42,7 @@
         a {
             padding: .5rem 2rem;
         }
-        .dropdown-project-list {
+        .navbar-dropdown {
             a {
                 padding: .8rem .5rem;
             }
@@ -82,10 +82,10 @@
             transition: all .2s;
         }
     }
-    .top-nav-dropdown {
+    .topnav-dropdown-wrapper {
         position: relative;
         &:hover {
-            .dropdown-project-list {
+            .navbar-dropdown {
                 display: block;
             }
         }
@@ -101,11 +101,18 @@
     }
 }
 
-.dropdown-project-list {
+.navbar-dropdown {
     @extend %dropdown;
     background: $blackish;
     border: 1px solid $black;
     padding: .3rem;
+    &.dropdown-user {
+        left: calc(50% - 230px/2);
+        min-width: 230px;
+        ul {
+            margin-bottom: 0;
+        }
+    }
     ul {
         @include arrow('bottom', $blackish, $blackish, 1, 12);
         margin: 0;
@@ -120,6 +127,7 @@
             color: $fresh-taiga;
         }
         &.see-more-projects-btn,
+        &.create-organization-btn,
         &.create-project-btn {
             color: $white;
             padding: .5rem;
@@ -132,4 +140,11 @@
             margin-bottom: .3rem;
         }
     }
+}
+
+// Generated with Bounce.js. Edit at http://goo.gl/yZlDYR
+
+@keyframes dropdownFade {
+    0% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+    100% { opacity: 0; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -400, 0, 0, 1); }
 }

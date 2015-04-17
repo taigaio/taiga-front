@@ -7,18 +7,18 @@ nav.navbar
     div.nav-right
         a(href="", title="Dashboard")
             include ../../../../svg/dashboard.svg
-        div.top-nav-dropdown
+        div.topnav-dropdown-wrapper
             a(href="", title="Projects")
                 include ../../../../svg/projects.svg
-            div.dropdown-project-list
-                ul
-                    - for (var x = 0; x < 9; x++)
-                        li
-                            a(href="#", title="{{ project.title }}") Project 1
-                a.see-more-projects-btn.button-gray(href="#", title="See more projects") See more
-                a.create-project-btn.button-green(href="#", title="Create project") Create project
-        a(href="#", title="Organizations")
-            include ../../../../svg/organizations.svg
-        a.user-avatar(href="#", title="{{ user.fullname }} profile")
-            span Sebastián Sanchís
-            img(src="https://s3.amazonaws.com/uifaces/faces/twitter/brad_frost/128.jpg", alt="{{ user.fullname }} picture")
+            include dropdown-project-list
+
+        div.topnav-dropdown-wrapper
+            a(href="#", title="Organizations")
+                include ../../../../svg/organizations.svg
+            include dropdown-organization-list
+
+        div.topnav-dropdown-wrapper
+            a.user-avatar(href="#", title="{{ user.fullname }} profile")
+                span Sebastián Sanchís
+                img(src="https://s3.amazonaws.com/uifaces/faces/twitter/brad_frost/128.jpg", alt="{{ user.fullname }} picture")
+             include dropdown-user

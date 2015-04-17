@@ -1,0 +1,7 @@
+div.navbar-dropdown.dropdown-project-list
+    ul
+        - for (var x = 0; x < 9; x++)
+            li
+                a(href="#", title="{{ project.title }}") Project 1
+    a.see-more-projects-btn.button-gray(href="#", title="See more projects") See more
+    a.create-project-btn.button-green(href="#", title="Create project") Create project
