@@ -86,6 +86,7 @@
         position: relative;
         &:hover {
             .navbar-dropdown {
+                animation: dropdownFade .2s cubic-bezier(.09, 0, .99, .01) both;
                 display: block;
             }
         }
@@ -114,7 +115,7 @@
         }
     }
     ul {
-        @include arrow('bottom', $blackish, $blackish, 1, 12);
+        @include arrow('bottom', $blackish, $blackish, 1, 8);
         margin: 0;
         margin-bottom: .5rem;
         padding: 0;
@@ -145,6 +146,14 @@
 // Generated with Bounce.js. Edit at http://goo.gl/yZlDYR
 
 @keyframes dropdownFade {
-    0% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-    100% { opacity: 0; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -400, 0, 0, 1); }
+    0% {
+        opacity: 0;
+        transform: translateY(-.25rem);
+    }
+    60% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0);
+    }
 }
