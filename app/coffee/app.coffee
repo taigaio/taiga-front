@@ -125,11 +125,11 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         {templateUrl: "contrib/main.html"})
 
     # User settings
-    $routeProvider.when("/project/:pslug/user-settings/user-profile",
+    $routeProvider.when("/user-settings/user-profile",
         {templateUrl: "user/user-profile.html"})
-    $routeProvider.when("/project/:pslug/user-settings/user-change-password",
+    $routeProvider.when("/user-settings/user-change-password",
         {templateUrl: "user/user-change-password.html"})
-    $routeProvider.when("/project/:pslug/user-settings/mail-notifications",
+    $routeProvider.when("/user-settings/mail-notifications",
         {templateUrl: "user/mail-notifications.html"})
     $routeProvider.when("/change-email/:email_token",
         {templateUrl: "user/change-email.html"})

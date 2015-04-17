@@ -49,22 +49,7 @@ class UserChangePasswordController extends mixOf(taiga.Controller, taiga.PageMix
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls,
                   @auth, @translate) ->
         @scope.sectionName = @translate.instant("CHANGE_PASSWORD.SECTION_NAME")
-        @scope.project = {}
         @scope.user = @auth.getUser()
-
-        promise = @.loadInitialData()
-
-        promise.then null, @.onInitialDataError.bind(@)
-
-    loadProject: ->
-        return @rs.projects.getBySlug(@params.pslug).then (project) =>
-            @scope.projectId = project.id
-            @scope.project = project
-            @scope.$emit('project:loaded', project)
-            return project
-
-    loadInitialData: ->
-        return @.loadProject()
 
 module.controller("UserChangePasswordController", UserChangePasswordController)
 

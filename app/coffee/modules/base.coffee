@@ -103,10 +103,10 @@ urls = {
     "project-admin-contrib": "/project/:project/admin/contrib/:plugin"
 
     # User settings
-    "user-settings-user-profile": "/project/:project/user-settings/user-profile"
-    "user-settings-user-change-password": "/project/:project/user-settings/user-change-password"
-    "user-settings-user-avatar": "/project/:project/user-settings/user-avatar"
-    "user-settings-mail-notifications": "/project/:project/user-settings/mail-notifications"
+    "user-settings-user-profile": "/user-settings/user-profile"
+    "user-settings-user-change-password": "/user-settings/user-change-password"
+    "user-settings-user-avatar": "/user-settings/user-avatar"
+    "user-settings-mail-notifications": "/user-settings/mail-notifications"
 
 }
 

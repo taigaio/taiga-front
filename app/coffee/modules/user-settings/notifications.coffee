@@ -46,29 +46,14 @@ class UserNotificationsController extends mixOf(taiga.Controller, taiga.PageMixi
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls, @auth) ->
         @scope.sectionName = "USER_SETTINGS.NOTIFICATIONS.SECTION_NAME"
-        @scope.project = {}
         @scope.user = @auth.getUser()
-
         promise = @.loadInitialData()
-
         promise.then null, @.onInitialDataError.bind(@)
 
-    loadProject: ->
-        return @rs.projects.getBySlug(@params.pslug).then (project) =>
-            @scope.projectId = project.id
-            @scope.project = project
-            @scope.$emit('project:loaded', project)
-            return project
-
-    loadNotifyPolicies: ->
+    loadInitialData: ->
         return @rs.notifyPolicies.list().then (notifyPolicies) =>
             @scope.notifyPolicies = notifyPolicies
             return notifyPolicies
-
-    loadInitialData: ->
-        promise = @.loadProject()
-        promise.then(=> @.loadNotifyPolicies())
-        return promise
 
 module.controller("UserNotificationsController", UserNotificationsController)
 
