@@ -200,9 +200,8 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     $httpProvider.interceptors.push('authHttpIntercept')
 
     # If there is an error in the version throw a notify error
-    versionCheckHttpIntercept = ($q, $confirm) ->
-        versionErrorMsg = "Someone inside Taiga has changed this before and our Oompa Loompas cannot apply your changes.
-                           Please reload and apply your changes again (they will be lost)." #TODO: i18n
+    versionCheckHttpIntercept = ($q, $confirm, $translate) ->
+        versionErrorMsg = $translate.instant("ERROR.VERSION_ERROR")
 
         httpResponseError = (response) ->
             if response.status == 400 && response.data.version
@@ -216,9 +215,9 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
             responseError: httpResponseError
         }
 
-    $provide.factory("versionCheckHttpIntercept", ["$q", "$tgConfirm", versionCheckHttpIntercept])
+    $provide.factory("versionCheckHttpIntercept", ["$q", "$tgConfirm", "$translate", versionCheckHttpIntercept])
 
-    $httpProvider.interceptors.push('versionCheckHttpIntercept');
+    $httpProvider.interceptors.push('versionCheckHttpIntercept')
 
     window.checksley.updateValidators({
         linewidth: (val, width) ->
@@ -228,10 +227,6 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
                 line.length < width
 
             return valid
-    })
-
-    window.checksley.updateMessages("default", {
-        linewidth: "The subject must have a maximum size of %s"
     })
 
     $compileProvider.debugInfoEnabled(window.taigaConfig.debugInfo || false)
@@ -256,7 +251,6 @@ init = ($log, $config, $rootscope, $auth, $events, $analytics, $translate) ->
         $translate.use(user.lang) if user.lang
 
     $analytics.initialize()
-
 
 
 modules = [
