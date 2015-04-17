@@ -1,4 +1,23 @@
 #!/usr/bin/env python
+#
+# NOTE: This script is based on taiga-back manage_translations.py script
+#       (https://github.com/taigaio/taiga-back/blob/master/scripts/manage_translations.py)
+#
+# This python file contains utility scripts to manage taiga translations.
+# It has to be run inside the taiga-front git root directory (over the taiga-back env).
+#
+# The following commands are available:
+#
+# * fetch: fetch translations from transifex.com
+#
+# * commit: update resources in transifex.com with the local files
+#
+# Each command support the --languages and --resources options to limit their
+# operation to the specified language or resource. For example, to get stats
+# for Spanish in contrib.admin, run:
+#
+#  $ python scripts/manage_translations.py fetch --language=es --resources=locale
+
 
 import os
 from argparse import ArgumentParser
@@ -14,7 +33,7 @@ def _tx_resource_for_name(name):
 
 def fetch(resources=None, languages=None):
     """
-    Fetch translations from Transifex, wrap long lines, generate mo files.
+    Fetch translations from Transifex.
     """
     if not resources:
         if languages is None:
@@ -78,11 +97,11 @@ You need transifex-client, install it.
             exit(1)
 
     RUNABLE_SCRIPTS = {
-        "commit": "send .po file to transifex ('en' by default).",
-        "fetch": "get .po files from transifex and regenerate .mo files.",
+        "commit": "send .json file to transifex ('en' by default).",
+        "fetch": "get .json files from transifex.",
     }
 
-    parser = ArgumentParser(description="manage translations in taiga-back between the repo and transifex.",
+    parser = ArgumentParser(description="manage translations in taiga-front between the repo and transifex.",
                             formatter_class=RawTextHelpFormatter)
     parser.add_argument("cmd", nargs=1,
         help="\n".join(["{0} - {1}".format(c, h) for c, h in RUNABLE_SCRIPTS.items()]))
