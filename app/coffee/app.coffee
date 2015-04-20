@@ -265,7 +265,7 @@ modules = [
     "taigaRelatedTasks",
     "taigaBacklog",
     "taigaTaskboard",
-    "taigaKanban",
+    "taigaKanban"
     "taigaIssues",
     "taigaUserStories",
     "taigaTasks",
@@ -279,10 +279,9 @@ modules = [
     "taigaFeedback",
     "taigaPlugins",
     "taigaIntegrations",
-    "taigaComponents",
 
     # template cache
-    "templates",
+    "templates"
 
     # Vendor modules
     "ngRoute",
