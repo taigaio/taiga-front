@@ -159,8 +159,11 @@ IssueStatusDisplayDirective = ($template)->
 
     link = ($scope, $el, $attrs) ->
         render = (issue) ->
+            status = $scope.statusById[issue.status]
+
             html = template({
-                status: $scope.statusById[issue.status]
+                is_closed: status.is_closed
+                status: status
             })
             $el.html(html)
 

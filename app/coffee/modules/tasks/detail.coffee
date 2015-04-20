@@ -159,8 +159,11 @@ TaskStatusDisplayDirective = ($template) ->
 
     link = ($scope, $el, $attrs) ->
         render = (task) ->
+            status =  $scope.statusById[task.status]
+
             html = template({
-                status: $scope.statusById[task.status]
+                is_closed: status.is_closed
+                status: status
             })
             $el.html(html)
 
