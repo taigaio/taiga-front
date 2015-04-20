@@ -1,5 +1,5 @@
-span(translate="STATUS.OPEN", ng-if="status.is_closed")
-span(translate="STATUS.CLOSED", ng-if="!status.is_closed")
+span(translate="STATUS.OPEN", ng-if="is_closed")
+span(translate="STATUS.CLOSED", ng-if="!is_closed")
 
 span(class="us-detail-status", style!="color:<%- status.color %>")
     | <%- status.name %>
