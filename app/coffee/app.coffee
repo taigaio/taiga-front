@@ -199,23 +199,23 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
 
     $httpProvider.interceptors.push('authHttpIntercept')
 
-    # If there is an error in the version throw a notify error
-    versionCheckHttpIntercept = ($q, $confirm, $translate) ->
-        versionErrorMsg = $translate.instant("ERROR.VERSION_ERROR")
-
+    # If there is an error in the version throw a notify error.
+    # IMPROVEiMENT: Move this version error handler to USs, issues and tasks repository
+    versionCheckHttpIntercept = ($q) ->
         httpResponseError = (response) ->
             if response.status == 400 && response.data.version
-                $confirm.notify("error", versionErrorMsg, null, 10000)
-
-                return $q.reject(response)
+                # HACK: to prevent circular dependencies with [$tgConfirm, $translate]
+                $injector = angular.element("body").injector()
+                $injector.invoke(["$tgConfirm", "$translate", ($confirm, $translate) =>
+                    versionErrorMsg = $translate.instant("ERROR.VERSION_ERROR")
+                    $confirm.notify("error", versionErrorMsg, null, 10000)
+                ])
 
             return $q.reject(response)
 
-        return {
-            responseError: httpResponseError
-        }
+        return {responseError: httpResponseError}
 
-    $provide.factory("versionCheckHttpIntercept", ["$q", "$tgConfirm", "$translate", versionCheckHttpIntercept])
+    $provide.factory("versionCheckHttpIntercept", ["$q", versionCheckHttpIntercept])
 
     $httpProvider.interceptors.push('versionCheckHttpIntercept')
 
@@ -231,12 +231,16 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
 
     $compileProvider.debugInfoEnabled(window.taigaConfig.debugInfo || false)
 
-    $translateProvider.useStaticFilesLoader({
-        prefix: '/locales/locale-',
-        suffix: '.json'
-    })
+    $translateProvider
+        .useStaticFilesLoader({
+            prefix: '/locales/locale-',
+            suffix: '.json'
+        })
+        .preferredLanguage(window.taigaConfig.defaultLanguage || 'en')
 
-    $translateProvider.preferredLanguage(window.taigaConfig.defaultLanguage || 'en')
+    if not window.taigaConfig.debugInfo
+        $translateProvider.fallbackLanguage([window.taigaConfig.defaultLanguage || 'en'])
+
 
 init = ($log, $config, $rootscope, $auth, $events, $analytics, $translate) ->
     $log.debug("Initialize application")
