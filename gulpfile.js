@@ -42,7 +42,8 @@ paths.htmlPartials = [
     paths.tmp + "partials/**/*.html",
     paths.tmp + "plugins/**/*.html",
     paths.tmp + "modules/**/*.html",
-    "!" + paths.tmp + "partials/includes/**/*.html"
+    "!" + paths.tmp + "partials/includes/**/*.html",
+    "!" + paths.tmp + "/modules/**/includes/**/*.html"
 ];
 
 paths.images = paths.app + "images/**/*";
