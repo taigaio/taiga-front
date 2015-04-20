@@ -20,7 +20,7 @@ module.exports = function(config) {
       'node_modules/angular-mocks/angular-mocks.js',
       'dist/js/app.js',
       'dist/js/templates.js',
-      'app/coffee/**/*spec.coffee'
+      'app/**/*spec.coffee'
     ],
 
 
