@@ -818,7 +818,7 @@
         }
     },
     "USER_PROFILE": {
-        "IMAGE_HELP": "The image will be cropped to 80x80px.<br />",
+        "IMAGE_HELP": "The image will be scaled to 80x80px.<br />",
         "ACTION_CHANGE_IMAGE": "Change",
         "ACTION_USE_GRAVATAR": "Use gravatar image",
         "ACTION_DELETE_ACCOUNT": "Delete Taiga account",
