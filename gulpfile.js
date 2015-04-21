@@ -298,7 +298,10 @@ gulp.task("locales", function() {
 });
 
 gulp.task("coffee-lint", function () {
-    gulp.src(paths.app + "modules/**/*.coffee")
+    gulp.src([
+        paths.app + "modules/**/*.coffee",
+        "!" + paths.app + "modules/**/*.spec.coffee"
+    ])
         .pipe(gulpif(!isDeploy, cache(coffeelint(), {
             key: function(lintFile) {
                 return "coffee-lint" + lintFile.contents.toString('utf8');
