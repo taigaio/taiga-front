@@ -229,11 +229,11 @@
         "ROLES": {
             "SECTION_NAME": "Roles - {{projectName}}",
             "WARNING_NO_ROLE": "Cuidado, ningún rol en su proyecto podrá estimar el valor de los puntos para historias de usuario",
-            "HELP_ROLE_ENABLED": "Al activar, miembros asignados a este rol serán capaces de estimar valores de puntos para historias de usuario",
+            "HELP_ROLE_ENABLED": "Si lo activa, los miembros que posean este rol serán capaces de estimar sus propios puntos en las histórias de usuario",
             "COUNT_MEMBERS": "{{ role.members_count }} miembros con este rol",
             "TITLE_DELETE_ROLE": "Borrar Rol",
             "REPLACEMENT_ROLE": "Todos los usuarios con este rol serán movidos a",
-            "WARNING_DELETE_ROLE": "<strong>Cuidado, todo estimador de rol será eliminado</strong>",
+            "WARNING_DELETE_ROLE": "<strong>Cuidado, todas las estimaciones asociadas a este rol se perderán</strong>",
             "ERROR_DELETE_ALL": "Usted no puede eliminar todos los valores"
         },
         "THIRD_PARTIES": {
@@ -244,12 +244,12 @@
         "BITBUCKET": {
             "SECTION_NAME": "Bitbucket",
             "APP_TITLE": "Bitbucket - {{projectName}}",
-            "INFO_VERIFYING_IP": "Las peticiones de Bitbucket no van firmadas, por lo que la mejor forma de verificar su procedencia es mediante IP. Si el campo queda vacío no se verificarán."
+            "INFO_VERIFYING_IP": "Las peticiones de Bitbucket no van firmadas, con la IP de origen  verificamos su procedencia. Déjalo vacío y no se verificarán."
         },
         "GITLAB": {
             "SECTION_NAME": "Gitlab",
             "APP_TITLE": "Gitlab - {{projectName}}",
-            "INFO_VERIFYING_IP": "Las peticiones de Gitlab no van firmadas, por lo que la mejor forma de verificar su procedencia es mediante IP. Si el campo queda vacío no se verificarán."
+            "INFO_VERIFYING_IP": "Las peticiones de Gitlab no van firmadas, con la IP de origen verificamos su procedencia. Déjalo vacío y no se verificarán."
         },
         "GITHUB": {
             "SECTION_NAME": "Github",
@@ -579,7 +579,8 @@
         "NOT_FOUND": "No encontrado",
         "NOT_FOUND_TEXT": "Error 404. La página que estás buscando ya no existe. Puedes volver a la página de inicio de TAIGA y ver si encuentras lo que estás buscando. ",
         "PERMISSION_DENIED": "Permiso denegado",
-        "PERMISSION_DENIED_CODE": "Error 403."
+        "PERMISSION_DENIED_CODE": "Error 403.",
+        "VERSION_ERROR": "Someone inside Taiga has changed this before and our Oompa Loompas cannot apply your changes. Please reload and apply your changes again (they will be lost)."
     },
     "TASKBOARD": {
         "SECTION_NAME": "Panel de Tareas",
@@ -814,7 +815,7 @@
         }
     },
     "USER_PROFILE": {
-        "IMAGE_HELP": "La imagen se recortará a 80x80px<br />",
+        "IMAGE_HELP": "La imagen se escalará a 80x80px<br />",
         "ACTION_CHANGE_IMAGE": "Cambiar",
         "ACTION_USE_GRAVATAR": "Usar imagen de Gravatar",
         "ACTION_DELETE_ACCOUNT": "Elimina cuenta de Taiga",
