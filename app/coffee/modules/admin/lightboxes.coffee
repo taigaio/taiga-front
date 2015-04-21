@@ -82,7 +82,7 @@ CreateMembersDirective = ($rs, $rootScope, $confirm, $loading ,lightboxService, 
 
             fieldSet.remove()
 
-            lastActionButton = $el.find("fieldset:last > a")
+            lastActionButton = $el.find(".add-member-wrapper fieldset:last > a")
             if lastActionButton.hasClass("icon-delete delete-fieldset")
                 lastActionButton.removeClass("icon-delete delete-fieldset")
                                 .addClass("icon-plus add-fieldset")
