@@ -159,12 +159,12 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     $routeProvider.when("/permission-denied",
         {templateUrl: "error/permission-denied.html"})
 
-    $routeProvider.otherwise({redirectTo: '/not-found'})
+    $routeProvider.otherwise({redirectTo: "/not-found"})
     $locationProvider.html5Mode({enabled: true, requireBase: false})
 
     defaultHeaders = {
         "Content-Type": "application/json"
-        "Accept-Language": "en"
+        "Accept-Language": window.taigaConfig.defaultLanguage || "en"
         "X-Session-Id": taiga.sessionId
     }
 
@@ -197,7 +197,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
 
     $provide.factory("authHttpIntercept", ["$q", "$location", "$tgNavUrls", "lightboxService", authHttpIntercept])
 
-    $httpProvider.interceptors.push('authHttpIntercept')
+    $httpProvider.interceptors.push("authHttpIntercept")
 
     # If there is an error in the version throw a notify error.
     # IMPROVEiMENT: Move this version error handler to USs, issues and tasks repository
@@ -217,7 +217,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
 
     $provide.factory("versionCheckHttpIntercept", ["$q", versionCheckHttpIntercept])
 
-    $httpProvider.interceptors.push('versionCheckHttpIntercept')
+    $httpProvider.interceptors.push("versionCheckHttpIntercept")
 
     window.checksley.updateValidators({
         linewidth: (val, width) ->
@@ -233,13 +233,13 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
 
     $translateProvider
         .useStaticFilesLoader({
-            prefix: '/locales/locale-',
-            suffix: '.json'
+            prefix: "/locales/locale-",
+            suffix: ".json"
         })
-        .preferredLanguage(window.taigaConfig.defaultLanguage || 'en')
+        .preferredLanguage(window.taigaConfig.defaultLanguage || "en")
 
     if not window.taigaConfig.debugInfo
-        $translateProvider.fallbackLanguage([window.taigaConfig.defaultLanguage || 'en'])
+        $translateProvider.fallbackLanguage([window.taigaConfig.defaultLanguage || "en"])
 
 
 init = ($log, $config, $rootscope, $auth, $events, $analytics, $translate) ->
