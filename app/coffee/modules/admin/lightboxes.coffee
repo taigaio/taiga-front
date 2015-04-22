@@ -96,8 +96,9 @@ CreateMembersDirective = ($rs, $rootScope, $confirm, $loading ,lightboxService, 
                   .addClass("icon-delete delete-fieldset")
 
             newFieldSet = createFieldSet(false)
-
             fieldSet.after(newFieldSet)
+
+            $scope.$digest() # To compile newFieldSet and translate text
 
             if $el.find(".add-member-wrapper").length == MAX_MEMBERSHIP_FIELDSETS
                 $el.find(".add-member-wrapper fieldset:last > a").removeClass("icon-plus add-fieldset")
