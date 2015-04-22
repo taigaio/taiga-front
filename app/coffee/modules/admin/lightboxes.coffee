@@ -30,17 +30,19 @@ MAX_MEMBERSHIP_FIELDSETS = 4
 ## Create Members Lightbox Directive
 #############################################################################
 
-CreateMembersDirective = ($rs, $rootScope, $confirm, $loading ,lightboxService, $compile) ->
+CreateMembersDirective = ($rs, $rootScope, $confirm, $loading, lightboxService, $compile) ->
     extraTextTemplate = """
     <fieldset class="extra-text">
-        <textarea placeholder="{{'LIGHTBOX.CREATE_MEMBER.PLACEHOLDER_INVITATION_TEXT' | translate}}" maxlength="255"></textarea>
+        <textarea placeholder="{{'LIGHTBOX.CREATE_MEMBER.PLACEHOLDER_INVITATION_TEXT' | translate}}"
+                  maxlength="255"></textarea>
     </fieldset>
     """
 
     template = _.template("""
     <div class="add-member-wrapper">
         <fieldset>
-            <input type="email" placeholder="{{'LIGHTBOX.CREATE_MEMBER.PLACEHOLDER_TYPE_EMAIL' | translate}}" <% if(required) { %> data-required="true" <% } %> data-type="email" />
+            <input type="email" placeholder="{{'LIGHTBOX.CREATE_MEMBER.PLACEHOLDER_TYPE_EMAIL' | translate}}"
+                   <% if(required) { %> data-required="true" <% } %> data-type="email" />
         </fieldset>
         <fieldset>
             <select <% if(required) { %> data-required="true" <% } %> data-required="true">
@@ -146,7 +148,9 @@ CreateMembersDirective = ($rs, $rootScope, $confirm, $loading ,lightboxService, 
             if invitations.length
                 invitation_extra_text = $el.find("form textarea").val()
 
-                $rs.memberships.bulkCreateMemberships($scope.project.id, invitations, invitation_extra_text).then(onSuccess, onError)
+                promise = $rs.memberships.bulkCreateMemberships($scope.project.id,
+                                                      invitations, invitation_extra_text)
+                promise.then(onSuccess, onError)
 
         submitButton = $el.find(".submit-button")
 
@@ -154,5 +158,5 @@ CreateMembersDirective = ($rs, $rootScope, $confirm, $loading ,lightboxService, 
 
     return {link: link}
 
-module.directive("tgLbCreateMembers", ["$tgResources", "$rootScope", "$tgConfirm", "$tgLoading", "lightboxService", "$compile",
-                                       CreateMembersDirective])
+module.directive("tgLbCreateMembers", ["$tgResources", "$rootScope", "$tgConfirm", "$tgLoading",
+                                       "lightboxService", "$compile", CreateMembersDirective])
