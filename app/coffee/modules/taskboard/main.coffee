@@ -50,13 +50,14 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$tgEvents"
         "$tgAnalytics",
         "tgLoader"
+        "$translate"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @appTitle, @location, @navUrls,
-                  @events, @analytics, tgLoader) ->
+                  @events, @analytics, tgLoader, @translate) ->
         bindMethods(@)
 
-        @scope.sectionName = "Taskboard"
+        @scope.sectionName = @translate.instant("TASKBOARD.SECTION_NAME")
         @.initializeEventHandlers()
 
         promise = @.loadInitialData()
