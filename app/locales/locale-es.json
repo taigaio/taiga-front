@@ -13,7 +13,7 @@
         "COPY_TO_CLIPBOARD": "Copiar en el portapapeles: Ctrl+C",
         "EDIT": "Editar",
         "DRAG": "Arrastra",
-        "TAG_LINE": "Su herramienta de gestión de proyecto ágil, gratis y de código abierto",
+        "TAG_LINE": "Tu herramienta de gestión de proyecto ágil, gratuíta y de código abierto",
         "TAG_LINE_2": "AMA TU PROYECTO",
         "BLOCK": "Bloqueada",
         "UNBLOCK": "Desbloquear",
@@ -144,16 +144,16 @@
             "LOADING_MESSAGE": "Por favor no cierres la ventana.",
             "ASYNC_MESSAGE": "Te enviaremos un email cuando esté listo.",
             "SYNC_MESSAGE": "Si la descarga no comienza automáticamente haz click <a href='{{url}}' download title='Descargar el fichero con el volcado de datos'>aquí</a>.",
-            "ERROR": "Nuestros Oompa Loompas tienen algunos problemas generando el volcado de sus datos. Por favor inténtalo de nuevo.",
+            "ERROR": "Nuestros Oompa Loompas tienen algunos problemas generando el volcado de tus datos. Por favor inténtalo de nuevo.",
             "ERROR_BUSY": "Lo sentimos, nuestros Oompa Loompas están muy ocupados en este momento. Por favor inténtalo nuevamente en unos minutos.",
             "ERROR_MESSAGE": "Nuestros Oompa Loompas tienen algunos problemas generando su volcado de datos: {{message}}"
         },
         "MODULES": {
-            "TITLE": "Modulos",
+            "TITLE": "Módulos",
             "ENABLE": "Activado",
             "DISABLE": "Desactivado",
             "BACKLOG": "Backlog",
-            "BACKLOG_DESCRIPTION": "Administre sus historias de usuario para mantener una vista organizada de los próximos trabajos priorizados. ",
+            "BACKLOG_DESCRIPTION": "Gestiona tus historias de usuario para mantener una vista organizada y priorizada de los próximos trabajos que deberás afrontar. ",
             "KANBAN": "Kanban",
             "KANBAN_DESCRIPTION": "Organiza tus proyectos de una manera flexible con este panel.",
             "ISSUES": "Peticiones",
@@ -162,17 +162,17 @@
             "WIKI_DESCRIPTION": "Añade, modifica o borra contenido en colaboración con otros miembros. Este es el lugar adecuado para la documentación de tu proyecto.",
             "MEETUP": "Meet Up",
             "MEETUP_DESCRIPTION": "Elige tu sistema de videoconferencia. Incluso los desarrolladores necesitan el contacto cara a cara.",
-            "SELECT_VIDEOCONFERENCE": "Selecciona un sistema de videoconferencia",
-            "SALT_CHAT_ROOM": "Si lo deseas puedes añadirle un código salt al nombre del chat room"
+            "SELECT_VIDEOCONFERENCE": "Elige un sistema de videoconferencia",
+            "SALT_CHAT_ROOM": "Puedes añadirle un código salt al nombre del chat room"
         },
         "PROJECT_PROFILE": {
             "PAGE_TITLE": "Perfil del proyecto - {{sectionName}} - {{projectName}}",
-            "PROJECT_DETAILS": "Detalles del proyecto",
+            "PROJECT_DETAILS": "Info del proyecto",
             "PROJECT_NAME": "Nombre del proyecto",
             "PROJECT_SLUG": "Slug de proyecto",
-            "NUMBER_SPRINTS": "Número de sprints",
-            "NUMBER_US_POINTS": "Número de puntos de historia de usuario",
-            "DESCRIPTION": "DESCRIPCIÓN",
+            "NUMBER_SPRINTS": "Número de sprints totales estimado",
+            "NUMBER_US_POINTS": "Número de puntos de historia totales estimados",
+            "DESCRIPTION": "Descripción",
             "PUBLIC_PROJECT": "Proyecto público",
             "PRIVATE_PROJECT": "Proyecto privado",
             "DELETE": "Eliminar este proyecto"
@@ -183,11 +183,14 @@
             "DESCRIPTION": "Descarga el fichero CSV o copia la URL generada y abre tu editor de textos o hoja de cálculo favorito para realizar tus propios informes. Podrás visualizar y analizar todos los datos fácilmente.",
             "HELP": "¿Cómo puedo usar esto en mi hoja de cálculo?",
             "REGENERATE_TITLE": "Cambiar URL",
-            "REGENERATE_SUBTITLE": "Vas a cambiar la url de acceso a los datos en formato CSV. La url anterior se deshabilitará. ¿Estás seguro?"
+            "REGENERATE_SUBTITLE": "Vas a cambiar la url de acceso a los datos en formato CSV. La url anterior se deshabilitará. ¿Estás seguro?",
+            "CSV_TYPE_US": "historias de usuario",
+            "CSV_TYPE_TASK": "tareaas",
+            "CSV_TYPE_ISSUE": "peticiones"
         },
         "CUSTOM_FIELDS": {
             "TITLE": "Atributos personalizados",
-            "SUBTITLE": "Especifique los atributos personalizados para sus historias de usuario, tareas y peticiones",
+            "SUBTITLE": "Especifica los atributos personalizados para las historias de usuario, tareas y peticiones",
             "US_DESCRIPTION": "Atributos personalizados de historias de usuario",
             "US_ADD": "Añadir un atributo personalizado en las historias de usuario",
             "TASK_DESCRIPTION": "Atributos personalizados de tareas",
@@ -207,7 +210,7 @@
         },
         "PROJECT_VALUES_PRIORITIES": {
             "TITLE": "Prioridades de las peticiones",
-            "SUBTITLE": "Especifica las prioridades que tendran sus peticiones"
+            "SUBTITLE": "Especifica las prioridades que podrán tener tus peticiones"
         },
         "PROJECT_VALUES_SEVERITIES": {
             "TITLE": "Gravedad de las peticiones",
@@ -215,7 +218,7 @@
         },
         "PROJECT_VALUES_STATUS": {
             "TITLE": "Estado",
-            "SUBTITLE": "Especifique los estado por los que sus historias de usuario, tareas y peticiones atravesaran ",
+            "SUBTITLE": "Especifica los estado que atravesarán tus historias de usuario, tareas y peticiones",
             "US_TITLE": "Estados de historias",
             "TASK_TITLE": "Estados de Tarea",
             "ISSUE_TITLE": "Estados de la petición"
@@ -229,7 +232,7 @@
         "ROLES": {
             "SECTION_NAME": "Roles - {{projectName}}",
             "WARNING_NO_ROLE": "Cuidado, ningún rol en su proyecto podrá estimar el valor de los puntos para historias de usuario",
-            "HELP_ROLE_ENABLED": "Si lo activa, los miembros que posean este rol serán capaces de estimar sus propios puntos en las histórias de usuario",
+            "HELP_ROLE_ENABLED": "Si lo activas, los miembros que posean este rol serán capaces de estimar sus propios puntos en las histórias de usuario",
             "COUNT_MEMBERS": "{{ role.members_count }} miembros con este rol",
             "TITLE_DELETE_ROLE": "Borrar Rol",
             "REPLACEMENT_ROLE": "Todos los usuarios con este rol serán movidos a",
@@ -276,9 +279,9 @@
             "RESPONSE": "Respuesta",
             "DATE": "DD MMM YYYY [a las] hh:mm:ss",
             "ACTION_HIDE_HISTORY": "(Ocultar historial)",
-            "ACTION_HIDE_HISTORY_TITLE": "Ocultar detalles del histórico",
+            "ACTION_HIDE_HISTORY_TITLE": "+ info",
             "ACTION_SHOW_HISTORY": "(Mostrar historial)",
-            "ACTION_SHOW_HISTORY_TITLE": "Mostrar detalles del histórico",
+            "ACTION_SHOW_HISTORY_TITLE": "- info",
             "WEBHOOK_NAME": "Webhook '{{name}}'"
         },
         "CUSTOM_ATTRIBUTES": {
@@ -312,7 +315,7 @@
             "LABEL_TASK_STATUS": "Valor por defecto para el selector de estado de tarea",
             "LABEL_PRIORITY": "Valor por defecto para el selector de prioridad",
             "LABEL_SEVERITY": "Valor por defecto para el selector de gravedad",
-            "LABEL_ISSUE_TYPE": "Valor por defecto para el selector de estado de problema",
+            "LABEL_ISSUE_TYPE": "Valor por defecto para el selector de tipo de la petición",
             "LABEL_ISSUE_STATUS": "Valor por defecto para el selector de estado de petición"
         },
         "CSV": {
@@ -393,12 +396,12 @@
         },
         "IMPORT": {
             "TITLE": "Importando Proyecto",
-            "DESCRIPTION": "Este proceso puede tomarse su tiempo, por favor mantén la ventana abierta.",
+            "DESCRIPTION": "Este proceso puede tardar un ratito, por favor mantén la ventana abierta.",
             "ASYNC_IN_PROGRESS_TITLE": "Nuestros Oompa Loompa están importando su proyecto",
             "ASYNC_IN_PROGRESS_MESSAGE": "Este proceso puede llevarnos algún tiempo <br/> Te enviaremos un email cuando esté listo",
             "ERROR": "Nuestros Oompa Loompas tienen problemas para importar tus datos. Por favor inténtalo nuevamente.",
             "ERROR_TOO_MANY_REQUEST": "Lo sentimos, nuestros Oompa Loompas están muy ocupados en este momento. Por favor inténtalo nuevamente en unos minutos.",
-            "ERROR_MESSAGE": "Nuestros Oompa Loompas tienen algunos problemas importando sus datos: {{error_message}}",
+            "ERROR_MESSAGE": "Nuestros Oompa Loompas tienen algunos problemas importando tus datos: {{error_message}}",
             "SYNC_SUCCESS": "Tu proyecto se ha importado con éxito."
         }
     },
@@ -574,13 +577,13 @@
         }
     },
     "ERROR": {
-        "TEXT1": "Algo ha pasado y nuestros Oompa Loompas están trabajando en ello.",
-        "TEXT2": "Intenta volver a cargarlo nuevamente pronto.",
+        "TEXT1": "Algo no va bien y nuestros Oompa Loompas están trabajando para resolverlo.",
+        "TEXT2": "Inténtalo de nuevo más tarde.",
         "NOT_FOUND": "No encontrado",
         "NOT_FOUND_TEXT": "Error 404. La página que estás buscando ya no existe. Puedes volver a la página de inicio de TAIGA y ver si encuentras lo que estás buscando. ",
         "PERMISSION_DENIED": "Permiso denegado",
         "PERMISSION_DENIED_CODE": "Error 403.",
-        "VERSION_ERROR": "Someone inside Taiga has changed this before and our Oompa Loompas cannot apply your changes. Please reload and apply your changes again (they will be lost)."
+        "VERSION_ERROR": "Algún compañero se te ha adelantado y ha actualizado esto, nuestros Oompa Loompas no pueden aplicar tus cambios. Por favor, recarga la página y aplícalos nuevamente (se perderán)."
     },
     "TASKBOARD": {
         "SECTION_NAME": "Panel de Tareas",
