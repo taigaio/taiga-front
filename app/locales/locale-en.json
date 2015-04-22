@@ -700,6 +700,7 @@
         "LINK_LOGIN": "Are you already registered? Log in"
     },
     "ISSUES": {
+        "LIST_SECTION_NAME": "Issues",
         "SECTION_NAME": "Issue Details",
         "ACTION_NEW_ISSUE": "+ NEW ISSUE",
         "ACTION_PROMOTE_TO_US": "Promote to User Story",

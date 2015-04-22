@@ -51,12 +51,14 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         "$tgNavUrls",
         "$tgEvents",
         "$tgAnalytics",
-        "tgLoader"
+        "tgLoader",
+        "$translate"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @urls, @params, @q, @location, @appTitle,
-                  @navUrls, @events, @analytics, tgLoader) ->
-        @scope.sectionName = "Issues"
+                  @navUrls, @events, @analytics, tgLoader, @translate) ->
+
+        @scope.sectionName = @translate.instant("ISSUES.LIST_SECTION_NAME")
         @scope.filters = {}
 
         if _.isEmpty(@location.search())

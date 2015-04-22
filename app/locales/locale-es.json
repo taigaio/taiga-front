@@ -697,6 +697,7 @@
         "LINK_LOGIN": "¿Ya te has registrado? Inicia sesión"
     },
     "ISSUES": {
+        "LIST_SECTION_NAME": "Peticiones",
         "SECTION_NAME": "Detalles de la petición",
         "ACTION_NEW_ISSUE": "+ NUEVA PETICIÓN",
         "ACTION_PROMOTE_TO_US": "Promover a Historia de Usuario",
