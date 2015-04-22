@@ -9,7 +9,7 @@
         "ACCEPT": "Aceptar",
         "DELETE": "Borrar",
         "CREATE": "Crear",
-        "ADD": "Agregar",
+        "ADD": "Añadir",
         "COPY_TO_CLIPBOARD": "Copiar en el portapapeles: Ctrl+C",
         "EDIT": "Editar",
         "DRAG": "Arrastra",
@@ -73,7 +73,7 @@
             "OPEN": "Abierto"
         },
         "WATCHERS": {
-            "ADD": "Agregar observador",
+            "ADD": "Añadir un observador...",
             "TITLE": "observadores",
             "DELETE": "eliminar observador"
         },
@@ -132,7 +132,7 @@
         "MEMBERSHIPS": {
             "TITLE": "Administrar miembros",
             "ADD_BUTTON": "+ Nuevo miembro",
-            "ADD_BUTTON_TITLE": "Agregar nuevo miembro"
+            "ADD_BUTTON_TITLE": "Añadir un nuevo miembro"
         },
         "PROJECT_EXPORT": {
             "TITLE": "Exportar",
@@ -196,7 +196,7 @@
             "TASK_DESCRIPTION": "Atributos personalizados de tareas",
             "TASK_ADD": "Añadir un atributo personalizado en las tareas",
             "ISSUE_DESCRIPTION": "Atributos personalizados de peticiones",
-            "ISSUE_ADD": "Agregar un atributo personalizado en las peticiones"
+            "ISSUE_ADD": "Añadir un atributo personalizado en las peticiones"
         },
         "PROJECT_VALUES": {
             "APP_TITLE": "Valores del proyecto - {{sectionName}} - {{projectName}}",
@@ -371,8 +371,8 @@
         "WELCOME": "Bienvenido",
         "SECTION_PROJECTS": "Proyectos",
         "STATS": {
-            "PROJECT": "puntos<br/>proyecto",
-            "DEFINED": "Puntos<br/> definidos",
+            "PROJECT": "puntos<br/> proyecto",
+            "DEFINED": "puntos<br/> definidos",
             "ASSIGNED": "puntos<br/> asignados",
             "CLOSED": "puntos<br/> cerrados"
         },
@@ -418,7 +418,7 @@
             "CONFIRM": "Si, Estoy realmente seguro"
         },
         "ASSIGNED_TO": {
-            "SELECT": "Selecciona asignado a",
+            "SELECT": "Asignar a...",
             "SEARCH": "Buscar usuarios"
         },
         "ADD_MEMBER": {
@@ -470,8 +470,8 @@
     },
     "US": {
         "TOTAL_POINTS": "total",
-        "ADD": "+ Agregar una Historia de Usuario",
-        "ADD_BULK": "Agregar nuevas Historias de Usuario en masa",
+        "ADD": "+ Añadir una Historia de Usuario",
+        "ADD_BULK": "Añadir nuevas Historias de Usuario en bloque",
         "PROMOTED": "Esta historia ha sido promovida desde la petición:",
         "TITLE_LINK_GO_TO_ISSUE": "Ir a petición",
         "EXTERNAL_REFERENCE": "Esta historia ha sido creada desde",
@@ -546,8 +546,8 @@
             "TITLE_COLUMN_POINTS": "Seleccionar vista por Rol"
         },
         "SPRINT_SUMMARY": {
-            "TOTAL_POINTS": "Puntos<br /> totales",
-            "COMPLETED_POINTS": "Puntos<br /> completados",
+            "TOTAL_POINTS": "puntos<br /> totales",
+            "COMPLETED_POINTS": "puntos<br /> completados",
             "OPEN_TASKS": "tareas<br />abiertas",
             "CLOSED_TASKS": "tareas<br />cerradas",
             "IOCAINE_DOSES": "dosis de<br >iocaína",
@@ -555,8 +555,8 @@
         },
         "SUMMARY": {
             "PROJECT_POINTS": "puntos<br /> proyecto",
-            "DEFINED_POINTS": "Puntos<br /> definidos",
-            "CLOSED_POINTS": "Puntos<br /> cerrados",
+            "DEFINED_POINTS": "puntos<br /> definidos",
+            "CLOSED_POINTS": "puntos<br /> cerrados",
             "POINTS_PER_SPRINT": "puntos /<br />sprint"
         },
         "FILTERS": {

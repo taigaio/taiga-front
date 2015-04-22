@@ -5,7 +5,7 @@
             img(src!="<%- selected.photo %>")
     a(href="", title!="<%- selected.full_name_display %>", class="watcher-name")
         | <%-selected.full_name_display %>
-    a(href="", title="{{'REMOVE_ASSIGNED' | translate}}", class="icon icon-delete remove-assigned-to")
+    a(href="", title="{{'COMMON.ASSIGNED_TO.REMOVE_ASSIGNED' | translate}}", class="icon icon-delete remove-assigned-to")
 <% } %>
 
 <% _.each(users, function(user) { %>
