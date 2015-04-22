@@ -5,6 +5,7 @@
     right: -370px;
     top: 2%;
     transition: opacity .2s ease-in;
+    width: 370px;
     &.active {
         animation: animSlide 2000ms linear both;
         opacity: 1;
