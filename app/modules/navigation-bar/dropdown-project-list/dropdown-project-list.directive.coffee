@@ -1,14 +1,20 @@
-DropdownProjectListDirective = () ->
+DropdownProjectListDirective = (projectsService) ->
+    link = (scope, el, attrs, ctrl) ->
+        scope.vm = {}
+
+        projectsService.projectsSuscription (projects) ->
+            scope.vm.projects = projects
+
+        projectsService.getProjects()
+
     directive = {
         templateUrl: "navigation-bar/dropdown-project-list/dropdown-project-list.html"
-        controller: "ProjectsController"
         scope: {}
-        bindToController: true
-        controllerAs: "vm"
+        link: link
     }
 
     return directive
 
 
 angular.module("taigaNavigationBar").directive("tgDropdownProjectList",
-    DropdownProjectListDirective)
+    ["tgProjects", DropdownProjectListDirective])

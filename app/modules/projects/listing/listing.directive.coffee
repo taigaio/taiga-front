@@ -1,5 +1,6 @@
-ProjectsListingDirective = ($rs) ->
+ProjectsListingDirective = (projectsService) ->
     link = (scope, el, attrs, ctrl) ->
+        scope.vm = {}
         itemEl = null
         tdom = el.find(".js-sortable")
 
@@ -19,22 +20,31 @@ ProjectsListingDirective = ($rs) ->
             for value, index in scope.sorted_project_ids
                 sortData.push({"project_id": value, "order":index})
 
-            $rs.projects.bulkUpdateOrder(sortData)
+            projectsService.bulkUpdateProjectsOrder(sortData)
 
-        scope.$watch "vm.projects", (projects) =>
-            if projects?
-                scope.sorted_project_ids = _.map(projects.all, (p) -> p.id)
+        projectsService.projectsSuscription (projects) ->
+            scope.vm.projects = projects
+            scope.sorted_project_ids = _.map(projects.all, (p) -> p.id)
 
+        projectsService.getProjects(true)
+
+        """
+        projectsService.fetchProjects().then (projects) ->
+            Object.defineProperty scope.vm, "projects", {
+                get: () ->
+                    projects = projectsService.getProjects()
+                    if projects
+                        scope.sorted_project_ids = _.map(projects.all, (p) -> p.id)
+                    return projects
+            }
+        """
     directive = {
         templateUrl: "projects/listing/listing.html"
-        controller: "ProjectsController"
         scope: {}
-        bindToController: true
-        controllerAs: "vm"
         link: link
     }
 
     return directive
 
 angular.module("taigaProjects").directive("tgProjectsListing",
-    ["$tgResources", ProjectsListingDirective])
+    ["tgProjects", ProjectsListingDirective])

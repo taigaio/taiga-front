@@ -8,5 +8,14 @@ div.navbar-dropdown.dropdown-project-list
             ng-bind="::project.name"
             tg-nav="project:project=project.slug")
 
-    a.see-more-projects-btn.button-gray(tg-nav="projects", href="#", title="See more projects") See more
-    a.create-project-btn.button-green(href="#", ng-click="vm.newProject()", title="Create project") Create project
+    a.see-more-projects-btn.button-gray(
+        href="#",
+        tg-nav="projects",
+        title="{{'PROJECT.NAVIGATION.SEE_MORE_PROJECTS' | translate}}",
+        translate="PROJECT.NAVIGATION.SEE_MORE_PROJECTS")
+
+    a.create-project-btn.button-green(
+        href="#",
+        ng-click="vm.newProject()",
+        title="{{'PROJECT.NAVIGATION.ACTION_CREATE_PROJECT' | translate}}",
+        translate="PROJECT.NAVIGATION.ACTION_CREATE_PROJECT")

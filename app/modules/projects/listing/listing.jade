@@ -1,4 +1,8 @@
-a.create-project-btn.button-green(href="#", ng-click="vm.newProject()", title="Create project") Create project
+a.create-project-btn.button-green(
+    href="#",
+    ng-click="vm.newProject()",
+    title="{{'PROJECT.NAVIGATION.ACTION_CREATE_PROJECT' | translate}}",
+    translate="PROJECT.NAVIGATION.ACTION_CREATE_PROJECT")
 
 h2 Esto es sortable y persiste en el servidor! ;)
 

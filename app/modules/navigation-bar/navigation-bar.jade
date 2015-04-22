@@ -1,13 +1,29 @@
 nav.navbar
     div.nav-left
-        a.logo(href="#", tg-nav="home", title="Dashboard")
+        a.logo(
+            href="#",
+            tg-nav="home",
+            title="{{'PROJECT.NAVIGATION.DASHBOARD_TITLE' | translate}}")
+
             include ../../svg/logo.svg
 
-        //a(href="#", title="Discover trending projects") Discover
-        a(href="https://taiga.io/support/", target="_blank", title="Taiga Support Page") Help
+        //a(
+        //    href="#",
+        //    title="{{'PROJECT.NAVIGATION.DISCOVER_TITLE' | translate}}",
+        //    translate="PROJECT.NAVIGATION.DISCOVER")
+
+        a(
+            href="https://taiga.io/support/",
+            target="_blank",
+            title="{{'PROJECT.NAVIGATION.HELP_TITLE' | translate}}",
+            translate="PROJECT.NAVIGATION.HELP")
 
     div.nav-right
-        a(href="", tg-nav="home", title="Dashboard")
+        a(
+            href="#",
+            tg-nav="home",
+            title="{{'PROJECT.NAVIGATION.DASHBOARD_TITLE' | translate}}",
+
             include ../../svg/dashboard.svg
 
         div.topnav-dropdown-wrapper(tg-dropdown-project-list)
