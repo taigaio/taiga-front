@@ -514,6 +514,7 @@
         "SIZE_CHANGE": "Hechos {{size}} {size, plural, one{cambio} other{cambios}}\n"
     },
     "BACKLOG": {
+        "SECTION_NAME": "Backlog",
         "MOVE_US_TO_CURRENT_SPRINT": "Mover al Sprint en curso",
         "SHOW_FILTERS": "Mostrar filtros",
         "SHOW_TAGS": "Ver etiquetas",

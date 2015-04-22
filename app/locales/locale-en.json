@@ -516,6 +516,7 @@
         "SIZE_CHANGE": "Made {{size}} {size, plural, one{change} other{changes}}"
     },
     "BACKLOG": {
+        "SECTION_NAME": "Backlog",
         "MOVE_US_TO_CURRENT_SPRINT": "Move to Current Sprint",
         "SHOW_FILTERS": "Show filters",
         "SHOW_TAGS": "Show tags",

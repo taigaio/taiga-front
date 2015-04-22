@@ -57,7 +57,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
                   @location, @appTitle, @navUrls, @events, @analytics, tgLoader, @translate) ->
         bindMethods(@)
 
-        @scope.sectionName = "Backlog"
+        @scope.sectionName = @translate.instant("BACKLOG.SECTION_NAME")
         @showTags = false
         @activeFilters = false
 
