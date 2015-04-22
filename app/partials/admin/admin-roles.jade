@@ -8,7 +8,7 @@ div.wrapper.roles(ng-controller="RolesController as ctrl",
         include ../includes/modules/admin-submenu-roles
 
     section.main.admin-roles.admin-common
-        .header-with-actions
+        header.header-with-actions
             include ../includes/components/mainTitle
             .action-buttons(ng-if="!role.external_user")
                 a.button-red.delete-role(href="", title="{{'COMMON.DELETE' | translate}}", ng-click="ctrl.delete()")
