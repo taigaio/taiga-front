@@ -164,19 +164,18 @@ UsStatusDisplayDirective = ($template, $compile) ->
     #   - US object (ng-model)
     #   - scope.statusById object
 
-    template = $template.get("common/components/status-display.html")
+    template = $template.get("common/components/status-display.html", true)
 
     link = ($scope, $el, $attrs) ->
         render = (us) ->
-            statusScope = $scope.$new()
+            status = $scope.statusById[us.status]
 
-            _.assign(statusScope, {
+            html = template({
                 is_closed: us.is_closed
-                status: $scope.statusById[us.status]
+                status: status
             })
 
-            html = $compile(html)(statusScope)
-
+            html = $compile(html)($scope)
             $el.html(html)
 
         $scope.$watch $attrs.ngModel, (us) ->
