@@ -62,9 +62,6 @@ tgMarkitupDirective = ($rootscope, $rs, $selectedText, $template, $compile) ->
         element = angular.element($el)
         previewDomNode = $("<div/>", {class: "preview"})
 
-        #openHelp = ->
-        #    window.open($rootscope.urls.wikiHelpUrl(), "_blank")
-
         closePreviewMode = ->
             element.parents(".markdown").find(".preview").remove()
             element.parents(".markItUp").show()
@@ -342,4 +339,5 @@ tgMarkitupDirective = ($rootscope, $rs, $selectedText, $template, $compile) ->
 
     return {link:link, require:"ngModel"}
 
-module.directive("tgMarkitup", ["$rootScope", "$tgResources", "$selectedText", "$tgTemplate", tgMarkitupDirective])
+module.directive("tgMarkitup", ["$rootScope", "$tgResources", "$selectedText", "$tgTemplate", "$compile",
+                                tgMarkitupDirective])
