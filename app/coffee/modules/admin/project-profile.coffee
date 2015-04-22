@@ -377,9 +377,9 @@ module.controller("CsvExporterIssuesController", CsvExporterIssuesController)
 ## CSV Directive
 #############################################################################
 
-CsvUsDirective = () ->
+CsvUsDirective = ($translate) ->
     link = ($scope) ->
-        $scope.csvType = "US"
+        $scope.csvType = $translate.instant("ADMIN.REPORTS.CSV_TYPE_USS")
 
     return {
         controller: "CsvExporterUserstoriesController",
@@ -388,11 +388,11 @@ CsvUsDirective = () ->
         scope: true
     }
 
-module.directive("tgCsvUs", [CsvUsDirective])
+module.directive("tgCsvUs", ["$translate", CsvUsDirective])
 
-CsvTaskDirective = () ->
+CsvTaskDirective = ($translate) ->
     link = ($scope) ->
-        $scope.csvType = "Task"
+        $scope.csvType = $translate.instant("ADMIN.REPORTS.CSV_TYPE_TASKS")
 
     return {
         controller: "CsvExporterTasksController",
@@ -401,11 +401,11 @@ CsvTaskDirective = () ->
         scope: true
     }
 
-module.directive("tgCsvTask", [CsvTaskDirective])
+module.directive("tgCsvTask", ["$translate", CsvTaskDirective])
 
-CsvIssueDirective = () ->
+CsvIssueDirective = ($translate) ->
     link = ($scope) ->
-        $scope.csvType = "Issues"
+        $scope.csvType = $translate.instant("ADMIN.REPORTS.CSV_TYPE_ISSUES")
 
     return {
         controller: "CsvExporterIssuesController",
@@ -414,4 +414,4 @@ CsvIssueDirective = () ->
         scope: true
     }
 
-module.directive("tgCsvIssue", [CsvIssueDirective])
+module.directive("tgCsvIssue", ["$translate", CsvIssueDirective])
