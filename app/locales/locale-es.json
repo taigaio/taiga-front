@@ -69,7 +69,7 @@
             "CONFIRM_UNASSIGNED": "¿Está seguro de que desea dejarla sin asignar?"
         },
         "STATUS": {
-            "CLOSED": "Cerrado",
+            "CLOSED": "Cerrada",
             "OPEN": "Abierto"
         },
         "WATCHERS": {
