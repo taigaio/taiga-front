@@ -174,7 +174,7 @@
             "PROJECT_SLUG": "Project slug",
             "NUMBER_SPRINTS": "Number of sprints",
             "NUMBER_US_POINTS": "Number of US points",
-            "DESCRIPTION": "DESCRIPTION",
+            "DESCRIPTION": "Description",
             "PUBLIC_PROJECT": "Public project",
             "PRIVATE_PROJECT": "Private project",
             "DELETE": "Delete this project"
