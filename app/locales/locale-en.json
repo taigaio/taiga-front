@@ -748,6 +748,7 @@
         }
     },
     "KANBAN": {
+        "SECTION_NAME": "Kanban",
         "TITLE_ACTION_FOLD": "Fold column",
         "TITLE_ACTION_UNFOLD": "Unfold column",
         "TITLE_ACTION_FOLD_CARDS": "Fold cards",

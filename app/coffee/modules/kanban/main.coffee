@@ -62,15 +62,16 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         "$tgNavUrls",
         "$tgEvents",
         "$tgAnalytics",
-        "tgLoader"
+        "tgLoader",
+        "$translate"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
-                  @appTitle, @navUrls, @events, @analytics, tgLoader) ->
+                  @appTitle, @navUrls, @events, @analytics, tgLoader, @translate) ->
 
         bindMethods(@)
 
-        @scope.sectionName = "Kanban"
+        @scope.sectionName = @translate.instant("KANBAN.SECTION_NAME")
         @scope.statusViewModes = {}
         @.initializeEventHandlers()
 
