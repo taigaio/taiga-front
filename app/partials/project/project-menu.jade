@@ -1,46 +1,46 @@
 div(class="menu-container")
     ul(class="main-nav")
         li(id="nav-search")
-            a(href="" title="{{'PROJECT.SECTION.SEARCH' | translate}}")
+            a(href="", title="{{'PROJECT.SECTION.SEARCH' | translate}}", tabindex="1")
                 span(class="icon icon-search")
                 span.helper(translate="PROJECT.SECTION.SEARCH")
         <% if (project.is_backlog_activated && project.my_permissions.indexOf("view_us") != -1) { %>
         li(id="nav-backlog")
-            a(href="" title="{{'PROJECT.SECTION.BACKLOG' | translate}}" tg-nav="project-backlog:project=project.slug")
+            a(href="" title="{{'PROJECT.SECTION.BACKLOG' | translate}}" tg-nav="project-backlog:project=project.slug", tabindex="2")
                 span(class="icon icon-backlog")
                 span.helper(translate="PROJECT.SECTION.BACKLOG")
         <% } %>
         <% if (project.is_kanban_activated && project.my_permissions.indexOf("view_us") != -1) { %>
         li(id="nav-kanban")
-            a(href="" title="{{'PROJECT.SECTION.KANBAN' | translate}}" tg-nav="project-kanban:project=project.slug")
+            a(href="" title="{{'PROJECT.SECTION.KANBAN' | translate}}" tg-nav="project-kanban:project=project.slug", tabindex="3")
                 span(class="icon icon-kanban")
                 span.helper(translate="PROJECT.SECTION.KANBAN")
         <% } %>
         <% if (project.is_issues_activated && project.my_permissions.indexOf("view_issues") != -1) { %>
         li(id="nav-issues")
-            a(href="" title="{{'PROJECT.SECTION.ISSUES' | translate}}" tg-nav="project-issues:project=project.slug")
+            a(href="" title="{{'PROJECT.SECTION.ISSUES' | translate}}" tg-nav="project-issues:project=project.slug", tabindex="4")
                 span(class="icon icon-issues")
                 span.helper(translate="PROJECT.SECTION.ISSUES")
         <% } %>
         <% if (project.is_wiki_activated && project.my_permissions.indexOf("view_wiki_pages") != -1) { %>
         li(id="nav-wiki")
-            a(href="" title="{{'PROJECT.SECTION.WIKI' | translate}}" tg-nav="project-wiki:project=project.slug")
+            a(href="" title="{{'PROJECT.SECTION.WIKI' | translate}}" tg-nav="project-wiki:project=project.slug", tabindex="5")
                 span(class="icon icon-wiki")
                 span.helper(translate="PROJECT.SECTION.WIKI")
         <% } %>
         li(id="nav-team")
-            a(href="" title="{{'PROJECT.SECTION.TEAM' | translate}}" tg-nav="project-team:project=project.slug")
+            a(href="" title="{{'PROJECT.SECTION.TEAM' | translate}}" tg-nav="project-team:project=project.slug", tabindex="6")
                 span(class="icon icon-team")
                 span.helper(translate="PROJECT.SECTION.TEAM")
         <% if (project.videoconferences) { %>
         li(id="nav-video")
-            a(href!="<%- project.videoconferenceUrl %>" target="_blank" title="{{'PROJECT.SECTION.MEETUP' | translate}}")
+            a(href!="<%- project.videoconferenceUrl %>" target="_blank" title="{{'PROJECT.SECTION.MEETUP' | translate}}", tabindex="7")
                 span(class="icon icon-video")
                 span(translate="PROJECT.SECTION.MEETUP")
         <% } %>
         <% if (project.i_am_owner) { %>
         li(id="nav-admin")
-            a(href="" tg-nav="project-admin-home:project=project.slug" title="{{'PROJECT.SECTION.ADMIN' | translate}}")
+            a(href="" tg-nav="project-admin-home:project=project.slug" title="{{'PROJECT.SECTION.ADMIN' | translate}}", tabindex="8")
                 span(class="icon icon-settings")
                 span.helper(translate="PROJECT.SECTION.ADMIN")
         <% } %>
