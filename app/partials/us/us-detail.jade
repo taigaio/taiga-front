@@ -8,9 +8,9 @@ div.wrapper(ng-controller="UserStoryDetailController as ctrl",
             .action-buttons
                 a.button-gray(
                     tg-check-permission="view_milestones",
-                    href="", title="{{'TASK.LINK_TASKBOARD' | translate}}",
+                    href="", title="{{'US.TITLE_LINK_TASKBOARD' | translate}}",
                     tg-nav="project-taskboard:project=project.slug,sprint=sprint.slug",
-                    ng-if="sprint && project.is_backlog_activated", translate="TASKBOARD.SECTION_NAME")
+                    ng-if="sprint && project.is_backlog_activated", translate="US.LINK_TASKBOARD")
 
         section.us-story-main-data
             div.us-title(ng-class="{blocked: us.is_blocked}")

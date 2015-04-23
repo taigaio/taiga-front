@@ -77,11 +77,11 @@
             "DELETE": "eliminar observador"
         },
         "CUSTOM_ATTRIBUTES": {
-            "CUSTOM_FIELDS": "Campos Personalizados",
+            "CUSTOM_FIELDS": "Atributo Personalizados",
             "SAVE": "Guardar Atributo Personalizado",
-            "EDIT": "Editar Campo Personalizado",
+            "EDIT": "Editar Atributo Personalizado",
             "DELETE": "Borrar atributos personalizados",
-            "CONFIRM_DELETE": "Recuerda que todos los valores en este campo personalizado serán borrados. </br>Está seguro que desea continuar?"
+            "CONFIRM_DELETE": "Recuerda que todos los valores en este atributo personalizado serán borrados. </br>¿Estás seguro que desea continuar?"
         },
         "FILTERS": {
             "TITLE": "filtros",
@@ -315,7 +315,7 @@
         "CUSTOM_ATTRIBUTES": {
             "ADD": "Añadir atributo personalizado",
             "EDIT": "Editar atributo personalizado",
-            "DELETE": "Eliminar campo personalizado",
+            "DELETE": "Eliminar atributo personalizado",
             "SAVE_TITLE": "Guardar Atributo Personalizado",
             "CANCEL_TITLE": "Cancelar la creación",
             "SET_FIELD_NAME": "Escribe el nombre del atributo personalizado",
@@ -381,7 +381,7 @@
             "PRIORITIES": "Prioridades",
             "SEVERITIES": "Gravedades",
             "TYPES": "Tipos",
-            "CUSTOM_FIELDS": "Campos personalizados"
+            "CUSTOM_FIELDS": "Atributos personalizados"
         },
         "SUBMENU_PROJECT_PROFILE": {
             "TITLE": "Perfil de proyecto"
@@ -497,6 +497,8 @@
         }
     },
     "US": {
+        "LINK_TASKBOARD": "Panel de tareas",
+        "TITLE_LINK_TASKBOARD": "Ir al panel de tareas",
         "TOTAL_POINTS": "total",
         "ADD": "+ Añadir una Historia de Usuario",
         "ADD_BULK": "Añadir nuevas Historias de Usuario en bloque",
@@ -635,9 +637,10 @@
         }
     },
     "TASK": {
+        "LINK_TASKBOARD": "Panel de tereas",
+        "TITLE_LINK_TASKBOARD": "Ir al panel de tareas",
         "PLACEHOLDER_SUBJECT": "Escribe el asunto de la nueva tarea",
         "TITLE_SELECT_STATUS": "Nombre del estado",
-        "LINK_TASKBOARD": "Ir al panel de tareas",
         "OWNER_US": "Esta tarea pertenece a\n",
         "TITLE_LINK_GO_OWNER": "Ir a historia de usuario",
         "ORIGIN_US": "Esta tarea pertenece a ",
@@ -748,10 +751,10 @@
             "MESSAGE": "¿Está seguro de que desea crear una nueva Historia de Usuario a partir de esta Petición?"
         },
         "FILTERS": {
-            "ACTION_SAVE_CUSTOM_FILTER": "guardar como campo personalizado",
+            "ACTION_SAVE_CUSTOM_FILTER": "guardar como atributo personalizado",
             "CONFIRM_DELETE": {
                 "TITLE": "Eliminar filtros personalizados",
-                "MESSAGE": "el campo personalizado '{{customFilterName}}'"
+                "MESSAGE": "el atributo personalizado '{{customFilterName}}'"
             },
             "FILTER_CATEGORY_TYPE": "Tipo",
             "FILTER_CATEGORY_STATUS": "Estado",

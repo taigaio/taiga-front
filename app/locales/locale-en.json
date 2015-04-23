@@ -499,6 +499,8 @@
         }
     },
     "US": {
+        "LINK_TASKBOARD": "Taskboard",
+        "TITLE_LINK_TASKBOARD": "Go to the taskboard",
         "TOTAL_POINTS": "total",
         "ADD": "+ Add a new User Story",
         "ADD_BULK": "Add some new User Stories in bulk",
@@ -638,9 +640,10 @@
         }
     },
     "TASK": {
+        "LINK_TASKBOARD": "Taskboard",
+        "TITLE_LINK_TASKBOARD": "Go to the taskboard",
         "PLACEHOLDER_SUBJECT": "Type the new task subject",
         "TITLE_SELECT_STATUS": "Status Name",
-        "LINK_TASKBOARD": "Go to taskboard",
         "OWNER_US": "This task belongs to",
         "TITLE_LINK_GO_OWNER": "Go to user story",
         "ORIGIN_US": "This task has been created from",
