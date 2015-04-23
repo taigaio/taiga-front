@@ -21,9 +21,6 @@ class ProjectsPageController extends taiga.Controller
         if !@auth.isAuthenticated()
             @location.path(@navUrls.resolve("login"))
 
-        #TODO:
-        @.user = @auth.getUser()
-
         #Projects
         promise = @projects.fetchProjects()
 

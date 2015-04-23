@@ -39,7 +39,7 @@ div.navbar-dropdown.dropdown-user
                 title="{{'PROJECT.NAVIGATION.NOTIFICATIONS_TITLE' | translate}}",
                 translate="PROJECT.NAVIGATION.NOTIFICATIONS")
 
-        li(ng-show="vm.isFeedbackEnabled()")
+        li(ng-show="vm.isFeedbackEnabled")
             a(
                 href="#",
                 ng-click="vm.sendFeedback()",

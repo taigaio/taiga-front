@@ -29,7 +29,7 @@ trim = @.taiga.trim
 
 module = angular.module("taigaFeedback", [])
 
-FeedbackDirective = ($lightboxService, $repo, $confirm, $loading)->
+FeedbackDirective = ($lightboxService, $repo, $confirm, $loading, feedbackService)->
     link = ($scope, $el, $attrs) ->
         form = $el.find("form").checksley()
 
@@ -56,14 +56,18 @@ FeedbackDirective = ($lightboxService, $repo, $confirm, $loading)->
 
         $el.on "submit", "form", submit
 
-        $scope.$on "feedback:show", ->
+        sendFeedbackCallback = ->
             $scope.feedback = {}
             $lightboxService.open($el)
             $el.find("textarea").focus()
 
+        feedbackService.emiter.on "send", sendFeedbackCallback
+
         $scope.$on "$destroy", ->
+            emitter.off(feedbackService.emiter, sendFeedbackCallback)
             $el.off()
 
     return {link:link}
 
-module.directive("tgLbFeedback", ["lightboxService", "$tgRepo", "$tgConfirm", "$tgLoading", FeedbackDirective])
+module.directive("tgLbFeedback", ["lightboxService", "$tgRepo", "$tgConfirm",
+    "$tgLoading", "tgFeedback", FeedbackDirective])

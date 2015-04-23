@@ -1,13 +1,26 @@
-DropdownUserDirective = () ->
+DropdownUserDirective = (authService, configService, locationService,
+        navUrlsService, feedbackService) ->
+
+    link = (scope, el, attrs, ctrl) ->
+        scope.vm = {}
+        scope.vm.user = authService.getUser()
+        scope.vm.isFeedbackEnabled = configService.get("feedbackEnabled")
+
+        scope.vm.logout = ->
+            authService.logout()
+            locationService.path(navUrlsService.resolve("login"))
+
+        scope.vm.sendFeedback = ->
+            feedbackService.sendFeedback()
+
     directive = {
         templateUrl: "navigation-bar/dropdown-user/dropdown-user.html"
-        controller: "ProjectsController"
         scope: {}
-        bindToController: true
-        controllerAs: "vm"
+        link: link
     }
 
     return directive
 
 angular.module("taigaNavigationBar").directive("tgDropdownUser",
-    DropdownUserDirective)
+    ["$tgAuth", "$tgConfig", "$tgLocation", "$tgNavUrls", "tgFeedback",
+    DropdownUserDirective])
