@@ -35,7 +35,7 @@
         "IOCAINE_TEXT": "¿Te sientes fuera de tu zona de confort en una tarea? Asegúrate de que los demás están al tanto de ello, marca el check de la Iocaína al editar una tarea. Igual eu era posible llegar a ser inmune a este veneno mortal a base de consumir pequeñas dosis a lo largo del tiempo, es posible conseguir mejor en lo que estás haciendo si afrontas de vez en cuando esta clase de retos!",
         "TAGS": {
             "PLACEHOLDER": "¿Qué soy? Etiquétame...",
-            "DELETE": "Eliminar etiqueta",
+            "DELETE": "Borrar etiqueta",
             "ADD": "Añadir etiqueta"
         },
         "DESCRIPTION": {
@@ -568,8 +568,8 @@
             "INCREMENT_CLIENT": "Puntos incrementados por requerimientos del cliente para el sprint {{xval}} es {{yval}}"
         },
         "TAGS": {
-            "SHOW": "Ver Etiquetas",
-            "HIDE": "Ocultar Etiquetas"
+            "SHOW": "Mostrar etiquetas",
+            "HIDE": "Ocultar etiquetas"
         },
         "TABLE": {
             "COLUMN_US": "Historias de Usuario",

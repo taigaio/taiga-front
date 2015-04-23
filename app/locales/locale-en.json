@@ -37,7 +37,7 @@
         "IOCAINE_TEXT": "Feeling a bit overwhelmed by a task? Make sure others know about it by clicking on Iocaine when editing a task. It's possible to become immune to this (fictional) deadly poison by consuming small amounts over time just as it's possible to get better at what you do by occasionally taking on extra challenges!",
         "TAGS": {
             "PLACEHOLDER": "I'm it! Tag me...",
-            "DELETE": "delete tag",
+            "DELETE": "Delete tag",
             "ADD": "Add tag"
         },
         "DESCRIPTION": {
@@ -571,8 +571,8 @@
             "INCREMENT_CLIENT": "Incremented points by client requirements for sprint {{xval}} is {{yval}}"
         },
         "TAGS": {
-            "SHOW": "Show Tags",
-            "HIDE": "Hide Tags"
+            "SHOW": "Show tags",
+            "HIDE": "Hide tags"
         },
         "TABLE": {
             "COLUMN_US": "User Stories",

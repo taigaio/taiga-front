@@ -1,5 +1,5 @@
 <% _.each(tags, function(tag) { %>
 span(class="tag", style!="<%- tag.style %>")
     span.tag-name <%- tag.name %>
-    a(href="", title="{{'COMMON.TAGS.DELETE'}}", class="icon icon-delete")
+    a(href="", title="{{ 'COMMON.TAGS.DELETE' | translate }}", class="icon icon-delete")
 <% }); %>

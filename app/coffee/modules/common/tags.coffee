@@ -99,7 +99,7 @@ module.directive("tgColorizeTags", ColorizeTagsDirective)
 ## TagLine  Directive (for Lightboxes)
 #############################################################################
 
-LbTagLineDirective = ($rs, $template) ->
+LbTagLineDirective = ($rs, $template, $compile) ->
     ENTER_KEY = 13
     COMMA_KEY = 188
 
@@ -116,7 +116,7 @@ LbTagLineDirective = ($rs, $template) ->
                 if tag.color
                     tag.style = "border-left: 5px solid #{tag.color}"
 
-            html = templateTags(ctx)
+            html = $compile(templateTags(ctx))($scope)
             $el.find("div.tags-container").html(html)
 
         showSaveButton = -> $el.find(".save").removeClass("hidden")
@@ -221,14 +221,14 @@ LbTagLineDirective = ($rs, $template) ->
         templateUrl: "common/tag/lb-tag-line.html"
     }
 
-module.directive("tgLbTagLine", ["$tgResources", "$tgTemplate", LbTagLineDirective])
+module.directive("tgLbTagLine", ["$tgResources", "$tgTemplate", "$compile", LbTagLineDirective])
 
 
 #############################################################################
 ## TagLine  Directive (for detail pages)
 #############################################################################
 
-TagLineDirective = ($rootScope, $repo, $rs, $confirm, $qqueue, $template) ->
+TagLineDirective = ($rootScope, $repo, $rs, $confirm, $qqueue, $template, $compile) ->
     ENTER_KEY = 13
     ESC_KEY = 27
     COMMA_KEY = 188
@@ -245,7 +245,7 @@ TagLineDirective = ($rootScope, $repo, $rs, $confirm, $qqueue, $template) ->
                 tags: _.map(tags, (t) -> {name: t, color: tagsColors[t]})
                 isEditable: isEditable()
             }
-            html = templateTags(ctx)
+            html = $compile(templateTags(ctx))($scope)
             $el.find("div.tags-container").html(html)
 
         renderInReadModeOnly = ->
@@ -406,4 +406,5 @@ TagLineDirective = ($rootScope, $repo, $rs, $confirm, $qqueue, $template) ->
         templateUrl: "common/tag/tag-line.html"
     }
 
-module.directive("tgTagLine", ["$rootScope", "$tgRepo", "$tgResources", "$tgConfirm", "$tgQqueue", "$tgTemplate", TagLineDirective])
+module.directive("tgTagLine", ["$rootScope", "$tgRepo", "$tgResources", "$tgConfirm", "$tgQqueue",
+                               "$tgTemplate", "$compile", TagLineDirective])
