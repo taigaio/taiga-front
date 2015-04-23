@@ -14,30 +14,17 @@ ProjectsListingDirective = (projectsService) ->
             itemEl = ui.item
             project = itemEl.scope().project
             index = itemEl.index()
-            scope.sorted_project_ids = _.without(scope.sorted_project_ids, project.id)
-            scope.sorted_project_ids.splice(index, 0, project.id)
+            sorted_project_ids = _.map(scope.vm.projects.all, (p) -> p.id)
+            sorted_project_ids = _.without(sorted_project_ids, project.id)
+            sorted_project_ids.splice(index, 0, project.id)
             sortData = []
-            for value, index in scope.sorted_project_ids
+            for value, index in sorted_project_ids
                 sortData.push({"project_id": value, "order":index})
 
             projectsService.bulkUpdateProjectsOrder(sortData)
 
-        projectsService.projectsSuscription (projects) ->
-            scope.vm.projects = projects
-            scope.sorted_project_ids = _.map(projects.all, (p) -> p.id)
+        scope.vm.projects = projectsService.projects
 
-        projectsService.getProjects(true)
-
-        """
-        projectsService.fetchProjects().then (projects) ->
-            Object.defineProperty scope.vm, "projects", {
-                get: () ->
-                    projects = projectsService.getProjects()
-                    if projects
-                        scope.sorted_project_ids = _.map(projects.all, (p) -> p.id)
-                    return projects
-            }
-        """
     directive = {
         templateUrl: "projects/listing/listing.html"
         scope: {}

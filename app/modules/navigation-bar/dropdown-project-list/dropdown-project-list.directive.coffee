@@ -1,11 +1,7 @@
 DropdownProjectListDirective = (projectsService) ->
     link = (scope, el, attrs, ctrl) ->
         scope.vm = {}
-
-        projectsService.projectsSuscription (projects) ->
-            scope.vm.projects = projects
-
-        projectsService.getProjects()
+        scope.vm.projects = projectsService.projects
 
     directive = {
         templateUrl: "navigation-bar/dropdown-project-list/dropdown-project-list.html"

@@ -1,42 +1,29 @@
 class ProjectsService extends taiga.Service
     @.$inject = ["$q", "$tgResources", "$rootScope", "$projectUrl"]
 
-    constructor: (@q, @rs, @rootscope, @projectUrl) ->
+    constructor: (@q, @rs, @rootScope, @projectUrl) ->
+        @.projects = {all: [], recent: []}
+        @.inProgress = false
         @.projectsPromise = null
-        @.projects = null
-        @.callbacks = []
+        @.fetchProjects()
 
-    projectsSuscription: (callback) ->
-        @.callbacks.push(callback)
+    fetchProjects: ->
+        console.log "fetchProjects", @.inProgress
+        if not @.inProgress
+            @.inProgress = true
+            @.projectsPromise = @rs.projects.listByMember(@rootScope.user?.id).then (projects) =>
+                for project in projects
+                    project.url = @projectUrl.get(project)
 
-    notifySuscriptors: ->
-        for callback in @.callbacks
-            callback(@.projects)
+                @.projects.recents = projects.slice(0, 8)
+                @.projects.all = projects
 
-    fetchProjects: (updateSuscriptors = true) ->
-        @.projectsPromise = @rs.projects.listByMember(@rootscope.user?.id).then (projects) =>
-            for project in projects
-                project.url = @projectUrl.get(project)
+                return @.projects
 
-            @.projects = {'recents': projects.slice(0, 8), 'all': projects}
-            if updateSuscriptors
-                @.notifySuscriptors()
-
-            return @.projects
+            @.projectsPromise.then () =>
+                @.inProgress = false
 
         return @.projectsPromise
-
-    getProjects: (updateSuscriptors = false) ->
-        if not @.projectsPromise?
-            promise = @.fetchProjects(not updateSuscriptors)
-        else
-            promise = @.projectsPromise
-
-        if updateSuscriptors
-            promise.then =>
-                @.notifySuscriptors()
-
-        return promise
 
     bulkUpdateProjectsOrder: (sortData) ->
         @rs.projects.bulkUpdateOrder(sortData).then =>
