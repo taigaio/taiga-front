@@ -15,7 +15,7 @@ class ProjectsService extends taiga.Service
                 for project in projects
                     project.url = @projectUrl.get(project)
 
-                @.projects.recents = projects.slice(0, 8)
+                @.projects.recents = projects.slice(0, 10)
                 @.projects.all = projects
 
                 return @.projects
