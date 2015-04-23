@@ -6,9 +6,9 @@ class ProjectsService extends taiga.Service
         @.inProgress = false
         @.projectsPromise = null
         @.fetchProjects()
+        @.emiter = new EventEmitter2()
 
     fetchProjects: ->
-        console.log "fetchProjects", @.inProgress
         if not @.inProgress
             @.inProgress = true
             @.projectsPromise = @rs.projects.listByMember(@rootScope.user?.id).then (projects) =>
@@ -24,6 +24,9 @@ class ProjectsService extends taiga.Service
                 @.inProgress = false
 
         return @.projectsPromise
+
+    newProject: ->
+        @.emiter.emit("create")
 
     bulkUpdateProjectsOrder: (sortData) ->
         @rs.projects.bulkUpdateOrder(sortData).then =>

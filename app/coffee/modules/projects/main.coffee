@@ -66,9 +66,6 @@ class ProjectsController extends taiga.Controller
 
             return projects
 
-    newProject: ->
-        @rootscope.$broadcast("projects:create")
-
     logout: ->
         @auth.logout()
         @location.path(@navUrls.resolve("login"))

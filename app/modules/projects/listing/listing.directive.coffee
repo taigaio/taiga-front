@@ -25,6 +25,9 @@ ProjectsListingDirective = (projectsService) ->
 
         scope.vm.projects = projectsService.projects
 
+        scope.vm.newProject = ->
+            projectsService.newProject()
+
     directive = {
         templateUrl: "projects/listing/listing.html"
         scope: {}
