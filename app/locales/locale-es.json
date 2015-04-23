@@ -825,7 +825,9 @@
         "FIELD_CURRENT_PASSWORD": "Contraseña actual",
         "PLACEHOLDER_CURRENT_PASSWORD": "Tu contraseña actual (o déjalo vacío si todavía no tienes contraseña)",
         "FIELD_NEW_PASSWORD": "Nueva contraseña",
-        "FIELD_RETYPE_PASSWORD": "Reescribe la contraseña",
+        "PLACEHOLDER_NEW_PASSWORD": "Escribe una contraseña nueva",
+        "FIELD_RETYPE_PASSWORD": "Reescribe la nueva contraseña",
+        "PLACEHOLDER_RETYPE_PASSWORD": "Reescribe la nueva contraseña",
         "ERROR_PASSWORD_MATCH": "Las contraseñas no coinciden"
     },
     "USER_SETTINGS": {
