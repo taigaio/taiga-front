@@ -40,7 +40,6 @@
         },
         "DESCRIPTION": {
             "EMPTY": "El espacio vacío es tan aburrido... trata de ser descriptivo... Una rosa con cualquier otro nombre olería con la misma dulzura...",
-            "MARKDOWN_HELP": "Ayuda de sintaxis Markdown",
             "NO_DESCRIPTION": "Sin descripción todavía"
         },
         "FIELDS": {
@@ -91,6 +90,35 @@
             "BREADCRUMB_TITLE": "Regresar a categorias",
             "BREADCRUMB_FILTERS": "Filtros",
             "BREADCRUMB_STATUS": "estado"
+        },
+        "WYSIWYG": {
+            "H1_BUTTON": "Título de primer nivel",
+            "H1_SAMPLE_TEXT": "Tu título aquí...",
+            "H2_BUTTON": "Título de segundo nivel",
+            "H2_SAMPLE_TEXT": "Tu título aquí...",
+            "H3_BUTTON": "Título de tercer nivel",
+            "H3_SAMPLE_TEXT": "Tu título aquí...",
+            "BOLD_BUTTON": "Negrita",
+            "BOLD_BUTTON_SAMPLE_TEXT": "Tu texto aquí...",
+            "ITALIC_BUTTON": "Cursiva",
+            "ITALIC_SAMPLE_TEXT": "Tu texto aquí...",
+            "STRIKE_BUTTON": "Tachado",
+            "STRIKE_SAMPLE_TEXT": "Tu texto aquí...",
+            "BULLETED_LIST_BUTTON": "Lista con viñetas",
+            "BULLETED_LIST_SAMPLE_TEXT": "Tu texto aquí...",
+            "NUMERIC_LIST_BUTTON": "Lista numérica",
+            "NUMERIC_LIST_SAMPLE_TEXT": "Tu texto aquí...",
+            "PICTURE_BUTTON": "Imagen",
+            "PICTURE_SAMPLE_TEXT": "Tu texto alternatívo para la imagen aquí...",
+            "LINK_BUTTON": "Enlace",
+            "LINK_SAMPLE_TEXT": "Tu texto del enlace aquí...",
+            "QUOTE_BLOCK_BUTTON": "Cita",
+            "QUOTE_BLOCK_SAMPLE_TEXT": "Tu texto aquí...",
+            "CODE_BLOCK_BUTTON": "Código",
+            "CODE_BLOCK_SAMPLE_TEXT": "Tu texto aquí...",
+            "PREVIEW_BUTTON": "Previsualizar",
+            "EDIT_BUTTON": "Editar",
+            "MARKDOWN_HELP": "Ayuda de sintaxis Markdown"
         }
     },
     "AUTH": {
