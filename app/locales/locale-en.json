@@ -384,7 +384,7 @@
             "TITLE": "Types",
             "SUBTITLE": "Specify the types your issues could be",
             "ISSUE_TITLE": "Issues types",
-            "ACTION_ADD": "Add new type"
+            "ACTION_ADD": "Add new {{objName}}"
         },
         "ROLES": {
             "SECTION_NAME": "Roles - {{projectName}}",
@@ -523,6 +523,7 @@
     "PROJECT": {
         "WELCOME": "Welcome",
         "SECTION_PROJECTS": "Projects",
+        "HELP": "TODO. You can reorder your projects in your favorite way by drag&drop, Taiga will remember your order for every project list.\n Remember that the first ten projects will be shown in your rapid access menu in the top bar dropdown menu",
         "STATS": {
             "PROJECT": "project<br/> points",
             "DEFINED": "defined<br/> points",
@@ -565,8 +566,8 @@
             "CHANGE_PASSWORD": "Change password",
             "DASHBOARD_TITLE": "Dashboard",
             "DISCOVER_TITLE": "Discover trending projects",
-            "DISCOVER": "Discover"
-
+            "DISCOVER": "Discover",
+            "ACTION_REORDER": "Drag & drop to reorder"
         },
         "IMPORT": {
             "TITLE": "Importing Project",

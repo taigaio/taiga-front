@@ -8,6 +8,8 @@ ProjectsListingDirective = (projectsService) ->
             dropOnEmpty: true
             revert: 200
             axis: "y"
+            opacity: .95
+            placeholder: 'placeholder'
         })
 
         tdom.on "sortstop", (event, ui) ->

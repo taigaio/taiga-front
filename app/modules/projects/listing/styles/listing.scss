@@ -1,26 +1,23 @@
-.profile-projects {
-    border-top: 1px solid $whitish;
-    .profile-project-single {
-        border-bottom: 1px solid $whitish;
-        display: flex;
-        justify-content: center;
-        min-height: 10rem;
-        padding: .8rem 1rem;
-        position: relative;
-    }
-    .profile-projects-left,
-    .profile-projects-right {
-        display: flex;
-        flex-direction: column;
-    }
+.project-list-single {
+    border-bottom: 1px solid $whitish;
+    display: flex;
+    justify-content: center;
+    padding: .8rem 1rem;
+    position: relative;
 }
 
-.profile-projects-left {
+.project-list-single-left,
+.project-list-single-right {
+    display: flex;
+    flex-direction: column;
+}
+
+.project-list-single-left {
     align-content: space-between;
     flex: 4;
     h1 {
-        @extend %bold;
-        @extend %xlarge;
+        @extend %text;
+        @extend %larger;
         margin-bottom: 0;
         text-transform: none;
     }
@@ -28,7 +25,7 @@
         color: $gray-light;
         max-width: 70%;
     }
-    .profile-project-tags {
+    .project-list-single-tags {
         align-content: flex-end;
         display: flex;
         flex: 3;
@@ -37,13 +34,14 @@
     }
     .tag {
         align-self: flex-end;
-        margin-bottom: .3rem;
+        margin-right: .5rem;
+        padding: .5rem;
     }
 }
 
-.profile-projects-right {
+.project-list-single-right {
     justify-content: space-between;
-    .profile-project-stats {
+    .project-list-single-stats {
         align-self: flex-end;
         display: flex;
         div {
@@ -60,7 +58,7 @@
             }
         }
     }
-    .profile-project-members {
+    .project-list-single-members {
         align-self: flex-end;
         display: flex;
         flex-grow: 0;

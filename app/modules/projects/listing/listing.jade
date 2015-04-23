@@ -1,17 +1,24 @@
-a.create-project-btn.button-green(
-    href="#",
-    ng-click="vm.newProject()",
-    title="{{'PROJECT.NAVIGATION.ACTION_CREATE_PROJECT' | translate}}",
-    translate="PROJECT.NAVIGATION.ACTION_CREATE_PROJECT")
+div.project-list-wrapper.centered
+    div.project-list-title
+        h1 My projects
+        a.create-project-btn.button-green(href="#", ng-click="vm.newProject()", title="{{'PROJECT.NAVIGATION.ACTION_CREATE_PROJECT' | translate}}", translate="PROJECT.NAVIGATION.ACTION_CREATE_PROJECT")
+    section.project-list-section
+        div.project-list
+            ul.js-sortable
+                li.project-list-single(tg-bind-scope, ng-repeat="project in vm.projects.all")
+                    div.project-list-single-left
+                        div.project-list-single-title
+                            h1
+                                a(href="#", ng-bind="::project.name", tg-nav="project:project=project.slug")
+                                    span {{project.is_private}}
+                            p {{ ::project.description }}
 
-h2 Esto es sortable y persiste en el servidor! ;)
+                        div.project-list-single-tags.tags-container(ng-if="project.tags")
+                            div.tags-block(tg-colorize-tags="project.tags", tg-colorize-tags-type="backlog")
 
-ul.js-sortable
-    li(tg-bind-scope, ng-repeat="project in vm.projects.all")
-        span Private: {{project.is_private}}, tags: {{project.tags}}, link:
+                    div.project-list-single-right
+                    span.drag.icon.icon-drag-v
 
-        a(href="#",
-            ng-bind="::project.name"
-            tg-nav="project:project=project.slug")
+        aside.help-area
+            p(translate="PROJECT.HELP")
 
-        div {{ ::project.description }}
