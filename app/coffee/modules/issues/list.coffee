@@ -658,8 +658,8 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template, $
 
     return {link:link}
 
-module.directive("tgIssuesFilters", ["$log", "$tgLocation", "$tgResources", "$tgConfirm", "$tgLoading", "$tgTemplate", "$translate",
-                                     IssuesFiltersDirective])
+module.directive("tgIssuesFilters", ["$log", "$tgLocation", "$tgResources", "$tgConfirm", "$tgLoading",
+                                     "$tgTemplate", "$translate", IssuesFiltersDirective])
 
 
 #############################################################################
@@ -748,7 +748,8 @@ IssueStatusInlineEditionDirective = ($repo, $template, $rootscope) ->
 
     return {link: link}
 
-module.directive("tgIssueStatusInlineEdition", ["$tgRepo", "$tgTemplate", "$rootScope", IssueStatusInlineEditionDirective])
+module.directive("tgIssueStatusInlineEdition", ["$tgRepo", "$tgTemplate", "$rootScope",
+                                                IssueStatusInlineEditionDirective])
 
 
 #############################################################################
@@ -799,4 +800,5 @@ IssueAssignedToInlineEditionDirective = ($repo, $rootscope, popoverService) ->
 
     return {link: link}
 
-module.directive("tgIssueAssignedToInlineEdition", ["$tgRepo", "$rootScope", IssueAssignedToInlineEditionDirective])
+module.directive("tgIssueAssignedToInlineEdition", ["$tgRepo", "$rootScope",
+                                                    IssueAssignedToInlineEditionDirective])

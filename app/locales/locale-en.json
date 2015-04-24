@@ -744,33 +744,44 @@
         "TITLE_NEXT_ISSUE": "next issue",
         "ACTION_DELETE": "Delete issue",
         "LIGHTBOX_TITLE_BLOKING_ISSUE": "Blocking issue",
-        "FIELDS": {
-            "PRIORITY": "priority",
-            "SEVERITY": "severity",
-            "TYPE": "type"
-        },
         "CONFIRM_PROMOTE": {
             "TITLE": "Promote this issue to a new user story",
             "MESSAGE": "Are you sure you want to create a new US from this Issue?"
         },
         "FILTERS": {
+            "TITLE": "Filters",
+            "INPUT_SEARCH_PLACEHOLDER": "Subject or ref",
+            "TITLE_ACTION_SEARCH": "Search",
             "ACTION_SAVE_CUSTOM_FILTER": "save as custom filter",
+            "BREADCRUMB": "Filters",
+            "TITLE_BREADCRUMB": "Filters",
+            "CATEGORIES": {
+                "TYPE": "Type",
+                "STATUS": "Status",
+                "SEVERITY": "Severity",
+                "PRIORITIES": "Priorities",
+                "TAGS": "Tags",
+                "ASSIGNED_TO": "Assigned to",
+                "CREATED_BY": "Created by",
+                "CUSTOM_FILTERS": "Custom filters"
+            },
             "CONFIRM_DELETE": {
                 "TITLE": "Delete custom filter",
                 "MESSAGE": "the custom filter '{{customFilterName}}'"
-            },
-            "FILTER_CATEGORY_TYPE": "Type",
-            "FILTER_CATEGORY_STATUS": "Status",
-            "FILTER_CATEGORY_SEVERITY": "Severity",
-            "FILTER_CATEGORY_PRIORITIES": "Priorities",
-            "FILTER_CATEGORY_TAGS": "Tags",
-            "FILTER_CATEGORY_ASSIGNED_TO": "Assigned to",
-            "FILTER_CATEGORY_CREATED_BY": "Created by",
-            "CUSTOM_FILTERS": "Custom filters"
+            }
         },
         "TABLE": {
-            "COLUMN_CREATED": "Created",
+            "COLUMNS": {
+                "TYPE": "Type",
+                "SEVERITY": "Severity",
+                "PRIORITY": "Priority",
+                "SUBJECT": "Subject",
+                "STATUS": "Status",
+                "CREATED": "Created",
+                "ASSIGNED_TO": "Assigned to"
+            },
             "TITLE_ACTION_CHANGE_STATUS": "Change status",
+            "TITLE_ACTION_ASSIGNED_TO": "Assigned to",
             "EMPTY": {
                 "TITLE": "There are no issues to report :-)",
                 "SUBTITLE": "Did you find an issue?",
