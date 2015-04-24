@@ -158,6 +158,15 @@ replaceTags = (str, tags, replace) ->
 
     return str
 
+defineImmutableProperty = (obj, name, variable) =>
+    Object.defineProperty obj, name, {
+        get: () =>
+            if _.isFunction(variable)
+                return variable.call(obj)
+            else
+                return variable
+    }
+
 taiga = @.taiga
 taiga.nl2br = nl2br
 taiga.bindMethods = bindMethods
@@ -179,3 +188,4 @@ taiga.startswith = startswith
 taiga.sizeFormat = sizeFormat
 taiga.stripTags = stripTags
 taiga.replaceTags = replaceTags
+taiga.defineImmutableProperty = defineImmutableProperty
