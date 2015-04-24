@@ -1,5 +1,6 @@
 .working-on,
 .watching {
+    margin-bottom: 2rem;
     .duty-single {
         align-items: center;
         border-bottom: 1px solid $whitish;
@@ -54,8 +55,4 @@
         display: block;
         margin: 2rem 30%;
     }
-}
-
-.watching {
-    margin-bottom: 2rem;
 }

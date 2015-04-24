@@ -2,7 +2,7 @@ doctype html
 
 include ../includes/components/beta
 div.home-wrapper.centered
-    div.main
+    div.duty-summary
         // TODO Hide if ASSIGNED TO ==== false
         div.title-bar.working-on-title Working on
         // TODO Hide if ASSIGNED TO ==== false
@@ -65,4 +65,5 @@ div.home-wrapper.centered
                             span.duty-name It is not possible to re-order stories in the sprint view .
                     div.duty-project Teletransportation hubs
             a.button-gray.see-more(href="#", title="See more Watching US") See more
-    aside.project-list
+    aside.project-list(tg-home-project-list)
+

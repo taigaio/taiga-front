@@ -1,0 +1,10 @@
+ul.home-project-list
+    li.home-project-list-single(tg-bind-scope, ng-repeat="project in vm.projects.all")
+        div.home-project-list-single-left
+            div.home-project-list-single-title
+                h2
+                    a(href="#", ng-bind="::project.name", tg-nav="project:project=project.slug")
+                        span {{project.is_private}}
+                p {{ ::project.description }}
+
+        div.home-project-list-single-right
