@@ -38,7 +38,8 @@
         "TAGS": {
             "PLACEHOLDER": "I'm it! Tag me...",
             "DELETE": "Delete tag",
-            "ADD": "Add tag"
+            "ADD": "Add tag",
+            "LIST": "Tags"
         },
         "DESCRIPTION": {
             "EMPTY": "Empty space is so boring... go on be descriptive... A rose by any other name would smell as sweet...",
