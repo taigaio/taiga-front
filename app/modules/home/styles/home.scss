@@ -1,0 +1,18 @@
+.home-wrapper {
+    display: flex;
+    .main {
+        flex: 1;
+    }
+    .project-list {
+        width: 250px;
+    }
+    .title-bar {
+        @extend %title;
+        @extend %larger;
+        align-content: center;
+        background: $whitish;
+        display: flex;
+        margin: 2rem 0 .5rem;
+        padding: .9rem 1rem;
+    }
+}

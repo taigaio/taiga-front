@@ -1,0 +1,15 @@
+.watching-empty {
+    padding: 5vh;
+    text-align: center;
+    svg {
+        margin: 2rem auto;
+        max-width: 160px;
+        text-align: center;
+        path {
+            fill: $whitish;
+        }
+    }
+    p {
+        @extend %small;
+    }
+}

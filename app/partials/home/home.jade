@@ -1,34 +1,68 @@
 doctype html
 
 include ../includes/components/beta
-div.home-projects-list(ng-controller="ProjectsController as ctrl")
-    .home-projects-wrapper
-        div.welcome-user
-            div.info
-                p(translate="PROJECT.WELCOME")
-                    span(tg-bo-bind="ctrl.user.full_name_display")
-                a.logout(ng-click="ctrl.logout()" href="", title="{{'COMMON.LOGOUT' | translate}}", translate="COMMON.LOGOUT")
+div.home-wrapper.centered
+    div.main
+        // TODO Hide if ASSIGNED TO ==== false
+        div.title-bar.working-on-title Working on
+        // TODO Hide if ASSIGNED TO ==== false
+        section.working-on
+            // TODO Remove and replace for an angular repeat
+            - for (var x = 0; x < 2; x++)
+                div.duty-single
+                    img.avatar(src="https://s3.amazonaws.com/uifaces/faces/twitter/rem/128.jpg", title="{{ user.fullname }}")
+                    div.duty-data
+                        div
+                            // TODO, ADD THEIR COLOR TO THE DUTY TYPE AND STATUS
+                            span.duty-type User Story
+                            span.duty-status New
+                        a.duty-title(href="")
+                            span.duty-id #1504
+                            span.duty-name Documentación III: (notificaciones asíncronas + plugins front/back)
+                    div.duty-project Taiga
+                 div.duty-single.blocked
+                    img.avatar(src="https://s3.amazonaws.com/uifaces/faces/twitter/rem/128.jpg", title="{{ user.fullname }}")
+                    div.duty-data
+                        div
+                            // TODO, ADD THEIR COLOR TO THE DUTY TYPE AND STATUS
+                            span.duty-type User Story
+                            span.duty-status Blocked
+                         a.duty-title(href="")
+                            span.duty-id #1504
+                            span.duty-name Documentación III: (notificaciones asíncronas + plugins front/back) Documentación III: (notificaciones asíncronas + plugins front/back)
+                    div.duty-project Whatever
 
-            .avatar
-                img(tg-bo-src="ctrl.user.photo", tg-bo-alt="ctrl.user.full_name_display")
+        div.title-bar.watching-title Watching
 
-        .home-projects-list-inner
-            div.recent-projects
-                ul
-                    li(ng-repeat="project in ctrl.projects.recents")
-                        .project-content
-                            a(href="{{ project.url }}")
-                                h2(tg-bo-bind="project.name")
-                                p(tg-bo-bind="project.description")
+        // TODO Show if WATCHERS ==== false
+        section.watching-empty.hidden
+            include ../../svg/hide.svg
+            p <strong>Follow</strong> the projects, User Stories, Tasks, Issues... that you want to know about :)
 
-            div.all-projects
-                h1(translate="PROJECT.SECTION_PROJECTS")
-                div(tg-projects-list)
-
-                .create-project-button-wrapper
-                    a.button-green.create-project-button(href="", ng-click="ctrl.newProject()", title="{{'PROJECT.NAVIGATION.ACTION_CREATE_PROJECT' | translate}}")
-                        span(translate="PROJECT.NAVIGATION.ACTION_CREATE_PROJECT")
-                    div(tg-import-project-button)
-                        a.button-blackish.import-project-button(href="", title="{{'PROJECT.NAVIGATION.TITLE_ACTION_IMPORT' | translate}}")
-                            span.icon.icon-upload
-                        input.import-file.hidden(type="file")
+        // TODO Show if WATCHERS ==== true
+        section.watching
+            - for (var x = 0; x < 20; x++)
+                div.duty-single
+                    img.avatar(src="https://s3.amazonaws.com/uifaces/faces/twitter/annapickard/128.jpg", title="{{ user.fullname }}")
+                    div.duty-data
+                        div
+                            // TODO, ADD THEIR COLOR TO THE DUTY TYPE AND STATUS
+                            span.duty-type User Story
+                            span.duty-status New
+                        a.duty-title(href="")
+                            span.duty-id #1504
+                            span.duty-name Documentación III: (notificaciones asíncronas + plugins front/back)
+                    div.duty-project Taiga
+                div.duty-single
+                    img.avatar(src="https://s3.amazonaws.com/uifaces/faces/twitter/sircookieface/128.jpg", title="{{ user.fullname }}")
+                    div.duty-data
+                        div
+                            // TODO, ADD THEIR COLOR TO THE DUTY TYPE AND STATUS
+                            span.duty-type Bug
+                            span.duty-status Ready for test
+                        a.duty-title(href="")
+                            span.duty-id #28
+                            span.duty-name It is not possible to re-order stories in the sprint view .
+                    div.duty-project Teletransportation hubs
+            a.button-gray.see-more(href="#", title="See more Watching US") See more
+    aside.project-list
