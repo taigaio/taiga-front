@@ -35,12 +35,11 @@
         "IOCAINE_TEXT": "Vous vous sentez un peu submergé par une tâche ? Soyez certains d'en informer les autres en cliquant su Iocaine lors de la modification de la tâche. Il est possible de s'immuniser contre ce poison (fictif) en consommant de petites quantités en heures supplémentaires, tout comme il est possible de s'améliorer en acceptant parfois de nouveaux défis !",
         "TAGS": {
             "PLACEHOLDER": "Taggez moi !",
-            "DELETE": "supprimer le label",
+            "DELETE": "Delete tag",
             "ADD": "Ajouter un label"
         },
         "DESCRIPTION": {
             "EMPTY": "Un espace vide est si ennuyeux… allez-y, soyez descriptif… Une rose d'un autre nom sentirait si bon…",
-            "MARKDOWN_HELP": "Aide sur la syntaxe Markdown",
             "NO_DESCRIPTION": "Pas encore de description"
         },
         "FIELDS": {
@@ -91,6 +90,35 @@
             "BREADCRUMB_TITLE": "retour aux catégories",
             "BREADCRUMB_FILTERS": "Filtres",
             "BREADCRUMB_STATUS": "état"
+        },
+        "WYSIWYG": {
+            "H1_BUTTON": "First Level Heading",
+            "H1_SAMPLE_TEXT": "Your title here...",
+            "H2_BUTTON": "Second Level Heading",
+            "H2_SAMPLE_TEXT": "Your title here...",
+            "H3_BUTTON": "Third Level Heading",
+            "H3_SAMPLE_TEXT": "Your title here...",
+            "BOLD_BUTTON": "Bold",
+            "BOLD_BUTTON_SAMPLE_TEXT": "Your text here...",
+            "ITALIC_BUTTON": "Italic",
+            "ITALIC_SAMPLE_TEXT": "Your text here...",
+            "STRIKE_BUTTON": "Strike",
+            "STRIKE_SAMPLE_TEXT": "Your text here...",
+            "BULLETED_LIST_BUTTON": "Bulleted List",
+            "BULLETED_LIST_SAMPLE_TEXT": "Your text here...",
+            "NUMERIC_LIST_BUTTON": "Numeric List",
+            "NUMERIC_LIST_SAMPLE_TEXT": "Your text here...",
+            "PICTURE_BUTTON": "Picture",
+            "PICTURE_SAMPLE_TEXT": "Your alternative text to picture here...",
+            "LINK_BUTTON": "Link",
+            "LINK_SAMPLE_TEXT": "Your text to link here....",
+            "QUOTE_BLOCK_BUTTON": "Quote Block",
+            "QUOTE_BLOCK_SAMPLE_TEXT": "Your text here...",
+            "CODE_BLOCK_BUTTON": "Code Block",
+            "CODE_BLOCK_SAMPLE_TEXT": "Your text here...",
+            "PREVIEW_BUTTON": "Preview",
+            "EDIT_BUTTON": "Edit",
+            "MARKDOWN_HELP": "Aide sur la syntaxe Markdown"
         }
     },
     "AUTH": {
@@ -172,7 +200,7 @@
             "PROJECT_SLUG": "Slug du projet",
             "NUMBER_SPRINTS": "Nombre de sprints",
             "NUMBER_US_POINTS": "Nombre de points HU",
-            "DESCRIPTION": "DESCRIPTION",
+            "DESCRIPTION": "Description",
             "PUBLIC_PROJECT": "Projet public",
             "PRIVATE_PROJECT": "Projet privé",
             "DELETE": "Supprimer ce projet"
@@ -183,7 +211,10 @@
             "DESCRIPTION": "Téléchargez un fichier CSV ou copiez l'URL générée et ouvrez-là dans votre éditeur de texte ou feuille de calcul favorite pour créer vos propres rapports de projet. Vous pourrez visualiser et analyser toutes vos données facilement.",
             "HELP": "Comment utiliser ceci dans ma propre feuille de calcul?",
             "REGENERATE_TITLE": "Changer l'URL",
-            "REGENERATE_SUBTITLE": "Vous êtes sur le point de changer l'url d'accès aux données CSV. L'url précédente sera désactivée. Etes-vous sûre ?"
+            "REGENERATE_SUBTITLE": "Vous êtes sur le point de changer l'url d'accès aux données CSV. L'url précédente sera désactivée. Etes-vous sûre ?",
+            "CSV_TYPE_US": "histoires utilisateur",
+            "CSV_TYPE_TASK": "tâches",
+            "CSV_TYPE_ISSUE": "problèmes"
         },
         "CUSTOM_FIELDS": {
             "TITLE": "Champs Personnalisés",
@@ -466,6 +497,8 @@
         }
     },
     "US": {
+        "LINK_TASKBOARD": "Tableau des tâches",
+        "TITLE_LINK_TASKBOARD": "Aller au tableau des tâches",
         "TOTAL_POINTS": "total",
         "ADD": "Ajouter une nouvelle User Story",
         "ADD_BULK": "Ajouter de nouvelles User Stories en masse",
@@ -511,6 +544,7 @@
         "SIZE_CHANGE": "Made {{size}} {size, plural, one{change} other{changes}}"
     },
     "BACKLOG": {
+        "SECTION_NAME": "Backlog",
         "MOVE_US_TO_CURRENT_SPRINT": "Déplacer vers le Sprint Courant",
         "SHOW_FILTERS": "Montrer les filtres",
         "SHOW_TAGS": "Montrer les étiquettes",
@@ -534,8 +568,8 @@
             "INCREMENT_CLIENT": "Le nombre de points ajoutés par les exigences du client pour le sprint {{xval}} est {{yval}}"
         },
         "TAGS": {
-            "SHOW": "Afficher les labels",
-            "HIDE": "Cacher les labels"
+            "SHOW": "Montrer les étiquettes",
+            "HIDE": "Hide tags"
         },
         "TABLE": {
             "COLUMN_US": "Histoires utilisateur",
@@ -579,7 +613,8 @@
         "NOT_FOUND": "Non trouvé",
         "NOT_FOUND_TEXT": "Erreur 404. La page que vous cherchez n'existe plus. Peut-être pouvez-vous retourner à la page d'accueil de Taiga et voir si vous trouvez ce que vous cherchez.",
         "PERMISSION_DENIED": "Permission refusée",
-        "PERMISSION_DENIED_CODE": "Erreur 403."
+        "PERMISSION_DENIED_CODE": "Erreur 403.",
+        "VERSION_ERROR": "Quelqu'un a changé ça auparavant dans Taiga et nos Oompa Loompas ne peuvent appliquer vos modifications. Veuillez recharger la page et appliquer vos modifications de nouveaux (elles seront perdues)."
     },
     "TASKBOARD": {
         "SECTION_NAME": "Tableau des tâches",
@@ -602,9 +637,10 @@
         }
     },
     "TASK": {
+        "LINK_TASKBOARD": "Tableau des tâches",
+        "TITLE_LINK_TASKBOARD": "Aller au tableau des tâches",
         "PLACEHOLDER_SUBJECT": "Entrez le sujet de la nouvelle tâche",
         "TITLE_SELECT_STATUS": "Nom de l'état",
-        "LINK_TASKBOARD": "Aller au taskboard",
         "OWNER_US": "La tâche appartient à",
         "TITLE_LINK_GO_OWNER": "Aller à l'histoire utilisateur",
         "ORIGIN_US": "Cette tâche a été créée par",
@@ -692,6 +728,7 @@
         "LINK_LOGIN": "Êtes-vous déjà enregistré? Connectez-vous."
     },
     "ISSUES": {
+        "LIST_SECTION_NAME": "Problèmes",
         "SECTION_NAME": "Détails du problème",
         "ACTION_NEW_ISSUE": "+ NOUVEAU PROBLÈME",
         "ACTION_PROMOTE_TO_US": "Transformer en User Story",
@@ -739,6 +776,7 @@
         }
     },
     "KANBAN": {
+        "SECTION_NAME": "Kanban",
         "TITLE_ACTION_FOLD": "Replier la colonne",
         "TITLE_ACTION_UNFOLD": "Déplier la colonne",
         "TITLE_ACTION_FOLD_CARDS": "Replier les cartes",
@@ -772,7 +810,7 @@
         "COLUMN_CERVANTES": "Cervantes",
         "EXPLANATION_COLUMN_CERVANTES": "Page Wiki éditée",
         "COLUMN_BUG_HUNTER": "Chasseur de bug",
-        "EXPLANATION_COLUMN_BUG_HUNTER": "Bugs rapportés",
+        "EXPLANATION_COLUMN_BUG_HUNTER": "Issues reported",
         "COLUMN_NIGHT_SHIFT": "Equipe de nuit",
         "EXPLANATION_COLUMN_NIGHT_SHIFT": "Tâches fermées",
         "COLUMN_TOTAL_POWER": "Puissance totale",
@@ -786,8 +824,10 @@
         "SECTION_NAME": "Modifier le mot de passe",
         "FIELD_CURRENT_PASSWORD": "Mot de passe courant",
         "PLACEHOLDER_CURRENT_PASSWORD": "Votre mot de passe courant (ne rien saisir si vous ne possédez pas encore de mot de passe)",
-        "FIELD_NEW_PASSWORD": "Nouveau mot de passe",
+        "FIELD_NEW_PASSWORD": "New password",
+        "PLACEHOLDER_NEW_PASSWORD": "Type a new password",
         "FIELD_RETYPE_PASSWORD": "Confirmez le mot de passe",
+        "PLACEHOLDER_RETYPE_PASSWORD": "Confirmez le mot de passe",
         "ERROR_PASSWORD_MATCH": "Les mots de passe ne correspondent pas"
     },
     "USER_SETTINGS": {
@@ -814,7 +854,7 @@
         }
     },
     "USER_PROFILE": {
-        "IMAGE_HELP": "L'image sera tronquée à 80x80px.<br />",
+        "IMAGE_HELP": "L'image va être mise à l'échelle à 80x80px.<br />",
         "ACTION_CHANGE_IMAGE": "Modifier",
         "ACTION_USE_GRAVATAR": "Utiliser une image gravatar",
         "ACTION_DELETE_ACCOUNT": "Supprime le compte Taiga",
