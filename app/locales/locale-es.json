@@ -654,7 +654,9 @@
             "MILESTONE": "Sprint",
             "USER_STORY": "Historia de usuario",
             "IS_IOCAINE": "Tiene iocaína"
-        }
+        },
+        "ACTION_IOCAINE": "Iocaína",
+        "TITLE_ACTION_IOCAINE": "¿Te sientes fuera de tu zona de confort en una tarea? Asegúrate de que los demás están al tanto de ello, marca el check de la Iocaína al editar una tarea. Igual eu era posible llegar a ser inmune a este veneno mortal a base de consumir pequeñas dosis a lo largo del tiempo, es posible conseguir mejor en lo que estás haciendo si afrontas de vez en cuando esta clase de retos!"
     },
     "NOTIFICATION": {
         "OK": "Todo está bien",
@@ -741,33 +743,44 @@
         "TITLE_NEXT_ISSUE": "petición siguiente",
         "ACTION_DELETE": "Borrar petición",
         "LIGHTBOX_TITLE_BLOKING_ISSUE": "Petición bloqueada",
-        "FIELDS": {
-            "PRIORITY": "prioridad",
-            "SEVERITY": "gravedad",
-            "TYPE": "tipo"
-        },
         "CONFIRM_PROMOTE": {
             "TITLE": "Promover esta petición a una nueva historia de usuario",
             "MESSAGE": "¿Está seguro de que desea crear una nueva Historia de Usuario a partir de esta Petición?"
         },
         "FILTERS": {
+            "TITLE": "Filtros",
+            "INPUT_SEARCH_PLACEHOLDER": "Asunto o referencia",
+            "TITLE_ACTION_SEARCH": "Buscar",
             "ACTION_SAVE_CUSTOM_FILTER": "guardar como atributo personalizado",
+            "BREADCRUMB": "Filtros",
+            "TITLE_BREADCRUMB": "Filtros",
+            "CATEGORIES": {
+                "TYPE": "Tipo",
+                "STATUS": "Estado",
+                "SEVERITY": "Gravedad",
+                "PRIORITIES": "Prioridad",
+                "TAGS": "Etiquetas",
+                "ASSIGNED_TO": "Asignado a",
+                "CREATED_BY": "Creada por",
+                "CUSTOM_FILTERS": "Filtros personalizados"
+            },
             "CONFIRM_DELETE": {
                 "TITLE": "Eliminar filtros personalizados",
                 "MESSAGE": "el atributo personalizado '{{customFilterName}}'"
-            },
-            "FILTER_CATEGORY_TYPE": "Tipo",
-            "FILTER_CATEGORY_STATUS": "Estado",
-            "FILTER_CATEGORY_SEVERITY": "Gravedad",
-            "FILTER_CATEGORY_PRIORITIES": "Prioridades",
-            "FILTER_CATEGORY_TAGS": "Etiquetas",
-            "FILTER_CATEGORY_ASSIGNED_TO": "Asignado a",
-            "FILTER_CATEGORY_CREATED_BY": "Creado por",
-            "CUSTOM_FILTERS": "Filtros personalizados"
+            }
         },
         "TABLE": {
-            "COLUMN_CREATED": "Creado",
+            "COLUMNS": {
+                "TYPE": "Tipo",
+                "SEVERITY": "Gravedad",
+                "PRIORITY": "Prioridad",
+                "SUBJECT": "Asunto",
+                "STATUS": "Estado",
+                "CREATED": "Creado",
+                "ASSIGNED_TO": "Asignado a"
+            },
             "TITLE_ACTION_CHANGE_STATUS": "Cambio de estado",
+            "TITLE_ACTION_ASSIGNED_TO": "Asignado a",
             "EMPTY": {
                 "TITLE": "No hay peticiones a reportar :-)",
                 "SUBTITLE": "¿Ha encontrado una petición?",

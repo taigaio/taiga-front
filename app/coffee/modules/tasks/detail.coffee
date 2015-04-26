@@ -26,6 +26,7 @@ groupBy = @.taiga.groupBy
 
 module = angular.module("taigaTasks")
 
+
 #############################################################################
 ## Task Detail Controller
 #############################################################################
@@ -285,11 +286,12 @@ module.directive("tgTaskStatusButton", ["$rootScope", "$tgRepo", "$tgConfirm", "
                                         "$compile", "$translate", TaskStatusButtonDirective])
 
 
-TaskIsIocaineButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $qqueue) ->
+TaskIsIocaineButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $qqueue, $compile) ->
     template = _.template("""
-      <fieldset title="Feeling a bit overwhelmed by a task? Make sure others know about it by clicking on Iocaine when editing a task. It's possible to become immune to this (fictional) deadly poison by consuming small amounts over time just as it's possible to get better at what you do by occasionally taking on extra challenges!">
+      <fieldset title="{{ 'TASK.TITLE_ACTION_IOCAINE' | translate }}">
         <label for="is-iocaine"
-              class="button button-gray is-iocaine <% if(isEditable){ %>editable<% }; %> <% if(isIocaine){ %>active<% }; %>">
+               translate="TASK.ACTION_IOCAINE"
+               class="button button-gray is-iocaine <% if(isEditable){ %>editable<% }; %> <% if(isIocaine){ %>active<% }; %>">
               Iocaine
         </label>
         <input type="checkbox" id="is-iocaine" name="is-iocaine"/>
@@ -309,7 +311,7 @@ TaskIsIocaineButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $qqueue
                 isIocaine: task.is_iocaine
                 isEditable: isEditable()
             }
-            html = template(ctx)
+            html = $compile(template(ctx))($scope)
             $el.html(html)
 
         save = $qqueue.bindAdd (is_iocaine) =>
@@ -351,4 +353,5 @@ TaskIsIocaineButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $qqueue
         require: "ngModel"
     }
 
-module.directive("tgTaskIsIocaineButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", "$tgQqueue", TaskIsIocaineButtonDirective])
+module.directive("tgTaskIsIocaineButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", "$tgQqueue",
+                                           "$compile", TaskIsIocaineButtonDirective])
