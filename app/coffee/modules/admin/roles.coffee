@@ -48,7 +48,8 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
         "$translate"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls, @appTitle, @translate) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls, @appTitle,
+                  @translate) ->
         bindMethods(@)
 
         @scope.sectionName = "ADMIN.MENU.PERMISSIONS"
@@ -82,7 +83,7 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
             return role
 
         public_permission = {
-            "name": "External User",
+            "name": @translate.instant("ADMIN.ROLES.EXTERNAL_USER"),
             "permissions": @scope.project.public_permissions,
             "external_user": true
         }
@@ -114,8 +115,6 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
         @scope.$broadcast("role:changed", @scope.role)
 
     delete: ->
-        subtitle = @scope.role.name
-
         choices = {}
         for role in @scope.roles
             if role.id != @scope.role.id
@@ -124,14 +123,19 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
         if _.keys(choices).length == 0
             return @confirm.error(@translate.instant("ADMIN.ROLES.ERROR_DELETE_ALL"))
 
-        return @confirm.askChoice(@translate.instant("ADMIN.ROLES.TITLE_DELETE_ROLE"), subtitle, choices, @translate.instant("ADMIN.ROLES.REPLACEMENT_ROLE"), @translate.instant("ADMIN.ROLES.WARNING_DELETE_ROLE")).then (response) =>
-            promise = @repo.remove(@scope.role, {moveTo: response.selected})
-            promise.then =>
+        title = @translate.instant("ADMIN.ROLES.TITLE_DELETE_ROLE")
+        subtitle = @scope.role.name
+        replacement = @translate.instant("ADMIN.ROLES.REPLACEMENT_ROLE")
+        warning = @translate.instant("ADMIN.ROLES.WARNING_DELETE_ROLE")
+        return @confirm.askChoice(title, subtitle, choices, replacement, warning).then (response) =>
+            onSuccess = (response)=>
                 @.loadProject()
-                @.loadRoles().finally ->
+                @.loadRoles().finally =>
                     response.finish()
-            promise.then null, =>
+            onError = =>
                 @confirm.notify('error')
+
+            return @repo.remove(@scope.role, {moveTo: response.selected}).then onSuccess, onError
 
     setComputable: debounce 2000, ->
         onSuccess = =>
@@ -254,14 +258,14 @@ module.directive("tgNewRole", ["$tgRepo", "$tgConfirm", NewRoleDirective])
 
 
 # Use category-config.scss styles
-RolePermissionsDirective = ($rootscope, $repo, $confirm) ->
+RolePermissionsDirective = ($rootscope, $repo, $confirm, $compile) ->
     resumeTemplate = _.template("""
-    <div class="resume-title"><%- category.name %></div>
+    <div class="resume-title" translate="<%- category.name %>"></div>
     <div class="summary-role">
         <div class="count"><%- category.activePermissions %>/<%- category.permissions.length %></div>
         <% _.each(category.permissions, function(permission) { %>
             <div class="role-summary-single <% if(permission.active) { %>active<% } %>"
-                 title="<%- permission.description %>"></div>
+                 title="{{ '<%- permission.name %>' | translate }}"></div>
         <% }) %>
     </div>
     <div class="icon icon-arrow-bottom"></div>
@@ -275,12 +279,14 @@ RolePermissionsDirective = ($rootscope, $repo, $confirm) ->
             <div class="items-container">
             <% _.each(category.permissions, function(permission) { %>
                 <div class="category-item" data-id="<%- permission.key %>">
-                    <span><%- permission.description %></span>
+                    <span translate="<%- permission.name %>"></span>
                     <div class="check">
-                        <input type="checkbox" <% if(!permission.editable) { %>disabled="disabled"<% } %>  <% if(permission.active) { %>checked="checked"<% } %>/>
+                        <input type="checkbox"
+                               <% if(!permission.editable) { %> disabled="disabled" <% } %>
+                               <% if(permission.active) { %> checked="checked" <% } %>/>
                         <div></div>
-                        <span class="check-text check-yes">Yes</span>
-                        <span class="check-text check-no">No</span>
+                        <span class="check-text check-yes" translate="COMMON.YES"></span>
+                        <span class="check-text check-no" translate="COMMON.NO"></span>
                     </div>
                 </div>
             <% }) %>
@@ -323,47 +329,62 @@ RolePermissionsDirective = ($rootscope, $repo, $confirm) ->
             categories = []
 
             milestonePermissions = [
-                { key: "view_milestones", description: "View sprints" }
-                { key: "add_milestone", description: "Add sprint" }
-                { key: "modify_milestone", description: "Modify sprint" }
-                { key: "delete_milestone", description: "Delete sprint" }
+                { key: "view_milestones", name: "COMMON.PERMISIONS_CATEGORIES.SPRINTS.VIEW_SPRINTS"}
+                { key: "add_milestone", name: "COMMON.PERMISIONS_CATEGORIES.SPRINTS.ADD_SPRINTS"}
+                { key: "modify_milestone", name: "COMMON.PERMISIONS_CATEGORIES.SPRINTS.MODIFY_SPRINTS"}
+                { key: "delete_milestone", name: "COMMON.PERMISIONS_CATEGORIES.SPRINTS.DELETE_SPRINTS"}
             ]
-            categories.push({ name: "Sprints", permissions: setActivePermissions(milestonePermissions) })
+            categories.push({
+                name: "COMMON.PERMISIONS_CATEGORIES.SPRINTS.NAME",
+                permissions: setActivePermissions(milestonePermissions)
+            })
 
             userStoryPermissions = [
-                { key: "view_us", description: "View user story" }
-                { key: "add_us", description: "Add user story" }
-                { key: "modify_us", description: "Modify user story" }
-                { key: "delete_us", description: "Delete user story" }
+                { key: "view_us", name: "COMMON.PERMISIONS_CATEGORIES.USER_STORIES.VIEW_USER_STORIES"}
+                { key: "add_us", name: "COMMON.PERMISIONS_CATEGORIES.USER_STORIES.ADD_USER_STORIES"}
+                { key: "modify_us", name: "COMMON.PERMISIONS_CATEGORIES.USER_STORIES.MODIFY_USER_STORIES"}
+                { key: "delete_us", name: "COMMON.PERMISIONS_CATEGORIES.USER_STORIES.DELETE_USER_STORIES"}
             ]
-            categories.push({ name: "User Stories", permissions: setActivePermissions(userStoryPermissions) })
+            categories.push({
+                name: "COMMON.PERMISIONS_CATEGORIES.USER_STORIES.NAME",
+                permissions: setActivePermissions(userStoryPermissions)
+            })
 
             taskPermissions = [
-                { key: "view_tasks", description: "View tasks" }
-                { key: "add_task", description: "Add task" }
-                { key: "modify_task", description: "Modify task" }
-                { key: "delete_task", description: "Delete task" }
+                { key: "view_tasks", name: "COMMON.PERMISIONS_CATEGORIES.TASKS.VIEW_TASKS"}
+                { key: "add_task", name: "COMMON.PERMISIONS_CATEGORIES.TASKS.ADD_TASKS"}
+                { key: "modify_task", name: "COMMON.PERMISIONS_CATEGORIES.TASKS.MODIFY_TASKS"}
+                { key: "delete_task", name: "COMMON.PERMISIONS_CATEGORIES.TASKS.DELETE_TASKS"}
             ]
-            categories.push({ name: "Tasks", permissions: setActivePermissions(taskPermissions) })
+            categories.push({
+                name: "COMMON.PERMISIONS_CATEGORIES.TASKS.NAME" ,
+                permissions: setActivePermissions(taskPermissions)
+            })
 
             issuePermissions = [
-                { key: "view_issues", description: "View issues" }
-                { key: "add_issue", description: "Add issue" }
-                { key: "modify_issue", description: "Modify issue" }
-                { key: "delete_issue", description: "Delete issue" }
+                { key: "view_issues", name: "COMMON.PERMISIONS_CATEGORIES.ISSUES.VIEW_ISSUES"}
+                { key: "add_issue", name: "COMMON.PERMISIONS_CATEGORIES.ISSUES.ADD_ISSUES"}
+                { key: "modify_issue", name: "COMMON.PERMISIONS_CATEGORIES.ISSUES.MODIFY_ISSUES"}
+                { key: "delete_issue", name: "COMMON.PERMISIONS_CATEGORIES.ISSUES.DELETE_ISSUES"}
             ]
-            categories.push({ name: "Issues", permissions: setActivePermissions(issuePermissions) })
+            categories.push({
+                name: "COMMON.PERMISIONS_CATEGORIES.ISSUES.NAME",
+                permissions: setActivePermissions(issuePermissions)
+            })
 
             wikiPermissions = [
-                { key: "view_wiki_pages", description: "View wiki pages" }
-                { key: "add_wiki_page", description: "Add wiki page" }
-                { key: "modify_wiki_page", description: "Modify wiki page" }
-                { key: "delete_wiki_page", description: "Delete wiki page" }
-                { key: "view_wiki_links", description: "View wiki links" }
-                { key: "add_wiki_link", description: "Add wiki link" }
-                { key: "delete_wiki_link", description: "Delete wiki link" }
+                { key: "view_wiki_pages", name: "COMMON.PERMISIONS_CATEGORIES.WIKI.VIEW_WIKI_PAGES"}
+                { key: "add_wiki_page", name: "COMMON.PERMISIONS_CATEGORIES.WIKI.ADD_WIKI_PAGES"}
+                { key: "modify_wiki_page", name: "COMMON.PERMISIONS_CATEGORIES.WIKI.MODIFY_WIKI_PAGES"}
+                { key: "delete_wiki_page", name: "COMMON.PERMISIONS_CATEGORIES.WIKI.DELETE_WIKI_PAGES"}
+                { key: "view_wiki_links", name: "COMMON.PERMISIONS_CATEGORIES.WIKI.VIEW_WIKI_LINKS"}
+                { key: "add_wiki_link", name: "COMMON.PERMISIONS_CATEGORIES.WIKI.ADD_WIKI_LINKS"}
+                { key: "delete_wiki_link", name: "COMMON.PERMISIONS_CATEGORIES.WIKI.DELETE_WIKI_LINKS"}
             ]
-            categories.push({ name: "Wiki", permissions: setActivePermissions(wikiPermissions) })
+            categories.push({
+                name: "COMMON.PERMISIONS_CATEGORIES.WIKI.NAME",
+                permissions: setActivePermissions(wikiPermissions)
+            })
 
             return setActivePermissionsPerCategory(categories)
 
@@ -374,7 +395,7 @@ RolePermissionsDirective = ($rootscope, $repo, $confirm) ->
             html = categoryTemplate({category: category, index: index})
             html = angular.element(html)
             renderResume(html, category)
-            return html
+            return $compile(html)($scope)
 
         renderPermissions = () ->
             $el.off()
@@ -435,4 +456,5 @@ RolePermissionsDirective = ($rootscope, $repo, $confirm) ->
 
     return {link:link}
 
-module.directive("tgRolePermissions", ["$rootScope", "$tgRepo", "$tgConfirm", RolePermissionsDirective])
+module.directive("tgRolePermissions", ["$rootScope", "$tgRepo", "$tgConfirm", "$compile",
+                                       RolePermissionsDirective])

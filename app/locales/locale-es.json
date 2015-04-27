@@ -119,6 +119,46 @@
             "PREVIEW_BUTTON": "Previsualizar",
             "EDIT_BUTTON": "Editar",
             "MARKDOWN_HELP": "Ayuda de sintaxis Markdown"
+        },
+        "PERMISIONS_CATEGORIES": {
+            "SPRINTS": {
+                "NAME": "Sprints",
+                "VIEW_SPRINTS": "Ver sprints",
+                "ADD_SPRINTS": "Crear sprints",
+                "MODIFY_SPRINTS": "Editar sprints",
+                "DELETE_SPRINTS": "Borrar sprints"
+            },
+            "USER_STORIES": {
+                "NAME": "Historias de Usuario",
+                "VIEW_USER_STORIES": "Ver historias de usuario",
+                "ADD_USER_STORIES": "Crear historias de usuario",
+                "MODIFY_USER_STORIES": "Editar historias de usuario",
+                "DELETE_USER_STORIES": "Borrar historias de usuario"
+            },
+            "TASKS": {
+                "NAME": "Tareas",
+                "VIEW_TASKS": "Ver tareas",
+                "ADD_TASKS": "Crear tareas",
+                "MODIFY_TASKS": "Editar tareas",
+                "DELETE_TASKS": "Borrar tareas"
+            },
+            "ISSUES": {
+                "NAME": "Peticiones",
+                "VIEW_ISSUES": "Ver peticiones",
+                "ADD_ISSUES": "Crear peticiones",
+                "MODIFY_ISSUES": "Editar peticiones",
+                "DELETE_ISSUES": "Borrar peticiones"
+            },
+            "WIKI": {
+                "NAME": "Wiki",
+                "VIEW_WIKI_PAGES": "Ver páginas",
+                "ADD_WIKI_PAGES": "Crear páginas",
+                "MODIFY_WIKI_PAGES": "Editar páginas",
+                "DELETE_WIKI_PAGES": "Borrar páginas",
+                "VIEW_WIKI_LINKS": "Ver enlaces",
+                "ADD_WIKI_LINKS": "Crear enlaces",
+                "DELETE_WIKI_LINKS": "Borrar enlaces"
+            }
         }
     },
     "AUTH": {
@@ -265,7 +305,8 @@
             "TITLE_DELETE_ROLE": "Borrar Rol",
             "REPLACEMENT_ROLE": "Todos los usuarios con este rol serán movidos a",
             "WARNING_DELETE_ROLE": "<strong>Cuidado, todas las estimaciones asociadas a este rol se perderán</strong>",
-            "ERROR_DELETE_ALL": "Usted no puede eliminar todos los valores"
+            "ERROR_DELETE_ALL": "Usted no puede eliminar todos los valores",
+            "EXTERNAL_USER": "Usuario externo"
         },
         "THIRD_PARTIES": {
             "SECRET_KEY": "Secret key",

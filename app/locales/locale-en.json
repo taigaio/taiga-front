@@ -121,6 +121,46 @@
             "PREVIEW_BUTTON": "Preview",
             "EDIT_BUTTON": "Edit",
             "MARKDOWN_HELP": "Markdown syntax help"
+        },
+        "PERMISIONS_CATEGORIES": {
+            "SPRINTS": {
+                "NAME": "Sprints",
+                "VIEW_SPRINTS": "View sprints",
+                "ADD_SPRINTS": "Add sprints",
+                "MODIFY_SPRINTS": "Modify sprints",
+                "DELETE_SPRINTS": "Delete sprints"
+            },
+            "USER_STORIES": {
+                "NAME": "User Stories",
+                "VIEW_USER_STORIES": "View user stories",
+                "ADD_USER_STORIES": "Add user stories",
+                "MODIFY_USER_STORIES": "Modify user stories",
+                "DELETE_USER_STORIES": "Delete user stories"
+            },
+            "TASKS": {
+                "NAME": "Tasks",
+                "VIEW_TASKS": "View tasks",
+                "ADD_TASKS": "Add tasks",
+                "MODIFY_TASKS": "Modify tasks",
+                "DELETE_TASKS": "Delete tasks"
+            },
+            "ISSUES": {
+                "NAME": "Issues",
+                "VIEW_ISSUES": "View issues",
+                "ADD_ISSUES": "Add issues",
+                "MODIFY_ISSUES": "Modify issues",
+                "DELETE_ISSUES": "Delete issues"
+            },
+            "WIKI": {
+                "NAME": "Wiki",
+                "VIEW_WIKI_PAGES": "View wiki pages",
+                "ADD_WIKI_PAGES": "Add wiki pages",
+                "MODIFY_WIKI_PAGES": "Modify wiki pages",
+                "DELETE_WIKI_PAGES": "Delete wiki pages",
+                "VIEW_WIKI_LINKS": "View wiki links",
+                "ADD_WIKI_LINKS": "Add wiki links",
+                "DELETE_WIKI_LINKS": "Delete wiki links"
+            }
         }
     },
     "AUTH": {
@@ -267,7 +307,8 @@
             "TITLE_DELETE_ROLE": "Delete Role",
             "REPLACEMENT_ROLE": "All the users with this role will be moved to",
             "WARNING_DELETE_ROLE": "<strong>Be careful, all role estimations will be removed</strong>",
-            "ERROR_DELETE_ALL": "You can't delete all values"
+            "ERROR_DELETE_ALL": "You can't delete all values",
+            "EXTERNAL_USER": "External user"
         },
         "THIRD_PARTIES": {
             "SECRET_KEY": "Secret key",
