@@ -169,7 +169,6 @@ TaskStatusDisplayDirective = ($template, $compile) ->
             })
 
             html = $compile(html)($scope)
-
             $el.html(html)
 
         $scope.$watch $attrs.ngModel, (task) ->
