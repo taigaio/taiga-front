@@ -2,7 +2,7 @@ HomeProjectListDirective = (projectsService) ->
     link = (scope, el, attrs, ctrl) ->
         scope.vm = {}
 
-        scope.vm.projects = projectsService.projects
+        taiga.defineImmutableProperty(scope.vm, "projects", () -> projectsService.projects.get("recents"))
 
         scope.vm.newProject = ->
             projectsService.newProject()

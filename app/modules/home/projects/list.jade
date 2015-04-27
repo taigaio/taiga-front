@@ -1,5 +1,5 @@
 ul.home-project-list(ng-show="vm.projects.length")
-    li.home-project-list-single(tg-bind-scope, ng-repeat="project in vm.projects.all")
+    li.home-project-list-single(tg-bind-scope, tg-repeat="project in vm.projects")
         a(href="#", tg-nav="project:project=project.slug")
             h2.home-project-list-single-title
                 span.project-name(ng-bind="::project.name", title="{{ ::project.name }}")
