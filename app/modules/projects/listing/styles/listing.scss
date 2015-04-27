@@ -2,7 +2,7 @@
     border-bottom: 1px solid $whitish;
     display: flex;
     justify-content: center;
-    padding: .8rem 1rem;
+    padding: .5rem;
     position: relative;
 }
 
@@ -18,12 +18,16 @@
     h1 {
         @extend %text;
         @extend %larger;
+        color: $gray;
         margin-bottom: 0;
         text-transform: none;
     }
     p {
-        color: $gray-light;
-        max-width: 70%;
+        @extend %text;
+        @extend %small;
+        color: $gray;
+        margin-bottom: 0;
+        max-width: 95%;
     }
     .project-list-single-tags {
         align-content: flex-end;
@@ -31,6 +35,7 @@
         flex: 3;
         flex-wrap: wrap;
         justify-content: flex-start;
+        margin-top: .5rem;
     }
     .tag {
         align-self: flex-end;

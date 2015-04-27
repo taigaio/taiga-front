@@ -6,7 +6,7 @@ div.project-list-wrapper.centered
             a.button-blackish.import-project-button(href="", title="{{'PROJECT.NAVIGATION.TITLE_ACTION_IMPORT' | translate}}")
                 span.icon.icon-upload
             input.import-file.hidden(type="file")
-            
+
     section.project-list-section
         div.project-list
             ul.js-sortable
@@ -16,7 +16,8 @@ div.project-list-wrapper.centered
                             h1
                                 a(href="#", ng-bind="::project.name", tg-nav="project:project=project.slug")
                                     span {{project.is_private}}
-                            p {{ ::project.description }}
+                            p {{ ::project.description | limitTo:300 }}
+                                span(ng-if="::project.description.length > 300") ...
 
                         div.project-list-single-tags.tags-container(ng-if="project.tags")
                             div.tags-block(tg-colorize-tags="project.tags", tg-colorize-tags-type="backlog")

@@ -1,3 +1,38 @@
 .home-project-list {
-    content: 'WIP';
+    li {
+        border-right: 5px solid $whitish;
+        cursor: pointer;
+        margin-bottom: .5rem;
+        padding: .5rem;
+        padding-right: 1rem;
+        text-overflow: ellipsis;
+        transition: border-color .3s linear;
+        &:hover {
+            border-color: $fresh-taiga;
+            p {
+                color: $gray;
+            }
+        }
+    }
+    h2 {
+        @extend %text;
+        color: $gray;
+        font-size: 1.5rem;
+        line-height: 1.3;
+        margin-bottom: 0;
+        text-transform: none;
+        a {
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+    p {
+        @extend %text;
+        @extend %small;
+        color: $gray-light;
+        margin: 0;
+        transition: color .3s linear;
+    }
 }
