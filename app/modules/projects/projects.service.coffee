@@ -1,12 +1,11 @@
 class ProjectsService extends taiga.Service
-    @.$inject = ["$q", "$tgResources", "$rootScope", "$projectUrl"]
+    @.$inject = ["$q", "$tgResources", "$rootScope", "$projectUrl", "tgLightboxFactory"]
 
-    constructor: (@q, @rs, @rootScope, @projectUrl) ->
+    constructor: (@q, @rs, @rootScope, @projectUrl, @lightboxFactory) ->
         @.projects = Immutable.Map()
         @.inProgress = false
         @.projectsPromise = null
         @.fetchProjects()
-        @.emiter = new EventEmitter2()
 
     fetchProjects: ->
         if not @.inProgress
@@ -28,7 +27,7 @@ class ProjectsService extends taiga.Service
         return @.projectsPromise
 
     newProject: ->
-        @.emiter.emit("create")
+        @lightboxFactory.create("tg-lb-create-project")
 
     bulkUpdateProjectsOrder: (sortData) ->
         @rs.projects.bulkUpdateOrder(sortData).then =>

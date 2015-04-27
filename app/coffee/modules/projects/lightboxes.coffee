@@ -70,7 +70,7 @@ CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $project
             promise = $repo.create("projects", $scope.data)
             promise.then(onSuccessSubmit, onErrorSubmit)
 
-        createProjectCallback = ->
+        openLightbox = ->
             $scope.data = {
                 total_story_points: 100
                 total_milestones: 5
@@ -89,8 +89,6 @@ CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $project
             lightboxService.open($el)
             timeout 600, ->
                 $el.find(".progress-bar").addClass('step1')
-
-        projects.emiter.on 'create', createProjectCallback
 
         $el.on "click", ".button-next", (event) ->
             event.preventDefault()
@@ -129,8 +127,9 @@ CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $project
             lightboxService.close($el)
 
         $scope.$on "$destroy", ->
-            emitter.off(projects.emiter, createProjectCallback)
             $el.off()
+
+        openLightbox()
 
     directive = {
         link: link,

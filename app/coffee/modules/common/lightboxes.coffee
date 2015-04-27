@@ -67,6 +67,9 @@ class LightboxService extends taiga.Service
 
         $el.addClass('close')
 
+        if $el.hasClass("remove-on-close")
+            $el.remove()
+
     closeAll: ->
         docEl = angular.element(document)
         for lightboxEl in docEl.find(".lightbox.open")
