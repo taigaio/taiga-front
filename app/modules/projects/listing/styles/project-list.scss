@@ -11,6 +11,15 @@
             margin: 0;
         }
     }
+    .import-project-button {
+        padding: .33rem .5rem;
+        &:hover {
+            background: $grayer;
+        }
+        .icon-upload {
+            margin: 0;
+        }
+    }
     .project-list-section {
         display: flex;
     }
