@@ -17,10 +17,26 @@
     flex: 4;
     h1 {
         @extend %text;
-        @extend %larger;
-        color: $gray;
+        @extend %large;
+        display: inline-block;
         margin-bottom: 0;
         text-transform: none;
+    }
+    .project-name {
+        @extend %text;
+        @extend %larger;
+        color: $gray;
+        vertical-align: middle;
+        white-space: nowrap;
+    }
+    .private {
+        display: inline-block;
+        margin-left: .3rem;
+        width: .5rem;
+        path {
+            fill: $gray-light;
+            transition: fill .3s linear;
+        }
     }
     p {
         @extend %text;
