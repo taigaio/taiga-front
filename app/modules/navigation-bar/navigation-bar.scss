@@ -87,6 +87,11 @@
             }
         }
     }
+    .navbar-dropdown {
+        a {
+            padding: .8rem .5rem;
+        }
+    }
     %dropdown {
         border-radius: 2px;
         display: none;
@@ -128,7 +133,6 @@
         &.create-organization-btn,
         &.create-project-btn {
             color: $white;
-            padding: .5rem;
             text-align: center;
             &:hover {
                 color: $white;
