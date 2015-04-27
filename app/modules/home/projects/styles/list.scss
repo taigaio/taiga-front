@@ -50,3 +50,22 @@
         transition: color .3s linear;
     }
 }
+
+.projects-empty {
+    text-align: center;
+    svg {
+        height: 100px;
+        margin: 1rem auto;
+        text-align: center;
+        width: 100%;
+        path {
+            fill: $whitish;
+        }
+    }
+    p {
+        @extend %small;
+    }
+    .create-project-btn {
+        display: block;
+    }
+}

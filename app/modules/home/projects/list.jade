@@ -1,4 +1,4 @@
-ul.home-project-list
+ul.home-project-list(ng-show="vm.projects.length")
     li.home-project-list-single(tg-bind-scope, ng-repeat="project in vm.projects.all")
         a(href="#", tg-nav="project:project=project.slug")
             h2.home-project-list-single-title
@@ -7,4 +7,14 @@ ul.home-project-list
                     include ../../../svg/lock.svg
             p {{ ::project.description | limitTo:150 }}
                 span(ng-if="::project.description.length > 150") ...
-a.see-more-projects-btn.button-gray(href="#", tg-nav="projects", title="{{'PROJECT.NAVIGATION.SEE_MORE_PROJECTS' | translate}}",         translate="PROJECT.NAVIGATION.SEE_MORE_PROJECTS")
+a.see-more-projects-btn.button-gray(ng-show="vm.projects.length", href="#", tg-nav="projects", title="{{'PROJECT.NAVIGATION.SEE_MORE_PROJECTS' | translate}}",         translate="PROJECT.NAVIGATION.SEE_MORE_PROJECTS")
+section.projects-empty(ng-hide="vm.projects.length")
+    include ../../../svg/empty-project.svg
+    p You don't have any projects yet
+    a.create-project-btn.button-green(
+            href="#",
+            ng-click="vm.newProject()",
+            title="{{'PROJECT.NAVIGATION.ACTION_CREATE_PROJECT' | translate}}",
+            translate="PROJECT.NAVIGATION.ACTION_CREATE_PROJECT")
+
+
