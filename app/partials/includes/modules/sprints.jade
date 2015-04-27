@@ -9,12 +9,17 @@ section.sprints
                                       ng-click="ctrl.addNewSprint()", tg-check-permission="add_milestone")
                 span.text(translate="BACKLOG.SPRINTS.ACTION_NEW_SPRINT")
 
-    div.sprint.sprint-open(ng-repeat="sprint in openSprints track by sprint.id", tg-backlog-sprint="sprint", tg-sprint-sortable)
+    div.sprint.sprint-open(ng-repeat="sprint in openSprints track by sprint.id",
+                           tg-backlog-sprint="sprint",
+                           tg-sprint-sortable)
         include sprint
 
-    a.filter-closed-sprints(tg-backlog-toggle-closed-sprints-visualization, href="", ng-show="totalClosedMilestones")
+    a.filter-closed-sprints(href="", tg-backlog-toggle-closed-sprints-visualization,
+                            ng-show="totalClosedMilestones")
         span.icon.icon-archive
         span.text(translate="BACKLOG.SPRINTS.ACTION_SHOW_CLOSED_SPRINTS")
 
-    div.sprint.sprint-closed(ng-repeat="sprint in closedSprints track by sprint.id" tg-backlog-sprint="sprint", tg-sprint-sortable)
+    div.sprint.sprint-closed(ng-repeat="sprint in closedSprints track by sprint.id",
+                             tg-backlog-sprint="sprint",
+                             tg-sprint-sortable)
         include sprint
