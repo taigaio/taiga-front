@@ -16,7 +16,8 @@ ProjectsListingDirective = (projectsService) ->
             itemEl = ui.item
             project = itemEl.scope().project
             index = itemEl.index()
-            sorted_project_ids = _.map(scope.vm.projects.all, (p) -> p.id)
+
+            sorted_project_ids = _.map(scope.vm.projects.toArray(), (p) -> p.id)
             sorted_project_ids = _.without(sorted_project_ids, project.id)
             sorted_project_ids.splice(index, 0, project.id)
             sortData = []
@@ -25,7 +26,7 @@ ProjectsListingDirective = (projectsService) ->
 
             projectsService.bulkUpdateProjectsOrder(sortData)
 
-        taiga.defineImmutableProperty(scope.vm, "projects", projectsService.projects)
+        taiga.defineImmutableProperty(scope.vm, "projects", () -> projectsService.projects.get("all"))
 
         scope.vm.newProject = ->
             projectsService.newProject()

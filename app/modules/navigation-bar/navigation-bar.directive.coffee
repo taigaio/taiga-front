@@ -1,7 +1,8 @@
 NavigationBarDirective = (projectsService) ->
     link = (scope, el, attrs, ctrl) ->
         scope.vm = {}
-        scope.vm.projects = projectsService.projects
+
+        taiga.defineImmutableProperty(scope.vm, "projects", () -> projectsService.projects.get("recents"))
 
     directive = {
         templateUrl: "navigation-bar/navigation-bar.html"

@@ -2,7 +2,7 @@ class ProjectsService extends taiga.Service
     @.$inject = ["$q", "$tgResources", "$rootScope", "$projectUrl"]
 
     constructor: (@q, @rs, @rootScope, @projectUrl) ->
-        @.projects = {all: [], recent: []}
+        @.projects = Immutable.Map()
         @.inProgress = false
         @.projectsPromise = null
         @.fetchProjects()
@@ -15,8 +15,10 @@ class ProjectsService extends taiga.Service
                 for project in projects
                     project.url = @projectUrl.get(project)
 
-                @.projects.recents = projects.slice(0, 10)
-                @.projects.all = projects
+                @.projects = Immutable.fromJS({
+                    all: projects,
+                    recents: projects.slice(0, 10)
+                })
 
                 return @.projects
 

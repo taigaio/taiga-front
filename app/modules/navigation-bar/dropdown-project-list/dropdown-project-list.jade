@@ -4,7 +4,7 @@ a(href="", title="Projects", tg-nav="projects")
 div.navbar-dropdown.dropdown-project-list
     ul
         a(href="#",
-            ng-repeat="project in vm.projects.recents",
+            tg-repeat="project in vm.projects",
             ng-bind="::project.name"
             tg-nav="project:project=project.slug")
 

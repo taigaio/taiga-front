@@ -158,13 +158,18 @@ replaceTags = (str, tags, replace) ->
 
     return str
 
-defineImmutableProperty = (obj, name, variable) =>
+defineImmutableProperty = (obj, name, fn) =>
     Object.defineProperty obj, name, {
         get: () =>
-            if _.isFunction(variable)
-                return variable.call(obj)
-            else
-                return variable
+            if !_.isFunction(fn)
+                throw "defineImmutableProperty third param must be a function"
+
+            fn_result = fn()
+            if fn_result && _.isObject(fn_result)
+                if fn_result.size == undefined
+                    throw "defineImmutableProperty must return immutable data"
+
+            return fn_result
     }
 
 taiga = @.taiga

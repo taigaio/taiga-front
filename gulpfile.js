@@ -144,9 +144,11 @@ paths.libs = [
     paths.vendor + "messageformat/locale/*.js",
     paths.vendor + "ngInfiniteScroll/build/ng-infinite-scroll.js",
     paths.vendor + "eventemitter2/lib/eventemitter2.js",
+    paths.vendor + "immutable/dist/immutable.js",
     paths.app + "js/jquery.ui.git-custom.js",
     paths.app + "js/jquery-ui.drag-multiple-custom.js",
     paths.app + "js/jquery.ui.touch-punch.min.js",
+    paths.app + "js/tg-repeat.js",
     paths.app + "js/sha1-custom.js"
 ];
 

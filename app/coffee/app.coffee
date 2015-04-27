@@ -350,7 +350,8 @@ modules = [
     "ngRoute",
     "ngAnimate",
     "pascalprecht.translate",
-    "infinite-scroll"
+    "infinite-scroll",
+    "tgRepeat"
 ].concat(_.map(@.taigaContribPlugins, (plugin) -> plugin.module))
 
 # Main module definition

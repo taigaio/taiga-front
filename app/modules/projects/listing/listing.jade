@@ -10,16 +10,16 @@ div.project-list-wrapper.centered
     section.project-list-section
         div.project-list
             ul.js-sortable
-                li.project-list-single(tg-bind-scope, ng-repeat="project in vm.projects.all")
+                li.project-list-single(tg-bind-scope, tg-repeat="project in vm.projects")
                     div.project-list-single-left
                         div.project-list-single-title
                             h1
                                 a(href="#", ng-bind="::project.name", tg-nav="project:project=project.slug", title="{{ ::project.name }}")
-                                    span {{project.is_private}}
+                                    span {{::project.is_private}}
                             p {{ ::project.description | limitTo:300 }}
                                 span(ng-if="::project.description.length > 300") ...
 
-                        div.project-list-single-tags.tags-container(ng-if="project.tags")
+                        div.project-list-single-tags.tags-container(ng-if="::project.tags")
                             div.tags-block(tg-colorize-tags="project.tags", tg-colorize-tags-type="backlog")
 
                     div.project-list-single-right
