@@ -35,7 +35,7 @@
         "IOCAINE_TEXT": "Vous vous sentez un peu submergé par une tâche ? Soyez certains d'en informer les autres en cliquant su Iocaine lors de la modification de la tâche. Il est possible de s'immuniser contre ce poison (fictif) en consommant de petites quantités en heures supplémentaires, tout comme il est possible de s'améliorer en acceptant parfois de nouveaux défis !",
         "TAGS": {
             "PLACEHOLDER": "Taggez moi !",
-            "DELETE": "Delete tag",
+            "DELETE": "Supprimer l'étiquette",
             "ADD": "Ajouter un label"
         },
         "DESCRIPTION": {
@@ -92,32 +92,32 @@
             "BREADCRUMB_STATUS": "état"
         },
         "WYSIWYG": {
-            "H1_BUTTON": "First Level Heading",
-            "H1_SAMPLE_TEXT": "Your title here...",
-            "H2_BUTTON": "Second Level Heading",
-            "H2_SAMPLE_TEXT": "Your title here...",
-            "H3_BUTTON": "Third Level Heading",
-            "H3_SAMPLE_TEXT": "Your title here...",
-            "BOLD_BUTTON": "Bold",
-            "BOLD_BUTTON_SAMPLE_TEXT": "Your text here...",
-            "ITALIC_BUTTON": "Italic",
-            "ITALIC_SAMPLE_TEXT": "Your text here...",
-            "STRIKE_BUTTON": "Strike",
-            "STRIKE_SAMPLE_TEXT": "Your text here...",
-            "BULLETED_LIST_BUTTON": "Bulleted List",
-            "BULLETED_LIST_SAMPLE_TEXT": "Your text here...",
-            "NUMERIC_LIST_BUTTON": "Numeric List",
-            "NUMERIC_LIST_SAMPLE_TEXT": "Your text here...",
-            "PICTURE_BUTTON": "Picture",
-            "PICTURE_SAMPLE_TEXT": "Your alternative text to picture here...",
-            "LINK_BUTTON": "Link",
-            "LINK_SAMPLE_TEXT": "Your text to link here....",
-            "QUOTE_BLOCK_BUTTON": "Quote Block",
-            "QUOTE_BLOCK_SAMPLE_TEXT": "Your text here...",
-            "CODE_BLOCK_BUTTON": "Code Block",
-            "CODE_BLOCK_SAMPLE_TEXT": "Your text here...",
-            "PREVIEW_BUTTON": "Preview",
-            "EDIT_BUTTON": "Edit",
+            "H1_BUTTON": "Premier niveau de titre",
+            "H1_SAMPLE_TEXT": "Votre titre ici…",
+            "H2_BUTTON": "Deuxième niveau de titre",
+            "H2_SAMPLE_TEXT": "Votre titre ici…",
+            "H3_BUTTON": "Troisième niveau de titre",
+            "H3_SAMPLE_TEXT": "Votre titre ici…",
+            "BOLD_BUTTON": "Gras",
+            "BOLD_BUTTON_SAMPLE_TEXT": "Votre texte ici…",
+            "ITALIC_BUTTON": "Italique",
+            "ITALIC_SAMPLE_TEXT": "Votre texte ici…",
+            "STRIKE_BUTTON": "Barré",
+            "STRIKE_SAMPLE_TEXT": "Votre texte ici…",
+            "BULLETED_LIST_BUTTON": "Liste à puces",
+            "BULLETED_LIST_SAMPLE_TEXT": "Votre texte ici…",
+            "NUMERIC_LIST_BUTTON": "Liste numérotée",
+            "NUMERIC_LIST_SAMPLE_TEXT": "Votre texte ici…",
+            "PICTURE_BUTTON": "Image",
+            "PICTURE_SAMPLE_TEXT": "Votre texte alternatif à l'image ici…",
+            "LINK_BUTTON": "Lien",
+            "LINK_SAMPLE_TEXT": "Votre texte de lien ici…",
+            "QUOTE_BLOCK_BUTTON": "Bloc de citation",
+            "QUOTE_BLOCK_SAMPLE_TEXT": "Votre texte ici…",
+            "CODE_BLOCK_BUTTON": "Bloc de code",
+            "CODE_BLOCK_SAMPLE_TEXT": "Votre texte ici…",
+            "PREVIEW_BUTTON": "Prévisualiser",
+            "EDIT_BUTTON": "Éditer",
             "MARKDOWN_HELP": "Aide sur la syntaxe Markdown"
         }
     },
@@ -569,7 +569,7 @@
         },
         "TAGS": {
             "SHOW": "Montrer les étiquettes",
-            "HIDE": "Hide tags"
+            "HIDE": "Cacher les étiquettes"
         },
         "TABLE": {
             "COLUMN_US": "Histoires utilisateur",
@@ -599,7 +599,7 @@
         "SPRINTS": {
             "TITLE": "SPRINTS",
             "LINK_TASKBOARD": "Taskboard du sprint",
-            "TITLE_LINK_TASKBOARD": "Aller au Taskboard de {{spring.name}}",
+            "TITLE_LINK_TASKBOARD": "Aller au Taskboard de \"{{name}}\"",
             "NUMBER_SPRINTS": "<br/>sprints",
             "TITLE_ACTION_NEW_SPRINT": "+ Nouveau sprint",
             "ACTION_NEW_SPRINT": "+ Nouveau sprint",
@@ -654,7 +654,9 @@
             "MILESTONE": "Sprint",
             "USER_STORY": "Histoire utilisateur",
             "IS_IOCAINE": "est sous iocaine"
-        }
+        },
+        "ACTION_IOCAINE": "locaine",
+        "TITLE_ACTION_IOCAINE": "Vous vous sentez un peu dépassé par une tâche? Assurez-vous que les autres le savent en cliquant sur locaine en éditant une tâche. Il est possible de s'immuniser contre ce poison (fictif) en en consommant de faibles doses pendant un moment tout comme il est possible de devenir meilleur à ce que vous faîtes en relevant quelques défis à l'occasion!"
     },
     "NOTIFICATION": {
         "OK": "Tout est ok",
@@ -741,33 +743,44 @@
         "TITLE_NEXT_ISSUE": "problème suivant",
         "ACTION_DELETE": "Supprimer le problème",
         "LIGHTBOX_TITLE_BLOKING_ISSUE": "Problème bloquant",
-        "FIELDS": {
-            "PRIORITY": "priorité",
-            "SEVERITY": "sévérité",
-            "TYPE": "type"
-        },
         "CONFIRM_PROMOTE": {
             "TITLE": "Transformer ce problème en une nouvelle user story",
             "MESSAGE": "Etes-vous sure de vouloir créer un nouvelle US à partir de ce problème ?"
         },
         "FILTERS": {
+            "TITLE": "Filtres",
+            "INPUT_SEARCH_PLACEHOLDER": "Sujet ou réf.",
+            "TITLE_ACTION_SEARCH": "Rechercher",
             "ACTION_SAVE_CUSTOM_FILTER": "sauvegarder en tant que filtre personnalisé",
+            "BREADCRUMB": "Filtres",
+            "TITLE_BREADCRUMB": "Filtres",
+            "CATEGORIES": {
+                "TYPE": "Type",
+                "STATUS": "Statut",
+                "SEVERITY": "Sévérité",
+                "PRIORITIES": "Priorités",
+                "TAGS": "Étiquettes",
+                "ASSIGNED_TO": "Affecté à",
+                "CREATED_BY": "Créé par",
+                "CUSTOM_FILTERS": "Filtres personnalisés"
+            },
             "CONFIRM_DELETE": {
                 "TITLE": "Supprime le filtre personnalisé",
                 "MESSAGE": "le filtre personnalisé '{{customFilterName}}'"
-            },
-            "FILTER_CATEGORY_TYPE": "Type",
-            "FILTER_CATEGORY_STATUS": "Etats",
-            "FILTER_CATEGORY_SEVERITY": "Sévérité",
-            "FILTER_CATEGORY_PRIORITIES": "Priorités",
-            "FILTER_CATEGORY_TAGS": "Labels",
-            "FILTER_CATEGORY_ASSIGNED_TO": "Assigné à",
-            "FILTER_CATEGORY_CREATED_BY": "Créé par",
-            "CUSTOM_FILTERS": "Filtres personnalisés"
+            }
         },
         "TABLE": {
-            "COLUMN_CREATED": "Créé",
+            "COLUMNS": {
+                "TYPE": "Type",
+                "SEVERITY": "Sévérité",
+                "PRIORITY": "Priorité",
+                "SUBJECT": "Sujet",
+                "STATUS": "Statut",
+                "CREATED": "Créé le",
+                "ASSIGNED_TO": "Affecté à"
+            },
             "TITLE_ACTION_CHANGE_STATUS": "Modifier l'état",
+            "TITLE_ACTION_ASSIGNED_TO": "Affecté à",
             "EMPTY": {
                 "TITLE": "Aucun bug rapporté :-)",
                 "SUBTITLE": "Avez-vous trouvé un bug ?",
@@ -810,7 +823,7 @@
         "COLUMN_CERVANTES": "Cervantes",
         "EXPLANATION_COLUMN_CERVANTES": "Page Wiki éditée",
         "COLUMN_BUG_HUNTER": "Chasseur de bug",
-        "EXPLANATION_COLUMN_BUG_HUNTER": "Issues reported",
+        "EXPLANATION_COLUMN_BUG_HUNTER": "Problèmes rapportés",
         "COLUMN_NIGHT_SHIFT": "Equipe de nuit",
         "EXPLANATION_COLUMN_NIGHT_SHIFT": "Tâches fermées",
         "COLUMN_TOTAL_POWER": "Puissance totale",
@@ -824,8 +837,8 @@
         "SECTION_NAME": "Modifier le mot de passe",
         "FIELD_CURRENT_PASSWORD": "Mot de passe courant",
         "PLACEHOLDER_CURRENT_PASSWORD": "Votre mot de passe courant (ne rien saisir si vous ne possédez pas encore de mot de passe)",
-        "FIELD_NEW_PASSWORD": "New password",
-        "PLACEHOLDER_NEW_PASSWORD": "Type a new password",
+        "FIELD_NEW_PASSWORD": "Nouveau mot de passe",
+        "PLACEHOLDER_NEW_PASSWORD": "Entrez un nouveau mot de passe",
         "FIELD_RETYPE_PASSWORD": "Confirmez le mot de passe",
         "PLACEHOLDER_RETYPE_PASSWORD": "Confirmez le mot de passe",
         "ERROR_PASSWORD_MATCH": "Les mots de passe ne correspondent pas"

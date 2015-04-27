@@ -599,7 +599,7 @@
         "SPRINTS": {
             "TITLE": "SPRINTS",
             "LINK_TASKBOARD": "Panel de Tareas del Sprint",
-            "TITLE_LINK_TASKBOARD": "Ir al Panel de Tareas de {{spring.name}}",
+            "TITLE_LINK_TASKBOARD": "Ir al panel de tareas de \"{{name}}\"",
             "NUMBER_SPRINTS": "<br/>sprints",
             "TITLE_ACTION_NEW_SPRINT": "+ Nuevo Sprint",
             "ACTION_NEW_SPRINT": "+ Nuevo sprint",

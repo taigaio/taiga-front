@@ -602,7 +602,7 @@
         "SPRINTS": {
             "TITLE": "SPRINTS",
             "LINK_TASKBOARD": "Sprint Taskboard",
-            "TITLE_LINK_TASKBOARD": "Go to Taskboard of {{spring.name}}",
+            "TITLE_LINK_TASKBOARD": "Go to Taskboard of \"{{name}}\"",
             "NUMBER_SPRINTS": "<br/>sprints",
             "TITLE_ACTION_NEW_SPRINT": "+ New sprint",
             "ACTION_NEW_SPRINT": "+ New sprint",
