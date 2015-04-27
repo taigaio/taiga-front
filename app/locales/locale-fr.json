@@ -856,7 +856,10 @@
             "COLUMN_PROJECT": "Projet",
             "COLUMN_RECEIVE_ALL": "Tout recevoir",
             "COLUMN_ONLY_INVOLVED": "Uniquement si impliqué",
-            "COLUMN_NO_NOTIFICATIONS": "Aucune notification"
+            "COLUMN_NO_NOTIFICATIONS": "Aucune notification",
+            "OPTION_ALL": "Toutes",
+            "OPTION_INVOLVED": "Impliqué",
+            "OPTION_NONE": "Aucune"
         },
         "POPOVER": {
             "USER_PROFILE": "Profil utilisateur",
