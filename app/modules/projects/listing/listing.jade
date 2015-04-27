@@ -14,7 +14,7 @@ div.project-list-wrapper.centered
                     div.project-list-single-left
                         div.project-list-single-title
                             h1
-                                a(href="#", ng-bind="::project.name", tg-nav="project:project=project.slug")
+                                a(href="#", ng-bind="::project.name", tg-nav="project:project=project.slug", title="{{ ::project.name }}")
                                     span {{project.is_private}}
                             p {{ ::project.description | limitTo:300 }}
                                 span(ng-if="::project.description.length > 300") ...

@@ -8,6 +8,10 @@
     .project-list {
         width: 250px;
     }
+    .see-more-projects-btn {
+        display: block;
+        margin-top: 2rem;
+    }
     .title-bar {
         @extend %title;
         @extend %larger;
