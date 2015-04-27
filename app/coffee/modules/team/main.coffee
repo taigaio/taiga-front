@@ -45,7 +45,8 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$translate"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @rs, @params, @q, @location, @navUrls, @appTitle, @auth, tgLoader, @translate) ->
+    constructor: (@scope, @rootscope, @repo, @rs, @params, @q, @location, @navUrls, @appTitle, @auth, tgLoader,
+                  @translate) ->
         @scope.sectionName = "TEAM.SECTION_NAME"
 
         promise = @.loadInitialData()
@@ -138,6 +139,7 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
 
 module.controller("TeamController", TeamController)
 
+
 #############################################################################
 ## Team Filters Directive
 #############################################################################
@@ -148,6 +150,7 @@ TeamFiltersDirective = () ->
     }
 
 module.directive("tgTeamFilters", [TeamFiltersDirective])
+
 
 #############################################################################
 ## Team Member Stats Directive
@@ -167,6 +170,7 @@ TeamMemberStatsDirective = () ->
 
 module.directive("tgTeamMemberStats", TeamMemberStatsDirective)
 
+
 #############################################################################
 ## Team Current User Directive
 #############################################################################
@@ -185,6 +189,7 @@ TeamMemberCurrentUserDirective = () ->
     }
 
 module.directive("tgTeamCurrentUser", TeamMemberCurrentUserDirective)
+
 
 #############################################################################
 ## Team Members Directive
@@ -207,6 +212,7 @@ TeamMembersDirective = () ->
     }
 
 module.directive("tgTeamMembers", TeamMembersDirective)
+
 
 #############################################################################
 ## Leave project Directive
@@ -236,10 +242,17 @@ LeaveProjectDirective = ($repo, $confirm, $location, $rs, $navurls, $translate) 
         link: link
     }
 
-module.directive("tgLeaveProject", ["$tgRepo", "$tgConfirm", "$tgLocation", "$tgResources", "$tgNavUrls", LeaveProjectDirective])
+module.directive("tgLeaveProject", ["$tgRepo", "$tgConfirm", "$tgLocation", "$tgResources", "$tgNavUrls",
+                                    LeaveProjectDirective])
 
-module.filter 'membersRoleFilter', () ->
-    (input, filtersRole) ->
-        if filtersRole?
-            return _.filter(input, {role: filtersRole.id})
-        return input
+
+#############################################################################
+## Team Filters
+#############################################################################
+
+membersFilter = ->
+    return (members, filtersQ, filtersRole) ->
+        return _.filter members, (m) -> (not filtersRole or m.role == filtersRole.id) and
+                                        (not filtersQ or m.full_name.search(new RegExp(filtersQ, "i")) >= 0)
+
+module.filter('membersFilter', membersFilter)

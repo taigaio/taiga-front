@@ -815,7 +815,7 @@
     "TEAM": {
         "SECTION_NAME": "Equipo",
         "APP_TITLE": "EQUIPO - {{projectName}}",
-        "PLACEHOLDER_INPUT_SEARCH": "Buscar por nombre de usuario o rol",
+        "PLACEHOLDER_INPUT_SEARCH": "Buscar por nombre completo...",
         "COLUMN_MR_WOLF": "Sr. Lobo",
         "EXPLANATION_COLUMN_MR_WOLF": "Peticiones cerradas",
         "COLUMN_IOCAINE": "Bebedor de Iocaína",
@@ -831,7 +831,7 @@
         "SECTION_TITLE_TEAM": "Equipo >",
         "SECTION_FILTER_ALL": "Todo",
         "CONFIRM_LEAVE_PROJECT": "¿Esta seguro que desea dejar el proyecto?",
-        "ACTION_LEAVE_PROJECT": "Abandonar esté proyecto"
+        "ACTION_LEAVE_PROJECT": "Abandonar este proyecto"
     },
     "CHANGE_PASSWORD": {
         "SECTION_NAME": "Cambiar contraseña",

@@ -818,7 +818,7 @@
     "TEAM": {
         "SECTION_NAME": "Team",
         "APP_TITLE": "TEAM - {{projectName}}",
-        "PLACEHOLDER_INPUT_SEARCH": "Search by username or role...",
+        "PLACEHOLDER_INPUT_SEARCH": "Search by full name...",
         "COLUMN_MR_WOLF": "Mr. Wolf",
         "EXPLANATION_COLUMN_MR_WOLF": "Closed issues",
         "COLUMN_IOCAINE": "Iocaine Drinker",
