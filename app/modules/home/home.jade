@@ -1,7 +1,7 @@
 doctype html
 
-include ../includes/components/beta
-div.home-wrapper.centered
+include ../../partials/includes/components/beta
+div.home-wrapper.centered(ng-controller="HomePage")
     div.duty-summary
         // TODO Hide if ASSIGNED TO ==== false
         div.title-bar.working-on-title Working on
@@ -66,4 +66,3 @@ div.home-wrapper.centered
                     div.duty-project Teletransportation hubs
             a.button-gray.see-more(href="#", title="See more Watching US") See more
     aside.project-list(tg-home-project-list)
-

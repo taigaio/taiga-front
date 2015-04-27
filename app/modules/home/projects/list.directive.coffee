@@ -8,7 +8,7 @@ HomeProjectListDirective = (projectsService) ->
             projectsService.newProject()
 
     directive = {
-        templateUrl: "home/home-project-list.html"
+        templateUrl: "home/projects/list.html"
         scope: {}
         link: link
     }
