@@ -43,11 +43,6 @@
         a {
             padding: .5rem 2rem;
         }
-        .navbar-dropdown {
-            a {
-                padding: .8rem .5rem;
-            }
-        }
     }
     a {
         color: $white;
@@ -124,6 +119,7 @@
     a {
         color: $gray-light;
         display: block;
+        padding: .8rem .5rem;
         &:hover {
             background: rgba($white, .1);
             color: $fresh-taiga;
@@ -141,5 +137,17 @@
         &.see-more-projects-btn {
             margin-bottom: .3rem;
         }
+        &.create-project-btn {
+            flex: 1;
+        }
+        &.import-project-button {
+            padding-left: .75rem;
+            padding-right: .75rem;
+        }
+
+    }
+    .create-options {
+        display: flex;
+        flex-direction: row;
     }
 }
