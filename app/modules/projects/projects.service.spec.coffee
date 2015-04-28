@@ -35,8 +35,8 @@ describe "tgProjects", ->
         provide.value "tgLightboxFactory", mocks.lightboxFactory
 
     _inject = (callback) ->
-        inject (_tgProjects_) ->
-            projectsService = _tgProjects_
+        inject (_tgProjectsService_) ->
+            projectsService = _tgProjectsService_
             callback() if callback
 
     _mocks = () ->
