@@ -606,6 +606,8 @@
         "SORTABLE_FILTER_ERROR": "You can't drop on backlog when filters are open",
         "DOOMLINE": "Project Scope [Doomline]",
         "CHART": {
+            "XAXIS_LABEL": "Sprints",
+            "YAXIS_LABEL": "Points",
             "OPTIMAL": "Optimal pending points for sprint {{xval}} should be {{yval}}",
             "REAL": "Real pending points for sprint {{xval}} is {{yval}}",
             "INCREMENT_TEAM": "Incremented points by team requirements for sprint {{xval}} is {{yval}}",
@@ -676,7 +678,9 @@
             "ROW_UNASSIGED_TASKS_TITLE": "Unassigned tasks"
         },
         "CHARTS": {
-            "OPTIMAL": "Optimal pending points for day #{formattedDate} should be {{roundedValue}}",
+            "XAXIS_LABEL": "Days",
+            "YAXIS_LABEL": "Points",
+            "OPTIMAL": "Optimal pending points for day {{formattedDate}} should be {{roundedValue}}",
             "REAL": "Real pending points for day {{formattedDate}} is {{roundedValue}}"
         }
     },

@@ -871,11 +871,12 @@ UsPointsDirective = ($tgEstimationsService, $repo, $tgTemplate) ->
 
 module.directive("tgBacklogUsPoints", ["$tgEstimationsService", "$tgRepo", "$tgTemplate", UsPointsDirective])
 
+
 #############################################################################
 ## Burndown graph directive
 #############################################################################
 
-tgBacklogGraphDirective = ($translate) ->
+BurndownBacklogGraphDirective = ($translate) ->
     redrawChart = (element, dataToDraw) ->
         width = element.width()
         element.height(width/6)
@@ -931,12 +932,19 @@ tgBacklogGraphDirective = ($translate) ->
             }
             xaxis: {
                 ticks: dataToDraw.milestones.length
-                axisLabel: "Sprints"
+                axisLabel: $translate.instant("BACKLOG.CHART.XAXIS_LABEL"),
                 axisLabelUseCanvas: true
-                axisLabelFontSizePixels: 14
+                axisLabelFontSizePixels: 12
                 axisLabelFontFamily: "Verdana, Arial, Helvetica, Tahoma, sans-serif"
-                axisLabelPadding: 15
+                axisLabelPadding: 5
                 tickFormatter: (val, axis) -> ""
+            }
+            yaxis: {
+                axisLabel: $translate.instant("BACKLOG.CHART.YAXIS_LABEL"),
+                axisLabelUseCanvas: true
+                axisLabelFontSizePixels: 12
+                axisLabelFontFamily: "Verdana, Arial, Helvetica, Tahoma, sans-serif"
+                axisLabelPadding: 5
             }
             series: {
                 shadowSize: 0
@@ -956,16 +964,17 @@ tgBacklogGraphDirective = ($translate) ->
             tooltipOpts: {
                 content: (label, xval, yval, flotItem) ->
                     if flotItem.seriesIndex == 1
-                        return $translate.instant("BACKLOG.CHART.OPTIMAL", {xval: xval, yval: yval})
-
+                        ctx = {xval: xval, yval: yval}
+                        return $translate.instant("BACKLOG.CHART.OPTIMAL", ctx)
                     else if flotItem.seriesIndex == 2
-                        return $translate.instant("BACKLOG.CHART.REAL", {xval: xval, yval: yval})
-
+                        ctx = {xval: xval, yval: yval}
+                        return $translate.instant("BACKLOG.CHART.REAL", ctx)
                     else if flotItem.seriesIndex == 3
-                        return $translate.instant("BACKLOG.CHART.INCREMENT_TEAM", {xval: xval, yval: Math.abs(yval)})
-
+                        ctx = {xval: xval, yval: Math.abs(yval)}
+                        return $translate.instant("BACKLOG.CHART.INCREMENT_TEAM", ctx)
                     else
-                        return $translate.instant("BACKLOG.CHART.INCREMENT_CLIENT", {xval: xval, yval: Math.abs(yval)})
+                        ctx = {xval: xval, yval: Math.abs(yval)}
+                        return $translate.instant("BACKLOG.CHART.INCREMENT_CLIENT", ctx)
             }
         }
 
@@ -987,8 +996,7 @@ tgBacklogGraphDirective = ($translate) ->
 
     return {link: link}
 
-
-module.directive("tgGmBacklogGraph", ["$translate", tgBacklogGraphDirective])
+module.directive("tgBurndownBacklogGraph", ["$translate", BurndownBacklogGraphDirective])
 
 
 #############################################################################

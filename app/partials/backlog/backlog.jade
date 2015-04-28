@@ -8,27 +8,41 @@ div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
     section.main.backlog
         include ../includes/components/mainTitle
         include ../includes/components/summary
+
         div.graphics-container.burndown-container
-            div.burndown(tg-gm-backlog-graph)
+            div.burndown(tg-burndown-backlog-graph)
                 include ../includes/modules/burndown
+
         div.backlog-menu
             div.backlog-table-options
-                a.trans-button.move-to-current-sprint(href="", title="{{'BACKLOG.MOVE_US_TO_CURRENT_SPRINT' | translate}}", id="move-to-current-sprint")
+                a.trans-button.move-to-current-sprint(href="",
+                                                      title="{{'BACKLOG.MOVE_US_TO_CURRENT_SPRINT' | translate}}",
+                                                      id="move-to-current-sprint")
                     span.icon.icon-move
                     span.text(translate="BACKLOG.MOVE_US_TO_CURRENT_SPRINT")
-                a.trans-button(href="", title="{{'BACKLOG.SHOW_FILTERS' | translate}}", id="show-filters-button")
+                a.trans-button(href="",
+                               title="{{'BACKLOG.SHOW_FILTERS' | translate}}",
+                               id="show-filters-button")
                     span.icon.icon-filter
                     span.text(translate="BACKLOG.SHOW_FILTERS") Show Filters
-                a.trans-button(href="", title="{{'BACKLOG.SHOW_TAGS' | translate}}", id="show-tags")
+                a.trans-button(href="",
+                               title="{{'BACKLOG.SHOW_TAGS' | translate}}",
+                               id="show-tags")
                     span.icon.icon-tag
                     span.text(translate="BACKLOG.SHOW_TAGS")
             include ../includes/components/addnewus
+
         section.backlog-table(ng-class="{'hidden': !visibleUserstories.length}")
             include ../includes/modules/backlog-table
+
         div.empty.empty-backlog(ng-class="{'hidden': visibleUserstories.length}", tg-backlog-empty-sortable)
             span.icon.icon-backlog
             span.title(translate="BACKLOG.EMPTY")
-            a(href="", title="{{'BACKLOG.CREATE_NEW_US' | translate}}", ng-click="ctrl.addNewUs('standard')", tg-check-permission="add_us", translate="BACKLOG.CREATE_NEW_US_EMPTY_HELP")
+            a(href="", title="{{'BACKLOG.CREATE_NEW_US' | translate}}",
+              ng-click="ctrl.addNewUs('standard')",
+              tg-check-permission="add_us",
+              translate="BACKLOG.CREATE_NEW_US_EMPTY_HELP")
+
     sidebar.menu-secondary.sidebar
         include ../includes/modules/sprints
 

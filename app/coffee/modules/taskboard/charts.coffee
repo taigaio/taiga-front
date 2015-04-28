@@ -34,7 +34,7 @@ module = angular.module("taigaTaskboard")
 ## Sprint burndown graph directive
 #############################################################################
 
-SprintGraphDirective = ->
+SprintGraphDirective = ($translate)->
     redrawChart = (element, dataToDraw) ->
         width = element.width()
         element.height(240)
@@ -64,13 +64,18 @@ SprintGraphDirective = ->
                 max: _.last(days)
                 mode: "time"
                 daysNames: days
-                axisLabel: 'Day'
+                axisLabel: $translate.instant("TASKBOARD.CHARTS.XAXIS_LABEL")
                 axisLabelUseCanvas: true
                 axisLabelFontSizePixels: 12
                 axisLabelFontFamily: 'Verdana, Arial, Helvetica, Tahoma, sans-serif'
                 axisLabelPadding: 5
             yaxis:
                 min: 0
+                axisLabel: $translate.instant("TASKBOARD.CHARTS.YAXIS_LABEL")
+                axisLabelUseCanvas: true
+                axisLabelFontSizePixels: 12
+                axisLabelFontFamily: 'Verdana, Arial, Helvetica, Tahoma, sans-serif'
+                axisLabelPadding: 5
             series:
                 shadowSize: 0
                 lines:
@@ -127,5 +132,4 @@ SprintGraphDirective = ->
 
     return {link: link}
 
-
-module.directive("tgSprintGraph", SprintGraphDirective)
+module.directive("tgSprintGraph", ["$translate", SprintGraphDirective])

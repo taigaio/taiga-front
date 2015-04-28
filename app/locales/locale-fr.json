@@ -119,6 +119,46 @@
             "PREVIEW_BUTTON": "Prévisualiser",
             "EDIT_BUTTON": "Éditer",
             "MARKDOWN_HELP": "Aide sur la syntaxe Markdown"
+        },
+        "PERMISIONS_CATEGORIES": {
+            "SPRINTS": {
+                "NAME": "Sprints",
+                "VIEW_SPRINTS": "View sprints",
+                "ADD_SPRINTS": "Add sprints",
+                "MODIFY_SPRINTS": "Modify sprints",
+                "DELETE_SPRINTS": "Delete sprints"
+            },
+            "USER_STORIES": {
+                "NAME": "User Stories",
+                "VIEW_USER_STORIES": "View user stories",
+                "ADD_USER_STORIES": "Add user stories",
+                "MODIFY_USER_STORIES": "Modify user stories",
+                "DELETE_USER_STORIES": "Delete user stories"
+            },
+            "TASKS": {
+                "NAME": "Tasks",
+                "VIEW_TASKS": "View tasks",
+                "ADD_TASKS": "Add tasks",
+                "MODIFY_TASKS": "Modify tasks",
+                "DELETE_TASKS": "Delete tasks"
+            },
+            "ISSUES": {
+                "NAME": "Issues",
+                "VIEW_ISSUES": "View issues",
+                "ADD_ISSUES": "Add issues",
+                "MODIFY_ISSUES": "Modify issues",
+                "DELETE_ISSUES": "Delete issues"
+            },
+            "WIKI": {
+                "NAME": "Wiki",
+                "VIEW_WIKI_PAGES": "View wiki pages",
+                "ADD_WIKI_PAGES": "Add wiki pages",
+                "MODIFY_WIKI_PAGES": "Modify wiki pages",
+                "DELETE_WIKI_PAGES": "Delete wiki pages",
+                "VIEW_WIKI_LINKS": "View wiki links",
+                "ADD_WIKI_LINKS": "Add wiki links",
+                "DELETE_WIKI_LINKS": "Delete wiki links"
+            }
         }
     },
     "AUTH": {
@@ -265,7 +305,8 @@
             "TITLE_DELETE_ROLE": "Supprimer des rôles",
             "REPLACEMENT_ROLE": "Tous les utilisateurs avec ce rôle seront déplacés dans",
             "WARNING_DELETE_ROLE": "<strong>Attention, toutes les estimations de role seront supprimées</strong>",
-            "ERROR_DELETE_ALL": "Vous ne pouvez pas supprimer toutes les valeurs"
+            "ERROR_DELETE_ALL": "Vous ne pouvez pas supprimer toutes les valeurs",
+            "EXTERNAL_USER": " "
         },
         "THIRD_PARTIES": {
             "SECRET_KEY": "Clé secrète",
@@ -562,6 +603,8 @@
         "SORTABLE_FILTER_ERROR": "Vous ne pouvez pas glisser-déposer quand les filtres sont ouverts",
         "DOOMLINE": "Périmètre projet",
         "CHART": {
+            "XAXIS_LABEL": "Sprints",
+            "YAXIS_LABEL": "Points",
             "OPTIMAL": "Le nombre optimal de points en attente pour le sprint {{xval}} devrait être {{yval}}",
             "REAL": "Le nombre réel de points pour le sprint {{xval}} est {{yval}}",
             "INCREMENT_TEAM": "Le nombre de points ajoutés par les exigences de l'équipe pour le sprint {{xval}} est {{yval}}",
@@ -632,7 +675,9 @@
             "ROW_UNASSIGED_TASKS_TITLE": "Tâches non assignées"
         },
         "CHARTS": {
-            "OPTIMAL": "Le nombre optimal de points pour le jour #{formattedDate} devrait être {{roundedValue}}",
+            "XAXIS_LABEL": "Journées",
+            "YAXIS_LABEL": "Points",
+            "OPTIMAL": "Le nombre optimal de points pour le jour {{formattedDate}} devrait être {{roundedValue}}",
             "REAL": "Le nombre réel de points pour le jour {{formattedDate}} est {{roundedValue}}"
         }
     },

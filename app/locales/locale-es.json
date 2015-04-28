@@ -603,10 +603,12 @@
         "SORTABLE_FILTER_ERROR": "No puedes arrastrar historias en el backlog cuando los filtros están en uso",
         "DOOMLINE": "Alcance del proyecto (línea de la fatalidad :-P)",
         "CHART": {
-            "OPTIMAL": "Los puntos pendientes optimos para el sprint {{xval}} deben ser {{yval}}",
-            "REAL": "Los puntos pendientes reales para el sprint {{xval}} son {{yval}}",
-            "INCREMENT_TEAM": "Puntos incrementados por requerimientos del equipo para el sprint {{xval}} es {{yval}}",
-            "INCREMENT_CLIENT": "Puntos incrementados por requerimientos del cliente para el sprint {{xval}} es {{yval}}"
+            "XAXIS_LABEL": "Sprints",
+            "YAXIS_LABEL": "Puntos",
+            "OPTIMAL": "El número de puntos óptimos pendientes para el sprint {{xval}} debería ser de {{yval}}",
+            "REAL": "El número real de puntos pendientes para el sprint {{xval}} es de {{yval}}",
+            "INCREMENT_TEAM": "El número de puntos incrementados por requerimientos del equipo para el sprint {{xval}} es de {{yval}}",
+            "INCREMENT_CLIENT": "El número de puntos incrementados por requerimientos del cliente para el sprint {{xval}} es de {{yval}}"
         },
         "TAGS": {
             "SHOW": "Mostrar etiquetas",
@@ -673,8 +675,10 @@
             "ROW_UNASSIGED_TASKS_TITLE": "Tareas no asignadas"
         },
         "CHARTS": {
-            "OPTIMAL": "Los puntos pendientes óptimos para el día #{formattedDate} deben ser {{roundedValue}}",
-            "REAL": "Los puntos reales pendientes para el día {{formattedDate}} son {{roundedValue}}"
+            "XAXIS_LABEL": "Días",
+            "YAXIS_LABEL": "Puntos",
+            "OPTIMAL": "El número de puntos óptimos pendientes para el día {{formattedDate}} debería ser de {{roundedValue}}",
+            "REAL": "El número de puntos pendientes para el día {{formattedDate}} es de {{roundedValue}}"
         }
     },
     "TASK": {
