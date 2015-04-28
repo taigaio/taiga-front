@@ -34,4 +34,4 @@ DutyDirective = (navurls, projectsService, $translate) ->
 
     return directive
 
-angular.module("taigaHome").directive("tgDuty", ["$tgNavUrls", "tgProjects", "$translate", DutyDirective])
+angular.module("taigaHome").directive("tgDuty", ["$tgNavUrls", "tgProjectsService", "$translate", DutyDirective])

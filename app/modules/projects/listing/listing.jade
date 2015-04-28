@@ -3,9 +3,10 @@ div.project-list-wrapper.centered
         h1 My projects
         div.create-options
             a.create-project-btn.button-green(href="#", ng-click="vm.newProject()", title="{{'PROJECT.NAVIGATION.ACTION_CREATE_PROJECT' | translate}}", translate="PROJECT.NAVIGATION.ACTION_CREATE_PROJECT")
-            a.button-blackish.import-project-button(href="", title="{{'PROJECT.NAVIGATION.TITLE_ACTION_IMPORT' | translate}}", tg-import-project-button)
-                span.icon.icon-upload
-            input.import-file.hidden(type="file")
+            span(tg-import-project-button)
+                a.button-blackish.import-project-button(href="", title="{{'PROJECT.NAVIGATION.TITLE_ACTION_IMPORT' | translate}}")
+                    span.icon.icon-upload
+                input.import-file.hidden(type="file")
 
     section.project-list-section
         div.project-list

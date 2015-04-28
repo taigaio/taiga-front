@@ -75,4 +75,4 @@ FeedbackDirective = ($lightboxService, $repo, $confirm, $loading, feedbackServic
     return directive
 
 module.directive("tgLbFeedback", ["lightboxService", "$tgRepo", "$tgConfirm",
-    "$tgLoading", "tgFeedback", FeedbackDirective])
+    "$tgLoading", "tgFeedbackService", FeedbackDirective])

@@ -26,7 +26,7 @@ debounce = @.taiga.debounce
 
 module = angular.module("taigaProject")
 
-CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $projectUrl, $loading, lightboxService, $cacheFactory, $translate, projects) ->
+CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $projectUrl, $loading, lightboxService, $cacheFactory, $translate, projectsService) ->
     link = ($scope, $el, attrs) ->
         $scope.data = {}
         $scope.templates = []
@@ -46,7 +46,7 @@ CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $project
 
             $location.url($projectUrl.get(response))
             lightboxService.close($el)
-            projects.fetchProjects()
+            projectsService.fetchProjects()
 
         onErrorSubmit = (response) ->
             $loading.finish(submitButton)
@@ -142,7 +142,7 @@ CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $project
 
 module.directive("tgLbCreateProject", ["$rootScope", "$tgRepo", "$tgConfirm",
     "$location", "$tgNavUrls", "$tgResources", "$projectUrl", "$tgLoading",
-    "lightboxService", "$cacheFactory", "$translate", "tgProjects", CreateProject])
+    "lightboxService", "$cacheFactory", "$translate", "tgProjectsService", CreateProject])
 
 
 #############################################################################
@@ -188,4 +188,4 @@ DeleteProjectDirective = ($repo, $rootscope, $auth, $location, $navUrls, $confir
     return {link:link}
 
 module.directive("tgLbDeleteProject", ["$tgRepo", "$rootScope", "$tgAuth", "$tgLocation", "$tgNavUrls",
-                                       "$tgConfirm", "lightboxService", "tgLoader", "tgProjects", DeleteProjectDirective])
+                                       "$tgConfirm", "lightboxService", "tgLoader", "tgProjectsService", DeleteProjectDirective])

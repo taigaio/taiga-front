@@ -9,4 +9,4 @@ class FeedbackService extends taiga.Service
             "class": "lightbox lightbox-feedback lightbox-generic-form"
         })
 
-angular.module("taigaFeedback").service("tgFeedback", FeedbackService)
+angular.module("taigaFeedback").service("tgFeedbackService", FeedbackService)

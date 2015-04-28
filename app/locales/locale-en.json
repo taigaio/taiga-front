@@ -245,7 +245,9 @@
         "CREATE_ACCOUNT": "create your free account here"
     },
     "HOME": {
-        "EMPTY_WATCHING": "<strong>Follow</strong> the projects, User Stories, Tasks, Issues... that you want to know about :)"
+        "EMPTY_WATCHING": "<strong>Follow</strong> the projects, User Stories, Tasks, Issues... that you want to know about :)",
+        "WORKING_ON_SECTION": "Working on",
+        "WATCHING_SECTION": "Watching"
     },
     "ATTACHMENT": {
         "SECTION_NAME": "attachments",

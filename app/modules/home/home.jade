@@ -3,17 +3,14 @@ doctype html
 include ../../partials/includes/components/beta
 div.home-wrapper.centered
     div.duty-summary
-        // TODO: if not assigned to items?
-        // TODO: i18n
-        div.title-bar.working-on-title(ng-show="vm.assignedTo") Working on
+        div.title-bar.working-on-title(ng-show="vm.assignedTo", translate="HOME.WORKING_ON_SECTION")
         section.working-on(ng-show="vm.assignedTo")
             div.duty-single(tg-duty="duty", tg-repeat="duty in vm.assignedTo", ng-class="{blocked: duty.is_blocked}")
 
-        div.title-bar.watching-title Watching
+        div.title-bar.watching-title(translate="HOME.WATCHING_SECTION")
 
         section.watching-empty(ng-show="!vm.watching.size")
             include ../../svg/hide.svg
-            // TODO: i18n
             p(translate="HOME.EMPTY_WATCHING")
 
         section.watching(ng-show="vm.watching")

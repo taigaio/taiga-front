@@ -39,4 +39,4 @@ ProjectsListingDirective = (projectsService) ->
 
     return directive
 
-angular.module("taigaProjects").directive("tgProjectsListing", ["tgProjects", ProjectsListingDirective])
+angular.module("taigaProjects").directive("tgProjectsListing", ["tgProjectsService", ProjectsListingDirective])

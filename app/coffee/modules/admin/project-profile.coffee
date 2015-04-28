@@ -137,7 +137,7 @@ ProjectProfileDirective = ($repo, $confirm, $loading, $navurls, $location, proje
 
     return {link:link}
 
-module.directive("tgProjectProfile", ["$tgRepo", "$tgConfirm", "$tgLoading", "$tgNavUrls", "$tgLocation", "tgProjects", ProjectProfileDirective])
+module.directive("tgProjectProfile", ["$tgRepo", "$tgConfirm", "$tgLoading", "$tgNavUrls", "$tgLocation", "tgProjectsService", ProjectProfileDirective])
 
 #############################################################################
 ## Project Default Values Directive

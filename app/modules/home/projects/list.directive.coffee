@@ -15,4 +15,4 @@ HomeProjectListDirective = (projectsService) ->
 
     return directive
 
-angular.module("taigaHome").directive("tgHomeProjectList", ["tgProjects", HomeProjectListDirective])
+angular.module("taigaHome").directive("tgHomeProjectList", ["tgProjectsService", HomeProjectListDirective])

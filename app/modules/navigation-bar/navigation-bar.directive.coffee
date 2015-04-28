@@ -14,4 +14,4 @@ NavigationBarDirective = (projectsService) ->
 
 
 angular.module("taigaNavigationBar").directive("tgNavigationBar",
-    ["tgProjects", NavigationBarDirective])
+    ["tgProjectsService", NavigationBarDirective])

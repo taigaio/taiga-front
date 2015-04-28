@@ -22,5 +22,5 @@ DropdownUserDirective = (authService, configService, locationService,
     return directive
 
 angular.module("taigaNavigationBar").directive("tgDropdownUser",
-    ["$tgAuth", "$tgConfig", "$tgLocation", "$tgNavUrls", "tgFeedback",
+    ["$tgAuth", "$tgConfig", "$tgLocation", "$tgNavUrls", "tgFeedbackService",
     DropdownUserDirective])

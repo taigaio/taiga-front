@@ -11,7 +11,7 @@ class ProjectsPageController extends taiga.Controller
         "$projectUrl",
         "$tgConfig",
         "tgLoader",
-        "tgProjects",
+        "tgProjectsService",
         "tgHomeService",
         "$translate"
 

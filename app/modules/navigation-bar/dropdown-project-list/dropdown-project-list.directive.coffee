@@ -17,4 +17,4 @@ DropdownProjectListDirective = (projectsService) ->
 
 
 angular.module("taigaNavigationBar").directive("tgDropdownProjectList",
-    ["tgProjects", DropdownProjectListDirective])
+    ["tgProjectsService", DropdownProjectListDirective])
