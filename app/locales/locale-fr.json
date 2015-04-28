@@ -129,21 +129,21 @@
                 "DELETE_SPRINTS": "Delete sprints"
             },
             "USER_STORIES": {
-                "NAME": "User Stories",
+                "NAME": "Histoires Utilisateur",
                 "VIEW_USER_STORIES": "View user stories",
                 "ADD_USER_STORIES": "Add user stories",
                 "MODIFY_USER_STORIES": "Modify user stories",
                 "DELETE_USER_STORIES": "Delete user stories"
             },
             "TASKS": {
-                "NAME": "Tasks",
+                "NAME": "Tâches",
                 "VIEW_TASKS": "View tasks",
                 "ADD_TASKS": "Add tasks",
                 "MODIFY_TASKS": "Modify tasks",
                 "DELETE_TASKS": "Delete tasks"
             },
             "ISSUES": {
-                "NAME": "Issues",
+                "NAME": "Problèmes",
                 "VIEW_ISSUES": "View issues",
                 "ADD_ISSUES": "Add issues",
                 "MODIFY_ISSUES": "Modify issues",
@@ -563,7 +563,7 @@
         }
     },
     "COMMENTS": {
-        "DELETED_INFO": "Commentaire supprimé par {{deleteCommentUser}} on {{deleteCommentDate}}",
+        "DELETED_INFO": "Commentaire supprimé par {{user}} on {{date}}\n",
         "TITLE": "Commentaires",
         "COMMENT": "Commentaire",
         "TYPE_NEW_COMMENT": "Entrez un nouveau commentaire ici",
@@ -582,7 +582,45 @@
         "DELETED_ATTACHMENT": "Pièce-jointe supprimée",
         "UPDATED_ATTACHMENT": "Pièce jointe {{filename}} modifiée",
         "DELETED_CUSTOM_ATTRIBUTE": "Attribut personnalisé supprimé",
-        "SIZE_CHANGE": "Made {{size}} {size, plural, one{change} other{changes}}"
+        "SIZE_CHANGE": "Made {size, plural, one{one change} other{# changes}}",
+        "VALUES": {
+            "YES": "oui",
+            "NO": "no",
+            "EMPTY": "empty",
+            "UNASSIGNED": "non affecté"
+        },
+        "FIELDS": {
+            "SUBJECT": "sujet",
+            "NAME": "nom",
+            "DESCRIPTION": "description",
+            "CONTENT": "content",
+            "STATUS": "état",
+            "IS_CLOSED": "is closed",
+            "FINISH_DATE": "date de fin",
+            "TYPE": "type",
+            "PRIORITY": "priorité",
+            "SEVERITY": "sévérité",
+            "ASSIGNED_TO": "affecté à",
+            "WATCHERS": "observateurs",
+            "MILESTONE": "sprint",
+            "USER_STORY": "histoire utilisateur",
+            "PROJECT": "projet",
+            "IS_BLOCKED": "est bloqué",
+            "BLOCKED_NOTE": "note bloquée",
+            "POINTS": "points",
+            "CLIENT_REQUIREMENT": "exigence du client",
+            "TEAM_REQUIREMENT": "exigence de l'équipe",
+            "IS_IOCAINE": "est sous iocaine",
+            "TAGS": "étiquettes",
+            "ATTACHMENTS": "pièces jointes",
+            "IS_DEPRECATED": "est obsolète",
+            "ORDER": "order",
+            "BACKLOG_ORDER": "backlog order",
+            "SPRINT_ORDER": "sprint order",
+            "KANBAN_ORDER": "kanban order",
+            "TASKBOARD_ORDER": "taskboard order",
+            "US_ORDER": "us order"
+        }
     },
     "BACKLOG": {
         "SECTION_NAME": "Backlog",

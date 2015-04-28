@@ -563,7 +563,7 @@
         }
     },
     "COMMENTS": {
-        "DELETED_INFO": "Comentario borrado por {{deleteCommentUser}} el {{deleteCommentDate}}",
+        "DELETED_INFO": "Comentario borrado por {{user}} el {{date}}",
         "TITLE": "Comentarios",
         "COMMENT": "Comentar",
         "TYPE_NEW_COMMENT": "Escribe un nuevo comentario aquí",
@@ -576,13 +576,51 @@
         "SHOW_MORE": "+ Ver entradas anteriores ({{showMore}} más)",
         "TITLE": "Actividad",
         "REMOVED": "borrado",
-        "ADDED": "Agregado",
+        "ADDED": "agregado",
         "US_POINTS": "Puntos de historia ({{name}})",
         "NEW_ATTACHMENT": "nuevo adjunto",
         "DELETED_ATTACHMENT": "adjunto eliminado",
         "UPDATED_ATTACHMENT": "Adjunto {{filename}} actualizado",
         "DELETED_CUSTOM_ATTRIBUTE": "eliminar atributos personalizados",
-        "SIZE_CHANGE": "Hechos {{size}} {size, plural, one{cambio} other{cambios}}\n"
+        "SIZE_CHANGE": "{size, plural, one{Un cambio} other{# cambios}} realizados\n",
+        "VALUES": {
+            "YES": "sí",
+            "NO": "no",
+            "EMPTY": "vacío",
+            "UNASSIGNED": "sin asignar"
+        },
+        "FIELDS": {
+            "SUBJECT": "asunto",
+            "NAME": "nombre",
+            "DESCRIPTION": "descripción",
+            "CONTENT": "contenido",
+            "STATUS": "estado",
+            "IS_CLOSED": "está cerrada",
+            "FINISH_DATE": "fecha de finalización",
+            "TYPE": "tipo",
+            "PRIORITY": "prioridad",
+            "SEVERITY": "gravedad",
+            "ASSIGNED_TO": "asignado a",
+            "WATCHERS": "observadores",
+            "MILESTONE": "sprint",
+            "USER_STORY": "historia de usuario",
+            "PROJECT": "proyecto",
+            "IS_BLOCKED": "está bloqueada",
+            "BLOCKED_NOTE": "motivo del bloqueo",
+            "POINTS": "puntos",
+            "CLIENT_REQUIREMENT": "requerido por el cliente",
+            "TEAM_REQUIREMENT": "requerido por el equipo",
+            "IS_IOCAINE": "tiene iocaína",
+            "TAGS": "etiquetas",
+            "ATTACHMENTS": "adjuntos",
+            "IS_DEPRECATED": "está desactualizado",
+            "ORDER": "orden",
+            "BACKLOG_ORDER": "orden en backlog",
+            "SPRINT_ORDER": "orden en sprint",
+            "KANBAN_ORDER": "orden en kanban",
+            "TASKBOARD_ORDER": "orden en panel de tareras",
+            "US_ORDER": "orden en historia"
+        }
     },
     "BACKLOG": {
         "SECTION_NAME": "Backlog",
@@ -662,7 +700,7 @@
     "TASKBOARD": {
         "SECTION_NAME": "Panel de Tareas",
         "TITLE_ACTION_ADD": "Añade una nueva tarea",
-        "TITLE_ACTION_ADD_BULK": "Añadir nuevas Tareas en bloque",
+        "TITLE_ACTION_ADD_BULK": "Añadir nuevas tareas en bloque",
         "TITLE_ACTION_ASSIGN": "Asignar tarea",
         "TITLE_ACTION_EDIT": "Editar tarea",
         "TABLE": {

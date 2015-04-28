@@ -565,7 +565,7 @@
         }
     },
     "COMMENTS": {
-        "DELETED_INFO": "Comment deleted by {{deleteCommentUser}} on {{deleteCommentDate}}",
+        "DELETED_INFO": "Comment deleted by {{user}} on {{date}}",
         "TITLE": "Comments",
         "COMMENT": "Comment",
         "TYPE_NEW_COMMENT": "Type a new comment here",
@@ -584,7 +584,45 @@
         "DELETED_ATTACHMENT": "deleted attachment",
         "UPDATED_ATTACHMENT": "updated attachment {{filename}}",
         "DELETED_CUSTOM_ATTRIBUTE": "deleted custom attribute",
-        "SIZE_CHANGE": "Made {{size}} {size, plural, one{change} other{changes}}"
+        "SIZE_CHANGE": "Made {size, plural, one{one change} other{# changes}}",
+        "VALUES": {
+            "YES": "yes",
+            "NO": "no",
+            "EMPTY": "empty",
+            "UNASSIGNED": "unassigned"
+        },
+        "FIELDS": {
+            "SUBJECT" : "subject",
+            "NAME": "name",
+            "DESCRIPTION" : "description",
+            "CONTENT": "content",
+            "STATUS": "status",
+            "IS_CLOSED" : "is closed",
+            "FINISH_DATE" : "finish date",
+            "TYPE": "type",
+            "PRIORITY": "priority",
+            "SEVERITY": "severity",
+            "ASSIGNED_TO" : "assigned to",
+            "WATCHERS" : "watchers",
+            "MILESTONE" : "sprint",
+            "USER_STORY": "user story",
+            "PROJECT": "project",
+            "IS_BLOCKED": "is blocked",
+            "BLOCKED_NOTE": "blocked note",
+            "POINTS": "points",
+            "CLIENT_REQUIREMENT" : "client requirement",
+            "TEAM_REQUIREMENT" : "team requirement",
+            "IS_IOCAINE": "is iocaine",
+            "TAGS": "tags",
+            "ATTACHMENTS" : "attachments",
+            "IS_DEPRECATED": "is deprecated",
+            "ORDER" : "order",
+            "BACKLOG_ORDER" : "backlog order",
+            "SPRINT_ORDER" : "sprint order",
+            "KANBAN_ORDER" : "kanban order",
+            "TASKBOARD_ORDER" : "taskboard order",
+            "US_ORDER" : "us order"
+        }
     },
     "BACKLOG": {
         "SECTION_NAME": "Backlog",

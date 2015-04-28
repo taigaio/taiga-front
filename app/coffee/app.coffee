@@ -236,6 +236,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
             prefix: "/locales/locale-",
             suffix: ".json"
         })
+        .addInterpolation('$translateMessageFormatInterpolation')
         .preferredLanguage(window.taigaConfig.defaultLanguage || "en")
 
     if not window.taigaConfig.debugInfo

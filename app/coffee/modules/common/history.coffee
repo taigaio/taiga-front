@@ -96,25 +96,40 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $c
 
         # Helpers
         getHumanizedFieldName = (field) ->
-            humanizedFieldNames = {}
-
-            # US
-            humanizedFieldNames.assigned_to = $translate.instant("COMMON.FIELDS.ASSIGNED_TO").toLowerCase()
-            humanizedFieldNames.is_closed =  $translate.instant("IS_CLOSED").toLowerCase()
-            humanizedFieldNames.finish_date =  $translate.instant("US.FIELDS.FINISH_DATE").toLowerCase()
-            humanizedFieldNames.client_repquirement = $translate.instant("US.FIELDS.CLIENT_REQUIREMENT").toLowerCase()
-            humanizedFieldNames.team_requirement = $translate.instant("US.FIELDS.TEAM_REQUIREMENT").toLowerCase()
-
-            # Task
-            humanizedFieldNames.milestone = $translate.instant("TASK.FIELDS.MILESTONE").toLowerCase()
-            humanizedFieldNames.user_story = $translate.instant("TASK.FIELDS.USER_STORY").toLowerCase()
-            humanizedFieldNames.is_iocaine = $translate.instant("TASK.FIELDS.IS_IOCAINE").toLowerCase()
-
-            # Attachment
-            humanizedFieldNames.is_deprecated = $translate.instant("TASK.FIELDS.IS_IOCAINE").toLowerCase()
-
-            humanizedFieldNames.blocked_note = $translate.instant("TASK.FIELDS.IS_IOCAINE").toLowerCase()
-            humanizedFieldNames.is_blocked = $translate.instant("TASK.FIELDS.IS_BLOCKED").toLowerCase()
+            humanizedFieldNames = {
+                subject :              $translate.instant("ACTIVITY.FIELDS.SUBJECT")
+                name:                  $translate.instant("ACTIVITY.FIELDS.NAME")
+                description :          $translate.instant("ACTIVITY.FIELDS.DESCRIPTION")
+                content:               $translate.instant("ACTIVITY.FIELDS.CONTENT")
+                status:                $translate.instant("ACTIVITY.FIELDS.STATUS")
+                is_closed :            $translate.instant("ACTIVITY.FIELDS.IS_CLOSED")
+                finish_date :          $translate.instant("ACTIVITY.FIELDS.FINISH_DATE")
+                type:                  $translate.instant("ACTIVITY.FIELDS.TYPE")
+                priority:              $translate.instant("ACTIVITY.FIELDS.PRIORITY")
+                severity:              $translate.instant("ACTIVITY.FIELDS.SEVERITY")
+                assigned_to :          $translate.instant("ACTIVITY.FIELDS.ASSIGNED_TO")
+                watchers :             $translate.instant("ACTIVITY.FIELDS.WATCHERS")
+                milestone :            $translate.instant("ACTIVITY.FIELDS.MILESTONE")
+                user_story:            $translate.instant("ACTIVITY.FIELDS.USER_STORY")
+                project:               $translate.instant("ACTIVITY.FIELDS.PROJECT")
+                is_blocked:            $translate.instant("ACTIVITY.FIELDS.IS_BLOCKED")
+                blocked_note:          $translate.instant("ACTIVITY.FIELDS.BLOCKED_NOTE")
+                points:                $translate.instant("ACTIVITY.FIELDS.POINTS")
+                client_requirement :   $translate.instant("ACTIVITY.FIELDS.CLIENT_REQUIREMENT")
+                team_requirement :     $translate.instant("ACTIVITY.FIELDS.TEAM_REQUIREMENT")
+                is_iocaine:            $translate.instant("ACTIVITY.FIELDS.IS_IOCAINE")
+                tags:                  $translate.instant("ACTIVITY.FIELDS.TAGS")
+                attachments :          $translate.instant("ACTIVITY.FIELDS.ATTACHMENTS")
+                is_deprecated:         $translate.instant("ACTIVITY.FIELDS.IS_DEPRECATED")
+                blocked_note:          $translate.instant("ACTIVITY.FIELDS.BLOCKED_NOTE")
+                is_blocked:            $translate.instant("ACTIVITY.FIELDS.IS_BLOCKED")
+                order:                 $translate.instant("ACTIVITY.FIELDS.ORDER")
+                backlog_order:         $translate.instant("ACTIVITY.FIELDS.BACKLOG_ORDER")
+                sprint_order:          $translate.instant("ACTIVITY.FIELDS.SPRINT_ORDER")
+                kanban_order:          $translate.instant("ACTIVITY.FIELDS.KANBAN_ORDER")
+                taskboard_order:       $translate.instant("ACTIVITY.FIELDS.TASKBOARD_ORDER")
+                us_order:              $translate.instant("ACTIVITY.FIELDS.US_ORDER")
+            }
 
             return humanizedFieldNames[field] or field
 
@@ -133,17 +148,17 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $c
         formatChange = (change) ->
             if _.isArray(change)
                 if change.length == 0
-                    return "empty"
+                    return $translate.instant("ACTIVITY.VALUES.EMPTY")
                 return change.join(", ")
 
             if change == ""
-                return "empty"
+                return $translate.instant("ACTIVITY.VALUES.EMPTY")
 
             if not change? or change == false
-                return "no"
+                return $translate.instant("ACTIVITY.VALUES.NO")
 
             if change == true
-                return "yes"
+                return $translate.instant("ACTIVITY.VALUES.YES")
 
             return change
 
@@ -153,20 +168,26 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $c
             attachments = _.map value, (changes, type) ->
                 if type == "new"
                     return _.map changes, (change) ->
-                        return templateChangeDiff({name: $translate.instant("ACTIVITY.NEW_ATTACHMENT"), diff: change.filename})
+                        return templateChangeDiff({
+                            name: $translate.instant("ACTIVITY.NEW_ATTACHMENT"),
+                            diff: change.filename
+                        })
                 else if type == "deleted"
                     return _.map changes, (change) ->
-                        return templateChangeDiff({name: $translate.instant("ACTIVITY.DELETED_ATTACHMENT"), diff: change.filename})
+                        return templateChangeDiff({
+                            name: $translate.instant("ACTIVITY.DELETED_ATTACHMENT"),
+                            diff: change.filename
+                        })
                 else
                     return _.map changes, (change) ->
-                        name = $tranlsate.instant("ACTIVITY.UPDATED_ATTACHMENT", {filename: change.filename})
+                        name = $translate.instant("ACTIVITY.UPDATED_ATTACHMENT", {filename: change.filename})
 
                         diff = _.map change.changes, (values, name) ->
                             return {
                                 name: getHumanizedFieldName(name)
                                 from: formatChange(values[0])
                                 to: formatChange(values[1])
-                                }
+                            }
 
                         return templateChangeAttachment({name: name, diff: diff})
 
@@ -229,8 +250,8 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $c
                 return html[0].outerHTML
             else if field == "assigned_to"
                 name = getHumanizedFieldName(field)
-                from = formatChange(value[0] or "Unassigned")
-                to = formatChange(value[1] or "Unassigned")
+                from = formatChange(value[0] or $translate.instant("ACTIVITY.VALUES.UNASSIGNED"))
+                to = formatChange(value[1] or $translate.instant("ACTIVITY.VALUES.UNASSIGNED"))
                 return templateChangeGeneric({name:name, from:from, to: to})
             else
                 name = getHumanizedFieldName(field)
@@ -243,8 +264,7 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $c
 
         renderChangesHelperText = (change) ->
             size = countChanges(change)
-
-            return $translate.instant("ACTIVITY.SIZE_CHANGE", {size: size})
+            return $translate.instant("ACTIVITY.SIZE_CHANGE", {size: size}, 'messageformat')
 
         renderComment = (comment) ->
             if (comment.delete_comment_date or comment.delete_comment_user?.name)
@@ -253,7 +273,8 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $c
                     deleteCommentUser: comment.delete_comment_user.name
                     deleteComment: comment.comment_html
                     activityId: comment.id
-                    canRestoreComment: comment.delete_comment_user.pk == $scope.user.id or $scope.project.my_permissions.indexOf("modify_project") > -1
+                    canRestoreComment: (comment.delete_comment_user.pk == $scope.user.id or
+                                        $scope.project.my_permissions.indexOf("modify_project") > -1)
                 })
 
                 html = $compile(html)($scope)
@@ -428,4 +449,5 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $c
     }
 
 
-module.directive("tgHistory", ["$log", "$tgLoading", "$tgQqueue", "$tgTemplate", "$tgConfirm", "$translate", "$compile", HistoryDirective])
+module.directive("tgHistory", ["$log", "$tgLoading", "$tgQqueue", "$tgTemplate", "$tgConfirm", "$translate",
+                               "$compile", HistoryDirective])

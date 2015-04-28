@@ -4,11 +4,13 @@
     .activity-fromto
         <% _.each(diff, function(change) { %>
         p
-            strong <%- change.name %> from
+            strong <%- change.name %>&nbsp;
+            strong(translate="COMMON.FROM")
             br
             span <%- change.from %>
             p
-                strong <%- change.name %> to
+                strong <%- change.name %>&nbsp;
+                strong(translate="COMMON.TO")
                 br
                 span <%- change.to %>
         <% }) %>
