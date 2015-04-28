@@ -68,6 +68,8 @@ class LightboxService extends taiga.Service
         $el.addClass('close')
 
         if $el.hasClass("remove-on-close")
+            scope = $el.data("scope")
+            scope.$destroy()
             $el.remove()
 
     closeAll: ->
