@@ -2,14 +2,16 @@ class LightboxFactory
     @.$inject = ["$rootScope", "$compile"]
     constructor: (@rootScope, @compile) ->
 
-    create: (name) ->
+    create: (name, attrs) ->
         scope = @rootScope.$new()
 
         elm = $("<div>")
             .attr(name, true)
             .attr("tg-bind-scope", true)
-            .addClass("wizard-create-project")
             .addClass("remove-on-close")
+
+        if attrs
+            elm.attr(attrs)
 
         html = @compile(elm)(scope)
 

@@ -56,18 +56,23 @@ FeedbackDirective = ($lightboxService, $repo, $confirm, $loading, feedbackServic
 
         $el.on "submit", "form", submit
 
-        sendFeedbackCallback = ->
+        openLightbox = ->
             $scope.feedback = {}
             $lightboxService.open($el)
             $el.find("textarea").focus()
 
-        feedbackService.emiter.on "send", sendFeedbackCallback
-
         $scope.$on "$destroy", ->
-            emitter.off(feedbackService.emiter, sendFeedbackCallback)
             $el.off()
 
-    return {link:link}
+        openLightbox()
+
+    directive = {
+        link: link,
+        templateUrl: "common/lightbox-feedback.html"
+        scope: {}
+    }
+
+    return directive
 
 module.directive("tgLbFeedback", ["lightboxService", "$tgRepo", "$tgConfirm",
     "$tgLoading", "tgFeedback", FeedbackDirective])

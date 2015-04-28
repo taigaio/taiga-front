@@ -33,7 +33,9 @@ class ProjectsService extends taiga.Service
         return @.projectsPromise
 
     newProject: ->
-        @lightboxFactory.create("tg-lb-create-project")
+        @lightboxFactory.create("tg-lb-create-project", {
+            "class": "wizard-create-project"
+        })
 
     bulkUpdateProjectsOrder: (sortData) ->
         @rs.projects.bulkUpdateOrder(sortData).then =>

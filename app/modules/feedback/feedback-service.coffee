@@ -1,8 +1,12 @@
 class FeedbackService extends taiga.Service
-    constructor: ->
-        @.emiter = new EventEmitter2()
+    @.$inject = ["tgLightboxFactory"]
+
+    constructor: (@lightboxFactory) ->
+
 
     sendFeedback: ->
-        @.emiter.emit("send")
+        @lightboxFactory.create("tg-lb-feedback", {
+            "class": "lightbox lightbox-feedback lightbox-generic-form"
+        })
 
 angular.module("taigaFeedback").service("tgFeedback", FeedbackService)
