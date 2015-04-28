@@ -11,12 +11,13 @@ class ProjectsPageController extends taiga.Controller
         "$projectUrl",
         "$tgConfig",
         "tgLoader",
-        "tgProjects"
+        "tgProjects",
+        "$translate"
     ]
 
     constructor: (@scope, @q, @rs, @rootscope, @navUrls, @auth, @location,
-        @appTitle, @projectUrl, @config, tgLoader, @projects) ->
-        @appTitle.set("Projects")
+        @appTitle, @projectUrl, @config, tgLoader, @projects, @translate) ->
+        @appTitle.set(@translate.instant("PROJECT.SECTION_PROJECTS"))
 
         if !@auth.isAuthenticated()
             @location.path(@navUrls.resolve("login"))

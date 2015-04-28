@@ -41,6 +41,9 @@ resourceProvider = ($repo, $http, $urls, $storage) ->
         params.ref = ref
         return $repo.queryOne("tasks", "by_ref", params)
 
+    service.listInAllProjects = (filters) ->
+        return $repo.queryMany("tasks", filters)
+
     service.list = (projectId, sprintId=null, userStoryId=null) ->
         params = {project: projectId}
         params.milestone = sprintId if sprintId

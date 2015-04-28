@@ -101,6 +101,9 @@
             }
         },
         "SEE_USER_PROFILE": "See {{username }} profile",
+        "USER_STORY": "User story",
+        "TASK": "Task",
+        "ISSUE": "Issue",
         "TAGS": {
             "PLACEHOLDER": "I'm it! Tag me...",
             "DELETE": "Delete tag",
@@ -240,6 +243,9 @@
         "NOT_REGISTERED_YET": "Not registered yet?",
         "REGISTER": "Register",
         "CREATE_ACCOUNT": "create your free account here"
+    },
+    "HOME": {
+        "EMPTY_WATCHING": "<strong>Follow</strong> the projects, User Stories, Tasks, Issues... that you want to know about :)"
     },
     "ATTACHMENT": {
         "SECTION_NAME": "attachments",

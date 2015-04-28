@@ -1,68 +1,22 @@
 doctype html
 
 include ../../partials/includes/components/beta
-div.home-wrapper.centered(ng-controller="HomePage")
+div.home-wrapper.centered
     div.duty-summary
-        // TODO Hide if ASSIGNED TO ==== false
-        div.title-bar.working-on-title Working on
-        // TODO Hide if ASSIGNED TO ==== false
-        section.working-on
-            // TODO Remove and replace for an angular repeat
-            - for (var x = 0; x < 2; x++)
-                div.duty-single
-                    img.avatar(src="https://s3.amazonaws.com/uifaces/faces/twitter/rem/128.jpg", title="{{ user.fullname }}")
-                    div.duty-data
-                        div
-                            // TODO, ADD THEIR COLOR TO THE DUTY TYPE AND STATUS
-                            span.duty-type User Story
-                            span.duty-status New
-                        a.duty-title(href="")
-                            span.duty-id #1504
-                            span.duty-name Documentación III: (notificaciones asíncronas + plugins front/back)
-                    div.duty-project Taiga
-                 div.duty-single.blocked
-                    img.avatar(src="https://s3.amazonaws.com/uifaces/faces/twitter/rem/128.jpg", title="{{ user.fullname }}")
-                    div.duty-data
-                        div
-                            // TODO, ADD THEIR COLOR TO THE DUTY TYPE AND STATUS
-                            span.duty-type User Story
-                            span.duty-status Blocked
-                         a.duty-title(href="")
-                            span.duty-id #1504
-                            span.duty-name Documentación III: (notificaciones asíncronas + plugins front/back) Documentación III: (notificaciones asíncronas + plugins front/back)
-                    div.duty-project Whatever
+        // TODO: if not assigned to items?
+        // TODO: i18n
+        div.title-bar.working-on-title(ng-show="vm.assignedTo") Working on
+        section.working-on(ng-show="vm.assignedTo")
+            div.duty-single(tg-duty="duty", tg-repeat="duty in vm.assignedTo", ng-class="{blocked: duty.is_blocked}")
 
         div.title-bar.watching-title Watching
 
-        // TODO Show if WATCHERS ==== false
-        section.watching-empty.hidden
+        section.watching-empty(ng-show="!vm.watching.size")
             include ../../svg/hide.svg
-            p <strong>Follow</strong> the projects, User Stories, Tasks, Issues... that you want to know about :)
+            // TODO: i18n
+            p(translate="HOME.EMPTY_WATCHING")
 
-        // TODO Show if WATCHERS ==== true
-        section.watching
-            - for (var x = 0; x < 20; x++)
-                div.duty-single
-                    img.avatar(src="https://s3.amazonaws.com/uifaces/faces/twitter/annapickard/128.jpg", title="{{ user.fullname }}")
-                    div.duty-data
-                        div
-                            // TODO, ADD THEIR COLOR TO THE DUTY TYPE AND STATUS
-                            span.duty-type User Story
-                            span.duty-status New
-                        a.duty-title(href="")
-                            span.duty-id #1504
-                            span.duty-name Documentación III: (notificaciones asíncronas + plugins front/back)
-                    div.duty-project Taiga
-                div.duty-single
-                    img.avatar(src="https://s3.amazonaws.com/uifaces/faces/twitter/sircookieface/128.jpg", title="{{ user.fullname }}")
-                    div.duty-data
-                        div
-                            // TODO, ADD THEIR COLOR TO THE DUTY TYPE AND STATUS
-                            span.duty-type Bug
-                            span.duty-status Ready for test
-                        a.duty-title(href="")
-                            span.duty-id #28
-                            span.duty-name It is not possible to re-order stories in the sprint view .
-                    div.duty-project Teletransportation hubs
-            a.button-gray.see-more(href="#", title="See more Watching US") See more
+        section.watching(ng-show="vm.watching")
+            div.duty-single(tg-duty="duty", tg-repeat="duty in vm.watching", ng-class="{blocked: duty.is_blocked}")
+
     aside.project-list(tg-home-project-list)

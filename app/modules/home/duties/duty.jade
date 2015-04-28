@@ -1,0 +1,12 @@
+img.avatar(
+    src="https://s3.amazonaws.com/uifaces/faces/twitter/rem/128.jpg"
+    title="{{ user.fullname }}")
+
+div.duty-data
+    div
+        span.duty-type {{ vm.getDutyType() }}
+        span.duty-status(ng-style="{'color': vm.duty.status_color}") {{ ::vm.duty.status_name }}
+    a.duty-title(href="{{ vm.getUrl() }}")
+        span.duty-id(tg-bo-ref="duty.ref")
+        span.duty-name {{ ::duty.subject }}
+div.duty-project {{ ::vm.getProjectName()}}

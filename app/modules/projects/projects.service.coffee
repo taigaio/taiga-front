@@ -1,8 +1,12 @@
+taiga = @.taiga
+groupBy = @.taiga.groupBy
+
 class ProjectsService extends taiga.Service
     @.$inject = ["$q", "$tgResources", "$rootScope", "$projectUrl", "tgLightboxFactory"]
 
     constructor: (@q, @rs, @rootScope, @projectUrl, @lightboxFactory) ->
         @.projects = Immutable.Map()
+        @.projectsById = Immutable.Map()
         @.inProgress = false
         @.projectsPromise = null
         @.fetchProjects()
@@ -18,6 +22,8 @@ class ProjectsService extends taiga.Service
                     all: projects,
                     recents: projects.slice(0, 10)
                 })
+
+                @.projectsById = Immutable.fromJS(groupBy(projects, (p) -> p.id))
 
                 return @.projects
 
