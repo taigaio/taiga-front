@@ -1,0 +1,97 @@
+.project-list-single {
+    border-bottom: 1px solid $whitish;
+    display: flex;
+    justify-content: center;
+    padding: .5rem;
+    position: relative;
+}
+
+.project-list-single-left,
+.project-list-single-right {
+    display: flex;
+    flex-direction: column;
+}
+
+.project-list-single-left {
+    align-content: space-between;
+    flex: 4;
+    h1 {
+        @extend %text;
+        @extend %large;
+        display: inline-block;
+        margin-bottom: 0;
+        text-transform: none;
+    }
+    .project-name {
+        @extend %text;
+        @extend %larger;
+        color: $gray;
+        vertical-align: middle;
+        white-space: nowrap;
+    }
+    .private {
+        display: inline-block;
+        margin-left: .3rem;
+        width: .5rem;
+        path {
+            fill: $gray-light;
+            transition: fill .3s linear;
+        }
+    }
+    p {
+        @extend %text;
+        @extend %small;
+        color: $gray;
+        margin-bottom: 0;
+        max-width: 95%;
+    }
+    .project-list-single-tags {
+        align-content: flex-end;
+        display: flex;
+        flex: 3;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        margin-top: .5rem;
+    }
+    .tag {
+        align-self: flex-end;
+        margin-right: .5rem;
+        padding: .5rem;
+    }
+}
+
+.project-list-single-right {
+    justify-content: space-between;
+    .project-list-single-stats {
+        align-self: flex-end;
+        display: flex;
+        div {
+            color: $gray-light;
+            margin-right: .5rem;
+            .icon {
+                margin-right: .2rem;
+                vertical-align: center;
+            }
+        }
+        .active {
+            .icon {
+                color: $star-fill;
+            }
+        }
+    }
+    .project-list-single-members {
+        align-self: flex-end;
+        display: flex;
+        flex-grow: 0;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+        max-width: 160px;
+        a {
+            display: block;
+        }
+        img {
+            margin-right: .3rem;
+            width: 34px;
+        }
+    }
+}

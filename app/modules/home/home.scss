@@ -1,0 +1,24 @@
+.home-wrapper {
+    display: flex;
+    padding-top: 2rem;
+    .duty-summary {
+        flex: 1;
+        margin-right: 2rem;
+    }
+    .project-list {
+        width: 250px;
+    }
+    .see-more-projects-btn {
+        display: block;
+        margin-top: 2rem;
+    }
+    .title-bar {
+        @extend %title;
+        @extend %larger;
+        align-content: center;
+        background: $whitish;
+        display: flex;
+        margin: 0 0 .5rem;
+        padding: .9rem 1rem;
+    }
+}
