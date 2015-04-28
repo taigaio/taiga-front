@@ -249,6 +249,9 @@
         "WORKING_ON_SECTION": "Working on",
         "WATCHING_SECTION": "Watching"
     },
+    "PROJECTS": {
+        "MY_PROJECTS": "My projects"
+    },
     "ATTACHMENT": {
         "SECTION_NAME": "attachments",
         "TITLE": "{{ fileName }} uploaded on {{ date }}",
