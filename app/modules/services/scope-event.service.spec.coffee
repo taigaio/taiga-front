@@ -1,6 +1,6 @@
 angular.module("taigaCommon").provider("$exceptionHandler", angular.mock.$ExceptionHandlerProvider)
 
-describe.only "tgScopeEvent", ->
+describe "tgScopeEvent", ->
     scopeEvent = null
     $rootScope = null
 
