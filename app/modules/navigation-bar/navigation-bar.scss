@@ -5,7 +5,7 @@
     position: relative;
     &:after {
         background: url('../images/menu-vert.png') repeat top left;
-        background-size: 100%;
+        background-size: 200%;
         bottom: 0;
         content: '';
         height: 100%;
@@ -13,7 +13,6 @@
         position: absolute;
         right: 0;
         top: 0;
-        width: 200%;
         z-index: -1;
     }
     .nav-left,
