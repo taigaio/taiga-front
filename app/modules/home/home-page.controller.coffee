@@ -20,20 +20,25 @@ class ProjectsPageController extends taiga.Controller
     constructor: (@scope, @q, @rs, @rootscope, @navUrls, @auth, @location,
         @appTitle, @projectUrl, @config, tgLoader, @projectsService, @homeService,
         @translate) ->
-        @appTitle.set(@translate.instant("PROJECT.WELCOME"))
 
         if !@auth.isAuthenticated()
             @location.path(@navUrls.resolve("login"))
 
-        #Projects
-        projectsPromise = @projectsService.fetchProjects()
+        promise = @.loadInitialData()
 
-        #In progress work
-        user = @auth.getUser()
-        workInProgressPromise = @homeService.fetchWorkInProgress(user.id)
+        # On Success
+        promise.then =>
+            @appTitle.set(@translate.instant("PROJECT.WELCOME"))
 
         # Finally
-        @q.all([projectsPromise, workInProgressPromise]).finally tgLoader.pageLoaded
+        promise.finally tgLoader.pageLoaded
 
+    loadInitialData: ->
+        user = @auth.getUser()
+        #Projects
+        promise = @projectsService.fetchProjects()
+        return promise.then () =>
+            #In progress work
+            return @homeService.fetchWorkInProgress(user.id)
 
 angular.module("taigaHome").controller("HomePage", ProjectsPageController)

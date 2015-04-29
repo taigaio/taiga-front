@@ -17,7 +17,6 @@ class ProjectsPageController extends taiga.Controller
 
     constructor: (@scope, @q, @rs, @rootscope, @navUrls, @auth, @location,
         @appTitle, @projectUrl, @config, tgLoader, @projectsService, @translate) ->
-        @appTitle.set(@translate.instant("PROJECT.SECTION_PROJECTS"))
 
         if !@auth.isAuthenticated()
             @location.path(@navUrls.resolve("login"))
@@ -25,6 +24,10 @@ class ProjectsPageController extends taiga.Controller
         #Projects
         promise = @projectsService.fetchProjects()
 
+        # On Success
+        promise.then =>
+            @appTitle.set(@translate.instant("PROJECT.SECTION_PROJECTS"))
+            
         # Finally
         promise.finally tgLoader.pageLoaded
 
