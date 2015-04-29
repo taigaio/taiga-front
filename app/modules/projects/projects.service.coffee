@@ -26,10 +26,10 @@ class ProjectsService extends taiga.Service
 
                 @.projectsById = Immutable.fromJS(groupBy(projects, (p) -> p.id))
 
-                @._inProgress = false
-
                 return @.projects
 
+            @.projectsPromise.finally =>
+                @._inProgress = false
 
         return @.projectsPromise
 
