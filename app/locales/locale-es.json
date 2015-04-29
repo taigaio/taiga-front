@@ -65,7 +65,8 @@
             "DELETE_ASSIGNMENT": "Eliminar asignaciones",
             "REMOVE_ASSIGNED": "Eliminar asignación",
             "TOO_MANY": "...Demasiados usuarios, continué filtrando",
-            "CONFIRM_UNASSIGNED": "¿Está seguro de que desea dejarla sin asignar?"
+            "CONFIRM_UNASSIGNED": "¿Está seguro de que desea dejarla sin asignar?",
+            "TITLE_ACTION_EDIT_ASSIGNMENT": "Editar asignación"
         },
         "STATUS": {
             "CLOSED": "Cerrada",

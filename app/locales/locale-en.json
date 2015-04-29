@@ -67,7 +67,8 @@
             "DELETE_ASSIGNMENT": "Delete assignment",
             "REMOVE_ASSIGNED": "Remove assigned",
             "TOO_MANY": "...too many users, keep filtering",
-            "CONFIRM_UNASSIGNED": "Are you sure you want to leave it unassigned?"
+            "CONFIRM_UNASSIGNED": "Are you sure you want to leave it unassigned?",
+            "TITLE_ACTION_EDIT_ASSIGNMENT": "Edit assignment"
         },
         "STATUS": {
             "CLOSED": "Closed",
