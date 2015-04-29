@@ -6,14 +6,16 @@
         padding: .5rem;
         padding-right: 1rem;
         text-overflow: ellipsis;
-        transition: border-color .3s linear;
         &:hover {
             border-color: $fresh-taiga;
+            transition: border-color .3s linear;
             p {
                 color: $gray;
+                transition: color .3s linear;
             }
             .private path {
                 fill: $gray;
+                transition: fill .3s linear;
             }
         }
     }
@@ -38,7 +40,6 @@
             width: .5rem;
             path {
                 fill: $gray-light;
-                transition: fill .3s linear;
             }
         }
     }
@@ -47,7 +48,6 @@
         @extend %small;
         color: $gray-light;
         margin: 0;
-        transition: color .3s linear;
     }
 }
 
