@@ -37,7 +37,7 @@ resourceProvider = ($config, $repo, $http, $urls, $auth, $q, $translate) ->
         return $repo.queryMany("projects")
 
     service.listByMember = (memberId) ->
-        params = {"member": memberId, "user_order": 1}
+        params = {"member": memberId, "order_by": "memberships__user_order"}
         return $repo.queryMany("projects", params)
 
     service.templates = ->
