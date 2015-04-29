@@ -65,7 +65,8 @@
             "DELETE_ASSIGNMENT": "Supprimer l'affectation",
             "REMOVE_ASSIGNED": "Supprimer l'affectation",
             "TOO_MANY": "...trop d'utilisateurs ; filtrez davantage",
-            "CONFIRM_UNASSIGNED": "Etes-vous sûr de vouloir continuer sans affectation ?"
+            "CONFIRM_UNASSIGNED": "Etes-vous sûr de vouloir continuer sans affectation ?",
+            "TITLE_ACTION_EDIT_ASSIGNMENT": "Edit assignment"
         },
         "STATUS": {
             "CLOSED": "Clos",
@@ -74,7 +75,8 @@
         "WATCHERS": {
             "ADD": "Ajouter un observateur",
             "TITLE": "Observateurs",
-            "DELETE": "supprimer l'observateur"
+            "DELETE": "Supprimer l'observateur",
+            "TITLE_LIGHTBOX_DELETE_WARTCHER": "Supprimer l'observateur..."
         },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "Champs personnalisés",

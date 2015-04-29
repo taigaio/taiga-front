@@ -75,7 +75,8 @@
         "WATCHERS": {
             "ADD": "Lisää vahti",
             "TITLE": "vahdit",
-            "DELETE": "poista vahti"
+            "DELETE": "Poista vahti",
+            "TITLE_LIGHTBOX_DELETE_WARTCHER": "Poista vahti..."
         },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "Omat kentät",

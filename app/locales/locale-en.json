@@ -77,7 +77,8 @@
         "WATCHERS": {
             "ADD": "Add watcher",
             "TITLE": "watchers",
-            "DELETE": "delete watcher"
+            "DELETE": "Delete watcher",
+            "TITLE_LIGHTBOX_DELETE_WARTCHER": "Delete watcher..."
         },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "Custom Fields",

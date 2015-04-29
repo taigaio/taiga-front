@@ -156,7 +156,7 @@ module.directive("tgCreatedByDisplay", ["$tgTemplate", "$compile", CreatedByDisp
 ## Watchers directive
 #############################################################################
 
-WatchersDirective = ($rootscope, $confirm, $repo, $qqueue, $template, $compile) ->
+WatchersDirective = ($rootscope, $confirm, $repo, $qqueue, $template, $compile, $translate) ->
     # You have to include a div with the tg-lb-watchers directive in the page
     # where use this directive
     template = $template.get("common/components/watchers.html", true)
@@ -215,7 +215,7 @@ WatchersDirective = ($rootscope, $confirm, $repo, $qqueue, $template, $compile) 
             target = angular.element(event.currentTarget)
             watcherId = target.data("watcher-id")
 
-            title = "Delete watcher"
+            title = $translate.instant("COMMON.WATCHERS.TITLE_LIGHTBOX_DELETE_WARTCHER")
             message = $scope.usersById[watcherId].full_name_display
 
             $confirm.askOnDelete(title, message).then (finish) =>
@@ -250,7 +250,7 @@ WatchersDirective = ($rootscope, $confirm, $repo, $qqueue, $template, $compile) 
     return {link:link, require:"ngModel"}
 
 module.directive("tgWatchers", ["$rootScope", "$tgConfirm", "$tgRepo", "$tgQqueue", "$tgTemplate", "$compile",
-                                WatchersDirective])
+                                "$translate", WatchersDirective])
 
 
 #############################################################################

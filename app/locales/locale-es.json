@@ -75,7 +75,8 @@
         "WATCHERS": {
             "ADD": "Añadir un observador...",
             "TITLE": "observadores",
-            "DELETE": "eliminar observador"
+            "DELETE": "Eliminar el observador",
+            "TITLE_LIGHTBOX_DELETE_WARTCHER": "Eliminar el observador..."
         },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "Atributo Personalizados",
