@@ -171,7 +171,7 @@
     },
     "ATTACHMENT": {
         "SECTION_NAME": "liitteet",
-        "TITLE": "<%- name %> ladattu <%- created_date %>",
+        "TITLE": "{{ fileName }} ladattu {{ date }}\n",
         "DESCIPTION": "Kirjoita lyhyt kuvaus",
         "DEPRECATED_FILE": "Vanhentunut?",
         "ADD": "Lisää liite. <%- maxFileSizeMsg %>",
@@ -181,6 +181,10 @@
         "COUNT_DEPRECATED": "({{ctrl.deprecatedAttachmentsCount }} vanhentunutta)",
         "MAX_UPLOAD_SIZE": "Maksimi tiedoston koko {{maxFileSize}}",
         "DATE": "DD MMM YYYY  - hh:mm",
+        "ERROR_UPLOAD_ATTACHMENT": "We have not been able to upload '{{fileName}}'. {{errorMessage}}",
+        "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "Delete attachment...",
+        "MSG_LIGHTBOX_DELETE_ATTACHMENT": "the attachment '{{fileName}}'",
+        "ERROR_DELETE_ATTACHMENT": "We have not been able to delete: {{errorMessage}}",
         "FIELDS": {
             "IS_DEPRECATED": "on vanhentunut"
         }

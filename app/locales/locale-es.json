@@ -171,7 +171,7 @@
     },
     "ATTACHMENT": {
         "SECTION_NAME": "adjuntos",
-        "TITLE": "<%- name %> Subido en <%- created_date %>",
+        "TITLE": "{{ fileName }} subido el {{ date }}",
         "DESCIPTION": "Escribe una descripción corta",
         "DEPRECATED_FILE": "¿Desactualizado?",
         "ADD": "Agrega nuevos adjunto",
@@ -181,6 +181,10 @@
         "COUNT_DEPRECATED": "({{ctrl.deprecatedAttachmentsCount }} obsoleto)",
         "MAX_UPLOAD_SIZE": "El tamaño máximo de subida es de {{maxFileSize}}",
         "DATE": "DD MMM YYYY [a las] hh:mm\n",
+        "ERROR_UPLOAD_ATTACHMENT": "No hemos podido subir el fichero '{{fileName}}'. {{errorMessage}}",
+        "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "Borrar adjunto...",
+        "MSG_LIGHTBOX_DELETE_ATTACHMENT": "el adjunto '{{fileName}}'",
+        "ERROR_DELETE_ATTACHMENT": "No hemos podido borrarlo: {{errorMessage}}",
         "FIELDS": {
             "IS_DEPRECATED": "Está desactualizado"
         }

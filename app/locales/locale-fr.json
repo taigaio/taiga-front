@@ -171,7 +171,7 @@
     },
     "ATTACHMENT": {
         "SECTION_NAME": "pièces jointes",
-        "TITLE": "<%- name %> transmis le <%- created_date %>",
+        "TITLE": "{{ fileName }} transmis le {{ date }}\n",
         "DESCIPTION": "Entrez une courte description",
         "DEPRECATED_FILE": "Obsolète?",
         "ADD": "Ajouter une pièce jointe. <%- maxFileSizeMsg %>",
@@ -181,6 +181,10 @@
         "COUNT_DEPRECATED": "({{ctrl.deprecatedAttachmentsCount }} obsolète)",
         "MAX_UPLOAD_SIZE": "La taille maximum d'upload est {{maxFileSize}}",
         "DATE": "DD MMM YYYY [at] hh:mm",
+        "ERROR_UPLOAD_ATTACHMENT": "We have not been able to upload '{{fileName}}'. {{errorMessage}}",
+        "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "Delete attachment...",
+        "MSG_LIGHTBOX_DELETE_ATTACHMENT": "the attachment '{{fileName}}'",
+        "ERROR_DELETE_ATTACHMENT": "We have not been able to delete: {{errorMessage}}",
         "FIELDS": {
             "IS_DEPRECATED": "est obsolète"
         }

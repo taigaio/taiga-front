@@ -28,9 +28,9 @@ module = angular.module("taigaCommon")
 
 
 class AttachmentsController extends taiga.Controller
-    @.$inject = ["$scope", "$rootScope", "$tgRepo", "$tgResources", "$tgConfirm", "$q"]
+    @.$inject = ["$scope", "$rootScope", "$tgRepo", "$tgResources", "$tgConfirm", "$q", "$translate"]
 
-    constructor: (@scope, @rootscope, @repo, @rs, @confirm, @q) ->
+    constructor: (@scope, @rootscope, @repo, @rs, @confirm, @q, @translate) ->
         bindMethods(@)
         @.type = null
         @.objectId = null
@@ -75,10 +75,13 @@ class AttachmentsController extends taiga.Controller
 
         promise = promise.then null, (data) =>
             @scope.$emit("attachments:size-error") if data.status == 413
+
             index = @.uploadingAttachments.indexOf(attachment)
             @.uploadingAttachments.splice(index, 1)
-            @confirm.notify("error", "We have not been able to upload '#{attachment.name}'.
-                                      #{data.data._error_message}")
+
+            message = @translate.instant("ATTACHMENT.ERROR_UPLOAD_ATTACHMENT", {
+                            fileName: attachment.name, errorMessage: data.data._error_message})
+            @confirm.notify("error", message)
             return @q.reject(data)
 
         return promise
@@ -130,8 +133,8 @@ class AttachmentsController extends taiga.Controller
 
     # Remove one concrete attachment.
     removeAttachment: (attachment) ->
-        title = "Delete attachment"  #TODO: i18in
-        message = "the attachment '#{attachment.name}'" #TODO: i18in
+        title = @translate.instant("ATTACHMENT.TITLE_LIGHTBOX_DELETE_ATTACHMENT")
+        message = @translate.instant("ATTACHMENT.MSG_LIGHTBOX_DELETE_ATTACHMENT", {fileName: attachment.name})
 
         return @confirm.askOnDelete(title, message).then (finish) =>
             onSuccess = =>
@@ -143,7 +146,8 @@ class AttachmentsController extends taiga.Controller
 
             onError = =>
                 finish(false)
-                @confirm.notify("error", null, "We have not been able to delete #{message}.")
+                message = @translate.instant("ATTACHMENT.ERROR_DELETE_ATTACHMENT", {errorMessage: message})
+                @confirm.notify("error", null, message)
                 return @q.reject()
 
             return @repo.remove(attachment).then(onSuccess, onError)
@@ -242,7 +246,7 @@ AttachmentsDirective = ($config, $confirm, $templates) ->
 module.directive("tgAttachments", ["$tgConfig", "$tgConfirm", "$tgTemplate", AttachmentsDirective])
 
 
-AttachmentDirective = ($template, $compile) ->
+AttachmentDirective = ($template, $compile, $translate) ->
     template = $template.get("attachment/attachment.html", true)
     templateEdit = $template.get("attachment/attachment-edit.html", true)
 
@@ -254,14 +258,16 @@ AttachmentDirective = ($template, $compile) ->
             ctx = {
                 id: attachment.id
                 name: attachment.name
-                created_date: moment(attachment.created_date).format("ATTACHMENT.DATE")
+                title : $translate.instant("ATTACHMENT.TITLE", {
+                            fileName: attachment.name,
+                            date: moment(attachment.created_date).format($translate.instant("ATTACHMENT.DATE"))})
                 url: attachment.url
                 size: sizeFormat(attachment.size)
                 description: attachment.description
                 isDeprecated: attachment.is_deprecated
                 modifyPermission: modifyPermission
             }
-
+            console.log ctx.title
             if edit
                 html = $compile(templateEdit(ctx))($scope)
             else
@@ -322,4 +328,4 @@ AttachmentDirective = ($template, $compile) ->
         restrict: "AE"
     }
 
-module.directive("tgAttachment", ["$tgTemplate", "$compile", AttachmentDirective])
+module.directive("tgAttachment", ["$tgTemplate", "$compile", "$translate", AttachmentDirective])

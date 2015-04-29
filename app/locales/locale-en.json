@@ -173,7 +173,7 @@
     },
     "ATTACHMENT": {
         "SECTION_NAME": "attachments",
-        "TITLE": "<%- name %> uploaded on <%- created_date %>",
+        "TITLE": "{{ fileName }} uploaded on {{ date }}",
         "DESCIPTION": "Type a short description",
         "DEPRECATED_FILE": "Deprecated?",
         "ADD": "Add new attachment. <%- maxFileSizeMsg %>",
@@ -183,6 +183,10 @@
         "COUNT_DEPRECATED": "({{ctrl.deprecatedAttachmentsCount }} deprecated)",
         "MAX_UPLOAD_SIZE": "Maximum upload size is {{maxFileSize}}",
         "DATE": "DD MMM YYYY [at] hh:mm",
+        "ERROR_UPLOAD_ATTACHMENT": "We have not been able to upload '{{fileName}}'. {{errorMessage}}",
+        "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "Delete attachment...",
+        "MSG_LIGHTBOX_DELETE_ATTACHMENT": "the attachment '{{fileName}}'",
+        "ERROR_DELETE_ATTACHMENT": "We have not been able to delete: {{errorMessage}}",
         "FIELDS": {
             "IS_DEPRECATED": "is deprecated"
         }

@@ -1,6 +1,6 @@
 .attachment-name
     span.icon.icon-document
-    a(href!="<%- url %>", title!="{{ 'ATTACHMENT.TITLE' | translate}}", target="_blank")
+    a(href!="<%- url %>", title!="<%- title %>", target="_blank")
         | <%- name %>
 .attachment-size
     span <%- size %>
