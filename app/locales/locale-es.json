@@ -4,6 +4,8 @@
         "NO": "No",
         "LOADING": "Cargando...",
         "LOADING_PROJECT": "Cargando projecto...",
+        "DATE": "DD MMM YYYY",
+        "DATETIME": "DD MMM YYYY HH:mm",
         "SAVE": "Guardar",
         "CANCEL": "Cancelar",
         "ACCEPT": "Aceptar",
@@ -579,6 +581,7 @@
     },
     "ACTIVITY": {
         "SHOW_ACTIVITY": "Mostrar actividad",
+        "DATETIME": "DD MMM YYYY HH:mm",
         "SHOW_MORE": "+ Ver entradas anteriores ({{showMore}} más)",
         "TITLE": "Actividad",
         "REMOVED": "borrado",
@@ -685,6 +688,7 @@
         },
         "SPRINTS": {
             "TITLE": "SPRINTS",
+            "DATE": "DD MMM YYYY",
             "LINK_TASKBOARD": "Panel de Tareas del Sprint",
             "TITLE_LINK_TASKBOARD": "Ir al panel de tareas de \"{{name}}\"",
             "NUMBER_SPRINTS": "<br/>sprints",
@@ -722,7 +726,8 @@
             "XAXIS_LABEL": "Días",
             "YAXIS_LABEL": "Puntos",
             "OPTIMAL": "El número de puntos óptimos pendientes para el día {{formattedDate}} debería ser de {{roundedValue}}",
-            "REAL": "El número de puntos pendientes para el día {{formattedDate}} es de {{roundedValue}}"
+            "REAL": "El número de puntos pendientes para el día {{formattedDate}} es de {{roundedValue}}",
+            "DATE": "DD MMMM YYYY"
         }
     },
     "TASK": {
@@ -985,6 +990,7 @@
         "PROGRESS_NAME_DESCRIPTION": "Nombre y descripción"
     },
     "WIKI": {
+        "DATETIME": "DD MMM YYYY HH:mm",
         "PLACEHOLDER_PAGE": "Escribe el contenido de tu página",
         "REMOVE": "Eliminar esta página del wiki",
         "DELETE_LIGHTBOX_TITLE": "Eliminar Página del Wiki",

@@ -85,10 +85,12 @@ module.directive("tgBacklogSprint", ["$tgRepo", "$rootScope", BacklogSprintDirec
 ## Sprint Header Directive
 #############################################################################
 
-BacklogSprintHeaderDirective = ($navUrls, $template, $compile) ->
+BacklogSprintHeaderDirective = ($navUrls, $template, $compile, $translate) ->
     template = $template.get("backlog/sprint-header.html")
 
     link = ($scope, $el, $attrs, $model) ->
+        prettyDate = $translate.instant("BACKLOG.SPRINTS.DATE")
+
         isEditable = ->
             return $scope.project.my_permissions.indexOf("modify_milestone") != -1
 
@@ -99,8 +101,8 @@ BacklogSprintHeaderDirective = ($navUrls, $template, $compile) ->
             taskboardUrl = $navUrls.resolve("project-taskboard",
                                             {project: $scope.project.slug, sprint: sprint.slug})
 
-            start = moment(sprint.estimated_start).format("DD MMM YYYY")
-            finish = moment(sprint.estimated_finish).format("DD MMM YYYY")
+            start = moment(sprint.estimated_start).format(prettyDate)
+            finish = moment(sprint.estimated_finish).format(prettyDate)
             estimatedDateRange = "#{start}-#{finish}"
 
             ctx = {
@@ -135,7 +137,9 @@ BacklogSprintHeaderDirective = ($navUrls, $template, $compile) ->
         require: "ngModel"
     }
 
-module.directive("tgBacklogSprintHeader", ["$tgNavUrls", "$tgTemplate", "$compile", BacklogSprintHeaderDirective])
+module.directive("tgBacklogSprintHeader", ["$tgNavUrls", "$tgTemplate", "$compile", "$translate"
+                                           BacklogSprintHeaderDirective])
+
 
 #############################################################################
 ## Toggle Closed Sprints Directive
@@ -178,4 +182,5 @@ ToggleExcludeClosedSprintsVisualization = ($rootscope, $loading, $translate) ->
 
     return {link: link}
 
-module.directive("tgBacklogToggleClosedSprintsVisualization", ["$rootScope", "$tgLoading", "$translate", ToggleExcludeClosedSprintsVisualization])
+module.directive("tgBacklogToggleClosedSprintsVisualization", ["$rootScope", "$tgLoading", "$translate",
+                                                               ToggleExcludeClosedSprintsVisualization])

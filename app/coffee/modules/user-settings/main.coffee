@@ -102,9 +102,7 @@ UserProfileDirective = ($confirm, $auth, $repo, $translate) ->
             return if not form.validate()
 
             changeEmail = $scope.user.isAttributeModified("email")
-
             $scope.user.lang = $scope.lang
-            $translate.use($scope.user.lang)
 
             onSuccess = (data) =>
                 $auth.setUser(data)

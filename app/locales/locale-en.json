@@ -4,14 +4,14 @@
         "NO": "No",
         "LOADING": "Loading...",
         "LOADING_PROJECT": "Loading project...",
+        "DATE": "DD MMM YYYY",
+        "DATETIME": "DD MMM YYYY HH:mm",
         "SAVE": "Save",
         "CANCEL": "Cancel",
         "ACCEPT": "Accept",
         "DELETE": "Delete",
         "CREATE": "Create",
         "ADD": "Add",
-        "YES": "Yes",
-        "NO": "No",
         "COPY_TO_CLIPBOARD": "Copy to clipboard: Ctrl+C",
         "EDIT": "Edit",
         "DRAG": "Drag",
@@ -581,6 +581,7 @@
     },
     "ACTIVITY": {
         "SHOW_ACTIVITY": "Show activity",
+        "DATETIME": "DD MMM YYYY HH:mm",
         "SHOW_MORE": "+ Show previous entries ({{showMore}} more)",
         "TITLE": "Activity",
         "REMOVED": "removed",
@@ -688,6 +689,7 @@
         },
         "SPRINTS": {
             "TITLE": "SPRINTS",
+            "DATE": "DD MMM YYYY",
             "LINK_TASKBOARD": "Sprint Taskboard",
             "TITLE_LINK_TASKBOARD": "Go to Taskboard of \"{{name}}\"",
             "NUMBER_SPRINTS": "<br/>sprints",
@@ -725,7 +727,8 @@
             "XAXIS_LABEL": "Days",
             "YAXIS_LABEL": "Points",
             "OPTIMAL": "Optimal pending points for day {{formattedDate}} should be {{roundedValue}}",
-            "REAL": "Real pending points for day {{formattedDate}} is {{roundedValue}}"
+            "REAL": "Real pending points for day {{formattedDate}} is {{roundedValue}}",
+            "DATE": "DD MMMM YYYY"
         }
     },
     "TASK": {
@@ -988,6 +991,7 @@
         "PROGRESS_NAME_DESCRIPTION": "Name and description"
     },
     "WIKI": {
+        "DATETIME": "DD MMM YYYY HH:mm",
         "PLACEHOLDER_PAGE": "Write your wiki page",
         "REMOVE": "Remove this wiki page",
         "DELETE_LIGHTBOX_TITLE": "Delete Wiki Page",

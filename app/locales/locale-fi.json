@@ -4,6 +4,8 @@
         "NO": "Ei",
         "LOADING": "Ladataan...",
         "LOADING_PROJECT": "Ladataan projektia...",
+        "DATE": "DD MMM YYYY",
+        "DATETIME": "DD MMM YYYY HH:mm",
         "SAVE": "Tallenna",
         "CANCEL": "Peru",
         "ACCEPT": "Hyväksy",
@@ -66,7 +68,7 @@
             "REMOVE_ASSIGNED": "Poista tekijä",
             "TOO_MANY": "...liikaa käyttäjiä, lisää suodattimia",
             "CONFIRM_UNASSIGNED": "Haluatko varmasti jättää tämän ilman tekijää?",
-            "TITLE_ACTION_EDIT_ASSIGNMENT": "Edit assignment"
+            "TITLE_ACTION_EDIT_ASSIGNMENT": "Muokkaa tekijää"
         },
         "STATUS": {
             "CLOSED": "Suljettu",
@@ -145,11 +147,11 @@
                 "DELETE_TASKS": "Poista tehtäviä"
             },
             "ISSUES": {
-                "NAME": "Ongelmat",
-                "VIEW_ISSUES": "Katso ongelmia",
-                "ADD_ISSUES": "Lisää ongelmia",
-                "MODIFY_ISSUES": "Muokkaa ongelmia",
-                "DELETE_ISSUES": "Poista ongelmia"
+                "NAME": "Pyynnöt",
+                "VIEW_ISSUES": "Katso pyyntöjä",
+                "ADD_ISSUES": "Lisää pyyntöjä",
+                "MODIFY_ISSUES": "Muokkaa pyyntöjä",
+                "DELETE_ISSUES": "Poista pyyntöjä"
             },
             "WIKI": {
                 "NAME": "Wiki",
@@ -181,10 +183,10 @@
         "COUNT_DEPRECATED": "({{ctrl.deprecatedAttachmentsCount }} vanhentunutta)",
         "MAX_UPLOAD_SIZE": "Maksimi tiedoston koko {{maxFileSize}}",
         "DATE": "DD MMM YYYY  - hh:mm",
-        "ERROR_UPLOAD_ATTACHMENT": "We have not been able to upload '{{fileName}}'. {{errorMessage}}",
-        "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "Delete attachment...",
-        "MSG_LIGHTBOX_DELETE_ATTACHMENT": "the attachment '{{fileName}}'",
-        "ERROR_DELETE_ATTACHMENT": "We have not been able to delete: {{errorMessage}}",
+        "ERROR_UPLOAD_ATTACHMENT": "Emme onnistuneet lataamaan tiedostoa '{{fileName}}'. {{errorMessage}}",
+        "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "Poista liite...",
+        "MSG_LIGHTBOX_DELETE_ATTACHMENT": "liite '{{fileName}}'",
+        "ERROR_DELETE_ATTACHMENT": "Emme pystyneet poistamaan: {{errorMessage}}",
         "FIELDS": {
             "IS_DEPRECATED": "on vanhentunut"
         }
@@ -230,7 +232,7 @@
             "BACKLOG_DESCRIPTION": "Hallinnoi käyttäjätarinoita: järjestele ja priorisoi työtä.",
             "KANBAN": "Kanban",
             "KANBAN_DESCRIPTION": "Järjestä projektisi tehokkaasti tällä taululla.",
-            "ISSUES": "Ongelmat",
+            "ISSUES": "Pyynnöt",
             "ISSUES_DESCRIPTION": "Seuraa projektisi virheitä, kysymyksiä ja parannusehdotuksia. Älä jätä mitään huomiotta!",
             "WIKI": "Wiki",
             "WIKI_DESCRIPTION": "Lisää, muokkaa tai poista sisältöä yhteistyössä muiden kanssa. Tämä on oikea paikka projektin dokumentaatiolle.",
@@ -260,17 +262,17 @@
             "REGENERATE_SUBTITLE": "Jos muutata CSV-datan URLia, edellien lakkaa toimimasta. Oletko varma?",
             "CSV_TYPE_US": "käyttäjätarinat",
             "CSV_TYPE_TASK": "tehtävät",
-            "CSV_TYPE_ISSUE": "ongelmat"
+            "CSV_TYPE_ISSUE": "pyynnöt"
         },
         "CUSTOM_FIELDS": {
             "TITLE": "Omat kentät",
-            "SUBTITLE": "Määritele omia kenttiä käyttäjätarinoihin, tehtäviin ja ongelmiin",
+            "SUBTITLE": "Määritele omia kenttiä käyttäjätarinoihin, tehtäviin ja pyytöihin",
             "US_DESCRIPTION": "Käyttäjätarinoiden omat kentät",
             "US_ADD": "Lisää käyttäjätarinoihin oma kenttä",
             "TASK_DESCRIPTION": "Tehtävien omat kentät",
             "TASK_ADD": "Lisää omia kenttiä tehtäviin",
-            "ISSUE_DESCRIPTION": "Ongelmien omat kentät",
-            "ISSUE_ADD": "Lisää oma kenttä ongelmille"
+            "ISSUE_DESCRIPTION": "Pyyntöjen omat kentät",
+            "ISSUE_ADD": "Lisää oma kenttä pyynnöille"
         },
         "PROJECT_VALUES": {
             "APP_TITLE": "Projektin arvot - {{sectionName}} - {{projectName}}",
@@ -283,24 +285,24 @@
             "ACTION_ADD": "Lisää uusi piste"
         },
         "PROJECT_VALUES_PRIORITIES": {
-            "TITLE": "Ongelmien tärkeydet",
-            "SUBTITLE": "Määrittele tärkeydet ongelmillesi"
+            "TITLE": "Pyyntöjen tärkeydet",
+            "SUBTITLE": "Määrittele tärkeydet pyynnöille"
         },
         "PROJECT_VALUES_SEVERITIES": {
-            "TITLE": "Ongelmien vakavuudet",
-            "SUBTITLE": "Määrittele ongelmiesi vakavuudet"
+            "TITLE": "Pyyntöjen vakavuudet",
+            "SUBTITLE": "Määrittele pyyntöjen vakavuudet"
         },
         "PROJECT_VALUES_STATUS": {
             "TITLE": "Tila",
-            "SUBTITLE": "Määrittele tilat joiden kautta käyttäjätarinasi, tehtäväsi ja ongelmasi kulkevat",
+            "SUBTITLE": "Määrittele tilat joiden kautta käyttäjätarinasi, tehtäväsi ja pyyntösi kulkevat",
             "US_TITLE": "Kt tilat",
             "TASK_TITLE": "Tehtävien tilat",
-            "ISSUE_TITLE": "Ongelmien tilat"
+            "ISSUE_TITLE": "Pyyntöjen tilat"
         },
         "PROJECT_VALUES_TYPES": {
             "TITLE": "Tyypit",
-            "SUBTITLE": "Määrittele ongelmien tyypit",
-            "ISSUE_TITLE": "Ongelmien tyypit",
+            "SUBTITLE": "Määrittele pyyntöjen tyypit",
+            "ISSUE_TITLE": "Pyyntöjen tyypit",
             "ACTION_ADD": "Lisää uusi {{objName}}"
         },
         "ROLES": {
@@ -390,8 +392,8 @@
             "LABEL_TASK_STATUS": "Oletusarvo tehtävän tilan valintaan",
             "LABEL_PRIORITY": "Oletus arvo tärkeyden valiintaan",
             "LABEL_SEVERITY": "Oletusarvo vakavuuden valintaan",
-            "LABEL_ISSUE_TYPE": "Oletusarvo ongelman tyypin valintaan",
-            "LABEL_ISSUE_STATUS": "Oletusarvo ongelmien statuksen valintaan"
+            "LABEL_ISSUE_TYPE": "Oletusarvo pyynnön tyypin valintaan",
+            "LABEL_ISSUE_STATUS": "Oletusarvo pyyntöjen statuksen valintaan"
         },
         "CSV": {
             "TITLE": "{{csvType}} raportit",
@@ -455,7 +457,7 @@
             "SEARCH": "Hae",
             "BACKLOG": "Odottavat",
             "KANBAN": "Kanban",
-            "ISSUES": "Ongelmat",
+            "ISSUES": "Pyynnöt",
             "WIKI": "Wiki",
             "TEAM": "Tiimi",
             "MEETUP": "Tapaa",
@@ -501,7 +503,7 @@
             "HELP_TEXT": "Taigan käyttäjät lisätään automaattisesti, muille lähetetään kutsu."
         },
         "CREATE_ISSUE": {
-            "TITLE": "Lisää ongelma"
+            "TITLE": "Lisää pyyntö"
         },
         "FEEDBACK": {
             "TITLE": "Kerro jotain...",
@@ -549,8 +551,8 @@
         "TOTAL_POINTS": "yhteensä",
         "ADD": "+ Lisää uusi käyttäjätarina",
         "ADD_BULK": "Lisää monta käyttäjätarinaa",
-        "PROMOTED": "Tämä US on liitetty ongelmaan:",
-        "TITLE_LINK_GO_TO_ISSUE": "Mene ongelmaan",
+        "PROMOTED": "Tämä Kt on liitetty pyyntöön:",
+        "TITLE_LINK_GO_TO_ISSUE": "Siirry pyyntöön",
         "EXTERNAL_REFERENCE": "Tämä Kt oon luotu täältä: ",
         "GO_TO_EXTERNAL_REFERENCE": "Palaa alkuun",
         "BLOCKED": "Tämä käyttäjätarina on suljettu",
@@ -579,6 +581,7 @@
     },
     "ACTIVITY": {
         "SHOW_ACTIVITY": "Näytä tapahtumat",
+        "DATETIME": "DD MMM YYYY HH:mm",
         "SHOW_MORE": "+ Näytä edelliset rivit ({{showMore}} lisää)",
         "TITLE": "Aktiivisuus",
         "REMOVED": "poistettu",
@@ -685,6 +688,7 @@
         },
         "SPRINTS": {
             "TITLE": "KIERROKSET",
+            "DATE": "DD MMM YYYY",
             "LINK_TASKBOARD": "Kierroksien tehtävätaulu",
             "TITLE_LINK_TASKBOARD": "Siirry tehtävätauluun {{name}}",
             "NUMBER_SPRINTS": "<br/>kierrokset",
@@ -722,7 +726,8 @@
             "XAXIS_LABEL": "Päivät",
             "YAXIS_LABEL": "Pisteet",
             "OPTIMAL": "Optimaaliset odottavat pisteet {{formattedDate}} ovat {{roundedValue}}",
-            "REAL": "Todelliset odottavat pisteet {{formattedDate}} ovat {{roundedValue}}"
+            "REAL": "Todelliset odottavat pisteet {{formattedDate}} ovat {{roundedValue}}",
+            "DATE": "DD MMMM YYYY"
         }
     },
     "TASK": {
@@ -819,22 +824,22 @@
         "LINK_LOGIN": "Oletko jo rekisteröitynyt? Kirjaudu sisään"
     },
     "ISSUES": {
-        "LIST_SECTION_NAME": "Ongelmat",
-        "SECTION_NAME": "Ongelman tiedot",
-        "ACTION_NEW_ISSUE": "+ UUSI ONGELMA",
+        "LIST_SECTION_NAME": "Pyynnöt",
+        "SECTION_NAME": "Pyyntöjen tiedot",
+        "ACTION_NEW_ISSUE": "+ UUSI PYYNTÖ",
         "ACTION_PROMOTE_TO_US": "Liitä käyttäjätarinaan",
         "PLACEHOLDER_FILTER_NAME": "Anna suodattimen nimi ja paina enter",
-        "PROMOTED": "Tämä ongelma on liitetty Kthen:",
-        "EXTERNAL_REFERENCE": "Tämä ongelma on luotu ",
+        "PROMOTED": "Tämä pyyntö on liitetty Kthen:",
+        "EXTERNAL_REFERENCE": "Tämä pyyntö on luotu täältä:",
         "GO_TO_EXTERNAL_REFERENCE": "Palaa alkuun",
-        "BLOCKED": "Tämä ongelma on estetty",
-        "TITLE_PREVIOUS_ISSUE": "edellinen ongelma",
-        "TITLE_NEXT_ISSUE": "seuraava ongelma",
-        "ACTION_DELETE": "Poista ongelma",
-        "LIGHTBOX_TITLE_BLOKING_ISSUE": "Estävä ongelma",
+        "BLOCKED": "Tämä pyyntö on estetty",
+        "TITLE_PREVIOUS_ISSUE": "edellinen pyyntö",
+        "TITLE_NEXT_ISSUE": "seuraava pyyntö",
+        "ACTION_DELETE": "Poista pyyntö",
+        "LIGHTBOX_TITLE_BLOKING_ISSUE": "Estävä pyyntö",
         "CONFIRM_PROMOTE": {
-            "TITLE": "Liitä tämä ongelma uuteen käyttäjätarinaan",
-            "MESSAGE": "Haluatko varmasti lisätä uuden käyttäjätarinan tästä ongelmasta?"
+            "TITLE": "Liitä tämä pyyntö uuteen käyttäjätarinaan",
+            "MESSAGE": "Haluatko varmasti lisätä uuden käyttäjätarinan tästä pyynnöstä?"
         },
         "FILTERS": {
             "TITLE": "Suodattimet",
@@ -871,9 +876,9 @@
             "TITLE_ACTION_CHANGE_STATUS": "Muuta tilaa",
             "TITLE_ACTION_ASSIGNED_TO": "Tekijä",
             "EMPTY": {
-                "TITLE": "Ei raportoitavia ongelmia:-)",
+                "TITLE": "Ei raportoitavia pyyntöjä:-)",
                 "SUBTITLE": "Löysitkö ongelman?",
-                "ACTION_CREATE_ISSUE": "Luo uusi ongelma"
+                "ACTION_CREATE_ISSUE": "Luo uusi pyyntö"
             }
         }
     },
@@ -893,7 +898,7 @@
     },
     "SEARCH": {
         "FILTER_USER_STORIES": "Käyttäjätarinat",
-        "FILTER_ISSUES": "Ongelmat",
+        "FILTER_ISSUES": "Pyynnöt",
         "FILTER_TASKS": "Tehtävät",
         "FILTER_WIKI": "Wiki-sivut",
         "PLACEHOLDER_SEARCH": "Etsi täältä...",
@@ -906,13 +911,13 @@
         "APP_TITLE": "TIIMI - {{projectName}}",
         "PLACEHOLDER_INPUT_SEARCH": "Etsi koko nimellä...",
         "COLUMN_MR_WOLF": "Mr. Wolf",
-        "EXPLANATION_COLUMN_MR_WOLF": "Suljetut ongelmat",
+        "EXPLANATION_COLUMN_MR_WOLF": "Suljetut pyynnöt",
         "COLUMN_IOCAINE": "Hidasteiden syöjä",
         "EXPLANATION_COLUMN_IOCAINE": "Kertyneet hidasteet",
         "COLUMN_CERVANTES": "Cervantes",
         "EXPLANATION_COLUMN_CERVANTES": "Wiki-sivuja muokattu",
         "COLUMN_BUG_HUNTER": "Virheiden metsästäjä",
-        "EXPLANATION_COLUMN_BUG_HUNTER": "Ongelmia raportoitu",
+        "EXPLANATION_COLUMN_BUG_HUNTER": "Pyyntöjä raportoitu",
         "COLUMN_NIGHT_SHIFT": "Yövuoro",
         "EXPLANATION_COLUMN_NIGHT_SHIFT": "Suljetut tehtävät",
         "COLUMN_TOTAL_POWER": "Kokonaisvoima",
@@ -985,6 +990,7 @@
         "PROGRESS_NAME_DESCRIPTION": "Nimi ja kuvaus"
     },
     "WIKI": {
+        "DATETIME": "DD MMM YYYY HH:mm",
         "PLACEHOLDER_PAGE": "Kirjoita wiki-sivu",
         "REMOVE": "Poista tämä wiki-sivu",
         "DELETE_LIGHTBOX_TITLE": "Poista wiki-sivu",

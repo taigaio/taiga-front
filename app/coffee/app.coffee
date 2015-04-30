@@ -36,7 +36,8 @@ taiga.generateUniqueSessionIdentifier = ->
 taiga.sessionId = taiga.generateUniqueSessionIdentifier()
 
 
-configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEventsProvider, tgLoaderProvider, $compileProvider, $translateProvider) ->
+configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEventsProvider, tgLoaderProvider,
+             $compileProvider, $translateProvider) ->
     $routeProvider.when("/",
         {templateUrl: "project/projects.html", resolve: {loader: tgLoaderProvider.add()}})
 
@@ -231,16 +232,19 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
 
     $compileProvider.debugInfoEnabled(window.taigaConfig.debugInfo || false)
 
+    preferedLangCode = window.taigaConfig.defaultLanguage || "en"
     $translateProvider
         .useStaticFilesLoader({
             prefix: "/locales/locale-",
             suffix: ".json"
         })
         .addInterpolation('$translateMessageFormatInterpolation')
-        .preferredLanguage(window.taigaConfig.defaultLanguage || "en")
+        .preferredLanguage(preferedLangCode)
 
     if not window.taigaConfig.debugInfo
-        $translateProvider.fallbackLanguage([window.taigaConfig.defaultLanguage || "en"])
+        $translateProvider.fallbackLanguage(preferedLangCode)
+
+    moment.lang(preferedLangCode)
 
 
 init = ($log, $config, $rootscope, $auth, $events, $analytics, $translate) ->

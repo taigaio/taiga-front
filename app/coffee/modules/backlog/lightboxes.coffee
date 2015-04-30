@@ -33,6 +33,7 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading,
     link = ($scope, $el, attrs) ->
         hasErrors = false
         createSprint = true
+        prettyDate = $translate.instant("BACKLOG.SPRINTS.DATE")
 
         $scope.sprint = {
             project: null
@@ -117,18 +118,19 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading,
                 estimatedStart = moment($scope.sprint.estimated_start)
             else if lastSprint?
                 estimatedStart = moment(lastSprint.estimated_finish)
-            $scope.sprint.estimated_start = estimatedStart.format("DD MMM YYYY")
+            $scope.sprint.estimated_start = estimatedStart.format(prettyDate)
 
             estimatedFinish = moment().add(2, "weeks")
             if $scope.sprint.estimated_finish
                 estimatedFinish = moment($scope.sprint.estimated_finish)
             else if lastSprint?
                 estimatedFinish = moment(lastSprint.estimated_finish).add(2, "weeks")
-            $scope.sprint.estimated_finish = estimatedFinish.format("DD MMM YYYY")
+            $scope.sprint.estimated_finish = estimatedFinish.format(prettyDate)
 
             lastSprintNameDom = $el.find(".last-sprint-name")
             if lastSprint?.name?
-                text = $translate.instant("LIGHTBOX.ADD_EDIT_SPRINT.LAST_SPRINT_NAME", {"lastSprint": lastSprint.name})
+                text = $translate.instant("LIGHTBOX.ADD_EDIT_SPRINT.LAST_SPRINT_NAME", {
+                            lastSprint: lastSprint.name})
                 lastSprintNameDom.html(text)
 
             $el.find(".delete-sprint").addClass("hidden")
@@ -147,8 +149,8 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading,
             createSprint = false
             $scope.$apply ->
                 $scope.sprint = sprint
-                $scope.sprint.estimated_start = moment($scope.sprint.estimated_start).format("DD MMM YYYY")
-                $scope.sprint.estimated_finish = moment($scope.sprint.estimated_finish).format("DD MMM YYYY")
+                $scope.sprint.estimated_start = moment($scope.sprint.estimated_start).format(prettyDate)
+                $scope.sprint.estimated_finish = moment($scope.sprint.estimated_finish).format(prettyDate)
 
             $el.find(".delete-sprint").removeClass("hidden")
 

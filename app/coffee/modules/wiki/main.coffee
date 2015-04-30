@@ -135,7 +135,7 @@ module.controller("WikiDetailController", WikiDetailController)
 ## Wiki Summary Directive
 #############################################################################
 
-WikiSummaryDirective = ($log, $template, $compile) ->
+WikiSummaryDirective = ($log, $template, $compile, $translate) ->
     template = $template.get("wiki/wiki-summary.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
@@ -152,7 +152,7 @@ WikiSummaryDirective = ($log, $template, $compile) ->
 
             ctx = {
                 totalEditions: wiki.editions
-                lastModifiedDate: moment(wiki.modified_date).format("DD MMM YYYY HH:mm")
+                lastModifiedDate: moment(wiki.modified_date).format($translate.instant("WIKI.DATETIME"))
                 user: user
             }
             html = template(ctx)
@@ -172,7 +172,7 @@ WikiSummaryDirective = ($log, $template, $compile) ->
         require: "ngModel"
     }
 
-module.directive("tgWikiSummary", ["$log", "$tgTemplate", "$compile", WikiSummaryDirective])
+module.directive("tgWikiSummary", ["$log", "$tgTemplate", "$compile", "$translate",  WikiSummaryDirective])
 
 
 #############################################################################

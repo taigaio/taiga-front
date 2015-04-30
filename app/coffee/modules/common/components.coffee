@@ -29,10 +29,11 @@ module = angular.module("taigaCommon")
 ## Date Range Directive (used mainly for sprint date range)
 #############################################################################
 
-DateRangeDirective = ->
+DateRangeDirective = ($translate) ->
     renderRange = ($el, first, second) ->
-        initDate = moment(first).format("DD MMM YYYY")
-        endDate = moment(second).format("DD MMM YYYY")
+        prettyDate = $translate.instant("BACKLOG.SPRINTS.DATE")
+        initDate = moment(first).format(prettyDate)
+        endDate = moment(second).format(prettyDate)
         $el.html("#{initDate}-#{endDate}")
 
     link = ($scope, $el, $attrs) ->
@@ -44,19 +45,19 @@ DateRangeDirective = ->
 
     return {link:link}
 
-module.directive("tgDateRange", DateRangeDirective)
+module.directive("tgDateRange", ["$translate", DateRangeDirective])
 
 
 #############################################################################
 ## Date Selector Directive (using pikaday)
 #############################################################################
 
-DateSelectorDirective =->
+DateSelectorDirective = ($translate) ->
     link = ($scope, $el, $attrs, $model) ->
         selectedDate = null
         $el.picker = new Pikaday({
           field: $el[0]
-          format: "DD MMM YYYY"
+          format: $translate.instant("COMMON.DATE")
           onSelect: (date) =>
               selectedDate = date
           onOpen: =>
@@ -71,7 +72,7 @@ DateSelectorDirective =->
         require: "ngModel"
     }
 
-module.directive("tgDateSelector", DateSelectorDirective)
+module.directive("tgDateSelector", ["$translate", DateSelectorDirective])
 
 
 #############################################################################
@@ -107,7 +108,7 @@ module.directive("tgSprintProgressbar", SprintProgressBarDirective)
 ## Created-by display directive
 #############################################################################
 
-CreatedByDisplayDirective = ($template, $compile)->
+CreatedByDisplayDirective = ($template, $compile, $translate)->
     # Display the owner information (full name and photo) and the date of
     # creation of an object (like USs, tasks and issues).
     #
@@ -130,7 +131,7 @@ CreatedByDisplayDirective = ($template, $compile)->
 
             html = template({
                 owner: owner
-                date: moment(model.created_date).format("DD MMM YYYY HH:mm")
+                date: moment(model.created_date).format($translate.instant("COMMON.DATETIME"))
             })
 
             html = $compile(html)($scope)
@@ -149,7 +150,7 @@ CreatedByDisplayDirective = ($template, $compile)->
         require: "ngModel"
     }
 
-module.directive("tgCreatedByDisplay", ["$tgTemplate", "$compile", CreatedByDisplayDirective])
+module.directive("tgCreatedByDisplay", ["$tgTemplate", "$compile", "$translate", CreatedByDisplayDirective])
 
 
 #############################################################################

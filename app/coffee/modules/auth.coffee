@@ -34,9 +34,10 @@ class AuthService extends taiga.Service
                  "$tgModel",
                  "$tgResources",
                  "$tgHttp",
-                 "$tgUrls"]
+                 "$tgUrls",
+                 "$translate"]
 
-    constructor: (@rootscope, @storage, @model, @rs, @http, @urls) ->
+    constructor: (@rootscope, @storage, @model, @rs, @http, @urls, @translate) ->
         super()
 
     getUser: ->
@@ -55,6 +56,10 @@ class AuthService extends taiga.Service
         @rootscope.auth = user
         @storage.set("userInfo", user.getAttrs())
         @rootscope.user = user
+
+        if @rootscope.user.lang
+            @translate.use(@rootscope.user.lang)
+            moment.lang(@rootscope.user.lang)
 
     clear: ->
         @rootscope.auth = null
