@@ -3,11 +3,11 @@ class HomeService extends taiga.Service
 
     constructor: (@q, @rs, @rootScope, @projectUrl) ->
         @.workInProgress = Immutable.Map()
-        @.inProgress = false
+        @._inProgress = false
 
     fetchWorkInProgress: (userId) ->
-        if not @.inProgress
-            @.inProgress = true
+        if not @._inProgress
+            @._inProgress = true
             params = {
                 status__is_closed: false
                 assigned_to: userId
@@ -52,7 +52,7 @@ class HomeService extends taiga.Service
                     }
                 })
 
-                @.inProgress = false
+                @._inProgress = false
 
         return workPromise
 
