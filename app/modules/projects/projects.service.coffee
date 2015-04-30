@@ -15,7 +15,8 @@ class ProjectsService extends taiga.Service
         if not @._inProgress
             @._inProgress = true
 
-            @.projectsPromise = @rs.projects.listByMember(@rootScope.user?.id).then (projects) =>
+            @.projectsPromise = @rs.projects.listByMember(@rootScope.user?.id)
+            @.projectsPromise.then (projects) =>
                 for project in projects
                     project.url = @projectUrl.get(project)
 

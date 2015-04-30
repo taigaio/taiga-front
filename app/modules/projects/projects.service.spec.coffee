@@ -10,8 +10,10 @@ describe "tgProjects", ->
         }
 
         mocks.thenStub = sinon.stub()
+        mocks.finallyStub = sinon.stub()
         mocks.resources.projects.listByMember.withArgs(10).returns({
             then: mocks.thenStub
+            finally: mocks.finallyStub
         })
 
         provide.value "$tgResources", mocks.resources
@@ -86,6 +88,7 @@ describe "tgProjects", ->
             expect(projectsService._inProgress).to.be.true
 
             mocks.thenStub.callArg(0, projects)
+            mocks.finallyStub.callArg(0)
 
             expect(projectsService._inProgress).to.be.false
 
