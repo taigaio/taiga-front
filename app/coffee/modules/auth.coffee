@@ -40,6 +40,11 @@ class AuthService extends taiga.Service
     constructor: (@rootscope, @storage, @model, @rs, @http, @urls, @translate) ->
         super()
 
+    _setLocales: ->
+        if @rootscope.user.lang
+            @translate.use(@rootscope.user.lang)
+            moment.locale(@rootscope.user.lang)
+
     getUser: ->
         if @rootscope.user
             return @rootscope.user
@@ -48,6 +53,7 @@ class AuthService extends taiga.Service
         if userData
             user = @model.make_model("users", userData)
             @rootscope.user = user
+            @._setLocales()
             return user
 
         return null
@@ -57,9 +63,7 @@ class AuthService extends taiga.Service
         @storage.set("userInfo", user.getAttrs())
         @rootscope.user = user
 
-        if @rootscope.user.lang
-            @translate.use(@rootscope.user.lang)
-            moment.lang(@rootscope.user.lang)
+        @._setLocales()
 
     clear: ->
         @rootscope.auth = null

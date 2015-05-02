@@ -244,7 +244,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     if not window.taigaConfig.debugInfo
         $translateProvider.fallbackLanguage(preferedLangCode)
 
-    moment.lang(preferedLangCode)
+    moment.locale(preferedLangCode)
 
 
 init = ($log, $config, $rootscope, $auth, $events, $analytics, $translate) ->

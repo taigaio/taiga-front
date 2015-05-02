@@ -6,4 +6,3 @@ lang_map = sr@latin:sr_Latn, zh_CN:zh_Hans, zh_TW:zh_Hant
 file_filter = app/locales/locale-<lang>.json
 source_file = app/locales/locale-en.json
 source_lang = en
-type = PO

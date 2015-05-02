@@ -125,7 +125,7 @@ paths.libs = [
     paths.vendor + "angular-translate-loader-static-files/angular-translate-loader-static-files.js",
     paths.vendor + "angular-translate-interpolation-messageformat/angular-translate-interpolation-messageformat.js",
     paths.vendor + "i18next/i18next.js",
-    paths.vendor + "moment/min/moment-with-langs.js",
+    paths.vendor + "moment/min/moment-with-locales.js",
     paths.vendor + "checksley/checksley.js",
     paths.vendor + "pikaday/pikaday.js",
     paths.vendor + "jquery-flot/jquery.flot.js",
