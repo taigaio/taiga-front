@@ -130,169 +130,6 @@ MarkitupDirective = ($rootscope, $rs, $selectedText, $template, $compile, $trans
             else
                 return cursorPosition
 
-        markdownSettings =
-            nameSpace: "markdown"
-            onShiftEnter: {keepDefault:false, openWith:"\n\n"}
-            onEnter:
-                keepDefault: false,
-                replaceWith: () -> "\n"
-                afterInsert: (data) ->
-                    lines = data.textarea.value.split("\n")
-                    cursorLine = data.textarea.value[0..(data.caretPosition - 1)].split("\n").length
-                    newLineContent = data.textarea.value[data.caretPosition..].split("\n")[0]
-                    lastLine = lines[cursorLine - 1]
-
-                    # unordered list -
-                    match = lastLine.match /^(\s*- ).*/
-
-                    if match
-                        emptyListItem = lastLine.match /^(\s*)\-\s$/
-
-                        if emptyListItem
-                            nline = cursorLine - 1
-                            replace = null
-                        else
-                            nline = cursorLine
-                            replace = "#{match[1]}"
-
-                        markdownCaretPositon = addLine(data.textarea, nline, replace)
-
-                    # unordered list *
-                    match = lastLine.match /^(\s*\* ).*/
-
-                    if match
-                        emptyListItem = lastLine.match /^(\s*\* )$/
-
-                        if emptyListItem
-                            nline = cursorLine - 1
-                            replace = null
-                        else
-                            nline = cursorLine
-                            replace = "#{match[1]}"
-
-                        markdownCaretPositon = addLine(data.textarea, nline, replace)
-
-                    # ordered list
-                    match = lastLine.match /^(\s*)(\d+)\.\s/
-
-                    if match
-                        emptyListItem = lastLine.match /^(\s*)(\d+)\.\s$/
-
-                        if emptyListItem
-                            nline = cursorLine - 1
-                            replace = null
-                        else
-                            nline = cursorLine
-                            replace = "#{match[1] + (parseInt(match[2], 10) + 1)}. "
-
-                        markdownCaretPositon = addLine(data.textarea, nline, replace)
-
-                    setCaretPosition(data.textarea, markdownCaretPositon) if markdownCaretPositon
-
-            markupSet: [
-                {
-                    name: $translate.instant("COMMON.WYSIWYG.H1_BUTTON")
-                    key: "1"
-                    placeHolder: $translate.instant("COMMON.WYSIWYG.H1_SAMPLE_TEXT")
-                    closeWith: (markItUp) -> markdownTitle(markItUp, "=")
-                },
-                {
-                    name: $translate.instant("COMMON.WYSIWYG.H2_BUTTON")
-                    key: "2"
-                    placeHolder: $translate.instant("COMMON.WYSIWYG.H2_SAMPLE_TEXT")
-                    closeWith: (markItUp) -> markdownTitle(markItUp, "-")
-                },
-                {
-                    name: $translate.instant("COMMON.WYSIWYG.H3_BUTTON")
-                    key: "3"
-                    openWith: "### "
-                    placeHolder: $translate.instant("COMMON.WYSIWYG.H3_SAMPLE_TEXT")
-                },
-                {
-                    separator: "---------------"
-                },
-                {
-                    name: $translate.instant("COMMON.WYSIWYG.BOLD_BUTTON")
-                    key: "B"
-                    openWith: "**"
-                    closeWith: "**"
-                    placeHolder: $translate.instant("COMMON.WYSIWYG.BOLD_BUTTON_SAMPLE_TEXT")
-                },
-                {
-                    name: $translate.instant("COMMON.WYSIWYG.ITALIC_SAMPLE_TEXT")
-                    key: "I"
-                    openWith: "_"
-                    closeWith: "_"
-                    placeHolder: $translate.instant("COMMON.WYSIWYG.ITALIC_SAMPLE_TEXT")
-                },
-                {
-                    name: $translate.instant("COMMON.WYSIWYG.STRIKE_BUTTON")
-                    key: "S"
-                    openWith: "~~"
-                    closeWith: "~~"
-                    placeHolder: $translate.instant("COMMON.WYSIWYG.STRIKE_SAMPLE_TEXT")
-                },
-                {
-                    separator: "---------------"
-                },
-                {
-                    name: $translate.instant("COMMON.WYSIWYG.BULLETED_LIST_BUTTON")
-                    openWith: "- "
-                    placeHolder: $translate.instant("COMMON.WYSIWYG.BULLETED_LIST_SAMPLE_TEXT")
-                },
-                {
-                    name: $translate.instant("COMMON.WYSIWYG.NUMERIC_LIST_BUTTON")
-                    openWith: (markItUp) -> markItUp.line+". "
-                    placeHolder: $translate.instant("COMMON.WYSIWYG.NUMERIC_LIST_SAMPLE_TEXT")
-                },
-                {
-                    separator: "---------------"
-                },
-                {
-                    name: $translate.instant("COMMON.WYSIWYG.PICTURE_BUTTON")
-                    key: "P"
-                    openWith: "!["
-                    closeWith: '](<<<[![Url:!:http://]!]>>> "[![Title]!]")'
-                    placeHolder: $translate.instant("COMMON.WYSIWYG.PICTURE_SAMPLE_TEXT")
-                    beforeInsert:(markItUp) -> prepareUrlFormatting(markItUp)
-                    afterInsert:(markItUp) -> urlFormatting(markItUp)
-                },
-                {
-                    name: $translate.instant("COMMON.WYSIWYG.LINK_BUTTON")
-                    key: "L"
-                    openWith: "["
-                    closeWith: '](<<<[![Url:!:http://]!]>>> "[![Title]!]")'
-                    placeHolder: $translate.instant("COMMON.WYSIWYG.LINK_SAMPLE_TEXT")
-                    beforeInsert:(markItUp) -> prepareUrlFormatting(markItUp)
-                    afterInsert:(markItUp) -> urlFormatting(markItUp)
-                },
-                {
-                    separator: "---------------"
-                },
-                {
-                    name: $translate.instant("COMMON.WYSIWYG.QUOTE_BLOCK_BUTTON")
-                    openWith: "> "
-                    placeHolder: $translate.instant("COMMON.WYSIWYG.QUOTE_BLOCK_SAMPLE_TEXT")
-                },
-                {
-                    name: $translate.instant("COMMON.WYSIWYG.CODE_BLOCK_BUTTON")
-                    openWith: "```\n"
-                    placeHolder: $translate.instant("COMMON.WYSIWYG.CODE_BLOCK_SAMPLE_TEXT")
-                    closeWith: "\n```"
-                },
-                {
-                    separator: "---------------"
-                },
-                {
-                    name: $translate.instant("COMMON.WYSIWYG.PREVIEW_BUTTON")
-                    call: preview
-                    className: "preview-icon"
-                },
-            ]
-            afterInsert: (event) ->
-                target = angular.element(event.textarea)
-                $model.$setViewValue(target.val())
-
         prepareUrlFormatting = (markItUp) ->
             regex = /(<<<|>>>)/gi
             result = 0
@@ -339,13 +176,184 @@ MarkitupDirective = ($rootscope, $rs, $selectedText, $template, $compile, $trans
 
             return "\n"+heading+"\n"
 
-        element.markItUp(markdownSettings)
+        renderMarkItUp = () ->
+            markdownSettings =
+                nameSpace: "markdown"
+                onShiftEnter: {keepDefault:false, openWith:"\n\n"}
+                onEnter:
+                    keepDefault: false,
+                    replaceWith: () -> "\n"
+                    afterInsert: (data) ->
+                        lines = data.textarea.value.split("\n")
+                        cursorLine = data.textarea.value[0..(data.caretPosition - 1)].split("\n").length
+                        newLineContent = data.textarea.value[data.caretPosition..].split("\n")[0]
+                        lastLine = lines[cursorLine - 1]
+
+                        # unordered list -
+                        match = lastLine.match /^(\s*- ).*/
+
+                        if match
+                            emptyListItem = lastLine.match /^(\s*)\-\s$/
+
+                            if emptyListItem
+                                nline = cursorLine - 1
+                                replace = null
+                            else
+                                nline = cursorLine
+                                replace = "#{match[1]}"
+
+                            markdownCaretPositon = addLine(data.textarea, nline, replace)
+
+                        # unordered list *
+                        match = lastLine.match /^(\s*\* ).*/
+
+                        if match
+                            emptyListItem = lastLine.match /^(\s*\* )$/
+
+                            if emptyListItem
+                                nline = cursorLine - 1
+                                replace = null
+                            else
+                                nline = cursorLine
+                                replace = "#{match[1]}"
+
+                            markdownCaretPositon = addLine(data.textarea, nline, replace)
+
+                        # ordered list
+                        match = lastLine.match /^(\s*)(\d+)\.\s/
+
+                        if match
+                            emptyListItem = lastLine.match /^(\s*)(\d+)\.\s$/
+
+                            if emptyListItem
+                                nline = cursorLine - 1
+                                replace = null
+                            else
+                                nline = cursorLine
+                                replace = "#{match[1] + (parseInt(match[2], 10) + 1)}. "
+
+                            markdownCaretPositon = addLine(data.textarea, nline, replace)
+
+                        setCaretPosition(data.textarea, markdownCaretPositon) if markdownCaretPositon
+
+                markupSet: [
+                    {
+                        name: $translate.instant("COMMON.WYSIWYG.H1_BUTTON")
+                        key: "1"
+                        placeHolder: $translate.instant("COMMON.WYSIWYG.H1_SAMPLE_TEXT")
+                        closeWith: (markItUp) -> markdownTitle(markItUp, "=")
+                    },
+                    {
+                        name: $translate.instant("COMMON.WYSIWYG.H2_BUTTON")
+                        key: "2"
+                        placeHolder: $translate.instant("COMMON.WYSIWYG.H2_SAMPLE_TEXT")
+                        closeWith: (markItUp) -> markdownTitle(markItUp, "-")
+                    },
+                    {
+                        name: $translate.instant("COMMON.WYSIWYG.H3_BUTTON")
+                        key: "3"
+                        openWith: "### "
+                        placeHolder: $translate.instant("COMMON.WYSIWYG.H3_SAMPLE_TEXT")
+                    },
+                    {
+                        separator: "---------------"
+                    },
+                    {
+                        name: $translate.instant("COMMON.WYSIWYG.BOLD_BUTTON")
+                        key: "B"
+                        openWith: "**"
+                        closeWith: "**"
+                        placeHolder: $translate.instant("COMMON.WYSIWYG.BOLD_BUTTON_SAMPLE_TEXT")
+                    },
+                    {
+                        name: $translate.instant("COMMON.WYSIWYG.ITALIC_SAMPLE_TEXT")
+                        key: "I"
+                        openWith: "_"
+                        closeWith: "_"
+                        placeHolder: $translate.instant("COMMON.WYSIWYG.ITALIC_SAMPLE_TEXT")
+                    },
+                    {
+                        name: $translate.instant("COMMON.WYSIWYG.STRIKE_BUTTON")
+                        key: "S"
+                        openWith: "~~"
+                        closeWith: "~~"
+                        placeHolder: $translate.instant("COMMON.WYSIWYG.STRIKE_SAMPLE_TEXT")
+                    },
+                    {
+                        separator: "---------------"
+                    },
+                    {
+                        name: $translate.instant("COMMON.WYSIWYG.BULLETED_LIST_BUTTON")
+                        openWith: "- "
+                        placeHolder: $translate.instant("COMMON.WYSIWYG.BULLETED_LIST_SAMPLE_TEXT")
+                    },
+                    {
+                        name: $translate.instant("COMMON.WYSIWYG.NUMERIC_LIST_BUTTON")
+                        openWith: (markItUp) -> markItUp.line+". "
+                        placeHolder: $translate.instant("COMMON.WYSIWYG.NUMERIC_LIST_SAMPLE_TEXT")
+                    },
+                    {
+                        separator: "---------------"
+                    },
+                    {
+                        name: $translate.instant("COMMON.WYSIWYG.PICTURE_BUTTON")
+                        key: "P"
+                        openWith: "!["
+                        closeWith: '](<<<[![Url:!:http://]!]>>> "[![Title]!]")'
+                        placeHolder: $translate.instant("COMMON.WYSIWYG.PICTURE_SAMPLE_TEXT")
+                        beforeInsert:(markItUp) -> prepareUrlFormatting(markItUp)
+                        afterInsert:(markItUp) -> urlFormatting(markItUp)
+                    },
+                    {
+                        name: $translate.instant("COMMON.WYSIWYG.LINK_BUTTON")
+                        key: "L"
+                        openWith: "["
+                        closeWith: '](<<<[![Url:!:http://]!]>>> "[![Title]!]")'
+                        placeHolder: $translate.instant("COMMON.WYSIWYG.LINK_SAMPLE_TEXT")
+                        beforeInsert:(markItUp) -> prepareUrlFormatting(markItUp)
+                        afterInsert:(markItUp) -> urlFormatting(markItUp)
+                    },
+                    {
+                        separator: "---------------"
+                    },
+                    {
+                        name: $translate.instant("COMMON.WYSIWYG.QUOTE_BLOCK_BUTTON")
+                        openWith: "> "
+                        placeHolder: $translate.instant("COMMON.WYSIWYG.QUOTE_BLOCK_SAMPLE_TEXT")
+                    },
+                    {
+                        name: $translate.instant("COMMON.WYSIWYG.CODE_BLOCK_BUTTON")
+                        openWith: "```\n"
+                        placeHolder: $translate.instant("COMMON.WYSIWYG.CODE_BLOCK_SAMPLE_TEXT")
+                        closeWith: "\n```"
+                    },
+                    {
+                        separator: "---------------"
+                    },
+                    {
+                        name: $translate.instant("COMMON.WYSIWYG.PREVIEW_BUTTON")
+                        call: preview
+                        className: "preview-icon"
+                    },
+                ]
+                afterInsert: (event) ->
+                    target = angular.element(event.textarea)
+                    $model.$setViewValue(target.val())
+
+            element
+                .markItUpRemove()
+                .markItUp(markdownSettings)
+
+        renderMarkItUp()
+
+        unbind = $rootscope.$on "$translateChangeEnd", renderMarkItUp
 
         element.on "keypress", (event) ->
             $scope.$apply()
 
         $scope.$on "$destroy", ->
             $el.off()
+            unbind()
 
     return {link:link, require:"ngModel"}
 
