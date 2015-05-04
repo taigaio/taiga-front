@@ -57,6 +57,8 @@ paths.sass = [
     "!" + paths.app + "/styles/extras/**/*.scss"
 ];
 
+paths.styles_dependencies = paths.app + "/styles/dependencies/**/*.scss";
+
 paths.css = [
     paths.tmp + "styles/**/*.css",
     paths.tmp + "modules/**/*.css",
@@ -219,15 +221,20 @@ gulp.task("scss-lint", [], function() {
         .pipe(gulpif(fail, scsslint.failReporter()))
 });
 
-gulp.task("sass-compile", ["scss-lint"], function() {
+gulp.task("clear-sass-cache", function() {
+    delete cached.caches["sass"];
+});
+
+gulp.task("sass-compile", [], function() {
     return gulp.src(paths.sass)
         .pipe(plumber())
         .pipe(insert.prepend('@import "dependencies";'))
-        .pipe(cache(sass({
+        .pipe(cached("sass"))
+        .pipe(sass({
             includePaths: [
                 paths.app + "styles/extras/"
             ]
-        })))
+        }))
         .pipe(gulp.dest(paths.tmp));
 });
 
@@ -246,7 +253,7 @@ gulp.task("css-lint-app", function() {
         .pipe(csslint.reporter());
 });
 
-gulp.task("css-join", ["css-lint-app"], function() {
+gulp.task("app-css", function() {
     return gulp.src(paths.css)
         .pipe(order(paths.css_order, {base: '.'}))
         .pipe(concat("app.css"))
@@ -256,17 +263,13 @@ gulp.task("css-join", ["css-lint-app"], function() {
         .pipe(gulp.dest(paths.tmp));
 });
 
-gulp.task("css-app", function(cb) {
-    return runSequence("sass-compile", "css-join", cb);
-});
-
-gulp.task("css-vendor", function() {
+gulp.task("vendor-css", function() {
     return gulp.src(paths.css_vendor)
         .pipe(concat("vendor.css"))
         .pipe(gulp.dest(paths.tmp));
 });
 
-gulp.task("styles", ["css-app", "css-vendor"], function() {
+gulp.task("main-css", function() {
     var _paths = [
         paths.tmp + "vendor.css",
         paths.tmp + "app.css"
@@ -276,6 +279,24 @@ gulp.task("styles", ["css-app", "css-vendor"], function() {
         .pipe(concat("main.css"))
         .pipe(gulpif(isDeploy, minifyCSS({noAdvanced: true})))
         .pipe(gulp.dest(paths.dist + "styles/"))
+});
+
+gulp.task("styles", function(cb) {
+    return runSequence("scss-lint",
+                       "sass-compile",
+                       "css-lint-app",
+                       ["app-css", "vendor-css"],
+                       "main-css",
+                       cb);
+
+});
+
+gulp.task("styles-dependencies", function(cb) {
+    return runSequence("clear-sass-cache",
+                       "sass-compile",
+                       ["app-css", "vendor-css"],
+                       "main-css",
+                       cb);
 });
 
 /*
@@ -321,7 +342,7 @@ gulp.task("coffee-lint", function () {
         .pipe(coffeelint.reporter());
 });
 
-gulp.task("coffee", ["coffee-lint"], function() {
+gulp.task("coffee", function() {
     return gulp.src(paths.coffee)
         .pipe(order(paths.coffee_order, {base: '.'}))
         .pipe(sourcemaps.init())
@@ -352,7 +373,7 @@ gulp.task("jslibs-deploy", function() {
         .pipe(gulp.dest(paths.dist + "js/"));
 });
 
-gulp.task("app-watch", ["coffee", "conf", "locales", "app-loader"]);
+gulp.task("app-watch", ["coffee-lint", "coffee", "conf", "locales", "app-loader"]);
 
 gulp.task("app-deploy", ["coffee", "conf", "locales", "app-loader"], function() {
     return gulp.src(paths.dist)
@@ -370,8 +391,6 @@ gulp.task("app-deploy", ["coffee", "conf", "locales", "app-loader"], function() 
 ##############################################################################
 */
 gulp.task("clear", function(done) {
-    del.sync(paths.tmp);
-
   return cache.clearAll(done);
 });
 
@@ -436,6 +455,7 @@ gulp.task("express", function() {
 gulp.task("watch", function() {
     gulp.watch(paths.jade, ["jade-watch"]);
     gulp.watch(paths.sass, ["styles"]);
+    gulp.watch(paths.styles_dependencies, ["styles-dependencies"]);
     gulp.watch(paths.svg, ["copy-svg"]);
     gulp.watch(paths.coffee, ["app-watch"]);
     gulp.watch(paths.libs, ["jslibs-watch"]);
@@ -443,6 +463,8 @@ gulp.task("watch", function() {
     gulp.watch(paths.images, ["copy-images"]);
     gulp.watch(paths.fonts, ["copy-fonts"]);
 });
+
+del.sync(paths.tmp);
 
 gulp.task("deploy", function(cb) {
     runSequence("clear", [
