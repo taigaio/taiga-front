@@ -42,7 +42,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         {templateUrl: "home/home-page.html", resolve: {loader: tgLoaderProvider.add()}})
 
     $routeProvider.when("/projects/",
-        {templateUrl: "projects/projects-page.html", resolve: {loader: tgLoaderProvider.add()}})
+        {templateUrl: "projects/projects-page.html", resolve: {loader: tgLoaderProvider.add(true)}})
 
     $routeProvider.when("/project/:pslug/",
         {templateUrl: "project/project.html"})
@@ -205,6 +205,25 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
                                            authHttpIntercept])
 
     $httpProvider.interceptors.push("authHttpIntercept")
+
+
+    loaderIntercept = (loaderService) ->
+        return {
+            request: (config) ->
+                loaderService.logRequest()
+
+                return config
+
+            response: (response) ->
+                loaderService.logResponse()
+
+                return response
+        }
+
+
+    $provide.factory("loaderIntercept", ["tgLoader", loaderIntercept])
+
+    $httpProvider.interceptors.push("loaderIntercept")
 
     # If there is an error in the version throw a notify error.
     # IMPROVEiMENT: Move this version error handler to USs, issues and tasks repository

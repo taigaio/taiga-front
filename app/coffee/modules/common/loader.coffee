@@ -57,18 +57,22 @@ Loader = () ->
 
     defaultConfig = {
         enabled: false,
-        minTime: 300
+        minTime: 300,
+        auto: false
     }
 
     config = _.merge({}, defaultConfig)
 
-    @.add = () ->
+    @.add = (auto = false) ->
         return () ->
             if !forceDisabled
                 config.enabled = true
+                config.auto = auto
 
     @.$get = ["$rootScope", ($rootscope) ->
         startLoadTime = 0
+        requestCount = 0
+        lastResponseDate = 0
 
         reset = () ->
             config = _.merge({}, defaultConfig)
@@ -86,6 +90,23 @@ Loader = () ->
 
                 timeout(timeoutValue, -> $rootscope.$broadcast("loader:end"))
 
+
+        autoClose = () ->
+            maxAuto = 5000
+            timeoutAuto = setTimeout (() ->
+                pageLoaded()
+
+                clearInterval(intervalAuto)
+            ), maxAuto
+
+            intervalAuto = setInterval (() ->
+                if lastResponseDate && requestCount == 0
+                    pageLoaded()
+
+                    clearInterval(intervalAuto)
+                    clearTimeout(timeoutAuto)
+            ), 200
+
         start = () ->
             startLoadTime = new Date().getTime()
             $rootscope.$broadcast("loader:start")
@@ -98,6 +119,8 @@ Loader = () ->
                 if config.enabled
                     start()
 
+                    autoClose() if config.auto
+
             onStart: (fn) ->
                 $rootscope.$on("loader:start", fn)
 
@@ -109,6 +132,12 @@ Loader = () ->
 
             disablePreventLoading: () ->
                 forceDisabled = false
+
+            logRequest: () ->
+                requestCount++
+            logResponse: () ->
+                requestCount--
+                lastResponseDate = new Date().getTime()
         }
     ]
 
