@@ -407,7 +407,7 @@ gulp.task("copy-fonts", function() {
 
 gulp.task("copy-images", function() {
     return gulp.src(paths.app + "/images/**/*")
-        .pipe(imagemin({progressive: true}))
+        .pipe(gulpif(isDeploy, imagemin({progressive: true})))
         .pipe(gulp.dest(paths.dist + "/images/"));
 });
 
