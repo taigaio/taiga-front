@@ -1,8 +1,4 @@
 .admin-submenu {
-    h1 {
-        @extend %xlarge;
-        color: $white;
-    }
     li {
         @extend %larger;
         @extend %title;
@@ -17,14 +13,15 @@
         display: flex;
         justify-content: space-between;
         padding: 1rem 0 1rem 1rem;
-        &.active,
         &:hover {
-            color: $blackish;
-            .icon {
-                color: $blackish;
-                opacity: 1;
-                transition: opacity .3s linear;
-            }
+            background: lighten($dark-taiga, 3%);
+            color: $white;
+            transition: all .2s;
+        }
+        &.active {
+            background: lighten($dark-taiga, 10%);
+            color: $white;
+            transition: all .2s;
         }
         span {
             display: block;
@@ -34,12 +31,12 @@
             white-space: nowrap;
         }
     }
-    .icon {
-        color: $white;
-        float: right;
-        opacity: 0;
+    input {
+        margin: 0 1rem;
+        width: 85%;
     }
     .button-gray {
+        margin: 0 1rem;
         padding: .5rem 0;
         text-align: center;
         &:hover {
