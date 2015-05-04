@@ -85,7 +85,7 @@ div.wrapper(tg-project-modules, ng-controller="ProjectProfileController as ctrl"
 
                     div.videoconference-attributes.hidden
                         select(ng-model="project.videoconferences",
-                               ng-options="e.id as e.name for e in [{'id':'appear-in', 'name':'AppearIn'},{'id':'talky', 'name': 'Talky'}]")
+                               ng-options="e.id as e.name for e in [{'id':'appear-in', 'name':'AppearIn'},{'id':'jitsi', 'name': 'Jitsi'},{'id':'talky', 'name': 'Talky'}]")
                             option(value="", translate="ADMIN.MODULES.SELECT_VIDEOCONFERENCE")
                         input(type="text", ng-model="project.videoconferences_salt",
                               placeholder="{{'ADMIN.MODULES.SALT_CHAT_ROOM' | translate}}")
