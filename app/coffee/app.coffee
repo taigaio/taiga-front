@@ -232,7 +232,11 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
 
     $compileProvider.debugInfoEnabled(window.taigaConfig.debugInfo || false)
 
-    preferedLangCode = window.taigaConfig.defaultLanguage || "en"
+    if localStorage.userInfo
+        userInfo = JSON.parse(localStorage.userInfo)
+
+    preferedLangCode = userInfo?.lang || window.taigaConfig.defaultLanguage || "en"
+
     $translateProvider
         .useStaticFilesLoader({
             prefix: "/locales/locale-",
