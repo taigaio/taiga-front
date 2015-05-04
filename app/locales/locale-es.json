@@ -41,7 +41,7 @@
             "ADD": "Añadir etiqueta"
         },
         "DESCRIPTION": {
-            "EMPTY": "El espacio vacío es tan aburrido... trata de ser descriptivo... Una rosa con cualquier otro nombre olería con la misma dulzura...",
+            "EMPTY": "El espacio vacío es tan aburrido... trata de ser descriptivo... ",
             "NO_DESCRIPTION": "Sin descripción todavía"
         },
         "FIELDS": {
@@ -940,7 +940,7 @@
     "USER_SETTINGS": {
         "AVATAR_MAX_SIZE": "[Tamaño Max.: {{maxFileSize}}]",
         "MENU": {
-            "SECTION_TITLE": "Configuraciones de Usuario",
+            "SECTION_TITLE": "Configuración de Usuario",
             "USER_PROFILE": "Perfil de usuario",
             "CHANGE_PASSWORD": "Cambiar contraseña",
             "EMAIL_NOTIFICATIONS": "Notificaciones por email"

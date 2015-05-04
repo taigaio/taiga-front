@@ -41,7 +41,7 @@
             "ADD": "Add tag"
         },
         "DESCRIPTION": {
-            "EMPTY": "Empty space is so boring... go on be descriptive... A rose by any other name would smell as sweet...",
+            "EMPTY": "Empty space is so boring... go on be descriptive...",
             "NO_DESCRIPTION": "No description yet"
         },
         "FIELDS": {

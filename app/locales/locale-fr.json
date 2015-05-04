@@ -41,7 +41,7 @@
             "ADD": "Ajouter un label"
         },
         "DESCRIPTION": {
-            "EMPTY": "Un espace vide est si ennuyeux… allez-y, soyez descriptif… Une rose d'un autre nom sentirait si bon…",
+            "EMPTY": "Un espace vide est si ennuyeux… allez-y, soyez descriptif… ",
             "NO_DESCRIPTION": "Pas encore de description"
         },
         "FIELDS": {

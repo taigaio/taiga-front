@@ -27,7 +27,7 @@ from subprocess import PIPE, Popen, call
 
 
 FIXED_LOCALES = {
-    "zh-Hant": "zh-hant"
+    "zh-Hant": "zh-hant",
     "zh-Hans": "zh-hans"
 }
 
