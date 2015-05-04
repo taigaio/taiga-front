@@ -11,13 +11,19 @@
             margin: 0;
         }
     }
-    .import-project-button {
-        padding: .33rem .5rem;
-        &:hover {
-            background: $grayer;
+    .create-options a {
+        &.create-project-btn {
+            margin-right: .25rem;
+            padding: .6rem 2.5rem;
         }
-        .icon-upload {
-            margin: 0;
+        &.import-project-button {
+            padding: .53rem .8rem;
+            &:hover {
+                background: $grayer;
+            }
+            .icon-upload {
+                margin: 0;
+            }
         }
     }
     .project-list-section {

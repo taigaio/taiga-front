@@ -534,7 +534,7 @@
     "PROJECT": {
         "WELCOME": "Welcome",
         "SECTION_PROJECTS": "Projects",
-        "HELP": "TODO. You can reorder your projects in your favorite way by drag&drop, Taiga will remember your order for every project list.\n Remember that the first ten projects will be shown in your rapid access menu in the top bar dropdown menu",
+        "HELP": "Reorder your projects to set in the top the most used ones.<br/> The top 10 projects will appear in the top navigation bar project list",
         "PRIVATE": "Private project",
         "STATS": {
             "PROJECT": "project<br/> points",
