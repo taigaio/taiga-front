@@ -4,7 +4,7 @@ div.wrapper(tg-user-notifications, ng-controller="UserNotificationsController as
                 ng-init="section='mail-notifications'")
     nav.menu.hidden(tg-project-menu)
 
-    sidebar.menu-secondary.sidebar(tg-user-settings-navigation="mail-notifications")
+    sidebar.menu-secondary.sidebar.user-profile-nav(tg-user-settings-navigation="mail-notifications")
         include ../includes/modules/user-settings-menu
 
     section.main.admin-common

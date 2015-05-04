@@ -2,7 +2,7 @@
     li {
         @extend %larger;
         @extend %title;
-        border-bottom: 1px solid $gray-light;
+        border-bottom: 1px solid darken($whitish, 10%);
         text-transform: uppercase;
         &:last-child {
             border-bottom: 0;
