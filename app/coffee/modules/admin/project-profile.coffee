@@ -64,7 +64,7 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
         promise.then null, @.onInitialDataError.bind(@)
 
         @scope.$on "project:loaded", =>
-            sectionName = @translate.instant( @scope.sectionName)
+            sectionName = @translate.instant(@scope.sectionName)
             appTitle = @translate.instant("ADMIN.PROJECT_PROFILE.PAGE_TITLE", {sectionName: sectionName, projectName: @scope.project.name})
             @appTitle.set(appTitle)
 
