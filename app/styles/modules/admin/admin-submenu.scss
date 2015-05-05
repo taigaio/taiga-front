@@ -1,6 +1,6 @@
 .admin-submenu {
     li {
-        @extend %larger;
+        @extend %large;
         @extend %title;
         border-bottom: 1px solid $gray-light;
         text-transform: uppercase;
