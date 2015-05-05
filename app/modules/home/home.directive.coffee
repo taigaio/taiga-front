@@ -1,5 +1,6 @@
 HomeDirective = (homeService) ->
     link = (scope, el, attrs, ctrl) ->
+        console.log 111111
         scope.vm = {}
         taiga.defineImmutableProperty(scope.vm, "workInProgress", () -> homeService.workInProgress)
 
@@ -15,12 +16,14 @@ HomeDirective = (homeService) ->
                 issues = workInProgress.get("watching").get("issues")
                 scope.vm.watching = userStories.concat(tasks).concat(issues)
 
-    directive = {
+    return {
         templateUrl: "home/home.html"
         scope: {}
         link: link
     }
 
-    return directive
+HomeDirective.$inject = [
+    "tgHomeService"
+]
 
-angular.module("taigaHome").directive("tgHome", ["tgHomeService", HomeDirective])
+angular.module("taigaHome").directive("tgHome", HomeDirective)
