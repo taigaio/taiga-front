@@ -55,7 +55,7 @@ BacklogSortableDirective = ($repo, $rs, $rootscope, $tgConfirm, $translate) ->
 
             filterError = ->
                 text = $translate.instant("BACKLOG.SORTABLE_FILTER_ERROR")
-                $tgConfirm.notify(text)
+                $tgConfirm.notify("error", text)
 
             $el.sortable({
                 items: ".us-item-row",
@@ -98,6 +98,9 @@ BacklogSortableDirective = ($repo, $rs, $rootscope, $tgConfirm, $translate) ->
             $el.on "multiplesortstop", (event, ui) ->
                 # When parent not exists, do nothing
                 if $(ui.items[0]).parent().length == 0
+                    return
+
+                if $el.hasClass("active-filters")
                     return
 
                 items = _.sortBy ui.items, (item) ->
