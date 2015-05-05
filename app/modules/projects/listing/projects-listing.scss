@@ -29,15 +29,6 @@
         vertical-align: middle;
         white-space: nowrap;
     }
-    .private {
-        display: inline-block;
-        margin-left: .3rem;
-        width: .5rem;
-        path {
-            fill: $gray-light;
-            transition: fill .3s linear;
-        }
-    }
     p {
         @extend %text;
         @extend %small;

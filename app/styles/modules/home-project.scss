@@ -1,34 +1,84 @@
-.summary-stats {
-    align-items: flex-start;
-    display: flex;
-    .info-num {
-        @extend %xlarge;
-        @extend %bold;
-        float: left;
-        margin-right: .3rem;
-        position: relative;
-        top: 5px;
+.single-project {
+    h1 {
+        line-height: 1.2;
+        margin: 0;
+        vertical-align: middle;
     }
-    .info-text {
-        @extend %small;
-        float: left;
-        line-height: .9rem;
+    .private {
+        font-size: 1rem;
+        vertical-align: super;
     }
-}
-
-.project-data-container {
-    display: flex;
-    justify-content: space-between;
-    ul {
-        flex-grow: 0;
-        max-width: 33%;
+    .project-data {
+        display: flex;
     }
-    li {
-        display: inline-block;
-        margin-right: .1rem;
-        width: 10%;
-        figure {
+    .title {
+        @extend %larger;
+        @extend %title;
+        align-content: center;
+        background: $whitish;
+        display: flex;
+        margin-bottom: .5rem;
+        padding: .9rem 1rem;
+    }
+    .timeline {
+        flex: 1;
+        margin-right: 1rem;
+    }
+    .involved-data {
+        flex-basis: 200px;
+    }
+    .involved-team,
+    .involved-organization {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 1rem;
+        a {
+            display: block;
+            margin-right: .14rem;
+            width: 24%;
+            &:nth-child(4n) {
+                margin-right: 0;
+            }
+        }
+        img {
             width: 100%;
         }
     }
 }
+
+
+//.summary-stats {
+//    align-items: flex-start;
+//    display: flex;
+//    .info-num {
+//        @extend %xlarge;
+//        @extend %bold;
+//        float: left;
+//        margin-right: .3rem;
+//        position: relative;
+//        top: 5px;
+//    }
+//    .info-text {
+//        @extend %small;
+//        float: left;
+//        line-height: .9rem;
+//    }
+//}
+//
+//.project-data-container {
+//    display: flex;
+//    justify-content: space-between;
+//    ul {
+//        flex-grow: 0;
+//        max-width: 33%;
+//    }
+//    li {
+//        display: inline-block;
+//        margin-right: .1rem;
+//        width: 10%;
+//        figure {
+//            width: 100%;
+//        }
+//    }
+//}
+//

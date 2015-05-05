@@ -34,14 +34,6 @@
             vertical-align: middle;
             white-space: nowrap;
         }
-        .private {
-            display: inline-block;
-            margin-left: .3rem;
-            width: .5rem;
-            path {
-                fill: $gray-light;
-            }
-        }
     }
     p {
         @extend %text;
