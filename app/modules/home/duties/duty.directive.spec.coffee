@@ -52,10 +52,6 @@ describe "homeDirective", () ->
             project: 1
             ref: 1
             _name: "userstories"
-            subject: "Testing js subject"
-            status_extra_info: {
-                color: "#CCCCCC"
-            }
             assigned_to_extra_info: {
                 photo: "http://jstesting.taiga.io/photo"
                 full_name_display: "Taiga testing js"
@@ -72,8 +68,10 @@ describe "homeDirective", () ->
 
         mockTranslate.instant
             .withArgs("COMMON.USER_STORY")
-            .returns("COMMON.USER_STORY")
+            .returns("User story translated")
 
         elm = createDirective()
         scope.$apply()
-        expect(elm.find('.duty-status').css("color")).to.be.equal('rgb(204, 204, 204)')
+        expect(elm.isolateScope().vm.getDutyType()).to.be.equal("User story translated")
+        expect(elm.isolateScope().vm.getUrl()).to.be.equal("http://jstesting.taiga.io")
+        expect(elm.isolateScope().vm.getProjectName()).to.be.equal("testing js project")

@@ -57,4 +57,5 @@ describe "homeDirective", () ->
     it "home directive content", () ->
         elm = createDirective()
         scope.$apply()
-        expect(elm.find('.duty-single')).to.have.length(6)
+        expect(elm.isolateScope().vm.assignedTo.size).to.be.equal(3)
+        expect(elm.isolateScope().vm.watching.size).to.be.equal(3)
