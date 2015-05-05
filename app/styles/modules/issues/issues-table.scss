@@ -111,4 +111,19 @@
             top: auto;
         }
     }
+    .level-field,
+    .created-field {
+        @include breakpoint(laptop) {
+            display: none;
+        }
+    }
+    .level-field,
+    .created-field,
+    .assigned-field {
+        @include breakpoint(tablet) {
+            display: none;
+        }
+    }
 }
+
+
