@@ -54,7 +54,7 @@ BacklogSortableDirective = ($repo, $rs, $rootscope, $tgConfirm) ->
                 return
 
             filterError = ->
-                text = $translate.instant("BACKLOG.SORTABLE_FILTER_ERROR")
+                text = "You can't drop on backlog when filters are open"
                 $tgConfirm.notify("error", text)
 
             $el.sortable({
