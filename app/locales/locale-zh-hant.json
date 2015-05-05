@@ -33,6 +33,7 @@
         "NEW_BULK": "新批次插入",
         "RELATED_TASKS": "相關任務 ",
         "LOGOUT": "登出",
+        "EXTERNAL_USER": "an external user",
         "GENERIC_ERROR": "我們的系統指出{{error}}.",
         "IOCAINE_TEXT": "感到任務的不堪負荷？確認其它人在編輯任務時知道此狀況，可以點選Iocaine。它可能會成為免疫的致命狀況，只要長期小量消耗，但如果你只是偶而挑戰它可有助表現。",
         "TAGS": {

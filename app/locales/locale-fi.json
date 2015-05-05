@@ -33,6 +33,7 @@
         "NEW_BULK": "Lisää monta",
         "RELATED_TASKS": "Liittyvät tehtävät",
         "LOGOUT": "Kirjaudu ulos",
+        "EXTERNAL_USER": "an external user",
         "GENERIC_ERROR": "Oompa Loompas havaitsivat virheen {{error}}.",
         "IOCAINE_TEXT": "Jos tehtävä ahdistaa, merkitse se hidasteeksi.",
         "TAGS": {

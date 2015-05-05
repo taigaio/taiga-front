@@ -33,6 +33,7 @@
         "NEW_BULK": "Nouvel ajout en bloc",
         "RELATED_TASKS": "Tâches associées",
         "LOGOUT": "Déconnexion",
+        "EXTERNAL_USER": "an external user",
         "GENERIC_ERROR": "L'un de nos Ooompa Loompas dit {{error}}.",
         "IOCAINE_TEXT": "Vous vous sentez un peu submergé par une tâche ? Soyez certains d'en informer les autres en cliquant su Iocaine lors de la modification de la tâche. Il est possible de s'immuniser contre ce poison (fictif) en consommant de petites quantités en heures supplémentaires, tout comme il est possible de s'améliorer en acceptant parfois de nouveaux défis !",
         "TAGS": {

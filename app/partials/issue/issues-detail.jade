@@ -21,7 +21,7 @@ div.wrapper(ng-controller="IssueDetailController as ctrl",
                           span(tg-bo-ref="us.ref")
 
                 p.external-reference(ng-if="issue.external_reference")
-                    | {{ 'EXTERNAL_REFERENCE'|translate }}
+                    | {{ 'ISSUES.EXTERNAL_REFERENCE'|translate }}
                     a(target="_blank", tg-bo-href="issue.external_reference[1]",
                       title="{{'ISSUES.GO_TO_EXTERNAL_REFERENCE' | translate}}")
                         span {{ issue.external_reference[1] }}

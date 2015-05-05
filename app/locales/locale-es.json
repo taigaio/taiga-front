@@ -33,6 +33,7 @@
         "NEW_BULK": "Nueva inserción en bloque",
         "RELATED_TASKS": "Tareas relacionadas",
         "LOGOUT": "Cerrar sesión",
+        "EXTERNAL_USER": "un usuario externo",
         "GENERIC_ERROR": "Uno de nuestros Oompa Loompas dice {{error}}.",
         "IOCAINE_TEXT": "¿Te sientes fuera de tu zona de confort en una tarea? Asegúrate de que los demás están al tanto de ello, marca el check de la Iocaína al editar una tarea. Igual eu era posible llegar a ser inmune a este veneno mortal a base de consumir pequeñas dosis a lo largo del tiempo, es posible conseguir mejor en lo que estás haciendo si afrontas de vez en cuando esta clase de retos!",
         "TAGS": {

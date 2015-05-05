@@ -87,7 +87,8 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $c
         showAllComments = false
         showAllActivity = false
 
-        prettyDate = $translate.instant("ACTIVITY.DATETIME")
+        getPrettyDateFormat = ->
+            return $translate.instant("ACTIVITY.DATETIME")
 
         bindOnce $scope, $attrs.ngModel, (model) ->
             type = $attrs.type
@@ -271,7 +272,7 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $c
         renderComment = (comment) ->
             if (comment.delete_comment_date or comment.delete_comment_user?.name)
                 html = templateDeletedComment({
-                    deleteCommentDate: moment(comment.delete_comment_date).format(prettyDate) if comment.delete_comment_date
+                    deleteCommentDate: moment(comment.delete_comment_date).format(getPrettyDateFormat()) if comment.delete_comment_date
                     deleteCommentUser: comment.delete_comment_user.name
                     deleteComment: comment.comment_html
                     activityId: comment.id
@@ -286,12 +287,12 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $c
             html = templateActivity({
                 avatar: getUserAvatar(comment.user.pk)
                 userFullName: comment.user.name
-                creationDate: moment(comment.created_at).format(prettyDate)
+                creationDate: moment(comment.created_at).format(getPrettyDateFormat())
                 comment: comment.comment_html
                 changesText: renderChangesHelperText(comment)
                 changes: renderChangeEntries(comment)
                 mode: "comment"
-                deleteCommentDate: moment(comment.delete_comment_date).format(prettyDate) if comment.delete_comment_date
+                deleteCommentDate: moment(comment.delete_comment_date).format(getPrettyDateFormat()) if comment.delete_comment_date
                 deleteCommentUser: comment.delete_comment_user.name if comment.delete_comment_user?.name
                 activityId: comment.id
                 canDeleteComment: comment.user.pk == $scope.user?.id or $scope.project.my_permissions.indexOf("modify_project") > -1
@@ -305,12 +306,12 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $c
             return templateActivity({
                 avatar: getUserAvatar(change.user.pk)
                 userFullName: change.user.name
-                creationDate: moment(change.created_at).format(prettyDate)
+                creationDate: moment(change.created_at).format(getPrettyDateFormat())
                 comment: change.comment_html
                 changes: renderChangeEntries(change)
                 changesText: ""
                 mode: "activity"
-                deleteCommentDate: moment(change.delete_comment_date).format(prettyDate) if change.delete_comment_date
+                deleteCommentDate: moment(change.delete_comment_date).format(getPrettyDateFormat()) if change.delete_comment_date
                 deleteCommentUser: change.delete_comment_user.name if change.delete_comment_user?.name
                 activityId: change.id
             })

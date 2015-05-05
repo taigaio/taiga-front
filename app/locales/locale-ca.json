@@ -33,6 +33,7 @@
         "NEW_BULK": "Nova inserció en grup",
         "RELATED_TASKS": "Tasques relacionades",
         "LOGOUT": "Logout",
+        "EXTERNAL_USER": "an external user",
         "GENERIC_ERROR": "Un Oompa Loompas diu {{error}}.",
         "IOCAINE_TEXT": "Un poc saturat per una tasca? Fes-ho saber als teus companys clicant a Iocaina quan edites la tasca. Es possible ser inmune a aquesta (fictícia) poció mortal consumint xicotetes dòsis poc a poc, així com es possible millorar amb xicotets nous desafiaments!",
         "TAGS": {
@@ -41,127 +42,127 @@
             "ADD": "Afegit tag"
         },
         "DESCRIPTION": {
-            "EMPTY": "Empty space is so boring... go on be descriptive...",
+            "EMPTY": "Els espai buit es molt aburrit. Sé descriptiu!",
             "NO_DESCRIPTION": "Sense descripció"
         },
         "FIELDS": {
             "SUBJECT": "Descripció",
             "NAME": "Nom",
             "URL": "URL",
-            "DESCRIPTION": "Description",
-            "VALUE": "Value",
+            "DESCRIPTION": "Descripció",
+            "VALUE": "Valor",
             "SLUG": "Slug",
             "COLOR": "Color",
-            "IS_CLOSED": "Is closed?",
-            "STATUS": "Status",
-            "ASSIGNED_TO": "Assigned to",
-            "POINTS": "Points",
-            "BLOCKED_NOTE": "blocked note",
-            "IS_BLOCKED": "is blocked"
+            "IS_CLOSED": "Està tancat?",
+            "STATUS": "Estatus",
+            "ASSIGNED_TO": "Assignat a",
+            "POINTS": "Punts",
+            "BLOCKED_NOTE": "Nota de bloqueig",
+            "IS_BLOCKED": "està bloquejat"
         },
         "ROLES": {
             "ALL": "Tot"
         },
         "ASSIGNED_TO": {
             "NOT_ASSIGNED": "Sense assignar",
-            "DELETE_ASSIGNMENT": "Delete assignment",
-            "REMOVE_ASSIGNED": "Remove assigned",
-            "TOO_MANY": "...too many users, keep filtering",
-            "CONFIRM_UNASSIGNED": "Are you sure you want to leave it unassigned?",
-            "TITLE_ACTION_EDIT_ASSIGNMENT": "Edit assignment"
+            "DELETE_ASSIGNMENT": "Esborrar assignament",
+            "REMOVE_ASSIGNED": "Esborra assignat",
+            "TOO_MANY": ".. massa usuaris, segueix filtrant",
+            "CONFIRM_UNASSIGNED": "Segut que vols deixar-ho sense assignar?",
+            "TITLE_ACTION_EDIT_ASSIGNMENT": "Editar assignament"
         },
         "STATUS": {
-            "CLOSED": "Closed",
-            "OPEN": "Open"
+            "CLOSED": "Tancat",
+            "OPEN": "Obert"
         },
         "WATCHERS": {
-            "ADD": "Add watcher",
-            "TITLE": "watchers",
-            "DELETE": "Delete watcher",
-            "TITLE_LIGHTBOX_DELETE_WARTCHER": "Delete watcher..."
+            "ADD": "Afegir seguidor",
+            "TITLE": "Seguidors",
+            "DELETE": "Esborrar seguidor",
+            "TITLE_LIGHTBOX_DELETE_WARTCHER": "Esborrar seguidor..."
         },
         "CUSTOM_ATTRIBUTES": {
-            "CUSTOM_FIELDS": "Custom Fields",
-            "SAVE": "Save Custom Field",
-            "EDIT": "Edit Custom Field",
-            "DELETE": "Delete custom attribute",
-            "CONFIRM_DELETE": "Remeber that all values in this custom field will be deleted.</br> Are you sure you want to continue?"
+            "CUSTOM_FIELDS": "Camps personalitzats",
+            "SAVE": "Salva camp personalitzat",
+            "EDIT": "Edita el camp personalitzat",
+            "DELETE": "Esborrar atribut personalitzat",
+            "CONFIRM_DELETE": "Recorda que tots els valors a aquest camp personalitzat seràn esborrats. </br> Segur que voleu continuar?  "
         },
         "FILTERS": {
-            "TITLE": "filters",
-            "INPUT_PLACEHOLDER": "Subject or reference",
-            "TITLE_ACTION_FILTER_BUTTON": "search",
-            "BREADCRUMB_TITLE": "back to categories",
-            "BREADCRUMB_FILTERS": "Filters",
-            "BREADCRUMB_STATUS": "status"
+            "TITLE": "filtres",
+            "INPUT_PLACEHOLDER": "Descripció o referència",
+            "TITLE_ACTION_FILTER_BUTTON": "buscar",
+            "BREADCRUMB_TITLE": "tornar a categories",
+            "BREADCRUMB_FILTERS": "Filtres",
+            "BREADCRUMB_STATUS": "estatus"
         },
         "WYSIWYG": {
-            "H1_BUTTON": "First Level Heading",
-            "H1_SAMPLE_TEXT": "Your title here...",
-            "H2_BUTTON": "Second Level Heading",
-            "H2_SAMPLE_TEXT": "Your title here...",
-            "H3_BUTTON": "Third Level Heading",
-            "H3_SAMPLE_TEXT": "Your title here...",
-            "BOLD_BUTTON": "Bold",
-            "BOLD_BUTTON_SAMPLE_TEXT": "Your text here...",
-            "ITALIC_BUTTON": "Italic",
-            "ITALIC_SAMPLE_TEXT": "Your text here...",
-            "STRIKE_BUTTON": "Strike",
-            "STRIKE_SAMPLE_TEXT": "Your text here...",
-            "BULLETED_LIST_BUTTON": "Bulleted List",
-            "BULLETED_LIST_SAMPLE_TEXT": "Your text here...",
-            "NUMERIC_LIST_BUTTON": "Numeric List",
-            "NUMERIC_LIST_SAMPLE_TEXT": "Your text here...",
-            "PICTURE_BUTTON": "Picture",
-            "PICTURE_SAMPLE_TEXT": "Your alternative text to picture here...",
-            "LINK_BUTTON": "Link",
-            "LINK_SAMPLE_TEXT": "Your text to link here....",
-            "QUOTE_BLOCK_BUTTON": "Quote Block",
-            "QUOTE_BLOCK_SAMPLE_TEXT": "Your text here...",
-            "CODE_BLOCK_BUTTON": "Code Block",
-            "CODE_BLOCK_SAMPLE_TEXT": "Your text here...",
-            "PREVIEW_BUTTON": "Preview",
-            "EDIT_BUTTON": "Edit",
-            "MARKDOWN_HELP": "Markdown syntax help"
+            "H1_BUTTON": "Capçcalera de primer nivel",
+            "H1_SAMPLE_TEXT": "El títul ací...",
+            "H2_BUTTON": "Capçalera de segon nivel",
+            "H2_SAMPLE_TEXT": "El títul ací...",
+            "H3_BUTTON": "Tercer nivell de capçalera",
+            "H3_SAMPLE_TEXT": "El títul ací...",
+            "BOLD_BUTTON": "Gros",
+            "BOLD_BUTTON_SAMPLE_TEXT": "El teu text ací...",
+            "ITALIC_BUTTON": "Itàlica",
+            "ITALIC_SAMPLE_TEXT": "El teu text ací...",
+            "STRIKE_BUTTON": "Tatxar",
+            "STRIKE_SAMPLE_TEXT": "El teu text ací...",
+            "BULLETED_LIST_BUTTON": "Llista ordenada",
+            "BULLETED_LIST_SAMPLE_TEXT": "El teu text ací...",
+            "NUMERIC_LIST_BUTTON": "Llista numèrica",
+            "NUMERIC_LIST_SAMPLE_TEXT": "El teu text ací...",
+            "PICTURE_BUTTON": "Foto",
+            "PICTURE_SAMPLE_TEXT": "El text alternatiu a la foto ací",
+            "LINK_BUTTON": "Enllaç",
+            "LINK_SAMPLE_TEXT": "El teu text per al link ací...",
+            "QUOTE_BLOCK_BUTTON": "Bloc de cita",
+            "QUOTE_BLOCK_SAMPLE_TEXT": "El teu text ací...",
+            "CODE_BLOCK_BUTTON": "Bolc de codi",
+            "CODE_BLOCK_SAMPLE_TEXT": "El teu text ací...",
+            "PREVIEW_BUTTON": "Previsualitzar",
+            "EDIT_BUTTON": "Editar",
+            "MARKDOWN_HELP": "Ajuda de Markdown"
         },
         "PERMISIONS_CATEGORIES": {
             "SPRINTS": {
                 "NAME": "Sprints",
-                "VIEW_SPRINTS": "View sprints",
-                "ADD_SPRINTS": "Add sprints",
-                "MODIFY_SPRINTS": "Modify sprints",
-                "DELETE_SPRINTS": "Delete sprints"
+                "VIEW_SPRINTS": "Vore sprints",
+                "ADD_SPRINTS": "Afegir sprint",
+                "MODIFY_SPRINTS": "Editar sprint",
+                "DELETE_SPRINTS": "Esborrar sprints"
             },
             "USER_STORIES": {
-                "NAME": "User Stories",
-                "VIEW_USER_STORIES": "View user stories",
-                "ADD_USER_STORIES": "Add user stories",
-                "MODIFY_USER_STORIES": "Modify user stories",
-                "DELETE_USER_STORIES": "Delete user stories"
+                "NAME": "Històries d'usuari",
+                "VIEW_USER_STORIES": "Vore istòries d'usuari",
+                "ADD_USER_STORIES": "Afegir històries d'usuari",
+                "MODIFY_USER_STORIES": "Editar història d'usuari",
+                "DELETE_USER_STORIES": "Esborrar històries d'usuari"
             },
             "TASKS": {
-                "NAME": "Tasks",
-                "VIEW_TASKS": "View tasks",
-                "ADD_TASKS": "Add tasks",
-                "MODIFY_TASKS": "Modify tasks",
-                "DELETE_TASKS": "Delete tasks"
+                "NAME": "Tasques",
+                "VIEW_TASKS": "Vore tasca",
+                "ADD_TASKS": "Afegit tasques",
+                "MODIFY_TASKS": "Modificar tasques",
+                "DELETE_TASKS": "Esborrar tasques"
             },
             "ISSUES": {
-                "NAME": "Issues",
-                "VIEW_ISSUES": "View issues",
-                "ADD_ISSUES": "Add issues",
-                "MODIFY_ISSUES": "Modify issues",
-                "DELETE_ISSUES": "Delete issues"
+                "NAME": "Incidències",
+                "VIEW_ISSUES": "Vore incidències",
+                "ADD_ISSUES": "Afegir incidències",
+                "MODIFY_ISSUES": "Modificar incidències",
+                "DELETE_ISSUES": "Esborrar incidències"
             },
             "WIKI": {
                 "NAME": "Wiki",
-                "VIEW_WIKI_PAGES": "View wiki pages",
-                "ADD_WIKI_PAGES": "Add wiki pages",
-                "MODIFY_WIKI_PAGES": "Modify wiki pages",
-                "DELETE_WIKI_PAGES": "Delete wiki pages",
-                "VIEW_WIKI_LINKS": "View wiki links",
-                "ADD_WIKI_LINKS": "Add wiki links",
-                "DELETE_WIKI_LINKS": "Delete wiki links"
+                "VIEW_WIKI_PAGES": "Vore pàgines de Wiki",
+                "ADD_WIKI_PAGES": "Afegir pàgines de Wiki",
+                "MODIFY_WIKI_PAGES": "Modificar pàgina del Wiki",
+                "DELETE_WIKI_PAGES": "Esborrar pàgines de Wiki",
+                "VIEW_WIKI_LINKS": "Vore enllaços de Wiki",
+                "ADD_WIKI_LINKS": "Afegir link de wiki",
+                "DELETE_WIKI_LINKS": "Esborrar enllaços de wiki"
             }
         }
     },
@@ -173,7 +174,7 @@
     },
     "ATTACHMENT": {
         "SECTION_NAME": "Adjunts",
-        "TITLE": "{{ fileName }} uploaded on {{ date }}",
+        "TITLE": "{{ fileName }} pujat el {{ date }}",
         "DESCIPTION": "Escriu una descripció curta",
         "DEPRECATED_FILE": "Obsolet?",
         "ADD": "Afegir nou adjunt. <%- maxFileSizeMsg %>",
@@ -183,10 +184,10 @@
         "COUNT_DEPRECATED": "({{ctrl.deprecatedAttachmentsCount }} obsolet)",
         "MAX_UPLOAD_SIZE": "El tamany màxim de pujada es ",
         "DATE": "DD MMM YYYY [at] hh:mm",
-        "ERROR_UPLOAD_ATTACHMENT": "We have not been able to upload '{{fileName}}'. {{errorMessage}}",
-        "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "Delete attachment...",
-        "MSG_LIGHTBOX_DELETE_ATTACHMENT": "the attachment '{{fileName}}'",
-        "ERROR_DELETE_ATTACHMENT": "We have not been able to delete: {{errorMessage}}",
+        "ERROR_UPLOAD_ATTACHMENT": "No hem pogut pujar '{{fileName}}'. {{errorMessage}}",
+        "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "Esborrar adjunt...",
+        "MSG_LIGHTBOX_DELETE_ATTACHMENT": "l'adjunt '{{fileName}}'",
+        "ERROR_DELETE_ATTACHMENT": "No hem pogut esborrar: {{errorMessage}}",
         "FIELDS": {
             "IS_DEPRECATED": "es obsolet"
         }
@@ -219,10 +220,10 @@
             "DUMP_READY": "El fitxer de daes està llest!",
             "LOADING_MESSAGE": "Per favor no tanquest aquest pàgina",
             "ASYNC_MESSAGE": "T'enviarem un correu quan estiga llest.",
-            "SYNC_MESSAGE": "If the download doesn't start automatically click <a href='{{url}}' download title='Download the dump file'>here</a>.",
-            "ERROR": "Our Oompa Loompas have some problems generating your dump. Please try it again.",
-            "ERROR_BUSY": "Sorry, our Oompa Loompas are very busy right now. Please try again in a few minutes.",
-            "ERROR_MESSAGE": "Our Oompa Loompas have some problems generating your dump: {{message}}"
+            "SYNC_MESSAGE": "Si la descàrrega no baixa directament clica <a href='{{url}}' download title='Download the dump file'>ací</a>.",
+            "ERROR": "Els Oompa Loompas tenen problemes generant el teu arxiu de dades. Per favor intenta-ho de nou.",
+            "ERROR_BUSY": "Ho sentim, els Oompa Loompas estàn molt ocupats ara mateix. Intenta-ho de nou en uns moments.",
+            "ERROR_MESSAGE": "Els Oompa Loompas tenen problemes generant el teu arxiu de dades: {{message}}"
         },
         "MODULES": {
             "TITLE": "Mòdules",
@@ -248,7 +249,7 @@
             "PROJECT_SLUG": "Slug de projecte",
             "NUMBER_SPRINTS": "Nombre de sprints",
             "NUMBER_US_POINTS": "Nombre de punts de US",
-            "DESCRIPTION": "Description",
+            "DESCRIPTION": "Descripció",
             "PUBLIC_PROJECT": "Projecte públic",
             "PRIVATE_PROJECT": "Projecte privat",
             "DELETE": "Esborra aquest projecte"
@@ -261,8 +262,8 @@
             "REGENERATE_TITLE": "Canviar URL",
             "REGENERATE_SUBTITLE": "Vas a canviar la URL d'accés al CSV. La URL previa no funcionarà. Estàs segur?",
             "CSV_TYPE_US": "Històries d'usuari",
-            "CSV_TYPE_TASK": "tasks",
-            "CSV_TYPE_ISSUE": "issues"
+            "CSV_TYPE_TASK": "tasques",
+            "CSV_TYPE_ISSUE": "incidències"
         },
         "CUSTOM_FIELDS": {
             "TITLE": "Camps personalitzats",
@@ -301,7 +302,7 @@
         },
         "PROJECT_VALUES_TYPES": {
             "TITLE": "Tipus",
-            "SUBTITLE": "Specify the types your issues could be",
+            "SUBTITLE": "Especifica quin tipus d'incidència podria ser.",
             "ISSUE_TITLE": "Tipus d'incidències",
             "ACTION_ADD": "Afegir now {{objName}}"
         },
@@ -351,14 +352,14 @@
             "DELETE": "Esborrar Webhooks",
             "REQUEST": "Petició",
             "RESEND_REQUEST": "Reenviar petició",
-            "HEADERS": "Headers",
+            "HEADERS": "Capçaleres",
             "PAYLOAD": "Payload",
-            "RESPONSE": "Response",
-            "DATE": "DD MMM YYYY [at] hh:mm:ss",
-            "ACTION_HIDE_HISTORY": "(Hide history)",
-            "ACTION_HIDE_HISTORY_TITLE": "Hide history details",
-            "ACTION_SHOW_HISTORY": "(Show history)",
-            "ACTION_SHOW_HISTORY_TITLE": "Show history details",
+            "RESPONSE": "Resposta",
+            "DATE": "DD MMM YYYY [at] hh:mm",
+            "ACTION_HIDE_HISTORY": "(Amaga històric)",
+            "ACTION_HIDE_HISTORY_TITLE": "Amaga detalls d'històric",
+            "ACTION_SHOW_HISTORY": "(Mostra històric)",
+            "ACTION_SHOW_HISTORY_TITLE": "Mostra detall d'històric",
             "WEBHOOK_NAME": "Webhook '{{name}}'"
         },
         "CUSTOM_ATTRIBUTES": {
@@ -476,9 +477,9 @@
             "DESCRIPTION": "Aquest procés pot durar una mica, pero favor mantinga la finestra oberta",
             "ASYNC_IN_PROGRESS_TITLE": "Els Oompa Loompas estàn important el teu projecte",
             "ASYNC_IN_PROGRESS_MESSAGE": "Aquest procés pot durar uns moments <br/> T'enviarem un correo quan estiga llest.",
-            "ERROR": "Our Oompa Loompas have some problems importing your dump data. Please try again.",
-            "ERROR_TOO_MANY_REQUEST": "Sorry, our Oompa Loompas are very busy right now. Please try again in a few minutes.",
-            "ERROR_MESSAGE": "Our Oompa Loompas have some problems importing your dump data: {{error_message}}",
+            "ERROR": "Els Oompa Loompas han tingut problemes pujan les teues dades. Per favor intenta-ho de nou.",
+            "ERROR_TOO_MANY_REQUEST": "Ho sentim, els Oompa Loompas estàn molt ocupats ara mateix. Intenta-ho de nou en uns moments.",
+            "ERROR_MESSAGE": "Els Oompa Loompas tenen problemes important les teues dades: {{error_message}}",
             "SYNC_SUCCESS": "El teu projecte s'ha importat correctament"
         }
     },
@@ -491,7 +492,7 @@
         "DELETE_PROJECT": {
             "TITLE": "Esborrar projecte",
             "QUESTION": "Estàs segur que vols borrar este projecte?",
-            "SUBTITLE": "All project data (user stories, tasks, issues, sprints and wiki pages) will be lost! :-(",
+            "SUBTITLE": "Totes les dades del projecte (històries d'usuari, tasques, incidències, wikis) es perdràn :-(",
             "CONFIRM": "Si, estic segur"
         },
         "ASSIGNED_TO": {
@@ -546,12 +547,12 @@
         }
     },
     "US": {
-        "LINK_TASKBOARD": "Taskboard",
+        "LINK_TASKBOARD": "Panell de tasques",
         "TITLE_LINK_TASKBOARD": "Anar a panell de tasques",
         "TOTAL_POINTS": "total",
         "ADD": "+ Afegir nova història d'usuari",
         "ADD_BULK": "Afegeix noves històries d'usuari en grup",
-        "PROMOTED": "This US has been promoted from Issue:",
+        "PROMOTED": "Aquesta US ha sigut promocionada desde:",
         "TITLE_LINK_GO_TO_ISSUE": "Anar a la incidència",
         "EXTERNAL_REFERENCE": "Aquesta US ha sigut creada desde",
         "GO_TO_EXTERNAL_REFERENCE": "Anar a l'orige",
@@ -571,7 +572,7 @@
         }
     },
     "COMMENTS": {
-        "DELETED_INFO": "Comment deleted by {{user}} on {{date}}",
+        "DELETED_INFO": "Comentari esborrat per {{user}} el {{date}}",
         "TITLE": "Comentaris",
         "COMMENT": "Comentar",
         "TYPE_NEW_COMMENT": "Escriu un nou comentari ací",
@@ -591,9 +592,9 @@
         "DELETED_ATTACHMENT": "Adjunts esborrats",
         "UPDATED_ATTACHMENT": "Actualitzat adjunt {{filename}}",
         "DELETED_CUSTOM_ATTRIBUTE": "Esborrar camps personalitzat",
-        "SIZE_CHANGE": "Made {size, plural, one{one change} other{# changes}}",
+        "SIZE_CHANGE": "Fet {size, plural, one{un canvi} other{# changes}}",
         "VALUES": {
-            "YES": "yes",
+            "YES": "si",
             "NO": "no",
             "EMPTY": "buit",
             "UNASSIGNED": "Sense assignar"
@@ -616,19 +617,19 @@
             "PROJECT": "projecte",
             "IS_BLOCKED": "Està bloquejat",
             "BLOCKED_NOTE": "Nota de bloqueig",
-            "POINTS": "points",
-            "CLIENT_REQUIREMENT": "client requirement",
-            "TEAM_REQUIREMENT": "team requirement",
-            "IS_IOCAINE": "is iocaine",
+            "POINTS": "punts",
+            "CLIENT_REQUIREMENT": "requeriment de client",
+            "TEAM_REQUIREMENT": "requeriment d'equip",
+            "IS_IOCAINE": "Es iocaina",
             "TAGS": "tags",
-            "ATTACHMENTS": "attachments",
-            "IS_DEPRECATED": "is deprecated",
-            "ORDER": "order",
-            "BACKLOG_ORDER": "backlog order",
-            "SPRINT_ORDER": "sprint order",
-            "KANBAN_ORDER": "kanban order",
-            "TASKBOARD_ORDER": "taskboard order",
-            "US_ORDER": "us order"
+            "ATTACHMENTS": "adjunts",
+            "IS_DEPRECATED": "és obsolet",
+            "ORDER": "ordre",
+            "BACKLOG_ORDER": "ordre de backlog",
+            "SPRINT_ORDER": "ordre d'sprint",
+            "KANBAN_ORDER": "ordre de kanban",
+            "TASKBOARD_ORDER": "ordre de panell de tasques",
+            "US_ORDER": "ordre d'US"
         }
     },
     "BACKLOG": {
@@ -693,9 +694,9 @@
             "TITLE_LINK_TASKBOARD": "Anar al panell de {{::name}}",
             "NUMBER_SPRINTS": "<br/> sprints",
             "TITLE_ACTION_NEW_SPRINT": "+ Nou sprint",
-            "ACTION_NEW_SPRINT": "+ New sprint",
-            "ACTION_SHOW_CLOSED_SPRINTS": "Show closed sprints",
-            "ACTION_HIDE_CLOSED_SPRINTS": "Hide closed sprints"
+            "ACTION_NEW_SPRINT": "+ Nou sprint",
+            "ACTION_SHOW_CLOSED_SPRINTS": "Mostra sprints tancats",
+            "ACTION_HIDE_CLOSED_SPRINTS": "Amaga sprints tancats"
         }
     },
     "ERROR": {
@@ -705,10 +706,10 @@
         "NOT_FOUND_TEXT": "Error 404. La pàgina que busques no existeix. Pots tornar a la página principal de taiga i provar desde allí.",
         "PERMISSION_DENIED": "Permis denegat",
         "PERMISSION_DENIED_CODE": "Error 403",
-        "VERSION_ERROR": "Someone inside Taiga has changed this before and our Oompa Loompas cannot apply your changes. Please reload and apply your changes again (they will be lost)."
+        "VERSION_ERROR": "Algú dins de Taiga ha canviat aȯ abans i els Oompa Loompas no pode aplicar els teus canvis. Per favor recarrega i aplica els teus canvis (es perdràn)"
     },
     "TASKBOARD": {
-        "SECTION_NAME": "Taskboard",
+        "SECTION_NAME": "Panell de tasques",
         "TITLE_ACTION_ADD": "Afegir nova tasca",
         "TITLE_ACTION_ADD_BULK": "Afegeix noves històries d'usuari en grup",
         "TITLE_ACTION_ASSIGN": "Assignar tasca",
@@ -723,15 +724,15 @@
             "ROW_UNASSIGED_TASKS_TITLE": "Tasques sense assignar"
         },
         "CHARTS": {
-            "XAXIS_LABEL": "Days",
-            "YAXIS_LABEL": "Points",
-            "OPTIMAL": "Optimal pending points for day {{formattedDate}} should be {{roundedValue}}",
+            "XAXIS_LABEL": "Díes",
+            "YAXIS_LABEL": "Punts",
+            "OPTIMAL": "Punts pendents òptims per dia {{formattedDate}} deu ser {{roundedValue}}",
             "REAL": "Punts pendents el dia {{formattedDate}} son {{roundedValue}}",
             "DATE": "DD MMMM YYYY"
         }
     },
     "TASK": {
-        "LINK_TASKBOARD": "Taskboard",
+        "LINK_TASKBOARD": "Panell de tasques",
         "TITLE_LINK_TASKBOARD": "Anar a panell de tasques",
         "PLACEHOLDER_SUBJECT": "Afegix la descripció de la tasca",
         "TITLE_SELECT_STATUS": "Nom d'estatus",
@@ -755,8 +756,8 @@
     "NOTIFICATION": {
         "OK": "Tot està ok",
         "WARNING": "Oops, ha passat algo...",
-        "WARNING_TEXT": "Our Oompa Loompas are sad, your changes were not saved!",
-        "SAVED": "Our Oompa Loompas saved all your changes!",
+        "WARNING_TEXT": "Els teus canvis no s'han salvat!",
+        "SAVED": "Els Oompa Loompas han salvat els teus canvis!",
         "CLOSE": "Tancar notificació",
         "MAIL": "Notificaciones per correo",
         "ASK_DELETE": "Segur que vols borrar?"
@@ -844,41 +845,41 @@
         "FILTERS": {
             "TITLE": "Filtres",
             "INPUT_SEARCH_PLACEHOLDER": "Descripció o ref",
-            "TITLE_ACTION_SEARCH": "Search",
-            "ACTION_SAVE_CUSTOM_FILTER": "save as custom filter",
-            "BREADCRUMB": "Filters",
-            "TITLE_BREADCRUMB": "Filters",
+            "TITLE_ACTION_SEARCH": "Busca",
+            "ACTION_SAVE_CUSTOM_FILTER": "Guarda com a filtre",
+            "BREADCRUMB": "Filtres",
+            "TITLE_BREADCRUMB": "Filtres",
             "CATEGORIES": {
-                "TYPE": "Type",
-                "STATUS": "Status",
-                "SEVERITY": "Severity",
-                "PRIORITIES": "Priorities",
+                "TYPE": "Tipus",
+                "STATUS": "Estatus",
+                "SEVERITY": "Severitat",
+                "PRIORITIES": "Prioritats",
                 "TAGS": "Tags",
-                "ASSIGNED_TO": "Assigned to",
-                "CREATED_BY": "Created by",
-                "CUSTOM_FILTERS": "Custom filters"
+                "ASSIGNED_TO": "Assignat a",
+                "CREATED_BY": "Creat per",
+                "CUSTOM_FILTERS": "Filtres personalitzats"
             },
             "CONFIRM_DELETE": {
-                "TITLE": "Delete custom filter",
-                "MESSAGE": "the custom filter '{{customFilterName}}'"
+                "TITLE": "Esborrar filtre",
+                "MESSAGE": "el filtre '{{customFilterName}}'"
             }
         },
         "TABLE": {
             "COLUMNS": {
                 "TYPE": "Tipus",
-                "SEVERITY": "Severity",
-                "PRIORITY": "Priority",
-                "SUBJECT": "Subject",
-                "STATUS": "Status",
-                "CREATED": "Created",
-                "ASSIGNED_TO": "Assigned to"
+                "SEVERITY": "Severitat",
+                "PRIORITY": "Prioritat",
+                "SUBJECT": "Descripció",
+                "STATUS": "Estatus",
+                "CREATED": "Creat",
+                "ASSIGNED_TO": "Assignat a"
             },
-            "TITLE_ACTION_CHANGE_STATUS": "Change status",
-            "TITLE_ACTION_ASSIGNED_TO": "Assigned to",
+            "TITLE_ACTION_CHANGE_STATUS": "Canviar estatus",
+            "TITLE_ACTION_ASSIGNED_TO": "Assignat a",
             "EMPTY": {
-                "TITLE": "There are no issues to report :-)",
-                "SUBTITLE": "Did you find an issue?",
-                "ACTION_CREATE_ISSUE": "Create a new Issue"
+                "TITLE": "No hi ha incidències a reportar :-)",
+                "SUBTITLE": "Has trobat una incidència?",
+                "ACTION_CREATE_ISSUE": "Crea nova incidència"
             }
         }
     },
@@ -920,12 +921,12 @@
         "EXPLANATION_COLUMN_BUG_HUNTER": "Incidència reportada",
         "COLUMN_NIGHT_SHIFT": "Torn de nit",
         "EXPLANATION_COLUMN_NIGHT_SHIFT": "Tasques tancades",
-        "COLUMN_TOTAL_POWER": "Total Power",
-        "EXPLANATION_COLUMN_TOTAL_POWER": "Total Points",
-        "SECTION_TITLE_TEAM": "Team >",
-        "SECTION_FILTER_ALL": "All",
-        "CONFIRM_LEAVE_PROJECT": "Are you sure you want to leave the project?",
-        "ACTION_LEAVE_PROJECT": "Leave this project"
+        "COLUMN_TOTAL_POWER": "Punts totals",
+        "EXPLANATION_COLUMN_TOTAL_POWER": "Punts totals",
+        "SECTION_TITLE_TEAM": "Equip >",
+        "SECTION_FILTER_ALL": "Tot",
+        "CONFIRM_LEAVE_PROJECT": "Segur que vols deixar el projecte?",
+        "ACTION_LEAVE_PROJECT": "Abandonar aquest projecte"
     },
     "CHANGE_PASSWORD": {
         "SECTION_NAME": "Canviar contrasenya",
@@ -976,9 +977,9 @@
             "FULL_NAME": "Nom complet",
             "PLACEHOLDER_FULL_NAME": "Esciur el teu nom complet (ex. Íñigo Montoya)",
             "BIO": "Bio",
-            "PLACEHOLDER_BIO": "Tell us something about you",
-            "LANGUAGE": "Language",
-            "LANGUAGE_DEFAULT": "-- use default language --"
+            "PLACEHOLDER_BIO": "Contans algo sobre tu mateix",
+            "LANGUAGE": "Llengua",
+            "LANGUAGE_DEFAULT": "-- utilizat llengua per defecte --"
         }
     },
     "WIZARD": {
@@ -992,7 +993,7 @@
     "WIKI": {
         "DATETIME": "DD MMM YYYY HH:mm",
         "PLACEHOLDER_PAGE": "Esciu pàgina del Wiki",
-        "REMOVE": "Esborar pàgina de Wiki",
+        "REMOVE": "Esborrar pàgina de Wiki",
         "DELETE_LIGHTBOX_TITLE": "Esborrar pàgina de Wiki",
         "NAVIGATION": {
             "SECTION_NAME": "Enllaços",

@@ -125,7 +125,7 @@ CreatedByDisplayDirective = ($template, $compile, $translate)->
     link = ($scope, $el, $attrs) ->
         render = (model) ->
             owner = $scope.usersById?[model.owner] or {
-                full_name_display: "external user"
+                full_name_display: $translate.instant("COMMON.EXTERNAL_USER")
                 photo: "/images/unnamed.png"
             }
 
