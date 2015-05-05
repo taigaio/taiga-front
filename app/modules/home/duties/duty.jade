@@ -1,12 +1,13 @@
-img.avatar(
-    src="{{ ::vm.duty.assigned_to_extra_info.photo }}"
-    title="{{ ::vm.duty.assigned_to_extra_info.full_name_display }}")
+a(href="{{ ::vm.getUrl() }}", title="{{ ::duty.subject }}")
+    img.avatar(
+        src="{{ ::vm.duty.assigned_to_extra_info.photo }}"
+        title="{{ ::vm.duty.assigned_to_extra_info.full_name_display }}")
 
-div.duty-data
-    div
-        span.duty-type {{ ::vm.getDutyType() }}
-        span.duty-status(ng-style="{'color': vm.duty.status_extra_info.color}") {{ ::vm.duty.status_extra_info.name }}
-    a.duty-title(href="{{ ::vm.getUrl() }}")
-        span.duty-id(tg-bo-ref="duty.ref")
-        span.duty-name {{ ::duty.subject }}
-div.duty-project {{ ::vm.getProjectName()}}
+    div.duty-data
+        div
+            span.duty-type {{ ::vm.getDutyType() }}
+            span.duty-status(ng-style="{'color': vm.duty.status_extra_info.color}") {{ ::vm.duty.status_extra_info.name }}
+        span.duty-title
+            span.duty-id(tg-bo-ref="duty.ref")
+            span.duty-name {{ ::duty.subject }}
+    div.duty-project {{ ::vm.getProjectName()}}

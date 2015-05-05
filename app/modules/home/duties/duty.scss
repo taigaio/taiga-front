@@ -2,11 +2,8 @@
 .watching {
     margin-bottom: 2rem;
     .duty-single {
-        align-items: center;
         border-bottom: 1px solid $whitish;
         cursor: pointer;
-        display: flex;
-        flex-direction: row;
         padding: .5rem;
         &:last-child {
             border: 0;
@@ -17,6 +14,11 @@
             .duty-status {
                 color: $red;
             }
+        }
+        >a {
+            align-items: center;
+            display: flex;
+            flex-direction: row;
         }
     }
     .avatar {
