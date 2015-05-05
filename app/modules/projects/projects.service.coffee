@@ -21,8 +21,20 @@ class ProjectsService extends taiga.Service
 
             @._projectsPromise = @rs.projects.listByMember(@rootScope.user?.id)
             @._projectsPromise.then (projects) =>
-                for project in projects
+                _.map projects, (project) =>
                     project.url = @projectUrl.get(project)
+
+
+                    console.log project.memberships
+
+                    project.colorized_tags = []
+
+                    if project.tags
+                        tags = project.tags.sort()
+
+                        project.colorized_tags = _.map tags, (tag) ->
+                            color = project.tags_colors[tag]
+                            return {name: tag, color: color}
 
                 @._projects = Immutable.fromJS({
                     all: projects,

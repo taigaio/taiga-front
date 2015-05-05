@@ -64,7 +64,7 @@ describe "tgProjects", ->
 
         beforeEach ->
             projects = [
-                {"id": 1},
+                {"id": 1, tags: ['xx', 'yy', 'aa'], tags_colors: {xx: "red", yy: "blue", aa: "white"}},
                 {"id": 2},
                 {"id": 3},
                 {"id": 4},
@@ -112,6 +112,20 @@ describe "tgProjects", ->
             expect(projectsService.projectsById.toJS()[1].url).to.be.equal("url-1")
             expect(projectsService.projects.get("all").toJS()[0].url).to.be.equal("url-1")
             expect(projectsService.projects.get("recents").toJS()[0].url).to.be.equal("url-1")
+
+        it "add sorted colorized_tags project object", () ->
+            mocks.thenStub.callArg(0, projects)
+
+            tags = [
+                {name: "aa", color: "white"},
+                {name: "xx", color: "red"},
+                {name: "yy", color: "blue"}
+            ];
+
+
+            colorized_tags = projectsService.projects.get("all").toJS()[0].colorized_tags
+
+            expect(colorized_tags).to.be.eql(tags)
 
     it "newProject, create the wizard lightbox", () ->
         projectsService.newProject()
