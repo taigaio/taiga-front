@@ -67,6 +67,15 @@ describe "tgHome", ->
 
         provide.value "$projectUrl", mocks.projectUrl
 
+    _mockAuth = () ->
+        mocks.auth = {
+            getUser: sinon.stub()
+        }
+
+        mocks.auth.getUser.returns(id: 1)
+
+        provide.value "$tgAuth", mocks.auth
+
     _inject = (callback) ->
         inject (_$q_, _$tgResources_, _$rootScope_, _$projectUrl_, _$timeout_, _tgHomeService_) ->
             timeout = _$timeout_
@@ -78,6 +87,7 @@ describe "tgHome", ->
             provide = $provide
             _mockResources()
             _mockProjectUrl()
+            _mockAuth()
             return null
 
     _setup = ->
@@ -90,7 +100,6 @@ describe "tgHome", ->
 
     describe "fetch items", ->
         it "work in progress filled", () ->
-            homeService.fetchWorkInProgress(1)
             mocks.thenStubAssignedToUserstories.callArg(0, [{"id": 1}])
             mocks.thenStubAssignedToTasks.callArg(0, [{"id": 2}])
             mocks.thenStubAssignedToIssues.callArg(0, [{"id": 3}])
@@ -113,7 +122,6 @@ describe "tgHome", ->
             })
 
         it "_inProgress change to false when tgResources end", () ->
-            homeService.fetchWorkInProgress(1)
             expect(homeService._inProgress).to.be.true
             timeout.flush()
             expect(homeService._inProgress).to.be.false

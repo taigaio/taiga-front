@@ -1,11 +1,18 @@
 class HomeService extends taiga.Service
-    @.$inject = ["$q", "$tgResources", "$rootScope", "$projectUrl"]
+    @.$inject = ["$q", "$tgResources", "$rootScope", "$projectUrl", "$tgAuth"]
 
-    constructor: (@q, @rs, @rootScope, @projectUrl) ->
-        @.workInProgress = Immutable.Map()
+    constructor: (@q, @rs, @rootScope, @projectUrl, @auth) ->
+        @._workInProgress = Immutable.Map()
+        @._projectPromise = null
         @._inProgress = false
 
-    fetchWorkInProgress: (userId) ->
+        taiga.defineImmutableProperty @, "workInProgress", () => return @._workInProgress
+
+        @.fetchWorkInProgress()
+
+    fetchWorkInProgress: () ->
+        userId = @auth.getUser().id
+
         if not @._inProgress
             @._inProgress = true
             params = {
@@ -21,6 +28,7 @@ class HomeService extends taiga.Service
             assignedIssuesPromise = @rs.issues.listInAllProjects(params).then (issues) =>
                 @.assignedToIssues = issues
 
+
             params = {
                 status__is_closed: false
                 watchers: userId
@@ -34,12 +42,12 @@ class HomeService extends taiga.Service
             watchingIssuesPromise = @rs.issues.listInAllProjects(params).then (issues) =>
                 @.watchingIssues = issues
 
-            workPromise = @q.all([assignedUserStoriesPromise, assignedTasksPromise,
+            @._projectPromise = @q.all([assignedUserStoriesPromise, assignedTasksPromise,
                 assignedIssuesPromise, watchingUserStoriesPromise,
                 watchingUserStoriesPromise, watchingIssuesPromise])
 
-            workPromise.then =>
-                @.workInProgress = Immutable.fromJS({
+            @._projectPromise.then =>
+                @._workInProgress = Immutable.fromJS({
                     assignedTo: {
                         userStories: @.assignedToUserStories
                         tasks: @.assignedToTasks
@@ -54,6 +62,6 @@ class HomeService extends taiga.Service
 
                 @._inProgress = false
 
-        return workPromise
+        return @._projectPromise
 
 angular.module("taigaHome").service("tgHomeService", HomeService)

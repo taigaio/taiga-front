@@ -5,34 +5,38 @@ class ProjectsService extends taiga.Service
     @.$inject = ["$tgResources", "$rootScope", "$projectUrl", "tgLightboxFactory"]
 
     constructor: (@rs, @rootScope, @projectUrl, @lightboxFactory) ->
-        @.projects = Immutable.Map()
-        @.projectsById = Immutable.Map()
+        @._projects = Immutable.Map()
+        @._projectsById = Immutable.Map()
         @._inProgress = false
-        @.projectsPromise = null
+        @._projectsPromise = null
+
+        taiga.defineImmutableProperty @, "projects", () => return @._projects
+        taiga.defineImmutableProperty @, "projectsById", () => return @._projectsById
+
         @.fetchProjects()
 
     fetchProjects: ->
         if not @._inProgress
             @._inProgress = true
 
-            @.projectsPromise = @rs.projects.listByMember(@rootScope.user?.id)
-            @.projectsPromise.then (projects) =>
+            @._projectsPromise = @rs.projects.listByMember(@rootScope.user?.id)
+            @._projectsPromise.then (projects) =>
                 for project in projects
                     project.url = @projectUrl.get(project)
 
-                @.projects = Immutable.fromJS({
+                @._projects = Immutable.fromJS({
                     all: projects,
                     recents: projects.slice(0, 10)
                 })
 
-                @.projectsById = Immutable.fromJS(groupBy(projects, (p) -> p.id))
+                @._projectsById = Immutable.fromJS(groupBy(projects, (p) -> p.id))
 
                 return @.projects
 
-            @.projectsPromise.finally =>
+            @._projectsPromise.finally =>
                 @._inProgress = false
 
-        return @.projectsPromise
+        return @._projectsPromise
 
     newProject: ->
         @lightboxFactory.create("tg-lb-create-project", {
