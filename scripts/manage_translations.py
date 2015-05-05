@@ -26,12 +26,6 @@ from argparse import RawTextHelpFormatter
 from subprocess import PIPE, Popen, call
 
 
-FIXED_LOCALES = {
-    "zh-Hant": "zh-hant",
-    "zh-Hans": "zh-hans"
-}
-
-
 def _tx_resource_for_name(name):
     """ Return the Transifex resource name """
     return "taiga-front.{}".format(name)
@@ -41,11 +35,6 @@ def fetch(resources=None, languages=None):
     """
     Fetch translations from Transifex.
     """
-    for lang, lang_fixed in FIXED_LOCALES.items():
-        if os.path.exists("app/locales/locale-{}.json".format(lang_fixed)):
-            os.rename("app/locales/locale-{}.json".format(lang_fixed),
-                      "app/locales/locale-{}.json".format(lang))
-
     if not resources:
         if languages is None:
             call("tx pull -f --minimum-perc=5", shell=True)
@@ -62,11 +51,6 @@ def fetch(resources=None, languages=None):
                 for lang in languages:
                     call("tx pull -r {res} -f -l {lang}".format(res=_tx_resource_for_name(resource), lang=lang),
                          shell=True)
-
-    for lang, lang_fixed in FIXED_LOCALES.items():
-        if os.path.exists("app/locales/locale-{}.json".format(lang)):
-            os.rename("app/locales/locale-{}.json".format(lang),
-                      "app/locales/locale-{}.json".format(lang_fixed))
 
 
 def commit(resources=None, languages=None):
