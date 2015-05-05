@@ -261,9 +261,7 @@ ForgotPasswordDirective = ($auth, $confirm, $location, $navUrls) ->
         onSuccessSubmit = (response) ->
             $location.path($navUrls.resolve("login"))
             $confirm.success("<strong>Check your inbox!</strong><br />
-                             We have sent a mail to<br />
-                             <strong>#{response.data.email}</strong><br />
-                             with the instructions to set a new password") #TODO: i18n
+                             We have sent you an email with the instructions to set a new password") #TODO: i18n
 
         onErrorSubmit = (response) ->
             $confirm.notify("light-error", "According to our Oompa Loompas,
