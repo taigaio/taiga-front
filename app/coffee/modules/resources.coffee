@@ -24,59 +24,42 @@ taiga = @.taiga
 class ResourcesService extends taiga.Service
 
 urls = {
+    # Auth
     "auth": "/auth"
     "auth-register": "/auth/register"
     "invitations": "/invitations"
-    "permissions": "/permissions"
-    "roles": "/roles"
-    "projects": "/projects"
-    "memberships": "/memberships"
-    "notify-policies": "/notify-policies"
-    "bulk-create-memberships": "/memberships/bulk_create"
-    "milestones": "/milestones"
-    "userstories": "/userstories"
-    "bulk-create-us": "/userstories/bulk_create"
-    "bulk-update-us-backlog-order": "/userstories/bulk_update_backlog_order"
-    "bulk-update-us-sprint-order": "/userstories/bulk_update_sprint_order"
-    "bulk-update-us-kanban-order": "/userstories/bulk_update_kanban_order"
-    "userstories-restore": "/userstories/%s/restore"
-    "tasks": "/tasks"
-    "bulk-create-tasks": "/tasks/bulk_create"
-    "bulk-update-task-taskboard-order": "/tasks/bulk_update_taskboard_order"
-    "tasks-restore": "/tasks/%s/restore"
-    "issues": "/issues"
-    "bulk-create-issues": "/issues/bulk_create"
-    "issues-restore": "/issues/%s/restore"
-    "wiki": "/wiki"
-    "wiki-restore": "/wiki/%s/restore"
-    "wiki-links": "/wiki-links"
-    "choices/userstory-statuses": "/userstory-statuses"
-    "choices/userstory-statuses/bulk-update-order": "/userstory-statuses/bulk_update_order"
-    "choices/points": "/points"
-    "choices/points/bulk-update-order": "/points/bulk_update_order"
-    "choices/task-statuses": "/task-statuses"
-    "choices/task-statuses/bulk-update-order": "/task-statuses/bulk_update_order"
-    "choices/issue-statuses": "/issue-statuses"
-    "choices/issue-statuses/bulk-update-order": "/issue-statuses/bulk_update_order"
-    "choices/issue-types": "/issue-types"
-    "choices/issue-types/bulk-update-order": "/issue-types/bulk_update_order"
-    "choices/priorities": "/priorities"
-    "choices/priorities/bulk-update-order": "/priorities/bulk_update_order"
-    "choices/severities": "/severities"
-    "choices/severities/bulk-update-order": "/severities/bulk_update_order"
-    "search": "/search"
-    "sites": "/sites"
-    "project-templates": "/project-templates"
-    "site-members": "/site-members"
-    "site-projects": "/site-projects"
+
+    # User
     "users": "/users"
     "users-password-recovery": "/users/password_recovery"
     "users-change-password-from-recovery": "/users/change_password_from_recovery"
     "users-change-password": "/users/change_password"
     "users-change-email": "/users/change_email"
     "users-cancel-account": "/users/cancel"
+
+    # User - Notification
+    "notify-policies": "/notify-policies"
+
+    # User - Storage
     "user-storage": "/user-storage"
+
+    # Memberships
+    "memberships": "/memberships"
+    "bulk-create-memberships": "/memberships/bulk_create"
+
+    # Roles & Permissions
+    "roles": "/roles"
+    "permissions": "/permissions"
+
+    # Resolver
     "resolver": "/resolver"
+
+    # Project
+    "projects": "/projects"
+    "project-templates": "/project-templates"
+    "project-modules": "/projects/%s/modules"
+
+    # Project Values - Choises
     "userstory-statuses": "/userstory-statuses"
     "points": "/points"
     "task-statuses": "/task-statuses"
@@ -84,11 +67,30 @@ urls = {
     "issue-types": "/issue-types"
     "priorities": "/priorities"
     "severities": "/severities"
-    "project-modules": "/projects/%s/modules"
-    "webhooks": "/webhooks"
-    "webhooks-test": "/webhooks/%s/test"
-    "webhooklogs": "/webhooklogs"
-    "webhooklogs-resend": "/webhooklogs/%s/resend"
+
+    # Milestones/Sprints
+    "milestones": "/milestones"
+
+    # User stories
+    "userstories": "/userstories"
+    "bulk-create-us": "/userstories/bulk_create"
+    "bulk-update-us-backlog-order": "/userstories/bulk_update_backlog_order"
+    "bulk-update-us-sprint-order": "/userstories/bulk_update_sprint_order"
+    "bulk-update-us-kanban-order": "/userstories/bulk_update_kanban_order"
+
+    # Tasks
+    "tasks": "/tasks"
+    "bulk-create-tasks": "/tasks/bulk_create"
+    "bulk-update-task-taskboard-order": "/tasks/bulk_update_taskboard_order"
+
+    # Issues
+    "issues": "/issues"
+    "bulk-create-issues": "/issues/bulk_create"
+
+    # Wiki pages
+    "wiki": "/wiki"
+    "wiki-restore": "/wiki/%s/restore"
+    "wiki-links": "/wiki-links"
 
     # History
     "history/us": "/history/userstory"
@@ -107,22 +109,31 @@ urls = {
     "custom-attributes/issue": "/issue-custom-attributes"
     "custom-attributes/task": "/task-custom-attributes"
 
-    # Custom field values
+    # Custom Attributess - Values
     "custom-attributes-values/userstory": "/userstories/custom-attributes-values"
     "custom-attributes-values/issue": "/issues/custom-attributes-values"
     "custom-attributes-values/task": "/tasks/custom-attributes-values"
 
-    # Feedback
-    "feedback": "/feedback"
+    # Webhooks
+    "webhooks": "/webhooks"
+    "webhooks-test": "/webhooks/%s/test"
+    "webhooklogs": "/webhooklogs"
+    "webhooklogs-resend": "/webhooklogs/%s/resend"
+
+    # Reports - CSV
+    "userstories-csv": "/userstories/csv?uuid=%s"
+    "tasks-csv": "/tasks/csv?uuid=%s"
+    "issues-csv": "/issues/csv?uuid=%s"
+
+    # Search
+    "search": "/search"
 
     # Export/Import
     "exporter": "/exporter"
     "importer": "/importer/load_dump"
 
-    # CSV
-    "userstories-csv": "/userstories/csv?uuid=%s"
-    "tasks-csv": "/tasks/csv?uuid=%s"
-    "issues-csv": "/issues/csv?uuid=%s"
+    # Feedback
+    "feedback": "/feedback"
 
     # locales
     "locales": "/locales"
