@@ -794,7 +794,7 @@
         "PLACEHOLDER_FIELD": "Username or email",
         "ACTION_RESET_PASSWORD": "Reset Password",
         "LINK_CANCEL": "Nah, take me back. I think I remember it.",
-        "SUCCESS": "<strong>Check your inbox!</strong><br />We have sent a mail to<br /><strong>{{email}}</strong><br />with the instructions to set a new password",
+        "SUCCESS": "<strong>Check your inbox!</strong><br />We have sent you an email with the instructions to set a new password",
         "ERROR": "According to our Oompa Loompas, your are not registered yet."
     },
     "LOGIN_COMMON": {
