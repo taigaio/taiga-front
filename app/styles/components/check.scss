@@ -1,0 +1,61 @@
+.check {
+    background-color: darken($whitish, 10%);
+    border-radius: 2px;
+    cursor: pointer;
+    height: 1.5rem;
+    overflow: hidden;
+    position: relative;
+    width: 65px;
+    input {
+        cursor: pointer;
+        height: 500px;
+        left: -10px;
+        opacity: 0;
+        position: absolute;
+        top: -10px;
+        width: 500px;
+        z-index: 999;
+        + div {
+            background-color: $gray;
+            height: 25px;
+            transition: all .2s linear;
+            width: 50%;
+        }
+        ~ .check-text {
+            //@include transition(opacity .3s linear);
+            @extend %small;
+            color: $white;
+            position: absolute;
+            top: .1rem;
+        }
+        ~ .check-yes {
+            opacity: 0;
+            right: .5rem;
+        }
+        ~ .check-no {
+            left: .5rem;
+            opacity: .6;
+        }
+    }
+    input:checked {
+        + div {
+            background-color: $fresh-taiga;
+            margin-left: 50%;
+            transition: all .2s linear;
+        }
+        ~ .check-yes {
+            opacity: .6;
+            right: .4rem;
+        }
+        ~ .check-no {
+            left: .4rem;
+            opacity: 0;
+        }
+    }
+    input:disabled {
+        cursor: auto;
+        + div {
+            background-color: $gray-light;
+        }
+    }
+}
