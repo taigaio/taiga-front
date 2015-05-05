@@ -1,7 +1,6 @@
 describe "homeDirective", () ->
     scope = compile = provide = null
-    mockTgHomeService = null
-    template = "<div ng-controller='HomePage' tg-home></div>"
+    template = "<div tg-home></div>"
 
     createDirective = () ->
         elm = compile(template)(scope)
@@ -12,26 +11,41 @@ describe "homeDirective", () ->
             workInProgress: Immutable.fromJS({
                 assignedTo: {
                     userStories: [{"id": 1}]
-                    tasks: []
-                    issues: []
+                    tasks: [{"id": 2}]
+                    issues: [{"id": 3}]
                 }
                 watching: {
-                    userStories: []
-                    tasks: []
-                    issues: []
+                    userStories: [{"id": 4}]
+                    tasks: [{"id": 5}]
+                    issues: [{"id": 6}]
                 }
             })
         }
 
         provide.value "tgHomeService", mockTgHomeService
 
+    _mockTranslateFilter = () ->
+        mockTranslateFilter = (value) ->
+            return value
+        provide.value "translateFilter", mockTranslateFilter
+
+    _mockTgDuty = () ->
+        provide.factory 'tgDutyDirective', () -> {}
+
+    _mockHomeProjectList = () ->
+        provide.factory 'tgHomeProjectListDirective', () -> {}
+
     _mocks = () ->
         module ($provide) ->
             provide = $provide
+            _mockTgDuty()
+            _mockHomeProjectList()
             _mockTgHomeService()
+            _mockTranslateFilter()
             return null
 
     beforeEach ->
+        module "templates"
         module "taigaHome"
 
         _mocks()
@@ -42,4 +56,5 @@ describe "homeDirective", () ->
 
     it "home directive content", () ->
         elm = createDirective()
-        console.log 111, elm, elm.find('div')
+        scope.$apply()
+        expect(elm.find('.duty-single')).to.have.length(6)

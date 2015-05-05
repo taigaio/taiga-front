@@ -5,7 +5,7 @@ div.home-wrapper.centered
     div.duty-summary
         div.title-bar.working-on-title(ng-show="vm.assignedTo.size", translate="HOME.WORKING_ON_SECTION")
         section.working-on(ng-show="vm.assignedTo.size")
-            div.duty-single(tg-duty="duty", tg-repeat="duty in vm.assignedTo", ng-class="{blocked: duty.is_blocked}")
+            div.duty-single(tg-duty="duty", ng-repeat="duty in vm.assignedTo", ng-class="{blocked: duty.is_blocked}")
 
         div.title-bar.watching-title(translate="HOME.WATCHING_SECTION")
 

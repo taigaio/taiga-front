@@ -1,6 +1,5 @@
 HomeDirective = (homeService) ->
     link = (scope, el, attrs, ctrl) ->
-        console.log 111111
         scope.vm = {}
         taiga.defineImmutableProperty(scope.vm, "workInProgress", () -> homeService.workInProgress)
 
