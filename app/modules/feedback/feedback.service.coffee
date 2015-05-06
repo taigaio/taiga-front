@@ -3,7 +3,6 @@ class FeedbackService extends taiga.Service
 
     constructor: (@lightboxFactory) ->
 
-
     sendFeedback: ->
         @lightboxFactory.create("tg-lb-feedback", {
             "class": "lightbox lightbox-feedback lightbox-generic-form"

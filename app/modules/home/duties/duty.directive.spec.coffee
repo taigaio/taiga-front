@@ -1,4 +1,4 @@
-describe "homeDirective", () ->
+describe "dutyDirective", () ->
     scope = compile = provide = null
     mockTgProjectsService = null
     mockTgNavUrls = null
@@ -47,7 +47,7 @@ describe "homeDirective", () ->
             scope = $rootScope.$new()
             compile = $compile
 
-    it "duty directive content", () ->
+    it "duty directive scope content", () ->
         scope.duty = {
             project: 1
             ref: 1

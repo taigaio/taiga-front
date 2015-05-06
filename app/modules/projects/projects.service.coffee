@@ -24,9 +24,6 @@ class ProjectsService extends taiga.Service
                 _.map projects, (project) =>
                     project.url = @projectUrl.get(project)
 
-
-                    console.log project.memberships
-
                     project.colorized_tags = []
 
                     if project.tags
