@@ -12,13 +12,15 @@
         display: flex;
     }
     .title {
-        @extend %larger;
-        @extend %title;
+        @extend %medium;
+        @extend %text;
+        @extend %bold;
         align-content: center;
         background: $whitish;
         display: flex;
+        justify-content: space-between;
         margin-bottom: .5rem;
-        padding: .9rem 1rem;
+        padding: .5rem 1rem;
     }
     .timeline {
         flex: 1;
