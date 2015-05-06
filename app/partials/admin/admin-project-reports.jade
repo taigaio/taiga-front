@@ -17,8 +17,9 @@ div.wrapper(ng-controller="ProjectProfileController as ctrl",
 
         div.admin-attributes-section(tg-csv-us)
         div.admin-attributes-section(tg-csv-task)
-        div.admin-attributes-section
-            div(tg-csv-issue)
+        div.admin-attributes-section(tg-csv-issue)
+
+        div
             a.help-button(href="https://taiga.io/support/csv-reports/", target="_blank")
                 span.icon.icon-help
                 span(translate="ADMIN.REPORTS.HELP")

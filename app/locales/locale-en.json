@@ -260,10 +260,17 @@
             "DESCRIPTION": "Download a CSV file or copy the generated URL and open it in your favourite text editor or spreadsheet to make your own project data reports. You will be able to visualize and analize all your data easily.",
             "HELP": "How to use this on my own spreadsheet?",
             "REGENERATE_TITLE": "Change URL",
-            "REGENERATE_SUBTITLE": "You going to change the CSV data access url. The previous url will be disabled. Are you sure?",
-            "CSV_TYPE_US": "user stories",
-            "CSV_TYPE_TASK": "tasks",
-            "CSV_TYPE_ISSUE": "issues"
+            "REGENERATE_SUBTITLE": "You going to change the CSV data access url. The previous url will be disabled. Are you sure?"
+        },
+        "CSV": {
+            "SECTION_TITLE_US": "user stories reports",
+            "SECTION_TITLE_TASK": "tasks reports",
+            "SECTION_TITLE_ISSUE": "issues reports",
+            "DOWNLOAD": "Download CSV",
+            "URL_FIELD_PLACEHOLDER": "Please regenerate CSV url",
+            "TITLE_REGENERATE_URL": "Regenerate CSV url",
+            "ACTION_GENERATE_URL": "Generate Url",
+            "ACTION_REGENERATE": "Regenerate"
         },
         "CUSTOM_FIELDS": {
             "TITLE": "Custom Fields",
@@ -395,14 +402,6 @@
             "LABEL_SEVERITY": "Default value for severity selector",
             "LABEL_ISSUE_TYPE": "Default value for issue type selector",
             "LABEL_ISSUE_STATUS": "Default value for issue status selector"
-        },
-        "CSV": {
-            "TITLE": "{{csvType}} reports",
-            "DOWNLOAD": "Download CSV",
-            "URL_FIELD_PLACEHOLDER": "Please regenerate CSV url",
-            "TITLE_REGENERATE_URL": "Regenerate CSV url",
-            "ACTION_GENERATE_URL": "Generate Url",
-            "ACTION_REGENERATE": "Regenerate"
         },
         "STATUS": {
             "PLACEHOLDER_WRITE_STATUS_NAME": "Write a name for the new status"

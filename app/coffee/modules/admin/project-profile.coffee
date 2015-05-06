@@ -58,14 +58,16 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
 
         promise.then =>
             sectionName = @translate.instant( @scope.sectionName)
-            appTitle = @translate.instant("ADMIN.PROJECT_PROFILE.PAGE_TITLE", {sectionName: sectionName, projectName: @scope.project.name})
+            appTitle = @translate.instant("ADMIN.PROJECT_PROFILE.PAGE_TITLE", {
+                     sectionName: sectionName, projectName: @scope.project.name})
             @appTitle.set(appTitle)
 
         promise.then null, @.onInitialDataError.bind(@)
 
         @scope.$on "project:loaded", =>
             sectionName = @translate.instant(@scope.sectionName)
-            appTitle = @translate.instant("ADMIN.PROJECT_PROFILE.PAGE_TITLE", {sectionName: sectionName, projectName: @scope.project.name})
+            appTitle = @translate.instant("ADMIN.PROJECT_PROFILE.PAGE_TITLE", {
+                     sectionName: sectionName, projectName: @scope.project.name})
             @appTitle.set(appTitle)
 
     loadProject: ->
@@ -131,7 +133,8 @@ ProjectProfileDirective = ($repo, $confirm, $loading, $navurls, $location) ->
 
     return {link:link}
 
-module.directive("tgProjectProfile", ["$tgRepo", "$tgConfirm", "$tgLoading", "$tgNavUrls", "$tgLocation", ProjectProfileDirective])
+module.directive("tgProjectProfile", ["$tgRepo", "$tgConfirm", "$tgLoading", "$tgNavUrls", "$tgLocation",
+                                      ProjectProfileDirective])
 
 #############################################################################
 ## Project Default Values Directive
@@ -167,7 +170,8 @@ ProjectDefaultValuesDirective = ($repo, $confirm, $loading) ->
 
     return {link:link}
 
-module.directive("tgProjectDefaultValues", ["$tgRepo", "$tgConfirm", "$tgLoading", ProjectDefaultValuesDirective])
+module.directive("tgProjectDefaultValues", ["$tgRepo", "$tgConfirm", "$tgLoading",
+                                            ProjectDefaultValuesDirective])
 
 #############################################################################
 ## Project Modules Directive
@@ -243,7 +247,8 @@ ProjectExportDirective = ($window, $rs, $confirm, $translate) ->
         loading_msg = $translate.instant("ADMIN.PROJECT_EXPORT.LOADING_MESSAGE")
         dump_ready_text = -> resultTitleEl.html($translate.instant("ADMIN.PROJECT_EXPORT.DUMP_READY"))
         asyn_message = -> resultTitleEl.html($translate.instant("ADMIN.PROJECT_EXPORT.ASYN_MESSAGE"))
-        syn_message = (url) -> resultTitleEl.html($translate.instant("ADMIN.PROJECT_EXPORT.SYNC_MESSAGE", {url: url}))
+        syn_message = (url) -> resultTitleEl.html($translate.instant("ADMIN.PROJECT_EXPORT.SYNC_MESSAGE", {
+                                                                                                   url: url}))
 
         setLoadingTitle = -> resultTitleEl.html(loading_title)
         setAsyncTitle = -> resultTitleEl.html(loading_msg)
@@ -295,7 +300,8 @@ ProjectExportDirective = ($window, $rs, $confirm, $translate) ->
                 if result.status == 429  # TOO MANY REQUESTS
                     errorMsg = $translate.instant("ADMIN.PROJECT_EXPORT.ERROR_BUSY")
                 else if result.data?._error_message
-                    errorMsg = $translate.instant("ADMIN.PROJECT_EXPORT.ERROR_BUSY", {message: result.data._error_message})
+                    errorMsg = $translate.instant("ADMIN.PROJECT_EXPORT.ERROR_BUSY", {
+                                                   message: result.data._error_message})
 
                 $confirm.notify("error", errorMsg)
 
@@ -304,7 +310,8 @@ ProjectExportDirective = ($window, $rs, $confirm, $translate) ->
 
     return {link:link}
 
-module.directive("tgProjectExport", ["$window", "$tgResources", "$tgConfirm", "$translate", ProjectExportDirective])
+module.directive("tgProjectExport", ["$window", "$tgResources", "$tgConfirm", "$translate",
+                                     ProjectExportDirective])
 
 
 #############################################################################
@@ -372,14 +379,13 @@ module.controller("CsvExporterTasksController", CsvExporterTasksController)
 module.controller("CsvExporterIssuesController", CsvExporterIssuesController)
 
 
-
 #############################################################################
 ## CSV Directive
 #############################################################################
 
 CsvUsDirective = ($translate) ->
     link = ($scope) ->
-        $scope.csvType = $translate.instant("ADMIN.REPORTS.CSV_TYPE_USS")
+        $scope.sectionTitle = "ADMIN.CSV.SECTION_TITLE_US"
 
     return {
         controller: "CsvExporterUserstoriesController",
@@ -390,9 +396,10 @@ CsvUsDirective = ($translate) ->
 
 module.directive("tgCsvUs", ["$translate", CsvUsDirective])
 
+
 CsvTaskDirective = ($translate) ->
     link = ($scope) ->
-        $scope.csvType = $translate.instant("ADMIN.REPORTS.CSV_TYPE_TASKS")
+        $scope.sectionTitle = "ADMIN.CSV.SECTION_TITLE_TASK"
 
     return {
         controller: "CsvExporterTasksController",
@@ -403,9 +410,10 @@ CsvTaskDirective = ($translate) ->
 
 module.directive("tgCsvTask", ["$translate", CsvTaskDirective])
 
+
 CsvIssueDirective = ($translate) ->
     link = ($scope) ->
-        $scope.csvType = $translate.instant("ADMIN.REPORTS.CSV_TYPE_ISSUES")
+        $scope.sectionTitle = "ADMIN.CSV.SECTION_TITLE_ISSUE"
 
     return {
         controller: "CsvExporterIssuesController",
