@@ -389,6 +389,7 @@ CsvUsDirective = ($translate) ->
 
     return {
         controller: "CsvExporterUserstoriesController",
+        controllerAs: "ctrl",
         templateUrl: "admin/project-csv.html",
         link: link,
         scope: true
@@ -403,6 +404,7 @@ CsvTaskDirective = ($translate) ->
 
     return {
         controller: "CsvExporterTasksController",
+        controllerAs: "ctrl",
         templateUrl: "admin/project-csv.html",
         link: link,
         scope: true
@@ -417,6 +419,7 @@ CsvIssueDirective = ($translate) ->
 
     return {
         controller: "CsvExporterIssuesController",
+        controllerAs: "ctrl",
         templateUrl: "admin/project-csv.html",
         link: link,
         scope: true
