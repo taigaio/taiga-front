@@ -56,8 +56,10 @@
 
         }
         &.user-avatar {
+            min-width: 200px;
             padding: 0;
             padding-left: 2rem;
+            text-align: right;
             span {
                 padding-right: 1rem;
             }
@@ -66,7 +68,7 @@
     }
     img {
         height: 2.5rem;
-        padding-left: .3rem;
+        padding-left: .5rem;
         vertical-align: middle;
     }
     svg {
@@ -108,8 +110,8 @@
     border: 1px solid $black;
     padding: .3rem;
     &.dropdown-user {
-        left: calc(50% - 230px/2);
-        min-width: 230px;
+        left: calc(50% - 200px/2);
+        min-width: 200px;
         ul {
             margin-bottom: 0;
         }
