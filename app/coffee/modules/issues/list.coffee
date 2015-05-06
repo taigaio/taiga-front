@@ -714,22 +714,28 @@ IssueStatusInlineEditionDirective = ($repo, $template, $rootscope) ->
             updateIssueStatus($el, issue, $scope.issueStatusById)
 
             $scope.$apply () ->
-                $repo.save(issue).then
+                $repo.save(issue).then ->
 
-                for filter in $scope.filters.statuses
-                    if filter.id == issue.status
-                        filter.count++
-                $rootscope.$broadcast("filters:issueupdate", $scope.filters)
+                    for filter in $scope.filters.statuses
+                        if filter.id == issue.status
+                            filter.count++
 
-                hideIssue = true
+                    $rootscope.$broadcast("filters:issueupdate", $scope.filters)
 
-                for filter in $scope.filters.statuses
-                    if filter.selected == true && filter.id == issue.status
-                        hideIssue = false
-                        break
+                    filtering = false
 
-                if hideIssue == true
-                    $scope.issues.splice($scope.issues.indexOf(issue), 1)
+                    for filter in $scope.filters.statuses
+                        if filter.selected == true
+                            filtering = true
+                            if filter.id == issue.status
+                                return
+
+                    if not filtering
+                        return
+
+                    for el, i in $scope.issues
+                        if el and el.id == issue.id
+                            $scope.issues.splice(i, 1)
 
         taiga.bindOnce $scope, "project", (project) ->
             $el.append(selectionTemplate({ 'statuses':  project.issue_statuses }))
