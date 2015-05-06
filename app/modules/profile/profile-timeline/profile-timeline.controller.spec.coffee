@@ -1,12 +1,16 @@
 describe "ProfileTimelineController", ->
     myCtrl = scope = $q = provide = null
 
+    mocks = {}
+
     mockUser = {id: 3}
 
-    _mockTgResources = () ->
-        provide.value "$tgResources", {
-            timeline: {}
+    _mockProfileTimeline = () ->
+        mocks.profileTimelineService = {
+            getTimeline: sinon.stub()
         }
+
+        provide.value "tgProfileTimelineService", mocks.profileTimelineService
 
     _mockTgAuth = () ->
         provide.value "$tgAuth", {
@@ -17,7 +21,7 @@ describe "ProfileTimelineController", ->
     _mocks = () ->
         module ($provide) ->
             provide = $provide
-            _mockTgResources()
+            _mockProfileTimeline()
             _mockTgAuth()
 
             return null
@@ -32,60 +36,31 @@ describe "ProfileTimelineController", ->
             myCtrl = $controller "ProfileTimeline"
 
     it "timelineList should be an array", () ->
-        expect(myCtrl.timelineList).is.an("array")
-
+        expect(myCtrl.timelineList.toJS()).is.an("array")
 
     it "pagination starts at 1", () ->
-        expect(myCtrl.pagination.page).to.be.equal(1)
+        expect(myCtrl.page).to.be.equal(1)
 
     describe "load timeline", () ->
         thenStub = timelineList = null
 
         beforeEach () ->
-            timelineList = {
-                data: [
-                    { # valid item
-                        data: {
-                            values_diff: {
-                                "status": "xx",
-                                "subject": "xx"
-                            }
-                        }
-                    },
-                    { # invalid item
-                        data: {
-                            values_diff: {
-                                "fake": "xx"
-                            }
-                        }
-                    },
-                    { # invalid item
-                        data: {
-                            values_diff: {
-                                "fake2": "xx"
-                            }
-                        }
-                    },
-                    { # valid item
-                        data: {
-                            values_diff: {
-                                "fake2": "xx",
-                                "milestone": "xx"
-                            }
-                        }
-                    }
-                ]
-            }
+            timelineList = Immutable.fromJS([
+                { fake: "fake"},
+                { fake: "fake"},
+                { fake: "fake"},
+                { fake: "fake"}
+            ])
 
             thenStub = sinon.stub()
 
             profileStub = sinon.stub()
-                .withArgs(mockUser.id, myCtrl.pagination)
+                .withArgs(mockUser.id, myCtrl.page)
                 .returns({
                     then: thenStub
                 })
 
-            myCtrl.rs.timeline.profile = profileStub
+            mocks.profileTimelineService.getTimeline = profileStub
 
         it "the loadingData variable must be true during the timeline load", () ->
             expect(myCtrl.loadingData).to.be.false
@@ -99,18 +74,17 @@ describe "ProfileTimelineController", ->
             expect(myCtrl.loadingData).to.be.false
 
         it "pagiantion increase one every call to loadTimeline", () ->
-            expect(myCtrl.pagination.page).to.equal(1)
+            expect(myCtrl.page).to.equal(1)
 
             myCtrl.loadTimeline()
 
             thenStub.callArgWith(0, timelineList)
 
-            expect(myCtrl.pagination.page).to.equal(2)
+            expect(myCtrl.page).to.equal(2)
 
-        it "filter the invalid timeline items", () ->
+        it "timeline items", () ->
             myCtrl.loadTimeline()
 
             thenStub.callArgWith(0, timelineList)
 
-            expect(myCtrl.timelineList[0]).to.be.equal(timelineList.data[0])
-            expect(myCtrl.timelineList[1]).to.be.equal(timelineList.data[3])
+            expect(myCtrl.timelineList.size).to.be.eql(4)

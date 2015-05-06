@@ -21,7 +21,7 @@ class ProfileTimelineItemTitle
         if param == "username"
             user = timeline.data.user
             title_attr = @translate.instant('COMMON.SEE_USER_PROFILE', {username: user.username})
-            url = 'user-profile:username=activity.user.username'
+            url = 'user-profile:username=vm.activity.user.username'
             return @._getLink(url, user.username, title_attr)
 
         else if param == 'field_name'
@@ -30,12 +30,12 @@ class ProfileTimelineItemTitle
             return @translate.instant(@._fieldTranslationKey[field_name])
 
         else if param == 'project_name'
-            url = 'project:project=activity.project.slug'
+            url = 'project:project=vm.activity.project.slug'
 
             return @._getLink(url, timeline.data.project.name)
 
         else if param == 'sprint_name'
-            url = 'project-taskboard:project=activity.project.slug,sprint=activity.sprint.slug'
+            url = 'project-taskboard:project=vm.activity.project.slug,sprint=vm.activity.sprint.slug'
 
             return @._getLink(url, timeline.data.milestone.name)
 

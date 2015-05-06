@@ -25,59 +25,26 @@ mixOf = @.taiga.mixOf
 
 class ProfileTimelineController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.FiltersMixin)
     @.$inject = [
-        "$tgResources",
-        "$tgAuth"
+        "$tgAuth",
+        "tgProfileTimelineService"
     ]
 
-    _valid_fields: [
-        'status',
-        'subject',
-        'description',
-        'assigned_to',
-        'points',
-        'severity',
-        'priority',
-        'type',
-        'attachments',
-        'milestone',
-        'is_blocked',
-        'is_iocaine',
-        'content_diff',
-        'name',
-        'estimated_finish',
-        'estimated_start'
-    ]
-
-    constructor: (@rs, @auth) ->
-        @.timelineList = []
-        @.pagination = {page: 1}
+    constructor: (@auth, @profileTimelineService) ->
+        @.timelineList = Immutable.List()
+        @.page = 1
         @.loadingData = false
-
-    _isValidField: (values) =>
-        return _.some values, (value) => @._valid_fields.indexOf(value) != -1
-
-    _filterValidTimelineItems: (timeline) =>
-        if timeline.data.values_diff
-            values = Object.keys(timeline.data.values_diff)
-
-        if values && values.length
-            if !@._isValidField(values)
-                return false
-            else if values[0] == 'attachments' && timeline.data.values_diff.attachments.new.length == 0
-                return false
-
-        return true
 
     loadTimeline: () ->
         user = @auth.getUser()
 
         @.loadingData = true
 
-        return @rs.timeline.profile(user.id, @.pagination).then (result) =>
-            newTimelineList = _.filter result.data, @._filterValidTimelineItems
-            @.timelineList = @timelineList.concat(newTimelineList)
-            @.pagination.page++
-            @.loadingData = false
+        @profileTimelineService
+            .getTimeline(user.id, @.page)
+            .then (newTimelineList) =>
+                @.timelineList = @.timelineList.concat(newTimelineList)
+                @.page++
+                @.loadingData = false
 
 angular.module("taigaProfile")
     .controller("ProfileTimeline", ProfileTimelineController)

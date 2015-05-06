@@ -14,7 +14,7 @@ div.activity-image
         .profile-member-picture
             img(ng-src="{{::vm.activity.member.user.photo}}", alt="{{::vm.activity.member.user.name}}")
         .activity-member-info
-            a(tg-nav="user-profile:username=activity.member.user.username", title="{{::vm.activity.member.user.name }}")
+            a(tg-nav="user-profile:username=vm.activity.member.user.username", title="{{::vm.activity.member.user.name }}")
                 span {{::vm.activity.member.user.name}}
             p {{::vm.activity.member.role.name}}
 

@@ -72,7 +72,7 @@ describe "ProfileTimelineItemController", ->
     it "basic activity fields filled", () ->
         timeline = scope.vm.timeline
 
-        myCtrl = controller("ProfileTimelineItem", {$scope: scope})
+        myCtrl = controller("ProfileTimelineItem", {$scope: scope}, {timeline: timeline})
 
         expect(myCtrl.activity.user).to.be.equal(timeline.data.user)
         expect(myCtrl.activity.project).to.be.equal(timeline.data.project)
@@ -94,7 +94,7 @@ describe "ProfileTimelineItemController", ->
         mockType.description.withArgs(timeline).returns(description)
         mockType.member.withArgs(timeline).returns(member)
 
-        myCtrl = controller("ProfileTimelineItem", {$scope: scope})
+        myCtrl = controller("ProfileTimelineItem", {$scope: scope}, {timeline: timeline})
 
         expect(myCtrl.activity.description).to.be.an('object') # $sce.trustAsHtml
         expect(myCtrl.activity.member).to.be.equal(member)

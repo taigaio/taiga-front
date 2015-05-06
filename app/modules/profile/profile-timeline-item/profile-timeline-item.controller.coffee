@@ -1,31 +1,33 @@
 class ProfileTimelineItemController
     @.$inject = [
-        "$scope",
         "$sce",
         "tgProfileTimelineItemType",
         "tgProfileTimelineItemTitle"
     ]
 
-    constructor: (@scope, @sce, @profileTimelineItemType, @profileTimelineItemTitle) ->
-        event = @parseEventType(@scope.vm.timeline.event_type)
-        type = @profileTimelineItemType.getType(@scope.vm.timeline, event)
+    constructor: (@sce, @profileTimelineItemType, @profileTimelineItemTitle) ->
+        timeline = @.timeline
+        event = @.parseEventType(timeline.event_type)
+        type = @profileTimelineItemType.getType(timeline, event)
 
         @.activity = {}
 
-        @.activity.user = @scope.vm.timeline.data.user
-        @.activity.project = @scope.vm.timeline.data.project
-        @.activity.sprint = @scope.vm.timeline.data.milestone
-        @.activity.title = @profileTimelineItemTitle.getTitle(@scope.vm.timeline, event, type)
-        @.activity.created_formated = moment(@scope.vm.timeline.created).fromNow()
+        @.activity.user = timeline.data.user
+        @.activity.project = timeline.data.project
+        @.activity.sprint = timeline.data.milestone
+        @.activity.title = @profileTimelineItemTitle.getTitle(timeline, event, type)
+        @.activity.created_formated = moment(timeline.created).fromNow()
+        #test
+        @.activity.obj =  @.getObject(timeline, event)
 
         if type.description
-            @.activity.description = @sce.trustAsHtml(type.description(@scope.vm.timeline))
+            @.activity.description = @sce.trustAsHtml(type.description(timeline))
 
         if type.member
-            @.activity.member = type.member(@scope.vm.timeline)
+            @.activity.member = type.member(timeline)
 
-        if @scope.vm.timeline.data.values_diff?.attachments
-            @.activity.attachments = @scope.vm.timeline.data.values_diff.attachments.new
+        if timeline.data.values_diff?.attachments
+            @.activity.attachments = timeline.data.values_diff.attachments.new
 
     parseEventType: (event_type) ->
         event_type = event_type.split(".")
@@ -35,6 +37,10 @@ class ProfileTimelineItemController
             obj: event_type[1],
             type: event_type[2]
         }
+
+    getObject: (timeline, event) ->
+        if timeline.data[event.obj]
+            return timeline.data[event.obj]
 
 angular.module("taigaProfile")
     .controller("ProfileTimelineItem", ProfileTimelineItemController)

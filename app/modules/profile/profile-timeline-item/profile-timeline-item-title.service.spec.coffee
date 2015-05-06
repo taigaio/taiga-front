@@ -52,7 +52,7 @@ describe "tgProfileTimelineItemTitle", ->
             .returns('user-param')
 
         usernamelink = sinon.match ((value) ->
-            return value.username == '<a tg-nav="user-profile:username=activity.user.username" title="user-param">xx</a>'
+            return value.username == '<a tg-nav="user-profile:username=vm.activity.user.username" title="user-param">xx</a>'
          ), "usernamelink"
 
         mockTranslate.instant
@@ -113,7 +113,7 @@ describe "tgProfileTimelineItemTitle", ->
         }
 
         projectparam = sinon.match ((value) ->
-            return value.project_name == '<a tg-nav="project:project=activity.project.slug" title="project_name">project_name</a>'
+            return value.project_name == '<a tg-nav="project:project=vm.activity.project.slug" title="project_name">project_name</a>'
          ), "projectparam"
 
         mockTranslate.instant
@@ -141,7 +141,7 @@ describe "tgProfileTimelineItemTitle", ->
         }
 
         milestoneparam = sinon.match ((value) ->
-            return value.sprint_name == '<a tg-nav="project-taskboard:project=activity.project.slug,sprint=activity.sprint.slug" title="milestone_name">milestone_name</a>'
+            return value.sprint_name == '<a tg-nav="project-taskboard:project=vm.activity.project.slug,sprint=vm.activity.sprint.slug" title="milestone_name">milestone_name</a>'
          ), "milestoneparam"
 
         mockTranslate.instant
