@@ -260,10 +260,17 @@
             "DESCRIPTION": "下載CSV檔案或是複製這個生成的網址到你愛用的文字編輯器或電子表格上製作自己的專案檔案資料報告。你可能輕易地視覺化或分析這些資料。",
             "HELP": "使用者故事預設欄位",
             "REGENERATE_TITLE": "改變網址",
-            "REGENERATE_SUBTITLE": "你將要改變CSV資料的連結網址，之前的網址將失效。你確定要這樣做嗎?",
-            "CSV_TYPE_US": "使用者故事",
-            "CSV_TYPE_TASK": "任務 ",
-            "CSV_TYPE_ISSUE": "問題 "
+            "REGENERATE_SUBTITLE": "你將要改變CSV資料的連結網址，之前的網址將失效。你確定要這樣做嗎?"
+        },
+        "CSV": {
+            "SECTION_TITLE_US": "user stories reports",
+            "SECTION_TITLE_TASK": "tasks reports",
+            "SECTION_TITLE_ISSUE": "issues reports",
+            "DOWNLOAD": "下戴CSV檔案",
+            "URL_FIELD_PLACEHOLDER": "再次產生CSV 網址",
+            "TITLE_REGENERATE_URL": "再次產生CSV 網址",
+            "ACTION_GENERATE_URL": "產生網址",
+            "ACTION_REGENERATE": "再次產生"
         },
         "CUSTOM_FIELDS": {
             "TITLE": "客製化欄位",
@@ -395,14 +402,6 @@
             "LABEL_SEVERITY": "急迫性選擇器預設值",
             "LABEL_ISSUE_TYPE": "問題類型選擇器預設值",
             "LABEL_ISSUE_STATUS": "問題狀態選擇器預設值"
-        },
-        "CSV": {
-            "TITLE": "{{csvType}} 報告",
-            "DOWNLOAD": "下戴CSV檔案",
-            "URL_FIELD_PLACEHOLDER": "再次產生CSV 網址",
-            "TITLE_REGENERATE_URL": "再次產生CSV 網址",
-            "ACTION_GENERATE_URL": "產生網址",
-            "ACTION_REGENERATE": "再次產生"
         },
         "STATUS": {
             "PLACEHOLDER_WRITE_STATUS_NAME": "為此新狀態命名"

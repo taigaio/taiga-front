@@ -260,10 +260,17 @@
             "DESCRIPTION": "Descarga el fichero CSV o copia la URL generada y abre tu editor de textos o hoja de cálculo favorito para realizar tus propios informes. Podrás visualizar y analizar todos los datos fácilmente.",
             "HELP": "¿Cómo puedo usar esto en mi hoja de cálculo?",
             "REGENERATE_TITLE": "Cambiar URL",
-            "REGENERATE_SUBTITLE": "Vas a cambiar la url de acceso a los datos en formato CSV. La url anterior se deshabilitará. ¿Estás seguro?",
-            "CSV_TYPE_US": "historias de usuario",
-            "CSV_TYPE_TASK": "tareaas",
-            "CSV_TYPE_ISSUE": "peticiones"
+            "REGENERATE_SUBTITLE": "Vas a cambiar la url de acceso a los datos en formato CSV. La url anterior se deshabilitará. ¿Estás seguro?"
+        },
+        "CSV": {
+            "SECTION_TITLE_US": "informes de historias de usuario",
+            "SECTION_TITLE_TASK": "Informes de tareas",
+            "SECTION_TITLE_ISSUE": "informes de peticiones",
+            "DOWNLOAD": "Descargar el CSV",
+            "URL_FIELD_PLACEHOLDER": "Por favor regenera la url del origen CSV",
+            "TITLE_REGENERATE_URL": "Regenerar url de origen CSV",
+            "ACTION_GENERATE_URL": "Generar Url",
+            "ACTION_REGENERATE": "Regenerar"
         },
         "CUSTOM_FIELDS": {
             "TITLE": "Atributos personalizados",
@@ -395,14 +402,6 @@
             "LABEL_SEVERITY": "Valor por defecto para el selector de gravedad",
             "LABEL_ISSUE_TYPE": "Valor por defecto para el selector de tipo de la petición",
             "LABEL_ISSUE_STATUS": "Valor por defecto para el selector de estado de petición"
-        },
-        "CSV": {
-            "TITLE": "Informes de {{csvType}}",
-            "DOWNLOAD": "Descargar el CSV",
-            "URL_FIELD_PLACEHOLDER": "Por favor regenera la url del origen CSV",
-            "TITLE_REGENERATE_URL": "Regenerar url de origen CSV",
-            "ACTION_GENERATE_URL": "Generar Url",
-            "ACTION_REGENERATE": "Regenerar"
         },
         "STATUS": {
             "PLACEHOLDER_WRITE_STATUS_NAME": "Escribe un nombre para el nuevo estado"
@@ -592,7 +591,7 @@
         "DELETED_ATTACHMENT": "adjunto eliminado",
         "UPDATED_ATTACHMENT": "Adjunto {{filename}} actualizado",
         "DELETED_CUSTOM_ATTRIBUTE": "eliminar atributos personalizados",
-        "SIZE_CHANGE": "{size, plural, one{Un cambio} other{# cambios}} realizados\n",
+        "SIZE_CHANGE": "{size, plural, one{Un cambio realizado} other{# cambios realizados}}",
         "VALUES": {
             "YES": "sí",
             "NO": "no",
@@ -793,7 +792,7 @@
         "PLACEHOLDER_FIELD": "Nombre de usuario o email",
         "ACTION_RESET_PASSWORD": "Restablecer Contraseña",
         "LINK_CANCEL": "Nah, llévame de vuelta, creo que lo recordé.",
-        "SUCCESS": "<strong>¡Revisa tu bandeja de entrada!</strong><br />Te hemos enviado un mail a<br /><strong>{{email}}</strong><br />con las instrucciones necesarias para restablecer tu contraseña\n",
+        "SUCCESS": "<strong>¡Revisa tu bandeja de entrada!</strong><br />Te hemos enviado un mail con las instrucciones necesarias para restablecer tu contraseña\n",
         "ERROR": "De acuerdo a nuestros Oompa Loompas, Usted no se encuentra registrado todavía."
     },
     "LOGIN_COMMON": {

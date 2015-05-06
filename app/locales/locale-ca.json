@@ -260,10 +260,17 @@
             "DESCRIPTION": "Descarrega el fitxer CSV o copia la URL generada o obri-la amb el teu editor de text o fulla de càlcul per a fer els teus propis informes. Podràs visualitzar i analitzar les dades fàcilment.",
             "HELP": "Com utilitzar açó a la meu fulla de càlcul?",
             "REGENERATE_TITLE": "Canviar URL",
-            "REGENERATE_SUBTITLE": "Vas a canviar la URL d'accés al CSV. La URL previa no funcionarà. Estàs segur?",
-            "CSV_TYPE_US": "Històries d'usuari",
-            "CSV_TYPE_TASK": "tasques",
-            "CSV_TYPE_ISSUE": "incidències"
+            "REGENERATE_SUBTITLE": "Vas a canviar la URL d'accés al CSV. La URL previa no funcionarà. Estàs segur?"
+        },
+        "CSV": {
+            "SECTION_TITLE_US": "user stories reports",
+            "SECTION_TITLE_TASK": "tasks reports",
+            "SECTION_TITLE_ISSUE": "issues reports",
+            "DOWNLOAD": "Descarrega el CSV",
+            "URL_FIELD_PLACEHOLDER": "Per favor regenera la url del CSV",
+            "TITLE_REGENERATE_URL": "Regenera l'Url del CSV",
+            "ACTION_GENERATE_URL": "Genera URL",
+            "ACTION_REGENERATE": "Regenerar"
         },
         "CUSTOM_FIELDS": {
             "TITLE": "Camps personalitzats",
@@ -395,14 +402,6 @@
             "LABEL_SEVERITY": "Valor per defecte per a selector de severitat",
             "LABEL_ISSUE_TYPE": "Valor per defecte per a selector de tipus",
             "LABEL_ISSUE_STATUS": "Valor per defecte per a selector de estatus"
-        },
-        "CSV": {
-            "TITLE": "{{csvType}} informes",
-            "DOWNLOAD": "Descarrega el CSV",
-            "URL_FIELD_PLACEHOLDER": "Per favor regenera la url del CSV",
-            "TITLE_REGENERATE_URL": "Regenera l'Url del CSV",
-            "ACTION_GENERATE_URL": "Genera URL",
-            "ACTION_REGENERATE": "Regenerar"
         },
         "STATUS": {
             "PLACEHOLDER_WRITE_STATUS_NAME": "Escriu un nom per a nou estatus"
@@ -793,7 +792,7 @@
         "PLACEHOLDER_FIELD": "Mot d'usuari i correu",
         "ACTION_RESET_PASSWORD": "Resetejar contrasenya",
         "LINK_CANCEL": "No, portam enrere, crec que ho recorde.",
-        "SUCCESS": "<strong>Mira el teu correu!</strong><br /> Hem enviat un correu a <br /><strong>{{email}}</strong><br /> amb les instrucciones per a setejar una nova contrasenya.",
+        "SUCCESS": "<strong>Check your inbox!</strong><br />We have sent you an email with the instructions to set a new password",
         "ERROR": "Segons els nostres Oompa Loompas, no estàs registrat encara."
     },
     "LOGIN_COMMON": {

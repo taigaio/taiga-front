@@ -260,10 +260,17 @@
             "DESCRIPTION": "Téléchargez un fichier CSV ou copiez l'URL générée et ouvrez-là dans votre éditeur de texte ou feuille de calcul favorite pour créer vos propres rapports de projet. Vous pourrez visualiser et analyser toutes vos données facilement.",
             "HELP": "Comment utiliser ceci dans ma propre feuille de calcul?",
             "REGENERATE_TITLE": "Changer l'URL",
-            "REGENERATE_SUBTITLE": "Vous êtes sur le point de changer l'url d'accès aux données CSV. L'url précédente sera désactivée. Etes-vous sûre ?",
-            "CSV_TYPE_US": "histoires utilisateur",
-            "CSV_TYPE_TASK": "tâches",
-            "CSV_TYPE_ISSUE": "problèmes"
+            "REGENERATE_SUBTITLE": "Vous êtes sur le point de changer l'url d'accès aux données CSV. L'url précédente sera désactivée. Etes-vous sûre ?"
+        },
+        "CSV": {
+            "SECTION_TITLE_US": "user stories reports",
+            "SECTION_TITLE_TASK": "tasks reports",
+            "SECTION_TITLE_ISSUE": "issues reports",
+            "DOWNLOAD": "Télécharger au format CSV",
+            "URL_FIELD_PLACEHOLDER": "Merci de regénérer l'url de téléchargement au format CSV",
+            "TITLE_REGENERATE_URL": "Regénérer l'URL du CSV",
+            "ACTION_GENERATE_URL": "Générer l'URL",
+            "ACTION_REGENERATE": "Regénérer"
         },
         "CUSTOM_FIELDS": {
             "TITLE": "Champs Personnalisés",
@@ -395,14 +402,6 @@
             "LABEL_SEVERITY": "Valeur par défaut pour le sélecteur de sévérité",
             "LABEL_ISSUE_TYPE": "Valeur par défaut pour le sélecteur de type",
             "LABEL_ISSUE_STATUS": "Valeur par défaut pour le sélecteur de statut de bug"
-        },
-        "CSV": {
-            "TITLE": "rapports {{csvType}}",
-            "DOWNLOAD": "Télécharger au format CSV",
-            "URL_FIELD_PLACEHOLDER": "Merci de regénérer l'url de téléchargement au format CSV",
-            "TITLE_REGENERATE_URL": "Regénérer l'URL du CSV",
-            "ACTION_GENERATE_URL": "Générer l'URL",
-            "ACTION_REGENERATE": "Regénérer"
         },
         "STATUS": {
             "PLACEHOLDER_WRITE_STATUS_NAME": "Entrez le nom du nouvel état"
@@ -793,7 +792,7 @@
         "PLACEHOLDER_FIELD": "Nom d'utilisateur ou email",
         "ACTION_RESET_PASSWORD": "Réinitialiser le mot de passe",
         "LINK_CANCEL": "Nan, ramenez-moi en arrière. Je crois que je m'en rappelle.",
-        "SUCCESS": "<strong>Consultez votre messagerie!</strong><br />Nous venons d'envoyer un mail à<br /><strong>{{email}}</strong><br />avec les instructions pour créer un nouveau mot de passe",
+        "SUCCESS": "<strong>Consultez votre messagerie!</strong><br />Nous venons d'envoyer un mail avec les instructions pour créer un nouveau mot de passe",
         "ERROR": "Selon nos Oompa Loompas, vous n'êtes pas encore enregistré."
     },
     "LOGIN_COMMON": {

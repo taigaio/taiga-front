@@ -260,10 +260,17 @@
             "DESCRIPTION": "Lataa CSV-tiedosto tai luo URL ja avaa haluamassasi ohjelmassa. Voit visualisoida ja analysoida tietoa helposti.",
             "HELP": "Kuinka tätä käytetään omassa taulukossani?",
             "REGENERATE_TITLE": "Vaihda URL",
-            "REGENERATE_SUBTITLE": "Jos muutata CSV-datan URLia, edellien lakkaa toimimasta. Oletko varma?",
-            "CSV_TYPE_US": "käyttäjätarinat",
-            "CSV_TYPE_TASK": "tehtävät",
-            "CSV_TYPE_ISSUE": "pyynnöt"
+            "REGENERATE_SUBTITLE": "Jos muutata CSV-datan URLia, edellien lakkaa toimimasta. Oletko varma?"
+        },
+        "CSV": {
+            "SECTION_TITLE_US": "user stories reports",
+            "SECTION_TITLE_TASK": "tasks reports",
+            "SECTION_TITLE_ISSUE": "issues reports",
+            "DOWNLOAD": "Lataa CSV-tiedosto",
+            "URL_FIELD_PLACEHOLDER": "Tee uusi CSV-url",
+            "TITLE_REGENERATE_URL": "Tee uusi CSV-url",
+            "ACTION_GENERATE_URL": "Luo URL",
+            "ACTION_REGENERATE": "Tee uusi"
         },
         "CUSTOM_FIELDS": {
             "TITLE": "Omat kentät",
@@ -395,14 +402,6 @@
             "LABEL_SEVERITY": "Oletusarvo vakavuuden valintaan",
             "LABEL_ISSUE_TYPE": "Oletusarvo pyynnön tyypin valintaan",
             "LABEL_ISSUE_STATUS": "Oletusarvo pyyntöjen statuksen valintaan"
-        },
-        "CSV": {
-            "TITLE": "{{csvType}} raportit",
-            "DOWNLOAD": "Lataa CSV-tiedosto",
-            "URL_FIELD_PLACEHOLDER": "Tee uusi CSV-url",
-            "TITLE_REGENERATE_URL": "Tee uusi CSV-url",
-            "ACTION_GENERATE_URL": "Luo URL",
-            "ACTION_REGENERATE": "Tee uusi"
         },
         "STATUS": {
             "PLACEHOLDER_WRITE_STATUS_NAME": "Anna uuden tilan nimi"
@@ -793,7 +792,7 @@
         "PLACEHOLDER_FIELD": "Käyttäjänimi tai sähköposti",
         "ACTION_RESET_PASSWORD": "Uusi salsanasi",
         "LINK_CANCEL": "Vie minut takaisin, muistan sen.",
-        "SUCCESS": "<strong>Tarkista sähköpostisi</strong><br />Lähetimme ohjeet<br /><strong>{{email}}</strong><br />uuden salasanan asettamiseen",
+        "SUCCESS": "<strong>Check your inbox!</strong><br />We have sent you an email with the instructions to set a new password",
         "ERROR": "Oompa Loompas sanovat että käyttäjänimesi tai sähköpostisi tai salasanasi on väärä."
     },
     "LOGIN_COMMON": {
