@@ -2,7 +2,7 @@ NavigationBarDirective = (projectsService) ->
     link = (scope, el, attrs, ctrl) ->
         scope.vm = {}
 
-        taiga.defineImmutableProperty(scope.vm, "projects", () -> projectsService.projects.get("recents"))
+        taiga.defineImmutableProperty(scope.vm, "projects", () -> projectsService.currentUserProjects.get("recents"))
 
     directive = {
         templateUrl: "navigation-bar/navigation-bar.html"
@@ -12,6 +12,8 @@ NavigationBarDirective = (projectsService) ->
 
     return directive
 
+NavigationBarDirective.$inject = [
+    "tgProjectsService"
+]
 
-angular.module("taigaNavigationBar").directive("tgNavigationBar",
-    ["tgProjectsService", NavigationBarDirective])
+angular.module("taigaNavigationBar").directive("tgNavigationBar", NavigationBarDirective)

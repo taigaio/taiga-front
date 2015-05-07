@@ -2,7 +2,7 @@ DropdownProjectListDirective = (projectsService) ->
     link = (scope, el, attrs, ctrl) ->
         scope.vm = {}
 
-        taiga.defineImmutableProperty(scope.vm, "projects", () -> projectsService.projects.get("recents"))
+        taiga.defineImmutableProperty(scope.vm, "projects", () -> projectsService.currentUserProjects.get("recents"))
 
         scope.vm.newProject = ->
             projectsService.newProject()
@@ -15,6 +15,8 @@ DropdownProjectListDirective = (projectsService) ->
 
     return directive
 
+DropdownProjectListDirective.$inject = [
+    "tgProjectsService"
+]
 
-angular.module("taigaNavigationBar").directive("tgDropdownProjectList",
-    ["tgProjectsService", DropdownProjectListDirective])
+angular.module("taigaNavigationBar").directive("tgDropdownProjectList", DropdownProjectListDirective)

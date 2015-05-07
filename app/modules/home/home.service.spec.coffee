@@ -132,3 +132,52 @@ describe "tgHome", ->
             expect(homeService._inProgress).to.be.true
             timeout.flush()
             expect(homeService._inProgress).to.be.false
+
+        it "project info filled", () ->
+            duty = {
+                id: 66
+                _name: "userstories"
+                ref: 123
+                project: 1
+            }
+            mocks.thenStubAssignedToUserstories.callArg(0, [duty])
+            mocks.thenStubAssignedToTasks.callArg(0)
+            mocks.thenStubAssignedToIssues.callArg(0)
+            mocks.thenStubWatchingUserstories.callArg(0)
+            mocks.thenStubWatchingTasks.callArg(0)
+            mocks.thenStubWatchingIssues.callArg(0)
+            timeout.flush()
+
+            projectsById = {
+                get: () -> {
+                    name: "Testing project"
+                    slug: "testing-project"
+                }
+            }
+
+            mocks.tgNavUrls.resolve
+                .withArgs("project-userstories-detail", {project: "testing-project", ref: 123})
+                .returns("/testing-project/us/123")
+
+            homeService.attachProjectInfoToWorkInProgress(projectsById)
+            expect(homeService.workInProgress.toJS()).to.be.eql({
+                assignedTo: {
+                    userStories: [
+                        {
+                            id: 66
+                            _name: "userstories"
+                            ref: 123
+                            project: 1
+                            url: "/testing-project/us/123"
+                            projectName: "Testing project"
+                        }
+                    ]
+                    tasks: []
+                    issues: []
+                }
+                watching: {
+                    userStories: []
+                    tasks: []
+                    issues: []
+                }
+            })

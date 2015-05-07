@@ -11,7 +11,7 @@ describe "navigationBarDirective", () ->
     _mockTgProjectsService = () ->
         mockTgProjectsService = {
             newProject: sinon.stub()
-            projects: {
+            currentUserProjects: {
                 get: sinon.stub()
             }
         }
@@ -57,7 +57,7 @@ describe "navigationBarDirective", () ->
         ])
 
     it "navigation bar directive scope content", () ->
-        mockTgProjectsService.projects.get
+        mockTgProjectsService.currentUserProjects.get
             .withArgs("recents")
             .returns(recents)
 

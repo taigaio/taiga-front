@@ -26,7 +26,7 @@ ProjectsListingDirective = (projectsService) ->
 
             projectsService.bulkUpdateProjectsOrder(sortData)
 
-        taiga.defineImmutableProperty(scope.vm, "projects", () -> projectsService.projects.get("all"))
+        taiga.defineImmutableProperty(scope.vm, "projects", () -> projectsService.currentUserProjects.get("all"))
 
         scope.vm.newProject = ->
             projectsService.newProject()

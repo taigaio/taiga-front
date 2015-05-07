@@ -11,7 +11,7 @@ describe "dropdownProjectListDirective", () ->
     _mockTgProjectsService = () ->
         mockTgProjectsService = {
             newProject: sinon.stub()
-            projects: {
+            currentUserProjects: {
                 get: sinon.stub()
             }
         }
@@ -49,7 +49,7 @@ describe "dropdownProjectListDirective", () ->
         ])
 
     it "dropdown project list directive scope content", () ->
-        mockTgProjectsService.projects.get
+        mockTgProjectsService.currentUserProjects.get
             .withArgs("recents")
             .returns(recents)
 

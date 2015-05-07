@@ -2,7 +2,7 @@ HomeProjectListDirective = (projectsService) ->
     link = (scope, el, attrs, ctrl) ->
         scope.vm = {}
 
-        taiga.defineImmutableProperty(scope.vm, "projects", () -> projectsService.projects.get("recents"))
+        taiga.defineImmutableProperty(scope.vm, "projects", () -> projectsService.currentUserProjects.get("recents"))
 
         scope.vm.newProject = ->
             projectsService.newProject()
@@ -15,4 +15,6 @@ HomeProjectListDirective = (projectsService) ->
 
     return directive
 
-angular.module("taigaHome").directive("tgHomeProjectList", ["tgProjectsService", HomeProjectListDirective])
+HomeProjectListDirective.$inject = ["tgProjectsService"]
+
+angular.module("taigaHome").directive("tgHomeProjectList", HomeProjectListDirective)

@@ -17,8 +17,9 @@ class HomeService extends taiga.Service
                 project: project.slug
                 ref: duty.ref
             }
-            Object.defineProperty(duty, "url", {get: () => @navurls.resolve("project-#{duty._name}-detail", ctx)})
-            Object.defineProperty(duty, "projectName", {get: () => project.name})
+            duty.url = @navurls.resolve("project-#{duty._name}-detail", ctx)
+            duty.projectName = project.name
+            return duty
 
         @._workInProgress = Immutable.fromJS({
             assignedTo: {
