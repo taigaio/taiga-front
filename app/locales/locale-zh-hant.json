@@ -263,9 +263,9 @@
             "REGENERATE_SUBTITLE": "你將要改變CSV資料的連結網址，之前的網址將失效。你確定要這樣做嗎?"
         },
         "CSV": {
-            "SECTION_TITLE_US": "user stories reports",
-            "SECTION_TITLE_TASK": "tasks reports",
-            "SECTION_TITLE_ISSUE": "issues reports",
+            "SECTION_TITLE_US": "使用者故事報告",
+            "SECTION_TITLE_TASK": "任務報告",
+            "SECTION_TITLE_ISSUE": "問題報告",
             "DOWNLOAD": "下戴CSV檔案",
             "URL_FIELD_PLACEHOLDER": "再次產生CSV 網址",
             "TITLE_REGENERATE_URL": "再次產生CSV 網址",
