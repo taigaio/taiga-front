@@ -22,7 +22,8 @@ class ProfileTimelineItemTitle
             user = timeline.data.user
             title_attr = @translate.instant('COMMON.SEE_USER_PROFILE', {username: user.username})
             url = 'user-profile:username=vm.activity.user.username'
-            return @._getLink(url, user.username, title_attr)
+            console.log(user)
+            return @._getLink(url, user.name, title_attr)
 
         else if param == 'field_name'
             field_name = Object.keys(timeline.data.values_diff)[0]

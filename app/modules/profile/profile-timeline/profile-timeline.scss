@@ -29,8 +29,15 @@
         }
         p {
             margin-bottom: .5rem;
-            a {
-                color: $green-taiga;
+        }
+        a {
+            color: $green-taiga;
+            &:first-child {
+                @extend %bold;
+                color: $gray;
+            }
+            &:hover {
+                color: $fresh-taiga;
             }
         }
     }
