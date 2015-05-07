@@ -2,20 +2,17 @@ include ../../partials/includes/components/beta
 div.profile.centered
     include includes/profile-bar
     div.main
-        div.hero
-        div(tg-profile-tabs)
-            div.content-wrapper
-                div.content
-                    div(tg-profile-tab="activity", tab-title="Activity Tab", tab-icon="icon-timeline", tab-active)
-                        div(tg-profile-timeline)
+        div.timeline-wrapper(tg-profile-tabs)
+                div(tg-profile-tab="activity", tab-title="Activity Tab", tab-icon="icon-timeline", tab-active)
+                    div(tg-profile-timeline)
 
-                    div(tg-profile-tab="projects", tab-title="Projects Tab", tab-icon="icon-project")
-                        div(tg-profile-projects)
+                div(tg-profile-tab="projects", tab-title="Projects Tab", tab-icon="icon-project")
+                    div(tg-profile-projects)
 
-                    div(tg-profile-tab="contacts", tab-title="Contacts Tab", tab-icon="icon-team")
-                        include includes/profile-contacts
+                div(tg-profile-tab="contacts", tab-title="Contacts Tab", tab-icon="icon-team")
+                    include includes/profile-contacts
 
-                    div(tg-profile-tab="favorities", tab-title="Favorites Tab", tab-icon="icon-star-fill")
-                        include includes/profile-favorites
+                div(tg-profile-tab="favorities", tab-title="Favorites Tab", tab-icon="icon-star-fill")
+                    include includes/profile-favorites
 
-                include includes/profile-sidebar
+        include includes/profile-sidebar

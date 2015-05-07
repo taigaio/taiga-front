@@ -7,7 +7,7 @@ div.activity-image
 
         p(tg-compile-html="vm.activity.title")
 
-    .activity-comment-quote(ng-if="::vm.activity.description")
+    blockquote.activity-comment-quote(ng-if="::vm.activity.description")
         p(ng-bind-html="vm.activity.description")
 
     .activity-member-view(ng-if="::vm.activity.member")

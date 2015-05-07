@@ -8,24 +8,12 @@
     }
     .main {
         display: flex;
-        flex: 1;
-        flex-direction: column;
         padding: 0;
     }
-    .hero {
+    .timeline-wrapper {
         background: lighten($whitish, 10%);
-        margin-bottom: .3rem;
-        min-height: 200px;
-    }
-    .content-wrapper {
-        display: flex;
-        min-height: 100vh;
-    }
-    .content {
-        background: lighten($whitish, 10%);
-        flex: 1;
+        flex-basis: 768px;
         margin-right: 1rem;
-        max-width: 786px;
         > div {
             opacity: 1;
             padding-top: 0;
@@ -38,6 +26,8 @@
         }
     }
     .profile-sidebar {
+        flex-basis: 150px;
+        flex-shrink: 0;
         width: 150px;
     }
 }
