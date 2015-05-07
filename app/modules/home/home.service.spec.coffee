@@ -76,6 +76,12 @@ describe "tgHome", ->
 
         provide.value "$tgAuth", mocks.auth
 
+    _mockTgNavUrls = () ->
+        mocks.tgNavUrls = {
+            resolve: sinon.stub()
+        }
+        provide.value "$tgNavUrls", mocks.tgNavUrls
+
     _inject = (callback) ->
         inject (_$q_, _$tgResources_, _$rootScope_, _$projectUrl_, _$timeout_, _tgHomeService_) ->
             timeout = _$timeout_
@@ -88,6 +94,7 @@ describe "tgHome", ->
             _mockResources()
             _mockProjectUrl()
             _mockAuth()
+            _mockTgNavUrls()
             return null
 
     _setup = ->

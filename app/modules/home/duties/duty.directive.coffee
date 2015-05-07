@@ -12,18 +12,6 @@ DutyDirective = (navurls, projectsService, $translate) ->
                 if scope.vm.duty._name == "issues"
                     return $translate.instant("COMMON.ISSUE")
 
-        scope.vm.getUrl = () ->
-            if scope.vm.duty
-                ctx = {
-                    project: projectsService.projectsById.get(String(scope.vm.duty.project)).slug
-                    ref: scope.vm.duty.ref
-                }
-                return navurls.resolve("project-#{scope.vm.duty._name}-detail", ctx)
-
-        scope.vm.getProjectName = () ->
-            if scope.vm.duty
-                return projectsService.projectsById.get(String(scope.vm.duty.project)).name
-
     directive = {
         templateUrl: "home/duties/duty.html"
         scope: {

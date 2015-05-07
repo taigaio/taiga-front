@@ -1,7 +1,7 @@
 class HomeService extends taiga.Service
-    @.$inject = ["$q", "$tgResources", "$rootScope", "$projectUrl", "$tgAuth"]
+    @.$inject = ["$q", "$tgNavUrls", "$tgResources", "$rootScope", "$projectUrl", "$tgAuth"]
 
-    constructor: (@q, @rs, @rootScope, @projectUrl, @auth) ->
+    constructor: (@q, @navurls, @rs, @rootScope, @projectUrl, @auth) ->
         @._workInProgress = Immutable.Map()
         @._projectPromise = null
         @._inProgress = false
@@ -9,6 +9,32 @@ class HomeService extends taiga.Service
         taiga.defineImmutableProperty @, "workInProgress", () => return @._workInProgress
 
         @.fetchWorkInProgress()
+
+    attachProjectInfoToWorkInProgress: (projectsById) ->
+        _attachProjectInfoToDuty = (duty) =>
+            project = projectsById.get(String(duty.project))
+            ctx = {
+                project: project.slug
+                ref: duty.ref
+            }
+            Object.defineProperty(duty, "url", {get: () => @navurls.resolve("project-#{duty._name}-detail", ctx)})
+            Object.defineProperty(duty, "projectName", {get: () => project.name})
+
+        @._workInProgress = Immutable.fromJS({
+            assignedTo: {
+                userStories: _.map(_.clone(@.assignedToUserStories), _attachProjectInfoToDuty)
+                tasks: _.map(_.clone(@.assignedToTasks), _attachProjectInfoToDuty)
+                issues: _.map(_.clone(@.assignedToIssues), _attachProjectInfoToDuty)
+            }
+            watching: {
+                userStories: _.map(_.clone(@.watchingUserStories), _attachProjectInfoToDuty)
+                tasks: _.map(_.clone(@.watchingTasks), _attachProjectInfoToDuty)
+                issues: _.map(_.clone(@.watchingIssues), _attachProjectInfoToDuty)
+            }
+        })
+
+    getWorkInProgress: () ->
+        return @._projectPromise
 
     fetchWorkInProgress: () ->
         userId = @auth.getUser().id
@@ -27,7 +53,6 @@ class HomeService extends taiga.Service
 
             assignedIssuesPromise = @rs.issues.listInAllProjects(params).then (issues) =>
                 @.assignedToIssues = issues
-
 
             params = {
                 status__is_closed: false

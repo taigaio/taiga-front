@@ -1,4 +1,4 @@
-a(href="{{ ::vm.getUrl() }}", title="{{ ::duty.subject }}")
+a(href="{{ ::vm.duty.url }}", title="{{ ::duty.subject }}")
     img.avatar(
         src="{{ ::vm.duty.assigned_to_extra_info.photo }}"
         title="{{ ::vm.duty.assigned_to_extra_info.full_name_display }}")
@@ -10,4 +10,4 @@ a(href="{{ ::vm.getUrl() }}", title="{{ ::duty.subject }}")
         span.duty-title
             span.duty-id(tg-bo-ref="duty.ref")
             span.duty-name {{ ::duty.subject }}
-    div.duty-project {{ ::vm.getProjectName()}}
+    div.duty-project {{ ::vm.duty.projectName}}

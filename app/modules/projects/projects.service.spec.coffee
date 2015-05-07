@@ -81,8 +81,8 @@ describe "tgProjects", ->
         it "all & recents filled", () ->
             mocks.thenStub.callArg(0, projects)
 
-            expect(projectsService.projects.get("all").toJS()).to.be.eql(projects)
-            expect(projectsService.projects.get("recents").toJS()).to.be.eql(projects.slice(0, 10))
+            expect(projectsService.currentUserProjects.get("all").toJS()).to.be.eql(projects)
+            expect(projectsService.currentUserProjects.get("recents").toJS()).to.be.eql(projects.slice(0, 10))
 
         it "_inProgress change to false when tgResources end", () ->
             expect(projectsService._inProgress).to.be.true
@@ -103,15 +103,15 @@ describe "tgProjects", ->
         it "group projects by id", () ->
             mocks.thenStub.callArg(0, projects)
 
-            expect(projectsService.projectsById.size).to.be.equal(12)
-            expect(projectsService.projectsById.toJS()[1].id).to.be.equal(projects[0].id)
+            expect(projectsService.currentUserProjectsById.size).to.be.equal(12)
+            expect(projectsService.currentUserProjectsById.toJS()[1].id).to.be.equal(projects[0].id)
 
         it "add urls in the project object", () ->
             mocks.thenStub.callArg(0, projects)
 
-            expect(projectsService.projectsById.toJS()[1].url).to.be.equal("url-1")
-            expect(projectsService.projects.get("all").toJS()[0].url).to.be.equal("url-1")
-            expect(projectsService.projects.get("recents").toJS()[0].url).to.be.equal("url-1")
+            expect(projectsService.currentUserProjectsById.toJS()[1].url).to.be.equal("url-1")
+            expect(projectsService.currentUserProjects.get("all").toJS()[0].url).to.be.equal("url-1")
+            expect(projectsService.currentUserProjects.get("recents").toJS()[0].url).to.be.equal("url-1")
 
         it "add sorted colorized_tags project object", () ->
             mocks.thenStub.callArg(0, projects)
@@ -123,7 +123,7 @@ describe "tgProjects", ->
             ];
 
 
-            colorized_tags = projectsService.projects.get("all").toJS()[0].colorized_tags
+            colorized_tags = projectsService.currentUserProjects.get("all").toJS()[0].colorized_tags
 
             expect(colorized_tags).to.be.eql(tags)
 

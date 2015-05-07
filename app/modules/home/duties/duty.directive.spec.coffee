@@ -73,5 +73,3 @@ describe "dutyDirective", () ->
         elm = createDirective()
         scope.$apply()
         expect(elm.isolateScope().vm.getDutyType()).to.be.equal("User story translated")
-        expect(elm.isolateScope().vm.getUrl()).to.be.equal("http://jstesting.taiga.io")
-        expect(elm.isolateScope().vm.getProjectName()).to.be.equal("testing js project")
