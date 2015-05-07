@@ -105,24 +105,26 @@
         }
     }
     .profile-stats {
-        background: $whitish;
-        border-radius: 5px;
+        border-bottom: 1px solid $whitish;
+        border-top: 1px solid $whitish;
+        color: $gray;
         display: flex;
         justify-content: space-between;
         margin-bottom: 1rem;
-        padding: .5rem 1rem;
+        padding: 1rem .5rem;
         .stat {
             padding: 0 .2rem;
             text-align: center;
         }
         .stat-number {
             @extend %xlarge;
-            @extend %title;
+            @extend %bold;
             display: block;
             line-height: 1;
         }
         .stat-name {
             @extend %title;
+            @extend %small;
             display: block;
         }
     }
