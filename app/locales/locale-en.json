@@ -531,6 +531,16 @@
             "TITLE": "Services"
         }
     },
+    "USER": {
+        "PROFILE": {
+            "EDIT": "Edit profile",
+            "FOLLOW": "Follow",
+            "PROJECTS": "Projects",
+            "CLOSED_US": "Closed US",
+            "CONTACTS": "Contacts",
+            "REPORT": "Report Abuse"
+        }
+    },
     "PROJECT": {
         "WELCOME": "Welcome",
         "SECTION_PROJECTS": "Projects",

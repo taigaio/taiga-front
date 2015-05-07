@@ -1,12 +1,12 @@
 section.profile-bar
     div.profile-image-wrapper
         img.profile-img(src="http://i.imgur.com/gPiHzHN.jpg", alt="{{ user.nickname }}")
-        div.edit-profile(title="Edit profile")
-            a.profile-edition(title="Edit Profile", href="")
+        div.edit-profile(title="{{ 'USER.PROFILE.EDIT' | translate }}")
+            a.profile-edition(title="{{ 'USER.PROFILE.EDIT' | translate }}", href="")
                 span.icon.icon-edit
-                span Edit Profile
+                span(translate="USER.PROFILE.EDIT")
     a.button-green
-        span Follow
+        span(translate="USER.PROFILE.FOLLOW")
     div.profile-data
         h1 Silvia Rodríguez
         // If user has no defined role in its profile use all its project defined roles followed by an &
@@ -15,19 +15,19 @@ section.profile-bar
             include ../../../svg/location.svg
             span Madrid
         // Remove Abuse Flag when a user is seeing itself
-        a.flag(href="", title="Report Abuse")
+        a.flag(href="", title="{{ 'USER.PROFILE.REPORT' | translate }}")
             include ../../../svg/flag.svg
     // These values in profile stats are not defined yet in UX. Please ask
     div.profile-stats
         div.stat
             span.stat-number 3
-            span.stat-name projects
+            span.stat-name(translate="USER.PROFILE.PROJECTS")
         div.stat
             span.stat-number 67
-            span.stat-name us done
+            span.stat-name(translate="USER.PROFILE.CLOSED_US")
         div.stat
             span.stat-number 34
-            span.stat-name contacts
+            span.stat-name(translate="USER.PROFILE.CONTACTS")
     // TODO Hide until organizations come
         div.profile-organizations
             h3 Organizations
