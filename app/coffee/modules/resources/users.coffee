@@ -16,24 +16,32 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: modules/resources/timeline.coffee
+# File: modules/resources/user.coffee
 ###
 
-taiga = @.taiga
 
-resourceProvider = ($repo) ->
+taiga = @.taiga
+sizeFormat = @.taiga.sizeFormat
+
+
+resourceProvider = ($http, $urls) ->
     service = {}
 
-    service.profile = (userId, page) ->
-        params = {
-            page: page
-        }
+    service.contacts = (userId, options={}) ->
+        url = $urls.resolve("contacts", userId)
+        httpOptions = {headers: {}}
 
-        return $repo.queryOnePaginatedRaw("timeline-profile", userId, params)
+        if not options.enablePagination
+            httpOptions.headers["x-disable-pagination"] =  "1"
+
+        return $http.get(url, {}, httpOptions)
+            .then (result) ->
+                return result.data
 
     return (instance) ->
-        instance.timeline = service
+        instance.users = service
 
 
 module = angular.module("taigaResources")
-module.factory("$tgTimelineResourcesProvider", ["$tgRepo", resourceProvider])
+module.factory("$tgUsersResourcesProvider", ["$tgHttp", "$tgUrls", "$q",
+                                                    resourceProvider])

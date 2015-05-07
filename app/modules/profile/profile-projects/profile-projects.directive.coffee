@@ -1,17 +1,14 @@
-ProfileProjectsDirective = (projectsService) ->
-    link = (scope, el, attrs, ctrl) ->
-        scope.vm = {}
-        taiga.defineImmutableProperty(scope.vm, "projects", () -> projectsService.currentUserProjects.get("all"))
+ProfileProjectsDirective = () ->
+    link = (scope, elm, attr, ctrl) ->
+        ctrl.loadProjects()
 
-    directive = {
-        templateUrl: "profile/profile-projects/profile-projects.html"
-        scope: {}
+    return {
+        templateUrl: "profile/profile-projects/profile-projects.html",
+        scope: {},
         link: link
+        bindToController: true,
+        controllerAs: "vm",
+        controller: "ProfileProjects"
     }
-
-    return directive
-
-
-ProfileProjectsDirective.$inject = ["tgProjectsService"]
 
 angular.module("taigaProfile").directive("tgProfileProjects", ProfileProjectsDirective)

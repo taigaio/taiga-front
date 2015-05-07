@@ -145,6 +145,9 @@ urls = {
 
     # locales
     "locales": "/locales"
+
+    # user
+    "contacts": "/users/%s/contacts"
 }
 
 # Initialize api urls service
@@ -192,5 +195,6 @@ module.run([
     "$tgWebhookLogsResourcesProvider",
     "$tgLocalesResourcesProvider",
     "$tgTimelineResourcesProvider",
+    "$tgUsersResourcesProvider",
     initResources
 ])

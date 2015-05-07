@@ -17,7 +17,6 @@ class ProfileTimelineItemController
         @.activity.sprint = timeline.data.milestone
         @.activity.title = @profileTimelineItemTitle.getTitle(timeline, event, type)
         @.activity.created_formated = moment(timeline.created).fromNow()
-        #test
         @.activity.obj =  @.getObject(timeline, event)
 
         if type.description
