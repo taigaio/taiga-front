@@ -126,18 +126,6 @@
             display: block;
         }
     }
-    .profile-badges {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 1rem;
-        .badge {
-            background: $gray-light;
-            border-radius: 5px;
-            height: 45px;
-            margin-right: .2rem;
-            width: 45px;
-        }
-    }
 
     .profile-organizations {
         border-bottom: 1px solid $whitish;
@@ -163,7 +151,7 @@
 
     .profile-quote {
         @extend %title;
-        @extend %xlarge;
+        @extend %larger;
         background: url('/images/quote.png') no-repeat top left;
         line-height: 1.2;
         padding: .5rem;
