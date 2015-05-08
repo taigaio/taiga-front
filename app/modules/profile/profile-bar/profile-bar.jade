@@ -1,0 +1,40 @@
+section.profile-bar
+    div.profile-image-wrapper
+        img.profile-img(ng-src="{{user.big_photo}}", alt="{{ user.full_name }}")
+        div.edit-profile(title="{{ 'USER.PROFILE.EDIT' | translate }}")
+            a.profile-edition(title="{{ 'USER.PROFILE.EDIT' | translate }}", tg-nav="user-settings-user-profile")
+                span.icon.icon-edit
+                span(translate="USER.PROFILE.EDIT")
+    // a.button-green
+    //     span(translate="USER.PROFILE.FOLLOW")
+    div.profile-data
+        h1 {{vm.user.full_name}}
+        h2 Backend Developer & Stackeholder
+        // div.location
+        //     include ../../../svg/location.svg
+        //     span Madrid
+        // Remove Abuse Flag when a user is seeing itself
+        // a.flag(href="", title="{{ 'USER.PROFILE.REPORT' | translate }}")
+        //     include ../../../svg/flag.svg
+    // These values in profile stats are not defined yet in UX. Please ask
+    // div.profile-stats
+    //     div.stat
+    //         span.stat-number 3
+    //         span.stat-name(translate="USER.PROFILE.PROJECTS")
+    //     div.stat
+    //         span.stat-number 67
+    //         span.stat-name(translate="USER.PROFILE.CLOSED_US")
+    //     div.stat
+    //         span.stat-number 34
+    //         span.stat-name(translate="USER.PROFILE.CONTACTS")
+    // TODO Hide until organizations come
+        // div.profile-organizations
+        //     h3 Organizations
+        //     div.profile-organizations-wrapper
+        //         div.organization
+        //         div.organization
+        //         div.organization
+        //         div.organization
+
+    div.profile-quote
+        span "Small minds talk about people, average minds discuss events, great minds discuss ideas"

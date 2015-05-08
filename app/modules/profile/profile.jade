@@ -1,6 +1,6 @@
 include ../../partials/includes/components/beta
 div.profile.centered
-    include includes/profile-bar
+    div(tg-profile-bar)
     div.main
         div.timeline-wrapper(tg-profile-tabs)
                 div(tg-profile-tab="activity", tab-title="{{'USER.PROFILE.ACTIVITY_TAB' | translate}}", tab-icon="icon-timeline", tab-active)
