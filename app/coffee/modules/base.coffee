@@ -58,7 +58,7 @@ urls = {
     "invitation": "/invitation/:token"
     "create-project": "/create-project"
 
-    "profile": "/:user"
+    "profile": "/profile"
     "user-profile": "profile/:username"
 
     "project": "/project/:project"

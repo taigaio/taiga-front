@@ -1,11 +1,11 @@
-a.user-avatar(href="#", title="{{ vm.user.full_name_display }}") {{ vm.user.full_name_display }}
+a.user-avatar(tg-nav="profile", title="{{ vm.user.full_name_display }}") {{ vm.user.full_name_display }}
     img(tg-bo-src="vm.user.photo", alt="{{ vm.user.full_name_display }}")
 
 div.navbar-dropdown.dropdown-user
     ul
         li
             a(
-                href="#",
+                tg-nav="profile",
                 title="{{'PROJECT.NAVIGATION.VIEW_PROFILE_TITLE' | translate}}",
                 translate="PROJECT.NAVIGATION.VIEW_PROFILE")
         li
