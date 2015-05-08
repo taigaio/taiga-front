@@ -91,3 +91,24 @@ describe.skip "UserService", ->
             done()
 
         $rootScope.$apply()
+
+    it "get user contacts", (done) ->
+        userId = 2
+
+        contacts = [
+            {id: 1},
+            {id: 2},
+            {id: 3}
+        ]
+
+        mocks.resources.user.contacts = (userId) ->
+            expect(userId).to.be.equal(userId)
+
+            return $q (resolve, reject) ->
+                resolve(contacts)
+
+        userService.getUserContacts(userId).then (_contacts_) ->
+            expect(_contacts_.toJS()).to.be.eql(contacts)
+            done()
+
+        $rootScope.$apply()

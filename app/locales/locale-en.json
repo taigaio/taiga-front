@@ -538,7 +538,11 @@
             "PROJECTS": "Projects",
             "CLOSED_US": "Closed US",
             "CONTACTS": "Contacts",
-            "REPORT": "Report Abuse"
+            "REPORT": "Report Abuse",
+            "ACTIVITY_TAB": "Activity Tab",
+            "PROJECTS_TAB": "Projects Tab",
+            "CONTACTS_TAB": "Contacts Tab",
+            "FAVORITES_TAB": "Favorites Tab"
         }
     },
     "PROJECT": {

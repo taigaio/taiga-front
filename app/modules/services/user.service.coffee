@@ -10,8 +10,7 @@ class UserService extends taiga.Service
             .then (projects) -> return Immutable.fromJS(projects)
 
     attachUserContactsToProjects: (userId, projects) ->
-        return @rs.users.contacts(userId)
-            .then (contacts) -> return Immutable.fromJS(contacts)
+        return @.getUserContacts(userId)
             .then (contacts) ->
                 projects = projects.map (project) ->
                     project.contacts = contacts.filter (contact) ->
@@ -21,5 +20,9 @@ class UserService extends taiga.Service
                     return project
 
                 return projects
+
+    getUserContacts: (userId) ->
+        return @rs.users.contacts(userId)
+            .then (contacts) -> return Immutable.fromJS(contacts)
 
 angular.module("taigaCommon").service("tgUserService", UserService)

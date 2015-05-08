@@ -2,8 +2,10 @@ ProfileTabDirective = () ->
     link = (scope, element, attrs, ctrl, transclude) ->
         scope.tab = {}
 
+        attrs.$observe "tabTitle", (title) ->
+            scope.tab.title = title
+
         scope.tab.name = attrs.tgProfileTab
-        scope.tab.title = attrs.tabTitle
         scope.tab.icon = attrs.tabIcon
         scope.tab.active = !!attrs.tabActive
 

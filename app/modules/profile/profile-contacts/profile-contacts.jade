@@ -1,0 +1,30 @@
+section.profile-contacts
+    // nav.profile-contact-filters
+    //     a.active(href="", title="No Filter") all
+    //     a(href="", title="Only show your team") team
+    //     a(href="", title="Only show people you follow") following
+    //     a(href="", title="Only show people follow you") followers
+
+    div.profile-contact-single(tg-repeat="contact in ::vm.contacts")
+        div.profile-contact-picture
+            a(tg-nav="user-profile:username=contact.username", title="{{::contact.name }}")
+                 img(ng-src='{{::contact.photo}}', alt='{{::contact.full_name}}')
+
+        div.profile-contact-data
+            h1
+                a(tg-nav="user-profile:username=contact.username", title="{{::contact.name }}")
+                    | {{::contact.full_name}}
+                // span.your-contact Your contact
+
+            p(ng-if="contact.bio") {{::contact.bio}}
+
+            div.extra-info
+                span.position {{::contact.roles.join(", ")}}
+                // span.location todo
+        // div.profile-project-stats
+        //     div.stat-projects(title="2 projects")
+        //         span.icon.icon-project
+        //         span.stat-num 2
+        //     div.stat-viewer(title="2 followers")
+        //         span.icon.icon-open-eye
+        //         span.stat-num 4

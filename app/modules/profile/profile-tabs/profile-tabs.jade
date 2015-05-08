@@ -1,6 +1,6 @@
 div
     nav.profile-content-tabs
-        a.tab(ng-repeat="tab in ::vm.tabs", href="", title="{{::tab.title}}", ng-class="{active: tab.active}" ng-click="vm.toggleTab(tab)")
+        a.tab(ng-repeat="tab in ::vm.tabs", href="", title="{{tab.title}}", ng-class="{active: tab.active}" ng-click="vm.toggleTab(tab)")
             span.icon(ng-class="::tab.icon")
             span {{::tab.name}}
 
