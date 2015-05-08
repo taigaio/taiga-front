@@ -24,8 +24,11 @@ class ProfileTimelineService extends taiga.Service
         'estimated_start'
     ]
 
-    _isValidField: (values) =>
+    _isValidField: (values) ->
         return _.some values, (value) => @._valid_fields.indexOf(value) != -1
+
+    _isValidEvent: (event) ->
+        return event.split(".").slice(-1)[0] != 'delete'
 
     _filterValidTimelineItems: (timeline) =>
         if timeline.data.values_diff
@@ -37,6 +40,9 @@ class ProfileTimelineService extends taiga.Service
             else if values[0] == 'attachments' &&
                  timeline.data.values_diff.attachments.new.length == 0
                 return false
+
+        if !@._isValidEvent(timeline.event_type)
+            return false
 
         return true
 

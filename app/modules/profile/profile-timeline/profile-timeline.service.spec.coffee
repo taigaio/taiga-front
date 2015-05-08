@@ -40,6 +40,7 @@ describe "tgProfileTimelineService", ->
         valid_items = {
             data: [
                 { # valid item
+                    event_type: "xx.tt.create",
                     data: {
                         values_diff: {
                             "status": "xx",
@@ -48,6 +49,7 @@ describe "tgProfileTimelineService", ->
                     }
                 },
                 { # invalid item
+                    event_type: "xx.tt.create",
                     data: {
                         values_diff: {
                             "fake": "xx"
@@ -55,6 +57,7 @@ describe "tgProfileTimelineService", ->
                     }
                 },
                 { # invalid item
+                    event_type: "xx.tt.create",
                     data: {
                         values_diff: {
                             "fake2": "xx"
@@ -62,6 +65,7 @@ describe "tgProfileTimelineService", ->
                     }
                 },
                 { # valid item
+                    event_type: "xx.tt.create",
                     data: {
                         values_diff: {
                             "fake2": "xx",
@@ -70,6 +74,7 @@ describe "tgProfileTimelineService", ->
                     }
                 },
                 { # invalid item
+                    event_type: "xx.tt.create",
                     data: {
                         values_diff: {
                             attachments: {
@@ -79,6 +84,17 @@ describe "tgProfileTimelineService", ->
                     }
                 },
                 { # valid item
+                    event_type: "xx.tt.create",
+                    data: {
+                        values_diff: {
+                            attachments: {
+                                new: [1, 2]
+                            }
+                        }
+                    }
+                },
+                { # invalid item
+                    event_type: "xx.tt.delete",
                     data: {
                         values_diff: {
                             attachments: {
@@ -104,6 +120,7 @@ describe "tgProfileTimelineService", ->
             .then (_items_) ->
                 items = _items_.toJS()
 
+                expect(items).to.have.length(3)
                 expect(items[0]).to.be.eql(valid_items.data[0])
                 expect(items[1]).to.be.eql(valid_items.data[3])
                 expect(items[2]).to.be.eql(valid_items.data[5])
