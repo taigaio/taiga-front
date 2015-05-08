@@ -18,6 +18,8 @@ ProfileTimelineAttachmentDirective = (template, $compile) ->
         el.html(templateHtml)
         $compile(el.contents())(scope)
 
+        el.find("img").error () -> @.remove()
+
     return {
         link: link
         scope: {
