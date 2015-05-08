@@ -15,7 +15,8 @@ class UserService extends taiga.Service
             .then (contacts) ->
                 projects = projects.map (project) ->
                     project.contacts = contacts.filter (contact) ->
-                        return project.members.indexOf(contact.id) != -1
+                        contactId = contact.get("id")
+                        return project.members.indexOf(contactId) != -1
 
                     return project
 

@@ -11,6 +11,10 @@ section.profile-projects
                 span.tag(style='border-left: 5px solid {{::tag.color}};', ng-repeat="tag in ::project.colorized_tags")
                     span.tag-name {{::tag.name}}
 
+            div.project-list-single-members
+                a(tg-repeat="contact in ::project.contacts", tg-nav="user-profile:username=contact.username", title="{{contact.full_name}}")
+                    img(tg-bo-src="contact.photo")
+
         // div.project-list-single-right
         //     div.project-list-single-stats
         //         div.stat-comments(title="2 comments")
@@ -22,21 +26,3 @@ section.profile-projects
         //         div.stat-viewer(title="2 followers")
         //             span.icon.icon-open-eye
         //             span.stat-num 4
-
-        //     div.project-list-single-members
-        //         a(href="", title="View {{ user.nickname }} profile")
-        //             img(src="https://s3.amazonaws.com/uifaces/faces/twitter/mantia/128.jpg")
-        //         a(href="", title="View {{ user.nickname }} profile")
-        //             img(src="https://s3.amazonaws.com/uifaces/faces/twitter/annapickard/128.jpg")
-        //         a(href="", title="View {{ user.nickname }} profile")
-        //             img(src="https://s3.amazonaws.com/uifaces/faces/twitter/nexy_dre/128.jpg", alt="{{ user.nickname }}")
-        //         a(href="", title="View {{ user.nickname }} profile")
-        //             img(src="https://s3.amazonaws.com/uifaces/faces/twitter/pixeliris/128.jpg", alt="{{ user.nickname }}")
-        //         a(href="", title="View {{ user.nickname }} profile")
-        //             img(src="https://s3.amazonaws.com/uifaces/faces/twitter/cbillins/128.jpg", alt="{{ user.nickname }}")
-        //         a(href="", title="View {{ user.nickname }} profile")
-        //             img(src="https://s3.amazonaws.com/uifaces/faces/twitter/allisongrayce/128.jpg", alt="{{ user.nickname }}")
-        //         a(href="", title="View {{ user.nickname }} profile")
-        //             img(src="https://s3.amazonaws.com/uifaces/faces/twitter/uxceo/128.jpg", alt="{{ user.nickname }}")
-        //         a(href="", title="View {{ user.nickname }} profile")
-        //             img(src="https://s3.amazonaws.com/uifaces/faces/twitter/syswarren/128.jpg", alt="{{ user.nickname }}")
