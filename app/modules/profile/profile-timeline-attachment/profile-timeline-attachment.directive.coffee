@@ -11,11 +11,11 @@ ProfileTimelineAttachmentDirective = (template, $compile) ->
         is_image = isImage(scope.attachment.url)
 
         if is_image
-            template = template.get("profile/profile-timeline-attachment/profile-timeline-attachment-image.html")
+            templateHtml = template.get("profile/profile-timeline-attachment/profile-timeline-attachment-image.html")
         else
-            template = template.get("profile/profile-timeline-attachment/profile-timeline-attachment.html")
+            templateHtml = template.get("profile/profile-timeline-attachment/profile-timeline-attachment.html")
 
-        el.html(template)
+        el.html(templateHtml)
         $compile(el.contents())(scope)
 
     return {
