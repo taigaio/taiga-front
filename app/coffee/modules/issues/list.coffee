@@ -544,7 +544,7 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template, $
         selectQFilter = debounceLeading 100, (value) ->
             return if value is undefined
 
-            $ctrl.replaceFilter("page", null)
+            $ctrl.replaceFilter("page", null, true)
 
             if value.length == 0
                 $ctrl.replaceFilter("q", null)
