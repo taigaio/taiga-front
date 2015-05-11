@@ -5,12 +5,14 @@ describe "ProfileContacts", ->
     $rootScope = null
     mocks = {}
 
-    _mockUserService = () ->
-        mocks.userService = {
-            getUserContacts: sinon.stub()
+    _mockResources = () ->
+        mocks.resources = {
+            users: {
+                getContacts: sinon.stub()
+            }
         }
 
-        provide.value "tgUserService", mocks.userService
+        provide.value "tgResources", mocks.resources
 
     _mockAuthService = () ->
         stub = sinon.stub()
@@ -24,7 +26,7 @@ describe "ProfileContacts", ->
     _mocks = () ->
         module ($provide) ->
             provide = $provide
-            _mockUserService()
+            _mockResources()
             _mockAuthService()
 
             return null
@@ -48,7 +50,7 @@ describe "ProfileContacts", ->
             {id: 3}
         ]
 
-        mocks.userService.getUserContacts = (userId) ->
+        mocks.resources.users.getContacts = (userId) ->
             expect(userId).to.be.equal(userId)
 
             return $q (resolve, reject) ->

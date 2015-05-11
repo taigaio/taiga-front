@@ -1,28 +1,28 @@
 taiga = @.taiga
 
 class UserService extends taiga.Service
-    @.$inject = ["$tgResources"]
+    @.$inject = ["tgResources"]
 
     constructor: (@rs) ->
 
     getProjects: (userId) ->
-        return @rs.projects.listByMember(userId)
-            .then (projects) -> return Immutable.fromJS(projects)
+        return @rs.users.getProjects(userId)
+
+    getContacts: (userId) ->
+        return @rs.users.getContacts(userId)
 
     attachUserContactsToProjects: (userId, projects) ->
-        return @.getUserContacts(userId)
+        return @.getContacts(userId)
             .then (contacts) ->
                 projects = projects.map (project) ->
-                    project.contacts = contacts.filter (contact) ->
+                    contactsFiltered = contacts.filter (contact) ->
                         contactId = contact.get("id")
-                        return project.members.indexOf(contactId) != -1
+                        return project.get('members').indexOf(contactId) != -1
+
+                    project = project.set("contacts", contactsFiltered)
 
                     return project
 
                 return projects
-
-    getUserContacts: (userId) ->
-        return @rs.users.contacts(userId)
-            .then (contacts) -> return Immutable.fromJS(contacts)
 
 angular.module("taigaCommon").service("tgUserService", UserService)

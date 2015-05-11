@@ -146,8 +146,9 @@ urls = {
     # locales
     "locales": "/locales"
 
-    # user
+    # users
     "contacts": "/users/%s/contacts"
+    "stats": "/users/%s/stats"
 }
 
 # Initialize api urls service

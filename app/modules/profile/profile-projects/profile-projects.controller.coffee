@@ -15,6 +15,5 @@ class ProfileProjectsController
             .then (projects) =>
                 @.projects = projects
 
-
 angular.module("taigaProfile")
     .controller("ProfileProjects", ProfileProjectsController)
