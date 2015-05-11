@@ -24,7 +24,7 @@ taiga = @.taiga
 sizeFormat = @.taiga.sizeFormat
 
 
-resourceProvider = ($config, $repo, $http, $urls, $auth, $q, $rootScope, $translate) ->
+resourceProvider = ($config, $repo, $http, $urls, $auth, $q, $translate) ->
     service = {}
 
     service.get = (projectId) ->
@@ -99,7 +99,9 @@ resourceProvider = ($config, $repo, $http, $urls, $auth, $q, $rootScope, $transl
             statusUpdater("in-progress", null, message, percent)
 
         uploadComplete = (evt) =>
-            statusUpdater("done", $translate.instant("PROJECT.IMPORT.TITLE"), $translate.instant("PROJECT.IMPORT.DESCRIPTION"))
+            statusUpdater("done",
+                          $translate.instant("PROJECT.IMPORT.TITLE"),
+                          $translate.instant("PROJECT.IMPORT.DESCRIPTION"))
 
         uploadFailed = (evt) =>
             statusUpdater("error")
@@ -141,4 +143,5 @@ resourceProvider = ($config, $repo, $http, $urls, $auth, $q, $rootScope, $transl
 
 
 module = angular.module("taigaResources")
-module.factory("$tgProjectsResourcesProvider", ["$tgConfig", "$tgRepo", "$tgHttp", "$tgUrls", "$tgAuth", "$q", "$translate", resourceProvider])
+module.factory("$tgProjectsResourcesProvider", ["$tgConfig", "$tgRepo", "$tgHttp", "$tgUrls", "$tgAuth",
+                                                "$q", "$translate", resourceProvider])
