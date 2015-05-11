@@ -12,8 +12,8 @@ section.profile-projects
                     span.tag-name {{::tag.name}}
 
             div.project-list-single-members
-                a(tg-repeat="contact in ::project.contacts", tg-nav="user-profile:username=contact.username", title="{{contact.full_name}}")
-                    img(tg-bo-src="contact.photo")
+                a(ng-repeat="contact in ::project.contacts", tg-nav="user-profile:username=contact.username", title="{{::contact.full_name}}")
+                    img(ng-src="{{::contact.photo}}")
 
         // div.project-list-single-right
         //     div.project-list-single-stats
