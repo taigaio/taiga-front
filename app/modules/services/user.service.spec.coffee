@@ -45,6 +45,19 @@ describe "UserService", ->
 
         expect(userService.getProjects(userId)).to.be.true
 
+    it "get user contacts", () ->
+        userId = 2
+
+        contacts = [
+            {id: 1},
+            {id: 2},
+            {id: 3}
+        ]
+
+        mocks.resources.users.getContacts.withArgs(userId).returns(true)
+
+        expect(userService.getContacts(userId)).to.be.true
+
     it "attach user contacts to projects", (done) ->
         userId = 2
 

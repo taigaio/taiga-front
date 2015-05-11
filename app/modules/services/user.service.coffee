@@ -11,6 +11,9 @@ class UserService extends taiga.Service
     getContacts: (userId) ->
         return @rs.users.getContacts(userId)
 
+    getStats: (userId) ->
+        return @rs.users.getStats(userId)
+
     attachUserContactsToProjects: (userId, projects) ->
         return @.getContacts(userId)
             .then (contacts) ->
