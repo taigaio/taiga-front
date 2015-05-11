@@ -138,7 +138,6 @@ MarkitupDirective = ($rootscope, $rs, $selectedText, $template, $compile, $trans
             markItUp.donotparse = indices
 
         urlFormatting = (markItUp) ->
-            console.log(markItUp.donotparse)
             regex = /<<</gi
             result = 0
             startIndex = 0

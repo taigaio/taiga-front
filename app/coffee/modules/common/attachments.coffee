@@ -267,7 +267,7 @@ AttachmentDirective = ($template, $compile, $translate) ->
                 isDeprecated: attachment.is_deprecated
                 modifyPermission: modifyPermission
             }
-            console.log ctx.title
+
             if edit
                 html = $compile(templateEdit(ctx))($scope)
             else

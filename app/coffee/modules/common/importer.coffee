@@ -51,7 +51,6 @@ ImportProjectButtonDirective = ($rs, $confirm, $location, $navUrls, $translate) 
 
             onError = (result) ->
                 loader.stop()
-                console.log "Error", result
                 errorMsg = $translate.instant("PROJECT.IMPORT.ERROR")
 
                 if result.status == 429  # TOO MANY REQUESTS
