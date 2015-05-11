@@ -476,9 +476,11 @@
             "DESCRIPTION": "Tämä voi kestää hetken, pidä ikkuna auki.",
             "ASYNC_IN_PROGRESS_TITLE": " Oompa Loompas tuovat projektia",
             "ASYNC_IN_PROGRESS_MESSAGE": "Tämä voi kestää muutaman minuutin <br/>Lähetämme sähköpostin on valmista",
+            "UPLOAD_IN_PROGRESS_MESSAGE": "Uploaded {{uploadedSize}} of {{totalSize}}",
             "ERROR": "Oompa Loompas eivät onnistuneet tuomaan tiedostoasi. Yritä uudestaan.",
             "ERROR_TOO_MANY_REQUEST": "Oompa Loompas ovat kiireisiä juuri nyt. Yritä hetken päästä uudelleen.",
             "ERROR_MESSAGE": "Oompa Loompas eivät pysty lukemaan tiedostoasi: {{error_message}}",
+            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is too heavy for our Oompa Loompas, try it with a smaller than ({{maxFileSize}})",
             "SYNC_SUCCESS": "Projektisi on tuotu sisään onnistuneesti"
         }
     },

@@ -476,9 +476,11 @@
             "DESCRIPTION": "Ce processus peut prendre du temps, veuillez garder cette fenêtre ouverte.",
             "ASYNC_IN_PROGRESS_TITLE": "Nos Oompas Loompas sont en train d'importer votre projet",
             "ASYNC_IN_PROGRESS_MESSAGE": "Ce processus pourrait durer plusieurs minutes <br/> Nous vous enverrons un emai quand ce sera prêt",
+            "UPLOAD_IN_PROGRESS_MESSAGE": "Uploaded {{uploadedSize}} of {{totalSize}}",
             "ERROR": "Nos Oompas Loompas ont rencontré des problèmes en important votre dump de données. Merci de réessayer.",
             "ERROR_TOO_MANY_REQUEST": "Nous sommes désolés, nos oompa loompas sont très occupés en ce moment. Veuillez réessayer dans quelques minutes.",
             "ERROR_MESSAGE": "Nos oompa loompas ont des problèmes pour importer le dump de vos données : {{error_message}}",
+            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is too heavy for our Oompa Loompas, try it with a smaller than ({{maxFileSize}})",
             "SYNC_SUCCESS": "Votre projet a été importé avec succès"
         }
     },

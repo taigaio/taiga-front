@@ -85,17 +85,25 @@ resourceProvider = ($config, $repo, $http, $urls, $auth, $q, $translate) ->
 
         maxFileSize = $config.get("maxUploadFileSize", null)
         if maxFileSize and file.size > maxFileSize
+            errorMsg = $translate.instant("PROJECT.IMPORT.ERROR_MAX_SIZE_EXCEEDED", {
+                fileName: file.name
+                fileSize: sizeFormat(file.size)
+                maxFileSize: sizeFormat(maxFileSize)
+            })
+
             response = {
                 status: 413,
-                data: _error_message: "'#{file.name}' (#{sizeFormat(file.size)}) is too heavy for our oompa
-                                       loompas, try it with a smaller than (#{sizeFormat(maxFileSize)})"
+                data: _error_message: errorMsg
             }
             defered.reject(response)
             return defered.promise
 
         uploadProgress = (evt) =>
             percent = Math.round((evt.loaded / evt.total) * 100)
-            message = "Uloaded #{sizeFormat(evt.loaded)} of #{sizeFormat(evt.total)}"
+            message = $translate.instant("PROJECT.IMPORT.UPLOAD_IN_PROGRESS_MESSAGE", {
+                uploadedSize: sizeFormat(evt.loaded)
+                totalSize: sizeFormat(evt.total)
+            })
             statusUpdater("in-progress", null, message, percent)
 
         uploadComplete = (evt) =>

@@ -476,9 +476,11 @@
             "DESCRIPTION": "這個過桯要花點時間，請保持视窗開啟",
             "ASYNC_IN_PROGRESS_TITLE": "我們的工程師對你的專案很重要哦",
             "ASYNC_IN_PROGRESS_MESSAGE": "這個過程要花上一點時間<br/> 當弄好時我們會發給你一封郵件",
+            "UPLOAD_IN_PROGRESS_MESSAGE": "Uploaded {{uploadedSize}} of {{totalSize}}",
             "ERROR": "系統在滙進你倒入的資料時遇上一些問題，請再試一次",
             "ERROR_TOO_MANY_REQUEST": "抱歉系統繁忙中，請稍後再試試　",
             "ERROR_MESSAGE": "我們的系統無法滙入你的資料",
+            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is too heavy for our Oompa Loompas, try it with a smaller than ({{maxFileSize}})",
             "SYNC_SUCCESS": "你的專案已成功滙入"
         }
     },

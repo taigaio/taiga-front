@@ -476,9 +476,11 @@
             "DESCRIPTION": "Aquest procés pot durar una mica, pero favor mantinga la finestra oberta",
             "ASYNC_IN_PROGRESS_TITLE": "Els Oompa Loompas estàn important el teu projecte",
             "ASYNC_IN_PROGRESS_MESSAGE": "Aquest procés pot durar uns moments <br/> T'enviarem un correo quan estiga llest.",
+            "UPLOAD_IN_PROGRESS_MESSAGE": "Uploaded {{uploadedSize}} of {{totalSize}}",
             "ERROR": "Els Oompa Loompas han tingut problemes pujan les teues dades. Per favor intenta-ho de nou.",
             "ERROR_TOO_MANY_REQUEST": "Ho sentim, els Oompa Loompas estàn molt ocupats ara mateix. Intenta-ho de nou en uns moments.",
             "ERROR_MESSAGE": "Els Oompa Loompas tenen problemes important les teues dades: {{error_message}}",
+            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is too heavy for our Oompa Loompas, try it with a smaller than ({{maxFileSize}})",
             "SYNC_SUCCESS": "El teu projecte s'ha importat correctament"
         }
     },
@@ -792,7 +794,7 @@
         "PLACEHOLDER_FIELD": "Mot d'usuari i correu",
         "ACTION_RESET_PASSWORD": "Resetejar contrasenya",
         "LINK_CANCEL": "No, portam enrere, crec que ho recorde.",
-        "SUCCESS": "<strong>Check your inbox!</strong><br />We have sent you an email with the instructions to set a new password",
+        "SUCCESS": "<strong>Mira el teu correu!</strong><br /> Hem enviat un correu amb les instrucciones per a setejar una nova contrasenya.",
         "ERROR": "Segons els nostres Oompa Loompas, no estàs registrat encara."
     },
     "LOGIN_COMMON": {
