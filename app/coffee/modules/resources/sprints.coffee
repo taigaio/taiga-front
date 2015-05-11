@@ -29,7 +29,10 @@ resourceProvider = ($repo, $model, $storage) ->
 
     service.get = (projectId, sprintId) ->
         return $repo.queryOne("milestones", sprintId).then (sprint) ->
-            service.storeUserstoriesQueryParams(projectId, {"milestone": sprintId})
+            service.storeUserstoriesQueryParams(projectId, {
+                milestone: sprintId
+                order_by: "sprint_order"
+            })
             uses = sprint.user_stories
             uses = _.map(uses, (u) -> $model.make_model("userstories", u))
             sprint._attrs.user_stories = uses
