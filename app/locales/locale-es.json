@@ -959,7 +959,7 @@
         },
         "POPOVER": {
             "USER_PROFILE": "Perfil de Usuario",
-            "CHANGE_PASSWORD": "Cambio de Contraseña",
+            "CHANGE_PASSWORD": "Cambiar contraseña",
             "NOTIFICATIONS": "Notificaciones",
             "FEEDBACK": "Feedback",
             "TITLE_AVATAR": "Preferencias de usuario"
