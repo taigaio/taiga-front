@@ -1,18 +1,18 @@
-describe "tgProfileTimelineService", ->
+describe "tgUserTimelineService", ->
     provide = null
     $q = null
     $rootScope = null
-    profileTimelineService = null
+    userTimelineService = null
     mocks = {}
 
     _mockResources = () ->
         mocks.resources = {}
 
-        mocks.resources.timeline = {
-            profile: sinon.stub()
+        mocks.resources.users = {
+            getTimeline: sinon.stub()
         }
 
-        provide.value "$tgResources", mocks.resources
+        provide.value "tgResources", mocks.resources
 
     _mocks = () ->
         module ($provide) ->
@@ -25,20 +25,19 @@ describe "tgProfileTimelineService", ->
         _mocks()
 
     _inject = (callback) ->
-        inject (_tgProfileTimelineService_, _$q_, _$rootScope_) ->
-            profileTimelineService = _tgProfileTimelineService_
+        inject (_tgUserTimelineService_, _$q_, _$rootScope_) ->
+            userTimelineService = _tgUserTimelineService_
             $q = _$q_
             $rootScope = _$rootScope_
             callback() if callback
 
     beforeEach ->
-        module "taigaProjects"
+        module "taigaUserTimeline"
         _setup()
         _inject()
 
     it "filter invalid timeline items", (done) ->
-        valid_items = {
-            data: [
+        valid_items = [
                 { # valid item
                     event_type: "xx.tt.create",
                     data: {
@@ -104,26 +103,25 @@ describe "tgProfileTimelineService", ->
                     }
                 }
             ]
-        }
 
         userId = 3
         page = 2
 
-        mocks.resources.timeline.profile = (_userId_, _page_) ->
+        mocks.resources.users.getTimeline = (_userId_, _page_) ->
             expect(_userId_).to.be.equal(userId)
             expect(_page_).to.be.equal(page)
 
             return $q (resolve, reject) ->
-                resolve(valid_items)
+                resolve(Immutable.fromJS(valid_items))
 
-        profileTimelineService.getTimeline(userId, page)
+        userTimelineService.getTimeline(userId, page)
             .then (_items_) ->
                 items = _items_.toJS()
 
                 expect(items).to.have.length(3)
-                expect(items[0]).to.be.eql(valid_items.data[0])
-                expect(items[1]).to.be.eql(valid_items.data[3])
-                expect(items[2]).to.be.eql(valid_items.data[5])
+                expect(items[0]).to.be.eql(valid_items[0])
+                expect(items[1]).to.be.eql(valid_items[3])
+                expect(items[2]).to.be.eql(valid_items[5])
 
                 done()
 

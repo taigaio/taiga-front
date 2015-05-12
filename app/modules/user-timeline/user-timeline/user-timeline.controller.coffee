@@ -16,24 +16,35 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: modules/resources/timeline.coffee
+# File: modules/profile/profile-timeline/profile-timeline.controller.coffee
 ###
 
 taiga = @.taiga
 
-resourceProvider = ($repo) ->
-    service = {}
+mixOf = @.taiga.mixOf
 
-    service.profile = (userId, page) ->
-        params = {
-            page: page
-        }
+class UserTimelineController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.FiltersMixin)
+    @.$inject = [
+        "$tgAuth",
+        "tgUserTimelineService"
+    ]
 
-        return $repo.queryOnePaginatedRaw("timeline-profile", userId, params)
+    constructor: (@auth, @userTimelineService) ->
+        @.timelineList = Immutable.List()
+        @.page = 1
+        @.loadingData = false
 
-    return (instance) ->
-        instance.timeline = service
+    loadTimeline: () ->
+        user = @auth.getUser()
 
+        @.loadingData = true
 
-module = angular.module("taigaResources")
-module.factory("$tgTimelineResourcesProvider", ["$tgRepo", resourceProvider])
+        @userTimelineService
+            .getTimeline(user.id, @.page)
+            .then (newTimelineList) =>
+                @.timelineList = @.timelineList.concat(newTimelineList)
+                @.page++
+                @.loadingData = false
+
+angular.module("taigaUserTimeline")
+    .controller("UserTimeline", UserTimelineController)

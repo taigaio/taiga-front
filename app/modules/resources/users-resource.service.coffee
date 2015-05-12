@@ -37,6 +37,17 @@ Resource = (urlsService, http) ->
             .then (result) ->
                 return Immutable.fromJS(result.data)
 
+    service.getTimeline = (userId, page) ->
+        params = {
+            page: page
+        }
+
+        url = urlsService.resolve("timeline-profile")
+        url = "#{url}/#{userId}"
+
+        return http.get(url, params).then (result) =>
+            return Immutable.fromJS(result.data)
+
     return () ->
         return {"users": service}
 

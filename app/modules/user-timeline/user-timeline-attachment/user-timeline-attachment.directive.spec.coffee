@@ -1,7 +1,7 @@
-describe "profileTimelineAttachmentDirective", () ->
+describe "userTimelineAttachmentDirective", () ->
     element = scope = compile = provide = null
     mockTgTemplate = null
-    template = "<div tg-profile-timeline-attachment='attachment'></div>"
+    template = "<div tg-user-timeline-attachment='attachment'></div>"
 
     _mockTgTemplate= () ->
         mockTgTemplate = {
@@ -23,7 +23,7 @@ describe "profileTimelineAttachmentDirective", () ->
         return elm
 
     beforeEach ->
-        module "taigaProfile"
+        module "taigaUserTimeline"
 
         _mocks()
 
@@ -37,7 +37,7 @@ describe "profileTimelineAttachmentDirective", () ->
         }
 
         mockTgTemplate.get
-            .withArgs("profile/profile-timeline-attachment/profile-timeline-attachment-image.html")
+            .withArgs("user-timeline/user-timeline-attachment/user-timeline-attachment-image.html")
             .returns("<div id='image'></div>")
 
         elm = createDirective()
@@ -50,7 +50,7 @@ describe "profileTimelineAttachmentDirective", () ->
         }
 
         mockTgTemplate.get
-            .withArgs("profile/profile-timeline-attachment/profile-timeline-attachment.html")
+            .withArgs("user-timeline/user-timeline-attachment/user-timeline-attachment.html")
             .returns("<div id='file'></div>")
 
         elm = createDirective()

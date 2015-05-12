@@ -1,21 +1,21 @@
-class ProfileTimelineItemController
+class UserTimelineItemController
     @.$inject = [
         "$sce",
-        "tgProfileTimelineItemType",
-        "tgProfileTimelineItemTitle"
+        "tgUserTimelineItemType",
+        "tgUserTimelineItemTitle"
     ]
 
-    constructor: (@sce, @profileTimelineItemType, @profileTimelineItemTitle) ->
+    constructor: (@sce, @userTimelineItemType, @userTimelineItemTitle) ->
         timeline = @.timeline.toJS()
         event = @.parseEventType(timeline.event_type)
-        type = @profileTimelineItemType.getType(timeline, event)
+        type = @userTimelineItemType.getType(timeline, event)
 
         @.activity = {}
 
         @.activity.user = timeline.data.user
         @.activity.project = timeline.data.project
         @.activity.sprint = timeline.data.milestone
-        @.activity.title = @profileTimelineItemTitle.getTitle(timeline, event, type)
+        @.activity.title = @userTimelineItemTitle.getTitle(timeline, event, type)
         @.activity.created_formated = moment(timeline.created).fromNow()
         @.activity.obj =  @.getObject(timeline, event)
 
@@ -41,5 +41,5 @@ class ProfileTimelineItemController
         if timeline.data[event.obj]
             return timeline.data[event.obj]
 
-angular.module("taigaProfile")
-    .controller("ProfileTimelineItem", ProfileTimelineItemController)
+angular.module("taigaUserTimeline")
+    .controller("UserTimelineItem", UserTimelineItemController)

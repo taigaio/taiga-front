@@ -1,4 +1,4 @@
-describe "tgProfileTimelineItemTitle", ->
+describe "tgUserTimelineItemTitle", ->
     mySvc = null
     mockTranslate = null
     timeline = event = type = null
@@ -20,15 +20,15 @@ describe "tgProfileTimelineItemTitle", ->
         _mockTranslate()
 
     _inject = ->
-        inject (_tgProfileTimelineItemTitle_) ->
-            mySvc = _tgProfileTimelineItemTitle_
+        inject (_tgUserTimelineItemTitle_) ->
+            mySvc = _tgUserTimelineItemTitle_
 
     _setup = ->
         _mocks()
         _inject()
 
     beforeEach ->
-        module "taigaProfile"
+        module "taigaUserTimeline"
         _setup()
 
     it "title with username", () ->

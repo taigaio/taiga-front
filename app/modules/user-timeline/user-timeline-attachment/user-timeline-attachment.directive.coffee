@@ -1,4 +1,4 @@
-ProfileTimelineAttachmentDirective = (template, $compile) ->
+UserTimelineAttachmentDirective = (template, $compile) ->
     validFileExtensions = [".jpg", ".jpeg", ".bmp", ".gif", ".png"]
 
     isImage = (url) ->
@@ -11,9 +11,9 @@ ProfileTimelineAttachmentDirective = (template, $compile) ->
         is_image = isImage(scope.attachment.url)
 
         if is_image
-            templateHtml = template.get("profile/profile-timeline-attachment/profile-timeline-attachment-image.html")
+            templateHtml = template.get("user-timeline/user-timeline-attachment/user-timeline-attachment-image.html")
         else
-            templateHtml = template.get("profile/profile-timeline-attachment/profile-timeline-attachment.html")
+            templateHtml = template.get("user-timeline/user-timeline-attachment/user-timeline-attachment.html")
 
         el.html(templateHtml)
         $compile(el.contents())(scope)
@@ -23,14 +23,14 @@ ProfileTimelineAttachmentDirective = (template, $compile) ->
     return {
         link: link
         scope: {
-            attachment: "=tgProfileTimelineAttachment"
+            attachment: "=tgUserTimelineAttachment"
         }
     }
 
-ProfileTimelineAttachmentDirective.$inject = [
+UserTimelineAttachmentDirective.$inject = [
     "$tgTemplate",
     "$compile"
 ]
 
-angular.module("taigaProfile")
-    .directive("tgProfileTimelineAttachment", ProfileTimelineAttachmentDirective)
+angular.module("taigaUserTimeline")
+    .directive("tgUserTimelineAttachment", UserTimelineAttachmentDirective)

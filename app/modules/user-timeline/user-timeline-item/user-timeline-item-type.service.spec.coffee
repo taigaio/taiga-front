@@ -1,4 +1,4 @@
-describe "tgProfileTimelineItemType", ->
+describe "tgUserTimelineItemType", ->
     mySvc = null
 
     _provide = (callback) ->
@@ -7,14 +7,14 @@ describe "tgProfileTimelineItemType", ->
             return null
 
     _inject = ->
-        inject (_tgProfileTimelineItemType_) ->
-            mySvc = _tgProfileTimelineItemType_
+        inject (_tgUserTimelineItemType_) ->
+            mySvc = _tgUserTimelineItemType_
 
     _setup = ->
         _inject()
 
     beforeEach ->
-        module "taigaProfile"
+        module "taigaUserTimeline"
         _setup()
 
     it "get the timeline type", () ->

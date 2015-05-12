@@ -1,4 +1,4 @@
-class ProfileTimelineItemTitle
+class UserTimelineItemTitle
     @.$inject = [
         "$translate"
     ]
@@ -87,5 +87,5 @@ class ProfileTimelineItemTitle
     getTitle: (timeline, event, type) ->
         return @translate.instant(type.key, @._getParams(timeline, event, type))
 
-angular.module("taigaProfile")
-    .service("tgProfileTimelineItemTitle", ProfileTimelineItemTitle)
+angular.module("taigaUserTimeline")
+    .service("tgUserTimelineItemTitle", UserTimelineItemTitle)

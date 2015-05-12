@@ -1,12 +1,12 @@
-describe "ProfileTimelineItemController", ->
+describe "UserTimelineItemController", ->
     controller = scope = provide = null
     timeline = event = null
-    mockTgProfileTimelineItemType = null
-    mockTgProfileTimelineItemTitle = null
+    mockTgUserTimelineItemType = null
+    mockTgUserTimelineItemTitle = null
     mockType = null
 
-    _mockTgProfileTimelineItemType = () ->
-        mockTgProfileTimelineItemType = {
+    _mockTgUserTimelineItemType = () ->
+        mockTgUserTimelineItemType = {
             getType: sinon.stub()
         }
 
@@ -15,24 +15,24 @@ describe "ProfileTimelineItemController", ->
             member: sinon.stub()
         }
 
-        mockTgProfileTimelineItemType.getType.withArgs(timeline).returns(mockType)
+        mockTgUserTimelineItemType.getType.withArgs(timeline).returns(mockType)
 
-        provide.value "tgProfileTimelineItemType", mockTgProfileTimelineItemType
+        provide.value "tgUserTimelineItemType", mockTgUserTimelineItemType
 
-    _mockTgProfileTimelineItemTitle = () ->
-        mockTgProfileTimelineItemTitle = {
+    _mockTgUserTimelineItemTitle = () ->
+        mockTgUserTimelineItemTitle = {
             getTitle: sinon.stub()
         }
 
-        mockTgProfileTimelineItemTitle.getTitle.withArgs(timeline, event, mockType).returns("fakeTitle")
+        mockTgUserTimelineItemTitle.getTitle.withArgs(timeline, event, mockType).returns("fakeTitle")
 
-        provide.value "tgProfileTimelineItemTitle", mockTgProfileTimelineItemTitle
+        provide.value "tgUserTimelineItemTitle", mockTgUserTimelineItemTitle
 
     _mocks = () ->
         module ($provide) ->
             provide = $provide
-            _mockTgProfileTimelineItemType()
-            _mockTgProfileTimelineItemTitle()
+            _mockTgUserTimelineItemType()
+            _mockTgUserTimelineItemTitle()
 
             return null
 
@@ -61,7 +61,7 @@ describe "ProfileTimelineItemController", ->
         }
 
     beforeEach ->
-        module "taigaProfile"
+        module "taigaUserTimeline"
 
         _setup()
         _mocks()
@@ -73,7 +73,7 @@ describe "ProfileTimelineItemController", ->
         timeline = scope.vm.timeline
         timeline_immutable = Immutable.fromJS(timeline)
 
-        myCtrl = controller("ProfileTimelineItem", {$scope: scope}, {timeline: timeline_immutable})
+        myCtrl = controller("UserTimelineItem", {$scope: scope}, {timeline: timeline_immutable})
 
         expect(myCtrl.activity.user).to.be.equal(timeline.data.user)
         expect(myCtrl.activity.project).to.be.equal(timeline.data.project)
@@ -97,7 +97,7 @@ describe "ProfileTimelineItemController", ->
 
         timeline_immutable = Immutable.fromJS(timeline)
 
-        myCtrl = controller("ProfileTimelineItem", {$scope: scope}, {timeline: timeline_immutable})
+        myCtrl = controller("UserTimelineItem", {$scope: scope}, {timeline: timeline_immutable})
 
         expect(myCtrl.activity.description).to.be.an('object') # $sce.trustAsHtml
         expect(myCtrl.activity.member).to.be.equal(member)

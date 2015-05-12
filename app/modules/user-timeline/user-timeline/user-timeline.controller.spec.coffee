@@ -1,16 +1,16 @@
-describe "ProfileTimelineController", ->
+describe "UserTimelineController", ->
     myCtrl = scope = $q = provide = null
 
     mocks = {}
 
     mockUser = {id: 3}
 
-    _mockProfileTimeline = () ->
-        mocks.profileTimelineService = {
+    _mockUserTimeline = () ->
+        mocks.userTimelineService = {
             getTimeline: sinon.stub()
         }
 
-        provide.value "tgProfileTimelineService", mocks.profileTimelineService
+        provide.value "tgUserTimelineService", mocks.userTimelineService
 
     _mockTgAuth = () ->
         provide.value "$tgAuth", {
@@ -21,19 +21,19 @@ describe "ProfileTimelineController", ->
     _mocks = () ->
         module ($provide) ->
             provide = $provide
-            _mockProfileTimeline()
+            _mockUserTimeline()
             _mockTgAuth()
 
             return null
 
 
     beforeEach ->
-        module "taigaProfile"
+        module "taigaUserTimeline"
         _mocks()
 
         inject ($controller, _$q_) ->
             $q = _$q_
-            myCtrl = $controller "ProfileTimeline"
+            myCtrl = $controller "UserTimeline"
 
     it "timelineList should be an array", () ->
         expect(myCtrl.timelineList.toJS()).is.an("array")
@@ -54,13 +54,11 @@ describe "ProfileTimelineController", ->
 
             thenStub = sinon.stub()
 
-            profileStub = sinon.stub()
+            mocks.userTimelineService.getTimeline = sinon.stub()
                 .withArgs(mockUser.id, myCtrl.page)
                 .returns({
                     then: thenStub
                 })
-
-            mocks.profileTimelineService.getTimeline = profileStub
 
         it "the loadingData variable must be true during the timeline load", () ->
             expect(myCtrl.loadingData).to.be.false

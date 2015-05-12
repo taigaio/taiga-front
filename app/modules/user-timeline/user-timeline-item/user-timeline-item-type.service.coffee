@@ -150,8 +150,8 @@ timelineType = (timeline, event) ->
     return _.find types, (obj) ->
         return obj.check(timeline, event, field_name)
 
-class ProfileTimelineType
+class UserTimelineType
     getType: (timeline, event) -> timelineType(timeline, event)
 
-angular.module("taigaProfile")
-    .service("tgProfileTimelineItemType", ProfileTimelineType)
+angular.module("taigaUserTimeline")
+    .service("tgUserTimelineItemType", UserTimelineType)
