@@ -6,6 +6,7 @@ div.sprint-table
     div.row.milestone-us-item-row(ng-repeat="us in sprint.user_stories track by us.id", tg-bind-scope)
         div.column-us
             a.us-name.clickable(tg-nav="project-userstories-detail:project=project.slug,ref=us.ref",
+                                tg-nav-get-params="{\"milestone\": {{us.milestone}}}"
                                 tg-bo-title="'#' + us.ref + ' ' +  us.subject",
                                 ng-class="{closed: us.is_closed, blocked: us.is_blocked}")
                 span(tg-bo-ref="us.ref")
