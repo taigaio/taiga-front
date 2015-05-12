@@ -1,4 +1,4 @@
-div.activity-image
+div.activity-item
     span.activity-date {{::vm.activity.created_formated}}
     div.activity-info
         div.profile-contact-picture
@@ -18,5 +18,5 @@ div.activity-image
                 span {{::vm.activity.member.user.name}}
             p {{::vm.activity.member.role.name}}
 
-div(ng-repeat="attachment in vm.activity.attachments")
-        div(tg-profile-timeline-attachment="attachment")
+    div(ng-repeat="attachment in vm.activity.attachments")
+            div(tg-profile-timeline-attachment="attachment")

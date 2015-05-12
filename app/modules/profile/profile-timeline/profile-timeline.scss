@@ -1,9 +1,31 @@
 .profile-timeline {
     border-top: 1px solid $whitish;
-    %profile-activity {
+    .activity-item {
         border-bottom: 1px solid $whitish;
-        padding: .8rem 1rem;
+        padding: 1rem .5rem;
         position: relative;
+        p {
+            margin-bottom: .5rem;
+        }
+        a {
+            color: $green-taiga;
+            &:first-child {
+                @extend %bold;
+                color: $gray;
+            }
+            &:hover {
+                color: $fresh-taiga;
+            }
+        }
+        blockquote {
+            margin-bottom: 0;
+            margin-left: calc(35px + 1rem);
+            margin-top: .5rem;
+        }
+        img {
+            max-height: 640px;
+            max-width: 100%;
+        }
         .activity-info {
             align-items: center;
             color: $gray-light;
@@ -27,52 +49,6 @@
                 width: 100%;
             }
         }
-        p {
-            margin-bottom: .5rem;
-        }
-        a {
-            color: $green-taiga;
-            &:first-child {
-                @extend %bold;
-                color: $gray;
-            }
-            &:hover {
-                color: $fresh-taiga;
-            }
-        }
-    }
-    .activity-simple,
-    .activity-comment,
-    .activity-image,
-    .activity-notification,
-    .activity-member,
-    .activity-project {
-        @extend %profile-activity;
-    }
-    .activity-comment,
-    .activity-project,
-    .activity-image {
-        blockquote {
-            margin-bottom: .5rem;
-            margin-left: calc(35px + 1rem);
-            margin-top: .5rem;
-            img {
-                max-height: 640px;
-                max-width: 100%;
-            }
-        }
-    }
-    .activity-notification {
-        .activity-notification-list {
-            border-left: 2px solid $whitish;
-            margin-bottom: .5rem;
-            margin-left: calc(35px + 1rem);
-            margin-top: .5rem;
-            padding: .2rem 1rem;
-            li {
-                margin-bottom: .5rem;
-            }
-        }
     }
     .activity-member-view {
         display: flex;
@@ -89,12 +65,21 @@
             color: $gray-light;
         }
     }
-    .profile-member-picture {
-        img {
-            margin-right: 1rem;
-            max-width: 64px;
-            min-width: 32px;
-            width: 100%;
+    .single-attachment {
+        border: 0;
+        padding: 0;
+        span {
+            @extend %text;
+            @extend %medium;
+            display: inline-block;
+            max-width: 95%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+        .icon {
+            margin-right: .3rem;
         }
     }
 }

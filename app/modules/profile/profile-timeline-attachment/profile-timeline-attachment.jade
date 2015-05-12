@@ -1,3 +1,5 @@
-p TODO: ATTACHMENT
-p
-    a(ng-href="attachment.url") {{attachment.filename}}
+div.single-attachment
+    blockquote
+        a(ng-href="{{ attachment.url }}", title="Click to download {{ attachment.filename }}")
+            span.icon.icon-document
+            span {{attachment.filename}}
