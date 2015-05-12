@@ -249,6 +249,7 @@
             "PROJECT_SLUG": "Slug de proyecto",
             "NUMBER_SPRINTS": "Número de sprints totales estimado",
             "NUMBER_US_POINTS": "Número de puntos de historia totales estimados",
+            "TAGS": "Etiquetas",
             "DESCRIPTION": "Descripción",
             "PUBLIC_PROJECT": "Proyecto público",
             "PRIVATE_PROJECT": "Proyecto privado",

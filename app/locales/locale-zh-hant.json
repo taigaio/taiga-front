@@ -249,6 +249,7 @@
             "PROJECT_SLUG": "專案代稱",
             "NUMBER_SPRINTS": "衝刺任務數目 ",
             "NUMBER_US_POINTS": "使用者故事點數數目",
+            "TAGS": "標籤",
             "DESCRIPTION": "描述",
             "PUBLIC_PROJECT": "公開專案",
             "PRIVATE_PROJECT": "不公開專案",

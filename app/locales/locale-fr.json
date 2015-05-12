@@ -249,6 +249,7 @@
             "PROJECT_SLUG": "Slug du projet",
             "NUMBER_SPRINTS": "Nombre de sprints",
             "NUMBER_US_POINTS": "Nombre de points HU",
+            "TAGS": "Étiquettes",
             "DESCRIPTION": "Description",
             "PUBLIC_PROJECT": "Projet public",
             "PRIVATE_PROJECT": "Projet privé",

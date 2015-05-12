@@ -39,8 +39,7 @@
         "TAGS": {
             "PLACEHOLDER": "I'm it! Tag me...",
             "DELETE": "Delete tag",
-            "ADD": "Add tag",
-            "LIST": "Tags"
+            "ADD": "Add tag"
         },
         "DESCRIPTION": {
             "EMPTY": "Empty space is so boring... go on be descriptive...",
@@ -250,6 +249,7 @@
             "PROJECT_SLUG": "Project slug",
             "NUMBER_SPRINTS": "Number of sprints",
             "NUMBER_US_POINTS": "Number of US points",
+            "TAGS": "Tags",
             "DESCRIPTION": "Description",
             "PUBLIC_PROJECT": "Public project",
             "PRIVATE_PROJECT": "Private project",

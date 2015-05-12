@@ -249,6 +249,7 @@
             "PROJECT_SLUG": "Projektin hukka-aika",
             "NUMBER_SPRINTS": "Kierrosten määrä",
             "NUMBER_US_POINTS": "Kt pisteitä",
+            "TAGS": "Avainsanat",
             "DESCRIPTION": "Kuvaus",
             "PUBLIC_PROJECT": "Julkinen projekti",
             "PRIVATE_PROJECT": "Yksityinen projekti",
