@@ -1,5 +1,5 @@
-a.user-avatar(tg-nav="profile", title="{{ vm.user.full_name_display }}") {{ vm.user.full_name_display }}
-    img(tg-bo-src="vm.user.photo", alt="{{ vm.user.full_name_display }}")
+a.user-avatar(tg-nav="profile", title="{{ vm.user.get('full_name_display') }}") {{ vm.user.get('full_name_display') }}
+    img(ng-src="{{ vm.user.get('photo') }}", alt="{{ vm.user.get('full_name_display') }}")
 
 div.navbar-dropdown.dropdown-user
     ul
