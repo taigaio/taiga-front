@@ -9,52 +9,35 @@
                 filter: brightness(40%) saturate(150%) hue-rotate(60deg);
                 transition: all .2s cubic-bezier(.01, .7, 1, 1);
             }
-            .edit-profile {
+            .profile-edition {
                 opacity: 1;
-                transition: opacity .2s cubic-bezier(.01, .7, 1, 1);
+                transform: translateY(0);
+                transition: all .2s cubic-bezier(.01, .7, 1, 1);
+                transition-delay: .3s;
             }
         }
     }
     .profile-img {
         max-width: 100%;
     }
-    .edit-profile {
+    .profile-edition {
         @extend %large;
+        @extend %light;
+        background: rgba($black, .4);
         bottom: 0;
+        color: $white;
         left: 0;
         opacity: 0;
+        overflow: hidden;
+        padding: 1rem;
         position: absolute;
-        right: 0;
-        top: 0;
+        transform: translateY(100%);
+        width: 100%;
         &:hover {
-            .profile-edition {
-                opacity: 1;
-                transition: all .2s cubic-bezier(.01, .7, 1, 1);
-                transition-delay: .2s;
-            }
+            background: rgba($black, .8);
+            transition: all .3s cubic-bezier(.01, .7, 1, 1);
         }
 
-    }
-    .profile-edition {
-        @extend %small;
-        background: rgba($white, .1);
-        color: $white;
-        height: 30px;
-        left: calc(50% - 55px);
-        opacity: 0;
-        padding: .4rem;
-        position: absolute;
-        top: calc(50% - 5px);
-        width: 110px;
-        .icon-edit {
-            color: $white;
-            margin-right: .3rem;
-        }
-        &:hover {
-            background: rgba($white, .4);
-            color: $white;
-            transition: all .2s cubic-bezier(.77, .01, .97, .85);
-        }
     }
     .button-green {
         display: block;

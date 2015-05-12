@@ -1,10 +1,7 @@
 section.profile-bar
     div.profile-image-wrapper
         img.profile-img(ng-src="{{::vm.user.big_photo}}", alt="{{::vm.user.full_name}}")
-        div.edit-profile(title="{{ 'USER.PROFILE.EDIT' | translate }}")
-            a.profile-edition(title="{{ 'USER.PROFILE.EDIT' | translate }}", tg-nav="user-settings-user-profile")
-                span.icon.icon-edit
-                span(translate="USER.PROFILE.EDIT")
+        a.profile-edition(title="{{ 'USER.PROFILE.EDIT' | translate }}", tg-nav="user-settings-user-profile", translate="USER.PROFILE.EDIT")
     // a.button-green
     //     span(translate="USER.PROFILE.FOLLOW")
     div.profile-data
