@@ -1,10 +1,14 @@
 .profile-bar {
     .profile-image-wrapper {
         height: 200px;
-        margin-bottom: .25rem;
+        margin-bottom: 1rem;
         overflow: hidden;
         position: relative;
         &:hover {
+            img {
+                filter: brightness(40%) saturate(150%) hue-rotate(60deg);
+                transition: all .2s cubic-bezier(.01, .7, 1, 1);
+            }
             .edit-profile {
                 opacity: 1;
                 transition: opacity .2s cubic-bezier(.01, .7, 1, 1);
@@ -16,7 +20,6 @@
     }
     .edit-profile {
         @extend %large;
-        background: rgba($black, .6);
         bottom: 0;
         left: 0;
         opacity: 0;
@@ -80,17 +83,18 @@
     h2 {
         @extend %bold;
         @extend %small;
-        margin-bottom: .5rem;
     }
     h1 {
         @extend %xlarge;
         line-height: 1;
+        margin-bottom: 0;
         text-transform: none;
     }
     h2 {
         @extend %large;
         color: $gray-light;
         line-height: 1.2;
+        margin-bottom: 1rem;
     }
     .location {
         color: $gray-light;
@@ -110,7 +114,7 @@
         color: $gray;
         display: flex;
         justify-content: space-between;
-        margin-bottom: 1rem;
+        margin-bottom: 1.25rem;
         padding: 1rem .5rem;
         .stat {
             padding: 0 .2rem;

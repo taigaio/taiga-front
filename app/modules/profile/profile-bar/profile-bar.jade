@@ -36,5 +36,5 @@ section.profile-bar
         //         div.organization
         //         div.organization
 
-    div.profile-quote
-        span "Small minds talk about people, average minds discuss events, great minds discuss ideas"
+    div.profile-quote(ng-if="vm.user.bio")
+        span {{::vm.user.bio}}
