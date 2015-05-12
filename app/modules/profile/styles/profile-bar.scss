@@ -156,10 +156,10 @@
     }
 
     .profile-quote {
-        @extend %title;
-        @extend %larger;
+        @extend %light;
+        @extend %large;
         background: url('/images/quote.png') no-repeat top left;
-        line-height: 1.2;
+        line-height: 1.4;
         padding: .5rem;
     }
 }
