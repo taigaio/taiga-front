@@ -41,7 +41,7 @@ class ProjectsService extends taiga.Service
 
                         colorized_tags = tags.map (tag) ->
                             color = project.get("tags_colors").get(tag)
-                            return {name: tag, color: color}
+                            return Immutable.fromJS({name: tag, color: color})
 
                         project = project.set("colorized_tags", colorized_tags)
 

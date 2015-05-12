@@ -23,7 +23,8 @@ div.project-list-wrapper.centered
                                 span(ng-if="::project.get('description').length > 300") ...
 
                         div.project-list-single-tags.tags-container(ng-if="::project.get('tags').size")
-                            div.tags-block(tg-colorize-tags="project.get('tags')", tg-colorize-tags-type="backlog")
+                            span.tag(style='border-left: 5px solid {{::tag.get("color")}};', tg-repeat="tag in ::project.get('colorized_tags')")
+                                span.tag-name {{::tag.get('name')}}
 
                     div.project-list-single-right
                     span.drag.icon.icon-drag-v

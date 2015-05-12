@@ -22,7 +22,7 @@ class ProfileTimelineItemTitle
             user = timeline.data.user
             title_attr = @translate.instant('COMMON.SEE_USER_PROFILE', {username: user.username})
             url = 'user-profile:username=vm.activity.user.username'
-            console.log(user)
+
             return @._getLink(url, user.name, title_attr)
 
         else if param == 'field_name'
