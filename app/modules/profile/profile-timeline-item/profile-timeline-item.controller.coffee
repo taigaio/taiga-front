@@ -6,7 +6,7 @@ class ProfileTimelineItemController
     ]
 
     constructor: (@sce, @profileTimelineItemType, @profileTimelineItemTitle) ->
-        timeline = @.timeline
+        timeline = @.timeline.toJS()
         event = @.parseEventType(timeline.event_type)
         type = @profileTimelineItemType.getType(timeline, event)
 

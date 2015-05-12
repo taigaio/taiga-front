@@ -15,15 +15,15 @@ div.project-list-wrapper.centered
                     div.project-list-single-left
                         div.project-list-single-title
                             h1
-                            a(href="#", tg-nav="project:project=project.slug")
-                                h1.project-name(ng-bind="::project.name", title="{{ ::project.name }}")
-                                span.private(ng-if="project.is_private", title="{{'PROJECT.PRIVATE' | translate}}")
+                            a(href="#", tg-nav="project:project=project.get('slug')")
+                                h1.project-name(title="{{ ::project.get('name') }}") {{project.get('name')}}
+                                span.private(ng-if="project.get('is_private')", title="{{'PROJECT.PRIVATE' | translate}}")
                                     include ../../../svg/lock.svg
-                            p {{ ::project.description | limitTo:300 }}
-                                span(ng-if="::project.description.length > 300") ...
+                            p {{ ::project.get('description') | limitTo:300 }}
+                                span(ng-if="::project.get('description').length > 300") ...
 
-                        div.project-list-single-tags.tags-container(ng-if="::project.tags")
-                            div.tags-block(tg-colorize-tags="project.tags", tg-colorize-tags-type="backlog")
+                        div.project-list-single-tags.tags-container(ng-if="::project.get('tags').size")
+                            div.tags-block(tg-colorize-tags="project.get('tags')", tg-colorize-tags-type="backlog")
 
                     div.project-list-single-right
                     span.drag.icon.icon-drag-v

@@ -58,7 +58,7 @@ describe "tgHome", ->
             then: mocks.thenStubWatchingIssues
         })
 
-        provide.value "$tgResources", mocks.resources
+        provide.value "tgResources", mocks.resources
 
     _mockProjectUrl = () ->
         mocks.projectUrl = {get: sinon.stub()}
@@ -83,7 +83,7 @@ describe "tgHome", ->
         provide.value "$tgNavUrls", mocks.tgNavUrls
 
     _inject = (callback) ->
-        inject (_$q_, _$tgResources_, _$rootScope_, _$projectUrl_, _$timeout_, _tgHomeService_) ->
+        inject (_$timeout_, _tgHomeService_) ->
             timeout = _$timeout_
             homeService = _tgHomeService_
             callback() if callback
@@ -107,12 +107,12 @@ describe "tgHome", ->
 
     describe "fetch items", ->
         it "work in progress filled", () ->
-            mocks.thenStubAssignedToUserstories.callArg(0, [{"id": 1}])
-            mocks.thenStubAssignedToTasks.callArg(0, [{"id": 2}])
-            mocks.thenStubAssignedToIssues.callArg(0, [{"id": 3}])
-            mocks.thenStubWatchingUserstories.callArg(0, [{"id": 4}])
-            mocks.thenStubWatchingTasks.callArg(0, [{"id": 5}])
-            mocks.thenStubWatchingIssues.callArg(0, [{"id": 6}])
+            mocks.thenStubAssignedToUserstories.callArg(0, Immutable.fromJS([{"id": 1}]))
+            mocks.thenStubAssignedToTasks.callArg(0, Immutable.fromJS([{"id": 2}]))
+            mocks.thenStubAssignedToIssues.callArg(0, Immutable.fromJS([{"id": 3}]))
+            mocks.thenStubWatchingUserstories.callArg(0, Immutable.fromJS([{"id": 4}]))
+            mocks.thenStubWatchingTasks.callArg(0, Immutable.fromJS([{"id": 5}]))
+            mocks.thenStubWatchingIssues.callArg(0, Immutable.fromJS([{"id": 6}]))
 
             timeout.flush()
             expect(homeService.workInProgress.toJS()).to.be.eql({
@@ -136,23 +136,23 @@ describe "tgHome", ->
         it "project info filled", () ->
             duty = {
                 id: 66
-                _name: "userstories"
                 ref: 123
                 project: 1
             }
-            mocks.thenStubAssignedToUserstories.callArg(0, [duty])
-            mocks.thenStubAssignedToTasks.callArg(0)
-            mocks.thenStubAssignedToIssues.callArg(0)
-            mocks.thenStubWatchingUserstories.callArg(0)
-            mocks.thenStubWatchingTasks.callArg(0)
-            mocks.thenStubWatchingIssues.callArg(0)
+
+            mocks.thenStubAssignedToUserstories.callArg(0, Immutable.fromJS([duty]))
+            mocks.thenStubAssignedToTasks.callArg(0, Immutable.fromJS([]))
+            mocks.thenStubAssignedToIssues.callArg(0, Immutable.fromJS([]))
+            mocks.thenStubWatchingUserstories.callArg(0, Immutable.fromJS([]))
+            mocks.thenStubWatchingTasks.callArg(0, Immutable.fromJS([]))
+            mocks.thenStubWatchingIssues.callArg(0, Immutable.fromJS([]))
             timeout.flush()
 
             projectsById = {
-                get: () -> {
+                get: () -> Immutable.fromJS({
                     name: "Testing project"
                     slug: "testing-project"
-                }
+                })
             }
 
             mocks.tgNavUrls.resolve
@@ -160,6 +160,7 @@ describe "tgHome", ->
                 .returns("/testing-project/us/123")
 
             homeService.attachProjectInfoToWorkInProgress(projectsById)
+
             expect(homeService.workInProgress.toJS()).to.be.eql({
                 assignedTo: {
                     userStories: [

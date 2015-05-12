@@ -1,5 +1,5 @@
 class HomeService extends taiga.Service
-    @.$inject = ["$q", "$tgNavUrls", "$tgResources", "$rootScope", "$projectUrl", "$tgAuth"]
+    @.$inject = ["$q", "$tgNavUrls", "tgResources", "$rootScope", "$projectUrl", "$tgAuth"]
 
     constructor: (@q, @navurls, @rs, @rootScope, @projectUrl, @auth) ->
         @._workInProgress = Immutable.Map()
@@ -11,27 +11,64 @@ class HomeService extends taiga.Service
         @.fetchWorkInProgress()
 
     attachProjectInfoToWorkInProgress: (projectsById) ->
-        _attachProjectInfoToDuty = (duty) =>
-            project = projectsById.get(String(duty.project))
+        _attachProjectInfoToDuty = (duty, objType) =>
+            project = projectsById.get(String(duty.get('project')))
             ctx = {
-                project: project.slug
-                ref: duty.ref
+                project: project.get('slug')
+                ref: duty.get('ref')
             }
-            duty.url = @navurls.resolve("project-#{duty._name}-detail", ctx)
-            duty.projectName = project.name
+
+            url = @navurls.resolve("project-#{objType}-detail", ctx)
+
+            duty = duty.set('url', url)
+            duty = duty.set('projectName', project.get('name'))
+            duty = duty.set("_name", objType)
+
             return duty
 
-        @._workInProgress = Immutable.fromJS({
-            assignedTo: {
-                userStories: _.map(_.clone(@.assignedToUserStories), _attachProjectInfoToDuty)
-                tasks: _.map(_.clone(@.assignedToTasks), _attachProjectInfoToDuty)
-                issues: _.map(_.clone(@.assignedToIssues), _attachProjectInfoToDuty)
-            }
-            watching: {
-                userStories: _.map(_.clone(@.watchingUserStories), _attachProjectInfoToDuty)
-                tasks: _.map(_.clone(@.watchingTasks), _attachProjectInfoToDuty)
-                issues: _.map(_.clone(@.watchingIssues), _attachProjectInfoToDuty)
-            }
+        assignedTo = Immutable.Map()
+
+        if @.assignedToUserStories
+            _duties = @.assignedToUserStories.map (duty) ->
+                return _attachProjectInfoToDuty(duty, "userstories")
+
+            assignedTo = assignedTo.set("userStories", _duties)
+
+        if @.assignedToTasks
+            _duties = @.assignedToTasks.map (duty) ->
+                return _attachProjectInfoToDuty(duty, "tasks")
+
+            assignedTo = assignedTo.set("tasks", _duties)
+
+        if @.assignedToIssues
+            _duties = @.assignedToIssues.map (duty) ->
+                return _attachProjectInfoToDuty(duty, "issues")
+
+            assignedTo = assignedTo.set("issues", _duties)
+
+        watching = Immutable.Map()
+
+        if @.watchingUserStories
+            _duties = @.watchingUserStories.map (duty) ->
+                return _attachProjectInfoToDuty(duty, "userstories")
+
+            watching = watching.set("userStories", _duties)
+
+        if @.watchingTasks
+            _duties = @.watchingTasks.map (duty) ->
+                return _attachProjectInfoToDuty(duty, "tasks")
+
+            watching = watching.set("tasks", _duties)
+
+        if @.watchingIssues
+            _duties = @.watchingIssues.map (duty) ->
+                return _attachProjectInfoToDuty(duty, "issues")
+
+            watching = watching.set("issues", _duties)
+
+        @._workInProgress = Immutable.Map({
+            assignedTo: assignedTo,
+            watching: watching
         })
 
     getWorkInProgress: () ->

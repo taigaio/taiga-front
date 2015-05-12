@@ -1,13 +1,13 @@
-a(href="{{ ::vm.duty.url }}", title="{{ ::duty.subject }}")
+a(href="{{ ::vm.duty.get('url') }}", title="{{ ::duty.get('subject') }}")
     img.avatar(
-        src="{{ ::vm.duty.assigned_to_extra_info.photo }}"
-        title="{{ ::vm.duty.assigned_to_extra_info.full_name_display }}")
+        src="{{ ::vm.duty.get('assigned_to_extra_info').get('photo') }}"
+        title="{{ ::vm.duty.get('assigned_to_extra_info').get('full_name_display') }}")
 
     div.duty-data
         div
             span.duty-type {{ ::vm.getDutyType() }}
-            span.duty-status(ng-style="{'color': vm.duty.status_extra_info.color}") {{ ::vm.duty.status_extra_info.name }}
+            span.duty-status(ng-style="{'color': vm.duty.get('status_extra_info').get('color')}") {{ ::vm.duty.get('status_extra_info').get('name') }}
         span.duty-title
-            span.duty-id(tg-bo-ref="duty.ref")
-            span.duty-name {{ ::duty.subject }}
-    div.duty-project {{ ::vm.duty.projectName}}
+            span.duty-id(tg-bo-ref="duty.get('ref')")
+            span.duty-name {{ ::duty.get('subject') }}
+    div.duty-project {{ ::vm.duty.get('projectName')}}

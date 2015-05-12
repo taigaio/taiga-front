@@ -19,7 +19,7 @@ ProjectsListingDirective = (projectsService) ->
 
             sorted_project_ids = _.map(scope.vm.projects.toArray(), (p) -> p.id)
             sorted_project_ids = _.without(sorted_project_ids, project.id)
-            sorted_project_ids.splice(index, 0, project.id)
+            sorted_project_ids.splice(index, 0, project.get('id'))
             sortData = []
             for value, index in sorted_project_ids
                 sortData.push({"project_id": value, "order":index})

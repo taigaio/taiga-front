@@ -9,7 +9,7 @@ section.profile-bar
     //     span(translate="USER.PROFILE.FOLLOW")
     div.profile-data
         h1 {{::vm.user.full_name}}
-        h2 {{::vm.stats.roles.join(", ")}}
+        h2 {{::vm.stats.get('roles').join(", ")}}
         // div.location
         //     include ../../../svg/location.svg
         //     span Madrid
@@ -19,13 +19,13 @@ section.profile-bar
     // These values in profile stats are not defined yet in UX. Please ask
     div.profile-stats
         div.stat
-            span.stat-number {{::vm.stats.projects}}
+            span.stat-number {{::vm.stats.get('projects')}}
             span.stat-name(translate="USER.PROFILE.PROJECTS")
         div.stat
-            span.stat-number {{::vm.stats.closed_userstories}}
+            span.stat-number {{::vm.stats.get('closed_userstories')}}
             span.stat-name(translate="USER.PROFILE.CLOSED_US")
         div.stat
-            span.stat-number {{::vm.stats.contacts}}
+            span.stat-number {{::vm.stats.get('contacts')}}
             span.stat-name(translate="USER.PROFILE.CONTACTS")
     // TODO Hide until organizations come
         // div.profile-organizations
@@ -36,5 +36,5 @@ section.profile-bar
         //         div.organization
         //         div.organization
 
-    div.profile-quote(ng-if="vm.user.bio")
+    div.profile-quote(ng-if="::vm.user.bio")
         span {{::vm.user.bio}}

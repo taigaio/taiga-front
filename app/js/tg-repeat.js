@@ -13,6 +13,16 @@
       if (immutable_collection.toJS) {
           collection = immutable_collection.toJS();
       }
+  $scope[aliasAs] = collection; -> $scope[aliasAs] = immutable_collection;
+
+value = collection[key];
+immutable_value = immutable_collection.get(key); #x2
+
+
+updateScope(block.scope, index, valueIdentifier, value, keyIdentifier, key, collectionLength);
+-> (x2)
+updateScope(block.scope, index, valueIdentifier, immutable_value, keyIdentifier, key, collectionLength);
+
   --copy from angular
   copy angular hashKey
   copy angular createMap
@@ -205,7 +215,7 @@
                         nextBlockOrder,
                         elementsToRemove;
                         if (aliasAs) {
-                            $scope[aliasAs] = collection;
+                            $scope[aliasAs] = immutable_collection;
                         }
                         if (isArrayLike(collection)) {
                             collectionKeys = collection;
@@ -226,6 +236,7 @@
                         for (index = 0; index < collectionLength; index++) {
                             key = (collection === collectionKeys) ? index : collectionKeys[index];
                             value = collection[key];
+                            immutable_value = immutable_collection.get(key);
                             trackById = trackByIdFn(key, value, index);
                             if (lastBlockMap[trackById]) {
                                 // found previously seen block
@@ -265,6 +276,7 @@
                         for (index = 0; index < collectionLength; index++) {
                             key = (collection === collectionKeys) ? index : collectionKeys[index];
                             value = collection[key];
+                            immutable_value = immutable_collection.get(key);
                             block = nextBlockOrder[index];
                             if (block.scope) {
                                 // if we have already seen this object, then we need to reuse the
@@ -279,7 +291,7 @@
                                     $animate.move(getBlockNodes(block.clone), null, jqLite(previousNode));
                                 }
                                 previousNode = getBlockEnd(block);
-                                updateScope(block.scope, index, valueIdentifier, value, keyIdentifier, key, collectionLength);
+                                updateScope(block.scope, index, valueIdentifier, immutable_value, keyIdentifier, key, collectionLength);
                             } else {
                                 // new item which we don't know about
                                 $transclude(function ngRepeatTransclude(clone, scope) {
@@ -295,7 +307,7 @@
                                     // by a directive with templateUrl when its template arrives.
                                     block.clone = clone;
                                     nextBlockMap[block.id] = block;
-                                    updateScope(block.scope, index, valueIdentifier, value, keyIdentifier, key, collectionLength);
+                                    updateScope(block.scope, index, valueIdentifier, immutable_value, keyIdentifier, key, collectionLength);
                                 });
                             }
                         }

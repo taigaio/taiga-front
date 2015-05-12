@@ -1,18 +1,18 @@
-DutyDirective = (navurls, projectsService, $translate) ->
+DutyDirective = (navurls, $translate) ->
     link = (scope, el, attrs, ctrl) ->
         scope.vm = {}
         scope.vm.duty = scope.duty
 
         scope.vm.getDutyType = () ->
             if scope.vm.duty
-                if scope.vm.duty._name == "userstories"
+                if scope.vm.duty.get('_name') == "userstories"
                     return $translate.instant("COMMON.USER_STORY")
-                if scope.vm.duty._name == "tasks"
+                if scope.vm.duty.get('_name') == "tasks"
                     return $translate.instant("COMMON.TASK")
-                if scope.vm.duty._name == "issues"
+                if scope.vm.duty.get('_name') == "issues"
                     return $translate.instant("COMMON.ISSUE")
 
-    directive = {
+    return {
         templateUrl: "home/duties/duty.html"
         scope: {
             "duty": "=tgDuty"
@@ -20,11 +20,8 @@ DutyDirective = (navurls, projectsService, $translate) ->
         link: link
     }
 
-    return directive
-
 DutyDirective.$inject = [
     "$tgNavUrls",
-    "tgProjectsService",
     "$translate"
 ]
 

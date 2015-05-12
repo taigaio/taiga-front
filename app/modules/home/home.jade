@@ -13,7 +13,7 @@ div.home-wrapper.centered
             include ../../svg/hide.svg
             p(translate="HOME.EMPTY_WATCHING")
 
-        section.watching(ng-show="vm.watching")
+        section.watching(ng-show="vm.watching.size")
             div.duty-single(tg-duty="duty", tg-repeat="duty in vm.watching", ng-class="{blocked: duty.is_blocked}")
 
     aside.project-list(tg-home-project-list)

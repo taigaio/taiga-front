@@ -58,4 +58,4 @@ describe "ProfileBar", ->
 
         $rootScope.$apply()
 
-        expect(ctrl.stats).to.be.eql(stats.toJS())
+        expect(ctrl.stats.toJS()).to.be.eql(stats.toJS())

@@ -2,7 +2,7 @@ taiga = @.taiga
 groupBy = @.taiga.groupBy
 
 class ProjectsService extends taiga.Service
-    @.$inject = ["$tgResources", "$rootScope", "$projectUrl", "tgLightboxFactory"]
+    @.$inject = ["tgResources", "$rootScope", "$projectUrl", "tgLightboxFactory"]
 
     constructor: (@rs, @rootScope, @projectUrl, @lightboxFactory) ->
         @._currentUserProjects = Immutable.Map()
@@ -18,30 +18,40 @@ class ProjectsService extends taiga.Service
     getCurrentUserProjects: ->
         return @._currentUserProjectsPromise
 
+    getProjectBySlug: (projectSlug) ->
+        return @rs.projects.getProjectBySlug(projectSlug)
+
+    getProjectStats: (projectId) ->
+        return @rs.projects.getProjectStats(projectId)
+
     fetchProjects: ->
         if not @._inProgress
             @._inProgress = true
 
-            @._currentUserProjectsPromise = @rs.projects.listByMember(@rootScope.user?.id)
+            @._currentUserProjectsPromise = @rs.users.getProjects(@rootScope.user?.id)
             @._currentUserProjectsPromise.then (projects) =>
-                _.map projects, (project) =>
-                    project.url = @projectUrl.get(project)
+                projects = projects.map (project) =>
+                    url = @projectUrl.get(project.toJS())
 
-                    project.colorized_tags = []
+                    project = project.set("url", url)
+                    colorized_tags = []
 
-                    if project.tags
-                        tags = project.tags.sort()
+                    if project.get("tags")
+                        tags = project.get("tags").sort()
 
-                        project.colorized_tags = _.map tags, (tag) ->
-                            color = project.tags_colors[tag]
+                        colorized_tags = tags.map (tag) ->
+                            color = project.get("tags_colors").get(tag)
                             return {name: tag, color: color}
 
-                @._currentUserProjects = Immutable.fromJS({
-                    all: projects,
-                    recents: projects.slice(0, 10)
-                })
+                        project = project.set("colorized_tags", colorized_tags)
 
-                @._currentUserProjectsById = Immutable.fromJS(groupBy(projects, (p) -> p.id))
+                    return project
+
+
+                @._currentUserProjects = @._currentUserProjects.set("all", projects)
+                @._currentUserProjects = @._currentUserProjects.set("recents", projects.slice(0, 10))
+
+                @._currentUserProjectsById = Immutable.fromJS(groupBy(projects.toJS(), (p) -> p.id))
 
                 return @.projects
 

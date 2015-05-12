@@ -43,4 +43,4 @@ Resource = (urlsService, http) ->
 Resource.$inject = ["$tgUrls", "$tgHttp"]
 
 module = angular.module("taigaResources2")
-module.factory("tgProjectsResources", Resource)
+module.factory("tgUsersResources", Resource)

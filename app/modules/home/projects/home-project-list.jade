@@ -1,12 +1,12 @@
 ul.home-project-list(ng-show="vm.projects.size")
     li.home-project-list-single(tg-bind-scope, tg-repeat="project in vm.projects")
-        a(href="#", tg-nav="project:project=project.slug")
+        a(href="#", tg-nav="project:project=project.get('slug')")
             h2.home-project-list-single-title
-                span.project-name(ng-bind="::project.name", title="{{ ::project.name }}")
-                span.private(ng-if="project.is_private", title="{{'PROJECT.PRIVATE' | translate}}")
+                span.project-name(title="{{ ::project.get('name') }}") {{::project.get('name')}}
+                span.private(ng-if="project.get('is_private')", title="{{'PROJECT.PRIVATE' | translate}}")
                     include ../../../svg/lock.svg
-            p {{ ::project.description | limitTo:150 }}
-                span(ng-if="::project.description.length > 150") ...
+            p {{ ::project.get('description') | limitTo:150 }}
+                span(ng-if="::project.get('description').size > 150") ...
 a.see-more-projects-btn.button-gray(ng-show="vm.projects.size", href="#", tg-nav="projects", title="{{'PROJECT.NAVIGATION.SEE_MORE_PROJECTS' | translate}}",         translate="PROJECT.NAVIGATION.SEE_MORE_PROJECTS")
 section.projects-empty(ng-hide="vm.projects.size")
     include ../../../svg/empty-project.svg

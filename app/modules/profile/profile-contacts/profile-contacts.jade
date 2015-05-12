@@ -7,19 +7,19 @@ section.profile-contacts
 
     div.profile-contact-single(tg-repeat="contact in ::vm.contacts")
         div.profile-contact-picture
-            a(tg-nav="user-profile:username=contact.username", title="{{::contact.name }}")
-                 img(ng-src='{{::contact.photo}}', alt='{{::contact.full_name}}')
+            a(tg-nav="user-profile:username=contact.get('username')", title="{{::contact.get('name') }}")
+                 img(ng-src="{{::contact.get('photo')}}", alt="{{::contact.get('full_name')}}")
 
         div.profile-contact-data
             h1
-                a(tg-nav="user-profile:username=contact.username", title="{{::contact.name }}")
-                    | {{::contact.full_name}}
+                a(tg-nav="user-profile:username=contact.get('username')", title="{{::contact.get('name') }}")
+                    | {{::contact.get('full_name')}}
                 // span.your-contact Your contact
 
-            p(ng-if="contact.bio") {{::contact.bio}}
+            p(ng-if="contact.bio") {{::contact.get('bio')}}
 
             div.extra-info
-                span.position {{::contact.roles.join(", ")}}
+                span.position {{::contact.get('roles').join(", ")}}
                 // span.location todo
         // div.profile-project-stats
         //     div.stat-projects(title="2 projects")

@@ -66,7 +66,17 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     )
 
     $routeProvider.when("/project/:pslug/",
-        {templateUrl: "project/project.html"})
+        {
+            templateUrl: "projects/project/project-page.html",
+            resolve: {
+                loader: tgLoaderProvider.add(true),
+                pageParams: -> {
+                    "authRequired": true
+                }
+            },
+            controller: "Page"
+        }
+    )
 
     $routeProvider.when("/project/:pslug/search",
         {templateUrl: "search/search.html", reloadOnSearch: false})

@@ -11,6 +11,6 @@ class ProfileBarController
 
     loadStats: () ->
         return @userService.getStats(@.user.id).then (stats) =>
-            @.stats = stats.toJS()
+            @.stats = stats
 
 angular.module("taigaProfile").controller("ProfileBar", ProfileBarController)

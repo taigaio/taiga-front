@@ -48,7 +48,7 @@ describe "dutyDirective", () ->
             compile = $compile
 
     it "duty directive scope content", () ->
-        scope.duty = {
+        scope.duty = Immutable.fromJS({
             project: 1
             ref: 1
             _name: "userstories"
@@ -56,7 +56,7 @@ describe "dutyDirective", () ->
                 photo: "http://jstesting.taiga.io/photo"
                 full_name_display: "Taiga testing js"
             }
-        }
+        })
 
         mockTgProjectsService.projectsById.get
             .withArgs("1")
@@ -72,4 +72,5 @@ describe "dutyDirective", () ->
 
         elm = createDirective()
         scope.$apply()
+
         expect(elm.isolateScope().vm.getDutyType()).to.be.equal("User story translated")

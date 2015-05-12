@@ -1,5 +1,9 @@
 services = [
-    "tgProjectsResources"
+    "tgProjectsResources",
+    "tgUsersResources",
+    "tgUserstoriesResource",
+    "tgTasksResource",
+    "tgIssuesResource"
 ]
 
 Resources = ($injector) ->
