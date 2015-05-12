@@ -36,6 +36,7 @@ $label-arrow-wh: 12px;
             position: absolute;
             top: calc(50% - 1rem);
             transition: all .2s;
+            white-space: nowrap;
             z-index: 99;
             &:after {
                 background: rgba($blackish, 1);

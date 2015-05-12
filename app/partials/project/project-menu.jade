@@ -36,7 +36,7 @@ div(class="menu-container")
         li(id="nav-video")
             a(href!="<%- project.videoconferenceUrl %>" target="_blank" title="{{'PROJECT.SECTION.MEETUP' | translate}}", tabindex="1")
                 span(class="icon icon-video")
-                span(translate="PROJECT.SECTION.MEETUP")
+                span.helper(translate="PROJECT.SECTION.MEETUP")
         <% } %>
         <% if (project.i_am_owner) { %>
         li(id="nav-admin")
