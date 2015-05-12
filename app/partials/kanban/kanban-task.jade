@@ -5,7 +5,8 @@ div.kanban-task-inner(ng-class="{'task-archived': us.isArchived}")
         a.task-assigned(href="", title="{{'US.ASSIGN' | translate}}")
         span.task-num(tg-bo-ref="us.ref")
         a.task-name(href="", title="#{{ ::us.ref }} {{ us.subject }}", ng-bind="us.subject",
-                    tg-nav="project-userstories-detail:project=project.slug,ref=us.ref")
+                    tg-nav="project-userstories-detail:project=project.slug,ref=us.ref",
+                    tg-nav-get-params="{\"kanban-status\": {{us.status}}}")
 
         p.task-points(href="", title="{{'US.TOTAL_US_POINTS' | translate}}")
             span(ng-if="us.total_points !== null", ng-bind="us.total_points")

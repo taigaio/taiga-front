@@ -25,14 +25,9 @@ generateHash = taiga.generateHash
 
 resourceProvider = ($repo, $model, $storage) ->
     service = {}
-    hashSuffixUserstories = "userstories-queryparams"
 
     service.get = (projectId, sprintId) ->
         return $repo.queryOne("milestones", sprintId).then (sprint) ->
-            service.storeUserstoriesQueryParams(projectId, {
-                milestone: sprintId
-                order_by: "sprint_order"
-            })
             uses = sprint.user_stories
             uses = _.map(uses, (u) -> $model.make_model("userstories", u))
             sprint._attrs.user_stories = uses
@@ -51,10 +46,6 @@ resourceProvider = ($repo, $model, $storage) ->
                 m._attrs.user_stories = uses
             return milestones
 
-    service.storeUserstoriesQueryParams = (projectId, params) ->
-        ns = "#{projectId}:#{hashSuffixUserstories}"
-        hash = generateHash([projectId, ns])
-        $storage.set(hash, params)
 
     return (instance) ->
         instance.sprints = service

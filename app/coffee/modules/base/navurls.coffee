@@ -100,6 +100,11 @@ NavigationUrlsDirective = ($navurls, $auth, $q, $location) ->
                     url = $navurls.resolve(name)
                     fullUrl = $navurls.formatUrl(url, options)
 
+                    if $attrs.tgNavGetParams
+                        getURLParams = JSON.parse($attrs.tgNavGetParams)
+                        getURLParamsStr = $.param(getURLParams)
+                        fullUrl = "#{fullUrl}?#{getURLParamsStr}"
+
                     target.data("fullUrl", fullUrl)
 
                     if target.is("a")
