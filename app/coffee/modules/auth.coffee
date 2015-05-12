@@ -35,15 +35,16 @@ class AuthService extends taiga.Service
                  "$tgResources",
                  "$tgHttp",
                  "$tgUrls",
+                 "$tgConfig",
                  "$translate"]
 
-    constructor: (@rootscope, @storage, @model, @rs, @http, @urls, @translate) ->
+    constructor: (@rootscope, @storage, @model, @rs, @http, @urls, @config, @translate) ->
         super()
 
     _setLocales: ->
-        if @rootscope.user.lang
-            @translate.use(@rootscope.user.lang)
-            moment.locale(@rootscope.user.lang)
+        lang = @rootscope.user.lang || @config.get("defaultLanguage") || "en"
+        @translate.use(lang)
+        moment.locale(lang)
 
     getUser: ->
         if @rootscope.user
