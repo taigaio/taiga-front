@@ -1,4 +1,5 @@
 // timeline-attachment directive
 div.activity-image-attachment
     blockquote
-        img(ng-src="{{::attachment.url}}", alt="{{::attachment.filename}}")
+        a(href="{{::attachment.url}}", title="See {{::attachment.filename}}")
+            img(ng-src="{{::attachment.url}}", alt="{{::attachment.filename}}")
