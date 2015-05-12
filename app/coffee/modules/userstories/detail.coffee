@@ -109,6 +109,30 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             return project
 
     loadUs: ->
+        httpParams = _.pick(@location.search(), "milestone", "no-milestone", "kanban-status")
+        milestone = httpParams.milestone
+        if milestone
+            @rs.userstories.storeQueryParams(@scope.projectId, {
+                milestone: milestone
+                order_by: "sprint_order"
+            })
+
+        noMilestone = httpParams["no-milestone"]
+        if noMilestone
+            @rs.userstories.storeQueryParams(@scope.projectId, {
+                milestone: "null"
+                order_by: "backlog_order"
+            })
+
+        kanbanStaus = httpParams["kanban-status"]
+        if kanbanStaus
+            @rs.userstories.storeQueryParams(@scope.projectId, {
+                status: kanbanStaus
+                order_by: "kanban_order"
+            })
+
+
+
         return @rs.userstories.getByRef(@scope.projectId, @params.usref).then (us) =>
             @scope.us = us
             @scope.usId = us.id
