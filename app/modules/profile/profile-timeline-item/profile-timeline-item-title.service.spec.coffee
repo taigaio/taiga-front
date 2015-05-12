@@ -35,7 +35,8 @@ describe "tgProfileTimelineItemTitle", ->
         timeline = {
             data: {
                 user: {
-                    username: 'xx'
+                    username: 'xx',
+                    name: 'oo'
                 }
             }
         }
@@ -52,7 +53,7 @@ describe "tgProfileTimelineItemTitle", ->
             .returns('user-param')
 
         usernamelink = sinon.match ((value) ->
-            return value.username == '<a tg-nav="user-profile:username=vm.activity.user.username" title="user-param">xx</a>'
+            return value.username == '<a tg-nav="user-profile:username=vm.activity.user.username" title="user-param">oo</a>'
          ), "usernamelink"
 
         mockTranslate.instant
