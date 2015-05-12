@@ -79,20 +79,17 @@
             }
         }
     }
-    h1,
-    h2 {
-        @extend %bold;
-        @extend %small;
-    }
     h1 {
+        @extend %bold;
         @extend %xlarge;
         line-height: 1;
         margin-bottom: 0;
         text-transform: none;
     }
     h2 {
-        @extend %large;
-        color: $gray-light;
+        @extend %light;
+        @extend %larger;
+        color: $gray;
         line-height: 1.2;
         margin-bottom: 1rem;
     }
