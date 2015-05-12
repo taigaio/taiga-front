@@ -237,7 +237,10 @@ TagLineDirective = ($rootScope, $repo, $rs, $confirm, $qqueue, $template, $compi
 
     link = ($scope, $el, $attrs, $model) ->
         isEditable = ->
-            return $scope.project.my_permissions.indexOf($attrs.requiredPerm) != -1
+            if $attrs.requiredPerm?
+                return $scope.project.my_permissions.indexOf($attrs.requiredPerm) != -1
+
+            return true
 
         ## Render
         renderTags = (tags, tagsColors) ->
@@ -362,7 +365,7 @@ TagLineDirective = ($rootScope, $repo, $rs, $confirm, $qqueue, $template, $compi
 
             deleteValue(value)
 
-        bindOnce $scope, "project", (project) ->
+        bindOnce $scope, "project.tags_colors", (tags_colors) ->
             if not isEditable()
                 renderInReadModeOnly()
                 return
@@ -376,7 +379,7 @@ TagLineDirective = ($rootScope, $repo, $rs, $confirm, $qqueue, $template, $compi
                 menu.css("left", position.left)
 
             $el.find("input").autocomplete({
-                source: _.keys(project.tags_colors)
+                source: _.keys(tags_colors)
                 position: {
                     my: "left top",
                     using: positioningFunction

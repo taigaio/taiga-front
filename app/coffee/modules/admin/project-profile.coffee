@@ -86,12 +86,22 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.$emit('project:loaded', project)
             return project
 
+    loadTagsColors: ->
+        return @rs.projects.tagsColors(@scope.projectId).then (tags_colors) =>
+            @scope.project.tags_colors = tags_colors
+
+    loadProjectProfile: ->
+        return @q.all([
+            @.loadProject(),
+            @.loadTagsColors()
+        ])
+
     loadInitialData: ->
         promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
             @scope.projectId = data.project
             return data
 
-        return promise.then(=> @.loadProject())
+        return promise.then(=> @.loadProjectProfile())
 
     openDeleteLightbox: ->
         @rootscope.$broadcast("deletelightbox:new", @scope.project)
