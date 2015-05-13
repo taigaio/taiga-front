@@ -41,11 +41,13 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     $routeProvider.when("/",
         {
             templateUrl: "home/home-page.html",
+            access: {
+                requiresLogin: true
+            },
             resolve: {
                 loader: tgLoaderProvider.add(true),
                 pageParams: -> {
                     "title": "PROJECT.WELCOME"
-                    "authRequired": true
                 }
             }
         }
@@ -54,11 +56,13 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     $routeProvider.when("/projects/",
         {
             templateUrl: "projects/projects-page.html",
+            access: {
+                requiresLogin: true
+            },
             resolve: {
                 loader: tgLoaderProvider.add(true),
                 pageParams: -> {
                     "title": "PROJECT.SECTION_PROJECTS"
-                    "authRequired": true
                 }
             },
             controller: "Page"
@@ -68,13 +72,12 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     $routeProvider.when("/project/:pslug/",
         {
             templateUrl: "projects/project/project-page.html",
-            resolve: {
-                loader: tgLoaderProvider.add(true),
-                pageParams: -> {
-                    "authRequired": true
-                }
+            access: {
+                requiresLogin: true
             },
-            controller: "Page"
+            resolve: {
+                loader: tgLoaderProvider.add(true)
+            }
         }
     )
 
@@ -172,7 +175,17 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
 
     # User profile
     $routeProvider.when("/profile",
-     {templateUrl: "profile/profile.html"})
+        {
+            templateUrl: "profile/profile-page.html",
+            resolve: {
+                loader: tgLoaderProvider.add(true)
+            },
+            access: {
+                requiresLogin: true
+            }
+            controller: "ProfilePage"
+        }
+    )
 
     # Auth
     $routeProvider.when("/login",
@@ -341,7 +354,7 @@ i18nInit = (lang, $translate) ->
     checksley.updateMessages('default', messages)
 
 
-init = ($log, $config, $rootscope, $auth, $events, $analytics, $translate) ->
+init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $navUrls) ->
     $log.debug("Initialize application")
 
     # Taiga Plugins
@@ -360,6 +373,10 @@ init = ($log, $config, $rootscope, $auth, $events, $analytics, $translate) ->
     # Analytics
     $analytics.initialize()
 
+    $rootscope.$on '$routeChangeStart',  (event, next) ->
+        if next.access && next.access.requiresLogin
+            if !$auth.isAuthenticated()
+                $location.path($navUrls.resolve("login"))
 
 modules = [
     # Main Global Modules
@@ -426,11 +443,12 @@ module.config([
 
 module.run([
     "$log",
-    "$tgConfig",
     "$rootScope",
     "$tgAuth",
     "$tgEvents",
     "$tgAnalytics",
-    "$translate"
+    "$translate",
+    "$tgLocation",
+    "$tgNavUrls",
     init
 ])
