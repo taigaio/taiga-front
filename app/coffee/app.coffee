@@ -235,6 +235,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     if localStorage.userInfo
         userInfo = JSON.parse(localStorage.userInfo)
 
+    # i18n
     preferedLangCode = userInfo?.lang || window.taigaConfig.defaultLanguage || "en"
 
     $translateProvider
@@ -253,16 +254,54 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
 
 init = ($log, $config, $rootscope, $auth, $events, $analytics, $translate) ->
     $log.debug("Initialize application")
+
+    # Taiga Plugins
     $rootscope.contribPlugins = @.taigaContribPlugins
     $rootscope.adminPlugins = _.where(@.taigaContribPlugins, {"type": "admin"})
 
+    # i18n
+    $rootscope.$on "$translateChangeEnd", (ctx) ->
+        lang = ctx.language
+
+        # i18n - moment.js
+        moment.locale(lang)
+
+        # i18n - checksley.js
+        messages = {
+            defaultMessage: $translate.instant("COMMON.FORM_ERRORS.DEFAULT_MESSAGE")
+            type: {
+                email: $translate.instant("COMMON.FORM_ERRORS.TYPE_EMAIL")
+                url: $translate.instant("COMMON.FORM_ERRORS.TYPE_URL")
+                urlstrict: $translate.instant("COMMON.FORM_ERRORS.TYPE_URLSTRICT")
+                number: $translate.instant("COMMON.FORM_ERRORS.TYPE_NUMBER")
+                digits: $translate.instant("COMMON.FORM_ERRORS.TYPE_DIGITS")
+                dateIso: $translate.instant("COMMON.FORM_ERRORS.TYPE_DATEISO")
+                alphanum: $translate.instant("COMMON.FORM_ERRORS.TYPE_ALPHANUM")
+                phone: $translate.instant("COMMON.FORM_ERRORS.TYPE_PHONE")
+            }
+            notnull: $translate.instant("COMMON.FORM_ERRORS.NOTNULL")
+            notblank: $translate.instant("COMMON.FORM_ERRORS.NOT_BLANK")
+            required: $translate.instant("COMMON.FORM_ERRORS.REQUIRED")
+            regexp: $translate.instant("COMMON.FORM_ERRORS.REGEXP")
+            min: $translate.instant("COMMON.FORM_ERRORS.MIN")
+            max: $translate.instant("COMMON.FORM_ERRORS.MAX")
+            range: $translate.instant("COMMON.FORM_ERRORS.RANGE")
+            minlength: $translate.instant("COMMON.FORM_ERRORS.MIN_LENGTH")
+            maxlength: $translate.instant("COMMON.FORM_ERRORS.MAX_LENGTH")
+            rangelength: $translate.instant("COMMON.FORM_ERRORS.RANGE_LENGTH")
+            mincheck: $translate.instant("COMMON.FORM_ERRORS.MIN_CHECK")
+            maxcheck: $translate.instant("COMMON.FORM_ERRORS.MAX_CHECK")
+            rangecheck: $translate.instant("COMMON.FORM_ERRORS.RANGE_CHECK")
+            equalto: $translate.instant("COMMON.FORM_ERRORS.EQUAL_TO")
+        }
+        checksley.updateMessages('default', messages)
+
+    # Load user
     if $auth.isAuthenticated()
         $events.setupConnection()
-
         user = $auth.getUser()
 
-        $translate.use(user.lang) if user.lang
-
+    # Analytics
     $analytics.initialize()
 
 
