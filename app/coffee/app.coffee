@@ -44,10 +44,10 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
             access: {
                 requiresLogin: true
             },
+            title: "PROJECT.WELCOME",
             resolve: {
                 loader: tgLoaderProvider.add(true),
                 pageParams: -> {
-                    "title": "PROJECT.WELCOME"
                 }
             }
         }
@@ -59,25 +59,24 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
             access: {
                 requiresLogin: true
             },
+            title: "PROJECT.SECTION_PROJECTS",
             resolve: {
-                loader: tgLoaderProvider.add(true),
-                pageParams: -> {
-                    "title": "PROJECT.SECTION_PROJECTS"
-                }
-            },
-            controller: "Page"
+                loader: tgLoaderProvider.add(true)
+            }
         }
     )
 
     $routeProvider.when("/project/:pslug/",
         {
-            templateUrl: "projects/project/project-page.html",
+            templateUrl: "projects/project/project.html",
             access: {
                 requiresLogin: true
             },
             resolve: {
                 loader: tgLoaderProvider.add(true)
-            }
+            },
+            controller: "Project",
+            controllerAs: "vm"
         }
     )
 
@@ -354,7 +353,7 @@ i18nInit = (lang, $translate) ->
     checksley.updateMessages('default', messages)
 
 
-init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $navUrls) ->
+init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $navUrls, $appTitle) ->
     $log.debug("Initialize application")
 
     # Taiga Plugins
@@ -377,6 +376,9 @@ init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $na
         if next.access && next.access.requiresLogin
             if !$auth.isAuthenticated()
                 $location.path($navUrls.resolve("login"))
+
+        if next.title
+            $translate(next.title).then (text) => $appTitle.set(text)
 
 modules = [
     # Main Global Modules
@@ -412,7 +414,6 @@ modules = [
     # new modules
     "taigaProfile",
     "taigaHome",
-    "taigaPage",
     "taigaUserTimeline",
 
     # template cache
@@ -450,5 +451,6 @@ module.run([
     "$translate",
     "$tgLocation",
     "$tgNavUrls",
+    "$appTitle",
     init
 ])
