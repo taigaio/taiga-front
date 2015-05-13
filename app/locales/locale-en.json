@@ -1151,6 +1151,7 @@
         "ISSUE_CREATED": "{{username}} has created a new Issue in {{project_name}} {{obj_name}}",
         "TASK_CREATED": "{{username}} has created a new Task in {{project_name}} {{obj_name}}",
         "WIKI_CREATED": "{{username}} has created a new Wiki page in {{project_name}} {{obj_name}}",
+        "MILESTONE_CREATED": "{{username}} has created a new Milestone in {{project_name}} {{obj_name}}",
         "NEW_PROJECT": "{{username}} has a new project {{project_name}}",
         "MILESTONE_UPDATED": "{{username}} has updated the milestone {{obj_name}}",
         "US_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the US {{obj_name}}",

@@ -55,4 +55,10 @@ class UserTimelineService extends taiga.Service
             .then (result) =>
                 return result.filter (timeline) => @._filterValidTimelineItems(timeline)
 
+
+    getProjectTimeline: (projectId, page) ->
+        return @rs.projects.getTimeline(projectId, page)
+            .then (result) =>
+                return result.filter (timeline) => @._filterValidTimelineItems(timeline)
+
 angular.module("taigaUserTimeline").service("tgUserTimelineService", UserTimelineService)

@@ -11,20 +11,12 @@ ProfileTabDirective = () ->
 
         ctrl.addTab(scope.tab)
 
-        scope.$watch "tab.active", (active) ->
-            if active
-                transclude scope, (clone, scope) ->
-                    element.append(clone)
-            else
-                element.children().each (idx, elm) ->
-                    scope.$$childHead.$destroy()
-                    elm.remove()
-
     return {
-        scope: {}
-        require: "^tgProfileTabs"
-        link: link
-        transclude: true
+        templateUrl: "profile/profile-tab/profile-tab.html",
+        scope: {},
+        require: "^tgProfileTabs",
+        link: link,
+        transclude: true,
         replace: true
     }
 

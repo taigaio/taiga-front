@@ -14,6 +14,7 @@ class ProfileProjectsController
                 return @userService.attachUserContactsToProjects(userId, projects)
             .then (projects) =>
                 @.projects = projects
+                console.log @.projects.toJS()
 
 angular.module("taigaProfile")
     .controller("ProfileProjects", ProfileProjectsController)

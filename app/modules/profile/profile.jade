@@ -4,7 +4,7 @@ div.profile.centered
     div.main
         div.timeline-wrapper(tg-profile-tabs)
                 div(tg-profile-tab="activity", tab-title="{{'USER.PROFILE.ACTIVITY_TAB' | translate}}", tab-icon="icon-timeline", tab-active)
-                    div(tg-user-timeline)
+                    div(tg-user-timeline, userId="vm.user.get('id')")
 
                 div(tg-profile-tab="projects", tab-title="{{'USER.PROFILE.PROJECTS_TAB' | translate}}", tab-icon="icon-project")
                     div(tg-profile-projects)

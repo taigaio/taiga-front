@@ -5,8 +5,8 @@ class ProfilePageController extends taiga.Controller
     ]
 
     constructor: (@appTitle, @auth) ->
-        user = @auth.getUser()
+        @.user = @auth.userData
 
-        @appTitle.set(user.username)
+        @appTitle.set(@.user.get('username'))
 
 angular.module("taigaProfile").controller("Profile", ProfilePageController)

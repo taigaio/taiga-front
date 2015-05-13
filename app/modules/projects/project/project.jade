@@ -10,8 +10,8 @@ div.wrapper
                 div.tags-block(tg-colorize-tags="vm.project.get('tags')", tg-colorize-tags-type="backlog")
 
         div.project-data
-            section.timeline
-                div(tg-user-timeline)
+            section.timeline(ng-if="vm.project")
+                div(tg-user-timeline, projectId="vm.project.get('id')", userId="vm.user.get('id')")
             section.involved-data
                 h2.title {{"PROJECT.SECTION.TEAM" | translate}}
                 ul.involved-team

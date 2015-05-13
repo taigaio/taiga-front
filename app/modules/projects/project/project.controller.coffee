@@ -2,11 +2,13 @@ class ProjectController
     @.$inject = [
         "tgProjectsService",
         "$routeParams",
-        "$appTitle"
+        "$appTitle",
+        "$tgAuth"
     ]
 
-    constructor: (@projectsService, @routeParams, @appTitle) ->
+    constructor: (@projectsService, @routeParams, @appTitle, @auth) ->
         projectSlug = @routeParams.pslug
+        @.user = @auth.userData
 
         @projectsService.getProjectBySlug(projectSlug)
             .then (project) =>

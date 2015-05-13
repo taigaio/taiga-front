@@ -49,6 +49,12 @@ timelineType = (timeline, event) ->
             key: 'TIMELINE.TASK_CREATED',
             translate_params: ['username', 'project_name', 'obj_name']
         },
+        { # NewMilestone
+            check: (timeline, event) ->
+                return event.obj == 'milestone' && event.type == 'create'
+            key: 'TIMELINE.MILESTONE_CREATED',
+            translate_params: ['username', 'project_name', 'obj_name']
+        },
         { # NewUsComment
             check: (timeline, event) ->
                 return timeline.data.comment && event.obj == 'userstory'

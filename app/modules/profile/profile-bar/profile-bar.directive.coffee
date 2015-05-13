@@ -2,7 +2,8 @@ ProfileBarDirective = () ->
     return {
         templateUrl: "profile/profile-bar/profile-bar.html",
         controller: "ProfileBar",
-        controllerAs: "vm"
+        controllerAs: "vm",
+        scope: {}
     }
 
 

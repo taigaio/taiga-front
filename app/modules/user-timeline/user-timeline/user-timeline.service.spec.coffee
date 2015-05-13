@@ -12,6 +12,10 @@ describe "tgUserTimelineService", ->
             getTimeline: sinon.stub()
         }
 
+        mocks.resources.projects = {
+            getTimeline: sinon.stub()
+        }
+
         provide.value "tgResources", mocks.resources
 
     _mocks = () ->
@@ -36,74 +40,74 @@ describe "tgUserTimelineService", ->
         _setup()
         _inject()
 
-    it "filter invalid timeline items", (done) ->
-        valid_items = [
-                { # valid item
-                    event_type: "xx.tt.create",
-                    data: {
-                        values_diff: {
-                            "status": "xx",
-                            "subject": "xx"
-                        }
+    valid_items = [
+            { # valid item
+                event_type: "xx.tt.create",
+                data: {
+                    values_diff: {
+                        "status": "xx",
+                        "subject": "xx"
                     }
-                },
-                { # invalid item
-                    event_type: "xx.tt.create",
-                    data: {
-                        values_diff: {
-                            "fake": "xx"
-                        }
+                }
+            },
+            { # invalid item
+                event_type: "xx.tt.create",
+                data: {
+                    values_diff: {
+                        "fake": "xx"
                     }
-                },
-                { # invalid item
-                    event_type: "xx.tt.create",
-                    data: {
-                        values_diff: {
-                            "fake2": "xx"
-                        }
+                }
+            },
+            { # invalid item
+                event_type: "xx.tt.create",
+                data: {
+                    values_diff: {
+                        "fake2": "xx"
                     }
-                },
-                { # valid item
-                    event_type: "xx.tt.create",
-                    data: {
-                        values_diff: {
-                            "fake2": "xx",
-                            "milestone": "xx"
-                        }
+                }
+            },
+            { # valid item
+                event_type: "xx.tt.create",
+                data: {
+                    values_diff: {
+                        "fake2": "xx",
+                        "milestone": "xx"
                     }
-                },
-                { # invalid item
-                    event_type: "xx.tt.create",
-                    data: {
-                        values_diff: {
-                            attachments: {
-                                new: []
-                            }
-                        }
-                    }
-                },
-                { # valid item
-                    event_type: "xx.tt.create",
-                    data: {
-                        values_diff: {
-                            attachments: {
-                                new: [1, 2]
-                            }
-                        }
-                    }
-                },
-                { # invalid item
-                    event_type: "xx.tt.delete",
-                    data: {
-                        values_diff: {
-                            attachments: {
-                                new: [1, 2]
-                            }
+                }
+            },
+            { # invalid item
+                event_type: "xx.tt.create",
+                data: {
+                    values_diff: {
+                        attachments: {
+                            new: []
                         }
                     }
                 }
-            ]
+            },
+            { # valid item
+                event_type: "xx.tt.create",
+                data: {
+                    values_diff: {
+                        attachments: {
+                            new: [1, 2]
+                        }
+                    }
+                }
+            },
+            { # invalid item
+                event_type: "xx.tt.delete",
+                data: {
+                    values_diff: {
+                        attachments: {
+                            new: [1, 2]
+                        }
+                    }
+                }
+            }
+        ]
 
+    it "filter invalid user timeline items", (done) ->
         userId = 3
         page = 2
 
@@ -115,6 +119,30 @@ describe "tgUserTimelineService", ->
                 resolve(Immutable.fromJS(valid_items))
 
         userTimelineService.getTimeline(userId, page)
+            .then (_items_) ->
+                items = _items_.toJS()
+
+                expect(items).to.have.length(3)
+                expect(items[0]).to.be.eql(valid_items[0])
+                expect(items[1]).to.be.eql(valid_items[3])
+                expect(items[2]).to.be.eql(valid_items[5])
+
+                done()
+
+        $rootScope.$apply()
+
+    it "filter invalid project timeline items", (done) ->
+        projectId = 3
+        page = 2
+
+        mocks.resources.projects.getTimeline = (_projectId_, _page_) ->
+            expect(_projectId_).to.be.equal(projectId)
+            expect(_page_).to.be.equal(page)
+
+            return $q (resolve, reject) ->
+                resolve(Immutable.fromJS(valid_items))
+
+        userTimelineService.getProjectTimeline(projectId, page)
             .then (_items_) ->
                 items = _items_.toJS()
 

@@ -25,26 +25,32 @@ mixOf = @.taiga.mixOf
 
 class UserTimelineController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.FiltersMixin)
     @.$inject = [
-        "$tgAuth",
         "tgUserTimelineService"
     ]
 
-    constructor: (@auth, @userTimelineService) ->
+    constructor: (@userTimelineService) ->
         @.timelineList = Immutable.List()
         @.page = 1
         @.loadingData = false
 
     loadTimeline: () ->
-        user = @auth.getUser()
-
         @.loadingData = true
 
-        @userTimelineService
-            .getTimeline(user.id, @.page)
-            .then (newTimelineList) =>
-                @.timelineList = @.timelineList.concat(newTimelineList)
-                @.page++
-                @.loadingData = false
+        if @.projectId
+            @userTimelineService
+                .getProjectTimeline(@.projectId, @.page)
+                .then (newTimelineList) =>
+                    @._timelineLoaded(newTimelineList)
+        else
+            @userTimelineService
+                .getTimeline(@.userId, @.page)
+                .then (newTimelineList) =>
+                    @._timelineLoaded(newTimelineList)
+
+    _timelineLoaded: (newTimelineList) ->
+        @.timelineList = @.timelineList.concat(newTimelineList)
+        @.page++
+        @.loadingData = false
 
 angular.module("taigaUserTimeline")
     .controller("UserTimeline", UserTimelineController)

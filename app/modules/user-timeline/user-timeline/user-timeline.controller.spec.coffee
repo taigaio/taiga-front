@@ -1,5 +1,5 @@
 describe "UserTimelineController", ->
-    myCtrl = scope = $q = provide = null
+    controller = scope = $q = provide = null
 
     mocks = {}
 
@@ -7,25 +7,18 @@ describe "UserTimelineController", ->
 
     _mockUserTimeline = () ->
         mocks.userTimelineService = {
-            getTimeline: sinon.stub()
+            getTimeline: sinon.stub(),
+            getProjectTimeline: sinon.stub()
         }
 
         provide.value "tgUserTimelineService", mocks.userTimelineService
-
-    _mockTgAuth = () ->
-        provide.value "$tgAuth", {
-            getUser: () ->
-                return mockUser
-        }
 
     _mocks = () ->
         module ($provide) ->
             provide = $provide
             _mockUserTimeline()
-            _mockTgAuth()
 
             return null
-
 
     beforeEach ->
         module "taigaUserTimeline"
@@ -33,16 +26,18 @@ describe "UserTimelineController", ->
 
         inject ($controller, _$q_) ->
             $q = _$q_
-            myCtrl = $controller "UserTimeline"
+            controller = $controller
 
     it "timelineList should be an array", () ->
+        myCtrl = controller "UserTimeline"
         expect(myCtrl.timelineList.toJS()).is.an("array")
 
     it "pagination starts at 1", () ->
+        myCtrl = controller "UserTimeline"
         expect(myCtrl.page).to.be.equal(1)
 
     describe "load timeline", () ->
-        thenStub = timelineList = null
+        timelineList = null
 
         beforeEach () ->
             timelineList = Immutable.fromJS([
@@ -52,6 +47,10 @@ describe "UserTimelineController", ->
                 { fake: "fake"}
             ])
 
+        it "the loadingData variable must be true during the timeline load", () ->
+            myCtrl = controller "UserTimeline"
+            myCtrl.userId = mockUser.id
+
             thenStub = sinon.stub()
 
             mocks.userTimelineService.getTimeline = sinon.stub()
@@ -60,7 +59,6 @@ describe "UserTimelineController", ->
                     then: thenStub
                 })
 
-        it "the loadingData variable must be true during the timeline load", () ->
             expect(myCtrl.loadingData).to.be.false
 
             myCtrl.loadTimeline()
@@ -72,6 +70,17 @@ describe "UserTimelineController", ->
             expect(myCtrl.loadingData).to.be.false
 
         it "pagiantion increase one every call to loadTimeline", () ->
+            myCtrl = controller "UserTimeline"
+            myCtrl.userId = mockUser.id
+
+            thenStub = sinon.stub()
+
+            mocks.userTimelineService.getTimeline = sinon.stub()
+                .withArgs(mockUser.id, myCtrl.page)
+                .returns({
+                    then: thenStub
+                })
+
             expect(myCtrl.page).to.equal(1)
 
             myCtrl.loadTimeline()
@@ -81,8 +90,39 @@ describe "UserTimelineController", ->
             expect(myCtrl.page).to.equal(2)
 
         it "timeline items", () ->
+            myCtrl = controller "UserTimeline"
+            myCtrl.userId = mockUser.id
+
+            thenStub = sinon.stub()
+
+            mocks.userTimelineService.getTimeline = sinon.stub()
+                .withArgs(mockUser.id, myCtrl.page)
+                .returns({
+                    then: thenStub
+                })
+
             myCtrl.loadTimeline()
 
             thenStub.callArgWith(0, timelineList)
 
             expect(myCtrl.timelineList.size).to.be.eql(4)
+
+        it "project timeline items", () ->
+            myCtrl = controller "UserTimeline"
+            myCtrl.userId = mockUser.id
+            myCtrl.projectId = 4
+
+            thenStub = sinon.stub()
+
+            mocks.userTimelineService.getProjectTimeline = sinon.stub()
+                .withArgs(4, myCtrl.page)
+                .returns({
+                    then: thenStub
+                })
+
+            myCtrl.loadTimeline()
+
+            thenStub.callArgWith(0, timelineList)
+
+            expect(myCtrl.timelineList.size).to.be.eql(4)
+            expect(myCtrl.page).to.equal(2)

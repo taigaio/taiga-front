@@ -22,6 +22,17 @@ Resource = (urlsService, http) ->
         url = urlsService.resolve("bulk-update-projects-order")
         return http.post(url, bulkData)
 
+    service.getTimeline = (projectId, page) ->
+        params = {
+            page: page
+        }
+
+        url = urlsService.resolve("timeline-project")
+        url = "#{url}/#{projectId}"
+
+        return http.get(url, params).then (result) ->
+            return Immutable.fromJS(result.data)
+
     return () ->
         return {"projects": service}
 

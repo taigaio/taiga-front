@@ -45,7 +45,7 @@ Resource = (urlsService, http) ->
         url = urlsService.resolve("timeline-profile")
         url = "#{url}/#{userId}"
 
-        return http.get(url, params).then (result) =>
+        return http.get(url, params).then (result) ->
             return Immutable.fromJS(result.data)
 
     return () ->

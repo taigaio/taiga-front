@@ -23,7 +23,7 @@ describe "ProfileController", ->
         stub = sinon.stub()
 
         mocks.auth = {
-            getUser: sinon.stub()
+            userData: Immutable.fromJS({username: "UserName"})
         }
 
         provide.value "$tgAuth", mocks.auth
@@ -44,14 +44,14 @@ describe "ProfileController", ->
         inject ($controller) ->
             controller = $controller
 
-    it "define projects", () ->
-        user = {
-            username: "UserName"
-        }
-
-        mocks.auth.getUser.returns(user)
-
+    it "define user", () ->
         ctrl = controller "Profile",
             $scope: {}
 
-        expect(mocks.appTitle.set.withArgs(user.username)).to.be.calledOnce
+        expect(ctrl.user).to.be.equal(mocks.auth.userData)
+
+    it "define projects", () ->
+        ctrl = controller "Profile",
+            $scope: {}
+
+        expect(mocks.appTitle.set.withArgs("UserName")).to.be.calledOnce

@@ -1,4 +1,4 @@
-describe "ProfileBar", ->
+describe "ProjectController", ->
     $controller = null
     $q = null
     provide = null
@@ -19,6 +19,13 @@ describe "ProfileBar", ->
 
         provide.value "$appTitle", mocks.appTitle
 
+    _mockAuth = () ->
+        mocks.auth = {
+            userData: Immutable.fromJS({username: "UserName"})
+        }
+
+        provide.value "$tgAuth", mocks.auth
+
     _mockRouteParams = () ->
         provide.value "$routeParams", {
             pslug: "project-slug"
@@ -30,6 +37,7 @@ describe "ProfileBar", ->
             _mockProjectsService()
             _mockRouteParams()
             _mockAppTitle()
+            _mockAuth()
 
             return null
 
@@ -43,6 +51,18 @@ describe "ProfileBar", ->
         module "taigaProjects"
         _mocks()
         _inject()
+
+    it "set local user", () ->
+        thenStub = sinon.stub()
+
+        mocks.projectService.getProjectBySlug.withArgs("project-slug").returns({
+            then: thenStub
+        })
+
+        ctrl = $controller "Project",
+            $scope: {}
+
+        expect(ctrl.user).to.be.equal(mocks.auth.userData)
 
     it "set page title", () ->
         project = Immutable.fromJS({
@@ -58,8 +78,6 @@ describe "ProfileBar", ->
         ctrl = $controller("Project")
 
         thenStub.callArg(0, project)
-
-        $rootScope.$apply()
 
         expect(mocks.appTitle.set.withArgs("projectName")).to.be.calledOnce
 
@@ -78,7 +96,5 @@ describe "ProfileBar", ->
         ctrl = $controller("Project")
 
         thenStub.callArg(0, project)
-
-        $rootScope.$apply()
 
         expect(ctrl.project).to.be.equal(project)

@@ -181,8 +181,9 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
             },
             access: {
                 requiresLogin: true
-            }
-            controller: "Profile"
+            },
+            controller: "Profile",
+            controllerAs: "vm"
         }
     )
 
