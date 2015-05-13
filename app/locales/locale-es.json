@@ -322,7 +322,7 @@
             "TITLE_DELETE_ROLE": "Borrar Rol",
             "REPLACEMENT_ROLE": "Todos los usuarios con este rol serán movidos a",
             "WARNING_DELETE_ROLE": "<strong>Cuidado, todas las estimaciones asociadas a este rol se perderán</strong>",
-            "ERROR_DELETE_ALL": "Usted no puede eliminar todos los valores",
+            "ERROR_DELETE_ALL": "No puedes eliminar todos los valores",
             "EXTERNAL_USER": "Usuario externo"
         },
         "THIRD_PARTIES": {
@@ -757,7 +757,7 @@
     },
     "NOTIFICATION": {
         "OK": "Todo está bien",
-        "WARNING": "Vaya, algo pasó...",
+        "WARNING": "¡Cáspitas!, algo no ha ido bien...",
         "WARNING_TEXT": "Nuestros Oompa Loompas están tristes, ¡Tus cambios no fueron guardados!",
         "SAVED": "¡Nuestros Oompa Loompas guardaron todos tus cambios!",
         "CLOSE": "Cerrar notificación",
@@ -796,7 +796,7 @@
         "ACTION_RESET_PASSWORD": "Restablecer Contraseña",
         "LINK_CANCEL": "Nah, llévame de vuelta, creo que lo recordé.",
         "SUCCESS": "<strong>¡Revisa tu bandeja de entrada!</strong><br />Te hemos enviado un mail con las instrucciones necesarias para restablecer tu contraseña\n",
-        "ERROR": "De acuerdo a nuestros Oompa Loompas, Usted no se encuentra registrado todavía."
+        "ERROR": "Según nuestros Oompa Loompas tú no estás registrado"
     },
     "LOGIN_COMMON": {
         "HEADER": "Ya tengo una cuenta en Taiga",
@@ -808,14 +808,14 @@
         "PLACEHOLDER_AUTH_PASSWORD": "Contraseña (distingue mayúsculas y minúsculas)"
     },
     "LOGIN_FORM": {
-        "ERROR_AUTH_INCORRECT": "De acuerdo a nuestros Oompa Loompas, tu nombre de usuario/correo o contraseña son incorrectos",
-        "ERROR_GENERIC": "De acuerdo a nuestros Oompa Loompas hubo un error.",
+        "ERROR_AUTH_INCORRECT": "Nuestros Oompa Loompas indican que tu nombre de usuario/correo o contraseña son incorrectos",
+        "ERROR_GENERIC": "Nuestros Oompa Loompas indican que ha habido un error.",
         "SUCCESS": "Nuestros Oompa Loompas están felices, bienvenido a Taiga."
     },
     "INVITATION_LOGIN_FORM": {
         "NOT_FOUND": "<strong>Ooops, tenemos un problema</strong><br /> Nuestros Oompa Loompas no pueden encontrar tu invitación.",
         "SUCCESS": "¡Acabas de unirte al proyecto! Bienvenido a {{project_name}}",
-        "ERROR": "De acuerdo a nuestros Oompa Loompas, Usted no se encuentra registrado todavía o escribió una contraseña invalida."
+        "ERROR": "Según nuestros Oompa Loompas tú no estás registrado o has escrito mal tu contraseña."
     },
     "REGISTER_FORM": {
         "PLACEHOLDER_NAME": "Escribe un nombre de usuario (distingue mayúsculas y minúsculas)",
