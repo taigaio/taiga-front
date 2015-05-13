@@ -1,7 +1,7 @@
 .project-list-single {
     border-bottom: 1px solid $whitish;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     padding: .5rem;
     position: relative;
 }
@@ -9,23 +9,18 @@
 .project-list-single-left,
 .project-list-single-right {
     display: flex;
-    flex-direction: column;
 }
 
 .project-list-single-left {
     align-content: space-between;
-    flex: 4;
+    padding-right: 1rem;
     h1 {
-        @extend %text;
-        @extend %large;
-        display: inline-block;
-        margin-bottom: 0;
-        text-transform: none;
-    }
-    .project-name {
         @extend %text;
         @extend %larger;
         color: $gray;
+        display: inline-block;
+        margin-bottom: 0;
+        text-transform: none;
         vertical-align: middle;
         white-space: nowrap;
     }
@@ -34,7 +29,6 @@
         @extend %small;
         color: $gray;
         margin-bottom: 0;
-        max-width: 95%;
     }
     .project-list-single-tags {
         align-content: flex-end;
@@ -73,13 +67,13 @@
     .project-list-single-members {
         align-self: flex-end;
         display: flex;
+        flex-direction: row-reverse;
         flex-grow: 0;
-        flex-wrap: wrap;
+        flex-wrap: wrap-reverse;
         margin-top: 1rem;
-        max-width: 160px;
+        max-width: 200px;
         a {
-            display: block;
-        }
+            display: block;        }
         img {
             margin-right: .3rem;
             width: 34px;
