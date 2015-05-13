@@ -70,6 +70,9 @@
         display: block;
         margin-bottom: .5rem;
     }
+    textarea {
+        min-height: 7rem;
+    }
     .button-green {
         color: $white;
         cursor: pointer;

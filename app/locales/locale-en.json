@@ -1116,7 +1116,7 @@
             "EMAIL": "Email",
             "FULL_NAME": "Full name",
             "PLACEHOLDER_FULL_NAME": "Set your full name (ex. Íñigo Montoya)",
-            "BIO": "Bio",
+            "BIO": "Bio (max. 210 chars)",
             "PLACEHOLDER_BIO": "Tell us something about you",
             "LANGUAGE": "Language",
             "LANGUAGE_DEFAULT": "-- use default language --"

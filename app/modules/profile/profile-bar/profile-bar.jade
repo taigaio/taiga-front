@@ -34,4 +34,4 @@ section.profile-bar
         //         div.organization
 
     div.profile-quote(ng-if="::vm.user.bio")
-        span {{::vm.user.bio}}
+        span {{::vm.user.bio | limitTo:210 }}{{vm.user.bio.length < 210 ? '' : '...'}}
