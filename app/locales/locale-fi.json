@@ -465,7 +465,7 @@
             "ADMIN": "Hallinnoi"
         },
         "NAVIGATION": {
-            "SECTION_TITLE": "Projektisi",
+            "SECTION_TITLE": "Your projects",
             "PLACEHOLDER_SEARCH": "Hae täältä...",
             "ACTION_CREATE_PROJECT": "Luo projekti",
             "TITLE_ACTION_IMPORT": "Luo projekti tiedostosta",

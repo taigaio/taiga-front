@@ -465,7 +465,7 @@
             "ADMIN": "Admin"
         },
         "NAVIGATION": {
-            "SECTION_TITLE": "Votre projet",
+            "SECTION_TITLE": "Your projects",
             "PLACEHOLDER_SEARCH": "Rechercher dans",
             "ACTION_CREATE_PROJECT": "Créer un projet",
             "TITLE_ACTION_IMPORT": "Importer un projet",

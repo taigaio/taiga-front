@@ -215,7 +215,7 @@
             "TITLE": "Exportar",
             "SUBTITLE": "Exportar tu proyecto para guardar una copia de seguridad o para crear uno nuevo basado en este.",
             "EXPORT_BUTTON": "Exportar",
-            "EXPORT_BUTTON_TITLE": "Exportar su proyecto",
+            "EXPORT_BUTTON_TITLE": "Exportar tus proyecto",
             "LOADING_TITLE": "Estamos generando tu fichero con el volcado de datos",
             "DUMP_READY": "¡Tu fichero con el volcado de datos está listo!",
             "LOADING_MESSAGE": "Por favor no cierres la ventana.",
@@ -223,7 +223,7 @@
             "SYNC_MESSAGE": "Si la descarga no comienza automáticamente haz click <a href='{{url}}' download title='Descargar el fichero con el volcado de datos'>aquí</a>.",
             "ERROR": "Nuestros Oompa Loompas tienen algunos problemas generando el volcado de tus datos. Por favor inténtalo de nuevo.",
             "ERROR_BUSY": "Lo sentimos, nuestros Oompa Loompas están muy ocupados en este momento. Por favor inténtalo nuevamente en unos minutos.",
-            "ERROR_MESSAGE": "Nuestros Oompa Loompas tienen algunos problemas generando su volcado de datos: {{message}}"
+            "ERROR_MESSAGE": "Nuestros Oompa Loompas han tenido algunos problemas generando el volcado de datos: {{message}}"
         },
         "MODULES": {
             "TITLE": "Módulos",
@@ -316,8 +316,8 @@
         },
         "ROLES": {
             "SECTION_NAME": "Roles - {{projectName}}",
-            "WARNING_NO_ROLE": "Cuidado, ningún rol en su proyecto podrá estimar el valor de los puntos para historias de usuario",
-            "HELP_ROLE_ENABLED": "Si lo activas, los miembros que posean este rol serán capaces de estimar sus propios puntos en las histórias de usuario",
+            "WARNING_NO_ROLE": "Ojo, ningún rol en tu proyecto podrá estimar historias de usuario",
+            "HELP_ROLE_ENABLED": "Si lo activas, los miembros que posean este rol serán capaces de estimar las histórias de usuario",
             "COUNT_MEMBERS": "{{ role.members_count }} miembros con este rol",
             "TITLE_DELETE_ROLE": "Borrar Rol",
             "REPLACEMENT_ROLE": "Todos los usuarios con este rol serán movidos a",
@@ -465,7 +465,7 @@
             "ADMIN": "Admin"
         },
         "NAVIGATION": {
-            "SECTION_TITLE": "Su proyecto",
+            "SECTION_TITLE": "Tus proyectos",
             "PLACEHOLDER_SEARCH": "Buscar en...",
             "ACTION_CREATE_PROJECT": "Crear proyecto",
             "TITLE_ACTION_IMPORT": "Importar proyecto",
@@ -475,7 +475,7 @@
         "IMPORT": {
             "TITLE": "Importando Proyecto",
             "DESCRIPTION": "Este proceso puede tardar un ratito, por favor mantén la ventana abierta.",
-            "ASYNC_IN_PROGRESS_TITLE": "Nuestros Oompa Loompa están importando su proyecto",
+            "ASYNC_IN_PROGRESS_TITLE": "Nuestros Oompa Loompa están importando tu proyecto",
             "ASYNC_IN_PROGRESS_MESSAGE": "Este proceso puede llevarnos algún tiempo <br/> Te enviaremos un email cuando esté listo",
             "UPLOAD_IN_PROGRESS_MESSAGE": "Subidos {{uploadedSize}} de {{totalSize}}",
             "ERROR": "Nuestros Oompa Loompas tienen problemas para importar tus datos. Por favor inténtalo nuevamente.",
@@ -488,7 +488,7 @@
     "LIGHTBOX": {
         "DELETE_ACCOUNT": {
             "SECTION_NAME": "Eliminar cuenta de Taiga",
-            "CONFIRM": "¿Está seguro que decea eliminar su cuenta de Taiga?",
+            "CONFIRM": "¿Está seguro que deseas eliminar tu cuenta de Taiga?",
             "SUBTITLE": "¡Te extrañaremos! :-("
         },
         "DELETE_PROJECT": {
@@ -769,14 +769,14 @@
         "SUBTITLE": "Sentimos que estés abandonando la taiga, esperamos que hayas disfrutado de tu estancia :)",
         "PLACEHOLDER_INPUT_TOKEN": "token de cancelación de cuenta",
         "ACTION_LEAVING": "̀¡Sí, me largo!",
-        "SUCCESS": "Nuestros Oompa Loompas eliminaron su cuenta"
+        "SUCCESS": "Nuestros Oompa Loompas eliminaron tu cuenta"
     },
     "CHANGE_EMAIL_FORM": {
         "TITLE": "Cambiar tu email",
         "SUBTITLE": "̀¡Un click más y tu email se actualizará!",
         "PLACEHOLDER_INPUT_TOKEN": "token de cambio de email",
         "ACTION_CHANGE_EMAIL": "Cambiar email",
-        "SUCCESS": "Nuestros Oompa Loompas actualizaron su correo"
+        "SUCCESS": "Nuestros Oompa Loompas actualizaron tu correo"
     },
     "CHANGE_PASSWORD_RECOVERY_FORM": {
         "TITLE": "Crear una nueva contraseña de Taiga",
@@ -808,7 +808,7 @@
         "PLACEHOLDER_AUTH_PASSWORD": "Contraseña (distingue mayúsculas y minúsculas)"
     },
     "LOGIN_FORM": {
-        "ERROR_AUTH_INCORRECT": "De acuerdo a nuestros Oompa Loompas, su usuario/correo o contraseña son incorrectos",
+        "ERROR_AUTH_INCORRECT": "De acuerdo a nuestros Oompa Loompas, tu nombre de usuario/correo o contraseña son incorrectos",
         "ERROR_GENERIC": "De acuerdo a nuestros Oompa Loompas hubo un error.",
         "SUCCESS": "Nuestros Oompa Loompas están felices, bienvenido a Taiga."
     },
@@ -986,7 +986,7 @@
     },
     "WIZARD": {
         "SECTION_TITLE_CHOOSE_TEMPLATE": "Elija una plantilla",
-        "CHOOSE_TEMPLATE_TEXT": "¿Que plantilla se ajusta mejor en su proyecto?",
+        "CHOOSE_TEMPLATE_TEXT": "¿Que plantilla se ajusta mejor con tu proyecto?",
         "SECTION_TITLE_CREATE_PROJECT": "Crear Proyecto",
         "CREATE_PROJECT_TEXT": "Fresco y claro. ¡Es emocionante!",
         "PROGRESS_TEMPLATE_SELECTION": "Selección de plantilla",

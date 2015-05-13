@@ -465,7 +465,7 @@
             "ADMIN": "管理者"
         },
         "NAVIGATION": {
-            "SECTION_TITLE": "你的專案",
+            "SECTION_TITLE": "Your projects",
             "PLACEHOLDER_SEARCH": "搜尋",
             "ACTION_CREATE_PROJECT": "創建專案",
             "TITLE_ACTION_IMPORT": "滙入專案",

@@ -465,7 +465,7 @@
             "ADMIN": "Admin"
         },
         "NAVIGATION": {
-            "SECTION_TITLE": "El teu projecte",
+            "SECTION_TITLE": "Your projects",
             "PLACEHOLDER_SEARCH": "Buscar en...",
             "ACTION_CREATE_PROJECT": "Crear projecte",
             "TITLE_ACTION_IMPORT": "Importar projecte",
