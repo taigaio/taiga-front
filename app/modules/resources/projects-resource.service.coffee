@@ -10,6 +10,15 @@ Resource = (urlsService, http) ->
             .then (result) ->
                 return Immutable.fromJS(result.data)
 
+    service.getProjectsByUserId = (userId) ->
+        url = urlsService.resolve("projects")
+
+        params = {"member": userId, "order_by": "memberships__user_order"}
+
+        return http.get(url, params)
+            .then (result) ->
+                return Immutable.fromJS(result.data)
+
     service.getProjectStats = (projectId) ->
         url = urlsService.resolve("projects")
         url = "#{url}/#{projectId}"

@@ -1,20 +1,20 @@
 class ProfileProjectsController
     @.$inject = [
+        "tgProjectsService",
         "tgUserService",
         "$tgAuth"
     ]
 
-    constructor: (@userService, @auth) ->
+    constructor: (@projectsService, @userService, @auth) ->
 
     loadProjects: () ->
         userId = @auth.getUser().id
 
-        @userService.getProjects(userId)
+        @projectsService.getProjectsByUserId(userId)
             .then (projects) =>
                 return @userService.attachUserContactsToProjects(userId, projects)
             .then (projects) =>
                 @.projects = projects
-                console.log @.projects.toJS()
 
 angular.module("taigaProfile")
     .controller("ProfileProjects", ProfileProjectsController)

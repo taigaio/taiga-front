@@ -32,19 +32,6 @@ describe "UserService", ->
         _mocks()
         _inject()
 
-    it "get user projects", () ->
-        userId = 2
-
-        projects = [
-            {id: 1},
-            {id: 2},
-            {id: 3}
-        ]
-
-        mocks.resources.users.getProjects.withArgs(userId).returns(true)
-
-        expect(userService.getProjects(userId)).to.be.true
-
     it "get user contacts", () ->
         userId = 2
 

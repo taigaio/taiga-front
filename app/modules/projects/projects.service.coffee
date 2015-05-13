@@ -2,9 +2,9 @@ taiga = @.taiga
 groupBy = @.taiga.groupBy
 
 class ProjectsService extends taiga.Service
-    @.$inject = ["tgResources", "$rootScope", "$projectUrl", "tgLightboxFactory"]
+    @.$inject = ["tgResources", "$tgAuth", "$projectUrl", "tgLightboxFactory"]
 
-    constructor: (@rs, @rootScope, @projectUrl, @lightboxFactory) ->
+    constructor: (@rs, @auth, @projectUrl, @lightboxFactory) ->
         @._currentUserProjects = Immutable.Map()
         @._currentUserProjectsById = Immutable.Map()
         @._inProgress = false
@@ -24,30 +24,35 @@ class ProjectsService extends taiga.Service
     getProjectStats: (projectId) ->
         return @rs.projects.getProjectStats(projectId)
 
+    getProjectsByUserId: (userId) ->
+        return @rs.projects.getProjectsByUserId(userId)
+            .then (projects) =>
+                return @._decorate(projects)
+
+    _decorate: (projects) ->
+        return projects.map (project) =>
+            url = @projectUrl.get(project.toJS())
+
+            project = project.set("url", url)
+            colorized_tags = []
+
+            if project.get("tags")
+                tags = project.get("tags").sort()
+
+                colorized_tags = tags.map (tag) ->
+                    color = project.get("tags_colors").get(tag)
+                    return Immutable.fromJS({name: tag, color: color})
+
+                project = project.set("colorized_tags", colorized_tags)
+
+            return project
+
     fetchProjects: ->
         if not @._inProgress
             @._inProgress = true
 
-            @._currentUserProjectsPromise = @rs.users.getProjects(@rootScope.user?.id)
+            @._currentUserProjectsPromise = @.getProjectsByUserId(@auth.userData.get("id"))
             @._currentUserProjectsPromise.then (projects) =>
-                projects = projects.map (project) =>
-                    url = @projectUrl.get(project.toJS())
-
-                    project = project.set("url", url)
-                    colorized_tags = []
-
-                    if project.get("tags")
-                        tags = project.get("tags").sort()
-
-                        colorized_tags = tags.map (tag) ->
-                            color = project.get("tags_colors").get(tag)
-                            return Immutable.fromJS({name: tag, color: color})
-
-                        project = project.set("colorized_tags", colorized_tags)
-
-                    return project
-
-
                 @._currentUserProjects = @._currentUserProjects.set("all", projects)
                 @._currentUserProjects = @._currentUserProjects.set("recents", projects.slice(0, 10))
 
@@ -69,4 +74,5 @@ class ProjectsService extends taiga.Service
         @rs.projects.bulkUpdateOrder(sortData).then =>
             @.fetchProjects()
 
-angular.module("taigaProjects").service("tgProjectsService", ProjectsService)
+angular.module("taigaProjects").service("tgProjectsService
+", ProjectsService)

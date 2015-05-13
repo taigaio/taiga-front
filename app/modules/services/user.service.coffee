@@ -5,9 +5,6 @@ class UserService extends taiga.Service
 
     constructor: (@rs) ->
 
-    getProjects: (userId) ->
-        return @rs.users.getProjects(userId)
-
     getContacts: (userId) ->
         return @rs.users.getContacts(userId)
 

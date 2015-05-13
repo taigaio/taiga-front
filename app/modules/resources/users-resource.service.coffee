@@ -28,15 +28,6 @@ Resource = (urlsService, http) ->
             .then (result) ->
                 return Immutable.fromJS(result.data)
 
-    service.getProjects = (userId) ->
-        url = urlsService.resolve("projects")
-
-        params = {"member": userId, "order_by": "memberships__user_order"}
-
-        return http.get(url, params)
-            .then (result) ->
-                return Immutable.fromJS(result.data)
-
     service.getTimeline = (userId, page) ->
         params = {
             page: page

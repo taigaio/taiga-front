@@ -1,26 +1,23 @@
 describe "tgProjects", ->
-    projectsService = provide = null
+    projectsService = provide = $rootScope = null
+    $q = null
     mocks = {}
 
     _mockResources = () ->
         mocks.resources = {}
 
-        mocks.resources.users = {
-            getProjects: sinon.stub()
-        }
+        mocks.resources.projects = {}
 
-        mocks.thenStub = sinon.stub()
-        mocks.finallyStub = sinon.stub()
-
-        mocks.resources.users.getProjects.withArgs(10).returns({
-            then: mocks.thenStub
-            finally: mocks.finallyStub
-        })
+        mocks.resources.projects.getProjectsByUserId = () ->
+            return $q (resolve) ->
+                resolve(Immutable.fromJS([]))
 
         provide.value "tgResources", mocks.resources
 
-    _mockRootScope = () ->
-        provide.value "$rootScope", {user: {id: 10}}
+    _mockAuthService = () ->
+        mocks.auth = {userData: Immutable.fromJS({id: 10})}
+
+        provide.value "$tgAuth", mocks.auth
 
     _mockProjectUrl = () ->
         mocks.projectUrl = {get: sinon.stub()}
@@ -38,6 +35,12 @@ describe "tgProjects", ->
         provide.value "tgLightboxFactory", mocks.lightboxFactory
 
     _inject = (callback) ->
+        inject (_$q_, _$rootScope_) ->
+            $q = _$q_
+            $rootScope = _$rootScope_
+            callback() if callback
+
+    _injectService = (callback) ->
         inject (_tgProjectsService_) ->
             projectsService = _tgProjectsService_
             callback() if callback
@@ -46,18 +49,15 @@ describe "tgProjects", ->
         module ($provide) ->
             provide = $provide
             _mockResources()
-            _mockRootScope()
             _mockProjectUrl()
             _mockLightboxFactory()
+            _mockAuthService()
 
             return null
 
-    _setup = ->
-        _mocks()
-
     beforeEach ->
         module "taigaProjects"
-        _setup()
+        _mocks()
         _inject()
 
     describe "fetch items", ->
@@ -79,8 +79,15 @@ describe "tgProjects", ->
                 {"id": 12, url: 'url-12'}
             ]
 
+            mocks.resources.projects.getProjectsByUserId = () ->
+                return $q (resolve) ->
+                    resolve(Immutable.fromJS(projects))
+
+            _injectService()
+
         it "all & recents filled", () ->
-            mocks.thenStub.callArg(0, Immutable.fromJS(projects))
+            projectsService.fetchProjects()
+            $rootScope.$digest()
 
             expect(projectsService.currentUserProjects.get("all").toJS()).to.be.eql(projects)
             expect(projectsService.currentUserProjects.get("recents").toJS()).to.be.eql(projects.slice(0, 10))
@@ -88,34 +95,25 @@ describe "tgProjects", ->
         it "_inProgress change to false when tgResources end", () ->
             expect(projectsService._inProgress).to.be.true
 
-            mocks.thenStub.callArg(0, Immutable.fromJS(projects))
-            mocks.finallyStub.callArg(0)
+            $rootScope.$digest()
 
             expect(projectsService._inProgress).to.be.false
 
-        it "_inProgress prevent new ajax calls", () ->
-            projectsService.fetchProjects()
-            projectsService.fetchProjects()
-
-            mocks.thenStub.callArg(0, Immutable.fromJS(projects))
-
-            expect(mocks.resources.users.getProjects).have.been.calledOnce
-
         it "group projects by id", () ->
-            mocks.thenStub.callArg(0, Immutable.fromJS(projects))
+            $rootScope.$digest()
 
             expect(projectsService.currentUserProjectsById.size).to.be.equal(12)
             expect(projectsService.currentUserProjectsById.toJS()[1].id).to.be.equal(projects[0].id)
 
         it "add urls in the project object", () ->
-            mocks.thenStub.callArg(0, Immutable.fromJS(projects))
+            $rootScope.$digest()
 
             expect(projectsService.currentUserProjectsById.toJS()[1].url).to.be.equal("url-1")
             expect(projectsService.currentUserProjects.get("all").toJS()[0].url).to.be.equal("url-1")
             expect(projectsService.currentUserProjects.get("recents").toJS()[0].url).to.be.equal("url-1")
 
         it "add sorted colorized_tags project object", () ->
-            mocks.thenStub.callArg(0, Immutable.fromJS(projects))
+            $rootScope.$digest()
 
             tags = [
                 {name: "aa", color: "white"},
@@ -129,6 +127,8 @@ describe "tgProjects", ->
             expect(colorized_tags).to.be.eql(tags)
 
     it "newProject, create the wizard lightbox", () ->
+        _injectService()
+
         projectsService.newProject()
 
         expect(mocks.lightboxFactory.create).to.have.been.calledWith("tg-lb-create-project", {
@@ -136,6 +136,8 @@ describe "tgProjects", ->
         })
 
     it "bulkUpdateProjectsOrder and then fetch projects again", () ->
+        _injectService()
+
         projects_order = [
             {"id": 8},
             {"id": 2},
@@ -168,6 +170,8 @@ describe "tgProjects", ->
         expect(projectsService.fetchProjects).to.have.been.calledOnce
 
     it "getProjectBySlug", () ->
+        _injectService()
+
         projectSlug = "project-slug"
 
         mocks.resources.projects = {}
@@ -177,6 +181,8 @@ describe "tgProjects", ->
         expect(projectsService.getProjectBySlug(projectSlug)).to.be.true
 
     it "getProjectStats", () ->
+        _injectService()
+
         projectId = 3
 
         mocks.resources.projects = {}

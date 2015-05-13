@@ -7,11 +7,17 @@ describe "ProfileProjects", ->
 
     _mockUserService = () ->
         mocks.userService = {
-            getProjects: sinon.stub(),
             attachUserContactsToProjects: sinon.stub()
         }
 
         provide.value "tgUserService", mocks.userService
+
+    _mockProjectsService = () ->
+        mocks.projectsService = {
+            getProjectsByUserId: sinon.stub()
+        }
+
+        provide.value "tgProjectsService", mocks.projectsService
 
     _mockAuthService = () ->
         stub = sinon.stub()
@@ -27,6 +33,7 @@ describe "ProfileProjects", ->
             provide = $provide
             _mockUserService()
             _mockAuthService()
+            _mockProjectsService()
 
             return null
 
@@ -55,7 +62,7 @@ describe "ProfileProjects", ->
             {id: 3, contacts: "fake"}
         ]
 
-        mocks.userService.getProjects = (userId) ->
+        mocks.projectsService.getProjectsByUserId = (userId) ->
             expect(userId).to.be.equal(userId)
 
             return $q (resolve, reject) ->
