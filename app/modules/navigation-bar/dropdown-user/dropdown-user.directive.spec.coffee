@@ -18,7 +18,7 @@ describe "dropdownUserDirective", () ->
 
     _mockTgAuth = () ->
         mockTgAuth = {
-            getUser: sinon.stub()
+            userData: Immutable.fromJS({id: 66})
             logout: sinon.stub()
         }
         provide.value "$tgAuth", mockTgAuth
@@ -69,13 +69,12 @@ describe "dropdownUserDirective", () ->
             compile = $compile
 
     it "dropdown user directive scope content", () ->
-        mockTgAuth.getUser.withArgs().returns({id: 66})
         mockTgConfig.get.withArgs("feedbackEnabled").returns(true)
         elm = createDirective()
         scope.$apply()
 
         vm = elm.isolateScope().vm
-        expect(vm.user.id).to.be.equal(66)
+        expect(vm.user.get("id")).to.be.equal(66)
         expect(vm.isFeedbackEnabled).to.be.equal(true)
 
     it "dropdown user log out", () ->
