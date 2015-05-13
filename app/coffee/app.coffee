@@ -46,23 +46,23 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
             },
             title: "PROJECT.WELCOME",
             resolve: {
-                loader: tgLoaderProvider.add(true),
-                pageParams: -> {
-                }
+                loader: tgLoaderProvider.add(true)
             }
         }
     )
 
     $routeProvider.when("/projects/",
         {
-            templateUrl: "projects/projects-page.html",
+            templateUrl: "projects/listing/projects-listing.html",
             access: {
                 requiresLogin: true
             },
             title: "PROJECT.SECTION_PROJECTS",
             resolve: {
                 loader: tgLoaderProvider.add(true)
-            }
+            },
+            controller: "ProjectsListing",
+            controllerAs: "vm"
         }
     )
 
@@ -175,14 +175,14 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     # User profile
     $routeProvider.when("/profile",
         {
-            templateUrl: "profile/profile-page.html",
+            templateUrl: "profile/profile.html",
             resolve: {
                 loader: tgLoaderProvider.add(true)
             },
             access: {
                 requiresLogin: true
             }
-            controller: "ProfilePage"
+            controller: "Profile"
         }
     )
 

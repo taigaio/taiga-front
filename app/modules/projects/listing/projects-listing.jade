@@ -10,7 +10,7 @@ div.project-list-wrapper.centered
 
     section.project-list-section
         div.project-list
-            ul.js-sortable
+            ul(tg-sort-projects="vm.projects")
                 li.project-list-single(tg-bind-scope, tg-repeat="project in vm.projects")
                     div.project-list-single-left
                         div.project-list-single-title

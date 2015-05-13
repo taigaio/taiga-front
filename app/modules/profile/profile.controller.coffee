@@ -9,4 +9,4 @@ class ProfilePageController extends taiga.Controller
 
         @appTitle.set(user.username)
 
-angular.module("taigaProfile").controller("ProfilePage", ProfilePageController)
+angular.module("taigaProfile").controller("Profile", ProfilePageController)

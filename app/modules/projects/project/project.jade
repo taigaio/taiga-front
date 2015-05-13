@@ -13,7 +13,7 @@ div.wrapper
             section.timeline
                 div(tg-user-timeline)
             section.involved-data
-                h2.title Team
+                h2.title {{"PROJECT.SECTION.TEAM" | translate}}
                 ul.involved-team
                     a(href="", title="{{::member.get('full_name')}}", tg-repeat="member in ::vm.project.get('memberships')")
                         img(ng-src="{{::member.get('photo')}}", alt="{{::member.get('full_name')}}")
