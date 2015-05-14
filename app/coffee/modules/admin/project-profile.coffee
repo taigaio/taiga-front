@@ -132,7 +132,7 @@ ProjectProfileDirective = ($repo, $confirm, $loading, $navurls, $location) ->
                 $scope.$emit("project:loaded", $scope.project)
 
             promise.then null, (data) ->
-                $loading.finish(target)
+                $loading.finish(submitButton)
                 form.setErrors(data)
                 if data._error_message
                     $confirm.notify("error", data._error_message)
