@@ -256,7 +256,7 @@ ProjectExportDirective = ($window, $rs, $confirm, $translate) ->
         loading_title = $translate.instant("ADMIN.PROJECT_EXPORT.LOADING_TITLE")
         loading_msg = $translate.instant("ADMIN.PROJECT_EXPORT.LOADING_MESSAGE")
         dump_ready_text = -> resultTitleEl.html($translate.instant("ADMIN.PROJECT_EXPORT.DUMP_READY"))
-        asyn_message = -> resultTitleEl.html($translate.instant("ADMIN.PROJECT_EXPORT.ASYN_MESSAGE"))
+        asyn_message = -> resultTitleEl.html($translate.instant("ADMIN.PROJECT_EXPORT.ASYNC_MESSAGE"))
         syn_message = (url) -> resultTitleEl.html($translate.instant("ADMIN.PROJECT_EXPORT.SYNC_MESSAGE", {
                                                                                                    url: url}))
 
