@@ -159,7 +159,7 @@ class AttachmentsController extends taiga.Controller
         return not item.is_deprecated
 
 
-AttachmentsDirective = ($config, $confirm, $templates) ->
+AttachmentsDirective = ($config, $confirm, $templates, $translate) ->
     template = $templates.get("attachment/attachments.html", true)
 
     link = ($scope, $el, $attrs, $ctrls) ->
@@ -224,7 +224,7 @@ AttachmentsDirective = ($config, $confirm, $templates) ->
     templateFn = ($el, $attrs) ->
         maxFileSize = $config.get("maxUploadFileSize", null)
         maxFileSize = sizeFormat(maxFileSize) if maxFileSize
-        maxFileSizeMsg = if maxFileSize then $translation.instant("ATTACHMENT.MAX_UPLOAD_SIZE") else ""
+        maxFileSizeMsg = if maxFileSize then $translate.instant("ATTACHMENT.MAX_UPLOAD_SIZE") else ""
         maxFileSize = 4000
         ctx = {
             type: $attrs.type
@@ -243,7 +243,7 @@ AttachmentsDirective = ($config, $confirm, $templates) ->
         template: templateFn
     }
 
-module.directive("tgAttachments", ["$tgConfig", "$tgConfirm", "$tgTemplate", AttachmentsDirective])
+module.directive("tgAttachments", ["$tgConfig", "$tgConfirm", "$tgTemplate", "$translate", AttachmentsDirective])
 
 
 AttachmentDirective = ($template, $compile, $translate) ->
