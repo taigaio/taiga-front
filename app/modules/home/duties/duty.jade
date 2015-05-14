@@ -1,6 +1,6 @@
 a(href="{{ ::vm.duty.get('url') }}", title="{{ ::duty.get('subject') }}")
     img.avatar(
-        src="{{ ::vm.duty.get('assigned_to_extra_info').get('photo') }}"
+        ng-src="{{ ::vm.duty.get('assigned_to_extra_info').get('photo') }}"
         title="{{ ::vm.duty.get('assigned_to_extra_info').get('full_name_display') }}")
 
     div.duty-data
