@@ -60,19 +60,15 @@ describe "UserService", ->
             {id: 3, name: "fake3"}
         ])
 
-        mocks.resources.users.getContacts = (userId) ->
-            expect(userId).to.be.equal(userId)
-
-            return $q (resolve, reject) ->
-                resolve(contacts)
+        mocks.resources.users.getContacts = sinon.stub().promise()
+        mocks.resources.users.getContacts.withArgs(userId).resolve(contacts)
 
         userService.attachUserContactsToProjects(userId, projects).then (_projects_) ->
             contacts = _projects_.get(0).get("contacts")
 
             expect(contacts.get(0).get("name")).to.be.equal('fake1')
-            done()
 
-        $rootScope.$apply()
+            done()
 
     it "get user contacts", (done) ->
         userId = 2
@@ -83,11 +79,8 @@ describe "UserService", ->
             {id: 3}
         ]
 
-        mocks.resources.users.getContacts = (userId) ->
-            expect(userId).to.be.equal(userId)
-
-            return $q (resolve, reject) ->
-                resolve(contacts)
+        mocks.resources.users.getContacts = sinon.stub().promise()
+        mocks.resources.users.getContacts.withArgs(userId).resolve(contacts)
 
         userService.getContacts(userId).then (_contacts_) ->
             expect(_contacts_).to.be.eql(contacts)
