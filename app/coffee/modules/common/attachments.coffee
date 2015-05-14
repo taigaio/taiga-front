@@ -224,8 +224,7 @@ AttachmentsDirective = ($config, $confirm, $templates, $translate) ->
     templateFn = ($el, $attrs) ->
         maxFileSize = $config.get("maxUploadFileSize", null)
         maxFileSize = sizeFormat(maxFileSize) if maxFileSize
-        maxFileSizeMsg = if maxFileSize then $translate.instant("ATTACHMENT.MAX_UPLOAD_SIZE") else ""
-        maxFileSize = 4000
+        maxFileSizeMsg = if maxFileSize then $translate.instant("ATTACHMENT.MAX_UPLOAD_SIZE", {maxFileSize: maxFileSize}) else ""
         ctx = {
             type: $attrs.type
             maxFileSize: maxFileSize
