@@ -242,7 +242,7 @@ LeaveProjectDirective = ($repo, $confirm, $location, $rs, $navurls, $translate) 
         link: link
     }
 
-module.directive("tgLeaveProject", ["$tgRepo", "$tgConfirm", "$tgLocation", "$tgResources", "$tgNavUrls",
+module.directive("tgLeaveProject", ["$tgRepo", "$tgConfirm", "$tgLocation", "$tgResources", "$tgNavUrls", "$translate",
                                     LeaveProjectDirective])
 
 
