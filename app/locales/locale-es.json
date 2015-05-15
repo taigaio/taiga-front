@@ -793,7 +793,7 @@
         "TITLE": "Cancelar tu cuenta de usuario",
         "SUBTITLE": "Sentimos que estés abandonando la taiga, esperamos que hayas disfrutado de tu estancia :)",
         "PLACEHOLDER_INPUT_TOKEN": "token de cancelación de cuenta",
-        "ACTION_LEAVING": "̀¡Sí, me largo!",
+        "ACTION_LEAVING": "¡Sí, me largo!",
         "SUCCESS": "Nuestros Oompa Loompas eliminaron tu cuenta"
     },
     "CHANGE_EMAIL_FORM": {
@@ -873,7 +873,7 @@
             "TITLE": "Filtros",
             "INPUT_SEARCH_PLACEHOLDER": "Asunto o referencia",
             "TITLE_ACTION_SEARCH": "Buscar",
-            "ACTION_SAVE_CUSTOM_FILTER": "guardar como atributo personalizado",
+            "ACTION_SAVE_CUSTOM_FILTER": "guardar como filtro personalizado",
             "BREADCRUMB": "Filtros",
             "TITLE_BREADCRUMB": "Filtros",
             "CATEGORIES": {
