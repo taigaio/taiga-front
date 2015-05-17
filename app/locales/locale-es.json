@@ -528,7 +528,7 @@
         },
         "ADD_MEMBER": {
             "TITLE": "Nuevo miembro",
-            "HELP_TEXT": "Si los usuarios ya están registrado en Taiga, se añadirán automáticamente. De lo contrario recivirán una invitación."
+            "HELP_TEXT": "Si los usuarios ya están registrado en Taiga, se añadirán automáticamente. De lo contrario recibirán una invitación."
         },
         "CREATE_ISSUE": {
             "TITLE": "Añadir petición"
