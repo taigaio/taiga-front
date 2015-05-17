@@ -843,6 +843,7 @@
         "ERROR": "Segons els nostres OOmpa Loompas, no estàs registrat encara o has escrit una contrasenya invàlida."
     },
     "REGISTER_FORM": {
+        "TITLE": "Register a new Taiga account (free)",
         "PLACEHOLDER_NAME": "Tria un mot d'usuari (sensible a majúscules i minúscules)",
         "PLACEHOLDER_FULL_NAME": "Escriu el teu nom complet",
         "PLACEHOLDER_EMAIL": "El teu correu",

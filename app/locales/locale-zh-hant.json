@@ -843,6 +843,7 @@
         "ERROR": "按我們的記錄，你尚未註冊或是未輸入有效的密碼　"
     },
     "REGISTER_FORM": {
+        "TITLE": "Register a new Taiga account (free)",
         "PLACEHOLDER_NAME": "選一個用戶帳號(注意大小寫)",
         "PLACEHOLDER_FULL_NAME": "選取你的全名",
         "PLACEHOLDER_EMAIL": "你的電子郵件",

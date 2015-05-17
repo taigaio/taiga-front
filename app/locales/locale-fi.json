@@ -843,6 +843,7 @@
         "ERROR": "Oompa Loompas sanovat että käyttäjänimesi tai sähköpostisi tai salasanasi on väärä."
     },
     "REGISTER_FORM": {
+        "TITLE": "Register a new Taiga account (free)",
         "PLACEHOLDER_NAME": "Anna käyttäjänimi (kirjainkoko on merkitsevä)",
         "PLACEHOLDER_FULL_NAME": "Anna koko nimesi",
         "PLACEHOLDER_EMAIL": "Sähköpostisi",

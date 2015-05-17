@@ -843,6 +843,7 @@
         "ERROR": "Selon nos Oompa Loompas, vous n'êtes pas encore enregistrés ou vous avez saisi un mot de passe incorrecte."
     },
     "REGISTER_FORM": {
+        "TITLE": "Register a new Taiga account (free)",
         "PLACEHOLDER_NAME": "Choisissez un nom d'utilisateur (sensible à la casse)",
         "PLACEHOLDER_FULL_NAME": "Choisissez votre nom complet",
         "PLACEHOLDER_EMAIL": "Votre email",

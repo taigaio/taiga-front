@@ -843,6 +843,7 @@
         "ERROR": "Según nuestros Oompa Loompas tú no estás registrado o has escrito mal tu contraseña."
     },
     "REGISTER_FORM": {
+        "TITLE": "Crea tu nueva cuenta en Taiga, ¡es gratis!",
         "PLACEHOLDER_NAME": "Escribe un nombre de usuario (distingue mayúsculas y minúsculas)",
         "PLACEHOLDER_FULL_NAME": "Escribe tu nombre completo",
         "PLACEHOLDER_EMAIL": "Tu email",

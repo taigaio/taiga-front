@@ -844,6 +844,7 @@
         "ERROR": "According to our Oompa Loompas, your are not registered yet or typed an invalid password."
     },
     "REGISTER_FORM": {
+        "TITLE": "Register a new Taiga account (free)",
         "PLACEHOLDER_NAME": "Pick a username (case sensitive)",
         "PLACEHOLDER_FULL_NAME": "Pick your full name",
         "PLACEHOLDER_EMAIL": "Your email",
