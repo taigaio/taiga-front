@@ -119,6 +119,9 @@
             "COLOR": "顏色",
             "IS_CLOSED": "關閉中？",
             "STATUS": "狀態",
+            "TYPE": "類型",
+            "SEVERITY": "急迫性",
+            "PRIORITY": "優先性",
             "ASSIGNED_TO": "指派給 ",
             "POINTS": "點數",
             "BLOCKED_NOTE": "已封鎖之筆記",
@@ -239,7 +242,7 @@
     "ATTACHMENT": {
         "SECTION_NAME": "附件",
         "TITLE": "{{ fileName }} 上傳於 {{ date }}",
-        "DESCRIPTION": "Type a short description",
+        "DESCRIPTION": "輸入一段簡短描述",
         "DEPRECATED_FILE": "棄用?",
         "ADD": "加入新附件 <%- maxFileSizeMsg %>",
         "MAX_FILE_SIZE": "[Max. size: {{maxFileSize}}]",

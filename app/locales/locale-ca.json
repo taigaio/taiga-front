@@ -119,6 +119,9 @@
             "COLOR": "Color",
             "IS_CLOSED": "Està tancat?",
             "STATUS": "Estatus",
+            "TYPE": "Type",
+            "SEVERITY": "Severity",
+            "PRIORITY": "Priority",
             "ASSIGNED_TO": "Assignat a",
             "POINTS": "Punts",
             "BLOCKED_NOTE": "Nota de bloqueig",
@@ -239,7 +242,7 @@
     "ATTACHMENT": {
         "SECTION_NAME": "Adjunts",
         "TITLE": "{{ fileName }} pujat el {{ date }}",
-        "DESCRIPTION": "Type a short description",
+        "DESCRIPTION": "Escriu una descripció curta",
         "DEPRECATED_FILE": "Obsolet?",
         "ADD": "Afegir nou adjunt. <%- maxFileSizeMsg %>",
         "MAX_FILE_SIZE": "[Max. grandària:  {{maxFileSize}}]",

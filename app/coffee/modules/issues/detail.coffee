@@ -295,13 +295,14 @@ IssueTypeButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $tem
         render = (issue) =>
             type = $scope.typeById[issue.type]
 
-            html = $compile(html)($scope)
-
             html = template({
                 type: type
                 typees: $scope.typeList
                 editable: isEditable()
             })
+
+            html = $compile(html)($scope)
+
             $el.html(html)
 
         save = $qqueue.bindAdd (type) =>

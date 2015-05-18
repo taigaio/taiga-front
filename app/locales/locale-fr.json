@@ -119,6 +119,9 @@
             "COLOR": "Couleur",
             "IS_CLOSED": "Fermé ?",
             "STATUS": "Etat",
+            "TYPE": "Type",
+            "SEVERITY": "Sévérité",
+            "PRIORITY": "Priorité",
             "ASSIGNED_TO": "Affecté à",
             "POINTS": "Points",
             "BLOCKED_NOTE": "note bloquée",
@@ -239,7 +242,7 @@
     "ATTACHMENT": {
         "SECTION_NAME": "pièces jointes",
         "TITLE": "{{ fileName }} transmis le {{ date }}\n",
-        "DESCRIPTION": "Type a short description",
+        "DESCRIPTION": "Saisissez une description courte",
         "DEPRECATED_FILE": "Obsolète?",
         "ADD": "Ajouter une pièce jointe. <%- maxFileSizeMsg %>",
         "MAX_FILE_SIZE": "[Taille max.: {{maxFileSize}}]",

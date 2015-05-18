@@ -119,6 +119,9 @@
             "COLOR": "Väri",
             "IS_CLOSED": "Onko suljettu?",
             "STATUS": "Tila",
+            "TYPE": "Tyyppi",
+            "SEVERITY": "Vakavuus",
+            "PRIORITY": "Tärkeys",
             "ASSIGNED_TO": "Tekijä",
             "POINTS": "Pisteet",
             "BLOCKED_NOTE": "estetty muistiinpano",
@@ -239,7 +242,7 @@
     "ATTACHMENT": {
         "SECTION_NAME": "liitteet",
         "TITLE": "{{ fileName }} ladattu {{ date }}\n",
-        "DESCRIPTION": "Type a short description",
+        "DESCRIPTION": "Kirjoita lyhyt kuvaus",
         "DEPRECATED_FILE": "Vanhentunut?",
         "ADD": "Lisää liite. <%- maxFileSizeMsg %>",
         "MAX_FILE_SIZE": "[Maks. koko: {{maxFileSize}}]",
