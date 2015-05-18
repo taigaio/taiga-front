@@ -389,7 +389,7 @@ RolePermissionsDirective = ($rootscope, $repo, $confirm, $compile) ->
             return setActivePermissionsPerCategory(categories)
 
         renderResume = (element, category) ->
-            element.find(".resume").html(resumeTemplate({category: category}))
+            element.find(".resume").html($compile(resumeTemplate({category: category}))($scope))
 
         renderCategory = (category, index) ->
             html = categoryTemplate({category: category, index: index})
