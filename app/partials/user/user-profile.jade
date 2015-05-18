@@ -27,7 +27,7 @@ div.wrapper(tg-user-profile, ng-controller="UserSettingsController as ctrl",
 
                 div.data
                     fieldset
-                        label(for="email", translate"USER_PROFILE.FIELD.USERNAME")
+                        label(for="email", translate="USER_PROFILE.FIELD.USERNAME")
                         input(type="text", name="username", id="username", placeholder="{{'USER_PROFILE.FIELD.USERNAME' | translate}}",
                             ng-model="user.username", data-required="true", data-maxlength="255",
                             data-regexp="^[\\w.-]+$")
