@@ -499,6 +499,7 @@
         },
         "IMPORT": {
             "TITLE": "Importing Project",
+            "UPLOADING_FILE": "Uploading dump file",
             "DESCRIPTION": "This process can take a while, please keep the window open.",
             "ASYNC_IN_PROGRESS_TITLE": "Our Oompa Loompas are importing your project",
             "ASYNC_IN_PROGRESS_MESSAGE": "This process could take a few minutes <br/> We will send you an email when ready",

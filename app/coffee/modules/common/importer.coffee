@@ -34,7 +34,7 @@ ImportProjectButtonDirective = ($rs, $confirm, $location, $navUrls, $translate) 
             file = event.target.files[0]
             return if not file
 
-            loader = $confirm.loader("Uploading dump file")
+            loader = $confirm.loader($translate.instant("PROJECT.IMPORT.UPLOADING_FILE"))
 
             onSuccess = (result) ->
                 loader.stop()
