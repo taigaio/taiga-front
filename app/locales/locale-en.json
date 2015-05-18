@@ -514,7 +514,9 @@
         "DELETE_ACCOUNT": {
             "SECTION_NAME": "Delete Taiga Account",
             "CONFIRM": "Are you sure you want to delete your Taiga account?",
-            "SUBTITLE": "We're going to miss you! :-("
+            "SUBTITLE": "We're going to miss you! :-(",
+            "NEWSLETTER_LABEL_TEXT": "I don't wanna receive your newsletter anymore"
+
         },
         "DELETE_PROJECT": {
             "TITLE": "Delete project",
@@ -574,6 +576,7 @@
         }
     },
     "US": {
+        "SECTION_NAME": "User story details",
         "LINK_TASKBOARD": "Taskboard",
         "TITLE_LINK_TASKBOARD": "Go to the taskboard",
         "TOTAL_POINTS": "total",
@@ -760,6 +763,7 @@
         }
     },
     "TASK": {
+        "SECTION_NAME": "Task details",
         "LINK_TASKBOARD": "Taskboard",
         "TITLE_LINK_TASKBOARD": "Go to the taskboard",
         "PLACEHOLDER_SUBJECT": "Type the new task subject",
@@ -855,7 +859,7 @@
     },
     "ISSUES": {
         "LIST_SECTION_NAME": "Issues",
-        "SECTION_NAME": "Issue Details",
+        "SECTION_NAME": "Issue details",
         "ACTION_NEW_ISSUE": "+ NEW ISSUE",
         "ACTION_PROMOTE_TO_US": "Promote to User Story",
         "PLACEHOLDER_FILTER_NAME": "Write the filter name and press enter",
