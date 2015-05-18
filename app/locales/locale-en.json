@@ -200,7 +200,7 @@
     "ATTACHMENT": {
         "SECTION_NAME": "attachments",
         "TITLE": "{{ fileName }} uploaded on {{ date }}",
-        "DESCIPTION": "Type a short description",
+        "DESCRIPTION": "Type a short description",
         "DEPRECATED_FILE": "Deprecated?",
         "ADD": "Add new attachment. <%- maxFileSizeMsg %>",
         "MAX_FILE_SIZE": "[Max. size:  {{maxFileSize}}]",
