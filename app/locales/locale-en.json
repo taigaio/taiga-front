@@ -61,6 +61,45 @@
             "RANGE_CHECK": "You must select between %s and %s choices.",
             "EQUAL_TO": "This value should be the same."
         },
+        "PICKERDATE": {
+            "FORMAT": "DD/MM/YYYY",
+            "IS_RTL": "false",
+            "FIRST_DAY_OF_WEEK": "1",
+            "PREV_MONTH": "Previous Month",
+            "NEXT_MONTH": "Next Month",
+            "MONTHS": {
+                "JAN": "January",
+                "FEB": "February",
+                "MAR": "March",
+                "APR": "April",
+                "MAY": "May",
+                "JUN": "June",
+                "JUL": "July",
+                "AUG": "August",
+                "SEP": "September",
+                "OCT": "October",
+                "NOV": "November",
+                "DEC": "December"
+            },
+            "WEEK_DAYS": {
+                "SUN": "Sunday",
+                "MON": "Monday",
+                "TUE": "Tuesday",
+                "WED": "Wednesday",
+                "THU": "Thursday",
+                "FRI": "Friday",
+                "SAT": "Saturday"
+            },
+            "WEEK_DAYS_SHORT": {
+                "SUN": "Sun",
+                "MON": "Mon",
+                "TUE": "Tue",
+                "WED": "Wed",
+                "THU": "Thu",
+                "FRI": "Fri",
+                "SAT": "Sat"
+            }
+        },
         "TAGS": {
             "PLACEHOLDER": "I'm it! Tag me...",
             "DELETE": "Delete tag",

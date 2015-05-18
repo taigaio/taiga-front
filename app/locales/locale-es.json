@@ -61,6 +61,45 @@
             "RANGE_CHECK": "Debes seleccionar de %s a %s.",
             "EQUAL_TO": "Este valor debe ser el mismo."
         },
+        "PICKERDATE": {
+            "FORMAT": "DD/MM/YYYY",
+            "IS_RTL": "false",
+            "FIRST_DAY_OF_WEEK": "1",
+            "PREV_MONTH": "Mes Anterior",
+            "NEXT_MONTH": "Mes Siguiente",
+            "MONTHS": {
+                "JAN": "Enero",
+                "FEB": "Febrero",
+                "MAR": "Marzo",
+                "APR": "Abril",
+                "MAY": "Mayo",
+                "JUN": "Junio",
+                "JUL": "Julio",
+                "AUG": "Agosto",
+                "SEP": "Septiembre",
+                "OCT": "Octubre",
+                "NOV": "Noviembre",
+                "DEC": "Diciembre"
+            },
+            "WEEK_DAYS": {
+                "SUN": "Domingo",
+                "MON": "Lunes",
+                "TUE": "Martes",
+                "WED": "Miércoles",
+                "THU": "Jueves",
+                "FRI": "Viernes",
+                "SAT": "Sábado"
+            },
+            "WEEK_DAYS_SHORT": {
+                "SUN": "Dom",
+                "MON": "Lun",
+                "TUE": "Mar",
+                "WED": "Mie",
+                "THU": "Jue",
+                "FRI": "Vie",
+                "SAT": "Dom"
+            }
+        },
         "TAGS": {
             "PLACEHOLDER": "¿Qué soy? Etiquétame...",
             "DELETE": "Borrar etiqueta",
@@ -499,6 +538,7 @@
         },
         "IMPORT": {
             "TITLE": "Importando Proyecto",
+            "UPLOADING_FILE": "Subiendo el fichero con el volcado de datos",
             "DESCRIPTION": "Este proceso puede tardar un ratito, por favor mantén la ventana abierta.",
             "ASYNC_IN_PROGRESS_TITLE": "Nuestros Oompa Loompa están importando tu proyecto",
             "ASYNC_IN_PROGRESS_MESSAGE": "Este proceso puede llevarnos algún tiempo <br/> Te enviaremos un email cuando esté listo",
@@ -514,7 +554,8 @@
         "DELETE_ACCOUNT": {
             "SECTION_NAME": "Eliminar cuenta de Taiga",
             "CONFIRM": "¿Está seguro que deseas eliminar tu cuenta de Taiga?",
-            "SUBTITLE": "¡Te extrañaremos! :-("
+            "SUBTITLE": "¡Te extrañaremos! :-(",
+            "NEWSLETTER_LABEL_TEXT": "No quiero recibir la newsletter nunca más."
         },
         "DELETE_PROJECT": {
             "TITLE": "Borrar proyecto",
@@ -574,6 +615,7 @@
         }
     },
     "US": {
+        "SECTION_NAME": "Detalles de historia de usuario",
         "LINK_TASKBOARD": "Panel de tareas",
         "TITLE_LINK_TASKBOARD": "Ir al panel de tareas",
         "TOTAL_POINTS": "total",
@@ -759,6 +801,7 @@
         }
     },
     "TASK": {
+        "SECTION_NAME": "Detalles de tarea",
         "LINK_TASKBOARD": "Panel de tereas",
         "TITLE_LINK_TASKBOARD": "Ir al panel de tareas",
         "PLACEHOLDER_SUBJECT": "Escribe el asunto de la nueva tarea",
@@ -854,7 +897,7 @@
     },
     "ISSUES": {
         "LIST_SECTION_NAME": "Peticiones",
-        "SECTION_NAME": "Detalles de la petición",
+        "SECTION_NAME": "Detalles de petición",
         "ACTION_NEW_ISSUE": "+ NUEVA PETICIÓN",
         "ACTION_PROMOTE_TO_US": "Promover a Historia de Usuario",
         "PLACEHOLDER_FILTER_NAME": "Escribe un nombre para el filtro y pulsa enter",
@@ -926,7 +969,7 @@
         "UNDO_ARCHIVED": "Arrástrala y suéltala de nuevo para deshacer el cambio"
     },
     "SEARCH": {
-        "FILTER_USER_STORIES": "Usar Historia",
+        "FILTER_USER_STORIES": "Historias de Usuario",
         "FILTER_ISSUES": "Peticiones",
         "FILTER_TASKS": "Tareas",
         "FILTER_WIKI": "Páginas del Wiki",

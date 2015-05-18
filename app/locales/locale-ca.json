@@ -61,6 +61,45 @@
             "RANGE_CHECK": "You must select between %s and %s choices.",
             "EQUAL_TO": "This value should be the same."
         },
+        "PICKERDATE": {
+            "FORMAT": "DD/MM/YYYY",
+            "IS_RTL": "false",
+            "FIRST_DAY_OF_WEEK": "1",
+            "PREV_MONTH": "Previous Month",
+            "NEXT_MONTH": "Next Month",
+            "MONTHS": {
+                "JAN": "January",
+                "FEB": "February",
+                "MAR": "March",
+                "APR": "April",
+                "MAY": "May",
+                "JUN": "June",
+                "JUL": "July",
+                "AUG": "August",
+                "SEP": "September",
+                "OCT": "October",
+                "NOV": "November",
+                "DEC": "December"
+            },
+            "WEEK_DAYS": {
+                "SUN": "Sunday",
+                "MON": "Monday",
+                "TUE": "Tuesday",
+                "WED": "Wednesday",
+                "THU": "Thursday",
+                "FRI": "Friday",
+                "SAT": "Saturday"
+            },
+            "WEEK_DAYS_SHORT": {
+                "SUN": "Sun",
+                "MON": "Mon",
+                "TUE": "Tue",
+                "WED": "Wed",
+                "THU": "Thu",
+                "FRI": "Fri",
+                "SAT": "Sat"
+            }
+        },
         "TAGS": {
             "PLACEHOLDER": "Afegir tag",
             "DELETE": "Esborrar tag",
@@ -499,6 +538,7 @@
         },
         "IMPORT": {
             "TITLE": "Important Projecte",
+            "UPLOADING_FILE": "Uploading dump file",
             "DESCRIPTION": "Aquest procés pot durar una mica, pero favor mantinga la finestra oberta",
             "ASYNC_IN_PROGRESS_TITLE": "Els Oompa Loompas estàn important el teu projecte",
             "ASYNC_IN_PROGRESS_MESSAGE": "Aquest procés pot durar uns moments <br/> T'enviarem un correo quan estiga llest.",
@@ -514,7 +554,8 @@
         "DELETE_ACCOUNT": {
             "SECTION_NAME": "Esborrar compte de Taiga",
             "CONFIRM": "Segur que vols borrar el teu compte de Taiga? ",
-            "SUBTITLE": "Te trobarem a faltar! :-("
+            "SUBTITLE": "Te trobarem a faltar! :-(",
+            "NEWSLETTER_LABEL_TEXT": "I don't wanna receive your newsletter anymore"
         },
         "DELETE_PROJECT": {
             "TITLE": "Esborrar projecte",
@@ -574,6 +615,7 @@
         }
     },
     "US": {
+        "SECTION_NAME": "User story details",
         "LINK_TASKBOARD": "Panell de tasques",
         "TITLE_LINK_TASKBOARD": "Anar a panell de tasques",
         "TOTAL_POINTS": "total",
@@ -759,6 +801,7 @@
         }
     },
     "TASK": {
+        "SECTION_NAME": "Task details",
         "LINK_TASKBOARD": "Panell de tasques",
         "TITLE_LINK_TASKBOARD": "Anar a panell de tasques",
         "PLACEHOLDER_SUBJECT": "Afegix la descripció de la tasca",
@@ -854,7 +897,7 @@
     },
     "ISSUES": {
         "LIST_SECTION_NAME": "Incidències",
-        "SECTION_NAME": "Detalls de incidència",
+        "SECTION_NAME": "Issue details",
         "ACTION_NEW_ISSUE": "+ NOVA INCIDÈNCIA",
         "ACTION_PROMOTE_TO_US": "Promocionar història d'usuari",
         "PLACEHOLDER_FILTER_NAME": "Escriu el filtre i pressiona Intro",

@@ -61,6 +61,45 @@
             "RANGE_CHECK": "You must select between %s and %s choices.",
             "EQUAL_TO": "This value should be the same."
         },
+        "PICKERDATE": {
+            "FORMAT": "DD/MM/YYYY",
+            "IS_RTL": "false",
+            "FIRST_DAY_OF_WEEK": "1",
+            "PREV_MONTH": "Previous Month",
+            "NEXT_MONTH": "Next Month",
+            "MONTHS": {
+                "JAN": "January",
+                "FEB": "February",
+                "MAR": "March",
+                "APR": "April",
+                "MAY": "May",
+                "JUN": "June",
+                "JUL": "July",
+                "AUG": "August",
+                "SEP": "September",
+                "OCT": "October",
+                "NOV": "November",
+                "DEC": "December"
+            },
+            "WEEK_DAYS": {
+                "SUN": "Sunday",
+                "MON": "Monday",
+                "TUE": "Tuesday",
+                "WED": "Wednesday",
+                "THU": "Thursday",
+                "FRI": "Friday",
+                "SAT": "Saturday"
+            },
+            "WEEK_DAYS_SHORT": {
+                "SUN": "Sun",
+                "MON": "Mon",
+                "TUE": "Tue",
+                "WED": "Wed",
+                "THU": "Thu",
+                "FRI": "Fri",
+                "SAT": "Sat"
+            }
+        },
         "TAGS": {
             "PLACEHOLDER": "Anna avainsana...",
             "DELETE": "Poista avainsana",
@@ -499,6 +538,7 @@
         },
         "IMPORT": {
             "TITLE": "Luetaan sisään projektia",
+            "UPLOADING_FILE": "Uploading dump file",
             "DESCRIPTION": "Tämä voi kestää hetken, pidä ikkuna auki.",
             "ASYNC_IN_PROGRESS_TITLE": " Oompa Loompas tuovat projektia",
             "ASYNC_IN_PROGRESS_MESSAGE": "Tämä voi kestää muutaman minuutin <br/>Lähetämme sähköpostin on valmista",
@@ -514,7 +554,8 @@
         "DELETE_ACCOUNT": {
             "SECTION_NAME": "Poista Taiga-tunnus",
             "CONFIRM": "Haluatko varmasti poistaa Taiga-tunnuksesi?",
-            "SUBTITLE": "Tulemme kaipaamaan sinua! :-("
+            "SUBTITLE": "Tulemme kaipaamaan sinua! :-(",
+            "NEWSLETTER_LABEL_TEXT": "I don't wanna receive your newsletter anymore"
         },
         "DELETE_PROJECT": {
             "TITLE": "Poista projekti",
@@ -574,6 +615,7 @@
         }
     },
     "US": {
+        "SECTION_NAME": "User story details",
         "LINK_TASKBOARD": "Tehtävätaulu",
         "TITLE_LINK_TASKBOARD": "Siirry tehtävätauluun",
         "TOTAL_POINTS": "yhteensä",
@@ -759,6 +801,7 @@
         }
     },
     "TASK": {
+        "SECTION_NAME": "Task details",
         "LINK_TASKBOARD": "Tehtävätaulu",
         "TITLE_LINK_TASKBOARD": "Siirry tehtävätauluun",
         "PLACEHOLDER_SUBJECT": "Anna tehtävän aihe",
@@ -854,7 +897,7 @@
     },
     "ISSUES": {
         "LIST_SECTION_NAME": "Pyynnöt",
-        "SECTION_NAME": "Pyyntöjen tiedot",
+        "SECTION_NAME": "Issue details",
         "ACTION_NEW_ISSUE": "+ UUSI PYYNTÖ",
         "ACTION_PROMOTE_TO_US": "Liitä käyttäjätarinaan",
         "PLACEHOLDER_FILTER_NAME": "Anna suodattimen nimi ja paina enter",

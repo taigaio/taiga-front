@@ -61,6 +61,45 @@
             "RANGE_CHECK": "You must select between %s and %s choices.",
             "EQUAL_TO": "This value should be the same."
         },
+        "PICKERDATE": {
+            "FORMAT": "DD/MM/YYYY",
+            "IS_RTL": "false",
+            "FIRST_DAY_OF_WEEK": "1",
+            "PREV_MONTH": "Previous Month",
+            "NEXT_MONTH": "Next Month",
+            "MONTHS": {
+                "JAN": "January",
+                "FEB": "February",
+                "MAR": "March",
+                "APR": "April",
+                "MAY": "May",
+                "JUN": "June",
+                "JUL": "July",
+                "AUG": "August",
+                "SEP": "September",
+                "OCT": "October",
+                "NOV": "November",
+                "DEC": "December"
+            },
+            "WEEK_DAYS": {
+                "SUN": "Sunday",
+                "MON": "Monday",
+                "TUE": "Tuesday",
+                "WED": "Wednesday",
+                "THU": "Thursday",
+                "FRI": "Friday",
+                "SAT": "Saturday"
+            },
+            "WEEK_DAYS_SHORT": {
+                "SUN": "Sun",
+                "MON": "Mon",
+                "TUE": "Tue",
+                "WED": "Wed",
+                "THU": "Thu",
+                "FRI": "Fri",
+                "SAT": "Sat"
+            }
+        },
         "TAGS": {
             "PLACEHOLDER": "Taggez moi !",
             "DELETE": "Supprimer l'étiquette",
@@ -499,6 +538,7 @@
         },
         "IMPORT": {
             "TITLE": "Import du projet en cours",
+            "UPLOADING_FILE": "Uploading dump file",
             "DESCRIPTION": "Ce processus peut prendre du temps, veuillez garder cette fenêtre ouverte.",
             "ASYNC_IN_PROGRESS_TITLE": "Nos Oompas Loompas sont en train d'importer votre projet",
             "ASYNC_IN_PROGRESS_MESSAGE": "Ce processus pourrait durer plusieurs minutes <br/> Nous vous enverrons un emai quand ce sera prêt",
@@ -514,7 +554,8 @@
         "DELETE_ACCOUNT": {
             "SECTION_NAME": "Supprimer le compte Taiga",
             "CONFIRM": "Etes-vous sûr de vouloir votre compte Taiga ?",
-            "SUBTITLE": "Vous allez nous manquer :("
+            "SUBTITLE": "Vous allez nous manquer :(",
+            "NEWSLETTER_LABEL_TEXT": "I don't wanna receive your newsletter anymore"
         },
         "DELETE_PROJECT": {
             "TITLE": "Supprimer le projet",
@@ -574,6 +615,7 @@
         }
     },
     "US": {
+        "SECTION_NAME": "User story details",
         "LINK_TASKBOARD": "Tableau des tâches",
         "TITLE_LINK_TASKBOARD": "Aller au tableau des tâches",
         "TOTAL_POINTS": "total",
@@ -759,6 +801,7 @@
         }
     },
     "TASK": {
+        "SECTION_NAME": "Task details",
         "LINK_TASKBOARD": "Tableau des tâches",
         "TITLE_LINK_TASKBOARD": "Aller au tableau des tâches",
         "PLACEHOLDER_SUBJECT": "Entrez le sujet de la nouvelle tâche",
@@ -854,7 +897,7 @@
     },
     "ISSUES": {
         "LIST_SECTION_NAME": "Problèmes",
-        "SECTION_NAME": "Détails du problème",
+        "SECTION_NAME": "Issue details",
         "ACTION_NEW_ISSUE": "+ NOUVEAU PROBLÈME",
         "ACTION_PROMOTE_TO_US": "Transformer en User Story",
         "PLACEHOLDER_FILTER_NAME": "Écrivez le nom du filtre et appuyez sur \"Entrée\"",

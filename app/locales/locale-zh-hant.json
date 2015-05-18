@@ -37,29 +37,68 @@
         "GENERIC_ERROR": "我們的系統指出{{error}}.",
         "IOCAINE_TEXT": "感到任務的不堪負荷？確認其它人在編輯任務時知道此狀況，可以點選Iocaine。它可能會成為免疫的致命狀況，只要長期小量消耗，但如果你只是偶而挑戰它可有助表現。",
         "FORM_ERRORS": {
-            "DEFAULT_MESSAGE": "This value seems to be invalid.",
-            "TYPE_EMAIL": "This value should be a valid email.",
-            "TYPE_URL": "This value should be a valid url.",
-            "TYPE_URLSTRICT": "This value should be a valid url.",
-            "TYPE_NUMBER": "This value should be a valid number.",
-            "TYPE_DIGITS": "This value should be digits.",
-            "TYPE_DATEISO": "This value should be a valid date (YYYY-MM-DD).",
-            "TYPE_ALPHANUM": "This value should be alphanumeric.",
-            "TYPE_PHONE": "This value should be a valid phone number.",
-            "NOTNULL": "This value should not be null.",
-            "NOT_BLANK": "This value should not be blank.",
-            "REQUIRED": "This value is required.",
-            "REGEXP": "This value seems to be invalid.",
-            "MIN": "This value should be greater than or equal to %s.",
-            "MAX": "This value should be lower than or equal to %s.",
-            "RANGE": "This value should be between %s and %s.",
-            "MIN_LENGTH": "This value is too short. It should have %s characters or more.",
-            "MAX_LENGTH": "This value is too long. It should have %s characters or less.",
-            "RANGE_LENGTH": "This value length is invalid. It should be between %s and %s characters long.",
-            "MIN_CHECK": "You must select at least %s choices.",
-            "MAX_CHECK": "You must select %s choices or less.",
-            "RANGE_CHECK": "You must select between %s and %s choices.",
-            "EQUAL_TO": "This value should be the same."
+            "DEFAULT_MESSAGE": "該數值似乎為無效",
+            "TYPE_EMAIL": "該電子郵件應為有效地址",
+            "TYPE_URL": "該網址應為有效連結",
+            "TYPE_URLSTRICT": "該網址應為有效連結",
+            "TYPE_NUMBER": "該數值應為有效號碼 ",
+            "TYPE_DIGITS": "該數值應為有效數字",
+            "TYPE_DATEISO": "該數值應為有效日期 (YYYY-MM-DD).",
+            "TYPE_ALPHANUM": "該數值應為字母",
+            "TYPE_PHONE": "該數值應為有效的電話號碼 ",
+            "NOTNULL": "該數值不應為零",
+            "NOT_BLANK": "該數值不應為空白",
+            "REQUIRED": "該數值為必要",
+            "REGEXP": "該數值似乎無效",
+            "MIN": "該數值應大於或等於 %s",
+            "MAX": "該數值應小於或等於  %s",
+            "RANGE": "該數值應介於 %s 與 %s之間",
+            "MIN_LENGTH": "該數值過簡短，它至少要有 %s個字元",
+            "MAX_LENGTH": "該數值過長，它不可多於 %s個字元。",
+            "RANGE_LENGTH": "該數值長度為無效，它應介於 %s 與 %s 字元之間",
+            "MIN_CHECK": "你必須至少選擇 %s 選項",
+            "MAX_CHECK": "你必須至多選出 %s選項",
+            "RANGE_CHECK": "你必須在%s 與 %s 之間作出選擇",
+            "EQUAL_TO": "該數值應為一致"
+        },
+        "PICKERDATE": {
+            "FORMAT": "DD/MM/YYYY",
+            "IS_RTL": "false",
+            "FIRST_DAY_OF_WEEK": "1",
+            "PREV_MONTH": "Previous Month",
+            "NEXT_MONTH": "Next Month",
+            "MONTHS": {
+                "JAN": "January",
+                "FEB": "February",
+                "MAR": "March",
+                "APR": "April",
+                "MAY": "May",
+                "JUN": "June",
+                "JUL": "July",
+                "AUG": "August",
+                "SEP": "September",
+                "OCT": "October",
+                "NOV": "November",
+                "DEC": "December"
+            },
+            "WEEK_DAYS": {
+                "SUN": "Sunday",
+                "MON": "Monday",
+                "TUE": "Tuesday",
+                "WED": "Wednesday",
+                "THU": "Thursday",
+                "FRI": "Friday",
+                "SAT": "Saturday"
+            },
+            "WEEK_DAYS_SHORT": {
+                "SUN": "Sun",
+                "MON": "Mon",
+                "TUE": "Tue",
+                "WED": "Wed",
+                "THU": "Thu",
+                "FRI": "Fri",
+                "SAT": "Sat"
+            }
         },
         "TAGS": {
             "PLACEHOLDER": "我在這裏，請標注我",
@@ -490,7 +529,7 @@
             "ADMIN": "管理者"
         },
         "NAVIGATION": {
-            "SECTION_TITLE": "Your projects",
+            "SECTION_TITLE": "你的專案",
             "PLACEHOLDER_SEARCH": "搜尋",
             "ACTION_CREATE_PROJECT": "創建專案",
             "TITLE_ACTION_IMPORT": "滙入專案",
@@ -499,14 +538,15 @@
         },
         "IMPORT": {
             "TITLE": "滙入專案中",
+            "UPLOADING_FILE": "Uploading dump file",
             "DESCRIPTION": "這個過桯要花點時間，請保持视窗開啟",
             "ASYNC_IN_PROGRESS_TITLE": "我們的工程師對你的專案很重要哦",
             "ASYNC_IN_PROGRESS_MESSAGE": "這個過程要花上一點時間<br/> 當弄好時我們會發給你一封郵件",
-            "UPLOAD_IN_PROGRESS_MESSAGE": "Uploaded {{uploadedSize}} of {{totalSize}}",
+            "UPLOAD_IN_PROGRESS_MESSAGE": "已上傳 {{totalSize}}中的{{uploadedSize}} ",
             "ERROR": "系統在滙進你倒入的資料時遇上一些問題，請再試一次",
             "ERROR_TOO_MANY_REQUEST": "抱歉系統繁忙中，請稍後再試試　",
             "ERROR_MESSAGE": "我們的系統無法滙入你的資料",
-            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is too heavy for our Oompa Loompas, try it with a smaller than ({{maxFileSize}})",
+            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) 超過系統容量上限, 請重傳小一點的檔案 ({{maxFileSize}})",
             "SYNC_SUCCESS": "你的專案已成功滙入"
         }
     },
@@ -514,7 +554,8 @@
         "DELETE_ACCOUNT": {
             "SECTION_NAME": "刪除Taiga帳戶",
             "CONFIRM": "你確定要刪除Taiga帳戶嗎？",
-            "SUBTITLE": "我們會想念你:-("
+            "SUBTITLE": "我們會想念你:-(",
+            "NEWSLETTER_LABEL_TEXT": "I don't wanna receive your newsletter anymore"
         },
         "DELETE_PROJECT": {
             "TITLE": "刪除專案",
@@ -574,6 +615,7 @@
         }
     },
     "US": {
+        "SECTION_NAME": "User story details",
         "LINK_TASKBOARD": "任務板",
         "TITLE_LINK_TASKBOARD": "到任務板去",
         "TOTAL_POINTS": "全部",
@@ -759,6 +801,7 @@
         }
     },
     "TASK": {
+        "SECTION_NAME": "Task details",
         "LINK_TASKBOARD": "任務板",
         "TITLE_LINK_TASKBOARD": "到任務板去",
         "PLACEHOLDER_SUBJECT": "鍵入新任務主旨",
@@ -843,7 +886,7 @@
         "ERROR": "按我們的記錄，你尚未註冊或是未輸入有效的密碼　"
     },
     "REGISTER_FORM": {
-        "TITLE": "Register a new Taiga account (free)",
+        "TITLE": "註冊一個新的Taiga帳戶(免費 )",
         "PLACEHOLDER_NAME": "選一個用戶帳號(注意大小寫)",
         "PLACEHOLDER_FULL_NAME": "選取你的全名",
         "PLACEHOLDER_EMAIL": "你的電子郵件",
@@ -854,7 +897,7 @@
     },
     "ISSUES": {
         "LIST_SECTION_NAME": "問題 ",
-        "SECTION_NAME": "問題細節",
+        "SECTION_NAME": "Issue details",
         "ACTION_NEW_ISSUE": "+ 新問題　",
         "ACTION_PROMOTE_TO_US": "提昇到使用者故事",
         "PLACEHOLDER_FILTER_NAME": "寫入過濾器名稱後按下enter ",
