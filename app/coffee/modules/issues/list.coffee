@@ -440,7 +440,7 @@ module.directive("tgIssues", ["$log", "$tgLocation", "$tgTemplate", "$compile", 
 ## Issues Filters Directive
 #############################################################################
 
-IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template, $translate) ->
+IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template, $translate, $compile) ->
     template = $template.get("issue/issues-filters.html", true)
     templateSelected = $template.get("issue/issues-filters-selected.html", true)
 
@@ -474,6 +474,7 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template, $
                     f.style = "border-left: 3px solid #{f.color}"
 
             html = templateSelected({filters:selectedFilters})
+            html = $compile(html)($scope)
             $el.find(".filters-applied").html(html)
 
             if selectedFilters.length > 0
@@ -487,6 +488,7 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template, $
                     f.style = "border-left: 3px solid #{f.color}"
 
             html = template({filters:filters})
+            html = $compile(html)($scope)
             $el.find(".filter-list").html(html)
 
         toggleFilterSelection = (type, id) ->
@@ -539,6 +541,7 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template, $
 
         $scope.$on "filters:issueupdate", (ctx, filters) ->
             html = template({filters:filters.statuses})
+            html = $compile(html)($scope)
             $el.find(".filter-list").html(html)
 
         selectQFilter = debounceLeading 100, (value) ->
@@ -621,6 +624,7 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template, $
             $el.find('.save-filters').hide()
             $el.find('.my-filter-name').removeClass("hidden")
             $el.find('.my-filter-name').focus()
+            $scope.$apply()
 
         $el.on "keyup", ".my-filter-name", (event) ->
             event.preventDefault()
@@ -659,7 +663,7 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template, $
     return {link:link}
 
 module.directive("tgIssuesFilters", ["$log", "$tgLocation", "$tgResources", "$tgConfirm", "$tgLoading",
-                                     "$tgTemplate", "$translate", IssuesFiltersDirective])
+                                     "$tgTemplate", "$translate", "$compile", IssuesFiltersDirective])
 
 
 #############################################################################
