@@ -62,7 +62,7 @@
             "EQUAL_TO": "This value should be the same."
         },
         "PICKERDATE": {
-            "FORMAT": "DD/MM/YYYY",
+            "FORMAT": "DD MMM YYYY",
             "IS_RTL": "false",
             "FIRST_DAY_OF_WEEK": "1",
             "PREV_MONTH": "Previous Month",
@@ -239,7 +239,7 @@
     "ATTACHMENT": {
         "SECTION_NAME": "Adjunts",
         "TITLE": "{{ fileName }} pujat el {{ date }}",
-        "DESCIPTION": "Escriu una descripció curta",
+        "DESCRIPTION": "Type a short description",
         "DEPRECATED_FILE": "Obsolet?",
         "ADD": "Afegir nou adjunt. <%- maxFileSizeMsg %>",
         "MAX_FILE_SIZE": "[Max. grandària:  {{maxFileSize}}]",

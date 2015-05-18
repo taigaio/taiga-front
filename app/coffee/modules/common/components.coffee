@@ -52,59 +52,68 @@ module.directive("tgDateRange", ["$translate", DateRangeDirective])
 ## Date Selector Directive (using pikaday)
 #############################################################################
 
-DateSelectorDirective = ($translate) ->
+DateSelectorDirective = ($rootscope, $translate) ->
     link = ($scope, $el, $attrs, $model) ->
         selectedDate = null
-        $el.picker = new Pikaday({
-            field: $el[0]
-            onSelect: (date) =>
-                selectedDate = date
-            onOpen: =>
-                $el.picker.setDate(selectedDate) if selectedDate?
-            i18n: {
-                previousMonth: $translate.instant("COMMON.PICKERDATE.PREV_MONTH"),
-                nextMonth:  $translate.instant("COMMON.PICKERDATE.NEXT_MONTH"),
-                months: [$translate.instant("COMMON.PICKERDATE.MONTHS.JAN"),
-                         $translate.instant("COMMON.PICKERDATE.MONTHS.FEB"),
-                         $translate.instant("COMMON.PICKERDATE.MONTHS.MAR"),
-                         $translate.instant("COMMON.PICKERDATE.MONTHS.APR"),
-                         $translate.instant("COMMON.PICKERDATE.MONTHS.MAY"),
-                         $translate.instant("COMMON.PICKERDATE.MONTHS.JUN"),
-                         $translate.instant("COMMON.PICKERDATE.MONTHS.JUL"),
-                         $translate.instant("COMMON.PICKERDATE.MONTHS.AUG"),
-                         $translate.instant("COMMON.PICKERDATE.MONTHS.SEP"),
-                         $translate.instant("COMMON.PICKERDATE.MONTHS.OCT"),
-                         $translate.instant("COMMON.PICKERDATE.MONTHS.NOV"),
-                         $translate.instant("COMMON.PICKERDATE.MONTHS.DEC")],
-                weekdays: [$translate.instant("COMMON.PICKERDATE.WEEK_DAYS.SUN"),
-                           $translate.instant("COMMON.PICKERDATE.WEEK_DAYS.MON"),
-                           $translate.instant("COMMON.PICKERDATE.WEEK_DAYS.TUE"),
-                           $translate.instant("COMMON.PICKERDATE.WEEK_DAYS.WED"),
-                           $translate.instant("COMMON.PICKERDATE.WEEK_DAYS.THU"),
-                           $translate.instant("COMMON.PICKERDATE.WEEK_DAYS.FRI"),
-                           $translate.instant("COMMON.PICKERDATE.WEEK_DAYS.SAT")],
-                weekdaysShort: [$translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.SUN"),
-                                $translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.MON"),
-                                $translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.TUE"),
-                                $translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.WED"),
-                                $translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.THU"),
-                                $translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.FRI"),
-                                $translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.SAT")]
-            },
-            isRTL: $translate.instant("COMMON.PICKERDATE.IS_RTL") == "true",
-            firstDay: parseInt($translate.instant("COMMON.PICKERDATE.FIRST_DAY_OF_WEEK"), 10),
-            format: $translate.instant("COMMON.PICKERDATE.FORMAT")
-        })
+
+        initialize = () ->
+            $el.picker = new Pikaday({
+                field: $el[0]
+                onSelect: (date) =>
+                    selectedDate = date
+                onOpen: =>
+                    $el.picker.setDate(selectedDate) if selectedDate?
+                i18n: {
+                    previousMonth: $translate.instant("COMMON.PICKERDATE.PREV_MONTH"),
+                    nextMonth:  $translate.instant("COMMON.PICKERDATE.NEXT_MONTH"),
+                    months: [$translate.instant("COMMON.PICKERDATE.MONTHS.JAN"),
+                             $translate.instant("COMMON.PICKERDATE.MONTHS.FEB"),
+                             $translate.instant("COMMON.PICKERDATE.MONTHS.MAR"),
+                             $translate.instant("COMMON.PICKERDATE.MONTHS.APR"),
+                             $translate.instant("COMMON.PICKERDATE.MONTHS.MAY"),
+                             $translate.instant("COMMON.PICKERDATE.MONTHS.JUN"),
+                             $translate.instant("COMMON.PICKERDATE.MONTHS.JUL"),
+                             $translate.instant("COMMON.PICKERDATE.MONTHS.AUG"),
+                             $translate.instant("COMMON.PICKERDATE.MONTHS.SEP"),
+                             $translate.instant("COMMON.PICKERDATE.MONTHS.OCT"),
+                             $translate.instant("COMMON.PICKERDATE.MONTHS.NOV"),
+                             $translate.instant("COMMON.PICKERDATE.MONTHS.DEC")],
+                    weekdays: [$translate.instant("COMMON.PICKERDATE.WEEK_DAYS.SUN"),
+                               $translate.instant("COMMON.PICKERDATE.WEEK_DAYS.MON"),
+                               $translate.instant("COMMON.PICKERDATE.WEEK_DAYS.TUE"),
+                               $translate.instant("COMMON.PICKERDATE.WEEK_DAYS.WED"),
+                               $translate.instant("COMMON.PICKERDATE.WEEK_DAYS.THU"),
+                               $translate.instant("COMMON.PICKERDATE.WEEK_DAYS.FRI"),
+                               $translate.instant("COMMON.PICKERDATE.WEEK_DAYS.SAT")],
+                    weekdaysShort: [$translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.SUN"),
+                                    $translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.MON"),
+                                    $translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.TUE"),
+                                    $translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.WED"),
+                                    $translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.THU"),
+                                    $translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.FRI"),
+                                    $translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.SAT")]
+                },
+                isRTL: $translate.instant("COMMON.PICKERDATE.IS_RTL") == "true",
+                firstDay: parseInt($translate.instant("COMMON.PICKERDATE.FIRST_DAY_OF_WEEK"), 10),
+                format: $translate.instant("COMMON.PICKERDATE.FORMAT")
+            })
+
+        unbind = $rootscope.$on "$translateChangeEnd", (ctx) => initialize()
 
         $scope.$watch $attrs.ngModel, (val) ->
+            initialize() if val? and not $el.picker
             $el.picker.setDate(val) if val?
+
+        $scope.$on "$destroy", ->
+            $el.off()
+            unbind()
 
     return {
         link: link
         require: "ngModel"
     }
 
-module.directive("tgDateSelector", ["$translate", DateSelectorDirective])
+module.directive("tgDateSelector", ["$rootScope", "$translate", DateSelectorDirective])
 
 
 #############################################################################
@@ -130,6 +139,9 @@ SprintProgressBarDirective = ->
             visual_percentage = Math.round(98 * (closedPoints/totalPoints)) if totalPoints != 0
 
             renderProgress($el, percentage, visual_percentage)
+
+        $scope.$on "$destroy", ->
+            $el.off()
 
     return {link: link}
 

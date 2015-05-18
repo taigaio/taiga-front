@@ -62,7 +62,7 @@
             "EQUAL_TO": "This value should be the same."
         },
         "PICKERDATE": {
-            "FORMAT": "DD/MM/YYYY",
+            "FORMAT": "DD MMM YYYY",
             "IS_RTL": "false",
             "FIRST_DAY_OF_WEEK": "1",
             "PREV_MONTH": "Previous Month",
@@ -239,7 +239,7 @@
     "ATTACHMENT": {
         "SECTION_NAME": "liitteet",
         "TITLE": "{{ fileName }} ladattu {{ date }}\n",
-        "DESCIPTION": "Kirjoita lyhyt kuvaus",
+        "DESCRIPTION": "Type a short description",
         "DEPRECATED_FILE": "Vanhentunut?",
         "ADD": "Lisää liite. <%- maxFileSizeMsg %>",
         "MAX_FILE_SIZE": "[Maks. koko: {{maxFileSize}}]",

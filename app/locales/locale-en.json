@@ -62,7 +62,7 @@
             "EQUAL_TO": "This value should be the same."
         },
         "PICKERDATE": {
-            "FORMAT": "DD/MM/YYYY",
+            "FORMAT": "DD MMM YYYY",
             "IS_RTL": "false",
             "FIRST_DAY_OF_WEEK": "1",
             "PREV_MONTH": "Previous Month",

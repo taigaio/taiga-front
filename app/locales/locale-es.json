@@ -62,7 +62,7 @@
             "EQUAL_TO": "Este valor debe ser el mismo."
         },
         "PICKERDATE": {
-            "FORMAT": "DD/MM/YYYY",
+            "FORMAT": "DD MMM YYYY",
             "IS_RTL": "false",
             "FIRST_DAY_OF_WEEK": "1",
             "PREV_MONTH": "Mes Anterior",
@@ -239,7 +239,7 @@
     "ATTACHMENT": {
         "SECTION_NAME": "adjuntos",
         "TITLE": "{{ fileName }} subido el {{ date }}",
-        "DESCIPTION": "Escribe una descripción corta",
+        "DESCRIPTION": "Escribe una pequeña descripción",
         "DEPRECATED_FILE": "¿Desactualizado?",
         "ADD": "Agrega nuevos adjunto",
         "MAX_FILE_SIZE": "[Tamaño Max. : {{maxFileSize}}]",

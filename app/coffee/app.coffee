@@ -196,7 +196,8 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
             responseError: httpResponseError
         }
 
-    $provide.factory("authHttpIntercept", ["$q", "$location", "$tgNavUrls", "lightboxService", authHttpIntercept])
+    $provide.factory("authHttpIntercept", ["$q", "$location", "$tgNavUrls", "lightboxService",
+                                           authHttpIntercept])
 
     $httpProvider.interceptors.push("authHttpIntercept")
 
@@ -292,9 +293,7 @@ init = ($log, $config, $rootscope, $auth, $events, $analytics, $translate) ->
     $rootscope.contribPlugins = @.taigaContribPlugins
     $rootscope.adminPlugins = _.where(@.taigaContribPlugins, {"type": "admin"})
 
-    # i18n
-    #$rootscope.$on "$translateChangeEnd", (ctx) ->
-    $rootscope.$on "$translateLoadingEnd'", (ctx) ->
+    $rootscope.$on "$translateLoadingEnd", (e, ctx) ->
         lang = ctx.language
         i18nInit(lang, $translate)
 

@@ -33,7 +33,6 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading,
     link = ($scope, $el, attrs) ->
         hasErrors = false
         createSprint = true
-        prettyDate = $translate.instant("BACKLOG.SPRINTS.DATE")
 
         $scope.sprint = {
             project: null
@@ -107,6 +106,7 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading,
             form.reset()
 
             createSprint = true
+            prettyDate = $translate.instant("COMMON.PICKERDATE.FORMAT")
             $scope.sprint.project = projectId
             $scope.sprint.name = null
             $scope.sprint.slug = null
@@ -147,6 +147,8 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading,
 
         $scope.$on "sprintform:edit", (ctx, sprint) ->
             createSprint = false
+            prettyDate = $translate.instant("COMMON.PICKERDATE.FORMAT")
+
             $scope.$apply ->
                 $scope.sprint = sprint
                 $scope.sprint.estimated_start = moment($scope.sprint.estimated_start).format(prettyDate)
