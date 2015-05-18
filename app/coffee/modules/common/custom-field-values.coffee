@@ -170,11 +170,13 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile) ->
             return if $selectedText.get().length
             render(attributeValue, true)
             $el.find("input[name='description']").focus().select()
+            $scope.$apply()
 
         $el.on "click", "a.icon-edit", (event) ->
             event.preventDefault()
             render(attributeValue, true)
             $el.find("input[name='description']").focus().select()
+            $scope.$apply() 
 
         ## Actions (on edit mode)
         submit = debounce 2000, (event) =>
