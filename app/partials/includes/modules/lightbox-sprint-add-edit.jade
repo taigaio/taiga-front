@@ -1,23 +1,29 @@
 a.close(href="", title="{{'COMMON.CLOSE' | translate}}")
     span.icon.icon-delete
+
 form
     h2.title(translate="LIGHTBOX.ADD_EDIT_SPRINT.TITLE")
     fieldset
-        input.sprint-name(type="text", name="name", placeholder="{{'LIGHTBOX.ADD_EDIT_SPRINT.PLACEHOLDER_SPRINT_NAME' | translate}}", ng-model="sprint.name",
-                          data-required="true", data-maxlength="500")
+        input.sprint-name(type="text", name="name",  ng-model="sprint.name",
+                          data-required="true", data-maxlength="500",
+                          placeholder="{{'LIGHTBOX.ADD_EDIT_SPRINT.PLACEHOLDER_SPRINT_NAME' | translate}}")
         label.last-sprint-name
 
     fieldset.dates
         div
-            input.date-start(type="text", name="estimated_start", placeholder="{{'LIGHTBOX.ADD_EDIT_SPRINT.PLACEHOLDER_SPRINT_START' | translate}}",
-                             ng-model="sprint.estimated_start", data-required="true", tg-date-selector)
+            input.date-start(type="text", name="estimated_start",
+                             ng-model="sprint.estimated_start", data-required="true", tg-date-selector,
+                             placeholder="{{'LIGHTBOX.ADD_EDIT_SPRINT.PLACEHOLDER_SPRINT_START' | translate}}")
         div
-            input.date-end(type="text", name="estimated_finish", placeholder="{{'LIGHTBOX.ADD_EDIT_SPRINT.PLACEHOLDER_SPRINT_END' | translate}}",
-                           ng-model="sprint.estimated_finish", data-required="true", tg-date-selector)
+            input.date-end(type="text", name="estimated_finish",
+                           ng-model="sprint.estimated_finish", data-required="true", tg-date-selector,
+                           placeholder="{{'LIGHTBOX.ADD_EDIT_SPRINT.PLACEHOLDER_SPRINT_END' | translate}}")
 
-    button.button-green.submit-button(type="submit", title="{{'COMMON.CREATE' | translate}}", translate="COMMON.CREATE")
+    button.button-green.submit-button(type="submit", title="{{'COMMON.CREATE' | translate}}",
+                                      translate="COMMON.CREATE")
 
     div(tg-check-permission="delete_milestone")
         span.delete-sprint.hidden(translate)
             span(translate="LIGHTBOX.ADD_EDIT_SPRINT.ACTION_DELETE_SPRINT")
-            a.icon.icon-delete(href="", title="{{'LIGHTBOX.ADD_EDIT_SPRINT.TITLE_ACTION_DELETE_SPRINT' | translate}}")
+            a.icon.icon-delete(href="",
+                               title="{{'LIGHTBOX.ADD_EDIT_SPRINT.TITLE_ACTION_DELETE_SPRINT' | translate}}")
