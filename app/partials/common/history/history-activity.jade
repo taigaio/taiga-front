@@ -13,7 +13,7 @@ div(class!="activity-single <%- mode %>")
         <% if ((deleteCommentDate || deleteCommentUser)) { %>
         .deleted-comment
             span(translate="COMMENTS.DELETED_INFO",
-                 translate-values!="{ user: '<%- deleteCommentUser %>', date: '<% deleteCommentDate %>'}")
+                 translate-values!="{ user: '<%- deleteCommentUser %>', date: '<%- deleteCommentDate %>'}")
         <% } %>
         .comment.wysiwyg
             | <%= comment %>
