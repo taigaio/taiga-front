@@ -733,6 +733,7 @@
             "INCREMENT_CLIENT": "El número de puntos incrementados por requerimientos del cliente para el sprint {{xval}} es de {{yval}}"
         },
         "TAGS": {
+            "TOGGLE": "Cambia la visibilidad de los tags",
             "SHOW": "Mostrar etiquetas",
             "HIDE": "Ocultar etiquetas"
         },
@@ -755,8 +756,10 @@
             "POINTS_PER_SPRINT": "puntos /<br />sprint"
         },
         "FILTERS": {
+            "TOGGLE": "Cambia la visibilidad de los filtros",
             "TITLE": "Filtros",
             "REMOVE": "Borrar Filtros",
+            "HIDE": "Ocultar filtros",
             "SHOW": "Ver Filtros",
             "FILTER_CATEGORY_STATUS": "Estado",
             "FILTER_CATEGORY_TAGS": "Etiquetas"
@@ -829,7 +832,7 @@
         "TITLE_ACTION_IOCAINE": "¿Te sientes fuera de tu zona de confort en una tarea? Asegúrate de que los demás están al tanto de ello, marca el check de la Iocaína al editar una tarea. Igual eu era posible llegar a ser inmune a este veneno mortal a base de consumir pequeñas dosis a lo largo del tiempo, es posible conseguir mejor en lo que estás haciendo si afrontas de vez en cuando esta clase de retos!"
     },
     "NOTIFICATION": {
-        "OK": "Todo está bien",
+        "OK": "¡Todo Ok!",
         "WARNING": "¡Cáspitas!, algo no ha ido bien...",
         "WARNING_TEXT": "Nuestros Oompa Loompas están tristes, ¡Tus cambios no fueron guardados!",
         "SAVED": "¡Nuestros Oompa Loompas guardaron todos tus cambios!",

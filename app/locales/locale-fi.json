@@ -733,6 +733,7 @@
             "INCREMENT_CLIENT": "Lisätyt asiakkaan vaatimat pisteet kierrokselle {{xval}} ovat {{yval}}"
         },
         "TAGS": {
+            "TOGGLE": "Toggle tags visibility",
             "SHOW": "Näytä avainsanat",
             "HIDE": "Piilota avainsanat"
         },
@@ -755,8 +756,10 @@
             "POINTS_PER_SPRINT": "pisettä/<br/>kierros"
         },
         "FILTERS": {
+            "TOGGLE": "Toggle filters visibility",
             "TITLE": "Suodattimet",
             "REMOVE": "Poista suodattimet",
+            "HIDE": "Hide Filters",
             "SHOW": "Näytä suodattimet",
             "FILTER_CATEGORY_STATUS": "Tila",
             "FILTER_CATEGORY_TAGS": "Avainsanat"

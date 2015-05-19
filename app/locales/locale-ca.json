@@ -733,6 +733,7 @@
             "INCREMENT_CLIENT": "Punts incrementat per requeriment de client {{xval}} és {{yval}}"
         },
         "TAGS": {
+            "TOGGLE": "Toggle tags visibility",
             "SHOW": "Mostrar tags",
             "HIDE": "Amaga tags"
         },
@@ -755,8 +756,10 @@
             "POINTS_PER_SPRINT": "punts<br/> sprint"
         },
         "FILTERS": {
+            "TOGGLE": "Toggle filters visibility",
             "TITLE": "Filtres",
             "REMOVE": "Esborra filtres",
+            "HIDE": "Hide Filters",
             "SHOW": "Mostra filtres",
             "FILTER_CATEGORY_STATUS": "Estatus",
             "FILTER_CATEGORY_TAGS": "Tags"

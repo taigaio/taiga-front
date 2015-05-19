@@ -733,6 +733,7 @@
             "INCREMENT_CLIENT": "客戶要求的任務衝刺逐步新增點數 {{xval}} 為 {{yval}}"
         },
         "TAGS": {
+            "TOGGLE": "Toggle tags visibility",
             "SHOW": "顯示標籤",
             "HIDE": "隱藏標籤"
         },
@@ -755,8 +756,10 @@
             "POINTS_PER_SPRINT": "點數 /<br />衝刺任務"
         },
         "FILTERS": {
+            "TOGGLE": "Toggle filters visibility",
             "TITLE": "過濾器",
             "REMOVE": "移除過濾器",
+            "HIDE": "Hide Filters",
             "SHOW": "顯示過濾器",
             "FILTER_CATEGORY_STATUS": "狀態",
             "FILTER_CATEGORY_TAGS": "標籤"

@@ -37,19 +37,19 @@
         "GENERIC_ERROR": "L'un de nos Ooompa Loompas dit {{error}}.",
         "IOCAINE_TEXT": "Vous vous sentez un peu submergé par une tâche ? Soyez certains d'en informer les autres en cliquant su Iocaine lors de la modification de la tâche. Il est possible de s'immuniser contre ce poison (fictif) en consommant de petites quantités en heures supplémentaires, tout comme il est possible de s'améliorer en acceptant parfois de nouveaux défis !",
         "FORM_ERRORS": {
-            "DEFAULT_MESSAGE": "This value seems to be invalid.",
+            "DEFAULT_MESSAGE": "Cette valeur semble être invalide.",
             "TYPE_EMAIL": "This value should be a valid email.",
             "TYPE_URL": "This value should be a valid url.",
             "TYPE_URLSTRICT": "This value should be a valid url.",
             "TYPE_NUMBER": "This value should be a valid number.",
             "TYPE_DIGITS": "This value should be digits.",
-            "TYPE_DATEISO": "This value should be a valid date (YYYY-MM-DD).",
-            "TYPE_ALPHANUM": "This value should be alphanumeric.",
+            "TYPE_DATEISO": "Cette valeur n'est pas une date valide (AAAA-MM-JJ).",
+            "TYPE_ALPHANUM": "Cette valeur doit être alphanumérique.",
             "TYPE_PHONE": "This value should be a valid phone number.",
             "NOTNULL": "This value should not be null.",
-            "NOT_BLANK": "This value should not be blank.",
-            "REQUIRED": "This value is required.",
-            "REGEXP": "This value seems to be invalid.",
+            "NOT_BLANK": "Cette valeur ne doit pas être vide.",
+            "REQUIRED": "Cette valeur est obligatoire.",
+            "REGEXP": "Cette valeur semble être invalide.",
             "MIN": "This value should be greater than or equal to %s.",
             "MAX": "This value should be lower than or equal to %s.",
             "RANGE": "This value should be between %s and %s.",
@@ -65,39 +65,39 @@
             "FORMAT": "DD MMM YYYY",
             "IS_RTL": "false",
             "FIRST_DAY_OF_WEEK": "1",
-            "PREV_MONTH": "Previous Month",
-            "NEXT_MONTH": "Next Month",
+            "PREV_MONTH": "Mois précédent",
+            "NEXT_MONTH": "Mois suivant",
             "MONTHS": {
-                "JAN": "January",
-                "FEB": "February",
-                "MAR": "March",
-                "APR": "April",
-                "MAY": "May",
-                "JUN": "June",
-                "JUL": "July",
-                "AUG": "August",
-                "SEP": "September",
-                "OCT": "October",
-                "NOV": "November",
-                "DEC": "December"
+                "JAN": "Janvier",
+                "FEB": "Février",
+                "MAR": "Mars",
+                "APR": "Avril",
+                "MAY": "Mai",
+                "JUN": "Juin",
+                "JUL": "Juillet",
+                "AUG": "Août",
+                "SEP": "Septembre",
+                "OCT": "Octobre",
+                "NOV": "Novembre",
+                "DEC": "Décembre"
             },
             "WEEK_DAYS": {
-                "SUN": "Sunday",
-                "MON": "Monday",
-                "TUE": "Tuesday",
-                "WED": "Wednesday",
-                "THU": "Thursday",
-                "FRI": "Friday",
-                "SAT": "Saturday"
+                "SUN": "Dimanche",
+                "MON": "Lundi",
+                "TUE": "Mardi",
+                "WED": "Mercredi",
+                "THU": "Jeudi",
+                "FRI": "Vendredi",
+                "SAT": "Dimanche"
             },
             "WEEK_DAYS_SHORT": {
-                "SUN": "Sun",
-                "MON": "Mon",
-                "TUE": "Tue",
-                "WED": "Wed",
-                "THU": "Thu",
-                "FRI": "Fri",
-                "SAT": "Sat"
+                "SUN": "Dim",
+                "MON": "Lun",
+                "TUE": "Mar",
+                "WED": "Mer",
+                "THU": "Jeu",
+                "FRI": "Ven",
+                "SAT": "Sam"
             }
         },
         "TAGS": {
@@ -136,7 +136,7 @@
             "REMOVE_ASSIGNED": "Supprimer l'affectation",
             "TOO_MANY": "...trop d'utilisateurs ; filtrez davantage",
             "CONFIRM_UNASSIGNED": "Etes-vous sûr de vouloir continuer sans affectation ?",
-            "TITLE_ACTION_EDIT_ASSIGNMENT": "Edit assignment"
+            "TITLE_ACTION_EDIT_ASSIGNMENT": "Modifier l'affectation"
         },
         "STATUS": {
             "CLOSED": "Clos",
@@ -195,41 +195,41 @@
         "PERMISIONS_CATEGORIES": {
             "SPRINTS": {
                 "NAME": "Sprints",
-                "VIEW_SPRINTS": "View sprints",
-                "ADD_SPRINTS": "Add sprints",
-                "MODIFY_SPRINTS": "Modify sprints",
-                "DELETE_SPRINTS": "Delete sprints"
+                "VIEW_SPRINTS": "Voir les sprints",
+                "ADD_SPRINTS": "Ajouter des sprints",
+                "MODIFY_SPRINTS": "Modifier des sprints",
+                "DELETE_SPRINTS": "Supprimer des sprints"
             },
             "USER_STORIES": {
                 "NAME": "Histoires Utilisateur",
-                "VIEW_USER_STORIES": "View user stories",
-                "ADD_USER_STORIES": "Add user stories",
-                "MODIFY_USER_STORIES": "Modify user stories",
-                "DELETE_USER_STORIES": "Delete user stories"
+                "VIEW_USER_STORIES": "Voir les histoires utilisateur",
+                "ADD_USER_STORIES": "Ajouter des histoires utilisateur",
+                "MODIFY_USER_STORIES": "Modifier des histoires utilisateur",
+                "DELETE_USER_STORIES": "Supprimer des histoires utilisateur"
             },
             "TASKS": {
                 "NAME": "Tâches",
-                "VIEW_TASKS": "View tasks",
-                "ADD_TASKS": "Add tasks",
-                "MODIFY_TASKS": "Modify tasks",
-                "DELETE_TASKS": "Delete tasks"
+                "VIEW_TASKS": "Voir les tâches",
+                "ADD_TASKS": "Ajouter des tâches",
+                "MODIFY_TASKS": "Modifier des tâches",
+                "DELETE_TASKS": "Supprimer des tâches"
             },
             "ISSUES": {
                 "NAME": "Problèmes",
-                "VIEW_ISSUES": "View issues",
-                "ADD_ISSUES": "Add issues",
-                "MODIFY_ISSUES": "Modify issues",
-                "DELETE_ISSUES": "Delete issues"
+                "VIEW_ISSUES": "Voir les problèmes",
+                "ADD_ISSUES": "Ajouter des problèmes",
+                "MODIFY_ISSUES": "Modifier des problèmes",
+                "DELETE_ISSUES": "Supprimer des problèmes"
             },
             "WIKI": {
                 "NAME": "Wiki",
-                "VIEW_WIKI_PAGES": "View wiki pages",
-                "ADD_WIKI_PAGES": "Add wiki pages",
-                "MODIFY_WIKI_PAGES": "Modify wiki pages",
-                "DELETE_WIKI_PAGES": "Delete wiki pages",
-                "VIEW_WIKI_LINKS": "View wiki links",
-                "ADD_WIKI_LINKS": "Add wiki links",
-                "DELETE_WIKI_LINKS": "Delete wiki links"
+                "VIEW_WIKI_PAGES": "Voir les pages wiki",
+                "ADD_WIKI_PAGES": "Ajouter des pages wiki",
+                "MODIFY_WIKI_PAGES": "Modifier des pages wiki",
+                "DELETE_WIKI_PAGES": "Supprimer des pages wiki",
+                "VIEW_WIKI_LINKS": "Voir les liens wiki",
+                "ADD_WIKI_LINKS": "Ajouter des liens wiki",
+                "DELETE_WIKI_LINKS": "Supprimer des liens wiki"
             }
         }
     },
@@ -252,8 +252,8 @@
         "MAX_UPLOAD_SIZE": "La taille maximum d'upload est {{maxFileSize}}",
         "DATE": "DD MMM YYYY [at] hh:mm",
         "ERROR_UPLOAD_ATTACHMENT": "We have not been able to upload '{{fileName}}'. {{errorMessage}}",
-        "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "Delete attachment...",
-        "MSG_LIGHTBOX_DELETE_ATTACHMENT": "the attachment '{{fileName}}'",
+        "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "Supprimer la pièce jointe...",
+        "MSG_LIGHTBOX_DELETE_ATTACHMENT": "la pièce jointe \"{{fileName}}\"",
         "ERROR_DELETE_ATTACHMENT": "We have not been able to delete: {{errorMessage}}",
         "FIELDS": {
             "IS_DEPRECATED": "est obsolète"
@@ -332,7 +332,7 @@
         },
         "CSV": {
             "SECTION_TITLE_US": "user stories reports",
-            "SECTION_TITLE_TASK": "tasks reports",
+            "SECTION_TITLE_TASK": "Rapports des tâches",
             "SECTION_TITLE_ISSUE": "issues reports",
             "DOWNLOAD": "Télécharger au format CSV",
             "URL_FIELD_PLACEHOLDER": "Merci de regénérer l'url de téléchargement au format CSV",
@@ -363,7 +363,7 @@
         "PROJECT_VALUES_PRIORITIES": {
             "TITLE": "Priorités des problèmes",
             "SUBTITLE": "Spécifiez les priorités qu'auront vos problèmes",
-            "ACTION_ADD": "Add new priority"
+            "ACTION_ADD": "Ajouter une priorité"
         },
         "PROJECT_VALUES_SEVERITIES": {
             "TITLE": "Sévérités des problèmes",
@@ -534,7 +534,7 @@
             "ADMIN": "Admin"
         },
         "NAVIGATION": {
-            "SECTION_TITLE": "Your projects",
+            "SECTION_TITLE": "Vos projets",
             "PLACEHOLDER_SEARCH": "Rechercher dans",
             "ACTION_CREATE_PROJECT": "Créer un projet",
             "TITLE_ACTION_IMPORT": "Importer un projet",
@@ -560,7 +560,7 @@
             "SECTION_NAME": "Supprimer le compte Taiga",
             "CONFIRM": "Etes-vous sûr de vouloir votre compte Taiga ?",
             "SUBTITLE": "Vous allez nous manquer :(",
-            "NEWSLETTER_LABEL_TEXT": "I don't wanna receive your newsletter anymore"
+            "NEWSLETTER_LABEL_TEXT": "Je ne veux plus recevoir votre newsletter"
         },
         "DELETE_PROJECT": {
             "TITLE": "Supprimer le projet",
@@ -702,7 +702,7 @@
             "BACKLOG_ORDER": "backlog order",
             "SPRINT_ORDER": "sprint order",
             "KANBAN_ORDER": "kanban order",
-            "TASKBOARD_ORDER": "taskboard order",
+            "TASKBOARD_ORDER": "trier le tableau des tâches",
             "US_ORDER": "us order"
         }
     },
@@ -733,6 +733,7 @@
             "INCREMENT_CLIENT": "Le nombre de points ajoutés par les exigences du client pour le sprint {{xval}} est {{yval}}"
         },
         "TAGS": {
+            "TOGGLE": "Toggle tags visibility",
             "SHOW": "Montrer les étiquettes",
             "HIDE": "Cacher les étiquettes"
         },
@@ -755,8 +756,10 @@
             "POINTS_PER_SPRINT": "points /<br />sprint"
         },
         "FILTERS": {
+            "TOGGLE": "Toggle filters visibility",
             "TITLE": "Filtres",
             "REMOVE": "Supprimer les filtres",
+            "HIDE": "Hide Filters",
             "SHOW": "Afficher les filtres",
             "FILTER_CATEGORY_STATUS": "Etat",
             "FILTER_CATEGORY_TAGS": "Labels"
@@ -806,7 +809,7 @@
         }
     },
     "TASK": {
-        "SECTION_NAME": "Task details",
+        "SECTION_NAME": "Détails de la tâche",
         "LINK_TASKBOARD": "Tableau des tâches",
         "TITLE_LINK_TASKBOARD": "Aller au tableau des tâches",
         "PLACEHOLDER_SUBJECT": "Entrez le sujet de la nouvelle tâche",
