@@ -6,8 +6,10 @@ div.wrapper
                 span.private(ng-if="::vm.project.get('is_private')", title="{{'PROJECT.PRIVATE' | translate}}")
                     include ../../../svg/lock.svg
             p.description {{vm.project.get('description')}}
+
             div.project-list-single-tags.tags-container(ng-if="::vm.project.get('tags').size")
-                div.tags-block(tg-colorize-tags="vm.project.get('tags')", tg-colorize-tags-type="backlog")
+                span.tag(style='border-left: 5px solid {{::tag.get("color")}};', tg-repeat="tag in ::vm.project.get('colorized_tags')")
+                    span.tag-name {{::tag.get('name')}}
 
         div.project-data
             section.timeline(ng-if="vm.project")

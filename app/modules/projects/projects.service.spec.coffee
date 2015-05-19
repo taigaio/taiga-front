@@ -87,15 +87,6 @@ describe "tgProjectsService", ->
 
         expect(result).to.be.true
 
-    it "getProjectBySlug", () ->
-        projectSlug = "project-slug"
-
-        mocks.resources.projects = {}
-        mocks.resources.projects.getProjectBySlug = sinon.stub()
-        mocks.resources.projects.getProjectBySlug.withArgs(projectSlug).returns(true)
-
-        expect(projectsService.getProjectBySlug(projectSlug)).to.be.true
-
     it "getProjectStats", () ->
         projectId = 3
 
@@ -104,6 +95,27 @@ describe "tgProjectsService", ->
         mocks.resources.projects.getProjectStats.withArgs(projectId).returns(true)
 
         expect(projectsService.getProjectStats(projectId)).to.be.true
+
+    it "getProjectBySlug", (done) ->
+        projectSlug = "project-slug"
+        project = Immutable.fromJS({id: 2, url: 'url-2', tags: ['xx', 'yy', 'aa'], tags_colors: {xx: "red", yy: "blue", aa: "white"}})
+
+        mocks.resources.projects = {}
+        mocks.resources.projects.getProjectBySlug = sinon.stub().promise()
+        mocks.resources.projects.getProjectBySlug.withArgs(projectSlug).resolve(project)
+
+        projectsService.getProjectBySlug(projectSlug).then (project) ->
+            expect(project.toJS()).to.be.eql(
+                {
+                    id: 2,
+                    url: 'url-2',
+                    tags: ['xx', 'yy', 'aa'],
+                    tags_colors: {xx: "red", yy: "blue", aa: "white"},
+                    colorized_tags: [{name: 'aa', color: 'white'}, {name: 'xx', color: 'red'}, {name: 'yy', color: 'blue'}]
+                }
+            )
+
+            done()
 
     it "getProjectsByUserId", (done) ->
         projectId = 3

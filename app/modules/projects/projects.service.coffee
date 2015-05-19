@@ -8,6 +8,8 @@ class ProjectsService extends taiga.Service
 
     getProjectBySlug: (projectSlug) ->
         return @rs.projects.getProjectBySlug(projectSlug)
+            .then (project) =>
+                return @._decorate(project)
 
     getProjectStats: (projectId) ->
         return @rs.projects.getProjectStats(projectId)
@@ -15,25 +17,24 @@ class ProjectsService extends taiga.Service
     getProjectsByUserId: (userId) ->
         return @rs.projects.getProjectsByUserId(userId)
             .then (projects) =>
-                return @._decorate(projects)
+                return projects.map @._decorate.bind(@)
 
-    _decorate: (projects) ->
-        return projects.map (project) =>
-            url = @projectUrl.get(project.toJS())
+    _decorate: (project) ->
+        url = @projectUrl.get(project.toJS())
 
-            project = project.set("url", url)
-            colorized_tags = []
+        project = project.set("url", url)
+        colorized_tags = []
 
-            if project.get("tags")
-                tags = project.get("tags").sort()
+        if project.get("tags")
+            tags = project.get("tags").sort()
 
-                colorized_tags = tags.map (tag) ->
-                    color = project.get("tags_colors").get(tag)
-                    return Immutable.fromJS({name: tag, color: color})
+            colorized_tags = tags.map (tag) ->
+                color = project.get("tags_colors").get(tag)
+                return Immutable.fromJS({name: tag, color: color})
 
-                project = project.set("colorized_tags", colorized_tags)
+            project = project.set("colorized_tags", colorized_tags)
 
-            return project
+        return project
 
     newProject: ->
         @lightboxFactory.create("tg-lb-create-project", {
