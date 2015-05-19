@@ -150,7 +150,7 @@
         },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "Atributo Personalizados",
-            "SAVE": "Guardar Atributo Personalizado",
+            "SAVE": "Guardar atributo personalizado",
             "EDIT": "Editar Atributo Personalizado",
             "DELETE": "Borrar atributos personalizados",
             "CONFIRM_DELETE": "Recuerda que todos los valores en este atributo personalizado serán borrados. </br>¿Estás seguro que desea continuar?"
@@ -243,12 +243,13 @@
         "SECTION_NAME": "adjuntos",
         "TITLE": "{{ fileName }} subido el {{ date }}",
         "DESCRIPTION": "Escribe una pequeña descripción",
+        "DEPRECATED": "(obsoleto)",
         "DEPRECATED_FILE": "¿Desactualizado?",
         "ADD": "Agrega nuevos adjunto",
         "MAX_FILE_SIZE": "[Tamaño Max. : {{maxFileSize}}]",
         "SHOW_DEPRECATED": "+ muestra adjuntos desactualizados",
         "HIDE_DEPRECATED": "- ocultar adjuntos obsoletos",
-        "COUNT_DEPRECATED": "({{ctrl.deprecatedAttachmentsCount }} obsoleto)",
+        "COUNT_DEPRECATED": "({{ counter }} obsoletos)\n",
         "MAX_UPLOAD_SIZE": "El tamaño máximo de subida es de {{maxFileSize}}",
         "DATE": "DD MMM YYYY [a las] hh:mm\n",
         "ERROR_UPLOAD_ATTACHMENT": "No hemos podido subir el fichero '{{fileName}}'. {{errorMessage}}",
@@ -443,7 +444,7 @@
             "ADD": "Añadir atributo personalizado",
             "EDIT": "Editar atributo personalizado",
             "DELETE": "Eliminar atributo personalizado",
-            "SAVE_TITLE": "Guardar Atributo Personalizado",
+            "SAVE_TITLE": "Guardar atributo personalizado",
             "CANCEL_TITLE": "Cancelar la creación",
             "SET_FIELD_NAME": "Escribe el nombre del atributo personalizado",
             "SET_FIELD_DESCRIPTION": "Escribe una descripción para el atributo personalizado",
@@ -940,7 +941,7 @@
             },
             "CONFIRM_DELETE": {
                 "TITLE": "Eliminar filtros personalizados",
-                "MESSAGE": "el atributo personalizado '{{customFilterName}}'"
+                "MESSAGE": "el filtro personalizado '{{customFilterName}}'"
             }
         },
         "TABLE": {
@@ -984,7 +985,7 @@
         "PLACEHOLDER_SEARCH": "Buscar...",
         "TITLE_ACTION_SEARCH": "buscar",
         "EMPTY_TITLE": "Parece que no se ha encontrado nada con tus criterios de búsqueda.",
-        "EMPTY_DESCRIPTION": "Prueba con otra pestaña de las de arriba o busque nuevamente"
+        "EMPTY_DESCRIPTION": "Prueba con otra pestaña de las de arriba o busca de nuevo"
     },
     "TEAM": {
         "SECTION_NAME": "Equipo",
@@ -999,7 +1000,7 @@
         "COLUMN_BUG_HUNTER": "Cazador de Bugs",
         "EXPLANATION_COLUMN_BUG_HUNTER": "Peticiones reportadas",
         "COLUMN_NIGHT_SHIFT": "Turno de noche",
-        "EXPLANATION_COLUMN_NIGHT_SHIFT": "Actividades cerradas",
+        "EXPLANATION_COLUMN_NIGHT_SHIFT": "Tareas cerradas",
         "COLUMN_TOTAL_POWER": "Potencia Total",
         "EXPLANATION_COLUMN_TOTAL_POWER": "Puntos Totales",
         "SECTION_TITLE_TEAM": "Equipo >",
