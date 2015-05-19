@@ -43,8 +43,10 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading,
 
         submit = debounce 2000, (event) =>
             event.preventDefault()
-
             target = angular.element(event.currentTarget)
+            prettyDate = $translate.instant("COMMON.PICKERDATE.FORMAT")
+
+            submitButton = $el.find(".submit-button")
             form = $el.find("form").checksley()
 
             if not form.validate()
@@ -57,13 +59,15 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading,
             broadcastEvent = null
 
             if createSprint
-                newSprint.estimated_start = moment(newSprint.estimated_start).format("YYYY-MM-DD")
-                newSprint.estimated_finish = moment(newSprint.estimated_finish).format("YYYY-MM-DD")
+                newSprint.estimated_start = moment(newSprint.estimated_start, prettyDate).format("YYYY-MM-DD")
+                newSprint.estimated_finish = moment(newSprint.estimated_finish,prettyDate).format("YYYY-MM-DD")
                 promise = $repo.create("milestones", newSprint)
                 broadcastEvent = "sprintform:create:success"
             else
-                newSprint.setAttr("estimated_start", moment(newSprint.estimated_start).format("YYYY-MM-DD"))
-                newSprint.setAttr("estimated_finish", moment(newSprint.estimated_finish).format("YYYY-MM-DD"))
+                newSprint.setAttr("estimated_start",
+                                  moment(newSprint.estimated_start, prettyDate).format("YYYY-MM-DD"))
+                newSprint.setAttr("estimated_finish",
+                                  moment(newSprint.estimated_finish, prettyDate).format("YYYY-MM-DD"))
                 promise = $repo.save(newSprint)
                 broadcastEvent = "sprintform:edit:success"
 
@@ -171,8 +175,6 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading,
                 $el.find(".last-sprint-name").addClass("disappear")
             else
                 $el.find(".last-sprint-name").removeClass("disappear")
-
-        submitButton = $el.find(".submit-button")
 
         $el.on "submit", "form", submit
 
