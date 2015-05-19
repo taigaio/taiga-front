@@ -135,6 +135,7 @@ Loader = () ->
 
             logRequest: () ->
                 requestCount++
+
             logResponse: () ->
                 requestCount--
                 lastResponseDate = new Date().getTime()
