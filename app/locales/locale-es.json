@@ -362,11 +362,13 @@
         },
         "PROJECT_VALUES_PRIORITIES": {
             "TITLE": "Prioridades de las peticiones",
-            "SUBTITLE": "Especifica las prioridades que podrán tener tus peticiones"
+            "SUBTITLE": "Especifica las prioridades que podrán tener tus peticiones",
+            "ACTION_ADD": "Añadir nueva prioridad"
         },
         "PROJECT_VALUES_SEVERITIES": {
             "TITLE": "Gravedad de las peticiones",
-            "SUBTITLE": "Especifica la gravedad que tendrán tus peticiones"
+            "SUBTITLE": "Especifica la gravedad que tendrán tus peticiones",
+            "ACTION_ADD": "Añadir nueva gravedad"
         },
         "PROJECT_VALUES_STATUS": {
             "TITLE": "Estado",
@@ -379,7 +381,7 @@
             "TITLE": "Tipos",
             "SUBTITLE": "Especifica los deferentes tipos posibles de peticiones que pueden existir.",
             "ISSUE_TITLE": "Tipos de la petición",
-            "ACTION_ADD": "Añadir nuevo {{objName}}"
+            "ACTION_ADD": "Añadir nuevo tipo"
         },
         "ROLES": {
             "SECTION_NAME": "Roles - {{projectName}}",

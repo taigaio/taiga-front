@@ -362,11 +362,13 @@
         },
         "PROJECT_VALUES_PRIORITIES": {
             "TITLE": "問題優先性",
-            "SUBTITLE": "指明你將遇到的問題優先程度"
+            "SUBTITLE": "指明你將遇到的問題優先程度",
+            "ACTION_ADD": "Add new priority"
         },
         "PROJECT_VALUES_SEVERITIES": {
             "TITLE": "問題急迫性",
-            "SUBTITLE": "指明你將遇到問題的嚴重程度"
+            "SUBTITLE": "指明你將遇到問題的嚴重程度",
+            "ACTION_ADD": "Add new severity"
         },
         "PROJECT_VALUES_STATUS": {
             "TITLE": "狀態",
@@ -379,7 +381,7 @@
             "TITLE": "類型",
             "SUBTITLE": "指定你的問題類型可能是",
             "ISSUE_TITLE": "問題類型",
-            "ACTION_ADD": "新增{{objName}}"
+            "ACTION_ADD": "Add new type"
         },
         "ROLES": {
             "SECTION_NAME": "角色- {{projectName}}",

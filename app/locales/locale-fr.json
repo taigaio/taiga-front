@@ -362,11 +362,13 @@
         },
         "PROJECT_VALUES_PRIORITIES": {
             "TITLE": "Priorités des problèmes",
-            "SUBTITLE": "Spécifiez les priorités qu'auront vos problèmes"
+            "SUBTITLE": "Spécifiez les priorités qu'auront vos problèmes",
+            "ACTION_ADD": "Add new priority"
         },
         "PROJECT_VALUES_SEVERITIES": {
             "TITLE": "Sévérités des problèmes",
-            "SUBTITLE": "Spécifiez les sévérités qu'auront vos problèmes"
+            "SUBTITLE": "Spécifiez les sévérités qu'auront vos problèmes",
+            "ACTION_ADD": "Add new severity"
         },
         "PROJECT_VALUES_STATUS": {
             "TITLE": "Statut",
@@ -379,7 +381,7 @@
             "TITLE": "Types",
             "SUBTITLE": "Spécifiez les priorités qu'auront vos bugs",
             "ISSUE_TITLE": "Types de problèmes",
-            "ACTION_ADD": "Ajouter un nouveau {{objName}}"
+            "ACTION_ADD": "Add new type"
         },
         "ROLES": {
             "SECTION_NAME": "Rôles - {{projectName}}",

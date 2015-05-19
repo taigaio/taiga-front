@@ -362,11 +362,13 @@
         },
         "PROJECT_VALUES_PRIORITIES": {
             "TITLE": "Pyyntöjen tärkeydet",
-            "SUBTITLE": "Määrittele tärkeydet pyynnöille"
+            "SUBTITLE": "Määrittele tärkeydet pyynnöille",
+            "ACTION_ADD": "Add new priority"
         },
         "PROJECT_VALUES_SEVERITIES": {
             "TITLE": "Pyyntöjen vakavuudet",
-            "SUBTITLE": "Määrittele pyyntöjen vakavuudet"
+            "SUBTITLE": "Määrittele pyyntöjen vakavuudet",
+            "ACTION_ADD": "Add new severity"
         },
         "PROJECT_VALUES_STATUS": {
             "TITLE": "Tila",
@@ -379,7 +381,7 @@
             "TITLE": "Tyypit",
             "SUBTITLE": "Määrittele pyyntöjen tyypit",
             "ISSUE_TITLE": "Pyyntöjen tyypit",
-            "ACTION_ADD": "Lisää uusi {{objName}}"
+            "ACTION_ADD": "Add new type"
         },
         "ROLES": {
             "SECTION_NAME": "Roolit - {{projectName}}",
