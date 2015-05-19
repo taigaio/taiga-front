@@ -293,7 +293,7 @@ init = ($log, $config, $rootscope, $auth, $events, $analytics, $translate) ->
     $rootscope.contribPlugins = @.taigaContribPlugins
     $rootscope.adminPlugins = _.where(@.taigaContribPlugins, {"type": "admin"})
 
-    $rootscope.$on "$translateLoadingEnd", (e, ctx) ->
+    $rootscope.$on "$translateChangeEnd", (e, ctx) ->
         lang = ctx.language
         i18nInit(lang, $translate)
 
