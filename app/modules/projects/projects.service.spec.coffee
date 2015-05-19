@@ -1,4 +1,4 @@
-describe "tgProjects", ->
+describe "tgProjectsService", ->
     projectsService = provide = $rootScope = null
     $q = null
     mocks = {}
@@ -79,21 +79,13 @@ describe "tgProjects", ->
             {"id": 12},
         ]
 
-        thenStub = sinon.stub()
-
         mocks.resources.projects = {}
         mocks.resources.projects.bulkUpdateOrder = sinon.stub()
-        mocks.resources.projects.bulkUpdateOrder.withArgs(projects_order).returns({
-            then: thenStub
-        })
+        mocks.resources.projects.bulkUpdateOrder.withArgs(projects_order).returns(true)
 
-        projectsService.fetchProjects = sinon.stub()
+        result = projectsService.bulkUpdateProjectsOrder(projects_order)
 
-        projectsService.bulkUpdateProjectsOrder(projects_order)
-
-        thenStub.callArg(0)
-
-        expect(projectsService.fetchProjects).to.have.been.calledOnce
+        expect(result).to.be.true
 
     it "getProjectBySlug", () ->
         projectSlug = "project-slug"

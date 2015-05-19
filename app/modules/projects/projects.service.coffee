@@ -41,7 +41,6 @@ class ProjectsService extends taiga.Service
         })
 
     bulkUpdateProjectsOrder: (sortData) ->
-        @rs.projects.bulkUpdateOrder(sortData).then =>
-            @.fetchProjects()
+        return @rs.projects.bulkUpdateOrder(sortData)
 
 angular.module("taigaProjects").service("tgProjectsService", ProjectsService)

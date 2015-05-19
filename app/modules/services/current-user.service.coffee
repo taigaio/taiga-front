@@ -29,6 +29,10 @@ class CurrentUserService
 
         return @._loadUserInfo()
 
+    bulkUpdateProjectsOrder: (sortData) ->
+        @projectsService.bulkUpdateProjectsOrder(sortData).then () =>
+            @._loadProjects()
+
     _loadProjects: () ->
         return @projectsService.getProjectsByUserId(@._user.get("id"))
             .then (projects) =>

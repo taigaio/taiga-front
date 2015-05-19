@@ -1,4 +1,4 @@
-SortProjectsDirective = (projectsService) ->
+SortProjectsDirective = (currentUserService) ->
     link = (scope, el, attrs, ctrl) ->
         itemEl = null
 
@@ -8,6 +8,7 @@ SortProjectsDirective = (projectsService) ->
             axis: "y"
             opacity: .95
             placeholder: 'placeholder'
+            containment: $(".master")
         })
 
         el.on "sortstop", (event, ui) ->
@@ -24,7 +25,7 @@ SortProjectsDirective = (projectsService) ->
             for value, index in sorted_project_ids
                 sortData.push({"project_id": value, "order":index})
 
-            projectsService.bulkUpdateProjectsOrder(sortData)
+            currentUserService.bulkUpdateProjectsOrder(sortData)
 
     directive = {
         scope: {
