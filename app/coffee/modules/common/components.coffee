@@ -602,9 +602,9 @@ EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading,
             if isEditable()
                 $el.find('.view-description .edit').show()
                 $el.find('.view-description .us-content').addClass('editable')
-                $scope.noDescriptionMsg = noDescriptionMegEditMode
+                $scope.noDescriptionMsg = $compile(noDescriptionMegEditMode)($scope)
             else
-                $scope.noDescriptionMsg = noDescriptionMegReadMode
+                $scope.noDescriptionMsg = $compile(noDescriptionMegReadMode)($scope)
 
         $scope.$on "$destroy", ->
             $el.off()
