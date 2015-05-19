@@ -8,7 +8,6 @@ SortProjectsDirective = (currentUserService) ->
             axis: "y"
             opacity: .95
             placeholder: 'placeholder'
-            containment: $(".master")
         })
 
         el.on "sortstop", (event, ui) ->
