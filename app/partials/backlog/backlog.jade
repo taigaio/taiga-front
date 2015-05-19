@@ -21,15 +21,15 @@ div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
                     span.icon.icon-move
                     span.text(translate="BACKLOG.MOVE_US_TO_CURRENT_SPRINT")
                 a.trans-button(href="",
-                               title="{{'BACKLOG.SHOW_FILTERS' | translate}}",
+                               title="{{'BACKLOG.FILTERS.TOGGLE' | translate}}",
                                id="show-filters-button")
                     span.icon.icon-filter
-                    span.text(translate="BACKLOG.SHOW_FILTERS") Show Filters
+                    span.text(translate="BACKLOG.FILTERS.SHOW") Show Filters
                 a.trans-button(href="",
-                               title="{{'BACKLOG.SHOW_TAGS' | translate}}",
+                               title="{{'BACKLOG.TAGS.TOGGLE' | translate}}",
                                id="show-tags")
                     span.icon.icon-tag
-                    span.text(translate="BACKLOG.SHOW_TAGS")
+                    span.text(translate="BACKLOG.TAGS.SHOW")
             include ../includes/components/addnewus
 
         section.backlog-table(ng-class="{'hidden': !visibleUserstories.length}")

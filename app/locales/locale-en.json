@@ -735,6 +735,7 @@
             "INCREMENT_CLIENT": "Incremented points by client requirements for sprint {{xval}} is {{yval}}"
         },
         "TAGS": {
+            "TOGGLE": "Toggle tags visibility",
             "SHOW": "Show tags",
             "HIDE": "Hide tags"
         },
@@ -757,8 +758,10 @@
             "POINTS_PER_SPRINT": "points /<br />sprint"
         },
         "FILTERS": {
+            "TOGGLE": "Toggle filters visibility",
             "TITLE": "Filters",
             "REMOVE": "Remove Filters",
+            "HIDE": "Hide Filters",
             "SHOW": "Show Filters",
             "FILTER_CATEGORY_STATUS": "Status",
             "FILTER_CATEGORY_TAGS": "Tags"

@@ -665,10 +665,10 @@ BacklogDirective = ($repo, $rootscope, $translate) ->
         sidebar.toggleClass("active")
         target.toggleClass("active")
 
-        removeText = $translate.instant("BACKLOG.FILTERS.REMOVE")
+        hideText = $translate.instant("BACKLOG.FILTERS.HIDE")
         showText = $translate.instant("BACKLOG.FILTERS.SHOW")
 
-        toggleText(target.find(".text"), [removeText, showText])
+        toggleText(target.find(".text"), [hideText, showText])
 
         if !sidebar.hasClass("active")
             $ctrl.resetFilters()
