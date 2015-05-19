@@ -9,20 +9,32 @@ class CurrentUserService
     ]
 
     constructor: (@projectsService, @storageService) ->
-        @._user = Immutable.Map()
+        @._user = null
         @._projects = Immutable.Map()
         @._projectsById = Immutable.Map()
 
         taiga.defineImmutableProperty @, "projects", () => return @._projects
         taiga.defineImmutableProperty @, "projectsById", () => return @._projectsById
 
+    isAuthenticated: ->
+        if @.getUser() != null
+            return true
+        return false
+
     getUser: () ->
-        if !@._user.size
+        if !@._user
             userData = @storageService.get("userInfo")
-            userData = Immutable.fromJS(userData)
-            @.setUser(userData) if userData
+
+            if userData
+                userData = Immutable.fromJS(userData)
+                @.setUser(userData)
 
         return @._user
+
+    removeUser: () ->
+        @._user = null
+        @._projects = Immutable.Map()
+        @._projectsById = Immutable.Map()
 
     setUser: (user) ->
         @._user = user

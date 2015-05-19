@@ -3,6 +3,7 @@ NavigationBarDirective = (currentUserService) ->
         scope.vm = {}
 
         taiga.defineImmutableProperty(scope.vm, "projects", () -> currentUserService.projects.get("recents"))
+        taiga.defineImmutableProperty(scope.vm, "isAuthenticated", () -> currentUserService.isAuthenticated())
 
     directive = {
         templateUrl: "navigation-bar/navigation-bar.html"

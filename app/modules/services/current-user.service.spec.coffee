@@ -88,3 +88,20 @@ describe "tgCurrentUserService", ->
             expect(currentUserService._loadProjects).to.be.callOnce
 
             done()
+
+    it "is authenticated", () ->
+        currentUserService.getUser = sinon.stub()
+        currentUserService.getUser.returns({})
+
+        expect(currentUserService.isAuthenticated()).to.be.true
+
+        currentUserService.getUser.returns(null)
+
+        expect(currentUserService.isAuthenticated()).to.be.false
+
+    it "remove user", () ->
+        currentUserService._user = true
+
+        currentUserService.removeUser()
+
+        expect(currentUserService._user).to.be.null

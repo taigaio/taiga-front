@@ -17,6 +17,7 @@ describe "navigationBarDirective", () ->
     _mocksCurrentUserService = () ->
         mocks.currentUserService = {
             projects: projects
+            isAuthenticated: sinon.stub()
         }
 
         provide.value "tgCurrentUserService", mocks.currentUserService
@@ -66,3 +67,7 @@ describe "navigationBarDirective", () ->
         elm = createDirective()
         scope.$apply()
         expect(elm.isolateScope().vm.projects.size).to.be.equal(3)
+
+        mocks.currentUserService.isAuthenticated.returns(true)
+
+        expect(elm.isolateScope().vm.isAuthenticated).to.be.true
