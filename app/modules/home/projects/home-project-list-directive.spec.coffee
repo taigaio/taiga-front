@@ -1,21 +1,31 @@
 describe "homeProjectListDirective", () ->
     scope = compile = provide = null
-    mockTgProjectsService = null
+    mocks = {}
     template = "<div tg-home-project-list></div>"
-    recents = []
+    projects = Immutable.fromJS({
+        recents: [
+            {id: 1},
+            {id: 2},
+            {id: 3}
+        ]
+    })
 
     createDirective = () ->
         elm = compile(template)(scope)
         return elm
 
-    _mockTgProjectsService = () ->
-        mockTgProjectsService = {
-            newProject: sinon.stub()
-            currentUserProjects: {
-                get: sinon.stub()
-            }
+    _mockTgCurrentUserService = () ->
+        mocks.currentUserService = {
+            projects: projects
         }
-        provide.value "tgProjectsService", mockTgProjectsService
+
+        provide.value "tgCurrentUserService", mocks.currentUserService
+
+    _mockTgProjectsService = () ->
+        mocks.projectsService = {
+            newProject: sinon.stub()
+        }
+        provide.value "tgProjectsService", mocks.projectsService
 
     _mockTranslateFilter = () ->
         mockTranslateFilter = (value) ->
@@ -25,6 +35,7 @@ describe "homeProjectListDirective", () ->
     _mocks = () ->
         module ($provide) ->
             provide = $provide
+            _mockTgCurrentUserService()
             _mockTgProjectsService()
             _mockTranslateFilter()
             return null
@@ -49,17 +60,14 @@ describe "homeProjectListDirective", () ->
         ])
 
     it "home project list directive scope content", () ->
-        mockTgProjectsService.currentUserProjects.get
-            .withArgs("recents")
-            .returns(recents)
-
         elm = createDirective()
         scope.$apply()
-        expect(elm.isolateScope().vm.projects.size).to.be.equal(2)
+        expect(elm.isolateScope().vm.projects.size).to.be.equal(3)
 
     it "home project list directive newProject", () ->
         elm = createDirective()
         scope.$apply()
-        expect(mockTgProjectsService.newProject.callCount).to.be.equal(0)
+
+        expect(mocks.projectsService.newProject.callCount).to.be.equal(0)
         elm.isolateScope().vm.newProject()
-        expect(mockTgProjectsService.newProject.callCount).to.be.equal(1)
+        expect(mocks.projectsService.newProject.callCount).to.be.equal(1)

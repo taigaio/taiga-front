@@ -1,90 +1,36 @@
 describe "tgHome", ->
-    homeService = provide = timeout = null
+    homeService = provide = null
     mocks = {}
 
     _mockResources = () ->
         mocks.resources = {}
 
-        mocks.resources.userstories = {
-            listInAllProjects: sinon.stub()
-        }
+        mocks.resources.userstories = {}
+        mocks.resources.tasks = {}
+        mocks.resources.issues = {}
 
-        mocks.resources.tasks = {
-            listInAllProjects: sinon.stub()
-        }
-
-        mocks.resources.issues = {
-            listInAllProjects: sinon.stub()
-        }
-
-        paramsAssignedTo = {
-            status__is_closed: false
-            assigned_to: 1
-        }
-
-        paramsWatching = {
-            status__is_closed: false
-            watchers: 1
-        }
-
-        mocks.thenStubAssignedToUserstories = sinon.stub()
-        mocks.resources.userstories.listInAllProjects.withArgs(paramsAssignedTo).returns({
-            then: mocks.thenStubAssignedToUserstories
-        })
-
-        mocks.thenStubAssignedToTasks = sinon.stub()
-        mocks.resources.tasks.listInAllProjects.withArgs(paramsAssignedTo).returns({
-            then: mocks.thenStubAssignedToTasks
-        })
-
-        mocks.thenStubAssignedToIssues = sinon.stub()
-        mocks.resources.issues.listInAllProjects.withArgs(paramsAssignedTo).returns({
-            then: mocks.thenStubAssignedToIssues
-        })
-
-
-        mocks.thenStubWatchingUserstories = sinon.stub()
-        mocks.resources.userstories.listInAllProjects.withArgs(paramsWatching).returns({
-            then: mocks.thenStubWatchingUserstories
-        })
-
-        mocks.thenStubWatchingTasks = sinon.stub()
-        mocks.resources.tasks.listInAllProjects.withArgs(paramsWatching).returns({
-            then: mocks.thenStubWatchingTasks
-        })
-
-        mocks.thenStubWatchingIssues = sinon.stub()
-        mocks.resources.issues.listInAllProjects.withArgs(paramsWatching).returns({
-            then: mocks.thenStubWatchingIssues
-        })
+        mocks.resources.userstories.listInAllProjects = sinon.stub().promise()
+        mocks.resources.tasks.listInAllProjects = sinon.stub().promise()
+        mocks.resources.issues.listInAllProjects = sinon.stub().promise()
 
         provide.value "tgResources", mocks.resources
-
-    _mockProjectUrl = () ->
-        mocks.projectUrl = {get: sinon.stub()}
-        mocks.projectUrl.get = (project) ->
-            return "url-" + project.id
-
-        provide.value "$projectUrl", mocks.projectUrl
-
-    _mockAuth = () ->
-        mocks.auth = {
-            getUser: sinon.stub()
-        }
-
-        mocks.auth.getUser.returns(id: 1)
-
-        provide.value "$tgAuth", mocks.auth
 
     _mockTgNavUrls = () ->
         mocks.tgNavUrls = {
             resolve: sinon.stub()
         }
+
         provide.value "$tgNavUrls", mocks.tgNavUrls
 
+    _mockProjectsService = () ->
+        mocks.projectsService = {
+            getProjectsByUserId: sinon.stub().promise()
+        }
+
+        provide.value "tgProjectsService", mocks.projectsService
+
     _inject = (callback) ->
-        inject (_$timeout_, _tgHomeService_) ->
-            timeout = _$timeout_
+        inject (_tgHomeService_) ->
             homeService = _tgHomeService_
             callback() if callback
 
@@ -92,9 +38,9 @@ describe "tgHome", ->
         module ($provide) ->
             provide = $provide
             _mockResources()
-            _mockProjectUrl()
-            _mockAuth()
             _mockTgNavUrls()
+            _mockProjectsService()
+
             return null
 
     _setup = ->
@@ -105,80 +51,93 @@ describe "tgHome", ->
         _setup()
         _inject()
 
-    describe "fetch items", ->
-        it "work in progress filled", () ->
-            mocks.thenStubAssignedToUserstories.callArg(0, Immutable.fromJS([{"id": 1}]))
-            mocks.thenStubAssignedToTasks.callArg(0, Immutable.fromJS([{"id": 2}]))
-            mocks.thenStubAssignedToIssues.callArg(0, Immutable.fromJS([{"id": 3}]))
-            mocks.thenStubWatchingUserstories.callArg(0, Immutable.fromJS([{"id": 4}]))
-            mocks.thenStubWatchingTasks.callArg(0, Immutable.fromJS([{"id": 5}]))
-            mocks.thenStubWatchingIssues.callArg(0, Immutable.fromJS([{"id": 6}]))
+    it "get work in progress by user", (done) ->
+        userId = 3
 
-            timeout.flush()
-            expect(homeService.workInProgress.toJS()).to.be.eql({
-                assignedTo: {
-                    userStories: [{"id": 1}]
-                    tasks: [{"id": 2}]
-                    issues: [{"id": 3}]
-                }
-                watching: {
-                    userStories: [{"id": 4}]
-                    tasks: [{"id": 5}]
-                    issues: [{"id": 6}]
-                }
-            })
+        mocks.projectsService.getProjectsByUserId
+            .withArgs(userId)
+            .resolve(Immutable.fromJS([
+                {id: 1, name: "fake1", slug: "project-1"},
+                {id: 2, name: "fake2", slug: "project-2"}
+            ]))
 
-        it "_inProgress change to false when tgResources end", () ->
-            expect(homeService._inProgress).to.be.true
-            timeout.flush()
-            expect(homeService._inProgress).to.be.false
+        mocks.resources.userstories.listInAllProjects
+            .resolve(Immutable.fromJS([{id: 1, ref: 1, project: "1"}]))
 
-        it "project info filled", () ->
-            duty = {
-                id: 66
-                ref: 123
-                project: 1
-            }
+        mocks.resources.tasks.listInAllProjects
+            .resolve(Immutable.fromJS([{id: 2, ref: 2, project: "1"}]))
 
-            mocks.thenStubAssignedToUserstories.callArg(0, Immutable.fromJS([duty]))
-            mocks.thenStubAssignedToTasks.callArg(0, Immutable.fromJS([]))
-            mocks.thenStubAssignedToIssues.callArg(0, Immutable.fromJS([]))
-            mocks.thenStubWatchingUserstories.callArg(0, Immutable.fromJS([]))
-            mocks.thenStubWatchingTasks.callArg(0, Immutable.fromJS([]))
-            mocks.thenStubWatchingIssues.callArg(0, Immutable.fromJS([]))
-            timeout.flush()
+        mocks.resources.issues.listInAllProjects
+            .resolve(Immutable.fromJS([{id: 3, ref: 3, project: "1"}]))
 
-            projectsById = {
-                get: () -> Immutable.fromJS({
-                    name: "Testing project"
-                    slug: "testing-project"
+        # mock urls
+        mocks.tgNavUrls.resolve
+            .withArgs("project-userstories-detail", {project: "project-1", ref: 1})
+            .returns("/testing-project/us/1")
+
+        mocks.tgNavUrls.resolve
+            .withArgs("project-tasks-detail", {project: "project-1", ref: 2})
+            .returns("/testing-project/tasks/1")
+
+        mocks.tgNavUrls.resolve
+            .withArgs("project-issues-detail", {project: "project-1", ref: 3})
+            .returns("/testing-project/issues/1")
+
+        homeService.getWorkInProgress(userId)
+            .then (workInProgress) ->
+                expect(workInProgress.toJS()).to.be.eql({
+                    assignedTo: {
+                        userStories: [{
+                            id: 1,
+                            ref: 1,
+                            project: '1',
+                            url: '/testing-project/us/1',
+                            projectName: 'fake1',
+                            _name: 'userstories'
+                        }]
+                        tasks: [{
+                            id: 2,
+                            ref: 2,
+                            project: '1',
+                            url: '/testing-project/tasks/1',
+                            projectName: 'fake1',
+                            _name: 'tasks'
+                        }]
+                        issues: [{
+                            id: 3,
+                            ref: 3,
+                            project: '1',
+                            url: '/testing-project/issues/1',
+                            projectName: 'fake1',
+                            _name: 'issues'
+                        }]
+                    }
+                    watching: {
+                        userStories: [{
+                            id: 1,
+                            ref: 1,
+                            project: '1',
+                            url: '/testing-project/us/1',
+                            projectName: 'fake1',
+                            _name: 'userstories'
+                        }]
+                        tasks: [{
+                            id: 2,
+                            ref: 2,
+                            project: '1',
+                            url: '/testing-project/tasks/1',
+                            projectName: 'fake1',
+                            _name: 'tasks'
+                        }]
+                        issues: [{
+                            id: 3,
+                            ref: 3,
+                            project: '1',
+                            url: '/testing-project/issues/1',
+                            projectName: 'fake1',
+                            _name: 'issues'
+                        }]
+                    }
                 })
-            }
 
-            mocks.tgNavUrls.resolve
-                .withArgs("project-userstories-detail", {project: "testing-project", ref: 123})
-                .returns("/testing-project/us/123")
-
-            homeService.attachProjectInfoToWorkInProgress(projectsById)
-
-            expect(homeService.workInProgress.toJS()).to.be.eql({
-                assignedTo: {
-                    userStories: [
-                        {
-                            id: 66
-                            _name: "userstories"
-                            ref: 123
-                            project: 1
-                            url: "/testing-project/us/123"
-                            projectName: "Testing project"
-                        }
-                    ]
-                    tasks: []
-                    issues: []
-                }
-                watching: {
-                    userStories: []
-                    tasks: []
-                    issues: []
-                }
-            })
+                done()

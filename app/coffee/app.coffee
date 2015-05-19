@@ -40,7 +40,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
              $compileProvider, $translateProvider) ->
     $routeProvider.when("/",
         {
-            templateUrl: "home/home-page.html",
+            templateUrl: "home/home.html",
             access: {
                 requiresLogin: true
             },
@@ -364,6 +364,10 @@ init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $na
     $rootscope.$on "$translateChangeEnd", (e, ctx) ->
         lang = ctx.language
         i18nInit(lang, $translate)
+
+    # bluebird
+    Promise.setScheduler (cb) ->
+        $rootscope.$evalAsync(cb)
 
     # Load user
     if $auth.isAuthenticated()

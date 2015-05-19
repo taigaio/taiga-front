@@ -1,32 +1,45 @@
 describe "dropdownProjectListDirective", () ->
     scope = compile = provide = null
-    mockTgProjectsService = null
+    mocks = {}
     template = "<div tg-dropdown-project-list></div>"
     recents = []
 
-    createDirective = () ->
-        elm = compile(template)(scope)
-        return elm
-
-    _mockTgProjectsService = () ->
-        mockTgProjectsService = {
-            newProject: sinon.stub()
-            currentUserProjects: {
-                get: sinon.stub()
-            }
-        }
-        provide.value "tgProjectsService", mockTgProjectsService
+    projects = Immutable.fromJS({
+        recents: [
+            {id: 1},
+            {id: 2},
+            {id: 3}
+        ]
+    })
 
     _mockTranslateFilter = () ->
         mockTranslateFilter = (value) ->
             return value
         provide.value "translateFilter", mockTranslateFilter
 
+    createDirective = () ->
+        elm = compile(template)(scope)
+        return elm
+
+    _mockTgProjectsService = () ->
+        mocks.projectsService = {
+            newProject: sinon.stub()
+        }
+        provide.value "tgProjectsService", mocks.projectsService
+
+    _mockTgCurrentUserService = () ->
+        mocks.currentUserService = {
+            projects: projects
+        }
+        provide.value "tgCurrentUserService", mocks.currentUserService
+
     _mocks = () ->
         module ($provide) ->
             provide = $provide
             _mockTgProjectsService()
+            _mockTgCurrentUserService()
             _mockTranslateFilter()
+
             return null
 
     beforeEach ->
@@ -39,20 +52,7 @@ describe "dropdownProjectListDirective", () ->
             scope = $rootScope.$new()
             compile = $compile
 
-        recents = Immutable.fromJS([
-            {
-                id:1
-            },
-            {
-                id: 2
-            }
-        ])
-
     it "dropdown project list directive scope content", () ->
-        mockTgProjectsService.currentUserProjects.get
-            .withArgs("recents")
-            .returns(recents)
-
         elm = createDirective()
         scope.$apply()
-        expect(elm.isolateScope().vm.projects.size).to.be.equal(2)
+        expect(elm.isolateScope().vm.projects.size).to.be.equal(3)

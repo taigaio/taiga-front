@@ -36,15 +36,21 @@ class AuthService extends taiga.Service
                  "$tgHttp",
                  "$tgUrls",
                  "$tgConfig",
-                 "$translate"]
+                 "$translate",
+                 "tgCurrentUserService"]
 
-    constructor: (@rootscope, @storage, @model, @rs, @http, @urls, @config, @translate) ->
+    constructor: (@rootscope, @storage, @model, @rs, @http, @urls, @config, @translate, @currentUserService) ->
         super()
         userModel = @.getUser()
         @.setUserdata(userModel)
 
     setUserdata: (userModel) ->
-        @.userData = Immutable.fromJS(userModel.getAttrs())
+        if userModel
+            @.userData = Immutable.fromJS(userModel.getAttrs())
+            @currentUserService.setUser(@.userData)
+        else
+            @.userData = null
+
 
     _setLocales: ->
         lang = @rootscope.user.lang || @config.get("defaultLanguage") || "en"
@@ -67,6 +73,7 @@ class AuthService extends taiga.Service
         @rootscope.auth = user
         @storage.set("userInfo", user.getAttrs())
         @rootscope.user = user
+
         @.setUserdata(user)
 
         @._setLocales()

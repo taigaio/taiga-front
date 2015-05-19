@@ -18,7 +18,7 @@ module.exports = function(config) {
       'karma.app.conf.js',
       'dist/js/libs.js',
       'node_modules/angular-mocks/angular-mocks.js',
-      'node_modules/bluebird/js/browser/bluebird.js',
+      'vendor/bluebird/js/browser/bluebird.js',
       'test-utils.js',
       'dist/js/app.js',
       'dist/js/templates.js',

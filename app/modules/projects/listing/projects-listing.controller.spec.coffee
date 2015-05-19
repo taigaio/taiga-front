@@ -4,23 +4,29 @@ describe "ProjectsListingController", ->
     controller = null
     mocks = {}
 
-    projects = Immutable.fromJS([
-        {id: 1},
-        {id: 2},
-        {id: 3}
-    ])
+    projects = Immutable.fromJS({
+        all: [
+            {id: 1},
+            {id: 2},
+            {id: 3}
+        ]
+    })
+
+    _mockCurrentUserService = () ->
+        stub = sinon.stub()
+
+        mocks.currentUserService = {
+            projects: projects
+        }
+
+        provide.value "tgCurrentUserService", mocks.currentUserService
 
     _mockProjectsService = () ->
         stub = sinon.stub()
 
         mocks.projectsService = {
-            currentUserProjects: {
-                get: stub
-            },
             newProject: sinon.stub()
         }
-
-        stub.withArgs("all").returns(projects)
 
         provide.value "tgProjectsService", mocks.projectsService
 
@@ -28,6 +34,7 @@ describe "ProjectsListingController", ->
         module ($provide) ->
             provide = $provide
             _mockProjectsService()
+            _mockCurrentUserService()
 
             return null
 
@@ -43,7 +50,7 @@ describe "ProjectsListingController", ->
         pageCtrl = controller "ProjectsListing",
             $scope: {}
 
-        expect(pageCtrl.projects).to.be.equal(projects)
+        expect(pageCtrl.projects).to.be.equal(projects.get('all'))
 
     it "new project", () ->
         pageCtrl = controller "ProjectsListing",

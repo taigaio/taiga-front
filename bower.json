@@ -79,7 +79,8 @@
     "angular-translate-interpolation-messageformat": "~2.6.1",
     "ngInfiniteScroll": "1.0.0",
     "eventemitter2": "~0.4.14",
-    "immutable": "~3.7.2"
+    "immutable": "~3.7.2",
+    "bluebird": "~2.9.25"
   },
   "resolutions": {
     "lodash": "~2.4.1",

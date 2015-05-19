@@ -2,21 +2,9 @@ taiga = @.taiga
 groupBy = @.taiga.groupBy
 
 class ProjectsService extends taiga.Service
-    @.$inject = ["tgResources", "$tgAuth", "$projectUrl", "tgLightboxFactory"]
+    @.$inject = ["tgResources", "$projectUrl", "tgLightboxFactory"]
 
-    constructor: (@rs, @auth, @projectUrl, @lightboxFactory) ->
-        @._currentUserProjects = Immutable.Map()
-        @._currentUserProjectsById = Immutable.Map()
-        @._inProgress = false
-        @._currentUserProjectsPromise = null
-
-        taiga.defineImmutableProperty @, "currentUserProjects", () => return @._currentUserProjects
-        taiga.defineImmutableProperty @, "currentUserProjectsById", () => return @._currentUserProjectsById
-
-        @.fetchProjects()
-
-    getCurrentUserProjects: ->
-        return @._currentUserProjectsPromise
+    constructor: (@rs, @projectUrl, @lightboxFactory) ->
 
     getProjectBySlug: (projectSlug) ->
         return @rs.projects.getProjectBySlug(projectSlug)
@@ -47,24 +35,6 @@ class ProjectsService extends taiga.Service
 
             return project
 
-    fetchProjects: ->
-        if not @._inProgress
-            @._inProgress = true
-
-            @._currentUserProjectsPromise = @.getProjectsByUserId(@auth.userData.get("id"))
-            @._currentUserProjectsPromise.then (projects) =>
-                @._currentUserProjects = @._currentUserProjects.set("all", projects)
-                @._currentUserProjects = @._currentUserProjects.set("recents", projects.slice(0, 10))
-
-                @._currentUserProjectsById = Immutable.fromJS(groupBy(projects.toJS(), (p) -> p.id))
-
-                return @.projects
-
-            @._currentUserProjectsPromise.finally =>
-                @._inProgress = false
-
-        return @._currentUserProjectsPromise
-
     newProject: ->
         @lightboxFactory.create("tg-lb-create-project", {
             "class": "wizard-create-project"
@@ -74,5 +44,4 @@ class ProjectsService extends taiga.Service
         @rs.projects.bulkUpdateOrder(sortData).then =>
             @.fetchProjects()
 
-angular.module("taigaProjects").service("tgProjectsService
-", ProjectsService)
+angular.module("taigaProjects").service("tgProjectsService", ProjectsService)

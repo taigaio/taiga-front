@@ -105,7 +105,7 @@ Loader = () ->
 
                     clearInterval(intervalAuto)
                     clearTimeout(timeoutAuto)
-            ), 200
+            ), 50
 
         start = () ->
             startLoadTime = new Date().getTime()

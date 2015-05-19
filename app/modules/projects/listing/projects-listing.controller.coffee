@@ -1,10 +1,11 @@
 class ProjectsListingController
     @.$inject = [
-        "tgProjectsService"
+        "tgCurrentUserService",
+        "tgProjectsService",
     ]
 
-    constructor: (@projectsService) ->
-        taiga.defineImmutableProperty(@, "projects", () => @projectsService.currentUserProjects.get("all"))
+    constructor: (@currentUserService, @projectsService) ->
+        taiga.defineImmutableProperty(@, "projects", () => @currentUserService.projects.get("all"))
 
     newProject: ->
         @projectsService.newProject()
