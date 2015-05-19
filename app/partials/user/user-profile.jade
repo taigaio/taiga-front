@@ -17,24 +17,28 @@ div.wrapper(tg-user-profile, ng-controller="UserSettingsController as ctrl",
                         .image-container
                             img.avatar(ng-src="{{user.big_photo}}" alt="avatar")
                             .overlay.hidden
-                                img.loading-spinner(src="/svg/spinner-circle.svg", alt="{{'COMMON.LOADING' | translate}}")
+                                img.loading-spinner(src="/svg/spinner-circle.svg",
+                                                    alt="{{'COMMON.LOADING' | translate}}")
                         input(type="file", id="avatar-field", class="hidden",
                             tg-avatar-model="avatarAttachment")
                         p(translate="USER_PROFILE.IMAGE_HELP")
                             span.size-info.hidden(tg-bo-html="maxFileSizeMsg")
-                        a.button-green.change.js-change-avatar(title="{{'USER_PROFILE.CHANGE_PHOTO'}} + ' ' + maxFileSizeMsg", translate="USER_PROFILE.ACTION_CHANGE_IMAGE")
+                        a.button-green.change.js-change-avatar(translate="USER_PROFILE.ACTION_CHANGE_IMAGE",
+                                      title="{{'USER_PROFILE.CHANGE_PHOTO' | translate}} {{maxFileSizeMsg}}")
                         a.use-gravatar(translate="USER_PROFILE.ACTION_USE_GRAVATAR")
 
                 div.data
                     fieldset
                         label(for="email", translate="USER_PROFILE.FIELD.USERNAME")
-                        input(type="text", name="username", id="username", placeholder="{{'USER_PROFILE.FIELD.USERNAME' | translate}}",
-                            ng-model="user.username", data-required="true", data-maxlength="255",
-                            data-regexp="^[\\w.-]+$")
+                        input(type="text", name="username", id="username",
+                              placeholder="{{'USER_PROFILE.FIELD.USERNAME' | translate}}",
+                              ng-model="user.username", data-required="true", data-maxlength="255",
+                              data-regexp="^[\\w.-]+$")
 
                     fieldset
                         label(for="email", translate="USER_PROFILE.FIELD.EMAIL")
-                        input(type="text", name="email", id="email", placeholder="{{'USER_PROFILE.FIELD.EMAIL' | translate}}",
+                        input(type="text", name="email", id="email",
+                              placeholder="{{'USER_PROFILE.FIELD.EMAIL' | translate}}",
                               ng-model="user.email", data-type="email", data-required="true",
                               data-maxlength="255")
 
@@ -47,17 +51,20 @@ div.wrapper(tg-user-profile, ng-controller="UserSettingsController as ctrl",
 
                     fieldset
                         label(for="full-name", translate="USER_PROFILE.FIELD.LANGUAGE")
-                        select(ng-model="lang", ng-options="locale.code as locale.name for locale in locales")
+                        select(ng-model="lang",
+                               ng-options="locale.code as locale.name for locale in locales")
                             option(value="", translate="USER_PROFILE.FIELD.LANGUAGE_DEFAULT")
 
                     fieldset
                         label(for="bio", translate="USER_PROFILE.FIELD.BIO")
-                        textarea(name="bio", id="bio", placeholder="{{'USER_PROFILE.FIELD.PLACEHOLDER_BIO' | translate}}",
-                                 ng-model="user.bio")
+                        textarea(name="bio", id="bio", ng-model="user.bio",
+                                 placeholder="{{'USER_PROFILE.FIELD.PLACEHOLDER_BIO' | translate}}")
 
             fieldset.submit
-                button.button-green.submit-button(type="submit", title="{{'COMMON.SAVE' | translate}}", translate="COMMON.SAVE")
+                button.button-green.submit-button(type="submit", title="{{'COMMON.SAVE' | translate}}",
+                                                  translate="COMMON.SAVE")
                 a.delete-account(href="", title="{{'USER_PROFILE.ACTION_DELETE_ACCOUNT' | translate}}",
-                                 ng-click="ctrl.openDeleteLightbox()", translate="USER_PROFILE.ACTION_DELETE_ACCOUNT")
+                                 ng-click="ctrl.openDeleteLightbox()",
+                                 translate="USER_PROFILE.ACTION_DELETE_ACCOUNT")
 
 div.lightbox.lightbox-delete-account(tg-lb-delete-user)
