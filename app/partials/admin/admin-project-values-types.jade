@@ -13,6 +13,7 @@ div.wrapper(ng-controller="ProjectValuesSectionController"
         p.admin-subtitle(translate="ADMIN.PROJECT_VALUES_TYPES.SUBTITLE")
 
         div.admin-attributes-section(tg-project-values, ng-controller="ProjectValuesController as ctrl",
-            ng-init="section='admin'; resource='issues'; sectionName='ADMIN.PROJECT_VALUES_TYPES.ISSUE_TITLE'; type='issue-types'; objName='type'",
+            ng-init="section='admin'; resource='issues'; sectionName='ADMIN.PROJECT_VALUES_TYPES.ISSUE_TITLE'; type='issue-types';",
+            objName="types",
             type="issue-types")
             include ../includes/modules/admin/project-types

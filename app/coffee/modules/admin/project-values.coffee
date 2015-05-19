@@ -126,7 +126,7 @@ module.controller("ProjectValuesController", ProjectValuesController)
 ## Project values directive
 #############################################################################
 
-ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame) ->
+ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame, @translate, $rootscope) ->
     ## Drag & Drop Link
 
     linkDragAndDrop = ($scope, $el, $attrs) ->
@@ -157,6 +157,7 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame) ->
     linkValue = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
         valueType = $attrs.type
+        objName = $attrs.objname
 
         initializeNewValue = ->
             $scope.newValue = {
@@ -165,7 +166,14 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame) ->
                 "is_archived": false
             }
 
+        initializeTextTranslations = ->
+            $scope.addNewElementText = @translate.instant("ADMIN.PROJECT_VALUES_#{objName.toUpperCase()}.ACTION_ADD")
+
         initializeNewValue()
+        initializeTextTranslations()
+
+        $rootscope.$on "$translateChangeEnd", ->
+            $scope.$evalAsync(initializeTextTranslations)
 
         goToBottomList = (focus = false) =>
             table = $el.find(".table-main")
@@ -305,7 +313,7 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame) ->
 
     return {link:link}
 
-module.directive("tgProjectValues", ["$log", "$tgRepo", "$tgConfirm", "$tgLocation", "animationFrame", ProjectValuesDirective])
+module.directive("tgProjectValues", ["$log", "$tgRepo", "$tgConfirm", "$tgLocation", "animationFrame", "$translate", "$rootScope", ProjectValuesDirective])
 
 
 #############################################################################

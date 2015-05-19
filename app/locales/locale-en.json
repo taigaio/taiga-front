@@ -362,11 +362,13 @@
         },
         "PROJECT_VALUES_PRIORITIES": {
             "TITLE": "Issue priorities",
-            "SUBTITLE": "Specify the priorities your issues will have"
+            "SUBTITLE": "Specify the priorities your issues will have",
+            "ACTION_ADD": "Add new priority"
         },
         "PROJECT_VALUES_SEVERITIES": {
             "TITLE": "Issue severities",
-            "SUBTITLE": "Specify the severities your issues will have"
+            "SUBTITLE": "Specify the severities your issues will have",
+            "ACTION_ADD": "Add new severity"
         },
         "PROJECT_VALUES_STATUS": {
             "TITLE": "Status",
@@ -379,7 +381,7 @@
             "TITLE": "Types",
             "SUBTITLE": "Specify the types your issues could be",
             "ISSUE_TITLE": "Issues types",
-    	    "ACTION_ADD": "Add new {{objName}}"
+    	    "ACTION_ADD": "Add new type"
         },
         "ROLES": {
             "SECTION_NAME": "Roles - {{projectName}}",
