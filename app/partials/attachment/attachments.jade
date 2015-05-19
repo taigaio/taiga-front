@@ -25,4 +25,4 @@ section.attachments
         a.more-attachments(href="", title="{{'ATTACHMENT.SHOW_DEPRECATED' | translate}}", ng-if="ctrl.deprecatedAttachmentsCount > 0")
             span.text(data-type="show", translate="ATTACHMENT.SHOW_DEPRECATED")
             span.text.hidden(data-type="hide", translate="ATTACHMENT.HIDE_DEPRECATED")
-            span.more-attachments-num(translate="ATTACHMENT.COUNT_DEPRECATED")
+            span.more-attachments-num(translate="ATTACHMENT.COUNT_DEPRECATED", translate-values="{counter: '{{ctrl.deprecatedAttachmentsCount}}'}")
