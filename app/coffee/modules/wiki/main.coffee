@@ -216,7 +216,7 @@ EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $
                 if not wiki.id?
                     $analytics.trackEvent("wikipage", "create", "create wiki page", 1)
 
-                $model.$setViewValue wikiPage
+                $model.$setViewValue wikiPage.clone()
 
                 $confirm.notify("success")
                 switchToReadMode()
