@@ -16,6 +16,9 @@
         color: $white;
         transition: all .3s linear;
     }
+    &:visited {
+        color: $white;
+    }
     &.loading {
         span {
             animation: loading .5s linear;
@@ -53,12 +56,14 @@
     width: 100%;
 }
 
-.button-green {
+.button-green,
+a.button-green {
     @extend %button;
     background: $green-taiga;
     &:hover,
     &.active {
         background: $fresh-taiga;
+        color: $white;
     }
 }
 
