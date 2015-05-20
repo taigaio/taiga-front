@@ -107,7 +107,7 @@ module.controller("SearchController", SearchController)
 ## Search box directive
 #############################################################################
 
-SearchBoxDirective = ($lightboxService, $navurls, $location, $route)->
+SearchBoxDirective = (projectService, $lightboxService, $navurls, $location, $route)->
     link = ($scope, $el, $attrs) ->
         project = null
 
@@ -120,7 +120,7 @@ SearchBoxDirective = ($lightboxService, $navurls, $location, $route)->
 
             text = $el.find("#search-text").val()
 
-            url = $navurls.resolve("project-search", {project: project.slug})
+            url = $navurls.resolve("project-search", {project: project.get("slug")})
 
             $lightboxService.close($el)
             $scope.$apply ->
@@ -128,16 +128,29 @@ SearchBoxDirective = ($lightboxService, $navurls, $location, $route)->
                 $location.search("text", text).path(url)
                 $route.reload()
 
-        $scope.$on "search-box:show", (ctx, newProject)->
-            project = newProject
+        openLightbox = () ->
+            project = projectService.project
+
             $lightboxService.open($el)
-            $el.find("#search-text").val("")
 
         $el.on "submit", "form", submit
 
-    return {link:link}
+        openLightbox()
 
-module.directive("tgSearchBox", ["lightboxService", "$tgNavUrls", "$tgLocation", "$route", SearchBoxDirective])
+    return {
+        templateUrl: "search/lightbox-search.html",
+        link:link
+    }
+
+SearchBoxDirective.$inject = [
+    "tgProjectService",
+    "lightboxService",
+    "$tgNavUrls",
+    "$tgLocation",
+    "$route"
+]
+
+module.directive("tgSearchBox", SearchBoxDirective)
 
 
 #############################################################################

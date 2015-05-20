@@ -21,8 +21,8 @@ $label-arrow-wh: 12px;
         position: relative;
     }
     a:hover {
-        //color: $fresh-taiga;
         background: rgba($black, .2);
+        color: $fresh-taiga;
         transition: color .3s linear;
         .helper {
             @extend %small;

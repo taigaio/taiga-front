@@ -109,7 +109,8 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         promise = @.loadProject()
         return promise.then (project) =>
             @.fillUsersAndRoles(project.users, project.roles)
-            @q.all([@.loadWikiLinks(), @.loadWiki()])
+            @q.all([@.loadWikiLinks(), @.loadWiki()]).then () =>
+
 
     delete: ->
         title = @translate.instant("WIKI.DELETE_LIGHTBOX_TITLE")
