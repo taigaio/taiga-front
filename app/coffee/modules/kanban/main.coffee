@@ -470,17 +470,20 @@ KanbanWipLimitDirective = ->
     link = ($scope, $el, $attrs) ->
         $el.disableSelection()
 
-        redrawWipLimit = ->
+        status = $scope.$eval($attrs.tgKanbanWipLimit)
+
+        redrawWipLimit = =>
             $el.find(".kanban-wip-limit").remove()
-            timeout 200, ->
-                element = $el.find(".kanban-task")[$scope.$eval($attrs.tgKanbanWipLimit)]
+            timeout 200, =>
+                element = $el.find(".kanban-task")[status.wip_limit]
                 if element
                     angular.element(element).before("<div class='kanban-wip-limit'></div>")
 
-        $scope.$on "redraw:wip", redrawWipLimit
-        $scope.$on "kanban:us:move", redrawWipLimit
-        $scope.$on "usform:new:success", redrawWipLimit
-        $scope.$on "usform:bulk:success", redrawWipLimit
+        if status and not status.is_archived
+            $scope.$on "redraw:wip", redrawWipLimit
+            $scope.$on "kanban:us:move", redrawWipLimit
+            $scope.$on "usform:new:success", redrawWipLimit
+            $scope.$on "usform:bulk:success", redrawWipLimit
 
         $scope.$on "$destroy", ->
             $el.off()

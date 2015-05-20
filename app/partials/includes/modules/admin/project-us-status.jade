@@ -38,7 +38,7 @@ section.project-us-status
                             div.icon.icon-check-square(ng-show="value.is_archived")
 
                         div.status-wip-limit
-                            span {{ value.wip_limit }}
+                            span(ng-hide="value.is_archived") {{ value.wip_limit }}
 
                         div.options-column
                             a.edit-value.icon.icon-edit(href="", title="{{'ADMIN.COMMON.TITLE_ACTION_EDIT_VALUE' | translate}}")
@@ -63,8 +63,9 @@ section.project-us-status
                                    ng-options="e.id as e.name | translate for e in [{'id':true, 'name':'COMMON.YES'},{'id':false, 'name': 'COMMON.NO'}]")
 
                         div.status-wip-limit
-                            input(name="wip_limit", type="number", placeholder="{{'ADMIN.US_STATUS.WIP_LIMIT_COLUMN' | translate}}",
-                                ng-model="value.wip_limit", data-type="digits")
+                            input(name="wip_limit", type="number", ng-hide="value.is_archived",
+                                  ng-model="value.wip_limit", data-type="digits",
+                                  placeholder="{{'ADMIN.US_STATUS.WIP_LIMIT_COLUMN' | translate}}")
 
                         div.options-column
                             a.save.icon.icon-floppy(href="", title="{{'COMMON.SAVE' | translate}}")
@@ -77,8 +78,9 @@ section.project-us-status
                         include ../../components/select-color
 
                     div.status-name
-                        input(name="name", type="text", placeholder="{{'ADMIN.US_STATUS.PLACEHOLDER_WRITE_NAME' | translate}}",
-                              ng-model="newValue.name", data-required="true", data-maxlength="255")
+                        input(name="name", type="text",
+                              ng-model="newValue.name", data-required="true", data-maxlength="255",
+                              placeholder="{{'ADMIN.US_STATUS.PLACEHOLDER_WRITE_NAME' | translate}}")
 
                     div.is-closed-column
                         select(name="is_closed", ng-model="newValue.is_closed", data-required="true",
@@ -89,8 +91,9 @@ section.project-us-status
                                ng-options="e.id as e.name | translate for e in [{'id':true, 'name':'COMMON.YES'},{'id':false, 'name': 'COMMON.NO'}]")
 
                     div.status-wip-limit
-                        input(name="wip_limit", type="number", placeholder="{{'ADMIN.US_STATUS.WIP_LIMIT_COLUMN' | translate}}",
-                              ng-model="newValue.wip_limit", data-type="digits")
+                        input(name="wip_limit", type="number", ng-hide="newValue.is_archived",
+                              ng-model="newValue.wip_limit", data-type="digits",
+                              placeholder="{{'ADMIN.US_STATUS.WIP_LIMIT_COLUMN' | translate}}")
 
                     div.options-column
                         a.add-new.icon.icon-floppy(href="", title="{{'COMMON.ADD' | translate}}")
