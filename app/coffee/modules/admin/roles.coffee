@@ -128,7 +128,7 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
         replacement = @translate.instant("ADMIN.ROLES.REPLACEMENT_ROLE")
         warning = @translate.instant("ADMIN.ROLES.WARNING_DELETE_ROLE")
         return @confirm.askChoice(title, subtitle, choices, replacement, warning).then (response) =>
-            onSuccess = (response)=>
+            onSuccess = =>
                 @.loadProject()
                 @.loadRoles().finally =>
                     response.finish()
