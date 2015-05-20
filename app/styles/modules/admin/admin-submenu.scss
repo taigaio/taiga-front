@@ -14,7 +14,8 @@
     }
     a {
         color: $white;
-        display: block;
+        display: flex;
+        justify-content: space-between;
         padding: 1rem 0 1rem 1rem;
         &.active,
         &:hover {
@@ -24,6 +25,13 @@
                 opacity: 1;
                 transition: opacity .3s linear;
             }
+        }
+        span {
+            display: block;
+            max-width: 85%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
     }
     .icon {
