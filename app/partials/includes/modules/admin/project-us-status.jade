@@ -23,7 +23,7 @@ section.project-us-status
                         span.icon.icon-drag-v
 
                         div.color-column
-                            div.current-color(style="background: {{ value.color }}")
+                            div.current-color(ng-style="{background: value.color}")
 
                         div.status-name
                             span {{ value.name }}
@@ -46,7 +46,7 @@ section.project-us-status
 
                     div.row.table-main.edition.hidden
                         div.color-column(tg-color-selection, ng-model="value")
-                            div.current-color(style="background: {{ value.color }}")
+                            div.current-color(ng-style="{background: value.color}")
                             include ../../components/select-color
 
 
@@ -74,7 +74,7 @@ section.project-us-status
             form
                 div.row.table-main.new-value.hidden
                     div.color-column(tg-color-selection, ng-model="newValue")
-                        div.current-color(style="background: {{ newValue.color }}")
+                        div.current-color(ng-style="{background: newValue.color}")
                         include ../../components/select-color
 
                     div.status-name
