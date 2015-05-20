@@ -58,7 +58,7 @@ div.wrapper(tg-user-profile, ng-controller="UserSettingsController as ctrl",
                     fieldset
                         label(for="bio", translate="USER_PROFILE.FIELD.BIO")
                         textarea(name="bio", id="bio", ng-model="user.bio",
-                                 placeholder="{{'USER_PROFILE.FIELD.PLACEHOLDER_BIO' | translate}}")
+                                 ng-attr-placeholder="{{'USER_PROFILE.FIELD.PLACEHOLDER_BIO' | translate}}")
 
             fieldset.submit
                 button.button-green.submit-button(type="submit", title="{{'COMMON.SAVE' | translate}}",

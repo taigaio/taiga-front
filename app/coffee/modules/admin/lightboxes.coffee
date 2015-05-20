@@ -33,7 +33,7 @@ MAX_MEMBERSHIP_FIELDSETS = 4
 CreateMembersDirective = ($rs, $rootScope, $confirm, $loading, lightboxService, $compile) ->
     extraTextTemplate = """
     <fieldset class="extra-text">
-        <textarea placeholder="{{'LIGHTBOX.CREATE_MEMBER.PLACEHOLDER_INVITATION_TEXT' | translate}}"
+        <textarea ng-attr-placeholder="{{'LIGHTBOX.CREATE_MEMBER.PLACEHOLDER_INVITATION_TEXT' | translate}}"
                   maxlength="255"></textarea>
     </fieldset>
     """

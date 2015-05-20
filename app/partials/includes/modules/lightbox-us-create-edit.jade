@@ -17,7 +17,7 @@ form
 
     fieldset
         textarea.description(name="description", ng-model="us.description",
-                             placeholder="{{'LIGHTBOX.CREATE_EDIT_US.PLACEHOLDER_DESCRIPTION' | translate}}")
+                             ng-attr-placeholder="{{'LIGHTBOX.CREATE_EDIT_US.PLACEHOLDER_DESCRIPTION' | translate}}")
     div.settings
         fieldset.team-requirement
             input(type="checkbox", name="team_requirement", ng-model="us.team_requirement",

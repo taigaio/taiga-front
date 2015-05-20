@@ -40,7 +40,7 @@ div.wrapper(tg-project-profile, ng-controller="ProjectProfileController as ctrl"
 
             fieldset
                 label(for="project-description", translate="ADMIN.PROJECT_PROFILE.DESCRIPTION")
-                textarea(name="description", placeholder="{{'ADMIN.PROJECT_PROFILE.DESCRIPTION' | translate}}", id="project-description",
+                textarea(name="description", ng-attr-placeholder="{{'ADMIN.PROJECT_PROFILE.DESCRIPTION' | translate}}", id="project-description",
                          ng-model="project.description", data-required="true")
 
             div
