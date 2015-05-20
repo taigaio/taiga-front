@@ -495,6 +495,9 @@
             "INTEGRATIONS": "Intergraatiot",
             "PLUGINS": "Pluginit"
         },
+        "SUBMENU_PROJECT_ATTRIBUTES": {
+            "TITLE": "Attributes"
+        },
         "SUBMENU_PROJECT_VALUES": {
             "STATUS": "Tila",
             "POINTS": "Pisteet",

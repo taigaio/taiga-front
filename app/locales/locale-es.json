@@ -495,6 +495,9 @@
             "INTEGRATIONS": "Integraciones",
             "PLUGINS": "Plugins"
         },
+        "SUBMENU_PROJECT_ATTRIBUTES": {
+            "TITLE": "Atributos"
+        },
         "SUBMENU_PROJECT_VALUES": {
             "STATUS": "Estados",
             "POINTS": "Puntos",
