@@ -703,7 +703,7 @@
             "BACKLOG_ORDER": "orden en backlog",
             "SPRINT_ORDER": "orden en sprint",
             "KANBAN_ORDER": "orden en kanban",
-            "TASKBOARD_ORDER": "orden en panel de tareras",
+            "TASKBOARD_ORDER": "orden en panel de tareas",
             "US_ORDER": "orden en historia"
         }
     },
@@ -811,7 +811,7 @@
     },
     "TASK": {
         "SECTION_NAME": "Detalles de tarea",
-        "LINK_TASKBOARD": "Panel de tereas",
+        "LINK_TASKBOARD": "Panel de tareas",
         "TITLE_LINK_TASKBOARD": "Ir al panel de tareas",
         "PLACEHOLDER_SUBJECT": "Escribe el asunto de la nueva tarea",
         "TITLE_SELECT_STATUS": "Nombre del estado",
