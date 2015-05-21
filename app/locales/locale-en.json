@@ -543,6 +543,11 @@
             "PROJECTS_TAB": "Projects Tab",
             "CONTACTS_TAB": "Contacts Tab",
             "FAVORITES_TAB": "Favorites Tab"
+        },
+        "PROFILE_SIDEBAR": {
+            "TITLE": "Your profile",
+            "DESCRIPTION": "Lots of people could see what do you do and what are you working on. Add tags so you will give an enhanced version of your information.",
+            "ADD_INFO": "Add info"
         }
     },
     "PROJECT": {
