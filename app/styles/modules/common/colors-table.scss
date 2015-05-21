@@ -120,6 +120,9 @@
             color: $green-taiga;
             transition: all .2s ease-in;
         }
+        &.icon-check-square {
+            opacity: 1;
+        }
     }
     .icon-delete {
         &:hover {

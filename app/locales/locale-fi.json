@@ -1,0 +1,1091 @@
+{
+    "COMMON": {
+        "YES": "Kyllä",
+        "NO": "Ei",
+        "LOADING": "Ladataan...",
+        "LOADING_PROJECT": "Ladataan projektia...",
+        "DATE": "DD MMM YYYY",
+        "DATETIME": "DD MMM YYYY HH:mm",
+        "SAVE": "Tallenna",
+        "CANCEL": "Peru",
+        "ACCEPT": "Hyväksy",
+        "DELETE": "Poista",
+        "CREATE": "Luo uusi",
+        "ADD": "Lisää",
+        "COPY_TO_CLIPBOARD": "Kopio leikekirjalle: Ctrl+C",
+        "EDIT": "Muokkaa",
+        "DRAG": "Vedä",
+        "TAG_LINE": "Ketterä, ilmainne avoimen koodin projektinhallintaohjelmisto",
+        "TAG_LINE_2": "Rakasta projektiasi",
+        "BLOCK": "Estä",
+        "UNBLOCK": "Salli",
+        "BLOCKED": "Suljettu",
+        "CREATED_BY": "Luonut {{fullDisplayName}}",
+        "FROM": "käyttäjältä",
+        "TO": "käyttäjälle",
+        "CLOSE": "sulje",
+        "BLOCKED_NOTE": "Miksi tämä käyttäjätarina on suljettu?",
+        "BLOCKED_REASON": "Ole hyvä ja anna syy",
+        "GO_HOME": "Vie minut kotiin",
+        "PLUGINS": "Pluginit",
+        "BETA": "Tämä on beta-versio!",
+        "ONE_ITEM_LINE": "Yksi riviä kohti...",
+        "NEW_BULK": "Lisää monta",
+        "RELATED_TASKS": "Liittyvät tehtävät",
+        "LOGOUT": "Kirjaudu ulos",
+        "EXTERNAL_USER": "ulkoinen käyttäjä",
+        "GENERIC_ERROR": "Oompa Loompas havaitsivat virheen {{error}}.",
+        "IOCAINE_TEXT": "Jos tehtävä ahdistaa, merkitse se hidasteeksi.",
+        "FORM_ERRORS": {
+            "DEFAULT_MESSAGE": "This value seems to be invalid.",
+            "TYPE_EMAIL": "This value should be a valid email.",
+            "TYPE_URL": "This value should be a valid url.",
+            "TYPE_URLSTRICT": "This value should be a valid url.",
+            "TYPE_NUMBER": "This value should be a valid number.",
+            "TYPE_DIGITS": "This value should be digits.",
+            "TYPE_DATEISO": "This value should be a valid date (YYYY-MM-DD).",
+            "TYPE_ALPHANUM": "This value should be alphanumeric.",
+            "TYPE_PHONE": "This value should be a valid phone number.",
+            "NOTNULL": "This value should not be null.",
+            "NOT_BLANK": "This value should not be blank.",
+            "REQUIRED": "This value is required.",
+            "REGEXP": "This value seems to be invalid.",
+            "MIN": "This value should be greater than or equal to %s.",
+            "MAX": "This value should be lower than or equal to %s.",
+            "RANGE": "This value should be between %s and %s.",
+            "MIN_LENGTH": "This value is too short. It should have %s characters or more.",
+            "MAX_LENGTH": "This value is too long. It should have %s characters or less.",
+            "RANGE_LENGTH": "This value length is invalid. It should be between %s and %s characters long.",
+            "MIN_CHECK": "You must select at least %s choices.",
+            "MAX_CHECK": "You must select %s choices or less.",
+            "RANGE_CHECK": "You must select between %s and %s choices.",
+            "EQUAL_TO": "This value should be the same."
+        },
+        "PICKERDATE": {
+            "FORMAT": "DD MMM YYYY",
+            "IS_RTL": "false",
+            "FIRST_DAY_OF_WEEK": "1",
+            "PREV_MONTH": "Previous Month",
+            "NEXT_MONTH": "Next Month",
+            "MONTHS": {
+                "JAN": "January",
+                "FEB": "February",
+                "MAR": "March",
+                "APR": "April",
+                "MAY": "May",
+                "JUN": "June",
+                "JUL": "July",
+                "AUG": "August",
+                "SEP": "September",
+                "OCT": "October",
+                "NOV": "November",
+                "DEC": "December"
+            },
+            "WEEK_DAYS": {
+                "SUN": "Sunday",
+                "MON": "Monday",
+                "TUE": "Tuesday",
+                "WED": "Wednesday",
+                "THU": "Thursday",
+                "FRI": "Friday",
+                "SAT": "Saturday"
+            },
+            "WEEK_DAYS_SHORT": {
+                "SUN": "Sun",
+                "MON": "Mon",
+                "TUE": "Tue",
+                "WED": "Wed",
+                "THU": "Thu",
+                "FRI": "Fri",
+                "SAT": "Sat"
+            }
+        },
+        "TAGS": {
+            "PLACEHOLDER": "Anna avainsana...",
+            "DELETE": "Poista avainsana",
+            "ADD": "Lisää avainsana"
+        },
+        "DESCRIPTION": {
+            "EMPTY": "Tyhjä tila on tylsää...kerro jotain...",
+            "NO_DESCRIPTION": "Ei vielä kuvausta lisätty"
+        },
+        "FIELDS": {
+            "SUBJECT": "Aihe",
+            "NAME": "Nimi",
+            "URL": "URL",
+            "DESCRIPTION": "Kuvaus",
+            "VALUE": "Arvo",
+            "SLUG": "Hitaus",
+            "COLOR": "Väri",
+            "IS_CLOSED": "Onko suljettu?",
+            "STATUS": "Tila",
+            "TYPE": "Tyyppi",
+            "SEVERITY": "Vakavuus",
+            "PRIORITY": "Tärkeys",
+            "ASSIGNED_TO": "Tekijä",
+            "POINTS": "Pisteet",
+            "BLOCKED_NOTE": "estetty muistiinpano",
+            "IS_BLOCKED": "on estetty"
+        },
+        "ROLES": {
+            "ALL": "Kaikki"
+        },
+        "ASSIGNED_TO": {
+            "NOT_ASSIGNED": "Tekijää ei valittu",
+            "DELETE_ASSIGNMENT": "Poista tekijä",
+            "REMOVE_ASSIGNED": "Poista tekijä",
+            "TOO_MANY": "...liikaa käyttäjiä, lisää suodattimia",
+            "CONFIRM_UNASSIGNED": "Haluatko varmasti jättää tämän ilman tekijää?",
+            "TITLE_ACTION_EDIT_ASSIGNMENT": "Muokkaa tekijää"
+        },
+        "STATUS": {
+            "CLOSED": "Suljettu",
+            "OPEN": "Avoin"
+        },
+        "WATCHERS": {
+            "ADD": "Lisää vahti",
+            "TITLE": "vahdit",
+            "DELETE": "Poista vahti",
+            "TITLE_LIGHTBOX_DELETE_WARTCHER": "Poista vahti..."
+        },
+        "CUSTOM_ATTRIBUTES": {
+            "CUSTOM_FIELDS": "Omat kentät",
+            "SAVE": "Tallenna oma kenttä",
+            "EDIT": "Muokkaa omaa kenttää",
+            "DELETE": "Poista oma attribuutti",
+            "CONFIRM_DELETE": "Muista että oman kentän arvot poistetaan kentän mukana.<br/>Jatketaanko?"
+        },
+        "FILTERS": {
+            "TITLE": "suodattimet",
+            "INPUT_PLACEHOLDER": "Aihe tai viittaus",
+            "TITLE_ACTION_FILTER_BUTTON": "hae",
+            "BREADCRUMB_TITLE": "takaisin kategorioihin",
+            "BREADCRUMB_FILTERS": "Suodattimet",
+            "BREADCRUMB_STATUS": "tila"
+        },
+        "WYSIWYG": {
+            "H1_BUTTON": "Päätason otsikko",
+            "H1_SAMPLE_TEXT": "Nimikkeesei tänne...",
+            "H2_BUTTON": "Toisen tason otsikko",
+            "H2_SAMPLE_TEXT": "Nimikkeesi tänne...",
+            "H3_BUTTON": "Kolmannen tason otsikko",
+            "H3_SAMPLE_TEXT": "Nimikkeesi tänne...",
+            "BOLD_BUTTON": "Lihavoitu",
+            "BOLD_BUTTON_SAMPLE_TEXT": "Kirjoita tänne...",
+            "ITALIC_BUTTON": "Kursiivi",
+            "ITALIC_SAMPLE_TEXT": "Kirjoita tänne...",
+            "STRIKE_BUTTON": "Lakko",
+            "STRIKE_SAMPLE_TEXT": "Kirjoita tänne...",
+            "BULLETED_LIST_BUTTON": "Numeroimaton lista",
+            "BULLETED_LIST_SAMPLE_TEXT": "Kirjoita tänne...",
+            "NUMERIC_LIST_BUTTON": "Numeroitu lista",
+            "NUMERIC_LIST_SAMPLE_TEXT": "Kirjoita tänne...",
+            "PICTURE_BUTTON": "Kuva",
+            "PICTURE_SAMPLE_TEXT": "Vaihtoehtoinen kuvan teksti tänne...",
+            "LINK_BUTTON": "Linkki",
+            "LINK_SAMPLE_TEXT": "Linkkiteksti tänne...",
+            "QUOTE_BLOCK_BUTTON": "Lainaus",
+            "QUOTE_BLOCK_SAMPLE_TEXT": "Kirjoita tänne...",
+            "CODE_BLOCK_BUTTON": "Koodi-lohko",
+            "CODE_BLOCK_SAMPLE_TEXT": "Kirjoita tänne...",
+            "PREVIEW_BUTTON": "Esikatselu",
+            "EDIT_BUTTON": "Muokkaa",
+            "MARKDOWN_HELP": "Merkintätavan ohjeet"
+        },
+        "PERMISIONS_CATEGORIES": {
+            "SPRINTS": {
+                "NAME": "Kierrokset",
+                "VIEW_SPRINTS": "Katso kierroksia",
+                "ADD_SPRINTS": "Lisää kierroksia",
+                "MODIFY_SPRINTS": "Muokkaa kieroksia",
+                "DELETE_SPRINTS": "Poista kierroksia"
+            },
+            "USER_STORIES": {
+                "NAME": "Käyttäjätarinat",
+                "VIEW_USER_STORIES": "Katso käyttäjätarinoita",
+                "ADD_USER_STORIES": "Lisää käyttäjätarinoita",
+                "MODIFY_USER_STORIES": "Muokkaa käyttäjätarinoita",
+                "DELETE_USER_STORIES": "Poista käyttäjätarinoita"
+            },
+            "TASKS": {
+                "NAME": "Tehtävät",
+                "VIEW_TASKS": "Katsot tehtäviä",
+                "ADD_TASKS": "Lisää tehtäviä",
+                "MODIFY_TASKS": "Muokkaa tehtäviä",
+                "DELETE_TASKS": "Poista tehtäviä"
+            },
+            "ISSUES": {
+                "NAME": "Pyynnöt",
+                "VIEW_ISSUES": "Katso pyyntöjä",
+                "ADD_ISSUES": "Lisää pyyntöjä",
+                "MODIFY_ISSUES": "Muokkaa pyyntöjä",
+                "DELETE_ISSUES": "Poista pyyntöjä"
+            },
+            "WIKI": {
+                "NAME": "Wiki",
+                "VIEW_WIKI_PAGES": "Katso wiki-sivuja",
+                "ADD_WIKI_PAGES": "Lisää wiki-sivuja",
+                "MODIFY_WIKI_PAGES": "Muokkaa wiki-sivuja",
+                "DELETE_WIKI_PAGES": "Poista wiki-sivuja",
+                "VIEW_WIKI_LINKS": "Katso wiki-linkkejä",
+                "ADD_WIKI_LINKS": "Lisää wiki-linkkejä",
+                "DELETE_WIKI_LINKS": "Poista wiki-linkkejä"
+            }
+        }
+    },
+    "AUTH": {
+        "INVITED_YOU": "on kutsunut sinut projektiin",
+        "NOT_REGISTERED_YET": "Etkö ole vielä rekisteröitynyt?",
+        "REGISTER": "Rekisteröidy",
+        "CREATE_ACCOUNT": "luo ilmainen tunnuksesi täällä"
+    },
+    "ATTACHMENT": {
+        "SECTION_NAME": "liitteet",
+        "TITLE": "{{ fileName }} ladattu {{ date }}\n",
+        "DESCRIPTION": "Kirjoita lyhyt kuvaus",
+        "DEPRECATED": "(deprecated)",
+        "DEPRECATED_FILE": "Vanhentunut?",
+        "ADD": "Lisää liite. <%- maxFileSizeMsg %>",
+        "MAX_FILE_SIZE": "[Maks. koko: {{maxFileSize}}]",
+        "SHOW_DEPRECATED": "+ näytä vanhentuneet liitteet",
+        "HIDE_DEPRECATED": "- piilota vanhentuneet liitteet",
+        "COUNT_DEPRECATED": "({{ counter }} deprecated)",
+        "MAX_UPLOAD_SIZE": "Maksimi tiedoston koko {{maxFileSize}}",
+        "DATE": "DD MMM YYYY  - hh:mm",
+        "ERROR_UPLOAD_ATTACHMENT": "Emme onnistuneet lataamaan tiedostoa '{{fileName}}'. {{errorMessage}}",
+        "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "Poista liite...",
+        "MSG_LIGHTBOX_DELETE_ATTACHMENT": "liite '{{fileName}}'",
+        "ERROR_DELETE_ATTACHMENT": "Emme pystyneet poistamaan: {{errorMessage}}",
+        "FIELDS": {
+            "IS_DEPRECATED": "on vanhentunut"
+        }
+    },
+    "PAGINATION": {
+        "PREVIOUS": "Edellinen",
+        "NEXT": "Seuraava"
+    },
+    "ADMIN": {
+        "COMMON": {
+            "TITLE_ACTION_EDIT_VALUE": "Muokkaa arvoa",
+            "TITLE_ACTION_DELETE_VALUE": "Poista arvo"
+        },
+        "HELP": "Tarvitsetko apua? Katso tukisivuilta.",
+        "PROJECT_DEFAULT_VALUES": {
+            "TITLE": "Oletusarvot",
+            "SUBTITLE": "Aseta oletukset kaikille syötteille."
+        },
+        "MEMBERSHIPS": {
+            "TITLE": "Hallinnoi jäseniä",
+            "ADD_BUTTON": "+ Uusi jäsen",
+            "ADD_BUTTON_TITLE": "Lisää jäsen"
+        },
+        "PROJECT_EXPORT": {
+            "TITLE": "Vie",
+            "SUBTITLE": "Vie projekti varmuuskopioksi tai luo uusi tämän pohjalta.",
+            "EXPORT_BUTTON": "Vie",
+            "EXPORT_BUTTON_TITLE": "Vie projekti",
+            "LOADING_TITLE": "Varmistustiedostoa muodostetaan",
+            "DUMP_READY": "Tiedostosi on valmis",
+            "LOADING_MESSAGE": "Älä sulje tätä sivua.",
+            "ASYNC_MESSAGE": "Lähetämme sähköpostia, kun on valmista.",
+            "SYNC_MESSAGE": "Jos lataus ei ala automaattisesti klikkaa <a href='{{url}}' download title='Lataa varmuuskopio'>tästä</a>.",
+            "ERROR": "Oompa Loompas eivät onnistuneet tekemään tiedostoasi. Yritä uudelleen.",
+            "ERROR_BUSY": "Valitettavasti Oompa Loompas ovat kiireisiä juuri. Yritä kohta uudestaan.",
+            "ERROR_MESSAGE": "Oompa Loompas eivät onnistuneet luomaan tiedostoasi: {{message}}"
+        },
+        "MODULES": {
+            "TITLE": "Modulit",
+            "ENABLE": "Aktivoi",
+            "DISABLE": "Passivoi",
+            "BACKLOG": "Odottavat",
+            "BACKLOG_DESCRIPTION": "Hallinnoi käyttäjätarinoita: järjestele ja priorisoi työtä.",
+            "KANBAN": "Kanban",
+            "KANBAN_DESCRIPTION": "Järjestä projektisi tehokkaasti tällä taululla.",
+            "ISSUES": "Pyynnöt",
+            "ISSUES_DESCRIPTION": "Seuraa projektisi virheitä, kysymyksiä ja parannusehdotuksia. Älä jätä mitään huomiotta!",
+            "WIKI": "Wiki",
+            "WIKI_DESCRIPTION": "Lisää, muokkaa tai poista sisältöä yhteistyössä muiden kanssa. Tämä on oikea paikka projektin dokumentaatiolle.",
+            "MEETUP": "Tapaa",
+            "MEETUP_DESCRIPTION": "Valitse videoconferenssisysteemi. Jopa kehittäjät tarvitsevat katsekontaktia.",
+            "SELECT_VIDEOCONFERENCE": "Valitse videoconferenssi-järjestelmä",
+            "SALT_CHAT_ROOM": "Voit halutessasi lisätä suolaan chat-huoneen nimeen"
+        },
+        "PROJECT_PROFILE": {
+            "PAGE_TITLE": "Projektin profiili - {{sectionName}} - {{projectName}}",
+            "PROJECT_DETAILS": "Projektin tiedot",
+            "PROJECT_NAME": "Projektin nimi",
+            "PROJECT_SLUG": "Projektin hukka-aika",
+            "NUMBER_SPRINTS": "Kierrosten määrä",
+            "NUMBER_US_POINTS": "Kt pisteitä",
+            "TAGS": "Avainsanat",
+            "DESCRIPTION": "Kuvaus",
+            "PUBLIC_PROJECT": "Julkinen projekti",
+            "PRIVATE_PROJECT": "Yksityinen projekti",
+            "DELETE": "Poista tämä projekti"
+        },
+        "REPORTS": {
+            "TITLE": "Raportit",
+            "SUBTITLE": "Vie projektisi CSV-tiedostoon",
+            "DESCRIPTION": "Lataa CSV-tiedosto tai luo URL ja avaa haluamassasi ohjelmassa. Voit visualisoida ja analysoida tietoa helposti.",
+            "HELP": "Kuinka tätä käytetään omassa taulukossani?",
+            "REGENERATE_TITLE": "Vaihda URL",
+            "REGENERATE_SUBTITLE": "Jos muutata CSV-datan URLia, edellien lakkaa toimimasta. Oletko varma?"
+        },
+        "CSV": {
+            "SECTION_TITLE_US": "user stories reports",
+            "SECTION_TITLE_TASK": "tasks reports",
+            "SECTION_TITLE_ISSUE": "issues reports",
+            "DOWNLOAD": "Lataa CSV-tiedosto",
+            "URL_FIELD_PLACEHOLDER": "Tee uusi CSV-url",
+            "TITLE_REGENERATE_URL": "Tee uusi CSV-url",
+            "ACTION_GENERATE_URL": "Luo URL",
+            "ACTION_REGENERATE": "Tee uusi"
+        },
+        "CUSTOM_FIELDS": {
+            "TITLE": "Omat kentät",
+            "SUBTITLE": "Määritele omia kenttiä käyttäjätarinoihin, tehtäviin ja pyytöihin",
+            "US_DESCRIPTION": "Käyttäjätarinoiden omat kentät",
+            "US_ADD": "Lisää käyttäjätarinoihin oma kenttä",
+            "TASK_DESCRIPTION": "Tehtävien omat kentät",
+            "TASK_ADD": "Lisää omia kenttiä tehtäviin",
+            "ISSUE_DESCRIPTION": "Pyyntöjen omat kentät",
+            "ISSUE_ADD": "Lisää oma kenttä pyynnöille"
+        },
+        "PROJECT_VALUES": {
+            "APP_TITLE": "Projektin arvot - {{sectionName}} - {{projectName}}",
+            "REPLACEMENT": "Kaikkii riveihin joissa on tämä arvo muutetaan ",
+            "ERROR_DELETE_ALL": "Et voi poistaa kaikkia arvoja."
+        },
+        "PROJECT_VALUES_POINTS": {
+            "TITLE": "Kt pisteet",
+            "SUBTITLE": "Määrittele pisteet joihin käyttäjätarinat voidaan arvioida",
+            "ACTION_ADD": "Lisää uusi piste"
+        },
+        "PROJECT_VALUES_PRIORITIES": {
+            "TITLE": "Pyyntöjen tärkeydet",
+            "SUBTITLE": "Määrittele tärkeydet pyynnöille",
+            "ACTION_ADD": "Add new priority"
+        },
+        "PROJECT_VALUES_SEVERITIES": {
+            "TITLE": "Pyyntöjen vakavuudet",
+            "SUBTITLE": "Määrittele pyyntöjen vakavuudet",
+            "ACTION_ADD": "Add new severity"
+        },
+        "PROJECT_VALUES_STATUS": {
+            "TITLE": "Tila",
+            "SUBTITLE": "Määrittele tilat joiden kautta käyttäjätarinasi, tehtäväsi ja pyyntösi kulkevat",
+            "US_TITLE": "Kt tilat",
+            "TASK_TITLE": "Tehtävien tilat",
+            "ISSUE_TITLE": "Pyyntöjen tilat"
+        },
+        "PROJECT_VALUES_TYPES": {
+            "TITLE": "Tyypit",
+            "SUBTITLE": "Määrittele pyyntöjen tyypit",
+            "ISSUE_TITLE": "Pyyntöjen tyypit",
+            "ACTION_ADD": "Add new type"
+        },
+        "ROLES": {
+            "SECTION_NAME": "Roolit - {{projectName}}",
+            "WARNING_NO_ROLE": "Ole varovainen, yksikään rooli projektissasi ei voi arvioida käyttäjätarinoidesi kokoa",
+            "HELP_ROLE_ENABLED": "Tämän roolin omaavat jäsenet voivat arvioida käyttäjätarinoiden kokoja",
+            "COUNT_MEMBERS": "{{ role.members_count }} jäsentä joilla tämä rooli",
+            "TITLE_DELETE_ROLE": "Poista rooli",
+            "REPLACEMENT_ROLE": "Kaikki käyttäjä joilla on tämä rooli siirretään",
+            "WARNING_DELETE_ROLE": "<strong>Ole varovainen, rooli-arvioinnit poistetaan</strong>",
+            "ERROR_DELETE_ALL": "Voit poistaa kaikki arvot",
+            "EXTERNAL_USER": "Ulkoinen käyttäjä"
+        },
+        "THIRD_PARTIES": {
+            "SECRET_KEY": "Salainen avain",
+            "PAYLOAD_URL": "Yhteyden URL-osoite",
+            "VALID_IPS": "Vaadittavat lähdeIPt (pilkuilla eroteltuna)"
+        },
+        "BITBUCKET": {
+            "SECTION_NAME": "Bitbucket",
+            "APP_TITLE": "Bitbucket - {{projectName}}",
+            "INFO_VERIFYING_IP": "Bitbucket pyynnöt eivät ole allekirjoitettuja joten tarkista IP. Jos IP on tyhjä, ei sitä tarkisteta."
+        },
+        "GITLAB": {
+            "SECTION_NAME": "Gitlab",
+            "APP_TITLE": "Gitlab - {{projectName}}",
+            "INFO_VERIFYING_IP": "Gitlab pyynnöt eivät ole allekirjoitettuja joten tarkista IP. Jos IP on tyhjä, ei sitä tarkisteta."
+        },
+        "GITHUB": {
+            "SECTION_NAME": "Github",
+            "APP_TITLE": "Github - {{projectName}}"
+        },
+        "WEBHOOKS": {
+            "APP_TITLE": "Webhooks - {{projectName}}",
+            "SECTION_NAME": "Webhookit",
+            "SUBTITLE": "Webhookit ilmoittvat ulkoisille palveluille Taigan kommenteista, käyttäjätarinoista ...",
+            "ADD_NEW": "Lisää webhook",
+            "TYPE_NAME": "Anna palvelun nimi",
+            "TYPE_PAYLOAD_URL": "Anna palvelun yhteysosoite (URL)",
+            "TYPE_SERVICE_SECRET": "Anna palvelun yksityinen avain",
+            "SAVE": "Tallenna Webhook",
+            "CANCEL": "Peruuta Webhook",
+            "SHOW_HISTORY": "(Näytä historia)",
+            "TEST": "Testaa webhook",
+            "EDIT": "Muokkaa webhookkia",
+            "DELETE": "Poista Webhook",
+            "REQUEST": "Pyyntö",
+            "RESEND_REQUEST": "Lähetä pyyntö uudestaan",
+            "HEADERS": "Ylätunnisteet",
+            "PAYLOAD": "Hyötykuorma",
+            "RESPONSE": "Vastaus",
+            "DATE": "DD MMM YYYY - hh:mm:ss",
+            "ACTION_HIDE_HISTORY": "(Piilota historia)",
+            "ACTION_HIDE_HISTORY_TITLE": "Piilota historian yksityiskohdat",
+            "ACTION_SHOW_HISTORY": "(Näytä historia)",
+            "ACTION_SHOW_HISTORY_TITLE": "Näytä historian yksityiskohdat",
+            "WEBHOOK_NAME": "Webhook '{{name}}'"
+        },
+        "CUSTOM_ATTRIBUTES": {
+            "ADD": "Anna oma kenttä",
+            "EDIT": "Muokkaa omaa kenttää",
+            "DELETE": "Poista oma kenttä",
+            "SAVE_TITLE": "Tallenna oma kenttä",
+            "CANCEL_TITLE": "Peru luonti",
+            "SET_FIELD_NAME": "Anna oman kentän nimi",
+            "SET_FIELD_DESCRIPTION": "Anna oman kenttäsi kuvaus",
+            "ACTION_UPDATE": "Päivitä oma kenttä",
+            "ACTION_CANCEL_EDITION": "Peru versio"
+        },
+        "MEMBERSHIP": {
+            "COLUMN_MEMBER": "Jäsen",
+            "COLUMN_ADMIN": "Hallinnoi",
+            "COLUMN_ROLE": "Rooli",
+            "COLUMN_STATUS": "Tila",
+            "STATUS_ACTIVE": "Aktiivinen",
+            "STATUS_PENDING": "Odottaa",
+            "DELETE_MEMBER": "Poista jäsen",
+            "SUCCESS_SEND_INVITATION": "Olemme lähettäneet kutsun uudelleen osoitteeseen '{{email}}'.",
+            "ERROR_SEND_INVITATION": "Olemme lähettäneet kutsun.",
+            "SUCCESS_DELETE": "Olemme poistaneet viestin {{message}}.",
+            "ERROR_DELETE": "Emme pystyneet poistamaan viestiä {{message}}.",
+            "DEFAULT_DELETE_MESSAGE": "kutsu sähköpostiin {{email}}"
+        },
+        "DEFAULT_VALUES": {
+            "LABEL_POINTS": "Oletukset pisteiden valintaan",
+            "LABEL_US": "Oletusarvo Kt:n tilan valintaan",
+            "LABEL_TASK_STATUS": "Oletusarvo tehtävän tilan valintaan",
+            "LABEL_PRIORITY": "Oletus arvo tärkeyden valiintaan",
+            "LABEL_SEVERITY": "Oletusarvo vakavuuden valintaan",
+            "LABEL_ISSUE_TYPE": "Oletusarvo pyynnön tyypin valintaan",
+            "LABEL_ISSUE_STATUS": "Oletusarvo pyyntöjen statuksen valintaan"
+        },
+        "STATUS": {
+            "PLACEHOLDER_WRITE_STATUS_NAME": "Anna uuden tilan nimi"
+        },
+        "TYPES": {
+            "PLACEHOLDER_WRITE_NAME": "Anna uuden elementin nimi"
+        },
+        "US_STATUS": {
+            "ACTION_ADD_STATUS": "Lisää uusi tila",
+            "IS_ARCHIVED_COLUMN": "Onko arkistoitu?",
+            "WIP_LIMIT_COLUMN": "WIP raja",
+            "PLACEHOLDER_WRITE_NAME": "Anna uuden tilan nimi"
+        },
+        "MENU": {
+            "TITLE": "Hallinnoi",
+            "PROJECT": "Projekti",
+            "ATTRIBUTES": "Attribuutit",
+            "MEMBERS": "Jäsenet",
+            "PERMISSIONS": "Oikeudet",
+            "INTEGRATIONS": "Intergraatiot",
+            "PLUGINS": "Pluginit"
+        },
+        "SUBMENU_PROJECT_ATTRIBUTES": {
+            "TITLE": "Attributes"
+        },
+        "SUBMENU_PROJECT_VALUES": {
+            "STATUS": "Tila",
+            "POINTS": "Pisteet",
+            "PRIORITIES": "Tärkeydet",
+            "SEVERITIES": "Vakavuudet",
+            "TYPES": "Tyypit",
+            "CUSTOM_FIELDS": "Omat kentät"
+        },
+        "SUBMENU_PROJECT_PROFILE": {
+            "TITLE": "Projektin profiili"
+        },
+        "SUBMENU_ROLES": {
+            "TITLE": "Roolit",
+            "ACTION_NEW_ROLE": "+ Uusi rooli",
+            "TITLE_ACTION_NEW_ROLE": "Lisää uusi rooli"
+        },
+        "SUBMENU_THIDPARTIES": {
+            "TITLE": "Palvelut"
+        }
+    },
+    "PROJECT": {
+        "WELCOME": "Tervetuloa",
+        "SECTION_PROJECTS": "Projektit",
+        "STATS": {
+            "PROJECT": "projekti<br/> pisteet",
+            "DEFINED": "määritely<br/> pistettä",
+            "ASSIGNED": "kohdistettu<br/> pistettä",
+            "CLOSED": "suljettu<br/> pistettä"
+        },
+        "SECTION": {
+            "SEARCH": "Hae",
+            "BACKLOG": "Odottavat",
+            "KANBAN": "Kanban",
+            "ISSUES": "Pyynnöt",
+            "WIKI": "Wiki",
+            "TEAM": "Tiimi",
+            "MEETUP": "Tapaa",
+            "ADMIN": "Hallinnoi"
+        },
+        "NAVIGATION": {
+            "SECTION_TITLE": "Your projects",
+            "PLACEHOLDER_SEARCH": "Hae täältä...",
+            "ACTION_CREATE_PROJECT": "Luo projekti",
+            "TITLE_ACTION_IMPORT": "Luo projekti tiedostosta",
+            "TITLE_PRVIOUS_PROJECT": "Näytä aikaisemmat projektit",
+            "TITLE_NEXT_PROJECT": "Näytä seuraavat projektit"
+        },
+        "IMPORT": {
+            "TITLE": "Luetaan sisään projektia",
+            "UPLOADING_FILE": "Uploading dump file",
+            "DESCRIPTION": "Tämä voi kestää hetken, pidä ikkuna auki.",
+            "ASYNC_IN_PROGRESS_TITLE": " Oompa Loompas tuovat projektia",
+            "ASYNC_IN_PROGRESS_MESSAGE": "Tämä voi kestää muutaman minuutin <br/>Lähetämme sähköpostin on valmista",
+            "UPLOAD_IN_PROGRESS_MESSAGE": "Uploaded {{uploadedSize}} of {{totalSize}}",
+            "ERROR": "Oompa Loompas eivät onnistuneet tuomaan tiedostoasi. Yritä uudestaan.",
+            "ERROR_TOO_MANY_REQUEST": "Oompa Loompas ovat kiireisiä juuri nyt. Yritä hetken päästä uudelleen.",
+            "ERROR_MESSAGE": "Oompa Loompas eivät pysty lukemaan tiedostoasi: {{error_message}}",
+            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is too heavy for our Oompa Loompas, try it with a smaller than ({{maxFileSize}})",
+            "SYNC_SUCCESS": "Projektisi on tuotu sisään onnistuneesti"
+        }
+    },
+    "LIGHTBOX": {
+        "DELETE_ACCOUNT": {
+            "SECTION_NAME": "Poista Taiga-tunnus",
+            "CONFIRM": "Haluatko varmasti poistaa Taiga-tunnuksesi?",
+            "SUBTITLE": "Tulemme kaipaamaan sinua! :-(",
+            "NEWSLETTER_LABEL_TEXT": "I don't wanna receive your newsletter anymore"
+        },
+        "DELETE_PROJECT": {
+            "TITLE": "Poista projekti",
+            "QUESTION": "Haluatko varmasti poistaa tämän projektin?",
+            "SUBTITLE": "Projektin kaikki tiedot poistetaan :-(",
+            "CONFIRM": "Kyllä, tiedän mitä teen"
+        },
+        "ASSIGNED_TO": {
+            "SELECT": "Valitse tekijä",
+            "SEARCH": "Hae käyttäjiä"
+        },
+        "ADD_MEMBER": {
+            "TITLE": "Uusi jäsen",
+            "HELP_TEXT": "Taigan käyttäjät lisätään automaattisesti, muille lähetetään kutsu."
+        },
+        "CREATE_ISSUE": {
+            "TITLE": "Lisää pyyntö"
+        },
+        "FEEDBACK": {
+            "TITLE": "Kerro jotain...",
+            "COMMENT": "...virhe, ehdotuksia, tai huonoin kokemuksesi Taigan kanssa",
+            "ACTION_SEND": "Lähetä palautetta"
+        },
+        "SEARCH": {
+            "TITLE": "Hae",
+            "PLACEHOLDER_SEARCH": "Mitä etsit?"
+        },
+        "ADD_EDIT_SPRINT": {
+            "TITLE": "Uusi kierros",
+            "PLACEHOLDER_SPRINT_NAME": "kierroksen nimi",
+            "PLACEHOLDER_SPRINT_START": "Arvioitu alku",
+            "PLACEHOLDER_SPRINT_END": "Arvioitu loppu",
+            "ACTION_DELETE_SPRINT": "Haluatko poistaa tämän kierroksen?",
+            "TITLE_ACTION_DELETE_SPRINT": "poista kierros",
+            "LAST_SPRINT_NAME": "viimeinen kierros on <strong> {{lastSprint}} ;-) </strong>"
+        },
+        "CREATE_EDIT_TASK": {
+            "TITLE": "Uusi tehtävä",
+            "PLACEHOLDER_SUBJECT": "Tehtävän aihe",
+            "PLACEHOLDER_STATUS": "Tehtävän tila",
+            "OPTION_UNASSIGNED": "Ilman tekijää",
+            "PLACEHOLDER_SHORT_DESCRIPTION": "Kirjoita lyhyt kuvaus",
+            "ACTION_EDIT": "Muokkaa tehtävää"
+        },
+        "CREATE_EDIT_US": {
+            "TITLE": "Uusi Kt",
+            "PLACEHOLDER_DESCRIPTION": "Lisää kuvaus jotta muut ymmärtäisivät käyttäjätarinasi paremmin",
+            "NEW_US": "Uusi käyttäjätarina",
+            "EDIT_US": "Muokkaa käyttäjätarinaa"
+        },
+        "DELETE_SPRINT": {
+            "TITLE": "Poista kierros"
+        },
+        "CREATE_MEMBER": {
+            "PLACEHOLDER_INVITATION_TEXT": "(Vapaaehtoinen) Lisää oma kuvaus kutsuusi uusille jäsenille ;-)",
+            "PLACEHOLDER_TYPE_EMAIL": "Anna sähköposti"
+        }
+    },
+    "US": {
+        "SECTION_NAME": "User story details",
+        "LINK_TASKBOARD": "Tehtävätaulu",
+        "TITLE_LINK_TASKBOARD": "Siirry tehtävätauluun",
+        "TOTAL_POINTS": "yhteensä",
+        "ADD": "+ Lisää uusi käyttäjätarina",
+        "ADD_BULK": "Lisää monta käyttäjätarinaa",
+        "PROMOTED": "Tämä Kt on liitetty pyyntöön:",
+        "TITLE_LINK_GO_TO_ISSUE": "Siirry pyyntöön",
+        "EXTERNAL_REFERENCE": "Tämä Kt oon luotu täältä: ",
+        "GO_TO_EXTERNAL_REFERENCE": "Palaa alkuun",
+        "BLOCKED": "Tämä käyttäjätarina on suljettu",
+        "PREVIOUS": "edellinen käyttäjätarina",
+        "NEXT": "seuraava käyttäjätarina",
+        "TITLE_DELETE_ACTION": "Poista käyttäjätarina",
+        "LIGHTBOX_TITLE_BLOKING_US": "Meitä estää",
+        "TASK_COMPLETED": "{{totalClosedTasks}}/{{totalTasks}} tehtyä tehtävää",
+        "ASSIGN": "Käyttäjätarinan tekijä",
+        "NOT_ESTIMATED": "Ei arvioitu",
+        "TOTAL_US_POINTS": "Kt pisteet yhteensä",
+        "FIELDS": {
+            "TEAM_REQUIREMENT": "Tiimin vaatimus",
+            "CLIENT_REQUIREMENT": "Asiakkaan vaatimus",
+            "FINISH_DATE": "Loppupvm"
+        }
+    },
+    "COMMENTS": {
+        "DELETED_INFO": "{{user}} poisti kommentin {{date}}",
+        "TITLE": "Kommentit",
+        "COMMENT": "Kommentti",
+        "TYPE_NEW_COMMENT": "Lisää uusi kommentti tässä",
+        "SHOW_DELETED": "Näytä poistettu kommentti",
+        "HIDE_DELETED": "Piilota poistettu kommentti",
+        "RESTORE": "Palauta kommentti"
+    },
+    "ACTIVITY": {
+        "SHOW_ACTIVITY": "Näytä tapahtumat",
+        "DATETIME": "DD MMM YYYY HH:mm",
+        "SHOW_MORE": "+ Näytä edelliset rivit ({{showMore}} lisää)",
+        "TITLE": "Aktiivisuus",
+        "REMOVED": "poistettu",
+        "ADDED": "lisätty",
+        "US_POINTS": "Kt pisteet ({{name}})",
+        "NEW_ATTACHMENT": "uusi liite",
+        "DELETED_ATTACHMENT": "poistettu liite",
+        "UPDATED_ATTACHMENT": "päivitetty liite {{filename}}",
+        "DELETED_CUSTOM_ATTRIBUTE": "poista oma attribuutti",
+        "SIZE_CHANGE": "Tehty {size, plural, one{muutos} other{# muutosta}}",
+        "VALUES": {
+            "YES": "Kyllä",
+            "NO": "ei",
+            "EMPTY": "tyhjä",
+            "UNASSIGNED": "ilman tekijää"
+        },
+        "FIELDS": {
+            "SUBJECT": "aihe",
+            "NAME": "nimi",
+            "DESCRIPTION": "kuvaus",
+            "CONTENT": "sisältö",
+            "STATUS": "tila",
+            "IS_CLOSED": "on suljettu",
+            "FINISH_DATE": "loppupvm",
+            "TYPE": "tyyppi",
+            "PRIORITY": "tärkeys",
+            "SEVERITY": "vakavuus",
+            "ASSIGNED_TO": "tekijä on",
+            "WATCHERS": "vahdit",
+            "MILESTONE": "kierros",
+            "USER_STORY": "käyttäjätarina",
+            "PROJECT": "projekti",
+            "IS_BLOCKED": "on estetty",
+            "BLOCKED_NOTE": "estetty muistiinpano",
+            "POINTS": "pisteet",
+            "CLIENT_REQUIREMENT": "asiakkaan vaatimus",
+            "TEAM_REQUIREMENT": "tiimin vaatimus",
+            "IS_IOCAINE": "on hidaste",
+            "TAGS": "avainsanat",
+            "ATTACHMENTS": "liitteet",
+            "IS_DEPRECATED": "on vanhentunut",
+            "ORDER": "järjestys",
+            "BACKLOG_ORDER": "odottavien järjestys",
+            "SPRINT_ORDER": "kierroksen järjestys",
+            "KANBAN_ORDER": "kanban järjestys",
+            "TASKBOARD_ORDER": "Tehtävätaulun järjestys",
+            "US_ORDER": "kt järjestys"
+        }
+    },
+    "BACKLOG": {
+        "SECTION_NAME": "Odottavat",
+        "MOVE_US_TO_CURRENT_SPRINT": "Siirrä nykyiseen kierrokseen",
+        "SHOW_FILTERS": "Näytä suodattimet",
+        "SHOW_TAGS": "Näytä avainsanat",
+        "EMPTY": "Odottavien lista on tyhjä!",
+        "CREATE_NEW_US": "Luo uusi Kt",
+        "CREATE_NEW_US_EMPTY_HELP": "Voit haluta lisätä uuden käyttäjätarinan",
+        "EXCESS_OF_POINTS": "Pisteiden ylimäärä",
+        "PENDING_POINTS": "Odottavat pisteet",
+        "CLOSED_POINTS": "suljettu",
+        "COMPACT_SPRINT": "Kompakti kierros",
+        "GO_TO_TASKBOARD": "Siirry tehtävätauluun {{::name}}",
+        "EDIT_SPRINT": "Muokkaa kierrosta",
+        "TOTAL_POINTS": "yhteensä",
+        "STATUS_NAME": "Tilan nimi",
+        "SORTABLE_FILTER_ERROR": "Et voi viedä odottaviin, kun suodattimet ovat auki",
+        "DOOMLINE": "Projektin laajuus [Doomline]",
+        "CHART": {
+            "XAXIS_LABEL": "Kierrokset",
+            "YAXIS_LABEL": "Pisteet",
+            "OPTIMAL": "Optimaaliset odottavat pisteet kierokselle {{xval}} ovat {{yval}}",
+            "REAL": "Todelliset odottavat pisteet kierrokselle {{xval}} ovat {{yval}}",
+            "INCREMENT_TEAM": "Lisätyt tiimin vaatimat pisteet kierrokselle {{xval}} ovat {{yval}}",
+            "INCREMENT_CLIENT": "Lisätyt asiakkaan vaatimat pisteet kierrokselle {{xval}} ovat {{yval}}"
+        },
+        "TAGS": {
+            "TOGGLE": "Toggle tags visibility",
+            "SHOW": "Näytä avainsanat",
+            "HIDE": "Piilota avainsanat"
+        },
+        "TABLE": {
+            "COLUMN_US": "Käyttäjätarinat",
+            "TITLE_COLUMN_POINTS": "Valitse näkymä roolille"
+        },
+        "SPRINT_SUMMARY": {
+            "TOTAL_POINTS": "yhteensä<br />pistettä",
+            "COMPLETED_POINTS": "valmiina<br/>pistettä",
+            "OPEN_TASKS": "avaa<br/>tehtävät",
+            "CLOSED_TASKS": "suljettu<br/>tehtävää",
+            "IOCAINE_DOSES": "hidastetia<br/>annosta",
+            "SHOW_STATISTICS_TITLE": "Näytä tilastot"
+        },
+        "SUMMARY": {
+            "PROJECT_POINTS": "projekti<br/>pistettä",
+            "DEFINED_POINTS": "määritellyt<br/>pisteet",
+            "CLOSED_POINTS": "suljettu<br/>pistettä",
+            "POINTS_PER_SPRINT": "pisettä/<br/>kierros"
+        },
+        "FILTERS": {
+            "TOGGLE": "Toggle filters visibility",
+            "TITLE": "Suodattimet",
+            "REMOVE": "Poista suodattimet",
+            "HIDE": "Hide Filters",
+            "SHOW": "Näytä suodattimet",
+            "FILTER_CATEGORY_STATUS": "Tila",
+            "FILTER_CATEGORY_TAGS": "Avainsanat"
+        },
+        "SPRINTS": {
+            "TITLE": "KIERROKSET",
+            "DATE": "DD MMM YYYY",
+            "LINK_TASKBOARD": "Kierroksien tehtävätaulu",
+            "TITLE_LINK_TASKBOARD": "Siirry tehtävätauluun {{name}}",
+            "NUMBER_SPRINTS": "<br/>kierrokset",
+            "TITLE_ACTION_NEW_SPRINT": "+ Uusi kierros",
+            "ACTION_NEW_SPRINT": "+ Uusi kierros",
+            "ACTION_SHOW_CLOSED_SPRINTS": "Näytä suljetut kierrokset",
+            "ACTION_HIDE_CLOSED_SPRINTS": "Piilota suljetut kierrokset"
+        }
+    },
+    "ERROR": {
+        "TEXT1": "Jotain tapahtui ja Oompa Loompas työskentelevät sen parissa.",
+        "TEXT2": "Lataa sivu uudestaan",
+        "NOT_FOUND": "Ei löytynyt",
+        "NOT_FOUND_TEXT": "Virhe 404. Sivua ei löydy. Palaa takaisin TAIGA etusivulle ja katso löydätkö haluamasi sieltä.",
+        "PERMISSION_DENIED": "Ei oikeutta",
+        "PERMISSION_DENIED_CODE": "Virhe 403.",
+        "VERSION_ERROR": "Joku Taigassa on päivittänyt tätä ennen sinua. Muutoksiasi ei voida tallentaa. Lataa sivu uudestaan ja korjaa tilanne."
+    },
+    "TASKBOARD": {
+        "SECTION_NAME": "Tehtävätaulu",
+        "TITLE_ACTION_ADD": "Lisää uusi tehtävä",
+        "TITLE_ACTION_ADD_BULK": "Lisää monta tehtävää",
+        "TITLE_ACTION_ASSIGN": "Valitse tekijä",
+        "TITLE_ACTION_EDIT": "Muokkaa tehtävää",
+        "TABLE": {
+            "COLUMN": "Käyttäjätarina",
+            "TITLE_ACTION_FOLD": "Kavenna sarake",
+            "TITLE_ACTION_UNFOLD": "Laajenna sarake",
+            "TITLE_ACTION_FOLD_ROW": "Kavenna rivi",
+            "TITLE_ACTION_UNFOLD_ROW": "Laajenna rivi",
+            "FIELD_POINTS": "pisteet",
+            "ROW_UNASSIGED_TASKS_TITLE": "Poista tekijä"
+        },
+        "CHARTS": {
+            "XAXIS_LABEL": "Päivät",
+            "YAXIS_LABEL": "Pisteet",
+            "OPTIMAL": "Optimaaliset odottavat pisteet {{formattedDate}} ovat {{roundedValue}}",
+            "REAL": "Todelliset odottavat pisteet {{formattedDate}} ovat {{roundedValue}}",
+            "DATE": "DD MMMM YYYY"
+        }
+    },
+    "TASK": {
+        "SECTION_NAME": "Task details",
+        "LINK_TASKBOARD": "Tehtävätaulu",
+        "TITLE_LINK_TASKBOARD": "Siirry tehtävätauluun",
+        "PLACEHOLDER_SUBJECT": "Anna tehtävän aihe",
+        "TITLE_SELECT_STATUS": "Tilan nimi",
+        "OWNER_US": "Tehtävä kuuluu käyttäjälle ",
+        "TITLE_LINK_GO_OWNER": "Siirry käyttäjätarinaan",
+        "ORIGIN_US": "Tämä tehtävä on luotu",
+        "TITLE_LINK_GO_ORIGIN": "Siirry käyttäjätarinaan",
+        "BLOCKED": "Tämä tehtävä on suljettu",
+        "PREVIOUS": "edellinen tehtävä",
+        "NEXT": "seuraava tehtävä",
+        "TITLE_DELETE_ACTION": "Poista tehtävä",
+        "LIGHTBOX_TITLE_BLOKING_TASK": "Estävä tehtävä",
+        "FIELDS": {
+            "MILESTONE": "Kierros",
+            "USER_STORY": "Käyttäjätarina",
+            "IS_IOCAINE": "On hidaste"
+        },
+        "ACTION_IOCAINE": "Hidaste",
+        "TITLE_ACTION_IOCAINE": "Rasittaako tehtävä? Kerro muillekin klikkaamalla hidasteen kuvaketta. Sattaa myös helpottaa jatkossa jos kerrot asiasta vähitellen."
+    },
+    "NOTIFICATION": {
+        "OK": "Kaikki on kunnossa",
+        "WARNING": "Oops, jotain tapahtui...",
+        "WARNING_TEXT": "Oompa Loompas eivät pystyneet tallentamaan muutoksiasi!",
+        "SAVED": "Oompa Loompas tallensivat kaikki muutoksesi!",
+        "CLOSE": "Sulje ilmoitus",
+        "MAIL": "Ilmoitukset sähköpostilla",
+        "ASK_DELETE": "Oletko varma että haluat poistaa tämän?"
+    },
+    "CANCEL_ACCOUNT": {
+        "TITLE": "Peru tunnuksesi",
+        "SUBTITLE": "Olemme pahoillamme että jätät Taigan. Toivottavasti nautit oleskelusta :)",
+        "PLACEHOLDER_INPUT_TOKEN": "peru tunnus tokeni",
+        "ACTION_LEAVING": "Kyllä, olen lähdössä!",
+        "SUCCESS": " Oompa Loompas poistivat tunnuksesi"
+    },
+    "CHANGE_EMAIL_FORM": {
+        "TITLE": "Muuta sähköpostisi",
+        "SUBTITLE": "Vielä yksi klikki ja sähköpostisi on päivitetty!",
+        "PLACEHOLDER_INPUT_TOKEN": "muuta sähköposti-tokenia",
+        "ACTION_CHANGE_EMAIL": "Muuta sähköpostisi",
+        "SUCCESS": "Oompa Loompas päivittivät sähköpostisi"
+    },
+    "CHANGE_PASSWORD_RECOVERY_FORM": {
+        "TITLE": "Luo uusi pääsy Taigaan",
+        "SUBTITLE": "Rautapitoinen ruoka on hyväksi aivoille :P",
+        "PLACEHOLDER_RECOVER_PASSWORD_TOKEN": "Palauta sähköposti-tokeni",
+        "LINK_NEED_TOKEN": "Tarvitsetko yhden?",
+        "TITLE_LINK_NEED_TOKEN": "Tarvitsitko tokenia palauttaakseni salasanan koska unohdit sen?",
+        "PLACEHOLDER_NEW_PASSWORD": "Uusi salasana",
+        "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Anna salasana uudelleen",
+        "ACTION_RESET_PASSWORD": "Uusi salsanasi",
+        "SUCCESS": "Oompa Loompas tallensivat uuden salasanasi.<br /> Yritä <strong>kirjautua sisään</strong> sillä."
+    },
+    "FORGOT_PASSWORD_FORM": {
+        "TITLE": "Oops, unohditko salasanasi?",
+        "SUBTITLE": "Anna käyttäjänimesi tai sähköpostisi saadaksesi uuden",
+        "PLACEHOLDER_FIELD": "Käyttäjänimi tai sähköposti",
+        "ACTION_RESET_PASSWORD": "Uusi salsanasi",
+        "LINK_CANCEL": "Vie minut takaisin, muistan sen.",
+        "SUCCESS": "<strong>Check your inbox!</strong><br />We have sent you an email with the instructions to set a new password",
+        "ERROR": "Oompa Loompas sanovat että käyttäjänimesi tai sähköpostisi tai salasanasi on väärä."
+    },
+    "LOGIN_COMMON": {
+        "HEADER": "Minulla on jo Taiga tunnus",
+        "PLACEHOLDER_AUTH_NAME": "Käyttäjänimi tai sähköposti (kirjainkoko merkitsevä)",
+        "LINK_FORGOT_PASSWORD": "Unohditko?",
+        "TITLE_LINK_FORGOT_PASSWORD": "Unohditko salasanasi?",
+        "ACTION_ENTER": "Sisään",
+        "ACTION_SIGN_IN": "Kirjaudu sisään",
+        "PLACEHOLDER_AUTH_PASSWORD": "Salasana (kirjainkoko merkitsevä)"
+    },
+    "LOGIN_FORM": {
+        "ERROR_AUTH_INCORRECT": "Oompa Loompas sanovat että käyttäjänimesi tai sähköpostisi tai salasanasi on väärä.",
+        "ERROR_GENERIC": "Oompa Loompas havaitsivat virheen",
+        "SUCCESS": "Oompa Loompas ovat onnellisia, tervetuloa Taigaan."
+    },
+    "INVITATION_LOGIN_FORM": {
+        "NOT_FOUND": "<strong>Ooops, meillä on ongelma</strong><br />Our Oompa Loompas eivät löydä kutsuasi.",
+        "SUCCESS": "Olet onnistuneesti liittynyt projektiin {{project_name}}. Tervetuloa!",
+        "ERROR": "Oompa Loompas sanovat että käyttäjänimesi tai sähköpostisi tai salasanasi on väärä."
+    },
+    "REGISTER_FORM": {
+        "TITLE": "Register a new Taiga account (free)",
+        "PLACEHOLDER_NAME": "Anna käyttäjänimi (kirjainkoko on merkitsevä)",
+        "PLACEHOLDER_FULL_NAME": "Anna koko nimesi",
+        "PLACEHOLDER_EMAIL": "Sähköpostisi",
+        "PLACEHOLDER_PASSWORD": "Anna salasana (kirjainkoko merkitsevä)",
+        "ACTION_SIGN_UP": "Kirjaudu sisään",
+        "TITLE_LINK_LOGIN": "Kirjaudu sisään",
+        "LINK_LOGIN": "Oletko jo rekisteröitynyt? Kirjaudu sisään"
+    },
+    "ISSUES": {
+        "LIST_SECTION_NAME": "Pyynnöt",
+        "SECTION_NAME": "Issue details",
+        "ACTION_NEW_ISSUE": "+ UUSI PYYNTÖ",
+        "ACTION_PROMOTE_TO_US": "Liitä käyttäjätarinaan",
+        "PLACEHOLDER_FILTER_NAME": "Anna suodattimen nimi ja paina enter",
+        "PROMOTED": "Tämä pyyntö on liitetty Kthen:",
+        "EXTERNAL_REFERENCE": "Tämä pyyntö on luotu täältä:",
+        "GO_TO_EXTERNAL_REFERENCE": "Palaa alkuun",
+        "BLOCKED": "Tämä pyyntö on estetty",
+        "TITLE_PREVIOUS_ISSUE": "edellinen pyyntö",
+        "TITLE_NEXT_ISSUE": "seuraava pyyntö",
+        "ACTION_DELETE": "Poista pyyntö",
+        "LIGHTBOX_TITLE_BLOKING_ISSUE": "Estävä pyyntö",
+        "CONFIRM_PROMOTE": {
+            "TITLE": "Liitä tämä pyyntö uuteen käyttäjätarinaan",
+            "MESSAGE": "Haluatko varmasti lisätä uuden käyttäjätarinan tästä pyynnöstä?"
+        },
+        "FILTERS": {
+            "TITLE": "Suodattimet",
+            "INPUT_SEARCH_PLACEHOLDER": "Otsikko tai viittaus",
+            "TITLE_ACTION_SEARCH": "Hae",
+            "ACTION_SAVE_CUSTOM_FILTER": "tallenna omaksi suodattimeksi",
+            "BREADCRUMB": "Suodattimet",
+            "TITLE_BREADCRUMB": "Suodattimet",
+            "CATEGORIES": {
+                "TYPE": "Tyyppi",
+                "STATUS": "Tila",
+                "SEVERITY": "Vakavuus",
+                "PRIORITIES": "Tärkeydet",
+                "TAGS": "Avainsanat",
+                "ASSIGNED_TO": "Tekijä",
+                "CREATED_BY": "Luoja",
+                "CUSTOM_FILTERS": "Omat suodattimet"
+            },
+            "CONFIRM_DELETE": {
+                "TITLE": "Poista oma suodatin",
+                "MESSAGE": "oma suodatin '{{customFilterName}}'"
+            }
+        },
+        "TABLE": {
+            "COLUMNS": {
+                "TYPE": "Tyyppi",
+                "SEVERITY": "Vakavuus",
+                "PRIORITY": "Tärkeys",
+                "SUBJECT": "Aihe",
+                "STATUS": "Tila",
+                "CREATED": "Luotu",
+                "ASSIGNED_TO": "Tekijä"
+            },
+            "TITLE_ACTION_CHANGE_STATUS": "Muuta tilaa",
+            "TITLE_ACTION_ASSIGNED_TO": "Tekijä",
+            "EMPTY": {
+                "TITLE": "Ei raportoitavia pyyntöjä:-)",
+                "SUBTITLE": "Löysitkö ongelman?",
+                "ACTION_CREATE_ISSUE": "Luo uusi pyyntö"
+            }
+        }
+    },
+    "KANBAN": {
+        "SECTION_NAME": "Kanban",
+        "TITLE_ACTION_FOLD": "Kavenna sarake",
+        "TITLE_ACTION_UNFOLD": "Laajenna sarake",
+        "TITLE_ACTION_FOLD_CARDS": "Kavenna kortit",
+        "TITLE_ACTION_UNFOLD_CARDS": "Laajenna kortit",
+        "TITLE_ACTION_ADD_US": "Lisää uusi käyttäjätarina",
+        "TITLE_ACTION_ADD_BULK": "Lisää monta",
+        "ACTION_SHOW_ARCHIVED": "Näytä arkisto",
+        "ACTION_HIDE_ARCHIVED": "Piilota arkisto",
+        "HIDDEN_USER_STORIES": "Käyttäjätarinat tällä alueella ovat oletuksena piilotettuna",
+        "ARCHIVED": "Olet arkistoitu",
+        "UNDO_ARCHIVED": "Raahaa ja pudota uudelleen peruaksesi"
+    },
+    "SEARCH": {
+        "FILTER_USER_STORIES": "Käyttäjätarinat",
+        "FILTER_ISSUES": "Pyynnöt",
+        "FILTER_TASKS": "Tehtävät",
+        "FILTER_WIKI": "Wiki-sivut",
+        "PLACEHOLDER_SEARCH": "Etsi täältä...",
+        "TITLE_ACTION_SEARCH": "hae",
+        "EMPTY_TITLE": "Mitään ei löytynyt.",
+        "EMPTY_DESCRIPTION": "Kokeile ylempiä välilehtiä ja hae uudestaan"
+    },
+    "TEAM": {
+        "SECTION_NAME": "Tiimi",
+        "APP_TITLE": "TIIMI - {{projectName}}",
+        "PLACEHOLDER_INPUT_SEARCH": "Etsi koko nimellä...",
+        "COLUMN_MR_WOLF": "Mr. Wolf",
+        "EXPLANATION_COLUMN_MR_WOLF": "Suljetut pyynnöt",
+        "COLUMN_IOCAINE": "Hidasteiden syöjä",
+        "EXPLANATION_COLUMN_IOCAINE": "Kertyneet hidasteet",
+        "COLUMN_CERVANTES": "Cervantes",
+        "EXPLANATION_COLUMN_CERVANTES": "Wiki-sivuja muokattu",
+        "COLUMN_BUG_HUNTER": "Virheiden metsästäjä",
+        "EXPLANATION_COLUMN_BUG_HUNTER": "Pyyntöjä raportoitu",
+        "COLUMN_NIGHT_SHIFT": "Yövuoro",
+        "EXPLANATION_COLUMN_NIGHT_SHIFT": "Suljetut tehtävät",
+        "COLUMN_TOTAL_POWER": "Kokonaisvoima",
+        "EXPLANATION_COLUMN_TOTAL_POWER": "Kokonaispisteet",
+        "SECTION_TITLE_TEAM": "Tiimi >",
+        "SECTION_FILTER_ALL": "Kaikki",
+        "CONFIRM_LEAVE_PROJECT": "Oletko varma että haluat poistua projektista?",
+        "ACTION_LEAVE_PROJECT": "Poistu projektista"
+    },
+    "CHANGE_PASSWORD": {
+        "SECTION_NAME": "Muuta salasanaa",
+        "FIELD_CURRENT_PASSWORD": "Nykyinen salasana",
+        "PLACEHOLDER_CURRENT_PASSWORD": "Nykyinen salasanasi (tai on tyhjä jos sinulla ei vielä ole)",
+        "FIELD_NEW_PASSWORD": "Uusi salasana",
+        "PLACEHOLDER_NEW_PASSWORD": "Anna uusi salasana",
+        "FIELD_RETYPE_PASSWORD": "Anna salasana uudelleen",
+        "PLACEHOLDER_RETYPE_PASSWORD": "Anna salasana uudelleen",
+        "ERROR_PASSWORD_MATCH": "Salasanat eivät täsmää"
+    },
+    "USER_SETTINGS": {
+        "AVATAR_MAX_SIZE": "Maksimi koko {{maxFileSize}}",
+        "MENU": {
+            "SECTION_TITLE": "Käyttäjän asetukset",
+            "USER_PROFILE": "Käyttäjän profiili",
+            "CHANGE_PASSWORD": "Muuta salasanaa",
+            "EMAIL_NOTIFICATIONS": "Sähköposti-ilmoitukset"
+        },
+        "NOTIFICATIONS": {
+            "SECTION_NAME": "Sähköposti-ilmoitukset",
+            "COLUMN_PROJECT": "Projekti",
+            "COLUMN_RECEIVE_ALL": "Vastaanota kaikki",
+            "COLUMN_ONLY_INVOLVED": "Ainoa osallinen",
+            "COLUMN_NO_NOTIFICATIONS": "Ei ilmoituksia",
+            "OPTION_ALL": "Kaikki",
+            "OPTION_INVOLVED": "Osallisena",
+            "OPTION_NONE": "Ei yhtään"
+        },
+        "POPOVER": {
+            "USER_PROFILE": "Käyttäjäprofiili",
+            "CHANGE_PASSWORD": "Muuta salasanaa",
+            "NOTIFICATIONS": "Ilmoitukset",
+            "FEEDBACK": "Palaute",
+            "TITLE_AVATAR": "Käyttäjän asetukset"
+        }
+    },
+    "USER_PROFILE": {
+        "IMAGE_HELP": "Kuvan kooksi astetaan 80x80px.<br />",
+        "ACTION_CHANGE_IMAGE": "Muuta",
+        "ACTION_USE_GRAVATAR": "Käytä gravatar kuvaa",
+        "ACTION_DELETE_ACCOUNT": "Poista Taiga-tunnus",
+        "CHANGE_EMAIL_SUCCESS": "<strong>Tarkista sähköpostisi!</strong><br />Lähetimme ohjeet<br /><strong>{{email}}</strong><br />uuden osoitteen asettamiseen",
+        "CHANGE_PHOTO": "Muuta kuva",
+        "FIELD": {
+            "USERNAME": "Käyttäjänimi",
+            "EMAIL": "Sähköposti",
+            "FULL_NAME": "Koko nimi",
+            "PLACEHOLDER_FULL_NAME": "Anna koko nimesi",
+            "BIO": "Bio",
+            "PLACEHOLDER_BIO": "Kerro jotain itsestäsi",
+            "LANGUAGE": "Kieli",
+            "LANGUAGE_DEFAULT": "-- käytä oletuskieltä --"
+        }
+    },
+    "WIZARD": {
+        "SECTION_TITLE_CHOOSE_TEMPLATE": "Valitse pohja",
+        "CHOOSE_TEMPLATE_TEXT": "Mikä pohja sopii paremmin projektillesi?",
+        "SECTION_TITLE_CREATE_PROJECT": "Luo projekti",
+        "CREATE_PROJECT_TEXT": "Täysin koskematon. Jännittävää!",
+        "PROGRESS_TEMPLATE_SELECTION": "Pohjan valinta",
+        "PROGRESS_NAME_DESCRIPTION": "Nimi ja kuvaus"
+    },
+    "WIKI": {
+        "DATETIME": "DD MMM YYYY HH:mm",
+        "PLACEHOLDER_PAGE": "Kirjoita wiki-sivu",
+        "REMOVE": "Poista tämä wiki-sivu",
+        "DELETE_LIGHTBOX_TITLE": "Poista wiki-sivu",
+        "NAVIGATION": {
+            "SECTION_NAME": "Linkit",
+            "ACTION_ADD_LINK": "Lisää linkki"
+        },
+        "SUMMARY": {
+            "TIMES_EDITED": "kertaa<br/>muokattu",
+            "LAST_EDIT": "viimeinen<br/>muokkaus",
+            "LAST_MODIFICATION": "viimeinen muokkaus"
+        }
+    }
+}

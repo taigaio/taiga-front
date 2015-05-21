@@ -1,6 +1,5 @@
 <% if (showMore > 0) { %>
-a(href="" title="Show more" class="show-more show-more-comments")
-    | + Show previous entries (<%- showMore %> more)
+a(href="" title="{{ 'ACTIVITY.SHOW_MORE' | translate}}" class="show-more show-more-comments", translate="ACTIVITY.SHOW_MORE", translate-values!="{showMore: '<%- showMore %>'}")
 <% } %>
 <% _.each(entries, function(entry) { %>
 <%= entry %>

@@ -23,7 +23,7 @@ taiga = @.taiga
 bindOnce = @.taiga.bindOnce
 debounce = @.taiga.debounce
 
-CreateEditTaskDirective = ($repo, $model, $rs, $rootscope, $loading, lightboxService) ->
+CreateEditTaskDirective = ($repo, $model, $rs, $rootscope, $loading, lightboxService, $translate) ->
     link = ($scope, $el, attrs) ->
         $scope.isNew = true
 
@@ -40,10 +40,13 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootscope, $loading, lightboxSer
             $scope.isNew = true
 
             # Update texts for creation
-            $el.find(".button-green").html("Create") #TODO: i18n
-            $el.find(".title").html("New task  ") #TODO: i18n
-            $el.find(".tag-input").val("")
+            create = $translate.instant("COMMON.CREATE")
+            $el.find(".button-green").html(create)
 
+            newTask = $translate.instant("LIGHTBOX.CREATE_EDIT_TASK.TITLE")
+            $el.find(".title").html(newTask + "  ")
+
+            $el.find(".tag-input").val("")
             lightboxService.open($el)
 
         $scope.$on "taskform:edit", (ctx, task) ->
@@ -51,10 +54,13 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootscope, $loading, lightboxSer
             $scope.isNew = false
 
             # Update texts for edition
-            $el.find(".button-green").html("Save") #TODO: i18n
-            $el.find(".title").html("Edit task  ") #TODO: i18n
-            $el.find(".tag-input").val("")
+            save = $translate.instant("COMMON.SAVE")
+            edit = $translate.instant("LIGHTBOX.CREATE_EDIT_TASK.ACTION_EDIT")
 
+            $el.find(".button-green").html(save)
+            $el.find(".title").html(edit + "  ")
+
+            $el.find(".tag-input").val("")
             lightboxService.open($el)
 
 
@@ -142,6 +148,7 @@ module.directive("tgLbCreateEditTask", [
     "$rootScope",
     "$tgLoading",
     "lightboxService",
+    "$translate"
     CreateEditTaskDirective
 ])
 

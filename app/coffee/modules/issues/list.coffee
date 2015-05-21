@@ -51,12 +51,14 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         "$tgNavUrls",
         "$tgEvents",
         "$tgAnalytics",
-        "tgLoader"
+        "tgLoader",
+        "$translate"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @urls, @params, @q, @location, @appTitle,
-                  @navUrls, @events, @analytics, tgLoader) ->
-        @scope.sectionName = "Issues"
+                  @navUrls, @events, @analytics, tgLoader, @translate) ->
+
+        @scope.sectionName = @translate.instant("ISSUES.LIST_SECTION_NAME")
         @scope.filters = {}
 
         if _.isEmpty(@location.search())
@@ -310,7 +312,7 @@ module.controller("IssuesController", IssuesController)
 ## Issues Directive
 #############################################################################
 
-IssuesDirective = ($log, $location, $template) ->
+IssuesDirective = ($log, $location, $template, $compile) ->
     ## Issues Pagination
     template = $template.get("issue/issue-paginator.html", true)
 
@@ -360,7 +362,11 @@ IssuesDirective = ($log, $location, $template) ->
                 else
                     pages.push({classes: "page", num: i, type: "page"})
 
-            $pagEl.html(template(options))
+
+            html = template(options)
+            html = $compile(html)($scope)
+
+            $pagEl.html(html)
 
         $scope.$watch "issues", (value) ->
             # Do nothing if value is not logical true
@@ -427,14 +433,14 @@ IssuesDirective = ($log, $location, $template) ->
 
     return {link:link}
 
-module.directive("tgIssues", ["$log", "$tgLocation", "$tgTemplate", IssuesDirective])
+module.directive("tgIssues", ["$log", "$tgLocation", "$tgTemplate", "$compile", IssuesDirective])
 
 
 #############################################################################
 ## Issues Filters Directive
 #############################################################################
 
-IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template) ->
+IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template, $translate, $compile) ->
     template = $template.get("issue/issues-filters.html", true)
     templateSelected = $template.get("issue/issues-filters-selected.html", true)
 
@@ -468,6 +474,7 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template) -
                     f.style = "border-left: 3px solid #{f.color}"
 
             html = templateSelected({filters:selectedFilters})
+            html = $compile(html)($scope)
             $el.find(".filters-applied").html(html)
 
             if selectedFilters.length > 0
@@ -481,6 +488,7 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template) -
                     f.style = "border-left: 3px solid #{f.color}"
 
             html = template({filters:filters})
+            html = $compile(html)($scope)
             $el.find(".filter-list").html(html)
 
         toggleFilterSelection = (type, id) ->
@@ -533,12 +541,13 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template) -
 
         $scope.$on "filters:issueupdate", (ctx, filters) ->
             html = template({filters:filters.statuses})
+            html = $compile(html)($scope)
             $el.find(".filter-list").html(html)
 
         selectQFilter = debounceLeading 100, (value) ->
             return if value is undefined
 
-            $ctrl.replaceFilter("page", null)
+            $ctrl.replaceFilter("page", null, true)
 
             if value.length == 0
                 $ctrl.replaceFilter("q", null)
@@ -590,8 +599,8 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template) -
 
             target = angular.element(event.currentTarget)
             customFilterName = target.parent().data('id')
-            title = "Delete custom filter" # TODO: i18n
-            message = "the custom filter '#{customFilterName}'" # TODO: i18n
+            title = $translate.instant("ISSUES.FILTERS.CONFIRM_DELETE.TITLE")
+            message = $translate.instant("ISSUES.FILTERS.CONFIRM_DELETE.MESSAGE", {customFilterName: customFilterName})
 
             $confirm.askOnDelete(title, message).then (finish) ->
                 promise = $ctrl.deleteMyFilter(customFilterName)
@@ -615,6 +624,7 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template) -
             $el.find('.save-filters').hide()
             $el.find('.my-filter-name').removeClass("hidden")
             $el.find('.my-filter-name').focus()
+            $scope.$apply()
 
         $el.on "keyup", ".my-filter-name", (event) ->
             event.preventDefault()
@@ -652,8 +662,8 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template) -
 
     return {link:link}
 
-module.directive("tgIssuesFilters", ["$log", "$tgLocation", "$tgResources", "$tgConfirm", "$tgLoading", "$tgTemplate",
-                                     IssuesFiltersDirective])
+module.directive("tgIssuesFilters", ["$log", "$tgLocation", "$tgResources", "$tgConfirm", "$tgLoading",
+                                     "$tgTemplate", "$translate", "$compile", IssuesFiltersDirective])
 
 
 #############################################################################
@@ -708,7 +718,28 @@ IssueStatusInlineEditionDirective = ($repo, $template, $rootscope) ->
             updateIssueStatus($el, issue, $scope.issueStatusById)
 
             $scope.$apply () ->
-                $repo.save(issue).then
+                $repo.save(issue).then ->
+
+                    for filter in $scope.filters.statuses
+                        if filter.id == issue.status
+                            filter.count++
+
+                    $rootscope.$broadcast("filters:issueupdate", $scope.filters)
+
+                    filtering = false
+
+                    for filter in $scope.filters.statuses
+                        if filter.selected == true
+                            filtering = true
+                            if filter.id == issue.status
+                                return
+
+                    if not filtering
+                        return
+
+                    for el, i in $scope.issues
+                        if el and el.id == issue.id
+                            $scope.issues.splice(i, 1)
 
                 for filter in $scope.filters.statuses
                     if filter.id == issue.status
@@ -732,7 +763,8 @@ IssueStatusInlineEditionDirective = ($repo, $template, $rootscope) ->
 
     return {link: link}
 
-module.directive("tgIssueStatusInlineEdition", ["$tgRepo", "$tgTemplate", "$rootScope", IssueStatusInlineEditionDirective])
+module.directive("tgIssueStatusInlineEdition", ["$tgRepo", "$tgTemplate", "$rootScope",
+                                                IssueStatusInlineEditionDirective])
 
 
 #############################################################################
@@ -783,4 +815,5 @@ IssueAssignedToInlineEditionDirective = ($repo, $rootscope, popoverService) ->
 
     return {link: link}
 
-module.directive("tgIssueAssignedToInlineEdition", ["$tgRepo", "$rootScope", IssueAssignedToInlineEditionDirective])
+module.directive("tgIssueAssignedToInlineEdition", ["$tgRepo", "$rootScope",
+                                                    IssueAssignedToInlineEditionDirective])

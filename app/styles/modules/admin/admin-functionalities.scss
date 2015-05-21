@@ -19,7 +19,7 @@
         vertical-align: top;
         width: 32%;
         &.active {
-            background-color: #e9f0da;
+            background-color: rgba($green-taiga, .3);
             opacity: 1;
         }
         .icon {
@@ -41,7 +41,7 @@
                 text-align: center;
             }
         }
-        span {
+        .title {
             @extend %bold;
             display: block;
         }

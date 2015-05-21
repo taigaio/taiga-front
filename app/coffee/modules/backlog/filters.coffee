@@ -116,6 +116,9 @@ BacklogFiltersDirective = ($log, $location, $templates) ->
         $scope.$on "filters:loaded", (ctx, filters) ->
             initializeSelectedFilters(filters)
 
+        $scope.$on "filters:update", (ctx, filters) ->
+            renderFilters(filters)
+
         ## Dom Event Handlers
         $el.on "click", ".filters-cats > ul > li > a", (event) ->
             event.preventDefault()

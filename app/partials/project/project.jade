@@ -1,20 +1,23 @@
+doctype html
+
 div.wrapper(ng-controller="ProjectController as ctrl")
     section.main.single-project
         h1
             span.green(tg-bo-bind="project.name", class="project-name")
         div.summary
             div.summary-stats
-                span.info-num(tg-bo-bind="stats.total_points")
-                span.info-text project<br/> points
+                span.number(ng-bind="stats.total_points") --
+                span.description(translate="BACKLOG.SUMMARY.PROJECT_POINTS")
             div.summary-stats
-                span.info-num(tg-bo-bind="stats.defined_points")
-                span.info-text defined<br/> points
+                span.number(ng-bind="stats.defined_points") --
+                span.description(translate="BACKLOG.SUMMARY.DEFINED_POINTS")
             div.summary-stats
-                span.info-num(tg-bo-bind="stats.assigned_points")
-                span.info-text assigned<br/> points
+                span.number(ng-bind="stats.closed_points") --
+                span.description(translate="BACKLOG.SUMMARY.CLOSED_POINTS")
             div.summary-stats
-                span.info-num(tg-bo-bind="stats.closed_points")
-                span.info-text closed<br/> points
+                span.number(ng-bind="stats.speed | number:0") --
+                span.description(translate="BACKLOG.SUMMARY.POINTS_PER_SPRINT")
+
         div.project-data-container
             p.description(tg-bo-bind="project.description")
             ul

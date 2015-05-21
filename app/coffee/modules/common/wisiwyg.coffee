@@ -55,15 +55,12 @@ module = angular.module("taigaCommon")
 #############################################################################
 ## WYSIWYG markitup editor directive
 #############################################################################
-tgMarkitupDirective = ($rootscope, $rs, $tr, $selectedText, $template) ->
+MarkitupDirective = ($rootscope, $rs, $selectedText, $template, $compile, $translate) ->
     previewTemplate = $template.get("common/wysiwyg/wysiwyg-markitup-preview.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
         element = angular.element($el)
         previewDomNode = $("<div/>", {class: "preview"})
-
-        #openHelp = ->
-        #    window.open($rootscope.urls.wikiHelpUrl(), "_blank")
 
         closePreviewMode = ->
             element.parents(".markdown").find(".preview").remove()
@@ -76,7 +73,10 @@ tgMarkitupDirective = ($rootscope, $rs, $tr, $selectedText, $template) ->
             markdownDomNode = element.parents(".markdown")
             markItUpDomNode = element.parents(".markItUp")
             $rs.mdrender.render($scope.projectId, $model.$modelValue).then (data) ->
-                markdownDomNode.append(previewTemplate({data: data.data}))
+                html = previewTemplate({data: data.data})
+                html = $compile(html)($scope)
+
+                markdownDomNode.append(html)
                 markItUpDomNode.hide()
 
                 markdown = element.closest(".markdown")
@@ -130,168 +130,14 @@ tgMarkitupDirective = ($rootscope, $rs, $tr, $selectedText, $template) ->
             else
                 return cursorPosition
 
-        markdownSettings =
-            nameSpace: "markdown"
-            onShiftEnter: {keepDefault:false, openWith:"\n\n"}
-            onEnter:
-                keepDefault: false,
-                replaceWith: () -> "\n"
-                afterInsert: (data) ->
-                    lines = data.textarea.value.split("\n")
-                    cursorLine = data.textarea.value[0..(data.caretPosition - 1)].split("\n").length
-                    newLineContent = data.textarea.value[data.caretPosition..].split("\n")[0]
-                    lastLine = lines[cursorLine - 1]
-
-                    # unordered list -
-                    match = lastLine.match /^(\s*- ).*/
-
-                    if match
-                        emptyListItem = lastLine.match /^(\s*)\-\s$/
-
-                        if emptyListItem
-                            markdownCaretPositon = addLine(data.textarea, cursorLine - 1)
-                        else
-                            markdownCaretPositon = addLine(data.textarea, cursorLine, "#{match[1]}")
-
-                    # unordered list *
-                    match = lastLine.match /^(\s*\* ).*/
-
-                    if match
-                        emptyListItem = lastLine.match /^(\s*\* )$/
-
-                        if emptyListItem
-                            markdownCaretPositon = addLine(data.textarea, cursorLine - 1)
-                        else
-                            markdownCaretPositon = addLine(data.textarea, cursorLine, "#{match[1]}")
-
-                    # ordered list
-                    match = lastLine.match /^(\s*)(\d+)\.\s/
-
-                    if match
-                        emptyListItem = lastLine.match /^(\s*)(\d+)\.\s$/
-
-                        if emptyListItem
-                            markdownCaretPositon = addLine(data.textarea, cursorLine - 1)
-                        else
-                            markdownCaretPositon = addLine(data.textarea, cursorLine, "#{match[1] + (parseInt(match[2], 10) + 1)}. ")
-
-
-                    setCaretPosition(data.textarea, markdownCaretPositon) if markdownCaretPositon
-
-            markupSet: [
-                {
-                    name: $tr.t("markdown-editor.heading-1")
-                    key: "1"
-                    placeHolder: $tr.t("markdown-editor.placeholder")
-                    closeWith: (markItUp) -> markdownTitle(markItUp, "=")
-                },
-                {
-                    name: $tr.t("markdown-editor.heading-2")
-                    key: "2"
-                    placeHolder: $tr.t("markdown-editor.placeholder")
-                    closeWith: (markItUp) -> markdownTitle(markItUp, "-")
-                },
-                {
-                    name: $tr.t("markdown-editor.heading-3")
-                    key: "3"
-                    openWith: "### "
-                    placeHolder: $tr.t("markdown-editor.placeholder")
-                },
-                {
-                    separator: "---------------"
-                },
-                {
-                    name: $tr.t("markdown-editor.bold")
-                    key: "B"
-                    openWith: "**"
-                    closeWith: "**"
-                },
-                {
-                    name: $tr.t("markdown-editor.italic")
-                    key: "I"
-                    openWith: "_"
-                    closeWith: "_"
-                },
-                {
-                    name: $tr.t("markdown-editor.strike")
-                    key: "S"
-                    openWith: "~~"
-                    closeWith: "~~"
-                },
-                {
-                    separator: "---------------"
-                },
-                {
-                    name: $tr.t("markdown-editor.bulleted-list")
-                    openWith: "- "
-                },
-                {
-                    name: $tr.t("markdown-editor.numeric-list")
-                    openWith: (markItUp) -> markItUp.line+". "
-                },
-                {
-                    separator: "---------------"
-                },
-                {
-                    name: $tr.t("markdown-editor.picture")
-                    key: "P"
-                    replaceWith: '![[![Alternative text]!]](<<<[![Url:!:http://]!]>>> "[![Title]!]")'
-                    beforeInsert:(markItUp) -> prepareUrlFormatting(markItUp)
-                    afterInsert:(markItUp) -> urlFormatting(markItUp)
-                },
-                {
-                    name: $tr.t("markdown-editor.link")
-                    key: "L"
-                    openWith: "["
-                    closeWith: '](<<<[![Url:!:http://]!]>>> "[![Title]!]")'
-                    placeHolder: $tr.t("markdown-editor.link-placeholder")
-                    beforeInsert:(markItUp) -> prepareUrlFormatting(markItUp)
-                    afterInsert:(markItUp) -> urlFormatting(markItUp)
-                },
-                {
-                    separator: "---------------"
-                },
-                {
-                    name: $tr.t("markdown-editor.quotes")
-                    openWith: "> "
-                },
-                {
-                    name: $tr.t("markdown-editor.code-block")
-                    openWith: "```\n"
-                    closeWith: "\n```"
-                },
-                {
-                    separator: "---------------"
-                },
-                {
-                    name: $tr.t("markdown-editor.preview")
-                    call: preview
-                    className: "preview-icon"
-                },
-                # {
-                #     separator: "---------------"
-                # },
-                # {
-                #     name: $tr.t("markdown-editor.help")
-                #     call: openHelp
-                #     className: "help"
-                # }
-            ]
-            afterInsert: (event) ->
-                target = angular.element(event.textarea)
-                $model.$setViewValue(target.val())
-
         prepareUrlFormatting = (markItUp) ->
-            console.log(markItUp)
             regex = /(<<<|>>>)/gi
             result = 0
             indices = []
             (indices.push(result.index)) while ( (result = regex.exec(markItUp.textarea.value)) )
             markItUp.donotparse = indices
-            console.log(indices)
 
         urlFormatting = (markItUp) ->
-            console.log(markItUp.donotparse)
             regex = /<<</gi
             result = 0
             startIndex = 0
@@ -329,13 +175,186 @@ tgMarkitupDirective = ($rootscope, $rs, $tr, $selectedText, $template) ->
 
             return "\n"+heading+"\n"
 
-        element.markItUp(markdownSettings)
+        renderMarkItUp = () ->
+            markdownSettings =
+                nameSpace: "markdown"
+                onShiftEnter: {keepDefault:false, openWith:"\n\n"}
+                onEnter:
+                    keepDefault: false,
+                    replaceWith: () -> "\n"
+                    afterInsert: (data) ->
+                        lines = data.textarea.value.split("\n")
+                        cursorLine = data.textarea.value[0..(data.caretPosition - 1)].split("\n").length
+                        newLineContent = data.textarea.value[data.caretPosition..].split("\n")[0]
+                        lastLine = lines[cursorLine - 1]
+
+                        # unordered list -
+                        match = lastLine.match /^(\s*- ).*/
+
+                        if match
+                            emptyListItem = lastLine.match /^(\s*)\-\s$/
+
+                            if emptyListItem
+                                nline = cursorLine - 1
+                                replace = null
+                            else
+                                nline = cursorLine
+                                replace = "#{match[1]}"
+
+                            markdownCaretPositon = addLine(data.textarea, nline, replace)
+
+                        # unordered list *
+                        match = lastLine.match /^(\s*\* ).*/
+
+                        if match
+                            emptyListItem = lastLine.match /^(\s*\* )$/
+
+                            if emptyListItem
+                                nline = cursorLine - 1
+                                replace = null
+                            else
+                                nline = cursorLine
+                                replace = "#{match[1]}"
+
+                            markdownCaretPositon = addLine(data.textarea, nline, replace)
+
+                        # ordered list
+                        match = lastLine.match /^(\s*)(\d+)\.\s/
+
+                        if match
+                            emptyListItem = lastLine.match /^(\s*)(\d+)\.\s$/
+
+                            if emptyListItem
+                                nline = cursorLine - 1
+                                replace = null
+                            else
+                                nline = cursorLine
+                                replace = "#{match[1] + (parseInt(match[2], 10) + 1)}. "
+
+                            markdownCaretPositon = addLine(data.textarea, nline, replace)
+
+                        setCaretPosition(data.textarea, markdownCaretPositon) if markdownCaretPositon
+
+                markupSet: [
+                    {
+                        name: $translate.instant("COMMON.WYSIWYG.H1_BUTTON")
+                        key: "1"
+                        placeHolder: $translate.instant("COMMON.WYSIWYG.H1_SAMPLE_TEXT")
+                        closeWith: (markItUp) -> markdownTitle(markItUp, "=")
+                    },
+                    {
+                        name: $translate.instant("COMMON.WYSIWYG.H2_BUTTON")
+                        key: "2"
+                        placeHolder: $translate.instant("COMMON.WYSIWYG.H2_SAMPLE_TEXT")
+                        closeWith: (markItUp) -> markdownTitle(markItUp, "-")
+                    },
+                    {
+                        name: $translate.instant("COMMON.WYSIWYG.H3_BUTTON")
+                        key: "3"
+                        openWith: "### "
+                        placeHolder: $translate.instant("COMMON.WYSIWYG.H3_SAMPLE_TEXT")
+                    },
+                    {
+                        separator: "---------------"
+                    },
+                    {
+                        name: $translate.instant("COMMON.WYSIWYG.BOLD_BUTTON")
+                        key: "B"
+                        openWith: "**"
+                        closeWith: "**"
+                        placeHolder: $translate.instant("COMMON.WYSIWYG.BOLD_BUTTON_SAMPLE_TEXT")
+                    },
+                    {
+                        name: $translate.instant("COMMON.WYSIWYG.ITALIC_SAMPLE_TEXT")
+                        key: "I"
+                        openWith: "_"
+                        closeWith: "_"
+                        placeHolder: $translate.instant("COMMON.WYSIWYG.ITALIC_SAMPLE_TEXT")
+                    },
+                    {
+                        name: $translate.instant("COMMON.WYSIWYG.STRIKE_BUTTON")
+                        key: "S"
+                        openWith: "~~"
+                        closeWith: "~~"
+                        placeHolder: $translate.instant("COMMON.WYSIWYG.STRIKE_SAMPLE_TEXT")
+                    },
+                    {
+                        separator: "---------------"
+                    },
+                    {
+                        name: $translate.instant("COMMON.WYSIWYG.BULLETED_LIST_BUTTON")
+                        openWith: "- "
+                        placeHolder: $translate.instant("COMMON.WYSIWYG.BULLETED_LIST_SAMPLE_TEXT")
+                    },
+                    {
+                        name: $translate.instant("COMMON.WYSIWYG.NUMERIC_LIST_BUTTON")
+                        openWith: (markItUp) -> markItUp.line+". "
+                        placeHolder: $translate.instant("COMMON.WYSIWYG.NUMERIC_LIST_SAMPLE_TEXT")
+                    },
+                    {
+                        separator: "---------------"
+                    },
+                    {
+                        name: $translate.instant("COMMON.WYSIWYG.PICTURE_BUTTON")
+                        key: "P"
+                        openWith: "!["
+                        closeWith: '](<<<[![Url:!:http://]!]>>> "[![Title]!]")'
+                        placeHolder: $translate.instant("COMMON.WYSIWYG.PICTURE_SAMPLE_TEXT")
+                        beforeInsert:(markItUp) -> prepareUrlFormatting(markItUp)
+                        afterInsert:(markItUp) -> urlFormatting(markItUp)
+                    },
+                    {
+                        name: $translate.instant("COMMON.WYSIWYG.LINK_BUTTON")
+                        key: "L"
+                        openWith: "["
+                        closeWith: '](<<<[![Url:!:http://]!]>>> "[![Title]!]")'
+                        placeHolder: $translate.instant("COMMON.WYSIWYG.LINK_SAMPLE_TEXT")
+                        beforeInsert:(markItUp) -> prepareUrlFormatting(markItUp)
+                        afterInsert:(markItUp) -> urlFormatting(markItUp)
+                    },
+                    {
+                        separator: "---------------"
+                    },
+                    {
+                        name: $translate.instant("COMMON.WYSIWYG.QUOTE_BLOCK_BUTTON")
+                        openWith: "> "
+                        placeHolder: $translate.instant("COMMON.WYSIWYG.QUOTE_BLOCK_SAMPLE_TEXT")
+                    },
+                    {
+                        name: $translate.instant("COMMON.WYSIWYG.CODE_BLOCK_BUTTON")
+                        openWith: "```\n"
+                        placeHolder: $translate.instant("COMMON.WYSIWYG.CODE_BLOCK_SAMPLE_TEXT")
+                        closeWith: "\n```"
+                    },
+                    {
+                        separator: "---------------"
+                    },
+                    {
+                        name: $translate.instant("COMMON.WYSIWYG.PREVIEW_BUTTON")
+                        call: preview
+                        className: "preview-icon"
+                    },
+                ]
+                afterInsert: (event) ->
+                    target = angular.element(event.textarea)
+                    $model.$setViewValue(target.val())
+
+            element
+                .markItUpRemove()
+                .markItUp(markdownSettings)
+
+        renderMarkItUp()
+
+        unbind = $rootscope.$on "$translateChangeEnd", renderMarkItUp
+
         element.on "keypress", (event) ->
             $scope.$apply()
 
         $scope.$on "$destroy", ->
             $el.off()
+            unbind()
 
     return {link:link, require:"ngModel"}
 
-module.directive("tgMarkitup", ["$rootScope", "$tgResources", "$tgI18n", "$selectedText", "$tgTemplate", tgMarkitupDirective])
+module.directive("tgMarkitup", ["$rootScope", "$tgResources", "$selectedText", "$tgTemplate", "$compile",
+                                "$translate", MarkitupDirective])

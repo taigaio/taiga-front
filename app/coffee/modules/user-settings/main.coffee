@@ -41,17 +41,21 @@ class UserSettingsController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$q",
         "$tgLocation",
         "$tgNavUrls",
-        "$tgAuth"
+        "$tgAuth",
+        "$translate"
     ]
 
-    constructor: (@scope, @rootscope, @config, @repo, @confirm, @rs, @params, @q, @location, @navUrls, @auth) ->
-        @scope.sectionName = "User Profile" #i18n
+    constructor: (@scope, @rootscope, @config, @repo, @confirm, @rs, @params, @q, @location, @navUrls, @auth, @translate) ->
+        @scope.sectionName = "USER_SETTINGS.MENU.SECTION_TITLE"
+
         @scope.project = {}
         @scope.user = @auth.getUser()
+        @scope.lang = @getLan()
 
         maxFileSize = @config.get("maxUploadFileSize", null)
         if maxFileSize
-            @scope.maxFileSizeMsg = "[Max, size: #{sizeFormat(maxFileSize)}" # TODO: i18n
+            @translate("USER_SETTINGS.AVATAR_MAX_SIZE", {"maxFileSize": sizeFormat(maxFileSize)}).then (text) =>
+                @scope.maxFileSizeMsg = text
 
         promise = @.loadInitialData()
 
@@ -63,15 +67,25 @@ class UserSettingsController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.$emit('project:loaded', project)
             return project
 
+    loadLocales: ->
+        return @rs.locales.list().then (locales) =>
+            @scope.locales = locales
+            return locales
+
     loadInitialData: ->
         promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
             @scope.projectId = data.project
             return data
 
-        return promise.then(=> @.loadProject())
+        return @q.all([promise.then(=> @.loadProject()),
+                       @.loadLocales()])
 
     openDeleteLightbox: ->
         @rootscope.$broadcast("deletelightbox:new", @scope.user)
+
+    getLan: ->
+        return @scope.user.lang ||
+               @translate.preferredLanguage()
 
 module.controller("UserSettingsController", UserSettingsController)
 
@@ -80,7 +94,7 @@ module.controller("UserSettingsController", UserSettingsController)
 ## User Profile Directive
 #############################################################################
 
-UserProfileDirective = ($confirm, $auth, $repo) ->
+UserProfileDirective = ($confirm, $auth, $repo, $translate) ->
     link = ($scope, $el, $attrs) ->
         submit = debounce 2000, (event) =>
             event.preventDefault()
@@ -89,14 +103,14 @@ UserProfileDirective = ($confirm, $auth, $repo) ->
             return if not form.validate()
 
             changeEmail = $scope.user.isAttributeModified("email")
+            $scope.user.lang = $scope.lang
 
             onSuccess = (data) =>
                 $auth.setUser(data)
 
                 if changeEmail
-                    $confirm.success("<strong>Check your inbox!</strong><br />
-                           We have sent a mail to your account<br />
-                           with the instructions to set your new address") #TODO: i18n
+                    text = $translate.instant("USER_PROFILE.CHANGE_EMAIL_SUCCESS")
+                    $confirm.success(text)
                 else
                     $confirm.notify('success')
 
@@ -113,7 +127,7 @@ UserProfileDirective = ($confirm, $auth, $repo) ->
 
     return {link:link}
 
-module.directive("tgUserProfile", ["$tgConfirm", "$tgAuth", "$tgRepo", UserProfileDirective])
+module.directive("tgUserProfile", ["$tgConfirm", "$tgAuth", "$tgRepo", "$translate", UserProfileDirective])
 
 
 #############################################################################

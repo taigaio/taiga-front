@@ -45,7 +45,7 @@ class UserNotificationsController extends mixOf(taiga.Controller, taiga.PageMixi
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls, @auth) ->
-        @scope.sectionName = "Email Notifications" #i18n
+        @scope.sectionName = "USER_SETTINGS.NOTIFICATIONS.SECTION_NAME"
         @scope.project = {}
         @scope.user = @auth.getUser()
 
@@ -94,7 +94,7 @@ module.directive("tgUserNotifications", UserNotificationsDirective)
 ## User Notifications List Directive
 #############################################################################
 
-UserNotificationsListDirective = ($repo, $confirm) ->
+UserNotificationsListDirective = ($repo, $confirm, $compile) ->
     template = _.template("""
         <% _.each(notifyPolicies, function (notifyPolicy, index) { %>
         <div class="policy-table-row" data-index="<%- index %>">
@@ -104,7 +104,8 @@ UserNotificationsListDirective = ($repo, $confirm) ->
               <input type="radio"
                      name="policy-<%- notifyPolicy.id %>" id="policy-all-<%- notifyPolicy.id %>"
                      value="2" <% if (notifyPolicy.notify_level == 2) { %>checked="checked"<% } %>/>
-              <label for="policy-all-<%- notifyPolicy.id %>">All</label>
+              <label for="policy-all-<%- notifyPolicy.id %>"
+                     translate="USER_SETTINGS.NOTIFICATIONS.OPTION_ALL"></label>
             </fieldset>
           </div>
           <div class="policy-table-involved">
@@ -112,7 +113,8 @@ UserNotificationsListDirective = ($repo, $confirm) ->
               <input type="radio"
                      name="policy-<%- notifyPolicy.id %>" id="policy-involved-<%- notifyPolicy.id %>"
                      value="1" <% if (notifyPolicy.notify_level == 1) { %>checked="checked"<% } %> />
-              <label for="policy-involved-<%- notifyPolicy.id %>">Involved</label>
+              <label for="policy-involved-<%- notifyPolicy.id %>"
+                     translate="USER_SETTINGS.NOTIFICATIONS.OPTION_INVOLVED"></label>
             </fieldset>
           </div>
           <div class="policy-table-none">
@@ -120,7 +122,8 @@ UserNotificationsListDirective = ($repo, $confirm) ->
               <input type="radio"
                      name="policy-<%- notifyPolicy.id %>" id="policy-none-<%- notifyPolicy.id %>"
                      value="3" <% if (notifyPolicy.notify_level == 3) { %>checked="checked"<% } %> />
-              <label for="policy-none-<%- notifyPolicy.id %>">None</label>
+              <label for="policy-none-<%- notifyPolicy.id %>"
+                     translate="USER_SETTINGS.NOTIFICATIONS.OPTION_NONE"></label>
             </fieldset>
           </div>
         </div>
@@ -130,13 +133,17 @@ UserNotificationsListDirective = ($repo, $confirm) ->
     link = ($scope, $el, $attrs) ->
         render = ->
             $el.off()
-            $el.html(template({notifyPolicies: $scope.notifyPolicies}))
+
+            ctx = {notifyPolicies: $scope.notifyPolicies}
+            html = template(ctx)
+
+            $el.html($compile(html)($scope))
 
             $el.on "change", "input[type=radio]", (event) ->
                 target = angular.element(event.currentTarget)
+
                 policyIndex = target.parents(".policy-table-row").data('index')
                 policy = $scope.notifyPolicies[policyIndex]
-
                 prev_level = policy.notify_level
                 policy.notify_level = parseInt(target.val(), 10)
 
@@ -145,7 +152,9 @@ UserNotificationsListDirective = ($repo, $confirm) ->
 
                 onError = ->
                     $confirm.notify("error")
-                    target.parents(".policy-table-row").find("input[value=#{prev_level}]").prop("checked", true)
+                    target.parents(".policy-table-row")
+                          .find("input[value=#{prev_level}]")
+                          .prop("checked", true)
 
                 $repo.save(policy).then(onSuccess, onError)
 
@@ -156,4 +165,5 @@ UserNotificationsListDirective = ($repo, $confirm) ->
 
     return {link:link}
 
-module.directive("tgUserNotificationsList", ["$tgRepo", "$tgConfirm", UserNotificationsListDirective])
+module.directive("tgUserNotificationsList", ["$tgRepo", "$tgConfirm", "$compile",
+                                             UserNotificationsListDirective])

@@ -1,65 +1,65 @@
 div(class="menu-container")
     ul(class="main-nav")
         li(id="nav-search")
-            a(href="" title="Search")
+            a(href="" title="{{'PROJECT.SECTION.SEARCH' | translate}}")
                 span(class="icon icon-search")
-                span(class="item") Search
+                span(class="item", translate="PROJECT.SECTION.SEARCH")
         <% if (project.is_backlog_activated && project.my_permissions.indexOf("view_us") != -1) { %>
         li(id="nav-backlog")
-            a(href="" title="Backlog" tg-nav="project-backlog:project=project.slug")
+            a(href="" title="{{'PROJECT.SECTION.BACKLOG' | translate}}" tg-nav="project-backlog:project=project.slug")
                 span(class="icon icon-backlog")
-                span(class="item") Backlog
+                span(class="item", translate="PROJECT.SECTION.BACKLOG")
         <% } %>
         <% if (project.is_kanban_activated && project.my_permissions.indexOf("view_us") != -1) { %>
         li(id="nav-kanban")
-            a(href="" title="Kanban" tg-nav="project-kanban:project=project.slug")
+            a(href="" title="{{'PROJECT.SECTION.KANBAN' | translate}}" tg-nav="project-kanban:project=project.slug")
                 span(class="icon icon-kanban")
-                span(class="item") Kanban
+                span(class="item", translate="PROJECT.SECTION.KANBAN")
         <% } %>
         <% if (project.is_issues_activated && project.my_permissions.indexOf("view_issues") != -1) { %>
         li(id="nav-issues")
-            a(href="" title="Issues" tg-nav="project-issues:project=project.slug")
+            a(href="" title="{{'PROJECT.SECTION.ISSUES' | translate}}" tg-nav="project-issues:project=project.slug")
                 span(class="icon icon-issues")
-                span(class="item") Issues
+                span(class="item", translate="PROJECT.SECTION.ISSUES")
         <% } %>
         <% if (project.is_wiki_activated && project.my_permissions.indexOf("view_wiki_pages") != -1) { %>
         li(id="nav-wiki")
-            a(href="" title="Wiki" tg-nav="project-wiki:project=project.slug")
+            a(href="" title="{{'PROJECT.SECTION.WIKI' | translate}}" tg-nav="project-wiki:project=project.slug")
                 span(class="icon icon-wiki")
-                span(class="item") Wiki
+                span(class="item", translate="PROJECT.SECTION.WIKI")
         <% } %>
         li(id="nav-team")
-            a(href="" title="Team" tg-nav="project-team:project=project.slug")
+            a(href="" title="{{'PROJECT.SECTION.TEAM' | translate}}" tg-nav="project-team:project=project.slug")
                 span(class="icon icon-team")
-                span(class="item") Team
+                span(class="item", translate="PROJECT.SECTION.TEAM")
         <% if (project.videoconferences) { %>
         li(id="nav-video")
-            a(href!="<%- project.videoconferenceUrl %>" target="_blank" title="Meet Up")
+            a(href!="<%- project.videoconferenceUrl %>" target="_blank" title="{{'PROJECT.SECTION.MEETUP' | translate}}")
                 span(class="icon icon-video")
-                span(class="item") Meet Up
+                span(class="item", translate="PROJECT.SECTION.MEETUP")
         <% } %>
         <% if (project.i_am_owner) { %>
         li(id="nav-admin")
-            a(href="" tg-nav="project-admin-home:project=project.slug" title="Admin")
+            a(href="" tg-nav="project-admin-home:project=project.slug" title="{{'PROJECT.SECTION.ADMIN' | translate}}")
                 span(class="icon icon-settings")
-                span(class="item") Admin
+                span(class="item", translate="PROJECT.SECTION.ADMIN")
         <% } %>
     <% if (user) { %>
     div(class="user")
         div(class="user-settings")
             ul(class="popover")
                 li
-                    a(href="" title="User Profile", tg-nav="user-settings-user-profile:project=project.slug") User Profile
+                    a(href="" title="{{'USER_SETTINGS.POPOVER.USER_PROFILE' | translate}}", tg-nav="user-settings-user-profile:project=project.slug", translate="USER_SETTINGS.POPOVER.USER_PROFILE")
                 li
-                    a(href="" title="Change Password", tg-nav="user-settings-user-change-password:project=project.slug") Change Password
+                    a(href="" title="{{'USER_SETTINGS.POPOVER.CHANGE_PASSWORD' | translate}}", tg-nav="user-settings-user-change-password:project=project.slug", translate="USER_SETTINGS.POPOVER.CHANGE_PASSWORD")
                 li
-                    a(href="" title="Notifications", tg-nav="user-settings-mail-notifications:project=project.slug") Notifications
+                    a(href="" title="{{'USER_SETTINGS.POPOVER.NOTIFICATIONS' | translate}}", tg-nav="user-settings-mail-notifications:project=project.slug", translate="USER_SETTINGS.POPOVER.NOTIFICATIONS")
                 <% if (feedbackEnabled) { %>
                 li
-                    a(href="" class="feedback" title="Feedback") Feedback
+                    a(href="" class="feedback" title="{{'USER_SETTINGS.POPOVER.FEEDBACK' | translate}}", translate="USER_SETTINGS.POPOVER.FEEDBACK")
                 <% } %>
                 li
-                    a(href="" title="Logout" class="logout") Logout
-            a(href="" title="User preferences" class="avatar" id="nav-user-settings")
+                    a(href="" title="{{'COMMON.LOGOUT' | translate}}" class="logout", translate="COMMON.LOGOUT")
+            a(href="" title="{{'USER_SETTINGS.POPOVER.TITLE_AVATAR' | translate}}" class="avatar" id="nav-user-settings")
                 img(src="{{ user.photo }}" alt="{{ user.full_name_display }}")
     <% } %>

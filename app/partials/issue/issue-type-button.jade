@@ -4,7 +4,7 @@ div(class!="type-data <% if(editable){ %>clickable<% }%>")
     <% if(editable){ %>
     span(class="icon icon-arrow-bottom")
     <% }%>
-    span(class="level-name") type
+    span(class="level-name", translate="COMMON.FIELDS.TYPE")
 
     ul(class="popover pop-type")
         <% _.each(typees, function(tp) { %>

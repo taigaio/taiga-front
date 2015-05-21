@@ -47,21 +47,28 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$q",
         "$tgLocation",
         "$tgNavUrls",
-        "$appTitle"
+        "$appTitle",
+        "$translate"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls, @appTitle) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls, @appTitle, @translate) ->
         @scope.project = {}
 
         promise = @.loadInitialData()
 
         promise.then =>
-            @appTitle.set("Project profile - " + @scope.sectionName + " - " + @scope.project.name)
+            sectionName = @translate.instant( @scope.sectionName)
+            appTitle = @translate.instant("ADMIN.PROJECT_PROFILE.PAGE_TITLE", {
+                     sectionName: sectionName, projectName: @scope.project.name})
+            @appTitle.set(appTitle)
 
         promise.then null, @.onInitialDataError.bind(@)
 
         @scope.$on "project:loaded", =>
-            @appTitle.set("Project profile - " + @scope.sectionName + " - " + @scope.project.name)
+            sectionName = @translate.instant(@scope.sectionName)
+            appTitle = @translate.instant("ADMIN.PROJECT_PROFILE.PAGE_TITLE", {
+                     sectionName: sectionName, projectName: @scope.project.name})
+            @appTitle.set(appTitle)
 
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
@@ -79,12 +86,22 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.$emit('project:loaded', project)
             return project
 
+    loadTagsColors: ->
+        return @rs.projects.tagsColors(@scope.projectId).then (tags_colors) =>
+            @scope.project.tags_colors = tags_colors
+
+    loadProjectProfile: ->
+        return @q.all([
+            @.loadProject(),
+            @.loadTagsColors()
+        ])
+
     loadInitialData: ->
         promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
             @scope.projectId = data.project
             return data
 
-        return promise.then(=> @.loadProject())
+        return promise.then(=> @.loadProjectProfile())
 
     openDeleteLightbox: ->
         @rootscope.$broadcast("deletelightbox:new", @scope.project)
@@ -115,7 +132,7 @@ ProjectProfileDirective = ($repo, $confirm, $loading, $navurls, $location) ->
                 $scope.$emit("project:loaded", $scope.project)
 
             promise.then null, (data) ->
-                $loading.finish(target)
+                $loading.finish(submitButton)
                 form.setErrors(data)
                 if data._error_message
                     $confirm.notify("error", data._error_message)
@@ -126,7 +143,8 @@ ProjectProfileDirective = ($repo, $confirm, $loading, $navurls, $location) ->
 
     return {link:link}
 
-module.directive("tgProjectProfile", ["$tgRepo", "$tgConfirm", "$tgLoading", "$tgNavUrls", "$tgLocation", ProjectProfileDirective])
+module.directive("tgProjectProfile", ["$tgRepo", "$tgConfirm", "$tgLoading", "$tgNavUrls", "$tgLocation",
+                                      ProjectProfileDirective])
 
 #############################################################################
 ## Project Default Values Directive
@@ -162,7 +180,8 @@ ProjectDefaultValuesDirective = ($repo, $confirm, $loading) ->
 
     return {link:link}
 
-module.directive("tgProjectDefaultValues", ["$tgRepo", "$tgConfirm", "$tgLoading", ProjectDefaultValuesDirective])
+module.directive("tgProjectDefaultValues", ["$tgRepo", "$tgConfirm", "$tgLoading",
+                                            ProjectDefaultValuesDirective])
 
 #############################################################################
 ## Project Modules Directive
@@ -217,7 +236,7 @@ module.directive("tgProjectModules", ["$tgRepo", "$tgConfirm", "$tgLoading", Pro
 ## Project Export Directive
 #############################################################################
 
-ProjectExportDirective = ($window, $rs, $confirm) ->
+ProjectExportDirective = ($window, $rs, $confirm, $translate) ->
     link = ($scope, $el, $attrs) ->
         buttonsEl = $el.find(".admin-project-export-buttons")
         showButtons = -> buttonsEl.removeClass("hidden")
@@ -232,16 +251,23 @@ ProjectExportDirective = ($window, $rs, $confirm) ->
         hideSpinner = -> spinnerEl.addClass("hidden")
 
         resultTitleEl = $el.find(".result-title")
-        setLoadingTitle = -> resultTitleEl.html("We are generating your dump file") # TODO: i18n
-        setAsyncTitle = -> resultTitleEl.html("We are generating your dump file") # TODO: i18n
-        setSyncTitle = -> resultTitleEl.html("Your dump file is ready!") # TODO: i18n
+
+
+        loading_title = $translate.instant("ADMIN.PROJECT_EXPORT.LOADING_TITLE")
+        loading_msg = $translate.instant("ADMIN.PROJECT_EXPORT.LOADING_MESSAGE")
+        dump_ready_text = -> resultTitleEl.html($translate.instant("ADMIN.PROJECT_EXPORT.DUMP_READY"))
+        asyn_message = -> resultTitleEl.html($translate.instant("ADMIN.PROJECT_EXPORT.ASYNC_MESSAGE"))
+        syn_message = (url) -> resultTitleEl.html($translate.instant("ADMIN.PROJECT_EXPORT.SYNC_MESSAGE", {
+                                                                                                   url: url}))
+
+        setLoadingTitle = -> resultTitleEl.html(loading_title)
+        setAsyncTitle = -> resultTitleEl.html(loading_msg)
+        setSyncTitle = -> resultTitleEl.html(dump_ready_text)
 
         resultMessageEl = $el.find(".result-message ")
-        setLoadingMessage = -> resultMessageEl.html("Please don't close this page.") # TODO: i18n
-        setAsyncMessage = -> resultMessageEl.html("We will send you an email when ready.") # TODO: i18n
-        setSyncMessage = (url) -> resultMessageEl.html("If the download doesn't start automatically click
-                                                       <a href='#{url}' download title='Download
-                                                       the dump file'>here.") # TODO: i18n
+        setLoadingMessage = -> resultMessageEl.html(loading_msg)
+        setAsyncMessage = -> resultMessageEl.html(asyn_message)
+        setSyncMessage = (url) -> resultMessageEl.html(syn_message(url))
 
         showLoadingMode = ->
             showSpinner()
@@ -279,15 +305,13 @@ ProjectExportDirective = ($window, $rs, $confirm) ->
             onError = (result) =>
                 showErrorMode()
 
-                errorMsg = "Our oompa loompas have some problems generasting your dump.
-                            Please try again. " # TODO: i18n
+                errorMsg = $translate.instant("ADMIN.PROJECT_EXPORT.ERROR")
 
                 if result.status == 429  # TOO MANY REQUESTS
-                    errorMsg = "Sorry, our oompa loompas are very busy right now.
-                                Please try again in a few minutes. " # TODO: i18n
+                    errorMsg = $translate.instant("ADMIN.PROJECT_EXPORT.ERROR_BUSY")
                 else if result.data?._error_message
-                    errorMsg = "Our oompa loompas have some problems generasting your dump:
-                                #{result.data._error_message}" # TODO: i18n
+                    errorMsg = $translate.instant("ADMIN.PROJECT_EXPORT.ERROR_BUSY", {
+                                                   message: result.data._error_message})
 
                 $confirm.notify("error", errorMsg)
 
@@ -296,7 +320,8 @@ ProjectExportDirective = ($window, $rs, $confirm) ->
 
     return {link:link}
 
-module.directive("tgProjectExport", ["$window", "$tgResources", "$tgConfirm", ProjectExportDirective])
+module.directive("tgProjectExport", ["$window", "$tgResources", "$tgConfirm", "$translate",
+                                     ProjectExportDirective])
 
 
 #############################################################################
@@ -310,9 +335,10 @@ class CsvExporterController extends taiga.Controller
         "$tgUrls",
         "$tgConfirm",
         "$tgResources",
+        "$translate"
     ]
 
-    constructor: (@scope, @rootscope, @urls, @confirm, @rs) ->
+    constructor: (@scope, @rootscope, @urls, @confirm, @rs, @translate) ->
         @rootscope.$on("project:loaded", @.setCsvUuid)
         @scope.$watch "csvUuid", (value) =>
             if value
@@ -337,10 +363,10 @@ class CsvExporterController extends taiga.Controller
         return promise
 
     regenerateUuid: ->
-        #TODO: i18n
         if @scope.csvUuid
-            title = "Change URL"
-            subtitle = "You going to change the CSV data access url. The previous url will be disabled. Are you sure?"
+            title = @translate.instant("ADMIN.REPORTS.REGENERATE_TITLE")
+            subtitle = @translate.instant("ADMIN.REPORTS.REGENERATE_SUBTITLE")
+
             @confirm.ask(title, subtitle).then @._generateUuid
         else
             @._generateUuid(_.identity)
@@ -361,3 +387,52 @@ class CsvExporterIssuesController extends CsvExporterController
 module.controller("CsvExporterUserstoriesController", CsvExporterUserstoriesController)
 module.controller("CsvExporterTasksController", CsvExporterTasksController)
 module.controller("CsvExporterIssuesController", CsvExporterIssuesController)
+
+
+#############################################################################
+## CSV Directive
+#############################################################################
+
+CsvUsDirective = ($translate) ->
+    link = ($scope) ->
+        $scope.sectionTitle = "ADMIN.CSV.SECTION_TITLE_US"
+
+    return {
+        controller: "CsvExporterUserstoriesController",
+        controllerAs: "ctrl",
+        templateUrl: "admin/project-csv.html",
+        link: link,
+        scope: true
+    }
+
+module.directive("tgCsvUs", ["$translate", CsvUsDirective])
+
+
+CsvTaskDirective = ($translate) ->
+    link = ($scope) ->
+        $scope.sectionTitle = "ADMIN.CSV.SECTION_TITLE_TASK"
+
+    return {
+        controller: "CsvExporterTasksController",
+        controllerAs: "ctrl",
+        templateUrl: "admin/project-csv.html",
+        link: link,
+        scope: true
+    }
+
+module.directive("tgCsvTask", ["$translate", CsvTaskDirective])
+
+
+CsvIssueDirective = ($translate) ->
+    link = ($scope) ->
+        $scope.sectionTitle = "ADMIN.CSV.SECTION_TITLE_ISSUE"
+
+    return {
+        controller: "CsvExporterIssuesController",
+        controllerAs: "ctrl",
+        templateUrl: "admin/project-csv.html",
+        link: link,
+        scope: true
+    }
+
+module.directive("tgCsvIssue", ["$translate", CsvIssueDirective])

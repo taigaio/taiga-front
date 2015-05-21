@@ -10,16 +10,16 @@ div.row.us-item-row(ng-repeat="us in visibleUserstories track by us.id", tg-bind
                 span(ng-bind="us.subject")
             div.us-settings
                 a.icon.icon-edit(tg-check-permission="modify_us", href="",
-                                 ng-click="ctrl.editUserStory(us)", title="Edit")
+                                 ng-click="ctrl.editUserStory(us)", title="{{'COMMON.EDIT' | translate}}")
                 a.icon.icon-delete(tg-check-permission="delete_us", href="",
-                                   ng-click="ctrl.deleteUserStory(us)", title="Delete")
+                                   ng-click="ctrl.deleteUserStory(us)", title="{{'COMMON.DELETE' | translate}}")
 
-    div.status(tg-us-status="us" on-update="ctrl.loadProjectStats()")
-        a.us-status(href="", title="Status Name")
+    div.status(tg-us-status="us" on-update="ctrl.updateUserStoryStatus()")
+        a.us-status(href="", title="{{'BACKLOG.STATUS_NAME' | translate}}")
             span.us-status-bind
             span.icon.icon-arrow-bottom(tg-check-permission="modify_us")
 
     div.points(tg-backlog-us-points="us")
-        a.us-points(href="", title="Points")
+        a.us-points(href="", title="{{'COMMON.FIELDS.POINTS' | translate}}")
 
-    a.icon.icon-drag-v(tg-check-permission="modify_us", href="", title="Drag")
+    a.icon.icon-drag-v(tg-check-permission="modify_us", href="", title="{{'COMMON.DRAG' | translate}}")

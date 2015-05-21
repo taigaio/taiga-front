@@ -1,20 +1,75 @@
-.notification-message {
-    background: rgba($gray-light, .95);
-    color: $white;
-    opacity: 0;
-    padding: 1rem;
-    position: fixed;
+.notification-message-success {
+    background: rgba($fresh-taiga, .95);
+    box-shadow: 0 25px 10px -15px rgba(0, 0, 0, .05);
+    opacity: 1;
+    right: -370px;
+    top: 2%;
+    transition: opacity .2s ease-in;
+    width: 370px;
+    &.active {
+        animation: animSlide 2000ms linear both;
+        opacity: 1;
+    }
+    p {
+        margin: 0;
+    }
+    .warning {
+        @extend %large;
+        @extend %bold;
+        color: $white;
+        line-height: 1.2;
+    }
+}
+
+// Generated with Bounce.js. Edit at http://goo.gl/yZlDYR
+
+@keyframes animSlide {
+    0% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+    0.52% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -34.485, 0, 0, 1); }
+    1.02% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -66.555, 0, 0, 1); }
+    2.28% { transform: matrix3d(1.111, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -141.457, 0, 0, 1); }
+    3.52% { transform: matrix3d(1.281, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -205.594, 0, 0, 1); }
+    4.1% { transform: matrix3d(1.111, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -232.117, 0, 0, 1); }
+    4.78% { transform: matrix3d(1.034, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -260.381, 0, 0, 1); }
+    6.03% { transform: matrix3d(.947, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -304.285, 0, 0, 1); }
+    8.11% { transform: matrix3d(.986, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -357.804, 0, 0, 1); }
+    11.03% { transform: matrix3d(1.001, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -399.29, 0, 0, 1); }
+    12.11% { transform: matrix3d(1.001, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -407.374, 0, 0, 1); }
+    16.04% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -417.343, 0, 0, 1); }
+    16.12% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -417.342, 0, 0, 1); }
+    20% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -413.214, 0, 0, 1); }
+    27.23% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -403.135, 0, 0, 1); }
+    38.34% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -399.585, 0, 0, 1); }
+    60.56% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -400.01, 0, 0, 1); }
+    82.78% { opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -400, 0, 0, 1); }
+    100% { opacity: 0; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -400, 0, 0, 1); }
+}
+
+
+
+.notification-message-error {
+    background: rgba($red, .9);
     top: 0;
     transform: translateY(-100%);
     width: 100%;
-    z-index: 99920;
-    &.inactive {
-        transition: all .6s ease-in-out;
-    }
     &.active {
         opacity: 1;
         transform: translateY(0);
         transition: all .6s ease-in-out;
+    }
+    &.inactive {
+        transition: all .6s ease-in-out;
+    }
+    .icon-notification-error {
+        @extend %xxlarge;
+        display: inline;
+        vertical-align: sub;
+    }
+    .warning {
+        @extend %xlarge;
+        @extend %bold;
+        color: $white;
+        line-height: 2.4rem;
     }
     .text {
         display: inline-block;
@@ -24,12 +79,6 @@
             margin: 0;
         }
     }
-    .warning {
-        @extend %xlarge;
-        @extend %bold;
-        color: $white;
-        line-height: 2.4rem;
-    }
     .icon-delete {
         color: $white;
         position: absolute;
@@ -38,22 +87,12 @@
     }
 }
 
-.notification-message-success {
-    background: rgba($fresh-taiga, .9);
-    .icon-notification-success {
-        @extend %xxlarge;
-        display: inline;
-        vertical-align: sub;
-    }
-}
-
-.notification-message-error {
-    background: rgba($red, .9);
-    .icon-notification-error {
-        @extend %xxlarge;
-        display: inline;
-        vertical-align: sub;
-    }
+.notification-message {
+    color: $white;
+    opacity: 0;
+    padding: 1rem;
+    position: fixed;
+    z-index: 99920;
 }
 
 .notification-light {

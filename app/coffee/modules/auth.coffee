@@ -34,10 +34,16 @@ class AuthService extends taiga.Service
                  "$tgModel",
                  "$tgResources",
                  "$tgHttp",
-                 "$tgUrls"]
+                 "$tgUrls",
+                 "$tgConfig",
+                 "$translate"]
 
-    constructor: (@rootscope, @storage, @model, @rs, @http, @urls) ->
+    constructor: (@rootscope, @storage, @model, @rs, @http, @urls, @config, @translate) ->
         super()
+
+    _setLocales: ->
+        lang = @rootscope.user.lang || @config.get("defaultLanguage") || "en"
+        @translate.use(lang)
 
     getUser: ->
         if @rootscope.user
@@ -47,15 +53,17 @@ class AuthService extends taiga.Service
         if userData
             user = @model.make_model("users", userData)
             @rootscope.user = user
+            @._setLocales()
             return user
 
         return null
 
     setUser: (user) ->
         @rootscope.auth = user
-        @rootscope.$broadcast("i18n:change", user.default_language)
         @storage.set("userInfo", user.getAttrs())
         @rootscope.user = user
+
+        @._setLocales()
 
     clear: ->
         @rootscope.auth = null
@@ -171,7 +179,7 @@ PublicRegisterMessageDirective = ($config, $navUrls, templates) ->
 module.directive("tgPublicRegisterMessage", ["$tgConfig", "$tgNavUrls", "$tgTemplate", PublicRegisterMessageDirective])
 
 
-LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls, $events) ->
+LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls, $events, $translate) ->
     link = ($scope, $el, $attrs) ->
         onSuccess = (response) ->
             if $routeParams['next'] and $routeParams['next'] != $navUrls.resolve("login")
@@ -183,8 +191,8 @@ LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls, $
             $location.path(nextUrl)
 
         onError = (response) ->
-            $confirm.notify("light-error", "According to our Oompa Loompas, your username/email
-                                            or password are incorrect.") #TODO: i18n
+            $confirm.notify("light-error", $translate.instant("LOGIN_FORM.ERROR_AUTH_INCORRECT"))
+
         submit = debounce 2000, (event) =>
             event.preventDefault()
 
@@ -207,13 +215,13 @@ LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls, $
     return {link:link}
 
 module.directive("tgLogin", ["$tgAuth", "$tgConfirm", "$tgLocation", "$tgConfig", "$routeParams",
-                             "$tgNavUrls", "$tgEvents", LoginDirective])
+                             "$tgNavUrls", "$tgEvents", "$translate", LoginDirective])
 
 #############################################################################
 ## Register Directive
 #############################################################################
 
-RegisterDirective = ($auth, $confirm, $location, $navUrls, $config, $analytics) ->
+RegisterDirective = ($auth, $confirm, $location, $navUrls, $config, $analytics, $translate) ->
     link = ($scope, $el, $attrs) ->
         if not $config.get("publicRegisterEnabled")
             $location.path($navUrls.resolve("not-found"))
@@ -224,12 +232,15 @@ RegisterDirective = ($auth, $confirm, $location, $navUrls, $config, $analytics) 
 
         onSuccessSubmit = (response) ->
             $analytics.trackEvent("auth", "register", "user registration", 1)
-            $confirm.notify("success", "Our Oompa Loompas are happy, welcome to Taiga.") #TODO: i18n
+
+            $confirm.notify("success", $translate.instant("LOGIN_FORM.SUCCESS"))
+
             $location.path($navUrls.resolve("home"))
 
         onErrorSubmit = (response) ->
             if response.data._error_message?
-                $confirm.notify("light-error", "According to our Oompa Loompas there was an error. #{response.data._error_message}") #TODO: i18n
+                text = $translate.instant("LOGIN_FORM.ERROR_GENERIC") + " " + response.data._error_message
+                $confirm.notify("light-error", text + " " + response.data._error_message)
 
             form.setErrors(response.data)
 
@@ -247,25 +258,27 @@ RegisterDirective = ($auth, $confirm, $location, $navUrls, $config, $analytics) 
     return {link:link}
 
 module.directive("tgRegister", ["$tgAuth", "$tgConfirm", "$tgLocation", "$tgNavUrls", "$tgConfig",
-                                "$tgAnalytics", RegisterDirective])
+                                "$tgAnalytics", "$translate", RegisterDirective])
 
 #############################################################################
 ## Forgot Password Directive
 #############################################################################
 
-ForgotPasswordDirective = ($auth, $confirm, $location, $navUrls) ->
+ForgotPasswordDirective = ($auth, $confirm, $location, $navUrls, $translate) ->
     link = ($scope, $el, $attrs) ->
         $scope.data = {}
         form = $el.find("form").checksley()
 
         onSuccessSubmit = (response) ->
             $location.path($navUrls.resolve("login"))
-            $confirm.success("<strong>Check your inbox!</strong><br />
-                             We have sent you an email with the instructions to set a new password") #TODO: i18n
+
+            text = $translate.instant("FORGOT_PASSWORD_FORM.SUCCESS")
+            $confirm.success(text)
 
         onErrorSubmit = (response) ->
-            $confirm.notify("light-error", "According to our Oompa Loompas,
-                                            your are not registered yet.") #TODO: i18n
+            text = $translate.instant("FORGOT_PASSWORD_FORM.ERROR")
+
+            $confirm.notify("light-error", text)
 
         submit = debounce 2000, (event) =>
             event.preventDefault()
@@ -280,14 +293,14 @@ ForgotPasswordDirective = ($auth, $confirm, $location, $navUrls) ->
 
     return {link:link}
 
-module.directive("tgForgotPassword", ["$tgAuth", "$tgConfirm", "$tgLocation", "$tgNavUrls",
+module.directive("tgForgotPassword", ["$tgAuth", "$tgConfirm", "$tgLocation", "$tgNavUrls", "$translate",
                                       ForgotPasswordDirective])
 
 #############################################################################
 ## Change Password from Recovery Directive
 #############################################################################
 
-ChangePasswordFromRecoveryDirective = ($auth, $confirm, $location, $params, $navUrls) ->
+ChangePasswordFromRecoveryDirective = ($auth, $confirm, $location, $params, $navUrls, $translate) ->
     link = ($scope, $el, $attrs) ->
         $scope.data = {}
 
@@ -301,12 +314,15 @@ ChangePasswordFromRecoveryDirective = ($auth, $confirm, $location, $params, $nav
 
         onSuccessSubmit = (response) ->
             $location.path($navUrls.resolve("login"))
-            $confirm.success("Our Oompa Loompas saved your new password.<br />
-                              Try to <strong>sign in</strong> with it.") #TODO: i18n
+
+            text = $translate.instant("CHANGE_PASSWORD_RECOVERY_FORM.SUCCESS")
+
+            $confirm.success(text)
 
         onErrorSubmit = (response) ->
-            $confirm.notify("light-error", "One of our Oompa Loompas say
-                            '#{response.data._error_message}'.") #TODO: i18n
+            text = $translate.instant("COMMON.GENERIC_ERROR", {error: response.data._error_message})
+
+            $confirm.notify("light-error", text)
 
         submit = debounce 2000, (event) =>
             event.preventDefault()
@@ -322,13 +338,13 @@ ChangePasswordFromRecoveryDirective = ($auth, $confirm, $location, $params, $nav
     return {link:link}
 
 module.directive("tgChangePasswordFromRecovery", ["$tgAuth", "$tgConfirm", "$tgLocation", "$routeParams",
-                                                  "$tgNavUrls", ChangePasswordFromRecoveryDirective])
+                                                  "$tgNavUrls", "$translate", ChangePasswordFromRecoveryDirective])
 
 #############################################################################
 ## Invitation
 #############################################################################
 
-InvitationDirective = ($auth, $confirm, $location, $params, $navUrls, $analytics) ->
+InvitationDirective = ($auth, $confirm, $location, $params, $navUrls, $analytics, $translate) ->
     link = ($scope, $el, $attrs) ->
         token = $params.token
 
@@ -338,8 +354,9 @@ InvitationDirective = ($auth, $confirm, $location, $params, $navUrls, $analytics
 
         promise.then null, (response) ->
             $location.path($navUrls.resolve("login"))
-            $confirm.success("<strong>Ooops, we have a problem</strong><br />
-                              Our Oompa Loompas can't find your invitation.") #TODO: i18n
+
+            text = $translate.instant("INVITATION_LOGIN_FORM.NOT_FOUND")
+            $confirm.success(text)
 
         # Login form
         $scope.dataLogin = {token: token}
@@ -348,12 +365,14 @@ InvitationDirective = ($auth, $confirm, $location, $params, $navUrls, $analytics
         onSuccessSubmitLogin = (response) ->
             $analytics.trackEvent("auth", "invitationAccept", "invitation accept with existing user", 1)
             $location.path($navUrls.resolve("project", {project: $scope.invitation.project_slug}))
-            $confirm.notify("success", "You've successfully joined this project",
-                                       "Welcome to #{_.escape($scope.invitation.project_name)}")
+            text = $translate.instant("INVITATION_LOGIN_FORM.SUCCESS", {"project_name": $scope.invitation.project_name})
+
+            $confirm.notify("success", text)
 
         onErrorSubmitLogin = (response) ->
-            $confirm.notify("light-error", "According to our Oompa Loompas, your are not registered yet or
-                                            typed an invalid password.") #TODO: i18n
+            text = $translate.instant("INVITATION_LOGIN_FORM.ERROR")
+
+            $confirm.notify("light-error", text)
 
         submitLogin = debounce 2000, (event) =>
             event.preventDefault()
@@ -378,8 +397,9 @@ InvitationDirective = ($auth, $confirm, $location, $params, $navUrls, $analytics
                                        "Welcome to #{_.escape($scope.invitation.project_name)}")
 
         onErrorSubmitRegister = (response) ->
-            $confirm.notify("light-error", "According to our Oompa Loompas, that
-                                            username or email is already in use.") #TODO: i18n
+            text = $translate.instant("LOGIN_FORM.ERROR_AUTH_INCORRECT")
+
+            $confirm.notify("light-error", text)
 
         submitRegister = debounce 2000, (event) =>
             event.preventDefault()
@@ -396,13 +416,13 @@ InvitationDirective = ($auth, $confirm, $location, $params, $navUrls, $analytics
     return {link:link}
 
 module.directive("tgInvitation", ["$tgAuth", "$tgConfirm", "$tgLocation", "$routeParams",
-                                  "$tgNavUrls", "$tgAnalytics", InvitationDirective])
+                                  "$tgNavUrls", "$tgAnalytics", "$translate", InvitationDirective])
 
 #############################################################################
 ## Change Email
 #############################################################################
 
-ChangeEmailDirective = ($repo, $model, $auth, $confirm, $location, $params, $navUrls) ->
+ChangeEmailDirective = ($repo, $model, $auth, $confirm, $location, $params, $navUrls, $translate) ->
     link = ($scope, $el, $attrs) ->
         $scope.data = {}
         $scope.data.email_token = $params.email_token
@@ -412,11 +432,14 @@ ChangeEmailDirective = ($repo, $model, $auth, $confirm, $location, $params, $nav
             $repo.queryOne("users", $auth.getUser().id).then (data) =>
                 $auth.setUser(data)
                 $location.path($navUrls.resolve("home"))
-                $confirm.success("Our Oompa Loompas updated your email") #TODO: i18n
+
+                text = $translate.instant("CHANGE_EMAIL_FORM.SUCCESS")
+                $confirm.success(text)
 
         onErrorSubmit = (response) ->
-            $confirm.notify("error", "One of our Oompa Loompas says
-                            '#{response.data._error_message}'.") #TODO: i18n
+            text = $translate.instant("COMMON.GENERIC_ERROR", {error: response.data._error_message})
+
+            $confirm.notify("light-error", text)
 
         submit = ->
             if not form.validate()
@@ -436,7 +459,7 @@ ChangeEmailDirective = ($repo, $model, $auth, $confirm, $location, $params, $nav
     return {link:link}
 
 module.directive("tgChangeEmail", ["$tgRepo", "$tgModel", "$tgAuth", "$tgConfirm", "$tgLocation", "$routeParams",
-                                   "$tgNavUrls", ChangeEmailDirective])
+                                   "$tgNavUrls", "$translate", ChangeEmailDirective])
 
 #############################################################################
 ## Cancel account
@@ -451,11 +474,15 @@ CancelAccountDirective = ($repo, $model, $auth, $confirm, $location, $params, $n
         onSuccessSubmit = (response) ->
             $auth.logout()
             $location.path($navUrls.resolve("home"))
-            $confirm.success("Our Oompa Loompas removed your account") #TODO: i18n
+
+            text = $translate.instant("CANCEL_ACCOUNT.SUCCESS")
+
+            $confirm.success(text)
 
         onErrorSubmit = (response) ->
-            $confirm.notify("error", "One of our Oompa Loompas says
-                            '#{response.data._error_message}'.") #TODO: i18n
+            text = $translate.instant("COMMON.GENERIC_ERROR", {error: response.data._error_message})
+
+            $confirm.notify("error", text)
 
         submit = debounce 2000, (event) =>
             event.preventDefault()

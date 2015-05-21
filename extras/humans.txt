@@ -48,8 +48,8 @@
   Site: http://kaleidos.net
   Twitter: @elhombretecla
   Location: Madrid, Spain
-  
-  Taiga UX Consultan: Esther Moreno
+
+  Taiga UX Consultan & LEGO architect: Esther Moreno
   Site: http://kaleidos.net
   Twitter: @plumilla
   Location: Madrid, Spain

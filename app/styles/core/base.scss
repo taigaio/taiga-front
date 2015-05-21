@@ -5,8 +5,8 @@ html {
 }
 body {
     @extend %text;
-    background: #fff; // fallback
-    color: #444;
+    background: $white; // fallback
+    color: $grayer;
     min-height: 100%;
     width: 100%;
     .master {
@@ -138,6 +138,7 @@ body {
 }
 
 .hidden {
+    // scss-lint:disable ImportantRule
     display: none !important;
 }
 

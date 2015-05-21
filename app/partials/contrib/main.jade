@@ -1,12 +1,10 @@
-block head
-    title Taiga  Your agile, free, and open source project management tool
+doctype html
 
-block content
-    div.wrapper.roles(ng-init="section='admin'", ng-controller="ContribController as ctrl")
-        sidebar.menu-secondary.sidebar(tg-admin-navigation="contrib")
-            include ../includes/modules/admin-menu
+div.wrapper.roles(ng-init="section='admin'", ng-controller="ContribController as ctrl")
+    sidebar.menu-secondary.sidebar(tg-admin-navigation="contrib")
+        include ../includes/modules/admin-menu
 
-        sidebar.menu-tertiary.sidebar
-            include ../includes/modules/admin/admin-submenu-contrib
+    sidebar.menu-tertiary.sidebar
+        include ../includes/modules/admin/admin-submenu-contrib
 
-        section.main.admin-common.admin-contrib(ng-include="pluginTemplate")
+    section.main.admin-common.admin-contrib(ng-include="pluginTemplate")

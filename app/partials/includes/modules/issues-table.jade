@@ -1,35 +1,39 @@
 section.issues-table.basic-table(ng-class="{empty: !issues.length}")
     div.row.title
-        div.level-field(data-fieldname="type") Type
-        div.level-field(data-fieldname="severity") Severity
-        div.level-field(data-fieldname="priority") Priority
-        div.subject(data-fieldname="subject") Subject
-        div.issue-field(data-fieldname="status") Status
-        div.created-field(data-fieldname="created_date") Created
-        div.assigned-field(data-fieldname="assigned_to") Assigned to
+        div.level-field(data-fieldname="type", translate="ISSUES.TABLE.COLUMNS.TYPE")
+        div.level-field(data-fieldname="severity", translate="ISSUES.TABLE.COLUMNS.SEVERITY")
+        div.level-field(data-fieldname="priority", translate="ISSUES.TABLE.COLUMNS.PRIORITY")
+        div.subject(data-fieldname="subject", translate="ISSUES.TABLE.COLUMNS.SUBJECT")
+        div.issue-field(data-fieldname="status", translate="ISSUES.TABLE.COLUMNS.STATUS")
+        div.created-field(data-fieldname="created_date", translate="ISSUES.TABLE.COLUMNS.CREATED")
+        div.assigned-field(data-fieldname="assigned_to", translate="ISSUES.TABLE.COLUMNS.ASSIGNED_TO")
+
     div.row.table-main(ng-repeat="issue in issues track by issue.id")
         div.level-field(tg-listitem-type="issue")
         div.level-field(tg-listitem-severity="issue")
         div.level-field(tg-listitem-priority="issue")
         div.subject
-            a(href="", tg-nav="project-issues-detail:project=project.slug,ref=issue.ref", title="#{{ ::issue.ref }} {{ ::issue.subject }}")
+            a(href="", tg-nav="project-issues-detail:project=project.slug,ref=issue.ref",
+              title="#{{ ::issue.ref }} {{ ::issue.subject }}")
                 span(tg-bo-ref="issue.ref")
                 span(ng-bind="issue.subject")
 
         div.issue-field(tg-issue-status-inline-edition="issue")
-            a.issue-status(href="", title="Change status")
+            a.issue-status(href="", title="{{'ISSUES.TABLE.TITLE_ACTION_CHANGE_STATUS' | translate}}")
                 span.issue-status-bind
                 span.icon.icon-arrow-bottom(tg-check-permission="modify_issue")
 
         div.created-field(tg-bo-bind="issue.created_date|momentFormat:'DD MMM YYYY HH:mm'")
 
         div.assigned-field(tg-issue-assigned-to-inline-edition="issue")
-            div.issue-assignedto(title="Assigned to")
+            div.issue-assignedto(title="{{'ISSUES.TABLE.TITLE_ACTION_ASSIGNED_TO' | translate}}")
                 figure.avatar
                 span.icon.icon-arrow-bottom(tg-check-permission="modify_issue")
 
 section.empty.empty-issues(ng-class="{hidden: issues.length}")
     span.icon.icon-issues
-    span.title There are no issues to report :-)
-    span Did you find an issue?
-    a(href="", title+"Create a new US", ng-click="ctrl.addNewIssue()") Create a new Issue
+    span.title(translate="ISSUES.TABLE.EMPTY.TITLE")
+    span(translate="ISSUES.TABLE.EMPTY.SUBTITLE")
+    a(href="", ng-click="ctrl.addNewIssue()",
+      title="{{'ISSUES.TABLE.EMPTY.ACTION_CREATE_ISSUE' | translate}}",
+      translate="ISSUES.TABLE.EMPTY.ACTION_CREATE_ISSUE")

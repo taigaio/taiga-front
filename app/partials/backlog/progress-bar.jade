@@ -1,3 +1,6 @@
-.defined-points(title="Excess of points")
-.project-points-progress(title="Pending Points", style!="width: <%- projectPointsPercentaje %>%")
-.closed-points-progress(title="Closed points", style!="width: <%- closedPointsPercentaje %>%")
+.defined-points(title="{{'BACKLOG.EXCESS_OF_POINTS' | translate}}")
+
+.project-points-progress(title="{{'BACKLOG.PENDING_POINTS' | translate}}",
+                         style!="width: <%- projectPointsPercentaje %>%")
+.closed-points-progress(title="{{'BACKLOG.CLOSED_POINTS' | translate}}",
+                        style!="width: <%- closedPointsPercentaje %>%")

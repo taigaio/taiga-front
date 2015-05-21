@@ -3,29 +3,29 @@ div.register-form-container(tg-register)
         fieldset
             input(type="text", name="username", ng-model="data.username",
                   data-required="true", data-maxlength="255", data-regexp="^[\\w.-]+$",
-                  placeholder="Pick a username (case sensitive)")
+                  placeholder="{{'REGISTER_FORM.PLACEHOLDER_NAME' | translate}}")
 
         fieldset
             input(type="text", name="full_name", ng-model="data.full_name",
                   data-required="true", data-maxlength="256",
-                  placeholder="Pick your full name")
+                  placeholder="{{'REGISTER_FORM.PLACEHOLDER_FULL_NAME' | translate}}")
 
         fieldset
             input(type="text", name="email", ng-model="data.email",
                   data-required="true", data-maxlength="255",
-                  placeholder="Your email")
+                  placeholder="{{'REGISTER_FORM.PLACEHOLDER_EMAIL' | translate}}")
 
         fieldset
             input(type="password", name="password", ng-model="data.password",
                 data-required="true", data-minlength="4",
-                placeholder="Set a password (case sensitive)")
+                placeholder="{{'REGISTER_FORM.PLACEHOLDER_PASSWORD' | translate}}")
 
         fieldset
-            button.button-register.button-gray.submit-button(type="submit", title="Sign up") Sign up
+            button.button-register.button-gray.submit-button(type="submit", title="{{'REGISTER_FORM.ACTION_SIGN_UP' | translate}}", translate="REGISTER_FORM.ACTION_SIGN_UP")
 
         fieldset(tg-github-login-button)
 
         // Only displays terms notice when terms plugin is loaded.
         tg-terms-notice
 
-        a.register-text-top(href="", title="Login", tg-nav="login") Are you already registered? Log in
+        a.register-text-top(href="", title="{{'REGISTER_FORM.TITLE_LINK_LOGIN' | translate}}", tg-nav="login", translate="REGISTER_FORM.LINK_LOGIN")

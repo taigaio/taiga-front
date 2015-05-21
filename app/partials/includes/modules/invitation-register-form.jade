@@ -1,25 +1,25 @@
 form.register-form
-    p.form-header Register a new Taiga account (free)
+    p.form-header(translate="REGISTER_FORM.TITLE")
     fieldset
         input(type="text", name="username", ng-model="dataRegister.username",
               data-required="true", data-maxlength="255", data-regexp="^[\\w.-]+$",
-              placeholder="Pick a username (case sensitive)")
+              placeholder="{{'REGISTER_FORM.PLACEHOLDER_NAME' | translate}}")
 
     fieldset
         input(type="text", name="full_name", ng-model="dataRegister.full_name",
               data-required="true", data-maxlength="256",
-              placeholder="Pick your full name")
+              placeholder="{{'REGISTER_FORM.PLACEHOLDER_FULL_NAME' | translate}}")
 
     fieldset
         input(type="text", name="email", ng-model="dataRegister.email",
               data-required="true", data-maxlength="255",
-              placeholder="Your email")
+              placeholder="{{'REGISTER_FORM.PLACEHOLDER_EMAIL' | translate}}")
 
     fieldset
         input(type="password", name="password", ng-model="dataRegister.password", data-required="true",
-            placeholder="Set a password")
+            placeholder="{{'REGISTER_FORM.PLACEHOLDER_PASSWORD' | translate}}")
 
     fieldset
-        button.button-register.button-gray.submit-button(type="submit", title="Sign up") Sign up
+        button.button-register.button-gray.submit-button(type="submit", title="{{'REGISTER_FORM.ACTION_SIGN_UP' | translate}}", translate="REGISTER_FORM.ACTION_SIGN_UP")
 
     tg-terms-notice

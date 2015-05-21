@@ -1,0 +1,1091 @@
+{
+    "COMMON": {
+        "YES": "Yes",
+        "NO": "No",
+        "LOADING": "載入中...",
+        "LOADING_PROJECT": "載入專案中...",
+        "DATE": "DD MMM YYYY",
+        "DATETIME": "DD MMM YYYY HH:mm",
+        "SAVE": "儲存",
+        "CANCEL": "取消",
+        "ACCEPT": "接受",
+        "DELETE": "刪除",
+        "CREATE": "創建",
+        "ADD": "新增",
+        "COPY_TO_CLIPBOARD": "複製到剪貼簿：Ctrl+C",
+        "EDIT": "編輯",
+        "DRAG": "拖拉",
+        "TAG_LINE": "你的敏捷、免費、和開放原始碼的專案管理工具",
+        "TAG_LINE_2": "愛你的專案",
+        "BLOCK": "封鎖",
+        "UNBLOCK": "解除封鎖",
+        "BLOCKED": "已封鎖",
+        "CREATED_BY": "由 {{fullDisplayName}}創建",
+        "FROM": "from",
+        "TO": "to",
+        "CLOSE": "關閉",
+        "BLOCKED_NOTE": "為何這個使用者故事被封鎖?",
+        "BLOCKED_REASON": "請解釋此原因",
+        "GO_HOME": "帶我回到首頁",
+        "PLUGINS": "外掛",
+        "BETA": "我們在測試中",
+        "ONE_ITEM_LINE": "一行一物 ",
+        "NEW_BULK": "新批次插入",
+        "RELATED_TASKS": "相關任務 ",
+        "LOGOUT": "登出",
+        "EXTERNAL_USER": "外部使用者",
+        "GENERIC_ERROR": "我們的系統指出{{error}}.",
+        "IOCAINE_TEXT": "感到任務的不堪負荷？確認其它人在編輯任務時知道此狀況，可以點選Iocaine。它可能會成為免疫的致命狀況，只要長期小量消耗，但如果你只是偶而挑戰它可有助表現。",
+        "FORM_ERRORS": {
+            "DEFAULT_MESSAGE": "該數值似乎為無效",
+            "TYPE_EMAIL": "該電子郵件應為有效地址",
+            "TYPE_URL": "該網址應為有效連結",
+            "TYPE_URLSTRICT": "該網址應為有效連結",
+            "TYPE_NUMBER": "該數值應為有效號碼 ",
+            "TYPE_DIGITS": "該數值應為有效數字",
+            "TYPE_DATEISO": "該數值應為有效日期 (YYYY-MM-DD).",
+            "TYPE_ALPHANUM": "該數值應為字母",
+            "TYPE_PHONE": "該數值應為有效的電話號碼 ",
+            "NOTNULL": "該數值不應為零",
+            "NOT_BLANK": "該數值不應為空白",
+            "REQUIRED": "該數值為必要",
+            "REGEXP": "該數值似乎無效",
+            "MIN": "該數值應大於或等於 %s",
+            "MAX": "該數值應小於或等於  %s",
+            "RANGE": "該數值應介於 %s 與 %s之間",
+            "MIN_LENGTH": "該數值過簡短，它至少要有 %s個字元",
+            "MAX_LENGTH": "該數值過長，它不可多於 %s個字元。",
+            "RANGE_LENGTH": "該數值長度為無效，它應介於 %s 與 %s 字元之間",
+            "MIN_CHECK": "你必須至少選擇 %s 選項",
+            "MAX_CHECK": "你必須至多選出 %s選項",
+            "RANGE_CHECK": "你必須在%s 與 %s 之間作出選擇",
+            "EQUAL_TO": "該數值應為一致"
+        },
+        "PICKERDATE": {
+            "FORMAT": "DD MMM YYYY",
+            "IS_RTL": "false",
+            "FIRST_DAY_OF_WEEK": "1",
+            "PREV_MONTH": "Previous Month",
+            "NEXT_MONTH": "Next Month",
+            "MONTHS": {
+                "JAN": "January",
+                "FEB": "February",
+                "MAR": "March",
+                "APR": "April",
+                "MAY": "May",
+                "JUN": "June",
+                "JUL": "July",
+                "AUG": "August",
+                "SEP": "September",
+                "OCT": "October",
+                "NOV": "November",
+                "DEC": "December"
+            },
+            "WEEK_DAYS": {
+                "SUN": "Sunday",
+                "MON": "Monday",
+                "TUE": "Tuesday",
+                "WED": "Wednesday",
+                "THU": "Thursday",
+                "FRI": "Friday",
+                "SAT": "Saturday"
+            },
+            "WEEK_DAYS_SHORT": {
+                "SUN": "Sun",
+                "MON": "Mon",
+                "TUE": "Tue",
+                "WED": "Wed",
+                "THU": "Thu",
+                "FRI": "Fri",
+                "SAT": "Sat"
+            }
+        },
+        "TAGS": {
+            "PLACEHOLDER": "我在這裏，請標注我",
+            "DELETE": "刪除Tag",
+            "ADD": "新增標籤"
+        },
+        "DESCRIPTION": {
+            "EMPTY": "留下空白顯得很無趣，寫下點描述吧",
+            "NO_DESCRIPTION": "未有任何描述"
+        },
+        "FIELDS": {
+            "SUBJECT": "主旨",
+            "NAME": "名稱 ",
+            "URL": "網址",
+            "DESCRIPTION": "描述",
+            "VALUE": "數值",
+            "SLUG": "代稱　",
+            "COLOR": "顏色",
+            "IS_CLOSED": "關閉中？",
+            "STATUS": "狀態",
+            "TYPE": "類型",
+            "SEVERITY": "急迫性",
+            "PRIORITY": "優先性",
+            "ASSIGNED_TO": "指派給 ",
+            "POINTS": "點數",
+            "BLOCKED_NOTE": "已封鎖之筆記",
+            "IS_BLOCKED": "封鎖"
+        },
+        "ROLES": {
+            "ALL": "所有"
+        },
+        "ASSIGNED_TO": {
+            "NOT_ASSIGNED": "未指派",
+            "DELETE_ASSIGNMENT": "刪除指派",
+            "REMOVE_ASSIGNED": "數值",
+            "TOO_MANY": "太多用戶，繼續過濾中",
+            "CONFIRM_UNASSIGNED": "你確定要讓它無任何指派嗎？",
+            "TITLE_ACTION_EDIT_ASSIGNMENT": "編輯指派"
+        },
+        "STATUS": {
+            "CLOSED": "關閉",
+            "OPEN": "開啟"
+        },
+        "WATCHERS": {
+            "ADD": "新增監督者",
+            "TITLE": "監督者",
+            "DELETE": "已刪除監督者",
+            "TITLE_LIGHTBOX_DELETE_WARTCHER": "刪除監督者"
+        },
+        "CUSTOM_ATTRIBUTES": {
+            "CUSTOM_FIELDS": "客製化欄位",
+            "SAVE": "儲存客製化欄位",
+            "EDIT": "編輯客製化欄位",
+            "DELETE": "刪除客製屬性",
+            "CONFIRM_DELETE": "記得這個客制欄位的數值都將被刪除</br> 你確定要繼續嗎"
+        },
+        "FILTERS": {
+            "TITLE": "過濾器",
+            "INPUT_PLACEHOLDER": "主旨或參考",
+            "TITLE_ACTION_FILTER_BUTTON": "搜尋",
+            "BREADCRUMB_TITLE": "回到類別",
+            "BREADCRUMB_FILTERS": "過濾器",
+            "BREADCRUMB_STATUS": "狀態"
+        },
+        "WYSIWYG": {
+            "H1_BUTTON": "第一層標頭　",
+            "H1_SAMPLE_TEXT": "你的頭銜　",
+            "H2_BUTTON": "第二層標頭　",
+            "H2_SAMPLE_TEXT": "你的頭銜　",
+            "H3_BUTTON": "第三標頭",
+            "H3_SAMPLE_TEXT": "你的頭銜",
+            "BOLD_BUTTON": "粗體字",
+            "BOLD_BUTTON_SAMPLE_TEXT": "你的文字在此",
+            "ITALIC_BUTTON": "斜體字",
+            "ITALIC_SAMPLE_TEXT": "你的文字在此",
+            "STRIKE_BUTTON": "刪除線",
+            "STRIKE_SAMPLE_TEXT": "你的文字在此",
+            "BULLETED_LIST_BUTTON": "次序列表",
+            "BULLETED_LIST_SAMPLE_TEXT": "你的文字在此",
+            "NUMERIC_LIST_BUTTON": "列號清單",
+            "NUMERIC_LIST_SAMPLE_TEXT": "你的文字在此　",
+            "PICTURE_BUTTON": "圖片",
+            "PICTURE_SAMPLE_TEXT": "對照圖片的說明文",
+            "LINK_BUTTON": "連結",
+            "LINK_SAMPLE_TEXT": "文字連結在此",
+            "QUOTE_BLOCK_BUTTON": "引言區塊",
+            "QUOTE_BLOCK_SAMPLE_TEXT": "你的文字在此",
+            "CODE_BLOCK_BUTTON": "原始碼區塊",
+            "CODE_BLOCK_SAMPLE_TEXT": "你的文字在此",
+            "PREVIEW_BUTTON": "預視　",
+            "EDIT_BUTTON": "編輯",
+            "MARKDOWN_HELP": "Markdown 語法協助"
+        },
+        "PERMISIONS_CATEGORIES": {
+            "SPRINTS": {
+                "NAME": "衝刺任務",
+                "VIEW_SPRINTS": "檢視衝刺任務 ",
+                "ADD_SPRINTS": "增加衝刺任務",
+                "MODIFY_SPRINTS": "修正衝刺任務",
+                "DELETE_SPRINTS": "刪除衝刺任務"
+            },
+            "USER_STORIES": {
+                "NAME": "使用者故事",
+                "VIEW_USER_STORIES": "檢視使用者故事",
+                "ADD_USER_STORIES": "新增使用者故事",
+                "MODIFY_USER_STORIES": "修正使用者故事",
+                "DELETE_USER_STORIES": "刪除使用者故事"
+            },
+            "TASKS": {
+                "NAME": "任務 ",
+                "VIEW_TASKS": "檢視任務 ",
+                "ADD_TASKS": "新增任務 ",
+                "MODIFY_TASKS": "修正任務 ",
+                "DELETE_TASKS": "刪除任務"
+            },
+            "ISSUES": {
+                "NAME": "問題 ",
+                "VIEW_ISSUES": "檢視問題 ",
+                "ADD_ISSUES": "新增問題 ",
+                "MODIFY_ISSUES": "修正議題 ",
+                "DELETE_ISSUES": "刪除問題　"
+            },
+            "WIKI": {
+                "NAME": "維基",
+                "VIEW_WIKI_PAGES": "檢視維基頁",
+                "ADD_WIKI_PAGES": "新增維基頁",
+                "MODIFY_WIKI_PAGES": "修正維基頁",
+                "DELETE_WIKI_PAGES": "刪除維基頁　",
+                "VIEW_WIKI_LINKS": "檢視維基連結",
+                "ADD_WIKI_LINKS": "新增維基連結",
+                "DELETE_WIKI_LINKS": "刪除維基連結"
+            }
+        }
+    },
+    "AUTH": {
+        "INVITED_YOU": "已邀請您加入此專案",
+        "NOT_REGISTERED_YET": "還沒註冊嗎？",
+        "REGISTER": "註冊",
+        "CREATE_ACCOUNT": "在此建立您的免費帳號"
+    },
+    "ATTACHMENT": {
+        "SECTION_NAME": "附件",
+        "TITLE": "{{ fileName }} 上傳於 {{ date }}",
+        "DESCRIPTION": "輸入一段簡短描述",
+        "DEPRECATED": "(deprecated)",
+        "DEPRECATED_FILE": "棄用?",
+        "ADD": "加入新附件 <%- maxFileSizeMsg %>",
+        "MAX_FILE_SIZE": "[Max. size: {{maxFileSize}}]",
+        "SHOW_DEPRECATED": "+ 顯示棄用的附件",
+        "HIDE_DEPRECATED": "+ 隱藏棄用的附件",
+        "COUNT_DEPRECATED": "({{ counter }} deprecated)",
+        "MAX_UPLOAD_SIZE": "上傳檔案最大容量限制 {{maxFileSize}}",
+        "DATE": "DD MMM YYYY [at] hh:mm",
+        "ERROR_UPLOAD_ATTACHMENT": "無法成功上傳 '{{fileName}}'. {{errorMessage}}",
+        "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "刪除附件....",
+        "MSG_LIGHTBOX_DELETE_ATTACHMENT": "附件 '{{fileName}}'",
+        "ERROR_DELETE_ATTACHMENT": "無法刪除: {{errorMessage}}",
+        "FIELDS": {
+            "IS_DEPRECATED": "被棄用"
+        }
+    },
+    "PAGINATION": {
+        "PREVIOUS": "Prev",
+        "NEXT": "下一個"
+    },
+    "ADMIN": {
+        "COMMON": {
+            "TITLE_ACTION_EDIT_VALUE": "編輯數值",
+            "TITLE_ACTION_DELETE_VALUE": "删除值"
+        },
+        "HELP": "需要幫助嗎？看看我們的支援頁面吧！",
+        "PROJECT_DEFAULT_VALUES": {
+            "TITLE": "預設值",
+            "SUBTITLE": "將所有選項設為預設值"
+        },
+        "MEMBERSHIPS": {
+            "TITLE": "管理成員",
+            "ADD_BUTTON": "+ 新成員",
+            "ADD_BUTTON_TITLE": "增加新成員"
+        },
+        "PROJECT_EXPORT": {
+            "TITLE": "匯出",
+            "SUBTITLE": "匯出你的專案以備份，或以此為基礎來建立一個新的。",
+            "EXPORT_BUTTON": "匯出",
+            "EXPORT_BUTTON_TITLE": "匯出你的專案",
+            "LOADING_TITLE": "傾倒檔案正在生成中",
+            "DUMP_READY": "你注入的檔案已完成",
+            "LOADING_MESSAGE": "請勿關閉本頁",
+            "ASYNC_MESSAGE": "準備好後，我們會送給 你一封電子郵件",
+            "SYNC_MESSAGE": "如果未能自動下載，<a href='{{url}}' download title='Download the dump file'>請點選此處　</a>.　",
+            "ERROR": "我們的系統無法製作你的滙出資料，請再試一次　",
+            "ERROR_BUSY": "抱歉系統繁忙中，請稍後再試試　",
+            "ERROR_MESSAGE": "我們的系統在生成你的傾倒時遇到一些問題: {{message}}"
+        },
+        "MODULES": {
+            "TITLE": "模組",
+            "ENABLE": "啟用",
+            "DISABLE": "停用",
+            "BACKLOG": "待辦任務優先表",
+            "BACKLOG_DESCRIPTION": "管理你的 User Story 讓接下來的及優先的工作能被有條理地檢視 ",
+            "KANBAN": "Kanban(看板)",
+            "KANBAN_DESCRIPTION": "在此看板上組織你的專案",
+            "ISSUES": "問題 ",
+            "ISSUES_DESCRIPTION": "追踪系統錯誤問題強化你的專案，不要錯過任何事　",
+            "WIKI": "維基",
+            "WIKI_DESCRIPTION": "新增,修正或是刪除與他人合作的內容。這裏正是專案文件記錄區",
+            "MEETUP": "符合",
+            "MEETUP_DESCRIPTION": "選擇你的視訊系統。有些開發者需要面對面接觸",
+            "SELECT_VIDEOCONFERENCE": "選擇一個視訊會議系統　",
+            "SALT_CHAT_ROOM": "你可以把聊天室名稱加上salt code亂數密碼　"
+        },
+        "PROJECT_PROFILE": {
+            "PAGE_TITLE": "專案檔案 - {{sectionName}} - {{projectName}}",
+            "PROJECT_DETAILS": "專案細節",
+            "PROJECT_NAME": "專案名稱",
+            "PROJECT_SLUG": "專案代稱",
+            "NUMBER_SPRINTS": "衝刺任務數目 ",
+            "NUMBER_US_POINTS": "使用者故事點數數目",
+            "TAGS": "標籤",
+            "DESCRIPTION": "描述",
+            "PUBLIC_PROJECT": "公開專案",
+            "PRIVATE_PROJECT": "不公開專案",
+            "DELETE": "刪除此專案"
+        },
+        "REPORTS": {
+            "TITLE": "Reports",
+            "SUBTITLE": "以 CSV 格式匯出你的專案資料，並製作你的專屬報告",
+            "DESCRIPTION": "下載CSV檔案或是複製這個生成的網址到你愛用的文字編輯器或電子表格上製作自己的專案檔案資料報告。你可能輕易地視覺化或分析這些資料。",
+            "HELP": "使用者故事預設欄位",
+            "REGENERATE_TITLE": "改變網址",
+            "REGENERATE_SUBTITLE": "你將要改變CSV資料的連結網址，之前的網址將失效。你確定要這樣做嗎?"
+        },
+        "CSV": {
+            "SECTION_TITLE_US": "使用者故事報告",
+            "SECTION_TITLE_TASK": "任務報告",
+            "SECTION_TITLE_ISSUE": "問題報告",
+            "DOWNLOAD": "下戴CSV檔案",
+            "URL_FIELD_PLACEHOLDER": "再次產生CSV 網址",
+            "TITLE_REGENERATE_URL": "再次產生CSV 網址",
+            "ACTION_GENERATE_URL": "產生網址",
+            "ACTION_REGENERATE": "再次產生"
+        },
+        "CUSTOM_FIELDS": {
+            "TITLE": "客製化欄位",
+            "SUBTITLE": "指定使用者故事，任務與問題一些客製化欄位",
+            "US_DESCRIPTION": "使用者客製欄位",
+            "US_ADD": "在使用者故事中加入客制欄位",
+            "TASK_DESCRIPTION": "任務客製化欄位",
+            "TASK_ADD": "在任務中加入客制欄位",
+            "ISSUE_DESCRIPTION": "問題客製化欄位",
+            "ISSUE_ADD": "在問題中加入客制欄位"
+        },
+        "PROJECT_VALUES": {
+            "APP_TITLE": "專案數值- {{sectionName}} - {{projectName}}",
+            "REPLACEMENT": "所有此數值物品將改成",
+            "ERROR_DELETE_ALL": "你不能刪除所有數值"
+        },
+        "PROJECT_VALUES_POINTS": {
+            "TITLE": "使用者故事點數",
+            "SUBTITLE": "指定你的使用者故事點數可能預估為",
+            "ACTION_ADD": "增加點數"
+        },
+        "PROJECT_VALUES_PRIORITIES": {
+            "TITLE": "問題優先性",
+            "SUBTITLE": "指明你將遇到的問題優先程度",
+            "ACTION_ADD": "Add new priority"
+        },
+        "PROJECT_VALUES_SEVERITIES": {
+            "TITLE": "問題急迫性",
+            "SUBTITLE": "指明你將遇到問題的嚴重程度",
+            "ACTION_ADD": "Add new severity"
+        },
+        "PROJECT_VALUES_STATUS": {
+            "TITLE": "狀態",
+            "SUBTITLE": "指明你的使用者故事狀態，任務以及經歷問題　",
+            "US_TITLE": "使用者故事狀態",
+            "TASK_TITLE": "任務狀態",
+            "ISSUE_TITLE": "問題狀態"
+        },
+        "PROJECT_VALUES_TYPES": {
+            "TITLE": "類型",
+            "SUBTITLE": "指定你的問題類型可能是",
+            "ISSUE_TITLE": "問題類型",
+            "ACTION_ADD": "Add new type"
+        },
+        "ROLES": {
+            "SECTION_NAME": "角色- {{projectName}}",
+            "WARNING_NO_ROLE": "注意，你的專案中無角色可以評估使用者故事的點數",
+            "HELP_ROLE_ENABLED": "當啟動時，被指派此角色的成員將可以評估使用者故事點數",
+            "COUNT_MEMBERS": "{{ role.members_count }} 這類角色的成員",
+            "TITLE_DELETE_ROLE": "删除角色",
+            "REPLACEMENT_ROLE": "和此角色有關的使用者都將遭移除　",
+            "WARNING_DELETE_ROLE": "<strong>小心, 所有角色的估算都將會移除</strong>",
+            "ERROR_DELETE_ALL": "你不能刪除所有數值",
+            "EXTERNAL_USER": "外部使用者"
+        },
+        "THIRD_PARTIES": {
+            "SECRET_KEY": "Secret key",
+            "PAYLOAD_URL": "有效載荷網址",
+            "VALID_IPS": "有效來源IP(請用逗點分開)"
+        },
+        "BITBUCKET": {
+            "SECTION_NAME": "Bitbucket",
+            "APP_TITLE": "Bitbucket - {{projectName}}",
+            "INFO_VERIFYING_IP": "Bitbucket要求不指派因此最佳確認方式為IP位置來源。如果此處空白，表示IP未有效確核。"
+        },
+        "GITLAB": {
+            "SECTION_NAME": "Gitlob",
+            "APP_TITLE": "Gitlab - {{projectName}}",
+            "INFO_VERIFYING_IP": "GitHub要求不指派因此最佳確認方式為IP位置來源。如果此處空白，表示IP未有效確核。"
+        },
+        "GITHUB": {
+            "SECTION_NAME": "Githun",
+            "APP_TITLE": "Gitlab - {{projectName}}"
+        },
+        "WEBHOOKS": {
+            "APP_TITLE": "Webhooks- {{projectName}}",
+            "SECTION_NAME": "網頁觸發 ",
+            "SUBTITLE": "網頁觸發通知關於Taiga事件的外部服務，例如評論，使用者故事等。　",
+            "ADD_NEW": "新增一個網頁觸發 ",
+            "TYPE_NAME": "鍵入服務名稱 ",
+            "TYPE_PAYLOAD_URL": "鍵入服務有效載荷網址",
+            "TYPE_SERVICE_SECRET": "鍵入服務密碼鑰匙 ",
+            "SAVE": "儲存網頁觸發 ",
+            "CANCEL": "取消網頁觸發 ",
+            "SHOW_HISTORY": "(顯示記錄)",
+            "TEST": "測試網頁觸發 ",
+            "EDIT": "編輯網頁觸發 ",
+            "DELETE": "刪除網頁觸發 ",
+            "REQUEST": "要求",
+            "RESEND_REQUEST": "重送出要求",
+            "HEADERS": "標頭　",
+            "PAYLOAD": "有效載荷",
+            "RESPONSE": "回應",
+            "DATE": "DD MMM YYYY [at] hh:mm",
+            "ACTION_HIDE_HISTORY": "(藏記錄)",
+            "ACTION_HIDE_HISTORY_TITLE": "藏記錄細節",
+            "ACTION_SHOW_HISTORY": "(顯示記錄)",
+            "ACTION_SHOW_HISTORY_TITLE": "顯示記錄細節",
+            "WEBHOOK_NAME": "網頁觸發  '{{name}}'"
+        },
+        "CUSTOM_ATTRIBUTES": {
+            "ADD": "加入客製化欄位",
+            "EDIT": "編輯客製化欄位",
+            "DELETE": "刪除客製欄位",
+            "SAVE_TITLE": "儲存客製化欄位",
+            "CANCEL_TITLE": "取消創建",
+            "SET_FIELD_NAME": "設定你的客制欄位名稱　",
+            "SET_FIELD_DESCRIPTION": "設定你客製化欄位的文字描述",
+            "ACTION_UPDATE": "更新客製化欄位",
+            "ACTION_CANCEL_EDITION": "取消編輯　"
+        },
+        "MEMBERSHIP": {
+            "COLUMN_MEMBER": "成員",
+            "COLUMN_ADMIN": "管理者",
+            "COLUMN_ROLE": "角色",
+            "COLUMN_STATUS": "狀態",
+            "STATUS_ACTIVE": "活躍　",
+            "STATUS_PENDING": "待辦中",
+            "DELETE_MEMBER": "刪除成員",
+            "SUCCESS_SEND_INVITATION": "我們已再次發出邀請信給'{{email}}'.　",
+            "ERROR_SEND_INVITATION": "我們未送出邀請 ",
+            "SUCCESS_DELETE": "已刪除 {{message}}.",
+            "ERROR_DELETE": "我們無法刪除 {{message}}.",
+            "DEFAULT_DELETE_MESSAGE": "邀請  {{email}}"
+        },
+        "DEFAULT_VALUES": {
+            "LABEL_POINTS": "點數選擇器預設值",
+            "LABEL_US": "使用者故事狀態選擇器預設值",
+            "LABEL_TASK_STATUS": "任務狀態選擇器預設值",
+            "LABEL_PRIORITY": "優先選擇器預設值",
+            "LABEL_SEVERITY": "急迫性選擇器預設值",
+            "LABEL_ISSUE_TYPE": "問題類型選擇器預設值",
+            "LABEL_ISSUE_STATUS": "問題狀態選擇器預設值"
+        },
+        "STATUS": {
+            "PLACEHOLDER_WRITE_STATUS_NAME": "為此新狀態命名"
+        },
+        "TYPES": {
+            "PLACEHOLDER_WRITE_NAME": "為此新要素命名"
+        },
+        "US_STATUS": {
+            "ACTION_ADD_STATUS": "增加新狀態",
+            "IS_ARCHIVED_COLUMN": "是否歸檔",
+            "WIP_LIMIT_COLUMN": "WIP限制",
+            "PLACEHOLDER_WRITE_NAME": "為此新狀態命名"
+        },
+        "MENU": {
+            "TITLE": "管理者",
+            "PROJECT": "專案",
+            "ATTRIBUTES": "屬性",
+            "MEMBERS": "成員",
+            "PERMISSIONS": "權限",
+            "INTEGRATIONS": "整合",
+            "PLUGINS": "外掛"
+        },
+        "SUBMENU_PROJECT_ATTRIBUTES": {
+            "TITLE": "Attributes"
+        },
+        "SUBMENU_PROJECT_VALUES": {
+            "STATUS": "狀態",
+            "POINTS": "點數",
+            "PRIORITIES": "優先性",
+            "SEVERITIES": "急迫性",
+            "TYPES": "類型",
+            "CUSTOM_FIELDS": "客製化欄位"
+        },
+        "SUBMENU_PROJECT_PROFILE": {
+            "TITLE": "專案檔案"
+        },
+        "SUBMENU_ROLES": {
+            "TITLE": "角色",
+            "ACTION_NEW_ROLE": "+ 新角色",
+            "TITLE_ACTION_NEW_ROLE": "新增角色"
+        },
+        "SUBMENU_THIDPARTIES": {
+            "TITLE": "服務 "
+        }
+    },
+    "PROJECT": {
+        "WELCOME": "歡迎",
+        "SECTION_PROJECTS": "專案",
+        "STATS": {
+            "PROJECT": "專案<br/> 點數",
+            "DEFINED": "已定義<br/> 點數",
+            "ASSIGNED": "已指派<br/> 點數",
+            "CLOSED": "已關閉<br />點數"
+        },
+        "SECTION": {
+            "SEARCH": "搜尋",
+            "BACKLOG": "待辦任務優先表",
+            "KANBAN": "Kanban(看板)",
+            "ISSUES": "問題 ",
+            "WIKI": "維基",
+            "TEAM": "團隊",
+            "MEETUP": "符合",
+            "ADMIN": "管理者"
+        },
+        "NAVIGATION": {
+            "SECTION_TITLE": "你的專案",
+            "PLACEHOLDER_SEARCH": "搜尋",
+            "ACTION_CREATE_PROJECT": "創建專案",
+            "TITLE_ACTION_IMPORT": "滙入專案",
+            "TITLE_PRVIOUS_PROJECT": "顯示過去專案",
+            "TITLE_NEXT_PROJECT": "顯示下一個任務"
+        },
+        "IMPORT": {
+            "TITLE": "滙入專案中",
+            "UPLOADING_FILE": "Uploading dump file",
+            "DESCRIPTION": "這個過桯要花點時間，請保持视窗開啟",
+            "ASYNC_IN_PROGRESS_TITLE": "我們的工程師對你的專案很重要哦",
+            "ASYNC_IN_PROGRESS_MESSAGE": "這個過程要花上一點時間<br/> 當弄好時我們會發給你一封郵件",
+            "UPLOAD_IN_PROGRESS_MESSAGE": "已上傳 {{totalSize}}中的{{uploadedSize}} ",
+            "ERROR": "系統在滙進你倒入的資料時遇上一些問題，請再試一次",
+            "ERROR_TOO_MANY_REQUEST": "抱歉系統繁忙中，請稍後再試試　",
+            "ERROR_MESSAGE": "我們的系統無法滙入你的資料",
+            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) 超過系統容量上限, 請重傳小一點的檔案 ({{maxFileSize}})",
+            "SYNC_SUCCESS": "你的專案已成功滙入"
+        }
+    },
+    "LIGHTBOX": {
+        "DELETE_ACCOUNT": {
+            "SECTION_NAME": "刪除Taiga帳戶",
+            "CONFIRM": "你確定要刪除Taiga帳戶嗎？",
+            "SUBTITLE": "我們會想念你:-(",
+            "NEWSLETTER_LABEL_TEXT": "I don't wanna receive your newsletter anymore"
+        },
+        "DELETE_PROJECT": {
+            "TITLE": "刪除專案",
+            "QUESTION": "你確定要刪除這個專案嗎？",
+            "SUBTITLE": "所有專案資料 (US/Tasks/Issues/Sprints/WikiPages) 將會遺失！ :-(",
+            "CONFIRM": "是的，我很確定"
+        },
+        "ASSIGNED_TO": {
+            "SELECT": "選擇要旨派給",
+            "SEARCH": "搜尋使用者"
+        },
+        "ADD_MEMBER": {
+            "TITLE": "新成員",
+            "HELP_TEXT": "如果用戶已註冊Taiga帳戶，他們會自動被加入。否則他們會收到一封加入的邀請信"
+        },
+        "CREATE_ISSUE": {
+            "TITLE": "新增問題 "
+        },
+        "FEEDBACK": {
+            "TITLE": "告訴我們你的故事",
+            "COMMENT": "系統錯誤，有改進建議有樂趣，或者是你使用Taiga 上的惡夢？",
+            "ACTION_SEND": "送出回饋 "
+        },
+        "SEARCH": {
+            "TITLE": "搜尋",
+            "PLACEHOLDER_SEARCH": "你在找什麼？"
+        },
+        "ADD_EDIT_SPRINT": {
+            "TITLE": "新衝刺任務 ",
+            "PLACEHOLDER_SPRINT_NAME": "衝刺任務名稱",
+            "PLACEHOLDER_SPRINT_START": "預估開始",
+            "PLACEHOLDER_SPRINT_END": "預估結束",
+            "ACTION_DELETE_SPRINT": "你確定要刪除這個衝刺任務嗎？",
+            "TITLE_ACTION_DELETE_SPRINT": "刪除衝刺任務",
+            "LAST_SPRINT_NAME": "最後衝刺任務 <strong> {{lastSprint}} ;-) </strong>"
+        },
+        "CREATE_EDIT_TASK": {
+            "TITLE": "新任務 ",
+            "PLACEHOLDER_SUBJECT": "任務主旨",
+            "PLACEHOLDER_STATUS": "任務狀態",
+            "OPTION_UNASSIGNED": "未指派",
+            "PLACEHOLDER_SHORT_DESCRIPTION": "輸入一段簡短描述",
+            "ACTION_EDIT": "編輯任務 "
+        },
+        "CREATE_EDIT_US": {
+            "TITLE": "新使用者故事",
+            "PLACEHOLDER_DESCRIPTION": "請加上一些描述文字以幫助其它人易了解此使用者故事",
+            "NEW_US": "新使用者故事",
+            "EDIT_US": "編輯使用者故事"
+        },
+        "DELETE_SPRINT": {
+            "TITLE": "刪除衝刺任務"
+        },
+        "CREATE_MEMBER": {
+            "PLACEHOLDER_INVITATION_TEXT": "(非必要) 加上一段私人文字在邀請信，告訴你的新成員一些好事  ;-)",
+            "PLACEHOLDER_TYPE_EMAIL": "輸入一個電郵地址"
+        }
+    },
+    "US": {
+        "SECTION_NAME": "User story details",
+        "LINK_TASKBOARD": "任務板",
+        "TITLE_LINK_TASKBOARD": "到任務板去",
+        "TOTAL_POINTS": "全部",
+        "ADD": "+新增使用者故事",
+        "ADD_BULK": "批次加入新使用者故事",
+        "PROMOTED": "此使用者故事已提昇成問題:",
+        "TITLE_LINK_GO_TO_ISSUE": "到問題 ",
+        "EXTERNAL_REFERENCE": "此使用者故事創造者是",
+        "GO_TO_EXTERNAL_REFERENCE": "回到一開始",
+        "BLOCKED": "這個使用者故事已被封鎖",
+        "PREVIOUS": "之前的使用者故事",
+        "NEXT": "下一個使用者故事",
+        "TITLE_DELETE_ACTION": "刪除使用者故事",
+        "LIGHTBOX_TITLE_BLOKING_US": "封鎖中的使用者故事",
+        "TASK_COMPLETED": "{{totalClosedTasks}}/{{totalTasks}} 任務完成",
+        "ASSIGN": "指派使用者故事",
+        "NOT_ESTIMATED": "無預估",
+        "TOTAL_US_POINTS": "全部使用者故事點數",
+        "FIELDS": {
+            "TEAM_REQUIREMENT": "團隊要求",
+            "CLIENT_REQUIREMENT": "客戶要求",
+            "FINISH_DATE": "完成日期"
+        }
+    },
+    "COMMENTS": {
+        "DELETED_INFO": "評論被  {{user}} 於 {{date}}刪除　",
+        "TITLE": "評論",
+        "COMMENT": "評論",
+        "TYPE_NEW_COMMENT": "在此輸入一個新的評論",
+        "SHOW_DELETED": "顯示遭刪除的評論 ",
+        "HIDE_DELETED": "隱藏已刪除之評論 ",
+        "RESTORE": "恢復原評論 "
+    },
+    "ACTIVITY": {
+        "SHOW_ACTIVITY": "顯示動態",
+        "DATETIME": "DD MMM YYYY HH:mm",
+        "SHOW_MORE": "+ 顯示過去條目 ({{showMore}} more)",
+        "TITLE": "動態",
+        "REMOVED": "已移除",
+        "ADDED": "已加入",
+        "US_POINTS": "使用者故事點數({{name}})",
+        "NEW_ATTACHMENT": "新附件",
+        "DELETED_ATTACHMENT": "已刪除附件",
+        "UPDATED_ATTACHMENT": "更新附件 {{filename}}",
+        "DELETED_CUSTOM_ATTRIBUTE": "刪除客製屬性",
+        "SIZE_CHANGE": "使  {size, plural, one{change} 其它{changes}}",
+        "VALUES": {
+            "YES": "yes",
+            "NO": "no",
+            "EMPTY": "空白",
+            "UNASSIGNED": "未指派"
+        },
+        "FIELDS": {
+            "SUBJECT": "主旨",
+            "NAME": "名稱　",
+            "DESCRIPTION": "描述",
+            "CONTENT": "內容",
+            "STATUS": "狀態",
+            "IS_CLOSED": "關閉中",
+            "FINISH_DATE": "完成日期",
+            "TYPE": "類型",
+            "PRIORITY": "優先性",
+            "SEVERITY": "急迫性",
+            "ASSIGNED_TO": "指派給 ",
+            "WATCHERS": "監督者",
+            "MILESTONE": "衝刺任務",
+            "USER_STORY": "使用者故事",
+            "PROJECT": "專案",
+            "IS_BLOCKED": "封鎖",
+            "BLOCKED_NOTE": "已封鎖之筆記",
+            "POINTS": "點數",
+            "CLIENT_REQUIREMENT": "客戶要求",
+            "TEAM_REQUIREMENT": "團隊要求",
+            "IS_IOCAINE": "負予全新任務",
+            "TAGS": "標籤",
+            "ATTACHMENTS": "附件",
+            "IS_DEPRECATED": "被棄用",
+            "ORDER": "次序",
+            "BACKLOG_ORDER": "待辦任務先後次序",
+            "SPRINT_ORDER": "衝刺任務次序",
+            "KANBAN_ORDER": "kanban看板次序",
+            "TASKBOARD_ORDER": "任務板次序",
+            "US_ORDER": "使用者故事次序"
+        }
+    },
+    "BACKLOG": {
+        "SECTION_NAME": "待辦任務優先表",
+        "MOVE_US_TO_CURRENT_SPRINT": "移到目前的 Sprint",
+        "SHOW_FILTERS": "顯示過濾器",
+        "SHOW_TAGS": "顯示標籤 (Tag)",
+        "EMPTY": "你的待辦任務優先表已清空",
+        "CREATE_NEW_US": "創建一個新的使用者故事",
+        "CREATE_NEW_US_EMPTY_HELP": "你可以創建一個新使用者故事",
+        "EXCESS_OF_POINTS": "超過的點數",
+        "PENDING_POINTS": "待核點數",
+        "CLOSED_POINTS": "關閉",
+        "COMPACT_SPRINT": "濃縮衝刺點數",
+        "GO_TO_TASKBOARD": "到任務板 {{spring.name}}",
+        "EDIT_SPRINT": "編輯衝刺任務 ",
+        "TOTAL_POINTS": "全部",
+        "STATUS_NAME": "狀態名稱 ",
+        "SORTABLE_FILTER_ERROR": "當過濾器開啟時，無法放入待辦任務優先表",
+        "DOOMLINE": "專案規模  [Doomline]",
+        "CHART": {
+            "XAXIS_LABEL": "衝刺任務",
+            "YAXIS_LABEL": "點數",
+            "OPTIMAL": "最佳給衝刺任務待辦點數  {{xval}} 應是 {{yval}}",
+            "REAL": "任務衝刺實際待辦點數 {{xval}} 為 {{yval}}",
+            "INCREMENT_TEAM": "團隊要求的任務衝刺逐步新增點數 {{xval}} 為 {{yval}}",
+            "INCREMENT_CLIENT": "客戶要求的任務衝刺逐步新增點數 {{xval}} 為 {{yval}}"
+        },
+        "TAGS": {
+            "TOGGLE": "Toggle tags visibility",
+            "SHOW": "顯示標籤",
+            "HIDE": "隱藏標籤"
+        },
+        "TABLE": {
+            "COLUMN_US": "使用者故事",
+            "TITLE_COLUMN_POINTS": "選擇檢示每個角色"
+        },
+        "SPRINT_SUMMARY": {
+            "TOTAL_POINTS": "全部<br/> 點數",
+            "COMPLETED_POINTS": "已完成<br />點數",
+            "OPEN_TASKS": "開啟<br />任務",
+            "CLOSED_TASKS": "已關閉<br />任務",
+            "IOCAINE_DOSES": "毒物（全新任務挑戰）<br />劑量",
+            "SHOW_STATISTICS_TITLE": "顯示統計"
+        },
+        "SUMMARY": {
+            "PROJECT_POINTS": "專案<br/> 點數",
+            "DEFINED_POINTS": "已定義<br/> 點數",
+            "CLOSED_POINTS": "已關閉<br />點數",
+            "POINTS_PER_SPRINT": "點數 /<br />衝刺任務"
+        },
+        "FILTERS": {
+            "TOGGLE": "Toggle filters visibility",
+            "TITLE": "過濾器",
+            "REMOVE": "移除過濾器",
+            "HIDE": "Hide Filters",
+            "SHOW": "顯示過濾器",
+            "FILTER_CATEGORY_STATUS": "狀態",
+            "FILTER_CATEGORY_TAGS": "標籤"
+        },
+        "SPRINTS": {
+            "TITLE": "衝刺任務",
+            "DATE": "DD MMM YYYY",
+            "LINK_TASKBOARD": "衝刺任務板",
+            "TITLE_LINK_TASKBOARD": "到任務板 {{spring.name}}",
+            "NUMBER_SPRINTS": "<br/>衝刺任務 ",
+            "TITLE_ACTION_NEW_SPRINT": "+ 新衝刺任務 ",
+            "ACTION_NEW_SPRINT": "+ 新衝刺任務 ",
+            "ACTION_SHOW_CLOSED_SPRINTS": "顯示關閉衝刺任務",
+            "ACTION_HIDE_CLOSED_SPRINTS": "隱藏衝刺任務"
+        }
+    },
+    "ERROR": {
+        "TEXT1": "系統出了一點問題，工程師正在搶修中",
+        "TEXT2": "請再重新載入",
+        "NOT_FOUND": "找不到",
+        "NOT_FOUND_TEXT": "Error 404，你要找的網頁不存在，你可以稍後再回來TAIGA首頁，看看是否能再次找到要找的東西。",
+        "PERMISSION_DENIED": "無此權限",
+        "PERMISSION_DENIED_CODE": "Error 403.",
+        "VERSION_ERROR": "Taiga某人之前更改了這個，而我們的工程師無法再做改變。請重新載入頁面來使用你的更新（之前設定將消失）"
+    },
+    "TASKBOARD": {
+        "SECTION_NAME": "任務板",
+        "TITLE_ACTION_ADD": "增加新任務 ",
+        "TITLE_ACTION_ADD_BULK": "批次加入新任務 ",
+        "TITLE_ACTION_ASSIGN": "指派任務 ",
+        "TITLE_ACTION_EDIT": "結束任務 ",
+        "TABLE": {
+            "COLUMN": "使用者故事",
+            "TITLE_ACTION_FOLD": "隱藏欄位",
+            "TITLE_ACTION_UNFOLD": "未隱藏欄位",
+            "TITLE_ACTION_FOLD_ROW": "隱藏列數",
+            "TITLE_ACTION_UNFOLD_ROW": "未隱藏列數",
+            "FIELD_POINTS": "點數",
+            "ROW_UNASSIGED_TASKS_TITLE": "未指派的任務"
+        },
+        "CHARTS": {
+            "XAXIS_LABEL": "天數",
+            "YAXIS_LABEL": "點數",
+            "OPTIMAL": "一天最適待辦點數{formattedDate}應為{{roundedValue}}",
+            "REAL": "一天真實的待辦點數 {{formattedDate}} is {{roundedValue}}",
+            "DATE": "DD MMM YYYY"
+        }
+    },
+    "TASK": {
+        "SECTION_NAME": "Task details",
+        "LINK_TASKBOARD": "任務板",
+        "TITLE_LINK_TASKBOARD": "到任務板去",
+        "PLACEHOLDER_SUBJECT": "鍵入新任務主旨",
+        "TITLE_SELECT_STATUS": "狀態名稱 ",
+        "OWNER_US": "這任務屬於",
+        "TITLE_LINK_GO_OWNER": "到使用者故事",
+        "ORIGIN_US": "此任務創造者是",
+        "TITLE_LINK_GO_ORIGIN": "到使用者故事",
+        "BLOCKED": "這任務已被封鎖",
+        "PREVIOUS": "之前的任務 ",
+        "NEXT": "下一個任務 ",
+        "TITLE_DELETE_ACTION": "刪除任務",
+        "LIGHTBOX_TITLE_BLOKING_TASK": "封鎖中的任務　",
+        "FIELDS": {
+            "MILESTONE": "衝刺任務",
+            "USER_STORY": "使用者故事",
+            "IS_IOCAINE": "負予全新任務"
+        },
+        "ACTION_IOCAINE": "挑戰全新任務",
+        "TITLE_ACTION_IOCAINE": "感到任務的不勘負荷？確定其它人知道此狀況在編輯任務時點選此「毒藥鍵」。這種致命毒物如果長期吸食微量，最後可能免疫。因此你最好偶而做點出奇的挑戰。"
+    },
+    "NOTIFICATION": {
+        "OK": "一切還好",
+        "WARNING": "哇，有狀況發生",
+        "WARNING_TEXT": "很抱歉你的變動並未成功儲存",
+        "SAVED": "我們系統已儲存你所有變動",
+        "CLOSE": "關閉通知",
+        "MAIL": "透過郵件通知",
+        "ASK_DELETE": "你確定要刪除嗎？"
+    },
+    "CANCEL_ACCOUNT": {
+        "TITLE": "取消您的帳戶",
+        "SUBTITLE": "很遺憾你要離開Taiga，希望你喜歡這段時光:",
+        "PLACEHOLDER_INPUT_TOKEN": "取消帳戶代碼　",
+        "ACTION_LEAVING": "是的，我要走了",
+        "SUCCESS": "我們系統已移附你的帳戶"
+    },
+    "CHANGE_EMAIL_FORM": {
+        "TITLE": "變更電子郵件",
+        "SUBTITLE": "確認你的電子郵件要更新",
+        "PLACEHOLDER_INPUT_TOKEN": "變更電郵代碼　",
+        "ACTION_CHANGE_EMAIL": "變更電郵地址",
+        "SUCCESS": "我們系統已更新你的電子郵件"
+    },
+    "CHANGE_PASSWORD_RECOVERY_FORM": {
+        "TITLE": "創建新Taiga通過",
+        "SUBTITLE": "你也許該吃點鐵質豐富的食物，它對你的大腦有益處:p",
+        "PLACEHOLDER_RECOVER_PASSWORD_TOKEN": "回復密碼代碼　",
+        "LINK_NEED_TOKEN": "需要一個?",
+        "TITLE_LINK_NEED_TOKEN": "你是否需要代碼來恢復你所忘記的密碼?",
+        "PLACEHOLDER_NEW_PASSWORD": "新密碼 ",
+        "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "重新輸入新密碼",
+        "ACTION_RESET_PASSWORD": "重設密碼 ",
+        "SUCCESS": "系統已儲存你的新密碼<br />試試 <strong>用它登入</strong> "
+    },
+    "FORGOT_PASSWORD_FORM": {
+        "TITLE": "你是否忘了密碼嗎",
+        "SUBTITLE": "輸入你的帳戶名稱或電子郵件以進行註冊",
+        "PLACEHOLDER_FIELD": "使用者名稱或電子郵件",
+        "ACTION_RESET_PASSWORD": "重設密碼 ",
+        "LINK_CANCEL": "不，請帶我回去，我記起來了",
+        "SUCCESS": "<strong>檢查你的收信箱</strong><br />我們送出了一封信<br />裏面有設定你新電子郵件的相關指示",
+        "ERROR": "按我們的記錄，你尚未註冊"
+    },
+    "LOGIN_COMMON": {
+        "HEADER": "我已登入Taiga",
+        "PLACEHOLDER_AUTH_NAME": "使用者名稱或電子郵件（注意大小寫）",
+        "LINK_FORGOT_PASSWORD": "忘記了?",
+        "TITLE_LINK_FORGOT_PASSWORD": "你忘了密碼嗎",
+        "ACTION_ENTER": "Enter",
+        "ACTION_SIGN_IN": "登入",
+        "PLACEHOLDER_AUTH_PASSWORD": "密碼（大小寫有別）"
+    },
+    "LOGIN_FORM": {
+        "ERROR_AUTH_INCORRECT": "按我們的箹統記錄，你的帳戶名稱/電子郵件或密碼並不正確　",
+        "ERROR_GENERIC": "根據系統，此處有錯誤",
+        "SUCCESS": "我們系統歡迎你加入Taiga"
+    },
+    "INVITATION_LOGIN_FORM": {
+        "NOT_FOUND": "<strong>Ooops, 有點問題</strong><br />我們的系統無法找到你的邀請信",
+        "SUCCESS": "你成功地加入此專案，歡迎來到 {{project_name}}",
+        "ERROR": "按我們的記錄，你尚未註冊或是未輸入有效的密碼　"
+    },
+    "REGISTER_FORM": {
+        "TITLE": "註冊一個新的Taiga帳戶(免費 )",
+        "PLACEHOLDER_NAME": "選一個用戶帳號(注意大小寫)",
+        "PLACEHOLDER_FULL_NAME": "選取你的全名",
+        "PLACEHOLDER_EMAIL": "你的電子郵件",
+        "PLACEHOLDER_PASSWORD": "設定密碼（注意大小寫不同） ",
+        "ACTION_SIGN_UP": "註冊",
+        "TITLE_LINK_LOGIN": "登入",
+        "LINK_LOGIN": "你是否已註冊? 登入"
+    },
+    "ISSUES": {
+        "LIST_SECTION_NAME": "問題 ",
+        "SECTION_NAME": "Issue details",
+        "ACTION_NEW_ISSUE": "+ 新問題　",
+        "ACTION_PROMOTE_TO_US": "提昇到使用者故事",
+        "PLACEHOLDER_FILTER_NAME": "寫入過濾器名稱後按下enter ",
+        "PROMOTED": "此問題已提昇成使用者故事 ",
+        "EXTERNAL_REFERENCE": "此問題的提供者是",
+        "GO_TO_EXTERNAL_REFERENCE": "回到一開始",
+        "BLOCKED": "這個議題已被封鎖",
+        "TITLE_PREVIOUS_ISSUE": "之前的問題 ",
+        "TITLE_NEXT_ISSUE": "下一個問題 ",
+        "ACTION_DELETE": "删除議題 ",
+        "LIGHTBOX_TITLE_BLOKING_ISSUE": "封鎖中的問題",
+        "CONFIRM_PROMOTE": {
+            "TITLE": "將此問題提到使用者故事",
+            "MESSAGE": "你確定此問題要創建一個新的使用者故事?"
+        },
+        "FILTERS": {
+            "TITLE": "過濾器",
+            "INPUT_SEARCH_PLACEHOLDER": "主旨或參考",
+            "TITLE_ACTION_SEARCH": "搜尋",
+            "ACTION_SAVE_CUSTOM_FILTER": "儲存為客製過濾器 ",
+            "BREADCRUMB": "過濾器",
+            "TITLE_BREADCRUMB": "過濾器",
+            "CATEGORIES": {
+                "TYPE": "類型",
+                "STATUS": "狀態",
+                "SEVERITY": "急迫性",
+                "PRIORITIES": "優先性",
+                "TAGS": "標籤",
+                "ASSIGNED_TO": "指派給 ",
+                "CREATED_BY": "由創建",
+                "CUSTOM_FILTERS": "客製過濾器 "
+            },
+            "CONFIRM_DELETE": {
+                "TITLE": "刪除客製過濾器 ",
+                "MESSAGE": "預設過濾器 '{{customFilterName}}'"
+            }
+        },
+        "TABLE": {
+            "COLUMNS": {
+                "TYPE": "類型",
+                "SEVERITY": "急迫性",
+                "PRIORITY": "優先性",
+                "SUBJECT": "主旨",
+                "STATUS": "狀態",
+                "CREATED": "已創建",
+                "ASSIGNED_TO": "指派給 "
+            },
+            "TITLE_ACTION_CHANGE_STATUS": "改變狀態",
+            "TITLE_ACTION_ASSIGNED_TO": "指派給 ",
+            "EMPTY": {
+                "TITLE": "沒有問題回報:-)",
+                "SUBTITLE": "你有發現任何問題嗎",
+                "ACTION_CREATE_ISSUE": "創建一個新問題"
+            }
+        }
+    },
+    "KANBAN": {
+        "SECTION_NAME": "Kanban(看板)",
+        "TITLE_ACTION_FOLD": "隱藏欄位",
+        "TITLE_ACTION_UNFOLD": "未隱藏欄位",
+        "TITLE_ACTION_FOLD_CARDS": "隱藏卡片",
+        "TITLE_ACTION_UNFOLD_CARDS": "未隱藏卡片",
+        "TITLE_ACTION_ADD_US": "新增使用者故事",
+        "TITLE_ACTION_ADD_BULK": "增加新批次",
+        "ACTION_SHOW_ARCHIVED": "顯示歸檔資料",
+        "ACTION_HIDE_ARCHIVED": "隱藏歸檔",
+        "HIDDEN_USER_STORIES": "此狀態下的使用者故事預設為隱藏",
+        "ARCHIVED": "你已歸檔",
+        "UNDO_ARCHIVED": "拖移 & 丟到未做"
+    },
+    "SEARCH": {
+        "FILTER_USER_STORIES": "使用者故事",
+        "FILTER_ISSUES": "問題 ",
+        "FILTER_TASKS": "任務 ",
+        "FILTER_WIKI": "維基頁",
+        "PLACEHOLDER_SEARCH": "搜尋",
+        "TITLE_ACTION_SEARCH": "搜尋",
+        "EMPTY_TITLE": "依你搜尋標準並未找到任何東西",
+        "EMPTY_DESCRIPTION": "請試試上方某一個分頁或再搜尋一次"
+    },
+    "TEAM": {
+        "SECTION_NAME": "團隊",
+        "APP_TITLE": "團隊- {{projectName}}",
+        "PLACEHOLDER_INPUT_SEARCH": "以全名搜尋",
+        "COLUMN_MR_WOLF": "問題解決高手",
+        "EXPLANATION_COLUMN_MR_WOLF": "已關閉議題 ",
+        "COLUMN_IOCAINE": "毒品吸食者（新領域任務挑戰）",
+        "EXPLANATION_COLUMN_IOCAINE": "毒物（新任務）劑量攝取",
+        "COLUMN_CERVANTES": "大文豪",
+        "EXPLANATION_COLUMN_CERVANTES": "已編輯之維基頁",
+        "COLUMN_BUG_HUNTER": "程式錯誤獵人",
+        "EXPLANATION_COLUMN_BUG_HUNTER": "問題回報",
+        "COLUMN_NIGHT_SHIFT": "熬夜工作",
+        "EXPLANATION_COLUMN_NIGHT_SHIFT": "任務關閉",
+        "COLUMN_TOTAL_POWER": "所有力量",
+        "EXPLANATION_COLUMN_TOTAL_POWER": "所有點數",
+        "SECTION_TITLE_TEAM": "團隊 >",
+        "SECTION_FILTER_ALL": "所有",
+        "CONFIRM_LEAVE_PROJECT": "你確定要退出這個專案嗎？",
+        "ACTION_LEAVE_PROJECT": "退出此專案"
+    },
+    "CHANGE_PASSWORD": {
+        "SECTION_NAME": "改變密碼 ",
+        "FIELD_CURRENT_PASSWORD": "現用密碼 ",
+        "PLACEHOLDER_CURRENT_PASSWORD": "你目前的密碼（如果你未有密碼，此處請空白）",
+        "FIELD_NEW_PASSWORD": "新密碼 ",
+        "PLACEHOLDER_NEW_PASSWORD": "輸入新密碼",
+        "FIELD_RETYPE_PASSWORD": "重新輸入新密碼",
+        "PLACEHOLDER_RETYPE_PASSWORD": "重新輸入新密碼",
+        "ERROR_PASSWORD_MATCH": "密碼不符"
+    },
+    "USER_SETTINGS": {
+        "AVATAR_MAX_SIZE": "[最大. 尺寸: {{maxFileSize}}] ",
+        "MENU": {
+            "SECTION_TITLE": "使用者設定",
+            "USER_PROFILE": "使用者設定檔案",
+            "CHANGE_PASSWORD": "更換密碼 ",
+            "EMAIL_NOTIFICATIONS": "電子郵件通知"
+        },
+        "NOTIFICATIONS": {
+            "SECTION_NAME": "電子郵件通知",
+            "COLUMN_PROJECT": "專案",
+            "COLUMN_RECEIVE_ALL": "接收所有",
+            "COLUMN_ONLY_INVOLVED": "只有相關",
+            "COLUMN_NO_NOTIFICATIONS": "無通知",
+            "OPTION_ALL": "所有",
+            "OPTION_INVOLVED": "涉入",
+            "OPTION_NONE": "無"
+        },
+        "POPOVER": {
+            "USER_PROFILE": "使用者設定檔案",
+            "CHANGE_PASSWORD": "更換密碼 ",
+            "NOTIFICATIONS": "通知",
+            "FEEDBACK": "回饋 ",
+            "TITLE_AVATAR": "使用者偏好"
+        }
+    },
+    "USER_PROFILE": {
+        "IMAGE_HELP": "此圖片將被裁成80x80px.<br>",
+        "ACTION_CHANGE_IMAGE": "變更",
+        "ACTION_USE_GRAVATAR": "用戶大頭貼圖片",
+        "ACTION_DELETE_ACCOUNT": "刪除Taiga帳戶",
+        "CHANGE_EMAIL_SUCCESS": "<strong>檢查你的收信箱</strong><br />我們送出了一封信<br />裏面有設定你新電子郵件的相關指示",
+        "CHANGE_PHOTO": "變更照片",
+        "FIELD": {
+            "USERNAME": "使用者名稱",
+            "EMAIL": "電子郵件",
+            "FULL_NAME": "全名",
+            "PLACEHOLDER_FULL_NAME": "你的全名",
+            "BIO": "簡介",
+            "PLACEHOLDER_BIO": "請自我介紹",
+            "LANGUAGE": "語言",
+            "LANGUAGE_DEFAULT": "--  使用設預語言 -- "
+        }
+    },
+    "WIZARD": {
+        "SECTION_TITLE_CHOOSE_TEMPLATE": "選擇外觀 ",
+        "CHOOSE_TEMPLATE_TEXT": "哪一個樣版最適合你的專案",
+        "SECTION_TITLE_CREATE_PROJECT": "創建專案",
+        "CREATE_PROJECT_TEXT": "新鮮與乾淨，太好了",
+        "PROGRESS_TEMPLATE_SELECTION": "外觀選擇",
+        "PROGRESS_NAME_DESCRIPTION": "名稱與描述"
+    },
+    "WIKI": {
+        "DATETIME": "DD MMM YYYY HH:mm",
+        "PLACEHOLDER_PAGE": "編寫你的維基頁",
+        "REMOVE": "移除此維基頁　",
+        "DELETE_LIGHTBOX_TITLE": "刪除維基頁",
+        "NAVIGATION": {
+            "SECTION_NAME": "連結",
+            "ACTION_ADD_LINK": "新增連結"
+        },
+        "SUMMARY": {
+            "TIMES_EDITED": "次數 <br />編輯 ",
+            "LAST_EDIT": "上次 <br />編輯 ",
+            "LAST_MODIFICATION": "上回修改"
+        }
+    }
+}

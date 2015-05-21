@@ -22,7 +22,7 @@
 module = angular.module("taigaCommon")
 
 
-ImportProjectButtonDirective = ($rs, $confirm, $location, $navUrls) ->
+ImportProjectButtonDirective = ($rs, $confirm, $location, $navUrls, $translate) ->
     link = ($scope, $el, $attrs) ->
         $el.on "click", ".import-project-button", (event) ->
             event.preventDefault()
@@ -34,34 +34,29 @@ ImportProjectButtonDirective = ($rs, $confirm, $location, $navUrls) ->
             file = event.target.files[0]
             return if not file
 
-            loader = $confirm.loader("Uploading dump file")
+            loader = $confirm.loader($translate.instant("PROJECT.IMPORT.UPLOADING_FILE"))
 
             onSuccess = (result) ->
                 loader.stop()
                 if result.status == 202 # Async mode
-                    title = "Our Oompa Loompas are importing your project" # TODO: i18n
-                    message = "This process could take a few minutes <br/> We will send you
-                               an email when ready" # TODO: i18n
+                    title = $translate.instant("PROJECT.IMPORT.ASYNC_IN_PROGRESS_TITLE")
+                    message = $translate.instant("PROJECT.IMPORT.ASYNC_IN_PROGRESS_MESSAGE")
                     $confirm.success(title, message)
 
                 else # result.status == 201 # Sync mode
                     ctx = {project: result.data.slug}
                     $location.path($navUrls.resolve("project-admin-project-profile-details", ctx))
-                    $confirm.notify("success", "Your project has been imported successfuly.") # TODO: i18n
+                    msg = $translate.instant("PROJECT.IMPORT.SYNC_SUCCESS")
+                    $confirm.notify("success", msg)
 
             onError = (result) ->
                 loader.stop()
-                console.log "Error", result
-                errorMsg = "Our oompa loompas have some problems importing your dump data.
-                            Please try again. " # TODO: i18n
+                errorMsg = $translate.instant("PROJECT.IMPORT.ERROR")
 
                 if result.status == 429  # TOO MANY REQUESTS
-                    errorMsg = "Sorry, our oompa loompas are very busy right now.
-                                Please try again in a few minutes. " # TODO: i18n
+                    errorMsg = $translate.instant("PROJECT.IMPORT.ERROR_TOO_MANY_REQUEST")
                 else if result.data?._error_message
-                    errorMsg = "Our oompa loompas have some problems importing your dump data:
-                                #{result.data._error_message}" # TODO: i18n
-
+                    errorMsg = $translate.instant("PROJECT.IMPORT.ERROR_MESSAGE", {error_message: result.data._error_message})
                 $confirm.notify("error", errorMsg)
 
             loader.start()
@@ -69,5 +64,5 @@ ImportProjectButtonDirective = ($rs, $confirm, $location, $navUrls) ->
 
     return {link: link}
 
-module.directive("tgImportProjectButton", ["$tgResources", "$tgConfirm", "$location", "$tgNavUrls",
+module.directive("tgImportProjectButton", ["$tgResources", "$tgConfirm", "$location", "$tgNavUrls", "$translate",
                                            ImportProjectButtonDirective])

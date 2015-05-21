@@ -3,34 +3,34 @@ section.table-team.basic-table
         div.username
         div.member-stats
             div.attribute.attribute-name(ng-if="issuesEnabled")
-                span Mr. Wolf
+                span(translate="TEAM.COLUMN_MR_WOLF")
                 div.popover.attribute-explanation
-                    span Closed issues
+                    span(translate="TEAM.EXPLANATION_COLUMN_MR_WOLF")
             div.attribute(ng-if="tasksEnabled")
-                span Iocaine Drinker
+                span(translate="TEAM.COLUMN_IOCAINE")
                 div.popover.attribute-explanation
-                    span Iocaine doses ingested
+                    span(translate="TEAM.EXPLANATION_COLUMN_IOCAINE")
             div.attribute(ng-if="wikiEnabled")
-                span Cervantes
+                span(translate="TEAM.COLUMN_CERVANTES")
                 div.popover.attribute-explanation
-                    span Wiki pages edited
+                    span(translate="TEAM.EXPLANATION_COLUMN_CERVANTES")
             div.attribute(ng-if="issuesEnabled")
-                Total Bug Hunter
+                span(translate="TEAM.COLUMN_BUG_HUNTER")
                 div.popover.attribute-explanation
-                    span Bugs reported
+                    span(translate="TEAM.EXPLANATION_COLUMN_BUG_HUNTER")
             div.attribute(ng-if="tasksEnabled")
-                span Night Shift
+                span(translate="TEAM.COLUMN_NIGHT_SHIFT")
                 div.popover.attribute-explanation
-                    span Tasks closed
+                    span(translate="TEAM.EXPLANATION_COLUMN_NIGHT_SHIFT")
             div.attribute
-                Total Power
+                span(translate="TEAM.COLUMN_TOTAL_POWER")
                 div.popover.attribute-explanation
-                    span Total Points
+                    span(translate="TEAM.EXPLANATION_COLUMN_TOTAL_POWER")
 
     div.hero(tg-team-current-user, stats="stats", currentuser="currentUser", projectid="projectId", issuesEnabled="issuesEnabled", tasksenabled="tasksEnabled", wikienabled="wikiEnabled", ng-if="::currentUser")
 
 h2(ng-show="memberships.length")
-    span Team >
-    span  {{filtersRole.name || "All"}}
+    span(translate="TEAM.SECTION_TITLE_TEAM")
+    span  {{filtersRole.name || ("TEAM.SECTION_FILTER_ALL" | translate)}}
 
 section.table-team.basic-table(tg-team-members, memberships="memberships", stats="stats", filtersq="filtersQ", filtersrole="filtersRole", issuesEnabled="issuesEnabled", tasksenabled="tasksEnabled", wikienabled="wikiEnabled")

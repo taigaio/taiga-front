@@ -22,16 +22,25 @@
 taiga = @.taiga
 
 class HttpService extends taiga.Service
-    @.$inject = ["$http", "$q", "$tgStorage"]
+    @.$inject = ["$http", "$q", "$tgStorage", "$rootScope"]
+
+    constructor: (@http, @q, @storage, @rootScope) ->
+        super()
 
     headers: ->
+        headers = {}
+
+        # Authorization
         token = @storage.get('token')
         if token
-            return {"Authorization":"Bearer #{token}"}
-        return {}
+            headers["Authorization"] = "Bearer #{token}"
 
-    constructor: (@http, @q, @storage) ->
-        super()
+        # Accept-Language
+        lang = @rootScope.user?.lang
+        if lang
+            headers["Accept-Language"] = lang
+
+        return headers
 
     request: (options) ->
         options.headers = _.merge({}, options.headers or {}, @.headers())

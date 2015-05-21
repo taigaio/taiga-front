@@ -68,7 +68,7 @@ class HistoryController extends taiga.Controller
         return @rs.history.undeleteComment(type, objectId, activityId).then => @.loadHistory(type, objectId)
 
 
-HistoryDirective = ($log, $loading, $qqueue, $template, $confirm) ->
+HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $compile) ->
     templateChangeDiff = $template.get("common/history/history-change-diff.html", true)
     templateChangePoints = $template.get("common/history/history-change-points.html", true)
     templateChangeGeneric = $template.get("common/history/history-change-generic.html", true)
@@ -87,6 +87,9 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm) ->
         showAllComments = false
         showAllActivity = false
 
+        getPrettyDateFormat = ->
+            return $translate.instant("ACTIVITY.DATETIME")
+
         bindOnce $scope, $attrs.ngModel, (model) ->
             type = $attrs.type
             objectId = model.id
@@ -97,24 +100,40 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm) ->
         # Helpers
         getHumanizedFieldName = (field) ->
             humanizedFieldNames = {
-                # US
-                assigned_to: "assigned to"
-                is_closed: "is closed"
-                finish_date: "finish date"
-                client_requirement: "client requirement"
-                team_requirement: "team requirement"
+                subject :              $translate.instant("ACTIVITY.FIELDS.SUBJECT")
+                name:                  $translate.instant("ACTIVITY.FIELDS.NAME")
+                description :          $translate.instant("ACTIVITY.FIELDS.DESCRIPTION")
+                content:               $translate.instant("ACTIVITY.FIELDS.CONTENT")
+                status:                $translate.instant("ACTIVITY.FIELDS.STATUS")
+                is_closed :            $translate.instant("ACTIVITY.FIELDS.IS_CLOSED")
+                finish_date :          $translate.instant("ACTIVITY.FIELDS.FINISH_DATE")
+                type:                  $translate.instant("ACTIVITY.FIELDS.TYPE")
+                priority:              $translate.instant("ACTIVITY.FIELDS.PRIORITY")
+                severity:              $translate.instant("ACTIVITY.FIELDS.SEVERITY")
+                assigned_to :          $translate.instant("ACTIVITY.FIELDS.ASSIGNED_TO")
+                watchers :             $translate.instant("ACTIVITY.FIELDS.WATCHERS")
+                milestone :            $translate.instant("ACTIVITY.FIELDS.MILESTONE")
+                user_story:            $translate.instant("ACTIVITY.FIELDS.USER_STORY")
+                project:               $translate.instant("ACTIVITY.FIELDS.PROJECT")
+                is_blocked:            $translate.instant("ACTIVITY.FIELDS.IS_BLOCKED")
+                blocked_note:          $translate.instant("ACTIVITY.FIELDS.BLOCKED_NOTE")
+                points:                $translate.instant("ACTIVITY.FIELDS.POINTS")
+                client_requirement :   $translate.instant("ACTIVITY.FIELDS.CLIENT_REQUIREMENT")
+                team_requirement :     $translate.instant("ACTIVITY.FIELDS.TEAM_REQUIREMENT")
+                is_iocaine:            $translate.instant("ACTIVITY.FIELDS.IS_IOCAINE")
+                tags:                  $translate.instant("ACTIVITY.FIELDS.TAGS")
+                attachments :          $translate.instant("ACTIVITY.FIELDS.ATTACHMENTS")
+                is_deprecated:         $translate.instant("ACTIVITY.FIELDS.IS_DEPRECATED")
+                blocked_note:          $translate.instant("ACTIVITY.FIELDS.BLOCKED_NOTE")
+                is_blocked:            $translate.instant("ACTIVITY.FIELDS.IS_BLOCKED")
+                order:                 $translate.instant("ACTIVITY.FIELDS.ORDER")
+                backlog_order:         $translate.instant("ACTIVITY.FIELDS.BACKLOG_ORDER")
+                sprint_order:          $translate.instant("ACTIVITY.FIELDS.SPRINT_ORDER")
+                kanban_order:          $translate.instant("ACTIVITY.FIELDS.KANBAN_ORDER")
+                taskboard_order:       $translate.instant("ACTIVITY.FIELDS.TASKBOARD_ORDER")
+                us_order:              $translate.instant("ACTIVITY.FIELDS.US_ORDER")
+            }
 
-                # Task
-                milestone: "sprint"
-                user_story: "user story"
-                is_iocaine: "is iocaine"
-
-                # Attachment
-                is_deprecated: "is deprecated"
-
-                blocked_note: "blocked note"
-                is_blocked: "is blocked"
-            } # TODO i18n
             return humanizedFieldNames[field] or field
 
         getUserFullName = (userId) ->
@@ -132,17 +151,17 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm) ->
         formatChange = (change) ->
             if _.isArray(change)
                 if change.length == 0
-                    return "empty"
+                    return $translate.instant("ACTIVITY.VALUES.EMPTY")
                 return change.join(", ")
 
             if change == ""
-                return "empty"
+                return $translate.instant("ACTIVITY.VALUES.EMPTY")
 
             if not change? or change == false
-                return "no"
+                return $translate.instant("ACTIVITY.VALUES.NO")
 
             if change == true
-                return "yes"
+                return $translate.instant("ACTIVITY.VALUES.YES")
 
             return change
 
@@ -152,22 +171,26 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm) ->
             attachments = _.map value, (changes, type) ->
                 if type == "new"
                     return _.map changes, (change) ->
-                        # TODO: i18n
-                        return templateChangeDiff({name: "new attachment", diff: change.filename})
+                        return templateChangeDiff({
+                            name: $translate.instant("ACTIVITY.NEW_ATTACHMENT"),
+                            diff: change.filename
+                        })
                 else if type == "deleted"
                     return _.map changes, (change) ->
-                        # TODO: i18n
-                        return templateChangeDiff({name: "deleted attachment", diff: change.filename})
+                        return templateChangeDiff({
+                            name: $translate.instant("ACTIVITY.DELETED_ATTACHMENT"),
+                            diff: change.filename
+                        })
                 else
                     return _.map changes, (change) ->
-                        # TODO: i18n
-                        name = "updated attachment #{change.filename}"
+                        name = $translate.instant("ACTIVITY.UPDATED_ATTACHMENT", {filename: change.filename})
+
                         diff = _.map change.changes, (values, name) ->
                             return {
                                 name: getHumanizedFieldName(name)
                                 from: formatChange(values[0])
                                 to: formatChange(values[1])
-                                }
+                            }
 
                         return templateChangeAttachment({name: name, diff: diff})
 
@@ -177,16 +200,19 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm) ->
             customAttributes = _.map value, (changes, type) ->
                 if type == "new"
                     return _.map changes, (change) ->
-                        return templateChangeGeneric({
+                        html = templateChangeGeneric({
                             name: change.name,
                             from: formatChange(""),
                             to: formatChange(change.value)
                         })
+
+                        html = $compile(html)($scope)
+
+                        return html[0].outerHTML
                 else if type == "deleted"
                     return _.map changes, (change) ->
-                        # TODO: i18n
                         return templateChangeDiff({
-                            name: "deleted custom attribute",
+                            name: $translate.instant("ACTIVITY.DELETED_CUSTOM_ATTRIBUTE")
                             diff: change.name
                         })
                 else
@@ -207,7 +233,11 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm) ->
             else if field == "blocked_note"
                 return templateChangeDiff({name: getHumanizedFieldName("blocked_note"), diff: value[1]})
             else if field == "points"
-                return templateChangePoints({points: value})
+                html = templateChangePoints({points: value})
+
+                html = $compile(html)($scope)
+
+                return html[0].outerHTML
             else if field == "attachments"
                 return renderAttachmentEntry(value)
             else if field == "custom_attributes"
@@ -216,11 +246,15 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm) ->
                 name = getHumanizedFieldName(field)
                 removed = _.difference(value[0], value[1])
                 added = _.difference(value[1], value[0])
-                return templateChangeList({name:name, removed:removed, added: added})
+                html = templateChangeList({name:name, removed:removed, added: added})
+
+                html = $compile(html)($scope)
+
+                return html[0].outerHTML
             else if field == "assigned_to"
                 name = getHumanizedFieldName(field)
-                from = formatChange(value[0] or "Unassigned")
-                to = formatChange(value[1] or "Unassigned")
+                from = formatChange(value[0] or $translate.instant("ACTIVITY.VALUES.UNASSIGNED"))
+                to = formatChange(value[1] or $translate.instant("ACTIVITY.VALUES.UNASSIGNED"))
                 return templateChangeGeneric({name:name, from:from, to: to})
             else
                 name = getHumanizedFieldName(field)
@@ -233,44 +267,51 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm) ->
 
         renderChangesHelperText = (change) ->
             size = countChanges(change)
-            if size == 1
-                return "Made #{size} change" # TODO: i18n
-            return "Made #{size} changes" # TODO: i18n
+            return $translate.instant("ACTIVITY.SIZE_CHANGE", {size: size}, 'messageformat')
 
         renderComment = (comment) ->
             if (comment.delete_comment_date or comment.delete_comment_user?.name)
-                return templateDeletedComment({
-                    deleteCommentDate: moment(comment.delete_comment_date).format("DD MMM YYYY HH:mm") if comment.delete_comment_date
+                html = templateDeletedComment({
+                    deleteCommentDate: moment(comment.delete_comment_date).format(getPrettyDateFormat()) if comment.delete_comment_date
                     deleteCommentUser: comment.delete_comment_user.name
                     deleteComment: comment.comment_html
                     activityId: comment.id
-                    canRestoreComment: comment.delete_comment_user.pk == $scope.user.id or $scope.project.my_permissions.indexOf("modify_project") > -1
+                    canRestoreComment: (comment.delete_comment_user.pk == $scope.user.id or
+                                        $scope.project.my_permissions.indexOf("modify_project") > -1)
                 })
 
-            return templateActivity({
+                html = $compile(html)($scope)
+
+                return html[0].outerHTML
+
+            html = templateActivity({
                 avatar: getUserAvatar(comment.user.pk)
                 userFullName: comment.user.name
-                creationDate: moment(comment.created_at).format("DD MMM YYYY HH:mm")
+                creationDate: moment(comment.created_at).format(getPrettyDateFormat())
                 comment: comment.comment_html
                 changesText: renderChangesHelperText(comment)
                 changes: renderChangeEntries(comment)
                 mode: "comment"
-                deleteCommentDate: moment(comment.delete_comment_date).format("DD MMM YYYY HH:mm") if comment.delete_comment_date
+                deleteCommentDate: moment(comment.delete_comment_date).format(getPrettyDateFormat()) if comment.delete_comment_date
                 deleteCommentUser: comment.delete_comment_user.name if comment.delete_comment_user?.name
                 activityId: comment.id
                 canDeleteComment: comment.user.pk == $scope.user?.id or $scope.project.my_permissions.indexOf("modify_project") > -1
             })
 
+            html = $compile(html)($scope)
+
+            return html[0].outerHTML
+
         renderChange = (change) ->
             return templateActivity({
                 avatar: getUserAvatar(change.user.pk)
                 userFullName: change.user.name
-                creationDate: moment(change.created_at).format("DD MMM YYYY HH:mm")
+                creationDate: moment(change.created_at).format(getPrettyDateFormat())
                 comment: change.comment_html
                 changes: renderChangeEntries(change)
                 changesText: ""
                 mode: "activity"
-                deleteCommentDate: moment(change.delete_comment_date).format("DD MMM YYYY HH:mm") if change.delete_comment_date
+                deleteCommentDate: moment(change.delete_comment_date).format(getPrettyDateFormat()) if change.delete_comment_date
                 deleteCommentUser: change.delete_comment_user.name if change.delete_comment_user?.name
                 activityId: change.id
             })
@@ -281,7 +322,9 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm) ->
             else
                 showMore = totalEntries - entries.length
 
-            return templateBaseEntries({entries: entries, showMore:showMore})
+            html = templateBaseEntries({entries: entries, showMore:showMore})
+            html = $compile(html)($scope)
+            return html
 
         # Render into DOM (operations with dom mutability)
 
@@ -394,7 +437,9 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm) ->
             $el.off()
 
     templateFn = ($el, $attrs) ->
-        return templateBase({ngmodel: $attrs.ngModel, type: $attrs.type, mode: $attrs.mode})
+        html = templateBase({ngmodel: $attrs.ngModel, type: $attrs.type, mode: $attrs.mode})
+
+        return html
 
     return {
         controller: HistoryController
@@ -405,4 +450,5 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm) ->
     }
 
 
-module.directive("tgHistory", ["$log", "$tgLoading", "$tgQqueue", "$tgTemplate", "$tgConfirm", HistoryDirective])
+module.directive("tgHistory", ["$log", "$tgLoading", "$tgQqueue", "$tgTemplate", "$tgConfirm", "$translate",
+                               "$compile", HistoryDirective])

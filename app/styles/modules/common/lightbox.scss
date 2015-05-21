@@ -58,7 +58,7 @@
         .iocaine {
             &:hover {
                 background: $fresh-taiga;
-                border: 1px solid $fresh-taiga;
+                border: 1px solid $green-taiga;
                 color: $white;
                 transition: all .2s ease-in;
             }
@@ -68,7 +68,7 @@
             padding: 8px 30px;
             &:hover {
                 background: $red-light;
-                border: 1px solid $red-light;
+                border: 1px solid $red;
                 color: $white;
                 transition: all .2s ease-in;
             }
@@ -79,14 +79,17 @@
         .team-requirement,
         .iocaine-flag {
             input:checked+label {
-                background: $fresh-taiga;
+                background: $green-taiga;
+                border: 1px solid $green-taiga;
                 color: $white;
+
             }
         }
 
         .blocking-flag {
             input:checked+label {
                 background: $red;
+                border: 1px solid $red;
                 color: $white;
             }
         }

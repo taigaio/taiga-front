@@ -36,7 +36,8 @@ taiga.generateUniqueSessionIdentifier = ->
 taiga.sessionId = taiga.generateUniqueSessionIdentifier()
 
 
-configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEventsProvider, tgLoaderProvider, $compileProvider) ->
+configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEventsProvider, tgLoaderProvider,
+             $compileProvider, $translateProvider) ->
     $routeProvider.when("/",
         {templateUrl: "project/projects.html", resolve: {loader: tgLoaderProvider.add()}})
 
@@ -159,12 +160,12 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     $routeProvider.when("/permission-denied",
         {templateUrl: "error/permission-denied.html"})
 
-    $routeProvider.otherwise({redirectTo: '/not-found'})
+    $routeProvider.otherwise({redirectTo: "/not-found"})
     $locationProvider.html5Mode({enabled: true, requireBase: false})
 
     defaultHeaders = {
         "Content-Type": "application/json"
-        "Accept-Language": "en"
+        "Accept-Language": window.taigaConfig.defaultLanguage || "en"
         "X-Session-Id": taiga.sessionId
     }
 
@@ -195,30 +196,30 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
             responseError: httpResponseError
         }
 
-    $provide.factory("authHttpIntercept", ["$q", "$location", "$tgNavUrls", "lightboxService", authHttpIntercept])
+    $provide.factory("authHttpIntercept", ["$q", "$location", "$tgNavUrls", "lightboxService",
+                                           authHttpIntercept])
 
-    $httpProvider.interceptors.push('authHttpIntercept')
+    $httpProvider.interceptors.push("authHttpIntercept")
 
-    # If there is an error in the version throw a notify error
-    versionCheckHttpIntercept = ($q, $confirm) ->
-        versionErrorMsg = "Someone inside Taiga has changed this before and our Oompa Loompas cannot apply your changes.
-                           Please reload and apply your changes again (they will be lost)." #TODO: i18n
-
+    # If there is an error in the version throw a notify error.
+    # IMPROVEiMENT: Move this version error handler to USs, issues and tasks repository
+    versionCheckHttpIntercept = ($q) ->
         httpResponseError = (response) ->
             if response.status == 400 && response.data.version
-                $confirm.notify("error", versionErrorMsg, null, 10000)
-
-                return $q.reject(response)
+                # HACK: to prevent circular dependencies with [$tgConfirm, $translate]
+                $injector = angular.element("body").injector()
+                $injector.invoke(["$tgConfirm", "$translate", ($confirm, $translate) =>
+                    versionErrorMsg = $translate.instant("ERROR.VERSION_ERROR")
+                    $confirm.notify("error", versionErrorMsg, null, 10000)
+                ])
 
             return $q.reject(response)
 
-        return {
-            responseError: httpResponseError
-        }
+        return {responseError: httpResponseError}
 
-    $provide.factory("versionCheckHttpIntercept", ["$q", "$tgConfirm", versionCheckHttpIntercept])
+    $provide.factory("versionCheckHttpIntercept", ["$q", versionCheckHttpIntercept])
 
-    $httpProvider.interceptors.push('versionCheckHttpIntercept');
+    $httpProvider.interceptors.push("versionCheckHttpIntercept")
 
     window.checksley.updateValidators({
         linewidth: (val, width) ->
@@ -230,21 +231,78 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
             return valid
     })
 
-    window.checksley.updateMessages("default", {
-        linewidth: "The subject must have a maximum size of %s"
-    })
-
     $compileProvider.debugInfoEnabled(window.taigaConfig.debugInfo || false)
 
-init = ($log, $i18n, $config, $rootscope, $auth, $events, $analytics) ->
-    $i18n.initialize($config.get("defaultLanguage"))
+    if localStorage.userInfo
+        userInfo = JSON.parse(localStorage.userInfo)
+
+    # i18n
+    preferedLangCode = userInfo?.lang || window.taigaConfig.defaultLanguage || "en"
+
+    $translateProvider
+        .useStaticFilesLoader({
+            prefix: "/locales/locale-",
+            suffix: ".json"
+        })
+        .addInterpolation('$translateMessageFormatInterpolation')
+        .preferredLanguage(preferedLangCode)
+
+    if not window.taigaConfig.debugInfo
+        $translateProvider.fallbackLanguage(preferedLangCode)
+
+
+i18nInit = (lang, $translate) ->
+    # i18n - moment.js
+    moment.locale(lang)
+
+    # i18n - checksley.js
+    messages = {
+        defaultMessage: $translate.instant("COMMON.FORM_ERRORS.DEFAULT_MESSAGE")
+        type: {
+            email: $translate.instant("COMMON.FORM_ERRORS.TYPE_EMAIL")
+            url: $translate.instant("COMMON.FORM_ERRORS.TYPE_URL")
+            urlstrict: $translate.instant("COMMON.FORM_ERRORS.TYPE_URLSTRICT")
+            number: $translate.instant("COMMON.FORM_ERRORS.TYPE_NUMBER")
+            digits: $translate.instant("COMMON.FORM_ERRORS.TYPE_DIGITS")
+            dateIso: $translate.instant("COMMON.FORM_ERRORS.TYPE_DATEISO")
+            alphanum: $translate.instant("COMMON.FORM_ERRORS.TYPE_ALPHANUM")
+            phone: $translate.instant("COMMON.FORM_ERRORS.TYPE_PHONE")
+        }
+        notnull: $translate.instant("COMMON.FORM_ERRORS.NOTNULL")
+        notblank: $translate.instant("COMMON.FORM_ERRORS.NOT_BLANK")
+        required: $translate.instant("COMMON.FORM_ERRORS.REQUIRED")
+        regexp: $translate.instant("COMMON.FORM_ERRORS.REGEXP")
+        min: $translate.instant("COMMON.FORM_ERRORS.MIN")
+        max: $translate.instant("COMMON.FORM_ERRORS.MAX")
+        range: $translate.instant("COMMON.FORM_ERRORS.RANGE")
+        minlength: $translate.instant("COMMON.FORM_ERRORS.MIN_LENGTH")
+        maxlength: $translate.instant("COMMON.FORM_ERRORS.MAX_LENGTH")
+        rangelength: $translate.instant("COMMON.FORM_ERRORS.RANGE_LENGTH")
+        mincheck: $translate.instant("COMMON.FORM_ERRORS.MIN_CHECK")
+        maxcheck: $translate.instant("COMMON.FORM_ERRORS.MAX_CHECK")
+        rangecheck: $translate.instant("COMMON.FORM_ERRORS.RANGE_CHECK")
+        equalto: $translate.instant("COMMON.FORM_ERRORS.EQUAL_TO")
+    }
+    checksley.updateMessages('default', messages)
+
+
+init = ($log, $config, $rootscope, $auth, $events, $analytics, $translate) ->
     $log.debug("Initialize application")
+
+    # Taiga Plugins
     $rootscope.contribPlugins = @.taigaContribPlugins
     $rootscope.adminPlugins = _.where(@.taigaContribPlugins, {"type": "admin"})
 
+    $rootscope.$on "$translateChangeEnd", (e, ctx) ->
+        lang = ctx.language
+        i18nInit(lang, $translate)
+
+    # Load user
     if $auth.isAuthenticated()
         $events.setupConnection()
+        user = $auth.getUser()
 
+    # Analytics
     $analytics.initialize()
 
 
@@ -253,7 +311,6 @@ modules = [
     "taigaBase",
     "taigaCommon",
     "taigaResources",
-    "taigaLocales",
     "taigaAuth",
     "taigaEvents",
 
@@ -261,7 +318,7 @@ modules = [
     "taigaRelatedTasks",
     "taigaBacklog",
     "taigaTaskboard",
-    "taigaKanban"
+    "taigaKanban",
     "taigaIssues",
     "taigaUserStories",
     "taigaTasks",
@@ -275,13 +332,15 @@ modules = [
     "taigaFeedback",
     "taigaPlugins",
     "taigaIntegrations",
+    "taigaComponents",
 
     # template cache
-    "templates"
+    "templates",
 
     # Vendor modules
     "ngRoute",
     "ngAnimate",
+    "pascalprecht.translate"
 ].concat(_.map(@.taigaContribPlugins, (plugin) -> plugin.module))
 
 # Main module definition
@@ -295,16 +354,17 @@ module.config([
     "$tgEventsProvider",
     "tgLoaderProvider",
     "$compileProvider",
+    "$translateProvider",
     configure
 ])
 
 module.run([
     "$log",
-    "$tgI18n",
     "$tgConfig",
     "$rootScope",
     "$tgAuth",
     "$tgEvents",
     "$tgAnalytics",
+    "$translate"
     init
 ])

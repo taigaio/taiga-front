@@ -62,15 +62,16 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         "$tgNavUrls",
         "$tgEvents",
         "$tgAnalytics",
-        "tgLoader"
+        "tgLoader",
+        "$translate"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
-                  @appTitle, @navUrls, @events, @analytics, tgLoader) ->
+                  @appTitle, @navUrls, @events, @analytics, tgLoader, @translate) ->
 
         bindMethods(@)
 
-        @scope.sectionName = "Kanban"
+        @scope.sectionName = @translate.instant("KANBAN.SECTION_NAME")
         @scope.statusViewModes = {}
         @.initializeEventHandlers()
 
@@ -307,10 +308,9 @@ module.directive("tgKanban", ["$tgRepo", "$rootScope", KanbanDirective])
 ## Kanban Archived Status Column Header Control
 #############################################################################
 
-KanbanArchivedStatusHeaderDirective = ($rootscope) ->
-    #TODO: i18N
-    showArchivedText = "Show archived"
-    hideArchivedText = "Hide archived"
+KanbanArchivedStatusHeaderDirective = ($rootscope, $translate) ->
+    showArchivedText = $translate.instant("KANBAN.ACTION_SHOW_ARCHIVED")
+    hideArchivedText = $translate.instant("KANBAN.ACTION_HIDE_ARCHIVED")
 
     link = ($scope, $el, $attrs) ->
         status = $scope.$eval($attrs.tgKanbanArchivedStatusHeader)
@@ -338,19 +338,18 @@ KanbanArchivedStatusHeaderDirective = ($rootscope) ->
 
     return {link:link}
 
-module.directive("tgKanbanArchivedStatusHeader", [ "$rootScope", KanbanArchivedStatusHeaderDirective])
+module.directive("tgKanbanArchivedStatusHeader", [ "$rootScope", "$translate", KanbanArchivedStatusHeaderDirective])
 
 
 #############################################################################
 ## Kanban Archived Status Column Intro Directive
 #############################################################################
 
-KanbanArchivedStatusIntroDirective = ->
-    # TODO: i18n
-    hiddenUserStoriexText = "The user stories in this status are hidden by default"
+KanbanArchivedStatusIntroDirective = ($translate) ->
     userStories = []
 
     link = ($scope, $el, $attrs) ->
+        hiddenUserStoriexText = $translate.instant("KANBAN.HIDDEN_USER_STORIES")
         status = $scope.$eval($attrs.tgKanbanArchivedStatusIntro)
         $el.text(hiddenUserStoriexText)
 
@@ -397,7 +396,7 @@ KanbanArchivedStatusIntroDirective = ->
 
     return {link:link}
 
-module.directive("tgKanbanArchivedStatusIntro", KanbanArchivedStatusIntroDirective)
+module.directive("tgKanbanArchivedStatusIntro", ["$translate", KanbanArchivedStatusIntroDirective])
 
 
 #############################################################################
@@ -471,17 +470,20 @@ KanbanWipLimitDirective = ->
     link = ($scope, $el, $attrs) ->
         $el.disableSelection()
 
-        redrawWipLimit = ->
+        status = $scope.$eval($attrs.tgKanbanWipLimit)
+
+        redrawWipLimit = =>
             $el.find(".kanban-wip-limit").remove()
-            timeout 200, ->
-                element = $el.find(".kanban-task")[$scope.$eval($attrs.tgKanbanWipLimit)]
+            timeout 200, =>
+                element = $el.find(".kanban-task")[status.wip_limit]
                 if element
                     angular.element(element).before("<div class='kanban-wip-limit'></div>")
 
-        $scope.$on "redraw:wip", redrawWipLimit
-        $scope.$on "kanban:us:move", redrawWipLimit
-        $scope.$on "usform:new:success", redrawWipLimit
-        $scope.$on "usform:bulk:success", redrawWipLimit
+        if status and not status.is_archived
+            $scope.$on "redraw:wip", redrawWipLimit
+            $scope.$on "kanban:us:move", redrawWipLimit
+            $scope.$on "usform:new:success", redrawWipLimit
+            $scope.$on "usform:bulk:success", redrawWipLimit
 
         $scope.$on "$destroy", ->
             $el.off()
@@ -495,14 +497,14 @@ module.directive("tgKanbanWipLimit", KanbanWipLimitDirective)
 ## Kanban User Directive
 #############################################################################
 
-KanbanUserDirective = ($log) ->
+KanbanUserDirective = ($log, $compile) ->
     template = _.template("""
     <figure class="avatar">
-        <a href="#" title="Assign User Story" <% if (!clickable) {%>class="not-clickable"<% } %>>
+        <a href="#" title="{{'US.ASSIGN' | translate}}" <% if (!clickable) {%>class="not-clickable"<% } %>>
             <img src="<%- imgurl %>" alt="<%- name %>" class="avatar">
         </a>
     </figure>
-    """) # TODO: i18n
+    """)
 
     clickable = false
 
@@ -527,7 +529,7 @@ KanbanUserDirective = ($log) ->
             else
                 ctx = {name: user.full_name_display, imgurl: user.photo, clickable: clickable}
 
-            html = template(ctx)
+            html = $compile(template(ctx))($scope)
             $el.html(html)
             username_label.text(ctx.name)
 
@@ -556,4 +558,4 @@ KanbanUserDirective = ($log) ->
 
     return {link: link, require:"ngModel"}
 
-module.directive("tgKanbanUserAvatar", ["$log", KanbanUserDirective])
+module.directive("tgKanbanUserAvatar", ["$log", "$compile", KanbanUserDirective])

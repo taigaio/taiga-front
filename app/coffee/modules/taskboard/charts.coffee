@@ -34,7 +34,7 @@ module = angular.module("taigaTaskboard")
 ## Sprint burndown graph directive
 #############################################################################
 
-SprintGraphDirective = ->
+SprintGraphDirective = ($translate)->
     redrawChart = (element, dataToDraw) ->
         width = element.width()
         element.height(240)
@@ -64,13 +64,18 @@ SprintGraphDirective = ->
                 max: _.last(days)
                 mode: "time"
                 daysNames: days
-                axisLabel: 'Day'
+                axisLabel: $translate.instant("TASKBOARD.CHARTS.XAXIS_LABEL")
                 axisLabelUseCanvas: true
                 axisLabelFontSizePixels: 12
                 axisLabelFontFamily: 'Verdana, Arial, Helvetica, Tahoma, sans-serif'
                 axisLabelPadding: 5
             yaxis:
                 min: 0
+                axisLabel: $translate.instant("TASKBOARD.CHARTS.YAXIS_LABEL")
+                axisLabelUseCanvas: true
+                axisLabelFontSizePixels: 12
+                axisLabelFontFamily: 'Verdana, Arial, Helvetica, Tahoma, sans-serif'
+                axisLabelPadding: 5
             series:
                 shadowSize: 0
                 lines:
@@ -85,14 +90,20 @@ SprintGraphDirective = ->
             tooltip: true
             tooltipOpts:
                 content: (label, xval, yval, flotItem) ->
-                    #TODO: i18n
-                    formattedDate = moment(xval).format("DD MMM")
+                    formattedDate = moment(xval).format($translate.instant("TASKBOARD.CHARTS.DATE"))
                     roundedValue = Math.round(yval)
+
                     if flotItem.seriesIndex == 1
-                        return "Optimal pending points for day #{formattedDate} should be #{roundedValue}"
+                        return $translate.instant("TASKBOARD.CHARTS.OPTIMAL", {
+                            formattedDate: formattedDate,
+                            roundedValue: roundedValue
+                        })
 
                     else
-                        return "Real pending points for day #{formattedDate} is #{roundedValue}"
+                        return $translate.instant("TASKBOARD.CHARTS.REAL", {
+                            formattedDate: formattedDate,
+                            roundedValue: roundedValue
+                        })
 
         element.empty()
         element.plot(data, options).data("plot")
@@ -121,5 +132,4 @@ SprintGraphDirective = ->
 
     return {link: link}
 
-
-module.directive("tgSprintGraph", SprintGraphDirective)
+module.directive("tgSprintGraph", ["$translate", SprintGraphDirective])

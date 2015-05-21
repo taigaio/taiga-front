@@ -1,6 +1,7 @@
 .wysiwyg {
     line-height: 1.4rem;
     overflow: auto;
+    padding: 1rem;
     h1 {
         @extend %xlarge;
         @extend %text;
@@ -19,7 +20,7 @@
     }
     ul,
     ol {
-        list-style-position: inside;
+        list-style-position: outside;
         margin-left: 1rem;
     }
     ul {

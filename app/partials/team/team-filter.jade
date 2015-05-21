@@ -1,10 +1,10 @@
 ul
     li
-        a(ng-class='{active: !filtersRole.id}', ng-click='ctrl.setRole()', href='')
-          span.title All
+        a(ng-class="{active: !filtersRole.id}", ng-click="ctrl.setRole()", href="")
+          span.title(translate="TEAM.SECTION_FILTER_ALL")
           span.icon.icon-arrow-right
 
-      li(ng-repeat='role in roles')
-        a(ng-class='{active: role.id == filtersRole.id}', ng-click='ctrl.setRole(role)', href='')
-          span.title(tg-bo-bind='role.name')
-          span.icon.icon-arrow-right
+    li(ng-repeat="role in roles")
+        a(ng-class="{active: role.id == filtersRole.id}", ng-click="ctrl.setRole(role)", href="")
+            span.title(tg-bo-bind="role.name")
+            span.icon.icon-arrow-right

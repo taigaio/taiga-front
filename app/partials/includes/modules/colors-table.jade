@@ -1,9 +1,9 @@
 section.colors-table
     div.table-header
         div.row
-            div.color-column Color
-            div.status-name Name
-            div.is-closed-column Is closed?
+            div.color-column(translate="COMMON.FIELDS.COLOR")
+            div.status-name(translate="COMMON.FIELDS.NAME")
+            div.is-closed-column(translate="COMMON.IS_CLOSED")
             div.options-column
 
     div.table-main
@@ -18,17 +18,4 @@ section.colors-table
                 input(type="checkbox")
             div.options-column
                 a.icon.icon-floppy(href="#")
-                a.icon.icon-delete(href="#")
-
-    - for (var x = 0; x < 50; x++)
-        div.row.table-main
-            div.color-column
-                div.current-color
-                include ../components/select-color
-
-            div.status-name Ready for test
-            div.is-closed-column
-                div.icon.icon-check-square
-            div.options-column
-                a.icon.icon-edit(href="#")
                 a.icon.icon-delete(href="#")

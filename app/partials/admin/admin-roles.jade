@@ -1,3 +1,5 @@
+doctype html
+
 div.wrapper.roles(ng-controller="RolesController as ctrl",
                         ng-init="section='admin'", tg-roles)
     sidebar.menu-secondary.sidebar(tg-admin-navigation="roles")
@@ -6,32 +8,31 @@ div.wrapper.roles(ng-controller="RolesController as ctrl",
         include ../includes/modules/admin-submenu-roles
 
     section.main.admin-roles.admin-common
-        .header-with-actions
+        header.header-with-actions
             include ../includes/components/mainTitle
             .action-buttons(ng-if="!role.external_user")
-                a.button-red.delete-role(href="", title="Delete", ng-click="ctrl.delete()")
-                    span Delete
+                a.button-red.delete-role(href="", title="{{'COMMON.DELETE' | translate}}", ng-click="ctrl.delete()")
+                    span(translate="COMMON.DELETE")
 
 
         div(ng-if="!role.external_user")
             div(tg-edit-role)
                 .edit-role
                     input(type="text", value="{{ role.name }}")
-                    a.save.icon.icon-floppy(href="", title="Save")
+                    a.save.icon.icon-floppy(href="", title="{{'COMMON.SAVE' | translate}}")
 
                 p.total
-                    span.role-name(title="{{ role.members_count }} members with this role") {{ role.name }}
+                    span.role-name(title="{{'ADMIN.ROLES.COUNT_MEMBERS' | translate}}") {{ role.name }}
                     a.edit-value.icon.icon-edit
 
-            div.any-computable-role(ng-hide="anyComputableRole") Be careful, no role in your project will be able to estimate the point value for user stories
+            div.any-computable-role(ng-hide="anyComputableRole", translate="ADMIN.ROLES.WARNING_NO_ROLE")
 
-            div.general-category
-                | When enabled, members assigned to this role will be able to estimate the point value for user stories
+            div.general-category(translate="ADMIN.ROLES.HELP_ROLE_ENABLED")
                 div.check
                     input(type="checkbox", ng-model="role.computable", ng-change="ctrl.setComputable()")
                     div
-                    span.check-text.check-yes Yes
-                    span.check-text.check-no No
+                    span.check-text.check-yes(translate="COMMON.YES")
+                    span.check-text.check-no(translate="COMMON.NO")
 
         div(ng-if="role.external_user")
             p.total

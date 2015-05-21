@@ -54,6 +54,16 @@
             }
         }
     }
+    .check-item {
+        align-items: center;
+        border-bottom: 1px solid $whitish;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 2rem;
+        &:last-child {
+            border-bottom: 0;
+        }
+    }
     .help {
         margin-top: 2rem;
         h3 {

@@ -1,3 +1,5 @@
+doctype html
+
 div.wrapper.roles(tg-bitbucket-webhooks, ng-controller="BitbucketController as ctrl",
                         ng-init="section='admin'")
     sidebar.menu-secondary.sidebar(tg-admin-navigation="third-parties")
@@ -10,25 +12,25 @@ div.wrapper.roles(tg-bitbucket-webhooks, ng-controller="BitbucketController as c
 
         form
             fieldset
-                label(for="secret-key") Secret key
-                input(type="text", name="secret-key", ng-model="bitbucket.secret", placeholder="Secret key", id="secret-key")
+                label(for="secret-key", translate="ADMIN.THIRD_PARTIES.SECRET_KEY")
+                input(type="text", name="secret-key", ng-model="bitbucket.secret", placeholder="{{'ADMIN.THIRD_PARTIES.SECRET_KEY' | translate}}", id="secret-key")
 
             fieldset
                 .select-input-text(tg-select-input-text)
                     div
-                        label(for="payload-url") Payload URL
+                        label(for="payload-url", translate="ADMIN.THIRD_PARTIES.PAYLOAD_URL")
                         .field-with-option
-                            input(type="text", ng-model="bitbucket.webhooks_url", name="payload-url", readonly="readonly", placeholder="Payload URL", id="payload-url")
+                            input(type="text", ng-model="bitbucket.webhooks_url", name="payload-url", readonly="readonly", placeholder="{{'ADMIN.THIRD_PARTIES.PAYLOAD_URL' | translate}}", id="payload-url")
                             .option-wrapper.select-input-content
                                 .icon.icon-copy
-                        .help-copy Copy to clipboard: Ctrl+C
+                        .help-copy(translate="COMMON.COPY_TO_CLIPBOARD")
 
             fieldset
-                label(for="valid-origin-ips") Valid origin ips (separated by ,)
-                input(type="text", name="valid-origin-ips", tg-valid-origin-ips, ng-model="bitbucket.valid_origin_ips", placeholder="Bitbucket requests are not signed so the best way of verifying the origin is by IP. If the field is empty there will be no IP validation.", id="valid-origin-ips")
+                label(for="valid-origin-ips", translate="ADMIN.THIRD_PARTIES.VALID_IPS")
+                input(type="text", name="valid-origin-ips", tg-valid-origin-ips, ng-model="bitbucket.valid_origin_ips", placeholder="{{'ADMIN.BITBUCKET.INFO_VERIFYING_IP' | translate}}", id="valid-origin-ips")
 
-            button.button-green.submit-button(type="submit", title="Save") Save
+            button.button-green.submit-button(type="submit", title="{{'COMMON.SAVE' | translate}}", translate="COMMON.SAVE")
 
         a.help-button(href="https://taiga.io/support/bitbucket-integration/", target="_blank")
             span.icon.icon-help
-            span Do you need help? Check out our support page!
+            span(translate="ADMIN.HELP")

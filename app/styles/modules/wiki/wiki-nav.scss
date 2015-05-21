@@ -2,7 +2,7 @@
     li {
         @extend %large;
         @extend %title;
-        border-bottom: 1px solid #cdcdcd;
+        border-bottom: 1px solid $gray-light;
         text-transform: uppercase;
         &:hover {
             .icon {

@@ -40,19 +40,21 @@ class WebhooksController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.
         "$routeParams",
         "$tgLocation",
         "$tgNavUrls",
-        "$appTitle"
+        "$appTitle",
+        "$translate"
     ]
 
-    constructor: (@scope, @repo, @rs, @params, @location, @navUrls, @appTitle) ->
+    constructor: (@scope, @repo, @rs, @params, @location, @navUrls, @appTitle, @translate) ->
         bindMethods(@)
 
-        @scope.sectionName = "Webhooks" #i18n
+        @scope.sectionName = "ADMIN.WEBHOOKS.SECTION_NAME"
         @scope.project = {}
 
         promise = @.loadInitialData()
 
         promise.then () =>
-            @appTitle.set("Webhooks - " + @scope.project.name)
+            text = @translate.instant("ADMIN.WEBHOOKS.APP_TITLE", {"projectName": @scope.project.name})
+            @appTitle.set(text)
 
         promise.then null, @.onInitialDataError.bind(@)
 
@@ -85,17 +87,19 @@ module.controller("WebhooksController", WebhooksController)
 ## Webhook Directive
 #############################################################################
 
-WebhookDirective = ($rs, $repo, $confirm, $loading) ->
+WebhookDirective = ($rs, $repo, $confirm, $loading, $translate) ->
     link = ($scope, $el, $attrs) ->
         webhook = $scope.$eval($attrs.tgWebhook)
 
         updateLogs = () ->
+            prettyDate = $translate.instant("ADMIN.WEBHOOKS.DATE")
+
             $rs.webhooklogs.list(webhook.id).then (webhooklogs) =>
                 for log in webhooklogs
                     log.validStatus = 200 <= log.status < 300
                     log.prettySentHeaders = _.map(_.pairs(log.request_headers), ([header, value]) -> "#{header}: #{value}").join("\n")
                     log.prettySentData = JSON.stringify(log.request_data)
-                    log.prettyDate = moment(log.created).format("DD MMM YYYY [at] hh:mm:ss") # TODO: i18n
+                    log.prettyDate = moment(log.created).format(prettyDate)
 
                 webhook.logs_counter = webhooklogs.length
                 webhook.logs = webhooklogs
@@ -104,10 +108,16 @@ WebhookDirective = ($rs, $repo, $confirm, $loading) ->
         updateShowHideHistoryText = () ->
             textElement = $el.find(".toggle-history")
             historyElement = textElement.parents(".single-webhook-wrapper").find(".webhooks-history")
+
             if historyElement.hasClass("open")
-                textElement.text("(Hide history)") # TODO: i18n
+                text = $translate.instant("ADMIN.WEBHOOKS.ACTION_HIDE_HISTORY")
+                title = $translate.instant("ADMIN.WEBHOOKS.ACTION_HIDE_HISTORY_TITLE")
             else
-                textElement.text("(Show history)") # TODO: i18n
+                text = $translate.instant("ADMIN.WEBHOOKS.ACTION_SHOW_HISTORY")
+                title = $translate.instant("ADMIN.WEBHOOKS.ACTION_SHOW_HISTORY_TITLE")
+
+            textElement.text(text)
+            textElement.prop("title", title)
 
         showVisualizationMode = () ->
             $el.find(".edition-mode").addClass("hidden")
@@ -161,8 +171,8 @@ WebhookDirective = ($rs, $repo, $confirm, $loading) ->
                 cancel(target)
 
         $el.on "click", ".delete-webhook", () ->
-            title = "Delete webhook"  #TODO: i18n
-            message = "Webhook '#{webhook.name}'" #TODO: i18n
+            title = $translate.instant("ADMIN.WEBHOOKS.DELETE")
+            message = $translate.instant("ADMIN.WEBHOOKS.WEBHOOK_NAME", {name: webhook.name})
 
             $confirm.askOnDelete(title, message).then (finish) =>
                 onSucces = ->
@@ -203,7 +213,7 @@ WebhookDirective = ($rs, $repo, $confirm, $loading) ->
 
     return {link:link}
 
-module.directive("tgWebhook", ["$tgResources", "$tgRepo", "$tgConfirm", "$tgLoading", WebhookDirective])
+module.directive("tgWebhook", ["$tgResources", "$tgRepo", "$tgConfirm", "$tgLoading", "$translate", WebhookDirective])
 
 
 #############################################################################
@@ -279,19 +289,21 @@ class GithubController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         "$tgRepo",
         "$tgResources",
         "$routeParams",
-        "$appTitle"
+        "$appTitle",
+        "$translate"
     ]
 
-    constructor: (@scope, @repo, @rs, @params, @appTitle) ->
+    constructor: (@scope, @repo, @rs, @params, @appTitle, @translate) ->
         bindMethods(@)
 
-        @scope.sectionName = "Github" #i18n
+        @scope.sectionName = @translate.instant("ADMIN.GITHUB.SECTION_NAME")
         @scope.project = {}
 
         promise = @.loadInitialData()
 
         promise.then () =>
-            @appTitle.set("Github - " + @scope.project.name)
+            title = @translate.instant("ADMIN.GITHUB.APP_TITLE", {projectName: @scope.project.name})
+            @appTitle.set(title)
 
         promise.then null, @.onInitialDataError.bind(@)
 
@@ -327,18 +339,20 @@ class GitlabController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         "$tgRepo",
         "$tgResources",
         "$routeParams",
-        "$appTitle"
+        "$appTitle",
+        "$translate"
     ]
 
-    constructor: (@scope, @repo, @rs, @params, @appTitle) ->
+    constructor: (@scope, @repo, @rs, @params, @appTitle, @translate) ->
         bindMethods(@)
 
-        @scope.sectionName = "Gitlab" #i18n
+        @scope.sectionName = @translate.instant("ADMIN.GITLAB.SECTION_NAME")
         @scope.project = {}
         promise = @.loadInitialData()
 
         promise.then () =>
-            @appTitle.set("Gitlab - " + @scope.project.name)
+            title = @translate.instant("ADMIN.GITLAB.APP_TITLE", {projectName: @scope.project.name})
+            @appTitle.set(title)
 
         promise.then null, @.onInitialDataError.bind(@)
 
@@ -377,18 +391,20 @@ class BitbucketController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
         "$tgRepo",
         "$tgResources",
         "$routeParams",
-        "$appTitle"
+        "$appTitle",
+        "$translate"
     ]
 
-    constructor: (@scope, @repo, @rs, @params, @appTitle) ->
+    constructor: (@scope, @repo, @rs, @params, @appTitle, @translate) ->
         bindMethods(@)
 
-        @scope.sectionName = "Bitbucket" #i18n
+        @scope.sectionName = @translate.instant("ADMIN.BITBUCKET.SECTION_NAME")
         @scope.project = {}
         promise = @.loadInitialData()
 
         promise.then () =>
-            @appTitle.set("Bitbucket - " + @scope.project.name)
+            title = @translate.instant("ADMIN.BITBUCKET.APP_TITLE", {projectName: @scope.project.name})
+            @appTitle.set(title)
 
         promise.then null, @.onInitialDataError.bind(@)
 

@@ -50,13 +50,14 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$tgEvents"
         "$tgAnalytics",
         "tgLoader"
+        "$translate"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @appTitle, @location, @navUrls,
-                  @events, @analytics, tgLoader) ->
+                  @events, @analytics, tgLoader, @translate) ->
         bindMethods(@)
 
-        @scope.sectionName = "Taskboard"
+        @scope.sectionName = @translate.instant("TASKBOARD.SECTION_NAME")
         @.initializeEventHandlers()
 
         promise = @.loadInitialData()
@@ -259,7 +260,6 @@ TaskboardDirective = ($rootscope) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
             target.toggleClass('active');
-            #toggleText(target, ["Hide statistics", "Show statistics"]) # TODO: i18n
             $rootscope.$broadcast("taskboard:graph:toggle-visibility")
 
         tableBodyDom = $el.find(".taskboard-table-body")

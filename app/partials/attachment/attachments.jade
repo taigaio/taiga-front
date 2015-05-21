@@ -2,10 +2,10 @@ section.attachments
     .attachments-header
         h3.attachments-title
             span.attachments-num(tg-bind-html="ctrl.attachmentsCount")
-            span.attachments-text attachments
-        .add-attach(tg-check-permission!="modify_<%- type %>", title!="Add new attachment. <%- maxFileSizeMsg %>")
+            span.attachments-text(translate="ATTACHMENT.SECTION_NAME")
+        .add-attach(tg-check-permission!="modify_<%- type %>", title!="{{'ATTACHMENT.ADD' | translate}}")
             <% if (maxFileSize){ %>
-            span.size-info.hidden [Max. size:  <%- maxFileSize %>]
+            span.size-info.hidden(translate="ATTACHMENT.MAX_FILE_SIZE", translate-values!="{ 'maxFileSize': '<%- maxFileSize %>'}")
             <% }; %>
             label(for="add-attach", class="icon icon-plus related-tasks-buttons")
             input(id="add-attach", type="file", multiple="multiple")
@@ -22,9 +22,7 @@ section.attachments
                 span(ng-bind="file.progressMessage")
                 .percentage(ng-style="{'width': file.progressPercent}")
 
-        a.more-attachments(href="", title="show deprecated atachments", ng-if="ctrl.deprecatedAttachmentsCount > 0")
-            span.text(data-type="show") + show deprecated atachments
-            span.text.hidden(data-type="hide")
-                | - hide deprecated atachments
-            span.more-attachments-num
-                | ({{ctrl.deprecatedAttachmentsCount }} deprecated)
+        a.more-attachments(href="", title="{{'ATTACHMENT.SHOW_DEPRECATED' | translate}}", ng-if="ctrl.deprecatedAttachmentsCount > 0")
+            span.text(data-type="show", translate="ATTACHMENT.SHOW_DEPRECATED")
+            span.text.hidden(data-type="hide", translate="ATTACHMENT.HIDE_DEPRECATED")
+            span.more-attachments-num(translate="ATTACHMENT.COUNT_DEPRECATED", translate-values="{counter: '{{ctrl.deprecatedAttachmentsCount}}'}")

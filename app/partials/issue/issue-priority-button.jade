@@ -4,7 +4,8 @@ div(class!="priority-data <% if(editable){ %>clickable<% }%>")
     <% if(editable){ %>
     span(class="icon icon-arrow-bottom")
     <% }%>
-    span(class="level-name") priority
+    span(class="level-name", translate="COMMON.FIELDS.PRIORITY")
+
     ul(class="popover pop-priority")
         <% _.each(priorityes, function(pr) { %>
         li

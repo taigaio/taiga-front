@@ -189,6 +189,7 @@
             transition: background .2s ease-in;
         }
         a {
+            // scss-lint:disable ImportantRule
             color: $white !important;
             &:hover {
                 color: $white;

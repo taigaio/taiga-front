@@ -86,7 +86,10 @@ class LightboxKeyboardNavigationService extends taiga.Service
 
         # Key: enter
         if code == 13
-            activeElement.trigger("click")
+            if $el.find(".watcher-single").length == 1
+                $el.find('.watcher-single:first').trigger("click")
+            else
+                activeElement.trigger("click")
 
         # Key: down
         else if code == 40
@@ -143,9 +146,10 @@ module.directive("lightbox", ["lightboxService", LightboxDirective])
 
 # Issue/Userstory blocking message lightbox directive.
 
-BlockLightboxDirective = ($rootscope, $tgrepo, $confirm, lightboxService, $loading, $qqueue) ->
+BlockLightboxDirective = ($rootscope, $tgrepo, $confirm, lightboxService, $loading, $qqueue, $translate) ->
     link = ($scope, $el, $attrs, $model) ->
-        $el.find("h2.title").text($attrs.title)
+        $translate($attrs.title).then (title) ->
+            $el.find("h2.title").text(title)
 
         unblock = $qqueue.bindAdd (item, finishCallback) =>
             promise = $tgrepo.save(item)
@@ -213,14 +217,14 @@ BlockLightboxDirective = ($rootscope, $tgrepo, $confirm, lightboxService, $loadi
         require: "ngModel"
     }
 
-module.directive("tgLbBlock", ["$rootScope", "$tgRepo", "$tgConfirm", "lightboxService", "$tgLoading", "$tgQqueue", BlockLightboxDirective])
+module.directive("tgLbBlock", ["$rootScope", "$tgRepo", "$tgConfirm", "lightboxService", "$tgLoading", "$tgQqueue", "$translate", BlockLightboxDirective])
 
 
 #############################################################################
 ## Generic Lightbox Blocking-Message Input Directive
 #############################################################################
 
-BlockingMessageInputDirective = ($log, $template) ->
+BlockingMessageInputDirective = ($log, $template, $compile) ->
     template = $template.get("common/lightbox/lightbox-blocking-message-input.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
@@ -243,14 +247,14 @@ BlockingMessageInputDirective = ($log, $template) ->
         restrict: "EA"
     }
 
-module.directive("tgBlockingMessageInput", ["$log", "$tgTemplate", BlockingMessageInputDirective])
+module.directive("tgBlockingMessageInput", ["$log", "$tgTemplate", "$compile", BlockingMessageInputDirective])
 
 
 #############################################################################
 ## Create/Edit Userstory Lightbox Directive
 #############################################################################
 
-CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService, $loading) ->
+CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService, $loading, $translate) ->
     link = ($scope, $el, attrs) ->
         $scope.isNew = true
 
@@ -267,8 +271,8 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
             })
 
             # Update texts for creation
-            $el.find(".button-green").html("Create") #TODO: i18n
-            $el.find(".title").html("New user story  ") #TODO: i18n
+            $el.find(".button-green").html($translate.instant("COMMON.CREATE"))
+            $el.find(".title").html($translate.instant("LIGHTBOX.CREATE_EDIT_US.NEW_US"))
             $el.find(".tag-input").val("")
 
             $el.find(".blocked-note").addClass("hidden")
@@ -283,8 +287,8 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
             $scope.isNew = false
 
             # Update texts for edition
-            $el.find(".button-green").html("Save") #TODO: i18n
-            $el.find(".title").html("Edit user story  ") #TODO: i18n
+            $el.find(".button-green").html($translate.instant("COMMON.SAVE"))
+            $el.find(".title").html($translate.instant("LIGHTBOX.CREATE_EDIT_US.EDIT_US"))
             $el.find(".tag-input").val("")
 
             # Update requirement info (team, client or blocked)
@@ -362,6 +366,7 @@ module.directive("tgLbCreateEditUserstory", [
     "$rootScope",
     "lightboxService",
     "$tgLoading",
+    "$translate",
     CreateEditUserstoryDirective
 ])
 
@@ -424,7 +429,7 @@ module.directive("tgLbCreateBulkUserstories", [
 ## AssignedTo Lightbox Directive
 #############################################################################
 
-AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationService, $template) ->
+AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationService, $template, $compile) ->
     link = ($scope, $el, $attrs) ->
         selectedUser = null
         selectedItem = null
@@ -458,6 +463,9 @@ AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationServic
             }
 
             html = usersTemplate(ctx)
+
+            html = $compile(html)($scope)
+
             $el.find("div.watchers").html(html)
             lightboxKeyboardNavigationService.init($el)
 
@@ -517,7 +525,7 @@ AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationServic
     }
 
 
-module.directive("tgLbAssignedto", ["lightboxService", "lightboxKeyboardNavigationService", "$tgTemplate", AssignedToLightboxDirective])
+module.directive("tgLbAssignedto", ["lightboxService", "lightboxKeyboardNavigationService", "$tgTemplate", "$compile", AssignedToLightboxDirective])
 
 
 #############################################################################
@@ -554,6 +562,7 @@ WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationS
 
             html = usersTemplate(ctx)
             $el.find("div.watchers").html(html)
+            lightboxKeyboardNavigationService.init($el)
 
         closeLightbox = () ->
             lightboxKeyboardNavigationService.stop()

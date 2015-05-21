@@ -26,6 +26,7 @@ groupBy = @.taiga.groupBy
 
 module = angular.module("taigaTasks")
 
+
 #############################################################################
 ## Task Detail Controller
 #############################################################################
@@ -44,13 +45,14 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$appTitle",
         "$tgNavUrls",
         "$tgAnalytics",
+        "$translate",
         "tgLoader"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
-                  @log, @appTitle, @navUrls, @analytics, tgLoader) ->
+                  @log, @appTitle, @navUrls, @analytics, @translate, tgLoader) ->
         @scope.taskRef = @params.taskref
-        @scope.sectionName = "Task Details"
+        @scope.sectionName = @translate.instant("TASK.SECTION_NAME")
         @.initializeEventHandlers()
 
         promise = @.loadInitialData()
@@ -145,7 +147,7 @@ module.controller("TaskDetailController", TaskDetailController)
 ## Task status display directive
 #############################################################################
 
-TaskStatusDisplayDirective = ($template) ->
+TaskStatusDisplayDirective = ($template, $compile) ->
     # Display if a Task is open or closed and its taskboard status.
     #
     # Example:
@@ -165,6 +167,9 @@ TaskStatusDisplayDirective = ($template) ->
                 is_closed: status.is_closed
                 status: status
             })
+
+            html = $compile(html)($scope)
+
             $el.html(html)
 
         $scope.$watch $attrs.ngModel, (task) ->
@@ -179,14 +184,14 @@ TaskStatusDisplayDirective = ($template) ->
         require: "ngModel"
     }
 
-module.directive("tgTaskStatusDisplay", ["$tgTemplate", TaskStatusDisplayDirective])
+module.directive("tgTaskStatusDisplay", ["$tgTemplate", "$compile", TaskStatusDisplayDirective])
 
 
 #############################################################################
 ## Task status button directive
 #############################################################################
 
-TaskStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue) ->
+TaskStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $compile, $translate) ->
     # Display the status of Task and you can edit it.
     #
     # Example:
@@ -202,7 +207,7 @@ TaskStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue) ->
         <span class="level" style="background-color:<%- status.color %>"></span>
         <span class="status-status"><%- status.name %></span>
         <% if(editable){ %><span class="icon icon-arrow-bottom"></span><% }%>
-        <span class="level-name">status</span>
+        <span class="level-name" translate="COMMON.FIELDS.STATUS"></span>
 
         <ul class="popover pop-status">
             <% _.each(statuses, function(st) { %>
@@ -211,7 +216,7 @@ TaskStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue) ->
             <% }); %>
         </ul>
     </div>
-    """) #TODO: i18n
+    """)
 
     link = ($scope, $el, $attrs, $model) ->
         isEditable = ->
@@ -220,11 +225,12 @@ TaskStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue) ->
         render = (task) =>
             status = $scope.statusById[task.status]
 
-            html = template({
+            html = $compile(template({
                 status: status
                 statuses: $scope.statusList
                 editable: isEditable()
-            })
+            }))($scope)
+
             $el.html(html)
 
         save = $qqueue.bindAdd (status) =>
@@ -278,14 +284,15 @@ TaskStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue) ->
     }
 
 module.directive("tgTaskStatusButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", "$tgQqueue",
-                                        TaskStatusButtonDirective])
+                                        "$compile", "$translate", TaskStatusButtonDirective])
 
 
-TaskIsIocaineButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $qqueue) ->
+TaskIsIocaineButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $qqueue, $compile) ->
     template = _.template("""
-      <fieldset title="Feeling a bit overwhelmed by a task? Make sure others know about it by clicking on Iocaine when editing a task. It's possible to become immune to this (fictional) deadly poison by consuming small amounts over time just as it's possible to get better at what you do by occasionally taking on extra challenges!">
+      <fieldset title="{{ 'TASK.TITLE_ACTION_IOCAINE' | translate }}">
         <label for="is-iocaine"
-              class="button button-gray is-iocaine <% if(isEditable){ %>editable<% }; %> <% if(isIocaine){ %>active<% }; %>">
+               translate="TASK.ACTION_IOCAINE"
+               class="button button-gray is-iocaine <% if(isEditable){ %>editable<% }; %> <% if(isIocaine){ %>active<% }; %>">
               Iocaine
         </label>
         <input type="checkbox" id="is-iocaine" name="is-iocaine"/>
@@ -305,7 +312,7 @@ TaskIsIocaineButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $qqueue
                 isIocaine: task.is_iocaine
                 isEditable: isEditable()
             }
-            html = template(ctx)
+            html = $compile(template(ctx))($scope)
             $el.html(html)
 
         save = $qqueue.bindAdd (is_iocaine) =>
@@ -347,4 +354,5 @@ TaskIsIocaineButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $qqueue
         require: "ngModel"
     }
 
-module.directive("tgTaskIsIocaineButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", "$tgQqueue", TaskIsIocaineButtonDirective])
+module.directive("tgTaskIsIocaineButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", "$tgQqueue",
+                                           "$compile", TaskIsIocaineButtonDirective])

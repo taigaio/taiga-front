@@ -1,3 +1,5 @@
+doctype html
+
 div.wrapper(ng-controller="TaskDetailController as ctrl",
             ng-init="section='backlog-kanban'")
     div.main.us-detail
@@ -6,9 +8,9 @@ div.wrapper(ng-controller="TaskDetailController as ctrl",
             .action-buttons
                 a.button-gray(
                     tg-check-permission="view_milestones",
-                    href="", title="Go to taskboard",
+                    href="", title="{{'TASK.TITLE_LINK_TASKBOARD' | translate}}",
                     tg-nav="project-taskboard:project=project.slug,sprint=sprint.slug",
-                    ng-if="sprint && project.is_backlog_activated") Taskboard
+                    ng-if="sprint && project.is_backlog_activated", translate="TASK.LINK_TASKBOARD")
 
         section.us-story-main-data
             div.us-title(ng-class="{blocked: task.is_blocked}")
@@ -16,25 +18,28 @@ div.wrapper(ng-controller="TaskDetailController as ctrl",
                     span.us-number(tg-bo-ref="task.ref")
                     span.us-name(tg-editable-subject, ng-model="task", required-perm="modify_task")
 
-                h3.us-related-task This task belongs to
-                    a(tg-check-permission="view_us", href="", title="Go to user story",
-                    tg-nav="project-userstories-detail:project=project.slug, ref=us.ref",
-                    ng-if="us")
+                h3.us-related-task(ng-if="us")
+                    | {{ 'TASK.OWNER_US'|translate }}
+                    a(tg-check-permission="view_us", href="", title="{{'TASK.TITLE_LINK_GO_OWNER' | translate}}",
+                      tg-nav="project-userstories-detail:project=project.slug, ref=us.ref")
                         span(tg-bo-ref="us.ref")
                         span(tg-bo-bind="us.subject")
 
-                p.external-reference(ng-if="task.external_reference") This task has been created from
-                    a(target="_blank", tg-bo-href="task.external_reference[1]", title="Go to origin")
+                p.external-reference(ng-if="task.external_reference")
+                    a(target="_blank", tg-bo-href="task.external_reference[1]",
+                      title="{{'TASK.TITLE_LINK_GO_ORIGIN' | translate}}")
+                        | {{ "TASK.ORIGIN_US"| translate }}
                         span {{ task.external_reference[1] }}
 
                 p.block-desc-container(ng-show="task.is_blocked")
-                    span.block-description-title Blocked
-                    span.block-description(ng-bind="task.blocked_note || 'This task is blocked'")
+                    span.block-description-title(translate="COMMON.BLOCKED")
+                    span.block-description(ng-bind="task.blocked_note || ('TASK.BLOCKED_DESCRIPTION' | translate)")
+
                 div.issue-nav
                     a.icon.icon-arrow-left(ng-show="previousUrl", tg-bo-href="previousUrl",
-                                           title="previous task")
+                                           title="{{'TASK.PREVIOUS' | translate}}")
                     a.icon.icon-arrow-right(ng-show="nextUrl", tg-bo-href="nextUrl",
-                                            title="next task")
+                                            title="{{'TASK.NEXT' | translate}}")
 
             div.tags-block(tg-tag-line, ng-model="task", required-perm="modify_task")
 
@@ -61,10 +66,10 @@ div.wrapper(ng-controller="TaskDetailController as ctrl",
            tg-task-is-iocaine-button(ng-model="task")
            tg-block-button(tg-check-permission="modify_task", ng-model="task")
            tg-delete-button(tg-check-permission="delete_task",
-                            on-delete-title="'Delete Task'",
+                            on-delete-title="{{'TASK.TITLE_DELETE_ACTION' | translate}}",
                             on-delete-go-to-url="onDeleteGoToUrl",
                             ng-model="task")
 
-    div.lightbox.lightbox-block(tg-lb-block, title="Blocking task", ng-model="task")
+    div.lightbox.lightbox-block(tg-lb-block, title="TASK.LIGHTBOX_TITLE_BLOKING_TASK", ng-model="task")
     div.lightbox.lightbox-select-user(tg-lb-assignedto)
     div.lightbox.lightbox-select-user(tg-lb-watchers)

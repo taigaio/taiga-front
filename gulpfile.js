@@ -22,15 +22,17 @@ var gulp = require("gulp"),
     autoprefixer = require("gulp-autoprefixer"),
     templateCache = require("gulp-angular-templatecache"),
     runSequence = require("run-sequence"),
-    del = require("del");
-
-var mainSass = require("./main-sass").files;
+    order = require("gulp-order"),
+    print = require('gulp-print'),
+    del = require("del"),
+    coffeelint = require('gulp-coffeelint');
 
 var paths = {};
 paths.app = "app/";
 paths.dist = "dist/";
 paths.tmp = "tmp/";
 paths.extras = "extras/";
+paths.vendor = "vendor/";
 
 paths.jade = [
     paths.app + "**/*.jade"
@@ -39,12 +41,13 @@ paths.jade = [
 paths.htmlPartials = [
     paths.tmp + "partials/**/*.html",
     paths.tmp + "plugins/**/*.html",
+    paths.tmp + "modules/**/*.html",
     "!" + paths.tmp + "partials/includes/**/*.html"
 ];
 
 paths.images = paths.app + "images/**/*";
 paths.svg = paths.app + "svg/**/*";
-paths.css = paths.app + "styles/vendor/*.css";
+paths.css_vendor = paths.app + "styles/vendor/*.css";
 paths.locales = paths.app + "locales/**/*.json";
 
 paths.sass = [
@@ -54,57 +57,92 @@ paths.sass = [
     "!" + paths.app + "/styles/extras/**/*.scss"
 ];
 
-paths.coffee = paths.app + "**/*.coffee";
+paths.styles_dependencies = paths.app + "/styles/dependencies/**/*.scss";
 
-paths.js = [
-    paths.tmp + "coffee/app.js",
-    paths.tmp + "coffee/*.js",
-    paths.tmp + "coffee/modules/controllerMixins.js",
-    paths.tmp + "coffee/modules/*.js",
-    paths.tmp + "coffee/modules/common/*.js",
-    paths.tmp + "coffee/modules/backlog/*.js",
-    paths.tmp + "coffee/modules/taskboard/*.js",
-    paths.tmp + "coffee/modules/kanban/*.js",
-    paths.tmp + "coffee/modules/issues/*.js",
-    paths.tmp + "coffee/modules/userstories/*.js",
-    paths.tmp + "coffee/modules/tasks/*.js",
-    paths.tmp + "coffee/modules/team/*.js",
-    paths.tmp + "coffee/modules/wiki/*.js",
-    paths.tmp + "coffee/modules/admin/*.js",
-    paths.tmp + "coffee/modules/projects/*.js",
-    paths.tmp + "coffee/modules/locales/*.js",
-    paths.tmp + "coffee/modules/base/*.js",
-    paths.tmp + "coffee/modules/resources/*.js",
-    paths.tmp + "coffee/modules/user-settings/*.js",
-    paths.tmp + "coffee/modules/integrations/*.js",
-    paths.tmp + "plugins/**/*.js"
+paths.css = [
+    paths.tmp + "styles/**/*.css",
+    paths.tmp + "modules/**/*.css",
+    paths.tmp + "plugins/**/*.css"
+];
+
+paths.css_order = [
+    paths.tmp + "styles/vendor/*",
+    paths.tmp + "styles/core/reset.css",
+    paths.tmp + "styles/core/base.css",
+    paths.tmp + "styles/core/animation.css",
+    paths.tmp + "styles/core/typography.css",
+    paths.tmp + "styles/core/elements.css",
+    paths.tmp + "styles/core/forms.css",
+    paths.tmp + "styles/layout/*",
+    paths.tmp + "styles/components/*",
+    paths.tmp + "styles/modules/**/*.css",
+    paths.tmp + "modules/**/*.css",
+    paths.tmp + "styles/shame/*.css",
+    paths.tmp + "plugins/**/*.css"
+];
+
+paths.coffee = [
+    paths.app + "**/*.coffee",
+    "!" + paths.app + "**/*.spec.coffee",
+];
+
+paths.coffee_order = [
+    paths.app + "coffee/app.coffee",
+    paths.app + "coffee/*.coffee",
+    paths.app + "coffee/modules/controllerMixins.coffee",
+    paths.app + "coffee/modules/*.coffee",
+    paths.app + "coffee/modules/common/*.coffee",
+    paths.app + "coffee/modules/backlog/*.coffee",
+    paths.app + "coffee/modules/taskboard/*.coffee",
+    paths.app + "coffee/modules/kanban/*.coffee",
+    paths.app + "coffee/modules/issues/*.coffee",
+    paths.app + "coffee/modules/userstories/*.coffee",
+    paths.app + "coffee/modules/tasks/*.coffee",
+    paths.app + "coffee/modules/team/*.coffee",
+    paths.app + "coffee/modules/wiki/*.coffee",
+    paths.app + "coffee/modules/admin/*.coffee",
+    paths.app + "coffee/modules/projects/*.coffee",
+    paths.app + "coffee/modules/locales/*.coffee",
+    paths.app + "coffee/modules/base/*.coffee",
+    paths.app + "coffee/modules/resources/*.coffee",
+    paths.app + "coffee/modules/user-settings/*.coffee",
+    paths.app + "coffee/modules/integrations/*.coffee",
+    paths.app + "modules/**/*.module.coffee",
+    paths.app + "modules/**/*.coffee",
+    paths.app + "plugins/*.coffee",
+    paths.app + "plugins/**/*.coffee"
 ];
 
 paths.libs = [
-    paths.app + "vendor/jquery/dist/jquery.js",
-    paths.app + "vendor/lodash/dist/lodash.js",
-    paths.app + "vendor/emoticons/lib/emoticons.js",
-    paths.app + "vendor/underscore.string/lib/underscore.string.js",
-    paths.app + "vendor/angular/angular.js",
-    paths.app + "vendor/angular-route/angular-route.js",
-    paths.app + "vendor/angular-sanitize/angular-sanitize.js",
-    paths.app + "vendor/angular-animate/angular-animate.js",
-    paths.app + "vendor/i18next/i18next.js",
-    paths.app + "vendor/moment/min/moment-with-langs.js",
-    paths.app + "vendor/checksley/checksley.js",
-    paths.app + "vendor/pikaday/pikaday.js",
-    paths.app + "vendor/jquery-flot/jquery.flot.js",
-    paths.app + "vendor/jquery-flot/jquery.flot.pie.js",
-    paths.app + "vendor/jquery-flot/jquery.flot.time.js",
-    paths.app + "vendor/flot-axislabels/jquery.flot.axislabels.js",
-    paths.app + "vendor/flot.tooltip/js/jquery.flot.tooltip.js",
-    paths.app + "vendor/jquery-textcomplete/jquery.textcomplete.js",
-    paths.app + "vendor/markitup-1x/markitup/jquery.markitup.js",
-    paths.app + "vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js",
-    paths.app + "vendor/raven-js/dist/raven.js",
-    paths.app + "vendor/l.js/l.js",
+    paths.vendor + "jquery/dist/jquery.js",
+    paths.vendor + "lodash/dist/lodash.js",
+    paths.vendor + "emoticons/lib/emoticons.js",
+    paths.vendor + "underscore.string/lib/underscore.string.js",
+    paths.vendor + "messageformat/messageformat.js",
+    paths.vendor + "angular/angular.js",
+    paths.vendor + "angular-route/angular-route.js",
+    paths.vendor + "angular-sanitize/angular-sanitize.js",
+    paths.vendor + "angular-animate/angular-animate.js",
+    paths.vendor + "angular-translate/angular-translate.js",
+    paths.vendor + "angular-translate-loader-static-files/angular-translate-loader-static-files.js",
+    paths.vendor + "angular-translate-interpolation-messageformat/angular-translate-interpolation-messageformat.js",
+    paths.vendor + "moment/min/moment-with-locales.js",
+    paths.vendor + "checksley/checksley.js",
+    paths.vendor + "pikaday/pikaday.js",
+    paths.vendor + "jquery-flot/jquery.flot.js",
+    paths.vendor + "jquery-flot/jquery.flot.pie.js",
+    paths.vendor + "jquery-flot/jquery.flot.time.js",
+    paths.vendor + "flot-axislabels/jquery.flot.axislabels.js",
+    paths.vendor + "flot.tooltip/js/jquery.flot.tooltip.js",
+    paths.vendor + "jquery-textcomplete/jquery.textcomplete.js",
+    paths.vendor + "markitup-1x/markitup/jquery.markitup.js",
+    paths.vendor + "malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js",
+    paths.vendor + "raven-js/dist/raven.js",
+    paths.vendor + "l.js/l.js",
+    paths.vendor + "messageformat/locale/*.js",
     paths.app + "js/jquery.ui.git-custom.js",
     paths.app + "js/jquery-ui.drag-multiple-custom.js",
+    paths.app + "js/jquery.ui.touch-punch.min.js",
     paths.app + "js/sha1-custom.js"
 ];
 
@@ -182,20 +220,25 @@ gulp.task("scss-lint", [], function() {
         .pipe(gulpif(fail, scsslint.failReporter()))
 });
 
-gulp.task("sass-compile", ["scss-lint"], function() {
+gulp.task("clear-sass-cache", function() {
+    delete cached.caches["sass"];
+});
+
+gulp.task("sass-compile", [], function() {
     return gulp.src(paths.sass)
         .pipe(plumber())
         .pipe(insert.prepend('@import "dependencies";'))
-        .pipe(cache(sass({
+        .pipe(cached("sass"))
+        .pipe(sass({
             includePaths: [
                 paths.app + "styles/extras/"
             ]
-        })))
+        }))
         .pipe(gulp.dest(paths.tmp));
 });
 
 gulp.task("css-lint-app", function() {
-    return gulp.src(mainSass.concat([paths.tmp + "plugins/**/*.css"]))
+    return gulp.src(paths.css)
         .pipe(gulpif(!isDeploy, cache(csslint("csslintrc.json"), {
           success: function(csslintFile) {
             return csslintFile.csslint.success;
@@ -209,8 +252,9 @@ gulp.task("css-lint-app", function() {
         .pipe(csslint.reporter());
 });
 
-gulp.task("css-join", ["css-lint-app"], function() {
-    return gulp.src(mainSass.concat([paths.tmp + "plugins/**/*.css"]))
+gulp.task("app-css", function() {
+    return gulp.src(paths.css)
+        .pipe(order(paths.css_order, {base: '.'}))
         .pipe(concat("app.css"))
         .pipe(autoprefixer({
             cascade: false
@@ -218,17 +262,13 @@ gulp.task("css-join", ["css-lint-app"], function() {
         .pipe(gulp.dest(paths.tmp));
 });
 
-gulp.task("css-app", function(cb) {
-    return runSequence("sass-compile", "css-join", cb);
-});
-
-gulp.task("css-vendor", function() {
-    return gulp.src(paths.css)
+gulp.task("vendor-css", function() {
+    return gulp.src(paths.css_vendor)
         .pipe(concat("vendor.css"))
         .pipe(gulp.dest(paths.tmp));
 });
 
-gulp.task("styles", ["css-app", "css-vendor"], function() {
+gulp.task("main-css", function() {
     var _paths = [
         paths.tmp + "vendor.css",
         paths.tmp + "app.css"
@@ -238,6 +278,24 @@ gulp.task("styles", ["css-app", "css-vendor"], function() {
         .pipe(concat("main.css"))
         .pipe(gulpif(isDeploy, minifyCSS({noAdvanced: true})))
         .pipe(gulp.dest(paths.dist + "styles/"))
+});
+
+gulp.task("styles", function(cb) {
+    return runSequence("scss-lint",
+                       "sass-compile",
+                       "css-lint-app",
+                       ["app-css", "vendor-css"],
+                       "main-css",
+                       cb);
+
+});
+
+gulp.task("styles-dependencies", function(cb) {
+    return runSequence("clear-sass-cache",
+                       "sass-compile",
+                       ["app-css", "vendor-css"],
+                       "main-css",
+                       cb);
 });
 
 /*
@@ -258,25 +316,43 @@ gulp.task("app-loader", function() {
 });
 
 gulp.task("locales", function() {
-    return gulp.src("app/locales/en/app.json")
-        .pipe(wrap("angular.module('taigaBase').value('localesEn', <%= contents %>);", {}, {parse: false}))
-        .pipe(rename("locales.en.js"))
-        .pipe(gulp.dest(paths.tmp));
+    return gulp.src(paths.locales)
+        .pipe(gulp.dest(paths.dist + "locales"));
+});
+
+gulp.task("coffee-lint", function () {
+    gulp.src([
+        paths.app + "modules/**/*.coffee",
+        "!" + paths.app + "modules/**/*.spec.coffee"
+    ])
+        .pipe(gulpif(!isDeploy, cache(coffeelint(), {
+            key: function(lintFile) {
+                return "coffee-lint" + lintFile.contents.toString('utf8');
+            },
+            success: function(lintFile) {
+                return lintFile.coffeelint.success;
+            },
+            value: function(lintFile) {
+                return {
+                    coffeelint: lintFile.coffeelint
+                };
+            }
+        })))
+        .pipe(coffeelint.reporter());
 });
 
 gulp.task("coffee", function() {
     return gulp.src(paths.coffee)
+        .pipe(order(paths.coffee_order, {base: '.'}))
+        .pipe(sourcemaps.init())
         .pipe(cache(coffee()))
         .on("error", function(err) {
             console.log(err.toString());
             this.emit("end");
         })
-        .pipe(gulp.dest(paths.tmp));
-});
-
-gulp.task("plugins-js", function() {
-    return gulp.src(paths.app + "plugins/**/*.js")
-        .pipe(gulp.dest(paths.tmp));
+        .pipe(concat("app.js"))
+        .pipe(sourcemaps.write('./maps'))
+        .pipe(gulp.dest(paths.dist + "js/"));
 });
 
 gulp.task("jslibs-watch", function() {
@@ -292,26 +368,19 @@ gulp.task("jslibs-deploy", function() {
         .pipe(sourcemaps.init())
         .pipe(concat("libs.js"))
         .pipe(uglify({mangle:false, preserveComments: false}))
-        .pipe(sourcemaps.write("./"))
+        .pipe(sourcemaps.write("./maps"))
         .pipe(gulp.dest(paths.dist + "js/"));
 });
 
-gulp.task("app-watch", ["coffee", "plugins-js", "conf", "locales", "app-loader"], function() {
-    var _paths = paths.js.concat(paths.tmp + "locales.en.js")
+gulp.task("app-watch", ["coffee-lint", "coffee", "conf", "locales", "app-loader"]);
 
-    return gulp.src(_paths)
-        .pipe(concat("app.js"))
-        .pipe(gulp.dest(paths.dist + "js/"));
-});
-
-gulp.task("app-deploy", ["coffee", "plugins-js", "conf", "locales", "app-loader"], function() {
-    var _paths = paths.js.concat(paths.tmp + "locales.en.js")
-
-    return gulp.src(_paths)
+gulp.task("app-deploy", ["coffee", "conf", "locales", "app-loader"], function() {
+    return gulp.src(paths.dist)
+        .pipe(order(paths.coffee_order, {base: '.'}))
         .pipe(sourcemaps.init())
             .pipe(concat("app.js"))
             .pipe(uglify({mangle:false, preserveComments: false}))
-        .pipe(sourcemaps.write("./"))
+        .pipe(sourcemaps.write("./maps"))
         .pipe(gulp.dest(paths.dist + "js/"));
 });
 
@@ -321,8 +390,6 @@ gulp.task("app-deploy", ["coffee", "plugins-js", "conf", "locales", "app-loader"
 ##############################################################################
 */
 gulp.task("clear", function(done) {
-    del.sync(paths.tmp);
-
   return cache.clearAll(done);
 });
 
@@ -339,7 +406,7 @@ gulp.task("copy-fonts", function() {
 
 gulp.task("copy-images", function() {
     return gulp.src(paths.app + "/images/**/*")
-        .pipe(imagemin({progressive: true}))
+        .pipe(gulpif(isDeploy, imagemin({progressive: true})))
         .pipe(gulp.dest(paths.dist + "/images/"));
 });
 
@@ -372,6 +439,8 @@ gulp.task("express", function() {
     app.use("/partials", express.static(__dirname + "/dist/partials"));
     app.use("/fonts", express.static(__dirname + "/dist/fonts"));
     app.use("/plugins", express.static(__dirname + "/dist/plugins"));
+    app.use("/locales", express.static(__dirname + "/dist/locales"));
+    app.use("/maps", express.static(__dirname + "/dist/maps"));
 
     app.all("/*", function(req, res, next) {
         //Just send the index.html for other files to support HTML5Mode
@@ -385,13 +454,16 @@ gulp.task("express", function() {
 gulp.task("watch", function() {
     gulp.watch(paths.jade, ["jade-watch"]);
     gulp.watch(paths.sass, ["styles"]);
+    gulp.watch(paths.styles_dependencies, ["styles-dependencies"]);
     gulp.watch(paths.svg, ["copy-svg"]);
     gulp.watch(paths.coffee, ["app-watch"]);
     gulp.watch(paths.libs, ["jslibs-watch"]);
-    gulp.watch(paths.locales, ["app-watch"]);
+    gulp.watch(paths.locales, ["locales"]);
     gulp.watch(paths.images, ["copy-images"]);
     gulp.watch(paths.fonts, ["copy-fonts"]);
 });
+
+del.sync(paths.tmp);
 
 gulp.task("deploy", function(cb) {
     runSequence("clear", [

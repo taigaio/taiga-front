@@ -1,5 +1,5 @@
 div.us-activity
-    a.activity-title(ng-show="ctrl.countChanges(comment)", href="", title="Show activity")
+    a.activity-title(ng-show="ctrl.countChanges(comment)", href="", title="{{'ACTIVITY.SHOW_ACTIVITY' | translate}}")
         span(tg-bo-bind="ctrl.buildChangesText(comment)")
         span.icon.icon-arrow-up
 
@@ -8,8 +8,10 @@ div.us-activity
             span(tg-bo-bind="key")
         div.activity-fromto
             p
-                strong from <br />
+                strong(translate="COMMON.FROM")
+                br
                 span(tg-bo-bind="ctrl.getChangeText(change[0])")
             p
-                strong to <br />
+                strong(translate="COMMON.TO")
+                br
                 span(tg-bo-bind="ctrl.getChangeText(change[1])")

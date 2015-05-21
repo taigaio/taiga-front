@@ -89,6 +89,9 @@
         @extend %small;
         color: $postit-dark-hover;
         display: block;
+        &:hover {
+            color: $green-taiga;
+        }
     }
     .task-num {
         color: $grayer;
