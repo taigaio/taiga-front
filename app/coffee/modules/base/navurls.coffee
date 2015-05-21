@@ -86,7 +86,7 @@ NavigationUrlsDirective = ($navurls, $auth, $q, $location) ->
 
     link = ($scope, $el, $attrs) ->
         if $el.is("a")
-            $el.attr("href", "")
+            $el.attr("href", "#")
 
         $el.on "mouseenter", (event) ->
             target = $(event.currentTarget)

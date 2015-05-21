@@ -15,7 +15,7 @@ form
                     p {{ template.description }}
 
         fieldset
-            a.button-next.button-green(href="", title="{{'PAGINATION.NEXT' | translate}}", translate="PAGINATION.NEXT")
+            a.button-next.button-green(href="#", title="{{'PAGINATION.NEXT' | translate}}", translate="PAGINATION.NEXT")
 
     section.wizard-step.create-step2.active(data-step="step2")
         div.title
@@ -29,7 +29,7 @@ form
                     textarea(name="description", ng-model="data.description", data-required="true",  ng-attr-placeholder="{{'COMMON.FIELDS.DESCRIPTION' | translate}}")
                 fieldset.wizard-action
                     div
-                        a.button-prev.button.button-gray(href="", title="{{'PAGINATION.PREVIOUS' | translate}}", translate="PAGINATION.PREVIOUS")
+                        a.button-prev.button.button-gray(href="#", title="{{'PAGINATION.PREVIOUS' | translate}}", translate="PAGINATION.PREVIOUS")
                         button.button-green.submit-button(type="submit", title="{{'COMMON.CREATE' | translate}}", translate="COMMON.CREATE")
 
                     button(type="submit", class="hidden")
@@ -42,5 +42,5 @@ div.progress-bar
     div.progress-bar-wrapper
         div.bar
 
-a.close(href="" title="{{'COMMON.CLOSE' | translate}}")
+a.close(href="#" title="{{'COMMON.CLOSE' | translate}}")
     span.icon.icon-delete
