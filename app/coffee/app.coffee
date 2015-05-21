@@ -35,9 +35,7 @@ taiga.generateUniqueSessionIdentifier = ->
 
 taiga.sessionId = taiga.generateUniqueSessionIdentifier()
 
-
-configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEventsProvider, tgLoaderProvider,
-             $compileProvider, $translateProvider) ->
+configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEventsProvider, $compileProvider, $translateProvider) ->
     $routeProvider.when("/",
         {
             templateUrl: "home/home.html",
@@ -579,7 +577,6 @@ module.config([
     "$httpProvider",
     "$provide",
     "$tgEventsProvider",
-    "tgLoaderProvider",
     "$compileProvider",
     "$translateProvider",
     configure

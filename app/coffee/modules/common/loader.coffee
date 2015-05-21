@@ -46,74 +46,73 @@ LoaderDirective = (tgLoader, $rootscope) ->
 
 module.directive("tgLoader", ["tgLoader", "$rootScope", LoaderDirective])
 
-Loader = () ->
+Loader = ($rootscope) ->
     config = {
         minTime: 300
     }
 
-    @.$get = ["$rootScope", ($rootscope) ->
+    startLoadTime = 0
+    requestCount = 0
+    lastResponseDate = 0
+
+    pageLoaded = (force = false) ->
+        if startLoadTime
+            timeoutValue = 0
+
+            if !force
+                endTime = new Date().getTime()
+                diff = endTime - startLoadTime
+
+                if diff < config.minTime
+                    timeoutValue = config.minTime - diff
+
+            timeout(timeoutValue, -> $rootscope.$broadcast("loader:end"))
+
         startLoadTime = 0
         requestCount = 0
         lastResponseDate = 0
 
-        pageLoaded = (force = false) ->
-            if startLoadTime
-                timeoutValue = 0
+    autoClose = () ->
+        maxAuto = 5000
+        timeoutAuto = setTimeout (() ->
+            pageLoaded()
 
-                if !force
-                    endTime = new Date().getTime()
-                    diff = endTime - startLoadTime
+            clearInterval(intervalAuto)
+        ), maxAuto
 
-                    if diff < config.minTime
-                        timeoutValue = config.minTime - diff
-
-                timeout(timeoutValue, -> $rootscope.$broadcast("loader:end"))
-
-            startLoadTime = 0
-            requestCount = 0
-            lastResponseDate = 0
-
-        autoClose = () ->
-            maxAuto = 5000
-            timeoutAuto = setTimeout (() ->
+        intervalAuto = setInterval (() ->
+            if lastResponseDate && requestCount == 0
                 pageLoaded()
 
                 clearInterval(intervalAuto)
-            ), maxAuto
+                clearTimeout(timeoutAuto)
+        ), 50
 
-            intervalAuto = setInterval (() ->
-                if lastResponseDate && requestCount == 0
-                    pageLoaded()
+    start = () ->
+        startLoadTime = new Date().getTime()
+        $rootscope.$broadcast("loader:start")
 
-                    clearInterval(intervalAuto)
-                    clearTimeout(timeoutAuto)
-            ), 50
+    return {
+        pageLoaded: pageLoaded
+        start: start
+        startWithAutoClose: () ->
+            start()
+            autoClose()
+        onStart: (fn) ->
+            $rootscope.$on("loader:start", fn)
 
-        start = () ->
-            startLoadTime = new Date().getTime()
-            $rootscope.$broadcast("loader:start")
+        onEnd: (fn) ->
+            $rootscope.$on("loader:end", fn)
 
-        return {
-            pageLoaded: pageLoaded
-            start: start
-            startWithAutoClose: () ->
-                start()
-                autoClose()
-            onStart: (fn) ->
-                $rootscope.$on("loader:start", fn)
+        logRequest: () ->
+            requestCount++
 
-            onEnd: (fn) ->
-                $rootscope.$on("loader:end", fn)
+        logResponse: () ->
+            requestCount--
+            lastResponseDate = new Date().getTime()
+    }
 
-            logRequest: () ->
-                requestCount++
 
-            logResponse: () ->
-                requestCount--
-                lastResponseDate = new Date().getTime()
-        }
-    ]
+Loader.$inject = ["$rootScope"]
 
-    return
-
-module.provider("tgLoader", [Loader])
+module.factory("tgLoader", Loader)
