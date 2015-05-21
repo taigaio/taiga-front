@@ -40,12 +40,6 @@ LoaderDirective = (tgLoader, $rootscope) ->
             $(document.body).removeClass("loader-active")
             $el.removeClass("active")
 
-        $rootscope.$on "$routeChangeSuccess", (e) ->
-            tgLoader.startCurrentPageLoader()
-
-        $rootscope.$on "$locationChangeSuccess", (e) ->
-            tgLoader.reset()
-
     return {
         link: link
     }
@@ -53,29 +47,14 @@ LoaderDirective = (tgLoader, $rootscope) ->
 module.directive("tgLoader", ["tgLoader", "$rootScope", LoaderDirective])
 
 Loader = () ->
-    forceDisabled = false
-
-    defaultConfig = {
-        enabled: false,
-        minTime: 300,
-        auto: false
+    config = {
+        minTime: 300
     }
-
-    config = _.merge({}, defaultConfig)
-
-    @.add = (auto = false) ->
-        return () ->
-            if !forceDisabled
-                config.enabled = true
-                config.auto = auto
 
     @.$get = ["$rootScope", ($rootscope) ->
         startLoadTime = 0
         requestCount = 0
         lastResponseDate = 0
-
-        reset = () ->
-            config = _.merge({}, defaultConfig)
 
         pageLoaded = (force = false) ->
             if startLoadTime
@@ -90,6 +69,9 @@ Loader = () ->
 
                 timeout(timeoutValue, -> $rootscope.$broadcast("loader:end"))
 
+            startLoadTime = 0
+            requestCount = 0
+            lastResponseDate = 0
 
         autoClose = () ->
             maxAuto = 5000
@@ -112,26 +94,16 @@ Loader = () ->
             $rootscope.$broadcast("loader:start")
 
         return {
-            reset: reset
             pageLoaded: pageLoaded
             start: start
-            startCurrentPageLoader: () ->
-                if config.enabled
-                    start()
-
-                    autoClose() if config.auto
-
+            startWithAutoClose: () ->
+                start()
+                autoClose()
             onStart: (fn) ->
                 $rootscope.$on("loader:start", fn)
 
             onEnd: (fn) ->
                 $rootscope.$on("loader:end", fn)
-
-            preventLoading: () ->
-                forceDisabled = true
-
-            disablePreventLoading: () ->
-                forceDisabled = false
 
             logRequest: () ->
                 requestCount++

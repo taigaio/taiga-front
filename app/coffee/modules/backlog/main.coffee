@@ -49,12 +49,11 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         "$tgNavUrls",
         "$tgEvents",
         "$tgAnalytics",
-        "tgLoader",
         "$translate"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q,
-                  @location, @appTitle, @navUrls, @events, @analytics, tgLoader, @translate) ->
+                  @location, @appTitle, @navUrls, @events, @analytics, @translate) ->
         bindMethods(@)
 
         @scope.sectionName = @translate.instant("BACKLOG.SECTION_NAME")
@@ -76,9 +75,6 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
         # On Error
         promise.then null, @.onInitialDataError.bind(@)
-
-        # Finally
-        promise.finally tgLoader.pageLoaded
 
     initializeEventHandlers: ->
         @scope.$on "usform:bulk:success", =>

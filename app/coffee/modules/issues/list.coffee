@@ -50,15 +50,12 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         "$appTitle",
         "$tgNavUrls",
         "$tgEvents",
-        "$tgAnalytics",
-        "tgLoader",
-        "$translate"
+        "$tgAnalytics"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @urls, @params, @q, @location, @appTitle,
-                  @navUrls, @events, @analytics, tgLoader, @translate) ->
-
-        @scope.sectionName = @translate.instant("ISSUES.LIST_SECTION_NAME")
+                  @navUrls, @events, @analytics) ->
+        @scope.sectionName = "Issues"
         @scope.filters = {}
 
         if _.isEmpty(@location.search())
@@ -76,9 +73,6 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
         # On Error
         promise.then null, @.onInitialDataError.bind(@)
-
-        # Finally
-        promise.finally tgLoader.pageLoaded
 
         @scope.$on "issueform:new:success", =>
             @analytics.trackEvent("issue", "create", "create issue on issues list", 1)

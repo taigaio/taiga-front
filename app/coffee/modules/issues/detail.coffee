@@ -47,12 +47,11 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$appTitle",
         "$tgAnalytics",
         "$tgNavUrls",
-        "$translate",
-        "tgLoader"
+        "$translate"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
-                  @log, @appTitle, @analytics, @navUrls, @translate, tgLoader) ->
+                  @log, @appTitle, @analytics, @navUrls, @translate) ->
         @scope.issueRef = @params.issueref
         @scope.sectionName = @translate.instant("ISSUES.SECTION_NAME")
         @.initializeEventHandlers()
@@ -66,9 +65,6 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
         # On Error
         promise.then null, @.onInitialDataError.bind(@)
-
-        # Finally
-        promise.finally tgLoader.pageLoaded
 
     initializeEventHandlers: ->
         @scope.$on "attachment:create", =>

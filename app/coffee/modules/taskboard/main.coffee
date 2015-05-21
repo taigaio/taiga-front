@@ -48,13 +48,11 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$tgLocation",
         "$tgNavUrls"
         "$tgEvents"
-        "$tgAnalytics",
-        "tgLoader"
-        "$translate"
+        "$tgAnalytics"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @appTitle, @location, @navUrls,
-                  @events, @analytics, tgLoader, @translate) ->
+                  @events, @analytics) ->
         bindMethods(@)
 
         @scope.sectionName = @translate.instant("TASKBOARD.SECTION_NAME")
@@ -68,9 +66,6 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
 
         # On Error
         promise.then null, @.onInitialDataError.bind(@)
-
-        # Finally
-        promise.finally tgLoader.pageLoaded
 
     initializeEventHandlers: ->
         # TODO: Reload entire taskboard after create/edit tasks seems

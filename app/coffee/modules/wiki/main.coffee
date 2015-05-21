@@ -49,12 +49,11 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$appTitle",
         "$tgNavUrls",
         "$tgAnalytics",
-        "tgLoader",
         "$translate"
     ]
 
     constructor: (@scope, @rootscope, @repo, @model, @confirm, @rs, @params, @q, @location,
-                  @filter, @log, @appTitle, @navUrls, @analytics, tgLoader, @translate) ->
+                  @filter, @log, @appTitle, @navUrls, @analytics, @translate) ->
         @scope.projectSlug = @params.pslug
         @scope.wikiSlug = @params.slug
         @scope.sectionName = "Wiki"
@@ -67,7 +66,6 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
         # On Error
         promise.then null, @.onInitialDataError.bind(@)
-        promise.finally tgLoader.pageLoaded
 
     loadProject: ->
         return @rs.projects.getBySlug(@params.pslug).then (project) =>

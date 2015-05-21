@@ -61,13 +61,11 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         "$appTitle",
         "$tgNavUrls",
         "$tgEvents",
-        "$tgAnalytics",
-        "tgLoader",
-        "$translate"
+        "$tgAnalytics"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
-                  @appTitle, @navUrls, @events, @analytics, tgLoader, @translate) ->
+                  @appTitle, @navUrls, @events, @analytics) ->
 
         bindMethods(@)
 
@@ -83,9 +81,6 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
         # On Error
         promise.then null, @.onInitialDataError.bind(@)
-
-        # Finally
-        promise.finally tgLoader.pageLoaded
 
     initializeEventHandlers: ->
         @scope.$on "usform:new:success", =>

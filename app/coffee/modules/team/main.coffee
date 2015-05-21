@@ -41,12 +41,10 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$tgNavUrls",
         "$appTitle",
         "$tgAuth",
-        "tgLoader",
         "$translate"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @rs, @params, @q, @location, @navUrls, @appTitle, @auth, tgLoader,
-                  @translate) ->
+    constructor: (@scope, @rootscope, @repo, @rs, @params, @q, @location, @navUrls, @appTitle, @auth, @translate) ->
         @scope.sectionName = "TEAM.SECTION_NAME"
 
         promise = @.loadInitialData()
@@ -58,9 +56,6 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
 
         # On Error
         promise.then null, @.onInitialDataError.bind(@)
-
-        # Finally
-        promise.finally tgLoader.pageLoaded
 
     setRole: (role) ->
         if role

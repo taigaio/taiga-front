@@ -44,13 +44,11 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$log",
         "$appTitle",
         "$tgNavUrls",
-        "$tgAnalytics",
-        "$translate",
-        "tgLoader"
+        "$tgAnalytics"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
-                  @log, @appTitle, @navUrls, @analytics, @translate, tgLoader) ->
+                  @log, @appTitle, @navUrls, @analytics) ->
         @scope.taskRef = @params.taskref
         @scope.sectionName = @translate.instant("TASK.SECTION_NAME")
         @.initializeEventHandlers()
@@ -62,8 +60,6 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             @.initializeOnDeleteGoToUrl()
 
         promise.then null, @.onInitialDataError.bind(@)
-
-        promise.finally tgLoader.pageLoaded
 
     initializeEventHandlers: ->
         @scope.$on "attachment:create", =>
