@@ -47,7 +47,7 @@ describe "UserTimelineController", ->
                 { fake: "fake"}
             ])
 
-        it "the loadingData variable must be true during the timeline load", () ->
+        it "the scrollDisabled variable must be true during the timeline load", () ->
             myCtrl = controller "UserTimeline"
             myCtrl.userId = mockUser.id
 
@@ -59,15 +59,39 @@ describe "UserTimelineController", ->
                     then: thenStub
                 })
 
-            expect(myCtrl.loadingData).to.be.false
+            expect(myCtrl.scrollDisabled).to.be.false
 
             myCtrl.loadTimeline()
 
-            expect(myCtrl.loadingData).to.be.true
+            expect(myCtrl.scrollDisabled).to.be.true
 
             thenStub.callArgWith(0, timelineList)
 
-            expect(myCtrl.loadingData).to.be.false
+            expect(myCtrl.scrollDisabled).to.be.false
+
+        it "disable scroll when no more content", () ->
+            emptyTimelineList = Immutable.fromJS([])
+
+            myCtrl = controller "UserTimeline"
+            myCtrl.userId = mockUser.id
+
+            thenStub = sinon.stub()
+
+            mocks.userTimelineService.getTimeline = sinon.stub()
+                .withArgs(mockUser.id, myCtrl.page)
+                .returns({
+                    then: thenStub
+                })
+
+            expect(myCtrl.scrollDisabled).to.be.false
+
+            myCtrl.loadTimeline()
+
+            expect(myCtrl.scrollDisabled).to.be.true
+
+            thenStub.callArgWith(0, emptyTimelineList)
+
+            expect(myCtrl.scrollDisabled).to.be.true
 
         it "pagiantion increase one every call to loadTimeline", () ->
             myCtrl = controller "UserTimeline"

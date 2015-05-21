@@ -31,10 +31,10 @@ class UserTimelineController extends mixOf(taiga.Controller, taiga.PageMixin, ta
     constructor: (@userTimelineService) ->
         @.timelineList = Immutable.List()
         @.page = 1
-        @.loadingData = false
+        @.scrollDisabled = false
 
     loadTimeline: () ->
-        @.loadingData = true
+        @.scrollDisabled = true
 
         if @.projectId
             @userTimelineService
@@ -50,7 +50,9 @@ class UserTimelineController extends mixOf(taiga.Controller, taiga.PageMixin, ta
     _timelineLoaded: (newTimelineList) ->
         @.timelineList = @.timelineList.concat(newTimelineList)
         @.page++
-        @.loadingData = false
+
+        if newTimelineList.size
+            @.scrollDisabled = false
 
 angular.module("taigaUserTimeline")
     .controller("UserTimeline", UserTimelineController)
