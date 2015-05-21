@@ -1,11 +1,15 @@
 class ProfilePageController extends taiga.Controller
     @.$inject = [
         "$appTitle",
-        "$tgAuth"
+        "$tgAuth",
+        "$routeParams"
     ]
 
-    constructor: (@appTitle, @auth) ->
-        @.user = @auth.userData
+    constructor: (@appTitle, @auth, @routeParams) ->
+        if @routeParams.slug
+            @.user = @auth.userData
+        else
+            @.user = @auth.userData
 
         @appTitle.set(@.user.get('username'))
 

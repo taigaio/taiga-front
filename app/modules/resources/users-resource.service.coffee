@@ -1,6 +1,8 @@
 Resource = (urlsService, http) ->
     service = {}
 
+    service.getUserBySlug = (userSlug) ->
+
     service.getStats = (userId) ->
         url = urlsService.resolve("stats", userId)
 
