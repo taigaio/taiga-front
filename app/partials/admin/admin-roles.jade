@@ -27,7 +27,8 @@ div.wrapper.roles(ng-controller="RolesController as ctrl",
 
             div.any-computable-role(ng-hide="anyComputableRole", translate="ADMIN.ROLES.WARNING_NO_ROLE")
 
-            div.general-category(translate="ADMIN.ROLES.HELP_ROLE_ENABLED")
+            div.general-category
+                span(translate="ADMIN.ROLES.HELP_ROLE_ENABLED")
                 div.check
                     input(type="checkbox", ng-model="role.computable", ng-change="ctrl.setComputable()")
                     div
