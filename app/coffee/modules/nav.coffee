@@ -249,21 +249,24 @@ ProjectMenuDirective = ($log, $compile, $auth, $rootscope, $tgAuth, $location, $
         container.replaceWith(dom)
 
     videoConferenceUrl = (project) ->
-        urlSeparator = "-"
+        urlFixer = (url) -> return url
+
         if project.videoconferences == "appear-in"
             baseUrl = "https://appear.in/"
         else if project.videoconferences == "talky"
             baseUrl = "https://talky.io/"
         else if project.videoconferences == "jitsi"
-            urlSeparator = ""
             baseUrl = "https://meet.jit.si/"
+            urlFixer = (url) -> return url.replace(/ /g, "").replace(/-/g, "")
         else
             return ""
 
         if project.videoconferences_salt
-            url = "#{project.slug}#{urlSeparator}#{project.videoconferences_salt}"
+            url = "#{project.slug}-#{project.videoconferences_salt}"
         else
             url = "#{project.slug}"
+
+        url = urlFixer(url)
 
         return baseUrl + url
 
