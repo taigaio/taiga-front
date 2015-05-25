@@ -16,13 +16,13 @@ section.profile-bar
     // These values in profile stats are not defined yet in UX. Please ask
     div.profile-stats
         div.stat
-            span.stat-number {{::vm.stats.get('projects')}}
+            span.stat-number {{::vm.stats.get('total_num_projects')}}
             span.stat-name(translate="USER.PROFILE.PROJECTS")
         div.stat
-            span.stat-number {{::vm.stats.get('closed_userstories')}}
+            span.stat-number {{::vm.stats.get('total_num_closed_userstories')}}
             span.stat-name(translate="USER.PROFILE.CLOSED_US")
         div.stat
-            span.stat-number {{::vm.stats.get('contacts')}}
+            span.stat-number {{::vm.stats.get('total_num_contacts')}}
             span.stat-name(translate="USER.PROFILE.CONTACTS")
     // TODO Hide until organizations come
         // div.profile-organizations
