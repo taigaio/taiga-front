@@ -13,6 +13,7 @@ ProjectMenuDirective = (projectService, lightboxFactory) ->
         ), projectChange
 
     return {
+        scope: {},
         controller: "ProjectMenu",
         templateUrl: "components/project-menu/project-menu.html",
         link: link,
