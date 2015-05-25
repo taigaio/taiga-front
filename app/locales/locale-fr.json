@@ -33,33 +33,33 @@
         "NEW_BULK": "Nouvel ajout en bloc",
         "RELATED_TASKS": "Tâches associées",
         "LOGOUT": "Déconnexion",
-        "EXTERNAL_USER": "an external user",
+        "EXTERNAL_USER": "um usuário externo",
         "GENERIC_ERROR": "L'un de nos Ooompa Loompas dit {{error}}.",
         "IOCAINE_TEXT": "Vous vous sentez un peu submergé par une tâche ? Soyez certains d'en informer les autres en cliquant su Iocaine lors de la modification de la tâche. Il est possible de s'immuniser contre ce poison (fictif) en consommant de petites quantités en heures supplémentaires, tout comme il est possible de s'améliorer en acceptant parfois de nouveaux défis !",
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Cette valeur semble être invalide.",
-            "TYPE_EMAIL": "This value should be a valid email.",
-            "TYPE_URL": "This value should be a valid url.",
-            "TYPE_URLSTRICT": "This value should be a valid url.",
-            "TYPE_NUMBER": "This value should be a valid number.",
-            "TYPE_DIGITS": "This value should be digits.",
+            "TYPE_EMAIL": "O valor deveria ser um email válido.",
+            "TYPE_URL": "O valor deveria ser uma url válida.",
+            "TYPE_URLSTRICT": "O valor deveria ser uma url válida.",
+            "TYPE_NUMBER": "O valor deveria ser número válido.",
+            "TYPE_DIGITS": "O valor deveria conter digitos.",
             "TYPE_DATEISO": "Cette valeur n'est pas une date valide (AAAA-MM-JJ).",
             "TYPE_ALPHANUM": "Cette valeur doit être alphanumérique.",
-            "TYPE_PHONE": "This value should be a valid phone number.",
-            "NOTNULL": "This value should not be null.",
+            "TYPE_PHONE": "O valor deveria ser um número de telefone válido.",
+            "NOTNULL": "O valor não deveria ser nulo.",
             "NOT_BLANK": "Cette valeur ne doit pas être vide.",
             "REQUIRED": "Cette valeur est obligatoire.",
             "REGEXP": "Cette valeur semble être invalide.",
-            "MIN": "This value should be greater than or equal to %s.",
-            "MAX": "This value should be lower than or equal to %s.",
-            "RANGE": "This value should be between %s and %s.",
-            "MIN_LENGTH": "This value is too short. It should have %s characters or more.",
-            "MAX_LENGTH": "This value is too long. It should have %s characters or less.",
-            "RANGE_LENGTH": "This value length is invalid. It should be between %s and %s characters long.",
-            "MIN_CHECK": "You must select at least %s choices.",
-            "MAX_CHECK": "You must select %s choices or less.",
-            "RANGE_CHECK": "You must select between %s and %s choices.",
-            "EQUAL_TO": "This value should be the same."
+            "MIN": "O valor deveria ser maior ou igual a %s.",
+            "MAX": "O valor deveria ser menor ou igual a %s.",
+            "RANGE": "O valor deveria estar entre %s e %s.",
+            "MIN_LENGTH": "O valor é muito curto. O valor deveria conter %s caracteres ou mais.",
+            "MAX_LENGTH": "O valor é muito comprido. O valor deveria conter %s caracteres ou menos.",
+            "RANGE_LENGTH": "La taille de cette valeur est invalide, elle doit être comprise entre %s et %s caractères.",
+            "MIN_CHECK": "Vous devez sélectionner au moins %s options.",
+            "MAX_CHECK": "Vous devez sélectionner %s options ou moins.",
+            "RANGE_CHECK": "Vous devez sélectionner entre %s et %s options.",
+            "EQUAL_TO": "Cette valeur doit être identique."
         },
         "PICKERDATE": {
             "FORMAT": "DD MMM YYYY",
@@ -243,19 +243,19 @@
         "SECTION_NAME": "pièces jointes",
         "TITLE": "{{ fileName }} transmis le {{ date }}\n",
         "DESCRIPTION": "Saisissez une description courte",
-        "DEPRECATED": "(deprecated)",
+        "DEPRECATED": "(obsolète)",
         "DEPRECATED_FILE": "Obsolète?",
         "ADD": "Ajouter une pièce jointe. <%- maxFileSizeMsg %>",
         "MAX_FILE_SIZE": "[Taille max.: {{maxFileSize}}]",
         "SHOW_DEPRECATED": "+ montrer les pièces jointes obsolètes",
         "HIDE_DEPRECATED": "- cacher les pièces jointes obsolètes",
-        "COUNT_DEPRECATED": "({{ counter }} deprecated)",
+        "COUNT_DEPRECATED": "({{ counter }} obsolètes)",
         "MAX_UPLOAD_SIZE": "La taille maximum d'upload est {{maxFileSize}}",
         "DATE": "DD MMM YYYY [at] hh:mm",
-        "ERROR_UPLOAD_ATTACHMENT": "We have not been able to upload '{{fileName}}'. {{errorMessage}}",
+        "ERROR_UPLOAD_ATTACHMENT": "Nous n'avons pas été capable de charger '{{fileName}}'. {{errorMessage}}",
         "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "Supprimer la pièce jointe...",
         "MSG_LIGHTBOX_DELETE_ATTACHMENT": "la pièce jointe \"{{fileName}}\"",
-        "ERROR_DELETE_ATTACHMENT": "We have not been able to delete: {{errorMessage}}",
+        "ERROR_DELETE_ATTACHMENT": "Nous n'avons pas été capable de supprimer {{errorMessage}}.",
         "FIELDS": {
             "IS_DEPRECATED": "est obsolète"
         }
@@ -269,7 +269,7 @@
             "TITLE_ACTION_EDIT_VALUE": "Modifier",
             "TITLE_ACTION_DELETE_VALUE": "Supprimer"
         },
-        "HELP": "Avez-vous besoin d'aide? Consultez notre page de soutien!",
+        "HELP": "Avez-vous besoin d'aide? Consultez notre page de support!",
         "PROJECT_DEFAULT_VALUES": {
             "TITLE": "Valeurs par défaut",
             "SUBTITLE": "Définir les valeurs par défaut pour toutes les listes de sélection"
@@ -332,9 +332,9 @@
             "REGENERATE_SUBTITLE": "Vous êtes sur le point de changer l'url d'accès aux données CSV. L'url précédente sera désactivée. Etes-vous sûre ?"
         },
         "CSV": {
-            "SECTION_TITLE_US": "user stories reports",
+            "SECTION_TITLE_US": "Rapports des histoires utilisateur",
             "SECTION_TITLE_TASK": "Rapports des tâches",
-            "SECTION_TITLE_ISSUE": "issues reports",
+            "SECTION_TITLE_ISSUE": "Rapports des bugs",
             "DOWNLOAD": "Télécharger au format CSV",
             "URL_FIELD_PLACEHOLDER": "Merci de regénérer l'url de téléchargement au format CSV",
             "TITLE_REGENERATE_URL": "Regénérer l'URL du CSV",
@@ -369,7 +369,7 @@
         "PROJECT_VALUES_SEVERITIES": {
             "TITLE": "Sévérités des problèmes",
             "SUBTITLE": "Spécifiez les sévérités qu'auront vos problèmes",
-            "ACTION_ADD": "Add new severity"
+            "ACTION_ADD": "Ajouter un degré de sévérité"
         },
         "PROJECT_VALUES_STATUS": {
             "TITLE": "Statut",
@@ -382,7 +382,7 @@
             "TITLE": "Types",
             "SUBTITLE": "Spécifiez les priorités qu'auront vos bugs",
             "ISSUE_TITLE": "Types de problèmes",
-            "ACTION_ADD": "Add new type"
+            "ACTION_ADD": "Ajouter un nouveau type"
         },
         "ROLES": {
             "SECTION_NAME": "Rôles - {{projectName}}",
@@ -496,7 +496,7 @@
             "PLUGINS": "Plugins"
         },
         "SUBMENU_PROJECT_ATTRIBUTES": {
-            "TITLE": "Attributes"
+            "TITLE": "Attributs"
         },
         "SUBMENU_PROJECT_VALUES": {
             "STATUS": "Etats",
@@ -547,15 +547,15 @@
         },
         "IMPORT": {
             "TITLE": "Import du projet en cours",
-            "UPLOADING_FILE": "Uploading dump file",
+            "UPLOADING_FILE": "Chargement du fichier de dump",
             "DESCRIPTION": "Ce processus peut prendre du temps, veuillez garder cette fenêtre ouverte.",
             "ASYNC_IN_PROGRESS_TITLE": "Nos Oompas Loompas sont en train d'importer votre projet",
             "ASYNC_IN_PROGRESS_MESSAGE": "Ce processus pourrait durer plusieurs minutes <br/> Nous vous enverrons un emai quand ce sera prêt",
-            "UPLOAD_IN_PROGRESS_MESSAGE": "Uploaded {{uploadedSize}} of {{totalSize}}",
+            "UPLOAD_IN_PROGRESS_MESSAGE": "{{uploadedSize}} de {{totalSize}} uploadés",
             "ERROR": "Nos Oompas Loompas ont rencontré des problèmes en important votre dump de données. Merci de réessayer.",
             "ERROR_TOO_MANY_REQUEST": "Nous sommes désolés, nos oompa loompas sont très occupés en ce moment. Veuillez réessayer dans quelques minutes.",
             "ERROR_MESSAGE": "Nos oompa loompas ont des problèmes pour importer le dump de vos données : {{error_message}}",
-            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is too heavy for our Oompa Loompas, try it with a smaller than ({{maxFileSize}})",
+            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) est un peu trop lourd pour nos Oompa Loompas, réessayez avec un fichier inférieur à ({{maxFileSize}})",
             "SYNC_SUCCESS": "Votre projet a été importé avec succès"
         }
     },
@@ -624,7 +624,7 @@
         }
     },
     "US": {
-        "SECTION_NAME": "User story details",
+        "SECTION_NAME": "Détails de l'histoire utilisateur",
         "LINK_TASKBOARD": "Tableau des tâches",
         "TITLE_LINK_TASKBOARD": "Aller au tableau des tâches",
         "TOTAL_POINTS": "total",
@@ -670,20 +670,20 @@
         "DELETED_ATTACHMENT": "Pièce-jointe supprimée",
         "UPDATED_ATTACHMENT": "Pièce jointe {{filename}} modifiée",
         "DELETED_CUSTOM_ATTRIBUTE": "Attribut personnalisé supprimé",
-        "SIZE_CHANGE": "Made {size, plural, one{one change} other{# changes}}",
+        "SIZE_CHANGE": "A fait {size, plural, one{une modification} other{# modifications}}",
         "VALUES": {
             "YES": "oui",
             "NO": "no",
-            "EMPTY": "empty",
+            "EMPTY": "vide",
             "UNASSIGNED": "non affecté"
         },
         "FIELDS": {
             "SUBJECT": "sujet",
             "NAME": "nom",
             "DESCRIPTION": "description",
-            "CONTENT": "content",
+            "CONTENT": "conteúdo",
             "STATUS": "état",
-            "IS_CLOSED": "is closed",
+            "IS_CLOSED": "está fechado",
             "FINISH_DATE": "date de fin",
             "TYPE": "type",
             "PRIORITY": "priorité",
@@ -702,12 +702,12 @@
             "TAGS": "étiquettes",
             "ATTACHMENTS": "pièces jointes",
             "IS_DEPRECATED": "est obsolète",
-            "ORDER": "order",
-            "BACKLOG_ORDER": "backlog order",
-            "SPRINT_ORDER": "sprint order",
-            "KANBAN_ORDER": "kanban order",
+            "ORDER": "Ordre",
+            "BACKLOG_ORDER": "Ordre du backlog",
+            "SPRINT_ORDER": "Ordre du sprint",
+            "KANBAN_ORDER": "Ordre du Kanban",
             "TASKBOARD_ORDER": "trier le tableau des tâches",
-            "US_ORDER": "us order"
+            "US_ORDER": "Ordre des histoires utilisateur"
         }
     },
     "BACKLOG": {
@@ -737,7 +737,7 @@
             "INCREMENT_CLIENT": "Le nombre de points ajoutés par les exigences du client pour le sprint {{xval}} est {{yval}}"
         },
         "TAGS": {
-            "TOGGLE": "Toggle tags visibility",
+            "TOGGLE": "Afficher/Cacher les tags",
             "SHOW": "Montrer les étiquettes",
             "HIDE": "Cacher les étiquettes"
         },
@@ -760,10 +760,10 @@
             "POINTS_PER_SPRINT": "points /<br />sprint"
         },
         "FILTERS": {
-            "TOGGLE": "Toggle filters visibility",
+            "TOGGLE": "Afficher/Cacher les filtres",
             "TITLE": "Filtres",
             "REMOVE": "Supprimer les filtres",
-            "HIDE": "Hide Filters",
+            "HIDE": "Esconder Filtros",
             "SHOW": "Afficher les filtres",
             "FILTER_CATEGORY_STATUS": "Etat",
             "FILTER_CATEGORY_TAGS": "Labels"
@@ -849,7 +849,7 @@
         "SUBTITLE": "Nous sommes tristes de vous voir quitter la taiga, et nous espérons que vous avez apprécié votre séjour. :)",
         "PLACEHOLDER_INPUT_TOKEN": "Annuler le jeton du compte",
         "ACTION_LEAVING": "Oui, je m'en vais!",
-        "SUCCESS": "Nos Oompa Loompas ont supprimés votre compte"
+        "SUCCESS": "Nos Oompa Loompas ont supprimé votre compte"
     },
     "CHANGE_EMAIL_FORM": {
         "TITLE": "Modifier votre email",
@@ -876,7 +876,7 @@
         "ACTION_RESET_PASSWORD": "Réinitialiser le mot de passe",
         "LINK_CANCEL": "Nan, ramenez-moi en arrière. Je crois que je m'en rappelle.",
         "SUCCESS": "<strong>Consultez votre messagerie!</strong><br />Nous venons d'envoyer un mail avec les instructions pour créer un nouveau mot de passe",
-        "ERROR": "Selon nos Oompa Loompas, vous n'êtes pas encore enregistré."
+        "ERROR": "D'après nos Oompa Loompas, vous n'êtes pas encore enregistré."
     },
     "LOGIN_COMMON": {
         "HEADER": "J'ai déjà un login Taiga",
@@ -888,17 +888,17 @@
         "PLACEHOLDER_AUTH_PASSWORD": "Mot de passe (sensible à la casse)"
     },
     "LOGIN_FORM": {
-        "ERROR_AUTH_INCORRECT": "Selon nos Oompa Loompas, votre nom d'utilisateur / email ou votre mot de passe sont incorrects.",
-        "ERROR_GENERIC": "Selon nos Oompa Loompas, une erreur est survenue.",
+        "ERROR_AUTH_INCORRECT": "D'après nos Oompa Loompas, votre nom d'utilisateur / email ou votre mot de passe sont incorrects.",
+        "ERROR_GENERIC": "D'après nos Oompa Loompas, une erreur est survenue.",
         "SUCCESS": "Nos Oompa Loompas sont heureux, bienvenue sur Taiga."
     },
     "INVITATION_LOGIN_FORM": {
         "NOT_FOUND": "<strong>Ooops, nous avons un problème</strong><br />Nos Oompa Loompas trouvent pas votre invitation.",
         "SUCCESS": "Vous avez rejoint ce projet, Bienvenue sur {{project_name}}",
-        "ERROR": "Selon nos Oompa Loompas, vous n'êtes pas encore enregistrés ou vous avez saisi un mot de passe incorrecte."
+        "ERROR": "D'après nos Oompa Loompas, vous n'êtes pas encore enregistrés ou vous avez saisi un mot de passe incorrect."
     },
     "REGISTER_FORM": {
-        "TITLE": "Register a new Taiga account (free)",
+        "TITLE": "Créer un compte Taiga (gratuit)",
         "PLACEHOLDER_NAME": "Choisissez un nom d'utilisateur (sensible à la casse)",
         "PLACEHOLDER_FULL_NAME": "Choisissez votre nom complet",
         "PLACEHOLDER_EMAIL": "Votre email",
@@ -909,7 +909,7 @@
     },
     "ISSUES": {
         "LIST_SECTION_NAME": "Problèmes",
-        "SECTION_NAME": "Issue details",
+        "SECTION_NAME": "Detalhes do problema",
         "ACTION_NEW_ISSUE": "+ NOUVEAU PROBLÈME",
         "ACTION_PROMOTE_TO_US": "Transformer en User Story",
         "PLACEHOLDER_FILTER_NAME": "Écrivez le nom du filtre et appuyez sur \"Entrée\"",

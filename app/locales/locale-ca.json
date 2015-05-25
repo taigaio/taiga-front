@@ -48,7 +48,7 @@
             "TYPE_PHONE": "This value should be a valid phone number.",
             "NOTNULL": "This value should not be null.",
             "NOT_BLANK": "This value should not be blank.",
-            "REQUIRED": "This value is required.",
+            "REQUIRED": "Aquest valor és necessari.",
             "REGEXP": "Aquest valor pareix invàlid.",
             "MIN": "This value should be greater than or equal to %s.",
             "MAX": "This value should be lower than or equal to %s.",
@@ -59,7 +59,7 @@
             "MIN_CHECK": "You must select at least %s choices.",
             "MAX_CHECK": "You must select %s choices or less.",
             "RANGE_CHECK": "You must select between %s and %s choices.",
-            "EQUAL_TO": "This value should be the same."
+            "EQUAL_TO": "Aquest valor hauria de ser el mateix."
         },
         "PICKERDATE": {
             "FORMAT": "DD MMM YYYY",
@@ -102,8 +102,8 @@
         },
         "TAGS": {
             "PLACEHOLDER": "Afegir tag",
-            "DELETE": "Esborrar tag",
-            "ADD": "Afegit tag"
+            "DELETE": "Elimina l'etiqueta",
+            "ADD": "Afegeix l'etiqueta"
         },
         "DESCRIPTION": {
             "EMPTY": "Els espai buit es molt aburrit. Sé descriptiu!",
@@ -118,7 +118,7 @@
             "SLUG": "Slug",
             "COLOR": "Color",
             "IS_CLOSED": "Està tancat?",
-            "STATUS": "Estatus",
+            "STATUS": "Estats",
             "TYPE": "Tipus",
             "SEVERITY": "Severitat",
             "PRIORITY": "Prioritat",
@@ -158,10 +158,10 @@
         "FILTERS": {
             "TITLE": "filtres",
             "INPUT_PLACEHOLDER": "Descripció o referència",
-            "TITLE_ACTION_FILTER_BUTTON": "buscar",
+            "TITLE_ACTION_FILTER_BUTTON": "cerca",
             "BREADCRUMB_TITLE": "tornar a categories",
             "BREADCRUMB_FILTERS": "Filtres",
-            "BREADCRUMB_STATUS": "estatus"
+            "BREADCRUMB_STATUS": "estats"
         },
         "WYSIWYG": {
             "H1_BUTTON": "Capçcalera de primer nivel",
@@ -243,7 +243,7 @@
         "SECTION_NAME": "Adjunts",
         "TITLE": "{{ fileName }} pujat el {{ date }}",
         "DESCRIPTION": "Escriu una descripció curta",
-        "DEPRECATED": "(deprecated)",
+        "DEPRECATED": "(obsolet)",
         "DEPRECATED_FILE": "Obsolet?",
         "ADD": "Afegir nou adjunt. <%- maxFileSizeMsg %>",
         "MAX_FILE_SIZE": "[Max. grandària:  {{maxFileSize}}]",
@@ -317,7 +317,7 @@
             "PROJECT_SLUG": "Slug de projecte",
             "NUMBER_SPRINTS": "Nombre de sprints",
             "NUMBER_US_POINTS": "Nombre de punts de US",
-            "TAGS": "Tags",
+            "TAGS": "Etiquetes",
             "DESCRIPTION": "Descripció",
             "PUBLIC_PROJECT": "Projecte públic",
             "PRIVATE_PROJECT": "Projecte privat",
@@ -372,11 +372,11 @@
             "ACTION_ADD": "Add new severity"
         },
         "PROJECT_VALUES_STATUS": {
-            "TITLE": "Estatus",
-            "SUBTITLE": "Especifica els estatus del les teues históries d'usuari, tasques e incidències",
-            "US_TITLE": "Estatus d'US",
-            "TASK_TITLE": "Estatus de tasques",
-            "ISSUE_TITLE": "Estatus d'incidències"
+            "TITLE": "Estat",
+            "SUBTITLE": "Especifica els estats del les teues históries d'usuari, tasques e incidències",
+            "US_TITLE": "Estats d'US",
+            "TASK_TITLE": "Estats de tasques",
+            "ISSUE_TITLE": "Estats d'incidències"
         },
         "PROJECT_VALUES_TYPES": {
             "TITLE": "Tipus",
@@ -467,24 +467,24 @@
         },
         "DEFAULT_VALUES": {
             "LABEL_POINTS": "Valor per defecte per a selector de punts",
-            "LABEL_US": "Valor per defecte per a selector d'estatus d'US",
-            "LABEL_TASK_STATUS": "Valor per defecte per a selector d'estatus de tasques",
+            "LABEL_US": "Valor per defecte per a selector d'estats d'US",
+            "LABEL_TASK_STATUS": "Valor per defecte per a selector d'estats de tasques",
             "LABEL_PRIORITY": "Valor per defecte per a selector de prioritat",
             "LABEL_SEVERITY": "Valor per defecte per a selector de severitat",
             "LABEL_ISSUE_TYPE": "Valor per defecte per a selector de tipus",
-            "LABEL_ISSUE_STATUS": "Valor per defecte per a selector de estatus"
+            "LABEL_ISSUE_STATUS": "Valor per defecte per a selector de estats"
         },
         "STATUS": {
-            "PLACEHOLDER_WRITE_STATUS_NAME": "Escriu un nom per a nou estatus"
+            "PLACEHOLDER_WRITE_STATUS_NAME": "Escriu un nom per a nou estat"
         },
         "TYPES": {
             "PLACEHOLDER_WRITE_NAME": "Escriu un nom per a nou element"
         },
         "US_STATUS": {
-            "ACTION_ADD_STATUS": "Afegir estatus nou",
+            "ACTION_ADD_STATUS": "Afegeix un estat nou",
             "IS_ARCHIVED_COLUMN": "Es arxivat?",
             "WIP_LIMIT_COLUMN": "Limit WIP",
-            "PLACEHOLDER_WRITE_NAME": "Escriu un nom per a nou estatus"
+            "PLACEHOLDER_WRITE_NAME": "Escriviu un nom per al nou estat"
         },
         "MENU": {
             "TITLE": "Admin",
@@ -496,10 +496,10 @@
             "PLUGINS": "Plugins"
         },
         "SUBMENU_PROJECT_ATTRIBUTES": {
-            "TITLE": "Attributes"
+            "TITLE": "Atributs"
         },
         "SUBMENU_PROJECT_VALUES": {
-            "STATUS": "Estatus",
+            "STATUS": "Estats",
             "POINTS": "Punts",
             "PRIORITIES": "Prioritats",
             "SEVERITIES": "severitats",
@@ -528,7 +528,7 @@
             "CLOSED": "punts<br/> tancats"
         },
         "SECTION": {
-            "SEARCH": "Buscar",
+            "SEARCH": "Cerca",
             "BACKLOG": "Backlog",
             "KANBAN": "Kanban",
             "ISSUES": "Incidències",
@@ -539,7 +539,7 @@
         },
         "NAVIGATION": {
             "SECTION_TITLE": "Els teus projectes",
-            "PLACEHOLDER_SEARCH": "Buscar en...",
+            "PLACEHOLDER_SEARCH": "Cerca en...",
             "ACTION_CREATE_PROJECT": "Crear projecte",
             "TITLE_ACTION_IMPORT": "Importar projecte",
             "TITLE_PRVIOUS_PROJECT": "Mostra projectes previs",
@@ -564,7 +564,7 @@
             "SECTION_NAME": "Esborrar compte de Taiga",
             "CONFIRM": "Segur que vols borrar el teu compte de Taiga? ",
             "SUBTITLE": "Te trobarem a faltar! :-(",
-            "NEWSLETTER_LABEL_TEXT": "I don't wanna receive your newsletter anymore"
+            "NEWSLETTER_LABEL_TEXT": "No vull rebre més el vostre butlletí de notícies"
         },
         "DELETE_PROJECT": {
             "TITLE": "Esborrar projecte",
@@ -574,7 +574,7 @@
         },
         "ASSIGNED_TO": {
             "SELECT": "Selecciona assignació",
-            "SEARCH": "Buscar usuaris"
+            "SEARCH": "Cerca usuaris"
         },
         "ADD_MEMBER": {
             "TITLE": "Nou membre",
@@ -589,7 +589,7 @@
             "ACTION_SEND": "Enviar sugerències"
         },
         "SEARCH": {
-            "TITLE": "Buscar",
+            "TITLE": "Cerca",
             "PLACEHOLDER_SEARCH": "Què estàs buscant?"
         },
         "ADD_EDIT_SPRINT": {
@@ -604,7 +604,7 @@
         "CREATE_EDIT_TASK": {
             "TITLE": "Nova tasca",
             "PLACEHOLDER_SUBJECT": "Descripció de tasca",
-            "PLACEHOLDER_STATUS": "Estatus de tasca",
+            "PLACEHOLDER_STATUS": "Estat de la tasca",
             "OPTION_UNASSIGNED": "Sense assignar",
             "PLACEHOLDER_SHORT_DESCRIPTION": "Escriu una descripció curta",
             "ACTION_EDIT": "Editar tasca"
@@ -682,7 +682,7 @@
             "NAME": "nom",
             "DESCRIPTION": "descripció",
             "CONTENT": "Contingut",
-            "STATUS": "Estatus",
+            "STATUS": "Estats",
             "IS_CLOSED": "tancat",
             "FINISH_DATE": "Data de finalització",
             "TYPE": "tipus",
@@ -699,7 +699,7 @@
             "CLIENT_REQUIREMENT": "requeriment de client",
             "TEAM_REQUIREMENT": "requeriment d'equip",
             "IS_IOCAINE": "Es iocaina",
-            "TAGS": "tags",
+            "TAGS": "Etiquetes",
             "ATTACHMENTS": "adjunts",
             "IS_DEPRECATED": "és obsolet",
             "ORDER": "ordre",
@@ -714,7 +714,7 @@
         "SECTION_NAME": "Backlog",
         "MOVE_US_TO_CURRENT_SPRINT": "Envia al Sprint",
         "SHOW_FILTERS": "Mostra filtres",
-        "SHOW_TAGS": "Mostrar tags",
+        "SHOW_TAGS": "Mostra etiquetes",
         "EMPTY": "El teu backlog està buit!",
         "CREATE_NEW_US": "Crea una nova US",
         "CREATE_NEW_US_EMPTY_HELP": "Potser vols crear una nova història d'usuari",
@@ -725,7 +725,7 @@
         "GO_TO_TASKBOARD": "Anar al panell de {{::name}}",
         "EDIT_SPRINT": "Editar sprint",
         "TOTAL_POINTS": "total",
-        "STATUS_NAME": "Nom d'estatus",
+        "STATUS_NAME": "Nom d'estats",
         "SORTABLE_FILTER_ERROR": "No pots portar al backlog si els filtres estàn oberts",
         "DOOMLINE": "Extensió de projecte [Doomline]",
         "CHART": {
@@ -738,8 +738,8 @@
         },
         "TAGS": {
             "TOGGLE": "Toggle tags visibility",
-            "SHOW": "Mostrar tags",
-            "HIDE": "Amaga tags"
+            "SHOW": "Mostra etiquetes",
+            "HIDE": "Amaga etiquetes"
         },
         "TABLE": {
             "COLUMN_US": "Històries d'usuari",
@@ -765,8 +765,8 @@
             "REMOVE": "Esborra filtres",
             "HIDE": "Hide Filters",
             "SHOW": "Mostra filtres",
-            "FILTER_CATEGORY_STATUS": "Estatus",
-            "FILTER_CATEGORY_TAGS": "Tags"
+            "FILTER_CATEGORY_STATUS": "Estats",
+            "FILTER_CATEGORY_TAGS": "Etiquetes"
         },
         "SPRINTS": {
             "TITLE": "SPRINTS",
@@ -813,11 +813,11 @@
         }
     },
     "TASK": {
-        "SECTION_NAME": "Task details",
+        "SECTION_NAME": "Detalls de la tasca",
         "LINK_TASKBOARD": "Panell de tasques",
         "TITLE_LINK_TASKBOARD": "Anar a panell de tasques",
         "PLACEHOLDER_SUBJECT": "Afegix la descripció de la tasca",
-        "TITLE_SELECT_STATUS": "Nom d'estatus",
+        "TITLE_SELECT_STATUS": "Nom de l'estat",
         "OWNER_US": "Aquesta tasca pertany a",
         "TITLE_LINK_GO_OWNER": "Anar a història d'usuari",
         "ORIGIN_US": "Aquesta tasca ha sigut creada desde",
@@ -871,8 +871,8 @@
     },
     "FORGOT_PASSWORD_FORM": {
         "TITLE": "Oops, has oblidat la teua contrasenya?",
-        "SUBTITLE": "Escriu el teu mot d'usuari o correo per a conseguir uno nou",
-        "PLACEHOLDER_FIELD": "Mot d'usuari i correu",
+        "SUBTITLE": "Escriviu el vostre nom d'usuari o correu electrònic per a conseguir-ne un de nou",
+        "PLACEHOLDER_FIELD": "Nom d'usuari o correu electrònic",
         "ACTION_RESET_PASSWORD": "Resetejar contrasenya",
         "LINK_CANCEL": "No, portam enrere, crec que ho recorde.",
         "SUCCESS": "<strong>Mira el teu correu!</strong><br /> Hem enviat un correu amb les instrucciones per a setejar una nova contrasenya.",
@@ -880,7 +880,7 @@
     },
     "LOGIN_COMMON": {
         "HEADER": "Ja tinc un conter de Taiga",
-        "PLACEHOLDER_AUTH_NAME": "Mot d'usuari i correu (sensible a majúscules i minúscules)",
+        "PLACEHOLDER_AUTH_NAME": "Nom d'usuari i correu electrònic (sensible a majúscules i minúscules)",
         "LINK_FORGOT_PASSWORD": "L'has oblidat?",
         "TITLE_LINK_FORGOT_PASSWORD": "Has oblidat la teua contrasenya?",
         "ACTION_ENTER": "Entrar",
@@ -888,7 +888,7 @@
         "PLACEHOLDER_AUTH_PASSWORD": "Contrasenya (sensible a majúscules i minúscules)"
     },
     "LOGIN_FORM": {
-        "ERROR_AUTH_INCORRECT": "Segons els Oompa Loompas el teu mot d'usuari/correu o contrasenya sòn incorrectes.",
+        "ERROR_AUTH_INCORRECT": "Segons els Oompa Loompas, el vostre nom d'usuari/correu electrònic o contrasenya són incorrectes.",
         "ERROR_GENERIC": "Segons els Oompa Loompas ha hagut un error.",
         "SUCCESS": "Our Oompa Loompas están contents, benvinguts a Taiga."
     },
@@ -899,7 +899,7 @@
     },
     "REGISTER_FORM": {
         "TITLE": "Register a new Taiga account (free)",
-        "PLACEHOLDER_NAME": "Tria un mot d'usuari (sensible a majúscules i minúscules)",
+        "PLACEHOLDER_NAME": "Trieu un nom d'usuari (sensible a majúscules i minúscules)",
         "PLACEHOLDER_FULL_NAME": "Escriu el teu nom complet",
         "PLACEHOLDER_EMAIL": "El teu correu",
         "PLACEHOLDER_PASSWORD": "Tria una contrasenya(sensible a majúscules i minúscules)",
@@ -934,10 +934,10 @@
             "TITLE_BREADCRUMB": "Filtres",
             "CATEGORIES": {
                 "TYPE": "Tipus",
-                "STATUS": "Estatus",
+                "STATUS": "Estats",
                 "SEVERITY": "Severitat",
                 "PRIORITIES": "Prioritats",
-                "TAGS": "Tags",
+                "TAGS": "Etiquetes",
                 "ASSIGNED_TO": "Assignat a",
                 "CREATED_BY": "Creat per",
                 "CUSTOM_FILTERS": "Filtres personalitzats"
@@ -953,11 +953,11 @@
                 "SEVERITY": "Severitat",
                 "PRIORITY": "Prioritat",
                 "SUBJECT": "Descripció",
-                "STATUS": "Estatus",
+                "STATUS": "Estats",
                 "CREATED": "Creat",
                 "ASSIGNED_TO": "Assignat a"
             },
-            "TITLE_ACTION_CHANGE_STATUS": "Canviar estatus",
+            "TITLE_ACTION_CHANGE_STATUS": "Canvia l'estat",
             "TITLE_ACTION_ASSIGNED_TO": "Assignat a",
             "EMPTY": {
                 "TITLE": "No hi ha incidències a reportar :-)",
@@ -976,7 +976,7 @@
         "TITLE_ACTION_ADD_BULK": "Afegir en grup",
         "ACTION_SHOW_ARCHIVED": "Mostrar arxivats",
         "ACTION_HIDE_ARCHIVED": "Amagar arxivats",
-        "HIDDEN_USER_STORIES": "Les històries d'usuar en aques estatus estàn amagades",
+        "HIDDEN_USER_STORIES": "Les històries d'usuari en aquest estats estan amagades",
         "ARCHIVED": "Has arxivat",
         "UNDO_ARCHIVED": "Arrastra de nou  per desfer"
     },
@@ -985,8 +985,8 @@
         "FILTER_ISSUES": "Incidències",
         "FILTER_TASKS": "Tasca",
         "FILTER_WIKI": "Pàgines de Wiki",
-        "PLACEHOLDER_SEARCH": "Buscar en...",
-        "TITLE_ACTION_SEARCH": "buscar",
+        "PLACEHOLDER_SEARCH": "Cerca en...",
+        "TITLE_ACTION_SEARCH": "cerca",
         "EMPTY_TITLE": "Pareix que no hem trobat res amb este criteri de recerca",
         "EMPTY_DESCRIPTION": "Prova amb una de les pestanyes o busca de nou"
     },
@@ -1012,7 +1012,7 @@
         "ACTION_LEAVE_PROJECT": "Abandonar aquest projecte"
     },
     "CHANGE_PASSWORD": {
-        "SECTION_NAME": "Canviar contrasenya",
+        "SECTION_NAME": "Canvi de contrasenya",
         "FIELD_CURRENT_PASSWORD": "Contrasenya actual",
         "PLACEHOLDER_CURRENT_PASSWORD": "La teua contrasenya actua (buit si no tens contrasenya encara)",
         "FIELD_NEW_PASSWORD": "Nova contrasenya",
@@ -1026,7 +1026,7 @@
         "MENU": {
             "SECTION_TITLE": "Configuració d'usuari",
             "USER_PROFILE": "Perfil d'usuari",
-            "CHANGE_PASSWORD": "Canviar contrasenya",
+            "CHANGE_PASSWORD": "Canvi de contrasenya",
             "EMAIL_NOTIFICATIONS": "Notificacions de correu"
         },
         "NOTIFICATIONS": {
@@ -1041,7 +1041,7 @@
         },
         "POPOVER": {
             "USER_PROFILE": "Perfil d'usuari",
-            "CHANGE_PASSWORD": "Canviar contrasenya",
+            "CHANGE_PASSWORD": "Canvi de contrasenya",
             "NOTIFICATIONS": "Notificacions",
             "FEEDBACK": "Sugerències",
             "TITLE_AVATAR": "Preferències d'usuari"
@@ -1055,14 +1055,14 @@
         "CHANGE_EMAIL_SUCCESS": "<strong>Mira el teu correu!</strong><br />Hem enviat un correu al teu conter<br /> amb les instrucciones per a escriure una nova adreça de correu",
         "CHANGE_PHOTO": "Canviar foto",
         "FIELD": {
-            "USERNAME": "Mot d'usuari",
-            "EMAIL": "Email",
+            "USERNAME": "Nom d'usuari",
+            "EMAIL": "Correu electrònic",
             "FULL_NAME": "Nom complet",
             "PLACEHOLDER_FULL_NAME": "Esciur el teu nom complet (ex. Íñigo Montoya)",
             "BIO": "Bio",
             "PLACEHOLDER_BIO": "Contans algo sobre tu mateix",
-            "LANGUAGE": "Llengua",
-            "LANGUAGE_DEFAULT": "-- utilizat llengua per defecte --"
+            "LANGUAGE": "Idioma",
+            "LANGUAGE_DEFAULT": "-- utiliza l'idioma per defecte --"
         }
     },
     "WIZARD": {
