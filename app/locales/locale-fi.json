@@ -4,8 +4,8 @@
         "NO": "Ei",
         "LOADING": "Ladataan...",
         "LOADING_PROJECT": "Ladataan projektia...",
-        "DATE": "DD MMM YYYY",
-        "DATETIME": "DD MMM YYYY HH:mm",
+        "DATE": "DD.MM.YY",
+        "DATETIME": "DD.MM.YY - HH:mm",
         "SAVE": "Tallenna",
         "CANCEL": "Peru",
         "ACCEPT": "Hyväksy",
@@ -35,69 +35,69 @@
         "LOGOUT": "Kirjaudu ulos",
         "EXTERNAL_USER": "ulkoinen käyttäjä",
         "GENERIC_ERROR": "Oompa Loompas havaitsivat virheen {{error}}.",
-        "IOCAINE_TEXT": "Jos tehtävä ahdistaa, merkitse se hidasteeksi.",
+        "IOCAINE_TEXT": "Jos tehtävä ahdistaa, merkitse se myrkylliseksi. Ajan mittaa pieninä annoksina saattaa kastokykysi myrkkyä vastaan parantua.",
         "FORM_ERRORS": {
-            "DEFAULT_MESSAGE": "This value seems to be invalid.",
-            "TYPE_EMAIL": "This value should be a valid email.",
-            "TYPE_URL": "This value should be a valid url.",
-            "TYPE_URLSTRICT": "This value should be a valid url.",
-            "TYPE_NUMBER": "This value should be a valid number.",
-            "TYPE_DIGITS": "This value should be digits.",
-            "TYPE_DATEISO": "This value should be a valid date (YYYY-MM-DD).",
-            "TYPE_ALPHANUM": "This value should be alphanumeric.",
-            "TYPE_PHONE": "This value should be a valid phone number.",
-            "NOTNULL": "This value should not be null.",
-            "NOT_BLANK": "This value should not be blank.",
-            "REQUIRED": "This value is required.",
-            "REGEXP": "This value seems to be invalid.",
-            "MIN": "This value should be greater than or equal to %s.",
-            "MAX": "This value should be lower than or equal to %s.",
-            "RANGE": "This value should be between %s and %s.",
-            "MIN_LENGTH": "This value is too short. It should have %s characters or more.",
-            "MAX_LENGTH": "This value is too long. It should have %s characters or less.",
-            "RANGE_LENGTH": "This value length is invalid. It should be between %s and %s characters long.",
-            "MIN_CHECK": "You must select at least %s choices.",
-            "MAX_CHECK": "You must select %s choices or less.",
-            "RANGE_CHECK": "You must select between %s and %s choices.",
-            "EQUAL_TO": "This value should be the same."
+            "DEFAULT_MESSAGE": "Tämä arvo vaikuttaa virheelliseltä.",
+            "TYPE_EMAIL": "Tämän pitäisi olla toimiva sähköpostiosoite.",
+            "TYPE_URL": "Tämän pitäisi olla toimiva web-osoite.",
+            "TYPE_URLSTRICT": "Tämän pitäisi olla toimiva web-osoite.",
+            "TYPE_NUMBER": "Arvon pitäisi olla numeerinen.",
+            "TYPE_DIGITS": "Arvon pitäisi olla numeroita.",
+            "TYPE_DATEISO": "Arvon pitäisi olla muotoa (vvvv-kk-pp).",
+            "TYPE_ALPHANUM": "Arvon pitäisi olla alfanumeerinen.",
+            "TYPE_PHONE": "Arvon pitäisi olla toimiva puhelinnumero.",
+            "NOTNULL": "Arvo ei saa olla tyhjä.",
+            "NOT_BLANK": "Arvon ei pitäisi olla tyhjä.",
+            "REQUIRED": "Arvo vaaditaan.",
+            "REGEXP": "Tämä arvo vaikuttaa virheelliseltä.",
+            "MIN": "Arvon pitää olla vähintään %s.",
+            "MAX": "Arvon pitää olla korkeintaan %s.",
+            "RANGE": "Arvon pitää olla välissä %s - %s.",
+            "MIN_LENGTH": "Arvo on liian lyhyt. Tarvitaan vähintään %s merkkiä.",
+            "MAX_LENGTH": "Arvo on liian pitkä. Pituus saa olla korkeintaan %s merkkiä.",
+            "RANGE_LENGTH": "Arvo on väärän mittainen. Sen pituus pitäisi olla väliltä %s - %s.",
+            "MIN_CHECK": "Sinun täytyy valita vähintään %s valintaa.",
+            "MAX_CHECK": "Valitse korkeintaan %s vaihtoehtoa.",
+            "RANGE_CHECK": "Valitse %s - %s vaihteohtoa.",
+            "EQUAL_TO": "Arvojen pitäisi olla samat."
         },
         "PICKERDATE": {
-            "FORMAT": "DD MMM YYYY",
-            "IS_RTL": "false",
+            "FORMAT": "DD.MM.YY",
+            "IS_RTL": "epätosi",
             "FIRST_DAY_OF_WEEK": "1",
-            "PREV_MONTH": "Previous Month",
-            "NEXT_MONTH": "Next Month",
+            "PREV_MONTH": "Edellinen kuukausi",
+            "NEXT_MONTH": "Seuraava kuukausi",
             "MONTHS": {
-                "JAN": "January",
-                "FEB": "February",
-                "MAR": "March",
-                "APR": "April",
-                "MAY": "May",
-                "JUN": "June",
-                "JUL": "July",
-                "AUG": "August",
-                "SEP": "September",
-                "OCT": "October",
-                "NOV": "November",
-                "DEC": "December"
+                "JAN": "Tammikuu",
+                "FEB": "Helmikuu",
+                "MAR": "Maaliskuu",
+                "APR": "Huhtikuu",
+                "MAY": "Toukokuu",
+                "JUN": "Kesäkuu",
+                "JUL": "Heinäkuu",
+                "AUG": "Elokuu",
+                "SEP": "Syyskuu",
+                "OCT": "Lokakuu",
+                "NOV": "Marraskuu",
+                "DEC": "Joulukuu"
             },
             "WEEK_DAYS": {
-                "SUN": "Sunday",
-                "MON": "Monday",
-                "TUE": "Tuesday",
-                "WED": "Wednesday",
-                "THU": "Thursday",
-                "FRI": "Friday",
-                "SAT": "Saturday"
+                "SUN": "Sunnuntai",
+                "MON": "Maanantai",
+                "TUE": "Tiistai",
+                "WED": "Keskiviikko",
+                "THU": "Torstai",
+                "FRI": "Perjantai",
+                "SAT": "Lauantai"
             },
             "WEEK_DAYS_SHORT": {
                 "SUN": "Sun",
-                "MON": "Mon",
-                "TUE": "Tue",
-                "WED": "Wed",
-                "THU": "Thu",
-                "FRI": "Fri",
-                "SAT": "Sat"
+                "MON": "Maa",
+                "TUE": "Tii",
+                "WED": "Kes",
+                "THU": "Tor",
+                "FRI": "Per",
+                "SAT": "Lau"
             }
         },
         "TAGS": {
@@ -115,9 +115,9 @@
             "URL": "URL",
             "DESCRIPTION": "Kuvaus",
             "VALUE": "Arvo",
-            "SLUG": "Hitaus",
+            "SLUG": "Hukka",
             "COLOR": "Väri",
-            "IS_CLOSED": "Onko suljettu?",
+            "IS_CLOSED": "Suljettu",
             "STATUS": "Tila",
             "TYPE": "Tyyppi",
             "SEVERITY": "Vakavuus",
@@ -243,15 +243,15 @@
         "SECTION_NAME": "liitteet",
         "TITLE": "{{ fileName }} ladattu {{ date }}\n",
         "DESCRIPTION": "Kirjoita lyhyt kuvaus",
-        "DEPRECATED": "(deprecated)",
+        "DEPRECATED": "(poistettu)",
         "DEPRECATED_FILE": "Vanhentunut?",
         "ADD": "Lisää liite. <%- maxFileSizeMsg %>",
         "MAX_FILE_SIZE": "[Maks. koko: {{maxFileSize}}]",
         "SHOW_DEPRECATED": "+ näytä vanhentuneet liitteet",
         "HIDE_DEPRECATED": "- piilota vanhentuneet liitteet",
-        "COUNT_DEPRECATED": "({{ counter }} deprecated)",
+        "COUNT_DEPRECATED": "({{ counter }} vanhentunutta)",
         "MAX_UPLOAD_SIZE": "Maksimi tiedoston koko {{maxFileSize}}",
-        "DATE": "DD MMM YYYY  - hh:mm",
+        "DATE": "DD.MM.YY  - hh:mm",
         "ERROR_UPLOAD_ATTACHMENT": "Emme onnistuneet lataamaan tiedostoa '{{fileName}}'. {{errorMessage}}",
         "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "Poista liite...",
         "MSG_LIGHTBOX_DELETE_ATTACHMENT": "liite '{{fileName}}'",
@@ -306,7 +306,7 @@
             "WIKI": "Wiki",
             "WIKI_DESCRIPTION": "Lisää, muokkaa tai poista sisältöä yhteistyössä muiden kanssa. Tämä on oikea paikka projektin dokumentaatiolle.",
             "MEETUP": "Tapaa",
-            "MEETUP_DESCRIPTION": "Valitse videoconferenssisysteemi. Jopa kehittäjät tarvitsevat katsekontaktia.",
+            "MEETUP_DESCRIPTION": "Valitse videoneuvottelu- järjestelmä. Jopa kehittäjät tarvitsevat katsekontaktia.",
             "SELECT_VIDEOCONFERENCE": "Valitse videoconferenssi-järjestelmä",
             "SALT_CHAT_ROOM": "Voit halutessasi lisätä suolaan chat-huoneen nimeen"
         },
@@ -332,9 +332,9 @@
             "REGENERATE_SUBTITLE": "Jos muutata CSV-datan URLia, edellien lakkaa toimimasta. Oletko varma?"
         },
         "CSV": {
-            "SECTION_TITLE_US": "user stories reports",
-            "SECTION_TITLE_TASK": "tasks reports",
-            "SECTION_TITLE_ISSUE": "issues reports",
+            "SECTION_TITLE_US": "käyttäjätarinoiden raportit",
+            "SECTION_TITLE_TASK": "tehtävien raportit",
+            "SECTION_TITLE_ISSUE": "pyyntöjen raportit",
             "DOWNLOAD": "Lataa CSV-tiedosto",
             "URL_FIELD_PLACEHOLDER": "Tee uusi CSV-url",
             "TITLE_REGENERATE_URL": "Tee uusi CSV-url",
@@ -364,12 +364,12 @@
         "PROJECT_VALUES_PRIORITIES": {
             "TITLE": "Pyyntöjen tärkeydet",
             "SUBTITLE": "Määrittele tärkeydet pyynnöille",
-            "ACTION_ADD": "Add new priority"
+            "ACTION_ADD": "Lisää uusi tärkeys"
         },
         "PROJECT_VALUES_SEVERITIES": {
             "TITLE": "Pyyntöjen vakavuudet",
             "SUBTITLE": "Määrittele pyyntöjen vakavuudet",
-            "ACTION_ADD": "Add new severity"
+            "ACTION_ADD": "Lisää uusi vakavuus"
         },
         "PROJECT_VALUES_STATUS": {
             "TITLE": "Tila",
@@ -382,7 +382,7 @@
             "TITLE": "Tyypit",
             "SUBTITLE": "Määrittele pyyntöjen tyypit",
             "ISSUE_TITLE": "Pyyntöjen tyypit",
-            "ACTION_ADD": "Add new type"
+            "ACTION_ADD": "Lisää uusi tyyppi"
         },
         "ROLES": {
             "SECTION_NAME": "Roolit - {{projectName}}",
@@ -433,7 +433,7 @@
             "HEADERS": "Ylätunnisteet",
             "PAYLOAD": "Hyötykuorma",
             "RESPONSE": "Vastaus",
-            "DATE": "DD MMM YYYY - hh:mm:ss",
+            "DATE": "DD.MM.YY - hh:mm:ss",
             "ACTION_HIDE_HISTORY": "(Piilota historia)",
             "ACTION_HIDE_HISTORY_TITLE": "Piilota historian yksityiskohdat",
             "ACTION_SHOW_HISTORY": "(Näytä historia)",
@@ -467,12 +467,12 @@
         },
         "DEFAULT_VALUES": {
             "LABEL_POINTS": "Oletukset pisteiden valintaan",
-            "LABEL_US": "Oletusarvo Kt:n tilan valintaan",
-            "LABEL_TASK_STATUS": "Oletusarvo tehtävän tilan valintaan",
+            "LABEL_US": "Oletukset käyttäjätarinoiden tiloiksi",
+            "LABEL_TASK_STATUS": "Oletukset tehtävien tilaksi",
             "LABEL_PRIORITY": "Oletus arvo tärkeyden valiintaan",
-            "LABEL_SEVERITY": "Oletusarvo vakavuuden valintaan",
-            "LABEL_ISSUE_TYPE": "Oletusarvo pyynnön tyypin valintaan",
-            "LABEL_ISSUE_STATUS": "Oletusarvo pyyntöjen statuksen valintaan"
+            "LABEL_SEVERITY": "Oletukset vakavuudeksi",
+            "LABEL_ISSUE_TYPE": "Oletukset pyyntöjen tyypeiksi",
+            "LABEL_ISSUE_STATUS": "Oletukset pyyntöjen statuksiksi"
         },
         "STATUS": {
             "PLACEHOLDER_WRITE_STATUS_NAME": "Anna uuden tilan nimi"
@@ -482,7 +482,7 @@
         },
         "US_STATUS": {
             "ACTION_ADD_STATUS": "Lisää uusi tila",
-            "IS_ARCHIVED_COLUMN": "Onko arkistoitu?",
+            "IS_ARCHIVED_COLUMN": "Arkistoitu",
             "WIP_LIMIT_COLUMN": "WIP raja",
             "PLACEHOLDER_WRITE_NAME": "Anna uuden tilan nimi"
         },
@@ -496,7 +496,7 @@
             "PLUGINS": "Pluginit"
         },
         "SUBMENU_PROJECT_ATTRIBUTES": {
-            "TITLE": "Attributes"
+            "TITLE": "Attribuutit"
         },
         "SUBMENU_PROJECT_VALUES": {
             "STATUS": "Tila",
@@ -538,7 +538,7 @@
             "ADMIN": "Hallinnoi"
         },
         "NAVIGATION": {
-            "SECTION_TITLE": "Your projects",
+            "SECTION_TITLE": "Projektisi",
             "PLACEHOLDER_SEARCH": "Hae täältä...",
             "ACTION_CREATE_PROJECT": "Luo projekti",
             "TITLE_ACTION_IMPORT": "Luo projekti tiedostosta",
@@ -547,15 +547,15 @@
         },
         "IMPORT": {
             "TITLE": "Luetaan sisään projektia",
-            "UPLOADING_FILE": "Uploading dump file",
+            "UPLOADING_FILE": "Ladataan tiedostoa",
             "DESCRIPTION": "Tämä voi kestää hetken, pidä ikkuna auki.",
             "ASYNC_IN_PROGRESS_TITLE": " Oompa Loompas tuovat projektia",
             "ASYNC_IN_PROGRESS_MESSAGE": "Tämä voi kestää muutaman minuutin <br/>Lähetämme sähköpostin on valmista",
-            "UPLOAD_IN_PROGRESS_MESSAGE": "Uploaded {{uploadedSize}} of {{totalSize}}",
+            "UPLOAD_IN_PROGRESS_MESSAGE": "LAdattu {{uploadedSize}} / {{totalSize}}",
             "ERROR": "Oompa Loompas eivät onnistuneet tuomaan tiedostoasi. Yritä uudestaan.",
             "ERROR_TOO_MANY_REQUEST": "Oompa Loompas ovat kiireisiä juuri nyt. Yritä hetken päästä uudelleen.",
             "ERROR_MESSAGE": "Oompa Loompas eivät pysty lukemaan tiedostoasi: {{error_message}}",
-            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is too heavy for our Oompa Loompas, try it with a smaller than ({{maxFileSize}})",
+            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) on liian iso Oompa Loompaseille, kokeile pienemmällä kuin ({{maxFileSize}})",
             "SYNC_SUCCESS": "Projektisi on tuotu sisään onnistuneesti"
         }
     },
@@ -564,7 +564,7 @@
             "SECTION_NAME": "Poista Taiga-tunnus",
             "CONFIRM": "Haluatko varmasti poistaa Taiga-tunnuksesi?",
             "SUBTITLE": "Tulemme kaipaamaan sinua! :-(",
-            "NEWSLETTER_LABEL_TEXT": "I don't wanna receive your newsletter anymore"
+            "NEWSLETTER_LABEL_TEXT": "En halua uutiskirjettä enää"
         },
         "DELETE_PROJECT": {
             "TITLE": "Poista projekti",
@@ -624,7 +624,7 @@
         }
     },
     "US": {
-        "SECTION_NAME": "User story details",
+        "SECTION_NAME": "Käyttäjätarinan tiedot",
         "LINK_TASKBOARD": "Tehtävätaulu",
         "TITLE_LINK_TASKBOARD": "Siirry tehtävätauluun",
         "TOTAL_POINTS": "yhteensä",
@@ -660,7 +660,7 @@
     },
     "ACTIVITY": {
         "SHOW_ACTIVITY": "Näytä tapahtumat",
-        "DATETIME": "DD MMM YYYY HH:mm",
+        "DATETIME": "DD.MM.YY - HH:mm",
         "SHOW_MORE": "+ Näytä edelliset rivit ({{showMore}} lisää)",
         "TITLE": "Aktiivisuus",
         "REMOVED": "poistettu",
@@ -698,7 +698,7 @@
             "POINTS": "pisteet",
             "CLIENT_REQUIREMENT": "asiakkaan vaatimus",
             "TEAM_REQUIREMENT": "tiimin vaatimus",
-            "IS_IOCAINE": "on hidaste",
+            "IS_IOCAINE": "myrkyllinen",
             "TAGS": "avainsanat",
             "ATTACHMENTS": "liitteet",
             "IS_DEPRECATED": "on vanhentunut",
@@ -737,7 +737,7 @@
             "INCREMENT_CLIENT": "Lisätyt asiakkaan vaatimat pisteet kierrokselle {{xval}} ovat {{yval}}"
         },
         "TAGS": {
-            "TOGGLE": "Toggle tags visibility",
+            "TOGGLE": "Vaihda avainsanojen näkyvyyttä",
             "SHOW": "Näytä avainsanat",
             "HIDE": "Piilota avainsanat"
         },
@@ -750,7 +750,7 @@
             "COMPLETED_POINTS": "valmiina<br/>pistettä",
             "OPEN_TASKS": "avaa<br/>tehtävät",
             "CLOSED_TASKS": "suljettu<br/>tehtävää",
-            "IOCAINE_DOSES": "hidastetia<br/>annosta",
+            "IOCAINE_DOSES": "myrkkye-<br/>annosta",
             "SHOW_STATISTICS_TITLE": "Näytä tilastot"
         },
         "SUMMARY": {
@@ -760,20 +760,20 @@
             "POINTS_PER_SPRINT": "pisettä/<br/>kierros"
         },
         "FILTERS": {
-            "TOGGLE": "Toggle filters visibility",
+            "TOGGLE": "Vaihda suodattimien näkyvyyttä",
             "TITLE": "Suodattimet",
             "REMOVE": "Poista suodattimet",
-            "HIDE": "Hide Filters",
+            "HIDE": "Piilota suodattimet",
             "SHOW": "Näytä suodattimet",
             "FILTER_CATEGORY_STATUS": "Tila",
             "FILTER_CATEGORY_TAGS": "Avainsanat"
         },
         "SPRINTS": {
             "TITLE": "KIERROKSET",
-            "DATE": "DD MMM YYYY",
+            "DATE": "DD.MM.YY",
             "LINK_TASKBOARD": "Kierroksien tehtävätaulu",
             "TITLE_LINK_TASKBOARD": "Siirry tehtävätauluun {{name}}",
-            "NUMBER_SPRINTS": "<br/>kierrokset",
+            "NUMBER_SPRINTS": "<br/>kierroksia",
             "TITLE_ACTION_NEW_SPRINT": "+ Uusi kierros",
             "ACTION_NEW_SPRINT": "+ Uusi kierros",
             "ACTION_SHOW_CLOSED_SPRINTS": "Näytä suljetut kierrokset",
@@ -809,11 +809,11 @@
             "YAXIS_LABEL": "Pisteet",
             "OPTIMAL": "Optimaaliset odottavat pisteet {{formattedDate}} ovat {{roundedValue}}",
             "REAL": "Todelliset odottavat pisteet {{formattedDate}} ovat {{roundedValue}}",
-            "DATE": "DD MMMM YYYY"
+            "DATE": "DD.MM.YY"
         }
     },
     "TASK": {
-        "SECTION_NAME": "Task details",
+        "SECTION_NAME": "Tehtävän tiedot",
         "LINK_TASKBOARD": "Tehtävätaulu",
         "TITLE_LINK_TASKBOARD": "Siirry tehtävätauluun",
         "PLACEHOLDER_SUBJECT": "Anna tehtävän aihe",
@@ -830,10 +830,10 @@
         "FIELDS": {
             "MILESTONE": "Kierros",
             "USER_STORY": "Käyttäjätarina",
-            "IS_IOCAINE": "On hidaste"
+            "IS_IOCAINE": "Myrkyllinen"
         },
-        "ACTION_IOCAINE": "Hidaste",
-        "TITLE_ACTION_IOCAINE": "Rasittaako tehtävä? Kerro muillekin klikkaamalla hidasteen kuvaketta. Sattaa myös helpottaa jatkossa jos kerrot asiasta vähitellen."
+        "ACTION_IOCAINE": "Myrkky",
+        "TITLE_ACTION_IOCAINE": "Rasittaako tehtävä? Kerro muillekin klikkaamalla myrkyn kuvaketta. Sattaa myös helpottaa jatkossa jos nautit vähitellen."
     },
     "NOTIFICATION": {
         "OK": "Kaikki on kunnossa",
@@ -875,7 +875,7 @@
         "PLACEHOLDER_FIELD": "Käyttäjänimi tai sähköposti",
         "ACTION_RESET_PASSWORD": "Uusi salsanasi",
         "LINK_CANCEL": "Vie minut takaisin, muistan sen.",
-        "SUCCESS": "<strong>Check your inbox!</strong><br />We have sent you an email with the instructions to set a new password",
+        "SUCCESS": "<strong>Tarkista sähköpostisi!</strong><br />Olemme lähettäneet sinulle sähköpostissa kirjautumisohjeet",
         "ERROR": "Oompa Loompas sanovat että käyttäjänimesi tai sähköpostisi tai salasanasi on väärä."
     },
     "LOGIN_COMMON": {
@@ -898,7 +898,7 @@
         "ERROR": "Oompa Loompas sanovat että käyttäjänimesi tai sähköpostisi tai salasanasi on väärä."
     },
     "REGISTER_FORM": {
-        "TITLE": "Register a new Taiga account (free)",
+        "TITLE": "Rekisteröi uusi Taiga tunnus (ilmainen)",
         "PLACEHOLDER_NAME": "Anna käyttäjänimi (kirjainkoko on merkitsevä)",
         "PLACEHOLDER_FULL_NAME": "Anna koko nimesi",
         "PLACEHOLDER_EMAIL": "Sähköpostisi",
@@ -909,7 +909,7 @@
     },
     "ISSUES": {
         "LIST_SECTION_NAME": "Pyynnöt",
-        "SECTION_NAME": "Issue details",
+        "SECTION_NAME": "Pyynnön tiedot",
         "ACTION_NEW_ISSUE": "+ UUSI PYYNTÖ",
         "ACTION_PROMOTE_TO_US": "Liitä käyttäjätarinaan",
         "PLACEHOLDER_FILTER_NAME": "Anna suodattimen nimi ja paina enter",
@@ -996,8 +996,8 @@
         "PLACEHOLDER_INPUT_SEARCH": "Etsi koko nimellä...",
         "COLUMN_MR_WOLF": "Mr. Wolf",
         "EXPLANATION_COLUMN_MR_WOLF": "Suljetut pyynnöt",
-        "COLUMN_IOCAINE": "Hidasteiden syöjä",
-        "EXPLANATION_COLUMN_IOCAINE": "Kertyneet hidasteet",
+        "COLUMN_IOCAINE": "Myrkyn syöjä",
+        "EXPLANATION_COLUMN_IOCAINE": "Kertyneet myrkyt",
         "COLUMN_CERVANTES": "Cervantes",
         "EXPLANATION_COLUMN_CERVANTES": "Wiki-sivuja muokattu",
         "COLUMN_BUG_HUNTER": "Virheiden metsästäjä",
@@ -1074,7 +1074,7 @@
         "PROGRESS_NAME_DESCRIPTION": "Nimi ja kuvaus"
     },
     "WIKI": {
-        "DATETIME": "DD MMM YYYY HH:mm",
+        "DATETIME": "DD.MM.YY - HH:mm",
         "PLACEHOLDER_PAGE": "Kirjoita wiki-sivu",
         "REMOVE": "Poista tämä wiki-sivu",
         "DELETE_LIGHTBOX_TITLE": "Poista wiki-sivu",

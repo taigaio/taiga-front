@@ -63,41 +63,41 @@
         },
         "PICKERDATE": {
             "FORMAT": "DD MMM YYYY",
-            "IS_RTL": "false",
+            "IS_RTL": "錯誤",
             "FIRST_DAY_OF_WEEK": "1",
-            "PREV_MONTH": "Previous Month",
-            "NEXT_MONTH": "Next Month",
+            "PREV_MONTH": "上個月",
+            "NEXT_MONTH": "下個月",
             "MONTHS": {
-                "JAN": "January",
-                "FEB": "February",
-                "MAR": "March",
-                "APR": "April",
-                "MAY": "May",
-                "JUN": "June",
-                "JUL": "July",
-                "AUG": "August",
-                "SEP": "September",
-                "OCT": "October",
-                "NOV": "November",
-                "DEC": "December"
+                "JAN": "1月份",
+                "FEB": "2月份",
+                "MAR": "三月",
+                "APR": "四月份",
+                "MAY": "五月份",
+                "JUN": "六月份",
+                "JUL": "七月份",
+                "AUG": "八月份",
+                "SEP": "九月份",
+                "OCT": "十月份",
+                "NOV": "十一月份",
+                "DEC": "十二月份"
             },
             "WEEK_DAYS": {
-                "SUN": "Sunday",
-                "MON": "Monday",
-                "TUE": "Tuesday",
-                "WED": "Wednesday",
-                "THU": "Thursday",
-                "FRI": "Friday",
-                "SAT": "Saturday"
+                "SUN": "週日",
+                "MON": "週一",
+                "TUE": "週二",
+                "WED": "週三",
+                "THU": "週四",
+                "FRI": "週五",
+                "SAT": "週六"
             },
             "WEEK_DAYS_SHORT": {
-                "SUN": "Sun",
-                "MON": "Mon",
-                "TUE": "Tue",
-                "WED": "Wed",
-                "THU": "Thu",
-                "FRI": "Fri",
-                "SAT": "Sat"
+                "SUN": "週日",
+                "MON": "週一",
+                "TUE": "週二",
+                "WED": "週三",
+                "THU": "週四",
+                "FRI": "週五",
+                "SAT": "週六"
             }
         },
         "TAGS": {
@@ -243,13 +243,13 @@
         "SECTION_NAME": "附件",
         "TITLE": "{{ fileName }} 上傳於 {{ date }}",
         "DESCRIPTION": "輸入一段簡短描述",
-        "DEPRECATED": "(deprecated)",
+        "DEPRECATED": "(被棄用)",
         "DEPRECATED_FILE": "棄用?",
         "ADD": "加入新附件 <%- maxFileSizeMsg %>",
         "MAX_FILE_SIZE": "[Max. size: {{maxFileSize}}]",
         "SHOW_DEPRECATED": "+ 顯示棄用的附件",
         "HIDE_DEPRECATED": "+ 隱藏棄用的附件",
-        "COUNT_DEPRECATED": "({{ counter }} deprecated)",
+        "COUNT_DEPRECATED": "({{ counter }} 遭棄用)",
         "MAX_UPLOAD_SIZE": "上傳檔案最大容量限制 {{maxFileSize}}",
         "DATE": "DD MMM YYYY [at] hh:mm",
         "ERROR_UPLOAD_ATTACHMENT": "無法成功上傳 '{{fileName}}'. {{errorMessage}}",
@@ -364,12 +364,12 @@
         "PROJECT_VALUES_PRIORITIES": {
             "TITLE": "問題優先性",
             "SUBTITLE": "指明你將遇到的問題優先程度",
-            "ACTION_ADD": "Add new priority"
+            "ACTION_ADD": "新增優先性"
         },
         "PROJECT_VALUES_SEVERITIES": {
             "TITLE": "問題急迫性",
             "SUBTITLE": "指明你將遇到問題的嚴重程度",
-            "ACTION_ADD": "Add new severity"
+            "ACTION_ADD": "新增急迫性"
         },
         "PROJECT_VALUES_STATUS": {
             "TITLE": "狀態",
@@ -382,7 +382,7 @@
             "TITLE": "類型",
             "SUBTITLE": "指定你的問題類型可能是",
             "ISSUE_TITLE": "問題類型",
-            "ACTION_ADD": "Add new type"
+            "ACTION_ADD": "新增類別"
         },
         "ROLES": {
             "SECTION_NAME": "角色- {{projectName}}",
@@ -496,7 +496,7 @@
             "PLUGINS": "外掛"
         },
         "SUBMENU_PROJECT_ATTRIBUTES": {
-            "TITLE": "Attributes"
+            "TITLE": "屬性"
         },
         "SUBMENU_PROJECT_VALUES": {
             "STATUS": "狀態",
@@ -547,7 +547,7 @@
         },
         "IMPORT": {
             "TITLE": "滙入專案中",
-            "UPLOADING_FILE": "Uploading dump file",
+            "UPLOADING_FILE": "上傳傾倒檔案",
             "DESCRIPTION": "這個過桯要花點時間，請保持视窗開啟",
             "ASYNC_IN_PROGRESS_TITLE": "我們的工程師對你的專案很重要哦",
             "ASYNC_IN_PROGRESS_MESSAGE": "這個過程要花上一點時間<br/> 當弄好時我們會發給你一封郵件",
@@ -564,7 +564,7 @@
             "SECTION_NAME": "刪除Taiga帳戶",
             "CONFIRM": "你確定要刪除Taiga帳戶嗎？",
             "SUBTITLE": "我們會想念你:-(",
-            "NEWSLETTER_LABEL_TEXT": "I don't wanna receive your newsletter anymore"
+            "NEWSLETTER_LABEL_TEXT": "不願再收到電子月報"
         },
         "DELETE_PROJECT": {
             "TITLE": "刪除專案",
@@ -624,7 +624,7 @@
         }
     },
     "US": {
-        "SECTION_NAME": "User story details",
+        "SECTION_NAME": "使用者故事細節",
         "LINK_TASKBOARD": "任務板",
         "TITLE_LINK_TASKBOARD": "到任務板去",
         "TOTAL_POINTS": "全部",
@@ -737,7 +737,7 @@
             "INCREMENT_CLIENT": "客戶要求的任務衝刺逐步新增點數 {{xval}} 為 {{yval}}"
         },
         "TAGS": {
-            "TOGGLE": "Toggle tags visibility",
+            "TOGGLE": "切換標籤可見度",
             "SHOW": "顯示標籤",
             "HIDE": "隱藏標籤"
         },
@@ -760,10 +760,10 @@
             "POINTS_PER_SPRINT": "點數 /<br />衝刺任務"
         },
         "FILTERS": {
-            "TOGGLE": "Toggle filters visibility",
+            "TOGGLE": "切換過濾器可見度",
             "TITLE": "過濾器",
             "REMOVE": "移除過濾器",
-            "HIDE": "Hide Filters",
+            "HIDE": "隱藏過濾器",
             "SHOW": "顯示過濾器",
             "FILTER_CATEGORY_STATUS": "狀態",
             "FILTER_CATEGORY_TAGS": "標籤"
@@ -813,7 +813,7 @@
         }
     },
     "TASK": {
-        "SECTION_NAME": "Task details",
+        "SECTION_NAME": "任務細節",
         "LINK_TASKBOARD": "任務板",
         "TITLE_LINK_TASKBOARD": "到任務板去",
         "PLACEHOLDER_SUBJECT": "鍵入新任務主旨",
@@ -909,7 +909,7 @@
     },
     "ISSUES": {
         "LIST_SECTION_NAME": "問題 ",
-        "SECTION_NAME": "Issue details",
+        "SECTION_NAME": "問題細節",
         "ACTION_NEW_ISSUE": "+ 新問題　",
         "ACTION_PROMOTE_TO_US": "提昇到使用者故事",
         "PLACEHOLDER_FILTER_NAME": "寫入過濾器名稱後按下enter ",
