@@ -44,11 +44,12 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$log",
         "$appTitle",
         "$tgNavUrls",
-        "$tgAnalytics"
+        "$tgAnalytics",
+        "$translate"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
-                  @log, @appTitle, @navUrls, @analytics) ->
+                  @log, @appTitle, @navUrls, @analytics, @translate) ->
         @scope.taskRef = @params.taskref
         @scope.sectionName = @translate.instant("TASK.SECTION_NAME")
         @.initializeEventHandlers()
