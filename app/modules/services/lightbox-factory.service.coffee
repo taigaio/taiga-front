@@ -8,10 +8,11 @@ class LightboxFactory
         elm = $("<div>")
             .attr(name, true)
             .attr("tg-bind-scope", true)
-            .addClass("remove-on-close")
 
         if attrs
             elm.attr(attrs)
+
+        elm.addClass("remove-on-close")
 
         html = @compile(elm)(scope)
 

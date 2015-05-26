@@ -131,6 +131,8 @@ CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $project
 
         openLightbox()
 
+        console.log "link"
+
     directive = {
         link: link,
         templateUrl: "project/wizard-create-project.html"

@@ -56,7 +56,7 @@ describe "tgLightboxFactory", ->
         lightboxFactoryService.create("fake-directive", attrs)
 
         checkAttributes = sinon.match ( (value) ->
-            return value.attr("class") == "x1" && value.attr("id") == "x2"
+            return value.hasClass("x1") && value.attr("id") == "x2" && value.hasClass("remove-on-close")
         ), "checkAttributes"
 
         expect(mocks.compile.withArgs(checkAttributes)).to.have.been.calledOnce
