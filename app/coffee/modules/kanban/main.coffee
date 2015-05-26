@@ -61,11 +61,12 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         "$appTitle",
         "$tgNavUrls",
         "$tgEvents",
-        "$tgAnalytics"
+        "$tgAnalytics",
+        "$translate"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
-                  @appTitle, @navUrls, @events, @analytics) ->
+                  @appTitle, @navUrls, @events, @analytics, @translate) ->
 
         bindMethods(@)
 
