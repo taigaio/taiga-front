@@ -54,7 +54,8 @@ class UserNotificationsController extends mixOf(taiga.Controller, taiga.PageMixi
         promise.then null, @.onInitialDataError.bind(@)
 
     loadProject: ->
-        return @rs.projects.get(@scope.projectId).then (project) =>
+        return @rs.projects.getBySlug(@params.pslug).then (project) =>
+            @scope.projectId = project.id
             @scope.project = project
             @scope.$emit('project:loaded', project)
             return project
@@ -65,13 +66,9 @@ class UserNotificationsController extends mixOf(taiga.Controller, taiga.PageMixi
             return notifyPolicies
 
     loadInitialData: ->
-        promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
-            @scope.projectId = data.project
-            return data
-
-        return promise.then(=> @.loadProject())
-                      .then(=> @.loadNotifyPolicies())
-
+        promise = @.loadProject()
+        promise.then(=> @.loadNotifyPolicies())
+        return promise
 
 module.controller("UserNotificationsController", UserNotificationsController)
 

@@ -68,20 +68,18 @@ class ProjectValuesSectionController extends mixOf(taiga.Controller, taiga.PageM
         promise.then null, @.onInitialDataError.bind(@)
 
     loadProject: ->
-        return @rs.projects.get(@scope.projectId).then (project) =>
+        return @rs.projects.getBySlug(@params.pslug).then (project) =>
             if not project.i_am_owner
                 @location.path(@navUrls.resolve("permission-denied"))
 
+            @scope.projectId = project.id
             @scope.project = project
             @scope.$emit('project:loaded', project)
             return project
 
     loadInitialData: ->
-        promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
-            @scope.projectId = data.project
-            return data
-
-        return promise.then => @.loadProject()
+        promise = @.loadProject()
+        return promise
 
 
 module.controller("ProjectValuesSectionController", ProjectValuesSectionController)

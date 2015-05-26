@@ -7,6 +7,7 @@
 - Show the reference of entities in search results (thanks to [@artlepool](https://github.com/artlepool))
 
 ### Misc
+- Improve performance: remove some unnecessary calls to the api.
 - Lots of small and not so small bugfixes.
 
 

@@ -28,6 +28,7 @@ timeout = @.taiga.timeout
 
 module = angular.module("taigaAdmin")
 
+
 #############################################################################
 ## Webhooks
 #############################################################################
@@ -65,23 +66,24 @@ class WebhooksController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.
             @scope.webhooks = webhooks
 
     loadProject: ->
-        return @rs.projects.get(@scope.projectId).then (project) =>
+        return @rs.projects.getBySlug(@params.pslug).then (project) =>
             if not project.i_am_owner
                 @location.path(@navUrls.resolve("permission-denied"))
 
+            @scope.projectId = project.id
             @scope.project = project
             @scope.$emit('project:loaded', project)
             return project
 
     loadInitialData: ->
-        promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
-            @scope.projectId = data.project
-            return data
+        promise = @.loadProject()
+        promise.then =>
+            @.loadWebhooks()
 
-        return promise.then(=> @.loadProject())
-                      .then(=> @.loadWebhooks())
+        return promise
 
 module.controller("WebhooksController", WebhooksController)
+
 
 #############################################################################
 ## Webhook Directive
@@ -213,7 +215,8 @@ WebhookDirective = ($rs, $repo, $confirm, $loading, $translate) ->
 
     return {link:link}
 
-module.directive("tgWebhook", ["$tgResources", "$tgRepo", "$tgConfirm", "$tgLoading", "$translate", WebhookDirective])
+module.directive("tgWebhook", ["$tgResources", "$tgRepo", "$tgConfirm", "$tgLoading", "$translate",
+                               WebhookDirective])
 
 
 #############################################################################
@@ -312,19 +315,16 @@ class GithubController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @scope.github = github
 
     loadProject: ->
-        return @rs.projects.get(@scope.projectId).then (project) =>
+        return @rs.projects.getBySlug(@params.pslug).then (project) =>
+            @scope.projectId = project.id
             @scope.project = project
             @scope.$emit('project:loaded', project)
             return project
 
     loadInitialData: ->
-        promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
-            @scope.projectId = data.project
-            return data
-
-        return promise.then(=> @.loadProject())
-                      .then(=> @.loadModules())
-
+        promise = @.loadProject()
+        promise.then(=> @.loadModules())
+        return promise
 
 module.controller("GithubController", GithubController)
 
@@ -364,19 +364,16 @@ class GitlabController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @scope.gitlab = gitlab
 
     loadProject: ->
-        return @rs.projects.get(@scope.projectId).then (project) =>
+        return @rs.projects.getBySlug(@params.pslug).then (project) =>
+            @scope.projectId = project.id
             @scope.project = project
             @scope.$emit('project:loaded', project)
             return project
 
     loadInitialData: ->
-        promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
-            @scope.projectId = data.project
-            return data
-
-        return promise.then(=> @.loadProject())
-                      .then(=> @.loadModules())
-
+        promise = @.loadProject()
+        promise.then(=> @.loadModules())
+        return promise
 
 module.controller("GitlabController", GitlabController)
 
@@ -416,18 +413,16 @@ class BitbucketController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
             @scope.bitbucket = bitbucket
 
     loadProject: ->
-        return @rs.projects.get(@scope.projectId).then (project) =>
+        return @rs.projects.getBySlug(@params.pslug).then (project) =>
+            @scope.projectId = project.id
             @scope.project = project
             @scope.$emit('project:loaded', project)
             return project
 
     loadInitialData: ->
-        promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
-            @scope.projectId = data.project
-            return data
-
-        return promise.then(=> @.loadProject())
-                      .then(=> @.loadModules())
+        promise = @.loadProject()
+        promise.then(=> @.loadModules())
+        return promise
 
 module.controller("BitbucketController", BitbucketController)
 
@@ -552,12 +547,12 @@ module.directive("tgBitbucketWebhooks", ["$tgRepo", "$tgConfirm", "$tgLoading", 
 #############################################################################
 ValidOriginIpsDirective = ->
     link = ($scope, $el, $attrs, $ngModel) ->
-      $ngModel.$parsers.push (value) ->
-          value = $.trim(value)
-          if value == ""
-              return []
+        $ngModel.$parsers.push (value) ->
+            value = $.trim(value)
+            if value == ""
+                return []
 
-          return value.split(",")
+            return value.split(",")
 
     return {
         link: link

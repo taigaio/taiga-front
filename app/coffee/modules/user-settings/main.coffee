@@ -45,7 +45,8 @@ class UserSettingsController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$translate"
     ]
 
-    constructor: (@scope, @rootscope, @config, @repo, @confirm, @rs, @params, @q, @location, @navUrls, @auth, @translate) ->
+    constructor: (@scope, @rootscope, @config, @repo, @confirm, @rs, @params, @q, @location, @navUrls,
+                  @auth, @translate) ->
         @scope.sectionName = "USER_SETTINGS.MENU.SECTION_TITLE"
 
         @scope.project = {}
@@ -62,7 +63,8 @@ class UserSettingsController extends mixOf(taiga.Controller, taiga.PageMixin)
         promise.then null, @.onInitialDataError.bind(@)
 
     loadProject: ->
-        return @rs.projects.get(@scope.projectId).then (project) =>
+        return @rs.projects.getBySlug(@params.pslug).then (project) =>
+            @scope.projectId = project.id
             @scope.project = project
             @scope.$emit('project:loaded', project)
             return project
@@ -73,12 +75,9 @@ class UserSettingsController extends mixOf(taiga.Controller, taiga.PageMixin)
             return locales
 
     loadInitialData: ->
-        promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
-            @scope.projectId = data.project
-            return data
-
-        return @q.all([promise.then(=> @.loadProject()),
-                       @.loadLocales()])
+        promise = @.loadProject()
+        promise.then => @.loadLocales()
+        return promise
 
     openDeleteLightbox: ->
         @rootscope.$broadcast("deletelightbox:new", @scope.user)

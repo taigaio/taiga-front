@@ -65,10 +65,11 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
             @analytics.trackEvent("membership", "create", "create memberships on admin", 1)
 
     loadProject: ->
-        return @rs.projects.get(@scope.projectId).then (project) =>
+        return @rs.projects.getBySlug(@params.pslug).then (project) =>
             if not project.i_am_owner
                 @location.path(@navUrls.resolve("permission-denied"))
 
+            @scope.projectId = project.id
             @scope.project = project
             @scope.$emit('project:loaded', project)
             return project
@@ -76,20 +77,20 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
     loadMembers: ->
         httpFilters = @.getUrlFilters()
         return @rs.memberships.list(@scope.projectId, httpFilters).then (data) =>
-            @scope.memberships = _.filter(data.models, (membership) -> membership.user == null or membership.is_user_active)
+            @scope.memberships = _.filter(data.models, (membership) ->
+                                    membership.user == null or membership.is_user_active)
             @scope.page = data.current
             @scope.count = data.count
             @scope.paginatedBy = data.paginatedBy
             return data
 
     loadInitialData: ->
-        promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
-            @scope.projectId = data.project
-            return data
+        promise = @.loadProject()
+        promise.then =>
+            @.loadUsersAndRoles()
+            @.loadMembers()
 
-        return promise.then(=> @.loadProject())
-                      .then(=> @.loadUsersAndRoles())
-                      .then(=> @.loadMembers())
+        return promise
 
     getUrlFilters: ->
         filters = _.pick(@location.search(), "page")
