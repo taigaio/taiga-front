@@ -15,10 +15,9 @@ ProjectMenuDirective = (projectService, lightboxFactory) ->
     return {
         scope: {},
         controller: "ProjectMenu",
-        templateUrl: "components/project-menu/project-menu.html",
-        link: link,
         controllerAs: "vm",
-        replace: true
+        templateUrl: "components/project-menu/project-menu.html",
+        link: link
     }
 
 ProjectMenuDirective.$inject = [
