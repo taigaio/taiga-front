@@ -2,7 +2,8 @@ doctype html
 
 div.wrapper(tg-user-profile, ng-controller="UserSettingsController as ctrl",
             ng-init="section='user-settings'")
-    div(tg-project-menu)
+    tg-project-menu
+
     sidebar.menu-secondary.sidebar.settings-nav(tg-user-settings-navigation="user-profile")
         include ../includes/modules/user-settings-menu
 

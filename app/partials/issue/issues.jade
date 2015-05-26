@@ -1,7 +1,7 @@
 doctype html
 
 div.wrapper.issues(tg-issues, ng-controller="IssuesController as ctrl", ng-init="section='issues'")
-    div(tg-project-menu)
+    tg-project-menu
     sidebar.menu-secondary.extrabar.filters-bar(tg-issues-filters)
         include ../includes/modules/issues-filters
 

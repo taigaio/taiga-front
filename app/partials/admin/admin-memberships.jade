@@ -2,7 +2,7 @@ doctype html
 
 div.wrapper.memberships(ng-controller="MembershipsController as ctrl",
                         ng-init="section='admin'; sectionName='ADMIN.MEMBERSHIPS.TITLE'", tg-memberships)
-    div(tg-project-menu)
+    tg-project-menu
 
     sidebar.menu-secondary.sidebar.settings-nav(tg-admin-navigation="memberships")
         include ../includes/modules/admin-menu
