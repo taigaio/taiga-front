@@ -16,6 +16,11 @@
             background: lighten($green-taiga, 60%);
             transition: background .2s ease-in;
         }
+        .ref {
+            flex-basis: 30px;
+            flex-grow: 1;
+            padding: 0 1rem;
+        }
         .user-stories {
             flex-basis: 300px;
             flex-grow: 10;

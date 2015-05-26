@@ -4,11 +4,13 @@ script(type="text/ng-template", id="search-issues")
     div.search-result-table-container(ng-class="{'hidden': !issues.length}", tg-bind-scope)
         div.search-result-table-header
             div.row.title
+                div.ref(translate="COMMON.FIELDS.REF")
                 div.user-stories(translate="SEARCH.FILTER_ISSUES")
                 div.status(translate="COMMON.FIELDS.STATUS")
                 div.assigned-to(translate="COMMON.FIELDS.ASSIGNED_TO")
         div.search-result-table-body
             div.row.table-main(ng-repeat="issue in issues track by issue.id")
+                div.ref(tg-bo-ref="issue.ref")
                 div.user-stories
                     div.user-story-name
                         a(href="", tg-nav="project-issues-detail:project=project.slug,ref=issue.ref",
@@ -26,11 +28,13 @@ script(type="text/ng-template", id="search-userstories")
     div.search-result-table-container(ng-class="{'hidden': !userstories.length}", tg-bind-scope)
         div.search-result-table-header
             div.row.title
+                div.ref(translate="COMMON.FIELDS.REF")
                 div.user-stories(translate="SEARCH.FILTER_USER_STORIES")
                 div.status(translate="COMMON.FIELDS.STATUS")
                 div.points(translate="COMMON.FIELDS.POINTS")
         div.search-result-table-body
             div.row.table-main(ng-repeat="us in userstories track by us.id")
+                div.ref(tg-bo-ref="us.ref")
                 div.user-stories
                     div.user-story-name
                         a(href="", tg-nav="project-userstories-detail:project=project.slug,ref=us.ref",
@@ -47,11 +51,13 @@ script(type="text/ng-template", id="search-tasks")
     div.search-result-table-container(ng-class="{'hidden': !tasks.length}", tg-bind-scope)
         div.search-result-table-header
             div.row.title
+                div.ref(translate="COMMON.FIELDS.REF")
                 div.user-stories(translate="SEARCH.FILTER_TASKS")
                 div.status(translate="COMMON.FIELDS.STATUS")
                 div.assigned-to(translate="COMMON.FIELDS.ASSIGNED_TO")
         div.search-result-table-body
             div.row.table-main(ng-repeat="task in tasks track by task.id")
+                div.ref(tg-bo-ref="task.ref")
                 div.user-stories
                     div.user-story-name
                         a(href="", tg-nav="project-tasks-detail:project=project.slug,ref=task.ref",
