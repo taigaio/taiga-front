@@ -125,7 +125,8 @@
             "ASSIGNED_TO": "Assigned to",
             "POINTS": "Points",
             "BLOCKED_NOTE": "blocked note",
-            "IS_BLOCKED": "is blocked"
+            "IS_BLOCKED": "is blocked",
+            "REF": "Ref"
         },
         "ROLES": {
             "ALL": "All"
