@@ -4,7 +4,7 @@
 ## 1.8.0 ??? (unreleased)
 
 ### Features
-- ...
+- Show the reference of entities in search results (thanks to [@artlepool](https://github.com/artlepool))
 
 ### Misc
 - Lots of small and not so small bugfixes.
