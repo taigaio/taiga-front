@@ -238,7 +238,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     $routeProvider.when("/project/:pslug/admin/roles",
         {
             templateUrl: "admin/admin-roles.html",
-            section: "backlog-kanban"
+            section: "admin"
         }
     )
 
