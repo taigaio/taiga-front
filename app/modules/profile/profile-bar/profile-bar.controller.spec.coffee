@@ -1,37 +1,26 @@
 describe "ProfileBar", ->
     $controller = null
-    $q = null
     provide = null
     $rootScope = null
     mocks = {}
 
     _mockUserService = () ->
         mocks.userService = {
-            getStats:  sinon.stub()
+            getStats:  sinon.stub().promise()
         }
 
         provide.value "tgUserService", mocks.userService
 
-    _mockAuthService = () ->
-        stub = sinon.stub()
-
-        stub.returns({id: 2})
-
-        provide.value "$tgAuth", {
-            getUser: stub
-        }
 
     _mocks = () ->
         module ($provide) ->
             provide = $provide
             _mockUserService()
-            _mockAuthService()
 
             return null
 
     _inject = (callback) ->
-        inject (_$controller_, _$q_, _$rootScope_) ->
-            $q = _$q_
+        inject (_$controller_, _$rootScope_) ->
             $rootScope = _$rootScope_
             $controller = _$controller_
 
@@ -40,7 +29,7 @@ describe "ProfileBar", ->
         _mocks()
         _inject()
 
-    it "user stats filled", () ->
+    it "user stats filled", (done) ->
         userId = 2
         stats = Immutable.fromJS([
             {id: 1},
@@ -48,14 +37,15 @@ describe "ProfileBar", ->
             {id: 3}
         ])
 
-        mocks.userService.getStats = (userId) ->
-            expect(userId).to.be.equal(userId)
+        mocks.userService.getStats.withArgs(userId).resolve(stats)
 
-            return $q (resolve, reject) ->
-                resolve(stats)
+        $scope = $rootScope.$new
 
-        ctrl = $controller("ProfileBar")
+        ctrl = $controller("ProfileBar", $scope, {
+            user: Immutable.fromJS(id: userId)
+        })
 
-        $rootScope.$apply()
-
-        expect(ctrl.stats.toJS()).to.be.eql(stats.toJS())
+        setTimeout ( ->
+            expect(ctrl.stats.toJS()).to.be.eql(stats.toJS())
+            done()
+        )

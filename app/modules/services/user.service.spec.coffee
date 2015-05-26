@@ -87,3 +87,15 @@ describe "UserService", ->
             done()
 
         $rootScope.$apply()
+
+    it "get user by username", (done) ->
+        username = "username-1"
+
+        user = {id: 1}
+
+        mocks.resources.users.getUserByUsername = sinon.stub().promise()
+        mocks.resources.users.getUserByUsername.withArgs(username).resolve(user)
+
+        userService.getUserByUserName(username).then (_user_) ->
+            expect(_user_).to.be.eql(user)
+            done()

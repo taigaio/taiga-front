@@ -4,7 +4,7 @@
         margin-bottom: 1rem;
         overflow: hidden;
         position: relative;
-        &:hover {
+        &.is-current-user:hover {
             img {
                 filter: brightness(40%) saturate(150%) hue-rotate(60deg);
                 transition: all .2s cubic-bezier(.01, .7, 1, 1);

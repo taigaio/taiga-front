@@ -1,15 +1,12 @@
 class ProfileContactsController
     @.$inject = [
-        "tgUserService",
-        "$tgAuth"
+        "tgUserService"
     ]
 
-    constructor: (@userService, @auth) ->
+    constructor: (@userService) ->
 
     loadContacts: () ->
-        userId = @auth.getUser().id
-
-        @userService.getContacts(userId)
+        @userService.getContacts(@.userId)
             .then (contacts) =>
                 @.contacts = contacts
 

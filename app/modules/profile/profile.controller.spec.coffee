@@ -1,7 +1,7 @@
 describe "ProfileController", ->
-    pageCtrl =  null
     provide = null
-    controller = null
+    $controller = null
+    $rootScope = null
     mocks = {}
 
     projects = Immutable.fromJS([
@@ -14,44 +14,89 @@ describe "ProfileController", ->
         stub = sinon.stub()
 
         mocks.appTitle = {
-            set: sinon.stub()
+            set: sinon.spy()
         }
 
         provide.value "$appTitle", mocks.appTitle
 
-    _mockAuth = () ->
+    _mockCurrentUser = () ->
         stub = sinon.stub()
 
-        mocks.auth = {
-            userData: Immutable.fromJS({username: "UserName"})
+        mocks.currentUser = {
+            getUser: sinon.stub()
         }
 
-        provide.value "$tgAuth", mocks.auth
+        provide.value "tgCurrentUserService", mocks.currentUser
+
+    _mockUserService = () ->
+        stub = sinon.stub()
+
+        mocks.userService = {
+            getUserByUserName: sinon.stub().promise()
+        }
+
+        provide.value "tgUserService", mocks.userService
+
+    _mockRouteParams = () ->
+        stub = sinon.stub()
+
+        mocks.routeParams = {}
+
+        provide.value "$routeParams", mocks.routeParams
 
     _mocks = () ->
         module ($provide) ->
             provide = $provide
             _mockAppTitle()
-            _mockAuth()
+            _mockCurrentUser()
+            _mockRouteParams()
+            _mockUserService()
 
             return null
+
+    _inject = (callback) ->
+        inject (_$controller_, _$rootScope_) ->
+            $rootScope = _$rootScope_
+            $controller = _$controller_
 
     beforeEach ->
         module "taigaProfile"
 
         _mocks()
+        _inject()
 
-        inject ($controller) ->
-            controller = $controller
+    it "define external user", (done) ->
+        $scope = $rootScope.$new()
 
-    it "define user", () ->
-        ctrl = controller "Profile",
-            $scope: {}
+        mocks.routeParams.slug = "user-slug"
 
-        expect(ctrl.user).to.be.equal(mocks.auth.userData)
+        ctrl = $controller("Profile")
 
-    it "define projects", () ->
-        ctrl = controller "Profile",
-            $scope: {}
+        user = Immutable.fromJS({
+            username: "user-name"
+        })
 
-        expect(mocks.appTitle.set.withArgs("UserName")).to.be.calledOnce
+        mocks.userService.getUserByUserName.withArgs(mocks.routeParams.slug).resolve(user)
+
+        setTimeout ( ->
+            expect(ctrl.user).to.be.equal(user)
+            expect(ctrl.isCurrentUser).to.be.false
+            expect(mocks.appTitle.set.calledWithExactly("user-name")).to.be.true
+
+            done()
+        )
+
+    it "define current user", () ->
+        $scope = $rootScope.$new()
+
+        user = Immutable.fromJS({
+            username: "user-name"
+        })
+
+        mocks.currentUser.getUser.returns(user)
+
+        ctrl = $controller("Profile")
+
+        expect(ctrl.user).to.be.equal(user)
+        expect(ctrl.isCurrentUser).to.be.true
+        expect(mocks.appTitle.set.calledWithExactly("user-name")).to.be.true

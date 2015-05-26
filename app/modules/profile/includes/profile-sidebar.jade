@@ -1,8 +1,9 @@
 aside.profile-sidebar
-    h4(translate="USER.PROFILE_SIDEBAR.TITLE")
-    p(translate="USER.PROFILE_SIDEBAR.DESCRIPTION")
-    a.trans-button
-        span(translate="USER.PROFILE_SIDEBAR.ADD_INFO")
+    div(ng-if="::vm.isCurrentUser")
+        h4(translate="USER.PROFILE_SIDEBAR.TITLE")
+        p(translate="USER.PROFILE_SIDEBAR.DESCRIPTION")
+        a.trans-button
+            span(translate="USER.PROFILE_SIDEBAR.ADD_INFO")
 
     h4
         span.icon.icon-help

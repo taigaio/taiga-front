@@ -1,16 +1,13 @@
 class ProfileBarController
     @.$inject = [
-        "$tgAuth",
         "tgUserService"
     ]
 
-    constructor: (@auth, @userService) ->
-        @.user =  @auth.getUser()
-
+    constructor: (@userService) ->
         @.loadStats()
 
     loadStats: () ->
-        return @userService.getStats(@.user.id).then (stats) =>
+        return @userService.getStats(@.user.get("id")).then (stats) =>
             @.stats = stats
 
 angular.module("taigaProfile").controller("ProfileBar", ProfileBarController)

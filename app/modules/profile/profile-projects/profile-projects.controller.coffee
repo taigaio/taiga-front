@@ -1,18 +1,15 @@
 class ProfileProjectsController
     @.$inject = [
         "tgProjectsService",
-        "tgUserService",
-        "$tgAuth"
+        "tgUserService"
     ]
 
-    constructor: (@projectsService, @userService, @auth) ->
+    constructor: (@projectsService, @userService) ->
 
     loadProjects: () ->
-        userId = @auth.getUser().id
-
-        @projectsService.getProjectsByUserId(userId)
+        @projectsService.getProjectsByUserId(@.userId)
             .then (projects) =>
-                return @userService.attachUserContactsToProjects(userId, projects)
+                return @userService.attachUserContactsToProjects(@.userId, projects)
             .then (projects) =>
                 @.projects = projects
 

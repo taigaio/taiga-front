@@ -31,6 +31,7 @@ urls = {
 
     # User
     "users": "/users"
+    "by_username": "/users/by_username"
     "users-password-recovery": "/users/password_recovery"
     "users-change-password-from-recovery": "/users/change_password_from_recovery"
     "users-change-password": "/users/change_password"
@@ -145,10 +146,6 @@ urls = {
 
     # locales
     "locales": "/locales"
-
-    # users
-    "contacts": "/users/%s/contacts"
-    "stats": "/users/%s/stats"
 }
 
 # Initialize api urls service

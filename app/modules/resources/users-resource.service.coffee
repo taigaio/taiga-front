@@ -1,7 +1,22 @@
 Resource = (urlsService, http) ->
     service = {}
 
-    service.getUserBySlug = (userSlug) ->
+    service.getUserByUsername = (username) ->
+        url = urlsService.resolve("by_username")
+
+        httpOptions = {
+            headers: {
+                "x-disable-pagination": "1"
+            }
+        }
+
+        params = {
+            username: username
+        }
+
+        return http.get(url, params, httpOptions)
+            .then (result) ->
+                return Immutable.fromJS(result.data)
 
     service.getStats = (userId) ->
         url = urlsService.resolve("stats", userId)
@@ -15,7 +30,6 @@ Resource = (urlsService, http) ->
         return http.get(url, {}, httpOptions)
             .then (result) ->
                 return Immutable.fromJS(result.data)
-
 
     service.getContacts = (userId) ->
         url = urlsService.resolve("contacts", userId)

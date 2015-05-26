@@ -1,37 +1,25 @@
 describe "ProfileContacts", ->
     $controller = null
-    $q = null
     provide = null
     $rootScope = null
     mocks = {}
 
     _mockUserService = () ->
         mocks.userServices = {
-            getContacts: sinon.stub()
+            getContacts: sinon.stub().promise()
         }
 
         provide.value "tgUserService", mocks.userServices
-
-    _mockAuthService = () ->
-        stub = sinon.stub()
-
-        stub.returns({id: 2})
-
-        provide.value "$tgAuth", {
-            getUser: stub
-        }
 
     _mocks = () ->
         module ($provide) ->
             provide = $provide
             _mockUserService()
-            _mockAuthService()
 
             return null
 
     _inject = (callback) ->
-        inject (_$controller_, _$q_, _$rootScope_) ->
-            $q = _$q_
+        inject (_$controller_, _$rootScope_) ->
             $rootScope = _$rootScope_
             $controller = _$controller_
 
@@ -48,16 +36,14 @@ describe "ProfileContacts", ->
             {id: 3}
         ]
 
-        mocks.userServices.getContacts = (userId) ->
-            expect(userId).to.be.equal(userId)
+        mocks.userServices.getContacts.withArgs(userId).resolve(contacts)
 
-            return $q (resolve, reject) ->
-                resolve(contacts)
+        $scope = $rootScope.$new()
 
-        ctrl = $controller("ProfileContacts")
+        ctrl = $controller("ProfileContacts", $scope, {
+            userId: userId
+        })
 
         ctrl.loadContacts().then () ->
             expect(ctrl.contacts).to.be.equal(contacts)
             done()
-
-        $rootScope.$apply()

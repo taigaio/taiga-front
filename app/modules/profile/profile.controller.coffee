@@ -1,16 +1,22 @@
 class ProfilePageController extends taiga.Controller
     @.$inject = [
         "$appTitle",
-        "$tgAuth",
-        "$routeParams"
+        "tgCurrentUserService",
+        "$routeParams",
+        "tgUserService"
     ]
 
-    constructor: (@appTitle, @auth, @routeParams) ->
+    constructor: (@appTitle, @currentUserService, @routeParams, @userService) ->
         if @routeParams.slug
-            @.user = @auth.userData
+            @userService
+                .getUserByUserName(@routeParams.slug)
+                .then (user) =>
+                    @.user = user
+                    @.isCurrentUser = false
+                    @appTitle.set(@.user.get('username'))
         else
-            @.user = @auth.userData
-
-        @appTitle.set(@.user.get('username'))
+            @.user = @currentUserService.getUser()
+            @.isCurrentUser = true
+            @appTitle.set(@.user.get('username'))
 
 angular.module("taigaProfile").controller("Profile", ProfilePageController)

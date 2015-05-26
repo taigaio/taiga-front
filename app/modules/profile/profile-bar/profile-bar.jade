@@ -1,11 +1,11 @@
 section.profile-bar
-    div.profile-image-wrapper
-        img.profile-img(ng-src="{{::vm.user.big_photo}}", alt="{{::vm.user.full_name}}")
+    div.profile-image-wrapper(ng-class="::{'is-current-user': vm.isCurrentUser}")
+        img.profile-img(ng-src="{{::vm.user.get('big_photo')}}", alt="{{::vm.user.get('full_name')}}")
         a.profile-edition(title="{{ 'USER.PROFILE.EDIT' | translate }}", tg-nav="user-settings-user-profile", translate="USER.PROFILE.EDIT")
     // a.button-green
     //     span(translate="USER.PROFILE.FOLLOW")
     div.profile-data
-        h1 {{::vm.user.full_name}}
+        h1 {{::vm.user.get("full_name")}}
         h2 {{::vm.stats.get('roles').join(", ")}}
         // div.location
         //     include ../../../svg/location.svg
@@ -33,5 +33,5 @@ section.profile-bar
         //         div.organization
         //         div.organization
 
-    div.profile-quote(ng-if="::vm.user.bio")
-        span {{::vm.user.bio | limitTo:210 }}{{vm.user.bio.length < 210 ? '' : '...'}}
+    div.profile-quote(ng-if="::vm.user.get('bio')")
+        span {{::vm.user.get("bio") | limitTo:210 }}{{vm.user.get("bio").length < 210 ? '' : '...'}}

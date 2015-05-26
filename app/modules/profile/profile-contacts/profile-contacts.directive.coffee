@@ -4,10 +4,13 @@ ProfileContactsDirective = () ->
 
     return {
         templateUrl: "profile/profile-contacts/profile-contacts.html",
-        scope: {},
+        scope: {
+            userId: "=userid"
+        },
         controllerAs: "vm",
         controller: "ProfileContacts",
-        link: link
+        link: link,
+        bindToController: true
     }
 
 angular.module("taigaProfile").directive("tgProfileContacts", ProfileContactsDirective)

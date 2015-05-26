@@ -1,6 +1,5 @@
 describe "ProfileProjects", ->
     $controller = null
-    $q = null
     provide = null
     $rootScope = null
     mocks = {}
@@ -14,7 +13,7 @@ describe "ProfileProjects", ->
 
     _mockProjectsService = () ->
         mocks.projectsService = {
-            getProjectsByUserId: sinon.stub()
+            getProjectsByUserId: sinon.stub().promise()
         }
 
         provide.value "tgProjectsService", mocks.projectsService
@@ -38,8 +37,7 @@ describe "ProfileProjects", ->
             return null
 
     _inject = (callback) ->
-        inject (_$controller_, _$q_, _$rootScope_) ->
-            $q = _$q_
+        inject (_$controller_,  _$rootScope_) ->
             $rootScope = _$rootScope_
             $controller = _$controller_
 
@@ -62,18 +60,15 @@ describe "ProfileProjects", ->
             {id: 3, contacts: "fake"}
         ]
 
-        mocks.projectsService.getProjectsByUserId = (userId) ->
-            expect(userId).to.be.equal(userId)
-
-            return $q (resolve, reject) ->
-                resolve(projects)
-
+        mocks.projectsService.getProjectsByUserId.withArgs(userId).resolve(projects)
         mocks.userService.attachUserContactsToProjects.withArgs(userId, projects).returns(projectsWithContacts)
 
-        ctrl = $controller("ProfileProjects")
+        $scope = $rootScope.$new()
+
+        ctrl = $controller("ProfileProjects", $scope, {
+            userId: userId
+        })
 
         ctrl.loadProjects().then () ->
             expect(ctrl.projects).to.be.equal(projectsWithContacts)
             done()
-
-        $rootScope.$apply()

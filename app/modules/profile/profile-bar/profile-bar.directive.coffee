@@ -3,7 +3,11 @@ ProfileBarDirective = () ->
         templateUrl: "profile/profile-bar/profile-bar.html",
         controller: "ProfileBar",
         controllerAs: "vm",
-        scope: {}
+        scope: {
+            user: "=user",
+            isCurrentUser: "=iscurrentuser"
+        },
+        bindToController: true
     }
 
 
