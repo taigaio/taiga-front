@@ -6,13 +6,7 @@
     position: relative;
 }
 
-.project-list-single-left,
-.project-list-single-right {
-    display: flex;
-}
-
 .project-list-single-left {
-    align-content: space-between;
     padding-right: 1rem;
     h1 {
         @extend %text;
@@ -31,7 +25,7 @@
         margin-bottom: 0;
     }
     .project-list-single-tags {
-        align-content: flex-end;
+        align-self: flex-end;
         display: flex;
         flex: 3;
         flex-wrap: wrap;

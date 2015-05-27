@@ -13,19 +13,17 @@ div.project-list-wrapper.centered
             ul(tg-sort-projects="vm.projects")
                 li.project-list-single(tg-bind-scope, tg-repeat="project in vm.projects")
                     div.project-list-single-left
-                        div.project-list-single-title
-                            h1.project-name
-                                a(href="#", tg-nav="project:project=project.get('slug')", title="{{ ::project.get('name') }}") {{project.get('name')}}
-                            span.private(ng-if="project.get('is_private')", title="{{'PROJECT.PRIVATE' | translate}}")
-                                include ../../../svg/lock.svg
-                            p {{ ::project.get('description') | limitTo:300 }}
-                                span(ng-if="::project.get('description').length > 300") ...
+                        h1.project-name
+                            a(href="#", tg-nav="project:project=project.get('slug')", title="{{ ::project.get('name') }}") {{project.get('name')}}
+                        span.private(ng-if="project.get('is_private')", title="{{'PROJECT.PRIVATE' | translate}}")
+                            include ../../../svg/lock.svg
+                        p {{ ::project.get('description') | limitTo:300 }}
+                            span(ng-if="::project.get('description').length > 300") ...
 
                         div.project-list-single-tags.tags-container(ng-if="::project.get('tags').size")
                             span.tag(style='border-left: 5px solid {{::tag.get("color")}};', tg-repeat="tag in ::project.get('colorized_tags')")
                                 span.tag-name {{::tag.get('name')}}
 
-                    div.project-list-single-right
                     span.drag.icon.icon-drag-v
 
         aside.help-area
