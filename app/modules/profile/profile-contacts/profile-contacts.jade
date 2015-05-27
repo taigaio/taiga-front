@@ -14,8 +14,8 @@ section.profile-contacts
 
             div.profile-contact-data
                 h1
-                    a(tg-nav="user-profile:username=contact.get('username')", title="{{::contact.get('name') }}")
-                        | {{::contact.get('full_name')}}
+                    a(tg-nav="user-profile:username=contact.get('username')", title="{{::contact.get('full_name_display') }}")
+                        | {{::contact.get('full_name_display')}}
 
                 p(ng-if="contact.bio") {{::contact.get('bio')}}
 
