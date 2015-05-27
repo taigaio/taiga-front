@@ -505,7 +505,7 @@ init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $na
     # Analytics
     $analytics.initialize()
 
-    $rootscope.$on '$routeChangeStart',  (event, next) ->
+    $rootscope.$on '$routeChangeSuccess',  (event, next) ->
         if next.access && next.access.requiresLogin
             if !$auth.isAuthenticated()
                 $location.path($navUrls.resolve("login"))
