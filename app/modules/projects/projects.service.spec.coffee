@@ -101,8 +101,8 @@ describe "tgProjectsService", ->
         project = Immutable.fromJS({id: 2, url: 'url-2', tags: ['xx', 'yy', 'aa'], tags_colors: {xx: "red", yy: "blue", aa: "white"}})
 
         mocks.resources.projects = {}
-        mocks.resources.projects.getProjectBySlug = sinon.stub().promise()
-        mocks.resources.projects.getProjectBySlug.withArgs(projectSlug).resolve(project)
+        mocks.resources.projects.getProjectBySlug = sinon.stub()
+        mocks.resources.projects.getProjectBySlug.withArgs(projectSlug).promise().resolve(project)
 
         projectsService.getProjectBySlug(projectSlug).then (project) ->
             expect(project.toJS()).to.be.eql(
@@ -126,8 +126,8 @@ describe "tgProjectsService", ->
         ])
 
         mocks.resources.projects = {}
-        mocks.resources.projects.getProjectsByUserId = sinon.stub().promise()
-        mocks.resources.projects.getProjectsByUserId.withArgs(projectId).resolve(projects)
+        mocks.resources.projects.getProjectsByUserId = sinon.stub()
+        mocks.resources.projects.getProjectsByUserId.withArgs(projectId).promise().resolve(projects)
 
         projectsService.getProjectsByUserId(projectId).then (projects) ->
             expect(projects.toJS()).to.be.eql([{

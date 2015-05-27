@@ -5,7 +5,7 @@ describe "tgProjectService", ->
 
     _mockProjectsService = () ->
         mocks.projectsService = {
-            getProjectBySlug: sinon.stub().promise()
+            getProjectBySlug: sinon.stub()
         }
 
         $provide.value "tgProjectsService", mocks.projectsService
@@ -69,7 +69,7 @@ describe "tgProjectService", ->
 
         projectService._pslug = pslug
 
-        mocks.projectsService.getProjectBySlug.withArgs(pslug).resolve(project)
+        mocks.projectsService.getProjectBySlug.withArgs(pslug).promise().resolve(project)
 
         projectService.fetchProject().then () ->
             expect(projectService.project).to.be.equal(project)

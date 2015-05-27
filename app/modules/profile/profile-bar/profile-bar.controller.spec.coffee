@@ -6,7 +6,7 @@ describe "ProfileBar", ->
 
     _mockUserService = () ->
         mocks.userService = {
-            getStats:  sinon.stub().promise()
+            getStats:  sinon.stub()
         }
 
         provide.value "tgUserService", mocks.userService
@@ -37,7 +37,7 @@ describe "ProfileBar", ->
             {id: 3}
         ])
 
-        mocks.userService.getStats.withArgs(userId).resolve(stats)
+        mocks.userService.getStats.withArgs(userId).promise().resolve(stats)
 
         $scope = $rootScope.$new
 

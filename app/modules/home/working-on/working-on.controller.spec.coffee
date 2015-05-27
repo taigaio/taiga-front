@@ -5,7 +5,7 @@ describe "WorkingOn", ->
 
     _mockHomeService = () ->
         mocks.homeService = {
-            getWorkInProgress: sinon.stub().promise()
+            getWorkInProgress: sinon.stub()
         }
 
         $provide.value("tgHomeService", mocks.homeService)
@@ -43,7 +43,7 @@ describe "WorkingOn", ->
             }
         })
 
-        mocks.homeService.getWorkInProgress.withArgs(userId).resolve(workInProgress)
+        mocks.homeService.getWorkInProgress.withArgs(userId).promise().resolve(workInProgress)
 
         ctrl = $controller("WorkingOn")
 

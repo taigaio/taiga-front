@@ -11,8 +11,8 @@ describe "tgCurrentUserService", ->
 
     _mockProjectsService = () ->
         mocks.projectsService = {
-            getProjectsByUserId: sinon.stub().promise(),
-            bulkUpdateProjectsOrder: sinon.stub().promise()
+            getProjectsByUserId: sinon.stub()
+            bulkUpdateProjectsOrder: sinon.stub()
         }
 
         provide.value "tgProjectsService", mocks.projectsService
@@ -65,8 +65,8 @@ describe "tgCurrentUserService", ->
             {id: 5, name: "fake5"}
         ])
 
-        mocks.projectsService.getProjectsByUserId = sinon.stub().promise()
-        mocks.projectsService.getProjectsByUserId.withArgs(user.get("id")).resolve(projects)
+        mocks.projectsService.getProjectsByUserId = sinon.stub()
+        mocks.projectsService.getProjectsByUserId.withArgs(user.get("id")).promise().resolve(projects)
 
         currentUserService.setUser(user).then () ->
             expect(currentUserService._user).to.be.equal(user)
@@ -82,7 +82,7 @@ describe "tgCurrentUserService", ->
 
         currentUserService._loadProjects = sinon.spy()
 
-        mocks.projectsService.bulkUpdateProjectsOrder.withArgs(fakeData).resolve()
+        mocks.projectsService.bulkUpdateProjectsOrder.withArgs(fakeData).promise().resolve()
 
         currentUserService.bulkUpdateProjectsOrder(fakeData).then () ->
             expect(currentUserService._loadProjects).to.be.callOnce

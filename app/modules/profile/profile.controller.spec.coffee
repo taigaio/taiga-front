@@ -32,7 +32,7 @@ describe "ProfileController", ->
         stub = sinon.stub()
 
         mocks.userService = {
-            getUserByUserName: sinon.stub().promise()
+            getUserByUserName: sinon.stub()
         }
 
         provide.value "tgUserService", mocks.userService
@@ -70,13 +70,13 @@ describe "ProfileController", ->
 
         mocks.routeParams.slug = "user-slug"
 
-        ctrl = $controller("Profile")
-
         user = Immutable.fromJS({
             full_name: "full-name"
         })
 
-        mocks.userService.getUserByUserName.withArgs(mocks.routeParams.slug).resolve(user)
+        mocks.userService.getUserByUserName.withArgs(mocks.routeParams.slug).promise().resolve(user)
+
+        ctrl = $controller("Profile")
 
         setTimeout ( ->
             expect(ctrl.user).to.be.equal(user)

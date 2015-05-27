@@ -9,9 +9,9 @@ describe "tgHome", ->
         mocks.resources.tasks = {}
         mocks.resources.issues = {}
 
-        mocks.resources.userstories.listInAllProjects = sinon.stub().promise()
-        mocks.resources.tasks.listInAllProjects = sinon.stub().promise()
-        mocks.resources.issues.listInAllProjects = sinon.stub().promise()
+        mocks.resources.userstories.listInAllProjects = sinon.stub()
+        mocks.resources.tasks.listInAllProjects = sinon.stub()
+        mocks.resources.issues.listInAllProjects = sinon.stub()
 
         provide.value "tgResources", mocks.resources
 
@@ -61,13 +61,13 @@ describe "tgHome", ->
                 {id: 2, name: "fake2", slug: "project-2"}
             ]))
 
-        mocks.resources.userstories.listInAllProjects
+        mocks.resources.userstories.listInAllProjects.promise()
             .resolve(Immutable.fromJS([{id: 1, ref: 1, project: "1"}]))
 
-        mocks.resources.tasks.listInAllProjects
+        mocks.resources.tasks.listInAllProjects.promise()
             .resolve(Immutable.fromJS([{id: 2, ref: 2, project: "1"}]))
 
-        mocks.resources.issues.listInAllProjects
+        mocks.resources.issues.listInAllProjects.promise()
             .resolve(Immutable.fromJS([{id: 3, ref: 3, project: "1"}]))
 
         # mock urls

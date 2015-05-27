@@ -13,7 +13,7 @@ describe "ProfileProjects", ->
 
     _mockProjectsService = () ->
         mocks.projectsService = {
-            getProjectsByUserId: sinon.stub().promise()
+            getProjectsByUserId: sinon.stub()
         }
 
         provide.value "tgProjectsService", mocks.projectsService
@@ -60,7 +60,7 @@ describe "ProfileProjects", ->
             {id: 3, contacts: "fake"}
         ]
 
-        mocks.projectsService.getProjectsByUserId.withArgs(userId).resolve(projects)
+        mocks.projectsService.getProjectsByUserId.withArgs(userId).promise().resolve(projects)
         mocks.userService.attachUserContactsToProjects.withArgs(userId, projects).returns(projectsWithContacts)
 
         $scope = $rootScope.$new()

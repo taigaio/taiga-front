@@ -60,8 +60,8 @@ describe "UserService", ->
             {id: 3, name: "fake3"}
         ])
 
-        mocks.resources.users.getContacts = sinon.stub().promise()
-        mocks.resources.users.getContacts.withArgs(userId).resolve(contacts)
+        mocks.resources.users.getContacts = sinon.stub()
+        mocks.resources.users.getContacts.withArgs(userId).promise().resolve(contacts)
 
         userService.attachUserContactsToProjects(userId, projects).then (_projects_) ->
             contacts = _projects_.get(0).get("contacts")
@@ -79,8 +79,8 @@ describe "UserService", ->
             {id: 3}
         ]
 
-        mocks.resources.users.getContacts = sinon.stub().promise()
-        mocks.resources.users.getContacts.withArgs(userId).resolve(contacts)
+        mocks.resources.users.getContacts = sinon.stub()
+        mocks.resources.users.getContacts.withArgs(userId).promise().resolve(contacts)
 
         userService.getContacts(userId).then (_contacts_) ->
             expect(_contacts_).to.be.eql(contacts)
@@ -93,8 +93,8 @@ describe "UserService", ->
 
         user = {id: 1}
 
-        mocks.resources.users.getUserByUsername = sinon.stub().promise()
-        mocks.resources.users.getUserByUsername.withArgs(username).resolve(user)
+        mocks.resources.users.getUserByUsername = sinon.stub()
+        mocks.resources.users.getUserByUsername.withArgs(username).promise().resolve(user)
 
         userService.getUserByUserName(username).then (_user_) ->
             expect(_user_).to.be.eql(user)
