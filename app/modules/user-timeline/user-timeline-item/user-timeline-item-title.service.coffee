@@ -8,6 +8,7 @@ class UserTimelineItemTitle
         'subject': 'COMMON.FIELDS.SUBJECT',
         'description': 'COMMON.FIELDS.DESCRIPTION',
         'points': 'COMMON.FIELDS.POINTS',
+        'assigned_to': 'COMMON.FIELDS.ASSIGNED_TO',
         'severity': 'ISSUES.FIELDS.SEVERITY',
         'priority': 'ISSUES.FIELDS.PRIORITY',
         'type': 'ISSUES.FIELDS.TYPE',
