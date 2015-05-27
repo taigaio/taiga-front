@@ -98,22 +98,15 @@ class ProjectController extends taiga.Controller
         promise.then null, @.onInitialDataError.bind(@)
 
     loadInitialData: ->
-        # Resolve project slug
-        promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
-            @scope.projectId = data.project
-            return data
-
-        return promise.then(=> @.loadPageData())
-                      .then(=> @scope.$emit("project:loaded", @scope.project))
-
-    loadPageData: ->
-        return @q.all([
-            @.loadProjectStats(),
-            @.loadProject()])
+        promise = @.loadProject()
+        promise.then(=> @.loadProjectStats())
+        return promise
 
     loadProject: ->
-        return @rs.projects.get(@scope.projectId).then (project) =>
+        return @rs.projects.getBySlug(@params.pslug).then (project) =>
+            @scope.projectId = project.id
             @scope.project = project
+            @scope.$emit("project:loaded", @scope.project)
             return project
 
     loadProjectStats: ->

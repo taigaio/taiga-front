@@ -65,10 +65,11 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
         promise.then null, @.onInitialDataError.bind(@)
 
     loadProject: ->
-        return @rs.projects.get(@scope.projectId).then (project) =>
+        return @rs.projects.getBySlug(@params.pslug).then (project) =>
             if not project.i_am_owner
                 @location.path(@navUrls.resolve("permission-denied"))
 
+            @scope.projectId = project.id
             @scope.project = project
 
             @scope.$emit('project:loaded', project)
@@ -76,39 +77,29 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
 
             return project
 
-    loadExternalUserRole: (roles) ->
-        roles = roles.map (role) ->
-            role.external_user = false
-
-            return role
-
-        public_permission = {
-            "name": @translate.instant("ADMIN.ROLES.EXTERNAL_USER"),
-            "permissions": @scope.project.public_permissions,
-            "external_user": true
-        }
-
-        roles.push(public_permission)
-
-        return roles
-
     loadRoles: ->
-        return @rs.roles.list(@scope.projectId)
-            .then @loadExternalUserRole
-            .then (roles) =>
-                @scope.roles = roles
-                @scope.role = @scope.roles[0]
+        return @rs.roles.list(@scope.projectId).then (roles) =>
+            roles = roles.map (role) ->
+                role.external_user = false
 
-                return roles
+                return role
+
+            public_permission = {
+                "name": @translate.instant("ADMIN.ROLES.EXTERNAL_USER"),
+                "permissions": @scope.project.public_permissions,
+                "external_user": true
+            }
+
+            roles.push(public_permission)
+
+            @scope.roles = roles
+            @scope.role = @scope.roles[0]
+            return roles
 
     loadInitialData: ->
-        promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
-            @scope.projectId = data.project
-            return data
-
-        return promise.then(=> @.loadProject())
-                      .then(=> @.loadUsersAndRoles())
-                      .then(=> @.loadRoles())
+        promise = @.loadProject()
+        promise.then(=> @.loadRoles())
+        return promise
 
     setRole: (role) ->
         @scope.role = role

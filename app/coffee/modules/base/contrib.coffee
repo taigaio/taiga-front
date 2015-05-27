@@ -39,18 +39,15 @@ class ContribController extends taiga.Controller
             @confirm.notify("error")
 
     loadProject: ->
-        return @rs.projects.get(@scope.projectId).then (project) =>
+        return @rs.projects.getBySlug(@params.pslug).then (project) =>
+            @scope.projectId = project.id
             @scope.project = project
             @scope.$emit('project:loaded', project)
             @scope.$broadcast('project:loaded', project)
             return project
 
     loadInitialData: ->
-        promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
-            @scope.projectId = data.project
-            return data
-
-        return promise.then(=> @.loadProject())
+        return @.loadProject()
 
 module = angular.module("taigaBase")
 module.controller("ContribController", ContribController)

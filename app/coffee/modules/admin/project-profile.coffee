@@ -71,10 +71,11 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
             @appTitle.set(appTitle)
 
     loadProject: ->
-        return @rs.projects.get(@scope.projectId).then (project) =>
+        return @rs.projects.getBySlug(@params.pslug).then (project) =>
             if not project.i_am_owner
                 @location.path(@navUrls.resolve("permission-denied"))
 
+            @scope.projectId = project.id
             @scope.project = project
             @scope.pointsList = _.sortBy(project.points, "order")
             @scope.usStatusList = _.sortBy(project.us_statuses, "order")
@@ -90,18 +91,10 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
         return @rs.projects.tagsColors(@scope.projectId).then (tags_colors) =>
             @scope.project.tags_colors = tags_colors
 
-    loadProjectProfile: ->
-        return @q.all([
-            @.loadProject(),
-            @.loadTagsColors()
-        ])
-
     loadInitialData: ->
-        promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
-            @scope.projectId = data.project
-            return data
-
-        return promise.then(=> @.loadProjectProfile())
+        promise = @.loadProject()
+        promise.then => @.loadTagsColors()
+        return promise
 
     openDeleteLightbox: ->
         @rootscope.$broadcast("deletelightbox:new", @scope.project)
