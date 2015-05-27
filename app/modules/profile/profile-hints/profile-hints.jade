@@ -1,0 +1,8 @@
+h4
+    span.icon.icon-help
+    span(translate="HINTS.SECTION_NAME")
+
+p {{::vm.title}}
+p {{::vm.text}}
+    | &nbsp;
+    a(target="_blank", ng-href="{{::vm.url}}", title="{{'HINTS.LINK_TITLE' | translate}}", translate="HINTS.LINK")

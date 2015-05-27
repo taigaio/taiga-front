@@ -1150,6 +1150,15 @@
             "LAST_MODIFICATION": "last modification"
         }
     },
+    "HINTS": {
+        "SECTION_NAME": "Hint",
+        "LINK": "If you want to know how to use it visit our support page",
+        "LINK_TITLE": "Visit our support page",
+        "HINT1_TITLE": "Did you know you import and export projects?",
+        "HINT1_TEXT": "This allow you to extract all your data from one taiga and move it to another one",
+        "HINT2_TITLE": "Did you know you can create custom fields?",
+        "HINT2_TEXT": "This will provide teams with a flexible input to fit in their workflow"
+    },
     "TIMELINE": {
         "UPLOAD_ATTACHMENT": "{{username}} has uploaded a new attachment in {{obj_name}}",
         "US_CREATED": "{{username}} has created a new US in {{project_name}} {{obj_name}}",
