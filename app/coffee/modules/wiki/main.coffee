@@ -263,7 +263,7 @@ EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $
 
             if isEditable()
                 $el.addClass('editable')
-                if not wikiPage.id?
+                if not wikiPage.id? or $.trim(wikiPage.content).length == 0
                     switchToEditMode()
             else
                 disableEdition()
