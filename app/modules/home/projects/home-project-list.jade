@@ -1,7 +1,7 @@
 ul.home-project-list(ng-show="vm.projects.size")
     li.home-project-list-single(tg-bind-scope, tg-repeat="project in vm.projects")
-        a(href="#", tg-nav="project:project=project.get('slug')")
-            h2.home-project-list-single-title
+        h2.home-project-list-single-title
+            a(href="#", tg-nav="project:project=project.get('slug')")
                 span.project-name(title="{{ ::project.get('name') }}") {{::project.get('name')}}
                 span.private(ng-if="project.get('is_private')", title="{{'PROJECT.PRIVATE' | translate}}")
                     include ../../../svg/lock.svg

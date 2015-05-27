@@ -14,11 +14,10 @@ div.project-list-wrapper.centered
                 li.project-list-single(tg-bind-scope, tg-repeat="project in vm.projects")
                     div.project-list-single-left
                         div.project-list-single-title
-                            h1
-                            a(href="#", tg-nav="project:project=project.get('slug')")
-                                h1.project-name(title="{{ ::project.get('name') }}") {{project.get('name')}}
-                                span.private(ng-if="project.get('is_private')", title="{{'PROJECT.PRIVATE' | translate}}")
-                                    include ../../../svg/lock.svg
+                            h1.project-name
+                                a(href="#", tg-nav="project:project=project.get('slug')", title="{{ ::project.get('name') }}") {{project.get('name')}}
+                            span.private(ng-if="project.get('is_private')", title="{{'PROJECT.PRIVATE' | translate}}")
+                                include ../../../svg/lock.svg
                             p {{ ::project.get('description') | limitTo:300 }}
                                 span(ng-if="::project.get('description').length > 300") ...
 
