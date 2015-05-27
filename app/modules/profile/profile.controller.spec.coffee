@@ -73,7 +73,7 @@ describe "ProfileController", ->
         ctrl = $controller("Profile")
 
         user = Immutable.fromJS({
-            username: "user-name"
+            full_name: "full-name"
         })
 
         mocks.userService.getUserByUserName.withArgs(mocks.routeParams.slug).resolve(user)
@@ -81,7 +81,7 @@ describe "ProfileController", ->
         setTimeout ( ->
             expect(ctrl.user).to.be.equal(user)
             expect(ctrl.isCurrentUser).to.be.false
-            expect(mocks.appTitle.set.calledWithExactly("user-name")).to.be.true
+            expect(mocks.appTitle.set.calledWithExactly("full-name")).to.be.true
 
             done()
         )
@@ -90,7 +90,7 @@ describe "ProfileController", ->
         $scope = $rootScope.$new()
 
         user = Immutable.fromJS({
-            username: "user-name"
+            full_name_display: "full-name-display"
         })
 
         mocks.currentUser.getUser.returns(user)
@@ -99,4 +99,4 @@ describe "ProfileController", ->
 
         expect(ctrl.user).to.be.equal(user)
         expect(ctrl.isCurrentUser).to.be.true
-        expect(mocks.appTitle.set.calledWithExactly("user-name")).to.be.true
+        expect(mocks.appTitle.set.calledWithExactly("full-name-display")).to.be.true

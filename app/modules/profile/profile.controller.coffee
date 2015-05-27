@@ -13,10 +13,10 @@ class ProfilePageController extends taiga.Controller
                 .then (user) =>
                     @.user = user
                     @.isCurrentUser = false
-                    @appTitle.set(@.user.get('username'))
+                    @appTitle.set(@.user.get('full_name'))
         else
             @.user = @currentUserService.getUser()
             @.isCurrentUser = true
-            @appTitle.set(@.user.get('username'))
+            @appTitle.set(@.user.get('full_name_display'))
 
 angular.module("taigaProfile").controller("Profile", ProfilePageController)
