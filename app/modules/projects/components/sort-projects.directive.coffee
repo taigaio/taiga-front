@@ -16,7 +16,7 @@ SortProjectsDirective = (currentUserService) ->
             index = itemEl.index()
 
             sorted_project_ids = _.map(scope.projects.toJS(), (p) -> p.id)
-            sorted_project_ids = _.without(sorted_project_ids, project.id)
+            sorted_project_ids = _.without(sorted_project_ids, project.get("id"))
             sorted_project_ids.splice(index, 0, project.get('id'))
 
             sortData = []
@@ -35,4 +35,4 @@ SortProjectsDirective = (currentUserService) ->
 
     return directive
 
-angular.module("taigaProjects").directive("tgSortProjects", ["tgProjectsService", SortProjectsDirective])
+angular.module("taigaProjects").directive("tgSortProjects", ["tgCurrentUserService", SortProjectsDirective])
