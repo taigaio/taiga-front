@@ -59,7 +59,7 @@ urls = {
     "create-project": "/create-project"
 
     "profile": "/profile"
-    "user-profile": "profile/:username"
+    "user-profile": "/profile/:username"
 
     "project": "/project/:project"
     "project-backlog": "/project/:project/backlog"
