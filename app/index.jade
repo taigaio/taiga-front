@@ -11,6 +11,9 @@ html(lang="en")
         link(rel="stylesheet", href="/styles/main.css")
         link(rel="icon", type="image/png", href="/images/favicon.png")
 
+        //- PRERENDER SERVICE: This is to know when the page is completely loaded.
+        script(type='text/javascript').
+            window.prerenderReady = false;
 
     body(tg-main)
         include partials/includes/components/notification-message

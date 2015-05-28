@@ -191,7 +191,8 @@ PublicRegisterMessageDirective = ($config, $navUrls, templates) ->
         template: templateFn
     }
 
-module.directive("tgPublicRegisterMessage", ["$tgConfig", "$tgNavUrls", "$tgTemplate", PublicRegisterMessageDirective])
+module.directive("tgPublicRegisterMessage", ["$tgConfig", "$tgNavUrls", "$tgTemplate",
+                                             PublicRegisterMessageDirective])
 
 
 LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls, $events, $translate) ->
@@ -227,10 +228,16 @@ LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls, $
 
         $el.on "submit", "form", submit
 
+        window.prerenderReady = true
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
     return {link:link}
 
 module.directive("tgLogin", ["$tgAuth", "$tgConfirm", "$tgLocation", "$tgConfig", "$routeParams",
                              "$tgNavUrls", "$tgEvents", "$translate", LoginDirective])
+
 
 #############################################################################
 ## Register Directive
@@ -270,10 +277,16 @@ RegisterDirective = ($auth, $confirm, $location, $navUrls, $config, $analytics, 
 
         $el.on "submit", "form", submit
 
+        $scope.$on "$destroy", ->
+            $el.off()
+
+        window.prerenderReady = true
+
     return {link:link}
 
 module.directive("tgRegister", ["$tgAuth", "$tgConfirm", "$tgLocation", "$tgNavUrls", "$tgConfig",
                                 "$tgAnalytics", "$translate", RegisterDirective])
+
 
 #############################################################################
 ## Forgot Password Directive
@@ -306,10 +319,16 @@ ForgotPasswordDirective = ($auth, $confirm, $location, $navUrls, $translate) ->
 
         $el.on "submit", "form", submit
 
+        $scope.$on "$destroy", ->
+            $el.off()
+
+        window.prerenderReady = true
+
     return {link:link}
 
 module.directive("tgForgotPassword", ["$tgAuth", "$tgConfirm", "$tgLocation", "$tgNavUrls", "$translate",
                                       ForgotPasswordDirective])
+
 
 #############################################################################
 ## Change Password from Recovery Directive
@@ -350,10 +369,15 @@ ChangePasswordFromRecoveryDirective = ($auth, $confirm, $location, $params, $nav
 
         $el.on "submit", "form", submit
 
+        $scope.$on "$destroy", ->
+            $el.off()
+
     return {link:link}
 
 module.directive("tgChangePasswordFromRecovery", ["$tgAuth", "$tgConfirm", "$tgLocation", "$routeParams",
-                                                  "$tgNavUrls", "$translate", ChangePasswordFromRecoveryDirective])
+                                                  "$tgNavUrls", "$translate",
+                                                  ChangePasswordFromRecoveryDirective])
+
 
 #############################################################################
 ## Invitation
@@ -380,7 +404,9 @@ InvitationDirective = ($auth, $confirm, $location, $params, $navUrls, $analytics
         onSuccessSubmitLogin = (response) ->
             $analytics.trackEvent("auth", "invitationAccept", "invitation accept with existing user", 1)
             $location.path($navUrls.resolve("project", {project: $scope.invitation.project_slug}))
-            text = $translate.instant("INVITATION_LOGIN_FORM.SUCCESS", {"project_name": $scope.invitation.project_name})
+            text = $translate.instant("INVITATION_LOGIN_FORM.SUCCESS", {
+                "project_name": $scope.invitation.project_name
+            })
 
             $confirm.notify("success", text)
 
@@ -428,10 +454,14 @@ InvitationDirective = ($auth, $confirm, $location, $params, $navUrls, $analytics
         $el.on "submit", "form.register-form", submitRegister
         $el.on "click", ".button-register", submitRegister
 
+        $scope.$on "$destroy", ->
+            $el.off()
+
     return {link:link}
 
 module.directive("tgInvitation", ["$tgAuth", "$tgConfirm", "$tgLocation", "$routeParams",
                                   "$tgNavUrls", "$tgAnalytics", "$translate", InvitationDirective])
+
 
 #############################################################################
 ## Change Email
@@ -471,10 +501,14 @@ ChangeEmailDirective = ($repo, $model, $auth, $confirm, $location, $params, $nav
             event.preventDefault()
             submit()
 
+        $scope.$on "$destroy", ->
+            $el.off()
+
     return {link:link}
 
-module.directive("tgChangeEmail", ["$tgRepo", "$tgModel", "$tgAuth", "$tgConfirm", "$tgLocation", "$routeParams",
-                                   "$tgNavUrls", "$translate", ChangeEmailDirective])
+module.directive("tgChangeEmail", ["$tgRepo", "$tgModel", "$tgAuth", "$tgConfirm", "$tgLocation",
+                                   "$routeParams", "$tgNavUrls", "$translate", ChangeEmailDirective])
+
 
 #############################################################################
 ## Cancel account
@@ -510,7 +544,10 @@ CancelAccountDirective = ($repo, $model, $auth, $confirm, $location, $params, $n
 
         $el.on "submit", "form", submit
 
+        $scope.$on "$destroy", ->
+            $el.off()
+
     return {link:link}
 
-module.directive("tgCancelAccount", ["$tgRepo", "$tgModel", "$tgAuth", "$tgConfirm", "$tgLocation", "$routeParams",
-                                   "$tgNavUrls", CancelAccountDirective])
+module.directive("tgCancelAccount", ["$tgRepo", "$tgModel", "$tgAuth", "$tgConfirm", "$tgLocation",
+                                     "$routeParams","$tgNavUrls", CancelAccountDirective])
