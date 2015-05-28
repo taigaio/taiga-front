@@ -16,11 +16,16 @@ class ProjectService
 
     setSection: (section) ->
         @._section = section
-        @._sectionsBreadcrumb = @._sectionsBreadcrumb.unshift(@._section)
+
+        if section
+            @._sectionsBreadcrumb = @._sectionsBreadcrumb.push(@._section)
+        else
+            @._sectionsBreadcrumb = Immutable.List()
 
     setProject: (pslug) ->
         if @._pslug != pslug
             @._pslug = pslug
+
             @.fetchProject()
 
     fetchProject: () ->

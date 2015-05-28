@@ -212,7 +212,7 @@ describe "ProjectMenu", ->
 
                 mocks.projectService.project = project
                 mocks.projectService.section = "backlog-kanban"
-                mocks.projectService.sectionsBreadcrumb = Immutable.List.of("kanban", "backlog", "oo")
+                mocks.projectService.sectionsBreadcrumb = Immutable.List.of("oo", "backlog", "kanban")
 
                 ctrl = $controller("ProjectMenu")
 
@@ -225,7 +225,21 @@ describe "ProjectMenu", ->
 
                 mocks.projectService.project = project
                 mocks.projectService.section = "backlog-kanban"
-                mocks.projectService.sectionsBreadcrumb = Immutable.List.of("backlog", "kanban", "oo")
+                mocks.projectService.sectionsBreadcrumb = Immutable.List.of("kanban", "oo", "backlog")
+
+                ctrl = $controller("ProjectMenu")
+
+                ctrl.show()
+
+                expect(ctrl.active).to.be.equal("backlog")
+
+
+            it "backlog-kanban when kanban is not in the breadcrumb", () ->
+                project = Immutable.fromJS({})
+
+                mocks.projectService.project = project
+                mocks.projectService.section = "backlog-kanban"
+                mocks.projectService.sectionsBreadcrumb = Immutable.List.of("oo", "backlog")
 
                 ctrl = $controller("ProjectMenu")
 

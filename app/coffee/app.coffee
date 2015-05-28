@@ -510,8 +510,7 @@ init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $na
             if !$auth.isAuthenticated()
                 $location.path($navUrls.resolve("login"))
 
-        if next.section
-            projectService.setSection(next.section)
+        projectService.setSection(next.section)
 
         if next.params.pslug
             projectService.setProject(next.params.pslug)

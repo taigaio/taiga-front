@@ -59,7 +59,7 @@ class ProjectMenuController
         indexKanban = sectionsBreadcrumb.lastIndexOf("kanban")
 
         if indexBacklog != -1 || indexKanban != -1
-            if indexBacklog > indexKanban
+            if indexKanban == -1 || indexBacklog < indexKanban
                 oldSectionName = "backlog"
             else
                 oldSectionName = "kanban"

@@ -48,7 +48,6 @@ describe "WorkingOn", ->
         ctrl = $controller("WorkingOn")
 
         ctrl.getWorkInProgress(userId).then () ->
-            console.log ctrl.assignedTo.toJS()
             expect(ctrl.assignedTo.toJS()).to.be.eql([
                 {id: 6, modified_date: '2015-01-06'},
                 {id: 4, modified_date: '2015-01-05'},

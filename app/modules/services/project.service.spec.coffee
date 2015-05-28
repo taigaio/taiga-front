@@ -41,7 +41,7 @@ describe "tgProjectService", ->
         expect(projectService.sectionsBreadcrumb.toJS()).to.be.eql(breadcrumb)
 
         section = "fakeSection222"
-        breadcrumb = ["fakeSection222","fakeSection"]
+        breadcrumb = ["fakeSection", "fakeSection222"]
         projectService.setSection(section)
 
         expect(projectService.sectionsBreadcrumb.toJS()).to.be.eql(breadcrumb)
