@@ -116,11 +116,13 @@ SearchBoxDirective = (projectService, $lightboxService, $navurls, $location, $ro
 
             url = $navurls.resolve("project-search", {project: project.get("slug")})
 
-            $lightboxService.close($el)
             $scope.$apply ->
+                $lightboxService.close($el)
+
                 $location.path(url)
                 $location.search("text", text).path(url)
                 $route.reload()
+
 
         openLightbox = () ->
             project = projectService.project
