@@ -19,10 +19,9 @@ nav.navbar(ng-if="vm.isAuthenticated")
             translate="PROJECT.NAVIGATION.HELP")
 
     div.nav-right
-        a(
-            href="#",
-            tg-nav="home",
-            title="{{'PROJECT.NAVIGATION.DASHBOARD_TITLE' | translate}}")
+        a(tg-nav="home",
+          ng-class="{active: vm.active}",
+          title="{{'PROJECT.NAVIGATION.DASHBOARD_TITLE' | translate}}")
 
             include ../../svg/dashboard.svg
 

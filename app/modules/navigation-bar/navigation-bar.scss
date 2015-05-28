@@ -47,6 +47,7 @@
         color: $white;
         display: inline-block;
         transition: all .2s linear;
+        &.active,
         &:hover {
             background: rgba($black, .2);
             color: $fresh-taiga;
