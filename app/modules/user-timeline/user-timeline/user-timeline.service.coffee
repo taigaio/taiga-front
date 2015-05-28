@@ -28,7 +28,9 @@ class UserTimelineService extends taiga.Service
         return _.some values, (value) => @._valid_fields.indexOf(value) != -1
 
     _isValidEvent: (event) ->
-        return event.split(".").slice(-1)[0] != 'delete'
+        event = event.split(".")
+
+        return event[2] != 'delete' && !(event[1] == 'project' && event[2] == 'change')
 
     _filterValidTimelineItems: (timeline) ->
         if timeline.get("data")
@@ -43,6 +45,7 @@ class UserTimelineService extends taiga.Service
                     return false
                 else if values[0] == 'attachments' &&
                      values_diff.get('attachments').get('new').size == 0
+
                     return false
 
         if !@._isValidEvent(timeline.get('event_type'))

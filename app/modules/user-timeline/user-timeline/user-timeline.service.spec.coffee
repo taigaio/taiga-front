@@ -104,6 +104,14 @@ describe "tgUserTimelineService", ->
                         }
                     }
                 }
+            },
+            { # invalid item
+                event_type: "xx.project.change",
+                data: {
+                    values_diff: {
+                        "name": "xx"
+                    }
+                }
             }
         ]
 
