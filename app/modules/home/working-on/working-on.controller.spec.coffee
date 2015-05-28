@@ -32,14 +32,14 @@ describe "WorkingOn", ->
 
         workInProgress = Immutable.fromJS({
             assignedTo: {
-                userStories: [{id: 1}, {id: 2}],
-                tasks: [{id: 3}, {id: 4}],
-                issues: [{id: 5}, {id: 6}]
+                userStories: [{id: 1, modified_date: "2015-01-01"}, {id: 2, modified_date: "2015-01-04"}],
+                tasks: [{id: 3, modified_date: "2015-01-02"}, {id: 4, modified_date: "2015-01-05"}],
+                issues: [{id: 5, modified_date: "2015-01-03"}, {id: 6, modified_date: "2015-01-06"}]
             },
             watching: {
-                userStories: [{id: 7}, {id: 8}],
-                tasks: [{id: 9}, {id: 10}],
-                issues: [{id: 11}, {id: 12}]
+                userStories: [{id: 7, modified_date: "2015-01-01"}, {id: 8, modified_date: "2015-01-04"}],
+                tasks: [{id: 9, modified_date: "2015-01-02"}, {id: 10, modified_date: "2015-01-05"}],
+                issues: [{id: 11, modified_date: "2015-01-03"}, {id: 12, modified_date: "2015-01-06"}]
             }
         })
 
@@ -48,12 +48,23 @@ describe "WorkingOn", ->
         ctrl = $controller("WorkingOn")
 
         ctrl.getWorkInProgress(userId).then () ->
+            console.log ctrl.assignedTo.toJS()
             expect(ctrl.assignedTo.toJS()).to.be.eql([
-                {id: 1}, {id: 2}, {id: 3}, {id: 4}, {id: 5}, {id: 6}
+                {id: 6, modified_date: '2015-01-06'},
+                {id: 4, modified_date: '2015-01-05'},
+                {id: 2, modified_date: '2015-01-04'},
+                {id: 5, modified_date: '2015-01-03'},
+                {id: 3, modified_date: '2015-01-02'},
+                {id: 1, modified_date: '2015-01-01'}
             ])
 
             expect(ctrl.watching.toJS()).to.be.eql([
-                {id: 7}, {id: 8}, {id: 9}, {id: 10}, {id: 11}, {id: 12}
+                {id: 12, modified_date: '2015-01-06'},
+                {id: 10, modified_date: '2015-01-05'},
+                {id: 8, modified_date: '2015-01-04'},
+                {id: 11, modified_date: '2015-01-03'},
+                {id: 9, modified_date: '2015-01-02'},
+                {id: 7, modified_date: '2015-01-01'}
             ])
 
             done()
