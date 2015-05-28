@@ -1,6 +1,7 @@
 section.profile-projects
     div(ng-if="!vm.projects.size")
-        p Loading... (TODO)
+         div.spin
+            img(src="/svg/spinner-circle.svg", alt="Loading...")
 
     div.project-list-single(tg-repeat="project in vm.projects")
         div.project-list-single-left
