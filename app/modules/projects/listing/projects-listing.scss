@@ -40,7 +40,9 @@
 }
 
 .project-list-single-right {
+    flex-shrink: 0;
     justify-content: space-between;
+    width: 200px;
     .project-list-single-stats {
         align-self: flex-end;
         display: flex;
@@ -65,7 +67,6 @@
         flex-grow: 0;
         flex-wrap: wrap-reverse;
         margin-top: 1rem;
-        max-width: 200px;
         a {
             display: block;        }
         img {
