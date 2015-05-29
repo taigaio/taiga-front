@@ -16,8 +16,6 @@ html(lang="en")
             window.prerenderReady = false;
 
     body(tg-main)
-        include partials/includes/components/notification-message
-
         div(tg-navigation-bar)
 
         div.master(ng-view)
@@ -34,6 +32,8 @@ html(lang="en")
             include partials/includes/modules/lightbox-generic-loading
 
         include partials/includes/modules/loader
+
+        include partials/includes/components/notification-message
 
         script(src="/js/libs.js?v=#{v}")
         script(src="/js/templates.js?v=#{v}")
