@@ -124,7 +124,7 @@ module.controller("ProjectValuesController", ProjectValuesController)
 ## Project values directive
 #############################################################################
 
-ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame, @translate, $rootscope) ->
+ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame, $translate, $rootscope) ->
     ## Drag & Drop Link
 
     linkDragAndDrop = ($scope, $el, $attrs) ->
@@ -165,7 +165,7 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame, @tra
             }
 
         initializeTextTranslations = ->
-            $scope.addNewElementText = @translate.instant("ADMIN.PROJECT_VALUES_#{objName.toUpperCase()}.ACTION_ADD")
+            $scope.addNewElementText = $translate.instant("ADMIN.PROJECT_VALUES_#{objName.toUpperCase()}.ACTION_ADD")
 
         initializeNewValue()
         initializeTextTranslations()
@@ -294,7 +294,10 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame, @tra
             if _.keys(choices).length == 0
                 return $confirm.error("ADMIN.PROJECT_VALUES.ERROR_DELETE_ALL")
 
-            $confirm.askChoice("PROJECT.TITLE_ACTION_DELETE_VALUE", subtitle, choices, "ADMIN.PROJECT_VALUES.REPLACEMENT").then (response) ->
+            title = $translate.instant("ADMIN.COMMON.TITLE_ACTION_DELETE_VALUE")
+            text = $translate.instant("ADMIN.PROJECT_VALUES.REPLACEMENT")
+
+            $confirm.askChoice(title, subtitle, choices, text).then (response) ->
                 onSucces = ->
                     $ctrl.loadValues().finally ->
                         response.finish()
@@ -428,7 +431,7 @@ module.controller("ProjectCustomAttributesController", ProjectCustomAttributesCo
 ## Custom Attributes Directive
 #############################################################################
 
-ProjectCustomAttributesDirective = ($log, $confirm, animationFrame) ->
+ProjectCustomAttributesDirective = ($log, $confirm, animationFrame, $translate) ->
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
 
@@ -614,7 +617,10 @@ ProjectCustomAttributesDirective = ($log, $confirm, animationFrame) ->
             attr = formEl.scope().attr
             message = attr.name
 
-            $confirm.ask("COMMON.CUSTOM_ATTRIBUTES.DELETE", "COMMON.CUSTOM_ATTRIBUTES.CONFIRM_DELETE", message).then (finish) ->
+            title = $translate.instant("COMMON.CUSTOM_ATTRIBUTES.DELETE")
+            text = $translate.instant("COMMON.CUSTOM_ATTRIBUTES.CONFIRM_DELETE")
+
+            $confirm.ask(title, text, message).then (finish) ->
                 onSucces = ->
                     $ctrl.loadCustomAttributes().finally ->
                         finish()
@@ -634,4 +640,4 @@ ProjectCustomAttributesDirective = ($log, $confirm, animationFrame) ->
 
     return {link: link}
 
-module.directive("tgProjectCustomAttributes", ["$log", "$tgConfirm", "animationFrame", ProjectCustomAttributesDirective])
+module.directive("tgProjectCustomAttributes", ["$log", "$tgConfirm", "animationFrame", "$translate", ProjectCustomAttributesDirective])
