@@ -1,6 +1,7 @@
 .navbar {
     background: rgba($black, .5);
     display: flex;
+    height: $navbar;
     justify-content: space-between;
     position: relative;
     &:after {

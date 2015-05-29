@@ -49,13 +49,13 @@ body {
 
 .wrapper {
     display: flex;
-    min-height: 100vh;
+    min-height: $main-height;
 }
 
 .menu-secondary {
     background: $whitish;
     flex: 0 0 auto;
-    min-height: 100vh;
+    min-height: $main-height;
     min-width: 0;
     padding: 1rem;
     width: 320px;
@@ -82,7 +82,7 @@ body {
 .menu-tertiary {
     background-color: $dark-taiga;
     flex: 0 0 auto;
-    min-height: 100vh;
+    min-height: $main-height;
     width: 250px;
 }
 

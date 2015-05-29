@@ -1,8 +1,8 @@
 .kanban {
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    max-height: 100vh;
+    height: $main-height;
+    max-height: $main-height;
     header {
         min-height: 70px;
     }

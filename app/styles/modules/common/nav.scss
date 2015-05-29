@@ -4,7 +4,7 @@ tg-project-menu {
     background-color: $dark-taiga;
     background-image: url('../images/menu.png');
     background-position: 0 -300px;
-    min-height: 100vh;
+    min-height: $main-height;
     padding: 1rem 0;
     text-transform: uppercase;
 }
