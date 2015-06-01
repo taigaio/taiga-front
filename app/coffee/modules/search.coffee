@@ -129,6 +129,10 @@ SearchBoxDirective = (projectService, $lightboxService, $navurls, $location, $ro
 
             $lightboxService.open($el)
 
+            setTimeout (->
+              $el.find('#search-text').focus()
+            ), 100
+
         $el.on "submit", "form", submit
 
         openLightbox()
