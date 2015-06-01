@@ -4,6 +4,8 @@
     "debug": true,
     "debugInfo": false,
     "defaultLanguage": "en",
+    "themes": ["taiga"],
+    "defaultTheme": "taiga",
     "publicRegisterEnabled": true,
     "feedbackEnabled": true,
     "privacyPolicyUrl": null,

@@ -1193,7 +1193,9 @@
             "BIO": "Bio (max. 210 chars)",
             "PLACEHOLDER_BIO": "Tell us something about you",
             "LANGUAGE": "Language",
-            "LANGUAGE_DEFAULT": "-- use default language --"
+            "LANGUAGE_DEFAULT": "-- use default language --",
+            "THEME": "Theme",
+            "THEME_DEFAULT": "-- use default theme --"
         }
     },
     "WIZARD": {

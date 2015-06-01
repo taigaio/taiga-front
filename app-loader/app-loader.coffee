@@ -4,6 +4,8 @@ window.taigaConfig = {
     "eventsUrl": null,
     "debug": true,
     "defaultLanguage": "en",
+    "themes": ["taiga"],
+    "defaultTheme": "taiga",
     "publicRegisterEnabled": true,
     "feedbackEnabled": true,
     "privacyPolicyUrl": null,
