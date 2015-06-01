@@ -1,12 +1,13 @@
-class ProfilePageController extends taiga.Controller
+class ProfilePageController
     @.$inject = [
         "$appTitle",
         "tgCurrentUserService",
         "$routeParams",
-        "tgUserService"
+        "tgUserService",
+        "tgXhrErrorService"
     ]
 
-    constructor: (@appTitle, @currentUserService, @routeParams, @userService) ->
+    constructor: (@appTitle, @currentUserService, @routeParams, @userService, @xhrError) ->
         @.isCurrentUser = false
 
         if @routeParams.slug
@@ -16,6 +17,9 @@ class ProfilePageController extends taiga.Controller
                     @.user = user
                     @.isCurrentUser = false
                     @appTitle.set(@.user.get('full_name'))
+                .catch (xhr) =>
+                    @xhrError.response(xhr)
+
         else
             @.user = @currentUserService.getUser()
             @.isCurrentUser = true

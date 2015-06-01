@@ -44,6 +44,15 @@ describe "ProfileController", ->
 
         provide.value "$routeParams", mocks.routeParams
 
+    _mockXhrErrorService = () ->
+        stub = sinon.stub()
+
+        mocks.xhrErrorService = {
+            response: sinon.spy()
+        }
+
+        provide.value "tgXhrErrorService", mocks.xhrErrorService
+
     _mocks = () ->
         module ($provide) ->
             provide = $provide
@@ -51,6 +60,7 @@ describe "ProfileController", ->
             _mockCurrentUser()
             _mockRouteParams()
             _mockUserService()
+            _mockXhrErrorService()
 
             return null
 
@@ -82,6 +92,25 @@ describe "ProfileController", ->
             expect(ctrl.user).to.be.equal(user)
             expect(ctrl.isCurrentUser).to.be.false
             expect(mocks.appTitle.set.calledWithExactly("full-name")).to.be.true
+
+            done()
+        )
+
+    it "non-existent user", (done) ->
+        $scope = $rootScope.$new()
+
+        mocks.routeParams.slug = "user-slug"
+
+        xhr = {
+            status: 404
+        }
+
+        mocks.userService.getUserByUserName.withArgs(mocks.routeParams.slug).promise().reject(xhr)
+
+        ctrl = $controller("Profile")
+
+        setTimeout ( ->
+            expect(mocks.xhrErrorService.response.withArgs(xhr)).to.be.calledOnce
 
             done()
         )
