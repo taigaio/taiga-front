@@ -41,6 +41,16 @@ class UserTimelineItemTitle
 
             return @._getLink(url, timeline.data.milestone.name)
 
+        else if param == 'us_name'
+            obj = @._getTimelineObj(timeline, event).userstory
+
+            event_us = {obj: 'parent_userstory'}
+            url = @._getDetailObjUrl(event_us)
+
+            text = '#' + obj.ref + ' ' + obj.subject
+
+            return @._getLink(url, text)
+
         else if param == 'obj_name'
             obj = @._getTimelineObj(timeline, event)
             url = @._getDetailObjUrl(event)
@@ -63,6 +73,7 @@ class UserTimelineItemTitle
             "wikipage": ["project-wiki-page", ":project=vm.activity.project.slug,slug=vm.activity.obj.slug"],
             "task": ["project-tasks-detail", ":project=vm.activity.project.slug,ref=vm.activity.obj.ref"],
             "userstory": ["project-userstories-detail", ":project=vm.activity.project.slug,ref=vm.activity.obj.ref"],
+            "parent_userstory": ["project-userstories-detail", ":project=vm.activity.project.slug,ref=vm.activity.obj.userstory.ref"],
             "milestone": ["project-taskboard", ":project=vm.activity.project.slug,sprint=vm.activity.obj.slug"]
         }
 

@@ -144,9 +144,15 @@ timelineType = (timeline, event) ->
         },
         { # TaskUpdated
             check: (timeline, event) ->
-                return event.obj == 'task' && event.type == 'change'
+                return event.obj == 'task' && event.type == 'change' && !timeline.data.task.userstory
             key: 'TIMELINE.TASK_UPDATED',
             translate_params: ['username', 'field_name', 'obj_name']
+        },
+        { # TaskUpdated with US
+            check: (timeline, event) ->
+                return event.obj == 'task' && event.type == 'change' && timeline.data.task.userstory
+            key: 'TIMELINE.TASK_UPDATED_WITH_US',
+            translate_params: ['username', 'field_name', 'obj_name', 'us_name']
         }
     ]
 
