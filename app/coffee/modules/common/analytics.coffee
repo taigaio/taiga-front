@@ -47,7 +47,7 @@ class AnalyticsService extends taiga.Service
         @win.ga("require", "displayfeatures")
 
         if @.trackRoutes and (not @.ignoreFirstPageLoad)
-            @win.ga("send", "pageview", @.getUrl());
+            @win.ga("send", "pageview", @.getUrl())
 
         # activates page tracking
         if @.trackRoutes
