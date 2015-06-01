@@ -9,15 +9,15 @@ ProfileTabDirective = () ->
         scope.tab.icon = attrs.tabIcon
         scope.tab.active = !!attrs.tabActive
 
-        ctrl.addTab(scope.tab)
+        if scope.$eval(attrs.tabDisabled) != false
+            ctrl.addTab(scope.tab)
 
     return {
         templateUrl: "profile/profile-tab/profile-tab.html",
         scope: {},
         require: "^tgProfileTabs",
         link: link,
-        transclude: true,
-        replace: true
+        transclude: true
     }
 
 angular.module("taigaProfile")

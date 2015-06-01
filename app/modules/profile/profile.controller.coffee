@@ -7,6 +7,8 @@ class ProfilePageController extends taiga.Controller
     ]
 
     constructor: (@appTitle, @currentUserService, @routeParams, @userService) ->
+        @.isCurrentUser = false
+
         if @routeParams.slug
             @userService
                 .getUserByUserName(@routeParams.slug)

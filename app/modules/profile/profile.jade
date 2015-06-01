@@ -6,7 +6,7 @@ div.profile.centered(ng-if="vm.user")
                 div(tg-profile-tab="activity", tab-title="{{'USER.PROFILE.ACTIVITY_TAB' | translate}}", tab-icon="icon-timeline", tab-active)
                     div(tg-user-timeline, userId="vm.user.get('id')")
 
-                div(tg-profile-tab="projects", tab-title="{{'USER.PROFILE.PROJECTS_TAB' | translate}}", tab-icon="icon-project")
+                div(tab-disabled="{{vm.isCurrentUser}}", tg-profile-tab="projects", tab-title="{{'USER.PROFILE.PROJECTS_TAB' | translate}}", tab-icon="icon-project")
                     div(tg-profile-projects, userId="vm.user.get('id')")
 
                 div(tg-profile-tab="contacts", tab-title="{{'USER.PROFILE.CONTACTS_TAB' | translate}}", tab-icon="icon-team")
