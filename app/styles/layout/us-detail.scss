@@ -303,7 +303,6 @@
         @extend %small;
         @include ellipsis(90%);
         display: inline-block;
-        line-height: 1rem;
         text-align: center;
     }
     .popover {
