@@ -5,6 +5,7 @@
 
 ### Features
 - Show the reference of entities in search results (thanks to [@artlepool](https://github.com/artlepool))
+- Autofocus on search modal
 
 ### Misc
 - Improve performance: remove some unnecessary calls to the api.

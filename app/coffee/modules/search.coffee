@@ -127,7 +127,8 @@ SearchBoxDirective = (projectService, $lightboxService, $navurls, $location, $ro
         openLightbox = () ->
             project = projectService.project
 
-            $lightboxService.open($el)
+            $lightboxService.open($el).then () ->
+                $el.find("#search-text").focus()
 
         $el.on "submit", "form", submit
 
