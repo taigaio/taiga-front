@@ -47,14 +47,15 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         "$routeParams",
         "$q",
         "$tgLocation",
-        "$appTitle",
+        "tgAppMetaService",
         "$tgNavUrls",
         "$tgEvents",
-        "$tgAnalytics"
+        "$tgAnalytics",
+        "$translate"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @urls, @params, @q, @location, @appTitle,
-                  @navUrls, @events, @analytics) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @urls, @params, @q, @location, @appMetaService,
+                  @navUrls, @events, @analytics, @translate) ->
         @scope.sectionName = "Issues"
         @scope.filters = {}
 
@@ -69,7 +70,12 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
         # On Success
         promise.then =>
-            @appTitle.set("Issues - " + @scope.project.name)
+            title = @translate.instant("ISSUES.PAGE_TITLE", {projectName: @scope.project.name})
+            description = @translate.instant("ISSUES.PAGE_DESCRIPTION", {
+                projectName: @scope.project.name,
+                projectDescription: @scope.project.description
+            })
+            @appMetaService.setAll(title, description)
 
         # On Error
         promise.then null, @.onInitialDataError.bind(@)

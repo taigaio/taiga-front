@@ -43,17 +43,23 @@ class SearchController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$routeParams",
         "$q",
         "$tgLocation",
-        "$appTitle",
-        "$tgNavUrls"
+        "tgAppMetaService",
+        "$tgNavUrls",
+        "$translate"
     ]
 
-    constructor: (@scope, @repo, @rs, @params, @q, @location, @appTitle, @navUrls) ->
+    constructor: (@scope, @repo, @rs, @params, @q, @location, @appMetaService, @navUrls, @translate) ->
         @scope.sectionName = "Search"
 
         promise = @.loadInitialData()
 
         promise.then () =>
-            @appTitle.set("Search")
+            title = @translate.instant("SEARCH.PAGE_TITLE", {projectName: @scope.project.name})
+            description = @translate.instant("SEARCH.PAGE_DESCRIPTION", {
+                projectName: @scope.project.name,
+                projectDescription: @scope.project.description
+            })
+            @appMetaService.setAll(title, description)
 
         promise.then null, @.onInitialDataError.bind(@)
 

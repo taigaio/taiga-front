@@ -45,7 +45,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         "$routeParams",
         "$q",
         "$tgLocation",
-        "$appTitle",
+        "tgAppMetaService",
         "$tgNavUrls",
         "$tgEvents",
         "$tgAnalytics",
@@ -53,7 +53,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q,
-                  @location, @appTitle, @navUrls, @events, @analytics, @translate) ->
+                  @location, @appMetaService, @navUrls, @events, @analytics, @translate) ->
         bindMethods(@)
 
         @scope.sectionName = @translate.instant("BACKLOG.SECTION_NAME")
@@ -66,7 +66,12 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
         # On Success
         promise.then =>
-            @appTitle.set("Backlog - " + @scope.project.name)
+            title = @translate.instant("BACKLOG.PAGE_TITLE", {projectName: @scope.project.name})
+            description = @translate.instant("BACKLOG.PAGE_DESCRIPTION", {
+                projectName: @scope.project.name,
+                projectDescription: @scope.project.description
+            })
+            @appMetaService.setAll(title, description)
 
             if @rs.userstories.getShowTags(@scope.projectId)
                 @showTags = true

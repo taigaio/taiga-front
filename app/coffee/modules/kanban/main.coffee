@@ -58,7 +58,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         "$routeParams",
         "$q",
         "$tgLocation",
-        "$appTitle",
+        "tgAppMetaService",
         "$tgNavUrls",
         "$tgEvents",
         "$tgAnalytics",
@@ -66,7 +66,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
-                  @appTitle, @navUrls, @events, @analytics, @translate) ->
+                  @appMetaService, @navUrls, @events, @analytics, @translate) ->
 
         bindMethods(@)
 
@@ -78,7 +78,12 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
         # On Success
         promise.then =>
-            @appTitle.set("Kanban - " + @scope.project.name)
+            title = @translate.instant("KANBAN.PAGE_TITLE", {projectName: @scope.project.name})
+            description = @translate.instant("KANBAN.PAGE_DESCRIPTION", {
+                projectName: @scope.project.name,
+                projectDescription: @scope.project.description
+            })
+            @appMetaService.setAll(title, description)
 
         # On Error
         promise.then null, @.onInitialDataError.bind(@)

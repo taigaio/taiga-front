@@ -42,14 +42,14 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$q",
         "$tgLocation",
         "$log",
-        "$appTitle",
+        "tgAppMetaService",
         "$tgNavUrls",
         "$tgAnalytics",
         "$translate"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
-                  @log, @appTitle, @navUrls, @analytics, @translate) ->
+                  @log, @appMetaService, @navUrls, @analytics, @translate) ->
         @scope.taskRef = @params.taskref
         @scope.sectionName = @translate.instant("TASK.SECTION_NAME")
         @.initializeEventHandlers()
@@ -57,10 +57,22 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         promise = @.loadInitialData()
 
         promise.then () =>
-            @appTitle.set(@scope.task.subject + " - " + @scope.project.name)
+            @._setMeta()
             @.initializeOnDeleteGoToUrl()
 
         promise.then null, @.onInitialDataError.bind(@)
+
+    _setMeta: ->
+        title = @translate.instant("TASK.PAGE_TITLE", {
+            taskRef: "##{@scope.task.ref}"
+            taskSubject: @scope.task.subject
+            projectName: @scope.project.name
+        })
+        description = @translate.instant("TASK.PAGE_DESCRIPTION", {
+            taskStatus: @scope.statusById[@scope.task.status]?.name or "--"
+            taskDescription: angular.element(@scope.task.description_html or "").text()
+        })
+        @appMetaService.setAll(title, description)
 
     initializeEventHandlers: ->
         @scope.$on "attachment:create", =>

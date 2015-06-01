@@ -126,6 +126,19 @@ startswith = (str1, str2) ->
     return _.str.startsWith(str1, str2)
 
 
+truncate = (str, maxLength, suffix="...") ->
+    return str if (typeof str != "string") and not (str instanceof String)
+
+    out = str.slice(0)
+
+    if out.length > maxLength
+        out = out.substring(0, maxLength + 1)
+        out = out.substring(0, Math.min(out.length, out.lastIndexOf(" ")))
+        out = out + suffix
+
+    return out
+
+
 sizeFormat = (input, precision=1) ->
     if isNaN(parseFloat(input)) or not isFinite(input)
         return "-"
@@ -187,6 +200,7 @@ taiga.cancelTimeout = cancelTimeout
 taiga.scopeDefer = scopeDefer
 taiga.toString = toString
 taiga.joinStr = joinStr
+taiga.truncate = truncate
 taiga.debounce = debounce
 taiga.debounceLeading = debounceLeading
 taiga.startswith = startswith

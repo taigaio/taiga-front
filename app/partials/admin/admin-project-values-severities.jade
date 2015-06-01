@@ -1,6 +1,8 @@
 doctype html
 
-div.wrapper(ng-controller="ProjectValuesSectionController")
+div.wrapper(ng-controller="ProjectValuesSectionController",
+            ng-init="sectionName='ADMIN.PROJECT_VALUES_SEVERITIES.TITLE'")
+
     tg-project-menu
 
     sidebar.menu-secondary.sidebar.settings-nav(tg-admin-navigation="project-values")
@@ -14,7 +16,7 @@ div.wrapper(ng-controller="ProjectValuesSectionController")
         p.admin-subtitle(translate="ADMIN.PROJECT_VALUES_SEVERITIES.SUBTITLE")
 
         div.admin-attributes-section(tg-project-values, ng-controller="ProjectValuesController as ctrl",
-            ng-init="section='admin'; resource='issues'; type='severities'; sectionName='ADMIN.PROJECT_VALUES_SEVERITIES.TITLE';",
+            ng-init="section='admin'; resource='issues'; type='severities'; sectionName='ADMIN.PROJECT_VALUES_SEVERITIES.ISSUE_TITLE';",
             objName="severities",
             type="severities")
             include ../includes/modules/admin/project-types

@@ -43,11 +43,12 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
         "$tgLocation",
         "$tgNavUrls",
         "$tgAnalytics",
-        "$appTitle"
+        "tgAppMetaService",
+        "$translate"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q,
-                  @location, @navUrls, @analytics, @appTitle) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls, @analytics,
+                  @appMetaService, @translate) ->
         bindMethods(@)
 
         @scope.project = {}
@@ -56,7 +57,9 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
         promise = @.loadInitialData()
 
         promise.then  =>
-            @appTitle.set("Membership - " + @scope.project.name)
+           title = @translate.instant("ADMIN.MEMBERSHIPS.PAGE_TITLE", {projectName:  @scope.project.name})
+           description = @scope.project.description
+           @appMetaService.setAll(title, description)
 
         promise.then null, @.onInitialDataError.bind(@)
 
@@ -378,7 +381,9 @@ MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm, $compile, $transla
         $el.on "click", ".pending", (event) ->
             event.preventDefault()
             onSuccess = ->
-                text = $translate.instant("ADMIN.MEMBERSHIP.SUCCESS_SEND_INVITATION", {email: $scope.member.email})
+                text = $translate.instant("ADMIN.MEMBERSHIP.SUCCESS_SEND_INVITATION", {
+                    email: $scope.member.email
+                })
                 $confirm.notify("success", text)
             onError = ->
                 text = $translate.instant("ADMIM.MEMBERSHIP.ERROR_SEND_INVITATION")
@@ -415,4 +420,5 @@ MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm, $compile, $transla
     return {link: link}
 
 
-module.directive("tgMembershipsRowActions", ["$log", "$tgRepo", "$tgResources", "$tgConfirm", "$compile", "$translate", MembershipsRowActionsDirective])
+module.directive("tgMembershipsRowActions", ["$log", "$tgRepo", "$tgResources", "$tgConfirm", "$compile",
+                                             "$translate", MembershipsRowActionsDirective])

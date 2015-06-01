@@ -236,7 +236,15 @@
                 "ADD_WIKI_LINKS": "Add wiki links",
                 "DELETE_WIKI_LINKS": "Delete wiki links"
             }
+        },
+        "META": {
+            "PAGE_TITLE": "Taiga",
+            "PAGE_DESCRIPTION": "Taiga is a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
         }
+    },
+    "LOGIN": {
+        "PAGE_TITLE": "Login - Taiga",
+        "PAGE_DESCRIPTION": "Logging in to Taiga, a project management platform for startups and agile developers & designers who want a simple, beautif  ul tool that makes work truly enjoyable."
     },
     "AUTH": {
         "INVITED_YOU": "has invited you to join the project",
@@ -244,12 +252,89 @@
         "REGISTER": "Register",
         "CREATE_ACCOUNT": "create your free account here"
     },
+    "LOGIN_COMMON": {
+        "HEADER": "I already have a Taiga login",
+        "PLACEHOLDER_AUTH_NAME": "Username or email (case sensitive)",
+        "LINK_FORGOT_PASSWORD": "Forgot it?",
+        "TITLE_LINK_FORGOT_PASSWORD": "Did you forgot your password?",
+        "ACTION_ENTER": "Enter",
+        "ACTION_SIGN_IN": "Sign in",
+        "PLACEHOLDER_AUTH_PASSWORD": "Password (case sensitive)"
+    },
+    "LOGIN_FORM": {
+        "ERROR_AUTH_INCORRECT": "According to our Oompa Loompas, your username/email or password are incorrect.",
+        "ERROR_GENERIC": "According to our Oompa Loompas there was an error.",
+        "SUCCESS": "Our Oompa Loompas are happy, welcome to Taiga."
+    },
+    "REGISTER": {
+        "PAGE_TITLE": "Register - Taiga",
+        "PAGE_DESCRIPTION": "Create your account in Taiga, a project management platform for startups and agile developers & designers who want a simple, beautif  ul tool that makes work truly enjoyable."
+    },
+    "REGISTER_FORM": {
+        "TITLE": "Register a new Taiga account (free)",
+        "PLACEHOLDER_NAME": "Pick a username (case sensitive)",
+        "PLACEHOLDER_FULL_NAME": "Pick your full name",
+        "PLACEHOLDER_EMAIL": "Your email",
+        "PLACEHOLDER_PASSWORD": "Set a password (case sensitive)",
+        "ACTION_SIGN_UP": "Sign up",
+        "TITLE_LINK_LOGIN": "Log in",
+        "LINK_LOGIN": "Are you already registered? Log in"
+    },
+    "FORGOT_PASSWORD": {
+        "PAGE_TITLE": "Forgot password - Taiga",
+        "PAGE_DESCRIPTION": "Enter your username or email to get a new password and you can access to Taiga again."
+    },
+    "FORGOT_PASSWORD_FORM": {
+        "TITLE": "Oops, did you forget your password?",
+        "SUBTITLE": "Enter your username or email to get a new one",
+        "PLACEHOLDER_FIELD": "Username or email",
+        "ACTION_RESET_PASSWORD": "Reset Password",
+        "LINK_CANCEL": "Nah, take me back. I think I remember it.",
+        "SUCCESS": "<strong>Check your inbox!</strong><br />We have sent you an email with the instructions to set a new password",
+        "ERROR": "According to our Oompa Loompas, your are not registered yet."
+    },
+    "CHANGE_PASSWORD": {
+        "PAGE_TITLE": "Change you password - Taiga",
+        "PAGE_DESCRIPTION": "Set a new passoword for your Taiga account and hey!, you may want to eat some more iron-rich food, it's good for your brain :P",
+        "SECTION_NAME": "Change password",
+        "FIELD_CURRENT_PASSWORD": "Current password",
+        "PLACEHOLDER_CURRENT_PASSWORD": "Your current password (or empty if you have no password yet)",
+        "FIELD_NEW_PASSWORD": "New password",
+        "PLACEHOLDER_NEW_PASSWORD": "Type a new password",
+        "FIELD_RETYPE_PASSWORD": "Retype new password",
+        "PLACEHOLDER_RETYPE_PASSWORD": "Retype the new password",
+        "ERROR_PASSWORD_MATCH": "The passwords doesn't match"
+    },
+    "CHANGE_PASSWORD_RECOVERY_FORM": {
+        "TITLE": "Create a new Taiga pass",
+        "SUBTITLE": "And hey, you may want to eat some more iron-rich food, it's good for your brain :P",
+        "PLACEHOLDER_RECOVER_PASSWORD_TOKEN": "Recover password token",
+        "LINK_NEED_TOKEN": "Need one?",
+        "TITLE_LINK_NEED_TOKEN": "Did you need a token to recover your password because you forgot it?",
+        "PLACEHOLDER_NEW_PASSWORD": "New password",
+        "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Re-type new password",
+        "ACTION_RESET_PASSWORD": "Reset Password",
+        "SUCCESS": "Our Oompa Loompas saved your new password.<br /> Try to <strong>sign in</strong> with it."
+    },
+    "INVITATION": {
+        "PAGE_TITLE": "Invitation acceptance - Taiga",
+        "PAGE_DESCRIPTION": "Accept the invitation to join a project in Taiga, a project management platform for startups and agile developers & designers who want a simple, beautif  ul tool that makes work truly enjoyable."
+    },
+    "INVITATION_LOGIN_FORM": {
+        "NOT_FOUND": "<strong>Ooops, we have a problem</strong><br />Our Oompa Loompas can't find your invitation.",
+        "SUCCESS": "You've successfully joined this project, Welcome to {{project_name}}",
+        "ERROR": "According to our Oompa Loompas, your are not registered yet or typed an invalid password."
+    },
     "HOME": {
+        "PAGE_TITLE": "Home - Taiga",
+        "PAGE_DESCRIPTION": "The Taiga home page with your main projects and all your assigned and watched user stories, tasks and issues",
         "EMPTY_WATCHING": "<strong>Follow</strong> the projects, User Stories, Tasks, Issues... that you want to know about :)",
         "WORKING_ON_SECTION": "Working on",
         "WATCHING_SECTION": "Watching"
     },
     "PROJECTS": {
+        "PAGE_TITLE": "My projects - Taiga",
+        "PAGE_DESCRIPTION": "A list with all your projects, you can reorder or create a new one.",
         "MY_PROJECTS": "My projects"
     },
     "ATTACHMENT": {
@@ -289,6 +374,7 @@
         },
         "MEMBERSHIPS": {
             "TITLE": "Manage members",
+            "PAGE_TITLE": "Memberships - {{projectName}}",
             "ADD_BUTTON": "+ New member",
             "ADD_BUTTON_TITLE": "Add new member"
         },
@@ -324,7 +410,7 @@
             "SALT_CHAT_ROOM": "If you want you can append a salt code to the name of the chat room"
         },
         "PROJECT_PROFILE": {
-            "PAGE_TITLE": "Project profile - {{sectionName}} - {{projectName}}",
+            "PAGE_TITLE": "{{sectionName}} - Project profile  - {{projectName}}",
             "PROJECT_DETAILS": "Project details",
             "PROJECT_NAME": "Project name",
             "PROJECT_SLUG": "Project slug",
@@ -365,23 +451,26 @@
             "ISSUE_ADD": "Add a custom field in issues"
         },
         "PROJECT_VALUES": {
-            "APP_TITLE": "Project values - {{sectionName}} - {{projectName}}",
+            "PAGE_TITLE": "{{sectionName}} - Project values - {{projectName}}",
             "REPLACEMENT": "All items with this value will be changed to",
             "ERROR_DELETE_ALL": "You can't delete all values."
         },
         "PROJECT_VALUES_POINTS": {
-            "TITLE": "Us points",
+            "TITLE": "Points",
             "SUBTITLE": "Specify the points your user stories could be estimated to",
+            "US_TITLE": "US points",
             "ACTION_ADD": "Add new point"
         },
         "PROJECT_VALUES_PRIORITIES": {
-            "TITLE": "Issue priorities",
+            "TITLE": "Priorities",
             "SUBTITLE": "Specify the priorities your issues will have",
+            "ISSUE_TITLE": "Issue priorities",
             "ACTION_ADD": "Add new priority"
         },
         "PROJECT_VALUES_SEVERITIES": {
-            "TITLE": "Issue severities",
+            "TITLE": "Severities",
             "SUBTITLE": "Specify the severities your issues will have",
+            "ISSUE_TITLE": "Issue severities",
             "ACTION_ADD": "Add new severity"
         },
         "PROJECT_VALUES_STATUS": {
@@ -398,7 +487,7 @@
             "ACTION_ADD": "Add new {{objName}}"
         },
         "ROLES": {
-            "SECTION_NAME": "Roles - {{projectName}}",
+            "PAGE_TITLE": "Roles - {{projectName}}",
             "WARNING_NO_ROLE": "Be careful, no role in your project will be able to estimate the point value for user stories",
             "HELP_ROLE_ENABLED": "When enabled, members assigned to this role will be able to estimate the point value for user stories",
             "COUNT_MEMBERS": "{{ role.members_count }} members with this role",
@@ -415,20 +504,20 @@
         },
         "BITBUCKET": {
             "SECTION_NAME": "Bitbucket",
-            "APP_TITLE": "Bitbucket - {{projectName}}",
+            "PAGE_TITLE": "Bitbucket - {{projectName}}",
             "INFO_VERIFYING_IP": "Bitbucket requests are not signed so the best way of verifying the origin is by IP. If the field is empty there will be no IP validation."
         },
         "GITLAB": {
             "SECTION_NAME": "Gitlab",
-            "APP_TITLE": "Gitlab - {{projectName}}",
+            "PAGE_TITLE": "Gitlab - {{projectName}}",
             "INFO_VERIFYING_IP": "Gitlab requests are not signed so the best way of verifying the origin is by IP. If the field is empty there will be no IP validation."
         },
         "GITHUB": {
             "SECTION_NAME": "Github",
-            "APP_TITLE": "Github - {{projectName}}"
+            "PAGE_TITLE": "Github - {{projectName}}"
         },
         "WEBHOOKS": {
-            "APP_TITLE": "Webhooks - {{projectName}}",
+            "PAGE_TITLE": "Webhooks - {{projectName}}",
             "SECTION_NAME": "Webhooks",
             "SUBTITLE": "Webhooks notify external services about events in Taiga, like comments, user stories....",
             "ADD_NEW": "Add a New Webhook",
@@ -454,6 +543,7 @@
             "WEBHOOK_NAME": "Webhook '{{name}}'"
         },
         "CUSTOM_ATTRIBUTES": {
+            "PAGE_TITLE": "{{sectionName}} - Custom Attributes - {{projectName}}",
             "ADD": "Add custom field",
             "EDIT": "Edit Custom Field",
             "DELETE": "Delete Custom Field",
@@ -533,6 +623,7 @@
     },
     "USER": {
         "PROFILE": {
+            "PAGE_TITLE": "{{userFullName}} (@{{userUsername}})",
             "EDIT": "Edit profile",
             "FOLLOW": "Follow",
             "PROJECTS": "Projects",
@@ -555,6 +646,7 @@
         }
     },
     "PROJECT": {
+        "PAGE_TITLE": "{{projectName}}",
         "WELCOME": "Welcome",
         "SECTION_PROJECTS": "Projects",
         "HELP": "Reorder your projects to set in the top the most used ones.<br/> The top 10 projects will appear in the top navigation bar project list",
@@ -685,6 +777,9 @@
         }
     },
     "US": {
+        "PAGE_TITLE": "{{userStorySubject}} - User Story {{userStoryRef}} - {{projectName}}",
+        "PAGE_DESCRIPTION": "Status: {{userStoryStatus }}. Completed {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} of {{userStoryTotalTasks}} tasks closed). Points: {{userStoryPoints}}. Description: {{userStoryDescription}}",
+
         "SECTION_NAME": "User story details",
         "LINK_TASKBOARD": "Taskboard",
         "TITLE_LINK_TASKBOARD": "Go to the taskboard",
@@ -772,6 +867,8 @@
         }
     },
     "BACKLOG": {
+        "PAGE_TITLE": "Backlog - {{projectName}}",
+        "PAGE_DESCRIPTION": "The backlog panel, with user stories and sprints of the project {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Backlog",
         "MOVE_US_TO_CURRENT_SPRINT": "Move to Current Sprint",
         "SHOW_FILTERS": "Show filters",
@@ -852,6 +949,8 @@
         "VERSION_ERROR": "Someone inside Taiga has changed this before and our Oompa Loompas cannot apply your changes. Please reload and apply your changes again (they will be lost)."
     },
     "TASKBOARD": {
+        "PAGE_TITLE": "{{sprintName}} - Sprint taskboard - {{projectName}}",
+        "PAGE_DESCRIPTION": "Sprint {{sprintName}} (from {{startDate}} to {{endDate}}) of {{projectName}}. Completed {{completedPercentage}}% ({{completedPoints}} of {{totalPoints}} points). {{openTasks}} opened tasks of {{totalTasks}}." ,
         "SECTION_NAME": "Taskboard",
         "TITLE_ACTION_ADD": "Add a new Task",
         "TITLE_ACTION_ADD_BULK": "Add some new Tasks in bulk",
@@ -875,6 +974,8 @@
         }
     },
     "TASK": {
+        "PAGE_TITLE": "{{taskSubject}} - Task {{taskRef}} - {{projectName}}",
+        "PAGE_DESCRIPTION": "Status: {{taskStatus }}. Description: {{taskDescription}}",
         "SECTION_NAME": "Task details",
         "LINK_TASKBOARD": "Taskboard",
         "TITLE_LINK_TASKBOARD": "Go to the taskboard",
@@ -920,56 +1021,9 @@
         "ACTION_CHANGE_EMAIL": "Change email",
         "SUCCESS": "Our Oompa Loompas updated your email"
     },
-    "CHANGE_PASSWORD_RECOVERY_FORM": {
-        "TITLE": "Create a new Taiga pass",
-        "SUBTITLE": "And hey, you may want to eat some more iron-rich food, it's good for your brain :P",
-        "PLACEHOLDER_RECOVER_PASSWORD_TOKEN": "Recover password token",
-        "LINK_NEED_TOKEN": "Need one?",
-        "TITLE_LINK_NEED_TOKEN": "Did you need a token to recover your password because you forgot it?",
-        "PLACEHOLDER_NEW_PASSWORD": "New password",
-        "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Re-type new password",
-        "ACTION_RESET_PASSWORD": "Reset Password",
-        "SUCCESS": "Our Oompa Loompas saved your new password.<br /> Try to <strong>sign in</strong> with it."
-    },
-    "FORGOT_PASSWORD_FORM": {
-        "TITLE": "Oops, did you forget your password?",
-        "SUBTITLE": "Enter your username or email to get a new one",
-        "PLACEHOLDER_FIELD": "Username or email",
-        "ACTION_RESET_PASSWORD": "Reset Password",
-        "LINK_CANCEL": "Nah, take me back. I think I remember it.",
-        "SUCCESS": "<strong>Check your inbox!</strong><br />We have sent you an email with the instructions to set a new password",
-        "ERROR": "According to our Oompa Loompas, your are not registered yet."
-    },
-    "LOGIN_COMMON": {
-        "HEADER": "I already have a Taiga login",
-        "PLACEHOLDER_AUTH_NAME": "Username or email (case sensitive)",
-        "LINK_FORGOT_PASSWORD": "Forgot it?",
-        "TITLE_LINK_FORGOT_PASSWORD": "Did you forgot your password?",
-        "ACTION_ENTER": "Enter",
-        "ACTION_SIGN_IN": "Sign in",
-        "PLACEHOLDER_AUTH_PASSWORD": "Password (case sensitive)"
-    },
-    "LOGIN_FORM": {
-        "ERROR_AUTH_INCORRECT": "According to our Oompa Loompas, your username/email or password are incorrect.",
-        "ERROR_GENERIC": "According to our Oompa Loompas there was an error.",
-        "SUCCESS": "Our Oompa Loompas are happy, welcome to Taiga."
-    },
-    "INVITATION_LOGIN_FORM": {
-        "NOT_FOUND": "<strong>Ooops, we have a problem</strong><br />Our Oompa Loompas can't find your invitation.",
-        "SUCCESS": "You've successfully joined this project, Welcome to {{project_name}}",
-        "ERROR": "According to our Oompa Loompas, your are not registered yet or typed an invalid password."
-    },
-    "REGISTER_FORM": {
-        "TITLE": "Register a new Taiga account (free)",
-        "PLACEHOLDER_NAME": "Pick a username (case sensitive)",
-        "PLACEHOLDER_FULL_NAME": "Pick your full name",
-        "PLACEHOLDER_EMAIL": "Your email",
-        "PLACEHOLDER_PASSWORD": "Set a password (case sensitive)",
-        "ACTION_SIGN_UP": "Sign up",
-        "TITLE_LINK_LOGIN": "Log in",
-        "LINK_LOGIN": "Are you already registered? Log in"
-    },
     "ISSUES": {
+        "PAGE_TITLE": "Issues - {{projectName}}",
+        "PAGE_DESCRIPTION": "The issues list panel of the project {{projectName}}: {{projectDescription}}",
         "LIST_SECTION_NAME": "Issues",
         "SECTION_NAME": "Issue details",
         "ACTION_NEW_ISSUE": "+ NEW ISSUE",
@@ -1033,7 +1087,13 @@
             }
         }
     },
+    "ISSUE": {
+        "PAGE_TITLE": "{{issueSubject}} - Issue {{issueRef}} - {{projectName}}",
+        "PAGE_DESCRIPTION": "Status: {{issueStatus }}. Type: {{issueType}}, Priority: {{issuePriority}}. Severity: {{issueSeverity}}. Description: {{issueDescription}}"
+    },
     "KANBAN": {
+        "PAGE_TITLE": "Kanban - {{projectName}}",
+        "PAGE_DESCRIPTION": "The kanban panel, with user stories of the project {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Kanban",
         "TITLE_ACTION_FOLD": "Fold column",
         "TITLE_ACTION_UNFOLD": "Unfold column",
@@ -1048,6 +1108,8 @@
         "UNDO_ARCHIVED": "Drag & drop again to undo"
     },
     "SEARCH": {
+        "PAGE_TITLE": "Search - {{projectName}}",
+        "PAGE_DESCRIPTION": "Search anything, user stories, issues, tasks or wiki pages, in the project {{projectName}}: {{projectDescription}}",
         "FILTER_USER_STORIES": "User Stories",
         "FILTER_ISSUES": "Issues",
         "FILTER_TASKS": "Tasks",
@@ -1058,6 +1120,8 @@
         "EMPTY_DESCRIPTION": "Maybe try one of the tabs above or search again"
     },
     "TEAM": {
+        "PAGE_TITLE": "Team - {{projectName}}",
+        "PAGE_DESCRIPTION": "The team panel to show all the members of the project {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Team",
         "APP_TITLE": "TEAM - {{projectName}}",
         "PLACEHOLDER_INPUT_SEARCH": "Search by full name...",
@@ -1077,16 +1141,6 @@
         "SECTION_FILTER_ALL": "All",
         "CONFIRM_LEAVE_PROJECT": "Are you sure you want to leave the project?",
         "ACTION_LEAVE_PROJECT": "Leave this project"
-    },
-    "CHANGE_PASSWORD": {
-        "SECTION_NAME": "Change password",
-        "FIELD_CURRENT_PASSWORD": "Current password",
-        "PLACEHOLDER_CURRENT_PASSWORD": "Your current password (or empty if you have no password yet)",
-        "FIELD_NEW_PASSWORD": "New password",
-        "PLACEHOLDER_NEW_PASSWORD": "Type a new password",
-        "FIELD_RETYPE_PASSWORD": "Retype new password",
-        "PLACEHOLDER_RETYPE_PASSWORD": "Retype the new password",
-        "ERROR_PASSWORD_MATCH": "The passwords doesn't match"
     },
     "USER_SETTINGS": {
         "AVATAR_MAX_SIZE": "[Max. size: {{maxFileSize}}]",
@@ -1141,6 +1195,8 @@
         "PROGRESS_NAME_DESCRIPTION": "Name and description"
     },
     "WIKI": {
+        "PAGE_TITLE": "{{wikiPageName}} - Wiki - {{projectName}}",
+        "PAGE_DESCRIPTION": "Last edition on {{lastModifiedDate}} ({{totalEditions}} editions in total) Content: {{ wikiPageContent }}",
         "DATETIME": "DD MMM YYYY HH:mm",
         "PLACEHOLDER_PAGE": "Write your wiki page",
         "REMOVE": "Remove this wiki page",

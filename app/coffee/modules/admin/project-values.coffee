@@ -46,11 +46,12 @@ class ProjectValuesSectionController extends mixOf(taiga.Controller, taiga.PageM
         "$q",
         "$tgLocation",
         "$tgNavUrls",
-        "$appTitle",
+        "tgAppMetaService",
         "$translate"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls, @appTitle, @translate) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls,
+                  @appMetaService, @translate) ->
         @scope.project = {}
 
         promise = @.loadInitialData()
@@ -58,12 +59,12 @@ class ProjectValuesSectionController extends mixOf(taiga.Controller, taiga.PageM
         promise.then () =>
             sectionName = @translate.instant(@scope.sectionName)
 
-            title = @translate.instant("ADMIN.PROJECT_VALUES.APP_TITLE", {
+            title = @translate.instant("ADMIN.PROJECT_VALUES.PAGE_TITLE", {
                 "sectionName": sectionName,
                 "projectName": @scope.project.name
             })
-
-            @appTitle.set(title)
+            description = @scope.project.description
+            @appMetaService.setAll(title, description)
 
         promise.then null, @.onInitialDataError.bind(@)
 
@@ -383,15 +384,24 @@ class ProjectCustomAttributesController extends mixOf(taiga.Controller, taiga.Pa
         "$q",
         "$tgLocation",
         "$tgNavUrls",
-        "$appTitle",
+        "tgAppMetaService",
+        "$translate"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @rs, @params, @q, @location, @navUrls, @appTitle) ->
+    constructor: (@scope, @rootscope, @repo, @rs, @params, @q, @location, @navUrls, @appMetaService,
+                  @translate) ->
         @scope.project = {}
 
         @rootscope.$on "project:loaded", =>
             @.loadCustomAttributes()
-            @appTitle.set("Project Custom Attributes - " + @scope.sectionName + " - " + @scope.project.name)
+
+            sectionName = @translate.instant(@scope.sectionName)
+            title = @translate.instant("ADMIN.CUSTOM_ATTRIBUTES.PAGE_TITLE", {
+                "sectionName": sectionName,
+                "projectName": @scope.project.name
+            })
+            description = @scope.project.description
+            @appMetaService.setAll(title, description)
 
     #########################
     # Custom Attribute
@@ -640,4 +650,5 @@ ProjectCustomAttributesDirective = ($log, $confirm, animationFrame, $translate) 
 
     return {link: link}
 
-module.directive("tgProjectCustomAttributes", ["$log", "$tgConfirm", "animationFrame", "$translate", ProjectCustomAttributesDirective])
+module.directive("tgProjectCustomAttributes", ["$log", "$tgConfirm", "animationFrame", "$translate",
+                                               ProjectCustomAttributesDirective])
