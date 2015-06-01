@@ -435,6 +435,10 @@ gulp.task("copy-extras", function() {
 
 gulp.task("copy", ["copy-fonts", "copy-images", "copy-images-plugins", "copy-plugin-templates", "copy-svg", "copy-extras"]);
 
+gulp.task("delete-tmp", function() {
+    del.sync(paths.tmp);
+});
+
 gulp.task("express", function() {
     var express = require("express");
     var app = express();
@@ -470,10 +474,8 @@ gulp.task("watch", function() {
     gulp.watch(paths.fonts, ["copy-fonts"]);
 });
 
-del.sync(paths.tmp);
-
 gulp.task("deploy", function(cb) {
-    runSequence("clear", [
+    runSequence("clear", "delete-tmp", [
         "copy",
         "jade-deploy",
         "app-deploy",
@@ -482,12 +484,14 @@ gulp.task("deploy", function(cb) {
     ], cb);
 });
 //The default task (called when you run gulp from cli)
-gulp.task("default", [
-    "copy",
-    "styles",
-    "app-watch",
-    "jslibs-watch",
-    "jade-deploy",
-    "express",
-    "watch"
-]);
+gulp.task("default", function(cb) {
+    runSequence("clear", "delete-tmp", [
+        "copy",
+        "styles",
+        "app-watch",
+        "jslibs-watch",
+        "jade-deploy",
+        "express",
+        "watch"
+    ], cb);
+});
