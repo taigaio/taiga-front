@@ -9,7 +9,7 @@ ProfileTabDirective = () ->
         scope.tab.icon = attrs.tabIcon
         scope.tab.active = !!attrs.tabActive
 
-        if scope.$eval(attrs.tabDisabled) != false
+        if scope.$eval(attrs.tabDisabled) != true
             ctrl.addTab(scope.tab)
 
     return {
