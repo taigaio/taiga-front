@@ -243,3 +243,37 @@ describe "tgUserTimelineItemTitle", ->
         title = mySvc.getTitle(timeline, event, type)
 
         expect(title).to.be.equal("title_ok")
+
+    it "task title with us_name", () ->
+        timeline = {
+            data: {
+                task: {
+                    name: 'task_name',
+                    userstory: {
+                        ref: 2
+                        subject: 'subject'
+                    }
+                }
+            }
+        }
+
+        event = {
+            obj: 'task',
+        }
+
+        type = {
+            key: 'TITLE_OBJ',
+            translate_params: ['us_name']
+        }
+
+        objparam = sinon.match ((value) ->
+            return value.us_name == '<a tg-nav="project-userstories-detail:project=vm.activity.project.slug,ref=vm.activity.obj.userstory.ref" title="#2 subject">#2 subject</a>'
+         ), "objparam"
+
+        mockTranslate.instant
+            .withArgs('TITLE_OBJ', objparam)
+            .returns('title_ok')
+
+        title = mySvc.getTitle(timeline, event, type)
+
+        expect(title).to.be.equal("title_ok")
