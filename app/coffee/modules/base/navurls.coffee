@@ -111,6 +111,9 @@ NavigationUrlsDirective = ($navurls, $auth, $q, $location) ->
                         target.attr("href", fullUrl)
 
                     $el.on "click", (event) ->
+                        if event.metaKey || event.ctrlKey
+                            return
+
                         event.preventDefault()
                         target = $(event.currentTarget)
 
