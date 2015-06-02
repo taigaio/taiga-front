@@ -15,6 +15,11 @@ describe "dutyDirective", () ->
         }
         provide.value "$tgNavUrls", mockTgNavUrls
 
+    _mockTranslateFilter = () ->
+        mockTranslateFilter = (value) ->
+            return value
+        provide.value "translateFilter", mockTranslateFilter
+
     _mockTgProjectsService = () ->
         mockTgProjectsService = {
             projectsById: {
@@ -35,6 +40,7 @@ describe "dutyDirective", () ->
             _mockTgNavUrls()
             _mockTgProjectsService()
             _mockTranslate()
+            _mockTranslateFilter()
             return null
 
     beforeEach ->
