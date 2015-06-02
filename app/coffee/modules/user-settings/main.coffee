@@ -51,6 +51,11 @@ class UserSettingsController extends mixOf(taiga.Controller, taiga.PageMixin)
 
         @scope.project = {}
         @scope.user = @auth.getUser()
+
+        if !@scope.user
+            @location.path(@navUrls.resolve("permission-denied"))
+            @location.replace()
+
         @scope.lang = @getLan()
 
         maxFileSize = @config.get("maxUploadFileSize", null)
