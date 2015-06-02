@@ -31,6 +31,13 @@ describe "ProjectController", ->
             pslug: "project-slug"
         }
 
+    _mockXhrErrorService = () ->
+        mocks.xhrErrorService = {
+            response: sinon.spy()
+        }
+
+        provide.value "tgXhrErrorService", mocks.xhrErrorService
+
     _mocks = () ->
         module ($provide) ->
             provide = $provide
@@ -38,6 +45,7 @@ describe "ProjectController", ->
             _mockRouteParams()
             _mockAppTitle()
             _mockAuth()
+            _mockXhrErrorService()
 
             return null
 
@@ -53,48 +61,53 @@ describe "ProjectController", ->
         _inject()
 
     it "set local user", () ->
-        thenStub = sinon.stub()
-
-        mocks.projectService.getProjectBySlug.withArgs("project-slug").returns({
-            then: thenStub
+        project = Immutable.fromJS({
+            name: "projectName"
         })
+
+        mocks.projectService.getProjectBySlug.withArgs("project-slug").promise().resolve(project)
 
         ctrl = $controller "Project",
             $scope: {}
 
         expect(ctrl.user).to.be.equal(mocks.auth.userData)
 
-    it "set page title", () ->
+    it "set page title", (done) ->
         project = Immutable.fromJS({
             name: "projectName"
         })
 
-        thenStub = sinon.stub()
-
-        mocks.projectService.getProjectBySlug.withArgs("project-slug").returns({
-            then: thenStub
-        })
+        mocks.projectService.getProjectBySlug.withArgs("project-slug").promise().resolve(project)
 
         ctrl = $controller("Project")
 
-        thenStub.callArg(0, project)
+        setTimeout ( ->
+            expect(mocks.appTitle.set.withArgs("projectName")).to.be.calledOnce
+            done()
+        )
 
-        expect(mocks.appTitle.set.withArgs("projectName")).to.be.calledOnce
-
-
-    it "set local project variable", () ->
+    it "set local project variable", (done) ->
         project = Immutable.fromJS({
             name: "projectName"
         })
 
-        thenStub = sinon.stub()
-
-        mocks.projectService.getProjectBySlug.withArgs("project-slug").returns({
-            then: thenStub
-        })
+        mocks.projectService.getProjectBySlug.withArgs("project-slug").promise().resolve(project)
 
         ctrl = $controller("Project")
 
-        thenStub.callArg(0, project)
+        setTimeout ( () ->
+            expect(ctrl.project).to.be.equal(project)
+            done()
+        )
 
-        expect(ctrl.project).to.be.equal(project)
+    it "handle project error", (done) ->
+        xhr = {code: 403}
+
+        mocks.projectService.getProjectBySlug.withArgs("project-slug").promise().reject(xhr)
+
+        ctrl = $controller("Project")
+
+        setTimeout (() ->
+            expect(mocks.xhrErrorService.response.withArgs(xhr)).to.be.calledOnce
+            done()
+        )
