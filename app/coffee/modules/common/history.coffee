@@ -371,7 +371,7 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $c
         $scope.$watch("comments", renderComments)
         $scope.$watch("history",  renderActivity)
 
-        $scope.$on("history:reload", -> $ctrl.loadHistory(type, objectId))
+        $scope.$on("object:updated", -> $ctrl.loadHistory(type, objectId))
 
         # Events
 

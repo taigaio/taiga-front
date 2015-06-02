@@ -285,7 +285,7 @@ TagLineDirective = ($rootScope, $repo, $rs, $confirm, $qqueue, $template, $compi
             $model.$setViewValue(model)
 
             onSuccess = ->
-                $rootScope.$broadcast("history:reload")
+                $rootScope.$broadcast("object:updated")
             onError = ->
                 $confirm.notify("error")
                 model.revert()
@@ -306,7 +306,7 @@ TagLineDirective = ($rootScope, $repo, $rs, $confirm, $qqueue, $template, $compi
             $model.$setViewValue(model)
 
             onSuccess = ->
-                $rootScope.$broadcast("history:reload")
+                $rootScope.$broadcast("object:updated")
             onError = ->
                 $confirm.notify("error")
                 model.revert()
