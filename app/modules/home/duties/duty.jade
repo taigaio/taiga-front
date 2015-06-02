@@ -1,7 +1,12 @@
 a(href="{{ ::vm.duty.get('url') }}", title="{{ ::duty.get('subject') }}")
-    img.avatar(
+
+    img.avatar(ng-if="::vm.duty.get('assigned_to_extra_info')"
         ng-src="{{ ::vm.duty.get('assigned_to_extra_info').get('photo') }}"
         title="{{ ::vm.duty.get('assigned_to_extra_info').get('full_name_display') }}")
+
+    img.avatar(ng-if="::!vm.duty.get('assigned_to_extra_info')"
+        src="/images/unnamed.png"
+        title="{{'ACTIVITY.VALUES.UNASSIGNED' | translate}}")
 
     div.duty-data
         div
