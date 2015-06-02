@@ -63,9 +63,6 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     $routeProvider.when("/project/:pslug/",
         {
             templateUrl: "projects/project/project.html",
-            access: {
-                requiresLogin: true
-            },
             loader: true,
             controller: "Project",
             controllerAs: "vm"
