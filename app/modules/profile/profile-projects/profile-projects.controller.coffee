@@ -7,9 +7,9 @@ class ProfileProjectsController
     constructor: (@projectsService, @userService) ->
 
     loadProjects: () ->
-        @projectsService.getProjectsByUserId(@.userId)
+        @projectsService.getProjectsByUserId(@.user.get("id"))
             .then (projects) =>
-                return @userService.attachUserContactsToProjects(@.userId, projects)
+                return @userService.attachUserContactsToProjects(@.user.get("id"), projects)
             .then (projects) =>
                 @.projects = projects
 

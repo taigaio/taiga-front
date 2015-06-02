@@ -43,7 +43,7 @@ class UserTimelineController extends mixOf(taiga.Controller, taiga.PageMixin, ta
                     @._timelineLoaded(newTimelineList)
         else
             @userTimelineService
-                .getTimeline(@.userId, @.page)
+                .getTimeline(@.user.get("id"), @.page)
                 .then (newTimelineList) =>
                     @._timelineLoaded(newTimelineList)
 

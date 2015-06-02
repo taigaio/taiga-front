@@ -1,12 +1,20 @@
 class ProfileContactsController
     @.$inject = [
-        "tgUserService"
+        "tgUserService",
+        "tgCurrentUserService"
     ]
 
-    constructor: (@userService) ->
+    constructor: (@userService, @currentUserService) ->
 
     loadContacts: () ->
-        @userService.getContacts(@.userId)
+        @.currentUser = @currentUserService.getUser()
+
+        @.isCurrentUser = false
+
+        if @.currentUser.get("id") == @.user.get("id")
+            @.isCurrentUser = true
+
+        @userService.getContacts(@.user.get("id"))
             .then (contacts) =>
                 @.contacts = contacts
 

@@ -542,7 +542,11 @@
             "ACTIVITY_TAB": "Activity Tab",
             "PROJECTS_TAB": "Projects Tab",
             "CONTACTS_TAB": "Contacts Tab",
-            "FAVORITES_TAB": "Favorites Tab"
+            "FAVORITES_TAB": "Favorites Tab",
+            "CONTACTS_EMPTY": "{{username}} doesn't have contacts yet",
+            "CURRENT_USER_CONTACTS_EMPTY": "You don't have contacts yet",
+            "CURRENT_USER_CONTACTS_EMPTY_EXPLAIN": "The people with whom you work at Taiga will be your contacts automatically",
+            "PROJECTS_EMPTY": "{{username}} doesn't' have projects yet"
         },
         "PROFILE_SIDEBAR": {
             "TITLE": "Your profile",

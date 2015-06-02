@@ -40,4 +40,16 @@
         flex-shrink: 0;
         width: 150px;
     }
+    .empty-tab {
+        padding: 5vh;
+        text-align: center;
+        svg {
+            margin: 2rem auto;
+            max-width: 160px;
+            text-align: center;
+        }
+        p {
+            font-size: .9rem;
+        }
+    }
 }

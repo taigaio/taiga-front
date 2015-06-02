@@ -5,7 +5,7 @@ ProfileProjectsDirective = () ->
     return {
         templateUrl: "profile/profile-projects/profile-projects.html",
         scope: {
-            userId: "=userid"
+            user: "="
         },
         link: link
         bindToController: true,

@@ -1,7 +1,12 @@
 section.profile-projects
-    div(ng-if="!vm.projects.size")
+    div(ng-if="vm.projects === undefined")
          div.spin
             img(src="/svg/spinner-circle.svg", alt="Loading...")
+
+    div.empty-tab(ng-if="vm.projects && !vm.projects.size")
+        include ../../../svg/hide.svg
+
+        p(translate="USER.PROFILE.PROJECTS_EMPTY", translate-values="{username: vm.user.get('full_name_display')}")
 
     div.project-list-single(tg-repeat="project in vm.projects")
         div.project-list-single-left

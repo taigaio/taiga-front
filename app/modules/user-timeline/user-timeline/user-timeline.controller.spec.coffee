@@ -3,7 +3,7 @@ describe "UserTimelineController", ->
 
     mocks = {}
 
-    mockUser = {id: 3}
+    mockUser = Immutable.fromJS({id: 3})
 
     _mockUserTimeline = () ->
         mocks.userTimelineService = {
@@ -49,12 +49,12 @@ describe "UserTimelineController", ->
 
         it "the scrollDisabled variable must be true during the timeline load", () ->
             myCtrl = controller "UserTimeline"
-            myCtrl.userId = mockUser.id
+            myCtrl.user = mockUser
 
             thenStub = sinon.stub()
 
             mocks.userTimelineService.getTimeline = sinon.stub()
-                .withArgs(mockUser.id, myCtrl.page)
+                .withArgs(mockUser.get("id"), myCtrl.page)
                 .returns({
                     then: thenStub
                 })
@@ -73,12 +73,12 @@ describe "UserTimelineController", ->
             emptyTimelineList = Immutable.fromJS([])
 
             myCtrl = controller "UserTimeline"
-            myCtrl.userId = mockUser.id
+            myCtrl.user = mockUser
 
             thenStub = sinon.stub()
 
             mocks.userTimelineService.getTimeline = sinon.stub()
-                .withArgs(mockUser.id, myCtrl.page)
+                .withArgs(mockUser.get("id"), myCtrl.page)
                 .returns({
                     then: thenStub
                 })
@@ -95,12 +95,12 @@ describe "UserTimelineController", ->
 
         it "pagiantion increase one every call to loadTimeline", () ->
             myCtrl = controller "UserTimeline"
-            myCtrl.userId = mockUser.id
+            myCtrl.user = mockUser
 
             thenStub = sinon.stub()
 
             mocks.userTimelineService.getTimeline = sinon.stub()
-                .withArgs(mockUser.id, myCtrl.page)
+                .withArgs(mockUser.get("id"), myCtrl.page)
                 .returns({
                     then: thenStub
                 })
@@ -115,12 +115,12 @@ describe "UserTimelineController", ->
 
         it "timeline items", () ->
             myCtrl = controller "UserTimeline"
-            myCtrl.userId = mockUser.id
+            myCtrl.user = mockUser
 
             thenStub = sinon.stub()
 
             mocks.userTimelineService.getTimeline = sinon.stub()
-                .withArgs(mockUser.id, myCtrl.page)
+                .withArgs(mockUser.get("id"), myCtrl.page)
                 .returns({
                     then: thenStub
                 })
@@ -133,7 +133,7 @@ describe "UserTimelineController", ->
 
         it "project timeline items", () ->
             myCtrl = controller "UserTimeline"
-            myCtrl.userId = mockUser.id
+            myCtrl.user = mockUser
             myCtrl.projectId = 4
 
             thenStub = sinon.stub()

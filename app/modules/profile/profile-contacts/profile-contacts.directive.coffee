@@ -5,7 +5,7 @@ ProfileContactsDirective = () ->
     return {
         templateUrl: "profile/profile-contacts/profile-contacts.html",
         scope: {
-            userId: "=userid"
+            user: "="
         },
         controllerAs: "vm",
         controller: "ProfileContacts",

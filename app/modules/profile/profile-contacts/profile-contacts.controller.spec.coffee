@@ -11,10 +11,18 @@ describe "ProfileContacts", ->
 
         provide.value "tgUserService", mocks.userServices
 
+    _mockCurrentUserService = () ->
+        mocks.currentUserService = {
+            getUser: sinon.stub()
+        }
+
+        provide.value "tgCurrentUserService", mocks.currentUserService
+
     _mocks = () ->
         module ($provide) ->
             provide = $provide
             _mockUserService()
+            _mockCurrentUserService()
 
             return null
 
@@ -28,22 +36,51 @@ describe "ProfileContacts", ->
         _mocks()
         _inject()
 
-    it "load projects with contacts attached", (done) ->
-        userId = 2
+    it "load current user contacts", (done) ->
+        user = Immutable.fromJS({id: 2})
+
         contacts = [
             {id: 1},
             {id: 2},
             {id: 3}
         ]
 
-        mocks.userServices.getContacts.withArgs(userId).promise().resolve(contacts)
+        mocks.currentUserService.getUser.returns(user)
+
+        mocks.userServices.getContacts.withArgs(user.get("id")).promise().resolve(contacts)
 
         $scope = $rootScope.$new()
 
         ctrl = $controller("ProfileContacts", $scope, {
-            userId: userId
+            user: user
         })
 
         ctrl.loadContacts().then () ->
             expect(ctrl.contacts).to.be.equal(contacts)
+            expect(ctrl.isCurrentUser).to.be.true
+            done()
+
+    it "load user contacts", (done) ->
+        user = Immutable.fromJS({id: 2})
+        user2 = Immutable.fromJS({id: 3})
+
+        contacts = [
+            {id: 1},
+            {id: 2},
+            {id: 3}
+        ]
+
+        mocks.currentUserService.getUser.returns(user2)
+
+        mocks.userServices.getContacts.withArgs(user.get("id")).promise().resolve(contacts)
+
+        $scope = $rootScope.$new()
+
+        ctrl = $controller("ProfileContacts", $scope, {
+            user: user
+        })
+
+        ctrl.loadContacts().then () ->
+            expect(ctrl.contacts).to.be.equal(contacts)
+            expect(ctrl.isCurrentUser).to.be.false
             done()

@@ -47,7 +47,7 @@ describe "ProfileProjects", ->
         _inject()
 
     it "load projects with contacts attached", (done) ->
-        userId = 2
+        user = Immutable.fromJS({id: 2})
         projects = [
             {id: 1},
             {id: 2},
@@ -60,13 +60,13 @@ describe "ProfileProjects", ->
             {id: 3, contacts: "fake"}
         ]
 
-        mocks.projectsService.getProjectsByUserId.withArgs(userId).promise().resolve(projects)
-        mocks.userService.attachUserContactsToProjects.withArgs(userId, projects).returns(projectsWithContacts)
+        mocks.projectsService.getProjectsByUserId.withArgs(user.get("id")).promise().resolve(projects)
+        mocks.userService.attachUserContactsToProjects.withArgs(user.get("id"), projects).returns(projectsWithContacts)
 
         $scope = $rootScope.$new()
 
         ctrl = $controller("ProfileProjects", $scope, {
-            userId: userId
+            user: user
         })
 
         ctrl.loadProjects().then () ->

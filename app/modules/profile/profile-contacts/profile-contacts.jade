@@ -1,7 +1,17 @@
 section.profile-contacts
-    div(ng-if="!vm.contacts.size")
+    div(ng-if="vm.contacts === undefined")
         div.spin
             img(src="/svg/spinner-circle.svg", alt="Loading...")
+
+    div.empty-tab(ng-if="vm.contacts && !vm.contacts.size")
+        include ../../../svg/hide.svg
+
+        div(ng-if="!vm.isCurrentUser")
+            p(translate="USER.PROFILE.CONTACTS_EMPTY", translate-values="{username: vm.user.get('full_name_display')}")
+        div(ng-if="vm.isCurrentUser")
+            p(translate="USER.PROFILE.CURRENT_USER_CONTACTS_EMPTY")
+            p(translate="USER.PROFILE.CURRENT_USER_CONTACTS_EMPTY_EXPLAIN")
+
     // nav.profile-contact-filters
     //     a.active(href="", title="No Filter") all
     //     a(href="", title="Only show your team") team
