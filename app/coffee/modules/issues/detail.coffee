@@ -68,22 +68,22 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     initializeEventHandlers: ->
         @scope.$on "attachment:create", =>
-            @rootscope.$broadcast("history:reload")
+            @rootscope.$broadcast("object:updated")
             @analytics.trackEvent("attachment", "create", "create attachment on issue", 1)
 
         @scope.$on "attachment:edit", =>
-            @rootscope.$broadcast("history:reload")
+            @rootscope.$broadcast("object:updated")
 
         @scope.$on "attachment:delete", =>
-            @rootscope.$broadcast("history:reload")
+            @rootscope.$broadcast("object:updated")
 
         @scope.$on "promote-issue-to-us:success", =>
             @analytics.trackEvent("issue", "promoteToUserstory", "promote issue to userstory", 1)
-            @rootscope.$broadcast("history:reload")
+            @rootscope.$broadcast("object:updated")
             @.loadIssue()
 
         @scope.$on "custom-attributes-values:edit", =>
-            @rootscope.$broadcast("history:reload")
+            @rootscope.$broadcast("object:updated")
 
     initializeOnDeleteGoToUrl: ->
        ctx = {project: @scope.project.slug}
@@ -225,7 +225,7 @@ IssueStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $t
             onSuccess = ->
                 $confirm.notify("success")
                 $model.$setViewValue(issue)
-                $rootScope.$broadcast("history:reload")
+                $rootScope.$broadcast("object:updated")
                 $loading.finish($el.find(".level-name"))
             onError = ->
                 $confirm.notify("error")
@@ -309,7 +309,7 @@ IssueTypeButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $tem
             onSuccess = ->
                 $confirm.notify("success")
                 $model.$setViewValue(issue)
-                $rootScope.$broadcast("history:reload")
+                $rootScope.$broadcast("object:updated")
                 $loading.finish($el.find(".level-name"))
 
             onError = ->
@@ -395,7 +395,7 @@ IssueSeverityButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, 
             onSuccess = ->
                 $confirm.notify("success")
                 $model.$setViewValue(issue)
-                $rootScope.$broadcast("history:reload")
+                $rootScope.$broadcast("object:updated")
                 $loading.finish($el.find(".level-name"))
             onError = ->
                 $confirm.notify("error")
@@ -482,7 +482,7 @@ IssuePriorityButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, 
             onSuccess = ->
                 $confirm.notify("success")
                 $model.$setViewValue(issue)
-                $rootScope.$broadcast("history:reload")
+                $rootScope.$broadcast("object:updated")
                 $loading.finish($el.find(".level-name"))
             onError = ->
                 $confirm.notify("error")

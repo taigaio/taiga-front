@@ -71,16 +71,16 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
         @scope.$on "attachment:create", =>
             @analytics.trackEvent("attachment", "create", "create attachment on userstory", 1)
-            @rootscope.$broadcast("history:reload")
+            @rootscope.$broadcast("object:updated")
 
         @scope.$on "attachment:edit", =>
-            @rootscope.$broadcast("history:reload")
+            @rootscope.$broadcast("object:updated")
 
         @scope.$on "attachment:delete", =>
-            @rootscope.$broadcast("history:reload")
+            @rootscope.$broadcast("object:updated")
 
         @scope.$on "custom-attributes-values:edit", =>
-            @rootscope.$broadcast("history:reload")
+            @rootscope.$broadcast("object:updated")
 
     initializeOnDeleteGoToUrl: ->
         ctx = {project: @scope.project.slug}
@@ -297,6 +297,7 @@ UsStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $temp
 
         save = $qqueue.bindAdd (status) =>
             us = $model.$modelValue.clone()
+
             us.status = status
 
             $.fn.popover().closeAll()
@@ -305,7 +306,7 @@ UsStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $temp
 
             onSuccess = ->
                 $confirm.notify("success")
-                $rootScope.$broadcast("history:reload")
+                $rootScope.$broadcast("object:updated")
                 $loading.finish($el.find(".level-name"))
 
             onError = ->
@@ -387,7 +388,7 @@ UsTeamRequirementButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $qq
             promise = $tgrepo.save($model.$modelValue)
             promise.then =>
                 $loading.finish($el.find("label"))
-                $rootscope.$broadcast("history:reload")
+                $rootscope.$broadcast("object:updated")
 
             promise.then null, ->
                 $loading.finish($el.find("label"))
@@ -449,7 +450,7 @@ UsClientRequirementButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $
             promise = $tgrepo.save($model.$modelValue)
             promise.then =>
                 $loading.finish($el.find("label"))
-                $rootscope.$broadcast("history:reload")
+                $rootscope.$broadcast("object:updated")
             promise.then null, ->
                 $loading.finish($el.find("label"))
                 $confirm.notify("error")

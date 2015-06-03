@@ -161,7 +161,7 @@ BlockLightboxDirective = ($rootscope, $tgrepo, $confirm, lightboxService, $loadi
             promise = $tgrepo.save(item)
             promise.then ->
                 $confirm.notify("success")
-                $rootscope.$broadcast("history:reload")
+                $rootscope.$broadcast("object:updated")
                 $model.$setViewValue(item)
                 finishCallback()
 
@@ -183,7 +183,7 @@ BlockLightboxDirective = ($rootscope, $tgrepo, $confirm, lightboxService, $loadi
             promise = $tgrepo.save($model.$modelValue)
             promise.then ->
                 $confirm.notify("success")
-                $rootscope.$broadcast("history:reload")
+                $rootscope.$broadcast("object:updated")
 
             promise.then null, ->
                 $confirm.notify("error")

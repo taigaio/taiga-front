@@ -65,13 +65,13 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
     initializeEventHandlers: ->
         @scope.$on "attachment:create", =>
             @analytics.trackEvent("attachment", "create", "create attachment on task", 1)
-            @rootscope.$broadcast("history:reload")
+            @rootscope.$broadcast("object:updated")
         @scope.$on "attachment:edit", =>
-            @rootscope.$broadcast("history:reload")
+            @rootscope.$broadcast("object:updated")
         @scope.$on "attachment:delete", =>
-            @rootscope.$broadcast("history:reload")
+            @rootscope.$broadcast("object:updated")
         @scope.$on "custom-attributes-values:edit", =>
-            @rootscope.$broadcast("history:reload")
+            @rootscope.$broadcast("object:updated")
 
     initializeOnDeleteGoToUrl: ->
         ctx = {project: @scope.project.slug}
@@ -237,7 +237,7 @@ TaskStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $co
 
             onSuccess = ->
                 $confirm.notify("success")
-                $rootScope.$broadcast("history:reload")
+                $rootScope.$broadcast("object:updated")
                 $loading.finish($el.find(".level-name"))
 
             onError = ->
@@ -322,7 +322,7 @@ TaskIsIocaineButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $qqueue
 
             promise.then ->
                 $confirm.notify("success")
-                $rootscope.$broadcast("history:reload")
+                $rootscope.$broadcast("object:updated")
 
             promise.then null, ->
                 task.revert()
