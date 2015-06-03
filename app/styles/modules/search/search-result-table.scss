@@ -87,14 +87,13 @@
         img {
             width: 35px;
         }
-        figcaption {
-            display: flex;
-            flex-basis: 60%;
+        .avatar-caption {
+            display: block;
             margin-left: .5rem;
-            max-width: 60%;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+            width: 80px;
         }
     }
 }
