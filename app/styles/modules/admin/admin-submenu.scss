@@ -8,27 +8,29 @@
             border-bottom: 0;
         }
     }
-    a {
-        color: $white;
-        display: flex;
-        justify-content: space-between;
-        padding: 1rem 0 1rem 1rem;
-        &:hover {
-            background: lighten($dark-taiga, 3%);
+    ul {
+        a {
             color: $white;
-            transition: all .2s;
-        }
-        &.active {
-            background: lighten($dark-taiga, 10%);
-            color: $white;
-            transition: all .2s;
-        }
-        span {
-            display: block;
-            max-width: 85%;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0 1rem 1rem;
+            &:hover {
+                background: lighten($dark-taiga, 3%);
+                color: $white;
+                transition: all .2s;
+            }
+            &.active {
+                background: lighten($dark-taiga, 10%);
+                color: $white;
+                transition: all .2s;
+            }
+            span {
+                display: block;
+                max-width: 85%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
         }
     }
     input {
@@ -36,6 +38,8 @@
         width: 85%;
     }
     .button-gray {
+        display: flex;
+        justify-content: center;
         margin: 0 1rem;
         padding: .5rem 0;
         text-align: center;
