@@ -713,27 +713,13 @@ IssueStatusInlineEditionDirective = ($repo, $template, $rootscope) ->
 
             $scope.$apply () ->
                 $repo.save(issue).then ->
+                    $ctrl.loadIssues()
 
                     for filter in $scope.filters.statuses
                         if filter.id == issue.status
                             filter.count++
 
                     $rootscope.$broadcast("filters:issueupdate", $scope.filters)
-
-                    filtering = false
-
-                    for filter in $scope.filters.statuses
-                        if filter.selected == true
-                            filtering = true
-                            if filter.id == issue.status
-                                return
-
-                    if not filtering
-                        return
-
-                    for el, i in $scope.issues
-                        if el and el.id == issue.id
-                            $scope.issues.splice(i, 1)
 
                 for filter in $scope.filters.statuses
                     if filter.id == issue.status
