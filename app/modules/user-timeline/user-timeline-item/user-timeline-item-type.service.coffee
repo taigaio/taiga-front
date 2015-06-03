@@ -61,7 +61,7 @@ timelineType = (timeline, event) ->
             key: 'TIMELINE.NEW_COMMENT_US',
             translate_params: ['username', 'obj_name'],
             description: (timeline) ->
-                return taiga.stripTags(timeline.data.comment_html, 'br|p')
+                return timeline.data.comment
         },
         { # NewIssueComment
             check: (timeline, event) ->
@@ -69,8 +69,7 @@ timelineType = (timeline, event) ->
             key: 'TIMELINE.NEW_COMMENT_ISSUE',
             translate_params: ['username', 'obj_name'],
             description: (timeline) ->
-                text = taiga.replaceTags(timeline.data.comment_html, 'h1|h2|h3', 'p')
-                return taiga.stripTags(text, 'br|p')
+                return timeline.data.comment
         },
         { # NewTask
             check: (timeline, event) ->
@@ -78,7 +77,7 @@ timelineType = (timeline, event) ->
             key: 'TIMELINE.NEW_COMMENT_TASK'
             translate_params: ['username', 'obj_name'],
             description: (timeline) ->
-                return taiga.stripTags(timeline.data.comment_html, 'br|p')
+                return timeline.data.comment
         },
         { # UsToMilestone
             check: (timeline, event, field_name) ->
@@ -107,7 +106,7 @@ timelineType = (timeline, event) ->
             key: 'TIMELINE.BLOCKED',
             translate_params: ['username', 'obj_name'],
             description: (timeline) ->
-                return taiga.stripTags(timeline.data.values_diff.blocked_note_html[1], 'br')
+                return $(timeline.data.values_diff.blocked_note_html[1]).text()
         },
         { # UnBlocked
             check: (timeline, event) ->

@@ -1,11 +1,10 @@
 class UserTimelineItemController
     @.$inject = [
-        "$sce",
         "tgUserTimelineItemType",
         "tgUserTimelineItemTitle"
     ]
 
-    constructor: (@sce, @userTimelineItemType, @userTimelineItemTitle) ->
+    constructor: (@userTimelineItemType, @userTimelineItemTitle) ->
         timeline = @.timeline.toJS()
         event = @.parseEventType(timeline.event_type)
         type = @userTimelineItemType.getType(timeline, event)
@@ -20,7 +19,7 @@ class UserTimelineItemController
         @.activity.obj =  @.getObject(timeline, event)
 
         if type.description
-            @.activity.description = @sce.trustAsHtml(type.description(timeline))
+            @.activity.description = type.description(timeline)
 
         if type.member
             @.activity.member = type.member(timeline)

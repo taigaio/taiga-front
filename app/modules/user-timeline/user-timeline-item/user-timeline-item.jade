@@ -8,7 +8,7 @@ div.activity-item
         p(tg-compile-html="vm.activity.title")
 
     blockquote.activity-comment-quote(ng-if="::vm.activity.description")
-        p(ng-bind-html="vm.activity.description")
+        | {{::vm.activity.description | limitTo:300}}
 
     .activity-member-view(ng-if="::vm.activity.member")
         .profile-member-picture

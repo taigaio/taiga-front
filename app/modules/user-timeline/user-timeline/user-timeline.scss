@@ -18,9 +18,13 @@
             }
         }
         blockquote {
+            line-height: 2em;
             margin-bottom: 0;
             margin-left: calc(35px + 1rem);
             margin-top: .5rem;
+            overflow-x: auto;
+            overflow-y: hidden;
+            white-space: pre-line;
         }
         img {
             max-height: 640px;

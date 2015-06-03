@@ -99,6 +99,6 @@ describe "UserTimelineItemController", ->
 
         myCtrl = controller("UserTimelineItem", {$scope: scope}, {timeline: timeline_immutable})
 
-        expect(myCtrl.activity.description).to.be.an('object') # $sce.trustAsHtml
+        expect(myCtrl.activity.description).to.be.equal(description)
         expect(myCtrl.activity.member).to.be.equal(member)
         expect(myCtrl.activity.attachments).to.be.equal(attachment)
