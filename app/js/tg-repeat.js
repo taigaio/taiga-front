@@ -18,6 +18,9 @@
 value = collection[key];
 immutable_value = immutable_collection.get(key); #x2
 
+trackById = trackByIdFn(key, value, index);
+->
+trackById = trackByIdFn(key, immutable_value, index);
 
 updateScope(block.scope, index, valueIdentifier, value, keyIdentifier, key, collectionLength);
 -> (x2)
@@ -149,6 +152,7 @@ updateScope(block.scope, index, valueIdentifier, immutable_value, keyIdentifier,
                 var rhs = match[2];
                 var aliasAs = match[3];
                 var trackByExp = match[4];
+
                 match = lhs.match(/^(?:(\s*[\$\w]+)|\(\s*([\$\w]+)\s*,\s*([\$\w]+)\s*\))$/);
                 if (!match) {
                     throw ngRepeatMinErr('iidexp', "'_item_' in '_item_ in _collection_' should be an identifier or '(_key_, _value_)' expression, but got '{0}'.",
@@ -237,7 +241,7 @@ updateScope(block.scope, index, valueIdentifier, immutable_value, keyIdentifier,
                             key = (collection === collectionKeys) ? index : collectionKeys[index];
                             value = collection[key];
                             immutable_value = immutable_collection.get(key);
-                            trackById = trackByIdFn(key, value, index);
+                            trackById = trackByIdFn(key, immutable_value, index);
                             if (lastBlockMap[trackById]) {
                                 // found previously seen block
                                 block = lastBlockMap[trackById];
