@@ -375,11 +375,10 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $c
 
         # Events
 
-        $el.on "click", ".add-comment a.button-green", debounce 2000, (event) ->
+        $el.on "click", ".add-comment input.button-green", debounce 2000, (event) ->
             event.preventDefault()
 
             target = angular.element(event.currentTarget)
-
             save(target)
 
         $el.on "click", ".show-more", (event) ->
