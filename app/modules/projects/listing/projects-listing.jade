@@ -11,7 +11,7 @@ div.project-list-wrapper.centered
     section.project-list-section
         div.project-list
             ul(tg-sort-projects="vm.projects")
-                li.project-list-single(tg-bind-scope, tg-repeat="project in vm.projects")
+                li.project-list-single(tg-bind-scope, tg-repeat="project in vm.projects track by project.get('id')")
                     div.project-list-single-left
                         h1.project-name
                             a(href="#", tg-nav="project:project=project.get('slug')", title="{{ ::project.get('name') }}") {{project.get('name')}}

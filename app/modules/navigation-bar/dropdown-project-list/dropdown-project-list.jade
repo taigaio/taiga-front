@@ -4,7 +4,7 @@ a(href="", title="Projects", tg-nav="projects")
 div.navbar-dropdown.dropdown-project-list
     ul
         a(href="#",
-            tg-repeat="project in vm.projects",
+            tg-repeat="project in vm.projects track by project.get('id')",
             tg-nav="project:project=project.get('slug')") {{::project.get("name")}}
 
     a.see-more-projects-btn.button-gray(
