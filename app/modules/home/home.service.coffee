@@ -84,7 +84,12 @@ class HomeService extends taiga.Service
             assigned_to: userId
         }
 
-        assignedUserStoriesPromise = @rs.userstories.listInAllProjects(params).then (userstories) ->
+        params_us = {
+            is_closed: false
+            assigned_to: userId
+        }
+
+        assignedUserStoriesPromise = @rs.userstories.listInAllProjects(params_us).then (userstories) ->
             assignedTo = assignedTo.set("userStories", userstories)
 
         assignedTasksPromise = @rs.tasks.listInAllProjects(params).then (tasks) ->
