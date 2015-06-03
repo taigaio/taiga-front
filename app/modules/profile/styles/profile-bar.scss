@@ -70,6 +70,9 @@
         margin-bottom: .5rem;
         text-transform: none;
     }
+    .not-full-name {
+        word-wrap: break-word;
+    }
     h2 {
         @extend %light;
         @extend %larger;
