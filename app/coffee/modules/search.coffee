@@ -164,12 +164,15 @@ SearchDirective = ($log, $compile, $templatecache, $routeparams, $location) ->
             selectedSectionName = null
             selectedSectionData = null
 
-            for name, value of data
-                continue if name == "count"
-                if value.length > maxVal
-                    maxVal = value.length
-                    selectedSectionName = name
-                    selectedSectionData = value
+            if data
+                for name in ["userstories", "issues", "tasks", "wikipages"]
+                    value = data[name]
+
+                    if value.length > maxVal
+                        maxVal = value.length
+                        selectedSectionName = name
+                        selectedSectionData = value
+                        break;
 
             if maxVal == 0
                 return {name: "userstories", value: []}
