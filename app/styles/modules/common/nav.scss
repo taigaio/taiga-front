@@ -51,6 +51,10 @@ tg-project-menu {
             }
         }
     }
+    svg path {
+        fill: $white;
+        opacity: 1;
+    }
     span {
         display: block;
     }
@@ -67,6 +71,10 @@ tg-project-menu {
     .active {
         background: rgba($black, .2);
         color: $fresh-taiga;
+        svg path {
+            fill: $fresh-taiga;
+            opacity: 1;
+        }
     }
 }
 
