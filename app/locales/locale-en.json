@@ -1177,7 +1177,7 @@
         "ISSUE_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the Issue {{obj_name}}",
         "TASK_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the Task {{obj_name}}",
         "TASK_UPDATED_WITH_US": "{{username}} has updated the attribute \"{{field_name}}\" of the Task {{obj_name}} which belongs to the US {{us_name}}",
-        "WIKI_UPDATED": "{{username}} has update the Wiki page {{obj_name}}",
+        "WIKI_UPDATED": "{{username}} has updated the Wiki page {{obj_name}}",
         "NEW_COMMENT_US": "{{username}} has commented in the US {{obj_name}}",
         "NEW_COMMENT_ISSUE": "{{username}} has commented in the Issue {{obj_name}}",
         "NEW_COMMENT_TASK": "{{username}} has commented in the Task {{obj_name}}",
