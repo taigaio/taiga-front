@@ -100,6 +100,10 @@
                 "SAT": "週六"
             }
         },
+        "SEE_USER_PROFILE": "See {{username }} profile",
+        "USER_STORY": "使用者故事",
+        "TASK": "Task",
+        "ISSUE": "Issue",
         "TAGS": {
             "PLACEHOLDER": "我在這裏，請標注我",
             "DELETE": "刪除Tag",
@@ -125,7 +129,8 @@
             "ASSIGNED_TO": "指派給 ",
             "POINTS": "點數",
             "BLOCKED_NOTE": "已封鎖之筆記",
-            "IS_BLOCKED": "封鎖"
+            "IS_BLOCKED": "封鎖",
+            "REF": "Ref"
         },
         "ROLES": {
             "ALL": "所有"
@@ -238,6 +243,14 @@
         "NOT_REGISTERED_YET": "還沒註冊嗎？",
         "REGISTER": "註冊",
         "CREATE_ACCOUNT": "在此建立您的免費帳號"
+    },
+    "HOME": {
+        "EMPTY_WATCHING": "<strong>Follow</strong> the projects, User Stories, Tasks, Issues... that you want to know about :)",
+        "WORKING_ON_SECTION": "Working on",
+        "WATCHING_SECTION": "Watching"
+    },
+    "PROJECTS": {
+        "MY_PROJECTS": "My projects"
     },
     "ATTACHMENT": {
         "SECTION_NAME": "附件",
@@ -382,7 +395,7 @@
             "TITLE": "類型",
             "SUBTITLE": "指定你的問題類型可能是",
             "ISSUE_TITLE": "問題類型",
-            "ACTION_ADD": "新增類別"
+            "ACTION_ADD": "新增{{objName}}"
         },
         "ROLES": {
             "SECTION_NAME": "角色- {{projectName}}",
@@ -518,9 +531,34 @@
             "TITLE": "服務 "
         }
     },
+    "USER": {
+        "PROFILE": {
+            "EDIT": "Edit profile",
+            "FOLLOW": "Follow",
+            "PROJECTS": "專案",
+            "CLOSED_US": "Closed US",
+            "CONTACTS": "Contacts",
+            "REPORT": "Report Abuse",
+            "ACTIVITY_TAB": "Activity Tab",
+            "PROJECTS_TAB": "Projects Tab",
+            "CONTACTS_TAB": "Contacts Tab",
+            "FAVORITES_TAB": "Favorites Tab",
+            "CONTACTS_EMPTY": "{{username}} doesn't have contacts yet",
+            "CURRENT_USER_CONTACTS_EMPTY": "You don't have contacts yet",
+            "CURRENT_USER_CONTACTS_EMPTY_EXPLAIN": "The people with whom you work at Taiga will be your contacts automatically",
+            "PROJECTS_EMPTY": "{{username}} doesn't' have projects yet"
+        },
+        "PROFILE_SIDEBAR": {
+            "TITLE": "Your profile",
+            "DESCRIPTION": "Lots of people could see what do you do and what are you working on. Add tags so you will give an enhanced version of your information.",
+            "ADD_INFO": "Add info"
+        }
+    },
     "PROJECT": {
         "WELCOME": "歡迎",
         "SECTION_PROJECTS": "專案",
+        "HELP": "Reorder your projects to set in the top the most used ones.<br/> The top 10 projects will appear in the top navigation bar project list",
+        "PRIVATE": "不公開專案",
         "STATS": {
             "PROJECT": "專案<br/> 點數",
             "DEFINED": "已定義<br/> 點數",
@@ -529,6 +567,7 @@
         },
         "SECTION": {
             "SEARCH": "搜尋",
+            "TIMELINE": "Timeline",
             "BACKLOG": "待辦任務優先表",
             "KANBAN": "Kanban(看板)",
             "ISSUES": "問題 ",
@@ -541,9 +580,30 @@
             "SECTION_TITLE": "你的專案",
             "PLACEHOLDER_SEARCH": "搜尋",
             "ACTION_CREATE_PROJECT": "創建專案",
+            "SEE_MORE_PROJECTS": "See more projects",
             "TITLE_ACTION_IMPORT": "滙入專案",
             "TITLE_PRVIOUS_PROJECT": "顯示過去專案",
-            "TITLE_NEXT_PROJECT": "顯示下一個任務"
+            "TITLE_NEXT_PROJECT": "顯示下一個任務",
+            "HELP_TITLE": "Taiga Support Page",
+            "HELP": "Help",
+            "FEEDBACK_TITLE": "送出回饋 ",
+            "FEEDBACK": "回饋 ",
+            "NOTIFICATIONS_TITLE": "Edit your notification settings",
+            "NOTIFICATIONS": "通知",
+            "ORGANIZATIONS_TITLE": "Edit your organizations",
+            "ORGANIZATIONS": "Edit organizations",
+            "SETTINGS_TITLE": "Edit your settings",
+            "SETTINGS": "Settings",
+            "VIEW_PROFILE_TITLE": "View Profile",
+            "VIEW_PROFILE": "View Profile",
+            "EDIT_PROFILE_TITLE": "Edit your profile",
+            "EDIT_PROFILE": "Edit Profile",
+            "CHANGE_PASSWORD_TITLE": "更換密碼 ",
+            "CHANGE_PASSWORD": "更換密碼 ",
+            "DASHBOARD_TITLE": "Dashboard",
+            "DISCOVER_TITLE": "Discover trending projects",
+            "DISCOVER": "Discover",
+            "ACTION_REORDER": "Drag & drop to reorder"
         },
         "IMPORT": {
             "TITLE": "滙入專案中",
@@ -921,6 +981,11 @@
         "TITLE_NEXT_ISSUE": "下一個問題 ",
         "ACTION_DELETE": "删除議題 ",
         "LIGHTBOX_TITLE_BLOKING_ISSUE": "封鎖中的問題",
+        "FIELDS": {
+            "PRIORITY": "優先性",
+            "SEVERITY": "急迫性",
+            "TYPE": "類型"
+        },
         "CONFIRM_PROMOTE": {
             "TITLE": "將此問題提到使用者故事",
             "MESSAGE": "你確定此問題要創建一個新的使用者故事?"
@@ -1059,7 +1124,7 @@
             "EMAIL": "電子郵件",
             "FULL_NAME": "全名",
             "PLACEHOLDER_FULL_NAME": "你的全名",
-            "BIO": "簡介",
+            "BIO": "Bio (max. 210 chars)",
             "PLACEHOLDER_BIO": "請自我介紹",
             "LANGUAGE": "語言",
             "LANGUAGE_DEFAULT": "--  使用設預語言 -- "
@@ -1087,5 +1152,40 @@
             "LAST_EDIT": "上次 <br />編輯 ",
             "LAST_MODIFICATION": "上回修改"
         }
+    },
+    "HINTS": {
+        "SECTION_NAME": "Hint",
+        "LINK": "If you want to know how to use it visit our support page",
+        "LINK_TITLE": "Visit our support page",
+        "HINT1_TITLE": "Did you know you import and export projects?",
+        "HINT1_TEXT": "This allow you to extract all your data from one taiga and move it to another one",
+        "HINT2_TITLE": "Did you know you can create custom fields?",
+        "HINT2_TEXT": "This will provide teams with a flexible input to fit in their workflow"
+    },
+    "TIMELINE": {
+        "UPLOAD_ATTACHMENT": "{{username}} has uploaded a new attachment in {{obj_name}}",
+        "US_CREATED": "{{username}} has created a new US in {{project_name}} {{obj_name}}",
+        "ISSUE_CREATED": "{{username}} has created a new Issue in {{project_name}} {{obj_name}}",
+        "TASK_CREATED": "{{username}} has created a new Task in {{project_name}} {{obj_name}}",
+        "WIKI_CREATED": "{{username}} has created a new Wiki page in {{project_name}} {{obj_name}}",
+        "MILESTONE_CREATED": "{{username}} has created a new Milestone in {{project_name}} {{obj_name}}",
+        "NEW_PROJECT": "{{username}} has a new project {{project_name}}",
+        "MILESTONE_UPDATED": "{{username}} has updated the milestone {{obj_name}}",
+        "US_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the US {{obj_name}}",
+        "ISSUE_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the Issue {{obj_name}}",
+        "TASK_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the Task {{obj_name}}",
+        "TASK_UPDATED_WITH_US": "{{username}} has updated the attribute \"{{field_name}}\" of the Task {{obj_name}} which belongs to the US {{us_name}}",
+        "WIKI_UPDATED": "{{username}} has updated the Wiki page {{obj_name}}",
+        "NEW_COMMENT_US": "{{username}} has commented in the US {{obj_name}}",
+        "NEW_COMMENT_ISSUE": "{{username}} has commented in the Issue {{obj_name}}",
+        "NEW_COMMENT_TASK": "{{username}} has commented in the Task {{obj_name}}",
+        "NEW_MEMBER": "{{project_name}} has a new member",
+        "US_ADDED_MILESTONE": "{{username}} has added the US {{obj_name}} to {{sprint_name}}",
+        "US_REMOVED_FROM_MILESTONE": "{{username}} has added the US {{obj_name}} to the Backlog",
+        "BLOCKED": "{{username}} has blocked {{obj_name}}",
+        "UNBLOCKED": "{{username}} has unblocked {{obj_name}}"
+    },
+    "LANGUAGES": {
+        "ENGLISH": "英文"
     }
 }

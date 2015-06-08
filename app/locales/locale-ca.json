@@ -100,6 +100,10 @@
                 "SAT": "Ds"
             }
         },
+        "SEE_USER_PROFILE": "See {{username }} profile",
+        "USER_STORY": "Història d'usuari",
+        "TASK": "Task",
+        "ISSUE": "Issue",
         "TAGS": {
             "PLACEHOLDER": "Afegir tag",
             "DELETE": "Elimina l'etiqueta",
@@ -125,7 +129,8 @@
             "ASSIGNED_TO": "Assignat a",
             "POINTS": "Punts",
             "BLOCKED_NOTE": "Nota de bloqueig",
-            "IS_BLOCKED": "està bloquejat"
+            "IS_BLOCKED": "està bloquejat",
+            "REF": "Ref"
         },
         "ROLES": {
             "ALL": "Tot"
@@ -238,6 +243,14 @@
         "NOT_REGISTERED_YET": "No t'has registrat encara?",
         "REGISTER": "Registrat",
         "CREATE_ACCOUNT": "Crea el teu conter gratis ací"
+    },
+    "HOME": {
+        "EMPTY_WATCHING": "<strong>Follow</strong> the projects, User Stories, Tasks, Issues... that you want to know about :)",
+        "WORKING_ON_SECTION": "Working on",
+        "WATCHING_SECTION": "Watching"
+    },
+    "PROJECTS": {
+        "MY_PROJECTS": "My projects"
     },
     "ATTACHMENT": {
         "SECTION_NAME": "Adjunts",
@@ -382,7 +395,7 @@
             "TITLE": "Tipus",
             "SUBTITLE": "Especifica quin tipus d'incidència podria ser.",
             "ISSUE_TITLE": "Tipus d'incidències",
-            "ACTION_ADD": "Add new type"
+            "ACTION_ADD": "Afegir now {{objName}}"
         },
         "ROLES": {
             "SECTION_NAME": "Rols - {{projectName}}",
@@ -518,9 +531,34 @@
             "TITLE": "Serveis"
         }
     },
+    "USER": {
+        "PROFILE": {
+            "EDIT": "Edit profile",
+            "FOLLOW": "Follow",
+            "PROJECTS": "Projectes",
+            "CLOSED_US": "Closed US",
+            "CONTACTS": "Contacts",
+            "REPORT": "Report Abuse",
+            "ACTIVITY_TAB": "Activity Tab",
+            "PROJECTS_TAB": "Projects Tab",
+            "CONTACTS_TAB": "Contacts Tab",
+            "FAVORITES_TAB": "Favorites Tab",
+            "CONTACTS_EMPTY": "{{username}} doesn't have contacts yet",
+            "CURRENT_USER_CONTACTS_EMPTY": "You don't have contacts yet",
+            "CURRENT_USER_CONTACTS_EMPTY_EXPLAIN": "The people with whom you work at Taiga will be your contacts automatically",
+            "PROJECTS_EMPTY": "{{username}} doesn't' have projects yet"
+        },
+        "PROFILE_SIDEBAR": {
+            "TITLE": "Your profile",
+            "DESCRIPTION": "Lots of people could see what do you do and what are you working on. Add tags so you will give an enhanced version of your information.",
+            "ADD_INFO": "Add info"
+        }
+    },
     "PROJECT": {
         "WELCOME": "Benvinguts",
         "SECTION_PROJECTS": "Projectes",
+        "HELP": "Reorder your projects to set in the top the most used ones.<br/> The top 10 projects will appear in the top navigation bar project list",
+        "PRIVATE": "Projecte privat",
         "STATS": {
             "PROJECT": "punts<br/> projecte",
             "DEFINED": "punts<br/> definits",
@@ -529,6 +567,7 @@
         },
         "SECTION": {
             "SEARCH": "Cerca",
+            "TIMELINE": "Timeline",
             "BACKLOG": "Backlog",
             "KANBAN": "Kanban",
             "ISSUES": "Incidències",
@@ -541,9 +580,30 @@
             "SECTION_TITLE": "Els teus projectes",
             "PLACEHOLDER_SEARCH": "Cerca en...",
             "ACTION_CREATE_PROJECT": "Crear projecte",
+            "SEE_MORE_PROJECTS": "See more projects",
             "TITLE_ACTION_IMPORT": "Importar projecte",
             "TITLE_PRVIOUS_PROJECT": "Mostra projectes previs",
-            "TITLE_NEXT_PROJECT": "Mostrar próxims projectes"
+            "TITLE_NEXT_PROJECT": "Mostrar próxims projectes",
+            "HELP_TITLE": "Taiga Support Page",
+            "HELP": "Help",
+            "FEEDBACK_TITLE": "Enviar sugerències",
+            "FEEDBACK": "Sugerències",
+            "NOTIFICATIONS_TITLE": "Edit your notification settings",
+            "NOTIFICATIONS": "Notificacions",
+            "ORGANIZATIONS_TITLE": "Edit your organizations",
+            "ORGANIZATIONS": "Edit organizations",
+            "SETTINGS_TITLE": "Edit your settings",
+            "SETTINGS": "Settings",
+            "VIEW_PROFILE_TITLE": "View Profile",
+            "VIEW_PROFILE": "View Profile",
+            "EDIT_PROFILE_TITLE": "Edit your profile",
+            "EDIT_PROFILE": "Edit Profile",
+            "CHANGE_PASSWORD_TITLE": "Canvi de contrasenya",
+            "CHANGE_PASSWORD": "Canvi de contrasenya",
+            "DASHBOARD_TITLE": "Dashboard",
+            "DISCOVER_TITLE": "Discover trending projects",
+            "DISCOVER": "Discover",
+            "ACTION_REORDER": "Drag & drop to reorder"
         },
         "IMPORT": {
             "TITLE": "Important Projecte",
@@ -921,6 +981,11 @@
         "TITLE_NEXT_ISSUE": "pròxima incidència",
         "ACTION_DELETE": "Esborrar incidència",
         "LIGHTBOX_TITLE_BLOKING_ISSUE": "Bloquejant incidència",
+        "FIELDS": {
+            "PRIORITY": "Prioritat",
+            "SEVERITY": "Severitat",
+            "TYPE": "Tipus"
+        },
         "CONFIRM_PROMOTE": {
             "TITLE": "Promociona aquesta incidència a història d'usuari",
             "MESSAGE": "Segur que vols crear una nova US desde aquesta incidència"
@@ -1059,7 +1124,7 @@
             "EMAIL": "Correu electrònic",
             "FULL_NAME": "Nom complet",
             "PLACEHOLDER_FULL_NAME": "Esciur el teu nom complet (ex. Íñigo Montoya)",
-            "BIO": "Bio",
+            "BIO": "Bio (max. 210 chars)",
             "PLACEHOLDER_BIO": "Contans algo sobre tu mateix",
             "LANGUAGE": "Idioma",
             "LANGUAGE_DEFAULT": "-- utiliza l'idioma per defecte --"
@@ -1087,5 +1152,40 @@
             "LAST_EDIT": "última <br />edició",
             "LAST_MODIFICATION": "última modificació"
         }
+    },
+    "HINTS": {
+        "SECTION_NAME": "Hint",
+        "LINK": "If you want to know how to use it visit our support page",
+        "LINK_TITLE": "Visit our support page",
+        "HINT1_TITLE": "Did you know you import and export projects?",
+        "HINT1_TEXT": "This allow you to extract all your data from one taiga and move it to another one",
+        "HINT2_TITLE": "Did you know you can create custom fields?",
+        "HINT2_TEXT": "This will provide teams with a flexible input to fit in their workflow"
+    },
+    "TIMELINE": {
+        "UPLOAD_ATTACHMENT": "{{username}} has uploaded a new attachment in {{obj_name}}",
+        "US_CREATED": "{{username}} has created a new US in {{project_name}} {{obj_name}}",
+        "ISSUE_CREATED": "{{username}} has created a new Issue in {{project_name}} {{obj_name}}",
+        "TASK_CREATED": "{{username}} has created a new Task in {{project_name}} {{obj_name}}",
+        "WIKI_CREATED": "{{username}} has created a new Wiki page in {{project_name}} {{obj_name}}",
+        "MILESTONE_CREATED": "{{username}} has created a new Milestone in {{project_name}} {{obj_name}}",
+        "NEW_PROJECT": "{{username}} has a new project {{project_name}}",
+        "MILESTONE_UPDATED": "{{username}} has updated the milestone {{obj_name}}",
+        "US_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the US {{obj_name}}",
+        "ISSUE_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the Issue {{obj_name}}",
+        "TASK_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the Task {{obj_name}}",
+        "TASK_UPDATED_WITH_US": "{{username}} has updated the attribute \"{{field_name}}\" of the Task {{obj_name}} which belongs to the US {{us_name}}",
+        "WIKI_UPDATED": "{{username}} has updated the Wiki page {{obj_name}}",
+        "NEW_COMMENT_US": "{{username}} has commented in the US {{obj_name}}",
+        "NEW_COMMENT_ISSUE": "{{username}} has commented in the Issue {{obj_name}}",
+        "NEW_COMMENT_TASK": "{{username}} has commented in the Task {{obj_name}}",
+        "NEW_MEMBER": "{{project_name}} has a new member",
+        "US_ADDED_MILESTONE": "{{username}} has added the US {{obj_name}} to {{sprint_name}}",
+        "US_REMOVED_FROM_MILESTONE": "{{username}} has added the US {{obj_name}} to the Backlog",
+        "BLOCKED": "{{username}} has blocked {{obj_name}}",
+        "UNBLOCKED": "{{username}} has unblocked {{obj_name}}"
+    },
+    "LANGUAGES": {
+        "ENGLISH": "English"
     }
 }
