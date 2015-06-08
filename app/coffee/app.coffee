@@ -512,6 +512,8 @@ init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $na
 
         if next.params.pslug
             projectService.setProject(next.params.pslug)
+        else
+            projectService.cleanProject()
 
         if next.title
             $translate(next.title).then (text) => $appTitle.set(text)

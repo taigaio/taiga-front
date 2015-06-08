@@ -28,6 +28,12 @@ class ProjectService
 
             @.fetchProject()
 
+    cleanProject: () ->
+        @._pslug = null
+        @._project = null
+        @._section = null
+        @._sectionsBreadcrumb = Immutable.List()
+
     fetchProject: () ->
         return @projectsService.getProjectBySlug(@._pslug).then (project) =>
             @._project = project
