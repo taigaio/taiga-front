@@ -485,7 +485,7 @@ gulp.task("deploy", function(cb) {
 });
 //The default task (called when you run gulp from cli)
 gulp.task("default", function(cb) {
-    runSequence("clear", "delete-tmp", [
+    runSequence("delete-tmp", [
         "copy",
         "styles",
         "app-watch",
