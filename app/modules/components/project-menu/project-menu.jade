@@ -6,6 +6,11 @@ nav.menu(ng-if="vm.project")
                     span(class="icon icon-search")
                     span.helper(translate="PROJECT.SECTION.SEARCH")
 
+             li(id="nav-timeline")
+                a(ng-class="{active: vm.active == 'project-timeline'}", title="{{'PROJECT.SECTION.TIMELINE' | translate}}", tg-nav="project:project=vm.project.get('slug')", tabindex="2")
+                    include ../../../svg/timeline.svg
+                    span.helper(translate="PROJECT.SECTION.TIMELINE")
+
             li(id="nav-backlog", ng-if="vm.menu.get('backlog')")
                 a(ng-class="{active: vm.active == 'backlog'}", title="{{'PROJECT.SECTION.BACKLOG' | translate}}", tg-nav="project-backlog:project=vm.project.get('slug')", tabindex="2")
                     span(class="icon icon-backlog")
