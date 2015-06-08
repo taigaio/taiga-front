@@ -6,6 +6,17 @@
 ### Features
 - Show the reference of entities in search results (thanks to [@artlepool](https://github.com/artlepool))
 - Autofocus on search modal
+- Select multiple backlog US with `shift`
+- Public projects
+- New project menu design
+- New project home design
+- New projects list design
+- User menu
+- User dashboard with `working on` and `watching`
+- User profile
+- Activity timeline
+- Global user configuration
+- User contacts
 
 ### Misc
 - Improve performance: remove some unnecessary calls to the api.
