@@ -103,9 +103,14 @@ class HomeService extends taiga.Service
             watchers: userId
         }
 
+        params_us = {
+            is_closed: false
+            watchers: userId
+        }
+
         watching = Immutable.Map()
 
-        watchingUserStoriesPromise = @rs.userstories.listInAllProjects(params).then (userstories) ->
+        watchingUserStoriesPromise = @rs.userstories.listInAllProjects(params_us).then (userstories) ->
             watching = watching.set("userStories", userstories)
 
         watchingTasksPromise = @rs.tasks.listInAllProjects(params).then (tasks) ->
