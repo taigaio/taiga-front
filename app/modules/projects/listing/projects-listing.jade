@@ -13,10 +13,11 @@ div.project-list-wrapper.centered
             ul(tg-sort-projects="vm.projects")
                 li.project-list-single(tg-bind-scope, tg-repeat="project in vm.projects track by project.get('id')")
                     div.project-list-single-left
-                        h1.project-name
-                            a(href="#", tg-nav="project:project=project.get('slug')", title="{{ ::project.get('name') }}") {{project.get('name')}}
-                        span.private(ng-if="project.get('is_private')", title="{{'PROJECT.PRIVATE' | translate}}")
-                            include ../../../svg/lock.svg
+                        div.project-title
+                            h1.project-name
+                                a(href="#", tg-nav="project:project=project.get('slug')", title="{{ ::project.get('name') }}") {{project.get('name')}}
+                            span.private(ng-if="project.get('is_private')", title="{{'PROJECT.PRIVATE' | translate}}")
+                                include ../../../svg/lock.svg
                         p {{ ::project.get('description') | limitTo:300 }}
                             span(ng-if="::project.get('description').length > 300") ...
 
