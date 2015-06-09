@@ -1,4 +1,4 @@
-class ProfilePageController
+class ProfileController
     @.$inject = [
         "$appTitle",
         "tgCurrentUserService",
@@ -25,4 +25,4 @@ class ProfilePageController
             @.isCurrentUser = true
             @appTitle.set(@.user.get('full_name_display'))
 
-angular.module("taigaProfile").controller("Profile", ProfilePageController)
+angular.module("taigaProfile").controller("Profile", ProfileController)
