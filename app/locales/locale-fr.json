@@ -823,7 +823,7 @@
             "TOGGLE": "Afficher/Cacher les filtres",
             "TITLE": "Filtres",
             "REMOVE": "Supprimer les filtres",
-            "HIDE": "Esconder Filtros",
+            "HIDE": "Cacher les filtres",
             "SHOW": "Afficher les filtres",
             "FILTER_CATEGORY_STATUS": "Etat",
             "FILTER_CATEGORY_TAGS": "Labels"
