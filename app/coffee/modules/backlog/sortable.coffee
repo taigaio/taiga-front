@@ -61,10 +61,10 @@ BacklogSortableDirective = ($repo, $rs, $rootscope, $tgConfirm, $translate) ->
                 items: ".us-item-row",
                 cancel: ".popover"
                 connectWith: ".sprint"
-                containment: ".wrapper"
                 dropOnEmpty: true
                 placeholder: "row us-item-row us-item-drag sortable-placeholder"
                 scroll: true
+                disableHorizontalScroll: true
                 # A consequence of length of backlog user story item
                 # the default tolerance ("intersection") not works properly.
                 tolerance: "pointer"
@@ -73,8 +73,11 @@ BacklogSortableDirective = ($repo, $rs, $rootscope, $tgConfirm, $translate) ->
                 # works unexpectly (in some circumstances calculates wrong
                 # position for revert).
                 revert: false
-                cursorAt: {right: 15}
+                start: () ->
+                    $(document.body).addClass("drag-active")
                 stop: () ->
+                    $(document.body).removeClass("drag-active")
+
                     if $el.hasClass("active-filters")
                         $el.sortable("cancel")
                         filterError()
@@ -167,9 +170,10 @@ SprintSortableDirective = ($repo, $rs, $rootscope) ->
                 $el.sortable({
                     scroll: true
                     dropOnEmpty: true
-                    items: ".sprint-table .milestone-us-item-row",
-                    connectWith: ".sprint,.backlog-table-body,.empty-backlog",
-                    placeholder: "row us-item-row sortable-placeholder",
+                    items: ".sprint-table .milestone-us-item-row"
+                    containment: "window"
+                    connectWith: ".sprint,.backlog-table-body,.empty-backlog"
+                    placeholder: "row us-item-row sortable-placeholder"
                     forcePlaceholderSize:true
                 })
 

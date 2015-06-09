@@ -33,6 +33,10 @@ body {
     overflow: hidden;
 }
 
+.drag-active {
+    overflow-x: hidden;
+}
+
 .master {
     background: $white;
     height: 100%;
