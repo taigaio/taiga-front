@@ -2,12 +2,12 @@
     border-bottom: 1px solid $whitish;
     display: flex;
     justify-content: space-between;
-    padding: .5rem;
+    min-height: 9rem;
+    padding: 1rem;
     position: relative;
 }
 
 .project-list-single-left {
-    align-content: space-between;
     display: flex;
     flex-direction: column;
     padding-right: 1rem;
@@ -23,15 +23,15 @@
     }
     p {
         @extend %text;
-        @extend %small;
+        @extend %xsmall;
         color: $gray;
         margin-bottom: 0;
     }
     .project-list-single-tags {
+        align-self: flex-end;
         display: flex;
         flex: 3;
         flex-wrap: wrap;
-        justify-content: flex-start;
         margin-top: .5rem;
     }
     .tag {
