@@ -342,6 +342,8 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         "X-Session-Id": taiga.sessionId
     }
 
+    $httpProvider.useApplyAsync(true)
+
     $tgEventsProvider.setSessionId(taiga.sessionId)
 
     # Add next param when user try to access to a secction need auth permissions.
