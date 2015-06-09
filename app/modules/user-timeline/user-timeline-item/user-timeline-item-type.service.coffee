@@ -106,7 +106,10 @@ timelineType = (timeline, event) ->
             key: 'TIMELINE.BLOCKED',
             translate_params: ['username', 'obj_name'],
             description: (timeline) ->
-                return $(timeline.data.values_diff.blocked_note_html[1]).text()
+                if timeline.data.values_diff.blocked_note_html
+                    return $(timeline.data.values_diff.blocked_note_html[1]).text()
+                else
+                    return false
         },
         { # UnBlocked
             check: (timeline, event) ->
