@@ -15,7 +15,7 @@ class AppMetaService extends taiga.Service = ->
                 $("head").append(meta)
 
             meta.text(value or "")
-        if key.indexOf("og:") == 0
+        else if key.indexOf("og:") == 0
             meta = $("meta[property='#{key}']")
 
             if meta.length == 0
@@ -42,15 +42,15 @@ class AppMetaService extends taiga.Service = ->
         @._set("twitter:card", "summary")
         @._set("twitter:site", "@taigaio")
         @._set("twitter:title", title)
-        @._set("twitter:description", truncate(description, 250))
-        @._set("twitter:image", "#{window.location.origin}/images/favicon.png")
+        @._set("twitter:description", truncate(description, 300))
+        @._set("twitter:image", "#{window.location.origin}/images/logo-color.png")
 
     setOpenGraphMetas: (title, description) ->
         @._set("og:type", "object")
         @._set("og:site_name", "Taiga - Love your projects")
         @._set("og:title", title)
-        @._set("og:description", truncate(description, 250))
-        @._set("og:image", "#{window.location.origin}/images/favicon.png")
+        @._set("og:description", truncate(description, 300))
+        @._set("og:image", "#{window.location.origin}/images/logo-color.png")
         @._set("og:url", window.location.href)
 
     setAll: (title, description) ->
