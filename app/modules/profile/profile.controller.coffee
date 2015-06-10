@@ -27,11 +27,13 @@ class ProfileController
             @._setMeta(@.user)
 
     _setMeta: (user) ->
-        title = @translate.instant("USER.PROFILE.PAGE_TITLE", {
+        ctx = {
             userFullName: user.get("full_name_display"),
             userUsername: user.get("username")
-        })
-        description = user.get("bio")
-        @appMetaService.setAll(title, description)
+        }
+
+        @translate("USER.PROFILE.PAGE_TITLE", ctx).then (title) =>
+            description = user.get("bio")
+            @appMetaService.setAll(title, description)
 
 angular.module("taigaProfile").controller("Profile", ProfileController)

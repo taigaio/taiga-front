@@ -22,8 +22,10 @@ class ProjectController
                 @xhrError.response(xhr)
 
     _setMeta: (project)->
-        title = @translate.instant("PROJECT.PAGE_TITLE", {projectName: project.get("name")})
-        description = project.get("description")
-        @appMetaService.setAll(title, description)
+        ctx = {projectName: project.get("name")}
+
+        title = @translate("PROJECT.PAGE_TITLE", ctx).then (title) =>
+            description = project.get("description")
+            @appMetaService.setAll(title, description)
 
 angular.module("taigaProjects").controller("Project", ProjectController)
