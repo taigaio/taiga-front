@@ -244,7 +244,7 @@
     },
     "LOGIN": {
         "PAGE_TITLE": "Login - Taiga",
-        "PAGE_DESCRIPTION": "Logging in to Taiga, a project management platform for startups and agile developers & designers who want a simple, beautif  ul tool that makes work truly enjoyable."
+        "PAGE_DESCRIPTION": "Logging in to Taiga, a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
     },
     "AUTH": {
         "INVITED_YOU": "hat Sie zum Projekt eingeladen",
@@ -267,8 +267,8 @@
         "SUCCESS": "Herzlich willkommen bei Taiga, unsere Heinzelmännchen freuen sich. "
     },
     "REGISTER": {
-        "PAGE_TITLE": "Register - Taiga",
-        "PAGE_DESCRIPTION": "Create your account in Taiga, a project management platform for startups and agile developers & designers who want a simple, beautif  ul tool that makes work truly enjoyable."
+        "PAGE_TITLE": "Registrieren - Taiga",
+        "PAGE_DESCRIPTION": "Create your account in Taiga, a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
     },
     "REGISTER_FORM": {
         "TITLE": "Einen neuen Taiga Account registrieren (kostenlos)",
@@ -281,8 +281,8 @@
         "LINK_LOGIN": "Sind Sie bereits registriert? Loggen Sie sich ein"
     },
     "FORGOT_PASSWORD": {
-        "PAGE_TITLE": "Forgot password - Taiga",
-        "PAGE_DESCRIPTION": "Enter your username or email to get a new password and you can access to Taiga again."
+        "PAGE_TITLE": "Passwort vergessen - Taiga",
+        "PAGE_DESCRIPTION": "Geben Sie Ihren Benutzernamen oder Ihre E-Mail Adresse ein, um ein neues Passwort zu erhalten, und Sie können auf Taiga wieder zugreifen. "
     },
     "FORGOT_PASSWORD_FORM": {
         "TITLE": "Huch, haben Sie Ihr Passwort vergessen?",
@@ -294,8 +294,8 @@
         "ERROR": "Laut unseren Heinzelmännchen sind Sie bislang noch nicht registriert. "
     },
     "CHANGE_PASSWORD": {
-        "PAGE_TITLE": "Change you password - Taiga",
-        "PAGE_DESCRIPTION": "Set a new passoword for your Taiga account and hey!, you may want to eat some more iron-rich food, it's good for your brain :P",
+        "PAGE_TITLE": "Ändern Sie Ihr Passwort - Taiga",
+        "PAGE_DESCRIPTION": "Setzen Sie ein neues Passwort für Ihren Taiga Account, und hey!, es empfiehlt sich, mehr eisenreiche Nahrung zu sich zu nehmen - die ist gut für's Gehirn :P",
         "SECTION_NAME": "Passwort ändern",
         "FIELD_CURRENT_PASSWORD": "Aktuelles Passwort",
         "PLACEHOLDER_CURRENT_PASSWORD": "Ihr aktuelles Passwort (oder leer, wenn Sie noch kein Passwort haben)",
@@ -317,8 +317,8 @@
         "SUCCESS": "Unsere Oompa Loompas haben das neue Passwort gespeichert.<br /> <strong>Hier</strong> gehts zum login."
     },
     "INVITATION": {
-        "PAGE_TITLE": "Invitation acceptance - Taiga",
-        "PAGE_DESCRIPTION": "Accept the invitation to join a project in Taiga, a project management platform for startups and agile developers & designers who want a simple, beautif  ul tool that makes work truly enjoyable."
+        "PAGE_TITLE": "Einladung Annahme - Taiga",
+        "PAGE_DESCRIPTION": "Accept the invitation to join a project in Taiga, a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
     },
     "INVITATION_LOGIN_FORM": {
         "NOT_FOUND": "<strong>Huch, wir haben ein Problem</strong><br />Unsere Heinzelmännchen können Ihre Einladung nicht finden.",
@@ -333,7 +333,7 @@
         "WATCHING_SECTION": "Beobachtung"
     },
     "PROJECTS": {
-        "PAGE_TITLE": "My projects - Taiga",
+        "PAGE_TITLE": "Meine Projekte - Taiga",
         "PAGE_DESCRIPTION": "A list with all your projects, you can reorder or create a new one.",
         "MY_PROJECTS": "Meine Projekte"
     },
@@ -374,7 +374,7 @@
         },
         "MEMBERSHIPS": {
             "TITLE": "Mitglieder verwalten",
-            "PAGE_TITLE": "Memberships - {{projectName}}",
+            "PAGE_TITLE": "Mitgliedschaften - {{projectName}}",
             "ADD_BUTTON": "+ Neues Mitglied",
             "ADD_BUTTON_TITLE": "Neues Mitglied hinzufügen"
         },
@@ -410,7 +410,7 @@
             "SALT_CHAT_ROOM": "Wenn Sie möchten, können Sie einen Salt Code zum Namen des Chatrooms hinzufügen"
         },
         "PROJECT_PROFILE": {
-            "PAGE_TITLE": "{{sectionName}} - Project profile  - {{projectName}}",
+            "PAGE_TITLE": "{{sectionName}} - Projekt Profil - {{projectName}}",
             "PROJECT_DETAILS": "Projekt Details",
             "PROJECT_NAME": "Projektname",
             "PROJECT_SLUG": "Projekt Slug",
@@ -451,26 +451,26 @@
             "ISSUE_ADD": "Fügen Sie den Tickets ein benutzerdefiniertes Feld hinzu "
         },
         "PROJECT_VALUES": {
-            "PAGE_TITLE": "{{sectionName}} - Project values - {{projectName}}",
+            "PAGE_TITLE": "{{sectionName}} - Projekt Werte - {{projectName}}",
             "REPLACEMENT": "Alle Einträge mit diesem Wert werden geändert zu",
             "ERROR_DELETE_ALL": "Sie dürfen nicht alle Werte löschen!"
         },
         "PROJECT_VALUES_POINTS": {
-            "TITLE": "Points",
+            "TITLE": "Punkte",
             "SUBTITLE": "Bitte schätzen Sie die Punktzahl für Ihre User-Stories",
-            "US_TITLE": "US points",
+            "US_TITLE": "User-Story Punkte",
             "ACTION_ADD": "Neuen Punkt hinzufügen"
         },
         "PROJECT_VALUES_PRIORITIES": {
-            "TITLE": "Priorities",
+            "TITLE": "Prioritäten",
             "SUBTITLE": "Legen Sie die Prioritäten Ihrer Tickets fest",
-            "ISSUE_TITLE": "Issue priorities",
+            "ISSUE_TITLE": "Ticket Prioritäten",
             "ACTION_ADD": "Neue Priorität hinzufügen"
         },
         "PROJECT_VALUES_SEVERITIES": {
-            "TITLE": "Severities",
+            "TITLE": "Schweregrade",
             "SUBTITLE": "Legen Sie die Gewichtung Ihrer Tickets fest",
-            "ISSUE_TITLE": "Issue severities",
+            "ISSUE_TITLE": "Ticket Gewichtung",
             "ACTION_ADD": "Neue Gewichtung hinzufügen"
         },
         "PROJECT_VALUES_STATUS": {
@@ -487,7 +487,7 @@
             "ACTION_ADD": "Neu hinzufügen {{objName}}"
         },
         "ROLES": {
-            "PAGE_TITLE": "Roles - {{projectName}}",
+            "PAGE_TITLE": "Rollen - {{projectName}}",
             "WARNING_NO_ROLE": "Beachten Sie, keine Rolle in Ihrem Projekt wird in der Lage sein, die Punktevergabe für User-Stories einzuschätzen. ",
             "HELP_ROLE_ENABLED": "Wenn Sie dies freischalten, werden Mitglieder, denen diese Rolle zugewiesen ist, in der Lage sein, die Punktevergabe für User-Stories zu veranschlagen. ",
             "COUNT_MEMBERS": "{{ role.members_count }} Mitglieder mit dieser Rolle",
@@ -543,7 +543,7 @@
             "WEBHOOK_NAME": "Webhook '{{name}}'"
         },
         "CUSTOM_ATTRIBUTES": {
-            "PAGE_TITLE": "{{sectionName}} - Custom Attributes - {{projectName}}",
+            "PAGE_TITLE": "{{sectionName}} - Kunden Attribute - {{projectName}}",
             "ADD": "Benutzerdefiniertes Feld hinzufügen",
             "EDIT": "Benutzerdefiniertes Feld bearbeiten",
             "DELETE": "Benutzerdefiniertes Feld löschen",
@@ -776,8 +776,8 @@
         }
     },
     "US": {
-        "PAGE_TITLE": "{{userStorySubject}} - User Story {{userStoryRef}} - {{projectName}}",
-        "PAGE_DESCRIPTION": "Status: {{userStoryStatus }}. Completed {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} of {{userStoryTotalTasks}} tasks closed). Points: {{userStoryPoints}}. Description: {{userStoryDescription}}",
+        "PAGE_TITLE": "{{userStorySubject}} - User-Story {{userStoryRef}} - {{projectName}}",
+        "PAGE_DESCRIPTION": "Status: {{userStoryStatus }}. Abgeschlossen {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} von {{userStoryTotalTasks}} Aufgaben geschlossen). Punkte: {{userStoryPoints}}. Beschreibung: {{userStoryDescription}}",
         "SECTION_NAME": "User-Story Details",
         "LINK_TASKBOARD": "Taskboard",
         "TITLE_LINK_TASKBOARD": "Zu Taskboard wechseln",
@@ -865,7 +865,7 @@
         }
     },
     "BACKLOG": {
-        "PAGE_TITLE": "Backlog - {{projectName}}",
+        "PAGE_TITLE": "Auftragsliste - {{projectName}}",
         "PAGE_DESCRIPTION": "The backlog panel, with user stories and sprints of the project {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Auftragsliste",
         "MOVE_US_TO_CURRENT_SPRINT": "Zum aktuellen Sprint wechseln",
@@ -946,8 +946,8 @@
         "VERSION_ERROR": "Someone inside Taiga has changed this before and our Oompa Loompas cannot apply your changes. Please reload and apply your changes again (they will be lost)."
     },
     "TASKBOARD": {
-        "PAGE_TITLE": "{{sprintName}} - Sprint taskboard - {{projectName}}",
-        "PAGE_DESCRIPTION": "Sprint {{sprintName}} (from {{startDate}} to {{endDate}}) of {{projectName}}. Completed {{completedPercentage}}% ({{completedPoints}} of {{totalPoints}} points). {{openTasks}} opened tasks of {{totalTasks}}.",
+        "PAGE_TITLE": "{{sprintName}} - Sprint Taskboard - {{projectName}}",
+        "PAGE_DESCRIPTION": "Sprint {{sprintName}} (von {{startDate}} zu {{endDate}}) von {{projectName}}. Abgeschlossen {{completedPercentage}}% ({{completedPoints}} von {{totalPoints}} points). {{openTasks}} offene Aufgaben von {{totalTasks}}.",
         "SECTION_NAME": "Taskboard",
         "TITLE_ACTION_ADD": "Neue Aufgabe hinzufügen",
         "TITLE_ACTION_ADD_BULK": "Mehrere Aufgaben hinzufügen",
@@ -971,8 +971,8 @@
         }
     },
     "TASK": {
-        "PAGE_TITLE": "{{taskSubject}} - Task {{taskRef}} - {{projectName}}",
-        "PAGE_DESCRIPTION": "Status: {{taskStatus }}. Description: {{taskDescription}}",
+        "PAGE_TITLE": "{{taskSubject}} - Aufgabe {{taskRef}} - {{projectName}}",
+        "PAGE_DESCRIPTION": "Status: {{taskStatus }}. Beschreibung: {{taskDescription}}",
         "SECTION_NAME": "Aufgabendetails",
         "LINK_TASKBOARD": "Taskboard",
         "TITLE_LINK_TASKBOARD": "Zu Taskboard wechseln",
@@ -1019,7 +1019,7 @@
         "SUCCESS": "Unsere Heinzelmännchen haben Ihre E-Mail-Adresse aktualisiert"
     },
     "ISSUES": {
-        "PAGE_TITLE": "Issues - {{projectName}}",
+        "PAGE_TITLE": "Tickets - {{projectName}}",
         "PAGE_DESCRIPTION": "The issues list panel of the project {{projectName}}: {{projectDescription}}",
         "LIST_SECTION_NAME": "Tickets",
         "SECTION_NAME": "Ticket Details",
@@ -1085,8 +1085,8 @@
         }
     },
     "ISSUE": {
-        "PAGE_TITLE": "{{issueSubject}} - Issue {{issueRef}} - {{projectName}}",
-        "PAGE_DESCRIPTION": "Status: {{issueStatus }}. Type: {{issueType}}, Priority: {{issuePriority}}. Severity: {{issueSeverity}}. Description: {{issueDescription}}"
+        "PAGE_TITLE": "{{issueSubject}} - Ticket {{issueRef}} - {{projectName}}",
+        "PAGE_DESCRIPTION": "Status: {{issueStatus }}. Typ: {{issueType}}, Priorität: {{issuePriority}}. Gewichtung: {{issueSeverity}}. Beschreibung: {{issueDescription}}"
     },
     "KANBAN": {
         "PAGE_TITLE": "Kanban - {{projectName}}",
@@ -1105,7 +1105,7 @@
         "UNDO_ARCHIVED": "Wiederholen Sie Drag & Drop zum Rückgängigmachen "
     },
     "SEARCH": {
-        "PAGE_TITLE": "Search - {{projectName}}",
+        "PAGE_TITLE": "Suche - {{projectName}}",
         "PAGE_DESCRIPTION": "Search anything, user stories, issues, tasks or wiki pages, in the project {{projectName}}: {{projectDescription}}",
         "FILTER_USER_STORIES": "User-Stories",
         "FILTER_ISSUES": "Tickets",
@@ -1193,7 +1193,7 @@
     },
     "WIKI": {
         "PAGE_TITLE": "{{wikiPageName}} - Wiki - {{projectName}}",
-        "PAGE_DESCRIPTION": "Last edition on {{lastModifiedDate}} ({{totalEditions}} editions in total) Content: {{ wikiPageContent }}",
+        "PAGE_DESCRIPTION": "Letzte Änderung am {{lastModifiedDate}} ({{totalEditions}} Gesamtzahl der Änderungen) Inhalt: {{ wikiPageContent }}",
         "DATETIME": "DD MMM YYYY HH:mm",
         "PLACEHOLDER_PAGE": "Schreiben Sie Ihre Wiki Seite ",
         "REMOVE": "Diese Wiki Seite entfernen",
@@ -1219,28 +1219,25 @@
     },
     "TIMELINE": {
         "UPLOAD_ATTACHMENT": "{{username}} hat einen neuen Anhang hochgeladen in {{obj_name}}",
-        "US_CREATED": "{{username}} hat eine neue User-Story erstellt in {{project_name}} {{obj_name}}",
-        "ISSUE_CREATED": "{{username}} hat ein neues Ticket erstellt in {{project_name}} {{obj_name}}",
-        "TASK_CREATED": "{{username}} hat eine neue Aufgabe erstellt in {{project_name}} {{obj_name}}",
-        "WIKI_CREATED": "{{username}} hat eine neue Wiki Seite erstellt in {{project_name}} {{obj_name}}",
-        "MILESTONE_CREATED": "{{username}} hat einen neuen Meilenstein erstellt in {{project_name}} {{obj_name}}",
+        "US_CREATED": "{{username}} hat eine neue user-story erstellt {{obj_name}} in {{project_name}}",
+        "ISSUE_CREATED": "{{username}} hat ein neues ticket erstellt {{obj_name}} in {{project_name}} ",
+        "TASK_CREATED": "{{username}} hat eine neue aufgabe erstellt {{obj_name}} in {{project_name}}",
+        "WIKI_CREATED": "{{username}} hat eine neue Wiki Seite erstellt {{obj_name}} in {{project_name}}",
+        "MILESTONE_CREATED": "{{username}} hat einen neuen sprint erstellt {{obj_name}} in {{project_name}}",
         "NEW_PROJECT": "{{username}} hat ein neues Projekt {{project_name}}",
-        "MILESTONE_UPDATED": "{{username}} hat den Meilenstein aktualisiert {{obj_name}}",
+        "MILESTONE_UPDATED": "{{username}} hat den sprint aktualisiert {{obj_name}}",
         "US_UPDATED": "{{username}} hat das Attribut aktualisiert \"{{field_name}}\" von User-Story {{obj_name}}",
-        "ISSUE_UPDATED": "{{username}} hat das Attribut aktualisiert \"{{field_name}}\" von Ticket {{obj_name}}",
-        "TASK_UPDATED": "{{username}} hat das Attribut aktualisiert \"{{field_name}}\" von Aufgabe {{obj_name}}",
-        "TASK_UPDATED_WITH_US": "{{username}} hat das Attribut aktualisiert \"{{field_name}}\" von Aufgabe {{obj_name}} die zur User-Story {{us_name}} gehört",
-        "WIKI_UPDATED": "{{username}} hat die Wiki Seite aktualisiert {{obj_name}}",
+        "ISSUE_UPDATED": "{{username}} hat das attribut aktualisiert \"{{field_name}}\" von ticket {{obj_name}}",
+        "TASK_UPDATED": "{{username}} hat das attribut aktualisiert \"{{field_name}}\" von aufgabe {{obj_name}}",
+        "TASK_UPDATED_WITH_US": "{{username}} hat das attribut aktualisiert \"{{field_name}}\" von aufgabe {{obj_name}} die zur user-story {{us_name}} gehört",
+        "WIKI_UPDATED": "{{username}} hat die wiki seite aktualisiert {{obj_name}}\n",
         "NEW_COMMENT_US": "{{username}} hat in User-Story {{obj_name}} kommentiert",
-        "NEW_COMMENT_ISSUE": "{{username}} hat im Ticket {{obj_name}} kommentiert",
-        "NEW_COMMENT_TASK": "{{username}} hat in Aufgabe {{obj_name}} kommentiert",
+        "NEW_COMMENT_ISSUE": "{{username}} has commented in the issue {{obj_name}}",
+        "NEW_COMMENT_TASK": "{{username}} has commented in the task {{obj_name}}",
         "NEW_MEMBER": "{{project_name}} hat ein neues Mitglied",
         "US_ADDED_MILESTONE": "{{username}} hat die User-Story {{obj_name}} zu {{sprint_name}} hinzugefügt",
-        "US_REMOVED_FROM_MILESTONE": "{{username}} hat die User-Story {{obj_name}} zum Backlog hinzugefügt",
+        "US_REMOVED_FROM_MILESTONE": "{{username}} has added the US {{obj_name}} to the backlog",
         "BLOCKED": "{{username}} hat gesperrt {{obj_name}}",
         "UNBLOCKED": "{{username}} hat entsperrt {{obj_name}}"
-    },
-    "LANGUAGES": {
-        "ENGLISH": "Englisch"
     }
 }

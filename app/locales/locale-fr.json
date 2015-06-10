@@ -244,7 +244,7 @@
     },
     "LOGIN": {
         "PAGE_TITLE": "Login - Taiga",
-        "PAGE_DESCRIPTION": "Logging in to Taiga, a project management platform for startups and agile developers & designers who want a simple, beautif  ul tool that makes work truly enjoyable."
+        "PAGE_DESCRIPTION": "Logging in to Taiga, a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
     },
     "AUTH": {
         "INVITED_YOU": "vous a invité-e à rejoindre le projet",
@@ -268,7 +268,7 @@
     },
     "REGISTER": {
         "PAGE_TITLE": "Register - Taiga",
-        "PAGE_DESCRIPTION": "Create your account in Taiga, a project management platform for startups and agile developers & designers who want a simple, beautif  ul tool that makes work truly enjoyable."
+        "PAGE_DESCRIPTION": "Create your account in Taiga, a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
     },
     "REGISTER_FORM": {
         "TITLE": "Créer un compte Taiga (gratuit)",
@@ -318,7 +318,7 @@
     },
     "INVITATION": {
         "PAGE_TITLE": "Invitation acceptance - Taiga",
-        "PAGE_DESCRIPTION": "Accept the invitation to join a project in Taiga, a project management platform for startups and agile developers & designers who want a simple, beautif  ul tool that makes work truly enjoyable."
+        "PAGE_DESCRIPTION": "Accept the invitation to join a project in Taiga, a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
     },
     "INVITATION_LOGIN_FORM": {
         "NOT_FOUND": "<strong>Oh là là, nous avons un problème</strong><br />Nos Oompa Loompas trouvent pas votre invitation.",
@@ -410,7 +410,7 @@
             "SALT_CHAT_ROOM": "Si vous le souhaitez vous pouvez ajouter un code de salage au nom du salon de discussion"
         },
         "PROJECT_PROFILE": {
-            "PAGE_TITLE": "{{sectionName}} - Project profile  - {{projectName}}",
+            "PAGE_TITLE": "{{sectionName}} - Profil projet - {{projectName}}\n",
             "PROJECT_DETAILS": "Détails du projet",
             "PROJECT_NAME": "Nom du projet",
             "PROJECT_SLUG": "Label du projet",
@@ -458,19 +458,19 @@
         "PROJECT_VALUES_POINTS": {
             "TITLE": "Points",
             "SUBTITLE": "Spécifiez les points auxquels vos récits utilisateur pourraient être estimés",
-            "US_TITLE": "US points",
+            "US_TITLE": "Points de récits utilisateur",
             "ACTION_ADD": "Ajouter un nouveau point"
         },
         "PROJECT_VALUES_PRIORITIES": {
-            "TITLE": "Priorities",
+            "TITLE": "Priorités",
             "SUBTITLE": "Spécifiez les priorités qu'auront vos suivis de problèmes",
-            "ISSUE_TITLE": "Issue priorities",
+            "ISSUE_TITLE": "Priorités de problèmes",
             "ACTION_ADD": "Ajouter une priorité"
         },
         "PROJECT_VALUES_SEVERITIES": {
-            "TITLE": "Severities",
+            "TITLE": "Sévérités",
             "SUBTITLE": "Spécifiez les sévérités qu'auront vos problèmes",
-            "ISSUE_TITLE": "Issue severities",
+            "ISSUE_TITLE": "Sévérités des suivis de problèmes",
             "ACTION_ADD": "Ajouter un degré de sévérité"
         },
         "PROJECT_VALUES_STATUS": {
@@ -1212,25 +1212,25 @@
         "SECTION_NAME": "Indice",
         "LINK": "Si vous voulez savoir comment l'utiliser, visitez notre page d'assistance",
         "LINK_TITLE": "Visitez notre page d'assistance",
-        "HINT1_TITLE": "Savez-vous que vous pouvez importer et exporter les projets ?",
-        "HINT1_TEXT": "Cela vous permet d'extraire toutes vos données d'un taiga et de le déplacer vers un autre",
+        "HINT1_TITLE": "Savez-vous que vous pouvez importer et exporter les projets?",
+        "HINT1_TEXT": "Cela vous permet d'extraire toutes vos données d'un Taiga et de le déplacer vers un autre",
         "HINT2_TITLE": "Savez-vous que vous pouvez créer des champs personnalisés ?",
-        "HINT2_TEXT": "This will provide teams with a flexible input to fit in their workflow"
+        "HINT2_TEXT": "This will provide teams with a flexible input to fit in their workflow."
     },
     "TIMELINE": {
         "UPLOAD_ATTACHMENT": "{{username}} a téléversé une nouvelle pièce jointe dans {{obj_name}}",
-        "US_CREATED": "{{username}} a créé un nouveau récit utilisateur dans {{project_name}} {{obj_name}}",
-        "ISSUE_CREATED": "{{username}} a créé un nouveau suivi de problème dans {{project_name}} {{obj_name}}",
-        "TASK_CREATED": "{{username}} a créé une nouvelle Tâche dans {{project_name}} {{obj_name}}",
-        "WIKI_CREATED": "{{username}} a créé une nouvelle page Wiki dans {{project_name}} {{obj_name}}",
-        "MILESTONE_CREATED": "{{username}} a créé un nouveau Jalon dans {{project_name}} {{obj_name}}",
+        "US_CREATED": "{{username}} a créé un nouveau récit utilisateur {{obj_name}} dans {{project_name}}",
+        "ISSUE_CREATED": "{{username}} a créé un nouveau suivi de problème {{obj_name}} dans {{project_name}}",
+        "TASK_CREATED": "{{username}} a créé une nouvelle Tâche {{obj_name}} dans {{project_name}}",
+        "WIKI_CREATED": "{{username}} a créé une nouvelle page wiki {{obj_name}} dans {{project_name}}",
+        "MILESTONE_CREATED": "{{username}} a créé un nouveau sprint {{obj_name}} dans {{project_name}}",
         "NEW_PROJECT": "{{username}} a un nouveau projet {{project_name}}",
-        "MILESTONE_UPDATED": "{{username}} a mis à jour le jalon {{obj_name}}",
+        "MILESTONE_UPDATED": "{{username}} a mis à jour le sprint {{obj_name}}",
         "US_UPDATED": "{{username}} a mis à jour l'attribut «{{field_name}}» du récit utilisateur {{obj_name}}",
         "ISSUE_UPDATED": "{{username}} a mis à jour l'attribut «{{field_name}}» du suivi de problème {{obj_name}}",
         "TASK_UPDATED": "{{username}} a mis à jour l'attribut «{{field_name}}» de la tâche {{obj_name}}",
         "TASK_UPDATED_WITH_US": "{{username}} a mis à jour l'attribut «{{field_name}}» de la tâche {{obj_name}} qui appartient au récit utilisateur {{us_name}}",
-        "WIKI_UPDATED": "{{username}} a mis à jour la page Wiki {{obj_name}}",
+        "WIKI_UPDATED": "{{username}} a mis à jour la page wiki {{obj_name}}",
         "NEW_COMMENT_US": "{{username}} a commenté le récit utilisateur {{obj_name}}",
         "NEW_COMMENT_ISSUE": "{{username}} a commenté le suivi de problème {{obj_name}}",
         "NEW_COMMENT_TASK": "{{username}} a commenté la tâche {{obj_name}}",
@@ -1239,8 +1239,5 @@
         "US_REMOVED_FROM_MILESTONE": "{{username}} a ajouté le récit utilisateur {{obj_name}} au carnet",
         "BLOCKED": "{{username}} a bloqué {{obj_name}}",
         "UNBLOCKED": "{{username}} a débloqué {{obj_name}}"
-    },
-    "LANGUAGES": {
-        "ENGLISH": "Anglais"
     }
 }

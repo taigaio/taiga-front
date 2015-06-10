@@ -244,7 +244,7 @@
     },
     "LOGIN": {
         "PAGE_TITLE": "Login - Taiga",
-        "PAGE_DESCRIPTION": "Logging in to Taiga, a project management platform for startups and agile developers & designers who want a simple, beautif  ul tool that makes work truly enjoyable."
+        "PAGE_DESCRIPTION": "Logging in to Taiga, a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
     },
     "AUTH": {
         "INVITED_YOU": "已邀請您加入此專案",
@@ -268,7 +268,7 @@
     },
     "REGISTER": {
         "PAGE_TITLE": "Register - Taiga",
-        "PAGE_DESCRIPTION": "Create your account in Taiga, a project management platform for startups and agile developers & designers who want a simple, beautif  ul tool that makes work truly enjoyable."
+        "PAGE_DESCRIPTION": "Create your account in Taiga, a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
     },
     "REGISTER_FORM": {
         "TITLE": "註冊一個新的Taiga帳戶(免費 )",
@@ -318,7 +318,7 @@
     },
     "INVITATION": {
         "PAGE_TITLE": "Invitation acceptance - Taiga",
-        "PAGE_DESCRIPTION": "Accept the invitation to join a project in Taiga, a project management platform for startups and agile developers & designers who want a simple, beautif  ul tool that makes work truly enjoyable."
+        "PAGE_DESCRIPTION": "Accept the invitation to join a project in Taiga, a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
     },
     "INVITATION_LOGIN_FORM": {
         "NOT_FOUND": "<strong>Ooops, 有點問題</strong><br />我們的系統無法找到你的邀請信",
@@ -410,7 +410,7 @@
             "SALT_CHAT_ROOM": "你可以把聊天室名稱加上salt code亂數密碼　"
         },
         "PROJECT_PROFILE": {
-            "PAGE_TITLE": "{{sectionName}} - Project profile  - {{projectName}}",
+            "PAGE_TITLE": "{{sectionName}} - 專案檔案 - {{projectName}}",
             "PROJECT_DETAILS": "專案細節",
             "PROJECT_NAME": "專案名稱",
             "PROJECT_SLUG": "專案代稱",
@@ -456,21 +456,21 @@
             "ERROR_DELETE_ALL": "你不能刪除所有數值"
         },
         "PROJECT_VALUES_POINTS": {
-            "TITLE": "Points",
+            "TITLE": "點數",
             "SUBTITLE": "指定你的使用者故事點數可能預估為",
             "US_TITLE": "US points",
             "ACTION_ADD": "增加點數"
         },
         "PROJECT_VALUES_PRIORITIES": {
-            "TITLE": "Priorities",
+            "TITLE": "優先性",
             "SUBTITLE": "指明你將遇到的問題優先程度",
-            "ISSUE_TITLE": "Issue priorities",
+            "ISSUE_TITLE": "問題優先性",
             "ACTION_ADD": "新增優先性"
         },
         "PROJECT_VALUES_SEVERITIES": {
-            "TITLE": "Severities",
+            "TITLE": "急迫性",
             "SUBTITLE": "指明你將遇到問題的嚴重程度",
-            "ISSUE_TITLE": "Issue severities",
+            "ISSUE_TITLE": "問題急迫性",
             "ACTION_ADD": "新增急迫性"
         },
         "PROJECT_VALUES_STATUS": {
@@ -487,7 +487,7 @@
             "ACTION_ADD": "新增{{objName}}"
         },
         "ROLES": {
-            "PAGE_TITLE": "Roles - {{projectName}}",
+            "PAGE_TITLE": "角色- {{projectName}}",
             "WARNING_NO_ROLE": "注意，你的專案中無角色可以評估使用者故事的點數",
             "HELP_ROLE_ENABLED": "當啟動時，被指派此角色的成員將可以評估使用者故事點數",
             "COUNT_MEMBERS": "{{ role.members_count }} 這類角色的成員",
@@ -514,10 +514,10 @@
         },
         "GITHUB": {
             "SECTION_NAME": "Githun",
-            "PAGE_TITLE": "Github - {{projectName}}"
+            "PAGE_TITLE": "Gitlab - {{projectName}}"
         },
         "WEBHOOKS": {
-            "PAGE_TITLE": "Webhooks - {{projectName}}",
+            "PAGE_TITLE": "Webhooks- {{projectName}}",
             "SECTION_NAME": "網頁觸發 ",
             "SUBTITLE": "網頁觸發通知關於Taiga事件的外部服務，例如評論，使用者故事等。　",
             "ADD_NEW": "新增一個網頁觸發 ",
@@ -1212,35 +1212,32 @@
         "SECTION_NAME": "Hint",
         "LINK": "If you want to know how to use it visit our support page",
         "LINK_TITLE": "Visit our support page",
-        "HINT1_TITLE": "Did you know you import and export projects?",
-        "HINT1_TEXT": "This allow you to extract all your data from one taiga and move it to another one",
+        "HINT1_TITLE": "Did you know you can import and export projects?",
+        "HINT1_TEXT": "This allow you to extract all your data from one Taiga and move it to another one.",
         "HINT2_TITLE": "Did you know you can create custom fields?",
-        "HINT2_TEXT": "This will provide teams with a flexible input to fit in their workflow"
+        "HINT2_TEXT": "This will provide teams with a flexible input to fit in their workflow."
     },
     "TIMELINE": {
         "UPLOAD_ATTACHMENT": "{{username}} has uploaded a new attachment in {{obj_name}}",
-        "US_CREATED": "{{username}} has created a new US in {{project_name}} {{obj_name}}",
-        "ISSUE_CREATED": "{{username}} has created a new Issue in {{project_name}} {{obj_name}}",
-        "TASK_CREATED": "{{username}} has created a new Task in {{project_name}} {{obj_name}}",
-        "WIKI_CREATED": "{{username}} has created a new Wiki page in {{project_name}} {{obj_name}}",
-        "MILESTONE_CREATED": "{{username}} has created a new Milestone in {{project_name}} {{obj_name}}",
+        "US_CREATED": "{{username}} has created a new US {{obj_name}} in {{project_name}}",
+        "ISSUE_CREATED": "{{username}} has created a new issue {{obj_name}} in {{project_name}}",
+        "TASK_CREATED": "{{username}} has created a new task {{obj_name}} in {{project_name}}",
+        "WIKI_CREATED": "{{username}} has created a new wiki page {{obj_name}} in {{project_name}}",
+        "MILESTONE_CREATED": "{{username}} has created a new sprint {{obj_name}} in {{project_name}}",
         "NEW_PROJECT": "{{username}} has a new project {{project_name}}",
-        "MILESTONE_UPDATED": "{{username}} has updated the milestone {{obj_name}}",
+        "MILESTONE_UPDATED": "{{username}} has updated the sprint {{obj_name}}",
         "US_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the US {{obj_name}}",
-        "ISSUE_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the Issue {{obj_name}}",
-        "TASK_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the Task {{obj_name}}",
-        "TASK_UPDATED_WITH_US": "{{username}} has updated the attribute \"{{field_name}}\" of the Task {{obj_name}} which belongs to the US {{us_name}}",
-        "WIKI_UPDATED": "{{username}} has updated the Wiki page {{obj_name}}",
+        "ISSUE_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the issue {{obj_name}}",
+        "TASK_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}}",
+        "TASK_UPDATED_WITH_US": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the US {{us_name}}",
+        "WIKI_UPDATED": "{{username}} has updated the wiki page {{obj_name}}",
         "NEW_COMMENT_US": "{{username}} has commented in the US {{obj_name}}",
-        "NEW_COMMENT_ISSUE": "{{username}} has commented in the Issue {{obj_name}}",
-        "NEW_COMMENT_TASK": "{{username}} has commented in the Task {{obj_name}}",
+        "NEW_COMMENT_ISSUE": "{{username}} has commented in the issue {{obj_name}}",
+        "NEW_COMMENT_TASK": "{{username}} has commented in the task {{obj_name}}",
         "NEW_MEMBER": "{{project_name}} has a new member",
         "US_ADDED_MILESTONE": "{{username}} has added the US {{obj_name}} to {{sprint_name}}",
-        "US_REMOVED_FROM_MILESTONE": "{{username}} has added the US {{obj_name}} to the Backlog",
+        "US_REMOVED_FROM_MILESTONE": "{{username}} has added the US {{obj_name}} to the backlog",
         "BLOCKED": "{{username}} has blocked {{obj_name}}",
         "UNBLOCKED": "{{username}} has unblocked {{obj_name}}"
-    },
-    "LANGUAGES": {
-        "ENGLISH": "英文"
     }
 }

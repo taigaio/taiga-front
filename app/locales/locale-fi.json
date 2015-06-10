@@ -244,7 +244,7 @@
     },
     "LOGIN": {
         "PAGE_TITLE": "Login - Taiga",
-        "PAGE_DESCRIPTION": "Logging in to Taiga, a project management platform for startups and agile developers & designers who want a simple, beautif  ul tool that makes work truly enjoyable."
+        "PAGE_DESCRIPTION": "Logging in to Taiga, a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
     },
     "AUTH": {
         "INVITED_YOU": "on kutsunut sinut projektiin",
@@ -268,7 +268,7 @@
     },
     "REGISTER": {
         "PAGE_TITLE": "Register - Taiga",
-        "PAGE_DESCRIPTION": "Create your account in Taiga, a project management platform for startups and agile developers & designers who want a simple, beautif  ul tool that makes work truly enjoyable."
+        "PAGE_DESCRIPTION": "Create your account in Taiga, a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
     },
     "REGISTER_FORM": {
         "TITLE": "Rekisteröi uusi Taiga tunnus (ilmainen)",
@@ -318,7 +318,7 @@
     },
     "INVITATION": {
         "PAGE_TITLE": "Invitation acceptance - Taiga",
-        "PAGE_DESCRIPTION": "Accept the invitation to join a project in Taiga, a project management platform for startups and agile developers & designers who want a simple, beautif  ul tool that makes work truly enjoyable."
+        "PAGE_DESCRIPTION": "Accept the invitation to join a project in Taiga, a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
     },
     "INVITATION_LOGIN_FORM": {
         "NOT_FOUND": "<strong>Ooops, meillä on ongelma</strong><br />Our Oompa Loompas eivät löydä kutsuasi.",
@@ -410,7 +410,7 @@
             "SALT_CHAT_ROOM": "Voit halutessasi lisätä suolaan chat-huoneen nimeen"
         },
         "PROJECT_PROFILE": {
-            "PAGE_TITLE": "{{sectionName}} - Project profile  - {{projectName}}",
+            "PAGE_TITLE": "{{sectionName}} - Projektin profiili - {{projectName}}",
             "PROJECT_DETAILS": "Projektin tiedot",
             "PROJECT_NAME": "Projektin nimi",
             "PROJECT_SLUG": "Projektin hukka-aika",
@@ -1212,35 +1212,32 @@
         "SECTION_NAME": "Hint",
         "LINK": "If you want to know how to use it visit our support page",
         "LINK_TITLE": "Visit our support page",
-        "HINT1_TITLE": "Did you know you import and export projects?",
-        "HINT1_TEXT": "This allow you to extract all your data from one taiga and move it to another one",
+        "HINT1_TITLE": "Did you know you can import and export projects?",
+        "HINT1_TEXT": "This allow you to extract all your data from one Taiga and move it to another one.",
         "HINT2_TITLE": "Did you know you can create custom fields?",
-        "HINT2_TEXT": "This will provide teams with a flexible input to fit in their workflow"
+        "HINT2_TEXT": "This will provide teams with a flexible input to fit in their workflow."
     },
     "TIMELINE": {
         "UPLOAD_ATTACHMENT": "{{username}} has uploaded a new attachment in {{obj_name}}",
-        "US_CREATED": "{{username}} has created a new US in {{project_name}} {{obj_name}}",
-        "ISSUE_CREATED": "{{username}} has created a new Issue in {{project_name}} {{obj_name}}",
-        "TASK_CREATED": "{{username}} has created a new Task in {{project_name}} {{obj_name}}",
-        "WIKI_CREATED": "{{username}} has created a new Wiki page in {{project_name}} {{obj_name}}",
-        "MILESTONE_CREATED": "{{username}} has created a new Milestone in {{project_name}} {{obj_name}}",
+        "US_CREATED": "{{username}} has created a new US {{obj_name}} in {{project_name}}",
+        "ISSUE_CREATED": "{{username}} has created a new issue {{obj_name}} in {{project_name}}",
+        "TASK_CREATED": "{{username}} has created a new task {{obj_name}} in {{project_name}}",
+        "WIKI_CREATED": "{{username}} has created a new wiki page {{obj_name}} in {{project_name}}",
+        "MILESTONE_CREATED": "{{username}} has created a new sprint {{obj_name}} in {{project_name}}",
         "NEW_PROJECT": "{{username}} has a new project {{project_name}}",
-        "MILESTONE_UPDATED": "{{username}} has updated the milestone {{obj_name}}",
+        "MILESTONE_UPDATED": "{{username}} has updated the sprint {{obj_name}}",
         "US_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the US {{obj_name}}",
-        "ISSUE_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the Issue {{obj_name}}",
-        "TASK_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the Task {{obj_name}}",
-        "TASK_UPDATED_WITH_US": "{{username}} has updated the attribute \"{{field_name}}\" of the Task {{obj_name}} which belongs to the US {{us_name}}",
-        "WIKI_UPDATED": "{{username}} has updated the Wiki page {{obj_name}}",
+        "ISSUE_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the issue {{obj_name}}",
+        "TASK_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}}",
+        "TASK_UPDATED_WITH_US": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the US {{us_name}}",
+        "WIKI_UPDATED": "{{username}} has updated the wiki page {{obj_name}}",
         "NEW_COMMENT_US": "{{username}} has commented in the US {{obj_name}}",
-        "NEW_COMMENT_ISSUE": "{{username}} has commented in the Issue {{obj_name}}",
-        "NEW_COMMENT_TASK": "{{username}} has commented in the Task {{obj_name}}",
+        "NEW_COMMENT_ISSUE": "{{username}} has commented in the issue {{obj_name}}",
+        "NEW_COMMENT_TASK": "{{username}} has commented in the task {{obj_name}}",
         "NEW_MEMBER": "{{project_name}} has a new member",
         "US_ADDED_MILESTONE": "{{username}} has added the US {{obj_name}} to {{sprint_name}}",
-        "US_REMOVED_FROM_MILESTONE": "{{username}} has added the US {{obj_name}} to the Backlog",
+        "US_REMOVED_FROM_MILESTONE": "{{username}} has added the US {{obj_name}} to the backlog",
         "BLOCKED": "{{username}} has blocked {{obj_name}}",
         "UNBLOCKED": "{{username}} has unblocked {{obj_name}}"
-    },
-    "LANGUAGES": {
-        "ENGLISH": "English"
     }
 }

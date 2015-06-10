@@ -239,12 +239,12 @@
         },
         "META": {
             "PAGE_TITLE": "Taiga",
-            "PAGE_DESCRIPTION": "Taiga is a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
+            "PAGE_DESCRIPTION": "Taiga is een project management platform voor startups en agile ontwikkelaars & designers die een simpele, mooie tool willen om werken echt leuk te maken."
         }
     },
     "LOGIN": {
         "PAGE_TITLE": "Login - Taiga",
-        "PAGE_DESCRIPTION": "Logging in to Taiga, a project management platform for startups and agile developers & designers who want a simple, beautif  ul tool that makes work truly enjoyable."
+        "PAGE_DESCRIPTION": "Inloggen op Taiga, een project management platform voor startups en agile ontwikkelaars & designers die een simpele, mooie tool willen om werken echt leuk te maken."
     },
     "AUTH": {
         "INVITED_YOU": "Heeft je uitgenodigd voor het project",
@@ -267,8 +267,8 @@
         "SUCCESS": "Onze Oempa-Loempa's zijn blij, welkom bij Taiga."
     },
     "REGISTER": {
-        "PAGE_TITLE": "Register - Taiga",
-        "PAGE_DESCRIPTION": "Create your account in Taiga, a project management platform for startups and agile developers & designers who want a simple, beautif  ul tool that makes work truly enjoyable."
+        "PAGE_TITLE": "Registreer - Taiga",
+        "PAGE_DESCRIPTION": "Maak je account op Taiga, een project management platform voor startups en agile ontwikkelaars & designers die een simpele, mooie tool willen om werken echt leuk te maken."
     },
     "REGISTER_FORM": {
         "TITLE": "Registreer een nieuw Taiga account (gratis)",
@@ -281,8 +281,8 @@
         "LINK_LOGIN": "Ben je al geregistreerd? Log in"
     },
     "FORGOT_PASSWORD": {
-        "PAGE_TITLE": "Forgot password - Taiga",
-        "PAGE_DESCRIPTION": "Enter your username or email to get a new password and you can access to Taiga again."
+        "PAGE_TITLE": "Wachtwoord vergeten - Taiga",
+        "PAGE_DESCRIPTION": "Geef je gebruikersnaam of e-mail in om een nieuw wachtwoord te krijgen. Zo heb je weer toegang tot Taiga."
     },
     "FORGOT_PASSWORD_FORM": {
         "TITLE": "Oeps, ben je je wachtwoord vergeten?",
@@ -294,8 +294,8 @@
         "ERROR": "Volgens onze Oempa-Loempa's ben je nog niet geregisteerd"
     },
     "CHANGE_PASSWORD": {
-        "PAGE_TITLE": "Change you password - Taiga",
-        "PAGE_DESCRIPTION": "Set a new passoword for your Taiga account and hey!, you may want to eat some more iron-rich food, it's good for your brain :P",
+        "PAGE_TITLE": "Verander je wachtwoord - Taiga",
+        "PAGE_DESCRIPTION": "Zet een nieuw wachtwoord voor je Taiga account. Hey! Je kan best wat ijzerrijk voedsel eten, dat is goed voor de hersenen :P",
         "SECTION_NAME": "Wachtwoord wijzigen",
         "FIELD_CURRENT_PASSWORD": "Huidig wachtwoord",
         "PLACEHOLDER_CURRENT_PASSWORD": "Je huidige wachtwoord (of leeg als je nog geen wachtwoord hebt)",
@@ -318,7 +318,7 @@
     },
     "INVITATION": {
         "PAGE_TITLE": "Invitation acceptance - Taiga",
-        "PAGE_DESCRIPTION": "Accept the invitation to join a project in Taiga, a project management platform for startups and agile developers & designers who want a simple, beautif  ul tool that makes work truly enjoyable."
+        "PAGE_DESCRIPTION": "Accept the invitation to join a project in Taiga, a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
     },
     "INVITATION_LOGIN_FORM": {
         "NOT_FOUND": "<strong>Ooeps, we hebben een probleem</strong><br />Onze Oempa-Loempa's kunnen je uitnodiging niet vinden.",
@@ -410,7 +410,7 @@
             "SALT_CHAT_ROOM": "Als je wil kan je een salt code aan de naam van de chatroom toevoegen"
         },
         "PROJECT_PROFILE": {
-            "PAGE_TITLE": "{{sectionName}} - Project profile  - {{projectName}}",
+            "PAGE_TITLE": "{{sectionName}} - Project profiel - {{projectName}}",
             "PROJECT_DETAILS": "Project details",
             "PROJECT_NAME": "Naam project",
             "PROJECT_SLUG": "Project Slug",
@@ -456,13 +456,13 @@
             "ERROR_DELETE_ALL": "Je kunt niet alle waardes verwijderen"
         },
         "PROJECT_VALUES_POINTS": {
-            "TITLE": "Points",
+            "TITLE": "Punten",
             "SUBTITLE": "Specifieer de punten waar naar je user stories kunnen worden ingeschat",
-            "US_TITLE": "US points",
+            "US_TITLE": "US punten",
             "ACTION_ADD": "Nieuw punt toevoegen"
         },
         "PROJECT_VALUES_PRIORITIES": {
-            "TITLE": "Priorities",
+            "TITLE": "Prioriteit",
             "SUBTITLE": "Specificeer de prioriteit die je issues zullen hebben",
             "ISSUE_TITLE": "Issue priorities",
             "ACTION_ADD": "Nieuwe prioriteit toevoegen"
@@ -1219,28 +1219,25 @@
     },
     "TIMELINE": {
         "UPLOAD_ATTACHMENT": "{{username}} heeft een nieuwe bijlage geüpload in {{obj_name}}",
-        "US_CREATED": "{{username}} heeft een nieuwe US aangemaakt in {{project_name}} {{obj_name}}",
-        "ISSUE_CREATED": "{{username}} heeft een nieuw Issue aangemaakt in {{project_name}} {{obj_name}}",
-        "TASK_CREATED": "{{username}} heeft een nieuwe taak aangemaakt in {{project_name}} {{obj_name}}",
-        "WIKI_CREATED": "{{username}} heeft een nieuwe Wiki-pagina aangemaakt in {{project_name}} {{obj_name}}",
-        "MILESTONE_CREATED": "{{username}} heeft een nieuwe mijlpaal aangemaakt in {{project_name}} {{obj_name}}",
+        "US_CREATED": "{{username}} heeft een nieuwe US aangemaakt {{obj_name}} in {{project_name}}",
+        "ISSUE_CREATED": "{{username}} heeft een nieuw Issue aangemaakt {{obj_name}} in {{project_name}}",
+        "TASK_CREATED": "{{username}} heeft een nieuwe taak aangemaakt {{obj_name}} in {{project_name}}",
+        "WIKI_CREATED": "{{username}} heeft een nieuwe Wiki-pagina aangemaakt {{obj_name}} in {{project_name}}",
+        "MILESTONE_CREATED": "{{username}} heeft een nieuwe sprint aangemaakt {{obj_name}} in {{project_name}}",
         "NEW_PROJECT": "{{username}} heeft een nieuw project {{project_name}}",
-        "MILESTONE_UPDATED": "{{username}} heeft de mijlpaal {{obj_name}} bijgewerkt",
+        "MILESTONE_UPDATED": "{{username}} heeft de sprint {{obj_name}} bijgewerkt",
         "US_UPDATED": "{{username}} heeft de eigenschap \"{{field_name}}\" van de US {{obj_name}} bijgewerkt",
         "ISSUE_UPDATED": "{{username}} heeft de eigenschap \"{{field_name}}\" van het issue {{obj_name}} bijgewerkt",
         "TASK_UPDATED": "{{username}} heeft de eigenschap \"{{field_name}}\" van de taak {{obj_name}} bijgewerkt",
-        "TASK_UPDATED_WITH_US": "{{username}} heeft de eigenschap \"{{field_name}}\" van de taak {{obj_name}} die behoort tot de US {{us_name}} bijgewerkt ",
-        "WIKI_UPDATED": "{{username}} heeft de Wiki pagina {{obj_name}} bijgewerkt",
+        "TASK_UPDATED_WITH_US": "{{username}} heeft de eigenschap \"{{field_name}}\" van de taak {{obj_name}} die behoort tot de US {{us_name}} bijgewerkt",
+        "WIKI_UPDATED": "{{username}} heeft de wiki pagina {{obj_name}} bijgewerkt",
         "NEW_COMMENT_US": "{{username}} heeft gereageerd op de US {{obj_name}}",
-        "NEW_COMMENT_ISSUE": "{{username}} heeft gereageerd op het Issue {{obj_name}}",
+        "NEW_COMMENT_ISSUE": "{{username}} heeft gereageerd op het issue {{obj_name}}",
         "NEW_COMMENT_TASK": "{{username}} heeft gereageerd op de taak {{obj_name}}",
         "NEW_MEMBER": "{{project_name}} heeft een nieuw lid",
         "US_ADDED_MILESTONE": "{{username}} heeft de US {{obj_name}} toegevoegd aan {{sprint_name}}",
         "US_REMOVED_FROM_MILESTONE": "{{username}} heeft de US {{obj_name}} toegevoegd aan de Backlog",
         "BLOCKED": "{{username}} heeft {{obj_name}} geblokkeerd",
         "UNBLOCKED": "{{username}} heeft {{obj_name}} gedeblokkeerd"
-    },
-    "LANGUAGES": {
-        "ENGLISH": "Engels"
     }
 }
