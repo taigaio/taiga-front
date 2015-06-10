@@ -11,9 +11,7 @@ describe "ProfileController", ->
     ])
 
     _mockTranslate = () ->
-        mocks.translate = {
-            instant: sinon.stub()
-        }
+        mocks.translate = sinon.stub()
 
         provide.value "$translate", mocks.translate
 
@@ -83,12 +81,12 @@ describe "ProfileController", ->
             bio: "bio"
         })
 
-        mocks.translate.instant
+        mocks.translate
             .withArgs('USER.PROFILE.PAGE_TITLE', {
                 userFullName: user.get("full_name_display"),
                 userUsername: user.get("username")
             })
-            .returns('user-profile-page-title')
+            .promise().resolve('user-profile-page-title')
 
         mocks.userService.getUserByUserName.withArgs(mocks.routeParams.slug).promise().resolve(user)
 
@@ -119,7 +117,7 @@ describe "ProfileController", ->
             done()
         )
 
-    it "define current user", () ->
+    it "define current user", (done) ->
         $scope = $rootScope.$new()
 
         user = Immutable.fromJS({
@@ -128,17 +126,20 @@ describe "ProfileController", ->
             bio: "bio"
         })
 
-        mocks.translate.instant
+        mocks.translate
             .withArgs('USER.PROFILE.PAGE_TITLE', {
                 userFullName: user.get("full_name_display"),
                 userUsername: user.get("username")
             })
-            .returns('user-profile-page-title')
+            .promise().resolve('user-profile-page-title')
 
         mocks.currentUser.getUser.returns(user)
 
         ctrl = $controller("Profile")
 
-        expect(ctrl.user).to.be.equal(user)
-        expect(ctrl.isCurrentUser).to.be.true
-        expect(mocks.appMetaService.setAll.withArgs("user-profile-page-title", "bio")).to.be.calledOnce
+        setTimeout ( ->
+            expect(ctrl.user).to.be.equal(user)
+            expect(ctrl.isCurrentUser).to.be.true
+            expect(mocks.appMetaService.setAll.withArgs("user-profile-page-title", "bio")).to.be.calledOnce
+            done()
+        )

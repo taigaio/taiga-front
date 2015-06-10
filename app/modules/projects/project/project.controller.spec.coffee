@@ -39,9 +39,7 @@ describe "ProjectController", ->
         provide.value "tgXhrErrorService", mocks.xhrErrorService
 
     _mockTranslate = () ->
-        mocks.translate = {
-            instant: sinon.stub()
-        }
+        mocks.translate = sinon.stub()
 
         provide.value "$translate", mocks.translate
 
@@ -86,11 +84,11 @@ describe "ProjectController", ->
             description: "projectDescription"
         })
 
-        mocks.translate.instant
+        mocks.translate
             .withArgs('PROJECT.PAGE_TITLE', {
                 projectName: project.get("name")
             })
-            .returns('projectTitle')
+            .promise().resolve('projectTitle')
 
         mocks.projectService.getProjectBySlug.withArgs("project-slug").promise().resolve(project)
 
