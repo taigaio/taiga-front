@@ -236,7 +236,15 @@
                 "ADD_WIKI_LINKS": "Afegir link de wiki",
                 "DELETE_WIKI_LINKS": "Esborrar enllaços de wiki"
             }
+        },
+        "META": {
+            "PAGE_TITLE": "Taiga",
+            "PAGE_DESCRIPTION": "Taiga is a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
         }
+    },
+    "LOGIN": {
+        "PAGE_TITLE": "Login - Taiga",
+        "PAGE_DESCRIPTION": "Logging in to Taiga, a project management platform for startups and agile developers & designers who want a simple, beautif  ul tool that makes work truly enjoyable."
     },
     "AUTH": {
         "INVITED_YOU": "T'ha convidat a participar en el projecte",
@@ -244,12 +252,89 @@
         "REGISTER": "Registrat",
         "CREATE_ACCOUNT": "Crea el teu conter gratis ací"
     },
+    "LOGIN_COMMON": {
+        "HEADER": "Ja tinc un conter de Taiga",
+        "PLACEHOLDER_AUTH_NAME": "Nom d'usuari i correu electrònic (sensible a majúscules i minúscules)",
+        "LINK_FORGOT_PASSWORD": "L'has oblidat?",
+        "TITLE_LINK_FORGOT_PASSWORD": "Has oblidat la teua contrasenya?",
+        "ACTION_ENTER": "Entrar",
+        "ACTION_SIGN_IN": "Entrar",
+        "PLACEHOLDER_AUTH_PASSWORD": "Contrasenya (sensible a majúscules i minúscules)"
+    },
+    "LOGIN_FORM": {
+        "ERROR_AUTH_INCORRECT": "Segons els Oompa Loompas, el vostre nom d'usuari/correu electrònic o contrasenya són incorrectes.",
+        "ERROR_GENERIC": "Segons els Oompa Loompas ha hagut un error.",
+        "SUCCESS": "Our Oompa Loompas están contents, benvinguts a Taiga."
+    },
+    "REGISTER": {
+        "PAGE_TITLE": "Register - Taiga",
+        "PAGE_DESCRIPTION": "Create your account in Taiga, a project management platform for startups and agile developers & designers who want a simple, beautif  ul tool that makes work truly enjoyable."
+    },
+    "REGISTER_FORM": {
+        "TITLE": "Register a new Taiga account (free)",
+        "PLACEHOLDER_NAME": "Trieu un nom d'usuari (sensible a majúscules i minúscules)",
+        "PLACEHOLDER_FULL_NAME": "Escriu el teu nom complet",
+        "PLACEHOLDER_EMAIL": "El teu correu",
+        "PLACEHOLDER_PASSWORD": "Tria una contrasenya(sensible a majúscules i minúscules)",
+        "ACTION_SIGN_UP": "Registrar-se",
+        "TITLE_LINK_LOGIN": "Entrar",
+        "LINK_LOGIN": "Ja estàs registrat? Entra"
+    },
+    "FORGOT_PASSWORD": {
+        "PAGE_TITLE": "Forgot password - Taiga",
+        "PAGE_DESCRIPTION": "Enter your username or email to get a new password and you can access to Taiga again."
+    },
+    "FORGOT_PASSWORD_FORM": {
+        "TITLE": "Oops, has oblidat la teua contrasenya?",
+        "SUBTITLE": "Escriviu el vostre nom d'usuari o correu electrònic per a conseguir-ne un de nou",
+        "PLACEHOLDER_FIELD": "Nom d'usuari o correu electrònic",
+        "ACTION_RESET_PASSWORD": "Resetejar contrasenya",
+        "LINK_CANCEL": "No, portam enrere, crec que ho recorde.",
+        "SUCCESS": "<strong>Mira el teu correu!</strong><br /> Hem enviat un correu amb les instrucciones per a setejar una nova contrasenya.",
+        "ERROR": "Segons els nostres Oompa Loompas, no estàs registrat encara."
+    },
+    "CHANGE_PASSWORD": {
+        "PAGE_TITLE": "Change you password - Taiga",
+        "PAGE_DESCRIPTION": "Set a new passoword for your Taiga account and hey!, you may want to eat some more iron-rich food, it's good for your brain :P",
+        "SECTION_NAME": "Canvi de contrasenya",
+        "FIELD_CURRENT_PASSWORD": "Contrasenya actual",
+        "PLACEHOLDER_CURRENT_PASSWORD": "La teua contrasenya actua (buit si no tens contrasenya encara)",
+        "FIELD_NEW_PASSWORD": "Nova contrasenya",
+        "PLACEHOLDER_NEW_PASSWORD": "Escriu una nova contrasenya",
+        "FIELD_RETYPE_PASSWORD": "Reescriu contrasenya",
+        "PLACEHOLDER_RETYPE_PASSWORD": "Reescriu contrasenya",
+        "ERROR_PASSWORD_MATCH": "Les contrasenyes no coincideixen"
+    },
+    "CHANGE_PASSWORD_RECOVERY_FORM": {
+        "TITLE": "Crea un nou password",
+        "SUBTITLE": "Menja un poc més de ferro, es bo pel cervell :P ",
+        "PLACEHOLDER_RECOVER_PASSWORD_TOKEN": "Recuperar token de contrasenya",
+        "LINK_NEED_TOKEN": "Neccesites un?",
+        "TITLE_LINK_NEED_TOKEN": "Necessites un token per a recuperar la teua contrasenya perque l'has oblidat?",
+        "PLACEHOLDER_NEW_PASSWORD": "nova contrasenya",
+        "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Reescriu la nova contrasenya",
+        "ACTION_RESET_PASSWORD": "Resetejar contrasenya",
+        "SUCCESS": "Els Oompa Loompas han salvat la teua contrasenya <br /> Prova a <strong>entrar</strong> amb ella."
+    },
+    "INVITATION": {
+        "PAGE_TITLE": "Invitation acceptance - Taiga",
+        "PAGE_DESCRIPTION": "Accept the invitation to join a project in Taiga, a project management platform for startups and agile developers & designers who want a simple, beautif  ul tool that makes work truly enjoyable."
+    },
+    "INVITATION_LOGIN_FORM": {
+        "NOT_FOUND": "<strong>Ooops, ha hagut un problema</strong><br />Els nosters Oompa Loompas no troben la teua invitació.",
+        "SUCCESS": "T'has incorporat a este projecte. Vos donem la benvinguda a {{project_name}}",
+        "ERROR": "Segons els nostres OOmpa Loompas, no estàs registrat encara o has escrit una contrasenya invàlida."
+    },
     "HOME": {
+        "PAGE_TITLE": "Home - Taiga",
+        "PAGE_DESCRIPTION": "The Taiga home page with your main projects and all your assigned and watched user stories, tasks and issues",
         "EMPTY_WATCHING": "<strong>Follow</strong> the projects, User Stories, Tasks, Issues... that you want to know about :)",
         "WORKING_ON_SECTION": "Working on",
         "WATCHING_SECTION": "Watching"
     },
     "PROJECTS": {
+        "PAGE_TITLE": "My projects - Taiga",
+        "PAGE_DESCRIPTION": "A list with all your projects, you can reorder or create a new one.",
         "MY_PROJECTS": "My projects"
     },
     "ATTACHMENT": {
@@ -289,6 +374,7 @@
         },
         "MEMBERSHIPS": {
             "TITLE": "Gestió de Membres",
+            "PAGE_TITLE": "Memberships - {{projectName}}",
             "ADD_BUTTON": "+ Nou membre",
             "ADD_BUTTON_TITLE": "Afegir nou membre"
         },
@@ -324,7 +410,7 @@
             "SALT_CHAT_ROOM": "Pots afegir un code salt a la sala de xat"
         },
         "PROJECT_PROFILE": {
-            "PAGE_TITLE": "Perfil de projecte - {{sectionName}} - {{projectName}}",
+            "PAGE_TITLE": "{{sectionName}} - Project profile  - {{projectName}}",
             "PROJECT_DETAILS": "Detalls de projecte",
             "PROJECT_NAME": "Nom del projecte",
             "PROJECT_SLUG": "Slug de projecte",
@@ -365,23 +451,26 @@
             "ISSUE_ADD": "Afegix camps personalitzats en incidències"
         },
         "PROJECT_VALUES": {
-            "APP_TITLE": "Valors de projecte - {{sectionName}} - {{projectName}}",
+            "PAGE_TITLE": "{{sectionName}} - Project values - {{projectName}}",
             "REPLACEMENT": "Tots els elements amb aquest valor seràn canviats a",
             "ERROR_DELETE_ALL": "No pots esborrar tots els valors."
         },
         "PROJECT_VALUES_POINTS": {
-            "TITLE": "Punts d'US",
+            "TITLE": "Points",
             "SUBTITLE": "Especifica els punts en els que poden ser estimades les històries d'usuari",
+            "US_TITLE": "US points",
             "ACTION_ADD": "Afegir punts nous"
         },
         "PROJECT_VALUES_PRIORITIES": {
-            "TITLE": "Prioritats d'incidències",
+            "TITLE": "Priorities",
             "SUBTITLE": "Especifica les prioritats que tindran les teues tasques",
+            "ISSUE_TITLE": "Issue priorities",
             "ACTION_ADD": "Add new priority"
         },
         "PROJECT_VALUES_SEVERITIES": {
-            "TITLE": "Severitat d'incidències",
+            "TITLE": "Severities",
             "SUBTITLE": "Especifica les severitats que tindran les teues incidències",
+            "ISSUE_TITLE": "Issue severities",
             "ACTION_ADD": "Add new severity"
         },
         "PROJECT_VALUES_STATUS": {
@@ -398,7 +487,7 @@
             "ACTION_ADD": "Afegir now {{objName}}"
         },
         "ROLES": {
-            "SECTION_NAME": "Rols - {{projectName}}",
+            "PAGE_TITLE": "Roles - {{projectName}}",
             "WARNING_NO_ROLE": "Ves amb compte, cap rol en el teu projecte pot estimar punts per a les històries d'usuari",
             "HELP_ROLE_ENABLED": "Si està activat, els membres assignats a aquest rol podràn estimar els punts d'històries d'usuaris",
             "COUNT_MEMBERS": "{{ role.members_count }} membres amb aquest rol",
@@ -415,20 +504,20 @@
         },
         "BITBUCKET": {
             "SECTION_NAME": "Bitbucket",
-            "APP_TITLE": "Bitbucket - {{projectName}}",
+            "PAGE_TITLE": "Bitbucket - {{projectName}}",
             "INFO_VERIFYING_IP": "Les peticions a Bitbuket no estan signades. El millor mode de verificar l'oritge es per IP. Si el camp està buit no hi haurà verificació per IP."
         },
         "GITLAB": {
             "SECTION_NAME": "Gitlab",
-            "APP_TITLE": "Gitlab - {{projectName}}",
+            "PAGE_TITLE": "Gitlab - {{projectName}}",
             "INFO_VERIFYING_IP": "Les peticions a Bitbuket no estan signades. El millor mode de verificar l'oritge es per IP. Si el camp està buit no hi haurà verificació per IP."
         },
         "GITHUB": {
             "SECTION_NAME": "Github",
-            "APP_TITLE": "Github - {{projectName}}"
+            "PAGE_TITLE": "Github - {{projectName}}"
         },
         "WEBHOOKS": {
-            "APP_TITLE": "Webhooks - {{projectName}}",
+            "PAGE_TITLE": "Webhooks - {{projectName}}",
             "SECTION_NAME": "Webhooks",
             "SUBTITLE": "Els Webhooks notifiquen serveis extens de events en taiga com comentaris, històries d'usuari...",
             "ADD_NEW": "Afegir un nou Webhook",
@@ -454,6 +543,7 @@
             "WEBHOOK_NAME": "Webhook '{{name}}'"
         },
         "CUSTOM_ATTRIBUTES": {
+            "PAGE_TITLE": "{{sectionName}} - Custom Attributes - {{projectName}}",
             "ADD": "Afegix camp personalitzat",
             "EDIT": "Edita el camp personalitzat",
             "DELETE": "Esborrar camp personalitzat",
@@ -533,6 +623,7 @@
     },
     "USER": {
         "PROFILE": {
+            "PAGE_TITLE": "{{userFullName}} (@{{userUsername}})",
             "EDIT": "Edit profile",
             "FOLLOW": "Follow",
             "PROJECTS": "Projectes",
@@ -555,6 +646,7 @@
         }
     },
     "PROJECT": {
+        "PAGE_TITLE": "{{projectName}}",
         "WELCOME": "Benvinguts",
         "SECTION_PROJECTS": "Projectes",
         "HELP": "Reorder your projects to set in the top the most used ones.<br/> The top 10 projects will appear in the top navigation bar project list",
@@ -684,6 +776,8 @@
         }
     },
     "US": {
+        "PAGE_TITLE": "{{userStorySubject}} - User Story {{userStoryRef}} - {{projectName}}",
+        "PAGE_DESCRIPTION": "Status: {{userStoryStatus }}. Completed {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} of {{userStoryTotalTasks}} tasks closed). Points: {{userStoryPoints}}. Description: {{userStoryDescription}}",
         "SECTION_NAME": "User story details",
         "LINK_TASKBOARD": "Panell de tasques",
         "TITLE_LINK_TASKBOARD": "Anar a panell de tasques",
@@ -771,6 +865,8 @@
         }
     },
     "BACKLOG": {
+        "PAGE_TITLE": "Backlog - {{projectName}}",
+        "PAGE_DESCRIPTION": "The backlog panel, with user stories and sprints of the project {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Backlog",
         "MOVE_US_TO_CURRENT_SPRINT": "Envia al Sprint",
         "SHOW_FILTERS": "Mostra filtres",
@@ -850,6 +946,8 @@
         "VERSION_ERROR": "Algú dins de Taiga ha canviat aȯ abans i els Oompa Loompas no pode aplicar els teus canvis. Per favor recarrega i aplica els teus canvis (es perdràn)"
     },
     "TASKBOARD": {
+        "PAGE_TITLE": "{{sprintName}} - Sprint taskboard - {{projectName}}",
+        "PAGE_DESCRIPTION": "Sprint {{sprintName}} (from {{startDate}} to {{endDate}}) of {{projectName}}. Completed {{completedPercentage}}% ({{completedPoints}} of {{totalPoints}} points). {{openTasks}} opened tasks of {{totalTasks}}.",
         "SECTION_NAME": "Panell de tasques",
         "TITLE_ACTION_ADD": "Afegir nova tasca",
         "TITLE_ACTION_ADD_BULK": "Afegeix noves històries d'usuari en grup",
@@ -873,6 +971,8 @@
         }
     },
     "TASK": {
+        "PAGE_TITLE": "{{taskSubject}} - Task {{taskRef}} - {{projectName}}",
+        "PAGE_DESCRIPTION": "Status: {{taskStatus }}. Description: {{taskDescription}}",
         "SECTION_NAME": "Detalls de la tasca",
         "LINK_TASKBOARD": "Panell de tasques",
         "TITLE_LINK_TASKBOARD": "Anar a panell de tasques",
@@ -918,56 +1018,9 @@
         "ACTION_CHANGE_EMAIL": "Canviar correu",
         "SUCCESS": "Els Oompa Loompas han actualitzat el teu correu"
     },
-    "CHANGE_PASSWORD_RECOVERY_FORM": {
-        "TITLE": "Crea un nou password",
-        "SUBTITLE": "Menja un poc més de ferro, es bo pel cervell :P ",
-        "PLACEHOLDER_RECOVER_PASSWORD_TOKEN": "Recuperar token de contrasenya",
-        "LINK_NEED_TOKEN": "Neccesites un?",
-        "TITLE_LINK_NEED_TOKEN": "Necessites un token per a recuperar la teua contrasenya perque l'has oblidat?",
-        "PLACEHOLDER_NEW_PASSWORD": "nova contrasenya",
-        "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Reescriu la nova contrasenya",
-        "ACTION_RESET_PASSWORD": "Resetejar contrasenya",
-        "SUCCESS": "Els Oompa Loompas han salvat la teua contrasenya <br /> Prova a <strong>entrar</strong> amb ella."
-    },
-    "FORGOT_PASSWORD_FORM": {
-        "TITLE": "Oops, has oblidat la teua contrasenya?",
-        "SUBTITLE": "Escriviu el vostre nom d'usuari o correu electrònic per a conseguir-ne un de nou",
-        "PLACEHOLDER_FIELD": "Nom d'usuari o correu electrònic",
-        "ACTION_RESET_PASSWORD": "Resetejar contrasenya",
-        "LINK_CANCEL": "No, portam enrere, crec que ho recorde.",
-        "SUCCESS": "<strong>Mira el teu correu!</strong><br /> Hem enviat un correu amb les instrucciones per a setejar una nova contrasenya.",
-        "ERROR": "Segons els nostres Oompa Loompas, no estàs registrat encara."
-    },
-    "LOGIN_COMMON": {
-        "HEADER": "Ja tinc un conter de Taiga",
-        "PLACEHOLDER_AUTH_NAME": "Nom d'usuari i correu electrònic (sensible a majúscules i minúscules)",
-        "LINK_FORGOT_PASSWORD": "L'has oblidat?",
-        "TITLE_LINK_FORGOT_PASSWORD": "Has oblidat la teua contrasenya?",
-        "ACTION_ENTER": "Entrar",
-        "ACTION_SIGN_IN": "Entrar",
-        "PLACEHOLDER_AUTH_PASSWORD": "Contrasenya (sensible a majúscules i minúscules)"
-    },
-    "LOGIN_FORM": {
-        "ERROR_AUTH_INCORRECT": "Segons els Oompa Loompas, el vostre nom d'usuari/correu electrònic o contrasenya són incorrectes.",
-        "ERROR_GENERIC": "Segons els Oompa Loompas ha hagut un error.",
-        "SUCCESS": "Our Oompa Loompas están contents, benvinguts a Taiga."
-    },
-    "INVITATION_LOGIN_FORM": {
-        "NOT_FOUND": "<strong>Ooops, ha hagut un problema</strong><br />Els nosters Oompa Loompas no troben la teua invitació.",
-        "SUCCESS": "T'has incorporat a este projecte. Vos donem la benvinguda a {{project_name}}",
-        "ERROR": "Segons els nostres OOmpa Loompas, no estàs registrat encara o has escrit una contrasenya invàlida."
-    },
-    "REGISTER_FORM": {
-        "TITLE": "Register a new Taiga account (free)",
-        "PLACEHOLDER_NAME": "Trieu un nom d'usuari (sensible a majúscules i minúscules)",
-        "PLACEHOLDER_FULL_NAME": "Escriu el teu nom complet",
-        "PLACEHOLDER_EMAIL": "El teu correu",
-        "PLACEHOLDER_PASSWORD": "Tria una contrasenya(sensible a majúscules i minúscules)",
-        "ACTION_SIGN_UP": "Registrar-se",
-        "TITLE_LINK_LOGIN": "Entrar",
-        "LINK_LOGIN": "Ja estàs registrat? Entra"
-    },
     "ISSUES": {
+        "PAGE_TITLE": "Issues - {{projectName}}",
+        "PAGE_DESCRIPTION": "The issues list panel of the project {{projectName}}: {{projectDescription}}",
         "LIST_SECTION_NAME": "Incidències",
         "SECTION_NAME": "Issue details",
         "ACTION_NEW_ISSUE": "+ NOVA INCIDÈNCIA",
@@ -1031,7 +1084,13 @@
             }
         }
     },
+    "ISSUE": {
+        "PAGE_TITLE": "{{issueSubject}} - Issue {{issueRef}} - {{projectName}}",
+        "PAGE_DESCRIPTION": "Status: {{issueStatus }}. Type: {{issueType}}, Priority: {{issuePriority}}. Severity: {{issueSeverity}}. Description: {{issueDescription}}"
+    },
     "KANBAN": {
+        "PAGE_TITLE": "Kanban - {{projectName}}",
+        "PAGE_DESCRIPTION": "The kanban panel, with user stories of the project {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Kanban",
         "TITLE_ACTION_FOLD": "Plegar columna",
         "TITLE_ACTION_UNFOLD": "Desplegar columna",
@@ -1046,6 +1105,8 @@
         "UNDO_ARCHIVED": "Arrastra de nou  per desfer"
     },
     "SEARCH": {
+        "PAGE_TITLE": "Search - {{projectName}}",
+        "PAGE_DESCRIPTION": "Search anything, user stories, issues, tasks or wiki pages, in the project {{projectName}}: {{projectDescription}}",
         "FILTER_USER_STORIES": "Històries d'usuari",
         "FILTER_ISSUES": "Incidències",
         "FILTER_TASKS": "Tasca",
@@ -1056,6 +1117,8 @@
         "EMPTY_DESCRIPTION": "Prova amb una de les pestanyes o busca de nou"
     },
     "TEAM": {
+        "PAGE_TITLE": "Team - {{projectName}}",
+        "PAGE_DESCRIPTION": "The team panel to show all the members of the project {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Equip",
         "APP_TITLE": "EQUIP - {{projectName}}",
         "PLACEHOLDER_INPUT_SEARCH": "Busca per nom complet...",
@@ -1075,16 +1138,6 @@
         "SECTION_FILTER_ALL": "Tot",
         "CONFIRM_LEAVE_PROJECT": "Segur que vols deixar el projecte?",
         "ACTION_LEAVE_PROJECT": "Abandonar aquest projecte"
-    },
-    "CHANGE_PASSWORD": {
-        "SECTION_NAME": "Canvi de contrasenya",
-        "FIELD_CURRENT_PASSWORD": "Contrasenya actual",
-        "PLACEHOLDER_CURRENT_PASSWORD": "La teua contrasenya actua (buit si no tens contrasenya encara)",
-        "FIELD_NEW_PASSWORD": "Nova contrasenya",
-        "PLACEHOLDER_NEW_PASSWORD": "Escriu una nova contrasenya",
-        "FIELD_RETYPE_PASSWORD": "Reescriu contrasenya",
-        "PLACEHOLDER_RETYPE_PASSWORD": "Reescriu contrasenya",
-        "ERROR_PASSWORD_MATCH": "Les contrasenyes no coincideixen"
     },
     "USER_SETTINGS": {
         "AVATAR_MAX_SIZE": "[Max. grandària:  {{maxFileSize}}]",
@@ -1139,6 +1192,8 @@
         "PROGRESS_NAME_DESCRIPTION": "Nom i descripció"
     },
     "WIKI": {
+        "PAGE_TITLE": "{{wikiPageName}} - Wiki - {{projectName}}",
+        "PAGE_DESCRIPTION": "Last edition on {{lastModifiedDate}} ({{totalEditions}} editions in total) Content: {{ wikiPageContent }}",
         "DATETIME": "DD MMM YYYY HH:mm",
         "PLACEHOLDER_PAGE": "Esciu pàgina del Wiki",
         "REMOVE": "Esborrar pàgina de Wiki",

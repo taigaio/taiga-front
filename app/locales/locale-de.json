@@ -1,0 +1,1246 @@
+{
+    "COMMON": {
+        "YES": "Ja",
+        "NO": "Nein",
+        "LOADING": "Wird geladen...",
+        "LOADING_PROJECT": "Projekt wird geladen...",
+        "DATE": "DD MMM YYYY",
+        "DATETIME": "DD MMM YYYY HH:mm",
+        "SAVE": "Speichern",
+        "CANCEL": "Abbrechen",
+        "ACCEPT": "Akzeptieren",
+        "DELETE": "Löschen",
+        "CREATE": "Erzeugen",
+        "ADD": "Hinzufügen",
+        "COPY_TO_CLIPBOARD": "Ins Clipboard übernehmen: Strg+C",
+        "EDIT": "Bearbeiten",
+        "DRAG": "Ziehen",
+        "TAG_LINE": "Ihr agiles, freies und quelloffenes Projekt-Management Tool",
+        "TAG_LINE_2": "MIR GEFÄLLT DAS PROJEKT",
+        "BLOCK": "Blockieren",
+        "UNBLOCK": "Blockierung aufheben",
+        "BLOCKED": "Blockiert",
+        "CREATED_BY": "Erstellt von {{fullDisplayName}}",
+        "FROM": "von",
+        "TO": "an",
+        "CLOSE": "schließen",
+        "BLOCKED_NOTE": "Warum ist diese User-Story gesperrt?",
+        "BLOCKED_REASON": "Bitte erklären Sie den Grund ",
+        "GO_HOME": "Führe mich heim",
+        "PLUGINS": "Plugins",
+        "BETA": "Wir sind auf beta! ",
+        "ONE_ITEM_LINE": "Ein Eintrag pro Zeile...",
+        "NEW_BULK": "Neue Massenerstellung",
+        "RELATED_TASKS": "Verbundene Aufgaben",
+        "LOGOUT": "Ausloggen",
+        "EXTERNAL_USER": "ein externer Benutzer",
+        "GENERIC_ERROR": "Eins unserer Heinzelmännchen sagt {{error}}.",
+        "IOCAINE_TEXT": "Fühlen Sie sich von einer Aufgabe etwas erdrückt? Stellen Sie sicher, dass andere davon erfahren, indem Sie auf Locaine klicken, wenn Sie eine Aufgabe ändern. Es ist möglich, gegen dieses (fiktive) tödliche Gift immun zu werden, indem man kleine Mengen über einen Zeitraum hinweg einnimmt. Genauso, wie es möglich ist, besser in dem zu werden, was man tut, indem man gelegentlich zusätzliche Herausforderungen annimmt! ",
+        "FORM_ERRORS": {
+            "DEFAULT_MESSAGE": "Dieser Wert scheint ungültig zu sein. ",
+            "TYPE_EMAIL": "Dieser Wert sollte eine gültige E-Mail Adresse enthalten.",
+            "TYPE_URL": "Dieser Wert sollte eine gültige URL enthalten. ",
+            "TYPE_URLSTRICT": "Dieser Wert sollte eine gültige URL enthalten. ",
+            "TYPE_NUMBER": "Dieser Wert sollte eine gültige Nummer enthalten. ",
+            "TYPE_DIGITS": "Dieser Wert sollte Ziffern enthalten.",
+            "TYPE_DATEISO": "Dieser Wert sollte ein gültiges Datum sein (JJJJ-MM-TT)",
+            "TYPE_ALPHANUM": "Dieser Wert sollte alphanumersich sein. ",
+            "TYPE_PHONE": "Dieser Wert sollte eine gültige Telefonnummer enthalten.",
+            "NOTNULL": "Dieser Wert darf nicht leer sein. ",
+            "NOT_BLANK": "Dieser Wert darf nicht leer bleiben. ",
+            "REQUIRED": "Dieser Wert ist erforderlich",
+            "REGEXP": "Dieser Wert scheint ungültig zu sein. ",
+            "MIN": "Dieser Wert sollte größer oder gleich %s sein.",
+            "MAX": "Dieser Wert sollte niedriger oder gleich %s sein.",
+            "RANGE": "Der Wert sollte zwischen %s und %s liegen.",
+            "MIN_LENGTH": "Dieser Wert ist zu kurz. Er sollte mindestens %s Zeichen haben, oder mehr.",
+            "MAX_LENGTH": "Dieser Wert ist zu lang. Er sollte %s Zeichen haben oder weniger.",
+            "RANGE_LENGTH": "Die Länge des Wertes ist ungültig. Sie sollte zwischen %s und %s Zeichen liegen.",
+            "MIN_CHECK": "Sie müssen mindestens %s auswählen.",
+            "MAX_CHECK": "Wählen Sie %s oder weniger.",
+            "RANGE_CHECK": "Wählen Sie zwischen  %s und %s",
+            "EQUAL_TO": "Dieser Wert sollte der gleiche sein."
+        },
+        "PICKERDATE": {
+            "FORMAT": "DD MMM YYYY",
+            "IS_RTL": "falsch",
+            "FIRST_DAY_OF_WEEK": "1",
+            "PREV_MONTH": "Vorheriger Monat",
+            "NEXT_MONTH": "Nächster Monat ",
+            "MONTHS": {
+                "JAN": "Januar",
+                "FEB": "Februar",
+                "MAR": "März",
+                "APR": "April",
+                "MAY": "Mai",
+                "JUN": "Juni",
+                "JUL": "Juli",
+                "AUG": "August",
+                "SEP": "September",
+                "OCT": "Oktober",
+                "NOV": "November",
+                "DEC": "Diciember"
+            },
+            "WEEK_DAYS": {
+                "SUN": "Sonntag",
+                "MON": "Montag",
+                "TUE": "Dienstag",
+                "WED": "Mittwoch",
+                "THU": "Donnerstag",
+                "FRI": "Freitag",
+                "SAT": "Samstag"
+            },
+            "WEEK_DAYS_SHORT": {
+                "SUN": "Son",
+                "MON": "Mon",
+                "TUE": "Die",
+                "WED": "Mit",
+                "THU": "Don",
+                "FRI": "Fre",
+                "SAT": "Sam"
+            }
+        },
+        "SEE_USER_PROFILE": "Profil von {{username }} ansehen",
+        "USER_STORY": "User-Story",
+        "TASK": "Aufgabe",
+        "ISSUE": "Ticket",
+        "TAGS": {
+            "PLACEHOLDER": "Ich bin's! Kennzeichne mich...",
+            "DELETE": "Schlagwort löschen",
+            "ADD": "Schlagwort hinzufügen"
+        },
+        "DESCRIPTION": {
+            "EMPTY": "Leere ist so langweilig... werden Sie doch anschaulich...",
+            "NO_DESCRIPTION": "Noch keine Beschreibung "
+        },
+        "FIELDS": {
+            "SUBJECT": "Thema",
+            "NAME": "Name",
+            "URL": "URL",
+            "DESCRIPTION": "Beschreibung",
+            "VALUE": "Wert",
+            "SLUG": "Slug",
+            "COLOR": "Farbe",
+            "IS_CLOSED": "ist geschlossen?",
+            "STATUS": "Status",
+            "TYPE": "Typen",
+            "SEVERITY": "Gewichtung",
+            "PRIORITY": "Priorität",
+            "ASSIGNED_TO": "Zugewiesen an",
+            "POINTS": "Punkte",
+            "BLOCKED_NOTE": "gesperrte Notiz",
+            "IS_BLOCKED": "ist gesperrt ",
+            "REF": "Ref"
+        },
+        "ROLES": {
+            "ALL": "Alle"
+        },
+        "ASSIGNED_TO": {
+            "NOT_ASSIGNED": "Nicht zugeordnet",
+            "DELETE_ASSIGNMENT": "Zuordnung löschen",
+            "REMOVE_ASSIGNED": "Zugewiesene entfernen",
+            "TOO_MANY": "...zu viele Benutzer. Filtern Sie! ",
+            "CONFIRM_UNASSIGNED": "Möchten dies wirklich ohne eine Zuordnung verlassen?",
+            "TITLE_ACTION_EDIT_ASSIGNMENT": "Zuordnungen bearbeiten"
+        },
+        "STATUS": {
+            "CLOSED": "Geschlossen",
+            "OPEN": "Geöffnet"
+        },
+        "WATCHERS": {
+            "ADD": "Beobachter hinzufügen",
+            "TITLE": "Beobachter",
+            "DELETE": "Beobachter löschen",
+            "TITLE_LIGHTBOX_DELETE_WARTCHER": "Beobachter löschen..."
+        },
+        "CUSTOM_ATTRIBUTES": {
+            "CUSTOM_FIELDS": "Benutzerdefinierte Felder",
+            "SAVE": "Benutzerdefiniertes Feld speichern",
+            "EDIT": "Benutzerdefiniertes Feld bearbeiten",
+            "DELETE": "Benutzerattribut löschen",
+            "CONFIRM_DELETE": "Denken Sie daran, dass alle Werte in diesem benutzerdefinierten Feld gelöscht werden. </br> Möchten Sie den Vorgang wirklich fortsetzen?"
+        },
+        "FILTERS": {
+            "TITLE": "Filter",
+            "INPUT_PLACEHOLDER": "Betreff oder Verweis",
+            "TITLE_ACTION_FILTER_BUTTON": "suche",
+            "BREADCRUMB_TITLE": "zurück zu den Kategorien",
+            "BREADCRUMB_FILTERS": "Filter",
+            "BREADCRUMB_STATUS": "Status"
+        },
+        "WYSIWYG": {
+            "H1_BUTTON": "Überschrift 1",
+            "H1_SAMPLE_TEXT": "Geben Sie den Titel ein...",
+            "H2_BUTTON": "Überschrift 2",
+            "H2_SAMPLE_TEXT": "Geben Sie den Titel ein...",
+            "H3_BUTTON": "Überschrift 3",
+            "H3_SAMPLE_TEXT": "Geben Sie den Titel ein...",
+            "BOLD_BUTTON": "Fettschrift",
+            "BOLD_BUTTON_SAMPLE_TEXT": "Geben Sie Ihren Text ein...",
+            "ITALIC_BUTTON": "Kursivschrift",
+            "ITALIC_SAMPLE_TEXT": "Geben Sie Ihren Text ein...",
+            "STRIKE_BUTTON": "Treffer",
+            "STRIKE_SAMPLE_TEXT": "Geben Sie Ihren Text ein...",
+            "BULLETED_LIST_BUTTON": "Aufzählung",
+            "BULLETED_LIST_SAMPLE_TEXT": "Geben Sie Ihren Text ein...",
+            "NUMERIC_LIST_BUTTON": "Numerische Liste",
+            "NUMERIC_LIST_SAMPLE_TEXT": "Geben Sie Ihren Text ein...",
+            "PICTURE_BUTTON": "Bild",
+            "PICTURE_SAMPLE_TEXT": "Geben Sie Ihren Alternativtext zum Bild ein...",
+            "LINK_BUTTON": "Link",
+            "LINK_SAMPLE_TEXT": "Geben Sie Ihren Linktext ein...",
+            "QUOTE_BLOCK_BUTTON": "Blockzitat",
+            "QUOTE_BLOCK_SAMPLE_TEXT": "Geben Sie Ihren Text ein...",
+            "CODE_BLOCK_BUTTON": "Code Block",
+            "CODE_BLOCK_SAMPLE_TEXT": "Geben Sie Ihren Text ein...",
+            "PREVIEW_BUTTON": "Vorschau",
+            "EDIT_BUTTON": "Bearbeiten",
+            "MARKDOWN_HELP": "Markdown syntax Hilfe"
+        },
+        "PERMISIONS_CATEGORIES": {
+            "SPRINTS": {
+                "NAME": "Sprints",
+                "VIEW_SPRINTS": "Sprints ansehen",
+                "ADD_SPRINTS": "Sprints hinzufügen",
+                "MODIFY_SPRINTS": "Sprints modifizieren",
+                "DELETE_SPRINTS": "Gelöschte Sprints"
+            },
+            "USER_STORIES": {
+                "NAME": "User-Stories",
+                "VIEW_USER_STORIES": "User-Stories ansehen",
+                "ADD_USER_STORIES": "User-Stories hinzufügen",
+                "MODIFY_USER_STORIES": "User-Stories modifizieren",
+                "DELETE_USER_STORIES": "User-Stories löschen"
+            },
+            "TASKS": {
+                "NAME": "Aufgaben",
+                "VIEW_TASKS": "Aufgaben ansehen",
+                "ADD_TASKS": "Aufgaben hinzufügen",
+                "MODIFY_TASKS": "Aufgaben ändern ",
+                "DELETE_TASKS": "Aufgaben löschen"
+            },
+            "ISSUES": {
+                "NAME": "Tickets",
+                "VIEW_ISSUES": "Tickets ansehen",
+                "ADD_ISSUES": "Tickets hinzufügen",
+                "MODIFY_ISSUES": "Tickets ändern",
+                "DELETE_ISSUES": "Tickets löschen"
+            },
+            "WIKI": {
+                "NAME": "Wiki",
+                "VIEW_WIKI_PAGES": "Wiki Seiten ansehen",
+                "ADD_WIKI_PAGES": "Wiki Seiten hinzufügen",
+                "MODIFY_WIKI_PAGES": "Wiki Seiten ändern",
+                "DELETE_WIKI_PAGES": "Wiki Seiten löschen",
+                "VIEW_WIKI_LINKS": "Wiki Links ansehen",
+                "ADD_WIKI_LINKS": "Wiki Links hinzufügen",
+                "DELETE_WIKI_LINKS": "Wiki Links löschen"
+            }
+        },
+        "META": {
+            "PAGE_TITLE": "Taiga",
+            "PAGE_DESCRIPTION": "Taiga is a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
+        }
+    },
+    "LOGIN": {
+        "PAGE_TITLE": "Login - Taiga",
+        "PAGE_DESCRIPTION": "Logging in to Taiga, a project management platform for startups and agile developers & designers who want a simple, beautif  ul tool that makes work truly enjoyable."
+    },
+    "AUTH": {
+        "INVITED_YOU": "hat Sie zum Projekt eingeladen",
+        "NOT_REGISTERED_YET": "Noch nicht registiert?",
+        "REGISTER": "Registrieren",
+        "CREATE_ACCOUNT": "Ein kostenloses Konto anlegen"
+    },
+    "LOGIN_COMMON": {
+        "HEADER": "Ich bin bereits bei Taiga angemeldet",
+        "PLACEHOLDER_AUTH_NAME": "Benutzername oder E-Mail-Adresse (Groß- und Kleinschreibung beachten)",
+        "LINK_FORGOT_PASSWORD": "Haben Sie es vergessen?",
+        "TITLE_LINK_FORGOT_PASSWORD": "Haben Sie Ihr Passwort vergessen?",
+        "ACTION_ENTER": "Eingabe",
+        "ACTION_SIGN_IN": "Anmelden",
+        "PLACEHOLDER_AUTH_PASSWORD": "Passwort (Groß- und Kleinschreibung beachten)"
+    },
+    "LOGIN_FORM": {
+        "ERROR_AUTH_INCORRECT": "Laut unseren Heinzelmännchen ist Ihr Benutzername/Ihre E-Mail-Adresse oder Ihr Passwort nicht korrekt. ",
+        "ERROR_GENERIC": "Laut unseren Heinzelmännchen ist ein Fehler aufgetreten.",
+        "SUCCESS": "Herzlich willkommen bei Taiga, unsere Heinzelmännchen freuen sich. "
+    },
+    "REGISTER": {
+        "PAGE_TITLE": "Register - Taiga",
+        "PAGE_DESCRIPTION": "Create your account in Taiga, a project management platform for startups and agile developers & designers who want a simple, beautif  ul tool that makes work truly enjoyable."
+    },
+    "REGISTER_FORM": {
+        "TITLE": "Einen neuen Taiga Account registrieren (kostenlos)",
+        "PLACEHOLDER_NAME": "Wählen Sie einen Benutzernamen (Groß- und Kleinschreibung beachten)",
+        "PLACEHOLDER_FULL_NAME": "Wählen Sie Ihren vollständigen Namen ",
+        "PLACEHOLDER_EMAIL": "Ihre E-Mail",
+        "PLACEHOLDER_PASSWORD": "Setzen Sie ein Passwort (Groß- und Kleinschreibung beachten)",
+        "ACTION_SIGN_UP": "Anmelden",
+        "TITLE_LINK_LOGIN": "anmelden",
+        "LINK_LOGIN": "Sind Sie bereits registriert? Loggen Sie sich ein"
+    },
+    "FORGOT_PASSWORD": {
+        "PAGE_TITLE": "Forgot password - Taiga",
+        "PAGE_DESCRIPTION": "Enter your username or email to get a new password and you can access to Taiga again."
+    },
+    "FORGOT_PASSWORD_FORM": {
+        "TITLE": "Huch, haben Sie Ihr Passwort vergessen?",
+        "SUBTITLE": "Geben Sie Ihren Benutzernamen oder Ihre E-Mail-Adresse ein, um einen neuen zu erhalten. ",
+        "PLACEHOLDER_FIELD": "Benutzername oder E-Mail-Adresse",
+        "ACTION_RESET_PASSWORD": "Passwort zurücksetzen",
+        "LINK_CANCEL": "Nein, bring mich zurück. Ich denke, ich erinnere mich daran. ",
+        "SUCCESS": "<strong>Sehen Sie in Ihren Posteingang!</strong><br />Wir haben Ihnen eine E-Mail mit einer Anleitung gesendet, um ein neues Passwort festzulegen.",
+        "ERROR": "Laut unseren Heinzelmännchen sind Sie bislang noch nicht registriert. "
+    },
+    "CHANGE_PASSWORD": {
+        "PAGE_TITLE": "Change you password - Taiga",
+        "PAGE_DESCRIPTION": "Set a new passoword for your Taiga account and hey!, you may want to eat some more iron-rich food, it's good for your brain :P",
+        "SECTION_NAME": "Passwort ändern",
+        "FIELD_CURRENT_PASSWORD": "Aktuelles Passwort",
+        "PLACEHOLDER_CURRENT_PASSWORD": "Ihr aktuelles Passwort (oder leer, wenn Sie noch kein Passwort haben)",
+        "FIELD_NEW_PASSWORD": "Neues Passwort",
+        "PLACEHOLDER_NEW_PASSWORD": "Geben Sie ein neues Passwort ein",
+        "FIELD_RETYPE_PASSWORD": "Nochmals neues Passwort eingeben",
+        "PLACEHOLDER_RETYPE_PASSWORD": "Wiederholen Sie das neue Passwort",
+        "ERROR_PASSWORD_MATCH": "Die Passwörter stimmen nicht überein"
+    },
+    "CHANGE_PASSWORD_RECOVERY_FORM": {
+        "TITLE": "Erstellen Sie einen neuen Taiga Pass",
+        "SUBTITLE": "Und hey, es empfiehlt sich, mehr eisenreiche Nahrung zu sich zu nehmen - die ist gut für's Gehirn :P ",
+        "PLACEHOLDER_RECOVER_PASSWORD_TOKEN": "Passwort Token wiederherstellen",
+        "LINK_NEED_TOKEN": "Benötigen Sie einen?",
+        "TITLE_LINK_NEED_TOKEN": "Benötigen Sie ein Token, um Ihr vergessenes Passwort zu retten?",
+        "PLACEHOLDER_NEW_PASSWORD": "Neues Passwort",
+        "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Wiederholen Sie die Eingabe des neuen Passworts ",
+        "ACTION_RESET_PASSWORD": "Passwort zurücksetzen",
+        "SUCCESS": "Unsere Oompa Loompas haben das neue Passwort gespeichert.<br /> <strong>Hier</strong> gehts zum login."
+    },
+    "INVITATION": {
+        "PAGE_TITLE": "Invitation acceptance - Taiga",
+        "PAGE_DESCRIPTION": "Accept the invitation to join a project in Taiga, a project management platform for startups and agile developers & designers who want a simple, beautif  ul tool that makes work truly enjoyable."
+    },
+    "INVITATION_LOGIN_FORM": {
+        "NOT_FOUND": "<strong>Huch, wir haben ein Problem</strong><br />Unsere Heinzelmännchen können Ihre Einladung nicht finden.",
+        "SUCCESS": "Sie sind diesem Projekt erfolgreich beigetreten. Herzlich willkommen bei {{project_name}}",
+        "ERROR": "Laut unseren Heinzelmännchen sind Sie noch nicht registriert, oder Sie haben ein ungültiges Passwort eingegeben. "
+    },
+    "HOME": {
+        "PAGE_TITLE": "Home - Taiga",
+        "PAGE_DESCRIPTION": "The Taiga home page with your main projects and all your assigned and watched user stories, tasks and issues",
+        "EMPTY_WATCHING": "<strong>Folgen</strong> Sie den Projekten, User-Stories, Aufgaben, Tickets... über die Sie etwas wissen möchten :)",
+        "WORKING_ON_SECTION": "Arbeiten an",
+        "WATCHING_SECTION": "Beobachtung"
+    },
+    "PROJECTS": {
+        "PAGE_TITLE": "My projects - Taiga",
+        "PAGE_DESCRIPTION": "A list with all your projects, you can reorder or create a new one.",
+        "MY_PROJECTS": "Meine Projekte"
+    },
+    "ATTACHMENT": {
+        "SECTION_NAME": "Anhänge",
+        "TITLE": "{{ fileName }} hochgeladen am {{ date }}",
+        "DESCRIPTION": "Geben Sie eine kurze Beschreibung ein",
+        "DEPRECATED": "(verworfen)",
+        "DEPRECATED_FILE": "Verworfen?",
+        "ADD": "Neuen Anhang hinzufügen. <%- maxFileSizeMsg %>",
+        "MAX_FILE_SIZE": "[Max. Größe: {{maxFileSize}}]",
+        "SHOW_DEPRECATED": "+ verworfene Anhänge zeigen",
+        "HIDE_DEPRECATED": "- verworfene Anhänge verbergen",
+        "COUNT_DEPRECATED": "({{ counter }} verworfen)",
+        "MAX_UPLOAD_SIZE": "Die maximale Dateigröße beträgt {{maxFileSize}}",
+        "DATE": "DD MMM YYYY [um] hh:mm",
+        "ERROR_UPLOAD_ATTACHMENT": "Das Hochladen war uns nicht möglich '{{fileName}}'. {{errorMessage}}",
+        "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "Anhang löschen...",
+        "MSG_LIGHTBOX_DELETE_ATTACHMENT": "der Anhang '{{fileName}}'",
+        "ERROR_DELETE_ATTACHMENT": "Es war uns nicht möglich, zu löschen: {{errorMessage}}",
+        "FIELDS": {
+            "IS_DEPRECATED": "ist verworfen"
+        }
+    },
+    "PAGINATION": {
+        "PREVIOUS": "Zurück",
+        "NEXT": "Weiter"
+    },
+    "ADMIN": {
+        "COMMON": {
+            "TITLE_ACTION_EDIT_VALUE": "Wert bearbeiten",
+            "TITLE_ACTION_DELETE_VALUE": "Wert löschen"
+        },
+        "HELP": "Wenn Sie Hilfe benötigen, besuchen Sie unsere Support-Seite!",
+        "PROJECT_DEFAULT_VALUES": {
+            "TITLE": "Vorgabewerte",
+            "SUBTITLE": "Standardwerte für alle ausgewählten Eingaben setzen."
+        },
+        "MEMBERSHIPS": {
+            "TITLE": "Mitglieder verwalten",
+            "PAGE_TITLE": "Memberships - {{projectName}}",
+            "ADD_BUTTON": "+ Neues Mitglied",
+            "ADD_BUTTON_TITLE": "Neues Mitglied hinzufügen"
+        },
+        "PROJECT_EXPORT": {
+            "TITLE": "Exportieren",
+            "SUBTITLE": "Exportieren Sie Ihr Projekt, um ein Backup durchzuführen, oder ein neues, darauf basierendes, zu erstellen. ",
+            "EXPORT_BUTTON": "Exportieren",
+            "EXPORT_BUTTON_TITLE": "Exportieren Sie Ihr Projekt",
+            "LOADING_TITLE": "Wir erzeugen die Exportdatei",
+            "DUMP_READY": "Ihre Export-Datei ist fertig! ",
+            "LOADING_MESSAGE": "Bitte lassen Sie diese Seite geöffnet!",
+            "ASYNC_MESSAGE": "Wir werden nach Fertigstellung eine E-Mail senden.",
+            "SYNC_MESSAGE": "Wenn der Download nicht automatisch startet, klicken Sie <a href='{{url}}' download title='Download the dump file'>hier</a>.",
+            "ERROR": "Unsere Heinzelmännchen haben Probleme, Ihre Export-Datei zu erzeugen. Bitte versuchen Sie es erneut.",
+            "ERROR_BUSY": "Entschuldigung, unsere Heinzelmännchen sind zur Zeit sehr beschäftigt. Bitte versuchen Sie es in ein paar Minuten erneut. ",
+            "ERROR_MESSAGE": "Unsere Heinzelmännchen haben Probleme, Ihre Export-Datei zu erstellen: {{message}} "
+        },
+        "MODULES": {
+            "TITLE": "Module",
+            "ENABLE": "Aktivieren",
+            "DISABLE": "Deaktivieren",
+            "BACKLOG": "Auftragsliste",
+            "BACKLOG_DESCRIPTION": "Verwalten Sie Ihre User-Stories, um einen organisierten Überblick der anstehenden und priorisierten Aufgaben zu erhalten.  ",
+            "KANBAN": "Kanban",
+            "KANBAN_DESCRIPTION": "Organisieren Sie Ihr Projekt auf übersichtliche Art.",
+            "ISSUES": "Tickets",
+            "ISSUES_DESCRIPTION": "Verfolgen Sie Fehler, Fragen und Verbesserungen, die mit Ihrem Projekt verbunden sind. Vermissen Sie nichts! ",
+            "WIKI": "Wiki",
+            "WIKI_DESCRIPTION": "Fügen Sie Inhalte hinzu, ändern oder löschen Sie sie in Zusammenarbeit mit anderen. Dies ist der richtige Ort für Ihre Projektdokumentation.",
+            "MEETUP": "Zusammentreffen",
+            "MEETUP_DESCRIPTION": "Wählen Sie Ihr Videokonferenzsystem. Auch Entwickler brauchen Kontakt von Angesicht zu Angesicht. ",
+            "SELECT_VIDEOCONFERENCE": "Wählen Sie ein Videokonferenzsystem",
+            "SALT_CHAT_ROOM": "Wenn Sie möchten, können Sie einen Salt Code zum Namen des Chatrooms hinzufügen"
+        },
+        "PROJECT_PROFILE": {
+            "PAGE_TITLE": "{{sectionName}} - Project profile  - {{projectName}}",
+            "PROJECT_DETAILS": "Projekt Details",
+            "PROJECT_NAME": "Projektname",
+            "PROJECT_SLUG": "Projekt Slug",
+            "NUMBER_SPRINTS": "Anzahl der Sprints",
+            "NUMBER_US_POINTS": "Anzahl der User-Story Punkte",
+            "TAGS": "Schlagwörter",
+            "DESCRIPTION": "Beschreibung",
+            "PUBLIC_PROJECT": "Öffentliches Projekt",
+            "PRIVATE_PROJECT": "Privates Projekt",
+            "DELETE": "Dieses Projekt löschen"
+        },
+        "REPORTS": {
+            "TITLE": "Reporte",
+            "SUBTITLE": "Exportieren Sie Ihre Projektdaten in CSV Format und erstellen Sie Ihre eigenen Berichte. ",
+            "DESCRIPTION": "Laden Sie eine CSV Datei herunter oder kopieren Sie die generierte URL und öffnen Sie sie in Ihrem bevorzugten Text-Editor oder in Ihrer Tabellenkalkulation, um Ihre eigenen Projektdaten-Reporte zu erstellen. So können Sie Ihre Daten leicht überblicken und analysieren.",
+            "HELP": "Wie kann ich dies in meiner eigenen Tabellenkalkulation nutzen?",
+            "REGENERATE_TITLE": "Die URL ändern",
+            "REGENERATE_SUBTITLE": "Sie sind im Begriff, die CSV data access URL zu ändern. Die vorherige URL wird deaktiviert. Sind Sie sicher?"
+        },
+        "CSV": {
+            "SECTION_TITLE_US": "User-Stories Berichte ",
+            "SECTION_TITLE_TASK": "Aufgabenberichte",
+            "SECTION_TITLE_ISSUE": "Ticket Berichte ",
+            "DOWNLOAD": "CSV herunterladen ",
+            "URL_FIELD_PLACEHOLDER": "Bitte erstellen Sie die CSV URL neu",
+            "TITLE_REGENERATE_URL": "Erstellen Sie die CSV URL neu",
+            "ACTION_GENERATE_URL": "URL erzeugen",
+            "ACTION_REGENERATE": "Neu erstellen"
+        },
+        "CUSTOM_FIELDS": {
+            "TITLE": "Benutzerfelder",
+            "SUBTITLE": "Spezifizieren Sie die Benutzerfelder für Ihre User-Stories, Aufgaben und Tickets. ",
+            "US_DESCRIPTION": "Benutzerdefinierte Felder der User-Story",
+            "US_ADD": "Benutzerdefiniertes Feld bei User-Stories hinzufügen",
+            "TASK_DESCRIPTION": "Aufgaben benutzerdefinierte Felder",
+            "TASK_ADD": "Fügen Sie ein benutzerdefiniertes Feld bei Aufgaben hinzu",
+            "ISSUE_DESCRIPTION": "Tickets benutzerdefinierte Felder",
+            "ISSUE_ADD": "Fügen Sie den Tickets ein benutzerdefiniertes Feld hinzu "
+        },
+        "PROJECT_VALUES": {
+            "PAGE_TITLE": "{{sectionName}} - Project values - {{projectName}}",
+            "REPLACEMENT": "Alle Einträge mit diesem Wert werden geändert zu",
+            "ERROR_DELETE_ALL": "Sie dürfen nicht alle Werte löschen!"
+        },
+        "PROJECT_VALUES_POINTS": {
+            "TITLE": "Points",
+            "SUBTITLE": "Bitte schätzen Sie die Punktzahl für Ihre User-Stories",
+            "US_TITLE": "US points",
+            "ACTION_ADD": "Neuen Punkt hinzufügen"
+        },
+        "PROJECT_VALUES_PRIORITIES": {
+            "TITLE": "Priorities",
+            "SUBTITLE": "Legen Sie die Prioritäten Ihrer Tickets fest",
+            "ISSUE_TITLE": "Issue priorities",
+            "ACTION_ADD": "Neue Priorität hinzufügen"
+        },
+        "PROJECT_VALUES_SEVERITIES": {
+            "TITLE": "Severities",
+            "SUBTITLE": "Legen Sie die Gewichtung Ihrer Tickets fest",
+            "ISSUE_TITLE": "Issue severities",
+            "ACTION_ADD": "Neue Gewichtung hinzufügen"
+        },
+        "PROJECT_VALUES_STATUS": {
+            "TITLE": "Status",
+            "SUBTITLE": "Spezifizieren Sie die Status, die Ihre User-Stories, Aufgaben und Tickets durchlaufen werden. ",
+            "US_TITLE": "User-Story Status",
+            "TASK_TITLE": "Aufgabenstatus",
+            "ISSUE_TITLE": "Ticket Status"
+        },
+        "PROJECT_VALUES_TYPES": {
+            "TITLE": "Typen",
+            "SUBTITLE": "Spezifizieren Sie, welche Arten Ihre Tickets haben können",
+            "ISSUE_TITLE": "Ticketarten",
+            "ACTION_ADD": "Neu hinzufügen {{objName}}"
+        },
+        "ROLES": {
+            "PAGE_TITLE": "Roles - {{projectName}}",
+            "WARNING_NO_ROLE": "Beachten Sie, keine Rolle in Ihrem Projekt wird in der Lage sein, die Punktevergabe für User-Stories einzuschätzen. ",
+            "HELP_ROLE_ENABLED": "Wenn Sie dies freischalten, werden Mitglieder, denen diese Rolle zugewiesen ist, in der Lage sein, die Punktevergabe für User-Stories zu veranschlagen. ",
+            "COUNT_MEMBERS": "{{ role.members_count }} Mitglieder mit dieser Rolle",
+            "TITLE_DELETE_ROLE": "Rolle löschen",
+            "REPLACEMENT_ROLE": "Alle Benutzer mit dieser Rolle werden verschoben nach ",
+            "WARNING_DELETE_ROLE": "<strong>Vorsicht, alle Rollen Bewertungen werden entfernt</strong>",
+            "ERROR_DELETE_ALL": "Sie können nicht alle Werte löschen",
+            "EXTERNAL_USER": "Externer Benutzer"
+        },
+        "THIRD_PARTIES": {
+            "SECRET_KEY": "Geheimschlüssel",
+            "PAYLOAD_URL": "Payload URL ",
+            "VALID_IPS": "Gültige Quell-IPs (getrennt von ,)"
+        },
+        "BITBUCKET": {
+            "SECTION_NAME": "Bitbucket",
+            "PAGE_TITLE": "Bitbucket - {{projectName}}",
+            "INFO_VERIFYING_IP": "Bitbucket requests are not signed so the best way of verifying the origin is by IP. If the field is empty there will be no IP validation."
+        },
+        "GITLAB": {
+            "SECTION_NAME": "Gitlab",
+            "PAGE_TITLE": "Gitlab - {{projectName}}",
+            "INFO_VERIFYING_IP": "Gitlab requests are not signed so the best way of verifying the origin is by IP. If the field is empty there will be no IP validation."
+        },
+        "GITHUB": {
+            "SECTION_NAME": "Github",
+            "PAGE_TITLE": "Github - {{projectName}}"
+        },
+        "WEBHOOKS": {
+            "PAGE_TITLE": "Webhooks - {{projectName}}",
+            "SECTION_NAME": "Webhooks",
+            "SUBTITLE": "Webhooks meldet externe Dienste über Ereignisse in Taiga, wie Kommentare, User-Stories...",
+            "ADD_NEW": "Fügen Sie ein neues Webhook hinzu",
+            "TYPE_NAME": "Geben Sie den Namen des Services ein",
+            "TYPE_PAYLOAD_URL": "Geben Sie die Service Payload URL ein",
+            "TYPE_SERVICE_SECRET": "Geben Sie den Service Sicherheitsschlüssel ein",
+            "SAVE": "Webhook sichern ",
+            "CANCEL": "Webhook beenden",
+            "SHOW_HISTORY": "(Chronik anzeigen)",
+            "TEST": "Webhook Test",
+            "EDIT": "Webhook bearbeiten",
+            "DELETE": "Webhook löschen",
+            "REQUEST": "Anfrage",
+            "RESEND_REQUEST": "Anfrage erneut senden",
+            "HEADERS": "Überschriften",
+            "PAYLOAD": "Ladung",
+            "RESPONSE": "Rückmeldung",
+            "DATE": "DD MMM YYYY [um] hh:mm:ss",
+            "ACTION_HIDE_HISTORY": "(Chronik verbergen)",
+            "ACTION_HIDE_HISTORY_TITLE": "Chronik Details verbergen",
+            "ACTION_SHOW_HISTORY": "(Chronik anzeigen)",
+            "ACTION_SHOW_HISTORY_TITLE": "Chronik Details anzeigen",
+            "WEBHOOK_NAME": "Webhook '{{name}}'"
+        },
+        "CUSTOM_ATTRIBUTES": {
+            "PAGE_TITLE": "{{sectionName}} - Custom Attributes - {{projectName}}",
+            "ADD": "Benutzerdefiniertes Feld hinzufügen",
+            "EDIT": "Benutzerdefiniertes Feld bearbeiten",
+            "DELETE": "Benutzerdefiniertes Feld löschen",
+            "SAVE_TITLE": "Benutzerdefiniertes Feld speichern",
+            "CANCEL_TITLE": "Erstellung abbrechen",
+            "SET_FIELD_NAME": "Legen Sie den Namen Ihres benutzerdefinierten Feldes fest",
+            "SET_FIELD_DESCRIPTION": "Legen Sie Ihre Beschreibung für das benutzerdefinierte Feld fest",
+            "ACTION_UPDATE": "Benutzerdefiniertes Feld aktualisieren",
+            "ACTION_CANCEL_EDITION": "Bearbeitung abbrechen"
+        },
+        "MEMBERSHIP": {
+            "COLUMN_MEMBER": "Mitglied",
+            "COLUMN_ADMIN": "Administrator",
+            "COLUMN_ROLE": "Rolle",
+            "COLUMN_STATUS": "Status",
+            "STATUS_ACTIVE": "Aktiv",
+            "STATUS_PENDING": "Noch nicht erledigt",
+            "DELETE_MEMBER": "Mitglied löschen",
+            "SUCCESS_SEND_INVITATION": "Wir haben die Einladung erneut versandt an '{{email}}'.",
+            "ERROR_SEND_INVITATION": "Wir haben die Einladung nicht versandt. ",
+            "SUCCESS_DELETE": "Gelöscht {{message}}.",
+            "ERROR_DELETE": "Das Löschen ist fehlgeschlagen {{message}}.",
+            "DEFAULT_DELETE_MESSAGE": "die Einladung an {{email}}"
+        },
+        "DEFAULT_VALUES": {
+            "LABEL_POINTS": "Vorgegebener Wert für Punkteauswahl",
+            "LABEL_US": "Vorgegebener Wert für User-Story-Status Auswahl ",
+            "LABEL_TASK_STATUS": "Vorgegebener Wert für Aufgabenstatusauswahl ",
+            "LABEL_PRIORITY": "Vorgegebener Wert für Prioritätsauswahl",
+            "LABEL_SEVERITY": "Vorgegebener Wert für Gewichtungsauswahl",
+            "LABEL_ISSUE_TYPE": "Vorgegebener Wert für Ticketartauswahl ",
+            "LABEL_ISSUE_STATUS": "Vorgegebener Wert für Ticketstatusauswahl "
+        },
+        "STATUS": {
+            "PLACEHOLDER_WRITE_STATUS_NAME": "Benennen Sie den neuen Status"
+        },
+        "TYPES": {
+            "PLACEHOLDER_WRITE_NAME": "Geben Sie dem neuen Element einen Namen"
+        },
+        "US_STATUS": {
+            "ACTION_ADD_STATUS": "Neuen Status hinzufügen",
+            "IS_ARCHIVED_COLUMN": "Wurde es archiviert?",
+            "WIP_LIMIT_COLUMN": "WIP Limit",
+            "PLACEHOLDER_WRITE_NAME": "Benennen Sie den neuen Status"
+        },
+        "MENU": {
+            "TITLE": "Administrator ",
+            "PROJECT": "Projekt",
+            "ATTRIBUTES": "Attribute",
+            "MEMBERS": "Mitglieder",
+            "PERMISSIONS": "Berechtigungen",
+            "INTEGRATIONS": "Integrationen",
+            "PLUGINS": "Plugins"
+        },
+        "SUBMENU_PROJECT_ATTRIBUTES": {
+            "TITLE": "Attribute"
+        },
+        "SUBMENU_PROJECT_VALUES": {
+            "STATUS": "Status",
+            "POINTS": "Punkte",
+            "PRIORITIES": "Prioritäten",
+            "SEVERITIES": "Schweregrade",
+            "TYPES": "Typen",
+            "CUSTOM_FIELDS": "Benutzerdefinierte Felder"
+        },
+        "SUBMENU_PROJECT_PROFILE": {
+            "TITLE": "Projektprofil"
+        },
+        "SUBMENU_ROLES": {
+            "TITLE": "Rollen",
+            "ACTION_NEW_ROLE": "+ Neue Rolle",
+            "TITLE_ACTION_NEW_ROLE": "Neue Rolle hinzufügen"
+        },
+        "SUBMENU_THIDPARTIES": {
+            "TITLE": "Dienste"
+        }
+    },
+    "USER": {
+        "PROFILE": {
+            "PAGE_TITLE": "{{userFullName}} (@{{userUsername}})",
+            "EDIT": "Profil ändern",
+            "FOLLOW": "Folgen",
+            "PROJECTS": "Projekte",
+            "CLOSED_US": "Geschlossene User-Story",
+            "CONTACTS": "Kontakte",
+            "REPORT": "Missbrauch melden ",
+            "ACTIVITY_TAB": "Aktivitäten Registerkarte",
+            "PROJECTS_TAB": "Projekte Registerkarte",
+            "CONTACTS_TAB": "Kontakte Registerkarte",
+            "FAVORITES_TAB": "Favoriten Registerkarte",
+            "CONTACTS_EMPTY": "{{username}} hat noch keine Kontakte",
+            "CURRENT_USER_CONTACTS_EMPTY": "Sie haben noch keine Kontakte ",
+            "CURRENT_USER_CONTACTS_EMPTY_EXPLAIN": "Die Leute, mit denen Sie auf Taiga zusammenarbeiten, werden automatisch zu Ihren Kontakten ",
+            "PROJECTS_EMPTY": "{{username}} hat noch keine Projekte"
+        },
+        "PROFILE_SIDEBAR": {
+            "TITLE": "Ihr Profil",
+            "DESCRIPTION": "Viele Leute können sehen, was Sie beruflich tun und woran Sie arbeiten. Fügen Sie Schlagwörter hinzu, um verbesserte Informationen zu geben.  ",
+            "ADD_INFO": "Information hinzufügen"
+        }
+    },
+    "PROJECT": {
+        "PAGE_TITLE": "{{projectName}}",
+        "WELCOME": "Willkommen",
+        "SECTION_PROJECTS": "Projekte",
+        "HELP": "Reorder your projects to set in the top the most used ones.<br/> The top 10 projects will appear in the top navigation bar project list",
+        "PRIVATE": "Privates Projekt",
+        "STATS": {
+            "PROJECT": "Projekt<br/> Punkte",
+            "DEFINED": "definierte<br/> Punkte",
+            "ASSIGNED": "zugewiesene<br/> Punkte",
+            "CLOSED": "geschlossen<br/> Punkte"
+        },
+        "SECTION": {
+            "SEARCH": "Suche",
+            "TIMELINE": "Zeitlinie ",
+            "BACKLOG": "Auftragsliste",
+            "KANBAN": "Kanban",
+            "ISSUES": "Tickets",
+            "WIKI": "Wiki",
+            "TEAM": "Team",
+            "MEETUP": "Zusammentreffen",
+            "ADMIN": "Administrator"
+        },
+        "NAVIGATION": {
+            "SECTION_TITLE": "Ihre Projekte",
+            "PLACEHOLDER_SEARCH": "Suchen...",
+            "ACTION_CREATE_PROJECT": "Projekt anlegen",
+            "SEE_MORE_PROJECTS": "Weitere Projekte ansehen",
+            "TITLE_ACTION_IMPORT": "Projekt importieren",
+            "TITLE_PRVIOUS_PROJECT": "Frühere Projekte anzeigen",
+            "TITLE_NEXT_PROJECT": "Weitere Projekte zeigen",
+            "HELP_TITLE": "Taiga Support Seite",
+            "HELP": "Hilfe",
+            "FEEDBACK_TITLE": "Feedback senden",
+            "FEEDBACK": "Feedback",
+            "NOTIFICATIONS_TITLE": "Bearbeiten Sie Ihre Benachrichtigungseinstellungen",
+            "NOTIFICATIONS": "Benachrichtigungen",
+            "ORGANIZATIONS_TITLE": "Bearbeiten Sie Ihre Organisationen",
+            "ORGANIZATIONS": "Organisationen bearbeiten",
+            "SETTINGS_TITLE": "Bearbeiten Sie Ihre Einstellungen",
+            "SETTINGS": "Einstellungen",
+            "VIEW_PROFILE_TITLE": "Profil ansehen",
+            "VIEW_PROFILE": "Profil ansehen",
+            "EDIT_PROFILE_TITLE": "Bearbeiten Sie Ihr Profil ",
+            "EDIT_PROFILE": "Profil bearbeiten",
+            "CHANGE_PASSWORD_TITLE": "Passwort ändern",
+            "CHANGE_PASSWORD": "Passwort ändern",
+            "DASHBOARD_TITLE": "Dashboard",
+            "DISCOVER_TITLE": "Entdecke aktuelle Projekte",
+            "DISCOVER": "Entdecken",
+            "ACTION_REORDER": "Benutzen Sie Drag & Drop zum neuen Ordnen"
+        },
+        "IMPORT": {
+            "TITLE": "Projekt importieren",
+            "UPLOADING_FILE": "Exportdatei wird hochgeladen",
+            "DESCRIPTION": "Dieser Vorgang kann etwas dauern. Bitte schliessen Sie das Fenster nicht!",
+            "ASYNC_IN_PROGRESS_TITLE": "Unsere Heinzelmännchen importieren Ihr Projekt",
+            "ASYNC_IN_PROGRESS_MESSAGE": "Dieser Vorgang könnte ein paar Minuten benötigen <br/> Nach Fertigstellung benachrichtigen wir Sie per E-Mail.",
+            "UPLOAD_IN_PROGRESS_MESSAGE": "Hochgeladen {{uploadedSize}} von {{totalSize}}",
+            "ERROR": "Unsere Heinzelmännchen haben Probleme beim Importieren Ihrer Daten. Bitte versuchen Sie es erneut. ",
+            "ERROR_TOO_MANY_REQUEST": "Entschuldigung, unsere Heinzelmännchen sind derzeit sehr beschäftigt. Bitte versuchen Sie es in ein paar Minuten erneut. ",
+            "ERROR_MESSAGE": "Unsere Heinzelmännchen haben Probleme beim Importieren Ihrer Datei: {{error_message}}",
+            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) ist zu schwierig für unsere Heinzelmännchen, versuchen Sie es bitte mit einer kleineren Datei als({{maxFileSize}})",
+            "SYNC_SUCCESS": "Ihr Projekt wurde erfolgreich importiert"
+        }
+    },
+    "LIGHTBOX": {
+        "DELETE_ACCOUNT": {
+            "SECTION_NAME": "Taiga Konto löschen",
+            "CONFIRM": "Sind Sie sicher, dass Sie Ihr Taiga Konto löschen wollen?",
+            "SUBTITLE": "Wir werden Sie vermissen! :-(",
+            "NEWSLETTER_LABEL_TEXT": "Ich möchte keinen Newsletter mehr erhalten"
+        },
+        "DELETE_PROJECT": {
+            "TITLE": "Projekt löschen",
+            "QUESTION": "Sind Sie sicher, dass Sie das Projekt löschen möchten?",
+            "SUBTITLE": "Sämtliche Projektdaten (User-Stories, Aufgaben, Tickets, Sprints und Wiki Seiten) werden verloren gehen! :-(",
+            "CONFIRM": "Ja, ich bin mir sicher"
+        },
+        "ASSIGNED_TO": {
+            "SELECT": "Zuweisung auswählen",
+            "SEARCH": "Nach Benutzern suchen"
+        },
+        "ADD_MEMBER": {
+            "TITLE": "Neues Mitglied",
+            "HELP_TEXT": "Wenn Benutzer schon bei Taiga registriert sind, werden diese automatisch hinzugefügt. Ansonsten erhalten sie eine Einladung."
+        },
+        "CREATE_ISSUE": {
+            "TITLE": "Ticket hinzufügen"
+        },
+        "FEEDBACK": {
+            "TITLE": "Erzählen Sie uns etwas...",
+            "COMMENT": "...einen Fehler, Anregungen, etwas Tolles... oder Ihren schlimmsten Alptraum mit Taiga.",
+            "ACTION_SEND": "Feedback senden"
+        },
+        "SEARCH": {
+            "TITLE": "Suche",
+            "PLACEHOLDER_SEARCH": "Wonach suchen Sie?"
+        },
+        "ADD_EDIT_SPRINT": {
+            "TITLE": "Neuer Sprint",
+            "PLACEHOLDER_SPRINT_NAME": "Sprint Bezeichnung",
+            "PLACEHOLDER_SPRINT_START": "Geschätzter Beginn",
+            "PLACEHOLDER_SPRINT_END": "Geschätztes Ende",
+            "ACTION_DELETE_SPRINT": "Möchten Sie diesen Sprint löschen?",
+            "TITLE_ACTION_DELETE_SPRINT": "Sprint löschen",
+            "LAST_SPRINT_NAME": "letzter Sprint ist <strong> {{lastSprint}} ;-) </strong>"
+        },
+        "CREATE_EDIT_TASK": {
+            "TITLE": "Neue Aufgabe",
+            "PLACEHOLDER_SUBJECT": "Aufgaben Betreff",
+            "PLACEHOLDER_STATUS": "Aufgabenstatus",
+            "OPTION_UNASSIGNED": "Nicht zugeordnet",
+            "PLACEHOLDER_SHORT_DESCRIPTION": "Geben Sie eine kurze Beschreibung ein",
+            "ACTION_EDIT": "Aufgabe bearbeiten"
+        },
+        "CREATE_EDIT_US": {
+            "TITLE": "Neue User-Story",
+            "PLACEHOLDER_DESCRIPTION": "Fügen Sie bitte einen Beschreibungstext hinzu, um anderen diese User-Story näher zu erläutern",
+            "NEW_US": "Neue User-Story",
+            "EDIT_US": "User-Story bearbeiten"
+        },
+        "DELETE_SPRINT": {
+            "TITLE": "Sprint löschen"
+        },
+        "CREATE_MEMBER": {
+            "PLACEHOLDER_INVITATION_TEXT": "(Optional) Fügen Sie einen persönlichen Text zur Einladung hinzu. Erzählen Sie Ihren neuen Mitgliedern etwas Schönes. ;-)",
+            "PLACEHOLDER_TYPE_EMAIL": "Geben Sie eine E-Mail ein"
+        }
+    },
+    "US": {
+        "PAGE_TITLE": "{{userStorySubject}} - User Story {{userStoryRef}} - {{projectName}}",
+        "PAGE_DESCRIPTION": "Status: {{userStoryStatus }}. Completed {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} of {{userStoryTotalTasks}} tasks closed). Points: {{userStoryPoints}}. Description: {{userStoryDescription}}",
+        "SECTION_NAME": "User-Story Details",
+        "LINK_TASKBOARD": "Taskboard",
+        "TITLE_LINK_TASKBOARD": "Zu Taskboard wechseln",
+        "TOTAL_POINTS": "Total",
+        "ADD": "+ Neue User-Story anlegen",
+        "ADD_BULK": "Mehrere neue User-Stories hinzufügen",
+        "PROMOTED": "Diese User-Story entstand aus Ticket: ",
+        "TITLE_LINK_GO_TO_ISSUE": "Zum Ticket wechseln",
+        "EXTERNAL_REFERENCE": "Dies User-Story wurde angelegt von",
+        "GO_TO_EXTERNAL_REFERENCE": "Zur Quelle wechseln",
+        "BLOCKED": "Diese User-Story ist blockiert",
+        "PREVIOUS": "Vorherige User-Story",
+        "NEXT": "nächste User-Story",
+        "TITLE_DELETE_ACTION": "User-Story löschen",
+        "LIGHTBOX_TITLE_BLOKING_US": "Blocking us",
+        "TASK_COMPLETED": "{{totalClosedTasks}}/{{totalTasks}} Aufgaben fertiggestellt",
+        "ASSIGN": "Zugeordnete User-Story",
+        "NOT_ESTIMATED": "Nicht abgeschätzt",
+        "TOTAL_US_POINTS": "User-Story-Punkte insgesamt",
+        "FIELDS": {
+            "TEAM_REQUIREMENT": "Team Anforderung",
+            "CLIENT_REQUIREMENT": "Kundenanforderung ",
+            "FINISH_DATE": "Endtermin"
+        }
+    },
+    "COMMENTS": {
+        "DELETED_INFO": "Kommentar gelöscht von {{user}} am {{date}}",
+        "TITLE": "Kommentare",
+        "COMMENT": "Kommentieren",
+        "TYPE_NEW_COMMENT": "Geben Sie hier einen neuen Kommentar ein",
+        "SHOW_DELETED": "Gelöschten Kommentar anzeigen",
+        "HIDE_DELETED": "Gelöschten Kommentar ausblenden",
+        "RESTORE": "Kommentar wiederherstellen"
+    },
+    "ACTIVITY": {
+        "SHOW_ACTIVITY": "Aktivitäten zeigen",
+        "DATETIME": "DD MMM YYYY HH:mm",
+        "SHOW_MORE": "+ Vorherige Einträge zeigen ({{showMore}} vorhanden)",
+        "TITLE": "Aktivität",
+        "REMOVED": "entfernt",
+        "ADDED": "hinzugefügt",
+        "US_POINTS": "User-Story Punkte ({{name}})",
+        "NEW_ATTACHMENT": "Neuer Anhang",
+        "DELETED_ATTACHMENT": "Gelöschter Anhang",
+        "UPDATED_ATTACHMENT": "aktualisierter Anhang {{filename}}",
+        "DELETED_CUSTOM_ATTRIBUTE": "gelöschtes Kundenattribut ",
+        "SIZE_CHANGE": "Made {size, plural, one{one change} other{# changes}}",
+        "VALUES": {
+            "YES": "ja",
+            "NO": "nein",
+            "EMPTY": "leer",
+            "UNASSIGNED": "nicht zugeordnet"
+        },
+        "FIELDS": {
+            "SUBJECT": "Thema",
+            "NAME": "Name",
+            "DESCRIPTION": "Beschreibung",
+            "CONTENT": "Inhalt",
+            "STATUS": "Status",
+            "IS_CLOSED": "ist geschlossen",
+            "FINISH_DATE": "Endtermin",
+            "TYPE": "typen",
+            "PRIORITY": "Priorität",
+            "SEVERITY": "Gewichtung",
+            "ASSIGNED_TO": "zugewiesen an",
+            "WATCHERS": "Beobachter",
+            "MILESTONE": "Sprint",
+            "USER_STORY": "User-Story ",
+            "PROJECT": "Projekt",
+            "IS_BLOCKED": "ist gesperrt ",
+            "BLOCKED_NOTE": "gesperrte Notiz",
+            "POINTS": "Punkte",
+            "CLIENT_REQUIREMENT": "Kunden Anforderung ",
+            "TEAM_REQUIREMENT": "Team Anforderung ",
+            "IS_IOCAINE": "ist Iocaine ",
+            "TAGS": "Schlagwörter",
+            "ATTACHMENTS": "Anhänge",
+            "IS_DEPRECATED": "ist veraltet",
+            "ORDER": "Befehl",
+            "BACKLOG_ORDER": "Backlog Befehl",
+            "SPRINT_ORDER": "Sprint Befehl",
+            "KANBAN_ORDER": "Kanban Befehl",
+            "TASKBOARD_ORDER": "Taskboard Befehl",
+            "US_ORDER": "User-Story Befehl"
+        }
+    },
+    "BACKLOG": {
+        "PAGE_TITLE": "Backlog - {{projectName}}",
+        "PAGE_DESCRIPTION": "The backlog panel, with user stories and sprints of the project {{projectName}}: {{projectDescription}}",
+        "SECTION_NAME": "Auftragsliste",
+        "MOVE_US_TO_CURRENT_SPRINT": "Zum aktuellen Sprint wechseln",
+        "SHOW_FILTERS": "Filter zeigen",
+        "SHOW_TAGS": "Tags anzeigen",
+        "EMPTY": "Ihre Auftragsliste ist leer",
+        "CREATE_NEW_US": "Eine neue User-Story anlegen",
+        "CREATE_NEW_US_EMPTY_HELP": "Sie sollten eine User-Story anlegen",
+        "EXCESS_OF_POINTS": "Punkte Überschuss",
+        "PENDING_POINTS": "Unerledigte Punkte ",
+        "CLOSED_POINTS": "geschlossen",
+        "COMPACT_SPRINT": "Kompakt Sprint ",
+        "GO_TO_TASKBOARD": "Gehen Sie zum Taskboard von {{::name}}",
+        "EDIT_SPRINT": "Sprint bearbeiten",
+        "TOTAL_POINTS": "insgesamt",
+        "STATUS_NAME": "Status Bezeichnung",
+        "SORTABLE_FILTER_ERROR": "Es ist kein Drag & Drop über dem Backlog möglich wenn Filter geöffnet sind.",
+        "DOOMLINE": "Projekt Umfang [Doomline]",
+        "CHART": {
+            "XAXIS_LABEL": "Sprints",
+            "YAXIS_LABEL": "Punkte",
+            "OPTIMAL": "Optimale unerledigte Punkte für Sprint {{xval}} sollten sein {{yval}}",
+            "REAL": "Tatsächliche Anzahl unerledigter Punkte für Sprint {{xval}} ist {{yval}}",
+            "INCREMENT_TEAM": "Erhöhte Punkteanzahl von Team Anfragen für Sprint {{xval}} ist {{yval}}",
+            "INCREMENT_CLIENT": "Erhöhte Punkteanzahl von Kundenanfragen für Sprint {{xval}} ist {{yval}}"
+        },
+        "TAGS": {
+            "TOGGLE": "Sichtbarkeit des Schlagwortes umschalten",
+            "SHOW": "Schlagwörter anzeigen",
+            "HIDE": "Schlagwörter ausblenden"
+        },
+        "TABLE": {
+            "COLUMN_US": "User-Stories",
+            "TITLE_COLUMN_POINTS": "Ansicht mittels Rolle auswählen"
+        },
+        "SPRINT_SUMMARY": {
+            "TOTAL_POINTS": "gesamte<br />Punkte",
+            "COMPLETED_POINTS": "vollständige<br />Punkte",
+            "OPEN_TASKS": "offene<br />Aufgaben",
+            "CLOSED_TASKS": "geschlossene<br />Aufgaben",
+            "IOCAINE_DOSES": "Iocaine<br />Dosen",
+            "SHOW_STATISTICS_TITLE": "Statistik anzeigen"
+        },
+        "SUMMARY": {
+            "PROJECT_POINTS": "Projekt<br />Punkte",
+            "DEFINED_POINTS": "definierte<br/> Punkte",
+            "CLOSED_POINTS": "geschlossene<br />Punkte",
+            "POINTS_PER_SPRINT": "Punkte /<br />Sprint"
+        },
+        "FILTERS": {
+            "TOGGLE": "Filter sichtbar schalten ",
+            "TITLE": "Filter",
+            "REMOVE": "Filter entfernen",
+            "HIDE": "Filter verbergen",
+            "SHOW": "Filter anzeigen",
+            "FILTER_CATEGORY_STATUS": "Status",
+            "FILTER_CATEGORY_TAGS": "Schlagwörter"
+        },
+        "SPRINTS": {
+            "TITLE": "SPRINTS",
+            "DATE": "DD MMM YYYY",
+            "LINK_TASKBOARD": "Sprint Taskboard",
+            "TITLE_LINK_TASKBOARD": "Gehe zu Taskboard von \"{{name}}\"",
+            "NUMBER_SPRINTS": "<br/>Sprints",
+            "TITLE_ACTION_NEW_SPRINT": "+ Neuer Sprint",
+            "ACTION_NEW_SPRINT": "+ Neuer Sprint",
+            "ACTION_SHOW_CLOSED_SPRINTS": "Geschlossene Sprints anzeigen",
+            "ACTION_HIDE_CLOSED_SPRINTS": "Geschlossene Sprints ausblenden"
+        }
+    },
+    "ERROR": {
+        "TEXT1": "Es gibt ein Problem und unsere Heinzelmännchen arbeiten schon daran!",
+        "TEXT2": "Versuchen Sie in Kürze neu zu laden. ",
+        "NOT_FOUND": "Nicht gefunden",
+        "NOT_FOUND_TEXT": "Fehler 404. Die angeforderte Seite existiert nicht mehr. Möglicherweise finden Sie das Gesuchte, wenn Sie zur TAIGA Homepage zurückkehren. ",
+        "PERMISSION_DENIED": "Berechtigung verweigert",
+        "PERMISSION_DENIED_CODE": "Fehler 403.",
+        "VERSION_ERROR": "Someone inside Taiga has changed this before and our Oompa Loompas cannot apply your changes. Please reload and apply your changes again (they will be lost)."
+    },
+    "TASKBOARD": {
+        "PAGE_TITLE": "{{sprintName}} - Sprint taskboard - {{projectName}}",
+        "PAGE_DESCRIPTION": "Sprint {{sprintName}} (from {{startDate}} to {{endDate}}) of {{projectName}}. Completed {{completedPercentage}}% ({{completedPoints}} of {{totalPoints}} points). {{openTasks}} opened tasks of {{totalTasks}}.",
+        "SECTION_NAME": "Taskboard",
+        "TITLE_ACTION_ADD": "Neue Aufgabe hinzufügen",
+        "TITLE_ACTION_ADD_BULK": "Mehrere Aufgaben hinzufügen",
+        "TITLE_ACTION_ASSIGN": "Aufgabe zuweisen",
+        "TITLE_ACTION_EDIT": "Aufgabe bearbeiten",
+        "TABLE": {
+            "COLUMN": "User-Story",
+            "TITLE_ACTION_FOLD": "Spalte einklappen",
+            "TITLE_ACTION_UNFOLD": "Spalte aufklappen",
+            "TITLE_ACTION_FOLD_ROW": "Reihe einklappen",
+            "TITLE_ACTION_UNFOLD_ROW": "Reihe aufklappen",
+            "FIELD_POINTS": "Punkte",
+            "ROW_UNASSIGED_TASKS_TITLE": "Nicht zugeordnete Aufgaben"
+        },
+        "CHARTS": {
+            "XAXIS_LABEL": "Tage",
+            "YAXIS_LABEL": "Punkte",
+            "OPTIMAL": "Optimale unerledigte Punkte für Tag {{formattedDate}} sollten sein {{roundedValue}}",
+            "REAL": "Tatsächliche Anzahl unerledigter Punkte für Tag {{formattedDate}} ist {{roundedValue}}",
+            "DATE": "DD MMMM YYYY"
+        }
+    },
+    "TASK": {
+        "PAGE_TITLE": "{{taskSubject}} - Task {{taskRef}} - {{projectName}}",
+        "PAGE_DESCRIPTION": "Status: {{taskStatus }}. Description: {{taskDescription}}",
+        "SECTION_NAME": "Aufgabendetails",
+        "LINK_TASKBOARD": "Taskboard",
+        "TITLE_LINK_TASKBOARD": "Zu Taskboard wechseln",
+        "PLACEHOLDER_SUBJECT": "Geben Sie den neuen Aufgaben Betreff ein",
+        "TITLE_SELECT_STATUS": "Status Bezeichnung",
+        "OWNER_US": "Diese Aufgabe gehört zu ",
+        "TITLE_LINK_GO_OWNER": "Zur User-Story wechseln",
+        "ORIGIN_US": "Diese Aufgabe wurde erstellt von ",
+        "TITLE_LINK_GO_ORIGIN": "Zu User-Story wechseln",
+        "BLOCKED": "Diese Aufgabe ist gesperrt",
+        "PREVIOUS": "vorherige Aufgabe",
+        "NEXT": "nächste Aufgabe",
+        "TITLE_DELETE_ACTION": "Aufgabe löschen",
+        "LIGHTBOX_TITLE_BLOKING_TASK": "Gesperrte Aufgabe",
+        "FIELDS": {
+            "MILESTONE": "Sprint",
+            "USER_STORY": "User-Story",
+            "IS_IOCAINE": "Ist Iocaine"
+        },
+        "ACTION_IOCAINE": "Locaine",
+        "TITLE_ACTION_IOCAINE": "Fühlen Sie sich von einer Aufgabe etwas erdrückt? Stellen Sie sicher, dass andere davon erfahren, indem Sie auf Locaine klicken, wenn Sie eine Aufgabe ändern. Es ist möglich, gegen dieses (fiktive) tödliche Gift immun zu werden, indem man kleine Mengen über einen Zeitraum hinweg einnimmt. Genauso, wie es möglich ist, besser in dem zu werden, was man tut, indem man gelegentlich zusätzliche  Herausforderungen annimmt!"
+    },
+    "NOTIFICATION": {
+        "OK": "Alles in Ordnung",
+        "WARNING": "Huch, es gibt ein Problem...",
+        "WARNING_TEXT": "Unsere Heinzelmännchen bedauern, Ihre Änderungen wurden nicht gespeichert! ",
+        "SAVED": "Die Heinzelmännchen haben Ihre Änderungen gespeichert!",
+        "CLOSE": "Benachrichtigung schließen",
+        "MAIL": "Benachrichtigungen per Mail",
+        "ASK_DELETE": "Möchten Sie wirklich löschen?"
+    },
+    "CANCEL_ACCOUNT": {
+        "TITLE": "Ihr Benutzerkonto löschen",
+        "SUBTITLE": "Wir bedauern, dass Sie die Taiga verlassen. Wir hoffen, Sie hatten einen angenehmen Aufenthalt. :)",
+        "PLACEHOLDER_INPUT_TOKEN": "Account Token ungültig machen",
+        "ACTION_LEAVING": "Ja, ich gehe! ",
+        "SUCCESS": "Unsere Heinzelmännchen haben Ihren Account entfernt. "
+    },
+    "CHANGE_EMAIL_FORM": {
+        "TITLE": "Ändern Sie Ihre E-Mail",
+        "SUBTITLE": "Noch ein Klick und Ihre E-Mail wird aktualisiert! ",
+        "PLACEHOLDER_INPUT_TOKEN": "E-Mail-Token ändern",
+        "ACTION_CHANGE_EMAIL": "E-Mail ändern",
+        "SUCCESS": "Unsere Heinzelmännchen haben Ihre E-Mail-Adresse aktualisiert"
+    },
+    "ISSUES": {
+        "PAGE_TITLE": "Issues - {{projectName}}",
+        "PAGE_DESCRIPTION": "The issues list panel of the project {{projectName}}: {{projectDescription}}",
+        "LIST_SECTION_NAME": "Tickets",
+        "SECTION_NAME": "Ticket Details",
+        "ACTION_NEW_ISSUE": "+ NEUES TICKET ",
+        "ACTION_PROMOTE_TO_US": "Zur User-Story aufwerten",
+        "PLACEHOLDER_FILTER_NAME": "Benennen Sie den Filter und drücken Sie die Eingabetaste",
+        "PROMOTED": "Dieses Ticket wurde aufgewertet zu User-Story:",
+        "EXTERNAL_REFERENCE": "Dieses Ticket wurde erstellt von ",
+        "GO_TO_EXTERNAL_REFERENCE": "Zur Quelle wechseln",
+        "BLOCKED": "Dieses Ticket ist gesperrt",
+        "TITLE_PREVIOUS_ISSUE": "vorheriges Ticket ",
+        "TITLE_NEXT_ISSUE": "nächstes Ticket",
+        "ACTION_DELETE": "Ticket löschen",
+        "LIGHTBOX_TITLE_BLOKING_ISSUE": "Ticket sperren",
+        "FIELDS": {
+            "PRIORITY": "Priorität",
+            "SEVERITY": "Gewichtung",
+            "TYPE": "Typen"
+        },
+        "CONFIRM_PROMOTE": {
+            "TITLE": "Dieses Problem zur User-Story aufwerten",
+            "MESSAGE": "Sind Sie sicher, dass Sie aus diesem Ticket eine neue User-Story erstellen möchten?"
+        },
+        "FILTERS": {
+            "TITLE": "Filter",
+            "INPUT_SEARCH_PLACEHOLDER": "Thema oder ref",
+            "TITLE_ACTION_SEARCH": "Suche",
+            "ACTION_SAVE_CUSTOM_FILTER": "Als Benutzerfilter speichern",
+            "BREADCRUMB": "Filter",
+            "TITLE_BREADCRUMB": "Filter",
+            "CATEGORIES": {
+                "TYPE": "Typen",
+                "STATUS": "Status",
+                "SEVERITY": "Gewichtung",
+                "PRIORITIES": "Prioritäten",
+                "TAGS": "Schlagwörter",
+                "ASSIGNED_TO": "Zugeordnet",
+                "CREATED_BY": "Erstellt von",
+                "CUSTOM_FILTERS": "Benutzerfilter"
+            },
+            "CONFIRM_DELETE": {
+                "TITLE": "Benutzerfilter löschen",
+                "MESSAGE": "der Benutzerfilter '{{customFilterName}}'"
+            }
+        },
+        "TABLE": {
+            "COLUMNS": {
+                "TYPE": "Typen",
+                "SEVERITY": "Gewichtung",
+                "PRIORITY": "Priorität",
+                "SUBJECT": "Thema",
+                "STATUS": "Status",
+                "CREATED": "Erstellt",
+                "ASSIGNED_TO": "Zugeordnet"
+            },
+            "TITLE_ACTION_CHANGE_STATUS": "Status wechseln",
+            "TITLE_ACTION_ASSIGNED_TO": "Zugeordnet zu ",
+            "EMPTY": {
+                "TITLE": "Es gibt keine Probleme zu berichten :-)",
+                "SUBTITLE": "Haben Sie ein Problem gefunden?",
+                "ACTION_CREATE_ISSUE": "Eine neues Ticket anlegen"
+            }
+        }
+    },
+    "ISSUE": {
+        "PAGE_TITLE": "{{issueSubject}} - Issue {{issueRef}} - {{projectName}}",
+        "PAGE_DESCRIPTION": "Status: {{issueStatus }}. Type: {{issueType}}, Priority: {{issuePriority}}. Severity: {{issueSeverity}}. Description: {{issueDescription}}"
+    },
+    "KANBAN": {
+        "PAGE_TITLE": "Kanban - {{projectName}}",
+        "PAGE_DESCRIPTION": "The kanban panel, with user stories of the project {{projectName}}: {{projectDescription}}",
+        "SECTION_NAME": "Kanban",
+        "TITLE_ACTION_FOLD": "Seite einklappen",
+        "TITLE_ACTION_UNFOLD": "Spalte aufklappen",
+        "TITLE_ACTION_FOLD_CARDS": "Karten einklappen",
+        "TITLE_ACTION_UNFOLD_CARDS": "Karten aufklappen",
+        "TITLE_ACTION_ADD_US": "Neue User-Story hinzufügen",
+        "TITLE_ACTION_ADD_BULK": "Neue Menge hinzufügen",
+        "ACTION_SHOW_ARCHIVED": "Archivierte anzeigen",
+        "ACTION_HIDE_ARCHIVED": "Archivierte verbergen",
+        "HIDDEN_USER_STORIES": "Die User-Stories in diesem Status werden automatisch verborgen ",
+        "ARCHIVED": "Sie haben es archiviert",
+        "UNDO_ARCHIVED": "Wiederholen Sie Drag & Drop zum Rückgängigmachen "
+    },
+    "SEARCH": {
+        "PAGE_TITLE": "Search - {{projectName}}",
+        "PAGE_DESCRIPTION": "Search anything, user stories, issues, tasks or wiki pages, in the project {{projectName}}: {{projectDescription}}",
+        "FILTER_USER_STORIES": "User-Stories",
+        "FILTER_ISSUES": "Tickets",
+        "FILTER_TASKS": "Aufgaben",
+        "FILTER_WIKI": "Wiki Seiten",
+        "PLACEHOLDER_SEARCH": "Suchen in...",
+        "TITLE_ACTION_SEARCH": "suchen",
+        "EMPTY_TITLE": "Es sieht so aus, als könnte unter Ihren Suchkriterien nichts gefunden werden. ",
+        "EMPTY_DESCRIPTION": "Vielleicht versuchen Sie es mit einem der oberen Reiter, oder Sie suchen erneut"
+    },
+    "TEAM": {
+        "PAGE_TITLE": "Team - {{projectName}}",
+        "PAGE_DESCRIPTION": "The team panel to show all the members of the project {{projectName}}: {{projectDescription}}",
+        "SECTION_NAME": "Team",
+        "APP_TITLE": "TEAM - {{projectName}}",
+        "PLACEHOLDER_INPUT_SEARCH": "Unter vollständigem Namen suchen...",
+        "COLUMN_MR_WOLF": "Herr Wolf",
+        "EXPLANATION_COLUMN_MR_WOLF": "Geschlossene Tickets",
+        "COLUMN_IOCAINE": "Locaine Trinker ",
+        "EXPLANATION_COLUMN_IOCAINE": "Locaine Dosen eingenommen ",
+        "COLUMN_CERVANTES": "Cervantes",
+        "EXPLANATION_COLUMN_CERVANTES": "Wiki Seiten geändert",
+        "COLUMN_BUG_HUNTER": "Bug-Jäger",
+        "EXPLANATION_COLUMN_BUG_HUNTER": "Gemeldete Tickets ",
+        "COLUMN_NIGHT_SHIFT": "Nachtschicht",
+        "EXPLANATION_COLUMN_NIGHT_SHIFT": "Aufgaben geschlossen",
+        "COLUMN_TOTAL_POWER": "Gesamtleistung",
+        "EXPLANATION_COLUMN_TOTAL_POWER": "Punktesumme",
+        "SECTION_TITLE_TEAM": "Team >",
+        "SECTION_FILTER_ALL": "Alle",
+        "CONFIRM_LEAVE_PROJECT": "Sind Sie sicher, dass Sie das Projekt verlassen möchten?",
+        "ACTION_LEAVE_PROJECT": "Das Projekt verlassen"
+    },
+    "USER_SETTINGS": {
+        "AVATAR_MAX_SIZE": "[Max. Größe: {{maxFileSize}}]",
+        "MENU": {
+            "SECTION_TITLE": "Benutzereinstellungen",
+            "USER_PROFILE": "Benutzerprofil",
+            "CHANGE_PASSWORD": "Passwort ändern",
+            "EMAIL_NOTIFICATIONS": "E-Mail Benachrichtigungen "
+        },
+        "NOTIFICATIONS": {
+            "SECTION_NAME": "E-Mail-Benachrichtigungen",
+            "COLUMN_PROJECT": "Projekt",
+            "COLUMN_RECEIVE_ALL": "Alle erhalten",
+            "COLUMN_ONLY_INVOLVED": "Nur Einbezogene ",
+            "COLUMN_NO_NOTIFICATIONS": "Keine Benachrichtigungen",
+            "OPTION_ALL": "Alle",
+            "OPTION_INVOLVED": "Beteiligt",
+            "OPTION_NONE": "Keine"
+        },
+        "POPOVER": {
+            "USER_PROFILE": "Benutzerprofil",
+            "CHANGE_PASSWORD": "Passwort ändern",
+            "NOTIFICATIONS": "Benachrichtigungen",
+            "FEEDBACK": "Feedback",
+            "TITLE_AVATAR": "Benutzereinstellungen "
+        }
+    },
+    "USER_PROFILE": {
+        "IMAGE_HELP": "Das Bild wird auf 80x80px skaliert.<br />",
+        "ACTION_CHANGE_IMAGE": "Änderung",
+        "ACTION_USE_GRAVATAR": "Benutze Gravatar ",
+        "ACTION_DELETE_ACCOUNT": "Taiga Account löschen",
+        "CHANGE_EMAIL_SUCCESS": "<strong>Sehen Sie in Ihren Posteingang!</strong><br />Wir haben eine E-Mail an Ihr Konto gesendet<br />mit der Anleitung, wie Sie Ihre neue Adresse anlegen",
+        "CHANGE_PHOTO": "Foto ändern",
+        "FIELD": {
+            "USERNAME": "Benutzername",
+            "EMAIL": "E-Mail",
+            "FULL_NAME": "Vollständiger Name",
+            "PLACEHOLDER_FULL_NAME": "Geben Sie Ihren vollständigen Namen an (ex. Íñigo Montoya)",
+            "BIO": "Bio (max. 210 Zeichen)",
+            "PLACEHOLDER_BIO": "Erzählen Sie etwas über sich",
+            "LANGUAGE": "Sprache",
+            "LANGUAGE_DEFAULT": "-- benutzen Sie eine vorgegebene Sprache --"
+        }
+    },
+    "WIZARD": {
+        "SECTION_TITLE_CHOOSE_TEMPLATE": "Wählen Sie ein Template",
+        "CHOOSE_TEMPLATE_TEXT": "Welches Template würde besser zu Ihrem Projekt passen?",
+        "SECTION_TITLE_CREATE_PROJECT": "Projekt erstellen",
+        "CREATE_PROJECT_TEXT": "Frisch und sauber. Wie aufregend! ",
+        "PROGRESS_TEMPLATE_SELECTION": "Template Auswahl ",
+        "PROGRESS_NAME_DESCRIPTION": "Name und Beschreibung"
+    },
+    "WIKI": {
+        "PAGE_TITLE": "{{wikiPageName}} - Wiki - {{projectName}}",
+        "PAGE_DESCRIPTION": "Last edition on {{lastModifiedDate}} ({{totalEditions}} editions in total) Content: {{ wikiPageContent }}",
+        "DATETIME": "DD MMM YYYY HH:mm",
+        "PLACEHOLDER_PAGE": "Schreiben Sie Ihre Wiki Seite ",
+        "REMOVE": "Diese Wiki Seite entfernen",
+        "DELETE_LIGHTBOX_TITLE": "Wiki Seite löschen",
+        "NAVIGATION": {
+            "SECTION_NAME": "Links",
+            "ACTION_ADD_LINK": "Link hinzufügen"
+        },
+        "SUMMARY": {
+            "TIMES_EDITED": "Zeiten <br />bearbeitet",
+            "LAST_EDIT": "letzte <br />Änderung",
+            "LAST_MODIFICATION": "letzte Änderung"
+        }
+    },
+    "HINTS": {
+        "SECTION_NAME": "Hinweis",
+        "LINK": "Wenn Sie wissen möchten, wie sie es benutzen können, besuchen Sie unsere Support Seite ",
+        "LINK_TITLE": "Besuchen Sie unsere Support Seite",
+        "HINT1_TITLE": "Wussten Sie, dass Sie Projekte importieren und exportieren?",
+        "HINT1_TEXT": "Dies erlaubt Ihnen, alle Ihre Daten zu extrahieren und sie von einer Taiga zur nächsten zu transportieren",
+        "HINT2_TITLE": "Wussten Sie, dass Sie benutzerdefinierte Felder erstellen können?",
+        "HINT2_TEXT": "Es unterstüzt Teams ihren flexiblen Input in den Workflow einzupassen"
+    },
+    "TIMELINE": {
+        "UPLOAD_ATTACHMENT": "{{username}} hat einen neuen Anhang hochgeladen in {{obj_name}}",
+        "US_CREATED": "{{username}} hat eine neue User-Story erstellt in {{project_name}} {{obj_name}}",
+        "ISSUE_CREATED": "{{username}} hat ein neues Ticket erstellt in {{project_name}} {{obj_name}}",
+        "TASK_CREATED": "{{username}} hat eine neue Aufgabe erstellt in {{project_name}} {{obj_name}}",
+        "WIKI_CREATED": "{{username}} hat eine neue Wiki Seite erstellt in {{project_name}} {{obj_name}}",
+        "MILESTONE_CREATED": "{{username}} hat einen neuen Meilenstein erstellt in {{project_name}} {{obj_name}}",
+        "NEW_PROJECT": "{{username}} hat ein neues Projekt {{project_name}}",
+        "MILESTONE_UPDATED": "{{username}} hat den Meilenstein aktualisiert {{obj_name}}",
+        "US_UPDATED": "{{username}} hat das Attribut aktualisiert \"{{field_name}}\" von User-Story {{obj_name}}",
+        "ISSUE_UPDATED": "{{username}} hat das Attribut aktualisiert \"{{field_name}}\" von Ticket {{obj_name}}",
+        "TASK_UPDATED": "{{username}} hat das Attribut aktualisiert \"{{field_name}}\" von Aufgabe {{obj_name}}",
+        "TASK_UPDATED_WITH_US": "{{username}} hat das Attribut aktualisiert \"{{field_name}}\" von Aufgabe {{obj_name}} die zur User-Story {{us_name}} gehört",
+        "WIKI_UPDATED": "{{username}} hat die Wiki Seite aktualisiert {{obj_name}}",
+        "NEW_COMMENT_US": "{{username}} hat in User-Story {{obj_name}} kommentiert",
+        "NEW_COMMENT_ISSUE": "{{username}} hat im Ticket {{obj_name}} kommentiert",
+        "NEW_COMMENT_TASK": "{{username}} hat in Aufgabe {{obj_name}} kommentiert",
+        "NEW_MEMBER": "{{project_name}} hat ein neues Mitglied",
+        "US_ADDED_MILESTONE": "{{username}} hat die User-Story {{obj_name}} zu {{sprint_name}} hinzugefügt",
+        "US_REMOVED_FROM_MILESTONE": "{{username}} hat die User-Story {{obj_name}} zum Backlog hinzugefügt",
+        "BLOCKED": "{{username}} hat gesperrt {{obj_name}}",
+        "UNBLOCKED": "{{username}} hat entsperrt {{obj_name}}"
+    },
+    "LANGUAGES": {
+        "ENGLISH": "Englisch"
+    }
+}

@@ -18,6 +18,9 @@
 - Global user configuration
 - User contacts
 - Improve SEO, fix meta tags and added social meta tags
+- i18n.
+  - Add deutsch (de) translation.
+  - Add nederlands (nl) translation.
 
 ### Misc
 - Improve performance: remove some unnecessary calls to the api.
