@@ -67,7 +67,7 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
     _setMeta: ->
         totalTasks = @scope.tasks.length
         closedTasks = _.filter(@scope.tasks, (t) => @scope.taskStatusById[t.status].is_closed).length
-        progressPercentage = if totalTasks > 0 then 100 * closedTasks / totalTasks else 0
+        progressPercentage = if totalTasks > 0 then Math.round(100 * closedTasks / totalTasks) else 0
 
         title = @translate.instant("US.PAGE_TITLE", {
             userStoryRef: "##{@scope.us.ref}"
