@@ -42,14 +42,14 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$q",
         "$tgLocation",
         "$log",
-        "$appTitle",
+        "tgAppMetaService",
         "$tgNavUrls",
         "$tgAnalytics",
         "$translate"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
-                  @log, @appTitle, @navUrls, @analytics, @translate) ->
+                  @log, @appMetaService, @navUrls, @analytics, @translate) ->
         @scope.usRef = @params.usref
         @scope.sectionName = @translate.instant("US.SECTION_NAME")
         @.initializeEventHandlers()
@@ -58,11 +58,32 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
         # On Success
         promise.then =>
-            @appTitle.set(@scope.us.subject + " - " + @scope.project.name)
+            @._setMeta()
             @.initializeOnDeleteGoToUrl()
 
         # On Error
         promise.then null, @.onInitialDataError.bind(@)
+
+    _setMeta: ->
+        totalTasks = @scope.tasks.length
+        closedTasks = _.filter(@scope.tasks, (t) => @scope.taskStatusById[t.status].is_closed).length
+        progressPercentage = if totalTasks > 0 then 100 * closedTasks / totalTasks else 0
+
+        title = @translate.instant("US.PAGE_TITLE", {
+            userStoryRef: "##{@scope.us.ref}"
+            userStorySubject: @scope.us.subject
+            projectName: @scope.project.name
+        })
+        description = @translate.instant("US.PAGE_DESCRIPTION", {
+            userStoryStatus: @scope.statusById[@scope.us.status]?.name or "--"
+            userStoryPoints: @scope.us.total_points
+            userStoryDescription: angular.element(@scope.us.description_html or "").text()
+            userStoryClosedTasks: closedTasks
+            userStoryTotalTasks: totalTasks
+            userStoryProgressPercentage: progressPercentage
+        })
+
+        @appMetaService.setAll(title, description)
 
     initializeEventHandlers: ->
         @scope.$on "related-tasks:update", =>

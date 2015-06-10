@@ -19,6 +19,7 @@ module.exports = function(config) {
       'dist/js/libs.js',
       'node_modules/angular-mocks/angular-mocks.js',
       'vendor/bluebird/js/browser/bluebird.js',
+      'node_modules/chai-jquery/chai-jquery.js',
       'test-utils.js',
       'dist/js/app.js',
       'dist/js/templates.js',

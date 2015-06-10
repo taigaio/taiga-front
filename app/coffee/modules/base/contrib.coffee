@@ -22,18 +22,22 @@
 taigaContribPlugins = @.taigaContribPlugins = @.taigaContribPlugins or []
 
 class ContribController extends taiga.Controller
-    @.$inject = ["$rootScope", "$scope", "$routeParams", "$tgRepo", "$tgResources", "$tgConfirm", "$appTitle"]
+    @.$inject = [
+        "$rootScope",
+        "$scope",
+        "$routeParams",
+        "$tgRepo",
+        "$tgResources",
+        "$tgConfirm"
+    ]
 
-    constructor: (@rootScope, @scope, @params, @repo, @rs, @confirm, @appTitle) ->
+    constructor: (@rootScope, @scope, @params, @repo, @rs, @confirm) ->
         @scope.adminPlugins = _.where(@rootScope.contribPlugins, {"type": "admin"})
         @scope.currentPlugin = _.first(_.where(@scope.adminPlugins, {"slug": @params.plugin}))
         @scope.pluginTemplate = "contrib/#{@scope.currentPlugin.slug}"
         @scope.projectSlug = @params.pslug
 
         promise = @.loadInitialData()
-
-        promise.then () =>
-            @appTitle.set(@scope.project.name)
 
         promise.then null, =>
             @confirm.notify("error")

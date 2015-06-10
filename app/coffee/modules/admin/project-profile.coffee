@@ -47,28 +47,31 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$q",
         "$tgLocation",
         "$tgNavUrls",
-        "$appTitle",
+        "tgAppMetaService",
         "$translate"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls, @appTitle, @translate) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls,
+                  @appMetaService, @translate) ->
         @scope.project = {}
 
         promise = @.loadInitialData()
 
         promise.then =>
             sectionName = @translate.instant( @scope.sectionName)
-            appTitle = @translate.instant("ADMIN.PROJECT_PROFILE.PAGE_TITLE", {
+            title = @translate.instant("ADMIN.PROJECT_PROFILE.PAGE_TITLE", {
                      sectionName: sectionName, projectName: @scope.project.name})
-            @appTitle.set(appTitle)
+            description = @scope.project.description
+            @appMetaService.setAll(title, description)
 
         promise.then null, @.onInitialDataError.bind(@)
 
         @scope.$on "project:loaded", =>
             sectionName = @translate.instant(@scope.sectionName)
-            appTitle = @translate.instant("ADMIN.PROJECT_PROFILE.PAGE_TITLE", {
+            title = @translate.instant("ADMIN.PROJECT_PROFILE.PAGE_TITLE", {
                      sectionName: sectionName, projectName: @scope.project.name})
-            @appTitle.set(appTitle)
+            description = @scope.project.description
+            @appMetaService.setAll(title, description)
 
     loadProject: ->
         return @rs.projects.getBySlug(@params.pslug).then (project) =>
@@ -119,7 +122,9 @@ ProjectProfileDirective = ($repo, $confirm, $loading, $navurls, $location, proje
             promise.then ->
                 $loading.finish(submitButton)
                 $confirm.notify("success")
-                newUrl = $navurls.resolve("project-admin-project-profile-details", {project: $scope.project.slug})
+                newUrl = $navurls.resolve("project-admin-project-profile-details", {
+                    project: $scope.project.slug
+                })
                 $location.path(newUrl)
                 $scope.$emit("project:loaded", $scope.project)
 
@@ -137,7 +142,9 @@ ProjectProfileDirective = ($repo, $confirm, $loading, $navurls, $location, proje
 
     return {link:link}
 
-module.directive("tgProjectProfile", ["$tgRepo", "$tgConfirm", "$tgLoading", "$tgNavUrls", "$tgLocation", "tgProjectService", ProjectProfileDirective])
+module.directive("tgProjectProfile", ["$tgRepo", "$tgConfirm", "$tgLoading", "$tgNavUrls", "$tgLocation",
+                                      "tgProjectService", ProjectProfileDirective])
+
 
 #############################################################################
 ## Project Default Values Directive
@@ -224,7 +231,8 @@ ProjectModulesDirective = ($repo, $confirm, $loading, projectService) ->
 
     return {link:link}
 
-module.directive("tgProjectModules", ["$tgRepo", "$tgConfirm", "$tgLoading", "tgProjectService", ProjectModulesDirective])
+module.directive("tgProjectModules", ["$tgRepo", "$tgConfirm", "$tgLoading", "tgProjectService",
+                                      ProjectModulesDirective])
 
 
 #############################################################################

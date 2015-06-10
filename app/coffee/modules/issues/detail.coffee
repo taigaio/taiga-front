@@ -44,14 +44,14 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$q",
         "$tgLocation",
         "$log",
-        "$appTitle",
+        "tgAppMetaService",
         "$tgAnalytics",
         "$tgNavUrls",
         "$translate"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
-                  @log, @appTitle, @analytics, @navUrls, @translate) ->
+                  @log, @appMetaService, @analytics, @navUrls, @translate) ->
         @scope.issueRef = @params.issueref
         @scope.sectionName = @translate.instant("ISSUES.SECTION_NAME")
         @.initializeEventHandlers()
@@ -60,11 +60,26 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
         # On Success
         promise.then =>
-            @appTitle.set(@scope.issue.subject + " - " + @scope.project.name)
+            @._setMeta()
             @.initializeOnDeleteGoToUrl()
 
         # On Error
         promise.then null, @.onInitialDataError.bind(@)
+
+    _setMeta: ->
+        title = @translate.instant("ISSUE.PAGE_TITLE", {
+            issueRef: "##{@scope.issue.ref}"
+            issueSubject: @scope.issue.subject
+            projectName: @scope.project.name
+        })
+        description = @translate.instant("ISSUE.PAGE_DESCRIPTION", {
+            issueStatus: @scope.statusById[@scope.issue.status]?.name or "--"
+            issueType: @scope.typeById[@scope.issue.type]?.name or "--"
+            issueSeverity: @scope.severityById[@scope.issue.severity]?.name or "--"
+            issuePriority: @scope.priorityById[@scope.issue.priority]?.name or "--"
+            issueDescription: angular.element(@scope.issue.description_html or "").text()
+        })
+        @appMetaService.setAll(title, description)
 
     initializeEventHandlers: ->
         @scope.$on "attachment:create", =>

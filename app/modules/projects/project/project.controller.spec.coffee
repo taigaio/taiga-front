@@ -12,12 +12,12 @@ describe "ProjectController", ->
 
         provide.value "tgProjectsService", mocks.projectService
 
-    _mockAppTitle = () ->
-        mocks.appTitle = {
-            set: sinon.stub()
+    _mockAppMetaService = () ->
+        mocks.appMetaService = {
+            setAll: sinon.stub()
         }
 
-        provide.value "$appTitle", mocks.appTitle
+        provide.value "tgAppMetaService", mocks.appMetaService
 
     _mockAuth = () ->
         mocks.auth = {
@@ -38,15 +38,22 @@ describe "ProjectController", ->
 
         provide.value "tgXhrErrorService", mocks.xhrErrorService
 
+    _mockTranslate = () ->
+        mocks.translate = {
+            instant: sinon.stub()
+        }
+
+        provide.value "$translate", mocks.translate
+
     _mocks = () ->
         module ($provide) ->
             provide = $provide
             _mockProjectsService()
             _mockRouteParams()
-            _mockAppTitle()
+            _mockAppMetaService()
             _mockAuth()
             _mockXhrErrorService()
-
+            _mockTranslate()
             return null
 
     _inject = (callback) ->
@@ -73,16 +80,24 @@ describe "ProjectController", ->
         expect(ctrl.user).to.be.equal(mocks.auth.userData)
 
     it "set page title", (done) ->
+        $scope = $rootScope.$new()
         project = Immutable.fromJS({
             name: "projectName"
+            description: "projectDescription"
         })
+
+        mocks.translate.instant
+            .withArgs('PROJECT.PAGE_TITLE', {
+                projectName: project.get("name")
+            })
+            .returns('projectTitle')
 
         mocks.projectService.getProjectBySlug.withArgs("project-slug").promise().resolve(project)
 
         ctrl = $controller("Project")
 
         setTimeout ( ->
-            expect(mocks.appTitle.set.withArgs("projectName")).to.be.calledOnce
+            expect(mocks.appMetaService.setAll.calledWithExactly("projectTitle", "projectDescription")).to.be.true
             done()
         )
 

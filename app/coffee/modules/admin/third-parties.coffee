@@ -41,11 +41,11 @@ class WebhooksController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.
         "$routeParams",
         "$tgLocation",
         "$tgNavUrls",
-        "$appTitle",
+        "tgAppMetaService",
         "$translate"
     ]
 
-    constructor: (@scope, @repo, @rs, @params, @location, @navUrls, @appTitle, @translate) ->
+    constructor: (@scope, @repo, @rs, @params, @location, @navUrls, @appMetaService, @translate) ->
         bindMethods(@)
 
         @scope.sectionName = "ADMIN.WEBHOOKS.SECTION_NAME"
@@ -54,8 +54,9 @@ class WebhooksController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.
         promise = @.loadInitialData()
 
         promise.then () =>
-            text = @translate.instant("ADMIN.WEBHOOKS.APP_TITLE", {"projectName": @scope.project.name})
-            @appTitle.set(text)
+            title = @translate.instant("ADMIN.WEBHOOKS.PAGE_TITLE", {projectName: @scope.project.name})
+            description = @scope.project.description
+            @appMetaService.setAll(title, description)
 
         promise.then null, @.onInitialDataError.bind(@)
 
@@ -292,11 +293,11 @@ class GithubController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         "$tgRepo",
         "$tgResources",
         "$routeParams",
-        "$appTitle",
+        "tgAppMetaService",
         "$translate"
     ]
 
-    constructor: (@scope, @repo, @rs, @params, @appTitle, @translate) ->
+    constructor: (@scope, @repo, @rs, @params, @appMetaService, @translate) ->
         bindMethods(@)
 
         @scope.sectionName = @translate.instant("ADMIN.GITHUB.SECTION_NAME")
@@ -305,8 +306,9 @@ class GithubController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         promise = @.loadInitialData()
 
         promise.then () =>
-            title = @translate.instant("ADMIN.GITHUB.APP_TITLE", {projectName: @scope.project.name})
-            @appTitle.set(title)
+            title = @translate.instant("ADMIN.GITHUB.PAGE_TITLE", {projectName: @scope.project.name})
+            description = @scope.project.description
+            @appMetaService.setAll(title, description)
 
         promise.then null, @.onInitialDataError.bind(@)
 
@@ -339,11 +341,11 @@ class GitlabController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         "$tgRepo",
         "$tgResources",
         "$routeParams",
-        "$appTitle",
+        "tgAppMetaService",
         "$translate"
     ]
 
-    constructor: (@scope, @repo, @rs, @params, @appTitle, @translate) ->
+    constructor: (@scope, @repo, @rs, @params, @appMetaService, @translate) ->
         bindMethods(@)
 
         @scope.sectionName = @translate.instant("ADMIN.GITLAB.SECTION_NAME")
@@ -351,8 +353,9 @@ class GitlabController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         promise = @.loadInitialData()
 
         promise.then () =>
-            title = @translate.instant("ADMIN.GITLAB.APP_TITLE", {projectName: @scope.project.name})
-            @appTitle.set(title)
+            title = @translate.instant("ADMIN.GITLAB.PAGE_TITLE", {projectName: @scope.project.name})
+            description = @scope.project.description
+            @appMetaService.setAll(title, description)
 
         promise.then null, @.onInitialDataError.bind(@)
 
@@ -388,11 +391,11 @@ class BitbucketController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
         "$tgRepo",
         "$tgResources",
         "$routeParams",
-        "$appTitle",
+        "tgAppMetaService",
         "$translate"
     ]
 
-    constructor: (@scope, @repo, @rs, @params, @appTitle, @translate) ->
+    constructor: (@scope, @repo, @rs, @params, @appMetaService, @translate) ->
         bindMethods(@)
 
         @scope.sectionName = @translate.instant("ADMIN.BITBUCKET.SECTION_NAME")
@@ -400,8 +403,9 @@ class BitbucketController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
         promise = @.loadInitialData()
 
         promise.then () =>
-            title = @translate.instant("ADMIN.BITBUCKET.APP_TITLE", {projectName: @scope.project.name})
-            @appTitle.set(title)
+            title = @translate.instant("ADMIN.BITBUCKET.PAGE_TITLE", {projectName: @scope.project.name})
+            description = @scope.project.description
+            @appMetaService.setAll(title, description)
 
         promise.then null, @.onInitialDataError.bind(@)
 

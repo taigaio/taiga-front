@@ -46,14 +46,14 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$tgLocation",
         "$filter",
         "$log",
-        "$appTitle",
+        "tgAppMetaService",
         "$tgNavUrls",
         "$tgAnalytics",
         "$translate"
     ]
 
     constructor: (@scope, @rootscope, @repo, @model, @confirm, @rs, @params, @q, @location,
-                  @filter, @log, @appTitle, @navUrls, @analytics, @translate) ->
+                  @filter, @log, @appMetaService, @navUrls, @analytics, @translate) ->
         @scope.projectSlug = @params.pslug
         @scope.wikiSlug = @params.slug
         @scope.sectionName = "Wiki"
@@ -61,11 +61,22 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         promise = @.loadInitialData()
 
         # On Success
-        promise.then () =>
-            @appTitle.set("Wiki - " + @scope.project.name)
+        promise.then () => @._setMeta()
 
         # On Error
         promise.then null, @.onInitialDataError.bind(@)
+
+    _setMeta: ->
+        title =  @translate.instant("WIKI.PAGE_TITLE", {
+            wikiPageName: @scope.wiki.slug
+            projectName: unslugify(@scope.wiki.slug)
+        })
+        description =  @translate.instant("WIKI.PAGE_DESCRIPTION", {
+            wikiPageContent: angular.element(@scope.wiki.html or "").text()
+            totalEditions: @scope.wiki.editions or 0
+            lastModifiedDate: moment(@scope.wiki.modified_date).format(@translate.instant("WIKI.DATETIME"))
+        })
+        @appMetaService.setAll(title, description)
 
     loadProject: ->
         return @rs.projects.getBySlug(@params.pslug).then (project) =>

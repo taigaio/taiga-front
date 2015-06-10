@@ -28,21 +28,26 @@ taiga.generateHash = (components=[]) ->
     components = _.map(components, (x) -> JSON.stringify(x))
     return hex_sha1(components.join(":"))
 
+
 taiga.generateUniqueSessionIdentifier = ->
     date = (new Date()).getTime()
     randomNumber = Math.floor(Math.random() * 0x9000000)
     return taiga.generateHash([date, randomNumber])
 
+
 taiga.sessionId = taiga.generateUniqueSessionIdentifier()
 
-configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEventsProvider, $compileProvider, $translateProvider) ->
+
+configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEventsProvider,
+             $compileProvider, $translateProvider) ->
     $routeProvider.when("/",
         {
             templateUrl: "home/home.html",
             access: {
                 requiresLogin: true
             },
-            title: "PROJECT.WELCOME",
+            title: "HOME.PAGE_TITLE",
+            description: "HOME.PAGE_DESCRIPTION",
             loader: true
         }
     )
@@ -53,7 +58,8 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
             access: {
                 requiresLogin: true
             },
-            title: "PROJECT.SECTION_PROJECTS",
+            title: "PROJECTS.PAGE_TITLE",
+            description: "PROJECTS.PAGE_DESCRIPTION",
             loader: true,
             controller: "ProjectsListing",
             controllerAs: "vm"
@@ -305,17 +311,47 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
 
     # Auth
     $routeProvider.when("/login",
-        {templateUrl: "auth/login.html"})
+        {
+            templateUrl: "auth/login.html",
+            title: "LOGIN.PAGE_TITLE"
+            description: "LOGIN.PAGE_DESCRIPTION"
+        }
+    )
     $routeProvider.when("/register",
-        {templateUrl: "auth/register.html"})
+        {
+            templateUrl: "auth/register.html",
+            title: "REGISTER.PAGE_TITLE",
+            description: "REGISTER.PAGE_DESCRIPTION"
+        }
+    )
     $routeProvider.when("/forgot-password",
-        {templateUrl: "auth/forgot-password.html"})
+        {
+            templateUrl: "auth/forgot-password.html",
+            title: "FORGOT_PASSWORD.PAGE_TITLE",
+            description: "FORGOT_PASSWORD.PAGE_DESCRIPTION"
+        }
+    )
     $routeProvider.when("/change-password",
-        {templateUrl: "auth/change-password-from-recovery.html"})
+        {
+            templateUrl: "auth/change-password-from-recovery.html",
+            title: "CHANGE_PASSWORD.PAGE_TITLE",
+            description: "CHANGE_PASSWORD.PAGE_TITLE",
+        }
+    )
     $routeProvider.when("/change-password/:token",
-        {templateUrl: "auth/change-password-from-recovery.html"})
+        {
+            templateUrl: "auth/change-password-from-recovery.html",
+            title: "CHANGE_PASSWORD.PAGE_TITLE",
+            description: "CHANGE_PASSWORD.PAGE_TITLE",
+        }
+    )
     $routeProvider.when("/invitation/:token",
-        {templateUrl: "auth/invitation.html"})
+        {
+            templateUrl: "auth/invitation.html",
+            title: "INVITATION.PAGE_TITLE",
+            description: "INVITATION.PAGE_DESCRIPTION"
+        }
+    )
 
     # Errors/Exceptions
     $routeProvider.when("/error",
@@ -482,7 +518,7 @@ i18nInit = (lang, $translate) ->
     checksley.updateMessages('default', messages)
 
 
-init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $navUrls, $appTitle, projectService, loaderService) ->
+init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $navUrls, appMetaService, projectService, loaderService) ->
     $log.debug("Initialize application")
 
     # Taiga Plugins
@@ -517,8 +553,11 @@ init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $na
         else
             projectService.cleanProject()
 
-        if next.title
-            $translate(next.title).then (text) => $appTitle.set(text)
+        if next.title or next.description
+            title = next.title or ""
+            description = next.description or ""
+            $translate([title, description]).then (translations) =>
+                appMetaService.setAll(translations[title], translations[description])
 
         if next.loader
             loaderService.startWithAutoClose()
@@ -592,7 +631,7 @@ module.run([
     "$translate",
     "$tgLocation",
     "$tgNavUrls",
-    "$appTitle",
+    "tgAppMetaService",
     "tgProjectService",
     "tgLoader",
     init

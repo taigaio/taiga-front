@@ -44,12 +44,12 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
         "$q",
         "$tgLocation",
         "$tgNavUrls",
-        "$appTitle",
+        "tgAppMetaService",
         "$translate"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls, @appTitle,
-                  @translate) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls,
+                  @appMetaService, @translate) ->
         bindMethods(@)
 
         @scope.sectionName = "ADMIN.MENU.PERMISSIONS"
@@ -59,8 +59,9 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
         promise = @.loadInitialData()
 
         promise.then () =>
-            title = @translate.instant("ADMIN.ROLES.SECTION_NAME", {projectName: @scope.project.name})
-            @appTitle.set(title)
+            title = @translate.instant("ADMIN.ROLES.PAGE_TITLE", {projectName: @scope.project.name})
+            description = @scope.project.description
+            @appMetaService.setAll(title, description)
 
         promise.then null, @.onInitialDataError.bind(@)
 

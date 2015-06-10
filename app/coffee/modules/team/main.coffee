@@ -39,21 +39,26 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$q",
         "$location",
         "$tgNavUrls",
-        "$appTitle",
+        "tgAppMetaService",
         "$tgAuth",
         "$translate",
         "tgProjectService"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @rs, @params, @q, @location, @navUrls, @appTitle, @auth, @translate, @projectService) ->
+    constructor: (@scope, @rootscope, @repo, @rs, @params, @q, @location, @navUrls, @appMetaService, @auth,
+                  @translate, @projectService) ->
         @scope.sectionName = "TEAM.SECTION_NAME"
 
         promise = @.loadInitialData()
 
         # On Success
         promise.then =>
-            text = @translate.instant("TEAM.APP_TITLE", {"projectName": @scope.project.name})
-            @appTitle.set(text)
+            title = @translate.instant("TEAM.PAGE_TITLE", {projectName: @scope.project.name})
+            description = @translate.instant("TEAM.PAGE_DESCRIPTION", {
+                projectName: @scope.project.name,
+                projectDescription: @scope.project.description
+            })
+            @appMetaService.setAll(title, description)
 
         # On Error
         promise.then null, @.onInitialDataError.bind(@)
