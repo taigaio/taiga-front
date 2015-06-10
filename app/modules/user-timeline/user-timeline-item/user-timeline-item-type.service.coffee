@@ -61,7 +61,7 @@ timelineType = (timeline, event) ->
             key: 'TIMELINE.NEW_COMMENT_US',
             translate_params: ['username', 'obj_name'],
             description: (timeline) ->
-                return timeline.data.comment
+                return $(timeline.data.comment_html).text()
         },
         { # NewIssueComment
             check: (timeline, event) ->
@@ -69,15 +69,15 @@ timelineType = (timeline, event) ->
             key: 'TIMELINE.NEW_COMMENT_ISSUE',
             translate_params: ['username', 'obj_name'],
             description: (timeline) ->
-                return timeline.data.comment
+                return $(timeline.data.comment_html).text()
         },
-        { # NewTask
+        { # NewTaskComment
             check: (timeline, event) ->
                 return timeline.data.comment && event.obj == 'task'
             key: 'TIMELINE.NEW_COMMENT_TASK'
             translate_params: ['username', 'obj_name'],
             description: (timeline) ->
-                return timeline.data.comment
+                return $(timeline.data.comment_html).text()
         },
         { # UsToMilestone
             check: (timeline, event, field_name) ->
