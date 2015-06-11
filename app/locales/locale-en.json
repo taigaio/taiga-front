@@ -1225,6 +1225,7 @@
         "US_CREATED": "{{username}} has created a new US {{obj_name}} in {{project_name}}",
         "ISSUE_CREATED": "{{username}} has created a new issue {{obj_name}} in {{project_name}}",
         "TASK_CREATED": "{{username}} has created a new task {{obj_name}} in {{project_name}}",
+        "TASK_CREATED_WITH_US": "{{username}} has created a new task {{obj_name}} in {{project_name}} which belongs to the US {{us_name}}",
         "WIKI_CREATED": "{{username}} has created a new wiki page {{obj_name}} in {{project_name}}",
         "MILESTONE_CREATED": "{{username}} has created a new sprint {{obj_name}} in {{project_name}}",
         "NEW_PROJECT": "{{username}} created the project {{project_name}}",

@@ -45,9 +45,15 @@ timelineType = (timeline, event) ->
         },
         { # NewTask
             check: (timeline, event) ->
-                return event.obj == 'task' && event.type == 'create'
+                return event.obj == 'task' && event.type == 'create' && !timeline.data.task.userstory
             key: 'TIMELINE.TASK_CREATED',
             translate_params: ['username', 'project_name', 'obj_name']
+        },
+        { # NewTask with US
+            check: (timeline, event) ->
+                return event.obj == 'task' && event.type == 'create' && timeline.data.task.userstory
+            key: 'TIMELINE.TASK_CREATED_WITH_US',
+            translate_params: ['username', 'project_name', 'obj_name', 'us_name']
         },
         { # NewMilestone
             check: (timeline, event) ->
