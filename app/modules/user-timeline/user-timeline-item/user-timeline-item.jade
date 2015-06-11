@@ -11,7 +11,7 @@ div.activity-item
         | {{::vm.activity.description | limitTo:300}}
 
     .activity-member-view(ng-if="::vm.activity.member")
-        .profile-member-picture
+        a.profile-member-picture(tg-nav="user-profile:username=vm.activity.member.user.username", title="{{::vm.activity.member.user.name }}")
             img(ng-src="{{::vm.activity.member.user.photo}}", alt="{{::vm.activity.member.user.name}}")
         .activity-member-info
             a(tg-nav="user-profile:username=vm.activity.member.user.username", title="{{::vm.activity.member.user.name }}")
