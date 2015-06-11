@@ -1,4 +1,7 @@
 .single-project {
+    .single-project-intro {
+        margin-bottom: 2rem;
+    }
     h1 {
         line-height: 1.2;
         margin: 0;
@@ -7,6 +10,11 @@
     .private {
         font-size: 1rem;
         vertical-align: super;
+    }
+    .description {
+        @extend %light;
+        @extend %medium;
+        margin: 0;
     }
     .project-data {
         display: flex;

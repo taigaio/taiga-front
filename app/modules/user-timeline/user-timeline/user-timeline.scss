@@ -1,11 +1,10 @@
 .profile-timeline {
-    border-top: 1px solid $whitish;
     .activity-item {
         border-bottom: 1px solid $whitish;
         padding: 1rem .5rem;
         position: relative;
         p {
-            margin-bottom: .5rem;
+            margin-bottom: 0;
         }
         a {
             color: $green-taiga;
