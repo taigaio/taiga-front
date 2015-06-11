@@ -43,6 +43,8 @@ class ProjectsController extends taiga.Controller
 
         if !@auth.isAuthenticated()
             @location.path(@navUrls.resolve("login"))
+        else
+            tgLoader.start()
 
         @.user = @auth.getUser()
 
