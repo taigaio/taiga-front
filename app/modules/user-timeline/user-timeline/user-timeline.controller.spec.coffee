@@ -44,6 +44,22 @@ describe "UserTimelineController", ->
                 { fake: "fake"},
                 { fake: "fake"},
                 { fake: "fake"},
+                { fake: "fake"},
+                { fake: "fake"},
+                { fake: "fake"},
+                { fake: "fake"},
+                { fake: "fake"},
+                { fake: "fake"},
+                { fake: "fake"},
+                { fake: "fake"},
+                { fake: "fake"},
+                { fake: "fake"},
+                { fake: "fake"},
+                { fake: "fake"},
+                { fake: "fake"},
+                { fake: "fake"},
+                { fake: "fake"},
+                { fake: "fake"},
                 { fake: "fake"}
             ])
 
@@ -134,7 +150,32 @@ describe "UserTimelineController", ->
 
             myCtrl._timelineLoaded(timelineList)
             myCtrl._timelineLoaded(timelineList)
-            expect(myCtrl.timelineList.size).to.be.eql(8)
+            expect(myCtrl.timelineList.size).to.be.eql(40)
+
+        it "call next page until reach de min items", (done) ->
+            myCtrl = controller "UserTimeline"
+            myCtrl.user = mockUser
+            myCtrl.currentUser = true
+
+            mocks.userTimelineService.getProfileTimeline = sinon.stub().promise()
+
+            timelineList = Immutable.fromJS([
+                { fake: "fake"},
+                { fake: "fake"},
+                { fake: "fake"},
+                { fake: "fake"},
+                { fake: "fake"}
+            ])
+
+            promise = myCtrl.loadTimeline(timelineList)
+
+            myCtrl.loadTimeline = sinon.spy()
+
+            mocks.userTimelineService.getProfileTimeline.resolve(timelineList)
+
+            promise.then () ->
+                expect(myCtrl.loadTimeline).to.be.calledOnce
+                done()
 
         it "project timeline items", () ->
             myCtrl = controller "UserTimeline"
@@ -153,5 +194,5 @@ describe "UserTimelineController", ->
 
             thenStub.callArgWith(0, timelineList)
 
-            expect(myCtrl.timelineList.size).to.be.eql(4)
+            expect(myCtrl.timelineList.size).to.be.eql(20)
             expect(myCtrl.page).to.equal(2)
