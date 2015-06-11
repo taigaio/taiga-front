@@ -41,6 +41,9 @@ resourceProvider = ($repo, $http, $urls, $storage) ->
     service.listInAllProjects = (filters) ->
         return $repo.queryMany("userstories", filters)
 
+    service.filtersData = (params) ->
+        return $repo.queryOneRaw("userstories-filters", null, params)
+
     service.listUnassigned = (projectId, filters) ->
         params = {"project": projectId, "milestone": "null"}
         params = _.extend({}, params, filters or {})
