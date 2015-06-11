@@ -38,7 +38,9 @@
         margin-right: 1rem;
     }
     .involved-data {
-        flex-basis: 200px;
+        flex-basis: 220px;
+        flex-shrink: 0;
+        width: 220px;
     }
     .involved-team,
     .involved-organization {

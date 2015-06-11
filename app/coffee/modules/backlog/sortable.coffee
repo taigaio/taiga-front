@@ -168,7 +168,9 @@ SprintSortableDirective = ($repo, $rs, $rootscope) ->
                     scroll: true
                     dropOnEmpty: true
                     items: ".sprint-table .milestone-us-item-row",
-                    connectWith: ".sprint,.backlog-table-body,.empty-backlog"
+                    connectWith: ".sprint,.backlog-table-body,.empty-backlog",
+                    placeholder: "row us-item-row sortable-placeholder",
+                    forcePlaceholderSize:true
                 })
 
                 $el.on "multiplesortreceive", (event, ui) ->
