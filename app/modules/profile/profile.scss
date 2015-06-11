@@ -39,6 +39,12 @@
         flex-basis: 150px;
         flex-shrink: 0;
         width: 150px;
+        .button-gray {
+            display: block;
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
     }
     .empty-tab {
         padding: 5vh;
