@@ -130,10 +130,6 @@
         &:last-child {
             border-bottom: 0;
         }
-        &.sortable-placeholder {
-            background: $whitish;
-            height: 40px;
-        }
         &.ui-sortable-helper {
             background: lighten($green-taiga, 60%);
             box-shadow: 1px 1px 10px rgba($black, .1);
@@ -145,6 +141,11 @@
                 cursor: text;
             }
         }
+    }
+    .sortable-placeholder {
+        background: $whitish;
+        height: 40px;
+        width: 100%;
     }
     .row-selected {
         background: lighten($green-taiga, 60%);
