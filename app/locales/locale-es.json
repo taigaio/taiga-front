@@ -239,12 +239,12 @@
         },
         "META": {
             "PAGE_TITLE": "Taiga",
-            "PAGE_DESCRIPTION": "Taiga is a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
+            "PAGE_DESCRIPTION": "Taiga es una plataforma de gestión de proyectos orientada a startups y equipos ágiles que buscan una herramienta sencilla, elegante y que les haga disfrutar trabajando."
         }
     },
     "LOGIN": {
         "PAGE_TITLE": "Login - Taiga",
-        "PAGE_DESCRIPTION": "Logging in to Taiga, a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
+        "PAGE_DESCRIPTION": "Inicia sesión en Taiga, una plataforma de gestión de proyectos orientada a startups y equipos ágiles que buscan una herramienta sencilla, elegante y que les haga disfrutar trabajando."
     },
     "AUTH": {
         "INVITED_YOU": "te ha invitado a unirte al proyecto",
@@ -268,7 +268,7 @@
     },
     "REGISTER": {
         "PAGE_TITLE": "Registro - Taiga",
-        "PAGE_DESCRIPTION": "Create your account in Taiga, a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
+        "PAGE_DESCRIPTION": "Crea tu cuenta en Taiga, una plataforma de gestión de proyectos orientada a startups y equipos ágiles que buscan una herramienta sencilla, elegante y que les haga disfrutar trabajando."
     },
     "REGISTER_FORM": {
         "TITLE": "Crea tu nueva cuenta en Taiga, ¡es gratis!",
@@ -318,7 +318,7 @@
     },
     "INVITATION": {
         "PAGE_TITLE": "Acepta la invitación - Taiga",
-        "PAGE_DESCRIPTION": "Accept the invitation to join a project in Taiga, a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
+        "PAGE_DESCRIPTION": "Acepta la invitación para unirte a un proyecto en Taiga, una plataforma de gestión de proyectos orientada a startups y equipos ágiles que buscan una herramienta sencilla, elegante y que les haga disfrutar trabajando."
     },
     "INVITATION_LOGIN_FORM": {
         "NOT_FOUND": "<strong>Ooops, tenemos un problema</strong><br /> Nuestros Oompa Loompas no pueden encontrar tu invitación.",
@@ -693,8 +693,8 @@
             "CHANGE_PASSWORD_TITLE": "Cambiar contraseña",
             "CHANGE_PASSWORD": "Cambiar contraseña",
             "DASHBOARD_TITLE": "Dashboard",
-            "DISCOVER_TITLE": "Discover trending projects",
-            "DISCOVER": "Discover",
+            "DISCOVER_TITLE": "Descubre los proyectos más relevantes",
+            "DISCOVER": "Descubrir",
             "ACTION_REORDER": "Arrastrar y soltar para reordenar"
         },
         "IMPORT": {
@@ -1215,7 +1215,7 @@
         "HINT1_TITLE": "¿Sabes que puedes importar y exportar proyectos?",
         "HINT1_TEXT": "Esto permite extraer todos tus datos para moverlos de una instancia de Taiga a otra.\n",
         "HINT2_TITLE": "¿Sabías que puedes crear atributos personalizados?",
-        "HINT2_TEXT": "This will provide teams with a flexible input to fit in their workflow."
+        "HINT2_TEXT": "Esto permite a los equipos mantener su flujo habitual de trabajo añadiendo datos de manera flexible."
     },
     "TIMELINE": {
         "UPLOAD_ATTACHMENT": "{{username}} ha subido un nuevo adjunto en {{obj_name}}\n",
@@ -1224,7 +1224,7 @@
         "TASK_CREATED": "{{username}} ha creado una nueva tarea {{obj_name}} en {{project_name}}",
         "WIKI_CREATED": "{{username}} ha creado una nueva página de wiki {{obj_name}} en {{project_name}}\n",
         "MILESTONE_CREATED": "{{username}} ha creado un nuevo sprint {{obj_name}} en {{project_name}}",
-        "NEW_PROJECT": "{{username}} tiene un nuevo proyecto {{project_name}}",
+        "NEW_PROJECT": "{{username}} creó el projecto {{project_name}}",
         "MILESTONE_UPDATED": "{{username}} ha actualizado el sprint {{obj_name}}",
         "US_UPDATED": "{{username}} ha actualizado el atributo \"{{field_name}}\" de la historia {{obj_name}}",
         "ISSUE_UPDATED": "{{username}} ha actualizado el atributo \"{{field_name}}\" de la petición {{obj_name}}",

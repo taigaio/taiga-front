@@ -1224,7 +1224,7 @@
         "TASK_CREATED": "{{username}} heeft een nieuwe taak aangemaakt {{obj_name}} in {{project_name}}",
         "WIKI_CREATED": "{{username}} heeft een nieuwe Wiki-pagina aangemaakt {{obj_name}} in {{project_name}}",
         "MILESTONE_CREATED": "{{username}} heeft een nieuwe sprint aangemaakt {{obj_name}} in {{project_name}}",
-        "NEW_PROJECT": "{{username}} heeft een nieuw project {{project_name}}",
+        "NEW_PROJECT": "{{username}} created the project {{project_name}}",
         "MILESTONE_UPDATED": "{{username}} heeft de sprint {{obj_name}} bijgewerkt",
         "US_UPDATED": "{{username}} heeft de eigenschap \"{{field_name}}\" van de US {{obj_name}} bijgewerkt",
         "ISSUE_UPDATED": "{{username}} heeft de eigenschap \"{{field_name}}\" van het issue {{obj_name}} bijgewerkt",

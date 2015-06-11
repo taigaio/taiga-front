@@ -1224,7 +1224,7 @@
         "TASK_CREATED": "{{username}} has created a new task {{obj_name}} in {{project_name}}",
         "WIKI_CREATED": "{{username}} has created a new wiki page {{obj_name}} in {{project_name}}",
         "MILESTONE_CREATED": "{{username}} has created a new sprint {{obj_name}} in {{project_name}}",
-        "NEW_PROJECT": "{{username}} has a new project {{project_name}}",
+        "NEW_PROJECT": "{{username}} created the project {{project_name}}",
         "MILESTONE_UPDATED": "{{username}} has updated the sprint {{obj_name}}",
         "US_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the US {{obj_name}}",
         "ISSUE_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the issue {{obj_name}}",
