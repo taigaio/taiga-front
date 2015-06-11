@@ -1,8 +1,10 @@
 class ProfileHints
-    maxHints: 2
+    maxHints: 4
     supportUrls: [
-        "https://taiga.io/support/import-export-projects/",
-        "https://taiga.io/support/custom-fields/"
+        "https://taiga.io/support/import-export-projects/", #HINT1
+        "https://taiga.io/support/custom-fields/" #HINT2
+        "#" #HINT3
+        "#" #HINT4
     ]
     constructor: (@translate) ->
         hintKey = Math.floor(Math.random() * @.maxHints) + 1
