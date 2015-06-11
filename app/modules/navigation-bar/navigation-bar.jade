@@ -1,4 +1,4 @@
-nav.navbar(ng-if="vm.isAuthenticated")
+nav.navbar
     div.nav-left
         a.logo(
             href="#",
@@ -18,7 +18,7 @@ nav.navbar(ng-if="vm.isAuthenticated")
             title="{{'PROJECT.NAVIGATION.HELP_TITLE' | translate}}",
             translate="PROJECT.NAVIGATION.HELP")
 
-    div.nav-right
+    div.nav-right(ng-if="vm.isAuthenticated")
         a(tg-nav="home",
           ng-class="{active: vm.active}",
           title="{{'PROJECT.NAVIGATION.DASHBOARD_TITLE' | translate}}")
