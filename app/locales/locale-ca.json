@@ -641,8 +641,8 @@
         },
         "PROFILE_SIDEBAR": {
             "TITLE": "Your profile",
-            "DESCRIPTION": "Lots of people could see what do you do and what are you working on. Add tags so you will give an enhanced version of your information.",
-            "ADD_INFO": "Add info"
+            "DESCRIPTION": "La gent pot vore tot el que fas i en qué estàs treballant. Afegix una bio interessant per a donar una millor versió de la teua informació.",
+            "ADD_INFO": "Edita la teua bio"
         }
     },
     "PROJECT": {
@@ -1177,7 +1177,7 @@
             "EMAIL": "Correu electrònic",
             "FULL_NAME": "Nom complet",
             "PLACEHOLDER_FULL_NAME": "Esciur el teu nom complet (ex. Íñigo Montoya)",
-            "BIO": "Bio (max. 210 chars)",
+            "BIO": "Bio (max. 210 caràcters)",
             "PLACEHOLDER_BIO": "Contans algo sobre tu mateix",
             "LANGUAGE": "Idioma",
             "LANGUAGE_DEFAULT": "-- utiliza l'idioma per defecte --"

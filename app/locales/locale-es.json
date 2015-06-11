@@ -641,8 +641,8 @@
         },
         "PROFILE_SIDEBAR": {
             "TITLE": "Tu perfil",
-            "DESCRIPTION": "Mucha gente podrá ver lo que has hecho y en lo que estás trabajando. Añadir etiquetas para ofrecer una información más detallada.",
-            "ADD_INFO": "Añadir info"
+            "DESCRIPTION": "La gente puede ver aquello que haces y en qué estás trabajando. Añade una buena bio para que puedan ver la mejor versión de tu perfil.",
+            "ADD_INFO": "Edita tu bio"
         }
     },
     "PROJECT": {

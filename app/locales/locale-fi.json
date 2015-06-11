@@ -641,8 +641,8 @@
         },
         "PROFILE_SIDEBAR": {
             "TITLE": "Your profile",
-            "DESCRIPTION": "Lots of people could see what do you do and what are you working on. Add tags so you will give an enhanced version of your information.",
-            "ADD_INFO": "Add info"
+            "DESCRIPTION": "People can see everything you do and what are you working on. Add a nice bio to give an enhanced version of your information.",
+            "ADD_INFO": "Edit your bio"
         }
     },
     "PROJECT": {

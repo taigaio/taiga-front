@@ -641,8 +641,8 @@
         },
         "PROFILE_SIDEBAR": {
             "TITLE": "Votre profil",
-            "DESCRIPTION": "De nombreuses personnes pourraient voir ce que vous faites et ce sur quoi vous travaillez. Ajouter des mots-clés afin d'enrichir vos informations.",
-            "ADD_INFO": "Ajouter de l'information"
+            "DESCRIPTION": "People can see everything you do and what are you working on. Add a nice bio to give an enhanced version of your information.",
+            "ADD_INFO": "Edit your bio"
         }
     },
     "PROJECT": {

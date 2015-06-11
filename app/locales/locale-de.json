@@ -318,7 +318,7 @@
     },
     "INVITATION": {
         "PAGE_TITLE": "Einladung Annahme - Taiga",
-        "PAGE_DESCRIPTION": "Accept the invitation to join a project in Taiga, a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
+        "PAGE_DESCRIPTION": "Nehmen Sie die Einladung an und treten Sie einem Projekt in Taiga bei, einer Projekt-Management Plattform für Neugründer und agile Entwickler und Desinger, die ein unkompliziertes und ansprechendes Tool möchten, das die Arbeit wirklich angenehm macht. "
     },
     "INVITATION_LOGIN_FORM": {
         "NOT_FOUND": "<strong>Huch, wir haben ein Problem</strong><br />Unsere Heinzelmännchen können Ihre Einladung nicht finden.",
@@ -327,14 +327,14 @@
     },
     "HOME": {
         "PAGE_TITLE": "Home - Taiga",
-        "PAGE_DESCRIPTION": "The Taiga home page with your main projects and all your assigned and watched user stories, tasks and issues",
+        "PAGE_DESCRIPTION": "Die Taiga Homepage mit Ihren wichtigsten Projekten und all Ihren zugeordneten und beobachteten User-Stories, Aufgaben und Tickets. ",
         "EMPTY_WATCHING": "<strong>Folgen</strong> Sie den Projekten, User-Stories, Aufgaben, Tickets... über die Sie etwas wissen möchten :)",
         "WORKING_ON_SECTION": "Arbeiten an",
         "WATCHING_SECTION": "Beobachtung"
     },
     "PROJECTS": {
         "PAGE_TITLE": "Meine Projekte - Taiga",
-        "PAGE_DESCRIPTION": "A list with all your projects, you can reorder or create a new one.",
+        "PAGE_DESCRIPTION": "Eine Liste mit all Ihren Projekten, Sie können Sie ordnen oder eine neue anlegen. ",
         "MY_PROJECTS": "Meine Projekte"
     },
     "ATTACHMENT": {
@@ -641,8 +641,8 @@
         },
         "PROFILE_SIDEBAR": {
             "TITLE": "Ihr Profil",
-            "DESCRIPTION": "Viele Leute können sehen, was Sie beruflich tun und woran Sie arbeiten. Fügen Sie Schlagwörter hinzu, um verbesserte Informationen zu geben.  ",
-            "ADD_INFO": "Information hinzufügen"
+            "DESCRIPTION": "People can see everything you do and what are you working on. Add a nice bio to give an enhanced version of your information.",
+            "ADD_INFO": "Edit your bio"
         }
     },
     "PROJECT": {
@@ -866,7 +866,7 @@
     },
     "BACKLOG": {
         "PAGE_TITLE": "Auftragsliste - {{projectName}}",
-        "PAGE_DESCRIPTION": "The backlog panel, with user stories and sprints of the project {{projectName}}: {{projectDescription}}",
+        "PAGE_DESCRIPTION": "Das Auftragslisten-Panel mit User-Stories und Sprints des Projekts. {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Auftragsliste",
         "MOVE_US_TO_CURRENT_SPRINT": "Zum aktuellen Sprint wechseln",
         "SHOW_FILTERS": "Filter zeigen",
@@ -1020,7 +1020,7 @@
     },
     "ISSUES": {
         "PAGE_TITLE": "Tickets - {{projectName}}",
-        "PAGE_DESCRIPTION": "The issues list panel of the project {{projectName}}: {{projectDescription}}",
+        "PAGE_DESCRIPTION": "Das Ticket-Listen Panel des Projekts {{projectName}}: {{projectDescription}}",
         "LIST_SECTION_NAME": "Tickets",
         "SECTION_NAME": "Ticket Details",
         "ACTION_NEW_ISSUE": "+ NEUES TICKET ",
