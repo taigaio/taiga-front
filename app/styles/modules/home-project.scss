@@ -14,7 +14,6 @@
     .description {
         @extend %light;
         @extend %medium;
-        margin: 0;
     }
     .project-data {
         display: flex;
@@ -32,6 +31,7 @@
     }
     .single-project-tags {
         margin-bottom: 1rem;
+        margin-top: 1rem;
     }
     .timeline {
         flex: 1;
