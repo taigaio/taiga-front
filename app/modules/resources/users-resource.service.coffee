@@ -44,12 +44,23 @@ Resource = (urlsService, http) ->
             .then (result) ->
                 return Immutable.fromJS(result.data)
 
-    service.getTimeline = (userId, page) ->
+    service.getProfileTimeline = (userId, page) ->
         params = {
             page: page
         }
 
         url = urlsService.resolve("timeline-profile")
+        url = "#{url}/#{userId}"
+
+        return http.get(url, params).then (result) ->
+            return Immutable.fromJS(result.data)
+
+    service.getUserTimeline = (userId, page) ->
+        params = {
+            page: page
+        }
+
+        url = urlsService.resolve("timeline-user")
         url = "#{url}/#{userId}"
 
         return http.get(url, params).then (result) ->

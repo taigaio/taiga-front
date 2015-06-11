@@ -115,18 +115,42 @@ describe "tgUserTimelineService", ->
             }
         ]
 
-    it "filter invalid user timeline items", (done) ->
+    it "filter invalid profile timeline items", (done) ->
         userId = 3
         page = 2
 
-        mocks.resources.users.getTimeline = (_userId_, _page_) ->
+        mocks.resources.users.getProfileTimeline = (_userId_, _page_) ->
             expect(_userId_).to.be.equal(userId)
             expect(_page_).to.be.equal(page)
 
             return $q (resolve, reject) ->
                 resolve(Immutable.fromJS(valid_items))
 
-        userTimelineService.getTimeline(userId, page)
+        userTimelineService.getProfileTimeline(userId, page)
+            .then (_items_) ->
+                items = _items_.toJS()
+
+                expect(items).to.have.length(3)
+                expect(items[0]).to.be.eql(valid_items[0])
+                expect(items[1]).to.be.eql(valid_items[3])
+                expect(items[2]).to.be.eql(valid_items[5])
+
+                done()
+
+        $rootScope.$apply()
+
+    it "filter invalid user timeline items", (done) ->
+        userId = 3
+        page = 2
+
+        mocks.resources.users.getUserTimeline = (_userId_, _page_) ->
+            expect(_userId_).to.be.equal(userId)
+            expect(_page_).to.be.equal(page)
+
+            return $q (resolve, reject) ->
+                resolve(Immutable.fromJS(valid_items))
+
+        userTimelineService.getUserTimeline(userId, page)
             .then (_items_) ->
                 items = _items_.toJS()
 

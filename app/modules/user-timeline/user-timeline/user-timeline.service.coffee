@@ -53,11 +53,15 @@ class UserTimelineService extends taiga.Service
 
         return true
 
-    getTimeline: (userId, page) ->
-        return @rs.users.getTimeline(userId, page)
+    getProfileTimeline: (userId, page) ->
+        return @rs.users.getProfileTimeline(userId, page)
             .then (result) =>
                 return result.filter (timeline) => @._filterValidTimelineItems(timeline)
 
+    getUserTimeline: (userId, page) ->
+        return @rs.users.getUserTimeline(userId, page)
+            .then (result) =>
+                return result.filter (timeline) => @._filterValidTimelineItems(timeline)
 
     getProjectTimeline: (projectId, page) ->
         return @rs.projects.getTimeline(projectId, page)

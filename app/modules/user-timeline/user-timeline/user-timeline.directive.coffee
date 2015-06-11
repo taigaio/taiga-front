@@ -5,7 +5,8 @@ UserTimelineDirective = ->
         controllerAs: "vm",
         scope: {
             projectId: "=projectid",
-            user: "="
+            user: "=",
+            currentUser: "="
         },
         bindToController: true
     }

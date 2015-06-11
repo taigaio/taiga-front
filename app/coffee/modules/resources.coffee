@@ -132,6 +132,7 @@ urls = {
 
     # Timeline
     "timeline-profile": "/timeline/profile"
+    "timeline-user": "/timeline/user"
     "timeline-project": "/timeline/project"
 
     # Search
