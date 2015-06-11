@@ -28,6 +28,7 @@ class UserTimelineController extends mixOf(taiga.Controller, taiga.PageMixin, ta
         "tgUserTimelineService"
     ]
 
+    min: 20
     constructor: (@userTimelineService) ->
         @.timelineList = Immutable.List()
         @.page = 1
@@ -36,21 +37,27 @@ class UserTimelineController extends mixOf(taiga.Controller, taiga.PageMixin, ta
     loadTimeline: () ->
         @.scrollDisabled = true
 
+        promise = null
+
         if @.projectId
-            @userTimelineService
+            promise = @userTimelineService
                 .getProjectTimeline(@.projectId, @.page)
-                .then (newTimelineList) =>
-                    @._timelineLoaded(newTimelineList)
         else if @.currentUser
-            @userTimelineService
+            promise = @userTimelineService
                 .getProfileTimeline(@.user.get("id"), @.page)
-                .then (newTimelineList) =>
-                    @._timelineLoaded(newTimelineList)
         else
-            @userTimelineService
+            promise = @userTimelineService
                 .getUserTimeline(@.user.get("id"), @.page)
-                .then (newTimelineList) =>
-                    @._timelineLoaded(newTimelineList)
+
+        promise.then (list) =>
+            @._timelineLoaded(list)
+
+            if !@.scrollDisabled && @.timelineList.size < @.min
+                return @.loadTimeline()
+
+            return @.timelineList
+
+        return promise
 
     _timelineLoaded: (newTimelineList) ->
         @.timelineList = @.timelineList.concat(newTimelineList)
