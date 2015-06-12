@@ -1222,6 +1222,7 @@
         "US_CREATED": "{{username}} heeft een nieuwe US aangemaakt {{obj_name}} in {{project_name}}",
         "ISSUE_CREATED": "{{username}} heeft een nieuw Issue aangemaakt {{obj_name}} in {{project_name}}",
         "TASK_CREATED": "{{username}} heeft een nieuwe taak aangemaakt {{obj_name}} in {{project_name}}",
+        "TASK_CREATED_WITH_US": "{{username}} has created a new task {{obj_name}} in {{project_name}} which belongs to the US {{us_name}}",
         "WIKI_CREATED": "{{username}} heeft een nieuwe Wiki-pagina aangemaakt {{obj_name}} in {{project_name}}",
         "MILESTONE_CREATED": "{{username}} heeft een nieuwe sprint aangemaakt {{obj_name}} in {{project_name}}",
         "NEW_PROJECT": "{{username}} created the project {{project_name}}",
@@ -1238,6 +1239,7 @@
         "US_ADDED_MILESTONE": "{{username}} heeft de US {{obj_name}} toegevoegd aan {{sprint_name}}",
         "US_REMOVED_FROM_MILESTONE": "{{username}} heeft de US {{obj_name}} toegevoegd aan de Backlog",
         "BLOCKED": "{{username}} heeft {{obj_name}} geblokkeerd",
-        "UNBLOCKED": "{{username}} heeft {{obj_name}} gedeblokkeerd"
+        "UNBLOCKED": "{{username}} heeft {{obj_name}} gedeblokkeerd",
+        "NEW_USER": "{{username}} has joined Taiga"
     }
 }

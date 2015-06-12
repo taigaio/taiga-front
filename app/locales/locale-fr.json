@@ -243,7 +243,7 @@
         }
     },
     "LOGIN": {
-        "PAGE_TITLE": "Login - Taiga",
+        "PAGE_TITLE": "Connexion - Taiga",
         "PAGE_DESCRIPTION": "Logging in to Taiga, a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
     },
     "AUTH": {
@@ -294,7 +294,7 @@
         "ERROR": "D'après nos Oompa Loompas, vous n'êtes pas encore enregistré."
     },
     "CHANGE_PASSWORD": {
-        "PAGE_TITLE": "Change you password - Taiga",
+        "PAGE_TITLE": "Modifier votre mot de passe - Taiga",
         "PAGE_DESCRIPTION": "Set a new passoword for your Taiga account and hey!, you may want to eat some more iron-rich food, it's good for your brain :P",
         "SECTION_NAME": "Modifier le mot de passe",
         "FIELD_CURRENT_PASSWORD": "Mot de passe courant",
@@ -333,7 +333,7 @@
         "WATCHING_SECTION": "Observant"
     },
     "PROJECTS": {
-        "PAGE_TITLE": "My projects - Taiga",
+        "PAGE_TITLE": "Mes projets - Taiga",
         "PAGE_DESCRIPTION": "A list with all your projects, you can reorder or create a new one.",
         "MY_PROJECTS": "Mes projets"
     },
@@ -487,7 +487,7 @@
             "ACTION_ADD": "Ajouter un nouveau {{objName}}"
         },
         "ROLES": {
-            "PAGE_TITLE": "Roles - {{projectName}}",
+            "PAGE_TITLE": "Rôles - {{projectName}}",
             "WARNING_NO_ROLE": "Attention, aucun rôle dans votre projet ne pourra estimer la valeur du point pour les récits utilisateurs",
             "HELP_ROLE_ENABLED": "Si activé, les membres affectés à ce rôle pourront estimer la valeur du point pour les récits utilisateurs",
             "COUNT_MEMBERS": "{{ role.members_count }} membres avec ce rôle",
@@ -543,7 +543,7 @@
             "WEBHOOK_NAME": "Webhook '{{name}}'"
         },
         "CUSTOM_ATTRIBUTES": {
-            "PAGE_TITLE": "{{sectionName}} - Custom Attributes - {{projectName}}",
+            "PAGE_TITLE": "{{sectionName}} - Attributs Personnalisés - {{projectName}}",
             "ADD": "Ajouter un champ personnalisé",
             "EDIT": "Editer un champ personnalisé",
             "DELETE": "Supprimer un champ personnalisé",
@@ -642,7 +642,7 @@
         "PROFILE_SIDEBAR": {
             "TITLE": "Votre profil",
             "DESCRIPTION": "People can see everything you do and what are you working on. Add a nice bio to give an enhanced version of your information.",
-            "ADD_INFO": "Edit your bio"
+            "ADD_INFO": "Modifier votre biographie"
         }
     },
     "PROJECT": {
@@ -972,7 +972,7 @@
     },
     "TASK": {
         "PAGE_TITLE": "{{taskSubject}} - Task {{taskRef}} - {{projectName}}",
-        "PAGE_DESCRIPTION": "Status: {{taskStatus }}. Description: {{taskDescription}}",
+        "PAGE_DESCRIPTION": "État: {{taskStatus }}. Description: {{taskDescription}}",
         "SECTION_NAME": "Détails de la tâche",
         "LINK_TASKBOARD": "Tableau des tâches",
         "TITLE_LINK_TASKBOARD": "Aller au tableau des tâches",
@@ -1019,7 +1019,7 @@
         "SUCCESS": "Nos Oompa Loompas ont mis à jour votre adresse courriel"
     },
     "ISSUES": {
-        "PAGE_TITLE": "Issues - {{projectName}}",
+        "PAGE_TITLE": "Problèmes - {{projectName}}",
         "PAGE_DESCRIPTION": "The issues list panel of the project {{projectName}}: {{projectDescription}}",
         "LIST_SECTION_NAME": "Problèmes",
         "SECTION_NAME": "Detalhes do problema",
@@ -1105,7 +1105,7 @@
         "UNDO_ARCHIVED": "Refaites le glisser-déposer pour annuler"
     },
     "SEARCH": {
-        "PAGE_TITLE": "Search - {{projectName}}",
+        "PAGE_TITLE": "Chercher - {{projectName}}",
         "PAGE_DESCRIPTION": "Search anything, user stories, issues, tasks or wiki pages, in the project {{projectName}}: {{projectDescription}}",
         "FILTER_USER_STORIES": "Récits utilisateur",
         "FILTER_ISSUES": "Problèmes",
@@ -1117,7 +1117,7 @@
         "EMPTY_DESCRIPTION": "Vous pouvez essayer l'un des onglets au-dessus ou relancer une recherche"
     },
     "TEAM": {
-        "PAGE_TITLE": "Team - {{projectName}}",
+        "PAGE_TITLE": "EQUIPE - {{projectName}}",
         "PAGE_DESCRIPTION": "The team panel to show all the members of the project {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Equipe",
         "APP_TITLE": "EQUIPE - {{projectName}}",
@@ -1193,7 +1193,7 @@
     },
     "WIKI": {
         "PAGE_TITLE": "{{wikiPageName}} - Wiki - {{projectName}}",
-        "PAGE_DESCRIPTION": "Last edition on {{lastModifiedDate}} ({{totalEditions}} editions in total) Content: {{ wikiPageContent }}",
+        "PAGE_DESCRIPTION": "Dernière modification le {{lastModifiedDate}} ({{totalEditions}} modifications en tout) Contenu: {{ wikiPageContent }}",
         "DATETIME": "DD MMM YYYY HH:mm",
         "PLACEHOLDER_PAGE": "Ecrivez votre page wiki",
         "REMOVE": "Supprimer cette page wiki",
@@ -1222,9 +1222,10 @@
         "US_CREATED": "{{username}} a créé un nouveau récit utilisateur {{obj_name}} dans {{project_name}}",
         "ISSUE_CREATED": "{{username}} a créé un nouveau suivi de problème {{obj_name}} dans {{project_name}}",
         "TASK_CREATED": "{{username}} a créé une nouvelle Tâche {{obj_name}} dans {{project_name}}",
+        "TASK_CREATED_WITH_US": "{{username}} has created a new task {{obj_name}} in {{project_name}} which belongs to the US {{us_name}}",
         "WIKI_CREATED": "{{username}} a créé une nouvelle page wiki {{obj_name}} dans {{project_name}}",
         "MILESTONE_CREATED": "{{username}} a créé un nouveau sprint {{obj_name}} dans {{project_name}}",
-        "NEW_PROJECT": "{{username}} created the project {{project_name}}",
+        "NEW_PROJECT": "{{username}} a créé le projet {{project_name}}",
         "MILESTONE_UPDATED": "{{username}} a mis à jour le sprint {{obj_name}}",
         "US_UPDATED": "{{username}} a mis à jour l'attribut «{{field_name}}» du récit utilisateur {{obj_name}}",
         "ISSUE_UPDATED": "{{username}} a mis à jour l'attribut «{{field_name}}» du suivi de problème {{obj_name}}",
@@ -1238,6 +1239,7 @@
         "US_ADDED_MILESTONE": "{{username}} a ajouté le récit utilisateur {{obj_name}} à {{sprint_name}}",
         "US_REMOVED_FROM_MILESTONE": "{{username}} a ajouté le récit utilisateur {{obj_name}} au carnet",
         "BLOCKED": "{{username}} a bloqué {{obj_name}}",
-        "UNBLOCKED": "{{username}} a débloqué {{obj_name}}"
+        "UNBLOCKED": "{{username}} a débloqué {{obj_name}}",
+        "NEW_USER": "{{username}} a rejoint Taiga"
     }
 }

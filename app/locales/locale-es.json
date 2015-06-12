@@ -1222,6 +1222,7 @@
         "US_CREATED": "{{username}} ha creado una nueva historia {{obj_name}} en {{project_name}}",
         "ISSUE_CREATED": "{{username}} ha creado una nueva petición {{obj_name}} en {{project_name}}",
         "TASK_CREATED": "{{username}} ha creado una nueva tarea {{obj_name}} en {{project_name}}",
+        "TASK_CREATED_WITH_US": "{{username}} ha creado una nueva tarea {{obj_name}} en {{project_name}} que proviene de la historia {{us_name}}",
         "WIKI_CREATED": "{{username}} ha creado una nueva página de wiki {{obj_name}} en {{project_name}}\n",
         "MILESTONE_CREATED": "{{username}} ha creado un nuevo sprint {{obj_name}} en {{project_name}}",
         "NEW_PROJECT": "{{username}} creó el projecto {{project_name}}",
@@ -1238,6 +1239,7 @@
         "US_ADDED_MILESTONE": "{{username}} ha añadido la historia {{obj_name}} a {{sprint_name}}",
         "US_REMOVED_FROM_MILESTONE": "{{username}} ha añadido la historia {{obj_name}} al backlog",
         "BLOCKED": "{{username}} ha bloqueado {{obj_name}}",
-        "UNBLOCKED": "{{username}} ha desbloqueado {{obj_name}}"
+        "UNBLOCKED": "{{username}} ha desbloqueado {{obj_name}}",
+        "NEW_USER": "{{username}} se ha unido a Taiga"
     }
 }

@@ -239,12 +239,12 @@
         },
         "META": {
             "PAGE_TITLE": "Taiga",
-            "PAGE_DESCRIPTION": "Taiga is a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
+            "PAGE_DESCRIPTION": "Taiga ist ein Projekt-Management Plattform für Neugründer und agile Entwickler und Designer, die ein unkompliziertes und ansprechendes Tool möchten, das die Arbeit wirklich angenehm macht. "
         }
     },
     "LOGIN": {
         "PAGE_TITLE": "Login - Taiga",
-        "PAGE_DESCRIPTION": "Logging in to Taiga, a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
+        "PAGE_DESCRIPTION": "Melden Sie sich bei Taiga an, einer Projekt-Management Plattform für Neugründer und agile Entwickler und Designer, die ein unkompliziertes und ansprechendes Tool möchten, das die Arbeit wirklich angenehm macht. "
     },
     "AUTH": {
         "INVITED_YOU": "hat Sie zum Projekt eingeladen",
@@ -268,7 +268,7 @@
     },
     "REGISTER": {
         "PAGE_TITLE": "Registrieren - Taiga",
-        "PAGE_DESCRIPTION": "Create your account in Taiga, a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
+        "PAGE_DESCRIPTION": "Erstellen Sie Ihren Account in Taiga, einer Projekt-Management Plattform für Neugründer und agile Entwickler und Designer, die ein unkompliziertes und ansprechendes Tool möchten, das die Arbeit wirklich angenehm macht. "
     },
     "REGISTER_FORM": {
         "TITLE": "Einen neuen Taiga Account registrieren (kostenlos)",
@@ -318,7 +318,7 @@
     },
     "INVITATION": {
         "PAGE_TITLE": "Einladung Annahme - Taiga",
-        "PAGE_DESCRIPTION": "Nehmen Sie die Einladung an und treten Sie einem Projekt in Taiga bei, einer Projekt-Management Plattform für Neugründer und agile Entwickler und Desinger, die ein unkompliziertes und ansprechendes Tool möchten, das die Arbeit wirklich angenehm macht. "
+        "PAGE_DESCRIPTION": "Nehmen Sie die Einladung an und treten Sie einem Projekt in Taiga bei, einer Projekt-Management Plattform für Neugründer und agile Entwickler und Designer, die ein unkompliziertes und ansprechendes Tool möchten, das die Arbeit wirklich angenehm macht. "
     },
     "INVITATION_LOGIN_FORM": {
         "NOT_FOUND": "<strong>Huch, wir haben ein Problem</strong><br />Unsere Heinzelmännchen können Ihre Einladung nicht finden.",
@@ -642,7 +642,7 @@
         "PROFILE_SIDEBAR": {
             "TITLE": "Ihr Profil",
             "DESCRIPTION": "People can see everything you do and what are you working on. Add a nice bio to give an enhanced version of your information.",
-            "ADD_INFO": "Edit your bio"
+            "ADD_INFO": "Bearbeiten Sie Ihre Bio"
         }
     },
     "PROJECT": {
@@ -1090,7 +1090,7 @@
     },
     "KANBAN": {
         "PAGE_TITLE": "Kanban - {{projectName}}",
-        "PAGE_DESCRIPTION": "The kanban panel, with user stories of the project {{projectName}}: {{projectDescription}}",
+        "PAGE_DESCRIPTION": "Das Kanban Panel, mit User-Stories des Projekts {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Kanban",
         "TITLE_ACTION_FOLD": "Seite einklappen",
         "TITLE_ACTION_UNFOLD": "Spalte aufklappen",
@@ -1106,7 +1106,7 @@
     },
     "SEARCH": {
         "PAGE_TITLE": "Suche - {{projectName}}",
-        "PAGE_DESCRIPTION": "Search anything, user stories, issues, tasks or wiki pages, in the project {{projectName}}: {{projectDescription}}",
+        "PAGE_DESCRIPTION": "Suchen Sie User-Stories, Tickets, Aufgaben oder Wiki Seiten im Projekt {{projectName}}: {{projectDescription}}",
         "FILTER_USER_STORIES": "User-Stories",
         "FILTER_ISSUES": "Tickets",
         "FILTER_TASKS": "Aufgaben",
@@ -1118,7 +1118,7 @@
     },
     "TEAM": {
         "PAGE_TITLE": "Team - {{projectName}}",
-        "PAGE_DESCRIPTION": "The team panel to show all the members of the project {{projectName}}: {{projectDescription}}",
+        "PAGE_DESCRIPTION": "Das Team Panel, um alle Mitglieder des Projekts anzuzeigen {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Team",
         "APP_TITLE": "TEAM - {{projectName}}",
         "PLACEHOLDER_INPUT_SEARCH": "Unter vollständigem Namen suchen...",
@@ -1222,9 +1222,10 @@
         "US_CREATED": "{{username}} hat eine neue user-story erstellt {{obj_name}} in {{project_name}}",
         "ISSUE_CREATED": "{{username}} hat ein neues ticket erstellt {{obj_name}} in {{project_name}} ",
         "TASK_CREATED": "{{username}} hat eine neue aufgabe erstellt {{obj_name}} in {{project_name}}",
+        "TASK_CREATED_WITH_US": "{{username}} hat eine neue Aufgabe erstellt {{obj_name}} in {{project_name}} die zur User-Story {{us_name}} gehört",
         "WIKI_CREATED": "{{username}} hat eine neue Wiki Seite erstellt {{obj_name}} in {{project_name}}",
         "MILESTONE_CREATED": "{{username}} hat einen neuen sprint erstellt {{obj_name}} in {{project_name}}",
-        "NEW_PROJECT": "{{username}} created the project {{project_name}}",
+        "NEW_PROJECT": "{{username}} erstellte das Projekt {{project_name}}",
         "MILESTONE_UPDATED": "{{username}} hat den sprint aktualisiert {{obj_name}}",
         "US_UPDATED": "{{username}} hat das Attribut aktualisiert \"{{field_name}}\" von User-Story {{obj_name}}",
         "ISSUE_UPDATED": "{{username}} hat das attribut aktualisiert \"{{field_name}}\" von ticket {{obj_name}}",
@@ -1232,12 +1233,13 @@
         "TASK_UPDATED_WITH_US": "{{username}} hat das attribut aktualisiert \"{{field_name}}\" von aufgabe {{obj_name}} die zur user-story {{us_name}} gehört",
         "WIKI_UPDATED": "{{username}} hat die wiki seite aktualisiert {{obj_name}}\n",
         "NEW_COMMENT_US": "{{username}} hat in User-Story {{obj_name}} kommentiert",
-        "NEW_COMMENT_ISSUE": "{{username}} has commented in the issue {{obj_name}}",
-        "NEW_COMMENT_TASK": "{{username}} has commented in the task {{obj_name}}",
+        "NEW_COMMENT_ISSUE": "{{username}} hat im Ticket kommentiert {{obj_name}}",
+        "NEW_COMMENT_TASK": "{{username}} hat in der Aufgabe kommentiert {{obj_name}}",
         "NEW_MEMBER": "{{project_name}} hat ein neues Mitglied",
         "US_ADDED_MILESTONE": "{{username}} hat die User-Story {{obj_name}} zu {{sprint_name}} hinzugefügt",
-        "US_REMOVED_FROM_MILESTONE": "{{username}} has added the US {{obj_name}} to the backlog",
+        "US_REMOVED_FROM_MILESTONE": "{{username}} hat die User-Story {{obj_name}} zur Auftragsliste hinzugefügt ",
         "BLOCKED": "{{username}} hat gesperrt {{obj_name}}",
-        "UNBLOCKED": "{{username}} hat entsperrt {{obj_name}}"
+        "UNBLOCKED": "{{username}} hat entsperrt {{obj_name}}",
+        "NEW_USER": "{{username}} ist Taiga beigetreten"
     }
 }
