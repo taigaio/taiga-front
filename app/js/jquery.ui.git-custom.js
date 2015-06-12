@@ -4508,6 +4508,7 @@ var sortable = $.widget("ui.sortable", $.ui.mouse, {
 		scroll: true,
 		scrollSensitivity: 20,
 		scrollSpeed: 20,
+        disableHorizontalScroll: false,
 		scope: "default",
 		tolerance: "intersect",
 		zIndex: 1000,
@@ -4804,11 +4805,14 @@ var sortable = $.widget("ui.sortable", $.ui.mouse, {
 					scrolled = this.document.scrollTop(this.document.scrollTop() + o.scrollSpeed);
 				}
 
-				if(event.pageX - this.document.scrollLeft() < o.scrollSensitivity) {
-					scrolled = this.document.scrollLeft(this.document.scrollLeft() - o.scrollSpeed);
-				} else if(this.window.width() - (event.pageX - this.document.scrollLeft()) < o.scrollSensitivity) {
-					scrolled = this.document.scrollLeft(this.document.scrollLeft() + o.scrollSpeed);
-				}
+                // taiga
+                if (!this.options.disableHorizontalScroll) {
+				    if(event.pageX - this.document.scrollLeft() < o.scrollSensitivity) {
+					    scrolled = this.document.scrollLeft(this.document.scrollLeft() - o.scrollSpeed);
+				    } else if(this.window.width() - (event.pageX - this.document.scrollLeft()) < o.scrollSensitivity) {
+					    scrolled = this.document.scrollLeft(this.document.scrollLeft() + o.scrollSpeed);
+				    }
+                }
 
 			}
 
