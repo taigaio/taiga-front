@@ -48,6 +48,9 @@ class UserTimelineService extends taiga.Service
 
                     return false
 
+            if timeline.get("data").get("comment_deleted")
+                return false
+
         if !@._isValidEvent(timeline.get('event_type'))
             return false
 

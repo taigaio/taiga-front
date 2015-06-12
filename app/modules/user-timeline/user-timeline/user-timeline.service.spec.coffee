@@ -112,6 +112,16 @@ describe "tgUserTimelineService", ->
                         "name": "xx"
                     }
                 }
+            },
+            { # invalid item
+                event_type: "xx.us.change",
+                data: {
+                    comment_deleted: true,
+                    values_diff: {
+                        "status": "xx",
+                        "subject": "xx"
+                    }
+                }
             }
         ]
 
