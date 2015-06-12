@@ -8,7 +8,7 @@ class UserTimelineService extends taiga.Service
     _valid_fields: [
         'status',
         'subject',
-        'description',
+        'description_diff',
         'assigned_to',
         'points',
         'severity',
