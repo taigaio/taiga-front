@@ -1,21 +1,28 @@
 class ProfileHints
-    maxHints: 4
-    supportUrls: [
-        "https://taiga.io/support/import-export-projects/", #HINT1
-        "https://taiga.io/support/custom-fields/" #HINT2
-        "#" #HINT3
-        "#" #HINT4
+    HINTS: [
+        { #hint1
+            url: "https://taiga.io/support/import-export-projects/"
+        },
+        { #hint2
+            url: "https://taiga.io/support/custom-fields/"
+        },
+        { #hint3
+        },
+        { #hint4
+        }
     ]
     constructor: (@translate) ->
-        hintKey = Math.floor(Math.random() * @.maxHints) + 1
+        hintKey = Math.floor(Math.random() * @.HINTS.length) + 1
 
-        @.url = @.supportUrls[hintKey - 1]
+        @.hint = @.HINTS[hintKey - 1]
+
+        @.hint.linkText = @.hint.linkText || 'HINTS.LINK'
 
         @translate("HINTS.HINT#{hintKey}_TITLE").then (text) =>
-            @.title = text
+            @.hint.title = text
 
         @translate("HINTS.HINT#{hintKey}_TEXT").then (text) =>
-            @.text = text
+            @.hint.text = text
 
 ProfileHints.$inject = [
     "$translate"
