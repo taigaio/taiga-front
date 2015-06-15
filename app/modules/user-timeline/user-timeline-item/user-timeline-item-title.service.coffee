@@ -1,3 +1,5 @@
+unslugify = @.taiga.unslugify
+
 class UserTimelineItemTitle
     @.$inject = [
         "$translate"
@@ -56,7 +58,7 @@ class UserTimelineItemTitle
             url = @._getDetailObjUrl(event)
 
             if event.obj == 'wikipage'
-                text = obj.slug
+                text = unslugify(obj.slug)
             else if event.obj == 'milestone'
                 text = obj.name
             else

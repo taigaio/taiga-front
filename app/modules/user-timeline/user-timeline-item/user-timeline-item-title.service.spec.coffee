@@ -188,7 +188,7 @@ describe "tgUserTimelineItemTitle", ->
         timeline = {
             data: {
                 wikipage: {
-                    slug: 'slugwiki',
+                    slug: 'slug-wiki',
                 }
             }
         }
@@ -203,7 +203,7 @@ describe "tgUserTimelineItemTitle", ->
         }
 
         objparam = sinon.match ((value) ->
-            return value.obj_name == '<a tg-nav="project-wiki-page:project=vm.activity.project.slug,slug=vm.activity.obj.slug" title="slugwiki">slugwiki</a>'
+            return value.obj_name == '<a tg-nav="project-wiki-page:project=vm.activity.project.slug,slug=vm.activity.obj.slug" title="Slug wiki">Slug wiki</a>'
          ), "objparam"
 
         mockTranslate.instant
