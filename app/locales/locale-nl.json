@@ -329,6 +329,7 @@
         "PAGE_TITLE": "Home - Taiga",
         "PAGE_DESCRIPTION": "The Taiga home page with your main projects and all your assigned and watched user stories, tasks and issues",
         "EMPTY_WATCHING": "<strong>Volg</strong> de projecten, User Stories, Taken, Issues... waarvan je op de hoogte gehouden wilt worden :)",
+        "EMPTY_PROJECT_LIST": "You don't have any projects yet",
         "WORKING_ON_SECTION": "Werkt aan",
         "WATCHING_SECTION": "Volgers"
     },

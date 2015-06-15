@@ -7,12 +7,16 @@ ul.home-project-list(ng-show="vm.projects.size")
                     include ../../../svg/lock.svg
             p {{ ::project.get('description') | limitTo:150 }}
                 span(ng-if="::project.get('description').size > 150") ...
-a.see-more-projects-btn.button-gray(ng-show="vm.projects.size", href="#", tg-nav="projects", title="{{'PROJECT.NAVIGATION.SEE_MORE_PROJECTS' | translate}}",         translate="PROJECT.NAVIGATION.SEE_MORE_PROJECTS")
+
+a.see-more-projects-btn.button-gray(href="#",
+                                    ng-show="vm.projects.size",
+                                    tg-nav="projects",
+                                    title="{{'PROJECT.NAVIGATION.SEE_MORE_PROJECTS' | translate}}",
+                                    translate="PROJECT.NAVIGATION.SEE_MORE_PROJECTS")
+
 section.projects-empty(ng-hide="vm.projects.size")
     include ../../../svg/empty-project.svg
-    p You don't have any projects yet
-    a.create-project-btn.button-green(
-            href="#",
-            ng-click="vm.newProject()",
-            title="{{'PROJECT.NAVIGATION.ACTION_CREATE_PROJECT' | translate}}",
-            translate="PROJECT.NAVIGATION.ACTION_CREATE_PROJECT")
+    p(translate="HOME.EMPTY_PROJECT_LIST")
+    a.create-project-btn.button-green(href="#", ng-click="vm.newProject()",
+                                      title="{{'PROJECT.NAVIGATION.ACTION_CREATE_PROJECT' | translate}}",
+                                      translate="PROJECT.NAVIGATION.ACTION_CREATE_PROJECT")
