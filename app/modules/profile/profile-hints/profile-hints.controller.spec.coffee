@@ -24,26 +24,13 @@ describe "ProfileHints", ->
             $controller = _$controller_
 
     it "random hint generator", (done) ->
-
-        returned = {
-            then: () ->
-        }
-
-        mocks.translateService.withArgs("HINTS.HINT1_TITLE").promise().resolve("title_1")
-        mocks.translateService.withArgs("HINTS.HINT1_TEXT").promise().resolve("text_1")
-
-        mocks.translateService.withArgs("HINTS.HINT2_TITLE").promise().resolve("title_2")
-        mocks.translateService.withArgs("HINTS.HINT2_TEXT").promise().resolve("text_2")
+        mocks.translateService.promise().resolve("fill")
 
         ctrl = $controller("ProfileHints")
 
         setTimeout ( ->
-            if ctrl.url == "https://taiga.io/support/custom-fields/"
-                expect(ctrl.title).to.be.equal("title_2")
-                expect(ctrl.text).to.be.equal("text_2")
-                done()
-            else if ctrl.url == "https://taiga.io/support/import-export-projects/"
-                expect(ctrl.title).to.be.equal("title_1")
-                expect(ctrl.text).to.be.equal("text_1")
+                expect(ctrl.hint.title).to.be.equal("fill")
+                expect(ctrl.hint.text).to.be.equal("fill")
+                expect(ctrl.hint.linkText).to.have.length.above(1)
                 done()
         )
