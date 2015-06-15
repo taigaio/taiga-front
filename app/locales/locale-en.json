@@ -1222,7 +1222,7 @@
         "HINT3_TITLE": "Reorder your projects to feature those most relevant to you",
         "HINT3_TEXT": "The top 10 project will be in your top bar direct access",
         "HINT4_TITLE": "Did you forgot what were you working on?",
-        "HINT4_TEXT": "Don't worry, on your dashboard you'll find your open tasks issues and user stories in the order you worked on them."
+        "HINT4_TEXT": "Don't worry, on your dashboard you'll find your open tasks, issues, and user stories in the order you worked on them."
     },
     "TIMELINE": {
         "UPLOAD_ATTACHMENT": "{{username}} has uploaded a new attachment in {{obj_name}}",

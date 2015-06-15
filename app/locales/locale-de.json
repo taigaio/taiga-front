@@ -1215,7 +1215,11 @@
         "HINT1_TITLE": "Wussten Sie, dass Sie Projekte importieren und exportieren?",
         "HINT1_TEXT": "Dies erlaubt Ihnen, alle Ihre Daten zu extrahieren und sie von einer Taiga zur nächsten zu transportieren",
         "HINT2_TITLE": "Wussten Sie, dass Sie benutzerdefinierte Felder erstellen können?",
-        "HINT2_TEXT": "Es unterstüzt Teams ihren flexiblen Input in den Workflow einzupassen"
+        "HINT2_TEXT": "Teams können jetzt benutzerdefinierte Felder erstellen, als eine flexible Möglichkeit, spezifische Daten einzutragen. Dies ist praktisch für ihren jeweiligen Arbeitsablauf",
+        "HINT3_TITLE": "Reorder your projects to feature those most relevant to you",
+        "HINT3_TEXT": "The top 10 project will be in your top bar direct access",
+        "HINT4_TITLE": "Haben Sie vergessen, woran Sie arbeiten?",
+        "HINT4_TEXT": "Don't worry, on your dashboard you'll find your open tasks, issues, and user stories in the order you worked on them."
     },
     "TIMELINE": {
         "UPLOAD_ATTACHMENT": "{{username}} hat einen neuen Anhang hochgeladen in {{obj_name}}",

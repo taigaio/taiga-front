@@ -1215,7 +1215,11 @@
         "HINT1_TITLE": "Savez-vous que vous pouvez importer et exporter les projets?",
         "HINT1_TEXT": "Cela vous permet d'extraire toutes vos données d'un Taiga et de le déplacer vers un autre",
         "HINT2_TITLE": "Savez-vous que vous pouvez créer des champs personnalisés ?",
-        "HINT2_TEXT": "This will provide teams with a flexible input to fit in their workflow."
+        "HINT2_TEXT": "Teams can now create custom fields as a flexible means to enter specific data useful for their particular workflow",
+        "HINT3_TITLE": "Reorder your projects to feature those most relevant to you",
+        "HINT3_TEXT": "The top 10 project will be in your top bar direct access",
+        "HINT4_TITLE": "Did you forgot what were you working on?",
+        "HINT4_TEXT": "Don't worry, on your dashboard you'll find your open tasks, issues, and user stories in the order you worked on them."
     },
     "TIMELINE": {
         "UPLOAD_ATTACHMENT": "{{username}} a téléversé une nouvelle pièce jointe dans {{obj_name}}",
