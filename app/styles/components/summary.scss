@@ -28,7 +28,8 @@
 
     .description {
         @extend %small;
-        @extend %text;
+        @extend %light;
+        line-height: 1;
     }
 }
 
@@ -88,7 +89,7 @@
         margin-right: 2rem;
     }
     .icon {
-        @extend %xlarge;
+        font-size: 1.4rem;
         margin-right: .4rem;
         &.icon-stats {
             color: $gray;
