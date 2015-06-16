@@ -64,7 +64,11 @@
     p {
         @extend %small;
     }
-    .create-project-btn {
+    .create-project-button {
+        display: block;
+        margin-bottom: .25rem;
+    }
+    .import-project-button {
         display: block;
     }
 }
