@@ -90,13 +90,8 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.$emit('project:loaded', project)
             return project
 
-    loadTagsColors: ->
-        return @rs.projects.tagsColors(@scope.projectId).then (tags_colors) =>
-            @scope.project.tags_colors = tags_colors
-
     loadInitialData: ->
         promise = @.loadProject()
-        promise.then => @.loadTagsColors()
         return promise
 
     openDeleteLightbox: ->
@@ -111,6 +106,8 @@ module.controller("ProjectProfileController", ProjectProfileController)
 
 ProjectProfileDirective = ($repo, $confirm, $loading, $navurls, $location, projectService) ->
     link = ($scope, $el, $attrs) ->
+        $ctrl = $el.controller()
+
         form = $el.find("form").checksley({"onlyOneErrorElement": true})
         submit = debounce 2000, (event) =>
             event.preventDefault()
@@ -118,6 +115,7 @@ ProjectProfileDirective = ($repo, $confirm, $loading, $navurls, $location, proje
             return if not form.validate()
 
             $loading.start(submitButton)
+
             promise = $repo.save($scope.project)
             promise.then ->
                 $loading.finish(submitButton)
@@ -126,7 +124,8 @@ ProjectProfileDirective = ($repo, $confirm, $loading, $navurls, $location, proje
                     project: $scope.project.slug
                 })
                 $location.path(newUrl)
-                $scope.$emit("project:loaded", $scope.project)
+
+                $ctrl.loadInitialData()
 
                 projectService.fetchProject()
 
