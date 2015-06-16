@@ -15,11 +15,16 @@ class ProfileController
             @userService
                 .getUserByUserName(@routeParams.slug)
                 .then (user) =>
-                    @.user = user
-                    @.isCurrentUser = false
-                    @._setMeta(@.user)
+                    if !user.get('is_active')
+                        @xhrError.notFound()
+                    else
+                        @.user = user
+                        @.isCurrentUser = false
+                        @._setMeta(@.user)
+
+                        return user
                 .catch (xhr) =>
-                    @xhrError.response(xhr)
+                    return @xhrError.response(xhr)
 
         else
             @.user = @currentUserService.getUser()

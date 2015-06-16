@@ -7,14 +7,21 @@ class xhrError extends taiga.Service
 
     constructor: (@q, @location, @navUrls) ->
 
+    notFound: () ->
+        @location.path(@navUrls.resolve("not-found"))
+        @location.replace()
+
+    permissionDenied: () ->
+        @location.path(@navUrls.resolve("permission-denied"))
+        @location.replace()
+
     response: (xhr) ->
         if xhr
             if xhr.status == 404
-                @location.path(@navUrls.resolve("not-found"))
-                @location.replace()
+                @.notFound()
+
             else if xhr.status == 403
-                @location.path(@navUrls.resolve("permission-denied"))
-                @location.replace()
+                @.permissionDenied()
 
         return @q.reject(xhr)
 

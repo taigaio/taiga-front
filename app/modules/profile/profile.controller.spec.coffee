@@ -43,7 +43,8 @@ describe "ProfileController", ->
 
     _mockXhrErrorService = () ->
         mocks.xhrErrorService = {
-            response: sinon.spy()
+            response: sinon.spy(),
+            notFound: sinon.spy()
         }
 
         provide.value "tgXhrErrorService", mocks.xhrErrorService
@@ -76,9 +77,10 @@ describe "ProfileController", ->
         mocks.routeParams.slug = "user-slug"
 
         user = Immutable.fromJS({
-            username: "username"
-            full_name_display: "full-name-display"
-            bio: "bio"
+            username: "username",
+            full_name_display: "full-name-display",
+            bio: "bio",
+            is_active: true
         })
 
         mocks.translate
@@ -121,9 +123,10 @@ describe "ProfileController", ->
         $scope = $rootScope.$new()
 
         user = Immutable.fromJS({
-            username: "username"
-            full_name_display: "full-name-display"
-            bio: "bio"
+            username: "username",
+            full_name_display: "full-name-display",
+            bio: "bio",
+            is_active: true
         })
 
         mocks.translate
@@ -141,5 +144,26 @@ describe "ProfileController", ->
             expect(ctrl.user).to.be.equal(user)
             expect(ctrl.isCurrentUser).to.be.true
             expect(mocks.appMetaService.setAll.withArgs("user-profile-page-title", "bio")).to.be.calledOnce
+            done()
+        )
+
+    it "non-active user", (done) ->
+        $scope = $rootScope.$new()
+
+        mocks.routeParams.slug = "user-slug"
+
+        user = Immutable.fromJS({
+            username: "username",
+            full_name_display: "full-name-display",
+            bio: "bio",
+            is_active: false
+        })
+
+        mocks.userService.getUserByUserName.withArgs(mocks.routeParams.slug).promise().resolve(user)
+
+        ctrl = $controller("Profile")
+
+        setTimeout ( ->
+            expect(mocks.xhrErrorService.notFound).to.be.calledOnce
             done()
         )
