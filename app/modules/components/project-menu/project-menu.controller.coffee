@@ -79,6 +79,8 @@ class ProjectMenuController
             baseUrl = "https://appear.in/"
         else if @.project.get("videoconferences") == "talky"
             baseUrl = "https://talky.io/"
+        else if @.project.get("videoconferences") == "jitsi"
+            baseUrl = "https://meet.jit.si/"
         else
             return ""
 
