@@ -32,7 +32,8 @@
 }
 
 @mixin popover($width, $top: '', $left: '', $bottom: '', $right: '', $arrow-width: 0, $arrow-top: '', $arrow-left: '', $arrow-bottom: '', $arrow-height: 15px) {
-    @extend %text;
+    @extend %light;
+    @extend %small;
     background: $blackish;
     bottom: #{$bottom};
     color: $white;
