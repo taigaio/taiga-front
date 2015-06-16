@@ -19,8 +19,8 @@
         position: relative;
         text-align: center;
         .icon {
-            @extend %larger;
             color: $blackish;
+            font-size: 1.8rem;
         }
         .points {
             @extend %larger;
