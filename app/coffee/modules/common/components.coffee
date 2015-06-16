@@ -505,7 +505,9 @@ EditableSubjectDirective = ($rootscope, $repo, $confirm, $loading, $qqueue, $tem
             $el.find('.view-subject').hide()
             $el.find('input').focus()
 
-        $el.on "click", ".save", ->
+        $el.on "click", ".save", (e) ->
+            e.preventDefault()
+
             subject = $scope.item.subject
             save(subject)
 
