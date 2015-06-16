@@ -440,7 +440,7 @@ module.directive("tgIssues", ["$log", "$tgLocation", "$tgTemplate", "$compile", 
 ## Issues Filters Directive
 #############################################################################
 
-IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template, $translate, $compile) ->
+IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template, $translate, $compile, $auth) ->
     template = $template.get("issue/issues-filters.html", true)
     templateSelected = $template.get("issue/issues-filters-selected.html", true)
 
@@ -477,7 +477,7 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template, $
             html = $compile(html)($scope)
             $el.find(".filters-applied").html(html)
 
-            if selectedFilters.length > 0
+            if $auth.isAuthenticated() && selectedFilters.length > 0
                 $el.find(".save-filters").show()
             else
                 $el.find(".save-filters").hide()
@@ -663,7 +663,7 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template, $
     return {link:link}
 
 module.directive("tgIssuesFilters", ["$log", "$tgLocation", "$tgResources", "$tgConfirm", "$tgLoading",
-                                     "$tgTemplate", "$translate", "$compile", IssuesFiltersDirective])
+                                     "$tgTemplate", "$translate", "$compile", "$tgAuth", IssuesFiltersDirective])
 
 
 #############################################################################
