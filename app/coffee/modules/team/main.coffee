@@ -89,6 +89,8 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
             if membership.user && (not currentUser? or membership.user != currentUser.id)
                 return membership
 
+        @scope.memberships = _.filter memberships, (membership) => return membership.is_active
+
         for membership in @scope.memberships
             if not membership.photo?
                 membership.photo = "/images/unnamed.png"

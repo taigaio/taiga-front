@@ -45,7 +45,6 @@ class UserTimelineService extends taiga.Service
                     return false
                 else if values[0] == 'attachments' &&
                      values_diff.get('attachments').get('new').size == 0
-
                     return false
 
             if timeline.get("data").get("comment_deleted")
