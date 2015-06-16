@@ -171,7 +171,7 @@ SprintSortableDirective = ($repo, $rs, $rootscope) ->
                     scroll: true
                     dropOnEmpty: true
                     items: ".sprint-table .milestone-us-item-row"
-                    containment: "window"
+                    disableHorizontalScroll: true
                     connectWith: ".sprint,.backlog-table-body,.empty-backlog"
                     placeholder: "row us-item-row sortable-placeholder"
                     forcePlaceholderSize:true
