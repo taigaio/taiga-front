@@ -38,7 +38,7 @@ div.wrapper(tg-project-profile, ng-controller="ProjectProfileController as ctrl"
 
             fieldset
                 label(for="tags", translate="ADMIN.PROJECT_PROFILE.TAGS")
-                div.tags-block(tg-lb-tag-line, ng-model="project.tags")
+                div.tags-block(ng-if="project.id", tg-lb-tag-line, ng-model="project.tags")
 
             fieldset
                 label(for="project-description", translate="ADMIN.PROJECT_PROFILE.DESCRIPTION")
