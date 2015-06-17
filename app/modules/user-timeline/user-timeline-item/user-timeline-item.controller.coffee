@@ -6,6 +6,7 @@ class UserTimelineItemController
 
     constructor: (@userTimelineItemType, @userTimelineItemTitle) ->
         timeline = @.timeline.toJS()
+
         event = @.parseEventType(timeline.event_type)
         type = @userTimelineItemType.getType(timeline, event)
 
