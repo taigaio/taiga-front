@@ -35,11 +35,13 @@
     }
     .timeline {
         flex: 1;
+        flex-shrink: 3;
         margin-right: 1rem;
+        max-width: 800px;
+        width: 0;
     }
     .involved-data {
         flex-basis: 220px;
-        flex-shrink: 0;
         width: 220px;
     }
     .involved-team,
