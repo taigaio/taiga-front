@@ -28,43 +28,63 @@ class UserTimelineController extends mixOf(taiga.Controller, taiga.PageMixin, ta
         "tgUserTimelineService"
     ]
 
-    min: 20
     constructor: (@userTimelineService) ->
         @.timelineList = Immutable.List()
-        @.page = 1
         @.scrollDisabled = false
+
+        @.timeline = null
+
+        if @.projectId
+            @.timeline = @userTimelineService.getProjectTimeline(@.projectId)
+        else if @.currentUser
+            @.timeline = @userTimelineService.getProfileTimeline(@.user.get("id"))
+        else
+            @.timeline = @userTimelineService.getUserTimeline(@.user.get("id"))
 
     loadTimeline: () ->
         @.scrollDisabled = true
 
-        promise = null
+        return @.timeline
+            .next()
+            .then (result) =>
+                @.timelineList = @.timelineList.concat(result)
 
-        if @.projectId
-            promise = @userTimelineService
-                .getProjectTimeline(@.projectId, @.page)
-        else if @.currentUser
-            promise = @userTimelineService
-                .getProfileTimeline(@.user.get("id"), @.page)
-        else
-            promise = @userTimelineService
-                .getUserTimeline(@.user.get("id"), @.page)
+                if result.size
+                    @.scrollDisabled = false
 
-        promise.then (list) =>
-            @._timelineLoaded(list)
+                return @.timelineList
 
-            if !@.scrollDisabled && @.timelineList.size < @.min
-                return @.loadTimeline()
+    # loadTimeline: () ->
+    #     @.scrollDisabled = true
 
-            return @.timelineList
+    #     promise = null
 
-        return promise
+    #     if @.projectId
+    #         promise = @userTimelineService
+    #             .getProjectTimeline(@.projectId, @.page)
+    #     else if @.currentUser
+    #         promise = @userTimelineService
+    #             .getProfileTimeline(@.user.get("id"), @.page)
+    #     else
+    #         promise = @userTimelineService
+    #             .getUserTimeline(@.user.get("id"), @.page)
 
-    _timelineLoaded: (newTimelineList) ->
-        @.timelineList = @.timelineList.concat(newTimelineList)
-        @.page++
+    #     promise.then (result) =>
+    #         @._timelineLoaded(result)
 
-        if newTimelineList.size
-            @.scrollDisabled = false
+    #         if !@.scrollDisabled && @.timelineList.size < @.min
+    #             return @.loadTimeline()
+
+    #         return @.timelineList
+
+    #     return promise
+
+    # _timelineLoaded: (result) ->
+    #     @.timelineList = @.timelineList.concat(result.get("data"))
+    #     @.page++
+
+    #     if result.get("next")
+    #         @.scrollDisabled = false
 
 angular.module("taigaUserTimeline")
     .controller("UserTimeline", UserTimelineController)
