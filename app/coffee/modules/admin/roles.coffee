@@ -228,7 +228,8 @@ NewRoleDirective = ($tgrepo, $confirm) ->
                 $el.find(".new").val('')
 
                 onSuccess = (role) ->
-                    $scope.roles.push(role)
+                    insertPosition = $scope.roles.length - 1
+                    $scope.roles.splice(insertPosition, 0, role)
                     $ctrl.setRole(role)
                     $el.find(".add-button").show()
                     $ctrl.loadProject()
