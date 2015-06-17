@@ -122,6 +122,22 @@ describe "tgUserTimelineService", ->
                         "subject": "xx"
                     }
                 }
+            },
+            { # valid item
+                event_type: "xx.task.change",
+                data: {
+                    values_diff: {
+                        "name": "xx"
+                    }
+                }
+            },
+            { # invalid item
+                event_type: "xx.task.change",
+                data: {
+                    values_diff: {
+                        "milestone": "xx"
+                    }
+                }
             }
         ]
 
@@ -140,10 +156,11 @@ describe "tgUserTimelineService", ->
             .then (_items_) ->
                 items = _items_.toJS()
 
-                expect(items).to.have.length(3)
+                expect(items).to.have.length(4)
                 expect(items[0]).to.be.eql(valid_items[0])
                 expect(items[1]).to.be.eql(valid_items[3])
                 expect(items[2]).to.be.eql(valid_items[5])
+                expect(items[3]).to.be.eql(valid_items[9])
 
                 done()
 
@@ -164,10 +181,11 @@ describe "tgUserTimelineService", ->
             .then (_items_) ->
                 items = _items_.toJS()
 
-                expect(items).to.have.length(3)
+                expect(items).to.have.length(4)
                 expect(items[0]).to.be.eql(valid_items[0])
                 expect(items[1]).to.be.eql(valid_items[3])
                 expect(items[2]).to.be.eql(valid_items[5])
+                expect(items[3]).to.be.eql(valid_items[9])
 
                 done()
 
@@ -188,11 +206,11 @@ describe "tgUserTimelineService", ->
             .then (_items_) ->
                 items = _items_.toJS()
 
-                expect(items).to.have.length(3)
+                expect(items).to.have.length(4)
                 expect(items[0]).to.be.eql(valid_items[0])
                 expect(items[1]).to.be.eql(valid_items[3])
                 expect(items[2]).to.be.eql(valid_items[5])
-
+                expect(items[3]).to.be.eql(valid_items[9])
                 done()
 
         $rootScope.$apply()
