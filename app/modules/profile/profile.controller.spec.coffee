@@ -11,7 +11,8 @@ describe "ProfileController", ->
     ])
 
     _mockTranslate = () ->
-        mocks.translate = sinon.stub()
+        mocks.translate = {}
+        mocks.translate.instant = sinon.stub()
 
         provide.value "$translate", mocks.translate
 
@@ -83,12 +84,12 @@ describe "ProfileController", ->
             is_active: true
         })
 
-        mocks.translate
+        mocks.translate.instant
             .withArgs('USER.PROFILE.PAGE_TITLE', {
                 userFullName: user.get("full_name_display"),
                 userUsername: user.get("username")
             })
-            .promise().resolve('user-profile-page-title')
+            .returns('user-profile-page-title')
 
         mocks.userService.getUserByUserName.withArgs(mocks.routeParams.slug).promise().resolve(user)
 
@@ -129,12 +130,12 @@ describe "ProfileController", ->
             is_active: true
         })
 
-        mocks.translate
+        mocks.translate.instant
             .withArgs('USER.PROFILE.PAGE_TITLE', {
                 userFullName: user.get("full_name_display"),
                 userUsername: user.get("username")
             })
-            .promise().resolve('user-profile-page-title')
+            .returns('user-profile-page-title')
 
         mocks.currentUser.getUser.returns(user)
 

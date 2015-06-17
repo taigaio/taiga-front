@@ -18,11 +18,9 @@ class ProfileHints
 
         @.hint.linkText = @.hint.linkText || 'HINTS.LINK'
 
-        @translate("HINTS.HINT#{hintKey}_TITLE").then (text) =>
-            @.hint.title = text
+        @.hint.title = @translate.instant("HINTS.HINT#{hintKey}_TITLE")
 
-        @translate("HINTS.HINT#{hintKey}_TEXT").then (text) =>
-            @.hint.text = text
+        @.hint.text = @translate.instant("HINTS.HINT#{hintKey}_TEXT")
 
 ProfileHints.$inject = [
     "$translate"

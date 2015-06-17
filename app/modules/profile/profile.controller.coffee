@@ -37,8 +37,9 @@ class ProfileController
             userUsername: user.get("username")
         }
 
-        @translate("USER.PROFILE.PAGE_TITLE", ctx).then (title) =>
-            description = user.get("bio")
-            @appMetaService.setAll(title, description)
+        title = @translate.instant("USER.PROFILE.PAGE_TITLE", ctx)
+
+        description = user.get("bio")
+        @appMetaService.setAll(title, description)
 
 angular.module("taigaProfile").controller("Profile", ProfileController)
