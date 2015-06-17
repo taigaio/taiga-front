@@ -260,9 +260,9 @@ RegisterDirective = ($auth, $confirm, $location, $navUrls, $config, $analytics, 
             $location.path($navUrls.resolve("home"))
 
         onErrorSubmit = (response) ->
-            if response.data._error_message?
-                text = $translate.instant("LOGIN_FORM.ERROR_GENERIC") + " " + response.data._error_message
-                $confirm.notify("light-error", text + " " + response.data._error_message)
+            if response.data._error_message
+                text = $translate.instant("COMMON.GENERIC_ERROR", {error: response.data._error_message})
+                $confirm.notify("light-error", text)
 
             form.setErrors(response.data)
 
@@ -350,12 +350,10 @@ ChangePasswordFromRecoveryDirective = ($auth, $confirm, $location, $params, $nav
             $location.path($navUrls.resolve("login"))
 
             text = $translate.instant("CHANGE_PASSWORD_RECOVERY_FORM.SUCCESS")
-
             $confirm.success(text)
 
         onErrorSubmit = (response) ->
             text = $translate.instant("COMMON.GENERIC_ERROR", {error: response.data._error_message})
-
             $confirm.notify("light-error", text)
 
         submit = debounce 2000, (event) =>
@@ -429,7 +427,7 @@ InvitationDirective = ($auth, $confirm, $location, $params, $navUrls, $analytics
 
         # Register form
         $scope.dataRegister = {token: token}
-        registerForm = $el.find("form.register-form").checksley()
+        registerForm = $el.find("form.register-form").checksley({onlyOneErrorElement: true})
 
         onSuccessSubmitRegister = (response) ->
             $analytics.trackEvent("auth", "invitationAccept", "invitation accept with new user", 1)
@@ -438,9 +436,11 @@ InvitationDirective = ($auth, $confirm, $location, $params, $navUrls, $analytics
                                        "Welcome to #{_.escape($scope.invitation.project_name)}")
 
         onErrorSubmitRegister = (response) ->
-            text = $translate.instant("LOGIN_FORM.ERROR_AUTH_INCORRECT")
+            if response.data._error_message
+                text = $translate.instant("COMMON.GENERIC_ERROR", {error: response.data._error_message})
+                $confirm.notify("light-error", text)
 
-            $confirm.notify("light-error", text)
+            registerForm.setErrors(response.data)
 
         submitRegister = debounce 2000, (event) =>
             event.preventDefault()
