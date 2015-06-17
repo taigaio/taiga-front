@@ -263,7 +263,6 @@
     },
     "LOGIN_FORM": {
         "ERROR_AUTH_INCORRECT": "D'après nos Oompa Loompas, votre nom d'utilisateur / adresse courriel ou votre mot de passe sont incorrects.",
-        "ERROR_GENERIC": "D'après nos Oompa Loompas, une erreur est survenue.",
         "SUCCESS": "Nos Oompa Loompas sont heureux, bienvenue sur Taiga."
     },
     "REGISTER": {

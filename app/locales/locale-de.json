@@ -263,7 +263,6 @@
     },
     "LOGIN_FORM": {
         "ERROR_AUTH_INCORRECT": "Laut unseren Heinzelmännchen ist Ihr Benutzername/Ihre E-Mail-Adresse oder Ihr Passwort nicht korrekt. ",
-        "ERROR_GENERIC": "Laut unseren Heinzelmännchen ist ein Fehler aufgetreten.",
         "SUCCESS": "Herzlich willkommen bei Taiga, unsere Heinzelmännchen freuen sich. "
     },
     "REGISTER": {
@@ -329,7 +328,7 @@
         "PAGE_TITLE": "Home - Taiga",
         "PAGE_DESCRIPTION": "Die Taiga Homepage mit Ihren wichtigsten Projekten und all Ihren zugeordneten und beobachteten User-Stories, Aufgaben und Tickets. ",
         "EMPTY_WATCHING": "<strong>Folgen</strong> Sie den Projekten, User-Stories, Aufgaben, Tickets... über die Sie etwas wissen möchten :)",
-        "EMPTY_PROJECT_LIST": "You don't have any projects yet",
+        "EMPTY_PROJECT_LIST": "Sie haben noch keine Projekte",
         "WORKING_ON_SECTION": "Arbeiten an",
         "WATCHING_SECTION": "Beobachtung"
     },
@@ -673,10 +672,10 @@
             "SECTION_TITLE": "Ihre Projekte",
             "PLACEHOLDER_SEARCH": "Suchen...",
             "ACTION_CREATE_PROJECT": "Projekt anlegen",
-            "ACTION_IMPORT_PROJECT": "Import project",
+            "ACTION_IMPORT_PROJECT": "Projekt importieren",
             "SEE_MORE_PROJECTS": "Weitere Projekte ansehen",
             "TITLE_CREATE_PROJECT": "Projekt anlegen",
-            "TITLE_IMPORT_PROJECT": "Import project",
+            "TITLE_IMPORT_PROJECT": "Projekt importieren",
             "TITLE_PRVIOUS_PROJECT": "Frühere Projekte anzeigen",
             "TITLE_NEXT_PROJECT": "Weitere Projekte zeigen",
             "HELP_TITLE": "Taiga Support Seite",
@@ -1219,7 +1218,7 @@
         "HINT1_TEXT": "Dies erlaubt Ihnen, alle Ihre Daten zu extrahieren und sie von einer Taiga zur nächsten zu transportieren",
         "HINT2_TITLE": "Wussten Sie, dass Sie benutzerdefinierte Felder erstellen können?",
         "HINT2_TEXT": "Teams können jetzt benutzerdefinierte Felder erstellen, als eine flexible Möglichkeit, spezifische Daten einzutragen. Dies ist praktisch für ihren jeweiligen Arbeitsablauf",
-        "HINT3_TITLE": "Reorder your projects to feature those most relevant to you",
+        "HINT3_TITLE": "Sortieren Sie ihre Projekte neu, um die zu zeigen, die für Sie am relevantesten sind",
         "HINT3_TEXT": "The top 10 project will be in your top bar direct access",
         "HINT4_TITLE": "Haben Sie vergessen, woran Sie arbeiten?",
         "HINT4_TEXT": "Don't worry, on your dashboard you'll find your open tasks, issues, and user stories in the order you worked on them."

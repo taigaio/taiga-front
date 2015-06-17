@@ -263,7 +263,6 @@
     },
     "LOGIN_FORM": {
         "ERROR_AUTH_INCORRECT": "Volgens onze Oempa-Loempa's, zijn je gebruikers/email of wachtwoord incorrect.",
-        "ERROR_GENERIC": "Volgens onze Oempa-Loempa's was er een fout.",
         "SUCCESS": "Onze Oempa-Loempa's zijn blij, welkom bij Taiga."
     },
     "REGISTER": {

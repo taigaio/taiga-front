@@ -263,7 +263,6 @@
     },
     "LOGIN_FORM": {
         "ERROR_AUTH_INCORRECT": "按我們的箹統記錄，你的帳戶名稱/電子郵件或密碼並不正確　",
-        "ERROR_GENERIC": "根據系統，此處有錯誤",
         "SUCCESS": "我們系統歡迎你加入Taiga"
     },
     "REGISTER": {

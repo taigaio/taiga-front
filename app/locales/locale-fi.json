@@ -263,7 +263,6 @@
     },
     "LOGIN_FORM": {
         "ERROR_AUTH_INCORRECT": "Oompa Loompas sanovat että käyttäjänimesi tai sähköpostisi tai salasanasi on väärä.",
-        "ERROR_GENERIC": "Oompa Loompas havaitsivat virheen",
         "SUCCESS": "Oompa Loompas ovat onnellisia, tervetuloa Taigaan."
     },
     "REGISTER": {
