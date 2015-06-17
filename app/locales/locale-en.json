@@ -448,7 +448,9 @@
             "TASK_DESCRIPTION": "Tasks custom fields",
             "TASK_ADD": "Add a custom field in tasks",
             "ISSUE_DESCRIPTION": "Issues custom fields",
-            "ISSUE_ADD": "Add a custom field in issues"
+            "ISSUE_ADD": "Add a custom field in issues",
+            "FIELD_TYPE_TEXT": "Text",
+            "FIELD_TYPE_MULTI": "Multi-line"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - Project values - {{projectName}}",

@@ -70,7 +70,7 @@
     }
     .custom-description {
         @include ellipsis(100%);
-        flex-basis: 90%;
+        flex-basis: 50%;
         flex-grow: 8;
     }
     .custom-field-type {
