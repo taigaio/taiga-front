@@ -60,8 +60,8 @@ class UserSettingsController extends mixOf(taiga.Controller, taiga.PageMixin)
 
         maxFileSize = @config.get("maxUploadFileSize", null)
         if maxFileSize
-            @translate("USER_SETTINGS.AVATAR_MAX_SIZE", {"maxFileSize": sizeFormat(maxFileSize)}).then (text) =>
-                @scope.maxFileSizeMsg = text
+            text = @translate.instant("USER_SETTINGS.AVATAR_MAX_SIZE", {"maxFileSize": sizeFormat(maxFileSize)})
+            @scope.maxFileSizeMsg = text
 
         promise = @.loadInitialData()
 

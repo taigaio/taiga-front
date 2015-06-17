@@ -40,6 +40,24 @@ taiga.sessionId = taiga.generateUniqueSessionIdentifier()
 
 configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEventsProvider,
              $compileProvider, $translateProvider) ->
+
+    # wait until the trasnlation is ready to resolve the page
+    originalWhen = $routeProvider.when
+
+    $routeProvider.when = (path, route) ->
+        route.resolve || (route.resolve = {})
+        angular.extend(route.resolve, {
+            languageLoad: ["$q", "$translate", ($q, $translate) ->
+                deferred = $q.defer()
+
+                $translate().then () -> deferred.resolve()
+
+                return deferred.promise
+            ]
+        })
+
+        return originalWhen.call($routeProvider, path, route)
+
     $routeProvider.when("/",
         {
             templateUrl: "home/home.html",
@@ -541,6 +559,10 @@ init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $na
     # Analytics
     $analytics.initialize()
 
+    $rootscope.$on '$routeChangeStart',  (event, next) ->
+        if next.loader
+            loaderService.startWithAutoClose()
+
     $rootscope.$on '$routeChangeSuccess',  (event, next) ->
         if next.access && next.access.requiresLogin
             if !$auth.isAuthenticated()
@@ -554,13 +576,10 @@ init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $na
             projectService.cleanProject()
 
         if next.title or next.description
-            title = next.title or ""
-            description = next.description or ""
-            $translate([title, description]).then (translations) =>
-                appMetaService.setAll(translations[title], translations[description])
+            title = $translate.instant(next.title or "")
+            description = $translate.instant(next.description or "")
+            appMetaService.setAll(title, description)
 
-        if next.loader
-            loaderService.startWithAutoClose()
 
 modules = [
     # Main Global Modules

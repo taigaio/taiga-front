@@ -154,8 +154,8 @@ module.directive("lightbox", ["lightboxService", LightboxDirective])
 
 BlockLightboxDirective = ($rootscope, $tgrepo, $confirm, lightboxService, $loading, $qqueue, $translate) ->
     link = ($scope, $el, $attrs, $model) ->
-        $translate($attrs.title).then (title) ->
-            $el.find("h2.title").text(title)
+        title = $translate.instant($attrs.title)
+        $el.find("h2.title").text(title)
 
         unblock = $qqueue.bindAdd (item, finishCallback) =>
             promise = $tgrepo.save(item)

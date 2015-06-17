@@ -5,7 +5,8 @@ describe "ProfileHints", ->
     mocks = {}
 
     _mockTranslate = () ->
-        mocks.translateService = sinon.stub()
+        mocks.translateService = {}
+        mocks.translateService.instant = sinon.stub()
 
         $provide.value "$translate", mocks.translateService
 
@@ -24,7 +25,7 @@ describe "ProfileHints", ->
             $controller = _$controller_
 
     it "random hint generator", (done) ->
-        mocks.translateService.promise().resolve("fill")
+        mocks.translateService.instant.returns("fill")
 
         ctrl = $controller("ProfileHints")
 
