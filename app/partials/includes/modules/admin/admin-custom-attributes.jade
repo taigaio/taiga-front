@@ -10,6 +10,8 @@ section.custom-fields-table.basic-table
                 span(translate="COMMON.FIELDS.NAME")
             div.custom-description
                 span(translate="COMMON.FIELDS.DESCRIPTION")
+            div.custom-field-type
+                span(translate="COMMON.FIELDS.FIELD_TYPE")
             div.custom-options
 
     div.table-body
@@ -21,6 +23,8 @@ section.custom-fields-table.basic-table
                         span {{ attr.name }}
                     div.custom-description
                         span {{ attr.description }}
+                    div.custom-field-type
+                        span(translate="ADMIN.CUSTOM_FIELDS.FIELD_TYPE_{{ attr.field_type }}")
                     div.custom-options
                         div.custom-options-wrapper
                             a.js-edit-custom-field-button.icon.icon-edit(href="", title="{{'ADMIN.CUSTOM_ATTRIBUTES.EDIT' | translate}}")
@@ -33,6 +37,9 @@ section.custom-fields-table.basic-table
                     fieldset.custom-description
                         input(type="text", name="description", placeholder="{{'ADMIN.CUSTOM_ATTRIBUTES.SET_FIELD_DESCRIPTION' | translate}}",
                               ng-model="attr.description")
+                    fieldset.custom-field-type
+                        select(ng-model="attr.field_type",
+                               ng-options="e.id as e.name | translate for e in [{'id':'TEXT', 'name': 'ADMIN.CUSTOM_FIELDS.FIELD_TYPE_TEXT'},{'id':'MULTI', 'name': 'ADMIN.CUSTOM_FIELDS.FIELD_TYPE_MULTI'}]")
 
                     fieldset.custom-options
                         div.custom-options-wrapper
@@ -46,7 +53,9 @@ section.custom-fields-table.basic-table
             fieldset.custom-description
                 input(type="text", name="description", placeholder="{{'ADMIN.CUSTOM_ATTRIBUTES.SET_FIELD_DESCRIPTION' | translate}}",
                       ng-model="newAttr.description")
-
+            fieldset.custom-field-type
+                select(ng-model="newAttr.field_type",
+                      ng-options="e.id as translate(e.name) for e in [{'id':'TEXT', 'name': 'ADMIN.CUSTOM_FIELDS.FIELD_TYPE_TEXT'},{'id':'MULTI', 'name': 'ADMIN.CUSTOM_FIELDS.FIELD_TYPE_MULTI'}]")
             fieldset.custom-options
                 div.custom-options-wrapper
                     a.js-create-custom-field-button.icon.icon-floppy(href="", title="{{'ADMIN.CUSTOM_ATTRIBUTES.SAVE_TITLE' | translate}}")

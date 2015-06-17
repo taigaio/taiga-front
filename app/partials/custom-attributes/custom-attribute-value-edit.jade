@@ -8,7 +8,15 @@ form.custom-field-single.editable
         <% } %>
 
     div.custom-field-value
+        
+        <% if (field_type=="MULTI") { %>
+        textarea#custom-field-description(name="description")
+            <%- value %>
+        <% } %>
+
+        <% if (field_type=="TEXT") { %>
         input#custom-field-description(name="description", type="text", value!="<%- value %>")
+        <% } %>
 
     div.custom-field-options
         a.icon.icon-floppy(href="", title="{{'COMMON.CUSTOM_ATTRIBUTES.SAVE' | translate}}")

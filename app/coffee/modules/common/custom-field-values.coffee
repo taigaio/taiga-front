@@ -128,6 +128,7 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile) ->
     link = ($scope, $el, $attrs, $ctrl) ->
         render = (attributeValue, edit=false) ->
             value = attributeValue.value
+            innerText = attributeValue.value
             editable = isEditable()
             ctx = {
                 id: attributeValue.id
@@ -135,6 +136,7 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile) ->
                 description: attributeValue.description
                 value: value
                 isEditable: editable
+                field_type: attributeValue.field_type
             }
 
             if editable and (edit or not value)
@@ -152,14 +154,14 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile) ->
             return permissions.indexOf(requiredEditionPerm) > -1
 
         saveAttributeValue = ->
-            attributeValue.value = $el.find("input").val()
+            attributeValue.value = $el.find("input, textarea").val()
 
             $scope.$apply ->
                 $ctrl.updateAttributeValue(attributeValue).then ->
                     render(attributeValue, false)
 
-        $el.on "keyup", "input[name=description]", (event) ->
-            if event.keyCode == 13
+        $el.on "keyup", "input[name=description], textarea[name='description']", (event) ->
+            if event.keyCode == 13 and event.currentTarget.type != "textarea"
                 submit(event)
             else if event.keyCode == 27
                 render(attributeValue, false)
@@ -169,14 +171,12 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile) ->
             return if not isEditable()
             return if $selectedText.get().length
             render(attributeValue, true)
-            $el.find("input[name='description']").focus().select()
-            $scope.$apply()
+            $el.find("input[name='description'], textarea[name='description']").focus().select()
 
         $el.on "click", "a.icon-edit", (event) ->
             event.preventDefault()
             render(attributeValue, true)
-            $el.find("input[name='description']").focus().select()
-            $scope.$apply() 
+            $el.find("input[name='description'], textarea[name='description']").focus().select()
 
         ## Actions (on edit mode)
         submit = debounce 2000, (event) =>
