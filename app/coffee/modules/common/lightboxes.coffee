@@ -473,7 +473,6 @@ AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationServic
             html = $compile(html)($scope)
 
             $el.find("div.watchers").html(html)
-            lightboxKeyboardNavigationService.init($el)
 
         closeLightbox = () ->
             lightboxKeyboardNavigationService.stop()
@@ -487,7 +486,7 @@ AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationServic
             render(selectedUser)
             lightboxService.open($el).then ->
                 $el.find('input').focus()
-
+                lightboxKeyboardNavigationService.init($el)
 
         $scope.$watch "usersSearch", (searchingText) ->
             if searchingText?
@@ -568,7 +567,6 @@ WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationS
 
             html = usersTemplate(ctx)
             $el.find("div.watchers").html(html)
-            lightboxKeyboardNavigationService.init($el)
 
         closeLightbox = () ->
             lightboxKeyboardNavigationService.stop()
@@ -582,7 +580,7 @@ WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationS
 
             lightboxService.open($el).then ->
                 $el.find("input").focus()
-            lightboxKeyboardNavigationService.init($el)
+                lightboxKeyboardNavigationService.init($el)
 
         $scope.$watch "usersSearch", (searchingText) ->
             if not searchingText?
