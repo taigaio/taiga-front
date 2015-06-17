@@ -54,7 +54,7 @@ class AuthService extends taiga.Service
 
     _setLocales: ->
         lang = @rootscope.user.lang || @config.get("defaultLanguage") || "en"
-        @translate.use(lang)
+        @translate.preferredLanguage(lang)
 
     getUser: ->
         if @rootscope.user

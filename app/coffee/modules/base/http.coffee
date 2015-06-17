@@ -37,7 +37,7 @@ class HttpService extends taiga.Service
             headers["Authorization"] = "Bearer #{token}"
 
         # Accept-Language
-        lang = @rootScope.user?.lang || @translate.preferredLanguage()
+        lang = @translate.preferredLanguage()
         if lang
             headers["Accept-Language"] = lang
 
