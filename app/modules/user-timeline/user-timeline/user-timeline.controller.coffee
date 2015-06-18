@@ -46,45 +46,13 @@ class UserTimelineController extends mixOf(taiga.Controller, taiga.PageMixin, ta
 
         return @.timeline
             .next()
-            .then (result) =>
-                @.timelineList = @.timelineList.concat(result)
+            .then (response) =>
+                @.timelineList = @.timelineList.concat(response.get("items"))
 
-                if result.size
+                if response.get("next")
                     @.scrollDisabled = false
 
                 return @.timelineList
-
-    # loadTimeline: () ->
-    #     @.scrollDisabled = true
-
-    #     promise = null
-
-    #     if @.projectId
-    #         promise = @userTimelineService
-    #             .getProjectTimeline(@.projectId, @.page)
-    #     else if @.currentUser
-    #         promise = @userTimelineService
-    #             .getProfileTimeline(@.user.get("id"), @.page)
-    #     else
-    #         promise = @userTimelineService
-    #             .getUserTimeline(@.user.get("id"), @.page)
-
-    #     promise.then (result) =>
-    #         @._timelineLoaded(result)
-
-    #         if !@.scrollDisabled && @.timelineList.size < @.min
-    #             return @.loadTimeline()
-
-    #         return @.timelineList
-
-    #     return promise
-
-    # _timelineLoaded: (result) ->
-    #     @.timelineList = @.timelineList.concat(result.get("data"))
-    #     @.page++
-
-    #     if result.get("next")
-    #         @.scrollDisabled = false
 
 angular.module("taigaUserTimeline")
     .controller("UserTimeline", UserTimelineController)

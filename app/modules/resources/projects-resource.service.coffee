@@ -43,7 +43,6 @@ Resource = (urlsService, http, paginateResponseService) ->
 
         return http.get(url, params).then (result) ->
             result = Immutable.fromJS(result)
-
             return paginateResponseService(result)
 
     return () ->
