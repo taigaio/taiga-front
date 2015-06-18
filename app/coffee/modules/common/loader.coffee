@@ -51,6 +51,7 @@ Loader = ($rootscope) ->
         minTime: 300
     }
 
+    open = false
     startLoadTime = 0
     requestCount = 0
     lastResponseDate = 0
@@ -68,6 +69,7 @@ Loader = ($rootscope) ->
 
             timeout timeoutValue, ->
                 $rootscope.$broadcast("loader:end")
+                open = false
                 window.prerenderReady = true # Needed by Prerender Server
 
         startLoadTime = 0
@@ -93,13 +95,14 @@ Loader = ($rootscope) ->
     start = () ->
         startLoadTime = new Date().getTime()
         $rootscope.$broadcast("loader:start")
+        open = true
 
     return {
         pageLoaded: pageLoaded
-        start: start
-        startWithAutoClose: () ->
-            start()
-            autoClose()
+        start: (auto=false) ->
+            if !open
+                start()
+                autoClose() if auto
         onStart: (fn) ->
             $rootscope.$on("loader:start", fn)
 
