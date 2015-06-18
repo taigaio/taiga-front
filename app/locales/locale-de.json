@@ -22,7 +22,7 @@
         "BLOCKED": "Blockiert",
         "CREATED_BY": "Erstellt von {{fullDisplayName}}",
         "FROM": "von",
-        "TO": "an",
+        "TO": "zu",
         "CLOSE": "schließen",
         "BLOCKED_NOTE": "Warum ist diese User-Story gesperrt?",
         "BLOCKED_REASON": "Bitte erklären Sie den Grund ",
@@ -250,7 +250,7 @@
         "INVITED_YOU": "hat Sie zum Projekt eingeladen",
         "NOT_REGISTERED_YET": "Noch nicht registiert?",
         "REGISTER": "Registrieren",
-        "CREATE_ACCOUNT": "Ein kostenloses Konto anlegen"
+        "CREATE_ACCOUNT": "Ein kostenloses Benutzerkonto anlegen"
     },
     "LOGIN_COMMON": {
         "HEADER": "Ich bin bereits bei Taiga angemeldet",
@@ -267,10 +267,10 @@
     },
     "REGISTER": {
         "PAGE_TITLE": "Registrieren - Taiga",
-        "PAGE_DESCRIPTION": "Erstellen Sie Ihren Account in Taiga, einer Projekt-Management Plattform für Neugründer und agile Entwickler und Designer, die ein unkompliziertes und ansprechendes Tool möchten, das die Arbeit wirklich angenehm macht. "
+        "PAGE_DESCRIPTION": "Erstellen Sie Ihr Benutzerkonto in Taiga, einer Projekt-Management Plattform für Neugründer und agile Entwickler und Designer, die ein unkompliziertes und ansprechendes Tool möchten, das die Arbeit wirklich angenehm macht. "
     },
     "REGISTER_FORM": {
-        "TITLE": "Einen neuen Taiga Account registrieren (kostenlos)",
+        "TITLE": "Ein neues Taiga Benutzerkonto registrieren (kostenlos)",
         "PLACEHOLDER_NAME": "Wählen Sie einen Benutzernamen (Groß- und Kleinschreibung beachten)",
         "PLACEHOLDER_FULL_NAME": "Wählen Sie Ihren vollständigen Namen ",
         "PLACEHOLDER_EMAIL": "Ihre E-Mail",
@@ -294,13 +294,13 @@
     },
     "CHANGE_PASSWORD": {
         "PAGE_TITLE": "Ändern Sie Ihr Passwort - Taiga",
-        "PAGE_DESCRIPTION": "Setzen Sie ein neues Passwort für Ihren Taiga Account, und hey!, es empfiehlt sich, mehr eisenreiche Nahrung zu sich zu nehmen - die ist gut für's Gehirn :P",
+        "PAGE_DESCRIPTION": "Setzen Sie ein neues Passwort für Ihr Taiga Benutzerkonto, und hey!, es empfiehlt sich, mehr eisenreiche Nahrung zu sich zu nehmen - die ist gut für's Gehirn :P",
         "SECTION_NAME": "Passwort ändern",
         "FIELD_CURRENT_PASSWORD": "Aktuelles Passwort",
         "PLACEHOLDER_CURRENT_PASSWORD": "Ihr aktuelles Passwort (oder leer, wenn Sie noch kein Passwort haben)",
         "FIELD_NEW_PASSWORD": "Neues Passwort",
         "PLACEHOLDER_NEW_PASSWORD": "Geben Sie ein neues Passwort ein",
-        "FIELD_RETYPE_PASSWORD": "Nochmals neues Passwort eingeben",
+        "FIELD_RETYPE_PASSWORD": "Neues Passwort wiederholen",
         "PLACEHOLDER_RETYPE_PASSWORD": "Wiederholen Sie das neue Passwort",
         "ERROR_PASSWORD_MATCH": "Die Passwörter stimmen nicht überein"
     },
@@ -329,8 +329,8 @@
         "PAGE_DESCRIPTION": "Die Taiga Homepage mit Ihren wichtigsten Projekten und all Ihren zugeordneten und beobachteten User-Stories, Aufgaben und Tickets. ",
         "EMPTY_WATCHING": "<strong>Folgen</strong> Sie den Projekten, User-Stories, Aufgaben, Tickets... über die Sie etwas wissen möchten :)",
         "EMPTY_PROJECT_LIST": "Sie haben noch keine Projekte",
-        "WORKING_ON_SECTION": "Arbeiten an",
-        "WATCHING_SECTION": "Beobachtung"
+        "WORKING_ON_SECTION": "Zuletzt bearbeitet",
+        "WATCHING_SECTION": "Beobachtet"
     },
     "PROJECTS": {
         "PAGE_TITLE": "Meine Projekte - Taiga",
@@ -505,12 +505,12 @@
         "BITBUCKET": {
             "SECTION_NAME": "Bitbucket",
             "PAGE_TITLE": "Bitbucket - {{projectName}}",
-            "INFO_VERIFYING_IP": "Bitbucket requests are not signed so the best way of verifying the origin is by IP. If the field is empty there will be no IP validation."
+            "INFO_VERIFYING_IP": "Bitbucket Anfragen sind nicht signiert, daher ist der beste Weg die Quelle anhand der IP zu prüfen. Wenn das Feld leer bleibt, wird keine Prüfung der IP vorgenommen."
         },
         "GITLAB": {
             "SECTION_NAME": "Gitlab",
             "PAGE_TITLE": "Gitlab - {{projectName}}",
-            "INFO_VERIFYING_IP": "Gitlab requests are not signed so the best way of verifying the origin is by IP. If the field is empty there will be no IP validation."
+            "INFO_VERIFYING_IP": "Gitlab rAnfragen sind nicht signiert, daher ist der beste Weg die Quelle anhand der IP zu prüfen. Wenn das Feld leer bleibt, wird keine Prüfung der IP vorgenommen."
         },
         "GITHUB": {
             "SECTION_NAME": "Github",
@@ -641,7 +641,7 @@
         },
         "PROFILE_SIDEBAR": {
             "TITLE": "Ihr Profil",
-            "DESCRIPTION": "People can see everything you do and what are you working on. Add a nice bio to give an enhanced version of your information.",
+            "DESCRIPTION": "Da andere Mitglieder sehen, dass sie ebenfalls an einem Projekt arbeiten wäre es schön, wenn Sie ein paar Informationen zu Ihrer Person angeben.",
             "ADD_INFO": "Bearbeiten Sie Ihre Bio"
         }
     },
@@ -649,7 +649,7 @@
         "PAGE_TITLE": "{{projectName}}",
         "WELCOME": "Willkommen",
         "SECTION_PROJECTS": "Projekte",
-        "HELP": "Reorder your projects to set in the top the most used ones.<br/> The top 10 projects will appear in the top navigation bar project list",
+        "HELP": "Sortieren Sie Ihre Projekte nach Wichtigkeit.<br/> Die ersten 10 Projekte erscheinen prominent in der Projektliste der Navigationsleiste.",
         "PRIVATE": "Privates Projekt",
         "STATS": {
             "PROJECT": "Projekt<br/> Punkte",
@@ -715,8 +715,8 @@
     },
     "LIGHTBOX": {
         "DELETE_ACCOUNT": {
-            "SECTION_NAME": "Taiga Konto löschen",
-            "CONFIRM": "Sind Sie sicher, dass Sie Ihr Taiga Konto löschen wollen?",
+            "SECTION_NAME": "Taiga Benutzerkonto löschen",
+            "CONFIRM": "Sind Sie sicher, dass Sie Ihr Taiga Benutzerkonto löschen wollen?",
             "SUBTITLE": "Wir werden Sie vermissen! :-(",
             "NEWSLETTER_LABEL_TEXT": "Ich möchte keinen Newsletter mehr erhalten"
         },
@@ -794,7 +794,7 @@
         "PREVIOUS": "Vorherige User-Story",
         "NEXT": "nächste User-Story",
         "TITLE_DELETE_ACTION": "User-Story löschen",
-        "LIGHTBOX_TITLE_BLOKING_US": "Blocking us",
+        "LIGHTBOX_TITLE_BLOKING_US": "Blockiert uns",
         "TASK_COMPLETED": "{{totalClosedTasks}}/{{totalTasks}} Aufgaben fertiggestellt",
         "ASSIGN": "Zugeordnete User-Story",
         "NOT_ESTIMATED": "Nicht abgeschätzt",
@@ -826,7 +826,7 @@
         "DELETED_ATTACHMENT": "Gelöschter Anhang",
         "UPDATED_ATTACHMENT": "aktualisierter Anhang {{filename}}",
         "DELETED_CUSTOM_ATTRIBUTE": "gelöschtes Kundenattribut ",
-        "SIZE_CHANGE": "Made {size, plural, one{one change} other{# changes}}",
+        "SIZE_CHANGE": "Machte {size, plural, one{eine Änderung} other{# Änderungen}}",
         "VALUES": {
             "YES": "ja",
             "NO": "nein",
@@ -945,7 +945,7 @@
         "NOT_FOUND_TEXT": "Fehler 404. Die angeforderte Seite existiert nicht mehr. Möglicherweise finden Sie das Gesuchte, wenn Sie zur TAIGA Homepage zurückkehren. ",
         "PERMISSION_DENIED": "Berechtigung verweigert",
         "PERMISSION_DENIED_CODE": "Fehler 403.",
-        "VERSION_ERROR": "Someone inside Taiga has changed this before and our Oompa Loompas cannot apply your changes. Please reload and apply your changes again (they will be lost)."
+        "VERSION_ERROR": "Jemand anderes hat dies schon geändert und unsere Heinzelmännchen können Ihre Änderungen deshalb nicht übernehmen. Bitte laden Sie die Seite neu und machen Sie die Änderungen erneut (die aktuelle Eingabe geht dabei verloren)."
     },
     "TASKBOARD": {
         "PAGE_TITLE": "{{sprintName}} - Sprint Taskboard - {{projectName}}",
@@ -1009,9 +1009,9 @@
     "CANCEL_ACCOUNT": {
         "TITLE": "Ihr Benutzerkonto löschen",
         "SUBTITLE": "Wir bedauern, dass Sie die Taiga verlassen. Wir hoffen, Sie hatten einen angenehmen Aufenthalt. :)",
-        "PLACEHOLDER_INPUT_TOKEN": "Account Token ungültig machen",
+        "PLACEHOLDER_INPUT_TOKEN": "Benutzerkonto Token ungültig machen",
         "ACTION_LEAVING": "Ja, ich gehe! ",
-        "SUCCESS": "Unsere Heinzelmännchen haben Ihren Account entfernt. "
+        "SUCCESS": "Unsere Heinzelmännchen haben Ihr Benutzerkonto entfernt. "
     },
     "CHANGE_EMAIL_FORM": {
         "TITLE": "Ändern Sie Ihre E-Mail",
@@ -1170,8 +1170,8 @@
     "USER_PROFILE": {
         "IMAGE_HELP": "Das Bild wird auf 80x80px skaliert.<br />",
         "ACTION_CHANGE_IMAGE": "Änderung",
-        "ACTION_USE_GRAVATAR": "Benutze Gravatar ",
-        "ACTION_DELETE_ACCOUNT": "Taiga Account löschen",
+        "ACTION_USE_GRAVATAR": "Gravatar verwenden",
+        "ACTION_DELETE_ACCOUNT": "Taiga Benutzerkonto löschen",
         "CHANGE_EMAIL_SUCCESS": "<strong>Sehen Sie in Ihren Posteingang!</strong><br />Wir haben eine E-Mail an Ihr Konto gesendet<br />mit der Anleitung, wie Sie Ihre neue Adresse anlegen",
         "CHANGE_PHOTO": "Foto ändern",
         "FIELD": {
@@ -1219,9 +1219,9 @@
         "HINT2_TITLE": "Wussten Sie, dass Sie benutzerdefinierte Felder erstellen können?",
         "HINT2_TEXT": "Teams können jetzt benutzerdefinierte Felder erstellen, als eine flexible Möglichkeit, spezifische Daten einzutragen. Dies ist praktisch für ihren jeweiligen Arbeitsablauf",
         "HINT3_TITLE": "Sortieren Sie ihre Projekte neu, um die zu zeigen, die für Sie am relevantesten sind",
-        "HINT3_TEXT": "The top 10 project will be in your top bar direct access",
+        "HINT3_TEXT": "Das Top 10 Projekt wird in der Navigationsleiste direkt zugreifbar sein.",
         "HINT4_TITLE": "Haben Sie vergessen, woran Sie arbeiten?",
-        "HINT4_TEXT": "Don't worry, on your dashboard you'll find your open tasks, issues, and user stories in the order you worked on them."
+        "HINT4_TEXT": "Machen Sie sich keine Sorgen, im Dashboard finden Sie Aufgaben, Tickets und User-Stories in der Reihenfolge in der Sie diese bearbeitet haben."
     },
     "TIMELINE": {
         "UPLOAD_ATTACHMENT": "{{username}} hat einen neuen Anhang hochgeladen in {{obj_name}}",

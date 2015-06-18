@@ -244,7 +244,7 @@
     },
     "LOGIN": {
         "PAGE_TITLE": "Login - Taiga",
-        "PAGE_DESCRIPTION": "Logging in to Taiga, a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
+        "PAGE_DESCRIPTION": "Entra a Taiga, una plataforma de gestió de projectes per a empreses àgils que necessiten una eïna sencilla i elegant que et permet gaudir del teu treball"
     },
     "AUTH": {
         "INVITED_YOU": "T'ha convidat a participar en el projecte",
@@ -266,11 +266,11 @@
         "SUCCESS": "Our Oompa Loompas están contents, benvinguts a Taiga."
     },
     "REGISTER": {
-        "PAGE_TITLE": "Register - Taiga",
-        "PAGE_DESCRIPTION": "Create your account in Taiga, a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
+        "PAGE_TITLE": "Registre - Taiga",
+        "PAGE_DESCRIPTION": "Crea un nou compte de Taiga, una plataforma de gestió de projectes per a empreses àgils que necessiten una eïna sencilla i elegant que et permet gaudir del teu treball"
     },
     "REGISTER_FORM": {
-        "TITLE": "Register a new Taiga account (free)",
+        "TITLE": "Registra un nou compte de Taiga (gratis)",
         "PLACEHOLDER_NAME": "Trieu un nom d'usuari (sensible a majúscules i minúscules)",
         "PLACEHOLDER_FULL_NAME": "Escriu el teu nom complet",
         "PLACEHOLDER_EMAIL": "El teu correu",
@@ -280,8 +280,8 @@
         "LINK_LOGIN": "Ja estàs registrat? Entra"
     },
     "FORGOT_PASSWORD": {
-        "PAGE_TITLE": "Forgot password - Taiga",
-        "PAGE_DESCRIPTION": "Enter your username or email to get a new password and you can access to Taiga again."
+        "PAGE_TITLE": "Recuperar contrasenya",
+        "PAGE_DESCRIPTION": "Escriviu el vostre nom d'usuari o correu electrònic per a conseguir-ne un de nou"
     },
     "FORGOT_PASSWORD_FORM": {
         "TITLE": "Oops, has oblidat la teua contrasenya?",
@@ -293,8 +293,8 @@
         "ERROR": "Segons els nostres Oompa Loompas, no estàs registrat encara."
     },
     "CHANGE_PASSWORD": {
-        "PAGE_TITLE": "Change you password - Taiga",
-        "PAGE_DESCRIPTION": "Set a new passoword for your Taiga account and hey!, you may want to eat some more iron-rich food, it's good for your brain :P",
+        "PAGE_TITLE": "Canvi de contrasenya - Taiga",
+        "PAGE_DESCRIPTION": "Crea un nou password per Taiga i... hey! Menja un poc més de ferro, es bo pel cervell :P ",
         "SECTION_NAME": "Canvi de contrasenya",
         "FIELD_CURRENT_PASSWORD": "Contrasenya actual",
         "PLACEHOLDER_CURRENT_PASSWORD": "La teua contrasenya actua (buit si no tens contrasenya encara)",
@@ -316,8 +316,8 @@
         "SUCCESS": "Els Oompa Loompas han salvat la teua contrasenya <br /> Prova a <strong>entrar</strong> amb ella."
     },
     "INVITATION": {
-        "PAGE_TITLE": "Invitation acceptance - Taiga",
-        "PAGE_DESCRIPTION": "Accept the invitation to join a project in Taiga, a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
+        "PAGE_TITLE": "Acceptar invitació - Taiga",
+        "PAGE_DESCRIPTION": "Accepta la invitació a un projecte en Taiga, una plataforma de gestió de projectes per a empreses àgils que necessiten una eïna sencilla i elegant que et permet gaudir del teu treball"
     },
     "INVITATION_LOGIN_FORM": {
         "NOT_FOUND": "<strong>Ooops, ha hagut un problema</strong><br />Els nosters Oompa Loompas no troben la teua invitació.",
@@ -326,16 +326,16 @@
     },
     "HOME": {
         "PAGE_TITLE": "Home - Taiga",
-        "PAGE_DESCRIPTION": "The Taiga home page with your main projects and all your assigned and watched user stories, tasks and issues",
-        "EMPTY_WATCHING": "<strong>Follow</strong> the projects, User Stories, Tasks, Issues... that you want to know about :)",
-        "EMPTY_PROJECT_LIST": "You don't have any projects yet",
-        "WORKING_ON_SECTION": "Working on",
-        "WATCHING_SECTION": "Watching"
+        "PAGE_DESCRIPTION": "La home de Taiga amb els teus projectes principals, totes les històries d'usuari, tasques e incidències que tens assignades i aquelles que estàs Watching",
+        "EMPTY_WATCHING": "<strong>Segueix</strong> els projectes, històries d'usuari, tasques e incidències... de les que vols conèixer la evolució.",
+        "EMPTY_PROJECT_LIST": "No tens cap projecte encara",
+        "WORKING_ON_SECTION": "En Progrés",
+        "WATCHING_SECTION": "Observant"
     },
     "PROJECTS": {
-        "PAGE_TITLE": "My projects - Taiga",
-        "PAGE_DESCRIPTION": "A list with all your projects, you can reorder or create a new one.",
-        "MY_PROJECTS": "My projects"
+        "PAGE_TITLE": "Els meus projectes - Taiga",
+        "PAGE_DESCRIPTION": "Una llista de tots els teus projects, que pots reordenar o crear nous.",
+        "MY_PROJECTS": "Els meus projectes."
     },
     "ATTACHMENT": {
         "SECTION_NAME": "Adjunts",
@@ -624,7 +624,7 @@
     "USER": {
         "PROFILE": {
             "PAGE_TITLE": "{{userFullName}} (@{{userUsername}})",
-            "EDIT": "Edit profile",
+            "EDIT": "Editar perfil",
             "FOLLOW": "Follow",
             "PROJECTS": "Projectes",
             "CLOSED_US": "Closed US",
@@ -640,7 +640,7 @@
             "PROJECTS_EMPTY": "{{username}} doesn't' have projects yet"
         },
         "PROFILE_SIDEBAR": {
-            "TITLE": "Your profile",
+            "TITLE": "El teu perfil",
             "DESCRIPTION": "La gent pot vore tot el que fas i en qué estàs treballant. Afegix una bio interessant per a donar una millor versió de la teua informació.",
             "ADD_INFO": "Edita la teua bio"
         }
