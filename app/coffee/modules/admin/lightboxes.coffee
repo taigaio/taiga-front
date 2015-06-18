@@ -57,7 +57,7 @@ CreateMembersDirective = ($rs, $rootScope, $confirm, $loading, lightboxService, 
 
     link = ($scope, $el, $attrs) ->
         createFieldSet = (required = true)->
-            ctx = {roleList: $scope.roles, required: required}
+            ctx = {roleList: $scope.project.roles, required: required}
             return $compile(template(ctx))($scope)
 
         resetForm = ->
