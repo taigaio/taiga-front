@@ -519,7 +519,7 @@
         "WEBHOOKS": {
             "PAGE_TITLE": "Webhooks - {{projectName}}",
             "SECTION_NAME": "Webhooks",
-            "SUBTITLE": "Les dérivations web informent des services externes d'événements dans Taiga, comme les commentaires, les récits utilisateur…",
+            "SUBTITLE": "Les Webhooks informent des services extérieurs à Taiga d'événements interne à Taiga, tel que les nouveaux commentaires ou les récits utilisateur…",
             "ADD_NEW": "Ajouter une nouvelle dérivation",
             "TYPE_NAME": "Entrez le nom du service",
             "TYPE_PAYLOAD_URL": "Entrez l'URL de payload du service",
