@@ -1,0 +1,65 @@
+.project-list-wrapper {
+    position: relative;
+    .project-list-title {
+        align-items: center;
+        background: $whitish;
+        display: flex;
+        justify-content: space-between;
+        margin: 2rem 0 1rem;
+        padding: .9rem 1rem;
+        h1 {
+            @extend %larger;
+            margin: 0;
+        }
+    }
+    .create-options a {
+        &.create-project-btn {
+            margin-right: .25rem;
+            padding: .6rem 2.5rem;
+        }
+        &.import-project-button {
+            padding: .53rem .8rem;
+            &:hover {
+                background: $grayer;
+            }
+            .icon-upload {
+                margin: 0;
+            }
+        }
+    }
+    .project-list-section {
+        display: flex;
+    }
+    .project-list {
+        flex: 1;
+        margin-right: 2rem;
+    }
+    .help-area {
+        @extend %small;
+        color: $gray-light;
+        width: 200px;
+    }
+    .placeholder {
+        background-color: lighten($whitish, 3%);
+        height: 7rem;
+        width: 100%;
+    }
+    .project-list-single {
+        background: $white;
+        &:hover {
+            background: lighten($green-taiga, 60%);
+            cursor: move;
+            transition: background .3s;
+            .drag {
+                opacity: 1;
+            }
+        }
+    }
+    .drag {
+        @extend %large;
+        align-self: center;
+        color: $gray-light;
+        opacity: 0;
+        transition: opacity .2s;
+    }
+}

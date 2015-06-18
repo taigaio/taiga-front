@@ -138,17 +138,6 @@ ToggleCommentDirective = () ->
 
 module.directive("tgToggleComment", ToggleCommentDirective)
 
-#############################################################################
-## Set the page title
-#############################################################################
-
-AppTitle = () ->
-    set = (text) ->
-        $("title").text(text)
-
-    return {set: set}
-
-module.factory("$appTitle", AppTitle)
 
 #############################################################################
 ## Get the appropiate section url for a project

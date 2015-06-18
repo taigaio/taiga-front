@@ -2,7 +2,9 @@ doctype html
 
 div.wrapper(tg-user-notifications, ng-controller="UserNotificationsController as ctrl",
                 ng-init="section='mail-notifications'")
-    sidebar.menu-secondary.sidebar(tg-user-settings-navigation="mail-notifications")
+    tg-project-menu
+
+    sidebar.menu-secondary.sidebar.settings-nav(tg-user-settings-navigation="mail-notifications")
         include ../includes/modules/user-settings-menu
 
     section.main.admin-common

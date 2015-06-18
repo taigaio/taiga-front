@@ -3,7 +3,7 @@
         "YES": "Si",
         "NO": "No",
         "LOADING": "Cargando...",
-        "LOADING_PROJECT": "Cargando projecto...",
+        "LOADING_PROJECT": "Cargando proyecto...",
         "DATE": "DD MMM YYYY",
         "DATETIME": "DD MMM YYYY HH:mm",
         "SAVE": "Guardar",
@@ -100,6 +100,10 @@
                 "SAT": "Sáb"
             }
         },
+        "SEE_USER_PROFILE": "Ver el perfil de {{username }}",
+        "USER_STORY": "Historia de usuario",
+        "TASK": "Tarea",
+        "ISSUE": "Petición",
         "TAGS": {
             "PLACEHOLDER": "¿Qué soy? Etiquétame...",
             "DELETE": "Borrar etiqueta",
@@ -125,7 +129,8 @@
             "ASSIGNED_TO": "Asignado a",
             "POINTS": "Puntos",
             "BLOCKED_NOTE": "Motivo del bloqueo",
-            "IS_BLOCKED": "está bloqueada"
+            "IS_BLOCKED": "está bloqueada",
+            "REF": "Ref"
         },
         "ROLES": {
             "ALL": "Todos"
@@ -231,13 +236,106 @@
                 "ADD_WIKI_LINKS": "Crear enlaces",
                 "DELETE_WIKI_LINKS": "Borrar enlaces"
             }
+        },
+        "META": {
+            "PAGE_TITLE": "Taiga",
+            "PAGE_DESCRIPTION": "Taiga es una plataforma de gestión de proyectos orientada a startups y equipos ágiles que buscan una herramienta sencilla, elegante y que les haga disfrutar trabajando."
         }
+    },
+    "LOGIN": {
+        "PAGE_TITLE": "Login - Taiga",
+        "PAGE_DESCRIPTION": "Inicia sesión en Taiga, una plataforma de gestión de proyectos orientada a startups y equipos ágiles que buscan una herramienta sencilla, elegante y que les haga disfrutar trabajando."
     },
     "AUTH": {
         "INVITED_YOU": "te ha invitado a unirte al proyecto",
         "NOT_REGISTERED_YET": "¿Aún no está registrado?",
         "REGISTER": "Registro",
         "CREATE_ACCOUNT": "crea tu cuenta gratis aquí"
+    },
+    "LOGIN_COMMON": {
+        "HEADER": "Ya tengo una cuenta en Taiga",
+        "PLACEHOLDER_AUTH_NAME": "Nombre de usuario o email (distingue mayúsculas y minúsculas)",
+        "LINK_FORGOT_PASSWORD": "¿La olvidaste?",
+        "TITLE_LINK_FORGOT_PASSWORD": "¿Has olvidado tu contraseña?",
+        "ACTION_ENTER": "Entrar",
+        "ACTION_SIGN_IN": "Ingresar",
+        "PLACEHOLDER_AUTH_PASSWORD": "Contraseña (distingue mayúsculas y minúsculas)"
+    },
+    "LOGIN_FORM": {
+        "ERROR_AUTH_INCORRECT": "Nuestros Oompa Loompas indican que tu nombre de usuario/correo o contraseña son incorrectos",
+        "SUCCESS": "Nuestros Oompa Loompas están felices, bienvenido a Taiga."
+    },
+    "REGISTER": {
+        "PAGE_TITLE": "Registro - Taiga",
+        "PAGE_DESCRIPTION": "Crea tu cuenta en Taiga, una plataforma de gestión de proyectos orientada a startups y equipos ágiles que buscan una herramienta sencilla, elegante y que les haga disfrutar trabajando."
+    },
+    "REGISTER_FORM": {
+        "TITLE": "Crea tu nueva cuenta en Taiga, ¡es gratis!",
+        "PLACEHOLDER_NAME": "Escribe un nombre de usuario (distingue mayúsculas y minúsculas)",
+        "PLACEHOLDER_FULL_NAME": "Escribe tu nombre completo",
+        "PLACEHOLDER_EMAIL": "Tu email",
+        "PLACEHOLDER_PASSWORD": "Establece una contraseña (distingue mayúsculas y minúsculas)",
+        "ACTION_SIGN_UP": "Registrarme",
+        "TITLE_LINK_LOGIN": "Iniciar sesión",
+        "LINK_LOGIN": "¿Ya te has registrado? Inicia sesión"
+    },
+    "FORGOT_PASSWORD": {
+        "PAGE_TITLE": "Has olvidado tu contraseña - Taiga",
+        "PAGE_DESCRIPTION": "A partir de tu nombre de usuario o email obtendrás una nueva contraseña para acceder a Taiga nuevamente."
+    },
+    "FORGOT_PASSWORD_FORM": {
+        "TITLE": "Vaya, ¿has olvidado tu contraseña?",
+        "SUBTITLE": "Escribe tu nombre de usuario o email para obtener una nueva",
+        "PLACEHOLDER_FIELD": "Nombre de usuario o email",
+        "ACTION_RESET_PASSWORD": "Restablecer Contraseña",
+        "LINK_CANCEL": "Nah, llévame de vuelta, creo que lo recordé.",
+        "SUCCESS": "<strong>¡Revisa tu bandeja de entrada!</strong><br />Te hemos enviado un mail con las instrucciones necesarias para restablecer tu contraseña\n",
+        "ERROR": "Según nuestros Oompa Loompas tú no estás registrado"
+    },
+    "CHANGE_PASSWORD": {
+        "PAGE_TITLE": "Cambia tu contraseña - Taiga",
+        "PAGE_DESCRIPTION": "Indica una nueva contraseña para tu cuenta en Taiga y bueno, es posible que necesites comer un poco más de alimentos ricos en hierro, son buenos para tu cerebro :P",
+        "SECTION_NAME": "Cambiar contraseña",
+        "FIELD_CURRENT_PASSWORD": "Contraseña actual",
+        "PLACEHOLDER_CURRENT_PASSWORD": "Tu contraseña actual (o déjalo vacío si todavía no tienes contraseña)",
+        "FIELD_NEW_PASSWORD": "Nueva contraseña",
+        "PLACEHOLDER_NEW_PASSWORD": "Escribe una contraseña nueva",
+        "FIELD_RETYPE_PASSWORD": "Reescribe la nueva contraseña",
+        "PLACEHOLDER_RETYPE_PASSWORD": "Reescribe la nueva contraseña",
+        "ERROR_PASSWORD_MATCH": "Las contraseñas no coinciden"
+    },
+    "CHANGE_PASSWORD_RECOVERY_FORM": {
+        "TITLE": "Crear una nueva contraseña de Taiga",
+        "SUBTITLE": "Y bueno, es posible que necesites comer más alimentos ricos en hierro, son buenos para tu cerebro :P",
+        "PLACEHOLDER_RECOVER_PASSWORD_TOKEN": "token de recuperación de contraseña",
+        "LINK_NEED_TOKEN": "¿Necesitas una?",
+        "TITLE_LINK_NEED_TOKEN": "¿Necesitas un token para recuperar tu contraseña porque la has olvidado?",
+        "PLACEHOLDER_NEW_PASSWORD": "Nueva contraseña",
+        "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Reescriba la nueva contraseña",
+        "ACTION_RESET_PASSWORD": "Restablecer contraseña",
+        "SUCCESS": "Nuestro Oompa Loopas guardaron tu nueva contraseña.<br /> Intenta <strong>registrarte</strong> con ella"
+    },
+    "INVITATION": {
+        "PAGE_TITLE": "Acepta la invitación - Taiga",
+        "PAGE_DESCRIPTION": "Acepta la invitación para unirte a un proyecto en Taiga, una plataforma de gestión de proyectos orientada a startups y equipos ágiles que buscan una herramienta sencilla, elegante y que les haga disfrutar trabajando."
+    },
+    "INVITATION_LOGIN_FORM": {
+        "NOT_FOUND": "<strong>Ooops, tenemos un problema</strong><br /> Nuestros Oompa Loompas no pueden encontrar tu invitación.",
+        "SUCCESS": "¡Acabas de unirte al proyecto! Bienvenido a {{project_name}}",
+        "ERROR": "Según nuestros Oompa Loompas tú no estás registrado o has escrito mal tu contraseña."
+    },
+    "HOME": {
+        "PAGE_TITLE": "Inicio - Taiga",
+        "PAGE_DESCRIPTION": "Página de inicio de Taiga, con tus proyectos principales y tus historias de usuario, tareas y peticiones en progreso asignadas y las que observas.",
+        "EMPTY_WATCHING": "<strong>Sigue</strong> aquellos proyectos, historias de usuario, tareas, peticiones... sobre los que quieras estar al tanto :)",
+        "EMPTY_PROJECT_LIST": "Todavía no tienes ningún proyecto",
+        "WORKING_ON_SECTION": "Trabajando en",
+        "WATCHING_SECTION": "Observando"
+    },
+    "PROJECTS": {
+        "PAGE_TITLE": "Mis proyectos - Taiga",
+        "PAGE_DESCRIPTION": "Una lista con todos tus proyectos, puedes reordenarla o crear un proyecto nuevo.",
+        "MY_PROJECTS": "Mis proyectos"
     },
     "ATTACHMENT": {
         "SECTION_NAME": "adjuntos",
@@ -276,6 +374,7 @@
         },
         "MEMBERSHIPS": {
             "TITLE": "Administrar miembros",
+            "PAGE_TITLE": "Miembros - {{projectName}}",
             "ADD_BUTTON": "+ Nuevo miembro",
             "ADD_BUTTON_TITLE": "Añadir un nuevo miembro"
         },
@@ -311,7 +410,7 @@
             "SALT_CHAT_ROOM": "Puedes añadirle un código salt al nombre del chat room"
         },
         "PROJECT_PROFILE": {
-            "PAGE_TITLE": "Perfil del proyecto - {{sectionName}} - {{projectName}}",
+            "PAGE_TITLE": "{{sectionName}} - Perfil de Proyecto - {{projectName}}\n",
             "PROJECT_DETAILS": "Info del proyecto",
             "PROJECT_NAME": "Nombre del proyecto",
             "PROJECT_SLUG": "Slug de proyecto",
@@ -352,23 +451,26 @@
             "ISSUE_ADD": "Añadir un atributo personalizado en las peticiones"
         },
         "PROJECT_VALUES": {
-            "APP_TITLE": "Valores del proyecto - {{sectionName}} - {{projectName}}",
+            "PAGE_TITLE": "{{sectionName}} - Valores del Proyectos - {{projectName}}",
             "REPLACEMENT": "Todos los elementos con este valor cambiarán a",
             "ERROR_DELETE_ALL": "No puedes eliminar todos los valores."
         },
         "PROJECT_VALUES_POINTS": {
-            "TITLE": "Puntos de historia",
+            "TITLE": "Puntos",
             "SUBTITLE": "Especifica los puntos a los que se podrían estimar tus historias de usuario",
+            "US_TITLE": "Puntos de historia de usuario",
             "ACTION_ADD": "Añadir nuevo punto"
         },
         "PROJECT_VALUES_PRIORITIES": {
-            "TITLE": "Prioridades de las peticiones",
+            "TITLE": "Prioridades",
             "SUBTITLE": "Especifica las prioridades que podrán tener tus peticiones",
+            "ISSUE_TITLE": "Prioridades de peticion",
             "ACTION_ADD": "Añadir nueva prioridad"
         },
         "PROJECT_VALUES_SEVERITIES": {
-            "TITLE": "Gravedad de las peticiones",
+            "TITLE": "Gravedades",
             "SUBTITLE": "Especifica la gravedad que tendrán tus peticiones",
+            "ISSUE_TITLE": "Gravedades de petición",
             "ACTION_ADD": "Añadir nueva gravedad"
         },
         "PROJECT_VALUES_STATUS": {
@@ -382,10 +484,10 @@
             "TITLE": "Tipos",
             "SUBTITLE": "Especifica los deferentes tipos posibles de peticiones que pueden existir.",
             "ISSUE_TITLE": "Tipos de la petición",
-            "ACTION_ADD": "Añadir nuevo tipo"
+            "ACTION_ADD": "Añadir nuevo {{objName}}"
         },
         "ROLES": {
-            "SECTION_NAME": "Roles - {{projectName}}",
+            "PAGE_TITLE": "Roles - {{projectName}}",
             "WARNING_NO_ROLE": "Ojo, ningún rol en tu proyecto podrá estimar historias de usuario",
             "HELP_ROLE_ENABLED": "Si lo activas, los miembros que posean este rol serán capaces de estimar las histórias de usuario",
             "COUNT_MEMBERS": "{{ role.members_count }} miembros con este rol",
@@ -402,20 +504,20 @@
         },
         "BITBUCKET": {
             "SECTION_NAME": "Bitbucket",
-            "APP_TITLE": "Bitbucket - {{projectName}}",
+            "PAGE_TITLE": "Bitbucket - {{projectName}}",
             "INFO_VERIFYING_IP": "Las peticiones de Bitbucket no van firmadas, con la IP de origen  verificamos su procedencia. Déjalo vacío y no se verificarán."
         },
         "GITLAB": {
             "SECTION_NAME": "Gitlab",
-            "APP_TITLE": "Gitlab - {{projectName}}",
+            "PAGE_TITLE": "Gitlab - {{projectName}}",
             "INFO_VERIFYING_IP": "Las peticiones de Gitlab no van firmadas, con la IP de origen verificamos su procedencia. Déjalo vacío y no se verificarán."
         },
         "GITHUB": {
             "SECTION_NAME": "Github",
-            "APP_TITLE": "Github - {{projectName}}"
+            "PAGE_TITLE": "Github - {{projectName}}"
         },
         "WEBHOOKS": {
-            "APP_TITLE": "Webhooks - {{projectName}}",
+            "PAGE_TITLE": "Webhooks - {{projectName}}",
             "SECTION_NAME": "Webhooks",
             "SUBTITLE": "Los Webhooks notificarán a servicios externos sobre todos los eventos que ocurren en Taiga como comentarios, historias de usuario...",
             "ADD_NEW": "Añadir un Nuevo Webhook",
@@ -441,6 +543,7 @@
             "WEBHOOK_NAME": "Webhook '{{name}}'"
         },
         "CUSTOM_ATTRIBUTES": {
+            "PAGE_TITLE": "{{sectionName}} - Atributos Personalizados - {{projectName}}",
             "ADD": "Añadir atributo personalizado",
             "EDIT": "Editar atributo personalizado",
             "DELETE": "Eliminar atributo personalizado",
@@ -518,9 +621,36 @@
             "TITLE": "Servicios"
         }
     },
+    "USER": {
+        "PROFILE": {
+            "PAGE_TITLE": "{{userFullName}} (@{{userUsername}})",
+            "EDIT": "Editar perfil",
+            "FOLLOW": "Seguir",
+            "PROJECTS": "Proyectos",
+            "CLOSED_US": "Historias cerradas",
+            "CONTACTS": "Contactos",
+            "REPORT": "Reportar Abuso",
+            "ACTIVITY_TAB": "Pestaña de Actividad",
+            "PROJECTS_TAB": "Pestaña de Proyectos",
+            "CONTACTS_TAB": "Pestaña de Contactos",
+            "FAVORITES_TAB": "Pestaña de Favoritos",
+            "CONTACTS_EMPTY": "{{username}} no tiene contactos todavía",
+            "CURRENT_USER_CONTACTS_EMPTY": "No tienes contactos todavía",
+            "CURRENT_USER_CONTACTS_EMPTY_EXPLAIN": "Las personas con las que trabajas en Taiga serán tus contactos automáticamente",
+            "PROJECTS_EMPTY": "{{username}} no tiene proyectos todavía"
+        },
+        "PROFILE_SIDEBAR": {
+            "TITLE": "Tu perfil",
+            "DESCRIPTION": "La gente puede ver aquello que haces y en qué estás trabajando. Añade una buena bio para que puedan ver la mejor versión de tu perfil.",
+            "ADD_INFO": "Edita tu bio"
+        }
+    },
     "PROJECT": {
+        "PAGE_TITLE": "{{projectName}}",
         "WELCOME": "Bienvenido",
         "SECTION_PROJECTS": "Proyectos",
+        "HELP": "Reordena tus proyectos para ver arriba los que más utilizas.<br/> Los 10 primeros aparecerán en la lista de proyectos de la barra de navegación de arriba.",
+        "PRIVATE": "Proyecto privado",
         "STATS": {
             "PROJECT": "puntos<br/> proyecto",
             "DEFINED": "puntos<br/> definidos",
@@ -529,6 +659,7 @@
         },
         "SECTION": {
             "SEARCH": "Buscar",
+            "TIMELINE": "Timeline",
             "BACKLOG": "Backlog",
             "KANBAN": "Kanban",
             "ISSUES": "Peticiones",
@@ -541,9 +672,32 @@
             "SECTION_TITLE": "Tus proyectos",
             "PLACEHOLDER_SEARCH": "Buscar en...",
             "ACTION_CREATE_PROJECT": "Crear proyecto",
-            "TITLE_ACTION_IMPORT": "Importar proyecto",
+            "ACTION_IMPORT_PROJECT": "Importar proyecto",
+            "SEE_MORE_PROJECTS": "Ver más proyectos",
+            "TITLE_CREATE_PROJECT": "Crear proyecto",
+            "TITLE_IMPORT_PROJECT": "Importar proyecto",
             "TITLE_PRVIOUS_PROJECT": "Mostrar proyectos anteriores",
-            "TITLE_NEXT_PROJECT": "Mostrar siguientes proyectos"
+            "TITLE_NEXT_PROJECT": "Mostrar siguientes proyectos",
+            "HELP_TITLE": "Página de Soporte de Taiga",
+            "HELP": "Ayuda",
+            "FEEDBACK_TITLE": "Envíanos tu feedback",
+            "FEEDBACK": "Feedback",
+            "NOTIFICATIONS_TITLE": "Edita la configuración de tus notificaciones",
+            "NOTIFICATIONS": "Notificaciones",
+            "ORGANIZATIONS_TITLE": "Edita tus organizaciónes",
+            "ORGANIZATIONS": "Editar organizaciones",
+            "SETTINGS_TITLE": "Editar tus configuraciones",
+            "SETTINGS": "Configuraciones",
+            "VIEW_PROFILE_TITLE": "Ver perfil",
+            "VIEW_PROFILE": "Ver perfil",
+            "EDIT_PROFILE_TITLE": "Editar tu perfil",
+            "EDIT_PROFILE": "Editar Perfil",
+            "CHANGE_PASSWORD_TITLE": "Cambiar contraseña",
+            "CHANGE_PASSWORD": "Cambiar contraseña",
+            "DASHBOARD_TITLE": "Dashboard",
+            "DISCOVER_TITLE": "Descubre los proyectos más relevantes",
+            "DISCOVER": "Descubrir",
+            "ACTION_REORDER": "Arrastrar y soltar para reordenar"
         },
         "IMPORT": {
             "TITLE": "Importando Proyecto",
@@ -624,6 +778,8 @@
         }
     },
     "US": {
+        "PAGE_TITLE": "{{userStorySubject}} - Historia de Usuario {{userStoryRef}} - {{projectName}}",
+        "PAGE_DESCRIPTION": "Estado: {{userStoryStatus }}. Completado el {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} de {{userStoryTotalTasks}} tareas cerradas). Puntos: {{userStoryPoints}}. Descripción: {{userStoryDescription}}",
         "SECTION_NAME": "Detalles de historia de usuario",
         "LINK_TASKBOARD": "Panel de tareas",
         "TITLE_LINK_TASKBOARD": "Ir al panel de tareas",
@@ -711,6 +867,8 @@
         }
     },
     "BACKLOG": {
+        "PAGE_TITLE": "Backlog - {{projectName}}",
+        "PAGE_DESCRIPTION": "El panel del backlog, con las historias de usuario y sprints del proyecto {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Backlog",
         "MOVE_US_TO_CURRENT_SPRINT": "Mover al Sprint en curso",
         "SHOW_FILTERS": "Mostrar filtros",
@@ -790,6 +948,8 @@
         "VERSION_ERROR": "Algún compañero se te ha adelantado y ha actualizado esto, nuestros Oompa Loompas no pueden aplicar tus cambios. Por favor, recarga la página y aplícalos nuevamente (se perderán)."
     },
     "TASKBOARD": {
+        "PAGE_TITLE": "{{sprintName}} - Sprint - {{projectName}}",
+        "PAGE_DESCRIPTION": "Sprint {{sprintName}} (desde el {{startDate}} al {{endDate}}) de {{projectName}}. Completado el {{completedPercentage}}% ({{completedPoints}} de {{totalPoints}} puntos). {{openTasks}} de {{totalTasks}} tareas abiertas.",
         "SECTION_NAME": "Panel de Tareas",
         "TITLE_ACTION_ADD": "Añade una nueva tarea",
         "TITLE_ACTION_ADD_BULK": "Añadir nuevas tareas en bloque",
@@ -813,6 +973,8 @@
         }
     },
     "TASK": {
+        "PAGE_TITLE": "{{taskSubject}} - Tarea {{taskRef}} - {{projectName}}",
+        "PAGE_DESCRIPTION": "Estado: {{taskStatus }}. Descripción: {{taskDescription}}",
         "SECTION_NAME": "Detalles de tarea",
         "LINK_TASKBOARD": "Panel de tareas",
         "TITLE_LINK_TASKBOARD": "Ir al panel de tareas",
@@ -846,7 +1008,7 @@
     },
     "CANCEL_ACCOUNT": {
         "TITLE": "Cancelar tu cuenta de usuario",
-        "SUBTITLE": "Sentimos que estés abandonando la taiga, esperamos que hayas disfrutado de tu estancia :)",
+        "SUBTITLE": "Sentimos mucho que abandones nuestra taiga, esperamos que hayas disfrutado de tu estancia :)",
         "PLACEHOLDER_INPUT_TOKEN": "token de cancelación de cuenta",
         "ACTION_LEAVING": "¡Sí, me largo!",
         "SUCCESS": "Nuestros Oompa Loompas eliminaron tu cuenta"
@@ -858,56 +1020,9 @@
         "ACTION_CHANGE_EMAIL": "Cambiar email",
         "SUCCESS": "Nuestros Oompa Loompas actualizaron tu correo"
     },
-    "CHANGE_PASSWORD_RECOVERY_FORM": {
-        "TITLE": "Crear una nueva contraseña de Taiga",
-        "SUBTITLE": "Y bueno, es posible que quieras comer un poco más de alimentos ricos en hierro, son buenos para tu cerebro :P",
-        "PLACEHOLDER_RECOVER_PASSWORD_TOKEN": "token de recuperación de contraseña",
-        "LINK_NEED_TOKEN": "¿Necesitas una?",
-        "TITLE_LINK_NEED_TOKEN": "¿Necesitas un token para recuperar tu contraseña porque la has olvidado?",
-        "PLACEHOLDER_NEW_PASSWORD": "Nueva contraseña",
-        "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Reescriba la nueva contraseña",
-        "ACTION_RESET_PASSWORD": "Restablecer contraseña",
-        "SUCCESS": "Nuestro Oompa Loopas guardaron tu nueva contraseña.<br /> Intenta <strong>registrarte</strong> con ella"
-    },
-    "FORGOT_PASSWORD_FORM": {
-        "TITLE": "Vaya, ¿has olvidado tu contraseña?",
-        "SUBTITLE": "Escribe tu nombre de usuario o email para obtener una nueva",
-        "PLACEHOLDER_FIELD": "Nombre de usuario o email",
-        "ACTION_RESET_PASSWORD": "Restablecer Contraseña",
-        "LINK_CANCEL": "Nah, llévame de vuelta, creo que lo recordé.",
-        "SUCCESS": "<strong>¡Revisa tu bandeja de entrada!</strong><br />Te hemos enviado un mail con las instrucciones necesarias para restablecer tu contraseña\n",
-        "ERROR": "Según nuestros Oompa Loompas tú no estás registrado"
-    },
-    "LOGIN_COMMON": {
-        "HEADER": "Ya tengo una cuenta en Taiga",
-        "PLACEHOLDER_AUTH_NAME": "Nombre de usuario o email (distingue mayúsculas y minúsculas)",
-        "LINK_FORGOT_PASSWORD": "¿La olvidaste?",
-        "TITLE_LINK_FORGOT_PASSWORD": "¿Has olvidado tu contraseña?",
-        "ACTION_ENTER": "Entrar",
-        "ACTION_SIGN_IN": "Ingresar",
-        "PLACEHOLDER_AUTH_PASSWORD": "Contraseña (distingue mayúsculas y minúsculas)"
-    },
-    "LOGIN_FORM": {
-        "ERROR_AUTH_INCORRECT": "Nuestros Oompa Loompas indican que tu nombre de usuario/correo o contraseña son incorrectos",
-        "ERROR_GENERIC": "Nuestros Oompa Loompas indican que ha habido un error.",
-        "SUCCESS": "Nuestros Oompa Loompas están felices, bienvenido a Taiga."
-    },
-    "INVITATION_LOGIN_FORM": {
-        "NOT_FOUND": "<strong>Ooops, tenemos un problema</strong><br /> Nuestros Oompa Loompas no pueden encontrar tu invitación.",
-        "SUCCESS": "¡Acabas de unirte al proyecto! Bienvenido a {{project_name}}",
-        "ERROR": "Según nuestros Oompa Loompas tú no estás registrado o has escrito mal tu contraseña."
-    },
-    "REGISTER_FORM": {
-        "TITLE": "Crea tu nueva cuenta en Taiga, ¡es gratis!",
-        "PLACEHOLDER_NAME": "Escribe un nombre de usuario (distingue mayúsculas y minúsculas)",
-        "PLACEHOLDER_FULL_NAME": "Escribe tu nombre completo",
-        "PLACEHOLDER_EMAIL": "Tu email",
-        "PLACEHOLDER_PASSWORD": "Establece una contraseña (distingue mayúsculas y minúsculas)",
-        "ACTION_SIGN_UP": "Registrarme",
-        "TITLE_LINK_LOGIN": "Iniciar sesión",
-        "LINK_LOGIN": "¿Ya te has registrado? Inicia sesión"
-    },
     "ISSUES": {
+        "PAGE_TITLE": "Peticiones - {{projectName}}",
+        "PAGE_DESCRIPTION": "El panel de peticiones del proyecto {{projectName}}: {{projectDescription}}\n",
         "LIST_SECTION_NAME": "Peticiones",
         "SECTION_NAME": "Detalles de petición",
         "ACTION_NEW_ISSUE": "+ NUEVA PETICIÓN",
@@ -921,6 +1036,11 @@
         "TITLE_NEXT_ISSUE": "petición siguiente",
         "ACTION_DELETE": "Borrar petición",
         "LIGHTBOX_TITLE_BLOKING_ISSUE": "Petición bloqueada",
+        "FIELDS": {
+            "PRIORITY": "Prioridad",
+            "SEVERITY": "Gravedad",
+            "TYPE": "Tipo"
+        },
         "CONFIRM_PROMOTE": {
             "TITLE": "Promover esta petición a una nueva historia de usuario",
             "MESSAGE": "¿Está seguro de que desea crear una nueva Historia de Usuario a partir de esta Petición?"
@@ -966,7 +1086,13 @@
             }
         }
     },
+    "ISSUE": {
+        "PAGE_TITLE": "{{issueSubject}} - Petición {{issueRef}} - {{projectName}}",
+        "PAGE_DESCRIPTION": "Estado: {{issueStatus }}. Tipo: {{issueType}}, Prioridad: {{issuePriority}}. Gravedad: {{issueSeverity}}. Descripción: {{issueDescription}}"
+    },
     "KANBAN": {
+        "PAGE_TITLE": "Kanban - {{projectName}}",
+        "PAGE_DESCRIPTION": "El panel Kanban, con las historias de usuario del proyecto {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Kanban",
         "TITLE_ACTION_FOLD": "Plegar columna",
         "TITLE_ACTION_UNFOLD": "Desplegar columna",
@@ -981,6 +1107,8 @@
         "UNDO_ARCHIVED": "Arrástrala y suéltala de nuevo para deshacer el cambio"
     },
     "SEARCH": {
+        "PAGE_TITLE": "Buscar - {{projectName}}",
+        "PAGE_DESCRIPTION": "Busca cualquier cosa: historias de usuario, peticiones, tareas o páginas del wiki en el proyecto {{projectName}}: {{projectDescription}}",
         "FILTER_USER_STORIES": "Historias de Usuario",
         "FILTER_ISSUES": "Peticiones",
         "FILTER_TASKS": "Tareas",
@@ -991,6 +1119,8 @@
         "EMPTY_DESCRIPTION": "Prueba con otra pestaña de las de arriba o busca de nuevo"
     },
     "TEAM": {
+        "PAGE_TITLE": "Equipo - {{projectName}}",
+        "PAGE_DESCRIPTION": "EL panel de equipo, para mostrar a todos los miembros del proyecto {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Equipo",
         "APP_TITLE": "EQUIPO - {{projectName}}",
         "PLACEHOLDER_INPUT_SEARCH": "Buscar por nombre completo...",
@@ -1010,16 +1140,6 @@
         "SECTION_FILTER_ALL": "Todo",
         "CONFIRM_LEAVE_PROJECT": "¿Esta seguro que desea dejar el proyecto?",
         "ACTION_LEAVE_PROJECT": "Abandonar este proyecto"
-    },
-    "CHANGE_PASSWORD": {
-        "SECTION_NAME": "Cambiar contraseña",
-        "FIELD_CURRENT_PASSWORD": "Contraseña actual",
-        "PLACEHOLDER_CURRENT_PASSWORD": "Tu contraseña actual (o déjalo vacío si todavía no tienes contraseña)",
-        "FIELD_NEW_PASSWORD": "Nueva contraseña",
-        "PLACEHOLDER_NEW_PASSWORD": "Escribe una contraseña nueva",
-        "FIELD_RETYPE_PASSWORD": "Reescribe la nueva contraseña",
-        "PLACEHOLDER_RETYPE_PASSWORD": "Reescribe la nueva contraseña",
-        "ERROR_PASSWORD_MATCH": "Las contraseñas no coinciden"
     },
     "USER_SETTINGS": {
         "AVATAR_MAX_SIZE": "[Tamaño Max.: {{maxFileSize}}]",
@@ -1059,7 +1179,7 @@
             "EMAIL": "Correo",
             "FULL_NAME": "Nombre completo",
             "PLACEHOLDER_FULL_NAME": "Indica tu nombre completo (p. e. Íñigo Montoya)",
-            "BIO": "Bio",
+            "BIO": "Bio (max. 210 caracteres)",
             "PLACEHOLDER_BIO": "Dinos algo acerca de ti",
             "LANGUAGE": "Idioma",
             "LANGUAGE_DEFAULT": "- usar idioma por defecto -"
@@ -1074,6 +1194,8 @@
         "PROGRESS_NAME_DESCRIPTION": "Nombre y descripción"
     },
     "WIKI": {
+        "PAGE_TITLE": "{{wikiPageName}} - Wiki - {{projectName}}",
+        "PAGE_DESCRIPTION": "última edición el {{lastModifiedDate}} ({{totalEditions}} ediciones en total) Contenido: {{ wikiPageContent }}",
         "DATETIME": "DD MMM YYYY HH:mm",
         "PLACEHOLDER_PAGE": "Escribe el contenido de tu página",
         "REMOVE": "Eliminar esta página del wiki",
@@ -1087,5 +1209,43 @@
             "LAST_EDIT": "última <br />edición",
             "LAST_MODIFICATION": "ultima modificación"
         }
+    },
+    "HINTS": {
+        "SECTION_NAME": "Consejo",
+        "LINK": "Si quieres saber como funciona visita nuestra página de soporte",
+        "LINK_TITLE": "Visita nuestra página de soporte",
+        "HINT1_TITLE": "¿Sabes que puedes importar y exportar proyectos?",
+        "HINT1_TEXT": "Esto permite extraer todos tus datos para moverlos de una instancia de Taiga a otra.\n",
+        "HINT2_TITLE": "¿Sabías que puedes crear atributos personalizados?",
+        "HINT2_TEXT": "Los equipos ahora pueden crear atributos personalizados como un medio flexible para introducir datos específicos útiles para su flujo de trabajo particular",
+        "HINT3_TITLE": "Reordenar tus proyectos para facilitar el acceso a los más relevantes para ti",
+        "HINT3_TEXT": "Los 10 primeros proyectos aparecerán en el listado del acceso directo de la barra superior.",
+        "HINT4_TITLE": "Has olvidado en qué estabas trabajando?",
+        "HINT4_TEXT": "No te preocupes, en el dashboard encontrarás las tareas, peticiones e historias de usuario abiertas en el orden en el que trabajste en ellas."
+    },
+    "TIMELINE": {
+        "UPLOAD_ATTACHMENT": "{{username}} ha subido un nuevo adjunto en {{obj_name}}\n",
+        "US_CREATED": "{{username}} ha creado una nueva historia {{obj_name}} en {{project_name}}",
+        "ISSUE_CREATED": "{{username}} ha creado una nueva petición {{obj_name}} en {{project_name}}",
+        "TASK_CREATED": "{{username}} ha creado una nueva tarea {{obj_name}} en {{project_name}}",
+        "TASK_CREATED_WITH_US": "{{username}} ha creado una nueva tarea {{obj_name}} en {{project_name}} que proviene de la historia {{us_name}}",
+        "WIKI_CREATED": "{{username}} ha creado una nueva página de wiki {{obj_name}} en {{project_name}}\n",
+        "MILESTONE_CREATED": "{{username}} ha creado un nuevo sprint {{obj_name}} en {{project_name}}",
+        "NEW_PROJECT": "{{username}} creó el proyecto {{project_name}}",
+        "MILESTONE_UPDATED": "{{username}} ha actualizado el sprint {{obj_name}}",
+        "US_UPDATED": "{{username}} ha actualizado el atributo \"{{field_name}}\" de la historia {{obj_name}}",
+        "ISSUE_UPDATED": "{{username}} ha actualizado el atributo \"{{field_name}}\" de la petición {{obj_name}}",
+        "TASK_UPDATED": "{{username}} ha actualizado el atributo \"{{field_name}}\" de la tarea {{obj_name}}",
+        "TASK_UPDATED_WITH_US": "{{username}} ha actualizado el atributo \"{{field_name}}\" de la tarea {{obj_name}} que proviene de la historia {{us_name}}",
+        "WIKI_UPDATED": "{{username}} ha actualizado la página del wiki {{obj_name}}",
+        "NEW_COMMENT_US": "{{username}} ha añadido un comentado en la historia {{obj_name}}",
+        "NEW_COMMENT_ISSUE": "{{username}} ha añadido un comentado en la petición {{obj_name}}",
+        "NEW_COMMENT_TASK": "{{username}} ha añadido un comentado en la tarea {{obj_name}}",
+        "NEW_MEMBER": "{{project_name}} tiene un nuevo miembro",
+        "US_ADDED_MILESTONE": "{{username}} ha añadido la historia {{obj_name}} a {{sprint_name}}",
+        "US_REMOVED_FROM_MILESTONE": "{{username}} ha añadido la historia {{obj_name}} al backlog",
+        "BLOCKED": "{{username}} ha bloqueado {{obj_name}}",
+        "UNBLOCKED": "{{username}} ha desbloqueado {{obj_name}}",
+        "NEW_USER": "{{username}} se ha unido a Taiga"
     }
 }

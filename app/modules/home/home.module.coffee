@@ -1,0 +1,1 @@
+module = angular.module("taigaHome", [])

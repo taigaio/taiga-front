@@ -36,14 +36,26 @@ class AuthService extends taiga.Service
                  "$tgHttp",
                  "$tgUrls",
                  "$tgConfig",
-                 "$translate"]
+                 "$translate",
+                 "tgCurrentUserService"]
 
-    constructor: (@rootscope, @storage, @model, @rs, @http, @urls, @config, @translate) ->
+    constructor: (@rootscope, @storage, @model, @rs, @http, @urls, @config, @translate, @currentUserService) ->
         super()
+        userModel = @.getUser()
+        @.setUserdata(userModel)
+
+    setUserdata: (userModel) ->
+        if userModel
+            @.userData = Immutable.fromJS(userModel.getAttrs())
+            @currentUserService.setUser(@.userData)
+        else
+            @.userData = null
+
 
     _setLocales: ->
         lang = @rootscope.user.lang || @config.get("defaultLanguage") || "en"
-        @translate.use(lang)
+        @translate.preferredLanguage(lang)  # Needed for calls to the api in the correct language
+        @translate.use(lang)                # Needed for change the interface in runtime
 
     getUser: ->
         if @rootscope.user
@@ -62,6 +74,8 @@ class AuthService extends taiga.Service
         @rootscope.auth = user
         @storage.set("userInfo", user.getAttrs())
         @rootscope.user = user
+
+        @.setUserdata(user)
 
         @._setLocales()
 
@@ -103,6 +117,8 @@ class AuthService extends taiga.Service
     logout: ->
         @.removeToken()
         @.clear()
+
+        @currentUserService.removeUser()
 
     register: (data, type, existing) ->
         url = @urls.resolve("auth-register")
@@ -176,7 +192,8 @@ PublicRegisterMessageDirective = ($config, $navUrls, templates) ->
         template: templateFn
     }
 
-module.directive("tgPublicRegisterMessage", ["$tgConfig", "$tgNavUrls", "$tgTemplate", PublicRegisterMessageDirective])
+module.directive("tgPublicRegisterMessage", ["$tgConfig", "$tgNavUrls", "$tgTemplate",
+                                             PublicRegisterMessageDirective])
 
 
 LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls, $events, $translate) ->
@@ -212,10 +229,16 @@ LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls, $
 
         $el.on "submit", "form", submit
 
+        window.prerenderReady = true
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
     return {link:link}
 
 module.directive("tgLogin", ["$tgAuth", "$tgConfirm", "$tgLocation", "$tgConfig", "$routeParams",
                              "$tgNavUrls", "$tgEvents", "$translate", LoginDirective])
+
 
 #############################################################################
 ## Register Directive
@@ -238,9 +261,9 @@ RegisterDirective = ($auth, $confirm, $location, $navUrls, $config, $analytics, 
             $location.path($navUrls.resolve("home"))
 
         onErrorSubmit = (response) ->
-            if response.data._error_message?
-                text = $translate.instant("LOGIN_FORM.ERROR_GENERIC") + " " + response.data._error_message
-                $confirm.notify("light-error", text + " " + response.data._error_message)
+            if response.data._error_message
+                text = $translate.instant("COMMON.GENERIC_ERROR", {error: response.data._error_message})
+                $confirm.notify("light-error", text)
 
             form.setErrors(response.data)
 
@@ -255,10 +278,16 @@ RegisterDirective = ($auth, $confirm, $location, $navUrls, $config, $analytics, 
 
         $el.on "submit", "form", submit
 
+        $scope.$on "$destroy", ->
+            $el.off()
+
+        window.prerenderReady = true
+
     return {link:link}
 
 module.directive("tgRegister", ["$tgAuth", "$tgConfirm", "$tgLocation", "$tgNavUrls", "$tgConfig",
                                 "$tgAnalytics", "$translate", RegisterDirective])
+
 
 #############################################################################
 ## Forgot Password Directive
@@ -291,10 +320,16 @@ ForgotPasswordDirective = ($auth, $confirm, $location, $navUrls, $translate) ->
 
         $el.on "submit", "form", submit
 
+        $scope.$on "$destroy", ->
+            $el.off()
+
+        window.prerenderReady = true
+
     return {link:link}
 
 module.directive("tgForgotPassword", ["$tgAuth", "$tgConfirm", "$tgLocation", "$tgNavUrls", "$translate",
                                       ForgotPasswordDirective])
+
 
 #############################################################################
 ## Change Password from Recovery Directive
@@ -316,12 +351,10 @@ ChangePasswordFromRecoveryDirective = ($auth, $confirm, $location, $params, $nav
             $location.path($navUrls.resolve("login"))
 
             text = $translate.instant("CHANGE_PASSWORD_RECOVERY_FORM.SUCCESS")
-
             $confirm.success(text)
 
         onErrorSubmit = (response) ->
             text = $translate.instant("COMMON.GENERIC_ERROR", {error: response.data._error_message})
-
             $confirm.notify("light-error", text)
 
         submit = debounce 2000, (event) =>
@@ -335,10 +368,15 @@ ChangePasswordFromRecoveryDirective = ($auth, $confirm, $location, $params, $nav
 
         $el.on "submit", "form", submit
 
+        $scope.$on "$destroy", ->
+            $el.off()
+
     return {link:link}
 
 module.directive("tgChangePasswordFromRecovery", ["$tgAuth", "$tgConfirm", "$tgLocation", "$routeParams",
-                                                  "$tgNavUrls", "$translate", ChangePasswordFromRecoveryDirective])
+                                                  "$tgNavUrls", "$translate",
+                                                  ChangePasswordFromRecoveryDirective])
+
 
 #############################################################################
 ## Invitation
@@ -365,7 +403,9 @@ InvitationDirective = ($auth, $confirm, $location, $params, $navUrls, $analytics
         onSuccessSubmitLogin = (response) ->
             $analytics.trackEvent("auth", "invitationAccept", "invitation accept with existing user", 1)
             $location.path($navUrls.resolve("project", {project: $scope.invitation.project_slug}))
-            text = $translate.instant("INVITATION_LOGIN_FORM.SUCCESS", {"project_name": $scope.invitation.project_name})
+            text = $translate.instant("INVITATION_LOGIN_FORM.SUCCESS", {
+                "project_name": $scope.invitation.project_name
+            })
 
             $confirm.notify("success", text)
 
@@ -388,7 +428,7 @@ InvitationDirective = ($auth, $confirm, $location, $params, $navUrls, $analytics
 
         # Register form
         $scope.dataRegister = {token: token}
-        registerForm = $el.find("form.register-form").checksley()
+        registerForm = $el.find("form.register-form").checksley({onlyOneErrorElement: true})
 
         onSuccessSubmitRegister = (response) ->
             $analytics.trackEvent("auth", "invitationAccept", "invitation accept with new user", 1)
@@ -397,9 +437,11 @@ InvitationDirective = ($auth, $confirm, $location, $params, $navUrls, $analytics
                                        "Welcome to #{_.escape($scope.invitation.project_name)}")
 
         onErrorSubmitRegister = (response) ->
-            text = $translate.instant("LOGIN_FORM.ERROR_AUTH_INCORRECT")
+            if response.data._error_message
+                text = $translate.instant("COMMON.GENERIC_ERROR", {error: response.data._error_message})
+                $confirm.notify("light-error", text)
 
-            $confirm.notify("light-error", text)
+            registerForm.setErrors(response.data)
 
         submitRegister = debounce 2000, (event) =>
             event.preventDefault()
@@ -413,10 +455,14 @@ InvitationDirective = ($auth, $confirm, $location, $params, $navUrls, $analytics
         $el.on "submit", "form.register-form", submitRegister
         $el.on "click", ".button-register", submitRegister
 
+        $scope.$on "$destroy", ->
+            $el.off()
+
     return {link:link}
 
 module.directive("tgInvitation", ["$tgAuth", "$tgConfirm", "$tgLocation", "$routeParams",
                                   "$tgNavUrls", "$tgAnalytics", "$translate", InvitationDirective])
+
 
 #############################################################################
 ## Change Email
@@ -429,12 +475,15 @@ ChangeEmailDirective = ($repo, $model, $auth, $confirm, $location, $params, $nav
         form = $el.find("form").checksley()
 
         onSuccessSubmit = (response) ->
-            $repo.queryOne("users", $auth.getUser().id).then (data) =>
-                $auth.setUser(data)
-                $location.path($navUrls.resolve("home"))
+            if $auth.isAuthenticated()
+                $repo.queryOne("users", $auth.getUser().id).then (data) =>
+                    $auth.setUser(data)
+                    $location.path($navUrls.resolve("home"))
+            else
+                $location.path($navUrls.resolve("login"))
 
-                text = $translate.instant("CHANGE_EMAIL_FORM.SUCCESS")
-                $confirm.success(text)
+            text = $translate.instant("CHANGE_EMAIL_FORM.SUCCESS")
+            $confirm.success(text)
 
         onErrorSubmit = (response) ->
             text = $translate.instant("COMMON.GENERIC_ERROR", {error: response.data._error_message})
@@ -456,10 +505,14 @@ ChangeEmailDirective = ($repo, $model, $auth, $confirm, $location, $params, $nav
             event.preventDefault()
             submit()
 
+        $scope.$on "$destroy", ->
+            $el.off()
+
     return {link:link}
 
-module.directive("tgChangeEmail", ["$tgRepo", "$tgModel", "$tgAuth", "$tgConfirm", "$tgLocation", "$routeParams",
-                                   "$tgNavUrls", "$translate", ChangeEmailDirective])
+module.directive("tgChangeEmail", ["$tgRepo", "$tgModel", "$tgAuth", "$tgConfirm", "$tgLocation",
+                                   "$routeParams", "$tgNavUrls", "$translate", ChangeEmailDirective])
+
 
 #############################################################################
 ## Cancel account
@@ -495,7 +548,10 @@ CancelAccountDirective = ($repo, $model, $auth, $confirm, $location, $params, $n
 
         $el.on "submit", "form", submit
 
+        $scope.$on "$destroy", ->
+            $el.off()
+
     return {link:link}
 
-module.directive("tgCancelAccount", ["$tgRepo", "$tgModel", "$tgAuth", "$tgConfirm", "$tgLocation", "$routeParams",
-                                   "$tgNavUrls", CancelAccountDirective])
+module.directive("tgCancelAccount", ["$tgRepo", "$tgModel", "$tgAuth", "$tgConfirm", "$tgLocation",
+                                     "$routeParams","$tgNavUrls", CancelAccountDirective])

@@ -43,18 +43,23 @@ class SearchController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$routeParams",
         "$q",
         "$tgLocation",
-        "$appTitle",
+        "tgAppMetaService",
         "$tgNavUrls",
-        "tgLoader"
+        "$translate"
     ]
 
-    constructor: (@scope, @repo, @rs, @params, @q, @location, @appTitle, @navUrls, @tgLoader) ->
+    constructor: (@scope, @repo, @rs, @params, @q, @location, @appMetaService, @navUrls, @translate) ->
         @scope.sectionName = "Search"
 
         promise = @.loadInitialData()
 
         promise.then () =>
-            @appTitle.set("Search")
+            title = @translate.instant("SEARCH.PAGE_TITLE", {projectName: @scope.project.name})
+            description = @translate.instant("SEARCH.PAGE_DESCRIPTION", {
+                projectName: @scope.project.name,
+                projectDescription: @scope.project.description
+            })
+            @appMetaService.setAll(title, description)
 
         promise.then null, @.onInitialDataError.bind(@)
 
@@ -63,9 +68,7 @@ class SearchController extends mixOf(taiga.Controller, taiga.PageMixin)
         loadSearchData = debounceLeading(100, (t) => @.loadSearchData(t))
 
         @scope.$watch "searchTerm", (term) =>
-            if not term
-                @tgLoader.pageLoaded()
-            else
+            if term
                 loadSearchData(term)
 
     loadFilters: ->
@@ -90,9 +93,6 @@ class SearchController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.searchResults = data
             return data
 
-        promise.finally =>
-            @tgLoader.pageLoaded()
-
         return promise
 
     loadInitialData: ->
@@ -107,7 +107,7 @@ module.controller("SearchController", SearchController)
 ## Search box directive
 #############################################################################
 
-SearchBoxDirective = ($lightboxService, $navurls, $location, $route)->
+SearchBoxDirective = (projectService, $lightboxService, $navurls, $location, $route)->
     link = ($scope, $el, $attrs) ->
         project = null
 
@@ -120,24 +120,40 @@ SearchBoxDirective = ($lightboxService, $navurls, $location, $route)->
 
             text = $el.find("#search-text").val()
 
-            url = $navurls.resolve("project-search", {project: project.slug})
+            url = $navurls.resolve("project-search", {project: project.get("slug")})
 
-            $lightboxService.close($el)
             $scope.$apply ->
+                $lightboxService.close($el)
+
                 $location.path(url)
                 $location.search("text", text).path(url)
                 $route.reload()
 
-        $scope.$on "search-box:show", (ctx, newProject)->
-            project = newProject
-            $lightboxService.open($el)
-            $el.find("#search-text").val("")
+
+        openLightbox = () ->
+            project = projectService.project
+
+            $lightboxService.open($el).then () ->
+                $el.find("#search-text").focus()
 
         $el.on "submit", "form", submit
 
-    return {link:link}
+        openLightbox()
 
-module.directive("tgSearchBox", ["lightboxService", "$tgNavUrls", "$tgLocation", "$route", SearchBoxDirective])
+    return {
+        templateUrl: "search/lightbox-search.html",
+        link:link
+    }
+
+SearchBoxDirective.$inject = [
+    "tgProjectService",
+    "lightboxService",
+    "$tgNavUrls",
+    "$tgLocation",
+    "$route"
+]
+
+module.directive("tgSearchBox", SearchBoxDirective)
 
 
 #############################################################################
@@ -154,12 +170,15 @@ SearchDirective = ($log, $compile, $templatecache, $routeparams, $location) ->
             selectedSectionName = null
             selectedSectionData = null
 
-            for name, value of data
-                continue if name == "count"
-                if value.length > maxVal
-                    maxVal = value.length
-                    selectedSectionName = name
-                    selectedSectionData = value
+            if data
+                for name in ["userstories", "issues", "tasks", "wikipages"]
+                    value = data[name]
+
+                    if value.length > maxVal
+                        maxVal = value.length
+                        selectedSectionName = name
+                        selectedSectionData = value
+                        break;
 
             if maxVal == 0
                 return {name: "userstories", value: []}

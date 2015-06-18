@@ -7,54 +7,12 @@ body {
     @extend %text;
     background: $white; // fallback
     color: $grayer;
+    line-height: 1.3;
     min-height: 100%;
     width: 100%;
     .master {
         &.ng-animate {
             transition: 0;
-        }
-    }
-    .menu {
-        transform: translate3d(0, 0, 0);
-        transition: transform 1s ease;
-    }
-    &.open-projects-nav {
-        .projects-nav {
-            transform: translate3d(0, 0, 0);
-            transition: transform 1s ease;
-        }
-        .master {
-            transform: translate3d(300px, 0, 0);
-            transition: transform 1s ease;
-            &.ng-animate {
-                transition: 0;
-            }
-        }
-        .menu {
-            transform: translate3d(300px, 0, 0);
-            transition: transform 1s ease;
-        }
-        .projects-nav-overlay {
-            opacity: .9;
-            transform: translate3d(300px, 0, 0);
-            transition: all 1s ease;
-        }
-        &.closed-projects-nav {
-            .projects-nav {
-                transform: translate3d(-300px, 0, 0);
-                transition: transform 1s ease;
-            }
-            .projects-nav-overlay {
-                opacity: 0;
-                transform: translate3d(0, 0, 0);
-                transition: all 1s ease;
-            }
-            .master {
-                transform: translate3d(0, 0, 0);
-            }
-            .menu {
-                transform: translate3d(0, 0, 0);
-            }
         }
     }
     &.loading-project {
@@ -75,6 +33,10 @@ body {
     overflow: hidden;
 }
 
+.drag-active {
+    overflow-x: hidden;
+}
+
 .master {
     background: $white;
     height: 100%;
@@ -82,16 +44,22 @@ body {
     position: relative;
 }
 
+.centered {
+    margin: 0 auto;
+    max-width: 1200px;
+    min-width: 960px;
+    width: 90%;
+}
+
 .wrapper {
     display: flex;
-    min-height: 100vh;
-    padding-left: 90px;
+    min-height: $main-height;
 }
 
 .menu-secondary {
     background: $whitish;
     flex: 0 0 auto;
-    min-height: 100vh;
+    min-height: $main-height;
     min-width: 0;
     padding: 1rem;
     width: 320px;
@@ -118,9 +86,8 @@ body {
 .menu-tertiary {
     background-color: $dark-taiga;
     flex: 0 0 auto;
-    min-height: 100vh;
-    padding: 2em 1em;
-    width: 255px;
+    min-height: $main-height;
+    width: 250px;
 }
 
 .extrabar {

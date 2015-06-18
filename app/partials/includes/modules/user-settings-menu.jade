@@ -1,18 +1,12 @@
 section.admin-menu
-    header
-        h1(translate="USER_SETTINGS.MENU.SECTION_TITLE")
-
     nav
         ul
             li#usersettingsmenu-user-profile
-                a(href="", tg-nav="user-settings-user-profile:project=project.slug")
+                a(href="", tg-nav="user-settings-user-profile", title="{{ 'USER_SETTINGS.MENU.USER_PROFILE' | translate }}")
                     span.title(translate="USER_SETTINGS.MENU.USER_PROFILE")
-                    span.icon.icon-arrow-right
             li#usersettingsmenu-change-password
-                a(href="" tg-nav="user-settings-user-change-password:project=project.slug")
+                a(href="" tg-nav="user-settings-user-change-password", title="{{ 'USER_SETTINGS.MENU.CHANGE_PASSWORD' | translate }}")
                     span.title(translate="USER_SETTINGS.MENU.CHANGE_PASSWORD")
-                    span.icon.icon-arrow-right
             li#usersettingsmenu-mail-notifications
-                a(href="", tg-nav="user-settings-mail-notifications:project=project.slug")
+                a(href="", tg-nav="user-settings-mail-notifications", title="{{ 'USER_SETTINGS.MENU.EMAIL_NOTIFICATIONS' | translate }}")
                     span.title(translate="USER_SETTINGS.MENU.EMAIL_NOTIFICATIONS")
-                    span.icon.icon-arrow-right

@@ -1,0 +1,30 @@
+nav.navbar
+    div.nav-left
+        a.logo(
+            href="#",
+            tg-nav="home",
+            title="{{'PROJECT.NAVIGATION.DASHBOARD_TITLE' | translate}}")
+
+            include ../../svg/logo.svg
+
+        //a(
+        //    href="#",
+        //    title="{{'PROJECT.NAVIGATION.DISCOVER_TITLE' | translate}}",
+        //    translate="PROJECT.NAVIGATION.DISCOVER")
+
+        a(
+            href="https://taiga.io/support/",
+            target="_blank",
+            title="{{'PROJECT.NAVIGATION.HELP_TITLE' | translate}}",
+            translate="PROJECT.NAVIGATION.HELP")
+
+    div.nav-right(ng-if="vm.isAuthenticated")
+        a(tg-nav="home",
+          ng-class="{active: vm.active}",
+          title="{{'PROJECT.NAVIGATION.DASHBOARD_TITLE' | translate}}")
+
+            include ../../svg/dashboard.svg
+
+        div.topnav-dropdown-wrapper(ng-show="vm.projects.size", tg-dropdown-project-list)
+        //div.topnav-dropdown-wrapper(tg-dropdown-organization-list)
+        div.topnav-dropdown-wrapper(tg-dropdown-user)

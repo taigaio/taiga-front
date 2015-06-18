@@ -32,7 +32,8 @@
 }
 
 @mixin popover($width, $top: '', $left: '', $bottom: '', $right: '', $arrow-width: 0, $arrow-top: '', $arrow-left: '', $arrow-bottom: '', $arrow-height: 15px) {
-    @extend %text;
+    @extend %light;
+    @extend %small;
     background: $blackish;
     bottom: #{$bottom};
     color: $white;
@@ -73,5 +74,31 @@
         top: #{$arrow-top};
         transform: rotate(45deg);
         width: #{$arrow-width};
+    }
+}
+
+@mixin arrow($arrow-direction, $border-color, $background-color, $border-width, $border-size) {
+    &:after,
+    &:before {
+        #{$arrow-direction}: 100%;
+        left: 50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+    }
+    &:after {
+        border-color: rgba($background-color, 0);
+        border-#{$arrow-direction}-color: $background-color;
+        border-width: #{$border-size}px;
+        margin-left: -#{$border-size}px;
+    }
+    &:before {
+        border-color: rgba($border-color, 0);
+        border-#{$arrow-direction}-color: $border-color;
+        border-width: calc(#{$border-size}px + #{$border-width}px);
+        margin-left: calc(-#{$border-size}px + #{$border-width}px);
     }
 }

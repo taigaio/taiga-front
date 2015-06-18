@@ -1,0 +1,5 @@
+div.single-attachment
+    blockquote
+        a(ng-href="{{ attachment.url }}", title="Click to download {{ attachment.filename }}", target="_blank")
+            span.icon.icon-document
+            span {{attachment.filename}}

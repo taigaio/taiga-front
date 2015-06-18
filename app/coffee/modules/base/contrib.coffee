@@ -22,9 +22,16 @@
 taigaContribPlugins = @.taigaContribPlugins = @.taigaContribPlugins or []
 
 class ContribController extends taiga.Controller
-    @.$inject = ["$rootScope", "$scope", "$routeParams", "$tgRepo", "$tgResources", "$tgConfirm", "$appTitle"]
+    @.$inject = [
+        "$rootScope",
+        "$scope",
+        "$routeParams",
+        "$tgRepo",
+        "$tgResources",
+        "$tgConfirm"
+    ]
 
-    constructor: (@rootScope, @scope, @params, @repo, @rs, @confirm, @appTitle) ->
+    constructor: (@rootScope, @scope, @params, @repo, @rs, @confirm) ->
         @scope.adminPlugins = _.where(@rootScope.contribPlugins, {"type": "admin"})
         @scope.currentPlugin = _.first(_.where(@scope.adminPlugins, {"slug": @params.plugin}))
         @scope.pluginTemplate = "contrib/#{@scope.currentPlugin.slug}"
@@ -32,25 +39,19 @@ class ContribController extends taiga.Controller
 
         promise = @.loadInitialData()
 
-        promise.then () =>
-            @appTitle.set(@scope.project.name)
-
         promise.then null, =>
             @confirm.notify("error")
 
     loadProject: ->
-        return @rs.projects.get(@scope.projectId).then (project) =>
+        return @rs.projects.getBySlug(@params.pslug).then (project) =>
+            @scope.projectId = project.id
             @scope.project = project
             @scope.$emit('project:loaded', project)
             @scope.$broadcast('project:loaded', project)
             return project
 
     loadInitialData: ->
-        promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
-            @scope.projectId = data.project
-            return data
-
-        return promise.then(=> @.loadProject())
+        return @.loadProject()
 
 module = angular.module("taigaBase")
 module.controller("ContribController", ContribController)

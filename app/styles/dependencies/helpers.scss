@@ -1,6 +1,6 @@
 // __Font Sizes__ //
-%xsmall {font-size: .5rem;}
-%small {font-size: .8rem;}
+%xsmall {font-size: .75rem;}
+%small {font-size: .9rem;}
 %medium {font-size: 1rem;}
 %large {font-size: 1.2rem;}
 %larger {font-size: 1.6rem;}
@@ -8,9 +8,10 @@
 %xxlarge {font-size: 3rem;}
 
 // __Font Types__ //
-%title {font-family: 'OpenSans-CondLight', Arial, Helvetica, sans-serif;}
-%text {font-family: 'opensans-regular', Arial, Helvetica, sans-serif; line-height: 1.3rem;}
-%bold {font-family: 'opensans-semibold', Arial, Helvetica, sans-serif;}
+%title {font-family: 'OpenSans-CondLight', Arial, Helvetica, sans-serif; }
+%light {font-family: 'OpenSans-Light', Arial, Helvetica, sans-serif; }
+%text {font-family: 'opensans-regular', Arial, Helvetica, sans-serif; }
+%bold {font-family: 'opensans-semibold', Arial, Helvetica, sans-serif; }
 %taiga {font-family: 'taiga';}
 %mono {font-family: 'courier new', 'monospace';}
 
@@ -80,3 +81,6 @@
     max-width: 1rem;
     transform-origin: 32 32;
 }
+
+$navbar: 40px;
+$main-height: calc(100vh - 40px);

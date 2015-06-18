@@ -39,28 +39,29 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$q",
         "$location",
         "$tgNavUrls",
-        "$appTitle",
+        "tgAppMetaService",
         "$tgAuth",
-        "tgLoader",
-        "$translate"
+        "$translate",
+        "tgProjectService"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @rs, @params, @q, @location, @navUrls, @appTitle, @auth, tgLoader,
-                  @translate) ->
+    constructor: (@scope, @rootscope, @repo, @rs, @params, @q, @location, @navUrls, @appMetaService, @auth,
+                  @translate, @projectService) ->
         @scope.sectionName = "TEAM.SECTION_NAME"
 
         promise = @.loadInitialData()
 
         # On Success
         promise.then =>
-            text = @translate.instant("TEAM.APP_TITLE", {"projectName": @scope.project.name})
-            @appTitle.set(text)
+            title = @translate.instant("TEAM.PAGE_TITLE", {projectName: @scope.project.name})
+            description = @translate.instant("TEAM.PAGE_DESCRIPTION", {
+                projectName: @scope.project.name,
+                projectDescription: @scope.project.description
+            })
+            @appMetaService.setAll(title, description)
 
         # On Error
         promise.then null, @.onInitialDataError.bind(@)
-
-        # Finally
-        promise.finally tgLoader.pageLoaded
 
     setRole: (role) ->
         if role
@@ -69,27 +70,30 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.filtersRole = null
 
     loadMembers: ->
-        return @rs.memberships.list(@scope.projectId, {}, false).then (data) =>
-            currentUser = @auth.getUser()
-            if currentUser? and not currentUser.photo?
-                currentUser.photo = "/images/unnamed.png"
+        currentUser = @auth.getUser()
 
-            @scope.currentUser = _.find data, (membership) =>
-                return currentUser? and membership.user == currentUser.id
+        if currentUser? and not currentUser.photo?
+            currentUser.photo = "/images/unnamed.png"
 
-            @scope.totals = {}
-            _.forEach data, (membership) =>
-                @scope.totals[membership.user] = 0
+        memberships = @projectService.project.toJS().memberships
 
-            @scope.memberships = _.filter data, (membership) =>
-                if membership.user && (not currentUser? or membership.user != currentUser.id) && membership.is_user_active
-                    return membership
+        @scope.currentUser = _.find memberships, (membership) =>
+            return currentUser? and membership.user == currentUser.id
 
-            for membership in @scope.memberships
-                if not membership.photo?
-                    membership.photo = "/images/unnamed.png"
+        @scope.totals = {}
 
-            return data
+        _.forEach memberships, (membership) =>
+            @scope.totals[membership.user] = 0
+
+        @scope.memberships = _.filter memberships, (membership) =>
+            if membership.user && (not currentUser? or membership.user != currentUser.id)
+                return membership
+
+        @scope.memberships = _.filter memberships, (membership) => return membership.is_active
+
+        for membership in @scope.memberships
+            if not membership.photo?
+                membership.photo = "/images/unnamed.png"
 
     loadProject: ->
         return @rs.projects.getBySlug(@params.pslug).then (project) =>
@@ -135,7 +139,9 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
         promise = @.loadProject()
         return promise.then (project) =>
             @.fillUsersAndRoles(project.users, project.roles)
-            return @.loadMembers().then(=> @.loadMemberStats())
+            @.loadMembers()
+
+            return @.loadMemberStats()
 
 module.controller("TeamController", TeamController)
 

@@ -5,7 +5,7 @@ section.sprints
             div.total-sprints
                 span.number(ng-bind="project.total_milestones") --
                 span.description(translate="BACKLOG.SPRINTS.NUMBER_SPRINTS")
-            a.button-green.add-sprint(href="", title="{{ 'BACKLOG.TITLE_ACTION_NEW_SPRINT' | translate }}",
+            a.button-green.add-sprint(href="", title="{{ 'BACKLOG.SPRINTS.TITLE_ACTION_NEW_SPRINT' | translate }}",
                                       ng-click="ctrl.addNewSprint()", tg-check-permission="add_milestone")
                 span.text(translate="BACKLOG.SPRINTS.ACTION_NEW_SPRINT")
 

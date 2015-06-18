@@ -17,12 +17,10 @@
                 width: 100%;
             }
             .overlay {
-                align-content: center;
                 align-items: center;
                 background: rgba($blackish, .8);
                 bottom: 0;
                 display: flex;
-                justify-content: center;
                 left: 0;
                 position: absolute;
                 right: 0;
@@ -32,9 +30,8 @@
             .loading-spinner {
                 @extend %loading-spinner;
                 border: 0;
-                flex-grow: 0;
-                max-height: 3rem;
-                max-width: 3rem;
+                min-height: 3rem;
+                min-width: 3rem;
                 transform-origin: center center;
             }
             p {
@@ -69,6 +66,9 @@
         @extend %title;
         display: block;
         margin-bottom: .5rem;
+    }
+    textarea {
+        min-height: 7rem;
     }
     .button-green {
         color: $white;

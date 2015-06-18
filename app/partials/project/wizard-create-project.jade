@@ -1,0 +1,46 @@
+form
+    section.wizard-step.create-step1(data-step="step1")
+        div.title
+            h1(translate="WIZARD.SECTION_TITLE_CHOOSE_TEMPLATE")
+            p(translate="WIZARD.CHOOSE_TEMPLATE_TEXT")
+        div.template-wrapper
+            div.template-inner
+                fieldset(ng-repeat="template in templates")
+                    input(type="radio", name="template", id="template-{{ template.id }}",
+                          ng-value='template.id', ng-model="data.creation_template",
+                          data-required="true")
+                    label.backlog(for="template-{{ template.id }}")
+                        span.icon.icon-backlog
+                        h2 {{ template.name }}
+                    p {{ template.description }}
+
+        fieldset
+            a.button-next.button-green(href="#", title="{{'PAGINATION.NEXT' | translate}}", translate="PAGINATION.NEXT")
+
+    section.wizard-step.create-step2.active(data-step="step2")
+        div.title
+            h1(translate="WIZARD.SECTION_TITLE_CREATE_PROJECT")
+            p(translate="WIZARD.CREATE_PROJECT_TEXT")
+        div.template-wrapper
+            div.template-inner
+                fieldset
+                    input(type="text", name="name", ng-model="data.name", data-required="true", placeholder="{{'COMMON.FIELDS.NAME' | translate}}", maxlength="45")
+                fieldset
+                    textarea(name="description", ng-model="data.description", data-required="true",  ng-attr-placeholder="{{'COMMON.FIELDS.DESCRIPTION' | translate}}")
+                fieldset.wizard-action
+                    div
+                        a.button-prev.button.button-gray(href="#", title="{{'PAGINATION.PREVIOUS' | translate}}", translate="PAGINATION.PREVIOUS")
+                        button.button-green.submit-button(type="submit", title="{{'COMMON.CREATE' | translate}}", translate="COMMON.CREATE")
+
+                    button(type="submit", class="hidden")
+
+div.progress-bar
+    div.progress-state
+        span(translate="WIZARD.PROGRESS_TEMPLATE_SELECTION")
+        span(translate="WIZARD.PROGRESS_NAME_DESCRIPTION")
+        // span Final touches
+    div.progress-bar-wrapper
+        div.bar
+
+a.close(href="#" title="{{'COMMON.CLOSE' | translate}}")
+    span.icon.icon-delete

@@ -49,6 +49,9 @@ $column-margin: 0 10px 0 0;
             display: none;
         }
     }
+    .readonly {
+        cursor: auto;
+    }
 }
 
 .kanban-table-header {

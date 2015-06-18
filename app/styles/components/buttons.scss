@@ -5,14 +5,19 @@
     background: transparent;
     border: 0;
     color: $white;
+    cursor: pointer;
     display: inline-block;
     padding: .4rem 2.5rem;
+    text-align: center;
     text-transform: uppercase;
     transition: all .3s linear;
     vertical-align: middle;
     &:hover {
         color: $white;
         transition: all .3s linear;
+    }
+    &:visited {
+        color: $white;
     }
     &.loading {
         span {
@@ -51,12 +56,14 @@
     width: 100%;
 }
 
-.button-green {
+.button-green,
+a.button-green {
     @extend %button;
     background: $green-taiga;
     &:hover,
     &.active {
         background: $fresh-taiga;
+        color: $white;
     }
 }
 

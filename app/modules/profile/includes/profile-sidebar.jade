@@ -1,0 +1,8 @@
+aside.profile-sidebar
+    div(ng-if="::vm.isCurrentUser")
+        h4(translate="USER.PROFILE_SIDEBAR.TITLE")
+        p(translate="USER.PROFILE_SIDEBAR.DESCRIPTION")
+        a.button-gray(tg-nav="user-settings-user-profile")
+            span(translate="USER.PROFILE_SIDEBAR.ADD_INFO")
+
+    div(tg-profile-hints)

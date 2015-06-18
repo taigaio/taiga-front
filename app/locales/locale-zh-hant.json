@@ -100,6 +100,10 @@
                 "SAT": "週六"
             }
         },
+        "SEE_USER_PROFILE": "See {{username }} profile",
+        "USER_STORY": "使用者故事",
+        "TASK": "Task",
+        "ISSUE": "Issue",
         "TAGS": {
             "PLACEHOLDER": "我在這裏，請標注我",
             "DELETE": "刪除Tag",
@@ -125,7 +129,8 @@
             "ASSIGNED_TO": "指派給 ",
             "POINTS": "點數",
             "BLOCKED_NOTE": "已封鎖之筆記",
-            "IS_BLOCKED": "封鎖"
+            "IS_BLOCKED": "封鎖",
+            "REF": "Ref"
         },
         "ROLES": {
             "ALL": "所有"
@@ -231,13 +236,106 @@
                 "ADD_WIKI_LINKS": "新增維基連結",
                 "DELETE_WIKI_LINKS": "刪除維基連結"
             }
+        },
+        "META": {
+            "PAGE_TITLE": "Taiga",
+            "PAGE_DESCRIPTION": "Taiga is a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
         }
+    },
+    "LOGIN": {
+        "PAGE_TITLE": "Login - Taiga",
+        "PAGE_DESCRIPTION": "Logging in to Taiga, a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
     },
     "AUTH": {
         "INVITED_YOU": "已邀請您加入此專案",
         "NOT_REGISTERED_YET": "還沒註冊嗎？",
         "REGISTER": "註冊",
         "CREATE_ACCOUNT": "在此建立您的免費帳號"
+    },
+    "LOGIN_COMMON": {
+        "HEADER": "我已登入Taiga",
+        "PLACEHOLDER_AUTH_NAME": "使用者名稱或電子郵件（注意大小寫）",
+        "LINK_FORGOT_PASSWORD": "忘記了?",
+        "TITLE_LINK_FORGOT_PASSWORD": "你忘了密碼嗎",
+        "ACTION_ENTER": "Enter",
+        "ACTION_SIGN_IN": "登入",
+        "PLACEHOLDER_AUTH_PASSWORD": "密碼（大小寫有別）"
+    },
+    "LOGIN_FORM": {
+        "ERROR_AUTH_INCORRECT": "按我們的箹統記錄，你的帳戶名稱/電子郵件或密碼並不正確　",
+        "SUCCESS": "我們系統歡迎你加入Taiga"
+    },
+    "REGISTER": {
+        "PAGE_TITLE": "Register - Taiga",
+        "PAGE_DESCRIPTION": "Create your account in Taiga, a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
+    },
+    "REGISTER_FORM": {
+        "TITLE": "註冊一個新的Taiga帳戶(免費 )",
+        "PLACEHOLDER_NAME": "選一個用戶帳號(注意大小寫)",
+        "PLACEHOLDER_FULL_NAME": "選取你的全名",
+        "PLACEHOLDER_EMAIL": "你的電子郵件",
+        "PLACEHOLDER_PASSWORD": "設定密碼（注意大小寫不同） ",
+        "ACTION_SIGN_UP": "註冊",
+        "TITLE_LINK_LOGIN": "登入",
+        "LINK_LOGIN": "你是否已註冊? 登入"
+    },
+    "FORGOT_PASSWORD": {
+        "PAGE_TITLE": "Forgot password - Taiga",
+        "PAGE_DESCRIPTION": "Enter your username or email to get a new password and you can access to Taiga again."
+    },
+    "FORGOT_PASSWORD_FORM": {
+        "TITLE": "你是否忘了密碼嗎",
+        "SUBTITLE": "輸入你的帳戶名稱或電子郵件以進行註冊",
+        "PLACEHOLDER_FIELD": "使用者名稱或電子郵件",
+        "ACTION_RESET_PASSWORD": "重設密碼 ",
+        "LINK_CANCEL": "不，請帶我回去，我記起來了",
+        "SUCCESS": "<strong>檢查你的收信箱</strong><br />我們送出了一封信<br />裏面有設定你新電子郵件的相關指示",
+        "ERROR": "按我們的記錄，你尚未註冊"
+    },
+    "CHANGE_PASSWORD": {
+        "PAGE_TITLE": "Change you password - Taiga",
+        "PAGE_DESCRIPTION": "Set a new passoword for your Taiga account and hey!, you may want to eat some more iron-rich food, it's good for your brain :P",
+        "SECTION_NAME": "改變密碼 ",
+        "FIELD_CURRENT_PASSWORD": "現用密碼 ",
+        "PLACEHOLDER_CURRENT_PASSWORD": "你目前的密碼（如果你未有密碼，此處請空白）",
+        "FIELD_NEW_PASSWORD": "新密碼 ",
+        "PLACEHOLDER_NEW_PASSWORD": "輸入新密碼",
+        "FIELD_RETYPE_PASSWORD": "重新輸入新密碼",
+        "PLACEHOLDER_RETYPE_PASSWORD": "重新輸入新密碼",
+        "ERROR_PASSWORD_MATCH": "密碼不符"
+    },
+    "CHANGE_PASSWORD_RECOVERY_FORM": {
+        "TITLE": "創建新Taiga通過",
+        "SUBTITLE": "你也許該吃點鐵質豐富的食物，它對你的大腦有益處:p",
+        "PLACEHOLDER_RECOVER_PASSWORD_TOKEN": "回復密碼代碼　",
+        "LINK_NEED_TOKEN": "需要一個?",
+        "TITLE_LINK_NEED_TOKEN": "你是否需要代碼來恢復你所忘記的密碼?",
+        "PLACEHOLDER_NEW_PASSWORD": "新密碼 ",
+        "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "重新輸入新密碼",
+        "ACTION_RESET_PASSWORD": "重設密碼 ",
+        "SUCCESS": "系統已儲存你的新密碼<br />試試 <strong>用它登入</strong> "
+    },
+    "INVITATION": {
+        "PAGE_TITLE": "Invitation acceptance - Taiga",
+        "PAGE_DESCRIPTION": "Accept the invitation to join a project in Taiga, a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
+    },
+    "INVITATION_LOGIN_FORM": {
+        "NOT_FOUND": "<strong>Ooops, 有點問題</strong><br />我們的系統無法找到你的邀請信",
+        "SUCCESS": "你成功地加入此專案，歡迎來到 {{project_name}}",
+        "ERROR": "按我們的記錄，你尚未註冊或是未輸入有效的密碼　"
+    },
+    "HOME": {
+        "PAGE_TITLE": "Home - Taiga",
+        "PAGE_DESCRIPTION": "The Taiga home page with your main projects and all your assigned and watched user stories, tasks and issues",
+        "EMPTY_WATCHING": "<strong>Follow</strong> the projects, User Stories, Tasks, Issues... that you want to know about :)",
+        "EMPTY_PROJECT_LIST": "You don't have any projects yet",
+        "WORKING_ON_SECTION": "Working on",
+        "WATCHING_SECTION": "Watching"
+    },
+    "PROJECTS": {
+        "PAGE_TITLE": "My projects - Taiga",
+        "PAGE_DESCRIPTION": "A list with all your projects, you can reorder or create a new one.",
+        "MY_PROJECTS": "My projects"
     },
     "ATTACHMENT": {
         "SECTION_NAME": "附件",
@@ -276,6 +374,7 @@
         },
         "MEMBERSHIPS": {
             "TITLE": "管理成員",
+            "PAGE_TITLE": "Memberships - {{projectName}}",
             "ADD_BUTTON": "+ 新成員",
             "ADD_BUTTON_TITLE": "增加新成員"
         },
@@ -311,7 +410,7 @@
             "SALT_CHAT_ROOM": "你可以把聊天室名稱加上salt code亂數密碼　"
         },
         "PROJECT_PROFILE": {
-            "PAGE_TITLE": "專案檔案 - {{sectionName}} - {{projectName}}",
+            "PAGE_TITLE": "{{sectionName}} - 專案檔案 - {{projectName}}",
             "PROJECT_DETAILS": "專案細節",
             "PROJECT_NAME": "專案名稱",
             "PROJECT_SLUG": "專案代稱",
@@ -352,23 +451,26 @@
             "ISSUE_ADD": "在問題中加入客制欄位"
         },
         "PROJECT_VALUES": {
-            "APP_TITLE": "專案數值- {{sectionName}} - {{projectName}}",
+            "PAGE_TITLE": "{{sectionName}} - Project values - {{projectName}}",
             "REPLACEMENT": "所有此數值物品將改成",
             "ERROR_DELETE_ALL": "你不能刪除所有數值"
         },
         "PROJECT_VALUES_POINTS": {
-            "TITLE": "使用者故事點數",
+            "TITLE": "點數",
             "SUBTITLE": "指定你的使用者故事點數可能預估為",
+            "US_TITLE": "US points",
             "ACTION_ADD": "增加點數"
         },
         "PROJECT_VALUES_PRIORITIES": {
-            "TITLE": "問題優先性",
+            "TITLE": "優先性",
             "SUBTITLE": "指明你將遇到的問題優先程度",
+            "ISSUE_TITLE": "問題優先性",
             "ACTION_ADD": "新增優先性"
         },
         "PROJECT_VALUES_SEVERITIES": {
-            "TITLE": "問題急迫性",
+            "TITLE": "急迫性",
             "SUBTITLE": "指明你將遇到問題的嚴重程度",
+            "ISSUE_TITLE": "問題急迫性",
             "ACTION_ADD": "新增急迫性"
         },
         "PROJECT_VALUES_STATUS": {
@@ -382,10 +484,10 @@
             "TITLE": "類型",
             "SUBTITLE": "指定你的問題類型可能是",
             "ISSUE_TITLE": "問題類型",
-            "ACTION_ADD": "新增類別"
+            "ACTION_ADD": "新增{{objName}}"
         },
         "ROLES": {
-            "SECTION_NAME": "角色- {{projectName}}",
+            "PAGE_TITLE": "角色- {{projectName}}",
             "WARNING_NO_ROLE": "注意，你的專案中無角色可以評估使用者故事的點數",
             "HELP_ROLE_ENABLED": "當啟動時，被指派此角色的成員將可以評估使用者故事點數",
             "COUNT_MEMBERS": "{{ role.members_count }} 這類角色的成員",
@@ -402,20 +504,20 @@
         },
         "BITBUCKET": {
             "SECTION_NAME": "Bitbucket",
-            "APP_TITLE": "Bitbucket - {{projectName}}",
+            "PAGE_TITLE": "Bitbucket - {{projectName}}",
             "INFO_VERIFYING_IP": "Bitbucket要求不指派因此最佳確認方式為IP位置來源。如果此處空白，表示IP未有效確核。"
         },
         "GITLAB": {
             "SECTION_NAME": "Gitlob",
-            "APP_TITLE": "Gitlab - {{projectName}}",
+            "PAGE_TITLE": "Gitlab - {{projectName}}",
             "INFO_VERIFYING_IP": "GitHub要求不指派因此最佳確認方式為IP位置來源。如果此處空白，表示IP未有效確核。"
         },
         "GITHUB": {
             "SECTION_NAME": "Githun",
-            "APP_TITLE": "Gitlab - {{projectName}}"
+            "PAGE_TITLE": "Gitlab - {{projectName}}"
         },
         "WEBHOOKS": {
-            "APP_TITLE": "Webhooks- {{projectName}}",
+            "PAGE_TITLE": "Webhooks- {{projectName}}",
             "SECTION_NAME": "網頁觸發 ",
             "SUBTITLE": "網頁觸發通知關於Taiga事件的外部服務，例如評論，使用者故事等。　",
             "ADD_NEW": "新增一個網頁觸發 ",
@@ -441,6 +543,7 @@
             "WEBHOOK_NAME": "網頁觸發  '{{name}}'"
         },
         "CUSTOM_ATTRIBUTES": {
+            "PAGE_TITLE": "{{sectionName}} - Custom Attributes - {{projectName}}",
             "ADD": "加入客製化欄位",
             "EDIT": "編輯客製化欄位",
             "DELETE": "刪除客製欄位",
@@ -518,9 +621,36 @@
             "TITLE": "服務 "
         }
     },
+    "USER": {
+        "PROFILE": {
+            "PAGE_TITLE": "{{userFullName}} (@{{userUsername}})",
+            "EDIT": "Edit profile",
+            "FOLLOW": "Follow",
+            "PROJECTS": "專案",
+            "CLOSED_US": "Closed US",
+            "CONTACTS": "Contacts",
+            "REPORT": "Report Abuse",
+            "ACTIVITY_TAB": "Activity Tab",
+            "PROJECTS_TAB": "Projects Tab",
+            "CONTACTS_TAB": "Contacts Tab",
+            "FAVORITES_TAB": "Favorites Tab",
+            "CONTACTS_EMPTY": "{{username}} doesn't have contacts yet",
+            "CURRENT_USER_CONTACTS_EMPTY": "You don't have contacts yet",
+            "CURRENT_USER_CONTACTS_EMPTY_EXPLAIN": "The people with whom you work at Taiga will be your contacts automatically",
+            "PROJECTS_EMPTY": "{{username}} doesn't' have projects yet"
+        },
+        "PROFILE_SIDEBAR": {
+            "TITLE": "Your profile",
+            "DESCRIPTION": "People can see everything you do and what are you working on. Add a nice bio to give an enhanced version of your information.",
+            "ADD_INFO": "Edit your bio"
+        }
+    },
     "PROJECT": {
+        "PAGE_TITLE": "{{projectName}}",
         "WELCOME": "歡迎",
         "SECTION_PROJECTS": "專案",
+        "HELP": "Reorder your projects to set in the top the most used ones.<br/> The top 10 projects will appear in the top navigation bar project list",
+        "PRIVATE": "不公開專案",
         "STATS": {
             "PROJECT": "專案<br/> 點數",
             "DEFINED": "已定義<br/> 點數",
@@ -529,6 +659,7 @@
         },
         "SECTION": {
             "SEARCH": "搜尋",
+            "TIMELINE": "Timeline",
             "BACKLOG": "待辦任務優先表",
             "KANBAN": "Kanban(看板)",
             "ISSUES": "問題 ",
@@ -541,9 +672,32 @@
             "SECTION_TITLE": "你的專案",
             "PLACEHOLDER_SEARCH": "搜尋",
             "ACTION_CREATE_PROJECT": "創建專案",
-            "TITLE_ACTION_IMPORT": "滙入專案",
+            "ACTION_IMPORT_PROJECT": "滙入專案",
+            "SEE_MORE_PROJECTS": "See more projects",
+            "TITLE_CREATE_PROJECT": "創建專案",
+            "TITLE_IMPORT_PROJECT": "滙入專案",
             "TITLE_PRVIOUS_PROJECT": "顯示過去專案",
-            "TITLE_NEXT_PROJECT": "顯示下一個任務"
+            "TITLE_NEXT_PROJECT": "顯示下一個任務",
+            "HELP_TITLE": "Taiga Support Page",
+            "HELP": "Help",
+            "FEEDBACK_TITLE": "送出回饋 ",
+            "FEEDBACK": "回饋 ",
+            "NOTIFICATIONS_TITLE": "Edit your notification settings",
+            "NOTIFICATIONS": "通知",
+            "ORGANIZATIONS_TITLE": "Edit your organizations",
+            "ORGANIZATIONS": "Edit organizations",
+            "SETTINGS_TITLE": "Edit your settings",
+            "SETTINGS": "Settings",
+            "VIEW_PROFILE_TITLE": "View Profile",
+            "VIEW_PROFILE": "View Profile",
+            "EDIT_PROFILE_TITLE": "Edit your profile",
+            "EDIT_PROFILE": "Edit Profile",
+            "CHANGE_PASSWORD_TITLE": "更換密碼 ",
+            "CHANGE_PASSWORD": "更換密碼 ",
+            "DASHBOARD_TITLE": "Dashboard",
+            "DISCOVER_TITLE": "Discover trending projects",
+            "DISCOVER": "Discover",
+            "ACTION_REORDER": "Drag & drop to reorder"
         },
         "IMPORT": {
             "TITLE": "滙入專案中",
@@ -624,6 +778,8 @@
         }
     },
     "US": {
+        "PAGE_TITLE": "{{userStorySubject}} - User Story {{userStoryRef}} - {{projectName}}",
+        "PAGE_DESCRIPTION": "Status: {{userStoryStatus }}. Completed {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} of {{userStoryTotalTasks}} tasks closed). Points: {{userStoryPoints}}. Description: {{userStoryDescription}}",
         "SECTION_NAME": "使用者故事細節",
         "LINK_TASKBOARD": "任務板",
         "TITLE_LINK_TASKBOARD": "到任務板去",
@@ -711,6 +867,8 @@
         }
     },
     "BACKLOG": {
+        "PAGE_TITLE": "Backlog - {{projectName}}",
+        "PAGE_DESCRIPTION": "The backlog panel, with user stories and sprints of the project {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "待辦任務優先表",
         "MOVE_US_TO_CURRENT_SPRINT": "移到目前的 Sprint",
         "SHOW_FILTERS": "顯示過濾器",
@@ -790,6 +948,8 @@
         "VERSION_ERROR": "Taiga某人之前更改了這個，而我們的工程師無法再做改變。請重新載入頁面來使用你的更新（之前設定將消失）"
     },
     "TASKBOARD": {
+        "PAGE_TITLE": "{{sprintName}} - Sprint taskboard - {{projectName}}",
+        "PAGE_DESCRIPTION": "Sprint {{sprintName}} (from {{startDate}} to {{endDate}}) of {{projectName}}. Completed {{completedPercentage}}% ({{completedPoints}} of {{totalPoints}} points). {{openTasks}} opened tasks of {{totalTasks}}.",
         "SECTION_NAME": "任務板",
         "TITLE_ACTION_ADD": "增加新任務 ",
         "TITLE_ACTION_ADD_BULK": "批次加入新任務 ",
@@ -813,6 +973,8 @@
         }
     },
     "TASK": {
+        "PAGE_TITLE": "{{taskSubject}} - Task {{taskRef}} - {{projectName}}",
+        "PAGE_DESCRIPTION": "Status: {{taskStatus }}. Description: {{taskDescription}}",
         "SECTION_NAME": "任務細節",
         "LINK_TASKBOARD": "任務板",
         "TITLE_LINK_TASKBOARD": "到任務板去",
@@ -858,56 +1020,9 @@
         "ACTION_CHANGE_EMAIL": "變更電郵地址",
         "SUCCESS": "我們系統已更新你的電子郵件"
     },
-    "CHANGE_PASSWORD_RECOVERY_FORM": {
-        "TITLE": "創建新Taiga通過",
-        "SUBTITLE": "你也許該吃點鐵質豐富的食物，它對你的大腦有益處:p",
-        "PLACEHOLDER_RECOVER_PASSWORD_TOKEN": "回復密碼代碼　",
-        "LINK_NEED_TOKEN": "需要一個?",
-        "TITLE_LINK_NEED_TOKEN": "你是否需要代碼來恢復你所忘記的密碼?",
-        "PLACEHOLDER_NEW_PASSWORD": "新密碼 ",
-        "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "重新輸入新密碼",
-        "ACTION_RESET_PASSWORD": "重設密碼 ",
-        "SUCCESS": "系統已儲存你的新密碼<br />試試 <strong>用它登入</strong> "
-    },
-    "FORGOT_PASSWORD_FORM": {
-        "TITLE": "你是否忘了密碼嗎",
-        "SUBTITLE": "輸入你的帳戶名稱或電子郵件以進行註冊",
-        "PLACEHOLDER_FIELD": "使用者名稱或電子郵件",
-        "ACTION_RESET_PASSWORD": "重設密碼 ",
-        "LINK_CANCEL": "不，請帶我回去，我記起來了",
-        "SUCCESS": "<strong>檢查你的收信箱</strong><br />我們送出了一封信<br />裏面有設定你新電子郵件的相關指示",
-        "ERROR": "按我們的記錄，你尚未註冊"
-    },
-    "LOGIN_COMMON": {
-        "HEADER": "我已登入Taiga",
-        "PLACEHOLDER_AUTH_NAME": "使用者名稱或電子郵件（注意大小寫）",
-        "LINK_FORGOT_PASSWORD": "忘記了?",
-        "TITLE_LINK_FORGOT_PASSWORD": "你忘了密碼嗎",
-        "ACTION_ENTER": "Enter",
-        "ACTION_SIGN_IN": "登入",
-        "PLACEHOLDER_AUTH_PASSWORD": "密碼（大小寫有別）"
-    },
-    "LOGIN_FORM": {
-        "ERROR_AUTH_INCORRECT": "按我們的箹統記錄，你的帳戶名稱/電子郵件或密碼並不正確　",
-        "ERROR_GENERIC": "根據系統，此處有錯誤",
-        "SUCCESS": "我們系統歡迎你加入Taiga"
-    },
-    "INVITATION_LOGIN_FORM": {
-        "NOT_FOUND": "<strong>Ooops, 有點問題</strong><br />我們的系統無法找到你的邀請信",
-        "SUCCESS": "你成功地加入此專案，歡迎來到 {{project_name}}",
-        "ERROR": "按我們的記錄，你尚未註冊或是未輸入有效的密碼　"
-    },
-    "REGISTER_FORM": {
-        "TITLE": "註冊一個新的Taiga帳戶(免費 )",
-        "PLACEHOLDER_NAME": "選一個用戶帳號(注意大小寫)",
-        "PLACEHOLDER_FULL_NAME": "選取你的全名",
-        "PLACEHOLDER_EMAIL": "你的電子郵件",
-        "PLACEHOLDER_PASSWORD": "設定密碼（注意大小寫不同） ",
-        "ACTION_SIGN_UP": "註冊",
-        "TITLE_LINK_LOGIN": "登入",
-        "LINK_LOGIN": "你是否已註冊? 登入"
-    },
     "ISSUES": {
+        "PAGE_TITLE": "Issues - {{projectName}}",
+        "PAGE_DESCRIPTION": "The issues list panel of the project {{projectName}}: {{projectDescription}}",
         "LIST_SECTION_NAME": "問題 ",
         "SECTION_NAME": "問題細節",
         "ACTION_NEW_ISSUE": "+ 新問題　",
@@ -921,6 +1036,11 @@
         "TITLE_NEXT_ISSUE": "下一個問題 ",
         "ACTION_DELETE": "删除議題 ",
         "LIGHTBOX_TITLE_BLOKING_ISSUE": "封鎖中的問題",
+        "FIELDS": {
+            "PRIORITY": "優先性",
+            "SEVERITY": "急迫性",
+            "TYPE": "類型"
+        },
         "CONFIRM_PROMOTE": {
             "TITLE": "將此問題提到使用者故事",
             "MESSAGE": "你確定此問題要創建一個新的使用者故事?"
@@ -966,7 +1086,13 @@
             }
         }
     },
+    "ISSUE": {
+        "PAGE_TITLE": "{{issueSubject}} - Issue {{issueRef}} - {{projectName}}",
+        "PAGE_DESCRIPTION": "Status: {{issueStatus }}. Type: {{issueType}}, Priority: {{issuePriority}}. Severity: {{issueSeverity}}. Description: {{issueDescription}}"
+    },
     "KANBAN": {
+        "PAGE_TITLE": "Kanban - {{projectName}}",
+        "PAGE_DESCRIPTION": "The kanban panel, with user stories of the project {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Kanban(看板)",
         "TITLE_ACTION_FOLD": "隱藏欄位",
         "TITLE_ACTION_UNFOLD": "未隱藏欄位",
@@ -981,6 +1107,8 @@
         "UNDO_ARCHIVED": "拖移 & 丟到未做"
     },
     "SEARCH": {
+        "PAGE_TITLE": "Search - {{projectName}}",
+        "PAGE_DESCRIPTION": "Search anything, user stories, issues, tasks or wiki pages, in the project {{projectName}}: {{projectDescription}}",
         "FILTER_USER_STORIES": "使用者故事",
         "FILTER_ISSUES": "問題 ",
         "FILTER_TASKS": "任務 ",
@@ -991,6 +1119,8 @@
         "EMPTY_DESCRIPTION": "請試試上方某一個分頁或再搜尋一次"
     },
     "TEAM": {
+        "PAGE_TITLE": "Team - {{projectName}}",
+        "PAGE_DESCRIPTION": "The team panel to show all the members of the project {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "團隊",
         "APP_TITLE": "團隊- {{projectName}}",
         "PLACEHOLDER_INPUT_SEARCH": "以全名搜尋",
@@ -1010,16 +1140,6 @@
         "SECTION_FILTER_ALL": "所有",
         "CONFIRM_LEAVE_PROJECT": "你確定要退出這個專案嗎？",
         "ACTION_LEAVE_PROJECT": "退出此專案"
-    },
-    "CHANGE_PASSWORD": {
-        "SECTION_NAME": "改變密碼 ",
-        "FIELD_CURRENT_PASSWORD": "現用密碼 ",
-        "PLACEHOLDER_CURRENT_PASSWORD": "你目前的密碼（如果你未有密碼，此處請空白）",
-        "FIELD_NEW_PASSWORD": "新密碼 ",
-        "PLACEHOLDER_NEW_PASSWORD": "輸入新密碼",
-        "FIELD_RETYPE_PASSWORD": "重新輸入新密碼",
-        "PLACEHOLDER_RETYPE_PASSWORD": "重新輸入新密碼",
-        "ERROR_PASSWORD_MATCH": "密碼不符"
     },
     "USER_SETTINGS": {
         "AVATAR_MAX_SIZE": "[最大. 尺寸: {{maxFileSize}}] ",
@@ -1059,7 +1179,7 @@
             "EMAIL": "電子郵件",
             "FULL_NAME": "全名",
             "PLACEHOLDER_FULL_NAME": "你的全名",
-            "BIO": "簡介",
+            "BIO": "Bio (max. 210 chars)",
             "PLACEHOLDER_BIO": "請自我介紹",
             "LANGUAGE": "語言",
             "LANGUAGE_DEFAULT": "--  使用設預語言 -- "
@@ -1074,6 +1194,8 @@
         "PROGRESS_NAME_DESCRIPTION": "名稱與描述"
     },
     "WIKI": {
+        "PAGE_TITLE": "{{wikiPageName}} - Wiki - {{projectName}}",
+        "PAGE_DESCRIPTION": "Last edition on {{lastModifiedDate}} ({{totalEditions}} editions in total) Content: {{ wikiPageContent }}",
         "DATETIME": "DD MMM YYYY HH:mm",
         "PLACEHOLDER_PAGE": "編寫你的維基頁",
         "REMOVE": "移除此維基頁　",
@@ -1087,5 +1209,43 @@
             "LAST_EDIT": "上次 <br />編輯 ",
             "LAST_MODIFICATION": "上回修改"
         }
+    },
+    "HINTS": {
+        "SECTION_NAME": "Hint",
+        "LINK": "If you want to know how to use it visit our support page",
+        "LINK_TITLE": "Visit our support page",
+        "HINT1_TITLE": "Did you know you can import and export projects?",
+        "HINT1_TEXT": "This allow you to extract all your data from one Taiga and move it to another one.",
+        "HINT2_TITLE": "Did you know you can create custom fields?",
+        "HINT2_TEXT": "Teams can now create custom fields as a flexible means to enter specific data useful for their particular workflow",
+        "HINT3_TITLE": "Reorder your projects to feature those most relevant to you",
+        "HINT3_TEXT": "The top 10 project will be in your top bar direct access",
+        "HINT4_TITLE": "Did you forgot what were you working on?",
+        "HINT4_TEXT": "Don't worry, on your dashboard you'll find your open tasks, issues, and user stories in the order you worked on them."
+    },
+    "TIMELINE": {
+        "UPLOAD_ATTACHMENT": "{{username}} has uploaded a new attachment in {{obj_name}}",
+        "US_CREATED": "{{username}} has created a new US {{obj_name}} in {{project_name}}",
+        "ISSUE_CREATED": "{{username}} has created a new issue {{obj_name}} in {{project_name}}",
+        "TASK_CREATED": "{{username}} has created a new task {{obj_name}} in {{project_name}}",
+        "TASK_CREATED_WITH_US": "{{username}} has created a new task {{obj_name}} in {{project_name}} which belongs to the US {{us_name}}",
+        "WIKI_CREATED": "{{username}} has created a new wiki page {{obj_name}} in {{project_name}}",
+        "MILESTONE_CREATED": "{{username}} has created a new sprint {{obj_name}} in {{project_name}}",
+        "NEW_PROJECT": "{{username}} created the project {{project_name}}",
+        "MILESTONE_UPDATED": "{{username}} has updated the sprint {{obj_name}}",
+        "US_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the US {{obj_name}}",
+        "ISSUE_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the issue {{obj_name}}",
+        "TASK_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}}",
+        "TASK_UPDATED_WITH_US": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the US {{us_name}}",
+        "WIKI_UPDATED": "{{username}} has updated the wiki page {{obj_name}}",
+        "NEW_COMMENT_US": "{{username}} has commented in the US {{obj_name}}",
+        "NEW_COMMENT_ISSUE": "{{username}} has commented in the issue {{obj_name}}",
+        "NEW_COMMENT_TASK": "{{username}} has commented in the task {{obj_name}}",
+        "NEW_MEMBER": "{{project_name}} has a new member",
+        "US_ADDED_MILESTONE": "{{username}} has added the US {{obj_name}} to {{sprint_name}}",
+        "US_REMOVED_FROM_MILESTONE": "{{username}} has added the US {{obj_name}} to the backlog",
+        "BLOCKED": "{{username}} has blocked {{obj_name}}",
+        "UNBLOCKED": "{{username}} has unblocked {{obj_name}}",
+        "NEW_USER": "{{username}} has joined Taiga"
     }
 }

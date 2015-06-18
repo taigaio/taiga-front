@@ -100,6 +100,10 @@
                 "SAT": "Lau"
             }
         },
+        "SEE_USER_PROFILE": "See {{username }} profile",
+        "USER_STORY": "Käyttäjätarina",
+        "TASK": "Task",
+        "ISSUE": "Issue",
         "TAGS": {
             "PLACEHOLDER": "Anna avainsana...",
             "DELETE": "Poista avainsana",
@@ -125,7 +129,8 @@
             "ASSIGNED_TO": "Tekijä",
             "POINTS": "Pisteet",
             "BLOCKED_NOTE": "estetty muistiinpano",
-            "IS_BLOCKED": "on estetty"
+            "IS_BLOCKED": "on estetty",
+            "REF": "Ref"
         },
         "ROLES": {
             "ALL": "Kaikki"
@@ -231,13 +236,106 @@
                 "ADD_WIKI_LINKS": "Lisää wiki-linkkejä",
                 "DELETE_WIKI_LINKS": "Poista wiki-linkkejä"
             }
+        },
+        "META": {
+            "PAGE_TITLE": "Taiga",
+            "PAGE_DESCRIPTION": "Taiga is a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
         }
+    },
+    "LOGIN": {
+        "PAGE_TITLE": "Login - Taiga",
+        "PAGE_DESCRIPTION": "Logging in to Taiga, a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
     },
     "AUTH": {
         "INVITED_YOU": "on kutsunut sinut projektiin",
         "NOT_REGISTERED_YET": "Etkö ole vielä rekisteröitynyt?",
         "REGISTER": "Rekisteröidy",
         "CREATE_ACCOUNT": "luo ilmainen tunnuksesi täällä"
+    },
+    "LOGIN_COMMON": {
+        "HEADER": "Minulla on jo Taiga tunnus",
+        "PLACEHOLDER_AUTH_NAME": "Käyttäjänimi tai sähköposti (kirjainkoko merkitsevä)",
+        "LINK_FORGOT_PASSWORD": "Unohditko?",
+        "TITLE_LINK_FORGOT_PASSWORD": "Unohditko salasanasi?",
+        "ACTION_ENTER": "Sisään",
+        "ACTION_SIGN_IN": "Kirjaudu sisään",
+        "PLACEHOLDER_AUTH_PASSWORD": "Salasana (kirjainkoko merkitsevä)"
+    },
+    "LOGIN_FORM": {
+        "ERROR_AUTH_INCORRECT": "Oompa Loompas sanovat että käyttäjänimesi tai sähköpostisi tai salasanasi on väärä.",
+        "SUCCESS": "Oompa Loompas ovat onnellisia, tervetuloa Taigaan."
+    },
+    "REGISTER": {
+        "PAGE_TITLE": "Register - Taiga",
+        "PAGE_DESCRIPTION": "Create your account in Taiga, a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
+    },
+    "REGISTER_FORM": {
+        "TITLE": "Rekisteröi uusi Taiga tunnus (ilmainen)",
+        "PLACEHOLDER_NAME": "Anna käyttäjänimi (kirjainkoko on merkitsevä)",
+        "PLACEHOLDER_FULL_NAME": "Anna koko nimesi",
+        "PLACEHOLDER_EMAIL": "Sähköpostisi",
+        "PLACEHOLDER_PASSWORD": "Anna salasana (kirjainkoko merkitsevä)",
+        "ACTION_SIGN_UP": "Kirjaudu sisään",
+        "TITLE_LINK_LOGIN": "Kirjaudu sisään",
+        "LINK_LOGIN": "Oletko jo rekisteröitynyt? Kirjaudu sisään"
+    },
+    "FORGOT_PASSWORD": {
+        "PAGE_TITLE": "Forgot password - Taiga",
+        "PAGE_DESCRIPTION": "Enter your username or email to get a new password and you can access to Taiga again."
+    },
+    "FORGOT_PASSWORD_FORM": {
+        "TITLE": "Oops, unohditko salasanasi?",
+        "SUBTITLE": "Anna käyttäjänimesi tai sähköpostisi saadaksesi uuden",
+        "PLACEHOLDER_FIELD": "Käyttäjänimi tai sähköposti",
+        "ACTION_RESET_PASSWORD": "Uusi salsanasi",
+        "LINK_CANCEL": "Vie minut takaisin, muistan sen.",
+        "SUCCESS": "<strong>Tarkista sähköpostisi!</strong><br />Olemme lähettäneet sinulle sähköpostissa kirjautumisohjeet",
+        "ERROR": "Oompa Loompas sanovat että käyttäjänimesi tai sähköpostisi tai salasanasi on väärä."
+    },
+    "CHANGE_PASSWORD": {
+        "PAGE_TITLE": "Change you password - Taiga",
+        "PAGE_DESCRIPTION": "Set a new passoword for your Taiga account and hey!, you may want to eat some more iron-rich food, it's good for your brain :P",
+        "SECTION_NAME": "Muuta salasanaa",
+        "FIELD_CURRENT_PASSWORD": "Nykyinen salasana",
+        "PLACEHOLDER_CURRENT_PASSWORD": "Nykyinen salasanasi (tai on tyhjä jos sinulla ei vielä ole)",
+        "FIELD_NEW_PASSWORD": "Uusi salasana",
+        "PLACEHOLDER_NEW_PASSWORD": "Anna uusi salasana",
+        "FIELD_RETYPE_PASSWORD": "Anna salasana uudelleen",
+        "PLACEHOLDER_RETYPE_PASSWORD": "Anna salasana uudelleen",
+        "ERROR_PASSWORD_MATCH": "Salasanat eivät täsmää"
+    },
+    "CHANGE_PASSWORD_RECOVERY_FORM": {
+        "TITLE": "Luo uusi pääsy Taigaan",
+        "SUBTITLE": "Rautapitoinen ruoka on hyväksi aivoille :P",
+        "PLACEHOLDER_RECOVER_PASSWORD_TOKEN": "Palauta sähköposti-tokeni",
+        "LINK_NEED_TOKEN": "Tarvitsetko yhden?",
+        "TITLE_LINK_NEED_TOKEN": "Tarvitsitko tokenia palauttaakseni salasanan koska unohdit sen?",
+        "PLACEHOLDER_NEW_PASSWORD": "Uusi salasana",
+        "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Anna salasana uudelleen",
+        "ACTION_RESET_PASSWORD": "Uusi salsanasi",
+        "SUCCESS": "Oompa Loompas tallensivat uuden salasanasi.<br /> Yritä <strong>kirjautua sisään</strong> sillä."
+    },
+    "INVITATION": {
+        "PAGE_TITLE": "Invitation acceptance - Taiga",
+        "PAGE_DESCRIPTION": "Accept the invitation to join a project in Taiga, a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
+    },
+    "INVITATION_LOGIN_FORM": {
+        "NOT_FOUND": "<strong>Ooops, meillä on ongelma</strong><br />Our Oompa Loompas eivät löydä kutsuasi.",
+        "SUCCESS": "Olet onnistuneesti liittynyt projektiin {{project_name}}. Tervetuloa!",
+        "ERROR": "Oompa Loompas sanovat että käyttäjänimesi tai sähköpostisi tai salasanasi on väärä."
+    },
+    "HOME": {
+        "PAGE_TITLE": "Home - Taiga",
+        "PAGE_DESCRIPTION": "The Taiga home page with your main projects and all your assigned and watched user stories, tasks and issues",
+        "EMPTY_WATCHING": "<strong>Follow</strong> the projects, User Stories, Tasks, Issues... that you want to know about :)",
+        "EMPTY_PROJECT_LIST": "You don't have any projects yet",
+        "WORKING_ON_SECTION": "Working on",
+        "WATCHING_SECTION": "Watching"
+    },
+    "PROJECTS": {
+        "PAGE_TITLE": "My projects - Taiga",
+        "PAGE_DESCRIPTION": "A list with all your projects, you can reorder or create a new one.",
+        "MY_PROJECTS": "My projects"
     },
     "ATTACHMENT": {
         "SECTION_NAME": "liitteet",
@@ -276,6 +374,7 @@
         },
         "MEMBERSHIPS": {
             "TITLE": "Hallinnoi jäseniä",
+            "PAGE_TITLE": "Memberships - {{projectName}}",
             "ADD_BUTTON": "+ Uusi jäsen",
             "ADD_BUTTON_TITLE": "Lisää jäsen"
         },
@@ -311,7 +410,7 @@
             "SALT_CHAT_ROOM": "Voit halutessasi lisätä suolaan chat-huoneen nimeen"
         },
         "PROJECT_PROFILE": {
-            "PAGE_TITLE": "Projektin profiili - {{sectionName}} - {{projectName}}",
+            "PAGE_TITLE": "{{sectionName}} - Projektin profiili - {{projectName}}",
             "PROJECT_DETAILS": "Projektin tiedot",
             "PROJECT_NAME": "Projektin nimi",
             "PROJECT_SLUG": "Projektin hukka-aika",
@@ -352,23 +451,26 @@
             "ISSUE_ADD": "Lisää oma kenttä pyynnöille"
         },
         "PROJECT_VALUES": {
-            "APP_TITLE": "Projektin arvot - {{sectionName}} - {{projectName}}",
+            "PAGE_TITLE": "{{sectionName}} - Project values - {{projectName}}",
             "REPLACEMENT": "Kaikkii riveihin joissa on tämä arvo muutetaan ",
             "ERROR_DELETE_ALL": "Et voi poistaa kaikkia arvoja."
         },
         "PROJECT_VALUES_POINTS": {
-            "TITLE": "Kt pisteet",
+            "TITLE": "Points",
             "SUBTITLE": "Määrittele pisteet joihin käyttäjätarinat voidaan arvioida",
+            "US_TITLE": "US points",
             "ACTION_ADD": "Lisää uusi piste"
         },
         "PROJECT_VALUES_PRIORITIES": {
-            "TITLE": "Pyyntöjen tärkeydet",
+            "TITLE": "Priorities",
             "SUBTITLE": "Määrittele tärkeydet pyynnöille",
+            "ISSUE_TITLE": "Issue priorities",
             "ACTION_ADD": "Lisää uusi tärkeys"
         },
         "PROJECT_VALUES_SEVERITIES": {
-            "TITLE": "Pyyntöjen vakavuudet",
+            "TITLE": "Severities",
             "SUBTITLE": "Määrittele pyyntöjen vakavuudet",
+            "ISSUE_TITLE": "Issue severities",
             "ACTION_ADD": "Lisää uusi vakavuus"
         },
         "PROJECT_VALUES_STATUS": {
@@ -382,10 +484,10 @@
             "TITLE": "Tyypit",
             "SUBTITLE": "Määrittele pyyntöjen tyypit",
             "ISSUE_TITLE": "Pyyntöjen tyypit",
-            "ACTION_ADD": "Lisää uusi tyyppi"
+            "ACTION_ADD": "Lisää uusi {{objName}}"
         },
         "ROLES": {
-            "SECTION_NAME": "Roolit - {{projectName}}",
+            "PAGE_TITLE": "Roles - {{projectName}}",
             "WARNING_NO_ROLE": "Ole varovainen, yksikään rooli projektissasi ei voi arvioida käyttäjätarinoidesi kokoa",
             "HELP_ROLE_ENABLED": "Tämän roolin omaavat jäsenet voivat arvioida käyttäjätarinoiden kokoja",
             "COUNT_MEMBERS": "{{ role.members_count }} jäsentä joilla tämä rooli",
@@ -402,20 +504,20 @@
         },
         "BITBUCKET": {
             "SECTION_NAME": "Bitbucket",
-            "APP_TITLE": "Bitbucket - {{projectName}}",
+            "PAGE_TITLE": "Bitbucket - {{projectName}}",
             "INFO_VERIFYING_IP": "Bitbucket pyynnöt eivät ole allekirjoitettuja joten tarkista IP. Jos IP on tyhjä, ei sitä tarkisteta."
         },
         "GITLAB": {
             "SECTION_NAME": "Gitlab",
-            "APP_TITLE": "Gitlab - {{projectName}}",
+            "PAGE_TITLE": "Gitlab - {{projectName}}",
             "INFO_VERIFYING_IP": "Gitlab pyynnöt eivät ole allekirjoitettuja joten tarkista IP. Jos IP on tyhjä, ei sitä tarkisteta."
         },
         "GITHUB": {
             "SECTION_NAME": "Github",
-            "APP_TITLE": "Github - {{projectName}}"
+            "PAGE_TITLE": "Github - {{projectName}}"
         },
         "WEBHOOKS": {
-            "APP_TITLE": "Webhooks - {{projectName}}",
+            "PAGE_TITLE": "Webhooks - {{projectName}}",
             "SECTION_NAME": "Webhookit",
             "SUBTITLE": "Webhookit ilmoittvat ulkoisille palveluille Taigan kommenteista, käyttäjätarinoista ...",
             "ADD_NEW": "Lisää webhook",
@@ -441,6 +543,7 @@
             "WEBHOOK_NAME": "Webhook '{{name}}'"
         },
         "CUSTOM_ATTRIBUTES": {
+            "PAGE_TITLE": "{{sectionName}} - Custom Attributes - {{projectName}}",
             "ADD": "Anna oma kenttä",
             "EDIT": "Muokkaa omaa kenttää",
             "DELETE": "Poista oma kenttä",
@@ -518,9 +621,36 @@
             "TITLE": "Palvelut"
         }
     },
+    "USER": {
+        "PROFILE": {
+            "PAGE_TITLE": "{{userFullName}} (@{{userUsername}})",
+            "EDIT": "Edit profile",
+            "FOLLOW": "Follow",
+            "PROJECTS": "Projektit",
+            "CLOSED_US": "Closed US",
+            "CONTACTS": "Contacts",
+            "REPORT": "Report Abuse",
+            "ACTIVITY_TAB": "Activity Tab",
+            "PROJECTS_TAB": "Projects Tab",
+            "CONTACTS_TAB": "Contacts Tab",
+            "FAVORITES_TAB": "Favorites Tab",
+            "CONTACTS_EMPTY": "{{username}} doesn't have contacts yet",
+            "CURRENT_USER_CONTACTS_EMPTY": "You don't have contacts yet",
+            "CURRENT_USER_CONTACTS_EMPTY_EXPLAIN": "The people with whom you work at Taiga will be your contacts automatically",
+            "PROJECTS_EMPTY": "{{username}} doesn't' have projects yet"
+        },
+        "PROFILE_SIDEBAR": {
+            "TITLE": "Your profile",
+            "DESCRIPTION": "People can see everything you do and what are you working on. Add a nice bio to give an enhanced version of your information.",
+            "ADD_INFO": "Edit your bio"
+        }
+    },
     "PROJECT": {
+        "PAGE_TITLE": "{{projectName}}",
         "WELCOME": "Tervetuloa",
         "SECTION_PROJECTS": "Projektit",
+        "HELP": "Reorder your projects to set in the top the most used ones.<br/> The top 10 projects will appear in the top navigation bar project list",
+        "PRIVATE": "Yksityinen projekti",
         "STATS": {
             "PROJECT": "projekti<br/> pisteet",
             "DEFINED": "määritely<br/> pistettä",
@@ -529,6 +659,7 @@
         },
         "SECTION": {
             "SEARCH": "Hae",
+            "TIMELINE": "Timeline",
             "BACKLOG": "Odottavat",
             "KANBAN": "Kanban",
             "ISSUES": "Pyynnöt",
@@ -541,9 +672,32 @@
             "SECTION_TITLE": "Projektisi",
             "PLACEHOLDER_SEARCH": "Hae täältä...",
             "ACTION_CREATE_PROJECT": "Luo projekti",
-            "TITLE_ACTION_IMPORT": "Luo projekti tiedostosta",
+            "ACTION_IMPORT_PROJECT": "Import project",
+            "SEE_MORE_PROJECTS": "See more projects",
+            "TITLE_CREATE_PROJECT": "Create project",
+            "TITLE_IMPORT_PROJECT": "Import project",
             "TITLE_PRVIOUS_PROJECT": "Näytä aikaisemmat projektit",
-            "TITLE_NEXT_PROJECT": "Näytä seuraavat projektit"
+            "TITLE_NEXT_PROJECT": "Näytä seuraavat projektit",
+            "HELP_TITLE": "Taiga Support Page",
+            "HELP": "Help",
+            "FEEDBACK_TITLE": "Lähetä palautetta",
+            "FEEDBACK": "Palaute",
+            "NOTIFICATIONS_TITLE": "Edit your notification settings",
+            "NOTIFICATIONS": "Ilmoitukset",
+            "ORGANIZATIONS_TITLE": "Edit your organizations",
+            "ORGANIZATIONS": "Edit organizations",
+            "SETTINGS_TITLE": "Edit your settings",
+            "SETTINGS": "Settings",
+            "VIEW_PROFILE_TITLE": "View Profile",
+            "VIEW_PROFILE": "View Profile",
+            "EDIT_PROFILE_TITLE": "Edit your profile",
+            "EDIT_PROFILE": "Edit Profile",
+            "CHANGE_PASSWORD_TITLE": "Muuta salasanaa",
+            "CHANGE_PASSWORD": "Muuta salasanaa",
+            "DASHBOARD_TITLE": "Dashboard",
+            "DISCOVER_TITLE": "Discover trending projects",
+            "DISCOVER": "Discover",
+            "ACTION_REORDER": "Drag & drop to reorder"
         },
         "IMPORT": {
             "TITLE": "Luetaan sisään projektia",
@@ -624,6 +778,8 @@
         }
     },
     "US": {
+        "PAGE_TITLE": "{{userStorySubject}} - User Story {{userStoryRef}} - {{projectName}}",
+        "PAGE_DESCRIPTION": "Status: {{userStoryStatus }}. Completed {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} of {{userStoryTotalTasks}} tasks closed). Points: {{userStoryPoints}}. Description: {{userStoryDescription}}",
         "SECTION_NAME": "Käyttäjätarinan tiedot",
         "LINK_TASKBOARD": "Tehtävätaulu",
         "TITLE_LINK_TASKBOARD": "Siirry tehtävätauluun",
@@ -711,6 +867,8 @@
         }
     },
     "BACKLOG": {
+        "PAGE_TITLE": "Backlog - {{projectName}}",
+        "PAGE_DESCRIPTION": "The backlog panel, with user stories and sprints of the project {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Odottavat",
         "MOVE_US_TO_CURRENT_SPRINT": "Siirrä nykyiseen kierrokseen",
         "SHOW_FILTERS": "Näytä suodattimet",
@@ -790,6 +948,8 @@
         "VERSION_ERROR": "Joku Taigassa on päivittänyt tätä ennen sinua. Muutoksiasi ei voida tallentaa. Lataa sivu uudestaan ja korjaa tilanne."
     },
     "TASKBOARD": {
+        "PAGE_TITLE": "{{sprintName}} - Sprint taskboard - {{projectName}}",
+        "PAGE_DESCRIPTION": "Sprint {{sprintName}} (from {{startDate}} to {{endDate}}) of {{projectName}}. Completed {{completedPercentage}}% ({{completedPoints}} of {{totalPoints}} points). {{openTasks}} opened tasks of {{totalTasks}}.",
         "SECTION_NAME": "Tehtävätaulu",
         "TITLE_ACTION_ADD": "Lisää uusi tehtävä",
         "TITLE_ACTION_ADD_BULK": "Lisää monta tehtävää",
@@ -813,6 +973,8 @@
         }
     },
     "TASK": {
+        "PAGE_TITLE": "{{taskSubject}} - Task {{taskRef}} - {{projectName}}",
+        "PAGE_DESCRIPTION": "Status: {{taskStatus }}. Description: {{taskDescription}}",
         "SECTION_NAME": "Tehtävän tiedot",
         "LINK_TASKBOARD": "Tehtävätaulu",
         "TITLE_LINK_TASKBOARD": "Siirry tehtävätauluun",
@@ -858,56 +1020,9 @@
         "ACTION_CHANGE_EMAIL": "Muuta sähköpostisi",
         "SUCCESS": "Oompa Loompas päivittivät sähköpostisi"
     },
-    "CHANGE_PASSWORD_RECOVERY_FORM": {
-        "TITLE": "Luo uusi pääsy Taigaan",
-        "SUBTITLE": "Rautapitoinen ruoka on hyväksi aivoille :P",
-        "PLACEHOLDER_RECOVER_PASSWORD_TOKEN": "Palauta sähköposti-tokeni",
-        "LINK_NEED_TOKEN": "Tarvitsetko yhden?",
-        "TITLE_LINK_NEED_TOKEN": "Tarvitsitko tokenia palauttaakseni salasanan koska unohdit sen?",
-        "PLACEHOLDER_NEW_PASSWORD": "Uusi salasana",
-        "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Anna salasana uudelleen",
-        "ACTION_RESET_PASSWORD": "Uusi salsanasi",
-        "SUCCESS": "Oompa Loompas tallensivat uuden salasanasi.<br /> Yritä <strong>kirjautua sisään</strong> sillä."
-    },
-    "FORGOT_PASSWORD_FORM": {
-        "TITLE": "Oops, unohditko salasanasi?",
-        "SUBTITLE": "Anna käyttäjänimesi tai sähköpostisi saadaksesi uuden",
-        "PLACEHOLDER_FIELD": "Käyttäjänimi tai sähköposti",
-        "ACTION_RESET_PASSWORD": "Uusi salsanasi",
-        "LINK_CANCEL": "Vie minut takaisin, muistan sen.",
-        "SUCCESS": "<strong>Tarkista sähköpostisi!</strong><br />Olemme lähettäneet sinulle sähköpostissa kirjautumisohjeet",
-        "ERROR": "Oompa Loompas sanovat että käyttäjänimesi tai sähköpostisi tai salasanasi on väärä."
-    },
-    "LOGIN_COMMON": {
-        "HEADER": "Minulla on jo Taiga tunnus",
-        "PLACEHOLDER_AUTH_NAME": "Käyttäjänimi tai sähköposti (kirjainkoko merkitsevä)",
-        "LINK_FORGOT_PASSWORD": "Unohditko?",
-        "TITLE_LINK_FORGOT_PASSWORD": "Unohditko salasanasi?",
-        "ACTION_ENTER": "Sisään",
-        "ACTION_SIGN_IN": "Kirjaudu sisään",
-        "PLACEHOLDER_AUTH_PASSWORD": "Salasana (kirjainkoko merkitsevä)"
-    },
-    "LOGIN_FORM": {
-        "ERROR_AUTH_INCORRECT": "Oompa Loompas sanovat että käyttäjänimesi tai sähköpostisi tai salasanasi on väärä.",
-        "ERROR_GENERIC": "Oompa Loompas havaitsivat virheen",
-        "SUCCESS": "Oompa Loompas ovat onnellisia, tervetuloa Taigaan."
-    },
-    "INVITATION_LOGIN_FORM": {
-        "NOT_FOUND": "<strong>Ooops, meillä on ongelma</strong><br />Our Oompa Loompas eivät löydä kutsuasi.",
-        "SUCCESS": "Olet onnistuneesti liittynyt projektiin {{project_name}}. Tervetuloa!",
-        "ERROR": "Oompa Loompas sanovat että käyttäjänimesi tai sähköpostisi tai salasanasi on väärä."
-    },
-    "REGISTER_FORM": {
-        "TITLE": "Rekisteröi uusi Taiga tunnus (ilmainen)",
-        "PLACEHOLDER_NAME": "Anna käyttäjänimi (kirjainkoko on merkitsevä)",
-        "PLACEHOLDER_FULL_NAME": "Anna koko nimesi",
-        "PLACEHOLDER_EMAIL": "Sähköpostisi",
-        "PLACEHOLDER_PASSWORD": "Anna salasana (kirjainkoko merkitsevä)",
-        "ACTION_SIGN_UP": "Kirjaudu sisään",
-        "TITLE_LINK_LOGIN": "Kirjaudu sisään",
-        "LINK_LOGIN": "Oletko jo rekisteröitynyt? Kirjaudu sisään"
-    },
     "ISSUES": {
+        "PAGE_TITLE": "Issues - {{projectName}}",
+        "PAGE_DESCRIPTION": "The issues list panel of the project {{projectName}}: {{projectDescription}}",
         "LIST_SECTION_NAME": "Pyynnöt",
         "SECTION_NAME": "Pyynnön tiedot",
         "ACTION_NEW_ISSUE": "+ UUSI PYYNTÖ",
@@ -921,6 +1036,11 @@
         "TITLE_NEXT_ISSUE": "seuraava pyyntö",
         "ACTION_DELETE": "Poista pyyntö",
         "LIGHTBOX_TITLE_BLOKING_ISSUE": "Estävä pyyntö",
+        "FIELDS": {
+            "PRIORITY": "Tärkeys",
+            "SEVERITY": "Vakavuus",
+            "TYPE": "Tyyppi"
+        },
         "CONFIRM_PROMOTE": {
             "TITLE": "Liitä tämä pyyntö uuteen käyttäjätarinaan",
             "MESSAGE": "Haluatko varmasti lisätä uuden käyttäjätarinan tästä pyynnöstä?"
@@ -966,7 +1086,13 @@
             }
         }
     },
+    "ISSUE": {
+        "PAGE_TITLE": "{{issueSubject}} - Issue {{issueRef}} - {{projectName}}",
+        "PAGE_DESCRIPTION": "Status: {{issueStatus }}. Type: {{issueType}}, Priority: {{issuePriority}}. Severity: {{issueSeverity}}. Description: {{issueDescription}}"
+    },
     "KANBAN": {
+        "PAGE_TITLE": "Kanban - {{projectName}}",
+        "PAGE_DESCRIPTION": "The kanban panel, with user stories of the project {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Kanban",
         "TITLE_ACTION_FOLD": "Kavenna sarake",
         "TITLE_ACTION_UNFOLD": "Laajenna sarake",
@@ -981,6 +1107,8 @@
         "UNDO_ARCHIVED": "Raahaa ja pudota uudelleen peruaksesi"
     },
     "SEARCH": {
+        "PAGE_TITLE": "Search - {{projectName}}",
+        "PAGE_DESCRIPTION": "Search anything, user stories, issues, tasks or wiki pages, in the project {{projectName}}: {{projectDescription}}",
         "FILTER_USER_STORIES": "Käyttäjätarinat",
         "FILTER_ISSUES": "Pyynnöt",
         "FILTER_TASKS": "Tehtävät",
@@ -991,6 +1119,8 @@
         "EMPTY_DESCRIPTION": "Kokeile ylempiä välilehtiä ja hae uudestaan"
     },
     "TEAM": {
+        "PAGE_TITLE": "Team - {{projectName}}",
+        "PAGE_DESCRIPTION": "The team panel to show all the members of the project {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Tiimi",
         "APP_TITLE": "TIIMI - {{projectName}}",
         "PLACEHOLDER_INPUT_SEARCH": "Etsi koko nimellä...",
@@ -1010,16 +1140,6 @@
         "SECTION_FILTER_ALL": "Kaikki",
         "CONFIRM_LEAVE_PROJECT": "Oletko varma että haluat poistua projektista?",
         "ACTION_LEAVE_PROJECT": "Poistu projektista"
-    },
-    "CHANGE_PASSWORD": {
-        "SECTION_NAME": "Muuta salasanaa",
-        "FIELD_CURRENT_PASSWORD": "Nykyinen salasana",
-        "PLACEHOLDER_CURRENT_PASSWORD": "Nykyinen salasanasi (tai on tyhjä jos sinulla ei vielä ole)",
-        "FIELD_NEW_PASSWORD": "Uusi salasana",
-        "PLACEHOLDER_NEW_PASSWORD": "Anna uusi salasana",
-        "FIELD_RETYPE_PASSWORD": "Anna salasana uudelleen",
-        "PLACEHOLDER_RETYPE_PASSWORD": "Anna salasana uudelleen",
-        "ERROR_PASSWORD_MATCH": "Salasanat eivät täsmää"
     },
     "USER_SETTINGS": {
         "AVATAR_MAX_SIZE": "Maksimi koko {{maxFileSize}}",
@@ -1059,7 +1179,7 @@
             "EMAIL": "Sähköposti",
             "FULL_NAME": "Koko nimi",
             "PLACEHOLDER_FULL_NAME": "Anna koko nimesi",
-            "BIO": "Bio",
+            "BIO": "Bio (max. 210 chars)",
             "PLACEHOLDER_BIO": "Kerro jotain itsestäsi",
             "LANGUAGE": "Kieli",
             "LANGUAGE_DEFAULT": "-- käytä oletuskieltä --"
@@ -1074,6 +1194,8 @@
         "PROGRESS_NAME_DESCRIPTION": "Nimi ja kuvaus"
     },
     "WIKI": {
+        "PAGE_TITLE": "{{wikiPageName}} - Wiki - {{projectName}}",
+        "PAGE_DESCRIPTION": "Last edition on {{lastModifiedDate}} ({{totalEditions}} editions in total) Content: {{ wikiPageContent }}",
         "DATETIME": "DD.MM.YY - HH:mm",
         "PLACEHOLDER_PAGE": "Kirjoita wiki-sivu",
         "REMOVE": "Poista tämä wiki-sivu",
@@ -1087,5 +1209,43 @@
             "LAST_EDIT": "viimeinen<br/>muokkaus",
             "LAST_MODIFICATION": "viimeinen muokkaus"
         }
+    },
+    "HINTS": {
+        "SECTION_NAME": "Hint",
+        "LINK": "If you want to know how to use it visit our support page",
+        "LINK_TITLE": "Visit our support page",
+        "HINT1_TITLE": "Did you know you can import and export projects?",
+        "HINT1_TEXT": "This allow you to extract all your data from one Taiga and move it to another one.",
+        "HINT2_TITLE": "Did you know you can create custom fields?",
+        "HINT2_TEXT": "Teams can now create custom fields as a flexible means to enter specific data useful for their particular workflow",
+        "HINT3_TITLE": "Reorder your projects to feature those most relevant to you",
+        "HINT3_TEXT": "The top 10 project will be in your top bar direct access",
+        "HINT4_TITLE": "Did you forgot what were you working on?",
+        "HINT4_TEXT": "Don't worry, on your dashboard you'll find your open tasks, issues, and user stories in the order you worked on them."
+    },
+    "TIMELINE": {
+        "UPLOAD_ATTACHMENT": "{{username}} has uploaded a new attachment in {{obj_name}}",
+        "US_CREATED": "{{username}} has created a new US {{obj_name}} in {{project_name}}",
+        "ISSUE_CREATED": "{{username}} has created a new issue {{obj_name}} in {{project_name}}",
+        "TASK_CREATED": "{{username}} has created a new task {{obj_name}} in {{project_name}}",
+        "TASK_CREATED_WITH_US": "{{username}} has created a new task {{obj_name}} in {{project_name}} which belongs to the US {{us_name}}",
+        "WIKI_CREATED": "{{username}} has created a new wiki page {{obj_name}} in {{project_name}}",
+        "MILESTONE_CREATED": "{{username}} has created a new sprint {{obj_name}} in {{project_name}}",
+        "NEW_PROJECT": "{{username}} created the project {{project_name}}",
+        "MILESTONE_UPDATED": "{{username}} has updated the sprint {{obj_name}}",
+        "US_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the US {{obj_name}}",
+        "ISSUE_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the issue {{obj_name}}",
+        "TASK_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}}",
+        "TASK_UPDATED_WITH_US": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the US {{us_name}}",
+        "WIKI_UPDATED": "{{username}} has updated the wiki page {{obj_name}}",
+        "NEW_COMMENT_US": "{{username}} has commented in the US {{obj_name}}",
+        "NEW_COMMENT_ISSUE": "{{username}} has commented in the issue {{obj_name}}",
+        "NEW_COMMENT_TASK": "{{username}} has commented in the task {{obj_name}}",
+        "NEW_MEMBER": "{{project_name}} has a new member",
+        "US_ADDED_MILESTONE": "{{username}} has added the US {{obj_name}} to {{sprint_name}}",
+        "US_REMOVED_FROM_MILESTONE": "{{username}} has added the US {{obj_name}} to the backlog",
+        "BLOCKED": "{{username}} has blocked {{obj_name}}",
+        "UNBLOCKED": "{{username}} has unblocked {{obj_name}}",
+        "NEW_USER": "{{username}} has joined Taiga"
     }
 }

@@ -16,6 +16,11 @@
             background: lighten($green-taiga, 60%);
             transition: background .2s ease-in;
         }
+        .ref {
+            flex-basis: 30px;
+            flex-grow: 1;
+            padding: 0 1rem;
+        }
         .user-stories {
             flex-basis: 300px;
             flex-grow: 10;
@@ -82,14 +87,13 @@
         img {
             width: 35px;
         }
-        figcaption {
-            display: flex;
-            flex-basis: 60%;
+        .avatar-caption {
+            display: block;
             margin-left: .5rem;
-            max-width: 60%;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+            width: 80px;
         }
     }
 }

@@ -28,6 +28,7 @@ timeout = @.taiga.timeout
 
 module = angular.module("taigaAdmin")
 
+
 #############################################################################
 ## Webhooks
 #############################################################################
@@ -40,11 +41,11 @@ class WebhooksController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.
         "$routeParams",
         "$tgLocation",
         "$tgNavUrls",
-        "$appTitle",
+        "tgAppMetaService",
         "$translate"
     ]
 
-    constructor: (@scope, @repo, @rs, @params, @location, @navUrls, @appTitle, @translate) ->
+    constructor: (@scope, @repo, @rs, @params, @location, @navUrls, @appMetaService, @translate) ->
         bindMethods(@)
 
         @scope.sectionName = "ADMIN.WEBHOOKS.SECTION_NAME"
@@ -53,8 +54,9 @@ class WebhooksController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.
         promise = @.loadInitialData()
 
         promise.then () =>
-            text = @translate.instant("ADMIN.WEBHOOKS.APP_TITLE", {"projectName": @scope.project.name})
-            @appTitle.set(text)
+            title = @translate.instant("ADMIN.WEBHOOKS.PAGE_TITLE", {projectName: @scope.project.name})
+            description = @scope.project.description
+            @appMetaService.setAll(title, description)
 
         promise.then null, @.onInitialDataError.bind(@)
 
@@ -65,23 +67,24 @@ class WebhooksController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.
             @scope.webhooks = webhooks
 
     loadProject: ->
-        return @rs.projects.get(@scope.projectId).then (project) =>
+        return @rs.projects.getBySlug(@params.pslug).then (project) =>
             if not project.i_am_owner
                 @location.path(@navUrls.resolve("permission-denied"))
 
+            @scope.projectId = project.id
             @scope.project = project
             @scope.$emit('project:loaded', project)
             return project
 
     loadInitialData: ->
-        promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
-            @scope.projectId = data.project
-            return data
+        promise = @.loadProject()
+        promise.then =>
+            @.loadWebhooks()
 
-        return promise.then(=> @.loadProject())
-                      .then(=> @.loadWebhooks())
+        return promise
 
 module.controller("WebhooksController", WebhooksController)
+
 
 #############################################################################
 ## Webhook Directive
@@ -213,7 +216,8 @@ WebhookDirective = ($rs, $repo, $confirm, $loading, $translate) ->
 
     return {link:link}
 
-module.directive("tgWebhook", ["$tgResources", "$tgRepo", "$tgConfirm", "$tgLoading", "$translate", WebhookDirective])
+module.directive("tgWebhook", ["$tgResources", "$tgRepo", "$tgConfirm", "$tgLoading", "$translate",
+                               WebhookDirective])
 
 
 #############################################################################
@@ -289,11 +293,11 @@ class GithubController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         "$tgRepo",
         "$tgResources",
         "$routeParams",
-        "$appTitle",
+        "tgAppMetaService",
         "$translate"
     ]
 
-    constructor: (@scope, @repo, @rs, @params, @appTitle, @translate) ->
+    constructor: (@scope, @repo, @rs, @params, @appMetaService, @translate) ->
         bindMethods(@)
 
         @scope.sectionName = @translate.instant("ADMIN.GITHUB.SECTION_NAME")
@@ -302,8 +306,9 @@ class GithubController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         promise = @.loadInitialData()
 
         promise.then () =>
-            title = @translate.instant("ADMIN.GITHUB.APP_TITLE", {projectName: @scope.project.name})
-            @appTitle.set(title)
+            title = @translate.instant("ADMIN.GITHUB.PAGE_TITLE", {projectName: @scope.project.name})
+            description = @scope.project.description
+            @appMetaService.setAll(title, description)
 
         promise.then null, @.onInitialDataError.bind(@)
 
@@ -312,19 +317,16 @@ class GithubController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @scope.github = github
 
     loadProject: ->
-        return @rs.projects.get(@scope.projectId).then (project) =>
+        return @rs.projects.getBySlug(@params.pslug).then (project) =>
+            @scope.projectId = project.id
             @scope.project = project
             @scope.$emit('project:loaded', project)
             return project
 
     loadInitialData: ->
-        promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
-            @scope.projectId = data.project
-            return data
-
-        return promise.then(=> @.loadProject())
-                      .then(=> @.loadModules())
-
+        promise = @.loadProject()
+        promise.then(=> @.loadModules())
+        return promise
 
 module.controller("GithubController", GithubController)
 
@@ -339,11 +341,11 @@ class GitlabController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         "$tgRepo",
         "$tgResources",
         "$routeParams",
-        "$appTitle",
+        "tgAppMetaService",
         "$translate"
     ]
 
-    constructor: (@scope, @repo, @rs, @params, @appTitle, @translate) ->
+    constructor: (@scope, @repo, @rs, @params, @appMetaService, @translate) ->
         bindMethods(@)
 
         @scope.sectionName = @translate.instant("ADMIN.GITLAB.SECTION_NAME")
@@ -351,8 +353,9 @@ class GitlabController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         promise = @.loadInitialData()
 
         promise.then () =>
-            title = @translate.instant("ADMIN.GITLAB.APP_TITLE", {projectName: @scope.project.name})
-            @appTitle.set(title)
+            title = @translate.instant("ADMIN.GITLAB.PAGE_TITLE", {projectName: @scope.project.name})
+            description = @scope.project.description
+            @appMetaService.setAll(title, description)
 
         promise.then null, @.onInitialDataError.bind(@)
 
@@ -364,19 +367,16 @@ class GitlabController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @scope.gitlab = gitlab
 
     loadProject: ->
-        return @rs.projects.get(@scope.projectId).then (project) =>
+        return @rs.projects.getBySlug(@params.pslug).then (project) =>
+            @scope.projectId = project.id
             @scope.project = project
             @scope.$emit('project:loaded', project)
             return project
 
     loadInitialData: ->
-        promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
-            @scope.projectId = data.project
-            return data
-
-        return promise.then(=> @.loadProject())
-                      .then(=> @.loadModules())
-
+        promise = @.loadProject()
+        promise.then(=> @.loadModules())
+        return promise
 
 module.controller("GitlabController", GitlabController)
 
@@ -391,11 +391,11 @@ class BitbucketController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
         "$tgRepo",
         "$tgResources",
         "$routeParams",
-        "$appTitle",
+        "tgAppMetaService",
         "$translate"
     ]
 
-    constructor: (@scope, @repo, @rs, @params, @appTitle, @translate) ->
+    constructor: (@scope, @repo, @rs, @params, @appMetaService, @translate) ->
         bindMethods(@)
 
         @scope.sectionName = @translate.instant("ADMIN.BITBUCKET.SECTION_NAME")
@@ -403,8 +403,9 @@ class BitbucketController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
         promise = @.loadInitialData()
 
         promise.then () =>
-            title = @translate.instant("ADMIN.BITBUCKET.APP_TITLE", {projectName: @scope.project.name})
-            @appTitle.set(title)
+            title = @translate.instant("ADMIN.BITBUCKET.PAGE_TITLE", {projectName: @scope.project.name})
+            description = @scope.project.description
+            @appMetaService.setAll(title, description)
 
         promise.then null, @.onInitialDataError.bind(@)
 
@@ -416,18 +417,16 @@ class BitbucketController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
             @scope.bitbucket = bitbucket
 
     loadProject: ->
-        return @rs.projects.get(@scope.projectId).then (project) =>
+        return @rs.projects.getBySlug(@params.pslug).then (project) =>
+            @scope.projectId = project.id
             @scope.project = project
             @scope.$emit('project:loaded', project)
             return project
 
     loadInitialData: ->
-        promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
-            @scope.projectId = data.project
-            return data
-
-        return promise.then(=> @.loadProject())
-                      .then(=> @.loadModules())
+        promise = @.loadProject()
+        promise.then(=> @.loadModules())
+        return promise
 
 module.controller("BitbucketController", BitbucketController)
 
@@ -552,12 +551,12 @@ module.directive("tgBitbucketWebhooks", ["$tgRepo", "$tgConfirm", "$tgLoading", 
 #############################################################################
 ValidOriginIpsDirective = ->
     link = ($scope, $el, $attrs, $ngModel) ->
-      $ngModel.$parsers.push (value) ->
-          value = $.trim(value)
-          if value == ""
-              return []
+        $ngModel.$parsers.push (value) ->
+            value = $.trim(value)
+            if value == ""
+                return []
 
-          return value.split(",")
+            return value.split(",")
 
     return {
         link: link

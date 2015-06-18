@@ -44,17 +44,16 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$tgResources",
         "$routeParams",
         "$q",
-        "$appTitle",
+        "tgAppMetaService",
         "$tgLocation",
         "$tgNavUrls"
         "$tgEvents"
         "$tgAnalytics",
-        "tgLoader"
         "$translate"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @appTitle, @location, @navUrls,
-                  @events, @analytics, tgLoader, @translate) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @appMetaService, @location, @navUrls,
+                  @events, @analytics, @translate) ->
         bindMethods(@)
 
         @scope.sectionName = @translate.instant("TASKBOARD.SECTION_NAME")
@@ -63,14 +62,30 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
         promise = @.loadInitialData()
 
         # On Success
-        promise.then =>
-            @appTitle.set("Taskboard - " + @scope.project.name)
-
+        promise.then => @._setMeta()
         # On Error
         promise.then null, @.onInitialDataError.bind(@)
 
-        # Finally
-        promise.finally tgLoader.pageLoaded
+    _setMeta: ->
+        prettyDate = @translate.instant("BACKLOG.SPRINTS.DATE")
+
+        title = @translate.instant("TASKBOARD.PAGE_TITLE", {
+            projectName: @scope.project.name
+            sprintName: @scope.sprint.name
+        })
+        description =  @translate.instant("TASKBOARD.PAGE_DESCRIPTION", {
+            projectName: @scope.project.name
+            sprintName: @scope.sprint.name
+            startDate: moment(@scope.sprint.estimated_start).format(prettyDate)
+            endDate: moment(@scope.sprint.estimated_finish).format(prettyDate)
+            completedPercentage: @scope.stats.completedPercentage or "0"
+            completedPoints: @scope.stats.completedPointsSum or "--"
+            totalPoints: @scope.stats.totalPointsSum or "--"
+            openTasks: @scope.stats.openTasks or "--"
+            totalTasks: @scope.stats.total_tasks or "--"
+        })
+
+        @appMetaService.setAll(title, description)
 
     initializeEventHandlers: ->
         # TODO: Reload entire taskboard after create/edit tasks seems
@@ -136,7 +151,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.stats.remainingPointsSum = remainingPointsSum
             @scope.stats.remainingTasks = remainingTasks
             if stats.totalPointsSum
-                @scope.stats.completedPercentage = Math.round(100 * stats.completedPointsSum / stats.totalPointsSum)
+                @scope.stats.completedPercentage = Math.round(100*stats.completedPointsSum/stats.totalPointsSum)
             else
                 @scope.stats.completedPercentage = 0
 
@@ -259,7 +274,7 @@ TaskboardDirective = ($rootscope) ->
         $el.on "click", ".toggle-analytics-visibility", (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
-            target.toggleClass('active');
+            target.toggleClass('active')
             $rootscope.$broadcast("taskboard:graph:toggle-visibility")
 
         tableBodyDom = $el.find(".taskboard-table-body")

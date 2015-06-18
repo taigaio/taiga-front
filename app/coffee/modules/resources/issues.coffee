@@ -41,6 +41,9 @@ resourceProvider = ($repo, $http, $urls, $storage, $q) ->
         params.ref = ref
         return $repo.queryOne("issues", "by_ref", params)
 
+    service.listInAllProjects = (filters) ->
+        return $repo.queryMany("issues", filters)
+
     service.list = (projectId, filters, options) ->
         params = {project: projectId}
         params = _.extend({}, params, filters or {})

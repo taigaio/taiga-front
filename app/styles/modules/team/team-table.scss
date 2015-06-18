@@ -3,8 +3,8 @@
         padding: .5rem;
     }
     .username {
-        flex: 3;
-        min-width: 300px;
+        flex-basis: 220px;
+        min-width: 25%;
     }
     .member-stats {
         align-content: center;
@@ -14,20 +14,18 @@
         justify-content: flex-end;
     }
     .attribute {
+        @extend %light;
         flex: 1;
         position: relative;
         text-align: center;
-        .icon,
-        .points {
-            @extend %xlarge;
-            color: $grayer;
-            &.top {
-                color: $fresh-taiga;
-            }
+        .icon {
+            color: $blackish;
+            font-size: 1.8rem;
         }
         .points {
-            @extend %title;
-            @extend %bold;
+            @extend %larger;
+            @extend %light;
+            color: $grayer;
         }
         .top {
             color: $fresh-taiga;
@@ -93,11 +91,11 @@
             @extend %bold;
         }
         .position {
+            @extend %light;
             color: $gray-light;
         }
     }
     .popover {
-        @extend %small;
         @include popover(100%, '', 0, 30px, '', 15px, '', 50%, -5px);
     }
 }

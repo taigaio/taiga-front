@@ -46,11 +46,12 @@ class ProjectValuesSectionController extends mixOf(taiga.Controller, taiga.PageM
         "$q",
         "$tgLocation",
         "$tgNavUrls",
-        "$appTitle",
+        "tgAppMetaService",
         "$translate"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls, @appTitle, @translate) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls,
+                  @appMetaService, @translate) ->
         @scope.project = {}
 
         promise = @.loadInitialData()
@@ -58,30 +59,28 @@ class ProjectValuesSectionController extends mixOf(taiga.Controller, taiga.PageM
         promise.then () =>
             sectionName = @translate.instant(@scope.sectionName)
 
-            title = @translate.instant("ADMIN.PROJECT_VALUES.APP_TITLE", {
+            title = @translate.instant("ADMIN.PROJECT_VALUES.PAGE_TITLE", {
                 "sectionName": sectionName,
                 "projectName": @scope.project.name
             })
-
-            @appTitle.set(title)
+            description = @scope.project.description
+            @appMetaService.setAll(title, description)
 
         promise.then null, @.onInitialDataError.bind(@)
 
     loadProject: ->
-        return @rs.projects.get(@scope.projectId).then (project) =>
+        return @rs.projects.getBySlug(@params.pslug).then (project) =>
             if not project.i_am_owner
                 @location.path(@navUrls.resolve("permission-denied"))
 
+            @scope.projectId = project.id
             @scope.project = project
             @scope.$emit('project:loaded', project)
             return project
 
     loadInitialData: ->
-        promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
-            @scope.projectId = data.project
-            return data
-
-        return promise.then => @.loadProject()
+        promise = @.loadProject()
+        return promise
 
 
 module.controller("ProjectValuesSectionController", ProjectValuesSectionController)
@@ -126,7 +125,7 @@ module.controller("ProjectValuesController", ProjectValuesController)
 ## Project values directive
 #############################################################################
 
-ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame, @translate, $rootscope) ->
+ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame, $translate, $rootscope) ->
     ## Drag & Drop Link
 
     linkDragAndDrop = ($scope, $el, $attrs) ->
@@ -167,7 +166,7 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame, @tra
             }
 
         initializeTextTranslations = ->
-            $scope.addNewElementText = @translate.instant("ADMIN.PROJECT_VALUES_#{objName.toUpperCase()}.ACTION_ADD")
+            $scope.addNewElementText = $translate.instant("ADMIN.PROJECT_VALUES_#{objName.toUpperCase()}.ACTION_ADD")
 
         initializeNewValue()
         initializeTextTranslations()
@@ -296,7 +295,10 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame, @tra
             if _.keys(choices).length == 0
                 return $confirm.error("ADMIN.PROJECT_VALUES.ERROR_DELETE_ALL")
 
-            $confirm.askChoice("PROJECT.TITLE_ACTION_DELETE_VALUE", subtitle, choices, "ADMIN.PROJECT_VALUES.REPLACEMENT").then (response) ->
+            title = $translate.instant("ADMIN.COMMON.TITLE_ACTION_DELETE_VALUE")
+            text = $translate.instant("ADMIN.PROJECT_VALUES.REPLACEMENT")
+
+            $confirm.askChoice(title, subtitle, choices, text).then (response) ->
                 onSucces = ->
                     $ctrl.loadValues().finally ->
                         response.finish()
@@ -382,15 +384,24 @@ class ProjectCustomAttributesController extends mixOf(taiga.Controller, taiga.Pa
         "$q",
         "$tgLocation",
         "$tgNavUrls",
-        "$appTitle",
+        "tgAppMetaService",
+        "$translate"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @rs, @params, @q, @location, @navUrls, @appTitle) ->
+    constructor: (@scope, @rootscope, @repo, @rs, @params, @q, @location, @navUrls, @appMetaService,
+                  @translate) ->
         @scope.project = {}
 
         @rootscope.$on "project:loaded", =>
             @.loadCustomAttributes()
-            @appTitle.set("Project Custom Attributes - " + @scope.sectionName + " - " + @scope.project.name)
+
+            sectionName = @translate.instant(@scope.sectionName)
+            title = @translate.instant("ADMIN.CUSTOM_ATTRIBUTES.PAGE_TITLE", {
+                "sectionName": sectionName,
+                "projectName": @scope.project.name
+            })
+            description = @scope.project.description
+            @appMetaService.setAll(title, description)
 
     #########################
     # Custom Attribute
@@ -430,7 +441,7 @@ module.controller("ProjectCustomAttributesController", ProjectCustomAttributesCo
 ## Custom Attributes Directive
 #############################################################################
 
-ProjectCustomAttributesDirective = ($log, $confirm, animationFrame) ->
+ProjectCustomAttributesDirective = ($log, $confirm, animationFrame, $translate) ->
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
 
@@ -616,7 +627,10 @@ ProjectCustomAttributesDirective = ($log, $confirm, animationFrame) ->
             attr = formEl.scope().attr
             message = attr.name
 
-            $confirm.ask("COMMON.CUSTOM_ATTRIBUTES.DELETE", "COMMON.CUSTOM_ATTRIBUTES.CONFIRM_DELETE", message).then (finish) ->
+            title = $translate.instant("COMMON.CUSTOM_ATTRIBUTES.DELETE")
+            text = $translate.instant("COMMON.CUSTOM_ATTRIBUTES.CONFIRM_DELETE")
+
+            $confirm.ask(title, text, message).then (finish) ->
                 onSucces = ->
                     $ctrl.loadCustomAttributes().finally ->
                         finish()
@@ -636,4 +650,5 @@ ProjectCustomAttributesDirective = ($log, $confirm, animationFrame) ->
 
     return {link: link}
 
-module.directive("tgProjectCustomAttributes", ["$log", "$tgConfirm", "animationFrame", ProjectCustomAttributesDirective])
+module.directive("tgProjectCustomAttributes", ["$log", "$tgConfirm", "animationFrame", "$translate",
+                                               ProjectCustomAttributesDirective])

@@ -1,0 +1,27 @@
+ul.home-project-list(ng-show="vm.projects.size")
+    li.home-project-list-single(tg-bind-scope, tg-repeat="project in vm.projects")
+        a(href="#", tg-nav="project:project=project.get('slug')")
+            h2.home-project-list-single-title
+                span.project-name(title="{{ ::project.get('name') }}") {{::project.get('name')}}
+                span.private(ng-if="project.get('is_private')", title="{{'PROJECT.PRIVATE' | translate}}")
+                    include ../../../svg/lock.svg
+            p {{ ::project.get('description') | limitTo:150 }}
+                span(ng-if="::project.get('description').size > 150") ...
+
+a.see-more-projects-btn.button-gray(href="#",
+                                    ng-show="vm.projects.size",
+                                    tg-nav="projects",
+                                    title="{{'PROJECT.NAVIGATION.SEE_MORE_PROJECTS' | translate}}",
+                                    translate="PROJECT.NAVIGATION.SEE_MORE_PROJECTS")
+
+section.projects-empty(ng-hide="vm.projects.size")
+    include ../../../svg/empty-project.svg
+    p(translate="HOME.EMPTY_PROJECT_LIST")
+    a.create-project-button.button-green(href="#", ng-click="vm.newProject()",
+                                      title="{{'PROJECT.NAVIGATION.TITLE_CREATE_PROJECT' | translate}}",
+                                      translate="PROJECT.NAVIGATION.ACTION_CREATE_PROJECT")
+    span(tg-import-project-button)
+        a.import-project-button.button-blackish(href="#",
+                                                title="{{'PROJECT.NAVIGATION.TITLE_IMPORT_PROJECT' | translate}}",
+                                                translate="PROJECT.NAVIGATION.ACTION_IMPORT_PROJECT")
+        input.import-file.hidden(type="file")

@@ -42,7 +42,8 @@ paths.htmlPartials = [
     paths.tmp + "partials/**/*.html",
     paths.tmp + "plugins/**/*.html",
     paths.tmp + "modules/**/*.html",
-    "!" + paths.tmp + "partials/includes/**/*.html"
+    "!" + paths.tmp + "partials/includes/**/*.html",
+    "!" + paths.tmp + "/modules/**/includes/**/*.html"
 ];
 
 paths.images = paths.app + "images/**/*";
@@ -69,8 +70,8 @@ paths.css_order = [
     paths.tmp + "styles/vendor/*",
     paths.tmp + "styles/core/reset.css",
     paths.tmp + "styles/core/base.css",
-    paths.tmp + "styles/core/animation.css",
     paths.tmp + "styles/core/typography.css",
+    paths.tmp + "styles/core/animation.css",
     paths.tmp + "styles/core/elements.css",
     paths.tmp + "styles/core/forms.css",
     paths.tmp + "styles/layout/*",
@@ -103,6 +104,7 @@ paths.coffee_order = [
     paths.app + "coffee/modules/admin/*.coffee",
     paths.app + "coffee/modules/projects/*.coffee",
     paths.app + "coffee/modules/locales/*.coffee",
+    paths.app + "coffee/modules/profile/*.js",
     paths.app + "coffee/modules/base/*.coffee",
     paths.app + "coffee/modules/resources/*.coffee",
     paths.app + "coffee/modules/user-settings/*.coffee",
@@ -114,6 +116,7 @@ paths.coffee_order = [
 ];
 
 paths.libs = [
+    paths.vendor + "bluebird/js/browser/bluebird.js",
     paths.vendor + "jquery/dist/jquery.js",
     paths.vendor + "lodash/dist/lodash.js",
     paths.vendor + "emoticons/lib/emoticons.js",
@@ -140,9 +143,13 @@ paths.libs = [
     paths.vendor + "raven-js/dist/raven.js",
     paths.vendor + "l.js/l.js",
     paths.vendor + "messageformat/locale/*.js",
+    paths.vendor + "ngInfiniteScroll/build/ng-infinite-scroll.js",
+    paths.vendor + "eventemitter2/lib/eventemitter2.js",
+    paths.vendor + "immutable/dist/immutable.js",
     paths.app + "js/jquery.ui.git-custom.js",
     paths.app + "js/jquery-ui.drag-multiple-custom.js",
     paths.app + "js/jquery.ui.touch-punch.min.js",
+    paths.app + "js/tg-repeat.js",
     paths.app + "js/sha1-custom.js"
 ];
 
@@ -428,6 +435,10 @@ gulp.task("copy-extras", function() {
 
 gulp.task("copy", ["copy-fonts", "copy-images", "copy-images-plugins", "copy-plugin-templates", "copy-svg", "copy-extras"]);
 
+gulp.task("delete-tmp", function() {
+    del.sync(paths.tmp);
+});
+
 gulp.task("express", function() {
     var express = require("express");
     var app = express();
@@ -463,10 +474,8 @@ gulp.task("watch", function() {
     gulp.watch(paths.fonts, ["copy-fonts"]);
 });
 
-del.sync(paths.tmp);
-
 gulp.task("deploy", function(cb) {
-    runSequence("clear", [
+    runSequence("clear", "delete-tmp", [
         "copy",
         "jade-deploy",
         "app-deploy",
@@ -475,12 +484,14 @@ gulp.task("deploy", function(cb) {
     ], cb);
 });
 //The default task (called when you run gulp from cli)
-gulp.task("default", [
-    "copy",
-    "styles",
-    "app-watch",
-    "jslibs-watch",
-    "jade-deploy",
-    "express",
-    "watch"
-]);
+gulp.task("default", function(cb) {
+    runSequence("delete-tmp", [
+        "copy",
+        "styles",
+        "app-watch",
+        "jslibs-watch",
+        "jade-deploy",
+        "express",
+        "watch"
+    ], cb);
+});

@@ -126,6 +126,19 @@ startswith = (str1, str2) ->
     return _.str.startsWith(str1, str2)
 
 
+truncate = (str, maxLength, suffix="...") ->
+    return str if (typeof str != "string") and not (str instanceof String)
+
+    out = str.slice(0)
+
+    if out.length > maxLength
+        out = out.substring(0, maxLength + 1)
+        out = out.substring(0, Math.min(out.length, out.lastIndexOf(" ")))
+        out = out + suffix
+
+    return out
+
+
 sizeFormat = (input, precision=1) ->
     if isNaN(parseFloat(input)) or not isFinite(input)
         return "-"
@@ -140,6 +153,37 @@ sizeFormat = (input, precision=1) ->
     size = (input / Math.pow(1024, number)).toFixed(precision)
     return  "#{size} #{units[number]}"
 
+stripTags = (str, exception) ->
+    if exception
+        pattern = new RegExp('<(?!' + exception + '\s*\/?)[^>]+>', 'gi')
+        return String(str).replace(pattern, '')
+    else
+        return String(str).replace(/<\/?[^>]+>/g, '')
+
+replaceTags = (str, tags, replace) ->
+    # open tag
+    pattern = new RegExp('<(' + tags + ')>', 'gi')
+    str = str.replace(pattern, '<' + replace + '>')
+
+    # close tag
+    pattern = new RegExp('<\/(' + tags + ')>', 'gi')
+    str = str.replace(pattern, '</' + replace + '>')
+
+    return str
+
+defineImmutableProperty = (obj, name, fn) =>
+    Object.defineProperty obj, name, {
+        get: () =>
+            if !_.isFunction(fn)
+                throw "defineImmutableProperty third param must be a function"
+
+            fn_result = fn()
+            if fn_result && _.isObject(fn_result)
+                if fn_result.size == undefined
+                    throw "defineImmutableProperty must return immutable data"
+
+            return fn_result
+    }
 
 taiga = @.taiga
 taiga.nl2br = nl2br
@@ -156,7 +200,11 @@ taiga.cancelTimeout = cancelTimeout
 taiga.scopeDefer = scopeDefer
 taiga.toString = toString
 taiga.joinStr = joinStr
+taiga.truncate = truncate
 taiga.debounce = debounce
 taiga.debounceLeading = debounceLeading
 taiga.startswith = startswith
 taiga.sizeFormat = sizeFormat
+taiga.stripTags = stripTags
+taiga.replaceTags = replaceTags
+taiga.defineImmutableProperty = defineImmutableProperty

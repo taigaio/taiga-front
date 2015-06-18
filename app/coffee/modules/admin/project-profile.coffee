@@ -47,34 +47,38 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$q",
         "$tgLocation",
         "$tgNavUrls",
-        "$appTitle",
+        "tgAppMetaService",
         "$translate"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls, @appTitle, @translate) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls,
+                  @appMetaService, @translate) ->
         @scope.project = {}
 
         promise = @.loadInitialData()
 
         promise.then =>
             sectionName = @translate.instant( @scope.sectionName)
-            appTitle = @translate.instant("ADMIN.PROJECT_PROFILE.PAGE_TITLE", {
+            title = @translate.instant("ADMIN.PROJECT_PROFILE.PAGE_TITLE", {
                      sectionName: sectionName, projectName: @scope.project.name})
-            @appTitle.set(appTitle)
+            description = @scope.project.description
+            @appMetaService.setAll(title, description)
 
         promise.then null, @.onInitialDataError.bind(@)
 
         @scope.$on "project:loaded", =>
             sectionName = @translate.instant(@scope.sectionName)
-            appTitle = @translate.instant("ADMIN.PROJECT_PROFILE.PAGE_TITLE", {
+            title = @translate.instant("ADMIN.PROJECT_PROFILE.PAGE_TITLE", {
                      sectionName: sectionName, projectName: @scope.project.name})
-            @appTitle.set(appTitle)
+            description = @scope.project.description
+            @appMetaService.setAll(title, description)
 
     loadProject: ->
-        return @rs.projects.get(@scope.projectId).then (project) =>
+        return @rs.projects.getBySlug(@params.pslug).then (project) =>
             if not project.i_am_owner
                 @location.path(@navUrls.resolve("permission-denied"))
 
+            @scope.projectId = project.id
             @scope.project = project
             @scope.pointsList = _.sortBy(project.points, "order")
             @scope.usStatusList = _.sortBy(project.us_statuses, "order")
@@ -86,22 +90,9 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.$emit('project:loaded', project)
             return project
 
-    loadTagsColors: ->
-        return @rs.projects.tagsColors(@scope.projectId).then (tags_colors) =>
-            @scope.project.tags_colors = tags_colors
-
-    loadProjectProfile: ->
-        return @q.all([
-            @.loadProject(),
-            @.loadTagsColors()
-        ])
-
     loadInitialData: ->
-        promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
-            @scope.projectId = data.project
-            return data
-
-        return promise.then(=> @.loadProjectProfile())
+        promise = @.loadProject()
+        return promise
 
     openDeleteLightbox: ->
         @rootscope.$broadcast("deletelightbox:new", @scope.project)
@@ -113,8 +104,10 @@ module.controller("ProjectProfileController", ProjectProfileController)
 ## Project Profile Directive
 #############################################################################
 
-ProjectProfileDirective = ($repo, $confirm, $loading, $navurls, $location) ->
+ProjectProfileDirective = ($repo, $confirm, $loading, $navurls, $location, projectService) ->
     link = ($scope, $el, $attrs) ->
+        $ctrl = $el.controller()
+
         form = $el.find("form").checksley({"onlyOneErrorElement": true})
         submit = debounce 2000, (event) =>
             event.preventDefault()
@@ -127,9 +120,14 @@ ProjectProfileDirective = ($repo, $confirm, $loading, $navurls, $location) ->
             promise.then ->
                 $loading.finish(submitButton)
                 $confirm.notify("success")
-                newUrl = $navurls.resolve("project-admin-project-profile-details", {project: $scope.project.slug})
+                newUrl = $navurls.resolve("project-admin-project-profile-details", {
+                    project: $scope.project.slug
+                })
                 $location.path(newUrl)
-                $scope.$emit("project:loaded", $scope.project)
+
+                $ctrl.loadInitialData()
+
+                projectService.fetchProject()
 
             promise.then null, (data) ->
                 $loading.finish(submitButton)
@@ -144,7 +142,8 @@ ProjectProfileDirective = ($repo, $confirm, $loading, $navurls, $location) ->
     return {link:link}
 
 module.directive("tgProjectProfile", ["$tgRepo", "$tgConfirm", "$tgLoading", "$tgNavUrls", "$tgLocation",
-                                      ProjectProfileDirective])
+                                      "tgProjectService", ProjectProfileDirective])
+
 
 #############################################################################
 ## Project Default Values Directive
@@ -187,7 +186,7 @@ module.directive("tgProjectDefaultValues", ["$tgRepo", "$tgConfirm", "$tgLoading
 ## Project Modules Directive
 #############################################################################
 
-ProjectModulesDirective = ($repo, $confirm, $loading) ->
+ProjectModulesDirective = ($repo, $confirm, $loading, projectService) ->
     link = ($scope, $el, $attrs) ->
         form = $el.find("form").checksley()
         submit = =>
@@ -200,6 +199,8 @@ ProjectModulesDirective = ($repo, $confirm, $loading) ->
                 $loading.finish(target)
                 $confirm.notify("success")
                 $scope.$emit("project:loaded", $scope.project)
+
+                projectService.fetchProject()
 
             promise.then null, (data) ->
                 $loading.finish(target)
@@ -229,7 +230,8 @@ ProjectModulesDirective = ($repo, $confirm, $loading) ->
 
     return {link:link}
 
-module.directive("tgProjectModules", ["$tgRepo", "$tgConfirm", "$tgLoading", ProjectModulesDirective])
+module.directive("tgProjectModules", ["$tgRepo", "$tgConfirm", "$tgLoading", "tgProjectService",
+                                      ProjectModulesDirective])
 
 
 #############################################################################

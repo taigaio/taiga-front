@@ -4,9 +4,8 @@
             img(tg-bo-src="user.photo", tg-bo-alt="user.full_name")
 
             figcaption
-                span.name(tg-bo-bind="user.full_name")
-
-                span.position(tg-bo-bind="user.role_name")
+                a.name(tg-nav="user-profile:username=user.username", title="{{::user.full_name }}") {{::user.full_name}}
+                span.position {{::user.role_name}}
 
     .member-stats(tg-team-member-stats, stats="stats",
                                         user="user.user",

@@ -42,15 +42,14 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$q",
         "$tgLocation",
         "$log",
-        "$appTitle",
+        "tgAppMetaService",
         "$tgNavUrls",
         "$tgAnalytics",
-        "$translate",
-        "tgLoader"
+        "$translate"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
-                  @log, @appTitle, @navUrls, @analytics, @translate, tgLoader) ->
+                  @log, @appMetaService, @navUrls, @analytics, @translate) ->
         @scope.taskRef = @params.taskref
         @scope.sectionName = @translate.instant("TASK.SECTION_NAME")
         @.initializeEventHandlers()
@@ -58,23 +57,33 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         promise = @.loadInitialData()
 
         promise.then () =>
-            @appTitle.set(@scope.task.subject + " - " + @scope.project.name)
+            @._setMeta()
             @.initializeOnDeleteGoToUrl()
 
         promise.then null, @.onInitialDataError.bind(@)
 
-        promise.finally tgLoader.pageLoaded
+    _setMeta: ->
+        title = @translate.instant("TASK.PAGE_TITLE", {
+            taskRef: "##{@scope.task.ref}"
+            taskSubject: @scope.task.subject
+            projectName: @scope.project.name
+        })
+        description = @translate.instant("TASK.PAGE_DESCRIPTION", {
+            taskStatus: @scope.statusById[@scope.task.status]?.name or "--"
+            taskDescription: angular.element(@scope.task.description_html or "").text()
+        })
+        @appMetaService.setAll(title, description)
 
     initializeEventHandlers: ->
         @scope.$on "attachment:create", =>
             @analytics.trackEvent("attachment", "create", "create attachment on task", 1)
-            @rootscope.$broadcast("history:reload")
+            @rootscope.$broadcast("object:updated")
         @scope.$on "attachment:edit", =>
-            @rootscope.$broadcast("history:reload")
+            @rootscope.$broadcast("object:updated")
         @scope.$on "attachment:delete", =>
-            @rootscope.$broadcast("history:reload")
+            @rootscope.$broadcast("object:updated")
         @scope.$on "custom-attributes-values:edit", =>
-            @rootscope.$broadcast("history:reload")
+            @rootscope.$broadcast("object:updated")
 
     initializeOnDeleteGoToUrl: ->
         ctx = {project: @scope.project.slug}
@@ -169,7 +178,6 @@ TaskStatusDisplayDirective = ($template, $compile) ->
             })
 
             html = $compile(html)($scope)
-
             $el.html(html)
 
         $scope.$watch $attrs.ngModel, (task) ->
@@ -241,7 +249,7 @@ TaskStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $co
 
             onSuccess = ->
                 $confirm.notify("success")
-                $rootScope.$broadcast("history:reload")
+                $rootScope.$broadcast("object:updated")
                 $loading.finish($el.find(".level-name"))
 
             onError = ->
@@ -326,7 +334,7 @@ TaskIsIocaineButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $qqueue
 
             promise.then ->
                 $confirm.notify("success")
-                $rootscope.$broadcast("history:reload")
+                $rootscope.$broadcast("object:updated")
 
             promise.then null, ->
                 task.revert()

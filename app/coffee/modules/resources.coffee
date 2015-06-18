@@ -31,13 +31,17 @@ urls = {
 
     # User
     "users": "/users"
+    "by_username": "/users/by_username"
     "users-password-recovery": "/users/password_recovery"
     "users-change-password-from-recovery": "/users/change_password_from_recovery"
     "users-change-password": "/users/change_password"
     "users-change-email": "/users/change_email"
     "users-cancel-account": "/users/cancel"
+    "contacts": "/users/%s/contacts"
+    "stats": "/users/%s/stats"
 
     # User - Notification
+    "permissions": "/permissions"
     "notify-policies": "/notify-policies"
 
     # User - Storage
@@ -58,6 +62,7 @@ urls = {
     "projects": "/projects"
     "project-templates": "/project-templates"
     "project-modules": "/projects/%s/modules"
+    "bulk-update-projects-order": "/projects/bulk_update_order"
 
     # Project Values - Choises
     "userstory-statuses": "/userstory-statuses"
@@ -125,6 +130,11 @@ urls = {
     "tasks-csv": "/tasks/csv?uuid=%s"
     "issues-csv": "/issues/csv?uuid=%s"
 
+    # Timeline
+    "timeline-profile": "/timeline/profile"
+    "timeline-user": "/timeline/user"
+    "timeline-project": "/timeline/project"
+
     # Search
     "search": "/search"
 
@@ -183,5 +193,6 @@ module.run([
     "$tgWebhooksResourcesProvider",
     "$tgWebhookLogsResourcesProvider",
     "$tgLocalesResourcesProvider",
+    "$tgUsersResourcesProvider",
     initResources
 ])

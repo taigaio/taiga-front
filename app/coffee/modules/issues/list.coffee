@@ -47,18 +47,16 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         "$routeParams",
         "$q",
         "$tgLocation",
-        "$appTitle",
+        "tgAppMetaService",
         "$tgNavUrls",
         "$tgEvents",
         "$tgAnalytics",
-        "tgLoader",
         "$translate"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @urls, @params, @q, @location, @appTitle,
-                  @navUrls, @events, @analytics, tgLoader, @translate) ->
-
-        @scope.sectionName = @translate.instant("ISSUES.LIST_SECTION_NAME")
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @urls, @params, @q, @location, @appMetaService,
+                  @navUrls, @events, @analytics, @translate) ->
+        @scope.sectionName = "Issues"
         @scope.filters = {}
 
         if _.isEmpty(@location.search())
@@ -72,13 +70,15 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
         # On Success
         promise.then =>
-            @appTitle.set("Issues - " + @scope.project.name)
+            title = @translate.instant("ISSUES.PAGE_TITLE", {projectName: @scope.project.name})
+            description = @translate.instant("ISSUES.PAGE_DESCRIPTION", {
+                projectName: @scope.project.name,
+                projectDescription: @scope.project.description
+            })
+            @appMetaService.setAll(title, description)
 
         # On Error
         promise.then null, @.onInitialDataError.bind(@)
-
-        # Finally
-        promise.finally tgLoader.pageLoaded
 
         @scope.$on "issueform:new:success", =>
             @analytics.trackEvent("issue", "create", "create issue on issues list", 1)
@@ -440,7 +440,7 @@ module.directive("tgIssues", ["$log", "$tgLocation", "$tgTemplate", "$compile", 
 ## Issues Filters Directive
 #############################################################################
 
-IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template, $translate, $compile) ->
+IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template, $translate, $compile, $auth) ->
     template = $template.get("issue/issues-filters.html", true)
     templateSelected = $template.get("issue/issues-filters-selected.html", true)
 
@@ -477,7 +477,7 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template, $
             html = $compile(html)($scope)
             $el.find(".filters-applied").html(html)
 
-            if selectedFilters.length > 0
+            if $auth.isAuthenticated() && selectedFilters.length > 0
                 $el.find(".save-filters").show()
             else
                 $el.find(".save-filters").hide()
@@ -663,7 +663,7 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template, $
     return {link:link}
 
 module.directive("tgIssuesFilters", ["$log", "$tgLocation", "$tgResources", "$tgConfirm", "$tgLoading",
-                                     "$tgTemplate", "$translate", "$compile", IssuesFiltersDirective])
+                                     "$tgTemplate", "$translate", "$compile", "$tgAuth", IssuesFiltersDirective])
 
 
 #############################################################################
@@ -719,27 +719,13 @@ IssueStatusInlineEditionDirective = ($repo, $template, $rootscope) ->
 
             $scope.$apply () ->
                 $repo.save(issue).then ->
+                    $ctrl.loadIssues()
 
                     for filter in $scope.filters.statuses
                         if filter.id == issue.status
                             filter.count++
 
                     $rootscope.$broadcast("filters:issueupdate", $scope.filters)
-
-                    filtering = false
-
-                    for filter in $scope.filters.statuses
-                        if filter.selected == true
-                            filtering = true
-                            if filter.id == issue.status
-                                return
-
-                    if not filtering
-                        return
-
-                    for el, i in $scope.issues
-                        if el and el.id == issue.id
-                            $scope.issues.splice(i, 1)
 
                 for filter in $scope.filters.statuses
                     if filter.id == issue.status

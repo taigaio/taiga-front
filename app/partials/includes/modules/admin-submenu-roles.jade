@@ -1,15 +1,10 @@
-section.admin-submenu-roles
-    header
-        h1(translate="ADMIN.SUBMENU_ROLES.TITLE")
-
+section.admin-submenu.admin-submenu-roles(ng-if="roles")
     nav
         ul
             li(ng-repeat="item in roles")
                 a(href="" ng-click="ctrl.setRole(item)", ng-class="{active: role.id == item.id}")
                   span.single-role {{ item.name }}
-                  span.icon.icon-arrow-right
 
         div(tg-new-role)
-            a.button-gray.add-button(href="", title="{{'ADMIN.SUBMENU_ROLES.TITLE_ACTION_NEW_ROLE' | translate}}")
-                span.text(translate="ADMIN.SUBMENU_ROLES.ACTION_NEW_ROLE")
+            a.button-gray.add-button(href="", title="{{'ADMIN.SUBMENU_ROLES.TITLE_ACTION_NEW_ROLE' | translate}}", translate="ADMIN.SUBMENU_ROLES.ACTION_NEW_ROLE")
             input(type="text", class="hidden new")

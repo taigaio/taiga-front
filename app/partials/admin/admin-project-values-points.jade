@@ -1,7 +1,11 @@
 doctype html
 
-div.wrapper(ng-controller="ProjectValuesSectionController")
-    sidebar.menu-secondary.sidebar(tg-admin-navigation="project-values")
+div.wrapper(ng-controller="ProjectValuesSectionController",
+            ng-init="sectionName='ADMIN.PROJECT_VALUES_POINTS.TITLE'")
+
+    tg-project-menu
+
+    sidebar.menu-secondary.sidebar.settings-nav(tg-admin-navigation="project-values")
         include ../includes/modules/admin-menu
 
     sidebar.menu-tertiary.sidebar(tg-admin-navigation="values-points")
@@ -12,7 +16,7 @@ div.wrapper(ng-controller="ProjectValuesSectionController")
         p.admin-subtitle(translate="ADMIN.PROJECT_VALUES_POINTS.SUBTITLE")
 
         div.admin-attributes-section(tg-project-values, ng-controller="ProjectValuesController as ctrl",
-            ng-init="section='admin'; resource='userstories'; type='points'; sectionName='ADMIN.PROJECT_VALUES_POINTS.TITLE'",
+            ng-init="section='admin'; resource='userstories'; type='points'; sectionName='ADMIN.PROJECT_VALUES_POINTS.US_TITLE'",
             objName="points",
             type="points")
             include ../includes/modules/admin/project-points

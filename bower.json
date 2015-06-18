@@ -50,11 +50,11 @@
     "lodash": "~2.4.1",
     "emoticons": "~0.1.7",
     "jquery-flot": "~0.8.2",
-    "angular": "1.3.11",
-    "angular-route": "1.3.11",
-    "angular-animate": "1.3.11",
-    "angular-sanitize": "1.3.11",
-    "angular-mocks": "1.3.11",
+    "angular": "1.4.0",
+    "angular-route": "1.4.0",
+    "angular-animate": "1.4.0",
+    "angular-sanitize": "1.4.0",
+    "angular-mocks": "1.4.0",
     "checksley": "~0.6.0",
     "jquery": "~2.1.1",
     "select2": "~3.4.5",
@@ -76,13 +76,17 @@
     "l.js": "~0.1.0",
     "angular-translate": "~2.6.1",
     "angular-translate-loader-static-files": "~2.6.1",
-    "angular-translate-interpolation-messageformat": "~2.6.1"
+    "angular-translate-interpolation-messageformat": "~2.6.1",
+    "ngInfiniteScroll": "1.0.0",
+    "eventemitter2": "~0.4.14",
+    "immutable": "~3.7.2",
+    "bluebird": "~2.9.25"
   },
   "resolutions": {
     "lodash": "~2.4.1",
     "moment": "~2.10.2",
     "jquery": "~2.1.1",
-    "angular": "1.3.11"
+    "angular": "1.4.0"
   },
   "private": true
 }

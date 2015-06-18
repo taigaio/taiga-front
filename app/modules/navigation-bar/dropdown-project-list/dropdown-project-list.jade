@@ -1,0 +1,26 @@
+a(href="", title="Projects", tg-nav="projects")
+    include ../../../svg/projects.svg
+
+div.navbar-dropdown.dropdown-project-list
+    ul
+        a(href="#",
+            tg-repeat="project in vm.projects track by project.get('id')",
+            tg-nav="project:project=project.get('slug')") {{::project.get("name")}}
+
+    a.see-more-projects-btn.button-gray(
+        href="#",
+        tg-nav="projects",
+        title="{{'PROJECT.NAVIGATION.SEE_MORE_PROJECTS' | translate}}",
+        translate="PROJECT.NAVIGATION.SEE_MORE_PROJECTS")
+
+    div.create-options
+        a.create-project-btn.button-green(
+            href="#",
+            ng-click="vm.newProject()",
+            title="{{'PROJECT.NAVIGATION.ACTION_CREATE_PROJECT' | translate}}",
+            translate="PROJECT.NAVIGATION.ACTION_CREATE_PROJECT")
+
+        span(tg-import-project-button)
+            a.button-blackish.import-project-button(href="", title="{{'PROJECT.NAVIGATION.TITLE_ACTION_IMPORT' | translate}}")
+                span.icon.icon-upload
+            input.import-file.hidden(type="file")

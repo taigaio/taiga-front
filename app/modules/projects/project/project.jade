@@ -1,0 +1,27 @@
+div.wrapper
+    tg-project-menu
+    div.main.centered.single-project
+        section.single-project-intro
+            h1
+                span.green(class="project-name") {{::vm.project.get("name")}}
+                span.private(ng-if="::vm.project.get('is_private')", title="{{'PROJECT.PRIVATE' | translate}}")
+                    include ../../../svg/lock.svg
+            p.description {{vm.project.get('description')}}
+
+            div.single-project-tags.tags-container(ng-if="::vm.project.get('tags').size")
+                span.tag(style='border-left: 5px solid {{::tag.get("color")}};', tg-repeat="tag in ::vm.project.get('colorized_tags')")
+                    span.tag-name {{::tag.get('name')}}
+
+        div.project-data
+            section.timeline(ng-if="vm.project")
+                div(tg-user-timeline, projectId="vm.project.get('id')")
+            section.involved-data
+                h2.title {{"PROJECT.SECTION.TEAM" | translate}}
+                ul.involved-team
+                    a(tg-nav="user-profile:username=member.get('username')", title="{{::member.get('full_name')}}", tg-repeat="member in ::vm.project.get('memberships')")
+                        img(ng-src="{{::member.get('photo')}}", alt="{{::member.get('full_name')}}")
+
+                // h2.title Organizations
+                // div.involved-organization
+                //     a(href="", title="User Name")
+                //         img(src="https://s3.amazonaws.com/uifaces/faces/twitter/dan_higham/48.jpg", alt="{{member.full_name}}")

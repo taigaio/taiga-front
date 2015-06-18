@@ -1,0 +1,24 @@
+.profile-sidebar {
+    h4 {
+        @extend %bold;
+        background: $whitish;
+        color: $gray;
+        margin-bottom: .5rem;
+        padding: .5rem;
+        .icon {
+            color: $gray-light;
+            margin-right: .3rem;
+            vertical-align: text-bottom;
+        }
+    }
+    p {
+        @extend %small;
+        color: $gray-light;
+    }
+    a {
+        color: $green-taiga;
+    }
+    .trans-button {
+        margin-bottom: 1rem;
+    }
+}

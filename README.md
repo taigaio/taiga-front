@@ -2,6 +2,7 @@
 
 ![Kaleidos Project](http://kaleidos.net/static/img/badge.png "Kaleidos Project")
 [![Managed with Taiga](https://taiga.io/media/support/attachments/article-22/banner-gh.png)](https://taiga.io "Managed with Taiga")
+[![Build Status](https://travis-ci.org/taigaio/taiga-front.svg?branch=public-header-bar)](https://travis-ci.org/taigaio/taiga-front)
 
 ## Get the compiled version ##
 

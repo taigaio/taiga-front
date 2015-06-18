@@ -1,0 +1,104 @@
+.profile-timeline {
+    .activity-item {
+        border-bottom: 1px solid $whitish;
+        padding: 1rem .5rem;
+        position: relative;
+        p {
+            margin-bottom: 0;
+        }
+        a {
+            color: $green-taiga;
+            &:first-child {
+                @extend %bold;
+                color: $gray;
+            }
+            &:hover {
+                color: $fresh-taiga;
+            }
+        }
+        blockquote {
+            line-height: 1.4rem;
+            margin-bottom: 0;
+            margin-left: calc(35px + 1rem);
+            margin-top: .5rem;
+            overflow-x: auto;
+            overflow-y: hidden;
+            white-space: pre-line;
+        }
+        img {
+            max-height: 640px;
+            max-width: 640px;
+            width: 100%;
+        }
+        .activity-info {
+            align-items: center;
+            color: $gray-light;
+            display: flex;
+            margin-right: 130px;
+        }
+        .activity-date {
+            color: $gray-light;
+            font-size: .75rem;
+            position: absolute;
+            right: .5rem;
+            top: 1.2rem;
+        }
+        .profile-contact-picture,
+        .profile-member-picture {
+            border-radius: .1rem;
+            flex-basis: 2rem;
+            flex-shrink: 0;
+            margin-right: 1rem;
+            vertical-align: center;
+            width: 2rem;
+            img {
+                width: 100%;
+            }
+        }
+    }
+    .activity-member-view {
+        display: flex;
+        margin-bottom: .5rem;
+        margin-left: calc(35px + 1rem);
+        margin-top: .5rem;
+        .profile-member-picture {
+            flex-basis: 3rem;
+            width: 3rem;
+        }
+        .activity-member-info {
+            flex: 1;
+        }
+        a {
+            @extend %bold;
+        }
+        p {
+            color: $gray-light;
+        }
+    }
+    .single-attachment {
+        border: 0;
+        padding: 0;
+        span {
+            @extend %text;
+            @extend %medium;
+            display: inline-block;
+            max-width: 95%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+        .icon {
+            margin-right: .3rem;
+        }
+    }
+    .spin {
+        margin: 10% auto;
+        width: 3rem;
+        img {
+            @extend %loading-spinner;
+            max-height: 3rem;
+            max-width: 3rem;
+        }
+    }
+}

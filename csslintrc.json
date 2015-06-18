@@ -6,7 +6,7 @@
     "font-sizes": false,
     "ids": true,
     "known-properties": false,
-    "overqualified-elements": true,
+    "overqualified-elements": false,
     "shorthand": true,
     "text-indent": true,
     "unique-headings": false,

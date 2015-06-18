@@ -1,0 +1,149 @@
+.profile-bar {
+    .profile-image-wrapper {
+        height: 200px;
+        margin-bottom: 1rem;
+        overflow: hidden;
+        position: relative;
+        &.is-current-user:hover {
+            img {
+                filter: brightness(40%) saturate(150%) hue-rotate(60deg);
+                transition: all .2s cubic-bezier(.01, .7, 1, 1);
+            }
+            .profile-edition {
+                opacity: 1;
+                transform: translateY(0);
+                transition: all .2s cubic-bezier(.01, .7, 1, 1);
+                transition-delay: .3s;
+            }
+        }
+    }
+    .profile-img {
+        max-width: 100%;
+        width: 100%;
+    }
+    .profile-edition {
+        @extend %large;
+        @extend %light;
+        background: rgba($black, .4);
+        bottom: 0;
+        color: $white;
+        left: 0;
+        opacity: 0;
+        overflow: hidden;
+        padding: 1rem;
+        position: absolute;
+        transform: translateY(100%);
+        width: 100%;
+        &:hover {
+            background: rgba($black, .8);
+            transition: all .3s cubic-bezier(.01, .7, 1, 1);
+        }
+
+    }
+    .button-green {
+        display: block;
+        margin-bottom: 1rem;
+    }
+    .profile-data {
+        position: relative;
+    }
+    .flag {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 12px;
+        path {
+            fill: $gray-light;
+            transition: all .2s linear;
+        }
+        &:hover {
+            path {
+                fill: $red;
+                transition: all .2s linear;
+            }
+        }
+    }
+    h1 {
+        @extend %bold;
+        @extend %xlarge;
+        line-height: 1;
+        margin-bottom: .5rem;
+        text-transform: none;
+    }
+    .not-full-name {
+        word-wrap: break-word;
+    }
+    h2 {
+        @extend %light;
+        @extend %larger;
+        color: $gray;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+    }
+    .location {
+        color: $gray-light;
+        margin-bottom: 1rem;
+        svg {
+            position: relative;
+            top: 2px;
+            width: .75rem;
+        }
+        path {
+            fill: $gray-light;
+        }
+    }
+    .profile-stats {
+        border-bottom: 1px solid $whitish;
+        border-top: 1px solid $whitish;
+        color: $gray;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1.25rem;
+        padding: 1rem .5rem;
+        .stat {
+            padding: 0 .2rem;
+            text-align: center;
+        }
+        .stat-number {
+            @extend %xlarge;
+            @extend %bold;
+            display: block;
+            line-height: 1;
+        }
+        .stat-name {
+            @extend %title;
+            @extend %small;
+            display: block;
+        }
+    }
+
+    .profile-organizations {
+        border-bottom: 1px solid $whitish;
+        border-top: 1px solid $whitish;
+        margin-bottom: 1rem;
+        padding: 1rem 0;
+        h3 {
+            @extend %bold;
+            margin-bottom: .5rem;
+        }
+        .profile-organizations-wrapper {
+            display: flex;
+            justify-content: space-between;
+        }
+        .organization {
+            background: $gray-light;
+            border-radius: 5px;
+            height: 45px;
+            margin-right: .2rem;
+            width: 45px;
+        }
+    }
+
+    .profile-quote {
+        @extend %light;
+        @extend %large;
+        background: url('/images/quote.png') no-repeat top left;
+        line-height: 1.4;
+        padding: .5rem;
+    }
+}

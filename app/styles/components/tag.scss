@@ -1,9 +1,12 @@
 .tag {
+    @extend %light;
+    @extend %small;
     background: $whitish; // Fallback
+    border-radius: 0 5px 5px 0;
     color: $grayer;
     display: inline-block;
     margin-right: .5rem;
-    padding: .2rem .5rem;
+    padding: .5rem .75rem;
     text-align: center;
     .icon-delete {
         color: $gray-light;

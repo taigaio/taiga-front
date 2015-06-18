@@ -44,6 +44,7 @@ module.directive("tgMain", ["$rootScope", "$window", TaigaMainDirective])
 
 urls = {
     "home": "/"
+    "projects": "/projects"
     "error": "/error"
     "not-found": "/not-found"
     "permission-denied": "/permission-denied"
@@ -57,7 +58,8 @@ urls = {
     "invitation": "/invitation/:token"
     "create-project": "/create-project"
 
-    "profile": "/:user"
+    "profile": "/profile"
+    "user-profile": "/profile/:username"
 
     "project": "/project/:project"
     "project-backlog": "/project/:project/backlog"
@@ -67,9 +69,7 @@ urls = {
     "project-search": "/project/:project/search"
 
     "project-userstories-detail": "/project/:project/us/:ref"
-
     "project-tasks-detail": "/project/:project/task/:ref"
-
     "project-issues-detail": "/project/:project/issue/:ref"
 
     "project-wiki": "/project/:project/wiki"
@@ -102,10 +102,10 @@ urls = {
     "project-admin-contrib": "/project/:project/admin/contrib/:plugin"
 
     # User settings
-    "user-settings-user-profile": "/project/:project/user-settings/user-profile"
-    "user-settings-user-change-password": "/project/:project/user-settings/user-change-password"
-    "user-settings-user-avatar": "/project/:project/user-settings/user-avatar"
-    "user-settings-mail-notifications": "/project/:project/user-settings/mail-notifications"
+    "user-settings-user-profile": "/user-settings/user-profile"
+    "user-settings-user-change-password": "/user-settings/user-change-password"
+    "user-settings-user-avatar": "/user-settings/user-avatar"
+    "user-settings-mail-notifications": "/user-settings/mail-notifications"
 
 }
 

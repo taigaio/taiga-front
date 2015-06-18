@@ -1,0 +1,160 @@
+.navbar {
+    background: rgba($black, .5);
+    display: flex;
+    height: $navbar;
+    justify-content: space-between;
+    position: relative;
+    &:after {
+        background: url('../images/menu-vert.png') repeat top left;
+        background-size: 200%;
+        bottom: 0;
+        content: '';
+        height: 100%;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: -1;
+    }
+    .nav-left,
+    .nav-right {
+        align-content: center;
+        align-items: center;
+        display: flex;
+    }
+    .nav-left {
+        >a {
+            padding: .5rem 1.5rem;
+            &.logo {
+                background: rgba($black, .2);
+                padding: .4rem .75rem;
+            }
+            svg {
+                height: 1.6rem;
+                max-width: 2rem;
+            }
+            path {
+                fill: $white;
+            }
+        }
+    }
+    .nav-right {
+        margin-left: auto;
+        a {
+            padding: .5rem 2rem;
+        }
+    }
+    a {
+        color: $white;
+        display: inline-block;
+        transition: all .2s linear;
+        &.active,
+        &:hover {
+            background: rgba($black, .2);
+            color: $fresh-taiga;
+            svg path {
+                fill: $white;
+            }
+
+        }
+        &.user-avatar {
+            min-width: 200px;
+            padding: 0;
+            padding-left: 2rem;
+            text-align: right;
+            span {
+                padding-right: 1rem;
+            }
+        }
+
+    }
+    img {
+        height: 2.5rem;
+        padding-left: .5rem;
+        vertical-align: middle;
+    }
+    svg {
+        height: 1.2rem;
+        max-width: 1.2rem;
+        path {
+            fill: $dark-taiga;
+            transition: all .2s;
+        }
+    }
+    .topnav-dropdown-wrapper {
+        position: relative;
+        &:hover {
+            .navbar-dropdown {
+                animation: dropdownFade .2s cubic-bezier(.09, 0, .99, .01) both;
+                display: block;
+            }
+        }
+    }
+    .navbar-dropdown {
+        a {
+            padding: .8rem .5rem;
+        }
+    }
+    %dropdown {
+        border-radius: 2px;
+        display: none;
+        left: calc(50% - #{$dropdown-width}/2);
+        min-width: $dropdown-width;
+        position: absolute;
+        top: 2.4rem;
+        z-index: 99;
+    }
+}
+
+.navbar-dropdown {
+    @extend %dropdown;
+    background: $blackish;
+    border: 1px solid $black;
+    padding: .3rem;
+    &.dropdown-user {
+        left: calc(50% - 200px/2);
+        min-width: 200px;
+        ul {
+            margin-bottom: 0;
+        }
+    }
+    ul {
+        @include arrow('bottom', $blackish, $blackish, 1, 8);
+        margin: 0;
+        margin-bottom: .5rem;
+        padding: 0;
+    }
+    a {
+        color: $gray-light;
+        display: block;
+        padding: .8rem .5rem;
+        &:hover {
+            background: rgba($white, .1);
+            color: $fresh-taiga;
+        }
+        &.see-more-projects-btn,
+        &.create-organization-btn,
+        &.create-project-btn {
+            color: $white;
+            text-align: center;
+            &:hover {
+                color: $white;
+            }
+        }
+        &.see-more-projects-btn {
+            margin-bottom: .3rem;
+        }
+        &.create-project-btn {
+            flex: 1;
+        }
+        &.import-project-button {
+            padding-left: .75rem;
+            padding-right: .75rem;
+        }
+
+    }
+    .create-options {
+        display: flex;
+        flex-direction: row;
+    }
+}

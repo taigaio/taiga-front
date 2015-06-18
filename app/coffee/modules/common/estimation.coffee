@@ -92,7 +92,7 @@ UsEstimationDirective = ($tgEstimationsService, $rootScope, $repo, $confirm, $qq
                 estimationProcess = $tgEstimationsService.create($el, us, $scope.project)
                 estimationProcess.onSelectedPointForRole = (roleId, pointId) ->
                     @save(roleId, pointId).then ->
-                        $rootScope.$broadcast("history:reload")
+                        $rootScope.$broadcast("object:updated")
 
                 estimationProcess.render = () ->
                     ctx = {

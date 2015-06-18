@@ -41,10 +41,11 @@ class LightboxService extends taiga.Service
 
         $el.css('display', 'flex')
 
-        $el.find('input,textarea').first().focus()
-
         @animationFrame.add =>
             $el.addClass("open")
+
+            @animationFrame.add ->
+                $el.find('input,textarea').first().focus()
 
         @animationFrame.add =>
             lightboxContent.show()
@@ -66,6 +67,11 @@ class LightboxService extends taiga.Service
             $el.removeClass("open").removeClass('close')
 
         $el.addClass('close')
+
+        if $el.hasClass("remove-on-close")
+            scope = $el.data("scope")
+            scope.$destroy()
+            $el.remove()
 
     closeAll: ->
         docEl = angular.element(document)
@@ -148,14 +154,14 @@ module.directive("lightbox", ["lightboxService", LightboxDirective])
 
 BlockLightboxDirective = ($rootscope, $tgrepo, $confirm, lightboxService, $loading, $qqueue, $translate) ->
     link = ($scope, $el, $attrs, $model) ->
-        $translate($attrs.title).then (title) ->
-            $el.find("h2.title").text(title)
+        title = $translate.instant($attrs.title)
+        $el.find("h2.title").text(title)
 
         unblock = $qqueue.bindAdd (item, finishCallback) =>
             promise = $tgrepo.save(item)
             promise.then ->
                 $confirm.notify("success")
-                $rootscope.$broadcast("history:reload")
+                $rootscope.$broadcast("object:updated")
                 $model.$setViewValue(item)
                 finishCallback()
 
@@ -177,7 +183,7 @@ BlockLightboxDirective = ($rootscope, $tgrepo, $confirm, lightboxService, $loadi
             promise = $tgrepo.save($model.$modelValue)
             promise.then ->
                 $confirm.notify("success")
-                $rootscope.$broadcast("history:reload")
+                $rootscope.$broadcast("object:updated")
 
             promise.then null, ->
                 $confirm.notify("error")
@@ -467,7 +473,6 @@ AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationServic
             html = $compile(html)($scope)
 
             $el.find("div.watchers").html(html)
-            lightboxKeyboardNavigationService.init($el)
 
         closeLightbox = () ->
             lightboxKeyboardNavigationService.stop()
@@ -481,7 +486,7 @@ AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationServic
             render(selectedUser)
             lightboxService.open($el).then ->
                 $el.find('input').focus()
-
+                lightboxKeyboardNavigationService.init($el)
 
         $scope.$watch "usersSearch", (searchingText) ->
             if searchingText?
@@ -562,7 +567,6 @@ WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationS
 
             html = usersTemplate(ctx)
             $el.find("div.watchers").html(html)
-            lightboxKeyboardNavigationService.init($el)
 
         closeLightbox = () ->
             lightboxKeyboardNavigationService.stop()
@@ -576,7 +580,7 @@ WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationS
 
             lightboxService.open($el).then ->
                 $el.find("input").focus()
-            lightboxKeyboardNavigationService.init($el)
+                lightboxKeyboardNavigationService.init($el)
 
         $scope.$watch "usersSearch", (searchingText) ->
             if not searchingText?

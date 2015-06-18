@@ -4,7 +4,6 @@
     box-shadow: none;
     cursor: move;
     margin: .2rem;
-    min-height: 7rem;
     position: relative;
     &:hover {
         .icon-edit,
@@ -47,7 +46,7 @@
         flex-basis: 0;
         flex-grow: 1;
         height: .6rem;
-        z-index: 100;
+        z-index: 90;
     }
     .taskboard-task-inner {
         display: flex;

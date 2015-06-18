@@ -1,7 +1,45 @@
 # Changelog #
 
 
-## 1.7.0 Empetrum Nigrum (unreleased)
+## 1.8.0 Saracenia Purpurea (2015-06-18)
+
+### Features
+- Menus
+    - New User menu
+    - New project menu design
+- Home
+    - Change home page for logged users, show a user dashboard with `working on` and `watching` sections.
+- Proyects privacity
+    - Enabled public projects
+    - Improve SEO, fix meta tags and added social meta tags
+- About project detail
+    - New projects list design
+    - New project detail page design
+    - Add project timeline
+- User profile
+    - Now, access to edit user settings is out of a project
+    - New User profile view
+    - Add activity timeline to user profiles
+        - With the activity of my contacts on mine
+        - With the activity of the user on others
+    - Add user contacts to user profile
+    - Add project list to user profile
+- Backlog panel
+    - Improve the drag & drop behavior of USs in backlog panel
+    - Select multiple US with `shift` in the backlog panel
+- Global searches:
+    - Show the reference of entities in search results (thanks to [@artlepool](https://github.com/artlepool))
+    - Autofocus on search modal
+- i18n.
+  - Add deutsch (de) translation.
+  - Add nederlands (nl) translation.
+
+### Misc
+- Improve performance: remove some unnecessary calls to the api.
+- Lots of small and not so small bugfixes.
+
+
+## 1.7.0 Empetrum Nigrum (2015-05-21)
 
 ### Features
 - Make Taiga translatable (i18n support).

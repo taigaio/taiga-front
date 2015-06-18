@@ -44,15 +44,14 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$q",
         "$tgLocation",
         "$log",
-        "$appTitle",
+        "tgAppMetaService",
         "$tgAnalytics",
         "$tgNavUrls",
-        "$translate",
-        "tgLoader"
+        "$translate"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
-                  @log, @appTitle, @analytics, @navUrls, @translate, tgLoader) ->
+                  @log, @appMetaService, @analytics, @navUrls, @translate) ->
         @scope.issueRef = @params.issueref
         @scope.sectionName = @translate.instant("ISSUES.SECTION_NAME")
         @.initializeEventHandlers()
@@ -61,33 +60,45 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
         # On Success
         promise.then =>
-            @appTitle.set(@scope.issue.subject + " - " + @scope.project.name)
+            @._setMeta()
             @.initializeOnDeleteGoToUrl()
 
         # On Error
         promise.then null, @.onInitialDataError.bind(@)
 
-        # Finally
-        promise.finally tgLoader.pageLoaded
+    _setMeta: ->
+        title = @translate.instant("ISSUE.PAGE_TITLE", {
+            issueRef: "##{@scope.issue.ref}"
+            issueSubject: @scope.issue.subject
+            projectName: @scope.project.name
+        })
+        description = @translate.instant("ISSUE.PAGE_DESCRIPTION", {
+            issueStatus: @scope.statusById[@scope.issue.status]?.name or "--"
+            issueType: @scope.typeById[@scope.issue.type]?.name or "--"
+            issueSeverity: @scope.severityById[@scope.issue.severity]?.name or "--"
+            issuePriority: @scope.priorityById[@scope.issue.priority]?.name or "--"
+            issueDescription: angular.element(@scope.issue.description_html or "").text()
+        })
+        @appMetaService.setAll(title, description)
 
     initializeEventHandlers: ->
         @scope.$on "attachment:create", =>
-            @rootscope.$broadcast("history:reload")
+            @rootscope.$broadcast("object:updated")
             @analytics.trackEvent("attachment", "create", "create attachment on issue", 1)
 
         @scope.$on "attachment:edit", =>
-            @rootscope.$broadcast("history:reload")
+            @rootscope.$broadcast("object:updated")
 
         @scope.$on "attachment:delete", =>
-            @rootscope.$broadcast("history:reload")
+            @rootscope.$broadcast("object:updated")
 
         @scope.$on "promote-issue-to-us:success", =>
             @analytics.trackEvent("issue", "promoteToUserstory", "promote issue to userstory", 1)
-            @rootscope.$broadcast("history:reload")
+            @rootscope.$broadcast("object:updated")
             @.loadIssue()
 
         @scope.$on "custom-attributes-values:edit", =>
-            @rootscope.$broadcast("history:reload")
+            @rootscope.$broadcast("object:updated")
 
     initializeOnDeleteGoToUrl: ->
        ctx = {project: @scope.project.slug}
@@ -229,7 +240,7 @@ IssueStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $t
             onSuccess = ->
                 $confirm.notify("success")
                 $model.$setViewValue(issue)
-                $rootScope.$broadcast("history:reload")
+                $rootScope.$broadcast("object:updated")
                 $loading.finish($el.find(".level-name"))
             onError = ->
                 $confirm.notify("error")
@@ -313,7 +324,7 @@ IssueTypeButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $tem
             onSuccess = ->
                 $confirm.notify("success")
                 $model.$setViewValue(issue)
-                $rootScope.$broadcast("history:reload")
+                $rootScope.$broadcast("object:updated")
                 $loading.finish($el.find(".level-name"))
 
             onError = ->
@@ -399,7 +410,7 @@ IssueSeverityButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, 
             onSuccess = ->
                 $confirm.notify("success")
                 $model.$setViewValue(issue)
-                $rootScope.$broadcast("history:reload")
+                $rootScope.$broadcast("object:updated")
                 $loading.finish($el.find(".level-name"))
             onError = ->
                 $confirm.notify("error")
@@ -486,7 +497,7 @@ IssuePriorityButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, 
             onSuccess = ->
                 $confirm.notify("success")
                 $model.$setViewValue(issue)
-                $rootScope.$broadcast("history:reload")
+                $rootScope.$broadcast("object:updated")
                 $loading.finish($el.find(".level-name"))
             onError = ->
                 $confirm.notify("error")

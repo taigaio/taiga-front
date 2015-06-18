@@ -130,10 +130,6 @@
         &:last-child {
             border-bottom: 0;
         }
-        &.sortable-placeholder {
-            background: $whitish;
-            height: 40px;
-        }
         &.ui-sortable-helper {
             background: lighten($green-taiga, 60%);
             box-shadow: 1px 1px 10px rgba($black, .1);
@@ -146,11 +142,17 @@
             }
         }
     }
+    .sortable-placeholder {
+        background: $whitish;
+        height: 40px;
+        width: 100%;
+    }
     .row-selected {
         background: lighten($green-taiga, 60%);
         transition: background .2s ease-in;
     }
     .user-story-name {
+        align-items: center;
         display: flex;
         flex-wrap: nowrap;
         input {

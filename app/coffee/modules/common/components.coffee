@@ -220,7 +220,7 @@ WatchersDirective = ($rootscope, $confirm, $repo, $qqueue, $template, $compile, 
                 $confirm.notify("success")
                 watchers = _.map(watchers, (watcherId) -> $scope.usersById[watcherId])
                 renderWatchers(watchers)
-                $rootscope.$broadcast("history:reload")
+                $rootscope.$broadcast("object:updated")
 
             promise.then null, ->
                 $model.$modelValue.revert()
@@ -235,7 +235,7 @@ WatchersDirective = ($rootscope, $confirm, $repo, $qqueue, $template, $compile, 
                 $confirm.notify("success")
                 watchers = _.map(item.watchers, (watcherId) -> $scope.usersById[watcherId])
                 renderWatchers(watchers)
-                $rootscope.$broadcast("history:reload")
+                $rootscope.$broadcast("object:updated")
             promise.then null, ->
                 item.revert()
                 $confirm.notify("error")
@@ -321,7 +321,7 @@ AssignedToDirective = ($rootscope, $confirm, $repo, $loading, $qqueue, $template
                 $loading.finish($el)
                 $confirm.notify("success")
                 renderAssignedTo($model.$modelValue)
-                $rootscope.$broadcast("history:reload")
+                $rootscope.$broadcast("object:updated")
             promise.then null, ->
                 $model.$modelValue.revert()
                 $confirm.notify("error")
@@ -474,6 +474,10 @@ EditableSubjectDirective = ($rootscope, $repo, $confirm, $loading, $qqueue, $tem
 
     link = ($scope, $el, $attrs, $model) ->
 
+        $scope.$on "object:updated", () ->
+            $el.find('.edit-subject').hide()
+            $el.find('.view-subject').show()
+
         isEditable = ->
             return $scope.project.my_permissions.indexOf($attrs.requiredPerm) != -1
 
@@ -485,7 +489,7 @@ EditableSubjectDirective = ($rootscope, $repo, $confirm, $loading, $qqueue, $tem
             promise = $repo.save($model.$modelValue)
             promise.then ->
                 $confirm.notify("success")
-                $rootscope.$broadcast("history:reload")
+                $rootscope.$broadcast("object:updated")
                 $el.find('.edit-subject').hide()
                 $el.find('.view-subject').show()
             promise.then null, ->
@@ -501,7 +505,9 @@ EditableSubjectDirective = ($rootscope, $repo, $confirm, $loading, $qqueue, $tem
             $el.find('.view-subject').hide()
             $el.find('input').focus()
 
-        $el.on "click", ".save", ->
+        $el.on "click", ".save", (e) ->
+            e.preventDefault()
+
             subject = $scope.item.subject
             save(subject)
 
@@ -553,6 +559,10 @@ EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading,
         $el.find('.edit-description').hide()
         $el.find('.view-description .edit').hide()
 
+        $scope.$on "object:updated", () ->
+            $el.find('.edit-description').hide()
+            $el.find('.view-description').show()
+
         isEditable = ->
             return $scope.project.my_permissions.indexOf($attrs.requiredPerm) != -1
 
@@ -563,7 +573,7 @@ EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading,
             promise = $repo.save($model.$modelValue)
             promise.then ->
                 $confirm.notify("success")
-                $rootscope.$broadcast("history:reload")
+                $rootscope.$broadcast("object:updated")
                 $el.find('.edit-description').hide()
                 $el.find('.view-description').show()
             promise.then null, ->
@@ -782,9 +792,7 @@ module.directive("tgProgressBar", ["$tgTemplate", TgProgressBarDirective])
 TgMainTitleDirective = ($translate) ->
     link = ($scope, $el, $attrs) ->
         $attrs.$observe "i18nSectionName", (i18nSectionName) ->
-            trans = $translate(i18nSectionName)
-            trans.then (sectionName) -> $scope.sectionName = sectionName
-            trans.catch (sectionName) -> $scope.sectionName = sectionName
+            $scope.sectionName = $translate.instant(i18nSectionName)
 
         $scope.$on "$destroy", ->
             $el.off()

@@ -26,7 +26,7 @@ debounce = @.taiga.debounce
 
 module = angular.module("taigaProject")
 
-CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $projectUrl, $loading, lightboxService, $cacheFactory, $translate) ->
+CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $projectUrl, $loading, lightboxService, $cacheFactory, $translate, currentUserService) ->
     link = ($scope, $el, attrs) ->
         $scope.data = {}
         $scope.templates = []
@@ -46,6 +46,7 @@ CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $project
 
             $location.url($projectUrl.get(response))
             lightboxService.close($el)
+            currentUserService._loadProjects()
 
         onErrorSubmit = (response) ->
             $loading.finish(submitButton)
@@ -69,7 +70,7 @@ CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $project
             promise = $repo.create("projects", $scope.data)
             promise.then(onSuccessSubmit, onErrorSubmit)
 
-        $scope.$on "projects:create", ->
+        openLightbox = ->
             $scope.data = {
                 total_story_points: 100
                 total_milestones: 5
@@ -125,17 +126,30 @@ CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $project
             event.preventDefault()
             lightboxService.close($el)
 
-    return {link:link}
+        $scope.$on "$destroy", ->
+            $el.off()
 
-module.directive("tgLbCreateProject", ["$rootScope", "$tgRepo", "$tgConfirm", "$location", "$tgNavUrls",
-                                       "$tgResources", "$projectUrl", "$tgLoading", "lightboxService", "$cacheFactory", "$translate", CreateProject])
+        openLightbox()
+
+    directive = {
+        link: link,
+        templateUrl: "project/wizard-create-project.html"
+        scope: {}
+    }
+
+    return directive
+
+
+module.directive("tgLbCreateProject", ["$rootScope", "$tgRepo", "$tgConfirm",
+    "$location", "$tgNavUrls", "$tgResources", "$projectUrl", "$tgLoading",
+    "lightboxService", "$cacheFactory", "$translate", "tgCurrentUserService", CreateProject])
 
 
 #############################################################################
 ## Delete Project Lightbox Directive
 #############################################################################
 
-DeleteProjectDirective = ($repo, $rootscope, $auth, $location, $navUrls, $confirm, lightboxService, tgLoader) ->
+DeleteProjectDirective = ($repo, $rootscope, $auth, $location, $navUrls, $confirm, lightboxService, tgLoader, currentUserService) ->
     link = ($scope, $el, $attrs) ->
         projectToDelete = null
         $scope.$on "deletelightbox:new", (ctx, project)->
@@ -156,6 +170,7 @@ DeleteProjectDirective = ($repo, $rootscope, $auth, $location, $navUrls, $confir
                 $rootscope.$broadcast("projects:reload")
                 $location.path($navUrls.resolve("home"))
                 $confirm.notify("success")
+                currentUserService._loadProjects()
 
             # FIXME: error handling?
             promise.then null, ->
@@ -173,4 +188,4 @@ DeleteProjectDirective = ($repo, $rootscope, $auth, $location, $navUrls, $confir
     return {link:link}
 
 module.directive("tgLbDeleteProject", ["$tgRepo", "$rootScope", "$tgAuth", "$tgLocation", "$tgNavUrls",
-                                       "$tgConfirm", "lightboxService", "tgLoader", DeleteProjectDirective])
+                                       "$tgConfirm", "lightboxService", "tgLoader", "tgCurrentUserService", DeleteProjectDirective])

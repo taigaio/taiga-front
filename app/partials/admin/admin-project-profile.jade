@@ -2,7 +2,9 @@ doctype html
 
 div.wrapper(tg-project-profile, ng-controller="ProjectProfileController as ctrl",
             ng-init="section='admin'; sectionName='ADMIN.PROJECT_PROFILE.PROJECT_DETAILS'")
-    sidebar.menu-secondary.sidebar(tg-admin-navigation="project-profile")
+    tg-project-menu
+
+    sidebar.menu-secondary.sidebar.settings-nav(tg-admin-navigation="project-profile")
         include ../includes/modules/admin-menu
 
     sidebar.menu-tertiary.sidebar(tg-admin-navigation="details")
@@ -19,11 +21,6 @@ div.wrapper(tg-project-profile, ng-controller="ProjectProfileController as ctrl"
                       ng-model="project.name", data-required="true", maxlength="45")
 
             fieldset
-                label(for="project-slug", translate="ADMIN.PROJECT_PROFILE.PROJECT_SLUG")
-                input(type="text", name="slug", placeholder="{{'ADMIN.PROJECT_PROFILE.PROJECT_SLUG' | translate}}", id="project-slug",
-                      ng-model="project.slug", data-required="true")
-
-            fieldset
                 label(for="project-sprints", translate="ADMIN.PROJECT_PROFILE.NUMBER_SPRINTS")
                 input(type="number", name="total_milestones", min="0", placeholder="{{'ADMIN.PROJECT_PROFILE.NUMBER_SPRINTS' | translate}}",
                       id="project-sprints", ng-model="project.total_milestones", data-type="digits")
@@ -36,7 +33,7 @@ div.wrapper(tg-project-profile, ng-controller="ProjectProfileController as ctrl"
 
             fieldset
                 label(for="tags", translate="ADMIN.PROJECT_PROFILE.TAGS")
-                div.tags-block(tg-lb-tag-line, ng-model="project.tags")
+                div.tags-block(ng-if="project.id", tg-lb-tag-line, ng-model="project.tags")
 
             fieldset
                 label(for="project-description", translate="ADMIN.PROJECT_PROFILE.DESCRIPTION")

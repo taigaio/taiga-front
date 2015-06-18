@@ -2,22 +2,23 @@ doctype html
 html(lang="en")
     head
         meta(charset="utf-8")
-        title Taiga
         meta(http-equiv="content-type", content="text/html; charset=utf-8")
-        meta(name="description", content="Taiga Landing page")
-        meta(name="keywords", content="Agile, Taiga, Management, Github")
+        meta(name="fragment", content="!")
+
+        // Main meta
+        title Taiga
+        meta(name="description", content="Taiga is a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable.")
+        meta(name="keywords", content="agile, scrum, taiga, management, project, developer, designer, user experience")
         //-meta(name="viewport", content="width=device-width, user-scalable=no")
         link(rel="stylesheet", href="/styles/main.css")
         link(rel="icon", type="image/png", href="/images/favicon.png")
 
+        //- PRERENDER SERVICE: This is to know when the page is completely loaded.
+        script(type='text/javascript').
+            window.prerenderReady = false;
 
     body(tg-main)
-        include partials/includes/modules/projects-nav
-
-        //- the content of nav.menu is in coffe.modules.base TaigaMain directive
-        nav.menu.hidden(tg-project-menu)
-
-        include partials/includes/components/notification-message
+        div(tg-navigation-bar)
 
         div.master(ng-view)
 
@@ -31,12 +32,10 @@ html(lang="en")
             include partials/includes/modules/lightbox-generic-error
         div.lightbox.lightbox-generic-loading
             include partials/includes/modules/lightbox-generic-loading
-        div.lightbox.lightbox-search(tg-search-box)
-            include partials/includes/modules/lightbox-search
-        div.lightbox.lightbox-feedback.lightbox-generic-form(tg-lb-feedback)
-            include partials/includes/modules/lightbox-feedback
 
         include partials/includes/modules/loader
+
+        include partials/includes/components/notification-message
 
         script(src="/js/libs.js?v=#{v}")
         script(src="/js/templates.js?v=#{v}")

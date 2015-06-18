@@ -2,7 +2,7 @@
 
 // Font face
 
-@each $font-face in OpenSans-CondLight, opensans-regular, opensans-semibold, taiga {
+@each $font-face in OpenSans-CondLight, OpenSans-Light, opensans-regular, opensans-semibold, taiga {
     @font-face {
         font-family: '#{$font-face}';
         src: url('../fonts/#{$font-face}.eot?#iefix') format('embedded-opentype'),
@@ -29,12 +29,11 @@ h6 {
 h1 {
     @extend %xxlarge;
     @extend %title;
-    line-height: 3.4rem;
+    line-height: 1.5;
     margin-bottom: 1rem;
     text-transform: uppercase;
     span {
         @extend %xxlarge;
-        line-height: 3.4rem;
         margin-right: .5rem;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -65,10 +64,12 @@ h1 {
 h2 {
     @extend %xlarge;
     @extend %title;
+    line-height: 1.2;
     margin-bottom: 1rem;
 }
 
 p {
+    line-height: 1.5;
     margin: 0 0 20px;
     img {
         margin: 0;
@@ -198,17 +199,11 @@ a:visited {
 .icon-move:before {
     content: 'w';
 }
-.icon-drag-h:before {
-    content: 'x';
-}
 .icon-drag-v:before {
     content: 'y';
 }
 .icon-filter:before {
     content: 'z';
-}
-.icon-github:before {
-    content: 'A';
 }
 .icon-help:before {
     content: 'B';
@@ -224,9 +219,6 @@ a:visited {
 }
 .icon-floppy:before {
     content: 'F';
-}
-.icon-idea:before {
-    content: 'G';
 }
 .icon-warning-alt:before {
     content: 'H';
@@ -255,9 +247,6 @@ a:visited {
 .icon-team:before {
     content: 'T';
 }
-.icon-spinner:before {
-    content: 'J';
-}
 .icon-vfold:before {
     content: 'N';
 }
@@ -284,4 +273,19 @@ a:visited {
 }
 .icon-upload:before {
     content: 'Z';
+}
+.icon-github:before {
+    content: 'A';
+}
+.icon-timeline:before {
+    content: 'x';
+}
+.icon-project:before {
+    content: 'G';
+}
+.icon-star-fill:before {
+    content: 'J';
+}
+.icon-star:before {
+    content: '0';
 }

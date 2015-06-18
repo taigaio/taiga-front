@@ -1,0 +1,42 @@
+section.profile-contacts
+    div(ng-if="vm.contacts === undefined")
+        div.spin
+            img(src="/svg/spinner-circle.svg", alt="Loading...")
+
+    div.empty-tab(ng-if="vm.contacts && !vm.contacts.size")
+        include ../../../svg/hide.svg
+
+        div(ng-if="!vm.isCurrentUser")
+            p(translate="USER.PROFILE.CONTACTS_EMPTY", translate-values="{username: vm.user.get('full_name_display')}")
+        div(ng-if="vm.isCurrentUser")
+            p(translate="USER.PROFILE.CURRENT_USER_CONTACTS_EMPTY")
+            p(translate="USER.PROFILE.CURRENT_USER_CONTACTS_EMPTY_EXPLAIN")
+
+    // nav.profile-contact-filters
+    //     a.active(href="", title="No Filter") all
+    //     a(href="", title="Only show your team") team
+    //     a(href="", title="Only show people you follow") following
+    //     a(href="", title="Only show people follow you") followers
+
+    div.profile-contact-single(tg-repeat="contact in ::vm.contacts")
+            div.profile-contact-picture
+                a(tg-nav="user-profile:username=contact.get('username')", title="{{::contact.get('name') }}")
+                    img(ng-src="{{::contact.get('photo')}}", alt="{{::contact.get('full_name')}}")
+
+            div.profile-contact-data
+                h1
+                    a(tg-nav="user-profile:username=contact.get('username')", title="{{::contact.get('full_name_display') }}")
+                        | {{::contact.get('full_name_display')}}
+
+                p(ng-if="contact.bio") {{::contact.get('bio')}}
+
+                div.extra-info
+                    span.position {{::contact.get('roles').join(", ")}}
+                // span.location todo
+        // div.profile-project-stats
+        //     div.stat-projects(title="2 projects")
+        //         span.icon.icon-project
+        //         span.stat-num 2
+        //     div.stat-viewer(title="2 followers")
+        //         span.icon.icon-open-eye
+        //         span.stat-num 4

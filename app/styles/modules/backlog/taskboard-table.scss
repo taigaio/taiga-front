@@ -50,6 +50,11 @@ $column-margin: 0 10px 0 0;
     height: 100%;
     overflow: hidden;
     width: 100%;
+    .taskboard-task {
+        &.readonly {
+            cursor: auto;
+        }
+    }
 }
 
 .taskboard-table-header {

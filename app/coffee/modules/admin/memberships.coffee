@@ -43,11 +43,12 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
         "$tgLocation",
         "$tgNavUrls",
         "$tgAnalytics",
-        "$appTitle"
+        "tgAppMetaService",
+        "$translate"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q,
-                  @location, @navUrls, @analytics, @appTitle) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls, @analytics,
+                  @appMetaService, @translate) ->
         bindMethods(@)
 
         @scope.project = {}
@@ -56,7 +57,9 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
         promise = @.loadInitialData()
 
         promise.then  =>
-            @appTitle.set("Membership - " + @scope.project.name)
+           title = @translate.instant("ADMIN.MEMBERSHIPS.PAGE_TITLE", {projectName:  @scope.project.name})
+           description = @scope.project.description
+           @appMetaService.setAll(title, description)
 
         promise.then null, @.onInitialDataError.bind(@)
 
@@ -65,10 +68,11 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
             @analytics.trackEvent("membership", "create", "create memberships on admin", 1)
 
     loadProject: ->
-        return @rs.projects.get(@scope.projectId).then (project) =>
+        return @rs.projects.getBySlug(@params.pslug).then (project) =>
             if not project.i_am_owner
                 @location.path(@navUrls.resolve("permission-denied"))
 
+            @scope.projectId = project.id
             @scope.project = project
             @scope.$emit('project:loaded', project)
             return project
@@ -76,20 +80,20 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
     loadMembers: ->
         httpFilters = @.getUrlFilters()
         return @rs.memberships.list(@scope.projectId, httpFilters).then (data) =>
-            @scope.memberships = _.filter(data.models, (membership) -> membership.user == null or membership.is_user_active)
+            @scope.memberships = _.filter(data.models, (membership) ->
+                                    membership.user == null or membership.is_user_active)
             @scope.page = data.current
             @scope.count = data.count
             @scope.paginatedBy = data.paginatedBy
             return data
 
     loadInitialData: ->
-        promise = @repo.resolve({pslug: @params.pslug}).then (data) =>
-            @scope.projectId = data.project
-            return data
+        promise = @.loadProject()
+        promise.then =>
+            @.loadUsersAndRoles()
+            @.loadMembers()
 
-        return promise.then(=> @.loadProject())
-                      .then(=> @.loadUsersAndRoles())
-                      .then(=> @.loadMembers())
+        return promise
 
     getUrlFilters: ->
         filters = _.pick(@location.search(), "page")
@@ -377,7 +381,9 @@ MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm, $compile, $transla
         $el.on "click", ".pending", (event) ->
             event.preventDefault()
             onSuccess = ->
-                text = $translate.instant("ADMIN.MEMBERSHIP.SUCCESS_SEND_INVITATION", {email: $scope.member.email})
+                text = $translate.instant("ADMIN.MEMBERSHIP.SUCCESS_SEND_INVITATION", {
+                    email: $scope.member.email
+                })
                 $confirm.notify("success", text)
             onError = ->
                 text = $translate.instant("ADMIM.MEMBERSHIP.ERROR_SEND_INVITATION")
@@ -414,4 +420,5 @@ MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm, $compile, $transla
     return {link: link}
 
 
-module.directive("tgMembershipsRowActions", ["$log", "$tgRepo", "$tgResources", "$tgConfirm", "$compile", "$translate", MembershipsRowActionsDirective])
+module.directive("tgMembershipsRowActions", ["$log", "$tgRepo", "$tgResources", "$tgConfirm", "$compile",
+                                             "$translate", MembershipsRowActionsDirective])

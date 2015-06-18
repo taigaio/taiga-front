@@ -194,6 +194,21 @@ class RepositoryService extends taiga.Service
             result.paginatedBy = parseInt(headers["x-paginated-by"], 10)
             return result
 
+    queryOnePaginatedRaw: (name, id, params, options={}) ->
+        url = @urls.resolve(name)
+        url = "#{url}/#{id}" if id
+        httpOptions = _.merge({headers: {}}, options)
+
+        return @http.get(url, params, httpOptions).then (data) =>
+            headers = data.headers()
+            result = {}
+            result.data = data.data
+            result.count = parseInt(headers["x-pagination-count"], 10)
+            result.current = parseInt(headers["x-pagination-current"] or 1, 10)
+            result.paginatedBy = parseInt(headers["x-paginated-by"], 10)
+
+            return result
+
     resolve: (options) ->
         params = {}
         params.project = options.pslug if options.pslug?

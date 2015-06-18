@@ -276,8 +276,9 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $c
                     deleteCommentUser: comment.delete_comment_user.name
                     deleteComment: comment.comment_html
                     activityId: comment.id
-                    canRestoreComment: (comment.delete_comment_user.pk == $scope.user.id or
-                                        $scope.project.my_permissions.indexOf("modify_project") > -1)
+                    canRestoreComment: ($scope.user and
+                                        (comment.delete_comment_user.pk == $scope.user.id or
+                                        $scope.project.my_permissions.indexOf("modify_project") > -1))
                 })
 
                 html = $compile(html)($scope)
@@ -371,15 +372,14 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $c
         $scope.$watch("comments", renderComments)
         $scope.$watch("history",  renderActivity)
 
-        $scope.$on("history:reload", -> $ctrl.loadHistory(type, objectId))
+        $scope.$on("object:updated", -> $ctrl.loadHistory(type, objectId))
 
         # Events
 
-        $el.on "click", ".add-comment a.button-green", debounce 2000, (event) ->
+        $el.on "click", ".add-comment input.button-green", debounce 2000, (event) ->
             event.preventDefault()
 
             target = angular.element(event.currentTarget)
-
             save(target)
 
         $el.on "click", ".show-more", (event) ->

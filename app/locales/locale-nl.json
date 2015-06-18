@@ -1,0 +1,1251 @@
+{
+    "COMMON": {
+        "YES": "Ja",
+        "NO": "Nee",
+        "LOADING": "Aan het laden...",
+        "LOADING_PROJECT": "Project laden...",
+        "DATE": "DD MMM YYYY",
+        "DATETIME": "DD MMM YYYY HH:mm",
+        "SAVE": "Bewaar",
+        "CANCEL": "Annuleren",
+        "ACCEPT": "Accepteren",
+        "DELETE": "Verwijder",
+        "CREATE": "Aanmaken",
+        "ADD": "Toevoegen",
+        "COPY_TO_CLIPBOARD": "Kopieër naar klembord: Ctrl+C",
+        "EDIT": "Bewerk",
+        "DRAG": "Sleep",
+        "TAG_LINE": "Jouw agile, gratis en open source project management tool",
+        "TAG_LINE_2": "HOU VAN JE PROJECT",
+        "BLOCK": "Blokkeer",
+        "UNBLOCK": "Deblokkeer",
+        "BLOCKED": "Geblokkeerd",
+        "CREATED_BY": "Aangemaakt door {{fullDisplayName}}",
+        "FROM": "van",
+        "TO": "aan",
+        "CLOSE": "sluiten",
+        "BLOCKED_NOTE": "Waarom is deze user story geblokkeerd?",
+        "BLOCKED_REASON": "Gelieve de reden uit te leggen",
+        "GO_HOME": "Neem me naar de homepage",
+        "PLUGINS": "Plugins",
+        "BETA": "We zijn in beta!",
+        "ONE_ITEM_LINE": "Eén item per regel...",
+        "NEW_BULK": "Nieuwe bulk toevoeging",
+        "RELATED_TASKS": "Gerelateerde taken",
+        "LOGOUT": "Afmelden",
+        "EXTERNAL_USER": "een extern gebruiker",
+        "GENERIC_ERROR": "Een van onze Oempa Loempa's zegt {{error}}.",
+        "IOCAINE_TEXT": "Voel je je wat overweldigd door een taak? Zorg ervoor dat anderen dit weten door op Iocaine te klikken bij het wijzigen van een taak. Je kan stapsgewijs immuun worden tegen dit (fictioneel) dodelijk gif door kleine dosissen op te nemen. Net zoals je beter kan worden in wat je doet door af en toe een extra uitdaging aan te gaan!",
+        "FORM_ERRORS": {
+            "DEFAULT_MESSAGE": "Deze waarde lijkt ongeldig te zijn",
+            "TYPE_EMAIL": "Deze waarde moet een geldig emailadres bevatten",
+            "TYPE_URL": "Deze waarde moet een geldige url bevatten",
+            "TYPE_URLSTRICT": "Deze waarde moet een geldige url bevatten",
+            "TYPE_NUMBER": "Deze waarde moet een geldig nummer bevatten",
+            "TYPE_DIGITS": "Deze waarde moet alleen cijfers bevatten.",
+            "TYPE_DATEISO": "Deze waarde moet een geldige datum zijn (YYYY-MM-DD).",
+            "TYPE_ALPHANUM": "Deze waarde moet alfanumeriek zijn",
+            "TYPE_PHONE": "Deze waarde moet een geldig telefoonnummer bevatten",
+            "NOTNULL": "Deze waarde zou niet null moeten zijn",
+            "NOT_BLANK": "Deze waarde zou niet leeg moeten zijn",
+            "REQUIRED": "Dit veld is verplicht.",
+            "REGEXP": "Deze waarde lijkt ongeldig te zijn",
+            "MIN": "Deze waarde zou groter of gelijk aan %s moeten zijn.",
+            "MAX": "Deze waarde zou lager of gelijk aan %s moeten zijn.",
+            "RANGE": "Deze waarde zou tussen %s en %s moeten zijn.",
+            "MIN_LENGTH": "Deze waarde is te kort. Hij zou %s tekens of meer moeten bevatten.",
+            "MAX_LENGTH": "Deze waarde is te lang. Hij zou %s tekens of minder moeten bevatten.",
+            "RANGE_LENGTH": "Deze lengte is ongeldig. Hij zou tussen de %s en %s tekens lang moeten zijn.",
+            "MIN_CHECK": "Je moet minstens %s opties selecteren.",
+            "MAX_CHECK": "Je moet %s keuzes of minder selecteren.",
+            "RANGE_CHECK": "Je moet tussen %s en %s keuzes selecteren.",
+            "EQUAL_TO": "Deze waarde zou hetzelfde moeten zijn."
+        },
+        "PICKERDATE": {
+            "FORMAT": "DD MMM YYYY",
+            "IS_RTL": "onwaar",
+            "FIRST_DAY_OF_WEEK": "1",
+            "PREV_MONTH": "Vorige maand",
+            "NEXT_MONTH": "Volgende maand",
+            "MONTHS": {
+                "JAN": "Januari",
+                "FEB": "Februari",
+                "MAR": "Maart",
+                "APR": "April",
+                "MAY": "Mei",
+                "JUN": "Julli",
+                "JUL": "Jullie",
+                "AUG": "Augustus",
+                "SEP": "September",
+                "OCT": "Oktober",
+                "NOV": "November",
+                "DEC": "December"
+            },
+            "WEEK_DAYS": {
+                "SUN": "Zondag",
+                "MON": "Maandag",
+                "TUE": "Dinsdag",
+                "WED": "Woensdag",
+                "THU": "Donderdag",
+                "FRI": "Vrijdag",
+                "SAT": "Zaterdag"
+            },
+            "WEEK_DAYS_SHORT": {
+                "SUN": "Zon",
+                "MON": "Maa",
+                "TUE": "Din",
+                "WED": "Woens",
+                "THU": "Don",
+                "FRI": "Vrij",
+                "SAT": "Zat"
+            }
+        },
+        "SEE_USER_PROFILE": "Bekijk het profiel van {{username}}",
+        "USER_STORY": "User story",
+        "TASK": "Taak",
+        "ISSUE": "Issue",
+        "TAGS": {
+            "PLACEHOLDER": "Ik ben 'm! Tag me...",
+            "DELETE": "Verwijder tag",
+            "ADD": "Tag tovoegen"
+        },
+        "DESCRIPTION": {
+            "EMPTY": "Lege ruimte is zo saai... vooruit, wees beschrijflijk...",
+            "NO_DESCRIPTION": "Nog geen beschrijving"
+        },
+        "FIELDS": {
+            "SUBJECT": "Onderwerp",
+            "NAME": "Naam",
+            "URL": "URL",
+            "DESCRIPTION": "Beschrijving",
+            "VALUE": "Waarde",
+            "SLUG": "Slug",
+            "COLOR": "Kleur",
+            "IS_CLOSED": "Is gesloten?",
+            "STATUS": "Status",
+            "TYPE": "Type",
+            "SEVERITY": "Ernst",
+            "PRIORITY": "Prioriteit",
+            "ASSIGNED_TO": "Toegewezen aan",
+            "POINTS": "Punten",
+            "BLOCKED_NOTE": "geblokkeerde notitie",
+            "IS_BLOCKED": "is geblokkeerd",
+            "REF": "Ref"
+        },
+        "ROLES": {
+            "ALL": "Alles"
+        },
+        "ASSIGNED_TO": {
+            "NOT_ASSIGNED": "Niet toegewezen",
+            "DELETE_ASSIGNMENT": "Toewijzing verwijderen",
+            "REMOVE_ASSIGNED": "Verwijder toegewezene",
+            "TOO_MANY": "...te veel gebruikers, blijf filteren",
+            "CONFIRM_UNASSIGNED": "Weet je zeker dat je deze niet wilt toewijzen?",
+            "TITLE_ACTION_EDIT_ASSIGNMENT": "Toewijzing bewerken"
+        },
+        "STATUS": {
+            "CLOSED": "Gesloten",
+            "OPEN": "Open"
+        },
+        "WATCHERS": {
+            "ADD": "Waarnemer toevoegen",
+            "TITLE": "waarnemers",
+            "DELETE": "Verwijder waarnemer",
+            "TITLE_LIGHTBOX_DELETE_WARTCHER": "Verwijder waarnemer..."
+        },
+        "CUSTOM_ATTRIBUTES": {
+            "CUSTOM_FIELDS": "Eigen velden",
+            "SAVE": "Eigen velden opslaan",
+            "EDIT": "Eigen velden bewerken",
+            "DELETE": "Verwijder eigen attribuut",
+            "CONFIRM_DELETE": "Hou er rekening mee dat alle waarden in dit aangepast veld verwijderd zullen worden. </br> Ben je zeker dat je ermee door wil gaan?"
+        },
+        "FILTERS": {
+            "TITLE": "filters",
+            "INPUT_PLACEHOLDER": "Onderwerp of referentie",
+            "TITLE_ACTION_FILTER_BUTTON": "zoek",
+            "BREADCRUMB_TITLE": "terug naar categorieën",
+            "BREADCRUMB_FILTERS": "Filters",
+            "BREADCRUMB_STATUS": "status"
+        },
+        "WYSIWYG": {
+            "H1_BUTTON": "Eerste niveau heading",
+            "H1_SAMPLE_TEXT": "Jouw titel hier...",
+            "H2_BUTTON": "Kop tweede niveau",
+            "H2_SAMPLE_TEXT": "Jouw titel hier...",
+            "H3_BUTTON": "Kop derde nivea",
+            "H3_SAMPLE_TEXT": "Jouw titel hier...",
+            "BOLD_BUTTON": "Vet",
+            "BOLD_BUTTON_SAMPLE_TEXT": "Je tekst hier...",
+            "ITALIC_BUTTON": "Cursief",
+            "ITALIC_SAMPLE_TEXT": "Je tekst hier...",
+            "STRIKE_BUTTON": "Doorstreep",
+            "STRIKE_SAMPLE_TEXT": "Je tekst hier...",
+            "BULLETED_LIST_BUTTON": "Lijst met opsommingstekens",
+            "BULLETED_LIST_SAMPLE_TEXT": "Je tekst hier...",
+            "NUMERIC_LIST_BUTTON": "Nummerieke lijst",
+            "NUMERIC_LIST_SAMPLE_TEXT": "Je tekst hier...",
+            "PICTURE_BUTTON": "Foto",
+            "PICTURE_SAMPLE_TEXT": "Je alternatieve tekst voor afbeelding hier...",
+            "LINK_BUTTON": "Link",
+            "LINK_SAMPLE_TEXT": "Je tekst om te linken hier...",
+            "QUOTE_BLOCK_BUTTON": "Blokquote",
+            "QUOTE_BLOCK_SAMPLE_TEXT": "Je tekst hier...",
+            "CODE_BLOCK_BUTTON": "Code blok",
+            "CODE_BLOCK_SAMPLE_TEXT": "Je tekst hier...",
+            "PREVIEW_BUTTON": "Voorbeeld",
+            "EDIT_BUTTON": "Bewerk",
+            "MARKDOWN_HELP": "Markdown syntax help"
+        },
+        "PERMISIONS_CATEGORIES": {
+            "SPRINTS": {
+                "NAME": "Sprints",
+                "VIEW_SPRINTS": "Sprints bekijken",
+                "ADD_SPRINTS": "Sprints toevoegen",
+                "MODIFY_SPRINTS": "Sprints bewerken",
+                "DELETE_SPRINTS": "Sprints verwijderen"
+            },
+            "USER_STORIES": {
+                "NAME": "User Stories",
+                "VIEW_USER_STORIES": "Bekijk user stories",
+                "ADD_USER_STORIES": "User stories toevoegen",
+                "MODIFY_USER_STORIES": "user stories bewerken",
+                "DELETE_USER_STORIES": "Verwijderd user stories"
+            },
+            "TASKS": {
+                "NAME": "Taak",
+                "VIEW_TASKS": "Bekijk taken",
+                "ADD_TASKS": "Taak toevoegen",
+                "MODIFY_TASKS": "Bewerk taken",
+                "DELETE_TASKS": "Verwijder taken"
+            },
+            "ISSUES": {
+                "NAME": "Issues",
+                "VIEW_ISSUES": "Bekijk issues",
+                "ADD_ISSUES": "Issues toevoegen",
+                "MODIFY_ISSUES": "Bewerk issues",
+                "DELETE_ISSUES": "Issues verwijderen"
+            },
+            "WIKI": {
+                "NAME": "Wiki\n",
+                "VIEW_WIKI_PAGES": "Bekijk wiki pagina's",
+                "ADD_WIKI_PAGES": "Wiki pagina's toevoegen",
+                "MODIFY_WIKI_PAGES": "Bewerk wiki pagina's",
+                "DELETE_WIKI_PAGES": "Verwijder wiki pagina's",
+                "VIEW_WIKI_LINKS": "Wiki links bekijken",
+                "ADD_WIKI_LINKS": "Wiki links toevoegen",
+                "DELETE_WIKI_LINKS": "Verwijder wiki links"
+            }
+        },
+        "META": {
+            "PAGE_TITLE": "Taiga",
+            "PAGE_DESCRIPTION": "Taiga is een project management platform voor startups en agile ontwikkelaars & designers die een simpele, mooie tool willen om werken echt leuk te maken."
+        }
+    },
+    "LOGIN": {
+        "PAGE_TITLE": "Login - Taiga",
+        "PAGE_DESCRIPTION": "Inloggen op Taiga, een project management platform voor startups en agile ontwikkelaars & designers die een simpele, mooie tool willen om werken echt leuk te maken."
+    },
+    "AUTH": {
+        "INVITED_YOU": "Heeft je uitgenodigd voor het project",
+        "NOT_REGISTERED_YET": "Nog niet geregistreerd?",
+        "REGISTER": "Registreer",
+        "CREATE_ACCOUNT": "maak hier je gratis account aan"
+    },
+    "LOGIN_COMMON": {
+        "HEADER": "Ik heb al een Taiga login",
+        "PLACEHOLDER_AUTH_NAME": "Gebruikersnaam of email (case sensitive)",
+        "LINK_FORGOT_PASSWORD": "Vergeten?",
+        "TITLE_LINK_FORGOT_PASSWORD": "Ben je jouw wachtwoord vergeten?",
+        "ACTION_ENTER": "Enter",
+        "ACTION_SIGN_IN": "Log in",
+        "PLACEHOLDER_AUTH_PASSWORD": "Wachtwoord (hoofdlettergevoelig)"
+    },
+    "LOGIN_FORM": {
+        "ERROR_AUTH_INCORRECT": "Volgens onze Oempa-Loempa's, zijn je gebruikers/email of wachtwoord incorrect.",
+        "SUCCESS": "Onze Oempa-Loempa's zijn blij, welkom bij Taiga."
+    },
+    "REGISTER": {
+        "PAGE_TITLE": "Registreer - Taiga",
+        "PAGE_DESCRIPTION": "Maak je account op Taiga, een project management platform voor startups en agile ontwikkelaars & designers die een simpele, mooie tool willen om werken echt leuk te maken."
+    },
+    "REGISTER_FORM": {
+        "TITLE": "Registreer een nieuw Taiga account (gratis)",
+        "PLACEHOLDER_NAME": "Kies een gebruikersnaam (hoofdlettergevoelig)",
+        "PLACEHOLDER_FULL_NAME": "Kies je volledige naam",
+        "PLACEHOLDER_EMAIL": "Jouw e-mail",
+        "PLACEHOLDER_PASSWORD": "Kies een wachtwoord (hoofdlettergevoelig)",
+        "ACTION_SIGN_UP": "Aanmelden",
+        "TITLE_LINK_LOGIN": "Inloggen",
+        "LINK_LOGIN": "Ben je al geregistreerd? Log in"
+    },
+    "FORGOT_PASSWORD": {
+        "PAGE_TITLE": "Wachtwoord vergeten - Taiga",
+        "PAGE_DESCRIPTION": "Geef je gebruikersnaam of e-mail in om een nieuw wachtwoord te krijgen. Zo heb je weer toegang tot Taiga."
+    },
+    "FORGOT_PASSWORD_FORM": {
+        "TITLE": "Oeps, ben je je wachtwoord vergeten?",
+        "SUBTITLE": "Voer je gebruikersnaam of email in om een nieuwe te ontvangen",
+        "PLACEHOLDER_FIELD": "Gebruikersnaam of e-mail",
+        "ACTION_RESET_PASSWORD": "Wachtwoord resetten",
+        "LINK_CANCEL": "Nah, stuur me terug. I denk dat ik het zal onthouden.",
+        "SUCCESS": "<strong>Controleer je inbox!</strong><br />We hebben je een email gestuurd met instructie om een nieuw wachtwoord aan te maken",
+        "ERROR": "Volgens onze Oempa-Loempa's ben je nog niet geregisteerd"
+    },
+    "CHANGE_PASSWORD": {
+        "PAGE_TITLE": "Verander je wachtwoord - Taiga",
+        "PAGE_DESCRIPTION": "Zet een nieuw wachtwoord voor je Taiga account. Hey! Je kan best wat ijzerrijk voedsel eten, dat is goed voor de hersenen :P",
+        "SECTION_NAME": "Wachtwoord wijzigen",
+        "FIELD_CURRENT_PASSWORD": "Huidig wachtwoord",
+        "PLACEHOLDER_CURRENT_PASSWORD": "Je huidige wachtwoord (of leeg als je nog geen wachtwoord hebt)",
+        "FIELD_NEW_PASSWORD": "Nieuw wachtwoord",
+        "PLACEHOLDER_NEW_PASSWORD": "Type een wachtwoord",
+        "FIELD_RETYPE_PASSWORD": "Herhaal nieuwe wachtwoord",
+        "PLACEHOLDER_RETYPE_PASSWORD": "Herhaal nieuw wachtwoord",
+        "ERROR_PASSWORD_MATCH": "De wachtwoorden komen niet overeen"
+    },
+    "CHANGE_PASSWORD_RECOVERY_FORM": {
+        "TITLE": "Maak een nieuwe Taiga pass aan",
+        "SUBTITLE": "En hé, misschien dat je wat ijzer-rijk voedsel kunt eten, het is goed voor je brein :P",
+        "PLACEHOLDER_RECOVER_PASSWORD_TOKEN": "Wachtwoord token herstellen",
+        "LINK_NEED_TOKEN": "Één nodig?",
+        "TITLE_LINK_NEED_TOKEN": "Had je een token nodig om je wachtwoord te recupereren, omdat je het vergeten was?",
+        "PLACEHOLDER_NEW_PASSWORD": "Nieuw wachtwoord",
+        "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Herhaal wachtwoord",
+        "ACTION_RESET_PASSWORD": "Wachtwoord resetten",
+        "SUCCESS": "Onze Oempa-Loempas hebben je nieuwe wachtwoord opgeslagen.<br /> Probeer ermee <strong>in te loggen</strong>."
+    },
+    "INVITATION": {
+        "PAGE_TITLE": "Invitation acceptance - Taiga",
+        "PAGE_DESCRIPTION": "Accept the invitation to join a project in Taiga, a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
+    },
+    "INVITATION_LOGIN_FORM": {
+        "NOT_FOUND": "<strong>Ooeps, we hebben een probleem</strong><br />Onze Oempa-Loempa's kunnen je uitnodiging niet vinden.",
+        "SUCCESS": "Je bent met succes toegetreden tot dit project, Welkom bij {{project_name}}",
+        "ERROR": "Volgens onze Oempa-Loempa's, ben je nog niet geregistreerd of heb je een fout wachtwoord getypt."
+    },
+    "HOME": {
+        "PAGE_TITLE": "Home - Taiga",
+        "PAGE_DESCRIPTION": "The Taiga home page with your main projects and all your assigned and watched user stories, tasks and issues",
+        "EMPTY_WATCHING": "<strong>Volg</strong> de projecten, User Stories, Taken, Issues... waarvan je op de hoogte gehouden wilt worden :)",
+        "EMPTY_PROJECT_LIST": "You don't have any projects yet",
+        "WORKING_ON_SECTION": "Werkt aan",
+        "WATCHING_SECTION": "Volgers"
+    },
+    "PROJECTS": {
+        "PAGE_TITLE": "My projects - Taiga",
+        "PAGE_DESCRIPTION": "A list with all your projects, you can reorder or create a new one.",
+        "MY_PROJECTS": "Mijn projecten"
+    },
+    "ATTACHMENT": {
+        "SECTION_NAME": "bijlagen",
+        "TITLE": "{{ fileName }} toegevoegd op {{ date }}",
+        "DESCRIPTION": "Geef een korte beschrijving",
+        "DEPRECATED": "(verouderd)",
+        "DEPRECATED_FILE": "Verouderd?",
+        "ADD": "Nieuwe bijlage toevoegen. <%- maxFileSizeMsg %>",
+        "MAX_FILE_SIZE": "[Max. grootte:  {{maxFileSize}}]",
+        "SHOW_DEPRECATED": "+ toon verouderde bijlagen",
+        "HIDE_DEPRECATED": "- verberg verouderde bijlagen",
+        "COUNT_DEPRECATED": "({{ counter }} verouderd)",
+        "MAX_UPLOAD_SIZE": "Maximale upload grootte is {{maxFileSize}}",
+        "DATE": "DD MMM YYYY [om] hh:mm",
+        "ERROR_UPLOAD_ATTACHMENT": "We konden '{{fileName}}' niet uploaden. {{errorMessage}}",
+        "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "Verwijder bijlage",
+        "MSG_LIGHTBOX_DELETE_ATTACHMENT": "de bijlage '{{fileName}}'",
+        "ERROR_DELETE_ATTACHMENT": "We zijn er niet in geslaagd om te verwijderen: {{errorMessage}}",
+        "FIELDS": {
+            "IS_DEPRECATED": "is verouderd"
+        }
+    },
+    "PAGINATION": {
+        "PREVIOUS": "Vor",
+        "NEXT": "Volgende"
+    },
+    "ADMIN": {
+        "COMMON": {
+            "TITLE_ACTION_EDIT_VALUE": "Bewerk waarde",
+            "TITLE_ACTION_DELETE_VALUE": "Verwijder waarde"
+        },
+        "HELP": "Help je hulp nodig? Bekijk onze support pagina!",
+        "PROJECT_DEFAULT_VALUES": {
+            "TITLE": "Standaard waardes",
+            "SUBTITLE": "Standaard waardes instellen voor alle invoer selecties."
+        },
+        "MEMBERSHIPS": {
+            "TITLE": "Gebruikers beheren",
+            "PAGE_TITLE": "Memberships - {{projectName}}",
+            "ADD_BUTTON": "+ Nieuwe gebruiker",
+            "ADD_BUTTON_TITLE": "Nieuwe gebruiker toevoegen"
+        },
+        "PROJECT_EXPORT": {
+            "TITLE": "Export",
+            "SUBTITLE": "Exporteer je project om een backup te bewaren of om een nieuwe aan te maken gebaseerd op deze.",
+            "EXPORT_BUTTON": "Export",
+            "EXPORT_BUTTON_TITLE": "Exporteer je project",
+            "LOADING_TITLE": "We zijn bezig met het genereren van je dump bestand",
+            "DUMP_READY": "Je dump bestand is klaar!",
+            "LOADING_MESSAGE": "Gelieve deze pagina niet te sluiten.",
+            "ASYNC_MESSAGE": "We sturen je een email als het klaar is",
+            "SYNC_MESSAGE": "Als de download niet automatisch start, klik dan <a href='{{url}}' download title='Download het dump bestand'>hier</a>.",
+            "ERROR": "Onze Oempa-Loempa's hebben wat problemen bij het genereren van uw dump.\nProbeer het opnieuw a.u.b.",
+            "ERROR_BUSY": "Sorry, onze Oempa-Loempa's zijn op het moment erg druk. Probeer het nog eens over een paar minuten.",
+            "ERROR_MESSAGE": "Onze Oempa-Loempa's hebben wat problemen met het genereren van je dump: {{message}}"
+        },
+        "MODULES": {
+            "TITLE": "Modules",
+            "ENABLE": "Inschakelen",
+            "DISABLE": "Uitschakelen",
+            "BACKLOG": "Backlog",
+            "BACKLOG_DESCRIPTION": "Organiseer je user stories om een duidelijk overzicht van aankomend en geprioritiseerd werk te behouden.",
+            "KANBAN": "Kanban",
+            "KANBAN_DESCRIPTION": "Organiseer je project volgens het lean principe met dit bord.",
+            "ISSUES": "Issues",
+            "ISSUES_DESCRIPTION": "Volg de bugs, vragen en verbeteringen gerelateerd aan je project.\nMis niets meer!",
+            "WIKI": "Wiki\n",
+            "WIKI_DESCRIPTION": "Voeg toe, wijzig of verwijder inhoud in samenwerking met anderen. Dit is the juiste plaats voor je project documentatie.",
+            "MEETUP": "Meet Up",
+            "MEETUP_DESCRIPTION": "Kies je videoconference systeem. Zelfs programmeurs hebben face-to-face contact nodig.",
+            "SELECT_VIDEOCONFERENCE": "Kies een videoconference systeem",
+            "SALT_CHAT_ROOM": "Als je wil kan je een salt code aan de naam van de chatroom toevoegen"
+        },
+        "PROJECT_PROFILE": {
+            "PAGE_TITLE": "{{sectionName}} - Project profiel - {{projectName}}",
+            "PROJECT_DETAILS": "Project details",
+            "PROJECT_NAME": "Naam project",
+            "PROJECT_SLUG": "Project Slug",
+            "NUMBER_SPRINTS": "Aantal sprints",
+            "NUMBER_US_POINTS": "Aantal US punten",
+            "TAGS": "Tags",
+            "DESCRIPTION": "Beschrijving",
+            "PUBLIC_PROJECT": "Open project",
+            "PRIVATE_PROJECT": "Gesloten project",
+            "DELETE": "Verwijder dit project"
+        },
+        "REPORTS": {
+            "TITLE": "Rapporten",
+            "SUBTITLE": "Exporteer je project data in CSV formaat en maak je eigen rapporten",
+            "DESCRIPTION": "Download een CSV bestand of kopieer de gegenereerde URL en open het in je favoriete tekstverwerker of spreadsheet om je eigen project data rapporten aan te maken. Je zal al je data makkelijk kunnen visualiseren en analyseren.",
+            "HELP": "Hoe kan ik dit gebruiken in mijn eigen spreadsheet?",
+            "REGENERATE_TITLE": "Wijzig URL",
+            "REGENERATE_SUBTITLE": "Je staat op het punt de CSV data toegang url te veranderen. De vorige url zal worden uitgeschakeld. Ben je zeker dat je ermee door wil gaan?"
+        },
+        "CSV": {
+            "SECTION_TITLE_US": "user stories rapporten",
+            "SECTION_TITLE_TASK": "taak rapporten",
+            "SECTION_TITLE_ISSUE": "Issues rapport",
+            "DOWNLOAD": "Download CSV",
+            "URL_FIELD_PLACEHOLDER": "Genereer de CSV url opnieuw alsjeblieft",
+            "TITLE_REGENERATE_URL": "Opnieuw CSV url genereren",
+            "ACTION_GENERATE_URL": "Url genereren",
+            "ACTION_REGENERATE": "Opnieuw genereren"
+        },
+        "CUSTOM_FIELDS": {
+            "TITLE": "Eigen velden",
+            "SUBTITLE": "Specifieer de aangepaste velden voor je user stories, taken en issues",
+            "US_DESCRIPTION": "Eigen velden user stories",
+            "US_ADD": "Voeg eigen velden toe in user stories",
+            "TASK_DESCRIPTION": "Eigen velden taken",
+            "TASK_ADD": "Voeg een aangepast veld toe in taken",
+            "ISSUE_DESCRIPTION": "Issues aangepaste velden",
+            "ISSUE_ADD": "Voeg een aangepast veld toe in issues"
+        },
+        "PROJECT_VALUES": {
+            "PAGE_TITLE": "{{sectionName}} - Project values - {{projectName}}",
+            "REPLACEMENT": "Alle items met deze waarde zullen worden veranderd in",
+            "ERROR_DELETE_ALL": "Je kunt niet alle waardes verwijderen"
+        },
+        "PROJECT_VALUES_POINTS": {
+            "TITLE": "Punten",
+            "SUBTITLE": "Specifieer de punten waar naar je user stories kunnen worden ingeschat",
+            "US_TITLE": "US punten",
+            "ACTION_ADD": "Nieuw punt toevoegen"
+        },
+        "PROJECT_VALUES_PRIORITIES": {
+            "TITLE": "Prioriteit",
+            "SUBTITLE": "Specificeer de prioriteit die je issues zullen hebben",
+            "ISSUE_TITLE": "Issue priorities",
+            "ACTION_ADD": "Nieuwe prioriteit toevoegen"
+        },
+        "PROJECT_VALUES_SEVERITIES": {
+            "TITLE": "Severities",
+            "SUBTITLE": "Specifieer de ernstigheid die je issues zullen hebben",
+            "ISSUE_TITLE": "Issue severities",
+            "ACTION_ADD": "Nieuwe ernst toevoegen"
+        },
+        "PROJECT_VALUES_STATUS": {
+            "TITLE": "Status",
+            "SUBTITLE": "Specifieer de statussen waar je user stories, taken en issues door zullen gaan",
+            "US_TITLE": "US statussen",
+            "TASK_TITLE": "Taak statussen",
+            "ISSUE_TITLE": "Issue statussen"
+        },
+        "PROJECT_VALUES_TYPES": {
+            "TITLE": "Types",
+            "SUBTITLE": "Specifieer de types die je issues kunnen hebben",
+            "ISSUE_TITLE": "Issues types",
+            "ACTION_ADD": "Voeg nieuwe {{objName}} toe"
+        },
+        "ROLES": {
+            "PAGE_TITLE": "Roles - {{projectName}}",
+            "WARNING_NO_ROLE": "Wees voorzichtig, geen enkele rol in je project zal de puntenwaarde van een user story kunnen estimeren",
+            "HELP_ROLE_ENABLED": "Als dit actief is, zullen leden met deze rol de punten waarde voor user stories kunnen schatten",
+            "COUNT_MEMBERS": "{{ role.members_count }} leden met deze rol",
+            "TITLE_DELETE_ROLE": "Verwijder Rol",
+            "REPLACEMENT_ROLE": "Al de gebruikers met deze rol zullen verplaats worden naar",
+            "WARNING_DELETE_ROLE": "<strong>Wees voorzichtig, alle schattingen door deze rol zullen worden verwijderd</strong>",
+            "ERROR_DELETE_ALL": "Je kan niet alle waarden verwijderen",
+            "EXTERNAL_USER": "Externe gebruiker"
+        },
+        "THIRD_PARTIES": {
+            "SECRET_KEY": "Geheime sleutel",
+            "PAYLOAD_URL": "Payload URL",
+            "VALID_IPS": "Correct origine IPs (gescheiden door ,)"
+        },
+        "BITBUCKET": {
+            "SECTION_NAME": "Bitbucket",
+            "PAGE_TITLE": "Bitbucket - {{projectName}}",
+            "INFO_VERIFYING_IP": "Bitbucket requests zijn niet gesigneerd, dus de beste manier om hun oorsprong te verifiëren is op basis van IP. Als het veld leeg is zal er geen IP validatie plaatsvinden."
+        },
+        "GITLAB": {
+            "SECTION_NAME": "Gitlab",
+            "PAGE_TITLE": "Gitlab - {{projectName}}",
+            "INFO_VERIFYING_IP": "Gitlab requests zijn niet gesigneerd, dus de beste manier om hun oorsprong te verifiëren is op basis van IP. Als het veld leeg is zal er geen IP validatie plaatsvinden."
+        },
+        "GITHUB": {
+            "SECTION_NAME": "Github",
+            "PAGE_TITLE": "Github - {{projectName}}"
+        },
+        "WEBHOOKS": {
+            "PAGE_TITLE": "Webhooks - {{projectName}}",
+            "SECTION_NAME": "Webhooks",
+            "SUBTITLE": "Webhooks houden externe diensten op de hoogte van evenenmenten in Taiga, zoals commentaar, user stories....",
+            "ADD_NEW": "Nieuwe webhook toevoegen",
+            "TYPE_NAME": "Type de service naam",
+            "TYPE_PAYLOAD_URL": "Type de service payload url",
+            "TYPE_SERVICE_SECRET": "Type de geheime service sleutel",
+            "SAVE": "Webhook opslaan",
+            "CANCEL": "Webhook Annuleren",
+            "SHOW_HISTORY": "(Toon historie)",
+            "TEST": "Test webhook",
+            "EDIT": "Webhook bewerken",
+            "DELETE": "Verwijder Webhook",
+            "REQUEST": "Verzoek",
+            "RESEND_REQUEST": "Verzoek opnieuw versturen",
+            "HEADERS": "Koppen",
+            "PAYLOAD": "Payload",
+            "RESPONSE": "Reactie",
+            "DATE": "DD MMM YYYY [om] hh:mm:ss",
+            "ACTION_HIDE_HISTORY": "(Verberg historie)",
+            "ACTION_HIDE_HISTORY_TITLE": "Verberg geschiedenis",
+            "ACTION_SHOW_HISTORY": "(Toon geschiedenis)",
+            "ACTION_SHOW_HISTORY_TITLE": "Toon geschiedenis",
+            "WEBHOOK_NAME": "Webhook '{{name}}'"
+        },
+        "CUSTOM_ATTRIBUTES": {
+            "PAGE_TITLE": "{{sectionName}} - Custom Attributes - {{projectName}}",
+            "ADD": "Voeg aangepast veld toe",
+            "EDIT": "Eigen veld bewerken",
+            "DELETE": "Eigen veld verwijderen",
+            "SAVE_TITLE": "Eigen velden opslaan",
+            "CANCEL_TITLE": "Annuleer aanmaken",
+            "SET_FIELD_NAME": "Stel de naam van je eigen veld in",
+            "SET_FIELD_DESCRIPTION": "Eigen veld omschrijving instellen",
+            "ACTION_UPDATE": "Eigen veld bijwerken",
+            "ACTION_CANCEL_EDITION": "Editie annuleren"
+        },
+        "MEMBERSHIP": {
+            "COLUMN_MEMBER": "Gebruiker",
+            "COLUMN_ADMIN": "Admin",
+            "COLUMN_ROLE": "Rol",
+            "COLUMN_STATUS": "Status",
+            "STATUS_ACTIVE": "Actief",
+            "STATUS_PENDING": "Resterend",
+            "DELETE_MEMBER": "Verwijder gebruiker",
+            "SUCCESS_SEND_INVITATION": "We hebben de uitnodiging opnieuw gestuurd aan '{{email}}'.",
+            "ERROR_SEND_INVITATION": "We hebben je een uitnodiging gestuurd",
+            "SUCCESS_DELETE": "We hebben {{message}} verwijderd.",
+            "ERROR_DELETE": "We zijn er niet in geslaagd om te verwijderen {{message}}",
+            "DEFAULT_DELETE_MESSAGE": "de uitnodiging naar {{email}}"
+        },
+        "DEFAULT_VALUES": {
+            "LABEL_POINTS": "Standaard waarde voor punten selectie",
+            "LABEL_US": "Standaard waarde voor US status selectie",
+            "LABEL_TASK_STATUS": "Standaard waarde voor taak status selectie",
+            "LABEL_PRIORITY": "Standaard waarde voor prioriteit selectie",
+            "LABEL_SEVERITY": "Standaard waarde voor ernst selectie",
+            "LABEL_ISSUE_TYPE": "Standaard waarde voor issue type selectie",
+            "LABEL_ISSUE_STATUS": "Standaard waarde voor issue status selectie"
+        },
+        "STATUS": {
+            "PLACEHOLDER_WRITE_STATUS_NAME": "Geef een naam voor de nieuwe status"
+        },
+        "TYPES": {
+            "PLACEHOLDER_WRITE_NAME": "Geef een naam voor het nieuwe element"
+        },
+        "US_STATUS": {
+            "ACTION_ADD_STATUS": "Nieuwe status toevoegen",
+            "IS_ARCHIVED_COLUMN": "Is gearchiveerd?",
+            "WIP_LIMIT_COLUMN": "WIP limiet",
+            "PLACEHOLDER_WRITE_NAME": "Schrijf een naam voor de nieuwe status"
+        },
+        "MENU": {
+            "TITLE": "Admin",
+            "PROJECT": "Project",
+            "ATTRIBUTES": "Attributen",
+            "MEMBERS": "Gebruikers",
+            "PERMISSIONS": "Permissies",
+            "INTEGRATIONS": "Integraties",
+            "PLUGINS": "Plugins"
+        },
+        "SUBMENU_PROJECT_ATTRIBUTES": {
+            "TITLE": "Attributen"
+        },
+        "SUBMENU_PROJECT_VALUES": {
+            "STATUS": "Status",
+            "POINTS": "Punten",
+            "PRIORITIES": "Prioriteiten",
+            "SEVERITIES": "Ernst",
+            "TYPES": "Types",
+            "CUSTOM_FIELDS": "Eigen velden"
+        },
+        "SUBMENU_PROJECT_PROFILE": {
+            "TITLE": "Project profiel"
+        },
+        "SUBMENU_ROLES": {
+            "TITLE": "Rollen",
+            "ACTION_NEW_ROLE": "+ Nieuwe rol",
+            "TITLE_ACTION_NEW_ROLE": "Nieuwe rol toevoegen"
+        },
+        "SUBMENU_THIDPARTIES": {
+            "TITLE": "Services"
+        }
+    },
+    "USER": {
+        "PROFILE": {
+            "PAGE_TITLE": "{{userFullName}} (@{{userUsername}})",
+            "EDIT": "Profiel bewerken",
+            "FOLLOW": "Volgen",
+            "PROJECTS": "Projecten",
+            "CLOSED_US": "Gesloten US",
+            "CONTACTS": "Contacten",
+            "REPORT": "Meld misbruik",
+            "ACTIVITY_TAB": "Activiteiten tab",
+            "PROJECTS_TAB": "Projecten tab",
+            "CONTACTS_TAB": "Contacten tab",
+            "FAVORITES_TAB": "Favorieten tab",
+            "CONTACTS_EMPTY": "{{username}} heeft nog geen contacten",
+            "CURRENT_USER_CONTACTS_EMPTY": "Je hebt nog geen contacten",
+            "CURRENT_USER_CONTACTS_EMPTY_EXPLAIN": "De mensen waarmee je via Taiga werkt zullen automatisch je contacten worden",
+            "PROJECTS_EMPTY": "{{username}} heeft nog geen projecten"
+        },
+        "PROFILE_SIDEBAR": {
+            "TITLE": "Jouw profiel",
+            "DESCRIPTION": "People can see everything you do and what are you working on. Add a nice bio to give an enhanced version of your information.",
+            "ADD_INFO": "Edit your bio"
+        }
+    },
+    "PROJECT": {
+        "PAGE_TITLE": "{{projectName}}",
+        "WELCOME": "Welkom",
+        "SECTION_PROJECTS": "Projecten",
+        "HELP": "Herorden je projecten met de vaakst gebruikte bovenaan.<br/> De top 10 projecten zullen verschijnen in de project lijst bovenaan in de navigatie bar.",
+        "PRIVATE": "Gesloten project",
+        "STATS": {
+            "PROJECT": "project<br/> punten",
+            "DEFINED": "gedefinieerde<br/> punten",
+            "ASSIGNED": "toegewezen<br/> punten",
+            "CLOSED": "gesloten<br/> punten"
+        },
+        "SECTION": {
+            "SEARCH": "Zoek",
+            "TIMELINE": "Tijdlijn",
+            "BACKLOG": "Backlog",
+            "KANBAN": "Kanban",
+            "ISSUES": "Issues",
+            "WIKI": "Wiki",
+            "TEAM": "Team",
+            "MEETUP": "Meet Up",
+            "ADMIN": "Admin"
+        },
+        "NAVIGATION": {
+            "SECTION_TITLE": "Jouw projecten",
+            "PLACEHOLDER_SEARCH": "Zoeken in...",
+            "ACTION_CREATE_PROJECT": "Project aanmaken",
+            "ACTION_IMPORT_PROJECT": "Import project",
+            "SEE_MORE_PROJECTS": "Bekijk meer projecten",
+            "TITLE_CREATE_PROJECT": "Create project",
+            "TITLE_IMPORT_PROJECT": "Import project",
+            "TITLE_PRVIOUS_PROJECT": "Toon voorgaande projecten",
+            "TITLE_NEXT_PROJECT": "Toon volgende projecten",
+            "HELP_TITLE": "Taiga support pagina",
+            "HELP": "Help",
+            "FEEDBACK_TITLE": "Stuur feedback",
+            "FEEDBACK": "Feedback",
+            "NOTIFICATIONS_TITLE": "Notificatie instellingen bewerken",
+            "NOTIFICATIONS": "Notificaties",
+            "ORGANIZATIONS_TITLE": "Jouw organisaties bewerken",
+            "ORGANIZATIONS": "Organisaties bewerken",
+            "SETTINGS_TITLE": "Instellingen aanpassen",
+            "SETTINGS": "Instellingen",
+            "VIEW_PROFILE_TITLE": "Bekijk profiel",
+            "VIEW_PROFILE": "Bekijk profiel",
+            "EDIT_PROFILE_TITLE": "Bewerk je profiel",
+            "EDIT_PROFILE": "Bewerk profiel",
+            "CHANGE_PASSWORD_TITLE": "Wachtwoord wijzigen",
+            "CHANGE_PASSWORD": "Wachtwoord wijzigen",
+            "DASHBOARD_TITLE": "Dashboard",
+            "DISCOVER_TITLE": "Ontdek trending projecten",
+            "DISCOVER": "Ontdek",
+            "ACTION_REORDER": "Sleep om de volgorde te veranderen"
+        },
+        "IMPORT": {
+            "TITLE": "Importeren project",
+            "UPLOADING_FILE": "Bezig met uploaden dump bestand",
+            "DESCRIPTION": "Dit proces kan even duren, laat het venster even open alsjeblieft.",
+            "ASYNC_IN_PROGRESS_TITLE": "Onze Oempa-Loempa's zijn je project aan het importeren",
+            "ASYNC_IN_PROGRESS_MESSAGE": "Dit proces kan een paar minuten duren <br/> We sturen je een email als het gereed is",
+            "UPLOAD_IN_PROGRESS_MESSAGE": "{{uploadedSize}} van {{totalSize}} geupload",
+            "ERROR": "Onze Oempa-Loempa's hebben wat problemen bij het importeren van de dump. Probeer het opnieuw.",
+            "ERROR_TOO_MANY_REQUEST": "Sorry, onze Oempa-Loempa's zijn op het moment erg druk. Probeer het nog eens over een paar minuten.",
+            "ERROR_MESSAGE": "Onze Oempa-Loempa's hebben wat problemen met het importeren van je dump: {{error_message}}",
+            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is te zwaar voor onze Oempa-Loempa's, probeer het met een bestand kleiner dan ({{maxFileSize}})",
+            "SYNC_SUCCESS": "Je project werd met succes geïmporteerd"
+        }
+    },
+    "LIGHTBOX": {
+        "DELETE_ACCOUNT": {
+            "SECTION_NAME": "Taiga account verwijderen",
+            "CONFIRM": "Weet je zeker dat je je Taiga account wilt verwijderen?",
+            "SUBTITLE": "We gaan je missen! :-(",
+            "NEWSLETTER_LABEL_TEXT": "Ik wil de nieuwsbrief niet meer ontvangen"
+        },
+        "DELETE_PROJECT": {
+            "TITLE": "Verwijder project",
+            "QUESTION": "Weet je zeker dat je dit project wilt verwijderen?",
+            "SUBTITLE": "Alle projectgegevens (user stories, taken, issues, sprints en wiki pagina's) worden verwijderd! :-(",
+            "CONFIRM": "Ja, ik weet het zeker"
+        },
+        "ASSIGNED_TO": {
+            "SELECT": "Selecteer toegewezen aan",
+            "SEARCH": "Zoek gebruikers"
+        },
+        "ADD_MEMBER": {
+            "TITLE": "Nieuwe gebruiker",
+            "HELP_TEXT": "Als gebruikers al geregistreerd zijn op Taiga, zullen ze automatisch toegevoegd worden. Anders krijgen ze een uitnodiging."
+        },
+        "CREATE_ISSUE": {
+            "TITLE": "Voeg Issue toe"
+        },
+        "FEEDBACK": {
+            "TITLE": "Vertel ons iets...",
+            "COMMENT": "...een bug, suggesties, iets cools... of zelfs je ergste nachtmerrie met Taiga.",
+            "ACTION_SEND": "Stuur feedback"
+        },
+        "SEARCH": {
+            "TITLE": "Zoek",
+            "PLACEHOLDER_SEARCH": "Wat zoek je?"
+        },
+        "ADD_EDIT_SPRINT": {
+            "TITLE": "Nieuwe sprint",
+            "PLACEHOLDER_SPRINT_NAME": "naam sprint",
+            "PLACEHOLDER_SPRINT_START": "Geschatte start",
+            "PLACEHOLDER_SPRINT_END": "Geschat einde",
+            "ACTION_DELETE_SPRINT": "Wil je deze sprint verwijderen?",
+            "TITLE_ACTION_DELETE_SPRINT": "sprint verwijderen",
+            "LAST_SPRINT_NAME": "laatste sprint is <strong> {{lastSprint}} ;-) </strong>"
+        },
+        "CREATE_EDIT_TASK": {
+            "TITLE": "Nieuwe taak",
+            "PLACEHOLDER_SUBJECT": "Een taak onderwerp",
+            "PLACEHOLDER_STATUS": "Taak status",
+            "OPTION_UNASSIGNED": "Niet toegewezen",
+            "PLACEHOLDER_SHORT_DESCRIPTION": "Geef een korte beschrijving",
+            "ACTION_EDIT": "Bewerk taak"
+        },
+        "CREATE_EDIT_US": {
+            "TITLE": "Nieuwe US",
+            "PLACEHOLDER_DESCRIPTION": "Voeg alstublieft een omschrijvende tekst toe om anderen deze US beter te helpen begrijpen",
+            "NEW_US": "Nieuwe user story",
+            "EDIT_US": "Beschrijf user story"
+        },
+        "DELETE_SPRINT": {
+            "TITLE": "Verwijder sprint"
+        },
+        "CREATE_MEMBER": {
+            "PLACEHOLDER_INVITATION_TEXT": "(Optioneel) Voeg een gepersonaliseerd bericht toe aan je uitnodiging. Vertel iets leuks aan je nieuwe leden ;-)",
+            "PLACEHOLDER_TYPE_EMAIL": "Type en E-mail"
+        }
+    },
+    "US": {
+        "PAGE_TITLE": "{{userStorySubject}} - User Story {{userStoryRef}} - {{projectName}}",
+        "PAGE_DESCRIPTION": "Status: {{userStoryStatus }}. Completed {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} of {{userStoryTotalTasks}} tasks closed). Points: {{userStoryPoints}}. Description: {{userStoryDescription}}",
+        "SECTION_NAME": "User story details",
+        "LINK_TASKBOARD": "Taakbord",
+        "TITLE_LINK_TASKBOARD": "Ga naar het dashboard",
+        "TOTAL_POINTS": "totaal",
+        "ADD": "+ Nieuwe User Story toevoegen",
+        "ADD_BULK": "Voeg enkele nieuwe User Stories in bulk toe",
+        "PROMOTED": "Deze US werd gepromoveerd van Issue:",
+        "TITLE_LINK_GO_TO_ISSUE": "Ga naar probleem",
+        "EXTERNAL_REFERENCE": "Deze US is aangemaakt vanaf",
+        "GO_TO_EXTERNAL_REFERENCE": "Ga naar bron",
+        "BLOCKED": "Deze user story is geblokkeerd",
+        "PREVIOUS": "Vorige user story",
+        "NEXT": "volgende user story",
+        "TITLE_DELETE_ACTION": "Verwijder user story",
+        "LIGHTBOX_TITLE_BLOKING_US": "Ons blokkeren",
+        "TASK_COMPLETED": "{{totalClosedTasks}}/{{totalTasks}} taken afgewerkt",
+        "ASSIGN": "User story toewijzen",
+        "NOT_ESTIMATED": "Niet ingeschat",
+        "TOTAL_US_POINTS": "Totaal US punten",
+        "FIELDS": {
+            "TEAM_REQUIREMENT": "Eisen team",
+            "CLIENT_REQUIREMENT": "Requirement van de klant",
+            "FINISH_DATE": "Einddatum"
+        }
+    },
+    "COMMENTS": {
+        "DELETED_INFO": "Opmerking verwijderd door {{user}} op {{date}}",
+        "TITLE": "Reacties",
+        "COMMENT": "Reageer",
+        "TYPE_NEW_COMMENT": "Type hier nieuw commentaar",
+        "SHOW_DELETED": "Toon verwijderd commentaar",
+        "HIDE_DELETED": "Verberg verwijderde opmerkingen",
+        "RESTORE": "Opmerking herstellen"
+    },
+    "ACTIVITY": {
+        "SHOW_ACTIVITY": "Toon activiteit",
+        "DATETIME": "DD MMM YYYY HH:mm",
+        "SHOW_MORE": "+ Toon vorige items ({{showMore}} meer)",
+        "TITLE": "Activiteit",
+        "REMOVED": "verwijderd",
+        "ADDED": "toegevoegd",
+        "US_POINTS": "US punten ({{name}})",
+        "NEW_ATTACHMENT": "Nieuwe bijlage",
+        "DELETED_ATTACHMENT": "verwijderd bijlage",
+        "UPDATED_ATTACHMENT": "bijlage {{filename}} bijgewerkt",
+        "DELETED_CUSTOM_ATTRIBUTE": "eigen attribuut verwijderen",
+        "SIZE_CHANGE": "{size, plural, one{één verandering} other{# veranderingen}} gemaakt",
+        "VALUES": {
+            "YES": "ja",
+            "NO": "nee",
+            "EMPTY": "leeg",
+            "UNASSIGNED": "niet toegewezen"
+        },
+        "FIELDS": {
+            "SUBJECT": "onderwerp",
+            "NAME": "naam",
+            "DESCRIPTION": "beschrijving",
+            "CONTENT": "inhoud",
+            "STATUS": "status",
+            "IS_CLOSED": "is gesloten",
+            "FINISH_DATE": "einddatum",
+            "TYPE": "type",
+            "PRIORITY": "prioriteit",
+            "SEVERITY": "ernst",
+            "ASSIGNED_TO": "toegewezen aan",
+            "WATCHERS": "waarnemers",
+            "MILESTONE": "sprint",
+            "USER_STORY": "user story",
+            "PROJECT": "project",
+            "IS_BLOCKED": "is geblokkeerd",
+            "BLOCKED_NOTE": "geblokkeerde notitie",
+            "POINTS": "punten",
+            "CLIENT_REQUIREMENT": "eisen klant",
+            "TEAM_REQUIREMENT": "team eisen",
+            "IS_IOCAINE": "is iocaine",
+            "TAGS": "tags",
+            "ATTACHMENTS": "bijlagen",
+            "IS_DEPRECATED": "is verourderd",
+            "ORDER": "volgorde",
+            "BACKLOG_ORDER": "backlog volgorde",
+            "SPRINT_ORDER": "sprint volgorde",
+            "KANBAN_ORDER": "kanban volgorde",
+            "TASKBOARD_ORDER": "taakbord volgorde",
+            "US_ORDER": "us volgorde"
+        }
+    },
+    "BACKLOG": {
+        "PAGE_TITLE": "Backlog - {{projectName}}",
+        "PAGE_DESCRIPTION": "The backlog panel, with user stories and sprints of the project {{projectName}}: {{projectDescription}}",
+        "SECTION_NAME": "Backlog",
+        "MOVE_US_TO_CURRENT_SPRINT": "Verplaats naar huidige sprint",
+        "SHOW_FILTERS": "Toon filters",
+        "SHOW_TAGS": "Toon tags",
+        "EMPTY": "Je backlog is leeg!",
+        "CREATE_NEW_US": "Nieuwe US aanmaken",
+        "CREATE_NEW_US_EMPTY_HELP": "Misschien wil je een nieuwe user story aanmaken",
+        "EXCESS_OF_POINTS": "Overschot aan punten",
+        "PENDING_POINTS": "Resterende punten",
+        "CLOSED_POINTS": "gesloten",
+        "COMPACT_SPRINT": "Compacte Sprint",
+        "GO_TO_TASKBOARD": "Ga naar het taakbord van {{::name}}",
+        "EDIT_SPRINT": "Bewerk sprint",
+        "TOTAL_POINTS": "totaal",
+        "STATUS_NAME": "Naam status",
+        "SORTABLE_FILTER_ERROR": "Je kan niet loslaten op de backlog als er filters geopend zijn",
+        "DOOMLINE": "Project scope [doomline]",
+        "CHART": {
+            "XAXIS_LABEL": "Sprints",
+            "YAXIS_LABEL": "Punten",
+            "OPTIMAL": "Optimale aantal resterende punten voor sprint {{xval}} zou {{yval}} zijn",
+            "REAL": "Werkelijk aantal resterende punten voor sprint {{xval}} is {{yval}}",
+            "INCREMENT_TEAM": "Aantal toegevoegde punten door requirements van het team voor sprint {{xval}} is {{yval}}",
+            "INCREMENT_CLIENT": "Aantal toegevoegde punten door requirements van de klant voor sprint {{xval}} is {{yval}}"
+        },
+        "TAGS": {
+            "TOGGLE": "Zet de tag zichtbaarheid aan of af",
+            "SHOW": "Toon tags",
+            "HIDE": "Verberg tags"
+        },
+        "TABLE": {
+            "COLUMN_US": "User Stories",
+            "TITLE_COLUMN_POINTS": "Selecteer view per rol"
+        },
+        "SPRINT_SUMMARY": {
+            "TOTAL_POINTS": "totaal<br/>punten",
+            "COMPLETED_POINTS": "afgeronde<br/>punten",
+            "OPEN_TASKS": "open<br />taken",
+            "CLOSED_TASKS": "gesloten<br/>taken",
+            "IOCAINE_DOSES": "iocaine<br />dosissen",
+            "SHOW_STATISTICS_TITLE": "Toon statistieken"
+        },
+        "SUMMARY": {
+            "PROJECT_POINTS": "project<br/>punten",
+            "DEFINED_POINTS": "definieer<br />punten",
+            "CLOSED_POINTS": "gesloten<br/>punten",
+            "POINTS_PER_SPRINT": "punten/<br/>sprint"
+        },
+        "FILTERS": {
+            "TOGGLE": "Zet de filter zichtbaarheid aan of af",
+            "TITLE": "Filters",
+            "REMOVE": "Filters verwijderd",
+            "HIDE": "Filters verbergen",
+            "SHOW": "Toon filters",
+            "FILTER_CATEGORY_STATUS": "Status",
+            "FILTER_CATEGORY_TAGS": "Tags"
+        },
+        "SPRINTS": {
+            "TITLE": "SPRINTS",
+            "DATE": "DD MMM YYYY",
+            "LINK_TASKBOARD": "Sprint taakbord",
+            "TITLE_LINK_TASKBOARD": "Ga naar taakbord van \"{{name}}\"",
+            "NUMBER_SPRINTS": "<br/>sprints",
+            "TITLE_ACTION_NEW_SPRINT": "+ Nieuwe sprint",
+            "ACTION_NEW_SPRINT": "+ Nieuwe sprint",
+            "ACTION_SHOW_CLOSED_SPRINTS": "Toon gesloten sprints",
+            "ACTION_HIDE_CLOSED_SPRINTS": "Verberg afgesloten sprints"
+        }
+    },
+    "ERROR": {
+        "TEXT1": "Er is iets gebeurd en onze Oempa-Loempa's zijn er mee bezig.",
+        "TEXT2": "Probeer binnenkort nog eens te herladen.",
+        "NOT_FOUND": "Niet gevonden",
+        "NOT_FOUND_TEXT": "Error 404. De pagina die je zoekt bestaat niet meer. Misschien kan je terugkeren naar de TAIGA startpagina en kijken of je kan vinden wat je zoekt.",
+        "PERMISSION_DENIED": "Niet toegestaan",
+        "PERMISSION_DENIED_CODE": "Error 403",
+        "VERSION_ERROR": "Iemand bij Taiga heeft dit vooraf veranderd en onze Oempa-Loempa's konden je veranderingen niet toepassen. Gelieve te herladen en je veranderingen opnieuw toe te passen (ze zullen verloren gaan)"
+    },
+    "TASKBOARD": {
+        "PAGE_TITLE": "{{sprintName}} - Sprint taskboard - {{projectName}}",
+        "PAGE_DESCRIPTION": "Sprint {{sprintName}} (from {{startDate}} to {{endDate}}) of {{projectName}}. Completed {{completedPercentage}}% ({{completedPoints}} of {{totalPoints}} points). {{openTasks}} opened tasks of {{totalTasks}}.",
+        "SECTION_NAME": "Taakbord",
+        "TITLE_ACTION_ADD": "Voeg een nieuwe taak toe",
+        "TITLE_ACTION_ADD_BULK": "Wat nieuwe taken in bulk toevoegen",
+        "TITLE_ACTION_ASSIGN": "Toegewezen taak",
+        "TITLE_ACTION_EDIT": "Bewerk taak",
+        "TABLE": {
+            "COLUMN": "User story",
+            "TITLE_ACTION_FOLD": "Kolom  inklappen",
+            "TITLE_ACTION_UNFOLD": "Kolom uitklappen",
+            "TITLE_ACTION_FOLD_ROW": "Regel inklappen",
+            "TITLE_ACTION_UNFOLD_ROW": "Regel uitklappen",
+            "FIELD_POINTS": "punten",
+            "ROW_UNASSIGED_TASKS_TITLE": "Niet toegewezen taken"
+        },
+        "CHARTS": {
+            "XAXIS_LABEL": "Dagen",
+            "YAXIS_LABEL": "Punten",
+            "OPTIMAL": "Optimaal resterende punten voor dag {{formattedDate}} zou {{roundedValue}} zijn",
+            "REAL": "Werkelijk aantal resterende punten op {{formattedDate}} zijn {{roundedValue}}",
+            "DATE": "DD MMMM YYYY"
+        }
+    },
+    "TASK": {
+        "PAGE_TITLE": "{{taskSubject}} - Task {{taskRef}} - {{projectName}}",
+        "PAGE_DESCRIPTION": "Status: {{taskStatus }}. Description: {{taskDescription}}",
+        "SECTION_NAME": "Taak details",
+        "LINK_TASKBOARD": "Taakbord",
+        "TITLE_LINK_TASKBOARD": "Ga naar het taakbord",
+        "PLACEHOLDER_SUBJECT": "Type het nieuwe onderwerp voor de taak",
+        "TITLE_SELECT_STATUS": "Status naam",
+        "OWNER_US": "Deze taak is van",
+        "TITLE_LINK_GO_OWNER": "Ga naar user story",
+        "ORIGIN_US": "Deze taak werd aangemaakt vanaf",
+        "TITLE_LINK_GO_ORIGIN": "Ga naar user story",
+        "BLOCKED": "Deze taak is geblokkeerd",
+        "PREVIOUS": "vorige taak",
+        "NEXT": "volgende taak",
+        "TITLE_DELETE_ACTION": "Verwijder taak",
+        "LIGHTBOX_TITLE_BLOKING_TASK": "Blokkerende taak",
+        "FIELDS": {
+            "MILESTONE": "Sprint",
+            "USER_STORY": "User story",
+            "IS_IOCAINE": "Is iocaine"
+        },
+        "ACTION_IOCAINE": "Iocaine",
+        "TITLE_ACTION_IOCAINE": "Voel je je wat overweldigd door een taak? Zorg ervoor dat anderen dit weten door op Iocaine te klikken bij het wijzigen van een taak. Je kan stapsgewijs immuun worden tegen dit (fictioneel) dodelijk gif door kleine dosissen op te nemen. Net zoals je beter kan worden in wat je doet door af en toe een extra uitdaging aan te gaan!"
+    },
+    "NOTIFICATION": {
+        "OK": "Alles is goed",
+        "WARNING": "Oeps, er ging iets mis...",
+        "WARNING_TEXT": "Onze Oempa-Loempa's zijn verdrietig, uw veranderingen werden niet opgeslagen!",
+        "SAVED": "Onze Oompa Loompas hebben al je wijzigingen opgeslagen!",
+        "CLOSE": "Notificatie sluiten",
+        "MAIL": "Notificaties per mail",
+        "ASK_DELETE": "Weet je zeker dat je wilt verwijderen?"
+    },
+    "CANCEL_ACCOUNT": {
+        "TITLE": "Annuleer je account",
+        "SUBTITLE": "We vinden het spijtig dat je de taiga verlaat, hopelijk heb je van je verblijf genoten :)",
+        "PLACEHOLDER_INPUT_TOKEN": "annuleer account token",
+        "ACTION_LEAVING": "Ja, ik ga weg!",
+        "SUCCESS": "Onze Oempa-Loempa's hebben je account verwijderd"
+    },
+    "CHANGE_EMAIL_FORM": {
+        "TITLE": "Wijzig je e-mail",
+        "SUBTITLE": "Nog één klik en je email wordt geüpdatet!",
+        "PLACEHOLDER_INPUT_TOKEN": "wijzig email token",
+        "ACTION_CHANGE_EMAIL": "Email wijzigen",
+        "SUCCESS": "Onze Oempa-Loempa's hebben je email bijgewerkt"
+    },
+    "ISSUES": {
+        "PAGE_TITLE": "Issues - {{projectName}}",
+        "PAGE_DESCRIPTION": "The issues list panel of the project {{projectName}}: {{projectDescription}}",
+        "LIST_SECTION_NAME": "Issues",
+        "SECTION_NAME": "Issue details",
+        "ACTION_NEW_ISSUE": "+ nieuw probleem",
+        "ACTION_PROMOTE_TO_US": "Promoveer tot User Story",
+        "PLACEHOLDER_FILTER_NAME": "Geef de filternaam in en druk op enter",
+        "PROMOTED": "Dit issue is gepromoveerd tot US:",
+        "EXTERNAL_REFERENCE": "Dit issue is aangemaakt vanaf",
+        "GO_TO_EXTERNAL_REFERENCE": "Ga naar bron",
+        "BLOCKED": "Dit issue is geblokkeerd",
+        "TITLE_PREVIOUS_ISSUE": "vorig issue",
+        "TITLE_NEXT_ISSUE": "volgend issue",
+        "ACTION_DELETE": "Verwijderd issue",
+        "LIGHTBOX_TITLE_BLOKING_ISSUE": "Blokkerend issue",
+        "FIELDS": {
+            "PRIORITY": "Prioriteit",
+            "SEVERITY": "Ernst",
+            "TYPE": "Type"
+        },
+        "CONFIRM_PROMOTE": {
+            "TITLE": "Bevorder dit issue tot een nieuwe user story",
+            "MESSAGE": "Weet je zeker dat je een nieuw US van dit issue wilt maken?"
+        },
+        "FILTERS": {
+            "TITLE": "Filters",
+            "INPUT_SEARCH_PLACEHOLDER": "Onderwerp of ref.",
+            "TITLE_ACTION_SEARCH": "Zoek",
+            "ACTION_SAVE_CUSTOM_FILTER": "Als eigen filter opslaan",
+            "BREADCRUMB": "Filters",
+            "TITLE_BREADCRUMB": "Filters",
+            "CATEGORIES": {
+                "TYPE": "Type",
+                "STATUS": "Status",
+                "SEVERITY": "Ernst",
+                "PRIORITIES": "Prioriteiten",
+                "TAGS": "Tags",
+                "ASSIGNED_TO": "Toegezen aan",
+                "CREATED_BY": "Aangemaakt door",
+                "CUSTOM_FILTERS": "Eigen filters"
+            },
+            "CONFIRM_DELETE": {
+                "TITLE": "Verwijder eigen filter",
+                "MESSAGE": "de eigen filter '{{customFilterName}}'"
+            }
+        },
+        "TABLE": {
+            "COLUMNS": {
+                "TYPE": "Type",
+                "SEVERITY": "Ernst",
+                "PRIORITY": "Prioriteit",
+                "SUBJECT": "Onderwerp",
+                "STATUS": "Status",
+                "CREATED": "Aangemaakt",
+                "ASSIGNED_TO": "Toegewezen aan"
+            },
+            "TITLE_ACTION_CHANGE_STATUS": "Status veranderen",
+            "TITLE_ACTION_ASSIGNED_TO": "Toegewezen aan",
+            "EMPTY": {
+                "TITLE": "Er zijn geen issues om te rapporteren :-)",
+                "SUBTITLE": "Heb je een issue gevonden?",
+                "ACTION_CREATE_ISSUE": "Nieuw issue aanmaken"
+            }
+        }
+    },
+    "ISSUE": {
+        "PAGE_TITLE": "{{issueSubject}} - Issue {{issueRef}} - {{projectName}}",
+        "PAGE_DESCRIPTION": "Status: {{issueStatus }}. Type: {{issueType}}, Priority: {{issuePriority}}. Severity: {{issueSeverity}}. Description: {{issueDescription}}"
+    },
+    "KANBAN": {
+        "PAGE_TITLE": "Kanban - {{projectName}}",
+        "PAGE_DESCRIPTION": "The kanban panel, with user stories of the project {{projectName}}: {{projectDescription}}",
+        "SECTION_NAME": "Kanban",
+        "TITLE_ACTION_FOLD": "Kolom inklappen",
+        "TITLE_ACTION_UNFOLD": "Kolom uitklappen",
+        "TITLE_ACTION_FOLD_CARDS": "Kaarten inklappen",
+        "TITLE_ACTION_UNFOLD_CARDS": "Kaarten uitklappen",
+        "TITLE_ACTION_ADD_US": "Nieuwe user story toevoegen",
+        "TITLE_ACTION_ADD_BULK": "Nieuwe bulk toevoegen",
+        "ACTION_SHOW_ARCHIVED": "Toon gearchiveerd",
+        "ACTION_HIDE_ARCHIVED": "Verberg gearchiveerde",
+        "HIDDEN_USER_STORIES": "De user stories met deze status zijn standaard verborgen",
+        "ARCHIVED": "Je hebt gearchiveerd",
+        "UNDO_ARCHIVED": "Drag & drop nog een keer om ongedaan te maken"
+    },
+    "SEARCH": {
+        "PAGE_TITLE": "Search - {{projectName}}",
+        "PAGE_DESCRIPTION": "Search anything, user stories, issues, tasks or wiki pages, in the project {{projectName}}: {{projectDescription}}",
+        "FILTER_USER_STORIES": "User Stories",
+        "FILTER_ISSUES": "Issues",
+        "FILTER_TASKS": "Taken",
+        "FILTER_WIKI": "Wiki pagina's",
+        "PLACEHOLDER_SEARCH": "Zoeken in...",
+        "TITLE_ACTION_SEARCH": "zoek",
+        "EMPTY_TITLE": "Het lijkt erop dat er niets kon gevonden worden met je opgegeven zoektermen.",
+        "EMPTY_DESCRIPTION": "Probeer één van de bovenstaande tabs of zoek opnieuw"
+    },
+    "TEAM": {
+        "PAGE_TITLE": "Team - {{projectName}}",
+        "PAGE_DESCRIPTION": "The team panel to show all the members of the project {{projectName}}: {{projectDescription}}",
+        "SECTION_NAME": "Team",
+        "APP_TITLE": "TEAM - {{projectName}}",
+        "PLACEHOLDER_INPUT_SEARCH": "Zoek op volledige naam",
+        "COLUMN_MR_WOLF": "Dhr. Wolf",
+        "EXPLANATION_COLUMN_MR_WOLF": "Gesloten issues",
+        "COLUMN_IOCAINE": "Iocaine Drinker",
+        "EXPLANATION_COLUMN_IOCAINE": "Ingenomen Iocaine dosissen",
+        "COLUMN_CERVANTES": "Cervantes",
+        "EXPLANATION_COLUMN_CERVANTES": "Wiki pagina's bewerkt",
+        "COLUMN_BUG_HUNTER": "Bug Jager",
+        "EXPLANATION_COLUMN_BUG_HUNTER": "Issues gerapporteerd",
+        "COLUMN_NIGHT_SHIFT": "Nacht Shift",
+        "EXPLANATION_COLUMN_NIGHT_SHIFT": "Taak gesloten",
+        "COLUMN_TOTAL_POWER": "Volledige Controle",
+        "EXPLANATION_COLUMN_TOTAL_POWER": "Totaal punten",
+        "SECTION_TITLE_TEAM": "Team >",
+        "SECTION_FILTER_ALL": "Alles",
+        "CONFIRM_LEAVE_PROJECT": "Weet je zeker dat je dit project wilt verlaten?",
+        "ACTION_LEAVE_PROJECT": "Verlaat dit project"
+    },
+    "USER_SETTINGS": {
+        "AVATAR_MAX_SIZE": "[Max. grootte: {{maxFileSize}}]",
+        "MENU": {
+            "SECTION_TITLE": "Gebruikersinstellingen",
+            "USER_PROFILE": "Gebruikersprofiel",
+            "CHANGE_PASSWORD": "Wachtwoord wijzigen",
+            "EMAIL_NOTIFICATIONS": "Email notificaties"
+        },
+        "NOTIFICATIONS": {
+            "SECTION_NAME": "Email notificaties",
+            "COLUMN_PROJECT": "Project",
+            "COLUMN_RECEIVE_ALL": "Alles ontvangen",
+            "COLUMN_ONLY_INVOLVED": "Alleen betrokkken",
+            "COLUMN_NO_NOTIFICATIONS": "Geen notificaties",
+            "OPTION_ALL": "Alles",
+            "OPTION_INVOLVED": "Betrokken",
+            "OPTION_NONE": "Geen"
+        },
+        "POPOVER": {
+            "USER_PROFILE": "Gebruikersprofiel",
+            "CHANGE_PASSWORD": "Wachtwoord wijzigen",
+            "NOTIFICATIONS": "Notificaties",
+            "FEEDBACK": "Feedback",
+            "TITLE_AVATAR": "Gebruikersinstellingen"
+        }
+    },
+    "USER_PROFILE": {
+        "IMAGE_HELP": "Deze afbeelding zal geschaalt worden naar 80x80px<br/>",
+        "ACTION_CHANGE_IMAGE": "Verander",
+        "ACTION_USE_GRAVATAR": "Gebruik gravatar afbeelding",
+        "ACTION_DELETE_ACCOUNT": "Verwijderd Taiga account",
+        "CHANGE_EMAIL_SUCCESS": "<strong>Controleer je inbox!</strong><br />We hebben je een email gestuurd met instructie om je nieuwe adres in te stellen",
+        "CHANGE_PHOTO": "Foto wijzigen",
+        "FIELD": {
+            "USERNAME": "Gebruikersnaam",
+            "EMAIL": "E-mail",
+            "FULL_NAME": "Volledige naam",
+            "PLACEHOLDER_FULL_NAME": "Vul je volledige naam in (ex. Íñigo Montoya)",
+            "BIO": "Bio",
+            "PLACEHOLDER_BIO": "Vertel iets over jezelf",
+            "LANGUAGE": "Taal",
+            "LANGUAGE_DEFAULT": "-- gebruik standaard taal --"
+        }
+    },
+    "WIZARD": {
+        "SECTION_TITLE_CHOOSE_TEMPLATE": "Kies een template",
+        "CHOOSE_TEMPLATE_TEXT": "Welk template zou beter bij je project passen?",
+        "SECTION_TITLE_CREATE_PROJECT": "Project aanmaken",
+        "CREATE_PROJECT_TEXT": "Vers en proper. Spanned!",
+        "PROGRESS_TEMPLATE_SELECTION": "Template selectie",
+        "PROGRESS_NAME_DESCRIPTION": "Naam en beschrijving"
+    },
+    "WIKI": {
+        "PAGE_TITLE": "{{wikiPageName}} - Wiki - {{projectName}}",
+        "PAGE_DESCRIPTION": "Last edition on {{lastModifiedDate}} ({{totalEditions}} editions in total) Content: {{ wikiPageContent }}",
+        "DATETIME": "DD MMM YYYY HH:mm",
+        "PLACEHOLDER_PAGE": "Schrijf je wiki pagina",
+        "REMOVE": "Verwijder deze wiki pagina",
+        "DELETE_LIGHTBOX_TITLE": "Verwijderd wiki pagina",
+        "NAVIGATION": {
+            "SECTION_NAME": "Links",
+            "ACTION_ADD_LINK": "Link toevoegen"
+        },
+        "SUMMARY": {
+            "TIMES_EDITED": "keer <br/>bewerkt",
+            "LAST_EDIT": "laatst <br />bewerkt",
+            "LAST_MODIFICATION": "laatste wijziging"
+        }
+    },
+    "HINTS": {
+        "SECTION_NAME": "Hint",
+        "LINK": "Als je wilt weten hoe, bezoek dan onze support-pagina",
+        "LINK_TITLE": "Bezoek onze supportpagina",
+        "HINT1_TITLE": "Wist je dat je nu projecten kunt importeren en exporteren?",
+        "HINT1_TEXT": "Dit maakt het mogelijk om al je data vanuit de ene taiga te verplaatsen naar een andere",
+        "HINT2_TITLE": "Weet je dat je custom velden kunt aanmaken?",
+        "HINT2_TEXT": "Teams can now create custom fields as a flexible means to enter specific data useful for their particular workflow",
+        "HINT3_TITLE": "Reorder your projects to feature those most relevant to you",
+        "HINT3_TEXT": "The top 10 project will be in your top bar direct access",
+        "HINT4_TITLE": "Did you forgot what were you working on?",
+        "HINT4_TEXT": "Don't worry, on your dashboard you'll find your open tasks, issues, and user stories in the order you worked on them."
+    },
+    "TIMELINE": {
+        "UPLOAD_ATTACHMENT": "{{username}} heeft een nieuwe bijlage geüpload in {{obj_name}}",
+        "US_CREATED": "{{username}} heeft een nieuwe US aangemaakt {{obj_name}} in {{project_name}}",
+        "ISSUE_CREATED": "{{username}} heeft een nieuw Issue aangemaakt {{obj_name}} in {{project_name}}",
+        "TASK_CREATED": "{{username}} heeft een nieuwe taak aangemaakt {{obj_name}} in {{project_name}}",
+        "TASK_CREATED_WITH_US": "{{username}} has created a new task {{obj_name}} in {{project_name}} which belongs to the US {{us_name}}",
+        "WIKI_CREATED": "{{username}} heeft een nieuwe Wiki-pagina aangemaakt {{obj_name}} in {{project_name}}",
+        "MILESTONE_CREATED": "{{username}} heeft een nieuwe sprint aangemaakt {{obj_name}} in {{project_name}}",
+        "NEW_PROJECT": "{{username}} created the project {{project_name}}",
+        "MILESTONE_UPDATED": "{{username}} heeft de sprint {{obj_name}} bijgewerkt",
+        "US_UPDATED": "{{username}} heeft de eigenschap \"{{field_name}}\" van de US {{obj_name}} bijgewerkt",
+        "ISSUE_UPDATED": "{{username}} heeft de eigenschap \"{{field_name}}\" van het issue {{obj_name}} bijgewerkt",
+        "TASK_UPDATED": "{{username}} heeft de eigenschap \"{{field_name}}\" van de taak {{obj_name}} bijgewerkt",
+        "TASK_UPDATED_WITH_US": "{{username}} heeft de eigenschap \"{{field_name}}\" van de taak {{obj_name}} die behoort tot de US {{us_name}} bijgewerkt",
+        "WIKI_UPDATED": "{{username}} heeft de wiki pagina {{obj_name}} bijgewerkt",
+        "NEW_COMMENT_US": "{{username}} heeft gereageerd op de US {{obj_name}}",
+        "NEW_COMMENT_ISSUE": "{{username}} heeft gereageerd op het issue {{obj_name}}",
+        "NEW_COMMENT_TASK": "{{username}} heeft gereageerd op de taak {{obj_name}}",
+        "NEW_MEMBER": "{{project_name}} heeft een nieuw lid",
+        "US_ADDED_MILESTONE": "{{username}} heeft de US {{obj_name}} toegevoegd aan {{sprint_name}}",
+        "US_REMOVED_FROM_MILESTONE": "{{username}} heeft de US {{obj_name}} toegevoegd aan de Backlog",
+        "BLOCKED": "{{username}} heeft {{obj_name}} geblokkeerd",
+        "UNBLOCKED": "{{username}} heeft {{obj_name}} gedeblokkeerd",
+        "NEW_USER": "{{username}} has joined Taiga"
+    }
+}

@@ -1,0 +1,10 @@
+.profile-projects {
+    border-top: 1px solid $whitish;
+    .project-list-single {
+        display: flex;
+        justify-content: space-between;
+        min-height: 10rem;
+    }
+}
+
+

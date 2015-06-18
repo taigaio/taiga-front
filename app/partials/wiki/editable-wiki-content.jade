@@ -1,11 +1,16 @@
 .view-wiki-content
     section.wysiwyg(tg-bind-html='wiki.html')
-      span.edit.icon.icon-edit(title="{{'COMMON.EDIT' | translate}}")
+    span.edit.icon.icon-edit(title="{{'COMMON.EDIT' | translate}}", ng-if="wiki")
+
 .edit-wiki-content(style='display: none;')
-  textarea(ng-attr-placeholder="{{'WIKI.PLACEHOLDER_PAGE' | translate}}", ng-model='wiki.content', tg-markitup='tg-markitup')
-  a.help-markdown(href='https://taiga.io/support/taiga-markdown-syntax/', target='_blank', title="{{'COMMON.WYSIWYG.MARKDOWN_HELP' | translate}}")
-    span.icon.icon-help
-    span(translate="COMMON.WYSIWYG.MARKDOWN_HELP")
-  span.action-container
-    a.save.icon.icon-floppy(href='', title="{{'COMMON.SAVE' | translate}}")
-      a.cancel.icon.icon-delete(href='', title="{{'COMMON.CANCEL' | translate}}")
+    textarea(ng-attr-placeholder="{{'WIKI.PLACEHOLDER_PAGE' | translate}}",
+             ng-model='wiki.content', tg-markitup='tg-markitup')
+
+    a.help-markdown(href='https://taiga.io/support/taiga-markdown-syntax/', target='_blank',
+                 title="{{'COMMON.WYSIWYG.MARKDOWN_HELP' | translate}}")
+        span.icon.icon-help
+        span(translate="COMMON.WYSIWYG.MARKDOWN_HELP")
+
+    span.action-container
+        a.save.icon.icon-floppy(href='', title="{{'COMMON.SAVE' | translate}}")
+        a.cancel.icon.icon-delete(href='', title="{{'COMMON.CANCEL' | translate}}")

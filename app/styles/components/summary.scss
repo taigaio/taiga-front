@@ -12,12 +12,9 @@
         margin: 0 .5rem;
     }
     .data {
-        margin-top: 4px;
         .number {
             color: $fresh-taiga;
-            top: 0;
         }
-
     }
     .icon {
         @extend %large;
@@ -25,15 +22,14 @@
     .number {
         @extend %xlarge;
         @extend %bold;
+        line-height: .9;
         margin-right: .3rem;
-        position: relative;
-        top: 5px;
     }
 
     .description {
         @extend %small;
-        @extend %text;
-        line-height: .9rem;
+        @extend %light;
+        line-height: 1;
     }
 }
 
@@ -93,7 +89,7 @@
         margin-right: 2rem;
     }
     .icon {
-        @extend %xlarge;
+        font-size: 1.4rem;
         margin-right: .4rem;
         &.icon-stats {
             color: $gray;

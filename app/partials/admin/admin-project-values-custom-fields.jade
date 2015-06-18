@@ -2,7 +2,10 @@ doctype html
 
 div.wrapper(ng-controller="ProjectValuesSectionController",
             ng-init="sectionName='ADMIN.CUSTOM_FIELDS.TITLE'")
-    sidebar.menu-secondary.sidebar(tg-admin-navigation="project-values")
+
+    tg-project-menu
+
+    sidebar.menu-secondary.sidebar.settings-nav(tg-admin-navigation="project-values")
         include ../includes/modules/admin-menu
 
     sidebar.menu-tertiary.sidebar(tg-admin-navigation="values-custom-fields")
