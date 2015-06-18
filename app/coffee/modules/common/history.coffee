@@ -276,8 +276,9 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $c
                     deleteCommentUser: comment.delete_comment_user.name
                     deleteComment: comment.comment_html
                     activityId: comment.id
-                    canRestoreComment: (comment.delete_comment_user.pk == $scope.user.id or
-                                        $scope.project.my_permissions.indexOf("modify_project") > -1)
+                    canRestoreComment: ($scope.user and
+                                        (comment.delete_comment_user.pk == $scope.user.id or
+                                        $scope.project.my_permissions.indexOf("modify_project") > -1))
                 })
 
                 html = $compile(html)($scope)
