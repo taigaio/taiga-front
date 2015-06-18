@@ -2,6 +2,10 @@
     display: inline-block;
     margin-left: .5rem;
     width: .5rem;
+    svg {
+        height: .5rem;
+        width: .5rem;
+    }
     path {
         fill: $gray-light;
         transition: fill .3s linear;
