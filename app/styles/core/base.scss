@@ -45,7 +45,7 @@ body {
 }
 
 .centered {
-    @extend %main;
+    margin: 1rem auto;
     max-width: 1200px;
     min-width: 960px;
     width: 90%;
