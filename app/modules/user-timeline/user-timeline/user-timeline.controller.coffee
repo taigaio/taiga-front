@@ -28,43 +28,31 @@ class UserTimelineController extends mixOf(taiga.Controller, taiga.PageMixin, ta
         "tgUserTimelineService"
     ]
 
-    min: 20
     constructor: (@userTimelineService) ->
         @.timelineList = Immutable.List()
-        @.page = 1
         @.scrollDisabled = false
+
+        @.timeline = null
+
+        if @.projectId
+            @.timeline = @userTimelineService.getProjectTimeline(@.projectId)
+        else if @.currentUser
+            @.timeline = @userTimelineService.getProfileTimeline(@.user.get("id"))
+        else
+            @.timeline = @userTimelineService.getUserTimeline(@.user.get("id"))
 
     loadTimeline: () ->
         @.scrollDisabled = true
 
-        promise = null
+        return @.timeline
+            .next()
+            .then (response) =>
+                @.timelineList = @.timelineList.concat(response.get("items"))
 
-        if @.projectId
-            promise = @userTimelineService
-                .getProjectTimeline(@.projectId, @.page)
-        else if @.currentUser
-            promise = @userTimelineService
-                .getProfileTimeline(@.user.get("id"), @.page)
-        else
-            promise = @userTimelineService
-                .getUserTimeline(@.user.get("id"), @.page)
+                if response.get("next")
+                    @.scrollDisabled = false
 
-        promise.then (list) =>
-            @._timelineLoaded(list)
-
-            if !@.scrollDisabled && @.timelineList.size < @.min
-                return @.loadTimeline()
-
-            return @.timelineList
-
-        return promise
-
-    _timelineLoaded: (newTimelineList) ->
-        @.timelineList = @.timelineList.concat(newTimelineList)
-        @.page++
-
-        if newTimelineList.size
-            @.scrollDisabled = false
+                return @.timelineList
 
 angular.module("taigaUserTimeline")
     .controller("UserTimeline", UserTimelineController)

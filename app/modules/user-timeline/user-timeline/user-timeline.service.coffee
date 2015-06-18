@@ -1,9 +1,9 @@
 taiga = @.taiga
 
 class UserTimelineService extends taiga.Service
-    @.$inject = ["tgResources"]
+    @.$inject = ["tgResources", "tgUserTimelinePaginationSequenceService"]
 
-    constructor: (@rs) ->
+    constructor: (@rs, @userTimelinePaginationSequenceService) ->
 
     _invalid: [
         {# Items with only invalid fields
@@ -71,21 +71,36 @@ class UserTimelineService extends taiga.Service
             return invalid.check.call(this, timeline)
 
     getProfileTimeline: (userId, page) ->
-        return @rs.users.getProfileTimeline(userId, page)
-            .then (result) =>
-                return result.filterNot (timeline) =>
-                    return @._isInValidTimeline(timeline)
+        config = {}
 
-    getUserTimeline: (userId, page) ->
-        return @rs.users.getUserTimeline(userId, page)
-            .then (result) =>
-                return result.filterNot (timeline) =>
-                    return @._isInValidTimeline(timeline)
+        config.fetch = (page) =>
+            return @rs.users.getProfileTimeline(userId, page)
 
-    getProjectTimeline: (projectId, page) ->
-        return @rs.projects.getTimeline(projectId, page)
-            .then (result) =>
-                return result.filterNot (timeline) =>
-                    return @._isInValidTimeline(timeline)
+        config.filter = (items) =>
+            return items.filterNot (item) => @._isInValidTimeline(item)
+
+        return @userTimelinePaginationSequenceService(config)
+
+    getUserTimeline: (userId) ->
+        config = {}
+
+        config.fetch = (page) =>
+            return @rs.users.getUserTimeline(userId, page)
+
+        config.filter = (items) =>
+            return items.filterNot (item) => @._isInValidTimeline(item)
+
+        return @userTimelinePaginationSequenceService(config)
+
+    getProjectTimeline: (projectId) ->
+        config = {}
+
+        config.fetch = (page) =>
+            return @rs.projects.getTimeline(projectId, page)
+
+        config.filter = (items) =>
+            return items.filterNot (item) => @._isInValidTimeline(item)
+
+        return @userTimelinePaginationSequenceService(config)
 
 angular.module("taigaUserTimeline").service("tgUserTimelineService", UserTimelineService)

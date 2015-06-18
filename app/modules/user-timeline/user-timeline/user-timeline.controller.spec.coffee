@@ -1,5 +1,5 @@
 describe "UserTimelineController", ->
-    controller = scope = $q = provide = null
+    controller = scope = $q = provide = $rootScope = null
 
     mocks = {}
 
@@ -24,175 +24,112 @@ describe "UserTimelineController", ->
         module "taigaUserTimeline"
         _mocks()
 
-        inject ($controller, _$q_) ->
+        inject ($controller, _$q_, _$rootScope_) ->
             $q = _$q_
             controller = $controller
+            $rootScope = _$rootScope_
 
     it "timelineList should be an array", () ->
-        myCtrl = controller "UserTimeline"
+        $scope = $rootScope.$new();
+
+        mocks.userTimelineService.getUserTimeline = sinon.stub().returns(true)
+
+        myCtrl = controller("UserTimeline", $scope, {
+            user: Immutable.Map({id: 2})
+        })
+
         expect(myCtrl.timelineList.toJS()).is.an("array")
 
-    it "pagination starts at 1", () ->
-        myCtrl = controller "UserTimeline"
-        expect(myCtrl.page).to.be.equal(1)
+    describe "init timeline", () ->
+        it "project timeline sequence", () ->
+            mocks.userTimelineService.getProjectTimeline = sinon.stub().withArgs(4).returns(true)
+
+            $scope = $rootScope.$new();
+
+            myCtrl = controller("UserTimeline", $scope, {
+                projectId: 4
+            })
+
+            expect(myCtrl.timeline).to.be.true
+
+        it "currentUser timeline sequence", () ->
+            mocks.userTimelineService.getProfileTimeline = sinon.stub().withArgs(2).returns(true)
+
+            $scope = $rootScope.$new();
+
+            myCtrl = controller("UserTimeline", $scope, {
+                currentUser: true,
+                user: Immutable.Map({id: 2})
+            })
+
+            expect(myCtrl.timeline).to.be.true
+
+        it "currentUser timeline sequence", () ->
+            mocks.userTimelineService.getUserTimeline = sinon.stub().withArgs(2).returns(true)
+
+            $scope = $rootScope.$new();
+
+            myCtrl = controller("UserTimeline", $scope, {
+                user: Immutable.Map({id: 2})
+            })
+
+            expect(myCtrl.timeline).to.be.true
 
     describe "load timeline", () ->
-        timelineList = null
+        myCtrl = null
 
         beforeEach () ->
-            timelineList = Immutable.fromJS([
-                { fake: "fake"},
-                { fake: "fake"},
-                { fake: "fake"},
-                { fake: "fake"},
-                { fake: "fake"},
-                { fake: "fake"},
-                { fake: "fake"},
-                { fake: "fake"},
-                { fake: "fake"},
-                { fake: "fake"},
-                { fake: "fake"},
-                { fake: "fake"},
-                { fake: "fake"},
-                { fake: "fake"},
-                { fake: "fake"},
-                { fake: "fake"},
-                { fake: "fake"},
-                { fake: "fake"},
-                { fake: "fake"},
-                { fake: "fake"}
-            ])
+            mocks.userTimelineService.getUserTimeline = sinon.stub().returns({})
+            $scope = $rootScope.$new();
+            myCtrl = controller("UserTimeline", $scope, {
+                user: Immutable.Map({id: 2})
+            })
 
-        it "if is current user call getProfileTimeline and call timelineLoaded at the end", () ->
-            myCtrl = controller "UserTimeline"
-            myCtrl.currentUser = true
-            myCtrl.user = mockUser
+        it "enable scroll on loadTimeline if there are more pages", (done) ->
+            response = Immutable.Map({
+                items: [1, 2, 3],
+                next: true
+            })
 
-            myCtrl._timelineLoaded = sinon.spy()
-
-            thenStub = sinon.stub()
-
-            mocks.userTimelineService.getProfileTimeline = sinon.stub()
-                .withArgs(mockUser.get("id"), myCtrl.page)
-                .returns({
-                    then: thenStub
-                })
-
-            myCtrl.loadTimeline()
-            thenStub.callArgWith(0, timelineList)
-
-        it "if not current user call getUserTimeline and call timelineLoaded at the end", () ->
-            myCtrl = controller "UserTimeline"
-            myCtrl.currentUser = false
-            myCtrl.user = mockUser
-
-            myCtrl._timelineLoaded = sinon.spy()
-
-            thenStub = sinon.stub()
-
-            mocks.userTimelineService.getUserTimeline = sinon.stub()
-                .withArgs(mockUser.get("id"), myCtrl.page)
-                .returns({
-                    then: thenStub
-                })
-
-            myCtrl.loadTimeline()
-
-            thenStub.callArgWith(0, timelineList)
-            expect(myCtrl._timelineLoaded.withArgs(timelineList)).to.be.calledOnce
-
-        it "the scrollDisabled variable must be true during the timeline load", () ->
-            myCtrl = controller "UserTimeline"
-            myCtrl.currentUser = true
-            myCtrl.user = mockUser
-
-            myCtrl._timelineLoaded = sinon.spy()
-
-            thenStub = sinon.stub()
-
-            mocks.userTimelineService.getProfileTimeline = sinon.stub()
-                .withArgs(mockUser.get("id"), myCtrl.page)
-                .returns({
-                    then: thenStub
-                })
+            myCtrl.timeline.next = sinon.stub().promise()
+            myCtrl.timeline.next.resolve(response)
 
             expect(myCtrl.scrollDisabled).to.be.false
 
-            myCtrl.loadTimeline()
+            myCtrl.loadTimeline().then () ->
+                expect(myCtrl.scrollDisabled).to.be.false
 
-            expect(myCtrl.scrollDisabled).to.be.true
-
-        it "disable scroll when no more content", () ->
-            myCtrl = controller "UserTimeline"
-
-            myCtrl.scrollDisabled = true
-
-            myCtrl._timelineLoaded(Immutable.fromJS(['xx', 'ii']))
-
-            expect(myCtrl.scrollDisabled).to.be.false
-
-            myCtrl.scrollDisabled = true
-            myCtrl._timelineLoaded(Immutable.fromJS([]))
-
-            expect(myCtrl.scrollDisabled).to.be.true
-
-        it "pagiantion increase one every call to loadTimeline", () ->
-            myCtrl = controller "UserTimeline"
-
-            expect(myCtrl.page).to.equal(1)
-
-            myCtrl._timelineLoaded(timelineList)
-
-            expect(myCtrl.page).to.equal(2)
-
-        it "concat timeline list", () ->
-            myCtrl = controller "UserTimeline"
-
-            myCtrl._timelineLoaded(timelineList)
-            myCtrl._timelineLoaded(timelineList)
-            expect(myCtrl.timelineList.size).to.be.eql(40)
-
-        it "call next page until reach de min items", (done) ->
-            myCtrl = controller "UserTimeline"
-            myCtrl.user = mockUser
-            myCtrl.currentUser = true
-
-            mocks.userTimelineService.getProfileTimeline = sinon.stub().promise()
-
-            timelineList = Immutable.fromJS([
-                { fake: "fake"},
-                { fake: "fake"},
-                { fake: "fake"},
-                { fake: "fake"},
-                { fake: "fake"}
-            ])
-
-            promise = myCtrl.loadTimeline(timelineList)
-
-            myCtrl.loadTimeline = sinon.spy()
-
-            mocks.userTimelineService.getProfileTimeline.resolve(timelineList)
-
-            promise.then () ->
-                expect(myCtrl.loadTimeline).to.be.calledOnce
                 done()
 
-        it "project timeline items", () ->
-            myCtrl = controller "UserTimeline"
-            myCtrl.user = mockUser
-            myCtrl.projectId = 4
+        it "disable scroll on loadTimeline if there are more pages", (done) ->
+            response = Immutable.Map({
+                items: [1, 2, 3],
+                next: false
+            })
 
-            thenStub = sinon.stub()
+            myCtrl.timeline.next = sinon.stub().promise()
+            myCtrl.timeline.next.resolve(response)
 
-            mocks.userTimelineService.getProjectTimeline = sinon.stub()
-                .withArgs(4, myCtrl.page)
-                .returns({
-                    then: thenStub
-                })
+            expect(myCtrl.scrollDisabled).to.be.false
 
-            myCtrl.loadTimeline()
+            myCtrl.loadTimeline().then () ->
+                expect(myCtrl.scrollDisabled).to.be.true
 
-            thenStub.callArgWith(0, timelineList)
+                done()
 
-            expect(myCtrl.timelineList.size).to.be.eql(20)
-            expect(myCtrl.page).to.equal(2)
+        it "concat response data", (done) ->
+            response = Immutable.Map({
+                items: [1, 2, 3],
+                next: false
+            })
+
+            myCtrl.timelineList = Immutable.List([1, 2])
+            myCtrl.timeline.next = sinon.stub().promise()
+            myCtrl.timeline.next.resolve(response)
+
+            expect(myCtrl.scrollDisabled).to.be.false
+
+            myCtrl.loadTimeline().then () ->
+                expect(myCtrl.timelineList.size).to.be.equal(5)
+
+                done()

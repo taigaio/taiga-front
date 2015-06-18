@@ -1,4 +1,6 @@
-Resource = (urlsService, http) ->
+pagination = () ->
+
+Resource = (urlsService, http, paginateResponseService) ->
     service = {}
 
     service.getProjectBySlug = (projectSlug) ->
@@ -40,12 +42,13 @@ Resource = (urlsService, http) ->
         url = "#{url}/#{projectId}"
 
         return http.get(url, params).then (result) ->
-            return Immutable.fromJS(result.data)
+            result = Immutable.fromJS(result)
+            return paginateResponseService(result)
 
     return () ->
         return {"projects": service}
 
-Resource.$inject = ["$tgUrls", "$tgHttp"]
+Resource.$inject = ["$tgUrls", "$tgHttp", "tgPaginateResponseService"]
 
 module = angular.module("taigaResources2")
 module.factory("tgProjectsResources", Resource)
