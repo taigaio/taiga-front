@@ -21,11 +21,6 @@ div.wrapper(tg-project-profile, ng-controller="ProjectProfileController as ctrl"
                       ng-model="project.name", data-required="true", maxlength="45")
 
             fieldset
-                label(for="project-slug", translate="ADMIN.PROJECT_PROFILE.PROJECT_SLUG")
-                input(type="text", name="slug", placeholder="{{'ADMIN.PROJECT_PROFILE.PROJECT_SLUG' | translate}}", id="project-slug",
-                      ng-model="project.slug", data-required="true")
-
-            fieldset
                 label(for="project-sprints", translate="ADMIN.PROJECT_PROFILE.NUMBER_SPRINTS")
                 input(type="number", name="total_milestones", min="0", placeholder="{{'ADMIN.PROJECT_PROFILE.NUMBER_SPRINTS' | translate}}",
                       id="project-sprints", ng-model="project.total_milestones", data-type="digits")
