@@ -90,7 +90,6 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
     loadInitialData: ->
         promise = @.loadProject()
         promise.then =>
-            @.loadUsersAndRoles()
             @.loadMembers()
 
         return promise
@@ -301,7 +300,7 @@ MembershipsRowRoleSelectorDirective = ($log, $repo, $confirm) ->
     link = ($scope, $el, $attrs) ->
         render = (member) ->
             ctx = {
-                roleList: $scope.roles,
+                roleList: $scope.project.roles,
                 selectedRole: member.role
             }
 
