@@ -70,7 +70,7 @@ class UserTimelineService extends taiga.Service
         return _.some @._invalid, (invalid) =>
             return invalid.check.call(this, timeline)
 
-    getProfileTimeline: (userId, page) ->
+    getProfileTimeline: (userId) ->
         config = {}
 
         config.fetch = (page) =>
@@ -79,7 +79,7 @@ class UserTimelineService extends taiga.Service
         config.filter = (items) =>
             return items.filterNot (item) => @._isInValidTimeline(item)
 
-        return @userTimelinePaginationSequenceService(config)
+        return @userTimelinePaginationSequenceService.generate(config)
 
     getUserTimeline: (userId) ->
         config = {}
@@ -90,7 +90,7 @@ class UserTimelineService extends taiga.Service
         config.filter = (items) =>
             return items.filterNot (item) => @._isInValidTimeline(item)
 
-        return @userTimelinePaginationSequenceService(config)
+        return @userTimelinePaginationSequenceService.generate(config)
 
     getProjectTimeline: (projectId) ->
         config = {}
@@ -101,6 +101,6 @@ class UserTimelineService extends taiga.Service
         config.filter = (items) =>
             return items.filterNot (item) => @._isInValidTimeline(item)
 
-        return @userTimelinePaginationSequenceService(config)
+        return @userTimelinePaginationSequenceService.generate(config)
 
 angular.module("taigaUserTimeline").service("tgUserTimelineService", UserTimelineService)

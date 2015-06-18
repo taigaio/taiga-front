@@ -35,7 +35,7 @@ describe "tgUserTimelinePaginationSequenceService", ->
 
         config.minItems = 10
 
-        seq = userTimelinePaginationSequenceService(config)
+        seq = userTimelinePaginationSequenceService.generate(config)
 
         seq.next().then (result) ->
             result = result.toJS()
@@ -66,7 +66,7 @@ describe "tgUserTimelinePaginationSequenceService", ->
 
         config.minItems = 10
 
-        seq = userTimelinePaginationSequenceService(config)
+        seq = userTimelinePaginationSequenceService.generate(config)
 
         seq.next().then (result) ->
             result = result.toJS()
@@ -97,7 +97,7 @@ describe "tgUserTimelinePaginationSequenceService", ->
 
         config.minItems = 2
 
-        seq = userTimelinePaginationSequenceService(config)
+        seq = userTimelinePaginationSequenceService.generate(config)
 
         seq.next().then () ->
             seq.next().then (result) ->

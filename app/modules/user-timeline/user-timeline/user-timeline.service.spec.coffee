@@ -1,7 +1,5 @@
-describe.skip "tgUserTimelineService", ->
+describe "tgUserTimelineService", ->
     provide = null
-    $q = null
-    $rootScope = null
     userTimelineService = null
     mocks = {}
 
@@ -26,6 +24,7 @@ describe.skip "tgUserTimelineService", ->
     _mocks = () ->
         module ($provide) ->
             provide = $provide
+            _mockResources()
             _mockUserTimelinePaginationSequence()
 
             return null
@@ -34,10 +33,8 @@ describe.skip "tgUserTimelineService", ->
         _mocks()
 
     _inject = (callback) ->
-        inject (_tgUserTimelineService_, _$q_, _$rootScope_) ->
+        inject (_tgUserTimelineService_) ->
             userTimelineService = _tgUserTimelineService_
-            $q = _$q_
-            $rootScope = _$rootScope_
             callback() if callback
 
     beforeEach ->
@@ -146,79 +143,77 @@ describe.skip "tgUserTimelineService", ->
             }
         ]
 
-    it "filter invalid profile timeline items", (done) ->
+    it "filter invalid profile timeline items", () ->
         userId = 3
         page = 2
 
-        mocks.resources.users.getProfileTimeline = (_userId_, _page_) ->
+        mocks.resources.users.getProfileTimeline = (_userId_) ->
             expect(_userId_).to.be.equal(userId)
-            expect(_page_).to.be.equal(page)
 
-            return $q (resolve, reject) ->
-                resolve(Immutable.fromJS(valid_items))
+            return Immutable.fromJS(valid_items)
 
+        mocks.userTimelinePaginationSequence.generate = (config) ->
+            all = config.fetch()
+            expect(all.size).to.be.equal(11)
 
-            .then (_items_) ->
-                items = _items_.toJS()
+            items = config.filter(all).toJS()
+            expect(items).to.have.length(4)
+            expect(items[0]).to.be.eql(valid_items[0])
+            expect(items[1]).to.be.eql(valid_items[3])
+            expect(items[2]).to.be.eql(valid_items[5])
+            expect(items[3]).to.be.eql(valid_items[9])
 
-                expect(items).to.have.length(4)
-                expect(items[0]).to.be.eql(valid_items[0])
-                expect(items[1]).to.be.eql(valid_items[3])
-                expect(items[2]).to.be.eql(valid_items[5])
-                expect(items[3]).to.be.eql(valid_items[9])
-
-                done()
+            return true
 
         result = userTimelineService.getProfileTimeline(userId)
+        expect(result).to.be.true
 
-        mocks.userTimelinePaginationSequence.withArgs()
-
-
-    it "filter invalid user timeline items", (done) ->
+    it "filter invalid user timeline items", () ->
         userId = 3
         page = 2
 
-        mocks.resources.users.getUserTimeline = (_userId_, _page_) ->
+        mocks.resources.users.getUserTimeline = (_userId_) ->
             expect(_userId_).to.be.equal(userId)
-            expect(_page_).to.be.equal(page)
 
-            return $q (resolve, reject) ->
-                resolve(Immutable.fromJS(valid_items))
+            return Immutable.fromJS(valid_items)
 
-        userTimelineService.getUserTimeline(userId, page)
-            .then (_items_) ->
-                items = _items_.toJS()
+        mocks.userTimelinePaginationSequence.generate = (config) ->
+            all = config.fetch()
+            expect(all.size).to.be.equal(11)
 
-                expect(items).to.have.length(4)
-                expect(items[0]).to.be.eql(valid_items[0])
-                expect(items[1]).to.be.eql(valid_items[3])
-                expect(items[2]).to.be.eql(valid_items[5])
-                expect(items[3]).to.be.eql(valid_items[9])
+            items = config.filter(all).toJS()
+            expect(items).to.have.length(4)
+            expect(items[0]).to.be.eql(valid_items[0])
+            expect(items[1]).to.be.eql(valid_items[3])
+            expect(items[2]).to.be.eql(valid_items[5])
+            expect(items[3]).to.be.eql(valid_items[9])
 
-                done()
+            return true
 
-        $rootScope.$apply()
+        result = userTimelineService.getUserTimeline(userId)
+        expect(result).to.be.true
 
-    it "filter invalid project timeline items", (done) ->
-        projectId = 3
+    it "filter invalid user timeline items", () ->
+        userId = 3
         page = 2
 
-        mocks.resources.projects.getTimeline = (_projectId_, _page_) ->
-            expect(_projectId_).to.be.equal(projectId)
-            expect(_page_).to.be.equal(page)
+        mocks.resources.projects.getTimeline = (_userId_) ->
+            expect(_userId_).to.be.equal(userId)
 
-            return $q (resolve, reject) ->
-                resolve(Immutable.fromJS(valid_items))
+            return Immutable.fromJS(valid_items)
 
-        userTimelineService.getProjectTimeline(projectId, page)
-            .then (_items_) ->
-                items = _items_.toJS()
+        mocks.userTimelinePaginationSequence.generate = (config) ->
+            all = config.fetch()
+            expect(all.size).to.be.equal(11)
 
-                expect(items).to.have.length(4)
-                expect(items[0]).to.be.eql(valid_items[0])
-                expect(items[1]).to.be.eql(valid_items[3])
-                expect(items[2]).to.be.eql(valid_items[5])
-                expect(items[3]).to.be.eql(valid_items[9])
-                done()
+            items = config.filter(all).toJS()
+            expect(items).to.have.length(4)
+            expect(items[0]).to.be.eql(valid_items[0])
+            expect(items[1]).to.be.eql(valid_items[3])
+            expect(items[2]).to.be.eql(valid_items[5])
+            expect(items[3]).to.be.eql(valid_items[9])
 
-        $rootScope.$apply()
+            return true
+
+        result = userTimelineService.getProjectTimeline(userId)
+        expect(result).to.be.true

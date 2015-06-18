@@ -1,5 +1,7 @@
 UserTimelinePaginationSequence = () ->
-    return (config) ->
+    obj = {}
+
+    obj.generate = (config) ->
         page = 1
         items = Immutable.List()
 
@@ -31,5 +33,7 @@ UserTimelinePaginationSequence = () ->
         return {
             next: () -> next()
         }
+
+    return obj
 
 angular.module("taigaUserTimeline").factory("tgUserTimelinePaginationSequenceService", UserTimelinePaginationSequence)
