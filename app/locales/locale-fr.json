@@ -239,12 +239,12 @@
         },
         "META": {
             "PAGE_TITLE": "Taiga",
-            "PAGE_DESCRIPTION": "Taiga is a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
+            "PAGE_DESCRIPTION": "Taiga est une plateforme de gestion de projets pour les startups, les développeurs et les designers agiles qui veulent un outil simple, beau et qui rend le travail vraiment agréable."
         }
     },
     "LOGIN": {
         "PAGE_TITLE": "Connexion - Taiga",
-        "PAGE_DESCRIPTION": "Logging in to Taiga, a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
+        "PAGE_DESCRIPTION": "Connectez-vous à Taiga, une plateforme de gestion de projets pour les startups, les développeurs et les designers agiles qui veulent un outil simple, beau et qui rend le travail vraiment agréable."
     },
     "AUTH": {
         "INVITED_YOU": "vous a invité-e à rejoindre le projet",
@@ -266,8 +266,8 @@
         "SUCCESS": "Nos Oompa Loompas sont heureux, bienvenue sur Taiga."
     },
     "REGISTER": {
-        "PAGE_TITLE": "Register - Taiga",
-        "PAGE_DESCRIPTION": "Create your account in Taiga, a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
+        "PAGE_TITLE": "S'inscrire - Taiga",
+        "PAGE_DESCRIPTION": "Créez votre compte sur Taiga, une plateforme de gestion de projets pour les startups, les développeurs et les designers agiles qui veulent un outil simple, beau et qui rend le travail vraiment agréable."
     },
     "REGISTER_FORM": {
         "TITLE": "Créer un compte Taiga (gratuit)",
@@ -280,8 +280,8 @@
         "LINK_LOGIN": "Êtes-vous déjà enregistré? Connectez-vous."
     },
     "FORGOT_PASSWORD": {
-        "PAGE_TITLE": "Forgot password - Taiga",
-        "PAGE_DESCRIPTION": "Enter your username or email to get a new password and you can access to Taiga again."
+        "PAGE_TITLE": "Mot de passe oublié - Taiga",
+        "PAGE_DESCRIPTION": "Saisissez votre nom d'utilisateur ou votre adresse courriel pour recevoir un nouveau mot de passe et accéder à nouveau à Taiga."
     },
     "FORGOT_PASSWORD_FORM": {
         "TITLE": "Oops, avez-vous oublié votre mot de passe ?",
@@ -316,8 +316,8 @@
         "SUCCESS": "Nos Oompa Loompas ont sauvegardé votre nouveau mot de passe.<br /> Essayez de vous <strong>connecter</strong> avec."
     },
     "INVITATION": {
-        "PAGE_TITLE": "Invitation acceptance - Taiga",
-        "PAGE_DESCRIPTION": "Accept the invitation to join a project in Taiga, a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
+        "PAGE_TITLE": "Acceptation des invitations - Taiga",
+        "PAGE_DESCRIPTION": "Acceptez l'invitation à rejoindre un projet sur Taiga, une plateforme de gestion de projets pour les startups, les développeurs et les designers agiles qui veulent un outil simple, beau et qui rend le travail vraiment agréable."
     },
     "INVITATION_LOGIN_FORM": {
         "NOT_FOUND": "<strong>Oh là là, nous avons un problème</strong><br />Nos Oompa Loompas trouvent pas votre invitation.",
@@ -325,16 +325,16 @@
         "ERROR": "D'après nos Oompa Loompas, vous n'êtes pas encore enregistrés ou vous avez saisi un mot de passe incorrect."
     },
     "HOME": {
-        "PAGE_TITLE": "Home - Taiga",
-        "PAGE_DESCRIPTION": "The Taiga home page with your main projects and all your assigned and watched user stories, tasks and issues",
+        "PAGE_TITLE": "Accueil - Taiga",
+        "PAGE_DESCRIPTION": "La page d'accueil de Taiga sur laquelle apparaissent vos projets principaux et toutes les récits utilisateur, tâches et suivis de problèmes qui vont sont assignés et surveillés.",
         "EMPTY_WATCHING": "<strong>Suivre</strong> les projets, Récits Utilisateur, Tâches, Problèmes... que vous voulez connaître :)",
-        "EMPTY_PROJECT_LIST": "You don't have any projects yet",
+        "EMPTY_PROJECT_LIST": "Vous n'avez aucun projet pour l'instant",
         "WORKING_ON_SECTION": "Projets en cours",
         "WATCHING_SECTION": "Observant"
     },
     "PROJECTS": {
         "PAGE_TITLE": "Mes projets - Taiga",
-        "PAGE_DESCRIPTION": "A list with all your projects, you can reorder or create a new one.",
+        "PAGE_DESCRIPTION": "Une liste de tous vos projets, vous pouvez la trier ou en créer une nouvelle.",
         "MY_PROJECTS": "Mes projets"
     },
     "ATTACHMENT": {
@@ -374,7 +374,7 @@
         },
         "MEMBERSHIPS": {
             "TITLE": "Gérer les membres",
-            "PAGE_TITLE": "Memberships - {{projectName}}",
+            "PAGE_TITLE": "Membres - {{projectName}}",
             "ADD_BUTTON": "+ Nouveau membre",
             "ADD_BUTTON_TITLE": "Ajouter un membre"
         },
@@ -451,7 +451,7 @@
             "ISSUE_ADD": "Ajouter un champ personnalisé dans les problèmes"
         },
         "PROJECT_VALUES": {
-            "PAGE_TITLE": "{{sectionName}} - Project values - {{projectName}}",
+            "PAGE_TITLE": "{{sectionName}} - Valeurs du projet - {{projectName}}",
             "REPLACEMENT": "Tous les éléments avec cette valeur seront modifiés pour ",
             "ERROR_DELETE_ALL": "Vous ne pouvez pas effacer toutes les valeurs."
         },
@@ -641,7 +641,7 @@
         },
         "PROFILE_SIDEBAR": {
             "TITLE": "Votre profil",
-            "DESCRIPTION": "People can see everything you do and what are you working on. Add a nice bio to give an enhanced version of your information.",
+            "DESCRIPTION": "Tout le monde peut voir ce que vous faites et ce sur quoi vous travaillez. Ajoutez une bio détaillée pour améliorer la vision perçue de votre profil.",
             "ADD_INFO": "Modifier votre biographie"
         }
     },
@@ -778,8 +778,8 @@
         }
     },
     "US": {
-        "PAGE_TITLE": "{{userStorySubject}} - User Story {{userStoryRef}} - {{projectName}}",
-        "PAGE_DESCRIPTION": "Status: {{userStoryStatus }}. Completed {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} of {{userStoryTotalTasks}} tasks closed). Points: {{userStoryPoints}}. Description: {{userStoryDescription}}",
+        "PAGE_TITLE": "{{userStorySubject}} - Récit utilisateur {{userStoryRef}} - {{projectName}}",
+        "PAGE_DESCRIPTION": "État : {{userStoryStatus }}. Achevé {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} sur {{userStoryTotalTasks}} tâches fermées). Points : {{userStoryPoints}}. Description : {{userStoryDescription}}",
         "SECTION_NAME": "Détails du récit utilisateur",
         "LINK_TASKBOARD": "Tableau des tâches",
         "TITLE_LINK_TASKBOARD": "Aller au tableau des tâches",
@@ -867,8 +867,8 @@
         }
     },
     "BACKLOG": {
-        "PAGE_TITLE": "Backlog - {{projectName}}",
-        "PAGE_DESCRIPTION": "The backlog panel, with user stories and sprints of the project {{projectName}}: {{projectDescription}}",
+        "PAGE_TITLE": "Carnet - {{projectName}}",
+        "PAGE_DESCRIPTION": "Le panneau carnet avec les récits utilisateurs et sprints du projet {{projectName}} : {{projectDescription}}",
         "SECTION_NAME": "Carnet",
         "MOVE_US_TO_CURRENT_SPRINT": "Déplacer vers le Sprint Courant",
         "SHOW_FILTERS": "Afficher les filtres",
@@ -948,8 +948,8 @@
         "VERSION_ERROR": "Quelqu'un a changé ça auparavant dans Taiga et nos Oompa Loompas ne peuvent appliquer vos modifications. Veuillez recharger la page et appliquer vos modifications de nouveaux (elles seront perdues)."
     },
     "TASKBOARD": {
-        "PAGE_TITLE": "{{sprintName}} - Sprint taskboard - {{projectName}}",
-        "PAGE_DESCRIPTION": "Sprint {{sprintName}} (from {{startDate}} to {{endDate}}) of {{projectName}}. Completed {{completedPercentage}}% ({{completedPoints}} of {{totalPoints}} points). {{openTasks}} opened tasks of {{totalTasks}}.",
+        "PAGE_TITLE": "{{sprintName}} - Liste de tâches du sprint - {{projectName}}",
+        "PAGE_DESCRIPTION": "Sprint {{sprintName}} (du {{startDate}} au {{endDate}}) de {{projectName}}. Achevé {{completedPercentage}}% ({{completedPoints}} sur {{totalPoints}} points). {{openTasks}} tâches ouvertes sur {{totalTasks}}.",
         "SECTION_NAME": "Tableau des tâches",
         "TITLE_ACTION_ADD": "Ajouter une nouvelle tâche",
         "TITLE_ACTION_ADD_BULK": "Ajouter de nouvelles tâches en lot",
@@ -973,7 +973,7 @@
         }
     },
     "TASK": {
-        "PAGE_TITLE": "{{taskSubject}} - Task {{taskRef}} - {{projectName}}",
+        "PAGE_TITLE": "{{taskSubject}} - Tâche {{taskRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "État: {{taskStatus }}. Description: {{taskDescription}}",
         "SECTION_NAME": "Détails de la tâche",
         "LINK_TASKBOARD": "Tableau des tâches",
@@ -1022,7 +1022,7 @@
     },
     "ISSUES": {
         "PAGE_TITLE": "Problèmes - {{projectName}}",
-        "PAGE_DESCRIPTION": "The issues list panel of the project {{projectName}}: {{projectDescription}}",
+        "PAGE_DESCRIPTION": "Le panneau de la liste des problèmes du projet {{projectName}} : {{projectDescription}}",
         "LIST_SECTION_NAME": "Problèmes",
         "SECTION_NAME": "Detalhes do problema",
         "ACTION_NEW_ISSUE": "+ NOUVEAU PROBLÈME",
@@ -1087,12 +1087,12 @@
         }
     },
     "ISSUE": {
-        "PAGE_TITLE": "{{issueSubject}} - Issue {{issueRef}} - {{projectName}}",
-        "PAGE_DESCRIPTION": "Status: {{issueStatus }}. Type: {{issueType}}, Priority: {{issuePriority}}. Severity: {{issueSeverity}}. Description: {{issueDescription}}"
+        "PAGE_TITLE": "{{issueSubject}} - Problème {{issueRef}} - {{projectName}}",
+        "PAGE_DESCRIPTION": "État : {{issueStatus }}. Type : {{issueType}}, Priorité : {{issuePriority}}. Sévérité : {{issueSeverity}}. Description : {{issueDescription}}"
     },
     "KANBAN": {
         "PAGE_TITLE": "Kanban - {{projectName}}",
-        "PAGE_DESCRIPTION": "The kanban panel, with user stories of the project {{projectName}}: {{projectDescription}}",
+        "PAGE_DESCRIPTION": "Le panneau kanban avec les récits utilisateurs du {{projectName}} : {{projectDescription}}",
         "SECTION_NAME": "Kanban",
         "TITLE_ACTION_FOLD": "Replier la colonne",
         "TITLE_ACTION_UNFOLD": "Déplier la colonne",
@@ -1108,7 +1108,7 @@
     },
     "SEARCH": {
         "PAGE_TITLE": "Chercher - {{projectName}}",
-        "PAGE_DESCRIPTION": "Search anything, user stories, issues, tasks or wiki pages, in the project {{projectName}}: {{projectDescription}}",
+        "PAGE_DESCRIPTION": "Chercher tout, récits utilisateurs, problèmes, tâches ou pages de wiki, dans le projet {{projectName}} : {{projectDescription}}",
         "FILTER_USER_STORIES": "Récits utilisateur",
         "FILTER_ISSUES": "Problèmes",
         "FILTER_TASKS": "Tâches",
@@ -1120,7 +1120,7 @@
     },
     "TEAM": {
         "PAGE_TITLE": "EQUIPE - {{projectName}}",
-        "PAGE_DESCRIPTION": "The team panel to show all the members of the project {{projectName}}: {{projectDescription}}",
+        "PAGE_DESCRIPTION": "Le panneau équipe montre la liste des membres du projet {{projectName}} : {{projectDescription}}",
         "SECTION_NAME": "Equipe",
         "APP_TITLE": "EQUIPE - {{projectName}}",
         "PLACEHOLDER_INPUT_SEARCH": "Rechercher par nom...",
@@ -1217,18 +1217,18 @@
         "HINT1_TITLE": "Savez-vous que vous pouvez importer et exporter les projets?",
         "HINT1_TEXT": "Cela vous permet d'extraire toutes vos données d'un Taiga et de le déplacer vers un autre",
         "HINT2_TITLE": "Savez-vous que vous pouvez créer des champs personnalisés ?",
-        "HINT2_TEXT": "Teams can now create custom fields as a flexible means to enter specific data useful for their particular workflow",
-        "HINT3_TITLE": "Reorder your projects to feature those most relevant to you",
-        "HINT3_TEXT": "The top 10 project will be in your top bar direct access",
-        "HINT4_TITLE": "Did you forgot what were you working on?",
-        "HINT4_TEXT": "Don't worry, on your dashboard you'll find your open tasks, issues, and user stories in the order you worked on them."
+        "HINT2_TEXT": "Les équipes peuvent maintenant créer des champs personnalisés de façon à leur permettre de saisir les données qui font sens à leur flux de travail",
+        "HINT3_TITLE": "Triez vos projets pour mettre en avant ceux qui sont les plus pertinants pour vous",
+        "HINT3_TEXT": "Vos 10 principaux projets seront accessibles via la barre du haut",
+        "HINT4_TITLE": "Avez-vous oublié ce sur quoi vous travailliez ?",
+        "HINT4_TEXT": "Pas d'inquiétude, vous trouverez dans votre tableau de bord vos tâches, problèmes et récits utilisateurs dans l'ordre dans lequel vous avez travaillé dessus."
     },
     "TIMELINE": {
         "UPLOAD_ATTACHMENT": "{{username}} a téléversé une nouvelle pièce jointe dans {{obj_name}}",
         "US_CREATED": "{{username}} a créé un nouveau récit utilisateur {{obj_name}} dans {{project_name}}",
         "ISSUE_CREATED": "{{username}} a créé un nouveau suivi de problème {{obj_name}} dans {{project_name}}",
         "TASK_CREATED": "{{username}} a créé une nouvelle Tâche {{obj_name}} dans {{project_name}}",
-        "TASK_CREATED_WITH_US": "{{username}} has created a new task {{obj_name}} in {{project_name}} which belongs to the US {{us_name}}",
+        "TASK_CREATED_WITH_US": "{{username}} a créé une nouvelle tâche {{obj_name}} dans le projet  {{project_name}} pour le récit utilisateur {{us_name}}",
         "WIKI_CREATED": "{{username}} a créé une nouvelle page wiki {{obj_name}} dans {{project_name}}",
         "MILESTONE_CREATED": "{{username}} a créé un nouveau sprint {{obj_name}} dans {{project_name}}",
         "NEW_PROJECT": "{{username}} a créé le projet {{project_name}}",
