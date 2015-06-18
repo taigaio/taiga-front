@@ -559,11 +559,20 @@ init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $na
     # Analytics
     $analytics.initialize()
 
-    $rootscope.$on '$routeChangeStart',  (event, next) ->
+    # On the first page load the loader is painted in `$routeChangeSuccess`
+    # because we need to hide the tg-navigation-bar.
+    # In the other cases the loader is in `$routeChangeSuccess`
+    # because `location.noreload` prevent to execute this event.
+    un = $rootscope.$on '$routeChangeStart',  (event, next) ->
         if next.loader
-            loaderService.startWithAutoClose()
+            loaderService.start(true)
+
+        un()
 
     $rootscope.$on '$routeChangeSuccess',  (event, next) ->
+        if next.loader
+            loaderService.start(true)
+
         if next.access && next.access.requiresLogin
             if !$auth.isAuthenticated()
                 $location.path($navUrls.resolve("login"))
