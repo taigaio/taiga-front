@@ -68,8 +68,8 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     _setMeta: ->
         title =  @translate.instant("WIKI.PAGE_TITLE", {
-            wikiPageName: @scope.wiki.slug
-            projectName: unslugify(@scope.wiki.slug)
+            wikiPageName: unslugify(@scope.wiki.slug)
+            projectName: @scope.project.name
         })
         description =  @translate.instant("WIKI.PAGE_DESCRIPTION", {
             wikiPageContent: angular.element(@scope.wiki.html or "").text()
