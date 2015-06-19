@@ -7,13 +7,13 @@
             margin-bottom: 0;
         }
         a {
-            color: $green-taiga;
+            color: $primary;
             &:first-child {
                 @extend %bold;
                 color: $gray;
             }
             &:hover {
-                color: $fresh-taiga;
+                color: $primary-light;
             }
         }
         blockquote {

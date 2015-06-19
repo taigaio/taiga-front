@@ -49,15 +49,15 @@
         display: flex;
         flex-wrap: wrap;
         margin-bottom: 1rem;
-        a {
-            display: block;
-        }
         li {
             margin-right: .14rem;
             width: 24%;
             &:nth-child(4n) {
                 margin-right: 0;
             }
+        }
+        a {
+            display: block;
         }
         img {
             border-radius: .2rem;

@@ -1,5 +1,4 @@
 .search-result-table {
-
     .empty {
         .title {
             border: 0;
@@ -13,7 +12,7 @@
         justify-content: space-between;
         padding: .5rem;
         &:hover {
-            background: lighten($green-taiga, 60%);
+            background: lighten($primary, 60%);
             transition: background .2s ease-in;
         }
         .ref {
@@ -40,7 +39,7 @@
         }
     }
     .row-selected {
-        background: lighten($green-taiga, 60%);
+        background: lighten($primary, 60%);
         transition: background .2s ease-in;
     }
 

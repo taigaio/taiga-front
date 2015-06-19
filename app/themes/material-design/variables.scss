@@ -4,32 +4,32 @@
 
 // Colors
 $black: #000;
-$blackish: #050505;
-$grayer: #444;
-$gray: #555;
-$gray-light: #b8b8b8;
+$blackish: #212121;
+$grayer: #424242;
+$gray: #757575;
+$gray-light: #bdbdbd;
 $whitish: #f5f5f5;
 $white: #fff;
 
 // Primary colors
-$primary-light: #9dce0a;
-$primary: #72a114;
-$primary-dark: #879b89;
+$primary-light: #8c9eff;
+$primary: #3f51b5;
+$primary-dark: #1a237e;
 
 //Warning colors
-$red-light: #ff8282;
-$red: #f00;
+$red-light: #ff5252;
+$red: #f44336;
 
 //Card color
 $card: #fff8e4;
 $card-hover: #f1e8cd;
 $card-dark: #cfc29b;
 
-$green-japanese-laurel: #237400;
-$green-olive: #618000;
-$red-amaranth: #e43050;
-$purple-eggplant: #810061;
-$yellow-pear: #bbe831;
+$green-japanese-laurel: #009688;
+$green-olive: #cddc39;
+$red-amaranth: #e91e63;
+$purple-eggplant: #9c27b0;
+$yellow-pear: #ffc107;
 
 //*************************
 //** LAYOUT
@@ -48,7 +48,7 @@ body {
 
 // Secondary panel
 .menu-secondary {
-    background: $whitish;
+    background: lighten($primary-light, 22%);
 }
 
 // Tertiary panel
@@ -58,13 +58,23 @@ body {
 
 // Extra bar panel
 .extrabar {
-    background: $whitish;
+   background: lighten($primary-light, 22%);
 }
 
 
 //**************************
 //** TYPOGRAPHY
 //**************************
+
+@each $font-face in OpenSans-CondLight, OpenSans-Light, opensans-regular, opensans-semibold, taiga {
+    @font-face {
+        font-family: '#{$font-face}';
+        src: url('../fonts/#{$font-face}.eot?#iefix') format('embedded-opentype'),
+            url('../fonts/#{$font-face}.woff') format('woff'),
+            url('../fonts/#{$font-face}.ttf')  format('truetype'),
+            url('../fonts/#{$font-face}.svg#{$font-face}') format('svg');
+    }
+}
 
 // Font Sizes
 %xsmall {font-size: .75rem;}
@@ -114,7 +124,7 @@ input[type="password"],
 select,
 textarea {
     background: $whitish;
-    border-color: $gray-light;
+    border-color: $primary;
     color: $grayer;
     @include placeholder {
         color: darken($gray-light, 10%);
@@ -133,7 +143,7 @@ textarea {
 
 // Blockquote
 blockquote {
-    border-left: 5px solid $whitish;
+    border-left: 5px solid $primary-light;
 }
 
 blockquote,
@@ -152,12 +162,12 @@ cite {
 
 // Background images
 %triangled-bg {
-    background: url('/images/bg.png') no-repeat center center;
+    background: url('https://lh4.googleusercontent.com/-k7YewfrSQ_Q/VGdNZND0NBI/AAAAAAAAD1A/UDZBeSGR7iM/w1465-h824-no/Ultimate%2BMaterial%2BLollipop%2BCollection%2B-%2B480') no-repeat center center;
     background-size: cover;
 }
 
 %background-taiga {
-    background: url('/images/invitation_bg.jpg') no-repeat center center;
+    background: url('https://lh6.googleusercontent.com/-2l_mJ5g6j4k/VGdNZCpaERI/AAAAAAAAD2o/zCx5Z3cYv6Y/w1465-h824-no/Ultimate%2BMaterial%2BLollipop%2BCollection%2B-%2B497') no-repeat center center;
     background-size: cover;
 }
 
@@ -173,19 +183,19 @@ cite {
 
 // Top navigation bar
 .navbar {
-    background: rgba($black, .5);
+    background: rgba($red-amaranth, .6);
     &:after {
         background: url('../images/menu-vert.png') repeat top left;
     }
 }
 
-$top-icon-color: #11241f;
-$dropdown-color: rgba(darken($grayer, 20%), 1);
+$top-icon-color: $white;
+$dropdown-color: rgba(darken($primary-dark, 20%), 1);
 
 //In project left navigation bar
 tg-project-menu {
-    background-color: $primary-dark;
-    background-image: url('../images/menu.png');
+    background-color: rgba(darken($primary-dark, 15%), 1);
+    background-image: none;
 }
 
 .main-nav {
@@ -201,10 +211,10 @@ tg-project-menu {
 //Taskboard table
 .taskboard-table-header {
     .task-colum-name {
-        background: $whitish;
-        border-top: 3px solid $gray-light;
+        background: lighten($primary-light, 20%);
+        border-top: 3px solid $primary;
         .icon {
-            color: $gray-light;
+            color: $primary;
         }
     }
 }
@@ -221,10 +231,10 @@ tg-project-menu {
 //Kanban table
 .kanban-table-header {
     .task-colum-name {
-        background: $whitish;
-        border-top: 3px solid $gray-light;
+        background: lighten($primary-light, 20%);
+        border-top: 3px solid $primary;
         .icon {
-            color: $gray-light;
+            color: $primary;
         }
     }
 }

@@ -47,10 +47,10 @@
             vertical-align: middle;
         }
         a {
-            color: $green-taiga;
+            color: $primary;
             margin-left: .5rem;
             &:hover {
-                color: $fresh-taiga;
+                color: $primary-light;
             }
         }
     }
@@ -65,7 +65,7 @@
             transition: color .2s linear;
             vertical-align: middle;
             &:hover {
-                color: $green-taiga;
+                color: $primary;
                 transition: color .2s linear;
 
             }
@@ -102,7 +102,7 @@
         padding: .5rem;
         transition: background .2s linear;
         &:hover {
-            background: rgba($fresh-taiga, .1);
+            background: rgba($primary-light, .1);
             transition: background .2s linear;
         }
         &.history-single-open {
@@ -127,7 +127,7 @@
         margin-right: .5rem;
         width: .8rem;
         &.history-success {
-            background: $fresh-taiga;
+            background: $primary-light;
         }
         &.history-error {
             background: $red;
@@ -149,7 +149,7 @@
             @extend %small;
             color: $gray-light;
             &:hover {
-                color: $fresh-taiga;
+                color: $primary-light;
                 transition: color .2s linear;
             }
         }

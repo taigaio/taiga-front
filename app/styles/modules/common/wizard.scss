@@ -1,6 +1,6 @@
 .wizard-create-project {
     @extend %lightbox;
-    background: url('/images/invitation_bg.jpg') no-repeat center center;
+    @extend %background-taiga;
     background-size: cover;
     color: $white;
     text-align: center;
@@ -77,7 +77,7 @@
         }
         input:checked {
             +label {
-                background: rgba($fresh-taiga, .7);
+                background: rgba($primary-light, .7);
                 transition: background .3s ease-in;
             }
         }
@@ -90,7 +90,7 @@
             text-align: center;
             transition: background .3s ease-in;
             &:hover {
-                background: rgba($green-taiga, .7);
+                background: rgba($primary, .7);
                 transition: background .3s ease-in;
             }
             .icon {
@@ -160,12 +160,8 @@
                 left: 25%;
             }
             &:nth-child(2) {
-                // left: 50%;
                 left: 75%;
             }
-            // &:nth-child(3) {
-            //     left: 75%;
-            // }
         }
     }
     .progress-bar-wrapper {
@@ -173,7 +169,7 @@
         height: .5rem;
     }
     .bar {
-        background: rgba($fresh-taiga, .9);
+        background: rgba($primary-light, .9);
         height: .5rem;
         left: 0;
         position: absolute;

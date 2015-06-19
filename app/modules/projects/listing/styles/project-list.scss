@@ -47,7 +47,7 @@
     .project-list-single {
         background: $white;
         &:hover {
-            background: lighten($green-taiga, 60%);
+            background: lighten($primary, 60%);
             cursor: move;
             transition: background .3s;
             .drag {

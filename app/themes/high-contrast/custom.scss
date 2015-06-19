@@ -1,0 +1,117 @@
+// Any styles in this stylesheet will override any previous defined style in Taiga.
+
+//    Max: Beat it or I'll call the Brute Squad!
+//    Fezzik: I'm on the Brute Squad.
+//    Max: [sees Fezzik's size] You are the Brute Squad!
+
+.working-on .duty-id,
+.watching .duty-id,
+.activity-item p,
+.table-team .avatar .position,
+.points-per-role > li,
+.private path {
+    color: $black;
+}
+.navbar a:hover {
+    color: $white;
+}
+
+.points-per-role > li:first-child {
+    background: $black;
+}
+
+.login-main {
+    color: $white;
+    a {
+        color: $white;
+    }
+}
+
+.home-project-list {
+    li {
+        border: 1px solid $black;
+    }
+    p {
+        color: $black;
+    }
+}
+
+.main-nav .active {
+    background: $white;
+    svg path {
+        fill: $black;
+    }
+}
+
+// Titles
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: Arial, Helvetica, sans-serif;
+    .date {
+        color: $black;
+    }
+}
+
+.tag {
+    background: $white;
+    border: 1px solid $black;
+}
+
+.master,
+.menu-secondary,
+.menu-tertiary,
+.extrabar {
+    background: $white;
+    border-left: 1px solid $black;
+    border-right: 1px solid $black;
+}
+
+.button-gray {
+    background: $black;
+}
+
+.settings-nav {
+    .active {
+        background: $black;
+        color: $white;
+    }
+}
+
+.admin-submenu ul a {
+    color: $black;
+}
+
+.policy-table {
+    input:checked {
+        +label {
+            color: $white;
+        }
+    }
+    label {
+        color: $black;
+        &:hover {
+            color: $white;
+        }
+    }
+}
+
+.admin-common .admin-subtitle {
+    color: $black;
+}
+
+.admin-functionalities .functionality.active {
+    background: $white;
+    border: 1px solid $black;
+}
+
+.admin-membership-table {
+    .avatar .email,
+    .delete {
+        color: $black;
+    }
+
+}

@@ -41,17 +41,11 @@
     form {
         margin-bottom: 1rem;
     }
-    input {
-        background: $white;
-        @include placeholder {
-            color: $gray-light;
-        }
-    }
     .login-text,
     .register-text {
         text-align: center;
         a:hover {
-            color: $fresh-taiga;
+            color: $primary-light;
         }
     }
     .button {

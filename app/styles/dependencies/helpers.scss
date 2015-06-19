@@ -16,7 +16,6 @@
 %mono {font-family: 'courier new', 'monospace';}
 
 %lightbox {
-    background: rgba($white, .95);
     bottom: 0;
     display: none;
     left: 0;
@@ -60,17 +59,6 @@
         padding: 12px;
         text-align: center;
     }
-}
-
-// Background
-%triangled-bg {
-    background: url('/images/bg.png') no-repeat center center;
-    background-size: cover;
-}
-
-%background-taiga {
-    background: url('/images/invitation_bg.jpg') no-repeat center center;
-    background-size: cover;
 }
 
 %loading-spinner {

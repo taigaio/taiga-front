@@ -15,7 +15,7 @@ $summary-background: $grayer;
     }
     .data {
         .number {
-            color: $fresh-taiga;
+            color: $primary-light;
         }
     }
     .number {
@@ -82,7 +82,7 @@ $summary-background: $grayer;
     position: relative;
     width: 15%;
     .current-progress {
-        background: $fresh-taiga;
+        background: $primary-light;
         height: 24px;
     }
     .defined-points {
@@ -97,7 +97,7 @@ $summary-background: $grayer;
         position: absolute;
     }
     .closed-points-progress {
-        background: $fresh-taiga;
+        background: $primary-light;
         height: 24px;
         position: absolute;
     }
@@ -136,11 +136,11 @@ $summary-background: $grayer;
             float: right;
             transition: color .3s linear;
             &:hover {
-                color: $fresh-taiga;
+                color: $primary-light;
                 transition: color .3s linear;
             }
             &.active {
-                color: $fresh-taiga;
+                color: $primary-light;
             }
             &.active:hover {
                 color: $green-taiga;

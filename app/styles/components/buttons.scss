@@ -46,7 +46,7 @@
     &.active {
         span,
         .icon {
-            color: $green-taiga;
+            color: $primary;
         }
     }
 }
@@ -59,10 +59,10 @@
 .button-green,
 a.button-green {
     @extend %button;
-    background: $green-taiga;
+    background: $primary;
     &:hover,
     &.active {
-        background: $fresh-taiga;
+        background: $primary-light;
         color: $white;
     }
 }
@@ -73,7 +73,7 @@ a.button-gray {
     background: $gray;
     &:hover,
     &.active {
-        background: $fresh-taiga;
+        background: $primary-light;
         color: $white;
     }
 }
@@ -111,13 +111,13 @@ a.button-gray {
 
 .button-bulk {
     @extend %button;
-    background: $green-taiga;
+    background: $primary;
     padding: .35rem .5rem;
     .icon {
         margin-right: 0;
     }
     &:hover {
-        background: $fresh-taiga;
+        background: $primary-light;
     }
 }
 

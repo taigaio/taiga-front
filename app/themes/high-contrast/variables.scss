@@ -4,32 +4,32 @@
 
 // Colors
 $black: #000;
-$blackish: #050505;
-$grayer: #444;
-$gray: #555;
-$gray-light: #b8b8b8;
+$blackish: #212121;
+$grayer: #212121;
+$gray: #757575;
+$gray-light: #f5f5f5;
 $whitish: #f5f5f5;
 $white: #fff;
 
 // Primary colors
-$primary-light: #9dce0a;
-$primary: #72a114;
-$primary-dark: #879b89;
+$primary-light: #212121;
+$primary: #000;
+$primary-dark: #000;
 
 //Warning colors
-$red-light: #ff8282;
-$red: #f00;
+$red-light: #ff0062;
+$red: #ff2400;
 
 //Card color
-$card: #fff8e4;
-$card-hover: #f1e8cd;
-$card-dark: #cfc29b;
+$card: #F0EFD1;
+$card-hover: $black;
+$card-dark: $black;
 
-$green-japanese-laurel: #237400;
-$green-olive: #618000;
-$red-amaranth: #e43050;
-$purple-eggplant: #810061;
-$yellow-pear: #bbe831;
+$green-japanese-laurel: #009688;
+$green-olive: #cddc39;
+$red-amaranth: #e91e63;
+$purple-eggplant: #9c27b0;
+$yellow-pear: #ffc107;
 
 //*************************
 //** LAYOUT
@@ -48,17 +48,17 @@ body {
 
 // Secondary panel
 .menu-secondary {
-    background: $whitish;
+    background: $white;
 }
 
 // Tertiary panel
 .menu-tertiary {
-    background-color: $primary-dark;
+    background-color: $white;
 }
 
 // Extra bar panel
 .extrabar {
-    background: $whitish;
+   background: $white;
 }
 
 
@@ -76,10 +76,10 @@ body {
 %xxlarge {font-size: 3rem;}
 
 // Font Types
-%title {font-family: 'OpenSans-CondLight', Arial, Helvetica, sans-serif; }
-%light {font-family: 'OpenSans-Light', Arial, Helvetica, sans-serif; }
-%text {font-family: 'opensans-regular', Arial, Helvetica, sans-serif; }
-%bold {font-family: 'opensans-semibold', Arial, Helvetica, sans-serif; }
+%title {font-family: Arial, Helvetica, sans-serif; }
+%light {font-family: Arial, Helvetica, sans-serif; font-weight: 100; }
+%text {font-family:  Arial, Helvetica, sans-serif; font-weight: 400; }
+%bold {font-family: Arial, Helvetica, sans-serif; font-weight:800; }
 %taiga {font-family: 'taiga';}
 %mono {font-family: 'courier new', 'monospace';}
 
@@ -113,11 +113,11 @@ input[type="date"],
 input[type="password"],
 select,
 textarea {
-    background: $whitish;
-    border-color: $gray-light;
-    color: $grayer;
+    background: $white;
+    border-color: $black;
+    color: $black;
     @include placeholder {
-        color: darken($gray-light, 10%);
+        color:$black;
     }
     &.checksley-error {
         border: 1px solid $red;
@@ -133,16 +133,16 @@ textarea {
 
 // Blockquote
 blockquote {
-    border-left: 5px solid $whitish;
+    border-left: 5px solid $gray;
 }
 
 blockquote,
 blockquote p {
-    color: $gray;
+    color: $black;
 }
 
 cite {
-    color: $gray;
+    color: $black;
 }
 
 // lightbox
@@ -152,12 +152,12 @@ cite {
 
 // Background images
 %triangled-bg {
-    background: url('/images/bg.png') no-repeat center center;
+    background: url('https://farm9.staticflickr.com/8449/7893171238_a201af22bc_k_d.jpg') no-repeat center center;
     background-size: cover;
 }
 
 %background-taiga {
-    background: url('/images/invitation_bg.jpg') no-repeat center center;
+    background: url('https://farm9.staticflickr.com/8449/7893171238_a201af22bc_k_d.jpg') no-repeat center center;
     background-size: cover;
 }
 
@@ -173,19 +173,19 @@ cite {
 
 // Top navigation bar
 .navbar {
-    background: rgba($black, .5);
+    background: $black;
     &:after {
         background: url('../images/menu-vert.png') repeat top left;
     }
 }
 
-$top-icon-color: #11241f;
-$dropdown-color: rgba(darken($grayer, 20%), 1);
+$top-icon-color: $white;
+$dropdown-color: rgba(darken($primary-dark, 20%), 1);
 
 //In project left navigation bar
 tg-project-menu {
-    background-color: $primary-dark;
-    background-image: url('../images/menu.png');
+    background-color: rgba(darken($primary-dark, 15%), 1);
+    background-image: none;
 }
 
 .main-nav {
@@ -201,16 +201,17 @@ tg-project-menu {
 //Taskboard table
 .taskboard-table-header {
     .task-colum-name {
-        background: $whitish;
-        border-top: 3px solid $gray-light;
+        background: lighten($white, 20%);
+        border-top: 3px solid $black;
         .icon {
-            color: $gray-light;
+            color: $black;
         }
     }
 }
 .taskboard-table-body {
     .taskboard-tasks-box {
-        background: $whitish;
+        background: $white;
+        border: 1px solid $black;
     }
 }
 
@@ -221,10 +222,10 @@ tg-project-menu {
 //Kanban table
 .kanban-table-header {
     .task-colum-name {
-        background: $whitish;
-        border-top: 3px solid $gray-light;
+        background: lighten($white, 20%);
+        border-top: 3px solid $black;
         .icon {
-            color: $gray-light;
+            color: $black;
         }
     }
 }
