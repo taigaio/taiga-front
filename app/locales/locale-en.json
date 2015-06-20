@@ -894,10 +894,10 @@
         "CHART": {
             "XAXIS_LABEL": "Sprints",
             "YAXIS_LABEL": "Points",
-            "OPTIMAL": "Optimal pending points for sprint {{xval}} should be {{yval}}",
-            "REAL": "Real pending points for sprint {{xval}} is {{yval}}",
-            "INCREMENT_TEAM": "Incremented points by team requirements for sprint {{xval}} is {{yval}}",
-            "INCREMENT_CLIENT": "Incremented points by client requirements for sprint {{xval}} is {{yval}}"
+            "OPTIMAL": "Optimal pending points for sprint \"{{sprintName}}\" should be {{value}}",
+            "REAL": "Real pending points for sprint \"{{sprintName}}\" is {{value}}",
+            "INCREMENT_TEAM": "Incremented points by team requirements for sprint \"{{sprintName}}\" is {{value}}",
+            "INCREMENT_CLIENT": "Incremented points by client requirements for sprint \"{{sprintName}}\" is {{value}}"
         },
         "TAGS": {
             "TOGGLE": "Toggle tags visibility",
