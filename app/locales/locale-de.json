@@ -20,11 +20,11 @@
         "BLOCK": "Blockieren",
         "UNBLOCK": "Blockierung aufheben",
         "BLOCKED": "Blockiert",
-        "CREATED_BY": "Erstellt von {{fullDisplayName}}",
+        "CREATED_BY": "Erstellt durch {{fullDisplayName}}",
         "FROM": "von",
         "TO": "zu",
         "CLOSE": "schließen",
-        "BLOCKED_NOTE": "Warum ist diese User-Story gesperrt?",
+        "BLOCKED_NOTE": "Was blockiert diese User-Story?",
         "BLOCKED_REASON": "Bitte erklären Sie den Grund ",
         "GO_HOME": "Führe mich heim",
         "PLUGINS": "Plugins",
@@ -34,7 +34,7 @@
         "RELATED_TASKS": "Verbundene Aufgaben",
         "LOGOUT": "Ausloggen",
         "EXTERNAL_USER": "ein externer Benutzer",
-        "GENERIC_ERROR": "Eins unserer Heinzelmännchen sagt {{error}}.",
+        "GENERIC_ERROR": "Eins unserer Helferlein sagt {{error}}.",
         "IOCAINE_TEXT": "Fühlen Sie sich von einer Aufgabe etwas erdrückt? Stellen Sie sicher, dass andere davon erfahren, indem Sie auf Locaine klicken, wenn Sie eine Aufgabe ändern. Es ist möglich, gegen dieses (fiktive) tödliche Gift immun zu werden, indem man kleine Mengen über einen Zeitraum hinweg einnimmt. Genauso, wie es möglich ist, besser in dem zu werden, was man tut, indem man gelegentlich zusätzliche Herausforderungen annimmt! ",
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Dieser Wert scheint ungültig zu sein. ",
@@ -128,8 +128,8 @@
             "PRIORITY": "Priorität",
             "ASSIGNED_TO": "Zugewiesen an",
             "POINTS": "Punkte",
-            "BLOCKED_NOTE": "gesperrte Notiz",
-            "IS_BLOCKED": "ist gesperrt ",
+            "BLOCKED_NOTE": "Blockierungsgrund",
+            "IS_BLOCKED": "wird blockiert",
             "REF": "Ref"
         },
         "ROLES": {
@@ -191,7 +191,7 @@
             "LINK_SAMPLE_TEXT": "Geben Sie Ihren Linktext ein...",
             "QUOTE_BLOCK_BUTTON": "Blockzitat",
             "QUOTE_BLOCK_SAMPLE_TEXT": "Geben Sie Ihren Text ein...",
-            "CODE_BLOCK_BUTTON": "Code Block",
+            "CODE_BLOCK_BUTTON": "Kodeblock",
             "CODE_BLOCK_SAMPLE_TEXT": "Geben Sie Ihren Text ein...",
             "PREVIEW_BUTTON": "Vorschau",
             "EDIT_BUTTON": "Bearbeiten",
@@ -262,8 +262,8 @@
         "PLACEHOLDER_AUTH_PASSWORD": "Passwort (Groß- und Kleinschreibung beachten)"
     },
     "LOGIN_FORM": {
-        "ERROR_AUTH_INCORRECT": "Laut unseren Heinzelmännchen ist Ihr Benutzername/Ihre E-Mail-Adresse oder Ihr Passwort nicht korrekt. ",
-        "SUCCESS": "Herzlich willkommen bei Taiga, unsere Heinzelmännchen freuen sich. "
+        "ERROR_AUTH_INCORRECT": "Laut unseren Helferlein ist Ihr Benutzername/Ihre E-Mail-Adresse oder Ihr Passwort nicht korrekt. ",
+        "SUCCESS": "Herzlich willkommen bei Taiga, unsere Helferlein freuen sich. "
     },
     "REGISTER": {
         "PAGE_TITLE": "Registrieren - Taiga",
@@ -272,7 +272,7 @@
     "REGISTER_FORM": {
         "TITLE": "Ein neues Taiga Benutzerkonto registrieren (kostenlos)",
         "PLACEHOLDER_NAME": "Wählen Sie einen Benutzernamen (Groß- und Kleinschreibung beachten)",
-        "PLACEHOLDER_FULL_NAME": "Wählen Sie Ihren vollständigen Namen ",
+        "PLACEHOLDER_FULL_NAME": "Wählen Sie Ihren Anzeigenamen",
         "PLACEHOLDER_EMAIL": "Ihre E-Mail",
         "PLACEHOLDER_PASSWORD": "Setzen Sie ein Passwort (Groß- und Kleinschreibung beachten)",
         "ACTION_SIGN_UP": "Anmelden",
@@ -290,7 +290,7 @@
         "ACTION_RESET_PASSWORD": "Passwort zurücksetzen",
         "LINK_CANCEL": "Nein, bring mich zurück. Ich denke, ich erinnere mich daran. ",
         "SUCCESS": "<strong>Sehen Sie in Ihren Posteingang!</strong><br />Wir haben Ihnen eine E-Mail mit einer Anleitung gesendet, um ein neues Passwort festzulegen.",
-        "ERROR": "Laut unseren Heinzelmännchen sind Sie bislang noch nicht registriert. "
+        "ERROR": "Laut unseren Helferlein sind Sie bislang noch nicht registriert. "
     },
     "CHANGE_PASSWORD": {
         "PAGE_TITLE": "Ändern Sie Ihr Passwort - Taiga",
@@ -320,9 +320,9 @@
         "PAGE_DESCRIPTION": "Nehmen Sie die Einladung an und treten Sie einem Projekt in Taiga bei, einer Projekt-Management Plattform für Neugründer und agile Entwickler und Designer, die ein unkompliziertes und ansprechendes Tool möchten, das die Arbeit wirklich angenehm macht. "
     },
     "INVITATION_LOGIN_FORM": {
-        "NOT_FOUND": "<strong>Huch, wir haben ein Problem</strong><br />Unsere Heinzelmännchen können Ihre Einladung nicht finden.",
+        "NOT_FOUND": "<strong>Huch, wir haben ein Problem</strong><br />Unsere Helferlein können Ihre Einladung nicht finden.",
         "SUCCESS": "Sie sind diesem Projekt erfolgreich beigetreten. Herzlich willkommen bei {{project_name}}",
-        "ERROR": "Laut unseren Heinzelmännchen sind Sie noch nicht registriert, oder Sie haben ein ungültiges Passwort eingegeben. "
+        "ERROR": "Laut unseren Helferlein sind Sie noch nicht registriert, oder Sie haben ein ungültiges Passwort eingegeben. "
     },
     "HOME": {
         "PAGE_TITLE": "Home - Taiga",
@@ -388,9 +388,9 @@
             "LOADING_MESSAGE": "Bitte lassen Sie diese Seite geöffnet!",
             "ASYNC_MESSAGE": "Wir werden nach Fertigstellung eine E-Mail senden.",
             "SYNC_MESSAGE": "Wenn der Download nicht automatisch startet, klicken Sie <a href='{{url}}' download title='Download the dump file'>hier</a>.",
-            "ERROR": "Unsere Heinzelmännchen haben Probleme, Ihre Export-Datei zu erzeugen. Bitte versuchen Sie es erneut.",
-            "ERROR_BUSY": "Entschuldigung, unsere Heinzelmännchen sind zur Zeit sehr beschäftigt. Bitte versuchen Sie es in ein paar Minuten erneut. ",
-            "ERROR_MESSAGE": "Unsere Heinzelmännchen haben Probleme, Ihre Export-Datei zu erstellen: {{message}} "
+            "ERROR": "Unsere Helferlein haben Probleme, Ihre Export-Datei zu erzeugen. Bitte versuchen Sie es erneut.",
+            "ERROR_BUSY": "Entschuldigung, unsere Helferlein sind zur Zeit sehr beschäftigt. Bitte versuchen Sie es in ein paar Minuten erneut. ",
+            "ERROR_MESSAGE": "Unsere Helferlein haben Probleme, Ihre Export-Datei zu erstellen: {{message}} "
         },
         "MODULES": {
             "TITLE": "Module",
@@ -637,7 +637,7 @@
             "CONTACTS_EMPTY": "{{username}} hat noch keine Kontakte",
             "CURRENT_USER_CONTACTS_EMPTY": "Sie haben noch keine Kontakte ",
             "CURRENT_USER_CONTACTS_EMPTY_EXPLAIN": "Die Leute, mit denen Sie auf Taiga zusammenarbeiten, werden automatisch zu Ihren Kontakten ",
-            "PROJECTS_EMPTY": "{{username}} hat noch keine Projekte"
+            "PROJECTS_EMPTY": "{{username}} besitzt noch keine Projekte"
         },
         "PROFILE_SIDEBAR": {
             "TITLE": "Ihr Profil",
@@ -703,13 +703,13 @@
             "TITLE": "Projekt importieren",
             "UPLOADING_FILE": "Exportdatei wird hochgeladen",
             "DESCRIPTION": "Dieser Vorgang kann etwas dauern. Bitte schliessen Sie das Fenster nicht!",
-            "ASYNC_IN_PROGRESS_TITLE": "Unsere Heinzelmännchen importieren Ihr Projekt",
+            "ASYNC_IN_PROGRESS_TITLE": "Unsere Helferlein importieren Ihr Projekt",
             "ASYNC_IN_PROGRESS_MESSAGE": "Dieser Vorgang könnte ein paar Minuten benötigen <br/> Nach Fertigstellung benachrichtigen wir Sie per E-Mail.",
             "UPLOAD_IN_PROGRESS_MESSAGE": "Hochgeladen {{uploadedSize}} von {{totalSize}}",
-            "ERROR": "Unsere Heinzelmännchen haben Probleme beim Importieren Ihrer Daten. Bitte versuchen Sie es erneut. ",
-            "ERROR_TOO_MANY_REQUEST": "Entschuldigung, unsere Heinzelmännchen sind derzeit sehr beschäftigt. Bitte versuchen Sie es in ein paar Minuten erneut. ",
-            "ERROR_MESSAGE": "Unsere Heinzelmännchen haben Probleme beim Importieren Ihrer Datei: {{error_message}}",
-            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) ist zu schwierig für unsere Heinzelmännchen, versuchen Sie es bitte mit einer kleineren Datei als({{maxFileSize}})",
+            "ERROR": "Unsere Helferlein haben Probleme beim Importieren Ihrer Daten. Bitte versuchen Sie es erneut. ",
+            "ERROR_TOO_MANY_REQUEST": "Entschuldigung, unsere Helferlein sind derzeit sehr beschäftigt. Bitte versuchen Sie es in ein paar Minuten erneut. ",
+            "ERROR_MESSAGE": "Unsere Helferlein haben Probleme beim Importieren Ihrer Datei: {{error_message}}",
+            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) ist zu schwierig für unsere Helferlein, versuchen Sie es bitte mit einer kleineren Datei als ({{maxFileSize}})",
             "SYNC_SUCCESS": "Ihr Projekt wurde erfolgreich importiert"
         }
     },
@@ -790,7 +790,7 @@
         "TITLE_LINK_GO_TO_ISSUE": "Zum Ticket wechseln",
         "EXTERNAL_REFERENCE": "Dies User-Story wurde angelegt von",
         "GO_TO_EXTERNAL_REFERENCE": "Zur Quelle wechseln",
-        "BLOCKED": "Diese User-Story ist blockiert",
+        "BLOCKED": "Diese User-Story wird blockiert",
         "PREVIOUS": "Vorherige User-Story",
         "NEXT": "nächste User-Story",
         "TITLE_DELETE_ACTION": "User-Story löschen",
@@ -849,8 +849,8 @@
             "MILESTONE": "Sprint",
             "USER_STORY": "User-Story ",
             "PROJECT": "Projekt",
-            "IS_BLOCKED": "ist gesperrt ",
-            "BLOCKED_NOTE": "gesperrte Notiz",
+            "IS_BLOCKED": "wird blockiert",
+            "BLOCKED_NOTE": "Blockierungsgrund",
             "POINTS": "Punkte",
             "CLIENT_REQUIREMENT": "Kunden Anforderung ",
             "TEAM_REQUIREMENT": "Team Anforderung ",
@@ -939,13 +939,13 @@
         }
     },
     "ERROR": {
-        "TEXT1": "Es gibt ein Problem und unsere Heinzelmännchen arbeiten schon daran!",
+        "TEXT1": "Es gibt ein Problem und unsere Helferlein arbeiten schon daran!",
         "TEXT2": "Versuchen Sie in Kürze neu zu laden. ",
         "NOT_FOUND": "Nicht gefunden",
         "NOT_FOUND_TEXT": "Fehler 404. Die angeforderte Seite existiert nicht mehr. Möglicherweise finden Sie das Gesuchte, wenn Sie zur TAIGA Homepage zurückkehren. ",
         "PERMISSION_DENIED": "Berechtigung verweigert",
         "PERMISSION_DENIED_CODE": "Fehler 403.",
-        "VERSION_ERROR": "Jemand anderes hat dies schon geändert und unsere Heinzelmännchen können Ihre Änderungen deshalb nicht übernehmen. Bitte laden Sie die Seite neu und machen Sie die Änderungen erneut (die aktuelle Eingabe geht dabei verloren)."
+        "VERSION_ERROR": "Jemand anderes hat dies schon geändert und unsere Helferlein können Ihre Änderungen deshalb nicht übernehmen. Bitte laden Sie die Seite neu und machen Sie die Änderungen erneut (die aktuelle Eingabe geht dabei verloren)."
     },
     "TASKBOARD": {
         "PAGE_TITLE": "{{sprintName}} - Sprint Taskboard - {{projectName}}",
@@ -982,13 +982,13 @@
         "TITLE_SELECT_STATUS": "Status Bezeichnung",
         "OWNER_US": "Diese Aufgabe gehört zu ",
         "TITLE_LINK_GO_OWNER": "Zur User-Story wechseln",
-        "ORIGIN_US": "Diese Aufgabe wurde erstellt von ",
+        "ORIGIN_US": "Diese Aufgabe wurde erstellt durch ",
         "TITLE_LINK_GO_ORIGIN": "Zu User-Story wechseln",
-        "BLOCKED": "Diese Aufgabe ist gesperrt",
+        "BLOCKED": "Diese Aufgabe wird blockiert",
         "PREVIOUS": "vorherige Aufgabe",
         "NEXT": "nächste Aufgabe",
         "TITLE_DELETE_ACTION": "Aufgabe löschen",
-        "LIGHTBOX_TITLE_BLOKING_TASK": "Gesperrte Aufgabe",
+        "LIGHTBOX_TITLE_BLOKING_TASK": "Blockierende Aufgabe",
         "FIELDS": {
             "MILESTONE": "Sprint",
             "USER_STORY": "User-Story",
@@ -1000,8 +1000,8 @@
     "NOTIFICATION": {
         "OK": "Alles in Ordnung",
         "WARNING": "Huch, es gibt ein Problem...",
-        "WARNING_TEXT": "Unsere Heinzelmännchen bedauern, Ihre Änderungen wurden nicht gespeichert! ",
-        "SAVED": "Die Heinzelmännchen haben Ihre Änderungen gespeichert!",
+        "WARNING_TEXT": "Unsere Helferlein bedauern, Ihre Änderungen wurden nicht gespeichert! ",
+        "SAVED": "Die Helferlein haben Ihre Änderungen gespeichert!",
         "CLOSE": "Benachrichtigung schließen",
         "MAIL": "Benachrichtigungen per Mail",
         "ASK_DELETE": "Möchten Sie wirklich löschen?"
@@ -1011,14 +1011,14 @@
         "SUBTITLE": "Wir bedauern, dass Sie die Taiga verlassen. Wir hoffen, Sie hatten einen angenehmen Aufenthalt. :)",
         "PLACEHOLDER_INPUT_TOKEN": "Benutzerkonto Token ungültig machen",
         "ACTION_LEAVING": "Ja, ich gehe! ",
-        "SUCCESS": "Unsere Heinzelmännchen haben Ihr Benutzerkonto entfernt. "
+        "SUCCESS": "Unsere Helferlein haben Ihr Benutzerkonto entfernt. "
     },
     "CHANGE_EMAIL_FORM": {
         "TITLE": "Ändern Sie Ihre E-Mail",
         "SUBTITLE": "Noch ein Klick und Ihre E-Mail wird aktualisiert! ",
         "PLACEHOLDER_INPUT_TOKEN": "E-Mail-Token ändern",
         "ACTION_CHANGE_EMAIL": "E-Mail ändern",
-        "SUCCESS": "Unsere Heinzelmännchen haben Ihre E-Mail-Adresse aktualisiert"
+        "SUCCESS": "Unsere Helferlein haben Ihre E-Mail-Adresse aktualisiert"
     },
     "ISSUES": {
         "PAGE_TITLE": "Tickets - {{projectName}}",
@@ -1029,13 +1029,13 @@
         "ACTION_PROMOTE_TO_US": "Zur User-Story aufwerten",
         "PLACEHOLDER_FILTER_NAME": "Benennen Sie den Filter und drücken Sie die Eingabetaste",
         "PROMOTED": "Dieses Ticket wurde aufgewertet zu User-Story:",
-        "EXTERNAL_REFERENCE": "Dieses Ticket wurde erstellt von ",
+        "EXTERNAL_REFERENCE": "Dieses Ticket wurde erstellt durch ",
         "GO_TO_EXTERNAL_REFERENCE": "Zur Quelle wechseln",
-        "BLOCKED": "Dieses Ticket ist gesperrt",
+        "BLOCKED": "Dieses Ticket wird blockiert",
         "TITLE_PREVIOUS_ISSUE": "vorheriges Ticket ",
         "TITLE_NEXT_ISSUE": "nächstes Ticket",
         "ACTION_DELETE": "Ticket löschen",
-        "LIGHTBOX_TITLE_BLOKING_ISSUE": "Ticket sperren",
+        "LIGHTBOX_TITLE_BLOKING_ISSUE": "Blockierendes Ticket",
         "FIELDS": {
             "PRIORITY": "Priorität",
             "SEVERITY": "Gewichtung",
@@ -1059,7 +1059,7 @@
                 "PRIORITIES": "Prioritäten",
                 "TAGS": "Schlagwörter",
                 "ASSIGNED_TO": "Zugeordnet",
-                "CREATED_BY": "Erstellt von",
+                "CREATED_BY": "Erstellt durch",
                 "CUSTOM_FILTERS": "Benutzerfilter"
             },
             "CONFIRM_DELETE": {
@@ -1123,7 +1123,7 @@
         "PAGE_DESCRIPTION": "Das Team Panel, um alle Mitglieder des Projekts anzuzeigen {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Team",
         "APP_TITLE": "TEAM - {{projectName}}",
-        "PLACEHOLDER_INPUT_SEARCH": "Unter vollständigem Namen suchen...",
+        "PLACEHOLDER_INPUT_SEARCH": "Unter Anzeigenamen suchen...",
         "COLUMN_MR_WOLF": "Herr Wolf",
         "EXPLANATION_COLUMN_MR_WOLF": "Geschlossene Tickets",
         "COLUMN_IOCAINE": "Locaine Trinker ",
@@ -1169,7 +1169,7 @@
     },
     "USER_PROFILE": {
         "IMAGE_HELP": "Das Bild wird auf 80x80px skaliert.<br />",
-        "ACTION_CHANGE_IMAGE": "Änderung",
+        "ACTION_CHANGE_IMAGE": "Ändern",
         "ACTION_USE_GRAVATAR": "Gravatar verwenden",
         "ACTION_DELETE_ACCOUNT": "Taiga Benutzerkonto löschen",
         "CHANGE_EMAIL_SUCCESS": "<strong>Sehen Sie in Ihren Posteingang!</strong><br />Wir haben eine E-Mail an Ihr Konto gesendet<br />mit der Anleitung, wie Sie Ihre neue Adresse anlegen",
@@ -1177,8 +1177,8 @@
         "FIELD": {
             "USERNAME": "Benutzername",
             "EMAIL": "E-Mail",
-            "FULL_NAME": "Vollständiger Name",
-            "PLACEHOLDER_FULL_NAME": "Geben Sie Ihren vollständigen Namen an (ex. Íñigo Montoya)",
+            "FULL_NAME": "Anzeigename",
+            "PLACEHOLDER_FULL_NAME": "Geben Sie Ihren Anzeigenamen an (z.B. Vorname Nachname)",
             "BIO": "Bio (max. 210 Zeichen)",
             "PLACEHOLDER_BIO": "Erzählen Sie etwas über sich",
             "LANGUAGE": "Sprache",
@@ -1195,7 +1195,7 @@
     },
     "WIKI": {
         "PAGE_TITLE": "{{wikiPageName}} - Wiki - {{projectName}}",
-        "PAGE_DESCRIPTION": "Letzte Änderung am {{lastModifiedDate}} ({{totalEditions}} Gesamtzahl der Änderungen) Inhalt: {{ wikiPageContent }}",
+        "PAGE_DESCRIPTION": "Letzte Bearbeitung am {{lastModifiedDate}} ({{totalEditions}} Gesamtzahl der Bearbeitungen) Inhalt: {{ wikiPageContent }}",
         "DATETIME": "DD MMM YYYY HH:mm",
         "PLACEHOLDER_PAGE": "Schreiben Sie Ihre Wiki Seite ",
         "REMOVE": "Diese Wiki Seite entfernen",
@@ -1206,7 +1206,7 @@
         },
         "SUMMARY": {
             "TIMES_EDITED": "Zeiten <br />bearbeitet",
-            "LAST_EDIT": "letzte <br />Änderung",
+            "LAST_EDIT": "letzte <br />Bearbeitung",
             "LAST_MODIFICATION": "letzte Änderung"
         }
     },
@@ -1224,28 +1224,28 @@
         "HINT4_TEXT": "Machen Sie sich keine Sorgen, im Dashboard finden Sie Aufgaben, Tickets und User-Stories in der Reihenfolge in der Sie diese bearbeitet haben."
     },
     "TIMELINE": {
-        "UPLOAD_ATTACHMENT": "{{username}} hat einen neuen Anhang hochgeladen in {{obj_name}}",
-        "US_CREATED": "{{username}} hat eine neue user-story erstellt {{obj_name}} in {{project_name}}",
-        "ISSUE_CREATED": "{{username}} hat ein neues ticket erstellt {{obj_name}} in {{project_name}} ",
-        "TASK_CREATED": "{{username}} hat eine neue aufgabe erstellt {{obj_name}} in {{project_name}}",
-        "TASK_CREATED_WITH_US": "{{username}} hat eine neue Aufgabe erstellt {{obj_name}} in {{project_name}} die zur User-Story {{us_name}} gehört",
-        "WIKI_CREATED": "{{username}} hat eine neue Wiki Seite erstellt {{obj_name}} in {{project_name}}",
-        "MILESTONE_CREATED": "{{username}} hat einen neuen sprint erstellt {{obj_name}} in {{project_name}}",
+        "UPLOAD_ATTACHMENT": "{{username}} fügte {{obj_name}} einen neuen Anhang zu",
+        "US_CREATED": "{{username}} erstellte die neue User-Story {{obj_name}} in {{project_name}}",
+        "ISSUE_CREATED": "{{username}} erstellte das neue Ticket {{obj_name}} in {{project_name}} ",
+        "TASK_CREATED": "{{username}} erstellte die neue Aufgabe {{obj_name}} in {{project_name}}",
+        "TASK_CREATED_WITH_US": "{{username}} erstellte die neue Aufgabe {{obj_name}} in {{project_name}}, die zur User-Story {{us_name}} gehört",
+        "WIKI_CREATED": "{{username}} erstellte die neue Wiki Seite {{obj_name}} in {{project_name}}",
+        "MILESTONE_CREATED": "{{username}} erstellte den neuen Sprint {{obj_name}} in {{project_name}}",
         "NEW_PROJECT": "{{username}} erstellte das Projekt {{project_name}}",
-        "MILESTONE_UPDATED": "{{username}} hat den sprint aktualisiert {{obj_name}}",
-        "US_UPDATED": "{{username}} hat das Attribut aktualisiert \"{{field_name}}\" von User-Story {{obj_name}}",
-        "ISSUE_UPDATED": "{{username}} hat das attribut aktualisiert \"{{field_name}}\" von ticket {{obj_name}}",
-        "TASK_UPDATED": "{{username}} hat das attribut aktualisiert \"{{field_name}}\" von aufgabe {{obj_name}}",
-        "TASK_UPDATED_WITH_US": "{{username}} hat das attribut aktualisiert \"{{field_name}}\" von aufgabe {{obj_name}} die zur user-story {{us_name}} gehört",
-        "WIKI_UPDATED": "{{username}} hat die wiki seite aktualisiert {{obj_name}}\n",
-        "NEW_COMMENT_US": "{{username}} hat in User-Story {{obj_name}} kommentiert",
-        "NEW_COMMENT_ISSUE": "{{username}} hat im Ticket kommentiert {{obj_name}}",
-        "NEW_COMMENT_TASK": "{{username}} hat in der Aufgabe kommentiert {{obj_name}}",
+        "MILESTONE_UPDATED": "{{username}} aktualisierte den Sprint {{obj_name}}",
+        "US_UPDATED": "{{username}} aktualisierte das Attribut \"{{field_name}}\" der User-Story {{obj_name}}",
+        "ISSUE_UPDATED": "{{username}} aktualisierte das Attribut \"{{field_name}}\" des Tickets {{obj_name}}",
+        "TASK_UPDATED": "{{username}} aktualisierte das Attribut \"{{field_name}}\" der Aufgabe {{obj_name}}",
+        "TASK_UPDATED_WITH_US": "{{username}} aktualisierte das Attribut \"{{field_name}}\" der Aufgabe {{obj_name}} von User-Story {{us_name}}",
+        "WIKI_UPDATED": "{{username}} aktualisierte die WIKI Seite {{obj_name}}",
+        "NEW_COMMENT_US": "{{username}} schrieb einen Kommentar in der User-Story {{obj_name}}",
+        "NEW_COMMENT_ISSUE": "{{username}} schrieb einen Kommentar im Ticket {{obj_name}}",
+        "NEW_COMMENT_TASK": "{{username}} schrieb einen Kommentar in der Aufgabe {{obj_name}}",
         "NEW_MEMBER": "{{project_name}} hat ein neues Mitglied",
-        "US_ADDED_MILESTONE": "{{username}} hat die User-Story {{obj_name}} zu {{sprint_name}} hinzugefügt",
-        "US_REMOVED_FROM_MILESTONE": "{{username}} hat die User-Story {{obj_name}} zur Auftragsliste hinzugefügt ",
-        "BLOCKED": "{{username}} hat gesperrt {{obj_name}}",
-        "UNBLOCKED": "{{username}} hat entsperrt {{obj_name}}",
+        "US_ADDED_MILESTONE": "{{username}} fügte dem Sprint {{sprint_name}} die User-Story {{obj_name}} hinzu",
+        "US_REMOVED_FROM_MILESTONE": "{{username}} fügte der Auftragsliste die User-Story {{obj_name}} hinzu",
+        "BLOCKED": "{{username}} vermerkte die Blockierung von {{obj_name}}",
+        "UNBLOCKED": "{{username}} hob die Blockierung von {{obj_name}} auf",
         "NEW_USER": "{{username}} ist Taiga beigetreten"
     }
 }
