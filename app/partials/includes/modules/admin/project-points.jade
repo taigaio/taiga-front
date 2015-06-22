@@ -15,32 +15,31 @@ section.project-values-table
 
     div.project-values-body
         div.sortable
-            form(ng-repeat="value in values", tg-bind-scope)
-                div.project-values-row.row.table-main.visualization
-                    span.icon.icon-drag-v
+            div(ng-repeat="value in values track by value.id", tg-bind-scope)
+                form(tg-bind-scope)
+                    div.project-values-row.row.table-main.visualization
+                        span.icon.icon-drag-v
 
-                    div.project-values-name
-                        span {{ value.name }}
+                        div.project-values-name
+                            span {{ value.name }}
 
-                    div.project-values-value
-                        span {{ value.value }}
+                        div.project-values-value
+                            span {{ value.value }}
 
-                    div.project-values-settings
-                        a.edit-value.icon.icon-edit(href="", title="{{'ADMIN.POINTS.TITLE_ACTION_EDIT_VALUE' | translate}}")
-                        a.delete-value.icon.icon-delete(href="", title="{{'ADMIN.POINTS.TITLE_ACTION_DELETE_VALUE' | translate}}")
+                        div.project-values-settings
+                            a.edit-value.icon.icon-edit(href="", title="{{'ADMIN.POINTS.TITLE_ACTION_EDIT_VALUE' | translate}}")
+                            a.delete-value.icon.icon-delete(href="", title="{{'ADMIN.POINTS.TITLE_ACTION_DELETE_VALUE' | translate}}")
 
-                div.project-values-row.row.table-main.edition.hidden
-                    div.project-values-name
-                        input(name="name", type="text", placeholder="{{'COMMON.FIELDS.NAME' | translate}}", ng-model="value.name",
-                            data-required="true")
+                    div.project-values-row.row.table-main.edition.hidden
+                        div.project-values-name
+                            input(name="name", type="text", placeholder="{{'COMMON.FIELDS.NAME' | translate}}", ng-model="value.name")
 
-                    div.project-values-value
-                        input(name="value", type="text", placeholder="{{'COMMON.FIELDS.VALUE' | translate}}", ng-model="value.value",
-                            data-type="number")
+                        div.project-values-value
+                            input(name="value", type="text", placeholder="{{'COMMON.FIELDS.VALUE' | translate}}", ng-model="value.value", data-type="number")
 
-                    div.project-values-settings
-                        a.save.icon.icon-floppy(href="", title="{{'COMMON.SAVE' | translate}}")
-                        a.cancel.icon.icon-delete(href="", title="{{'COMON.CANCEL' | translate}}")
+                        div.project-values-settings
+                            a.save.icon.icon-floppy(href="", title="{{'COMMON.SAVE' | translate}}")
+                            a.cancel.icon.icon-delete(href="", title="{{'COMON.CANCEL' | translate}}")
 
         form
             div.project-values-row.new-value.hidden

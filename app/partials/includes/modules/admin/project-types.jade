@@ -13,32 +13,33 @@ section.colors-table
 
     div.table-main
         div.sortable
-            form(ng-repeat="value in values", tg-bind-scope)
-                div.row.table-main.visualization
-                    span.icon.icon-drag-v
+            div(ng-repeat="value in values", tg-bind-scope)
+                form(tg-bind-scope)
+                    div.row.table-main.visualization
+                        span.icon.icon-drag-v
 
-                    div.color-column
-                        div.current-color(ng-style="{background: value.color}")
+                        div.color-column
+                            div.current-color(ng-style="{background: value.color}")
 
-                    div.status-name
-                        span {{ value.name }}
+                        div.status-name
+                            span {{ value.name }}
 
-                    div.options-column
-                        a.edit-value.icon.icon-edit(href="", title="{{'ADMIN.COMMON.TITLE_ACTION_EDIT_VALUE' | translate}}")
-                        a.delete-value.icon.icon-delete(href="", title="{{'ADMIN.COMMON.TITLE_ACTION_DELETE_VALUE' | translate}}")
+                        div.options-column
+                            a.edit-value.icon.icon-edit(href="", title="{{'ADMIN.COMMON.TITLE_ACTION_EDIT_VALUE' | translate}}")
+                            a.delete-value.icon.icon-delete(href="", title="{{'ADMIN.COMMON.TITLE_ACTION_DELETE_VALUE' | translate}}")
 
-                div.row.table-main.edition.hidden
-                    div.color-column(tg-color-selection, ng-model="value")
-                        div.current-color(ng-style="{background: value.color}")
-                        include ../../components/select-color
+                    div.row.table-main.edition.hidden
+                        div.color-column(tg-color-selection, ng-model="value")
+                            div.current-color(ng-style="{background: value.color}")
+                            include ../../components/select-color
 
-                    div.status-name
-                        input(name="name", type="text", placeholder="{{'ADMIN.TYPES.PLACEHOLDER_WRITE_NAME' | translate}}",
-                              ng-model="value.name", data-required="true", data-maxlength="255")
+                        div.status-name
+                            input(name="name", type="text", placeholder="{{'ADMIN.TYPES.PLACEHOLDER_WRITE_NAME' | translate}}",
+                                  ng-model="value.name", data-required="true", data-maxlength="255")
 
-                    div.options-column
-                        a.save.icon.icon-floppy(href="", title="{{'COMMON.SAVE' | translate}}")
-                        a.cancel.icon.icon-delete(href="", title="{{'COMMON.CANCEL' | translate}}")
+                        div.options-column
+                            a.save.icon.icon-floppy(href="", title="{{'COMMON.SAVE' | translate}}")
+                            a.cancel.icon.icon-delete(href="", title="{{'COMMON.CANCEL' | translate}}")
 
         form
             div.row.table-main.new-value.hidden
