@@ -410,7 +410,10 @@ RolePermissionsDirective = ($rootscope, $repo, $confirm, $compile) ->
                     activePermissions = _.sortBy(_.map(activePermissions, (t) ->
                         permission = angular.element(t).parents(".category-item").data("id")
                     ))
-                    activePermissions.push("view_project")
+
+                    if activePermissions.length
+                        activePermissions.push("view_project")
+
                     return activePermissions
 
                 target = angular.element(event.currentTarget)
