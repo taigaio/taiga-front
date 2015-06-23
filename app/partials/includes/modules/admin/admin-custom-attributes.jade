@@ -55,7 +55,8 @@ section.custom-fields-table.basic-table
                       ng-model="newAttr.description")
             fieldset.custom-field-type
                 select(ng-model="newAttr.field_type",
-                      ng-options="e.id as translate(e.name) for e in [{'id':'TEXT', 'name': 'ADMIN.CUSTOM_FIELDS.FIELD_TYPE_TEXT'},{'id':'MULTI', 'name': 'ADMIN.CUSTOM_FIELDS.FIELD_TYPE_MULTI'}]")
+                      ng-options="e.id as e.name | translate for e in [{'id':'TEXT', 'name': 'ADMIN.CUSTOM_FIELDS.FIELD_TYPE_TEXT'},{'id':'MULTI', 'name': 'ADMIN.CUSTOM_FIELDS.FIELD_TYPE_MULTI'}]")
+
             fieldset.custom-options
                 div.custom-options-wrapper
                     a.js-create-custom-field-button.icon.icon-floppy(href="", title="{{'ADMIN.CUSTOM_ATTRIBUTES.SAVE_TITLE' | translate}}")
