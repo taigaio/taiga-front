@@ -70,8 +70,12 @@
     }
     .custom-description {
         @include ellipsis(100%);
-        flex-basis: 90%;
+        flex-basis: 50%;
         flex-grow: 8;
+    }
+    .custom-field-type {
+        flex-basis: 25%;
+        flex-grow: 0;
     }
     .custom-options {
         flex-basis: 100px;
