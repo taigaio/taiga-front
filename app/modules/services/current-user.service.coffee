@@ -43,9 +43,9 @@ class CurrentUserService
 
     bulkUpdateProjectsOrder: (sortData) ->
         @projectsService.bulkUpdateProjectsOrder(sortData).then () =>
-            @._loadProjects()
+            @.loadProjects()
 
-    _loadProjects: () ->
+    loadProjects: () ->
         return @projectsService.getProjectsByUserId(@._user.get("id"))
             .then (projects) =>
                 @._projects = @._projects.set("all", projects)
@@ -56,6 +56,6 @@ class CurrentUserService
                 return @.projects
 
     _loadUserInfo: () ->
-        return @._loadProjects()
+        return @.loadProjects()
 
 angular.module("taigaCommon").service("tgCurrentUserService", CurrentUserService)
