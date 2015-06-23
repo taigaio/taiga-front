@@ -70,30 +70,18 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.filtersRole = null
 
     loadMembers: ->
-        currentUser = @auth.getUser()
+        user = @auth.getUser()
 
-        if currentUser? and not currentUser.photo?
-            currentUser.photo = "/images/unnamed.png"
-
-        memberships = @projectService.project.toJS().memberships
-
-        @scope.currentUser = _.find memberships, (membership) =>
-            return currentUser? and membership.user == currentUser.id
-
+        # Calculate totals
         @scope.totals = {}
+        for member in @scope.activeUsers
+            @scope.totals[member.id] = 0
 
-        _.forEach memberships, (membership) =>
-            @scope.totals[membership.user] = 0
+        # Get current user
+        @scope.currentUser = _.find(@scope.activeUsers, {id: user?.id})
 
-        @scope.memberships = _.filter memberships, (membership) =>
-            if membership.user && (not currentUser? or membership.user != currentUser.id)
-                return membership
-
-        @scope.memberships = _.filter memberships, (membership) => return membership.is_active
-
-        for membership in @scope.memberships
-            if not membership.photo?
-                membership.photo = "/images/unnamed.png"
+        # Get member list without current user
+        @scope.memberships = _.reject(@scope.activeUsers, {id: user?.id})
 
     loadProject: ->
         return @rs.projects.getBySlug(@params.pslug).then (project) =>
@@ -115,10 +103,10 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
               total = _.reduce(vals, (sum, el) -> sum + el)
               @scope.totals[userId] = total
 
-          @scope.stats = @.processStats(stats)
+          @scope.stats = @._processStats(stats)
           @scope.stats.totals = @scope.totals
 
-    processStat: (stat) ->
+    _processStat: (stat) ->
         max = _.max(stat)
         min = _.min(stat)
         singleStat = _.map stat, (value, key) ->
@@ -130,9 +118,9 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
         singleStat = _.object(singleStat)
         return singleStat
 
-    processStats: (stats) ->
+    _processStats: (stats) ->
         for key,value of stats
-            stats[key] = @.processStat(value)
+            stats[key] = @._processStat(value)
         return stats
 
     loadInitialData: ->
@@ -140,7 +128,6 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
         return promise.then (project) =>
             @.fillUsersAndRoles(project.members, project.roles)
             @.loadMembers()
-
             return @.loadMemberStats()
 
 module.controller("TeamController", TeamController)
