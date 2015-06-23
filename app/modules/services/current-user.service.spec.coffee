@@ -80,12 +80,12 @@ describe "tgCurrentUserService", ->
     it "bulkUpdateProjectsOrder and reload projects", (done) ->
         fakeData = [{id: 1, id: 2}]
 
-        currentUserService._loadProjects = sinon.spy()
+        currentUserService.loadProjects = sinon.spy()
 
         mocks.projectsService.bulkUpdateProjectsOrder.withArgs(fakeData).promise().resolve()
 
         currentUserService.bulkUpdateProjectsOrder(fakeData).then () ->
-            expect(currentUserService._loadProjects).to.be.callOnce
+            expect(currentUserService.loadProjects).to.be.callOnce
 
             done()
 

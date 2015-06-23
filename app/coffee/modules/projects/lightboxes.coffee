@@ -46,7 +46,7 @@ CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $project
 
             $location.url($projectUrl.get(response))
             lightboxService.close($el)
-            currentUserService._loadProjects()
+            currentUserService.loadProjects()
 
         onErrorSubmit = (response) ->
             $loading.finish(submitButton)
@@ -170,7 +170,7 @@ DeleteProjectDirective = ($repo, $rootscope, $auth, $location, $navUrls, $confir
                 $rootscope.$broadcast("projects:reload")
                 $location.path($navUrls.resolve("home"))
                 $confirm.notify("success")
-                currentUserService._loadProjects()
+                currentUserService.loadProjects()
 
             # FIXME: error handling?
             promise.then null, ->
