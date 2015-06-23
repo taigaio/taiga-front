@@ -37,7 +37,7 @@
         flex: 1;
         flex-shrink: 3;
         margin-right: 1rem;
-        max-width: 800px;
+        max-width: 960px;
         width: 0;
     }
     .involved-data {
@@ -63,40 +63,3 @@
         }
     }
 }
-
-
-//.summary-stats {
-//    align-items: flex-start;
-//    display: flex;
-//    .info-num {
-//        @extend %xlarge;
-//        @extend %bold;
-//        float: left;
-//        margin-right: .3rem;
-//        position: relative;
-//        top: 5px;
-//    }
-//    .info-text {
-//        @extend %small;
-//        float: left;
-//        line-height: .9rem;
-//    }
-//}
-//
-//.project-data-container {
-//    display: flex;
-//    justify-content: space-between;
-//    ul {
-//        flex-grow: 0;
-//        max-width: 33%;
-//    }
-//    li {
-//        display: inline-block;
-//        margin-right: .1rem;
-//        width: 10%;
-//        figure {
-//            width: 100%;
-//        }
-//    }
-//}
-//

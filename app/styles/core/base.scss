@@ -45,7 +45,7 @@ body {
 }
 
 .centered {
-    margin: 0 auto;
+    margin: 1rem auto;
     max-width: 1200px;
     min-width: 960px;
     width: 90%;
@@ -94,9 +94,10 @@ body {
     background: $whitish;
 }
 
+%main,
 .main {
     flex: 4;
-    min-width: 600px;
+    flex-basis: 600px;
     padding: 1rem 2rem;
 }
 
