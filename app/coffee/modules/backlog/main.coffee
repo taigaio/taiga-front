@@ -243,7 +243,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
     loadInitialData: ->
         promise = @.loadProject()
         promise.then (project) =>
-            @.fillUsersAndRoles(project.users, project.roles)
+            @.fillUsersAndRoles(project.members, project.roles)
             @.initializeSubscription()
 
         return promise.then(=> @.loadBacklog())

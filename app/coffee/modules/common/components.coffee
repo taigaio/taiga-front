@@ -663,14 +663,14 @@ ListItemAssignedtoDirective = ($template) ->
     template = $template.get("common/components/list-item-assigned-to-avatar.html", true)
 
     link = ($scope, $el, $attrs) ->
-        bindOnce $scope, "membersById", (membersById) ->
+        bindOnce $scope, "usersById", (usersById) ->
             item = $scope.$eval($attrs.tgListitemAssignedto)
             ctx = {name: "Unassigned", imgurl: "/images/unnamed.png"}
 
-            member = membersById[item.assigned_to]
+            member = usersById[item.assigned_to]
             if member
                 ctx.imgurl = member.photo
-                ctx.name = member.full_name
+                ctx.name = member.full_name_display
 
             $el.html(template(ctx))
 

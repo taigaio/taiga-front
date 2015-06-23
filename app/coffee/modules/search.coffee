@@ -84,7 +84,6 @@ class SearchController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.taskStatusById = groupBy(project.task_statuses, (x) -> x.id)
             @scope.severityById = groupBy(project.severities, (x) -> x.id)
             @scope.priorityById = groupBy(project.priorities, (x) -> x.id)
-            @scope.membersById = groupBy(project.memberships, (x) -> x.user)
             @scope.usStatusById = groupBy(project.us_statuses, (x) -> x.id)
             return project
 
@@ -98,7 +97,7 @@ class SearchController extends mixOf(taiga.Controller, taiga.PageMixin)
     loadInitialData: ->
         return @.loadProject().then (project) =>
             @scope.projectId = project.id
-            @.fillUsersAndRoles(project.users, project.roles)
+            @.fillUsersAndRoles(project.members, project.roles)
 
 module.controller("SearchController", SearchController)
 

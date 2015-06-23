@@ -86,7 +86,6 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.projectId = project.id
             @scope.project = project
             @scope.$emit('project:loaded', project)
-            @scope.membersById = groupBy(project.memberships, (x) -> x.user)
             return project
 
     loadWiki: ->
@@ -117,7 +116,7 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
     loadInitialData: ->
         promise = @.loadProject()
         return promise.then (project) =>
-            @.fillUsersAndRoles(project.users, project.roles)
+            @.fillUsersAndRoles(project.members, project.roles)
             @q.all([@.loadWikiLinks(), @.loadWiki()]).then () =>
 
 

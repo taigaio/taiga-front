@@ -112,7 +112,6 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @scope.issueTypes = _.sortBy(project.issue_types, "order")
             @scope.issueTypeById = groupBy(project.issue_types, (x) -> x.id)
 
-            @scope.membersById = groupBy(project.memberships, (x) -> x.user)
             return project
 
     getUrlFilters: ->
@@ -278,7 +277,7 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
     loadInitialData: ->
         promise = @.loadProject()
         return promise.then (project) =>
-            @.fillUsersAndRoles(project.users, project.roles)
+            @.fillUsersAndRoles(project.members, project.roles)
             @.initializeSubscription()
             return @q.all([@.loadFilters(), @.loadIssues()])
 

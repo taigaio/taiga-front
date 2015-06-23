@@ -123,7 +123,6 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.statusList = project.us_statuses
             @scope.statusById = groupBy(project.us_statuses, (x) -> x.id)
             @scope.taskStatusById = groupBy(project.task_statuses, (x) -> x.id)
-            @scope.membersById = groupBy(project.memberships, (x) -> x.user)
             @scope.pointsList = _.sortBy(project.points, "order")
             @scope.pointsById = groupBy(@scope.pointsList, (e) -> e.id)
             return project
@@ -188,7 +187,7 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
     loadInitialData: ->
         promise = @.loadProject()
         return promise.then (project) =>
-            @.fillUsersAndRoles(project.users, project.roles)
+            @.fillUsersAndRoles(project.members, project.roles)
             @.loadUs().then(=> @q.all([@.loadSprint(), @.loadTasks()]))
 
 module.controller("UserStoryDetailController", UserStoryDetailController)
