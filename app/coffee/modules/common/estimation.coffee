@@ -226,6 +226,10 @@ EstimationsService = ($template, $qqueue, $repo, $confirm, $q) ->
 
             @$el.find(".pop-points-open").show()
 
+            pop = @$el.find(".pop-points-open")
+            if pop.offset().top + pop.height() > document.body.clientHeight
+                pop.addClass('pop-bottom')
+
     create = ($el, us, project) ->
         $el.unbind("click")
 
