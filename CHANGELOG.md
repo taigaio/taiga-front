@@ -2,8 +2,9 @@
 
 
 ## 1.9.0 ??? (unreleased)
+
 ### Features
-- ...
+- Ability to create single-line or multi-line custom fields. (thanks to [@artlepool](https://github.com/artlepool))
 
 ### Misc
 - Lots of small and not so small bugfixes.
