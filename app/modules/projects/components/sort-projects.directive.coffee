@@ -8,7 +8,7 @@ SortProjectsDirective = (currentUserService) ->
             axis: "y"
             opacity: .95
             placeholder: 'placeholder'
-            cancel: '.project-name' 
+            cancel: '.project-name'
         })
 
         el.on "sortstop", (event, ui) ->

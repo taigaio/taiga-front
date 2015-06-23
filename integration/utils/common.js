@@ -75,3 +75,22 @@ common.prepare = function() {
 
     return common.closeCookies()
 }
+
+common.dragEnd = function(elm) {
+    return browser.wait(function() {
+        return element.all(by.css('.ui-sortable-helper')).count()
+            .then(function(count) {
+                return count === 0;
+            });
+    }, 1000);
+};
+
+common.drag = function(elm, location) {
+    return browser
+        .actions()
+        .dragAndDrop(elm, location)
+        .perform()
+        .then(function() {
+            return common.dragEnd();
+        })
+};
