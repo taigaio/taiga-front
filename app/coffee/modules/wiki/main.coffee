@@ -243,6 +243,13 @@ EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $
             promise.finally ->
                 $loading.finish($el.find('.save-container'))
 
+        $el.on "click", "a", (event) ->
+            target = angular.element(event.target)
+            href = target.attr('href')
+            if href.indexOf("#") == 0
+                event.preventDefault()
+                $('body').scrollTop($(href).offset().top)
+
         $el.on "mousedown", ".view-wiki-content", (event) ->
             target = angular.element(event.target)
             return if not isEditable()

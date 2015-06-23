@@ -547,7 +547,7 @@ module.directive("tgEditableSubject", ["$rootScope", "$tgRepo", "$tgConfirm", "$
 
 
 #############################################################################
-## Editable subject directive
+## Editable description directive
 #############################################################################
 
 EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading, $selectedText, $qqueue, $template) ->
@@ -592,6 +592,13 @@ EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading,
             $el.find('.edit-description').show()
             $el.find('.view-description').hide()
             $el.find('textarea').focus()
+
+        $el.on "click", "a", (event) ->
+            target = angular.element(event.target)
+            href = target.attr('href')
+            if href.indexOf("#") == 0
+                event.preventDefault()
+                $('body').scrollTop($(href).offset().top)
 
         $el.on "click", ".save", (e) ->
             e.preventDefault()
