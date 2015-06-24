@@ -469,7 +469,6 @@ AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationServic
             }
 
             html = usersTemplate(ctx)
-
             html = $compile(html)($scope)
 
             $el.find("div.watchers").html(html)
@@ -537,7 +536,7 @@ module.directive("tgLbAssignedto", ["lightboxService", "lightboxKeyboardNavigati
 ## Watchers Lightbox directive
 #############################################################################
 
-WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationService, $template) ->
+WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationService, $template, $compile) ->
     link = ($scope, $el, $attrs) ->
         selectedItem = null
         usersTemplate = $template.get("common/lightbox/lightbox-assigned-to-users.html", true)
@@ -566,6 +565,7 @@ WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationS
             }
 
             html = usersTemplate(ctx)
+            html = $compile(html)($scope)
             $el.find("div.watchers").html(html)
 
         closeLightbox = () ->
@@ -616,4 +616,4 @@ WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationS
         link:link
     }
 
-module.directive("tgLbWatchers", ["$tgRepo", "lightboxService", "lightboxKeyboardNavigationService", "$tgTemplate", WatchersLightboxDirective])
+module.directive("tgLbWatchers", ["$tgRepo", "lightboxService", "lightboxKeyboardNavigationService", "$tgTemplate", "$compile", WatchersLightboxDirective])
