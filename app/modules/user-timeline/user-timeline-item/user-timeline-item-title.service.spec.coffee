@@ -97,6 +97,30 @@ describe "tgUserTimelineItemTitle", ->
 
         expect(title).to.be.equal("title_ok")
 
+    it "title with new value", () ->
+        timeline = {
+            data: {
+                values_diff: {
+                    status: ['old', 'new']
+                }
+            }
+        }
+
+        event = {}
+
+        type = {
+            key: 'NEW_VALUE',
+            translate_params: ['new_value']
+        }
+
+        mockTranslate.instant
+            .withArgs('NEW_VALUE', {new_value: 'new'})
+            .returns('new_value_ok')
+
+        title = mySvc.getTitle(timeline, event, type)
+
+        expect(title).to.be.equal("new_value_ok")
+
     it "title with project name", () ->
         timeline = {
             data: {
@@ -234,6 +258,40 @@ describe "tgUserTimelineItemTitle", ->
 
         objparam = sinon.match ((value) ->
             return value.obj_name == '<a tg-nav="project-taskboard:project=vm.activity.project.slug,sprint=vm.activity.obj.slug" title="milestone_name">milestone_name</a>'
+         ), "objparam"
+
+        mockTranslate.instant
+            .withArgs('TITLE_OBJ', objparam)
+            .returns('title_ok')
+
+        title = mySvc.getTitle(timeline, event, type)
+
+        expect(title).to.be.equal("title_ok")
+
+    it "task title with us_name", () ->
+        timeline = {
+            data: {
+                task: {
+                    name: 'task_name',
+                    userstory: {
+                        ref: 2
+                        subject: 'subject'
+                    }
+                }
+            }
+        }
+
+        event = {
+            obj: 'task',
+        }
+
+        type = {
+            key: 'TITLE_OBJ',
+            translate_params: ['us_name']
+        }
+
+        objparam = sinon.match ((value) ->
+            return value.us_name == '<a tg-nav="project-userstories-detail:project=vm.activity.project.slug,ref=vm.activity.obj.userstory.ref" title="#2 subject">#2 subject</a>'
          ), "objparam"
 
         mockTranslate.instant
