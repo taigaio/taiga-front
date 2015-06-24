@@ -995,16 +995,16 @@ BurndownBacklogGraphDirective = ($translate) ->
             tooltipOpts: {
                 content: (label, xval, yval, flotItem) ->
                     if flotItem.seriesIndex == 1
-                        ctx = {xval: xval, yval: yval}
+                        ctx = {sprintName: dataToDraw.milestones[xval].name, value: Math.abs(yval)}
                         return $translate.instant("BACKLOG.CHART.OPTIMAL", ctx)
                     else if flotItem.seriesIndex == 2
-                        ctx = {xval: xval, yval: yval}
+                        ctx = {sprintName: dataToDraw.milestones[xval].name, value: Math.abs(yval)}
                         return $translate.instant("BACKLOG.CHART.REAL", ctx)
                     else if flotItem.seriesIndex == 3
-                        ctx = {xval: xval, yval: Math.abs(yval)}
+                        ctx = {sprintName: dataToDraw.milestones[xval].name, value: Math.abs(yval)}
                         return $translate.instant("BACKLOG.CHART.INCREMENT_TEAM", ctx)
                     else
-                        ctx = {xval: xval, yval: Math.abs(yval)}
+                        ctx = {sprintName: dataToDraw.milestones[xval].name, value: Math.abs(yval)}
                         return $translate.instant("BACKLOG.CHART.INCREMENT_CLIENT", ctx)
             }
         }
