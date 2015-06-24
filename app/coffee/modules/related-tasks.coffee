@@ -205,7 +205,7 @@ RelatedTasksDirective = ($repo, $rs, $rootscope) ->
     link = ($scope, $el, $attrs) ->
         loadTasks = ->
             return $rs.tasks.list($scope.projectId, null, $scope.usId).then (tasks) =>
-                $scope.tasks = tasks
+                $scope.tasks = _.sortBy(tasks, 'ref')
                 return tasks
 
         $scope.$on "related-tasks:add", ->
