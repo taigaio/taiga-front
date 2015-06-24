@@ -10,12 +10,11 @@
     "Github"
   ],
   "author": "Kaleidos OpenSource SL",
-  "licenses": [
-    {
-      "type": "AGPL-3.0",
-      "url": "https://github.com/taigaio/taiga-front/blob/master/LICENSE"
-    }
-  ],
+  "license": "AGPL-3.0",
+  "repository": {
+    "type":"git",
+    "url":"https://github.com/taigaio/taiga-front.git"
+  },
   "scripts": {
     "scss-lint": "gulp scss-lint --fail",
     "test": "./node_modules/karma/bin/karma start"
