@@ -209,7 +209,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
     loadInitialData: ->
         promise = @.loadProject()
         return promise.then (project) =>
-            @.fillUsersAndRoles(project.users, project.roles)
+            @.fillUsersAndRoles(project.members, project.roles)
             @.initializeSubscription()
             @.loadKanban().then( => @scope.$broadcast("redraw:wip"))
 

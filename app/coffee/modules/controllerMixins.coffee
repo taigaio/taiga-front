@@ -41,9 +41,9 @@ class PageMixin
         @scope.usersById = groupBy(@scope.users, (e) -> e.id)
 
         @scope.roles = _.sortBy(roles, "order")
-        availableRoles = _(@scope.project.memberships).map("role").uniq().value()
+        computableRoles = _(@scope.project.members).map("role").uniq().value()
         @scope.computableRoles = _(roles).filter("computable")
-                                         .filter((x) -> _.contains(availableRoles, x.id))
+                                         .filter((x) -> _.contains(computableRoles, x.id))
                                          .value()
     loadUsersAndRoles: ->
         promise = @q.all([

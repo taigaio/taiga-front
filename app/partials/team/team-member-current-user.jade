@@ -1,10 +1,10 @@
 .row
     .username
         figure.avatar
-            img(tg-bo-src="currentUser.photo", tg-bo-alt="currentUser.full_name")
+            img(tg-bo-src="currentUser.photo", tg-bo-alt="currentUser.full_name_display")
 
             figcaption
-                span.name(tg-bo-bind="currentUser.full_name")
+                span.name(tg-bo-bind="currentUser.full_name_display")
 
                 span.position(tg-bo-bind="currentUser.role_name")
 

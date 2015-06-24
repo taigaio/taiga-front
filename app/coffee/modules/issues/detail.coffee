@@ -120,7 +120,6 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.severityById = groupBy(project.severities, (x) -> x.id)
             @scope.priorityList = project.priorities
             @scope.priorityById = groupBy(project.priorities, (x) -> x.id)
-            @scope.membersById = groupBy(project.memberships, (x) -> x.user)
             return project
 
     loadIssue: ->
@@ -146,7 +145,7 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
     loadInitialData: ->
         promise = @.loadProject()
         return promise.then (project) =>
-            @.fillUsersAndRoles(project.users, project.roles)
+            @.fillUsersAndRoles(project.members, project.roles)
             @.loadIssue()
 
 

@@ -1,10 +1,11 @@
 .row.member(ng-repeat="user in memberships | membersFilter:filtersQ:filtersRole")
     .username
         figure.avatar
-            img(tg-bo-src="user.photo", tg-bo-alt="user.full_name")
+            img(tg-bo-src="user.photo", tg-bo-alt="user.full_name_display")
 
             figcaption
-                a.name(tg-nav="user-profile:username=user.username", title="{{::user.full_name }}") {{::user.full_name}}
+                a.name(tg-nav="user-profile:username=user.username",
+                       title="{{::user.full_name_display}}") {{::user.full_name_display}}
                 span.position {{::user.role_name}}
 
     .member-stats(tg-team-member-stats, stats="stats",

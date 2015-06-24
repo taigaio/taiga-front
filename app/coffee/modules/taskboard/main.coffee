@@ -135,7 +135,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
 
             @scope.$emit('project:loaded', project)
 
-            @.fillUsersAndRoles(project.users, project.roles)
+            @.fillUsersAndRoles(project.members, project.roles)
 
             return project
 

@@ -107,7 +107,6 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.$emit('project:loaded', project)
             @scope.statusList = project.task_statuses
             @scope.statusById = groupBy(project.task_statuses, (x) -> x.id)
-            @scope.membersById = groupBy(project.memberships, (x) -> x.user)
             return project
 
     loadTask: ->
@@ -146,7 +145,7 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
     loadInitialData: ->
         promise = @.loadProject()
         return promise.then (project) =>
-            @.fillUsersAndRoles(project.users, project.roles)
+            @.fillUsersAndRoles(project.members, project.roles)
             @.loadTask().then(=> @q.all([@.loadSprint(), @.loadUserStory()]))
 
 module.controller("TaskDetailController", TaskDetailController)
