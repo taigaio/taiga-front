@@ -20,7 +20,7 @@ describe('project home', function() {
     });
 
     it('timeline filled', function() {
-        return expect($$('div[tg-user-timeline-item]').count()).to.be.eventually.above(0);
+        expect($$('div[tg-user-timeline-item]').count()).to.be.eventually.above(0);
     });
 
     it('timeline pagination', async function() {
@@ -37,6 +37,6 @@ describe('project home', function() {
     });
 
     it('team filled', function() {
-        return expect($$('ul.involved-team a').count()).to.be.eventually.above(0);
+        expect($$('ul.involved-team a').count()).to.be.eventually.above(0);
     });
 });

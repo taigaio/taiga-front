@@ -2,7 +2,7 @@ require("babel/register")({
     stage: 1
 });
 
-var utils = require('./integration/utils');
+var utils = require('./e2e/utils');
 
 exports.config = {
     seleniumAddress: 'http://localhost:4444/wd/hub',
@@ -11,8 +11,8 @@ exports.config = {
         timeout: 5000
     },
     suites: {
-        auth: 'integration/auth/*.integrationSpec.js',
-        full: 'integration/full/**/*integrationSpec.js'
+        auth: 'e2e/auth/*.e2e.js',
+        full: 'e2e/full/**/*.e2e.js'
     },
     onPrepare: function() {
         browser.get('http://localhost:9001/login');

@@ -14,4 +14,4 @@ tmp/
 app/config/main.coffee
 app/plugins/taiga-front-extras
 scss-lint.log
-integration/screenshots/
+e2e/screenshots/
