@@ -7,34 +7,34 @@ chai.use(chaiAsPromised);
 var expect = chai.expect;
 
 describe('auth', function() {
-    it('login', function() {
+    it('login', async function() {
         browser.get('http://localhost:9001/login');
 
-        return utils.common.waitLoader().then(function() {
-            utils.common.takeScreenshot("auth", "login");
+        await utils.common.waitLoader();
 
-            var username = $('input[name="username"]');
-            username.sendKeys('admin');
+        utils.common.takeScreenshot("auth", "login");
 
-            var password = $('input[name="password"]');
-            password.sendKeys('123123');
+        var username = $('input[name="username"]');
+        username.sendKeys('admin');
 
-            $('.submit-button').click();
+        var password = $('input[name="password"]');
+        password.sendKeys('123123');
 
-            return expect(browser.getCurrentUrl()).to.be.eventually.equal('http://localhost:9001/');
-        });
+        $('.submit-button').click();
+
+        expect(browser.getCurrentUrl()).to.be.eventually.equal('http://localhost:9001/');
     });
 
     describe("user", function() {
         var user = {};
 
         describe("register", function() {
-            it('screenshot', function() {
+            it('screenshot', async function() {
                 browser.get('http://localhost:9001/register');
 
-                utils.common.waitLoader().then(function() {
-                    utils.common.takeScreenshot("auth", "register");
-                });
+                await utils.common.waitLoader();
+
+                utils.common.takeScreenshot("auth", "register");
             });
 
             it('register validation', function() {
@@ -44,7 +44,7 @@ describe('auth', function() {
 
                 utils.common.takeScreenshot("auth", "register-validation");
 
-                return expect($$('.checksley-required').count()).to.be.eventually.equal(4);
+                expect($$('.checksley-required').count()).to.be.eventually.equal(4);
             });
 
             it('register ok', function() {
@@ -62,16 +62,15 @@ describe('auth', function() {
 
                 $('.submit-button').click();
 
-                return expect(browser.getCurrentUrl()).to.be.eventually.equal('http://localhost:9001/');
+                expect(browser.getCurrentUrl()).to.be.eventually.equal('http://localhost:9001/');
             });
         });
 
         describe("change password", function() {
-            beforeEach(function(done) {
-                utils.common.login(user.username, user.password).then(function() {
-                    browser.get('http://localhost:9001/user-settings/user-change-password');
-                    done();
-                });
+            beforeEach(async function() {
+                await utils.common.login(user.username, user.password);
+
+                browser.get('http://localhost:9001/user-settings/user-change-password');
             });
 
             it("error", function() {
@@ -81,7 +80,7 @@ describe('auth', function() {
 
                 $('.submit-button').click();
 
-                return expect(utils.notifications.error.open()).to.be.eventually.equal(true);
+                expect(utils.notifications.error.open()).to.be.eventually.equal(true);
             });
 
             it("success", function() {
@@ -91,7 +90,7 @@ describe('auth', function() {
 
                 $('.submit-button').click();
 
-                return expect(utils.notifications.success.open()).to.be.eventually.equal(true);
+                expect(utils.notifications.success.open()).to.be.eventually.equal(true);
             });
         });
 
@@ -100,61 +99,57 @@ describe('auth', function() {
                 browser.get('http://localhost:9001/forgot-password');
             });
 
-            it ("screenshot", function() {
-                utils.common.waitLoader().then(function() {
-                    utils.common.takeScreenshot("auth", "remember-password");
-                });
+            it ("screenshot", async function() {
+                await utils.common.waitLoader();
+
+                utils.common.takeScreenshot("auth", "remember-password");
             });
 
             it ("error", function() {
                 $('input[name="username"]').sendKeys("xxxxxxxx");
                 $('.submit-button').click();
 
-                return expect(utils.notifications.errorLight.open()).to.be.eventually.equal(true);
+                expect(utils.notifications.errorLight.open()).to.be.eventually.equal(true);
             });
 
-            it ("success", function() {
+            it ("success", async function() {
                 $('input[name="username"]').sendKeys(user.username);
                 $('.submit-button').click();
 
-                return utils.lightbox.open('.lightbox-generic-success').then(function() {
-                    utils.common.takeScreenshot('auth', 'remember-password-success');
+                await utils.lightbox.open('.lightbox-generic-success');
 
-                    $('.lightbox-generic-success .button-green').click();
+                utils.common.takeScreenshot('auth', 'remember-password-success');
 
-                    return expect(utils.lightbox.close('.lightbox-generic-success')).to.be.eventually.equal(true);
-                });
+                $('.lightbox-generic-success .button-green').click();
+
+                expect(utils.lightbox.close('.lightbox-generic-success')).to.be.eventually.equal(true);
             });
         });
 
         describe("", function() {
-            it("logout", function() {
-                return utils.common.login(user.username, user.password)
-                    .then(function() {
-                        browser.actions().mouseMove($('div[tg-dropdown-user]')).perform();
-                        $$('.dropdown-user li a').last().click();
+            it("logout", async function() {
+                await utils.common.login(user.username, user.password);
 
-                        return expect(browser.getCurrentUrl()).to.be.eventually.equal('http://localhost:9001/login');
-                    })
+                browser.actions().mouseMove($('div[tg-dropdown-user]')).perform();
+                $$('.dropdown-user li a').last().click();
+
+                expect(browser.getCurrentUrl()).to.be.eventually.equal('http://localhost:9001/login');
             });
 
-            it("delete account", function() {
-                return utils.common.login(user.username, user.password)
-                    .then(function() {
-                        browser.get('http://localhost:9001/user-settings/user-profile');
-                        $('.delete-account').click();
+            it("delete account", async function() {
+                await utils.common.login(user.username, user.password);
 
-                        return utils.lightbox.open('.lightbox-delete-account');
-                    })
-                    .then(function() {
-                        utils.common.takeScreenshot("auth", "delete-account");
+                browser.get('http://localhost:9001/user-settings/user-profile');
+                $('.delete-account').click();
 
-                        $('#unsuscribe').click();
-                        $('.lightbox-delete-account .button-green').click();
+                await utils.lightbox.open('.lightbox-delete-account');
 
-                        return expect(browser.getCurrentUrl())
-                            .to.be.eventually.equal('http://localhost:9001/login');
-                    });
+                utils.common.takeScreenshot("auth", "delete-account");
+
+                $('#unsuscribe').click();
+                $('.lightbox-delete-account .button-green').click();
+
+                expect(browser.getCurrentUrl()).to.be.eventually.equal('http://localhost:9001/login');
             });
         });
     });

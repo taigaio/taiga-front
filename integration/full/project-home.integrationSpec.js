@@ -7,12 +7,11 @@ chai.use(chaiAsPromised);
 var expect = chai.expect;
 
 describe('project home', function() {
-    before(function(){
+    before(async function(){
         browser.get('http://localhost:9001/');
 
-        return utils.common.waitLoader().then(function() {
-            return utils.common.takeScreenshot("project", "home");
-        });
+        await utils.common.waitLoader();
+        await utils.common.takeScreenshot("project", "home");
     });
 
     it('go to project', function() {
@@ -24,26 +23,17 @@ describe('project home', function() {
         return expect($$('div[tg-user-timeline-item]').count()).to.be.eventually.above(0);
     });
 
-    it('timeline pagination', function(done) {
-        $$('div[tg-user-timeline-item]')
-            .count()
-            .then(function(startTotal) {
-                return browser.executeScript('window.scrollTo(0,document.body.scrollHeight)')
-                    .then(function() {
-                        return browser.waitForAngular();
-                    })
-                    .then(function() {
-                        return $$('div[tg-user-timeline-item]').count();
-                    })
-                    .then(function(endTotal) {
-                        return startTotal < endTotal;
-                    });
-            })
-            .then(function(hasMoreItems) {
-                expect(hasMoreItems).to.be.equal(true);
+    it('timeline pagination', async function() {
+        let startTotal = await $$('div[tg-user-timeline-item]').count();
 
-                done();
-            });
+        await browser.executeScript('window.scrollTo(0,document.body.scrollHeight)');
+        await browser.waitForAngular();
+
+        let endTotal = await $$('div[tg-user-timeline-item]').count();
+
+        let hasMoreItems = startTotal < endTotal;
+
+        expect(hasMoreItems).to.be.equal(true);
     });
 
     it('team filled', function() {

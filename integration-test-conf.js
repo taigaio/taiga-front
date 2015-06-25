@@ -1,3 +1,7 @@
+require("babel/register")({
+    stage: 1
+});
+
 var utils = require('./integration/utils');
 
 exports.config = {

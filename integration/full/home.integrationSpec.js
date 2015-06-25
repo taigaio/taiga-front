@@ -7,12 +7,11 @@ chai.use(chaiAsPromised);
 var expect = chai.expect;
 
 describe('home', function() {
-    before(function(){
+    before(async function(){
         browser.get('http://localhost:9001/');
 
-        return utils.common.waitLoader().then(function() {
-            return utils.common.takeScreenshot("home", "dashboard");
-        });
+        await utils.common.waitLoader();
+        utils.common.takeScreenshot("home", "dashboard");
     });
 
     it('working on filled', function() {
@@ -28,12 +27,11 @@ describe('home', function() {
     });
 
     describe('projects list', function() {
-        before(function() {
+        before(async function() {
             browser.get('http://localhost:9001/projects/');
 
-            return utils.common.waitLoader().then(function() {
-                return utils.common.takeScreenshot("home", "projects");
-            });
+            await utils.common.waitLoader();
+            utils.common.takeScreenshot("home", "projects");
         });
 
         it('open create project lightbox', function() {
@@ -52,22 +50,19 @@ describe('home', function() {
     describe("project drag and drop", function() {
         var draggedElementText;
 
-        before(function() {
+        before(async function() {
             browser.get('http://localhost:9001/projects/');
 
-            var dragableElements = element.all(by.css('.project-list-single'));
-            var dragElement = dragableElements.get(3);
-            var dragElementLink = dragElement.element(by.css('a'));
+            let dragableElements = element.all(by.css('.project-list-single'));
+            let dragElement = dragableElements.get(3);
+            let dragElementLink = dragElement.element(by.css('a'));
 
-            return utils.common.waitLoader()
-                .then(function() {
-                    return dragElementLink.getText()
-                })
-                .then(function(_draggedElementText_) {
-                    draggedElementText = _draggedElementText_;
+            await utils.common.waitLoader();
 
-                    return utils.common.drag(dragElement, dragableElements.get(0))
-                });
+            draggedElementText = await dragElementLink.getText();
+
+            await utils.common.drag(dragElement, dragableElements.get(0));
+            await browser.waitForAngular();
         });
 
         it('projects list has the new order', function() {
@@ -81,5 +76,6 @@ describe('home', function() {
 
             expect(firstElementText).to.be.eventually.equal(draggedElementText);
         });
+
     });
 });

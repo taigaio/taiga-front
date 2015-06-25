@@ -3,22 +3,20 @@ var common = require('./common')
 var lightbox = module.exports;
 var transition = 300;
 
-lightbox.open = function(el) {
+lightbox.open = async function(el) {
     var deferred = protractor.promise.defer();
 
-   browser
-        .wait(function() {
-            return common.hasClass($(el), 'open')
-        }, 2000)
-        .then(function(open) {
-            return browser.sleep(transition).then(function() {
-                if (open) {
-                    deferred.fulfill(true);
-                } else {
-                    deferred.reject(new Error('Lightbox doesn\'t open'));
-                }
-            });
-        });
+    let open = await browser.wait(function() {
+        return common.hasClass($(el), 'open')
+    }, 2000);
+
+    await browser.sleep(transition);
+
+    if (open) {
+        deferred.fulfill(true);
+    } else {
+        deferred.reject(new Error('Lightbox doesn\'t open'));
+    }
 
     return deferred.promise;
 };
