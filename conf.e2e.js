@@ -8,7 +8,7 @@ exports.config = {
     seleniumAddress: 'http://localhost:4444/wd/hub',
     framework: 'mocha',
     mochaOpts: {
-        timeout: 5000
+        timeout: 11000
     },
     suites: {
         auth: 'e2e/auth/*.e2e.js',
@@ -28,7 +28,7 @@ exports.config = {
         return browser.driver.wait(function() {
             return utils.common.closeCookies()
                 .then(function() {
-                    return browser.driver.getCurrentUrl()
+                    return browser.driver.getCurrentUrl();
                 })
                 .then(function(url) {
                     return url === 'http://localhost:9001/';

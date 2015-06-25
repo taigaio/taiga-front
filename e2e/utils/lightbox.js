@@ -6,9 +6,13 @@ var transition = 300;
 lightbox.open = async function(el) {
     var deferred = protractor.promise.defer();
 
+    if (typeof el == 'string' || el instanceof String) {
+        el = $(el);
+    }
+
     let open = await browser.wait(function() {
-        return common.hasClass($(el), 'open')
-    }, 2000);
+        return common.hasClass(el, 'open')
+    }, 4000);
 
     await browser.sleep(transition);
 
@@ -21,25 +25,41 @@ lightbox.open = async function(el) {
     return deferred.promise;
 };
 
-lightbox.close = function(el) {
+lightbox.close = async function(el) {
     var deferred = protractor.promise.defer();
+    var present = true;
 
-    $(el).isPresent().then(function(present) {
-        if (!present) {
-            deferred.fulfill(true);
-        } else {
-            return browser.wait(function() {
-                return common.hasClass($(el), 'open').then(function(open) {
-                    return !open;
-                });
-            }, 2000)
-                .then(function() {
-                    return deferred.fulfill(true);
-                }, function() {
-                    deferred.reject(new Error('Lightbox doesn\'t close'));
-                });
-        }
-    })
+    if (typeof el == 'string' || el instanceof String) {
+        el = $(el);
+    }
+
+    present = await el.isPresent();
+
+    if (!present) {
+        deferred.fulfill(true);
+    } else {
+        return browser.wait(function() {
+            return common.hasClass(el, 'open').then(function(open) {
+                return !open;
+            });
+        }, 4000)
+            .then(function() {
+                return deferred.fulfill(true);
+            }, function() {
+                deferred.reject(new Error('Lightbox doesn\'t close'));
+            });
+    }
 
     return deferred.promise;
+};
+
+lightbox.confirm = {};
+
+lightbox.confirm.ok = async function() {
+    let lb = $('.lightbox-generic-ask');
+    await lightbox.open(lb);
+
+    lb.$('.button-green').click();
+
+    await lightbox.close(lb);
 };

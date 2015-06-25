@@ -7,10 +7,12 @@ chai.use(chaiAsPromised);
 var expect = chai.expect;
 
 describe('project home', function() {
-    before(async function(){
-        browser.get('http://localhost:9001/');
-
+    beforeEach(async function() {
+        browser.get('http://localhost:9001/project/user7-project-example-1/');
         await utils.common.waitLoader();
+    });
+
+    it('screenshot', async function() {
         await utils.common.takeScreenshot("project", "home");
     });
 
