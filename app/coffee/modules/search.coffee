@@ -69,7 +69,10 @@ class SearchController extends mixOf(taiga.Controller, taiga.PageMixin)
 
         @scope.$watch "searchTerm", (term) =>
             if term
-                loadSearchData(term)
+                @scope.loading = true
+
+                @.loadSearchData(term).then () =>
+                    @scope.loading = false
 
     loadFilters: ->
         defered = @q.defer()

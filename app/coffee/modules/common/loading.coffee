@@ -36,3 +36,17 @@ class TgLoadingService extends taiga.Service
             target.removeClass('loading')
 
 module.service("$tgLoading", TgLoadingService)
+
+LoadingDirective = ($loading) ->
+    link = ($scope, $el, attr) ->
+        $scope.$watch attr.tgLoading, (showLoading) =>
+            if showLoading
+                $loading.start($el)
+             else
+                 $loading.finish($el)
+
+    return {
+        link:link
+    }
+
+module.directive("tgLoading", ["$tgLoading", LoadingDirective])

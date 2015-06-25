@@ -98,7 +98,8 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         {
             templateUrl: "search/search.html",
             reloadOnSearch: false,
-            section: "search"
+            section: "search",
+            loader: true
         }
     )
 
