@@ -385,7 +385,7 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $c
         $el.on "click", "a", (event) ->
             target = angular.element(event.target)
             href = target.attr('href')
-            if href.indexOf("#") == 0
+            if href && href.indexOf("#") == 0
                 event.preventDefault()
                 $('body').scrollTop($(href).offset().top)
 
