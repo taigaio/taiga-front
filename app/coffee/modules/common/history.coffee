@@ -382,6 +382,13 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $c
             target = angular.element(event.currentTarget)
             save(target)
 
+        $el.on "click", "a", (event) ->
+            target = angular.element(event.target)
+            href = target.attr('href')
+            if href.indexOf("#") == 0
+                event.preventDefault()
+                $('body').scrollTop($(href).offset().top)
+
         $el.on "click", ".show-more", (event) ->
             event.preventDefault()
 
