@@ -105,12 +105,12 @@
         "TASK": "Aufgabe",
         "ISSUE": "Ticket",
         "TAGS": {
-            "PLACEHOLDER": "Ich bin's! Kennzeichne mich...",
+            "PLACEHOLDER": "Schlagwort...",
             "DELETE": "Schlagwort löschen",
             "ADD": "Schlagwort hinzufügen"
         },
         "DESCRIPTION": {
-            "EMPTY": "Leere ist so langweilig... werden Sie doch anschaulich...",
+            "EMPTY": "Bitte geben Sie eine Beschreibung ein...",
             "NO_DESCRIPTION": "Noch keine Beschreibung "
         },
         "FIELDS": {
@@ -170,29 +170,29 @@
         },
         "WYSIWYG": {
             "H1_BUTTON": "Überschrift 1",
-            "H1_SAMPLE_TEXT": "Geben Sie den Titel ein...",
+            "H1_SAMPLE_TEXT": "Titel...",
             "H2_BUTTON": "Überschrift 2",
-            "H2_SAMPLE_TEXT": "Geben Sie den Titel ein...",
+            "H2_SAMPLE_TEXT": "Titel...",
             "H3_BUTTON": "Überschrift 3",
-            "H3_SAMPLE_TEXT": "Geben Sie den Titel ein...",
+            "H3_SAMPLE_TEXT": "Titel...",
             "BOLD_BUTTON": "Fettschrift",
-            "BOLD_BUTTON_SAMPLE_TEXT": "Geben Sie Ihren Text ein...",
+            "BOLD_BUTTON_SAMPLE_TEXT": "Text...",
             "ITALIC_BUTTON": "Kursivschrift",
-            "ITALIC_SAMPLE_TEXT": "Geben Sie Ihren Text ein...",
+            "ITALIC_SAMPLE_TEXT": "Text...",
             "STRIKE_BUTTON": "Treffer",
-            "STRIKE_SAMPLE_TEXT": "Geben Sie Ihren Text ein...",
+            "STRIKE_SAMPLE_TEXT": "Text...",
             "BULLETED_LIST_BUTTON": "Aufzählung",
-            "BULLETED_LIST_SAMPLE_TEXT": "Geben Sie Ihren Text ein...",
+            "BULLETED_LIST_SAMPLE_TEXT": "Text...",
             "NUMERIC_LIST_BUTTON": "Numerische Liste",
-            "NUMERIC_LIST_SAMPLE_TEXT": "Geben Sie Ihren Text ein...",
+            "NUMERIC_LIST_SAMPLE_TEXT": "Text...",
             "PICTURE_BUTTON": "Bild",
-            "PICTURE_SAMPLE_TEXT": "Geben Sie Ihren Alternativtext zum Bild ein...",
+            "PICTURE_SAMPLE_TEXT": "Alternativtext zum Bild...",
             "LINK_BUTTON": "Link",
-            "LINK_SAMPLE_TEXT": "Geben Sie Ihren Linktext ein...",
+            "LINK_SAMPLE_TEXT": "Linktext...",
             "QUOTE_BLOCK_BUTTON": "Blockzitat",
-            "QUOTE_BLOCK_SAMPLE_TEXT": "Geben Sie Ihren Text ein...",
+            "QUOTE_BLOCK_SAMPLE_TEXT": "Text...",
             "CODE_BLOCK_BUTTON": "Kodeblock",
-            "CODE_BLOCK_SAMPLE_TEXT": "Geben Sie Ihren Text ein...",
+            "CODE_BLOCK_SAMPLE_TEXT": "Text...",
             "PREVIEW_BUTTON": "Vorschau",
             "EDIT_BUTTON": "Bearbeiten",
             "MARKDOWN_HELP": "Markdown syntax Hilfe"
@@ -294,7 +294,7 @@
     },
     "CHANGE_PASSWORD": {
         "PAGE_TITLE": "Ändern Sie Ihr Passwort - Taiga",
-        "PAGE_DESCRIPTION": "Setzen Sie ein neues Passwort für Ihr Taiga Benutzerkonto, und hey!, es empfiehlt sich, mehr eisenreiche Nahrung zu sich zu nehmen - die ist gut für's Gehirn :P",
+        "PAGE_DESCRIPTION": "Setzen Sie ein neues Passwort für Ihr Taiga Benutzerkonto.",
         "SECTION_NAME": "Passwort ändern",
         "FIELD_CURRENT_PASSWORD": "Aktuelles Passwort",
         "PLACEHOLDER_CURRENT_PASSWORD": "Ihr aktuelles Passwort (oder leer, wenn Sie noch kein Passwort haben)",
@@ -423,9 +423,9 @@
             "DELETE": "Dieses Projekt löschen"
         },
         "REPORTS": {
-            "TITLE": "Reporte",
+            "TITLE": "Berichte",
             "SUBTITLE": "Exportieren Sie Ihre Projektdaten in CSV Format und erstellen Sie Ihre eigenen Berichte. ",
-            "DESCRIPTION": "Laden Sie eine CSV Datei herunter oder kopieren Sie die generierte URL und öffnen Sie sie in Ihrem bevorzugten Text-Editor oder in Ihrer Tabellenkalkulation, um Ihre eigenen Projektdaten-Reporte zu erstellen. So können Sie Ihre Daten leicht überblicken und analysieren.",
+            "DESCRIPTION": "Laden Sie eine CSV Datei herunter oder kopieren Sie die generierte URL und öffnen Sie sie in Ihrem bevorzugten Text-Editor oder in Ihrer Tabellenkalkulation, um Ihre eigenen Projektdaten-Berichte zu erstellen. So können Sie Ihre Daten leicht überblicken und analysieren.",
             "HELP": "Wie kann ich dies in meiner eigenen Tabellenkalkulation nutzen?",
             "REGENERATE_TITLE": "Die URL ändern",
             "REGENERATE_SUBTITLE": "Sie sind im Begriff, die CSV data access URL zu ändern. Die vorherige URL wird deaktiviert. Sind Sie sicher?"
@@ -477,8 +477,8 @@
             "TITLE": "Status",
             "SUBTITLE": "Spezifizieren Sie die Status, die Ihre User-Stories, Aufgaben und Tickets durchlaufen werden. ",
             "US_TITLE": "User-Story Status",
-            "TASK_TITLE": "Aufgabenstatus",
-            "ISSUE_TITLE": "Ticket Status"
+            "TASK_TITLE": "Aufgaben-Status",
+            "ISSUE_TITLE": "Ticket-Status"
         },
         "PROJECT_VALUES_TYPES": {
             "TITLE": "Typen",
@@ -489,7 +489,7 @@
         "ROLES": {
             "PAGE_TITLE": "Rollen - {{projectName}}",
             "WARNING_NO_ROLE": "Beachten Sie, keine Rolle in Ihrem Projekt wird in der Lage sein, die Punktevergabe für User-Stories einzuschätzen. ",
-            "HELP_ROLE_ENABLED": "Wenn Sie dies freischalten, werden Mitglieder, denen diese Rolle zugewiesen ist, in der Lage sein, die Punktevergabe für User-Stories zu veranschlagen. ",
+            "HELP_ROLE_ENABLED": "Wenn Sie dies freischalten, werden Mitglieder, denen diese Rolle zugewiesen ist, in der Lage sein, die Punktevergabe für User-Stories vorzunehmen. ",
             "COUNT_MEMBERS": "{{ role.members_count }} Mitglieder mit dieser Rolle",
             "TITLE_DELETE_ROLE": "Rolle löschen",
             "REPLACEMENT_ROLE": "Alle Benutzer mit dieser Rolle werden verschoben nach ",
@@ -521,9 +521,9 @@
             "SECTION_NAME": "Webhooks",
             "SUBTITLE": "Webhooks meldet externe Dienste über Ereignisse in Taiga, wie Kommentare, User-Stories...",
             "ADD_NEW": "Fügen Sie ein neues Webhook hinzu",
-            "TYPE_NAME": "Geben Sie den Namen des Services ein",
+            "TYPE_NAME": "Servicename...",
             "TYPE_PAYLOAD_URL": "Geben Sie die Service Payload URL ein",
-            "TYPE_SERVICE_SECRET": "Geben Sie den Service Sicherheitsschlüssel ein",
+            "TYPE_SERVICE_SECRET": "Sicherheitsschlüssel...",
             "SAVE": "Webhook sichern ",
             "CANCEL": "Webhook beenden",
             "SHOW_HISTORY": "(Chronik anzeigen)",
@@ -571,11 +571,11 @@
         "DEFAULT_VALUES": {
             "LABEL_POINTS": "Vorgegebener Wert für Punkteauswahl",
             "LABEL_US": "Vorgegebener Wert für User-Story-Status Auswahl ",
-            "LABEL_TASK_STATUS": "Vorgegebener Wert für Aufgabenstatusauswahl ",
+            "LABEL_TASK_STATUS": "Vorgegebene Auswahl für den Aufgaben-Status",
             "LABEL_PRIORITY": "Vorgegebener Wert für Prioritätsauswahl",
             "LABEL_SEVERITY": "Vorgegebener Wert für Gewichtungsauswahl",
             "LABEL_ISSUE_TYPE": "Vorgegebener Wert für Ticketartauswahl ",
-            "LABEL_ISSUE_STATUS": "Vorgegebener Wert für Ticketstatusauswahl "
+            "LABEL_ISSUE_STATUS": "Vorgegebene Auswahl für den Ticket-Status"
         },
         "STATUS": {
             "PLACEHOLDER_WRITE_STATUS_NAME": "Benennen Sie den neuen Status"
@@ -642,7 +642,7 @@
         "PROFILE_SIDEBAR": {
             "TITLE": "Ihr Profil",
             "DESCRIPTION": "Da andere Mitglieder sehen, dass sie ebenfalls an einem Projekt arbeiten wäre es schön, wenn Sie ein paar Informationen zu Ihrer Person angeben.",
-            "ADD_INFO": "Bearbeiten Sie Ihre Bio"
+            "ADD_INFO": "Bio bearbeiten"
         }
     },
     "PROJECT": {
@@ -682,11 +682,11 @@
             "HELP": "Hilfe",
             "FEEDBACK_TITLE": "Feedback senden",
             "FEEDBACK": "Feedback",
-            "NOTIFICATIONS_TITLE": "Bearbeiten Sie Ihre Benachrichtigungseinstellungen",
+            "NOTIFICATIONS_TITLE": "Benachrichtigungseinstellungen bearbeiten",
             "NOTIFICATIONS": "Benachrichtigungen",
-            "ORGANIZATIONS_TITLE": "Bearbeiten Sie Ihre Organisationen",
+            "ORGANIZATIONS_TITLE": "Organisationen bearbeiten",
             "ORGANIZATIONS": "Organisationen bearbeiten",
-            "SETTINGS_TITLE": "Bearbeiten Sie Ihre Einstellungen",
+            "SETTINGS_TITLE": "Einstellungen bearbeiten",
             "SETTINGS": "Einstellungen",
             "VIEW_PROFILE_TITLE": "Profil ansehen",
             "VIEW_PROFILE": "Profil ansehen",
@@ -715,7 +715,7 @@
     },
     "LIGHTBOX": {
         "DELETE_ACCOUNT": {
-            "SECTION_NAME": "Taiga Benutzerkonto löschen",
+            "SECTION_NAME": "Ihr Taiga Benutzerkonto löschen",
             "CONFIRM": "Sind Sie sicher, dass Sie Ihr Taiga Benutzerkonto löschen wollen?",
             "SUBTITLE": "Wir werden Sie vermissen! :-(",
             "NEWSLETTER_LABEL_TEXT": "Ich möchte keinen Newsletter mehr erhalten"
@@ -758,7 +758,7 @@
         "CREATE_EDIT_TASK": {
             "TITLE": "Neue Aufgabe",
             "PLACEHOLDER_SUBJECT": "Aufgaben Betreff",
-            "PLACEHOLDER_STATUS": "Aufgabenstatus",
+            "PLACEHOLDER_STATUS": "Aufgaben-Status",
             "OPTION_UNASSIGNED": "Nicht zugeordnet",
             "PLACEHOLDER_SHORT_DESCRIPTION": "Geben Sie eine kurze Beschreibung ein",
             "ACTION_EDIT": "Aufgabe bearbeiten"
@@ -797,7 +797,7 @@
         "LIGHTBOX_TITLE_BLOKING_US": "Blockiert uns",
         "TASK_COMPLETED": "{{totalClosedTasks}}/{{totalTasks}} Aufgaben fertiggestellt",
         "ASSIGN": "Zugeordnete User-Story",
-        "NOT_ESTIMATED": "Nicht abgeschätzt",
+        "NOT_ESTIMATED": "Nicht eingeschätzt",
         "TOTAL_US_POINTS": "User-Story-Punkte insgesamt",
         "FIELDS": {
             "TEAM_REQUIREMENT": "Team Anforderung",
@@ -841,7 +841,7 @@
             "STATUS": "Status",
             "IS_CLOSED": "ist geschlossen",
             "FINISH_DATE": "Endtermin",
-            "TYPE": "typen",
+            "TYPE": "Typen",
             "PRIORITY": "Priorität",
             "SEVERITY": "Gewichtung",
             "ASSIGNED_TO": "zugewiesen an",
@@ -978,7 +978,7 @@
         "SECTION_NAME": "Aufgabendetails",
         "LINK_TASKBOARD": "Taskboard",
         "TITLE_LINK_TASKBOARD": "Zu Taskboard wechseln",
-        "PLACEHOLDER_SUBJECT": "Geben Sie den neuen Aufgaben Betreff ein",
+        "PLACEHOLDER_SUBJECT": "Betreff...",
         "TITLE_SELECT_STATUS": "Status Bezeichnung",
         "OWNER_US": "Diese Aufgabe gehört zu ",
         "TITLE_LINK_GO_OWNER": "Zur User-Story wechseln",
@@ -1039,7 +1039,7 @@
         "FIELDS": {
             "PRIORITY": "Priorität",
             "SEVERITY": "Gewichtung",
-            "TYPE": "Typen"
+            "TYPE": "Arten"
         },
         "CONFIRM_PROMOTE": {
             "TITLE": "Dieses Problem zur User-Story aufwerten",
@@ -1053,7 +1053,7 @@
             "BREADCRUMB": "Filter",
             "TITLE_BREADCRUMB": "Filter",
             "CATEGORIES": {
-                "TYPE": "Typen",
+                "TYPE": "Arten",
                 "STATUS": "Status",
                 "SEVERITY": "Gewichtung",
                 "PRIORITIES": "Prioritäten",
@@ -1069,7 +1069,7 @@
         },
         "TABLE": {
             "COLUMNS": {
-                "TYPE": "Typen",
+                "TYPE": "Arten",
                 "SEVERITY": "Gewichtung",
                 "PRIORITY": "Priorität",
                 "SUBJECT": "Thema",
@@ -1171,7 +1171,7 @@
         "IMAGE_HELP": "Das Bild wird auf 80x80px skaliert.<br />",
         "ACTION_CHANGE_IMAGE": "Ändern",
         "ACTION_USE_GRAVATAR": "Gravatar verwenden",
-        "ACTION_DELETE_ACCOUNT": "Taiga Benutzerkonto löschen",
+        "ACTION_DELETE_ACCOUNT": "Ihr Taiga Benutzerkonto löschen",
         "CHANGE_EMAIL_SUCCESS": "<strong>Sehen Sie in Ihren Posteingang!</strong><br />Wir haben eine E-Mail an Ihr Konto gesendet<br />mit der Anleitung, wie Sie Ihre neue Adresse anlegen",
         "CHANGE_PHOTO": "Foto ändern",
         "FIELD": {
@@ -1212,7 +1212,7 @@
     },
     "HINTS": {
         "SECTION_NAME": "Hinweis",
-        "LINK": "Wenn Sie wissen möchten, wie sie es benutzen können, besuchen Sie unsere Support Seite ",
+        "LINK": "Mehr dazu auf unserer Support Seite ",
         "LINK_TITLE": "Besuchen Sie unsere Support Seite",
         "HINT1_TITLE": "Wussten Sie, dass Sie Projekte importieren und exportieren?",
         "HINT1_TEXT": "Dies erlaubt Ihnen, alle Ihre Daten zu extrahieren und sie von einer Taiga zur nächsten zu transportieren",
