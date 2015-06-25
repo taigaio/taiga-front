@@ -140,25 +140,69 @@ timelineType = (timeline, event) ->
         },
         { # UsUpdated
             check: (timeline, event) ->
-                return event.obj == 'userstory' && event.type == 'change'
+                return event.obj == 'userstory' &&
+                    event.type == 'change' &&
+                    !timeline.data.values_diff.description_diff
+            key: 'TIMELINE.US_UPDATED_WITH_NEW_VALUE',
+            translate_params: ['username', 'field_name', 'obj_name', 'new_value']
+        },
+        { # UsUpdated description
+            check: (timeline, event) ->
+                return event.obj == 'userstory' &&
+                    event.type == 'change' &&
+                    timeline.data.values_diff.description_diff
             key: 'TIMELINE.US_UPDATED',
             translate_params: ['username', 'field_name', 'obj_name']
         },
         { # IssueUpdated
             check: (timeline, event) ->
-                return event.obj == 'issue' && event.type == 'change'
+                return event.obj == 'issue' &&
+                    event.type == 'change' &&
+                    !timeline.data.values_diff.description_diff
+            key: 'TIMELINE.ISSUE_UPDATED_WITH_NEW_VALUE',
+            translate_params: ['username', 'field_name', 'obj_name', 'new_value']
+        },
+        { # IssueUpdated description
+            check: (timeline, event) ->
+                return event.obj == 'issue' &&
+                    event.type == 'change' &&
+                    timeline.data.values_diff.description_diff
             key: 'TIMELINE.ISSUE_UPDATED',
             translate_params: ['username', 'field_name', 'obj_name']
         },
         { # TaskUpdated
             check: (timeline, event) ->
-                return event.obj == 'task' && event.type == 'change' && !timeline.data.task.userstory
+                return event.obj == 'task' &&
+                    event.type == 'change' &&
+                    !timeline.data.task.userstory &&
+                    !timeline.data.values_diff.description_diff
+            key: 'TIMELINE.TASK_UPDATED_WITH_NEW_VALUE',
+            translate_params: ['username', 'field_name', 'obj_name', 'new_value']
+        },
+        { # TaskUpdated description
+            check: (timeline, event) ->
+                return event.obj == 'task' &&
+                    event.type == 'change' &&
+                    !timeline.data.task.userstory &&
+                    timeline.data.values_diff.description_diff
             key: 'TIMELINE.TASK_UPDATED',
             translate_params: ['username', 'field_name', 'obj_name']
         },
         { # TaskUpdated with US
             check: (timeline, event) ->
-                return event.obj == 'task' && event.type == 'change' && timeline.data.task.userstory
+                return event.obj == 'task' &&
+                    event.type == 'change' &&
+                    timeline.data.task.userstory &&
+                    !timeline.data.values_diff.description_diff
+            key: 'TIMELINE.TASK_UPDATED_WITH_US_NEW_VALUE',
+            translate_params: ['username', 'field_name', 'obj_name', 'us_name', 'new_value']
+        },
+        { # TaskUpdated with US description
+            check: (timeline, event) ->
+                return event.obj == 'task' &&
+                    event.type == 'change' &&
+                    timeline.data.task.userstory &&
+                    timeline.data.values_diff.description_diff
             key: 'TIMELINE.TASK_UPDATED_WITH_US',
             translate_params: ['username', 'field_name', 'obj_name', 'us_name']
         },

@@ -38,6 +38,11 @@ class UserTimelineItemTitle
 
             return @._getLink(url, timeline.data.project.name)
 
+        else if param == 'new_value'
+            field_name = Object.keys(timeline.data.values_diff)[0]
+
+            return timeline.data.values_diff[field_name][1]
+
         else if param == 'sprint_name'
             url = 'project-taskboard:project=vm.activity.project.slug,sprint=vm.activity.sprint.slug'
 
