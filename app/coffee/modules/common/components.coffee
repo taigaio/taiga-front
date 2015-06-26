@@ -152,7 +152,7 @@ module.directive("tgSprintProgressbar", SprintProgressBarDirective)
 ## Created-by display directive
 #############################################################################
 
-CreatedByDisplayDirective = ($template, $compile, $translate)->
+CreatedByDisplayDirective = ($template, $compile, $translate, $navUrls)->
     # Display the owner information (full name and photo) and the date of
     # creation of an object (like USs, tasks and issues).
     #
@@ -168,13 +168,14 @@ CreatedByDisplayDirective = ($template, $compile, $translate)->
 
     link = ($scope, $el, $attrs) ->
         render = (model) ->
-            owner = $scope.usersById?[model.owner] or {
+            owner = model.owner_extra_info or {
                 full_name_display: $translate.instant("COMMON.EXTERNAL_USER")
-                photo: "/images/unnamed.png"
+                photo: "/images/user-noimage.png"
             }
 
             html = template({
                 owner: owner
+                url: if owner?.is_active then $navUrls.resolve("user-profile", {username: owner.username}) else ""
                 date: moment(model.created_date).format($translate.instant("COMMON.DATETIME"))
             })
 
@@ -194,7 +195,8 @@ CreatedByDisplayDirective = ($template, $compile, $translate)->
         require: "ngModel"
     }
 
-module.directive("tgCreatedByDisplay", ["$tgTemplate", "$compile", "$translate", CreatedByDisplayDirective])
+module.directive("tgCreatedByDisplay", ["$tgTemplate", "$compile", "$translate", "$tgNavUrls",
+                                        CreatedByDisplayDirective])
 
 
 #############################################################################

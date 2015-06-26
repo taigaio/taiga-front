@@ -68,7 +68,7 @@ class HistoryController extends taiga.Controller
         return @rs.history.undeleteComment(type, objectId, activityId).then => @.loadHistory(type, objectId)
 
 
-HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $compile) ->
+HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $compile, $navUrls) ->
     templateChangeDiff = $template.get("common/history/history-change-diff.html", true)
     templateChangePoints = $template.get("common/history/history-change-points.html", true)
     templateChangeGeneric = $template.get("common/history/history-change-generic.html", true)
@@ -135,15 +135,6 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $c
             }
 
             return humanizedFieldNames[field] or field
-
-        getUserFullName = (userId) ->
-            return $scope.usersById[userId]?.full_name_display
-
-        getUserAvatar = (userId) ->
-            if $scope.usersById[userId]?
-                return $scope.usersById[userId].photo
-            else
-                return "/images/unnamed.png"
 
         countChanges = (comment) ->
             return _.keys(comment.values_diff).length
@@ -286,8 +277,9 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $c
                 return html[0].outerHTML
 
             html = templateActivity({
-                avatar: getUserAvatar(comment.user.pk)
+                avatar: comment.user.photo
                 userFullName: comment.user.name
+                userProfileUrl: if comment.user.is_active then $navUrls.resolve("user-profile", {username: comment.user.username})  else ""
                 creationDate: moment(comment.created_at).format(getPrettyDateFormat())
                 comment: comment.comment_html
                 changesText: renderChangesHelperText(comment)
@@ -305,8 +297,9 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $c
 
         renderChange = (change) ->
             return templateActivity({
-                avatar: getUserAvatar(change.user.pk)
+                avatar: change.user.photo
                 userFullName: change.user.name
+                userProfileUrl: if change.user.is_active then $navUrls.resolve("user-profile", {username: change.user.username})  else ""
                 creationDate: moment(change.created_at).format(getPrettyDateFormat())
                 comment: change.comment_html
                 changes: renderChangeEntries(change)
@@ -458,4 +451,4 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $c
 
 
 module.directive("tgHistory", ["$log", "$tgLoading", "$tgQqueue", "$tgTemplate", "$tgConfirm", "$translate",
-                               "$compile", HistoryDirective])
+                               "$compile", "$tgNavUrls", HistoryDirective])
