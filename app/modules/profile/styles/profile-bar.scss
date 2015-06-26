@@ -66,8 +66,8 @@
     h1 {
         @extend %bold;
         @extend %xlarge;
-        line-height: 1;
-        margin-bottom: .5rem;
+        line-height: 1.2;
+        margin-bottom: .25rem;
         text-transform: none;
     }
     .not-full-name {
@@ -78,6 +78,12 @@
         @extend %larger;
         color: $gray;
         line-height: 1.2;
+        margin-bottom: 1rem;
+    }
+    .username {
+        @extend %light;
+        @extend %large;
+        color: $gray-light;
         margin-bottom: 1rem;
     }
     .location {

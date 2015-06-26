@@ -6,6 +6,7 @@ section.profile-bar
     //     span(translate="USER.PROFILE.FOLLOW")
     div.profile-data
         h1(ng-class="{'not-full-name': !vm.user.get('full_name')}") {{::vm.user.get("full_name_display")}}
+        .username @{{::vm.user.get("username")}}
         h2 {{::vm.stats.get('roles').join(", ")}}
         // div.location
         //     include ../../../svg/location.svg
