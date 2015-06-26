@@ -3,7 +3,7 @@ div.activity-item
     div.activity-info
         div.profile-contact-picture
             a(tg-nav="user-profile:username=vm.activity.user.username", title="{{::vm.activity.user.name }}")
-                img(ng-src="{{::vm.activity.user.photo || '/images/unnamed.png'}}", alt="{{::vm.activity.user.name}}")
+                img(ng-src="{{::vm.activity.user.photo || '/images/user-noimage.png'}}", alt="{{::vm.activity.user.name}}")
 
         p(tg-compile-html="vm.activity.title")
 
