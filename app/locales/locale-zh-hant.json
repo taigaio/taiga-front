@@ -100,10 +100,10 @@
                 "SAT": "週六"
             }
         },
-        "SEE_USER_PROFILE": "See {{username }} profile",
+        "SEE_USER_PROFILE": "觀看 {{username }} 個人資訊",
         "USER_STORY": "使用者故事",
-        "TASK": "Task",
-        "ISSUE": "Issue",
+        "TASK": "任務",
+        "ISSUE": "問題",
         "TAGS": {
             "PLACEHOLDER": "我在這裏，請標注我",
             "DELETE": "刪除Tag",
@@ -239,12 +239,12 @@
         },
         "META": {
             "PAGE_TITLE": "Taiga",
-            "PAGE_DESCRIPTION": "Taiga is a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
+            "PAGE_DESCRIPTION": "Taiga是一個給新創團隊與敏捷開發者設計師使用的專案管理平台。Taiga是一個簡易輕鬆美觀的工具，讓工作變成樂趣。"
         }
     },
     "LOGIN": {
-        "PAGE_TITLE": "Login - Taiga",
-        "PAGE_DESCRIPTION": "Logging in to Taiga, a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
+        "PAGE_TITLE": "登入 - Taiga",
+        "PAGE_DESCRIPTION": "登入Taig，它是一個給新創團隊與敏捷開發者設計師使用的專案管理平台。Taiga是一個簡易輕鬆美觀的工具，讓工作變成樂趣。"
     },
     "AUTH": {
         "INVITED_YOU": "已邀請您加入此專案",
@@ -266,8 +266,8 @@
         "SUCCESS": "我們系統歡迎你加入Taiga"
     },
     "REGISTER": {
-        "PAGE_TITLE": "Register - Taiga",
-        "PAGE_DESCRIPTION": "Create your account in Taiga, a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
+        "PAGE_TITLE": "註冊 - Taiga",
+        "PAGE_DESCRIPTION": "在Taiga創建一個帳號，它是一個給新創團隊與敏捷開發者設計師使用的專案管理平台。Taiga是一個簡易輕鬆美觀的工具，讓工作變成樂趣。"
     },
     "REGISTER_FORM": {
         "TITLE": "註冊一個新的Taiga帳戶(免費 )",
@@ -280,8 +280,8 @@
         "LINK_LOGIN": "你是否已註冊? 登入"
     },
     "FORGOT_PASSWORD": {
-        "PAGE_TITLE": "Forgot password - Taiga",
-        "PAGE_DESCRIPTION": "Enter your username or email to get a new password and you can access to Taiga again."
+        "PAGE_TITLE": "忘記密碼  - Taiga",
+        "PAGE_DESCRIPTION": "輸入用戶名稍或電子郵件以獲取新密碼，可以再重新登入Taiga權限"
     },
     "FORGOT_PASSWORD_FORM": {
         "TITLE": "你是否忘了密碼嗎",
@@ -293,8 +293,8 @@
         "ERROR": "按我們的記錄，你尚未註冊"
     },
     "CHANGE_PASSWORD": {
-        "PAGE_TITLE": "Change you password - Taiga",
-        "PAGE_DESCRIPTION": "Set a new passoword for your Taiga account and hey!, you may want to eat some more iron-rich food, it's good for your brain :P",
+        "PAGE_TITLE": "變更密碼 - Taiga",
+        "PAGE_DESCRIPTION": "設定Taiga 帳戶密碼！ 你也許該吃點鐵質豐富的食物，它對你的大腦有益處:p",
         "SECTION_NAME": "改變密碼 ",
         "FIELD_CURRENT_PASSWORD": "現用密碼 ",
         "PLACEHOLDER_CURRENT_PASSWORD": "你目前的密碼（如果你未有密碼，此處請空白）",
@@ -316,8 +316,8 @@
         "SUCCESS": "系統已儲存你的新密碼<br />試試 <strong>用它登入</strong> "
     },
     "INVITATION": {
-        "PAGE_TITLE": "Invitation acceptance - Taiga",
-        "PAGE_DESCRIPTION": "Accept the invitation to join a project in Taiga, a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
+        "PAGE_TITLE": "接受邀請- Taiga",
+        "PAGE_DESCRIPTION": "接受邀請加入Taiga上的專案，它是一個給新創團隊與敏捷開發者設計師使用的專案管理平台。Taiga是一個簡易輕鬆美觀的工具，讓工作變成樂趣。"
     },
     "INVITATION_LOGIN_FORM": {
         "NOT_FOUND": "<strong>Ooops, 有點問題</strong><br />我們的系統無法找到你的邀請信",
@@ -325,17 +325,17 @@
         "ERROR": "按我們的記錄，你尚未註冊或是未輸入有效的密碼　"
     },
     "HOME": {
-        "PAGE_TITLE": "Home - Taiga",
-        "PAGE_DESCRIPTION": "The Taiga home page with your main projects and all your assigned and watched user stories, tasks and issues",
-        "EMPTY_WATCHING": "<strong>Follow</strong> the projects, User Stories, Tasks, Issues... that you want to know about :)",
-        "EMPTY_PROJECT_LIST": "You don't have any projects yet",
-        "WORKING_ON_SECTION": "Working on",
-        "WATCHING_SECTION": "Watching"
+        "PAGE_TITLE": "首頁 - Taiga",
+        "PAGE_DESCRIPTION": "Taiga 首頁，你的主要專案以及任命，觀看使用者故事，任務與問題。",
+        "EMPTY_WATCHING": "<strong>追踪</strong> 專案, 使用者故事, 任務, 問題......任何你想知道的資訊 :)",
+        "EMPTY_PROJECT_LIST": "你尚無任何專案",
+        "WORKING_ON_SECTION": "進行中",
+        "WATCHING_SECTION": "觀看中"
     },
     "PROJECTS": {
-        "PAGE_TITLE": "My projects - Taiga",
-        "PAGE_DESCRIPTION": "A list with all your projects, you can reorder or create a new one.",
-        "MY_PROJECTS": "My projects"
+        "PAGE_TITLE": "我的專案 - Taiga",
+        "PAGE_DESCRIPTION": "你的專案列表，你可以記錄或創建新專案。",
+        "MY_PROJECTS": "我的專案"
     },
     "ATTACHMENT": {
         "SECTION_NAME": "附件",
@@ -374,7 +374,7 @@
         },
         "MEMBERSHIPS": {
             "TITLE": "管理成員",
-            "PAGE_TITLE": "Memberships - {{projectName}}",
+            "PAGE_TITLE": "成員資格 - {{projectName}}",
             "ADD_BUTTON": "+ 新成員",
             "ADD_BUTTON_TITLE": "增加新成員"
         },
@@ -451,14 +451,14 @@
             "ISSUE_ADD": "在問題中加入客制欄位"
         },
         "PROJECT_VALUES": {
-            "PAGE_TITLE": "{{sectionName}} - Project values - {{projectName}}",
+            "PAGE_TITLE": "{{sectionName}} - 專案數值 - {{projectName}}",
             "REPLACEMENT": "所有此數值物品將改成",
             "ERROR_DELETE_ALL": "你不能刪除所有數值"
         },
         "PROJECT_VALUES_POINTS": {
             "TITLE": "點數",
             "SUBTITLE": "指定你的使用者故事點數可能預估為",
-            "US_TITLE": "US points",
+            "US_TITLE": "使用者故事點數",
             "ACTION_ADD": "增加點數"
         },
         "PROJECT_VALUES_PRIORITIES": {
@@ -543,7 +543,7 @@
             "WEBHOOK_NAME": "網頁觸發  '{{name}}'"
         },
         "CUSTOM_ATTRIBUTES": {
-            "PAGE_TITLE": "{{sectionName}} - Custom Attributes - {{projectName}}",
+            "PAGE_TITLE": "{{sectionName}} - 個人化屬性 - {{projectName}}",
             "ADD": "加入客製化欄位",
             "EDIT": "編輯客製化欄位",
             "DELETE": "刪除客製欄位",
@@ -624,32 +624,32 @@
     "USER": {
         "PROFILE": {
             "PAGE_TITLE": "{{userFullName}} (@{{userUsername}})",
-            "EDIT": "Edit profile",
-            "FOLLOW": "Follow",
+            "EDIT": "編輯個人資料",
+            "FOLLOW": "追踪",
             "PROJECTS": "專案",
-            "CLOSED_US": "Closed US",
-            "CONTACTS": "Contacts",
-            "REPORT": "Report Abuse",
-            "ACTIVITY_TAB": "Activity Tab",
-            "PROJECTS_TAB": "Projects Tab",
-            "CONTACTS_TAB": "Contacts Tab",
-            "FAVORITES_TAB": "Favorites Tab",
-            "CONTACTS_EMPTY": "{{username}} doesn't have contacts yet",
-            "CURRENT_USER_CONTACTS_EMPTY": "You don't have contacts yet",
-            "CURRENT_USER_CONTACTS_EMPTY_EXPLAIN": "The people with whom you work at Taiga will be your contacts automatically",
-            "PROJECTS_EMPTY": "{{username}} doesn't' have projects yet"
+            "CLOSED_US": "閞閉使用者故事",
+            "CONTACTS": "聯絡人",
+            "REPORT": "回報濫用",
+            "ACTIVITY_TAB": "活動分頁",
+            "PROJECTS_TAB": "專案分頁",
+            "CONTACTS_TAB": "聯絡人分頁",
+            "FAVORITES_TAB": "快速分頁",
+            "CONTACTS_EMPTY": "{{username}} 尚無聯絡人",
+            "CURRENT_USER_CONTACTS_EMPTY": "您尚無任何聯絡人",
+            "CURRENT_USER_CONTACTS_EMPTY_EXPLAIN": "你在Taiga一同工作的伙伴將自動成為你的聯絡人",
+            "PROJECTS_EMPTY": "{{username}} 尚無專案"
         },
         "PROFILE_SIDEBAR": {
-            "TITLE": "Your profile",
-            "DESCRIPTION": "People can see everything you do and what are you working on. Add a nice bio to give an enhanced version of your information.",
-            "ADD_INFO": "Edit your bio"
+            "TITLE": "個人資訊",
+            "DESCRIPTION": "人們可以看到你做的成果以及其進度。加入一段描述介紹以強化你的資料。",
+            "ADD_INFO": "編輯個人介紹"
         }
     },
     "PROJECT": {
         "PAGE_TITLE": "{{projectName}}",
         "WELCOME": "歡迎",
         "SECTION_PROJECTS": "專案",
-        "HELP": "Reorder your projects to set in the top the most used ones.<br/> The top 10 projects will appear in the top navigation bar project list",
+        "HELP": "記錄你的專案在上方常用欄位<br/> 前十個專案將會顯示在上方導覽處。",
         "PRIVATE": "不公開專案",
         "STATS": {
             "PROJECT": "專案<br/> 點數",
@@ -659,7 +659,7 @@
         },
         "SECTION": {
             "SEARCH": "搜尋",
-            "TIMELINE": "Timeline",
+            "TIMELINE": "時間表",
             "BACKLOG": "待辦任務優先表",
             "KANBAN": "Kanban(看板)",
             "ISSUES": "問題 ",
@@ -673,31 +673,31 @@
             "PLACEHOLDER_SEARCH": "搜尋",
             "ACTION_CREATE_PROJECT": "創建專案",
             "ACTION_IMPORT_PROJECT": "滙入專案",
-            "SEE_MORE_PROJECTS": "See more projects",
+            "SEE_MORE_PROJECTS": "觀看更多專案",
             "TITLE_CREATE_PROJECT": "創建專案",
             "TITLE_IMPORT_PROJECT": "滙入專案",
             "TITLE_PRVIOUS_PROJECT": "顯示過去專案",
             "TITLE_NEXT_PROJECT": "顯示下一個任務",
-            "HELP_TITLE": "Taiga Support Page",
-            "HELP": "Help",
+            "HELP_TITLE": "Taiga支援頁",
+            "HELP": "幫助",
             "FEEDBACK_TITLE": "送出回饋 ",
             "FEEDBACK": "回饋 ",
-            "NOTIFICATIONS_TITLE": "Edit your notification settings",
+            "NOTIFICATIONS_TITLE": "編輯個人通知設定",
             "NOTIFICATIONS": "通知",
-            "ORGANIZATIONS_TITLE": "Edit your organizations",
-            "ORGANIZATIONS": "Edit organizations",
-            "SETTINGS_TITLE": "Edit your settings",
-            "SETTINGS": "Settings",
-            "VIEW_PROFILE_TITLE": "View Profile",
-            "VIEW_PROFILE": "View Profile",
-            "EDIT_PROFILE_TITLE": "Edit your profile",
-            "EDIT_PROFILE": "Edit Profile",
+            "ORGANIZATIONS_TITLE": "編輯您的組織資料",
+            "ORGANIZATIONS": "編輯組織資料",
+            "SETTINGS_TITLE": "編輯個人設定",
+            "SETTINGS": "設定",
+            "VIEW_PROFILE_TITLE": "檢視個人資料",
+            "VIEW_PROFILE": "檢視個人資料",
+            "EDIT_PROFILE_TITLE": "編輯你的個人資料",
+            "EDIT_PROFILE": "編輯個人資料",
             "CHANGE_PASSWORD_TITLE": "更換密碼 ",
             "CHANGE_PASSWORD": "更換密碼 ",
-            "DASHBOARD_TITLE": "Dashboard",
-            "DISCOVER_TITLE": "Discover trending projects",
-            "DISCOVER": "Discover",
-            "ACTION_REORDER": "Drag & drop to reorder"
+            "DASHBOARD_TITLE": "控制台",
+            "DISCOVER_TITLE": "發現流行專案",
+            "DISCOVER": "發現",
+            "ACTION_REORDER": "拖移 & 丟到來記錄"
         },
         "IMPORT": {
             "TITLE": "滙入專案中",
@@ -778,8 +778,8 @@
         }
     },
     "US": {
-        "PAGE_TITLE": "{{userStorySubject}} - User Story {{userStoryRef}} - {{projectName}}",
-        "PAGE_DESCRIPTION": "Status: {{userStoryStatus }}. Completed {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} of {{userStoryTotalTasks}} tasks closed). Points: {{userStoryPoints}}. Description: {{userStoryDescription}}",
+        "PAGE_TITLE": "{{userStorySubject}} - 使用者故事 {{userStoryRef}} - {{projectName}}",
+        "PAGE_DESCRIPTION": "狀態: {{userStoryStatus }}.已完成 {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} of {{userStoryTotalTasks}} tasks closed). 點數: {{userStoryPoints}}. 描述: {{userStoryDescription}}",
         "SECTION_NAME": "使用者故事細節",
         "LINK_TASKBOARD": "任務板",
         "TITLE_LINK_TASKBOARD": "到任務板去",
@@ -867,8 +867,8 @@
         }
     },
     "BACKLOG": {
-        "PAGE_TITLE": "Backlog - {{projectName}}",
-        "PAGE_DESCRIPTION": "The backlog panel, with user stories and sprints of the project {{projectName}}: {{projectDescription}}",
+        "PAGE_TITLE": "待辦任務優先表 - {{projectName}}",
+        "PAGE_DESCRIPTION": "待辦任務優先表面板 {{projectName}}（專案的使用者故事與衝刺任務）: {{projectDescription}}",
         "SECTION_NAME": "待辦任務優先表",
         "MOVE_US_TO_CURRENT_SPRINT": "移到目前的 Sprint",
         "SHOW_FILTERS": "顯示過濾器",
@@ -948,8 +948,8 @@
         "VERSION_ERROR": "Taiga某人之前更改了這個，而我們的工程師無法再做改變。請重新載入頁面來使用你的更新（之前設定將消失）"
     },
     "TASKBOARD": {
-        "PAGE_TITLE": "{{sprintName}} - Sprint taskboard - {{projectName}}",
-        "PAGE_DESCRIPTION": "Sprint {{sprintName}} (from {{startDate}} to {{endDate}}) of {{projectName}}. Completed {{completedPercentage}}% ({{completedPoints}} of {{totalPoints}} points). {{openTasks}} opened tasks of {{totalTasks}}.",
+        "PAGE_TITLE": "{{sprintName}} - 衝刺任務看板 - {{projectName}}",
+        "PAGE_DESCRIPTION": "衝刺任務 {{sprintName}} (from {{startDate}} to {{endDate}}) of {{projectName}}. 完成{{completedPercentage}}% ({{completedPoints}} of {{totalPoints}} points). {{openTasks}} 開啟任務 {{totalTasks}}.",
         "SECTION_NAME": "任務板",
         "TITLE_ACTION_ADD": "增加新任務 ",
         "TITLE_ACTION_ADD_BULK": "批次加入新任務 ",
@@ -973,8 +973,8 @@
         }
     },
     "TASK": {
-        "PAGE_TITLE": "{{taskSubject}} - Task {{taskRef}} - {{projectName}}",
-        "PAGE_DESCRIPTION": "Status: {{taskStatus }}. Description: {{taskDescription}}",
+        "PAGE_TITLE": "{{taskSubject}} - 任務 {{taskRef}} - {{projectName}}",
+        "PAGE_DESCRIPTION": "狀態: {{taskStatus }}.描述: {{taskDescription}}",
         "SECTION_NAME": "任務細節",
         "LINK_TASKBOARD": "任務板",
         "TITLE_LINK_TASKBOARD": "到任務板去",
@@ -1021,8 +1021,8 @@
         "SUCCESS": "我們系統已更新你的電子郵件"
     },
     "ISSUES": {
-        "PAGE_TITLE": "Issues - {{projectName}}",
-        "PAGE_DESCRIPTION": "The issues list panel of the project {{projectName}}: {{projectDescription}}",
+        "PAGE_TITLE": "問題 - {{projectName}}",
+        "PAGE_DESCRIPTION": " {{projectName}}的問題清單看版: {{projectDescription}}",
         "LIST_SECTION_NAME": "問題 ",
         "SECTION_NAME": "問題細節",
         "ACTION_NEW_ISSUE": "+ 新問題　",
@@ -1087,12 +1087,12 @@
         }
     },
     "ISSUE": {
-        "PAGE_TITLE": "{{issueSubject}} - Issue {{issueRef}} - {{projectName}}",
-        "PAGE_DESCRIPTION": "Status: {{issueStatus }}. Type: {{issueType}}, Priority: {{issuePriority}}. Severity: {{issueSeverity}}. Description: {{issueDescription}}"
+        "PAGE_TITLE": "{{issueSubject}} - 問題 {{issueRef}} - {{projectName}}",
+        "PAGE_DESCRIPTION": "狀態: {{issueStatus }}. 類型: {{issueType}}, 優先性: {{issuePriority}}. 急迫性: {{issueSeverity}}. Description: {{issueDescription}}"
     },
     "KANBAN": {
-        "PAGE_TITLE": "Kanban - {{projectName}}",
-        "PAGE_DESCRIPTION": "The kanban panel, with user stories of the project {{projectName}}: {{projectDescription}}",
+        "PAGE_TITLE": "看板 - {{projectName}}",
+        "PAGE_DESCRIPTION": "看板面板 上有專案的使用者故事 {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Kanban(看板)",
         "TITLE_ACTION_FOLD": "隱藏欄位",
         "TITLE_ACTION_UNFOLD": "未隱藏欄位",
@@ -1107,8 +1107,8 @@
         "UNDO_ARCHIVED": "拖移 & 丟到未做"
     },
     "SEARCH": {
-        "PAGE_TITLE": "Search - {{projectName}}",
-        "PAGE_DESCRIPTION": "Search anything, user stories, issues, tasks or wiki pages, in the project {{projectName}}: {{projectDescription}}",
+        "PAGE_TITLE": "搜尋 - {{projectName}}",
+        "PAGE_DESCRIPTION": "專案搜尋（使用者故事, 問題, 任務或維基頁等資訊） {{projectName}}: {{projectDescription}}",
         "FILTER_USER_STORIES": "使用者故事",
         "FILTER_ISSUES": "問題 ",
         "FILTER_TASKS": "任務 ",
@@ -1119,8 +1119,8 @@
         "EMPTY_DESCRIPTION": "請試試上方某一個分頁或再搜尋一次"
     },
     "TEAM": {
-        "PAGE_TITLE": "Team - {{projectName}}",
-        "PAGE_DESCRIPTION": "The team panel to show all the members of the project {{projectName}}: {{projectDescription}}",
+        "PAGE_TITLE": "團隊- {{projectName}}",
+        "PAGE_DESCRIPTION": "團隊面版可顯示專案中所有成員{{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "團隊",
         "APP_TITLE": "團隊- {{projectName}}",
         "PLACEHOLDER_INPUT_SEARCH": "以全名搜尋",
@@ -1179,7 +1179,7 @@
             "EMAIL": "電子郵件",
             "FULL_NAME": "全名",
             "PLACEHOLDER_FULL_NAME": "你的全名",
-            "BIO": "Bio (max. 210 chars)",
+            "BIO": "自介（最多210字）",
             "PLACEHOLDER_BIO": "請自我介紹",
             "LANGUAGE": "語言",
             "LANGUAGE_DEFAULT": "--  使用設預語言 -- "
@@ -1194,8 +1194,8 @@
         "PROGRESS_NAME_DESCRIPTION": "名稱與描述"
     },
     "WIKI": {
-        "PAGE_TITLE": "{{wikiPageName}} - Wiki - {{projectName}}",
-        "PAGE_DESCRIPTION": "Last edition on {{lastModifiedDate}} ({{totalEditions}} editions in total) Content: {{ wikiPageContent }}",
+        "PAGE_TITLE": "{{wikiPageName}} - 維基 - {{projectName}}",
+        "PAGE_DESCRIPTION": "上回編輯{{lastModifiedDate}} ({{totalEditions}} editions in total) 內容: {{ wikiPageContent }}",
         "DATETIME": "DD MMM YYYY HH:mm",
         "PLACEHOLDER_PAGE": "編寫你的維基頁",
         "REMOVE": "移除此維基頁　",
@@ -1211,41 +1211,41 @@
         }
     },
     "HINTS": {
-        "SECTION_NAME": "Hint",
-        "LINK": "If you want to know how to use it visit our support page",
-        "LINK_TITLE": "Visit our support page",
-        "HINT1_TITLE": "Did you know you can import and export projects?",
-        "HINT1_TEXT": "This allow you to extract all your data from one Taiga and move it to another one.",
-        "HINT2_TITLE": "Did you know you can create custom fields?",
-        "HINT2_TEXT": "Teams can now create custom fields as a flexible means to enter specific data useful for their particular workflow",
-        "HINT3_TITLE": "Reorder your projects to feature those most relevant to you",
-        "HINT3_TEXT": "The top 10 project will be in your top bar direct access",
-        "HINT4_TITLE": "Did you forgot what were you working on?",
-        "HINT4_TEXT": "Don't worry, on your dashboard you'll find your open tasks, issues, and user stories in the order you worked on them."
+        "SECTION_NAME": "提示",
+        "LINK": "如果想知道如何使用，可以到我們的支援頁面了解詳情。",
+        "LINK_TITLE": "造訪我們的支援頁面",
+        "HINT1_TITLE": "你知道可以滙入與滙出專案嗎？",
+        "HINT1_TEXT": "可以從 Taiga提取所有個人資料記錄，移入其它地方。",
+        "HINT2_TITLE": "你知道可以創建個人化欄位嗎",
+        "HINT2_TEXT": "團隊可以創建客製欄位，以彈性的方式來輸入特殊資料，有利於其特別的工作流程需求。",
+        "HINT3_TITLE": "記錄你的專案並突顯其中最相關者",
+        "HINT3_TEXT": "前十個專案將展示在你的上方欄位以便直接連結。",
+        "HINT4_TITLE": "你是否曾忘了自己要做什麼？",
+        "HINT4_TEXT": "別憺心，在控制台可以找到你的公開任務、問題以及使用者故事的工作次序。"
     },
     "TIMELINE": {
-        "UPLOAD_ATTACHMENT": "{{username}} has uploaded a new attachment in {{obj_name}}",
-        "US_CREATED": "{{username}} has created a new US {{obj_name}} in {{project_name}}",
-        "ISSUE_CREATED": "{{username}} has created a new issue {{obj_name}} in {{project_name}}",
-        "TASK_CREATED": "{{username}} has created a new task {{obj_name}} in {{project_name}}",
-        "TASK_CREATED_WITH_US": "{{username}} has created a new task {{obj_name}} in {{project_name}} which belongs to the US {{us_name}}",
-        "WIKI_CREATED": "{{username}} has created a new wiki page {{obj_name}} in {{project_name}}",
-        "MILESTONE_CREATED": "{{username}} has created a new sprint {{obj_name}} in {{project_name}}",
-        "NEW_PROJECT": "{{username}} created the project {{project_name}}",
-        "MILESTONE_UPDATED": "{{username}} has updated the sprint {{obj_name}}",
-        "US_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the US {{obj_name}}",
-        "ISSUE_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the issue {{obj_name}}",
-        "TASK_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}}",
-        "TASK_UPDATED_WITH_US": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the US {{us_name}}",
-        "WIKI_UPDATED": "{{username}} has updated the wiki page {{obj_name}}",
-        "NEW_COMMENT_US": "{{username}} has commented in the US {{obj_name}}",
-        "NEW_COMMENT_ISSUE": "{{username}} has commented in the issue {{obj_name}}",
-        "NEW_COMMENT_TASK": "{{username}} has commented in the task {{obj_name}}",
-        "NEW_MEMBER": "{{project_name}} has a new member",
-        "US_ADDED_MILESTONE": "{{username}} has added the US {{obj_name}} to {{sprint_name}}",
-        "US_REMOVED_FROM_MILESTONE": "{{username}} has added the US {{obj_name}} to the backlog",
-        "BLOCKED": "{{username}} has blocked {{obj_name}}",
-        "UNBLOCKED": "{{username}} has unblocked {{obj_name}}",
-        "NEW_USER": "{{username}} has joined Taiga"
+        "UPLOAD_ATTACHMENT": "{{username}} 上傳新附件檔案 {{obj_name}}",
+        "US_CREATED": "{{username}} 創建新的使用者故事 {{obj_name}} 於 {{project_name}}",
+        "ISSUE_CREATED": "{{username}} 提出了新問題 {{obj_name}} in {{project_name}}",
+        "TASK_CREATED": "{{username}} 創建新任務 {{obj_name}} 於 {{project_name}}",
+        "TASK_CREATED_WITH_US": "{{username}} 創建新任務 {{obj_name}} 於 {{project_name}} ，其為{{us_name}}之使用者故事",
+        "WIKI_CREATED": "{{username}} 創建新維基頁 {{obj_name}} 於 {{project_name}}",
+        "MILESTONE_CREATED": "{{username}} 創建新衝刺任務 {{obj_name}} 於 {{project_name}}",
+        "NEW_PROJECT": "{{username}} 創建專案 {{project_name}}",
+        "MILESTONE_UPDATED": "{{username}}更新衝刺任務 {{obj_name}} ",
+        "US_UPDATED": "{{username}} 已更新 {{obj_name}}使用者故事之 \"{{field_name}}\"屬性。",
+        "ISSUE_UPDATED": "{{username}} 更新了{{obj_name}}問題的 \"{{field_name}}\" 屬性",
+        "TASK_UPDATED": "{{username}}更新了任務 {{obj_name}}之 \"{{field_name}}\" 屬性",
+        "TASK_UPDATED_WITH_US": "{{username}} 更新了 {{obj_name}} 任務之\"{{field_name}}\" 屬性，其為 {{us_name}} 之使用者故事",
+        "WIKI_UPDATED": "\n{{username}} 更新了維基頁{{obj_name}}",
+        "NEW_COMMENT_US": "{{username}} 評論了 {{obj_name}}使用者故事",
+        "NEW_COMMENT_ISSUE": "{{username}}評論了此問題 {{obj_name}}",
+        "NEW_COMMENT_TASK": "{{username}} 評論了此任務{{obj_name}}",
+        "NEW_MEMBER": "{{project_name}} 有新成員",
+        "US_ADDED_MILESTONE": "{{username}} 增加使用者故事 {{obj_name}} 給 {{sprint_name}}",
+        "US_REMOVED_FROM_MILESTONE": "{{username}} 新增使用者故事 {{obj_name}} 到待辦工作優先列表",
+        "BLOCKED": "{{username}} 封鎖了 {{obj_name}}",
+        "UNBLOCKED": "{{username}} 解除了封鎖 {{obj_name}}",
+        "NEW_USER": "{{username}} 已加入 Taiga"
     }
 }
