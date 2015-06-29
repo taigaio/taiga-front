@@ -2,4 +2,4 @@
 div.activity-image-attachment
     blockquote
         a(href="{{::attachment.url}}", title="See {{::attachment.filename}}", target="_blank")
-            img(ng-src="{{::attachment.url}}", alt="{{::attachment.filename}}")
+            img(ng-src="{{::attachment.thumb_url || attachment.url}}", alt="{{::attachment.filename}}")
