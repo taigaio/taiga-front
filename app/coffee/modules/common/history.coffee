@@ -416,8 +416,13 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $c
             $(this).addClass('active')
 
         $el.on "click", ".history-tabs li a", (event) ->
-            $el.find(".history-tabs li a").toggleClass("active")
-            $el.find(".history section").toggleClass("hidden")
+            target = angular.element(event.currentTarget)
+
+            $el.find(".history-tabs li a").removeClass("active")
+            target.addClass("active")
+
+            $el.find(".history section").addClass("hidden")
+            $el.find(".history section.#{target.data('section-class')}").removeClass("hidden")
 
         $el.on "click", ".comment-delete", debounce 2000, (event) ->
             event.preventDefault()
