@@ -17,7 +17,24 @@
         }
     }
     .icon {
-        @extend %large;
+        font-size: 1.4rem;
+        margin-right: .4rem;
+        &.icon-stats {
+            color: $gray;
+            float: right;
+            transition: color .3s linear;
+            &:hover {
+                color: $fresh-taiga;
+                transition: color .3s linear;
+            }
+            &.active {
+                color: $fresh-taiga;
+            }
+            &.active:hover {
+                color: $gray;
+                transition: color .3s linear;
+            }
+        }
     }
     .number {
         @extend %xlarge;
@@ -87,25 +104,5 @@
     }
     .summary-stats-divider {
         margin-right: 2rem;
-    }
-    .icon {
-        font-size: 1.4rem;
-        margin-right: .4rem;
-        &.icon-stats {
-            color: $gray;
-            float: right;
-            transition: color .3s linear;
-            &:hover {
-                color: $fresh-taiga;
-                transition: color .3s linear;
-            }
-            &.active {
-                color: $fresh-taiga;
-            }
-            &.active:hover {
-                color: $gray;
-                transition: color .3s linear;
-            }
-        }
     }
 }

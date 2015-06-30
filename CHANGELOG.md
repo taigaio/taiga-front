@@ -6,6 +6,7 @@
 ### Features
 - Ability to create single-line or multi-line custom fields. (thanks to [@artlepool](https://github.com/artlepool))
 - Add custom videoconference system.
+- Make burndown chart collapsible at the backlog panel.
 
 ### Misc
 - Improve performance: Show cropped images in timelines.

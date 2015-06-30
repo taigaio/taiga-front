@@ -16,3 +16,7 @@ div.summary
     div.summary-stats
         span.number(ng-bind="stats.speed | number:0") --
         span.description(translate="BACKLOG.SUMMARY.POINTS_PER_SPRINT")
+
+    a.icon.icon-stats.js-toggle-burndown-visibility-button(href="",
+                                      title="{{'BACKLOG.SPRINT_SUMMARY.TOGGLE_BAKLOG_GRAPH' | translate}}")
+
