@@ -48,6 +48,8 @@ resourceProvider = ($rootScope, $config, $urls, $model, $repo, $auth, $q) ->
             defered.reject(response)
             return defered.promise
 
+        xhr = new XMLHttpRequest()
+
         uploadProgress = (evt) =>
             $rootScope.$apply =>
                 file.status = "in-progress"
@@ -64,7 +66,14 @@ resourceProvider = ($rootScope, $config, $urls, $model, $repo, $auth, $q) ->
                     data = {}
 
                 model =  $model.make_model(urlName, data)
-                defered.resolve(model)
+                if xhr.status >= 200 and xhr.status < 400
+                    defered.resolve(model)
+                else
+                    response = {
+                        status: xhr.status,
+                        data: {_error_message: JSON.parse(xhr.response)['attached_file']?[0]}
+                    }
+                    defered.reject(response)
 
         uploadFailed = (evt) =>
             $rootScope.$apply ->
@@ -76,7 +85,6 @@ resourceProvider = ($rootScope, $config, $urls, $model, $repo, $auth, $q) ->
         data.append("object_id", objectId)
         data.append("attached_file", file)
 
-        xhr = new XMLHttpRequest()
         xhr.upload.addEventListener("progress", uploadProgress, false)
         xhr.addEventListener("load", uploadComplete, false)
         xhr.addEventListener("error", uploadFailed, false)
