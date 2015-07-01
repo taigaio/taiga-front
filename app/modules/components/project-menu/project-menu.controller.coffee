@@ -81,14 +81,16 @@ class ProjectMenuController
             baseUrl = "https://talky.io/"
         else if @.project.get("videoconferences") == "jitsi"
             baseUrl = "https://meet.jit.si/"
-            url = @.project.get("slug") + "-" + taiga.slugify(@.project.get("videoconferences_salt"))
+            url = @.project.get("slug") + "-" + taiga.slugify(@.project.get("videoconferences_extra_data"))
             url = url.replace(/-/g, "")
             return baseUrl + url
+        else if @.project.get("videoconferences") == "custom"
+            return @.project.get("videoconferences_extra_data")
         else
             return ""
 
-        if @.project.get("videoconferences_salt")
-            url = @.project.get("slug") + "-" + @.project.get("videoconferences_salt")
+        if @.project.get("videoconferences_extra_data")
+            url = @.project.get("slug") + "-" + @.project.get("videoconferences_extra_data")
         else
             url = @.project.get("slug")
 

@@ -5,6 +5,7 @@
 
 ### Features
 - Ability to create single-line or multi-line custom fields. (thanks to [@artlepool](https://github.com/artlepool))
+- Add custom videoconference system.
 
 ### Misc
 - Improve performance: Show cropped images in timelines.
