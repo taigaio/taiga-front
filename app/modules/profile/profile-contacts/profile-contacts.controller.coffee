@@ -5,15 +5,14 @@ class ProfileContactsController
     ]
 
     constructor: (@userService, @currentUserService) ->
-
-    loadContacts: () ->
         @.currentUser = @currentUserService.getUser()
 
         @.isCurrentUser = false
 
-        if @.currentUser.get("id") == @.user.get("id")
+        if @.currentUser && @.currentUser.get("id") == @.user.get("id")
             @.isCurrentUser = true
 
+    loadContacts: () ->
         @userService.getContacts(@.user.get("id"))
             .then (contacts) =>
                 @.contacts = contacts
