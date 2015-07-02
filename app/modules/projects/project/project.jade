@@ -19,8 +19,8 @@ div.wrapper
             section.involved-data
                 h2.title {{"PROJECT.SECTION.TEAM" | translate}}
                 ul.involved-team
-                    a(tg-repeat="member in ::vm.project.get('members')",
-                      tg-nav="user-profile:username=member.get('username')",
+                  li(tg-repeat="member in ::vm.project.get('members')")
+                    a(tg-nav="user-profile:username=member.get('username')",
                       title="{{::member.get('full_name')}}")
                         img(ng-src="{{::member.get('photo')}}", alt="{{::member.get('full_name')}}")
 
