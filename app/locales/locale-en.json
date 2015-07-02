@@ -294,7 +294,7 @@
     },
     "CHANGE_PASSWORD": {
         "PAGE_TITLE": "Change you password - Taiga",
-        "PAGE_DESCRIPTION": "Set a new passoword for your Taiga account and hey!, you may want to eat some more iron-rich food, it's good for your brain :P",
+        "PAGE_DESCRIPTION": "Set a new password for your Taiga account and hey!, you may want to eat some more iron-rich food, it's good for your brain :P",
         "SECTION_NAME": "Change password",
         "FIELD_CURRENT_PASSWORD": "Current password",
         "PLACEHOLDER_CURRENT_PASSWORD": "Your current password (or empty if you have no password yet)",
