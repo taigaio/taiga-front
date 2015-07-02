@@ -7,6 +7,7 @@
 - Ability to create single-line or multi-line custom fields. (thanks to [@artlepool](https://github.com/artlepool))
 
 ### Misc
+- Improve performance: Show cropped images in timelines.
 - Lots of small and not so small bugfixes.
 
 
