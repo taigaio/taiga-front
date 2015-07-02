@@ -68,7 +68,7 @@ class HistoryController extends taiga.Controller
         return @rs.history.undeleteComment(type, objectId, activityId).then => @.loadHistory(type, objectId)
 
 
-HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $compile, $navUrls) ->
+HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $compile, $navUrls, $rootScope) ->
     templateChangeDiff = $template.get("common/history/history-change-diff.html", true)
     templateChangePoints = $template.get("common/history/history-change-points.html", true)
     templateChangeGeneric = $template.get("common/history/history-change-generic.html", true)
@@ -348,6 +348,8 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $c
             $el.find(".comment-list").addClass("activeanimation")
 
             onSuccess = ->
+                $rootScope.$broadcast("comment:new")
+
                 $ctrl.loadHistory(type, objectId).finally ->
                     $loading.finish(target)
 
@@ -456,4 +458,4 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $c
 
 
 module.directive("tgHistory", ["$log", "$tgLoading", "$tgQqueue", "$tgTemplate", "$tgConfirm", "$translate",
-                               "$compile", "$tgNavUrls", HistoryDirective])
+                               "$compile", "$tgNavUrls", "$rootScope", HistoryDirective])

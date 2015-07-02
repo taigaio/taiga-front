@@ -103,6 +103,9 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         @scope.$on "custom-attributes-values:edit", =>
             @rootscope.$broadcast("object:updated")
 
+        @scope.$on "comment:new", =>
+            @.loadUs()
+
     initializeOnDeleteGoToUrl: ->
         ctx = {project: @scope.project.slug}
         @scope.onDeleteGoToUrl = @navUrls.resolve("project", ctx)
