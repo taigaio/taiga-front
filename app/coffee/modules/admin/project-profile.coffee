@@ -189,9 +189,10 @@ module.directive("tgProjectDefaultValues", ["$tgRepo", "$tgConfirm", "$tgLoading
 
 ProjectModulesDirective = ($repo, $confirm, $loading, projectService) ->
     link = ($scope, $el, $attrs) ->
-        form = $el.find("form").checksley()
         submit = =>
+            form = $el.find("form").checksley()
             return if not form.validate()
+
             target = angular.element(".admin-functionalities a.button-green")
             $loading.start(target)
 
@@ -221,7 +222,7 @@ ProjectModulesDirective = ($repo, $confirm, $loading, projectService) ->
             else
                 $el.find(".videoconference-attributes").addClass("hidden")
                 $scope.project.videoconferences = null
-                $scope.project.videoconferences_salt = ""
+                $scope.project.videoconferences_extra_data = ""
 
         $scope.$watch "project", (project) ->
             if project.videoconferences?

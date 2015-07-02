@@ -63,7 +63,7 @@ describe "ProjectMenu", ->
         it "videoconference url", () ->
             project = Immutable.fromJS({
                 "videoconferences": "appear-in",
-                "videoconferences_salt": "123",
+                "videoconferences_extra_data": "123",
                 "slug": "project-slug"
             })
 
