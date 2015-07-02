@@ -84,6 +84,8 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             @rootscope.$broadcast("object:updated")
         @scope.$on "custom-attributes-values:edit", =>
             @rootscope.$broadcast("object:updated")
+        @scope.$on "comment:new", =>
+            @.loadTask()
 
     initializeOnDeleteGoToUrl: ->
         ctx = {project: @scope.project.slug}

@@ -97,6 +97,9 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             @rootscope.$broadcast("object:updated")
             @.loadIssue()
 
+        @scope.$on "comment:new", =>
+            @.loadIssue()
+
         @scope.$on "custom-attributes-values:edit", =>
             @rootscope.$broadcast("object:updated")
 
