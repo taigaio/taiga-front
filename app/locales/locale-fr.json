@@ -1024,7 +1024,7 @@
         "PAGE_TITLE": "Problèmes - {{projectName}}",
         "PAGE_DESCRIPTION": "Le panneau de la liste des problèmes du projet {{projectName}} : {{projectDescription}}",
         "LIST_SECTION_NAME": "Problèmes",
-        "SECTION_NAME": "Detalhes do problema",
+        "SECTION_NAME": "Détails du problème",
         "ACTION_NEW_ISSUE": "+ NOUVEAU PROBLÈME",
         "ACTION_PROMOTE_TO_US": "Transformer en User Story",
         "PLACEHOLDER_FILTER_NAME": "Écrivez le nom du filtre et appuyez sur \"Entrée\"",
