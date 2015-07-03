@@ -8,7 +8,7 @@ UserTimelineAttachmentDirective = (template, $compile) ->
             return url.indexOf(extension, url - extension.length) != -1
 
     link = (scope, el) ->
-        is_image = isImage(scope.attachment.url)
+        is_image = isImage(scope.attachment.get('url'))
 
         if is_image
             templateHtml = template.get("user-timeline/user-timeline-attachment/user-timeline-attachment-image.html")

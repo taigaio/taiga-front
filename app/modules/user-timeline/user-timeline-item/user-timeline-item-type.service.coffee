@@ -6,10 +6,10 @@ timelineType = (timeline, event) ->
             key: 'TIMELINE.NEW_MEMBER',
             translate_params: ['project_name']
             member: (timeline) ->
-                return {
-                    user: timeline.data.user,
-                    role: timeline.data.role
-                }
+                return Immutable.Map({
+                    user: timeline.getIn(['data', 'user']),
+                    role: timeline.getIn(['data', 'role'])
+                })
         },
         { # NewProject
             check: (timeline, event) ->
@@ -17,11 +17,13 @@ timelineType = (timeline, event) ->
             key: 'TIMELINE.NEW_PROJECT',
             translate_params: ['username', 'project_name'],
             description: (timeline) ->
-                return timeline.data.project.description
+                return timeline.getIn(['data', 'project', 'description'])
         },
         { # NewAttachment
             check: (timeline, event) ->
-                return event.type == 'change' && timeline.data.values_diff.attachments
+                return event.type == 'change' &&
+                     timeline.hasIn(['data', 'value_diff']) &&
+                     timeline.getIn(['data', 'value_diff', 'key']) == 'attachments'
             key: 'TIMELINE.UPLOAD_ATTACHMENT',
             translate_params: ['username', 'obj_name']
         },
@@ -45,13 +47,13 @@ timelineType = (timeline, event) ->
         },
         { # NewTask
             check: (timeline, event) ->
-                return event.obj == 'task' && event.type == 'create' && !timeline.data.task.userstory
+                return event.obj == 'task' && event.type == 'create' && !timeline.getIn(['data', 'task', 'userstory'])
             key: 'TIMELINE.TASK_CREATED',
             translate_params: ['username', 'project_name', 'obj_name']
         },
         { # NewTask with US
             check: (timeline, event) ->
-                return event.obj == 'task' && event.type == 'create' && timeline.data.task.userstory
+                return event.obj == 'task' && event.type == 'create' && timeline.getIn(['data', 'task', 'userstory'])
             key: 'TIMELINE.TASK_CREATED_WITH_US',
             translate_params: ['username', 'project_name', 'obj_name', 'us_name']
         },
@@ -63,41 +65,45 @@ timelineType = (timeline, event) ->
         },
         { # NewUsComment
             check: (timeline, event) ->
-                return timeline.data.comment && event.obj == 'userstory'
+                return timeline.getIn(['data', 'comment']) && event.obj == 'userstory'
             key: 'TIMELINE.NEW_COMMENT_US',
             translate_params: ['username', 'obj_name'],
             description: (timeline) ->
-                return $(timeline.data.comment_html).text()
+                return $(timeline.getIn(['data', 'comment_html'])).text()
         },
         { # NewIssueComment
             check: (timeline, event) ->
-                return timeline.data.comment && event.obj == 'issue'
+                return timeline.getIn(['data', 'comment']) && event.obj == 'issue'
             key: 'TIMELINE.NEW_COMMENT_ISSUE',
             translate_params: ['username', 'obj_name'],
             description: (timeline) ->
-                return $(timeline.data.comment_html).text()
+                return $(timeline.getIn(['data', 'comment_html'])).text()
         },
         { # NewTaskComment
             check: (timeline, event) ->
-                return timeline.data.comment && event.obj == 'task'
+                return timeline.getIn(['data', 'comment']) && event.obj == 'task'
             key: 'TIMELINE.NEW_COMMENT_TASK'
             translate_params: ['username', 'obj_name'],
             description: (timeline) ->
-                return $(timeline.data.comment_html).text()
+                return $(timeline.getIn(['data', 'comment_html'])).text()
         },
         { # UsToMilestone
-            check: (timeline, event, field_name) ->
-                if field_name == 'milestone' && event.type == 'change'
-                    return timeline.data.values_diff.milestone[0] == null
+            check: (timeline, event) ->
+                if timeline.hasIn(['data', 'value_diff']) &&
+                      timeline.getIn(['data', 'value_diff', 'key']) == 'milestone' &&
+                      event.type == 'change'
+                    return timeline.getIn(['data', 'value_diff', 'value']).get(0) == null
 
                 return false
             key: 'TIMELINE.US_ADDED_MILESTONE',
             translate_params: ['username', 'obj_name', 'sprint_name']
         },
         { # UsToBacklog
-            check: (timeline, event, field_name) ->
-                if field_name == 'milestone' && event.type == 'change'
-                    return timeline.data.values_diff.milestone[1] == null
+            check: (timeline, event) ->
+                if timeline.hasIn(['data', 'value_diff']) &&
+                      timeline.getIn(['data', 'value_diff', 'key']) == 'milestone' &&
+                      event.type == 'change'
+                    return timeline.getIn(['data', 'value_diff', 'value']).get(1) == null
 
                 return false
             key: 'TIMELINE.US_REMOVED_FROM_MILESTONE',
@@ -105,22 +111,26 @@ timelineType = (timeline, event) ->
         },
         { # Blocked
             check: (timeline, event) ->
-                if event.type == 'change' && timeline.data.values_diff.is_blocked
-                    return timeline.data.values_diff.is_blocked[1] == true
+                if timeline.hasIn(['data', 'value_diff']) &&
+                      timeline.getIn(['data', 'value_diff', 'key']) == 'blocked' &&
+                      event.type == 'change'
+                    return timeline.getIn(['data', 'value_diff', 'value', 'is_blocked']).get(1) == true
 
                 return false
             key: 'TIMELINE.BLOCKED',
             translate_params: ['username', 'obj_name'],
             description: (timeline) ->
-                if timeline.data.values_diff.blocked_note_html
-                    return $(timeline.data.values_diff.blocked_note_html[1]).text()
+                if timeline.hasIn(['data', 'value_diff', 'value', 'blocked_note_html'])
+                    return $(timeline.getIn(['data', 'value_diff', 'value', 'blocked_note_html']).get(1)).text()
                 else
                     return false
         },
         { # UnBlocked
             check: (timeline, event) ->
-                if event.type == 'change' && timeline.data.values_diff.is_blocked
-                    return timeline.data.values_diff.is_blocked[1] == false
+                if timeline.hasIn(['data', 'value_diff']) &&
+                      timeline.getIn(['data', 'value_diff', 'key']) == 'blocked' &&
+                      event.type == 'change'
+                    return timeline.getIn(['data', 'value_diff', 'value', 'is_blocked']).get(1) == false
 
                 return false
             key: 'TIMELINE.UNBLOCKED',
@@ -138,73 +148,82 @@ timelineType = (timeline, event) ->
             key: 'TIMELINE.WIKI_UPDATED',
             translate_params: ['username', 'obj_name']
         },
-        { # UsUpdated
+        { # UsUpdated points
             check: (timeline, event) ->
                 return event.obj == 'userstory' &&
                     event.type == 'change' &&
-                    !timeline.data.values_diff.description_diff
-            key: 'TIMELINE.US_UPDATED_WITH_NEW_VALUE',
-            translate_params: ['username', 'field_name', 'obj_name', 'new_value']
+                    timeline.hasIn(['data', 'value_diff']) &&
+                    timeline.getIn(['data', 'value_diff', 'key']) == 'points'
+            key: 'TIMELINE.US_UPDATED_POINTS',
+            translate_params: ['username', 'field_name', 'obj_name', 'new_value', 'role_name']
         },
         { # UsUpdated description
             check: (timeline, event) ->
                 return event.obj == 'userstory' &&
                     event.type == 'change' &&
-                    timeline.data.values_diff.description_diff
+                    timeline.hasIn(['data', 'value_diff']) &&
+                    timeline.getIn(['data', 'value_diff', 'key']) == 'description_diff'
             key: 'TIMELINE.US_UPDATED',
             translate_params: ['username', 'field_name', 'obj_name']
         },
-        { # IssueUpdated
+        { # UsUpdated general
             check: (timeline, event) ->
-                return event.obj == 'issue' &&
-                    event.type == 'change' &&
-                    !timeline.data.values_diff.description_diff
-            key: 'TIMELINE.ISSUE_UPDATED_WITH_NEW_VALUE',
+                return event.obj == 'userstory' &&
+                    event.type == 'change'
+            key: 'TIMELINE.US_UPDATED_WITH_NEW_VALUE',
             translate_params: ['username', 'field_name', 'obj_name', 'new_value']
         },
         { # IssueUpdated description
             check: (timeline, event) ->
                 return event.obj == 'issue' &&
                     event.type == 'change' &&
-                    timeline.data.values_diff.description_diff
+                    timeline.hasIn(['data', 'value_diff']) &&
+                    timeline.getIn(['data', 'value_diff', 'key']) == 'description_diff'
             key: 'TIMELINE.ISSUE_UPDATED',
             translate_params: ['username', 'field_name', 'obj_name']
         },
-        { # TaskUpdated
+        { # IssueUpdated general
             check: (timeline, event) ->
-                return event.obj == 'task' &&
-                    event.type == 'change' &&
-                    !timeline.data.task.userstory &&
-                    !timeline.data.values_diff.description_diff
-            key: 'TIMELINE.TASK_UPDATED_WITH_NEW_VALUE',
+                return event.obj == 'issue' &&
+                    event.type == 'change'
+            key: 'TIMELINE.ISSUE_UPDATED_WITH_NEW_VALUE',
             translate_params: ['username', 'field_name', 'obj_name', 'new_value']
         },
         { # TaskUpdated description
             check: (timeline, event) ->
                 return event.obj == 'task' &&
                     event.type == 'change' &&
-                    !timeline.data.task.userstory &&
-                    timeline.data.values_diff.description_diff
+                    !timeline.getIn('data', 'task', 'userstory') &&
+                    timeline.hasIn(['data', 'value_diff']) &&
+                    timeline.getIn(['data', 'value_diff', 'key']) == 'description_diff'
             key: 'TIMELINE.TASK_UPDATED',
             translate_params: ['username', 'field_name', 'obj_name']
-        },
-        { # TaskUpdated with US
-            check: (timeline, event) ->
-                return event.obj == 'task' &&
-                    event.type == 'change' &&
-                    timeline.data.task.userstory &&
-                    !timeline.data.values_diff.description_diff
-            key: 'TIMELINE.TASK_UPDATED_WITH_US_NEW_VALUE',
-            translate_params: ['username', 'field_name', 'obj_name', 'us_name', 'new_value']
         },
         { # TaskUpdated with US description
             check: (timeline, event) ->
                 return event.obj == 'task' &&
                     event.type == 'change' &&
-                    timeline.data.task.userstory &&
-                    timeline.data.values_diff.description_diff
+                    timeline.getIn('data', 'task', 'userstory') &&
+                    timeline.hasIn(['data', 'value_diff']) &&
+                    timeline.getIn(['data', 'value_diff', 'key']) == 'description_diff'
             key: 'TIMELINE.TASK_UPDATED_WITH_US',
             translate_params: ['username', 'field_name', 'obj_name', 'us_name']
+        },
+        { # TaskUpdated general
+            check: (timeline, event) ->
+                return event.obj == 'task' &&
+                    event.type == 'change' &&
+                    !timeline.getIn(['data', 'task', 'userstory'])
+            key: 'TIMELINE.TASK_UPDATED_WITH_NEW_VALUE',
+            translate_params: ['username', 'field_name', 'obj_name', 'new_value']
+        },
+        { # TaskUpdated with US
+            check: (timeline, event) ->
+                return event.obj == 'task' &&
+                    event.type == 'change' &&
+                    timeline.getIn(['data', 'task', 'userstory'])
+            key: 'TIMELINE.TASK_UPDATED_WITH_US_NEW_VALUE',
+            translate_params: ['username', 'field_name', 'obj_name', 'us_name', 'new_value']
         },
         { # New User
             check: (timeline, event) ->
@@ -214,11 +233,8 @@ timelineType = (timeline, event) ->
         }
     ]
 
-    if timeline.data.values_diff
-        field_name = Object.keys(timeline.data.values_diff)[0]
-
     return _.find types, (obj) ->
-        return obj.check(timeline, event, field_name)
+        return obj.check(timeline, event)
 
 class UserTimelineType
     getType: (timeline, event) -> timelineType(timeline, event)

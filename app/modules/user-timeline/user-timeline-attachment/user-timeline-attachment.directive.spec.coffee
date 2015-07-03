@@ -32,9 +32,9 @@ describe "userTimelineAttachmentDirective", () ->
             compile = $compile
 
     it "attachment image template", () ->
-        scope.attachment =  {
+        scope.attachment =  Immutable.fromJS({
             url: "path/path/file.jpg"
-        }
+        })
 
         mockTgTemplate.get
             .withArgs("user-timeline/user-timeline-attachment/user-timeline-attachment-image.html")
@@ -45,9 +45,9 @@ describe "userTimelineAttachmentDirective", () ->
         expect(elm.find('#image')).to.have.length(1)
 
     it "attachment file template", () ->
-        scope.attachment =  {
+        scope.attachment =  Immutable.fromJS({
             url: "path/path/file.pdf"
-        }
+        })
 
         mockTgTemplate.get
             .withArgs("user-timeline/user-timeline-attachment/user-timeline-attachment.html")

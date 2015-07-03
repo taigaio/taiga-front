@@ -7,7 +7,9 @@ describe "tgUserTimelineService", ->
         mocks.resources = {}
 
         mocks.resources.users = {
-            getTimeline: sinon.stub()
+            getTimeline: sinon.stub(),
+            getProfileTimeline: sinon.stub(),
+            getUserTimeline: sinon.stub()
         }
 
         mocks.resources.projects = {
@@ -147,73 +149,66 @@ describe "tgUserTimelineService", ->
         userId = 3
         page = 2
 
-        mocks.resources.users.getProfileTimeline = (_userId_) ->
-            expect(_userId_).to.be.equal(userId)
+        response = Immutable.fromJS({
+            data: valid_items
+        })
 
-            return Immutable.fromJS(valid_items)
+        mocks.resources.users.getProfileTimeline.withArgs(userId).promise().resolve(response)
 
         mocks.userTimelinePaginationSequence.generate = (config) ->
-            all = config.fetch()
-            expect(all.size).to.be.equal(11)
+            return config.fetch().then (res) ->
+                expect(res.get('data').size).to.be.equal(14)
 
-            items = config.filter(all).toJS()
-            expect(items).to.have.length(4)
-            expect(items[0]).to.be.eql(valid_items[0])
-            expect(items[1]).to.be.eql(valid_items[3])
-            expect(items[2]).to.be.eql(valid_items[5])
-            expect(items[3]).to.be.eql(valid_items[9])
+                items = config.filter(res.get('data'))
+                expect(items.size).to.be.equal(5)
 
-            return true
+                return true
 
         result = userTimelineService.getProfileTimeline(userId)
-        expect(result).to.be.true
+
+        return expect(result).to.be.eventually.true
 
     it "filter invalid user timeline items", () ->
         userId = 3
         page = 2
 
-        mocks.resources.users.getUserTimeline = (_userId_) ->
-            expect(_userId_).to.be.equal(userId)
+        response = Immutable.fromJS({
+            data: valid_items
+        })
 
-            return Immutable.fromJS(valid_items)
+        mocks.resources.users.getUserTimeline.withArgs(userId).promise().resolve(response)
 
         mocks.userTimelinePaginationSequence.generate = (config) ->
-            all = config.fetch()
-            expect(all.size).to.be.equal(11)
+            return config.fetch().then (res) ->
+                expect(res.get('data').size).to.be.equal(14)
 
-            items = config.filter(all).toJS()
-            expect(items).to.have.length(4)
-            expect(items[0]).to.be.eql(valid_items[0])
-            expect(items[1]).to.be.eql(valid_items[3])
-            expect(items[2]).to.be.eql(valid_items[5])
-            expect(items[3]).to.be.eql(valid_items[9])
+                items = config.filter(res.get('data'))
+                expect(items.size).to.be.equal(5)
 
-            return true
+                return true
 
         result = userTimelineService.getUserTimeline(userId)
-        expect(result).to.be.true
 
-    it "filter invalid user timeline items", () ->
+        return expect(result).to.be.eventually.true
+
+    it "filter invalid project timeline items", () ->
         userId = 3
         page = 2
 
-        mocks.resources.projects.getTimeline = (_userId_) ->
-            expect(_userId_).to.be.equal(userId)
+        response = Immutable.fromJS({
+            data: valid_items
+        })
 
-            return Immutable.fromJS(valid_items)
+        mocks.resources.projects.getTimeline.withArgs(userId).promise().resolve(response)
 
         mocks.userTimelinePaginationSequence.generate = (config) ->
-            all = config.fetch()
-            expect(all.size).to.be.equal(11)
+            return config.fetch().then (res) ->
+                expect(res.get('data').size).to.be.equal(14)
 
-            items = config.filter(all).toJS()
-            expect(items).to.have.length(4)
-            expect(items[0]).to.be.eql(valid_items[0])
-            expect(items[1]).to.be.eql(valid_items[3])
-            expect(items[2]).to.be.eql(valid_items[5])
-            expect(items[3]).to.be.eql(valid_items[9])
+                items = config.filter(res.get('data'))
+                expect(items.size).to.be.equal(5)
 
-            return true
+                return true
 
         result = userTimelineService.getProjectTimeline(userId)
-        expect(result).to.be.true
+        expect(result).to.be.eventually.true
