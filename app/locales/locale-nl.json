@@ -294,7 +294,7 @@
     },
     "CHANGE_PASSWORD": {
         "PAGE_TITLE": "Verander je wachtwoord - Taiga",
-        "PAGE_DESCRIPTION": "Zet een nieuw wachtwoord voor je Taiga account. Hey! Je kan best wat ijzerrijk voedsel eten, dat is goed voor de hersenen :P",
+        "PAGE_DESCRIPTION": "Set a new password for your Taiga account and hey!, you may want to eat some more iron-rich food, it's good for your brain :P",
         "SECTION_NAME": "Wachtwoord wijzigen",
         "FIELD_CURRENT_PASSWORD": "Huidig wachtwoord",
         "PLACEHOLDER_CURRENT_PASSWORD": "Je huidige wachtwoord (of leeg als je nog geen wachtwoord hebt)",
@@ -407,7 +407,12 @@
             "MEETUP": "Meet Up",
             "MEETUP_DESCRIPTION": "Kies je videoconference systeem. Zelfs programmeurs hebben face-to-face contact nodig.",
             "SELECT_VIDEOCONFERENCE": "Kies een videoconference systeem",
-            "SALT_CHAT_ROOM": "Als je wil kan je een salt code aan de naam van de chatroom toevoegen"
+            "SALT_CHAT_ROOM": "Als je wil kan je een salt code aan de naam van de chatroom toevoegen",
+            "JITSI_CHAT_ROOM": "Jitsi",
+            "APPEARIN_CHAT_ROOM": "AppearIn",
+            "TALKY_CHAT_ROOM": "Talky",
+            "CUSTOM_CHAT_ROOM": "Custom",
+            "URL_CHAT_ROOM": "URL of your chat room"
         },
         "PROJECT_PROFILE": {
             "PAGE_TITLE": "{{sectionName}} - Project profiel - {{projectName}}",
@@ -448,7 +453,9 @@
             "TASK_DESCRIPTION": "Eigen velden taken",
             "TASK_ADD": "Voeg een aangepast veld toe in taken",
             "ISSUE_DESCRIPTION": "Issues aangepaste velden",
-            "ISSUE_ADD": "Voeg een aangepast veld toe in issues"
+            "ISSUE_ADD": "Voeg een aangepast veld toe in issues",
+            "FIELD_TYPE_TEXT": "Text",
+            "FIELD_TYPE_MULTI": "Multi-line"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - Project waardes - {{projectName}}",
@@ -889,10 +896,10 @@
         "CHART": {
             "XAXIS_LABEL": "Sprints",
             "YAXIS_LABEL": "Punten",
-            "OPTIMAL": "Optimale aantal resterende punten voor sprint {{xval}} zou {{yval}} zijn",
-            "REAL": "Werkelijk aantal resterende punten voor sprint {{xval}} is {{yval}}",
-            "INCREMENT_TEAM": "Aantal toegevoegde punten door requirements van het team voor sprint {{xval}} is {{yval}}",
-            "INCREMENT_CLIENT": "Aantal toegevoegde punten door requirements van de klant voor sprint {{xval}} is {{yval}}"
+            "OPTIMAL": "Optimal pending points for sprint \"{{sprintName}}\" should be {{value}}",
+            "REAL": "Real pending points for sprint \"{{sprintName}}\" is {{value}}",
+            "INCREMENT_TEAM": "Incremented points by team requirements for sprint \"{{sprintName}}\" is {{value}}",
+            "INCREMENT_CLIENT": "Incremented points by client requirements for sprint \"{{sprintName}}\" is {{value}}"
         },
         "TAGS": {
             "TOGGLE": "Zet de tag zichtbaarheid aan of af",
@@ -1234,9 +1241,13 @@
         "NEW_PROJECT": "{{username}} heeft een nieuw project aangemaakt {{project_name}}",
         "MILESTONE_UPDATED": "{{username}} heeft de sprint {{obj_name}} bijgewerkt",
         "US_UPDATED": "{{username}} heeft de eigenschap \"{{field_name}}\" van de US {{obj_name}} bijgewerkt",
+        "US_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the US {{obj_name}} to {{new_value}}",
         "ISSUE_UPDATED": "{{username}} heeft de eigenschap \"{{field_name}}\" van het issue {{obj_name}} bijgewerkt",
-        "TASK_UPDATED": "{{username}} heeft de eigenschap \"{{field_name}}\" van de taak {{obj_name}} bijgewerkt",
+        "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the issue {{obj_name}} to {{new_value}}",
+        "TASK_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} to {{new_value}}",
+        "TASK_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} to {{new_value}}",
         "TASK_UPDATED_WITH_US": "{{username}} heeft de eigenschap \"{{field_name}}\" van de taak {{obj_name}} die behoort tot de US {{us_name}} bijgewerkt",
+        "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the US {{us_name}} to {{new_value}}",
         "WIKI_UPDATED": "{{username}} heeft de wiki pagina {{obj_name}} bijgewerkt",
         "NEW_COMMENT_US": "{{username}} heeft gereageerd op de US {{obj_name}}",
         "NEW_COMMENT_ISSUE": "{{username}} heeft gereageerd op het issue {{obj_name}}",

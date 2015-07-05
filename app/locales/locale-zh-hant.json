@@ -294,7 +294,7 @@
     },
     "CHANGE_PASSWORD": {
         "PAGE_TITLE": "變更密碼 - Taiga",
-        "PAGE_DESCRIPTION": "設定Taiga 帳戶密碼！ 你也許該吃點鐵質豐富的食物，它對你的大腦有益處:p",
+        "PAGE_DESCRIPTION": "Set a new password for your Taiga account and hey!, you may want to eat some more iron-rich food, it's good for your brain :P",
         "SECTION_NAME": "改變密碼 ",
         "FIELD_CURRENT_PASSWORD": "現用密碼 ",
         "PLACEHOLDER_CURRENT_PASSWORD": "你目前的密碼（如果你未有密碼，此處請空白）",
@@ -407,7 +407,12 @@
             "MEETUP": "符合",
             "MEETUP_DESCRIPTION": "選擇你的視訊系統。有些開發者需要面對面接觸",
             "SELECT_VIDEOCONFERENCE": "選擇一個視訊會議系統　",
-            "SALT_CHAT_ROOM": "你可以把聊天室名稱加上salt code亂數密碼　"
+            "SALT_CHAT_ROOM": "你可以把聊天室名稱加上salt code亂數密碼　",
+            "JITSI_CHAT_ROOM": "Jitsi",
+            "APPEARIN_CHAT_ROOM": "AppearIn",
+            "TALKY_CHAT_ROOM": "Talky",
+            "CUSTOM_CHAT_ROOM": "Custom",
+            "URL_CHAT_ROOM": "URL of your chat room"
         },
         "PROJECT_PROFILE": {
             "PAGE_TITLE": "{{sectionName}} - 專案檔案 - {{projectName}}",
@@ -448,7 +453,9 @@
             "TASK_DESCRIPTION": "任務客製化欄位",
             "TASK_ADD": "在任務中加入客制欄位",
             "ISSUE_DESCRIPTION": "問題客製化欄位",
-            "ISSUE_ADD": "在問題中加入客制欄位"
+            "ISSUE_ADD": "在問題中加入客制欄位",
+            "FIELD_TYPE_TEXT": "Text",
+            "FIELD_TYPE_MULTI": "Multi-line"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - 專案數值 - {{projectName}}",
@@ -889,10 +896,10 @@
         "CHART": {
             "XAXIS_LABEL": "衝刺任務",
             "YAXIS_LABEL": "點數",
-            "OPTIMAL": "最佳給衝刺任務待辦點數  {{xval}} 應是 {{yval}}",
-            "REAL": "任務衝刺實際待辦點數 {{xval}} 為 {{yval}}",
-            "INCREMENT_TEAM": "團隊要求的任務衝刺逐步新增點數 {{xval}} 為 {{yval}}",
-            "INCREMENT_CLIENT": "客戶要求的任務衝刺逐步新增點數 {{xval}} 為 {{yval}}"
+            "OPTIMAL": "Optimal pending points for sprint \"{{sprintName}}\" should be {{value}}",
+            "REAL": "Real pending points for sprint \"{{sprintName}}\" is {{value}}",
+            "INCREMENT_TEAM": "Incremented points by team requirements for sprint \"{{sprintName}}\" is {{value}}",
+            "INCREMENT_CLIENT": "Incremented points by client requirements for sprint \"{{sprintName}}\" is {{value}}"
         },
         "TAGS": {
             "TOGGLE": "切換標籤可見度",
@@ -1234,9 +1241,13 @@
         "NEW_PROJECT": "{{username}} 創建專案 {{project_name}}",
         "MILESTONE_UPDATED": "{{username}}更新衝刺任務 {{obj_name}} ",
         "US_UPDATED": "{{username}} 已更新 {{obj_name}}使用者故事之 \"{{field_name}}\"屬性。",
+        "US_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the US {{obj_name}} to {{new_value}}",
         "ISSUE_UPDATED": "{{username}} 更新了{{obj_name}}問題的 \"{{field_name}}\" 屬性",
-        "TASK_UPDATED": "{{username}}更新了任務 {{obj_name}}之 \"{{field_name}}\" 屬性",
+        "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the issue {{obj_name}} to {{new_value}}",
+        "TASK_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} to {{new_value}}",
+        "TASK_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} to {{new_value}}",
         "TASK_UPDATED_WITH_US": "{{username}} 更新了 {{obj_name}} 任務之\"{{field_name}}\" 屬性，其為 {{us_name}} 之使用者故事",
+        "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the US {{us_name}} to {{new_value}}",
         "WIKI_UPDATED": "\n{{username}} 更新了維基頁{{obj_name}}",
         "NEW_COMMENT_US": "{{username}} 評論了 {{obj_name}}使用者故事",
         "NEW_COMMENT_ISSUE": "{{username}}評論了此問題 {{obj_name}}",

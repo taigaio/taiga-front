@@ -294,7 +294,7 @@
     },
     "CHANGE_PASSWORD": {
         "PAGE_TITLE": "Canvi de contrasenya - Taiga",
-        "PAGE_DESCRIPTION": "Crea un nou password per Taiga i... hey! Menja un poc més de ferro, es bo pel cervell :P ",
+        "PAGE_DESCRIPTION": "Set a new password for your Taiga account and hey!, you may want to eat some more iron-rich food, it's good for your brain :P",
         "SECTION_NAME": "Canvi de contrasenya",
         "FIELD_CURRENT_PASSWORD": "Contrasenya actual",
         "PLACEHOLDER_CURRENT_PASSWORD": "La teua contrasenya actua (buit si no tens contrasenya encara)",
@@ -407,7 +407,12 @@
             "MEETUP": "Trobar-se",
             "MEETUP_DESCRIPTION": "Tria el teu sistema de videonconferéncia. Inclosos els desenvolupadors necessitan contacte cara a cara",
             "SELECT_VIDEOCONFERENCE": "Selecciona un sistema de videconferència",
-            "SALT_CHAT_ROOM": "Pots afegir un code salt a la sala de xat"
+            "SALT_CHAT_ROOM": "Pots afegir un code salt a la sala de xat",
+            "JITSI_CHAT_ROOM": "Jitsi",
+            "APPEARIN_CHAT_ROOM": "AppearIn",
+            "TALKY_CHAT_ROOM": "Talky",
+            "CUSTOM_CHAT_ROOM": "Custom",
+            "URL_CHAT_ROOM": "URL of your chat room"
         },
         "PROJECT_PROFILE": {
             "PAGE_TITLE": "{{sectionName}} - Project profile  - {{projectName}}",
@@ -448,7 +453,9 @@
             "TASK_DESCRIPTION": "Camps personalitzats de tasques",
             "TASK_ADD": "Afegix camps personalitzats en tasques",
             "ISSUE_DESCRIPTION": "Camps personalitzats d'incidències",
-            "ISSUE_ADD": "Afegix camps personalitzats en incidències"
+            "ISSUE_ADD": "Afegix camps personalitzats en incidències",
+            "FIELD_TYPE_TEXT": "Text",
+            "FIELD_TYPE_MULTI": "Multi-line"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - Project values - {{projectName}}",
@@ -889,10 +896,10 @@
         "CHART": {
             "XAXIS_LABEL": "Sprints",
             "YAXIS_LABEL": "Punts",
-            "OPTIMAL": "Punts pendent òptims per sprint {{xval}} deuría ser {{yval}}",
-            "REAL": "Punts pendent reals per sprint {{xval}} es {{yval}}",
-            "INCREMENT_TEAM": "Punts incrementats per requeriment de l'equip per sprint {{xval}} és {{yval}}",
-            "INCREMENT_CLIENT": "Punts incrementat per requeriment de client {{xval}} és {{yval}}"
+            "OPTIMAL": "Optimal pending points for sprint \"{{sprintName}}\" should be {{value}}",
+            "REAL": "Real pending points for sprint \"{{sprintName}}\" is {{value}}",
+            "INCREMENT_TEAM": "Incremented points by team requirements for sprint \"{{sprintName}}\" is {{value}}",
+            "INCREMENT_CLIENT": "Incremented points by client requirements for sprint \"{{sprintName}}\" is {{value}}"
         },
         "TAGS": {
             "TOGGLE": "Toggle tags visibility",
@@ -1234,9 +1241,13 @@
         "NEW_PROJECT": "{{username}} created the project {{project_name}}",
         "MILESTONE_UPDATED": "{{username}} has updated the sprint {{obj_name}}",
         "US_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the US {{obj_name}}",
+        "US_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the US {{obj_name}} to {{new_value}}",
         "ISSUE_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the issue {{obj_name}}",
-        "TASK_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}}",
+        "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the issue {{obj_name}} to {{new_value}}",
+        "TASK_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} to {{new_value}}",
+        "TASK_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} to {{new_value}}",
         "TASK_UPDATED_WITH_US": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the US {{us_name}}",
+        "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the US {{us_name}} to {{new_value}}",
         "WIKI_UPDATED": "{{username}} has updated the wiki page {{obj_name}}",
         "NEW_COMMENT_US": "{{username}} has commented in the US {{obj_name}}",
         "NEW_COMMENT_ISSUE": "{{username}} has commented in the issue {{obj_name}}",

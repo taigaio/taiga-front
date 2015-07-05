@@ -294,7 +294,7 @@
     },
     "CHANGE_PASSWORD": {
         "PAGE_TITLE": "Modifier votre mot de passe - Taiga",
-        "PAGE_DESCRIPTION": "Paramètrez un nouveau mot de passe pour votre compte Taiga et, au fait, vous devriez manger de la nourriture plus riche en fer, c'est bon pour votre cerveau :P",
+        "PAGE_DESCRIPTION": "Set a new password for your Taiga account and hey!, you may want to eat some more iron-rich food, it's good for your brain :P",
         "SECTION_NAME": "Modifier le mot de passe",
         "FIELD_CURRENT_PASSWORD": "Mot de passe courant",
         "PLACEHOLDER_CURRENT_PASSWORD": "Votre mot de passe courant (ne rien saisir si vous ne possédez pas encore de mot de passe)",
@@ -407,7 +407,12 @@
             "MEETUP": "Meet Up",
             "MEETUP_DESCRIPTION": "Choisissez votre système de vidéoconférence. Même les développeurs ont besoin de contact en face à face.",
             "SELECT_VIDEOCONFERENCE": "Choisissez un système de vidéoconférence",
-            "SALT_CHAT_ROOM": "Si vous le souhaitez vous pouvez ajouter un code de salage au nom du salon de discussion"
+            "SALT_CHAT_ROOM": "Si vous le souhaitez vous pouvez ajouter un code de salage au nom du salon de discussion",
+            "JITSI_CHAT_ROOM": "Jitsi",
+            "APPEARIN_CHAT_ROOM": "AppearIn",
+            "TALKY_CHAT_ROOM": "Talky",
+            "CUSTOM_CHAT_ROOM": "Custom",
+            "URL_CHAT_ROOM": "URL of your chat room"
         },
         "PROJECT_PROFILE": {
             "PAGE_TITLE": "{{sectionName}} - Profil projet - {{projectName}}\n",
@@ -448,7 +453,9 @@
             "TASK_DESCRIPTION": "Champs personnalisés de tâches",
             "TASK_ADD": "Ajouter un champ personnalisé dans les tâches",
             "ISSUE_DESCRIPTION": "Champs personnalisés des problèmes",
-            "ISSUE_ADD": "Ajouter un champ personnalisé dans les problèmes"
+            "ISSUE_ADD": "Ajouter un champ personnalisé dans les problèmes",
+            "FIELD_TYPE_TEXT": "Text",
+            "FIELD_TYPE_MULTI": "Multi-line"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - Valeurs du projet - {{projectName}}",
@@ -889,10 +896,10 @@
         "CHART": {
             "XAXIS_LABEL": "Sprints",
             "YAXIS_LABEL": "Points",
-            "OPTIMAL": "Le nombre optimal de points en attente pour le sprint {{xval}} devrait être {{yval}}",
-            "REAL": "Le nombre réel de points pour le sprint {{xval}} est {{yval}}",
-            "INCREMENT_TEAM": "Le nombre de points ajoutés par les exigences de l'équipe pour le sprint {{xval}} est {{yval}}",
-            "INCREMENT_CLIENT": "Le nombre de points ajoutés par les exigences du client pour le sprint {{xval}} est {{yval}}"
+            "OPTIMAL": "Optimal pending points for sprint \"{{sprintName}}\" should be {{value}}",
+            "REAL": "Real pending points for sprint \"{{sprintName}}\" is {{value}}",
+            "INCREMENT_TEAM": "Incremented points by team requirements for sprint \"{{sprintName}}\" is {{value}}",
+            "INCREMENT_CLIENT": "Incremented points by client requirements for sprint \"{{sprintName}}\" is {{value}}"
         },
         "TAGS": {
             "TOGGLE": "Afficher/Cacher les tags",
@@ -1234,9 +1241,13 @@
         "NEW_PROJECT": "{{username}} a créé le projet {{project_name}}",
         "MILESTONE_UPDATED": "{{username}} a mis à jour le sprint {{obj_name}}",
         "US_UPDATED": "{{username}} a mis à jour l'attribut «{{field_name}}» du récit utilisateur {{obj_name}}",
+        "US_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the US {{obj_name}} to {{new_value}}",
         "ISSUE_UPDATED": "{{username}} a mis à jour l'attribut «{{field_name}}» du suivi de problème {{obj_name}}",
-        "TASK_UPDATED": "{{username}} a mis à jour l'attribut «{{field_name}}» de la tâche {{obj_name}}",
+        "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the issue {{obj_name}} to {{new_value}}",
+        "TASK_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} to {{new_value}}",
+        "TASK_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} to {{new_value}}",
         "TASK_UPDATED_WITH_US": "{{username}} a mis à jour l'attribut «{{field_name}}» de la tâche {{obj_name}} qui appartient au récit utilisateur {{us_name}}",
+        "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the US {{us_name}} to {{new_value}}",
         "WIKI_UPDATED": "{{username}} a mis à jour la page wiki {{obj_name}}",
         "NEW_COMMENT_US": "{{username}} a commenté le récit utilisateur {{obj_name}}",
         "NEW_COMMENT_ISSUE": "{{username}} a commenté le suivi de problème {{obj_name}}",

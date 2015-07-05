@@ -294,7 +294,7 @@
     },
     "CHANGE_PASSWORD": {
         "PAGE_TITLE": "Ändern Sie Ihr Passwort - Taiga",
-        "PAGE_DESCRIPTION": "Setzen Sie ein neues Passwort für Ihr Taiga Benutzerkonto.",
+        "PAGE_DESCRIPTION": "Set a new password for your Taiga account and hey!, you may want to eat some more iron-rich food, it's good for your brain :P",
         "SECTION_NAME": "Passwort ändern",
         "FIELD_CURRENT_PASSWORD": "Aktuelles Passwort",
         "PLACEHOLDER_CURRENT_PASSWORD": "Ihr aktuelles Passwort (oder leer, wenn Sie noch kein Passwort haben)",
@@ -407,7 +407,12 @@
             "MEETUP": "Zusammentreffen",
             "MEETUP_DESCRIPTION": "Wählen Sie Ihr Videokonferenzsystem. Auch Entwickler brauchen Kontakt von Angesicht zu Angesicht. ",
             "SELECT_VIDEOCONFERENCE": "Wählen Sie ein Videokonferenzsystem",
-            "SALT_CHAT_ROOM": "Wenn Sie möchten, können Sie einen Salt Code zum Namen des Chatrooms hinzufügen"
+            "SALT_CHAT_ROOM": "Wenn Sie möchten, können Sie einen Salt Code zum Namen des Chatrooms hinzufügen",
+            "JITSI_CHAT_ROOM": "Jitsi",
+            "APPEARIN_CHAT_ROOM": "Erscheint in",
+            "TALKY_CHAT_ROOM": "Gesprächig",
+            "CUSTOM_CHAT_ROOM": "Custom",
+            "URL_CHAT_ROOM": "URL of your chat room"
         },
         "PROJECT_PROFILE": {
             "PAGE_TITLE": "{{sectionName}} - Projekt Profil - {{projectName}}",
@@ -448,7 +453,9 @@
             "TASK_DESCRIPTION": "Aufgaben benutzerdefinierte Felder",
             "TASK_ADD": "Fügen Sie ein benutzerdefiniertes Feld bei Aufgaben hinzu",
             "ISSUE_DESCRIPTION": "Tickets benutzerdefinierte Felder",
-            "ISSUE_ADD": "Fügen Sie den Tickets ein benutzerdefiniertes Feld hinzu "
+            "ISSUE_ADD": "Fügen Sie den Tickets ein benutzerdefiniertes Feld hinzu ",
+            "FIELD_TYPE_TEXT": "Text",
+            "FIELD_TYPE_MULTI": "Multi-line"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - Projekt Werte - {{projectName}}",
@@ -889,10 +896,10 @@
         "CHART": {
             "XAXIS_LABEL": "Sprints",
             "YAXIS_LABEL": "Punkte",
-            "OPTIMAL": "Optimale unerledigte Punkte für Sprint {{xval}} sollten sein {{yval}}",
-            "REAL": "Tatsächliche Anzahl unerledigter Punkte für Sprint {{xval}} ist {{yval}}",
-            "INCREMENT_TEAM": "Erhöhte Punkteanzahl von Team Anfragen für Sprint {{xval}} ist {{yval}}",
-            "INCREMENT_CLIENT": "Erhöhte Punkteanzahl von Kundenanfragen für Sprint {{xval}} ist {{yval}}"
+            "OPTIMAL": "Optimal pending points for sprint \"{{sprintName}}\" should be {{value}}",
+            "REAL": "Real pending points for sprint \"{{sprintName}}\" is {{value}}",
+            "INCREMENT_TEAM": "Incremented points by team requirements for sprint \"{{sprintName}}\" is {{value}}",
+            "INCREMENT_CLIENT": "Incremented points by client requirements for sprint \"{{sprintName}}\" is {{value}}"
         },
         "TAGS": {
             "TOGGLE": "Sichtbarkeit des Schlagwortes umschalten",
@@ -1234,9 +1241,13 @@
         "NEW_PROJECT": "{{username}} erstellte das Projekt {{project_name}}",
         "MILESTONE_UPDATED": "{{username}} aktualisierte den Sprint {{obj_name}}",
         "US_UPDATED": "{{username}} aktualisierte das Attribut \"{{field_name}}\" der User-Story {{obj_name}}",
+        "US_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the US {{obj_name}} to {{new_value}}",
         "ISSUE_UPDATED": "{{username}} aktualisierte das Attribut \"{{field_name}}\" des Tickets {{obj_name}}",
-        "TASK_UPDATED": "{{username}} aktualisierte das Attribut \"{{field_name}}\" der Aufgabe {{obj_name}}",
+        "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the issue {{obj_name}} to {{new_value}}",
+        "TASK_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} to {{new_value}}",
+        "TASK_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} to {{new_value}}",
         "TASK_UPDATED_WITH_US": "{{username}} aktualisierte das Attribut \"{{field_name}}\" der Aufgabe {{obj_name}} von User-Story {{us_name}}",
+        "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the US {{us_name}} to {{new_value}}",
         "WIKI_UPDATED": "{{username}} aktualisierte die WIKI Seite {{obj_name}}",
         "NEW_COMMENT_US": "{{username}} schrieb einen Kommentar in der User-Story {{obj_name}}",
         "NEW_COMMENT_ISSUE": "{{username}} schrieb einen Kommentar im Ticket {{obj_name}}",

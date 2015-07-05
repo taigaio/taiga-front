@@ -294,7 +294,7 @@
     },
     "CHANGE_PASSWORD": {
         "PAGE_TITLE": "Change you password - Taiga",
-        "PAGE_DESCRIPTION": "Set a new passoword for your Taiga account and hey!, you may want to eat some more iron-rich food, it's good for your brain :P",
+        "PAGE_DESCRIPTION": "Set a new password for your Taiga account and hey!, you may want to eat some more iron-rich food, it's good for your brain :P",
         "SECTION_NAME": "Muuta salasanaa",
         "FIELD_CURRENT_PASSWORD": "Nykyinen salasana",
         "PLACEHOLDER_CURRENT_PASSWORD": "Nykyinen salasanasi (tai on tyhjä jos sinulla ei vielä ole)",
@@ -407,7 +407,12 @@
             "MEETUP": "Tapaa",
             "MEETUP_DESCRIPTION": "Valitse videoneuvottelu- järjestelmä. Jopa kehittäjät tarvitsevat katsekontaktia.",
             "SELECT_VIDEOCONFERENCE": "Valitse videoconferenssi-järjestelmä",
-            "SALT_CHAT_ROOM": "Voit halutessasi lisätä suolaan chat-huoneen nimeen"
+            "SALT_CHAT_ROOM": "Voit halutessasi lisätä suolaan chat-huoneen nimeen",
+            "JITSI_CHAT_ROOM": "Jitsi",
+            "APPEARIN_CHAT_ROOM": "AppearIn",
+            "TALKY_CHAT_ROOM": "Talky",
+            "CUSTOM_CHAT_ROOM": "Custom",
+            "URL_CHAT_ROOM": "URL of your chat room"
         },
         "PROJECT_PROFILE": {
             "PAGE_TITLE": "{{sectionName}} - Projektin profiili - {{projectName}}",
@@ -448,7 +453,9 @@
             "TASK_DESCRIPTION": "Tehtävien omat kentät",
             "TASK_ADD": "Lisää omia kenttiä tehtäviin",
             "ISSUE_DESCRIPTION": "Pyyntöjen omat kentät",
-            "ISSUE_ADD": "Lisää oma kenttä pyynnöille"
+            "ISSUE_ADD": "Lisää oma kenttä pyynnöille",
+            "FIELD_TYPE_TEXT": "Text",
+            "FIELD_TYPE_MULTI": "Multi-line"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - Project values - {{projectName}}",
@@ -889,10 +896,10 @@
         "CHART": {
             "XAXIS_LABEL": "Kierrokset",
             "YAXIS_LABEL": "Pisteet",
-            "OPTIMAL": "Optimaaliset odottavat pisteet kierokselle {{xval}} ovat {{yval}}",
-            "REAL": "Todelliset odottavat pisteet kierrokselle {{xval}} ovat {{yval}}",
-            "INCREMENT_TEAM": "Lisätyt tiimin vaatimat pisteet kierrokselle {{xval}} ovat {{yval}}",
-            "INCREMENT_CLIENT": "Lisätyt asiakkaan vaatimat pisteet kierrokselle {{xval}} ovat {{yval}}"
+            "OPTIMAL": "Optimal pending points for sprint \"{{sprintName}}\" should be {{value}}",
+            "REAL": "Real pending points for sprint \"{{sprintName}}\" is {{value}}",
+            "INCREMENT_TEAM": "Incremented points by team requirements for sprint \"{{sprintName}}\" is {{value}}",
+            "INCREMENT_CLIENT": "Incremented points by client requirements for sprint \"{{sprintName}}\" is {{value}}"
         },
         "TAGS": {
             "TOGGLE": "Vaihda avainsanojen näkyvyyttä",
@@ -1234,9 +1241,13 @@
         "NEW_PROJECT": "{{username}} created the project {{project_name}}",
         "MILESTONE_UPDATED": "{{username}} has updated the sprint {{obj_name}}",
         "US_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the US {{obj_name}}",
+        "US_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the US {{obj_name}} to {{new_value}}",
         "ISSUE_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the issue {{obj_name}}",
-        "TASK_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}}",
+        "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the issue {{obj_name}} to {{new_value}}",
+        "TASK_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} to {{new_value}}",
+        "TASK_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} to {{new_value}}",
         "TASK_UPDATED_WITH_US": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the US {{us_name}}",
+        "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the US {{us_name}} to {{new_value}}",
         "WIKI_UPDATED": "{{username}} has updated the wiki page {{obj_name}}",
         "NEW_COMMENT_US": "{{username}} has commented in the US {{obj_name}}",
         "NEW_COMMENT_ISSUE": "{{username}} has commented in the issue {{obj_name}}",
