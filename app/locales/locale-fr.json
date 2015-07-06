@@ -294,7 +294,7 @@
     },
     "CHANGE_PASSWORD": {
         "PAGE_TITLE": "Modifier votre mot de passe - Taiga",
-        "PAGE_DESCRIPTION": "Set a new password for your Taiga account and hey!, you may want to eat some more iron-rich food, it's good for your brain :P",
+        "PAGE_DESCRIPTION": "Paramètrez un nouveau mot de passe pour votre compte Taiga et, au fait, vous devriez manger de la nourriture plus riche en fer, c'est bon pour votre cerveau :P",
         "SECTION_NAME": "Modifier le mot de passe",
         "FIELD_CURRENT_PASSWORD": "Mot de passe courant",
         "PLACEHOLDER_CURRENT_PASSWORD": "Votre mot de passe courant (ne rien saisir si vous ne possédez pas encore de mot de passe)",

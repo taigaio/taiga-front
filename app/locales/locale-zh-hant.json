@@ -294,7 +294,7 @@
     },
     "CHANGE_PASSWORD": {
         "PAGE_TITLE": "變更密碼 - Taiga",
-        "PAGE_DESCRIPTION": "Set a new password for your Taiga account and hey!, you may want to eat some more iron-rich food, it's good for your brain :P",
+        "PAGE_DESCRIPTION": "設定Taiga 帳戶密碼！ 你也許該吃點鐵質豐富的食物，它對你的大腦有益處:p",
         "SECTION_NAME": "改變密碼 ",
         "FIELD_CURRENT_PASSWORD": "現用密碼 ",
         "PLACEHOLDER_CURRENT_PASSWORD": "你目前的密碼（如果你未有密碼，此處請空白）",

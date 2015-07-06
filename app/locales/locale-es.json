@@ -294,7 +294,7 @@
     },
     "CHANGE_PASSWORD": {
         "PAGE_TITLE": "Cambia tu contraseña - Taiga",
-        "PAGE_DESCRIPTION": "Set a new password for your Taiga account and hey!, you may want to eat some more iron-rich food, it's good for your brain :P",
+        "PAGE_DESCRIPTION": "Indica una nueva contraseña para tu cuenta en Taiga y bueno, es posible que necesites comer un poco más de alimentos ricos en hierro, son buenos para tu cerebro :P",
         "SECTION_NAME": "Cambiar contraseña",
         "FIELD_CURRENT_PASSWORD": "Contraseña actual",
         "PLACEHOLDER_CURRENT_PASSWORD": "Tu contraseña actual (o déjalo vacío si todavía no tienes contraseña)",
@@ -412,7 +412,7 @@
             "APPEARIN_CHAT_ROOM": "AppearIn",
             "TALKY_CHAT_ROOM": "Talky",
             "CUSTOM_CHAT_ROOM": "Personalizado",
-            "URL_CHAT_ROOM": "URL of your chat room"
+            "URL_CHAT_ROOM": "URL de tu chat room"
         },
         "PROJECT_PROFILE": {
             "PAGE_TITLE": "{{sectionName}} - Perfil de Proyecto - {{projectName}}\n",
@@ -455,7 +455,7 @@
             "ISSUE_DESCRIPTION": "Atributos personalizados de peticiones",
             "ISSUE_ADD": "Añadir un atributo personalizado en las peticiones",
             "FIELD_TYPE_TEXT": "Texto",
-            "FIELD_TYPE_MULTI": "Multi-line"
+            "FIELD_TYPE_MULTI": "Multilínea"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - Valores del Proyectos - {{projectName}}",
@@ -896,10 +896,10 @@
         "CHART": {
             "XAXIS_LABEL": "Sprints",
             "YAXIS_LABEL": "Puntos",
-            "OPTIMAL": "Optimal pending points for sprint \"{{sprintName}}\" should be {{value}}",
-            "REAL": "Real pending points for sprint \"{{sprintName}}\" is {{value}}",
-            "INCREMENT_TEAM": "Incremented points by team requirements for sprint \"{{sprintName}}\" is {{value}}",
-            "INCREMENT_CLIENT": "Incremented points by client requirements for sprint \"{{sprintName}}\" is {{value}}"
+            "OPTIMAL": "El número de puntos óptimos pendientes para el sprint \"{{sprintName}}\" debería ser de {{value}}",
+            "REAL": "El número real de puntos pendientes para el sprint \"{{sprintName}}\" es de {{value}}",
+            "INCREMENT_TEAM": "El número de puntos incrementados por requerimientos del equipo para el sprint \"{{sprintName}}\" es de {{value}}",
+            "INCREMENT_CLIENT": "El número de puntos incrementados por requerimientos del cliente para el sprint \"{{sprintName}}\" es de {{value}}"
         },
         "TAGS": {
             "TOGGLE": "Cambia la visibilidad de los tags",
@@ -1241,13 +1241,13 @@
         "NEW_PROJECT": "{{username}} creó el proyecto {{project_name}}",
         "MILESTONE_UPDATED": "{{username}} ha actualizado el sprint {{obj_name}}",
         "US_UPDATED": "{{username}} ha actualizado el atributo \"{{field_name}}\" de la historia {{obj_name}}",
-        "US_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the US {{obj_name}} to {{new_value}}",
+        "US_UPDATED_WITH_NEW_VALUE": "{{username}} ha actualizado el atributo \"{{field_name}}\" de la historia {{obj_name}} a {{new_value}}",
         "ISSUE_UPDATED": "{{username}} ha actualizado el atributo \"{{field_name}}\" de la petición {{obj_name}}",
-        "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the issue {{obj_name}} to {{new_value}}",
-        "TASK_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} to {{new_value}}",
-        "TASK_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} to {{new_value}}",
+        "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} ha actualizado el atributo \"{{field_name}}\" de la petición {{obj_name}} a {{new_value}}",
+        "TASK_UPDATED": "{{username}} ha actualizado el atributo \"{{field_name}}\" de la tarea {{obj_name}} a {{new_value}}",
+        "TASK_UPDATED_WITH_NEW_VALUE": "{{username}} ha actualizado el atributo \"{{field_name}}\" de la tarea {{obj_name}} a {{new_value}}",
         "TASK_UPDATED_WITH_US": "{{username}} ha actualizado el atributo \"{{field_name}}\" de la tarea {{obj_name}} que proviene de la historia {{us_name}}",
-        "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the US {{us_name}} to {{new_value}}",
+        "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} ha actualizado el atributo \"{{field_name}}\" de la tarea {{obj_name}} que pertenece a la historia {{us_name}} a {{new_value}}",
         "WIKI_UPDATED": "{{username}} ha actualizado la página del wiki {{obj_name}}",
         "NEW_COMMENT_US": "{{username}} ha añadido un comentado en la historia {{obj_name}}",
         "NEW_COMMENT_ISSUE": "{{username}} ha añadido un comentado en la petición {{obj_name}}",
