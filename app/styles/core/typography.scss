@@ -53,7 +53,7 @@ h1 {
         max-width: 40%;
     }
     .green {
-        color: $green-taiga;
+        color: $primary;
     }
     .date {
         @include ellipsis(500px);
@@ -92,10 +92,8 @@ hr {
 // __Links__
 a,
 a:visited {
-    color: $grayer;
     text-decoration: none;
     &:hover {
-        color: $green-taiga;
         transition: color .3s linear;
     }
 }

@@ -6,7 +6,7 @@
     padding: .5rem;
     &:hover {
         .icon {
-            color: $green-taiga;
+            color: $primary;
             transform: rotate(180deg);
             transition: all .2s linear;
         }
@@ -58,7 +58,7 @@
             color: $grayer;
         }
         &:hover {
-            color: $green-taiga;
+            color: $primary;
             transition: color .2s ease-in;
         }
     }
@@ -119,7 +119,7 @@
     display: block;
     padding: 1rem 0 1rem 1rem;
     &:hover {
-        background: lighten($green-taiga, 60%);
+        background: lighten($primary, 60%);
         transition: background .2s ease-in;
     }
 }
@@ -130,7 +130,7 @@
     display: block;
     padding: 1rem;
     .prev-comments-num {
-        color: $green-taiga;
+        color: $primary;
         margin-left: .5rem;
     }
 }
@@ -180,7 +180,7 @@
             color: $gray-light;
             margin-left: .3rem;
             &:hover {
-                color: $green-taiga;
+                color: $primary;
                 transition: color .2s linear;
             }
         }
@@ -206,12 +206,12 @@
             vertical-align: baseline;
         }
         &:hover {
-            color: $green-taiga;
+            color: $primary;
             transition: color .2s linear;
         }
     }
     .username {
-        color: $green-taiga;
+        color: $primary;
         margin-bottom: .5rem;
     }
     .activity-user {
@@ -223,7 +223,7 @@
         }
     }
     .activity-username {
-        color: $green-taiga;
+        color: $primary;
         margin-bottom: .5rem;
     }
     .activity-content {
@@ -272,7 +272,7 @@
     display: block;
     padding: 1rem;
     .prev-activity-num {
-        color: $green-taiga;
+        color: $primary;
         margin-left: .5rem;
     }
 }

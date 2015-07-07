@@ -103,7 +103,7 @@
                 padding: 0 .2rem;
             }
             a:hover {
-                color: $green-taiga;
+                color: $primary;
             }
             a:first-child {
                 border: 0;
@@ -237,7 +237,7 @@
 
 .us-detail-status {
     @extend %large;
-    color: $green-taiga;
+    color: $primary;
     vertical-align: middle;
 }
 
@@ -247,7 +247,7 @@
     margin-bottom: 1rem;
     position: relative;
     .current-progress {
-        background: $fresh-taiga;
+        background: $primary-light;
         height: 26px;
         left: 0;
         position: absolute;
@@ -281,7 +281,7 @@
         text-align: center;
         transition: color .3s linear;
         &.active {
-            background: rgba($fresh-taiga, .9);
+            background: rgba($primary-light, .9);
             color: $whitish;
         }
         &:first-child {
@@ -316,7 +316,7 @@
             text-align: center;
             &:hover,
             &.active {
-                background: $fresh-taiga;
+                background: $primary-light;
                 color: $white;
             }
         }
@@ -381,7 +381,7 @@
             }
         }
         &.active {
-            background: $green-taiga;
+            background: $primary;
         }
     }
     .item-block {

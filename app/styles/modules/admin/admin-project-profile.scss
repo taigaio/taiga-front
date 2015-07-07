@@ -54,8 +54,8 @@
     }
     .privacy-project:checked {
         + label {
-            background: $fresh-taiga;
-            border: 1px solid $fresh-taiga;
+            background: $primary-light;
+            border: 1px solid $primary-light;
             span {
                 color: $white;
             }

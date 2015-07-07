@@ -33,7 +33,7 @@
         display: none;
         &:checked {
             +label {
-                background: $green-taiga;
+                background: $primary;
                 transition: background .3s linear;
             }
         }
@@ -45,7 +45,7 @@
         display: block;
         padding: .5rem;
         &:hover {
-            background: $fresh-taiga;
+            background: $primary-light;
             cursor: pointer;
             transition: background .3s linear;
         }

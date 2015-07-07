@@ -33,7 +33,7 @@
     }
     .project-values-row {
         &:hover {
-            background: lighten($green-taiga, 60%);
+            background: lighten($primary, 60%);
             cursor: move;
             transition: background .2s ease-in;
             .icon {
@@ -72,7 +72,7 @@
         color: $gray;
         margin-right: .5rem;
         &:hover {
-            color: $green-taiga;
+            color: $primary;
             transition: color .3s linear;
             .icon-delete {
                 color: $red;

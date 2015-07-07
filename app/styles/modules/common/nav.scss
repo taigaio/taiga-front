@@ -1,8 +1,6 @@
 $label-arrow-wh: 12px;
 
 tg-project-menu {
-    background-color: $dark-taiga;
-    background-image: url('../images/menu.png');
     background-position: 0 -300px;
     min-height: $main-height;
     padding: 1rem 0;
@@ -22,7 +20,7 @@ tg-project-menu {
     }
     a:hover {
         background: rgba($black, .2);
-        color: $fresh-taiga;
+        color: $primary-light;
         transition: color .3s linear;
         .helper {
             @extend %small;
@@ -52,7 +50,6 @@ tg-project-menu {
         }
     }
     svg path {
-        fill: $white;
         opacity: 1;
     }
     span {
@@ -70,9 +67,9 @@ tg-project-menu {
     }
     .active {
         background: rgba($black, .2);
-        color: $fresh-taiga;
+        color: $primary-light;
         svg path {
-            fill: $fresh-taiga;
+            fill: $primary-light;
             opacity: 1;
         }
     }

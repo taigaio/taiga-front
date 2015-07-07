@@ -30,7 +30,7 @@ div.wrapper(tg-user-profile, ng-controller="UserSettingsController as ctrl",
 
                 div.data
                     fieldset
-                        label(for="email", translate="USER_PROFILE.FIELD.USERNAME")
+                        label(for="username", translate="USER_PROFILE.FIELD.USERNAME")
                         input(type="text", name="username", id="username",
                               placeholder="{{'USER_PROFILE.FIELD.USERNAME' | translate}}",
                               ng-model="user.username", data-required="true", data-maxlength="255",
@@ -51,16 +51,23 @@ div.wrapper(tg-user-profile, ng-controller="UserSettingsController as ctrl",
                               data-maxlength="256")
 
                     fieldset
-                        label(for="full-name", translate="USER_PROFILE.FIELD.LANGUAGE")
-                        select(ng-model="lang",
+                        label(for="lang", translate="USER_PROFILE.FIELD.LANGUAGE")
+                        select(name="lang", id="lang", ng-model="lang",
                                ng-options="locale.code as locale.name for locale in locales")
                             option(value="", translate="USER_PROFILE.FIELD.LANGUAGE_DEFAULT")
+
+                     fieldset
+                        label(for="theme", translate="USER_PROFILE.FIELD.THEME")
+                        select(name="theme", id="theme", ng-model="theme",
+                               ng-options="availableTheme for availableTheme in availableThemes")
+                            option(value="", translate="USER_PROFILE.FIELD.THEME_DEFAULT")
 
                     fieldset
                         label(for="bio", translate="USER_PROFILE.FIELD.BIO")
 
                         textarea(name="bio", id="bio", ng-model="user.bio",
-                                 ng-attr-placeholder="{{'USER_PROFILE.FIELD.PLACEHOLDER_BIO' | translate}}", ng-maxlength="210", maxlength="210")
+                                 ng-attr-placeholder="{{'USER_PROFILE.FIELD.PLACEHOLDER_BIO' | translate}}",
+                                 ng-maxlength="210", maxlength="210")
 
             fieldset.submit
                 button.button-green.submit-button(type="submit", title="{{'COMMON.SAVE' | translate}}",

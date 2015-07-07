@@ -1,11 +1,11 @@
+$dropdown-width: 350px;
+
 .navbar {
-    background: rgba($black, .5);
     display: flex;
     height: $navbar;
     justify-content: space-between;
     position: relative;
     &:after {
-        background: url('../images/menu-vert.png') repeat top left;
         background-size: 200%;
         bottom: 0;
         content: '';
@@ -24,6 +24,7 @@
     }
     .nav-left {
         >a {
+            color: $white;
             padding: .5rem 1.5rem;
             &.logo {
                 background: rgba($black, .2);
@@ -41,6 +42,7 @@
     .nav-right {
         margin-left: auto;
         a {
+            color: $white;
             padding: .5rem 2rem;
         }
     }
@@ -48,10 +50,12 @@
         color: $white;
         display: inline-block;
         transition: all .2s linear;
-        &.active,
+        svg path {
+            fill: darken($primary-dark, 8%);
+        }
         &:hover {
             background: rgba($black, .2);
-            color: $fresh-taiga;
+            color: $primary-light;
             svg path {
                 fill: $white;
             }
@@ -77,7 +81,7 @@
         height: 1.2rem;
         max-width: 1.2rem;
         path {
-            fill: $dark-taiga;
+            fill: $top-icon-color;
             transition: all .2s;
         }
     }
@@ -130,7 +134,7 @@
         padding: .8rem .5rem;
         &:hover {
             background: rgba($white, .1);
-            color: $fresh-taiga;
+            color: $primary-light;
         }
         &.see-more-projects-btn,
         &.create-organization-btn,

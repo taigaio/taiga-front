@@ -22,7 +22,7 @@
     border: 1px solid $gray-light;
     z-index: 99910;
     .ui-state-focus {
-        background: $fresh-taiga;
+        background: $primary-light;
     }
     li {
         cursor: pointer;
@@ -49,7 +49,7 @@
     .add-tag {
         color: $gray-light;
         &:hover {
-            color: $fresh-taiga;
+            color: $primary-light;
         }
     }
     .icon-plus {

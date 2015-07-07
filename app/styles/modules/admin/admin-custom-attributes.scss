@@ -24,7 +24,7 @@
             }
         }
         .row:hover {
-            background: rgba($fresh-taiga, .05);
+            background: rgba($primary-light, .05);
             cursor: move;
             transition: background .2s linear;
             .icon-drag-v,
@@ -89,7 +89,7 @@
             transition: color .2s linear;
             vertical-align: middle;
             &:hover {
-                color: $green-taiga;
+                color: $primary;
                 transition: color .2s linear;
             }
         }

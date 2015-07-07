@@ -33,7 +33,7 @@
         }
         .user-assigned {
             @extend %large;
-            color: $green-taiga;
+            color: $primary;
             cursor: default;
             line-height: 1.5rem;
             &.editable {

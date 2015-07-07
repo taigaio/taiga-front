@@ -19,17 +19,11 @@ input[type="date"],
 input[type="password"],
 select,
 textarea {
-    background: $whitish;
-    border: 1px solid $gray-light;
-    color: $grayer;
+    border: 1px solid;
     margin: 0;
     padding: 8px;
     width: 100%;
-    @include placeholder {
-        color: darken($gray-light, 10%);
-    }
     &.checksley-error {
-        border: 1px solid $red;
         transition: border .3s linear;
     }
 }
@@ -42,14 +36,12 @@ textarea {
 
 .checksley-error-list {
     @extend %small;
-    background: rgba($whitish, .8);
     margin-bottom: 0;
     padding: 0 .5rem;
     position: absolute;
     right: 2rem;
     top: 10px;
     li {
-        color: $red;
         padding: .2rem;
     }
 }

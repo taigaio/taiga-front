@@ -39,7 +39,7 @@
     }
     input:checked {
         + div {
-            background-color: $fresh-taiga;
+            background-color: $primary-light;
             margin-left: 50%;
             transition: all .2s linear;
         }

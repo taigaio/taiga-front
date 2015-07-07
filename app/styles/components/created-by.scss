@@ -23,7 +23,7 @@
         }
         .created-user {
             @extend %large;
-            color: $green-taiga;
+            color: $primary;
             cursor: default;
             &.editable {
                 cursor: pointer;
