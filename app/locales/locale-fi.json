@@ -916,7 +916,8 @@
             "OPEN_TASKS": "avaa<br/>tehtävät",
             "CLOSED_TASKS": "suljettu<br/>tehtävää",
             "IOCAINE_DOSES": "myrkkye-<br/>annosta",
-            "SHOW_STATISTICS_TITLE": "Näytä tilastot"
+            "SHOW_STATISTICS_TITLE": "Näytä tilastot",
+            "TOGGLE_BAKLOG_GRAPH": "Show/Hide burndown graph"
         },
         "SUMMARY": {
             "PROJECT_POINTS": "projekti<br/>pistettä",
@@ -1189,7 +1190,9 @@
             "BIO": "Bio (max. 210 chars)",
             "PLACEHOLDER_BIO": "Kerro jotain itsestäsi",
             "LANGUAGE": "Kieli",
-            "LANGUAGE_DEFAULT": "-- käytä oletuskieltä --"
+            "LANGUAGE_DEFAULT": "-- käytä oletuskieltä --",
+            "THEME": "Theme",
+            "THEME_DEFAULT": "-- use default theme --"
         }
     },
     "WIZARD": {

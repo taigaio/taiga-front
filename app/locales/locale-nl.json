@@ -916,7 +916,8 @@
             "OPEN_TASKS": "open<br />taken",
             "CLOSED_TASKS": "gesloten<br/>taken",
             "IOCAINE_DOSES": "iocaine<br />dosissen",
-            "SHOW_STATISTICS_TITLE": "Toon statistieken"
+            "SHOW_STATISTICS_TITLE": "Toon statistieken",
+            "TOGGLE_BAKLOG_GRAPH": "Show/Hide burndown graph"
         },
         "SUMMARY": {
             "PROJECT_POINTS": "project<br/>punten",
@@ -1189,7 +1190,9 @@
             "BIO": "Bio",
             "PLACEHOLDER_BIO": "Vertel iets over jezelf",
             "LANGUAGE": "Taal",
-            "LANGUAGE_DEFAULT": "-- gebruik standaard taal --"
+            "LANGUAGE_DEFAULT": "-- gebruik standaard taal --",
+            "THEME": "Theme",
+            "THEME_DEFAULT": "-- use default theme --"
         }
     },
     "WIZARD": {

@@ -916,7 +916,8 @@
             "OPEN_TASKS": "開啟<br />任務",
             "CLOSED_TASKS": "已關閉<br />任務",
             "IOCAINE_DOSES": "毒物（全新任務挑戰）<br />劑量",
-            "SHOW_STATISTICS_TITLE": "顯示統計"
+            "SHOW_STATISTICS_TITLE": "顯示統計",
+            "TOGGLE_BAKLOG_GRAPH": "Show/Hide burndown graph"
         },
         "SUMMARY": {
             "PROJECT_POINTS": "專案<br/> 點數",
@@ -1189,7 +1190,9 @@
             "BIO": "自介（最多210字）",
             "PLACEHOLDER_BIO": "請自我介紹",
             "LANGUAGE": "語言",
-            "LANGUAGE_DEFAULT": "--  使用設預語言 -- "
+            "LANGUAGE_DEFAULT": "--  使用設預語言 -- ",
+            "THEME": "Theme",
+            "THEME_DEFAULT": "-- use default theme --"
         }
     },
     "WIZARD": {

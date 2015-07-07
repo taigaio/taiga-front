@@ -916,7 +916,8 @@
             "OPEN_TASKS": "tareas<br />abiertas",
             "CLOSED_TASKS": "tareas<br />cerradas",
             "IOCAINE_DOSES": "dosis de<br >iocaína",
-            "SHOW_STATISTICS_TITLE": "Ver estadísticas"
+            "SHOW_STATISTICS_TITLE": "Ver estadísticas",
+            "TOGGLE_BAKLOG_GRAPH": "Ver/Ocultar gráfica de burndown"
         },
         "SUMMARY": {
             "PROJECT_POINTS": "puntos<br /> proyecto",
@@ -1189,7 +1190,9 @@
             "BIO": "Bio (max. 210 caracteres)",
             "PLACEHOLDER_BIO": "Dinos algo acerca de ti",
             "LANGUAGE": "Idioma",
-            "LANGUAGE_DEFAULT": "- usar idioma por defecto -"
+            "LANGUAGE_DEFAULT": "- usar idioma por defecto -",
+            "THEME": "Tema",
+            "THEME_DEFAULT": "-- usar tema por defecto --"
         }
     },
     "WIZARD": {

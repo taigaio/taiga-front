@@ -916,7 +916,8 @@
             "OPEN_TASKS": "tâches<br /> ouvertes",
             "CLOSED_TASKS": "tâches<br />fermées",
             "IOCAINE_DOSES": "doses<br />de iocaine",
-            "SHOW_STATISTICS_TITLE": "Afficher les statistiques"
+            "SHOW_STATISTICS_TITLE": "Afficher les statistiques",
+            "TOGGLE_BAKLOG_GRAPH": "Show/Hide burndown graph"
         },
         "SUMMARY": {
             "PROJECT_POINTS": "projet<br />points",
@@ -1189,7 +1190,9 @@
             "BIO": "Biographie (maximum 210 caractères)",
             "PLACEHOLDER_BIO": "Dites en nous plus sur vous",
             "LANGUAGE": "Langue",
-            "LANGUAGE_DEFAULT": "-- utiliser la langue par défaut --"
+            "LANGUAGE_DEFAULT": "-- utiliser la langue par défaut --",
+            "THEME": "Theme",
+            "THEME_DEFAULT": "-- use default theme --"
         }
     },
     "WIZARD": {
