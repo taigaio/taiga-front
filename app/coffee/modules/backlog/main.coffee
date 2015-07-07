@@ -28,6 +28,7 @@ bindOnce = @.taiga.bindOnce
 groupBy = @.taiga.groupBy
 timeout = @.taiga.timeout
 bindMethods = @.taiga.bindMethods
+generateHash = @.taiga.generateHash
 
 module = angular.module("taigaBacklog")
 
@@ -644,7 +645,7 @@ BacklogDirective = ($repo, $rootscope, $translate) ->
 
                 _.map elements, (elm) ->
                     input = $(elm).find("input:checkbox")
-                    input.prop('checked', true);
+                    input.prop('checked', true)
                     checkSelected(input)
 
             target = angular.element(event.currentTarget)
@@ -724,7 +725,6 @@ BacklogDirective = ($repo, $rootscope, $translate) ->
         $el.find(".backlog-table-body").disableSelection()
 
         filters = $ctrl.getUrlFilters()
-
         if filters.statuses ||
            filters.tags ||
            filters.q
@@ -901,6 +901,39 @@ UsPointsDirective = ($tgEstimationsService, $repo, $tgTemplate) ->
     return {link: link}
 
 module.directive("tgBacklogUsPoints", ["$tgEstimationsService", "$tgRepo", "$tgTemplate", UsPointsDirective])
+
+
+#############################################################################
+## Burndown graph directive
+#############################################################################
+ToggleBurndownVisibility = ($storage) ->
+    link = ($scope, $el, $attrs) ->
+        hash = generateHash(["is-burndown-grpahs-collapsed"])
+        toggleGraph = ->
+            if $scope.isBurndownGraphCollapsed
+                $(".js-toggle-burndown-visibility-button").removeClass("active")
+                $(".js-burndown-graph").removeClass("open")
+            else
+                $(".js-toggle-burndown-visibility-button").addClass("active")
+                $(".js-burndown-graph").addClass("open")
+
+        $scope.isBurndownGraphCollapsed = $storage.get(hash) or false
+        toggleGraph()
+
+        $el.on "click", ".js-toggle-burndown-visibility-button", ->
+            $scope.isBurndownGraphCollapsed = !$scope.isBurndownGraphCollapsed
+            $storage.set(hash, $scope.isBurndownGraphCollapsed)
+            toggleGraph()
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {
+        scope: {}
+        link: link
+    }
+
+module.directive("tgToggleBurndownVisibility", ["$tgStorage", ToggleBurndownVisibility])
 
 
 #############################################################################

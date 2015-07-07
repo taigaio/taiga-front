@@ -24,5 +24,6 @@ div.summary.large-summary
             span.icon.icon-iocaine
             span.number(ng-bind="stats.iocaine_doses|default:'--'")
             span.description(translate="BACKLOG.SPRINT_SUMMARY.IOCAINE_DOSES")
-
-    a.icon.icon-stats.toggle-analytics-visibility(href="", title="{{'BACKLOG.SPRINT_SUMMARY.SHOW_STATISTICS_TITLE' | translate}}")
+            
+    div.stats.toggle-analytics-visibility(title="{{'BACKLOG.SPRINT_SUMMARY.SHOW_STATISTICS_TITLE' | translate}}")
+        include ../../../svg/graph.svg

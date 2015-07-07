@@ -7,17 +7,19 @@ div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
         include ../includes/modules/backlog-filters
     section.main.backlog
         include ../includes/components/mainTitle
-        include ../includes/components/summary
 
-        div.graphics-container.burndown-container
-            div.burndown(tg-burndown-backlog-graph)
-                include ../includes/modules/burndown
+        div.backlog-summary(tg-toggle-burndown-visibility)
+            include ../includes/components/summary
+
+            div.graphics-container.burndown-container.js-burndown-graph
+                div.burndown(tg-burndown-backlog-graph)
+                    include ../includes/modules/burndown
 
         div.backlog-menu
             div.backlog-table-options
                 a.trans-button.move-to-current-sprint(href="",
-                                                      title="{{'BACKLOG.MOVE_US_TO_CURRENT_SPRINT' | translate}}",
-                                                      id="move-to-current-sprint")
+                                            title="{{'BACKLOG.MOVE_US_TO_CURRENT_SPRINT' | translate}}",
+                                            id="move-to-current-sprint")
                     span.icon.icon-move
                     span.text(translate="BACKLOG.MOVE_US_TO_CURRENT_SPRINT")
                 a.trans-button(href="",

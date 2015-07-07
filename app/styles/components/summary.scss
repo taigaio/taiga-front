@@ -1,6 +1,8 @@
+$summary-background: $grayer;
+
 .summary {
     align-content: center;
-    background: $grayer;
+    background: $summary-background;
     color: $white;
     display: flex;
     flex-wrap: wrap;
@@ -16,9 +18,6 @@
             color: $fresh-taiga;
         }
     }
-    .icon {
-        @extend %large;
-    }
     .number {
         @extend %xlarge;
         @extend %bold;
@@ -30,6 +29,47 @@
         @extend %small;
         @extend %light;
         line-height: 1;
+    }
+    .stats {
+        cursor: pointer;
+        height: 2rem;
+        margin-left: auto;
+        width: 2rem;
+        path {
+            opacity: 1;
+        }
+        &:hover {
+            .graph,
+            .color-line {
+                fill: $fresh-taiga;
+                transition: fill .2s;
+            }
+        }
+        &.active {
+            .white-line,
+            .color-line {
+                display: none;
+            }
+            .graph {
+                fill: $green-taiga;
+            }
+        }
+        svg {
+            height: 100%;
+            width: 100%;
+        }
+        .graph,
+        .color-line {
+            fill: darken($gray-light, 20%);
+            transition: fill .2s;
+        }
+        .white-line {
+            fill: $summary-background;
+        }
+        .white-line,
+        .color-line {
+            display: block;
+        }
     }
 }
 
@@ -92,7 +132,7 @@
         font-size: 1.4rem;
         margin-right: .4rem;
         &.icon-stats {
-            color: $gray;
+            color: $green-taiga;
             float: right;
             transition: color .3s linear;
             &:hover {
@@ -103,9 +143,13 @@
                 color: $fresh-taiga;
             }
             &.active:hover {
-                color: $gray;
+                color: $green-taiga;
                 transition: color .3s linear;
             }
         }
     }
+}
+
+.graphics-container {
+    @include slide(300px, hidden, 0);
 }
