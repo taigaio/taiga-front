@@ -1,6 +1,10 @@
 // Karma configuration
 // Generated on Wed Apr 15 2015 09:44:14 GMT+0200 (CEST)
 
+// this is needed by theme.service.spec
+var fs = require('fs');
+fs.writeFileSync('dist/styles/empty.css', '');
+
 module.exports = function(config) {
   var configuration = {
 
@@ -84,6 +88,13 @@ module.exports = function(config) {
         base: 'Chrome',
         flags: ['--no-sandbox']
       }
+    },
+
+    proxies:  {
+      '/images/': 'http://localhost:9001/images/',
+      '/base/dist/js/maps/': 'http://localhost:9001/js/maps/',
+      '/base/dist/js/maps/': 'http://localhost:9001/js/maps/',
+      '/styles/theme-testTheme.css': 'http://localhost:9001/styles/empty.css'
     },
 
     // Continuous Integration mode
