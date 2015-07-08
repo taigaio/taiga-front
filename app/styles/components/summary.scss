@@ -41,7 +41,7 @@ $summary-background: $grayer;
         &:hover {
             .graph,
             .color-line {
-                fill: $fresh-taiga;
+                fill: $primary-light;
                 transition: fill .2s;
             }
         }
@@ -51,7 +51,7 @@ $summary-background: $grayer;
                 display: none;
             }
             .graph {
-                fill: $green-taiga;
+                fill: $primary;
             }
         }
         svg {
@@ -132,7 +132,7 @@ $summary-background: $grayer;
         font-size: 1.4rem;
         margin-right: .4rem;
         &.icon-stats {
-            color: $green-taiga;
+            color: $primary;
             float: right;
             transition: color .3s linear;
             &:hover {
@@ -143,7 +143,7 @@ $summary-background: $grayer;
                 color: $primary-light;
             }
             &.active:hover {
-                color: $green-taiga;
+                color: $primary;
                 transition: color .3s linear;
             }
         }
