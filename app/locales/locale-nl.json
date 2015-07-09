@@ -412,7 +412,7 @@
             "APPEARIN_CHAT_ROOM": "AppearIn",
             "TALKY_CHAT_ROOM": "Talky",
             "CUSTOM_CHAT_ROOM": "Custom",
-            "URL_CHAT_ROOM": "URL of your chat room"
+            "URL_CHAT_ROOM": "URL van je chat room"
         },
         "PROJECT_PROFILE": {
             "PAGE_TITLE": "{{sectionName}} - Project profiel - {{projectName}}",
@@ -454,7 +454,7 @@
             "TASK_ADD": "Voeg een aangepast veld toe in taken",
             "ISSUE_DESCRIPTION": "Issues aangepaste velden",
             "ISSUE_ADD": "Voeg een aangepast veld toe in issues",
-            "FIELD_TYPE_TEXT": "Text",
+            "FIELD_TYPE_TEXT": "Tekst",
             "FIELD_TYPE_MULTI": "Multi-line"
         },
         "PROJECT_VALUES": {
@@ -896,8 +896,8 @@
         "CHART": {
             "XAXIS_LABEL": "Sprints",
             "YAXIS_LABEL": "Punten",
-            "OPTIMAL": "Optimal pending points for sprint \"{{sprintName}}\" should be {{value}}",
-            "REAL": "Real pending points for sprint \"{{sprintName}}\" is {{value}}",
+            "OPTIMAL": "Optimaal aantal openstaande punten voor sprint \"{{sprintName}}\" zou {{value}} moeten zijn",
+            "REAL": "Reële openstaande punten voor sprint \"{{sprintName}}\" is {{value}}",
             "INCREMENT_TEAM": "Incremented points by team requirements for sprint \"{{sprintName}}\" is {{value}}",
             "INCREMENT_CLIENT": "Incremented points by client requirements for sprint \"{{sprintName}}\" is {{value}}"
         },
@@ -917,7 +917,7 @@
             "CLOSED_TASKS": "gesloten<br/>taken",
             "IOCAINE_DOSES": "iocaine<br />dosissen",
             "SHOW_STATISTICS_TITLE": "Toon statistieken",
-            "TOGGLE_BAKLOG_GRAPH": "Show/Hide burndown graph"
+            "TOGGLE_BAKLOG_GRAPH": "Toon/Verstop burndown grafiek"
         },
         "SUMMARY": {
             "PROJECT_POINTS": "project<br/>punten",
@@ -1191,8 +1191,8 @@
             "PLACEHOLDER_BIO": "Vertel iets over jezelf",
             "LANGUAGE": "Taal",
             "LANGUAGE_DEFAULT": "-- gebruik standaard taal --",
-            "THEME": "Theme",
-            "THEME_DEFAULT": "-- use default theme --"
+            "THEME": "Thema",
+            "THEME_DEFAULT": "-- gebruikt standaard thema --"
         }
     },
     "WIZARD": {
@@ -1244,9 +1244,9 @@
         "NEW_PROJECT": "{{username}} heeft een nieuw project aangemaakt {{project_name}}",
         "MILESTONE_UPDATED": "{{username}} heeft de sprint {{obj_name}} bijgewerkt",
         "US_UPDATED": "{{username}} heeft de eigenschap \"{{field_name}}\" van de US {{obj_name}} bijgewerkt",
-        "US_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the US {{obj_name}} to {{new_value}}",
+        "US_UPDATED_WITH_NEW_VALUE": "{{username}} heeft het attribuut \"{{field_name}}\" van de US {{obj_name}} gewijzigd naar {{new_value}}",
         "ISSUE_UPDATED": "{{username}} heeft de eigenschap \"{{field_name}}\" van het issue {{obj_name}} bijgewerkt",
-        "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the issue {{obj_name}} to {{new_value}}",
+        "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} heeft het attribuut \"{{field_name}}\" van de issue gewijzigd van {{obj_name}} naar {{new_value}}",
         "TASK_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} to {{new_value}}",
         "TASK_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} to {{new_value}}",
         "TASK_UPDATED_WITH_US": "{{username}} heeft de eigenschap \"{{field_name}}\" van de taak {{obj_name}} die behoort tot de US {{us_name}} bijgewerkt",

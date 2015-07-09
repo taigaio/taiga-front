@@ -411,8 +411,8 @@
             "JITSI_CHAT_ROOM": "Jitsi",
             "APPEARIN_CHAT_ROOM": "Erscheint in",
             "TALKY_CHAT_ROOM": "Gesprächig",
-            "CUSTOM_CHAT_ROOM": "Custom",
-            "URL_CHAT_ROOM": "URL of your chat room"
+            "CUSTOM_CHAT_ROOM": "Kunde",
+            "URL_CHAT_ROOM": "URL Ihres Chatrooms"
         },
         "PROJECT_PROFILE": {
             "PAGE_TITLE": "{{sectionName}} - Projekt Profil - {{projectName}}",
@@ -898,7 +898,7 @@
             "YAXIS_LABEL": "Punkte",
             "OPTIMAL": "Optimal pending points for sprint \"{{sprintName}}\" should be {{value}}",
             "REAL": "Real pending points for sprint \"{{sprintName}}\" is {{value}}",
-            "INCREMENT_TEAM": "Incremented points by team requirements for sprint \"{{sprintName}}\" is {{value}}",
+            "INCREMENT_TEAM": "Erhöhte Punktezahl von Teamanfragen für Sprint \"{{sprintName}}\" ist {{value}}",
             "INCREMENT_CLIENT": "Incremented points by client requirements for sprint \"{{sprintName}}\" is {{value}}"
         },
         "TAGS": {
@@ -1192,7 +1192,7 @@
             "LANGUAGE": "Sprache",
             "LANGUAGE_DEFAULT": "-- benutzen Sie eine vorgegebene Sprache --",
             "THEME": "Theme",
-            "THEME_DEFAULT": "-- use default theme --"
+            "THEME_DEFAULT": "-- Standard-Theme benutzen --"
         }
     },
     "WIZARD": {
@@ -1244,13 +1244,13 @@
         "NEW_PROJECT": "{{username}} erstellte das Projekt {{project_name}}",
         "MILESTONE_UPDATED": "{{username}} aktualisierte den Sprint {{obj_name}}",
         "US_UPDATED": "{{username}} aktualisierte das Attribut \"{{field_name}}\" der User-Story {{obj_name}}",
-        "US_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the US {{obj_name}} to {{new_value}}",
+        "US_UPDATED_WITH_NEW_VALUE": "{{username}} aktualisierte das Attribut \"{{field_name}}\" der User-Story {{obj_name}} zu {{new_value}}",
         "ISSUE_UPDATED": "{{username}} aktualisierte das Attribut \"{{field_name}}\" des Tickets {{obj_name}}",
-        "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the issue {{obj_name}} to {{new_value}}",
-        "TASK_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} to {{new_value}}",
-        "TASK_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} to {{new_value}}",
+        "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} aktualisierte das Attribut \"{{field_name}}\" des Tickets {{obj_name}} zu {{new_value}}",
+        "TASK_UPDATED": "{{username}} aktualisierte das Attribut \"{{field_name}}\" der Aufgabe {{obj_name}} zu {{new_value}}",
+        "TASK_UPDATED_WITH_NEW_VALUE": "{{username}} aktualisierte das Attribut \"{{field_name}}\" der Aufgabe {{obj_name}} zu {{new_value}}",
         "TASK_UPDATED_WITH_US": "{{username}} aktualisierte das Attribut \"{{field_name}}\" der Aufgabe {{obj_name}} von User-Story {{us_name}}",
-        "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the US {{us_name}} to {{new_value}}",
+        "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} aktualisierte das Attribut \"{{field_name}}\" der Aufgabe {{obj_name}} die zu der User-Story gehört {{us_name}} zu {{new_value}}",
         "WIKI_UPDATED": "{{username}} aktualisierte die WIKI Seite {{obj_name}}",
         "NEW_COMMENT_US": "{{username}} schrieb einen Kommentar in der User-Story {{obj_name}}",
         "NEW_COMMENT_ISSUE": "{{username}} schrieb einen Kommentar im Ticket {{obj_name}}",
