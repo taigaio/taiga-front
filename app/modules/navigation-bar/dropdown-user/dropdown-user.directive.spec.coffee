@@ -87,7 +87,7 @@ describe "dropdownUserDirective", () ->
         vm.logout()
         expect(mockTgAuth.logout.callCount).to.be.equal(1)
         expect(mockTgLocation.path.callCount).to.be.equal(1)
-        expect(mockTgLocation.path.calledWith("/login")).to.be.true()
+        expect(mockTgLocation.path.calledWith("/login")).to.be.true
 
     it "dropdown user send feedback", () ->
         elm = createDirective()

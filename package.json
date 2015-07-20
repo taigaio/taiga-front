@@ -12,8 +12,8 @@
   "author": "Kaleidos OpenSource SL",
   "license": "AGPL-3.0",
   "repository": {
-    "type":"git",
-    "url":"https://github.com/taigaio/taiga-front.git"
+    "type": "git",
+    "url": "https://github.com/taigaio/taiga-front.git"
   },
   "scripts": {
     "scss-lint": "gulp scss-lint --fail",
@@ -57,12 +57,10 @@
     "gulp-wrap": "^0.11.0",
     "inquirer": "^0.8.2",
     "karma": "^0.12.31",
-    "karma-chai": "^0.1.0",
+    "karma-chai-plugins": "^0.6.0",
     "karma-chrome-launcher": "^0.1.7",
     "karma-coffee-preprocessor": "^0.2.1",
     "karma-mocha": "^0.1.10",
-    "karma-sinon": "^1.0.4",
-    "karma-sinon-chai": "^0.3.0",
     "karma-sourcemap-loader": "^0.3.4",
     "minimist": "^1.1.1",
     "mocha": "^2.2.4",

@@ -35,4 +35,4 @@ describe "tgFeedbackService", ->
         params = {
             "class": "lightbox lightbox-feedback lightbox-generic-form"
         }
-        expect(mocks.tgLightboxFactory.create.calledWith("tg-lb-feedback", params)).to.be.true()
+        expect(mocks.tgLightboxFactory.create.calledWith("tg-lb-feedback", params)).to.be.true

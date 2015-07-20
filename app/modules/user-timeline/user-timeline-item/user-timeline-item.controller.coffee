@@ -5,28 +5,27 @@ class UserTimelineItemController
     ]
 
     constructor: (@userTimelineItemType, @userTimelineItemTitle) ->
-        timeline = @.timeline.toJS()
+        event = @.parseEventType(@.timeline.get('event_type'))
+        type = @userTimelineItemType.getType(@.timeline, event)
 
-        event = @.parseEventType(timeline.event_type)
-        type = @userTimelineItemType.getType(timeline, event)
+        title = @userTimelineItemTitle.getTitle(@.timeline, event, type)
 
-        @.activity = {}
+        @.timeline = @.timeline.set('title_html', title)
 
-        @.activity.user = timeline.data.user
-        @.activity.project = timeline.data.project
-        @.activity.sprint = timeline.data.milestone
-        @.activity.title = @userTimelineItemTitle.getTitle(timeline, event, type)
-        @.activity.created_formated = moment(timeline.created).fromNow()
-        @.activity.obj =  @.getObject(timeline, event)
+        @.timeline =  @.timeline.set('obj', @.getObject(@.timeline, event))
 
         if type.description
-            @.activity.description = type.description(timeline)
+            @.timeline = @.timeline.set('description', type.description(@.timeline))
 
         if type.member
-            @.activity.member = type.member(timeline)
+            @.timeline = @.timeline.set('member', type.member(@.timeline))
 
-        if timeline.data.values_diff?.attachments
-            @.activity.attachments = timeline.data.values_diff.attachments.new
+        if @.timeline.hasIn(['data', 'value_diff', 'attachments', 'new'])
+            @.timeline = @.timeline.set('attachments', @.timeline.getIn(['data', 'value_diff', 'attachments', 'new']))
+
+    getObject: (timeline, event) ->
+        if timeline.get('data').get(event.obj)
+            return timeline.get('data').get(event.obj)
 
     parseEventType: (event_type) ->
         event_type = event_type.split(".")
@@ -36,10 +35,6 @@ class UserTimelineItemController
             obj: event_type[1],
             type: event_type[2]
         }
-
-    getObject: (timeline, event) ->
-        if timeline.data[event.obj]
-            return timeline.data[event.obj]
 
 angular.module("taigaUserTimeline")
     .controller("UserTimelineItem", UserTimelineItemController)

@@ -71,16 +71,39 @@ NavigationUrlsDirective = ($navurls, $auth, $q, $location) ->
     parseNav = (data, $scope) ->
         [name, params] = _.map(data.split(":"), trim)
         if params
-            params = _.map(params.split(","), trim)
+            # split by 'xxx='
+            # example
+            # project=vm.timeline.getIn(['data', 'project', 'slug']), ref=vm.timeline.getIn(['obj', 'ref'])
+            # ["", "project", "vm.timeline.getIn(['data', 'project', 'slug']), ", "ref", "vm.timeline.getIn(['obj', 'ref'])"]
+            result = params.split(/(\w+)=/)
+
+            # remove empty string
+            result = _.filter result, (str) -> return str.length
+
+            # remove , at the end of the string
+            result = _.map result, (str) -> return trim(str.replace(/,$/g, ''))
+
+            params = []
+            index = 0
+
+            # ['param1', 'value'] => [{'param1': 'value'}]
+            while index < result.length
+                obj = {}
+                obj[result[index]] = result[index + 1]
+                params.push obj
+                index = index + 2
         else
             params = []
-        values = _.map(params, (x) -> trim(x.split("=")[1]))
+
+        values = _.map params, (param) -> _.values(param)[0]
         promises = _.map(values, (x) -> bindOnceP($scope, x))
 
         return $q.all(promises).then ->
             options = {}
-            for item in params
-                [key, value] = _.map(item.split("="), trim)
+            for param in params
+                key = Object.keys(param)[0]
+                value = param[key]
+
                 options[key] = $scope.$eval(value)
             return [name, options]
 
