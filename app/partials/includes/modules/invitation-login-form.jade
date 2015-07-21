@@ -2,13 +2,13 @@ form.login-form
     p.form-header(translate="LOGIN_COMMON.HEADER")
 
     fieldset
-        input(type="text", name="username", ng-model="dataLogin.username", data-required="true",
+        input(type="text", tg-capslock, name="username", ng-model="dataLogin.username", data-required="true",
             placeholder="{{'LOGIN_COMMON.PLACEHOLDER_AUTH_NAME' | translate}}")
 
     fieldset.login-password
-        input(type="password", name="password", ng-model="dataLogin.password", data-required="true",
+        input(type="password", tg-capslock, name="password", ng-model="dataLogin.password", data-required="true",
               placeholder="{{'LOGIN_COMMON.PLACEHOLDER_AUTH_PASSWORD' | translate}}")
-        a.forgot-pass(href="", tg-nav="forgot-password",
+        a.forgot-pass(href="", tg-nav="forgot-password", tg-capslock,
                       title="{{'LOGIN_COMMON.TITLE_LINK_FORGOT_PASSWORD' | translate}}",
                       translate="LOGIN_COMMON.LINK_FORGOT_PASSWORD")
 
