@@ -22,6 +22,36 @@ helper.openNewTaskLb = function(row) {
     us.$('.icon-plus').click();
 };
 
+helper.openBulkTaskLb = function(row) {
+    let us = helper.usertories().get(row);
+
+    us.$('.icon-bulk').click();
+};
+
+helper.foldRow = function(row) {
+    let icon = $$('.icon-vfold.vfold').get(row);
+
+    icon.click();
+};
+
+helper.unFoldRow = function(row) {
+    let icon = $$('.icon-vunfold.vunfold').get(row);
+
+    icon.click();
+};
+
+helper.foldColumn = function(row) {
+    let icon = $$('.icon-vfold.hfold').get(row);
+
+    icon.click();
+};
+
+helper.unFoldColumn = function(row) {
+    let icon = $$('.icon-vunfold.hunfold').get(row);
+
+    icon.click();
+};
+
 helper.getCreateTask = function() {
     let el = $('div[tg-lb-create-edit-task]');
 
@@ -35,6 +65,37 @@ helper.getCreateTask = function() {
         },
         description: function() {
             return el.element(by.model('task.description'));
+        },
+        tags: function() {
+            return el.$('.tag-input');
+        },
+        iocaine: function() {
+            return el.$('.iocaine');
+        },
+        blocked: function() {
+            return el.$('.blocked');
+        },
+        blockedNote: function() {
+            return el.$('textarea[name="blocked_note"]');
+        },
+        submit: function() {
+            el.$('button[type="submit"]').click();
+        }
+    };
+
+    return obj;
+};
+
+helper.getBulkCreateTask = function() {
+    let el = $('div[tg-lb-create-bulk-tasks]');
+
+    let obj = {
+        el: el,
+        waitOpen: function() {
+            return utils.lightbox.open(el);
+        },
+        textarea: function() {
+            return el.element(by.model('form.data'));
         },
         submit: function() {
             el.$('button[type="submit"]').click();
