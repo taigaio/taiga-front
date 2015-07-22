@@ -75,6 +75,6 @@ div.wrapper(ng-controller="UserStoryDetailController as ctrl",
                              on-delete-go-to-url="onDeleteGoToUrl",
                              ng-model="us")
 
-    div.lightbox.lightbox-block(tg-lb-block, title="US.LIGHTBOX_TITLE_BLOKING_US", ng-model="us")
+    div.lightbox.lightbox-block(tg-lb-block, title="{{ 'US.LIGHTBOX_TITLE_BLOKING_US' | translate }}", ng-model="us")
     div.lightbox.lightbox-select-user(tg-lb-assignedto)
     div.lightbox.lightbox-select-user(tg-lb-watchers)

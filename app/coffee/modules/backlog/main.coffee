@@ -1067,14 +1067,16 @@ module.directive("tgBurndownBacklogGraph", ["$translate", BurndownBacklogGraphDi
 ## Backlog progress bar directive
 #############################################################################
 
-TgBacklogProgressBarDirective = ($template) ->
+TgBacklogProgressBarDirective = ($template, $compile) ->
     template = $template.get("backlog/progress-bar.html", true)
 
-    render = (el, projectPointsPercentaje, closedPointsPercentaje) ->
-        el.html(template({
+    render = (scope, el, projectPointsPercentaje, closedPointsPercentaje) ->
+        html = template({
             projectPointsPercentaje: projectPointsPercentaje,
             closedPointsPercentaje:closedPointsPercentaje
-        }))
+        })
+        html = $compile(html)(scope)
+        el.html(html)
 
     adjustPercentaje = (percentage) ->
         adjusted = _.max([0 , percentage])
@@ -1098,11 +1100,11 @@ TgBacklogProgressBarDirective = ($template) ->
 
                 projectPointsPercentaje = adjustPercentaje(projectPointsPercentaje - 3)
                 closedPointsPercentaje = adjustPercentaje(closedPointsPercentaje - 3)
-                render($el, projectPointsPercentaje, closedPointsPercentaje)
+                render($scope, $el, projectPointsPercentaje, closedPointsPercentaje)
 
         $scope.$on "$destroy", ->
             $el.off()
 
     return {link: link}
 
-module.directive("tgBacklogProgressBar", ["$tgTemplate", TgBacklogProgressBarDirective])
+module.directive("tgBacklogProgressBar", ["$tgTemplate", "$compile", TgBacklogProgressBarDirective])

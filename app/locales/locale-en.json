@@ -343,7 +343,7 @@
         "DESCRIPTION": "Type a short description",
         "DEPRECATED": "(deprecated)",
         "DEPRECATED_FILE": "Deprecated?",
-        "ADD": "Add new attachment. <%- maxFileSizeMsg %>",
+        "ADD": "Add new attachment. {{maxFileSizeMsg}}",
         "MAX_FILE_SIZE": "[Max. size:  {{maxFileSize}}]",
         "SHOW_DEPRECATED": "+ show deprecated atachments",
         "HIDE_DEPRECATED": "- hide deprecated atachments",
