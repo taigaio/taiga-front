@@ -149,10 +149,6 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
             return stats
 
-    refreshTagsColors: ->
-        return @rs.projects.tagsColors(@scope.projectId).then (tags_colors) =>
-            @scope.project.tags_colors = tags_colors
-
     unloadClosedSprints: ->
         @scope.$apply =>
             @scope.closedSprints =  []
@@ -205,10 +201,9 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @scope.httpParams = @.getUrlFilters()
         @rs.userstories.storeQueryParams(@scope.projectId, @scope.httpParams)
 
-        promise = @q.all([@.refreshTagsColors(), @rs.userstories.listUnassigned(@scope.projectId, @scope.httpParams)])
+        promise = @rs.userstories.listUnassigned(@scope.projectId, @scope.httpParams)
 
-        return promise.then (data) =>
-            userstories = data[1]
+        return promise.then (userstories) =>
             # NOTE: Fix order of USs because the filter orderBy does not work propertly in the partials files
             @scope.userstories = _.sortBy(userstories, "backlog_order")
 
@@ -433,26 +428,21 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         loadFilters = {}
         loadFilters.project = @scope.projectId
         loadFilters.tags = urlfilters.tags
+        loadFilters.status = urlfilters.status
+        loadFilters.q = urlfilters.q
+        loadFilters.milestone = 'null'
 
         return @rs.userstories.filtersData(loadFilters).then (data) =>
             choicesFiltersFormat = (choices, type, byIdObject) =>
                 _.map choices, (t) ->
-                    return {
-                        id: t[0],
-                        name: byIdObject[t[0]].name,
-                        color: byIdObject[t[0]].color,
-                        count: t[1],
-                        type: type}
+                    t.type = type
+                    return t
 
             tagsFilterFormat = (tags) =>
-                return _.map tags, (t) =>
-                    return {
-                        id: t[0],
-                        name: t[0],
-                        color: @scope.project.tags_colors[t[0]],
-                        count: t[1],
-                        type: "tags"
-                    }
+                return _.map tags, (t) ->
+                    t.id = t.name
+                    t.type = 'tags'
+                    return t
 
             # Build filters data structure
             @scope.filters.status = choicesFiltersFormat(data.statuses, "status", @scope.usStatusById)

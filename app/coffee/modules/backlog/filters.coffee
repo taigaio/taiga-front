@@ -35,7 +35,7 @@ module = angular.module("taigaBacklog")
 ## Issues Filters Directive
 #############################################################################
 
-BacklogFiltersDirective = ($log, $location, $templates) ->
+BacklogFiltersDirective = ($q, $log, $location, $templates) ->
     template = $templates.get("backlog/filters.html", true)
     templateSelected = $templates.get("backlog/filter-selected.html", true)
 
@@ -88,6 +88,13 @@ BacklogFiltersDirective = ($log, $location, $templates) ->
         getFiltersType = () ->
             return $el.find("h2 a.subfilter span.title").prop('data-type')
 
+        reloadUserstories = () ->
+            currentFiltersType = getFiltersType()
+
+            $q.all([$ctrl.loadUserstories(), $ctrl.generateFilters()]).then () ->
+                currentFilters = $scope.filters[currentFiltersType]
+                renderFilters(_.reject(currentFilters, "selected"))
+
         toggleFilterSelection = (type, id) ->
             currentFiltersType = getFiltersType()
 
@@ -110,22 +117,17 @@ BacklogFiltersDirective = ($log, $location, $templates) ->
             if type == currentFiltersType
                 renderFilters(_.reject(filters, "selected"))
 
-            $ctrl.loadUserstories()
-                .then () ->
-                    # reload the tags when a tag is select or unselected
-                    # and the filters/tags is open
-                    if currentFiltersType == 'tags'
-                        $ctrl.generateFilters().then () ->
-                            tags = $scope.filters["tags"]
-                            renderFilters(_.reject(tags, "selected"))
+            reloadUserstories()
 
         selectQFilter = debounceLeading 100, (value) ->
             return if value is undefined
+
             if value.length == 0
                 $ctrl.replaceFilter("q", null)
             else
                 $ctrl.replaceFilter("q", value)
-            $ctrl.loadUserstories()
+
+            reloadUserstories()
 
         $scope.$watch("filtersQ", selectQFilter)
 
@@ -174,4 +176,4 @@ BacklogFiltersDirective = ($log, $location, $templates) ->
 
     return {link:link}
 
-module.directive("tgBacklogFilters", ["$log", "$tgLocation", "$tgTemplate", BacklogFiltersDirective])
+module.directive("tgBacklogFilters", ["$q", "$log", "$tgLocation", "$tgTemplate", BacklogFiltersDirective])

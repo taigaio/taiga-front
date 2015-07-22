@@ -182,6 +182,13 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         loadFilters = {}
         loadFilters.project = @scope.projectId
         loadFilters.tags = urlfilters.tags
+        loadFilters.status = urlfilters.status
+        loadFilters.q = urlfilters.q
+        loadFilters.types = urlfilters.types
+        loadFilters.severities = urlfilters.severities
+        loadFilters.priorities = urlfilters.priorities
+        loadFilters.assigned_to = urlfilters.assignedTo
+        loadFilters.owner = urlfilters.createdBy
 
         # Load default filters data
         promise = promise.then =>
@@ -191,12 +198,11 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         return promise.then (data) =>
             usersFiltersFormat = (users, type, unknownOption) =>
                 reformatedUsers = _.map users, (t) =>
-                    return {
-                        id: t[0],
-                        count: t[1],
-                        type: type
-                        name: if t[0] then @scope.usersById[t[0]].full_name_display else unknownOption
-                    }
+                    t.type = type
+                    t.name = if t.full_name then t.full_name else unknownOption
+
+                    return t
+
                 unknownItem = _.remove(reformatedUsers, (u) -> not u.id)
                 reformatedUsers = _.sortBy(reformatedUsers, (u) -> u.name.toUpperCase())
                 if unknownItem.length > 0
@@ -205,22 +211,14 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
             choicesFiltersFormat = (choices, type, byIdObject) =>
                 _.map choices, (t) ->
-                    return {
-                        id: t[0],
-                        name: byIdObject[t[0]].name,
-                        color: byIdObject[t[0]].color,
-                        count: t[1],
-                        type: type}
+                    t.type = type
+                    return t
 
             tagsFilterFormat = (tags) =>
-                return _.map tags, (t) =>
-                    return {
-                        id: t[0],
-                        name: t[0],
-                        color: @scope.project.tags_colors[t[0]],
-                        count: t[1],
-                        type: "tags"
-                    }
+                return _.map tags, (t) ->
+                    t.id = t.name
+                    t.type = 'tags'
+                    return t
 
             # Build filters data structure
             @scope.filters.status = choicesFiltersFormat(data.statuses, "status", @scope.issueStatusById)
@@ -448,7 +446,7 @@ module.directive("tgIssues", ["$log", "$tgLocation", "$tgTemplate", "$compile", 
 ## Issues Filters Directive
 #############################################################################
 
-IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template, $translate, $compile, $auth) ->
+IssuesFiltersDirective = ($q, $log, $location, $rs, $confirm, $loading, $template, $translate, $compile, $auth) ->
     template = $template.get("issue/issues-filters.html", true)
     templateSelected = $template.get("issue/issues-filters-selected.html", true)
 
@@ -500,6 +498,16 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template, $
             html = $compile(html)($scope)
             $el.find(".filter-list").html(html)
 
+        getFiltersType = () ->
+            return $el.find("h2 a.subfilter span.title").prop('data-type')
+
+        reloadIssues = () ->
+            currentFiltersType = getFiltersType()
+
+            $q.all([$ctrl.loadIssues(), $ctrl.loadFilters()]).then () ->
+                filters = $scope.filters[currentFiltersType]
+                renderFilters(_.reject(filters, "selected"))
+
         toggleFilterSelection = (type, id) ->
             if type == "myFilters"
                 $rs.issues.getMyFilters($scope.projectId).then (data) ->
@@ -535,20 +543,12 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template, $
                 $ctrl.selectFilter("page", 1)
                 $ctrl.storeFilters()
 
-            $ctrl.loadIssues()
-                .then () ->
-                    # reload the tags when a tag is select or unselected
-                    # and the filters/tags is open
-                    if filter.type == 'tags'
-                        $ctrl.loadFilters().then () ->
-                            # re-render the tags if the tags filter is open
-                            if currentFiltersType == 'tags'
-                                tags = $scope.filters[filter.type]
-                                renderFilters(_.reject(tags, "selected"))
+            reloadIssues()
 
             renderSelectedFilters(selectedFilters)
 
-            currentFiltersType = $el.find("h2 a.subfilter span.title").prop('data-type')
+            currentFiltersType = getFiltersType()
+
             if type == currentFiltersType
                 renderFilters(_.reject(filters, "selected"))
 
@@ -572,7 +572,8 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template, $
             else
                 $ctrl.replaceFilter("q", value)
                 $ctrl.storeFilters()
-            $ctrl.loadIssues()
+
+            reloadIssues()
 
         $scope.$watch("filtersQ", selectQFilter)
 
@@ -679,7 +680,7 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template, $
 
     return {link:link}
 
-module.directive("tgIssuesFilters", ["$log", "$tgLocation", "$tgResources", "$tgConfirm", "$tgLoading",
+module.directive("tgIssuesFilters", ["$q", "$log", "$tgLocation", "$tgResources", "$tgConfirm", "$tgLoading",
                                      "$tgTemplate", "$translate", "$compile", "$tgAuth", IssuesFiltersDirective])
 
 
