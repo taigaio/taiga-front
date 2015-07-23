@@ -184,7 +184,12 @@ MarkitupDirective = ($rootscope, $rs, $selectedText, $template, $compile, $trans
                     replaceWith: () -> "\n"
                     afterInsert: (data) ->
                         lines = data.textarea.value.split("\n")
-                        cursorLine = data.textarea.value[0..(data.caretPosition - 1)].split("\n").length
+                        # Detect if we are in this situation +- aa at the beginning if the textarea
+                        if data.caretPosition > 0
+                            cursorLine = data.textarea.value[0..(data.caretPosition - 1)].split("\n").length
+                        else
+                            cursorLine = 1
+
                         newLineContent = data.textarea.value[data.caretPosition..].split("\n")[0]
                         lastLine = lines[cursorLine - 1]
 
