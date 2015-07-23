@@ -430,7 +430,7 @@
         "REPORTS": {
             "TITLE": "Reports",
             "SUBTITLE": "Export your project data in CSV format and make your own reports.",
-            "DESCRIPTION": "Download a CSV file or copy the generated URL and open it in your favourite text editor or spreadsheet to make your own project data reports. You will be able to visualize and analize all your data easily.",
+            "DESCRIPTION": "Download a CSV file or copy the generated URL and open it in your favourite text editor or spreadsheet to make your own project data reports. You will be able to visualize and analyze all your data easily.",
             "HELP": "How to use this on my own spreadsheet?",
             "REGENERATE_TITLE": "Change URL",
             "REGENERATE_SUBTITLE": "You going to change the CSV data access url. The previous url will be disabled. Are you sure?"
