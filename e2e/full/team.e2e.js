@@ -18,7 +18,7 @@ describe('leaving project', function(){
         await utils.lightbox.confirm.ok();
         await utils.common.takeScreenshot("team", "after-leaving");
     });
-})
+});
 
 describe('team', function() {
     before(async function(){
@@ -54,4 +54,4 @@ describe('team', function() {
         expect(newTotal).to.be.least(1);
         await utils.common.takeScreenshot("team", "filtering-by-role");
     });
-})
+});
