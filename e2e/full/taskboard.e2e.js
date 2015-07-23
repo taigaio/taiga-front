@@ -67,7 +67,7 @@ describe('taskboard', function() {
 
             let tasksSubject = await $$('.task-name').getText();
 
-            let findSubject = tasksSubject.indexOf(formFields.subject) !== 1;
+            let findSubject = tasksSubject.indexOf(formFields.subject) !== -1;
 
             expect(findSubject).to.be.true;
         });
