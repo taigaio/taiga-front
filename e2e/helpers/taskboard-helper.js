@@ -52,6 +52,14 @@ helper.unFoldColumn = function(row) {
     icon.click();
 };
 
+helper.editTask = function(row, column, task) {
+    helper.getBoxTasks(row, column).get(task).$('.icon-edit').click();
+};
+
+helper.toggleGraph = function() {
+    $('.large-summary svg').click();
+};
+
 helper.getCreateTask = function() {
     let el = $('div[tg-lb-create-edit-task]');
 

@@ -8,14 +8,13 @@ var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 var expect = chai.expect;
 
-describe('taskboard', function() {
+describe.only('taskboard', function() {
     before(async function() {
         browser.get('http://localhost:9001/project/project-0/backlog');
+
         await utils.common.waitLoader();
 
-        let sprint = backlogHelper.sprints().get(0);
-
-        sprint.$('.button-gray').click();
+        backlogHelper.sprints().first().$('.button-gray').click();
 
         await utils.common.waitLoader();
 
@@ -64,10 +63,56 @@ describe('taskboard', function() {
 
             await utils.lightbox.close(createTaskLightbox.el);
 
-            let task = taskboardHelper.getBoxTasks(0, 0).last();
-            let taskSubject = task.$('.task-name').getText();
+            let tasks = taskboardHelper.getBoxTasks(0, 0);
 
-            expect(taskSubject).to.be.eventually.equal(formFields.subject);
+            let tasksSubject = await $$('.task-name').getText();
+
+            let findSubject = tasksSubject.indexOf(formFields.subject) !== 1;
+
+            expect(findSubject).to.be.true;
+        });
+    });
+
+    describe('edit task', function() {
+        let createTaskLightbox = null;
+        let formFields = {};
+
+        before(async function() {
+            taskboardHelper.editTask(0, 0, 0);
+
+            createTaskLightbox = taskboardHelper.getCreateTask();
+
+            await createTaskLightbox.waitOpen();
+        });
+
+        it('capture screen', function() {
+            utils.common.takeScreenshot('taskboard', 'edit-task');
+        });
+
+        it('fill form', async function() {
+            let date = Date.now();
+            formFields.subject = 'test subject' + date;
+            formFields.description = 'test description' + date;
+            formFields.blockedNote = 'blocked note';
+
+            createTaskLightbox.subject().sendKeys(formFields.subject);
+            createTaskLightbox.description().sendKeys(formFields.description);
+
+            utils.common.takeScreenshot('taskboard', 'edit-task-filled');
+        });
+
+        it('send form', async function() {
+            createTaskLightbox.submit();
+
+            await utils.lightbox.close(createTaskLightbox.el);
+
+            let tasks = taskboardHelper.getBoxTasks(0, 0);
+
+            let tasksSubject = await $$('.task-name').getText();
+
+            let findSubject = tasksSubject.indexOf(formFields.subject) !== 1;
+
+            expect(findSubject).to.be.true;
         });
     });
 
@@ -162,6 +207,74 @@ describe('taskboard', function() {
 
             expect(rowsFold).to.be.equal(0);
             expect(columnFold).to.be.equal(0);
+        });
+    });
+
+    describe('move tasks', function() {
+        it('move task between statuses', async function() {
+            let initOriginTaskCount = await taskboardHelper.getBoxTasks(0, 0).count();
+            let initDestinationTaskCount = await taskboardHelper.getBoxTasks(0, 1).count();
+
+            let taskOrigin = taskboardHelper.getBoxTasks(0, 0).first();
+            let destination = taskboardHelper.getBox(0, 1);
+
+            await utils.common.drag(taskOrigin, destination);
+
+            browser.waitForAngular();
+
+            let originTaskCount = await taskboardHelper.getBoxTasks(0, 0).count();
+            let destinationTaskCount = await taskboardHelper.getBoxTasks(0, 1).count();
+
+            expect(originTaskCount).to.be.equal(initOriginTaskCount - 1);
+            expect(destinationTaskCount).to.be.equal(initDestinationTaskCount + 1);
+        });
+
+        // jquery ui drag bug
+        it.skip('move task between US\s', async function() {
+            let initOriginTaskCount = await taskboardHelper.getBoxTasks(0, 0).count();
+            let initDestinationTaskCount = await taskboardHelper.getBoxTasks(1, 1).count();
+
+            let taskOrigin = taskboardHelper.getBoxTasks(0, 0).first();
+            let destination = taskboardHelper.getBox(1, 0);
+
+            await utils.common.drag(taskOrigin, destination);
+
+            browser.waitForAngular();
+
+            let originTaskCount = await taskboardHelper.getBoxTasks(0, 0).count();
+            let destinationTaskCount = await taskboardHelper.getBoxTasks(1, 1).count();
+
+            expect(originTaskCount).to.be.equal(initOriginTaskCount - 1);
+            expect(destinationTaskCount).to.be.equal(initDestinationTaskCount + 1);
+        });
+    });
+
+
+    it.skip('Change task assigned to', function(){});
+
+    describe('Graph', function(){
+        let graph = $('.graphics-container');
+
+        it('open', async function() {
+            taskboardHelper.toggleGraph();
+
+            await utils.common.waitTransitionTime(graph);
+
+            utils.common.takeScreenshot('taskboard', 'grap-open');
+
+            let open = await utils.common.hasClass(graph, 'open');
+
+            expect(open).to.be.true;
+        });
+
+        it('close', async function() {
+            taskboardHelper.toggleGraph();
+
+            await utils.common.waitTransitionTime(graph);
+
+            let open = await utils.common.hasClass(graph, 'open');
+
+            expect(open).to.be.false;
         });
     });
 });
