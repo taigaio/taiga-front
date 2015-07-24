@@ -28,6 +28,8 @@ describe('Issue detail', async function(){
 
     it('assigned to edition', utils.detail.assignedToTesting);
 
+    it('history', utils.detail.historyTesting);
+
     it('screenshot', async function() {
         await utils.common.takeScreenshot("issues", "detail updated");
     });
@@ -38,4 +40,5 @@ describe('Issue detail', async function(){
         let url = await browser.getCurrentUrl();
         expect(url.endsWith(issuesUrl)).to.be.true;
     });
+
 })

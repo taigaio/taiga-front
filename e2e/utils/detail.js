@@ -54,6 +54,35 @@ helper.assignedToTesting = async function() {
     expect(newUserName).to.be.not.equal(userName);
 }
 
+helper.historyTesting = async function() {
+    let historyHelper = detailHelper.history();
+
+    //Adding a comment
+    historyHelper.selectCommentsTab();
+    let commentsCounter = await historyHelper.countComments();
+    let date = Date.now()
+    await historyHelper.addComment("New comment " + date);
+    let newCommentsCounter = await historyHelper.countComments();
+    expect(newCommentsCounter).to.be.equal(commentsCounter+1);
+
+    //Deleting last comment
+    let deletedCommentsCounter = await historyHelper.countDeletedComments();
+    await historyHelper.deleteLastComment();
+    let newDeletedCommentsCounter = await historyHelper.countDeletedComments();
+    expect(newDeletedCommentsCounter).to.be.equal(deletedCommentsCounter+1);
+
+    //Restore last coment
+    deletedCommentsCounter = await historyHelper.countDeletedComments();
+    await historyHelper.restoreLastComment();
+    newDeletedCommentsCounter = await historyHelper.countDeletedComments();
+    expect(newDeletedCommentsCounter).to.be.equal(deletedCommentsCounter-1);
+
+    //Check activity
+    historyHelper.selectActivityTab();
+    let activitiesCounter = await historyHelper.countActivities();
+    expect(activitiesCounter).to.be.least(newCommentsCounter);
+}
+
 helper.deleteTesting = async function() {
     let deleteHelper = detailHelper.delete();
     await deleteHelper.delete();

@@ -133,6 +133,73 @@ helper.assignToLightbox = function() {
     return obj;
 };
 
+helper.history = function() {
+    let el = $('section.history');
+    let obj = {
+        el:el,
+
+        selectCommentsTab: function() {
+            el.$$('.history-tabs li a').first().click();
+        },
+
+        selectActivityTab: function() {
+            el.$$('.history-tabs li a').last().click();
+        },
+
+        addComment: async function(comment) {
+            el.$('textarea[tg-markitup]').sendKeys(comment);
+            el.$('input.save-comment').click();
+            await browser.waitForAngular();
+        },
+
+        countComments: async function() {
+            let moreComments = el.$('.comments-list .show-more-comments')
+            let moreCommentsIsPresent = await moreComments.isPresent();
+            if (moreCommentsIsPresent){
+                moreComments.click();
+            }
+            await browser.waitForAngular();
+            let comments = await el.$$(".activity-single.comment");
+            return comments.length;
+        },
+
+        countActivities: async function() {
+            let moreActivities = el.$('.changes-list .show-more-comments')
+            let selectActivityTabIsPresent = await moreActivities.isPresent();
+            if (selectActivityTabIsPresent){
+                moreActivities.click();
+            }
+            await browser.waitForAngular();
+            let activities = await el.$$(".activity-single.activity");
+            return activities.length;
+        },
+
+        countDeletedComments: async function() {
+            let moreComments = el.$('.comments-list .show-more-comments')
+            let moreCommentsIsPresent = await moreComments.isPresent();
+            if (moreCommentsIsPresent){
+                moreComments.click();
+            }
+            await browser.waitForAngular();
+            let comments = await el.$$(".activity-single.comment.deleted-comment");
+            return comments.length;
+        },
+
+        deleteLastComment: async function() {
+            el.$$(".activity-single.comment .comment-delete").last().click();
+            await browser.waitForAngular();
+        },
+
+        restoreLastComment: async function() {
+            el.$$(".activity-single.comment.deleted-comment .comment-restore").last().click();
+            await browser.waitForAngular();
+        }
+    }
+
+    return obj;
+
+}
+
 helper.delete = function() {
     let el = $('tg-delete-button');
 
