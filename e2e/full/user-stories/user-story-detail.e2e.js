@@ -6,10 +6,14 @@ var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 var expect = chai.expect;
 
-describe('USer story detail', function(){
+describe('User story detail', function(){
+    let backlogUrl = "";
     before(async function(){
-        browser.get('http://localhost:9001/project/project-2/us/65');
-        await utils.common.waitLoader();
+      utils.common.goHome();
+      utils.common.goToFirstProject();
+      utils.common.goToBacklog();
+      backlogUrl = await browser.getCurrentUrl();
+      utils.common.goToFirstUserStory();
     });
 
     it('screenshot', async function() {
@@ -26,5 +30,12 @@ describe('USer story detail', function(){
 
     it('screenshot', async function() {
         await utils.common.takeScreenshot("user-stories", "detail updated");
+    });
+
+    it('delete', utils.detail.deleteTesting);
+
+    it('redirected', async function (){
+        let url = await browser.getCurrentUrl();
+        expect(url.endsWith(backlogUrl+"?no-milestone=1")).to.be.true;
     });
 })

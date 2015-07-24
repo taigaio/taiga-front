@@ -132,3 +132,17 @@ helper.assignToLightbox = function() {
 
     return obj;
 };
+
+helper.delete = function() {
+    let el = $('tg-delete-button');
+
+    let obj = {
+        el:el,
+        delete: async function(){
+            el.$('.button-red').click();
+            await utils.lightbox.confirm.ok();
+        }
+    }
+
+    return obj;
+}

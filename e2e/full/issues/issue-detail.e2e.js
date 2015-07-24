@@ -6,10 +6,14 @@ var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 var expect = chai.expect;
 
-describe('Issue detail', function(){
+describe('Issue detail', async function(){
+    let issuesUrl = "";
     before(async function(){
-        browser.get('http://localhost:9001/project/project-2/issue/95');
-        await utils.common.waitLoader();
+        utils.common.goHome();
+        utils.common.goToFirstProject();
+        utils.common.goToIssues();
+        issuesUrl = await browser.getCurrentUrl();
+        utils.common.goToFirstIssue();
     });
 
     it('screenshot', async function() {
@@ -26,5 +30,12 @@ describe('Issue detail', function(){
 
     it('screenshot', async function() {
         await utils.common.takeScreenshot("issues", "detail updated");
+    });
+
+    it('delete', utils.detail.deleteTesting);
+
+    it('redirected', async function (){
+        let url = await browser.getCurrentUrl();
+        expect(url.endsWith(issuesUrl)).to.be.true;
     });
 })

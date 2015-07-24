@@ -7,9 +7,14 @@ chai.use(chaiAsPromised);
 var expect = chai.expect;
 
 describe('Task detail', function(){
+    let sprintUrl = "";
     before(async function(){
-        browser.get('http://localhost:9001/project/project-2/task/4');
-        await utils.common.waitLoader();
+        utils.common.goHome();
+        utils.common.goToFirstProject();
+        utils.common.goToBacklog();
+        utils.common.goToFirstSprint();
+        sprintUrl = await browser.getCurrentUrl();
+        utils.common.goToFirstTask();
     });
 
     it('screenshot', async function() {
@@ -26,5 +31,12 @@ describe('Task detail', function(){
 
     it('screenshot', async function() {
         await utils.common.takeScreenshot("tasks", "detail updated");
+    });
+
+    it('delete', utils.detail.deleteTesting);
+
+    it('redirected', async function (){
+        let url = await browser.getCurrentUrl();
+        expect(url.endsWith(sprintUrl)).to.be.true;
     });
 })

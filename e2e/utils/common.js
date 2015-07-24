@@ -197,3 +197,44 @@ common.clear = function(elem, length) {
 
     return elem.sendKeys(backspaceSeries);
 };
+
+common.goHome = async function() {
+    browser.get('http://localhost:9001');
+    await utils.common.waitLoader();
+};
+
+common.goToFirstProject = async function() {
+    browser.actions().mouseMove($('div[tg-dropdown-project-list]')).perform();
+    $$('div[tg-dropdown-project-list] li a').first().click();
+    await utils.common.waitLoader();
+};
+
+common.goToIssues = async function() {
+    $('#nav-issues').click();
+    await utils.common.waitLoader();
+};
+
+common.goToFirstIssue = async function() {
+    $$('section.issues-table .row.table-main .subject a').first().click();
+    await utils.common.waitLoader();
+};
+
+common.goToBacklog = async function() {
+    $('#nav-backlog').click();
+    await utils.common.waitLoader();
+}
+
+common.goToFirstUserStory = async function() {
+    $$('.user-story-name>a').first().click();
+    await utils.common.waitLoader();
+}
+
+common.goToFirstSprint = async function() {
+    $$('div[tg-backlog-sprint] a.button-gray').first().click();
+    await utils.common.waitLoader();
+}
+
+common.goToFirstTask = async function() {
+    $$('div[tg-taskboard-task] a.task-name').first().click();
+    await utils.common.waitLoader();
+}

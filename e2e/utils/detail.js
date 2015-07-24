@@ -44,7 +44,6 @@ helper.descriptionTesting = async function() {
 helper.assignedToTesting = async function() {
     let assignedTo = detailHelper.assignedTo();
     let assignToLightbox = detailHelper.assignToLightbox();
-
     let userName = detailHelper.assignedTo().getUserName();
     await assignedTo.clear();
     assignedTo.assign();
@@ -53,4 +52,9 @@ helper.assignedToTesting = async function() {
     assignToLightbox.waitClose();
     let newUserName = assignedTo.getUserName();
     expect(newUserName).to.be.not.equal(userName);
+}
+
+helper.deleteTesting = async function() {
+    let deleteHelper = detailHelper.delete();
+    await deleteHelper.delete();
 }
