@@ -16,7 +16,13 @@ describe('USer story detail', function(){
         await utils.common.takeScreenshot("user-stories", "detail");
     });
 
-    it('assigned to', utils.detail.assignedToTesting);
+    it('title edition', utils.detail.titleTesting);
+
+    it('tags edition', utils.detail.tagsTesting);
+
+    it('description edition', utils.detail.descriptionTesting);
+
+    it('assigned to edition', utils.detail.assignedToTesting);
 
     it('screenshot', async function() {
         await utils.common.takeScreenshot("user-stories", "detail updated");
