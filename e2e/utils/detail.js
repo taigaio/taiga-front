@@ -1,4 +1,4 @@
-var detailAssignedToHelper = require('../helpers').detailAssignedTo;
+var detailHelper = require('../helpers').detail;
 
 var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
@@ -9,10 +9,10 @@ var expect = chai.expect;
 var helper = module.exports;
 
 helper.assignedToTesting = async function() {
-    let assignedTo = detailAssignedToHelper.assignedTo();
-    let assignToLightbox = detailAssignedToHelper.assignToLightbox();
+    let assignedTo = detailHelper.assignedTo();
+    let assignToLightbox = detailHelper.assignToLightbox();
 
-    let userName = detailAssignedToHelper.assignedTo().getUserName();
+    let userName = detailHelper.assignedTo().getUserName();
     await assignedTo.clear();
     assignedTo.assign();
     assignToLightbox.waitOpen();

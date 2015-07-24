@@ -16,7 +16,7 @@ describe('USer story detail', function(){
         await utils.common.takeScreenshot("user-stories", "detail");
     });
 
-    it('assigned to', utils.detailAssignedTo.assignedToTesting);
+    it('assigned to', utils.detail.assignedToTesting);
 
     it('screenshot', async function() {
         await utils.common.takeScreenshot("user-stories", "detail updated");

@@ -16,7 +16,7 @@ describe('Issue detail', function(){
         await utils.common.takeScreenshot("issues", "detail");
     });
 
-    it('assigned to', utils.detailAssignedTo.assignedToTesting);
+    it('assigned to', utils.detail.assignedToTesting);
 
     it('screenshot', async function() {
         await utils.common.takeScreenshot("issues", "detail updated");
