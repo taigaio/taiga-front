@@ -1248,7 +1248,7 @@
         "MILESTONE_UPDATED": "{{username}} has updated the sprint {{obj_name}}",
         "US_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the US {{obj_name}}",
         "US_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the US {{obj_name}} to {{new_value}}",
-        "US_UPDATED_POINTS": "{{username}} has updated the '{{role_name}}' role of the US {{obj_name}} to {{new_value}}",
+        "US_UPDATED_POINTS": "{{username}} has updated '{{role_name}}' points of the US {{obj_name}} to {{new_value}}",
         "ISSUE_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the issue {{obj_name}}",
         "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the issue {{obj_name}} to {{new_value}}",
         "TASK_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} to {{new_value}}",

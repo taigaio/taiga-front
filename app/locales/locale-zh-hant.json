@@ -1245,7 +1245,7 @@
         "MILESTONE_UPDATED": "{{username}}更新衝刺任務 {{obj_name}} ",
         "US_UPDATED": "{{username}} 已更新 {{obj_name}}使用者故事之 \"{{field_name}}\"屬性。",
         "US_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the US {{obj_name}} to {{new_value}}",
-        "US_UPDATED_POINTS": "{{username}} has updated the '{{role_name}}' role of the US {{obj_name}} to {{new_value}}",
+        "US_UPDATED_POINTS": "{{username}} has updated '{{role_name}}' points of the US {{obj_name}} to {{new_value}}",
         "ISSUE_UPDATED": "{{username}} 更新了{{obj_name}}問題的 \"{{field_name}}\" 屬性",
         "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the issue {{obj_name}} to {{new_value}}",
         "TASK_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} to {{new_value}}",
