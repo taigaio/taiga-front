@@ -343,7 +343,7 @@
         "DESCRIPTION": "Geben Sie eine kurze Beschreibung ein",
         "DEPRECATED": "(verworfen)",
         "DEPRECATED_FILE": "Verworfen?",
-        "ADD": "Neuen Anhang hinzufügen. <%- maxFileSizeMsg %>",
+        "ADD": "Add new attachment. {{maxFileSizeMsg}}",
         "MAX_FILE_SIZE": "[Max. Größe: {{maxFileSize}}]",
         "SHOW_DEPRECATED": "+ verworfene Anhänge zeigen",
         "HIDE_DEPRECATED": "- verworfene Anhänge verbergen",
@@ -430,7 +430,7 @@
         "REPORTS": {
             "TITLE": "Berichte",
             "SUBTITLE": "Exportieren Sie Ihre Projektdaten in CSV Format und erstellen Sie Ihre eigenen Berichte. ",
-            "DESCRIPTION": "Laden Sie eine CSV Datei herunter oder kopieren Sie die generierte URL und öffnen Sie sie in Ihrem bevorzugten Text-Editor oder in Ihrer Tabellenkalkulation, um Ihre eigenen Projektdaten-Berichte zu erstellen. So können Sie Ihre Daten leicht überblicken und analysieren.",
+            "DESCRIPTION": "Download a CSV file or copy the generated URL and open it in your favourite text editor or spreadsheet to make your own project data reports. You will be able to visualize and analyze all your data easily.",
             "HELP": "Wie kann ich dies in meiner eigenen Tabellenkalkulation nutzen?",
             "REGENERATE_TITLE": "Die URL ändern",
             "REGENERATE_SUBTITLE": "Sie sind im Begriff, die CSV data access URL zu ändern. Die vorherige URL wird deaktiviert. Sind Sie sicher?"
@@ -896,10 +896,10 @@
         "CHART": {
             "XAXIS_LABEL": "Sprints",
             "YAXIS_LABEL": "Punkte",
-            "OPTIMAL": "Optimal pending points for sprint \"{{sprintName}}\" should be {{value}}",
-            "REAL": "Real pending points for sprint \"{{sprintName}}\" is {{value}}",
+            "OPTIMAL": "Optimale unerledigte Punkte für Sprint \"{{sprintName}}\" sollten sein {{value}}",
+            "REAL": "Tatsächliche Anzahl unerledigter Punkte für Sprint \"{{sprintName}}\" ist {{value}}",
             "INCREMENT_TEAM": "Erhöhte Punktezahl von Teamanfragen für Sprint \"{{sprintName}}\" ist {{value}}",
-            "INCREMENT_CLIENT": "Incremented points by client requirements for sprint \"{{sprintName}}\" is {{value}}"
+            "INCREMENT_CLIENT": "Erhöhte Punkteanzahl von Kundenanfragen für Sprint \"{{sprintName}}\" ist {{value}}"
         },
         "TAGS": {
             "TOGGLE": "Sichtbarkeit des Schlagwortes umschalten",
@@ -1245,6 +1245,7 @@
         "MILESTONE_UPDATED": "{{username}} aktualisierte den Sprint {{obj_name}}",
         "US_UPDATED": "{{username}} aktualisierte das Attribut \"{{field_name}}\" der User-Story {{obj_name}}",
         "US_UPDATED_WITH_NEW_VALUE": "{{username}} aktualisierte das Attribut \"{{field_name}}\" der User-Story {{obj_name}} zu {{new_value}}",
+        "US_UPDATED_POINTS": "{{username}} has updated the '{{role_name}}' role of the US {{obj_name}} to {{new_value}}",
         "ISSUE_UPDATED": "{{username}} aktualisierte das Attribut \"{{field_name}}\" des Tickets {{obj_name}}",
         "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} aktualisierte das Attribut \"{{field_name}}\" des Tickets {{obj_name}} zu {{new_value}}",
         "TASK_UPDATED": "{{username}} aktualisierte das Attribut \"{{field_name}}\" der Aufgabe {{obj_name}} zu {{new_value}}",

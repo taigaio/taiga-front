@@ -343,7 +343,7 @@
         "DESCRIPTION": "輸入一段簡短描述",
         "DEPRECATED": "(被棄用)",
         "DEPRECATED_FILE": "棄用?",
-        "ADD": "加入新附件 <%- maxFileSizeMsg %>",
+        "ADD": "Add new attachment. {{maxFileSizeMsg}}",
         "MAX_FILE_SIZE": "[Max. size: {{maxFileSize}}]",
         "SHOW_DEPRECATED": "+ 顯示棄用的附件",
         "HIDE_DEPRECATED": "+ 隱藏棄用的附件",
@@ -430,7 +430,7 @@
         "REPORTS": {
             "TITLE": "Reports",
             "SUBTITLE": "以 CSV 格式匯出你的專案資料，並製作你的專屬報告",
-            "DESCRIPTION": "下載CSV檔案或是複製這個生成的網址到你愛用的文字編輯器或電子表格上製作自己的專案檔案資料報告。你可能輕易地視覺化或分析這些資料。",
+            "DESCRIPTION": "Download a CSV file or copy the generated URL and open it in your favourite text editor or spreadsheet to make your own project data reports. You will be able to visualize and analyze all your data easily.",
             "HELP": "使用者故事預設欄位",
             "REGENERATE_TITLE": "改變網址",
             "REGENERATE_SUBTITLE": "你將要改變CSV資料的連結網址，之前的網址將失效。你確定要這樣做嗎?"
@@ -1245,6 +1245,7 @@
         "MILESTONE_UPDATED": "{{username}}更新衝刺任務 {{obj_name}} ",
         "US_UPDATED": "{{username}} 已更新 {{obj_name}}使用者故事之 \"{{field_name}}\"屬性。",
         "US_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the US {{obj_name}} to {{new_value}}",
+        "US_UPDATED_POINTS": "{{username}} has updated the '{{role_name}}' role of the US {{obj_name}} to {{new_value}}",
         "ISSUE_UPDATED": "{{username}} 更新了{{obj_name}}問題的 \"{{field_name}}\" 屬性",
         "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the issue {{obj_name}} to {{new_value}}",
         "TASK_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} to {{new_value}}",

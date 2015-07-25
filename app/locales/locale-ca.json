@@ -343,7 +343,7 @@
         "DESCRIPTION": "Escriu una descripció curta",
         "DEPRECATED": "(obsolet)",
         "DEPRECATED_FILE": "Obsolet?",
-        "ADD": "Afegir nou adjunt. <%- maxFileSizeMsg %>",
+        "ADD": "Add new attachment. {{maxFileSizeMsg}}",
         "MAX_FILE_SIZE": "[Max. grandària:  {{maxFileSize}}]",
         "SHOW_DEPRECATED": "+ mostra els adjunts obsolets",
         "HIDE_DEPRECATED": "- Amagar els adjunts obsolets",
@@ -430,7 +430,7 @@
         "REPORTS": {
             "TITLE": "Informes",
             "SUBTITLE": "Exporta les dades del teu projecte en CSV i fes els teus propis informes.",
-            "DESCRIPTION": "Descarrega el fitxer CSV o copia la URL generada o obri-la amb el teu editor de text o fulla de càlcul per a fer els teus propis informes. Podràs visualitzar i analitzar les dades fàcilment.",
+            "DESCRIPTION": "Download a CSV file or copy the generated URL and open it in your favourite text editor or spreadsheet to make your own project data reports. You will be able to visualize and analyze all your data easily.",
             "HELP": "Com utilitzar açó a la meu fulla de càlcul?",
             "REGENERATE_TITLE": "Canviar URL",
             "REGENERATE_SUBTITLE": "Vas a canviar la URL d'accés al CSV. La URL previa no funcionarà. Estàs segur?"
@@ -1245,6 +1245,7 @@
         "MILESTONE_UPDATED": "{{username}} has updated the sprint {{obj_name}}",
         "US_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the US {{obj_name}}",
         "US_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the US {{obj_name}} to {{new_value}}",
+        "US_UPDATED_POINTS": "{{username}} has updated the '{{role_name}}' role of the US {{obj_name}} to {{new_value}}",
         "ISSUE_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the issue {{obj_name}}",
         "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the issue {{obj_name}} to {{new_value}}",
         "TASK_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} to {{new_value}}",

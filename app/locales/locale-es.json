@@ -343,7 +343,7 @@
         "DESCRIPTION": "Escribe una pequeña descripción",
         "DEPRECATED": "(obsoleto)",
         "DEPRECATED_FILE": "¿Desactualizado?",
-        "ADD": "Agrega nuevos adjunto",
+        "ADD": "Add new attachment. {{maxFileSizeMsg}}",
         "MAX_FILE_SIZE": "[Tamaño Max. : {{maxFileSize}}]",
         "SHOW_DEPRECATED": "+ muestra adjuntos desactualizados",
         "HIDE_DEPRECATED": "- ocultar adjuntos obsoletos",
@@ -430,7 +430,7 @@
         "REPORTS": {
             "TITLE": "Informes",
             "SUBTITLE": "Exporta los datos de tu proyecto en formato CSV y crea tus propios informes.",
-            "DESCRIPTION": "Descarga el fichero CSV o copia la URL generada y abre tu editor de textos o hoja de cálculo favorito para realizar tus propios informes. Podrás visualizar y analizar todos los datos fácilmente.",
+            "DESCRIPTION": "Download a CSV file or copy the generated URL and open it in your favourite text editor or spreadsheet to make your own project data reports. You will be able to visualize and analyze all your data easily.",
             "HELP": "¿Cómo puedo usar esto en mi hoja de cálculo?",
             "REGENERATE_TITLE": "Cambiar URL",
             "REGENERATE_SUBTITLE": "Vas a cambiar la url de acceso a los datos en formato CSV. La url anterior se deshabilitará. ¿Estás seguro?"
@@ -1245,6 +1245,7 @@
         "MILESTONE_UPDATED": "{{username}} ha actualizado el sprint {{obj_name}}",
         "US_UPDATED": "{{username}} ha actualizado el atributo \"{{field_name}}\" de la historia {{obj_name}}",
         "US_UPDATED_WITH_NEW_VALUE": "{{username}} ha actualizado el atributo \"{{field_name}}\" de la historia {{obj_name}} a {{new_value}}",
+        "US_UPDATED_POINTS": "{{username}} has updated the '{{role_name}}' role of the US {{obj_name}} to {{new_value}}",
         "ISSUE_UPDATED": "{{username}} ha actualizado el atributo \"{{field_name}}\" de la petición {{obj_name}}",
         "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} ha actualizado el atributo \"{{field_name}}\" de la petición {{obj_name}} a {{new_value}}",
         "TASK_UPDATED": "{{username}} ha actualizado el atributo \"{{field_name}}\" de la tarea {{obj_name}} a {{new_value}}",

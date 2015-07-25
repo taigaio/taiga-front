@@ -2,7 +2,7 @@
     "COMMON": {
         "YES": "Oui",
         "NO": "Non",
-        "LOADING": "Chargement...",
+        "LOADING": "Veuillez patienter...",
         "LOADING_PROJECT": "Chargement du projet...",
         "DATE": "DD MMM YYYY",
         "DATETIME": "DD MMM YYYY HH:mm",
@@ -103,7 +103,7 @@
         "SEE_USER_PROFILE": "Afficher le profil de {{username}}",
         "USER_STORY": "Récit utilisateur",
         "TASK": "Tâche",
-        "ISSUE": "Suivi de problème",
+        "ISSUE": "Ticket",
         "TAGS": {
             "PLACEHOLDER": "Taggez moi !",
             "DELETE": "Supprimer le mot-clé",
@@ -220,11 +220,11 @@
                 "DELETE_TASKS": "Supprimer des tâches"
             },
             "ISSUES": {
-                "NAME": "Problèmes",
-                "VIEW_ISSUES": "Voir les suivis de problèmes",
-                "ADD_ISSUES": "Ajouter des suivis de problèmes",
-                "MODIFY_ISSUES": "Modifier des suivis de problèmes",
-                "DELETE_ISSUES": "Supprimer des suivis de problèmes"
+                "NAME": "Tickets",
+                "VIEW_ISSUES": "Voir les tickets",
+                "ADD_ISSUES": "Ajouter des tickets",
+                "MODIFY_ISSUES": "Modifier des tickets",
+                "DELETE_ISSUES": "Supprimer des tickets"
             },
             "WIKI": {
                 "NAME": "Wiki",
@@ -253,7 +253,7 @@
         "CREATE_ACCOUNT": "créer votre compte gratuit ici"
     },
     "LOGIN_COMMON": {
-        "HEADER": "J'ai déjà un login Taiga",
+        "HEADER": "J'ai déjà un identifiant Taiga",
         "PLACEHOLDER_AUTH_NAME": "Nom d'utilisateur ou adresse courriel (sensible à la casse)",
         "LINK_FORGOT_PASSWORD": "Mot de passe oublié?",
         "TITLE_LINK_FORGOT_PASSWORD": "Avez-vous oublié votre mot de passe ?",
@@ -288,7 +288,7 @@
         "SUBTITLE": "Saisissez votre nom d'utilisateur ou votre adresse courriel pour en obtenir un nouveau",
         "PLACEHOLDER_FIELD": "Nom d'utilisateur ou adresse courriel",
         "ACTION_RESET_PASSWORD": "Réinitialiser le mot de passe",
-        "LINK_CANCEL": "Nan, ramenez-moi en arrière. Je crois que je m'en rappelle.",
+        "LINK_CANCEL": "Nan, ramenez-moi en arrière. Je crois que je m'en souviens.",
         "SUCCESS": "<strong>Consultez votre messagerie!</strong><br />Nous venons d'envoyer un courriel avec les instructions pour créer un nouveau mot de passe",
         "ERROR": "D'après nos Oompa Loompas, vous n'êtes pas encore enregistré."
     },
@@ -326,8 +326,8 @@
     },
     "HOME": {
         "PAGE_TITLE": "Accueil - Taiga",
-        "PAGE_DESCRIPTION": "La page d'accueil de Taiga sur laquelle apparaissent vos projets principaux et toutes les récits utilisateur, tâches et suivis de problèmes qui vont sont assignés et surveillés.",
-        "EMPTY_WATCHING": "<strong>Suivre</strong> les projets, Récits Utilisateur, Tâches, Problèmes... que vous voulez connaître :)",
+        "PAGE_DESCRIPTION": "La page d'accueil de Taiga sur laquelle apparaissent vos projets principaux et toutes les récits utilisateur, tâches et tickets qui vont sont assignés et surveillés.",
+        "EMPTY_WATCHING": "<strong>Suivre</strong> les projets, Récits Utilisateur, Tâches, Tickets... que vous voulez connaître :)",
         "EMPTY_PROJECT_LIST": "Vous n'avez aucun projet pour l'instant",
         "WORKING_ON_SECTION": "Projets en cours",
         "WATCHING_SECTION": "Observant"
@@ -343,7 +343,7 @@
         "DESCRIPTION": "Saisissez une courte description",
         "DEPRECATED": "(obsolète)",
         "DEPRECATED_FILE": "Obsolète?",
-        "ADD": "Ajouter une pièce jointe. <%- maxFileSizeMsg %>",
+        "ADD": "Add new attachment. {{maxFileSizeMsg}}",
         "MAX_FILE_SIZE": "[Taille max.: {{maxFileSize}}]",
         "SHOW_DEPRECATED": "+ montrer les pièces jointes obsolètes",
         "HIDE_DEPRECATED": "- cacher les pièces jointes obsolètes",
@@ -400,7 +400,7 @@
             "BACKLOG_DESCRIPTION": "Gérez votre récits utilisateur pour garder une vue organisée des travaux à venir et priorisés.",
             "KANBAN": "Kanban",
             "KANBAN_DESCRIPTION": "Organisez votre projet de manière agile avec ce tableau.",
-            "ISSUES": "Suivis de problèmes",
+            "ISSUES": "Tickets",
             "ISSUES_DESCRIPTION": "Suivez les bugs, questions et améliorations liés à votre projet. Ne ratez rien !",
             "WIKI": "Wiki",
             "WIKI_DESCRIPTION": "Ajoutez, modifiez, ou supprimez du contenu en collaboration avec d'autres. C'est le bon endroit pour la documentation de votre projet.",
@@ -411,8 +411,8 @@
             "JITSI_CHAT_ROOM": "Jitsi",
             "APPEARIN_CHAT_ROOM": "AppearIn",
             "TALKY_CHAT_ROOM": "Talky",
-            "CUSTOM_CHAT_ROOM": "Custom",
-            "URL_CHAT_ROOM": "URL of your chat room"
+            "CUSTOM_CHAT_ROOM": "Personnalisé",
+            "URL_CHAT_ROOM": "URL du salon de discussion"
         },
         "PROJECT_PROFILE": {
             "PAGE_TITLE": "{{sectionName}} - Profil projet - {{projectName}}\n",
@@ -430,7 +430,7 @@
         "REPORTS": {
             "TITLE": "Rapports",
             "SUBTITLE": "Exportez les données de votre projet au format CSV pour créer vos propres rapports.",
-            "DESCRIPTION": "Téléchargez un fichier CSV ou copiez l'URL générée et ouvrez-là dans votre éditeur de texte ou feuille de calcul favorite pour créer vos propres rapports de projet. Vous pourrez visualiser et analyser toutes vos données facilement.",
+            "DESCRIPTION": "Download a CSV file or copy the generated URL and open it in your favourite text editor or spreadsheet to make your own project data reports. You will be able to visualize and analyze all your data easily.",
             "HELP": "Comment utiliser ceci dans ma propre feuille de calcul?",
             "REGENERATE_TITLE": "Changer l'URL",
             "REGENERATE_SUBTITLE": "Vous êtes sur le point de changer l'url d'accès aux données CSV. L'url précédente sera désactivée. Êtes-vous sûre ?"
@@ -438,7 +438,7 @@
         "CSV": {
             "SECTION_TITLE_US": "Rapports des récits utilisateur",
             "SECTION_TITLE_TASK": "rapports des tâches",
-            "SECTION_TITLE_ISSUE": "Rapports des suivis de problèmes",
+            "SECTION_TITLE_ISSUE": "Rapports des tickets",
             "DOWNLOAD": "Télécharger au format CSV",
             "URL_FIELD_PLACEHOLDER": "Merci de regénérer l'url de téléchargement au format CSV",
             "TITLE_REGENERATE_URL": "Regénérer l'URL du CSV",
@@ -447,15 +447,15 @@
         },
         "CUSTOM_FIELDS": {
             "TITLE": "Champs Personnalisés",
-            "SUBTITLE": "Spécifiez les champs personnalisés de vos récits utilisateur, tâches et problèmes",
+            "SUBTITLE": "Spécifiez les champs personnalisés de vos récits utilisateur, tâches et tickets",
             "US_DESCRIPTION": "Champs personnalisés des récits utilisateur",
             "US_ADD": "Ajouter un champ personnalisé dans les récits utilisateur",
             "TASK_DESCRIPTION": "Champs personnalisés de tâches",
             "TASK_ADD": "Ajouter un champ personnalisé dans les tâches",
-            "ISSUE_DESCRIPTION": "Champs personnalisés des problèmes",
-            "ISSUE_ADD": "Ajouter un champ personnalisé dans les problèmes",
-            "FIELD_TYPE_TEXT": "Text",
-            "FIELD_TYPE_MULTI": "Multi-line"
+            "ISSUE_DESCRIPTION": "Champs personnalisés des tickets",
+            "ISSUE_ADD": "Ajouter un champ personnalisé dans les tickets",
+            "FIELD_TYPE_TEXT": "Texte",
+            "FIELD_TYPE_MULTI": "Multiligne"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - Valeurs du projet - {{projectName}}",
@@ -470,27 +470,27 @@
         },
         "PROJECT_VALUES_PRIORITIES": {
             "TITLE": "Priorités",
-            "SUBTITLE": "Spécifiez les priorités qu'auront vos suivis de problèmes",
-            "ISSUE_TITLE": "Priorités de problèmes",
+            "SUBTITLE": "Spécifiez les priorités qu'auront vos tickets",
+            "ISSUE_TITLE": "Priorités de tickets",
             "ACTION_ADD": "Ajouter une priorité"
         },
         "PROJECT_VALUES_SEVERITIES": {
             "TITLE": "Sévérités",
-            "SUBTITLE": "Spécifiez les sévérités qu'auront vos problèmes",
-            "ISSUE_TITLE": "Sévérités des suivis de problèmes",
+            "SUBTITLE": "Spécifiez les sévérités qu'auront vos tickets",
+            "ISSUE_TITLE": "Sévérités des tickets",
             "ACTION_ADD": "Ajouter un degré de sévérité"
         },
         "PROJECT_VALUES_STATUS": {
             "TITLE": "Statut",
-            "SUBTITLE": "Spécifiez les statuts que vont prendre vos récits utilisateur, tâches et suivis de problèmes",
+            "SUBTITLE": "Spécifiez les statuts que vont prendre vos récits utilisateur, tâches et tickets",
             "US_TITLE": "Statuts des HU",
             "TASK_TITLE": "Statuts des Tâches",
-            "ISSUE_TITLE": "Statuts des Problèmes"
+            "ISSUE_TITLE": "Statuts des Tickets"
         },
         "PROJECT_VALUES_TYPES": {
             "TITLE": "Types",
             "SUBTITLE": "Spécifiez les priorités qu'auront vos bugs",
-            "ISSUE_TITLE": "Types de problèmes",
+            "ISSUE_TITLE": "Types de tickets",
             "ACTION_ADD": "Ajouter un nouveau {{objName}}"
         },
         "ROLES": {
@@ -669,7 +669,7 @@
             "TIMELINE": "Chronologie",
             "BACKLOG": "Backlog",
             "KANBAN": "Kanban",
-            "ISSUES": "Suivis de problèmes",
+            "ISSUES": "Tickets",
             "WIKI": "Wiki",
             "TEAM": "Équipe",
             "MEETUP": "Meet up",
@@ -730,7 +730,7 @@
         "DELETE_PROJECT": {
             "TITLE": "Supprimer le projet",
             "QUESTION": "Êtes-vous sûr de vouloir supprimer ce projet?",
-            "SUBTITLE": "Toutes les données ( récit utilisateur, tâches, problèmes, sprints et pages de wiki) seront perdues! :-(",
+            "SUBTITLE": "Toutes les données ( récit utilisateur, tâches, tickets, sprints et pages de wiki) seront perdues! :-(",
             "CONFIRM": "Oui, je suis sûr"
         },
         "ASSIGNED_TO": {
@@ -742,7 +742,7 @@
             "HELP_TEXT": "Si vos utilisateurs sont déjà inscrits sur Taiga, ils seront automatiquement ajoutés. Sinon, ils recevront une invitation."
         },
         "CREATE_ISSUE": {
-            "TITLE": "Ajouter un suivi de problème"
+            "TITLE": "Ajouter un ticket"
         },
         "FEEDBACK": {
             "TITLE": "Dites nous quelque chose...",
@@ -793,8 +793,8 @@
         "TOTAL_POINTS": "total",
         "ADD": "Ajouter un nouveau récit utilisateur",
         "ADD_BULK": "Ajouter de nouveaux récits utilisateur en lot",
-        "PROMOTED": "Ce récit utilisateur a été promue à partir d'un suivi de problème :",
-        "TITLE_LINK_GO_TO_ISSUE": "Aller vers ce suivi de problème",
+        "PROMOTED": "Ce récit utilisateur a été promue à partir d'un ticket :",
+        "TITLE_LINK_GO_TO_ISSUE": "Aller vers ce ticket",
         "EXTERNAL_REFERENCE": "Ce récit utilisateur a été créé depuis",
         "GO_TO_EXTERNAL_REFERENCE": "Allez à l'origine",
         "BLOCKED": "Ce récit utilisateur est bloqué",
@@ -896,10 +896,10 @@
         "CHART": {
             "XAXIS_LABEL": "Sprints",
             "YAXIS_LABEL": "Points",
-            "OPTIMAL": "Optimal pending points for sprint \"{{sprintName}}\" should be {{value}}",
-            "REAL": "Real pending points for sprint \"{{sprintName}}\" is {{value}}",
-            "INCREMENT_TEAM": "Incremented points by team requirements for sprint \"{{sprintName}}\" is {{value}}",
-            "INCREMENT_CLIENT": "Incremented points by client requirements for sprint \"{{sprintName}}\" is {{value}}"
+            "OPTIMAL": "Le nombre optimal de points pour le sprint \"{{sprintName}}\" devrait être {{value}}",
+            "REAL": "Le nombre réel de points pour le sprint \"{{sprintName}}\" est {{value}}",
+            "INCREMENT_TEAM": "Le nombre de points ajoutés par les exigences de l'équipe pour le sprint  \"{{sprintName}}\" est {{value}}",
+            "INCREMENT_CLIENT": "Le nombre de points ajoutés par les exigences du client pour le sprint \"{{sprintName}}\" est {{value}}"
         },
         "TAGS": {
             "TOGGLE": "Afficher/Cacher les tags",
@@ -917,7 +917,7 @@
             "CLOSED_TASKS": "tâches<br />fermées",
             "IOCAINE_DOSES": "doses<br />de iocaine",
             "SHOW_STATISTICS_TITLE": "Afficher les statistiques",
-            "TOGGLE_BAKLOG_GRAPH": "Show/Hide burndown graph"
+            "TOGGLE_BAKLOG_GRAPH": "Afficher/masquer le graphique d'avancement"
         },
         "SUMMARY": {
             "PROJECT_POINTS": "projet<br />points",
@@ -1029,29 +1029,29 @@
         "SUCCESS": "Nos Oompa Loompas ont mis à jour votre adresse courriel"
     },
     "ISSUES": {
-        "PAGE_TITLE": "Problèmes - {{projectName}}",
-        "PAGE_DESCRIPTION": "Le panneau de la liste des problèmes du projet {{projectName}} : {{projectDescription}}",
-        "LIST_SECTION_NAME": "Problèmes",
-        "SECTION_NAME": "Détails du problème",
-        "ACTION_NEW_ISSUE": "+ NOUVEAU PROBLÈME",
+        "PAGE_TITLE": "Tickets - {{projectName}}",
+        "PAGE_DESCRIPTION": "Le panneau de la liste des tickets du projet {{projectName}} : {{projectDescription}}",
+        "LIST_SECTION_NAME": "Tickets",
+        "SECTION_NAME": "Détails du ticket",
+        "ACTION_NEW_ISSUE": "+ NOUVEAU TICKET",
         "ACTION_PROMOTE_TO_US": "Transformer en User Story",
         "PLACEHOLDER_FILTER_NAME": "Écrivez le nom du filtre et appuyez sur \"Entrée\"",
-        "PROMOTED": "Le problème a été promu en récit utilisateur",
-        "EXTERNAL_REFERENCE": "Ce problème a été créé à partir de",
+        "PROMOTED": "Le ticket a été promu en récit utilisateur",
+        "EXTERNAL_REFERENCE": "Ce ticket a été créé à partir de",
         "GO_TO_EXTERNAL_REFERENCE": "Aller à l'origine",
         "BLOCKED": "Ce bug est bloqué",
         "TITLE_PREVIOUS_ISSUE": "bug précédent",
-        "TITLE_NEXT_ISSUE": "problème suivant",
-        "ACTION_DELETE": "Supprimer le problème",
-        "LIGHTBOX_TITLE_BLOKING_ISSUE": "Problème bloquant",
+        "TITLE_NEXT_ISSUE": "ticket suivant",
+        "ACTION_DELETE": "Supprimer le ticket",
+        "LIGHTBOX_TITLE_BLOKING_ISSUE": "Ticket bloquant",
         "FIELDS": {
             "PRIORITY": "Priorité",
             "SEVERITY": "Sévérité",
             "TYPE": "Type"
         },
         "CONFIRM_PROMOTE": {
-            "TITLE": "Transformer ce problème en une nouvelle user story",
-            "MESSAGE": "Etes-vous sure de vouloir créer un nouvelle US à partir de ce problème ?"
+            "TITLE": "Transformer ce ticket en un nouveau récit utilisateur",
+            "MESSAGE": "Êtes-vous sure de vouloir créer un nouveau récit utilisateur à partir de ce ticket ?"
         },
         "FILTERS": {
             "TITLE": "Filtres",
@@ -1088,14 +1088,14 @@
             "TITLE_ACTION_CHANGE_STATUS": "Changer le statut",
             "TITLE_ACTION_ASSIGNED_TO": "Affecté à",
             "EMPTY": {
-                "TITLE": "Aucun problème rapporté :-)",
+                "TITLE": "Aucun ticket rapporté :-)",
                 "SUBTITLE": "Avez-vous trouvé un problème ?",
-                "ACTION_CREATE_ISSUE": "Créer un nouveau problème"
+                "ACTION_CREATE_ISSUE": "Créer un nouveau ticket"
             }
         }
     },
     "ISSUE": {
-        "PAGE_TITLE": "{{issueSubject}} - Problème {{issueRef}} - {{projectName}}",
+        "PAGE_TITLE": "{{issueSubject}} - Ticket {{issueRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "État : {{issueStatus }}. Type : {{issueType}}, Priorité : {{issuePriority}}. Sévérité : {{issueSeverity}}. Description : {{issueDescription}}"
     },
     "KANBAN": {
@@ -1116,9 +1116,9 @@
     },
     "SEARCH": {
         "PAGE_TITLE": "Chercher - {{projectName}}",
-        "PAGE_DESCRIPTION": "Chercher tout, récits utilisateurs, problèmes, tâches ou pages de wiki, dans le projet {{projectName}} : {{projectDescription}}",
+        "PAGE_DESCRIPTION": "Chercher tout, récits utilisateurs, tickets, tâches ou pages de wiki, dans le projet {{projectName}} : {{projectDescription}}",
         "FILTER_USER_STORIES": "Récits utilisateur",
-        "FILTER_ISSUES": "Problèmes",
+        "FILTER_ISSUES": "Tickets",
         "FILTER_TASKS": "Tâches",
         "FILTER_WIKI": "Pages Wiki",
         "PLACEHOLDER_SEARCH": "Rechercher dans...",
@@ -1139,7 +1139,7 @@
         "COLUMN_CERVANTES": "Cervantes",
         "EXPLANATION_COLUMN_CERVANTES": "Page Wiki éditée",
         "COLUMN_BUG_HUNTER": "Chasseur de bug",
-        "EXPLANATION_COLUMN_BUG_HUNTER": "Problèmes rapportés",
+        "EXPLANATION_COLUMN_BUG_HUNTER": "Tickets rapportés",
         "COLUMN_NIGHT_SHIFT": "Equipe de nuit",
         "EXPLANATION_COLUMN_NIGHT_SHIFT": "Tâches fermées",
         "COLUMN_TOTAL_POWER": "Puissance totale",
@@ -1191,8 +1191,8 @@
             "PLACEHOLDER_BIO": "Dites en nous plus sur vous",
             "LANGUAGE": "Langue",
             "LANGUAGE_DEFAULT": "-- utiliser la langue par défaut --",
-            "THEME": "Theme",
-            "THEME_DEFAULT": "-- use default theme --"
+            "THEME": "Thème",
+            "THEME_DEFAULT": "-- Utiliser la langue par défaut --"
         }
     },
     "WIZARD": {
@@ -1231,12 +1231,12 @@
         "HINT3_TITLE": "Triez vos projets pour mettre en avant ceux qui sont les plus pertinants pour vous",
         "HINT3_TEXT": "Vos 10 principaux projets seront accessibles via la barre du haut",
         "HINT4_TITLE": "Avez-vous oublié ce sur quoi vous travailliez ?",
-        "HINT4_TEXT": "Pas d'inquiétude, vous trouverez dans votre tableau de bord vos tâches, problèmes et récits utilisateurs dans l'ordre dans lequel vous avez travaillé dessus."
+        "HINT4_TEXT": "Pas d'inquiétude, vous trouverez dans votre tableau de bord vos tâches, tickets et récits utilisateurs dans l'ordre dans lequel vous avez travaillé dessus."
     },
     "TIMELINE": {
         "UPLOAD_ATTACHMENT": "{{username}} a téléversé une nouvelle pièce jointe dans {{obj_name}}",
         "US_CREATED": "{{username}} a créé un nouveau récit utilisateur {{obj_name}} dans {{project_name}}",
-        "ISSUE_CREATED": "{{username}} a créé un nouveau suivi de problème {{obj_name}} dans {{project_name}}",
+        "ISSUE_CREATED": "{{username}} a créé un nouveau ticket {{obj_name}} dans {{project_name}}",
         "TASK_CREATED": "{{username}} a créé une nouvelle Tâche {{obj_name}} dans {{project_name}}",
         "TASK_CREATED_WITH_US": "{{username}} a créé une nouvelle tâche {{obj_name}} dans le projet  {{project_name}} pour le récit utilisateur {{us_name}}",
         "WIKI_CREATED": "{{username}} a créé une nouvelle page wiki {{obj_name}} dans {{project_name}}",
@@ -1244,16 +1244,17 @@
         "NEW_PROJECT": "{{username}} a créé le projet {{project_name}}",
         "MILESTONE_UPDATED": "{{username}} a mis à jour le sprint {{obj_name}}",
         "US_UPDATED": "{{username}} a mis à jour l'attribut «{{field_name}}» du récit utilisateur {{obj_name}}",
-        "US_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the US {{obj_name}} to {{new_value}}",
-        "ISSUE_UPDATED": "{{username}} a mis à jour l'attribut «{{field_name}}» du suivi de problème {{obj_name}}",
-        "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the issue {{obj_name}} to {{new_value}}",
-        "TASK_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} to {{new_value}}",
-        "TASK_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} to {{new_value}}",
+        "US_UPDATED_WITH_NEW_VALUE": "{{username}} a mis l'attribut \"{{field_name}}\" à {{new_value}} pour le récit utilisateur {{obj_name}}",
+        "US_UPDATED_POINTS": "{{username}} has updated the '{{role_name}}' role of the US {{obj_name}} to {{new_value}}",
+        "ISSUE_UPDATED": "{{username}} a mis à jour l'attribut «{{field_name}}» du ticket {{obj_name}}",
+        "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} a mis l'attribut \"{{field_name}}\" à {{new_value}} pour le ticket {{obj_name}}",
+        "TASK_UPDATED": "{{username}} a mis l'attribut \"{{field_name}}\" à {{new_value}} pour la tâche {{obj_name}}",
+        "TASK_UPDATED_WITH_NEW_VALUE": "{{username}} a mis l'attribut \"{{field_name}}\" à {{new_value}} pour la tâche {{obj_name}}",
         "TASK_UPDATED_WITH_US": "{{username}} a mis à jour l'attribut «{{field_name}}» de la tâche {{obj_name}} qui appartient au récit utilisateur {{us_name}}",
-        "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the US {{us_name}} to {{new_value}}",
+        "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} a mis l'attribut \"{{field_name}}\" à {{new_value}} pour la tâche {{obj_name}} appartenant au récit utilisateur {{us_name}}",
         "WIKI_UPDATED": "{{username}} a mis à jour la page wiki {{obj_name}}",
         "NEW_COMMENT_US": "{{username}} a commenté le récit utilisateur {{obj_name}}",
-        "NEW_COMMENT_ISSUE": "{{username}} a commenté le suivi de problème {{obj_name}}",
+        "NEW_COMMENT_ISSUE": "{{username}} a commenté le ticket {{obj_name}}",
         "NEW_COMMENT_TASK": "{{username}} a commenté la tâche {{obj_name}}",
         "NEW_MEMBER": "{{project_name}} a un nouveau membre",
         "US_ADDED_MILESTONE": "{{username}} a ajouté le récit utilisateur {{obj_name}} à {{sprint_name}}",
