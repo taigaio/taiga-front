@@ -150,7 +150,7 @@ describe('taskboard', function() {
 
     describe('folds', function() {
         it('fold row', async function() {
-            await taskboardHelper.foldRow(0);
+            taskboardHelper.foldRow(0);
 
             utils.common.takeScreenshot('taskboard', 'fold-row');
 
@@ -168,7 +168,7 @@ describe('taskboard', function() {
         });
 
         it('fold column', async function() {
-            await taskboardHelper.foldColumn(0);
+            taskboardHelper.foldColumn(0);
 
             utils.common.takeScreenshot('taskboard', 'fold-column');
 
@@ -186,8 +186,8 @@ describe('taskboard', function() {
         });
 
         it('fold row and column', async function() {
-            await taskboardHelper.foldRow(0);
-            await taskboardHelper.foldColumn(0);
+            taskboardHelper.foldRow(0);
+            taskboardHelper.foldColumn(0);
 
             utils.common.takeScreenshot('taskboard', 'fold-column-row');
 

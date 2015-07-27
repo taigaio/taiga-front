@@ -31,19 +31,27 @@ helper.openBulkUsLb = function(column) {
 };
 
 helper.foldColumn = function(column) {
-    $$('.hfold').get(column).click();
+    let columnNode = helper.getHeaderColumns().get(column);
+
+    columnNode.$$('.options a').get(0).click();
 };
 
 helper.unFoldColumn = function(column) {
-    $$('.hunfold').get(column).click();
+    let columnNode = helper.getHeaderColumns().get(column);
+
+    columnNode.$$('.options a').get(1).click();
 };
 
 helper.foldCards = function(column) {
-    $$('.icon-vfold').get(column).click();
+    let columnNode = helper.getHeaderColumns().get(column);
+
+    columnNode.$$('.options a').get(2).click();
 };
 
 helper.unFoldCards = function(column) {
-    $$('.icon-vunfold').get(column).click();
+    let columnNode = helper.getHeaderColumns().get(column);
+
+    columnNode.$$('.options a').get(3).click();
 };
 
 helper.scrollRight = function() {

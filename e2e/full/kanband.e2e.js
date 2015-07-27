@@ -255,6 +255,8 @@ describe('kanban', function() {
         it('show archive', async function() {
             $('.icon-open-eye').click();
 
+            await kanbanHelper.scrollRight();
+
             utils.common.takeScreenshot('kanban', 'archive-open');
 
             let usCount = await kanbanHelper.getBoxUss(5).count();

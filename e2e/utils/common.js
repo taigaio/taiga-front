@@ -20,6 +20,8 @@ common.waitLoader = function () {
 };
 
 common.takeScreenshot = async function (section, filename) {
+    await common.waitRequestAnimationFrame();
+
     let cap = await browser.getCapabilities();
     let browserName = cap.caps_.browserName;
 
