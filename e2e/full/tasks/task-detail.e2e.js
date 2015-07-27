@@ -30,10 +30,12 @@ describe('Task detail', function(){
     it('assigned to edition', utils.detail.assignedToTesting);
 
     it('history', utils.detail.historyTesting);
-    
+
     it('screenshot', async function() {
         await utils.common.takeScreenshot("tasks", "detail updated");
     });
+
+    it('block', utils.detail.blockTesting);
 
     it('delete', utils.detail.deleteTesting);
 

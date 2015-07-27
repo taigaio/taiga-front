@@ -34,11 +34,12 @@ describe('Issue detail', async function(){
         await utils.common.takeScreenshot("issues", "detail updated");
     });
 
+    it('block', utils.detail.blockTesting);
+
     it('delete', utils.detail.deleteTesting);
 
     it('redirected', async function (){
         let url = await browser.getCurrentUrl();
         expect(url.endsWith(issuesUrl)).to.be.true;
     });
-
 })

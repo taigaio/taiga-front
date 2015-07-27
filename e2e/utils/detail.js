@@ -83,6 +83,20 @@ helper.historyTesting = async function() {
     expect(activitiesCounter).to.be.least(newCommentsCounter);
 }
 
+helper.blockTesting = function() {
+  let blockHelper = detailHelper.block();
+  let blockLightboxHelper = detailHelper.blockLightbox();
+  blockHelper.block();
+  blockLightboxHelper.waitOpen();
+  blockLightboxHelper.fill('This is a testing block reason');
+  blockLightboxHelper.submit();
+  blockLightboxHelper.waitClose();
+  expect($('.block-description').getText()).to.be.eventually.equal('This is a testing block reason');
+  expect($('.block-description').isDisplayed()).to.be.eventually.true;
+  blockHelper.unblock();
+  expect($('.block-description').isDisplayed()).to.be.eventually.false;
+}
+
 helper.deleteTesting = async function() {
     let deleteHelper = detailHelper.delete();
     await deleteHelper.delete();

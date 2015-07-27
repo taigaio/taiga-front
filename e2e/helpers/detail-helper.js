@@ -200,6 +200,47 @@ helper.history = function() {
 
 }
 
+helper.block = function() {
+    let el = $('tg-block-button');
+
+    let obj = {
+        el:el,
+        block: function() {
+            el.$('.item-block').click();
+        },
+
+        unblock: async function() {
+            el.$('.item-unblock').click();
+            await browser.waitForAngular();
+        }
+    }
+
+    return obj;
+}
+
+helper.blockLightbox = function() {
+    let el = $('div[tg-lb-block]');
+
+    let obj = {
+        el: el,
+        waitOpen: function() {
+            return utils.lightbox.open(el);
+        },
+        waitClose: function() {
+            return utils.lightbox.close(el);
+        },
+        fill: function(text) {
+            el.$('textarea').sendKeys(text);
+        },
+        submit: async function() {
+            el.$('a.button-green').click();
+            await browser.waitForAngular();
+        }
+    };
+
+    return obj;
+};
+
 helper.delete = function() {
     let el = $('tg-delete-button');
 
