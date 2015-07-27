@@ -53,7 +53,7 @@ describe('taskboard', function() {
             browser.actions().sendKeys(protractor.Key.ENTER).perform();
 
             createTaskLightbox.blocked().click();
-            createTaskLightbox.blockedNote().sendKeys(formFields.blockedNote);
+            await createTaskLightbox.blockedNote().sendKeys(formFields.blockedNote);
 
             utils.common.takeScreenshot('taskboard', 'create-task-filled');
         });
@@ -96,7 +96,7 @@ describe('taskboard', function() {
             formFields.blockedNote = 'blocked note';
 
             createTaskLightbox.subject().sendKeys(formFields.subject);
-            createTaskLightbox.description().sendKeys(formFields.description);
+            await createTaskLightbox.description().sendKeys(formFields.description);
 
             utils.common.takeScreenshot('taskboard', 'edit-task-filled');
         });
@@ -150,7 +150,7 @@ describe('taskboard', function() {
 
     describe('folds', function() {
         it('fold row', async function() {
-            taskboardHelper.foldRow(0);
+            await taskboardHelper.foldRow(0);
 
             utils.common.takeScreenshot('taskboard', 'fold-row');
 
@@ -168,7 +168,7 @@ describe('taskboard', function() {
         });
 
         it('fold column', async function() {
-            taskboardHelper.foldColumn(0);
+            await taskboardHelper.foldColumn(0);
 
             utils.common.takeScreenshot('taskboard', 'fold-column');
 
@@ -186,8 +186,8 @@ describe('taskboard', function() {
         });
 
         it('fold row and column', async function() {
-            taskboardHelper.foldRow(0);
-            taskboardHelper.foldColumn(0);
+            await taskboardHelper.foldRow(0);
+            await taskboardHelper.foldColumn(0);
 
             utils.common.takeScreenshot('taskboard', 'fold-column-row');
 

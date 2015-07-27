@@ -29,7 +29,7 @@
     "coffee-script": "^1.9.1",
     "del": "^1.1.1",
     "express": "^4.12.0",
-    "glob": "^5.0.3",
+    "glob": "^5.0.14",
     "gulp": "^3.8.11",
     "gulp-angular-templatecache": "^1.5.0",
     "gulp-autoprefixer": "^2.1.0",
@@ -57,7 +57,9 @@
     "gulp-template": "^3.0.0",
     "gulp-uglify": "~1.1.0",
     "gulp-wrap": "^0.11.0",
+    "image-size": "^0.3.5",
     "inquirer": "^0.8.2",
+    "jade": "^1.11.0",
     "karma": "^0.12.31",
     "karma-chai-plugins": "^0.6.0",
     "karma-chrome-launcher": "^0.1.7",
@@ -67,11 +69,13 @@
     "minimist": "^1.1.1",
     "mocha": "^2.2.4",
     "node-uuid": "^1.4.3",
+    "photoswipe": "^4.1.0",
     "pre-commit": "^1.0.5",
     "readable-stream": "~1.0.33",
     "run-sequence": "^1.0.2",
     "sinon": "^1.14.1",
-    "through2": "~0.6.3"
+    "through2": "~0.6.3",
+    "vinyl-fs": "^1.0.0"
   },
   "pre-commit": [
     "scss-lint"

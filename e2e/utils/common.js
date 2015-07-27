@@ -20,7 +20,10 @@ common.waitLoader = function () {
 };
 
 common.takeScreenshot = async function (section, filename) {
-    let screenshotsFolder = __dirname + "/../screenshots/";
+    let cap = await browser.getCapabilities();
+    let browserName = cap.caps_.browserName;
+
+    let screenshotsFolder = __dirname + "/../screenshots/" + browserName + "/";
     let dir = screenshotsFolder + section + "/";
 
     if (!fs.existsSync(screenshotsFolder)) {

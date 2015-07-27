@@ -32,24 +32,32 @@ helper.foldRow = function(row) {
     let icon = $$('.icon-vfold.vfold').get(row);
 
     icon.click();
+
+    return utils.common.waitRequestAnimationFrame();
 };
 
 helper.unFoldRow = function(row) {
     let icon = $$('.icon-vunfold.vunfold').get(row);
 
     icon.click();
+
+    return utils.common.waitRequestAnimationFrame();
 };
 
 helper.foldColumn = function(row) {
     let icon = $$('.icon-vfold.hfold').get(row);
 
     icon.click();
+
+    return utils.common.waitRequestAnimationFrame();
 };
 
 helper.unFoldColumn = function(row) {
     let icon = $$('.icon-vunfold.hunfold').get(row);
 
     icon.click();
+
+    return utils.common.waitRequestAnimationFrame();
 };
 
 helper.editTask = function(row, column, task) {
