@@ -277,6 +277,11 @@ helper.attachment = function() {
             await browser.waitForAngular();
         },
 
+        getFirstAttachmentName: async function () {
+            let name = await el.$$('div[tg-attachment] .attachment-comments').first().getText();
+            return name;
+        },
+
         getLastAttachmentName: async function () {
             let name = await el.$$('div[tg-attachment] .attachment-comments').last().getText();
             return name;
@@ -310,6 +315,13 @@ helper.attachment = function() {
             await utils.lightbox.confirm.ok();
             await browser.waitForAngular();
         },
+
+        dragLastAttchmentToFirstPosition: async function() {
+            await browser.actions().mouseMove(el.$$('div[tg-attachment]').last()).perform();
+            let lastDraggableAttachment = el.$$('div[tg-attachment] .attachment-settings .icon-drag-v').last();
+            let destination = el.$$('div[tg-attachment] .attachment-settings .icon-drag-v').first();
+            await utils.common.drag(lastDraggableAttachment, destination);
+        }
     }
 
     return obj;
