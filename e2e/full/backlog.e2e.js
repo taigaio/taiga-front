@@ -188,7 +188,7 @@ describe('backlog', function() {
 
     it('drag backlog us', async function() {
         let dragableElements = backlogHelper.userStories();
-        let dragElement = dragableElements.get(5);
+        let dragElement = dragableElements.get(1);
 
         let draggedElementRef = await backlogHelper.getUsRef(dragElement);
 

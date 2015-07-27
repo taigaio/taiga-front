@@ -104,7 +104,9 @@ describe('kanban', function() {
 
             // subject
             let subject = createUSLightbox.subject();
-            utils.common.clear(subject);
+
+            await subject.clear();
+
             subject.sendKeys(formFields.subject);
 
             // roles

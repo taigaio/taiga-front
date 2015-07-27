@@ -9,6 +9,12 @@ common.hasClass = async function (element, cls) {
     return classes.split(' ').indexOf(cls) !== -1;
 };
 
+common.link = async function(el) {
+    await browser.actions().mouseMove(el).perform();
+
+    el.click();
+};
+
 common.waitLoader = function () {
     let el = $(".loader");
 
@@ -87,7 +93,7 @@ common.drag = function(elm, location) {
         .perform()
         .then(function() {
             return common.dragEnd();
-        })
+        });
 };
 
 common.transitionend = function(selector, property) {
@@ -129,7 +135,7 @@ common.transitionend = function(selector, property) {
 
             return ts;
         }, 5000);
-    }
+    };
 };
 
 common.waitTransitionTime = async function(el) {
@@ -137,8 +143,9 @@ common.waitTransitionTime = async function(el) {
         el = $(el);
     }
 
-    let transition = await el.getCssValue('transition');
-    let time = parseFloat(transition.split(' ')[1].replace('s', '')) * 1000;
+    let transition = await el.getCssValue('transition-duration');
+
+    let time = parseFloat(transition.replace('s', '')) * 1000;
 
     return browser.sleep(time);
 };

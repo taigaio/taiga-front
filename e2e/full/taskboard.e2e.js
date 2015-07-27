@@ -8,14 +8,15 @@ var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 var expect = chai.expect;
 
-describe('taskboard', function() {
+describe.only('taskboard', function() {
     before(async function() {
         browser.get('http://localhost:9001/project/project-0/backlog');
 
         await utils.common.waitLoader();
 
-        backlogHelper.sprints().first().$('.button-gray').click();
+        let link = backlogHelper.sprints().get(0).$('.button-gray');
 
+        await utils.common.link(link);
         await utils.common.waitLoader();
 
         utils.common.takeScreenshot('taskboard', 'taskboard');

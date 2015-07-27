@@ -133,8 +133,8 @@ helper.setUsStatus = async function(item, value) {
     return status.$$('span').first().getText();
 };
 
-helper.setUsPoints = function(item, value1, value2)  {
-    let points = $$('.backlog-table-body > div .us-points').get(item);
+helper.setUsPoints = async function(item, value1, value2)  {
+    let points = $$('.backlog-table-body > div .us-points').get(item).$$('span').get(0);
 
     return  utils.popover.open(points, value1, value2);
 };
