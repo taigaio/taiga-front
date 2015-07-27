@@ -1,5 +1,4 @@
 var utils = require('../utils');
-
 var helper = module.exports;
 
 helper.title = function() {
@@ -250,6 +249,67 @@ helper.delete = function() {
             el.$('.button-red').click();
             await utils.lightbox.confirm.ok();
         }
+    }
+
+    return obj;
+}
+
+helper.attachment = function() {
+    let el = $('tg-attachments');
+
+    let obj = {
+        el:el,
+        upload: async function(filePath, name) {
+            await el.$('#add-attach').sendKeys(filePath);
+            await browser.waitForAngular();
+            //TODO: ask JF why this is needed
+            await browser.sleep(2000)
+            await el.$$('div[tg-attachment] .editable-attachment-comment input').last().sendKeys(name);
+            await browser.actions().sendKeys(protractor.Key.ENTER).perform();
+            await browser.waitForAngular();
+        },
+
+        renameLastAttchment: async function (name) {
+            await browser.actions().mouseMove(el.$$('div[tg-attachment]').last()).perform();
+            await el.$$('div[tg-attachment] .attachment-settings .icon-edit').last().click();
+            await el.$$('div[tg-attachment] .editable-attachment-comment input').last().sendKeys(name);
+            await browser.actions().sendKeys(protractor.Key.ENTER).perform();
+            await browser.waitForAngular();
+        },
+
+        getLastAttachmentName: async function () {
+            let name = await el.$$('div[tg-attachment] .attachment-comments').last().getText();
+            return name;
+        },
+
+        countAttachments: async function(){
+            let attachments = await el.$$('div[tg-attachment] .attachment-comments')
+            return attachments.length;
+        },
+
+        countDeprecatedAttachments: async function(){
+            let attachmentsJSON = await el.$$('.more-attachments .more-attachments-num').getAttribute('translate-values');
+            return parseInt(eval(attachmentsJSON[0]));
+        },
+
+        deprecateLastAttachment: async function() {
+            await browser.actions().mouseMove(el.$$('div[tg-attachment]').last()).perform();
+            await el.$$('div[tg-attachment] .attachment-settings .icon-edit').last().click();
+            await el.$$('div[tg-attachment] .editable-attachment-deprecated input').last().click();
+            await el.$$('div[tg-attachment] .attachment-settings .editable-settings.icon-floppy').last().click();
+            await browser.waitForAngular();
+        },
+
+        showDeprecated: async function(){
+            await el.$('.more-attachments-num').click();
+        },
+
+        deleteLastAttachment: async function() {
+            await browser.actions().mouseMove(el.$$('div[tg-attachment]').last()).perform();
+            await el.$$('div[tg-attachment] .attachment-settings .icon-delete').last().click();
+            await utils.lightbox.confirm.ok();
+            await browser.waitForAngular();
+        },
     }
 
     return obj;

@@ -36,6 +36,8 @@ describe('User story detail', function(){
 
     it('block', utils.detail.blockTesting);
 
+    it('attachments', utils.detail.attachmentTesting)
+
     it('delete', utils.detail.deleteTesting);
 
     it('redirected', async function (){

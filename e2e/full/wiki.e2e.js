@@ -84,5 +84,5 @@ describe('wiki', function() {
         expect(text).to.be.equal("\n- aa");
     });
 
-    //TODO attachments
+    it('attachments', utils.detail.attachmentTesting);
 });

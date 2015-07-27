@@ -36,10 +36,13 @@ describe('Issue detail', async function(){
 
     it('block', utils.detail.blockTesting);
 
+    it('attachments', utils.detail.attachmentTesting)
+
     it('delete', utils.detail.deleteTesting);
 
     it('redirected', async function (){
         let url = await browser.getCurrentUrl();
         expect(url.endsWith(issuesUrl)).to.be.true;
     });
+
 })

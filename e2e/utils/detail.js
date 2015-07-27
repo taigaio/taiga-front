@@ -1,3 +1,4 @@
+var path = require('path');
 var detailHelper = require('../helpers').detail;
 
 var chai = require('chai');
@@ -84,17 +85,60 @@ helper.historyTesting = async function() {
 }
 
 helper.blockTesting = function() {
-  let blockHelper = detailHelper.block();
-  let blockLightboxHelper = detailHelper.blockLightbox();
-  blockHelper.block();
-  blockLightboxHelper.waitOpen();
-  blockLightboxHelper.fill('This is a testing block reason');
-  blockLightboxHelper.submit();
-  blockLightboxHelper.waitClose();
-  expect($('.block-description').getText()).to.be.eventually.equal('This is a testing block reason');
-  expect($('.block-description').isDisplayed()).to.be.eventually.true;
-  blockHelper.unblock();
-  expect($('.block-description').isDisplayed()).to.be.eventually.false;
+    let blockHelper = detailHelper.block();
+    let blockLightboxHelper = detailHelper.blockLightbox();
+    blockHelper.block();
+    blockLightboxHelper.waitOpen();
+    blockLightboxHelper.fill('This is a testing block reason');
+    blockLightboxHelper.submit();
+    blockLightboxHelper.waitClose();
+    expect($('.block-description').getText()).to.be.eventually.equal('This is a testing block reason');
+    expect($('.block-description').isDisplayed()).to.be.eventually.true;
+    blockHelper.unblock();
+    expect($('.block-description').isDisplayed()).to.be.eventually.false;
+}
+
+helper.attachmentTesting = async function() {
+    let attachmentHelper = detailHelper.attachment();
+    let date = Date.now();
+
+    // Uploading attachment
+    let attachmentsLength = await attachmentHelper.countAttachments();
+    var fileToUpload = './upload-file-test.txt',
+    absolutePath = path.resolve(process.cwd(), 'e2e', fileToUpload);
+    await attachmentHelper.upload(absolutePath, 'This is the testing name ' + date);
+
+    // Check set name
+    let name = await attachmentHelper.getLastAttachmentName();
+    expect(name).to.be.equal('This is the testing name ' + date);
+
+    // Check new length
+    let newAttachmentsLength = await attachmentHelper.countAttachments();
+    expect(newAttachmentsLength).to.be.equal(attachmentsLength + 1);
+
+    // Renaming
+    await attachmentHelper.renameLastAttchment('This is the new testing name ' + date);
+    name = await attachmentHelper.getLastAttachmentName();
+    expect(name).to.be.equal('This is the new testing name ' + date)
+
+    // Deprecating
+    let deprecatedAttachmentsLength = await attachmentHelper.countDeprecatedAttachments();
+    await attachmentHelper.deprecateLastAttachment();
+    let newDeprecatedAttachmentsLength = await attachmentHelper.countDeprecatedAttachments();
+    expect(newDeprecatedAttachmentsLength).to.be.equal(deprecatedAttachmentsLength + 1);
+
+    // Show deprecated
+    attachmentsLength = await attachmentHelper.countAttachments();
+    deprecatedAttachmentsLength = await attachmentHelper.countDeprecatedAttachments();
+    await attachmentHelper.showDeprecated();
+    newAttachmentsLength = await attachmentHelper.countAttachments();
+    expect(newAttachmentsLength).to.be.equal(attachmentsLength + deprecatedAttachmentsLength);
+
+    // Deleting
+    attachmentsLength = await attachmentHelper.countAttachments();
+    await attachmentHelper.deleteLastAttachment();
+    newAttachmentsLength = await attachmentHelper.countAttachments();
+    expect(newAttachmentsLength).to.be.equal(attachmentsLength - 1);
 }
 
 helper.deleteTesting = async function() {
