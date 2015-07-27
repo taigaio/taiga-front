@@ -326,3 +326,56 @@ helper.attachment = function() {
 
     return obj;
 }
+
+
+
+helper.watchers = function() {
+    let el = $('section[tg-watchers]');
+
+    let obj = {
+        el: el,
+
+        addWatcher: function() {
+            el.$('.add-watcher').click();
+        },
+
+        getWatchersUserNames: function() {
+            return el.$$('.watcher-name span').getText();
+        },
+
+        removeAllWathchers: async function() {
+            let deleteIcons = await el.$$('.icon-delete')
+            let totalWatchers = deleteIcons.length;
+
+            while (totalWatchers > 0) {
+              el.$$('.icon-delete').first().click()
+              await utils.lightbox.confirm.ok();
+              await browser.waitForAngular();
+              totalWatchers --;
+            }
+        }
+    };
+
+    return obj;
+};
+
+helper.watchersLightbox = function() {
+    let el = $('div[tg-lb-watchers]');
+
+    let obj = {
+        el: el,
+        waitOpen: function() {
+            return utils.lightbox.open(el);
+        },
+        waitClose: function() {
+            return utils.lightbox.close(el);
+        },
+        selectFirst: async function() {
+            el.$$('div[data-user-id]').first().click();
+            await browser.waitForAngular();
+        }
+
+    };
+
+    return obj;
+};

@@ -6,7 +6,7 @@ var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 var expect = chai.expect;
 
-describe.only('Issue detail', async function(){
+describe('Issue detail', async function(){
     let issuesUrl = "";
     before(async function(){
         utils.common.goHome();
@@ -27,6 +27,8 @@ describe.only('Issue detail', async function(){
     it('description edition', utils.detail.descriptionTesting);
 
     it('assigned to edition', utils.detail.assignedToTesting);
+
+    it('watchers edition', utils.detail.watchersTesting);
 
     it('history', utils.detail.historyTesting);
 

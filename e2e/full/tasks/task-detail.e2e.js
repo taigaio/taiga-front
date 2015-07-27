@@ -29,6 +29,8 @@ describe('Task detail', function(){
 
     it('assigned to edition', utils.detail.assignedToTesting);
 
+    it('watchers edition', utils.detail.watchersTesting);
+
     it('history', utils.detail.historyTesting);
 
     it('screenshot', async function() {

@@ -148,3 +148,23 @@ helper.deleteTesting = async function() {
     let deleteHelper = detailHelper.delete();
     await deleteHelper.delete();
 }
+
+helper.watchersTesting = async function() {
+    let watchersHelper = detailHelper.watchers();
+    let watchersLightboxHelper = detailHelper.watchersLightbox();
+    let userNames = await watchersHelper.getWatchersUserNames();
+
+    //Add watcher
+    watchersHelper.addWatcher();
+    watchersLightboxHelper.waitOpen();
+    watchersLightboxHelper.selectFirst();
+    watchersLightboxHelper.waitClose();
+
+    let newUserNames = await watchersHelper.getWatchersUserNames();
+    expect(newUserNames.join()).to.be.equal(userNames + ',Administrator');
+
+    //Clear watchers
+    await watchersHelper.removeAllWathchers();
+    newUserNames = await watchersHelper.getWatchersUserNames();
+    expect(newUserNames.join()).to.be.equal('');
+}
