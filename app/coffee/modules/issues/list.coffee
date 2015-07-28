@@ -83,8 +83,6 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         @scope.$on "issueform:new:success", =>
             @analytics.trackEvent("issue", "create", "create issue on issues list", 1)
             @.loadIssues()
-            @.loadFilters()
-
 
     initializeSubscription: ->
         routingKey = "changes.project.#{@scope.projectId}.issues"
@@ -115,9 +113,10 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             return project
 
     getUrlFilters: ->
-        filters = _.pick(@location.search(), "page", "tags", "statuses", "types",
+        filters = _.pick(@location.search(), "page", "tags", "status", "types",
                                              "q", "severities", "priorities",
                                              "assignedTo", "createdBy", "orderBy")
+
         filters.page = 1 if not filters.page
         return filters
 
@@ -180,20 +179,30 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @scope.filters.myFilters = myFilters
             return myFilters
 
+        loadFilters = {}
+        loadFilters.project = @scope.projectId
+        loadFilters.tags = urlfilters.tags
+        loadFilters.status = urlfilters.status
+        loadFilters.q = urlfilters.q
+        loadFilters.types = urlfilters.types
+        loadFilters.severities = urlfilters.severities
+        loadFilters.priorities = urlfilters.priorities
+        loadFilters.assigned_to = urlfilters.assignedTo
+        loadFilters.owner = urlfilters.createdBy
+
         # Load default filters data
         promise = promise.then =>
-            return @rs.issues.filtersData(@scope.projectId)
+            return @rs.issues.filtersData(loadFilters)
 
         # Format filters and set them on scope
         return promise.then (data) =>
             usersFiltersFormat = (users, type, unknownOption) =>
                 reformatedUsers = _.map users, (t) =>
-                    return {
-                        id: t[0],
-                        count: t[1],
-                        type: type
-                        name: if t[0] then @scope.usersById[t[0]].full_name_display else unknownOption
-                    }
+                    t.type = type
+                    t.name = if t.full_name then t.full_name else unknownOption
+
+                    return t
+
                 unknownItem = _.remove(reformatedUsers, (u) -> not u.id)
                 reformatedUsers = _.sortBy(reformatedUsers, (u) -> u.name.toUpperCase())
                 if unknownItem.length > 0
@@ -202,34 +211,27 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
             choicesFiltersFormat = (choices, type, byIdObject) =>
                 _.map choices, (t) ->
-                    return {
-                        id: t[0],
-                        name: byIdObject[t[0]].name,
-                        color: byIdObject[t[0]].color,
-                        count: t[1],
-                        type: type}
+                    t.type = type
+                    return t
 
             tagsFilterFormat = (tags) =>
-                return _.map tags, (t) =>
-                    return {
-                        id: t[0],
-                        name: t[0],
-                        color: @scope.project.tags_colors[t[0]],
-                        count: t[1],
-                        type: "tags"
-                    }
+                return _.map tags, (t) ->
+                    t.id = t.name
+                    t.type = 'tags'
+                    return t
 
             # Build filters data structure
-            @scope.filters.statuses = choicesFiltersFormat(data.statuses, "statuses", @scope.issueStatusById)
+            @scope.filters.status = choicesFiltersFormat(data.statuses, "status", @scope.issueStatusById)
             @scope.filters.severities = choicesFiltersFormat(data.severities, "severities", @scope.severityById)
             @scope.filters.priorities = choicesFiltersFormat(data.priorities, "priorities", @scope.priorityById)
             @scope.filters.assignedTo = usersFiltersFormat(data.assigned_to, "assignedTo", "Unassigned")
-            @scope.filters.createdBy = usersFiltersFormat(data.created_by, "createdBy", "Unknown")
+            @scope.filters.createdBy = usersFiltersFormat(data.owners, "createdBy", "Unknown")
             @scope.filters.types = choicesFiltersFormat(data.types, "types", @scope.issueTypeById)
             @scope.filters.tags = tagsFilterFormat(data.tags)
 
             @.removeNotExistingFiltersFromUrl()
             @.markSelectedFilters(@scope.filters, urlfilters)
+
             @rootscope.$broadcast("filters:loaded", @scope.filters)
 
     # We need to guarantee that the last petition done here is the finally used
@@ -257,7 +259,7 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 name = "assigned_to"
             else if name == "createdBy"
                 name = "owner"
-            else if name == "statuses"
+            else if name == "status"
                 name = "status"
             else if name == "types"
                 name = "type"
@@ -272,14 +274,19 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 @scope.page = data.current
                 @scope.count = data.count
                 @scope.paginatedBy = data.paginatedBy
+
             return data
+
+        return promise
 
     loadInitialData: ->
         promise = @.loadProject()
         return promise.then (project) =>
-            @.fillUsersAndRoles(project.members, project.roles)
+            @.fillUsersAndRoles(project.users, project.roles)
             @.initializeSubscription()
-            return @q.all([@.loadFilters(), @.loadIssues()])
+            @.loadFilters()
+
+            return @.loadIssues()
 
     saveCurrentFiltersTo: (newFilter) ->
         deferred = @q.defer()
@@ -439,12 +446,13 @@ module.directive("tgIssues", ["$log", "$tgLocation", "$tgTemplate", "$compile", 
 ## Issues Filters Directive
 #############################################################################
 
-IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template, $translate, $compile, $auth) ->
+IssuesFiltersDirective = ($q, $log, $location, $rs, $confirm, $loading, $template, $translate, $compile, $auth) ->
     template = $template.get("issue/issues-filters.html", true)
     templateSelected = $template.get("issue/issues-filters-selected.html", true)
 
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.closest(".wrapper").controller()
+
         selectedFilters = []
 
         showFilters = (title, type) ->
@@ -490,6 +498,16 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template, $
             html = $compile(html)($scope)
             $el.find(".filter-list").html(html)
 
+        getFiltersType = () ->
+            return $el.find("h2 a.subfilter span.title").prop('data-type')
+
+        reloadIssues = () ->
+            currentFiltersType = getFiltersType()
+
+            $q.all([$ctrl.loadIssues(), $ctrl.loadFilters()]).then () ->
+                filters = $scope.filters[currentFiltersType]
+                renderFilters(_.reject(filters, "selected"))
+
         toggleFilterSelection = (type, id) ->
             if type == "myFilters"
                 $rs.issues.getMyFilters($scope.projectId).then (data) ->
@@ -506,7 +524,6 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template, $
             filters = $scope.filters[type]
             filterId = if type == 'tags' then taiga.toString(id) else id
             filter = _.find(filters, {id: filterId})
-
             filter.selected = (not filter.selected)
 
             # Convert id to null as string for properly
@@ -515,22 +532,23 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template, $
 
             if filter.selected
                 selectedFilters.push(filter)
-                $scope.$apply ->
-                    $ctrl.selectFilter(type, id)
-                    $ctrl.selectFilter("page", 1)
-                    $ctrl.storeFilters()
-                    $ctrl.loadIssues()
+                $ctrl.selectFilter(type, id)
+                $ctrl.selectFilter("page", 1)
+                $ctrl.storeFilters()
             else
-                selectedFilters = _.reject(selectedFilters, filter)
-                $scope.$apply ->
-                    $ctrl.unselectFilter(type, id)
-                    $ctrl.selectFilter("page", 1)
-                    $ctrl.storeFilters()
-                    $ctrl.loadIssues()
+                selectedFilters = _.reject selectedFilters, (f) ->
+                    return f.id == filter.id && f.type == filter.type
+
+                $ctrl.unselectFilter(type, id)
+                $ctrl.selectFilter("page", 1)
+                $ctrl.storeFilters()
+
+            reloadIssues()
 
             renderSelectedFilters(selectedFilters)
 
-            currentFiltersType = $el.find("h2 a.subfilter span.title").prop('data-type')
+            currentFiltersType = getFiltersType()
+
             if type == currentFiltersType
                 renderFilters(_.reject(filters, "selected"))
 
@@ -539,7 +557,7 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template, $
             initializeSelectedFilters(filters)
 
         $scope.$on "filters:issueupdate", (ctx, filters) ->
-            html = template({filters:filters.statuses})
+            html = template({filters:filters.status})
             html = $compile(html)($scope)
             $el.find(".filter-list").html(html)
 
@@ -554,7 +572,8 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template, $
             else
                 $ctrl.replaceFilter("q", value)
                 $ctrl.storeFilters()
-            $ctrl.loadIssues()
+
+            reloadIssues()
 
         $scope.$watch("filtersQ", selectQFilter)
 
@@ -661,7 +680,7 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template, $
 
     return {link:link}
 
-module.directive("tgIssuesFilters", ["$log", "$tgLocation", "$tgResources", "$tgConfirm", "$tgLoading",
+module.directive("tgIssuesFilters", ["$q", "$log", "$tgLocation", "$tgResources", "$tgConfirm", "$tgLoading",
                                      "$tgTemplate", "$translate", "$compile", "$tgAuth", IssuesFiltersDirective])
 
 
@@ -708,7 +727,7 @@ IssueStatusInlineEditionDirective = ($repo, $template, $rootscope) ->
             event.stopPropagation()
             target = angular.element(event.currentTarget)
 
-            for filter in $scope.filters.statuses
+            for filter in $scope.filters.status
                 if filter.id == issue.status
                     filter.count--
 
@@ -720,13 +739,13 @@ IssueStatusInlineEditionDirective = ($repo, $template, $rootscope) ->
                 $repo.save(issue).then ->
                     $ctrl.loadIssues()
 
-                    for filter in $scope.filters.statuses
+                    for filter in $scope.filters.status
                         if filter.id == issue.status
                             filter.count++
 
                     $rootscope.$broadcast("filters:issueupdate", $scope.filters)
 
-                for filter in $scope.filters.statuses
+                for filter in $scope.filters.status
                     if filter.id == issue.status
                         filter.count++
                 $rootscope.$broadcast("filters:issueupdate", $scope.filters)

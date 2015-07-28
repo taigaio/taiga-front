@@ -34,10 +34,10 @@ div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
                     span.text(translate="BACKLOG.TAGS.SHOW")
             include ../includes/components/addnewus
 
-        section.backlog-table(ng-class="{'hidden': !visibleUserstories.length}")
+        section.backlog-table(ng-class="{'hidden': !userstories.length}")
             include ../includes/modules/backlog-table
 
-        div.empty.empty-backlog(ng-class="{'hidden': visibleUserstories.length}", tg-backlog-empty-sortable)
+        div.empty.empty-backlog(ng-class="{'hidden': userstories.length}", tg-backlog-empty-sortable)
             span.icon.icon-backlog
             span.title(translate="BACKLOG.EMPTY")
             a(href="", title="{{'BACKLOG.CREATE_NEW_US' | translate}}",

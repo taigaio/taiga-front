@@ -35,11 +35,13 @@ module = angular.module("taigaBacklog")
 ## Issues Filters Directive
 #############################################################################
 
-BacklogFiltersDirective = ($log, $location, $templates) ->
+BacklogFiltersDirective = ($q, $log, $location, $templates) ->
     template = $templates.get("backlog/filters.html", true)
     templateSelected = $templates.get("backlog/filter-selected.html", true)
 
     link = ($scope, $el, $attrs) ->
+        currentFiltersType = ''
+
         $ctrl = $el.closest(".wrapper").controller()
         selectedFilters = []
 
@@ -50,16 +52,18 @@ BacklogFiltersDirective = ($log, $location, $templates) ->
             $el.find("h2 a.subfilter span.title").html(title)
             $el.find("h2 a.subfilter span.title").prop("data-type", type)
 
+            currentFiltersType = getFiltersType()
+
         showCategories = ->
             $el.find(".filters-cats").show()
             $el.find(".filter-list").addClass("hidden")
             $el.find("h2.breadcrumb").addClass("hidden")
 
-        initializeSelectedFilters = (filters) ->
+        initializeSelectedFilters = () ->
             showCategories()
             selectedFilters = []
 
-            for name, values of filters
+            for name, values of $scope.filters
                 for val in values
                     selectedFilters.push(val) if val.selected
 
@@ -81,43 +85,62 @@ BacklogFiltersDirective = ($log, $location, $templates) ->
             html = template({filters:filters})
             $el.find(".filter-list").html(html)
 
+        getFiltersType = () ->
+            return $el.find("h2 a.subfilter span.title").prop('data-type')
+
+        reloadUserstories = () ->
+            currentFiltersType = getFiltersType()
+
+            $q.all([$ctrl.loadUserstories(), $ctrl.generateFilters()]).then () ->
+                currentFilters = $scope.filters[currentFiltersType]
+                renderFilters(_.reject(currentFilters, "selected"))
+
         toggleFilterSelection = (type, id) ->
+            currentFiltersType = getFiltersType()
+
             filters = $scope.filters[type]
-            filter = _.find(filters, {id: taiga.toString(id)})
+            filter = _.find(filters, {id: id})
             filter.selected = (not filter.selected)
+
             if filter.selected
                 selectedFilters.push(filter)
                 $scope.$apply ->
                     $ctrl.selectFilter(type, id)
             else
-                selectedFilters = _.reject(selectedFilters, filter)
-                $scope.$apply ->
-                    $ctrl.unselectFilter(type, id)
+                selectedFilters = _.reject selectedFilters, (selected) ->
+                    return filter.type == selected.type &&  filter.id == selected.id
+
+                $ctrl.unselectFilter(type, id)
 
             renderSelectedFilters(selectedFilters)
 
-            currentFiltersType = $el.find("h2 a.subfilter span.title").prop('data-type')
             if type == currentFiltersType
                 renderFilters(_.reject(filters, "selected"))
 
-            $ctrl.loadUserstories()
+            reloadUserstories()
 
         selectQFilter = debounceLeading 100, (value) ->
             return if value is undefined
+
             if value.length == 0
                 $ctrl.replaceFilter("q", null)
             else
                 $ctrl.replaceFilter("q", value)
-            $ctrl.loadUserstories()
+
+            reloadUserstories()
 
         $scope.$watch("filtersQ", selectQFilter)
 
         ## Angular Watchers
-        $scope.$on "filters:loaded", (ctx, filters) ->
-            initializeSelectedFilters(filters)
+        $scope.$on "backlog:loaded", (ctx) ->
+            initializeSelectedFilters()
 
-        $scope.$on "filters:update", (ctx, filters) ->
-            renderFilters(filters)
+        $scope.$on "filters:update", (ctx) ->
+            $ctrl.generateFilters().then () ->
+                filters = $scope.filters[currentFiltersType]
+
+                if currentFiltersType
+                    renderFilters(_.reject(filters, "selected"))
 
         ## Dom Event Handlers
         $el.on "click", ".filters-cats > ul > li > a", (event) ->
@@ -126,7 +149,7 @@ BacklogFiltersDirective = ($log, $location, $templates) ->
             tags = $scope.filters[target.data("type")]
 
             renderFilters(_.reject(tags, "selected"))
-            showFilters(target.attr("title"), target.data("type"))
+            showFilters(target.attr("title"), target.data('type'))
 
         $el.on "click", ".filters-inner > .filters-step-cat > .breadcrumb > .back", (event) ->
             event.preventDefault()
@@ -153,4 +176,4 @@ BacklogFiltersDirective = ($log, $location, $templates) ->
 
     return {link:link}
 
-module.directive("tgBacklogFilters", ["$log", "$tgLocation", "$tgTemplate", BacklogFiltersDirective])
+module.directive("tgBacklogFilters", ["$q", "$log", "$tgLocation", "$tgTemplate", BacklogFiltersDirective])
