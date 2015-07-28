@@ -10,6 +10,9 @@ exports.config = {
     mochaOpts: {
         timeout: 30000
     },
+    // capabilities: {
+    //     'browserName': 'firefox'
+    // },
     suites: {
         auth: 'e2e/auth/*.e2e.js',
         full: 'e2e/full/**/*.e2e.js'

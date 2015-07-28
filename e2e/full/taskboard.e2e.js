@@ -53,7 +53,7 @@ describe('taskboard', function() {
             createTaskLightbox.tags().sendKeys('bbb');
             browser.actions().sendKeys(protractor.Key.ENTER).perform();
 
-            createTaskLightbox.blocked().click();
+            await createTaskLightbox.blocked().click();
             await createTaskLightbox.blockedNote().sendKeys(formFields.blockedNote);
 
             utils.common.takeScreenshot('taskboard', 'create-task-filled');

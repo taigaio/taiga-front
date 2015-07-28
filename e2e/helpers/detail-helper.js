@@ -18,7 +18,7 @@ helper.title = function() {
     };
 
     return obj;
-}
+};
 
 helper.description = function(){
     let el = $('section[tg-editable-description]');
@@ -82,10 +82,10 @@ helper.tags = function() {
                 browser.actions().sendKeys(protractor.Key.ENTER).perform();
             }
         }
-    }
+    };
 
     return obj;
-}
+};
 
 helper.assignedTo = function() {
     let el = $('.assigned-to');
@@ -215,10 +215,10 @@ helper.block = function() {
             el.$('.item-unblock').click();
             await browser.waitForAngular();
         }
-    }
+    };
 
     return obj;
-}
+};
 
 helper.blockLightbox = function() {
     let el = $('div[tg-lb-block]');
@@ -299,8 +299,7 @@ helper.attachment = function() {
         },
 
         countAttachments: async function(){
-            let attachments = await el.$$('div[tg-attachment] .attachment-comments')
-            return attachments.length;
+            return await el.$$('div[tg-attachment]').count();
         },
 
         countDeprecatedAttachments: async function(){
@@ -333,10 +332,10 @@ helper.attachment = function() {
             let destination = el.$$('div[tg-attachment] .attachment-settings .icon-drag-v').first();
             await utils.common.drag(lastDraggableAttachment, destination);
         }
-    }
+    };
 
     return obj;
-}
+};
 
 
 

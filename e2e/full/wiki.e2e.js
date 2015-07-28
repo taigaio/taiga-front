@@ -38,7 +38,7 @@ describe('wiki', function() {
         let timesEdited = wikiHelper.editor().getTimesEdited();
         let lastEditionDatetime = wikiHelper.editor().getLastEditionDateTime();
         wikiHelper.editor().enabledEditionMode();
-        let settingText = "This is the new text" + new Date().getTime()
+        let settingText = "This is the new text" + new Date().getTime();
         wikiHelper.editor().setText(settingText);
 
         // Checking preview
@@ -57,6 +57,7 @@ describe('wiki', function() {
 
         // Delete
         await wikiHelper.editor().delete();
+
         expect(browser.getCurrentUrl()).to.be.eventually.equal('http://localhost:9001/project/project-0/wiki/home');
     })
 
