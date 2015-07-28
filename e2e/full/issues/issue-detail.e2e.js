@@ -32,13 +32,13 @@ describe('Issue detail', async function(){
 
     it('history', utils.detail.historyTesting);
 
-    it('screenshot', async function() {
-        await utils.common.takeScreenshot("issues", "detail updated");
-    });
-
     it('block', utils.detail.blockTesting);
 
     it('attachments', utils.detail.attachmentTesting)
+
+    it('screenshot', async function() {
+        await utils.common.takeScreenshot("issues", "detail updated");
+    });
 
     it('delete', utils.detail.deleteTesting);
 

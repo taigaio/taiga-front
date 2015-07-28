@@ -32,13 +32,13 @@ describe('User story detail', function(){
 
     it('history', utils.detail.historyTesting);
 
-    it('screenshot', async function() {
-        await utils.common.takeScreenshot("user-stories", "detail updated");
-    });
-
     it('block', utils.detail.blockTesting);
 
     it('attachments', utils.detail.attachmentTesting)
+
+    it('screenshot', async function() {
+        await utils.common.takeScreenshot("user-stories", "detail updated");
+    });
 
     it('delete', utils.detail.deleteTesting);
 

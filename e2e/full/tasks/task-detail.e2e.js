@@ -1,4 +1,5 @@
 var utils = require('../../utils');
+var taskDetailHelper = require('../../helpers').taskDetail;
 
 var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
@@ -8,6 +9,7 @@ var expect = chai.expect;
 
 describe('Task detail', function(){
     let sprintUrl = "";
+
     before(async function(){
         utils.common.goHome();
         utils.common.goToFirstProject();
@@ -31,15 +33,29 @@ describe('Task detail', function(){
 
     it('watchers edition', utils.detail.watchersTesting);
 
-    it('history', utils.detail.historyTesting);
+    it('iocaine edition', async function() {
+      // Toggle iocaine status
+      let iocaineHelper = taskDetailHelper.iocaine();
+      let isIocaine = await iocaineHelper.isIocaine()
+      iocaineHelper.togleIocaineStatus();
+      let newIsIocaine = await iocaineHelper.isIocaine()
+      expect(newIsIocaine).to.be.not.equal(isIocaine);
 
-    it('screenshot', async function() {
-        await utils.common.takeScreenshot("tasks", "detail updated");
+      // Toggle again
+      iocaineHelper.togleIocaineStatus();
+      newIsIocaine = await iocaineHelper.isIocaine()
+      expect(newIsIocaine).to.be.equal(isIocaine);
     });
+
+    it('history', utils.detail.historyTesting);
 
     it('block', utils.detail.blockTesting);
 
     it('attachments', utils.detail.attachmentTesting)
+
+    it('screenshot', async function() {
+        await utils.common.takeScreenshot("tasks", "detail updated");
+    });
 
     it('delete', utils.detail.deleteTesting);
 
@@ -47,4 +63,5 @@ describe('Task detail', function(){
         let url = await browser.getCurrentUrl();
         expect(url.endsWith(sprintUrl)).to.be.true;
     });
+
 })
