@@ -9,10 +9,24 @@ common.hasClass = async function (element, cls) {
     return classes.split(' ').indexOf(cls) !== -1;
 };
 
+common.isBrowser = async function(browserName) {
+    let cap = await browser.getCapabilities();
+
+    return browserName === cap.caps_.browserName;
+};
+
+common.browserSkip = function(browserName, name, fn) {
+    if (browser.browserName !== browserName) {
+        return it.call(this, name, fn);
+    } else {
+        return it.skip.call(this, name, fn);
+    }
+};
+
 common.link = async function(el) {
     await browser.actions().mouseMove(el).perform();
 
-    el.click();
+    await el.click();
 };
 
 common.waitLoader = function () {
@@ -212,41 +226,54 @@ common.clear = function(elem, length) {
 
 common.goHome = async function() {
     browser.get('http://localhost:9001');
-    await utils.common.waitLoader();
+
+    await common.waitLoader();
 };
 
 common.goToFirstProject = async function() {
-    browser.actions().mouseMove($('div[tg-dropdown-project-list]')).perform();
-    $$('div[tg-dropdown-project-list] li a').first().click();
-    await utils.common.waitLoader();
+    await browser.actions().mouseMove($('div[tg-dropdown-project-list]')).perform();
+
+    let project = $$('div[tg-dropdown-project-list] li a').first();
+
+    await common.link(project);
+
+    await common.waitLoader();
 };
 
 common.goToIssues = async function() {
-    $('#nav-issues').click();
-    await utils.common.waitLoader();
+    await common.link($('#nav-issues a'));
+
+    await common.waitLoader();
 };
 
 common.goToFirstIssue = async function() {
-    $$('section.issues-table .row.table-main .subject a').first().click();
-    await utils.common.waitLoader();
+    let issue = $$('section.issues-table .row.table-main .subject a').first();
+
+    await common.link(issue);
+
+    await common.waitLoader();
 };
 
 common.goToBacklog = async function() {
-    $('#nav-backlog').click();
-    await utils.common.waitLoader();
+    await common.link($('#nav-backlog a'));
+
+    await common.waitLoader();
 }
 
 common.goToFirstUserStory = async function() {
-    $$('.user-story-name>a').first().click();
-    await utils.common.waitLoader();
+    await common.link($$('.user-story-name>a').first());
+
+    await common.waitLoader();
 }
 
 common.goToFirstSprint = async function() {
-    $$('div[tg-backlog-sprint] a.button-gray').first().click();
-    await utils.common.waitLoader();
+    await common.link($$('div[tg-backlog-sprint] a.button-gray').first());
+
+    await common.waitLoader();
 }
 
 common.goToFirstTask = async function() {
-    $$('div[tg-taskboard-task] a.task-name').first().click();
-    await utils.common.waitLoader();
+    await common.link($$('div[tg-taskboard-task] a.task-name').first());
+
+    await common.waitLoader();
 }

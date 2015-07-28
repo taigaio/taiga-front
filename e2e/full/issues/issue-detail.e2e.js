@@ -9,11 +9,14 @@ var expect = chai.expect;
 describe('Issue detail', async function(){
     let issuesUrl = "";
     before(async function(){
-        utils.common.goHome();
-        utils.common.goToFirstProject();
-        utils.common.goToIssues();
+        await utils.common.goHome();
+        await utils.common.goToFirstProject();
+
+        await utils.common.goToIssues();
+
         issuesUrl = await browser.getCurrentUrl();
-        utils.common.goToFirstIssue();
+
+        await utils.common.goToFirstIssue();
     });
 
     it('screenshot', async function() {
@@ -34,7 +37,7 @@ describe('Issue detail', async function(){
 
     it('block', utils.detail.blockTesting);
 
-    it('attachments', utils.detail.attachmentTesting)
+    it('attachments', utils.detail.attachmentTesting);
 
     it('screenshot', async function() {
         await utils.common.takeScreenshot("issues", "detail updated");
@@ -46,5 +49,4 @@ describe('Issue detail', async function(){
         let url = await browser.getCurrentUrl();
         expect(url.endsWith(issuesUrl)).to.be.true;
     });
-
-})
+});

@@ -200,7 +200,7 @@ describe('backlog', function() {
         expect(firstElementTextRef).to.be.equal(draggedElementRef);
     });
 
-    it('reorder multiple us', async function() {
+    utils.common.browserSkip('firefox', 'reorder multiple us', async function() {
         let dragableElements = backlogHelper.userStories();
 
         let count = await dragableElements.count();
@@ -228,7 +228,7 @@ describe('backlog', function() {
         expect(elementRef1).to.be.equal(draggedRefs[1]);
     });
 
-    it('drag us to milestone', async function() {
+    utils.common.browserSkip('firefox', 'drag us to milestone', async function() {
         let sprint = backlogHelper.sprints().get(1);
 
         let dragableElements = backlogHelper.userStories();
@@ -245,7 +245,7 @@ describe('backlog', function() {
         expect(draggedElementRef).to.be.equal(firstElementSprintRef);
     });
 
-    it('drag multiple us to milestone', async function() {
+    utils.common.browserSkip('firefox', 'drag multiple us to milestone', async function() {
         let sprint = backlogHelper.sprints().get(1);
 
         let dragableElements = backlogHelper.userStories();
@@ -293,7 +293,7 @@ describe('backlog', function() {
         expect(sprintRefs.indexOf(draggedRef)).to.be.not.equal(-1);
     });
 
-    it('reorder milestone us', async function() {
+    utils.common.browserSkip('firefox', 'reorder milestone us', async function() {
         let sprint = backlogHelper.sprints().get(0);
         let dragableElements = backlogHelper.getSprintUsertories(sprint);
 
@@ -308,7 +308,7 @@ describe('backlog', function() {
         expect(firstElementRef).to.be.equal(firstElementRef);
     });
 
-    it('drag us from milestone to milestone', async function() {
+    utils.common.browserSkip('firefox', 'drag us from milestone to milestone', async function() {
         let sprint1 = backlogHelper.sprints().get(0);
         let sprint2 = backlogHelper.sprints().get(1);
 
@@ -374,6 +374,8 @@ describe('backlog', function() {
             let createMilestoneLightbox = backlogHelper.getCreateEditMilestone();
 
             await createMilestoneLightbox.waitOpen();
+
+            await createMilestoneLightbox.name().clear();
 
             let sprintName = 'sprintName' + new Date().getTime();
 
@@ -466,21 +468,18 @@ describe('backlog', function() {
 
             let firstUs = userstories.first();
             let ref = await backlogHelper.getUsRef(firstUs);
-
             ref = ref.replace('#', '');
 
             await filterQ.sendKeys(ref);
             await htmlChanges();
 
             let newUsCount = await userstories.count();
-
             expect(newUsCount).to.be.equal(1);
 
             // clear status
             await filterQ.clear();
 
             htmlChanges = await utils.common.outerHtmlChanges('.backlog-table-body');
-
             await htmlChanges();
         });
 

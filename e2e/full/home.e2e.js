@@ -65,13 +65,13 @@ describe('home', function() {
             await browser.waitForAngular();
         });
 
-        it('projects list has the new order', function() {
+        utils.common.browserSkip('firefox', 'projects list has the new order', function() {
             var firstElement = $$('.project-list-single a').first().getText();
 
             expect(firstElement).to.be.eventually.equal(draggedElementText);
         });
 
-        it('projects menu has the new order', function() {
+        utils.common.browserSkip('firefox', 'projects menu has the new order', function() {
             var firstElementText = $$('div[tg-dropdown-project-list] ul a').first().getInnerHtml();
 
             expect(firstElementText).to.be.eventually.equal(draggedElementText);

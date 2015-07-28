@@ -57,7 +57,7 @@ helper.tags = function() {
 
         clearTags: async function() {
             let tags = await el.$$('.icon-delete');
-            let totalTags = tags.length
+            let totalTags = tags.length;
             while (totalTags > 0) {
               el.$$('.icon-delete').first().click();
               await browser.waitForAngular();
@@ -94,9 +94,11 @@ helper.assignedTo = function() {
         el: el,
 
         clear: async function() {
-          el.$('.icon-delete').click();
-          await utils.lightbox.confirm.ok();
-          await browser.waitForAngular();
+            await browser.actions().mouseMove(el).perform();
+
+            el.$('.icon-delete').click();
+            await utils.lightbox.confirm.ok();
+            await browser.waitForAngular();
         },
 
         assign: function() {
@@ -152,7 +154,7 @@ helper.history = function() {
         },
 
         countComments: async function() {
-            let moreComments = el.$('.comments-list .show-more-comments')
+            let moreComments = el.$('.comments-list .show-more-comments');
             let moreCommentsIsPresent = await moreComments.isPresent();
             if (moreCommentsIsPresent){
                 moreComments.click();
@@ -163,10 +165,11 @@ helper.history = function() {
         },
 
         countActivities: async function() {
-            let moreActivities = el.$('.changes-list .show-more-comments')
+            let moreActivities = el.$('.changes-list .show-more-comments');
             let selectActivityTabIsPresent = await moreActivities.isPresent();
             if (selectActivityTabIsPresent){
-                moreActivities.click();
+                utils.common.link(moreActivities);
+                // moreActivities.click();
             }
             await browser.waitForAngular();
             let activities = await el.$$(".activity-single.activity");
@@ -174,7 +177,7 @@ helper.history = function() {
         },
 
         countDeletedComments: async function() {
-            let moreComments = el.$('.comments-list .show-more-comments')
+            let moreComments = el.$('.comments-list .show-more-comments');
             let moreCommentsIsPresent = await moreComments.isPresent();
             if (moreCommentsIsPresent){
                 moreComments.click();
@@ -249,10 +252,10 @@ helper.delete = function() {
             el.$('.button-red').click();
             await utils.lightbox.confirm.ok();
         }
-    }
+    };
 
     return obj;
-}
+};
 
 helper.attachment = function() {
     let el = $('tg-attachments');
@@ -260,12 +263,20 @@ helper.attachment = function() {
     let obj = {
         el:el,
         upload: async function(filePath, name) {
+            let addAttach = el.$('#add-attach');
+
+            let toggleInput = function() {
+                $('#add-attach').toggle();
+            };
+
+            await browser.executeScript(toggleInput);
             await el.$('#add-attach').sendKeys(filePath);
             await browser.waitForAngular();
             //TODO: ask JF why this is needed
-            await browser.sleep(2000)
+            await browser.sleep(2000);
             await el.$$('div[tg-attachment] .editable-attachment-comment input').last().sendKeys(name);
             await browser.actions().sendKeys(protractor.Key.ENTER).perform();
+            await browser.executeScript(toggleInput);
             await browser.waitForAngular();
         },
 

@@ -16,9 +16,8 @@ describe('project home', function() {
         await utils.common.takeScreenshot("project", "home");
     });
 
-    it('go to project', function() {
-        browser.actions().mouseMove($('div[tg-dropdown-project-list]')).perform();
-        $$('div[tg-dropdown-project-list] ul a').first().click();
+    it('go to project', async function() {
+        await utils.common.goToFirstProject();
     });
 
     it('timeline filled', function() {

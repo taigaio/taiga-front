@@ -235,7 +235,7 @@ describe('kanban', function() {
     });
 
     describe('archive', function() {
-        it('move to archive', async function() {
+        utils.common.browserSkip('firefox', 'move to archive', async function() {
             let initOriginUsCount = await kanbanHelper.getBoxUss(3).count();
 
             let usOrigin = kanbanHelper.getBoxUss(3).first();
@@ -254,7 +254,7 @@ describe('kanban', function() {
             expect(originUsCount).to.be.equal(initOriginUsCount - 1);
         });
 
-        it('show archive', async function() {
+        utils.common.browserSkip('firefox', 'show archive', async function() {
             $('.icon-open-eye').click();
 
             await kanbanHelper.scrollRight();
@@ -266,7 +266,7 @@ describe('kanban', function() {
             expect(usCount).to.be.above(0);
         });
 
-        it('close archive', async function() {
+        utils.common.browserSkip('firefox', 'close archive', async function() {
             $('.icon-closed-eye').click();
 
             let usCount = await kanbanHelper.getBoxUss(5).count();

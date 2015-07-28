@@ -8,13 +8,17 @@ exports.config = {
     seleniumAddress: 'http://localhost:4444/wd/hub',
     framework: 'mocha',
     mochaOpts: {
-        timeout: 11000
+        timeout: 30000
     },
     suites: {
         auth: 'e2e/auth/*.e2e.js',
         full: 'e2e/full/**/*.e2e.js'
     },
     onPrepare: function() {
+        browser.getCapabilities().then(function (cap) {
+            browser.browserName = cap.caps_.browserName;
+        });
+
         browser.get('http://localhost:9001/login');
 
         var username = $('input[name="username"]');
@@ -33,6 +37,11 @@ exports.config = {
                 .then(function(url) {
                     return url === 'http://localhost:9001/';
                 });
-        }, 10000);
+        }, 10000)
+        .then(function() {
+            return browser.getCapabilities();
+        }).then(function (cap) {
+            browser.browserName = cap.caps_.browserName;
+        });
     }
 }
