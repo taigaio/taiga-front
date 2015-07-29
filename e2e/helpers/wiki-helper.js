@@ -17,6 +17,10 @@ helper.links = function() {
             return newLink;
         },
 
+        get: function() {
+            return el.$$(".wiki-link a");
+        },
+
         deleteLink: async function(link){
             link.$(".icon-delete").click();
             await utils.lightbox.confirm.ok();
@@ -35,7 +39,7 @@ helper.editor = function(){
         el: el,
 
         enabledEditionMode: async function(){
-            await el.$("section[tg-editable-wiki-content]").click();
+            await el.$("section[tg-editable-wiki-content] .view-wiki-content").click();
         },
 
         getTimesEdited: async function(){

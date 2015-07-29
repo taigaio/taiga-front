@@ -303,8 +303,16 @@ helper.attachment = function() {
         },
 
         countDeprecatedAttachments: async function(){
-            let attachmentsJSON = await el.$$('.more-attachments .more-attachments-num').getAttribute('translate-values');
-            return parseInt(eval(attachmentsJSON[0]));
+            let hasDeprecateds = await el.$('.more-attachments .more-attachments-num').isPresent();
+
+            if (hasDeprecateds) {
+                let attachmentsJSON = await el.$('.more-attachments .more-attachments-num').getAttribute('translate-values');
+
+
+                return parseInt(eval(attachmentsJSON));
+            } else {
+                return 0;
+            }
         },
 
         deprecateLastAttachment: async function() {
@@ -320,8 +328,27 @@ helper.attachment = function() {
         },
 
         deleteLastAttachment: async function() {
-            await browser.actions().mouseMove(el.$$('div[tg-attachment]').last()).perform();
-            await el.$$('div[tg-attachment] .attachment-settings .icon-delete').last().click();
+            let attachment = await $$('div[tg-attachment]').last();
+
+            await browser.actions().mouseMove(attachment).perform();
+
+            let isEditable = await attachment.$('.editable').isPresent();
+
+            // close edit
+            if(isEditable) {
+                let iconDelete = await attachment.$('.attachment-settings .icon-delete');
+                await browser.actions().mouseMove(iconDelete).perform();
+
+                iconDelete.click();
+
+                await browser.waitForAngular();
+            }
+
+            let iconDelete = await attachment.$('.attachment-settings .icon-delete');
+            await browser.actions().mouseMove(iconDelete).perform();
+
+            iconDelete.click();
+
             await utils.lightbox.confirm.ok();
             await browser.waitForAngular();
         },

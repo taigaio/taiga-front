@@ -7,7 +7,9 @@ var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 var expect = chai.expect;
 
-describe('wiki', function() {
+describe.only('wiki', function() {
+    let currentWiki = {};
+
     before(async function(){
         browser.get('http://localhost:9001/project/project-0/wiki/home');
         await utils.common.waitLoader();
@@ -17,49 +19,62 @@ describe('wiki', function() {
         await utils.common.takeScreenshot("wiki", "empty");
     });
 
-    it('add link, follow it, edit and remove everything', async function(){
-        // creation
+    it('add link', async function(){
         let timestamp = new Date().getTime();
-        let linkText = "Test link" + timestamp;
-        let slug = "test-link" + timestamp;
-        let newLink = await wikiHelper.links().addLink(linkText);
+        currentWiki.slug = "test-link" + timestamp;
 
-        //Following
-        newLink.click();
-        expect(browser.getCurrentUrl()).to.be.eventually.equal('http://localhost:9001/project/project-0/wiki/' + slug);
+        let linkText = "Test link" + timestamp;
+        currentWiki.link = await wikiHelper.links().addLink(linkText);
+    });
+
+    it('follow last link', async function() {
+        // the click event is not on the <a> :(
+        let lastLink = wikiHelper.links().get().last().$('.link-title');
+
+        utils.common.link(lastLink);
+
         await utils.common.waitLoader();
         await utils.common.takeScreenshot("wiki", "new-link-created-with-empty-wiki-page");
 
-        //Removing link
-        wikiHelper.links().deleteLink(newLink);
-        await utils.common.takeScreenshot("wiki", "deleting-the-created-link");
+        expect(browser.getCurrentUrl()).to.be.eventually.equal('http://localhost:9001/project/project-0/wiki/' + currentWiki.slug);
+    });
 
-        // Edition
+    it('remove link', async function() {
+        wikiHelper.links().deleteLink(currentWiki.link);
+        await utils.common.takeScreenshot("wiki", "deleting-the-created-link");
+    });
+
+    it('edition', async function() {
         let timesEdited = wikiHelper.editor().getTimesEdited();
         let lastEditionDatetime = wikiHelper.editor().getLastEditionDateTime();
         wikiHelper.editor().enabledEditionMode();
         let settingText = "This is the new text" + new Date().getTime();
         wikiHelper.editor().setText(settingText);
 
-        // Checking preview
+        //preview
         wikiHelper.editor().preview();
         await utils.common.takeScreenshot("wiki", "home-edition-preview");
 
-        // Saving
+        //save
         wikiHelper.editor().save();
         let newHtml = await wikiHelper.editor().getInnerHtml();
         let newTimesEdited = wikiHelper.editor().getTimesEdited();
         let newLastEditionDatetime = wikiHelper.editor().getLastEditionDateTime();
+
         expect(newHtml).to.be.equal("<p>" + settingText + "</p>");
         expect(newTimesEdited).to.be.eventually.equal(timesEdited+1);
         expect(newLastEditionDatetime).to.be.not.equal(lastEditionDatetime);
-        await utils.common.takeScreenshot("wiki", "home-edition");
 
-        // Delete
+        await utils.common.takeScreenshot("wiki", "home-edition");
+    });
+
+    it('attachments', utils.detail.attachmentTesting);
+
+    it('delete', async function() {
         await wikiHelper.editor().delete();
 
         expect(browser.getCurrentUrl()).to.be.eventually.equal('http://localhost:9001/project/project-0/wiki/home');
-    })
+    });
 
     it('Custom keyboard actions', async function(){
         wikiHelper.editor().enabledEditionMode();
@@ -84,6 +99,4 @@ describe('wiki', function() {
         text = await wikiHelper.editor().getText();
         expect(text).to.be.equal("\n- aa");
     });
-
-    it('attachments', utils.detail.attachmentTesting);
 });

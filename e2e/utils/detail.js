@@ -139,7 +139,6 @@ helper.attachmentTesting = async function() {
     deprecatedAttachmentsLength = await attachmentHelper.countDeprecatedAttachments();
     await attachmentHelper.showDeprecated();
     await browser.waitForAngular();
-    await browser.sleep(6000);
     newAttachmentsLength = await attachmentHelper.countAttachments();
     expect(newAttachmentsLength).to.be.equal(attachmentsLength + deprecatedAttachmentsLength);
 
