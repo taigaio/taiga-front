@@ -54,7 +54,8 @@ describe "UserTimelineItemController", ->
                     id: 2
                 },
                 value_diff: {
-                    attachments: {
+                    key: 'attachments',
+                    value: {
                         new: "fakeAttachment"
                     }
                 }

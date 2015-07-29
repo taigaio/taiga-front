@@ -25,5 +25,5 @@ div.activity-item
                 span {{::vm.timeline.getIn(['member','user', 'name'])}}
             p {{::vm.timeline.getIn(['member','role', 'name'])}}
 
-    div(ng-repeat="attachment in vm.timeline.get('attachments')")
+    div(tg-repeat="attachment in vm.timeline.get('attachments')")
             div(tg-user-timeline-attachment="attachment")

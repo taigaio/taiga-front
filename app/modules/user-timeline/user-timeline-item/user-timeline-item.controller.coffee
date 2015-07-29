@@ -20,8 +20,9 @@ class UserTimelineItemController
         if type.member
             @.timeline = @.timeline.set('member', type.member(@.timeline))
 
-        if @.timeline.hasIn(['data', 'value_diff', 'attachments', 'new'])
-            @.timeline = @.timeline.set('attachments', @.timeline.getIn(['data', 'value_diff', 'attachments', 'new']))
+        if @.timeline.getIn(['data', 'value_diff', 'key']) == 'attachments' &&
+          @.timeline.hasIn(['data', 'value_diff', 'value', 'new'])
+            @.timeline = @.timeline.set('attachments', @.timeline.getIn(['data', 'value_diff', 'value', 'new']))
 
     getObject: (timeline, event) ->
         if timeline.get('data').get(event.obj)
