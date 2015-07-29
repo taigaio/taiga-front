@@ -32,7 +32,7 @@
         "ONE_ITEM_LINE": "In item per línia",
         "NEW_BULK": "Nova inserció en grup",
         "RELATED_TASKS": "Tasques relacionades",
-        "LOGOUT": "Logout",
+        "LOGOUT": "Surt",
         "EXTERNAL_USER": "un usuari extern",
         "GENERIC_ERROR": "Un Oompa Loompas diu {{error}}.",
         "IOCAINE_TEXT": "Un poc saturat per una tasca? Fes-ho saber als teus companys clicant a Iocaina quan edites la tasca. Es possible ser inmune a aquesta (fictícia) poció mortal consumint xicotetes dòsis poc a poc, així com es possible millorar amb xicotets nous desafiaments!",
@@ -222,9 +222,9 @@
             "ISSUES": {
                 "NAME": "Incidències",
                 "VIEW_ISSUES": "Vore incidències",
-                "ADD_ISSUES": "Afegir incidències",
-                "MODIFY_ISSUES": "Modificar incidències",
-                "DELETE_ISSUES": "Esborrar incidències"
+                "ADD_ISSUES": "Afegeix incidències",
+                "MODIFY_ISSUES": "Modifica incidències",
+                "DELETE_ISSUES": "Elimina incidències"
             },
             "WIKI": {
                 "NAME": "Wiki",
@@ -326,8 +326,8 @@
     },
     "HOME": {
         "PAGE_TITLE": "Home - Taiga",
-        "PAGE_DESCRIPTION": "La home de Taiga amb els teus projectes principals, totes les històries d'usuari, tasques e incidències que tens assignades i aquelles que estàs Watching",
-        "EMPTY_WATCHING": "<strong>Segueix</strong> els projectes, històries d'usuari, tasques e incidències... de les que vols conèixer la evolució.",
+        "PAGE_DESCRIPTION": "La home de Taiga amb els teus projectes principals, totes les històries d'usuari, tasques i incidències que tens assignades i aquelles que estàs Watching",
+        "EMPTY_WATCHING": "<strong>Segueix</strong> els projectes, històries d'usuari, tasques i incidències... de les que vols conèixer l'evolució :)",
         "EMPTY_PROJECT_LIST": "No tens cap projecte encara",
         "WORKING_ON_SECTION": "En Progrés",
         "WATCHING_SECTION": "Observant"
@@ -447,7 +447,7 @@
         },
         "CUSTOM_FIELDS": {
             "TITLE": "Camps personalitzats",
-            "SUBTITLE": "Especifica els camps personalitzats del les teues históries d'usuari, tasques e incidències",
+            "SUBTITLE": "Especifiqueu els camps personalitzats del les vostres històries d'usuari, tasques i incidències",
             "US_DESCRIPTION": "Camps personalitzats d'històries d'usuari",
             "US_ADD": "Afegeix camps personalitzats en històries d'usuari",
             "TASK_DESCRIPTION": "Camps personalitzats de tasques",
@@ -476,13 +476,13 @@
         },
         "PROJECT_VALUES_SEVERITIES": {
             "TITLE": "Severities",
-            "SUBTITLE": "Especifica les severitats que tindran les teues incidències",
+            "SUBTITLE": "Especifiqueu les severitats que tindran les vostres incidències",
             "ISSUE_TITLE": "Issue severities",
             "ACTION_ADD": "Add new severity"
         },
         "PROJECT_VALUES_STATUS": {
             "TITLE": "Estat",
-            "SUBTITLE": "Especifica els estats del les teues históries d'usuari, tasques e incidències",
+            "SUBTITLE": "Especifica els estats de les vostres històries d'usuari, tasques i incidències",
             "US_TITLE": "Estats d'US",
             "TASK_TITLE": "Estats de tasques",
             "ISSUE_TITLE": "Estats d'incidències"
@@ -631,10 +631,10 @@
     "USER": {
         "PROFILE": {
             "PAGE_TITLE": "{{userFullName}} (@{{userUsername}})",
-            "EDIT": "Editar perfil",
+            "EDIT": "Edita el perfil",
             "FOLLOW": "Follow",
             "PROJECTS": "Projectes",
-            "CLOSED_US": "Closed US",
+            "CLOSED_US": "HU tancada",
             "CONTACTS": "Contacts",
             "REPORT": "Report Abuse",
             "ACTIVITY_TAB": "Activity Tab",
@@ -680,28 +680,28 @@
             "PLACEHOLDER_SEARCH": "Cerca en...",
             "ACTION_CREATE_PROJECT": "Crear projecte",
             "ACTION_IMPORT_PROJECT": "Import project",
-            "SEE_MORE_PROJECTS": "See more projects",
+            "SEE_MORE_PROJECTS": "Visualitza més projectes",
             "TITLE_CREATE_PROJECT": "Create project",
             "TITLE_IMPORT_PROJECT": "Import project",
             "TITLE_PRVIOUS_PROJECT": "Mostra projectes previs",
             "TITLE_NEXT_PROJECT": "Mostrar próxims projectes",
             "HELP_TITLE": "Taiga Support Page",
-            "HELP": "Help",
-            "FEEDBACK_TITLE": "Enviar sugerències",
-            "FEEDBACK": "Sugerències",
+            "HELP": "Ajuda",
+            "FEEDBACK_TITLE": "Enviar suggerències",
+            "FEEDBACK": "Suggerències",
             "NOTIFICATIONS_TITLE": "Edit your notification settings",
             "NOTIFICATIONS": "Notificacions",
             "ORGANIZATIONS_TITLE": "Edit your organizations",
             "ORGANIZATIONS": "Edit organizations",
             "SETTINGS_TITLE": "Edit your settings",
             "SETTINGS": "Settings",
-            "VIEW_PROFILE_TITLE": "View Profile",
-            "VIEW_PROFILE": "View Profile",
-            "EDIT_PROFILE_TITLE": "Edit your profile",
-            "EDIT_PROFILE": "Edit Profile",
+            "VIEW_PROFILE_TITLE": "Visualitza el perfil",
+            "VIEW_PROFILE": "Visualitza el perfil",
+            "EDIT_PROFILE_TITLE": "Editeu el vostre perfil",
+            "EDIT_PROFILE": "Edita el perfil",
             "CHANGE_PASSWORD_TITLE": "Canvi de contrasenya",
             "CHANGE_PASSWORD": "Canvi de contrasenya",
-            "DASHBOARD_TITLE": "Dashboard",
+            "DASHBOARD_TITLE": "Tauler",
             "DISCOVER_TITLE": "Discover trending projects",
             "DISCOVER": "Discover",
             "ACTION_REORDER": "Drag & drop to reorder"
@@ -747,7 +747,7 @@
         "FEEDBACK": {
             "TITLE": "Contans...",
             "COMMENT": "...un bug, una sugerència, algo bonic... inclús el teu pitjor malson amb Taiga.",
-            "ACTION_SEND": "Enviar sugerències"
+            "ACTION_SEND": "Enviar suggerències"
         },
         "SEARCH": {
             "TITLE": "Cerca",
@@ -791,7 +791,7 @@
         "LINK_TASKBOARD": "Panell de tasques",
         "TITLE_LINK_TASKBOARD": "Anar a panell de tasques",
         "TOTAL_POINTS": "total",
-        "ADD": "+ Afegir nova història d'usuari",
+        "ADD": "+ Afegeix una nova història d'usuari",
         "ADD_BULK": "Afegeix noves històries d'usuari en grup",
         "PROMOTED": "Aquesta US ha sigut promocionada desde:",
         "TITLE_LINK_GO_TO_ISSUE": "Anar a la incidència",
@@ -1006,7 +1006,7 @@
         "TITLE_ACTION_IOCAINE": "Un poc saturat per una tasca? Fes-ho saber als teus companys clicant a Iocaina quan edites la tasca. Es possible ser inmune a aquesta (fictícia) poció mortal consumint xicotetes dòsis poc a poc, així com es possible millorar amb xicotets nous desafiaments!"
     },
     "NOTIFICATION": {
-        "OK": "Tot està ok",
+        "OK": "Tot està bé",
         "WARNING": "Oops, ha passat algo...",
         "WARNING_TEXT": "Els teus canvis no s'han salvat!",
         "SAVED": "Els Oompa Loompas han salvat els teus canvis!",
@@ -1106,7 +1106,7 @@
         "TITLE_ACTION_UNFOLD": "Desplegar columna",
         "TITLE_ACTION_FOLD_CARDS": "Plegar targeta",
         "TITLE_ACTION_UNFOLD_CARDS": "Desplegar targetes",
-        "TITLE_ACTION_ADD_US": "Afegir història d'usuari",
+        "TITLE_ACTION_ADD_US": "Afegeix una nova història d'usuari",
         "TITLE_ACTION_ADD_BULK": "Afegir en grup",
         "ACTION_SHOW_ARCHIVED": "Mostrar arxivats",
         "ACTION_HIDE_ARCHIVED": "Amagar arxivats",
@@ -1171,7 +1171,7 @@
             "USER_PROFILE": "Perfil d'usuari",
             "CHANGE_PASSWORD": "Canvi de contrasenya",
             "NOTIFICATIONS": "Notificacions",
-            "FEEDBACK": "Sugerències",
+            "FEEDBACK": "Suggerències",
             "TITLE_AVATAR": "Preferències d'usuari"
         }
     },
@@ -1238,10 +1238,10 @@
         "US_CREATED": "{{username}} has created a new US {{obj_name}} in {{project_name}}",
         "ISSUE_CREATED": "{{username}} has created a new issue {{obj_name}} in {{project_name}}",
         "TASK_CREATED": "{{username}} has created a new task {{obj_name}} in {{project_name}}",
-        "TASK_CREATED_WITH_US": "{{username}} has created a new task {{obj_name}} in {{project_name}} which belongs to the US {{us_name}}",
+        "TASK_CREATED_WITH_US": "{{username}} ha creat una nova tasca {{obj_name}} a {{project_name}} provinent de US {{us_name}}",
         "WIKI_CREATED": "{{username}} has created a new wiki page {{obj_name}} in {{project_name}}",
         "MILESTONE_CREATED": "{{username}} has created a new sprint {{obj_name}} in {{project_name}}",
-        "NEW_PROJECT": "{{username}} created the project {{project_name}}",
+        "NEW_PROJECT": "{{username}} ha creat el projecte {{project_name}}",
         "MILESTONE_UPDATED": "{{username}} has updated the sprint {{obj_name}}",
         "US_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the US {{obj_name}}",
         "US_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the US {{obj_name}} to {{new_value}}",
