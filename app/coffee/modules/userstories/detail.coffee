@@ -87,21 +87,10 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     initializeEventHandlers: ->
         @scope.$on "related-tasks:update", =>
-            @.loadUs()
             @scope.tasks = _.clone(@scope.tasks, false)
 
         @scope.$on "attachment:create", =>
             @analytics.trackEvent("attachment", "create", "create attachment on userstory", 1)
-            @rootscope.$broadcast("object:updated")
-
-        @scope.$on "attachment:edit", =>
-            @rootscope.$broadcast("object:updated")
-
-        @scope.$on "attachment:delete", =>
-            @rootscope.$broadcast("object:updated")
-
-        @scope.$on "custom-attributes-values:edit", =>
-            @rootscope.$broadcast("object:updated")
 
         @scope.$on "comment:new", =>
             @.loadUs()
