@@ -7,7 +7,7 @@ var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 var expect = chai.expect;
 
-describe.only('wiki', function() {
+describe('wiki', function() {
     let currentWiki = {};
 
     before(async function(){
