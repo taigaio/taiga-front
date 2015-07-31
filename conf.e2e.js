@@ -18,6 +18,8 @@ exports.config = {
         full: 'e2e/full/**/*.e2e.js'
     },
     onPrepare: function() {
+        browser.driver.manage().window().maximize();
+
         browser.getCapabilities().then(function (cap) {
             browser.browserName = cap.caps_.browserName;
         });
