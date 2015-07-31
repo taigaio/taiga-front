@@ -89,4 +89,4 @@ UserChangePasswordDirective = ($rs, $confirm, $loading, $translate) ->
         link:link
     }
 
-module.directive("tgUserChangePassword", ["$tgResources", "$tgConfirm", "$tgLoading", UserChangePasswordDirective])
+module.directive("tgUserChangePassword", ["$tgResources", "$tgConfirm", "$tgLoading", "$translate", UserChangePasswordDirective])
