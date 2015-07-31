@@ -29,6 +29,8 @@ describe('Task detail', function(){
 
     it('description edition', utils.detail.descriptionTesting);
 
+    it('status edition', utils.detail.statusTesting);
+
     it('assigned to edition', utils.detail.assignedToTesting);
 
     it('watchers edition', utils.detail.watchersTesting);

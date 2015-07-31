@@ -87,6 +87,28 @@ helper.tags = function() {
     return obj;
 };
 
+helper.statusSelector = function() {
+    let el = $('.us-status');
+
+    let obj = {
+        el: el,
+
+        setStatus: async function(value) {
+            let status = el.$('.status-data');
+            await utils.popover.open(status, value);
+            return this.getSelectedStatus()
+        },
+        getSelectedStatus: async function(){
+            return el.$$('.status-status').getInnerHtml();
+        },
+        getGeneralStatus: async function(){
+            return el.$$('.us-detail-status').getInnerHtml();
+        },
+    };
+
+    return obj;
+};
+
 helper.assignedTo = function() {
     let el = $('.assigned-to');
 

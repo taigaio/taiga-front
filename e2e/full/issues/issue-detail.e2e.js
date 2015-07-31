@@ -19,6 +19,7 @@ describe('Issue detail', async function(){
         await utils.common.goToFirstIssue();
     });
 
+
     it('screenshot', async function() {
         await utils.common.takeScreenshot("issues", "detail");
     });
@@ -28,6 +29,8 @@ describe('Issue detail', async function(){
     it('tags edition', utils.detail.tagsTesting);
 
     it('description edition', utils.detail.descriptionTesting);
+
+    it('status edition', utils.detail.statusTesting);
 
     it('assigned to edition', utils.detail.assignedToTesting);
 

@@ -41,6 +41,30 @@ helper.descriptionTesting = async function() {
     expect(newDescription).to.be.not.equal(description);
 }
 
+helper.statusTesting = async function() {
+    let statusHelper = detailHelper.statusSelector();
+
+    // Current status
+    let selectedStatus = await statusHelper.getSelectedStatus();
+    let genericStatus = await statusHelper.getGeneralStatus();
+    expect(selectedStatus+"").to.be.equal(genericStatus+"");
+
+    // Status 1
+    await statusHelper.setStatus(1);
+
+    selectedStatus = await statusHelper.getSelectedStatus();
+    genericStatus = await statusHelper.getGeneralStatus();
+    expect(selectedStatus+"").to.be.equal(genericStatus+"");
+
+    // Status 2
+    await statusHelper.setStatus(2);
+
+    let newSelectedStatus = await statusHelper.getSelectedStatus();
+    let newGenericStatus = await statusHelper.getGeneralStatus();
+    expect(newSelectedStatus+"").to.be.equal(newGenericStatus+"");
+    expect(newSelectedStatus+"").to.be.not.equal(selectedStatus+"");
+    expect(newGenericStatus+"").to.be.not.equal(genericStatus+"");
+}
 
 helper.assignedToTesting = async function() {
     let assignedTo = detailHelper.assignedTo();

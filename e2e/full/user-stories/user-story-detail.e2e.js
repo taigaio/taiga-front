@@ -7,7 +7,7 @@ var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 var expect = chai.expect;
 
-describe.only('User story detail', function(){
+describe('User story detail', function(){
     let backlogUrl = "";
     before(async function(){
         await utils.common.goHome();
@@ -26,6 +26,8 @@ describe.only('User story detail', function(){
     it('tags edition', utils.detail.tagsTesting);
 
     it('description edition', utils.detail.descriptionTesting);
+
+    it('status edition', utils.detail.statusTesting);
 
     it('assigned to edition', utils.detail.assignedToTesting);
 
