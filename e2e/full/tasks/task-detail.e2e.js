@@ -11,12 +11,12 @@ describe('Task detail', function(){
     let sprintUrl = "";
 
     before(async function(){
-        utils.common.goHome();
-        utils.common.goToFirstProject();
-        utils.common.goToBacklog();
-        utils.common.goToFirstSprint();
+        await utils.common.goHome();
+        await utils.common.goToFirstProject();
+        await utils.common.goToBacklog();
+        await utils.common.goToFirstSprint();
         sprintUrl = await browser.getCurrentUrl();
-        utils.common.goToFirstTask();
+        await utils.common.goToFirstTask();
     });
 
     it('screenshot', async function() {
