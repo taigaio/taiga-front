@@ -9,11 +9,11 @@ var expect = chai.expect;
 describe('User story detail', function(){
     let backlogUrl = "";
     before(async function(){
-      utils.common.goHome();
-      utils.common.goToFirstProject();
-      utils.common.goToBacklog();
-      backlogUrl = await browser.getCurrentUrl();
-      utils.common.goToFirstUserStory();
+        await utils.common.goHome();
+        await utils.common.goToFirstProject();
+        await utils.common.goToBacklog();
+        backlogUrl = await browser.getCurrentUrl();
+        await utils.common.goToFirstUserStory();
     });
 
     it('screenshot', async function() {
