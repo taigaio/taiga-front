@@ -2,6 +2,7 @@ var common = module.exports;
 
 var fs = require('fs');
 var uuid = require('node-uuid');
+var path = require('path');
 
 common.hasClass = async function (element, cls) {
     let classes = await element.getAttribute('class');
@@ -158,10 +159,12 @@ common.waitTransitionTime = async function(el) {
     }
 
     let transition = await el.getCssValue('transition-duration');
+    let transitionDelay = await el.getCssValue('transition-delay');
 
     let time = parseFloat(transition.replace('s', '')) * 1000;
+    let timeDelay = parseFloat(transitionDelay.replace('s', '')) * 1000;
 
-    return browser.sleep(time);
+    return browser.sleep(time + timeDelay);
 };
 
 common.waitRequestAnimationFrame = function() {
@@ -252,6 +255,26 @@ common.goToFirstIssue = async function() {
     await common.link(issue);
 
     await common.waitLoader();
+};
+
+common.uploadFile = async function(inputFile, filePath) {
+    let toggleInput = function() {
+        $(arguments[0]).toggle();
+    };
+
+    let absolutePath = path.resolve(process.cwd(), 'e2e', filePath);
+
+    await browser.executeScript(toggleInput, inputFile.getWebElement());
+    await inputFile.sendKeys(absolutePath);
+    await browser.executeScript(toggleInput, inputFile.getWebElement());
+};
+
+common.topMenuOption = async function(option) {
+    let menu = $('div[tg-dropdown-user]');
+
+    await browser.actions().mouseMove(menu).perform();
+
+    return menu.$$('li').get(option).click();
 };
 
 common.goToBacklog = async function() {
