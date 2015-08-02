@@ -885,21 +885,21 @@
         "CREATE_NEW_US_EMPTY_HELP": "Możesz utworzyć nową historyjkę użytkownika",
         "EXCESS_OF_POINTS": "Nadwyżka punktów",
         "PENDING_POINTS": "Oczekujące punkty",
-        "CLOSED_POINTS": "zamknięte",
+        "CLOSED_POINTS": "zamkniętych",
         "COMPACT_SPRINT": "Kompaktuj sprint",
         "GO_TO_TASKBOARD": "Idź do tablicy zadań{{::name}}",
         "EDIT_SPRINT": "Edytuj sprint",
-        "TOTAL_POINTS": "razem",
+        "TOTAL_POINTS": "w sumie",
         "STATUS_NAME": "Nazwa statusu",
         "SORTABLE_FILTER_ERROR": "Nie możesz przenosić do backlogu kiedy filtry są otwarte",
         "DOOMLINE": "Zakres projektu [Doomline]",
         "CHART": {
             "XAXIS_LABEL": "Sprinty",
             "YAXIS_LABEL": "Punkty",
-            "OPTIMAL": "Optymalna ilość puntów oczekujących w sprincie {{sprintName}} to {{value}}",
-            "REAL": "Faktyczna ilość punktów oczekujących w sprincie {{sprintName}} to {{value}}",
-            "INCREMENT_TEAM": "Punkty dodane na podstawie wymagań zespołu w sprincie {{sprintName}} to {{value}}",
-            "INCREMENT_CLIENT": "Punkty dodane na podstawie wymagań klienta w sprincie {{sprintName}} to {{value}}"
+            "OPTIMAL": "Optymalna ilość puntów oczekujących w sprincie {{xval}} to {{yval}}",
+            "REAL": "Faktyczna ilość punktów oczekujących w sprincie {{xval}} to {{yval}}",
+            "INCREMENT_TEAM": "Punkty dodane na podstawie wymagań zespołu w sprincie {{xval}} to {{yval}}",
+            "INCREMENT_CLIENT": "Punkty dodane na podstawie wymagań klienta w sprincie {{xval}} to {{yval}}"
         },
         "TAGS": {
             "TOGGLE": "Przełącz widoczność tagów",

@@ -343,7 +343,7 @@
         "DESCRIPTION": "輸入一段簡短描述",
         "DEPRECATED": "(被棄用)",
         "DEPRECATED_FILE": "棄用?",
-        "ADD": "Add new attachment. {{maxFileSizeMsg}}",
+        "ADD": "加入新附件 {{maxFileSizeMsg}}",
         "MAX_FILE_SIZE": "[Max. size: {{maxFileSize}}]",
         "SHOW_DEPRECATED": "+ 顯示棄用的附件",
         "HIDE_DEPRECATED": "+ 隱藏棄用的附件",
@@ -411,8 +411,8 @@
             "JITSI_CHAT_ROOM": "Jitsi",
             "APPEARIN_CHAT_ROOM": "AppearIn",
             "TALKY_CHAT_ROOM": "Talky",
-            "CUSTOM_CHAT_ROOM": "Custom",
-            "URL_CHAT_ROOM": "URL of your chat room"
+            "CUSTOM_CHAT_ROOM": "自定",
+            "URL_CHAT_ROOM": "聊天室之網址"
         },
         "PROJECT_PROFILE": {
             "PAGE_TITLE": "{{sectionName}} - 專案檔案 - {{projectName}}",
@@ -430,7 +430,7 @@
         "REPORTS": {
             "TITLE": "Reports",
             "SUBTITLE": "以 CSV 格式匯出你的專案資料，並製作你的專屬報告",
-            "DESCRIPTION": "Download a CSV file or copy the generated URL and open it in your favourite text editor or spreadsheet to make your own project data reports. You will be able to visualize and analyze all your data easily.",
+            "DESCRIPTION": "下載CSV檔案格式是複制生成網址到常用的文字編輯軟體/試算表，以保存你的專案資料報告。你可以輕易地視覺化和分析你的資料。",
             "HELP": "使用者故事預設欄位",
             "REGENERATE_TITLE": "改變網址",
             "REGENERATE_SUBTITLE": "你將要改變CSV資料的連結網址，之前的網址將失效。你確定要這樣做嗎?"
@@ -454,8 +454,8 @@
             "TASK_ADD": "在任務中加入客制欄位",
             "ISSUE_DESCRIPTION": "問題客製化欄位",
             "ISSUE_ADD": "在問題中加入客制欄位",
-            "FIELD_TYPE_TEXT": "Text",
-            "FIELD_TYPE_MULTI": "Multi-line"
+            "FIELD_TYPE_TEXT": "單行文字",
+            "FIELD_TYPE_MULTI": "多行"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - 專案數值 - {{projectName}}",
@@ -896,10 +896,10 @@
         "CHART": {
             "XAXIS_LABEL": "衝刺任務",
             "YAXIS_LABEL": "點數",
-            "OPTIMAL": "Optimal pending points for sprint \"{{sprintName}}\" should be {{value}}",
-            "REAL": "Real pending points for sprint \"{{sprintName}}\" is {{value}}",
-            "INCREMENT_TEAM": "Incremented points by team requirements for sprint \"{{sprintName}}\" is {{value}}",
-            "INCREMENT_CLIENT": "Incremented points by client requirements for sprint \"{{sprintName}}\" is {{value}}"
+            "OPTIMAL": "最適化的衝刺任務\"{{sprintName}}\"待定點數應為  {{value}}",
+            "REAL": "真實的衝刺任務\"{{sprintName}}\"待定點數為  {{value}}",
+            "INCREMENT_TEAM": "團隊要求的衝刺任務\"{{sprintName}}\"漸增點數為  {{value}}",
+            "INCREMENT_CLIENT": "客戶要求的衝刺任務\"{{sprintName}}\"漸增點數為  {{value}}"
         },
         "TAGS": {
             "TOGGLE": "切換標籤可見度",
@@ -917,7 +917,7 @@
             "CLOSED_TASKS": "已關閉<br />任務",
             "IOCAINE_DOSES": "毒物（全新任務挑戰）<br />劑量",
             "SHOW_STATISTICS_TITLE": "顯示統計",
-            "TOGGLE_BAKLOG_GRAPH": "Show/Hide burndown graph"
+            "TOGGLE_BAKLOG_GRAPH": "顯示/隱藏 剩餘工作量圖"
         },
         "SUMMARY": {
             "PROJECT_POINTS": "專案<br/> 點數",
@@ -1191,8 +1191,8 @@
             "PLACEHOLDER_BIO": "請自我介紹",
             "LANGUAGE": "語言",
             "LANGUAGE_DEFAULT": "--  使用設預語言 -- ",
-            "THEME": "Theme",
-            "THEME_DEFAULT": "-- use default theme --"
+            "THEME": "主題",
+            "THEME_DEFAULT": "-- 使用預設主題--"
         }
     },
     "WIZARD": {
@@ -1244,14 +1244,14 @@
         "NEW_PROJECT": "{{username}} 創建專案 {{project_name}}",
         "MILESTONE_UPDATED": "{{username}}更新衝刺任務 {{obj_name}} ",
         "US_UPDATED": "{{username}} 已更新 {{obj_name}}使用者故事之 \"{{field_name}}\"屬性。",
-        "US_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the US {{obj_name}} to {{new_value}}",
-        "US_UPDATED_POINTS": "{{username}} has updated '{{role_name}}' points of the US {{obj_name}} to {{new_value}}",
+        "US_UPDATED_WITH_NEW_VALUE": "{{username}} 已更新了 {{obj_name}} 使用者故事的\"{{field_name}}\"屬性到{{new_value}}",
+        "US_UPDATED_POINTS": "{{username}} 已更新了 {{obj_name}} 的使用者故事\"{{field_name}}\"點數為{{new_value}}",
         "ISSUE_UPDATED": "{{username}} 更新了{{obj_name}}問題的 \"{{field_name}}\" 屬性",
-        "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the issue {{obj_name}} to {{new_value}}",
-        "TASK_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} to {{new_value}}",
-        "TASK_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} to {{new_value}}",
+        "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} 已更新了 {{obj_name}} 問題的\"{{field_name}}\"屬性到{{new_value}}",
+        "TASK_UPDATED": "{{username}} 已更新了 {{obj_name}} 使用者故事的\"{{field_name}}\"屬性到{{new_value}}",
+        "TASK_UPDATED_WITH_NEW_VALUE": "{{username}} 已更新了 {{obj_name}} 任務\"{{field_name}}\"的屬性到{{new_value}}",
         "TASK_UPDATED_WITH_US": "{{username}} 更新了 {{obj_name}} 任務之\"{{field_name}}\" 屬性，其為 {{us_name}} 之使用者故事",
-        "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the US {{us_name}} to {{new_value}}",
+        "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} 已更新了 {{obj_name}} 下的 {{us_name}} 使用者故事\"{{field_name}}\"屬性到{{new_value}}",
         "WIKI_UPDATED": "\n{{username}} 更新了維基頁{{obj_name}}",
         "NEW_COMMENT_US": "{{username}} 評論了 {{obj_name}}使用者故事",
         "NEW_COMMENT_ISSUE": "{{username}}評論了此問題 {{obj_name}}",
