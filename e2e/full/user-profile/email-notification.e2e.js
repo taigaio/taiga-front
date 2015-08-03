@@ -6,7 +6,7 @@ var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 var expect = chai.expect;
 
-describe.only('email notification', function() {
+describe('email notification', function() {
     before(async function(){
         browser.get('http://localhost:9001/user-settings/mail-notifications');
 
