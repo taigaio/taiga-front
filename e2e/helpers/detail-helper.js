@@ -99,10 +99,10 @@ helper.statusSelector = function() {
             return this.getSelectedStatus()
         },
         getSelectedStatus: async function(){
-            return el.$$('.status-status').getInnerHtml();
+            return el.$('.status-status').getInnerHtml();
         },
         getGeneralStatus: async function(){
-            return el.$$('.us-detail-status').getInnerHtml();
+            return el.$('.us-detail-status').getInnerHtml();
         },
     };
 
