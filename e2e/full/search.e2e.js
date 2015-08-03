@@ -6,7 +6,7 @@ var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 var expect = chai.expect;
 
-describe.only('search page', function() {
+describe('search page', function() {
     before(async function(){
         browser.get('http://localhost:9001/');
 
