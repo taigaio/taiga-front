@@ -109,6 +109,10 @@
     .icon {
         transition: color .3s linear, opacity .3s linear;
     }
+    .loading {
+        bottom: .5rem;
+        position: absolute;
+    }
     .icon-edit,
     .icon-drag-h {
         @extend %large;
@@ -120,7 +124,8 @@
             color: $card-dark;
         }
     }
-    .icon-edit {
+    .icon-edit,
+    .loading {
         right: 1rem;
     }
     .icon-drag-h {

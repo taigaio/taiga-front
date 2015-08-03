@@ -104,27 +104,29 @@ WikiNavDirective = ($tgrepo, $log, $location, $confirm, $navUrls, $analytics, $l
                     target = angular.element(event.currentTarget)
                     newLink = target.val()
 
-                    $loading.start($el.find(".new"))
+                    currentLoading = $loading()
+                        .target($el.find(".new"))
+                        .start()
 
                     promise = $tgrepo.create("wiki-links", {project: $scope.projectId, title: newLink, href: slugify(newLink)})
                     promise.then ->
                         $analytics.trackEvent("wikilink", "create", "create wiki link", 1)
                         loadPromise = $ctrl.loadWikiLinks()
                         loadPromise.then ->
-                            $loading.finish($el.find(".new"))
+                            currentLoading.finish()
                             $el.find(".new").addClass("hidden")
                             $el.find(".new input").val('')
                             $el.find(".add-button").show()
                             render($scope.wikiLinks)
                         loadPromise.then null, ->
-                            $loading.finish($el.find(".new"))
+                            currentLoading.finish()
                             $el.find(".new").addClass("hidden")
                             $el.find(".new input").val('')
                             $el.find(".add-button").show()
                             $confirm.notify("error", "Error loading wiki links")
 
                     promise.then null, (error) ->
-                        $loading.finish($el.find(".new"))
+                        currentLoading.finish()
                         $el.find(".new input").val(newLink)
                         $el.find(".new input").focus().select()
                         if error?.__all__?[0]?

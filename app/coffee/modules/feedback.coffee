@@ -39,17 +39,19 @@ FeedbackDirective = ($lightboxService, $repo, $confirm, $loading, feedbackServic
             if not form.validate()
                 return
 
-            $loading.start(submitButton)
+            currentLoading = $loading()
+                .target(submitButton)
+                .start()
 
             promise = $repo.create("feedback", $scope.feedback)
 
             promise.then (data) ->
-                $loading.finish(submitButton)
+                currentLoading.finish()
                 $lightboxService.close($el)
                 $confirm.notify("success", "\\o/ we'll be happy to read your")
 
             promise.then null, ->
-                $loading.finish(submitButton)
+                currentLoading.finish()
                 $confirm.notify("error")
 
         submitButton = $el.find(".submit-button")

@@ -10,7 +10,7 @@ div.row.us-item-row(ng-repeat="us in userstories track by us.id", tg-bind-scope,
                 span(ng-bind="us.subject")
             div.us-settings
                 a.icon.icon-edit(tg-check-permission="modify_us", href="",
-                                 ng-click="ctrl.editUserStory(us)", title="{{'COMMON.EDIT' | translate}}")
+                                 ng-click="ctrl.editUserStory(us.project, us.ref, $event)", title="{{'COMMON.EDIT' | translate}}")
                 a.icon.icon-delete(tg-check-permission="delete_us", href="",
                                    ng-click="ctrl.deleteUserStory(us)", title="{{'COMMON.DELETE' | translate}}")
 

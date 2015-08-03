@@ -239,18 +239,21 @@ IssueStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $t
             issue = $model.$modelValue.clone()
             issue.status = statusId
 
+            currentLoading = $loading()
+                .target($el.find(".level-name"))
+                .start()
+
             onSuccess = ->
                 $confirm.notify("success")
                 $model.$setViewValue(issue)
                 $rootScope.$broadcast("object:updated")
-                $loading.finish($el.find(".level-name"))
+                currentLoading.finish()
             onError = ->
                 $confirm.notify("error")
                 issue.revert()
                 $model.$setViewValue(issue)
-                $loading.finish($el.find(".level-name"))
+                currentLoading.finish()
 
-            $loading.start($el.find(".level-name"))
 
             $repo.save(issue).then(onSuccess, onError)
 
@@ -323,18 +326,21 @@ IssueTypeButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $tem
             issue = $model.$modelValue.clone()
             issue.type = type
 
+            currentLoading = $loading()
+                .target($el.find(".level-name"))
+                .start()
+
             onSuccess = ->
                 $confirm.notify("success")
                 $model.$setViewValue(issue)
                 $rootScope.$broadcast("object:updated")
-                $loading.finish($el.find(".level-name"))
+                currentLoading.finish()
 
             onError = ->
                 $confirm.notify("error")
                 issue.revert()
                 $model.$setViewValue(issue)
-                $loading.finish($el.find(".level-name"))
-            $loading.start($el.find(".level-name"))
+                currentLoading.finish()
 
             $repo.save(issue).then(onSuccess, onError)
 
@@ -409,18 +415,20 @@ IssueSeverityButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, 
             issue = $model.$modelValue.clone()
             issue.severity = severity
 
+            currentLoading = $loading()
+                .target($el.find(".level-name"))
+                .start()
+
             onSuccess = ->
                 $confirm.notify("success")
                 $model.$setViewValue(issue)
                 $rootScope.$broadcast("object:updated")
-                $loading.finish($el.find(".level-name"))
+                currentLoading.finish()
             onError = ->
                 $confirm.notify("error")
                 issue.revert()
                 $model.$setViewValue(issue)
-                $loading.finish($el.find(".level-name"))
-
-            $loading.start($el.find(".level-name"))
+                currentLoading.finish()
 
             $repo.save(issue).then(onSuccess, onError)
 
@@ -496,18 +504,20 @@ IssuePriorityButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, 
             issue = $model.$modelValue.clone()
             issue.priority = priority
 
+            currentLoading = $loading()
+                .target($el.find(".level-name"))
+                .start()
+
             onSuccess = ->
                 $confirm.notify("success")
                 $model.$setViewValue(issue)
                 $rootScope.$broadcast("object:updated")
-                $loading.finish($el.find(".level-name"))
+                currentLoading.finish()
             onError = ->
                 $confirm.notify("error")
                 issue.revert()
                 $model.$setViewValue(issue)
-                $loading.finish($el.find(".level-name"))
-
-            $loading.start($el.find(".level-name"))
+                currentLoading.finish()
 
             $repo.save(issue).then(onSuccess, onError)
 
