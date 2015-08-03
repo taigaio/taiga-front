@@ -10,6 +10,7 @@
 - Ability to choose a theme (thanks to [@astagi](https://github.com/astagi))
 - i18n.
   - Add polish (pl) translation.
+  - Add russian (ru) translation.
 
 ### Misc
 - Improve performance: Show cropped images in timelines.
