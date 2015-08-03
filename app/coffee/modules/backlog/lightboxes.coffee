@@ -71,17 +71,19 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading,
                 promise = $repo.save(newSprint)
                 broadcastEvent = "sprintform:edit:success"
 
-            $loading.start(submitButton)
+            currentLoading = $loading()
+                .target(submitButton)
+                .start()
 
             promise.then (data) ->
-                $loading.finish(submitButton)
+                currentLoading.finish()
                 $scope.sprintsCounter += 1 if createSprint
                 $rootscope.$broadcast(broadcastEvent, data)
 
                 lightboxService.close($el)
 
             promise.then null, (data) ->
-                $loading.finish(submitButton)
+                currentLoading.finish()
 
                 form.setErrors(data)
                 if data._error_message

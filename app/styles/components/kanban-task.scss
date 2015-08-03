@@ -87,6 +87,10 @@
     .task-name {
         @extend %bold;
     }
+    .loading {
+        bottom: .5rem;
+        position: absolute;
+    }
     .icon-edit,
     .icon-drag-h {
         @extend %large;
@@ -132,6 +136,7 @@
     .task-name {
         word-wrap: break-word;
     }
+    .loading,
     .icon-edit {
         bottom: .2rem;
         right: .5rem;

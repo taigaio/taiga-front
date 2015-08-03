@@ -114,11 +114,13 @@ ProjectProfileDirective = ($repo, $confirm, $loading, $navurls, $location, proje
 
             return if not form.validate()
 
-            $loading.start(submitButton)
+            currentLoading = $loading()
+                .target(submitButton)
+                .start()
 
             promise = $repo.save($scope.project)
             promise.then ->
-                $loading.finish(submitButton)
+                currentLoading.finish()
                 $confirm.notify("success")
                 newUrl = $navurls.resolve("project-admin-project-profile-details", {
                     project: $scope.project.slug
@@ -130,7 +132,7 @@ ProjectProfileDirective = ($repo, $confirm, $loading, $navurls, $location, proje
                 projectService.fetchProject()
 
             promise.then null, (data) ->
-                $loading.finish(submitButton)
+                currentLoading.finish()
                 form.setErrors(data)
                 if data._error_message
                     $confirm.notify("error", data._error_message)
@@ -157,15 +159,17 @@ ProjectDefaultValuesDirective = ($repo, $confirm, $loading) ->
 
             return if not form.validate()
 
-            $loading.start(submitButton)
+            currentLoading = $loading()
+                .target(submitButton)
+                .start()
 
             promise = $repo.save($scope.project)
             promise.then ->
-                $loading.finish(submitButton)
+                currentLoading.finish()
                 $confirm.notify("success")
 
             promise.then null, (data) ->
-                $loading.finish(target)
+                currentLoading.finish()
                 form.setErrors(data)
                 if data._error_message
                     $confirm.notify("error", data._error_message)
@@ -191,19 +195,21 @@ ProjectModulesDirective = ($repo, $confirm, $loading, projectService) ->
         form = $el.find("form").checksley()
         submit = =>
             return if not form.validate()
-            target = angular.element(".admin-functionalities a.button-green")
-            $loading.start(target)
+            target = angular.element(".admin-functionalities .submit-button")
+            currentLoading = $loading()
+                .target(target)
+                .start()
 
             promise = $repo.save($scope.project)
             promise.then ->
-                $loading.finish(target)
+                currentLoading.finish()
                 $confirm.notify("success")
                 $scope.$emit("project:loaded", $scope.project)
 
                 projectService.fetchProject()
 
             promise.then null, (data) ->
-                $loading.finish(target)
+                currentLoading.finish()
                 $confirm.notify("error", data._error_message)
 
         $el.on "submit", "form", (event) ->

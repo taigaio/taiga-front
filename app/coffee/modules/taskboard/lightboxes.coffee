@@ -80,11 +80,13 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootscope, $loading, lightboxSer
                 promise = $repo.save($scope.task)
                 broadcastEvent = "taskform:edit:success"
 
-            $loading.start(submitButton)
+            currentLoading = $loading()
+                .target(submitButton)
+                .start()
 
             # FIXME: error handling?
             promise.then (data) ->
-                $loading.finish(submitButton)
+                currentLoading.finish()
                 lightboxService.close($el)
                 $rootscope.$broadcast(broadcastEvent, data)
 
@@ -107,7 +109,9 @@ CreateBulkTasksDirective = ($repo, $rs, $rootscope, $loading, lightboxService) -
             if not form.validate()
                 return
 
-            $loading.start(submitButton)
+            currentLoading = $loading()
+                .target(submitButton)
+                .start()
 
             data = $scope.form.data
             projectId = $scope.projectId
@@ -116,13 +120,13 @@ CreateBulkTasksDirective = ($repo, $rs, $rootscope, $loading, lightboxService) -
 
             promise = $rs.tasks.bulkCreate(projectId, sprintId, usId, data)
             promise.then (result) ->
-                $loading.finish(submitButton)
+                currentLoading.finish()
                 $rootscope.$broadcast("taskform:bulk:success", result)
                 lightboxService.close($el)
 
             # TODO: error handling
             promise.then null, ->
-                $loading.finish(submitButton)
+                currentLoading.finish()
                 console.log "FAIL"
 
         $scope.$on "taskform:bulk", (ctx, sprintId, usId)->

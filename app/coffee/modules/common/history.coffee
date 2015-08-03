@@ -354,16 +354,19 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $c
 
             $el.find(".comment-list").addClass("activeanimation")
 
+            currentLoading = $loading()
+                .target(target)
+                .start()
+
             onSuccess = ->
                 $ctrl.loadHistory(type, objectId).finally ->
-                    $loading.finish(target)
+                    currentLoading.finish()
 
             onError = ->
-                $loading.finish(target)
+                currentLoading.finish()
                 $confirm.notify("error")
 
             model = $scope.$eval($attrs.ngModel)
-            $loading.start(target)
 
             $ctrl.repo.save(model).then(onSuccess, onError)
 
@@ -376,7 +379,7 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $c
 
         # Events
 
-        $el.on "click", ".add-comment input.button-green", debounce 2000, (event) ->
+        $el.on "click", ".add-comment button.button-green", debounce 2000, (event) ->
             event.preventDefault()
 
             target = angular.element(event.currentTarget)

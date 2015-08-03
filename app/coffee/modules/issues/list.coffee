@@ -631,12 +631,14 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template, $
             if event.keyCode == 13
                 target = angular.element(event.currentTarget)
                 newFilter = target.val()
-                $loading.start($el.find(".new"))
+                currentLoading = $loading()
+                    .target($el.find(".new"))
+                    .start()
                 promise = $ctrl.saveCurrentFiltersTo(newFilter)
                 promise.then ->
                     loadPromise = $ctrl.loadMyFilters()
                     loadPromise.then (filters) ->
-                        $loading.finish($el.find(".new"))
+                        currentLoading.finish()
                         $scope.filters.myFilters = filters
 
                         currentfilterstype = $el.find("h2 a.subfilter span.title").prop('data-type')
@@ -647,11 +649,11 @@ IssuesFiltersDirective = ($log, $location, $rs, $confirm, $loading, $template, $
                         $el.find('.save-filters').show()
 
                     loadPromise.then null, ->
-                        $loading.finish($el.find(".new"))
+                        currentLoading.finish()
                         $confirm.notify("error", "Error loading custom filters")
 
                 promise.then null, ->
-                    $loading.finish($el.find(".new"))
+                    currentLoading.finish()
                     $el.find(".my-filter-name").val(newFilter).focus().select()
                     $confirm.notify("error", "Filter not saved")
 

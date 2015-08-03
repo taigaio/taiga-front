@@ -58,17 +58,20 @@ CreateIssueDirective = ($repo, $confirm, $rootscope, lightboxService, $loading) 
             if not form.validate()
                 return
 
-            $loading.start(submitButton)
+            currentLoading = $loading()
+                .target(submitButton)
+                .start()
+
             promise = $repo.create("issues", $scope.issue)
 
             promise.then (data) ->
-                $loading.finish(submitButton)
+                currentLoading.finish()
                 $rootscope.$broadcast("issueform:new:success", data)
                 lightboxService.close($el)
                 $confirm.notify("success")
 
             promise.then null, ->
-                $loading.finish(submitButton)
+                currentLoading.finish()
                 $confirm.notify("error")
 
 
@@ -103,20 +106,22 @@ CreateBulkIssuesDirective = ($repo, $rs, $confirm, $rootscope, $loading, lightbo
             if not form.validate()
                 return
 
-            $loading.start(submitButton)
+            currentLoading = $loading()
+                .target(submitButton)
+                .start()
 
             data = $scope.new.bulk
             projectId = $scope.new.projectId
 
             promise = $rs.issues.bulkCreate(projectId, data)
             promise.then (result) ->
-                $loading.finish(submitButton)
+                currentLoading.finish()
                 $rootscope.$broadcast("issueform:new:success", result)
                 lightboxService.close($el)
                 $confirm.notify("success")
 
             promise.then null, ->
-                $loading.finish(submitButton)
+                currentLoading.finish()
                 $confirm.notify("error")
 
         submitButton = $el.find(".submit-button")

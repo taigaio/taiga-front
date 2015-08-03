@@ -454,15 +454,17 @@ GithubWebhooksDirective = ($repo, $confirm, $loading) ->
 
             return if not form.validate()
 
-            $loading.start(submitButton)
+            currentLoading = $loading()
+                .target(submitButton)
+                .start()
 
             promise = $repo.saveAttribute($scope.github, "github")
             promise.then ->
-                $loading.finish(submitButton)
+                currentLoading.finish()
                 $confirm.notify("success")
 
             promise.then null, (data) ->
-                $loading.finish(submitButton)
+                currentLoading.finish()
                 form.setErrors(data)
                 if data._error_message
                     $confirm.notify("error", data._error_message)
@@ -488,16 +490,18 @@ GitlabWebhooksDirective = ($repo, $confirm, $loading) ->
 
             return if not form.validate()
 
-            $loading.start(submitButton)
+            currentLoading = $loading()
+                .target(submitButton)
+                .start()
 
             promise = $repo.saveAttribute($scope.gitlab, "gitlab")
             promise.then ->
-                $loading.finish(submitButton)
+                currentLoading.finish()
                 $confirm.notify("success")
                 $scope.$emit("project:modules:reload")
 
             promise.then null, (data) ->
-                $loading.finish(submitButton)
+                currentLoading.finish()
                 form.setErrors(data)
                 if data._error_message
                     $confirm.notify("error", data._error_message)
@@ -523,16 +527,18 @@ BitbucketWebhooksDirective = ($repo, $confirm, $loading) ->
 
             return if not form.validate()
 
-            $loading.start(submitButton)
+            currentLoading = $loading()
+                .target(submitButton)
+                .start()
 
             promise = $repo.saveAttribute($scope.bitbucket, "bitbucket")
             promise.then ->
-                $loading.finish(submitButton)
+                currentLoading.finish()
                 $confirm.notify("success")
                 $scope.$emit("project:modules:reload")
 
             promise.then null, (data) ->
-                $loading.finish(submitButton)
+                currentLoading.finish()
                 form.setErrors(data)
                 if data._error_message
                     $confirm.notify("error", data._error_message)

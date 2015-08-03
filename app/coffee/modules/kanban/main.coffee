@@ -404,7 +404,7 @@ module.directive("tgKanbanArchivedStatusIntro", ["$translate", KanbanArchivedSta
 ## Kanban User Story Directive
 #############################################################################
 
-KanbanUserstoryDirective = ($rootscope) ->
+KanbanUserstoryDirective = ($rootscope, $loading, $rs) ->
     link = ($scope, $el, $attrs, $model) ->
         $el.disableSelection()
 
@@ -418,8 +418,18 @@ KanbanUserstoryDirective = ($rootscope) ->
             if $el.find(".icon-edit").hasClass("noclick")
                 return
 
-            $scope.$apply ->
-                $rootscope.$broadcast("usform:edit", $model.$modelValue)
+            target = $(event.target)
+
+            currentLoading = $loading()
+                .target(target)
+                .timeout(200)
+                .removeClasses("icon-edit")
+                .start()
+
+            us = $model.$modelValue
+            $rs.userstories.getByRef(us.project, us.ref).then (editingUserStory) =>
+                $rootscope.$broadcast("usform:edit", editingUserStory)
+                currentLoading.finish()
 
         $scope.$on "$destroy", ->
             $el.off()
@@ -430,7 +440,7 @@ KanbanUserstoryDirective = ($rootscope) ->
         require: "ngModel"
     }
 
-module.directive("tgKanbanUserstory", ["$rootScope", KanbanUserstoryDirective])
+module.directive("tgKanbanUserstory", ["$rootScope", "$tgLoading", "$tgResources", KanbanUserstoryDirective])
 
 #############################################################################
 ## Kanban Squish Column Directive

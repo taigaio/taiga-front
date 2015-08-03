@@ -109,16 +109,18 @@ CreateMembersDirective = ($rs, $rootScope, $confirm, $loading, lightboxService, 
         submit = debounce 2000, (event) =>
             event.preventDefault()
 
-            $loading.start(submitButton)
+            currentLoading = $loading()
+                .target(submitButton)
+                .start()
 
             onSuccess = (data) ->
-                $loading.finish(submitButton)
+                currentLoading.finish()
                 lightboxService.close($el)
                 $confirm.notify("success")
                 $rootScope.$broadcast("membersform:new:success")
 
             onError = (data) ->
-                $loading.finish(submitButton)
+                currentLoading.finish()
                 lightboxService.close($el)
                 $confirm.notify("error")
                 $rootScope.$broadcast("membersform:new:error")

@@ -245,21 +245,21 @@ TaskStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $co
             task = $model.$modelValue.clone()
             task.status = status
 
-            $model.$setViewValue(task)
+            currentLoading = $loading()
+                .target($el.find(".level-name"))
+                .start()
 
             onSuccess = ->
+                $model.$setViewValue(task)
                 $confirm.notify("success")
                 $rootScope.$broadcast("object:updated")
-                $loading.finish($el.find(".level-name"))
+                currentLoading.finish()
 
             onError = ->
                 $confirm.notify("error")
-                task.revert()
-                $model.$setViewValue(task)
-                $loading.finish($el.find(".level-name"))
+                currentLoading.finish()
 
-            $loading.start($el.find(".level-name"))
-            $repo.save($model.$modelValue).then(onSuccess, onError)
+            $repo.save(task).then(onSuccess, onError)
 
         $el.on "click", ".status-data", (event) ->
             event.preventDefault()
@@ -327,22 +327,22 @@ TaskIsIocaineButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $qqueue
             task = $model.$modelValue.clone()
             task.is_iocaine = is_iocaine
 
-            $model.$setViewValue(task)
-            $loading.start($el.find('label'))
+            currentLoading = $loading()
+                .target($el.find('label'))
+                .start()
 
             promise = $tgrepo.save(task)
 
             promise.then ->
+                $model.$setViewValue(task)
                 $confirm.notify("success")
                 $rootscope.$broadcast("object:updated")
 
             promise.then null, ->
-                task.revert()
-                $model.$setViewValue(task)
                 $confirm.notify("error")
 
             promise.finally ->
-                $loading.finish($el.find('label'))
+                currentLoading.finish()
 
         $el.on "click", ".is-iocaine", (event) ->
             return if not isEditable()

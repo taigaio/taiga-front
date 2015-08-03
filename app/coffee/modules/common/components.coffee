@@ -314,18 +314,20 @@ AssignedToDirective = ($rootscope, $confirm, $repo, $loading, $qqueue, $template
         save = $qqueue.bindAdd (userId) =>
             $model.$modelValue.assigned_to = userId
 
-            $loading.start($el)
+            currentLoading = $loading()
+                .target($el)
+                .start()
 
             promise = $repo.save($model.$modelValue)
             promise.then ->
-                $loading.finish($el)
+                currentLoading.finish()
                 $confirm.notify("success")
                 renderAssignedTo($model.$modelValue)
                 $rootscope.$broadcast("object:updated")
             promise.then null, ->
                 $model.$modelValue.revert()
                 $confirm.notify("error")
-                $loading.finish($el)
+                currentLoading.finish()
 
             return promise
 
@@ -406,9 +408,12 @@ BlockButtonDirective = ($rootscope, $loading, $template) ->
 
         $el.on "click", ".item-unblock", (event) ->
             event.preventDefault()
-            $loading.start($el.find(".item-unblock"))
+            currentLoading = $loading()
+                .target($el.find(".item-unblock"))
+                .start()
+
             finish = ->
-                $loading.finish($el.find(".item-unblock"))
+                currentLoading.finish()
 
             $rootscope.$broadcast("unblock", $model.$modelValue, finish)
 
@@ -484,7 +489,9 @@ EditableSubjectDirective = ($rootscope, $repo, $confirm, $loading, $qqueue, $tem
         save = $qqueue.bindAdd (subject) =>
             $model.$modelValue.subject = subject
 
-            $loading.start($el.find('.save-container'))
+            currentLoading = $loading()
+                .target($el.find('.save-container'))
+                .start()
 
             promise = $repo.save($model.$modelValue)
             promise.then ->
@@ -495,7 +502,7 @@ EditableSubjectDirective = ($rootscope, $repo, $confirm, $loading, $qqueue, $tem
             promise.then null, ->
                 $confirm.notify("error")
             promise.finally ->
-                $loading.finish($el.find('.save-container'))
+                currentLoading.finish()
 
             return promise
 
@@ -569,7 +576,10 @@ EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading,
         save = $qqueue.bindAdd (description) =>
             $model.$modelValue.description = description
 
-            $loading.start($el.find('.save-container'))
+            currentLoading = $loading()
+                .target($el.find('.save-container'))
+                .start()
+
             promise = $repo.save($model.$modelValue)
             promise.then ->
                 $confirm.notify("success")
@@ -579,7 +589,7 @@ EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading,
             promise.then null, ->
                 $confirm.notify("error")
             promise.finally ->
-                $loading.finish($el.find('.save-container'))
+                currentLoading.finish()
 
         $el.on "mouseup", ".view-description", (event) ->
             # We want to dettect the a inside the div so we use the target and

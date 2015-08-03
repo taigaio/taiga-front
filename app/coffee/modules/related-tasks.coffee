@@ -33,16 +33,18 @@ RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope, $loading, $tem
         saveTask = debounce 2000, (task) ->
             task.subject = $el.find('input').val()
 
-            $loading.start($el.find('.task-name'))
+            currentLoading = $loading()
+                .target($el.find('.task-name'))
+                .start()
 
             promise = $repo.save(task)
             promise.then =>
-                $loading.finish($el.find('.task-name'))
+                currentLoading.finish()
                 $confirm.notify("success")
                 $rootscope.$broadcast("related-tasks:update")
 
             promise.then null, =>
-                $loading.finish($el.find('.task-name'))
+                currentLoading.finish()
                 $el.find('input').val(task.subject)
                 $confirm.notify("error")
             return promise
@@ -126,17 +128,20 @@ RelatedTaskCreateFormDirective = ($repo, $compile, $confirm, $tgmodel, $loading,
             $scope.newTask.status = $scope.project.default_task_status
             $scope.newTask.assigned_to = null
 
-            $loading.start($el.find('.task-name'))
+            currentLoading = $loading()
+                .target($el.find('.task-name'))
+                .start()
+
             promise = $repo.create("tasks", task)
             promise.then ->
                 $analytics.trackEvent("task", "create", "create task on userstory", 1)
-                $loading.finish($el.find('.task-name'))
+                currentLoading.finish()
                 $scope.$emit("related-tasks:add")
                 $confirm.notify("success")
 
             promise.then null, ->
                 $el.find('input').val(task.subject)
-                $loading.finish($el.find('.task-name'))
+                currentLoading.finish()
                 $confirm.notify("error")
 
             return promise

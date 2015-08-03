@@ -21,18 +21,81 @@
 
 module = angular.module("taigaCommon")
 
-class TgLoadingService extends taiga.Service
-    start: (target) ->
-        if not target.hasClass('loading')
-            target.data('loading-old-content', target.html())
-            target.addClass('loading')
-            target.html("<img class='loading-spinner' src='/svg/spinner-circle.svg' alt='loading...' />")
+TgLoadingService = ->
+    spinner = "<img class='loading-spinner' src='/svg/spinner-circle.svg' alt='loading...' />"
 
-    finish: (target) ->
-        if target.hasClass('loading')
-            oldContent = target.data('loading-old-content')
-            target.data('loading-old-content', null)
-            target.html(oldContent)
-            target.removeClass('loading')
+    return () ->
+        service = {
+            settings: {
+                target: null,
+                classes: []
+                timeout: 0
+            },
+            target: (target) ->
+                service.settings.target = target
 
-module.service("$tgLoading", TgLoadingService)
+                return service
+            removeClasses: (classess...) ->
+                service.settings.classes = classess
+
+                return service
+            timeout: (timeout) ->
+                service.settings.timeout = timeout
+
+                return service
+
+            start: ->
+                target = service.settings.target
+                service.settings.classes.map (className) -> target.removeClass(className)
+
+                # The loader is shown after that quantity of milliseconds
+                timeoutId = setTimeout (->
+                    if not target.hasClass('loading')
+                        service.settings.oldContent = target.html()
+
+                        target.addClass('loading')
+                        target.html(spinner)
+                    ), service.settings.timeout
+
+                service.settings.timeoutId = timeoutId
+
+                return service
+
+            finish: ->
+                target = service.settings.target
+                timeoutId = service.settings.timeoutId
+
+                if timeoutId
+                    clearTimeout(timeoutId)
+
+                    removeClasses = service.settings.classes
+                    removeClasses.map (className) -> service.settings.target.addClass(className)
+
+                    target.html(service.settings.oldContent)
+                    target.removeClass('loading')
+
+                return service
+        }
+
+        return service
+
+module.factory("$tgLoading", TgLoadingService)
+
+LoadingDirective = ($loading) ->
+    link = ($scope, $el, attr) ->
+        currentLoading = null
+
+        $scope.$watch attr.tgLoading, (showLoading) =>
+
+            if showLoading
+                currentLoading = $loading()
+                    .target($el)
+                    .start()
+             else
+                 currentLoading.finish()
+
+    return {
+        link:link
+    }
+
+module.directive("tgLoading", ["$tgLoading", LoadingDirective])

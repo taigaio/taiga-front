@@ -67,15 +67,17 @@ UserChangePasswordDirective = ($rs, $confirm, $loading, $translate) ->
                 $confirm.notify('error', $translate.instant("CHANGE_PASSWORD.ERROR_PASSWORD_MATCH"))
                 return
 
-            $loading.start(submitButton)
+            currentLoading = $loading()
+                .target(submitButton)
+                .start()
 
             promise = $rs.userSettings.changePassword($scope.currentPassword, $scope.newPassword1)
             promise.then =>
-                $loading.finish(submitButton)
+                currentLoading.finish()
                 $confirm.notify('success')
 
             promise.then null, (response) =>
-                $loading.finish(submitButton)
+                currentLoading.finish()
                 $confirm.notify('error', response.data._error_message)
 
         submitButton = $el.find(".submit-button")

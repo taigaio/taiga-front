@@ -234,7 +234,12 @@ EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $
             onError = ->
                 $confirm.notify("error")
 
-            $loading.start($el.find('.save-container'))
+            console.log $el.find('.save-container')
+
+            currentLoading = $loading()
+                .removeClasses("icon-floppy")
+                .target($el.find('.icon-floppy'))
+                .start()
 
             if wiki.id?
                 promise = $repo.save(wiki).then(onSuccess, onError)
@@ -242,7 +247,7 @@ EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $
                 promise = $repo.create("wiki", wiki).then(onSuccess, onError)
 
             promise.finally ->
-                $loading.finish($el.find('.save-container'))
+                currentLoading.finish()
 
         $el.on "mousedown", ".view-wiki-content", (event) ->
             target = angular.element(event.target)

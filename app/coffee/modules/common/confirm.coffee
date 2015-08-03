@@ -64,9 +64,12 @@ class ConfirmService extends taiga.Service
         el.on "click.confirm-dialog", "a.button-green", debounce 2000, (event) =>
             event.preventDefault()
             target = angular.element(event.currentTarget)
-            @loading.start(target)
+            currentLoading = @loading()
+                .target(target)
+                .start()
+
             defered.resolve (ok=true) =>
-                @loading.finish(target)
+                currentLoading.finish()
                 if ok
                     @.hide(el)
 
@@ -110,11 +113,13 @@ class ConfirmService extends taiga.Service
         el.on "click.confirm-dialog", "a.button-green", debounce 2000, (event) =>
             event.preventDefault()
             target = angular.element(event.currentTarget)
-            @loading.start(target)
+            currentLoading = @loading()
+                .target(target)
+                .start()
             defered.resolve {
                 selected: choicesField.val()
                 finish: =>
-                    @loading.finish(target)
+                    currentLoading.finish()
                     @.hide(el)
             }
 
