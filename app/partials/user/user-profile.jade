@@ -31,14 +31,14 @@ div.wrapper(tg-user-profile, ng-controller="UserSettingsController as ctrl",
                 div.data
                     fieldset
                         label(for="username", translate="USER_PROFILE.FIELD.USERNAME")
-                        input(type="text", name="username", id="username",
+                        input(type="text", name="username", id="username", tg-capslock,
                               placeholder="{{'USER_PROFILE.FIELD.USERNAME' | translate}}",
                               ng-model="user.username", data-required="true", data-maxlength="255",
                               data-regexp="^[\\w.-]+$")
 
                     fieldset
                         label(for="email", translate="USER_PROFILE.FIELD.EMAIL")
-                        input(type="text", name="email", id="email",
+                        input(type="text", name="email", id="email", tg-capslock,
                               placeholder="{{'USER_PROFILE.FIELD.EMAIL' | translate}}",
                               ng-model="user.email", data-type="email", data-required="true",
                               data-maxlength="255")

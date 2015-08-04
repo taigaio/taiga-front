@@ -1,7 +1,7 @@
 div.register-form-container(tg-register)
     form.register-form
         fieldset
-            input(type="text", name="username", ng-model="data.username",
+            input(type="text", name="username", ng-model="data.username", tg-capslock,
                   data-required="true", data-maxlength="255", data-regexp="^[\\w.-]+$",
                   placeholder="{{'REGISTER_FORM.PLACEHOLDER_NAME' | translate}}")
 
@@ -11,12 +11,12 @@ div.register-form-container(tg-register)
                   placeholder="{{'REGISTER_FORM.PLACEHOLDER_FULL_NAME' | translate}}")
 
         fieldset
-            input(type="text", name="email", ng-model="data.email",
+            input(type="text", name="email", ng-model="data.email", tg-capslock,
                   data-required="true", data-maxlength="255",
                   placeholder="{{'REGISTER_FORM.PLACEHOLDER_EMAIL' | translate}}")
 
         fieldset
-            input(type="password", name="password", ng-model="data.password",
+            input(type="password", name="password", ng-model="data.password", tg-capslock,
                 data-required="true", data-minlength="4",
                 placeholder="{{'REGISTER_FORM.PLACEHOLDER_PASSWORD' | translate}}")
 

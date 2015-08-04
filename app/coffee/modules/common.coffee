@@ -229,3 +229,56 @@ Template = ($templateCache) ->
     }
 
 module.factory("$tgTemplate", ["$templateCache", Template])
+
+#############################################################################
+## Permission directive, hide elements when necessary
+#############################################################################
+
+Capslock = ($translate) ->
+    link = ($scope, $el, $attrs) ->
+        open = false
+
+        warningIcon = $('<div>')
+            .addClass('icon')
+            .addClass('icon-capslock')
+            .attr('title', $translate.instant('COMMON.CAPSLOCK_WARNING'))
+
+        hideIcon = () ->
+            warningIcon.fadeOut () ->
+                open = false
+
+                $(this).remove()
+
+        showIcon = () ->
+            return if open
+
+            top = $el.position().top
+            left = $el.position().left + $el.outerWidth(true)
+
+            warningIcon.css({
+                display: 'none',
+                position: 'absolute',
+                top: top,
+                left: left - 25
+                lineHeight: $el.outerHeight() + 'px',
+                marginLeft: 0
+            })
+
+            warningIcon
+                .insertAfter($el)
+                .fadeIn()
+
+            open = true
+
+        $el.on 'keyup.capslock', (e) ->
+            if $el.val() == $el.val().toLowerCase()
+                hideIcon()
+            else
+                showIcon()
+
+        $scope.$on "$destroy", ->
+            $el.off('.capslock')
+
+    return {link:link}
+
+module.directive("tgCapslock", ["$translate", Capslock])

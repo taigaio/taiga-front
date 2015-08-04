@@ -1,7 +1,7 @@
 form.register-form
     p.form-header(translate="REGISTER_FORM.TITLE")
     fieldset
-        input(type="text", name="username", ng-model="dataRegister.username",
+        input(type="text", tg-capslock, name="username", ng-model="dataRegister.username",
               data-required="true", data-maxlength="255", data-regexp="^[\\w.-]+$",
               placeholder="{{'REGISTER_FORM.PLACEHOLDER_NAME' | translate}}")
 
@@ -11,13 +11,13 @@ form.register-form
               placeholder="{{'REGISTER_FORM.PLACEHOLDER_FULL_NAME' | translate}}")
 
     fieldset
-        input(type="text", name="email", ng-model="dataRegister.email",
+        input(type="text", tg-capslock,  name="email", ng-model="dataRegister.email",
               data-required="true", data-maxlength="255",
               placeholder="{{'REGISTER_FORM.PLACEHOLDER_EMAIL' | translate}}")
 
     fieldset
-        input(type="password", name="password", ng-model="dataRegister.password", data-required="true",
-            placeholder="{{'REGISTER_FORM.PLACEHOLDER_PASSWORD' | translate}}")
+        input(type="password", tg-capslock, name="password", ng-model="dataRegister.password", data-required="true",
+          placeholder="{{'REGISTER_FORM.PLACEHOLDER_PASSWORD' | translate}}")
 
     fieldset
         a.button-register.button-blackish.submit-button(type="submit", title="{{'REGISTER_FORM.ACTION_SIGN_UP' | translate}}", translate="REGISTER_FORM.ACTION_SIGN_UP")
