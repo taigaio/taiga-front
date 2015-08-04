@@ -283,6 +283,7 @@ AttachmentDirective = ($template, $compile, $translate) ->
         saveAttachment = ->
             attachment.description = $el.find("input[name='description']").val()
             attachment.is_deprecated = $el.find("input[name='is-deprecated']").prop("checked")
+            attachment.isCreatedRightNow = false
 
             $scope.$apply ->
                 $ctrl.updateAttachment(attachment).then ->
@@ -297,7 +298,7 @@ AttachmentDirective = ($template, $compile, $translate) ->
             if event.keyCode == 13
                 saveAttachment()
             else if event.keyCode == 27
-                render(attachment, false)
+                $scope.$apply -> render(attachment, false)
 
         $el.on "click", "a.editable-settings.icon-delete", (event) ->
             event.preventDefault()
