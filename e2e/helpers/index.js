@@ -6,3 +6,4 @@ module.exports.wiki = require("./wiki-helper");
 module.exports.detail = require("./detail-helper");
 module.exports.usDetail = require("./us-detail-helper");
 module.exports.taskDetail = require("./task-detail-helper");
+module.exports.adminAttributes = require("./admin-attributes-helper");

@@ -101,14 +101,58 @@ common.dragEnd = function(elm) {
     }, 1000);
 };
 
-common.drag = function(elm, location) {
-    return browser
-        .actions()
-        .dragAndDrop(elm, location)
-        .perform()
-        .then(function() {
-            return common.dragEnd();
-        });
+common.drag = function(elm, elm2, duration=500) {
+    return new Promise(async function(resolve) {
+        let init = await elm.getLocation();
+        let dest = await elm2.getLocation();
+
+        let startTime = new Date().getTime();
+        let fromX = init.x;
+        let toX = dest.x;
+
+        let fromY = init.y;
+        let toY = dest.y;
+
+        let deltaX = toX - fromX;
+        let deltaY = toY - fromY;
+
+        let lastPos = {x: fromX, y: fromY};
+
+        browser.actions()
+            .mouseMove(elm)
+            .mouseDown()
+            .perform();
+
+        let interval = setInterval(() => {
+            let elapsed = new Date().getTime() - startTime;
+            let factor = Math.min(elapsed / duration, 1);
+
+            let newX = parseInt(fromX + deltaX * factor, 10);
+            let newY = parseInt(fromY + deltaY * factor, 10);
+
+            let pos = {};
+            pos.x = newX - lastPos.x;
+            pos.y = newY - lastPos.y;
+
+            lastPos.x = newX;
+            lastPos.y = newY;
+
+            if (lastPos.x === toX && lastPos.y === toY) {
+                clearInterval(interval);
+
+                browser.actions()
+                    .mouseMove(pos)
+                    .mouseUp()
+                    .perform()
+                    .then(common.dragEnd)
+                    .then(resolve);
+            } else {
+                browser.actions()
+                    .mouseMove(pos)
+                    .perform();
+            }
+        }, 100);
+    });
 };
 
 common.transitionend = function(selector, property) {
