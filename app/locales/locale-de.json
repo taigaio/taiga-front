@@ -36,6 +36,7 @@
         "EXTERNAL_USER": "ein externer Benutzer",
         "GENERIC_ERROR": "Eins unserer Helferlein sagt {{error}}.",
         "IOCAINE_TEXT": "Fühlen Sie sich von einer Aufgabe etwas erdrückt? Stellen Sie sicher, dass andere davon erfahren, indem Sie auf Locaine klicken, wenn Sie eine Aufgabe ändern. Es ist möglich, gegen dieses (fiktive) tödliche Gift immun zu werden, indem man kleine Mengen über einen Zeitraum hinweg einnimmt. Genauso, wie es möglich ist, besser in dem zu werden, was man tut, indem man gelegentlich zusätzliche Herausforderungen annimmt! ",
+        "CAPSLOCK_WARNING": "Be careful! You're writing with capital letters and this input is case sensitive.",
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Dieser Wert scheint ungültig zu sein. ",
             "TYPE_EMAIL": "Dieser Wert sollte eine gültige E-Mail Adresse enthalten.",
@@ -343,7 +344,7 @@
         "DESCRIPTION": "Geben Sie eine kurze Beschreibung ein",
         "DEPRECATED": "(verworfen)",
         "DEPRECATED_FILE": "Verworfen?",
-        "ADD": "Add new attachment. {{maxFileSizeMsg}}",
+        "ADD": "Neuen Anhang hinzufügen. {{maxFileSizeMsg}}",
         "MAX_FILE_SIZE": "[Max. Größe: {{maxFileSize}}]",
         "SHOW_DEPRECATED": "+ verworfene Anhänge zeigen",
         "HIDE_DEPRECATED": "- verworfene Anhänge verbergen",
