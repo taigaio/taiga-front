@@ -188,11 +188,13 @@ describe('backlog', function() {
 
     it('drag backlog us', async function() {
         let dragableElements = backlogHelper.userStories();
+
         let dragElement = dragableElements.get(1);
+        let dragElementHandler = dragElement.$('.icon-drag-v');
 
         let draggedElementRef = await backlogHelper.getUsRef(dragElement);
 
-        await utils.common.drag(dragElement, dragableElements.get(0));
+        await utils.common.drag(dragElementHandler, dragableElements.get(0));
         await browser.waitForAngular();
 
         let firstElementTextRef = await backlogHelper.getUsRef(dragableElements.get(0));
@@ -200,7 +202,7 @@ describe('backlog', function() {
         expect(firstElementTextRef).to.be.equal(draggedElementRef);
     });
 
-    utils.common.browserSkip('firefox', 'reorder multiple us', async function() {
+    it('reorder multiple us', async function() {
         let dragableElements = backlogHelper.userStories();
 
         let count = await dragableElements.count();
@@ -209,17 +211,18 @@ describe('backlog', function() {
 
         //element 1
         let dragElement = dragableElements.get(count - 1);
-        let dragElementHandler = dragElement.$('.icon-drag-v');
         dragElement.$('input[type="checkbox"]').click();
+        let ref1 = await backlogHelper.getUsRef(dragElement);
         draggedRefs.push(await backlogHelper.getUsRef(dragElement));
 
         //element 2
         dragElement = dragableElements.get(count - 2);
         dragElement.$('input[type="checkbox"]').click();
+        let ref2 = await backlogHelper.getUsRef(dragElement);
         draggedRefs.push(await backlogHelper.getUsRef(dragElement));
 
-        await utils.common.drag(dragElementHandler, dragableElements.get(0));
-        await browser.waitForAngular();
+        await utils.common.drag(dragElement, dragableElements.get(0));
+        await browser.sleep(200);
 
         let elementRef1 = await backlogHelper.getUsRef(dragableElements.get(0));
         let elementRef2 = await backlogHelper.getUsRef(dragableElements.get(1));
@@ -228,51 +231,44 @@ describe('backlog', function() {
         expect(elementRef1).to.be.equal(draggedRefs[1]);
     });
 
-    utils.common.browserSkip('firefox', 'drag us to milestone', async function() {
-        let sprint = backlogHelper.sprints().get(1);
-
-        let dragableElements = backlogHelper.userStories();
-        let dragElement = dragableElements.get(0);
-
-        let draggedElementRef = await backlogHelper.getUsRef(dragElement);
-
-        await utils.common.drag(dragElement, sprint);
-        await browser.waitForAngular();
-
-        let firstElementSprint = await backlogHelper.getSprintUsertories(sprint).first();
-        let firstElementSprintRef = await backlogHelper.getUsRef(firstElementSprint);
-
-        expect(draggedElementRef).to.be.equal(firstElementSprintRef);
-    });
-
-    utils.common.browserSkip('firefox', 'drag multiple us to milestone', async function() {
-        let sprint = backlogHelper.sprints().get(1);
+    it('drag multiple us to milestone', async function() {
+        let sprint = backlogHelper.sprints().get(0);
+        let initUssSprintCount = await backlogHelper.getSprintUsertories(sprint).count();
 
         let dragableElements = backlogHelper.userStories();
 
         let draggedRefs = [];
 
-        //elefirment 1
+        // the us 1 and 2 are selected on the previous test
+
         let dragElement = dragableElements.get(0);
-        dragElement.$('input[type="checkbox"]').click();
-        draggedRefs.push(await backlogHelper.getUsRef(dragElement));
+        let dragElementHandler = dragElement.$('.icon-drag-v');
 
-        //element 2
-        dragElement = dragableElements.get(1);
-        dragElement.$('input[type="checkbox"]').click();
-        draggedRefs.push(await backlogHelper.getUsRef(dragElement));
-
-        await utils.common.drag(dragElement, sprint);
+        await utils.common.drag(dragElementHandler, sprint);
         await browser.waitForAngular();
 
-        let elementSprint1 = await backlogHelper.getSprintUsertories(sprint).get(0);
-        let elementSprintRef1 = await backlogHelper.getUsRef(elementSprint1);
+        let ussSprintCount = await backlogHelper.getSprintUsertories(sprint).count();
 
-        let elementSprint2 = await backlogHelper.getSprintUsertories(sprint).get(1);
-        let elementSprintRef2 = await backlogHelper.getUsRef(elementSprint2);
+        expect(ussSprintCount).to.be.equal(initUssSprintCount + 2);
+    });
 
-        expect(elementSprintRef1).to.be.equal(draggedRefs[0]);
-        expect(elementSprintRef2).to.be.equal(draggedRefs[1]);
+    it('drag us to milestone', async function() {
+        let sprint = backlogHelper.sprints().get(0);
+
+        let dragableElements = backlogHelper.userStories();
+        let dragElement = dragableElements.get(0);
+        let dragElementHandler = dragElement.$('.icon-drag-v');
+
+        let draggedElementRef = await backlogHelper.getUsRef(dragElement);
+
+        let initUssSprintCount = await backlogHelper.getSprintUsertories(sprint).count();
+
+        await utils.common.drag(dragElementHandler, sprint);
+        await browser.waitForAngular();
+
+        let ussSprintCount = await backlogHelper.getSprintUsertories(sprint).count();
+
+        expect(ussSprintCount).to.be.equal(initUssSprintCount + 1);
     });
 
     it('move to current sprint button', async function() {
@@ -312,16 +308,18 @@ describe('backlog', function() {
         let sprint1 = backlogHelper.sprints().get(0);
         let sprint2 = backlogHelper.sprints().get(1);
 
+        let initUssSprintCount = await backlogHelper.getSprintUsertories(sprint2).count();
+
         let dragElement = backlogHelper.getSprintUsertories(sprint1).get(0);
-        let dragElementRef = await backlogHelper.getUsRef(dragElement);
 
         await utils.common.drag(dragElement, sprint2);
         await browser.waitForAngular();
 
         let firstElement = backlogHelper.getSprintUsertories(sprint2).get(0);
-        let firstElementRef = await backlogHelper.getUsRef(firstElement);
 
-        expect(dragElementRef).to.be.equal(firstElementRef);
+        let ussSprintCount = await backlogHelper.getSprintUsertories(sprint2).count();
+
+        expect(ussSprintCount).to.be.equal(initUssSprintCount + 1);
     });
 
     it('select us with SHIFT', async function() {
@@ -515,6 +513,9 @@ describe('backlog', function() {
             let htmlChanges = await utils.common.outerHtmlChanges('.backlog-table-body');
 
             $$('.filters-cats a').get(1).click();
+
+            await browser.waitForAngular();
+
             $$('.filter-list a').first().click();
 
             await htmlChanges();

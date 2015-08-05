@@ -102,57 +102,34 @@ common.dragEnd = function(elm) {
 };
 
 common.drag = function(elm, elm2, duration=500) {
-    return new Promise(async function(resolve) {
-        let init = await elm.getLocation();
-        let dest = await elm2.getLocation();
+    // this code doesn't have sense (jquery ui + scroll drag + selenium = :( )
+    await browser.actions()
+        .mouseMove(elm)
+        .mouseDown()
+        .perform();
 
-        let startTime = new Date().getTime();
-        let fromX = init.x;
-        let toX = dest.x;
+    await browser.actions()
+        .mouseMove(elm2)
+        .perform();
 
-        let fromY = init.y;
-        let toY = dest.y;
+    await browser.sleep(20);
 
-        let deltaX = toX - fromX;
-        let deltaY = toY - fromY;
+    await browser.actions()
+        .mouseMove({x: 10, y: -10}) // fire jqueryui mousemove event always
+        .perform();
 
-        let lastPos = {x: fromX, y: fromY};
+    await browser.sleep(20);
 
-        browser.actions()
-            .mouseMove(elm)
-            .mouseDown()
-            .perform();
+    await browser.actions()
+        .mouseMove(elm2)
+        .perform();
 
-        let interval = setInterval(() => {
-            let elapsed = new Date().getTime() - startTime;
-            let factor = Math.min(elapsed / duration, 1);
+    await browser.sleep(20);
 
-            let newX = parseInt(fromX + deltaX * factor, 10);
-            let newY = parseInt(fromY + deltaY * factor, 10);
-
-            let pos = {};
-            pos.x = newX - lastPos.x;
-            pos.y = newY - lastPos.y;
-
-            lastPos.x = newX;
-            lastPos.y = newY;
-
-            if (lastPos.x === toX && lastPos.y === toY) {
-                clearInterval(interval);
-
-                browser.actions()
-                    .mouseMove(pos)
-                    .mouseUp()
-                    .perform()
-                    .then(common.dragEnd)
-                    .then(resolve);
-            } else {
-                browser.actions()
-                    .mouseMove(pos)
-                    .perform();
-            }
-        }, 100);
-    });
+    return browser.actions()
+        .mouseUp()
+        .perform()
+        .then(common.dragEnd);
 };
 
 common.transitionend = function(selector, property) {
