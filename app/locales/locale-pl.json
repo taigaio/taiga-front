@@ -15,8 +15,8 @@
         "COPY_TO_CLIPBOARD": "Skopiuj do schowka: Ctrl+C",
         "EDIT": "Edycja",
         "DRAG": "Przeciągnij",
-        "TAG_LINE": "Twoje zwinne, wolne, otwarto źródłowe narzędzie do zarządzania projektem",
-        "TAG_LINE_2": "KOCHAM TWÓJ PROJEKT",
+        "TAG_LINE": "Twoje zwinne, wolne, otwartoźródłowe narzędzie do zarządzania projektem",
+        "TAG_LINE_2": "Pokochaj swój projekt!",
         "BLOCK": "Blokuj",
         "UNBLOCK": "Odblokuj",
         "BLOCKED": "Zablokowane",
@@ -36,7 +36,7 @@
         "EXTERNAL_USER": "zewnętrzny użytkownik",
         "GENERIC_ERROR": "Umpa Lumpa mówi {{error}}.",
         "IOCAINE_TEXT": "Czujesz się trochę przytłoczony zadaniem? Daj znać innym klikając na ikonę Iokainy podczas edycji zadania. Jest szansa, że staniesz się odporny na tą (fikcyjną ;) ) śmiertelną truciznę biorąc małe dawki. Z pewnością jednak da Ci ona dodatkowego kopa, który pomoże w pokonaniu nowego wyzwania i staniu się lepszym w tym co robisz!",
-        "CAPSLOCK_WARNING": "Be careful! You're writing with capital letters and this input is case sensitive.",
+        "CAPSLOCK_WARNING": "UWAGA! Klawisz CAPSLOCK jest aktywny.",
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Nieprawidłowa wartość",
             "TYPE_EMAIL": "Podaj prawidłowy adres email.",
@@ -285,13 +285,13 @@
         "PAGE_DESCRIPTION": "Podaj twoją nazwę użytkownika lub e-mail by zdobyć nowe hasło i odzyskać dostęp do Taiga."
     },
     "FORGOT_PASSWORD_FORM": {
-        "TITLE": "Ups, czy nie zapomniałaś swojego hasła?",
+        "TITLE": "Ups, czyżbyś zapomniał hasło?",
         "SUBTITLE": "Podaj twoją nazwę użytkownika lub e-mail by zdobyć nowe",
         "PLACEHOLDER_FIELD": "Login albo e-mail",
         "ACTION_RESET_PASSWORD": "Resetuj hasło",
         "LINK_CANCEL": "Nie, zabierz mnie stąd. Chyba je pamiętam.",
-        "SUCCESS": "<strong>Sprawdź swoją skrzynkę!</strong><br />Wysłaliśmy Ci wiadomość e-mail z instrukcją jak ustawić nowe hasło",
-        "ERROR": "NAsze Umpa Lumpy twierdzą, że nie jesteś jeszcze zarejestrowany."
+        "SUCCESS": "<strong>Sprawdź swoją skrzynkę!</strong><br />Wysłaliśmy Ci wiadomość e-mail z instrukcją jak ustawić nowe hasło.",
+        "ERROR": "Nasze Umpa Lumpy twierdzą, że nie jesteś jeszcze zarejestrowany."
     },
     "CHANGE_PASSWORD": {
         "PAGE_TITLE": "Zmień hasło - Taiga",
