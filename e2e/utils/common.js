@@ -101,7 +101,7 @@ common.dragEnd = function(elm) {
     }, 1000);
 };
 
-common.drag = function(elm, elm2, duration=500) {
+common.drag = async function(elm, elm2) {
     // this code doesn't have sense (jquery ui + scroll drag + selenium = :( )
     await browser.actions()
         .mouseMove(elm)
