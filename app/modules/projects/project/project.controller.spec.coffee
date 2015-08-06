@@ -1,4 +1,4 @@
-describe.only "ProjectController", ->
+describe "ProjectController", ->
     $controller = null
     $q = null
     provide = null

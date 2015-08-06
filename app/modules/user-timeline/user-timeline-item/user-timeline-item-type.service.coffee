@@ -87,27 +87,34 @@ timelineType = (timeline, event) ->
             description: (timeline) ->
                 return $(timeline.getIn(['data', 'comment_html'])).text()
         },
-        { # UsToMilestone
+        { # UsMove
             check: (timeline, event) ->
-                if timeline.hasIn(['data', 'value_diff']) &&
-                      timeline.getIn(['data', 'value_diff', 'key']) == 'milestone' &&
+                return timeline.hasIn(['data', 'value_diff']) &&
+                      timeline.getIn(['data', 'value_diff', 'key']) == 'moveInBacklog' &&
+                      timeline.hasIn(['data', 'value_diff', 'value', 'backlog_order']) &&
                       event.type == 'change'
-                    return timeline.getIn(['data', 'value_diff', 'value']).get(0) == null
-
-                return false
-            key: 'TIMELINE.US_ADDED_MILESTONE',
-            translate_params: ['username', 'obj_name', 'sprint_name']
+            key: 'TIMELINE.US_MOVED',
+            translate_params: ['username', 'obj_name']
         },
         { # UsToBacklog
             check: (timeline, event) ->
                 if timeline.hasIn(['data', 'value_diff']) &&
-                      timeline.getIn(['data', 'value_diff', 'key']) == 'milestone' &&
+                      timeline.getIn(['data', 'value_diff', 'key']) == 'moveInBacklog' &&
                       event.type == 'change'
-                    return timeline.getIn(['data', 'value_diff', 'value']).get(1) == null
+
+                    return timeline.getIn(['data', 'value_diff', 'value', 'milestone']).get(1) == null
 
                 return false
             key: 'TIMELINE.US_REMOVED_FROM_MILESTONE',
             translate_params: ['username', 'obj_name']
+        },
+        { # UsToMilestone
+            check: (timeline, event) ->
+                return timeline.hasIn(['data', 'value_diff']) &&
+                      timeline.getIn(['data', 'value_diff', 'key']) == 'moveInBacklog' &&
+                      event.type == 'change'
+            key: 'TIMELINE.US_ADDED_MILESTONE',
+            translate_params: ['username', 'obj_name', 'sprint_name']
         },
         { # Blocked
             check: (timeline, event) ->

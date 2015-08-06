@@ -15,13 +15,15 @@ class UserTimelineService extends taiga.Service
         'priority',
         'type',
         'attachments',
-        'milestone',
         'is_iocaine',
         'content_diff',
         'name',
         'estimated_finish',
         'estimated_start',
-        'blocked'
+        # customs
+        'blocked',
+        'moveInBacklog',
+        'milestone'
     ]
 
     _invalid: [
@@ -78,6 +80,8 @@ class UserTimelineService extends taiga.Service
         newdata = Immutable.List()
 
         response.get('data').forEach (item) ->
+            event_type = item.get('event_type').split(".")
+
             data = item.get('data')
             values_diff = data.get('values_diff')
 
@@ -85,6 +89,11 @@ class UserTimelineService extends taiga.Service
                 # blocked/unblocked change must be a single change
                 if values_diff.has('is_blocked')
                     values_diff = Immutable.Map({'blocked': values_diff})
+
+                if values_diff.has('milestone')
+                    values_diff = Immutable.Map({'moveInBacklog': values_diff})
+                else if event_type[1] == 'milestone'
+                     values_diff = Immutable.Map({'milestone': values_diff})
 
                 values_diff.forEach (value, key) ->
                     obj = Immutable.Map({

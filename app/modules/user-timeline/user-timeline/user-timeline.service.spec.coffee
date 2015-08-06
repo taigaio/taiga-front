@@ -74,7 +74,6 @@ describe "tgUserTimelineService", ->
                 event_type: "xx.tt.create",
                 data: {
                     values_diff: {
-                        "fake2": "xx",
                         "milestone": "xx"
                     }
                 }
@@ -157,10 +156,10 @@ describe "tgUserTimelineService", ->
 
         mocks.userTimelinePaginationSequence.generate = (config) ->
             return config.fetch().then (res) ->
-                expect(res.get('data').size).to.be.equal(14)
+                expect(res.get('data').size).to.be.equal(13)
 
                 items = config.filter(res.get('data'))
-                expect(items.size).to.be.equal(5)
+                expect(items.size).to.be.equal(6)
 
                 return true
 
@@ -180,10 +179,10 @@ describe "tgUserTimelineService", ->
 
         mocks.userTimelinePaginationSequence.generate = (config) ->
             return config.fetch().then (res) ->
-                expect(res.get('data').size).to.be.equal(14)
+                expect(res.get('data').size).to.be.equal(13)
 
                 items = config.filter(res.get('data'))
-                expect(items.size).to.be.equal(5)
+                expect(items.size).to.be.equal(6)
 
                 return true
 
@@ -203,10 +202,10 @@ describe "tgUserTimelineService", ->
 
         mocks.userTimelinePaginationSequence.generate = (config) ->
             return config.fetch().then (res) ->
-                expect(res.get('data').size).to.be.equal(14)
+                expect(res.get('data').size).to.be.equal(13)
 
                 items = config.filter(res.get('data'))
-                expect(items.size).to.be.equal(5)
+                expect(items.size).to.be.equal(6)
 
                 return true
 
