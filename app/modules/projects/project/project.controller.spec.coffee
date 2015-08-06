@@ -1,4 +1,4 @@
-describe "ProjectController", ->
+describe.only "ProjectController", ->
     $controller = null
     $q = null
     provide = null
@@ -69,6 +69,7 @@ describe "ProjectController", ->
     it "set local user", () ->
         project = Immutable.fromJS({
             name: "projectName"
+            members: []
         })
 
         mocks.projectService.getProjectBySlug.withArgs("project-slug").promise().resolve(project)
@@ -82,7 +83,8 @@ describe "ProjectController", ->
         $scope = $rootScope.$new()
         project = Immutable.fromJS({
             name: "projectName"
-            description: "projectDescription"
+            description: "projectDescription",
+            members: []
         })
 
         mocks.translate.instant
@@ -100,17 +102,24 @@ describe "ProjectController", ->
             done()
         )
 
-    it "set local project variable", (done) ->
+    it "set local project variable with active members", (done) ->
         project = Immutable.fromJS({
-            name: "projectName"
+            name: "projectName",
+            members: [
+                {is_active: true},
+                {is_active: true},
+                {is_active: true},
+                {is_active: false}
+            ]
         })
 
         mocks.projectService.getProjectBySlug.withArgs("project-slug").promise().resolve(project)
 
         ctrl = $controller("Project")
 
-        setTimeout ( () ->
-            expect(ctrl.project).to.be.equal(project)
+        setTimeout (() ->
+            expect(ctrl.project.get('members').size).to.be.equal(3)
+
             done()
         )
 

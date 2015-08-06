@@ -16,6 +16,11 @@ class ProjectController
             .getProjectBySlug(projectSlug)
             .then (project) =>
                 @.project = project
+
+                members = @.project.get('members').filter (member) -> member.get('is_active')
+
+                @.project = @.project.set('members', members)
+
                 @._setMeta(@.project)
 
             .catch (xhr) =>
