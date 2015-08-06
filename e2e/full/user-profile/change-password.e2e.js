@@ -9,10 +9,15 @@ var expect = chai.expect;
 describe('change password', function() {
     before(async function(){
         browser.get('http://localhost:9001/user-settings/user-change-password');
-
         await utils.common.waitLoader();
 
         utils.common.takeScreenshot('edit-user-profile', 'change-password');
+    });
+
+    beforeEach(async function() {
+        browser.get('http://localhost:9001/user-settings/user-change-password');
+
+        await utils.common.waitLoader();
     });
 
     it('retype different', async function() {
@@ -43,6 +48,11 @@ describe('change password', function() {
         $('button[type="submit"]').click();
 
         expect(utils.notifications.success.open()).to.be.eventually.equal(true);
+    });
+
+    after(async function() {
+        browser.get('http://localhost:9001/user-settings/user-change-password');
+        await utils.common.waitLoader();
 
         //restore
         await $('#current-password').sendKeys('aaabbb');
@@ -50,5 +60,7 @@ describe('change password', function() {
         await $('#retype-password').sendKeys('123123');
 
         $('button[type="submit"]').click();
-    });
+
+        await browser.waitForAngular();
+    })
 });
