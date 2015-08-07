@@ -359,9 +359,6 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
                     r = @scope.userstories.indexOf(us)
                     @scope.userstories.splice(r, 1)
 
-                    r = @scope.userstories.indexOf(us)
-                    @scope.userstories.splice(r, 1)
-
         # From sprint to sprint
         else
             us.milestone = newSprintId for us in usList
