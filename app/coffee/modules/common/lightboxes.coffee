@@ -39,13 +39,14 @@ class LightboxService extends taiga.Service
         lightboxContent = $el.children().not(".close")
         lightboxContent.hide()
 
-        $el.css('display', 'flex')
+        @animationFrame.add ->
+            $el.css('display', 'flex')
 
-        @animationFrame.add =>
+        @animationFrame.add ->
             $el.addClass("open")
 
-            @animationFrame.add ->
-                $el.find('input,textarea').first().focus()
+        @animationFrame.add ->
+            $el.find('input,textarea').first().focus()
 
         @animationFrame.add =>
             lightboxContent.show()
