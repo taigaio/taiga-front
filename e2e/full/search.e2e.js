@@ -8,14 +8,12 @@ var expect = chai.expect;
 
 describe('search page', function() {
     before(async function(){
-        browser.get('http://localhost:9001/');
+        browser.get('http://localhost:9001/project/project-0/');
 
         await utils.common.waitLoader();
     });
 
     it('lightbox', async function() {
-        await utils.common.goToFirstProject();
-
         $('#nav-search').click();
 
         let searchLb = $('div[tg-search-box]');

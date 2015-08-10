@@ -158,3 +158,7 @@ helper.getSprintsRefs = function(sprint) {
 helper.getSprintsTitles = function() {
     return $$('div[tg-backlog-sprint="sprint"] .sprint-name span').getText();
 };
+
+helper.goBackFilters = function() {
+    return $$('.filters-step-cat .breadcrumb a').first().click();
+};

@@ -505,15 +505,15 @@ describe('backlog', function() {
             newUsCount = await backlogHelper.userStories().count();
 
             expect(newUsCount).to.be.equal(usCount);
+
+            backlogHelper.goBackFilters();
         });
 
         it('filter by tags', async function() {
             let usCount = await backlogHelper.userStories().count();
-
             let htmlChanges = await utils.common.outerHtmlChanges('.backlog-table-body');
 
             $$('.filters-cats a').get(1).click();
-
             await browser.waitForAngular();
 
             $$('.filter-list a').first().click();

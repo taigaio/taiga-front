@@ -232,10 +232,8 @@ helper.block = function() {
         block: function() {
             el.$('.item-block').click();
         },
-
         unblock: async function() {
             el.$('.item-unblock').click();
-            await browser.waitForAngular();
         }
     };
 
@@ -251,7 +249,7 @@ helper.blockLightbox = function() {
             return utils.lightbox.open(el);
         },
         waitClose: function() {
-            return utils.lightbox.close(el);
+            return utils.notifications.success.close();
         },
         fill: function(text) {
             el.$('textarea').sendKeys(text);
