@@ -1259,6 +1259,7 @@
         "NEW_COMMENT_TASK": "{{username}} 評論了此任務{{obj_name}}",
         "NEW_MEMBER": "{{project_name}} 有新成員",
         "US_ADDED_MILESTONE": "{{username}} 增加使用者故事 {{obj_name}} 給 {{sprint_name}}",
+        "US_MOVED": "{{username}} has moved the US {{obj_name}}",
         "US_REMOVED_FROM_MILESTONE": "{{username}} 新增使用者故事 {{obj_name}} 到待辦工作優先列表",
         "BLOCKED": "{{username}} 封鎖了 {{obj_name}}",
         "UNBLOCKED": "{{username}} 解除了封鎖 {{obj_name}}",

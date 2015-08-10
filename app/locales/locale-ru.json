@@ -1259,6 +1259,7 @@
         "NEW_COMMENT_TASK": "{{username}} прокомментировал задачу {{obj_name}}",
         "NEW_MEMBER": "У {{project_name}} появился новый участник",
         "US_ADDED_MILESTONE": "{{username}} добавил ПИ {{obj_name}} для {{sprint_name}}",
+        "US_MOVED": "{{username}} has moved the US {{obj_name}}",
         "US_REMOVED_FROM_MILESTONE": "{{username}} добавил ПИ {{obj_name}} к списку задач",
         "BLOCKED": "{{username}} заблокировал {{obj_name}}",
         "UNBLOCKED": "{{username}} разблокировал {{obj_name}}",
