@@ -30,6 +30,7 @@ CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $project
     link = ($scope, $el, attrs) ->
         $scope.data = {}
         $scope.templates = []
+        currentLoading = null
 
         form = $el.find("form").checksley({"onlyOneErrorElement": true})
 
@@ -39,7 +40,7 @@ CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $project
             # than another deleted in the same session
             $cacheFactory.get('$http').removeAll()
 
-            $loading.finish(submitButton)
+            currentLoading.finish()
             $rootscope.$broadcast("projects:reload")
 
             $confirm.notify("success", $translate.instant("COMMON.SAVE"))
@@ -49,7 +50,7 @@ CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $project
             currentUserService.loadProjects()
 
         onErrorSubmit = (response) ->
-            $loading.finish(submitButton)
+            currentLoading.finish()
             form.setErrors(response)
             selectors = []
             for error_field in _.keys(response)
@@ -65,7 +66,9 @@ CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $project
             if not form.validate()
                 return
 
-            $loading.start(submitButton)
+            currentLoading = $loading()
+                .target(submitButton)
+                .start()
 
             promise = $repo.create("projects", $scope.data)
             promise.then(onSuccessSubmit, onErrorSubmit)

@@ -179,7 +179,9 @@ BlockLightboxDirective = ($rootscope, $tgrepo, $confirm, lightboxService, $loadi
         block = $qqueue.bindAdd (item) =>
             $model.$setViewValue(item)
 
-            $loading.start($el.find(".button-green"))
+            currentLoading = $loading()
+                .target($el.find(".button-green"))
+                .start()
 
             promise = $tgrepo.save($model.$modelValue)
             promise.then ->
@@ -192,7 +194,7 @@ BlockLightboxDirective = ($rootscope, $tgrepo, $confirm, lightboxService, $loadi
                 $model.$setViewValue(item)
 
             promise.finally ->
-                $loading.finish($el.find(".button-green"))
+                currentLoading.finish()
                 lightboxService.close($el)
 
         $scope.$on "block", ->
@@ -324,7 +326,9 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
             if not form.validate()
                 return
 
-            $loading.start(submitButton)
+            currentLoading = $loading()
+                .target(submitButton)
+                .start()
 
             if $scope.isNew
                 promise = $repo.create("userstories", $scope.us)
@@ -334,12 +338,12 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
                 broadcastEvent = "usform:edit:success"
 
             promise.then (data) ->
-                $loading.finish(submitButton)
+                currentLoading.finish()
                 lightboxService.close($el)
                 $rootScope.$broadcast(broadcastEvent, data)
 
             promise.then null, (data) ->
-                $loading.finish(submitButton)
+                currentLoading.finish()
                 form.setErrors(data)
                 if data._error_message
                     $confirm.notify("error", data._error_message)
@@ -399,16 +403,18 @@ CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService, $load
             if not form.validate()
                 return
 
-            $loading.start(submitButton)
+            currentLoading = $loading()
+                .target(submitButton)
+                .start()
 
             promise = $rs.userstories.bulkCreate($scope.new.projectId, $scope.new.statusId, $scope.new.bulk)
             promise.then (result) ->
-                $loading.finish(submitButton)
+                currentLoading.finish()
                 $rootscope.$broadcast("usform:bulk:success", result)
                 lightboxService.close($el)
 
             promise.then null, (data) ->
-                $loading.finish(submitButton)
+                currentLoading.finish()
                 form.setErrors(data)
                 if data._error_message
                     $confirm.notify("error", data._error_message)

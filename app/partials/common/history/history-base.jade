@@ -16,7 +16,7 @@ section.history
             a(class="help-markdown", href="https://taiga.io/support/taiga-markdown-syntax/", target="_blank", title="{{'COMMON.WYSIWYG.MARKDOWN_HELP' | translate}}")
                 span.icon.icon-help
                 span(translate="COMMON.WYSIWYG.MARKDOWN_HELP")
-            input(type="button", ng-disabled!="!<%- ngmodel %>.comment.length" title="{{'COMMENTS.COMMENT' | translate}}", value="{{'COMMENTS.COMMENT' | translate}}", class="button button-green save-comment")
+            button(type="button", ng-disabled!="!<%- ngmodel %>.comment.length" title="{{'COMMENTS.COMMENT' | translate}}", translate="COMMENTS.COMMENT", class="button button-green save-comment")
             <% } %>
     section.history-activity.hidden
         .changes-list

@@ -295,7 +295,7 @@ module.directive("tgTaskboard", ["$rootScope", TaskboardDirective])
 ## Taskboard Task Directive
 #############################################################################
 
-TaskboardTaskDirective = ($rootscope) ->
+TaskboardTaskDirective = ($rootscope, $loading, $rs) ->
     link = ($scope, $el, $attrs, $model) ->
         $el.disableSelection()
 
@@ -309,12 +309,23 @@ TaskboardTaskDirective = ($rootscope) ->
             if $el.find('.icon-edit').hasClass('noclick')
                 return
             $scope.$apply ->
-                $rootscope.$broadcast("taskform:edit", $scope.task)
+                target = $(event.target)
+
+                currentLoading = $loading()
+                    .target(target)
+                    .timeout(200)
+                    .removeClasses("icon-edit")
+                    .start()
+
+                task = $scope.task
+                $rs.tasks.getByRef(task.project, task.ref).then (editingTask) =>
+                    $rootscope.$broadcast("taskform:edit", editingTask)
+                    currentLoading.finish()
 
     return {link:link}
 
 
-module.directive("tgTaskboardTask", ["$rootScope", TaskboardTaskDirective])
+module.directive("tgTaskboardTask", ["$rootScope", "$tgLoading", "$tgResources", TaskboardTaskDirective])
 
 #############################################################################
 ## Taskboard Squish Column Directive

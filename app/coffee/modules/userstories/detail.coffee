@@ -304,8 +304,8 @@ UsStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $temp
                 statuses: $scope.statusList
                 editable: isEditable()
             })
-            $el.html(html)
 
+            $el.html(html)
 
         save = $qqueue.bindAdd (status) =>
             us = $model.$modelValue.clone()
@@ -314,22 +314,21 @@ UsStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $temp
 
             $.fn.popover().closeAll()
 
-            $model.$setViewValue(us)
+            currentLoading = $loading()
+                .target($el.find(".level-name"))
+                .start()
 
             onSuccess = ->
                 $confirm.notify("success")
+                $model.$setViewValue(us)
                 $rootScope.$broadcast("object:updated")
-                $loading.finish($el.find(".level-name"))
+                currentLoading.finish()
 
             onError = ->
                 $confirm.notify("error")
-                us.revert()
-                $model.$setViewValue(us)
-                $loading.finish($el.find(".level-name"))
+                currentLoading.finish()
 
-            $loading.start($el.find(".level-name"))
-
-            $repo.save($model.$modelValue).then(onSuccess, onError)
+            $repo.save(us).then(onSuccess, onError)
 
         $el.on "click", ".status-data", (event) ->
             event.preventDefault()
@@ -393,20 +392,19 @@ UsTeamRequirementButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $qq
             us = $model.$modelValue.clone()
             us.team_requirement = team_requirement
 
-            $model.$setViewValue(us)
+            currentLoading = $loading()
+                .target($el.find("label"))
+                .start()
 
-            $loading.start($el.find("label"))
-
-            promise = $tgrepo.save($model.$modelValue)
+            promise = $tgrepo.save(us)
             promise.then =>
-                $loading.finish($el.find("label"))
+                $model.$setViewValue(us)
+                currentLoading.finish()
                 $rootscope.$broadcast("object:updated")
 
             promise.then null, ->
-                $loading.finish($el.find("label"))
+                currentLoading.finish()
                 $confirm.notify("error")
-                us.revert()
-                $model.$setViewValue(us)
 
         $el.on "click", ".team-requirement", (event) ->
             return if not canEdit()
@@ -456,18 +454,18 @@ UsClientRequirementButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $
             us = $model.$modelValue.clone()
             us.client_requirement = client_requirement
 
-            $model.$setViewValue(us)
+            currentLoading = $loading()
+                .target($el.find("label"))
+                .start()
 
-            $loading.start($el.find("label"))
-            promise = $tgrepo.save($model.$modelValue)
+            promise = $tgrepo.save(us)
             promise.then =>
-                $loading.finish($el.find("label"))
-                $rootscope.$broadcast("object:updated")
-            promise.then null, ->
-                $loading.finish($el.find("label"))
-                $confirm.notify("error")
-                us.revert()
                 $model.$setViewValue(us)
+                currentLoading.finish()
+                $rootscope.$broadcast("object:updated")
+
+            promise.then null, ->
+                $confirm.notify("error")
 
         $el.on "click", ".client-requirement", (event) ->
             return if not canEdit()
