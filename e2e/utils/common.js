@@ -36,7 +36,8 @@ common.browserSkip = function(browserName, name, fn) {
     if (browser.browserName !== browserName) {
         return it.call(this, name, fn);
     } else {
-        return it.skip.call(this, name, fn);
+        // return it.skip.call(this, name, fn);
+        return it.call(this, name, fn);
     }
 };
 
@@ -311,7 +312,7 @@ common.topMenuOption = async function(option) {
 
     await browser.actions().mouseMove(menu).perform();
 
-    return menu.$$('li').get(option).click();
+    return menu.$$('li a').get(option).click();
 };
 
 common.goToBacklog = async function() {

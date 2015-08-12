@@ -15,7 +15,7 @@ describe('feedback', function() {
         utils.common.takeScreenshot('edit-user-profile', 'mail-notifications');
     });
 
-    it('change project notification to all', async function() {
+    it('send feedback', async function() {
         await utils.common.topMenuOption(4);
 
         let feedbackLightbox = $('div[tg-lb-feedback]');
