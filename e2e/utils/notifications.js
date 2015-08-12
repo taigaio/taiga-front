@@ -11,7 +11,7 @@ notifications.success.open = function() {
     return browser
         .wait(function() {
             return common.hasClass(el, 'active');
-        }, 2000)
+        }, 4000)
         .then(function(active) {
             return browser.sleep(transition).then(function() {
                 return active;
@@ -40,7 +40,7 @@ notifications.error.open = function() {
     return browser
         .wait(function() {
             return common.hasClass(el, 'active');
-        }, 2000)
+        }, 4000)
         .then(function(active) {
             return browser.sleep(transition).then(function() {
                 return active;
@@ -55,7 +55,7 @@ notifications.errorLight.open = function() {
     return browser
         .wait(function() {
             return common.hasClass(el, 'active');
-        }, 2000)
+        }, 4000)
         .then(function(active) {
             return browser.sleep(transition).then(function() {
                 return active;
