@@ -14,7 +14,7 @@ describe('search page', function() {
     });
 
     it('lightbox', async function() {
-        $('#nav-search').click();
+        $('#nav-search a').click();
 
         let searchLb = $('div[tg-search-box]');
 
@@ -83,6 +83,8 @@ describe('search page', function() {
         it('change current tab content on typing in the right column', async function() {
             let text = await $$('.table-main').get(0).$('a').getText();
 
+            let initialCount = await $$('.table-main').count();
+
             let searchTerm = element(by.model('searchTerm'));
 
             searchTerm.clear();
@@ -93,7 +95,8 @@ describe('search page', function() {
 
             let count = await $$('.table-main').count();
 
-            expect(count).to.equal(1);
+            expect(count).to.below(initialCount);
+            expect(count).to.above(0);
         });
     });
 });

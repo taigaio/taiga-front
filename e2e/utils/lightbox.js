@@ -6,12 +6,12 @@ var transition = 300;
 lightbox.open = async function(el) {
     var deferred = protractor.promise.defer();
 
-    if (typeof el == 'string' || el instanceof String) {
+    if (typeof el === 'string' || el instanceof String) {
         el = $(el);
     }
 
     let open = await browser.wait(function() {
-        return common.hasClass(el, 'open')
+        return common.hasClass(el, 'open');
     }, 4000);
 
     await browser.sleep(transition);

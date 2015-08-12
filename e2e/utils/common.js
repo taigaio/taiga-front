@@ -4,6 +4,22 @@ var fs = require('fs');
 var uuid = require('node-uuid');
 var path = require('path');
 
+common.getElm = function(el) {
+    var deferred = protractor.promise.defer();
+
+    if (typeof el === 'string' || el instanceof String) {
+        browser.wait(function() {
+            return browser.isElementPresent($(el).locator());
+        }, 4000).then(() => {
+            deferred.fulfill($(el));
+        });
+    } else {
+        deferred.fulfill($(el));
+    }
+
+    return deferred.promise;
+};
+
 common.hasClass = async function (element, cls) {
     let classes = await element.getAttribute('class');
 
