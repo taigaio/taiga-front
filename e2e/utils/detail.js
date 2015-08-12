@@ -72,9 +72,9 @@ helper.assignedToTesting = async function() {
     let userName = detailHelper.assignedTo().getUserName();
     await assignedTo.clear();
     assignedTo.assign();
-    assignToLightbox.waitOpen();
+    await assignToLightbox.waitOpen();
     assignToLightbox.selectFirst();
-    assignToLightbox.waitClose();
+    await assignToLightbox.waitClose();
     let newUserName = assignedTo.getUserName();
     expect(newUserName).to.be.not.equal(userName);
 }
@@ -191,12 +191,13 @@ helper.watchersTesting = async function() {
 
     //Add watcher
     watchersHelper.addWatcher();
-    watchersLightboxHelper.waitOpen();
+    await watchersLightboxHelper.waitOpen();
+    let newWatcherName = await watchersLightboxHelper.getFirstName();
     watchersLightboxHelper.selectFirst();
-    watchersLightboxHelper.waitClose();
+    await watchersLightboxHelper.waitClose();
 
     let newUserNames = await watchersHelper.getWatchersUserNames();
-    expect(newUserNames.join()).to.be.equal(userNames + ',Administrator');
+    expect(newUserNames.join()).to.be.equal(userNames + ',' + newWatcherName);
 
     //Clear watchers
     await watchersHelper.removeAllWathchers();

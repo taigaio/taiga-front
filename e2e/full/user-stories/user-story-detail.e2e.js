@@ -67,7 +67,7 @@ describe('User story detail', function(){
 
     it('block', utils.detail.blockTesting);
 
-    it('attachments', utils.detail.attachmentTesting)
+    it('attachments', utils.detail.attachmentTesting);
 
     it('screenshot', async function() {
         await utils.common.takeScreenshot("user-stories", "detail updated");

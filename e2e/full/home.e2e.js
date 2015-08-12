@@ -77,5 +77,19 @@ describe('home', function() {
             expect(firstElementText).to.be.eventually.equal(draggedElementText);
         });
 
+        after(async function() {
+            //restore project position
+            let dragableElements = element.all(by.css('.project-list-single'));
+            let dragElement = dragableElements.get(0);
+            let dragElementLink = dragElement.element(by.css('a'));
+
+            await utils.common.waitLoader();
+
+            draggedElementText = await dragElementLink.getText();
+
+            await utils.common.drag(dragElement, dragableElements.get(3));
+            await browser.waitForAngular();
+        });
+
     });
 });

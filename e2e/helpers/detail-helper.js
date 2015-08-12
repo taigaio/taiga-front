@@ -110,7 +110,7 @@ helper.statusSelector = function() {
 };
 
 helper.assignedTo = function() {
-    let el = $('.assigned-to');
+    let el = $('.menu-secondary .assigned-to');
 
     let obj = {
         el: el,
@@ -430,6 +430,9 @@ helper.watchersLightbox = function() {
         selectFirst: async function() {
             el.$$('div[data-user-id]').first().click();
             await browser.waitForAngular();
+        },
+        getFirstName: function() {
+            return el.$$('div[data-user-id] .watcher-name').first().getText();
         }
 
     };
