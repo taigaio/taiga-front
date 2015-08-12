@@ -77,11 +77,6 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
     initializeEventHandlers: ->
         @scope.$on "attachment:create", =>
             @analytics.trackEvent("attachment", "create", "create attachment on task", 1)
-            @rootscope.$broadcast("object:updated")
-        @scope.$on "attachment:edit", =>
-            @rootscope.$broadcast("object:updated")
-        @scope.$on "attachment:delete", =>
-            @rootscope.$broadcast("object:updated")
         @scope.$on "custom-attributes-values:edit", =>
             @rootscope.$broadcast("object:updated")
         @scope.$on "comment:new", =>

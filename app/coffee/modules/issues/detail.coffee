@@ -83,14 +83,7 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     initializeEventHandlers: ->
         @scope.$on "attachment:create", =>
-            @rootscope.$broadcast("object:updated")
             @analytics.trackEvent("attachment", "create", "create attachment on issue", 1)
-
-        @scope.$on "attachment:edit", =>
-            @rootscope.$broadcast("object:updated")
-
-        @scope.$on "attachment:delete", =>
-            @rootscope.$broadcast("object:updated")
 
         @scope.$on "promote-issue-to-us:success", =>
             @analytics.trackEvent("issue", "promoteToUserstory", "promote issue to userstory", 1)

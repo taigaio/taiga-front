@@ -112,19 +112,19 @@ common.drag = async function(elm, elm2) {
         .mouseMove(elm2)
         .perform();
 
-    await browser.sleep(20);
+    await browser.sleep(60);
 
     await browser.actions()
         .mouseMove({x: 10, y: -10}) // fire jqueryui mousemove event always
         .perform();
 
-    await browser.sleep(20);
+    await browser.sleep(60);
 
     await browser.actions()
-        .mouseMove(elm2)
+        .mouseMove({x: -10, y: 10})
         .perform();
 
-    await browser.sleep(20);
+    await browser.sleep(60);
 
     return browser.actions()
         .mouseUp()
