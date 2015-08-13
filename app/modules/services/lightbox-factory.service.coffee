@@ -21,8 +21,10 @@ class LightboxFactory
     @.$inject = ["$rootScope", "$compile"]
     constructor: (@rootScope, @compile) ->
 
-    create: (name, attrs) ->
+    create: (name, attrs, scopeAttrs) ->
         scope = @rootScope.$new()
+
+        scope = _.merge(scope, scopeAttrs)
 
         elm = $("<div>")
             .attr(name, true)

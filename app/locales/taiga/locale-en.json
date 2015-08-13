@@ -361,6 +361,7 @@
         "DEPRECATED": "(deprecated)",
         "DEPRECATED_FILE": "Deprecated?",
         "ADD": "Add new attachment. {{maxFileSizeMsg}}",
+        "DROP": "Drop attachments here!",
         "MAX_FILE_SIZE": "[Max. size:  {{maxFileSize}}]",
         "SHOW_DEPRECATED": "+ show deprecated atachments",
         "HIDE_DEPRECATED": "- hide deprecated atachments",
@@ -371,6 +372,7 @@
         "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "Delete attachment...",
         "MSG_LIGHTBOX_DELETE_ATTACHMENT": "the attachment '{{fileName}}'",
         "ERROR_DELETE_ATTACHMENT": "We have not been able to delete: {{errorMessage}}",
+        "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is too heavy for our Oompa Loompas, try it with a smaller than ({{maxFileSize}})",
         "FIELDS": {
             "IS_DEPRECATED": "is deprecated"
         }

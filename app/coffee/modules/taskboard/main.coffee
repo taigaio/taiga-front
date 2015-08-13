@@ -307,7 +307,7 @@ module.directive("tgTaskboard", ["$rootScope", TaskboardDirective])
 ## Taskboard Task Directive
 #############################################################################
 
-TaskboardTaskDirective = ($rootscope, $loading, $rs) ->
+TaskboardTaskDirective = ($rootscope, $loading, $rs, $rs2) ->
     link = ($scope, $el, $attrs, $model) ->
         $el.disableSelection()
 
@@ -330,14 +330,16 @@ TaskboardTaskDirective = ($rootscope, $loading, $rs) ->
                     .start()
 
                 task = $scope.task
+
                 $rs.tasks.getByRef(task.project, task.ref).then (editingTask) =>
-                    $rootscope.$broadcast("taskform:edit", editingTask)
-                    currentLoading.finish()
+                    $rs2.attachments.list("task", editingTask.id, editingTask.project).then (attachments) =>
+                        $rootscope.$broadcast("taskform:edit", editingTask, attachments.toJS())
+                        currentLoading.finish()
 
     return {link:link}
 
 
-module.directive("tgTaskboardTask", ["$rootScope", "$tgLoading", "$tgResources", TaskboardTaskDirective])
+module.directive("tgTaskboardTask", ["$rootScope", "$tgLoading", "$tgResources", "tgResources", TaskboardTaskDirective])
 
 #############################################################################
 ## Taskboard Squish Column Directive

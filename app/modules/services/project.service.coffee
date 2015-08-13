@@ -67,6 +67,9 @@ class ProjectService
         @._section = null
         @._sectionsBreadcrumb = Immutable.List()
 
+    hasPermission: (permission) ->
+        return @._project.get('my_permissions').indexOf(permission) != -1
+
     fetchProject: () ->
         pslug = @.project.get('slug')
 

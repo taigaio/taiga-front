@@ -607,8 +607,79 @@ EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading,
         template: template
     }
 
-module.directive("tgEditableDescription", ["$rootScope", "$tgRepo", "$tgConfirm", "$compile", "$tgLoading",
-                                            "$selectedText", "$tgQqueue", "$tgTemplate", EditableDescriptionDirective])
+module.directive("tgEditableDescription", [
+    "$rootScope",
+    "$tgRepo",
+    "$tgConfirm",
+    "$compile",
+    "$tgLoading",
+    "$selectedText",
+    "$tgQqueue",
+    "$tgTemplate", EditableDescriptionDirective])
+
+
+
+EditableWysiwyg = (attachmentsService) ->
+    link = ($scope, $el, $attrs, $model) ->
+
+        isInEditMode = ->
+            return $el.find('textarea').is(':visible')
+
+        $el.on 'dragover', (e) ->
+            textarea = $el.find('textarea').focus()
+
+            return false
+
+        $el.on 'drop', (e) ->
+            e.stopPropagation()
+            e.preventDefault()
+
+            if isInEditMode()
+                dataTransfer = e.dataTransfer || (e.originalEvent && e.originalEvent.dataTransfer)
+
+                textarea = $el.find('textarea')
+
+                textarea.addClass('in-progress')
+
+                type = $model.$modelValue['_name']
+
+                if type == "userstories"
+                    type = "us"
+                else if type == "tasks"
+                    type = "task"
+                else if type == "issues"
+                    type = "issue"
+                else if type == "wiki"
+                    type = "wiki_page"
+
+                file = dataTransfer.files[0]
+
+                return if !attachmentsService.validate(file)
+
+                attachmentsService.upload(
+                    file,
+                    $model.$modelValue.id,
+                    $model.$modelValue.project,
+                    type
+                ).then (result) ->
+                    textarea = $el.find('textarea')
+
+                    if taiga.isImage(result.get('name'))
+                        url = '![' + result.get('name') + '](' + result.get('url') + ')'
+                    else
+                        url = '[' + result.get('name') + '](' + result.get('url') + ')'
+
+                    $.markItUp({ replaceWith: url })
+
+                    textarea.removeClass('in-progress')
+
+    return {
+        link: link
+        restrict: "EA"
+        require: "ngModel"
+    }
+
+module.directive("tgEditableWysiwyg", ["tgAttachmentsService", EditableWysiwyg])
 
 
 #############################################################################

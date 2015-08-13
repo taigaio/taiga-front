@@ -18,12 +18,9 @@
     }
 
     textarea {
-        margin-bottom: 1rem;
-        max-height: 9rem;
-        min-height: 7rem;
+        min-height: 4.5rem;
         resize: vertical;
     }
-
     label {
         @extend %xsmall;
         background: $whitish;
@@ -47,12 +44,12 @@
     .settings {
         display: flex;
         justify-content: center;
-        margin-bottom: 1rem;
         fieldset {
             margin-right: .5rem;
             &:hover {
                 color: $white;
                 transition: all .2s ease-in;
+                transition-delay: .2s;
             }
             &:last-child {
                 margin: 0;
@@ -96,6 +93,26 @@
         }
         input {
             display: none;
+        }
+    }
+    .attachments {
+        margin-bottom: 0;
+    }
+    .attachment-body {
+        max-height: 7.5rem;
+        overflow-y: auto;
+    }
+    .attachment-delete {
+        right: .5rem;
+        svg {
+            fill: $gray-light;
+            height: 1.25rem;
+            width: 1.25rem;
+        }
+        &:hover {
+            svg {
+                fill: $red;
+            }
         }
     }
 }
@@ -493,7 +510,7 @@
     .ticket-role-points {
         flex-grow: 1;
         flex-shrink: 1;
-        max-width: calc(100% * (1/5) - .2rem);
+        max-width: calc(100% * (1/6) - .2rem);
         &:first-child {
             margin-left: 0;
         }
@@ -502,6 +519,6 @@
         }
     }
     .points-per-role {
-        margin-bottom: 1rem;
+        margin-bottom: 0;
     }
 }

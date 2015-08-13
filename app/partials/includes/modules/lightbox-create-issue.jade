@@ -17,6 +17,14 @@ form
         div.tags-block(tg-lb-tag-line, ng-model="issue.tags")
 
     fieldset
+        section
+             tg-attachments-simple(
+                 attachments="attachments",
+                 on-add="addAttachment(attachment)"
+                 on-delete="deleteAttachment(attachment)"
+              )
+
+    fieldset
         textarea.description(ng-attr-placeholder="{{'COMMON.FIELDS.DESCRIPTION' | translate}}", ng-model="issue.description")
 
     // include lightbox-attachments

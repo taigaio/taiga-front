@@ -213,7 +213,6 @@ module.run([
     "$tgIssuesResourcesProvider",
     "$tgWikiResourcesProvider",
     "$tgSearchResourcesProvider",
-    "$tgAttachmentsResourcesProvider",
     "$tgMdRenderResourcesProvider",
     "$tgHistoryResourcesProvider",
     "$tgKanbanResourcesProvider",

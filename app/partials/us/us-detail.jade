@@ -68,7 +68,7 @@ div.wrapper(
 
             div.tags-block(tg-tag-line, ng-model="us", required-perm="modify_us")
 
-        section.duty-content(tg-editable-description, ng-model="us", required-perm="modify_us")
+        section.duty-content(tg-editable-description, tg-editable-wysiwyg, ng-model="us", required-perm="modify_us")
 
         // Custom Fields
         tg-custom-attributes-values(
@@ -80,10 +80,12 @@ div.wrapper(
 
         include ../includes/modules/related-tasks
 
-        tg-attachments(
-            ng-model="us"
-            type="us"
+        tg-attachments-full(
+            obj-id="us.id"
+            type="us",
+            project-id="projectId"
         )
+
         tg-history(
             ng-model="us"
             type="us"

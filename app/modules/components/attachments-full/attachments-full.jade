@@ -1,0 +1,97 @@
+section.attachments(tg-attachments-drop="vm.addAttachments(files)")
+    .attachments-header
+        h3.attachments-title #[span.attachments-num {{vm.attachments.size}}] #[span.attachments-text(translate="ATTACHMENT.SECTION_NAME")]
+        .options
+            button.view-gallery(
+                ng-class="{'is-active': vm.mode == 'gallery'}"
+                ng-if="vm.attachments.size",
+                ng-click="vm.setMode('gallery')"
+            )
+                include ../../../svg/gallery.svg
+            button.view-list(
+                ng-class="{'is-active': vm.mode == 'list'}"
+                ng-if="vm.attachments.size",
+                ng-click="vm.setMode('list')"
+            )
+                include ../../../svg/list.svg
+            .add-attach(
+                tg-check-permission="modify_{{vm.type}}"
+                title!="{{'ATTACHMENT.ADD' | translate}}"
+            )
+                span.size-info(
+                    ng-if="vm.maxFileSize",
+                    translate="ATTACHMENT.MAX_FILE_SIZE",
+                    translate-values="{ 'maxFileSize': vm.maxFileSize}"
+                )
+
+                label.add-attachment-button(for="add-attach")
+                    include ../../../svg/add.svg
+
+                input(
+                    id="add-attach",
+                    type="file",
+                    ng-model="files",
+                    multiple="multiple",
+                    tg-file-change="vm.addAttachments(files)"
+                )
+    .attachments-empty(ng-if="!vm.attachments.size")
+        div {{'ATTACHMENT.DROP' | translate}}
+    .attachment-list.sortable(ng-if="vm.mode == 'list'")
+        div(tg-attachments-sortable="vm.reorderAttachment(attachment, index)")
+          div(
+            tg-repeat="attachment in vm.attachmentsVisible track by attachment.getIn(['file', 'id'])",
+            tg-bind-scope
+          )
+            tg-attachment(
+                attachment="attachment",
+                on-delete="vm.deleteAttachment(attachment)",
+                on-update="vm.updateAttachment(attachment)",
+                type="vm.type"
+            )
+
+          .single-attachment(ng-repeat="file in vm.uploadingAttachments")
+              .attachment-name
+                  span.icon
+                      include ../../../svg/attachment.svg
+                  span {{attachment.get('name')}}
+              .attachment-size
+                  span {{attachment.get('size') | sizeFormat}}
+
+              .attachment-comments
+                  span {{file.progressMessage}}
+                  .percentage(ng-style="{'width': file.progressPercent}")
+
+        a.more-attachments(
+          href="",
+          title="{{'ATTACHMENT.SHOW_DEPRECATED' | translate}}",
+          ng-if="vm.deprecatedsCount > 0",
+          ng-click="vm.toggleDeprecatedsVisible()"
+        )
+            span.text(
+              ng-show="!vm.deprecatedsVisible",
+              translate="ATTACHMENT.SHOW_DEPRECATED"
+            )
+            span.text(
+              ng-show="vm.deprecatedsVisible",
+              translate="ATTACHMENT.HIDE_DEPRECATED"
+            )
+            span.more-attachments-num(
+              translate="ATTACHMENT.COUNT_DEPRECATED",
+              translate-values="{counter: '{{vm.deprecatedsCount}}'}"
+            )
+
+    .attachment-gallery(ng-if="vm.mode == 'gallery'")
+        tg-attachment-gallery.attachment-gallery-container(
+            tg-repeat="attachment in vm.attachmentsVisible track by attachment.getIn(['file', 'id'])"
+            attachment="attachment",
+            on-delete="vm.deleteAttachment(attachment)",
+            on-update="vm.updateAttachment(attachment)",
+            type="vm.type"
+        )
+        .single-attachment(ng-repeat="file in vm.uploadingAttachments")
+            .loading-container
+                img.loading-spinner(
+                    src="/#{v}/svg/spinner-circle.svg",
+                    alt="{{'COMMON.LOADING' | translate}}"
+                )
+            .attachment-data {{file.progressMessage}}

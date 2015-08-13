@@ -60,7 +60,7 @@ div.wrapper(
 
             div.tags-block(tg-tag-line, ng-model="issue", required-perm="modify_issue")
 
-        section.duty-content(tg-editable-description, ng-model="issue", required-perm="modify_issue")
+        section.duty-content(tg-editable-description, tg-editable-wysiwyg, ng-model="issue", required-perm="modify_issue")
 
         // Custom Fields
         tg-custom-attributes-values(
@@ -70,7 +70,12 @@ div.wrapper(
             required-edition-perm="modify_issue"
         )
 
-        tg-attachments(ng-model="issue", type="issue")
+        tg-attachments-full(
+            obj-id="issue.id"
+            type="issue",
+            project-id="projectId"
+        )
+
         tg-history(ng-model="issue", type="issue")
 
     sidebar.menu-secondary.sidebar.ticket-data

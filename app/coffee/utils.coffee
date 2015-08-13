@@ -195,6 +195,21 @@ _.mixin
                 delete obj[key]; obj
             , obj).value()
 
+isImage = (name) ->
+    return name.match(/\.(jpe?g|png|gif|gifv|webm)/i) != null
+
+patch = (oldImmutable, newImmutable) ->
+    pathObj = {}
+
+    newImmutable.forEach (newValue, key) ->
+        if newValue != oldImmutable.get(key)
+            if newValue.toJS
+                pathObj[key] = newValue.toJS()
+            else
+                pathObj[key] = newValue
+
+    return pathObj
+
 taiga = @.taiga
 taiga.nl2br = nl2br
 taiga.bindMethods = bindMethods
@@ -218,3 +233,5 @@ taiga.sizeFormat = sizeFormat
 taiga.stripTags = stripTags
 taiga.replaceTags = replaceTags
 taiga.defineImmutableProperty = defineImmutableProperty
+taiga.isImage = isImage
+taiga.patch = patch

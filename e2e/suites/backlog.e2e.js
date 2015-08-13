@@ -1,5 +1,6 @@
 var utils = require('../utils');
 var backlogHelper = require('../helpers').backlog;
+var commonHelper = require('../helpers').common;
 
 var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
@@ -57,9 +58,12 @@ describe('backlog', function() {
             //settings
             createUSLightbox.settings(0).click();
 
-
             await utils.common.waitTransitionTime(createUSLightbox.settings(0));
+        });
 
+        it('upload attachments', commonHelper.lightboxAttachment);
+
+        it('screenshots', function() {
             utils.common.takeScreenshot('backlog', 'create-us-filled');
         });
 
@@ -149,6 +153,8 @@ describe('backlog', function() {
             //settings
             editUSLightbox.settings(1).click();
         });
+
+        it('upload attachments', commonHelper.lightboxAttachment);
 
         it('send form', async function() {
             editUSLightbox.submit();

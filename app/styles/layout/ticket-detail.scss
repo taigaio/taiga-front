@@ -166,6 +166,7 @@
 }
 
 .duty-content {
+    @include cursor-progress;
     position: relative;
     &:hover {
         .view-description {

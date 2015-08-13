@@ -141,3 +141,9 @@
         }
     }
 }
+
+@mixin cursor-progress {
+    .in-progress {
+        cursor: progress;
+    }
+}
