@@ -36,7 +36,7 @@
         "EXTERNAL_USER": "een extern gebruiker",
         "GENERIC_ERROR": "Een van onze Oempa Loempa's zegt {{error}}.",
         "IOCAINE_TEXT": "Voel je je wat overweldigd door een taak? Zorg ervoor dat anderen dit weten door op Iocaine te klikken bij het wijzigen van een taak. Je kan stapsgewijs immuun worden tegen dit (fictioneel) dodelijk gif door kleine dosissen op te nemen. Net zoals je beter kan worden in wat je doet door af en toe een extra uitdaging aan te gaan!",
-        "CAPSLOCK_WARNING": "Be careful! You're writing with capital letters and this input is case sensitive.",
+        "CAPSLOCK_WARNING": "Let op! Je schrijft met alleen hoofdletters en dit veld is hoofdlettergevoelig.",
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Deze waarde lijkt ongeldig te zijn",
             "TYPE_EMAIL": "Deze waarde moet een geldig emailadres bevatten",
@@ -344,7 +344,7 @@
         "DESCRIPTION": "Geef een korte beschrijving",
         "DEPRECATED": "(verouderd)",
         "DEPRECATED_FILE": "Verouderd?",
-        "ADD": "Add new attachment. {{maxFileSizeMsg}}",
+        "ADD": "Nieuwe bijlage toevoegen. {{maxFileSizeMsg}}",
         "MAX_FILE_SIZE": "[Max. grootte:  {{maxFileSize}}]",
         "SHOW_DEPRECATED": "+ toon verouderde bijlagen",
         "HIDE_DEPRECATED": "- verberg verouderde bijlagen",
@@ -412,7 +412,7 @@
             "JITSI_CHAT_ROOM": "Jitsi",
             "APPEARIN_CHAT_ROOM": "AppearIn",
             "TALKY_CHAT_ROOM": "Talky",
-            "CUSTOM_CHAT_ROOM": "Custom",
+            "CUSTOM_CHAT_ROOM": "Op maat",
             "URL_CHAT_ROOM": "URL van je chat room"
         },
         "PROJECT_PROFILE": {
@@ -431,7 +431,7 @@
         "REPORTS": {
             "TITLE": "Rapporten",
             "SUBTITLE": "Exporteer je project data in CSV formaat en maak je eigen rapporten",
-            "DESCRIPTION": "Download a CSV file or copy the generated URL and open it in your favourite text editor or spreadsheet to make your own project data reports. You will be able to visualize and analyze all your data easily.",
+            "DESCRIPTION": "Download een CSV bestand of kopieer de gegenereerde URL en open deze in je favoriete tekst editor of spreadsheet om je eigen rapportages te maken. Op die manier kun je al je data gemakkelijk analyseren en visualiseren.",
             "HELP": "Hoe kan ik dit gebruiken in mijn eigen spreadsheet?",
             "REGENERATE_TITLE": "Wijzig URL",
             "REGENERATE_SUBTITLE": "Je staat op het punt de CSV data toegang url te veranderen. De vorige url zal worden uitgeschakeld. Ben je zeker dat je ermee door wil gaan?"
@@ -456,7 +456,7 @@
             "ISSUE_DESCRIPTION": "Issues aangepaste velden",
             "ISSUE_ADD": "Voeg een aangepast veld toe in issues",
             "FIELD_TYPE_TEXT": "Tekst",
-            "FIELD_TYPE_MULTI": "Multi-line"
+            "FIELD_TYPE_MULTI": "Over meerdere regels"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - Project waardes - {{projectName}}",
@@ -802,7 +802,7 @@
         "PREVIOUS": "Vorige user story",
         "NEXT": "volgende user story",
         "TITLE_DELETE_ACTION": "Verwijder user story",
-        "LIGHTBOX_TITLE_BLOKING_US": "Ons blokkeren",
+        "LIGHTBOX_TITLE_BLOKING_US": "User story blokkeren",
         "TASK_COMPLETED": "{{totalClosedTasks}}/{{totalTasks}} taken afgewerkt",
         "ASSIGN": "User story toewijzen",
         "NOT_ESTIMATED": "Niet ingeschat",
@@ -899,8 +899,8 @@
             "YAXIS_LABEL": "Punten",
             "OPTIMAL": "Optimaal aantal openstaande punten voor sprint \"{{sprintName}}\" zou {{value}} moeten zijn",
             "REAL": "Reële openstaande punten voor sprint \"{{sprintName}}\" is {{value}}",
-            "INCREMENT_TEAM": "Incremented points by team requirements for sprint \"{{sprintName}}\" is {{value}}",
-            "INCREMENT_CLIENT": "Incremented points by client requirements for sprint \"{{sprintName}}\" is {{value}}"
+            "INCREMENT_TEAM": "Toegevoegde aantal punten door team vereisten voor sprint \"{{sprintName}}\" is {{vallue}}",
+            "INCREMENT_CLIENT": "Toegevoegde aantal punten door klant vereisten voor sprint \"{{sprintName}}\" is {{vallue}}"
         },
         "TAGS": {
             "TOGGLE": "Zet de tag zichtbaarheid aan of af",
@@ -1246,20 +1246,20 @@
         "MILESTONE_UPDATED": "{{username}} heeft de sprint {{obj_name}} bijgewerkt",
         "US_UPDATED": "{{username}} heeft de eigenschap \"{{field_name}}\" van de US {{obj_name}} bijgewerkt",
         "US_UPDATED_WITH_NEW_VALUE": "{{username}} heeft het attribuut \"{{field_name}}\" van de US {{obj_name}} gewijzigd naar {{new_value}}",
-        "US_UPDATED_POINTS": "{{username}} has updated '{{role_name}}' points of the US {{obj_name}} to {{new_value}}",
+        "US_UPDATED_POINTS": "{{username}} heeft '{{role_name}}' punten van de user story {{obj_name}} gewijzigd naar {{new_value}}",
         "ISSUE_UPDATED": "{{username}} heeft de eigenschap \"{{field_name}}\" van het issue {{obj_name}} bijgewerkt",
         "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} heeft het attribuut \"{{field_name}}\" van de issue gewijzigd van {{obj_name}} naar {{new_value}}",
-        "TASK_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} to {{new_value}}",
-        "TASK_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} to {{new_value}}",
+        "TASK_UPDATED": "{{username}} heeft het attribuut \"{{field_name}}\" van de taak {{obj_name}} gewijzigd naar {{new_value}}",
+        "TASK_UPDATED_WITH_NEW_VALUE": "{{username}} heeft het attribuut \"{{field_name}}\" van de taak {{obj_name}} gewijzigd naar {{new_value}}",
         "TASK_UPDATED_WITH_US": "{{username}} heeft de eigenschap \"{{field_name}}\" van de taak {{obj_name}} die behoort tot de US {{us_name}} bijgewerkt",
-        "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the US {{us_name}} to {{new_value}}",
+        "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} heeft de eigenschap \"{{field_name}}\" van de taak {{obj_name}} die behoort tot de US {{us_name}} gewijzigd naar {{new_value}}",
         "WIKI_UPDATED": "{{username}} heeft de wiki pagina {{obj_name}} bijgewerkt",
         "NEW_COMMENT_US": "{{username}} heeft gereageerd op de US {{obj_name}}",
         "NEW_COMMENT_ISSUE": "{{username}} heeft gereageerd op het issue {{obj_name}}",
         "NEW_COMMENT_TASK": "{{username}} heeft gereageerd op de taak {{obj_name}}",
         "NEW_MEMBER": "{{project_name}} heeft een nieuw lid",
         "US_ADDED_MILESTONE": "{{username}} heeft de US {{obj_name}} toegevoegd aan {{sprint_name}}",
-        "US_MOVED": "{{username}} has moved the US {{obj_name}}",
+        "US_MOVED": "{{username}} heeft de user story {{obj_name}} verplaatst",
         "US_REMOVED_FROM_MILESTONE": "{{username}} heeft de US {{obj_name}} toegevoegd aan de Backlog",
         "BLOCKED": "{{username}} heeft {{obj_name}} geblokkeerd",
         "UNBLOCKED": "{{username}} heeft {{obj_name}} gedeblokkeerd",

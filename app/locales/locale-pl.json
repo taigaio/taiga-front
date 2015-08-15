@@ -125,7 +125,7 @@
             "IS_CLOSED": "Zamknięte?",
             "STATUS": "Status",
             "TYPE": "Typ",
-            "SEVERITY": "Rygor",
+            "SEVERITY": "Ważność",
             "PRIORITY": "Priorytet",
             "ASSIGNED_TO": "Przydzielone do",
             "POINTS": "Punkty",
@@ -150,7 +150,7 @@
         },
         "WATCHERS": {
             "ADD": "Dodaj obserwatora",
-            "TITLE": "obserwatory",
+            "TITLE": "obserwatorzy",
             "DELETE": "Usuń obserwatora",
             "TITLE_LIGHTBOX_DELETE_WARTCHER": "Usuwanie obserwatora..."
         },
@@ -476,10 +476,10 @@
             "ACTION_ADD": "Dodaj nowy priorytet"
         },
         "PROJECT_VALUES_SEVERITIES": {
-            "TITLE": "Rygory",
-            "SUBTITLE": "Zdefiniuj rygory dla zgłoszeń",
-            "ISSUE_TITLE": "Rygory zgłoszeń",
-            "ACTION_ADD": "Dodaj nowy rygor"
+            "TITLE": "Ważność",
+            "SUBTITLE": "Zdefiniuj ważność dla zgłoszeń",
+            "ISSUE_TITLE": "Ważność zgłoszeń",
+            "ACTION_ADD": "Dodaj nową ważność"
         },
         "PROJECT_VALUES_STATUS": {
             "TITLE": "Status",
@@ -581,7 +581,7 @@
             "LABEL_US": "Domyślna wartość dla selektora statusu historyjek użytkownika",
             "LABEL_TASK_STATUS": "Domyśla wartość dla selektora statusu zadań",
             "LABEL_PRIORITY": "Domyślna wartość dla selektora priorytetu",
-            "LABEL_SEVERITY": "Domyślna wartość dla selektora rygoru",
+            "LABEL_SEVERITY": "Domyślna wartość dla selektora ważności",
             "LABEL_ISSUE_TYPE": "Domyślna wartość dla selektora typu zgłoszenia",
             "LABEL_ISSUE_STATUS": "Domyślna wartość dla selektora statusu zgłoszenia"
         },
@@ -613,7 +613,7 @@
             "STATUS": "Status",
             "POINTS": "Punkty",
             "PRIORITIES": "Priorytety",
-            "SEVERITIES": "Rygory",
+            "SEVERITIES": "Ważność",
             "TYPES": "Typy",
             "CUSTOM_FIELDS": "Niestandardowe pola"
         },
@@ -626,7 +626,7 @@
             "TITLE_ACTION_NEW_ROLE": "Dodaj nową rolę"
         },
         "SUBMENU_THIDPARTIES": {
-            "TITLE": "Rygory"
+            "TITLE": "Ważność"
         }
     },
     "USER": {
@@ -851,7 +851,7 @@
             "FINISH_DATE": "data zakończenia",
             "TYPE": "typ",
             "PRIORITY": "priorytet",
-            "SEVERITY": "rygor",
+            "SEVERITY": "ważność",
             "ASSIGNED_TO": "przypisane do",
             "WATCHERS": "obserwatorzy",
             "MILESTONE": "sprint",
@@ -1047,7 +1047,7 @@
         "LIGHTBOX_TITLE_BLOKING_ISSUE": "Blokowanie zgłoszenia",
         "FIELDS": {
             "PRIORITY": "Priorytet",
-            "SEVERITY": "Rygor",
+            "SEVERITY": "Ważność",
             "TYPE": "Typ"
         },
         "CONFIRM_PROMOTE": {
@@ -1064,7 +1064,7 @@
             "CATEGORIES": {
                 "TYPE": "Typy",
                 "STATUS": "Statusy",
-                "SEVERITY": "Rygory",
+                "SEVERITY": "Ważność",
                 "PRIORITIES": "Priorytety",
                 "TAGS": "Tagi",
                 "ASSIGNED_TO": "Przypisane do",
@@ -1079,7 +1079,7 @@
         "TABLE": {
             "COLUMNS": {
                 "TYPE": "Typ",
-                "SEVERITY": "Rygor",
+                "SEVERITY": "Ważność",
                 "PRIORITY": "Priorytet",
                 "SUBJECT": "Temat",
                 "STATUS": "Status",
@@ -1090,14 +1090,14 @@
             "TITLE_ACTION_ASSIGNED_TO": "Przypisane do",
             "EMPTY": {
                 "TITLE": "Brak zgłoszeń :-)",
-                "SUBTITLE": "MAsz zgłoszenie?",
+                "SUBTITLE": "Masz zgłoszenie?",
                 "ACTION_CREATE_ISSUE": "Utwórz nowe zgłoszenie"
             }
         }
     },
     "ISSUE": {
         "PAGE_TITLE": "{{issueSubject}} - Zgłoszenie {{issueRef}} - {{projectName}}",
-        "PAGE_DESCRIPTION": "Status: {{issueStatus }}. Type: {{issueType}}, Priorytet: {{issuePriority}}. Rygor: {{issueSeverity}}. Opis: {{issueDescription}}"
+        "PAGE_DESCRIPTION": "Status: {{issueStatus }}. Typ: {{issueType}}, Priorytet: {{issuePriority}}. Ważność: {{issueSeverity}}. Opis: {{issueDescription}}"
     },
     "KANBAN": {
         "PAGE_TITLE": "Kanban - {{projectName}}",
