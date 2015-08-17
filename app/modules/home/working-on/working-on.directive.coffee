@@ -1,8 +1,10 @@
 WorkingOnDirective = (homeService, currentUserService) ->
     link = (scope, el, attrs, ctrl) ->
-        userId = currentUserService.getUser().get("id")
-
-        ctrl.getWorkInProgress(userId)
+        user = currentUserService.getUser()
+        # If we are not logged in the user will be null
+        if user
+          userId = user.get("id")
+          ctrl.getWorkInProgress(userId)
 
     return {
         controller: "WorkingOn",
