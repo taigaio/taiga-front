@@ -62,7 +62,7 @@
     "google-diff-match-patch-js": "~1.0.0",
     "underscore.string": "~2.3.3",
     "markitup-1x": "~1.1.14",
-    "jquery-textcomplete": "yuku-t/jquery-textcomplete#~0.1.1",
+    "jquery-textcomplete": "yuku-t/jquery-textcomplete#~0.7",
     "flot-orderBars": "emmerich/flot-orderBars",
     "flot-axislabels": "markrcote/flot-axislabels",
     "flot.tooltip": "~0.8.4",

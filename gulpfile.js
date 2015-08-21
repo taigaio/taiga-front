@@ -154,7 +154,7 @@ paths.libs = [
     paths.vendor + "jquery-flot/jquery.flot.time.js",
     paths.vendor + "flot-axislabels/jquery.flot.axislabels.js",
     paths.vendor + "flot.tooltip/js/jquery.flot.tooltip.js",
-    paths.vendor + "jquery-textcomplete/jquery.textcomplete.js",
+    paths.vendor + "jquery-textcomplete/dist/jquery.textcomplete.js",
     paths.vendor + "markitup-1x/markitup/jquery.markitup.js",
     paths.vendor + "malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js",
     paths.vendor + "raven-js/dist/raven.js",
