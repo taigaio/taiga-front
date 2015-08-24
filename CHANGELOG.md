@@ -8,6 +8,7 @@
 - Add custom videoconference system.
 - Make burndown chart collapsible at the backlog panel.
 - Ability to choose a theme (thanks to [@astagi](https://github.com/astagi))
+- Inline viewing of image attachments.
 - i18n.
   - Add polish (pl) translation.
   - Add russian (ru) translation.

@@ -245,7 +245,7 @@ AttachmentsDirective = ($config, $confirm, $templates, $translate) ->
 module.directive("tgAttachments", ["$tgConfig", "$tgConfirm", "$tgTemplate", "$translate", AttachmentsDirective])
 
 
-AttachmentDirective = ($template, $compile, $translate) ->
+AttachmentDirective = ($template, $compile, $translate, $rootScope) ->
     template = $template.get("attachment/attachment.html", true)
     templateEdit = $template.get("attachment/attachment-edit.html", true)
 
@@ -315,6 +315,12 @@ AttachmentDirective = ($template, $compile, $translate) ->
             $scope.$apply ->
                 $ctrl.removeAttachment(attachment)
 
+        $el.on "click", "div.attachment-name a", (event) ->
+            if null != attachment.name.match(/\.(jpe?g|png|gif|gifv|webm)/i)
+                event.preventDefault()
+                $scope.$apply ->
+                    $rootScope.$broadcast("attachment:preview", attachment)
+
         $scope.$on "$destroy", ->
             $el.off()
 
@@ -330,4 +336,4 @@ AttachmentDirective = ($template, $compile, $translate) ->
         restrict: "AE"
     }
 
-module.directive("tgAttachment", ["$tgTemplate", "$compile", "$translate", AttachmentDirective])
+module.directive("tgAttachment", ["$tgTemplate", "$compile", "$translate", "$rootScope", AttachmentDirective])

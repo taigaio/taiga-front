@@ -1,0 +1,6 @@
+.attachment-preview
+    a.close(href="", title="{{'COMMON.CLOSE' | translate}}")
+        span.icon.icon-delete
+
+    a(href!="<%- url %>", title!="<%- title %>", target="_blank", download!="<%- name %>")
+        img(src!="<%- url %>")
