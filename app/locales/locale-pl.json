@@ -743,7 +743,7 @@
             "HELP_TEXT": "Jeżeli użytkownik jest już zarejestrowany w Taiga, będzie dodany automatycznie. W przeciwnym wypadku otrzyma zaproszenie."
         },
         "CREATE_ISSUE": {
-            "TITLE": "Dodaj Zagadnienie"
+            "TITLE": "Dodaj zgłoszenie"
         },
         "FEEDBACK": {
             "TITLE": "Powiedz nam coś...",
