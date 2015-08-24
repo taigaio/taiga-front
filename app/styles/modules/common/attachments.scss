@@ -183,3 +183,8 @@
         color: $gray-light;
     }
 }
+
+.attachment-preview img {
+    max-height: 95vh;
+    max-width: 95vw;
+}

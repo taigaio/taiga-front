@@ -624,3 +624,36 @@ WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationS
     }
 
 module.directive("tgLbWatchers", ["$tgRepo", "lightboxService", "lightboxKeyboardNavigationService", "$tgTemplate", "$compile", WatchersLightboxDirective])
+
+
+#############################################################################
+## Attachment Preview Lighbox
+#############################################################################
+
+AttachmentPreviewLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationService, $template, $compile) ->
+    link = ($scope, $el, attrs) ->
+        template = $template.get("common/lightbox/lightbox-attachment-preview.html", true)
+
+        $scope.$on "attachment:preview", (event, attachment) ->
+            lightboxService.open($el)
+            render(attachment)
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+        render = (attachment) ->
+            ctx = {
+                url: attachment.url,
+                title: attachment.description,
+                name: attachment.name
+            }
+
+            html = template(ctx)
+            html = $compile(html)($scope)
+            $el.html(html)
+
+    return {
+        link: link
+    }
+
+module.directive("tgLbAttachmentPreview", ["$tgRepo", "lightboxService", "lightboxKeyboardNavigationService", "$tgTemplate", "$compile", AttachmentPreviewLightboxDirective])
