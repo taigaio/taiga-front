@@ -10,7 +10,7 @@ form
                           ng-value='template.id', ng-model="data.creation_template",
                           data-required="true")
                     label.backlog(for="template-{{ template.id }}")
-                        span.icon.icon-backlog
+                        span.icon( ng-class="'icon-'+template.slug")
                         h2 {{ template.name }}
                     p {{ template.description }}
 

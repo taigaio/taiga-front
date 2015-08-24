@@ -251,7 +251,8 @@ a:visited {
 .icon-issues:before {
     content: 'U';
 }
-.icon-backlog:before {
+.icon-backlog:before,
+.icon-scrum:before, {
     content: 'R';
 }
 .icon-iocaine:before {
