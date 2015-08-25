@@ -11,6 +11,7 @@
 - Inline viewing of image attachments (thanks to [@brettp](https://github.com/brettp)).
 - i18n.
   - Add polish (pl) translation.
+  - Add portuguese (Brazil) (pt_BR) translation.
   - Add russian (ru) translation.
 
 ### Misc
