@@ -181,7 +181,11 @@ MarkitupDirective = ($rootscope, $rs, $selectedText, $template, $compile, $trans
                 onShiftEnter: {keepDefault:false, openWith:"\n\n"}
                 onEnter:
                     keepDefault: false,
-                    replaceWith: () -> "\n"
+                    replaceWith: () ->
+                        # Allow textcomplete to intercept the enter key if the options list is displayed
+                        # @todo There doesn't seem to be a more graceful way to do this with the textcomplete API.
+                        if not $('.textcomplete-dropdown').is(':visible')
+                            "\n"
                     afterInsert: (data) ->
                         lines = data.textarea.value.split("\n")
                         # Detect if we are in this situation +- aa at the beginning if the textarea
@@ -347,6 +351,104 @@ MarkitupDirective = ($rootscope, $rs, $selectedText, $template, $compile, $trans
             element
                 .markItUpRemove()
                 .markItUp(markdownSettings)
+                .textcomplete([
+                    # us, task, and issue autocomplete: #id or #<part of title>
+                    {
+                        cache: true
+                        match: /(^|\s)#([a-z0-9]+)$/i,
+                        search: (term, callback) ->
+                            term = taiga.slugify(term)
+
+                            searchTypes = ['issues', 'tasks', 'userstories']
+                            searchProps = ['ref', 'subject']
+
+                            filter = (item) =>
+                                for prop in searchProps
+                                    if taiga.slugify(item[prop]).indexOf(term) >= 0
+                                        return true
+                                return false
+
+                            $rs.search.do($scope.projectId, term).then (res) =>
+                                # ignore wikipages if they're the only results. can't exclude them in search
+                                if res.count < 1 or res.count == res.wikipages.length
+                                    callback([])
+
+                                else
+                                    for type in searchTypes
+                                        if res[type] and res[type].length > 0
+                                            callback(res[type].filter(filter), true)
+
+                            # must signal end of lists
+                            callback([])
+
+                        replace: (res) ->
+                            return "$1\##{res.ref} "
+
+                        template: (res, term) ->
+                            return "\##{res.ref} - #{res.subject}"
+                    }
+
+                    # username autocomplete: @username or @<part of name>
+                    {
+                        cache: true
+                        match: /(^|\s)@([a-z0-9\-\._]{2,})$/i
+                        search: (term, callback) ->
+                            username = taiga.slugify(term)
+                            searchProps = ['username', 'full_name', 'full_name_display']
+
+                            if $scope.project.members.length < 1
+                                callback([])
+
+                            else
+                                callback $scope.project.members.filter (user) =>
+                                    for prop in searchProps
+                                        if taiga.slugify(user[prop]).indexOf(username) >= 0
+                                            return true
+                                    return false
+
+                        replace: (user) ->
+                            return "$1@#{user.username} "
+
+                        template: (user) ->
+                            return "#{user.username} - #{user.full_name_display}"
+                    }
+
+                    # wiki pages autocomplete: [[slug or [[<part of slug>
+                    # if the search function was called with the 3rd param the regex
+                    # like the docs claim, we could combine this with the #123 search
+                    {
+                        cache: true
+                        match: /(^|\s)\[\[([a-z0-9\-]+)$/i
+                        search: (term, callback) ->
+                            term = taiga.slugify(term)
+
+                            $rs.search.do($scope.projectId, term).then (res) =>
+                                if res.count < 1
+                                    callback([])
+
+                                if res.count < 1 or not res.wikipages or res.wikipages.length <= 0
+                                    callback([])
+
+                                else
+                                    callback res.wikipages.filter((page) =>
+                                        return taiga.slugify(page['slug']).indexOf(term) >= 0
+                                    ), true
+
+                                # must signal end of lists
+                                callback([])
+
+
+                        replace: (res) ->
+                            return "$1[[#{res.slug}]]"
+
+                        template: (res, term) ->
+                            return res.slug
+                    }
+                ],
+                {
+                    debounce: 200
+                }
+            )
 
         renderMarkItUp()
 

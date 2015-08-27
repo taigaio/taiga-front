@@ -17,10 +17,12 @@
 .dropdown-menu li:hover,
 .dropdown-menu .active {
     background-color: rgb(110, 183, 219);
+    color: white;
 }
 
-.textcomplete-wrapper {
-    width: 100%;
+.dropdown-menu .active > a,
+.dropdown-menu .active > a:hover {
+    color: white;
 }
 
 /* SHOULD not modify */

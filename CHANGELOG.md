@@ -9,6 +9,7 @@
 - Make burndown chart collapsible at the backlog panel.
 - Ability to choose a theme (thanks to [@astagi](https://github.com/astagi))
 - Inline viewing of image attachments (thanks to [@brettp](https://github.com/brettp)).
+- Autocomplete for usernames, user stories, tasks, issues, and wiki pages in text areas (thanks to [@brettp](https://github.com/brettp)).
 - i18n.
   - Add polish (pl) translation.
   - Add portuguese (Brazil) (pt_BR) translation.
