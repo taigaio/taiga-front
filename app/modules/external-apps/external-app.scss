@@ -1,0 +1,85 @@
+.external-app-wrapper {
+    margin: 2rem auto;
+    text-align: center;
+    width: 480px;
+    .logo {
+        height: 6rem;
+        margin: 0 auto;
+        width: 6rem;
+    }
+    h1 {
+        margin-bottom: 0;
+    }
+    .app-card,
+    .user-card {
+        line-height: 1.4;
+        margin-bottom: 2rem;
+        text-align: left;
+        .card-inner {
+            display: flex;
+        }
+        img {
+            width: 100%;
+        }
+        h3,
+        p {
+            margin: 0;
+        }
+        h3 {
+            @extend %large;
+        }
+        a {
+            @extend %xsmall;
+            display: block;
+        }
+    }
+    .app-card {
+        .app-image {
+            flex-basis: 100px;
+            margin-right: 1rem;
+            max-width: 105px;
+        }
+        .app-data {
+            flex: 1;
+        }
+        a {
+            margin-bottom: .5rem;
+
+        }
+        p {
+            @extend %xsmall;
+        }
+    }
+    .user-card {
+        background: $card;
+        border: 1px solid $card-hover;
+        padding: 1rem;
+        .card-inner {
+            margin-bottom: .5rem;
+        }
+        .user-image {
+            flex-basis: 50px;
+            margin-right: 1rem;
+            max-width: 55px;
+        }
+    }
+    .button-green {
+        display: block;
+    }
+    .cancel {
+        @extend %small;
+        display: block;
+        margin-top: .5rem;
+        text-align: left;
+    }
+}
+
+@include breakpoint(mobile) {
+    .external-app-wrapper {
+        margin: 0;
+        min-width: 100%;
+        padding: 2rem 1rem;
+        text-align: center;
+        width: 100%;
+    }
+}

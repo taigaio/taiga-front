@@ -1,6 +1,6 @@
-<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 134.2 134.3" version="1.1" preserveAspectRatio="xMidYMid meet">
+<svg id="logo-svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 134.2 134.3" version="1.1" preserveAspectRatio="xMidYMid meet">
     <style>
-        path {
+        #logo-svg path {
             fill:#f5f5f5;
             opacity:0.7;
         }

@@ -3,7 +3,8 @@ services = [
     "tgUsersResources",
     "tgUserstoriesResource",
     "tgTasksResource",
-    "tgIssuesResource"
+    "tgIssuesResource",
+    "tgExternalAppsResource"
 ]
 
 Resources = ($injector) ->

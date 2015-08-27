@@ -59,5 +59,13 @@ class AppMetaService extends taiga.Service = ->
         @.setTwitterMetas(title, description)
         @.setOpenGraphMetas(title, description)
 
+    addMobileViewport: () ->
+        $('head').append(
+            '<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">'
+        )
+
+    removeMobileViewport: () ->
+        $('meta[name="viewport"]').remove()
+
 
 angular.module("taigaCommon").service("tgAppMetaService", AppMetaService)

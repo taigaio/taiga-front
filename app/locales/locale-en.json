@@ -1268,5 +1268,13 @@
         "BLOCKED": "{{username}} has blocked {{obj_name}}",
         "UNBLOCKED": "{{username}} has unblocked {{obj_name}}",
         "NEW_USER": "{{username}} has joined Taiga"
+    },
+    "EXTERNAL_APP": {
+        "PAGE_TITLE": "An external app requires authentication",
+        "PAGE_DESCRIPTION": "An external app requires authentication",
+        "AUTHORIZATION_REQUEST": "Authorize {{application}} to use your Taiga account?",
+        "LOGIN_WITH_ANOTHER_USER": "Login with another user",
+        "AUTHORIZE_APP": "Authorize app",
+        "CANCEL": "Cancel"
     }
 }
