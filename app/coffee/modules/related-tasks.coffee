@@ -146,8 +146,14 @@ RelatedTaskCreateFormDirective = ($repo, $compile, $confirm, $tgmodel, $loading,
 
             return promise
 
-        render = ->
+        close = () ->
             $el.off()
+            $el.html("")
+
+            $scope.newRelatedTaskFormOpen = false
+
+        render = ->
+            $scope.newRelatedTaskFormOpen = true
 
             $el.html($compile(template())($scope))
             $el.find('input').focus().select()
@@ -158,14 +164,14 @@ RelatedTaskCreateFormDirective = ($repo, $compile, $confirm, $tgmodel, $loading,
                     createTask(newTask).then ->
                         render()
                 else if event.keyCode == 27
-                    $el.html("")
+                    $scope.$apply () -> close()
 
             $el.on "click", ".icon-delete", (event)->
-                $el.html("")
+                $scope.$apply () -> close()
 
             $el.on "click", ".icon-floppy", (event)->
                 createTask(newTask).then ->
-                    $el.html("")
+                    close()
 
         taiga.bindOnce $scope, "us", (val) ->
             newTask["status"] = $scope.project.default_task_status
@@ -185,7 +191,7 @@ module.directive("tgRelatedTaskCreateForm", ["$tgRepo", "$compile", "$tgConfirm"
 
 RelatedTaskCreateButtonDirective = ($repo, $compile, $confirm, $tgmodel) ->
     template = _.template("""
-        <a class="icon icon-plus related-tasks-buttons"></a>
+        <a ng-show="!newRelatedTaskFormOpen" class="icon icon-plus related-tasks-buttons ng-animate-disabled"></a>
     """)
 
     link = ($scope, $el, $attrs) ->
@@ -193,7 +199,7 @@ RelatedTaskCreateButtonDirective = ($repo, $compile, $confirm, $tgmodel) ->
             return if not val
             $el.off()
             if $scope.project.my_permissions.indexOf("add_task") != -1
-                $el.html(template())
+                $el.html($compile(template())($scope))
             else
                 $el.html("")
 

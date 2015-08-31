@@ -39,7 +39,9 @@ taiga.sessionId = taiga.generateUniqueSessionIdentifier()
 
 
 configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEventsProvider,
-             $compileProvider, $translateProvider) ->
+             $compileProvider, $translateProvider, $animateProvider) ->
+
+    $animateProvider.classNameFilter(/^(?:(?!ng-animate-disabled).)*$/)
 
     # wait until the trasnlation is ready to resolve the page
     originalWhen = $routeProvider.when
@@ -647,6 +649,7 @@ module.config([
     "$tgEventsProvider",
     "$compileProvider",
     "$translateProvider",
+    "$animateProvider",
     configure
 ])
 
