@@ -498,9 +498,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         .addInterpolation('$translateMessageFormatInterpolation')
         .preferredLanguage(preferedLangCode)
 
-    if not window.taigaConfig.debugInfo
-        $translateProvider.fallbackLanguage(preferedLangCode)
-
+    $translateProvider.fallbackLanguage(preferedLangCode)
 
 i18nInit = (lang, $translate) ->
     # i18n - moment.js
