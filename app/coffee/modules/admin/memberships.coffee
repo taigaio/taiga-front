@@ -82,6 +82,7 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
         return @rs.memberships.list(@scope.projectId, httpFilters).then (data) =>
             @scope.memberships = _.filter(data.models, (membership) ->
                                     membership.user == null or membership.is_user_active)
+
             @scope.page = data.current
             @scope.count = data.count
             @scope.paginatedBy = data.paginatedBy
@@ -110,7 +111,7 @@ module.controller("MembershipsController", MembershipsController)
 ## Member Avatar Directive
 #############################################################################
 
-MembershipsDirective = ($template) ->
+MembershipsDirective = ($template, $compile) ->
     template = $template.get("admin/admin-membership-paginator.html", true)
 
     linkPagination = ($scope, $el, $attrs, $ctrl) ->
@@ -158,7 +159,11 @@ MembershipsDirective = ($template) ->
                 else
                     pages.push({classes: "page", num: i, type: "page"})
 
-            $pagEl.html(template(options))
+            html = template(options)
+            html = $compile(html)($scope)
+
+            $pagEl.html(html)
+            $pagEl.show()
 
         $scope.$watch "memberships", (value) ->
             # Do nothing if value is not logical true
@@ -198,7 +203,7 @@ MembershipsDirective = ($template) ->
 
     return {link:link}
 
-module.directive("tgMemberships", ["$tgTemplate", MembershipsDirective])
+module.directive("tgMemberships", ["$tgTemplate", "$compile", MembershipsDirective])
 
 
 #############################################################################
@@ -400,6 +405,10 @@ MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm, $compile, $transla
             $confirm.askOnDelete(title, message).then (finish) ->
                 onSuccess = ->
                     finish()
+
+                    if $scope.page > 1 && ($scope.count - 1) <= $scope.paginatedBy
+                        $ctrl.selectFilter("page", $scope.page - 1)
+
                     $ctrl.loadMembers()
 
                     text = $translate.instant("ADMIN.MEMBERSHIP.SUCCESS_DELETE")
