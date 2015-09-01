@@ -485,7 +485,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
     updateUserStoryStatus: () ->
         @.setSearchDataFilters()
-        @.generateFilters().then () ->
+        @.generateFilters().then () =>
             @rootscope.$broadcast("filters:update")
             @.loadProjectStats()
 
