@@ -8,7 +8,7 @@ form.custom-field-single.editable
         <% } %>
 
     div.custom-field-value
-        
+
         <% if (field_type=="MULTI") { %>
         textarea#custom-field-description(name="description")
             <%- value %>
@@ -16,6 +16,14 @@ form.custom-field-single.editable
 
         <% if (field_type=="TEXT") { %>
         input#custom-field-description(name="description", type="text", value!="<%- value %>")
+        <% } %>
+
+        <% if (field_type=="DATE" && value!="") { %>
+        input#custom-field-description(name="description", type="text", value!="<%- moment(value).format('DD MMM YYYY') %>")
+        <% } %>
+
+        <% if (field_type=="DATE" && value=="") { %>
+        input#custom-field-description(name="description", type="text", value!="")
         <% } %>
 
     div.custom-field-options

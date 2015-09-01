@@ -148,6 +148,20 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile) ->
 
             $el.html(html)
 
+            if attributeValue.field_type == "DATE"
+
+              selectedDate = null
+
+              $el.picker = new Pikaday(
+                field: $el.find('input')[0]
+                onSelect: (date) =>
+                      selectedDate = date
+                onOpen: =>
+                    $el.picker.setDate(selectedDate) if selectedDate?
+                firstDay: 1
+                format: 'DD MMM YYYY'
+                )
+
         isEditable = ->
             permissions = $scope.project.my_permissions
             requiredEditionPerm = $attrs.requiredEditionPerm
@@ -155,6 +169,9 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile) ->
 
         saveAttributeValue = ->
             attributeValue.value = $el.find("input, textarea").val()
+
+            if attributeValue.field_type == "DATE" and attributeValue.value != ''
+                return if moment(attributeValue.value).isValid() != true
 
             $scope.$apply ->
                 $ctrl.updateAttributeValue(attributeValue).then ->
@@ -164,7 +181,9 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile) ->
             if event.keyCode == 13 and event.currentTarget.type != "textarea"
                 submit(event)
             else if event.keyCode == 27
-                render(attributeValue, false)
+              return if attributeValue.field_type == "DATE" and moment(attributeValue.value).isValid() != true
+
+              render(attributeValue, false)
 
         ## Actions (on view mode)
         $el.on "click", ".custom-field-value.read-mode", ->

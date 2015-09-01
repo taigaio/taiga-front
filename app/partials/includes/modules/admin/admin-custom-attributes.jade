@@ -40,7 +40,7 @@ section.custom-fields-table.basic-table
                                   ng-model="attr.description")
                         fieldset.custom-field-type
                             select(ng-model="attr.field_type",
-                                ng-options="e.id as e.name | translate for e in [{'id':'TEXT', 'name': 'ADMIN.CUSTOM_FIELDS.FIELD_TYPE_TEXT'},{'id':'MULTI', 'name': 'ADMIN.CUSTOM_FIELDS.FIELD_TYPE_MULTI'}]")
+                                ng-options="e.id as e.name | translate for e in [{'id':'TEXT', 'name': 'ADMIN.CUSTOM_FIELDS.FIELD_TYPE_TEXT'},{'id':'MULTI', 'name': 'ADMIN.CUSTOM_FIELDS.FIELD_TYPE_MULTI'},{'id':'DATE', 'name': 'ADMIN.CUSTOM_FIELDS.FIELD_TYPE_DATE'}]")
                         fieldset.custom-options
                             div.custom-options-wrapper
                                 a.js-update-custom-field-button.icon.icon-floppy(href="", title="{{'ADMIN.CUSTOM_ATTRIBUTES.ACTION_UPDATE' | translate}}")
@@ -55,7 +55,7 @@ section.custom-fields-table.basic-table
                       ng-model="newAttr.description")
             fieldset.custom-field-type
                 select(ng-model="newAttr.field_type",
-                      ng-options="e.id as e.name | translate for e in [{'id':'TEXT', 'name': 'ADMIN.CUSTOM_FIELDS.FIELD_TYPE_TEXT'},{'id':'MULTI', 'name': 'ADMIN.CUSTOM_FIELDS.FIELD_TYPE_MULTI'}]")
+                      ng-options="e.id as e.name | translate for e in [{'id':'TEXT', 'name': 'ADMIN.CUSTOM_FIELDS.FIELD_TYPE_TEXT'},{'id':'MULTI', 'name': 'ADMIN.CUSTOM_FIELDS.FIELD_TYPE_MULTI'},{'id':'DATE', 'name': 'ADMIN.CUSTOM_FIELDS.FIELD_TYPE_DATE'}]")
 
             fieldset.custom-options
                 div.custom-options-wrapper
