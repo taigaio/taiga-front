@@ -104,10 +104,14 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @scope.$on "sprintform:edit:success", =>
             @.loadProjectStats()
 
-        @scope.$on "sprintform:remove:success", =>
+        @scope.$on "sprintform:remove:success", (event, sprint) =>
             @.loadSprints()
             @.loadProjectStats()
             @.loadUserstories()
+
+            if sprint.closed
+                @.loadClosedSprints()
+
             @rootscope.$broadcast("filters:update")
 
         @scope.$on "usform:edit:success", =>
@@ -157,17 +161,26 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
     loadClosedSprints: ->
         params = {closed: true}
-        return @rs.sprints.list(@scope.projectId, params).then (sprints) =>
+        return @rs.sprints.list(@scope.projectId, params).then (result) =>
+            sprints = result.milestones
+
+            @scope.totalClosedMilestones = result.closed
+
             # NOTE: Fix order of USs because the filter orderBy does not work propertly in partials files
             for sprint in sprints
                 sprint.user_stories = _.sortBy(sprint.user_stories, "sprint_order")
             @scope.closedSprints =  sprints
+            @scope.closedSprintsById = groupBy(sprints, (x) -> x.id)
             @rootscope.$broadcast("closed-sprints:reloaded", sprints)
             return sprints
 
     loadSprints: ->
         params = {closed: false}
-        return @rs.sprints.list(@scope.projectId, params).then (sprints) =>
+        return @rs.sprints.list(@scope.projectId, params).then (result) =>
+            sprints = result.milestones
+
+            @scope.totalClosedMilestones = result.closed
+
             # NOTE: Fix order of USs because the filter orderBy does not work propertly in partials files
             for sprint in sprints
                 sprint.user_stories = _.sortBy(sprint.user_stories, "sprint_order")
@@ -231,7 +244,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
             @scope.projectId = project.id
             @scope.project = project
-            @scope.totalClosedMilestones = project.total_closed_milestones
+            @scope.closedMilestones = !!project.total_closed_milestones
             @scope.$emit('project:loaded', project)
             @scope.points = _.sortBy(project.points, "order")
             @scope.pointsById = groupBy(project.points, (x) -> x.id)
@@ -267,6 +280,23 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         oldSprintId = usList[0].milestone
         project = usList[0].project
 
+        movedFromClosedSprint = false
+        movedToClosedSprint = false
+
+        sprint = @scope.sprintsById[oldSprintId]
+
+        # Move from closed sprint
+        if !sprint && @scope.closedSprintsById
+            sprint = @scope.closedSprintsById[oldSprintId]
+            movedFromClosedSprint = true if sprint
+
+        newSprint = @scope.sprintsById[newSprintId]
+
+        # Move to closed sprint
+        if !newSprint
+            newSprint = @scope.closedSprintsById[newSprintId]
+            movedToClosedSprint = true if newSprint
+
         # In the same sprint or in the backlog
         if newSprintId == oldSprintId
             items = null
@@ -275,7 +305,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             if newSprintId == null
                 userstories = @scope.userstories
             else
-                userstories = @scope.sprintsById[newSprintId].user_stories
+                userstories = newSprint.user_stories
 
             @scope.$apply ->
                 for us, key in usList
@@ -322,8 +352,6 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
                 args = [newUsIndex, 0].concat(usList)
                 Array.prototype.splice.apply(@scope.userstories, args)
 
-                # Remove the us from the sprint list.
-                sprint = @scope.sprintsById[oldSprintId]
                 for us, key in usList
                     r = sprint.user_stories.indexOf(us)
                     sprint.user_stories.splice(r, 1)
@@ -339,13 +367,15 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
                 return @rs.userstories.bulkUpdateBacklogOrder(us.project, data).then =>
                     @rootscope.$broadcast("sprint:us:moved", us, oldSprintId, newSprintId)
 
+                    if movedFromClosedSprint
+                        @rootscope.$broadcast("backlog:load-closed-sprints")
+
             promise.then null, ->
                 console.log "FAIL" # TODO
 
             return promise
 
         # From backlog to sprint
-        newSprint = @scope.sprintsById[newSprintId]
         if oldSprintId == null
             us.milestone = newSprintId for us in usList
 
@@ -372,9 +402,8 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
                 # Remove the us from the sprint list.
                 for us in usList
-                    oldSprint = @scope.sprintsById[oldSprintId]
-                    r = oldSprint.user_stories.indexOf(us)
-                    oldSprint.user_stories.splice(r, 1)
+                    r = sprint.user_stories.indexOf(us)
+                    sprint.user_stories.splice(r, 1)
 
         # Persist the milestone change of userstory
         promises = _.map usList, (us) => @repo.save(us)
@@ -385,12 +414,15 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             items = @.resortUserStories(newSprint.user_stories, "sprint_order")
             data = @.prepareBulkUpdateData(items, "sprint_order")
 
-            @rs.userstories.bulkUpdateSprintOrder(project, data).then =>
+            @rs.userstories.bulkUpdateSprintOrder(project, data).then (result) =>
                 @rootscope.$broadcast("sprint:us:moved", us, oldSprintId, newSprintId)
 
             @rs.userstories.bulkUpdateBacklogOrder(project, data).then =>
                 for us in usList
                     @rootscope.$broadcast("sprint:us:moved", us, oldSprintId, newSprintId)
+
+            if movedToClosedSprint || movedFromClosedSprint
+                @scope.$broadcast("backlog:load-closed-sprints")
 
         promise.then null, ->
             console.log "FAIL" # TODO

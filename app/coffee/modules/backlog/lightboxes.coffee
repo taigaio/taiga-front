@@ -100,7 +100,7 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading,
                     finish()
                     $scope.milestonesCounter -= 1
                     lightboxService.close($el)
-                    $rootscope.$broadcast("sprintform:remove:success")
+                    $rootscope.$broadcast("sprintform:remove:success", $scope.sprint)
 
                 onError = ->
                     finish(false)
