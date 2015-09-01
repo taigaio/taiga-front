@@ -394,7 +394,7 @@ MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm, $compile, $transla
             event.preventDefault()
 
             title = $translate.instant("ADMIN.MEMBERSHIP.DELETE_MEMBER")
-            defaultMsg = $translate.instant("ADMIN.MEMBERSHIP.DEFAULT_DELETE_MESSAGE")
+            defaultMsg = $translate.instant("ADMIN.MEMBERSHIP.DEFAULT_DELETE_MESSAGE", {email: member.email})
             message = if member.user then member.full_name else defaultMsg
 
             $confirm.askOnDelete(title, message).then (finish) ->
