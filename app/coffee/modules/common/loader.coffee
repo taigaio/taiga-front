@@ -82,7 +82,6 @@ Loader = ($rootscope) ->
                 pageLoaded()
 
                 clearInterval(intervalAuto)
-                clearTimeout(timeoutAuto)
         ), 50
 
     start = () ->
