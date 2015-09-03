@@ -164,13 +164,22 @@ module.directive("tgSearchBox", SearchBoxDirective)
 
 SearchDirective = ($log, $compile, $templatecache, $routeparams, $location) ->
     linkTable = ($scope, $el, $attrs, $ctrl) ->
+        applyAutoTab = true
+        activeSectionName = "userstories"
         tabsDom = $el.find("section.search-filter")
         lastSeatchResults = null
 
         getActiveSection = (data) ->
             maxVal = 0
-            selectedSectionName = null
-            selectedSectionData = null
+            selectedSection = {}
+            selectedSection.name = "userstories"
+            selectedSection.value = []
+
+            if !applyAutoTab
+                selectedSection.name = activeSectionName
+                selectedSection.value = data[activeSectionName]
+
+                return selectedSection
 
             if data
                 for name in ["userstories", "issues", "tasks", "wikipages"]
@@ -178,14 +187,14 @@ SearchDirective = ($log, $compile, $templatecache, $routeparams, $location) ->
 
                     if value.length > maxVal
                         maxVal = value.length
-                        selectedSectionName = name
-                        selectedSectionData = value
+                        selectedSection.name = name
+                        selectedSection.value = value
                         break;
 
             if maxVal == 0
-                return {name: "userstories", value: []}
+                return selectedSection
 
-            return {name:selectedSectionName, value: selectedSectionData}
+            return selectedSection
 
         renderFilterTabs = (data) ->
             for name, value of data
@@ -196,6 +205,9 @@ SearchDirective = ($log, $compile, $templatecache, $routeparams, $location) ->
             # Mark as active the item with max amount of results
             tabsDom.find("a.active").removeClass("active")
             tabsDom.find("li.#{section.name} a").addClass("active")
+
+            applyAutoTab = false
+            activeSectionName = section.name
 
         templates = {
             issues: $templatecache.get("search-issues")
@@ -221,8 +233,13 @@ SearchDirective = ($log, $compile, $templatecache, $routeparams, $location) ->
 
         $scope.$watch "searchResults", (data) ->
             lastSeatchResults = data
+
+            return if !lastSeatchResults
+
             activeSection = getActiveSection(data)
+
             renderFilterTabs(data)
+
             renderTableContent(activeSection)
             markSectionTabActive(activeSection)
 

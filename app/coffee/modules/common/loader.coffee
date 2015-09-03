@@ -77,13 +77,6 @@ Loader = ($rootscope) ->
         lastResponseDate = 0
 
     autoClose = () ->
-        maxAuto = 5000
-        timeoutAuto = setTimeout (() ->
-            pageLoaded()
-
-            clearInterval(intervalAuto)
-        ), maxAuto
-
         intervalAuto = setInterval (() ->
             if lastResponseDate && requestCount == 0
                 pageLoaded()
