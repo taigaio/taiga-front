@@ -36,7 +36,7 @@
         "EXTERNAL_USER": "внешний пользователь",
         "GENERIC_ERROR": "Один из Умпа-Лумп говорит {{error}}.",
         "IOCAINE_TEXT": "Чувствуете, что задание берет верх над вами? Дайте другим знать об этом, нажав на \"Иокаин\", когда редактируете задание. Возможно стать неуязвимым к этому (выдуманному) смертельном яду, потребляя небольшие количества время от времени, так же как возможно стать лучше в том, что вы делаете, временами беря на себя дополнительные препятствия!",
-        "CAPSLOCK_WARNING": "Be careful! You're writing with capital letters and this input is case sensitive.",
+        "CAPSLOCK_WARNING": "Будьте внимательны! Введённый текст состоит из заглавных букв, а регистр имеет значение.",
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Кажется, это значение некорректно.",
             "TYPE_EMAIL": "Это значение должно быть корректным email-адресом.",
@@ -104,7 +104,7 @@
         "SEE_USER_PROFILE": "Посмотреть профиль {{username }}",
         "USER_STORY": "Пользовательская история",
         "TASK": "Задача",
-        "ISSUE": "Проблема",
+        "ISSUE": "Задача",
         "TAGS": {
             "PLACEHOLDER": "Назначьте тэг",
             "DELETE": "Удалить тэг",
@@ -221,11 +221,11 @@
                 "DELETE_TASKS": "Удалить задачи"
             },
             "ISSUES": {
-                "NAME": "Проблемы",
-                "VIEW_ISSUES": "Посмотреть проблемы",
-                "ADD_ISSUES": "Добавить проблемы",
-                "MODIFY_ISSUES": "Изменить проблемы",
-                "DELETE_ISSUES": "Удалить проблемы"
+                "NAME": "Задачи",
+                "VIEW_ISSUES": "Посмотреть задачи",
+                "ADD_ISSUES": "Добавить задачи",
+                "MODIFY_ISSUES": "Изменить задачи",
+                "DELETE_ISSUES": "Удалить задачи"
             },
             "WIKI": {
                 "NAME": "Вики",
@@ -327,8 +327,8 @@
     },
     "HOME": {
         "PAGE_TITLE": "Домашняя страница - Taiga",
-        "PAGE_DESCRIPTION": "Главная страница Тайги, с вашими основными проектами, назначенными и отслеживаемыми задачами, проблемами и историями от пользователей",
-        "EMPTY_WATCHING": "<strong>Следите</strong> за проектами, историями от пользователей, задачами, проблемами... о которых хотите знать :)",
+        "PAGE_DESCRIPTION": "Главная страница Тайги, с вашими основными проектами, назначенными и отслеживаемыми задачами и историями от пользователей",
+        "EMPTY_WATCHING": "<strong>Следите</strong> за проектами, историями от пользователей, задачами... о которых хотите знать :)",
         "EMPTY_PROJECT_LIST": "У Вас пока нет проектов",
         "WORKING_ON_SECTION": "Работает над",
         "WATCHING_SECTION": "Отслеживаемые"
@@ -401,7 +401,7 @@
             "BACKLOG_DESCRIPTION": "Управляйте историями от пользователей, чтобы организовывать вашу ближайшую и приоритетную работу",
             "KANBAN": "Kanban",
             "KANBAN_DESCRIPTION": "Организуйте эффективную работу с проектом с помощью этой панели",
-            "ISSUES": "Проблемы",
+            "ISSUES": "Задачи",
             "ISSUES_DESCRIPTION": "Следите за ошибками, вопросами и улучшениями вашего проекта. Ничего не пропустите!",
             "WIKI": "Вики",
             "WIKI_DESCRIPTION": "Добавляйте, изменяйте или удаляйте контент совместно с остальными. Это самое правильное место для документации вашего проекта.",
@@ -439,7 +439,7 @@
         "CSV": {
             "SECTION_TITLE_US": "Отчёты об историях от пользователей",
             "SECTION_TITLE_TASK": "отчёты о задачах",
-            "SECTION_TITLE_ISSUE": "отчёты о проблемах",
+            "SECTION_TITLE_ISSUE": "отчёты о задачах",
             "DOWNLOAD": "Скачать CSV",
             "URL_FIELD_PLACEHOLDER": "Упс, забыли пароль?",
             "TITLE_REGENERATE_URL": " Сделать CSV ссылку ещё раз",
@@ -448,13 +448,13 @@
         },
         "CUSTOM_FIELDS": {
             "TITLE": "Пользовательские поля",
-            "SUBTITLE": "Укажите специальные поля для ваших задач, историй от пользователей и проблем",
+            "SUBTITLE": "Укажите специальные поля для ваших задач и историй от пользователей",
             "US_DESCRIPTION": "Специальные поля для историй от пользователей",
             "US_ADD": "Добавить специальное поле для историй от пользователей",
             "TASK_DESCRIPTION": "Специальные поля задач",
             "TASK_ADD": "Добавить новые типы задач",
-            "ISSUE_DESCRIPTION": "Специальные поля проблем",
-            "ISSUE_ADD": "Добавить специальное поле для проблем",
+            "ISSUE_DESCRIPTION": "Специальные поля задач",
+            "ISSUE_ADD": "Добавить специальное поле для задач",
             "FIELD_TYPE_TEXT": "Текст",
             "FIELD_TYPE_MULTI": "Многостроковое"
         },
@@ -471,27 +471,27 @@
         },
         "PROJECT_VALUES_PRIORITIES": {
             "TITLE": "Приоритеты",
-            "SUBTITLE": "Укажите, какие приоритеты будут иметь ваши проблемы",
-            "ISSUE_TITLE": "Приоритеты проблем",
+            "SUBTITLE": "Укажите, какие приоритеты будут иметь ваши задачи",
+            "ISSUE_TITLE": "Приоритеты задач",
             "ACTION_ADD": "Добавить новый приоритет"
         },
         "PROJECT_VALUES_SEVERITIES": {
             "TITLE": "Степени важности",
-            "SUBTITLE": "Укажите степени важности, которые будут иметь ваши проблемы",
-            "ISSUE_TITLE": "Степени важности проблем",
+            "SUBTITLE": "Укажите степени важности, которые будут иметь ваши задачи",
+            "ISSUE_TITLE": "Степени важности задач",
             "ACTION_ADD": "Добавить новую степень важности"
         },
         "PROJECT_VALUES_STATUS": {
             "TITLE": "Статус",
-            "SUBTITLE": "Укажите, какие статусы будут принимать ваши задачи, истории от пользователей и проблемы",
+            "SUBTITLE": "Укажите, какие статусы будут принимать ваши задачи и истории от пользователей",
             "US_TITLE": "Статусы ПИ",
             "TASK_TITLE": "Статус задач",
-            "ISSUE_TITLE": "Статусы проблем"
+            "ISSUE_TITLE": "Статусы задач"
         },
         "PROJECT_VALUES_TYPES": {
             "TITLE": "Типы",
-            "SUBTITLE": "Укажите, какие типы смогут иметь ваши проблемы",
-            "ISSUE_TITLE": "Типы проблем",
+            "SUBTITLE": "Укажите, какие типы смогут иметь ваши задачи",
+            "ISSUE_TITLE": "Типы задач",
             "ACTION_ADD": "Добавить новый"
         },
         "ROLES": {
@@ -582,8 +582,8 @@
             "LABEL_TASK_STATUS": "Значение по умолчанию для статуса задачи",
             "LABEL_PRIORITY": "Значение по умолчанию для выбора приоритета",
             "LABEL_SEVERITY": "Значение важности по умолчанию",
-            "LABEL_ISSUE_TYPE": "Значение по умолчанию для типа проблемы",
-            "LABEL_ISSUE_STATUS": "Значение по умолчанию для статуса проблемы"
+            "LABEL_ISSUE_TYPE": "Значение по умолчанию для типа задачи",
+            "LABEL_ISSUE_STATUS": "Значение по умолчанию для статуса задачи"
         },
         "STATUS": {
             "PLACEHOLDER_WRITE_STATUS_NAME": "Укажите название для нового статуса"
@@ -670,7 +670,7 @@
             "TIMELINE": "График работ",
             "BACKLOG": "Список задач",
             "KANBAN": "Kanban",
-            "ISSUES": "Проблемы",
+            "ISSUES": "Задачи",
             "WIKI": "Wiki",
             "TEAM": "Команда",
             "MEETUP": "Созвониться",
@@ -731,7 +731,7 @@
         "DELETE_PROJECT": {
             "TITLE": "Удалить проект",
             "QUESTION": "Вы уверены, что хотите удалить данный проект?",
-            "SUBTITLE": "Все данные проекта (истории от пользователей, задачи, проблемы, спринты и вики страницы) будут утрачены! :-(",
+            "SUBTITLE": "Все данные проекта (истории от пользователей, задачи, спринты и вики страницы) будут утрачены! :-(",
             "CONFIRM": "Да, я уверен"
         },
         "ASSIGNED_TO": {
@@ -743,7 +743,7 @@
             "HELP_TEXT": "Если пользователи уже зарегистрированы в Тайге они добавятся автоматически. В противном случае им будет отправлено приглашение."
         },
         "CREATE_ISSUE": {
-            "TITLE": "Добавить проблему"
+            "TITLE": "Добавить задачу"
         },
         "FEEDBACK": {
             "TITLE": "Расскажи что-нибудь...",
@@ -794,8 +794,8 @@
         "TOTAL_POINTS": "всего",
         "ADD": "+ Добавить Пользовательскую Историю",
         "ADD_BULK": "Добавить несколько Историй от Пользователей пакетно",
-        "PROMOTED": "Эта ПИ была сформирована из Проблемы:",
-        "TITLE_LINK_GO_TO_ISSUE": "Перейти к проблеме",
+        "PROMOTED": "Эта ПИ была сформирована из задачи:",
+        "TITLE_LINK_GO_TO_ISSUE": "Перейти к задаче",
         "EXTERNAL_REFERENCE": "Эта ПИ была создана из:",
         "GO_TO_EXTERNAL_REFERENCE": "Перейти в начало",
         "BLOCKED": "Эта пользовательская история заблокирована ",
@@ -918,7 +918,7 @@
             "CLOSED_TASKS": "завершённые <br /> задачи",
             "IOCAINE_DOSES": "иокаина<br />дозы",
             "SHOW_STATISTICS_TITLE": "Показать статистику",
-            "TOGGLE_BAKLOG_GRAPH": "Показать/Скрыть график решения проблем"
+            "TOGGLE_BAKLOG_GRAPH": "Показать/Скрыть график решения задач"
         },
         "SUMMARY": {
             "PROJECT_POINTS": "проектные<br />очки",
@@ -1030,29 +1030,29 @@
         "SUCCESS": "Oompa Loompas обновил ваш e-mail"
     },
     "ISSUES": {
-        "PAGE_TITLE": "Проблемы - {{projectName}}",
-        "PAGE_DESCRIPTION": "Панель проблем проекта {{projectName}}: {{projectDescription}}",
-        "LIST_SECTION_NAME": "Проблемы",
-        "SECTION_NAME": "Детали проблемы",
-        "ACTION_NEW_ISSUE": "+НОВАЯ ПРОБЛЕМА",
+        "PAGE_TITLE": "Задачи - {{projectName}}",
+        "PAGE_DESCRIPTION": "Панель задач проекта {{projectName}}: {{projectDescription}}",
+        "LIST_SECTION_NAME": "Задачи",
+        "SECTION_NAME": "Детали задачи",
+        "ACTION_NEW_ISSUE": "+НОВАЯ ЗАДАЧА",
         "ACTION_PROMOTE_TO_US": "Повысить до пользовательской истории",
         "PLACEHOLDER_FILTER_NAME": "Введите название фильтра и нажмите \"ввод\"",
-        "PROMOTED": "Эта проблема была переделана в ПИ",
-        "EXTERNAL_REFERENCE": "Эта проблема была создана из:",
+        "PROMOTED": "Эта задача была переделана в ПИ",
+        "EXTERNAL_REFERENCE": "Эта задача была создана из:",
         "GO_TO_EXTERNAL_REFERENCE": "Перейти в начало",
-        "BLOCKED": "Эта проблема заблокирована",
-        "TITLE_PREVIOUS_ISSUE": "предыдущая проблема",
-        "TITLE_NEXT_ISSUE": "следующая проблема",
-        "ACTION_DELETE": "Удалить проблему",
-        "LIGHTBOX_TITLE_BLOKING_ISSUE": "Блокирующая проблема",
+        "BLOCKED": "Эта задача заблокирована",
+        "TITLE_PREVIOUS_ISSUE": "предыдущая задача",
+        "TITLE_NEXT_ISSUE": "следующая задача",
+        "ACTION_DELETE": "Удалить задачу",
+        "LIGHTBOX_TITLE_BLOKING_ISSUE": "Блокирующая задача",
         "FIELDS": {
             "PRIORITY": "Приоритет",
             "SEVERITY": "Важность",
             "TYPE": "Тип"
         },
         "CONFIRM_PROMOTE": {
-            "TITLE": "Превратить эту проблему в новую история от пользователя",
-            "MESSAGE": "Вы уверены, что хотите создать новую ПИ из этой проблемы?"
+            "TITLE": "Превратить эту задачу в новую историю от пользователя",
+            "MESSAGE": "Вы уверены, что хотите создать новую ПИ из этой задачи?"
         },
         "FILTERS": {
             "TITLE": "Фильтры",
@@ -1089,14 +1089,14 @@
             "TITLE_ACTION_CHANGE_STATUS": "Изменить статус",
             "TITLE_ACTION_ASSIGNED_TO": "Назначено",
             "EMPTY": {
-                "TITLE": "Нет проблем для отчёта :-)",
-                "SUBTITLE": "Вы нашли проблему?",
-                "ACTION_CREATE_ISSUE": "Создать новую проблему"
+                "TITLE": "Нет сообщённых задач :-)",
+                "SUBTITLE": "Вы нашли задачу?",
+                "ACTION_CREATE_ISSUE": "Создать новую задачу"
             }
         }
     },
     "ISSUE": {
-        "PAGE_TITLE": "{{issueSubject}} - Проблема {{issueRef}} - {{projectName}}",
+        "PAGE_TITLE": "{{issueSubject}} - Задача {{issueRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Статус: {{issueStatus }}. Тип: {{issueType}}, Приоритет: {{issuePriority}}. Важность: {{issueSeverity}}. Описание: {{issueDescription}}"
     },
     "KANBAN": {
@@ -1117,9 +1117,9 @@
     },
     "SEARCH": {
         "PAGE_TITLE": "Поиск - {{projectName}}",
-        "PAGE_DESCRIPTION": "Ищите что угодно, задачи, истории от пользователей, проблемы и вики-страницы, в проекте {{projectName}}: {{projectDescription}}",
+        "PAGE_DESCRIPTION": "Ищите что угодно, задачи, истории от пользователей и вики-страницы, в проекте {{projectName}}: {{projectDescription}}",
         "FILTER_USER_STORIES": "Истории от Пользователей",
-        "FILTER_ISSUES": "Проблемы",
+        "FILTER_ISSUES": "Задачи",
         "FILTER_TASKS": "Задачи",
         "FILTER_WIKI": "Вики страницы",
         "PLACEHOLDER_SEARCH": "Искать в...",
@@ -1134,13 +1134,13 @@
         "APP_TITLE": "КОМАНДА - {{projectName}}",
         "PLACEHOLDER_INPUT_SEARCH": "Искать по имени",
         "COLUMN_MR_WOLF": "Мр. Вульф",
-        "EXPLANATION_COLUMN_MR_WOLF": "Решёные проблемы",
+        "EXPLANATION_COLUMN_MR_WOLF": "Решёные задачи",
         "COLUMN_IOCAINE": "Употребляющий иокаин",
         "EXPLANATION_COLUMN_IOCAINE": "потреблено доз иокаина",
         "COLUMN_CERVANTES": "Сервантес",
         "EXPLANATION_COLUMN_CERVANTES": "Отредактировано вики-страниц",
         "COLUMN_BUG_HUNTER": "Охотник за ошибками",
-        "EXPLANATION_COLUMN_BUG_HUNTER": "Сообщенные проблемы",
+        "EXPLANATION_COLUMN_BUG_HUNTER": "Сообщенные задачи",
         "COLUMN_NIGHT_SHIFT": "Ночная смена",
         "EXPLANATION_COLUMN_NIGHT_SHIFT": "Задача закрыта",
         "COLUMN_TOTAL_POWER": "Могущество",
@@ -1232,12 +1232,12 @@
         "HINT3_TITLE": "Отсортируйте ваши проекты по признаку, наиболее важному для вас",
         "HINT3_TEXT": "Главные 10 проектов будут доступны непосредственно из верхней панели",
         "HINT4_TITLE": "Вы забыли над чем работали?",
-        "HINT4_TEXT": "Не переживайте, на вашем рабочем столе вы найдёте ваши активные задачи, проблемы, и истории от пользователей в том порядке, в котором вы над ними работали."
+        "HINT4_TEXT": "Не переживайте, на вашем рабочем столе вы найдёте ваши активные задачи и истории от пользователей в том порядке, в котором вы над ними работали."
     },
     "TIMELINE": {
         "UPLOAD_ATTACHMENT": "{{username}} приложил новый файл к {{obj_name}}",
         "US_CREATED": "{{username}} создал новую ПИ  {{obj_name}} в {{project_name}}",
-        "ISSUE_CREATED": "{{username}} указал на новую проблему {{obj_name}} в {{project_name}}",
+        "ISSUE_CREATED": "{{username}} создал новую задачу {{obj_name}} в {{project_name}}",
         "TASK_CREATED": "{{username}} создал новую задачу {{obj_name}} в {{project_name}}",
         "TASK_CREATED_WITH_US": "{{username}} создал новую задачу {{obj_name}} в {{project_name}}, которая принадлежит Задаче от Пользователя {{us_name}}",
         "WIKI_CREATED": "{{username}} создал новую вики-страницу {{obj_name}} в {{project_name}}",
@@ -1247,19 +1247,19 @@
         "US_UPDATED": "{{username}} обновил атрибут \"{{field_name}}\" ПИ {{obj_name}}",
         "US_UPDATED_WITH_NEW_VALUE": "{{username}} установил атрибут \"{{field_name}}\" для ПИ {{obj_name}} на {{new_value}}",
         "US_UPDATED_POINTS": "{{username}} установил очки для '{{role_name}}' для ПИ {{obj_name}} на {{new_value}}",
-        "ISSUE_UPDATED": "{{username}} обновил атрибут \"{{field_name}}\" проблемы {{obj_name}}",
-        "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} установил атрибут \"{{field_name}}\" проблемы {{obj_name}} на {{new_value}}",
+        "ISSUE_UPDATED": "{{username}} обновил атрибут \"{{field_name}}\" задачи {{obj_name}}",
+        "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} установил атрибут \"{{field_name}}\" задачи {{obj_name}} на {{new_value}}",
         "TASK_UPDATED": "{{username}} установил атрибут \"{{field_name}}\" задачи {{obj_name}} на {{new_value}}",
         "TASK_UPDATED_WITH_NEW_VALUE": "{{username}} установил атрибут \"{{field_name}}\" задачи {{obj_name}} на {{new_value}}",
         "TASK_UPDATED_WITH_US": "{{username}} изменил атрибут \"{{field_name}}\" задачи {{obj_name}}, которая принадлежит ПИ {{us_name}}",
         "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} установил атрибут \"{{field_name}}\" задачи {{obj_name}}, которая принадлежит ПИ {{us_name}}, на {{new_value}}",
         "WIKI_UPDATED": "{{username}} обновил вики-страницу {{obj_name}}",
         "NEW_COMMENT_US": "{{username}} прокомментировал ПИ {{obj_name}}",
-        "NEW_COMMENT_ISSUE": "{{username}} прокомментировал проблему {{obj_name}}",
+        "NEW_COMMENT_ISSUE": "{{username}} прокомментировал задачу {{obj_name}}",
         "NEW_COMMENT_TASK": "{{username}} прокомментировал задачу {{obj_name}}",
         "NEW_MEMBER": "У {{project_name}} появился новый участник",
         "US_ADDED_MILESTONE": "{{username}} добавил ПИ {{obj_name}} для {{sprint_name}}",
-        "US_MOVED": "{{username}} has moved the US {{obj_name}}",
+        "US_MOVED": "{{username}} переместил ПИ {{obj_name}}",
         "US_REMOVED_FROM_MILESTONE": "{{username}} добавил ПИ {{obj_name}} к списку задач",
         "BLOCKED": "{{username}} заблокировал {{obj_name}}",
         "UNBLOCKED": "{{username}} разблокировал {{obj_name}}",

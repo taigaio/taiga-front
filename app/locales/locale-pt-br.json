@@ -1162,7 +1162,7 @@
             "SECTION_NAME": "Notificações por email",
             "COLUMN_PROJECT": "Projeto",
             "COLUMN_RECEIVE_ALL": "Receber todos",
-            "COLUMN_ONLY_INVOLVED": "Apenas involvido",
+            "COLUMN_ONLY_INVOLVED": "Apenas envolvido",
             "COLUMN_NO_NOTIFICATIONS": "Sem notificações",
             "OPTION_ALL": "Tudo",
             "OPTION_INVOLVED": "Envolvido",
