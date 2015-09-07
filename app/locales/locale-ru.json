@@ -953,7 +953,7 @@
         "NOT_FOUND": "Не найдено",
         "NOT_FOUND_TEXT": "Ошибка 404. Страница не найдена.",
         "PERMISSION_DENIED": "Доступ закрыт",
-        "PERMISSION_DENIED_CODE": "Ошибка 403.",
+        "PERMISSION_DENIED_TEXT": "You don't have permission to access to this page.",
         "VERSION_ERROR": "Кто-то в Тайге изменил это раньше вас и Умпа-Лумпы не могут применить ваши изменения. Пожалуйста обновите страницу (Внимание! При обновлении страницы текущие правки будут утеряны) и внесите правки еще раз."
     },
     "TASKBOARD": {

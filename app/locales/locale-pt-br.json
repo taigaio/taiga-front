@@ -953,7 +953,7 @@
         "NOT_FOUND": "Não encontrado",
         "NOT_FOUND_TEXT": "Erro 404. A página que você procura não existe mais. Você pode voltar para a página do TAIGA e ver se consegue encontrar o que está procurando.",
         "PERMISSION_DENIED": "Permissão negada",
-        "PERMISSION_DENIED_CODE": "Erro 403.",
+        "PERMISSION_DENIED_TEXT": "You don't have permission to access to this page.",
         "VERSION_ERROR": "Alguém dentro da Taiga mudou isso antes e nosso Oompa Loompa não podem aplicar suas alterações. Recarregue a página e aplique-as novamente (elas serão perdidas, agora)."
     },
     "TASKBOARD": {

@@ -953,7 +953,7 @@
         "NOT_FOUND": "Niet gevonden",
         "NOT_FOUND_TEXT": "Error 404. De pagina die je zoekt bestaat niet meer. Misschien kan je terugkeren naar de TAIGA startpagina en kijken of je kan vinden wat je zoekt.",
         "PERMISSION_DENIED": "Niet toegestaan",
-        "PERMISSION_DENIED_CODE": "Error 403",
+        "PERMISSION_DENIED_TEXT": "You don't have permission to access to this page.",
         "VERSION_ERROR": "Iemand bij Taiga heeft dit vooraf veranderd en onze Oempa-Loempa's konden je veranderingen niet toepassen. Gelieve te herladen en je veranderingen opnieuw toe te passen (ze zullen verloren gaan)"
     },
     "TASKBOARD": {

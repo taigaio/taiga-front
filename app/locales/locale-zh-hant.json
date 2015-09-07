@@ -953,7 +953,7 @@
         "NOT_FOUND": "找不到",
         "NOT_FOUND_TEXT": "Error 404，你要找的網頁不存在，你可以稍後再回來TAIGA首頁，看看是否能再次找到要找的東西。",
         "PERMISSION_DENIED": "無此權限",
-        "PERMISSION_DENIED_CODE": "Error 403.",
+        "PERMISSION_DENIED_TEXT": "You don't have permission to access to this page.",
         "VERSION_ERROR": "Taiga某人之前更改了這個，而我們的工程師無法再做改變。請重新載入頁面來使用你的更新（之前設定將消失）"
     },
     "TASKBOARD": {

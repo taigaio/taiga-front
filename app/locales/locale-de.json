@@ -953,7 +953,7 @@
         "NOT_FOUND": "Nicht gefunden",
         "NOT_FOUND_TEXT": "Fehler 404. Die angeforderte Seite existiert nicht mehr. Möglicherweise finden Sie das Gesuchte, wenn Sie zur TAIGA Homepage zurückkehren. ",
         "PERMISSION_DENIED": "Berechtigung verweigert",
-        "PERMISSION_DENIED_CODE": "Fehler 403.",
+        "PERMISSION_DENIED_TEXT": "You don't have permission to access to this page.",
         "VERSION_ERROR": "Jemand anderes hat dies schon geändert und unsere Helferlein können Ihre Änderungen deshalb nicht übernehmen. Bitte laden Sie die Seite neu und machen Sie die Änderungen erneut (die aktuelle Eingabe geht dabei verloren)."
     },
     "TASKBOARD": {

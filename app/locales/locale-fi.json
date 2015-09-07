@@ -953,7 +953,7 @@
         "NOT_FOUND": "Ei löytynyt",
         "NOT_FOUND_TEXT": "Virhe 404. Sivua ei löydy. Palaa takaisin TAIGA etusivulle ja katso löydätkö haluamasi sieltä.",
         "PERMISSION_DENIED": "Ei oikeutta",
-        "PERMISSION_DENIED_CODE": "Virhe 403.",
+        "PERMISSION_DENIED_TEXT": "You don't have permission to access to this page.",
         "VERSION_ERROR": "Joku Taigassa on päivittänyt tätä ennen sinua. Muutoksiasi ei voida tallentaa. Lataa sivu uudestaan ja korjaa tilanne."
     },
     "TASKBOARD": {
