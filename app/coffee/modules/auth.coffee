@@ -43,6 +43,9 @@ class AuthService extends taiga.Service
     constructor: (@rootscope, @storage, @model, @rs, @http, @urls, @config, @translate, @currentUserService,
                   @themeService) ->
         super()
+
+        @._currentTheme = @config.get("defaultTheme") || "taiga" # load on index.jade
+
         userModel = @.getUser()
         @.setUserdata(userModel)
 
@@ -53,9 +56,15 @@ class AuthService extends taiga.Service
         else
             @.userData = null
 
+    _getUserTheme: ->
+        return @rootscope.user?.theme || @config.get("defaultTheme") || "taiga"
+
     _setTheme: ->
-        theme = @rootscope.user?.theme || @config.get("defaultTheme") || "taiga"
-        @themeService.use(theme)
+        newTheme = @._getUserTheme()
+
+        if @._currentTheme != newTheme
+            @._currentTheme = newTheme
+            @themeService.use(@._currentTheme)
 
     _setLocales: ->
         lang = @rootscope.user?.lang || @config.get("defaultLanguage") || "en"
@@ -71,7 +80,9 @@ class AuthService extends taiga.Service
             user = @model.make_model("users", userData)
             @rootscope.user = user
             @._setLocales()
+
             @._setTheme()
+
             return user
 
         return null
