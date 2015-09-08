@@ -31,36 +31,8 @@ $red-amaranth: #e91e63;
 $purple-eggplant: #9c27b0;
 $yellow-pear: #ffc107;
 
-//*************************
-//** LAYOUT
-//*************************
-
-// Default body color and background
-body {
-    background: $white; // fallback
-    color: $grayer;
-}
-
-// Main
-.master {
-    background: $white;
-}
-
-// Secondary panel
-.menu-secondary {
-    background: lighten($primary-light, 22%);
-}
-
-// Tertiary panel
-.menu-tertiary {
-    background-color: $primary-dark;
-}
-
-// Extra bar panel
-.extrabar {
-   background: lighten($primary-light, 22%);
-}
-
+$top-icon-color: $white;
+$dropdown-color: rgba(darken($primary-dark, 20%), 1);
 
 //**************************
 //** TYPOGRAPHY
@@ -93,68 +65,6 @@ body {
 %taiga {font-family: 'taiga';}
 %mono {font-family: 'courier new', 'monospace';}
 
-// Titles
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    color: $blackish;
-}
-
-a {
-    color: $grayer;
-    &:hover {
-        color: $primary;
-    }
-}
-
-//**************************
-//** SCAFFOLDING
-//**************************
-
-//Forms
-input[type="text"],
-input[type="number"],
-input[type="password"],
-input[type="email"],
-input[type="date"],
-input[type="password"],
-select,
-textarea {
-    background: $whitish;
-    border-color: $primary;
-    color: $grayer;
-    @include placeholder {
-        color: darken($gray-light, 10%);
-    }
-    &.checksley-error {
-        border: 1px solid $red;
-    }
-}
-
-
-// Input errors
-.checksley-error-list {
-    background: rgba($whitish, .8);
-    color: $red;
-}
-
-// Blockquote
-blockquote {
-    border-left: 5px solid $primary-light;
-}
-
-blockquote,
-blockquote p {
-    color: $gray;
-}
-
-cite {
-    color: $gray;
-}
-
 // lightbox
 %lightbox {
     background: rgba($white, .95);
@@ -169,78 +79,4 @@ cite {
 %background-taiga {
     background: url('https://lh6.googleusercontent.com/-2l_mJ5g6j4k/VGdNZCpaERI/AAAAAAAAD2o/zCx5Z3cYv6Y/w1465-h824-no/Ultimate%2BMaterial%2BLollipop%2BCollection%2B-%2B497') no-repeat center center;
     background-size: cover;
-}
-
-.summary {
-    background: $grayer;
-    color: $white;
-}
-
-
-//************************
-//** NAVIGATION
-//***********************
-
-// Top navigation bar
-.navbar {
-    background: rgba($red-amaranth, .6);
-    &:after {
-        background: url('../images/menu-vert.png') repeat top left;
-    }
-}
-
-$top-icon-color: $white;
-$dropdown-color: rgba(darken($primary-dark, 20%), 1);
-
-//In project left navigation bar
-tg-project-menu {
-    background-color: rgba(darken($primary-dark, 15%), 1);
-    background-image: none;
-}
-
-.main-nav {
-    svg path {
-        fill: $white;
-    }
-}
-
-//*****************************
-//** TASKBOARD
-//******************************
-
-//Taskboard table
-.taskboard-table-header {
-    .task-colum-name {
-        background: lighten($primary-light, 20%);
-        border-top: 3px solid $primary;
-        .icon {
-            color: $primary;
-        }
-    }
-}
-.taskboard-table-body {
-    .taskboard-tasks-box {
-        background: $whitish;
-    }
-}
-
-//*****************************
-//** KANBAN
-//******************************
-
-//Kanban table
-.kanban-table-header {
-    .task-colum-name {
-        background: lighten($primary-light, 20%);
-        border-top: 3px solid $primary;
-        .icon {
-            color: $primary;
-        }
-    }
-}
-
-.kanban-table-body {
-    .kanban-uses-box {
-        background: $whitish;
-    }
 }
