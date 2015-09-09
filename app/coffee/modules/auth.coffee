@@ -221,12 +221,12 @@ LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls, $
     link = ($scope, $el, $attrs) ->
         onSuccess = (response) ->
             if $routeParams['next'] and $routeParams['next'] != $navUrls.resolve("login")
-                nextUrl = $routeParams['next']
+                nextUrl = decodeURIComponent($routeParams['next'])
             else
                 nextUrl = $navUrls.resolve("home")
 
             $events.setupConnection()
-            $location.path(nextUrl)
+            $location.url(nextUrl)
 
         onError = (response) ->
             $confirm.notify("light-error", $translate.instant("LOGIN_FORM.ERROR_AUTH_INCORRECT"))

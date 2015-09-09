@@ -1,4 +1,4 @@
-NavigationBarDirective = (currentUserService, $location) ->
+NavigationBarDirective = (currentUserService, navigationBarService, $location) ->
     link = (scope, el, attrs, ctrl) ->
         scope.vm = {}
 
@@ -10,6 +10,8 @@ NavigationBarDirective = (currentUserService, $location) ->
 
         taiga.defineImmutableProperty(scope.vm, "projects", () -> currentUserService.projects.get("recents"))
         taiga.defineImmutableProperty(scope.vm, "isAuthenticated", () -> currentUserService.isAuthenticated())
+        taiga.defineImmutableProperty(scope.vm, "isEnabledHeader", () -> navigationBarService.isEnabledHeader())
+
 
     directive = {
         templateUrl: "navigation-bar/navigation-bar.html"
@@ -21,6 +23,7 @@ NavigationBarDirective = (currentUserService, $location) ->
 
 NavigationBarDirective.$inject = [
     "tgCurrentUserService",
+    "tgNavigationBarService"
     "$location"
 ]
 

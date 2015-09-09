@@ -149,6 +149,10 @@ urls = {
 
     # locales
     "locales": "/locales"
+
+    # Application tokens
+    "applications": "/applications"
+    "application-tokens": "/application-tokens"
 }
 
 # Initialize api urls service
