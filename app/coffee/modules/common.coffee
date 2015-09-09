@@ -24,6 +24,57 @@ taiga = @.taiga
 module = angular.module("taigaCommon", [])
 
 #############################################################################
+## Default datepicker config
+#############################################################################
+DataPickerConfig = ($translate) ->
+    return {
+        get: () ->
+            return {
+                i18n: {
+                    previousMonth: $translate.instant("COMMON.PICKERDATE.PREV_MONTH"),
+                    nextMonth:  $translate.instant("COMMON.PICKERDATE.NEXT_MONTH"),
+                    months: [
+                        $translate.instant("COMMON.PICKERDATE.MONTHS.JAN"),
+                        $translate.instant("COMMON.PICKERDATE.MONTHS.FEB"),
+                        $translate.instant("COMMON.PICKERDATE.MONTHS.MAR"),
+                        $translate.instant("COMMON.PICKERDATE.MONTHS.APR"),
+                        $translate.instant("COMMON.PICKERDATE.MONTHS.MAY"),
+                        $translate.instant("COMMON.PICKERDATE.MONTHS.JUN"),
+                        $translate.instant("COMMON.PICKERDATE.MONTHS.JUL"),
+                        $translate.instant("COMMON.PICKERDATE.MONTHS.AUG"),
+                        $translate.instant("COMMON.PICKERDATE.MONTHS.SEP"),
+                        $translate.instant("COMMON.PICKERDATE.MONTHS.OCT"),
+                        $translate.instant("COMMON.PICKERDATE.MONTHS.NOV"),
+                        $translate.instant("COMMON.PICKERDATE.MONTHS.DEC")
+                    ],
+                    weekdays: [
+                        $translate.instant("COMMON.PICKERDATE.WEEK_DAYS.SUN"),
+                        $translate.instant("COMMON.PICKERDATE.WEEK_DAYS.MON"),
+                        $translate.instant("COMMON.PICKERDATE.WEEK_DAYS.TUE"),
+                        $translate.instant("COMMON.PICKERDATE.WEEK_DAYS.WED"),
+                        $translate.instant("COMMON.PICKERDATE.WEEK_DAYS.THU"),
+                        $translate.instant("COMMON.PICKERDATE.WEEK_DAYS.FRI"),
+                        $translate.instant("COMMON.PICKERDATE.WEEK_DAYS.SAT")
+                    ],
+                    weekdaysShort: [
+                        $translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.SUN"),
+                        $translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.MON"),
+                        $translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.TUE"),
+                        $translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.WED"),
+                        $translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.THU"),
+                        $translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.FRI"),
+                        $translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.SAT")
+                    ]
+                },
+                isRTL: $translate.instant("COMMON.PICKERDATE.IS_RTL") == "true",
+                firstDay: parseInt($translate.instant("COMMON.PICKERDATE.FIRST_DAY_OF_WEEK"), 10),
+                format: $translate.instant("COMMON.PICKERDATE.FORMAT")
+            }
+    }
+
+module.factory("tgDatePickerConfigService", ["$translate", DataPickerConfig])
+
+#############################################################################
 ## Get the selected text
 #############################################################################
 SelectedText = ($window, $document) ->

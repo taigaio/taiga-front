@@ -121,12 +121,17 @@ CustomAttributesValuesDirective = ($templates, $storage) ->
 module.directive("tgCustomAttributesValues", ["$tgTemplate", "$tgStorage", "$translate", CustomAttributesValuesDirective])
 
 
-CustomAttributeValueDirective = ($template, $selectedText, $compile, $translate) ->
+CustomAttributeValueDirective = ($template, $selectedText, $compile, $translate, datePickerConfigService) ->
     template = $template.get("custom-attributes/custom-attribute-value.html", true)
     templateEdit = $template.get("custom-attributes/custom-attribute-value-edit.html", true)
 
     link = ($scope, $el, $attrs, $ctrl) ->
+        prettyDate = $translate.instant("COMMON.PICKERDATE.FORMAT")
+
         render = (attributeValue, edit=false) ->
+            if attributeValue.field_type == "DATE" and attributeValue.value
+                attributeValue.value = moment(attributeValue.value, "YYYY-MM-DD").format(prettyDate)
+
             value = attributeValue.value
             innerText = attributeValue.value
             editable = isEditable()
@@ -149,49 +154,18 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile, $translate)
             $el.html(html)
 
             if attributeValue.field_type == "DATE"
+                datePickerConfig = datePickerConfigService.get()
 
-              selectedDate = null
+                _.merge(datePickerConfig, {
+                    field: $el.find('input')[0]
+                    onSelect: (date) =>
+                        selectedDate = date
+                    onOpen: =>
+                        $el.picker.setDate(selectedDate) if selectedDate?
+                })
 
-              $el.picker = new Pikaday(
-                field: $el.find('input')[0]
-                onSelect: (date) =>
-                      selectedDate = date
-                onOpen: =>
-                    $el.picker.setDate(selectedDate) if selectedDate?
-                i18n: {
-                    previousMonth: $translate.instant("COMMON.PICKERDATE.PREV_MONTH"),
-                    nextMonth:  $translate.instant("COMMON.PICKERDATE.NEXT_MONTH"),
-                    months: [$translate.instant("COMMON.PICKERDATE.MONTHS.JAN"),
-                             $translate.instant("COMMON.PICKERDATE.MONTHS.FEB"),
-                             $translate.instant("COMMON.PICKERDATE.MONTHS.MAR"),
-                             $translate.instant("COMMON.PICKERDATE.MONTHS.APR"),
-                             $translate.instant("COMMON.PICKERDATE.MONTHS.MAY"),
-                             $translate.instant("COMMON.PICKERDATE.MONTHS.JUN"),
-                             $translate.instant("COMMON.PICKERDATE.MONTHS.JUL"),
-                             $translate.instant("COMMON.PICKERDATE.MONTHS.AUG"),
-                             $translate.instant("COMMON.PICKERDATE.MONTHS.SEP"),
-                             $translate.instant("COMMON.PICKERDATE.MONTHS.OCT"),
-                             $translate.instant("COMMON.PICKERDATE.MONTHS.NOV"),
-                             $translate.instant("COMMON.PICKERDATE.MONTHS.DEC")],
-                    weekdays: [$translate.instant("COMMON.PICKERDATE.WEEK_DAYS.SUN"),
-                               $translate.instant("COMMON.PICKERDATE.WEEK_DAYS.MON"),
-                               $translate.instant("COMMON.PICKERDATE.WEEK_DAYS.TUE"),
-                               $translate.instant("COMMON.PICKERDATE.WEEK_DAYS.WED"),
-                               $translate.instant("COMMON.PICKERDATE.WEEK_DAYS.THU"),
-                               $translate.instant("COMMON.PICKERDATE.WEEK_DAYS.FRI"),
-                               $translate.instant("COMMON.PICKERDATE.WEEK_DAYS.SAT")],
-                    weekdaysShort: [$translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.SUN"),
-                                    $translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.MON"),
-                                    $translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.TUE"),
-                                    $translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.WED"),
-                                    $translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.THU"),
-                                    $translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.FRI"),
-                                    $translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.SAT")]
-                },
-                isRTL: $translate.instant("COMMON.PICKERDATE.IS_RTL") == "true",
-                firstDay: parseInt($translate.instant("COMMON.PICKERDATE.FIRST_DAY_OF_WEEK"), 10),
-                format: $translate.instant("COMMON.PICKERDATE.FORMAT")
-              )
+                selectedDate = null
+                $el.picker = new Pikaday(datePickerConfig)
 
         isEditable = ->
             permissions = $scope.project.my_permissions
@@ -201,8 +175,11 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile, $translate)
         saveAttributeValue = ->
             attributeValue.value = $el.find("input, textarea").val()
 
-            if attributeValue.field_type == "DATE" and attributeValue.value != ''
-                return if moment(attributeValue.value).isValid() != true
+            if attributeValue.field_type == "DATE"
+                if attributeValue.value != ''
+                    return if moment(attributeValue.value).isValid() != true
+
+                attributeValue.value = moment(attributeValue.value, prettyDate).format("YYYY-MM-DD")
 
             $scope.$apply ->
                 $ctrl.updateAttributeValue(attributeValue).then ->
@@ -249,4 +226,4 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile, $translate)
         restrict: "AE"
     }
 
-module.directive("tgCustomAttributeValue", ["$tgTemplate", "$selectedText", "$compile", "$translate", CustomAttributeValueDirective])
+module.directive("tgCustomAttributeValue", ["$tgTemplate", "$selectedText", "$compile", "$translate", "tgDatePickerConfigService", CustomAttributeValueDirective])
