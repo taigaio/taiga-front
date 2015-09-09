@@ -14,7 +14,7 @@ class ExternalAppController extends taiga.Controller
 
     constructor: (@routeParams, @externalAppsService, @window, @currentUserService,
                   @location, @navUrls, @xhrError, @loader) ->
-        
+
         @loader.start(false)
         @._applicationId = @routeParams.application
         @._state = @routeParams.state
@@ -42,6 +42,7 @@ class ExternalAppController extends taiga.Controller
                     @loader.pageLoaded()
 
             .catch (xhr) =>
+                @loader.pageLoaded()
                 return @xhrError.response(xhr)
 
     cancel: () ->
