@@ -118,10 +118,10 @@ CustomAttributesValuesDirective = ($templates, $storage) ->
         template: templateFn
     }
 
-module.directive("tgCustomAttributesValues", ["$tgTemplate", "$tgStorage", CustomAttributesValuesDirective])
+module.directive("tgCustomAttributesValues", ["$tgTemplate", "$tgStorage", "$translate", CustomAttributesValuesDirective])
 
 
-CustomAttributeValueDirective = ($template, $selectedText, $compile) ->
+CustomAttributeValueDirective = ($template, $selectedText, $compile, $translate) ->
     template = $template.get("custom-attributes/custom-attribute-value.html", true)
     templateEdit = $template.get("custom-attributes/custom-attribute-value-edit.html", true)
 
@@ -148,6 +148,51 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile) ->
 
             $el.html(html)
 
+            if attributeValue.field_type == "DATE"
+
+              selectedDate = null
+
+              $el.picker = new Pikaday(
+                field: $el.find('input')[0]
+                onSelect: (date) =>
+                      selectedDate = date
+                onOpen: =>
+                    $el.picker.setDate(selectedDate) if selectedDate?
+                i18n: {
+                    previousMonth: $translate.instant("COMMON.PICKERDATE.PREV_MONTH"),
+                    nextMonth:  $translate.instant("COMMON.PICKERDATE.NEXT_MONTH"),
+                    months: [$translate.instant("COMMON.PICKERDATE.MONTHS.JAN"),
+                             $translate.instant("COMMON.PICKERDATE.MONTHS.FEB"),
+                             $translate.instant("COMMON.PICKERDATE.MONTHS.MAR"),
+                             $translate.instant("COMMON.PICKERDATE.MONTHS.APR"),
+                             $translate.instant("COMMON.PICKERDATE.MONTHS.MAY"),
+                             $translate.instant("COMMON.PICKERDATE.MONTHS.JUN"),
+                             $translate.instant("COMMON.PICKERDATE.MONTHS.JUL"),
+                             $translate.instant("COMMON.PICKERDATE.MONTHS.AUG"),
+                             $translate.instant("COMMON.PICKERDATE.MONTHS.SEP"),
+                             $translate.instant("COMMON.PICKERDATE.MONTHS.OCT"),
+                             $translate.instant("COMMON.PICKERDATE.MONTHS.NOV"),
+                             $translate.instant("COMMON.PICKERDATE.MONTHS.DEC")],
+                    weekdays: [$translate.instant("COMMON.PICKERDATE.WEEK_DAYS.SUN"),
+                               $translate.instant("COMMON.PICKERDATE.WEEK_DAYS.MON"),
+                               $translate.instant("COMMON.PICKERDATE.WEEK_DAYS.TUE"),
+                               $translate.instant("COMMON.PICKERDATE.WEEK_DAYS.WED"),
+                               $translate.instant("COMMON.PICKERDATE.WEEK_DAYS.THU"),
+                               $translate.instant("COMMON.PICKERDATE.WEEK_DAYS.FRI"),
+                               $translate.instant("COMMON.PICKERDATE.WEEK_DAYS.SAT")],
+                    weekdaysShort: [$translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.SUN"),
+                                    $translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.MON"),
+                                    $translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.TUE"),
+                                    $translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.WED"),
+                                    $translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.THU"),
+                                    $translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.FRI"),
+                                    $translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.SAT")]
+                },
+                isRTL: $translate.instant("COMMON.PICKERDATE.IS_RTL") == "true",
+                firstDay: parseInt($translate.instant("COMMON.PICKERDATE.FIRST_DAY_OF_WEEK"), 10),
+                format: $translate.instant("COMMON.PICKERDATE.FORMAT")
+              )
+
         isEditable = ->
             permissions = $scope.project.my_permissions
             requiredEditionPerm = $attrs.requiredEditionPerm
@@ -155,6 +200,9 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile) ->
 
         saveAttributeValue = ->
             attributeValue.value = $el.find("input, textarea").val()
+
+            if attributeValue.field_type == "DATE" and attributeValue.value != ''
+                return if moment(attributeValue.value).isValid() != true
 
             $scope.$apply ->
                 $ctrl.updateAttributeValue(attributeValue).then ->
@@ -164,7 +212,9 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile) ->
             if event.keyCode == 13 and event.currentTarget.type != "textarea"
                 submit(event)
             else if event.keyCode == 27
-                render(attributeValue, false)
+              return if attributeValue.field_type == "DATE" and moment(attributeValue.value).isValid() != true
+
+              render(attributeValue, false)
 
         ## Actions (on view mode)
         $el.on "click", ".custom-field-value.read-mode", ->
@@ -199,4 +249,4 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile) ->
         restrict: "AE"
     }
 
-module.directive("tgCustomAttributeValue", ["$tgTemplate", "$selectedText", "$compile", CustomAttributeValueDirective])
+module.directive("tgCustomAttributeValue", ["$tgTemplate", "$selectedText", "$compile", "$translate", CustomAttributeValueDirective])
