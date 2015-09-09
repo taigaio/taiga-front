@@ -5,6 +5,7 @@
 
 ### Features
 - Ability to create single-line or multi-line custom fields. (thanks to [@artlepool](https://github.com/artlepool))
+- Ability to date custom fields. (thanks to [@artlepool](https://github.com/artlepool))
 - Add custom videoconference system.
 - Make burndown chart collapsible at the backlog panel.
 - Ability to choose a theme (thanks to [@astagi](https://github.com/astagi))
