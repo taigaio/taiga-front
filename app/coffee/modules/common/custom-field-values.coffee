@@ -129,9 +129,6 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile, $translate,
         prettyDate = $translate.instant("COMMON.PICKERDATE.FORMAT")
 
         render = (attributeValue, edit=false) ->
-            if attributeValue.field_type == "DATE" and attributeValue.value
-                attributeValue.value = moment(attributeValue.value, "YYYY-MM-DD").format(prettyDate)
-
             value = attributeValue.value
             innerText = attributeValue.value
             editable = isEditable()
@@ -176,13 +173,16 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile, $translate,
             attributeValue.value = $el.find("input, textarea").val()
 
             if attributeValue.field_type == "DATE"
-                if attributeValue.value != ''
+                if attributeValue.value
                     return if moment(attributeValue.value).isValid() != true
 
-                attributeValue.value = moment(attributeValue.value, prettyDate).format("YYYY-MM-DD")
+                    attributeValue.value = moment(attributeValue.value, prettyDate).format("YYYY-MM-DD")
 
             $scope.$apply ->
                 $ctrl.updateAttributeValue(attributeValue).then ->
+                    if attributeValue.field_type == "DATE" and attributeValue.value
+                        attributeValue.value = moment(attributeValue.value, "YYYY-MM-DD").format(prettyDate)
+
                     render(attributeValue, false)
 
         $el.on "keyup", "input[name=description], textarea[name='description']", (event) ->
@@ -218,6 +218,10 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile, $translate,
 
         # Bootstrap
         attributeValue = $scope.$eval($attrs.tgCustomAttributeValue)
+
+        if attributeValue.field_type == "DATE" and attributeValue.value
+            attributeValue.value = moment(attributeValue.value, "YYYY-MM-DD").format(prettyDate)
+
         render(attributeValue)
 
     return {
