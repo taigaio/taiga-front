@@ -503,6 +503,12 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         $translateProvider.fallbackLanguage(preferedLangCode)
 
 
+    # decoratos
+    decorators = _.where(@.taigaContribPlugins, {"type": "decorator"})
+
+    _.each decorators, (decorator) ->
+        $provide.decorator decorator.provider, decorator.decorator
+
 i18nInit = (lang, $translate) ->
     # i18n - moment.js
     moment.locale(lang)
@@ -592,6 +598,8 @@ init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $na
             appMetaService.setAll(title, description)
 
 
+pluginsWithModule = _.filter(@.taigaContribPlugins, (plugin) -> plugin.module)
+
 modules = [
     # Main Global Modules
     "taigaBase",
@@ -636,7 +644,7 @@ modules = [
     "pascalprecht.translate",
     "infinite-scroll",
     "tgRepeat"
-].concat(_.map(@.taigaContribPlugins, (plugin) -> plugin.module))
+].concat(_.map(pluginsWithModule, (plugin) -> plugin.module))
 
 # Main module definition
 module = angular.module("taiga", modules)
