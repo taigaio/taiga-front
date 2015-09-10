@@ -99,7 +99,10 @@ describe('taskboard', function() {
             createTaskLightbox.subject().sendKeys(formFields.subject);
             await createTaskLightbox.description().sendKeys(formFields.description);
 
-            utils.common.takeScreenshot('taskboard', 'edit-task-filled');
+            await utils.common.takeScreenshot('taskboard', 'edit-task-filled');
+
+            // send form fail when all tests are launched
+            await browser.sleep(1000);
         });
 
         it('send form', async function() {

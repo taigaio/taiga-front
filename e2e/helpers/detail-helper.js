@@ -118,9 +118,11 @@ helper.assignedTo = function() {
         clear: async function() {
             await browser.actions().mouseMove(el).perform();
 
-            el.$('.icon-delete').click();
-            await utils.lightbox.confirm.ok();
-            await browser.waitForAngular();
+            if (await el.$('.icon-delete').isPresent()) {
+                el.$('.icon-delete').click();
+                await utils.lightbox.confirm.ok();
+                await browser.waitForAngular();
+            }
         },
 
         assign: function() {
@@ -408,11 +410,11 @@ helper.watchers = function() {
         },
 
         removeAllWathchers: async function() {
-            let deleteIcons = await el.$$('.icon-delete')
+            let deleteIcons = await el.$$('.icon-delete');
             let totalWatchers = deleteIcons.length;
 
             while (totalWatchers > 0) {
-              el.$$('.icon-delete').first().click()
+              el.$$('.icon-delete').first().click();
               await utils.lightbox.confirm.ok();
               await browser.waitForAngular();
               totalWatchers --;

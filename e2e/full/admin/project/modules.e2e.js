@@ -33,6 +33,8 @@ describe('modules', function() {
 
         expect(utils.notifications.success.open()).to.be.eventually.equal(true);
         expect(active).to.be.false;
+
+        await utils.notifications.success.close();
     });
 
     it('enable module', async function() {
@@ -53,6 +55,8 @@ describe('modules', function() {
 
         expect(utils.notifications.success.open()).to.be.eventually.equal(true);
         expect(active).to.be.true;
+
+        await utils.notifications.success.close();
     });
 
     it('enable videoconference', async function() {

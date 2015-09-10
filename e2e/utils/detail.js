@@ -197,7 +197,10 @@ helper.watchersTesting = async function() {
     await watchersLightboxHelper.waitClose();
 
     let newUserNames = await watchersHelper.getWatchersUserNames();
-    expect(newUserNames.join()).to.be.equal(userNames + ',' + newWatcherName);
+
+    userNames.push(newWatcherName);
+
+    expect(newUserNames.join(',')).to.be.equal(userNames.join(','));
 
     //Clear watchers
     await watchersHelper.removeAllWathchers();
