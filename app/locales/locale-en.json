@@ -953,7 +953,6 @@
     },
     "ERROR": {
         "TEXT1": "Something happened and our Oompa Loompas are working on it.",
-        "TEXT2": "Try reloading again soon.",
         "NOT_FOUND": "Not found",
         "NOT_FOUND_TEXT": "Error 404. The page you are looking for no longer exists. Perhaps you can return back to TAIGA homepage and see if you can find what you are looking for.",
         "PERMISSION_DENIED": "Permission denied",
