@@ -171,7 +171,7 @@ helper.history = function() {
 
         addComment: async function(comment) {
             el.$('textarea[tg-markitup]').sendKeys(comment);
-            el.$('input.save-comment').click();
+            el.$('.save-comment').click();
             await browser.waitForAngular();
         },
 
@@ -285,6 +285,8 @@ helper.attachment = function() {
         upload: async function(filePath, name) {
             let addAttach = el.$('#add-attach');
 
+            let countAttachments = await $$('div[tg-attachment]').count();
+
             let toggleInput = function() {
                 $('#add-attach').toggle();
             };
@@ -292,8 +294,13 @@ helper.attachment = function() {
             await browser.executeScript(toggleInput);
             await el.$('#add-attach').sendKeys(filePath);
             await browser.waitForAngular();
-            //TODO: ask JF why this is needed
-            await browser.sleep(2000);
+
+            await browser.wait(async () => {
+                let newCountAttachments = await $$('div[tg-attachment]').count();
+
+                return newCountAttachments == countAttachments + 1;
+            }, 5000);
+
             await el.$$('div[tg-attachment] .editable-attachment-comment input').last().sendKeys(name);
             await browser.actions().sendKeys(protractor.Key.ENTER).perform();
             await browser.executeScript(toggleInput);
