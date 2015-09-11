@@ -456,7 +456,8 @@
             "ISSUE_DESCRIPTION": "Issues aangepaste velden",
             "ISSUE_ADD": "Voeg een aangepast veld toe in issues",
             "FIELD_TYPE_TEXT": "Tekst",
-            "FIELD_TYPE_MULTI": "Over meerdere regels"
+            "FIELD_TYPE_MULTI": "Over meerdere regels",
+            "FIELD_TYPE_DATE": "Date"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - Project waardes - {{projectName}}",
@@ -949,7 +950,6 @@
     },
     "ERROR": {
         "TEXT1": "Er is iets gebeurd en onze Oempa-Loempa's zijn er mee bezig.",
-        "TEXT2": "Probeer binnenkort nog eens te herladen.",
         "NOT_FOUND": "Niet gevonden",
         "NOT_FOUND_TEXT": "Error 404. De pagina die je zoekt bestaat niet meer. Misschien kan je terugkeren naar de TAIGA startpagina en kijken of je kan vinden wat je zoekt.",
         "PERMISSION_DENIED": "Niet toegestaan",
@@ -1264,5 +1264,13 @@
         "BLOCKED": "{{username}} heeft {{obj_name}} geblokkeerd",
         "UNBLOCKED": "{{username}} heeft {{obj_name}} gedeblokkeerd",
         "NEW_USER": "{{username}} heeft zich aangemeld voor Taiga"
+    },
+    "EXTERNAL_APP": {
+        "PAGE_TITLE": "An external app requires authentication",
+        "PAGE_DESCRIPTION": "An external app requires authentication",
+        "AUTHORIZATION_REQUEST": "Authorize {{application}} to use your Taiga account?",
+        "LOGIN_WITH_ANOTHER_USER": "Login with another user",
+        "AUTHORIZE_APP": "Authorize app",
+        "CANCEL": "Annuleren"
     }
 }

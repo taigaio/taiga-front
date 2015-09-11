@@ -456,7 +456,8 @@
             "ISSUE_DESCRIPTION": "Własne pola dla zgłoszeń",
             "ISSUE_ADD": "Dodaj własne pole dla zgłoszeń",
             "FIELD_TYPE_TEXT": "Tekst",
-            "FIELD_TYPE_MULTI": "Pole wielowierszowe"
+            "FIELD_TYPE_MULTI": "Pole wielowierszowe",
+            "FIELD_TYPE_DATE": "Date"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - Wartości projektu - {{projectName}}",
@@ -949,7 +950,6 @@
     },
     "ERROR": {
         "TEXT1": "Wystąpił błąd, nasze Umpa Lumpy będą pracować nad jego rozwiązaniem.",
-        "TEXT2": "Spróbuj przeładować za chwilę ponownie.",
         "NOT_FOUND": "Nie znaleziono",
         "NOT_FOUND_TEXT": "Błąd 404 - strona której szukasz nie istnieje. Wróć do strony głównej Taiga i zobacz, czy znajdziesz tam to, czego szukasz.",
         "PERMISSION_DENIED": "Dostęp zabroniony",
@@ -1264,5 +1264,13 @@
         "BLOCKED": "Użytkownik {{username}} zablokował {{obj_name}}",
         "UNBLOCKED": "Użytkownik {{username}} odblokował {{obj_name}}",
         "NEW_USER": "Nowy użytkownik{{username}} dołączył do Taiga"
+    },
+    "EXTERNAL_APP": {
+        "PAGE_TITLE": "An external app requires authentication",
+        "PAGE_DESCRIPTION": "An external app requires authentication",
+        "AUTHORIZATION_REQUEST": "Authorize {{application}} to use your Taiga account?",
+        "LOGIN_WITH_ANOTHER_USER": "Login with another user",
+        "AUTHORIZE_APP": "Authorize app",
+        "CANCEL": "Anuluj"
     }
 }

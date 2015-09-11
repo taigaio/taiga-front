@@ -456,7 +456,8 @@
             "ISSUE_DESCRIPTION": "Pyyntöjen omat kentät",
             "ISSUE_ADD": "Lisää oma kenttä pyynnöille",
             "FIELD_TYPE_TEXT": "Text",
-            "FIELD_TYPE_MULTI": "Multi-line"
+            "FIELD_TYPE_MULTI": "Multi-line",
+            "FIELD_TYPE_DATE": "Date"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - Project values - {{projectName}}",
@@ -949,7 +950,6 @@
     },
     "ERROR": {
         "TEXT1": "Jotain tapahtui ja Oompa Loompas työskentelevät sen parissa.",
-        "TEXT2": "Lataa sivu uudestaan",
         "NOT_FOUND": "Ei löytynyt",
         "NOT_FOUND_TEXT": "Virhe 404. Sivua ei löydy. Palaa takaisin TAIGA etusivulle ja katso löydätkö haluamasi sieltä.",
         "PERMISSION_DENIED": "Ei oikeutta",
@@ -1264,5 +1264,13 @@
         "BLOCKED": "{{username}} has blocked {{obj_name}}",
         "UNBLOCKED": "{{username}} has unblocked {{obj_name}}",
         "NEW_USER": "{{username}} has joined Taiga"
+    },
+    "EXTERNAL_APP": {
+        "PAGE_TITLE": "An external app requires authentication",
+        "PAGE_DESCRIPTION": "An external app requires authentication",
+        "AUTHORIZATION_REQUEST": "Authorize {{application}} to use your Taiga account?",
+        "LOGIN_WITH_ANOTHER_USER": "Login with another user",
+        "AUTHORIZE_APP": "Authorize app",
+        "CANCEL": "Peru"
     }
 }

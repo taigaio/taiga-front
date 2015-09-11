@@ -3,7 +3,7 @@
         "YES": "Sim",
         "NO": "Não",
         "LOADING": "Carregando...",
-        "LOADING_PROJECT": "Carregando projeto...",
+        "LOADING_PROJECT": "Carregando o projeto...",
         "DATE": "DD MMM YYYY",
         "DATETIME": "DD MMM YYYY HH:mm",
         "SAVE": "Salvar",
@@ -64,7 +64,7 @@
         },
         "PICKERDATE": {
             "FORMAT": "DD MMM YYYY",
-            "IS_RTL": "false",
+            "IS_RTL": "falso",
             "FIRST_DAY_OF_WEEK": "1",
             "PREV_MONTH": "Mês Anterior",
             "NEXT_MONTH": "Próximo Mês",
@@ -456,7 +456,8 @@
             "ISSUE_DESCRIPTION": "Campos personalizados dos casos",
             "ISSUE_ADD": "Adicionar um campo personalizado no caso",
             "FIELD_TYPE_TEXT": "Texto",
-            "FIELD_TYPE_MULTI": "Multi-linha"
+            "FIELD_TYPE_MULTI": "Multi-linha",
+            "FIELD_TYPE_DATE": "Date"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - Valores do projeto - {{projectName}}",
@@ -949,11 +950,10 @@
     },
     "ERROR": {
         "TEXT1": "Alguma coisa aconteceu e nossos Oompa Loompas estão trabalhando nisso.",
-        "TEXT2": "Tente recarregar novamente daqui a pouco.",
         "NOT_FOUND": "Não encontrado",
         "NOT_FOUND_TEXT": "Erro 404. A página que você procura não existe mais. Você pode voltar para a página do TAIGA e ver se consegue encontrar o que está procurando.",
         "PERMISSION_DENIED": "Permissão negada",
-        "PERMISSION_DENIED_TEXT": "You don't have permission to access to this page.",
+        "PERMISSION_DENIED_TEXT": "Você não tem permissão de acesso a esta página.",
         "VERSION_ERROR": "Alguém dentro da Taiga mudou isso antes e nosso Oompa Loompa não podem aplicar suas alterações. Recarregue a página e aplique-as novamente (elas serão perdidas, agora)."
     },
     "TASKBOARD": {
@@ -1264,5 +1264,13 @@
         "BLOCKED": "{{username}} bloqueou {{obj_name}}",
         "UNBLOCKED": "{{username}} desbloqueou {{obj_name}}",
         "NEW_USER": "{{username}} ingressou no taiga"
+    },
+    "EXTERNAL_APP": {
+        "PAGE_TITLE": "An external app requires authentication",
+        "PAGE_DESCRIPTION": "An external app requires authentication",
+        "AUTHORIZATION_REQUEST": "Authorize {{application}} to use your Taiga account?",
+        "LOGIN_WITH_ANOTHER_USER": "Login with another user",
+        "AUTHORIZE_APP": "Authorize app",
+        "CANCEL": "Cancelar"
     }
 }

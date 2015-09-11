@@ -456,7 +456,8 @@
             "ISSUE_DESCRIPTION": "Champs personnalisés des tickets",
             "ISSUE_ADD": "Ajouter un champ personnalisé dans les tickets",
             "FIELD_TYPE_TEXT": "Texte",
-            "FIELD_TYPE_MULTI": "Multiligne"
+            "FIELD_TYPE_MULTI": "Multiligne",
+            "FIELD_TYPE_DATE": "Date"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - Valeurs du projet - {{projectName}}",
@@ -949,7 +950,6 @@
     },
     "ERROR": {
         "TEXT1": "Un problème s'est produit et nos Oompa Loompas y travaillent.",
-        "TEXT2": "Veuillez essayer de rafraîchir dans quelques instants.",
         "NOT_FOUND": "Non trouvé",
         "NOT_FOUND_TEXT": "Erreur 404. La page que vous cherchez n'existe plus. Peut-être pouvez-vous retourner à la page d'accueil de Taiga et voir si vous trouvez ce que vous cherchez.",
         "PERMISSION_DENIED": "Permission refusée",
@@ -1264,5 +1264,13 @@
         "BLOCKED": "{{username}} a bloqué {{obj_name}}",
         "UNBLOCKED": "{{username}} a débloqué {{obj_name}}",
         "NEW_USER": "{{username}} a rejoint Taiga"
+    },
+    "EXTERNAL_APP": {
+        "PAGE_TITLE": "An external app requires authentication",
+        "PAGE_DESCRIPTION": "An external app requires authentication",
+        "AUTHORIZATION_REQUEST": "Authorize {{application}} to use your Taiga account?",
+        "LOGIN_WITH_ANOTHER_USER": "Login with another user",
+        "AUTHORIZE_APP": "Authorize app",
+        "CANCEL": "Annuler"
     }
 }

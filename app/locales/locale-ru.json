@@ -456,7 +456,8 @@
             "ISSUE_DESCRIPTION": "Специальные поля задач",
             "ISSUE_ADD": "Добавить специальное поле для задач",
             "FIELD_TYPE_TEXT": "Текст",
-            "FIELD_TYPE_MULTI": "Многостроковое"
+            "FIELD_TYPE_MULTI": "Многостроковое",
+            "FIELD_TYPE_DATE": "Date"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - Значения атрибутов проекта - {{projectName}}",
@@ -949,11 +950,10 @@
     },
     "ERROR": {
         "TEXT1": "Что-то случилось, Oompa Loompas работает над этим.",
-        "TEXT2": "Попробуйте обновить страницу чуть позже.",
         "NOT_FOUND": "Не найдено",
         "NOT_FOUND_TEXT": "Ошибка 404. Страница не найдена.",
         "PERMISSION_DENIED": "Доступ закрыт",
-        "PERMISSION_DENIED_TEXT": "You don't have permission to access to this page.",
+        "PERMISSION_DENIED_TEXT": "У вас нет прав для доступа к этой странице.",
         "VERSION_ERROR": "Кто-то в Тайге изменил это раньше вас и Умпа-Лумпы не могут применить ваши изменения. Пожалуйста обновите страницу (Внимание! При обновлении страницы текущие правки будут утеряны) и внесите правки еще раз."
     },
     "TASKBOARD": {
@@ -1264,5 +1264,13 @@
         "BLOCKED": "{{username}} заблокировал {{obj_name}}",
         "UNBLOCKED": "{{username}} разблокировал {{obj_name}}",
         "NEW_USER": "{{username}} присоединился к Taiga"
+    },
+    "EXTERNAL_APP": {
+        "PAGE_TITLE": "An external app requires authentication",
+        "PAGE_DESCRIPTION": "An external app requires authentication",
+        "AUTHORIZATION_REQUEST": "Authorize {{application}} to use your Taiga account?",
+        "LOGIN_WITH_ANOTHER_USER": "Login with another user",
+        "AUTHORIZE_APP": "Authorize app",
+        "CANCEL": "Отмена"
     }
 }
