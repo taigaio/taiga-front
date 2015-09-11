@@ -94,7 +94,7 @@ helper.getCreateEditMilestone = function() {
 };
 
 helper.userStories = function() {
-    return $$('.backlog-table-body > div');
+    return $$('.backlog-table-body > div[ng-repeat]');
 };
 
 helper.selectedUserStories = function() {

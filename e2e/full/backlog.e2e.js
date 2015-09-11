@@ -9,7 +9,7 @@ var expect = chai.expect;
 
 describe('backlog', function() {
     before(async function() {
-        browser.get('http://localhost:9001/project/project-0/backlog');
+        browser.get('http://localhost:9001/project/project-3/backlog');
         await utils.common.waitLoader();
 
         utils.common.takeScreenshot('backlog', 'backlog');
