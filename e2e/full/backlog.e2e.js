@@ -543,6 +543,8 @@ describe('backlog', function() {
             await utils.common.drag(dragElement, dragableElements.get(0));
 
             expect(utils.notifications.error.open()).to.be.eventually.true;
+
+            await utils.notifications.error.close();
         });
 
         it('hide filters', async function() {
@@ -567,7 +569,8 @@ describe('backlog', function() {
 
             createMilestoneLightbox.name().sendKeys('sprintName' + new Date().getTime());
             createMilestoneLightbox.submit();
-            await browser.waitForAngular();
+
+            return createMilestoneLightbox.waitClose();
         }
 
         async function dragClosedUsToMilestone() {
@@ -578,7 +581,8 @@ describe('backlog', function() {
 
             let sprint = backlogHelper.sprints().last();
             await utils.common.drag(dragElementHandler, sprint);
-            await browser.waitForAngular();
+
+            return browser.waitForAngular();
         }
 
         before(async function() {

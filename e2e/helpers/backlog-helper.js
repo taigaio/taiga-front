@@ -79,6 +79,9 @@ helper.getCreateEditMilestone = function() {
         waitOpen: function() {
             return utils.lightbox.open(el);
         },
+        waitClose: function() {
+            return utils.lightbox.close(el);
+        },
         name: function() {
             return el.element(by.model('sprint.name'));
         },

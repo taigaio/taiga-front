@@ -34,12 +34,13 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading,
         hasErrors = false
         createSprint = true
 
-        $scope.sprint = {
-            project: null
-            name: null
-            estimated_start: null
-            estimated_finish: null
-        }
+        resetSprint = () ->
+            $scope.sprint = {
+                project: null
+                name: null
+                estimated_start: null
+                estimated_finish: null
+            }
 
         submit = debounce 2000, (event) =>
             event.preventDefault()
@@ -117,6 +118,8 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading,
             return sortedSprints[sortedSprints.length - 1]
 
         $scope.$on "sprintform:create", (event, projectId) ->
+            resetSprint()
+
             form = $el.find("form").checksley()
             form.reset()
 
@@ -165,6 +168,8 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading,
             $el.find(".last-sprint-name").removeClass("disappear")
 
         $scope.$on "sprintform:edit", (ctx, sprint) ->
+            resetSprint()
+
             createSprint = false
             prettyDate = $translate.instant("COMMON.PICKERDATE.FORMAT")
 
@@ -199,6 +204,8 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading,
 
         $scope.$on "$destroy", ->
             $el.off()
+
+        resetSprint()
 
     return {link: link}
 
