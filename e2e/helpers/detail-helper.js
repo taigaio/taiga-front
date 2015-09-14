@@ -138,26 +138,6 @@ helper.assignedTo = function() {
     return obj;
 };
 
-helper.assignToLightbox = function() {
-    let el = $('div[tg-lb-assignedto]');
-
-    let obj = {
-        el: el,
-        waitOpen: function() {
-            return utils.lightbox.open(el);
-        },
-        waitClose: function() {
-            return utils.lightbox.close(el);
-        },
-        selectFirst: function() {
-            el.$$('div[data-user-id]').first().click();
-        }
-
-    };
-
-    return obj;
-};
-
 helper.history = function() {
     let el = $('section.history');
     let obj = {

@@ -1,6 +1,7 @@
 var utils = require('../utils');
 var kanbanHelper = require('../helpers').kanban;
 var backlogHelper = require('../helpers').backlog;
+var commonHelper = require('../helpers').common;
 
 var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
@@ -275,5 +276,21 @@ describe('kanban', function() {
         });
     });
 
-    it.skip('edit assigned to', function() {});
+    it('edit assigned to', async function() {
+        await kanbanHelper.openWatchers(0, 0);
+
+        let lightbox = commonHelper.assignToLightbox();
+
+        await lightbox.waitOpen();
+
+        let assgnedToName = await lightbox.getName(0);
+
+        lightbox.selectFirst();
+
+        await lightbox.waitClose();
+
+        let usAssignedTo = await kanbanHelper.getBoxUss(0).get(0).$('.task-assigned').getText();
+
+        expect(assgnedToName).to.be.equal(usAssignedTo);
+    });
 });

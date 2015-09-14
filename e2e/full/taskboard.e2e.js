@@ -1,6 +1,7 @@
 var utils = require('../utils');
 var backlogHelper = require('../helpers').backlog;
 var taskboardHelper = require('../helpers').taskboard;
+var commonHelper = require('../helpers').common;
 
 var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
@@ -254,7 +255,23 @@ describe('taskboard', function() {
     });
 
 
-    it.skip('Change task assigned to', function(){});
+    it('Change task assigned to', async function(){
+        await taskboardHelper.openWatchers(0, 0, 0);
+
+        let lightbox = commonHelper.assignToLightbox();
+
+        await lightbox.waitOpen();
+
+        let assgnedToName = await lightbox.getName(0);
+
+        lightbox.selectFirst();
+
+        await lightbox.waitClose();
+
+        let usAssignedTo = await taskboardHelper.getBoxTasks(0, 0).get(0).$('.task-assigned').getText();
+
+        expect(assgnedToName).to.be.equal(usAssignedTo);
+    });
 
     describe('Graph', function(){
         let graph = $('.graphics-container');

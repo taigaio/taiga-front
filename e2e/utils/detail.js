@@ -1,5 +1,6 @@
 var path = require('path');
 var detailHelper = require('../helpers').detail;
+var commonHelper = require('../helpers').common;
 
 var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
@@ -68,7 +69,7 @@ helper.statusTesting = async function() {
 
 helper.assignedToTesting = async function() {
     let assignedTo = detailHelper.assignedTo();
-    let assignToLightbox = detailHelper.assignToLightbox();
+    let assignToLightbox = commonHelper.assignToLightbox();
     let userName = detailHelper.assignedTo().getUserName();
     await assignedTo.clear();
     assignedTo.assign();
