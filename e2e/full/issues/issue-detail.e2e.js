@@ -7,18 +7,12 @@ chai.use(chaiAsPromised);
 var expect = chai.expect;
 
 describe('Issue detail', async function(){
-    let issuesUrl = "";
+    let issueUrl = 'http://localhost:9001/project/project-3/issue/92';
+
     before(async function(){
-        await utils.common.goHome();
-        await utils.common.goToFirstProject();
-
-        await utils.common.goToIssues();
-
-        issuesUrl = await browser.getCurrentUrl();
-
-        await utils.common.goToFirstIssue();
+        browser.get(issueUrl);
+        await utils.common.waitLoader();
     });
-
 
     it('screenshot', async function() {
         await utils.common.takeScreenshot("issues", "detail");
@@ -50,6 +44,6 @@ describe('Issue detail', async function(){
 
     it('redirected', async function (){
         let url = await browser.getCurrentUrl();
-        expect(url.endsWith(issuesUrl)).to.be.true;
+        expect(url).not.to.be.equal(issueUrl);
     });
 });

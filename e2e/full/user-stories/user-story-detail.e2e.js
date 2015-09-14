@@ -8,13 +8,11 @@ chai.use(chaiAsPromised);
 var expect = chai.expect;
 
 describe('User story detail', function(){
-    let backlogUrl = "";
+    let usUrl = 'http://localhost:9001/project/project-3/us/81';
+
     before(async function(){
-        await utils.common.goHome();
-        await utils.common.goToFirstProject();
-        await utils.common.goToBacklog();
-        backlogUrl = await browser.getCurrentUrl();
-        await utils.common.goToFirstUserStory();
+        browser.get(usUrl);
+        await utils.common.waitLoader();
     });
 
     it('screenshot', async function() {
@@ -77,6 +75,6 @@ describe('User story detail', function(){
 
     it('redirected', async function (){
         let url = await browser.getCurrentUrl();
-        expect(url.endsWith(backlogUrl+"?no-milestone=1")).to.be.true;
+        expect(url).not.to.be.equal(usUrl);
     });
 })

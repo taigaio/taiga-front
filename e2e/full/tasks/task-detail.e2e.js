@@ -8,15 +8,11 @@ chai.use(chaiAsPromised);
 var expect = chai.expect;
 
 describe('Task detail', function(){
-    let sprintUrl = "";
+    let taskUrl = 'http://localhost:9001/project/project-3/task/7';
 
     before(async function(){
-        await utils.common.goHome();
-        await utils.common.goToFirstProject();
-        await utils.common.goToBacklog();
-        await utils.common.goToFirstSprint();
-        sprintUrl = await browser.getCurrentUrl();
-        await utils.common.goToFirstTask();
+        browser.get(taskUrl);
+        await utils.common.waitLoader();
     });
 
     it('screenshot', async function() {
@@ -53,7 +49,7 @@ describe('Task detail', function(){
 
     it('block', utils.detail.blockTesting);
 
-    it('attachments', utils.detail.attachmentTesting)
+    it('attachments', utils.detail.attachmentTesting);
 
     it('screenshot', async function() {
         await utils.common.takeScreenshot("tasks", "detail updated");
@@ -63,7 +59,7 @@ describe('Task detail', function(){
 
     it('redirected', async function (){
         let url = await browser.getCurrentUrl();
-        expect(url.endsWith(sprintUrl)).to.be.true;
+        expect(url).not.to.be.equal(taskUrl);
     });
 
 })
