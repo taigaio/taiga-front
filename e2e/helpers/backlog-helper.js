@@ -125,6 +125,18 @@ helper.openMilestoneEdit = function(item) {
     $$('div[tg-backlog-sprint="sprint"] .icon-edit').get(item).click();
 };
 
+helper.openNewMilestone = function(item) {
+    $('.add-sprint').click();
+};
+
+helper.toggleClosedSprints = function() {
+    $('.filter-closed-sprints').click();
+};
+
+helper.closedSprints = function() {
+    return $$('.sprint-closed');
+};
+
 helper.setUsStatus = async function(item, value) {
     let status = $$('.backlog-table-body > div .us-status').get(item);
 

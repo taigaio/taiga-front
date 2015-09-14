@@ -343,7 +343,7 @@ describe('backlog', function() {
 
     describe('milestones', function() {
         it('create', async function() {
-            $('.add-sprint').click();
+            backlogHelper.openNewMilestone();
 
             let createMilestoneLightbox = backlogHelper.getCreateEditMilestone();
 
@@ -557,7 +557,66 @@ describe('backlog', function() {
         });
     });
 
-    describe.skip('closed sprints', function() {
-        // TODO
+    describe('closed sprints', function() {
+        async function createEmptyMilestone() {
+            backlogHelper.openNewMilestone();
+
+            let createMilestoneLightbox = backlogHelper.getCreateEditMilestone();
+
+            await createMilestoneLightbox.waitOpen();
+
+            createMilestoneLightbox.name().sendKeys('sprintName' + new Date().getTime());
+            createMilestoneLightbox.submit();
+            await browser.waitForAngular();
+        }
+
+        async function dragClosedUsToMilestone() {
+            await backlogHelper.setUsStatus(0, 5);
+
+            let dragElement =  backlogHelper.userStories().get(0);
+            let dragElementHandler = dragElement.$('.icon-drag-v');
+
+            let sprint = backlogHelper.sprints().last();
+            await utils.common.drag(dragElementHandler, sprint);
+            await browser.waitForAngular();
+        }
+
+        before(async function() {
+            await createEmptyMilestone();
+            await dragClosedUsToMilestone();
+        });
+
+        it('open closed sprints', async function() {
+            backlogHelper.toggleClosedSprints();
+
+            let closedSprints = await backlogHelper.closedSprints().count();
+
+            expect(closedSprints).to.be.equal(1);
+        });
+
+        it('close closed sprints', async function() {
+            backlogHelper.toggleClosedSprints();
+
+            let closedSprints = await backlogHelper.closedSprints().count();
+
+            expect(closedSprints).to.be.equal(0);
+        });
+
+        it('open sprint by drag open US to closed sprint', async function() {
+            backlogHelper.toggleClosedSprints();
+
+            await backlogHelper.setUsStatus(1, 0);
+
+            let dragElement =  backlogHelper.userStories().get(0);
+            let dragElementHandler = dragElement.$('.icon-drag-v');
+
+            let sprint = backlogHelper.sprints().last();
+            await utils.common.drag(dragElementHandler, sprint);
+            await browser.waitForAngular();
+
+            let closedSprints = await backlogHelper.closedSprints().count();
+
+            expect(closedSprints).to.be.equal(0);
+        });
     });
 });
