@@ -87,7 +87,7 @@ helper.getPointsForm = function(form) {
     return obj;
 };
 
-helper.getPrioritiesForm = function(form) {
+helper.getGenericForm = function(form) {
     let obj = Object.create(helper.getForm(form));
 
     obj.name = function() {
@@ -97,7 +97,7 @@ helper.getPrioritiesForm = function(form) {
     return obj;
 };
 
-helper.getPrioritiesNames = function(section) {
+helper.getGenericNames = function(section) {
     return section.$$('.status-name span').getText();
 };
 
