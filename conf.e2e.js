@@ -8,7 +8,8 @@ exports.config = {
     seleniumAddress: 'http://localhost:4444/wd/hub',
     framework: 'mocha',
     mochaOpts: {
-        timeout: 30000
+        timeout: 30000,
+        compilers: 'js:babel/register'
     },
     // capabilities: {
     //     'browserName': 'firefox'
