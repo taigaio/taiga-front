@@ -9,3 +9,4 @@ module.exports.taskDetail = require("./task-detail-helper");
 module.exports.adminAttributes = require("./admin-attributes-helper");
 module.exports.common = require("./common-helper");
 module.exports.adminMemberships = require("./admin-memberships");
+module.exports.adminPermissions = require("./admin-permissions");
