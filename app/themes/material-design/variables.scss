@@ -34,20 +34,6 @@ $yellow-pear: #ffc107;
 $top-icon-color: $white;
 $dropdown-color: rgba(darken($primary-dark, 20%), 1);
 
-//**************************
-//** TYPOGRAPHY
-//**************************
-
-@each $font-face in OpenSans-CondLight, OpenSans-Light, opensans-regular, opensans-semibold, taiga {
-    @font-face {
-        font-family: '#{$font-face}';
-        src: url('../fonts/#{$font-face}.eot?#iefix') format('embedded-opentype'),
-            url('../fonts/#{$font-face}.woff') format('woff'),
-            url('../fonts/#{$font-face}.ttf')  format('truetype'),
-            url('../fonts/#{$font-face}.svg#{$font-face}') format('svg');
-    }
-}
-
 // Font Sizes
 %xsmall {font-size: .75rem;}
 %small {font-size: .9rem;}
