@@ -1,6 +1,6 @@
-var utils = require('../../../utils');
+var utils = require('../../utils');
 
-var adminMembershipsHelper = require('../../../helpers').adminMemberships;
+var adminMembershipsHelper = require('../../helpers').adminMemberships;
 
 var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
@@ -8,7 +8,7 @@ var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 var expect = chai.expect;
 
-describe('admin - members', function() {
+describe.only('admin - members', function() {
     before(async function(){
         browser.get('http://localhost:9001/project/project-0/admin/memberships');
 
@@ -122,11 +122,13 @@ describe('admin - members', function() {
 
         adminMembershipsHelper.toggleAdmin(member);
 
-        await browser.waitForAngular();
+        await utils.notifications.success.open();
 
         isAdmin =  await adminMembershipsHelper.isAdmin(member);
 
         expect(isAdmin).to.be.true;
+
+        await utils.notifications.success.close();
     });
 
 });

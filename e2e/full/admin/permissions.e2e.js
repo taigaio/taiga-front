@@ -1,6 +1,6 @@
-var utils = require('../../../utils');
+var utils = require('../../utils');
 
-var adminPermissionsHelper = require('../../../helpers').adminPermissions;
+var adminPermissionsHelper = require('../../helpers').adminPermissions;
 
 var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
