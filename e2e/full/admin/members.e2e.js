@@ -8,7 +8,7 @@ var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 var expect = chai.expect;
 
-describe.only('admin - members', function() {
+describe('admin - members', function() {
     before(async function(){
         browser.get('http://localhost:9001/project/project-0/admin/memberships');
 

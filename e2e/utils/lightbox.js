@@ -1,4 +1,4 @@
-var common = require('./common')
+var common = require('./common');
 
 var lightbox = module.exports;
 var transition = 300;
