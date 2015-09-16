@@ -3,3 +3,184 @@
 //    Max: Beat it or I'll call the Brute Squad!
 //    Fezzik: I'm on the Brute Squad.
 //    Max: [sees Fezzik's size] You are the Brute Squad!
+
+//**************************
+//** TYPOGRAPHY
+//**************************
+
+@each $font-face in OpenSans-CondLight, OpenSans-Light, opensans-regular, opensans-semibold, taiga {
+    @font-face {
+        font-family: '#{$font-face}';
+        src: url('../fonts/#{$font-face}.eot?#iefix') format('embedded-opentype'),
+            url('../fonts/#{$font-face}.woff') format('woff'),
+            url('../fonts/#{$font-face}.ttf')  format('truetype'),
+            url('../fonts/#{$font-face}.svg#{$font-face}') format('svg');
+    }
+}
+
+//*************************
+//** LAYOUT
+//*************************
+
+// Default body color and background
+body {
+    background: $white; // fallback
+    color: $grayer;
+}
+
+// Main
+.master {
+    background: $white;
+}
+
+// Secondary panel
+.menu-secondary {
+    background: lighten($primary-light, 22%);
+}
+
+// Tertiary panel
+.menu-tertiary {
+    background-color: $primary-dark;
+}
+
+// Extra bar panel
+.extrabar {
+    background: lighten($primary-light, 22%);
+}
+
+// Titles
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: $blackish;
+}
+
+a {
+    color: $grayer;
+    &:hover {
+        color: $primary;
+    }
+}
+
+//**************************
+//** SCAFFOLDING
+//**************************
+
+//Forms
+input[type="text"],
+input[type="number"],
+input[type="password"],
+input[type="email"],
+input[type="date"],
+input[type="password"],
+select,
+textarea {
+    background: $whitish;
+    border-color: $primary;
+    color: $grayer;
+    @include placeholder {
+        color: darken($gray-light, 10%);
+    }
+    &.checksley-error {
+        border: 1px solid $red;
+    }
+}
+
+
+// Input errors
+.checksley-error-list {
+    background: rgba($whitish, .8);
+    color: $red;
+}
+
+// Blockquote
+blockquote {
+    border-left: 5px solid $primary-light;
+}
+
+blockquote,
+blockquote p {
+    color: $gray;
+}
+
+cite {
+    color: $gray;
+}
+
+
+
+.summary {
+    background: $grayer;
+    color: $white;
+}
+
+
+//************************
+//** NAVIGATION
+//***********************
+
+// Top navigation bar
+.navbar {
+    background: rgba($red-amaranth, .6);
+    &:after {
+        background: url('../images/menu-vert.png') repeat top left;
+    }
+}
+
+
+
+//In project left navigation bar
+tg-project-menu {
+    background-color: rgba(darken($primary-dark, 15%), 1);
+    background-image: none;
+}
+
+.main-nav {
+    svg path {
+        fill: $white;
+    }
+}
+
+//*****************************
+//** TASKBOARD
+//******************************
+
+//Taskboard table
+.taskboard-table-header {
+    .task-colum-name {
+        background: lighten($primary-light, 20%);
+        border-top: 3px solid $primary;
+        .icon {
+            color: $primary;
+        }
+    }
+}
+.taskboard-table-body {
+    .taskboard-tasks-box {
+        background: $whitish;
+    }
+}
+
+//*****************************
+//** KANBAN
+//******************************
+
+//Kanban table
+.kanban-table-header {
+    .task-colum-name {
+        background: lighten($primary-light, 20%);
+        border-top: 3px solid $primary;
+        .icon {
+            color: $primary;
+        }
+    }
+}
+
+.kanban-table-body {
+    .kanban-uses-box {
+        background: $whitish;
+    }
+}
