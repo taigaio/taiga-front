@@ -282,7 +282,8 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
     loadInitialData: ->
         promise = @.loadProject()
         return promise.then (project) =>
-            @.fillUsersAndRoles(project.users, project.roles)
+            console.log project.users
+            @.fillUsersAndRoles(project.members, project.roles)
             @.initializeSubscription()
             @.loadFilters()
 
