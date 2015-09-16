@@ -61,6 +61,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @scope.sectionName = @translate.instant("BACKLOG.SECTION_NAME")
         @showTags = false
         @activeFilters = false
+        @scope.showGraphPlaceholder = null
 
         @.initializeEventHandlers()
 
@@ -146,12 +147,14 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
     loadProjectStats: ->
         return @rs.projects.stats(@scope.projectId).then (stats) =>
             @scope.stats = stats
+            totalPoints = if stats.total_points then stats.total_points else stats.defined_points
 
-            if stats.total_points
-                @scope.stats.completedPercentage = Math.round(100 * stats.closed_points / stats.total_points)
+            if totalPoints
+                @scope.stats.completedPercentage = Math.round(100 * stats.closed_points / totalPoints)
             else
                 @scope.stats.completedPercentage = 0
 
+            @scope.showGraphPlaceholder = !(stats.total_points? && stats.total_milestones?)
             return stats
 
     unloadClosedSprints: ->
@@ -180,6 +183,8 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             sprints = result.milestones
 
             @scope.totalClosedMilestones = result.closed
+            @scope.totalOpenMilestones = result.open
+            @scope.totalMilestones = @scope.totalOpenMilestones + @scope.totalClosedMilestones
 
             # NOTE: Fix order of USs because the filter orderBy does not work propertly in partials files
             for sprint in sprints
@@ -931,6 +936,8 @@ module.directive("tgBacklogUsPoints", ["$tgEstimationsService", "$tgRepo", "$tgT
 ToggleBurndownVisibility = ($storage) ->
     link = ($scope, $el, $attrs) ->
         hash = generateHash(["is-burndown-grpahs-collapsed"])
+        $scope.isBurndownGraphCollapsed = $storage.get(hash) or false
+
         toggleGraph = ->
             if $scope.isBurndownGraphCollapsed
                 $(".js-toggle-burndown-visibility-button").removeClass("active")
@@ -939,8 +946,10 @@ ToggleBurndownVisibility = ($storage) ->
                 $(".js-toggle-burndown-visibility-button").addClass("active")
                 $(".js-burndown-graph").addClass("open")
 
-        $scope.isBurndownGraphCollapsed = $storage.get(hash) or false
-        toggleGraph()
+        $scope.$watch "showGraphPlaceholder", () ->
+            if $scope.showGraphPlaceholder?
+                $scope.isBurndownGraphCollapsed = $scope.isBurndownGraphCollapsed || $scope.showGraphPlaceholder
+                toggleGraph()
 
         $el.on "click", ".js-toggle-burndown-visibility-button", ->
             $scope.isBurndownGraphCollapsed = !$scope.isBurndownGraphCollapsed
@@ -951,7 +960,6 @@ ToggleBurndownVisibility = ($storage) ->
             $el.off()
 
     return {
-        scope: {}
         link: link
     }
 
@@ -1110,7 +1118,7 @@ TgBacklogProgressBarDirective = ($template, $compile) ->
 
         $scope.$watch $attrs.tgBacklogProgressBar, (stats) ->
             if stats?
-                totalPoints = stats.total_points
+                totalPoints = if stats.total_points then stats.total_points else stats.defined_points
                 definedPoints = stats.defined_points
                 closedPoints = stats.closed_points
                 if definedPoints > totalPoints

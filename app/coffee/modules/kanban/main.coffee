@@ -145,7 +145,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 if not usByStatus[status.id]?
                     usByStatus[status.id] = []
                 if @scope.usByStatus?
-                    for us in @scope.usByStatus[status.id]
+                    for us in @scope.usByStatus[status.id]                        
                         if us.status != status.id
                             us_archived.push(us)
 
@@ -156,6 +156,10 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                             usByStatus[status.id].push(us)
 
                 usByStatus[status.id] = _.sortBy(usByStatus[status.id], "kanban_order")
+
+            if userstories.length == 0
+                status = @scope.usStatusList[0]
+                usByStatus[status.id].push({isPlaceholder: true})
 
             @scope.usByStatus = usByStatus
 
