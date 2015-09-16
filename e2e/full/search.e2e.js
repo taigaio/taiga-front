@@ -36,7 +36,7 @@ describe('search page', function() {
     });
 
     describe('tabs', function() {
-        it('issues', async function() {
+        it('issues tab', async function() {
             let option = $$('.search-filter li').get(1).$('a');
             option.click();
 
@@ -47,7 +47,7 @@ describe('search page', function() {
             expect(active).to.be.true;
         });
 
-        it('tasks', async function() {
+        it('tasks tab', async function() {
             let option = $$('.search-filter li').get(2).$('a');
             option.click();
 
@@ -58,7 +58,7 @@ describe('search page', function() {
             expect(active).to.be.true;
         });
 
-        it('wiki', async function() {
+        it('wiki tab', async function() {
             let option = $$('.search-filter li').get(3).$('a');
             option.click();
 
@@ -69,7 +69,7 @@ describe('search page', function() {
             expect(active).to.be.true;
         });
 
-        it('userstories', async function() {
+        it('userstories tab', async function() {
             let option = $$('.search-filter li').get(0).$('a');
             option.click();
 

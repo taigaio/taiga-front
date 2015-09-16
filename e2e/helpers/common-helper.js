@@ -15,8 +15,11 @@ helper.assignToLightbox = function() {
         selectFirst: function() {
             el.$$('div[data-user-id]').first().click();
         },
+        select: function(index) {
+            el.$$('div[data-user-id]').get(index).click();
+        },
         getName: function(item) {
-            return el.$$('div[data-user-id]').get(item).$('.watcher-name').getText();
+            return el.$$('div[data-user-id] .watcher-name').get(item).getText();
         }
     };
 
