@@ -293,7 +293,7 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame, $tra
             subtitle = value.name
 
             if _.keys(choices).length == 0
-                return $confirm.error("ADMIN.PROJECT_VALUES.ERROR_DELETE_ALL")
+                return $confirm.error($translate.instant("ADMIN.PROJECT_VALUES.ERROR_DELETE_ALL"))
 
             title = $translate.instant("ADMIN.COMMON.TITLE_ACTION_DELETE_VALUE")
             text = $translate.instant("ADMIN.PROJECT_VALUES.REPLACEMENT")
