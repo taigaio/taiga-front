@@ -22,11 +22,11 @@
             width: 50%;
         }
         ~ .check-text {
-            //@include transition(opacity .3s linear);
             @extend %small;
+            @extend %text;
             color: $white;
             position: absolute;
-            top: .25rem;
+            top: .2rem;
         }
         ~ .check-yes {
             opacity: 0;
@@ -44,11 +44,11 @@
             transition: all .2s linear;
         }
         ~ .check-yes {
-            opacity: .6;
-            right: .4rem;
+            opacity: .8;
+            right: .25rem;
         }
         ~ .check-no {
-            left: .4rem;
+            left: .25rem;
             opacity: 0;
         }
     }
