@@ -4,10 +4,12 @@
 [![Managed with Taiga](https://taiga.io/media/support/attachments/article-22/banner-gh.png)](https://taiga.io "Managed with Taiga")
 [![Build Status](https://travis-ci.org/taigaio/taiga-front.svg?branch=public-header-bar)](https://travis-ci.org/taigaio/taiga-front)
 
+
 ## Get the compiled version ##
 
 You can get the compiled version of this code in the
 [taiga-front-dist](http://github.com/taigaio/taiga-front-dist) repository
+
 
 ## Setup initial environment ##
 
@@ -40,11 +42,34 @@ And go in your browser to: http://localhost:9001/
 
 All the information about the different installation methods (production, development, vagrant, docker...) can be found here http://taigaio.github.io/taiga-doc/dist/#_installation_guide. 
 
+
+## Run tests ##
+
+- To run **unit tests**
+  ```      
+  gulp
+  ```
+  ```
+  npm test
+  ```
+
+- To run **e2e tests**
+  ```
+  webdriver-manager update      # Only the first time
+  webdriver-manager start
+  ```
+  ```
+  protractor conf.e2e.js --suite=auth     # To tests authentication
+  protractor conf.e2e.js --suite=full     # To test all the platform authenticated
+  ```
+
+
 ## Community ##
 
 [Taiga has a mailing list](http://groups.google.com/d/forum/taigaio). Feel free to join it and ask any questions you may have.
 
 To subscribe for announcements of releases, important changes and so on, please follow [@taigaio](https://twitter.com/taigaio) on Twitter.
+
 
 ## Donations ##
 
