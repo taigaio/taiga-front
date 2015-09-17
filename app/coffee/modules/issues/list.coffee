@@ -742,15 +742,10 @@ IssueStatusInlineEditionDirective = ($repo, $template, $rootscope) ->
                 $repo.save(issue).then ->
                     $ctrl.loadIssues()
 
-                    for filter in $scope.filters.status
-                        if filter.id == issue.status
-                            filter.count++
-
-                    $rootscope.$broadcast("filters:issueupdate", $scope.filters)
-
                 for filter in $scope.filters.status
                     if filter.id == issue.status
                         filter.count++
+
                 $rootscope.$broadcast("filters:issueupdate", $scope.filters)
 
         taiga.bindOnce $scope, "project", (project) ->
