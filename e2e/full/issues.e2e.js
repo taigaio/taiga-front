@@ -8,7 +8,7 @@ var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 var expect = chai.expect;
 
-describe.only('issues list', function() {
+describe('issues list', function() {
     before(async function() {
         browser.get('http://localhost:9001/project/project-3/issues');
         await utils.common.waitLoader();
@@ -104,9 +104,9 @@ describe.only('issues list', function() {
 
         await assignToLightbox.waitOpen();
 
-        assignToLightbox.select(1);
+        let newUserName = await assignToLightbox.getName(2);
 
-        let newUserName = await assignToLightbox.getName(1);
+        assignToLightbox.select(2);
 
         await assignToLightbox.waitClose();
 
@@ -115,18 +115,201 @@ describe.only('issues list', function() {
         expect(issueUserName).to.be.equal(newUserName);
     });
 
-    it('pagination', async function() {
+    describe('filters', function() {
+        it('by ref', async function() {
+            let issues = issuesHelper.getIssues();
+            let issue = issues.get(0);
 
-        let table = issuesHelper.getTable();
+            let table = issuesHelper.getTable();
+            let htmlChanges = await utils.common.outerHtmlChanges(table);
 
-        let htmlChanges = await utils.common.outerHtmlChanges(table);
+            issue = await issuesHelper.parseIssue(issue);
 
-        issuesHelper.clickPagination(1);
+            let filterInput = issuesHelper.getFilterInput();
 
-        await htmlChanges();
+            await filterInput.sendKeys(issue.ref);
 
-        let url = await browser.getCurrentUrl();
+            await htmlChanges();
 
-        expect(url).to.contain('page=2');
+            let newIssuesCount = await issues.count();
+
+            expect(newIssuesCount).to.be.equal(1);
+
+            await utils.common.clear(filterInput);
+        });
+
+        it('by subject', async function() {
+            let oldIssuesCount = await $$('.row.table-main').count();
+            let issues = issuesHelper.getIssues();
+            let issue = issues.get(0);
+
+            let table = issuesHelper.getTable();
+            let htmlChanges = await utils.common.outerHtmlChanges(table);
+
+            issue = await issuesHelper.parseIssue(issue);
+
+            let filterInput = issuesHelper.getFilterInput();
+
+            await filterInput.sendKeys(issue.subject);
+
+            await htmlChanges();
+
+            let newIssuesCount = await issues.count();
+
+            expect(newIssuesCount).not.to.be.equal(oldIssuesCount);
+            expect(newIssuesCount).to.be.above(0);
+
+            await utils.common.clear(filterInput);
+        });
+
+        it('by type', async function() {
+            let table = issuesHelper.getTable();
+            let htmlChanges = await utils.common.outerHtmlChanges(table);
+
+            issuesHelper.filtersCats().get(0).click();
+            issuesHelper.selectFilter(0);
+
+            await htmlChanges();
+
+            issuesHelper.backToFilters();
+
+            await issuesHelper.removeFilters();
+        });
+
+        it('by status', async function() {
+            let table = issuesHelper.getTable();
+            let htmlChanges = await utils.common.outerHtmlChanges(table);
+
+            issuesHelper.filtersCats().get(1).click();
+            issuesHelper.selectFilter(0);
+
+            await htmlChanges();
+
+            issuesHelper.backToFilters();
+
+            await issuesHelper.removeFilters();
+        });
+
+        it('by severity', async function() {
+            let table = issuesHelper.getTable();
+            let htmlChanges = await utils.common.outerHtmlChanges(table);
+
+            issuesHelper.filtersCats().get(2).click();
+            issuesHelper.selectFilter(0);
+
+            await htmlChanges();
+
+            issuesHelper.backToFilters();
+
+            await issuesHelper.removeFilters();
+        });
+
+        it('by priorities', async function() {
+            let table = issuesHelper.getTable();
+            let htmlChanges = await utils.common.outerHtmlChanges(table);
+
+            issuesHelper.filtersCats().get(3).click();
+            issuesHelper.selectFilter(0);
+
+            await htmlChanges();
+
+            issuesHelper.backToFilters();
+
+            await issuesHelper.removeFilters();
+        });
+
+        it('by tags', async function() {
+            let table = issuesHelper.getTable();
+            let htmlChanges = await utils.common.outerHtmlChanges(table);
+
+            issuesHelper.filtersCats().get(4).click();
+
+            issuesHelper.selectFilter(0);
+
+            await htmlChanges();
+
+            issuesHelper.backToFilters();
+
+            await issuesHelper.removeFilters();
+        });
+
+        it('by assigned to', async function() {
+            let table = issuesHelper.getTable();
+            let htmlChanges = await utils.common.outerHtmlChanges(table);
+
+            issuesHelper.filtersCats().get(5).click();
+            issuesHelper.selectFilter(0);
+
+            await htmlChanges();
+
+            issuesHelper.backToFilters();
+
+            await issuesHelper.removeFilters();
+        });
+
+        it('by created by', async function() {
+            let table = issuesHelper.getTable();
+            let htmlChanges = await utils.common.outerHtmlChanges(table);
+
+            issuesHelper.filtersCats().get(6).click();
+            issuesHelper.selectFilter(0);
+
+            await htmlChanges();
+
+            issuesHelper.backToFilters();
+
+            await issuesHelper.removeFilters();
+        });
+
+        it('empty', async function() {
+            let table = issuesHelper.getTable();
+            let htmlChanges = await utils.common.outerHtmlChanges(table);
+
+            let filterInput = issuesHelper.getFilterInput();
+
+            await filterInput.sendKeys(new Date().getTime());
+
+            await htmlChanges();
+
+            let newIssuesCount = await issuesHelper.getIssues().count();
+
+            expect(newIssuesCount).to.be.equal(0);
+
+            await utils.common.takeScreenshot('issues', 'empty-issues');
+            await utils.common.clear(filterInput);
+        });
+
+        it('save custom filter', async function() {
+            issuesHelper.filtersCats().get(1).click();
+            issuesHelper.selectFilter(0);
+
+            await browser.waitForAngular();
+
+            await issuesHelper.saveFilter('custom');
+
+            expect(issuesHelper.getCustomFilters().count()).to.be.eventually.equal(1);
+
+            await issuesHelper.removeFilters();
+            issuesHelper.backToFilters();
+        });
+
+        it('apply custom filter', async function() {
+            let table = issuesHelper.getTable();
+            let htmlChanges = await utils.common.outerHtmlChanges(table);
+
+            issuesHelper.filtersCats().get(7).click();
+
+            issuesHelper.selectFilter(0);
+
+            await htmlChanges();
+
+            await issuesHelper.removeFilters();
+        });
+
+        it('remove custom filter', async function() {
+            await issuesHelper.removeCustomFilters();
+
+            expect(issuesHelper.getCustomFilters().count()).to.be.eventually.equal(0);
+        });
     });
 });
