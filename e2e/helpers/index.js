@@ -12,3 +12,4 @@ module.exports.adminMemberships = require("./admin-memberships");
 module.exports.adminPermissions = require("./admin-permissions");
 module.exports.adminIntegrations = require("./admin-integrations");
 module.exports.issues = require("./issues-helper");
+module.exports.createProject = require("./create-project-helper");
