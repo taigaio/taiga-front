@@ -67,6 +67,38 @@ describe('User story detail', function(){
 
     it('attachments', utils.detail.attachmentTesting);
 
+    describe('related tasks', function() {
+        it('create', async function() {
+            let oldRelatedTaskCount = await usDetailHelper.relatedTasks().count();
+
+            usDetailHelper.createRelatedTasks('test', 1, 1);
+
+            expect(utils.notifications.success.open()).to.be.eventually.true;
+
+            let relatedTaskCount = usDetailHelper.relatedTasks().count();
+
+            expect(relatedTaskCount).to.be.eventually.equal(oldRelatedTaskCount + 1);
+        });
+
+        it('edit', function() {
+            usDetailHelper.editRelatedTasks(0, 'test2', 2, 2);
+
+            expect(utils.notifications.success.open()).to.be.eventually.true;
+        });
+
+        it('delete', async function() {
+            let oldRelatedTaskCount = await usDetailHelper.relatedTasks().count();
+
+            usDetailHelper.deleteRelatedTask(0);
+
+            expect(utils.notifications.success.open()).to.be.eventually.true;
+
+            let relatedTaskCount = usDetailHelper.relatedTasks().count();
+
+            expect(relatedTaskCount).to.be.eventually.equal(oldRelatedTaskCount - 1);
+        });
+    });
+
     it('screenshot', async function() {
         await utils.common.takeScreenshot("user-stories", "detail updated");
     });

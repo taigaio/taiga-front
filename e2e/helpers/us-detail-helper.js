@@ -1,4 +1,5 @@
 var utils = require('../utils');
+var commonHelper = require('./common-helper');
 
 var helper = module.exports;
 
@@ -40,4 +41,52 @@ helper.clientRequirement = function() {
     };
 
     return obj;
+};
+
+helper.relatedTaskForm = function(form, name, status, assigned_to) {
+   form.$('input').sendKeys(name);
+
+    let taskStatus = form.$('.task-status');
+
+    utils.popover.open(taskStatus, status);
+
+    form.$('.assigned-to').click();
+
+    let assignToLightbox = commonHelper.assignToLightbox();
+
+    assignToLightbox.waitOpen();
+
+    assignToLightbox.selectFirst();
+
+    assignToLightbox.waitClose();
+
+    form.$('.icon-floppy').click();
+};
+
+helper.createRelatedTasks = function(name, status, assigned_to) {
+    $$('.related-tasks-buttons').get(0).click();
+
+    let form = $('.related-task-create-form');
+
+    helper.relatedTaskForm(form, status, assigned_to);
+};
+
+helper.editRelatedTasks = function(taskIndex, name, status, assigned_to) {
+    let task = helper.relatedTasks().get(taskIndex);
+
+    task.$('.icon-edit').click();
+
+    helper.relatedTaskForm(task, status, assigned_to);
+};
+
+helper.deleteRelatedTask = function(taskIndex, name, status, assigned_to) {
+    let task = helper.relatedTasks().get(taskIndex);
+
+    task.$('.icon-delete').click();
+
+    utils.lightbox.confirm.ok();
+};
+
+helper.relatedTasks = function() {
+    return $$('.related-tasks-body .single-related-task');
 };
