@@ -105,10 +105,12 @@ describe('User story detail', function(){
         await utils.common.takeScreenshot("user-stories", "detail updated");
     });
 
-    it('delete', utils.detail.deleteTesting);
+    describe('delete & redirect', function() {
+        it('delete', utils.detail.deleteTesting);
 
-    it('redirected', async function (){
-        let url = await browser.getCurrentUrl();
-        expect(url).not.to.be.equal(usUrl);
+        it('redirected', async function (){
+            let url = await browser.getCurrentUrl();
+            expect(url).not.to.be.equal(usUrl);
+        });
     });
 })

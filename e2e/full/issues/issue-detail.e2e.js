@@ -42,10 +42,12 @@ describe('Issue detail', async function(){
         await utils.common.takeScreenshot("issues", "detail updated");
     });
 
-    it('delete', utils.detail.deleteTesting);
+    describe('delete & redirect', function() {
+        it('delete', utils.detail.deleteTesting);
 
-    it('redirected', async function (){
-        let url = await browser.getCurrentUrl();
-        expect(url).not.to.be.equal(issueUrl);
+        it('redirected', async function (){
+            let url = await browser.getCurrentUrl();
+            expect(url).not.to.be.equal(issueUrl);
+        });
     });
 });

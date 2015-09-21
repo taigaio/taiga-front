@@ -189,6 +189,9 @@ helper.deleteTesting = async function() {
 
 helper.watchersTesting = async function() {
     let watchersHelper = detailHelper.watchers();
+
+    await watchersHelper.removeAllWathchers();
+
     let watchersLightboxHelper = detailHelper.watchersLightbox();
     let userNames = await watchersHelper.getWatchersUserNames();
 
