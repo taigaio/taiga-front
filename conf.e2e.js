@@ -16,7 +16,8 @@ exports.config = {
     // },
     suites: {
         auth: 'e2e/auth/*.e2e.js',
-        full: 'e2e/full/**/*.e2e.js'
+        full: 'e2e/full/**/*.e2e.js',
+        public: 'e2e/public/**/*.e2e.js'
     },
     onPrepare: function() {
         browser.driver.manage().window().maximize();

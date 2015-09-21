@@ -104,10 +104,26 @@ common.login = function(username, password) {
     }, 10000);
 };
 
+common.logout = function() {
+    browser.actions()
+        .mouseMove($('div[tg-dropdown-user]'))
+        .perform();
+
+    $$('.navbar-dropdown li a')
+        .last()
+        .click();
+
+    return browser.driver.wait(async function() {
+        let url =  await browser.driver.getCurrentUrl();
+
+        return url === 'http://localhost:9001/login';
+    }, 10000);
+};
+
 common.prepare = function() {
     browser.get('http://localhost:9001/');
 
-    return common.closeCookies()
+    return common.closeCookies();
 }
 
 common.dragEnd = function(elm) {
