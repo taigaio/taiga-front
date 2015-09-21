@@ -51,6 +51,8 @@ describe('Task detail', function(){
 
     it('attachments', utils.detail.attachmentTesting);
 
+    describe('custom-fields', utils.detail.customFields.bind(this, 1));
+
     it('screenshot', async function() {
         await utils.common.takeScreenshot("tasks", "detail updated");
     });

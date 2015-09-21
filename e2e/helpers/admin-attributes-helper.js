@@ -100,17 +100,3 @@ helper.getGenericForm = function(form) {
 helper.getGenericNames = function(section) {
     return section.$$('.status-name span').getText();
 };
-
-helper.getCustomFieldsForm = function(form) {
-    let obj = Object.create(helper.getForm(form));
-
-    obj.name = function() {
-        return form.$('.custom-name input');
-    };
-
-    return obj;
-};
-
-helper.getCustomFieldsNames = function(section) {
-    return section.$$('.table-body .custom-name span').getText();
-};

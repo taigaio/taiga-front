@@ -67,6 +67,8 @@ describe('User story detail', function(){
 
     it('attachments', utils.detail.attachmentTesting);
 
+    describe('custom-fields', utils.detail.customFields.bind(this, 0));
+
     describe('related tasks', function() {
         it('create', async function() {
             let oldRelatedTaskCount = await usDetailHelper.relatedTasks().count();

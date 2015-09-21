@@ -1,6 +1,5 @@
 var utils = require('../../../utils');
-
-var adminAttributesHelper = require('../../../helpers').adminAttributes;
+var customFieldsHelper = require('../../../helpers/custom-fields-helper');
 
 var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
@@ -8,116 +7,181 @@ var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 var expect = chai.expect;
 
-describe('attributes - custom fields', function() {
-    before(async function(){
-        browser.get('http://localhost:9001/project/project-0/admin/project-values/custom-fields');
-
+describe('custom-fields', function() {
+    before(async function() {
+        browser.get('http://localhost:9001/project/project-3/admin/project-values/custom-fields');
         await utils.common.waitLoader();
 
         utils.common.takeScreenshot('attributes', 'custom-fields');
     });
 
-    it('new', async function() {
-        let section = adminAttributesHelper.getSection(0);
-        let rows = section.rows();
-        let count = await rows.count();
+    describe('create custom fields', function() {
+        describe('userstories', function() {
+            let typeIndex = 0;
 
-        let formWrapper = section.openNew();
+            it('create', async function() {
+                let oldCountCustomFields = await customFieldsHelper.getCustomFiledsByType(typeIndex).count();
 
-        let form = adminAttributesHelper.getCustomFieldsForm(formWrapper);
+                customFieldsHelper.create(typeIndex, 'test1-text', 'desc1', 1);
 
-        await form.name().sendKeys('test test');
+                // debounce :(
+                await utils.notifications.success.open();
+                await browser.sleep(2000);
 
-        await form.save();
+                customFieldsHelper.create(typeIndex, 'test1-multi', 'desc1', 3);
 
-        await browser.waitForAngular();
+                // debounce :(
+                await utils.notifications.success.open();
+                await browser.sleep(2000);
 
-        let newCount = await rows.count();
+                // customFieldsHelper.create(typeIndex, 'test1-date', 'desc1', 4);
 
-        expect(newCount).to.be.equal(count + 1);
-    });
+                // // debounce :(
+                // await utils.notifications.success.open();
+                // await browser.sleep(2000);
 
-    it('duplicate', async function() {
-        let section = adminAttributesHelper.getSection(0);
-        let rows = section.rows();
-        let count = await rows.count();
+                let countCustomFields = customFieldsHelper.getCustomFiledsByType(typeIndex).count();
 
-        let formWrapper = section.openNew();
+                expect(countCustomFields).to.be.eventually.equal(oldCountCustomFields + 2);
+            });
 
-        let form = adminAttributesHelper.getCustomFieldsForm(formWrapper);
+            it('edit', async function() {
+                customFieldsHelper.edit(typeIndex, 0, 'edit', 'desc2', 2);
 
-        await form.name().sendKeys('test test');
+                expect(utils.notifications.success.open()).to.be.eventually.true;
+            });
 
-        await form.save();
+            it('drag', async function() {
+                let nameOld = await customFieldsHelper.getName(typeIndex, 0);
 
-        await browser.waitForAngular();
+                await customFieldsHelper.drag(typeIndex, 0, 1);
 
-        let newCount = await rows.count();
+                let nameNew = customFieldsHelper.getName(typeIndex, 1);
 
-        let errors = await form.errors().count();
+                expect(nameNew).to.be.eventually.equal(nameOld);
+            });
 
-        utils.common.takeScreenshot('attributes', 'status-error');
+            it('delete', async function() {
+                let oldCountCustomFields = await customFieldsHelper.getCustomFiledsByType(typeIndex).count();
 
-        expect(errors).to.be.equal(1);
-        expect(newCount).to.be.equal(count);
-    });
+                customFieldsHelper.delete(typeIndex, 0);
 
-    it('delete', async function() {
-        let section = adminAttributesHelper.getSection(0);
-        let rows = section.rows();
+                let countCustomFields = customFieldsHelper.getCustomFiledsByType(typeIndex).count();
 
-        let count = await rows.count();
+                expect(countCustomFields).to.be.eventually.equal(oldCountCustomFields - 1);
+            });
+        });
 
-        let row = rows.get(count - 1);
+        describe('tasks', function() {
+            let typeIndex = 1;
 
-        section.delete(row);
+            it('create', async function() {
+                let oldCountCustomFields = await customFieldsHelper.getCustomFiledsByType(typeIndex).count();
 
-        let el = $('.lightbox-generic-ask');
+                customFieldsHelper.create(typeIndex, 'test1-text', 'desc1', 1);
 
-        await utils.lightbox.open(el);
+                // debounce :(
+                await utils.notifications.success.open();
+                await browser.sleep(2000);
 
-        utils.common.takeScreenshot('attributes', 'delete-custom-field');
+                customFieldsHelper.create(typeIndex, 'test1-multi', 'desc1', 3);
 
-        el.$('.button-green').click();
+                // debounce :(
+                await utils.notifications.success.open();
+                await browser.sleep(2000);
 
-        await utils.lightbox.close(el);
+                // customFieldsHelper.create(typeIndex, 'test1-date', 'desc1', 4);
 
-        let newCount = await rows.count();
+                // // debounce :(
+                // await utils.notifications.success.open();
+                // await browser.sleep(2000);
 
-        expect(newCount).to.be.equal(count - 1);
-    });
+                let countCustomFields = customFieldsHelper.getCustomFiledsByType(typeIndex).count();
 
-    it('edit', async function() {
-        let section = adminAttributesHelper.getSection(0);
-        let rows = section.rows();
-        let row = rows.get(0);
+                expect(countCustomFields).to.be.eventually.equal(oldCountCustomFields + 2);
+            });
 
-        await section.edit(row);
+            it('edit', async function() {
+                customFieldsHelper.edit(typeIndex, 0, 'edit', 'desc2', 2);
 
-        let form = adminAttributesHelper.getCustomFieldsForm(row.$('form'));
+                expect(utils.notifications.success.open()).to.be.eventually.true;
+            });
 
-        let newCfName = 'test test' + Date.now();
-        await form.name().clear();
-        await form.name().sendKeys(newCfName);
+            it('drag', async function() {
+                let nameOld = await customFieldsHelper.getName(typeIndex, 0);
 
-        await form.save();
+                await customFieldsHelper.drag(typeIndex, 0, 1);
 
-        await browser.waitForAngular();
+                let nameNew = customFieldsHelper.getName(typeIndex, 1);
 
-        let newCfs = await adminAttributesHelper.getCustomFieldsNames(section.el);
+                expect(nameNew).to.be.eventually.equal(nameOld);
+            });
 
-        expect(newCfs.indexOf(newCfName)).to.be.not.equal(-1);
-    });
+            it('delete', async function() {
+                let oldCountCustomFields = await customFieldsHelper.getCustomFiledsByType(typeIndex).count();
 
-    it('drag', async function() {
-        let section = adminAttributesHelper.getSection(0);
-        let rows = section.rows();
-        let cfs = await adminAttributesHelper.getCustomFieldsNames(section.el);
+                customFieldsHelper.delete(typeIndex, 0);
 
-        await utils.common.drag(rows.get(0), rows.get(2));
+                let countCustomFields = customFieldsHelper.getCustomFiledsByType(typeIndex).count();
 
-        let newCfs = await adminAttributesHelper.getCustomFieldsNames(section.el);
+                expect(countCustomFields).to.be.eventually.equal(oldCountCustomFields - 1);
+            });
+        });
 
-        expect(cfs[0]).to.be.equal(newCfs[1]);
+        describe('issues', function() {
+            let typeIndex = 2;
+
+            it('create', async function() {
+                let oldCountCustomFields = await customFieldsHelper.getCustomFiledsByType(typeIndex).count();
+
+                customFieldsHelper.create(typeIndex, 'test1-text', 'desc1', 1);
+
+                // debounce :(
+                await utils.notifications.success.open();
+                await browser.sleep(2000);
+
+                customFieldsHelper.create(typeIndex, 'test1-multi', 'desc1', 3);
+
+                // debounce :(
+                await utils.notifications.success.open();
+                await browser.sleep(2000);
+
+                // customFieldsHelper.create(typeIndex, 'test1-date', 'desc1', 4);
+
+                // // debounce :(
+                // await utils.notifications.success.open();
+                // await browser.sleep(2000);
+
+                let countCustomFields = customFieldsHelper.getCustomFiledsByType(typeIndex).count();
+
+                expect(countCustomFields).to.be.eventually.equal(oldCountCustomFields + 2);
+            });
+
+            it('edit', async function() {
+                customFieldsHelper.edit(typeIndex, 0, 'edit', 'desc2', 2);
+
+                expect(utils.notifications.success.open()).to.be.eventually.true;
+            });
+
+            it('drag', async function() {
+                let nameOld = await customFieldsHelper.getName(typeIndex, 0);
+
+                await customFieldsHelper.drag(typeIndex, 0, 1);
+
+                let nameNew = customFieldsHelper.getName(typeIndex, 1);
+
+                expect(nameNew).to.be.eventually.equal(nameOld);
+            });
+
+            it('delete', async function() {
+                let oldCountCustomFields = await customFieldsHelper.getCustomFiledsByType(typeIndex).count();
+
+                customFieldsHelper.delete(typeIndex, 0);
+
+                let countCustomFields = customFieldsHelper.getCustomFiledsByType(typeIndex).count();
+
+                expect(countCustomFields).to.be.eventually.equal(oldCountCustomFields - 1);
+            });
+        });
     });
 });

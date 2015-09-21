@@ -1,6 +1,8 @@
 var path = require('path');
 var detailHelper = require('../helpers').detail;
 var commonHelper = require('../helpers').common;
+var customFieldsHelper = require('../helpers/custom-fields-helper');
+var commonUtil = require('./common');
 
 var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
@@ -208,3 +210,98 @@ helper.watchersTesting = async function() {
     newUserNames = await watchersHelper.getWatchersUserNames();
     expect(newUserNames.join()).to.be.equal('');
 }
+
+helper.customFields = function(typeIndex) {
+    before(async function() {
+        let url = await browser.getCurrentUrl();
+
+        browser.get('http://localhost:9001/project/project-3/admin/project-values/custom-fields');
+
+        commonUtil.waitLoader();
+
+        customFieldsHelper.create(typeIndex, 'detail-test-custom-fields-text', 'desc1', 1);
+
+        // debounce :(
+        browser.sleep(2000);
+
+        customFieldsHelper.create(typeIndex, 'detail-test-custom-fields-multi', 'desc1', 3);
+
+        // debounce :(
+        browser.sleep(2000);
+
+        browser.get(url);
+        commonUtil.waitLoader();
+    });
+
+    it('text create', async function() {
+        let customFields = customFieldsHelper.getDetailFields();
+        let count = await customFields.count();
+
+        let textField = customFields.get(count - 2);
+
+        textField.$('input').sendKeys('test text');
+        textField.$('.icon-floppy').click();
+
+        // debounce
+        await browser.sleep(2000);
+
+        let fieldText = textField.$('.read-mode span').getText();
+
+        expect(fieldText).to.be.eventually.equal('test text');
+    });
+
+    it('text edit', async function() {
+        let customFields = customFieldsHelper.getDetailFields();
+        let count = await customFields.count();
+
+        let textField = customFields.get(count - 2);
+
+        textField.$('.icon-edit').click();
+
+        textField.$('input').sendKeys('test text edit');
+        textField.$('.icon-floppy').click();
+
+        // debounce
+        await browser.sleep(2000);
+
+        let fieldText = textField.$('.read-mode span').getText();
+
+        expect(fieldText).to.be.eventually.equal('test text edit');
+    });
+
+    it('multi', async function() {
+        let customFields = customFieldsHelper.getDetailFields();
+        let count = await customFields.count();
+
+        let textField = customFields.get(count - 1);
+
+        textField.$('textarea').sendKeys('test text2');
+        textField.$('.icon-floppy').click();
+
+        // debounce
+        await browser.sleep(2000);
+
+        let fieldText = textField.$('.read-mode span').getText();
+
+        expect(fieldText).to.be.eventually.equal('test text2');
+    });
+
+    it('multi edit', async function() {
+        let customFields = customFieldsHelper.getDetailFields();
+        let count = await customFields.count();
+
+        let textField = customFields.get(count - 1);
+
+        textField.$('.icon-edit').click();
+
+        textField.$('textarea').sendKeys('test text2 edit');
+        textField.$('.icon-floppy').click();
+
+        // debounce
+        await browser.sleep(2000);
+
+        let fieldText = textField.$('.read-mode span').getText();
+
+        expect(fieldText).to.be.eventually.equal('test text2 edit');
+    });
+};
