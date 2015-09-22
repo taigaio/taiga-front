@@ -464,10 +464,8 @@ describe('backlog', function() {
             let filterQ = element(by.model('filtersQ'));
             let htmlChanges = await utils.common.outerHtmlChanges('.backlog-table-body');
 
-            let firstUs = userstories.first();
-            let ref = await backlogHelper.getUsRef(firstUs);
+            let ref = await backlogHelper.getTestingFilterRef();
             ref = ref.replace('#', '');
-
             await filterQ.sendKeys(ref);
             await htmlChanges();
 

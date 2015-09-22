@@ -162,6 +162,24 @@ helper.getUsRef = function(elm) {
     return elm.$('span[tg-bo-ref]').getText();
 };
 
+// get ref with the larger length
+helper.getTestingFilterRef = async function() {
+    let userstories = helper.userStories();
+    let userstoriesCount = await userstories.count();
+    let ref = '';
+
+    for(let i = 0; i < userstoriesCount; i++) {
+        let userstory = userstories.get(i);
+        let newRef = await helper.getUsRef(userstory);
+
+        if (newRef.length > ref.length) {
+            ref = newRef;
+        }
+    }
+
+    return ref;
+};
+
 helper.getSprintUsertories = function(sprint) {
     return sprint.$$('.milestone-us-item-row');
 };
