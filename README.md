@@ -15,7 +15,7 @@ You can get the compiled version of this code in the
 
 All the information about the different installation methods (production, development, vagrant, docker...) can be found here http://taigaio.github.io/taiga-doc/dist/#_installation_guide.
 
-### Initial dev env ###
+#### Initial dev env ####
 
 Install requirements:
 
@@ -45,7 +45,7 @@ gulp
 
 And go in your browser to: http://localhost:9001/
 
-### E2E test ###
+#### E2E test ####
 
 If you want to run e2e tests
 
@@ -59,7 +59,7 @@ webdriver-manager update
 
 ## Tests ##
 
-### Unit tests ###
+#### Unit tests ####
 
 - To run **unit tests**
 
@@ -70,7 +70,7 @@ webdriver-manager update
   npm test
   ```
 
-### E2E tests ###
+#### E2E tests ####
 
 - To run **e2e tests** you need [taiga-back](https://github.com/taigaio/taiga-back) running and
 
