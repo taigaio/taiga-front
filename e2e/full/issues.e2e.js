@@ -117,41 +117,36 @@ describe('issues list', function() {
 
     describe('filters', function() {
         it('by ref', async function() {
+            let table = issuesHelper.getTable();
             let issues = issuesHelper.getIssues();
             let issue = issues.get(0);
-
-            let table = issuesHelper.getTable();
-            let htmlChanges = await utils.common.outerHtmlChanges(table);
-
             issue = await issuesHelper.parseIssue(issue);
-
             let filterInput = issuesHelper.getFilterInput();
 
+            let htmlChanges = await utils.common.outerHtmlChanges(table);
             await filterInput.sendKeys(issue.ref);
-
             await htmlChanges();
 
             let newIssuesCount = await issues.count();
 
             expect(newIssuesCount).to.be.equal(1);
 
+            htmlChanges = await utils.common.outerHtmlChanges(table);
             await utils.common.clear(filterInput);
+            await htmlChanges();
         });
 
         it('by subject', async function() {
-            let oldIssuesCount = await $$('.row.table-main').count();
+            let table = issuesHelper.getTable();
             let issues = issuesHelper.getIssues();
             let issue = issues.get(0);
-
-            let table = issuesHelper.getTable();
-            let htmlChanges = await utils.common.outerHtmlChanges(table);
-
             issue = await issuesHelper.parseIssue(issue);
-
             let filterInput = issuesHelper.getFilterInput();
 
-            await filterInput.sendKeys(issue.subject);
+            let oldIssuesCount = await $$('.row.table-main').count();
 
+            let htmlChanges = await utils.common.outerHtmlChanges(table);
+            await filterInput.sendKeys(issue.subject);
             await htmlChanges();
 
             let newIssuesCount = await issues.count();
@@ -159,16 +154,17 @@ describe('issues list', function() {
             expect(newIssuesCount).not.to.be.equal(oldIssuesCount);
             expect(newIssuesCount).to.be.above(0);
 
+            htmlChanges = await utils.common.outerHtmlChanges(table);
             await utils.common.clear(filterInput);
+            await htmlChanges();
         });
 
         it('by type', async function() {
             let table = issuesHelper.getTable();
-            let htmlChanges = await utils.common.outerHtmlChanges(table);
 
+            let htmlChanges = await utils.common.outerHtmlChanges(table);
             issuesHelper.filtersCats().get(0).click();
             issuesHelper.selectFilter(0);
-
             await htmlChanges();
 
             issuesHelper.backToFilters();
@@ -178,11 +174,10 @@ describe('issues list', function() {
 
         it('by status', async function() {
             let table = issuesHelper.getTable();
-            let htmlChanges = await utils.common.outerHtmlChanges(table);
 
+            let htmlChanges = await utils.common.outerHtmlChanges(table);
             issuesHelper.filtersCats().get(1).click();
             issuesHelper.selectFilter(0);
-
             await htmlChanges();
 
             issuesHelper.backToFilters();
@@ -192,11 +187,10 @@ describe('issues list', function() {
 
         it('by severity', async function() {
             let table = issuesHelper.getTable();
-            let htmlChanges = await utils.common.outerHtmlChanges(table);
 
+            let htmlChanges = await utils.common.outerHtmlChanges(table);
             issuesHelper.filtersCats().get(2).click();
             issuesHelper.selectFilter(0);
-
             await htmlChanges();
 
             issuesHelper.backToFilters();
@@ -206,11 +200,10 @@ describe('issues list', function() {
 
         it('by priorities', async function() {
             let table = issuesHelper.getTable();
-            let htmlChanges = await utils.common.outerHtmlChanges(table);
 
+            let htmlChanges = await utils.common.outerHtmlChanges(table);
             issuesHelper.filtersCats().get(3).click();
             issuesHelper.selectFilter(0);
-
             await htmlChanges();
 
             issuesHelper.backToFilters();
@@ -220,12 +213,10 @@ describe('issues list', function() {
 
         it('by tags', async function() {
             let table = issuesHelper.getTable();
+
             let htmlChanges = await utils.common.outerHtmlChanges(table);
-
             issuesHelper.filtersCats().get(4).click();
-
             issuesHelper.selectFilter(0);
-
             await htmlChanges();
 
             issuesHelper.backToFilters();
@@ -235,11 +226,10 @@ describe('issues list', function() {
 
         it('by assigned to', async function() {
             let table = issuesHelper.getTable();
-            let htmlChanges = await utils.common.outerHtmlChanges(table);
 
+            let htmlChanges = await utils.common.outerHtmlChanges(table);
             issuesHelper.filtersCats().get(5).click();
             issuesHelper.selectFilter(0);
-
             await htmlChanges();
 
             issuesHelper.backToFilters();
@@ -249,11 +239,10 @@ describe('issues list', function() {
 
         it('by created by', async function() {
             let table = issuesHelper.getTable();
-            let htmlChanges = await utils.common.outerHtmlChanges(table);
 
+            let htmlChanges = await utils.common.outerHtmlChanges(table);
             issuesHelper.filtersCats().get(6).click();
             issuesHelper.selectFilter(0);
-
             await htmlChanges();
 
             issuesHelper.backToFilters();
