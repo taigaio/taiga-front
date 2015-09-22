@@ -11,7 +11,11 @@ You can get the compiled version of this code in the
 [taiga-front-dist](http://github.com/taigaio/taiga-front-dist) repository
 
 
-## Setup initial environment ##
+## Setup ##
+
+All the information about the different installation methods (production, development, vagrant, docker...) can be found here http://taigaio.github.io/taiga-doc/dist/#_installation_guide.
+
+### Initial dev env ###
 
 Install requirements:
 
@@ -21,41 +25,59 @@ You can install Ruby through the apt package manager, rbenv, or rvm.
 Install Sass through your **Terminal or Command Prompt**.
 
 ```
-$ gem install sass scss-lint
-$ export PATH="~/.gem/ruby/2.1.0/bin:$PATH"
-$ sass -v // should return Sass 3.3.8 (Maptastic Maple)
+gem install sass scss-lint
+export PATH="~/.gem/ruby/2.1.0/bin:$PATH"
+sass -v             # should return Sass 3.3.8 (Maptastic Maple)
 ```
 
 Complete process for all OS at: http://sass-lang.com/install
 
 **Node + Bower + Gulp**
 
+We recommend to use [nvm](https://github.com/creationix/nvmv) to manege diferent node versions
 ```
-$ sudo npm install -g gulp
-$ sudo npm install -g bower
-$ npm install
-$ bower install
-$ gulp
+npm install -g gulp
+npm install -g bower
+npm install
+bower install
+gulp
 ```
 
 And go in your browser to: http://localhost:9001/
 
-All the information about the different installation methods (production, development, vagrant, docker...) can be found here http://taigaio.github.io/taiga-doc/dist/#_installation_guide. 
+### E2E test ###
 
+If you want to run e2e tests
 
-## Run tests ##
+```
+npm install -g protractor
+npm install -g mocha
+npm install -g babel
+
+webdriver-manager update
+```
+
+## Tests ##
+
+### Unit tests ###
 
 - To run **unit tests**
-  ```      
+
+  ```
   gulp
   ```
   ```
   npm test
   ```
 
-- To run **e2e tests**
+### E2E tests ###
+
+- To run **e2e tests** you need [taiga-back](https://github.com/taigaio/taiga-back) running and
+
   ```
-  webdriver-manager update      # Only the first time
+  gulp
+  ```
+  ```
   webdriver-manager start
   ```
   ```
