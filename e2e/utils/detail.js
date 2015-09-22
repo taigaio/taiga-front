@@ -28,7 +28,6 @@ helper.tagsTesting = async function() {
     let date = Date.now();
     let tags = [1, 2, 3, 4, 5].map((i) => date + "-" + i);
     tagsHelper.addTags(tags);
-    await browser.waitForAngular();
     let newtagsText = await tagsHelper.getTagsText();
     expect(newtagsText).to.be.not.equal(tagsText);
 }
@@ -189,22 +188,21 @@ helper.deleteTesting = async function() {
 
 helper.watchersTesting = async function() {
     let watchersHelper = detailHelper.watchers();
-
     await watchersHelper.removeAllWathchers();
 
     let watchersLightboxHelper = detailHelper.watchersLightbox();
     let userNames = await watchersHelper.getWatchersUserNames();
 
     //Add watcher
-    watchersHelper.addWatcher();
+    await watchersHelper.addWatcher();
     await watchersLightboxHelper.waitOpen();
     let newWatcherName = await watchersLightboxHelper.getFirstName();
-    watchersLightboxHelper.selectFirst();
+    await watchersLightboxHelper.selectFirst();
     await watchersLightboxHelper.waitClose();
 
     let newUserNames = await watchersHelper.getWatchersUserNames();
 
-    userNames.push(newWatcherName);
+    await userNames.push(newWatcherName);
 
     expect(newUserNames.join(',')).to.be.equal(userNames.join(','));
 

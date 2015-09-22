@@ -58,10 +58,12 @@ helper.tags = function() {
         clearTags: async function() {
             let tags = await el.$$('.icon-delete');
             let totalTags = tags.length;
+            let htmlChanges = null;
             while (totalTags > 0) {
-              el.$$('.icon-delete').first().click();
-              await browser.waitForAngular();
-              totalTags --;
+                htmlChanges = await utils.common.outerHtmlChanges(el.$(".tags-container"));
+                await el.$$('.icon-delete').first().click();
+                totalTags --;
+                await htmlChanges();
             }
         },
 
@@ -76,10 +78,14 @@ helper.tags = function() {
         },
 
         addTags: async function(tags) {
+            let htmlChanges = null
+
             el.$('.add-tag').click();
             for (let tag of tags){
+                htmlChanges = await utils.common.outerHtmlChanges(el.$(".tags-container"));
                 el.$('.tag-input').sendKeys(tag);
-                browser.actions().sendKeys(protractor.Key.ENTER).perform();
+                await browser.actions().sendKeys(protractor.Key.ENTER).perform();
+                await htmlChanges();
             }
         }
     };
@@ -381,24 +387,24 @@ helper.watchers = function() {
     let obj = {
         el: el,
 
-        addWatcher: function() {
-            el.$('.add-watcher').click();
+        addWatcher: async function() {
+            await el.$('.add-watcher').click();
         },
 
-        getWatchersUserNames: function() {
+        getWatchersUserNames: async function() {
             return el.$$('.watcher-name span').getText();
         },
 
         removeAllWathchers: async function() {
-            let deleteIcons = await el.$$('.icon-delete');
-            let totalWatchers = deleteIcons.length;
+            let totalWatchers = await await el.$$('.icon-delete').count();
 
+            let htmlChanges = htmlChanges = await utils.common.outerHtmlChanges(el);
             while (totalWatchers > 0) {
-              el.$$('.icon-delete').first().click();
-              await utils.lightbox.confirm.ok();
-              await browser.waitForAngular();
-              totalWatchers --;
+                await el.$$('.icon-delete').first().click();
+                await utils.lightbox.confirm.ok();
+                totalWatchers --;
             }
+            await htmlChanges();
         }
     };
 

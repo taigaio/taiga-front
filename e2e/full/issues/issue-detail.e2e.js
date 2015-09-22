@@ -28,7 +28,7 @@ describe('Issue detail', async function(){
 
     it('assigned to edition', utils.detail.assignedToTesting);
 
-    it('watchers edition', utils.detail.watchersTesting);
+    it.only('watchers edition', utils.detail.watchersTesting);
 
     it('history', utils.detail.historyTesting);
 
