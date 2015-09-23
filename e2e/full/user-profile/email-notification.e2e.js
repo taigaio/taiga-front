@@ -8,7 +8,7 @@ var expect = chai.expect;
 
 describe('email notification', function() {
     before(async function(){
-        browser.get('http://localhost:9001/user-settings/mail-notifications');
+        browser.get(browser.params.glob.host + 'user-settings/mail-notifications');
 
         await utils.common.waitLoader();
 

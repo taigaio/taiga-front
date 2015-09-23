@@ -8,7 +8,7 @@ var expect = chai.expect;
 
 describe('modules', function() {
     before(async function(){
-        browser.get('http://localhost:9001/project/project-0/admin/project-profile/modules');
+        browser.get(browser.params.glob.host + 'project/project-0/admin/project-profile/modules');
 
         await utils.common.waitLoader();
 

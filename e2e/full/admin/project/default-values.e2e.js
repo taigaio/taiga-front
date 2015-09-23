@@ -8,7 +8,7 @@ var expect = chai.expect;
 
 describe('project default values', function() {
     before(async function(){
-        browser.get('http://localhost:9001/project/project-0/admin/project-profile/default-values');
+        browser.get(browser.params.glob.host + 'project/project-0/admin/project-profile/default-values');
 
         await utils.common.waitLoader();
 

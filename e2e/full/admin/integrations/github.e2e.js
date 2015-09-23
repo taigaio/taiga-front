@@ -10,7 +10,7 @@ var expect = chai.expect;
 
 describe('admin - github', function() {
     before(async function(){
-        browser.get('http://localhost:9001/project/project-3/admin/third-parties/github');
+        browser.get(browser.params.glob.host + 'project/project-3/admin/third-parties/github');
 
         await utils.common.waitLoader();
 

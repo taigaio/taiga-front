@@ -8,7 +8,7 @@ var expect = chai.expect;
 
 describe('Public', async function(){
     before(async function(){
-        browser.get('http://localhost:9001/project/project-3/admin/project-profile/details');
+        browser.get(browser.params.glob.host + 'project/project-3/admin/project-profile/details');
 
         await utils.common.waitLoader();
 
@@ -23,7 +23,7 @@ describe('Public', async function(){
     });
 
     it('home', function() {
-        browser.get('http://localhost:9001/project/project-3/');
+        browser.get(browser.params.glob.host + 'project/project-3/');
 
         utils.common.waitLoader();
 
@@ -31,7 +31,7 @@ describe('Public', async function(){
     });
 
     it('backlog', function() {
-        browser.get('http://localhost:9001/project/project-3/backlog');
+        browser.get(browser.params.glob.host + 'project/project-3/backlog');
 
         utils.common.waitLoader();
 
@@ -39,7 +39,7 @@ describe('Public', async function(){
     });
 
     it('taskboard', function() {
-        browser.get('http://localhost:9001/project/project-3/backlog');
+        browser.get(browser.params.glob.host + 'project/project-3/backlog');
 
         utils.common.waitLoader();
 
@@ -50,7 +50,7 @@ describe('Public', async function(){
     });
 
     it('kanban', function() {
-        browser.get('http://localhost:9001/project/project-3/kanban');
+        browser.get(browser.params.glob.host + 'project/project-3/kanban');
 
         utils.common.waitLoader();
 
@@ -58,7 +58,7 @@ describe('Public', async function(){
     });
 
     it('us detail', function() {
-        browser.get('http://localhost:9001/project/project-3/us/81');
+        browser.get(browser.params.glob.host + 'project/project-3/us/81');
 
         utils.common.waitLoader();
 
@@ -66,7 +66,7 @@ describe('Public', async function(){
     });
 
     it('issue detail', function() {
-        browser.get('http://localhost:9001/project/project-3/issue/95');
+        browser.get(browser.params.glob.host + 'project/project-3/issue/95');
 
         utils.common.waitLoader();
 
@@ -74,7 +74,7 @@ describe('Public', async function(){
     });
 
     it('task detail', function() {
-        browser.get('http://localhost:9001/project/project-3/task/2');
+        browser.get(browser.params.glob.host + 'project/project-3/task/2');
 
         utils.common.waitLoader();
 
@@ -82,7 +82,7 @@ describe('Public', async function(){
     });
 
     it('team', function() {
-        browser.get('http://localhost:9001/project/project-5/team');
+        browser.get(browser.params.glob.host + 'project/project-5/team');
 
         utils.common.waitLoader();
 

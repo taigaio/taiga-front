@@ -11,7 +11,7 @@ describe('wiki', function() {
     let currentWiki = {};
 
     before(async function(){
-        browser.get('http://localhost:9001/project/project-0/wiki/home');
+        browser.get(browser.params.glob.host + 'project/project-0/wiki/home');
         await utils.common.waitLoader();
     });
 
@@ -36,7 +36,7 @@ describe('wiki', function() {
         await utils.common.waitLoader();
         await utils.common.takeScreenshot("wiki", "new-link-created-with-empty-wiki-page");
 
-        expect(browser.getCurrentUrl()).to.be.eventually.equal('http://localhost:9001/project/project-0/wiki/' + currentWiki.slug);
+        expect(browser.getCurrentUrl()).to.be.eventually.equal(browser.params.glob.host + 'project/project-0/wiki/' + currentWiki.slug);
     });
 
     it('remove link', async function() {
@@ -73,7 +73,7 @@ describe('wiki', function() {
     it('delete', async function() {
         await wikiHelper.editor().delete();
 
-        expect(browser.getCurrentUrl()).to.be.eventually.equal('http://localhost:9001/project/project-0/wiki/home');
+        expect(browser.getCurrentUrl()).to.be.eventually.equal(browser.params.glob.host + 'project/project-0/wiki/home');
     });
 
     it('Custom keyboard actions', async function(){

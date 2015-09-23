@@ -8,14 +8,14 @@ var expect = chai.expect;
 
 describe('change password', function() {
     before(async function(){
-        browser.get('http://localhost:9001/user-settings/user-change-password');
+        browser.get(browser.params.glob.host + 'user-settings/user-change-password');
         await utils.common.waitLoader();
 
         utils.common.takeScreenshot('edit-user-profile', 'change-password');
     });
 
     beforeEach(async function() {
-        browser.get('http://localhost:9001/user-settings/user-change-password');
+        browser.get(browser.params.glob.host + 'user-settings/user-change-password');
 
         await utils.common.waitLoader();
     });
@@ -51,7 +51,7 @@ describe('change password', function() {
     });
 
     after(async function() {
-        browser.get('http://localhost:9001/user-settings/user-change-password');
+        browser.get(browser.params.glob.host + 'user-settings/user-change-password');
         await utils.common.waitLoader();
 
         //restore

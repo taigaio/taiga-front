@@ -9,7 +9,7 @@ var expect = chai.expect;
 
 describe('leaving project', function(){
   before(async function(){
-      browser.get('http://localhost:9001/project/project-4/team');
+      browser.get(browser.params.glob.host + 'project/project-4/team');
       await utils.common.waitLoader();
   });
 
@@ -22,7 +22,7 @@ describe('leaving project', function(){
 
 describe('team', function() {
     before(async function(){
-        browser.get('http://localhost:9001/project/project-5/team');
+        browser.get(browser.params.glob.host + 'project/project-5/team');
         await utils.common.waitLoader();
     });
 

@@ -11,7 +11,7 @@ var expect = chai.expect;
 
 describe('kanban', function() {
     before(async function() {
-        browser.get('http://localhost:9001/project/project-0/kanban');
+        browser.get(browser.params.glob.host + 'project/project-0/kanban');
 
         await utils.common.waitLoader();
 

@@ -9,7 +9,7 @@ var expect = chai.expect;
 
 describe('custom-fields', function() {
     before(async function() {
-        browser.get('http://localhost:9001/project/project-3/admin/project-values/custom-fields');
+        browser.get(browser.params.glob.host + 'project/project-3/admin/project-values/custom-fields');
         await utils.common.waitLoader();
 
         utils.common.takeScreenshot('attributes', 'custom-fields');
@@ -66,9 +66,11 @@ describe('custom-fields', function() {
 
                 customFieldsHelper.delete(typeIndex, 0);
 
-                let countCustomFields = customFieldsHelper.getCustomFiledsByType(typeIndex).count();
+                browser.wait(async function() {
+                    let countCustomFields = await customFieldsHelper.getCustomFiledsByType(typeIndex).count();
 
-                expect(countCustomFields).to.be.eventually.equal(oldCountCustomFields - 1);
+                    return countCustomFields === oldCountCustomFields - 1;
+                }, 4000);
             });
         });
 
@@ -122,9 +124,11 @@ describe('custom-fields', function() {
 
                 customFieldsHelper.delete(typeIndex, 0);
 
-                let countCustomFields = customFieldsHelper.getCustomFiledsByType(typeIndex).count();
+                browser.wait(async function() {
+                    let countCustomFields = await customFieldsHelper.getCustomFiledsByType(typeIndex).count();
 
-                expect(countCustomFields).to.be.eventually.equal(oldCountCustomFields - 1);
+                    return countCustomFields === oldCountCustomFields - 1;
+                }, 4000);
             });
         });
 
@@ -178,9 +182,11 @@ describe('custom-fields', function() {
 
                 customFieldsHelper.delete(typeIndex, 0);
 
-                let countCustomFields = customFieldsHelper.getCustomFiledsByType(typeIndex).count();
+                browser.wait(async function() {
+                    let countCustomFields = await customFieldsHelper.getCustomFiledsByType(typeIndex).count();
 
-                expect(countCustomFields).to.be.eventually.equal(oldCountCustomFields - 1);
+                    return countCustomFields === oldCountCustomFields - 1;
+                }, 4000);
             });
         });
     });

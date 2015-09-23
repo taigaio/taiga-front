@@ -10,7 +10,7 @@ var expect = chai.expect;
 
 describe('admin - roles', function() {
     before(async function(){
-        browser.get('http://localhost:9001/project/project-0/admin/roles');
+        browser.get(browser.params.glob.host + 'project/project-0/admin/roles');
 
         await utils.common.waitLoader();
 

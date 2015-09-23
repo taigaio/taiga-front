@@ -8,7 +8,7 @@ var expect = chai.expect;
 
 describe('search page', function() {
     before(async function(){
-        browser.get('http://localhost:9001/project/project-0/');
+        browser.get(browser.params.glob.host + 'project/project-0/');
 
         await utils.common.waitLoader();
     });
@@ -32,7 +32,7 @@ describe('search page', function() {
 
         utils.common.takeScreenshot('search', 'usertories');
 
-        expect(currentUrl).to.be.equal('http://localhost:9001/project/project-0/search?text=create');
+        expect(currentUrl).to.be.equal(browser.params.glob.host + 'project/project-0/search?text=create');
     });
 
     describe('tabs', function() {

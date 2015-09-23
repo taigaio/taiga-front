@@ -10,7 +10,7 @@ var expect = chai.expect;
 
 describe('issues list', function() {
     before(async function() {
-        browser.get('http://localhost:9001/project/project-3/issues');
+        browser.get(browser.params.glob.host + 'project/project-3/issues');
         await utils.common.waitLoader();
 
         utils.common.takeScreenshot('issues', 'issues');

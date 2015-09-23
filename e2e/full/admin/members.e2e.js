@@ -10,7 +10,7 @@ var expect = chai.expect;
 
 describe('admin - members', function() {
     before(async function(){
-        browser.get('http://localhost:9001/project/project-0/admin/memberships');
+        browser.get(browser.params.glob.host + 'project/project-0/admin/memberships');
 
         await utils.common.waitLoader();
 

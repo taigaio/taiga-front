@@ -10,7 +10,7 @@ var expect = chai.expect;
 
 describe('admin - bitbucket', function() {
     before(async function(){
-        browser.get('http://localhost:9001/project/project-3/admin/third-parties/bitbucket');
+        browser.get(browser.params.glob.host + 'project/project-3/admin/third-parties/bitbucket');
 
         await utils.common.waitLoader();
 

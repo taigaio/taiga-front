@@ -7,7 +7,7 @@ chai.use(chaiAsPromised);
 var expect = chai.expect;
 
 describe('Issue detail', async function(){
-    let issueUrl = 'http://localhost:9001/project/project-3/issue/92';
+    let issueUrl = browser.params.glob.host + 'project/project-3/issue/92';
 
     before(async function(){
         browser.get(issueUrl);

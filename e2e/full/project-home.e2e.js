@@ -8,7 +8,7 @@ var expect = chai.expect;
 
 describe('project home', function() {
     beforeEach(async function() {
-        browser.get('http://localhost:9001/project/project-1/');
+        browser.get(browser.params.glob.host + 'project/project-1/');
         await utils.common.waitLoader();
     });
 

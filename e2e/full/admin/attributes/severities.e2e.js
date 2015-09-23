@@ -10,7 +10,7 @@ var expect = chai.expect;
 
 describe('attributes - severities', function() {
     before(async function(){
-        browser.get('http://localhost:9001/project/project-0/admin/project-values/severities');
+        browser.get(browser.params.glob.host + 'project/project-0/admin/project-values/severities');
 
         await utils.common.waitLoader();
 

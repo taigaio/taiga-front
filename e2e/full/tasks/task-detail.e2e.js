@@ -8,7 +8,7 @@ chai.use(chaiAsPromised);
 var expect = chai.expect;
 
 describe('Task detail', function(){
-    let taskUrl = 'http://localhost:9001/project/project-3/task/7';
+    let taskUrl = browser.params.glob.host + 'project/project-3/task/7';
 
     before(async function(){
         browser.get(taskUrl);

@@ -9,7 +9,7 @@ var expect = chai.expect;
 
 describe('create-delete project', function() {
     before(async function(){
-        browser.get('http://localhost:9001/projects/');
+        browser.get(browser.params.glob.host + 'projects/');
 
         await utils.common.waitLoader();
     });
@@ -62,6 +62,6 @@ describe('create-delete project', function() {
 
         let url = await browser.getCurrentUrl();
 
-        expect(url).to.be.equal('http://localhost:9001/');
+        expect(url).to.be.equal(browser.params.glob.host);
     });
 });

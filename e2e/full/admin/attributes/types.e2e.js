@@ -10,7 +10,7 @@ var expect = chai.expect;
 
 describe('attributes - types', function() {
     before(async function(){
-        browser.get('http://localhost:9001/project/project-0/admin/project-values/types');
+        browser.get(browser.params.glob.host + 'project/project-0/admin/project-values/types');
 
         await utils.common.waitLoader();
 

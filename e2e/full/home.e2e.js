@@ -8,7 +8,7 @@ var expect = chai.expect;
 
 describe('home', function() {
     before(async function(){
-        browser.get('http://localhost:9001/');
+        browser.get(browser.params.glob.host);
 
         await utils.common.waitLoader();
         utils.common.takeScreenshot("home", "dashboard");
@@ -28,7 +28,7 @@ describe('home', function() {
 
     describe('projects list', function() {
         before(async function() {
-            browser.get('http://localhost:9001/projects/');
+            browser.get(browser.params.glob.host + 'projects/');
 
             await utils.common.waitLoader();
             utils.common.takeScreenshot("home", "projects");
@@ -51,7 +51,7 @@ describe('home', function() {
         var draggedElementText;
 
         before(async function() {
-            browser.get('http://localhost:9001/projects/');
+            browser.get(browser.params.glob.host + 'projects/');
 
             let dragableElements = element.all(by.css('.project-list-single'));
             let dragElement = dragableElements.get(3);

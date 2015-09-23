@@ -8,7 +8,7 @@ chai.use(chaiAsPromised);
 var expect = chai.expect;
 
 describe('User story detail', function(){
-    let usUrl = 'http://localhost:9001/project/project-3/us/81';
+    let usUrl = browser.params.glob.host + 'project/project-3/us/81';
 
     before(async function(){
         browser.get(usUrl);

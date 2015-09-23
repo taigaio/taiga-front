@@ -10,7 +10,7 @@ var expect = chai.expect;
 
 describe('attributes - points', function() {
     before(async function(){
-        browser.get('http://localhost:9001/project/project-0/admin/project-values/points');
+        browser.get(browser.params.glob.host + 'project/project-0/admin/project-values/points');
 
         await utils.common.waitLoader();
 

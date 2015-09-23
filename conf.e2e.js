@@ -7,6 +7,11 @@ var utils = require('./e2e/utils');
 exports.config = {
     seleniumAddress: 'http://localhost:4444/wd/hub',
     framework: 'mocha',
+    params: {
+        glob: {
+            host: 'http://localhost:9001/'
+        }
+    },
     mochaOpts: {
         timeout: 30000,
         compilers: 'js:babel/register'
@@ -26,7 +31,7 @@ exports.config = {
             browser.browserName = cap.caps_.browserName;
         });
 
-        browser.get('http://localhost:9001/login');
+        browser.get(browser.params.glob.host + 'login');
 
         var username = $('input[name="username"]');
         username.sendKeys('admin');
@@ -42,7 +47,7 @@ exports.config = {
                     return browser.driver.getCurrentUrl();
                 })
                 .then(function(url) {
-                    return url === 'http://localhost:9001/';
+                    return url === browser.params.glob.host;
                 });
         }, 10000)
         .then(function() {

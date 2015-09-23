@@ -8,7 +8,7 @@ var expect = chai.expect;
 
 describe('auth', function() {
     it('login', async function() {
-        browser.get('http://localhost:9001/login');
+        browser.get(browser.params.glob.host + 'login');
 
         await utils.common.waitLoader();
 
@@ -22,7 +22,7 @@ describe('auth', function() {
 
         $('.submit-button').click();
 
-        expect(browser.getCurrentUrl()).to.be.eventually.equal('http://localhost:9001/');
+        expect(browser.getCurrentUrl()).to.be.eventually.equal(browser.params.glob.host);
     });
 
     describe("user", function() {
@@ -30,7 +30,7 @@ describe('auth', function() {
 
         describe("register", function() {
             it('screenshot', async function() {
-                browser.get('http://localhost:9001/register');
+                browser.get(browser.params.glob.host + 'register');
 
                 await utils.common.waitLoader();
 
@@ -38,7 +38,7 @@ describe('auth', function() {
             });
 
             it('register validation', function() {
-                browser.get('http://localhost:9001/register');
+                browser.get(browser.params.glob.host + 'register');
 
                 $('.submit-button').click();
 
@@ -48,7 +48,7 @@ describe('auth', function() {
             });
 
             it('register ok', function() {
-                browser.get('http://localhost:9001/register');
+                browser.get(browser.params.glob.host + 'register');
 
                 user.username = "username-" + Math.random();
                 user.fullname = "fullname-" + Math.random();
@@ -62,7 +62,7 @@ describe('auth', function() {
 
                 $('.submit-button').click();
 
-                expect(browser.getCurrentUrl()).to.be.eventually.equal('http://localhost:9001/');
+                expect(browser.getCurrentUrl()).to.be.eventually.equal(browser.params.glob.host);
             });
         });
 
@@ -70,7 +70,7 @@ describe('auth', function() {
             beforeEach(async function() {
                 await utils.common.login(user.username, user.password);
 
-                browser.get('http://localhost:9001/user-settings/user-change-password');
+                browser.get(browser.params.glob.host + 'user-settings/user-change-password');
             });
 
             it("error", function() {
@@ -96,7 +96,7 @@ describe('auth', function() {
 
         describe("remember password", function() {
             beforeEach(function() {
-                browser.get('http://localhost:9001/forgot-password');
+                browser.get(browser.params.glob.host + 'forgot-password');
             });
 
             it ("screenshot", async function() {
@@ -133,13 +133,13 @@ describe('auth', function() {
                 browser.actions().mouseMove($('div[tg-dropdown-user]')).perform();
                 $$('.dropdown-user li a').last().click();
 
-                expect(browser.getCurrentUrl()).to.be.eventually.equal('http://localhost:9001/login');
+                expect(browser.getCurrentUrl()).to.be.eventually.equal(browser.params.glob.host + 'login');
             });
 
             it("delete account", async function() {
                 await utils.common.login(user.username, user.password);
 
-                browser.get('http://localhost:9001/user-settings/user-profile');
+                browser.get(browser.params.glob.host + 'user-settings/user-profile');
                 $('.delete-account').click();
 
                 await utils.lightbox.open('.lightbox-delete-account');
@@ -149,7 +149,7 @@ describe('auth', function() {
                 $('#unsuscribe').click();
                 $('.lightbox-delete-account .button-green').click();
 
-                expect(browser.getCurrentUrl()).to.be.eventually.equal('http://localhost:9001/login');
+                expect(browser.getCurrentUrl()).to.be.eventually.equal(browser.params.glob.host + 'login');
             });
         });
     });

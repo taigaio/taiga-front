@@ -11,7 +11,7 @@ var expect = chai.expect;
 
 describe('taskboard', function() {
     before(async function() {
-        browser.get('http://localhost:9001/project/project-0/backlog');
+        browser.get(browser.params.glob.host + 'project/project-0/backlog');
 
         await utils.common.waitLoader();
 

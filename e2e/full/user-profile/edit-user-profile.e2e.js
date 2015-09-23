@@ -8,7 +8,7 @@ var expect = chai.expect;
 
 describe('edit user profile', function() {
     before(async function(){
-        browser.get('http://localhost:9001/user-settings/user-profile');
+        browser.get(browser.params.glob.host + 'user-settings/user-profile');
 
         await utils.common.waitLoader();
 

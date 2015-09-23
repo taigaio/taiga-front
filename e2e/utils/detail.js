@@ -216,7 +216,7 @@ helper.customFields = function(typeIndex) {
     before(async function() {
         let url = await browser.getCurrentUrl();
 
-        browser.get('http://localhost:9001/project/project-3/admin/project-values/custom-fields');
+        browser.get(browser.params.glob.host + 'project/project-3/admin/project-values/custom-fields');
 
         commonUtil.waitLoader();
 

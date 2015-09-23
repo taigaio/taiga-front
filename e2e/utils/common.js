@@ -90,7 +90,7 @@ common.closeCookies = function() {
 };
 
 common.login = function(username, password) {
-    browser.get('http://localhost:9001/login');
+    browser.get(browser.params.glob.host + 'login');
 
     $('input[name="username"]').sendKeys(username);
     $('input[name="password"]').sendKeys(password);
@@ -100,7 +100,7 @@ common.login = function(username, password) {
     return browser.driver.wait(async function() {
         let url =  await browser.driver.getCurrentUrl();
 
-        return url === 'http://localhost:9001/';
+        return url === browser.params.glob.host;
     }, 10000);
 };
 
@@ -116,12 +116,12 @@ common.logout = function() {
     return browser.driver.wait(async function() {
         let url =  await browser.driver.getCurrentUrl();
 
-        return url === 'http://localhost:9001/login';
+        return url === browser.params.glob.host + 'login';
     }, 10000);
 };
 
 common.prepare = function() {
-    browser.get('http://localhost:9001/');
+    browser.get(browser.params.glob.host);
 
     return common.closeCookies();
 }
@@ -282,7 +282,7 @@ common.clear = function(elem, length) {
 };
 
 common.goHome = async function() {
-    browser.get('http://localhost:9001');
+    browser.get(browser.params.glob.host);
 
     await common.waitLoader();
 };
