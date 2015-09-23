@@ -426,7 +426,7 @@ describe('backlog', function() {
         });
     });
 
-    describe('filters', function() {
+    describe.only('filters', function() {
         it('show filters', async function() {
             let transition = utils.common.transitionend('.menu-secondary.filters-bar', 'opacity');
 
@@ -451,10 +451,10 @@ describe('backlog', function() {
 
             expect(newUsCount).to.be.below(usCount);
 
+            htmlChanges = await utils.common.outerHtmlChanges('.backlog-table-body');
+
             // clear status
             await filterQ.clear();
-
-            htmlChanges = await utils.common.outerHtmlChanges('.backlog-table-body');
 
             await htmlChanges();
         });
@@ -465,17 +465,20 @@ describe('backlog', function() {
             let htmlChanges = await utils.common.outerHtmlChanges('.backlog-table-body');
 
             let ref = await backlogHelper.getTestingFilterRef();
+
             ref = ref.replace('#', '');
+
             await filterQ.sendKeys(ref);
             await htmlChanges();
 
             let newUsCount = await userstories.count();
             expect(newUsCount).to.be.equal(1);
 
+            htmlChanges = await utils.common.outerHtmlChanges('.backlog-table-body');
+
             // clear status
             await filterQ.clear();
 
-            htmlChanges = await utils.common.outerHtmlChanges('.backlog-table-body');
             await htmlChanges();
         });
 
