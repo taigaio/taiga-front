@@ -163,7 +163,7 @@ describe('issues list', function() {
             let table = issuesHelper.getTable();
 
             let htmlChanges = await utils.common.outerHtmlChanges(table);
-            issuesHelper.filtersCats().get(0).click();
+            issuesHelper.filtersCats().get(0).$('a').click();
             issuesHelper.selectFilter(0);
             await htmlChanges();
 
@@ -176,7 +176,7 @@ describe('issues list', function() {
             let table = issuesHelper.getTable();
 
             let htmlChanges = await utils.common.outerHtmlChanges(table);
-            issuesHelper.filtersCats().get(1).click();
+            issuesHelper.filtersCats().get(1).$('a').click();
             issuesHelper.selectFilter(0);
             await htmlChanges();
 
@@ -189,7 +189,7 @@ describe('issues list', function() {
             let table = issuesHelper.getTable();
 
             let htmlChanges = await utils.common.outerHtmlChanges(table);
-            issuesHelper.filtersCats().get(2).click();
+            issuesHelper.filtersCats().get(2).$('a').click();
             issuesHelper.selectFilter(0);
             await htmlChanges();
 
@@ -202,7 +202,7 @@ describe('issues list', function() {
             let table = issuesHelper.getTable();
 
             let htmlChanges = await utils.common.outerHtmlChanges(table);
-            issuesHelper.filtersCats().get(3).click();
+            issuesHelper.filtersCats().get(3).$('a').click();
             issuesHelper.selectFilter(0);
             await htmlChanges();
 
@@ -215,7 +215,7 @@ describe('issues list', function() {
             let table = issuesHelper.getTable();
 
             let htmlChanges = await utils.common.outerHtmlChanges(table);
-            issuesHelper.filtersCats().get(4).click();
+            issuesHelper.filtersCats().get(4).$('a').click();
             issuesHelper.selectFilter(0);
             await htmlChanges();
 
@@ -228,7 +228,7 @@ describe('issues list', function() {
             let table = issuesHelper.getTable();
 
             let htmlChanges = await utils.common.outerHtmlChanges(table);
-            issuesHelper.filtersCats().get(5).click();
+            issuesHelper.filtersCats().get(5).$('a').click();
             issuesHelper.selectFilter(0);
             await htmlChanges();
 
@@ -241,7 +241,7 @@ describe('issues list', function() {
             let table = issuesHelper.getTable();
 
             let htmlChanges = await utils.common.outerHtmlChanges(table);
-            issuesHelper.filtersCats().get(6).click();
+            issuesHelper.filtersCats().get(6).$('a').click();
             issuesHelper.selectFilter(0);
             await htmlChanges();
 
@@ -269,7 +269,7 @@ describe('issues list', function() {
         });
 
         it('save custom filter', async function() {
-            issuesHelper.filtersCats().get(1).click();
+            issuesHelper.filtersCats().get(1).$('a').click();
             issuesHelper.selectFilter(0);
 
             await browser.waitForAngular();
@@ -286,7 +286,7 @@ describe('issues list', function() {
             let table = issuesHelper.getTable();
             let htmlChanges = await utils.common.outerHtmlChanges(table);
 
-            issuesHelper.filtersCats().get(7).click();
+            issuesHelper.filtersCats().get(7).$('a').click();
 
             issuesHelper.selectFilter(0);
 
