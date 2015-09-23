@@ -35,7 +35,7 @@ helper.toggleEstimationRole = function() {
 helper.openCategory = function(index) {
     let category = $$('.category-config').get(index);
 
-    category.click();
+    category.$('.resume').click();
 
     let cateogoryItems = category.$('.category-items');
 
