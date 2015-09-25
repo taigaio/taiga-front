@@ -426,7 +426,7 @@ describe('backlog', function() {
         });
     });
 
-    describe.only('filters', function() {
+    describe('filters', function() {
         it('show filters', async function() {
             let transition = utils.common.transitionend('.menu-secondary.filters-bar', 'opacity');
 
