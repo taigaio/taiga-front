@@ -28,8 +28,10 @@ helper.tagsTesting = async function() {
     let date = Date.now();
     let tags = [1, 2, 3, 4, 5].map((i) => date + "-" + i);
     tagsHelper.addTags(tags);
+
     let newtagsText = await tagsHelper.getTagsText();
-    expect(newtagsText).to.be.not.equal(tagsText);
+
+    expect(newtagsText).to.be.not.eql(tagsText);
 }
 
 helper.descriptionTesting = async function() {
@@ -294,15 +296,13 @@ helper.customFields = function(typeIndex) {
         let textField = customFields.get(count - 1);
 
         textField.$('.icon-edit').click();
-
         textField.$('textarea').sendKeys('test text2 edit');
         textField.$('.icon-floppy').click();
 
-        // debounce
+        // // debounce
         await browser.sleep(2000);
+        let fieldText = await textField.$('.read-mode span').getText();
 
-        let fieldText = textField.$('.read-mode span').getText();
-
-        expect(fieldText).to.be.eventually.equal('test text2 edit');
+        expect(fieldText).to.be.equal('test text2 edit');
     });
 };

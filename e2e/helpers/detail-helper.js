@@ -67,14 +67,8 @@ helper.tags = function() {
             }
         },
 
-        getTagsText: async function() {
-          let tags = await el.$$('.tag-name');
-          let text = "";
-          for (let tag of tags) {
-              let tagText = await tag.getText();
-              text += tagText;
-          }
-          return text;
+        getTagsText: function() {
+          return el.$$('.tag-name').getText();
         },
 
         addTags: async function(tags) {
