@@ -16,7 +16,7 @@
         "EDIT": "Редактировать",
         "DRAG": "Перетащите",
         "TAG_LINE": "Ваш свободный, agile инструмент управления проектами с открытым исходным кодом",
-        "TAG_LINE_2": "НРАВИТСЯ ВАШ ПРОЕКТ",
+        "TAG_LINE_2": "Любит ваши проекты",
         "BLOCK": "Блокировать",
         "UNBLOCK": "Разблокировать",
         "BLOCKED": "Заблокирован",
@@ -457,7 +457,7 @@
             "ISSUE_ADD": "Добавить специальное поле для задач",
             "FIELD_TYPE_TEXT": "Текст",
             "FIELD_TYPE_MULTI": "Многостроковое",
-            "FIELD_TYPE_DATE": "Date"
+            "FIELD_TYPE_DATE": "Дата"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - Значения атрибутов проекта - {{projectName}}",
@@ -1266,11 +1266,11 @@
         "NEW_USER": "{{username}} присоединился к Taiga"
     },
     "EXTERNAL_APP": {
-        "PAGE_TITLE": "An external app requires authentication",
-        "PAGE_DESCRIPTION": "An external app requires authentication",
-        "AUTHORIZATION_REQUEST": "Authorize {{application}} to use your Taiga account?",
-        "LOGIN_WITH_ANOTHER_USER": "Login with another user",
-        "AUTHORIZE_APP": "Authorize app",
+        "PAGE_TITLE": "Внешнее приложение требующие аутентификации",
+        "PAGE_DESCRIPTION": "Внешнее приложение требующие аутентификации",
+        "AUTHORIZATION_REQUEST": "Разрешить {{application}} использовать ваш Taiga аккаунт?",
+        "LOGIN_WITH_ANOTHER_USER": "Войти под другим пользователем",
+        "AUTHORIZE_APP": "Авторизировать приложение",
         "CANCEL": "Отмена"
     }
 }

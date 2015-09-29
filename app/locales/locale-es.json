@@ -457,7 +457,7 @@
             "ISSUE_ADD": "Añadir un atributo personalizado en las peticiones",
             "FIELD_TYPE_TEXT": "Texto",
             "FIELD_TYPE_MULTI": "Multilínea",
-            "FIELD_TYPE_DATE": "Date"
+            "FIELD_TYPE_DATE": "Fecha"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - Valores del Proyectos - {{projectName}}",
@@ -1266,11 +1266,11 @@
         "NEW_USER": "{{username}} se ha unido a Taiga"
     },
     "EXTERNAL_APP": {
-        "PAGE_TITLE": "An external app requires authentication",
-        "PAGE_DESCRIPTION": "An external app requires authentication",
-        "AUTHORIZATION_REQUEST": "Authorize {{application}} to use your Taiga account?",
-        "LOGIN_WITH_ANOTHER_USER": "Login with another user",
-        "AUTHORIZE_APP": "Authorize app",
+        "PAGE_TITLE": "Una aplicación externa requiere autenticación",
+        "PAGE_DESCRIPTION": "Una aplicación externa requiere autenticación",
+        "AUTHORIZATION_REQUEST": "¿Autoriza {{aplicación}} para que utilice tu cuenta de Taiga?",
+        "LOGIN_WITH_ANOTHER_USER": "Ingresar con otro usuario",
+        "AUTHORIZE_APP": "Autorizar aplicación",
         "CANCEL": "Cancelar"
     }
 }

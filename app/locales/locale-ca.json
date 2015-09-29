@@ -43,12 +43,12 @@
             "TYPE_URL": "Deu ser una URL vàlida.",
             "TYPE_URLSTRICT": "Deu ser una URL vàlida.",
             "TYPE_NUMBER": "Deu ser un nombre vàlid.",
-            "TYPE_DIGITS": "This value should be digits.",
-            "TYPE_DATEISO": "This value should be a valid date (YYYY-MM-DD).",
+            "TYPE_DIGITS": "Aquest valor ha de ser numèric",
+            "TYPE_DATEISO": "Aquest valor ha de ser una data vàlida (YYYY-MM-DD)",
             "TYPE_ALPHANUM": "Aquest valor ha de ser alfanumèric.",
             "TYPE_PHONE": "Aquest valor ha de ser un número de telèfon vàlid.",
-            "NOTNULL": "This value should not be null.",
-            "NOT_BLANK": "This value should not be blank.",
+            "NOTNULL": "Aquest valor no pot ser nul.",
+            "NOT_BLANK": "Aquest valor no pot estar buit",
             "REQUIRED": "Aquest valor és necessari.",
             "REGEXP": "Aquest valor pareix invàlid.",
             "MIN": "This value should be greater than or equal to %s.",
@@ -58,8 +58,8 @@
             "MAX_LENGTH": "This value is too long. It should have %s characters or less.",
             "RANGE_LENGTH": "This value length is invalid. It should be between %s and %s characters long.",
             "MIN_CHECK": "You must select at least %s choices.",
-            "MAX_CHECK": "You must select %s choices or less.",
-            "RANGE_CHECK": "You must select between %s and %s choices.",
+            "MAX_CHECK": "Heu de seleccionar la opció %s o inferior.",
+            "RANGE_CHECK": "Heu de seleccionar entre les opcions %s i %s.",
             "EQUAL_TO": "Aquest valor hauria de ser el mateix."
         },
         "PICKERDATE": {
@@ -457,7 +457,7 @@
             "ISSUE_ADD": "Afegix camps personalitzats en incidències",
             "FIELD_TYPE_TEXT": "Text",
             "FIELD_TYPE_MULTI": "Múltiples línies",
-            "FIELD_TYPE_DATE": "Date"
+            "FIELD_TYPE_DATE": "Data"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - Project values - {{projectName}}",
@@ -694,7 +694,7 @@
             "NOTIFICATIONS_TITLE": "Edita la configuració de les teves notificacions",
             "NOTIFICATIONS": "Notificacions",
             "ORGANIZATIONS_TITLE": "Edit your organizations",
-            "ORGANIZATIONS": "Edit organizations",
+            "ORGANIZATIONS": "Editar organitzacions",
             "SETTINGS_TITLE": "Editeu les vostres preferències",
             "SETTINGS": "Preferències",
             "VIEW_PROFILE_TITLE": "Visualitza el perfil",
@@ -705,8 +705,8 @@
             "CHANGE_PASSWORD": "Canvi de contrasenya",
             "DASHBOARD_TITLE": "Tauler",
             "DISCOVER_TITLE": "Discover trending projects",
-            "DISCOVER": "Discover",
-            "ACTION_REORDER": "Drag & drop to reorder"
+            "DISCOVER": "Descobreix",
+            "ACTION_REORDER": "Arrossega els elements per endreçar"
         },
         "IMPORT": {
             "TITLE": "Important Projecte",
@@ -928,10 +928,10 @@
             "POINTS_PER_SPRINT": "punts<br/> sprint"
         },
         "FILTERS": {
-            "TOGGLE": "Toggle filters visibility",
+            "TOGGLE": "Alterna la visibilitat dels filtres",
             "TITLE": "Filtres",
             "REMOVE": "Esborra filtres",
-            "HIDE": "Hide Filters",
+            "HIDE": "Amaga filtres",
             "SHOW": "Mostra filtres",
             "FILTER_CATEGORY_STATUS": "Estats",
             "FILTER_CATEGORY_TAGS": "Etiquetes"
@@ -1192,8 +1192,8 @@
             "PLACEHOLDER_BIO": "Contans algo sobre tu mateix",
             "LANGUAGE": "Idioma",
             "LANGUAGE_DEFAULT": "-- utiliza l'idioma per defecte --",
-            "THEME": "Theme",
-            "THEME_DEFAULT": "-- use default theme --"
+            "THEME": "Tema",
+            "THEME_DEFAULT": "-- utilitza el tema per defecte --"
         }
     },
     "WIZARD": {
@@ -1251,26 +1251,26 @@
         "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the issue {{obj_name}} to {{new_value}}",
         "TASK_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} to {{new_value}}",
         "TASK_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} to {{new_value}}",
-        "TASK_UPDATED_WITH_US": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the US {{us_name}}",
-        "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the US {{us_name}} to {{new_value}}",
-        "WIKI_UPDATED": "{{username}} has updated the wiki page {{obj_name}}",
-        "NEW_COMMENT_US": "{{username}} has commented in the US {{obj_name}}",
-        "NEW_COMMENT_ISSUE": "{{username}} has commented in the issue {{obj_name}}",
-        "NEW_COMMENT_TASK": "{{username}} has commented in the task {{obj_name}}",
-        "NEW_MEMBER": "{{project_name}} has a new member",
-        "US_ADDED_MILESTONE": "{{username}} has added the US {{obj_name}} to {{sprint_name}}",
-        "US_MOVED": "{{username}} has moved the US {{obj_name}}",
-        "US_REMOVED_FROM_MILESTONE": "{{username}} has added the US {{obj_name}} to the backlog",
-        "BLOCKED": "{{username}} has blocked {{obj_name}}",
-        "UNBLOCKED": "{{username}} has unblocked {{obj_name}}",
+        "TASK_UPDATED_WITH_US": "{{username}} ha actualitzat l'atribut  \"{{field_name}}\" de la tasca {{obj_name}} de la història d'usuari {{us_name}}",
+        "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} ha actualitzat l'atribut \"{{field_name}}\" de la tasca {{obj_name}} de la història d'usuari {{us_name}} amb el valor  {{new_value}}",
+        "WIKI_UPDATED": "{{username}} ha actualitzat la pàgina wiki {{obj_name}}",
+        "NEW_COMMENT_US": "{{username}} ha comentat la història d'usuari {{obj_name}}",
+        "NEW_COMMENT_ISSUE": "{{username}} ha comentat la incidència {{obj_name}}",
+        "NEW_COMMENT_TASK": "{{username}} ha comentat la tasca {{obj_name}}",
+        "NEW_MEMBER": "{{project_name}} te un nou membre",
+        "US_ADDED_MILESTONE": "{{username}} ha afegit la història d'usuari {{obj_name}} a {{sprint_name}}",
+        "US_MOVED": "{{username}} ha mogut la història d'usuari {{obj_name}}",
+        "US_REMOVED_FROM_MILESTONE": "{{username}} ha afegit la història d'usuari {{obj_name}} al backlog",
+        "BLOCKED": "{{username}} ha bloquejat {{obj_name}}",
+        "UNBLOCKED": "{{username}} ha desbloquejat {{obj_name}}",
         "NEW_USER": "{{username}} s'ha unit a Taiga"
     },
     "EXTERNAL_APP": {
-        "PAGE_TITLE": "An external app requires authentication",
-        "PAGE_DESCRIPTION": "An external app requires authentication",
+        "PAGE_TITLE": "Una aplicació externa requereix autenticació",
+        "PAGE_DESCRIPTION": "Una aplicació externa requereix autenticació",
         "AUTHORIZATION_REQUEST": "Authorize {{application}} to use your Taiga account?",
-        "LOGIN_WITH_ANOTHER_USER": "Login with another user",
-        "AUTHORIZE_APP": "Authorize app",
+        "LOGIN_WITH_ANOTHER_USER": "Identifica't amb un altre nom d'usuari",
+        "AUTHORIZE_APP": "Autoritza l'aplicació",
         "CANCEL": "Següent"
     }
 }

@@ -16,7 +16,7 @@
         "EDIT": "Modifica",
         "DRAG": "Drag",
         "TAG_LINE": "Il tuo agile, libero e opensource strumento di project management",
-        "TAG_LINE_2": "MOSTRA AMORE PER IL NOSTRO PROGETTO",
+        "TAG_LINE_2": "ADORO IL VOSTRO PROGETTO",
         "BLOCK": "Blocca",
         "UNBLOCK": "Sblocca",
         "BLOCKED": "Bloccato",
@@ -34,9 +34,9 @@
         "RELATED_TASKS": "Compiti correlati",
         "LOGOUT": "Esci",
         "EXTERNAL_USER": "un utente esterno",
-        "GENERIC_ERROR": "Uno dei nostri Digital Champion dice {{error}}.",
-        "IOCAINE_TEXT": "Ti senti un po 'sopraffatto dal compito? Assicurati che gli altri lo sappiano cliccando su Iocaine quando si modifica un compito. E 'possibile diventare immuni a questo (fittizio) veleno mortale consumando piccole quantità nel corso del tempo proprio come è possibile ottenerne una migliore in quello che fai assumendo di tanto in tanto  sfide extra!",
-        "CAPSLOCK_WARNING": "Attento! stai scrivendo con le maiuscolo e questo input è sensibile alle maiuscole",
+        "GENERIC_ERROR": "C'é uno dei nostri Digital Champions che dice {{error}}.",
+        "IOCAINE_TEXT": "Sei stremato? Assicurati che gli altri lo sappiano cliccando su 'aspirina' quando stai lavorando su un compito che ti affatica. Ma non demordere, ricordati: si può migliorare solo se di tanto in tanto si accettano sfide extra!",
+        "CAPSLOCK_WARNING": "Attento! stai scrivendo in maiuscolo e questo input è sensibile alle maiuscole..",
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Questo valore non è valido.",
             "TYPE_EMAIL": "Questo valore dovrebbe corrispondere ad una mail valida",
@@ -245,7 +245,7 @@
     },
     "LOGIN": {
         "PAGE_TITLE": "Accesso - Taiga",
-        "PAGE_DESCRIPTION": "Accedi a Taiga, una piattaforma di gestione dei progetti e un bellissimo strumento semplice che rende il lavoro davvero piacevole alle start-up e a chi sviluppa e progetta con il metodo \"agile\"."
+        "PAGE_DESCRIPTION": "Accedi a Taiga, una piattaforma semplice di gestione dei progetti che rende il lavoro davvero piacevole alle start-up e a chi sviluppa e progetta con il metodo \"agile\"."
     },
     "AUTH": {
         "INVITED_YOU": "ti ha invitato a partecipare al progetto",
@@ -255,30 +255,30 @@
     },
     "LOGIN_COMMON": {
         "HEADER": "Ho già un account Taiga",
-        "PLACEHOLDER_AUTH_NAME": "nome utente o email (sensibile alle maiuscole)",
+        "PLACEHOLDER_AUTH_NAME": "nome utente o email (occhio alle maiuscole)",
         "LINK_FORGOT_PASSWORD": "Password dimenticata?",
         "TITLE_LINK_FORGOT_PASSWORD": "Password dimenticata?",
         "ACTION_ENTER": "Conferma",
         "ACTION_SIGN_IN": "Accedi",
-        "PLACEHOLDER_AUTH_PASSWORD": "Password (sensibile alle maiuscole)"
+        "PLACEHOLDER_AUTH_PASSWORD": "Password (occhio alle maiuscole)"
     },
     "LOGIN_FORM": {
-        "ERROR_AUTH_INCORRECT": "Secondo i nostri Digital Champion, i tuoi nomi utente, email o password sono errati.",
-        "SUCCESS": "I nostri Digital Champion sono entusiasti! Benvenuto in Taiga!"
+        "ERROR_AUTH_INCORRECT": "Secondo i nostri Digital Champions, i tuoi nomi utente, email o password sono errati.",
+        "SUCCESS": "I nostri Digital Champions sono entusiasti! Benvenuto in Taiga!"
     },
     "REGISTER": {
         "PAGE_TITLE": "Registrazione - Taiga",
-        "PAGE_DESCRIPTION": "Crea il tuo account su Taiga, una piattaforma di project management e un bellissimo strumento semplice che rende il lavoro davvero piacevole alle start-up e a chi sviluppa e progetta con il metodo \"agile\"."
+        "PAGE_DESCRIPTION": "Crea il tuo account su Taiga, una piattaforma semplice di project management che rende il lavoro davvero piacevole alle start-up e a chi sviluppa e progetta con il metodo \"agile\"."
     },
     "REGISTER_FORM": {
-        "TITLE": "Registra un nuovo account Taiga (gratis)",
-        "PLACEHOLDER_NAME": "Scegli uno nome utente (sensibile alle maiuscole)",
+        "TITLE": "Registra un nuovo account Taiga (è gratis)",
+        "PLACEHOLDER_NAME": "Scegli uno nome utente (occhio alle maiuscole)",
         "PLACEHOLDER_FULL_NAME": "Inserisci il tuo nome completo",
         "PLACEHOLDER_EMAIL": "La tua email",
         "PLACEHOLDER_PASSWORD": "Imposta una password (case sensitive)",
         "ACTION_SIGN_UP": "Registrati",
         "TITLE_LINK_LOGIN": "Log in",
-        "LINK_LOGIN": "Sei già registrato? Effettua il log in"
+        "LINK_LOGIN": "Sei già registrato? Effettua l'accesso"
     },
     "FORGOT_PASSWORD": {
         "PAGE_TITLE": "Password dimenticata - Taiga",
@@ -291,11 +291,11 @@
         "ACTION_RESET_PASSWORD": "Reimposta la password",
         "LINK_CANCEL": "Fa niente dai, riportami indietro. Penso di ricordarmela.",
         "SUCCESS": "<strong>Controlla la tua posta!</strong><br />Ti abbiamo inviato una email con le istruzioni per reimpostare la password",
-        "ERROR": "Secondo i nostri Digital Champion, non sei ancora registrato."
+        "ERROR": "Secondo i nostri Digital Champions, non sei ancora registrato."
     },
     "CHANGE_PASSWORD": {
         "PAGE_TITLE": "Cambia la tua password - Taiga",
-        "PAGE_DESCRIPTION": "Imposta una nuova password per il tuo account Taiga... hey! ti consigliamo di mangiare cibo ricco di ferro, è un bene per la tua memoria :P",
+        "PAGE_DESCRIPTION": "Imposta una nuova password per il tuo account Taiga... hey! ti consigliamo di mangiare cibo ricco di ferro, fa bene all'innovazione :P",
         "SECTION_NAME": "Cambia password",
         "FIELD_CURRENT_PASSWORD": "Password attuale",
         "PLACEHOLDER_CURRENT_PASSWORD": "La tua password corrente (o lascia vuoto se non hai ancora una password)",
@@ -307,28 +307,28 @@
     },
     "CHANGE_PASSWORD_RECOVERY_FORM": {
         "TITLE": "Crea una nuova password su Taiga",
-        "SUBTITLE": "Ehi, e se mangiassi qualcosa ricco di ferro? fa bene al cervello :p",
+        "SUBTITLE": "Ehi, e se mangiassi qualcosa ricco di ferro? fa bene all'innovazione :p",
         "PLACEHOLDER_RECOVER_PASSWORD_TOKEN": "Reimposta la password",
         "LINK_NEED_TOKEN": "Serve qualcuno?",
         "TITLE_LINK_NEED_TOKEN": "Hai bisogno di un token per recuperare la password perchè l'hai dimenticata?",
         "PLACEHOLDER_NEW_PASSWORD": "Nuova password",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Digita una nuova password",
         "ACTION_RESET_PASSWORD": "Reimposta la password",
-        "SUCCESS": "I nostri Digital Champion hanno salvato la tua nuova password.<br /> Pova a fare <strong>login</strong> con quella."
+        "SUCCESS": "I nostri Digital Champions hanno salvato la tua nuova password. Che bravi!<br /> Pova a fare <strong>login</strong> con questa."
     },
     "INVITATION": {
         "PAGE_TITLE": "Invito ad accedere - Taiga",
-        "PAGE_DESCRIPTION": "Accetta l'invito a partecipare ad un progetto in Taiga, una piattaforma di project management e un bellissimo strumento semplice che rende il lavoro davvero piacevole a start-up e a chi sviluppa e progetta con il metodo \"agile\"."
+        "PAGE_DESCRIPTION": "Accetta l'invito a partecipare ad un progetto in Taiga, una piattaforma semplice di project management che rende il lavoro davvero piacevole a start-up e a chi sviluppa e progetta con il metodo \"agile\"."
     },
     "INVITATION_LOGIN_FORM": {
-        "NOT_FOUND": "<strong>Ooops, abbiamo un problema</strong>I nostri Digital Champion non riescono a trovare il tuo invito",
+        "NOT_FOUND": "<strong>Ooops, abbiamo un problema</strong>I nostri Digital Champions non riescono a trovare il tuo invito",
         "SUCCESS": "Sei ora un membro di questo progetto. Benvenuto in {{project_name}}",
-        "ERROR": "Secondo i nostri Digital Champion, non sei ancora regisrtrato o hai inserito una password non valida."
+        "ERROR": "Secondo i nostri Digital Champions, non sei ancora regisrtrato o hai inserito una password non valida."
     },
     "HOME": {
         "PAGE_TITLE": "Home - Taiga",
-        "PAGE_DESCRIPTION": "La home di Taiga con i tuoi principali progetti e tutti i tuoi user story, compiti e problemi assegnati e osservati. ",
-        "EMPTY_WATCHING": "<strong>Segui</strong> i progetti, le user Story, i compiti e i problemi... e quello che vuoi sapere a proposito di questi :)",
+        "PAGE_DESCRIPTION": "La home di Taiga con i tuoi principali progetti e tutti ile storie utente, compiti e problemi assegnati e osservati. ",
+        "EMPTY_WATCHING": "<strong>Segui</strong> i progetti, le storie utente, i compiti e i problemi... per rimanere aggiornato sulle loro attività :)",
         "EMPTY_PROJECT_LIST": "Per ora non hai nessun progetto",
         "WORKING_ON_SECTION": "Sta lavorando su",
         "WATCHING_SECTION": "Osservando"
@@ -336,12 +336,12 @@
     "PROJECTS": {
         "PAGE_TITLE": "I miei progetti - Taiga",
         "PAGE_DESCRIPTION": "Una lista di tutti i tuoi progetti, la puoi riordinare o crearne una nuova.",
-        "MY_PROJECTS": "Miei progetti"
+        "MY_PROJECTS": "I miei progetti"
     },
     "ATTACHMENT": {
         "SECTION_NAME": "allegati",
         "TITLE": "{{ fileName }} caricato il {{ date }}",
-        "DESCRIPTION": "Inserisci una descrizione breve",
+        "DESCRIPTION": "Inserisci una breve descrizione",
         "DEPRECATED": "(deprecato)",
         "DEPRECATED_FILE": "Deprecato?",
         "ADD": "Aggiungi un nuovo allegato. {{maxFileSizeMsg}}",
@@ -384,14 +384,14 @@
             "SUBTITLE": "Esporta il tuo progetto e salva un backup o creane uno nuovo basato su questo",
             "EXPORT_BUTTON": "Esporta",
             "EXPORT_BUTTON_TITLE": "Esporta il tuo progetto",
-            "LOADING_TITLE": "Si sta preparando il file di dump",
+            "LOADING_TITLE": "Stiamo preparando il file di dump",
             "DUMP_READY": "Il file di dump é pronto!",
             "LOADING_MESSAGE": "Non chiudere questa pagina.",
             "ASYNC_MESSAGE": "Ti invieremo una mail quando sarà pronto",
             "SYNC_MESSAGE": "Se il download non parte automaticamente clicca <a href='{{url}}' titolo del download='Download the dump file'>here</a>.",
             "ERROR": "I nostri Digital Champion hanno qualche problema a generare il tuo dump. Prova di nuova.",
-            "ERROR_BUSY": "Scusaci, i nostri Digital Champion sono occupati al momento. Riprova di nuovo in qualche minuto.",
-            "ERROR_MESSAGE": "I nostri Digital Champion hanno qualche problema a generare il tuo dump: {{message}}"
+            "ERROR_BUSY": "Scusali, i nostri Digital Champions sono occupati. Riprova di nuovo in qualche minuto.",
+            "ERROR_MESSAGE": "Accidenti, i nostri Digital Champions hanno qualche problema a generare il tuo dump: {{message}}"
         },
         "MODULES": {
             "TITLE": "Moduli",
@@ -431,13 +431,13 @@
         "REPORTS": {
             "TITLE": "Rapporti",
             "SUBTITLE": "Esporta il tuo progetto dati in formato CSV a crea il tuo report",
-            "DESCRIPTION": "Scarica il file CSF o copia l'url ed usa il tuo editor preferito o spreadsheet per realizzare i tuoi report. Sarai in grado di visualizzare ed analizzare i tuoi dati facilmente.",
+            "DESCRIPTION": "Scarica il file CSV o copia l'url ed usa il tuo editor preferito o spreadsheet per realizzare i tuoi report. Sarai in grado di visualizzare ed analizzare i tuoi dati molto più facilmente vedrai. ",
             "HELP": "Come utilizzarlo all'interno di uno spreadsheet?",
             "REGENERATE_TITLE": "Cambia URL",
             "REGENERATE_SUBTITLE": "Stai per modificare l'url di accesso al CSV. il precedente url verrá disabilitato. Sei sicuro?"
         },
         "CSV": {
-            "SECTION_TITLE_US": "Report delle storie utenti",
+            "SECTION_TITLE_US": "Report delle storie utente",
             "SECTION_TITLE_TASK": "Analisi dei compiti",
             "SECTION_TITLE_ISSUE": "Report criticitá",
             "DOWNLOAD": "Scarica CSV",
@@ -480,13 +480,13 @@
             "TITLE": "Severitá",
             "SUBTITLE": "Specifica le severitá della criticitá",
             "ISSUE_TITLE": "Severitá della criticitá",
-            "ACTION_ADD": "Aggiungi una nuova severitá"
+            "ACTION_ADD": "Aggiungi una nuova criticità."
         },
         "PROJECT_VALUES_STATUS": {
             "TITLE": "Stato",
             "SUBTITLE": "Specifica lo stato delle storie utente, i compiti e i problemi saranno affrontati",
             "US_TITLE": "Stato delle storie utente",
-            "TASK_TITLE": "Stato dei tasks",
+            "TASK_TITLE": "Stato dei compiti",
             "ISSUE_TITLE": "Stato dei problemi"
         },
         "PROJECT_VALUES_TYPES": {
@@ -498,7 +498,7 @@
         "ROLES": {
             "PAGE_TITLE": "Ruoli - {{projectName}}",
             "WARNING_NO_ROLE": "Attento, nessun ruolo, all'interno del tuo progetto, potrà stimare i punti valore per le storie utente",
-            "HELP_ROLE_ENABLED": "Una volta abilitato, chi é associato a questo ruolo sará in grado di stimare il valore dei punti per le user stories",
+            "HELP_ROLE_ENABLED": "Una volta abilitato, chi é associato a questo ruolo sará in grado di stimare il valore dei punti per le storie utente",
             "COUNT_MEMBERS": "{{ role.members_count }} membri con questo ruolo",
             "TITLE_DELETE_ROLE": "Elimina ruolo",
             "REPLACEMENT_ROLE": "Tutti gli utenti con questo ruolo saranno spostati a ",
@@ -645,12 +645,12 @@
             "FAVORITES_TAB": "Preferiti",
             "CONTACTS_EMPTY": "{{username}} non ha ancora nessun contatto",
             "CURRENT_USER_CONTACTS_EMPTY": "Non hai ancora contatti",
-            "CURRENT_USER_CONTACTS_EMPTY_EXPLAIN": "Le persone con cui lavori in Taiga saranno automaticamente tuoi contatti",
+            "CURRENT_USER_CONTACTS_EMPTY_EXPLAIN": "Le persone con cui lavori in Taiga saranno automaticamente tra tuoi contatti",
             "PROJECTS_EMPTY": "{{username}} non ha ancora nessun progetto"
         },
         "PROFILE_SIDEBAR": {
             "TITLE": "Il tuo profilo",
-            "DESCRIPTION": "Le persone possono vedere tutto quello che fai e su cosa stai lavorando. Aggiungi una bella bio per dare una versione  migliore delle tue informazioni.",
+            "DESCRIPTION": "Le persone possono vedere tutto quello che fai e su cosa stai lavorando. Aggiungi una bella bio per migliorare la descrizione delle tue informazioni.",
             "ADD_INFO": "Modifica il tuo profilo"
         }
     },
@@ -658,7 +658,7 @@
         "PAGE_TITLE": "TEAM - {{projectName}}",
         "WELCOME": "Benvenuto",
         "SECTION_PROJECTS": "Progetti",
-        "HELP": "Riordina i tuoi progetti per avere in alto i più usati.<br/> I primi 10 progetti compariranno nella lista dei progetti della barra di navigazione in alto",
+        "HELP": "Riordina i tuoi progetti per avere in alto i più usati.<br/> I primi 10 progetti compariranno nella lista dei progetti della barra di navigazione, su in alto",
         "PRIVATE": "Progetto privato",
         "STATS": {
             "PROJECT": "progetto<br/> punti",
@@ -711,14 +711,14 @@
         "IMPORT": {
             "TITLE": "Importazione Progetto",
             "UPLOADING_FILE": "Carico il file di dump",
-            "DESCRIPTION": "Questo processo puó durare abbastanza, nel frattempo lasciare questa finestra aperta.",
-            "ASYNC_IN_PROGRESS_TITLE": "I nostri Digital Champion stanno importando il tuo progetto",
+            "DESCRIPTION": "Questo processo puó durare un po', nel frattempo lasciare questa finestra aperta.",
+            "ASYNC_IN_PROGRESS_TITLE": "I nostri Digital Champions stanno lavorando per importare il tuo progetto!",
             "ASYNC_IN_PROGRESS_MESSAGE": "Questo processo puó durare minuti. <br/> Verrá inviata una mail al suo completamento",
             "UPLOAD_IN_PROGRESS_MESSAGE": "Caricati {{uploadedSize}} di {{totalSize}}",
-            "ERROR": "I nostri Digital Champion hanno qualche problema ad importare il tuo dump. Prova di nuovo.",
-            "ERROR_TOO_MANY_REQUEST": "Scusaci, i nostri Digital Champion sono occupati al momento. Riprova di nuovo in qualche minuto.",
-            "ERROR_MESSAGE": "I nostri Digital Champion hanno qualche problema ad importare il dump dei tuoi dati: {{error_message}}",
-            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) è troppo pesante per i nostri Digital Champion, prova con una dimensione minore di ({{maxFileSize}})",
+            "ERROR": "Mannaggia, i Digital Champions hanno qualche problema ad importare il dump. Prova di nuovo.",
+            "ERROR_TOO_MANY_REQUEST": "Scusaci, i nostri Digital Champions sono di nuovo occupati. Riprova di nuovo in qualche minuto.",
+            "ERROR_MESSAGE": "I nostri Digital Champions hanno qualche problema ad importare il dump dei tuoi dati: {{error_message}}",
+            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) è troppo pesante per i nostri Digital Champions; falli contenti, prova con una dimensione minore di ({{maxFileSize}})",
             "SYNC_SUCCESS": "Il tuo progetto è stato importato con successo"
         }
     },
@@ -747,8 +747,8 @@
             "TITLE": "Aggiungi problema"
         },
         "FEEDBACK": {
-            "TITLE": "Dicci qualcosa...",
-            "COMMENT": "...un bug, dei suggerimenti, qualcosa di fantastico... o anche il tuo peggior incubo con Taiga",
+            "TITLE": "Raccontaci qualcosa...",
+            "COMMENT": "...un bug, dei suggerimenti, qualcosa di fico... o anche il tuo peggior incubo con Taiga",
             "ACTION_SEND": "Invia feedback"
         },
         "SEARCH": {
@@ -758,7 +758,7 @@
         "ADD_EDIT_SPRINT": {
             "TITLE": "Nuovo sprint",
             "PLACEHOLDER_SPRINT_NAME": "il nome dello sprint",
-            "PLACEHOLDER_SPRINT_START": "Start stimato",
+            "PLACEHOLDER_SPRINT_START": "Inizio stimato",
             "PLACEHOLDER_SPRINT_END": "Fine stimata",
             "ACTION_DELETE_SPRINT": "Sei sicuro di voler cancellare questo sprint?",
             "TITLE_ACTION_DELETE_SPRINT": "Elimina sprint",
@@ -773,8 +773,8 @@
             "ACTION_EDIT": "Modifica compito"
         },
         "CREATE_EDIT_US": {
-            "TITLE": "Nuova US",
-            "PLACEHOLDER_DESCRIPTION": "Aggiungere un testo descrittivo che aiuti gli altri nel comprendere questo US",
+            "TITLE": "Nuova storia utente",
+            "PLACEHOLDER_DESCRIPTION": "Aggiungere un testo descrittivo che aiuti gli altri nel comprendere questa storia utente",
             "NEW_US": "Nuova storia utente",
             "EDIT_US": "Modifica la storia utente"
         },
@@ -789,7 +789,7 @@
     "US": {
         "PAGE_TITLE": "{{userStorySubject}} - User Story {{userStoryRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Status: {{userStoryStatus }}. Completata per il {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} di {{userStoryTotalTasks}} tasks closed). Punti: {{userStoryPoints}}. Descrizione: {{userStoryDescription}}",
-        "SECTION_NAME": "Dettagli dell'User Story",
+        "SECTION_NAME": "Dettagli della storia utente",
         "LINK_TASKBOARD": "Pannello dei compiti",
         "TITLE_LINK_TASKBOARD": "Vai al pannello dei compiti",
         "TOTAL_POINTS": "totale",
@@ -830,7 +830,7 @@
         "TITLE": "Attività",
         "REMOVED": "rimosso",
         "ADDED": "aggiunto",
-        "US_POINTS": "punti US ({{name}})",
+        "US_POINTS": "punti storia utente ({{name}})",
         "NEW_ATTACHMENT": "nuovo allegato",
         "DELETED_ATTACHMENT": "allegato eliminato",
         "UPDATED_ATTACHMENT": "Aggiornato l'allegato {{filename}}",
@@ -852,7 +852,7 @@
             "FINISH_DATE": "Data di fine",
             "TYPE": "tipo",
             "PRIORITY": "priorità",
-            "SEVERITY": "gravità",
+            "SEVERITY": "criticità",
             "ASSIGNED_TO": "assegnato a",
             "WATCHERS": "Osservatori",
             "MILESTONE": "sprint",
@@ -863,7 +863,7 @@
             "POINTS": "punti",
             "CLIENT_REQUIREMENT": "Requisito del client",
             "TEAM_REQUIREMENT": "Requisiti del team",
-            "IS_IOCAINE": "è iocaina",
+            "IS_IOCAINE": "è un'aspirina",
             "TAGS": "tag",
             "ATTACHMENTS": "allegati",
             "IS_DEPRECATED": "è deprecato",
@@ -901,7 +901,7 @@
             "OPTIMAL": "I punti in sospeso ottimali per lo sprint \"{{sprintName}}\" dovrebbero essere {{value}}",
             "REAL": "I punti in sospeso definitivi per lo sprint \"{{sprintName}}\" sono {{value}}",
             "INCREMENT_TEAM": "I punti incrementati dai requisiti del team per lo sprint  \"{{sprintName}}\" sono {{value}}",
-            "INCREMENT_CLIENT": "I punti incrementati dai requisiti del client per lo sprint \"{{sprintName}}\" sono {{value}}"
+            "INCREMENT_CLIENT": "I punti incrementati dai requisiti del cliente per lo sprint \"{{sprintName}}\" sono {{value}}"
         },
         "TAGS": {
             "TOGGLE": "Commuta visibilità tag",
@@ -917,7 +917,7 @@
             "COMPLETED_POINTS": "<br /> punti completati",
             "OPEN_TASKS": "<br /> compiti aperti",
             "CLOSED_TASKS": "<br /> compiti chiusi",
-            "IOCAINE_DOSES": "<br /> dosi di iocaina",
+            "IOCAINE_DOSES": "<br /> pasticche di aspirina",
             "SHOW_STATISTICS_TITLE": "Mostra statistiche",
             "TOGGLE_BAKLOG_GRAPH": "Mostra/nascondi i grafici burndown"
         },
@@ -949,7 +949,7 @@
         }
     },
     "ERROR": {
-        "TEXT1": "E' successo qualcosa, ma i nostri Digital Champion ci stanno lavorando",
+        "TEXT1": "E' successo qualcosa, ma i nostri Digital Champions ci stanno lavorando sodo!",
         "NOT_FOUND": "Non trovato",
         "NOT_FOUND_TEXT": "Errore 404. La pagina che stai cercando non esiste più. Forse puoi tornare alla home e vedere se è possibile trovare quello che stai cercando.",
         "PERMISSION_DENIED": "Permesso negato",
@@ -989,7 +989,7 @@
         "TITLE_LINK_TASKBOARD": "Vai al pannello dei compiti",
         "PLACEHOLDER_SUBJECT": "Inserisci il soggetto del nuovo compito",
         "TITLE_SELECT_STATUS": "Nome dello status",
-        "OWNER_US": "Questa task appartiene a",
+        "OWNER_US": "Questo compito appartiene a",
         "TITLE_LINK_GO_OWNER": "Vai alla storia utente",
         "ORIGIN_US": "Questo compito è stato creato da",
         "TITLE_LINK_GO_ORIGIN": "Vai alla storia utente",
@@ -1001,33 +1001,33 @@
         "FIELDS": {
             "MILESTONE": "Sprint",
             "USER_STORY": "Storia utente",
-            "IS_IOCAINE": "E' iocaina"
+            "IS_IOCAINE": "E' un'aspirina"
         },
-        "ACTION_IOCAINE": "Iocaina",
-        "TITLE_ACTION_IOCAINE": "Ti senti un po 'sopraffatto dal compito? Assicurati che gli altri lo sappiano cliccando su Iocaine quando si modifica un compito. E 'possibile diventare immuni a questo (fittizio) veleno mortale consumando piccole quantità nel corso del tempo proprio come è possibile ottenerne una migliore in quello che fai assumendo di tanto in tanto  sfide extra!"
+        "ACTION_IOCAINE": "aspirina",
+        "TITLE_ACTION_IOCAINE": "Sei stremato? Assicurati che gli altri lo sappiano cliccando su 'aspirina' quando stai lavorando su compito che ti affatica. Ma non demordere, ricordati: si può migliorare solo se di tanto in tanto si accettano sfide extra!"
     },
     "NOTIFICATION": {
-        "OK": "Va tutto bene",
+        "OK": "E' tutto ok!",
         "WARNING": "Oops, é successo qualcosa...",
-        "WARNING_TEXT": "I nostri Digital Champion sono tristi, i tuoi cambiamenti non sono stati salvati!",
-        "SAVED": "I nostri Digital Champion hanno salvato tutte le modifiche!",
+        "WARNING_TEXT": "Accidenti! I nostri Digital Champions sono tristi..le modifiche non sono state salvate",
+        "SAVED": "I nostri Digital Champions hanno salvato tutte le modifiche! wow!!",
         "CLOSE": "Chiudi notifica",
         "MAIL": "Notifica tramite mail",
         "ASK_DELETE": "Sei sicuro di voler cancellare?"
     },
     "CANCEL_ACCOUNT": {
         "TITLE": "Elimina il tuo account",
-        "SUBTITLE": "Ci spiace se stai lasciando Taiga, speriamo che la tua presenza sia stata piacevole :)",
+        "SUBTITLE": "Ci spiace se stai lasciando Taiga, speriamo che il tuo soggiorno sia stato piacevole :)",
         "PLACEHOLDER_INPUT_TOKEN": "cancella il token dell'account",
         "ACTION_LEAVING": "Si, sto abbandonando!",
-        "SUCCESS": "I nostri Digital Champion hanno eliminato il tuo account"
+        "SUCCESS": "I nostri Digital Champions hanno eliminato il tuo account, e ora sono tristi"
     },
     "CHANGE_EMAIL_FORM": {
         "TITLE": "Cambia la tua email",
         "SUBTITLE": "Un'altro click e la tua mail verrá aggiornata!",
         "PLACEHOLDER_INPUT_TOKEN": "Modifica il token della mail",
         "ACTION_CHANGE_EMAIL": "Cambia email",
-        "SUCCESS": "I nostri Digital Champion hanno aggiornato la tua mail"
+        "SUCCESS": "I nostri Digital Champions hanno aggiornato la tua mail"
     },
     "ISSUES": {
         "PAGE_TITLE": "Criticitá - {{projectName}}",
@@ -1135,8 +1135,8 @@
         "PLACEHOLDER_INPUT_SEARCH": "Cerca con il nome completo",
         "COLUMN_MR_WOLF": "Mr. Wolf",
         "EXPLANATION_COLUMN_MR_WOLF": "Problema chiuso",
-        "COLUMN_IOCAINE": "iocainomane",
-        "EXPLANATION_COLUMN_IOCAINE": "presa una dosa di iocaina",
+        "COLUMN_IOCAINE": "aspirinomane",
+        "EXPLANATION_COLUMN_IOCAINE": "presa una pasticca di aspirina",
         "COLUMN_CERVANTES": "Cervantes",
         "EXPLANATION_COLUMN_CERVANTES": "Modificata pagina wiki",
         "COLUMN_BUG_HUNTER": "Cacciatore di bug",
@@ -1187,7 +1187,7 @@
             "USERNAME": "Username",
             "EMAIL": "Email",
             "FULL_NAME": "Nome completo",
-            "PLACEHOLDER_FULL_NAME": "Scegli il tuo nome completo (es. Alessio Biancalana)",
+            "PLACEHOLDER_FULL_NAME": "Inserisci il tuo nome completo (es. Alessio Biancalana)",
             "BIO": "Biografia (massimo 210 caratteri)",
             "PLACEHOLDER_BIO": "Raccontaci qualcosa di te",
             "LANGUAGE": "Lingua",

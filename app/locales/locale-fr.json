@@ -953,7 +953,7 @@
         "NOT_FOUND": "Non trouvé",
         "NOT_FOUND_TEXT": "Erreur 404. La page que vous cherchez n'existe plus. Peut-être pouvez-vous retourner à la page d'accueil de Taiga et voir si vous trouvez ce que vous cherchez.",
         "PERMISSION_DENIED": "Permission refusée",
-        "PERMISSION_DENIED_TEXT": "You don't have permission to access to this page.",
+        "PERMISSION_DENIED_TEXT": "Vous n'avez pas la permission d'accéder à cette page.",
         "VERSION_ERROR": "Quelqu'un a changé ça auparavant dans Taiga et nos Oompa Loompas ne peuvent appliquer vos modifications. Veuillez recharger la page et appliquer vos modifications de nouveaux (elles seront perdues)."
     },
     "TASKBOARD": {
@@ -1270,7 +1270,7 @@
         "PAGE_DESCRIPTION": "An external app requires authentication",
         "AUTHORIZATION_REQUEST": "Authorize {{application}} to use your Taiga account?",
         "LOGIN_WITH_ANOTHER_USER": "Login with another user",
-        "AUTHORIZE_APP": "Authorize app",
+        "AUTHORIZE_APP": "Autoriser l'application",
         "CANCEL": "Annuler"
     }
 }

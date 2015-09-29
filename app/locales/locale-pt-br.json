@@ -457,7 +457,7 @@
             "ISSUE_ADD": "Adicionar um campo personalizado no caso",
             "FIELD_TYPE_TEXT": "Texto",
             "FIELD_TYPE_MULTI": "Multi-linha",
-            "FIELD_TYPE_DATE": "Date"
+            "FIELD_TYPE_DATE": "Data"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - Valores do projeto - {{projectName}}",
@@ -1266,11 +1266,11 @@
         "NEW_USER": "{{username}} ingressou no taiga"
     },
     "EXTERNAL_APP": {
-        "PAGE_TITLE": "An external app requires authentication",
-        "PAGE_DESCRIPTION": "An external app requires authentication",
-        "AUTHORIZATION_REQUEST": "Authorize {{application}} to use your Taiga account?",
-        "LOGIN_WITH_ANOTHER_USER": "Login with another user",
-        "AUTHORIZE_APP": "Authorize app",
+        "PAGE_TITLE": "Um app externo requer autenticação",
+        "PAGE_DESCRIPTION": "Um app externo requer autenticação",
+        "AUTHORIZATION_REQUEST": "Autorizar {{application}} a usar sua conta Taiga?",
+        "LOGIN_WITH_ANOTHER_USER": "Login com um outro usuário",
+        "AUTHORIZE_APP": "Autorizar app",
         "CANCEL": "Cancelar"
     }
 }
