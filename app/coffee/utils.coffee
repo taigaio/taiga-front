@@ -185,6 +185,13 @@ defineImmutableProperty = (obj, name, fn) =>
             return fn_result
     }
 
+_.mixin
+    removeKeys: (obj, keys) ->
+        _.chain([keys]).flatten().reduce(
+            (obj, key) ->
+                delete obj[key]; obj
+            , obj).value()
+
 taiga = @.taiga
 taiga.nl2br = nl2br
 taiga.bindMethods = bindMethods
