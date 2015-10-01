@@ -669,6 +669,7 @@ modules = [
     # Vendor modules
     "ngRoute",
     "ngAnimate",
+    "ngAria",
     "pascalprecht.translate",
     "infinite-scroll",
     "tgRepeat"
