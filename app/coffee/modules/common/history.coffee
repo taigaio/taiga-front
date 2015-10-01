@@ -26,6 +26,14 @@ debounce = @.taiga.debounce
 
 module = angular.module("taigaCommon")
 
+IGNORED_FIELDS = {
+    "userstories.userstory": [
+        "watchers", "kanban_order", "backlog_order", "sprint_order", "finish_date"
+    ]
+    "tasks.task": [
+        "watchers", "us_order", "taskboard_order"
+    ]
+}
 
 #############################################################################
 ## History Directive (Main)
@@ -254,6 +262,10 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $c
                 return templateChangeGeneric({name:name, from:from, to: to})
 
         renderChangeEntries = (change) ->
+            changeModel = change.key.split(":")[0]
+            if IGNORED_FIELDS[changeModel]?
+                change.values_diff = _.removeKeys(change.values_diff, IGNORED_FIELDS[changeModel])
+
             return _.map(change.values_diff, (value, field) -> renderChangeEntry(field, value))
 
         renderChangesHelperText = (change) ->
