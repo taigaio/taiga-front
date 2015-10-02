@@ -233,8 +233,6 @@ EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $
             onError = ->
                 $confirm.notify("error")
 
-            console.log $el.find('.save-container')
-
             currentLoading = $loading()
                 .removeClasses("icon-floppy")
                 .target($el.find('.icon-floppy'))
