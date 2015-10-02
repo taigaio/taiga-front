@@ -46,8 +46,6 @@ class PageMixin
                                          .filter((x) -> _.contains(computableRoles, x.id))
                                          .value()
     loadUsersAndRoles: ->
-        console.log @scope.projectId
-
         promise = @q.all([
             @rs.projects.usersList(@scope.projectId),
             @rs.projects.rolesList(@scope.projectId)
