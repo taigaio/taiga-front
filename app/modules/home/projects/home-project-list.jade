@@ -14,7 +14,7 @@ a.see-more-projects-btn.button-gray(href="#",
                                     title="{{'PROJECT.NAVIGATION.SEE_MORE_PROJECTS' | translate}}",
                                     translate="PROJECT.NAVIGATION.SEE_MORE_PROJECTS")
 
-section.projects-empty(ng-hide="vm.projects.size")
+section.projects-empty
     include ../../../svg/empty-project.svg
     p(translate="HOME.EMPTY_PROJECT_LIST")
     a.create-project-button.button-green(href="#", ng-click="vm.newProject()",
