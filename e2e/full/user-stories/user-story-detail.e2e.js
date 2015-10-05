@@ -8,11 +8,17 @@ chai.use(chaiAsPromised);
 var expect = chai.expect;
 
 describe('User story detail', function(){
-    let usUrl = browser.params.glob.host + 'project/project-3/us/81';
+    let usUrl = '';
 
     before(async function(){
-        browser.get(usUrl);
-        await utils.common.waitLoader();
+        utils.nav
+            .init()
+            .project(0)
+            .backlog()
+            .us(0)
+            .go();
+
+        usUrl = await browser.getCurrentUrl();
     });
 
     it('screenshot', async function() {

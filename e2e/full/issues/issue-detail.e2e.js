@@ -7,11 +7,17 @@ chai.use(chaiAsPromised);
 var expect = chai.expect;
 
 describe('Issue detail', async function(){
-    let issueUrl = browser.params.glob.host + 'project/project-3/issue/92';
+    let issueUrl = '';
 
     before(async function(){
-        browser.get(issueUrl);
-        await utils.common.waitLoader();
+        utils.nav
+            .init()
+            .project(0)
+            .issues()
+            .issue(0)
+            .go();
+
+        issueUrl = await browser.getCurrentUrl();
     });
 
     it('screenshot', async function() {

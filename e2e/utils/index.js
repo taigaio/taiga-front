@@ -3,3 +3,4 @@ module.exports.notifications = require("./notifications");
 module.exports.lightbox = require("./lightbox");
 module.exports.popover = require("./popover");
 module.exports.detail = require("./detail");
+module.exports.nav = require("./nav");
