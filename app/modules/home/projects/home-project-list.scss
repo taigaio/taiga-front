@@ -63,6 +63,7 @@
     }
     p {
         @extend %small;
+        @extend %light;
     }
     .create-project-button {
         display: block;

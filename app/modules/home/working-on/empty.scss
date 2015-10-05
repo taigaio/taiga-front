@@ -1,0 +1,42 @@
+.working-on-empty,
+.watching-empty {
+    margin-bottom: 4rem;
+    p {
+        @extend %light;
+        margin: 1rem 0 0;
+    }
+}
+
+.empty-ticket {
+    display: flex;
+    &:not(:last-child) {
+        border-bottom: 1px solid $whitish;
+        padding: 1rem 0;
+    }
+    &:last-child {
+        padding: 1rem 0 0;
+    }
+    .avatar {
+        background: darken($whitish, 5%);
+        flex-basis: 48px;
+        height: 48px;
+        margin-right: 1rem;
+        width: 48px;
+    }
+
+    .data {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .line {
+        background: $whitish;
+        height: 1rem;
+        margin-bottom: 1rem;
+        width: 40vw;
+        &:last-child {
+            margin: 0;
+            width: 20vw;
+        }
+    }
+}
