@@ -1,13 +1,27 @@
 section.sprints
     header
         h1(translate="BACKLOG.SPRINTS.TITLE")
-        div.summary
-            div.total-sprints
-                span.number(ng-bind="totalMilestones") --
-                span.description(translate="BACKLOG.SPRINTS.NUMBER_SPRINTS")
-            a.button-green.add-sprint(href="", title="{{ 'BACKLOG.SPRINTS.TITLE_ACTION_NEW_SPRINT' | translate }}",
-                                      ng-click="ctrl.addNewSprint()", tg-check-permission="add_milestone")
-                span.text(translate="BACKLOG.SPRINTS.ACTION_NEW_SPRINT")
+        //-
+            div.summary
+                div.total-sprints
+                    span.number(ng-bind="totalMilestones") --
+                    a.button-green.add-sprint(href="", title="{{ 'BACKLOG.SPRINTS.TITLE_ACTION_NEW_SPRINT' | translate }}",
+                    span.description(translate="BACKLOG.SPRINTS.NUMBER_SPRINTS")
+                                          ng-click="ctrl.addNewSprint()", tg-check-permission="add_milestone")
+                    span.text(translate="BACKLOG.SPRINTS.ACTION_NEW_SPRINT")
+
+    div.sprints-empty(ng-if="!totalMilestones")
+        img(
+            src="/images/sprint-empty.png"
+            alt="{{'BACKLOG.SPRINTS.EMPTY' | translate}}"
+        )
+        p.title(translate="BACKLOG.SPRINTS.EMPTY")
+        a(
+            href=""
+            ng-click="ctrl.addNewSprint()"
+            title="{{'BACKLOG.SPRINTS.TITLE_ACTION_NEW_SPRINT' | translate}}"
+            translate="BACKLOG.SPRINTS.TEXT_ACTION_NEW_SPRINT"
+        )
 
     div.sprint.sprint-open(ng-repeat="sprint in openSprints track by sprint.id",
                            tg-backlog-sprint="sprint",

@@ -231,3 +231,20 @@
         background: $gray-light;
     }
 }
+
+.sprints-empty {
+    @extend %light;
+    text-align: center;
+    img {
+        margin: 1rem 0;
+        width: 60%;
+    }
+    .title {
+        @extend %large;
+        margin-bottom: .5rem;
+        text-transform: uppercase;
+    }
+    a {
+        color: $primary;
+    }
+}

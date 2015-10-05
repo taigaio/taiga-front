@@ -182,6 +182,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         return @rs.sprints.list(@scope.projectId, params).then (result) =>
             sprints = result.milestones
 
+            @scope.totalMilestones = sprints
             @scope.totalClosedMilestones = result.closed
             @scope.totalOpenMilestones = result.open
             @scope.totalMilestones = @scope.totalOpenMilestones + @scope.totalClosedMilestones
