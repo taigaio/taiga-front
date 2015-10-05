@@ -1,14 +1,19 @@
 section.sprints
-    header
-        h1(translate="BACKLOG.SPRINTS.TITLE")
-        //-
-            div.summary
-                div.total-sprints
-                    span.number(ng-bind="totalMilestones") --
-                    a.button-green.add-sprint(href="", title="{{ 'BACKLOG.SPRINTS.TITLE_ACTION_NEW_SPRINT' | translate }}",
-                    span.description(translate="BACKLOG.SPRINTS.NUMBER_SPRINTS")
-                                          ng-click="ctrl.addNewSprint()", tg-check-permission="add_milestone")
-                    span.text(translate="BACKLOG.SPRINTS.ACTION_NEW_SPRINT")
+    header.sprint-header
+        h1
+            span.number(
+                ng-bind="totalMilestones"
+                ng-if="totalMilestones"
+            )
+            span(translate="BACKLOG.SPRINTS.TITLE")
+        a.add-sprint(
+            href="" 
+            title="{{ 'BACKLOG.SPRINTS.TITLE_ACTION_NEW_SPRINT' | translate}}"
+            ng-click="ctrl.addNewSprint()"
+            ng-if="totalMilestones"
+            tg-check-permission="add_milestone"
+        )
+            include ../../../svg/add.svg
 
     div.sprints-empty(ng-if="!totalMilestones")
         img(
