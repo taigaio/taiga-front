@@ -4,16 +4,19 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 1rem;
-    padding: .5rem;
-    .trans-button {
-        display: inline-block;
-        margin-right: 1rem;
-        padding: .3rem 0;
-        &.move-to-current-sprint {
-            display: none;
-        }
-        span {
-            vertical-align: middle;
+    .backlog-table-options {
+        .trans-button {
+            @extend %trans-button;
+            color: $blackish;
+            display: inline-block;
+            padding: .4rem 1.5rem;
+            &:hover {
+                background: $gray-light;
+                color: $whitish;
+            }
+            &.move-to-current-sprint {
+                display: none;
+            }
         }
     }
     .button-bulk {
