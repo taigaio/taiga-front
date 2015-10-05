@@ -4,19 +4,23 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 1rem;
-    .backlog-table-options {
-        .trans-button {
-            @extend %trans-button;
-            color: $blackish;
-            display: inline-block;
-            padding: .4rem 1.5rem;
+    .trans-button {
+        @extend %trans-button;
+        color: $blackish;
+        display: inline-block;
+        padding: .4rem 1.5rem;
+        &.active,
+        &:hover {
+            background: $gray;
+            color: $whitish;
+        }
+        &.active {
             &:hover {
-                background: $gray-light;
-                color: $whitish;
+                background: lighten($gray, 30%);
             }
-            &.move-to-current-sprint {
-                display: none;
-            }
+        }
+        &.move-to-current-sprint {
+            display: none;
         }
     }
     .button-bulk {

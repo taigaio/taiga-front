@@ -10,11 +10,11 @@
     padding: .4rem 2.5rem;
     text-align: center;
     text-transform: uppercase;
-    transition: all .3s linear;
+    transition: all .2s linear;
     vertical-align: middle;
     &:hover {
         color: $white;
-        transition: all .3s linear;
+        transition: all .2s linear;
     }
     &:visited {
         color: $white;
@@ -48,6 +48,9 @@
         .icon {
             color: $primary;
         }
+    }
+    &:visited {
+        color: $blackish;
     }
 }
 
