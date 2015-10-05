@@ -17,19 +17,31 @@ JoyRideDirective = ($rootScope, currentUserService, joyRideService) ->
         intro.oncomplete () ->
             $('html,body').scrollTop(0)
 
-        startIntro = (joyRideName) ->
-            intro.setOption('steps', joyRideService.get(joyRideName))
-            intro.start();
+        intro.onexit () ->
+            currentUserService.disableJoyRide()
+
+        initJoyrRide = (next, config) ->
+            if !config[next.joyride]
+                return
+
+            intro.setOption('steps', joyRideService.get(next.joyride))
+            intro.start()
 
         $rootScope.$on '$routeChangeSuccess',  (event, next) ->
             return if !next.joyride || !currentUserService.isAuthenticated()
 
+            intro.oncomplete () ->
+                currentUserService.disableJoyRide(next.joyride)
+
             if next.loader
                 un = $rootScope.$on 'loader:end',  () ->
-                    startIntro(next.joyride)
+                    currentUserService.loadJoyRideConfig()
+                        .then (config) -> initJoyrRide(next, config)
+
                     un()
             else
-                startIntro(next.joyride)
+                currentUserService.loadJoyRideConfig()
+                    .then (config) -> initJoyrRide(next, config)
 
     return {
         scope: {},

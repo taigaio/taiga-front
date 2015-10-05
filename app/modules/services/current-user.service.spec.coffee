@@ -17,6 +17,17 @@ describe "tgCurrentUserService", ->
 
         provide.value "tgProjectsService", mocks.projectsService
 
+    _mockResources = () ->
+        mocks.resources = {
+            user: {
+                setUserStorage: sinon.stub(),
+                getUserStorage: sinon.stub(),
+                createUserStorage: sinon.stub()
+            }
+        }
+
+        provide.value "tgResources", mocks.resources
+
     _inject = (callback) ->
         inject (_tgCurrentUserService_) ->
             currentUserService = _tgCurrentUserService_
@@ -27,6 +38,7 @@ describe "tgCurrentUserService", ->
             provide = $provide
             _mockTgStorage()
             _mockProjectsService()
+            _mockResources()
 
             return null
 
@@ -105,3 +117,35 @@ describe "tgCurrentUserService", ->
         currentUserService.removeUser()
 
         expect(currentUserService._user).to.be.null
+
+    it "disable joyride", () ->
+        currentUserService.disableJoyRide()
+
+        expect(mocks.resources.user.setUserStorage).to.have.been.calledWith('joyride', {
+            backlog: false,
+            kanban: false,
+            dashboard: false
+        });
+
+    it "load joyride config", (done) ->
+        mocks.resources.user.getUserStorage.withArgs('joyride').promise().resolve(true)
+
+        currentUserService.loadJoyRideConfig().then (config) ->
+            expect(config).to.be.true
+
+            done()
+
+    it "create default joyride config", (done) ->
+        mocks.resources.user.getUserStorage.withArgs('joyride').promise().reject()
+
+        currentUserService.loadJoyRideConfig().then (config) ->
+            joyride = {
+                backlog: true,
+                kanban: true,
+                dashboard: true
+            }
+
+            expect(mocks.resources.user.createUserStorage).to.have.been.calledWith('joyride', joyride)
+            expect(config).to.be.eql(joyride)
+
+            done()
