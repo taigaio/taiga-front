@@ -50,7 +50,7 @@ helper.relatedTaskForm = function(form, name, status, assigned_to) {
 
     utils.popover.open(taskStatus, status);
 
-    form.$('.assigned-to').click();
+    form.$('.task-assignedto').click();
 
     let assignToLightbox = commonHelper.assignToLightbox();
 

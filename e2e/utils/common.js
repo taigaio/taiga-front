@@ -331,6 +331,12 @@ common.topMenuOption = async function(option) {
     return menu.$$('li a').get(option).click();
 };
 
+common.getProjectUrlRoot = async function() {
+    let url =  await browser.driver.getCurrentUrl();
+
+    return browser.params.glob.host + url.split('/').slice(3, 5).join('/');
+};
+
 common.goToBacklog = async function() {
     await common.link($('#nav-backlog a'));
 

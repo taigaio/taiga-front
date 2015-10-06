@@ -12,7 +12,7 @@ describe('Issue detail', async function(){
     before(async function(){
         utils.nav
             .init()
-            .project(0)
+            .project(1)
             .issues()
             .issue(0)
             .go();
