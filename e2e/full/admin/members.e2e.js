@@ -94,9 +94,13 @@ describe('admin - members', function() {
     it('change role', async function() {
         let member = adminMembershipsHelper.getMembers().last();
 
-        adminMembershipsHelper.setRole(member, 3);
+        //prevent change to the same value
+        adminMembershipsHelper.setRole(member, 1);
+        adminMembershipsHelper.setRole(member, 2);
 
         expect(utils.notifications.success.open()).to.be.eventually.true;
+
+        await utils.notifications.success.close();
     });
 
     it('resend invitation', async function() {
@@ -105,6 +109,8 @@ describe('admin - members', function() {
         adminMembershipsHelper.sendInvitation();
 
         expect(utils.notifications.success.open()).to.be.eventually.true;
+
+        await utils.notifications.success.close();
     });
 
     it('toggle admin', async function() {
