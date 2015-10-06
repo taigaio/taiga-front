@@ -314,11 +314,13 @@ common.goToFirstIssue = async function() {
 common.uploadFile = async function(inputFile, filePath) {
     let toggleInput = function() {
         $(arguments[0]).toggle();
+        $(arguments[0]).removeClass('hidden');
     };
 
     let absolutePath = path.resolve(process.cwd(), 'e2e', filePath);
 
     await browser.executeScript(toggleInput, inputFile.getWebElement());
+
     await inputFile.sendKeys(absolutePath);
     await browser.executeScript(toggleInput, inputFile.getWebElement());
 };
