@@ -6,7 +6,7 @@ var actions = {
     project: function(index) {
         browser.actions().mouseMove($('div[tg-dropdown-project-list]')).perform();
 
-        let project = $$('div[tg-dropdown-project-list] li a').first();
+        let project = $$('div[tg-dropdown-project-list] li a').get(index);
 
         common.link(project);
 
