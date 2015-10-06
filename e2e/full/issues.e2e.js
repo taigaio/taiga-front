@@ -216,7 +216,7 @@ describe('issues list', function() {
 
             let htmlChanges = await utils.common.outerHtmlChanges(table);
             issuesHelper.filtersCats().get(4).$('a').click();
-            issuesHelper.selectFilter(0);
+            issuesHelper.selectFilter(1);
             await htmlChanges();
 
             issuesHelper.backToFilters();
