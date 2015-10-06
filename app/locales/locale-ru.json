@@ -4,8 +4,8 @@
         "NO": "Нет",
         "LOADING": "Пожалуйста, подождите...",
         "LOADING_PROJECT": "Проект загружается...",
-        "DATE": "ДД МММ ГГГГ",
-        "DATETIME": "ДД МММ ГГГГ ЧЧ:мм",
+        "DATE": "DD MMM YYYY",
+        "DATETIME": "DD MMM YYYY HH:mm",
         "SAVE": "Сохранить",
         "CANCEL": "Отмена",
         "ACCEPT": "Принимаю",
@@ -63,7 +63,7 @@
             "EQUAL_TO": "Это значение должно быть таким же."
         },
         "PICKERDATE": {
-            "FORMAT": "ДД МММ ГГГГ",
+            "FORMAT": "DD MMM YYYY",
             "IS_RTL": "false",
             "FIRST_DAY_OF_WEEK": "1",
             "PREV_MONTH": "Предыдущий Месяц",
@@ -350,7 +350,7 @@
         "HIDE_DEPRECATED": "- спрятать устаревшие приложения",
         "COUNT_DEPRECATED": "({{ counter }} устарело)",
         "MAX_UPLOAD_SIZE": "Максимальный объем для загрузки {{maxFileSize}}",
-        "DATE": "ДД МММ ГГГГ [в] чч:мм",
+        "DATE": "DD MMM YYYY [в] hh:mm",
         "ERROR_UPLOAD_ATTACHMENT": "Мы не смогли загрузить '{{fileName}}'. {{errorMessage}}",
         "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "Удалить вложение...",
         "MSG_LIGHTBOX_DELETE_ATTACHMENT": "приложение '{{fileName}}'",
@@ -544,7 +544,7 @@
             "HEADERS": "Заголовки",
             "PAYLOAD": "Нагрузка",
             "RESPONSE": "Ответ",
-            "DATE": "ДД МММ ГГГГ [в] чч:мм:сс",
+            "DATE": "DD MMM YYYY [в] hh:mm:ss",
             "ACTION_HIDE_HISTORY": "(Спрятать историю)",
             "ACTION_HIDE_HISTORY_TITLE": "Скрыть детали истории",
             "ACTION_SHOW_HISTORY": "(Показать историю)",
@@ -825,7 +825,7 @@
     },
     "ACTIVITY": {
         "SHOW_ACTIVITY": "Показать действия",
-        "DATETIME": "ДД МММ ГГГГ ЧЧ:мм",
+        "DATETIME": "DD MMM YYYY HH:mm",
         "SHOW_MORE": "+ Показать предыдущие записи (ещё {{showMore}})",
         "TITLE": "Действия",
         "REMOVED": "удален",
@@ -938,7 +938,7 @@
         },
         "SPRINTS": {
             "TITLE": "СПРИНТЫ",
-            "DATE": "ДД МММ ГГГГ",
+            "DATE": "DD MMM YYYY",
             "LINK_TASKBOARD": "Панель задач Спринта",
             "TITLE_LINK_TASKBOARD": "Перейти к Панели Задач \"{{name}}\"",
             "NUMBER_SPRINTS": "<br/>спринты",
@@ -978,7 +978,7 @@
             "YAXIS_LABEL": "Очки",
             "OPTIMAL": "Оптимальное количество очков для работы на день {{formattedDate}}:  {{roundedValue}}",
             "REAL": "Реальные очки для работы на день: {{formattedDate}} - {{roundedValue}}",
-            "DATE": "ДД МММ ГГГГ"
+            "DATE": "DD MMMM YYYY"
         }
     },
     "TASK": {
@@ -1207,7 +1207,7 @@
     "WIKI": {
         "PAGE_TITLE": "{{wikiPageName}} - Вики - {{projectName}}",
         "PAGE_DESCRIPTION": "Последнее редактирование: {{lastModifiedDate}} ({{totalEditions}} - всего правок) Контент: {{ wikiPageContent }}",
-        "DATETIME": "ДД МММ ГГГГ ЧЧ:мм",
+        "DATETIME": "DD MMM YYYY HH:mm",
         "PLACEHOLDER_PAGE": "Создать вики страницу",
         "REMOVE": "Удалить эту вики страницу",
         "DELETE_LIGHTBOX_TITLE": "Удалить вики страницу",
