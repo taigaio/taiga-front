@@ -1,7 +1,5 @@
-div(ng-show="task.isPlaceholder") TODO PLACEHOLDER
-
-div.taskboard-tagline(ng-show="!task.isPlaceholder", tg-colorize-tags="task.tags", tg-colorize-tags-type="taskboard")
-div.taskboard-task-inner(ng-show="!task.isPlaceholder")
+div.taskboard-tagline(tg-colorize-tags="task.tags", tg-colorize-tags-type="taskboard")
+div.taskboard-task-inner
     div.taskboard-user-avatar(tg-taskboard-user-avatar, users="usersById", task="task", project="project", ng-class="{iocaine: task.is_iocaine}")
     span.icon.icon-iocaine(ng-if="task.is_iocaine", title="{{'COMMON.IOCAINE_TEXT' | translate}}")
     p.taskboard-text

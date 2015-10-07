@@ -1,0 +1,37 @@
+.card-placeholder {
+    background: darken($whitish, 5%);
+    border: 1px solid darken($whitish, 8%);
+    cursor: default;
+    padding: 1rem;
+    .placeholder-avatar {
+        display: flex;
+    }
+    .image {
+        background: darken($whitish, 8%);
+        flex-basis: 48px;
+        height: 48px;
+        margin-right: .5rem;
+        width: 48px;
+    }
+    .text {
+        flex: 1;
+    }
+    .line {
+        background: darken($whitish, 8%);
+        height: 1rem;
+        margin-bottom: 1rem;
+        width: 80%;
+        &:last-child {
+            width: 40%;
+        }
+    }
+    .title {
+        @extend %large;
+        text-transform: uppercase;
+    }
+    p {
+        @extend %light;
+        color: $gray;
+        margin: 0;
+    }
+}

@@ -37,6 +37,15 @@ div.taskboard-table(tg-taskboard-squish-column)
                         span(translate="TASKBOARD.TABLE.ROW_UNASSIGED_TASKS_TITLE")
                     include ../components/addnewtask.jade
                 div.taskboard-tasks-box.task-column(ng-repeat="st in taskStatusList track by st.id", tg-taskboard-sortable, class="squish-status-{{st.id}}", ng-class="{'column-fold':statusesFolded[st.id]}", tg-bind-scope)
-                    div.taskboard-task(ng-repeat="task in usTasks[null][st.id] track by task.id",
-                                       tg-taskboard-task, tg-bind-scope, tg-class-permission="{'readonly': '!modify_task'}")
-                        include ../components/taskboard-task
+                    div.taskboard-task(
+                        ng-repeat="task in usTasks[null][st.id] track by task.id"
+                        tg-taskboard-task
+                        tg-bind-scope
+                        tg-class-permission="{'readonly': '!modify_task'}"
+                        ng-class="{'card-placeholder': task.isPlaceholder}"
+                    )
+                        div(ng-if="!task.isPlaceholder")
+                            include ../components/taskboard-task
+                        
+                        div(ng-if="task.isPlaceholder")
+                            include ../components/card-placeholder

@@ -36,6 +36,11 @@
             }
         }
     }
+    &.card-placeholder {
+        background: darken($whitish, 5%);
+        border: 1px solid darken($whitish, 8%);
+        cursor: default;
+    }
     .taskboard-tagline {
         border-color: $card-hover;
         display: flex;
