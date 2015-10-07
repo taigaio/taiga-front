@@ -145,7 +145,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 if not usByStatus[status.id]?
                     usByStatus[status.id] = []
                 if @scope.usByStatus?
-                    for us in @scope.usByStatus[status.id]                        
+                    for us in @scope.usByStatus[status.id]
                         if us.status != status.id
                             us_archived.push(us)
 
@@ -439,7 +439,12 @@ KanbanUserstoryDirective = ($rootscope, $loading, $rs) ->
             $el.off()
 
     return {
-        templateUrl: "kanban/kanban-task.html"
+        #templateUrl: "kanban/kanban-task.html"
+        templateUrl: (elem, attr) ->
+            if attr.placeholder
+                return "common/components/card-placeholder.html"
+            else
+                return "kanban/kanban-task.html"
         link: link
         require: "ngModel"
     }

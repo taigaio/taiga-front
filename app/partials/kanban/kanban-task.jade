@@ -1,7 +1,9 @@
-div(ng-show="us.isPlaceholder") TODO PLACEHOLDER
-
-div.kanban-tagline(ng-show="!us.isPlaceholder", tg-colorize-tags="us.tags", tg-colorize-tags-type="kanban", ng-hide="us.isArchived")
-div.kanban-task-inner(ng-show="!us.isPlaceholder", ng-class="{'task-archived': us.isArchived}")
+div.kanban-tagline(
+    tg-colorize-tags="us.tags"
+    tg-colorize-tags-type="kanban"
+    ng-hide="us.isArchived"
+)
+div.kanban-task-inner(ng-class="{'task-archived': us.isArchived}")
     div.avatar-wrapper(tg-kanban-user-avatar="us.assigned_to", ng-model="us", ng-hide="us.isArchived")
     div.task-text(ng-hide="us.isArchived")
         a.task-assigned(href="", title="{{'US.ASSIGN' | translate}}")
