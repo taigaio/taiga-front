@@ -18,11 +18,11 @@
                 transition: fill .3s linear;
             }
         }
-    }
-    a {
-        display: flex;
-        flex-direction: column;
-        min-height: 5rem;
+        a {
+            display: flex;
+            flex-direction: column;
+            min-height: 5rem;
+        }
     }
     h2 {
         @extend %text;
