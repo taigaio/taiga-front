@@ -58,3 +58,12 @@
         transform: translateY(0);
     }
 }
+
+@keyframes blink {
+    85% {
+        opacity: 1;
+    }
+    100% {
+        opacity: .6;
+    }
+}

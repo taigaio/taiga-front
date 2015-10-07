@@ -11,9 +11,14 @@ div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
         div.backlog-summary(tg-toggle-burndown-visibility)
             include ../includes/components/summary
 
-            div(ng-if="showGraphPlaceholder") TODO PLACEHOLDER
+            div.empty-burndown(ng-if="showGraphPlaceholder")
+                div.graph-icon
+                    include ../../svg/graph.svg
+                div.empty-text
+                    p.title(translate="BACKLOG.CUSTOMIZE_GRAPH")
+                    p {{'BACKLOG.CUSTOMIZE_GRAPH_TEXT' | translate}} #[a(href="", title="{{'BACKLOG.CUSTOMIZE_GRAPH_TITLE' | translate}}") {{'BACKLOG.CUSTOMIZE_GRAPH_ADMIN' | translate}}]
 
-            div.graphics-container.burndown-container.js-burndown-graph
+            div.graphics-container.js-burndown-graph
                 div.burndown(tg-burndown-backlog-graph)
                     include ../includes/modules/burndown
 
