@@ -31,12 +31,16 @@ describe('admin - roles', function() {
         await adminPermissionsHelper.editRole('2');
 
         expect(utils.notifications.success.open()).to.be.eventually.true;
+
+        await utils.notifications.success.close();
     });
 
     it('toggle, estimation role', async function() {
         adminPermissionsHelper.toggleEstimationRole();
 
         expect(utils.notifications.success.open()).to.be.eventually.true;
+
+        await utils.notifications.success.close();
     });
 
     it('toggle, category permission', async function() {

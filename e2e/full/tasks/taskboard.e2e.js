@@ -1,7 +1,7 @@
-var utils = require('../utils');
-var backlogHelper = require('../helpers').backlog;
-var taskboardHelper = require('../helpers').taskboard;
-var commonHelper = require('../helpers').common;
+var utils = require('../../utils');
+var backlogHelper = require('../../helpers').backlog;
+var taskboardHelper = require('../../helpers').taskboard;
+var commonHelper = require('../../helpers').common;
 
 var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
