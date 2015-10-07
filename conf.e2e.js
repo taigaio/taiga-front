@@ -54,6 +54,9 @@ exports.config = {
             return browser.getCapabilities();
         }).then(function (cap) {
             browser.browserName = cap.caps_.browserName;
+        })
+        .then(function() {
+            return browser.get(browser.params.glob.host);
         });
     }
 }
