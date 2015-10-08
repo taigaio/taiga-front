@@ -48,11 +48,11 @@ div.kanban-table(tg-kanban-squish-column)
 
                 div.kanban-task(
                     ng-repeat="us in usByStatus[s.id] track by us.id",
-                    tg-kanban-userstory, 
-                    ng-model="us", 
+                    tg-kanban-userstory,
+                    ng-model="us",
                     tg-bind-scope,
                     tg-class-permission="{'readonly': '!modify_task'}"
-                    ng-class="ctrl.getCardClass(s.id), 'card-placeholder': us.isPlaceholder}"
+                    ng-class="{'kanban-task-maximized': ctrl.isMaximized(s.id), 'kanban-task-minimized': ctrl.isMinimized(s.id), 'card-placeholder': us.isPlaceholder}"
                     placeholder="{{us.isPlaceholder}}"
                 )
 
