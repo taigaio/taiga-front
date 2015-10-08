@@ -1,9 +1,4 @@
 .search-result-table {
-    .empty {
-        .title {
-            border: 0;
-        }
-    }
     .row {
         align-content: center;
         align-items: center;
@@ -63,14 +58,6 @@
             }
         }
     }
-    .title {
-        @extend %medium;
-        @extend %bold;
-        border-bottom: 1px solid $gray-light;
-        &:hover {
-            background: transparent;
-        }
-    }
     .table-main {
         @extend %small;
         border-bottom: 1px solid $whitish;
@@ -93,5 +80,21 @@
             white-space: nowrap;
             width: 80px;
         }
+    }
+}
+
+.empty-search-results {
+    margin-top: 4rem;
+    text-align: center;
+    img {
+        margin-bottom: 1rem;
+    }
+    .title {
+        @extend %large;
+        text-transform: uppercase;
+    }
+    p {
+        @extend %light;
+        margin: 0;
     }
 }
