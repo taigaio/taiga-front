@@ -141,9 +141,9 @@ helper.attachmentTesting = async function() {
 
     // Uploading attachment
     let attachmentsLength = await attachmentHelper.countAttachments();
-    var fileToUpload = './upload-file-test.txt',
-    absolutePath = path.resolve(process.cwd(), 'e2e', fileToUpload);
-    await attachmentHelper.upload(absolutePath, 'This is the testing name ' + date);
+    var fileToUpload = commonUtil.uploadFilePath();
+
+    await attachmentHelper.upload(fileToUpload, 'This is the testing name ' + date);
 
     // Check set name
     let name = await attachmentHelper.getLastAttachmentName();

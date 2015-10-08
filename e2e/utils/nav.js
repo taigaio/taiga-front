@@ -8,7 +8,7 @@ var actions = {
 
         let project = $$('div[tg-dropdown-project-list] li a').get(index);
 
-        common.link(project);
+        project.click();
 
         common.waitLoader();
     },

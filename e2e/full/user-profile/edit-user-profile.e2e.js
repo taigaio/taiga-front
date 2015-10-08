@@ -48,8 +48,9 @@ describe('edit user profile', function() {
         let imageContainer = $('.image-container');
 
         let htmlChanges = await utils.common.outerHtmlChanges(imageContainer);
+        var fileToUpload = utils.common.uploadImagePath();
 
-        await utils.common.uploadFile(inputFile, './upload-image-test.png');
+        await utils.common.uploadFile(inputFile, fileToUpload);
 
         await htmlChanges();
 

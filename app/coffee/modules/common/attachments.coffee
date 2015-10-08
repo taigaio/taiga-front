@@ -197,6 +197,7 @@ AttachmentsDirective = ($config, $confirm, $templates, $translate) ->
 
         $el.on "change", ".attachments-header input", (event) ->
             files = _.toArray(event.target.files)
+
             return if files.length < 1
 
             $scope.$apply ->

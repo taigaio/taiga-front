@@ -36,8 +36,7 @@ common.browserSkip = function(browserName, name, fn) {
     if (browser.browserName !== browserName) {
         return it.call(this, name, fn);
     } else {
-        // return it.skip.call(this, name, fn);
-        return it.call(this, name, fn);
+        return it.skip.call(this, name, fn);
     }
 };
 
@@ -317,11 +316,9 @@ common.uploadFile = async function(inputFile, filePath) {
         $(arguments[0]).removeClass('hidden');
     };
 
-    let absolutePath = path.resolve(process.cwd(), 'e2e', filePath);
-
     await browser.executeScript(toggleInput, inputFile.getWebElement());
 
-    await inputFile.sendKeys(absolutePath);
+    await inputFile.sendKeys(filePath);
     await browser.executeScript(toggleInput, inputFile.getWebElement());
 };
 
@@ -362,3 +359,19 @@ common.goToFirstTask = async function() {
 
     await common.waitLoader();
 }
+
+common.uploadFilePath = function() {
+    if (browser.inWindows()) {
+        return browser.params.glob.attachments.windows;
+    } else {
+        return path.resolve(process.cwd(), 'e2e', browser.params.glob.attachments.unix);
+    }
+};
+
+common.uploadImagePath = function() {
+    if (browser.inWindows()) {
+        return browser.params.glob.attachments.windowsImg;
+    } else {
+        return path.resolve(process.cwd(), 'e2e', browser.params.glob.attachments.unixImg);
+    }
+};

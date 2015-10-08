@@ -322,7 +322,7 @@ describe('backlog', function() {
         expect(ussSprintCount).to.be.equal(initUssSprintCount + 1);
     });
 
-    it('select us with SHIFT', async function() {
+    utils.common.browserSkip('internet explorer', 'select us with SHIFT', async function() {
         let dragableElements = backlogHelper.userStories();
 
         let firstInput = dragableElements.get(0).$('input[type="checkbox"]');

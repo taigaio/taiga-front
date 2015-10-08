@@ -10,7 +10,13 @@ exports.config = {
     framework: 'mocha',
     params: {
         glob: {
-            host: 'http://localhost:9001/'
+            host: 'http://localhost:9001/',
+            attachments: {
+                unix: './upload-file-test.txt',
+                windows: 'C:\\test\\upload-file-test.txt',
+                unixImg: './upload-image-test.png',
+                windowsImg: 'C:\\test\\upload-image-test.png'
+            }
         }
     },
     mochaOpts: {
@@ -18,7 +24,8 @@ exports.config = {
         compilers: 'js:babel/register'
     },
     // capabilities: {
-    //     'browserName': 'firefox'
+    //     browserName: 'internet explorer',
+    //     version: '11'
     // },
     suites: {
         auth: "e2e/auth/*.e2e.js",
@@ -37,6 +44,8 @@ exports.config = {
         team: "e2e/full/team.e2e.js"
     },
     onPrepare: function() {
+        require('./e2e/capabilities.js');
+
         browser.driver.manage().window().maximize();
 
         browser.getCapabilities().then(function (cap) {
