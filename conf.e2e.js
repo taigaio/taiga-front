@@ -3,6 +3,7 @@ require("babel/register")({
 });
 
 var utils = require('./e2e/utils');
+var HtmlReporter = require('protractor-html-screenshot-reporter');
 
 exports.config = {
     seleniumAddress: 'http://localhost:4444/wd/hub',
@@ -20,9 +21,20 @@ exports.config = {
     //     'browserName': 'firefox'
     // },
     suites: {
-        auth: 'e2e/auth/*.e2e.js',
-        full: 'e2e/full/**/*.e2e.js',
-        public: 'e2e/public/**/*.e2e.js'
+        auth: "e2e/auth/*.e2e.js",
+        public: "e2e/public/**/*.e2e.js",
+        wiki: "e2e/full/wiki.e2e.js",
+        admin: "e2e/full/admin/**/*.e2e.js",
+        issues: "e2e/full/issues/*.e2e.js",
+        tasks: "e2e/full/tasks/*.e2e.js",
+        userProfile: "e2e/full/user-profile/*.e2e.js",
+        userStories: "e2e/full/user-stories/*.e2e.js",
+        backlog: "e2e/full/backlog.e2e.js",
+        home: "e2e/full/home.e2e.js",
+        kanban: "e2e/full/kanban.e2e.js",
+        projectHome: "e2e/full/project-home.e2e.js",
+        search: "e2e/full/search.e2e.js",
+        team: "e2e/full/team.e2e.js"
     },
     onPrepare: function() {
         browser.driver.manage().window().maximize();
@@ -54,6 +66,9 @@ exports.config = {
             return browser.getCapabilities();
         }).then(function (cap) {
             browser.browserName = cap.caps_.browserName;
+        })
+        .then(function() {
+            return browser.get(browser.params.glob.host);
         });
     }
 }

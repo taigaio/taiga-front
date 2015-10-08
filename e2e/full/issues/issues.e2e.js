@@ -1,6 +1,6 @@
-var utils = require('../utils');
-var issuesHelper = require('../helpers').issues;
-var commonHelper = require('../helpers').common;
+var utils = require('../../utils');
+var issuesHelper = require('../../helpers').issues;
+var commonHelper = require('../../helpers').common;
 
 var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');

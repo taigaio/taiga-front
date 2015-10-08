@@ -8,10 +8,10 @@ chai.use(chaiAsPromised);
 var expect = chai.expect;
 
 describe('leaving project', function(){
-  before(async function(){
-      browser.get(browser.params.glob.host + 'project/project-4/team');
-      await utils.common.waitLoader();
-  });
+    before(async function(){
+        browser.get(browser.params.glob.host + 'project/project-4/team');
+        await utils.common.waitLoader();
+    });
 
     it('leave project', async function(){
         teamHelper.team().leave();

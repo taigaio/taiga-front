@@ -17,7 +17,8 @@
   },
   "scripts": {
     "scss-lint": "gulp scss-lint --fail",
-    "test": "./node_modules/karma/bin/karma start"
+    "test": "./node_modules/karma/bin/karma start",
+    "e2e": "./run-e2e.sh"
   },
   "devDependencies": {
     "angular-mocks": "^1.5.0-beta.0",
