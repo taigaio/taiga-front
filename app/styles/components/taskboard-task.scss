@@ -37,8 +37,8 @@
         }
     }
     &.card-placeholder {
-        background: darken($whitish, 5%);
-        border: 1px solid darken($whitish, 8%);
+        background: darken($whitish, 2%);
+        border: 3px dashed darken($whitish, 8%);
         cursor: default;
     }
     .taskboard-tagline {
