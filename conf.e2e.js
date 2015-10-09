@@ -6,11 +6,11 @@ var utils = require('./e2e/utils');
 var HtmlReporter = require('protractor-html-screenshot-reporter');
 
 exports.config = {
-    seleniumAddress: 'http://localhost:4444/wd/hub',
+    seleniumAddress: 'http://10.8.1.194:4444/wd/hub',
     framework: 'mocha',
     params: {
         glob: {
-            host: 'http://localhost:9001/',
+            host: 'http://10.8.1.153:9001/',
             attachments: {
                 unix: './upload-file-test.txt',
                 windows: 'C:\\test\\upload-file-test.txt',

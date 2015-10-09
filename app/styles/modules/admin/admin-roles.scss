@@ -45,6 +45,10 @@
         padding-bottom: 2rem;
         .check {
             margin-left: .5rem;
+            input { // IE needs smaller size
+                height: 40px;
+                width: 85px;
+            }
         }
     }
 }

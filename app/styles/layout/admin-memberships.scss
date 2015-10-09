@@ -5,4 +5,10 @@
             float: right;
         }
     }
+    .check {
+        input { // IE needs smaller size
+            height: 40px;
+            width: 85px;
+        }
+    }
 }

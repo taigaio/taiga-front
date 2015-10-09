@@ -96,6 +96,7 @@ describe('admin - members', function() {
 
         //prevent change to the same value
         adminMembershipsHelper.setRole(member, 1);
+        adminMembershipsHelper.setRole(member, 3);
         adminMembershipsHelper.setRole(member, 2);
 
         expect(utils.notifications.success.open()).to.be.eventually.true;
@@ -114,13 +115,14 @@ describe('admin - members', function() {
     });
 
     it('toggle admin', async function() {
-        let member = adminMembershipsHelper.getMembers().last();
+        let member = adminMembershipsHelper.getMembers().get(1);
         let isAdmin =  await adminMembershipsHelper.isAdmin(member);
 
         if (isAdmin) {
             adminMembershipsHelper.toggleAdmin(member);
 
-            await browser.waitForAngular();
+            await utils.notifications.success.open();
+
             isAdmin =  await adminMembershipsHelper.isAdmin(member);
 
             expect(isAdmin).not.to.be.true;

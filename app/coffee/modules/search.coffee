@@ -67,12 +67,13 @@ class SearchController extends mixOf(taiga.Controller, taiga.PageMixin)
         @scope.searchTerm = ""
         loadSearchData = debounceLeading(100, (t) => @.loadSearchData(t))
 
-        @scope.$watch "searchTerm", (term) =>
-            if term
-                @scope.loading = true
+        bindOnce @scope, "projectId", (projectId) =>
+            if !@scope.searchResults
+                @.loadSearchData()
 
-                @.loadSearchData(term).then () =>
-                    @scope.loading = false
+        @scope.$watch "searchTerm", (term) =>
+            if term != undefined && @scope.projectId
+                @.loadSearchData(term)
 
     loadFilters: ->
         defered = @q.defer()
@@ -90,9 +91,13 @@ class SearchController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.usStatusById = groupBy(project.us_statuses, (x) -> x.id)
             return project
 
-    loadSearchData: (term) ->
+    loadSearchData: (term = "") ->
+        @scope.loading = true
+
         promise = @rs.search.do(@scope.projectId, term).then (data) =>
             @scope.searchResults = data
+            @scope.loading = false
+
             return data
 
         return promise
@@ -244,7 +249,7 @@ SearchDirective = ($log, $compile, $templatecache, $routeparams, $location) ->
             markSectionTabActive(activeSection)
 
         $scope.$watch "searchTerm", (searchTerm) ->
-            $location.search("text", searchTerm) if searchTerm
+            $location.search("text", searchTerm) if searchTerm != undefined
 
         $el.on "click", ".search-filter li > a", (event) ->
             event.preventDefault()

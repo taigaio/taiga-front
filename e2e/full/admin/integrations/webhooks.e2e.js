@@ -52,8 +52,6 @@ describe('admin - webhooks', function() {
 
         await adminIntegrationsHelper.saveWebHook('111', 'http://web2.fake', '333');
 
-        await browser.sleep(4000);
-
         let webHookMode = await adminIntegrationsHelper.getWebHookMode();
 
         expect(webHookMode).to.be.equal('read');

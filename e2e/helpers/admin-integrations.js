@@ -5,9 +5,9 @@ var helper = module.exports;
 helper.saveWebHook = async function(name, email, key) {
     let inputs = $$('input[type="text"]');
 
-    await utils.common.clear(inputs.get(0));
-    await utils.common.clear(inputs.get(1));
-    await utils.common.clear(inputs.get(2));
+    await inputs.get(0).clear();
+    await inputs.get(1).clear();
+    await inputs.get(2).clear();
 
     await inputs.get(0).sendKeys(name);
     await inputs.get(1).sendKeys(email);

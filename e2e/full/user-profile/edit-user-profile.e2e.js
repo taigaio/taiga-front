@@ -42,25 +42,6 @@ describe('edit user profile', function() {
         await utils.lightbox.close(lb);
     });
 
-    it('edit avatar', async function() {
-        let inputFile = $('#avatar-field');
-
-        let imageContainer = $('.image-container');
-
-        let htmlChanges = await utils.common.outerHtmlChanges(imageContainer);
-        var fileToUpload = utils.common.uploadImagePath();
-
-        await utils.common.uploadFile(inputFile, fileToUpload);
-
-        await htmlChanges();
-
-        let avatar = imageContainer.$('.avatar');
-
-        let src = await avatar.getAttribute('src');
-
-        expect(src).to.contains('upload-image-test.png');
-    });
-
     it('edit lenguage', async function() {
         // english
         $('#lang option:nth-child(4)').click();
@@ -90,5 +71,24 @@ describe('edit user profile', function() {
         $('button[type="submit"]').click();
 
         await utils.notifications.success.open();
+    });
+
+    it('edit avatar', async function() {
+        let inputFile = $('#avatar-field');
+
+        let imageContainer = $('.image-container');
+
+        let htmlChanges = await utils.common.outerHtmlChanges(imageContainer);
+        var fileToUpload = utils.common.uploadImagePath();
+
+        await utils.common.uploadFile(inputFile, fileToUpload);
+
+        await htmlChanges();
+
+        let avatar = imageContainer.$('.avatar');
+
+        let src = await avatar.getAttribute('src');
+
+        expect(src).to.contains('upload-image-test.png');
     });
 });

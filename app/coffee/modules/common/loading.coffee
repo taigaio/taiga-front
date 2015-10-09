@@ -91,7 +91,7 @@ LoadingDirective = ($loading) ->
                 currentLoading = $loading()
                     .target($el)
                     .start()
-             else
+             else if currentLoading
                  currentLoading.finish()
 
     return {
