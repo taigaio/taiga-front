@@ -16,7 +16,7 @@ div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
                     include ../../svg/graph.svg
                 div.empty-text
                     p.title(translate="BACKLOG.CUSTOMIZE_GRAPH")
-                    p {{'BACKLOG.CUSTOMIZE_GRAPH_TEXT' | translate}} #[a(href="", title="{{'BACKLOG.CUSTOMIZE_GRAPH_TITLE' | translate}}") {{'BACKLOG.CUSTOMIZE_GRAPH_ADMIN' | translate}}]
+                    p {{'BACKLOG.CUSTOMIZE_GRAPH_TEXT' | translate}} #[a(href="", tg-nav="project-admin-project-profile-details:project=project.slug", title="{{'BACKLOG.CUSTOMIZE_GRAPH_TITLE' | translate}}") {{'BACKLOG.CUSTOMIZE_GRAPH_ADMIN' | translate}}]
 
             div.graphics-container.js-burndown-graph
                 div.burndown(tg-burndown-backlog-graph)
