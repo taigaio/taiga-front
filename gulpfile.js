@@ -248,7 +248,7 @@ gulp.task("scss-lint", [], function() {
             };
           }
         })))
-        .pipe(gulpif(fail, scsslint.failReporter()))
+        .pipe(gulpif(fail, scsslint.failReporter()));
 });
 
 gulp.task("clear-sass-cache", function() {
@@ -315,7 +315,7 @@ gulp.task("main-css", function() {
     return gulp.src(_paths)
         .pipe(concat("theme-" + themes.current.name + ".css"))
         .pipe(gulpif(isDeploy, minifyCSS({noAdvanced: true})))
-        .pipe(gulp.dest(paths.dist + "styles/"))
+        .pipe(gulp.dest(paths.dist + "styles/"));
 });
 
 var compileThemes = function (cb) {
@@ -326,7 +326,7 @@ var compileThemes = function (cb) {
                        ["app-css", "vendor-css"],
                        "main-css",
                        function() {
-                           themes.next()
+                           themes.next();
 
                            if (themes.current) {
                                compileThemes(cb);
