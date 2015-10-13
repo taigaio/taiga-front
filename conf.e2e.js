@@ -5,7 +5,7 @@ require("babel/register")({
 var utils = require('./e2e/utils');
 
 exports.config = {
-    seleniumAddress: 'http://10.8.1.194:4444/wd/hub',
+    seleniumAddress: 'http://localhost:4444/wd/hub',
     framework: 'mocha',
     params: {
         glob: {
