@@ -26,7 +26,7 @@ helper.tagsTesting = async function() {
     let tagsText = await tagsHelper.getTagsText();
     await tagsHelper.clearTags();
     let date = Date.now();
-    let tags = [1, 2, 3, 4, 5].map((i) => date + "-" + i);
+    let tags = [1, 2, 3].map((i) => date + "-" + i);
     tagsHelper.addTags(tags);
 
     let newtagsText = await tagsHelper.getTagsText();

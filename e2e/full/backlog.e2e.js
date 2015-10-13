@@ -289,7 +289,7 @@ describe('backlog', function() {
         expect(sprintRefs.indexOf(draggedRef)).to.be.not.equal(-1);
     });
 
-    utils.common.browserSkip('firefox', 'reorder milestone us', async function() {
+    utils.common.browserSkip(['firefox', 'internet explorer'], 'reorder milestone us', async function() {
         let sprint = backlogHelper.sprints().get(0);
         let dragableElements = backlogHelper.getSprintUsertories(sprint);
 
@@ -304,7 +304,7 @@ describe('backlog', function() {
         expect(firstElementRef).to.be.equal(firstElementRef);
     });
 
-    utils.common.browserSkip('firefox', 'drag us from milestone to milestone', async function() {
+    utils.common.browserSkip(['firefox', 'internet explorer'], 'drag us from milestone to milestone', async function() {
         let sprint1 = backlogHelper.sprints().get(0);
         let sprint2 = backlogHelper.sprints().get(1);
 

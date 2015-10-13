@@ -84,7 +84,7 @@ describe('attributes - types', function() {
         expect(newObjs.indexOf(newName)).to.be.not.equal(-1);
     });
 
-    it('drag', async function() {
+    utils.common.browserSkip(['firefox', 'internet explorer'], 'drag', async function() {
         let section = adminAttributesHelper.getSection(0);
         let rows = section.rows();
         let objs = await adminAttributesHelper.getGenericNames(section.el);

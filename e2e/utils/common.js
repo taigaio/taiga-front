@@ -33,10 +33,18 @@ common.isBrowser = async function(browserName) {
 };
 
 common.browserSkip = function(browserName, name, fn) {
-    if (browser.browserName !== browserName) {
-        return it.call(this, name, fn);
+    if( typeof browserName === 'string') {
+        if (browser.browserName !== browserName) {
+            return it.call(this, name, fn);
+        } else {
+            return it.skip.call(this, name, fn);
+        }
     } else {
-        return it.skip.call(this, name, fn);
+        if (browserName.indexOf(browser.browserName) === -1) {
+            return it.call(this, name, fn);
+        } else {
+            return it.skip.call(this, name, fn);
+        }
     }
 };
 

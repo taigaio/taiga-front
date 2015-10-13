@@ -126,15 +126,15 @@ describe('admin - members', function() {
             isAdmin =  await adminMembershipsHelper.isAdmin(member);
 
             expect(isAdmin).not.to.be.true;
+        } else {
+            adminMembershipsHelper.toggleAdmin(member);
+
+            await utils.notifications.success.open();
+
+            isAdmin =  await adminMembershipsHelper.isAdmin(member);
+
+            expect(isAdmin).to.be.true;
         }
-
-        adminMembershipsHelper.toggleAdmin(member);
-
-        await utils.notifications.success.open();
-
-        isAdmin =  await adminMembershipsHelper.isAdmin(member);
-
-        expect(isAdmin).to.be.true;
 
         await utils.notifications.success.close();
     });

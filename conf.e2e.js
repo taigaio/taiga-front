@@ -19,7 +19,7 @@ exports.config = {
         }
     },
     mochaOpts: {
-        timeout: 30000,
+        timeout: 45000,
         compilers: 'js:babel/register'
     },
     capabilities: {

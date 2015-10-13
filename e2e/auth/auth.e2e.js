@@ -122,7 +122,7 @@ describe('auth', function() {
 
                 $('.lightbox-generic-success .button-green').click();
 
-                expect(utils.lightbox.close('.lightbox-generic-success')).to.be.eventually.equal(true);
+                await utils.lightbox.close('.lightbox-generic-success');
             });
         });
 
@@ -146,7 +146,6 @@ describe('auth', function() {
 
                 utils.common.takeScreenshot("auth", "delete-account");
 
-                $('#unsuscribe').click();
                 $('.lightbox-delete-account .button-green').click();
 
                 expect(browser.getCurrentUrl()).to.be.eventually.equal(browser.params.glob.host + 'login');
