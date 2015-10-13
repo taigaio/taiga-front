@@ -3,7 +3,6 @@ require("babel/register")({
 });
 
 var utils = require('./e2e/utils');
-var HtmlReporter = require('protractor-html-screenshot-reporter');
 
 exports.config = {
     seleniumAddress: 'http://10.8.1.194:4444/wd/hub',
@@ -23,10 +22,10 @@ exports.config = {
         timeout: 30000,
         compilers: 'js:babel/register'
     },
-    // capabilities: {
-    //     browserName: 'internet explorer',
-    //     version: '11'
-    // },
+    capabilities: {
+        browserName: 'internet explorer',
+        version: '11'
+    },
     suites: {
         auth: "e2e/auth/*.e2e.js",
         public: "e2e/public/**/*.e2e.js",
