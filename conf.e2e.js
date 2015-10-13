@@ -10,7 +10,7 @@ exports.config = {
     framework: 'mocha',
     params: {
         glob: {
-            host: 'http://locahost:9001/',
+            host: 'http://localhost:9001/',
             attachments: {
                 unix: './upload-file-test.txt',
                 windows: 'C:\\test\\upload-file-test.txt',
