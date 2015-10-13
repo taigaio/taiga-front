@@ -8,6 +8,7 @@ JoyRideDirective = ($rootScope, currentUserService, joyRideService) ->
         intro.setOptions({
             exitOnEsc: false,
             exitOnOverlayClick: false,
+            showStepNumbers: false,
             nextLabel: 'Next &rarr;',
             prevLabel: '&larr; Back',
             skipLabel: 'Skip',

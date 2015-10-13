@@ -10,7 +10,7 @@ joyRides = {
                 }
             },
             {
-                element: '.working-on-title',
+                element: '.working-on-container',
                 position: 'right',
                 joyride: {
                     title: @translate.instant('JOYRIDE.DASHBOARD.STEP2.TITLE'),
@@ -18,7 +18,7 @@ joyRides = {
                 }
             },
             {
-                element: '.watching-title',
+                element: '.watching-container',
                 position: 'right',
                 joyride: {
                     title: @translate.instant('JOYRIDE.DASHBOARD.STEP3.TITLE')
@@ -30,7 +30,7 @@ joyRides = {
             },
             {
                 element: '.project-list .see-more-projects-btn',
-                position: 'button',
+                position: 'bottom',
                 joyride: {
                     title: @translate.instant('JOYRIDE.DASHBOARD.STEP4.TITLE')
                     text: [
@@ -45,7 +45,7 @@ joyRides = {
         return [
             {
                 element: '.summary',
-                position: 'button',
+                position: 'bottom',
                 joyride: {
                     title: @translate.instant('JOYRIDE.BACKLOG.STEP1.TITLE')
                     text: [
@@ -55,8 +55,8 @@ joyRides = {
                 }
             },
             {
-                element: '.backlog-table',
-                position: 'right',
+                element: '.backlog-table-empty',
+                position: 'bottom',
                 joyride: {
                     title: @translate.instant('JOYRIDE.BACKLOG.STEP2.TITLE')
                     text: @translate.instant('JOYRIDE.BACKLOG.STEP2.TEXT')
@@ -74,8 +74,8 @@ joyRides = {
                 element: '.new-us',
                 position: 'rigth',
                 joyride: {
-                    title: @translate.instant('JOYRIDE.BACKLOG.STEP3.TITLE')
-                    text: @translate.instant('JOYRIDE.BACKLOG.STEP3.TEXT')
+                    title: @translate.instant('JOYRIDE.BACKLOG.STEP4.TITLE')
+                    text: @translate.instant('JOYRIDE.BACKLOG.STEP4.TEXT')
                 }
             }
         ]
@@ -91,7 +91,7 @@ joyRides = {
                 }
             },
             {
-                element: '.kanban-uses-box',
+                element: '.card-placeholder',
                 position: 'right',
                 joyride: {
                     title: @translate.instant('JOYRIDE.KANBAN.STEP2.TITLE')
@@ -99,7 +99,7 @@ joyRides = {
                 }
             },
             {
-                element: 'div[tg-kanban-squish-column] h2',
+                element: '.icon-plus',
                 position: 'bottom',
                 joyride: {
                     title: @translate.instant('JOYRIDE.KANBAN.STEP3.TITLE')
