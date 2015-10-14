@@ -185,6 +185,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
                     @scope.usTasks[task.user_story][task.status].push(task)
 
             if tasks.length == 0
+                
                 if @scope.userstories.length > 0
                     usId = @scope.userstories[0].id
                 else
