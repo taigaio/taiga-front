@@ -22,10 +22,10 @@ exports.config = {
         timeout: 45000,
         compilers: 'js:babel/register'
     },
-    capabilities: {
-        browserName: 'internet explorer',
-        version: '11'
-    },
+    // capabilities: {
+    //     browserName: 'internet explorer',
+    //     version: '11'
+    // },
     suites: {
         auth: "e2e/auth/*.e2e.js",
         public: "e2e/public/**/*.e2e.js",
