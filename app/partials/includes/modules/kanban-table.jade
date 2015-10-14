@@ -40,12 +40,12 @@ div.kanban-table(tg-kanban-squish-column)
     div.kanban-table-body
         div.kanban-table-inner
             div.kanban-uses-box.task-column(ng-class='{vfold:folds[s.id]}',
-                                            ng-repeat="s in usStatusList track by s.id",
-                                            tg-kanban-sortable,
-                                            tg-kanban-wip-limit="s",
-                                            tg-kanban-column-height-fixer,
-                                            tg-bind-scope)
-
+                ng-repeat="s in usStatusList track by s.id",
+                tg-kanban-sortable,
+                tg-kanban-wip-limit="s",
+                tg-kanban-column-height-fixer,
+                tg-bind-scope
+            )
                 div.kanban-task(
                     ng-repeat="us in usByStatus[s.id] track by us.id",
                     tg-kanban-userstory,
@@ -55,5 +55,4 @@ div.kanban-table(tg-kanban-squish-column)
                     ng-class="{'kanban-task-maximized': ctrl.isMaximized(s.id), 'kanban-task-minimized': ctrl.isMinimized(s.id), 'card-placeholder': us.isPlaceholder}"
                     placeholder="{{us.isPlaceholder}}"
                 )
-
                 div.kanban-column-intro(ng-if="s.is_archived", tg-kanban-archived-status-intro="s")

@@ -438,7 +438,7 @@ KanbanUserstoryDirective = ($rootscope, $loading, $rs) ->
 
         $scope.getTemplateUrl = () ->
             if $scope.us.isPlaceholder
-                return "common/components/card-placeholder.html"
+                return "common/components/kanban-placeholder.html"
             else
                 return "kanban/kanban-task.html"
 

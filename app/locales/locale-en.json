@@ -1124,7 +1124,9 @@
         "ACTION_HIDE_ARCHIVED": "Hide archived",
         "HIDDEN_USER_STORIES": "The user stories in this status are hidden by default",
         "ARCHIVED": "You have archived",
-        "UNDO_ARCHIVED": "Drag & drop again to undo"
+        "UNDO_ARCHIVED": "Drag & drop again to undo",
+        "PLACEHOLDER_CARD_TITLE": "Find Here User Stories",
+        "PLACEHOLDER_CARD_TEXT": "Stories might also have subtasks to separate requirements"
     },
     "SEARCH": {
         "PAGE_TITLE": "Search - {{projectName}}",
