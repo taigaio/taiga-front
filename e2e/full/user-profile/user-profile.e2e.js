@@ -41,7 +41,7 @@ describe('user profile', function() {
             expect(contactsCount).to.be.above(0);
         });
 
-        it.browserSkip('internet explorer', 'edit profile hover', async function() {
+        utils.common.browserSkip('internet explorer', 'edit profile hover', async function() {
             let userImage = $('.profile-image-wrapper');
 
             await browser.actions().mouseMove(userImage).perform();
