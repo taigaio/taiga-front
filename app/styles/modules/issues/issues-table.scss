@@ -126,4 +126,18 @@
     }
 }
 
-
+.empty-issues {
+    margin-top: 4rem;
+    text-align: center;
+    img {
+        margin-bottom: 1rem;
+    }
+    .title {
+        @extend %large;
+        text-transform: uppercase;
+    }
+    p {
+        @extend %light;
+        margin: 0;
+    }
+}

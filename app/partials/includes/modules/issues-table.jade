@@ -30,10 +30,10 @@ section.issues-table.basic-table(ng-class="{empty: !issues.length}")
                 figure.avatar
                 span.icon.icon-arrow-bottom(tg-check-permission="modify_issue")
 
-section.empty.empty-issues(ng-class="{hidden: issues.length}")
-    span.icon.icon-issues
-    span.title(translate="ISSUES.TABLE.EMPTY.TITLE")
-    span(translate="ISSUES.TABLE.EMPTY.SUBTITLE")
-    a(href="", ng-click="ctrl.addNewIssue()",
-      title="{{'ISSUES.TABLE.EMPTY.ACTION_CREATE_ISSUE' | translate}}",
-      translate="ISSUES.TABLE.EMPTY.ACTION_CREATE_ISSUE")
+section.empty-issues(ng-if="!issues.length")
+    img(
+        src="../../images/issues-empty.png",
+        alt="{{ISSUES.TABLE.EMPTY.TITLE | translate }}"
+    )
+    p.title(translate="ISSUES.TABLE.EMPTY.TITLE")
+    p(translate="ISSUES.TABLE.EMPTY.SUBTITLE")

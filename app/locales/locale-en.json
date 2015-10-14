@@ -1101,8 +1101,7 @@
             "TITLE_ACTION_ASSIGNED_TO": "Assigned to",
             "EMPTY": {
                 "TITLE": "There are no issues to report :-)",
-                "SUBTITLE": "Did you find an issue?",
-                "ACTION_CREATE_ISSUE": "Create a new Issue"
+                "SUBTITLE": "Did you find an issue?"
             }
         }
     },
@@ -1125,7 +1124,7 @@
         "HIDDEN_USER_STORIES": "The user stories in this status are hidden by default",
         "ARCHIVED": "You have archived",
         "UNDO_ARCHIVED": "Drag & drop again to undo",
-        "PLACEHOLDER_CARD_TITLE": "Find Here User Stories",
+        "PLACEHOLDER_CARD_TITLE": "These are your User Stories",
         "PLACEHOLDER_CARD_TEXT": "Stories might also have subtasks to separate requirements"
     },
     "SEARCH": {
