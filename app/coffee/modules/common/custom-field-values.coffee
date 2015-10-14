@@ -27,6 +27,28 @@ generateHash = taiga.generateHash
 
 module = angular.module("taigaCommon")
 
+# Custom attributes types (see taiga-back/taiga/projects/custom_attributes/choices.py)
+TEXT_TYPE = "text"
+MULTILINE_TYPE = "multiline"
+DATE_TYPE = "date"
+
+
+TYPE_CHOICES = [
+    {
+        key: TEXT_TYPE,
+        name: "ADMIN.CUSTOM_FIELDS.FIELD_TYPE_TEXT"
+    },
+    {
+        key: MULTILINE_TYPE,
+        name: "ADMIN.CUSTOM_FIELDS.FIELD_TYPE_MULTI"
+    },
+    {
+        key: DATE_TYPE,
+        name: "ADMIN.CUSTOM_FIELDS.FIELD_TYPE_DATE"
+    }
+]
+
+
 
 class CustomAttributesValuesController extends taiga.Controller
     @.$inject = ["$scope", "$rootScope", "$tgRepo", "$tgResources", "$tgConfirm", "$q"]
@@ -118,7 +140,8 @@ CustomAttributesValuesDirective = ($templates, $storage) ->
         template: templateFn
     }
 
-module.directive("tgCustomAttributesValues", ["$tgTemplate", "$tgStorage", "$translate", CustomAttributesValuesDirective])
+module.directive("tgCustomAttributesValues", ["$tgTemplate", "$tgStorage", "$translate",
+                                              CustomAttributesValuesDirective])
 
 
 CustomAttributeValueDirective = ($template, $selectedText, $compile, $translate, datePickerConfigService) ->
@@ -130,7 +153,6 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile, $translate,
 
         render = (attributeValue, edit=false) ->
             value = attributeValue.value
-            innerText = attributeValue.value
             editable = isEditable()
             ctx = {
                 id: attributeValue.id
@@ -138,7 +160,7 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile, $translate,
                 description: attributeValue.description
                 value: value
                 isEditable: editable
-                field_type: attributeValue.field_type
+                type: attributeValue.type
             }
 
             if editable and (edit or not value)
@@ -150,18 +172,17 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile, $translate,
 
             $el.html(html)
 
-            if attributeValue.field_type == "DATE"
+            if attributeValue.type == DATE_TYPE
                 datePickerConfig = datePickerConfigService.get()
 
                 _.merge(datePickerConfig, {
-                    field: $el.find('input')[0]
+                    field: $el.find("input[name=value]")[0]
                     onSelect: (date) =>
                         selectedDate = date
                     onOpen: =>
                         $el.picker.setDate(selectedDate) if selectedDate?
                 })
 
-                selectedDate = null
                 $el.picker = new Pikaday(datePickerConfig)
 
         isEditable = ->
@@ -170,28 +191,32 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile, $translate,
             return permissions.indexOf(requiredEditionPerm) > -1
 
         saveAttributeValue = ->
-            attributeValue.value = $el.find("input, textarea").val()
+            attributeValue.value = $el.find("input[name=value], textarea[name='value']").val()
 
-            if attributeValue.field_type == "DATE"
-                if attributeValue.value
-                    return if moment(attributeValue.value).isValid() != true
-
+            if attributeValue.type is DATE_TYPE
+                if moment(attributeValue.value, prettyDate).isValid()
                     attributeValue.value = moment(attributeValue.value, prettyDate).format("YYYY-MM-DD")
+                else
+                    attributeValue.reset()
+                    return
 
             $scope.$apply ->
                 $ctrl.updateAttributeValue(attributeValue).then ->
-                    if attributeValue.field_type == "DATE" and attributeValue.value
+                    if attributeValue.type is "DATE_TYPE" and attributeValue.value
                         attributeValue.value = moment(attributeValue.value, "YYYY-MM-DD").format(prettyDate)
 
                     render(attributeValue, false)
 
-        $el.on "keyup", "input[name=description], textarea[name='description']", (event) ->
-            if event.keyCode == 13 and event.currentTarget.type != "textarea"
-                submit(event)
-            else if event.keyCode == 27
-              return if attributeValue.field_type == "DATE" and moment(attributeValue.value).isValid() != true
+        submit = debounce 2000, (event) =>
+            event.preventDefault()
+            saveAttributeValue()
 
-              render(attributeValue, false)
+        # Bootstrap
+        attributeValue = $scope.$eval($attrs.tgCustomAttributeValue)
+        if attributeValue.type is DATE_TYPE and attributeValue.value
+            attributeValue.value = moment(attributeValue.value, "YYYY-MM-DD").format(prettyDate)
+
+        render(attributeValue)
 
         ## Actions (on view mode)
         $el.on "click", ".custom-field-value.read-mode", ->
@@ -206,23 +231,18 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile, $translate,
             $el.find("input[name='description'], textarea[name='description']").focus().select()
 
         ## Actions (on edit mode)
-        submit = debounce 2000, (event) =>
-            event.preventDefault()
-            saveAttributeValue()
+        $el.on "keyup", "input[name=value], textarea[name='value']", (event) ->
+            if event.keyCode is 13 and event.currentTarget.type isnt "textarea"
+                submit(event)
+            else if event.keyCode == 27
+                render(attributeValue, false)
 
         $el.on "submit", "form", submit
+
         $el.on "click", "a.icon-floppy", submit
 
         $scope.$on "$destroy", ->
             $el.off()
-
-        # Bootstrap
-        attributeValue = $scope.$eval($attrs.tgCustomAttributeValue)
-
-        if attributeValue.field_type == "DATE" and attributeValue.value
-            attributeValue.value = moment(attributeValue.value, "YYYY-MM-DD").format(prettyDate)
-
-        render(attributeValue)
 
     return {
         link: link
@@ -230,4 +250,5 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile, $translate,
         restrict: "AE"
     }
 
-module.directive("tgCustomAttributeValue", ["$tgTemplate", "$selectedText", "$compile", "$translate", "tgDatePickerConfigService", CustomAttributeValueDirective])
+module.directive("tgCustomAttributeValue", ["$tgTemplate", "$selectedText", "$compile", "$translate",
+                                            "tgDatePickerConfigService", CustomAttributeValueDirective])
