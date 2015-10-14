@@ -32,12 +32,14 @@ div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
                     span.icon.icon-move
                     span.text(translate="BACKLOG.MOVE_US_TO_CURRENT_SPRINT")
                 a.trans-button(
+                    ng-if="userstories.length"
                     href=""
                     title="{{'BACKLOG.FILTERS.TOGGLE' | translate}}"
                     id="show-filters-button"
                     translate="BACKLOG.FILTERS.SHOW"
                 )
                 a.trans-button(
+                    ng-if="userstories.length"
                     href=""
                     title="{{'BACKLOG.TAGS.TOGGLE' | translate}}"
                     id="show-tags"

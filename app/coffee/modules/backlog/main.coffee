@@ -705,12 +705,12 @@ BacklogDirective = ($repo, $rootscope, $translate) ->
             elm.addClass("active")
 
             text = $translate.instant("BACKLOG.TAGS.HIDE")
-            elm.find(".text").text(text)
+            elm.text(text)
         else
             elm.removeClass("active")
 
             text = $translate.instant("BACKLOG.TAGS.SHOW")
-            elm.find(".text").text(text)
+            elm.text(text)
 
     showHideFilter = ($scope, $el, $ctrl) ->
         sidebar = $el.find("sidebar.filters-bar")
