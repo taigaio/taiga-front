@@ -13,6 +13,9 @@ helper.saveWebHook = async function(name, email, key) {
     await inputs.get(1).sendKeys(email);
     await inputs.get(2).sendKeys(key);
 
+    // debounce
+    await browser.sleep(2000);
+
     let newWebHook = await $('.add-new').isDisplayed();
 
     if(newWebHook) {
