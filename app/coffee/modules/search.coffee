@@ -64,11 +64,11 @@ class SearchController extends mixOf(taiga.Controller, taiga.PageMixin)
         promise.then null, @.onInitialDataError.bind(@)
 
         # Search input watcher
-        @scope.searchTerm = ""
+        @scope.searchTerm = null
         loadSearchData = debounceLeading(100, (t) => @.loadSearchData(t))
 
         bindOnce @scope, "projectId", (projectId) =>
-            if !@scope.searchResults
+            if !@scope.searchResults && @scope.searchTerm
                 @.loadSearchData()
 
         @scope.$watch "searchTerm", (term) =>
