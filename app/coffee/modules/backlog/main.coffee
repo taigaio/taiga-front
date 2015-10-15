@@ -581,7 +581,7 @@ BacklogDirective = ($repo, $rootscope, $translate) ->
 
     linkDoomLine = ($scope, $el, $attrs, $ctrl) ->
         reloadDoomLine = ->
-            if $scope.stats?
+            if $scope.stats? and $scope.stats.total_points? and $scope.stats.total_points != 0
                 removeDoomlineDom()
 
                 stats = $scope.stats
