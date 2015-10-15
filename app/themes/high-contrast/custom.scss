@@ -94,11 +94,11 @@ textarea {
     }
 }
 
-
 // Input errors
 .checksley-error-list {
-    background: rgba($whitish, .8);
-    color: $red;
+    @extend %light;
+    background: rgba($red, .7);
+    color: $white;
 }
 
 // Blockquote

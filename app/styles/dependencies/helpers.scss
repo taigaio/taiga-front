@@ -25,10 +25,15 @@
     top: 0;
     z-index: 99910;
     .close {
-        @extend %large;
+        @extend %xlarge;
+        color: $gray;
         position: absolute;
         right: 2rem;
-        top: 2rem;
+        top: 1rem;
+        transition: color .2s;
+        &:hover {
+            color: $primary;
+        }
     }
     &.open {
         align-content: center;
@@ -45,9 +50,7 @@
     .title {
         text-align: center;
     }
-    input,
-    textarea,
-    select {
+    fieldset {
         margin-bottom: 1rem;
     }
     textarea {

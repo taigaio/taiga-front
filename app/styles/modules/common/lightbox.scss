@@ -107,7 +107,6 @@
         max-width: 600px;
     }
     textarea {
-        margin-bottom: 1rem;
         max-height: 12rem;
         min-height: 15rem;
     }
@@ -119,7 +118,7 @@
         flex-grow: 0;
         max-width: 600px;
     }
-    input {
+    fieldset {
         margin-bottom: 1rem;
     }
 }
@@ -147,8 +146,7 @@
     .extra-text {
         margin-top: 1rem;
     }
-    input,
-    select {
+    fieldset {
         margin-bottom: 0;
     }
     select {
@@ -159,6 +157,7 @@
         margin-left: .5rem;
     }
     .icon-delete {
+        @extend %xlarge;
         &:hover {
             color: $red;
         }
