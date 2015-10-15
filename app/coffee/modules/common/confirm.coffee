@@ -245,7 +245,7 @@ class ConfirmService extends taiga.Service
 
             delete @.tsem
 
-        el.on "click", ".icon-delete", (event) =>
+        el.on "click", ".icon-delete, .close", (event) =>
             body.find(selector)
                 .removeClass('active')
                 .addClass('inactive')
