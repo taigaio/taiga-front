@@ -18,10 +18,8 @@ script(type="text/ng-template", id="search-issues")
                 div.status(tg-listitem-issue-status="issue")
                 div.assigned-to(tg-listitem-assignedto="issue")
 
-    div.empty.empty-search-results(ng-class="{'hidden': issues.length}")
-                span.icon.icon-issues
-                span.title(translate="SEARCH.EMPTY_TITLE")
-                span(translate="SEARCH.EMPTY_DESCRIPTION")
+    div.empty-search-results(ng-class="{'hidden': issues.length}")
+        include ../components/empty-search-results
 
 
 script(type="text/ng-template", id="search-userstories")
@@ -42,10 +40,8 @@ script(type="text/ng-template", id="search-userstories")
                 div.status(tg-listitem-us-status="us")
                 div.points(tg-bo-bind="us.total_points")
 
-    div.empty.empty-search-results(ng-class="{'hidden': userstories.length}")
-                span.icon.icon-issues
-                span.title(translate="SEARCH.EMPTY_TITLE")
-                span(translate="SEARCH.EMPTY_DESCRIPTION")
+    div.empty-search-results(ng-class="{'hidden': userstories.length}")
+        include ../components/empty-search-results
 
 script(type="text/ng-template", id="search-tasks")
     div.search-result-table-container(ng-class="{'hidden': !tasks.length}", tg-bind-scope)
@@ -65,10 +61,8 @@ script(type="text/ng-template", id="search-tasks")
                 div.status(tg-listitem-task-status="task")
                 div.assigned-to(tg-listitem-assignedto="task")
 
-    div.empty.empty-search-results(ng-class="{'hidden': tasks.length}")
-                span.icon.icon-issues
-                span.title(translate="SEARCH.EMPTY_TITLE")
-                span(translate="SEARCH.EMPTY_DESCRIPTION")
+    div.empty-search-results(ng-class="{'hidden': tasks.length}")
+        include ../components/empty-search-results
 
 script(type="text/ng-template", id="search-wikipages")
     div.search-result-table-container(ng-class="{'hidden': !wikipages.length}", tg-bind-scope)
@@ -82,7 +76,5 @@ script(type="text/ng-template", id="search-wikipages")
                         a(href="", tg-nav="project-wiki-page:project=project.slug,slug=wikipage.slug",
                             tg-bo-bind="wikipage.slug")
 
-    div.empty.empty-search-results(ng-class="{'hidden': wikipages.length}")
-                span.icon.icon-issues
-                span.title(translate="SEARCH.EMPTY_TITLE")
-                span(translate="SEARCH.EMPTY_DESCRIPTION")
+    div.empty-search-results(ng-class="{'hidden': wikipages.length}")
+        include ../components/empty-search-results

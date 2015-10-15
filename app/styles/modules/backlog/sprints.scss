@@ -1,17 +1,27 @@
 .sprints {
-    .summary {
-        background: darken($whitish, 10%);
+    .sprint-header {
+        align-content: center;
+        align-items: center;
         display: flex;
         justify-content: space-between;
     }
-    .total-sprints {
-        align-items: flex-start;
-        color: $grayer;
-        display: flex;
+    h1 {
+        margin: 0;
     }
     .add-sprint {
-        margin: 0;
-        padding: .3rem 1.5rem;
+        background: $primary;
+        padding: .25rem .25rem 0;
+        transition: background .2s;
+        &:hover {
+            background: $primary-light;
+        }
+        svg {
+            height: 1.4rem;
+            width: 1.5rem;
+        }
+        path {
+            fill: $whitish;
+        }
     }
     .filter-closed-sprints {
         @extend %small;
@@ -229,5 +239,22 @@
     }
     .button-gray {
         background: $gray-light;
+    }
+}
+
+.sprints-empty {
+    @extend %light;
+    text-align: center;
+    img {
+        margin: 1rem 0;
+        width: 50%;
+    }
+    .title {
+        @extend %large;
+        margin-bottom: .5rem;
+        text-transform: uppercase;
+    }
+    a {
+        color: $primary;
     }
 }

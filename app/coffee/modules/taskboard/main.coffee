@@ -184,6 +184,15 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
                 if @scope.usTasks[task.user_story]? and @scope.usTasks[task.user_story][task.status]?
                     @scope.usTasks[task.user_story][task.status].push(task)
 
+            if tasks.length == 0
+                
+                if @scope.userstories.length > 0
+                    usId = @scope.userstories[0].id
+                else
+                    usId = null
+
+                @scope.usTasks[usId][@scope.taskStatusList[0].id].push({isPlaceholder: true})
+
             return tasks
 
     loadTaskboard: ->

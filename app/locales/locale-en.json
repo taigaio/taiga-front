@@ -328,6 +328,7 @@
     "HOME": {
         "PAGE_TITLE": "Home - Taiga",
         "PAGE_DESCRIPTION": "The Taiga home page with your main projects and all your assigned and watched user stories, tasks and issues",
+        "EMPTY_WORKING_ON": "<strong>It feels empty, doesn't it?</strong> Start working with Taiga and you'll see here the stories, tasks and issues you are workin on.",
         "EMPTY_WATCHING": "<strong>Follow</strong> the projects, User Stories, Tasks, Issues... that you want to know about :)",
         "EMPTY_PROJECT_LIST": "You don't have any projects yet",
         "WORKING_ON_SECTION": "Working on",
@@ -420,8 +421,8 @@
             "PROJECT_DETAILS": "Project details",
             "PROJECT_NAME": "Project name",
             "PROJECT_SLUG": "Project slug",
-            "NUMBER_SPRINTS": "Number of sprints",
-            "NUMBER_US_POINTS": "Number of US points",
+            "NUMBER_SPRINTS": "Number of sprints (0 for an undetermined quantity)",
+            "NUMBER_US_POINTS": "Number of US points (0 for an undetermined quantity)",
             "TAGS": "Tags",
             "DESCRIPTION": "Description",
             "PUBLIC_PROJECT": "Public project",
@@ -881,6 +882,10 @@
         "PAGE_TITLE": "Backlog - {{projectName}}",
         "PAGE_DESCRIPTION": "The backlog panel, with user stories and sprints of the project {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Backlog",
+        "CUSTOMIZE_GRAPH": "Customize your backlog graph",
+        "CUSTOMIZE_GRAPH_TEXT": "To have a nice graph that helps you follow the evolution of the project you have to set up the points and sprints through the",
+        "CUSTOMIZE_GRAPH_ADMIN": "Admin",
+        "CUSTOMIZE_GRAPH_TITLE": "Set up the points and sprints through the Admin",
         "MOVE_US_TO_CURRENT_SPRINT": "Move to Current Sprint",
         "SHOW_FILTERS": "Show filters",
         "SHOW_TAGS": "Show tags",
@@ -945,8 +950,9 @@
             "LINK_TASKBOARD": "Sprint Taskboard",
             "TITLE_LINK_TASKBOARD": "Go to Taskboard of \"{{name}}\"",
             "NUMBER_SPRINTS": "<br/>sprints",
-            "TITLE_ACTION_NEW_SPRINT": "+ New sprint",
-            "ACTION_NEW_SPRINT": "+ New sprint",
+            "EMPTY": "YOU HAVE NO SPRINTS",
+            "TITLE_ACTION_NEW_SPRINT": "Add new sprint",
+            "TEXT_ACTION_NEW_SPRINT": "You may want to create a new sprint in your project",
             "ACTION_SHOW_CLOSED_SPRINTS": "Show closed sprints",
             "ACTION_HIDE_CLOSED_SPRINTS": "Hide closed sprints"
         }
@@ -967,6 +973,8 @@
         "TITLE_ACTION_ADD_BULK": "Add some new Tasks in bulk",
         "TITLE_ACTION_ASSIGN": "Assign task",
         "TITLE_ACTION_EDIT": "Edit task",
+        "PLACEHOLDER_CARD_TITLE": "This could be a task",
+        "PLACEHOLDER_CARD_TEXT": "Split Stories into tasks to track them separately",
         "TABLE": {
             "COLUMN": "User story",
             "TITLE_ACTION_FOLD": "Fold column",
@@ -1093,8 +1101,7 @@
             "TITLE_ACTION_ASSIGNED_TO": "Assigned to",
             "EMPTY": {
                 "TITLE": "There are no issues to report :-)",
-                "SUBTITLE": "Did you find an issue?",
-                "ACTION_CREATE_ISSUE": "Create a new Issue"
+                "SUBTITLE": "Did you find an issue?"
             }
         }
     },
@@ -1116,7 +1123,9 @@
         "ACTION_HIDE_ARCHIVED": "Hide archived",
         "HIDDEN_USER_STORIES": "The user stories in this status are hidden by default",
         "ARCHIVED": "You have archived",
-        "UNDO_ARCHIVED": "Drag & drop again to undo"
+        "UNDO_ARCHIVED": "Drag & drop again to undo",
+        "PLACEHOLDER_CARD_TITLE": "These are your User Stories",
+        "PLACEHOLDER_CARD_TEXT": "Stories might also have subtasks to separate requirements"
     },
     "SEARCH": {
         "PAGE_TITLE": "Search - {{projectName}}",

@@ -144,6 +144,7 @@ BacklogEmptySortableDirective = ($repo, $rs, $rootscope) ->
             # If the user has not enough permissions we don't enable the sortable
             if project.my_permissions.indexOf("modify_us") > -1
                 $el.sortable({
+                    items: ".us-item-row",
                     dropOnEmpty: true
                 })
 

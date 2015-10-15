@@ -33,6 +33,11 @@
             color: $white;
         }
     }
+    &.card-placeholder {
+        background: darken($whitish, 2%);
+        border: 3px dashed darken($whitish, 8%);
+        cursor: default;
+    }
     .kanban-tagline {
         border-color: $card-hover;
         display: flex;

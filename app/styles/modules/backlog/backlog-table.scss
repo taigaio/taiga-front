@@ -248,3 +248,20 @@
         padding-right: 45px;
     }
 }
+
+.empty-backlog {
+    @extend %light;
+    padding: 2rem;
+    text-align: center;
+    img {
+        margin-bottom: 1rem;
+    }
+    .title {
+        @extend %large;
+        margin-bottom: .5rem;
+        text-transform: uppercase;
+    }
+    a {
+        color: $primary;
+    }
+}

@@ -4,16 +4,23 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 1rem;
-    padding: .5rem;
     .trans-button {
+        @extend %trans-button;
+        color: $blackish;
         display: inline-block;
-        margin-right: 1rem;
-        padding: .3rem 0;
+        padding: .4rem 1.5rem;
+        &.active,
+        &:hover {
+            background: $gray;
+            color: $whitish;
+        }
+        &.active {
+            &:hover {
+                background: lighten($gray, 30%);
+            }
+        }
         &.move-to-current-sprint {
             display: none;
-        }
-        span {
-            vertical-align: middle;
         }
     }
     .button-bulk {

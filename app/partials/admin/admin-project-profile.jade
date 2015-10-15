@@ -29,7 +29,7 @@ div.wrapper(tg-project-profile, ng-controller="ProjectProfileController as ctrl"
                 label(for="total-story-points", translate="ADMIN.PROJECT_PROFILE.NUMBER_US_POINTS")
                 input(type="number", name="total_story_points", min="0", placeholder="{{'ADMIN.PROJECT_PROFILE.NUMBER_US_POINTS' | translate}}",
                       id="total-story-points", ng-model="project.total_story_points",
-                      data-type="digits", data-required="true")
+                      data-type="digits")
 
             fieldset
                 label(for="tags", translate="ADMIN.PROJECT_PROFILE.TAGS")

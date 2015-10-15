@@ -74,10 +74,7 @@ CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $project
             promise.then(onSuccessSubmit, onErrorSubmit)
 
         openLightbox = ->
-            $scope.data = {
-                total_story_points: 100
-                total_milestones: 5
-            }
+            $scope.data = {}
 
             if !$scope.templates.length
                 $rs.projects.templates().then (result) =>

@@ -4,7 +4,7 @@ div.summary
     div.data
         span.number(ng-bind="stats.completedPercentage + '%'")
 
-    div.summary-stats
+    div.summary-stats(ng-if="stats.total_points")
         span.number(ng-bind="stats.total_points") --
         span.description(translate="BACKLOG.SUMMARY.PROJECT_POINTS")
     div.summary-stats
@@ -17,6 +17,9 @@ div.summary
         span.number(ng-bind="stats.speed | number:0") --
         span.description(translate="BACKLOG.SUMMARY.POINTS_PER_SPRINT")
 
-    
-    div.stats.js-toggle-burndown-visibility-button(title="{{'BACKLOG.SPRINT_SUMMARY.TOGGLE_BAKLOG_GRAPH' | translate}}")
+
+    div.stats.js-toggle-burndown-visibility-button(
+          title="{{'BACKLOG.SPRINT_SUMMARY.TOGGLE_BAKLOG_GRAPH' | translate}}",
+          ng-if="!showGraphPlaceholder"
+        )
         include ../../../svg/graph.svg
