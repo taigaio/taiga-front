@@ -24,7 +24,6 @@ taiga = @.taiga
 mixOf = @.taiga.mixOf
 groupBy = @.taiga.groupBy
 bindOnce = @.taiga.bindOnce
-unslugify = @.taiga.unslugify
 debounce = @.taiga.debounce
 
 module = angular.module("taigaWiki")
@@ -56,6 +55,7 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
                   @filter, @log, @appMetaService, @navUrls, @analytics, @translate) ->
         @scope.projectSlug = @params.pslug
         @scope.wikiSlug = @params.slug
+        @scope.wikiTitle = @scope.wikiSlug
         @scope.sectionName = "Wiki"
 
         promise = @.loadInitialData()
@@ -68,7 +68,7 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     _setMeta: ->
         title =  @translate.instant("WIKI.PAGE_TITLE", {
-            wikiPageName: unslugify(@scope.wiki.slug)
+            wikiPageName: @scope.wikiTitle
             projectName: @scope.project.name
         })
         description =  @translate.instant("WIKI.PAGE_DESCRIPTION", {
@@ -112,6 +112,8 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
     loadWikiLinks: ->
         return @rs.wiki.listLinks(@scope.projectId).then (wikiLinks) =>
             @scope.wikiLinks = wikiLinks
+            selectedWikiLink = _.find(wikiLinks, {href: @scope.wikiSlug})
+            @scope.wikiTitle = selectedWikiLink.title if selectedWikiLink?
 
     loadInitialData: ->
         promise = @.loadProject()
@@ -122,7 +124,7 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     delete: ->
         title = @translate.instant("WIKI.DELETE_LIGHTBOX_TITLE")
-        message = unslugify(@scope.wiki.slug)
+        message = @scope.wikiTitle
 
         @confirm.askOnDelete(title, message).then (finish) =>
             onSuccess = =>
