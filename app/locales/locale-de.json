@@ -36,7 +36,7 @@
         "EXTERNAL_USER": "ein externer Benutzer",
         "GENERIC_ERROR": "Eins unserer Helferlein sagt {{error}}.",
         "IOCAINE_TEXT": "Fühlen Sie sich von einer Aufgabe etwas erdrückt? Stellen Sie sicher, dass andere davon erfahren, indem Sie auf Locaine klicken, wenn Sie eine Aufgabe ändern. Es ist möglich, gegen dieses (fiktive) tödliche Gift immun zu werden, indem man kleine Mengen über einen Zeitraum hinweg einnimmt. Genauso, wie es möglich ist, besser in dem zu werden, was man tut, indem man gelegentlich zusätzliche Herausforderungen annimmt! ",
-        "CAPSLOCK_WARNING": "Be careful! You're writing with capital letters and this input is case sensitive.",
+        "CAPSLOCK_WARNING": "Achtung! Du schreibst in Großbuchstaben und bei diesem Feld ist Groß- und Kleinschreibung zu beachten.",
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Dieser Wert scheint ungültig zu sein. ",
             "TYPE_EMAIL": "Dieser Wert sollte eine gültige E-Mail Adresse enthalten.",
@@ -1266,11 +1266,11 @@
         "NEW_USER": "{{username}} ist Taiga beigetreten"
     },
     "EXTERNAL_APP": {
-        "PAGE_TITLE": "An external app requires authentication",
-        "PAGE_DESCRIPTION": "An external app requires authentication",
-        "AUTHORIZATION_REQUEST": "Authorize {{application}} to use your Taiga account?",
-        "LOGIN_WITH_ANOTHER_USER": "Login with another user",
-        "AUTHORIZE_APP": "Authorize app",
+        "PAGE_TITLE": "Eine externe App erfordert Authentifizierung",
+        "PAGE_DESCRIPTION": "Eine externe App erfordert Authentifizierung",
+        "AUTHORIZATION_REQUEST": "{{application}} erlauben deinen Taiga Account zu nutzen?",
+        "LOGIN_WITH_ANOTHER_USER": "Mit einem anderen Benutzer einloggen",
+        "AUTHORIZE_APP": "App authorisieren",
         "CANCEL": "Abbrechen"
     }
 }
