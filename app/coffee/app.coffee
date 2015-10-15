@@ -66,6 +66,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
             access: {
                 requiresLogin: true
             },
+            loader: true,
             title: "HOME.PAGE_TITLE",
             description: "HOME.PAGE_DESCRIPTION",
         }
