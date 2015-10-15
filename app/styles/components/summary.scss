@@ -189,5 +189,10 @@ $summary-background: $grayer;
 }
 
 .graphics-container {
-    @include slide(300px, hidden, 0);
+    $height: 300px;
+    @include slide($height, hidden, 0);
+    &.shown {
+        max-height: $height;
+        transition: none;
+    }
 }

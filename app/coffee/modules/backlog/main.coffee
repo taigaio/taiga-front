@@ -935,17 +935,31 @@ module.directive("tgBacklogUsPoints", ["$tgEstimationsService", "$tgRepo", "$tgT
 ## Burndown graph directive
 #############################################################################
 ToggleBurndownVisibility = ($storage) ->
+    hide = () ->
+        $(".js-burndown-graph").removeClass("shown")
+        $(".js-toggle-burndown-visibility-button").removeClass("active")
+        $(".js-burndown-graph").removeClass("open")
+
+    show = (firstLoad) ->
+        $(".js-toggle-burndown-visibility-button").addClass("active")
+
+        if firstLoad
+            $(".js-burndown-graph").addClass("shown")
+        else
+            $(".js-burndown-graph").addClass("open")
+
     link = ($scope, $el, $attrs) ->
+        firstLoad = true
         hash = generateHash(["is-burndown-grpahs-collapsed"])
         $scope.isBurndownGraphCollapsed = $storage.get(hash) or false
 
         toggleGraph = ->
             if $scope.isBurndownGraphCollapsed
-                $(".js-toggle-burndown-visibility-button").removeClass("active")
-                $(".js-burndown-graph").removeClass("open")
+                hide(firstLoad)
             else
-                $(".js-toggle-burndown-visibility-button").addClass("active")
-                $(".js-burndown-graph").addClass("open")
+                show(firstLoad)
+
+            firstLoad = false
 
         $scope.$watch "showGraphPlaceholder", () ->
             if $scope.showGraphPlaceholder?
