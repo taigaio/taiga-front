@@ -24,18 +24,17 @@ div.taskboard-table(tg-taskboard-squish-column)
                         span(ng-bind="us.total_points")
                         span(translate="TASKBOARD.TABLE.FIELD_POINTS")
                     include ../components/addnewtask
-                    
+
                 div.taskboard-tasks-box.task-column(ng-repeat="st in taskStatusList track by st.id", tg-taskboard-sortable, class="squish-status-{{st.id}}", ng-class="{'column-fold':statusesFolded[st.id]}", tg-bind-scope)
                     div.taskboard-task(
                         ng-repeat="task in usTasks[us.id][st.id] track by task.id"
-                        tg-taskboard-task
                         tg-bind-scope
                         tg-class-permission="{'readonly': '!modify_task'}"
                         ng-class="{'card-placeholder': task.isPlaceholder}"
                     )
-                        div(ng-if="!task.isPlaceholder")
+                        div(ng-if="!task.isPlaceholder", tg-taskboard-task)
                             include ../components/taskboard-task
-                        
+
                         div(ng-if="task.isPlaceholder")
                             - var card = 'task'
                             include ../../common/components/taskboard-placeholder
@@ -57,6 +56,6 @@ div.taskboard-table(tg-taskboard-squish-column)
                     )
                         div(ng-if="!task.isPlaceholder")
                             include ../components/taskboard-task
-                        
+
                         div(ng-if="task.isPlaceholder")
                             include ../../common/components/taskboard-placeholder
