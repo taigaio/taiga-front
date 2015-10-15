@@ -24,8 +24,6 @@ taiga = @.taiga
 mixOf = @.taiga.mixOf
 groupBy = @.taiga.groupBy
 bindOnce = @.taiga.bindOnce
-slugify = @.taiga.slugify
-unslugify = @.taiga.slugify
 
 module = angular.module("taigaWiki")
 
@@ -108,7 +106,7 @@ WikiNavDirective = ($tgrepo, $log, $location, $confirm, $navUrls, $analytics, $l
                         .target($el.find(".new"))
                         .start()
 
-                    promise = $tgrepo.create("wiki-links", {project: $scope.projectId, title: newLink, href: slugify(newLink)})
+                    promise = $tgrepo.create("wiki-links", {project: $scope.projectId, title: newLink})
                     promise.then ->
                         $analytics.trackEvent("wikilink", "create", "create wiki link", 1)
                         loadPromise = $ctrl.loadWikiLinks()

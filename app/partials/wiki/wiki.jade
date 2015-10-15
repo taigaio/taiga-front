@@ -10,7 +10,7 @@ div.wrapper(ng-controller="WikiDetailController as ctrl",
             h1
                 span(tg-bo-bind="project.name")
                 span.green(translate="PROJECT.SECTION.WIKI")
-                span.wiki-title(tg-bo-bind='wikiSlug|unslugify')
+                span.wiki-title(ng-bind='wikiTitle')
 
         div.summary.wiki-summary(tg-wiki-summary, ng-model="wiki", ng-if="wiki.id")
         section.wiki-content(tg-editable-wiki-content, ng-model="wiki")
