@@ -299,7 +299,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         newSprint = @scope.sprintsById[newSprintId]
 
         # Move to closed sprint
-        if !newSprint
+        if !newSprint && newSprintId
             newSprint = @scope.closedSprintsById[newSprintId]
             movedToClosedSprint = true if newSprint
 
