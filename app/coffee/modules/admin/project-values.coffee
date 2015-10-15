@@ -374,6 +374,27 @@ module.directive("tgColorSelection", ColorSelectionDirective)
 ## Custom Attributes Controller
 #############################################################################
 
+# Custom attributes types (see taiga-back/taiga/projects/custom_attributes/choices.py)
+TEXT_TYPE = "text"
+MULTILINE_TYPE = "multiline"
+DATE_TYPE = "date"
+
+
+TYPE_CHOICES = [
+    {
+        key: TEXT_TYPE,
+        name: "ADMIN.CUSTOM_FIELDS.FIELD_TYPE_TEXT"
+    },
+    {
+        key: MULTILINE_TYPE,
+        name: "ADMIN.CUSTOM_FIELDS.FIELD_TYPE_MULTI"
+    },
+    {
+        key: DATE_TYPE,
+        name: "ADMIN.CUSTOM_FIELDS.FIELD_TYPE_DATE"
+    }
+]
+
 class ProjectCustomAttributesController extends mixOf(taiga.Controller, taiga.PageMixin)
     @.$inject = [
         "$scope",
@@ -390,6 +411,8 @@ class ProjectCustomAttributesController extends mixOf(taiga.Controller, taiga.Pa
 
     constructor: (@scope, @rootscope, @repo, @rs, @params, @q, @location, @navUrls, @appMetaService,
                   @translate) ->
+        @scope.TYPE_CHOICES = TYPE_CHOICES
+
         @scope.project = {}
 
         @rootscope.$on "project:loaded", =>
