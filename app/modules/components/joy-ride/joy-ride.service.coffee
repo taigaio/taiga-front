@@ -2,7 +2,7 @@ joyRides = {
     dashboard: () ->
         return [
             {
-                element: '.home-project-list',
+                element: '.project-list > section:not(.ng-hide)',
                 position: 'left',
                 joyride: {
                     title: @translate.instant('JOYRIDE.DASHBOARD.STEP1.TITLE'),
