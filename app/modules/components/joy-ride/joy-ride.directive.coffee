@@ -12,7 +12,8 @@ JoyRideDirective = ($rootScope, currentUserService, joyRideService) ->
             nextLabel: 'Next &rarr;',
             prevLabel: '&larr; Back',
             skipLabel: 'Skip',
-            doneLabel: 'Done'
+            doneLabel: 'Done',
+            disableInteraction: true
         })
 
         intro.oncomplete () ->
