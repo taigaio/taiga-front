@@ -4,11 +4,6 @@ fieldset {
     padding: 0;
     position: relative;
     width: 100%;
-    label {
-        ~.checksley-error-list {
-            top: 31px;
-        }
-    }
     .icon-capslock {
         cursor: pointer;
     }
@@ -38,12 +33,7 @@ textarea {
 
 
 .checksley-error-list {
-    @extend %small;
     margin-bottom: 0;
-    padding: 0 .5rem;
-    position: absolute;
-    right: 2rem;
-    top: 10px;
     li {
         padding: .2rem;
     }
