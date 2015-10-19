@@ -8,7 +8,10 @@ section.issues-table.basic-table(ng-class="{empty: !issues.length}")
         div.created-field(data-fieldname="created_date", translate="ISSUES.TABLE.COLUMNS.CREATED")
         div.assigned-field(data-fieldname="assigned_to", translate="ISSUES.TABLE.COLUMNS.ASSIGNED_TO")
 
-    div.row.table-main(ng-repeat="issue in issues track by issue.id")
+    div.row.table-main(
+        ng-repeat="issue in issues track by issue.id"
+        ng-class="{'is-blocked': issue.is_blocked}"
+    )
         div.level-field(tg-listitem-type="issue")
         div.level-field(tg-listitem-severity="issue")
         div.level-field(tg-listitem-priority="issue")
@@ -16,6 +19,10 @@ section.issues-table.basic-table(ng-class="{empty: !issues.length}")
             a(href="", tg-nav="project-issues-detail:project=project.slug,ref=issue.ref",
               title="#{{ ::issue.ref }} {{ ::issue.subject }}")
                 span(tg-bo-ref="issue.ref")
+                span.blocked-text(
+                    ng-if="issue.is_blocked"
+                    title="{{issue.blocked_note}}"
+                ) {{'ISSUES.TABLE.BLOCKED' | translate}}
                 span(ng-bind="issue.subject")
 
         div.issue-field(tg-issue-status-inline-edition="issue")

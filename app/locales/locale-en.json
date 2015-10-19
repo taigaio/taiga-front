@@ -1103,6 +1103,7 @@
             },
             "TITLE_ACTION_CHANGE_STATUS": "Change status",
             "TITLE_ACTION_ASSIGNED_TO": "Assigned to",
+            "BLOCKED": "Blocked",
             "EMPTY": {
                 "TITLE": "There are no issues to report :-)",
                 "SUBTITLE": "Did you find an issue?"
