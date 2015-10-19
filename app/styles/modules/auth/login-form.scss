@@ -2,19 +2,21 @@
     .login-password {
         position: relative;
     }
-    input:focus {
-        +.forgot-pass {
-            opacity: 0;
-            transition: opacity .5s linear;
+    input {
+        &:focus {
+            +.forgot-pass {
+                opacity: 0;
+                transition: opacity .3s linear;
+            }
         }
     }
     .forgot-pass {
         @extend %small;
-        color: $gray-light;
+        color: $gray;
         opacity: 1;
         position: absolute;
         right: 1rem;
-        top: .5rem;
+        top: .6rem;
         transition: all .3s linear;
         &:hover {
             color: $grayer;

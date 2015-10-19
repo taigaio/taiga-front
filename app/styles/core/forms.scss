@@ -4,11 +4,7 @@ fieldset {
     padding: 0;
     position: relative;
     width: 100%;
-    .icon-capslock {
-        cursor: pointer;
-    }
 }
-
 input[type="text"],
 input[type="number"],
 input[type="password"],
@@ -25,16 +21,20 @@ textarea {
         transition: border .3s linear;
     }
 }
-
 textarea {
     min-height: 10rem;
     resize: vertical;
 }
-
-
 .checksley-error-list {
     margin-bottom: 0;
     li {
         padding: .2rem;
     }
+}
+.icon-capslock {
+    bottom: .6rem;
+    color: $gray;
+    display: none;
+    position: absolute;
+    right: 1rem;
 }
