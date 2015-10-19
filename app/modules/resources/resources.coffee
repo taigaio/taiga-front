@@ -1,5 +1,6 @@
 services = [
     "tgProjectsResources",
+    "tgUserResources",
     "tgUsersResources",
     "tgUserstoriesResource",
     "tgTasksResource",

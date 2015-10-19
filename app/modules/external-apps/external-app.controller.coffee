@@ -12,8 +12,8 @@ class ExternalAppController extends taiga.Controller
         "tgLoader"
     ]
 
-    constructor: (@routeParams, @externalAppsService, @window, @currentUserService, @location, @navUrls,
-    @xhrError, @loader) ->
+    constructor: (@routeParams, @externalAppsService, @window, @currentUserService, @location,
+    @navUrls, @xhrError, @loader) ->
         @loader.start(false)
         @._applicationId = @routeParams.application
         @._state = @routeParams.state

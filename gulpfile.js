@@ -58,7 +58,10 @@ paths.htmlPartials = [
 
 paths.images = paths.app + "images/**/*";
 paths.svg = paths.app + "svg/**/*";
-paths.css_vendor = paths.app + "styles/vendor/*.css";
+paths.css_vendor = [
+    paths.app + "styles/vendor/*.css",
+    paths.vendor + "intro.js/introjs.css"
+];
 paths.locales = paths.app + "locales/**/*.json";
 
 paths.sass = [
@@ -164,6 +167,7 @@ paths.libs = [
     paths.vendor + "ngInfiniteScroll/build/ng-infinite-scroll.js",
     paths.vendor + "eventemitter2/lib/eventemitter2.js",
     paths.vendor + "immutable/dist/immutable.js",
+    paths.vendor + "intro.js/intro.js",
     paths.app + "js/jquery.ui.git-custom.js",
     paths.app + "js/jquery-ui.drag-multiple-custom.js",
     paths.app + "js/jquery.ui.touch-punch.min.js",
@@ -244,7 +248,7 @@ gulp.task("scss-lint", [], function() {
             };
           }
         })))
-        .pipe(gulpif(fail, scsslint.failReporter()))
+        .pipe(gulpif(fail, scsslint.failReporter()));
 });
 
 gulp.task("clear-sass-cache", function() {
@@ -311,7 +315,7 @@ gulp.task("main-css", function() {
     return gulp.src(_paths)
         .pipe(concat("theme-" + themes.current.name + ".css"))
         .pipe(gulpif(isDeploy, minifyCSS({noAdvanced: true})))
-        .pipe(gulp.dest(paths.dist + "styles/"))
+        .pipe(gulp.dest(paths.dist + "styles/"));
 });
 
 var compileThemes = function (cb) {
@@ -322,7 +326,7 @@ var compileThemes = function (cb) {
                        ["app-css", "vendor-css"],
                        "main-css",
                        function() {
-                           themes.next()
+                           themes.next();
 
                            if (themes.current) {
                                compileThemes(cb);
