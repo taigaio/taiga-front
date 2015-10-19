@@ -1,7 +1,7 @@
 .admin-roles {
     .role-name {
         @extend %xlarge;
-        @extend %title;
+        @extend %light;
         color: $grayer;
     }
     .edit-value {
@@ -13,11 +13,10 @@
         transition: opacity .3s linear;
     }
     .edit-role {
-        align-items: left;
         background-color: $whitish;
         display: none;
         margin-bottom: 1rem;
-        padding: .5rem;
+        padding: .3rem 1rem;
         input {
             background-color: $white;
             width: 50%;
@@ -39,13 +38,15 @@
         padding: .5rem;
     }
     .general-category {
+        @extend %light;
+        @extend %small;
         align-items: center;
         display: flex;
         justify-content: flex-end;
         padding-bottom: 2rem;
         .check {
             margin-left: .5rem;
-            input { // IE needs smaller size
+            input {
                 height: 40px;
                 width: 85px;
             }
