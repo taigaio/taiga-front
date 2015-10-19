@@ -9,6 +9,15 @@ describe "tgJoyRideService", ->
 
         provide.value "$translate", mocks.translate
 
+    _mockCheckPermissionsService = () ->
+        mocks.checkPermissionsService = {
+            check: sinon.stub()
+        }
+
+        mocks.checkPermissionsService.check.returns(true)
+
+        provide.value "tgCheckPermissionsService", mocks.checkPermissionsService
+
     _inject = (callback) ->
         inject (_tgJoyRideService_) ->
             joyRideService = _tgJoyRideService_
@@ -18,6 +27,7 @@ describe "tgJoyRideService", ->
         module ($provide) ->
             provide = $provide
             _mockTranslate()
+            _mockCheckPermissionsService()
             return null
 
     _setup = ->
@@ -30,7 +40,7 @@ describe "tgJoyRideService", ->
 
     it "get joyride by category", () ->
         example = {
-            element: '.home-project-list',
+            element: '.project-list > section:not(.ng-hide)',
             position: 'left',
             joyride: {
                 title: 'test',
