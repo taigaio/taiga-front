@@ -359,7 +359,7 @@ class CsvExporterController extends taiga.Controller
     setCsvUuid: =>
         @scope.csvUuid = @scope.project["#{@.type}_csv_uuid"]
 
-    _generateUuid: (finish) =>
+    _generateUuid: (response=null) =>
         promise = @rs.projects["regenerate_#{@.type}_csv_uuid"](@scope.projectId)
 
         promise.then (data) =>
@@ -369,7 +369,7 @@ class CsvExporterController extends taiga.Controller
             @confirm.notify("error")
 
         promise.finally ->
-            finish()
+            response.finish() if response
         return promise
 
     regenerateUuid: ->
@@ -379,7 +379,7 @@ class CsvExporterController extends taiga.Controller
 
             @confirm.ask(title, subtitle).then @._generateUuid
         else
-            @._generateUuid(_.identity)
+            @._generateUuid()
 
 
 class CsvExporterUserstoriesController extends CsvExporterController
