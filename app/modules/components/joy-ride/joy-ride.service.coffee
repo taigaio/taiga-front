@@ -80,7 +80,7 @@ class JoyRideService extends taiga.Service
                       }
                   }
               ]
-              
+
               if @checkPermissionsService.check('add_us')
                   steps.push({
                       element: '.new-us',
@@ -94,7 +94,7 @@ class JoyRideService extends taiga.Service
               return steps
 
            kanban: () =>
-              return [
+              steps = [
                   {
                       element: '.kanban-table-inner',
                       position: 'bottom',
@@ -110,19 +110,23 @@ class JoyRideService extends taiga.Service
                           title: @translate.instant('JOYRIDE.KANBAN.STEP2.TITLE')
                           text: @translate.instant('JOYRIDE.KANBAN.STEP2.TEXT')
                       }
-                  },
-                  {
-                      element: '.icon-plus',
-                      position: 'bottom',
-                      joyride: {
-                          title: @translate.instant('JOYRIDE.KANBAN.STEP3.TITLE')
-                          text: [
-                              @translate.instant('JOYRIDE.KANBAN.STEP3.TEXT1'),
-                              @translate.instant('JOYRIDE.KANBAN.STEP3.TEXT2'),
-                          ]
-                      }
                   }
               ]
+
+              if @checkPermissionsService.check('add_us')
+                  steps.push({
+                        element: '.icon-plus',
+                        position: 'bottom',
+                        joyride: {
+                            title: @translate.instant('JOYRIDE.KANBAN.STEP3.TITLE')
+                            text: [
+                                @translate.instant('JOYRIDE.KANBAN.STEP3.TEXT1'),
+                                @translate.instant('JOYRIDE.KANBAN.STEP3.TEXT2'),
+                            ]
+                        }
+                    })
+
+              return steps
       }
 
     get: (name) ->
