@@ -146,6 +146,14 @@
         }
     }
     .sprint-table {
+        .sprint-empty {
+            @extend %light;
+            background: lighten($gray-light, 18%);
+            border: 2px dashed lighten($gray-light, 10%);
+            color: $gray;
+            padding: 1rem;
+            text-align: center;
+        }
         .row {
             border-bottom: 1px solid $gray-light;
             display: flex;
