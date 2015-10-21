@@ -51,12 +51,12 @@
         flex: 0;
         flex-basis: 200px;
         .custom-field-name {
-            @extend %bold;
             display: block;
         }
         .custom-field-description {
             @extend %small;
-            color: $gray-light;
+            @extend %light;
+            color: lighten($gray, 20%);
             display: block;
             line-height: .9rem;
         }
@@ -65,14 +65,10 @@
         margin: 0;
     }
     .custom-field-value {
+        @extend %light;
         flex: 1;
         padding: 0 1rem 0 2rem;
-        .read-mode {
-            white-space: pre;
-        }
-    }
-    .read-mode {
-        white-space: pre;
+        white-space: pre-line;
     }
     form {
         label {

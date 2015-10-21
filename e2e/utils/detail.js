@@ -250,7 +250,7 @@ helper.customFields = function(typeIndex) {
         // debounce
         await browser.sleep(2000);
 
-        let fieldText = textField.$('.read-mode span').getText();
+        let fieldText = textField.$('.custom-field-value span').getText();
 
         expect(fieldText).to.be.eventually.equal('test text');
     });
@@ -269,7 +269,7 @@ helper.customFields = function(typeIndex) {
         // debounce
         await browser.sleep(2000);
 
-        let fieldText = textField.$('.read-mode span').getText();
+        let fieldText = textField.$('.custom-field-value span').getText();
 
         expect(fieldText).to.be.eventually.equal('test text edit');
     });
@@ -286,7 +286,7 @@ helper.customFields = function(typeIndex) {
         // debounce
         await browser.sleep(2000);
 
-        let fieldText = textField.$('.read-mode span').getText();
+        let fieldText = textField.$('.custom-field-value span').getText();
 
         expect(fieldText).to.be.eventually.equal('test text2');
     });
@@ -303,7 +303,7 @@ helper.customFields = function(typeIndex) {
 
         // // debounce
         await browser.sleep(2000);
-        let fieldText = await textField.$('.read-mode span').getText();
+        let fieldText = await textField.$('.custom-field-value span').getText();
 
         expect(fieldText).to.be.equal('test text2 edit');
     });
