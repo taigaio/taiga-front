@@ -152,8 +152,12 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile, $translate,
         prettyDate = $translate.instant("COMMON.PICKERDATE.FORMAT")
 
         render = (attributeValue, edit=false) ->
-            value = attributeValue.value
+            if attributeValue.type is DATE_TYPE and attributeValue.value
+                value = moment(attributeValue.value, "YYYY-MM-DD").format(prettyDate)
+            else
+                value = attributeValue.value
             editable = isEditable()
+
             ctx = {
                 id: attributeValue.id
                 name: attributeValue.name
@@ -190,15 +194,15 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile, $translate,
             requiredEditionPerm = $attrs.requiredEditionPerm
             return permissions.indexOf(requiredEditionPerm) > -1
 
-        saveAttributeValue = ->
-            attributeValue.value = $el.find("input[name=value], textarea[name='value']").val()
+        submit = debounce 2000, (event) =>
+            event.preventDefault()
 
+            attributeValue.value = $el.find("input[name=value], textarea[name='value']").val()
             if attributeValue.type is DATE_TYPE
                 if moment(attributeValue.value, prettyDate).isValid()
                     attributeValue.value = moment(attributeValue.value, prettyDate).format("YYYY-MM-DD")
                 else
-                    attributeValue.reset()
-                    return
+                    attributeValue.value = ""
 
             $scope.$apply ->
                 $ctrl.updateAttributeValue(attributeValue).then ->
@@ -207,28 +211,21 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile, $translate,
 
                     render(attributeValue, false)
 
-        submit = debounce 2000, (event) =>
-            event.preventDefault()
-            saveAttributeValue()
-
         # Bootstrap
         attributeValue = $scope.$eval($attrs.tgCustomAttributeValue)
-        if attributeValue.type is DATE_TYPE and attributeValue.value
-            attributeValue.value = moment(attributeValue.value, "YYYY-MM-DD").format(prettyDate)
-
         render(attributeValue)
 
         ## Actions (on view mode)
-        $el.on "click", ".custom-field-value.read-mode", ->
+        $el.on "click", ".custom-field-value", ->
             return if not isEditable()
             return if $selectedText.get().length
             render(attributeValue, true)
-            $el.find("input[name='description'], textarea[name='description']").focus().select()
+            $el.find("input[name='value'], textarea[name='value']").focus()
 
         $el.on "click", "a.icon-edit", (event) ->
             event.preventDefault()
             render(attributeValue, true)
-            $el.find("input[name='description'], textarea[name='description']").focus().select()
+            $el.find("input[name='value'], textarea[name='value']").focus()
 
         ## Actions (on edit mode)
         $el.on "keyup", "input[name=value], textarea[name='value']", (event) ->
