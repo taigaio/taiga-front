@@ -170,24 +170,22 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile, $translate,
             if editable and (edit or not value)
                 html = templateEdit(ctx)
                 html = $compile(html)($scope)
+                $el.html(html)
+
+                if attributeValue.type == DATE_TYPE
+                    datePickerConfig = datePickerConfigService.get()
+                    _.merge(datePickerConfig, {
+                        field: $el.find("input[name=value]")[0]
+                        onSelect: (date) =>
+                            selectedDate = date
+                        onOpen: =>
+                            $el.picker.setDate(selectedDate) if selectedDate?
+                    })
+                    $el.picker = new Pikaday(datePickerConfig)
             else
                 html = template(ctx)
                 html = $compile(html)($scope)
-
-            $el.html(html)
-
-            if attributeValue.type == DATE_TYPE
-                datePickerConfig = datePickerConfigService.get()
-
-                _.merge(datePickerConfig, {
-                    field: $el.find("input[name=value]")[0]
-                    onSelect: (date) =>
-                        selectedDate = date
-                    onOpen: =>
-                        $el.picker.setDate(selectedDate) if selectedDate?
-                })
-
-                $el.picker = new Pikaday(datePickerConfig)
+                $el.html(html)
 
         isEditable = ->
             permissions = $scope.project.my_permissions
@@ -206,26 +204,26 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile, $translate,
 
             $scope.$apply ->
                 $ctrl.updateAttributeValue(attributeValue).then ->
-                    if attributeValue.type is "DATE_TYPE" and attributeValue.value
-                        attributeValue.value = moment(attributeValue.value, "YYYY-MM-DD").format(prettyDate)
-
                     render(attributeValue, false)
+
+        setFocusOnInputField = ->
+            $el.find("input[name='value'], textarea[name='value']").focus()
 
         # Bootstrap
         attributeValue = $scope.$eval($attrs.tgCustomAttributeValue)
         render(attributeValue)
 
         ## Actions (on view mode)
-        $el.on "click", ".custom-field-value", ->
+        $el.on "click", ".js-value-view-mode", ->
             return if not isEditable()
             return if $selectedText.get().length
             render(attributeValue, true)
-            $el.find("input[name='value'], textarea[name='value']").focus()
+            setFocusOnInputField()
 
         $el.on "click", "a.icon-edit", (event) ->
             event.preventDefault()
             render(attributeValue, true)
-            $el.find("input[name='value'], textarea[name='value']").focus()
+            setFocusOnInputField()
 
         ## Actions (on edit mode)
         $el.on "keyup", "input[name=value], textarea[name='value']", (event) ->
