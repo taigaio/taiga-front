@@ -24,7 +24,7 @@ class UserTimelineItemTitle
 
             if user.get('is_profile_visible')
                 title_attr = @translate.instant('COMMON.SEE_USER_PROFILE', {username: user.get('username')})
-                url = "user-profile:username=vm.timeline.getIn(['data', 'user', 'username'])"
+                url = "user-profile:username=timeline.getIn(['data', 'user', 'username'])"
 
                 return @._getLink(url, user.get('name'), title_attr)
             else
@@ -36,7 +36,7 @@ class UserTimelineItemTitle
             return @translate.instant(@._fieldTranslationKey[field_name])
 
         project_name: (timeline, event) ->
-            url = "project:project=vm.timeline.getIn(['data', 'project', 'slug'])"
+            url = "project:project=timeline.getIn(['data', 'project', 'slug'])"
 
             return @._getLink(url, timeline.getIn(["data", "project", "name"]))
 
@@ -53,7 +53,7 @@ class UserTimelineItemTitle
                 return timeline.getIn(["data", "value_diff", "value"]).first().get(1)
 
         sprint_name: (timeline, event) ->
-            url = "project-taskboard:project=vm.timeline.getIn(['data', 'project', 'slug']),sprint=vm.timeline.getIn(['data', 'milestone', 'slug'])"
+            url = "project-taskboard:project=timeline.getIn(['data', 'project', 'slug']),sprint=timeline.getIn(['data', 'milestone', 'slug'])"
 
             return @._getLink(url, timeline.getIn(['data', 'milestone', 'name']))
 
@@ -95,12 +95,12 @@ class UserTimelineItemTitle
 
     _getDetailObjUrl: (event) ->
         url = {
-            "issue": ["project-issues-detail", ":project=vm.timeline.getIn(['data', 'project', 'slug']),ref=vm.timeline.getIn(['obj', 'ref'])"],
-            "wikipage": ["project-wiki-page", ":project=vm.timeline.getIn(['data', 'project', 'slug']),slug=vm.timeline.getIn(['obj', 'ref'])"],
-            "task": ["project-tasks-detail", ":project=vm.timeline.getIn(['data', 'project', 'slug']),ref=vm.timeline.getIn(['obj', 'ref'])"],
-            "userstory": ["project-userstories-detail", ":project=vm.timeline.getIn(['data', 'project', 'slug']),ref=vm.timeline.getIn(['obj', 'ref'])"],
-            "parent_userstory": ["project-userstories-detail", ":project=vm.timeline.getIn(['data', 'project', 'slug']),ref=vm.timeline.getIn(['obj', 'userstory', 'ref'])"],
-            "milestone": ["project-taskboard", ":project=vm.timeline.getIn(['data', 'project', 'slug']),ref=vm.timeline.getIn(['obj', 'ref'])"]
+            "issue": ["project-issues-detail", ":project=timeline.getIn(['data', 'project', 'slug']),ref=timeline.getIn(['obj', 'ref'])"],
+            "wikipage": ["project-wiki-page", ":project=timeline.getIn(['data', 'project', 'slug']),slug=timeline.getIn(['obj', 'slug'])"],
+            "task": ["project-tasks-detail", ":project=timeline.getIn(['data', 'project', 'slug']),ref=timeline.getIn(['obj', 'ref'])"],
+            "userstory": ["project-userstories-detail", ":project=timeline.getIn(['data', 'project', 'slug']),ref=timeline.getIn(['obj', 'ref'])"],
+            "parent_userstory": ["project-userstories-detail", ":project=timeline.getIn(['data', 'project', 'slug']),ref=timeline.getIn(['obj', 'userstory', 'ref'])"],
+            "milestone": ["project-taskboard", ":project=timeline.getIn(['data', 'project', 'slug']),ref=timeline.getIn(['obj', 'ref'])"]
         }
 
         return url[event.obj][0] + url[event.obj][1]

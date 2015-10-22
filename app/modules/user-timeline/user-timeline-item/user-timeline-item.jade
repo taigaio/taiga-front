@@ -1,29 +1,29 @@
 div.activity-item
-    span.activity-date {{::vm.timeline.get('created') | momentFromNow}}
+    span.activity-date {{::timeline.get('created') | momentFromNow}}
 
-    div.activity-info(tg-user-timeline-title="vm.timeline")
+    div.activity-info(tg-user-timeline-title="timeline")
 
     div.activity-info
         // profile image with url
-        div.profile-contact-picture(ng-if="vm.timeline.getIn(['data', 'user', 'is_profile_visible'])")
-            a(tg-nav="user-profile:username=vm.timeline.getIn(['data', 'user', 'username'])", title="{{::vm.timeline.getIn(['data', 'user', 'name']) }}")
-                img(ng-src="{{::vm.timeline.getIn(['data', 'user', 'photo']) || '/images/user-noimage.png'}}", alt="{{::vm.timeline.getIn(['data', 'user', 'name'])}}")
+        div.profile-contact-picture(ng-if="timeline.getIn(['data', 'user', 'is_profile_visible'])")
+            a(tg-nav="user-profile:username=timeline.getIn(['data', 'user', 'username'])", title="{{::timeline.getIn(['data', 'user', 'name']) }}")
+                img(ng-src="{{::timeline.getIn(['data', 'user', 'photo']) || '/images/user-noimage.png'}}", alt="{{::timeline.getIn(['data', 'user', 'name'])}}")
         // profile image without url
-        div.profile-contact-picture(ng-if="!vm.timeline.getIn(['data', 'user', 'is_profile_visible'])")
-          img(ng-src="{{::vm.timeline.getIn(['data', 'user', 'photo']) || '/images/user-noimage.png'}}", alt="{{::vm.timeline.getIn(['data', 'user', 'name'])}}")
+        div.profile-contact-picture(ng-if="!timeline.getIn(['data', 'user', 'is_profile_visible'])")
+          img(ng-src="{{::timeline.getIn(['data', 'user', 'photo']) || '/images/user-noimage.png'}}", alt="{{::timeline.getIn(['data', 'user', 'name'])}}")
 
-        p(tg-compile-html="vm.timeline.get('title_html')")
+        p(tg-compile-html="timeline.get('title_html')")
 
-    blockquote.activity-comment-quote(ng-if="::vm.timeline.get('description')")
-        | {{::vm.timeline.get('description') | limitTo:300}}
+    blockquote.activity-comment-quote(ng-if="::timeline.get('description')")
+        | {{::timeline.get('description') | limitTo:300}}
 
-    .activity-member-view(ng-if="::vm.timeline.has('member')")
-        a.profile-member-picture(tg-nav="user-profile:username=vm.timeline.getIn(['member', 'user', 'username'])", title="{{::vm.timeline.getIn(['member', 'user', 'name'])}}")
-            img(ng-src="{{::vm.timeline.getIn(['member', 'user', 'photo'])}}", alt="{{::vm.timeline.getIn(['member','user', 'name'])}}")
+    .activity-member-view(ng-if="::timeline.has('member')")
+        a.profile-member-picture(tg-nav="user-profile:username=timeline.getIn(['member', 'user', 'username'])", title="{{::timeline.getIn(['member', 'user', 'name'])}}")
+            img(ng-src="{{::timeline.getIn(['member', 'user', 'photo'])}}", alt="{{::timeline.getIn(['member','user', 'name'])}}")
         .activity-member-info
-            a(tg-nav="user-profile:username=vm.timeline.getIn(['member', 'user', 'username'])", title="{{::vm.timeline.getIn(['member','user', 'name'])}}")
-                span {{::vm.timeline.getIn(['member','user', 'name'])}}
-            p {{::vm.timeline.getIn(['member','role', 'name'])}}
+            a(tg-nav="user-profile:username=timeline.getIn(['member', 'user', 'username'])", title="{{::timeline.getIn(['member','user', 'name'])}}")
+                span {{::timeline.getIn(['member','user', 'name'])}}
+            p {{::timeline.getIn(['member','role', 'name'])}}
 
-    div(tg-repeat="attachment in vm.timeline.get('attachments')")
+    div(tg-repeat="attachment in timeline.get('attachments')")
             div(tg-user-timeline-attachment="attachment")

@@ -1,9 +1,14 @@
 taiga = @.taiga
 
 class UserTimelineService extends taiga.Service
-    @.$inject = ["tgResources", "tgUserTimelinePaginationSequenceService"]
+    @.$inject = [
+        "tgResources",
+        "tgUserTimelinePaginationSequenceService",
+        "tgUserTimelineItemType",
+        "tgUserTimelineItemTitle"
+    ]
 
-    constructor: (@rs, @userTimelinePaginationSequenceService) ->
+    constructor: (@rs, @userTimelinePaginationSequenceService, @userTimelineItemType, @userTimelineItemTitle) ->
 
     _valid_fields: [
         'status',
@@ -75,12 +80,46 @@ class UserTimelineService extends taiga.Service
         return _.some @._invalid, (invalid) =>
             return invalid.check.call(this, timeline)
 
-    # create a entry per every item in the values_diff
-    _splitChanges: (response) ->
+    _parseEventType: (event_type) ->
+        event_type = event_type.split(".")
+
+        return {
+            section: event_type[0],
+            obj: event_type[1],
+            type: event_type[2]
+        }
+
+    _getTimelineObject: (timeline, event) ->
+        if timeline.get('data').get(event.obj)
+            return timeline.get('data').get(event.obj)
+
+    _attachExtraInfoToTimelineEntry: (timeline, event, type) ->
+        title = @userTimelineItemTitle.getTitle(timeline, event, type)
+
+        timeline = timeline.set('title_html', title)
+
+        timeline =  timeline.set('obj', @._getTimelineObject(timeline, event))
+
+        if type.description
+            timeline = timeline.set('description', type.description(timeline))
+
+        if type.member
+            timeline = timeline.set('member', type.member(timeline))
+
+        if timeline.getIn(['data', 'value_diff', 'key']) == 'attachments' &&
+          timeline.hasIn(['data', 'value_diff', 'value', 'new'])
+            timeline = timeline.set('attachments', timeline.getIn(['data', 'value_diff', 'value', 'new']))
+
+        return timeline
+
+    # - create a entry per every item in the values_diff
+    # - add extra attributes to each entry
+    _parseTimeline: (response) ->
         newdata = Immutable.List()
 
-        response.get('data').forEach (item) ->
-            event_type = item.get('event_type').split(".")
+        response.get('data').forEach (item) =>
+            event = @._parseEventType(item.get('event_type'))
+            type = @userTimelineItemType.getType(item, event)
 
             data = item.get('data')
             values_diff = data.get('values_diff')
@@ -92,10 +131,10 @@ class UserTimelineService extends taiga.Service
 
                 if values_diff.has('milestone')
                     values_diff = Immutable.Map({'moveInBacklog': values_diff})
-                else if event_type[1] == 'milestone'
+                else if event.obj == 'milestone'
                      values_diff = Immutable.Map({'milestone': values_diff})
 
-                values_diff.forEach (value, key) ->
+                values_diff.forEach (value, key) =>
                     obj = Immutable.Map({
                         key: key,
                         value: value
@@ -103,9 +142,11 @@ class UserTimelineService extends taiga.Service
 
                     newItem = item.setIn(['data', 'value_diff'], obj)
                     newItem = newItem.deleteIn(['data', 'values_diff'])
+                    newItem = @._attachExtraInfoToTimelineEntry(newItem, event, type)
                     newdata = newdata.push(newItem)
             else
                 newItem = item.deleteIn(['data', 'values_diff'])
+                newItem = @._attachExtraInfoToTimelineEntry(newItem, event, type)
                 newdata = newdata.push(newItem)
 
         return response.set('data', newdata)
@@ -116,7 +157,7 @@ class UserTimelineService extends taiga.Service
         config.fetch = (page) =>
             return @rs.users.getProfileTimeline(userId, page)
                 .then (response) =>
-                    return @._splitChanges(response)
+                    return @._parseTimeline(response)
 
         config.filter = (items) =>
             return items.filterNot (item) => @._isInValidTimeline(item)
@@ -129,7 +170,7 @@ class UserTimelineService extends taiga.Service
         config.fetch = (page) =>
             return @rs.users.getUserTimeline(userId, page)
                 .then (response) =>
-                    return @._splitChanges(response)
+                    return @._parseTimeline(response)
 
         config.filter = (items) =>
             return items.filterNot (item) => @._isInValidTimeline(item)
@@ -141,7 +182,7 @@ class UserTimelineService extends taiga.Service
 
         config.fetch = (page) =>
             return @rs.projects.getTimeline(projectId, page)
-                .then (response) => return @._splitChanges(response)
+                .then (response) => return @._parseTimeline(response)
 
         config.filter = (items) =>
             return items.filterNot (item) => @._isInValidTimeline(item)
