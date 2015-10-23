@@ -131,7 +131,8 @@
             "POINTS": "Punten",
             "BLOCKED_NOTE": "geblokkeerde notitie",
             "IS_BLOCKED": "is geblokkeerd",
-            "REF": "Ref"
+            "REF": "Ref",
+            "VOTES": "Stemmen"
         },
         "ROLES": {
             "ALL": "Alles"
@@ -149,10 +150,26 @@
             "OPEN": "Open"
         },
         "WATCHERS": {
-            "ADD": "Waarnemer toevoegen",
-            "TITLE": "waarnemers",
+            "ADD": "Add watchers",
+            "TITLE_ADD": "Add a project member to the watchers list",
             "DELETE": "Verwijder waarnemer",
             "TITLE_LIGHTBOX_DELETE_WARTCHER": "Verwijder waarnemer..."
+        },
+        "WATCH_BUTTON": {
+            "WATCH": "Watch",
+            "WATCHING": "Volgers",
+            "UNWATCH": "Unwatch",
+            "WATCHERS": "Watchers",
+            "BUTTON_TITLE": "Watch/Unwatch this item",
+            "COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}"
+        },
+        "VOTE_BUTTON": {
+            "UPVOTE": "Upvote",
+            "UPVOTED": "Upvoted",
+            "DOWNVOTE": "Downvote",
+            "VOTERS": "Voters",
+            "BUTTON_TITLE": "Upvote/Downvote this item",
+            "COUNTER_TITLE": "{total, plural, one{one vote} other{# votes}}"
         },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "Eigen velden",
@@ -328,6 +345,7 @@
     "HOME": {
         "PAGE_TITLE": "Home -Taiga",
         "PAGE_DESCRIPTION": "De Taiga start pagina met jouw projecten en de aan jou toegewezen en gevolgde user stories, taken en issues",
+        "EMPTY_WORKING_ON": "<strong>It feels empty, doesn't it?</strong> Start working with Taiga and you'll see here the stories, tasks and issues you are workin on.",
         "EMPTY_WATCHING": "<strong>Volg</strong> de projecten, User Stories, Taken, Issues... waarvan je op de hoogte gehouden wilt worden :)",
         "EMPTY_PROJECT_LIST": "Je hebt nog geen projecten",
         "WORKING_ON_SECTION": "Werkt aan",
@@ -420,8 +438,8 @@
             "PROJECT_DETAILS": "Project details",
             "PROJECT_NAME": "Naam project",
             "PROJECT_SLUG": "Project Slug",
-            "NUMBER_SPRINTS": "Aantal sprints",
-            "NUMBER_US_POINTS": "Aantal US punten",
+            "NUMBER_SPRINTS": "Number of sprints (0 for an undetermined quantity)",
+            "NUMBER_US_POINTS": "Number of US points (0 for an undetermined quantity)",
             "TAGS": "Tags",
             "DESCRIPTION": "Beschrijving",
             "PUBLIC_PROJECT": "Open project",
@@ -499,6 +517,9 @@
             "PAGE_TITLE": "Rollen - {{projectName}}",
             "WARNING_NO_ROLE": "Wees voorzichtig, geen enkele rol in je project zal de puntenwaarde van een user story kunnen estimeren",
             "HELP_ROLE_ENABLED": "Als dit actief is, zullen leden met deze rol de punten waarde voor user stories kunnen schatten",
+            "DISABLE_COMPUTABLE_ALERT_TITLE": "Disable estimation for this role",
+            "DISABLE_COMPUTABLE_ALERT_SUBTITLE": "If you disable estimation permissions for role {{roleName}} all previous estimations made by this role will be removed",
+            "DISABLE_COMPUTABLE_ALERT_MESSAGE": "<strong>Are you sure you want to disable this role estimations?</strong>",
             "COUNT_MEMBERS": "{{ role.members_count }} leden met deze rol",
             "TITLE_DELETE_ROLE": "Verwijder Rol",
             "REPLACEMENT_ROLE": "Al de gebruikers met deze rol zullen verplaats worden naar",
@@ -635,23 +656,47 @@
             "PAGE_TITLE": "{{userFullName}} (@{{userUsername}})",
             "EDIT": "Profiel bewerken",
             "FOLLOW": "Volgen",
-            "PROJECTS": "Projecten",
             "CLOSED_US": "Gesloten US",
+            "PROJECTS": "Projecten",
+            "PROJECTS_EMPTY": "{{username}} heeft nog geen projecten",
             "CONTACTS": "Contacten",
-            "REPORT": "Meld misbruik",
-            "ACTIVITY_TAB": "Activiteiten tab",
-            "PROJECTS_TAB": "Projecten tab",
-            "CONTACTS_TAB": "Contacten tab",
-            "FAVORITES_TAB": "Favorieten tab",
             "CONTACTS_EMPTY": "{{username}} heeft nog geen contacten",
             "CURRENT_USER_CONTACTS_EMPTY": "Je hebt nog geen contacten",
             "CURRENT_USER_CONTACTS_EMPTY_EXPLAIN": "De mensen waarmee je via Taiga werkt zullen automatisch je contacten worden",
-            "PROJECTS_EMPTY": "{{username}} heeft nog geen projecten"
+            "REPORT": "Meld misbruik",
+            "TABS": {
+                "ACTIVITY_TAB": "Activiteit",
+                "ACTIVITY_TAB_TITLE": "Show all the activity of this user",
+                "PROJECTS_TAB": "Projecten",
+                "PROJECTS_TAB_TITLE": "List all projects that this user is a member",
+                "LIKES_TAB": "Likes",
+                "LIKES_TAB_TITLE": "List all likes made by this user",
+                "VOTES_TAB": "Stemmen",
+                "VOTES_TAB_TITLE": "List all votes made by this user",
+                "WATCHED_TAB": "Watched",
+                "WATCHED_TAB_TITLE": "List all item watched by this user",
+                "CONTACTS_TAB": "Contacten",
+                "CONTACTS_TAB_TITLE": "List all contacts made by this user"
+            }
         },
         "PROFILE_SIDEBAR": {
             "TITLE": "Jouw profiel",
             "DESCRIPTION": "Mensen kunnen alles zien wat je doet en waar je aan werkt. Voeg een mooie biografie toe voor een meer uitgebreide versie van jouw informatie.",
             "ADD_INFO": "Bewerk je bio"
+        },
+        "PROFILE_FAVS": {
+            "FILTER_INPUT_PLACEHOLDER": "Type something...",
+            "FILTER_TYPE_ALL": "Alles",
+            "FILTER_TYPE_ALL_TITLE": "Show all",
+            "FILTER_TYPE_PROJECTS": "Projecten",
+            "FILTER_TYPE_PROJECT_TITLES": "Show only projects",
+            "FILTER_TYPE_USER_STORIES": "Stories",
+            "FILTER_TYPE_USER_STORIES_TITLES": "Show only user stories",
+            "FILTER_TYPE_TASKS": "Taken",
+            "FILTER_TYPE_TASK_TITLES": "Show only tasks",
+            "FILTER_TYPE_ISSUES": "Issues",
+            "FILTER_TYPE_ISSUES_TITLE": "Show only issues",
+            "EMPTY_TITLE": "It looks like there's nothing to show here."
         }
     },
     "PROJECT": {
@@ -720,6 +765,27 @@
             "ERROR_MESSAGE": "Onze Oempa-Loempa's hebben wat problemen met het importeren van je dump: {{error_message}}",
             "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is te zwaar voor onze Oempa-Loempa's, probeer het met een bestand kleiner dan ({{maxFileSize}})",
             "SYNC_SUCCESS": "Je project werd met succes geïmporteerd"
+        },
+        "LIKE_BUTTON": {
+            "LIKE": "Like",
+            "LIKED": "Liked",
+            "UNLIKE": "Unlike",
+            "BUTTON_TITLE": "Like or unlike this project",
+            "COUNTER_TITLE": "{total, plural, one{one fan} other{# fans}}"
+        },
+        "WATCH_BUTTON": {
+            "BUTTON_TITLE": "Watch this project and set notification policy",
+            "WATCH": "Watch",
+            "WATCHING": "Volgers",
+            "COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}",
+            "OPTIONS": {
+                "NOTIFY_ALL": "Receive all notifications",
+                "NOTIFY_ALL_TITLE": "Receive all notifications for this project",
+                "NOTIFY_INVOLVED": "Only involved",
+                "NOTIFY_INVOLVED_TITLE": "Recive notificacions only when you are involved",
+                "UNWATCH": "Unwatch",
+                "UNWATCH_TITLE": "Unwatch this project"
+            }
         }
     },
     "LIGHTBOX": {
@@ -792,7 +858,7 @@
         "SECTION_NAME": "User story details",
         "LINK_TASKBOARD": "Taakbord",
         "TITLE_LINK_TASKBOARD": "Ga naar het dashboard",
-        "TOTAL_POINTS": "totaal",
+        "TOTAL_POINTS": "total points",
         "ADD": "+ Nieuwe User Story toevoegen",
         "ADD_BULK": "Voeg enkele nieuwe User Stories in bulk toe",
         "PROMOTED": "Deze US werd gepromoveerd van Issue:",
@@ -879,6 +945,10 @@
         "PAGE_TITLE": "Backlog - {{projectName}}",
         "PAGE_DESCRIPTION": "Het backlog overzicht, met user stories en sprints van het project {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Backlog",
+        "CUSTOMIZE_GRAPH": "Customize your backlog graph",
+        "CUSTOMIZE_GRAPH_TEXT": "To have a nice graph that helps you follow the evolution of the project you have to set up the points and sprints through the",
+        "CUSTOMIZE_GRAPH_ADMIN": "Admin",
+        "CUSTOMIZE_GRAPH_TITLE": "Set up the points and sprints through the Admin",
         "MOVE_US_TO_CURRENT_SPRINT": "Verplaats naar huidige sprint",
         "SHOW_FILTERS": "Toon filters",
         "SHOW_TAGS": "Toon tags",
@@ -942,8 +1012,10 @@
             "LINK_TASKBOARD": "Sprint taakbord",
             "TITLE_LINK_TASKBOARD": "Ga naar taakbord van \"{{name}}\"",
             "NUMBER_SPRINTS": "<br/>sprints",
-            "TITLE_ACTION_NEW_SPRINT": "+ Nieuwe sprint",
-            "ACTION_NEW_SPRINT": "+ Nieuwe sprint",
+            "EMPTY": "YOU HAVE NO SPRINTS",
+            "WARNING_EMPTY_SPRINT": "Drop here Stories from your backlog to start a new sprint",
+            "TITLE_ACTION_NEW_SPRINT": "Add new sprint",
+            "TEXT_ACTION_NEW_SPRINT": "You may want to create a new sprint in your project",
             "ACTION_SHOW_CLOSED_SPRINTS": "Toon gesloten sprints",
             "ACTION_HIDE_CLOSED_SPRINTS": "Verberg afgesloten sprints"
         }
@@ -964,6 +1036,8 @@
         "TITLE_ACTION_ADD_BULK": "Wat nieuwe taken in bulk toevoegen",
         "TITLE_ACTION_ASSIGN": "Toegewezen taak",
         "TITLE_ACTION_EDIT": "Bewerk taak",
+        "PLACEHOLDER_CARD_TITLE": "This could be a task",
+        "PLACEHOLDER_CARD_TEXT": "Split Stories into tasks to track them separately",
         "TABLE": {
             "COLUMN": "User story",
             "TITLE_ACTION_FOLD": "Kolom  inklappen",
@@ -1082,16 +1156,17 @@
                 "SEVERITY": "Ernst",
                 "PRIORITY": "Prioriteit",
                 "SUBJECT": "Onderwerp",
+                "VOTES": "Stemmen",
                 "STATUS": "Status",
                 "CREATED": "Aangemaakt",
                 "ASSIGNED_TO": "Toegewezen aan"
             },
             "TITLE_ACTION_CHANGE_STATUS": "Status veranderen",
             "TITLE_ACTION_ASSIGNED_TO": "Toegewezen aan",
+            "BLOCKED": "Geblokkeerd",
             "EMPTY": {
                 "TITLE": "Er zijn geen issues om te rapporteren :-)",
-                "SUBTITLE": "Heb je een issue gevonden?",
-                "ACTION_CREATE_ISSUE": "Nieuw issue aanmaken"
+                "SUBTITLE": "Heb je een issue gevonden?"
             }
         }
     },
@@ -1113,7 +1188,9 @@
         "ACTION_HIDE_ARCHIVED": "Verberg gearchiveerde",
         "HIDDEN_USER_STORIES": "De user stories met deze status zijn standaard verborgen",
         "ARCHIVED": "Je hebt gearchiveerd",
-        "UNDO_ARCHIVED": "Drag & drop nog een keer om ongedaan te maken"
+        "UNDO_ARCHIVED": "Drag & drop nog een keer om ongedaan te maken",
+        "PLACEHOLDER_CARD_TITLE": "These are your User Stories",
+        "PLACEHOLDER_CARD_TEXT": "Stories might also have subtasks to separate requirements"
     },
     "SEARCH": {
         "PAGE_TITLE": "Zoek - {{projectName}}",
@@ -1272,5 +1349,61 @@
         "LOGIN_WITH_ANOTHER_USER": "Login with another user",
         "AUTHORIZE_APP": "Authorize app",
         "CANCEL": "Annuleren"
+    },
+    "JOYRIDE": {
+        "DASHBOARD": {
+            "STEP1": {
+                "TITLE": "Your project",
+                "TEXT": "Welcome! Here you will find the projects you are involved on. We have left you sample project templates to help you discover the power of Taiga."
+            },
+            "STEP2": {
+                "TITLE": "Werkt aan",
+                "TEXT": "Here you will find the User Stories, Tasks and Issues in which you are working on."
+            },
+            "STEP3": {
+                "TITLE": "Volgers",
+                "TEXT1": "And right here you will find the ones that you want to know about.",
+                "TEXT2": "You are already working with Taiga ;)"
+            },
+            "STEP4": {
+                "TITLE": "Let’s start",
+                "TEXT1": "You can start by creating your first Taiga project.",
+                "TEXT2": "Good luck!"
+            }
+        },
+        "BACKLOG": {
+            "STEP1": {
+                "TITLE": "Project summary",
+                "TEXT1": "Here you will see the state of your project.",
+                "TEXT2": "You can change every kind of project settings through the admin."
+            },
+            "STEP2": {
+                "TITLE": "Product backlog",
+                "TEXT": "The backlog is the list of requirements (User Stories) for the project. Here is where you will plan your sprints."
+            },
+            "STEP3": {
+                "TITLE": "Sprints",
+                "TEXT": "Sprints are short periods of time (usually 2 weeks) during which specific work has to be completed and delivered."
+            },
+            "STEP4": {
+                "TITLE": "User Stories",
+                "TEXT": "Those are the requirements at high level. You can add them to the backlog and drag them to the sprint in which it should be delivered."
+            }
+        },
+        "KANBAN": {
+            "STEP1": {
+                "TITLE": "Customize your workflow",
+                "TEXT": "Set up the columns you need to map your workflow statuses through the admin."
+            },
+            "STEP2": {
+                "TITLE": "User Stories & Tasks",
+                "TEXT": "User Stories are the requirements at high level. You can drag them to different columns."
+            },
+            "STEP3": {
+                "TITLE": "Adding User Stories",
+                "TEXT1": "You may want to add a single User Story (add US icon) or a group of them (bulk icon)",
+                "TEXT2": "Good luck!"
+            }
+        }
     }
 }

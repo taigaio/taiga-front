@@ -131,7 +131,8 @@
             "POINTS": "Punti",
             "BLOCKED_NOTE": "nota bloccata",
             "IS_BLOCKED": "è bloccato",
-            "REF": "Riferimento"
+            "REF": "Riferimento",
+            "VOTES": "Voti"
         },
         "ROLES": {
             "ALL": "Tutti"
@@ -149,10 +150,26 @@
             "OPEN": "Apri"
         },
         "WATCHERS": {
-            "ADD": "Aggiungi un osservatore",
-            "TITLE": "Osservatori",
+            "ADD": "Aggiungi osservatori",
+            "TITLE_ADD": "Aggiungi un membro di progetto alla lista degli osservatori",
             "DELETE": "Elimina osservatore",
             "TITLE_LIGHTBOX_DELETE_WARTCHER": "Elimina osservatore..."
+        },
+        "WATCH_BUTTON": {
+            "WATCH": "Osserva",
+            "WATCHING": "In osservazione",
+            "UNWATCH": "Non osservare",
+            "WATCHERS": "Osservatori",
+            "BUTTON_TITLE": "Osserva/Non osservare questo elemento",
+            "COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}"
+        },
+        "VOTE_BUTTON": {
+            "UPVOTE": "Upvote",
+            "UPVOTED": "Upvoted",
+            "DOWNVOTE": "Downvote",
+            "VOTERS": "Votanti",
+            "BUTTON_TITLE": "Upvote/Downvote this item",
+            "COUNTER_TITLE": "{total, plural, one{one vote} other{# votes}}"
         },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "Campi Personalizzati",
@@ -328,6 +345,7 @@
     "HOME": {
         "PAGE_TITLE": "Home - Taiga",
         "PAGE_DESCRIPTION": "La home di Taiga con i tuoi principali progetti e tutti ile storie utente, compiti e problemi assegnati e osservati. ",
+        "EMPTY_WORKING_ON": "<strong>It feels empty, doesn't it?</strong> Start working with Taiga and you'll see here the stories, tasks and issues you are workin on.",
         "EMPTY_WATCHING": "<strong>Segui</strong> i progetti, le storie utente, i compiti e i problemi... per rimanere aggiornato sulle loro attività :)",
         "EMPTY_PROJECT_LIST": "Per ora non hai nessun progetto",
         "WORKING_ON_SECTION": "Sta lavorando su",
@@ -420,8 +438,8 @@
             "PROJECT_DETAILS": "Dettagli progetto",
             "PROJECT_NAME": "Nome progetto",
             "PROJECT_SLUG": "Progetto lumaca",
-            "NUMBER_SPRINTS": "Numero di sprint",
-            "NUMBER_US_POINTS": "Numero di punti delle storie utente",
+            "NUMBER_SPRINTS": "Number of sprints (0 for an undetermined quantity)",
+            "NUMBER_US_POINTS": "Number of US points (0 for an undetermined quantity)",
             "TAGS": "Tag",
             "DESCRIPTION": "Descrizione",
             "PUBLIC_PROJECT": "Progetto pubblico",
@@ -499,6 +517,9 @@
             "PAGE_TITLE": "Ruoli - {{projectName}}",
             "WARNING_NO_ROLE": "Attento, nessun ruolo, all'interno del tuo progetto, potrà stimare i punti valore per le storie utente",
             "HELP_ROLE_ENABLED": "Una volta abilitato, chi é associato a questo ruolo sará in grado di stimare il valore dei punti per le storie utente",
+            "DISABLE_COMPUTABLE_ALERT_TITLE": "Disable estimation for this role",
+            "DISABLE_COMPUTABLE_ALERT_SUBTITLE": "If you disable estimation permissions for role {{roleName}} all previous estimations made by this role will be removed",
+            "DISABLE_COMPUTABLE_ALERT_MESSAGE": "<strong>Are you sure you want to disable this role estimations?</strong>",
             "COUNT_MEMBERS": "{{ role.members_count }} membri con questo ruolo",
             "TITLE_DELETE_ROLE": "Elimina ruolo",
             "REPLACEMENT_ROLE": "Tutti gli utenti con questo ruolo saranno spostati a ",
@@ -635,23 +656,47 @@
             "PAGE_TITLE": "{{userFullName}} (@{{userUsername}})",
             "EDIT": "Modifica profilo",
             "FOLLOW": "Segui",
-            "PROJECTS": "Progetti",
             "CLOSED_US": "US chiusa",
+            "PROJECTS": "Progetti",
+            "PROJECTS_EMPTY": "{{username}} non ha ancora nessun progetto",
             "CONTACTS": "Contatti",
-            "REPORT": "Segnala abuso",
-            "ACTIVITY_TAB": "Attivitá",
-            "PROJECTS_TAB": "Progetti",
-            "CONTACTS_TAB": "Contatti",
-            "FAVORITES_TAB": "Preferiti",
             "CONTACTS_EMPTY": "{{username}} non ha ancora nessun contatto",
             "CURRENT_USER_CONTACTS_EMPTY": "Non hai ancora contatti",
             "CURRENT_USER_CONTACTS_EMPTY_EXPLAIN": "Le persone con cui lavori in Taiga saranno automaticamente tra tuoi contatti",
-            "PROJECTS_EMPTY": "{{username}} non ha ancora nessun progetto"
+            "REPORT": "Segnala abuso",
+            "TABS": {
+                "ACTIVITY_TAB": "Attività",
+                "ACTIVITY_TAB_TITLE": "Mostra tutte le attività dell'utente",
+                "PROJECTS_TAB": "Progetti",
+                "PROJECTS_TAB_TITLE": "Mostra tutti i progetti di cui questo utente è membro",
+                "LIKES_TAB": "Likes",
+                "LIKES_TAB_TITLE": "List all likes made by this user",
+                "VOTES_TAB": "Voti",
+                "VOTES_TAB_TITLE": "List all votes made by this user",
+                "WATCHED_TAB": "Osservato",
+                "WATCHED_TAB_TITLE": "Mostra tutti gli elementi osservati dall'utente",
+                "CONTACTS_TAB": "Contatti",
+                "CONTACTS_TAB_TITLE": "Lista tutti i contatti fatti dall'utente"
+            }
         },
         "PROFILE_SIDEBAR": {
             "TITLE": "Il tuo profilo",
             "DESCRIPTION": "Le persone possono vedere tutto quello che fai e su cosa stai lavorando. Aggiungi una bella bio per migliorare la descrizione delle tue informazioni.",
             "ADD_INFO": "Modifica il tuo profilo"
+        },
+        "PROFILE_FAVS": {
+            "FILTER_INPUT_PLACEHOLDER": "Inserisci testo...",
+            "FILTER_TYPE_ALL": "Tutti",
+            "FILTER_TYPE_ALL_TITLE": "Mostra tutto",
+            "FILTER_TYPE_PROJECTS": "Progetti",
+            "FILTER_TYPE_PROJECT_TITLES": "Mostra solo i progetti",
+            "FILTER_TYPE_USER_STORIES": "Resoconti",
+            "FILTER_TYPE_USER_STORIES_TITLES": "Mostra solo resoconti utente",
+            "FILTER_TYPE_TASKS": "Compiti",
+            "FILTER_TYPE_TASK_TITLES": "Mostra solo attività",
+            "FILTER_TYPE_ISSUES": "problemi",
+            "FILTER_TYPE_ISSUES_TITLE": "Show only issues",
+            "EMPTY_TITLE": "It looks like there's nothing to show here."
         }
     },
     "PROJECT": {
@@ -720,6 +765,27 @@
             "ERROR_MESSAGE": "I nostri Digital Champions hanno qualche problema ad importare il dump dei tuoi dati: {{error_message}}",
             "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) è troppo pesante per i nostri Digital Champions; falli contenti, prova con una dimensione minore di ({{maxFileSize}})",
             "SYNC_SUCCESS": "Il tuo progetto è stato importato con successo"
+        },
+        "LIKE_BUTTON": {
+            "LIKE": "Mi piace",
+            "LIKED": "Liked",
+            "UNLIKE": "Non mi piace",
+            "BUTTON_TITLE": "Like or unlike this project",
+            "COUNTER_TITLE": "{total, plural, one{one fan} other{# fans}}"
+        },
+        "WATCH_BUTTON": {
+            "BUTTON_TITLE": "Osserva questo progetto ed imposta la politica di notifica",
+            "WATCH": "Osserva",
+            "WATCHING": "In osservazione",
+            "COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}",
+            "OPTIONS": {
+                "NOTIFY_ALL": "Ricevi tutte le notifiche",
+                "NOTIFY_ALL_TITLE": "Ricevi tutte le notifiche per questo progetto",
+                "NOTIFY_INVOLVED": "Solo se conivolti",
+                "NOTIFY_INVOLVED_TITLE": "Ricevi notifiche solo quando coinvolto",
+                "UNWATCH": "Non osservare",
+                "UNWATCH_TITLE": "Non osservare il progetto"
+            }
         }
     },
     "LIGHTBOX": {
@@ -792,7 +858,7 @@
         "SECTION_NAME": "Dettagli della storia utente",
         "LINK_TASKBOARD": "Pannello dei compiti",
         "TITLE_LINK_TASKBOARD": "Vai al pannello dei compiti",
-        "TOTAL_POINTS": "totale",
+        "TOTAL_POINTS": "totale punti",
         "ADD": "+ Aggiungi una nuova storia utente",
         "ADD_BULK": "Aggiungere qualche nuova User Storie al carico",
         "PROMOTED": "Questa storia utente è stata promossa da problema:",
@@ -879,6 +945,10 @@
         "PAGE_TITLE": "Backlog - {{projectName}}",
         "PAGE_DESCRIPTION": "Il pannello di backlog, con le storie degli utenti e gli sprint di progetto",
         "SECTION_NAME": "Backlog",
+        "CUSTOMIZE_GRAPH": "Customize your backlog graph",
+        "CUSTOMIZE_GRAPH_TEXT": "To have a nice graph that helps you follow the evolution of the project you have to set up the points and sprints through the",
+        "CUSTOMIZE_GRAPH_ADMIN": "Amministratore",
+        "CUSTOMIZE_GRAPH_TITLE": "Set up the points and sprints through the Admin",
         "MOVE_US_TO_CURRENT_SPRINT": "Spostati allo sprint attuale",
         "SHOW_FILTERS": "Mostra filtri",
         "SHOW_TAGS": "Mostra tag",
@@ -942,8 +1012,10 @@
             "LINK_TASKBOARD": "Pannello dei compiti dello sprint",
             "TITLE_LINK_TASKBOARD": "Vai al pannello dei compiti di \"{{name}}\"",
             "NUMBER_SPRINTS": "<br/>sprints",
-            "TITLE_ACTION_NEW_SPRINT": "+ Nuovo sprint",
-            "ACTION_NEW_SPRINT": "+ Nuovo sprint",
+            "EMPTY": "YOU HAVE NO SPRINTS",
+            "WARNING_EMPTY_SPRINT": "Drop here Stories from your backlog to start a new sprint",
+            "TITLE_ACTION_NEW_SPRINT": "Add new sprint",
+            "TEXT_ACTION_NEW_SPRINT": "You may want to create a new sprint in your project",
             "ACTION_SHOW_CLOSED_SPRINTS": "Mostra gli sprints terminati",
             "ACTION_HIDE_CLOSED_SPRINTS": "Nascondi lo sprint terminato"
         }
@@ -964,6 +1036,8 @@
         "TITLE_ACTION_ADD_BULK": "Aggiungi qualche nuovo Compito nel carico",
         "TITLE_ACTION_ASSIGN": "Compito assegnato",
         "TITLE_ACTION_EDIT": "Modifica compito",
+        "PLACEHOLDER_CARD_TITLE": "This could be a task",
+        "PLACEHOLDER_CARD_TEXT": "Split Stories into tasks to track them separately",
         "TABLE": {
             "COLUMN": "Storia utente",
             "TITLE_ACTION_FOLD": "Ripiega la colonna",
@@ -1082,16 +1156,17 @@
                 "SEVERITY": "Gravità",
                 "PRIORITY": "Priorità",
                 "SUBJECT": "Oggetto",
+                "VOTES": "Voti",
                 "STATUS": "Stato",
                 "CREATED": "Creato",
                 "ASSIGNED_TO": "Assegna a"
             },
             "TITLE_ACTION_CHANGE_STATUS": "Cambia stato",
             "TITLE_ACTION_ASSIGNED_TO": "Assegna a",
+            "BLOCKED": "Bloccato",
             "EMPTY": {
                 "TITLE": "Non ci sono problemi da segnalare :-)",
-                "SUBTITLE": "Hai trovato un problema?",
-                "ACTION_CREATE_ISSUE": "Crea un nuovo problema"
+                "SUBTITLE": "Hai trovato un problema?"
             }
         }
     },
@@ -1113,7 +1188,9 @@
         "ACTION_HIDE_ARCHIVED": "Nascondi archivio",
         "HIDDEN_USER_STORIES": "Le storie utente in questo status sono nascoste by default",
         "ARCHIVED": "Hai archiviato",
-        "UNDO_ARCHIVED": "Trascina e lascia di nuovo per annullare"
+        "UNDO_ARCHIVED": "Trascina e lascia di nuovo per annullare",
+        "PLACEHOLDER_CARD_TITLE": "These are your User Stories",
+        "PLACEHOLDER_CARD_TEXT": "Stories might also have subtasks to separate requirements"
     },
     "SEARCH": {
         "PAGE_TITLE": "Cerca - {{projectName}}",
@@ -1272,5 +1349,61 @@
         "LOGIN_WITH_ANOTHER_USER": "Accedi come un altro utente",
         "AUTHORIZE_APP": "Autorizza applicazione",
         "CANCEL": "Annulla"
+    },
+    "JOYRIDE": {
+        "DASHBOARD": {
+            "STEP1": {
+                "TITLE": "Your project",
+                "TEXT": "Welcome! Here you will find the projects you are involved on. We have left you sample project templates to help you discover the power of Taiga."
+            },
+            "STEP2": {
+                "TITLE": "Sta lavorando su",
+                "TEXT": "Here you will find the User Stories, Tasks and Issues in which you are working on."
+            },
+            "STEP3": {
+                "TITLE": "In osservazione",
+                "TEXT1": "And right here you will find the ones that you want to know about.",
+                "TEXT2": "You are already working with Taiga ;)"
+            },
+            "STEP4": {
+                "TITLE": "Let’s start",
+                "TEXT1": "You can start by creating your first Taiga project.",
+                "TEXT2": "Good luck!"
+            }
+        },
+        "BACKLOG": {
+            "STEP1": {
+                "TITLE": "Project summary",
+                "TEXT1": "Here you will see the state of your project.",
+                "TEXT2": "You can change every kind of project settings through the admin."
+            },
+            "STEP2": {
+                "TITLE": "Product backlog",
+                "TEXT": "The backlog is the list of requirements (User Stories) for the project. Here is where you will plan your sprints."
+            },
+            "STEP3": {
+                "TITLE": "Sprints",
+                "TEXT": "Sprints are short periods of time (usually 2 weeks) during which specific work has to be completed and delivered."
+            },
+            "STEP4": {
+                "TITLE": "Storie Utente",
+                "TEXT": "Those are the requirements at high level. You can add them to the backlog and drag them to the sprint in which it should be delivered."
+            }
+        },
+        "KANBAN": {
+            "STEP1": {
+                "TITLE": "Customize your workflow",
+                "TEXT": "Set up the columns you need to map your workflow statuses through the admin."
+            },
+            "STEP2": {
+                "TITLE": "User Stories & Tasks",
+                "TEXT": "User Stories are the requirements at high level. You can drag them to different columns."
+            },
+            "STEP3": {
+                "TITLE": "Adding User Stories",
+                "TEXT1": "You may want to add a single User Story (add US icon) or a group of them (bulk icon)",
+                "TEXT2": "Good luck!"
+            }
+        }
     }
 }

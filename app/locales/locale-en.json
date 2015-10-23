@@ -131,7 +131,8 @@
             "POINTS": "Points",
             "BLOCKED_NOTE": "blocked note",
             "IS_BLOCKED": "is blocked",
-            "REF": "Ref"
+            "REF": "Ref",
+            "VOTES": "Votes"
         },
         "ROLES": {
             "ALL": "All"
@@ -149,10 +150,26 @@
             "OPEN": "Open"
         },
         "WATCHERS": {
-            "ADD": "Add watcher",
-            "TITLE": "watchers",
+            "ADD": "Add watchers",
+            "TITLE_ADD": "Add a project member to the watchers list",
             "DELETE": "Delete watcher",
             "TITLE_LIGHTBOX_DELETE_WARTCHER": "Delete watcher..."
+        },
+        "WATCH_BUTTON": {
+            "WATCH": "Watch",
+            "WATCHING": "Watching",
+            "UNWATCH": "Unwatch",
+            "WATCHERS": "Watchers",
+            "BUTTON_TITLE": "Watch/Unwatch this item",
+            "COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}"
+        },
+        "VOTE_BUTTON": {
+            "UPVOTE": "Upvote",
+            "UPVOTED": "Upvoted",
+            "DOWNVOTE": "Downvote",
+            "VOTERS": "Voters",
+            "BUTTON_TITLE": "Upvote/Downvote this item",
+            "COUNTER_TITLE": "{total, plural, one{one vote} other{# votes}}"
         },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "Custom Fields",
@@ -639,23 +656,47 @@
             "PAGE_TITLE": "{{userFullName}} (@{{userUsername}})",
             "EDIT": "Edit profile",
             "FOLLOW": "Follow",
-            "PROJECTS": "Projects",
             "CLOSED_US": "Closed US",
+            "PROJECTS": "Projects",
+            "PROJECTS_EMPTY": "{{username}} doesn't' have projects yet",
             "CONTACTS": "Contacts",
-            "REPORT": "Report Abuse",
-            "ACTIVITY_TAB": "Activity Tab",
-            "PROJECTS_TAB": "Projects Tab",
-            "CONTACTS_TAB": "Contacts Tab",
-            "FAVORITES_TAB": "Favorites Tab",
             "CONTACTS_EMPTY": "{{username}} doesn't have contacts yet",
             "CURRENT_USER_CONTACTS_EMPTY": "You don't have contacts yet",
             "CURRENT_USER_CONTACTS_EMPTY_EXPLAIN": "The people with whom you work at Taiga will be your contacts automatically",
-            "PROJECTS_EMPTY": "{{username}} doesn't' have projects yet"
+            "REPORT": "Report Abuse",
+            "TABS": {
+                "ACTIVITY_TAB": "Activity",
+                "ACTIVITY_TAB_TITLE": "Show all the activity of this user",
+                "PROJECTS_TAB": "Projects",
+                "PROJECTS_TAB_TITLE": "List all projects that this user is a member",
+                "LIKES_TAB": "Likes",
+                "LIKES_TAB_TITLE": "List all likes made by this user",
+                "VOTES_TAB": "Votes",
+                "VOTES_TAB_TITLE": "List all votes made by this user",
+                "WATCHED_TAB": "Watched",
+                "WATCHED_TAB_TITLE": "List all item watched by this user",
+                "CONTACTS_TAB": "Contacts",
+                "CONTACTS_TAB_TITLE": "List all contacts made by this user"
+            }
         },
         "PROFILE_SIDEBAR": {
             "TITLE": "Your profile",
             "DESCRIPTION": "People can see everything you do and what are you working on. Add a nice bio to give an enhanced version of your information.",
             "ADD_INFO": "Edit your bio"
+        },
+        "PROFILE_FAVS": {
+            "FILTER_INPUT_PLACEHOLDER": "Type something...",
+            "FILTER_TYPE_ALL": "All",
+            "FILTER_TYPE_ALL_TITLE": "Show all",
+            "FILTER_TYPE_PROJECTS": "Projects",
+            "FILTER_TYPE_PROJECT_TITLES": "Show only projects",
+            "FILTER_TYPE_USER_STORIES": "Stories",
+            "FILTER_TYPE_USER_STORIES_TITLES": "Show only user stories",
+            "FILTER_TYPE_TASKS": "Tasks",
+            "FILTER_TYPE_TASK_TITLES": "Show only tasks",
+            "FILTER_TYPE_ISSUES": "Issues",
+            "FILTER_TYPE_ISSUES_TITLE": "Show only issues",
+            "EMPTY_TITLE": "It looks like there's nothing to show here."
         }
     },
     "PROJECT": {
@@ -724,6 +765,27 @@
             "ERROR_MESSAGE": "Our Oompa Loompas have some problems importing your dump data: {{error_message}}",
             "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is too heavy for our Oompa Loompas, try it with a smaller than ({{maxFileSize}})",
             "SYNC_SUCCESS": "Your project has been imported successfuly"
+        },
+        "LIKE_BUTTON": {
+            "LIKE": "Like",
+            "LIKED": "Liked",
+            "UNLIKE": "Unlike",
+            "BUTTON_TITLE": "Like or unlike this project",
+            "COUNTER_TITLE": "{total, plural, one{one fan} other{# fans}}"
+        },
+        "WATCH_BUTTON": {
+            "BUTTON_TITLE": "Watch this project and set notification policy",
+            "WATCH": "Watch",
+            "WATCHING": "Watching",
+            "COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}",
+            "OPTIONS": {
+                "NOTIFY_ALL": "Receive all notifications",
+                "NOTIFY_ALL_TITLE": "Receive all notifications for this project",
+                "NOTIFY_INVOLVED": "Only involved",
+                "NOTIFY_INVOLVED_TITLE": "Recive notificacions only when you are involved",
+                "UNWATCH": "Unwatch",
+                "UNWATCH_TITLE": "Unwatch this project"
+            }
         }
     },
     "LIGHTBOX": {
@@ -798,7 +860,7 @@
         "SECTION_NAME": "User story details",
         "LINK_TASKBOARD": "Taskboard",
         "TITLE_LINK_TASKBOARD": "Go to the taskboard",
-        "TOTAL_POINTS": "total",
+        "TOTAL_POINTS": "total points",
         "ADD": "+ Add a new User Story",
         "ADD_BULK": "Add some new User Stories in bulk",
         "PROMOTED": "This US has been promoted from Issue:",
@@ -1097,6 +1159,7 @@
                 "SEVERITY": "Severity",
                 "PRIORITY": "Priority",
                 "SUBJECT": "Subject",
+                "VOTES": "Votes",
                 "STATUS": "Status",
                 "CREATED": "Created",
                 "ASSIGNED_TO": "Assigned to"

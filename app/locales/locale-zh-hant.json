@@ -131,7 +131,8 @@
             "POINTS": "點數",
             "BLOCKED_NOTE": "已封鎖之筆記",
             "IS_BLOCKED": "封鎖",
-            "REF": "Ref"
+            "REF": "Ref",
+            "VOTES": "投票數"
         },
         "ROLES": {
             "ALL": "所有"
@@ -149,10 +150,26 @@
             "OPEN": "開啟"
         },
         "WATCHERS": {
-            "ADD": "新增監督者",
-            "TITLE": "監督者",
+            "ADD": "Add watchers",
+            "TITLE_ADD": "Add a project member to the watchers list",
             "DELETE": "已刪除監督者",
             "TITLE_LIGHTBOX_DELETE_WARTCHER": "刪除監督者"
+        },
+        "WATCH_BUTTON": {
+            "WATCH": "Watch",
+            "WATCHING": "觀看中",
+            "UNWATCH": "Unwatch",
+            "WATCHERS": "Watchers",
+            "BUTTON_TITLE": "Watch/Unwatch this item",
+            "COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}"
+        },
+        "VOTE_BUTTON": {
+            "UPVOTE": "Upvote",
+            "UPVOTED": "Upvoted",
+            "DOWNVOTE": "Downvote",
+            "VOTERS": "Voters",
+            "BUTTON_TITLE": "Upvote/Downvote this item",
+            "COUNTER_TITLE": "{total, plural, one{one vote} other{# votes}}"
         },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "客製化欄位",
@@ -328,6 +345,7 @@
     "HOME": {
         "PAGE_TITLE": "首頁 - Taiga",
         "PAGE_DESCRIPTION": "Taiga 首頁，你的主要專案以及任命，觀看使用者故事，任務與問題。",
+        "EMPTY_WORKING_ON": "<strong>It feels empty, doesn't it?</strong> Start working with Taiga and you'll see here the stories, tasks and issues you are workin on.",
         "EMPTY_WATCHING": "<strong>追踪</strong> 專案, 使用者故事, 任務, 問題......任何你想知道的資訊 :)",
         "EMPTY_PROJECT_LIST": "你尚無任何專案",
         "WORKING_ON_SECTION": "進行中",
@@ -420,8 +438,8 @@
             "PROJECT_DETAILS": "專案細節",
             "PROJECT_NAME": "專案名稱",
             "PROJECT_SLUG": "專案代稱",
-            "NUMBER_SPRINTS": "衝刺任務數目 ",
-            "NUMBER_US_POINTS": "使用者故事點數數目",
+            "NUMBER_SPRINTS": "Number of sprints (0 for an undetermined quantity)",
+            "NUMBER_US_POINTS": "Number of US points (0 for an undetermined quantity)",
             "TAGS": "標籤",
             "DESCRIPTION": "描述",
             "PUBLIC_PROJECT": "公開專案",
@@ -499,6 +517,9 @@
             "PAGE_TITLE": "角色- {{projectName}}",
             "WARNING_NO_ROLE": "注意，你的專案中無角色可以評估使用者故事的點數",
             "HELP_ROLE_ENABLED": "當啟動時，被指派此角色的成員將可以評估使用者故事點數",
+            "DISABLE_COMPUTABLE_ALERT_TITLE": "Disable estimation for this role",
+            "DISABLE_COMPUTABLE_ALERT_SUBTITLE": "If you disable estimation permissions for role {{roleName}} all previous estimations made by this role will be removed",
+            "DISABLE_COMPUTABLE_ALERT_MESSAGE": "<strong>Are you sure you want to disable this role estimations?</strong>",
             "COUNT_MEMBERS": "{{ role.members_count }} 這類角色的成員",
             "TITLE_DELETE_ROLE": "删除角色",
             "REPLACEMENT_ROLE": "和此角色有關的使用者都將遭移除　",
@@ -635,23 +656,47 @@
             "PAGE_TITLE": "{{userFullName}} (@{{userUsername}})",
             "EDIT": "編輯個人資料",
             "FOLLOW": "追踪",
-            "PROJECTS": "專案",
             "CLOSED_US": "閞閉使用者故事",
+            "PROJECTS": "專案",
+            "PROJECTS_EMPTY": "{{username}} 尚無專案",
             "CONTACTS": "聯絡人",
-            "REPORT": "回報濫用",
-            "ACTIVITY_TAB": "活動分頁",
-            "PROJECTS_TAB": "專案分頁",
-            "CONTACTS_TAB": "聯絡人分頁",
-            "FAVORITES_TAB": "快速分頁",
             "CONTACTS_EMPTY": "{{username}} 尚無聯絡人",
             "CURRENT_USER_CONTACTS_EMPTY": "您尚無任何聯絡人",
             "CURRENT_USER_CONTACTS_EMPTY_EXPLAIN": "你在Taiga一同工作的伙伴將自動成為你的聯絡人",
-            "PROJECTS_EMPTY": "{{username}} 尚無專案"
+            "REPORT": "回報濫用",
+            "TABS": {
+                "ACTIVITY_TAB": "動態",
+                "ACTIVITY_TAB_TITLE": "Show all the activity of this user",
+                "PROJECTS_TAB": "專案",
+                "PROJECTS_TAB_TITLE": "List all projects that this user is a member",
+                "LIKES_TAB": "Likes",
+                "LIKES_TAB_TITLE": "List all likes made by this user",
+                "VOTES_TAB": "投票數",
+                "VOTES_TAB_TITLE": "List all votes made by this user",
+                "WATCHED_TAB": "Watched",
+                "WATCHED_TAB_TITLE": "List all item watched by this user",
+                "CONTACTS_TAB": "聯絡人",
+                "CONTACTS_TAB_TITLE": "List all contacts made by this user"
+            }
         },
         "PROFILE_SIDEBAR": {
             "TITLE": "個人資訊",
             "DESCRIPTION": "人們可以看到你做的成果以及其進度。加入一段描述介紹以強化你的資料。",
             "ADD_INFO": "編輯個人介紹"
+        },
+        "PROFILE_FAVS": {
+            "FILTER_INPUT_PLACEHOLDER": "Type something...",
+            "FILTER_TYPE_ALL": "所有",
+            "FILTER_TYPE_ALL_TITLE": "Show all",
+            "FILTER_TYPE_PROJECTS": "專案",
+            "FILTER_TYPE_PROJECT_TITLES": "Show only projects",
+            "FILTER_TYPE_USER_STORIES": "Stories",
+            "FILTER_TYPE_USER_STORIES_TITLES": "Show only user stories",
+            "FILTER_TYPE_TASKS": "任務 ",
+            "FILTER_TYPE_TASK_TITLES": "Show only tasks",
+            "FILTER_TYPE_ISSUES": "問題 ",
+            "FILTER_TYPE_ISSUES_TITLE": "Show only issues",
+            "EMPTY_TITLE": "It looks like there's nothing to show here."
         }
     },
     "PROJECT": {
@@ -720,6 +765,27 @@
             "ERROR_MESSAGE": "我們的系統無法滙入你的資料",
             "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) 超過系統容量上限, 請重傳小一點的檔案 ({{maxFileSize}})",
             "SYNC_SUCCESS": "你的專案已成功滙入"
+        },
+        "LIKE_BUTTON": {
+            "LIKE": "Like",
+            "LIKED": "Liked",
+            "UNLIKE": "Unlike",
+            "BUTTON_TITLE": "Like or unlike this project",
+            "COUNTER_TITLE": "{total, plural, one{one fan} other{# fans}}"
+        },
+        "WATCH_BUTTON": {
+            "BUTTON_TITLE": "Watch this project and set notification policy",
+            "WATCH": "Watch",
+            "WATCHING": "觀看中",
+            "COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}",
+            "OPTIONS": {
+                "NOTIFY_ALL": "Receive all notifications",
+                "NOTIFY_ALL_TITLE": "Receive all notifications for this project",
+                "NOTIFY_INVOLVED": "Only involved",
+                "NOTIFY_INVOLVED_TITLE": "Recive notificacions only when you are involved",
+                "UNWATCH": "Unwatch",
+                "UNWATCH_TITLE": "Unwatch this project"
+            }
         }
     },
     "LIGHTBOX": {
@@ -792,7 +858,7 @@
         "SECTION_NAME": "使用者故事細節",
         "LINK_TASKBOARD": "任務板",
         "TITLE_LINK_TASKBOARD": "到任務板去",
-        "TOTAL_POINTS": "全部",
+        "TOTAL_POINTS": "total points",
         "ADD": "+新增使用者故事",
         "ADD_BULK": "批次加入新使用者故事",
         "PROMOTED": "此使用者故事已提昇成問題:",
@@ -879,6 +945,10 @@
         "PAGE_TITLE": "待辦任務優先表 - {{projectName}}",
         "PAGE_DESCRIPTION": "待辦任務優先表面板 {{projectName}}（專案的使用者故事與衝刺任務）: {{projectDescription}}",
         "SECTION_NAME": "待辦任務優先表",
+        "CUSTOMIZE_GRAPH": "Customize your backlog graph",
+        "CUSTOMIZE_GRAPH_TEXT": "To have a nice graph that helps you follow the evolution of the project you have to set up the points and sprints through the",
+        "CUSTOMIZE_GRAPH_ADMIN": "管理者",
+        "CUSTOMIZE_GRAPH_TITLE": "Set up the points and sprints through the Admin",
         "MOVE_US_TO_CURRENT_SPRINT": "移到目前的 Sprint",
         "SHOW_FILTERS": "顯示過濾器",
         "SHOW_TAGS": "顯示標籤 (Tag)",
@@ -942,8 +1012,10 @@
             "LINK_TASKBOARD": "衝刺任務板",
             "TITLE_LINK_TASKBOARD": "到任務板 {{spring.name}}",
             "NUMBER_SPRINTS": "<br/>衝刺任務 ",
-            "TITLE_ACTION_NEW_SPRINT": "+ 新衝刺任務 ",
-            "ACTION_NEW_SPRINT": "+ 新衝刺任務 ",
+            "EMPTY": "YOU HAVE NO SPRINTS",
+            "WARNING_EMPTY_SPRINT": "Drop here Stories from your backlog to start a new sprint",
+            "TITLE_ACTION_NEW_SPRINT": "Add new sprint",
+            "TEXT_ACTION_NEW_SPRINT": "You may want to create a new sprint in your project",
             "ACTION_SHOW_CLOSED_SPRINTS": "顯示關閉衝刺任務",
             "ACTION_HIDE_CLOSED_SPRINTS": "隱藏衝刺任務"
         }
@@ -964,6 +1036,8 @@
         "TITLE_ACTION_ADD_BULK": "批次加入新任務 ",
         "TITLE_ACTION_ASSIGN": "指派任務 ",
         "TITLE_ACTION_EDIT": "結束任務 ",
+        "PLACEHOLDER_CARD_TITLE": "This could be a task",
+        "PLACEHOLDER_CARD_TEXT": "Split Stories into tasks to track them separately",
         "TABLE": {
             "COLUMN": "使用者故事",
             "TITLE_ACTION_FOLD": "隱藏欄位",
@@ -1082,16 +1156,17 @@
                 "SEVERITY": "急迫性",
                 "PRIORITY": "優先性",
                 "SUBJECT": "主旨",
+                "VOTES": "投票數",
                 "STATUS": "狀態",
                 "CREATED": "已創建",
                 "ASSIGNED_TO": "指派給 "
             },
             "TITLE_ACTION_CHANGE_STATUS": "改變狀態",
             "TITLE_ACTION_ASSIGNED_TO": "指派給 ",
+            "BLOCKED": "已封鎖",
             "EMPTY": {
                 "TITLE": "沒有問題回報:-)",
-                "SUBTITLE": "你有發現任何問題嗎",
-                "ACTION_CREATE_ISSUE": "創建一個新問題"
+                "SUBTITLE": "你有發現任何問題嗎"
             }
         }
     },
@@ -1113,7 +1188,9 @@
         "ACTION_HIDE_ARCHIVED": "隱藏歸檔",
         "HIDDEN_USER_STORIES": "此狀態下的使用者故事預設為隱藏",
         "ARCHIVED": "你已歸檔",
-        "UNDO_ARCHIVED": "拖移 & 丟到未做"
+        "UNDO_ARCHIVED": "拖移 & 丟到未做",
+        "PLACEHOLDER_CARD_TITLE": "These are your User Stories",
+        "PLACEHOLDER_CARD_TEXT": "Stories might also have subtasks to separate requirements"
     },
     "SEARCH": {
         "PAGE_TITLE": "搜尋 - {{projectName}}",
@@ -1272,5 +1349,61 @@
         "LOGIN_WITH_ANOTHER_USER": "Login with another user",
         "AUTHORIZE_APP": "Authorize app",
         "CANCEL": "取消"
+    },
+    "JOYRIDE": {
+        "DASHBOARD": {
+            "STEP1": {
+                "TITLE": "你的專案",
+                "TEXT": "Welcome! Here you will find the projects you are involved on. We have left you sample project templates to help you discover the power of Taiga."
+            },
+            "STEP2": {
+                "TITLE": "進行中",
+                "TEXT": "Here you will find the User Stories, Tasks and Issues in which you are working on."
+            },
+            "STEP3": {
+                "TITLE": "觀看中",
+                "TEXT1": "And right here you will find the ones that you want to know about.",
+                "TEXT2": "You are already working with Taiga ;)"
+            },
+            "STEP4": {
+                "TITLE": "Let’s start",
+                "TEXT1": "You can start by creating your first Taiga project.",
+                "TEXT2": "Good luck!"
+            }
+        },
+        "BACKLOG": {
+            "STEP1": {
+                "TITLE": "Project summary",
+                "TEXT1": "Here you will see the state of your project.",
+                "TEXT2": "You can change every kind of project settings through the admin."
+            },
+            "STEP2": {
+                "TITLE": "Product backlog",
+                "TEXT": "The backlog is the list of requirements (User Stories) for the project. Here is where you will plan your sprints."
+            },
+            "STEP3": {
+                "TITLE": "衝刺任務",
+                "TEXT": "Sprints are short periods of time (usually 2 weeks) during which specific work has to be completed and delivered."
+            },
+            "STEP4": {
+                "TITLE": "使用者故事",
+                "TEXT": "Those are the requirements at high level. You can add them to the backlog and drag them to the sprint in which it should be delivered."
+            }
+        },
+        "KANBAN": {
+            "STEP1": {
+                "TITLE": "Customize your workflow",
+                "TEXT": "Set up the columns you need to map your workflow statuses through the admin."
+            },
+            "STEP2": {
+                "TITLE": "User Stories & Tasks",
+                "TEXT": "User Stories are the requirements at high level. You can drag them to different columns."
+            },
+            "STEP3": {
+                "TITLE": "Adding User Stories",
+                "TEXT1": "You may want to add a single User Story (add US icon) or a group of them (bulk icon)",
+                "TEXT2": "Good luck!"
+            }
+        }
     }
 }

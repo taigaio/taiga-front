@@ -131,7 +131,8 @@
             "POINTS": "Punts",
             "BLOCKED_NOTE": "Nota de bloqueig",
             "IS_BLOCKED": "està bloquejat",
-            "REF": "Ref"
+            "REF": "Ref",
+            "VOTES": "Vots"
         },
         "ROLES": {
             "ALL": "Tot"
@@ -149,10 +150,26 @@
             "OPEN": "Obert"
         },
         "WATCHERS": {
-            "ADD": "Afegir seguidor",
-            "TITLE": "Seguidors",
+            "ADD": "Add watchers",
+            "TITLE_ADD": "Add a project member to the watchers list",
             "DELETE": "Esborrar seguidor",
             "TITLE_LIGHTBOX_DELETE_WARTCHER": "Esborrar seguidor..."
+        },
+        "WATCH_BUTTON": {
+            "WATCH": "Watch",
+            "WATCHING": "Observant",
+            "UNWATCH": "Unwatch",
+            "WATCHERS": "Watchers",
+            "BUTTON_TITLE": "Watch/Unwatch this item",
+            "COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}"
+        },
+        "VOTE_BUTTON": {
+            "UPVOTE": "Upvote",
+            "UPVOTED": "Upvoted",
+            "DOWNVOTE": "Downvote",
+            "VOTERS": "Voters",
+            "BUTTON_TITLE": "Upvote/Downvote this item",
+            "COUNTER_TITLE": "{total, plural, one{one vote} other{# votes}}"
         },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "Camps personalitzats",
@@ -328,6 +345,7 @@
     "HOME": {
         "PAGE_TITLE": "Home - Taiga",
         "PAGE_DESCRIPTION": "La home de Taiga amb els teus projectes principals, totes les històries d'usuari, tasques i incidències que tens assignades i aquelles que estàs Watching",
+        "EMPTY_WORKING_ON": "<strong>It feels empty, doesn't it?</strong> Start working with Taiga and you'll see here the stories, tasks and issues you are workin on.",
         "EMPTY_WATCHING": "<strong>Segueix</strong> els projectes, històries d'usuari, tasques i incidències... de les que vols conèixer l'evolució :)",
         "EMPTY_PROJECT_LIST": "No tens cap projecte encara",
         "WORKING_ON_SECTION": "En Progrés",
@@ -420,8 +438,8 @@
             "PROJECT_DETAILS": "Detalls de projecte",
             "PROJECT_NAME": "Nom del projecte",
             "PROJECT_SLUG": "Slug de projecte",
-            "NUMBER_SPRINTS": "Nombre de sprints",
-            "NUMBER_US_POINTS": "Nombre de punts de US",
+            "NUMBER_SPRINTS": "Number of sprints (0 for an undetermined quantity)",
+            "NUMBER_US_POINTS": "Number of US points (0 for an undetermined quantity)",
             "TAGS": "Etiquetes",
             "DESCRIPTION": "Descripció",
             "PUBLIC_PROJECT": "Projecte públic",
@@ -499,6 +517,9 @@
             "PAGE_TITLE": "Rols - {{projectName}}",
             "WARNING_NO_ROLE": "Ves amb compte, cap rol en el teu projecte pot estimar punts per a les històries d'usuari",
             "HELP_ROLE_ENABLED": "Si està activat, els membres assignats a aquest rol podràn estimar els punts d'històries d'usuaris",
+            "DISABLE_COMPUTABLE_ALERT_TITLE": "Disable estimation for this role",
+            "DISABLE_COMPUTABLE_ALERT_SUBTITLE": "If you disable estimation permissions for role {{roleName}} all previous estimations made by this role will be removed",
+            "DISABLE_COMPUTABLE_ALERT_MESSAGE": "<strong>Are you sure you want to disable this role estimations?</strong>",
             "COUNT_MEMBERS": "{{ role.members_count }} membres amb aquest rol",
             "TITLE_DELETE_ROLE": "Esborrar rol",
             "REPLACEMENT_ROLE": "Tots els usuaris amb aquest rol es canviaran a",
@@ -635,23 +656,47 @@
             "PAGE_TITLE": "{{userFullName}} (@{{userUsername}})",
             "EDIT": "Edita el perfil",
             "FOLLOW": "Seguir",
-            "PROJECTS": "Projectes",
             "CLOSED_US": "HU tancada",
+            "PROJECTS": "Projectes",
+            "PROJECTS_EMPTY": "{{username}} encara no te cap projecte",
             "CONTACTS": "Contactes",
-            "REPORT": "Informar d'un abús",
-            "ACTIVITY_TAB": "Pestanya d'activitat",
-            "PROJECTS_TAB": "Pestanya de projectes",
-            "CONTACTS_TAB": "Pestanya de contactes",
-            "FAVORITES_TAB": "Pestanya de preferits",
             "CONTACTS_EMPTY": "{{Usuari}} no té contactes encara",
             "CURRENT_USER_CONTACTS_EMPTY": "No tens contactes encara",
             "CURRENT_USER_CONTACTS_EMPTY_EXPLAIN": "Les persones amb les que treballa a Taiga seran els seus contactes de forma automàtica",
-            "PROJECTS_EMPTY": "{{username}} encara no te cap projecte"
+            "REPORT": "Informar d'un abús",
+            "TABS": {
+                "ACTIVITY_TAB": "Activitat",
+                "ACTIVITY_TAB_TITLE": "Show all the activity of this user",
+                "PROJECTS_TAB": "Projectes",
+                "PROJECTS_TAB_TITLE": "List all projects that this user is a member",
+                "LIKES_TAB": "Likes",
+                "LIKES_TAB_TITLE": "List all likes made by this user",
+                "VOTES_TAB": "Vots",
+                "VOTES_TAB_TITLE": "List all votes made by this user",
+                "WATCHED_TAB": "Watched",
+                "WATCHED_TAB_TITLE": "List all item watched by this user",
+                "CONTACTS_TAB": "Contactes",
+                "CONTACTS_TAB_TITLE": "List all contacts made by this user"
+            }
         },
         "PROFILE_SIDEBAR": {
             "TITLE": "El teu perfil",
             "DESCRIPTION": "La gent pot vore tot el que fas i en qué estàs treballant. Afegix una bio interessant per a donar una millor versió de la teua informació.",
             "ADD_INFO": "Edita la teua bio"
+        },
+        "PROFILE_FAVS": {
+            "FILTER_INPUT_PLACEHOLDER": "Type something...",
+            "FILTER_TYPE_ALL": "Tot",
+            "FILTER_TYPE_ALL_TITLE": "Show all",
+            "FILTER_TYPE_PROJECTS": "Projectes",
+            "FILTER_TYPE_PROJECT_TITLES": "Show only projects",
+            "FILTER_TYPE_USER_STORIES": "Stories",
+            "FILTER_TYPE_USER_STORIES_TITLES": "Show only user stories",
+            "FILTER_TYPE_TASKS": "Tasques",
+            "FILTER_TYPE_TASK_TITLES": "Show only tasks",
+            "FILTER_TYPE_ISSUES": "Incidències",
+            "FILTER_TYPE_ISSUES_TITLE": "Show only issues",
+            "EMPTY_TITLE": "It looks like there's nothing to show here."
         }
     },
     "PROJECT": {
@@ -720,6 +765,27 @@
             "ERROR_MESSAGE": "Els Oompa Loompas tenen problemes important les teues dades: {{error_message}}",
             "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) es massa gran per als nostres Oompa Loompas, prova amb algun inferior a ({{maxFileSize}})",
             "SYNC_SUCCESS": "El teu projecte s'ha importat correctament"
+        },
+        "LIKE_BUTTON": {
+            "LIKE": "Like",
+            "LIKED": "Liked",
+            "UNLIKE": "Unlike",
+            "BUTTON_TITLE": "Like or unlike this project",
+            "COUNTER_TITLE": "{total, plural, one{one fan} other{# fans}}"
+        },
+        "WATCH_BUTTON": {
+            "BUTTON_TITLE": "Watch this project and set notification policy",
+            "WATCH": "Watch",
+            "WATCHING": "Observant",
+            "COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}",
+            "OPTIONS": {
+                "NOTIFY_ALL": "Receive all notifications",
+                "NOTIFY_ALL_TITLE": "Receive all notifications for this project",
+                "NOTIFY_INVOLVED": "Only involved",
+                "NOTIFY_INVOLVED_TITLE": "Recive notificacions only when you are involved",
+                "UNWATCH": "Unwatch",
+                "UNWATCH_TITLE": "Unwatch this project"
+            }
         }
     },
     "LIGHTBOX": {
@@ -792,7 +858,7 @@
         "SECTION_NAME": "Detalls de la història d'usuari",
         "LINK_TASKBOARD": "Panell de tasques",
         "TITLE_LINK_TASKBOARD": "Anar a panell de tasques",
-        "TOTAL_POINTS": "total",
+        "TOTAL_POINTS": "total points",
         "ADD": "+ Afegeix una nova història d'usuari",
         "ADD_BULK": "Afegeix noves històries d'usuari en grup",
         "PROMOTED": "Aquesta US ha sigut promocionada desde:",
@@ -879,6 +945,10 @@
         "PAGE_TITLE": "Backlog - {{projectName}}",
         "PAGE_DESCRIPTION": "El panell Backlog, amb històries d'usuari i esprints del projecte {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Backlog",
+        "CUSTOMIZE_GRAPH": "Customize your backlog graph",
+        "CUSTOMIZE_GRAPH_TEXT": "To have a nice graph that helps you follow the evolution of the project you have to set up the points and sprints through the",
+        "CUSTOMIZE_GRAPH_ADMIN": "Admin",
+        "CUSTOMIZE_GRAPH_TITLE": "Set up the points and sprints through the Admin",
         "MOVE_US_TO_CURRENT_SPRINT": "Envia al Sprint",
         "SHOW_FILTERS": "Mostra filtres",
         "SHOW_TAGS": "Mostra etiquetes",
@@ -942,8 +1012,10 @@
             "LINK_TASKBOARD": "Anar al panell de sprint",
             "TITLE_LINK_TASKBOARD": "Anar al panell de {{::name}}",
             "NUMBER_SPRINTS": "<br/> sprints",
-            "TITLE_ACTION_NEW_SPRINT": "+ Nou sprint",
-            "ACTION_NEW_SPRINT": "+ Nou sprint",
+            "EMPTY": "YOU HAVE NO SPRINTS",
+            "WARNING_EMPTY_SPRINT": "Drop here Stories from your backlog to start a new sprint",
+            "TITLE_ACTION_NEW_SPRINT": "Add new sprint",
+            "TEXT_ACTION_NEW_SPRINT": "You may want to create a new sprint in your project",
             "ACTION_SHOW_CLOSED_SPRINTS": "Mostra sprints tancats",
             "ACTION_HIDE_CLOSED_SPRINTS": "Amaga sprints tancats"
         }
@@ -964,6 +1036,8 @@
         "TITLE_ACTION_ADD_BULK": "Afegeix noves històries d'usuari en grup",
         "TITLE_ACTION_ASSIGN": "Assignar tasca",
         "TITLE_ACTION_EDIT": "Editar tasca",
+        "PLACEHOLDER_CARD_TITLE": "This could be a task",
+        "PLACEHOLDER_CARD_TEXT": "Split Stories into tasks to track them separately",
         "TABLE": {
             "COLUMN": "Història d'usuari",
             "TITLE_ACTION_FOLD": "Plegar columna",
@@ -1082,16 +1156,17 @@
                 "SEVERITY": "Severitat",
                 "PRIORITY": "Prioritat",
                 "SUBJECT": "Descripció",
+                "VOTES": "Vots",
                 "STATUS": "Estats",
                 "CREATED": "Creat",
                 "ASSIGNED_TO": "Assignat a"
             },
             "TITLE_ACTION_CHANGE_STATUS": "Canvia l'estat",
             "TITLE_ACTION_ASSIGNED_TO": "Assignat a",
+            "BLOCKED": "Bloquejat",
             "EMPTY": {
                 "TITLE": "No hi ha incidències a reportar :-)",
-                "SUBTITLE": "Has trobat una incidència?",
-                "ACTION_CREATE_ISSUE": "Crea nova incidència"
+                "SUBTITLE": "Has trobat una incidència?"
             }
         }
     },
@@ -1113,7 +1188,9 @@
         "ACTION_HIDE_ARCHIVED": "Amagar arxivats",
         "HIDDEN_USER_STORIES": "Les històries d'usuari en aquest estats estan amagades",
         "ARCHIVED": "Has arxivat",
-        "UNDO_ARCHIVED": "Arrastra de nou  per desfer"
+        "UNDO_ARCHIVED": "Arrastra de nou  per desfer",
+        "PLACEHOLDER_CARD_TITLE": "These are your User Stories",
+        "PLACEHOLDER_CARD_TEXT": "Stories might also have subtasks to separate requirements"
     },
     "SEARCH": {
         "PAGE_TITLE": "Cerca - {{projectName}}",
@@ -1272,5 +1349,61 @@
         "LOGIN_WITH_ANOTHER_USER": "Identifica't amb un altre nom d'usuari",
         "AUTHORIZE_APP": "Autoritza l'aplicació",
         "CANCEL": "Següent"
+    },
+    "JOYRIDE": {
+        "DASHBOARD": {
+            "STEP1": {
+                "TITLE": "El teu projecte",
+                "TEXT": "Welcome! Here you will find the projects you are involved on. We have left you sample project templates to help you discover the power of Taiga."
+            },
+            "STEP2": {
+                "TITLE": "En Progrés",
+                "TEXT": "Here you will find the User Stories, Tasks and Issues in which you are working on."
+            },
+            "STEP3": {
+                "TITLE": "Observant",
+                "TEXT1": "And right here you will find the ones that you want to know about.",
+                "TEXT2": "You are already working with Taiga ;)"
+            },
+            "STEP4": {
+                "TITLE": "Let’s start",
+                "TEXT1": "You can start by creating your first Taiga project.",
+                "TEXT2": "Good luck!"
+            }
+        },
+        "BACKLOG": {
+            "STEP1": {
+                "TITLE": "Project summary",
+                "TEXT1": "Here you will see the state of your project.",
+                "TEXT2": "You can change every kind of project settings through the admin."
+            },
+            "STEP2": {
+                "TITLE": "Product backlog",
+                "TEXT": "The backlog is the list of requirements (User Stories) for the project. Here is where you will plan your sprints."
+            },
+            "STEP3": {
+                "TITLE": "Sprints",
+                "TEXT": "Sprints are short periods of time (usually 2 weeks) during which specific work has to be completed and delivered."
+            },
+            "STEP4": {
+                "TITLE": "Històries d'usuari",
+                "TEXT": "Those are the requirements at high level. You can add them to the backlog and drag them to the sprint in which it should be delivered."
+            }
+        },
+        "KANBAN": {
+            "STEP1": {
+                "TITLE": "Customize your workflow",
+                "TEXT": "Set up the columns you need to map your workflow statuses through the admin."
+            },
+            "STEP2": {
+                "TITLE": "User Stories & Tasks",
+                "TEXT": "User Stories are the requirements at high level. You can drag them to different columns."
+            },
+            "STEP3": {
+                "TITLE": "Adding User Stories",
+                "TEXT1": "You may want to add a single User Story (add US icon) or a group of them (bulk icon)",
+                "TEXT2": "Good luck!"
+            }
+        }
     }
 }
