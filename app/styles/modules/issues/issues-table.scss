@@ -12,6 +12,13 @@
         .icon {
             display: inline;
         }
+        &.is-blocked {
+            background: lighten($red-light, 20%);
+            .blocked-text {
+                color: $red;
+                margin-right: .5rem;
+            }
+        }
     }
     .row-selected {
         background: lighten($primary, 60%);
