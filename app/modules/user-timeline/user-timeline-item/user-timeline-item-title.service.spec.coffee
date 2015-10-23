@@ -292,7 +292,7 @@ describe "tgUserTimelineItemTitle", ->
         }
 
         objparam = sinon.match ((value) ->
-            return value.obj_name == '<a tg-nav="project-taskboard:project=timeline.getIn([\'data\', \'project\', \'slug\']),ref=timeline.getIn([\'obj\', \'ref\'])" title="milestone_name">milestone_name</a>'
+            return value.obj_name == '<a tg-nav="project-taskboard:project=timeline.getIn([\'data\', \'project\', \'slug\']),sprint=timeline.getIn([\'obj\', \'slug\'])" title="milestone_name">milestone_name</a>'
          ), "objparam"
 
         mockTranslate.instant
