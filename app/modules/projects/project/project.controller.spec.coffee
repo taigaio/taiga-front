@@ -5,16 +5,14 @@ describe "ProjectController", ->
     $rootScope = null
     mocks = {}
 
-    _mockProjectsService = () ->
-        mocks.projectService = {
-            getProjectBySlug: sinon.stub()
-        }
+    _mockProjectService = () ->
+        mocks.projectService = {}
 
-        provide.value "tgProjectsService", mocks.projectService
+        provide.value "tgProjectService", mocks.projectService
 
     _mockAppMetaService = () ->
         mocks.appMetaService = {
-            setAll: sinon.stub()
+            setfn: sinon.stub()
         }
 
         provide.value "tgAppMetaService", mocks.appMetaService
@@ -31,13 +29,6 @@ describe "ProjectController", ->
             pslug: "project-slug"
         }
 
-    _mockXhrErrorService = () ->
-        mocks.xhrErrorService = {
-            response: sinon.spy()
-        }
-
-        provide.value "tgXhrErrorService", mocks.xhrErrorService
-
     _mockTranslate = () ->
         mocks.translate = {}
         mocks.translate.instant = sinon.stub()
@@ -47,11 +38,10 @@ describe "ProjectController", ->
     _mocks = () ->
         module ($provide) ->
             provide = $provide
-            _mockProjectsService()
+            _mockProjectService()
             _mockRouteParams()
             _mockAppMetaService()
             _mockAuth()
-            _mockXhrErrorService()
             _mockTranslate()
             return null
 
@@ -72,14 +62,12 @@ describe "ProjectController", ->
             members: []
         })
 
-        mocks.projectService.getProjectBySlug.withArgs("project-slug").promise().resolve(project)
-
         ctrl = $controller "Project",
             $scope: {}
 
         expect(ctrl.user).to.be.equal(mocks.auth.userData)
 
-    it "set page title", (done) ->
+    it "set page title", () ->
         $scope = $rootScope.$new()
         project = Immutable.fromJS({
             name: "projectName"
@@ -93,44 +81,31 @@ describe "ProjectController", ->
             })
             .returns('projectTitle')
 
-        mocks.projectService.getProjectBySlug.withArgs("project-slug").promise().resolve(project)
+        mocks.projectService.project = project
 
         ctrl = $controller("Project")
 
-        setTimeout ( ->
-            expect(mocks.appMetaService.setAll.calledWithExactly("projectTitle", "projectDescription")).to.be.true
-            done()
-        )
+        metas = ctrl._setMeta(project)
 
-    it "set local project variable with active members", (done) ->
+        expect(metas.title).to.be.equal('projectTitle')
+        expect(metas.description).to.be.equal('projectDescription')
+        expect(mocks.appMetaService.setfn).to.be.calledOnce
+
+    it "set local project variable and members", () ->
         project = Immutable.fromJS({
-            name: "projectName",
-            members: [
-                {is_active: true},
-                {is_active: true},
-                {is_active: true},
-                {is_active: false}
-            ]
+            name: "projectName"
         })
 
-        mocks.projectService.getProjectBySlug.withArgs("project-slug").promise().resolve(project)
+        members = Immutable.fromJS([
+            {is_active: true},
+            {is_active: true},
+            {is_active: true}
+        ])
+
+        mocks.projectService.project = project
+        mocks.projectService.activeMembers = members
 
         ctrl = $controller("Project")
 
-        setTimeout (() ->
-            expect(ctrl.project.get('members').size).to.be.equal(3)
-
-            done()
-        )
-
-    it "handle project error", (done) ->
-        xhr = {code: 403}
-
-        mocks.projectService.getProjectBySlug.withArgs("project-slug").promise().reject(xhr)
-
-        ctrl = $controller("Project")
-
-        setTimeout (() ->
-            expect(mocks.xhrErrorService.response.withArgs(xhr)).to.be.calledOnce
-            done()
-        )
+        expect(ctrl.project).to.be.equal(project)
+        expect(ctrl.members).to.be.equal(members)
