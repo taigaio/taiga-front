@@ -92,7 +92,7 @@ describe "tgCurrentUserService", ->
     it "bulkUpdateProjectsOrder and reload projects", (done) ->
         fakeData = [{id: 1, id: 2}]
 
-        currentUserService.loadProjects = sinon.spy()
+        currentUserService.loadProjects = sinon.stub()
 
         mocks.projectsService.bulkUpdateProjectsOrder.withArgs(fakeData).promise().resolve()
 
@@ -100,6 +100,41 @@ describe "tgCurrentUserService", ->
             expect(currentUserService.loadProjects).to.be.callOnce
 
             done()
+
+    it "loadProject and set it", (done) ->
+        user = Immutable.fromJS({id: 1, name: "fake1"})
+        project = Immutable.fromJS({id: 2, name: "fake2"})
+
+        currentUserService._user = user
+        currentUserService.setProjects = sinon.stub()
+
+        mocks.projectsService.getProjectsByUserId.withArgs(1).promise().resolve(project)
+
+        currentUserService.loadProjects().then () ->
+            expect(currentUserService.setProjects).to.have.been.calledWith(project)
+
+            done()
+
+    it "setProject", () ->
+        projectsRaw = [
+            {id: 1, name: "fake1"},
+            {id: 2, name: "fake2"},
+            {id: 3, name: "fake3"},
+            {id: 4, name: "fake4"}
+        ]
+        projectsRawById = {
+            1: {id: 1, name: "fake1"},
+            2: {id: 2, name: "fake2"},
+            3: {id: 3, name: "fake3"},
+            4: {id: 4, name: "fake4"}
+        }
+        projects = Immutable.fromJS(projectsRaw)
+
+        currentUserService.setProjects(projects)
+
+        expect(currentUserService.projects.get('all').toJS()).to.be.eql(projectsRaw)
+        expect(currentUserService.projects.get('recents').toJS()).to.be.eql(projectsRaw)
+        expect(currentUserService.projectsById.toJS()).to.be.eql(projectsRawById)
 
     it "is authenticated", () ->
         currentUserService.getUser = sinon.stub()

@@ -3,7 +3,13 @@ taiga = @.taiga
 truncate = taiga.truncate
 
 
-class AppMetaService extends taiga.Service = ->
+class AppMetaService
+    @.$inject = [
+        "$rootScope"
+    ]
+
+    constructor: (@rootScope) ->
+
     _set: (key, value) ->
         return if not key
 
@@ -60,12 +66,19 @@ class AppMetaService extends taiga.Service = ->
         @.setOpenGraphMetas(title, description)
 
     addMobileViewport: () ->
-        $('head').append(
-            '<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">'
+        $("head").append(
+            "<meta name=\"viewport\"
+                   content=\"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0\">"
         )
 
     removeMobileViewport: () ->
-        $('meta[name="viewport"]').remove()
+        $("meta[name=\"viewport\"]").remove()
+
+    setfn: (fn) ->
+        @._listener() if @.listener
+
+        @._listener = @rootScope.$watchCollection fn, (metas) =>
+            @.setAll(metas.title, metas.description)
 
 
 angular.module("taigaCommon").service("tgAppMetaService", AppMetaService)

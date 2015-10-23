@@ -49,13 +49,7 @@ class CurrentUserService
 
     loadProjects: () ->
         return @projectsService.getProjectsByUserId(@._user.get("id"))
-            .then (projects) =>
-                @._projects = @._projects.set("all", projects)
-                @._projects = @._projects.set("recents", projects.slice(0, 10))
-
-                @._projectsById = Immutable.fromJS(groupBy(projects.toJS(), (p) -> p.id))
-
-                return @.projects
+            .then (projects) => @.setProjects(projects)
 
     disableJoyRide: (section) ->
         if section
@@ -95,5 +89,13 @@ class CurrentUserService
         return Promise.all([
             @.loadProjects()
         ])
+
+    setProjects: (projects) ->
+        @._projects = @._projects.set("all", projects)
+        @._projects = @._projects.set("recents", projects.slice(0, 10))
+
+        @._projectsById = Immutable.fromJS(groupBy(projects.toJS(), (p) -> p.id))
+
+        return @.projects
 
 angular.module("taigaCommon").service("tgCurrentUserService", CurrentUserService)

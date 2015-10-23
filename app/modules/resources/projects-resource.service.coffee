@@ -51,6 +51,25 @@ Resource = (urlsService, http, paginateResponseService) ->
             result = Immutable.fromJS(result)
             return paginateResponseService(result)
 
+    service.likeProject = (projectId) ->
+        url = urlsService.resolve("project-like", projectId)
+        return http.post(url)
+
+    service.unlikeProject = (projectId) ->
+        url = urlsService.resolve("project-unlike", projectId)
+        return http.post(url)
+
+    service.watchProject = (projectId, notifyPolicy) ->
+        data = {
+            notify_policy: notifyPolicy
+        }
+        url = urlsService.resolve("project-watch", projectId)
+        return http.post(url, data)
+
+    service.unwatchProject = (projectId) ->
+        url = urlsService.resolve("project-unwatch", projectId)
+        return http.post(url)
+
     return () ->
         return {"projects": service}
 
