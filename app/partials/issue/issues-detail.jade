@@ -1,74 +1,115 @@
 doctype html
 
-div.wrapper(ng-controller="IssueDetailController as ctrl",
-            ng-init="section='issues'")
+div.wrapper(
+    ng-controller="IssueDetailController as ctrl",
+    ng-init="section='issues'"
+)
     tg-project-menu
+
     div.main.us-detail
         div.us-detail-header.header-with-actions
             include ../includes/components/mainTitle
 
         section.us-story-main-data
-            div.us-title(ng-class="{blocked: issue.is_blocked}")
-                h2.us-title-text
-                    span.us-number(tg-bo-ref="issue.ref")
-                    span.us-name(tg-editable-subject, ng-model="issue", required-perm="modify_issue")
+            header
+                tg-vote-button.upvote-btn(
+                    item="issue"
+                    on-upvote="ctrl.onUpvote"
+                    on-downvote="ctrl.onDownvote"
+                )
+                .us-title(ng-class="{blocked: issue.is_blocked}")
+                    h2.us-title-text
+                        span.us-number(tg-bo-ref="issue.ref")
+                        span.us-name(tg-editable-subject, ng-model="issue", required-perm="modify_issue")
 
-                p.us-related-task(ng-if="issue.generated_user_stories.length")
-                    | {{ 'ISSUES.PROMOTED'|translate }}
-                    a(ng-repeat="us in issue.generated_user_stories",
-                      tg-check-permission="view_us", href="",
-                      tg-bo-title="'#' + us.ref + ' ' + us.subject",
-                      tg-nav="project-userstories-detail:project=project.slug,ref=us.ref")
-                          span(tg-bo-ref="us.ref")
+                    p.us-related-task(ng-if="issue.generated_user_stories.length")
+                        | {{ 'ISSUES.PROMOTED'|translate }}
+                        a(
+                            href=""
+                            ng-repeat="us in issue.generated_user_stories"
+                            tg-check-permission="view_us"
+                            tg-bo-title="'#' + us.ref + ' ' + us.subject"
+                            tg-nav="project-userstories-detail:project=project.slug,ref=us.ref"
+                        )
+                              span(tg-bo-ref="us.ref")
 
-                p.external-reference(ng-if="issue.external_reference")
-                    | {{ 'ISSUES.EXTERNAL_REFERENCE'|translate }}
-                    a(target="_blank", tg-bo-href="issue.external_reference[1]",
-                      title="{{'ISSUES.GO_TO_EXTERNAL_REFERENCE' | translate}}")
-                        span {{ issue.external_reference[1] }}
+                    p.external-reference(ng-if="issue.external_reference")
+                        | {{ 'ISSUES.EXTERNAL_REFERENCE'|translate }}
+                        a(
+                            target="_blank"
+                            tg-bo-href="issue.external_reference[1]"
+                            title="{{'ISSUES.GO_TO_EXTERNAL_REFERENCE' | translate}}"
+                        )
+                            span {{ issue.external_reference[1] }}
 
-                p.block-desc-container(ng-show="issue.is_blocked")
-                    span.block-description-title(translate="COMMON.BLOCKED")
-                    span.block-description(ng-bind="issue.blocked_note || ('ISSUES.BLOCKED' | translate)")
+                    p.block-desc-container(ng-show="issue.is_blocked")
+                        span.block-description-title(translate="COMMON.BLOCKED")
+                        span.block-description(ng-bind="issue.blocked_note || ('ISSUES.BLOCKED' | translate)")
 
-                div.issue-nav
-                    a.icon.icon-arrow-left(ng-show="previousUrl", tg-bo-href="previousUrl",
-                                           title="{{'ISSUES.TITLE_PREVIOUS_ISSUE' | translate}}")
-                    a.icon.icon-arrow-right(ng-show="nextUrl", tg-bo-href="nextUrl",
-                                            title="{{'ISSUES.TITLE_NEXT_ISSUE' | translate}}")
+                    div.issue-nav
+                        a.icon.icon-arrow-left(
+                            ng-show="previousUrl"
+                            tg-bo-href="previousUrl"
+                            title="{{'ISSUES.TITLE_PREVIOUS_ISSUE' | translate}}"
+                        )
+                        a.icon.icon-arrow-right(
+                            ng-show="nextUrl"
+                            tg-bo-href="nextUrl"
+                            title="{{'ISSUES.TITLE_NEXT_ISSUE' | translate}}"
+                        )
 
             div.tags-block(tg-tag-line, ng-model="issue", required-perm="modify_issue")
 
         section.duty-content(tg-editable-description, ng-model="issue", required-perm="modify_issue")
 
         // Custom Fields
-        tg-custom-attributes-values(ng-model="issue", type="issue", project="project", required-edition-perm="modify_issue")
+        tg-custom-attributes-values(
+            ng-model="issue"
+            type="issue"
+            project="project"
+            required-edition-perm="modify_issue"
+        )
 
         tg-attachments(ng-model="issue", type="issue")
         tg-history(ng-model="issue", type="issue")
 
-    sidebar.menu-secondary.sidebar
-        section.us-status
-            h1(tg-issue-status-display, ng-model="issue")
-            tg-created-by-display.us-created-by(ng-model="issue")
-            div.duty-data-container
-                div.duty-data(tg-issue-type-button, ng-model="issue")
-                div.duty-data(tg-issue-severity-button, ng-model="issue")
-                div.duty-data(tg-issue-priority-button, ng-model="issue")
-                div.duty-data(tg-issue-status-button, ng-model="issue")
+    sidebar.menu-secondary.sidebar.ticket-data
+        section.status
+            .ticket-title(tg-issue-status-display, ng-model="issue")
+        tg-created-by-display.ticket-created-by(ng-model="issue")
+        div.ticket-data-container
+            div.ticket-status(tg-issue-type-button, ng-model="issue")
+            div.ticket-status(tg-issue-severity-button, ng-model="issue")
+            div.ticket-status(tg-issue-priority-button, ng-model="issue")
+            div.ticket-status(tg-issue-status-button, ng-model="issue")
 
-        section.duty-assigned-to(tg-assigned-to, ng-model="issue", required-perm="modify_issue")
+        section.ticket-assigned-to(tg-assigned-to, ng-model="issue", required-perm="modify_issue")
 
-        section.watchers(tg-watchers, ng-model="issue", required-perm="modify_issue")
+        section.track-buttons-container.ticket-track-buttons
 
-        section.us-detail-settings
-           tg-promote-issue-to-us-button(tg-check-permission="add_us", ng-model="issue")
-           tg-block-button(tg-check-permission="modify_issue", ng-model="issue")
-           tg-delete-button(tg-check-permission="delete_issue",
-                            on-delete-title="{{'ISSUES.ACTION_DELETE' | translate}}",
-                            on-delete-go-to-url="onDeleteGoToUrl",
-                            ng-model="issue")
+            div.watch-button
+                tg-watch-button(
+                    item="issue"
+                    on-watch="ctrl.onWatch"
+                    on-unwatch="ctrl.onUnwatch"
+                )
 
-    div.lightbox.lightbox-block(tg-lb-block, title="ISSUES.LIGHTBOX_TITLE_BLOKING_ISSUE", ng-model="issue")
+            div.ticket-watchers(
+                tg-watchers
+                ng-model="issue"
+                required-perm="modify_issue"
+            )
+
+        section.ticket-detail-settings
+            tg-promote-issue-to-us-button(tg-check-permission="add_us", ng-model="issue")
+            tg-block-button(tg-check-permission="modify_issue", ng-model="issue")
+            tg-delete-button(
+                tg-check-permission="delete_issue",
+                on-delete-title="{{'ISSUES.ACTION_DELETE' | translate}}",
+                on-delete-go-to-url="onDeleteGoToUrl",
+                ng-model="issue"
+            )
+
+    div.lightbox.lightbox-block(tg-lb-block, ng-model="issue", title="ISSUES.LIGHTBOX_TITLE_BLOKING_ISSUE")
     div.lightbox.lightbox-select-user(tg-lb-assignedto)
     div.lightbox.lightbox-select-user(tg-lb-watchers)

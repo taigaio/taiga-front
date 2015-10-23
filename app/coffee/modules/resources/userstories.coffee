@@ -67,6 +67,22 @@ resourceProvider = ($repo, $http, $urls, $storage) ->
 
         return $http.post(url, data)
 
+    service.upvote = (userStoryId) ->
+        url = $urls.resolve("userstory-upvote", userStoryId)
+        return $http.post(url)
+
+    service.downvote = (userStoryId) ->
+        url = $urls.resolve("userstory-downvote", userStoryId)
+        return $http.post(url)
+
+    service.watch = (userStoryId) ->
+        url = $urls.resolve("userstory-watch", userStoryId)
+        return $http.post(url)
+
+    service.unwatch = (userStoryId) ->
+        url = $urls.resolve("userstory-unwatch", userStoryId)
+        return $http.post(url)
+
     service.bulkUpdateBacklogOrder = (projectId, data) ->
         url = $urls.resolve("bulk-update-us-backlog-order")
         params = {project_id: projectId, bulk_stories: data}

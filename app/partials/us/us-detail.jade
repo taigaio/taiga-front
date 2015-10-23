@@ -1,80 +1,152 @@
 doctype html
 
-div.wrapper(ng-controller="UserStoryDetailController as ctrl",
-            ng-init="section='backlog-kanban'")
+div.wrapper(
+    ng-controller="UserStoryDetailController as ctrl",
+    ng-init="section='backlog-kanban'"
+)
     tg-project-menu
+
     div.main.us-detail
         div.us-detail-header.header-with-actions
             include ../includes/components/mainTitle
             .action-buttons
                 a.button-gray(
-                    tg-check-permission="view_milestones",
-                    href="", title="{{'US.TITLE_LINK_TASKBOARD' | translate}}",
-                    tg-nav="project-taskboard:project=project.slug,sprint=sprint.slug",
-                    ng-if="sprint && project.is_backlog_activated", translate="US.LINK_TASKBOARD")
+                    href=""
+                    tg-check-permission="view_milestones"
+                    tg-nav="project-taskboard:project=project.slug,sprint=sprint.slug"
+                    ng-if="sprint && project.is_backlog_activated"
+                    title="{{'US.TITLE_LINK_TASKBOARD' | translate}}"
+                    translate="US.LINK_TASKBOARD"
+                )
 
         section.us-story-main-data
-            div.us-title(ng-class="{blocked: us.is_blocked}")
-                h2.us-title-text
-                    span.us-number(tg-bo-ref="us.ref")
-                    span.us-name(tg-editable-subject, ng-model="us", required-perm="modify_us")
+            header
+                tg-vote-button.upvote-btn(
+                    item="us"
+                    on-upvote="ctrl.onUpvote"
+                    on-downvote="ctrl.onDownvote"
+                )
+                div.us-title(ng-class="{blocked: us.is_blocked}")
+                    h2.us-title-text
+                        span.us-number(tg-bo-ref="us.ref")
+                        span.us-name(tg-editable-subject, ng-model="us", required-perm="modify_us")
 
-                p.us-related-task(ng-if="us.origin_issue")
-                    | {{ 'US.PROMOTED'|translate }}
-                    a(tg-check-permission="view_us", href="", title="{{'US.TITLE_LINK_GO_TO_ISSUE' | translate}}",
-                      tg-nav="project-issues-detail:project=project.slug,ref=us.origin_issue.ref"
-                      tg-bo-title="'#' + us.origin_issue.ref + ' ' + us.origin_issue.subject")
-                        span(tg-bo-ref="us.origin_issue.ref")
+                    p.us-related-task(ng-if="us.origin_issue")
+                        | {{ 'US.PROMOTED'|translate }}
+                        a(
+                            href=""
+                            tg-check-permission="view_us"
+                            tg-nav="project-issues-detail:project=project.slug,ref=us.origin_issue.ref"
+                            tg-bo-title="'#' + us.origin_issue.ref + ' ' + us.origin_issue.subject"
+                            title="{{'US.TITLE_LINK_GO_TO_ISSUE' | translate}}"
+                        )
+                            span(tg-bo-ref="us.origin_issue.ref")
 
-                p.external-reference(ng-if="us.external_reference")
-                    | {{ 'US.EXTERNAL_REFERENCE'|translate }}
-                    a(target="_blank", tg-bo-href="us.external_reference[1]",
-                      title="{{'US.GO_TO_EXTERNAL_REFERENCE' | translate}}")
-                        span {{ us.external_reference[1] }}
+                    p.external-reference(ng-if="us.external_reference")
+                        | {{ 'US.EXTERNAL_REFERENCE'|translate }}
+                        a(
+                            tg-bo-href="us.external_reference[1]",
+                            title="{{'US.GO_TO_EXTERNAL_REFERENCE' | translate}}"
+                            target="_blank"
+                        )
+                            span {{ us.external_reference[1] }}
 
-                p.block-desc-container(ng-show="us.is_blocked")
-                    span.block-description-title(translate="COMMON.BLOCKED")
-                    span.block-description(ng-bind="us.blocked_note || ('US.BLOCKED' | translate)")
-                div.issue-nav
-                    a.icon.icon-arrow-left(ng-show="previousUrl", tg-bo-href="previousUrl",
-                                           title="{{'US.PREVIOUS' | translate}}")
-                    a.icon.icon-arrow-right(ng-show="nextUrl", tg-bo-href="nextUrl",
-                                            title="{{'US.NEXT' | translate}}")
+                    p.block-desc-container(ng-show="us.is_blocked")
+                        span.block-description-title(translate="COMMON.BLOCKED")
+                        span.block-description(ng-bind="us.blocked_note || ('US.BLOCKED' | translate)")
+                    div.issue-nav
+                        a.icon.icon-arrow-left(
+                            ng-show="previousUrl"
+                            tg-bo-href="previousUrl"
+                            title="{{'US.PREVIOUS' | translate}}"
+                        )
+                        a.icon.icon-arrow-right(
+                            ng-show="nextUrl"
+                            tg-bo-href="nextUrl"
+                            title="{{'US.NEXT' | translate}}"
+                        )
 
             div.tags-block(tg-tag-line, ng-model="us", required-perm="modify_us")
 
         section.duty-content(tg-editable-description, ng-model="us", required-perm="modify_us")
 
         // Custom Fields
-        tg-custom-attributes-values(ng-model="us", type="userstory", project="project", required-edition-perm="modify_us")
+        tg-custom-attributes-values(
+            ng-model="us"
+            type="userstory"
+            project="project"
+            required-edition-perm="modify_us"
+        )
 
         include ../includes/modules/related-tasks
 
-        tg-attachments(ng-model="us", type="us")
-        tg-history(ng-model="us", type="us")
+        tg-attachments(
+            ng-model="us"
+            type="us"
+        )
+        tg-history(
+            ng-model="us"
+            type="us"
+        )
 
-    sidebar.menu-secondary.sidebar
-        section.us-status
-            h1(tg-us-status-display, ng-model="us")
-            div.us-detail-progress-bar(tg-us-tasks-progress-display, ng-model="tasks")
-            tg-created-by-display.us-created-by(ng-model="us")
+    sidebar.menu-secondary.sidebar.ticket-data
+        section
+            div.ticket-title(
+                tg-us-status-display
+                ng-model="us"
+            )
+
+            tg-created-by-display.ticket-created-by(ng-model="us")
+
+            //div.ticket-detail-progress-bar(tg-us-tasks-progress-display, ng-model="tasks")
+
+            div.ticket-data-container
+                div.ticket-status(
+                    tg-us-status-button
+                    ng-model="us"
+                )
+
+        section.ticket-estimation
             tg-us-estimation(ng-model="us")
-            div.duty-data-container
-                div.duty-data(tg-us-status-button, ng-model="us")
 
-        section.duty-assigned-to(tg-assigned-to, ng-model="us", required-perm="modify_us")
+        section.ticket-assigned-to(
+            tg-assigned-to
+            ng-model="us"
+            required-perm="modify_us"
+        )
 
-        section.watchers(tg-watchers, ng-model="us", required-perm="modify_us")
+        section.track-buttons-container.ticket-track-buttons
+            div.watch-button
+                tg-watch-button(
+                    item="us"
+                    on-watch="ctrl.onWatch"
+                    on-unwatch="ctrl.onUnwatch"
+                )
 
-        section.us-detail-settings
+            div.ticket-watchers(
+                tg-watchers
+                ng-model="us"
+                required-perm="modify_us"
+            )
+
+        section.ticket-detail-settings
             tg-us-team-requirement-button(ng-model="us")
             tg-us-client-requirement-button(ng-model="us")
-            tg-block-button(tg-check-permission="modify_us", ng-model="us")
-            tg-delete-button(tg-check-permission="delete_us",
-                             on-delete-title="{{'Delete User Story' | translate}}",
-                             on-delete-go-to-url="onDeleteGoToUrl",
-                             ng-model="us")
+            tg-block-button(
+                tg-check-permission="modify_us"
+                ng-model="us"
+            )
+            tg-delete-button(
+                tg-check-permission="delete_us"
+                on-delete-title="{{'Delete User Story' | translate}}"
+                on-delete-go-to-url="onDeleteGoToUrl"
+                ng-model="us"
+            )
 
-    div.lightbox.lightbox-block(tg-lb-block, title="{{ 'US.LIGHTBOX_TITLE_BLOKING_US' | translate }}", ng-model="us")
+    div.lightbox.lightbox-block(
+        tg-lb-block
+        title="{{ 'US.LIGHTBOX_TITLE_BLOKING_US' | translate }}"
+        ng-model="us"
+    )
     div.lightbox.lightbox-select-user(tg-lb-assignedto)
     div.lightbox.lightbox-select-user(tg-lb-watchers)

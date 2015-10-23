@@ -57,6 +57,22 @@ resourceProvider = ($repo, $http, $urls, $storage) ->
         return $http.post(url, params).then (result) ->
             return result.data
 
+    service.upvote = (taskId) ->
+        url = $urls.resolve("task-upvote", taskId)
+        return $http.post(url)
+
+    service.downvote = (taskId) ->
+        url = $urls.resolve("task-downvote", taskId)
+        return $http.post(url)
+
+    service.watch = (taskId) ->
+        url = $urls.resolve("task-watch", taskId)
+        return $http.post(url)
+
+    service.unwatch = (taskId) ->
+        url = $urls.resolve("task-unwatch", taskId)
+        return $http.post(url)
+
     service.bulkUpdateTaskTaskboardOrder = (projectId, data) ->
         url = $urls.resolve("bulk-update-task-taskboard-order")
         params = {project_id: projectId, bulk_tasks: data}

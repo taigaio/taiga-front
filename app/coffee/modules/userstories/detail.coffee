@@ -24,6 +24,7 @@ taiga = @.taiga
 mixOf = @.taiga.mixOf
 groupBy = @.taiga.groupBy
 bindOnce = @.taiga.bindOnce
+bindMethods = @.taiga.bindMethods
 
 module = angular.module("taigaUserStories")
 
@@ -50,6 +51,8 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
                   @log, @appMetaService, @navUrls, @analytics, @translate) ->
+        bindMethods(@)
+
         @scope.usRef = @params.usref
         @scope.sectionName = @translate.instant("US.SECTION_NAME")
         @.initializeEventHandlers()
@@ -181,6 +184,50 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         return promise.then (project) =>
             @.fillUsersAndRoles(project.members, project.roles)
             @.loadUs().then(=> @q.all([@.loadSprint(), @.loadTasks()]))
+
+    ###
+    # Note: This methods (onUpvote() and onDownvote()) are related to tg-vote-button.
+    #       See app/modules/components/vote-button for more info
+    ###
+    onUpvote: ->
+        onSuccess = =>
+            @.loadUs()
+            @rootscope.$broadcast("object:updated")
+        onError = =>
+            @confirm.notify("error")
+
+        return @rs.userstories.upvote(@scope.usId).then(onSuccess, onError)
+
+    onDownvote: ->
+        onSuccess = =>
+            @.loadUs()
+            @rootscope.$broadcast("object:updated")
+        onError = =>
+            @confirm.notify("error")
+
+        return @rs.userstories.downvote(@scope.usId).then(onSuccess, onError)
+
+    ###
+    # Note: This methods (onWatch() and onUnwatch()) are related to tg-watch-button.
+    #       See app/modules/components/watch-button for more info
+    ###
+    onWatch: ->
+        onSuccess = =>
+            @.loadUs()
+            @rootscope.$broadcast("object:updated")
+        onError = =>
+            @confirm.notify("error")
+
+        return @rs.userstories.watch(@scope.usId).then(onSuccess, onError)
+
+    onUnwatch: ->
+        onSuccess = =>
+            @.loadUs()
+            @rootscope.$broadcast("object:updated")
+        onError = =>
+            @confirm.notify("error")
+
+        return @rs.userstories.unwatch(@scope.usId).then(onSuccess, onError)
 
 module.controller("UserStoryDetailController", UserStoryDetailController)
 

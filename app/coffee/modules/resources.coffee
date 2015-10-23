@@ -37,8 +37,11 @@ urls = {
     "users-change-password": "/users/change_password"
     "users-change-email": "/users/change_email"
     "users-cancel-account": "/users/cancel"
-    "contacts": "/users/%s/contacts"
-    "stats": "/users/%s/stats"
+    "user-stats": "/users/%s/stats"
+    "user-liked": "/users/%s/liked"
+    "user-voted": "/users/%s/voted"
+    "user-watched": "/users/%s/watched"
+    "user-contacts": "/users/%s/contacts"
 
     # User - Notification
     "permissions": "/permissions"
@@ -63,6 +66,10 @@ urls = {
     "project-templates": "/project-templates"
     "project-modules": "/projects/%s/modules"
     "bulk-update-projects-order": "/projects/bulk_update_order"
+    "project-like": "/projects/%s/like"
+    "project-unlike": "/projects/%s/unlike"
+    "project-watch": "/projects/%s/watch"
+    "project-unwatch": "/projects/%s/unwatch"
 
     # Project Values - Choises
     "userstory-statuses": "/userstory-statuses"
@@ -83,16 +90,28 @@ urls = {
     "bulk-update-us-sprint-order": "/userstories/bulk_update_sprint_order"
     "bulk-update-us-kanban-order": "/userstories/bulk_update_kanban_order"
     "userstories-filters": "/userstories/filters_data"
+    "userstory-upvote": "/userstories/%s/upvote"
+    "userstory-downvote": "/userstories/%s/downvote"
+    "userstory-watch": "/userstories/%s/watch"
+    "userstory-unwatch": "/userstories/%s/unwatch"
 
     # Tasks
     "tasks": "/tasks"
     "bulk-create-tasks": "/tasks/bulk_create"
     "bulk-update-task-taskboard-order": "/tasks/bulk_update_taskboard_order"
+    "task-upvote": "/tasks/%s/upvote"
+    "task-downvote": "/tasks/%s/downvote"
+    "task-watch": "/tasks/%s/watch"
+    "task-unwatch": "/tasks/%s/unwatch"
 
     # Issues
     "issues": "/issues"
     "bulk-create-issues": "/issues/bulk_create"
     "issues-filters": "/issues/filters_data"
+    "issue-upvote": "/issues/%s/upvote"
+    "issue-downvote": "/issues/%s/downvote"
+    "issue-watch": "/issues/%s/watch"
+    "issue-unwatch": "/issues/%s/unwatch"
 
     # Wiki pages
     "wiki": "/wiki"
