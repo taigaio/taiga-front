@@ -54,7 +54,7 @@ describe "tgUserTimelineItemTitle", ->
             .returns('user-param')
 
         usernamelink = sinon.match ((value) ->
-            return value.username == '<a tg-nav="user-profile:username=vm.timeline.getIn([\'data\', \'user\', \'username\'])" title="user-param">oo</a>'
+            return value.username == '<a tg-nav="user-profile:username=timeline.getIn([\'data\', \'user\', \'username\'])" title="user-param">oo</a>'
          ), "usernamelink"
 
         mockTranslate.instant
@@ -173,7 +173,7 @@ describe "tgUserTimelineItemTitle", ->
         }
 
         projectparam = sinon.match ((value) ->
-            return value.project_name == '<a tg-nav="project:project=vm.timeline.getIn([\'data\', \'project\', \'slug\'])" title="project_name">project_name</a>'
+            return value.project_name == '<a tg-nav="project:project=timeline.getIn([\'data\', \'project\', \'slug\'])" title="project_name">project_name</a>'
          ), "projectparam"
 
         mockTranslate.instant
@@ -201,7 +201,7 @@ describe "tgUserTimelineItemTitle", ->
         }
 
         milestoneparam = sinon.match ((value) ->
-            return value.sprint_name == '<a tg-nav="project-taskboard:project=vm.timeline.getIn([\'data\', \'project\', \'slug\']),sprint=vm.timeline.getIn([\'data\', \'milestone\', \'slug\'])" title="milestone_name">milestone_name</a>'
+            return value.sprint_name == '<a tg-nav="project-taskboard:project=timeline.getIn([\'data\', \'project\', \'slug\']),sprint=timeline.getIn([\'data\', \'milestone\', \'slug\'])" title="milestone_name">milestone_name</a>'
          ), "milestoneparam"
 
         mockTranslate.instant
@@ -232,7 +232,7 @@ describe "tgUserTimelineItemTitle", ->
         }
 
         objparam = sinon.match ((value) ->
-            return value.obj_name == '<a tg-nav="project-issues-detail:project=vm.timeline.getIn([\'data\', \'project\', \'slug\']),ref=vm.timeline.getIn([\'obj\', \'ref\'])" title="#123 subject">#123 subject</a>'
+            return value.obj_name == '<a tg-nav="project-issues-detail:project=timeline.getIn([\'data\', \'project\', \'slug\']),ref=timeline.getIn([\'obj\', \'ref\'])" title="#123 subject">#123 subject</a>'
          ), "objparam"
 
         mockTranslate.instant
@@ -262,7 +262,7 @@ describe "tgUserTimelineItemTitle", ->
         }
 
         objparam = sinon.match ((value) ->
-            return value.obj_name ==  '<a tg-nav="project-wiki-page:project=vm.timeline.getIn([\'data\', \'project\', \'slug\']),slug=vm.timeline.getIn([\'obj\', \'ref\'])" title="Slug wiki">Slug wiki</a>'
+            return value.obj_name ==  '<a tg-nav="project-wiki-page:project=timeline.getIn([\'data\', \'project\', \'slug\']),slug=timeline.getIn([\'obj\', \'slug\'])" title="Slug wiki">Slug wiki</a>'
          ), "objparam"
 
         mockTranslate.instant
@@ -292,7 +292,7 @@ describe "tgUserTimelineItemTitle", ->
         }
 
         objparam = sinon.match ((value) ->
-            return value.obj_name == '<a tg-nav="project-taskboard:project=vm.timeline.getIn([\'data\', \'project\', \'slug\']),ref=vm.timeline.getIn([\'obj\', \'ref\'])" title="milestone_name">milestone_name</a>'
+            return value.obj_name == '<a tg-nav="project-taskboard:project=timeline.getIn([\'data\', \'project\', \'slug\']),ref=timeline.getIn([\'obj\', \'ref\'])" title="milestone_name">milestone_name</a>'
          ), "objparam"
 
         mockTranslate.instant
@@ -326,7 +326,7 @@ describe "tgUserTimelineItemTitle", ->
         }
 
         objparam = sinon.match ((value) ->
-            return value.us_name == '<a tg-nav="project-userstories-detail:project=vm.timeline.getIn([\'data\', \'project\', \'slug\']),ref=vm.timeline.getIn([\'obj\', \'userstory\', \'ref\'])" title="#2 subject">#2 subject</a>'
+            return value.us_name == '<a tg-nav="project-userstories-detail:project=timeline.getIn([\'data\', \'project\', \'slug\']),ref=timeline.getIn([\'obj\', \'userstory\', \'ref\'])" title="#2 subject">#2 subject</a>'
          ), "objparam"
 
         mockTranslate.instant
