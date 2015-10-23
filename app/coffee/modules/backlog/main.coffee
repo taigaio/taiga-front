@@ -546,15 +546,15 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
         message = us.subject
 
-        @confirm.askOnDelete(title, message).then (finish) =>
+        @confirm.askOnDelete(title, message).then (askResponse) =>
             # We modify the userstories in scope so the user doesn't see the removed US for a while
             @scope.userstories = _.without(@scope.userstories, us)
             promise = @.repo.remove(us)
             promise.then =>
-                finish()
+                askResponse.finish()
                 @.loadBacklog()
             promise.then null, =>
-                finish(false)
+                askResponse.finish(false)
                 @confirm.notify("error")
 
     addNewUs: (type) ->

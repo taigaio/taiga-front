@@ -126,15 +126,15 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         title = @translate.instant("WIKI.DELETE_LIGHTBOX_TITLE")
         message = @scope.wikiTitle
 
-        @confirm.askOnDelete(title, message).then (finish) =>
+        @confirm.askOnDelete(title, message).then (askResponse) =>
             onSuccess = =>
-                finish()
+                askResponse.finish()
                 ctx = {project: @scope.projectSlug}
                 @location.path(@navUrls.resolve("project-wiki", ctx))
                 @confirm.notify("success")
 
             onError = =>
-                finish(false)
+                askResponse.finish(false)
                 @confirm.notify("error")
 
             @repo.remove(@scope.wiki).then onSuccess, onError

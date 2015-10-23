@@ -136,16 +136,16 @@ class AttachmentsController extends taiga.Controller
         title = @translate.instant("ATTACHMENT.TITLE_LIGHTBOX_DELETE_ATTACHMENT")
         message = @translate.instant("ATTACHMENT.MSG_LIGHTBOX_DELETE_ATTACHMENT", {fileName: attachment.name})
 
-        return @confirm.askOnDelete(title, message).then (finish) =>
+        return @confirm.askOnDelete(title, message).then (askResponse) =>
             onSuccess = =>
-                finish()
+                askResponse.finish()
                 index = @.attachments.indexOf(attachment)
                 @.attachments.splice(index, 1)
                 @.updateCounters()
                 @rootscope.$broadcast("attachment:delete")
 
             onError = =>
-                finish(false)
+                askResponse.finish(false)
                 message = @translate.instant("ATTACHMENT.ERROR_DELETE_ATTACHMENT", {errorMessage: message})
                 @confirm.notify("error", null, message)
                 return @q.reject()

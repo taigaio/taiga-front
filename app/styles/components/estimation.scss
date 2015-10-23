@@ -1,0 +1,66 @@
+%estimation {
+    .points-per-role {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .ticket-role-points {
+        background: rgba($gray-light, .1);
+        border-radius: 2px;
+        color: rgba($grayer, .3);
+        flex-basis: 20%;
+        flex-grow: 1;
+        flex-shrink: 0;
+        margin: .1rem;
+        padding: .5rem 0 .1rem;
+        position: relative;
+        text-align: center;
+        transition: color .3s linear;
+        &.active {
+            background: rgba($primary-light, .9);
+            color: $whitish;
+        }
+        &:first-child {
+            background: rgba($grayer, .25);
+            border-radius: 0;
+            color: $whitish;
+        }
+        &:last-child {
+            border: 0;
+        }
+        .points {
+            @extend %larger;
+            @extend %text;
+            display: block;
+            text-align: center;
+        }
+        .role {
+            @extend %small;
+            @include ellipsis(90%);
+            display: inline-block;
+            text-align: center;
+        }
+    }
+    .popover {
+        @include popover(200px, $top: 105%, $left: 35%, $arrow-width: 10px, $arrow-top: -5px, $arrow-left: 10px, $arrow-height: 10px);
+        li {
+            display: inline-block;
+            width: 23%;
+        }
+        a {
+            display: block;
+            text-align: center;
+            &:hover,
+            &.active {
+                background: $primary-light;
+                color: $white;
+            }
+        }
+        &.fix {
+            @include popover(200px, $top: 105%, $left: -160px, $arrow-width: 10px, $arrow-top: -5px, $arrow-left: 90%, $arrow-height: 10px);
+        }
+    }
+}
+
+.ticket-estimation {
+    @extend %estimation;
+}

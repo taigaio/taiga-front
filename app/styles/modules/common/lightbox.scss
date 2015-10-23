@@ -1,5 +1,9 @@
 .lightbox {
     @extend %lightbox;
+    h2 {
+        @extend %larger;
+        @extend %text;
+    }
 }
 
 .lightbox-generic-form {
@@ -17,9 +21,12 @@
         margin-bottom: 1rem;
         max-height: 9rem;
         min-height: 7rem;
+        resize: vertical;
     }
 
     label {
+        @extend %xsmall;
+        background: $whitish;
         border: 1px solid $gray-light;
         color: $grayer;
         cursor: pointer;
@@ -38,43 +45,33 @@
     }
 
     .settings {
-        align-content: flex-start;
-        align-items: stretch;
         display: flex;
-        justify-content: flex-start;
+        justify-content: center;
         margin-bottom: 1rem;
-
         fieldset {
-            flex-basis: 30%;
-            flex-grow: 1;
             margin-right: .5rem;
-            text-align: center;
+            &:hover {
+                color: $white;
+                transition: all .2s ease-in;
+            }
             &:last-child {
                 margin: 0;
             }
         }
-
         .requirement,
         .iocaine {
             &:hover {
                 background: $primary-light;
                 border: 1px solid $primary;
-                color: $white;
-                transition: all .2s ease-in;
             }
         }
 
         .blocked {
-            padding: 8px 30px;
             &:hover {
                 background: $red-light;
                 border: 1px solid $red;
-                color: $white;
-                transition: all .2s ease-in;
             }
         }
-
-
         .client-requirement,
         .team-requirement,
         .iocaine-flag {
@@ -87,13 +84,16 @@
         }
 
         .blocking-flag {
+            label {
+                align-self: stretch;
+                display: block;
+            }
             input:checked+label {
                 background: $red;
                 border: 1px solid $red;
                 color: $white;
             }
         }
-
         input {
             display: none;
         }
@@ -464,30 +464,12 @@
         flex-grow: 0;
         width: 600px;
     }
-    .watchers {
-        margin-top: 1rem;
-        min-height: 440px;
-
-        .watcher-name {
-            flex-grow: 12;
-        }
-    }
-    .watcher-single {
-        position: relative;
-        &:hover,
-        &.active {
-            background: lighten($primary, 55%);
-            cursor: pointer;
-        }
+    .user-list-single {
         &:hover {
+            background: lighten($primary, 58%);
+            cursor: pointer;
             transition: background .3s linear;
-        }
-        &.active {
-            .icon {
-                opacity: 1;
-                right: 1rem;
-                top: 1.3rem;
-            }
+            transition-delay: .2s;
         }
     }
     .more-watchers {
@@ -499,10 +481,12 @@
 }
 
 .lb-create-edit-userstory {
+    .ticket-role-points {
+        flex-basis: 10%;
+        flex-grow: 1;
+        flex-shrink: 1;
+    }
     .points-per-role {
         margin-bottom: 1rem;
-        li {
-            margin: .5rem .1rem;
-        }
     }
 }

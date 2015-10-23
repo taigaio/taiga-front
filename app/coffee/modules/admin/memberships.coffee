@@ -402,9 +402,9 @@ MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm, $compile, $transla
             defaultMsg = $translate.instant("ADMIN.MEMBERSHIP.DEFAULT_DELETE_MESSAGE", {email: member.email})
             message = if member.user then member.full_name else defaultMsg
 
-            $confirm.askOnDelete(title, message).then (finish) ->
-                onSuccess = ->
-                    finish()
+            $confirm.askOnDelete(title, message).then (askResponse) ->
+                onSuccess = =>
+                    askResponse.finish()
 
                     if $scope.page > 1 && ($scope.count - 1) <= $scope.paginatedBy
                         $ctrl.selectFilter("page", $scope.page - 1)
@@ -414,8 +414,8 @@ MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm, $compile, $transla
                     text = $translate.instant("ADMIN.MEMBERSHIP.SUCCESS_DELETE")
                     $confirm.notify("success", null, text)
 
-                onError = ->
-                    finish(false)
+                onError = =>
+                    askResponse.finish(false)
 
                     text = $translate.instant("ADMIN.MEMBERSHIP.ERROR_DELETE", {message: message})
                     $confirm.notify("error", null, text)

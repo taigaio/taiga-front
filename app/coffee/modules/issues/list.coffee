@@ -620,18 +620,18 @@ IssuesFiltersDirective = ($q, $log, $location, $rs, $confirm, $loading, $templat
             title = $translate.instant("ISSUES.FILTERS.CONFIRM_DELETE.TITLE")
             message = $translate.instant("ISSUES.FILTERS.CONFIRM_DELETE.MESSAGE", {customFilterName: customFilterName})
 
-            $confirm.askOnDelete(title, message).then (finish) ->
+            $confirm.askOnDelete(title, message).then (askResponse) ->
                 promise = $ctrl.deleteMyFilter(customFilterName)
                 promise.then ->
                     promise = $ctrl.loadMyFilters()
                     promise.then (filters) ->
-                        finish()
+                        askResponse.finish()
                         $scope.filters.myFilters = filters
                         renderFilters($scope.filters.myFilters)
                     promise.then null, ->
-                        finish()
+                        askResponse.finish()
                 promise.then null, ->
-                    finish(false)
+                    askResponse.finish(false)
                     $confirm.notify("error")
 
 

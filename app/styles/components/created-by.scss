@@ -1,30 +1,27 @@
-.us-created-by {
+.ticket-created-by {
     display: flex;
     margin-bottom: 1rem;
     margin-top: .5rem;
     position: relative;
     .user-avatar {
-        flex-basis: 40px;
+        flex-basis: 3rem;
         flex-grow: 0;
+        margin-right: .5rem;
         img {
-            border-radius: 8%;
             width: 100%;
         }
     }
     .created-by {
-        flex-basis: 70px;
-        flex-grow: 3;
-        margin-left: .5rem;
         .created-title,
         .created-date {
+            @extend %light;
             @extend %small;
-            color: $gray-light;
+            color: $gray;
             display: block;
+            line-height: 1.5;
         }
-        .created-user {
-            @extend %large;
+        .created-title {
             color: $primary;
-            cursor: default;
             &.editable {
                 cursor: pointer;
             }

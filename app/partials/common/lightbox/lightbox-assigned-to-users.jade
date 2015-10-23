@@ -1,23 +1,38 @@
 <% if (selected) { %>
-.watcher-single.active
-    .watcher-avatar
-        a(href="", title="{{'COMMON.ASSIGNED_TO' | translate}}", class="avatar")
+.user-list-single.is-active
+    .user-list-avatar
+        a(
+            href=""
+            title="{{'COMMON.ASSIGNED_TO' | translate}}"
+        )
             img(src!="<%- selected.photo %>")
-    a(href="", title!="<%- selected.full_name_display %>", class="watcher-name")
+    a.user-list-name(
+        href="" 
+        title!="<%- selected.full_name_display %>"
+    )
         | <%-selected.full_name_display %>
-    a(href="", title="{{'COMMON.ASSIGNED_TO.REMOVE_ASSIGNED' | translate}}", class="icon icon-delete remove-assigned-to")
+    a.icon-delete.remove-assigned-to(
+        href="" 
+        title="{{'COMMON.ASSIGNED_TO.REMOVE_ASSIGNED' | translate}}"
+    )
 <% } %>
 
 <% _.each(users, function(user) { %>
-.watcher-single(data-user-id!="<%- user.id %>")
-    .watcher-avatar
-        a(href="#", title="{{'COMMON.ASSIGNED_TO.TITLE' | translate}}", class="avatar")
+.user-list-single(data-user-id!="<%- user.id %>")
+    .user-list-avatar
+        a(
+            href="#"
+            title="{{'COMMON.ASSIGNED_TO.TITLE' | translate}}"
+        )
             img(src!="<%- user.photo %>")
-    a(href="", title!="<%- user.full_name_display %>", class="watcher-name")
+    a.user-list-name(
+        href=""
+        title!="<%- user.full_name_display %>"
+    )
         | <%- user.full_name_display %>
 <% }) %>
 
 <% if (showMore) { %>
-div(class="more-watchers")
+.more-watchers
     span(translate="COMMON.ASSIGNED_TO.TOO_MANY")
 <% } %>

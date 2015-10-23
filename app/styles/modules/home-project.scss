@@ -2,14 +2,34 @@
     .single-project-intro {
         margin-bottom: 2rem;
     }
+    .intro-options {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+    }
     h1 {
+        color: $primary;
+        display: inline-block;
         line-height: 1.2;
-        margin: 0;
+        margin-bottom: 0;
+        margin-right: 3rem;
         vertical-align: middle;
     }
     .private {
         font-size: 1rem;
         vertical-align: super;
+    }
+    .like-watch-container {
+        margin-left: auto;
+    }
+    .track-buttons-container {
+        display: flex;
+    }
+    .like-button {
+        margin-right: .75rem;
+    }
+    .track-container {
+        @include list-itemtype-track;
     }
     .description {
         @extend %light;
