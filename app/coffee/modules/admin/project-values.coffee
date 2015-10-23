@@ -653,13 +653,11 @@ ProjectCustomAttributesDirective = ($log, $confirm, animationFrame, $translate) 
             title = $translate.instant("COMMON.CUSTOM_ATTRIBUTES.DELETE")
             text = $translate.instant("COMMON.CUSTOM_ATTRIBUTES.CONFIRM_DELETE")
 
-            $confirm.ask(title, text, message).then (finish) ->
+            $confirm.ask(title, text, message).then (response) ->
                 onSucces = ->
-                    $ctrl.loadCustomAttributes().finally ->
-                        finish()
+                    $ctrl.loadCustomAttributes().finally -> response.finish()
 
                 onError = ->
-                    finish(false)
                     $confirm.notify("error", null, "We have not been able to delete '#{message}'.")
 
                 $ctrl.deleteCustomAttribute(attr).then(onSucces, onError)

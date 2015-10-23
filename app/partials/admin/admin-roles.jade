@@ -33,7 +33,7 @@ div.wrapper.roles(ng-controller="RolesController as ctrl",
             div.general-category
                 span(translate="ADMIN.ROLES.HELP_ROLE_ENABLED")
                 div.check
-                    input(type="checkbox", ng-model="role.computable", ng-change="ctrl.setComputable()")
+                    input(type="checkbox", ng-model="role.computable", ng-change="ctrl.toggleComputable()")
                     div
                     span.check-text.check-yes(translate="COMMON.YES")
                     span.check-text.check-no(translate="COMMON.NO")

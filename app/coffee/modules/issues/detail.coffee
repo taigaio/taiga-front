@@ -553,7 +553,7 @@ module.directive("tgIssuePriorityButton", ["$rootScope", "$tgRepo", "$tgConfirm"
 PromoteIssueToUsButtonDirective = ($rootScope, $repo, $confirm, $qqueue, $translate) ->
     link = ($scope, $el, $attrs, $model) ->
 
-        save = $qqueue.bindAdd (issue, finish) =>
+        save = $qqueue.bindAdd (issue, askResponse) =>
             data = {
                 generated_from_issue: issue.id
                 project: issue.project,
@@ -565,12 +565,12 @@ PromoteIssueToUsButtonDirective = ($rootScope, $repo, $confirm, $qqueue, $transl
             }
 
             onSuccess = ->
-                finish()
+                askResponse.finish()
                 $confirm.notify("success")
                 $rootScope.$broadcast("promote-issue-to-us:success")
 
             onError = ->
-                finish(false)
+                askResponse.finish()
                 $confirm.notify("error")
 
             $repo.create("userstories", data).then(onSuccess, onError)
@@ -584,9 +584,8 @@ PromoteIssueToUsButtonDirective = ($rootScope, $repo, $confirm, $qqueue, $transl
             message = $translate.instant("ISSUES.CONFIRM_PROMOTE.MESSAGE")
             subtitle = issue.subject
 
-            $confirm.ask(title, subtitle, message).then (finish) =>
-                save(issue, finish)
-
+            $confirm.ask(title, subtitle, message).then (response) =>
+                save(issue, response)
 
         $scope.$on "$destroy", ->
             $el.off()

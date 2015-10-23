@@ -326,8 +326,8 @@ AssignedToDirective = ($rootscope, $confirm, $repo, $loading, $qqueue, $template
             return if not isEditable()
             title = $translate.instant("COMMON.ASSIGNED_TO.CONFIRM_UNASSIGNED")
 
-            $confirm.ask(title).then (finish) =>
-                finish()
+            $confirm.ask(title).then (response) =>
+                response.finish()
                 $model.$modelValue.assigned_to  = null
                 save(null)
 

@@ -217,16 +217,16 @@ LeaveProjectDirective = ($repo, $confirm, $location, $rs, $navurls, $translate) 
             leave_project_text = $translate.instant("TEAM.ACTION_LEAVE_PROJECT")
             confirm_leave_project_text = $translate.instant("TEAM.CONFIRM_LEAVE_PROJECT")
 
-            $confirm.ask(leave_project_text, confirm_leave_project_text).then (finish) =>
+            $confirm.ask(leave_project_text, confirm_leave_project_text).then (response) =>
                 promise = $rs.projects.leave($attrs.projectid)
 
                 promise.then =>
-                    finish()
+                    response.finish()
                     $confirm.notify("success")
                     $location.path($navurls.resolve("home"))
 
                 promise.then null, (response) ->
-                    finish()
+                    response.finish()
                     $confirm.notify('error', response.data._error_message)
 
     return {

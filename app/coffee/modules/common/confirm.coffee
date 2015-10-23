@@ -67,11 +67,12 @@ class ConfirmService extends taiga.Service
             currentLoading = @loading()
                 .target(target)
                 .start()
-
-            defered.resolve (ok=true) =>
-                currentLoading.finish()
-                if ok
-                    @.hide(el)
+            defered.resolve {
+                finish: (ok=true) =>
+                    currentLoading.finish()
+                    if ok
+                        @.hide(el)
+            }
 
         el.on "click.confirm-dialog", "a.button-red", (event) =>
             event.preventDefault()
@@ -118,9 +119,10 @@ class ConfirmService extends taiga.Service
                 .start()
             defered.resolve {
                 selected: choicesField.val()
-                finish: =>
+                finish: (ok=true) =>
                     currentLoading.finish()
-                    @.hide(el)
+                    if ok
+                        @.hide(el)
             }
 
         el.on "click.confirm-dialog", "a.button-red", (event) =>

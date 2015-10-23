@@ -129,7 +129,7 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
 
             return @repo.remove(@scope.role, {moveTo: response.selected}).then onSuccess, onError
 
-    setComputable: debounce 2000, ->
+    _enableComputable: =>
         onSuccess = =>
             @confirm.notify("success")
             @.loadProject()
@@ -140,8 +140,36 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
 
         @repo.save(@scope.role).then onSuccess, onError
 
+    _disableComputable: =>
+        askOnSuccess = (response) =>
+            onSuccess = =>
+                response.finish()
+                @confirm.notify("success")
+                @.loadProject()
+            onError = =>
+                response.finish()
+                @confirm.notify("error")
+                @scope.role.revert()
+            @repo.save(@scope.role).then onSuccess, onError
+
+        askOnError = (response) =>
+            @scope.role.revert()
+
+        title = @translate.instant("ADMIN.ROLES.DISABLE_COMPUTABLE_ALERT_TITLE")
+        subtitle = @translate.instant("ADMIN.ROLES.DISABLE_COMPUTABLE_ALERT_SUBTITLE", {
+            roleName: @scope.role.name
+        })
+        message =  @translate.instant("ADMIN.ROLES.DISABLE_COMPUTABLE_ALERT_MESSAGE")
+        return @confirm.ask(title, subtitle, message).then askOnSuccess, askOnError
+
+    toggleComputable: debounce 2000, ->
+        if not @scope.role.computable
+            @._disableComputable()
+        else
+            @._enableComputable()
 
 module.controller("RolesController", RolesController)
+
 
 EditRoleDirective = ($repo, $confirm) ->
     link = ($scope, $el, $attrs) ->
