@@ -1,6 +1,6 @@
 taiga = @.taiga
 
-JoyRideDirective = ($rootScope, currentUserService, joyRideService) ->
+JoyRideDirective = ($rootScope, currentUserService, joyRideService, $location) ->
     link = (scope, el, attrs, ctrl) ->
         intro = introJs()
 
@@ -30,7 +30,9 @@ JoyRideDirective = ($rootScope, currentUserService, joyRideService) ->
             intro.start()
 
         $rootScope.$on '$routeChangeSuccess',  (event, next) ->
-            return if !next.joyride || !currentUserService.isAuthenticated()
+            return if !next.joyride ||
+                !currentUserService.isAuthenticated() ||
+                $location.path() == '/error'
 
             intro.oncomplete () ->
                 currentUserService.disableJoyRide(next.joyride)
@@ -53,7 +55,8 @@ JoyRideDirective = ($rootScope, currentUserService, joyRideService) ->
 JoyRideDirective.$inject = [
     "$rootScope",
     "tgCurrentUserService",
-    "tgJoyRideService"
+    "tgJoyRideService",
+    "$location"
 ]
 
 angular.module("taigaComponents").directive("tgJoyRide", JoyRideDirective)
