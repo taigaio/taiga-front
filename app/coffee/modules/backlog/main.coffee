@@ -643,7 +643,7 @@ BacklogDirective = ($repo, $rootscope, $translate) ->
         checkSelected = (target) ->
             lastChecked = target.closest(".us-item-row")
             moveToCurrentSprintDom = $el.find("#move-to-current-sprint")
-            selectedUsDom = $el.find(".backlog-table-body .user-stories input:checkbox:checked")
+            selectedUsDom = $el.find(".backlog-table-body input:checkbox:checked")
 
             if selectedUsDom.length > 0 and $scope.sprints.length > 0
                 moveToCurrentSprintDom.show()
@@ -658,7 +658,7 @@ BacklogDirective = ($repo, $rootscope, $translate) ->
             return true
 
         # Enable move to current sprint only when there are selected us's
-        $el.on "change", ".backlog-table-body .user-stories input:checkbox", (event) ->
+        $el.on "change", ".backlog-table-body input:checkbox", (event) ->
             # check elements between the last two if shift is pressed
             if lastChecked && shiftPressed
                 elements = []
@@ -677,11 +677,12 @@ BacklogDirective = ($repo, $rootscope, $translate) ->
                     checkSelected(input)
 
             target = angular.element(event.currentTarget)
+            target.closest(".us-item-row").toggleClass('is-checked')
             checkSelected(target)
 
         $el.on "click", "#move-to-current-sprint", (event) =>
             # Calculating the us's to be modified
-            ussDom = $el.find(".backlog-table-body .user-stories input:checkbox:checked")
+            ussDom = $el.find(".backlog-table-body input:checkbox:checked")
 
             ussToMove = _.map ussDom, (item) ->
                 item =  $(item).closest('.tg-scope')
