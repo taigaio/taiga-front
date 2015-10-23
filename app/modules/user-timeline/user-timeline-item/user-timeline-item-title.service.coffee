@@ -100,7 +100,7 @@ class UserTimelineItemTitle
             "task": ["project-tasks-detail", ":project=timeline.getIn(['data', 'project', 'slug']),ref=timeline.getIn(['obj', 'ref'])"],
             "userstory": ["project-userstories-detail", ":project=timeline.getIn(['data', 'project', 'slug']),ref=timeline.getIn(['obj', 'ref'])"],
             "parent_userstory": ["project-userstories-detail", ":project=timeline.getIn(['data', 'project', 'slug']),ref=timeline.getIn(['obj', 'userstory', 'ref'])"],
-            "milestone": ["project-taskboard", ":project=timeline.getIn(['data', 'project', 'slug']),ref=timeline.getIn(['obj', 'ref'])"]
+            "milestone": ["project-taskboard", ":project=timeline.getIn(['data', 'project', 'slug']),sprint=timeline.getIn(['obj', 'slug'])"]
         }
 
         return url[event.obj][0] + url[event.obj][1]
