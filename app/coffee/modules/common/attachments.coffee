@@ -67,9 +67,15 @@ class AttachmentsController extends taiga.Controller
         promise = @rs.attachments.upload_dropbox_attachment(urlName, @.projectId, @.objectId, attachment)
 
         promise = promise.then (model) =>
-            @._createAttachment(model._name)
+            attachment = model._name
+            index = @.uploadingAttachments.indexOf(attachment)
+            @.uploadingAttachments.splice(index, 1)
+            @.addUploadingAttachments([attachment])
+            @._createAttachment(attachment)
 
         promise = promise.then null, (data) =>
+            index = @.uploadingAttachments.indexOf(attachment)
+            @.uploadingAttachments.splice(index, 1)
 
             message = @translate.instant("ATTACHMENT.ERROR_UPLOAD_ATTACHMENT", {
                             fileName: attachment.name, errorMessage: data.data._error_message})
@@ -191,6 +197,7 @@ AttachmentsDirective = ($config, $confirm, $templates, $translate) ->
         bindOnce $scope, $attrs.ngModel, (value) ->
             $ctrl.initialize($attrs.type, value.id)
             $ctrl.loadAttachments()
+
         if Dropbox.isBrowserSupported()
             dbx_button = Dropbox.createChooseButton(
                 success: (files) ->
@@ -226,6 +233,7 @@ AttachmentsDirective = ($config, $confirm, $templates, $translate) ->
         $scope.$on "attachments:dropbox-upload", (event, files) ->
 
             $scope.$apply ->
+                $ctrl.addUploadingAttachments(files)
                 $ctrl.uploadDropboxAttachments(files)
 
         $el.on "change", ".attachments-header input", (event) ->

@@ -49,6 +49,13 @@ resourceProvider = ($rootScope, $config, $urls, $model, $repo, $auth, $q) ->
                 }
                 defered.reject(response)
 
+        downloadProgress = (evt) =>
+            $rootScope.$apply =>
+                file.status = "in-progress"
+                file.size = sizeFormat(evt.total)
+                file.progressMessage = "downloaded #{sizeFormat(evt.loaded)} of #{sizeFormat(evt.total)}"
+                file.progressPercent = "#{Math.round((evt.loaded / evt.total) * 100)}%"
+
         downloadFailed = (evt) =>
             response = {
                 status: 500,
@@ -58,6 +65,7 @@ resourceProvider = ($rootScope, $config, $urls, $model, $repo, $auth, $q) ->
 
         xhr = new XMLHttpRequest()
         xhr.addEventListener("load", downloadComplete, false)
+        xhr.addEventListener("progress", downloadProgress, false)
         xhr.addEventListener("error", downloadFailed, false)
 
         xhr.open("GET", file.link, true)
