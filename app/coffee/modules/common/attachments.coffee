@@ -61,6 +61,22 @@ class AttachmentsController extends taiga.Controller
         @.attachmentsCount = @.attachments.length
         @.deprecatedAttachmentsCount = _.filter(@.attachments, {is_deprecated: true}).length
 
+    _uploadDropboxAttachment: (attachment) ->
+        urlName = "attachments/#{@.type}"
+
+        promise = @rs.attachments.upload_dropbox_attachment(urlName, @.projectId, @.objectId, attachment)
+
+        promise = promise.then (model) =>
+            @._createAttachment(model._name)
+
+        promise = promise.then null, (data) =>
+
+            message = @translate.instant("ATTACHMENT.ERROR_UPLOAD_ATTACHMENT", {
+                            fileName: attachment.name, errorMessage: data.data._error_message})
+            @confirm.notify("error", message)
+            return @q.reject(data)
+        return promise
+
     _createAttachment: (attachment) ->
         urlName = "attachments/#{@.type}"
 
@@ -85,6 +101,12 @@ class AttachmentsController extends taiga.Controller
             return @q.reject(data)
 
         return promise
+
+    # Upload attachments in bulk
+    uploadDropboxAttachments: (attachments) ->
+        promises = _.map(attachments, (x) => @._uploadDropboxAttachment(x))
+        return @q.all(promises).then =>
+            @.updateCounters()
 
     # Create attachments in bulk
     createAttachments: (attachments) ->
@@ -169,6 +191,12 @@ AttachmentsDirective = ($config, $confirm, $templates, $translate) ->
         bindOnce $scope, $attrs.ngModel, (value) ->
             $ctrl.initialize($attrs.type, value.id)
             $ctrl.loadAttachments()
+        if Dropbox.isBrowserSupported()
+            dbx_button = Dropbox.createChooseButton(
+                success: (files) ->
+                    $scope.$emit("attachments:dropbox-upload", files)
+                linkType: "direct")
+            $el.find("div.dropbox-chooser-attachment").eq(0).append(dbx_button)
 
         tdom = $el.find("div.attachment-body.sortable")
         tdom.sortable({
@@ -194,6 +222,11 @@ AttachmentsDirective = ($config, $confirm, $templates, $translate) ->
 
         $scope.$on "attachments:size-error", ->
             showSizeInfo()
+
+        $scope.$on "attachments:dropbox-upload", (event, files) ->
+
+            $scope.$apply ->
+                $ctrl.uploadDropboxAttachments(files)
 
         $el.on "change", ".attachments-header input", (event) ->
             files = _.toArray(event.target.files)

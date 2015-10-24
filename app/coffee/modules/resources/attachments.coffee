@@ -31,6 +31,40 @@ resourceProvider = ($rootScope, $config, $urls, $model, $repo, $auth, $q) ->
         params = {object_id: objectId, project: projectId}
         return $repo.queryMany(urlName, params)
 
+    service.upload_dropbox_attachment = (urlName, projectId, objectId, file) ->
+        defered = $q.defer()
+
+        downloadComplete = (evt) =>
+            status = evt.target.status
+
+            if status == 200
+                file = new File([evt.target.response], file.name)
+                model = $model.make_model(file)
+                defered.resolve(model)
+
+            else
+                response = {
+                    status: 500,
+                    data: _error_message: "There was a problem retrieving the file from Dropbox. Please try again."
+                }
+                defered.reject(response)
+
+        downloadFailed = (evt) =>
+            response = {
+                status: 500,
+                data: _error_message: "There was a problem retrieving the file from Dropbox. Please try again."
+            }
+            defered.reject(response)
+
+        xhr = new XMLHttpRequest()
+        xhr.addEventListener("load", downloadComplete, false)
+        xhr.addEventListener("error", downloadFailed, false)
+
+        xhr.open("GET", file.link, true)
+        xhr.responseType = 'blob'
+        xhr.send()
+        return defered.promise
+
     service.create = (urlName, projectId, objectId, file) ->
         defered = $q.defer()
 
