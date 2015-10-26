@@ -149,6 +149,8 @@ MarkitupDirective = ($rootscope, $rs, $selectedText, $template, $compile, $trans
                     startIndex = result.index
                     break
 
+            return if !result
+
             regex = />>>/gi
             endIndex = 0
             loop
