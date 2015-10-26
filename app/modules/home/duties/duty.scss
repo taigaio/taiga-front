@@ -20,12 +20,40 @@
             display: flex;
             flex-direction: row;
         }
+        &:hover {
+            .duty-type-image {
+                // scss-lint:disable ImportantRule
+                background-color: rgba($green-taiga, .6) !important;
+                transition: all .3s;
+            }
+        }
     }
-    .avatar {
-        flex-basis: 47px;
-        height: 47px;
-        margin-right: .5rem;
-        width: 47px;
+    .duty-type-image {
+        background-blend-mode: overlay;
+        background-position: center center;
+        background-size: 3.5rem 3.5rem;
+        border-radius: 5px;
+        flex-basis: 3.5rem;
+        height: 3.5rem;
+        margin-right: 1rem;
+        opacity: .75;
+        width: 3.5rem;
+        svg {
+            height: 60%;
+            width: 60%;
+        }
+        path {
+            fill: $white;
+            opacity: 1;
+        }
+    }
+    .duty-type-svg {
+        align-items: center;
+        border-radius: 5px;
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        width: 100%;
     }
     .duty-data {
         flex: 1;

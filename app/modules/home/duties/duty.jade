@@ -1,12 +1,18 @@
 a(href="{{ ::vm.duty.get('url') }}", title="{{ ::duty.get('subject') }}")
 
-    img.avatar(ng-if="::vm.duty.get('assigned_to_extra_info')"
-        ng-src="{{ ::vm.duty.get('assigned_to_extra_info').get('photo') }}"
-        title="{{ ::vm.duty.get('assigned_to_extra_info').get('full_name_display') }}")
+    div.duty-type-image(ng-if="vm.getDutyType() == 'Issue'",
+                        ng-style="{'background-image': 'url(' + vm.duty.get('assigned_to_extra_info').get('photo') + ')', 'background-color': vm.duty.get('status_extra_info').get('color')}")
+        div.duty-type-svg
+            include ../../../svg/issues.svg
+    div.duty-type-image(ng-if="vm.getDutyType() == 'Task'",
+                        ng-style="{'background-image': 'url(' + vm.duty.get('assigned_to_extra_info').get('photo') + ')', 'background-color': vm.duty.get('status_extra_info').get('color')}")
+        div.duty-type-svg
+            include ../../../svg/task.svg
+    div.duty-type-image(ng-if="vm.getDutyType() == 'User story'",
+                        ng-style="{'background-image': 'url(' + vm.duty.get('assigned_to_extra_info').get('photo') + ')', 'background-color': vm.duty.get('status_extra_info').get('color')}")
+        div.duty-type-svg
+            include ../../../svg/us.svg
 
-    img.avatar(ng-if="::!vm.duty.get('assigned_to_extra_info')"
-        src="/images/unnamed.png"
-        title="{{'ACTIVITY.VALUES.UNASSIGNED' | translate}}")
 
     div.duty-data
         div
