@@ -237,32 +237,29 @@ describe "tgUserTimelineService", ->
 
     it "all timeline extra fields filled", () ->
         timeline =  Immutable.fromJS({
-            data: [{
-                event_type: 'issues.issue.created',
-                data: {
-                    user: 'user_fake',
-                    project: 'project_fake',
-                    milestone: 'milestone_fake',
-                    created: new Date().getTime(),
-                    issue: {
-                        id: 2
-                    },
-                    value_diff: {
-                        key: 'attachments',
-                        value: {
-                            new: "fakeAttachment"
-                        }
+            event_type: 'issues.issue.created',
+            data: {
+                user: 'user_fake',
+                project: 'project_fake',
+                milestone: 'milestone_fake',
+                created: new Date().getTime(),
+                issue: {
+                    id: 2
+                },
+                value_diff: {
+                    key: 'attachments',
+                    value: {
+                        new: "fakeAttachment"
                     }
                 }
-            }]
+            }
         })
 
         mocks.userTimelineItemTitle.getTitle.returns("fakeTitle")
         mocks.getType.description.returns("fakeDescription")
         mocks.getType.member.returns("fakeMember")
 
-        timeline = userTimelineService._parseTimeline(timeline)
-        timelineEntry = timeline.get('data').get(0)
+        timelineEntry = userTimelineService._addEntyAttributes(timeline)
 
         expect(timelineEntry.get('title_html')).to.be.equal("fakeTitle")
         expect(timelineEntry.get('obj')).to.be.equal(timelineEntry.getIn(["data", "issue"]))

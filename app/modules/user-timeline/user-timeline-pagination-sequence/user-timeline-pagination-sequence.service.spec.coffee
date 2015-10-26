@@ -107,3 +107,31 @@ describe "tgUserTimelinePaginationSequenceService", ->
                 expect(result.next).to.be.true
 
                 done()
+
+
+    it "map items", (done) ->
+        config = {}
+
+        page1 = Immutable.Map({
+            next: false,
+            data: [1, 2, 3]
+        })
+
+        promise = sinon.stub()
+        promise.withArgs(1).promise().resolve(page1)
+
+        config.fetch = (page) ->
+            return promise(page)
+
+        config.minItems = 1
+
+        config.map = (item) => item + 1;
+
+        seq = userTimelinePaginationSequenceService.generate(config)
+
+        seq.next().then (result) ->
+            result = result.toJS()
+
+            expect(result.items).to.be.eql([2, 3, 4])
+
+            done()

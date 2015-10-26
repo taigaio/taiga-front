@@ -18,7 +18,10 @@ UserTimelinePaginationSequence = () ->
                 data = response.get("data")
 
                 if config.filter
-                    data = config.filter(response.get("data"))
+                    data = config.filter(data)
+
+                if config.map
+                    data = data.map(config.map)
 
                 items = items.concat(data)
 
