@@ -25,8 +25,44 @@ describe('auth', function() {
         expect(browser.getCurrentUrl()).to.be.eventually.equal(browser.params.glob.host);
     });
 
+    describe('page without perms', function() {
+        let path = 'project/project-4/';
+
+        before(function() {
+            browser.actions().mouseMove($('div[tg-dropdown-user]')).perform();
+            $$('.dropdown-user li a').last().click();
+        });
+
+        it("redirect to login", async function() {
+            browser.get(browser.params.glob.host + path);
+
+            expect(browser.getCurrentUrl()).to.be.eventually.equal(browser.params.glob.host + 'login?next=' + encodeURIComponent('/' + path));
+        });
+
+        it("login redirect to the previous one", async function() {
+            $('input[name="username"]').sendKeys('admin');
+            $('input[name="password"]').sendKeys('123123');
+            $('.submit-button').click();
+
+            expect(browser.getCurrentUrl()).to.be.eventually.equal(browser.params.glob.host + path);
+        });
+    });
+
     describe("user", function() {
         var user = {};
+
+        before(function() {
+            utils.common.login('admin', '123123');
+        });
+
+        it("logout", async function() {
+            await utils.common.login('admin', '123123');
+
+            browser.actions().mouseMove($('div[tg-dropdown-user]')).perform();
+            $$('.dropdown-user li a').last().click();
+
+            expect(browser.getCurrentUrl()).to.be.eventually.equal(browser.params.glob.host + 'login');
+        });
 
         describe("register", function() {
             it('screenshot', async function() {
@@ -126,19 +162,12 @@ describe('auth', function() {
             });
         });
 
-        describe("", function() {
-            it("logout", async function() {
-                await utils.common.login(user.username, user.password);
-
-                browser.actions().mouseMove($('div[tg-dropdown-user]')).perform();
-                $$('.dropdown-user li a').last().click();
-
-                expect(browser.getCurrentUrl()).to.be.eventually.equal(browser.params.glob.host + 'login');
+        describe("accout", function() {
+            before(function() {
+                utils.common.login(user.username, user.password);
             });
 
-            it("delete account", async function() {
-                await utils.common.login(user.username, user.password);
-
+            it("delete", async function() {
                 browser.get(browser.params.glob.host + 'user-settings/user-profile');
                 $('.delete-account').click();
 

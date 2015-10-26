@@ -434,7 +434,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
                 $lightboxService.closeAll()
                 $location.path($navUrls.resolve("error"))
                 $location.replace()
-            else if response.status == 401
+            else if response.status == 401 and $location.url().indexOf('/login') == -1
                 nextUrl = encodeURIComponent($location.url())
                 $location.url($navUrls.resolve("login")).search("next=#{nextUrl}")
 

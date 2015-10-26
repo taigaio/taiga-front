@@ -383,3 +383,11 @@ common.uploadImagePath = function() {
         return path.resolve(process.cwd(), 'e2e', browser.params.glob.attachments.unixImg);
     }
 };
+
+common.closeJoyride = function() {
+    browser.waitForAngular();
+
+    $('.introjs-skipbutton').click();
+
+    browser.sleep(200);
+};

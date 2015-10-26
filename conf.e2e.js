@@ -71,6 +71,9 @@ exports.config = {
                 });
         }, 10000)
         .then(function() {
+            return utils.common.closeJoyride();
+        })
+        .then(function() {
             return browser.getCapabilities();
         }).then(function (cap) {
             browser.browserName = cap.caps_.browserName;
