@@ -380,10 +380,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
             templateUrl: "auth/invitation.html",
             title: "INVITATION.PAGE_TITLE",
             description: "INVITATION.PAGE_DESCRIPTION",
-            disableHeader: true,
-            access: {
-                requiresLogin: true
-            }
+            disableHeader: true
         }
     )
     $routeProvider.when("/external-apps",
