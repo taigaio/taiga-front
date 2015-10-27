@@ -325,12 +325,10 @@
     "CHANGE_PASSWORD_RECOVERY_FORM": {
         "TITLE": "Ustaw nowe hasło do Taiga",
         "SUBTITLE": "Powinieneś spróbować jeść więcej rzeczy bogatych w żelazo, są dobre dla Twojej pamięci :P",
-        "PLACEHOLDER_RECOVER_PASSWORD_TOKEN": "Token odzyskiwania hasła",
-        "LINK_NEED_TOKEN": "Potrzebujesz taki?",
-        "TITLE_LINK_NEED_TOKEN": "Potrzebowałeś tokena, aby odzyskać hasło, bo zapomniałeś jak ono brzmi?",
         "PLACEHOLDER_NEW_PASSWORD": "Nowe hasło",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Wpisz ponownie nowe hasło",
         "ACTION_RESET_PASSWORD": "Resetuj hasło",
+        "ERROR": "Our Oompa Loompas can't find your request to recover your password. Try to ask for it again.",
         "SUCCESS": "Nasze Umpa Lumpy zapisały Twoje nowe hasło <br/> Spróbuj <strong>zalogować się</strong> z jego pomocą."
     },
     "INVITATION": {
@@ -338,7 +336,7 @@
         "PAGE_DESCRIPTION": "Zaakceptuj zaproszenie, aby dołączyć do projektu w Taiga, platformie do zarządzania projektami dla startup'ów i zwinnych deweloperów oraz designerów, którzy chcą prostego, pięknego narzędzia sprawiającego, że praca jest przyjemna."
     },
     "INVITATION_LOGIN_FORM": {
-        "NOT_FOUND": "<strong>Ups, mamy problem</strong><br />Nasze Umpa Lumpy nie mogą znaleźć Twojego zaproszenia",
+        "NOT_FOUND": "Our Oompa Loompas can't find your invitation.",
         "SUCCESS": "Udało Ci się dołączyć do tego projektu. Witaj w {{project_name}}",
         "ERROR": "Według naszych Umpa Lump, nie jesteś jeszcze zarejestrowany. Albo wpisałeś złe hasło."
     },

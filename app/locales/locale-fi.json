@@ -325,12 +325,10 @@
     "CHANGE_PASSWORD_RECOVERY_FORM": {
         "TITLE": "Luo uusi pääsy Taigaan",
         "SUBTITLE": "Rautapitoinen ruoka on hyväksi aivoille :P",
-        "PLACEHOLDER_RECOVER_PASSWORD_TOKEN": "Palauta sähköposti-tokeni",
-        "LINK_NEED_TOKEN": "Tarvitsetko yhden?",
-        "TITLE_LINK_NEED_TOKEN": "Tarvitsitko tokenia palauttaakseni salasanan koska unohdit sen?",
         "PLACEHOLDER_NEW_PASSWORD": "Uusi salasana",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Anna salasana uudelleen",
         "ACTION_RESET_PASSWORD": "Uusi salsanasi",
+        "ERROR": "Our Oompa Loompas can't find your request to recover your password. Try to ask for it again.",
         "SUCCESS": "Oompa Loompas tallensivat uuden salasanasi.<br /> Yritä <strong>kirjautua sisään</strong> sillä."
     },
     "INVITATION": {
@@ -338,7 +336,7 @@
         "PAGE_DESCRIPTION": "Accept the invitation to join a project in Taiga, a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
     },
     "INVITATION_LOGIN_FORM": {
-        "NOT_FOUND": "<strong>Ooops, meillä on ongelma</strong><br />Our Oompa Loompas eivät löydä kutsuasi.",
+        "NOT_FOUND": "Our Oompa Loompas can't find your invitation.",
         "SUCCESS": "Olet onnistuneesti liittynyt projektiin {{project_name}}. Tervetuloa!",
         "ERROR": "Oompa Loompas sanovat että käyttäjänimesi tai sähköpostisi tai salasanasi on väärä."
     },

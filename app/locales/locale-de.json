@@ -325,12 +325,10 @@
     "CHANGE_PASSWORD_RECOVERY_FORM": {
         "TITLE": "Erstellen Sie einen neuen Taiga Pass",
         "SUBTITLE": "Und hey, es empfiehlt sich, mehr eisenreiche Nahrung zu sich zu nehmen - die ist gut für's Gehirn :P ",
-        "PLACEHOLDER_RECOVER_PASSWORD_TOKEN": "Passwort Token wiederherstellen",
-        "LINK_NEED_TOKEN": "Benötigen Sie einen?",
-        "TITLE_LINK_NEED_TOKEN": "Benötigen Sie ein Token, um Ihr vergessenes Passwort zu retten?",
         "PLACEHOLDER_NEW_PASSWORD": "Neues Passwort",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Wiederholen Sie die Eingabe des neuen Passworts ",
         "ACTION_RESET_PASSWORD": "Passwort zurücksetzen",
+        "ERROR": "Our Oompa Loompas can't find your request to recover your password. Try to ask for it again.",
         "SUCCESS": "Unsere Oompa Loompas haben das neue Passwort gespeichert.<br /> <strong>Hier</strong> gehts zum login."
     },
     "INVITATION": {
@@ -338,7 +336,7 @@
         "PAGE_DESCRIPTION": "Nehmen Sie die Einladung an und treten Sie einem Projekt in Taiga bei, einer Projekt-Management Plattform für Neugründer und agile Entwickler und Designer, die ein unkompliziertes und ansprechendes Tool möchten, das die Arbeit wirklich angenehm macht. "
     },
     "INVITATION_LOGIN_FORM": {
-        "NOT_FOUND": "<strong>Huch, wir haben ein Problem</strong><br />Unsere Helferlein können Ihre Einladung nicht finden.",
+        "NOT_FOUND": "Our Oompa Loompas can't find your invitation.",
         "SUCCESS": "Sie sind diesem Projekt erfolgreich beigetreten. Herzlich willkommen bei {{project_name}}",
         "ERROR": "Laut unseren Helferlein sind Sie noch nicht registriert, oder Sie haben ein ungültiges Passwort eingegeben. "
     },

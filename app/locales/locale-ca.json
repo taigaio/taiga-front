@@ -325,12 +325,10 @@
     "CHANGE_PASSWORD_RECOVERY_FORM": {
         "TITLE": "Crea una nova contrasenya",
         "SUBTITLE": "Menja més aliments rics en ferro, es bo pel cervell :P ",
-        "PLACEHOLDER_RECOVER_PASSWORD_TOKEN": "Recuperar token de contrasenya",
-        "LINK_NEED_TOKEN": "Neccesites un?",
-        "TITLE_LINK_NEED_TOKEN": "Necessites un token per a recuperar la teua contrasenya perque l'has oblidat?",
         "PLACEHOLDER_NEW_PASSWORD": "nova contrasenya",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Reescriu la nova contrasenya",
         "ACTION_RESET_PASSWORD": "Resetejar contrasenya",
+        "ERROR": "Our Oompa Loompas can't find your request to recover your password. Try to ask for it again.",
         "SUCCESS": "Els Oompa Loompas han salvat la teua contrasenya <br /> Prova a <strong>entrar</strong> amb ella."
     },
     "INVITATION": {
@@ -338,7 +336,7 @@
         "PAGE_DESCRIPTION": "Accepta la invitació a un projecte en Taiga, una plataforma de gestió de projectes per a empreses àgils que necessiten una eïna sencilla i elegant que et permet gaudir del teu treball"
     },
     "INVITATION_LOGIN_FORM": {
-        "NOT_FOUND": "<strong>Ooops, ha hagut un problema</strong><br />Els nosters Oompa Loompas no troben la teva invitació.",
+        "NOT_FOUND": "Our Oompa Loompas can't find your invitation.",
         "SUCCESS": "T'has incorporat a este projecte. Vos donem la benvinguda a {{project_name}}",
         "ERROR": "Segons els nostres OOmpa Loompas, no estàs registrat encara o has escrit una contrasenya invàlida."
     },

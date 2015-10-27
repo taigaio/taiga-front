@@ -325,12 +325,10 @@
     "CHANGE_PASSWORD_RECOVERY_FORM": {
         "TITLE": "創建新Taiga通過",
         "SUBTITLE": "你也許該吃點鐵質豐富的食物，它對你的大腦有益處:p",
-        "PLACEHOLDER_RECOVER_PASSWORD_TOKEN": "回復密碼代碼　",
-        "LINK_NEED_TOKEN": "需要一個?",
-        "TITLE_LINK_NEED_TOKEN": "你是否需要代碼來恢復你所忘記的密碼?",
         "PLACEHOLDER_NEW_PASSWORD": "新密碼 ",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "重新輸入新密碼",
         "ACTION_RESET_PASSWORD": "重設密碼 ",
+        "ERROR": "Our Oompa Loompas can't find your request to recover your password. Try to ask for it again.",
         "SUCCESS": "系統已儲存你的新密碼<br />試試 <strong>用它登入</strong> "
     },
     "INVITATION": {
@@ -338,7 +336,7 @@
         "PAGE_DESCRIPTION": "接受邀請加入Taiga上的專案，它是一個給新創團隊與敏捷開發者設計師使用的專案管理平台。Taiga是一個簡易輕鬆美觀的工具，讓工作變成樂趣。"
     },
     "INVITATION_LOGIN_FORM": {
-        "NOT_FOUND": "<strong>Ooops, 有點問題</strong><br />我們的系統無法找到你的邀請信",
+        "NOT_FOUND": "Our Oompa Loompas can't find your invitation.",
         "SUCCESS": "你成功地加入此專案，歡迎來到 {{project_name}}",
         "ERROR": "按我們的記錄，你尚未註冊或是未輸入有效的密碼　"
     },

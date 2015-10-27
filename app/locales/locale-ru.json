@@ -325,12 +325,10 @@
     "CHANGE_PASSWORD_RECOVERY_FORM": {
         "TITLE": "Задать новый пароль",
         "SUBTITLE": "И кстати, может быть Вам будет полезна еда богатая железом — она укрепляет память :P",
-        "PLACEHOLDER_RECOVER_PASSWORD_TOKEN": "Восстановить токен пароля",
-        "LINK_NEED_TOKEN": "Создать?",
-        "TITLE_LINK_NEED_TOKEN": "Вам нужен был токен для восстановления пароля потому что Вы его забыли?",
         "PLACEHOLDER_NEW_PASSWORD": "Новый пароль",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Введите повторно новый пароль",
         "ACTION_RESET_PASSWORD": "Сбросить пароль",
+        "ERROR": "Our Oompa Loompas can't find your request to recover your password. Try to ask for it again.",
         "SUCCESS": "Наши Умпа Лумпы сохранили ваш новый пароль.<br /> Попробуйте <strong>войти</strong>, используя его."
     },
     "INVITATION": {
@@ -338,7 +336,7 @@
         "PAGE_DESCRIPTION": "Принять приглашение и присоединиться к Taiga — платформе для управления проектами стартапов, agile разработчиков и дизайнеров, которые хотят простой и красивый инструмент превращающий работу в удовольствие."
     },
     "INVITATION_LOGIN_FORM": {
-        "NOT_FOUND": "<strong>Ой, у нас проблема!</strong><br />Умпа-лумпы не могут найти ваше приглашение.",
+        "NOT_FOUND": "Our Oompa Loompas can't find your invitation.",
         "SUCCESS": "Вы успешно добавлены к проекту. Добро пожаловать в {{project_name}}",
         "ERROR": "Умпа-Лумпы говорят, что вы не зарегистрированы или ввели неверный пароль."
     },

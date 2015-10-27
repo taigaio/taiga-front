@@ -325,12 +325,10 @@
     "CHANGE_PASSWORD_RECOVERY_FORM": {
         "TITLE": "Crea una nuova password su Taiga",
         "SUBTITLE": "Ehi, e se mangiassi qualcosa ricco di ferro? fa bene all'innovazione :p",
-        "PLACEHOLDER_RECOVER_PASSWORD_TOKEN": "Reimposta la password",
-        "LINK_NEED_TOKEN": "Serve qualcuno?",
-        "TITLE_LINK_NEED_TOKEN": "Hai bisogno di un token per recuperare la password perchè l'hai dimenticata?",
         "PLACEHOLDER_NEW_PASSWORD": "Nuova password",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Digita una nuova password",
         "ACTION_RESET_PASSWORD": "Reimposta la password",
+        "ERROR": "Our Oompa Loompas can't find your request to recover your password. Try to ask for it again.",
         "SUCCESS": "I nostri Digital Champions hanno salvato la tua nuova password. Che bravi!<br /> Pova a fare <strong>login</strong> con questa."
     },
     "INVITATION": {
@@ -338,7 +336,7 @@
         "PAGE_DESCRIPTION": "Accetta l'invito a partecipare ad un progetto in Taiga, una piattaforma semplice di project management che rende il lavoro davvero piacevole a start-up e a chi sviluppa e progetta con il metodo \"agile\"."
     },
     "INVITATION_LOGIN_FORM": {
-        "NOT_FOUND": "<strong>Ooops, abbiamo un problema</strong>I nostri Digital Champions non riescono a trovare il tuo invito",
+        "NOT_FOUND": "Our Oompa Loompas can't find your invitation.",
         "SUCCESS": "Sei ora un membro di questo progetto. Benvenuto in {{project_name}}",
         "ERROR": "Secondo i nostri Digital Champions, non sei ancora regisrtrato o hai inserito una password non valida."
     },
