@@ -1,5 +1,13 @@
-a.user-avatar(tg-nav="profile", title="{{ vm.user.get('full_name_display') }}") {{ vm.user.get('full_name_display') }}
-    img(ng-src="{{ vm.user.get('photo') }}", alt="{{ vm.user.get('full_name_display') }}")
+a.user-avatar(
+    tg-nav="profile"
+    title="{{ vm.user.get('full_name_display') }}"
+    ) {{ vm.user.get('full_name_display') }}
+    img(
+        ng-src="{{ vm.user.get('photo') }}"
+        alt="{{ vm.user.get('full_name_display') }}"
+        width="48px"
+        height="40px"
+        )
 
 div.navbar-dropdown.dropdown-user
     ul
@@ -20,17 +28,6 @@ div.navbar-dropdown.dropdown-user
                 tg-nav="user-settings-user-change-password",
                 title="{{'PROJECT.NAVIGATION.CHANGE_PASSWORD_TITLE' | translate}}",
                 translate="PROJECT.NAVIGATION.CHANGE_PASSWORD")
-
-        //li
-        //    a(
-        //        href="#",
-        //        title="{{'PROJECT.NAVIGATION.ORGANIZATIONS_TITLE' | translate}}",
-        //        translate="PROJECT.NAVIGATION.ORGANIZATIONS")
-        //li
-        //    a(
-        //        href="#",
-        //        title="{{'PROJECT.NAVIGATION.SETTINGS_TITLE' | translate}}",
-        //        translate="PROJECT.NAVIGATION.SETTINGS")
 
         li
             a(
