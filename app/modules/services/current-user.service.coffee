@@ -37,6 +37,7 @@ class CurrentUserService
         @._user = null
         @._projects = Immutable.Map()
         @._projectsById = Immutable.Map()
+        @._joyride = null
 
     setUser: (user) ->
         @._user = user
