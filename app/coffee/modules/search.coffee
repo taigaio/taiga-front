@@ -172,7 +172,7 @@ SearchDirective = ($log, $compile, $templatecache, $routeparams, $location) ->
         applyAutoTab = true
         activeSectionName = "userstories"
         tabsDom = $el.find("section.search-filter")
-        lastSeatchResults = null
+        lastSearchResults = null
 
         getActiveSection = (data) ->
             maxVal = 0
@@ -237,9 +237,9 @@ SearchDirective = ($log, $compile, $templatecache, $routeparams, $location) ->
             $el.find(".search-result-table").html(element)
 
         $scope.$watch "searchResults", (data) ->
-            lastSeatchResults = data
+            lastSearchResults = data
 
-            return if !lastSeatchResults
+            return if !lastSearchResults
 
             activeSection = getActiveSection(data)
 
@@ -256,7 +256,7 @@ SearchDirective = ($log, $compile, $templatecache, $routeparams, $location) ->
             target = angular.element(event.currentTarget)
 
             sectionName = target.parent().data("name")
-            sectionData = lastSeatchResults[sectionName]
+            sectionData = if !lastSearchResults then [] else lastSearchResults[sectionName]
 
             section = {
                 name: sectionName,
