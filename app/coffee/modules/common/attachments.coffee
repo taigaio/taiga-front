@@ -66,12 +66,13 @@ class AttachmentsController extends taiga.Controller
 
         promise = @rs.attachments.upload_dropbox_attachment(urlName, @.projectId, @.objectId, attachment)
 
-        promise = promise.then (model) =>
-            attachment = model._name
+        promise = promise.then (data) =>
+            data.isCreatedRightNow = true
+
             index = @.uploadingAttachments.indexOf(attachment)
             @.uploadingAttachments.splice(index, 1)
-            @.addUploadingAttachments([attachment])
-            @._createAttachment(attachment)
+            @.attachments.push(data)
+            @rootscope.$broadcast("attachment:create")
 
         promise = promise.then null, (data) =>
             index = @.uploadingAttachments.indexOf(attachment)
