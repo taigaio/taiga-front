@@ -364,7 +364,10 @@ ChangePasswordFromRecoveryDirective = ($auth, $confirm, $location, $params, $nav
             $scope.tokenInParams = true
             $scope.data.token = $params.token
         else
-            $scope.tokenInParams = false
+            $location.path($navUrls.resolve("login"))
+
+            text = $translate.instant("CHANGE_PASSWORD_RECOVERY_FORM.ERROR")
+            $confirm.notify("light-error",text)
 
         form = $el.find("form").checksley()
 
@@ -375,7 +378,7 @@ ChangePasswordFromRecoveryDirective = ($auth, $confirm, $location, $params, $nav
             $confirm.success(text)
 
         onErrorSubmit = (response) ->
-            text = $translate.instant("COMMON.GENERIC_ERROR", {error: response.data._error_message})
+            text = $translate.instant("CHANGE_PASSWORD_RECOVERY_FORM.ERROR")
             $confirm.notify("light-error", text)
 
         submit = debounce 2000, (event) =>
@@ -415,7 +418,7 @@ InvitationDirective = ($auth, $confirm, $location, $params, $navUrls, $analytics
             $location.path($navUrls.resolve("login"))
 
             text = $translate.instant("INVITATION_LOGIN_FORM.NOT_FOUND")
-            $confirm.success(text)
+            $confirm.notify("light-error", text)
 
         # Login form
         $scope.dataLogin = {token: token}

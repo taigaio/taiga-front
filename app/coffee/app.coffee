@@ -359,14 +359,6 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
             disableHeader: true
         }
     )
-    $routeProvider.when("/change-password",
-        {
-            templateUrl: "auth/change-password-from-recovery.html",
-            title: "CHANGE_PASSWORD.PAGE_TITLE",
-            description: "CHANGE_PASSWORD.PAGE_TITLE",
-            disableHeader: true
-        }
-    )
     $routeProvider.when("/change-password/:token",
         {
             templateUrl: "auth/change-password-from-recovery.html",
