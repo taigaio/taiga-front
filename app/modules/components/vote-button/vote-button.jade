@@ -1,0 +1,15 @@
+a(
+    href=""
+    title="{{ 'COMMON.VOTE_BUTTON.BUTTON_TITLE' | translate }}"
+    ng-if="::vm.user"
+    ng-click="vm.toggleVote()"
+    ng-class="{'active': vm.item.is_voter, 'is-hover': vm.item.is_voter && vm.isMouseOver, 'disable': !vm.user}"
+    ng-mouseover="vm.showTextWhenMouseIsOver()"
+    ng-mouseleave="vm.showTextWhenMouseIsLeave()"
+)
+    span.track-icon
+        include ../../../svg/upvote.svg
+    span.track-button-counter(
+        title="{{ 'COMMON.VOTE_BUTTON.COUNTER_TITLE'|translate:{total:vm.item.total_voters||0}:'messageformat' }}",
+        tg-loading="vm.loading"
+    ) {{ vm.item.total_voters }}

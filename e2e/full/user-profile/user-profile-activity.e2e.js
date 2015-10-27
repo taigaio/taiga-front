@@ -6,7 +6,7 @@ var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 var expect = chai.expect;
 
-describe('user profile', function() {
+describe('user profile - activity', function() {
     describe('current user', function() {
         before(async function(){
             browser.get(browser.params.glob.host + 'profile');
@@ -16,11 +16,12 @@ describe('user profile', function() {
             utils.common.takeScreenshot('user-profile', 'current-user-activity');
         });
 
-        it('activity tab pagination', async function() {
+        it('activity tab - pagination', async function() {
             let startTotal = await $$('div[tg-user-timeline-item]').count();
 
+            let htmlChanges = await utils.common.outerHtmlChanges('div[infinite-scroll]');
             await browser.executeScript('window.scrollTo(0,document.body.scrollHeight)');
-            await browser.waitForAngular();
+            await htmlChanges();
 
             let endTotal = await $$('div[tg-user-timeline-item]').count();
 
@@ -68,38 +69,15 @@ describe('user profile', function() {
         it('activity tab pagination', async function() {
             let startTotal = await $$('div[tg-user-timeline-item]').count();
 
+            let htmlChanges = await utils.common.outerHtmlChanges('div[infinite-scroll]');
             await browser.executeScript('window.scrollTo(0,document.body.scrollHeight)');
-            await browser.waitForAngular();
+            await htmlChanges();
 
             let endTotal = await $$('div[tg-user-timeline-item]').count();
 
             let hasMoreItems = startTotal < endTotal;
 
             expect(hasMoreItems).to.be.equal(true);
-        });
-
-        it('projects tab', async function() {
-            $$('.tab').get(1).click();
-
-            browser.waitForAngular();
-
-            utils.common.takeScreenshot('user-profile', 'other-user-projects');
-
-            let projectsCount = await $$('.project-list-single').count();
-
-            expect(projectsCount).to.be.above(0);
-        });
-
-        it('conctacts tab', async function() {
-            $$('.tab').get(2).click();
-
-            browser.waitForAngular();
-
-            utils.common.takeScreenshot('user-profile', 'other-user-contacts');
-
-            let contactsCount = await $$('.profile-contact-single').count();
-
-            expect(contactsCount).to.be.above(0);
         });
     });
 });

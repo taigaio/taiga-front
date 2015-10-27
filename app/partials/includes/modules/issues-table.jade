@@ -3,6 +3,7 @@ section.issues-table.basic-table(ng-class="{empty: !issues.length}")
         div.level-field(data-fieldname="type", translate="ISSUES.TABLE.COLUMNS.TYPE")
         div.level-field(data-fieldname="severity", translate="ISSUES.TABLE.COLUMNS.SEVERITY")
         div.level-field(data-fieldname="priority", translate="ISSUES.TABLE.COLUMNS.PRIORITY")
+        div.votes(data-fieldname="total_voters", translate="ISSUES.TABLE.COLUMNS.VOTES")
         div.subject(data-fieldname="subject", translate="ISSUES.TABLE.COLUMNS.SUBJECT")
         div.issue-field(data-fieldname="status", translate="ISSUES.TABLE.COLUMNS.STATUS")
         div.created-field(data-fieldname="created_date", translate="ISSUES.TABLE.COLUMNS.CREATED")
@@ -15,9 +16,18 @@ section.issues-table.basic-table(ng-class="{empty: !issues.length}")
         div.level-field(tg-listitem-type="issue")
         div.level-field(tg-listitem-severity="issue")
         div.level-field(tg-listitem-priority="issue")
+        div.votes(
+            ng-class="{'inactive': !issue.total_voters, 'is-voted': issue.is_voter}"
+            title="{{ 'COMMON.VOTE_BUTTON.COUNTER_TITLE'|translate:{total:issue.total_voters||0}:'messageformat' }}"
+        )
+            span.icon.icon-caret-up
+            span {{ ::issue.total_voters }}
         div.subject
-            a(href="", tg-nav="project-issues-detail:project=project.slug,ref=issue.ref",
-              title="#{{ ::issue.ref }} {{ ::issue.subject }}")
+            a(
+                href=""
+                tg-nav="project-issues-detail:project=project.slug,ref=issue.ref"
+                title="#{{ ::issue.ref }} {{ ::issue.subject }}"
+            )
                 span(tg-bo-ref="issue.ref")
                 span.blocked-text(
                     ng-if="issue.is_blocked"
@@ -25,8 +35,12 @@ section.issues-table.basic-table(ng-class="{empty: !issues.length}")
                 ) {{'ISSUES.TABLE.BLOCKED' | translate}}
                 span(ng-bind="issue.subject")
 
+
         div.issue-field(tg-issue-status-inline-edition="issue")
-            a.issue-status(href="", title="{{'ISSUES.TABLE.TITLE_ACTION_CHANGE_STATUS' | translate}}")
+            a.issue-status(
+                href=""
+                title="{{'ISSUES.TABLE.TITLE_ACTION_CHANGE_STATUS' | translate}}"
+            )
                 span.issue-status-bind
                 span.icon.icon-arrow-bottom(tg-check-permission="modify_issue")
 

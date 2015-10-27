@@ -19,7 +19,7 @@ Resource = (urlsService, http, paginateResponseService) ->
                 return Immutable.fromJS(result.data)
 
     service.getStats = (userId) ->
-        url = urlsService.resolve("stats", userId)
+        url = urlsService.resolve("user-stats", userId)
 
         httpOptions = {
             headers: {
@@ -32,7 +32,7 @@ Resource = (urlsService, http, paginateResponseService) ->
                 return Immutable.fromJS(result.data)
 
     service.getContacts = (userId) ->
-        url = urlsService.resolve("contacts", userId)
+        url = urlsService.resolve("user-contacts", userId)
 
         httpOptions = {
             headers: {
@@ -43,6 +43,45 @@ Resource = (urlsService, http, paginateResponseService) ->
         return http.get(url, {}, httpOptions)
             .then (result) ->
                 return Immutable.fromJS(result.data)
+
+    service.getLiked = (userId, page, type, q) ->
+        url = urlsService.resolve("user-liked", userId)
+
+        params = {}
+        params.page = page if page?
+        params.type = type if type?
+        params.q = q if q?
+
+        return http.get(url, params)
+            .then (result) ->
+                result = Immutable.fromJS(result)
+                return paginateResponseService(result)
+
+    service.getVoted = (userId, page, type, q) ->
+        url = urlsService.resolve("user-voted", userId)
+
+        params = {}
+        params.page = page if page?
+        params.type = type if type?
+        params.q = q if q?
+
+        return http.get(url, params)
+            .then (result) ->
+                result = Immutable.fromJS(result)
+                return paginateResponseService(result)
+
+    service.getWatched = (userId, page, type, q) ->
+        url = urlsService.resolve("user-watched", userId)
+
+        params = {}
+        params.page = page if page?
+        params.type = type if type?
+        params.q = q if q?
+
+        return http.get(url, params)
+            .then (result) ->
+                result = Immutable.fromJS(result)
+                return paginateResponseService(result)
 
     service.getProfileTimeline = (userId, page) ->
         params = {

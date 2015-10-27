@@ -102,3 +102,34 @@
         margin-left: calc(-#{$border-size}px + #{$border-width}px);
     }
 }
+
+// Mixin for track buttons
+@mixin list-itemtype-track {
+    .list-itemtype-track {
+        @extend %small;
+        color: $gray-light;
+        display: flex;
+        flex-basis: 150px;
+        flex-shrink: 0;
+        justify-content: flex-end;
+    }
+    .list-itemtype-track-likers,
+    .list-itemtype-track-watchers {
+        display: inline-block;
+        width: 2.5rem;
+        &.active {
+            color: $primary;
+            path {
+                fill: currentcolor;
+            }
+        }
+    }
+    .icon {
+        svg {
+            max-width: 1rem;
+        }
+        path {
+            fill: currentcolor;
+        }
+    }
+}

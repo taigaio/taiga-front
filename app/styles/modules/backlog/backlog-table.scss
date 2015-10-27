@@ -10,6 +10,7 @@
     }
     .row {
         @extend %small;
+        align-items: center;
         border-bottom: 1px solid $gray-light;
         display: flex;
         padding: .5rem 0 .5rem .5rem;
@@ -21,6 +22,24 @@
     .row {
         &:hover {
             background: transparent;
+        }
+        .input {
+            flex-basis: 25px;
+            flex-grow: 0;
+            flex-shrink: 0;
+        }
+        .votes {
+            color: $gray;
+            flex-basis: 50px;
+            flex-grow: 0;
+            flex-shrink: 0;
+            text-align: center;
+            &.inactive {
+                color: $gray-light;
+            }
+            &.is-voted {
+                color: $primary-light;
+            }
         }
         .user-stories {
             overflow: hidden;
@@ -99,8 +118,8 @@
 
 .backlog-table-header {
     .backlog-table-title {
+        @extend %text;
         @extend %medium;
-        @extend %bold;
         border-bottom: 2px solid $gray-light;
         flex-wrap: nowrap;
         padding-right: 30px;
@@ -124,6 +143,7 @@
         &:hover {
             background: lighten($primary, 60%);
             transition: background .2s ease-in;
+            transition-delay: .2s;
             .us-settings,
             .icon-drag-v {
                 opacity: 1;
@@ -150,26 +170,25 @@
         height: 40px;
         width: 100%;
     }
-    .row-selected {
+    .row-selected,
+    .is-checked {
         background: lighten($primary, 60%);
         transition: background .2s ease-in;
+    }
+    input {
+        &:checked {
+            color: $primary-light;
+            transition: color .2s ease-in;
+        }
     }
     .user-story-name {
         align-items: center;
         display: flex;
         flex-wrap: nowrap;
-        input {
-            flex-shrink: 0;
-            margin-right: 1rem;
-            vertical-align: super;
-            &:checked+a {
-                color: $primary-light;
-                transition: color .2s ease-in;
-            }
-        }
         a {
+            @extend %light;
             display: inline-block;
-            flex-grow: 20;
+            flex: 1;
             max-width: 90%;
             overflow: hidden;
             text-overflow: ellipsis;

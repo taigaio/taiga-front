@@ -83,17 +83,17 @@ WikiNavDirective = ($tgrepo, $log, $location, $confirm, $navUrls, $analytics, $l
                 title = $translate.instant("WIKI.DELETE_LIGHTBOX_TITLE")
                 message = $scope.wikiLinks[linkId].title
 
-                $confirm.askOnDelete(title, message).then (finish) =>
+                $confirm.askOnDelete(title, message).then (askResponse) =>
                     promise = $tgrepo.remove($scope.wikiLinks[linkId])
                     promise.then ->
                         promise = $ctrl.loadWikiLinks()
                         promise.then ->
-                            finish()
+                            askResponse.finish()
                             render($scope.wikiLinks)
                         promise.then null, ->
-                            finish()
+                            askResponse.finish()
                     promise.then null, ->
-                        finish(false)
+                        askResponse.finish(false)
                         $confirm.notify("error")
 
             $el.on "keyup", ".new input", (event) ->

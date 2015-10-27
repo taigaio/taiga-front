@@ -26,6 +26,7 @@ toString = @.taiga.toString
 joinStr = @.taiga.joinStr
 groupBy = @.taiga.groupBy
 bindOnce = @.taiga.bindOnce
+bindMethods = @.taiga.bindMethods
 
 module = angular.module("taigaIssues")
 
@@ -52,6 +53,8 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
                   @log, @appMetaService, @analytics, @navUrls, @translate) ->
+        bindMethods(@)
+
         @scope.issueRef = @params.issueref
         @scope.sectionName = @translate.instant("ISSUES.SECTION_NAME")
         @.initializeEventHandlers()
@@ -144,6 +147,49 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             @.fillUsersAndRoles(project.members, project.roles)
             @.loadIssue()
 
+    ###
+    # Note: This methods (onUpvote() and onDownvote()) are related to tg-vote-button.
+    #       See app/modules/components/vote-button for more info
+    ###
+    onUpvote: ->
+        onSuccess = =>
+            @.loadIssue()
+            @rootscope.$broadcast("object:updated")
+        onError = =>
+            @confirm.notify("error")
+
+        return @rs.issues.upvote(@scope.issueId).then(onSuccess, onError)
+
+    onDownvote: ->
+        onSuccess = =>
+            @.loadIssue()
+            @rootscope.$broadcast("object:updated")
+        onError = =>
+            @confirm.notify("error")
+
+        return @rs.issues.downvote(@scope.issueId).then(onSuccess, onError)
+
+    ###
+    # Note: This methods (onWatch() and onUnwatch()) are related to tg-watch-button.
+    #       See app/modules/components/watch-button for more info
+    ###
+    onWatch: ->
+        onSuccess = =>
+            @.loadIssue()
+            @rootscope.$broadcast("object:updated")
+        onError = =>
+            @confirm.notify("error")
+
+        return @rs.issues.watch(@scope.issueId).then(onSuccess, onError)
+
+    onUnwatch: ->
+        onSuccess = =>
+            @.loadIssue()
+            @rootscope.$broadcast("object:updated")
+        onError = =>
+            @confirm.notify("error")
+
+        return @rs.issues.unwatch(@scope.issueId).then(onSuccess, onError)
 
 module.controller("IssueDetailController", IssueDetailController)
 

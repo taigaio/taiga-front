@@ -1,7 +1,7 @@
 .button,
 %button {
-    @extend %medium;
-    @extend %title;
+    @extend %light;
+    @extend %small;
     background: transparent;
     border: 0;
     color: $white;

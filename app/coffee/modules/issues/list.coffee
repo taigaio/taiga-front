@@ -407,7 +407,7 @@ IssuesDirective = ($log, $location, $template, $compile) ->
         # Draw the arrow the first time
         currentOrder = $ctrl.getUrlFilter("orderBy") or "created_date"
         if currentOrder
-            icon = if startswith(currentOrder, "-") then "icon-caret-up" else "icon-caret-down"
+            icon = if startswith(currentOrder, "-") then "icon-arrow-up" else "icon-arrow-bottom"
             colHeadElement = $el.find(".row.title > div[data-fieldname='#{trim(currentOrder, "-")}']")
             colHeadElement.html("#{colHeadElement.html()}<span class='icon #{icon}'></span>")
 
@@ -425,7 +425,7 @@ IssuesDirective = ($log, $location, $template, $compile) ->
                 $ctrl.loadIssues().then ->
                     # Update the arrow
                     $el.find(".row.title > div > span.icon").remove()
-                    icon = if startswith(finalOrder, "-") then "icon-caret-up" else "icon-caret-down"
+                    icon = if startswith(finalOrder, "-") then "icon-arrow-up" else "icon-arrow-bottom"
                     target.html("#{target.html()}<span class='icon #{icon}'></span>")
 
     ## Issues Link
@@ -620,18 +620,18 @@ IssuesFiltersDirective = ($q, $log, $location, $rs, $confirm, $loading, $templat
             title = $translate.instant("ISSUES.FILTERS.CONFIRM_DELETE.TITLE")
             message = $translate.instant("ISSUES.FILTERS.CONFIRM_DELETE.MESSAGE", {customFilterName: customFilterName})
 
-            $confirm.askOnDelete(title, message).then (finish) ->
+            $confirm.askOnDelete(title, message).then (askResponse) ->
                 promise = $ctrl.deleteMyFilter(customFilterName)
                 promise.then ->
                     promise = $ctrl.loadMyFilters()
                     promise.then (filters) ->
-                        finish()
+                        askResponse.finish()
                         $scope.filters.myFilters = filters
                         renderFilters($scope.filters.myFilters)
                     promise.then null, ->
-                        finish()
+                        askResponse.finish()
                 promise.then null, ->
-                    finish(false)
+                    askResponse.finish(false)
                     $confirm.notify("error")
 
 

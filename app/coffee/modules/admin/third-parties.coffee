@@ -177,13 +177,13 @@ WebhookDirective = ($rs, $repo, $confirm, $loading, $translate) ->
             title = $translate.instant("ADMIN.WEBHOOKS.DELETE")
             message = $translate.instant("ADMIN.WEBHOOKS.WEBHOOK_NAME", {name: webhook.name})
 
-            $confirm.askOnDelete(title, message).then (finish) =>
+            $confirm.askOnDelete(title, message).then (askResponse) =>
                 onSucces = ->
-                    finish()
+                    askResponse.finish()
                     $scope.$emit("webhooks:reload")
 
                 onError = ->
-                    finish(false)
+                    askResponse.finish(false)
                     $confirm.notify("error")
 
                 $repo.remove(webhook).then(onSucces, onError)

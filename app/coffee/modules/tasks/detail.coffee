@@ -23,6 +23,7 @@ taiga = @.taiga
 
 mixOf = @.taiga.mixOf
 groupBy = @.taiga.groupBy
+bindMethods = @.taiga.bindMethods
 
 module = angular.module("taigaTasks")
 
@@ -50,6 +51,8 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
                   @log, @appMetaService, @navUrls, @analytics, @translate) ->
+        bindMethods(@)
+
         @scope.taskRef = @params.taskref
         @scope.sectionName = @translate.instant("TASK.SECTION_NAME")
         @.initializeEventHandlers()
@@ -145,6 +148,50 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             @.fillUsersAndRoles(project.members, project.roles)
             @.loadTask().then(=> @q.all([@.loadSprint(), @.loadUserStory()]))
 
+    ###
+    # Note: This methods (onUpvote() and onDownvote()) are related to tg-vote-button.
+    #       See app/modules/components/vote-button for more info
+    ###
+    onUpvote: ->
+        onSuccess = =>
+            @.loadTask()
+            @rootscope.$broadcast("object:updated")
+        onError = =>
+            @confirm.notify("error")
+
+        return @rs.tasks.upvote(@scope.taskId).then(onSuccess, onError)
+
+    onDownvote: ->
+        onSuccess = =>
+            @.loadTask()
+            @rootscope.$broadcast("object:updated")
+        onError = =>
+            @confirm.notify("error")
+
+        return @rs.tasks.downvote(@scope.taskId).then(onSuccess, onError)
+
+    ###
+    # Note: This methods (onWatch() and onUnwatch()) are related to tg-watch-button.
+    #       See app/modules/components/watch-button for more info
+    ###
+    onWatch: ->
+        onSuccess = =>
+            @.loadTask()
+            @rootscope.$broadcast("object:updated")
+        onError = =>
+            @confirm.notify("error")
+
+        return @rs.tasks.watch(@scope.taskId).then(onSuccess, onError)
+
+    onUnwatch: ->
+        onSuccess = =>
+            @.loadTask()
+            @rootscope.$broadcast("object:updated")
+        onError = =>
+            @confirm.notify("error")
+
+        return @rs.tasks.unwatch(@scope.taskId).then(onSuccess, onError)
+
 module.controller("TaskDetailController", TaskDetailController)
 
 
@@ -195,7 +242,7 @@ module.directive("tgTaskStatusDisplay", ["$tgTemplate", "$compile", TaskStatusDi
 ## Task status button directive
 #############################################################################
 
-TaskStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $compile, $translate) ->
+TaskStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $compile, $translate, $template) ->
     # Display the status of Task and you can edit it.
     #
     # Example:
@@ -206,21 +253,7 @@ TaskStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $co
     #   - scope.statusById object
     #   - $scope.project.my_permissions
 
-    template = _.template("""
-    <div class="status-data <% if(editable){ %>clickable<% }%>">
-        <span class="level" style="background-color:<%- status.color %>"></span>
-        <span class="status-status"><%- status.name %></span>
-        <% if(editable){ %><span class="icon icon-arrow-bottom"></span><% }%>
-        <span class="level-name" translate="COMMON.FIELDS.STATUS"></span>
-
-        <ul class="popover pop-status">
-            <% _.each(statuses, function(st) { %>
-            <li><a href="" class="status" title="<%- st.name %>"
-                   data-status-id="<%- st.id %>"><%- st.name %></a></li>
-            <% }); %>
-        </ul>
-    </div>
-    """)
+    template = $template.get("us/us-status-button.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
         isEditable = ->
@@ -288,7 +321,7 @@ TaskStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $co
     }
 
 module.directive("tgTaskStatusButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", "$tgQqueue",
-                                        "$compile", "$translate", TaskStatusButtonDirective])
+                                        "$compile", "$translate", "$tgTemplate", TaskStatusButtonDirective])
 
 
 TaskIsIocaineButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $qqueue, $compile) ->

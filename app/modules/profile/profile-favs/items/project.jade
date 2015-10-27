@@ -1,0 +1,34 @@
+.list-itemtype-project
+    .list-itemtype-project-data
+        h2
+            a(
+                href="#"
+                tg-nav="project:project=vm.item.get('slug')"
+                title="{{ ::vm.item.get('name') }}"
+            ) {{ ::vm.item.get('name') }}
+            span.private(ng-if="::project.get('is_private')", title="{{'PROJECT.PRIVATE' | translate}}")
+        p {{ ::vm.item.get('description') }}
+
+        .list-itemtype-project-tags.tags-container(ng-if="::vm.item.get('tags_colors').size")
+            span.tag(
+                tg-repeat="tag in ::vm.item.get('tags_colors')"
+                style='border-left: 5px solid {{ ::tag.get("color") }};'
+            )
+                span.tag-name {{ ::tag.get('name') }}
+
+    .list-itemtype-track
+        span.list-itemtype-track-likers(
+            ng-class="{'active': vm.item.get('is_fan')}"
+            title="{{ 'PROJECT.LIKE_BUTTON.COUNTER_TITLE'|translate:{total:vm.item.get(\"total_fans\")||0}:'messageformat' }}"
+         )
+            span.icon
+                include ../../../../svg/like.svg
+            span {{ ::vm.item.get('total_fans') }}
+
+        span.list-itemtype-track-watchers(
+            ng-class="{'active': vm.item.get('is_watcher')}"
+            title="{{ 'PROJECT.WATCH_BUTTON.COUNTER_TITLE'|translate:{total:vm.item.get(\"total_watchers\")||0}:'messageformat' }}"
+        )
+            span.icon
+                include ../../../../svg/watch.svg
+            span {{ ::vm.item.get('total_watchers') }}

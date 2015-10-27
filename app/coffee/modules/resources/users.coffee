@@ -28,7 +28,7 @@ resourceProvider = ($http, $urls) ->
     service = {}
 
     service.contacts = (userId, options={}) ->
-        url = $urls.resolve("contacts", userId)
+        url = $urls.resolve("user-contacts", userId)
         httpOptions = {headers: {}}
 
         if not options.enablePagination

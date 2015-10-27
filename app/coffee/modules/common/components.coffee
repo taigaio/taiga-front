@@ -223,11 +223,7 @@ WatchersDirective = ($rootscope, $confirm, $repo, $qqueue, $template, $compile, 
             html = $compile(template(ctx))($scope)
             $el.html(html)
 
-            if isEditable() and watchers.length == 0
-                $el.find(".title").text("Add watchers")
-                $el.find(".watchers-header").addClass("no-watchers")
-
-        $el.on "click", ".icon-delete", (event) ->
+        $el.on "click", ".js-delete-watcher", (event) ->
             event.preventDefault()
             return if not isEditable()
             target = angular.element(event.currentTarget)
@@ -236,15 +232,15 @@ WatchersDirective = ($rootscope, $confirm, $repo, $qqueue, $template, $compile, 
             title = $translate.instant("COMMON.WATCHERS.TITLE_LIGHTBOX_DELETE_WARTCHER")
             message = $scope.usersById[watcherId].full_name_display
 
-            $confirm.askOnDelete(title, message).then (finish) =>
-                finish()
+            $confirm.askOnDelete(title, message).then (askResponse) =>
+                askResponse.finish()
 
                 watcherIds = _.clone($model.$modelValue.watchers, false)
                 watcherIds = _.pull(watcherIds, watcherId)
 
                 deleteWatcher(watcherIds)
 
-        $el.on "click", ".add-watcher", (event) ->
+        $el.on "click", ".js-add-watcher", (event) ->
             event.preventDefault()
             return if not isEditable()
             $scope.$apply ->
@@ -420,14 +416,14 @@ DeleteButtonDirective = ($log, $repo, $confirm, $location, $template) ->
             title = $attrs.onDeleteTitle
             subtitle = $model.$modelValue.subject
 
-            $confirm.askOnDelete(title, subtitle).then (finish) =>
+            $confirm.askOnDelete(title, subtitle).then (askResponse) =>
                 promise = $repo.remove($model.$modelValue)
                 promise.then =>
-                    finish()
+                    askResponse.finish()
                     url = $scope.$eval($attrs.onDeleteGoToUrl)
                     $location.path(url)
                 promise.then null, =>
-                    finish(false)
+                    askResponse.finish(false)
                     $confirm.notify("error")
 
         $scope.$on "$destroy", ->

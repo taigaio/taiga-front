@@ -1,36 +1,31 @@
 class ProjectController
     @.$inject = [
-        "tgProjectsService",
         "$routeParams",
         "tgAppMetaService",
         "$tgAuth",
-        "tgXhrErrorService",
-        "$translate"
+        "$translate",
+        "tgProjectService"
     ]
 
-    constructor: (@projectsService, @routeParams, @appMetaService, @auth, @xhrError, @translate) ->
+    constructor: (@routeParams, @appMetaService, @auth, @translate, @projectService) ->
         projectSlug = @routeParams.pslug
         @.user = @auth.userData
 
-        @projectsService
-            .getProjectBySlug(projectSlug)
-            .then (project) =>
-                @.project = project
+        taiga.defineImmutableProperty @, "project", () => return @projectService.project
+        taiga.defineImmutableProperty @, "members", () => return @projectService.activeMembers
 
-                members = @.project.get('members').filter (member) -> member.get('is_active')
-
-                @.project = @.project.set('members', members)
-
-                @._setMeta(@.project)
-
-            .catch (xhr) =>
-                @xhrError.response(xhr)
+        @appMetaService.setfn @._setMeta.bind(this)
 
     _setMeta: (project)->
-        ctx = {projectName: project.get("name")}
+        metas = {}
 
-        title = @translate.instant("PROJECT.PAGE_TITLE", ctx)
-        description = project.get("description")
-        @appMetaService.setAll(title, description)
+        return metas if !@.project
+
+        ctx = {projectName: @.project.get("name")}
+
+        metas.title = @translate.instant("PROJECT.PAGE_TITLE", ctx)
+        metas.description = @.project.get("description")
+
+        return metas
 
 angular.module("taigaProjects").controller("Project", ProjectController)

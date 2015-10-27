@@ -1,13 +1,15 @@
 describe "AppMetaService", ->
     appMetaService = null
+    $rootScope = null
     data = {
         title: "--title--",
         description: "--description--"
     }
 
     _inject = () ->
-        inject (_tgAppMetaService_) ->
+        inject (_tgAppMetaService_, _$rootScope_) ->
             appMetaService = _tgAppMetaService_
+            $rootScope = _$rootScope_
 
     beforeEach ->
         module "taigaCommon"
@@ -53,3 +55,18 @@ describe "AppMetaService", ->
         expect($("meta[property='og:description']")).to.have.attr("content", data.description)
         expect($("meta[property='og:image']")).to.have.attr("content", "#{window.location.origin}/images/logo-color.png")
         expect($("meta[property='og:url']")).to.have.attr("content", window.location.href)
+
+    it "set function to set the metas", () ->
+        fn = () ->
+            return {
+                title: 'test',
+                description: 'test2'
+            }
+
+
+        appMetaService.setAll = sinon.stub()
+        appMetaService.setfn(fn)
+
+        $rootScope.$digest()
+
+        expect(appMetaService.setAll).to.have.been.calledWith('test', 'test2')

@@ -55,6 +55,22 @@ resourceProvider = ($repo, $http, $urls, $storage, $q) ->
         params = {project_id: projectId, bulk_issues: data}
         return $http.post(url, params)
 
+    service.upvote = (issueId) ->
+        url = $urls.resolve("issue-upvote", issueId)
+        return $http.post(url)
+
+    service.downvote = (issueId) ->
+        url = $urls.resolve("issue-downvote", issueId)
+        return $http.post(url)
+
+    service.watch = (issueId) ->
+        url = $urls.resolve("issue-watch", issueId)
+        return $http.post(url)
+
+    service.unwatch = (issueId) ->
+        url = $urls.resolve("issue-unwatch", issueId)
+        return $http.post(url)
+
     service.stats = (projectId) ->
         return $repo.queryOneRaw("projects", "#{projectId}/issues_stats")
 

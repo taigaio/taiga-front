@@ -478,7 +478,7 @@ AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationServic
             html = usersTemplate(ctx)
             html = $compile(html)($scope)
 
-            $el.find("div.watchers").html(html)
+            $el.find(".assigned-to-list").html(html)
 
         closeLightbox = () ->
             lightboxKeyboardNavigationService.stop()
@@ -499,7 +499,7 @@ AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationServic
                 render(selectedUser, searchingText)
                 $el.find('input').focus()
 
-        $el.on "click", ".watcher-single", (event) ->
+        $el.on "click", ".assigned-to-single", (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
 
@@ -573,7 +573,7 @@ WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationS
 
             html = usersTemplate(ctx)
             html = $compile(html)($scope)
-            $el.find("div.watchers").html(html)
+            $el.find(".ticket-watchers").html(html)
 
         closeLightbox = () ->
             lightboxKeyboardNavigationService.stop()
@@ -597,7 +597,7 @@ WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationS
             render(users)
             $el.find("input").focus()
 
-        $el.on "click", ".watcher-single", debounce 2000, (event) ->
+        $el.on "click", ".user-list-single", debounce 2000, (event) ->
             closeLightbox()
 
             event.preventDefault()
