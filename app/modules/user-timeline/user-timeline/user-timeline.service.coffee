@@ -113,13 +113,11 @@ class UserTimelineService extends taiga.Service
         return timeline
 
     # - create a entry per every item in the values_diff
-    # - add extra attributes to each entry
     _parseTimeline: (response) ->
         newdata = Immutable.List()
 
         response.get('data').forEach (item) =>
             event = @._parseEventType(item.get('event_type'))
-            type = @userTimelineItemType.getType(item, event)
 
             data = item.get('data')
             values_diff = data.get('values_diff')
@@ -142,14 +140,18 @@ class UserTimelineService extends taiga.Service
 
                     newItem = item.setIn(['data', 'value_diff'], obj)
                     newItem = newItem.deleteIn(['data', 'values_diff'])
-                    newItem = @._attachExtraInfoToTimelineEntry(newItem, event, type)
                     newdata = newdata.push(newItem)
             else
                 newItem = item.deleteIn(['data', 'values_diff'])
-                newItem = @._attachExtraInfoToTimelineEntry(newItem, event, type)
                 newdata = newdata.push(newItem)
 
         return response.set('data', newdata)
+
+    _addEntyAttributes: (item) ->
+        event = @._parseEventType(item.get('event_type'))
+        type = @userTimelineItemType.getType(item, event)
+
+        return @._attachExtraInfoToTimelineEntry(item, event, type)
 
     getProfileTimeline: (userId) ->
         config = {}
@@ -158,6 +160,8 @@ class UserTimelineService extends taiga.Service
             return @rs.users.getProfileTimeline(userId, page)
                 .then (response) =>
                     return @._parseTimeline(response)
+
+        config.map = (obj) => @._addEntyAttributes(obj)
 
         config.filter = (items) =>
             return items.filterNot (item) => @._isInValidTimeline(item)
@@ -172,6 +176,8 @@ class UserTimelineService extends taiga.Service
                 .then (response) =>
                     return @._parseTimeline(response)
 
+        config.map = (obj) => @._addEntyAttributes(obj)
+
         config.filter = (items) =>
             return items.filterNot (item) => @._isInValidTimeline(item)
 
@@ -183,6 +189,8 @@ class UserTimelineService extends taiga.Service
         config.fetch = (page) =>
             return @rs.projects.getTimeline(projectId, page)
                 .then (response) => return @._parseTimeline(response)
+
+        config.map = (obj) => @._addEntyAttributes(obj)
 
         config.filter = (items) =>
             return items.filterNot (item) => @._isInValidTimeline(item)
