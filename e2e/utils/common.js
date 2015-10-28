@@ -386,7 +386,6 @@ common.uploadImagePath = function() {
 
 common.closeJoyride = function() {
     $('.introjs-skipbutton').isPresent().then((present) => {
-        console.log(present);
         if (present) {
             browser.waitForAngular();
             $('.introjs-skipbutton').click();
