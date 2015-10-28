@@ -142,6 +142,9 @@
                 margin-left: .5rem;
             }
         }
+        .icon-delete {
+            @extend %large;
+        }
     }
     .extra-text {
         margin-top: 1rem;
