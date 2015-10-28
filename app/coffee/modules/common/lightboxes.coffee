@@ -499,7 +499,7 @@ AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationServic
                 render(selectedUser, searchingText)
                 $el.find('input').focus()
 
-        $el.on "click", ".assigned-to-single", (event) ->
+        $el.on "click", ".user-list-single", (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
 
