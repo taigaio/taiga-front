@@ -648,7 +648,6 @@ modules = [
     "taigaProject",
     "taigaUserSettings",
     "taigaFeedback",
-    "taigaPlugins",
     "taigaIntegrations",
     "taigaComponents",
     # new modules

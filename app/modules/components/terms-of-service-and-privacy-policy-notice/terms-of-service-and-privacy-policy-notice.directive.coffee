@@ -16,7 +16,24 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: pluggins/main.coffee
+# File: modules/components/terms-of-service-and-privacy-policy-notice/terms-of-service-and-privacy-policy-notice.directive.coffee
 ###
 
-module = angular.module("taigaPlugins", ["ngRoute"])
+
+TermsOfServiceAndPrivacyPolicyNoticeDirective = ($config) ->
+    link = (scope, el, attrs) ->
+        scope.privacyPolicyUrl = $config.get("privacyPolicyUrl")
+        scope.termsOfServiceUrl = $config.get("termsOfServiceUrl")
+
+    return {
+        restrict: "AE",
+        scope: {},
+        link: link,
+        templateUrl: "components/terms-of-service-and-privacy-policy-notice/terms-of-service-and-privacy-policy-notice.html"
+    }
+
+angular.module("taigaComponents")
+    .directive("tgTermsOfServiceAndPrivacyPolicyNotice", [
+        "$tgConfig",
+        TermsOfServiceAndPrivacyPolicyNoticeDirective
+    ])
