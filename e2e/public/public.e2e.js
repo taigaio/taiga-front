@@ -58,31 +58,41 @@ describe('Public', async function(){
     });
 
     it('us detail', function() {
-        browser.get(browser.params.glob.host + 'project/project-3/us/81');
+        browser.get(browser.params.glob.host + 'project/project-3/backlog');
 
-        utils.common.waitLoader();
+        utils.nav
+            .init()
+            .us(0)
+            .go();
 
         utils.common.takeScreenshot('public', 'us-detail');
     });
 
     it('issue detail', function() {
-        browser.get(browser.params.glob.host + 'project/project-3/issue/95');
+        browser.get(browser.params.glob.host + 'project/project-3/issues');
 
-        utils.common.waitLoader();
+        utils.nav
+            .init()
+            .issue(0)
+            .go();
 
         utils.common.takeScreenshot('public', 'issue-detail');
     });
 
     it('task detail', function() {
-        browser.get(browser.params.glob.host + 'project/project-3/task/2');
+        browser.get(browser.params.glob.host + 'project/project-3/backlog');
 
-        utils.common.waitLoader();
+        utils.nav
+            .init()
+            .taskboard(0)
+            .task(0)
+            .go();
 
         utils.common.takeScreenshot('public', 'task-detail');
     });
 
     it('team', function() {
-        browser.get(browser.params.glob.host + 'project/project-5/team');
+        browser.get(browser.params.glob.host + 'project/project-3/team');
 
         utils.common.waitLoader();
 
