@@ -50,12 +50,10 @@ div.register-form-container(tg-register)
                 translate="REGISTER_FORM.ACTION_SIGN_UP"
             )
 
-        fieldset(tg-github-login-button)
-
         //- Only displays terms notice when terms plugin is loaded.
         tg-terms-of-service-and-privacy-policy-notice
 
-        a.register-text-top(i
+        a.register-text-top(
             href=""
             title="{{'REGISTER_FORM.TITLE_LINK_LOGIN' | translate}}"
             tg-nav="login"

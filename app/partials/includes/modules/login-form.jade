@@ -1,18 +1,40 @@
 div.login-form-container(tg-login)
     form.login-form
         fieldset
-            input(type="text", tg-capslock, name="username", data-required="true",
-                  placeholder="{{'LOGIN_COMMON.PLACEHOLDER_AUTH_NAME' | translate}}")
+            input(
+                type="text"
+                name="username"
+                data-required="true"
+                placeholder="{{'LOGIN_COMMON.PLACEHOLDER_AUTH_NAME' | translate}}"
+            )
 
         fieldset.login-password
-            input(type="password", tg-capslock, name="password", data-required="true",
-                  placeholder="{{'LOGIN_COMMON.PLACEHOLDER_AUTH_PASSWORD' | translate}}")
+            input(
+                type="password"
+                name="password"
+                tg-capslock
+                data-required="true"
+                placeholder="{{'LOGIN_COMMON.PLACEHOLDER_AUTH_PASSWORD' | translate}}"
+            )
+
             // This should be hidden when focus on pass
-            a.forgot-pass(href="", tg-nav="forgot-password", title="{{'LOGIN_COMMON.TITLE_LINK_FORGOT_PASSWORD' | translate}}", translate="LOGIN_COMMON.LINK_FORGOT_PASSWORD")
+            a.forgot-pass(
+                href=""
+                tg-nav="forgot-password"
+                title="{{'LOGIN_COMMON.TITLE_LINK_FORGOT_PASSWORD' | translate}}"
+                translate="LOGIN_COMMON.LINK_FORGOT_PASSWORD"
+            )
 
         fieldset
-            button.button-green.submit-button(type="submit", title="{{'LOGIN_COMMON.ACTION_SIGN_IN' | translate}}", translate="LOGIN_COMMON.ACTION_SIGN_IN")
+            button.button-green.submit-button(
+                type="submit"
+                title="{{'LOGIN_COMMON.ACTION_SIGN_IN' | translate}}"
+                translate="LOGIN_COMMON.ACTION_SIGN_IN"
+            )
 
-        fieldset(ng-repeat="plugin in contribPlugins|filter:{type: 'auth'}", ng-include="plugin.template")
+        fieldset(
+            ng-repeat="plugin in contribPlugins|filter:{type: 'auth'}"
+            ng-include="plugin.template"
+        )
 
     tg-public-register-message

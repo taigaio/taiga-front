@@ -300,32 +300,22 @@ Capslock = ($translate) ->
 
                 $(this).remove()
 
-        showIcon = () ->
+        showIcon = (e) ->
             return if open
-
-            top = $el.position().top
-            left = $el.position().left + $el.outerWidth(true)
-
-            warningIcon.css({
-                display: 'none',
-                position: 'absolute',
-                top: top,
-                left: left - 25
-                lineHeight: $el.outerHeight() + 'px',
-                marginLeft: 0
-            })
-
-            warningIcon
-                .insertAfter($el)
-                .fadeIn()
+            element = e.currentTarget
+            $(element).parent().append(warningIcon)
+            $('.icon-capslock').fadeIn()
 
             open = true
 
-        $el.on 'keyup.capslock', (e) ->
+        $el.on 'blur', (e) ->
+            hideIcon()
+
+        $el.on 'keyup.capslock, focus', (e) ->
             if $el.val() == $el.val().toLowerCase()
-                hideIcon()
+                hideIcon(e)
             else
-                showIcon()
+                showIcon(e)
 
         $scope.$on "$destroy", ->
             $el.off('.capslock')
