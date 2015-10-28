@@ -31,13 +31,13 @@ describe('user profile - activity', function() {
         });
 
         it('conctacts tab', async function() {
-            $$('.tab').get(1).click();
+            $$('.tab').get(4).click();
 
             browser.waitForAngular();
 
             utils.common.takeScreenshot('user-profile', 'current-user-contacts');
 
-            let contactsCount = await $$('.profile-contact-single').count();
+            let contactsCount = await $$('.list-itemtype-user').count();
 
             expect(contactsCount).to.be.above(0);
         });

@@ -21,7 +21,7 @@ describe('user profile - contacts', function() {
         });
 
         it('conctacts tab', async function() {
-            let contactsCount = await $$('.profile-contact-single').count();
+            let contactsCount = await $$('.list-itemtype-user').count();
 
             expect(contactsCount).to.be.above(0);
         });
@@ -41,7 +41,9 @@ describe('user profile - contacts', function() {
         });
 
         it('conctacts tab', async function() {
-            let contactsCount = await $$('.profile-contact-single').count();
+            let contactsCount = await $$('.list-itemtype-user').count();
+
+            await browser.sleep(3000);
 
             expect(contactsCount).to.be.above(0);
         });

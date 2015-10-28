@@ -6,7 +6,7 @@ var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 var expect = chai.expect;
 
-describe('user profilei - projects', function() {
+describe('user profile - projects', function() {
     describe('other user', function() {
         before(async function(){
             browser.get(browser.params.glob.host + '/profile/user7');
@@ -21,7 +21,7 @@ describe('user profilei - projects', function() {
         });
 
         it('projects tab', async function() {
-            let projectsCount = await $$('.project-list-single').count();
+            let projectsCount = await $$('.list-itemtype-project').count();
 
             expect(projectsCount).to.be.above(0);
         });
