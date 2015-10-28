@@ -385,9 +385,12 @@ common.uploadImagePath = function() {
 };
 
 common.closeJoyride = function() {
-    browser.waitForAngular();
-
-    $('.introjs-skipbutton').click();
-
-    browser.sleep(200);
+    $('.introjs-skipbutton').isPresent().then((present) => {
+        console.log(present);
+        if (present) {
+            browser.waitForAngular();
+            $('.introjs-skipbutton').click();
+            browser.sleep(600);
+        }
+    });
 };
