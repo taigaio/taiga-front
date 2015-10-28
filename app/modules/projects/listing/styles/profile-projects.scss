@@ -7,6 +7,7 @@
         .list-itemtype-project-right {
             display: flex;
             flex-direction: column;
+            flex-shrink: 0;
             width: 200px;
         }
     }
