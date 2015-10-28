@@ -190,7 +190,7 @@ helper.deleteTesting = async function() {
 
 helper.watchersTesting = async function() {
     let watchersHelper = detailHelper.watchers();
-    await watchersHelper.removeAllWathchers();
+    await watchersHelper.removeAllWatchers();
 
     let watchersLightboxHelper = detailHelper.watchersLightbox();
     let userNames = await watchersHelper.getWatchersUserNames();
@@ -209,7 +209,7 @@ helper.watchersTesting = async function() {
     expect(newUserNames.join(',')).to.be.equal(userNames.join(','));
 
     //Clear watchers
-    await watchersHelper.removeAllWathchers();
+    await watchersHelper.removeAllWatchers();
     newUserNames = await watchersHelper.getWatchersUserNames();
     expect(newUserNames.join()).to.be.equal('');
 }

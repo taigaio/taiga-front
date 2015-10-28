@@ -88,7 +88,7 @@ helper.tags = function() {
 };
 
 helper.statusSelector = function() {
-    let el = $('.us-status');
+    let el = $('.ticket-data');
 
     let obj = {
         el: el,
@@ -102,7 +102,7 @@ helper.statusSelector = function() {
             return el.$('.status-status').getInnerHtml();
         },
         getGeneralStatus: async function(){
-            return el.$('.us-detail-status').getInnerHtml();
+            return el.$('.detail-status').getInnerHtml();
         },
     };
 
@@ -376,7 +376,7 @@ helper.attachment = function() {
 
 
 helper.watchers = function() {
-    let el = $('section[tg-watchers]');
+    let el = $('.ticket-track-buttons .ticket-watchers');
 
     let obj = {
         el: el,
@@ -386,10 +386,10 @@ helper.watchers = function() {
         },
 
         getWatchersUserNames: async function() {
-            return el.$$('.watcher-name span').getText();
+            return el.$$('.user-list-name span').getText();
         },
 
-        removeAllWathchers: async function() {
+        removeAllWatchers: async function() {
             let totalWatchers = await await el.$$('.icon-delete').count();
 
             let htmlChanges = htmlChanges = await utils.common.outerHtmlChanges(el);
@@ -421,7 +421,7 @@ helper.watchersLightbox = function() {
             await browser.waitForAngular();
         },
         getFirstName: function() {
-            return el.$$('div[data-user-id] .watcher-name').first().getText();
+            return el.$$('.lightbox .ticket-watchers div[data-user-id]').first().getText();
         }
 
     };
