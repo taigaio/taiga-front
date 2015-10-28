@@ -3,5 +3,5 @@ span(translate="COMMON.STATUS.CLOSED")
 <% } else { %>
 span(translate="COMMON.STATUS.OPEN")
 <% } %>
-span(style!="color:<%- status.color %>")
+span(class="detail-status", style!="color:<%- status.color %>")
     | <%- status.name %>

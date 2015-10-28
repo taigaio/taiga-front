@@ -412,7 +412,7 @@ DeleteButtonDirective = ($log, $repo, $confirm, $location, $template) ->
         if not $attrs.onDeleteTitle
             return $log.error "DeleteButtonDirective requires on-delete-title set in scope."
 
-        $el.on "click", ".button", (event) ->
+        $el.on "click", ".button-delete", (event) ->
             title = $attrs.onDeleteTitle
             subtitle = $model.$modelValue.subject
 
