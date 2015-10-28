@@ -22,7 +22,7 @@ div.wrapper.roles(ng-controller="RolesController as ctrl",
             div(tg-edit-role)
                 .edit-role
                     input(type="text", value="{{ role.name }}")
-                    a.save.icon(href="", title="{{'COMMON.SAVE' | translate}}")
+                    a.save.icon-floppy(href="", title="{{'COMMON.SAVE' | translate}}")
 
                 p.total
                     span.role-name(title="{{'ADMIN.ROLES.COUNT_MEMBERS' | translate}}") {{ role.name }}
