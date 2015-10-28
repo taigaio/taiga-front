@@ -25,6 +25,7 @@
     .custom-field-single {
         border-bottom: 1px solid $whitish;
         display: flex;
+        justify-content: flex-start;
         padding: 1rem;
         &:hover {
             .custom-field-options {
@@ -66,9 +67,12 @@
     }
     .custom-field-value {
         @extend %light;
+        align-items: flex-start;
         flex: 1;
         padding: 0 1rem 0 2rem;
-        white-space: pre-line;
+        &.js-value-view-mode {
+            white-space: pre-line;
+        }
     }
     form {
         label {
