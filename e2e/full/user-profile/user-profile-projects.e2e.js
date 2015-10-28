@@ -9,7 +9,7 @@ var expect = chai.expect;
 describe('user profilei - projects', function() {
     describe('other user', function() {
         before(async function(){
-            browser.get('http://localhost:9001/profile/user7');
+            browser.get(browser.params.glob.host + '/profile/user7');
 
             await utils.common.waitLoader();
 
