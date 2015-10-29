@@ -11,14 +11,12 @@ var expect = chai.expect;
 
 describe('taskboard', function() {
     before(async function() {
-        browser.get(browser.params.glob.host + 'project/project-0/backlog');
-
-        await utils.common.waitLoader();
-
-        let link = backlogHelper.sprints().get(0).$('.button-gray');
-
-        await utils.common.link(link);
-        await utils.common.waitLoader();
+        await utils.nav
+            .init()
+            .project('Project Example 0')
+            .backlog()
+            .taskboard(0)
+            .go();
 
         utils.common.takeScreenshot('taskboard', 'taskboard');
     });
