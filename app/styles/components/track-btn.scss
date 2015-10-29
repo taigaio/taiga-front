@@ -15,16 +15,22 @@
         align-items: stretch;
         background: $whitish;
         border-radius: 4px 0 0 4px;
-        display: inline-flex;
+        display: flex;
         flex: 1;
+        flex-basis: 140px;
         margin-right: .1rem;
-        width: 140px;
+        min-width: 140px;
         &:hover {
             background: darken($whitish, 5%);
             transition: background .3s;
         }
         span {
             align-self: center;
+        }
+        .icon-arrow-up {
+            margin-left: auto;
+            padding: 0 .5rem;
+            transform: rotate(180deg);
         }
     }
     &:hover {
