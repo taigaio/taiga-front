@@ -13,7 +13,7 @@ describe('Task detail', function(){
     before(async function(){
         await utils.nav
             .init()
-            .project(4)
+            .project('Project Example 0')
             .backlog()
             .taskboard(0)
             .task(0)
