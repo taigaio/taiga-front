@@ -140,6 +140,7 @@ a:visited {
     speak: none;
     text-transform: none !important;
 }
+
 .icon-bug:before {
     content: 'a';
 }
@@ -264,31 +265,31 @@ a:visited {
     content: 'O';
 }
 .icon-iocaine:before {
-    content: 'Q';
-}
-.icon-archive:before {
-    content: 'T';
-}
-.icon-capslock:before {
-    content: 'U';
-}
-.icon-upload:before {
-    content: 'V';
-}
-.icon-github:before {
-    content: 'W';
-}
-.icon-timeline:before {
-    content: 'X';
-}
-.icon-scrum:before {
     content: 'P';
 }
-.icon-project:before {
+.icon-archive:before {
+    content: 'Q';
+}
+.icon-capslock:before {
+    content: 'R';
+}
+.icon-upload:before {
     content: 'S';
 }
+.icon-github:before {
+    content: 'T';
+}
+.icon-timeline:before {
+    content: 'U';
+}
+.icon-scrum:before {
+    content: 'V';
+}
+.icon-project:before {
+    content: 'W';
+}
 .icon-heart:before {
-    content: 'R';
+    content: 'X';
 }
 .icon-eye:before {
     content: 'Y';
