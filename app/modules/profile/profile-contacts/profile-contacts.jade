@@ -25,16 +25,6 @@ section.profile-contacts
         div.list-itemtype-user-data
             h2
                 a(tg-nav="user-profile:username=contact.get('username')", title="{{::contact.get('full_name_display') }}") {{::contact.get('full_name_display')}}
-            
+
             p {{::contact.get('roles').join(", ")}}
             p.extra-info(ng-if="contact.get('bio')") {{::contact.get('bio')}}
-
-    //-
-        span.location todo
-        div.profile-project-stats
-            div.stat-projects(title="2 projects")
-                span.icon.icon-project
-                span.stat-num 2
-            div.stat-viewer(title="2 followers")
-                span.icon.icon-open-eye
-                span.stat-num 4
