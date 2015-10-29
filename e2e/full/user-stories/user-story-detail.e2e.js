@@ -13,7 +13,7 @@ describe('User story detail', function(){
     before(async function(){
         await utils.nav
             .init()
-            .project(2)
+            .project('Project Example 0')
             .backlog()
             .us(0)
             .go();

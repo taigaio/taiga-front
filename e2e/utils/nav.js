@@ -6,7 +6,13 @@ var actions = {
     project: function(index) {
         browser.actions().mouseMove($('div[tg-dropdown-project-list]')).perform();
 
-        let project = $$('div[tg-dropdown-project-list] li a').get(index);
+        let project = null;
+
+        if (typeof index === 'string' || index instanceof String) {
+            project = $('div[tg-dropdown-project-list]').element(by.cssContainingText('li a', index));
+        } else {
+            project = $$('div[tg-dropdown-project-list] li a').get(index);
+        }
 
         common.link(project);
 
