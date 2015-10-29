@@ -118,13 +118,10 @@ common.logout = function() {
         .mouseMove($('div[tg-dropdown-user]'))
         .perform();
 
-    $$('.navbar-dropdown li a')
-        .last()
-        .click();
+    common.link($$('.navbar-dropdown li a').last())
 
     return browser.driver.wait(async function() {
         let url =  await browser.driver.getCurrentUrl();
-
         return url === browser.params.glob.host + 'login';
     }, 10000);
 };

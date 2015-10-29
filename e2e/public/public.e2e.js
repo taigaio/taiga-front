@@ -19,6 +19,9 @@ describe('Public', async function(){
         await utils.notifications.success.open();
         await utils.notifications.success.close();
 
+        //We need this click on firefox, probably the mouse is in a previous input
+        $('body').click()
+
         return utils.common.logout();
     });
 
