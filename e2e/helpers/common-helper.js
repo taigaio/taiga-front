@@ -19,7 +19,7 @@ helper.assignToLightbox = function() {
             el.$$('div[data-user-id]').get(index).click();
         },
         getName: function(item) {
-            return el.$$('div[data-user-id] .watcher-name').get(item).getText();
+            return el.$$('div[data-user-id] .user-list-name').get(item).getText();
         }
     };
 

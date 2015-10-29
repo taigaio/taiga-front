@@ -113,6 +113,6 @@ helper.getBulkCreateTask = function() {
     return obj;
 };
 
-helper.openWatchers = function(row, column, index) {
-    return helper.getBoxTasks(row, column).get(index).$('.task-assigned').click();
+helper.watchersLinks = function() {
+    return $$('.task-assigned');
 };

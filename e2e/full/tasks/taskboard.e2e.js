@@ -256,7 +256,7 @@ describe('taskboard', function() {
 
 
     it('Change task assigned to', async function(){
-        await taskboardHelper.openWatchers(0, 0, 0);
+        await taskboardHelper.watchersLinks().first().click();
 
         let lightbox = commonHelper.assignToLightbox();
 

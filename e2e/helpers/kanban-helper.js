@@ -58,6 +58,6 @@ helper.scrollRight = function() {
     return browser.executeScript('$(".kanban-table-body:last").scrollLeft(10000);');
 };
 
-helper.openWatchers = function(column, index) {
-    return helper.getBoxUss(column).get(index).$('.task-assigned').click();
+helper.watchersLinks = function() {
+    return $$('.task-assigned');
 };

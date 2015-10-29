@@ -277,7 +277,7 @@ describe('kanban', function() {
     });
 
     it('edit assigned to', async function() {
-        await kanbanHelper.openWatchers(0, 0);
+        await kanbanHelper.watchersLinks().first().click();
 
         let lightbox = commonHelper.assignToLightbox();
 
