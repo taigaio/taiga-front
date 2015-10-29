@@ -53,7 +53,7 @@ describe('home', function() {
         before(async function() {
             browser.get(browser.params.glob.host + 'projects/');
 
-            let dragableElements = element.all(by.css('.project-list-single'));
+            let dragableElements = element.all(by.css('.list-itemtype-project'));
             let dragElement = dragableElements.get(3);
             let dragElementLink = dragElement.element(by.css('a'));
 
@@ -66,7 +66,7 @@ describe('home', function() {
         });
 
         utils.common.browserSkip('firefox', 'projects list has the new order', function() {
-            var firstElement = $$('.project-list-single a').first().getText();
+            var firstElement = $$('.list-itemtype-project a').first().getText();
 
             expect(firstElement).to.be.eventually.equal(draggedElementText);
         });
@@ -79,7 +79,7 @@ describe('home', function() {
 
         after(async function() {
             //restore project position
-            let dragableElements = element.all(by.css('.project-list-single'));
+            let dragableElements = element.all(by.css('.list-itemtype-project'));
             let dragElement = dragableElements.get(0);
             let dragElementLink = dragElement.element(by.css('a'));
 
