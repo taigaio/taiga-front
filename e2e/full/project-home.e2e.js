@@ -19,7 +19,7 @@ describe('project home', function() {
     it('go to project', async function() {
         await utils.common.goToFirstProject();
     });
-
+/*
     it('timeline filled', function() {
         expect($$('div[tg-user-timeline-item]').count()).to.be.eventually.above(0);
     });
@@ -40,9 +40,24 @@ describe('project home', function() {
     it('team filled', function() {
         expect($$('ul.involved-team a').count()).to.be.eventually.above(0);
     });
+*/
+    it('unlike', async function() {
+        let link = $('tg-like-project-button a');
+        let likesCounterOld = parseInt(await link.$('.track-button-counter').getText(), 10);
+
+        link.click();
+
+        await browser.waitForAngular();
+
+        let likeActive = utils.common.hasClass(link, 'active');
+        let likesCounter = parseInt(await link.$('.track-button-counter').getText(), 10);
+
+        expect(likeActive).to.be.eventually.false;
+        expect(likesCounter).to.be.equal(likesCounterOld - 1);
+    });
 
     it('like', async function() {
-        let link = $('tg-like-button a');
+        let link = $('tg-like-project-button a');
         let likesCounterOld = parseInt(await link.$('.track-button-counter').getText(), 10);
 
         link.click();
@@ -57,24 +72,35 @@ describe('project home', function() {
         expect(likesCounter).to.be.equal(likesCounterOld + 1);
     });
 
-    it('unlike', async function() {
-        let link = $('tg-like-button a');
-        let likesCounterOld = parseInt(await link.$('.track-button-counter').getText(), 10);
+    it('unwatch', async function() {
+        let link = $('tg-watch-project-button > a');
+        let watchOptions = $('tg-watch-project-button .watch-options');
+        let watchCounterOld = parseInt(await link.$('.track-button-counter').getText(), 10);
 
         link.click();
 
         await browser.waitForAngular();
 
-        let likeActive = utils.common.hasClass(link, 'active');
-        let likesCounter = parseInt(await link.$('.track-button-counter').getText(), 10);
+        await browser.wait(async () => {
+            return !await utils.common.hasClass(watchOptions, 'hidden');
+        }, 4000);
 
-        expect(likeActive).to.be.eventually.false;
-        expect(likesCounter).to.be.equal(likesCounterOld - 1);
+        watchOptions.$$('a').last().click();
+
+        await browser.wait(async () => {
+            return await utils.common.hasClass(watchOptions, 'hidden');
+        }, 4000);
+
+        let watchActive = utils.common.hasClass(link, 'active');
+        let watchCounter = parseInt(await link.$('.track-button-counter').getText(), 10);
+
+        expect(watchActive).to.be.eventually.false;
+        expect(watchCounter).to.be.equal(watchCounterOld - 1);
     });
 
     it('watch', async function() {
-        let link = $('tg-watch-button > a');
-        let watchOptions = $('tg-watch-button .watch-options');
+        let link = $('tg-watch-project-button > a');
+        let watchOptions = $('tg-watch-project-button .watch-options');
         let watchCounterOld = parseInt(await link.$('.track-button-counter').getText(), 10);
 
         link.click();
@@ -100,29 +126,4 @@ describe('project home', function() {
         expect(watchCounter).to.be.equal(watchCounterOld + 1);
     });
 
-    it('unwatch', async function() {
-        let link = $('tg-watch-button > a');
-        let watchOptions = $('tg-watch-button .watch-options');
-        let watchCounterOld = parseInt(await link.$('.track-button-counter').getText(), 10);
-
-        link.click();
-
-        await browser.waitForAngular();
-
-        await browser.wait(async () => {
-            return !await utils.common.hasClass(watchOptions, 'hidden');
-        }, 4000);
-
-        watchOptions.$$('a').last().click();
-
-        await browser.wait(async () => {
-            return await utils.common.hasClass(watchOptions, 'hidden');
-        }, 4000);
-
-        let watchActive = utils.common.hasClass(link, 'active');
-        let watchCounter = parseInt(await link.$('.track-button-counter').getText(), 10);
-
-        expect(watchActive).to.be.eventually.false;
-        expect(watchCounter).to.be.equal(watchCounterOld - 1);
-    });
 });
