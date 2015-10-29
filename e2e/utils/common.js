@@ -49,9 +49,11 @@ common.browserSkip = function(browserName, name, fn) {
 };
 
 common.link = async function(el) {
-    await browser.actions().mouseMove(el).perform();
-
-    await el.click();
+    return browser
+        .actions()
+        .mouseMove(el)
+        .click()
+        .perform();
 };
 
 common.waitLoader = function () {

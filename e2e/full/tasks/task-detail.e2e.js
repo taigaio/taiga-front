@@ -8,11 +8,18 @@ chai.use(chaiAsPromised);
 var expect = chai.expect;
 
 describe('Task detail', function(){
-    let taskUrl = browser.params.glob.host + 'project/project-3/task/7';
+    let taskUrl = '';
 
     before(async function(){
-        browser.get(taskUrl);
-        await utils.common.waitLoader();
+        await utils.nav
+            .init()
+            .project(4)
+            .backlog()
+            .taskboard(0)
+            .task(0)
+            .go();
+
+        taskUrl = await browser.driver.getCurrentUrl();
     });
 
     it('screenshot', async function() {
