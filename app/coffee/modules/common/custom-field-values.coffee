@@ -206,8 +206,8 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile, $translate,
                 $ctrl.updateAttributeValue(attributeValue).then ->
                     render(attributeValue, false)
 
-        setFocusOnInputField = ->
-            $el.find("input[name='value'], textarea[name='value']").focus()
+        setFocusAndSelectOnInputField = ->
+            $el.find("input[name='value'], textarea[name='value']").focus().select()
 
         # Bootstrap
         attributeValue = $scope.$eval($attrs.tgCustomAttributeValue)
@@ -218,12 +218,12 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile, $translate,
             return if not isEditable()
             return if $selectedText.get().length
             render(attributeValue, true)
-            setFocusOnInputField()
+            setFocusAndSelectOnInputField()
 
         $el.on "click", "a.icon-edit", (event) ->
             event.preventDefault()
             render(attributeValue, true)
-            setFocusOnInputField()
+            setFocusAndSelectOnInputField()
 
         ## Actions (on edit mode)
         $el.on "keyup", "input[name=value], textarea[name='value']", (event) ->
