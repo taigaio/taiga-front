@@ -10,9 +10,9 @@ describe('Issue detail', async function(){
     let issueUrl = '';
 
     before(async function(){
-        utils.nav
+        await utils.nav
             .init()
-            .project(1)
+            .project(2)
             .issues()
             .issue(0)
             .go();

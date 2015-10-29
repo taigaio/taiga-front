@@ -11,9 +11,9 @@ describe('User story detail', function(){
     let usUrl = '';
 
     before(async function(){
-        utils.nav
+        await utils.nav
             .init()
-            .project(1)
+            .project(2)
             .backlog()
             .us(0)
             .go();
