@@ -81,15 +81,14 @@ describe('search page', function() {
 
     describe('new search', function() {
         it('change current tab content on typing in the right column', async function() {
+            let searchTerm = element(by.model('searchTerm'));
+            await searchTerm.clear();
+
             let text = await $$('.table-main').get(0).$('a').getText();
 
             let htmlChanges = await utils.common.outerHtmlChanges('.search-result-table-body');
 
             let initialCount = await $$('.table-main').count();
-
-            let searchTerm = element(by.model('searchTerm'));
-
-            await searchTerm.clear();
 
             await searchTerm.sendKeys(text);
 
