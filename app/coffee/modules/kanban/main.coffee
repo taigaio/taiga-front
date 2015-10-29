@@ -322,7 +322,7 @@ KanbanArchivedStatusHeaderDirective = ($rootscope, $translate) ->
         status = $scope.$eval($attrs.tgKanbanArchivedStatusHeader)
         hidden = true
 
-        $scope.class = "icon icon-open-eye"
+        $scope.class = "icon-open-eye"
         $scope.title = showArchivedText
 
         $el.on "click", (event) ->
@@ -330,12 +330,12 @@ KanbanArchivedStatusHeaderDirective = ($rootscope, $translate) ->
 
             $scope.$apply ->
                 if hidden
-                    $scope.class = "icon icon-open-eye"
+                    $scope.class = "icon-open-eye"
                     $scope.title = showArchivedText
                     $rootscope.$broadcast("kanban:hide-userstories-for-status", status.id)
 
                 else
-                    $scope.class = "icon icon-closed-eye"
+                    $scope.class = "icon-closed-eye"
                     $scope.title = hideArchivedText
                     $rootscope.$broadcast("kanban:show-userstories-for-status", status.id)
 

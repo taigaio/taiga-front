@@ -31,11 +31,13 @@ div.kanban-table(tg-kanban-squish-column)
                                      tg-check-permission="add_us",
                                      ng-hide="s.is_archived")
 
-                    a(href="",
-                                    ng-attr-title="{{title}}",
-                                    ng-class="class"
-                                    ng-if="s.is_archived",
-                                    tg-kanban-archived-status-header="s")
+                    a(
+                        href=""
+                        ng-attr-title="{{title}}"
+                        ng-class="class"
+                        ng-if="s.is_archived"
+                        tg-kanban-archived-status-header="s")
+                        include ../../../svg/eye.svg
 
     div.kanban-table-body
         div.kanban-table-inner
