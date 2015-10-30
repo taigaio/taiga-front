@@ -40,6 +40,9 @@ describe('edit user profile', function() {
         lb.$('.button-green').click();
 
         await utils.lightbox.close(lb);
+
+        // debounce :(
+        await browser.sleep(2000);
     });
 
     it('edit lenguage', async function() {
@@ -71,6 +74,9 @@ describe('edit user profile', function() {
         $('button[type="submit"]').click();
 
         await utils.notifications.success.open();
+
+        //debounce
+        browser.sleep(2000);
     });
 
     it('edit avatar', async function() {
