@@ -9,7 +9,7 @@ class JoyRideService extends taiga.Service
     getConfig: () ->
       return {
           dashboard: () =>
-              return [
+              steps = [
                   {
                       element: '.project-list > section:not(.ng-hide)',
                       position: 'left',
@@ -36,9 +36,12 @@ class JoyRideService extends taiga.Service
                               @translate.instant('JOYRIDE.DASHBOARD.STEP3.TEXT2')
                           ]
                       }
-                  },
-                  {
-                      element: '.project-list .see-more-projects-btn',
+                  }
+              ]
+
+              if !$('.project-list .create-project-button').is(':hidden')
+                  steps.push({
+                      element: '.project-list .create-project-button',
                       position: 'bottom',
                       joyride: {
                           title: @translate.instant('JOYRIDE.DASHBOARD.STEP4.TITLE')
@@ -47,8 +50,9 @@ class JoyRideService extends taiga.Service
                               @translate.instant('JOYRIDE.DASHBOARD.STEP4.TEXT2')
                           ]
                       }
-                  }
-              ]
+                  })
+
+              return steps
 
           backlog: () =>
               steps = [
