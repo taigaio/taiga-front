@@ -349,10 +349,9 @@ common.uploadFile = async function(inputFile, filePath) {
 
 common.topMenuOption = async function(option) {
     let menu = $('div[tg-dropdown-user]');
-
-    await browser.actions().mouseMove(menu).perform();
-
-    return menu.$$('li a').get(option).click();
+    let menuOption = menu.$$('li a').get(option);
+    browser.actions().mouseMove(menu).perform();
+    return browser.actions().mouseMove(menuOption).click().perform();
 };
 
 common.getProjectUrlRoot = async function() {

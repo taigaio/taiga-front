@@ -29,8 +29,7 @@ describe('auth', function() {
         let path = 'project/project-4/';
 
         before(function() {
-            browser.actions().mouseMove($('div[tg-dropdown-user]')).perform();
-            $$('.dropdown-user li a').last().click();
+            return utils.common.topMenuOption(6);
         });
 
         it("redirect to login", async function() {
