@@ -336,15 +336,15 @@
         "PAGE_DESCRIPTION": "Acepta la invitación para unirte a un proyecto en Taiga, una plataforma de gestión de proyectos orientada a startups y equipos ágiles que buscan una herramienta sencilla, elegante y que les haga disfrutar trabajando."
     },
     "INVITATION_LOGIN_FORM": {
-        "NOT_FOUND": "Our Oompa Loompas can't find your invitation.",
+        "NOT_FOUND": "Nuestros Oompa Loompas no pueden encontrar su invitación.",
         "SUCCESS": "¡Acabas de unirte al proyecto! Bienvenido a {{project_name}}",
         "ERROR": "Según nuestros Oompa Loompas tú no estás registrado o has escrito mal tu contraseña."
     },
     "HOME": {
         "PAGE_TITLE": "Inicio - Taiga",
         "PAGE_DESCRIPTION": "Página de inicio de Taiga, con tus proyectos principales y tus historias de usuario, tareas y peticiones en progreso asignadas y las que observas.",
-        "EMPTY_WORKING_ON": "<strong>It feels empty, doesn't it?</strong> Start working with Taiga and you'll see here the stories, tasks and issues you are workin on.",
-        "EMPTY_WATCHING": "<strong>Sigue</strong> aquellos proyectos, historias de usuario, tareas, peticiones... sobre los que quieras estar al tanto :)",
+        "EMPTY_WORKING_ON": "<strong>Parece vacío no?</ strong> Empiece a trabajar con Taiga y verá aquí las historias, las tareas y los incidentes en los que está trabajando.",
+        "EMPTY_WATCHING": "<strong>Follow</strong> User Stories, Tasks, Issues... that you want to know about :)",
         "EMPTY_PROJECT_LIST": "Todavía no tienes ningún proyecto",
         "WORKING_ON_SECTION": "Trabajando en",
         "WATCHING_SECTION": "Observando"
@@ -436,7 +436,7 @@
             "PROJECT_DETAILS": "Info del proyecto",
             "PROJECT_NAME": "Nombre del proyecto",
             "PROJECT_SLUG": "Slug de proyecto",
-            "NUMBER_SPRINTS": "Number of sprints (0 for an undetermined quantity)",
+            "NUMBER_SPRINTS": "Número de sprints (0 para cantidad indeterminada)",
             "NUMBER_US_POINTS": "Number of US points (0 for an undetermined quantity)",
             "TAGS": "Etiquetas",
             "DESCRIPTION": "Descripción",
@@ -680,7 +680,7 @@
         "PROFILE_SIDEBAR": {
             "TITLE": "Tu perfil",
             "DESCRIPTION": "La gente puede ver aquello que haces y en qué estás trabajando. Añade una buena bio para que puedan ver la mejor versión de tu perfil.",
-            "ADD_INFO": "Edita tu bio"
+            "ADD_INFO": "Edit bio"
         },
         "PROFILE_FAVS": {
             "FILTER_INPUT_PLACEHOLDER": "Escribe algo...",
@@ -1339,6 +1339,9 @@
         "BLOCKED": "{{username}} ha bloqueado {{obj_name}}",
         "UNBLOCKED": "{{username}} ha desbloqueado {{obj_name}}",
         "NEW_USER": "{{username}} se ha unido a Taiga"
+    },
+    "LEGAL": {
+        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>By clicking \"Sign up\"', you agree to our <br /></span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">terms of service</a><span> and </span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">privacy policy</a>."
     },
     "EXTERNAL_APP": {
         "PAGE_TITLE": "Una aplicación externa requiere autenticación",

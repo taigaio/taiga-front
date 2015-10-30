@@ -344,7 +344,7 @@
         "PAGE_TITLE": "首頁 - Taiga",
         "PAGE_DESCRIPTION": "Taiga 首頁，你的主要專案以及任命，觀看使用者故事，任務與問題。",
         "EMPTY_WORKING_ON": "<strong>It feels empty, doesn't it?</strong> Start working with Taiga and you'll see here the stories, tasks and issues you are workin on.",
-        "EMPTY_WATCHING": "<strong>追踪</strong> 專案, 使用者故事, 任務, 問題......任何你想知道的資訊 :)",
+        "EMPTY_WATCHING": "<strong>Follow</strong> User Stories, Tasks, Issues... that you want to know about :)",
         "EMPTY_PROJECT_LIST": "你尚無任何專案",
         "WORKING_ON_SECTION": "進行中",
         "WATCHING_SECTION": "觀看中"
@@ -680,7 +680,7 @@
         "PROFILE_SIDEBAR": {
             "TITLE": "個人資訊",
             "DESCRIPTION": "人們可以看到你做的成果以及其進度。加入一段描述介紹以強化你的資料。",
-            "ADD_INFO": "編輯個人介紹"
+            "ADD_INFO": "Edit bio"
         },
         "PROFILE_FAVS": {
             "FILTER_INPUT_PLACEHOLDER": "Type something...",
@@ -1339,6 +1339,9 @@
         "BLOCKED": "{{username}} 封鎖了 {{obj_name}}",
         "UNBLOCKED": "{{username}} 解除了封鎖 {{obj_name}}",
         "NEW_USER": "{{username}} 已加入 Taiga"
+    },
+    "LEGAL": {
+        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>By clicking \"Sign up\"', you agree to our <br /></span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">terms of service</a><span> and </span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">privacy policy</a>."
     },
     "EXTERNAL_APP": {
         "PAGE_TITLE": "An external app requires authentication",

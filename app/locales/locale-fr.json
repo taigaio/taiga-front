@@ -344,7 +344,7 @@
         "PAGE_TITLE": "Accueil - Taiga",
         "PAGE_DESCRIPTION": "La page d'accueil de Taiga sur laquelle apparaissent vos projets principaux et toutes les récits utilisateur, tâches et tickets qui vont sont assignés et surveillés.",
         "EMPTY_WORKING_ON": "<strong>It feels empty, doesn't it?</strong> Start working with Taiga and you'll see here the stories, tasks and issues you are workin on.",
-        "EMPTY_WATCHING": "<strong>Suivre</strong> les projets, Récits Utilisateur, Tâches, Tickets... que vous voulez connaître :)",
+        "EMPTY_WATCHING": "<strong>Follow</strong> User Stories, Tasks, Issues... that you want to know about :)",
         "EMPTY_PROJECT_LIST": "Vous n'avez aucun projet pour l'instant",
         "WORKING_ON_SECTION": "Projets en cours",
         "WATCHING_SECTION": "Observant"
@@ -680,7 +680,7 @@
         "PROFILE_SIDEBAR": {
             "TITLE": "Votre profil",
             "DESCRIPTION": "Tout le monde peut voir ce que vous faites et ce sur quoi vous travaillez. Ajoutez une bio détaillée pour améliorer la vision perçue de votre profil.",
-            "ADD_INFO": "Modifier votre biographie"
+            "ADD_INFO": "Edit bio"
         },
         "PROFILE_FAVS": {
             "FILTER_INPUT_PLACEHOLDER": "Type something...",
@@ -1339,6 +1339,9 @@
         "BLOCKED": "{{username}} a bloqué {{obj_name}}",
         "UNBLOCKED": "{{username}} a débloqué {{obj_name}}",
         "NEW_USER": "{{username}} a rejoint Taiga"
+    },
+    "LEGAL": {
+        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>By clicking \"Sign up\"', you agree to our <br /></span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">terms of service</a><span> and </span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">privacy policy</a>."
     },
     "EXTERNAL_APP": {
         "PAGE_TITLE": "An external app requires authentication",

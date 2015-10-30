@@ -344,7 +344,7 @@
         "PAGE_TITLE": "Домашняя страница - Taiga",
         "PAGE_DESCRIPTION": "Главная страница Тайги, с вашими основными проектами, назначенными и отслеживаемыми задачами, запросами и пользовательскими историями",
         "EMPTY_WORKING_ON": "<strong>It feels empty, doesn't it?</strong> Start working with Taiga and you'll see here the stories, tasks and issues you are workin on.",
-        "EMPTY_WATCHING": "<strong>Следите</strong> за проектами, пользовательскими историями, задачами, запросами... о которых хотите знать :)",
+        "EMPTY_WATCHING": "<strong>Follow</strong> User Stories, Tasks, Issues... that you want to know about :)",
         "EMPTY_PROJECT_LIST": "У Вас пока нет проектов",
         "WORKING_ON_SECTION": "Работает над",
         "WATCHING_SECTION": "Отслеживаемые"
@@ -680,7 +680,7 @@
         "PROFILE_SIDEBAR": {
             "TITLE": "Ваш профиль",
             "DESCRIPTION": "Люди могут видеть всё что Вы делаете и всё над чем Вы работаете. Вы также можете добавить краткую биографию.",
-            "ADD_INFO": "Изменить Ваши данные"
+            "ADD_INFO": "Edit bio"
         },
         "PROFILE_FAVS": {
             "FILTER_INPUT_PLACEHOLDER": "Введите что-нибудь...",
@@ -1339,6 +1339,9 @@
         "BLOCKED": "{{username}} заблокировал {{obj_name}}",
         "UNBLOCKED": "{{username}} разблокировал {{obj_name}}",
         "NEW_USER": "{{username}} присоединился к Taiga"
+    },
+    "LEGAL": {
+        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>By clicking \"Sign up\"', you agree to our <br /></span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">terms of service</a><span> and </span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">privacy policy</a>."
     },
     "EXTERNAL_APP": {
         "PAGE_TITLE": "Внешнее приложение требующие аутентификации",
