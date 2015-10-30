@@ -51,6 +51,7 @@ paths.jade = [
 paths.htmlPartials = [
     paths.tmp + "partials/**/*.html",
     paths.tmp + "modules/**/*.html",
+    paths.tmp + "plugins/**/*.html",
     "!" + paths.tmp + "partials/includes/**/*.html",
     "!" + paths.tmp + "/modules/**/includes/**/*.html"
 ];
@@ -81,6 +82,7 @@ paths.styles_dependencies = [
 paths.css = [
     paths.tmp + "styles/**/*.css",
     paths.tmp + "modules/**/*.css",
+    paths.tmp + "plugins/**/*.css"
 ];
 
 paths.css_order = [
@@ -96,6 +98,7 @@ paths.css_order = [
     paths.tmp + "styles/modules/**/*.css",
     paths.tmp + "modules/**/*.css",
     paths.tmp + "styles/shame/*.css",
+    paths.tmp + "plugins/**/*.css",
     paths.tmp + "themes/**/*.css"
 ];
 
@@ -127,7 +130,9 @@ paths.coffee_order = [
     paths.app + "coffee/modules/user-settings/*.coffee",
     paths.app + "coffee/modules/integrations/*.coffee",
     paths.app + "modules/**/*.module.coffee",
-    paths.app + "modules/**/*.coffee"
+    paths.app + "modules/**/*.coffee",
+    paths.app + "plugins/*.coffee",
+    paths.app + "plugins/**/*.coffee"
 ];
 
 paths.libs = [
@@ -480,6 +485,17 @@ gulp.task("copy-theme-images", function() {
         .pipe(gulp.dest(paths.dist + "/images/"  + themes.current.name));
 });
 
+gulp.task("copy-images-plugins", function() {
+    return gulp.src(paths.app + "/plugins/**/images/*")
+        .pipe(flatten())
+        .pipe(gulp.dest(paths.dist + "/images/"));
+});
+
+gulp.task("copy-plugin-templates", function() {
+    return gulp.src(paths.app + "/plugins/**/templates/**/*.html")
+        .pipe(gulp.dest(paths.dist + "/plugins/"));
+});
+
 gulp.task("copy-extras", function() {
     return gulp.src(paths.extras + "/*")
         .pipe(gulp.dest(paths.dist + "/"));
@@ -490,6 +506,8 @@ gulp.task("copy", [
     "copy-theme-fonts",
     "copy-images",
     "copy-theme-images",
+    "copy-images-plugins",
+    "copy-plugin-templates",
     "copy-svg",
     "copy-theme-svg",
     "copy-extras"
@@ -509,6 +527,7 @@ gulp.task("express", function() {
     app.use("/svg", express.static(__dirname + "/dist/svg"));
     app.use("/partials", express.static(__dirname + "/dist/partials"));
     app.use("/fonts", express.static(__dirname + "/dist/fonts"));
+    app.use("/plugins", express.static(__dirname + "/dist/plugins"));
     app.use("/locales", express.static(__dirname + "/dist/locales"));
     app.use("/maps", express.static(__dirname + "/dist/maps"));
 
