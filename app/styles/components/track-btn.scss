@@ -135,12 +135,14 @@
     flex-basis: 3rem;
     justify-content: center;
     margin-right: .3rem;
-    a {
+    .vote-inner {
         background: $whitish;
         color: $gray-light;
         display: block;
         padding: 1rem;
         text-align: center;
+    }
+    a {
         &:hover {
             background: darken($whitish, 5%);
             color: $primary-dark;

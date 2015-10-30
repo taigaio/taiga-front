@@ -1,4 +1,5 @@
-a(
+//- Registered user button
+a.vote-inner(
     href=""
     title="{{ 'COMMON.VOTE_BUTTON.BUTTON_TITLE' | translate }}"
     ng-if="::vm.user"
@@ -13,3 +14,12 @@ a(
         title="{{ 'COMMON.VOTE_BUTTON.COUNTER_TITLE'|translate:{total:vm.item.total_voters||0}:'messageformat' }}",
         tg-loading="vm.loading"
     ) {{ vm.item.total_voters }}
+
+//- Anonymous user button
+
+span.vote-inner(ng-if="::!vm.user")
+    span.track-icon
+        include ../../../svg/upvote.svg
+    span.track-button-counter(
+        title="{{ 'COMMON.VOTE_BUTTON.COUNTER_TITLE'|translate:{total:vm.item.total_voters||0}:'messageformat' }}"
+    ) {{ ::vm.item.total_voters }}
