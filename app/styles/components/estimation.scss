@@ -2,6 +2,7 @@
     .points-per-role {
         display: flex;
         flex-wrap: wrap;
+        justify-content: center;
     }
     .ticket-role-points {
         background: rgba($gray-light, .1);

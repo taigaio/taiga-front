@@ -53,7 +53,7 @@ div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
         div.empty-backlog(ng-class="{'hidden': userstories.length}", tg-backlog-empty-sortable)
             img(
                 src="/images/backlog-empty.png"
-                alt="{{'BACKLOG.EMPTY' | translate}}"    
+                alt="{{'BACKLOG.EMPTY' | translate}}"
             )
             p.title(translate="BACKLOG.EMPTY")
             a(href="", title="{{'BACKLOG.CREATE_NEW_US' | translate}}"
@@ -65,7 +65,7 @@ div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
     sidebar.menu-secondary.sidebar
         include ../includes/modules/sprints
 
-    div.lightbox.lightbox-generic-form(tg-lb-create-edit-userstory)
+    div.lightbox.lightbox-generic-form.lb-create-edit-userstory(tg-lb-create-edit-userstory)
         include ../includes/modules/lightbox-us-create-edit
 
     div.lightbox.lightbox-generic-bulk(tg-lb-create-bulk-userstories)

@@ -488,9 +488,15 @@
 
 .lb-create-edit-userstory {
     .ticket-role-points {
-        flex-basis: 10%;
         flex-grow: 1;
         flex-shrink: 1;
+        max-width: calc(100% * (1/5) - .2rem);
+        &:first-child {
+            margin-left: 0;
+        }
+        &:nth-child(5n+5) {
+            margin-right: 0;
+        }
     }
     .points-per-role {
         margin-bottom: 1rem;
