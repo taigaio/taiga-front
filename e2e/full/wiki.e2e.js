@@ -30,8 +30,11 @@ describe('wiki', function() {
     it('follow last link', async function() {
         // the click event is not on the <a> :(
         let lastLink = wikiHelper.links().get().last().$('.link-title');
-
-        utils.common.link(lastLink);
+        browser
+           .actions()
+           .mouseMove(lastLink)
+           .click()
+           .perform();
 
         await utils.common.waitLoader();
         await utils.common.takeScreenshot("wiki", "new-link-created-with-empty-wiki-page");

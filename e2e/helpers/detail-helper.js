@@ -294,7 +294,7 @@ helper.attachment = function() {
             await el.$$('div[tg-attachment] .attachment-settings .icon-edit').last().click();
             await el.$$('div[tg-attachment] .editable-attachment-comment input').last().sendKeys(name);
             await browser.actions().sendKeys(protractor.Key.ENTER).perform();
-            await browser.waitForAngular();
+            return browser.waitForAngular();
         },
 
         getFirstAttachmentName: async function () {
