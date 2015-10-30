@@ -42,6 +42,10 @@ var actions = {
 
         return common.waitLoader();
     },
+    home: function() {
+        browser.get(browser.params.glob.host);
+        return common.waitLoader();
+    },
     taskboard: function(index) {
         let link = $$('.sprints .button-gray').get(index);
 
@@ -75,6 +79,10 @@ var nav = {
     },
     us: function(index) {
         this.actions.push(actions.us.bind(null, index));
+        return this;
+    },
+    home: function() {
+        this.actions.push(actions.home.bind(null));
         return this;
     },
     taskboard: function(index) {

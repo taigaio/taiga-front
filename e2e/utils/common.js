@@ -49,11 +49,29 @@ common.browserSkip = function(browserName, name, fn) {
 };
 
 common.link = async function(el) {
-    return browser
+    let oldUrl = await browser.getCurrentUrl();
+
+    browser
+        .actions()
+        .mouseMove(el)
+        .perform();
+
+    await browser.wait(async function() {
+        let href = await el.getAttribute('href');
+        return href.length > 1 && href !== browser.params.glob.host + "#";
+     }, 5000);
+
+     browser
         .actions()
         .mouseMove(el)
         .click()
         .perform();
+
+    return browser.wait(async function() {
+        let newUrl = await browser.getCurrentUrl();
+
+        return oldUrl !== newUrl;
+     }, 5000);
 };
 
 common.waitLoader = function () {
