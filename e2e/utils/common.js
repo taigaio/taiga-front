@@ -56,6 +56,20 @@ common.link = async function(el) {
         .mouseMove(el)
         .perform();
 
+    // Ugly hack for firefox:
+    // In firefox if we have a href split in two lines the point where the cursor
+    // is located is just in the middle of the two lines and the hover events
+    // aren't fired (we need them for the tg-nav calculation). Moving the cursor
+    // "a little bit" tries to ensure the href text is really hovered and the
+    // events are fired
+    browser.actions()
+        .mouseMove({x: -10, y: -10})
+        .perform();
+
+    browser.actions()
+        .mouseMove({x: 10, y: 10})
+        .perform();
+
     await browser.wait(async function() {
         let href = await el.getAttribute('href');
         return href.length > 1 && href !== browser.params.glob.host + "#";
@@ -69,9 +83,8 @@ common.link = async function(el) {
 
     return browser.wait(async function() {
         let newUrl = await browser.getCurrentUrl();
-
         return oldUrl !== newUrl;
-     }, 5000);
+    }, 5000);
 };
 
 common.waitLoader = function () {
@@ -401,9 +414,9 @@ common.uploadImagePath = function() {
 };
 
 common.closeJoyride = function() {
+    browser.waitForAngular();
     $('.introjs-skipbutton').isPresent().then((present) => {
         if (present) {
-            browser.waitForAngular();
             $('.introjs-skipbutton').click();
             browser.sleep(600);
         }

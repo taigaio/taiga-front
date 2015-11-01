@@ -575,9 +575,9 @@ describe('backlog', function() {
         }
 
         async function dragClosedUsToMilestone() {
-            await backlogHelper.setUsStatus(0, 5);
+            await backlogHelper.setUsStatus(2, 5);
 
-            let dragElement =  backlogHelper.userStories().get(0);
+            let dragElement =  backlogHelper.userStories().get(2);
             let dragElementHandler = dragElement.$('.icon-drag-v');
 
             let sprint = backlogHelper.sprints().last();

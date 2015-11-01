@@ -83,7 +83,7 @@ describe('Public', async function(){
     });
 
     it('task detail', function() {
-        browser.get(browser.params.glob.host + 'project/project-3/backlog');
+        browser.get(browser.params.glob.host + 'project/project-1/backlog');
 
         utils.nav
             .init()
