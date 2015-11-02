@@ -590,6 +590,7 @@
             "STATUS_ACTIVE": "活躍　",
             "STATUS_PENDING": "待辦中",
             "DELETE_MEMBER": "刪除成員",
+            "RESEND": "Resend",
             "SUCCESS_SEND_INVITATION": "我們已再次發出邀請信給'{{email}}'.　",
             "ERROR_SEND_INVITATION": "我們未送出邀請 ",
             "SUCCESS_DELETE": "已刪除 {{message}}.",

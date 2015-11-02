@@ -16,7 +16,7 @@
         "EDIT": "Bearbeiten",
         "DRAG": "Ziehen",
         "TAG_LINE": "Ihr agiles, freies und quelloffenes Projekt-Management Tool",
-        "TAG_LINE_2": "MIR GEFÄLLT DAS PROJEKT",
+        "TAG_LINE_2": "LIEBE DEIN PROJEKT",
         "BLOCK": "Blockieren",
         "UNBLOCK": "Blockierung aufheben",
         "BLOCKED": "Blockiert",
@@ -150,23 +150,23 @@
             "OPEN": "Geöffnet"
         },
         "WATCHERS": {
-            "ADD": "Add watchers",
+            "ADD": "Beobachter hinzufügen",
             "TITLE_ADD": "Add a project member to the watchers list",
             "DELETE": "Beobachter löschen",
             "TITLE_LIGHTBOX_DELETE_WARTCHER": "Beobachter löschen..."
         },
         "WATCH_BUTTON": {
-            "WATCH": "Watch",
+            "WATCH": "Beobachten",
             "WATCHING": "Beobachtet",
-            "UNWATCH": "Unwatch",
-            "WATCHERS": "Watchers",
-            "BUTTON_TITLE": "Watch/Unwatch this item",
+            "UNWATCH": "Nicht beobachten",
+            "WATCHERS": "Beobachter",
+            "BUTTON_TITLE": "Beobachte/Beobachte dieses Objekt (nicht mehr)",
             "COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}"
         },
         "VOTE_BUTTON": {
             "UPVOTE": "Upvote",
-            "UPVOTED": "Upvoted",
-            "DOWNVOTE": "Downvote",
+            "UPVOTED": "Hochgevotet",
+            "DOWNVOTE": "Runtergevotet",
             "VOTERS": "Voters",
             "BUTTON_TITLE": "Upvote/Downvote this item",
             "COUNTER_TITLE": "{total, plural, one{one vote} other{# votes}}"
@@ -328,7 +328,7 @@
         "PLACEHOLDER_NEW_PASSWORD": "Neues Passwort",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Wiederholen Sie die Eingabe des neuen Passworts ",
         "ACTION_RESET_PASSWORD": "Passwort zurücksetzen",
-        "ERROR": "Our Oompa Loompas can't find your request to recover your password. Try to ask for it again.",
+        "ERROR": "Unsere Helferelein haben Probleme deine Anfrage zum Zurücksetzen des Passworts zu finden. Probiere es einfach nochmal.",
         "SUCCESS": "Unsere Oompa Loompas haben das neue Passwort gespeichert.<br /> <strong>Hier</strong> gehts zum login."
     },
     "INVITATION": {
@@ -336,14 +336,14 @@
         "PAGE_DESCRIPTION": "Nehmen Sie die Einladung an und treten Sie einem Projekt in Taiga bei, einer Projekt-Management Plattform für Neugründer und agile Entwickler und Designer, die ein unkompliziertes und ansprechendes Tool möchten, das die Arbeit wirklich angenehm macht. "
     },
     "INVITATION_LOGIN_FORM": {
-        "NOT_FOUND": "Our Oompa Loompas can't find your invitation.",
+        "NOT_FOUND": "Unsere Helferlein können deine Einladung nicht finden.",
         "SUCCESS": "Sie sind diesem Projekt erfolgreich beigetreten. Herzlich willkommen bei {{project_name}}",
         "ERROR": "Laut unseren Helferlein sind Sie noch nicht registriert, oder Sie haben ein ungültiges Passwort eingegeben. "
     },
     "HOME": {
         "PAGE_TITLE": "Home - Taiga",
         "PAGE_DESCRIPTION": "Die Taiga Homepage mit Ihren wichtigsten Projekten und all Ihren zugeordneten und beobachteten User-Stories, Aufgaben und Tickets. ",
-        "EMPTY_WORKING_ON": "<strong>It feels empty, doesn't it?</strong> Start working with Taiga and you'll see here the stories, tasks and issues you are workin on.",
+        "EMPTY_WORKING_ON": "<strong>Hier sieht’s ziemlich leer aus, oder?</strong> Beginne deine Arbeit mit Taiga und wir zeigen dir hier die Stories, Tasks und Issues an denen du arbeitest.",
         "EMPTY_WATCHING": "<strong>Follow</strong> User Stories, Tasks, Issues... that you want to know about :)",
         "EMPTY_PROJECT_LIST": "Sie haben noch keine Projekte",
         "WORKING_ON_SECTION": "Zuletzt bearbeitet",
@@ -436,8 +436,8 @@
             "PROJECT_DETAILS": "Projekt Details",
             "PROJECT_NAME": "Projektname",
             "PROJECT_SLUG": "Projekt Slug",
-            "NUMBER_SPRINTS": "Number of sprints (0 for an undetermined quantity)",
-            "NUMBER_US_POINTS": "Number of US points (0 for an undetermined quantity)",
+            "NUMBER_SPRINTS": "Anzahl von Sprints (0 für unbegrenzte Anzahl)",
+            "NUMBER_US_POINTS": "Anzahl an US Points (0 für unbegrenzte Anzahl)",
             "TAGS": "Schlagwörter",
             "DESCRIPTION": "Beschreibung",
             "PUBLIC_PROJECT": "Öffentliches Projekt",
@@ -590,6 +590,7 @@
             "STATUS_ACTIVE": "Aktiv",
             "STATUS_PENDING": "Noch nicht erledigt",
             "DELETE_MEMBER": "Mitglied löschen",
+            "RESEND": "Resend",
             "SUCCESS_SEND_INVITATION": "Wir haben die Einladung erneut versandt an '{{email}}'.",
             "ERROR_SEND_INVITATION": "Wir haben die Einladung nicht versandt. ",
             "SUCCESS_DELETE": "Gelöscht {{message}}.",
@@ -671,7 +672,7 @@
                 "LIKES_TAB_TITLE": "List all likes made by this user",
                 "VOTES_TAB": "Stimmen",
                 "VOTES_TAB_TITLE": "List all votes made by this user",
-                "WATCHED_TAB": "Watched",
+                "WATCHED_TAB": "Beobachtet",
                 "WATCHED_TAB_TITLE": "List all item watched by this user",
                 "CONTACTS_TAB": "Kontakte",
                 "CONTACTS_TAB_TITLE": "Alle Kontakte dieses Buntzers anzeigen"
@@ -680,21 +681,21 @@
         "PROFILE_SIDEBAR": {
             "TITLE": "Ihr Profil",
             "DESCRIPTION": "Da andere Mitglieder sehen, dass sie ebenfalls an einem Projekt arbeiten wäre es schön, wenn Sie ein paar Informationen zu Ihrer Person angeben.",
-            "ADD_INFO": "Edit bio"
+            "ADD_INFO": "Bio bearbeiten"
         },
         "PROFILE_FAVS": {
             "FILTER_INPUT_PLACEHOLDER": "Geben sie etwas ein...",
             "FILTER_TYPE_ALL": "Alle",
-            "FILTER_TYPE_ALL_TITLE": "Show all",
+            "FILTER_TYPE_ALL_TITLE": "Alle anzeigen",
             "FILTER_TYPE_PROJECTS": "Projekte",
             "FILTER_TYPE_PROJECT_TITLES": "Nur Projekte anzeigen",
             "FILTER_TYPE_USER_STORIES": "Stories",
             "FILTER_TYPE_USER_STORIES_TITLES": "Nur User-Stories anzeigen",
             "FILTER_TYPE_TASKS": "Aufgaben",
-            "FILTER_TYPE_TASK_TITLES": "Show only tasks",
+            "FILTER_TYPE_TASK_TITLES": "Zeige nur Tasks",
             "FILTER_TYPE_ISSUES": "Tickets",
             "FILTER_TYPE_ISSUES_TITLE": "Nur Fehler anzeigen",
-            "EMPTY_TITLE": "It looks like there's nothing to show here."
+            "EMPTY_TITLE": "Es sieht so aus, als wäre hier nichts."
         }
     },
     "PROJECT": {
@@ -768,12 +769,12 @@
             "LIKE": "Gefällt mir",
             "LIKED": "Gefällt mir",
             "UNLIKE": "Gefällt mir nicht mehr",
-            "BUTTON_TITLE": "Like or unlike this project",
+            "BUTTON_TITLE": "Like oder Unlike dieses Projekt",
             "COUNTER_TITLE": "{total, plural, one{ein Fan} other{# Fans}}"
         },
         "WATCH_BUTTON": {
             "BUTTON_TITLE": "Watch this project and set notification policy",
-            "WATCH": "Watch",
+            "WATCH": "Beobachten",
             "WATCHING": "Beobachtet",
             "COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}",
             "OPTIONS": {
@@ -781,7 +782,7 @@
                 "NOTIFY_ALL_TITLE": "Alle Benachrichtigungen für dieses Projekt anzeigen",
                 "NOTIFY_INVOLVED": "Nur Beteiligte",
                 "NOTIFY_INVOLVED_TITLE": "Recive notificacions only when you are involved",
-                "UNWATCH": "Unwatch",
+                "UNWATCH": "Nicht beobachten",
                 "UNWATCH_TITLE": "Unwatch this project"
             }
         }
@@ -943,7 +944,7 @@
         "PAGE_TITLE": "Auftragsliste - {{projectName}}",
         "PAGE_DESCRIPTION": "Das Auftragslisten-Panel mit User-Stories und Sprints des Projekts. {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Auftragsliste",
-        "CUSTOMIZE_GRAPH": "Customize your backlog graph",
+        "CUSTOMIZE_GRAPH": "Personalisiere deinen Backloggraph",
         "CUSTOMIZE_GRAPH_TEXT": "To have a nice graph that helps you follow the evolution of the project you have to set up the points and sprints through the",
         "CUSTOMIZE_GRAPH_ADMIN": "Administrator ",
         "CUSTOMIZE_GRAPH_TITLE": "Set up the points and sprints through the Admin",
@@ -1010,7 +1011,7 @@
             "LINK_TASKBOARD": "Sprint Taskboard",
             "TITLE_LINK_TASKBOARD": "Gehe zu Taskboard von \"{{name}}\"",
             "NUMBER_SPRINTS": "<br/>Sprints",
-            "EMPTY": "YOU HAVE NO SPRINTS",
+            "EMPTY": "DU HAST KEINE SPRINTS",
             "WARNING_EMPTY_SPRINT": "Drop here Stories from your backlog to start a new sprint",
             "TITLE_ACTION_NEW_SPRINT": "Add new sprint",
             "TEXT_ACTION_NEW_SPRINT": "You may want to create a new sprint in your project",
@@ -1034,7 +1035,7 @@
         "TITLE_ACTION_ADD_BULK": "Mehrere Aufgaben hinzufügen",
         "TITLE_ACTION_ASSIGN": "Aufgabe zuweisen",
         "TITLE_ACTION_EDIT": "Aufgabe bearbeiten",
-        "PLACEHOLDER_CARD_TITLE": "This could be a task",
+        "PLACEHOLDER_CARD_TITLE": "Das könnte ein Task sein",
         "PLACEHOLDER_CARD_TEXT": "Split Stories into tasks to track them separately",
         "TABLE": {
             "COLUMN": "User-Story",
@@ -1188,7 +1189,7 @@
         "ARCHIVED": "Sie haben es archiviert",
         "UNDO_ARCHIVED": "Wiederholen Sie Drag & Drop zum Rückgängigmachen ",
         "PLACEHOLDER_CARD_TITLE": "These are your User Stories",
-        "PLACEHOLDER_CARD_TEXT": "Stories might also have subtasks to separate requirements"
+        "PLACEHOLDER_CARD_TEXT": "Stories können Unteraufgaben für weitere Anforderungen haben"
     },
     "SEARCH": {
         "PAGE_TITLE": "Suche - {{projectName}}",
@@ -1348,7 +1349,7 @@
         "PAGE_DESCRIPTION": "An external app requires authentication",
         "AUTHORIZATION_REQUEST": "{{application}} erlauben ihren Taiga Account zu benutzen?",
         "LOGIN_WITH_ANOTHER_USER": "Mit einem anderen Benutzer einloggen.",
-        "AUTHORIZE_APP": "Authorize app",
+        "AUTHORIZE_APP": "App autorisieren",
         "CANCEL": "Abbrechen"
     },
     "JOYRIDE": {
@@ -1364,22 +1365,22 @@
             "STEP3": {
                 "TITLE": "Beobachtet",
                 "TEXT1": "And right here you will find the ones that you want to know about.",
-                "TEXT2": "You are already working with Taiga ;)"
+                "TEXT2": "Du arbeitest schon mit Taiga ;)"
             },
             "STEP4": {
-                "TITLE": "Let’s start",
-                "TEXT1": "You can start by creating your first Taiga project.",
-                "TEXT2": "Good luck!"
+                "TITLE": "Los geht’s",
+                "TEXT1": "Du kannst anfangen, indem du dein erstes Taiga-Projekt startest",
+                "TEXT2": "Viel Glück!"
             }
         },
         "BACKLOG": {
             "STEP1": {
-                "TITLE": "Project summary",
+                "TITLE": "Projektzusammenfassung",
                 "TEXT1": "Here you will see the state of your project.",
                 "TEXT2": "You can change every kind of project settings through the admin."
             },
             "STEP2": {
-                "TITLE": "Product backlog",
+                "TITLE": "Produkt Backlog",
                 "TEXT": "The backlog is the list of requirements (User Stories) for the project. Here is where you will plan your sprints."
             },
             "STEP3": {
@@ -1393,17 +1394,17 @@
         },
         "KANBAN": {
             "STEP1": {
-                "TITLE": "Customize your workflow",
+                "TITLE": "Personalisiere deinen Workflow",
                 "TEXT": "Set up the columns you need to map your workflow statuses through the admin."
             },
             "STEP2": {
-                "TITLE": "User Stories & Tasks",
+                "TITLE": "User-Stories und Tasks",
                 "TEXT": "User Stories are the requirements at high level. You can drag them to different columns."
             },
             "STEP3": {
-                "TITLE": "Adding User Stories",
+                "TITLE": "User-Stories hinzufügen",
                 "TEXT1": "You may want to add a single User Story (add US icon) or a group of them (bulk icon)",
-                "TEXT2": "Good luck!"
+                "TEXT2": "Viel Glück!"
             }
         }
     }

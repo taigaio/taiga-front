@@ -336,7 +336,7 @@
         "PAGE_DESCRIPTION": "Accepta la invitació a un projecte en Taiga, una plataforma de gestió de projectes per a empreses àgils que necessiten una eïna sencilla i elegant que et permet gaudir del teu treball"
     },
     "INVITATION_LOGIN_FORM": {
-        "NOT_FOUND": "Our Oompa Loompas can't find your invitation.",
+        "NOT_FOUND": "Els Oompa Loompas no troben la teua invitació.",
         "SUCCESS": "T'has incorporat a este projecte. Vos donem la benvinguda a {{project_name}}",
         "ERROR": "Segons els nostres OOmpa Loompas, no estàs registrat encara o has escrit una contrasenya invàlida."
     },
@@ -590,6 +590,7 @@
             "STATUS_ACTIVE": "Actiu",
             "STATUS_PENDING": "Pendent",
             "DELETE_MEMBER": "Esborrar membre",
+            "RESEND": "Resend",
             "SUCCESS_SEND_INVITATION": "Hem tornat a enviar la invitació a '{{email}}'.",
             "ERROR_SEND_INVITATION": "No s'ha enviat la invitació",
             "SUCCESS_DELETE": "Hem esborrat {{message}}.",

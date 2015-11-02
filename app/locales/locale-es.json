@@ -328,7 +328,7 @@
         "PLACEHOLDER_NEW_PASSWORD": "Nueva contraseña",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Reescriba la nueva contraseña",
         "ACTION_RESET_PASSWORD": "Restablecer contraseña",
-        "ERROR": "Our Oompa Loompas can't find your request to recover your password. Try to ask for it again.",
+        "ERROR": "Nuestros Oompa Loompas no encuentran tu petición de recuperación de contraseña. Prueba a pedirla de nuevo.",
         "SUCCESS": "Nuestro Oompa Loopas guardaron tu nueva contraseña.<br /> Intenta <strong>registrarte</strong> con ella"
     },
     "INVITATION": {
@@ -344,7 +344,7 @@
         "PAGE_TITLE": "Inicio - Taiga",
         "PAGE_DESCRIPTION": "Página de inicio de Taiga, con tus proyectos principales y tus historias de usuario, tareas y peticiones en progreso asignadas y las que observas.",
         "EMPTY_WORKING_ON": "<strong>Parece vacío no?</ strong> Empiece a trabajar con Taiga y verá aquí las historias, las tareas y los incidentes en los que está trabajando.",
-        "EMPTY_WATCHING": "<strong>Follow</strong> User Stories, Tasks, Issues... that you want to know about :)",
+        "EMPTY_WATCHING": "<strong>Sigue</strong> Historias de Usuario, tareas, peticiones... sobre las que quieres estar informado :)",
         "EMPTY_PROJECT_LIST": "Todavía no tienes ningún proyecto",
         "WORKING_ON_SECTION": "Trabajando en",
         "WATCHING_SECTION": "Observando"
@@ -437,7 +437,7 @@
             "PROJECT_NAME": "Nombre del proyecto",
             "PROJECT_SLUG": "Slug de proyecto",
             "NUMBER_SPRINTS": "Número de sprints (0 para cantidad indeterminada)",
-            "NUMBER_US_POINTS": "Number of US points (0 for an undetermined quantity)",
+            "NUMBER_US_POINTS": "Número de puntos de historias de usuario (0 para indeterminado)",
             "TAGS": "Etiquetas",
             "DESCRIPTION": "Descripción",
             "PUBLIC_PROJECT": "Proyecto público",
@@ -515,9 +515,9 @@
             "PAGE_TITLE": "Roles - {{projectName}}",
             "WARNING_NO_ROLE": "Ojo, ningún rol en tu proyecto podrá estimar historias de usuario",
             "HELP_ROLE_ENABLED": "Si lo activas, los miembros que posean este rol serán capaces de estimar las histórias de usuario",
-            "DISABLE_COMPUTABLE_ALERT_TITLE": "Disable estimation for this role",
-            "DISABLE_COMPUTABLE_ALERT_SUBTITLE": "If you disable estimation permissions for role {{roleName}} all previous estimations made by this role will be removed",
-            "DISABLE_COMPUTABLE_ALERT_MESSAGE": "<strong>Are you sure you want to disable this role estimations?</strong>",
+            "DISABLE_COMPUTABLE_ALERT_TITLE": "Deshabilitar las estimaciones para este rol",
+            "DISABLE_COMPUTABLE_ALERT_SUBTITLE": "Si desactivas los permisos de estimación para el rol {{roleName}} todas las estimaciones previas hechas por ese rol se eliminarán",
+            "DISABLE_COMPUTABLE_ALERT_MESSAGE": "<strong>¿Seguro de que deseas deshabilitar las estimaciones para este rol?</strong>",
             "COUNT_MEMBERS": "{{ role.members_count }} miembros con este rol",
             "TITLE_DELETE_ROLE": "Borrar Rol",
             "REPLACEMENT_ROLE": "Todos los usuarios con este rol serán movidos a",
@@ -590,6 +590,7 @@
             "STATUS_ACTIVE": "Activado",
             "STATUS_PENDING": "Pendiente",
             "DELETE_MEMBER": "Borrar miembro",
+            "RESEND": "Resend",
             "SUCCESS_SEND_INVITATION": "Hemos enviado nuevamente la invitación a '{{email}}'.",
             "ERROR_SEND_INVITATION": "No hemos enviado la invitación.",
             "SUCCESS_DELETE": "Hemos eliminado {{message}}.",
@@ -668,9 +669,9 @@
                 "PROJECTS_TAB": "Proyectos",
                 "PROJECTS_TAB_TITLE": "Lista todo los proyectos en los que este usuario es miembro",
                 "LIKES_TAB": "Likes",
-                "LIKES_TAB_TITLE": "List all likes made by this user",
+                "LIKES_TAB_TITLE": "Lista todo lo que le gusta a este usuario",
                 "VOTES_TAB": "Votos",
-                "VOTES_TAB_TITLE": "List all votes made by this user",
+                "VOTES_TAB_TITLE": "Lista todos los votos de este usuario",
                 "WATCHED_TAB": "Observado",
                 "WATCHED_TAB_TITLE": "Lista todos los elementos observados por este usuario",
                 "CONTACTS_TAB": "Contactos",
@@ -680,7 +681,7 @@
         "PROFILE_SIDEBAR": {
             "TITLE": "Tu perfil",
             "DESCRIPTION": "La gente puede ver aquello que haces y en qué estás trabajando. Añade una buena bio para que puedan ver la mejor versión de tu perfil.",
-            "ADD_INFO": "Edit bio"
+            "ADD_INFO": "Editar bio"
         },
         "PROFILE_FAVS": {
             "FILTER_INPUT_PLACEHOLDER": "Escribe algo...",
@@ -694,7 +695,7 @@
             "FILTER_TYPE_TASK_TITLES": "Mostrar sólo tareas",
             "FILTER_TYPE_ISSUES": "Peticiones",
             "FILTER_TYPE_ISSUES_TITLE": "Mostrar sólo peticiones",
-            "EMPTY_TITLE": "It looks like there's nothing to show here."
+            "EMPTY_TITLE": "Parece que no se ha encontrado nada."
         }
     },
     "PROJECT": {
@@ -943,10 +944,10 @@
         "PAGE_TITLE": "Backlog - {{projectName}}",
         "PAGE_DESCRIPTION": "El panel del backlog, con las historias de usuario y sprints del proyecto {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Backlog",
-        "CUSTOMIZE_GRAPH": "Customize your backlog graph",
-        "CUSTOMIZE_GRAPH_TEXT": "To have a nice graph that helps you follow the evolution of the project you have to set up the points and sprints through the",
+        "CUSTOMIZE_GRAPH": "Customiza la gráfica de tu backlog",
+        "CUSTOMIZE_GRAPH_TEXT": "Para tener una gráfica bonita que te ayude a seguir la evolución del proyecto tienes que fijar los puntos y sprints en la",
         "CUSTOMIZE_GRAPH_ADMIN": "Admin",
-        "CUSTOMIZE_GRAPH_TITLE": "Set up the points and sprints through the Admin",
+        "CUSTOMIZE_GRAPH_TITLE": "Modifica los puntos y sprints a través de la zona de Administración",
         "MOVE_US_TO_CURRENT_SPRINT": "Mover al Sprint en curso",
         "SHOW_FILTERS": "Mostrar filtros",
         "SHOW_TAGS": "Ver etiquetas",
@@ -1010,10 +1011,10 @@
             "LINK_TASKBOARD": "Panel de Tareas del Sprint",
             "TITLE_LINK_TASKBOARD": "Ir al panel de tareas de \"{{name}}\"",
             "NUMBER_SPRINTS": "<br/>sprints",
-            "EMPTY": "YOU HAVE NO SPRINTS",
-            "WARNING_EMPTY_SPRINT": "Drop here Stories from your backlog to start a new sprint",
-            "TITLE_ACTION_NEW_SPRINT": "Add new sprint",
-            "TEXT_ACTION_NEW_SPRINT": "You may want to create a new sprint in your project",
+            "EMPTY": "NO TIENES NINGÚN SPRINT",
+            "WARNING_EMPTY_SPRINT": "Arrastra aquí las historias desde tu backlog para comenzar un nuevo sprint",
+            "TITLE_ACTION_NEW_SPRINT": "+ Nuevo sprint",
+            "TEXT_ACTION_NEW_SPRINT": "Es posible que desees crear un nuevo sprint para tu proyecto",
             "ACTION_SHOW_CLOSED_SPRINTS": "Mostrar sprints cerrados",
             "ACTION_HIDE_CLOSED_SPRINTS": "Ocultar sprints cerrados"
         }
@@ -1034,8 +1035,8 @@
         "TITLE_ACTION_ADD_BULK": "Añadir nuevas tareas en bloque",
         "TITLE_ACTION_ASSIGN": "Asignar tarea",
         "TITLE_ACTION_EDIT": "Editar tarea",
-        "PLACEHOLDER_CARD_TITLE": "This could be a task",
-        "PLACEHOLDER_CARD_TEXT": "Split Stories into tasks to track them separately",
+        "PLACEHOLDER_CARD_TITLE": "Esto podría ser una tarea",
+        "PLACEHOLDER_CARD_TEXT": "Divide las historias en tareas para controlarlas de manera separada",
         "TABLE": {
             "COLUMN": "Historia de usuario",
             "TITLE_ACTION_FOLD": "Plegar columna",
@@ -1187,8 +1188,8 @@
         "HIDDEN_USER_STORIES": "Las historias de usuario en este estado están ocultas por defecto",
         "ARCHIVED": "Tu has archivado",
         "UNDO_ARCHIVED": "Arrástrala y suéltala de nuevo para deshacer el cambio",
-        "PLACEHOLDER_CARD_TITLE": "These are your User Stories",
-        "PLACEHOLDER_CARD_TEXT": "Stories might also have subtasks to separate requirements"
+        "PLACEHOLDER_CARD_TITLE": "Estas son tus Historias de Usuario",
+        "PLACEHOLDER_CARD_TEXT": "Las historias pueden tener tareas para separar los requerimientos"
     },
     "SEARCH": {
         "PAGE_TITLE": "Buscar - {{projectName}}",
@@ -1341,7 +1342,7 @@
         "NEW_USER": "{{username}} se ha unido a Taiga"
     },
     "LEGAL": {
-        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>By clicking \"Sign up\"', you agree to our <br /></span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">terms of service</a><span> and </span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">privacy policy</a>."
+        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>Haciendo click en \"Registrarme\"', aceptas nuestros <br /></span><a href=\"{{ termsOfServiceUrl }}\" title=\"Ver términos de servicio\" target=\"_blank\">términos de servicio</a><span> y </span><a href=\"{{ privacyPolicyUrl }}\" title=\"Ver política de privacidad\" target=\"_blank\">nuestra política de privacidad</a>."
     },
     "EXTERNAL_APP": {
         "PAGE_TITLE": "Una aplicación externa requiere autenticación",
@@ -1355,55 +1356,55 @@
         "DASHBOARD": {
             "STEP1": {
                 "TITLE": "Su proyecto",
-                "TEXT": "Welcome! Here you will find the projects you are involved on. We have left you sample project templates to help you discover the power of Taiga."
+                "TEXT": "Bienvenido! Aquí encontrarás los proyectos en los que estás participando. Te hemos dejado plantillas con proyectos de ejemplo para ayudarte a descubrir el poder de Taiga."
             },
             "STEP2": {
                 "TITLE": "Trabajando en",
-                "TEXT": "Here you will find the User Stories, Tasks and Issues in which you are working on."
+                "TEXT": "Aquí encontrarás las Historias de Usuario, Tareas y Peticiones en las que estás trabajando."
             },
             "STEP3": {
                 "TITLE": "Observando",
-                "TEXT1": "And right here you will find the ones that you want to know about.",
-                "TEXT2": "You are already working with Taiga ;)"
+                "TEXT1": "Y justo aquí encontrarás aquellas sobre las que quieres saber algo más",
+                "TEXT2": "Ya estás trabajando con Taiga ;)"
             },
             "STEP4": {
-                "TITLE": "Let’s start",
-                "TEXT1": "You can start by creating your first Taiga project.",
-                "TEXT2": "Good luck!"
+                "TITLE": "Comencemos",
+                "TEXT1": "Puedes comenzar creando tu primer proyecto en Taiga",
+                "TEXT2": "Buena suerte!"
             }
         },
         "BACKLOG": {
             "STEP1": {
-                "TITLE": "Project summary",
-                "TEXT1": "Here you will see the state of your project.",
-                "TEXT2": "You can change every kind of project settings through the admin."
+                "TITLE": "Resumen del proyecto",
+                "TEXT1": "Aquí verás el estado de tu proyecto.",
+                "TEXT2": "Puedes cambiar todos los ajustes del proyecto a través de la zona de administración."
             },
             "STEP2": {
                 "TITLE": "Product backlog",
-                "TEXT": "The backlog is the list of requirements (User Stories) for the project. Here is where you will plan your sprints."
+                "TEXT": "El backlog es la lista de requerimientos (Historias de Usuario) del proyecto. Aquí es donde planificarás  tus sprints"
             },
             "STEP3": {
                 "TITLE": "Sprints",
-                "TEXT": "Sprints are short periods of time (usually 2 weeks) during which specific work has to be completed and delivered."
+                "TEXT": "Los sprints son periodos cortos de tiempo (normalmente de 2 semanas) durante los cuales un trabajo específico tiene que ser completado y entregado"
             },
             "STEP4": {
                 "TITLE": "Historias de Usuario",
-                "TEXT": "Those are the requirements at high level. You can add them to the backlog and drag them to the sprint in which it should be delivered."
+                "TEXT": "Estos son los requerimientos de alto nivel. Puedes añadirlos al backlog y arrastrarlos al sprint en el que deban ser completados"
             }
         },
         "KANBAN": {
             "STEP1": {
-                "TITLE": "Customize your workflow",
-                "TEXT": "Set up the columns you need to map your workflow statuses through the admin."
+                "TITLE": "Customiza to workflow",
+                "TEXT": "Fila las columnas que necesites para asociar los estados the tu workflow en la zona de administración."
             },
             "STEP2": {
-                "TITLE": "User Stories & Tasks",
-                "TEXT": "User Stories are the requirements at high level. You can drag them to different columns."
+                "TITLE": "Historias de usuario y tareas",
+                "TEXT": "Las historias de usuario son los requerimientos de alto nivel. Puedes arrastrarlos a las diferentes columnas."
             },
             "STEP3": {
-                "TITLE": "Adding User Stories",
-                "TEXT1": "You may want to add a single User Story (add US icon) or a group of them (bulk icon)",
-                "TEXT2": "Good luck!"
+                "TITLE": "Añadir Historias de Usuario",
+                "TEXT1": "Puede que quieras añadir una sóla Historia de Usuario (add US icon) o un grupo de ellas (bulk icon)",
+                "TEXT2": "Buena suerte!"
             }
         }
     }

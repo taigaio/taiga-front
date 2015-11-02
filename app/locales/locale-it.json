@@ -590,6 +590,7 @@
             "STATUS_ACTIVE": "Attivo",
             "STATUS_PENDING": "In sospeso",
             "DELETE_MEMBER": "Elimina membro",
+            "RESEND": "Resend",
             "SUCCESS_SEND_INVITATION": "Abbiamo mandato nuovamente l'invito a '{{email}}'.",
             "ERROR_SEND_INVITATION": "Non abbiamo mandato l'invito",
             "SUCCESS_DELETE": "Abbiamo eliminato {{message}}.",

@@ -590,6 +590,7 @@
             "STATUS_ACTIVE": "Активный",
             "STATUS_PENDING": "В ожидании",
             "DELETE_MEMBER": "Удалить участника",
+            "RESEND": "Resend",
             "SUCCESS_SEND_INVITATION": "Мы отправили ещё одно приглашение на адрес '{{email}}'.",
             "ERROR_SEND_INVITATION": "Мы не выслали приглашение.",
             "SUCCESS_DELETE": "Мы удалили {{message}}.",

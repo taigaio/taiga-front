@@ -590,6 +590,7 @@
             "STATUS_ACTIVE": "Aktiivinen",
             "STATUS_PENDING": "Odottaa",
             "DELETE_MEMBER": "Poista jäsen",
+            "RESEND": "Resend",
             "SUCCESS_SEND_INVITATION": "Olemme lähettäneet kutsun uudelleen osoitteeseen '{{email}}'.",
             "ERROR_SEND_INVITATION": "Olemme lähettäneet kutsun.",
             "SUCCESS_DELETE": "Olemme poistaneet viestin {{message}}.",

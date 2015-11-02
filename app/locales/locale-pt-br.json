@@ -590,6 +590,7 @@
             "STATUS_ACTIVE": "Ativo",
             "STATUS_PENDING": "Pendente",
             "DELETE_MEMBER": "Apagar membro",
+            "RESEND": "Resend",
             "SUCCESS_SEND_INVITATION": "Enviamos novamente um convite para '{{email}}'.",
             "ERROR_SEND_INVITATION": "Nós não enviamos o convite.",
             "SUCCESS_DELETE": "Nós apagamos {{message}}.",

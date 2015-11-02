@@ -590,6 +590,7 @@
             "STATUS_ACTIVE": "Actief",
             "STATUS_PENDING": "Resterend",
             "DELETE_MEMBER": "Verwijder gebruiker",
+            "RESEND": "Resend",
             "SUCCESS_SEND_INVITATION": "We hebben de uitnodiging opnieuw gestuurd aan '{{email}}'.",
             "ERROR_SEND_INVITATION": "We hebben je een uitnodiging gestuurd",
             "SUCCESS_DELETE": "We hebben {{message}} verwijderd.",

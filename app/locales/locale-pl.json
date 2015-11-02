@@ -590,6 +590,7 @@
             "STATUS_ACTIVE": "Aktywny",
             "STATUS_PENDING": "Nieaktywny",
             "DELETE_MEMBER": "Usuń członka",
+            "RESEND": "Resend",
             "SUCCESS_SEND_INVITATION": "Ponownie wysłano zaproszenie do '{{e-mail}}'.",
             "ERROR_SEND_INVITATION": "Zaproszenie nie zostało wysłane.",
             "SUCCESS_DELETE": "Usunięto {{message}}.",
