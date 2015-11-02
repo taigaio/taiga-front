@@ -1356,7 +1356,7 @@
         "DASHBOARD": {
             "STEP1": {
                 "TITLE": "Seu projeto",
-                "TEXT": "Bem-Vindo! Aqui você encontrará os projetos que você está envolvido. Temos para você, modelos de projetos para ajudar você a descobrir a potência do Taiga. "
+                "TEXT": "Welcome! Here you will find the projects you are involved on."
             },
             "STEP2": {
                 "TITLE": "Trabalhando em",
