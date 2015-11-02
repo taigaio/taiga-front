@@ -579,6 +579,7 @@
             "CANCEL_TITLE": "Отменить создание",
             "SET_FIELD_NAME": "Введите имя поля",
             "SET_FIELD_DESCRIPTION": "Назначьте описание специальному полю",
+            "FIELD_TYPE_DEFAULT": "-- select one --",
             "ACTION_UPDATE": "Обновить поле",
             "ACTION_CANCEL_EDITION": "Отменить правку"
         },

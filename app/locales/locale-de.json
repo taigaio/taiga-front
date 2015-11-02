@@ -579,6 +579,7 @@
             "CANCEL_TITLE": "Erstellung abbrechen",
             "SET_FIELD_NAME": "Legen Sie den Namen Ihres benutzerdefinierten Feldes fest",
             "SET_FIELD_DESCRIPTION": "Legen Sie Ihre Beschreibung für das benutzerdefinierte Feld fest",
+            "FIELD_TYPE_DEFAULT": "-- select one --",
             "ACTION_UPDATE": "Benutzerdefiniertes Feld aktualisieren",
             "ACTION_CANCEL_EDITION": "Bearbeitung abbrechen"
         },

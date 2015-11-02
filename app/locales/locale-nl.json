@@ -156,7 +156,7 @@
             "TITLE_LIGHTBOX_DELETE_WARTCHER": "Verwijder waarnemer..."
         },
         "WATCH_BUTTON": {
-            "WATCH": "Watch",
+            "WATCH": "Bekijk",
             "WATCHING": "Volgers",
             "UNWATCH": "Unwatch",
             "WATCHERS": "Watchers",
@@ -336,7 +336,7 @@
         "PAGE_DESCRIPTION": "Accepteer de uitnodiging voor een project in Taiga, een project management platform voor startups en agile ontwikkelaars & designers die een simpele, mooie tool willen om werken echt leuk te maken."
     },
     "INVITATION_LOGIN_FORM": {
-        "NOT_FOUND": "Our Oompa Loompas can't find your invitation.",
+        "NOT_FOUND": "Onze Oompa Loompa's kunnen je uitnodiging niet vinden.",
         "SUCCESS": "Je bent met succes toegetreden tot dit project, Welkom bij {{project_name}}",
         "ERROR": "Volgens onze Oempa-Loempa's, ben je nog niet geregistreerd of heb je een fout wachtwoord getypt."
     },
@@ -436,8 +436,8 @@
             "PROJECT_DETAILS": "Project details",
             "PROJECT_NAME": "Naam project",
             "PROJECT_SLUG": "Project Slug",
-            "NUMBER_SPRINTS": "Number of sprints (0 for an undetermined quantity)",
-            "NUMBER_US_POINTS": "Number of US points (0 for an undetermined quantity)",
+            "NUMBER_SPRINTS": "Aantal sprinten (0 voor een onbepaalde hoeveelheid)",
+            "NUMBER_US_POINTS": "Aantal US punten (0 voor een onbepaalde hoeveelheid)",
             "TAGS": "Tags",
             "DESCRIPTION": "Beschrijving",
             "PUBLIC_PROJECT": "Open project",
@@ -579,6 +579,7 @@
             "CANCEL_TITLE": "Annuleer aanmaken",
             "SET_FIELD_NAME": "Stel de naam van je eigen veld in",
             "SET_FIELD_DESCRIPTION": "Eigen veld omschrijving instellen",
+            "FIELD_TYPE_DEFAULT": "-- select one --",
             "ACTION_UPDATE": "Eigen veld bijwerken",
             "ACTION_CANCEL_EDITION": "Editie annuleren"
         },
@@ -665,11 +666,11 @@
             "REPORT": "Meld misbruik",
             "TABS": {
                 "ACTIVITY_TAB": "Activiteit",
-                "ACTIVITY_TAB_TITLE": "Show all the activity of this user",
+                "ACTIVITY_TAB_TITLE": "Alle activiteit van deze gebruiker weergeven",
                 "PROJECTS_TAB": "Projecten",
-                "PROJECTS_TAB_TITLE": "List all projects that this user is a member",
-                "LIKES_TAB": "Likes",
-                "LIKES_TAB_TITLE": "List all likes made by this user",
+                "PROJECTS_TAB_TITLE": "Lijst alle projecten op waar deze gebruiker lid van is",
+                "LIKES_TAB": "Personen die dit leuk vinden",
+                "LIKES_TAB_TITLE": "Lijst alles op wat deze gebruiker leuk vind",
                 "VOTES_TAB": "Stemmen",
                 "VOTES_TAB_TITLE": "List all votes made by this user",
                 "WATCHED_TAB": "Watched",
@@ -681,21 +682,21 @@
         "PROFILE_SIDEBAR": {
             "TITLE": "Jouw profiel",
             "DESCRIPTION": "Mensen kunnen alles zien wat je doet en waar je aan werkt. Voeg een mooie biografie toe voor een meer uitgebreide versie van jouw informatie.",
-            "ADD_INFO": "Edit bio"
+            "ADD_INFO": "Bio aanpassen"
         },
         "PROFILE_FAVS": {
-            "FILTER_INPUT_PLACEHOLDER": "Type something...",
+            "FILTER_INPUT_PLACEHOLDER": "Typ iets...",
             "FILTER_TYPE_ALL": "Alles",
-            "FILTER_TYPE_ALL_TITLE": "Show all",
+            "FILTER_TYPE_ALL_TITLE": "Alles weergeven",
             "FILTER_TYPE_PROJECTS": "Projecten",
-            "FILTER_TYPE_PROJECT_TITLES": "Show only projects",
-            "FILTER_TYPE_USER_STORIES": "Stories",
-            "FILTER_TYPE_USER_STORIES_TITLES": "Show only user stories",
+            "FILTER_TYPE_PROJECT_TITLES": "Enkel projecten weergeven",
+            "FILTER_TYPE_USER_STORIES": "Verhalen",
+            "FILTER_TYPE_USER_STORIES_TITLES": "Enkel verhalen van gebruikers weergeven",
             "FILTER_TYPE_TASKS": "Taken",
-            "FILTER_TYPE_TASK_TITLES": "Show only tasks",
+            "FILTER_TYPE_TASK_TITLES": "Enkel taken weergeven",
             "FILTER_TYPE_ISSUES": "Issues",
-            "FILTER_TYPE_ISSUES_TITLE": "Show only issues",
-            "EMPTY_TITLE": "It looks like there's nothing to show here."
+            "FILTER_TYPE_ISSUES_TITLE": "Enkel problemen weergeven",
+            "EMPTY_TITLE": "Het ziet er naar uit dat er hier niets is om weer te geven."
         }
     },
     "PROJECT": {
@@ -766,20 +767,20 @@
             "SYNC_SUCCESS": "Je project werd met succes geïmporteerd"
         },
         "LIKE_BUTTON": {
-            "LIKE": "Like",
-            "LIKED": "Liked",
-            "UNLIKE": "Unlike",
-            "BUTTON_TITLE": "Like or unlike this project",
+            "LIKE": "Vind ik leuk",
+            "LIKED": "Leuk gevonden",
+            "UNLIKE": "Vind ik niet meer leu",
+            "BUTTON_TITLE": "Vind dit project leuk of niet",
             "COUNTER_TITLE": "{total, plural, one{one fan} other{# fans}}"
         },
         "WATCH_BUTTON": {
             "BUTTON_TITLE": "Watch this project and set notification policy",
-            "WATCH": "Watch",
+            "WATCH": "Bekijk",
             "WATCHING": "Volgers",
             "COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}",
             "OPTIONS": {
-                "NOTIFY_ALL": "Receive all notifications",
-                "NOTIFY_ALL_TITLE": "Receive all notifications for this project",
+                "NOTIFY_ALL": "Ontvang alle notificaties",
+                "NOTIFY_ALL_TITLE": "Ontvang alle notificaties voor dit project",
                 "NOTIFY_INVOLVED": "Only involved",
                 "NOTIFY_INVOLVED_TITLE": "Recive notificacions only when you are involved",
                 "UNWATCH": "Unwatch",
@@ -857,7 +858,7 @@
         "SECTION_NAME": "User story details",
         "LINK_TASKBOARD": "Taakbord",
         "TITLE_LINK_TASKBOARD": "Ga naar het dashboard",
-        "TOTAL_POINTS": "total points",
+        "TOTAL_POINTS": "totaal aantal punten",
         "ADD": "+ Nieuwe User Story toevoegen",
         "ADD_BULK": "Voeg enkele nieuwe User Stories in bulk toe",
         "PROMOTED": "Deze US werd gepromoveerd van Issue:",
@@ -944,7 +945,7 @@
         "PAGE_TITLE": "Backlog - {{projectName}}",
         "PAGE_DESCRIPTION": "Het backlog overzicht, met user stories en sprints van het project {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Backlog",
-        "CUSTOMIZE_GRAPH": "Customize your backlog graph",
+        "CUSTOMIZE_GRAPH": "Je backlog grafiek aanpassen",
         "CUSTOMIZE_GRAPH_TEXT": "To have a nice graph that helps you follow the evolution of the project you have to set up the points and sprints through the",
         "CUSTOMIZE_GRAPH_ADMIN": "Admin",
         "CUSTOMIZE_GRAPH_TITLE": "Set up the points and sprints through the Admin",
@@ -1024,7 +1025,7 @@
         "NOT_FOUND": "Niet gevonden",
         "NOT_FOUND_TEXT": "Error 404. De pagina die je zoekt bestaat niet meer. Misschien kan je terugkeren naar de TAIGA startpagina en kijken of je kan vinden wat je zoekt.",
         "PERMISSION_DENIED": "Niet toegestaan",
-        "PERMISSION_DENIED_TEXT": "You don't have permission to access to this page.",
+        "PERMISSION_DENIED_TEXT": "Je hebt geen toegangsrechten tot deze pagina",
         "VERSION_ERROR": "Iemand bij Taiga heeft dit vooraf veranderd en onze Oempa-Loempa's konden je veranderingen niet toepassen. Gelieve te herladen en je veranderingen opnieuw toe te passen (ze zullen verloren gaan)"
     },
     "TASKBOARD": {
@@ -1035,7 +1036,7 @@
         "TITLE_ACTION_ADD_BULK": "Wat nieuwe taken in bulk toevoegen",
         "TITLE_ACTION_ASSIGN": "Toegewezen taak",
         "TITLE_ACTION_EDIT": "Bewerk taak",
-        "PLACEHOLDER_CARD_TITLE": "This could be a task",
+        "PLACEHOLDER_CARD_TITLE": "Dit zou een taak kunnen zijn",
         "PLACEHOLDER_CARD_TEXT": "Split Stories into tasks to track them separately",
         "TABLE": {
             "COLUMN": "User story",
