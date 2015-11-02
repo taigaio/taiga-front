@@ -156,7 +156,7 @@
             "TITLE_LIGHTBOX_DELETE_WARTCHER": "Supprimer l'observateur..."
         },
         "WATCH_BUTTON": {
-            "WATCH": "Watch",
+            "WATCH": "Suivre",
             "WATCHING": "Observant",
             "UNWATCH": "Unwatch",
             "WATCHERS": "Watchers",
@@ -579,6 +579,7 @@
             "CANCEL_TITLE": "Annuler la création",
             "SET_FIELD_NAME": "Saisissez le nom du champ personnalisé",
             "SET_FIELD_DESCRIPTION": "Entrez la description de votre champ personnalisé",
+            "FIELD_TYPE_DEFAULT": "-- select one --",
             "ACTION_UPDATE": "Mettre à jour le champ personnalisé",
             "ACTION_CANCEL_EDITION": "Annuler l'édition"
         },
@@ -665,7 +666,7 @@
             "REPORT": "Signaler un abus",
             "TABS": {
                 "ACTIVITY_TAB": "Activité",
-                "ACTIVITY_TAB_TITLE": "Show all the activity of this user",
+                "ACTIVITY_TAB_TITLE": "Voir toutes les activités de cet utilisateur",
                 "PROJECTS_TAB": "Projets",
                 "PROJECTS_TAB_TITLE": "List all projects that this user is a member",
                 "LIKES_TAB": "Likes",
@@ -774,11 +775,11 @@
         },
         "WATCH_BUTTON": {
             "BUTTON_TITLE": "Watch this project and set notification policy",
-            "WATCH": "Watch",
+            "WATCH": "Suivre",
             "WATCHING": "Observant",
             "COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}",
             "OPTIONS": {
-                "NOTIFY_ALL": "Receive all notifications",
+                "NOTIFY_ALL": "Recevoir toutes les notifications",
                 "NOTIFY_ALL_TITLE": "Receive all notifications for this project",
                 "NOTIFY_INVOLVED": "Only involved",
                 "NOTIFY_INVOLVED_TITLE": "Recive notificacions only when you are involved",
@@ -1375,7 +1376,7 @@
         },
         "BACKLOG": {
             "STEP1": {
-                "TITLE": "Project summary",
+                "TITLE": "Résumé du projet",
                 "TEXT1": "Here you will see the state of your project.",
                 "TEXT2": "You can change every kind of project settings through the admin."
             },

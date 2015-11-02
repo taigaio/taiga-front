@@ -1,7 +1,9 @@
 doctype html
 
-div.wrapper(ng-controller="ProjectValuesSectionController",
-            ng-init="sectionName='ADMIN.CUSTOM_FIELDS.TITLE'")
+div.wrapper(
+    ng-controller="ProjectValuesSectionController",
+    ng-init="sectionName='ADMIN.CUSTOM_FIELDS.TITLE'"
+)
 
     tg-project-menu
 
@@ -15,17 +17,23 @@ div.wrapper(ng-controller="ProjectValuesSectionController",
         include ../includes/components/mainTitle
         p.admin-subtitle(translate="ADMIN.CUSTOM_FIELDS.SUBTITLE")
 
-        div.admin-attributes-section(tg-project-custom-attributes,
-                                     ng-controller="ProjectCustomAttributesController as ctrl",
-                                     ng-init="type='userstory'; customFieldSectionTitle='ADMIN.CUSTOM_FIELDS.US_DESCRIPTION'; customFieldButtonTitle='ADMIN.CUSTOM_FIELDS.US_ADD'")
+        div.admin-attributes-section(
+            tg-project-custom-attributes,
+            ng-controller="ProjectCustomAttributesController as ctrl",
+            ng-init="type='userstory'; customFieldSectionTitle='ADMIN.CUSTOM_FIELDS.US_DESCRIPTION'; customFieldButtonTitle='ADMIN.CUSTOM_FIELDS.US_ADD'"
+        )
             include ../includes/modules/admin/admin-custom-attributes
 
-        div.admin-attributes-section(tg-project-custom-attributes,
-                                     ng-controller="ProjectCustomAttributesController as ctrl",
-                                     ng-init="type='task'; customFieldSectionTitle='ADMIN.CUSTOM_FIELDS.TASK_DESCRIPTION'; customFieldButtonTitle='ADMIN.CUSTOM_FIELDS.TASK_ADD'")
+        div.admin-attributes-section(
+            tg-project-custom-attributes,
+            ng-controller="ProjectCustomAttributesController as ctrl",
+            ng-init="type='task'; customFieldSectionTitle='ADMIN.CUSTOM_FIELDS.TASK_DESCRIPTION'; customFieldButtonTitle='ADMIN.CUSTOM_FIELDS.TASK_ADD'"
+        )
             include ../includes/modules/admin/admin-custom-attributes
 
-        div.admin-attributes-section(tg-project-custom-attributes,
-                                     ng-controller="ProjectCustomAttributesController as ctrl",
-                                     ng-init="type='issue'; customFieldSectionTitle='ADMIN.CUSTOM_FIELDS.ISSUE_DESCRIPTION'; customFieldButtonTitle='ADMIN.CUSTOM_FIELDS.ISSUE_ADD'")
+        div.admin-attributes-section(
+            tg-project-custom-attributes,
+            ng-controller="ProjectCustomAttributesController as ctrl",
+            ng-init="type='issue'; customFieldSectionTitle='ADMIN.CUSTOM_FIELDS.ISSUE_DESCRIPTION'; customFieldButtonTitle='ADMIN.CUSTOM_FIELDS.ISSUE_ADD'"
+        )
             include ../includes/modules/admin/admin-custom-attributes

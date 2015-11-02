@@ -156,7 +156,7 @@
             "TITLE_LIGHTBOX_DELETE_WARTCHER": "Esborrar seguidor..."
         },
         "WATCH_BUTTON": {
-            "WATCH": "Watch",
+            "WATCH": "Segueix",
             "WATCHING": "Observant",
             "UNWATCH": "Unwatch",
             "WATCHERS": "Watchers",
@@ -328,7 +328,7 @@
         "PLACEHOLDER_NEW_PASSWORD": "nova contrasenya",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Reescriu la nova contrasenya",
         "ACTION_RESET_PASSWORD": "Resetejar contrasenya",
-        "ERROR": "Our Oompa Loompas can't find your request to recover your password. Try to ask for it again.",
+        "ERROR": "Els Oompa Loompas no troben el teu password. Per favor intenta-ho de nou.",
         "SUCCESS": "Els Oompa Loompas han salvat la teua contrasenya <br /> Prova a <strong>entrar</strong> amb ella."
     },
     "INVITATION": {
@@ -343,8 +343,8 @@
     "HOME": {
         "PAGE_TITLE": "Home - Taiga",
         "PAGE_DESCRIPTION": "La home de Taiga amb els teus projectes principals, totes les històries d'usuari, tasques i incidències que tens assignades i aquelles que estàs Watching",
-        "EMPTY_WORKING_ON": "<strong>It feels empty, doesn't it?</strong> Start working with Taiga and you'll see here the stories, tasks and issues you are workin on.",
-        "EMPTY_WATCHING": "<strong>Follow</strong> User Stories, Tasks, Issues... that you want to know about :)",
+        "EMPTY_WORKING_ON": "<strong>Sembla buit, no?</strong> Comenceu a treballar amb Taiga i voràs ací les históries, tasques e incidències en les que estás treballant.",
+        "EMPTY_WATCHING": "<strong>Segueix</strong> les históries, tasques e incidéncies...que vols tindre en compte :)",
         "EMPTY_PROJECT_LIST": "No tens cap projecte encara",
         "WORKING_ON_SECTION": "En Progrés",
         "WATCHING_SECTION": "Observant"
@@ -436,8 +436,8 @@
             "PROJECT_DETAILS": "Detalls de projecte",
             "PROJECT_NAME": "Nom del projecte",
             "PROJECT_SLUG": "Slug de projecte",
-            "NUMBER_SPRINTS": "Number of sprints (0 for an undetermined quantity)",
-            "NUMBER_US_POINTS": "Number of US points (0 for an undetermined quantity)",
+            "NUMBER_SPRINTS": "Nombre d'sprints (0 per a quantitat indetermindad)",
+            "NUMBER_US_POINTS": "Nombre de punts d'històries (0 per a una quantitat indeterminada)",
             "TAGS": "Etiquetes",
             "DESCRIPTION": "Descripció",
             "PUBLIC_PROJECT": "Projecte públic",
@@ -447,7 +447,7 @@
         "REPORTS": {
             "TITLE": "Informes",
             "SUBTITLE": "Exporta les dades del teu projecte en CSV i fes els teus propis informes.",
-            "DESCRIPTION": "Download a CSV file or copy the generated URL and open it in your favourite text editor or spreadsheet to make your own project data reports. You will be able to visualize and analyze all your data easily.",
+            "DESCRIPTION": "Descarrega un arxiu CSV o copia la URL generada i obrila en el teu editor de text o fulla de cálcul per a poder crear els teus propi informes. Podrás vore i analitzar totes les teues dades fàcilment.",
             "HELP": "Com utilitzar açó a la meu fulla de càlcul?",
             "REGENERATE_TITLE": "Canviar URL",
             "REGENERATE_SUBTITLE": "Vas a canviar la URL d'accés al CSV. La URL previa no funcionarà. Estàs segur?"
@@ -476,7 +476,7 @@
             "FIELD_TYPE_DATE": "Data"
         },
         "PROJECT_VALUES": {
-            "PAGE_TITLE": "{{sectionName}} - Project values - {{projectName}}",
+            "PAGE_TITLE": "{{sectionName}} - Valors de projecte - {{projectName}}",
             "REPLACEMENT": "Tots els elements amb aquest valor seràn canviats a",
             "ERROR_DELETE_ALL": "No pots esborrar tots els valors."
         },
@@ -579,6 +579,7 @@
             "CANCEL_TITLE": "Cancel·la la creació",
             "SET_FIELD_NAME": "Escriu el nom del camp personalitzat",
             "SET_FIELD_DESCRIPTION": "Escriu la descripció del camp personalitzat",
+            "FIELD_TYPE_DEFAULT": "-- select one --",
             "ACTION_UPDATE": "Actualitza el camp personalitzat",
             "ACTION_CANCEL_EDITION": "Cancel·la la edició"
         },
@@ -665,7 +666,7 @@
             "REPORT": "Informar d'un abús",
             "TABS": {
                 "ACTIVITY_TAB": "Activitat",
-                "ACTIVITY_TAB_TITLE": "Show all the activity of this user",
+                "ACTIVITY_TAB_TITLE": "Mostra tota la activitat d'aquest usuari",
                 "PROJECTS_TAB": "Projectes",
                 "PROJECTS_TAB_TITLE": "List all projects that this user is a member",
                 "LIKES_TAB": "Likes",
@@ -681,20 +682,20 @@
         "PROFILE_SIDEBAR": {
             "TITLE": "El teu perfil",
             "DESCRIPTION": "La gent pot vore tot el que fas i en qué estàs treballant. Afegix una bio interessant per a donar una millor versió de la teua informació.",
-            "ADD_INFO": "Edit bio"
+            "ADD_INFO": "Edita la bio"
         },
         "PROFILE_FAVS": {
-            "FILTER_INPUT_PLACEHOLDER": "Type something...",
+            "FILTER_INPUT_PLACEHOLDER": "Escriu algo...",
             "FILTER_TYPE_ALL": "Tot",
-            "FILTER_TYPE_ALL_TITLE": "Show all",
+            "FILTER_TYPE_ALL_TITLE": "Mostrar tot",
             "FILTER_TYPE_PROJECTS": "Projectes",
-            "FILTER_TYPE_PROJECT_TITLES": "Show only projects",
-            "FILTER_TYPE_USER_STORIES": "Stories",
-            "FILTER_TYPE_USER_STORIES_TITLES": "Show only user stories",
+            "FILTER_TYPE_PROJECT_TITLES": "Mostra només projectes",
+            "FILTER_TYPE_USER_STORIES": "Históries",
+            "FILTER_TYPE_USER_STORIES_TITLES": "Veure només històries d'usuari",
             "FILTER_TYPE_TASKS": "Tasques",
-            "FILTER_TYPE_TASK_TITLES": "Show only tasks",
+            "FILTER_TYPE_TASK_TITLES": "Mostra només tasquest",
             "FILTER_TYPE_ISSUES": "Incidències",
-            "FILTER_TYPE_ISSUES_TITLE": "Show only issues",
+            "FILTER_TYPE_ISSUES_TITLE": "Mostra només incidències",
             "EMPTY_TITLE": "It looks like there's nothing to show here."
         }
     },
@@ -754,7 +755,7 @@
         },
         "IMPORT": {
             "TITLE": "Important Projecte",
-            "UPLOADING_FILE": "Uploading dump file",
+            "UPLOADING_FILE": "Pujant arxiu de dades",
             "DESCRIPTION": "Aquest procés pot durar una mica, pero favor mantinga la finestra oberta",
             "ASYNC_IN_PROGRESS_TITLE": "Els Oompa Loompas estàn important el teu projecte",
             "ASYNC_IN_PROGRESS_MESSAGE": "Aquest procés pot durar uns moments <br/> T'enviarem un correo quan estiga llest.",
@@ -766,15 +767,15 @@
             "SYNC_SUCCESS": "El teu projecte s'ha importat correctament"
         },
         "LIKE_BUTTON": {
-            "LIKE": "Like",
-            "LIKED": "Liked",
-            "UNLIKE": "Unlike",
+            "LIKE": "M'agrada",
+            "LIKED": "T'agrada",
+            "UNLIKE": "No t'agrada",
             "BUTTON_TITLE": "Like or unlike this project",
             "COUNTER_TITLE": "{total, plural, one{one fan} other{# fans}}"
         },
         "WATCH_BUTTON": {
-            "BUTTON_TITLE": "Watch this project and set notification policy",
-            "WATCH": "Watch",
+            "BUTTON_TITLE": "Segueix este projecte i edita les notificacions",
+            "WATCH": "Segueix",
             "WATCHING": "Observant",
             "COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}",
             "OPTIONS": {
@@ -857,7 +858,7 @@
         "SECTION_NAME": "Detalls de la història d'usuari",
         "LINK_TASKBOARD": "Panell de tasques",
         "TITLE_LINK_TASKBOARD": "Anar a panell de tasques",
-        "TOTAL_POINTS": "total points",
+        "TOTAL_POINTS": "punts totals",
         "ADD": "+ Afegeix una nova història d'usuari",
         "ADD_BULK": "Afegeix noves històries d'usuari en grup",
         "PROMOTED": "Aquesta US ha sigut promocionada desde:",
@@ -944,8 +945,8 @@
         "PAGE_TITLE": "Backlog - {{projectName}}",
         "PAGE_DESCRIPTION": "El panell Backlog, amb històries d'usuari i esprints del projecte {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Backlog",
-        "CUSTOMIZE_GRAPH": "Customize your backlog graph",
-        "CUSTOMIZE_GRAPH_TEXT": "To have a nice graph that helps you follow the evolution of the project you have to set up the points and sprints through the",
+        "CUSTOMIZE_GRAPH": "Edita el teu gràfic de backlog",
+        "CUSTOMIZE_GRAPH_TEXT": "Per a tindre un gràfic que t'ajude a seguir la evolució del projecte deus de editar els punts i els sprints per mig del",
         "CUSTOMIZE_GRAPH_ADMIN": "Admin",
         "CUSTOMIZE_GRAPH_TITLE": "Set up the points and sprints through the Admin",
         "MOVE_US_TO_CURRENT_SPRINT": "Envia al Sprint",
@@ -1024,12 +1025,12 @@
         "NOT_FOUND": "No trobat",
         "NOT_FOUND_TEXT": "Error 404. La pàgina que busques no existeix. Pots tornar a la página principal de taiga i provar desde allí.",
         "PERMISSION_DENIED": "Permis denegat",
-        "PERMISSION_DENIED_TEXT": "You don't have permission to access to this page.",
+        "PERMISSION_DENIED_TEXT": "No tens permissos per a accedir a esta pàgina.",
         "VERSION_ERROR": "Algú dins de Taiga ha canviat aȯ abans i els Oompa Loompas no pode aplicar els teus canvis. Per favor recarrega i aplica els teus canvis (es perdràn)"
     },
     "TASKBOARD": {
         "PAGE_TITLE": "{{sprintName}} - Panell de tasques del esprint - {{projectName}}",
-        "PAGE_DESCRIPTION": "Sprint {{sprintName}} (from {{startDate}} to {{endDate}}) of {{projectName}}. Completed {{completedPercentage}}% ({{completedPoints}} of {{totalPoints}} points). {{openTasks}} opened tasks of {{totalTasks}}.",
+        "PAGE_DESCRIPTION": "Sprint {{sprintName}} (from {{startDate}} to {{endDate}}) de {{projectName}}. Completat {{completedPercentage}}% ({{completedPoints}} de {{totalPoints}} points). {{openTasks}} tasques obertes de {{totalTasks}}.",
         "SECTION_NAME": "Panell de tasques",
         "TITLE_ACTION_ADD": "Afegir nova tasca",
         "TITLE_ACTION_ADD_BULK": "Afegeix noves històries d'usuari en grup",
@@ -1055,7 +1056,7 @@
         }
     },
     "TASK": {
-        "PAGE_TITLE": "{{taskSubject}} - Task {{taskRef}} - {{projectName}}",
+        "PAGE_TITLE": "{{taskSubject}} - Tasca {{taskRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Estat: {{taskStatus }}. Descripció: {{taskDescription}}",
         "SECTION_NAME": "Detalls de la tasca",
         "LINK_TASKBOARD": "Panell de tasques",

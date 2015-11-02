@@ -579,6 +579,7 @@
             "CANCEL_TITLE": "Cancel creation",
             "SET_FIELD_NAME": "Set your custom field name",
             "SET_FIELD_DESCRIPTION": "Set your custom field description",
+            "FIELD_TYPE_DEFAULT": "-- select one --",
             "ACTION_UPDATE": "Update Custom Field",
             "ACTION_CANCEL_EDITION": "Cancel edition"
         },

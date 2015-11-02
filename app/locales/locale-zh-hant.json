@@ -579,6 +579,7 @@
             "CANCEL_TITLE": "取消創建",
             "SET_FIELD_NAME": "設定你的客制欄位名稱　",
             "SET_FIELD_DESCRIPTION": "設定你客製化欄位的文字描述",
+            "FIELD_TYPE_DEFAULT": "-- select one --",
             "ACTION_UPDATE": "更新客製化欄位",
             "ACTION_CANCEL_EDITION": "取消編輯　"
         },

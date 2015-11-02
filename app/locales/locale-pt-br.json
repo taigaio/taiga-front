@@ -579,6 +579,7 @@
             "CANCEL_TITLE": "Cancelar criação",
             "SET_FIELD_NAME": "Definir nome do  seu campo personalizados",
             "SET_FIELD_DESCRIPTION": "Definir a descrição do seu campo personalizado",
+            "FIELD_TYPE_DEFAULT": "-- select one --",
             "ACTION_UPDATE": "Atualizar campo personalizado",
             "ACTION_CANCEL_EDITION": "Cancelar edição"
         },

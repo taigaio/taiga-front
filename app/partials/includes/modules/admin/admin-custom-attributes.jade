@@ -63,7 +63,7 @@ section.custom-fields-table.basic-table
                         fieldset.custom-field-type
                             select(
                                 ng-model="attr.type"
-                                ng-options="type.key as type.name | translate for type in TYPE_CHOICES"
+                                ng-options="type.key as type.name|translate for type in TYPE_CHOICES"
                             )
                         fieldset.custom-options
                             div.custom-options-wrapper
@@ -96,8 +96,10 @@ section.custom-fields-table.basic-table
             fieldset.custom-field-type
                 select(
                     ng-model="newAttr.type"
-                    ng-options="type.key as type.name for type in TYPE_CHOICES"
+                    ng-options="type.key as type.name|translate for type in TYPE_CHOICES"
                 )
+                    option(value="", translate="ADMIN.CUSTOM_ATTRIBUTES.FIELD_TYPE_DEFAULT")
+
             fieldset.custom-options
                 div.custom-options-wrapper
                     a.js-create-custom-field-button.icon.icon-floppy(
