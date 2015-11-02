@@ -3,6 +3,7 @@
     flex-direction: column;
     height: $main-height;
     max-height: $main-height;
+    max-width: calc(100vw - 50px);
     header {
         min-height: 70px;
     }
