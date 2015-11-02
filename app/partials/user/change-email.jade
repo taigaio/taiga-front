@@ -1,10 +1,10 @@
 doctype html
 
 div.wrapper
-    div.login-main
-        div.login-container
-            h1.logo
-                img.logo-svg(src="/svg/logo.svg", alt="TAIGA")
-            p.tagline(translate="COMMON.TAG_LINE")
+    div.auth
+        div.auth-container
+            div.logo-svg
+                include ../../svg/logo-moustache.svg
+            h1.logo Taiga
 
             include ../includes/modules/change-email-form
