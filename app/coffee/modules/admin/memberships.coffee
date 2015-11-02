@@ -210,15 +210,17 @@ module.directive("tgMemberships", ["$tgTemplate", "$compile", MembershipsDirecti
 ## Member Avatar Directive
 #############################################################################
 
-MembershipsRowAvatarDirective = ($log, $template) ->
+MembershipsRowAvatarDirective = ($log, $template, $translate) ->
     template = $template.get("admin/memberships-row-avatar.html", true)
 
     link = ($scope, $el, $attrs) ->
+        pending = $translate.instant("ADMIN.MEMBERSHIP.STATUS_PENDING")
         render = (member) ->
             ctx = {
                 full_name: if member.full_name then member.full_name else ""
                 email: if member.user_email then member.user_email else member.email
                 imgurl: if member.photo then member.photo else "/images/unnamed.png"
+                pending: if !member.is_user_active then pending else ""
             }
 
             html = template(ctx)
@@ -236,7 +238,7 @@ MembershipsRowAvatarDirective = ($log, $template) ->
     return {link: link}
 
 
-module.directive("tgMembershipsRowAvatar", ["$log", "$tgTemplate", MembershipsRowAvatarDirective])
+module.directive("tgMembershipsRowAvatar", ["$log", "$tgTemplate", '$translate', MembershipsRowAvatarDirective])
 
 
 #############################################################################
@@ -357,9 +359,8 @@ MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm, $compile, $transla
     """
 
     pendingTemplate = """
-    <a class="pending" href="">
-        {{'ADMIN.MEMBERSHIP.STATUS_PENDING' | translate}}
-        <span class="icon icon-reload"></span>
+    <a class="resend" href="">
+        {{'ADMIN.MEMBERSHIP.RESEND' | translate}}
     </a>
     <a class="delete" href="">
         <span class="icon icon-delete"></span>

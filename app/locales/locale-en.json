@@ -590,6 +590,7 @@
             "STATUS_ACTIVE": "Active",
             "STATUS_PENDING": "Pending",
             "DELETE_MEMBER": "Delete member",
+            "RESEND": "Resend",
             "SUCCESS_SEND_INVITATION": "We've sent the invitation again to '{{email}}'.",
             "ERROR_SEND_INVITATION": "We haven't sent the invitation.",
             "SUCCESS_DELETE": "We've deleted {{message}}.",
