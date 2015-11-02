@@ -1,4 +1,4 @@
-.login-main {
+.auth {
     @extend %triangled-bg;
     align-items: center;
     bottom: 0;
@@ -10,10 +10,7 @@
     right: 0;
     top: 0;
     z-index: 999;
-    fieldset {
-        margin-bottom: .5rem;
-    }
-    .login-container {
+    .auth-container {
         flex-basis: 400px;
     }
     .logo-svg {
@@ -31,7 +28,6 @@
     }
     .tagline {
         @extend %xlarge;
-        @extend %title;
         color: $white;
         line-height: 2rem;
         margin-bottom: 1rem;
@@ -40,6 +36,9 @@
     }
     form {
         margin-bottom: 1rem;
+    }
+    fieldset {
+        margin-bottom: .5rem;
     }
     .login-text,
     .register-text {
@@ -57,5 +56,41 @@
         &:hover {
             color: $white;
         }
+    }
+}
+
+.moustache {
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-name: moustache;
+    animation-timing-function: ease-in-out;
+    fill: rgba($primary, .9);
+    stroke: $primary-light;
+    stroke-width: 1px;
+    transform-origin: 50% 20%;
+    transition: .3s;
+    &:hover {
+        fill: rgba($primary-light, .9);
+        transition: .3s;
+    }
+}
+@keyframes moustache {
+    0% {
+        transform: rotate(0);
+    }
+    10% {
+        transform: rotate(-10deg);
+    }
+    30% {
+        transform: rotate(0);
+    }
+    70% {
+        transform: rotate(0);
+    }
+    80% {
+        transform: rotate(10deg);
+    }
+    90% {
+        transform: rotate(0);
     }
 }
