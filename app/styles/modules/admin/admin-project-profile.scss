@@ -44,7 +44,7 @@
     }
     .privacy-project {
         cursor: pointer;
-        height: 500px;
+        height: 50px;
         left: -10px;
         opacity: 0;
         position: absolute;
@@ -54,8 +54,8 @@
     }
     .privacy-project:checked {
         + label {
-            background: $fresh-taiga;
-            border: 1px solid $fresh-taiga;
+            background: $primary-light;
+            border: 1px solid $primary-light;
             span {
                 color: $white;
             }

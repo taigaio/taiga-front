@@ -1,6 +1,7 @@
-.duty-assigned-to {
+.ticket-assigned-to {
+    align-items: center;
     display: flex;
-    margin-top: 1rem;
+    margin-bottom: 1rem;
     position: relative;
     &:hover {
         .assigned-to {
@@ -17,30 +18,31 @@
         max-width: 2rem;
     }
     .user-avatar {
-        flex-grow: 1;
+        flex-basis: 4rem;
+        flex-shrink: 0;
         img {
-            border-radius: 8%;
             width: 100%;
         }
     }
     .assigned-to {
-        flex-grow: 3;
-        margin-left: 1rem;
+        flex-grow: 1;
+        margin-left: .5rem;
         .assigned-title {
             @extend %small;
-            color: $gray-light;
+            @extend %light;
+            color: $gray;
             display: block;
         }
         .user-assigned {
             @extend %large;
-            color: $green-taiga;
+            color: $primary;
             cursor: default;
             line-height: 1.5rem;
             &.editable {
                 cursor: pointer;
             }
             .icon {
-                vertical-align: top;
+                vertical-align: middle;
             }
         }
         .assigned-name {

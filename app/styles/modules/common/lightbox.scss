@@ -1,5 +1,9 @@
 .lightbox {
     @extend %lightbox;
+    h2 {
+        @extend %larger;
+        @extend %text;
+    }
 }
 
 .lightbox-generic-form {
@@ -17,9 +21,12 @@
         margin-bottom: 1rem;
         max-height: 9rem;
         min-height: 7rem;
+        resize: vertical;
     }
 
     label {
+        @extend %xsmall;
+        background: $whitish;
         border: 1px solid $gray-light;
         color: $grayer;
         cursor: pointer;
@@ -38,62 +45,55 @@
     }
 
     .settings {
-        align-content: flex-start;
-        align-items: stretch;
         display: flex;
-        justify-content: flex-start;
+        justify-content: center;
         margin-bottom: 1rem;
-
         fieldset {
-            flex-basis: 30%;
-            flex-grow: 1;
             margin-right: .5rem;
-            text-align: center;
+            &:hover {
+                color: $white;
+                transition: all .2s ease-in;
+            }
             &:last-child {
                 margin: 0;
             }
         }
-
         .requirement,
         .iocaine {
             &:hover {
-                background: $fresh-taiga;
-                border: 1px solid $green-taiga;
-                color: $white;
-                transition: all .2s ease-in;
+                background: $primary-light;
+                border: 1px solid $primary;
             }
         }
 
         .blocked {
-            padding: 8px 30px;
             &:hover {
                 background: $red-light;
                 border: 1px solid $red;
-                color: $white;
-                transition: all .2s ease-in;
             }
         }
-
-
         .client-requirement,
         .team-requirement,
         .iocaine-flag {
             input:checked+label {
-                background: $green-taiga;
-                border: 1px solid $green-taiga;
+                background: $primary;
+                border: 1px solid $primary;
                 color: $white;
 
             }
         }
 
         .blocking-flag {
+            label {
+                align-self: stretch;
+                display: block;
+            }
             input:checked+label {
                 background: $red;
                 border: 1px solid $red;
                 color: $white;
             }
         }
-
         input {
             display: none;
         }
@@ -107,7 +107,6 @@
         max-width: 600px;
     }
     textarea {
-        margin-bottom: 1rem;
         max-height: 12rem;
         min-height: 15rem;
     }
@@ -119,7 +118,7 @@
         flex-grow: 0;
         max-width: 600px;
     }
-    input {
+    fieldset {
         margin-bottom: 1rem;
     }
 }
@@ -143,12 +142,14 @@
                 margin-left: .5rem;
             }
         }
+        .icon-delete {
+            @extend %large;
+        }
     }
     .extra-text {
         margin-top: 1rem;
     }
-    input,
-    select {
+    fieldset {
         margin-bottom: 0;
     }
     select {
@@ -159,6 +160,7 @@
         margin-left: .5rem;
     }
     .icon-delete {
+        @extend %xlarge;
         &:hover {
             color: $red;
         }
@@ -282,6 +284,9 @@
             display: block;
         }
     }
+    .choices {
+        margin-bottom: 2rem;
+    }
     .options {
         display: flex;
         a {
@@ -312,7 +317,7 @@
         @extend %title;
     }
     .newsletter {
-        margin-top: 1rem;
+        margin: 1rem 0;
         text-align: center;
         input {
             margin-right: .5rem;
@@ -400,7 +405,7 @@
         padding: 3px;
         position: relative;
         .bar {
-            background: $fresh-taiga;
+            background: $primary-light;
             height: 24px;
             position: absolute;
             transition: width .1s linear;
@@ -465,30 +470,12 @@
         flex-grow: 0;
         width: 600px;
     }
-    .watchers {
-        margin-top: 1rem;
-        min-height: 440px;
-
-        .watcher-name {
-            flex-grow: 12;
-        }
-    }
-    .watcher-single {
-        position: relative;
-        &:hover,
-        &.active {
-            background: lighten($green-taiga, 55%);
-            cursor: pointer;
-        }
+    .user-list-single {
         &:hover {
+            background: lighten($primary, 58%);
+            cursor: pointer;
             transition: background .3s linear;
-        }
-        &.active {
-            .icon {
-                opacity: 1;
-                right: 1rem;
-                top: 1.3rem;
-            }
+            transition-delay: .2s;
         }
     }
     .more-watchers {
@@ -500,10 +487,18 @@
 }
 
 .lb-create-edit-userstory {
+    .ticket-role-points {
+        flex-grow: 1;
+        flex-shrink: 1;
+        max-width: calc(100% * (1/5) - .2rem);
+        &:first-child {
+            margin-left: 0;
+        }
+        &:nth-child(5n+5) {
+            margin-right: 0;
+        }
+    }
     .points-per-role {
         margin-bottom: 1rem;
-        li {
-            margin: .5rem .1rem;
-        }
     }
 }

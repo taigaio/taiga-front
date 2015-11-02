@@ -1,7 +1,7 @@
 ###
-# Copyright (C) 2014 Andrey Antukh <niwi@niwi.be>
-# Copyright (C) 2014 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2015 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2015 David Barragán Merino <bameda@dbarragan.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -39,12 +39,20 @@ resourceProvider = ($repo, $model, $storage) ->
     service.list = (projectId, filters) ->
         params = {"project": projectId}
         params = _.extend({}, params, filters or {})
-        return $repo.queryMany("milestones", params).then (milestones) =>
+        return $repo.queryMany("milestones", params, {}, true).then (result) =>
+            milestones = result[0]
+            headers = result[1]
+
             for m in milestones
                 uses = m.user_stories
                 uses = _.map(uses, (u) => $model.make_model("userstories", u))
                 m._attrs.user_stories = uses
-            return milestones
+
+            return {
+                milestones: milestones,
+                closed: parseInt(headers("Taiga-Info-Total-Closed-Milestones"), 10),
+                open: parseInt(headers("Taiga-Info-Total-Opened-Milestones"), 10)
+            }
 
 
     return (instance) ->

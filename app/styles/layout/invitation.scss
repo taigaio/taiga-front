@@ -11,6 +11,8 @@
         align-items: center;
         display: flex;
         flex-direction: column;
+        max-width: 800px;
+        min-width: 420px;
     }
     .avatar {
         align-items: center;
@@ -27,12 +29,12 @@
         }
     }
     .invitation-text {
-        @extend %larger;
+        @extend %large;
         @extend %light;
         color: $white;
         text-align: center;
         .project-name {
-            @extend %xxlarge;
+            @extend %xlarge;
             display: block;
             text-transform: uppercase;
         }
@@ -82,9 +84,18 @@
             }
         }
     }
+    .register-text {
+        color: $white;
+        a {
+            color: $primary;
+        }
+    }
+    .button-auth {
+        display: block;
+    }
     .button-blackish {
         &:hover {
-            background: $green-taiga;
+            background: $primary;
         }
     }
     .login-form {

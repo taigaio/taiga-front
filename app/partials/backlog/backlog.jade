@@ -7,46 +7,65 @@ div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
         include ../includes/modules/backlog-filters
     section.main.backlog
         include ../includes/components/mainTitle
-        include ../includes/components/summary
 
-        div.graphics-container.burndown-container
-            div.burndown(tg-burndown-backlog-graph)
-                include ../includes/modules/burndown
+        div.backlog-summary(tg-toggle-burndown-visibility)
+            include ../includes/components/summary
+
+            div.empty-burndown(ng-if="showGraphPlaceholder")
+                div.graph-icon
+                    include ../../svg/graph.svg
+                div.empty-text
+                    p.title(translate="BACKLOG.CUSTOMIZE_GRAPH")
+                    p {{'BACKLOG.CUSTOMIZE_GRAPH_TEXT' | translate}} #[a(href="", tg-nav="project-admin-project-profile-details:project=project.slug", title="{{'BACKLOG.CUSTOMIZE_GRAPH_TITLE' | translate}}") {{'BACKLOG.CUSTOMIZE_GRAPH_ADMIN' | translate}}]
+
+            div.graphics-container.js-burndown-graph
+                div.burndown(tg-burndown-backlog-graph)
+                    include ../includes/modules/burndown
 
         div.backlog-menu
             div.backlog-table-options
-                a.trans-button.move-to-current-sprint(href="",
-                                                      title="{{'BACKLOG.MOVE_US_TO_CURRENT_SPRINT' | translate}}",
-                                                      id="move-to-current-sprint")
+                a.trans-button.move-to-current-sprint(
+                    href=""
+                    title="{{'BACKLOG.MOVE_US_TO_CURRENT_SPRINT' | translate}}"
+                    id="move-to-current-sprint"
+                )
                     span.icon.icon-move
                     span.text(translate="BACKLOG.MOVE_US_TO_CURRENT_SPRINT")
-                a.trans-button(href="",
-                               title="{{'BACKLOG.FILTERS.TOGGLE' | translate}}",
-                               id="show-filters-button")
-                    span.icon.icon-filter
-                    span.text(translate="BACKLOG.FILTERS.SHOW")
-                a.trans-button(href="",
-                               title="{{'BACKLOG.TAGS.TOGGLE' | translate}}",
-                               id="show-tags")
-                    span.icon.icon-tag
-                    span.text(translate="BACKLOG.TAGS.SHOW")
+                a.trans-button(
+                    ng-if="userstories.length"
+                    href=""
+                    title="{{'BACKLOG.FILTERS.TOGGLE' | translate}}"
+                    id="show-filters-button"
+                    translate="BACKLOG.FILTERS.SHOW"
+                )
+                a.trans-button(
+                    ng-if="userstories.length"
+                    href=""
+                    title="{{'BACKLOG.TAGS.TOGGLE' | translate}}"
+                    id="show-tags"
+                    translate="BACKLOG.TAGS.SHOW"
+                )
             include ../includes/components/addnewus
 
-        section.backlog-table(ng-class="{'hidden': !visibleUserstories.length}")
+        section.backlog-table(ng-class="{'hidden': !userstories.length}")
             include ../includes/modules/backlog-table
 
-        div.empty.empty-backlog(ng-class="{'hidden': visibleUserstories.length}", tg-backlog-empty-sortable)
-            span.icon.icon-backlog
-            span.title(translate="BACKLOG.EMPTY")
-            a(href="", title="{{'BACKLOG.CREATE_NEW_US' | translate}}",
-              ng-click="ctrl.addNewUs('standard')",
-              tg-check-permission="add_us",
-              translate="BACKLOG.CREATE_NEW_US_EMPTY_HELP")
+        div.empty-backlog(ng-class="{'hidden': userstories.length}", tg-backlog-empty-sortable)
+            img(
+                src="/images/backlog-empty.png"
+                alt="{{'BACKLOG.EMPTY' | translate}}"
+            )
+            p.title(translate="BACKLOG.EMPTY")
+            a(href="", title="{{'BACKLOG.CREATE_NEW_US' | translate}}"
+                ng-click="ctrl.addNewUs('standard')"
+                tg-check-permission="add_us"
+                translate="BACKLOG.CREATE_NEW_US_EMPTY_HELP"
+            )
 
     sidebar.menu-secondary.sidebar
         include ../includes/modules/sprints
 
-    div.lightbox.lightbox-generic-form(tg-lb-create-edit-userstory)
+    div.lightbox.lightbox-generic-form.lb-create-edit-userstory(tg-lb-create-edit-userstory)
         include ../includes/modules/lightbox-us-create-edit
 
     div.lightbox.lightbox-generic-bulk(tg-lb-create-bulk-userstories)

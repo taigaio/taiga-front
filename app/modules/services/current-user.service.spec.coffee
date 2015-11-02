@@ -1,3 +1,22 @@
+###
+# Copyright (C) 2014-2015 Taiga Agile LLC <taiga@taiga.io>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, either version 3 of the
+# License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+#
+# File: current-user.service.spec.coffee
+###
+
 describe "tgCurrentUserService", ->
     currentUserService = provide = null
     mocks = {}
@@ -17,6 +36,17 @@ describe "tgCurrentUserService", ->
 
         provide.value "tgProjectsService", mocks.projectsService
 
+    _mockResources = () ->
+        mocks.resources = {
+            user: {
+                setUserStorage: sinon.stub(),
+                getUserStorage: sinon.stub(),
+                createUserStorage: sinon.stub()
+            }
+        }
+
+        provide.value "tgResources", mocks.resources
+
     _inject = (callback) ->
         inject (_tgCurrentUserService_) ->
             currentUserService = _tgCurrentUserService_
@@ -27,6 +57,7 @@ describe "tgCurrentUserService", ->
             provide = $provide
             _mockTgStorage()
             _mockProjectsService()
+            _mockResources()
 
             return null
 
@@ -80,14 +111,49 @@ describe "tgCurrentUserService", ->
     it "bulkUpdateProjectsOrder and reload projects", (done) ->
         fakeData = [{id: 1, id: 2}]
 
-        currentUserService._loadProjects = sinon.spy()
+        currentUserService.loadProjects = sinon.stub()
 
         mocks.projectsService.bulkUpdateProjectsOrder.withArgs(fakeData).promise().resolve()
 
         currentUserService.bulkUpdateProjectsOrder(fakeData).then () ->
-            expect(currentUserService._loadProjects).to.be.callOnce
+            expect(currentUserService.loadProjects).to.be.callOnce
 
             done()
+
+    it "loadProject and set it", (done) ->
+        user = Immutable.fromJS({id: 1, name: "fake1"})
+        project = Immutable.fromJS({id: 2, name: "fake2"})
+
+        currentUserService._user = user
+        currentUserService.setProjects = sinon.stub()
+
+        mocks.projectsService.getProjectsByUserId.withArgs(1).promise().resolve(project)
+
+        currentUserService.loadProjects().then () ->
+            expect(currentUserService.setProjects).to.have.been.calledWith(project)
+
+            done()
+
+    it "setProject", () ->
+        projectsRaw = [
+            {id: 1, name: "fake1"},
+            {id: 2, name: "fake2"},
+            {id: 3, name: "fake3"},
+            {id: 4, name: "fake4"}
+        ]
+        projectsRawById = {
+            1: {id: 1, name: "fake1"},
+            2: {id: 2, name: "fake2"},
+            3: {id: 3, name: "fake3"},
+            4: {id: 4, name: "fake4"}
+        }
+        projects = Immutable.fromJS(projectsRaw)
+
+        currentUserService.setProjects(projects)
+
+        expect(currentUserService.projects.get('all').toJS()).to.be.eql(projectsRaw)
+        expect(currentUserService.projects.get('recents').toJS()).to.be.eql(projectsRaw)
+        expect(currentUserService.projectsById.toJS()).to.be.eql(projectsRawById)
 
     it "is authenticated", () ->
         currentUserService.getUser = sinon.stub()
@@ -105,3 +171,35 @@ describe "tgCurrentUserService", ->
         currentUserService.removeUser()
 
         expect(currentUserService._user).to.be.null
+
+    it "disable joyride", () ->
+        currentUserService.disableJoyRide()
+
+        expect(mocks.resources.user.setUserStorage).to.have.been.calledWith('joyride', {
+            backlog: false,
+            kanban: false,
+            dashboard: false
+        });
+
+    it "load joyride config", (done) ->
+        mocks.resources.user.getUserStorage.withArgs('joyride').promise().resolve(true)
+
+        currentUserService.loadJoyRideConfig().then (config) ->
+            expect(config).to.be.true
+
+            done()
+
+    it "create default joyride config", (done) ->
+        mocks.resources.user.getUserStorage.withArgs('joyride').promise().reject()
+
+        currentUserService.loadJoyRideConfig().then (config) ->
+            joyride = {
+                backlog: true,
+                kanban: true,
+                dashboard: true
+            }
+
+            expect(mocks.resources.user.createUserStorage).to.have.been.calledWith('joyride', joyride)
+            expect(config).to.be.eql(joyride)
+
+            done()

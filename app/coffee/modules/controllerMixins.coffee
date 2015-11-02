@@ -1,7 +1,7 @@
 ###
-# Copyright (C) 2014 Andrey Antukh <niwi@niwi.be>
-# Copyright (C) 2014 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2015 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2015 David Barragán Merino <bameda@dbarragan.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -41,9 +41,9 @@ class PageMixin
         @scope.usersById = groupBy(@scope.users, (e) -> e.id)
 
         @scope.roles = _.sortBy(roles, "order")
-        availableRoles = _(@scope.project.memberships).map("role").uniq().value()
+        computableRoles = _(@scope.project.members).map("role").uniq().value()
         @scope.computableRoles = _(roles).filter("computable")
-                                         .filter((x) -> _.contains(availableRoles, x.id))
+                                         .filter((x) -> _.contains(computableRoles, x.id))
                                          .value()
     loadUsersAndRoles: ->
         promise = @q.all([

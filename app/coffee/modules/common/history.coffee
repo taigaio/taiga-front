@@ -1,7 +1,7 @@
 ###
-# Copyright (C) 2014 Andrey Antukh <niwi@niwi.be>
-# Copyright (C) 2014 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2015 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2015 David Barragán Merino <bameda@dbarragan.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -26,6 +26,14 @@ debounce = @.taiga.debounce
 
 module = angular.module("taigaCommon")
 
+IGNORED_FIELDS = {
+    "userstories.userstory": [
+        "watchers", "kanban_order", "backlog_order", "sprint_order", "finish_date"
+    ]
+    "tasks.task": [
+        "watchers", "us_order", "taskboard_order"
+    ]
+}
 
 #############################################################################
 ## History Directive (Main)
@@ -68,7 +76,7 @@ class HistoryController extends taiga.Controller
         return @rs.history.undeleteComment(type, objectId, activityId).then => @.loadHistory(type, objectId)
 
 
-HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $compile) ->
+HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $compile, $navUrls, $rootScope) ->
     templateChangeDiff = $template.get("common/history/history-change-diff.html", true)
     templateChangePoints = $template.get("common/history/history-change-points.html", true)
     templateChangeGeneric = $template.get("common/history/history-change-generic.html", true)
@@ -135,15 +143,6 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $c
             }
 
             return humanizedFieldNames[field] or field
-
-        getUserFullName = (userId) ->
-            return $scope.usersById[userId]?.full_name_display
-
-        getUserAvatar = (userId) ->
-            if $scope.usersById[userId]?
-                return $scope.usersById[userId].photo
-            else
-                return "/images/unnamed.png"
 
         countChanges = (comment) ->
             return _.keys(comment.values_diff).length
@@ -263,6 +262,10 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $c
                 return templateChangeGeneric({name:name, from:from, to: to})
 
         renderChangeEntries = (change) ->
+            changeModel = change.key.split(":")[0]
+            if IGNORED_FIELDS[changeModel]?
+                change.values_diff = _.removeKeys(change.values_diff, IGNORED_FIELDS[changeModel])
+
             return _.map(change.values_diff, (value, field) -> renderChangeEntry(field, value))
 
         renderChangesHelperText = (change) ->
@@ -286,8 +289,9 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $c
                 return html[0].outerHTML
 
             html = templateActivity({
-                avatar: getUserAvatar(comment.user.pk)
+                avatar: comment.user.photo
                 userFullName: comment.user.name
+                userProfileUrl: if comment.user.is_active then $navUrls.resolve("user-profile", {username: comment.user.username})  else ""
                 creationDate: moment(comment.created_at).format(getPrettyDateFormat())
                 comment: comment.comment_html
                 changesText: renderChangesHelperText(comment)
@@ -305,8 +309,9 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $c
 
         renderChange = (change) ->
             return templateActivity({
-                avatar: getUserAvatar(change.user.pk)
+                avatar: change.user.photo
                 userFullName: change.user.name
+                userProfileUrl: if change.user.is_active then $navUrls.resolve("user-profile", {username: change.user.username})  else ""
                 creationDate: moment(change.created_at).format(getPrettyDateFormat())
                 comment: change.comment_html
                 changes: renderChangeEntries(change)
@@ -359,6 +364,8 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $c
                 .start()
 
             onSuccess = ->
+                $rootScope.$broadcast("comment:new")
+
                 $ctrl.loadHistory(type, objectId).finally ->
                     currentLoading.finish()
 
@@ -384,6 +391,13 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $c
 
             target = angular.element(event.currentTarget)
             save(target)
+
+        $el.on "click", "a", (event) ->
+            target = angular.element(event.target)
+            href = target.attr('href')
+            if href && href.indexOf("#") == 0
+                event.preventDefault()
+                $('body').scrollTop($(href).offset().top)
 
         $el.on "click", ".show-more", (event) ->
             event.preventDefault()
@@ -419,8 +433,13 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $c
             $(this).addClass('active')
 
         $el.on "click", ".history-tabs li a", (event) ->
-            $el.find(".history-tabs li a").toggleClass("active")
-            $el.find(".history section").toggleClass("hidden")
+            target = angular.element(event.currentTarget)
+
+            $el.find(".history-tabs li a").removeClass("active")
+            target.addClass("active")
+
+            $el.find(".history section").addClass("hidden")
+            $el.find(".history section.#{target.data('section-class')}").removeClass("hidden")
 
         $el.on "click", ".comment-delete", debounce 2000, (event) ->
             event.preventDefault()
@@ -454,4 +473,4 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $c
 
 
 module.directive("tgHistory", ["$log", "$tgLoading", "$tgQqueue", "$tgTemplate", "$tgConfirm", "$translate",
-                               "$compile", HistoryDirective])
+                               "$compile", "$tgNavUrls", "$rootScope", HistoryDirective])

@@ -86,14 +86,44 @@ $column-margin: 0 10px 0 0;
             color: $gray-light;
             margin-right: .3rem;
             transition: color .2s linear;
-            &:hover {
-                color: $green-taiga;
-            }
             &.hfold,
             &.hunfold {
                 display: inline-block;
                 transform: rotate(90deg);
             }
+        }
+    }
+    .icon-open-eye,
+    .icon-closed-eye {
+        display: inline-block;
+        svg {
+            fill: $gray-light;
+            height: 1.1rem;
+            margin-top: .25rem;
+            width: 1.1rem;
+
+        }
+        &:hover {
+            svg {
+                fill: $primary;
+
+            }
+        }
+    }
+    .icon-open-eye {
+        .svg-eye-closed {
+            display: none;
+        }
+        .svg-eye-open {
+            display: block;
+        }
+    }
+    .icon-closed-eye {
+        .svg-eye-closed {
+            display: block;
+        }
+        .svg-eye-open {
+            display: none;
         }
     }
 }

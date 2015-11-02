@@ -1,14 +1,14 @@
 // Typography
-
 // Font face
 
-@each $font-face in OpenSans-CondLight, OpenSans-Light, opensans-regular, opensans-semibold, taiga {
+@each $font-face in OpenSans-CondLight,
+OpenSans-Light,
+opensans-regular,
+opensans-semibold,
+taiga {
     @font-face {
         font-family: '#{$font-face}';
-        src: url('../fonts/#{$font-face}.eot?#iefix') format('embedded-opentype'),
-            url('../fonts/#{$font-face}.woff') format('woff'),
-            url('../fonts/#{$font-face}.ttf')  format('truetype'),
-            url('../fonts/#{$font-face}.svg#{$font-face}') format('svg');
+        src: url('../fonts/#{$font-face}.eot?#iefix') format('embedded-opentype'), url('../fonts/#{$font-face}.woff') format('woff'), url('../fonts/#{$font-face}.ttf') format('truetype'), url('../fonts/#{$font-face}.svg#{$font-face}') format('svg');
     }
 }
 
@@ -21,6 +21,7 @@ h6 {
     color: $blackish;
     font-weight: normal;
     line-height: 1.5;
+
     a {
         font-weight: inherit;
     }
@@ -32,6 +33,7 @@ h1 {
     line-height: 1.5;
     margin-bottom: 1rem;
     text-transform: uppercase;
+
     span {
         @extend %xxlarge;
         margin-right: .5rem;
@@ -39,22 +41,27 @@ h1 {
         text-overflow: ellipsis;
         vertical-align: bottom;
         white-space: nowrap;
+
         &.green,
         &:last-child {
             flex-shrink: 0;
         }
     }
+
     .project-name {
         display: inline-block;
-        max-width: 60%;
+        margin-bottom: 0;
     }
+
     .project-name-short {
         display: inline-block;
         max-width: 40%;
     }
+
     .green {
-        color: $green-taiga;
+        color: $primary;
     }
+
     .date {
         @include ellipsis(500px);
         color: $gray-light;
@@ -71,12 +78,16 @@ h2 {
 p {
     line-height: 1.5;
     margin: 0 0 20px;
+
     img {
         margin: 0;
     }
 }
 
-em { font-style: italic; }
+em {
+    font-style: italic;
+}
+
 strong {
     font-weight: bold;
 }
@@ -92,17 +103,16 @@ hr {
 // __Links__
 a,
 a:visited {
-    color: $grayer;
     text-decoration: none;
+
     &:hover {
-        color: $green-taiga;
         transition: color .3s linear;
     }
 }
 
 // Taiga Icons
-
 [data-icon]:before {
+
     // scss-lint:disable ImportantRule
     content: attr(data-icon);
     font-family: 'taiga' !important;
@@ -118,6 +128,7 @@ a:visited {
 
 [class^='icon-']:before,
 [class*=' icon-']:before {
+
     // scss-lint:disable ImportantRule
     font-family: 'taiga' !important;
     -moz-osx-font-smoothing: grayscale;
@@ -200,92 +211,86 @@ a:visited {
     content: 'w';
 }
 .icon-drag-v:before {
-    content: 'y';
+    content: 'x';
 }
 .icon-filter:before {
-    content: 'z';
+    content: 'y';
 }
 .icon-help:before {
-    content: 'B';
+    content: 'z';
 }
 .icon-reload:before {
-    content: 'C';
+    content: 'A';
 }
 .icon-writer:before {
-    content: 'D';
+    content: 'B';
 }
 .icon-stats:before {
-    content: 'E';
+    content: 'C';
 }
 .icon-floppy:before {
-    content: 'F';
+    content: 'D';
 }
 .icon-warning-alt:before {
-    content: 'H';
+    content: 'E';
 }
 .icon-video:before {
-    content: 'I';
+    content: 'F';
 }
 .icon-bulk:before {
-    content: 'K';
+    content: 'G';
 }
 .icon-vunfold:before {
-    content: 'M';
+    content: 'H';
 }
 .icon-tasks:before {
-    content: 'O';
+    content: 'I';
 }
 .icon-kanban:before {
-    content: 'P';
+    content: 'J';
 }
 .icon-search:before {
-    content: 'Q';
+    content: 'K';
 }
 .icon-wiki:before {
     content: 'L';
 }
 .icon-team:before {
-    content: 'T';
+    content: 'M';
 }
 .icon-vfold:before {
     content: 'N';
 }
 .icon-issues:before {
-    content: 'U';
-}
-.icon-backlog:before {
-    content: 'R';
+    content: 'O';
 }
 .icon-iocaine:before {
-    content: 'S';
-}
-.icon-closed-eye:before {
-    content: 'V';
-}
-.icon-open-eye:before {
-    content: 'W';
+    content: 'P';
 }
 .icon-archive:before {
-    content: 'X';
+    content: 'Q';
 }
 .icon-capslock:before {
-    content: 'Y';
+    content: 'R';
 }
 .icon-upload:before {
-    content: 'Z';
+    content: 'S';
 }
 .icon-github:before {
-    content: 'A';
+    content: 'T';
 }
 .icon-timeline:before {
-    content: 'x';
+    content: 'U';
+}
+.icon-scrum:before {
+    content: 'V';
 }
 .icon-project:before {
-    content: 'G';
+    content: 'W';
 }
-.icon-star-fill:before {
-    content: 'J';
+.icon-heart:before {
+    content: 'X';
 }
-.icon-star:before {
-    content: '0';
+.icon-eye:before {
+    content: 'Y';
 }

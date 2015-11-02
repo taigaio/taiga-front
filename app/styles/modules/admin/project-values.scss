@@ -33,7 +33,7 @@
     }
     .project-values-row {
         &:hover {
-            background: lighten($green-taiga, 60%);
+            background: lighten($primary, 60%);
             cursor: move;
             transition: background .2s ease-in;
             .icon {
@@ -51,12 +51,6 @@
 .project-values-value {
     flex-basis: 0;
     flex-grow: 1;
-    .checksley-error-list {
-        left: 0;
-        right: auto;
-        top: 35px;
-        white-space: nowrap;
-    }
 }
 
 .project-values-isclosed,
@@ -72,7 +66,7 @@
         color: $gray;
         margin-right: .5rem;
         &:hover {
-            color: $green-taiga;
+            color: $primary;
             transition: color .3s linear;
             .icon-delete {
                 color: $red;

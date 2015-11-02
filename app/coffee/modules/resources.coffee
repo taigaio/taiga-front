@@ -1,7 +1,7 @@
 ###
-# Copyright (C) 2014 Andrey Antukh <niwi@niwi.be>
-# Copyright (C) 2014 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2015 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2015 David Barragán Merino <bameda@dbarragan.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -37,8 +37,11 @@ urls = {
     "users-change-password": "/users/change_password"
     "users-change-email": "/users/change_email"
     "users-cancel-account": "/users/cancel"
-    "contacts": "/users/%s/contacts"
-    "stats": "/users/%s/stats"
+    "user-stats": "/users/%s/stats"
+    "user-liked": "/users/%s/liked"
+    "user-voted": "/users/%s/voted"
+    "user-watched": "/users/%s/watched"
+    "user-contacts": "/users/%s/contacts"
 
     # User - Notification
     "permissions": "/permissions"
@@ -63,6 +66,10 @@ urls = {
     "project-templates": "/project-templates"
     "project-modules": "/projects/%s/modules"
     "bulk-update-projects-order": "/projects/bulk_update_order"
+    "project-like": "/projects/%s/like"
+    "project-unlike": "/projects/%s/unlike"
+    "project-watch": "/projects/%s/watch"
+    "project-unwatch": "/projects/%s/unwatch"
 
     # Project Values - Choises
     "userstory-statuses": "/userstory-statuses"
@@ -82,15 +89,29 @@ urls = {
     "bulk-update-us-backlog-order": "/userstories/bulk_update_backlog_order"
     "bulk-update-us-sprint-order": "/userstories/bulk_update_sprint_order"
     "bulk-update-us-kanban-order": "/userstories/bulk_update_kanban_order"
+    "userstories-filters": "/userstories/filters_data"
+    "userstory-upvote": "/userstories/%s/upvote"
+    "userstory-downvote": "/userstories/%s/downvote"
+    "userstory-watch": "/userstories/%s/watch"
+    "userstory-unwatch": "/userstories/%s/unwatch"
 
     # Tasks
     "tasks": "/tasks"
     "bulk-create-tasks": "/tasks/bulk_create"
     "bulk-update-task-taskboard-order": "/tasks/bulk_update_taskboard_order"
+    "task-upvote": "/tasks/%s/upvote"
+    "task-downvote": "/tasks/%s/downvote"
+    "task-watch": "/tasks/%s/watch"
+    "task-unwatch": "/tasks/%s/unwatch"
 
     # Issues
     "issues": "/issues"
     "bulk-create-issues": "/issues/bulk_create"
+    "issues-filters": "/issues/filters_data"
+    "issue-upvote": "/issues/%s/upvote"
+    "issue-downvote": "/issues/%s/downvote"
+    "issue-watch": "/issues/%s/watch"
+    "issue-unwatch": "/issues/%s/unwatch"
 
     # Wiki pages
     "wiki": "/wiki"
@@ -147,6 +168,10 @@ urls = {
 
     # locales
     "locales": "/locales"
+
+    # Application tokens
+    "applications": "/applications"
+    "application-tokens": "/application-tokens"
 }
 
 # Initialize api urls service

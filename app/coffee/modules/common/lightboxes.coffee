@@ -1,7 +1,7 @@
 ###
-# Copyright (C) 2014 Andrey Antukh <niwi@niwi.be>
-# Copyright (C) 2014 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2015 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2015 David Barragán Merino <bameda@dbarragan.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -39,13 +39,14 @@ class LightboxService extends taiga.Service
         lightboxContent = $el.children().not(".close")
         lightboxContent.hide()
 
-        $el.css('display', 'flex')
+        @animationFrame.add ->
+            $el.css('display', 'flex')
 
-        @animationFrame.add =>
+        @animationFrame.add ->
             $el.addClass("open")
 
-            @animationFrame.add ->
-                $el.find('input,textarea').first().focus()
+        @animationFrame.add ->
+            $el.find('input,textarea').first().focus()
 
         @animationFrame.add =>
             lightboxContent.show()
@@ -475,10 +476,9 @@ AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationServic
             }
 
             html = usersTemplate(ctx)
-
             html = $compile(html)($scope)
 
-            $el.find("div.watchers").html(html)
+            $el.find(".assigned-to-list").html(html)
 
         closeLightbox = () ->
             lightboxKeyboardNavigationService.stop()
@@ -499,7 +499,7 @@ AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationServic
                 render(selectedUser, searchingText)
                 $el.find('input').focus()
 
-        $el.on "click", ".watcher-single", (event) ->
+        $el.on "click", ".user-list-single", (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
 
@@ -543,7 +543,7 @@ module.directive("tgLbAssignedto", ["lightboxService", "lightboxKeyboardNavigati
 ## Watchers Lightbox directive
 #############################################################################
 
-WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationService, $template) ->
+WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationService, $template, $compile) ->
     link = ($scope, $el, $attrs) ->
         selectedItem = null
         usersTemplate = $template.get("common/lightbox/lightbox-assigned-to-users.html", true)
@@ -572,7 +572,8 @@ WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationS
             }
 
             html = usersTemplate(ctx)
-            $el.find("div.watchers").html(html)
+            html = $compile(html)($scope)
+            $el.find(".ticket-watchers").html(html)
 
         closeLightbox = () ->
             lightboxKeyboardNavigationService.stop()
@@ -596,7 +597,7 @@ WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationS
             render(users)
             $el.find("input").focus()
 
-        $el.on "click", ".watcher-single", debounce 2000, (event) ->
+        $el.on "click", ".user-list-single", debounce 2000, (event) ->
             closeLightbox()
 
             event.preventDefault()
@@ -622,4 +623,37 @@ WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationS
         link:link
     }
 
-module.directive("tgLbWatchers", ["$tgRepo", "lightboxService", "lightboxKeyboardNavigationService", "$tgTemplate", WatchersLightboxDirective])
+module.directive("tgLbWatchers", ["$tgRepo", "lightboxService", "lightboxKeyboardNavigationService", "$tgTemplate", "$compile", WatchersLightboxDirective])
+
+
+#############################################################################
+## Attachment Preview Lighbox
+#############################################################################
+
+AttachmentPreviewLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationService, $template, $compile) ->
+    link = ($scope, $el, attrs) ->
+        template = $template.get("common/lightbox/lightbox-attachment-preview.html", true)
+
+        $scope.$on "attachment:preview", (event, attachment) ->
+            lightboxService.open($el)
+            render(attachment)
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+        render = (attachment) ->
+            ctx = {
+                url: attachment.url,
+                title: attachment.description,
+                name: attachment.name
+            }
+
+            html = template(ctx)
+            html = $compile(html)($scope)
+            $el.html(html)
+
+    return {
+        link: link
+    }
+
+module.directive("tgLbAttachmentPreview", ["$tgRepo", "lightboxService", "lightboxKeyboardNavigationService", "$tgTemplate", "$compile", AttachmentPreviewLightboxDirective])

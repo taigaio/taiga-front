@@ -1,3 +1,22 @@
+###
+# Copyright (C) 2014-2015 Taiga Agile LLC <taiga@taiga.io>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, either version 3 of the
+# License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+#
+# File: user.service.spec.coffee
+###
+
 describe "UserService", ->
     userService = null
     $q = null
@@ -31,19 +50,6 @@ describe "UserService", ->
         module "taigaCommon"
         _mocks()
         _inject()
-
-    it "get user contacts", () ->
-        userId = 2
-
-        contacts = [
-            {id: 1},
-            {id: 2},
-            {id: 3}
-        ]
-
-        mocks.resources.users.getContacts.withArgs(userId).returns(true)
-
-        expect(userService.getContacts(userId)).to.be.true
 
     it "attach user contacts to projects", (done) ->
         userId = 2
@@ -84,6 +90,75 @@ describe "UserService", ->
 
         userService.getContacts(userId).then (_contacts_) ->
             expect(_contacts_).to.be.eql(contacts)
+            done()
+
+        $rootScope.$apply()
+
+    it "get user liked", (done) ->
+        userId = 2
+        pageNumber = 1
+        objectType = null
+        textQuery = null
+
+        liked = [
+            {id: 1},
+            {id: 2},
+            {id: 3}
+        ]
+
+        mocks.resources.users.getLiked = sinon.stub()
+        mocks.resources.users.getLiked.withArgs(userId, pageNumber, objectType, textQuery)
+                                      .promise()
+                                      .resolve(liked)
+
+        userService.getLiked(userId, pageNumber, objectType, textQuery).then (_liked_) ->
+            expect(_liked_).to.be.eql(liked)
+            done()
+
+        $rootScope.$apply()
+
+    it "get user voted", (done) ->
+        userId = 2
+        pageNumber = 1
+        objectType = null
+        textQuery = null
+
+        voted = [
+            {id: 1},
+            {id: 2},
+            {id: 3}
+        ]
+
+        mocks.resources.users.getVoted = sinon.stub()
+        mocks.resources.users.getVoted.withArgs(userId, pageNumber, objectType, textQuery)
+                                      .promise()
+                                      .resolve(voted)
+
+        userService.getVoted(userId, pageNumber, objectType, textQuery).then (_voted_) ->
+            expect(_voted_).to.be.eql(voted)
+            done()
+
+        $rootScope.$apply()
+
+    it "get user watched", (done) ->
+        userId = 2
+        pageNumber = 1
+        objectType = null
+        textQuery = null
+
+        watched = [
+            {id: 1},
+            {id: 2},
+            {id: 3}
+        ]
+
+        mocks.resources.users.getWatched = sinon.stub()
+        mocks.resources.users.getWatched.withArgs(userId, pageNumber, objectType, textQuery)
+                                        .promise()
+                                        .resolve(watched)
+
+        userService.getWatched(userId, pageNumber, objectType, textQuery).then (_watched_) ->
+            expect(_watched_).to.be.eql(watched)
             done()
 
         $rootScope.$apply()

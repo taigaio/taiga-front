@@ -1,7 +1,7 @@
 ###
-# Copyright (C) 2014 Andrey Antukh <niwi@niwi.be>
-# Copyright (C) 2014 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2015 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2015 David Barragán Merino <bameda@dbarragan.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -66,9 +66,11 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
             access: {
                 requiresLogin: true
             },
+            loader: true,
             title: "HOME.PAGE_TITLE",
+            loader: true,
             description: "HOME.PAGE_DESCRIPTION",
-            loader: true
+            joyride: "dashboard"
         }
     )
 
@@ -100,7 +102,8 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         {
             templateUrl: "search/search.html",
             reloadOnSearch: false,
-            section: "search"
+            section: "search",
+            loader: true
         }
     )
 
@@ -108,7 +111,8 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         {
             templateUrl: "backlog/backlog.html",
             loader: true,
-            section: "backlog"
+            section: "backlog",
+            joyride: "backlog"
         }
     )
 
@@ -116,7 +120,8 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         {
             templateUrl: "kanban/kanban.html",
             loader: true,
-            section: "kanban"
+            section: "kanban",
+            joyride: "kanban"
         }
     )
 
@@ -333,29 +338,25 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     $routeProvider.when("/login",
         {
             templateUrl: "auth/login.html",
-            title: "LOGIN.PAGE_TITLE"
-            description: "LOGIN.PAGE_DESCRIPTION"
+            title: "LOGIN.PAGE_TITLE",
+            description: "LOGIN.PAGE_DESCRIPTION",
+            disableHeader: true
         }
     )
     $routeProvider.when("/register",
         {
             templateUrl: "auth/register.html",
             title: "REGISTER.PAGE_TITLE",
-            description: "REGISTER.PAGE_DESCRIPTION"
+            description: "REGISTER.PAGE_DESCRIPTION",
+            disableHeader: true
         }
     )
     $routeProvider.when("/forgot-password",
         {
             templateUrl: "auth/forgot-password.html",
             title: "FORGOT_PASSWORD.PAGE_TITLE",
-            description: "FORGOT_PASSWORD.PAGE_DESCRIPTION"
-        }
-    )
-    $routeProvider.when("/change-password",
-        {
-            templateUrl: "auth/change-password-from-recovery.html",
-            title: "CHANGE_PASSWORD.PAGE_TITLE",
-            description: "CHANGE_PASSWORD.PAGE_TITLE",
+            description: "FORGOT_PASSWORD.PAGE_DESCRIPTION",
+            disableHeader: true
         }
     )
     $routeProvider.when("/change-password/:token",
@@ -363,13 +364,26 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
             templateUrl: "auth/change-password-from-recovery.html",
             title: "CHANGE_PASSWORD.PAGE_TITLE",
             description: "CHANGE_PASSWORD.PAGE_TITLE",
+            disableHeader: true
         }
     )
     $routeProvider.when("/invitation/:token",
         {
             templateUrl: "auth/invitation.html",
             title: "INVITATION.PAGE_TITLE",
-            description: "INVITATION.PAGE_DESCRIPTION"
+            description: "INVITATION.PAGE_DESCRIPTION",
+            disableHeader: true
+        }
+    )
+    $routeProvider.when("/external-apps",
+        {
+            templateUrl: "external-apps/external-app.html",
+            title: "EXTERNAL_APP.PAGE_TITLE",
+            description: "EXTERNAL_APP.PAGE_DESCRIPTION",
+            controller: "ExternalApp",
+            controllerAs: "vm",
+            disableHeader: true,
+            mobileViewport: true
         }
     )
 
@@ -405,13 +419,13 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     # Add next param when user try to access to a secction need auth permissions.
     authHttpIntercept = ($q, $location, $navUrls, $lightboxService) ->
         httpResponseError = (response) ->
-            if response.status == 0
+            if response.status == 0 || response.status == -1
                 $lightboxService.closeAll()
                 $location.path($navUrls.resolve("error"))
                 $location.replace()
-            else if response.status == 401
-                nextPath = $location.path()
-                $location.url($navUrls.resolve("login")).search("next=#{nextPath}")
+            else if response.status == 401 and $location.url().indexOf('/login') == -1
+                nextUrl = encodeURIComponent($location.url())
+                $location.url($navUrls.resolve("login")).search("next=#{nextUrl}")
 
             return $q.reject(response)
 
@@ -499,9 +513,13 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         .addInterpolation('$translateMessageFormatInterpolation')
         .preferredLanguage(preferedLangCode)
 
-    if not window.taigaConfig.debugInfo
-        $translateProvider.fallbackLanguage(preferedLangCode)
+    $translateProvider.fallbackLanguage(preferedLangCode)
 
+    # decoratos
+    decorators = _.where(@.taigaContribPlugins, {"type": "decorator"})
+
+    _.each decorators, (decorator) ->
+        $provide.decorator decorator.provider, decorator.decorator
 
     # decoratos
     decorators = _.where(@.taigaContribPlugins, {"type": "decorator"})
@@ -544,7 +562,7 @@ i18nInit = (lang, $translate) ->
     checksley.updateMessages('default', messages)
 
 
-init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $navUrls, appMetaService, projectService, loaderService) ->
+init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $navUrls, appMetaService, projectService, loaderService, navigationBarService) ->
     $log.debug("Initialize application")
 
     # Taiga Plugins
@@ -588,7 +606,7 @@ init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $na
         projectService.setSection(next.section)
 
         if next.params.pslug
-            projectService.setProject(next.params.pslug)
+            projectService.setProjectBySlug(next.params.pslug)
         else
             projectService.cleanProject()
 
@@ -597,6 +615,17 @@ init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $na
             description = $translate.instant(next.description or "")
             appMetaService.setAll(title, description)
 
+        if next.mobileViewport
+            appMetaService.addMobileViewport()
+          else
+            appMetaService.removeMobileViewport()
+
+        if next.disableHeader
+            navigationBarService.disableHeader()
+        else
+            navigationBarService.enableHeader()
+
+pluginsWithModule = _.filter(@.taigaContribPlugins, (plugin) -> plugin.module)
 
 pluginsWithModule = _.filter(@.taigaContribPlugins, (plugin) -> plugin.module)
 
@@ -634,6 +663,7 @@ modules = [
     "taigaProfile",
     "taigaHome",
     "taigaUserTimeline",
+    "taigaExternalApps",
 
     # template cache
     "templates",
@@ -641,6 +671,7 @@ modules = [
     # Vendor modules
     "ngRoute",
     "ngAnimate",
+    "ngAria",
     "pascalprecht.translate",
     "infinite-scroll",
     "tgRepeat"
@@ -673,5 +704,7 @@ module.run([
     "tgAppMetaService",
     "tgProjectService",
     "tgLoader",
+    "tgNavigationBarService",
+    "$route",
     init
 ])

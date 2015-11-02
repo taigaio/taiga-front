@@ -1,0 +1,80 @@
+section.profile-favs
+    div.profile-filter
+        div.searchbox(ng-if="::vm.enableFilterByTextQuery")
+            span.icon-search
+            input(
+                type="text"
+                ng-model="vm.q"
+                ng-change="vm.filterByTextQuery()"
+                placeholder="{{ 'USER.PROFILE_FAVS.FILTER_INPUT_PLACEHOLDER'|translate }}"
+            )
+
+        div.filters
+            a(
+                href=""
+                ng-if="::vm.enableFilterByAll"
+                ng-click="vm.showAll()"
+                ng-class="{active: vm.type === null}"
+                title="{{ 'USER.PROFILE_FAVS.FILTER_TYPE_ALL_TITLE'|translate }}"
+                translate="{{ 'USER.PROFILE_FAVS.FILTER_TYPE_ALL'|translate }}"
+            )
+            a(
+                href=""
+                ng-if="::vm.enableFilterByProjects"
+                ng-click="vm.showProjectsOnly()"
+                ng-class="{active: vm.type === 'project'}"
+                title="{{ 'USER.PROFILE_FAVS.FILTER_TYPE_PROJECTS_TITLE'|translate }}"
+                translate="{{ 'USER.PROFILE_FAVS.FILTER_TYPE_PROJECTS'|translate }}"
+            )
+            a(
+                href=""
+                ng-if="::vm.enableFilterByUserStories"
+                ng-click="vm.showUserStoriesOnly()"
+                ng-class="{active: vm.type === 'userstory'}",
+                title="{{ 'USER.PROFILE_FAVS.FILTER_TYPE_USER_STORIES_TITLE'|translate }}"
+                translate="{{ 'USER.PROFILE_FAVS.FILTER_TYPE_USER_STORIES'|translate }}"
+            )
+            a(
+                href=""
+                ng-if="::vm.enableFilterByTasks"
+                ng-click="vm.showTasksOnly()"
+                ng-class="{active: vm.type === 'task'}"
+                title="{{ 'USER.PROFILE_FAVS.FILTER_TYPE_TASKS_TITLE'|translate }}"
+                translate="{{ 'USER.PROFILE_FAVS.FILTER_TYPE_TASKS'|translate }}"
+            )
+            a(
+                href=""
+                ng-if="::vm.enableFilterByIssues"
+                ng-click="vm.showIssuesOnly()"
+                ng-class="{active: vm.type === 'issue'}"
+                title="{{ 'USER.PROFILE_FAVS.FILTER_TYPE_ISSUES_TITLE'|translate }}"
+                translate="{{ 'USER.PROFILE_FAVS.FILTER_TYPE_ISSUES'|translate }}"
+            )
+
+    div(
+        infinite-scroll="vm.loadItems()"
+        infinite-scroll-distance="2"
+        infinite-scroll-disabled="vm.scrollDisabled"
+    )
+        div(
+            tg-repeat="item in vm.items track by $index"
+            ng-switch="item.get('type')"
+        )
+            div(ng-switch-when="project", tg-fav-item="item", item-type="project")
+            div(ng-switch-when="userstory", tg-fav-item="item", item-type="userstory")
+            div(ng-switch-when="task", tg-fav-item="item", item-type="task")
+            div(ng-switch-when="issue", tg-fav-item="item", item-type="issue")
+
+    div(ng-if="vm.isLoading")
+        div.spin
+            img(
+                src="/svg/spinner-circle.svg"
+                alt="{{ 'COMMON.LOADING'|translate }}"
+            )
+
+    .empty-search-results(ng-if="vm.hasNoResults && !vm.isLoading")
+        img(
+            src="../../images/search-empty.png"
+            alt="{{ 'USER.PROFILE_FAVS.EMPTY_TITLE' | translate }}"
+        )
+        p.title {{ 'USER.PROFILE_FAVS.EMPTY_TITLE' | translate }}

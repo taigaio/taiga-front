@@ -1,27 +1,65 @@
 div.wrapper
     tg-project-menu
-    div.main.centered.single-project
+    div.centered.single-project
         section.single-project-intro
-            h1
-                span.green(class="project-name") {{::vm.project.get("name")}}
-                span.private(ng-if="::vm.project.get('is_private')", title="{{'PROJECT.PRIVATE' | translate}}")
-                    include ../../../svg/lock.svg
+            div.intro-options
+                h1
+                    span.project-name {{::vm.project.get("name")}}
+                    span.private(
+                        ng-if="::vm.project.get('is_private')"
+                        title="{{'PROJECT.PRIVATE' | translate}}"
+                    )
+                        include ../../../svg/lock.svg
+
+                //- Like and wacht buttons for authenticated users
+                div.track-buttons-container(ng-if="vm.user")
+                    tg-like-project-button(project="vm.project")
+                    tg-watch-project-button(project="vm.project")
+
+                //- Like and wacht buttons for anonymous users
+                div.track-container(ng-if="!vm.user")
+                    .list-itemtype-track
+                        span.list-itemtype-track-likers(
+                            title="{{ 'PROJECT.LIKE_BUTTON.COUNTER_TITLE'|translate:{total:vm.project.get(\"total_fans\")||0}:'messageformat' }}"
+                        )
+                            span.icon
+                                include ../../../svg/like.svg
+                            span {{ ::vm.project.get('total_fans') }}
+
+                        span.list-itemtype-track-watchers(
+                            title="{{ 'PROJECT.WATCH_BUTTON.COUNTER_TITLE'|translate:{total:vm.project.get(\"total_watchers\")||0}:'messageformat' }}"
+                        )
+                            span.icon
+                                include ../../../svg/watch.svg
+                            span {{ ::vm.project.get('total_watchers') }}
+
             p.description {{vm.project.get('description')}}
 
             div.single-project-tags.tags-container(ng-if="::vm.project.get('tags').size")
-                span.tag(style='border-left: 5px solid {{::tag.get("color")}};', tg-repeat="tag in ::vm.project.get('colorized_tags')")
+                span.tag(
+                    style='border-left: 5px solid {{::tag.get("color")}};',
+                    tg-repeat="tag in ::vm.project.get('colorized_tags')"
+                )
                     span.tag-name {{::tag.get('name')}}
 
         div.project-data
             section.timeline(ng-if="vm.project")
                 div(tg-user-timeline, projectId="vm.project.get('id')")
+
             section.involved-data
                 h2.title {{"PROJECT.SECTION.TEAM" | translate}}
                 ul.involved-team
-                    a(tg-nav="user-profile:username=member.get('username')", title="{{::member.get('full_name')}}", tg-repeat="member in ::vm.project.get('memberships')")
-                        img(ng-src="{{::member.get('photo')}}", alt="{{::member.get('full_name')}}")
-
-                // h2.title Organizations
-                // div.involved-organization
-                //     a(href="", title="User Name")
-                //         img(src="https://s3.amazonaws.com/uifaces/faces/twitter/dan_higham/48.jpg", alt="{{member.full_name}}")
+                    li(tg-repeat="member in vm.members")
+                        a(
+                            tg-nav="user-profile:username=member.get('username')",
+                            title="{{::member.get('full_name')}}"
+                        )
+                            img(ng-src="{{::member.get('photo')}}", alt="{{::member.get('full_name')}}")
+            //-
+                h2.title Organizations
+                div.involved-organization
+                     a(href="", title="User Name")
+                        img(
+                             src="https://s3.amazonaws.com/uifaces/faces/twitter/dan_higham/48.jpg"
+                             alt="{{member.full_name}}"
+                        )

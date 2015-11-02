@@ -1,7 +1,7 @@
 ###
-# Copyright (C) 2014 Andrey Antukh <niwi@niwi.be>
-# Copyright (C) 2014 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2015 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2015 David Barragán Merino <bameda@dbarragan.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -177,13 +177,13 @@ WebhookDirective = ($rs, $repo, $confirm, $loading, $translate) ->
             title = $translate.instant("ADMIN.WEBHOOKS.DELETE")
             message = $translate.instant("ADMIN.WEBHOOKS.WEBHOOK_NAME", {name: webhook.name})
 
-            $confirm.askOnDelete(title, message).then (finish) =>
+            $confirm.askOnDelete(title, message).then (askResponse) =>
                 onSucces = ->
-                    finish()
+                    askResponse.finish()
                     $scope.$emit("webhooks:reload")
 
                 onError = ->
-                    finish(false)
+                    askResponse.finish(false)
                     $confirm.notify("error")
 
                 $repo.remove(webhook).then(onSucces, onError)

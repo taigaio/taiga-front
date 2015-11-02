@@ -1,7 +1,7 @@
 ###
-# Copyright (C) 2014 Andrey Antukh <niwi@niwi.be>
-# Copyright (C) 2014 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2015 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2015 David Barragán Merino <bameda@dbarragan.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -86,7 +86,6 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.projectId = project.id
             @scope.project = project
             @scope.$emit('project:loaded', project)
-            @scope.membersById = groupBy(project.memberships, (x) -> x.user)
             return project
 
     loadWiki: ->
@@ -119,7 +118,7 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
     loadInitialData: ->
         promise = @.loadProject()
         return promise.then (project) =>
-            @.fillUsersAndRoles(project.users, project.roles)
+            @.fillUsersAndRoles(project.members, project.roles)
             @q.all([@.loadWikiLinks(), @.loadWiki()]).then () =>
 
 
@@ -127,15 +126,15 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         title = @translate.instant("WIKI.DELETE_LIGHTBOX_TITLE")
         message = @scope.wikiTitle
 
-        @confirm.askOnDelete(title, message).then (finish) =>
+        @confirm.askOnDelete(title, message).then (askResponse) =>
             onSuccess = =>
-                finish()
+                askResponse.finish()
                 ctx = {project: @scope.projectSlug}
                 @location.path(@navUrls.resolve("project-wiki", ctx))
                 @confirm.notify("success")
 
             onError = =>
-                finish(false)
+                askResponse.finish(false)
                 @confirm.notify("error")
 
             @repo.remove(@scope.wiki).then onSuccess, onError
@@ -158,7 +157,7 @@ WikiSummaryDirective = ($log, $template, $compile, $translate) ->
                 user = $scope.usersById[wiki.last_modifier]
 
             if user is undefined
-                user = {name: "unknown", imgUrl: "/images/unnamed.png"}
+                user = {name: "unknown", imgUrl: "/images/user-noimage.png"}
             else
                 user = {name: user.full_name_display, imgUrl: user.photo}
 
@@ -236,8 +235,6 @@ EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $
             onError = ->
                 $confirm.notify("error")
 
-            console.log $el.find('.save-container')
-
             currentLoading = $loading()
                 .removeClasses("icon-floppy")
                 .target($el.find('.icon-floppy'))
@@ -250,6 +247,13 @@ EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $
 
             promise.finally ->
                 currentLoading.finish()
+
+        $el.on "click", "a", (event) ->
+            target = angular.element(event.target)
+            href = target.attr('href')
+            if href.indexOf("#") == 0
+                event.preventDefault()
+                $('body').scrollTop($(href).offset().top)
 
         $el.on "mousedown", ".view-wiki-content", (event) ->
             target = angular.element(event.target)

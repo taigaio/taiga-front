@@ -1,5 +1,7 @@
 div.backlog-table-header
     div.row.backlog-table-title
+        div.input(tg-check-permission="modify_us")
+        div.votes(translate="COMMON.FIELDS.VOTES")
         div.user-stories(translate="BACKLOG.TABLE.COLUMN_US")
         div.status(translate="COMMON.FIELDS.STATUS")
         div.points(tg-us-role-points-selector, title="{{'BACKLOG.TABLE.TITLE_COLUMN_POINTS' | translate}}")

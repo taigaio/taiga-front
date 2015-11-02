@@ -1,3 +1,22 @@
+###
+# Copyright (C) 2014-2015 Taiga Agile LLC <taiga@taiga.io>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, either version 3 of the
+# License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+#
+# File: user-timeline-item-title.service.coffee
+###
+
 unslugify = @.taiga.unslugify
 
 class UserTimelineItemTitle
@@ -14,69 +33,93 @@ class UserTimelineItemTitle
         'severity': 'ISSUES.FIELDS.SEVERITY',
         'priority': 'ISSUES.FIELDS.PRIORITY',
         'type': 'ISSUES.FIELDS.TYPE',
-        'is_iocaine': 'TASK.FIELDS.IS_IOCAINE'
+        'is_iocaine': 'TASK.FIELDS.IS_IOCAINE',
+        'is_blocked': 'COMMON.FIELDS.IS_BLOCKED'
+    }
+
+    _params: {
+        username: (timeline, event) ->
+            user = timeline.getIn(['data', 'user'])
+
+            if user.get('is_profile_visible')
+                title_attr = @translate.instant('COMMON.SEE_USER_PROFILE', {username: user.get('username')})
+                url = "user-profile:username=timeline.getIn(['data', 'user', 'username'])"
+
+                return @._getLink(url, user.get('name'), title_attr)
+            else
+                return @._getUsernameSpan(user.get('name'))
+
+        field_name: (timeline, event) ->
+            field_name = timeline.getIn(['data', 'value_diff', 'key'])
+
+            return @translate.instant(@._fieldTranslationKey[field_name])
+
+        project_name: (timeline, event) ->
+            url = "project:project=timeline.getIn(['data', 'project', 'slug'])"
+
+            return @._getLink(url, timeline.getIn(["data", "project", "name"]))
+
+        new_value: (timeline, event) ->
+            if _.isArray(timeline.getIn(["data", "value_diff", "value"]).toJS())
+                value = timeline.getIn(["data", "value_diff", "value"]).get(1)
+
+                # assigned to unasigned
+                if value == null && timeline.getIn(["data", "value_diff", "key"]) == 'assigned_to'
+                    value = @translate.instant('ACTIVITY.VALUES.UNASSIGNED')
+
+                return value
+            else
+                return timeline.getIn(["data", "value_diff", "value"]).first().get(1)
+
+        sprint_name: (timeline, event) ->
+            url = "project-taskboard:project=timeline.getIn(['data', 'project', 'slug']),sprint=timeline.getIn(['data', 'milestone', 'slug'])"
+
+            return @._getLink(url, timeline.getIn(['data', 'milestone', 'name']))
+
+        us_name: (timeline, event) ->
+            obj = @._getTimelineObj(timeline, event).get('userstory')
+
+            event_us = {obj: 'parent_userstory'}
+            url = @._getDetailObjUrl(event_us)
+
+            text = '#' + obj.get('ref') + ' ' + obj.get('subject')
+
+            return @._getLink(url, text)
+
+        obj_name: (timeline, event) ->
+            obj = @._getTimelineObj(timeline, event)
+            url = @._getDetailObjUrl(event)
+
+            if event.obj == 'wikipage'
+                text = unslugify(obj.get('slug'))
+            else if event.obj == 'milestone'
+                text = obj.get('name')
+            else
+                text = '#' + obj.get('ref') + ' ' + obj.get('subject')
+
+            return @._getLink(url, text)
+
+        role_name: (timeline, event) ->
+            return timeline.getIn(['data', 'value_diff', 'value']).keySeq().first()
     }
 
     constructor: (@translate) ->
 
 
     _translateTitleParams: (param, timeline, event) ->
-        if param == "username"
-            user = timeline.data.user
-            title_attr = @translate.instant('COMMON.SEE_USER_PROFILE', {username: user.username})
-            url = 'user-profile:username=vm.activity.user.username'
-
-            return @._getLink(url, user.name, title_attr)
-
-        else if param == 'field_name'
-            field_name = Object.keys(timeline.data.values_diff)[0]
-
-            return @translate.instant(@._fieldTranslationKey[field_name])
-
-        else if param == 'project_name'
-            url = 'project:project=vm.activity.project.slug'
-
-            return @._getLink(url, timeline.data.project.name)
-
-        else if param == 'sprint_name'
-            url = 'project-taskboard:project=vm.activity.project.slug,sprint=vm.activity.sprint.slug'
-
-            return @._getLink(url, timeline.data.milestone.name)
-
-        else if param == 'us_name'
-            obj = @._getTimelineObj(timeline, event).userstory
-
-            event_us = {obj: 'parent_userstory'}
-            url = @._getDetailObjUrl(event_us)
-
-            text = '#' + obj.ref + ' ' + obj.subject
-
-            return @._getLink(url, text)
-
-        else if param == 'obj_name'
-            obj = @._getTimelineObj(timeline, event)
-            url = @._getDetailObjUrl(event)
-
-            if event.obj == 'wikipage'
-                text = unslugify(obj.slug)
-            else if event.obj == 'milestone'
-                text = obj.name
-            else
-                text = '#' + obj.ref + ' ' + obj.subject
-
-            return @._getLink(url, text)
+        return @._params[param].call(this, timeline, event)
 
     _getTimelineObj: (timeline, event) ->
-        return timeline.data[event.obj]
+        return timeline.getIn(['data', event.obj])
 
     _getDetailObjUrl: (event) ->
         url = {
-            "issue": ["project-issues-detail", ":project=vm.activity.project.slug,ref=vm.activity.obj.ref"],
-            "wikipage": ["project-wiki-page", ":project=vm.activity.project.slug,slug=vm.activity.obj.slug"],
-            "task": ["project-tasks-detail", ":project=vm.activity.project.slug,ref=vm.activity.obj.ref"],
-            "userstory": ["project-userstories-detail", ":project=vm.activity.project.slug,ref=vm.activity.obj.ref"],
-            "parent_userstory": ["project-userstories-detail", ":project=vm.activity.project.slug,ref=vm.activity.obj.userstory.ref"],
-            "milestone": ["project-taskboard", ":project=vm.activity.project.slug,sprint=vm.activity.obj.slug"]
+            "issue": ["project-issues-detail", ":project=timeline.getIn(['data', 'project', 'slug']),ref=timeline.getIn(['obj', 'ref'])"],
+            "wikipage": ["project-wiki-page", ":project=timeline.getIn(['data', 'project', 'slug']),slug=timeline.getIn(['obj', 'slug'])"],
+            "task": ["project-tasks-detail", ":project=timeline.getIn(['data', 'project', 'slug']),ref=timeline.getIn(['obj', 'ref'])"],
+            "userstory": ["project-userstories-detail", ":project=timeline.getIn(['data', 'project', 'slug']),ref=timeline.getIn(['obj', 'ref'])"],
+            "parent_userstory": ["project-userstories-detail", ":project=timeline.getIn(['data', 'project', 'slug']),ref=timeline.getIn(['obj', 'userstory', 'ref'])"],
+            "milestone": ["project-taskboard", ":project=timeline.getIn(['data', 'project', 'slug']),sprint=timeline.getIn(['obj', 'slug'])"]
         }
 
         return url[event.obj][0] + url[event.obj][1]
@@ -88,6 +131,14 @@ class UserTimelineItemTitle
             .attr('tg-nav', url)
             .text(text)
             .attr('title', title)
+            .prop('outerHTML')
+
+    _getUsernameSpan: (text) ->
+        title = title || text
+
+        return $('<span>')
+            .addClass('username')
+            .text(text)
             .prop('outerHTML')
 
     _getParams: (timeline, event, timeline_type) ->

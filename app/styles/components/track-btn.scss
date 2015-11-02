@@ -1,0 +1,184 @@
+//////////////////////
+//Watch like buttons
+//////////////////////
+
+.track-buttons-container {
+    @extend %small;
+    position: relative;
+}
+
+.track-button {
+    align-items: stretch;
+    display: inline-flex;
+    position: relative;
+    .track-inner {
+        align-items: stretch;
+        background: $whitish;
+        border-radius: 4px 0 0 4px;
+        display: flex;
+        flex: 1;
+        flex-basis: 140px;
+        margin-right: .1rem;
+        min-width: 140px;
+        &:hover {
+            background: darken($whitish, 5%);
+            transition: background .3s;
+        }
+        span {
+            align-self: center;
+        }
+        .icon-arrow-up {
+            margin-left: auto;
+            padding: 0 .5rem;
+            transform: rotate(180deg);
+        }
+    }
+    &:hover {
+        color: $blackish;
+    }
+    &.active {
+        .track-inner {
+            background: rgba($primary-light, .2);
+        }
+        .track-icon {
+            path {
+                fill: $primary;
+            }
+        }
+    }
+    &.watch-container {
+        margin-right: 1rem;
+        position: relative;
+    }
+    .track-icon {
+        padding: .3rem .6rem .3rem .75rem;
+        svg {
+            height: 1.1rem;
+            position: relative;
+            top: 2px;
+            width: 1.1rem;
+        }
+        path {
+            fill: $grayer;
+        }
+    }
+    .track-button-counter {
+        align-items: center;
+        border: 1px solid $whitish;
+        display: flex;
+        justify-content: center;
+        min-width: 2rem;
+    }
+}
+.watch-button,
+.like-button {
+    &.active {
+        &.is-hover {
+            .track-inner {
+                background: $red;
+                color: $whitish;
+                transition: background .3s;
+            }
+            path {
+                fill: $red-light;
+            }
+        }
+    }
+}
+
+.watch-options {
+    animation: dropdownFade .2s cubic-bezier(.09, 0, .99, .01) alternate;
+    background: rgba($black, .9);
+    border-radius: 4px;
+    margin: 0;
+    margin-top: 2.5rem;
+    min-width: 300px;
+    padding: 1rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 99;
+    &.hidden {
+        animation: dropdownFade .2s cubic-bezier(.09, 0, .99, .01) reverse;
+    }
+    li {
+        margin: 0;
+        &:last-child a {
+            border: 0;
+        }
+    }
+    a {
+        @extend %light;
+        border-bottom: 1px solid rgba($gray-light, .3);
+        color: $white;
+        display: flex;
+        justify-content: space-between;
+        padding: .5rem 0;
+        &.active {
+            color: $primary-light;
+        }
+    }
+    .watch-check {
+        height: 1.25rem;
+        width: 1.25rem;
+        path {
+            fill: $primary-light;
+        }
+    }
+}
+
+.upvote-btn {
+    align-content: center;
+    align-items: stretch;
+    display: flex;
+    flex: 0;
+    flex-basis: 3rem;
+    justify-content: center;
+    margin-right: .3rem;
+    .vote-inner {
+        background: $whitish;
+        color: $gray-light;
+        display: block;
+        padding: 1rem;
+        text-align: center;
+    }
+    a {
+        &:hover {
+            background: darken($whitish, 5%);
+            color: $primary-dark;
+            transition: background .3s;
+            path {
+                fill: $primary-dark;
+            }
+        }
+        &.active {
+            background: rgba($primary-light, .2);
+            color: $primary;
+            transition: all .3s;
+            path {
+                fill: $primary;
+            }
+        }
+        &.is-hover {
+            background: $red;
+            color: $whitish;
+            svg {
+                transform: rotate(180deg);
+                transition: all .3s;
+            }
+            path {
+                fill: $red-light;
+            }
+        }
+    }
+    svg {
+        height: 1rem;
+        width: 1rem;
+    }
+    span {
+        display: block;
+    }
+    path {
+        fill: $gray-light;
+    }
+}

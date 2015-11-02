@@ -10,10 +10,9 @@
     }
     .total {
         @extend %large;
-        @extend %title;
         background-color: $whitish;
         color: $grayer;
-        padding: 1rem;
+        padding: .3rem 1rem;
         &:hover {
             .edit-value {
                 opacity: 1;

@@ -6,15 +6,22 @@
     }
     .row {
         &:hover {
-            background: lighten($green-taiga, 60%);
+            background: lighten($primary, 60%);
             transition: background .2s ease-in;
         }
         .icon {
             display: inline;
         }
+        &.is-blocked {
+            background: lighten($red-light, 20%);
+            .blocked-text {
+                color: $red;
+                margin-right: .5rem;
+            }
+        }
     }
     .row-selected {
-        background: lighten($green-taiga, 60%);
+        background: lighten($primary, 60%);
         transition: background .2s ease-in;
     }
     .title {
@@ -26,6 +33,9 @@
         }
         div {
             cursor: pointer;
+        }
+        .votes {
+            color: $gray;
         }
     }
     .table-main {
@@ -50,6 +60,19 @@
         flex-shrink: 0;
         text-align: center;
         width: 75px;
+    }
+    .votes {
+        color: $gray;
+        flex-basis: 75px;
+        flex-shrink: 0;
+        text-align: center;
+        width: 75px;
+        &.inactive {
+            color: $gray-light;
+        }
+        &.is-voted {
+            color: $primary-light;
+        }
     }
     .subject {
         overflow: hidden;
@@ -126,4 +149,18 @@
     }
 }
 
-
+.empty-issues {
+    margin-top: 4rem;
+    text-align: center;
+    img {
+        margin-bottom: 1rem;
+    }
+    .title {
+        @extend %large;
+        text-transform: uppercase;
+    }
+    p {
+        @extend %light;
+        margin: 0;
+    }
+}

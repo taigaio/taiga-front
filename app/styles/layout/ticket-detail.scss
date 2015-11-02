@@ -1,0 +1,243 @@
+.us-story-main-data {
+    margin-bottom: 2rem;
+    header {
+        align-content: center;
+        align-items: stretch;
+        display: flex;
+        justify-content: center;
+        margin-bottom: .5rem;
+    }
+    .us-title {
+        @extend %large;
+        @extend %text;
+        background: $whitish;
+        flex: 1;
+        padding: 1rem;
+        position: relative;
+        transition: all .2s linear;
+        &.blocked {
+            background: $red;
+            transition: all .2s linear;
+            vertical-align: middle;
+            .us-title-text,
+            input {
+                margin-bottom: .5rem;
+            }
+            .us-number,
+            .us-name,
+            .us-related-task {
+                color: $white;
+            }
+            a {
+                color: $white;
+                transition: color .3s linear;
+            }
+            a:hover {
+                color: $red-light;
+            }
+            .unblock {
+                @extend %bold;
+                color: $white;
+                float: right;
+            }
+            .unblock:hover {
+                color: $red-light;
+                transition: color .3s linear;
+            }
+        }
+        p {
+            margin-bottom: 0;
+        }
+        .us-edit-name-inner {
+            display: flex;
+        }
+        .edit-subject {
+            align-content: center;
+            align-items: center;
+            display: flex;
+        }
+        input {
+            background: $white;
+            flex-grow: 9;
+        }
+        .save-container {
+            flex-grow: 1;
+        }
+        .us-title-text {
+            align-content: center;
+            align-items: center;
+            display: flex;
+            margin-bottom: 0;
+            max-width: 94%;
+        }
+        .us-title-text:hover {
+            .icon-edit {
+                opacity: 1;
+                transition: opacity .3s linear;
+            }
+        }
+        .us-number {
+            @extend %xlarge;
+            @extend %title;
+            color: $gray-light;
+            flex-shrink: 0;
+            line-height: 2.2rem;
+            margin-right: .5rem;
+        }
+        .us-name {
+            @extend %xlarge;
+            color: $grayer;
+            display: inline-block;
+            line-height: 2.2rem;
+            padding-right: 1rem;
+            width: 100%;
+        }
+        .icon-edit,
+        .icon-floppy {
+            @extend %large;
+            color: $gray-light;
+            margin-left: .5rem;
+        }
+        .icon-edit {
+            opacity: 0;
+        }
+        .us-related-task {
+            @extend %small;
+            color: $gray-light;
+            margin-top: .5rem;
+            a {
+                border-left: 1px solid $gray-light;
+                padding: 0 .2rem;
+            }
+            a:hover {
+                color: $primary;
+            }
+            a:first-child {
+                border: 0;
+            }
+        }
+        .block-desc-container {
+            @extend %small;
+        }
+        .block-description-title {
+            @extend %bold;
+            color: $white;
+            margin-right: .5rem;
+        }
+        .block-description {
+            color: $white;
+            display: inline-block;
+            margin-right: 5rem;
+        }
+    }
+    .loading-spinner {
+        @extend %loading-spinner;
+        max-height: 1.5rem;
+        max-width: 1.5rem;
+    }
+}
+
+.blocked-warning {
+    margin-bottom: 1rem;
+    .blocked {
+        @extend %title;
+        @extend %xlarge;
+        color: $red;
+        line-height: 2.5rem;
+        margin-bottom: .5rem;
+    }
+    .icon {
+        @extend %xlarge;
+        vertical-align: middle;
+    }
+    .block-description {
+        color: $grayer;
+        margin: 0;
+    }
+}
+
+.issue-nav {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    a {
+        @extend %xlarge;
+    }
+}
+
+.duty-content {
+    position: relative;
+    &:hover {
+        .view-description {
+            .edit {
+                opacity: 1;
+                top: -1.5rem;
+                transition: all .2s linear;
+            }
+            .editable {
+                background: $whitish;
+                cursor: pointer;
+            }
+            .no-description {
+                color: $grayer;
+            }
+        }
+    }
+    &.wysiwyg {
+        overflow: visible;
+    }
+    .no-description {
+        color: $gray-light;
+    }
+    textarea {
+        background: $white;
+        height: 10rem;
+    }
+    .save-container {
+        position: absolute;
+        right: 1rem;
+        top: .2rem;
+        &:hover {
+            opacity: .3;
+            transition: opacity .2s linear;
+        }
+        .loading-spinner {
+            @extend %loading-spinner;
+            max-height: 1.5rem;
+            max-width: 1.5rem;
+        }
+    }
+    .edit {
+        color: $grayer;
+    }
+    .view-description {
+        .edit {
+            background: $whitish;
+            left: 0;
+            opacity: 0;
+            padding: .2rem .5rem;
+            position: absolute;
+            top: 0;
+            transition: all .2s linear;
+        }
+    }
+    .edit-description {
+        margin-bottom: 2rem;
+        .save {
+            top: .4rem;
+        }
+        .edit {
+            position: absolute;
+            right: 2.5rem;
+            top: .4rem;
+            transition: all .2s linear;
+        }
+        .preview {
+            padding-top: 1.5rem;
+        }
+    }
+}
+
+.comment-list {
+    padding: 1rem;
+}

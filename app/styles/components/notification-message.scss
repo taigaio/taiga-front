@@ -1,5 +1,5 @@
 .notification-message-success {
-    background: rgba($fresh-taiga, .95);
+    background: rgba($primary-light, .95);
     box-shadow: 0 25px 10px -15px rgba(0, 0, 0, .05);
     opacity: 1;
     right: -370px;
@@ -96,40 +96,47 @@
 }
 
 .notification-light {
+    align-items: center;
     background: rgba($gray-light, .95);
     color: $white;
-    left: calc(50% - 200px);
-    padding: 1rem 1rem .2rem;
+    display: flex;
+    justify-content: space-between;
+    opacity: 0;
+    padding: 1rem;
     position: absolute;
     top: 0;
     transform: translateY(-100%);
-    width: 400px;
+    transition: all .6s;
+    width: 100%;
     z-index: 99999;
     &.inactive {
-        transition: all .6s ease-in-out;
+        opacity: 0;
+        transform: translateY(-100%);
+        transition: all .6s;
     }
     &.active {
+        opacity: 1;
         transform: translateY(0);
-        transition: all .6s ease-in-out;
+        transition: all .6s;
     }
-    .text {
-        display: inline-block;
-        margin-left: .5rem;
-        width: 80%;
+    p {
+        @extend %light;
+        @extend %small;
+        margin: 0;
     }
     .warning {
-        @extend %large;
-        @extend %bold;
         color: $white;
-        line-height: 2.4rem;
+        line-height: 1.5rem;
     }
-    .icon-delete {
-        color: $white;
-        position: absolute;
-        right: 1rem;
+    .close {
+        margin-right: 1rem;
+        width: 2rem;
+        path {
+            fill: $white;
+        }
     }
 }
 
 .notification-message-light-error {
-    background: rgba($red, .95);
+    background: rgba($red, .8);
 }

@@ -1,7 +1,7 @@
 ###
-# Copyright (C) 2014 Andrey Antukh <niwi@niwi.be>
-# Copyright (C) 2014 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2015 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2015 David Barragán Merino <bameda@dbarragan.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -144,6 +144,7 @@ BacklogEmptySortableDirective = ($repo, $rs, $rootscope) ->
             # If the user has not enough permissions we don't enable the sortable
             if project.my_permissions.indexOf("modify_us") > -1
                 $el.sortable({
+                    items: ".us-item-row",
                     dropOnEmpty: true
                 })
 

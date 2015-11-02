@@ -1,9 +1,34 @@
+###
+# Copyright (C) 2014-2015 Taiga Agile LLC <taiga@taiga.io>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, either version 3 of the
+# License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+#
+# File: app-meta.service.coffee
+###
+
 taiga = @.taiga
 
 truncate = taiga.truncate
 
 
-class AppMetaService extends taiga.Service = ->
+class AppMetaService
+    @.$inject = [
+        "$rootScope"
+    ]
+
+    constructor: (@rootScope) ->
+
     _set: (key, value) ->
         return if not key
 
@@ -58,6 +83,21 @@ class AppMetaService extends taiga.Service = ->
         @.setDescription(description)
         @.setTwitterMetas(title, description)
         @.setOpenGraphMetas(title, description)
+
+    addMobileViewport: () ->
+        $("head").append(
+            "<meta name=\"viewport\"
+                   content=\"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0\">"
+        )
+
+    removeMobileViewport: () ->
+        $("meta[name=\"viewport\"]").remove()
+
+    setfn: (fn) ->
+        @._listener() if @.listener
+
+        @._listener = @rootScope.$watchCollection fn, (metas) =>
+            @.setAll(metas.title, metas.description)
 
 
 angular.module("taigaCommon").service("tgAppMetaService", AppMetaService)

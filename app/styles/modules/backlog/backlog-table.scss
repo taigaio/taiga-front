@@ -10,6 +10,7 @@
     }
     .row {
         @extend %small;
+        align-items: center;
         border-bottom: 1px solid $gray-light;
         display: flex;
         padding: .5rem 0 .5rem .5rem;
@@ -21,6 +22,24 @@
     .row {
         &:hover {
             background: transparent;
+        }
+        .input {
+            flex-basis: 25px;
+            flex-grow: 0;
+            flex-shrink: 0;
+        }
+        .votes {
+            color: $gray;
+            flex-basis: 65px;
+            flex-grow: 0;
+            flex-shrink: 0;
+            text-align: center;
+            &.inactive {
+                color: $gray-light;
+            }
+            &.is-voted {
+                color: $primary-light;
+            }
         }
         .user-stories {
             overflow: hidden;
@@ -67,7 +86,7 @@
         @include popover(200px, 0, 65%, '', '');
         a {
             &.active {
-                background: $fresh-taiga;
+                background: $primary-light;
                 color: $white;
             }
         }
@@ -78,6 +97,9 @@
     }
     .pop-points-open {
         @include popover(200px, 0, 30px, '', '');
+        &.pop-bottom {
+            @include popover(200px, 'auto', 30px, 0, '');
+        }
         li {
             display: inline-block;
             width: 23%;
@@ -87,7 +109,7 @@
             text-align: center;
             &:hover,
             &.active {
-                background: $fresh-taiga;
+                background: $primary-light;
                 color: $white;
             }
         }
@@ -96,8 +118,8 @@
 
 .backlog-table-header {
     .backlog-table-title {
+        @extend %text;
         @extend %medium;
-        @extend %bold;
         border-bottom: 2px solid $gray-light;
         flex-wrap: nowrap;
         padding-right: 30px;
@@ -119,8 +141,9 @@
         flex-wrap: nowrap;
         position: relative;
         &:hover {
-            background: lighten($green-taiga, 60%);
+            background: lighten($primary, 60%);
             transition: background .2s ease-in;
+            transition-delay: .2s;
             .us-settings,
             .icon-drag-v {
                 opacity: 1;
@@ -131,7 +154,7 @@
             border-bottom: 0;
         }
         &.ui-sortable-helper {
-            background: lighten($green-taiga, 60%);
+            background: lighten($primary, 60%);
             box-shadow: 1px 1px 10px rgba($black, .1);
             transition: background .2s ease-in;
         }
@@ -147,26 +170,25 @@
         height: 40px;
         width: 100%;
     }
-    .row-selected {
-        background: lighten($green-taiga, 60%);
+    .row-selected,
+    .is-checked {
+        background: lighten($primary, 60%);
         transition: background .2s ease-in;
+    }
+    input {
+        &:checked {
+            color: $primary-light;
+            transition: color .2s ease-in;
+        }
     }
     .user-story-name {
         align-items: center;
         display: flex;
         flex-wrap: nowrap;
-        input {
-            flex-shrink: 0;
-            margin-right: 1rem;
-            vertical-align: super;
-            &:checked+a {
-                color: $fresh-taiga;
-                transition: color .2s ease-in;
-            }
-        }
         a {
+            @extend %light;
             display: inline-block;
-            flex-grow: 20;
+            flex: 1;
             max-width: 90%;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -243,5 +265,22 @@
     .readonly {
         cursor: auto;
         padding-right: 45px;
+    }
+}
+
+.empty-backlog {
+    @extend %light;
+    padding: 2rem;
+    text-align: center;
+    img {
+        margin-bottom: 1rem;
+    }
+    .title {
+        @extend %large;
+        margin-bottom: .5rem;
+        text-transform: uppercase;
+    }
+    a {
+        color: $primary;
     }
 }

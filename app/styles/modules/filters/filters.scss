@@ -75,7 +75,7 @@
     }
     .custom-filters {
         .title {
-            color: $green-taiga;
+            color: $primary;
         }
     }
     a {
@@ -84,7 +84,7 @@
         padding: .5rem 0 .5rem .5rem;
         transition: color .2s ease-in;
         &:hover {
-            color: $green-taiga;
+            color: $primary;
             transition: color .2s ease-in;
             .icon {
                 opacity: 1;

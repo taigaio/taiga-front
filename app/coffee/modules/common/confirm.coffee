@@ -1,7 +1,7 @@
 ###
-# Copyright (C) 2014 Andrey Antukh <niwi@niwi.be>
-# Copyright (C) 2014 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2015 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2015 David Barragán Merino <bameda@dbarragan.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -67,11 +67,12 @@ class ConfirmService extends taiga.Service
             currentLoading = @loading()
                 .target(target)
                 .start()
-
-            defered.resolve (ok=true) =>
-                currentLoading.finish()
-                if ok
-                    @.hide(el)
+            defered.resolve {
+                finish: (ok=true) =>
+                    currentLoading.finish()
+                    if ok
+                        @.hide(el)
+            }
 
         el.on "click.confirm-dialog", "a.button-red", (event) =>
             event.preventDefault()
@@ -118,9 +119,10 @@ class ConfirmService extends taiga.Service
                 .start()
             defered.resolve {
                 selected: choicesField.val()
-                finish: =>
+                finish: (ok=true) =>
                     currentLoading.finish()
-                    @.hide(el)
+                    if ok
+                        @.hide(el)
             }
 
         el.on "click.confirm-dialog", "a.button-red", (event) =>
@@ -245,7 +247,7 @@ class ConfirmService extends taiga.Service
 
             delete @.tsem
 
-        el.on "click", ".icon-delete", (event) =>
+        el.on "click", ".icon-delete, .close", (event) =>
             body.find(selector)
                 .removeClass('active')
                 .addClass('inactive')

@@ -1,7 +1,7 @@
 ###
-# Copyright (C) 2014 Andrey Antukh <niwi@niwi.be>
-# Copyright (C) 2014 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2015 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2015 David Barragán Merino <bameda@dbarragan.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -41,6 +41,9 @@ resourceProvider = ($repo, $http, $urls, $storage) ->
     service.listInAllProjects = (filters) ->
         return $repo.queryMany("userstories", filters)
 
+    service.filtersData = (params) ->
+        return $repo.queryOneRaw("userstories-filters", null, params)
+
     service.listUnassigned = (projectId, filters) ->
         params = {"project": projectId, "milestone": "null"}
         params = _.extend({}, params, filters or {})
@@ -63,6 +66,22 @@ resourceProvider = ($repo, $http, $urls, $storage) ->
         url = $urls.resolve("bulk-create-us")
 
         return $http.post(url, data)
+
+    service.upvote = (userStoryId) ->
+        url = $urls.resolve("userstory-upvote", userStoryId)
+        return $http.post(url)
+
+    service.downvote = (userStoryId) ->
+        url = $urls.resolve("userstory-downvote", userStoryId)
+        return $http.post(url)
+
+    service.watch = (userStoryId) ->
+        url = $urls.resolve("userstory-watch", userStoryId)
+        return $http.post(url)
+
+    service.unwatch = (userStoryId) ->
+        url = $urls.resolve("userstory-unwatch", userStoryId)
+        return $http.post(url)
 
     service.bulkUpdateBacklogOrder = (projectId, data) ->
         url = $urls.resolve("bulk-update-us-backlog-order")

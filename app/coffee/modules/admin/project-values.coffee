@@ -1,7 +1,7 @@
 ###
-# Copyright (C) 2014 Andrey Antukh <niwi@niwi.be>
-# Copyright (C) 2014 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2015 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2015 David Barragán Merino <bameda@dbarragan.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -374,6 +374,27 @@ module.directive("tgColorSelection", ColorSelectionDirective)
 ## Custom Attributes Controller
 #############################################################################
 
+# Custom attributes types (see taiga-back/taiga/projects/custom_attributes/choices.py)
+TEXT_TYPE = "text"
+MULTILINE_TYPE = "multiline"
+DATE_TYPE = "date"
+
+
+TYPE_CHOICES = [
+    {
+        key: TEXT_TYPE,
+        name: "ADMIN.CUSTOM_FIELDS.FIELD_TYPE_TEXT"
+    },
+    {
+        key: MULTILINE_TYPE,
+        name: "ADMIN.CUSTOM_FIELDS.FIELD_TYPE_MULTI"
+    },
+    {
+        key: DATE_TYPE,
+        name: "ADMIN.CUSTOM_FIELDS.FIELD_TYPE_DATE"
+    }
+]
+
 class ProjectCustomAttributesController extends mixOf(taiga.Controller, taiga.PageMixin)
     @.$inject = [
         "$scope",
@@ -390,6 +411,8 @@ class ProjectCustomAttributesController extends mixOf(taiga.Controller, taiga.Pa
 
     constructor: (@scope, @rootscope, @repo, @rs, @params, @q, @location, @navUrls, @appMetaService,
                   @translate) ->
+        @scope.TYPE_CHOICES = TYPE_CHOICES
+
         @scope.project = {}
 
         @rootscope.$on "project:loaded", =>
@@ -630,13 +653,11 @@ ProjectCustomAttributesDirective = ($log, $confirm, animationFrame, $translate) 
             title = $translate.instant("COMMON.CUSTOM_ATTRIBUTES.DELETE")
             text = $translate.instant("COMMON.CUSTOM_ATTRIBUTES.CONFIRM_DELETE")
 
-            $confirm.ask(title, text, message).then (finish) ->
+            $confirm.ask(title, text, message).then (response) ->
                 onSucces = ->
-                    $ctrl.loadCustomAttributes().finally ->
-                        finish()
+                    $ctrl.loadCustomAttributes().finally -> response.finish()
 
                 onError = ->
-                    finish(false)
                     $confirm.notify("error", null, "We have not been able to delete '#{message}'.")
 
                 $ctrl.deleteCustomAttribute(attr).then(onSucces, onError)

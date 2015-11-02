@@ -27,3 +27,5 @@ answer newbie questions, and generally made Taiga that much better:
 - Florian Bezagu
 - Ryan Swanstrom
 - Chris Wilson <chris.wilson@aridhia.com>
+- Brett Profitt <brett.profitt@gmail.com>
+- Vlad Topala <topalavlad@gmail.com>

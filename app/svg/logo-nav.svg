@@ -1,18 +1,18 @@
-<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 134.2 134.3" version="1.1" preserveAspectRatio="xMidYMid meet">
+<svg class="logo-nav" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 134.2 134.3" version="1.1" preserveAspectRatio="xMidYMid meet">
     <style>
         .top {
             -webkit-transform-origin: 50% 50%;
             transform: rotate(0deg);
         }
-        path{
+        .logo-nav path{
             fill:#fff;
             opacity: .6;
         }
-        svg:hover .top {
+        .logo-nav svg:hover .top {
             transform: rotate(90deg);
             transition: all .3s ease-in;
         }
-        svg:hover {
+        .logo-nav svg:hover {
             cursor: pointer;
         }
         @-webkit-keyframes rotate {

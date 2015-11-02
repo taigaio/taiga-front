@@ -1,7 +1,7 @@
 ###
-# Copyright (C) 2014 Andrey Antukh <niwi@niwi.be>
-# Copyright (C) 2014 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2015 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2015 David Barragán Merino <bameda@dbarragan.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -37,10 +37,15 @@ class AuthService extends taiga.Service
                  "$tgUrls",
                  "$tgConfig",
                  "$translate",
-                 "tgCurrentUserService"]
+                 "tgCurrentUserService",
+                 "tgThemeService"]
 
-    constructor: (@rootscope, @storage, @model, @rs, @http, @urls, @config, @translate, @currentUserService) ->
+    constructor: (@rootscope, @storage, @model, @rs, @http, @urls, @config, @translate, @currentUserService,
+                  @themeService) ->
         super()
+
+        @._currentTheme = @config.get("defaultTheme") || "taiga" # load on index.jade
+
         userModel = @.getUser()
         @.setUserdata(userModel)
 
@@ -51,9 +56,18 @@ class AuthService extends taiga.Service
         else
             @.userData = null
 
+    _getUserTheme: ->
+        return @rootscope.user?.theme || @config.get("defaultTheme") || "taiga"
+
+    _setTheme: ->
+        newTheme = @._getUserTheme()
+
+        if @._currentTheme != newTheme
+            @._currentTheme = newTheme
+            @themeService.use(@._currentTheme)
 
     _setLocales: ->
-        lang = @rootscope.user.lang || @config.get("defaultLanguage") || "en"
+        lang = @rootscope.user?.lang || @config.get("defaultLanguage") || "en"
         @translate.preferredLanguage(lang)  # Needed for calls to the api in the correct language
         @translate.use(lang)                # Needed for change the interface in runtime
 
@@ -66,6 +80,9 @@ class AuthService extends taiga.Service
             user = @model.make_model("users", userData)
             @rootscope.user = user
             @._setLocales()
+
+            @._setTheme()
+
             return user
 
         return null
@@ -78,6 +95,7 @@ class AuthService extends taiga.Service
         @.setUserdata(user)
 
         @._setLocales()
+        @._setTheme()
 
     clear: ->
         @rootscope.auth = null
@@ -117,8 +135,11 @@ class AuthService extends taiga.Service
     logout: ->
         @.removeToken()
         @.clear()
-
         @currentUserService.removeUser()
+
+        @._setTheme()
+        @._setLocales()
+
 
     register: (data, type, existing) ->
         url = @urls.resolve("auth-register")
@@ -200,12 +221,12 @@ LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls, $
     link = ($scope, $el, $attrs) ->
         onSuccess = (response) ->
             if $routeParams['next'] and $routeParams['next'] != $navUrls.resolve("login")
-                nextUrl = $routeParams['next']
+                nextUrl = decodeURIComponent($routeParams['next'])
             else
                 nextUrl = $navUrls.resolve("home")
 
             $events.setupConnection()
-            $location.path(nextUrl)
+            $location.url(nextUrl)
 
         onError = (response) ->
             $confirm.notify("light-error", $translate.instant("LOGIN_FORM.ERROR_AUTH_INCORRECT"))
@@ -343,7 +364,10 @@ ChangePasswordFromRecoveryDirective = ($auth, $confirm, $location, $params, $nav
             $scope.tokenInParams = true
             $scope.data.token = $params.token
         else
-            $scope.tokenInParams = false
+            $location.path($navUrls.resolve("login"))
+
+            text = $translate.instant("CHANGE_PASSWORD_RECOVERY_FORM.ERROR")
+            $confirm.notify("light-error",text)
 
         form = $el.find("form").checksley()
 
@@ -354,7 +378,7 @@ ChangePasswordFromRecoveryDirective = ($auth, $confirm, $location, $params, $nav
             $confirm.success(text)
 
         onErrorSubmit = (response) ->
-            text = $translate.instant("COMMON.GENERIC_ERROR", {error: response.data._error_message})
+            text = $translate.instant("CHANGE_PASSWORD_RECOVERY_FORM.ERROR")
             $confirm.notify("light-error", text)
 
         submit = debounce 2000, (event) =>
@@ -394,7 +418,7 @@ InvitationDirective = ($auth, $confirm, $location, $params, $navUrls, $analytics
             $location.path($navUrls.resolve("login"))
 
             text = $translate.instant("INVITATION_LOGIN_FORM.NOT_FOUND")
-            $confirm.success(text)
+            $confirm.notify("light-error", text)
 
         # Login form
         $scope.dataLogin = {token: token}

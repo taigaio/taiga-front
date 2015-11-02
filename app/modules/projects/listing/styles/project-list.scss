@@ -9,6 +9,7 @@
         padding: .9rem 1rem;
         h1 {
             @extend %larger;
+            @extend %light;
             margin: 0;
         }
     }
@@ -41,13 +42,12 @@
     }
     .placeholder {
         background-color: lighten($whitish, 3%);
-        height: 7rem;
-        width: 100%;
+        height: 5rem;
     }
-    .project-list-single {
-        background: $white;
+    .list-itemtype-project {
+        background: rgba($white, .6);
         &:hover {
-            background: lighten($green-taiga, 60%);
+            background: lighten($primary, 63%);
             cursor: move;
             transition: background .3s;
             .drag {

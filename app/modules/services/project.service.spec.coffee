@@ -1,3 +1,22 @@
+###
+# Copyright (C) 2014-2015 Taiga Agile LLC <taiga@taiga.io>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, either version 3 of the
+# License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+#
+# File: project.service.spec.coffee
+###
+
 describe "tgProjectService", ->
     $provide = null
     mocks = {}
@@ -10,11 +29,19 @@ describe "tgProjectService", ->
 
         $provide.value "tgProjectsService", mocks.projectsService
 
+    _mockXhrErrorService = () ->
+        mocks.xhrErrorService = {
+            response: sinon.stub()
+        }
+
+        $provide.value "tgXhrErrorService", mocks.xhrErrorService
+
     _mocks = () ->
         module (_$provide_) ->
             $provide = _$provide_
 
             _mockProjectsService()
+            _mockXhrErrorService()
 
             return null
 
@@ -46,31 +73,70 @@ describe "tgProjectService", ->
 
         expect(projectService.sectionsBreadcrumb.toJS()).to.be.eql(breadcrumb)
 
-    it "set project if the project slug has changed", () ->
-        projectService.fetchProject = sinon.spy()
+    it "set project if the project slug has changed", (done) ->
+        projectService.setProject = sinon.spy()
 
-        pslug = "slug-1"
+        project = Immutable.Map({
+            id: 1,
+            slug: 'slug-1',
+            members: []
+        })
 
-        projectService.setProject(pslug)
+        mocks.projectsService.getProjectBySlug.withArgs('slug-1').promise().resolve(project)
+        mocks.projectsService.getProjectBySlug.withArgs('slug-2').promise().resolve(project)
 
-        expect(projectService.fetchProject).to.be.calledOnce
+        projectService.setProjectBySlug('slug-1')
+            .then () -> projectService.setProjectBySlug('slug-1')
+            .then () -> projectService.setProjectBySlug('slug-2')
+            .finally () ->
+                expect(projectService.setProject).to.be.called.twice;
+                done()
 
-        projectService.setProject(pslug)
+    it "set project and set active members", () ->
+        project = Immutable.fromJS({
+            name: 'test project',
+            members: [
+                {is_active: true},
+                {is_active: false},
+                {is_active: true},
+                {is_active: false},
+                {is_active: false}
+            ]
+        })
 
-        expect(projectService.fetchProject).to.be.calledOnce
+        projectService.setProject(project)
 
-        projectService.setProject("slug-2")
-
-        expect(projectService.fetchProject).to.be.calledTwice
+        expect(projectService.project).to.be.equal(project)
+        expect(projectService.activeMembers.size).to.be.equal(2)
 
     it "fetch project", (done) ->
-        project = Immutable.Map({id: 1})
-        pslug = "slug-1"
+        project = Immutable.Map({
+            id: 1,
+            slug: 'slug',
+            members: []
+        })
 
-        projectService._pslug = pslug
+        projectService._project = project
 
-        mocks.projectsService.getProjectBySlug.withArgs(pslug).promise().resolve(project)
+        mocks.projectsService.getProjectBySlug.withArgs(project.get('slug')).promise().resolve(project)
 
         projectService.fetchProject().then () ->
             expect(projectService.project).to.be.equal(project)
             done()
+
+    it "clean project", () ->
+        projectService._section = "fakeSection"
+        projectService._sectionsBreadcrumb = ["fakeSection"]
+        projectService._activeMembers = ["fakeMember"]
+        projectService._project = Immutable.Map({
+            id: 1,
+            slug: 'slug',
+            members: []
+        })
+
+        projectService.cleanProject()
+
+        expect(projectService.project).to.be.null;
+        expect(projectService.activeMembers.size).to.be.equal(0);
+        expect(projectService.section).to.be.null;
+        expect(projectService.sectionsBreadcrumb.size).to.be.equal(0);

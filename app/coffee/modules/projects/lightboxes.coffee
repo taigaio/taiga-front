@@ -1,7 +1,7 @@
 ###
-# Copyright (C) 2014 Andrey Antukh <niwi@niwi.be>
-# Copyright (C) 2014 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2015 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2015 David Barragán Merino <bameda@dbarragan.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -47,7 +47,7 @@ CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $project
 
             $location.url($projectUrl.get(response))
             lightboxService.close($el)
-            currentUserService._loadProjects()
+            currentUserService.loadProjects()
 
         onErrorSubmit = (response) ->
             currentLoading.finish()
@@ -74,10 +74,7 @@ CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $project
             promise.then(onSuccessSubmit, onErrorSubmit)
 
         openLightbox = ->
-            $scope.data = {
-                total_story_points: 100
-                total_milestones: 5
-            }
+            $scope.data = {}
 
             if !$scope.templates.length
                 $rs.projects.templates().then (result) =>
@@ -173,7 +170,7 @@ DeleteProjectDirective = ($repo, $rootscope, $auth, $location, $navUrls, $confir
                 $rootscope.$broadcast("projects:reload")
                 $location.path($navUrls.resolve("home"))
                 $confirm.notify("success")
-                currentUserService._loadProjects()
+                currentUserService.loadProjects()
 
             # FIXME: error handling?
             promise.then null, ->

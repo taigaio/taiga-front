@@ -1,7 +1,7 @@
 ###
-# Copyright (C) 2014 Andrey Antukh <niwi@niwi.be>
-# Copyright (C) 2014 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2015 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2015 David Barragán Merino <bameda@dbarragan.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -64,12 +64,16 @@ class SearchController extends mixOf(taiga.Controller, taiga.PageMixin)
         promise.then null, @.onInitialDataError.bind(@)
 
         # Search input watcher
-        @scope.searchTerm = ""
+        @scope.searchTerm = null
         loadSearchData = debounceLeading(100, (t) => @.loadSearchData(t))
 
+        bindOnce @scope, "projectId", (projectId) =>
+            if !@scope.searchResults && @scope.searchTerm
+                @.loadSearchData()
+
         @scope.$watch "searchTerm", (term) =>
-            if term
-                loadSearchData(term)
+            if term != undefined && @scope.projectId
+                @.loadSearchData(term)
 
     loadFilters: ->
         defered = @q.defer()
@@ -84,21 +88,31 @@ class SearchController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.taskStatusById = groupBy(project.task_statuses, (x) -> x.id)
             @scope.severityById = groupBy(project.severities, (x) -> x.id)
             @scope.priorityById = groupBy(project.priorities, (x) -> x.id)
-            @scope.membersById = groupBy(project.memberships, (x) -> x.user)
             @scope.usStatusById = groupBy(project.us_statuses, (x) -> x.id)
             return project
 
-    loadSearchData: (term) ->
-        promise = @rs.search.do(@scope.projectId, term).then (data) =>
-            @scope.searchResults = data
-            return data
+    loadSearchData: (term = "") ->
+        @scope.loading = true
 
-        return promise
+        @._loadSearchData(term).then (data) =>
+            if data
+                @scope.searchResults = data
+                @scope.loading = false
+
+    _loadSearchData: (term = "") ->
+        @.deferredAbort.resolve() if @.deferredAbort
+
+        @.deferredAbort = @q.defer()
+
+        @rs.search.do(@scope.projectId, term).then (data) =>
+            @.deferredAbort.resolve(data)
+
+        return @.deferredAbort.promise
 
     loadInitialData: ->
         return @.loadProject().then (project) =>
             @scope.projectId = project.id
-            @.fillUsersAndRoles(project.users, project.roles)
+            @.fillUsersAndRoles(project.members, project.roles)
 
 module.controller("SearchController", SearchController)
 
@@ -162,13 +176,22 @@ module.directive("tgSearchBox", SearchBoxDirective)
 
 SearchDirective = ($log, $compile, $templatecache, $routeparams, $location) ->
     linkTable = ($scope, $el, $attrs, $ctrl) ->
+        applyAutoTab = true
+        activeSectionName = "userstories"
         tabsDom = $el.find("section.search-filter")
-        lastSeatchResults = null
+        lastSearchResults = null
 
         getActiveSection = (data) ->
             maxVal = 0
-            selectedSectionName = null
-            selectedSectionData = null
+            selectedSection = {}
+            selectedSection.name = "userstories"
+            selectedSection.value = []
+
+            if !applyAutoTab
+                selectedSection.name = activeSectionName
+                selectedSection.value = data[activeSectionName]
+
+                return selectedSection
 
             if data
                 for name in ["userstories", "issues", "tasks", "wikipages"]
@@ -176,14 +199,14 @@ SearchDirective = ($log, $compile, $templatecache, $routeparams, $location) ->
 
                     if value.length > maxVal
                         maxVal = value.length
-                        selectedSectionName = name
-                        selectedSectionData = value
+                        selectedSection.name = name
+                        selectedSection.value = value
                         break;
 
             if maxVal == 0
-                return {name: "userstories", value: []}
+                return selectedSection
 
-            return {name:selectedSectionName, value: selectedSectionData}
+            return selectedSection
 
         renderFilterTabs = (data) ->
             for name, value of data
@@ -194,6 +217,9 @@ SearchDirective = ($log, $compile, $templatecache, $routeparams, $location) ->
             # Mark as active the item with max amount of results
             tabsDom.find("a.active").removeClass("active")
             tabsDom.find("li.#{section.name} a").addClass("active")
+
+            applyAutoTab = false
+            activeSectionName = section.name
 
         templates = {
             issues: $templatecache.get("search-issues")
@@ -218,21 +244,26 @@ SearchDirective = ($log, $compile, $templatecache, $routeparams, $location) ->
             $el.find(".search-result-table").html(element)
 
         $scope.$watch "searchResults", (data) ->
-            lastSeatchResults = data
+            lastSearchResults = data
+
+            return if !lastSearchResults
+
             activeSection = getActiveSection(data)
+
             renderFilterTabs(data)
+
             renderTableContent(activeSection)
             markSectionTabActive(activeSection)
 
         $scope.$watch "searchTerm", (searchTerm) ->
-            $location.search("text", searchTerm) if searchTerm
+            $location.search("text", searchTerm) if searchTerm != undefined
 
         $el.on "click", ".search-filter li > a", (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
 
             sectionName = target.parent().data("name")
-            sectionData = lastSeatchResults[sectionName]
+            sectionData = if !lastSearchResults then [] else lastSearchResults[sectionName]
 
             section = {
                 name: sectionName,

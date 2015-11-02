@@ -4,13 +4,7 @@ fieldset {
     padding: 0;
     position: relative;
     width: 100%;
-    label {
-        ~.checksley-error-list {
-            top: 31px;
-        }
-    }
 }
-
 input[type="text"],
 input[type="number"],
 input[type="password"],
@@ -19,37 +13,28 @@ input[type="date"],
 input[type="password"],
 select,
 textarea {
-    background: $whitish;
-    border: 1px solid $gray-light;
-    color: $grayer;
+    border: 1px solid;
     margin: 0;
     padding: 8px;
     width: 100%;
-    @include placeholder {
-        color: darken($gray-light, 10%);
-    }
     &.checksley-error {
-        border: 1px solid $red;
         transition: border .3s linear;
     }
 }
-
 textarea {
     min-height: 10rem;
     resize: vertical;
 }
-
-
 .checksley-error-list {
-    @extend %small;
-    background: rgba($whitish, .8);
     margin-bottom: 0;
-    padding: 0 .5rem;
-    position: absolute;
-    right: 2rem;
-    top: 10px;
     li {
-        color: $red;
         padding: .2rem;
     }
+}
+.icon-capslock {
+    bottom: .6rem;
+    color: $gray;
+    display: none;
+    position: absolute;
+    right: 1rem;
 }

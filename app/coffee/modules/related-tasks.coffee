@@ -1,7 +1,7 @@
 ###
-# Copyright (C) 2014 Andrey Antukh <niwi@niwi.be>
-# Copyright (C) 2014 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2015 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2015 David Barragán Merino <bameda@dbarragan.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -85,14 +85,15 @@ RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope, $loading, $tem
                 task = $model.$modelValue
                 message = task.subject
 
-                $confirm.askOnDelete(title, message).then (finish) ->
+                $confirm.askOnDelete(title, message).then (askResponse) ->
                     promise = $repo.remove(task)
                     promise.then ->
-                        finish()
+                        askResponse.finish()
                         $confirm.notify("success")
                         $scope.$emit("related-tasks:delete")
 
                     promise.then null, ->
+                        askResponse.finish(false)
                         $confirm.notify("error")
 
         $scope.$watch $attrs.ngModel, (val) ->
@@ -216,7 +217,7 @@ RelatedTasksDirective = ($repo, $rs, $rootscope) ->
     link = ($scope, $el, $attrs) ->
         loadTasks = ->
             return $rs.tasks.list($scope.projectId, null, $scope.usId).then (tasks) =>
-                $scope.tasks = tasks
+                $scope.tasks = _.sortBy(tasks, 'ref')
                 return tasks
 
         $scope.$on "related-tasks:add", ->

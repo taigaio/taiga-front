@@ -1,0 +1,104 @@
+// Like and Watch number component
+
+// Common styles for all list items
+@mixin list-itemtype-common {
+    @include list-itemtype-track;
+    border-bottom: 1px solid $whitish;
+    display: flex;
+    padding: .5rem;
+    padding-right: 0;
+    h2 {
+        @extend %normal;
+        @extend %text;
+        line-height: 1.4;
+        margin-bottom: 0;
+        text-transform: none;
+    }
+    p {
+        @extend %light;
+        margin-bottom: 0;
+    }
+    .list-itemtype-avatar {
+        flex-basis: 3rem;
+        flex-shrink: 0;
+        margin-right: .75rem;
+        min-width: 3rem;
+        img {
+            width: 100%;
+        }
+    }
+}
+
+.list-itemtype-project {
+    @include list-itemtype-common;
+    justify-content: space-between;
+    h2 {
+        @extend %large;
+    }
+    .list-itemtype-project-members {
+        align-self: flex-end;
+        display: flex;
+        flex-direction: row-reverse;
+        flex-grow: 0;
+        flex-wrap: wrap-reverse;
+        margin-top: 1rem;
+        img {
+            border-radius: .1rem;
+            margin-right: .3rem;
+            width: 2rem;
+        }
+    }
+    .list-itemtype-project-tags {
+        align-self: flex-end;
+        display: flex;
+        flex: 3;
+        flex-wrap: wrap;
+        margin-top: .5rem;
+    }
+    .tag {
+        align-self: flex-end;
+        margin: 0 .25rem .25rem 0;
+        padding: .5rem;
+    }
+}
+
+.list-itemtype-ticket {
+    @include list-itemtype-common;
+    h2 {
+        @extend %medium;
+    }
+    .ticket-type,
+    .ticket-project {
+        margin-right: .3rem;
+    }
+    .ticket-project {
+        color: $gray-light;
+    }
+    .list-itemtype-ticket-data {
+        flex: 1;
+        margin-right: 1rem;
+    }
+    .ticket-id {
+        color: $gray-light;
+        margin-right: .3rem;
+    }
+
+}
+
+
+.list-itemtype-user {
+    @include list-itemtype-common;
+    h2 {
+        @extend %large;
+    }
+    .extra-info {
+        @extend %small;
+        @extend %light;
+        margin-top: .25rem;
+    }
+}
+
+.list-itemtype-timeline {
+    @include list-itemtype-common;
+
+}

@@ -25,6 +25,7 @@
     .custom-field-single {
         border-bottom: 1px solid $whitish;
         display: flex;
+        justify-content: flex-start;
         padding: 1rem;
         &:hover {
             .custom-field-options {
@@ -43,7 +44,7 @@
                 color: $gray-light;
             }
             a:hover {
-                color: $green-taiga;
+                color: $primary;
             }
         }
     }
@@ -51,12 +52,12 @@
         flex: 0;
         flex-basis: 200px;
         .custom-field-name {
-            @extend %bold;
             display: block;
         }
         .custom-field-description {
             @extend %small;
-            color: $gray-light;
+            @extend %light;
+            color: lighten($gray, 20%);
             display: block;
             line-height: .9rem;
         }
@@ -65,8 +66,13 @@
         margin: 0;
     }
     .custom-field-value {
+        @extend %light;
+        align-items: flex-start;
         flex: 1;
         padding: 0 1rem 0 2rem;
+        &.js-value-view-mode {
+            white-space: pre-line;
+        }
     }
     form {
         label {

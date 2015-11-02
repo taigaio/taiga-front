@@ -1,7 +1,7 @@
 ###
-# Copyright (C) 2014 Andrey Antukh <niwi@niwi.be>
-# Copyright (C) 2014 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2015 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2015 David Barragán Merino <bameda@dbarragan.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -34,12 +34,13 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading,
         hasErrors = false
         createSprint = true
 
-        $scope.sprint = {
-            project: null
-            name: null
-            estimated_start: null
-            estimated_finish: null
-        }
+        resetSprint = () ->
+            $scope.sprint = {
+                project: null
+                name: null
+                estimated_start: null
+                estimated_finish: null
+            }
 
         submit = debounce 2000, (event) =>
             event.preventDefault()
@@ -95,19 +96,30 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading,
             title = $translate.instant("LIGHTBOX.DELETE_SPRINT.TITLE")
             message = $scope.sprint.name
 
-            $confirm.askOnDelete(title, message).then (finish) =>
+            $confirm.askOnDelete(title, message).then (askResponse) =>
                 onSuccess = ->
-                    finish()
+                    askResponse.finish()
                     $scope.milestonesCounter -= 1
                     lightboxService.close($el)
-                    $rootscope.$broadcast("sprintform:remove:success")
+                    $rootscope.$broadcast("sprintform:remove:success", $scope.sprint)
 
                 onError = ->
-                    finish(false)
+                    askResponse.finish(false)
                     $confirm.notify("error")
                 $repo.remove($scope.sprint).then(onSuccess, onError)
 
+        getLastSprint = ->
+            openSprints = _.filter $scope.sprints, (sprint) ->
+                return !sprint.closed
+
+            sortedSprints = _.sortBy openSprints, (sprint) ->
+                return moment(sprint.estimated_finish, 'YYYY-MM-DD').format('X')
+
+            return sortedSprints[sortedSprints.length - 1]
+
         $scope.$on "sprintform:create", (event, projectId) ->
+            resetSprint()
+
             form = $el.find("form").checksley()
             form.reset()
 
@@ -117,20 +129,24 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading,
             $scope.sprint.name = null
             $scope.sprint.slug = null
 
-            lastSprint = $scope.sprints[0]
+            lastSprint = getLastSprint()
 
             estimatedStart = moment()
-            if $scope.sprint.estimated_start
-                estimatedStart = moment($scope.sprint.estimated_start)
-            else if lastSprint?
+
+            if lastSprint
                 estimatedStart = moment(lastSprint.estimated_finish)
+            else if $scope.sprint.estimated_start
+                estimatedStart = moment($scope.sprint.estimated_start)
+
             $scope.sprint.estimated_start = estimatedStart.format(prettyDate)
 
             estimatedFinish = moment().add(2, "weeks")
-            if $scope.sprint.estimated_finish
-                estimatedFinish = moment($scope.sprint.estimated_finish)
-            else if lastSprint?
+
+            if lastSprint
                 estimatedFinish = moment(lastSprint.estimated_finish).add(2, "weeks")
+            else if $scope.sprint.estimated_finish
+                estimatedFinish = moment($scope.sprint.estimated_finish)
+
             $scope.sprint.estimated_finish = estimatedFinish.format(prettyDate)
 
             lastSprintNameDom = $el.find(".last-sprint-name")
@@ -152,6 +168,8 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading,
             $el.find(".last-sprint-name").removeClass("disappear")
 
         $scope.$on "sprintform:edit", (ctx, sprint) ->
+            resetSprint()
+
             createSprint = false
             prettyDate = $translate.instant("COMMON.PICKERDATE.FORMAT")
 
@@ -186,6 +204,8 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading,
 
         $scope.$on "$destroy", ->
             $el.off()
+
+        resetSprint()
 
     return {link: link}
 

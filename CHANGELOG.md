@@ -1,6 +1,30 @@
 # Changelog #
 
 
+## 1.9.0 Abies Siberica (2015-11-XX)
+
+### Features
+- Ability to create single-line or multi-line custom fields. (thanks to [@artlepool](https://github.com/artlepool)).
+- Ability to date custom fields. (thanks to [@artlepool](https://github.com/artlepool)).
+- Add custom videoconference system.
+- Make burndown chart collapsible at the backlog panel.
+- Ability to choose a theme (thanks to [@astagi](https://github.com/astagi)).
+- Inline viewing of image attachments (thanks to [@brettp](https://github.com/brettp)).
+- Autocomplete for usernames, user stories, tasks, issues, and wiki pages in text areas (thanks to [@brettp](https://github.com/brettp)).
+- Support authentication via Application Tokens.
+- User onboarding: improve placeholders and add joyriders.
+- i18n.
+  - Add italian (it) translation.
+  - Add polish (pl) translation.
+  - Add portuguese (Brazil) (pt_BR) translation.
+  - Add russian (ru) translation.
+
+### Misc
+- Improve performance: Show cropped images in timelines.
+- Caps lock warning in login and register form.
+- Lots of small and not so small bugfixes.
+
+
 ## 1.8.0 Saracenia Purpurea (2015-06-18)
 
 ### Features

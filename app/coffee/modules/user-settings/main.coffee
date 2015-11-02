@@ -1,7 +1,7 @@
 ###
-# Copyright (C) 2014 Andrey Antukh <niwi@niwi.be>
-# Copyright (C) 2014 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2015 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2015 David Barragán Merino <bameda@dbarragan.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -57,6 +57,7 @@ class UserSettingsController extends mixOf(taiga.Controller, taiga.PageMixin)
             @location.replace()
 
         @scope.lang = @getLan()
+        @scope.theme = @getTheme()
 
         maxFileSize = @config.get("maxUploadFileSize", null)
         if maxFileSize
@@ -68,6 +69,8 @@ class UserSettingsController extends mixOf(taiga.Controller, taiga.PageMixin)
         promise.then null, @.onInitialDataError.bind(@)
 
     loadInitialData: ->
+        @scope.availableThemes = @config.get("themes", [])
+
         return @rs.locales.list().then (locales) =>
             @scope.locales = locales
             return locales
@@ -78,6 +81,11 @@ class UserSettingsController extends mixOf(taiga.Controller, taiga.PageMixin)
     getLan: ->
         return @scope.user.lang ||
                @translate.preferredLanguage()
+
+    getTheme: ->
+        return @scope.user.theme ||
+               @config.get("defaultTheme") ||
+               "taiga"
 
 module.controller("UserSettingsController", UserSettingsController)
 
@@ -96,6 +104,7 @@ UserProfileDirective = ($confirm, $auth, $repo, $translate) ->
 
             changeEmail = $scope.user.isAttributeModified("email")
             $scope.user.lang = $scope.lang
+            $scope.user.theme = $scope.theme
 
             onSuccess = (data) =>
                 $auth.setUser(data)

@@ -1,3 +1,22 @@
+###
+# Copyright (C) 2014-2015 Taiga Agile LLC <taiga@taiga.io>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, either version 3 of the
+# License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+#
+# File: project-menu.controller.coffee
+###
+
 class ProjectMenuController
     @.$inject = [
         "tgProjectService",
@@ -81,14 +100,16 @@ class ProjectMenuController
             baseUrl = "https://talky.io/"
         else if @.project.get("videoconferences") == "jitsi"
             baseUrl = "https://meet.jit.si/"
-            url = @.project.get("slug") + "-" + taiga.slugify(@.project.get("videoconferences_salt"))
+            url = @.project.get("slug") + "-" + taiga.slugify(@.project.get("videoconferences_extra_data"))
             url = url.replace(/-/g, "")
             return baseUrl + url
+        else if @.project.get("videoconferences") == "custom"
+            return @.project.get("videoconferences_extra_data")
         else
             return ""
 
-        if @.project.get("videoconferences_salt")
-            url = @.project.get("slug") + "-" + @.project.get("videoconferences_salt")
+        if @.project.get("videoconferences_extra_data")
+            url = @.project.get("slug") + "-" + @.project.get("videoconferences_extra_data")
         else
             url = @.project.get("slug")
 

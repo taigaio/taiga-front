@@ -1,3 +1,22 @@
+###
+# Copyright (C) 2014-2015 Taiga Agile LLC <taiga@taiga.io>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, either version 3 of the
+# License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+#
+# File: users-resource.service.coffee
+###
+
 Resource = (urlsService, http, paginateResponseService) ->
     service = {}
 
@@ -19,7 +38,7 @@ Resource = (urlsService, http, paginateResponseService) ->
                 return Immutable.fromJS(result.data)
 
     service.getStats = (userId) ->
-        url = urlsService.resolve("stats", userId)
+        url = urlsService.resolve("user-stats", userId)
 
         httpOptions = {
             headers: {
@@ -32,7 +51,7 @@ Resource = (urlsService, http, paginateResponseService) ->
                 return Immutable.fromJS(result.data)
 
     service.getContacts = (userId) ->
-        url = urlsService.resolve("contacts", userId)
+        url = urlsService.resolve("user-contacts", userId)
 
         httpOptions = {
             headers: {
@@ -43,6 +62,45 @@ Resource = (urlsService, http, paginateResponseService) ->
         return http.get(url, {}, httpOptions)
             .then (result) ->
                 return Immutable.fromJS(result.data)
+
+    service.getLiked = (userId, page, type, q) ->
+        url = urlsService.resolve("user-liked", userId)
+
+        params = {}
+        params.page = page if page?
+        params.type = type if type?
+        params.q = q if q?
+
+        return http.get(url, params)
+            .then (result) ->
+                result = Immutable.fromJS(result)
+                return paginateResponseService(result)
+
+    service.getVoted = (userId, page, type, q) ->
+        url = urlsService.resolve("user-voted", userId)
+
+        params = {}
+        params.page = page if page?
+        params.type = type if type?
+        params.q = q if q?
+
+        return http.get(url, params)
+            .then (result) ->
+                result = Immutable.fromJS(result)
+                return paginateResponseService(result)
+
+    service.getWatched = (userId, page, type, q) ->
+        url = urlsService.resolve("user-watched", userId)
+
+        params = {}
+        params.page = page if page?
+        params.type = type if type?
+        params.q = q if q?
+
+        return http.get(url, params)
+            .then (result) ->
+                result = Immutable.fromJS(result)
+                return paginateResponseService(result)
 
     service.getProfileTimeline = (userId, page) ->
         params = {

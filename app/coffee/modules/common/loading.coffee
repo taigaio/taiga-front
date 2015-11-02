@@ -1,7 +1,7 @@
 ###
-# Copyright (C) 2014 Andrey Antukh <niwi@niwi.be>
-# Copyright (C) 2014 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2015 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2015 David Barragán Merino <bameda@dbarragan.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -21,18 +21,28 @@
 
 module = angular.module("taigaCommon")
 
-TgLoadingService = ->
+TgLoadingService = ($compile) ->
     spinner = "<img class='loading-spinner' src='/svg/spinner-circle.svg' alt='loading...' />"
 
     return () ->
         service = {
             settings: {
                 target: null,
+                scope: null,
                 classes: []
-                timeout: 0
+                timeout: 0,
+                template: null
             },
             target: (target) ->
                 service.settings.target = target
+
+                return service
+            scope: (scope) ->
+                service.settings.scope = scope
+
+                return service
+            template: (template) ->
+                service.settings.template = template
 
                 return service
             removeClasses: (classess...) ->
@@ -51,9 +61,11 @@ TgLoadingService = ->
                 # The loader is shown after that quantity of milliseconds
                 timeoutId = setTimeout (->
                     if not target.hasClass('loading')
-                        service.settings.oldContent = target.html()
+                        if !service.settings.template
+                            service.settings.template = target.html()
 
                         target.addClass('loading')
+
                         target.html(spinner)
                     ), service.settings.timeout
 
@@ -71,27 +83,37 @@ TgLoadingService = ->
                     removeClasses = service.settings.classes
                     removeClasses.map (className) -> service.settings.target.addClass(className)
 
-                    target.html(service.settings.oldContent)
+                    target.html(service.settings.template)
                     target.removeClass('loading')
+
+                    if service.settings.scope
+                        $compile(target.contents())(service.settings.scope)
 
                 return service
         }
 
         return service
 
+TgLoadingService.$inject = [
+    "$compile"
+]
+
 module.factory("$tgLoading", TgLoadingService)
 
 LoadingDirective = ($loading) ->
     link = ($scope, $el, attr) ->
         currentLoading = null
+        template = $el.html()
 
         $scope.$watch attr.tgLoading, (showLoading) =>
-
             if showLoading
                 currentLoading = $loading()
                     .target($el)
+                    .timeout(50)
+                    .template(template)
+                    .scope($scope)
                     .start()
-             else
+             else if currentLoading
                  currentLoading.finish()
 
     return {

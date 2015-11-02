@@ -1,0 +1,28 @@
+section.external-app-wrapper
+    div.logo
+        include ../../svg/logo-color.svg
+
+    h1 Taiga
+
+    h2(translate="EXTERNAL_APP.AUTHORIZATION_REQUEST", translate-values="{application: vm.application.get('name')}")
+
+    div.user-card.avatar
+        .card-inner
+            div.user-image
+                img(ng-src="{{::vm.user.get('photo')}}", alt="{{::vm.user.get('full_name_display')}}")
+            div.user-data
+                h3 {{ ::vm.user.get("full_name_display") }}
+                p {{ ::vm.user.get("email") }}
+        a(ng-href="{{::vm.loginWithAnotherUserUrl}}", title="{{'EXTERNAL_APP.LOGIN_WITH_ANOTHER_USER' | translate}}", translate="EXTERNAL_APP.LOGIN_WITH_ANOTHER_USER")
+
+    div.app-card
+        .card-inner
+            div.app-image
+                img(ng-src="{{::vm.application.get('icon_url')}}", alt="{{::vm.application.get('name')}}")
+            div.app-data
+                h3 {{ ::vm.application.get("name") }}
+                a(ng-href="{{::vm.application.get('web')}}", title="{{::vm.application.get('name')}}", target="_blank") {{ ::vm.application.get('web') }}
+                p {{ ::vm.application.get("description") }}
+
+    a.button-green(href="#", ng-click="vm.createApplicationToken()", title="{{'EXTERNAL_APP.AUTHORIZE_APP' | translate}}", translate="EXTERNAL_APP.AUTHORIZE_APP")
+    a.cancel(href="#", ng-click="vm.cancel()", title="{{'EXTERNAL_APP.CANCEL' | translate}}", translate="EXTERNAL_APP.CANCEL")

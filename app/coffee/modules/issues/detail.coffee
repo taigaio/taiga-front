@@ -1,7 +1,7 @@
 ###
-# Copyright (C) 2014 Andrey Antukh <niwi@niwi.be>
-# Copyright (C) 2014 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2015 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2015 David Barragán Merino <bameda@dbarragan.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -26,6 +26,7 @@ toString = @.taiga.toString
 joinStr = @.taiga.joinStr
 groupBy = @.taiga.groupBy
 bindOnce = @.taiga.bindOnce
+bindMethods = @.taiga.bindMethods
 
 module = angular.module("taigaIssues")
 
@@ -52,6 +53,8 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
                   @log, @appMetaService, @analytics, @navUrls, @translate) ->
+        bindMethods(@)
+
         @scope.issueRef = @params.issueref
         @scope.sectionName = @translate.instant("ISSUES.SECTION_NAME")
         @.initializeEventHandlers()
@@ -83,18 +86,14 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     initializeEventHandlers: ->
         @scope.$on "attachment:create", =>
-            @rootscope.$broadcast("object:updated")
             @analytics.trackEvent("attachment", "create", "create attachment on issue", 1)
-
-        @scope.$on "attachment:edit", =>
-            @rootscope.$broadcast("object:updated")
-
-        @scope.$on "attachment:delete", =>
-            @rootscope.$broadcast("object:updated")
 
         @scope.$on "promote-issue-to-us:success", =>
             @analytics.trackEvent("issue", "promoteToUserstory", "promote issue to userstory", 1)
             @rootscope.$broadcast("object:updated")
+            @.loadIssue()
+
+        @scope.$on "comment:new", =>
             @.loadIssue()
 
         @scope.$on "custom-attributes-values:edit", =>
@@ -120,7 +119,6 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.severityById = groupBy(project.severities, (x) -> x.id)
             @scope.priorityList = project.priorities
             @scope.priorityById = groupBy(project.priorities, (x) -> x.id)
-            @scope.membersById = groupBy(project.memberships, (x) -> x.user)
             return project
 
     loadIssue: ->
@@ -146,9 +144,52 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
     loadInitialData: ->
         promise = @.loadProject()
         return promise.then (project) =>
-            @.fillUsersAndRoles(project.users, project.roles)
+            @.fillUsersAndRoles(project.members, project.roles)
             @.loadIssue()
 
+    ###
+    # Note: This methods (onUpvote() and onDownvote()) are related to tg-vote-button.
+    #       See app/modules/components/vote-button for more info
+    ###
+    onUpvote: ->
+        onSuccess = =>
+            @.loadIssue()
+            @rootscope.$broadcast("object:updated")
+        onError = =>
+            @confirm.notify("error")
+
+        return @rs.issues.upvote(@scope.issueId).then(onSuccess, onError)
+
+    onDownvote: ->
+        onSuccess = =>
+            @.loadIssue()
+            @rootscope.$broadcast("object:updated")
+        onError = =>
+            @confirm.notify("error")
+
+        return @rs.issues.downvote(@scope.issueId).then(onSuccess, onError)
+
+    ###
+    # Note: This methods (onWatch() and onUnwatch()) are related to tg-watch-button.
+    #       See app/modules/components/watch-button for more info
+    ###
+    onWatch: ->
+        onSuccess = =>
+            @.loadIssue()
+            @rootscope.$broadcast("object:updated")
+        onError = =>
+            @confirm.notify("error")
+
+        return @rs.issues.watch(@scope.issueId).then(onSuccess, onError)
+
+    onUnwatch: ->
+        onSuccess = =>
+            @.loadIssue()
+            @rootscope.$broadcast("object:updated")
+        onError = =>
+            @confirm.notify("error")
+
+        return @rs.issues.unwatch(@scope.issueId).then(onSuccess, onError)
 
 module.controller("IssueDetailController", IssueDetailController)
 
@@ -558,7 +599,7 @@ module.directive("tgIssuePriorityButton", ["$rootScope", "$tgRepo", "$tgConfirm"
 PromoteIssueToUsButtonDirective = ($rootScope, $repo, $confirm, $qqueue, $translate) ->
     link = ($scope, $el, $attrs, $model) ->
 
-        save = $qqueue.bindAdd (issue, finish) =>
+        save = $qqueue.bindAdd (issue, askResponse) =>
             data = {
                 generated_from_issue: issue.id
                 project: issue.project,
@@ -570,12 +611,12 @@ PromoteIssueToUsButtonDirective = ($rootScope, $repo, $confirm, $qqueue, $transl
             }
 
             onSuccess = ->
-                finish()
+                askResponse.finish()
                 $confirm.notify("success")
                 $rootScope.$broadcast("promote-issue-to-us:success")
 
             onError = ->
-                finish(false)
+                askResponse.finish()
                 $confirm.notify("error")
 
             $repo.create("userstories", data).then(onSuccess, onError)
@@ -589,9 +630,8 @@ PromoteIssueToUsButtonDirective = ($rootScope, $repo, $confirm, $qqueue, $transl
             message = $translate.instant("ISSUES.CONFIRM_PROMOTE.MESSAGE")
             subtitle = issue.subject
 
-            $confirm.ask(title, subtitle, message).then (finish) =>
-                save(issue, finish)
-
+            $confirm.ask(title, subtitle, message).then (response) =>
+                save(issue, response)
 
         $scope.$on "$destroy", ->
             $el.off()

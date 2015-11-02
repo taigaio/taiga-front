@@ -6,9 +6,18 @@ div.forgot-form-container(tg-forgot-password)
 
     form(ng-submit="ctrl.submit()")
         fieldset
-            input(type="text", name="username", ng-model="data.username", data-required="true",
-                  placeholder="{{'FORGOT_PASSWORD_FORM.PLACEHOLDER_FIELD' | translate}}")
+            input(
+                type="text"
+                name="username"
+                ng-model="data.username"
+                data-required="true"
+                placeholder="{{'FORGOT_PASSWORD_FORM.PLACEHOLDER_FIELD' | translate}}"
+            )
         fieldset
-            button.button-gray.submit-button.button-forgot(type="submit", title="{{'FORGOT_PASSWORD_FORM.ACTION_RESET_PASSWORD' | translate}}", translate="FORGOT_PASSWORD_FORM.ACTION_RESET_PASSWORD")
+            button.button-gray.submit-button.button-forgot(
+                type="submit"
+                title="{{'FORGOT_PASSWORD_FORM.ACTION_RESET_PASSWORD' | translate}}"
+                translate="FORGOT_PASSWORD_FORM.ACTION_RESET_PASSWORD"
+            )
 
         a(href="", tg-nav="login", translate="FORGOT_PASSWORD_FORM.LINK_CANCEL")

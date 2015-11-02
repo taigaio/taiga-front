@@ -1,18 +1,49 @@
-include ../../partials/includes/components/beta
 div.profile.centered(ng-if="vm.user")
     div(tg-profile-bar, user="vm.user", isCurrentUser="vm.isCurrentUser")
     div.main
         div.timeline-wrapper(tg-profile-tabs)
-                div(tg-profile-tab="activity", tab-title="{{'USER.PROFILE.ACTIVITY_TAB' | translate}}", tab-icon="icon-timeline", tab-active)
-                    div(tg-user-timeline, user="vm.user", current-user="vm.isCurrentUser")
+            div(
+                tg-profile-tab="{{'USER.PROFILE.TABS.ACTIVITY_TAB' | translate}}"
+                tab-title="{{'USER.PROFILE.TABS.ACTIVITY_TAB_TITLE' | translate}}"
+                tab-icon="icon-timeline"
+                tab-active
+            )
+                div(tg-user-timeline, user="vm.user", current-user="vm.isCurrentUser")
 
-                div(tab-disabled="{{vm.isCurrentUser}}", tg-profile-tab="projects", tab-title="{{'USER.PROFILE.PROJECTS_TAB' | translate}}", tab-icon="icon-project")
-                    div(tg-profile-projects, user="vm.user")
+            div(
+                tg-profile-tab="{{'USER.PROFILE.TABS.PROJECTS_TAB' | translate}}"
+                tab-title="{{'USER.PROFILE.TABS.PROJECTS_TAB_TITLE' | translate}}"
+                tab-icon="icon-project"
+                tab-disabled="{{vm.isCurrentUser}}"
+            )
+                div(tg-profile-projects, user="vm.user")
 
-                div(tg-profile-tab="contacts", tab-title="{{'USER.PROFILE.CONTACTS_TAB' | translate}}", tab-icon="icon-team")
-                    div(tg-profile-contacts, user="vm.user")
+            div(
+                tg-profile-tab="{{'USER.PROFILE.TABS.LIKES_TAB' | translate}}"
+                tab-title="{{'USER.PROFILE.TABS.LIKES_TAB_TITLE' | translate}}"
+                tab-icon="icon-heart"
+            )
+                div(tg-profile-liked, user="vm.user")
 
-                // div(tg-profile-tab="favorites", tab-title="{{'USER.PROFILE.FAVORITES_TAB' | translate}}", tab-icon="icon-star-fill")
-                //     include includes/profile-favorites
+            div(
+                tg-profile-tab="{{'USER.PROFILE.TABS.VOTES_TAB' | translate}}"
+                tab-title="{{'USER.PROFILE.TABS.VOTES_TAB_TITLE' | translate}}"
+                tab-icon="icon-caret-up"
+            )
+                div(tg-profile-voted, user="vm.user")
+
+            div(
+                tg-profile-tab="{{'USER.PROFILE.TABS.WATCHED_TAB' | translate}}"
+                tab-title="{{'USER.PROFILE.TABS.WATCHED_TAB_TITLE' | translate}}"
+                tab-icon="icon-eye"
+            )
+                div(tg-profile-watched, user="vm.user")
+
+            div(
+                tg-profile-tab="{{'USER.PROFILE.TABS.CONTACTS_TAB' | translate}}"
+                tab-title="{{'USER.PROFILE.TABS.CONTACTS_TAB_TITLE' | translate}}"
+                tab-icon="icon-team"
+            )
+                div(tg-profile-contacts, user="vm.user")
 
         include includes/profile-sidebar

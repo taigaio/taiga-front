@@ -91,7 +91,7 @@ $column-margin: 0 10px 0 0;
             margin-right: .3rem;
             transition: color .2s linear;
             &:hover {
-                color: $green-taiga;
+                color: $primary;
             }
             &.hfold,
             &.hunfold {
@@ -178,9 +178,6 @@ $column-margin: 0 10px 0 0;
             }
         }
     }
-    .taskboard-tasks-box {
-        background: $whitish;
-    }
 
     .taskboard-userstory-box {
         padding: .5rem .5rem .5rem 1.5rem;
@@ -191,7 +188,7 @@ $column-margin: 0 10px 0 0;
             top: .7rem;
             transition: color .2s linear;
             &:hover {
-                color: $green-taiga;
+                color: $primary;
             }
             &.icon-plus {
                 right: 2rem;
@@ -234,7 +231,7 @@ $column-margin: 0 10px 0 0;
 
 .points-list {
     a {
-        color: $green-taiga;
+        color: $primary;
         margin-left: .5rem;
         &:hover {
             span {

@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  color: #333;
+}
+
+.browsers {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px auto;
+    width: 400px;
+}
+
+.browsers .browser {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 5px 15px;
+}
+
+.browsers .search {
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 5px 15px;
+    background-color: #009688;
+    color: #fff;
+}
+
+.browsers .active {
+  background-color: #e6e6e6;
+}

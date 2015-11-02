@@ -1,7 +1,7 @@
 ###
-# Copyright (C) 2014 Andrey Antukh <niwi@niwi.be>
-# Copyright (C) 2014 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2015 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2015 David Barragán Merino <bameda@dbarragan.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -35,20 +35,12 @@ BacklogSprintDirective = ($repo, $rootscope) ->
         easing: 'linear'
     }
 
-    refreshSprintTableHeight = (sprintTable) =>
-        if !sprintTable.find(".row").length
-            sprintTable.css("height", sprintTableMinHeight)
-        else
-            sprintTable.css("height", "auto")
-
     toggleSprint = ($el) =>
         sprintTable = $el.find(".sprint-table")
         sprintArrow = $el.find(".icon-arrow-up")
 
         sprintArrow.toggleClass('active')
         sprintTable.toggleClass('open')
-
-        refreshSprintTableHeight(sprintTable)
 
     link = ($scope, $el, $attrs) ->
         $scope.$watch $attrs.tgBacklogSprint, (sprint) ->

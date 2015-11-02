@@ -1,7 +1,7 @@
 ###
-# Copyright (C) 2014 Andrey Antukh <niwi@niwi.be>
-# Copyright (C) 2014 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2015 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2015 David Barragán Merino <bameda@dbarragan.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -52,51 +52,22 @@ module.directive("tgDateRange", ["$translate", DateRangeDirective])
 ## Date Selector Directive (using pikaday)
 #############################################################################
 
-DateSelectorDirective = ($rootscope, $translate) ->
+DateSelectorDirective = ($rootscope, datePickerConfigService) ->
     link = ($scope, $el, $attrs, $model) ->
         selectedDate = null
 
         initialize = () ->
-            $el.picker = new Pikaday({
+            datePickerConfig = datePickerConfigService.get()
+
+            _.merge(datePickerConfig, {
                 field: $el[0]
                 onSelect: (date) =>
                     selectedDate = date
                 onOpen: =>
                     $el.picker.setDate(selectedDate) if selectedDate?
-                i18n: {
-                    previousMonth: $translate.instant("COMMON.PICKERDATE.PREV_MONTH"),
-                    nextMonth:  $translate.instant("COMMON.PICKERDATE.NEXT_MONTH"),
-                    months: [$translate.instant("COMMON.PICKERDATE.MONTHS.JAN"),
-                             $translate.instant("COMMON.PICKERDATE.MONTHS.FEB"),
-                             $translate.instant("COMMON.PICKERDATE.MONTHS.MAR"),
-                             $translate.instant("COMMON.PICKERDATE.MONTHS.APR"),
-                             $translate.instant("COMMON.PICKERDATE.MONTHS.MAY"),
-                             $translate.instant("COMMON.PICKERDATE.MONTHS.JUN"),
-                             $translate.instant("COMMON.PICKERDATE.MONTHS.JUL"),
-                             $translate.instant("COMMON.PICKERDATE.MONTHS.AUG"),
-                             $translate.instant("COMMON.PICKERDATE.MONTHS.SEP"),
-                             $translate.instant("COMMON.PICKERDATE.MONTHS.OCT"),
-                             $translate.instant("COMMON.PICKERDATE.MONTHS.NOV"),
-                             $translate.instant("COMMON.PICKERDATE.MONTHS.DEC")],
-                    weekdays: [$translate.instant("COMMON.PICKERDATE.WEEK_DAYS.SUN"),
-                               $translate.instant("COMMON.PICKERDATE.WEEK_DAYS.MON"),
-                               $translate.instant("COMMON.PICKERDATE.WEEK_DAYS.TUE"),
-                               $translate.instant("COMMON.PICKERDATE.WEEK_DAYS.WED"),
-                               $translate.instant("COMMON.PICKERDATE.WEEK_DAYS.THU"),
-                               $translate.instant("COMMON.PICKERDATE.WEEK_DAYS.FRI"),
-                               $translate.instant("COMMON.PICKERDATE.WEEK_DAYS.SAT")],
-                    weekdaysShort: [$translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.SUN"),
-                                    $translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.MON"),
-                                    $translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.TUE"),
-                                    $translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.WED"),
-                                    $translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.THU"),
-                                    $translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.FRI"),
-                                    $translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.SAT")]
-                },
-                isRTL: $translate.instant("COMMON.PICKERDATE.IS_RTL") == "true",
-                firstDay: parseInt($translate.instant("COMMON.PICKERDATE.FIRST_DAY_OF_WEEK"), 10),
-                format: $translate.instant("COMMON.PICKERDATE.FORMAT")
             })
+
+            $el.picker = new Pikaday(datePickerConfig)
 
         unbind = $rootscope.$on "$translateChangeEnd", (ctx) => initialize()
 
@@ -113,7 +84,7 @@ DateSelectorDirective = ($rootscope, $translate) ->
         require: "ngModel"
     }
 
-module.directive("tgDateSelector", ["$rootScope", "$translate", DateSelectorDirective])
+module.directive("tgDateSelector", ["$rootScope", "tgDatePickerConfigService", DateSelectorDirective])
 
 
 #############################################################################
@@ -152,7 +123,7 @@ module.directive("tgSprintProgressbar", SprintProgressBarDirective)
 ## Created-by display directive
 #############################################################################
 
-CreatedByDisplayDirective = ($template, $compile, $translate)->
+CreatedByDisplayDirective = ($template, $compile, $translate, $navUrls)->
     # Display the owner information (full name and photo) and the date of
     # creation of an object (like USs, tasks and issues).
     #
@@ -168,13 +139,14 @@ CreatedByDisplayDirective = ($template, $compile, $translate)->
 
     link = ($scope, $el, $attrs) ->
         render = (model) ->
-            owner = $scope.usersById?[model.owner] or {
+            owner = model.owner_extra_info or {
                 full_name_display: $translate.instant("COMMON.EXTERNAL_USER")
-                photo: "/images/unnamed.png"
+                photo: "/images/user-noimage.png"
             }
 
             html = template({
                 owner: owner
+                url: if owner?.is_active then $navUrls.resolve("user-profile", {username: owner.username}) else ""
                 date: moment(model.created_date).format($translate.instant("COMMON.DATETIME"))
             })
 
@@ -194,7 +166,8 @@ CreatedByDisplayDirective = ($template, $compile, $translate)->
         require: "ngModel"
     }
 
-module.directive("tgCreatedByDisplay", ["$tgTemplate", "$compile", "$translate", CreatedByDisplayDirective])
+module.directive("tgCreatedByDisplay", ["$tgTemplate", "$compile", "$translate", "$tgNavUrls",
+                                        CreatedByDisplayDirective])
 
 
 #############################################################################
@@ -250,11 +223,7 @@ WatchersDirective = ($rootscope, $confirm, $repo, $qqueue, $template, $compile, 
             html = $compile(template(ctx))($scope)
             $el.html(html)
 
-            if isEditable() and watchers.length == 0
-                $el.find(".title").text("Add watchers")
-                $el.find(".watchers-header").addClass("no-watchers")
-
-        $el.on "click", ".icon-delete", (event) ->
+        $el.on "click", ".js-delete-watcher", (event) ->
             event.preventDefault()
             return if not isEditable()
             target = angular.element(event.currentTarget)
@@ -263,15 +232,15 @@ WatchersDirective = ($rootscope, $confirm, $repo, $qqueue, $template, $compile, 
             title = $translate.instant("COMMON.WATCHERS.TITLE_LIGHTBOX_DELETE_WARTCHER")
             message = $scope.usersById[watcherId].full_name_display
 
-            $confirm.askOnDelete(title, message).then (finish) =>
-                finish()
+            $confirm.askOnDelete(title, message).then (askResponse) =>
+                askResponse.finish()
 
                 watcherIds = _.clone($model.$modelValue.watchers, false)
                 watcherIds = _.pull(watcherIds, watcherId)
 
                 deleteWatcher(watcherIds)
 
-        $el.on "click", ".add-watcher", (event) ->
+        $el.on "click", ".js-add-watcher", (event) ->
             event.preventDefault()
             return if not isEditable()
             $scope.$apply ->
@@ -353,8 +322,8 @@ AssignedToDirective = ($rootscope, $confirm, $repo, $loading, $qqueue, $template
             return if not isEditable()
             title = $translate.instant("COMMON.ASSIGNED_TO.CONFIRM_UNASSIGNED")
 
-            $confirm.ask(title).then (finish) =>
-                finish()
+            $confirm.ask(title).then (response) =>
+                response.finish()
                 $model.$modelValue.assigned_to  = null
                 save(null)
 
@@ -443,18 +412,18 @@ DeleteButtonDirective = ($log, $repo, $confirm, $location, $template) ->
         if not $attrs.onDeleteTitle
             return $log.error "DeleteButtonDirective requires on-delete-title set in scope."
 
-        $el.on "click", ".button", (event) ->
+        $el.on "click", ".button-delete", (event) ->
             title = $attrs.onDeleteTitle
             subtitle = $model.$modelValue.subject
 
-            $confirm.askOnDelete(title, subtitle).then (finish) =>
+            $confirm.askOnDelete(title, subtitle).then (askResponse) =>
                 promise = $repo.remove($model.$modelValue)
                 promise.then =>
-                    finish()
+                    askResponse.finish()
                     url = $scope.$eval($attrs.onDeleteGoToUrl)
                     $location.path(url)
                 promise.then null, =>
-                    finish(false)
+                    askResponse.finish(false)
                     $confirm.notify("error")
 
         $scope.$on "$destroy", ->
@@ -554,7 +523,7 @@ module.directive("tgEditableSubject", ["$rootScope", "$tgRepo", "$tgConfirm", "$
 
 
 #############################################################################
-## Editable subject directive
+## Editable description directive
 #############################################################################
 
 EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading, $selectedText, $qqueue, $template) ->
@@ -602,6 +571,13 @@ EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading,
             $el.find('.edit-description').show()
             $el.find('.view-description').hide()
             $el.find('textarea').focus()
+
+        $el.on "click", "a", (event) ->
+            target = angular.element(event.target)
+            href = target.attr('href')
+            if href.indexOf("#") == 0
+                event.preventDefault()
+                $('body').scrollTop($(href).offset().top)
 
         $el.on "click", ".save", (e) ->
             e.preventDefault()
@@ -673,14 +649,14 @@ ListItemAssignedtoDirective = ($template) ->
     template = $template.get("common/components/list-item-assigned-to-avatar.html", true)
 
     link = ($scope, $el, $attrs) ->
-        bindOnce $scope, "membersById", (membersById) ->
+        bindOnce $scope, "usersById", (usersById) ->
             item = $scope.$eval($attrs.tgListitemAssignedto)
             ctx = {name: "Unassigned", imgurl: "/images/unnamed.png"}
 
-            member = membersById[item.assigned_to]
+            member = usersById[item.assigned_to]
             if member
                 ctx.imgurl = member.photo
-                ctx.name = member.full_name
+                ctx.name = member.full_name_display
 
             $el.html(template(ctx))
 

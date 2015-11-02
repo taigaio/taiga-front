@@ -1,4 +1,8 @@
-div.kanban-tagline(tg-colorize-tags="us.tags", tg-colorize-tags-type="kanban", ng-hide="us.isArchived")
+div.kanban-tagline(
+    tg-colorize-tags="us.tags"
+    tg-colorize-tags-type="kanban"
+    ng-hide="us.isArchived"
+)
 div.kanban-task-inner(ng-class="{'task-archived': us.isArchived}")
     div.avatar-wrapper(tg-kanban-user-avatar="us.assigned_to", ng-model="us", ng-hide="us.isArchived")
     div.task-text(ng-hide="us.isArchived")

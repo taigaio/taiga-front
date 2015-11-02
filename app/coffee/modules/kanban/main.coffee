@@ -1,7 +1,7 @@
 ###
-# Copyright (C) 2014 Andrey Antukh <niwi@niwi.be>
-# Copyright (C) 2014 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2015 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2015 David Barragán Merino <bameda@dbarragan.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -34,14 +34,10 @@ module = angular.module("taigaKanban")
 # Vars
 
 defaultViewMode = "maximized"
-defaultViewModes = {
-    maximized: {
-        cardClass: "kanban-task-maximized"
-    }
-    minimized: {
-        cardClass: "kanban-task-minimized"
-    }
-}
+viewModes = [
+    "maximized",
+    "minimized"
+]
 
 
 #############################################################################
@@ -157,6 +153,10 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
                 usByStatus[status.id] = _.sortBy(usByStatus[status.id], "kanban_order")
 
+            if userstories.length == 0
+                status = @scope.usStatusList[0]
+                usByStatus[status.id].push({isPlaceholder: true})
+
             @scope.usByStatus = usByStatus
 
             # The broadcast must be executed when the DOM has been fully reloaded.
@@ -209,7 +209,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
     loadInitialData: ->
         promise = @.loadProject()
         return promise.then (project) =>
-            @.fillUsersAndRoles(project.users, project.roles)
+            @.fillUsersAndRoles(project.members, project.roles)
             @.initializeSubscription()
             @.loadKanban().then( => @scope.$broadcast("redraw:wip"))
 
@@ -221,8 +221,9 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
         @scope.statusViewModes = {}
         for status in @scope.usStatusList
-            mode = storedStatusViewModes[status.id]
-            @scope.statusViewModes[status.id] = if _.has(defaultViewModes, mode) then mode else defaultViewMode
+            mode = storedStatusViewModes[status.id] || defaultViewMode
+
+            @scope.statusViewModes[status.id] = mode
 
         @.storeStatusViewModes()
 
@@ -233,9 +234,13 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         @scope.statusViewModes[statusId] = newViewMode
         @.storeStatusViewModes()
 
-    getCardClass: (statusId)->
+    isMaximized: (statusId) ->
         mode = @scope.statusViewModes[statusId] or defaultViewMode
-        return defaultViewModes[mode].cardClass or defaultViewModes[defaultViewMode].cardClass
+        return mode == 'maximized'
+
+    isMinimized: (statusId) ->
+        mode = @scope.statusViewModes[statusId] or defaultViewMode
+        return mode == 'minimized'
 
     # Utils methods
 
@@ -317,7 +322,7 @@ KanbanArchivedStatusHeaderDirective = ($rootscope, $translate) ->
         status = $scope.$eval($attrs.tgKanbanArchivedStatusHeader)
         hidden = true
 
-        $scope.class = "icon icon-open-eye"
+        $scope.class = "icon-open-eye"
         $scope.title = showArchivedText
 
         $el.on "click", (event) ->
@@ -325,12 +330,12 @@ KanbanArchivedStatusHeaderDirective = ($rootscope, $translate) ->
 
             $scope.$apply ->
                 if hidden
-                    $scope.class = "icon icon-open-eye"
+                    $scope.class = "icon-open-eye"
                     $scope.title = showArchivedText
                     $rootscope.$broadcast("kanban:hide-userstories-for-status", status.id)
 
                 else
-                    $scope.class = "icon icon-closed-eye"
+                    $scope.class = "icon-closed-eye"
                     $scope.title = hideArchivedText
                     $rootscope.$broadcast("kanban:show-userstories-for-status", status.id)
 
@@ -414,7 +419,7 @@ KanbanUserstoryDirective = ($rootscope, $loading, $rs) ->
             else if not us.is_blocked and $el.hasClass("blocked")
                 $el.removeClass("blocked")
 
-        $el.find(".icon-edit").on "click", (event) ->
+        $el.on 'click', '.icon-edit', (event) ->
             if $el.find(".icon-edit").hasClass("noclick")
                 return
 
@@ -431,11 +436,17 @@ KanbanUserstoryDirective = ($rootscope, $loading, $rs) ->
                 $rootscope.$broadcast("usform:edit", editingUserStory)
                 currentLoading.finish()
 
+        $scope.getTemplateUrl = () ->
+            if $scope.us.isPlaceholder
+                return "common/components/kanban-placeholder.html"
+            else
+                return "kanban/kanban-task.html"
+
         $scope.$on "$destroy", ->
             $el.off()
 
     return {
-        templateUrl: "kanban/kanban-task.html"
+        template: '<ng-include src="getTemplateUrl()"/>',
         link: link
         require: "ngModel"
     }

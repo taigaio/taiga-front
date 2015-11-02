@@ -1,0 +1,166 @@
+//*************************
+//** LAYOUT
+//*************************
+
+// Default body color and background
+body {
+    background: $white; // fallback
+    color: $grayer;
+}
+
+// Main
+.master {
+    background: $white;
+}
+
+// Secondary panel
+.menu-secondary {
+    background: $whitish;
+}
+
+// Tertiary panel
+.menu-tertiary {
+    background-color: $primary-dark;
+}
+
+// Extra bar panel
+.extrabar {
+    background: $whitish;
+}
+
+
+
+// Titles
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: $blackish;
+}
+
+a {
+    color: $grayer;
+    &:hover {
+        color: $primary;
+    }
+}
+
+//**************************
+//** SCAFFOLDING
+//**************************
+
+//Forms
+input[type="text"],
+input[type="number"],
+input[type="password"],
+input[type="email"],
+input[type="date"],
+input[type="password"],
+select,
+textarea {
+    background: $whitish;
+    border-color: $gray-light;
+    color: $grayer;
+    @include placeholder {
+        color: darken($gray-light, 10%);
+    }
+    &.checksley-error {
+        border: 1px solid $red;
+    }
+}
+
+
+// Input errors
+.checksley-error-list {
+    @extend %light;
+    background: rgba($red, .7);
+    color: $white;
+}
+
+// Blockquote
+blockquote {
+    border-left: 5px solid $whitish;
+}
+
+blockquote,
+blockquote p {
+    color: $gray;
+}
+
+cite {
+    color: $gray;
+}
+
+
+.summary {
+    background: $grayer;
+    color: $white;
+}
+
+
+//************************
+//** NAVIGATION
+//***********************
+
+// Top navigation bar
+.navbar {
+    background: rgba($black, .5);
+    &:after {
+        background: url('../images/menu-vert.png') repeat top left;
+    }
+}
+
+//In project left navigation bar
+tg-project-menu {
+    background-color: $primary-dark;
+    background-image: url('../images/menu.png');
+}
+
+.main-nav {
+    svg path {
+        fill: $white;
+    }
+}
+
+//*****************************
+//** TASKBOARD
+//******************************
+
+//Taskboard table
+.taskboard-table-header {
+    .task-colum-name {
+        background: $whitish;
+        border-top: 3px solid $gray-light;
+        .icon {
+            color: $gray-light;
+        }
+    }
+}
+.taskboard-table-body {
+    .taskboard-tasks-box {
+        background: $whitish;
+    }
+}
+
+//*****************************
+//** KANBAN
+//******************************
+
+//Kanban table
+.kanban-table-header {
+    .task-colum-name {
+        background: $whitish;
+        border-top: 3px solid $gray-light;
+        .icon {
+            color: $gray-light;
+        }
+    }
+}
+
+.kanban-table-body {
+    .kanban-uses-box {
+        background: $whitish;
+    }
+}

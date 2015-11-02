@@ -1,3 +1,22 @@
+###
+# Copyright (C) 2014-2015 Taiga Agile LLC <taiga@taiga.io>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, either version 3 of the
+# License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+#
+# File: project.controller.spec.coffee
+###
+
 describe "ProjectController", ->
     $controller = null
     $q = null
@@ -5,16 +24,14 @@ describe "ProjectController", ->
     $rootScope = null
     mocks = {}
 
-    _mockProjectsService = () ->
-        mocks.projectService = {
-            getProjectBySlug: sinon.stub()
-        }
+    _mockProjectService = () ->
+        mocks.projectService = {}
 
-        provide.value "tgProjectsService", mocks.projectService
+        provide.value "tgProjectService", mocks.projectService
 
     _mockAppMetaService = () ->
         mocks.appMetaService = {
-            setAll: sinon.stub()
+            setfn: sinon.stub()
         }
 
         provide.value "tgAppMetaService", mocks.appMetaService
@@ -31,13 +48,6 @@ describe "ProjectController", ->
             pslug: "project-slug"
         }
 
-    _mockXhrErrorService = () ->
-        mocks.xhrErrorService = {
-            response: sinon.spy()
-        }
-
-        provide.value "tgXhrErrorService", mocks.xhrErrorService
-
     _mockTranslate = () ->
         mocks.translate = {}
         mocks.translate.instant = sinon.stub()
@@ -47,11 +57,10 @@ describe "ProjectController", ->
     _mocks = () ->
         module ($provide) ->
             provide = $provide
-            _mockProjectsService()
+            _mockProjectService()
             _mockRouteParams()
             _mockAppMetaService()
             _mockAuth()
-            _mockXhrErrorService()
             _mockTranslate()
             return null
 
@@ -69,20 +78,20 @@ describe "ProjectController", ->
     it "set local user", () ->
         project = Immutable.fromJS({
             name: "projectName"
+            members: []
         })
-
-        mocks.projectService.getProjectBySlug.withArgs("project-slug").promise().resolve(project)
 
         ctrl = $controller "Project",
             $scope: {}
 
         expect(ctrl.user).to.be.equal(mocks.auth.userData)
 
-    it "set page title", (done) ->
+    it "set page title", () ->
         $scope = $rootScope.$new()
         project = Immutable.fromJS({
             name: "projectName"
-            description: "projectDescription"
+            description: "projectDescription",
+            members: []
         })
 
         mocks.translate.instant
@@ -91,37 +100,31 @@ describe "ProjectController", ->
             })
             .returns('projectTitle')
 
-        mocks.projectService.getProjectBySlug.withArgs("project-slug").promise().resolve(project)
+        mocks.projectService.project = project
 
         ctrl = $controller("Project")
 
-        setTimeout ( ->
-            expect(mocks.appMetaService.setAll.calledWithExactly("projectTitle", "projectDescription")).to.be.true
-            done()
-        )
+        metas = ctrl._setMeta(project)
 
-    it "set local project variable", (done) ->
+        expect(metas.title).to.be.equal('projectTitle')
+        expect(metas.description).to.be.equal('projectDescription')
+        expect(mocks.appMetaService.setfn).to.be.calledOnce
+
+    it "set local project variable and members", () ->
         project = Immutable.fromJS({
             name: "projectName"
         })
 
-        mocks.projectService.getProjectBySlug.withArgs("project-slug").promise().resolve(project)
+        members = Immutable.fromJS([
+            {is_active: true},
+            {is_active: true},
+            {is_active: true}
+        ])
+
+        mocks.projectService.project = project
+        mocks.projectService.activeMembers = members
 
         ctrl = $controller("Project")
 
-        setTimeout ( () ->
-            expect(ctrl.project).to.be.equal(project)
-            done()
-        )
-
-    it "handle project error", (done) ->
-        xhr = {code: 403}
-
-        mocks.projectService.getProjectBySlug.withArgs("project-slug").promise().reject(xhr)
-
-        ctrl = $controller("Project")
-
-        setTimeout (() ->
-            expect(mocks.xhrErrorService.response.withArgs(xhr)).to.be.calledOnce
-            done()
-        )
+        expect(ctrl.project).to.be.equal(project)
+        expect(ctrl.members).to.be.equal(members)

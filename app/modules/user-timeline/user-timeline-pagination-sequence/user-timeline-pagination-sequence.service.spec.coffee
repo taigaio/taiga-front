@@ -1,3 +1,22 @@
+###
+# Copyright (C) 2014-2015 Taiga Agile LLC <taiga@taiga.io>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, either version 3 of the
+# License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+#
+# File: user-timeline-pagination-sequence.service.spec.coffee
+###
+
 describe "tgUserTimelinePaginationSequenceService", ->
     userTimelinePaginationSequenceService = null
 
@@ -35,7 +54,7 @@ describe "tgUserTimelinePaginationSequenceService", ->
 
         config.minItems = 10
 
-        seq = userTimelinePaginationSequenceService(config)
+        seq = userTimelinePaginationSequenceService.generate(config)
 
         seq.next().then (result) ->
             result = result.toJS()
@@ -66,7 +85,7 @@ describe "tgUserTimelinePaginationSequenceService", ->
 
         config.minItems = 10
 
-        seq = userTimelinePaginationSequenceService(config)
+        seq = userTimelinePaginationSequenceService.generate(config)
 
         seq.next().then (result) ->
             result = result.toJS()
@@ -97,7 +116,7 @@ describe "tgUserTimelinePaginationSequenceService", ->
 
         config.minItems = 2
 
-        seq = userTimelinePaginationSequenceService(config)
+        seq = userTimelinePaginationSequenceService.generate(config)
 
         seq.next().then () ->
             seq.next().then (result) ->
@@ -107,3 +126,31 @@ describe "tgUserTimelinePaginationSequenceService", ->
                 expect(result.next).to.be.true
 
                 done()
+
+
+    it "map items", (done) ->
+        config = {}
+
+        page1 = Immutable.Map({
+            next: false,
+            data: [1, 2, 3]
+        })
+
+        promise = sinon.stub()
+        promise.withArgs(1).promise().resolve(page1)
+
+        config.fetch = (page) ->
+            return promise(page)
+
+        config.minItems = 1
+
+        config.map = (item) => item + 1;
+
+        seq = userTimelinePaginationSequenceService.generate(config)
+
+        seq.next().then (result) ->
+            result = result.toJS()
+
+            expect(result.items).to.be.eql([2, 3, 4])
+
+            done()

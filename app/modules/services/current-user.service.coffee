@@ -1,3 +1,22 @@
+###
+# Copyright (C) 2014-2015 Taiga Agile LLC <taiga@taiga.io>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, either version 3 of the
+# License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+#
+# File: current-user.service.coffee
+###
+
 taiga = @.taiga
 
 groupBy = @.taiga.groupBy
@@ -5,13 +24,15 @@ groupBy = @.taiga.groupBy
 class CurrentUserService
     @.$inject = [
         "tgProjectsService",
-        "$tgStorage"
+        "$tgStorage",
+        "tgResources"
     ]
 
-    constructor: (@projectsService, @storageService) ->
+    constructor: (@projectsService, @storageService, @rs) ->
         @._user = null
         @._projects = Immutable.Map()
         @._projectsById = Immutable.Map()
+        @._joyride = null
 
         taiga.defineImmutableProperty @, "projects", () => return @._projects
         taiga.defineImmutableProperty @, "projectsById", () => return @._projectsById
@@ -35,6 +56,7 @@ class CurrentUserService
         @._user = null
         @._projects = Immutable.Map()
         @._projectsById = Immutable.Map()
+        @._joyride = null
 
     setUser: (user) ->
         @._user = user
@@ -43,19 +65,57 @@ class CurrentUserService
 
     bulkUpdateProjectsOrder: (sortData) ->
         @projectsService.bulkUpdateProjectsOrder(sortData).then () =>
-            @._loadProjects()
+            @.loadProjects()
 
-    _loadProjects: () ->
+    loadProjects: () ->
         return @projectsService.getProjectsByUserId(@._user.get("id"))
-            .then (projects) =>
-                @._projects = @._projects.set("all", projects)
-                @._projects = @._projects.set("recents", projects.slice(0, 10))
+            .then (projects) => @.setProjects(projects)
 
-                @._projectsById = Immutable.fromJS(groupBy(projects.toJS(), (p) -> p.id))
+    disableJoyRide: (section) ->
+        if section
+            @._joyride[section] = false
+        else
+            @._joyride = {
+                backlog: false,
+                kanban: false,
+                dashboard: false
+            }
 
-                return @.projects
+        @rs.user.setUserStorage('joyride', @._joyride)
+
+    loadJoyRideConfig: () ->
+        return new Promise (resolve) =>
+            if @._joyride != null
+                resolve(@._joyride)
+                return
+
+            @rs.user.getUserStorage('joyride')
+                .then (config) =>
+                    @._joyride = config
+                    resolve(@._joyride)
+                .catch () =>
+                    #joyride not defined
+                    @._joyride = {
+                        backlog: true,
+                        kanban: true,
+                        dashboard: true
+                    }
+
+                    @rs.user.createUserStorage('joyride', @._joyride)
+
+                    resolve(@._joyride)
 
     _loadUserInfo: () ->
-        return @._loadProjects()
+        return Promise.all([
+            @.loadProjects()
+        ])
+
+    setProjects: (projects) ->
+        @._projects = @._projects.set("all", projects)
+        @._projects = @._projects.set("recents", projects.slice(0, 10))
+
+        @._projectsById = Immutable.fromJS(groupBy(projects.toJS(), (p) -> p.id))
+
+        return @.projects
 
 angular.module("taigaCommon").service("tgCurrentUserService", CurrentUserService)

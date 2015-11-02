@@ -23,7 +23,7 @@
         color: $grayer;
         cursor: pointer;
         &:hover {
-            color: $green-taiga;
+            color: $primary;
             transition: color .2s ease-in;
         }
     }
@@ -45,7 +45,7 @@
         }
     }
     &.ui-sortable-helper {
-        background: lighten($green-taiga, 60%);
+        background: lighten($primary, 60%);
         box-shadow: 1px 1px 10px rgba($black, .1);
         transition: background .2s ease-in;
     }
@@ -96,7 +96,7 @@
             display: block;
             position: absolute;
             &:hover {
-                color: $green-taiga;
+                color: $primary;
             }
         }
         .settings {
@@ -143,7 +143,7 @@
         }
     }
     .percentage {
-        background: rgba($green-taiga, .1);
+        background: rgba($primary, .1);
         bottom: 0;
         height: 40px;
         left: 0;
@@ -162,11 +162,11 @@
         color: $gray-light;
     }
     .more-attachments-num {
-        color: $green-taiga;
+        color: $primary;
         margin-left: .5rem;
     }
     &:hover {
-        background: lighten($green-taiga, 60%);
+        background: lighten($primary, 60%);
         transition: background .2s ease-in;
     }
 }
@@ -182,4 +182,9 @@
         @extend %small;
         color: $gray-light;
     }
+}
+
+.attachment-preview img {
+    max-height: 95vh;
+    max-width: 95vw;
 }

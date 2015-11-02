@@ -1,7 +1,7 @@
 ###
-# Copyright (C) 2014 Andrey Antukh <niwi@niwi.be>
-# Copyright (C) 2014 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2015 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2015 David Barragán Merino <bameda@dbarragan.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -56,6 +56,22 @@ resourceProvider = ($repo, $http, $urls, $storage) ->
         params = {project_id: projectId, sprint_id: sprintId, us_id: usId, bulk_tasks: data}
         return $http.post(url, params).then (result) ->
             return result.data
+
+    service.upvote = (taskId) ->
+        url = $urls.resolve("task-upvote", taskId)
+        return $http.post(url)
+
+    service.downvote = (taskId) ->
+        url = $urls.resolve("task-downvote", taskId)
+        return $http.post(url)
+
+    service.watch = (taskId) ->
+        url = $urls.resolve("task-watch", taskId)
+        return $http.post(url)
+
+    service.unwatch = (taskId) ->
+        url = $urls.resolve("task-unwatch", taskId)
+        return $http.post(url)
 
     service.bulkUpdateTaskTaskboardOrder = (projectId, data) ->
         url = $urls.resolve("bulk-update-task-taskboard-order")

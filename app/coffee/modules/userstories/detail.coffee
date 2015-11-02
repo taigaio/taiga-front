@@ -1,7 +1,7 @@
 ###
-# Copyright (C) 2014 Andrey Antukh <niwi@niwi.be>
-# Copyright (C) 2014 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2015 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2015 David Barragán Merino <bameda@dbarragan.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -24,6 +24,7 @@ taiga = @.taiga
 mixOf = @.taiga.mixOf
 groupBy = @.taiga.groupBy
 bindOnce = @.taiga.bindOnce
+bindMethods = @.taiga.bindMethods
 
 module = angular.module("taigaUserStories")
 
@@ -50,6 +51,8 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
                   @log, @appMetaService, @navUrls, @analytics, @translate) ->
+        bindMethods(@)
+
         @scope.usRef = @params.usref
         @scope.sectionName = @translate.instant("US.SECTION_NAME")
         @.initializeEventHandlers()
@@ -92,6 +95,9 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         @scope.$on "attachment:create", =>
             @analytics.trackEvent("attachment", "create", "create attachment on userstory", 1)
 
+        @scope.$on "comment:new", =>
+            @.loadUs()
+
     initializeOnDeleteGoToUrl: ->
         ctx = {project: @scope.project.slug}
         @scope.onDeleteGoToUrl = @navUrls.resolve("project", ctx)
@@ -112,7 +118,6 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.statusList = project.us_statuses
             @scope.statusById = groupBy(project.us_statuses, (x) -> x.id)
             @scope.taskStatusById = groupBy(project.task_statuses, (x) -> x.id)
-            @scope.membersById = groupBy(project.memberships, (x) -> x.user)
             @scope.pointsList = _.sortBy(project.points, "order")
             @scope.pointsById = groupBy(@scope.pointsList, (e) -> e.id)
             return project
@@ -177,8 +182,52 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
     loadInitialData: ->
         promise = @.loadProject()
         return promise.then (project) =>
-            @.fillUsersAndRoles(project.users, project.roles)
+            @.fillUsersAndRoles(project.members, project.roles)
             @.loadUs().then(=> @q.all([@.loadSprint(), @.loadTasks()]))
+
+    ###
+    # Note: This methods (onUpvote() and onDownvote()) are related to tg-vote-button.
+    #       See app/modules/components/vote-button for more info
+    ###
+    onUpvote: ->
+        onSuccess = =>
+            @.loadUs()
+            @rootscope.$broadcast("object:updated")
+        onError = =>
+            @confirm.notify("error")
+
+        return @rs.userstories.upvote(@scope.usId).then(onSuccess, onError)
+
+    onDownvote: ->
+        onSuccess = =>
+            @.loadUs()
+            @rootscope.$broadcast("object:updated")
+        onError = =>
+            @confirm.notify("error")
+
+        return @rs.userstories.downvote(@scope.usId).then(onSuccess, onError)
+
+    ###
+    # Note: This methods (onWatch() and onUnwatch()) are related to tg-watch-button.
+    #       See app/modules/components/watch-button for more info
+    ###
+    onWatch: ->
+        onSuccess = =>
+            @.loadUs()
+            @rootscope.$broadcast("object:updated")
+        onError = =>
+            @confirm.notify("error")
+
+        return @rs.userstories.watch(@scope.usId).then(onSuccess, onError)
+
+    onUnwatch: ->
+        onSuccess = =>
+            @.loadUs()
+            @rootscope.$broadcast("object:updated")
+        onError = =>
+            @confirm.notify("error")
+
+        return @rs.userstories.unwatch(@scope.usId).then(onSuccess, onError)
 
 module.controller("UserStoryDetailController", UserStoryDetailController)
 

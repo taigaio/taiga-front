@@ -4,72 +4,27 @@
     .duty-single {
         border-bottom: 1px solid $whitish;
         cursor: pointer;
-        padding: .5rem;
+        transition: background .2s;
+        transition-delay: .2s;
+        &:hover {
+            background: rgba($primary-light, .1);
+        }
         &:last-child {
             border: 0;
         }
         &.blocked {
             background: rgba($red-light, .2);
-            .duty-type,
-            .duty-status {
-                color: $red;
-            }
+            color: $red;
         }
         >a {
             align-items: center;
+            border-bottom: 0;
             display: flex;
             flex-direction: row;
         }
     }
-    .avatar {
-        flex-basis: 47px;
-        height: 47px;
-        margin-right: .5rem;
-        width: 47px;
-    }
-    .duty-data {
-        flex: 1;
-        margin-right: .5rem;
-    }
-    .duty-type,
-    .duty-status {
-        @extend %small;
-        color: $gray;
-        margin-right: .3rem;
-    }
-    .duty-title {
-        display: block;
-        margin-top: .25rem;
-    }
-    .duty-id {
-        color: $gray-light;
-        margin-right: .3rem;
-    }
-    .duty-project {
-        @extend %small;
-        align-self: flex-start;
-        color: $gray-light;
-        margin-left: auto;
-        text-align: right;
-        width: 120px;
-    }
     .see-more {
         display: block;
         margin: 2rem 30%;
-    }
-}
-.watching-empty {
-    padding: 5vh;
-    text-align: center;
-    svg {
-        margin: 2rem auto;
-        max-width: 160px;
-        text-align: center;
-        path {
-            fill: $whitish;
-        }
-    }
-    p {
-        @extend %small;
     }
 }

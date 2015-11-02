@@ -1,10 +1,10 @@
 div(class!="activity-single <%- mode %>")
     .activity-user
-        a.avatar(href="" title!="<%- userFullName %>")
+        a.avatar(href!="<%- userProfileUrl %>", title!="<%- userFullName %>")
             img(src!="<%- avatar %>", alt!="<%- userFullName %>")
     .activity-content
         .activity-username
-            a.username(href="", title!="<%- userFullName %>")
+            a.username(href!="<%- userProfileUrl %>", title!="<%- userFullName %>")
                 | <%- userFullName %>
             span.date
                 | <%- creationDate %>

@@ -1,7 +1,7 @@
 ###
-# Copyright (C) 2014 Andrey Antukh <niwi@niwi.be>
-# Copyright (C) 2014 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2015 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2015 David Barragán Merino <bameda@dbarragan.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -104,7 +104,7 @@ module.controller("ProjectProfileController", ProjectProfileController)
 ## Project Profile Directive
 #############################################################################
 
-ProjectProfileDirective = ($repo, $confirm, $loading, $navurls, $location, projectService) ->
+ProjectProfileDirective = ($repo, $confirm, $loading, $navurls, $location, projectService, currentUserService) ->
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
 
@@ -130,6 +130,7 @@ ProjectProfileDirective = ($repo, $confirm, $loading, $navurls, $location, proje
                 $ctrl.loadInitialData()
 
                 projectService.fetchProject()
+                currentUserService.loadProjects()
 
             promise.then null, (data) ->
                 currentLoading.finish()
@@ -144,7 +145,7 @@ ProjectProfileDirective = ($repo, $confirm, $loading, $navurls, $location, proje
     return {link:link}
 
 module.directive("tgProjectProfile", ["$tgRepo", "$tgConfirm", "$tgLoading", "$tgNavUrls", "$tgLocation",
-                                      "tgProjectService", ProjectProfileDirective])
+                                      "tgProjectService", "tgCurrentUserService", ProjectProfileDirective])
 
 
 #############################################################################
@@ -192,9 +193,10 @@ module.directive("tgProjectDefaultValues", ["$tgRepo", "$tgConfirm", "$tgLoading
 
 ProjectModulesDirective = ($repo, $confirm, $loading, projectService) ->
     link = ($scope, $el, $attrs) ->
-        form = $el.find("form").checksley()
         submit = =>
+            form = $el.find("form").checksley()
             return if not form.validate()
+
             target = angular.element(".admin-functionalities .submit-button")
             currentLoading = $loading()
                 .target(target)
@@ -226,7 +228,7 @@ ProjectModulesDirective = ($repo, $confirm, $loading, projectService) ->
             else
                 $el.find(".videoconference-attributes").addClass("hidden")
                 $scope.project.videoconferences = null
-                $scope.project.videoconferences_salt = ""
+                $scope.project.videoconferences_extra_data = ""
 
         $scope.$watch "project", (project) ->
             if project.videoconferences?
@@ -357,7 +359,7 @@ class CsvExporterController extends taiga.Controller
     setCsvUuid: =>
         @scope.csvUuid = @scope.project["#{@.type}_csv_uuid"]
 
-    _generateUuid: (finish) =>
+    _generateUuid: (response=null) =>
         promise = @rs.projects["regenerate_#{@.type}_csv_uuid"](@scope.projectId)
 
         promise.then (data) =>
@@ -367,7 +369,7 @@ class CsvExporterController extends taiga.Controller
             @confirm.notify("error")
 
         promise.finally ->
-            finish()
+            response.finish() if response
         return promise
 
     regenerateUuid: ->
@@ -377,7 +379,7 @@ class CsvExporterController extends taiga.Controller
 
             @confirm.ask(title, subtitle).then @._generateUuid
         else
-            @._generateUuid(_.identity)
+            @._generateUuid()
 
 
 class CsvExporterUserstoriesController extends CsvExporterController

@@ -1,20 +1,22 @@
 .profile-timeline {
+    border-top: 1px solid $whitish;
     .activity-item {
         border-bottom: 1px solid $whitish;
-        padding: 1rem .5rem;
+        padding: 1rem .5rem 1rem 0;
         position: relative;
         p {
             margin-bottom: 0;
         }
-        a {
-            color: $green-taiga;
+        a,
+        .username {
+            color: $primary;
             &:first-child {
                 @extend %bold;
                 color: $gray;
             }
-            &:hover {
-                color: $fresh-taiga;
-            }
+        }
+        a:hover {
+            color: $primary-light;
         }
         blockquote {
             line-height: 1.4rem;
@@ -28,7 +30,6 @@
         img {
             max-height: 640px;
             max-width: 640px;
-            width: 100%;
         }
         .activity-info {
             align-items: center;

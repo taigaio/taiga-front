@@ -1,10 +1,14 @@
 .profile-projects {
     border-top: 1px solid $whitish;
-    .project-list-single {
+    .list-itemtype-project {
         display: flex;
         justify-content: space-between;
         min-height: 10rem;
+        .list-itemtype-project-right {
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            width: 200px;
+        }
     }
 }
-
-

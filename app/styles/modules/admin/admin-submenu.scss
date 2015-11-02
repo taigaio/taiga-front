@@ -15,12 +15,12 @@
             justify-content: space-between;
             padding: 1rem 0 1rem 1rem;
             &:hover {
-                background: lighten($dark-taiga, 3%);
+                background: lighten($primary-dark, 3%);
                 color: $white;
                 transition: all .2s;
             }
             &.active {
-                background: lighten($dark-taiga, 10%);
+                background: lighten($primary-dark, 10%);
                 color: $white;
                 transition: all .2s;
             }

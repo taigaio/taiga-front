@@ -1,7 +1,7 @@
 ###
-# Copyright (C) 2014 Andrey Antukh <niwi@niwi.be>
-# Copyright (C) 2014 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2015 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2015 David Barragán Merino <bameda@dbarragan.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -22,6 +22,57 @@
 taiga = @.taiga
 
 module = angular.module("taigaCommon", [])
+
+#############################################################################
+## Default datepicker config
+#############################################################################
+DataPickerConfig = ($translate) ->
+    return {
+        get: () ->
+            return {
+                i18n: {
+                    previousMonth: $translate.instant("COMMON.PICKERDATE.PREV_MONTH"),
+                    nextMonth:  $translate.instant("COMMON.PICKERDATE.NEXT_MONTH"),
+                    months: [
+                        $translate.instant("COMMON.PICKERDATE.MONTHS.JAN"),
+                        $translate.instant("COMMON.PICKERDATE.MONTHS.FEB"),
+                        $translate.instant("COMMON.PICKERDATE.MONTHS.MAR"),
+                        $translate.instant("COMMON.PICKERDATE.MONTHS.APR"),
+                        $translate.instant("COMMON.PICKERDATE.MONTHS.MAY"),
+                        $translate.instant("COMMON.PICKERDATE.MONTHS.JUN"),
+                        $translate.instant("COMMON.PICKERDATE.MONTHS.JUL"),
+                        $translate.instant("COMMON.PICKERDATE.MONTHS.AUG"),
+                        $translate.instant("COMMON.PICKERDATE.MONTHS.SEP"),
+                        $translate.instant("COMMON.PICKERDATE.MONTHS.OCT"),
+                        $translate.instant("COMMON.PICKERDATE.MONTHS.NOV"),
+                        $translate.instant("COMMON.PICKERDATE.MONTHS.DEC")
+                    ],
+                    weekdays: [
+                        $translate.instant("COMMON.PICKERDATE.WEEK_DAYS.SUN"),
+                        $translate.instant("COMMON.PICKERDATE.WEEK_DAYS.MON"),
+                        $translate.instant("COMMON.PICKERDATE.WEEK_DAYS.TUE"),
+                        $translate.instant("COMMON.PICKERDATE.WEEK_DAYS.WED"),
+                        $translate.instant("COMMON.PICKERDATE.WEEK_DAYS.THU"),
+                        $translate.instant("COMMON.PICKERDATE.WEEK_DAYS.FRI"),
+                        $translate.instant("COMMON.PICKERDATE.WEEK_DAYS.SAT")
+                    ],
+                    weekdaysShort: [
+                        $translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.SUN"),
+                        $translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.MON"),
+                        $translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.TUE"),
+                        $translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.WED"),
+                        $translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.THU"),
+                        $translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.FRI"),
+                        $translate.instant("COMMON.PICKERDATE.WEEK_DAYS_SHORT.SAT")
+                    ]
+                },
+                isRTL: $translate.instant("COMMON.PICKERDATE.IS_RTL") == "true",
+                firstDay: parseInt($translate.instant("COMMON.PICKERDATE.FIRST_DAY_OF_WEEK"), 10),
+                format: $translate.instant("COMMON.PICKERDATE.FORMAT")
+            }
+    }
+
+module.factory("tgDatePickerConfigService", ["$translate", DataPickerConfig])
 
 #############################################################################
 ## Get the selected text
@@ -229,3 +280,46 @@ Template = ($templateCache) ->
     }
 
 module.factory("$tgTemplate", ["$templateCache", Template])
+
+#############################################################################
+## Permission directive, hide elements when necessary
+#############################################################################
+
+Capslock = ($translate) ->
+    link = ($scope, $el, $attrs) ->
+        open = false
+
+        warningIcon = $('<div>')
+            .addClass('icon')
+            .addClass('icon-capslock')
+            .attr('title', $translate.instant('COMMON.CAPSLOCK_WARNING'))
+
+        hideIcon = () ->
+            warningIcon.fadeOut () ->
+                open = false
+
+                $(this).remove()
+
+        showIcon = (e) ->
+            return if open
+            element = e.currentTarget
+            $(element).parent().append(warningIcon)
+            $('.icon-capslock').fadeIn()
+
+            open = true
+
+        $el.on 'blur', (e) ->
+            hideIcon()
+
+        $el.on 'keyup.capslock, focus', (e) ->
+            if $el.val() == $el.val().toLowerCase()
+                hideIcon(e)
+            else
+                showIcon(e)
+
+        $scope.$on "$destroy", ->
+            $el.off('.capslock')
+
+    return {link:link}
+
+module.directive("tgCapslock", ["$translate", Capslock])

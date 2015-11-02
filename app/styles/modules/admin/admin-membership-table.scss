@@ -46,20 +46,17 @@
         justify-content: space-between;
     }
     .active,
-    .pending {
-        padding: 8px;
+    .resend {
+        padding: .4rem .5rem;
     }
     .active {
         background-color: $whitish;
     }
-    .pending {
-        background-color: $red-light;
+    .resend {
+        background-color: $primary;
         color: $white;
-        .icon {
-            float: rsdsdfdvsdvight;
-        }
         &:hover {
-            background-color: $red;
+            background-color: $primary-light;
             color: $white;
             transition: background-color .3s linear;
         }
@@ -70,6 +67,9 @@
         &:hover {
             color: $red;
         }
+    }
+    .pending {
+        color: $red-light;
     }
     .row-admin {
         input {

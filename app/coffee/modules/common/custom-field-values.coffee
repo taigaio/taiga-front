@@ -1,7 +1,7 @@
 ###
-# Copyright (C) 2014 Andrey Antukh <niwi@niwi.be>
-# Copyright (C) 2014 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2015 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2015 David Barragán Merino <bameda@dbarragan.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -26,6 +26,28 @@ debounce = @.taiga.debounce
 generateHash = taiga.generateHash
 
 module = angular.module("taigaCommon")
+
+# Custom attributes types (see taiga-back/taiga/projects/custom_attributes/choices.py)
+TEXT_TYPE = "text"
+MULTILINE_TYPE = "multiline"
+DATE_TYPE = "date"
+
+
+TYPE_CHOICES = [
+    {
+        key: TEXT_TYPE,
+        name: "ADMIN.CUSTOM_FIELDS.FIELD_TYPE_TEXT"
+    },
+    {
+        key: MULTILINE_TYPE,
+        name: "ADMIN.CUSTOM_FIELDS.FIELD_TYPE_MULTI"
+    },
+    {
+        key: DATE_TYPE,
+        name: "ADMIN.CUSTOM_FIELDS.FIELD_TYPE_DATE"
+    }
+]
+
 
 
 class CustomAttributesValuesController extends taiga.Controller
@@ -118,80 +140,104 @@ CustomAttributesValuesDirective = ($templates, $storage) ->
         template: templateFn
     }
 
-module.directive("tgCustomAttributesValues", ["$tgTemplate", "$tgStorage", CustomAttributesValuesDirective])
+module.directive("tgCustomAttributesValues", ["$tgTemplate", "$tgStorage", "$translate",
+                                              CustomAttributesValuesDirective])
 
 
-CustomAttributeValueDirective = ($template, $selectedText, $compile) ->
+CustomAttributeValueDirective = ($template, $selectedText, $compile, $translate, datePickerConfigService) ->
     template = $template.get("custom-attributes/custom-attribute-value.html", true)
     templateEdit = $template.get("custom-attributes/custom-attribute-value-edit.html", true)
 
     link = ($scope, $el, $attrs, $ctrl) ->
+        prettyDate = $translate.instant("COMMON.PICKERDATE.FORMAT")
+
         render = (attributeValue, edit=false) ->
-            value = attributeValue.value
+            if attributeValue.type is DATE_TYPE and attributeValue.value
+                value = moment(attributeValue.value, "YYYY-MM-DD").format(prettyDate)
+            else
+                value = attributeValue.value
             editable = isEditable()
+
             ctx = {
                 id: attributeValue.id
                 name: attributeValue.name
                 description: attributeValue.description
                 value: value
                 isEditable: editable
+                type: attributeValue.type
             }
 
             if editable and (edit or not value)
                 html = templateEdit(ctx)
                 html = $compile(html)($scope)
+                $el.html(html)
+
+                if attributeValue.type == DATE_TYPE
+                    datePickerConfig = datePickerConfigService.get()
+                    _.merge(datePickerConfig, {
+                        field: $el.find("input[name=value]")[0]
+                        onSelect: (date) =>
+                            selectedDate = date
+                        onOpen: =>
+                            $el.picker.setDate(selectedDate) if selectedDate?
+                    })
+                    $el.picker = new Pikaday(datePickerConfig)
             else
                 html = template(ctx)
                 html = $compile(html)($scope)
-
-            $el.html(html)
+                $el.html(html)
 
         isEditable = ->
             permissions = $scope.project.my_permissions
             requiredEditionPerm = $attrs.requiredEditionPerm
             return permissions.indexOf(requiredEditionPerm) > -1
 
-        saveAttributeValue = ->
-            attributeValue.value = $el.find("input").val()
+        submit = debounce 2000, (event) =>
+            event.preventDefault()
+
+            attributeValue.value = $el.find("input[name=value], textarea[name='value']").val()
+            if attributeValue.type is DATE_TYPE
+                if moment(attributeValue.value, prettyDate).isValid()
+                    attributeValue.value = moment(attributeValue.value, prettyDate).format("YYYY-MM-DD")
+                else
+                    attributeValue.value = ""
 
             $scope.$apply ->
                 $ctrl.updateAttributeValue(attributeValue).then ->
                     render(attributeValue, false)
 
-        $el.on "keyup", "input[name=description]", (event) ->
-            if event.keyCode == 13
-                submit(event)
-            else if event.keyCode == 27
-                render(attributeValue, false)
-
-        ## Actions (on view mode)
-        $el.on "click", ".custom-field-value.read-mode", ->
-            return if not isEditable()
-            return if $selectedText.get().length
-            render(attributeValue, true)
-            $el.find("input[name='description']").focus().select()
-            $scope.$apply()
-
-        $el.on "click", "a.icon-edit", (event) ->
-            event.preventDefault()
-            render(attributeValue, true)
-            $el.find("input[name='description']").focus().select()
-            $scope.$apply() 
-
-        ## Actions (on edit mode)
-        submit = debounce 2000, (event) =>
-            event.preventDefault()
-            saveAttributeValue()
-
-        $el.on "submit", "form", submit
-        $el.on "click", "a.icon-floppy", submit
-
-        $scope.$on "$destroy", ->
-            $el.off()
+        setFocusAndSelectOnInputField = ->
+            $el.find("input[name='value'], textarea[name='value']").focus().select()
 
         # Bootstrap
         attributeValue = $scope.$eval($attrs.tgCustomAttributeValue)
         render(attributeValue)
+
+        ## Actions (on view mode)
+        $el.on "click", ".js-value-view-mode", ->
+            return if not isEditable()
+            return if $selectedText.get().length
+            render(attributeValue, true)
+            setFocusAndSelectOnInputField()
+
+        $el.on "click", "a.icon-edit", (event) ->
+            event.preventDefault()
+            render(attributeValue, true)
+            setFocusAndSelectOnInputField()
+
+        ## Actions (on edit mode)
+        $el.on "keyup", "input[name=value], textarea[name='value']", (event) ->
+            if event.keyCode is 13 and event.currentTarget.type isnt "textarea"
+                submit(event)
+            else if event.keyCode == 27
+                render(attributeValue, false)
+
+        $el.on "submit", "form", submit
+
+        $el.on "click", "a.icon-floppy", submit
+
+        $scope.$on "$destroy", ->
+            $el.off()
 
     return {
         link: link
@@ -199,4 +245,5 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile) ->
         restrict: "AE"
     }
 
-module.directive("tgCustomAttributeValue", ["$tgTemplate", "$selectedText", "$compile", CustomAttributeValueDirective])
+module.directive("tgCustomAttributeValue", ["$tgTemplate", "$selectedText", "$compile", "$translate",
+                                            "tgDatePickerConfigService", CustomAttributeValueDirective])

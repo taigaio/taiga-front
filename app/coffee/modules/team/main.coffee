@@ -1,7 +1,7 @@
 ###
-# Copyright (C) 2014 Andrey Antukh <niwi@niwi.be>
-# Copyright (C) 2014 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2015 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2015 David Barragán Merino <bameda@dbarragan.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -70,30 +70,18 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.filtersRole = null
 
     loadMembers: ->
-        currentUser = @auth.getUser()
+        user = @auth.getUser()
 
-        if currentUser? and not currentUser.photo?
-            currentUser.photo = "/images/unnamed.png"
-
-        memberships = @projectService.project.toJS().memberships
-
-        @scope.currentUser = _.find memberships, (membership) =>
-            return currentUser? and membership.user == currentUser.id
-
+        # Calculate totals
         @scope.totals = {}
+        for member in @scope.activeUsers
+            @scope.totals[member.id] = 0
 
-        _.forEach memberships, (membership) =>
-            @scope.totals[membership.user] = 0
+        # Get current user
+        @scope.currentUser = _.find(@scope.activeUsers, {id: user?.id})
 
-        @scope.memberships = _.filter memberships, (membership) =>
-            if membership.user && (not currentUser? or membership.user != currentUser.id)
-                return membership
-
-        @scope.memberships = _.filter memberships, (membership) => return membership.is_active
-
-        for membership in @scope.memberships
-            if not membership.photo?
-                membership.photo = "/images/unnamed.png"
+        # Get member list without current user
+        @scope.memberships = _.reject(@scope.activeUsers, {id: user?.id})
 
     loadProject: ->
         return @rs.projects.getBySlug(@params.pslug).then (project) =>
@@ -115,10 +103,10 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
               total = _.reduce(vals, (sum, el) -> sum + el)
               @scope.totals[userId] = total
 
-          @scope.stats = @.processStats(stats)
+          @scope.stats = @._processStats(stats)
           @scope.stats.totals = @scope.totals
 
-    processStat: (stat) ->
+    _processStat: (stat) ->
         max = _.max(stat)
         min = _.min(stat)
         singleStat = _.map stat, (value, key) ->
@@ -130,17 +118,16 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
         singleStat = _.object(singleStat)
         return singleStat
 
-    processStats: (stats) ->
+    _processStats: (stats) ->
         for key,value of stats
-            stats[key] = @.processStat(value)
+            stats[key] = @._processStat(value)
         return stats
 
     loadInitialData: ->
         promise = @.loadProject()
         return promise.then (project) =>
-            @.fillUsersAndRoles(project.users, project.roles)
+            @.fillUsersAndRoles(project.members, project.roles)
             @.loadMembers()
-
             return @.loadMemberStats()
 
 module.controller("TeamController", TeamController)
@@ -230,16 +217,16 @@ LeaveProjectDirective = ($repo, $confirm, $location, $rs, $navurls, $translate) 
             leave_project_text = $translate.instant("TEAM.ACTION_LEAVE_PROJECT")
             confirm_leave_project_text = $translate.instant("TEAM.CONFIRM_LEAVE_PROJECT")
 
-            $confirm.ask(leave_project_text, confirm_leave_project_text).then (finish) =>
+            $confirm.ask(leave_project_text, confirm_leave_project_text).then (response) =>
                 promise = $rs.projects.leave($attrs.projectid)
 
                 promise.then =>
-                    finish()
+                    response.finish()
                     $confirm.notify("success")
                     $location.path($navurls.resolve("home"))
 
                 promise.then null, (response) ->
-                    finish()
+                    response.finish()
                     $confirm.notify('error', response.data._error_message)
 
     return {

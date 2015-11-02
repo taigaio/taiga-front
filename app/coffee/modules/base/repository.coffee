@@ -1,7 +1,7 @@
 ###
-# Copyright (C) 2014 Andrey Antukh <niwi@niwi.be>
-# Copyright (C) 2014 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2015 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2015 David Barragán Merino <bameda@dbarragan.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -140,7 +140,7 @@ class RepositoryService extends taiga.Service
 
         return defered.promise
 
-    queryMany: (name, params, options={}) ->
+    queryMany: (name, params, options={}, headers=false) ->
         url = @urls.resolve(name)
         httpOptions = {headers: {}}
 
@@ -148,7 +148,12 @@ class RepositoryService extends taiga.Service
             httpOptions.headers["x-disable-pagination"] =  "1"
 
         return @http.get(url, params, httpOptions).then (data) =>
-            return _.map(data.data, (x) => @model.make_model(name, x))
+            result =  _.map(data.data, (x) => @model.make_model(name, x))
+
+            if headers
+                return [result, data.headers]
+
+            return result
 
     queryOneAttribute: (name, id, attribute, params, options={}) ->
         url = @urls.resolve(name, id)

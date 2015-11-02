@@ -6,8 +6,17 @@ div.change-email-form(tg-change-email)
 
     form
         fieldset
-            input(type="hidden", name="email_token", ng-model="data.email_token", data-required="true",
-                  placeholder="{{'CHANGE_EMAIL_FORM.PLACEHOLDER_INPUT_TOKEN' | translate}}")
+            input(
+                type="hidden"
+                name="email_token"
+                ng-model="data.email_token"
+                data-required="true"
+                placeholder="{{'CHANGE_EMAIL_FORM.PLACEHOLDER_INPUT_TOKEN' | translate}}"
+            )
 
-            a.button-change-email.button-gray(href="", title="{{'CHANGE_EMAIL_FORM.ACTION_CHANGE_EMAIL' | translate}}", translate="CHANGE_EMAIL_FORM.ACTION_CHANGE_EMAIL")
+            a.button-change-email.button-gray(
+                href=""
+                title="{{'CHANGE_EMAIL_FORM.ACTION_CHANGE_EMAIL' | translate}}"
+                translate="CHANGE_EMAIL_FORM.ACTION_CHANGE_EMAIL"
+            )
             button(type="submit", class="hidden")

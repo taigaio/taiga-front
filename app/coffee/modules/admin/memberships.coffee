@@ -1,7 +1,7 @@
 ###
-# Copyright (C) 2014 Andrey Antukh <niwi@niwi.be>
-# Copyright (C) 2014 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2015 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2015 David Barragán Merino <bameda@dbarragan.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -210,15 +210,17 @@ module.directive("tgMemberships", ["$tgTemplate", "$compile", MembershipsDirecti
 ## Member Avatar Directive
 #############################################################################
 
-MembershipsRowAvatarDirective = ($log, $template) ->
+MembershipsRowAvatarDirective = ($log, $template, $translate) ->
     template = $template.get("admin/memberships-row-avatar.html", true)
 
     link = ($scope, $el, $attrs) ->
+        pending = $translate.instant("ADMIN.MEMBERSHIP.STATUS_PENDING")
         render = (member) ->
             ctx = {
                 full_name: if member.full_name then member.full_name else ""
                 email: if member.user_email then member.user_email else member.email
                 imgurl: if member.photo then member.photo else "/images/unnamed.png"
+                pending: if !member.is_user_active then pending else ""
             }
 
             html = template(ctx)
@@ -236,7 +238,7 @@ MembershipsRowAvatarDirective = ($log, $template) ->
     return {link: link}
 
 
-module.directive("tgMembershipsRowAvatar", ["$log", "$tgTemplate", MembershipsRowAvatarDirective])
+module.directive("tgMembershipsRowAvatar", ["$log", "$tgTemplate", '$translate', MembershipsRowAvatarDirective])
 
 
 #############################################################################
@@ -357,9 +359,8 @@ MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm, $compile, $transla
     """
 
     pendingTemplate = """
-    <a class="pending" href="">
-        {{'ADMIN.MEMBERSHIP.STATUS_PENDING' | translate}}
-        <span class="icon icon-reload"></span>
+    <a class="resend" href="">
+        {{'ADMIN.MEMBERSHIP.RESEND' | translate}}
     </a>
     <a class="delete" href="">
         <span class="icon icon-delete"></span>
@@ -402,9 +403,9 @@ MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm, $compile, $transla
             defaultMsg = $translate.instant("ADMIN.MEMBERSHIP.DEFAULT_DELETE_MESSAGE", {email: member.email})
             message = if member.user then member.full_name else defaultMsg
 
-            $confirm.askOnDelete(title, message).then (finish) ->
-                onSuccess = ->
-                    finish()
+            $confirm.askOnDelete(title, message).then (askResponse) ->
+                onSuccess = =>
+                    askResponse.finish()
 
                     if $scope.page > 1 && ($scope.count - 1) <= $scope.paginatedBy
                         $ctrl.selectFilter("page", $scope.page - 1)
@@ -414,8 +415,8 @@ MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm, $compile, $transla
                     text = $translate.instant("ADMIN.MEMBERSHIP.SUCCESS_DELETE")
                     $confirm.notify("success", null, text)
 
-                onError = ->
-                    finish(false)
+                onError = =>
+                    askResponse.finish(false)
 
                     text = $translate.instant("ADMIN.MEMBERSHIP.ERROR_DELETE", {message: message})
                     $confirm.notify("error", null, text)

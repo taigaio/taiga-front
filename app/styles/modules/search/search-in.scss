@@ -6,10 +6,15 @@
             color: $gray-light;
         }
     }
-    .icon-search {
-        color: $gray-light;
+    .icon-search-wrapper {
         position: absolute;
         right: .7rem;
         top: .7rem;
+    }
+    .icon-search {
+        color: $gray-light;
+    }
+    .loading-spinner {
+        margin-top: .1rem;
     }
 }

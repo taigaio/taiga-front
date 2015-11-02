@@ -1,6 +1,16 @@
 .admin-attributes {
     .admin-attributes-section {
         margin-bottom: 2rem;
+        .checksley-error-list {
+            height: 0;
+            position: relative;
+            li {
+                @extend %light;
+                background: rgba($red, .7);
+                position: absolute;
+                width: 100%;
+            }
+        }
     }
 }
 
@@ -37,8 +47,3 @@
         display: inline-block;
     }
 }
-
-//.project-values-options {
-//    margin-bottom: 1rem;
-//    text-align: right;
-//}

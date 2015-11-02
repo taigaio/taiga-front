@@ -2,4 +2,6 @@ figure.avatar
     img(src!="<%- imgurl %>", alt!="<%- full_name %>")
     figcaption
         span.name <%- full_name %>
-        span.email <%- email %>
+        div
+            span.pending <%- pending %>
+            span.email <%- email %>

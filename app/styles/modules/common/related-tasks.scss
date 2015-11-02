@@ -19,7 +19,7 @@
         color: $grayer;
         cursor: pointer;
         &:hover {
-            color: $green-taiga;
+            color: $primary;
             transition: color .2s ease-in;
         }
     }
@@ -153,7 +153,7 @@
     }
     .iocaine,
     .iocaine:hover {
-        background: rgba($fresh-taiga, .3);
+        background: rgba($primary-light, .3);
         .icon-iocaine {
             @extend %large;
             display: inline-block;

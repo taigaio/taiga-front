@@ -10,7 +10,7 @@ $prefix-for-mozilla:   true;
 //             dependencies
 //#################################################
 
-@import '../dependencies/colors';
+@import "variables";
 @import '../dependencies/mixins';
 @import '../dependencies/helpers';
 @import '../dependencies/responsive';

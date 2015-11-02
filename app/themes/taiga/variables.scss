@@ -1,0 +1,73 @@
+//*************************
+//** COLORS
+//************************
+
+// Colors
+$black: #000;
+$blackish: #050505;
+$grayer: #444;
+$gray: #555;
+$gray-light: #b8b8b8;
+$whitish: #f5f5f5;
+$white: #fff;
+
+// Primary colors
+$primary-light: #9dce0a;
+$primary: #72a114;
+$primary-dark: #879b89;
+
+//Warning colors
+$red-light: #ff8282;
+$red: #f00;
+
+//Card color
+$card: #fff8e4;
+$card-hover: #f1e8cd;
+$card-dark: #cfc29b;
+
+$green-japanese-laurel: #237400;
+$green-olive: #618000;
+$red-amaranth: #e43050;
+$purple-eggplant: #810061;
+$yellow-pear: #bbe831;
+
+$top-icon-color: #11241f;
+$dropdown-color: rgba(darken($grayer, 20%), 1);
+
+
+//**************************
+//** TYPOGRAPHY
+//**************************
+
+// Font Sizes
+%xsmall {font-size: .75rem;}
+%small {font-size: .9rem;}
+%medium {font-size: 1rem;}
+%large {font-size: 1.2rem;}
+%larger {font-size: 1.6rem;}
+%xlarge {font-size: 2rem;}
+%xxlarge {font-size: 3rem;}
+
+// Font Types
+%title {font-family: 'OpenSans-CondLight', Arial, Helvetica, sans-serif; }
+%light {font-family: 'OpenSans-Light', Arial, Helvetica, sans-serif; }
+%text {font-family: 'opensans-regular', Arial, Helvetica, sans-serif; }
+%bold {font-family: 'opensans-semibold', Arial, Helvetica, sans-serif; }
+%taiga {font-family: 'taiga';}
+%mono {font-family: 'courier new', 'monospace';}
+
+// lightbox
+%lightbox {
+    background: rgba($white, .95);
+}
+
+// Background images
+%triangled-bg {
+    background: url('/images/bg.png') no-repeat center center;
+    background-size: cover;
+}
+
+%background-taiga {
+    background: url('/images/invitation_bg.jpg') no-repeat center center;
+    background-size: cover;
+}

@@ -1,7 +1,7 @@
 ###
-# Copyright (C) 2014 Andrey Antukh <niwi@niwi.be>
-# Copyright (C) 2014 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2015 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2015 David Barragán Merino <bameda@dbarragan.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -41,7 +41,7 @@ CreateMembersDirective = ($rs, $rootScope, $confirm, $loading, lightboxService, 
     template = _.template("""
     <div class="add-member-wrapper">
         <fieldset>
-            <input type="email" placeholder="{{'LIGHTBOX.CREATE_MEMBER.PLACEHOLDER_TYPE_EMAIL' | translate}}"
+            <input tg-capslock type="email" placeholder="{{'LIGHTBOX.CREATE_MEMBER.PLACEHOLDER_TYPE_EMAIL' | translate}}"
                    <% if(required) { %> data-required="true" <% } %> data-type="email" />
         </fieldset>
         <fieldset>

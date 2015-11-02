@@ -1,7 +1,24 @@
-describe.skip "tgUserTimelineService", ->
+###
+# Copyright (C) 2014-2015 Taiga Agile LLC <taiga@taiga.io>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, either version 3 of the
+# License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+#
+# File: user-timeline.service.spec.coffee
+###
+
+describe "tgUserTimelineService", ->
     provide = null
-    $q = null
-    $rootScope = null
     userTimelineService = null
     mocks = {}
 
@@ -9,7 +26,9 @@ describe.skip "tgUserTimelineService", ->
         mocks.resources = {}
 
         mocks.resources.users = {
-            getTimeline: sinon.stub()
+            getTimeline: sinon.stub(),
+            getProfileTimeline: sinon.stub(),
+            getUserTimeline: sinon.stub()
         }
 
         mocks.resources.projects = {
@@ -23,10 +42,34 @@ describe.skip "tgUserTimelineService", ->
 
         provide.value "tgUserTimelinePaginationSequenceService", mocks.userTimelinePaginationSequence
 
+    _mockTgUserTimelineItemType = () ->
+        mocks.userTimelineItemType = {
+            getType: sinon.stub()
+        }
+
+        mocks.getType = {
+            description: sinon.stub(),
+            member: sinon.stub()
+        }
+
+        mocks.userTimelineItemType.getType.returns(mocks.getType)
+
+        provide.value "tgUserTimelineItemType", mocks.userTimelineItemType
+
+    _mockTgUserTimelineItemTitle = () ->
+        mocks.userTimelineItemTitle = {
+            getTitle: sinon.stub()
+        }
+
+        provide.value "tgUserTimelineItemTitle", mocks.userTimelineItemTitle
+
     _mocks = () ->
         module ($provide) ->
             provide = $provide
+            _mockResources()
             _mockUserTimelinePaginationSequence()
+            _mockTgUserTimelineItemType()
+            _mockTgUserTimelineItemTitle()
 
             return null
 
@@ -34,10 +77,8 @@ describe.skip "tgUserTimelineService", ->
         _mocks()
 
     _inject = (callback) ->
-        inject (_tgUserTimelineService_, _$q_, _$rootScope_) ->
+        inject (_tgUserTimelineService_) ->
             userTimelineService = _tgUserTimelineService_
-            $q = _$q_
-            $rootScope = _$rootScope_
             callback() if callback
 
     beforeEach ->
@@ -75,7 +116,6 @@ describe.skip "tgUserTimelineService", ->
                 event_type: "xx.tt.create",
                 data: {
                     values_diff: {
-                        "fake2": "xx",
                         "milestone": "xx"
                     }
                 }
@@ -146,79 +186,102 @@ describe.skip "tgUserTimelineService", ->
             }
         ]
 
-    it "filter invalid profile timeline items", (done) ->
+    it "filter invalid profile timeline items", () ->
         userId = 3
         page = 2
 
-        mocks.resources.users.getProfileTimeline = (_userId_, _page_) ->
-            expect(_userId_).to.be.equal(userId)
-            expect(_page_).to.be.equal(page)
+        response = Immutable.fromJS({
+            data: valid_items
+        })
 
-            return $q (resolve, reject) ->
-                resolve(Immutable.fromJS(valid_items))
+        mocks.resources.users.getProfileTimeline.withArgs(userId).promise().resolve(response)
 
+        mocks.userTimelinePaginationSequence.generate = (config) ->
+            return config.fetch().then (res) ->
+                expect(res.get('data').size).to.be.equal(13)
 
-            .then (_items_) ->
-                items = _items_.toJS()
+                items = config.filter(res.get('data'))
+                expect(items.size).to.be.equal(6)
 
-                expect(items).to.have.length(4)
-                expect(items[0]).to.be.eql(valid_items[0])
-                expect(items[1]).to.be.eql(valid_items[3])
-                expect(items[2]).to.be.eql(valid_items[5])
-                expect(items[3]).to.be.eql(valid_items[9])
-
-                done()
+                return true
 
         result = userTimelineService.getProfileTimeline(userId)
 
-        mocks.userTimelinePaginationSequence.withArgs()
+        return expect(result).to.be.eventually.true
 
-
-    it "filter invalid user timeline items", (done) ->
+    it "filter invalid user timeline items", () ->
         userId = 3
         page = 2
 
-        mocks.resources.users.getUserTimeline = (_userId_, _page_) ->
-            expect(_userId_).to.be.equal(userId)
-            expect(_page_).to.be.equal(page)
+        response = Immutable.fromJS({
+            data: valid_items
+        })
 
-            return $q (resolve, reject) ->
-                resolve(Immutable.fromJS(valid_items))
+        mocks.resources.users.getUserTimeline.withArgs(userId).promise().resolve(response)
 
-        userTimelineService.getUserTimeline(userId, page)
-            .then (_items_) ->
-                items = _items_.toJS()
+        mocks.userTimelinePaginationSequence.generate = (config) ->
+            return config.fetch().then (res) ->
+                expect(res.get('data').size).to.be.equal(13)
 
-                expect(items).to.have.length(4)
-                expect(items[0]).to.be.eql(valid_items[0])
-                expect(items[1]).to.be.eql(valid_items[3])
-                expect(items[2]).to.be.eql(valid_items[5])
-                expect(items[3]).to.be.eql(valid_items[9])
+                items = config.filter(res.get('data'))
+                expect(items.size).to.be.equal(6)
 
-                done()
+                return true
 
-        $rootScope.$apply()
+        result = userTimelineService.getUserTimeline(userId)
 
-    it "filter invalid project timeline items", (done) ->
-        projectId = 3
+        return expect(result).to.be.eventually.true
+
+    it "filter invalid project timeline items", () ->
+        userId = 3
         page = 2
 
-        mocks.resources.projects.getTimeline = (_projectId_, _page_) ->
-            expect(_projectId_).to.be.equal(projectId)
-            expect(_page_).to.be.equal(page)
+        response = Immutable.fromJS({
+            data: valid_items
+        })
 
-            return $q (resolve, reject) ->
-                resolve(Immutable.fromJS(valid_items))
+        mocks.resources.projects.getTimeline.withArgs(userId).promise().resolve(response)
 
-        userTimelineService.getProjectTimeline(projectId, page)
-            .then (_items_) ->
-                items = _items_.toJS()
+        mocks.userTimelinePaginationSequence.generate = (config) ->
+            return config.fetch().then (res) ->
+                expect(res.get('data').size).to.be.equal(13)
 
-                expect(items).to.have.length(4)
-                expect(items[0]).to.be.eql(valid_items[0])
-                expect(items[1]).to.be.eql(valid_items[3])
-                expect(items[2]).to.be.eql(valid_items[5])
-                expect(items[3]).to.be.eql(valid_items[9])
-                done()
+                items = config.filter(res.get('data'))
+                expect(items.size).to.be.equal(6)
 
-        $rootScope.$apply()
+                return true
+
+        result = userTimelineService.getProjectTimeline(userId)
+        expect(result).to.be.eventually.true
+
+    it "all timeline extra fields filled", () ->
+        timeline =  Immutable.fromJS({
+            event_type: 'issues.issue.created',
+            data: {
+                user: 'user_fake',
+                project: 'project_fake',
+                milestone: 'milestone_fake',
+                created: new Date().getTime(),
+                issue: {
+                    id: 2
+                },
+                value_diff: {
+                    key: 'attachments',
+                    value: {
+                        new: "fakeAttachment"
+                    }
+                }
+            }
+        })
+
+        mocks.userTimelineItemTitle.getTitle.returns("fakeTitle")
+        mocks.getType.description.returns("fakeDescription")
+        mocks.getType.member.returns("fakeMember")
+
+        timelineEntry = userTimelineService._addEntyAttributes(timeline)
+
+        expect(timelineEntry.get('title_html')).to.be.equal("fakeTitle")
+        expect(timelineEntry.get('obj')).to.be.equal(timelineEntry.getIn(["data", "issue"]))
+        expect(timelineEntry.get("description")).to.be.equal("fakeDescription")
+        expect(timelineEntry.get("member")).to.be.equal("fakeMember")
+        expect(timelineEntry.get("attachments")).to.be.equal("fakeAttachment")

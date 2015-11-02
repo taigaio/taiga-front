@@ -1,7 +1,7 @@
 ###
-# Copyright (C) 2014 Andrey Antukh <niwi@niwi.be>
-# Copyright (C) 2014 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2015 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2015 David Barragán Merino <bameda@dbarragan.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -136,16 +136,16 @@ class AttachmentsController extends taiga.Controller
         title = @translate.instant("ATTACHMENT.TITLE_LIGHTBOX_DELETE_ATTACHMENT")
         message = @translate.instant("ATTACHMENT.MSG_LIGHTBOX_DELETE_ATTACHMENT", {fileName: attachment.name})
 
-        return @confirm.askOnDelete(title, message).then (finish) =>
+        return @confirm.askOnDelete(title, message).then (askResponse) =>
             onSuccess = =>
-                finish()
+                askResponse.finish()
                 index = @.attachments.indexOf(attachment)
                 @.attachments.splice(index, 1)
                 @.updateCounters()
                 @rootscope.$broadcast("attachment:delete")
 
             onError = =>
-                finish(false)
+                askResponse.finish(false)
                 message = @translate.instant("ATTACHMENT.ERROR_DELETE_ATTACHMENT", {errorMessage: message})
                 @confirm.notify("error", null, message)
                 return @q.reject()
@@ -197,6 +197,7 @@ AttachmentsDirective = ($config, $confirm, $templates, $translate) ->
 
         $el.on "change", ".attachments-header input", (event) ->
             files = _.toArray(event.target.files)
+
             return if files.length < 1
 
             $scope.$apply ->
@@ -245,7 +246,7 @@ AttachmentsDirective = ($config, $confirm, $templates, $translate) ->
 module.directive("tgAttachments", ["$tgConfig", "$tgConfirm", "$tgTemplate", "$translate", AttachmentsDirective])
 
 
-AttachmentDirective = ($template, $compile, $translate) ->
+AttachmentDirective = ($template, $compile, $translate, $rootScope) ->
     template = $template.get("attachment/attachment.html", true)
     templateEdit = $template.get("attachment/attachment-edit.html", true)
 
@@ -283,6 +284,7 @@ AttachmentDirective = ($template, $compile, $translate) ->
         saveAttachment = ->
             attachment.description = $el.find("input[name='description']").val()
             attachment.is_deprecated = $el.find("input[name='is-deprecated']").prop("checked")
+            attachment.isCreatedRightNow = false
 
             $scope.$apply ->
                 $ctrl.updateAttachment(attachment).then ->
@@ -297,7 +299,7 @@ AttachmentDirective = ($template, $compile, $translate) ->
             if event.keyCode == 13
                 saveAttachment()
             else if event.keyCode == 27
-                render(attachment, false)
+                $scope.$apply -> render(attachment, false)
 
         $el.on "click", "a.editable-settings.icon-delete", (event) ->
             event.preventDefault()
@@ -314,6 +316,12 @@ AttachmentDirective = ($template, $compile, $translate) ->
             $scope.$apply ->
                 $ctrl.removeAttachment(attachment)
 
+        $el.on "click", "div.attachment-name a", (event) ->
+            if null != attachment.name.match(/\.(jpe?g|png|gif|gifv|webm)/i)
+                event.preventDefault()
+                $scope.$apply ->
+                    $rootScope.$broadcast("attachment:preview", attachment)
+
         $scope.$on "$destroy", ->
             $el.off()
 
@@ -329,4 +337,4 @@ AttachmentDirective = ($template, $compile, $translate) ->
         restrict: "AE"
     }
 
-module.directive("tgAttachment", ["$tgTemplate", "$compile", "$translate", AttachmentDirective])
+module.directive("tgAttachment", ["$tgTemplate", "$compile", "$translate", "$rootScope", AttachmentDirective])

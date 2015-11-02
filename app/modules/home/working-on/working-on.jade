@@ -1,12 +1,19 @@
-div.title-bar.working-on-title(ng-show="vm.assignedTo.size", translate="HOME.WORKING_ON_SECTION")
-section.working-on(ng-show="vm.assignedTo.size")
-    div.duty-single(tg-duty="duty", tg-repeat="duty in vm.assignedTo", ng-class="{blocked: duty.is_blocked}")
+section.working-on-container
+    .title-bar.working-on-title(translate="HOME.WORKING_ON_SECTION")
 
-div.title-bar.watching-title(translate="HOME.WATCHING_SECTION")
+    .working-on(ng-show="vm.assignedTo.size")
+        .duty-single(tg-duty="duty", tg-repeat="duty in vm.assignedTo", ng-class="{blocked: duty.is_blocked}")
 
-section.watching-empty(ng-show="!vm.watching.size")
-    include ../../../svg/hide.svg
-    p(translate="HOME.EMPTY_WATCHING")
+    .working-on-empty(ng-show="!vm.assignedTo.size")
+        p(translate="HOME.EMPTY_WORKING_ON")
+        include empty.jade
 
-section.watching(ng-show="vm.watching.size")
-    div.duty-single(tg-duty="duty", tg-repeat="duty in vm.watching", ng-class="{blocked: duty.is_blocked}")
+section.watching-container
+    .title-bar.watching-title(translate="HOME.WATCHING_SECTION")
+
+    .watching(ng-show="vm.watching.size")
+        .duty-single(tg-duty="duty", tg-repeat="duty in vm.watching", ng-class="{blocked: duty.is_blocked}")
+
+    .watching-empty(ng-show="!vm.watching.size")
+        p(translate="HOME.EMPTY_WATCHING")
+        include empty.jade

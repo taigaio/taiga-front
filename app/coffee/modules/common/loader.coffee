@@ -1,9 +1,9 @@
 ###
-# Copyright (C) 2014 Andrey Antukh <niwi@niwi.be>
-# Copyright (C) 2014 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014 David Barragán Merino <bameda@dbarragan.com>
-# Copyright (C) 2014 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
-# Copyright (C) 2014 Alejandro Alonso <alejandro.alonso@kaleidos.net>
+# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2015 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2015 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2015 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
+# Copyright (C) 2014-2015 Alejandro Alonso <alejandro.alonso@kaleidos.net>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -77,19 +77,11 @@ Loader = ($rootscope) ->
         lastResponseDate = 0
 
     autoClose = () ->
-        maxAuto = 5000
-        timeoutAuto = setTimeout (() ->
-            pageLoaded()
-
-            clearInterval(intervalAuto)
-        ), maxAuto
-
         intervalAuto = setInterval (() ->
             if lastResponseDate && requestCount == 0
                 pageLoaded()
 
                 clearInterval(intervalAuto)
-                clearTimeout(timeoutAuto)
         ), 50
 
     start = () ->

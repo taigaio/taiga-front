@@ -1,13 +1,34 @@
+###
+# Copyright (C) 2014-2015 Taiga Agile LLC <taiga@taiga.io>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, either version 3 of the
+# License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+#
+# File: app-meta.service.spec.coffee
+###
+
 describe "AppMetaService", ->
     appMetaService = null
+    $rootScope = null
     data = {
         title: "--title--",
         description: "--description--"
     }
 
     _inject = () ->
-        inject (_tgAppMetaService_) ->
+        inject (_tgAppMetaService_, _$rootScope_) ->
             appMetaService = _tgAppMetaService_
+            $rootScope = _$rootScope_
 
     beforeEach ->
         module "taigaCommon"
@@ -53,3 +74,18 @@ describe "AppMetaService", ->
         expect($("meta[property='og:description']")).to.have.attr("content", data.description)
         expect($("meta[property='og:image']")).to.have.attr("content", "#{window.location.origin}/images/logo-color.png")
         expect($("meta[property='og:url']")).to.have.attr("content", window.location.href)
+
+    it "set function to set the metas", () ->
+        fn = () ->
+            return {
+                title: 'test',
+                description: 'test2'
+            }
+
+
+        appMetaService.setAll = sinon.stub()
+        appMetaService.setfn(fn)
+
+        $rootScope.$digest()
+
+        expect(appMetaService.setAll).to.have.been.calledWith('test', 'test2')

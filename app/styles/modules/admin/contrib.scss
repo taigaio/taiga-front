@@ -4,26 +4,31 @@
         max-width: 700px;
         width: 100%;
     }
+    h2 {
+        @extend %text;
+        @extend %large;
+        margin-bottom: 0;
+    }
     fieldset {
+        border-bottom: 1px solid $whitish;
         margin-bottom: 1rem;
+        padding-bottom: 1rem;
     }
     .contrib-input {
         flex: 1;
     }
     .contrib-test {
-        align-items: flex-end;
+        align-items: center;
         display: flex;
         flex-basis: 7.5rem;
+        justify-content: center;
         margin-left: .5rem;
         text-align: center;
-        a {
-            padding: .6rem 2.5rem;
-        }
     }
     label {
-        @extend %title;
+        @extend %text;
         display: block;
-        margin-bottom: .2rem;
+        margin-bottom: .25rem;
     }
     .contrib-form-wrapper {
         display: flex;
@@ -56,10 +61,10 @@
     }
     .check-item {
         align-items: center;
-        border-bottom: 1px solid $whitish;
+        // border-bottom: 1px solid $whitish;
         display: flex;
         justify-content: space-between;
-        margin-top: 2rem;
+        margin-top: 1rem;
         &:last-child {
             border-bottom: 0;
         }

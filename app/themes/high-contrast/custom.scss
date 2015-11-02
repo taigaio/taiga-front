@@ -1,0 +1,360 @@
+// Any styles in this stylesheet will override any previous defined style in Taiga.
+
+//    Max: Beat it or I'll call the Brute Squad!
+//    Fezzik: I'm on the Brute Squad.
+//    Max: [sees Fezzik's size] You are the Brute Squad!
+
+//*************************
+//** LAYOUT
+//*************************
+
+// Default body color and background
+body {
+    background: $white; // fallback
+    color: $grayer;
+}
+
+// Main
+
+.master,
+.menu-secondary,
+.menu-tertiary,
+.extrabar {
+    background: $white;
+    border-left: 1px solid $black;
+    border-right: 1px solid $black;
+}
+
+.master {
+    background: $white;
+}
+
+// Secondary panel
+.menu-secondary {
+    background: $white;
+}
+
+// Tertiary panel
+.menu-tertiary {
+    background-color: $white;
+}
+
+// Extra bar panel
+.extrabar {
+    background: $white;
+}
+
+
+
+//*************************
+//** TITLES
+//*************************
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: $blackish;
+    font-family: Arial, Helvetica, sans-serif;
+    .date {
+        color: $black;
+    }
+}
+
+a {
+    color: $grayer;
+    &:hover {
+        color: $primary;
+    }
+}
+
+//**************************
+//** SCAFFOLDING
+//**************************
+
+//Forms
+input[type="text"],
+input[type="number"],
+input[type="password"],
+input[type="email"],
+input[type="date"],
+input[type="password"],
+select,
+textarea {
+    background: $white;
+    border-color: $black;
+    color: $black;
+    @include placeholder {
+        color: $black;
+    }
+    &.checksley-error {
+        border: 1px solid $red;
+    }
+}
+
+// Input errors
+.checksley-error-list {
+    @extend %light;
+    background: rgba($red, .7);
+    color: $white;
+}
+
+// Blockquote
+blockquote {
+    border-left: 5px solid $gray;
+}
+
+blockquote,
+blockquote p {
+    color: $black;
+}
+
+cite {
+    color: $black;
+}
+
+.button-gray {
+    background: $black;
+}
+
+.tag {
+    background: $white;
+    border: 1px solid $black;
+}
+
+.summary {
+    background: $grayer;
+    color: $white;
+}
+
+
+//************************
+//** NAVIGATION
+//***********************
+
+// Top navigation bar
+.navbar {
+    background: $black;
+    &:after {
+        background: url('../images/menu-vert.png') repeat top left;
+    }
+    a {
+        :hover {
+            color: $white;
+        }
+        svg path {
+            fill: $white;
+        }
+    }
+}
+
+//In project left navigation bar
+tg-project-menu {
+    background-color: rgba(darken($primary-dark, 15%), 1);
+    background-image: none;
+}
+
+.main-nav {
+    svg path {
+        fill: $white;
+    }
+    .active {
+        background: $white;
+        svg path {
+            fill: $black;
+        }
+    }
+}
+
+
+//*****************************
+//** TASKBOARD
+//******************************
+
+//Taskboard table
+.taskboard-table-header {
+    .task-colum-name {
+        background: lighten($white, 20%);
+        border-top: 3px solid $black;
+        .icon {
+            color: $black;
+        }
+    }
+}
+.taskboard-table-body {
+    .taskboard-tasks-box {
+        background: $white;
+        border: 1px solid $black;
+    }
+}
+
+//*****************************
+//** KANBAN
+//******************************
+
+//Kanban table
+.kanban-table-header {
+    .task-colum-name {
+        background: lighten($white, 20%);
+        border-top: 3px solid $black;
+        .icon {
+            color: $black;
+        }
+    }
+}
+
+.kanban-table-body {
+    .kanban-uses-box {
+        background: $whitish;
+    }
+}
+
+
+.working-on .duty-id,
+.watching .duty-id,
+.activity-item p,
+.table-team .avatar .position,
+.points-per-role > li,
+.private path {
+    color: $black;
+}
+
+
+.points-per-role > li:first-child {
+    background: $black;
+}
+
+//*****************************
+//** TICKET DETAIL
+//******************************
+.us-created-by {
+    .created-by {
+        .created-title,
+        .created-date {
+            color: $black;
+        }
+    }
+}
+
+.duty-custom-fields {
+    .custom-field-data {
+        .custom-field-description {
+            color: $black;
+        }
+    }
+}
+
+.us-detail-settings {
+    .button-gray {
+        background: none;
+        border: 1px solid $black;
+        color: $black;
+        &:hover,
+        &.active {
+            color: $white;
+        }
+        span {
+            color: $black;
+        }
+    }
+}
+
+.more-attachments {
+    span {
+        color: $black;
+    }
+}
+
+.history-tabs {
+    a {
+        color: $black;
+    }
+}
+
+//*****************************
+//** LOGIN
+//******************************
+
+.login-main {
+    color: $white;
+    a {
+        color: $white;
+    }
+}
+
+//*****************************
+//** HOME
+//******************************
+
+.home-project-list {
+    li {
+        border: 1px solid $black;
+    }
+    p {
+        color: $black;
+    }
+}
+
+//*****************************
+//** PROFILE
+//******************************
+
+.profile-content-tabs {
+    .tab {
+        color: $blackish;
+    }
+}
+
+.profile-sidebar {
+    p {
+        color: $blackish;
+    }
+}
+
+//*****************************
+//** ADMIN
+//******************************
+
+.settings-nav {
+    .active {
+        background: $black;
+        color: $white;
+    }
+}
+
+.admin-submenu ul a {
+    color: $black;
+}
+
+.policy-table {
+    input:checked {
+        +label {
+            color: $white;
+        }
+    }
+    label {
+        color: $black;
+        &:hover {
+            color: $white;
+        }
+    }
+}
+
+.admin-common .admin-subtitle {
+    color: $black;
+}
+
+.admin-functionalities .functionality.active {
+    background: $white;
+    border: 1px solid $black;
+}
+
+.admin-membership-table {
+    .avatar .email,
+    .delete {
+        color: $black;
+    }
+
+}

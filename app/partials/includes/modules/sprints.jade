@@ -1,13 +1,32 @@
 section.sprints
-    header
-        h1(translate="BACKLOG.SPRINTS.TITLE")
-        div.summary
-            div.total-sprints
-                span.number(ng-bind="project.total_milestones") --
-                span.description(translate="BACKLOG.SPRINTS.NUMBER_SPRINTS")
-            a.button-green.add-sprint(href="", title="{{ 'BACKLOG.SPRINTS.TITLE_ACTION_NEW_SPRINT' | translate }}",
-                                      ng-click="ctrl.addNewSprint()", tg-check-permission="add_milestone")
-                span.text(translate="BACKLOG.SPRINTS.ACTION_NEW_SPRINT")
+    header.sprint-header
+        h1
+            span.number(
+                ng-bind="totalMilestones"
+                ng-if="totalMilestones"
+            )
+            span(translate="BACKLOG.SPRINTS.TITLE")
+        a.add-sprint(
+            href="" 
+            title="{{ 'BACKLOG.SPRINTS.TITLE_ACTION_NEW_SPRINT' | translate}}"
+            ng-click="ctrl.addNewSprint()"
+            ng-if="totalMilestones"
+            tg-check-permission="add_milestone"
+        )
+            include ../../../svg/add.svg
+
+    div.sprints-empty(ng-if="!totalMilestones")
+        img(
+            src="/images/sprint-empty.png"
+            alt="{{'BACKLOG.SPRINTS.EMPTY' | translate}}"
+        )
+        p.title(translate="BACKLOG.SPRINTS.EMPTY")
+        a(
+            href=""
+            ng-click="ctrl.addNewSprint()"
+            title="{{'BACKLOG.SPRINTS.TITLE_ACTION_NEW_SPRINT' | translate}}"
+            translate="BACKLOG.SPRINTS.TEXT_ACTION_NEW_SPRINT"
+        )
 
     div.sprint.sprint-open(ng-repeat="sprint in openSprints track by sprint.id",
                            tg-backlog-sprint="sprint",
@@ -15,7 +34,7 @@ section.sprints
         include sprint
 
     a.filter-closed-sprints(href="", tg-backlog-toggle-closed-sprints-visualization,
-                            ng-show="totalClosedMilestones")
+                            ng-if="totalClosedMilestones")
         span.icon.icon-archive
         span.text(translate="BACKLOG.SPRINTS.ACTION_SHOW_CLOSED_SPRINTS")
 

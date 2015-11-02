@@ -12,5 +12,5 @@ app/coffee/modules/locales/locale*.coffee
 tags
 tmp/
 app/config/main.coffee
-app/plugins/taiga-front-extras
 scss-lint.log
+e2e/screenshots/

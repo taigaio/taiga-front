@@ -1,7 +1,10 @@
 section.custom-fields-table.basic-table
     div.project-values-title
         h2 {{ customFieldSectionTitle | translate }}
-        a.button.button-gray.show-add-new.js-add-custom-field-button(href="", title="{{ customFieldButtonTitle | translate }}")
+        a.button.button-gray.show-add-new.js-add-custom-field-button(
+            href=""
+            title="{{ customFieldButtonTitle | translate }}"
+        )
             span(translate="ADMIN.CUSTOM_ATTRIBUTES.ADD")
 
     div.table-header
@@ -10,6 +13,8 @@ section.custom-fields-table.basic-table
                 span(translate="COMMON.FIELDS.NAME")
             div.custom-description
                 span(translate="COMMON.FIELDS.DESCRIPTION")
+            div.custom-field-type
+                span(translate="COMMON.FIELDS.TYPE")
             div.custom-options
 
     div.table-body
@@ -22,33 +27,84 @@ section.custom-fields-table.basic-table
                             span {{ attr.name }}
                         div.custom-description
                             span {{ attr.description }}
+                        div.custom-field-type(ng-switch on="attr.type")
+                            //- See TYPE_CHOICES in app/coffee/modules/admin/project-values.coffee
+                            span(ng-switch-default, translate="ADMIN.CUSTOM_FIELDS.FIELD_TYPE_TEXT")
+                            span(ng-switch-when="multiline", translate="ADMIN.CUSTOM_FIELDS.FIELD_TYPE_MULTI")
+                            span(ng-switch-when="date", translate="ADMIN.CUSTOM_FIELDS.FIELD_TYPE_DATE")
                         div.custom-options
                             div.custom-options-wrapper
-                                a.js-edit-custom-field-button.icon.icon-edit(href="", title="{{'ADMIN.CUSTOM_ATTRIBUTES.EDIT' | translate}}")
-                                a.js-delete-custom-field-button.icon.icon-delete(href="", title="{{'ADMIN.CUSTOM_ATTRIBUTES.DELETE' | translate}}")
+                                a.js-edit-custom-field-button.icon.icon-edit(
+                                    href=""
+                                    title="{{'ADMIN.CUSTOM_ATTRIBUTES.EDIT' | translate}}"
+                                )
+                                a.js-delete-custom-field-button.icon.icon-delete(
+                                    href=""
+                                    title="{{'ADMIN.CUSTOM_ATTRIBUTES.DELETE' | translate}}"
+                                )
 
                     div.row.single-custom-field.js-edit-custom-field.hidden
                         fieldset.custom-name
-                            input(type="text", name="name", placeholder="{{'ADMIN.CUSTOM_ATTRIBUTES.SET_FIELD_NAME' | translate}}",
-                                  ng-model="attr.name", data-required="true" data-maxlength="64")
+                            input(
+                                type="text"
+                                name="name"
+                                placeholder="{{'ADMIN.CUSTOM_ATTRIBUTES.SET_FIELD_NAME' | translate}}"
+                                ng-model="attr.name"
+                                data-required="true"
+                                data-maxlength="64"
+                            )
                         fieldset.custom-description
-                            input(type="text", name="description", placeholder="{{'ADMIN.CUSTOM_ATTRIBUTES.SET_FIELD_DESCRIPTION' | translate}}",
-                                ng-model="attr.description")
-
+                            input(
+                                type="text"
+                                name="description"
+                                placeholder="{{'ADMIN.CUSTOM_ATTRIBUTES.SET_FIELD_DESCRIPTION' | translate}}"
+                                ng-model="attr.description"
+                            )
+                        fieldset.custom-field-type
+                            select(
+                                ng-model="attr.type"
+                                ng-options="type.key as type.name | translate for type in TYPE_CHOICES"
+                            )
                         fieldset.custom-options
                             div.custom-options-wrapper
-                                a.js-update-custom-field-button.icon.icon-floppy(href="", title="{{'ADMIN.CUSTOM_ATTRIBUTES.ACTION_UPDATE' | translate}}")
-                                a.js-cancel-edit-custom-field-button.icon.icon-delete(href="", title="{{'ADMIN.CUSTOM_ATTRIBUTES.ACTION_CANCEL_EDITION' | translate}}")
+                                a.js-update-custom-field-button.icon.icon-floppy(
+                                    href=""
+                                    title="{{'ADMIN.CUSTOM_ATTRIBUTES.ACTION_UPDATE' | translate}}"
+                                )
+                                a.js-cancel-edit-custom-field-button.icon.icon-delete(
+                                    href=""
+                                    title="{{'ADMIN.CUSTOM_ATTRIBUTES.ACTION_CANCEL_EDITION' | translate}}"
+                                )
 
         form.row.single-custom-field.js-new-custom-field.hidden
             fieldset.custom-name
-                input(type="text", name="name", placeholder="{{'ADMIN.CUSTOM_ATTRIBUTES.SET_FIELD_NAME' | translate}}",
-                      ng-model="newAttr.name", data-required="true", data-maxlength="64")
+                input(
+                    type="text"
+                    name="name"
+                    placeholder="{{'ADMIN.CUSTOM_ATTRIBUTES.SET_FIELD_NAME' | translate}}"
+                    ng-model="newAttr.name"
+                    data-required="true"
+                    data-maxlength="64"
+                )
             fieldset.custom-description
-                input(type="text", name="description", placeholder="{{'ADMIN.CUSTOM_ATTRIBUTES.SET_FIELD_DESCRIPTION' | translate}}",
-                      ng-model="newAttr.description")
-
+                input(
+                    type="text"
+                    name="description"
+                    placeholder="{{'ADMIN.CUSTOM_ATTRIBUTES.SET_FIELD_DESCRIPTION' | translate}}"
+                    ng-model="newAttr.description"
+                )
+            fieldset.custom-field-type
+                select(
+                    ng-model="newAttr.type"
+                    ng-options="type.key as type.name for type in TYPE_CHOICES"
+                )
             fieldset.custom-options
                 div.custom-options-wrapper
-                    a.js-create-custom-field-button.icon.icon-floppy(href="", title="{{'ADMIN.CUSTOM_ATTRIBUTES.SAVE_TITLE' | translate}}")
-                    a.js-cancel-new-custom-field-button.icon.icon-delete(href="", title="{{'ADMIN.CUSTOM_ATTRIBUTES.CANCEL_TITLE' | translate}}")
+                    a.js-create-custom-field-button.icon.icon-floppy(
+                        href=""
+                        title="{{'ADMIN.CUSTOM_ATTRIBUTES.SAVE_TITLE' | translate}}"
+                    )
+                    a.js-cancel-new-custom-field-button.icon.icon-delete(
+                        href=""
+                        title="{{'ADMIN.CUSTOM_ATTRIBUTES.CANCEL_TITLE' | translate}}"
+                    )
