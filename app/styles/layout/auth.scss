@@ -67,7 +67,7 @@
     fill: rgba($primary, .9);
     stroke: $primary-light;
     stroke-width: 1px;
-    transform-origin: 50% 20%;
+    transform-origin: 50% 50%;
     transition: .3s;
     &:hover {
         fill: rgba($primary-light, .9);
