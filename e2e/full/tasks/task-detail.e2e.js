@@ -34,9 +34,9 @@ describe('Task detail', function(){
 
     it('status edition', utils.detail.statusTesting);
 
-    it('assigned to edition', utils.detail.assignedToTesting);
+    describe('assigned to edition', utils.detail.assignedToTesting);
 
-    it('watchers edition', utils.detail.watchersTesting);
+    describe('watchers edition', utils.detail.watchersTesting);
 
     it('iocaine edition', async function() {
       // Toggle iocaine status
