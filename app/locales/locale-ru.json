@@ -668,7 +668,7 @@
                 "ACTIVITY_TAB": "Действия",
                 "ACTIVITY_TAB_TITLE": "Показать все действия пользователя",
                 "PROJECTS_TAB": "Проекты",
-                "PROJECTS_TAB_TITLE": "Список всех проектов, в которых участвует пользователь",
+                "PROJECTS_TAB_TITLE": "List of all projects in which the user is a member",
                 "LIKES_TAB": "Likes",
                 "LIKES_TAB_TITLE": "List all likes made by this user",
                 "VOTES_TAB": "Голоса",
