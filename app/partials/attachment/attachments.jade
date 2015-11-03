@@ -10,6 +10,8 @@ section.attachments
             label(for="add-attach", class="icon icon-plus related-tasks-buttons")
             input(id="add-attach", type="file", multiple="multiple")
 
+    .dropbox-chooser-attachment
+
     .attachment-body.sortable
         .single-attachment(ng-repeat="attach in ctrl.attachments|filter:ctrl.filterAttachments track by attach.id" tg-attachment="attach", tg-bind-scope)
 
