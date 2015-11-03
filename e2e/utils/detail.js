@@ -70,17 +70,84 @@ helper.statusTesting = async function() {
     expect(newGenericStatus).to.be.not.equal(genericStatus);
 }
 
-helper.assignedToTesting = async function() {
-    let assignedTo = detailHelper.assignedTo();
-    let assignToLightbox = commonHelper.assignToLightbox();
-    let userName = detailHelper.assignedTo().getUserName();
-    await assignedTo.clear();
-    assignedTo.assign();
-    await assignToLightbox.waitOpen();
-    assignToLightbox.selectFirst();
-    await assignToLightbox.waitClose();
-    let newUserName = assignedTo.getUserName();
-    expect(newUserName).to.be.not.equal(userName);
+helper.assignedToTesting = function() {
+    before(function () {
+        let assignedTo = detailHelper.assignedTo();
+        return assignedTo.clear();
+    })
+
+    it('assign', async function() {
+        let assignedTo = detailHelper.assignedTo();
+        let assignToLightbox = commonHelper.assignToLightbox();
+        let userName = detailHelper.assignedTo().getUserName();
+
+        assignedTo.assign();
+
+        await assignToLightbox.waitOpen();
+
+        assignToLightbox.selectFirst();
+
+        await assignToLightbox.waitClose();
+
+        let newUserName = assignedTo.getUserName();
+
+        expect(newUserName).to.be.not.equal(userName);
+    });
+
+    it('unassign', async function() {
+        let assignedTo = detailHelper.assignedTo();
+        let assignToLightbox = commonHelper.assignToLightbox();
+
+        await assignedTo.clear();
+
+        let newUserName = await assignedTo.getUserName();
+
+        expect(newUserName).to.be.equal('Not assigned');
+    });
+
+    it('filter', async function () {
+        let assignedTo = detailHelper.assignedTo();
+        let assignToLightbox = commonHelper.assignToLightbox();
+
+        assignedTo.assign();
+
+        await assignToLightbox.waitOpen();
+
+        let names = await assignToLightbox.getNames();
+
+        await assignToLightbox.filter(names[0]);
+
+        let newNames = await assignToLightbox.getNames();
+
+        expect(newNames).to.have.length(1);
+
+        assignToLightbox.selectFirst();
+
+        await assignToLightbox.waitClose();
+    });
+
+    it('keyboard navigatin', async function() {
+        let assignedTo = detailHelper.assignedTo();
+        let assignToLightbox = commonHelper.assignToLightbox();
+
+        assignedTo.assign();
+
+        await assignToLightbox.waitOpen();
+
+        browser
+           .actions()
+           .sendKeys(protractor.Key.ARROW_DOWN)
+           .sendKeys(protractor.Key.ARROW_DOWN)
+           .sendKeys(protractor.Key.ARROW_DOWN)
+           .sendKeys(protractor.Key.ARROW_UP)
+           .perform();
+
+        let selected = assignToLightbox.userList().get(2);
+
+        let isSelected = await commonUtil.hasClass(selected, 'selected');
+
+        expect(isSelected).to.be.true;
+    });
 }
 
 helper.historyTesting = async function() {
@@ -188,30 +255,83 @@ helper.deleteTesting = async function() {
     await deleteHelper.delete();
 }
 
-helper.watchersTesting = async function() {
-    let watchersHelper = detailHelper.watchers();
-    await watchersHelper.removeAllWatchers();
+helper.watchersTesting = function() {
+    before(function () {
+        let watchersHelper = detailHelper.watchers();
+        return watchersHelper.removeAllWatchers();
+    })
 
-    let watchersLightboxHelper = detailHelper.watchersLightbox();
-    let userNames = await watchersHelper.getWatchersUserNames();
+    it('add watcher', async function() {
+        let watchersHelper = detailHelper.watchers();
+        let watchersLightboxHelper = detailHelper.watchersLightbox();
+        let userNames = await watchersHelper.getWatchersUserNames();
 
-    //Add watcher
-    await watchersHelper.addWatcher();
-    await watchersLightboxHelper.waitOpen();
-    let newWatcherName = await watchersLightboxHelper.getFirstName();
-    await watchersLightboxHelper.selectFirst();
-    await watchersLightboxHelper.waitClose();
+        await watchersHelper.addWatcher();
+        await watchersLightboxHelper.waitOpen();
 
-    let newUserNames = await watchersHelper.getWatchersUserNames();
+        let newWatcherName = await watchersLightboxHelper.getFirstName();
 
-    await userNames.push(newWatcherName);
+        await watchersLightboxHelper.selectFirst();
+        await watchersLightboxHelper.waitClose();
 
-    expect(newUserNames.join(',')).to.be.equal(userNames.join(','));
+        let newUserNames = await watchersHelper.getWatchersUserNames();
 
-    //Clear watchers
-    await watchersHelper.removeAllWatchers();
-    newUserNames = await watchersHelper.getWatchersUserNames();
-    expect(newUserNames.join()).to.be.equal('');
+        await userNames.push(newWatcherName);
+
+        expect(newUserNames.join(',')).to.be.equal(userNames.join(','));
+    });
+
+    it('clear watcher', async function() {
+        let watchersHelper = detailHelper.watchers();
+
+        await watchersHelper.removeAllWatchers();
+
+        let newUserNames = await watchersHelper.getWatchersUserNames();
+
+        expect(newUserNames.join()).to.be.equal('');
+    });
+
+    it('filter watcher', async function () {
+        let watchersHelper = detailHelper.watchers();
+        let watchersLightboxHelper = detailHelper.watchersLightbox();
+        let userNames = await watchersHelper.getWatchersUserNames();
+
+        await watchersHelper.addWatcher();
+        await watchersLightboxHelper.waitOpen();
+
+        let names = await watchersLightboxHelper.getNames();
+
+        await watchersLightboxHelper.filter(names[0]);
+
+        let newNames = await watchersLightboxHelper.getNames();
+
+        expect(newNames).to.have.length(1);
+
+        await watchersLightboxHelper.selectFirst();
+        await watchersLightboxHelper.waitClose();
+    });
+
+    it('keyboard navigatin', async function() {
+        let watchersHelper = detailHelper.watchers();
+        let watchersLightboxHelper = detailHelper.watchersLightbox();
+
+        await watchersHelper.addWatcher();
+        await watchersLightboxHelper.waitOpen();
+
+        browser
+           .actions()
+           .sendKeys(protractor.Key.ARROW_DOWN)
+           .sendKeys(protractor.Key.ARROW_DOWN)
+           .sendKeys(protractor.Key.ARROW_DOWN)
+           .sendKeys(protractor.Key.ARROW_UP)
+           .perform();
+
+        let selected = watchersLightboxHelper.userList().get(1);
+
+        let isSelected = await commonUtil.hasClass(selected, 'selected');
+
+        expect(isSelected).to.be.true;
+    });
 }
 
 helper.customFields = function(typeIndex) {

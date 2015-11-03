@@ -89,34 +89,34 @@ class LightboxKeyboardNavigationService extends taiga.Service
         docEl.off(".keyboard-navigation")
 
     dispatch: ($el, code) ->
-        activeElement = $el.find(".active")
+        activeElement = $el.find(".selected")
 
         # Key: enter
         if code == 13
-            if $el.find(".watcher-single").length == 1
-                $el.find('.watcher-single:first').trigger("click")
+            if $el.find(".user-list-single").length == 1
+                $el.find('.user-list-single:first').trigger("click")
             else
                 activeElement.trigger("click")
 
         # Key: down
         else if code == 40
             if not activeElement.length
-                $el.find('.watcher-single:first').addClass('active')
+                $el.find('.user-list-single:not(".is-active"):first').addClass('selected')
             else
-                next = activeElement.next('.watcher-single')
+                next = activeElement.next('.user-list-single')
                 if next.length
-                    activeElement.removeClass('active')
-                    next.addClass('active')
+                    activeElement.removeClass('selected')
+                    next.addClass('selected')
         # Key: up
         else if code == 38
             if not activeElement.length
-                $el.find('.watcher-single:last').addClass('active')
+                $el.find('.user-list-single:last').addClass('selected')
             else
-                prev = activeElement.prev('.watcher-single')
+                prev = activeElement.prev('.user-list-single:not(".is-active")')
 
                 if prev.length
-                    activeElement.removeClass('active')
-                    prev.addClass('active')
+                    activeElement.removeClass('selected')
+                    prev.addClass('selected')
 
     init: ($el) ->
         @stop()
