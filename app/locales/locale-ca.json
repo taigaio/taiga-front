@@ -1305,9 +1305,9 @@
         "HINT1_TITLE": "Saps que pots importar i exportar projectes?",
         "HINT1_TEXT": "Això li permet extreure totes les dades d'un Taiga i moure'l a un altre.",
         "HINT2_TITLE": "Saps que pots crear camps personalitzats?",
-        "HINT2_TEXT": "Teams can now create custom fields as a flexible means to enter specific data useful for their particular workflow",
-        "HINT3_TITLE": "Reorder your projects to feature those most relevant to you",
-        "HINT3_TEXT": "The top 10 project will be in your top bar direct access",
+        "HINT2_TEXT": "Teams can now create custom fields as a flexible means to enter specific data useful for their particular workflow.",
+        "HINT3_TITLE": "Reorder your projects to feature those most relevant to you.",
+        "HINT3_TEXT": "The 10 projects are listed in the direct access bar at the top.",
         "HINT4_TITLE": "Did you forgot what were you working on?",
         "HINT4_TEXT": "Don't worry, on your dashboard you'll find your open tasks, issues, and user stories in the order you worked on them."
     },

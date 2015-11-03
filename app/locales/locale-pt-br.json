@@ -1305,9 +1305,9 @@
         "HINT1_TITLE": "Você sabia que você pode importar e exportar projetos?",
         "HINT1_TEXT": "Isso permite você extrair todo o seu conteúdo de um Taiga e mover para outro.",
         "HINT2_TITLE": "Você sabia que pode criar campos personalizados?",
-        "HINT2_TEXT": "Times podem agora criar campos personalizados flexíveis como entrar valores relevantes especificamente para seus escopos de trabalho",
-        "HINT3_TITLE": "Reordenar seus projetos para evidenciar os mais relevantes para você",
-        "HINT3_TEXT": "The top 10 project will be in your top bar direct access\nOs 10 projetos com maior destaque estarão na sua barra de acesso direto",
+        "HINT2_TEXT": "Teams can now create custom fields as a flexible means to enter specific data useful for their particular workflow.",
+        "HINT3_TITLE": "Reorder your projects to feature those most relevant to you.",
+        "HINT3_TEXT": "The 10 projects are listed in the direct access bar at the top.",
         "HINT4_TITLE": "Você esqueceu no que está trabalhando?",
         "HINT4_TEXT": "Não se preocupe, no seu painel você vai encontrar suas tarefas abertas, casos, e user stories na ordem que você trabalha neles."
     },

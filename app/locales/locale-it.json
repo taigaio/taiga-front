@@ -1305,9 +1305,9 @@
         "HINT1_TITLE": "Sai che puoi anche importare ed esportare progetti?",
         "HINT1_TEXT": "Questo ti permette di estrarre tutti i tuoi dati da un Taiga e muoverli dentro un altro.",
         "HINT2_TITLE": "Sai che puoi anche creare dei cambi personalizzati?",
-        "HINT2_TEXT": "Ora il team puà creare un nuovo campo personalizzato come strumento flessibile per inserire dati specificamente utili per alcuni flussi di lavoro",
-        "HINT3_TITLE": "Riordina i tuoi progetti per includere quelli più rilevanti",
-        "HINT3_TEXT": "La top 10 dei progetti sarà visibile in alto nella barra ad accesso diretto",
+        "HINT2_TEXT": "Teams can now create custom fields as a flexible means to enter specific data useful for their particular workflow.",
+        "HINT3_TITLE": "Reorder your projects to feature those most relevant to you.",
+        "HINT3_TEXT": "The 10 projects are listed in the direct access bar at the top.",
         "HINT4_TITLE": "Ti sei dimenticato su cosa stavi lavorando?",
         "HINT4_TEXT": "Non preoccuparti, sulla tua dashboard troverai i compiti aperti, i problemi e le storie utenti così da poterci lavorare"
     },

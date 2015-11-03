@@ -1305,9 +1305,9 @@
         "HINT1_TITLE": "你知道可以滙入與滙出專案嗎？",
         "HINT1_TEXT": "可以從 Taiga提取所有個人資料記錄，移入其它地方。",
         "HINT2_TITLE": "你知道可以創建個人化欄位嗎",
-        "HINT2_TEXT": "團隊可以創建客製欄位，以彈性的方式來輸入特殊資料，有利於其特別的工作流程需求。",
-        "HINT3_TITLE": "記錄你的專案並突顯其中最相關者",
-        "HINT3_TEXT": "前十個專案將展示在你的上方欄位以便直接連結。",
+        "HINT2_TEXT": "Teams can now create custom fields as a flexible means to enter specific data useful for their particular workflow.",
+        "HINT3_TITLE": "Reorder your projects to feature those most relevant to you.",
+        "HINT3_TEXT": "The 10 projects are listed in the direct access bar at the top.",
         "HINT4_TITLE": "你是否曾忘了自己要做什麼？",
         "HINT4_TEXT": "別憺心，在控制台可以找到你的公開任務、問題以及使用者故事的工作次序。"
     },
