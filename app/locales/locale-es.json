@@ -668,7 +668,7 @@
                 "ACTIVITY_TAB": "Actividad",
                 "ACTIVITY_TAB_TITLE": "Muestra toda la actividad de este usuario",
                 "PROJECTS_TAB": "Proyectos",
-                "PROJECTS_TAB_TITLE": "Lista todo los proyectos en los que este usuario es miembro",
+                "PROJECTS_TAB_TITLE": "List of all projects in which the user is a member",
                 "LIKES_TAB": "Likes",
                 "LIKES_TAB_TITLE": "Lista todo lo que le gusta a este usuario",
                 "VOTES_TAB": "Votos",

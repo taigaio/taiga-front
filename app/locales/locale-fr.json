@@ -36,7 +36,7 @@
         "EXTERNAL_USER": "um usuário externo",
         "GENERIC_ERROR": "L'un de nos Oompa Loompas dit {{error}}.",
         "IOCAINE_TEXT": "Vous vous sentez un peu submergé par une tâche ? Soyez certains d'en informer les autres en cliquant su Iocaine lors de la modification de la tâche. Il est possible de s'immuniser contre ce poison (fictif) en consommant de petites quantités en heures supplémentaires, tout comme il est possible de s'améliorer en acceptant parfois de nouveaux défis !",
-        "CAPSLOCK_WARNING": "Be careful! You're writing with capital letters and this input is case sensitive.",
+        "CAPSLOCK_WARNING": "Attention! Vous tapez en lettres capitales et ce champ est sensible à la case.",
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Cette valeur semble être invalide.",
             "TYPE_EMAIL": "Cette valeur devrait être une adresse courriel valide.",
@@ -150,26 +150,26 @@
             "OPEN": "Ouvert"
         },
         "WATCHERS": {
-            "ADD": "Add watchers",
-            "TITLE_ADD": "Add a project member to the watchers list",
+            "ADD": "Ajouter un suiveur",
+            "TITLE_ADD": "Ajoutez un membre du projet à la liste de suiveurs",
             "DELETE": "Supprimer l'observateur",
             "TITLE_LIGHTBOX_DELETE_WARTCHER": "Supprimer l'observateur..."
         },
         "WATCH_BUTTON": {
             "WATCH": "Suivre",
             "WATCHING": "Observant",
-            "UNWATCH": "Unwatch",
-            "WATCHERS": "Watchers",
-            "BUTTON_TITLE": "Watch/Unwatch this item",
-            "COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}"
+            "UNWATCH": "Ne plus suivre",
+            "WATCHERS": "Suiveurs",
+            "BUTTON_TITLE": "Suivre/ne plus suivre cet élément",
+            "COUNTER_TITLE": "{total, plural, one{un suiveur} other{# suiveurs}}"
         },
         "VOTE_BUTTON": {
-            "UPVOTE": "Upvote",
-            "UPVOTED": "Upvoted",
-            "DOWNVOTE": "Downvote",
-            "VOTERS": "Voters",
-            "BUTTON_TITLE": "Upvote/Downvote this item",
-            "COUNTER_TITLE": "{total, plural, one{one vote} other{# votes}}"
+            "UPVOTE": "Vote positif",
+            "UPVOTED": "Voté positivement",
+            "DOWNVOTE": "Vote négatif",
+            "VOTERS": "Votants",
+            "BUTTON_TITLE": "Vote positif/négatif pour cet élément",
+            "COUNTER_TITLE": "{total, plural, one{un vote} other{# votes}}"
         },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "Champs personnalisés",
@@ -328,7 +328,7 @@
         "PLACEHOLDER_NEW_PASSWORD": "Nouveau mot de passe",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Confirmez votre nouveau mot de passe",
         "ACTION_RESET_PASSWORD": "Réinitialiser le mot de passe",
-        "ERROR": "Our Oompa Loompas can't find your request to recover your password. Try to ask for it again.",
+        "ERROR": "Nos Oompa Loompas n'ont pas trouvé votre requête de réinitialisation de mot de passe. Effectuez une nouvelle demande.",
         "SUCCESS": "Nos Oompa Loompas ont sauvegardé votre nouveau mot de passe.<br /> Essayez de vous <strong>connecter</strong> avec."
     },
     "INVITATION": {
@@ -336,15 +336,15 @@
         "PAGE_DESCRIPTION": "Acceptez l'invitation à rejoindre un projet sur Taiga, une plateforme de gestion de projets pour les startups, les développeurs et les designers agiles qui veulent un outil simple, beau et qui rend le travail vraiment agréable."
     },
     "INVITATION_LOGIN_FORM": {
-        "NOT_FOUND": "Our Oompa Loompas can't find your invitation.",
+        "NOT_FOUND": "Nos Oompa Loompas n'ont pas trouvé votre invitation.",
         "SUCCESS": "Vous avez rejoint ce projet, Bienvenue sur {{project_name}}",
         "ERROR": "D'après nos Oompa Loompas, vous n'êtes pas encore enregistrés ou vous avez saisi un mot de passe incorrect."
     },
     "HOME": {
         "PAGE_TITLE": "Accueil - Taiga",
         "PAGE_DESCRIPTION": "La page d'accueil de Taiga sur laquelle apparaissent vos projets principaux et toutes les récits utilisateur, tâches et tickets qui vont sont assignés et surveillés.",
-        "EMPTY_WORKING_ON": "<strong>It feels empty, doesn't it?</strong> Start working with Taiga and you'll see here the stories, tasks and issues you are workin on.",
-        "EMPTY_WATCHING": "<strong>Follow</strong> User Stories, Tasks, Issues... that you want to know about :)",
+        "EMPTY_WORKING_ON": "<strong>C'est un peu vide, n'est-ce pas?</strong> Commencez à utiliser Taiga et vous verrez ici les stories, tâches et issues sur lesquelles vous travaillez.",
+        "EMPTY_WATCHING": "<strong>Suivez</strong> les User Stories, Tâches, Issues, ... dont vous voulez être informé :)",
         "EMPTY_PROJECT_LIST": "Vous n'avez aucun projet pour l'instant",
         "WORKING_ON_SECTION": "Projets en cours",
         "WATCHING_SECTION": "Observant"
@@ -360,7 +360,7 @@
         "DESCRIPTION": "Saisissez une courte description",
         "DEPRECATED": "(obsolète)",
         "DEPRECATED_FILE": "Obsolète?",
-        "ADD": "Add new attachment. {{maxFileSizeMsg}}",
+        "ADD": "Ajoutez une nouvelle pièce jointe. {{maxFileSizeMsg}}",
         "MAX_FILE_SIZE": "[Taille max.: {{maxFileSize}}]",
         "SHOW_DEPRECATED": "+ montrer les pièces jointes obsolètes",
         "HIDE_DEPRECATED": "- cacher les pièces jointes obsolètes",
@@ -436,8 +436,8 @@
             "PROJECT_DETAILS": "Détails du projet",
             "PROJECT_NAME": "Nom du projet",
             "PROJECT_SLUG": "Label du projet",
-            "NUMBER_SPRINTS": "Number of sprints (0 for an undetermined quantity)",
-            "NUMBER_US_POINTS": "Number of US points (0 for an undetermined quantity)",
+            "NUMBER_SPRINTS": "Nombre de sprints (0 pour non déterminé)",
+            "NUMBER_US_POINTS": "Nombre de points d'US (0 pour non déterminé)",
             "TAGS": "Mots-clés",
             "DESCRIPTION": "Description",
             "PUBLIC_PROJECT": "Projet public",
@@ -447,7 +447,7 @@
         "REPORTS": {
             "TITLE": "Rapports",
             "SUBTITLE": "Exportez les données de votre projet au format CSV pour créer vos propres rapports.",
-            "DESCRIPTION": "Download a CSV file or copy the generated URL and open it in your favourite text editor or spreadsheet to make your own project data reports. You will be able to visualize and analyze all your data easily.",
+            "DESCRIPTION": "Téléchargez un fichier CSV ou copier l'URL générée puis ouvrez la dans votre éditeur de texte ou tableur préféré pour créer votre propre rapports de projet. Vous pourrez facilement visualiser et analyser toutes vos données.",
             "HELP": "Comment utiliser ceci dans ma propre feuille de calcul?",
             "REGENERATE_TITLE": "Changer l'URL",
             "REGENERATE_SUBTITLE": "Vous êtes sur le point de changer l'url d'accès aux données CSV. L'url précédente sera désactivée. Êtes-vous sûre ?"
@@ -515,9 +515,9 @@
             "PAGE_TITLE": "Rôles - {{projectName}}",
             "WARNING_NO_ROLE": "Attention, aucun rôle dans votre projet ne pourra estimer la valeur du point pour les récits utilisateurs",
             "HELP_ROLE_ENABLED": "Si activé, les membres affectés à ce rôle pourront estimer la valeur du point pour les récits utilisateurs",
-            "DISABLE_COMPUTABLE_ALERT_TITLE": "Disable estimation for this role",
-            "DISABLE_COMPUTABLE_ALERT_SUBTITLE": "If you disable estimation permissions for role {{roleName}} all previous estimations made by this role will be removed",
-            "DISABLE_COMPUTABLE_ALERT_MESSAGE": "<strong>Are you sure you want to disable this role estimations?</strong>",
+            "DISABLE_COMPUTABLE_ALERT_TITLE": "Désactiver les estimations pour ce rôle",
+            "DISABLE_COMPUTABLE_ALERT_SUBTITLE": "Si vous désactivez les estimations pour le rôle {{roleName}}  toutes les estimations précédentes faites par ce rôle seront supprimées",
+            "DISABLE_COMPUTABLE_ALERT_MESSAGE": "<strong>Êtes-vous sûr de vouloir désactiver les estimations de ce rôle?</strong>",
             "COUNT_MEMBERS": "{{ role.members_count }} membres avec ce rôle",
             "TITLE_DELETE_ROLE": "Supprimer des rôles",
             "REPLACEMENT_ROLE": "Tous les utilisateurs avec ce rôle seront déplacés dans",
@@ -579,7 +579,7 @@
             "CANCEL_TITLE": "Annuler la création",
             "SET_FIELD_NAME": "Saisissez le nom du champ personnalisé",
             "SET_FIELD_DESCRIPTION": "Entrez la description de votre champ personnalisé",
-            "FIELD_TYPE_DEFAULT": "-- select one --",
+            "FIELD_TYPE_DEFAULT": "-- sélectionnez un --",
             "ACTION_UPDATE": "Mettre à jour le champ personnalisé",
             "ACTION_CANCEL_EDITION": "Annuler l'édition"
         },
@@ -591,7 +591,7 @@
             "STATUS_ACTIVE": "Actif",
             "STATUS_PENDING": "En attente",
             "DELETE_MEMBER": "Supprimer un membre",
-            "RESEND": "Resend",
+            "RESEND": "Renvoyer",
             "SUCCESS_SEND_INVITATION": "Nous avons envoyé une autre invitation à '{{email}}'.",
             "ERROR_SEND_INVITATION": "Nous n'avons pas envoyé l'invitation",
             "SUCCESS_DELETE": "Nous avons supprimé {{message}}.",
@@ -668,35 +668,35 @@
                 "ACTIVITY_TAB": "Activité",
                 "ACTIVITY_TAB_TITLE": "Voir toutes les activités de cet utilisateur",
                 "PROJECTS_TAB": "Projets",
-                "PROJECTS_TAB_TITLE": "List all projects that this user is a member",
-                "LIKES_TAB": "Likes",
-                "LIKES_TAB_TITLE": "List all likes made by this user",
+                "PROJECTS_TAB_TITLE": "List of all projects in which the user is a member",
+                "LIKES_TAB": "Aime",
+                "LIKES_TAB_TITLE": "Lister tous les 'aime' fait par cet utilisateur",
                 "VOTES_TAB": "Votes",
-                "VOTES_TAB_TITLE": "List all votes made by this user",
-                "WATCHED_TAB": "Watched",
-                "WATCHED_TAB_TITLE": "List all item watched by this user",
+                "VOTES_TAB_TITLE": "Lister tous les votes faits par cet utilisateur",
+                "WATCHED_TAB": "Suivre",
+                "WATCHED_TAB_TITLE": "Lister tous les éléments suivis par cet utilisateur",
                 "CONTACTS_TAB": "Contacts",
-                "CONTACTS_TAB_TITLE": "List all contacts made by this user"
+                "CONTACTS_TAB_TITLE": "Lister tous les contacts pris par cet utilisateur"
             }
         },
         "PROFILE_SIDEBAR": {
             "TITLE": "Votre profil",
             "DESCRIPTION": "Tout le monde peut voir ce que vous faites et ce sur quoi vous travaillez. Ajoutez une bio détaillée pour améliorer la vision perçue de votre profil.",
-            "ADD_INFO": "Edit bio"
+            "ADD_INFO": "Editer la biographie"
         },
         "PROFILE_FAVS": {
-            "FILTER_INPUT_PLACEHOLDER": "Type something...",
+            "FILTER_INPUT_PLACEHOLDER": "Écrivez quelque chose...",
             "FILTER_TYPE_ALL": "Toutes",
-            "FILTER_TYPE_ALL_TITLE": "Show all",
+            "FILTER_TYPE_ALL_TITLE": "Voir tous",
             "FILTER_TYPE_PROJECTS": "Projets",
-            "FILTER_TYPE_PROJECT_TITLES": "Show only projects",
+            "FILTER_TYPE_PROJECT_TITLES": "Voir uniquement les projets",
             "FILTER_TYPE_USER_STORIES": "Stories",
-            "FILTER_TYPE_USER_STORIES_TITLES": "Show only user stories",
+            "FILTER_TYPE_USER_STORIES_TITLES": "Voir uniquement les user stories",
             "FILTER_TYPE_TASKS": "Tâches",
-            "FILTER_TYPE_TASK_TITLES": "Show only tasks",
+            "FILTER_TYPE_TASK_TITLES": "Voir uniquement les tâches",
             "FILTER_TYPE_ISSUES": "Tickets",
-            "FILTER_TYPE_ISSUES_TITLE": "Show only issues",
-            "EMPTY_TITLE": "It looks like there's nothing to show here."
+            "FILTER_TYPE_ISSUES_TITLE": "Voir uniquement les tickets",
+            "EMPTY_TITLE": "Il n'y a rien à afficher ici."
         }
     },
     "PROJECT": {
@@ -767,24 +767,24 @@
             "SYNC_SUCCESS": "Votre projet a été importé avec succès"
         },
         "LIKE_BUTTON": {
-            "LIKE": "Like",
-            "LIKED": "Liked",
-            "UNLIKE": "Unlike",
-            "BUTTON_TITLE": "Like or unlike this project",
-            "COUNTER_TITLE": "{total, plural, one{one fan} other{# fans}}"
+            "LIKE": "Aimer",
+            "LIKED": "Aimé",
+            "UNLIKE": "Je n'aime plus",
+            "BUTTON_TITLE": "Aimer ou ne plus aimer ce projet",
+            "COUNTER_TITLE": "{total, plural, one{un fan} other{# fans}}"
         },
         "WATCH_BUTTON": {
-            "BUTTON_TITLE": "Watch this project and set notification policy",
+            "BUTTON_TITLE": "Suivre ce projet et définir une politique de notification",
             "WATCH": "Suivre",
             "WATCHING": "Observant",
-            "COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}",
+            "COUNTER_TITLE": "{total, plural, one{un suiveur} other{# suiveurs}}",
             "OPTIONS": {
                 "NOTIFY_ALL": "Recevoir toutes les notifications",
-                "NOTIFY_ALL_TITLE": "Receive all notifications for this project",
-                "NOTIFY_INVOLVED": "Only involved",
-                "NOTIFY_INVOLVED_TITLE": "Recive notificacions only when you are involved",
-                "UNWATCH": "Unwatch",
-                "UNWATCH_TITLE": "Unwatch this project"
+                "NOTIFY_ALL_TITLE": "Recevoir toutes les notifications pour ce projet",
+                "NOTIFY_INVOLVED": "Uniquement si impliqué",
+                "NOTIFY_INVOLVED_TITLE": "Recevoir des notifications uniquement si vous êtes impliqué",
+                "UNWATCH": "Ne plus suivre",
+                "UNWATCH_TITLE": "Ne plus suivre ce projet"
             }
         }
     },
@@ -858,7 +858,7 @@
         "SECTION_NAME": "Détails du récit utilisateur",
         "LINK_TASKBOARD": "Tableau des tâches",
         "TITLE_LINK_TASKBOARD": "Aller au tableau des tâches",
-        "TOTAL_POINTS": "total points",
+        "TOTAL_POINTS": "Total des points",
         "ADD": "Ajouter un nouveau récit utilisateur",
         "ADD_BULK": "Ajouter de nouveaux récits utilisateur en lot",
         "PROMOTED": "Ce récit utilisateur a été promue à partir d'un ticket :",
@@ -945,10 +945,10 @@
         "PAGE_TITLE": "Carnet - {{projectName}}",
         "PAGE_DESCRIPTION": "Le panneau carnet avec les récits utilisateurs et sprints du projet {{projectName}} : {{projectDescription}}",
         "SECTION_NAME": "Carnet",
-        "CUSTOMIZE_GRAPH": "Customize your backlog graph",
-        "CUSTOMIZE_GRAPH_TEXT": "To have a nice graph that helps you follow the evolution of the project you have to set up the points and sprints through the",
+        "CUSTOMIZE_GRAPH": "Personnalisez votre backlog",
+        "CUSTOMIZE_GRAPH_TEXT": "Pour obtenir un graphique agréable qui vous aide à suivre l'évolution du projet vous devez définir les points et les sprints via",
         "CUSTOMIZE_GRAPH_ADMIN": "Admin",
-        "CUSTOMIZE_GRAPH_TITLE": "Set up the points and sprints through the Admin",
+        "CUSTOMIZE_GRAPH_TITLE": "Définissez les points et les sprints via l'admin",
         "MOVE_US_TO_CURRENT_SPRINT": "Déplacer vers le Sprint Courant",
         "SHOW_FILTERS": "Afficher les filtres",
         "SHOW_TAGS": "Afficher les mots-clés",
@@ -1012,10 +1012,10 @@
             "LINK_TASKBOARD": "Taskboard du sprint",
             "TITLE_LINK_TASKBOARD": "Aller au Taskboard de \"{{name}}\"",
             "NUMBER_SPRINTS": "<br/>sprints",
-            "EMPTY": "YOU HAVE NO SPRINTS",
-            "WARNING_EMPTY_SPRINT": "Drop here Stories from your backlog to start a new sprint",
-            "TITLE_ACTION_NEW_SPRINT": "Add new sprint",
-            "TEXT_ACTION_NEW_SPRINT": "You may want to create a new sprint in your project",
+            "EMPTY": "VOUS N'AVEZ AUCUN SPRINT",
+            "WARNING_EMPTY_SPRINT": "Déposez ici des Stories de votre backlog pour démarrer un nouveau sprint",
+            "TITLE_ACTION_NEW_SPRINT": "Ajouter un sprint",
+            "TEXT_ACTION_NEW_SPRINT": "Vous souhaitez peut être créer un nouveau sprint dans votre projet.",
             "ACTION_SHOW_CLOSED_SPRINTS": "Afficher les sprints fermés",
             "ACTION_HIDE_CLOSED_SPRINTS": "Cacher les sprints fermés"
         }
@@ -1036,8 +1036,8 @@
         "TITLE_ACTION_ADD_BULK": "Ajouter de nouvelles tâches en lot",
         "TITLE_ACTION_ASSIGN": "Affecter une tâche",
         "TITLE_ACTION_EDIT": "Modifier la tâche",
-        "PLACEHOLDER_CARD_TITLE": "This could be a task",
-        "PLACEHOLDER_CARD_TEXT": "Split Stories into tasks to track them separately",
+        "PLACEHOLDER_CARD_TITLE": "Cela pourrait être une tâche",
+        "PLACEHOLDER_CARD_TEXT": "Eclater les Stories en tâches pour les suivre séparemment",
         "TABLE": {
             "COLUMN": "Récit utilisateur",
             "TITLE_ACTION_FOLD": "Replier la colonne",
@@ -1189,8 +1189,8 @@
         "HIDDEN_USER_STORIES": "Les user stories avec ce statut sont masquées par défaut",
         "ARCHIVED": "Vous avez archivé",
         "UNDO_ARCHIVED": "Refaites le glisser-déposer pour annuler",
-        "PLACEHOLDER_CARD_TITLE": "These are your User Stories",
-        "PLACEHOLDER_CARD_TEXT": "Stories might also have subtasks to separate requirements"
+        "PLACEHOLDER_CARD_TITLE": "Ce sont vos User Stories",
+        "PLACEHOLDER_CARD_TEXT": "Les stories peuvent avoir des sous-tâches pour séparer les pré-requis"
     },
     "SEARCH": {
         "PAGE_TITLE": "Chercher - {{projectName}}",
@@ -1323,7 +1323,7 @@
         "MILESTONE_UPDATED": "{{username}} a mis à jour le sprint {{obj_name}}",
         "US_UPDATED": "{{username}} a mis à jour l'attribut «{{field_name}}» du récit utilisateur {{obj_name}}",
         "US_UPDATED_WITH_NEW_VALUE": "{{username}} a mis l'attribut \"{{field_name}}\" à {{new_value}} pour le récit utilisateur {{obj_name}}",
-        "US_UPDATED_POINTS": "{{username}} has updated '{{role_name}}' points of the US {{obj_name}} to {{new_value}}",
+        "US_UPDATED_POINTS": "{{username}} a mit à jour les points du rôle '{{role_name}}' de l'US {{obj_name}} à la valeur {{new_value}}",
         "ISSUE_UPDATED": "{{username}} a mis à jour l'attribut «{{field_name}}» du ticket {{obj_name}}",
         "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} a mis l'attribut \"{{field_name}}\" à {{new_value}} pour le ticket {{obj_name}}",
         "TASK_UPDATED": "{{username}} a mis l'attribut \"{{field_name}}\" à {{new_value}} pour la tâche {{obj_name}}",
@@ -1336,20 +1336,20 @@
         "NEW_COMMENT_TASK": "{{username}} a commenté la tâche {{obj_name}}",
         "NEW_MEMBER": "{{project_name}} a un nouveau membre",
         "US_ADDED_MILESTONE": "{{username}} a ajouté le récit utilisateur {{obj_name}} à {{sprint_name}}",
-        "US_MOVED": "{{username}} has moved the US {{obj_name}}",
+        "US_MOVED": "{{username}} a déplacé l'US {{obj_name}}",
         "US_REMOVED_FROM_MILESTONE": "{{username}} a ajouté le récit utilisateur {{obj_name}} au carnet",
         "BLOCKED": "{{username}} a bloqué {{obj_name}}",
         "UNBLOCKED": "{{username}} a débloqué {{obj_name}}",
         "NEW_USER": "{{username}} a rejoint Taiga"
     },
     "LEGAL": {
-        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>By clicking \"Sign up\"', you agree to our <br /></span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">terms of service</a><span> and </span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">privacy policy</a>."
+        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>En cliquant sur \"S'enregistrer\"', vous acceptez nos <br /></span><a href=\"{{ termsOfServiceUrl }}\" title=\"Voir les conditions de service\" target=\"_blank\">conditions de service</a><span> et notre </span><a href=\"{{ privacyPolicyUrl }}\" title=\"Voir la politique de confidentialité\" target=\"_blank\">politique de sécurité</a>."
     },
     "EXTERNAL_APP": {
-        "PAGE_TITLE": "An external app requires authentication",
-        "PAGE_DESCRIPTION": "An external app requires authentication",
-        "AUTHORIZATION_REQUEST": "Authorize {{application}} to use your Taiga account?",
-        "LOGIN_WITH_ANOTHER_USER": "Login with another user",
+        "PAGE_TITLE": "Une application externe requiert l'authentification",
+        "PAGE_DESCRIPTION": "Une application externe requiert l'authentification",
+        "AUTHORIZATION_REQUEST": "Autoriser {{application}} à utiliser votre compte Taiga?",
+        "LOGIN_WITH_ANOTHER_USER": "Se connecter avec un autre utilisateur",
         "AUTHORIZE_APP": "Autoriser l'application",
         "CANCEL": "Annuler"
     },
@@ -1357,55 +1357,55 @@
         "DASHBOARD": {
             "STEP1": {
                 "TITLE": "Votre projet",
-                "TEXT": "Welcome! Here you will find the projects you are involved on."
+                "TEXT": "Bienvenue! Ici vous trouverez tous les projets dont vous êtes membre."
             },
             "STEP2": {
                 "TITLE": "Projets en cours",
-                "TEXT": "Here you will find the User Stories, Tasks and Issues in which you are working on."
+                "TEXT": "Ici vous trouverez les User Stories, tâches et tickets sur lesquels vous travaillez."
             },
             "STEP3": {
                 "TITLE": "Observant",
-                "TEXT1": "And right here you will find the ones that you want to know about.",
-                "TEXT2": "You are already working with Taiga ;)"
+                "TEXT1": "Et ici vous trouverez celles dont vous voulez être informé.",
+                "TEXT2": "Vous travaillez déjà avec Taiga ;)"
             },
             "STEP4": {
-                "TITLE": "Let’s start",
-                "TEXT1": "You can start by creating your first Taiga project.",
-                "TEXT2": "Good luck!"
+                "TITLE": "Commençons",
+                "TEXT1": "Vous pouvez démarrer en créant votre premier projet Taiga.",
+                "TEXT2": "Bonne chance!"
             }
         },
         "BACKLOG": {
             "STEP1": {
                 "TITLE": "Résumé du projet",
-                "TEXT1": "Here you will see the state of your project.",
-                "TEXT2": "You can change every kind of project settings through the admin."
+                "TEXT1": "Ici vous verrez l'état de votre projet.",
+                "TEXT2": "Vous pouvez modifier tous les paramètres d'un projet dans l'administration."
             },
             "STEP2": {
-                "TITLE": "Product backlog",
-                "TEXT": "The backlog is the list of requirements (User Stories) for the project. Here is where you will plan your sprints."
+                "TITLE": "Backlog du produit",
+                "TEXT": "Le backlog est la liste des pré-requis (User Stories) pour le projet. Ici vous préparerez vos sprints."
             },
             "STEP3": {
                 "TITLE": "Sprints",
-                "TEXT": "Sprints are short periods of time (usually 2 weeks) during which specific work has to be completed and delivered."
+                "TEXT": "Les sprints sont des courtes périodes (généralement 2 semaines) pendant lesquels certaines tâches doivent êtres faites et livrées."
             },
             "STEP4": {
                 "TITLE": "Récits utilisateur",
-                "TEXT": "Those are the requirements at high level. You can add them to the backlog and drag them to the sprint in which it should be delivered."
+                "TEXT": "Ce sont les pré-requis de haut niveau. Vous pouvez les ajouter au backlog et les déplacer dans le sprint pour lequel elle devront être livrées."
             }
         },
         "KANBAN": {
             "STEP1": {
-                "TITLE": "Customize your workflow",
-                "TEXT": "Set up the columns you need to map your workflow statuses through the admin."
+                "TITLE": "Personnalisez votre workflow",
+                "TEXT": "Configurez les colonnes de statut dont vous aurez besoin pour lier votre workflow à l'administration."
             },
             "STEP2": {
-                "TITLE": "User Stories & Tasks",
-                "TEXT": "User Stories are the requirements at high level. You can drag them to different columns."
+                "TITLE": "User Stories et Tâches",
+                "TEXT": "Les user stories sont les pré-requis de haut niveau. Vous pouvez les déplacer dans différentes colonnes."
             },
             "STEP3": {
-                "TITLE": "Adding User Stories",
-                "TEXT1": "You may want to add a single User Story (add US icon) or a group of them (bulk icon)",
-                "TEXT2": "Good luck!"
+                "TITLE": "Ajout d'User Stories",
+                "TEXT1": "Vous pouvez vouloir ajouter une User Story (icône ajouter une US) ou un groupe d'User Stories (icône provisoir)",
+                "TEXT2": "Bonne chance!"
             }
         }
     }

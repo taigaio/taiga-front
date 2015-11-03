@@ -668,7 +668,7 @@
                 "ACTIVITY_TAB": "動態",
                 "ACTIVITY_TAB_TITLE": "Show all the activity of this user",
                 "PROJECTS_TAB": "專案",
-                "PROJECTS_TAB_TITLE": "List all projects that this user is a member",
+                "PROJECTS_TAB_TITLE": "List of all projects in which the user is a member",
                 "LIKES_TAB": "Likes",
                 "LIKES_TAB_TITLE": "List all likes made by this user",
                 "VOTES_TAB": "投票數",
