@@ -1308,9 +1308,9 @@
         "HINT1_TITLE": "Did you know you can import and export projects?",
         "HINT1_TEXT": "This allow you to extract all your data from one Taiga and move it to another one.",
         "HINT2_TITLE": "Did you know you can create custom fields?",
-        "HINT2_TEXT": "Teams can now create custom fields as a flexible means to enter specific data useful for their particular workflow",
-        "HINT3_TITLE": "Reorder your projects to feature those most relevant to you",
-        "HINT3_TEXT": "The top 10 project will be in your top bar direct access",
+        "HINT2_TEXT": "Teams can now create custom fields as a flexible means to enter specific data useful for their particular workflow.",
+        "HINT3_TITLE": "Reorder your projects to feature those most relevant to you.",
+        "HINT3_TEXT": "The 10 projects are listed in the direct access bar at the top.",
         "HINT4_TITLE": "Did you forgot what were you working on?",
         "HINT4_TEXT": "Don't worry, on your dashboard you'll find your open tasks, issues, and user stories in the order you worked on them."
     },

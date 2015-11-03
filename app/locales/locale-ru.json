@@ -1305,9 +1305,9 @@
         "HINT1_TITLE": "Вы знали что можно импортировать и экспортировать проекты?",
         "HINT1_TEXT": "Это позволяет вам собирать данные из одной Taiga и копировать в другую.",
         "HINT2_TITLE": "Вы знали что можно создавать собственные поля?",
-        "HINT2_TEXT": "Команды теперь могут создавать специальные поля в качестве гибкого средства для ввода специфических данных их конкретного процесса работы",
-        "HINT3_TITLE": "Отсортируйте ваши проекты по признаку, наиболее важному для вас",
-        "HINT3_TEXT": "Главные 10 проектов будут доступны непосредственно из верхней панели",
+        "HINT2_TEXT": "Teams can now create custom fields as a flexible means to enter specific data useful for their particular workflow.",
+        "HINT3_TITLE": "Reorder your projects to feature those most relevant to you.",
+        "HINT3_TEXT": "The 10 projects are listed in the direct access bar at the top.",
         "HINT4_TITLE": "Вы забыли над чем работали?",
         "HINT4_TEXT": "Не переживайте, на вашем рабочем столе вы найдёте ваши активные задачи, запросы и пользовательские истории в том порядке, в котором вы над ними работали."
     },

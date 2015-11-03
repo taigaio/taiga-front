@@ -1305,9 +1305,9 @@
         "HINT1_TITLE": "Wussten Sie, dass Sie Projekte importieren und exportieren?",
         "HINT1_TEXT": "Dies erlaubt Ihnen, alle Ihre Daten zu extrahieren und sie von einer Taiga zur nächsten zu transportieren",
         "HINT2_TITLE": "Wussten Sie, dass Sie benutzerdefinierte Felder erstellen können?",
-        "HINT2_TEXT": "Teams können jetzt benutzerdefinierte Felder erstellen, als eine flexible Möglichkeit, spezifische Daten einzutragen. Dies ist praktisch für ihren jeweiligen Arbeitsablauf",
-        "HINT3_TITLE": "Sortieren Sie ihre Projekte neu, um die zu zeigen, die für Sie am relevantesten sind",
-        "HINT3_TEXT": "Das Top 10 Projekt wird in der Navigationsleiste direkt zugreifbar sein.",
+        "HINT2_TEXT": "Teams can now create custom fields as a flexible means to enter specific data useful for their particular workflow.",
+        "HINT3_TITLE": "Reorder your projects to feature those most relevant to you.",
+        "HINT3_TEXT": "The 10 projects are listed in the direct access bar at the top.",
         "HINT4_TITLE": "Haben Sie vergessen, woran Sie arbeiten?",
         "HINT4_TEXT": "Machen Sie sich keine Sorgen, im Dashboard finden Sie Aufgaben, Tickets und User-Stories in der Reihenfolge in der Sie diese bearbeitet haben."
     },

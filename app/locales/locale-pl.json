@@ -1305,9 +1305,9 @@
         "HINT1_TITLE": "Czy wiesz, że możesz eksportować i importować projekty?",
         "HINT1_TEXT": "Dzięki temu możesz przenieść wszystkie swoje dane z jednej instalacji Taiga do drugiej.",
         "HINT2_TITLE": "Czy wiesz, że możesz tworzyć niestandardowe pola?",
-        "HINT2_TEXT": "Zespoły mogą tworzyć niestandardowe pola co pozwala dopasować formularze do sposobu pracy.",
-        "HINT3_TITLE": "Zmieniaj kolejność projektów aby wyróżnić te najbardziej istotne dla Ciebie",
-        "HINT3_TEXT": "Pierwsze 10 projektów będzie wyświetlane w górnym menu",
+        "HINT2_TEXT": "Teams can now create custom fields as a flexible means to enter specific data useful for their particular workflow.",
+        "HINT3_TITLE": "Reorder your projects to feature those most relevant to you.",
+        "HINT3_TEXT": "The 10 projects are listed in the direct access bar at the top.",
         "HINT4_TITLE": "Zapomniałeś nad czym pracujesz?",
         "HINT4_TEXT": "Nie martw się, na Twojej tablicy znajdziesz otwarte zadania, zgłoszenia i historyjki użytkownika w takiej kolejności, w jakiej nad nimi pracowałeś."
     },
