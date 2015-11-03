@@ -471,9 +471,12 @@
         width: 600px;
     }
     .user-list-single {
-        &:hover {
+        &:hover,
+        &.selected {
             background: lighten($primary, 58%);
             cursor: pointer;
+        }
+        &:hover {
             transition: background .3s linear;
             transition-delay: .2s;
         }

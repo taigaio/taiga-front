@@ -33,7 +33,7 @@ describe('User story detail', function(){
 
     it('status edition', utils.detail.statusTesting);
 
-    it('assigned to edition', utils.detail.assignedToTesting);
+    describe('assigned to edition', utils.detail.assignedToTesting);
 
     it('team requirement edition', async function() {
       let requirementHelper = usDetailHelper.teamRequirement();
@@ -65,7 +65,7 @@ describe('User story detail', function(){
       expect(isRequired).to.be.equal(newIsRequired);
     });
 
-    it('watchers edition', utils.detail.watchersTesting);
+    describe('watchers edition', utils.detail.watchersTesting);
 
     it('history', utils.detail.historyTesting);
 

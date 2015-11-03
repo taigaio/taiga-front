@@ -114,7 +114,6 @@ helper.assignedTo = function() {
 
     let obj = {
         el: el,
-
         clear: async function() {
             await browser.actions().mouseMove(el).perform();
 
@@ -124,15 +123,12 @@ helper.assignedTo = function() {
                 await browser.waitForAngular();
             }
         },
-
         assign: function() {
-          el.$('.user-assigned').click();
+            el.$('.user-assigned').click();
         },
-
         getUserName: function() {
-          return el.$('.user-assigned').getText();
+            return el.$('.user-assigned').getText();
         }
-
     };
 
     return obj;
@@ -422,8 +418,16 @@ helper.watchersLightbox = function() {
         },
         getFirstName: function() {
             return el.$$('.lightbox .ticket-watchers div[data-user-id]').first().getText();
-        }
-
+        },
+        getNames: function() {
+            return el.$$('.user-list-name').getText();
+        },
+        filter: function(text) {
+            return el.$('input').sendKeys(text);
+        },
+        userList: function() {
+            return el.$$('.user-list-single');
+        }        
     };
 
     return obj;
