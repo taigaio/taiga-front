@@ -77,8 +77,8 @@ body {
 }
 
 .main {
-    flex: 4;
-    flex-basis: 600px;
+    flex: 1;
+    min-width: 0;
     padding: 1rem 2rem;
 }
 
