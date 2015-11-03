@@ -21,7 +21,7 @@
     &.ui-sortable-placeholder {
         background: $grayer;
     }
-    &.blocked {
+    .blocked {
         background: $red;
         border: 1px solid darken($red, 10%);
         color: $white;
