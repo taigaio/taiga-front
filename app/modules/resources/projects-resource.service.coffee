@@ -78,9 +78,9 @@ Resource = (urlsService, http, paginateResponseService) ->
         url = urlsService.resolve("project-unlike", projectId)
         return http.post(url)
 
-    service.watchProject = (projectId, notifyPolicy) ->
+    service.watchProject = (projectId, notifyLevel) ->
         data = {
-            notify_policy: notifyPolicy
+            notify_level: notifyLevel
         }
         url = urlsService.resolve("project-watch", projectId)
         return http.post(url, data)
