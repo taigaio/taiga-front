@@ -351,18 +351,22 @@ module.directive("tgMembershipsRowRoleSelector", ["$log", "$tgRepo", "$tgConfirm
 
 MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm, $compile, $translate) ->
     activedTemplate = """
-    <div class="active", translate="ADMIN.MEMBERSHIP.STATUS_ACTIVE">
+    <div class="active"
+         translate="ADMIN.MEMBERSHIP.STATUS_ACTIVE">
     </div>
-    <a class="delete" href="">
+    <a class="delete" href=""
+       title="{{ 'ADMIN.MEMBERSHIP.DELETE_MEMBER' | translate }}">
         <span class="icon icon-delete"></span>
     </a>
     """
 
     pendingTemplate = """
-    <a class="resend" href="">
-        {{'ADMIN.MEMBERSHIP.RESEND' | translate}}
+    <a class="resend js-resend" href=""
+       title="{{ 'ADMIN.MEMBERSHIP.RESEND' | translate }}"
+       translate="ADMIN.MEMBERSHIP.RESEND">
     </a>
-    <a class="delete" href="">
+    <a class="delete" href=""
+       title="{{ 'ADMIN.MEMBERSHIP.DELETE_MEMBER' | translate }}">
         <span class="icon icon-delete"></span>
     </a>
     """
@@ -383,7 +387,7 @@ MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm, $compile, $transla
         member = $scope.$eval($attrs.tgMembershipsRowActions)
         render(member)
 
-        $el.on "click", ".pending", (event) ->
+        $el.on "click", ".js-resend", (event) ->
             event.preventDefault()
             onSuccess = ->
                 text = $translate.instant("ADMIN.MEMBERSHIP.SUCCESS_SEND_INVITATION", {
