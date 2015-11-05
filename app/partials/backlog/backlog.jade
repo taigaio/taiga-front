@@ -50,13 +50,18 @@ div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
         section.backlog-table(ng-class="{'hidden': !userstories.length}")
             include ../includes/modules/backlog-table
 
-        div.empty-backlog(ng-class="{'hidden': userstories.length}", tg-backlog-empty-sortable)
+        div.empty-backlog(
+            ng-class="{'hidden': userstories === undefined || userstories.length}"
+            tg-backlog-empty-sortable
+        )
             img(
                 src="/images/backlog-empty.png"
                 alt="{{'BACKLOG.EMPTY' | translate}}"
             )
             p.title(translate="BACKLOG.EMPTY")
-            a(href="", title="{{'BACKLOG.CREATE_NEW_US' | translate}}"
+            a(
+                href=""
+                title="{{'BACKLOG.CREATE_NEW_US' | translate}}"
                 ng-click="ctrl.addNewUs('standard')"
                 tg-check-permission="add_us"
                 translate="BACKLOG.CREATE_NEW_US_EMPTY_HELP"
