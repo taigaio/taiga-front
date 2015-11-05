@@ -7,7 +7,7 @@ section.sprints
             )
             span(translate="BACKLOG.SPRINTS.TITLE")
         a.add-sprint(
-            href="" 
+            href=""
             title="{{ 'BACKLOG.SPRINTS.TITLE_ACTION_NEW_SPRINT' | translate}}"
             ng-click="ctrl.addNewSprint()"
             ng-if="totalMilestones"
@@ -15,7 +15,7 @@ section.sprints
         )
             include ../../../svg/add.svg
 
-    div.sprints-empty(ng-if="!totalMilestones")
+    div.sprints-empty(ng-if="totalMilestones === 0")
         img(
             src="/images/sprint-empty.png"
             alt="{{'BACKLOG.SPRINTS.EMPTY' | translate}}"
@@ -26,6 +26,7 @@ section.sprints
             ng-click="ctrl.addNewSprint()"
             title="{{'BACKLOG.SPRINTS.TITLE_ACTION_NEW_SPRINT' | translate}}"
             translate="BACKLOG.SPRINTS.TEXT_ACTION_NEW_SPRINT"
+            tg-check-permission="add_milestone"
         )
 
     div.sprint.sprint-open(ng-repeat="sprint in openSprints track by sprint.id",

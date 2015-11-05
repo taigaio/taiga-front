@@ -51,10 +51,16 @@ section.issues-table.basic-table(ng-class="{empty: !issues.length}")
                 figure.avatar
                 span.icon.icon-arrow-bottom(tg-check-permission="modify_issue")
 
-section.empty-issues(ng-if="!issues.length")
+section.empty-issues(ng-if="issues != undefined && issues.length == 0")
     img(
         src="../../images/issues-empty.png",
         alt="{{ISSUES.TABLE.EMPTY.TITLE | translate }}"
     )
     p.title(translate="ISSUES.TABLE.EMPTY.TITLE")
-    p(translate="ISSUES.TABLE.EMPTY.SUBTITLE")
+    a(
+        href=""
+        ng-click="ctrl.addNewIssue()"
+        tg-check-permission="add_issue"
+        title="{{ ISSUES.ACTION_NEW_ISSUE | translate }}"
+        translate="ISSUES.TABLE.EMPTY.SUBTITLE"
+    )
