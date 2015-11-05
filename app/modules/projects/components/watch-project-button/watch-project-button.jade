@@ -40,7 +40,7 @@ ul.watch-options(
         a(
             href="",
             title="{{ 'PROJECT.WATCH_BUTTON.OPTIONS.NOTIFY_INVOLVED_TITLE' | translate }}",
-             ng-click="vm.watch(1)",
+            ng-click="vm.watch(1)",
             ng-class="{'active': vm.project.get('is_watcher') && vm.project.get('notify_level') == 1}"
         )
             span(translate="PROJECT.WATCH_BUTTON.OPTIONS.NOTIFY_INVOLVED")

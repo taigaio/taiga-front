@@ -34,6 +34,8 @@ class WatchProjectButtonController
         @.showWatchOptions = false
 
     watch: (notifyLevel) ->
+        return if notifyLevel == @.project.get('notify_level')
+
         @.loading = true
         @.closeWatcherOptions()
 

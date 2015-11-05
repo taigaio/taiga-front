@@ -127,6 +127,71 @@ describe "tgWatchProjectButtonService", ->
 
             done()
 
+    it "watch, if the user doesn't have the projects", (done) ->
+        projectId = 4
+        notifyLevel = 3
+
+        mocks.tgResources.projects.watchProject.withArgs(projectId, notifyLevel).promise().resolve()
+
+        newProject = {
+            id: 4,
+            total_watchers: 1,
+            is_watcher: true,
+            notify_level: notifyLevel
+        }
+
+        mocks.tgProjectService.project =  mocks.tgCurrentUserService.projects.getIn(['all', 0])
+        mocks.tgCurrentUserService.projects = Immutable.fromJS({
+            all: []
+        })
+
+        projectServiceCheckImmutable = sinon.match ((immutable) ->
+            immutable = immutable.toJS()
+
+            return _.isEqual(immutable, newProject)
+        ), 'projectServiceCheckImmutable'
+
+
+        watchButtonService.watch(projectId, notifyLevel).finally () ->
+            expect(mocks.tgCurrentUserService.setProjects).to.not.have.been.called
+            expect(mocks.tgProjectService.setProject).to.have.been.calledWith(projectServiceCheckImmutable)
+
+            done()
+
+    it "watch another option", (done) ->
+        projectId = 5
+        notifyLevel = 3
+
+        mocks.tgResources.projects.watchProject.withArgs(projectId, notifyLevel).promise().resolve()
+
+        newProject = {
+            id: 5,
+            total_watchers: 1,
+            is_watcher: true,
+            notify_level: notifyLevel
+        }
+
+        mocks.tgProjectService.project =  mocks.tgCurrentUserService.projects.getIn(['all', 1])
+
+        userServiceCheckImmutable = sinon.match ((immutable) ->
+            immutable = immutable.toJS()
+
+            return _.isEqual(immutable[1], newProject)
+        ), 'userServiceCheckImmutable'
+
+        projectServiceCheckImmutable = sinon.match ((immutable) ->
+            immutable = immutable.toJS()
+
+            return _.isEqual(immutable, newProject)
+        ), 'projectServiceCheckImmutable'
+
+
+        watchButtonService.watch(projectId, notifyLevel).finally () ->
+            expect(mocks.tgCurrentUserService.setProjects).to.have.been.calledWith(userServiceCheckImmutable)
+            expect(mocks.tgProjectService.setProject).to.have.been.calledWith(projectServiceCheckImmutable)
+
+            done()
+
     it "unwatch", (done) ->
         projectId = 5
 
