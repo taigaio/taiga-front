@@ -37,12 +37,18 @@ class WatchProjectButtonService extends taiga.Service
     _updateProjects: (projectId, notifyLevel, isWatcher) ->
         projectIndex = @._getProjectIndex(projectId)
 
+        return if projectIndex == -1
+
         projects = @currentUserService.projects
             .get('all')
             .update projectIndex, (project) =>
                 totalWatchers = project.get('total_watchers')
 
-                if isWatcher then totalWatchers++ else totalWatchers--
+
+                if !@projectService.project.get('is_watcher')  && isWatcher
+                    totalWatchers++
+                else if @projectService.project.get('is_watcher') && !isWatcher
+                    totalWatchers--
 
                 return project.merge({
                     is_watcher: isWatcher,
@@ -55,12 +61,15 @@ class WatchProjectButtonService extends taiga.Service
     _updateCurrentProject: (notifyLevel, isWatcher) ->
         totalWatchers = @projectService.project.get("total_watchers")
 
-        if isWatcher then totalWatchers++ else totalWatchers--
+        if !@projectService.project.get('is_watcher')  && isWatcher
+            totalWatchers++
+        else if @projectService.project.get('is_watcher') && !isWatcher
+            totalWatchers--
 
         project = @projectService.project.merge({
             is_watcher: isWatcher,
+            notify_level: notifyLevel,
             total_watchers: totalWatchers
-            notify_level: notifyLevel
         })
 
         @projectService.setProject(project)

@@ -95,6 +95,19 @@ describe "WatchProjectButton", ->
 
             done()
 
+    it "watch the same option", () ->
+        notifyLevel = 5
+        project = Immutable.fromJS({
+            id: 3,
+            notify_level: 5
+        })
+
+        ctrl = $controller("WatchProjectButton")
+        ctrl.project = project
+
+        result = ctrl.watch(notifyLevel)
+        expect(result).to.be.falsy
+
     it "watch, notify error", (done) ->
         notifyLevel = 5
         project = Immutable.fromJS({

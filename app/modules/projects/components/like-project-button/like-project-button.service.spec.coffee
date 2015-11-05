@@ -118,6 +118,36 @@ describe "tgLikeProjectButtonService", ->
 
             done()
 
+    it "like, if the user doesn't have the project", (done) ->
+        projectId = 4
+
+        mocks.tgResources.projects.likeProject.withArgs(projectId).promise().resolve()
+
+        newProject = {
+            id: 4,
+            total_fans: 3,
+            is_fan: true
+        }
+
+        mocks.tgProjectService.project =  mocks.tgCurrentUserService.projects.getIn(['all', 0])
+
+        mocks.tgCurrentUserService.projects = Immutable.fromJS({
+            all: []
+        })
+
+        projectServiceCheckImmutable = sinon.match ((immutable) ->
+            immutable = immutable.toJS()
+
+            return _.isEqual(immutable, newProject)
+        ), 'projectServiceCheckImmutable'
+
+
+        likeButtonService.like(projectId).finally () ->
+            expect(mocks.tgCurrentUserService.setProjects).to.not.have.been.called
+            expect(mocks.tgProjectService.setProject).to.have.been.calledWith(projectServiceCheckImmutable)
+
+            done()
+
     it "unlike", (done) ->
         projectId = 5
 
