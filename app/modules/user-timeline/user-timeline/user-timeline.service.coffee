@@ -66,6 +66,12 @@ class UserTimelineService extends taiga.Service
 
                 return false
         },
+        {# Empty change
+            check: (timeline) ->
+                event = timeline.get('event_type').split(".")
+                value_diff = timeline.get("data").get("value_diff")
+                return event[2] == 'change' and value_diff == undefined
+        },
         {# Deleted
             check: (timeline) ->
                 event = timeline.get('event_type').split(".")

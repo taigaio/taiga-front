@@ -29,9 +29,12 @@ module = angular.module("taigaCommon")
 IGNORED_FIELDS = {
     "userstories.userstory": [
         "watchers", "kanban_order", "backlog_order", "sprint_order", "finish_date"
-    ]
+    ],
     "tasks.task": [
         "watchers", "us_order", "taskboard_order"
+    ],
+    "issues.issue": [
+        "watchers"
     ]
 }
 
@@ -66,7 +69,13 @@ class HistoryController extends taiga.Controller
                 delete historyResult.values_diff.blocked_note_html
                 delete historyResult.values_diff.blocked_note_diff
 
-            @scope.history = history
+            for historyEntry in history
+                changeModel = historyEntry.key.split(":")[0]
+                if IGNORED_FIELDS[changeModel]?
+                    historyEntry.values_diff = _.removeKeys(historyEntry.values_diff, IGNORED_FIELDS[changeModel])
+
+            @scope.history = _.filter(history, (item) -> Object.keys(item.values_diff).length > 0)
+
             @scope.comments = _.filter(history, (item) -> item.comment != "")
 
     deleteComment: (type, objectId, activityId) ->
@@ -262,10 +271,6 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $c
                 return templateChangeGeneric({name:name, from:from, to: to})
 
         renderChangeEntries = (change) ->
-            changeModel = change.key.split(":")[0]
-            if IGNORED_FIELDS[changeModel]?
-                change.values_diff = _.removeKeys(change.values_diff, IGNORED_FIELDS[changeModel])
-
             return _.map(change.values_diff, (value, field) -> renderChangeEntry(field, value))
 
         renderChangesHelperText = (change) ->
