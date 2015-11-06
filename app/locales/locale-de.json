@@ -280,7 +280,7 @@
         "PLACEHOLDER_AUTH_PASSWORD": "Passwort"
     },
     "LOGIN_FORM": {
-        "ERROR_AUTH_INCORRECT": "Laut unseren Helferlein ist Dein Benutzername/Deine E-Mail-Adresse oder Dein Passwort nicht korrekt. ",
+        "ERROR_AUTH_INCORRECT": "Laut unseren Helferlein ist Dein Benutzername/Deine E-Mail-Adresse oder Dein Passwort nicht korrekt. (Bitte achte auf die Groß- und Kleinschreibung.)",
         "SUCCESS": "Herzlich willkommen bei Taiga, unsere Helferlein freuen sich. "
     },
     "REGISTER": {
@@ -585,7 +585,7 @@
         },
         "MEMBERSHIP": {
             "COLUMN_MEMBER": "Mitglied",
-            "COLUMN_ADMIN": "Administrator",
+            "COLUMN_ADMIN": "Admin",
             "COLUMN_ROLE": "Rolle",
             "COLUMN_STATUS": "Status",
             "STATUS_ACTIVE": "Aktiv",
@@ -952,7 +952,7 @@
         "MOVE_US_TO_CURRENT_SPRINT": "Zum aktuellen Sprint wechseln",
         "SHOW_FILTERS": "Filter zeigen",
         "SHOW_TAGS": "Tags anzeigen",
-        "EMPTY": "Ihre Auftragsliste ist leer",
+        "EMPTY": "The backlog is empty!",
         "CREATE_NEW_US": "Eine neue User-Story anlegen",
         "CREATE_NEW_US_EMPTY_HELP": "Sie sollten eine User-Story anlegen",
         "EXCESS_OF_POINTS": "Punkte Überschuss",
@@ -1012,7 +1012,7 @@
             "LINK_TASKBOARD": "Sprint Taskboard",
             "TITLE_LINK_TASKBOARD": "Gehe zu Taskboard von \"{{name}}\"",
             "NUMBER_SPRINTS": "<br/>Sprints",
-            "EMPTY": "DU HAST KEINE SPRINTS",
+            "EMPTY": "There are no sprints yet",
             "WARNING_EMPTY_SPRINT": "Ziehe Stories aus deiner Auftragsliste her um einen neuen Sprint zu starten",
             "TITLE_ACTION_NEW_SPRINT": "Neuen Sprint hinzufügen",
             "TEXT_ACTION_NEW_SPRINT": "Du möchtest einen neuen Sprint in Deinem Projekt erstellen",
