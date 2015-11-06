@@ -2,6 +2,8 @@ version = ___VERSION___
 window.taigaConfig = {
     "api": "http://localhost:8000/api/v1/",
     "eventsUrl": null,
+    "eventsMaxMissedHeartbeats": 5,
+    "eventsHeartbeatIntervalTime": 60000,
     "debug": true,
     "defaultLanguage": "en",
     "themes": ["taiga", "material-design", "high-contrast"],
