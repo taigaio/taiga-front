@@ -67,9 +67,11 @@ class UserTimelineItemTitle
                 if value == null && timeline.getIn(["data", "value_diff", "key"]) == 'assigned_to'
                     value = @translate.instant('ACTIVITY.VALUES.UNASSIGNED')
 
-                return value
+                new_value = value
             else
-                return timeline.getIn(["data", "value_diff", "value"]).first().get(1)
+                new_value = timeline.getIn(["data", "value_diff", "value"]).first().get(1)
+
+            return _.escape(new_value)
 
         sprint_name: (timeline, event) ->
             url = "project-taskboard:project=timeline.getIn(['data', 'project', 'slug']),sprint=timeline.getIn(['data', 'milestone', 'slug'])"
@@ -100,7 +102,7 @@ class UserTimelineItemTitle
             return @._getLink(url, text)
 
         role_name: (timeline, event) ->
-            return timeline.getIn(['data', 'value_diff', 'value']).keySeq().first()
+            return _.escape(timeline.getIn(['data', 'value_diff', 'value']).keySeq().first())
     }
 
     constructor: (@translate) ->

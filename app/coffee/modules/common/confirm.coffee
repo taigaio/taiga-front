@@ -56,9 +56,9 @@ class ConfirmService extends taiga.Service
         el = angular.element(lightboxSelector)
 
         # Render content
-        el.find("h2.title").html(title)
-        el.find("span.subtitle").html(subtitle)
-        el.find("span.message").html(message)
+        el.find("h2.title").text(title)
+        el.find("span.subtitle").text(subtitle)
+        el.find("span.message").text(message)
 
         # Assign event handlers
         el.on "click.confirm-dialog", "a.button-green", debounce 2000, (event) =>
