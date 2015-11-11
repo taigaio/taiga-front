@@ -159,7 +159,7 @@
             "WATCH": "Отслеживать",
             "WATCHING": "Отслеживаемое",
             "UNWATCH": "Прекратить отслеживание",
-            "WATCHERS": "Watchers",
+            "WATCHERS": "Наблюдатели",
             "BUTTON_TITLE": "Начать/прекратить отслеживание",
             "COUNTER_TITLE": "{total, plural, one{один наблюдатель} other{# наблюдателя (-ей)}}"
         },
@@ -224,11 +224,11 @@
                 "DELETE_SPRINTS": "Удалить спринты"
             },
             "USER_STORIES": {
-                "NAME": "Истории от Пользователей",
-                "VIEW_USER_STORIES": "Посмотреть истории от пользователей",
-                "ADD_USER_STORIES": "Добавить истории от пользователей",
-                "MODIFY_USER_STORIES": "Изменить истории от пользователей",
-                "DELETE_USER_STORIES": "Удалить истории от пользователей"
+                "NAME": "Пользовательские Истории",
+                "VIEW_USER_STORIES": "Просматривать пользовательские истории",
+                "ADD_USER_STORIES": "Добавлять пользовательские истории",
+                "MODIFY_USER_STORIES": "Изменять пользовательские истории",
+                "DELETE_USER_STORIES": "Удалять пользовательские истории"
             },
             "TASKS": {
                 "NAME": "Задачи",
@@ -328,7 +328,7 @@
         "PLACEHOLDER_NEW_PASSWORD": "Новый пароль",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Введите повторно новый пароль",
         "ACTION_RESET_PASSWORD": "Сбросить пароль",
-        "ERROR": "Our Oompa Loompas can't find your request to recover your password. Try to ask for it again.",
+        "ERROR": "У наших Умпа-Лумп не получается найти ваш запрос на восстановление пароля. Попробуйте получить его ещё раз.",
         "SUCCESS": "Наши Умпа Лумпы сохранили ваш новый пароль.<br /> Попробуйте <strong>войти</strong>, используя его."
     },
     "INVITATION": {
@@ -336,15 +336,15 @@
         "PAGE_DESCRIPTION": "Принять приглашение и присоединиться к Taiga — платформе для управления проектами стартапов, agile разработчиков и дизайнеров, которые хотят простой и красивый инструмент превращающий работу в удовольствие."
     },
     "INVITATION_LOGIN_FORM": {
-        "NOT_FOUND": "Our Oompa Loompas can't find your invitation.",
+        "NOT_FOUND": "У наших Умпа-Лумп не получается найти ваше приглашение.",
         "SUCCESS": "Вы успешно добавлены к проекту. Добро пожаловать в {{project_name}}",
         "ERROR": "Умпа-Лумпы говорят, что вы не зарегистрированы или ввели неверный пароль."
     },
     "HOME": {
         "PAGE_TITLE": "Домашняя страница - Taiga",
-        "PAGE_DESCRIPTION": "Главная страница Тайги, с вашими основными проектами, назначенными и отслеживаемыми задачами, запросами и пользовательскими историями",
-        "EMPTY_WORKING_ON": "<strong>It feels empty, doesn't it?</strong> Start working with Taiga and you'll see here the stories, tasks and issues you are workin on.",
-        "EMPTY_WATCHING": "<strong>Follow</strong> User Stories, Tasks, Issues... that you want to know about :)",
+        "PAGE_DESCRIPTION": "Главная страница Taiga с вашими основными проектами, назначенными и отслеживаемыми ПИ, задачами и запросами",
+        "EMPTY_WORKING_ON": "<strong>Пустовато, не правда ли?</strong> Начните работать в Taiga - и тут появятся ПИ, задачи и запросы, над которыми вы работаете.",
+        "EMPTY_WATCHING": "<strong>Следите</strong> за ПИ, задачами, запросами... о которых хотите знать :)",
         "EMPTY_PROJECT_LIST": "У Вас пока нет проектов",
         "WORKING_ON_SECTION": "Работает над",
         "WATCHING_SECTION": "Отслеживаемые"
@@ -414,7 +414,7 @@
             "ENABLE": "Включить",
             "DISABLE": "Выключить",
             "BACKLOG": "Список задач",
-            "BACKLOG_DESCRIPTION": "Управляйте историями от пользователей, чтобы организовывать вашу ближайшую и приоритетную работу",
+            "BACKLOG_DESCRIPTION": "Управляйте пользовательскими историями, чтобы поддерживать организованное видение важных и приоритетных задач.",
             "KANBAN": "Kanban",
             "KANBAN_DESCRIPTION": "Организуйте эффективную работу с проектом с помощью этой панели",
             "ISSUES": "Запросы",
@@ -436,8 +436,8 @@
             "PROJECT_DETAILS": "Детали проекта",
             "PROJECT_NAME": "Название проекта",
             "PROJECT_SLUG": "Ссылочное имя проекта",
-            "NUMBER_SPRINTS": "Количество спринтов (0 для неопределенного количества)",
-            "NUMBER_US_POINTS": "Number of US points (0 for an undetermined quantity)",
+            "NUMBER_SPRINTS": "Количество спринтов (0 - неопределенное количество)",
+            "NUMBER_US_POINTS": "Количество очков ПИ (0 - неопределенное количество)",
             "TAGS": "Тэги",
             "DESCRIPTION": "Описание",
             "PUBLIC_PROJECT": "Публичный проект",
@@ -453,7 +453,7 @@
             "REGENERATE_SUBTITLE": "Вы собираетесь изменить ссылку доступа к данным CSV. Прежний вариант ссылки перестанет работать. Вы уверены?"
         },
         "CSV": {
-            "SECTION_TITLE_US": "Отчёты об историях от пользователей",
+            "SECTION_TITLE_US": "Отчёты по пользовательским историям",
             "SECTION_TITLE_TASK": "отчёты о задачах",
             "SECTION_TITLE_ISSUE": "отчёты о запросах",
             "DOWNLOAD": "Скачать CSV",
@@ -465,8 +465,8 @@
         "CUSTOM_FIELDS": {
             "TITLE": "Пользовательские поля",
             "SUBTITLE": "Укажите специальные поля для ваших пользовательских историй, задач и запросов",
-            "US_DESCRIPTION": "Специальные поля для историй от пользователей",
-            "US_ADD": "Добавить специальное поле для историй от пользователей",
+            "US_DESCRIPTION": "Специальные поля для пользовательских историй",
+            "US_ADD": "Добавить специальное поле для пользовательских историй",
             "TASK_DESCRIPTION": "Специальные поля задач",
             "TASK_ADD": "Добавить новые типы задач",
             "ISSUE_DESCRIPTION": "Специальные поля запросов",
@@ -513,9 +513,9 @@
         },
         "ROLES": {
             "PAGE_TITLE": "Роли - {{projectName}}",
-            "WARNING_NO_ROLE": "Осторожнее: ни с какими ролями на вашем проекте участники не смогут оценить очки для историй от пользователей.",
-            "HELP_ROLE_ENABLED": "Когда включено, участники, назначенные на эту роль, смогут оценивать очки для Историй от Пользователей",
-            "DISABLE_COMPUTABLE_ALERT_TITLE": "Disable estimation for this role",
+            "WARNING_NO_ROLE": "Осторожнее: ни с какими ролями на вашем проекте участники не смогут оценить очки для пользовательских историй.",
+            "HELP_ROLE_ENABLED": "Когда включено, участники, назначенные на эту роль, смогут оценивать очки для пользовательских историй",
+            "DISABLE_COMPUTABLE_ALERT_TITLE": "Отключить оценку очков для этой роли",
             "DISABLE_COMPUTABLE_ALERT_SUBTITLE": "If you disable estimation permissions for role {{roleName}} all previous estimations made by this role will be removed",
             "DISABLE_COMPUTABLE_ALERT_MESSAGE": "<strong>Are you sure you want to disable this role estimations?</strong>",
             "COUNT_MEMBERS": "{{ role.members_count }} участников с этой ролью",
@@ -545,19 +545,19 @@
             "PAGE_TITLE": "Github - {{projectName}}"
         },
         "WEBHOOKS": {
-            "PAGE_TITLE": "Web-зацепки - {{projectName}}",
-            "SECTION_NAME": "Web-зацепки",
-            "SUBTITLE": "Web-зацепки рассказывают внешним сервисам о событиях в Taiga, таких как комментарии, новые истории от пользователей и т.д.",
-            "ADD_NEW": "Добавить новую Web-зацепку",
+            "PAGE_TITLE": "Веб-хуки - {{projectName}}",
+            "SECTION_NAME": "Веб-хуки",
+            "SUBTITLE": "Веб-хуки рассказывают внешним сервисам о событиях в Taiga, таких как комментарии, новые пользовательские истории и т.д.",
+            "ADD_NEW": "Добавить новый веб-хук",
             "TYPE_NAME": "Укажите имя сервиса",
             "TYPE_PAYLOAD_URL": "Укажите нагрузочную ссылку сервиса",
             "TYPE_SERVICE_SECRET": "Введите секретный код сервиса",
-            "SAVE": "Сохранить Web-зацепку",
-            "CANCEL": "Отменить Web-зацепку",
+            "SAVE": "Сохранить веб-хук",
+            "CANCEL": "Отменить веб-хук",
             "SHOW_HISTORY": "(Показать историю)",
-            "TEST": "Протестировать Web-зацепку",
-            "EDIT": "Редактировать Web-зацепку",
-            "DELETE": "Удалить Web-зацепку",
+            "TEST": "Протестировать веб-хук",
+            "EDIT": "Редактировать веб-хук",
+            "DELETE": "Удалить веб-хук",
             "REQUEST": "Запрос",
             "RESEND_REQUEST": "Переслать запрос",
             "HEADERS": "Заголовки",
@@ -568,7 +568,7 @@
             "ACTION_HIDE_HISTORY_TITLE": "Скрыть детали истории",
             "ACTION_SHOW_HISTORY": "(Показать историю)",
             "ACTION_SHOW_HISTORY_TITLE": "Показать детали истории",
-            "WEBHOOK_NAME": "Web-зацепка '{{name}}'"
+            "WEBHOOK_NAME": "Веб-хук '{{name}}'"
         },
         "CUSTOM_ATTRIBUTES": {
             "PAGE_TITLE": "{{sectionName}} - Специальные Атрибуты - {{projectName}}",
@@ -579,19 +579,19 @@
             "CANCEL_TITLE": "Отменить создание",
             "SET_FIELD_NAME": "Введите имя поля",
             "SET_FIELD_DESCRIPTION": "Назначьте описание специальному полю",
-            "FIELD_TYPE_DEFAULT": "-- select one --",
+            "FIELD_TYPE_DEFAULT": "-- выберите --",
             "ACTION_UPDATE": "Обновить поле",
             "ACTION_CANCEL_EDITION": "Отменить правку"
         },
         "MEMBERSHIP": {
             "COLUMN_MEMBER": "Участник",
-            "COLUMN_ADMIN": "Админ",
+            "COLUMN_ADMIN": "Админка",
             "COLUMN_ROLE": "Роль",
             "COLUMN_STATUS": "Статус",
             "STATUS_ACTIVE": "Активный",
             "STATUS_PENDING": "В ожидании",
             "DELETE_MEMBER": "Удалить участника",
-            "RESEND": "Resend",
+            "RESEND": "Переотправить",
             "SUCCESS_SEND_INVITATION": "Мы отправили ещё одно приглашение на адрес '{{email}}'.",
             "ERROR_SEND_INVITATION": "Мы не выслали приглашение.",
             "SUCCESS_DELETE": "Мы удалили {{message}}.",
@@ -620,7 +620,7 @@
             "PLACEHOLDER_WRITE_NAME": "Укажите название для нового статуса"
         },
         "MENU": {
-            "TITLE": "Админ",
+            "TITLE": "Админка",
             "PROJECT": "Проект",
             "ATTRIBUTES": "Атрибуты",
             "MEMBERS": "Участники",
@@ -668,13 +668,13 @@
                 "ACTIVITY_TAB": "Действия",
                 "ACTIVITY_TAB_TITLE": "Показать все действия пользователя",
                 "PROJECTS_TAB": "Проекты",
-                "PROJECTS_TAB_TITLE": "List of all projects in which the user is a member",
-                "LIKES_TAB": "Likes",
+                "PROJECTS_TAB_TITLE": "Список всех проектов, в которых участвует пользователь",
+                "LIKES_TAB": "Лайки",
                 "LIKES_TAB_TITLE": "List all likes made by this user",
                 "VOTES_TAB": "Голоса",
                 "VOTES_TAB_TITLE": "List all votes made by this user",
                 "WATCHED_TAB": "Просмотренные",
-                "WATCHED_TAB_TITLE": "List all item watched by this user",
+                "WATCHED_TAB_TITLE": "Список всего, за чем наблюдает пользователь",
                 "CONTACTS_TAB": "Контакты",
                 "CONTACTS_TAB_TITLE": "List all contacts made by this user"
             }
@@ -682,7 +682,7 @@
         "PROFILE_SIDEBAR": {
             "TITLE": "Ваш профиль",
             "DESCRIPTION": "Люди могут видеть всё что Вы делаете и всё над чем Вы работаете. Вы также можете добавить краткую биографию.",
-            "ADD_INFO": "Edit bio"
+            "ADD_INFO": "Редактировать биографию"
         },
         "PROFILE_FAVS": {
             "FILTER_INPUT_PLACEHOLDER": "Введите что-нибудь...",
@@ -696,7 +696,7 @@
             "FILTER_TYPE_TASK_TITLES": "Показывать только задачи",
             "FILTER_TYPE_ISSUES": "Запросы",
             "FILTER_TYPE_ISSUES_TITLE": "Показывать только запросы",
-            "EMPTY_TITLE": "It looks like there's nothing to show here."
+            "EMPTY_TITLE": "Похоже, здесь ничего нет."
         }
     },
     "PROJECT": {
@@ -720,7 +720,7 @@
             "WIKI": "Wiki",
             "TEAM": "Команда",
             "MEETUP": "Созвониться",
-            "ADMIN": "Админ"
+            "ADMIN": "Админка"
         },
         "NAVIGATION": {
             "SECTION_TITLE": "Ваши проекты",
@@ -853,14 +853,14 @@
         }
     },
     "US": {
-        "PAGE_TITLE": "{{userStorySubject}} - История от Пользователя {{userStoryRef}} - {{projectName}}",
+        "PAGE_TITLE": "{{userStorySubject}} - Пользовательская История {{userStoryRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Статус: {{userStoryStatus }}. Выполнено {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} из {{userStoryTotalTasks}} задач). Очки: {{userStoryPoints}}. Описание: {{userStoryDescription}}",
         "SECTION_NAME": "Детали пользовательских историй",
         "LINK_TASKBOARD": "Панель задач",
         "TITLE_LINK_TASKBOARD": "Перейти к панели задач",
         "TOTAL_POINTS": "общее число очков",
         "ADD": "+ Добавить Пользовательскую Историю",
-        "ADD_BULK": "Добавить несколько Историй от Пользователей пакетно",
+        "ADD_BULK": "Добавить Пользовательские Истории пакетно",
         "PROMOTED": "Эта ПИ была сформирована из запроса:",
         "TITLE_LINK_GO_TO_ISSUE": "Перейти к запросу",
         "EXTERNAL_REFERENCE": "Эта ПИ была создана из:",
@@ -943,18 +943,18 @@
     },
     "BACKLOG": {
         "PAGE_TITLE": "Список задач - {{projectName}}",
-        "PAGE_DESCRIPTION": "Список задач с историями от пользователей и спринтами проекта {{projectName}}: {{projectDescription}}",
+        "PAGE_DESCRIPTION": "Список задач с пользовательскими историями и спринтами проекта {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Список задач",
         "CUSTOMIZE_GRAPH": "Customize your backlog graph",
         "CUSTOMIZE_GRAPH_TEXT": "To have a nice graph that helps you follow the evolution of the project you have to set up the points and sprints through the",
-        "CUSTOMIZE_GRAPH_ADMIN": "Админ",
-        "CUSTOMIZE_GRAPH_TITLE": "Set up the points and sprints through the Admin",
+        "CUSTOMIZE_GRAPH_ADMIN": "Админка",
+        "CUSTOMIZE_GRAPH_TITLE": "Настройте очки и спринты в админке",
         "MOVE_US_TO_CURRENT_SPRINT": "Перейти к текущему спринту",
         "SHOW_FILTERS": "Показать фильтры",
         "SHOW_TAGS": "Показать теги",
-        "EMPTY": "The backlog is empty!",
+        "EMPTY": "Список задач пуст!",
         "CREATE_NEW_US": "Создать новую ПИ",
-        "CREATE_NEW_US_EMPTY_HELP": "Возможно будет лучше создать пользовательскую историю?",
+        "CREATE_NEW_US_EMPTY_HELP": "Вы можете создать пользовательскую историю",
         "EXCESS_OF_POINTS": "Избыток очков",
         "PENDING_POINTS": "Текущие очки",
         "CLOSED_POINTS": "закрыта",
@@ -979,7 +979,7 @@
             "HIDE": "Скрыть тэги"
         },
         "TABLE": {
-            "COLUMN_US": "Истории от Пользователей",
+            "COLUMN_US": "Пользовательские Истории",
             "TITLE_COLUMN_POINTS": "Выберите вид для Роли"
         },
         "SPRINT_SUMMARY": {
@@ -1012,10 +1012,10 @@
             "LINK_TASKBOARD": "Панель задач Спринта",
             "TITLE_LINK_TASKBOARD": "Перейти к Панели Задач \"{{name}}\"",
             "NUMBER_SPRINTS": "<br/>спринты",
-            "EMPTY": "There are no sprints yet",
-            "WARNING_EMPTY_SPRINT": "Drop here Stories from your backlog to start a new sprint",
+            "EMPTY": "Спринтов пока что нет",
+            "WARNING_EMPTY_SPRINT": "Накидайте сюда ПИ из списка задач чтобы начать новый спринт",
             "TITLE_ACTION_NEW_SPRINT": "Добавить новый спринт",
-            "TEXT_ACTION_NEW_SPRINT": "You may want to create a new sprint in your project",
+            "TEXT_ACTION_NEW_SPRINT": "Вы можете создать новый спринт в проекте",
             "ACTION_SHOW_CLOSED_SPRINTS": "Показать закрытые спринты",
             "ACTION_HIDE_CLOSED_SPRINTS": "Спрятать закрытые спринты"
         }
@@ -1037,7 +1037,7 @@
         "TITLE_ACTION_ASSIGN": "Назначить задачу",
         "TITLE_ACTION_EDIT": "Редактировать задачу",
         "PLACEHOLDER_CARD_TITLE": "This could be a task",
-        "PLACEHOLDER_CARD_TEXT": "Split Stories into tasks to track them separately",
+        "PLACEHOLDER_CARD_TEXT": "Разделяйте ПИ в задачи чтобы отслеживать их по отдельности",
         "TABLE": {
             "COLUMN": "Пользовательская история",
             "TITLE_ACTION_FOLD": "Свернуть колонку",
@@ -1176,7 +1176,7 @@
     },
     "KANBAN": {
         "PAGE_TITLE": "Kanban - {{projectName}}",
-        "PAGE_DESCRIPTION": "Панель kanban, с Историями от Пользователей для проекта {{projectName}}: {{projectDescription}}",
+        "PAGE_DESCRIPTION": "Панель kanban, с пользовательскими историями для проекта {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Kanban",
         "TITLE_ACTION_FOLD": "Свернуть колонку",
         "TITLE_ACTION_UNFOLD": "Развернуть колонку",
@@ -1186,16 +1186,16 @@
         "TITLE_ACTION_ADD_BULK": "Добавить пакетно",
         "ACTION_SHOW_ARCHIVED": "Показать архивные",
         "ACTION_HIDE_ARCHIVED": "Спрятать архив",
-        "HIDDEN_USER_STORIES": "Истории от Пользователей в этом статусе скрыты по умолчанию",
+        "HIDDEN_USER_STORIES": "Пользовательские истории в этом статусе скрыты по умолчанию",
         "ARCHIVED": "Вы заархивировали",
         "UNDO_ARCHIVED": "Для отмены надо перетащить и сбросить ещё раз",
-        "PLACEHOLDER_CARD_TITLE": "These are your User Stories",
-        "PLACEHOLDER_CARD_TEXT": "Stories might also have subtasks to separate requirements"
+        "PLACEHOLDER_CARD_TITLE": "Это - ваши Пользовательские Истории.",
+        "PLACEHOLDER_CARD_TEXT": "У ПИ также могут быть подзадачи чтобы можно было разделять требования"
     },
     "SEARCH": {
         "PAGE_TITLE": "Поиск - {{projectName}}",
         "PAGE_DESCRIPTION": "Ищите что угодно, пользовательские истории, задачи, запросы и вики-страницы, в проекте {{projectName}}: {{projectDescription}}",
-        "FILTER_USER_STORIES": "Истории от Пользователей",
+        "FILTER_USER_STORIES": "Пользовательские Истории",
         "FILTER_ISSUES": "Запросы",
         "FILTER_TASKS": "Задачи",
         "FILTER_WIKI": "Вики страницы",
@@ -1305,9 +1305,9 @@
         "HINT1_TITLE": "Вы знали что можно импортировать и экспортировать проекты?",
         "HINT1_TEXT": "Это позволяет вам собирать данные из одной Taiga и копировать в другую.",
         "HINT2_TITLE": "Вы знали что можно создавать собственные поля?",
-        "HINT2_TEXT": "Teams can now create custom fields as a flexible means to enter specific data useful for their particular workflow.",
-        "HINT3_TITLE": "Reorder your projects to feature those most relevant to you.",
-        "HINT3_TEXT": "The 10 projects are listed in the direct access bar at the top.",
+        "HINT2_TEXT": "Теперь команды могут создавать специальные поля, чтобы гибко вводить данные, специфические для их рабочего процесса.",
+        "HINT3_TITLE": "Перестройте список своих проектов так, чтобы выделить самые важные для себя.",
+        "HINT3_TEXT": "Первые 10 проектов доступны из панели прямого доступа сверху.",
         "HINT4_TITLE": "Вы забыли над чем работали?",
         "HINT4_TEXT": "Не переживайте, на вашем рабочем столе вы найдёте ваши активные задачи, запросы и пользовательские истории в том порядке, в котором вы над ними работали."
     },
@@ -1316,7 +1316,7 @@
         "US_CREATED": "{{username}} создал новую ПИ  {{obj_name}} в {{project_name}}",
         "ISSUE_CREATED": "{{username}} создал новый запрос {{obj_name}} в {{project_name}}",
         "TASK_CREATED": "{{username}} создал новую задачу {{obj_name}} в {{project_name}}",
-        "TASK_CREATED_WITH_US": "{{username}} создал новую задачу {{obj_name}} в {{project_name}}, которая принадлежит Задаче от Пользователя {{us_name}}",
+        "TASK_CREATED_WITH_US": "{{username}} создал новую задачу {{obj_name}} в {{project_name}}, которая принадлежит ПИ {{us_name}}",
         "WIKI_CREATED": "{{username}} создал новую вики-страницу {{obj_name}} в {{project_name}}",
         "MILESTONE_CREATED": "{{username}} создал новый спринт {{obj_name}} в {{project_name}}",
         "NEW_PROJECT": "{{username}} создал проект {{project_name}}",
@@ -1343,7 +1343,7 @@
         "NEW_USER": "{{username}} присоединился к Taiga"
     },
     "LEGAL": {
-        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>By clicking \"Sign up\"', you agree to our <br /></span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">terms of service</a><span> and </span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">privacy policy</a>."
+        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>Кликая \"Зарегистрироваться\"', вы соглашаетесь с нашими<br /></span><a href=\"{{ termsOfServiceUrl }}\" title=\"Смотреть условия обслуживания\" target=\"_blank\">условиями обслуживания</a><span> и </span><a href=\"{{ privacyPolicyUrl }}\" title=\"Смотреть политику обработки персональных данных\" target=\"_blank\">политикой обработки персональных данных</a>."
     },
     "EXTERNAL_APP": {
         "PAGE_TITLE": "Внешнее приложение требующие аутентификации",
@@ -1357,11 +1357,11 @@
         "DASHBOARD": {
             "STEP1": {
                 "TITLE": "Ваш проект",
-                "TEXT": "Welcome! Here you will find the projects you are involved on."
+                "TEXT": "Добро пожаловать! Здесь вы найдете проекты, над которыми работаете."
             },
             "STEP2": {
                 "TITLE": "Работает над",
-                "TEXT": "Here you will find the User Stories, Tasks and Issues in which you are working on."
+                "TEXT": "Здесь вы найдете Пользовательские Истории, Задачи и Запросы, над которыми работаете."
             },
             "STEP3": {
                 "TITLE": "Отслеживаемое",
@@ -1369,28 +1369,28 @@
                 "TEXT2": "You are already working with Taiga ;)"
             },
             "STEP4": {
-                "TITLE": "Let’s start",
-                "TEXT1": "You can start by creating your first Taiga project.",
+                "TITLE": "Давайте начнём",
+                "TEXT1": "Вы можете начать, создав свой первый проект в Taiga.",
                 "TEXT2": "Удачи!"
             }
         },
         "BACKLOG": {
             "STEP1": {
                 "TITLE": "Содержание проекта",
-                "TEXT1": "Here you will see the state of your project.",
-                "TEXT2": "You can change every kind of project settings through the admin."
+                "TEXT1": "Здесь вы будете видеть состояние проекта.",
+                "TEXT2": "Вы можете изменять все настройки проекта в админке."
             },
             "STEP2": {
-                "TITLE": "Product backlog",
-                "TEXT": "The backlog is the list of requirements (User Stories) for the project. Here is where you will plan your sprints."
+                "TITLE": "Список задач проекта",
+                "TEXT": "Список задач - набор требований (Пользовательский Историй) к вашему проекту. Здесь вы можете планировать спринты."
             },
             "STEP3": {
                 "TITLE": "Спринты",
-                "TEXT": "Sprints are short periods of time (usually 2 weeks) during which specific work has to be completed and delivered."
+                "TEXT": "Спринты - это небольшие промежутки времени (обычно 2 недели), на протяжении которых конкретные задачи должны быть закончены и доставлены."
             },
             "STEP4": {
-                "TITLE": "Истории от Пользователей",
-                "TEXT": "Those are the requirements at high level. You can add them to the backlog and drag them to the sprint in which it should be delivered."
+                "TITLE": "Пользовательские Истории",
+                "TEXT": "Это высокоуровневые требования. Вы можете добавить их в список задач и перетащить в спринт, в который они должны быть реализованы."
             }
         },
         "KANBAN": {
@@ -1399,12 +1399,12 @@
                 "TEXT": "Set up the columns you need to map your workflow statuses through the admin."
             },
             "STEP2": {
-                "TITLE": "User Stories & Tasks",
-                "TEXT": "User Stories are the requirements at high level. You can drag them to different columns."
+                "TITLE": "Пользовательские Истории и Задачи",
+                "TEXT": "Пользовательские истории - это высокоуровневые требования. Вы можете перетаскивать их между колонками."
             },
             "STEP3": {
                 "TITLE": "Adding User Stories",
-                "TEXT1": "You may want to add a single User Story (add US icon) or a group of them (bulk icon)",
+                "TEXT1": "Вы можете добавить одну пользовательскую историю (кнопка \"добавить ПИ\") или сразу несколько (кнопка \"пакетное добавление\")",
                 "TEXT2": "Удачи!"
             }
         }
