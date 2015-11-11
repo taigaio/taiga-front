@@ -21,7 +21,8 @@ unslugify = @.taiga.unslugify
 
 class UserTimelineItemTitle
     @.$inject = [
-        "$translate"
+        "$translate",
+        "$sce"
     ]
 
     _fieldTranslationKey: {
@@ -105,7 +106,7 @@ class UserTimelineItemTitle
             return _.escape(timeline.getIn(['data', 'value_diff', 'value']).keySeq().first())
     }
 
-    constructor: (@translate) ->
+    constructor: (@translate, @sce) ->
 
 
     _translateTitleParams: (param, timeline, event) ->
@@ -152,7 +153,18 @@ class UserTimelineItemTitle
         return params
 
     getTitle: (timeline, event, type) ->
-        return @translate.instant(type.key, @._getParams(timeline, event, type))
+        params = @._getParams(timeline, event, type)
+
+        paramsKeys = {}
+        Object.keys(params).forEach (key) -> paramsKeys[key] = '{{' +key + '}}'
+
+        translation = @translate.instant(type.key, paramsKeys)
+
+        Object.keys(params).forEach (key) ->
+            find = '{{' +key + '}}'
+            translation = translation.replace(new RegExp(find, 'g'), params[key])
+
+        return translation
 
 angular.module("taigaUserTimeline")
     .service("tgUserTimelineItemTitle", UserTimelineItemTitle)

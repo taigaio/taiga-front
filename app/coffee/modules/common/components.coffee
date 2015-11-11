@@ -135,27 +135,18 @@ CreatedByDisplayDirective = ($template, $compile, $translate, $navUrls)->
     #     'owner'(ng-model)
     #   - scope.usersById object is required.
 
-    template = $template.get("common/components/created-by.html", true)
-
     link = ($scope, $el, $attrs) ->
-        render = (model) ->
-            owner = model.owner_extra_info or {
-                full_name_display: $translate.instant("COMMON.EXTERNAL_USER")
-                photo: "/images/user-noimage.png"
-            }
-
-            html = template({
-                owner: owner
-                url: if owner?.is_active then $navUrls.resolve("user-profile", {username: owner.username}) else ""
-                date: moment(model.created_date).format($translate.instant("COMMON.DATETIME"))
-            })
-
-            html = $compile(html)($scope)
-
-            $el.html(html)
-
         bindOnce $scope, $attrs.ngModel, (model) ->
-            render(model) if model?
+            if model?
+                $scope.owner = model.owner_extra_info or {
+                    full_name_display: $translate.instant("COMMON.EXTERNAL_USER")
+                    photo: "/images/user-noimage.png"
+                }
+
+                $scope.url = if $scope.owner?.is_active then $navUrls.resolve("user-profile", {username: $scope.owner.username}) else ""
+
+
+                $scope.date =  moment(model.created_date).format($translate.instant("COMMON.DATETIME"))
 
         $scope.$on "$destroy", ->
             $el.off()
@@ -163,12 +154,13 @@ CreatedByDisplayDirective = ($template, $compile, $translate, $navUrls)->
     return {
         link: link
         restrict: "EA"
-        require: "ngModel"
+        require: "ngModel",
+        scope: true,
+        templateUrl: "common/components/created-by.html"
     }
 
 module.directive("tgCreatedByDisplay", ["$tgTemplate", "$compile", "$translate", "$tgNavUrls",
                                         CreatedByDisplayDirective])
-
 
 #############################################################################
 ## Watchers directive

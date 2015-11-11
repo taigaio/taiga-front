@@ -72,12 +72,8 @@ describe "tgUserTimelineItemTitle", ->
             .withArgs('COMMON.SEE_USER_PROFILE', {username: timeline.getIn(['data', 'user', 'username'])})
             .returns('user-param')
 
-        usernamelink = sinon.match ((value) ->
-            return value.username == '<a tg-nav="user-profile:username=timeline.getIn([\'data\', \'user\', \'username\'])" title="user-param">oo</a>'
-         ), "usernamelink"
-
         mockTranslate.instant
-            .withArgs('TITLE_USER_NAME', usernamelink)
+            .withArgs('TITLE_USER_NAME', {username: '{{username}}'})
             .returns('title_ok')
 
         title = mySvc.getTitle(timeline, event, type)
@@ -106,12 +102,8 @@ describe "tgUserTimelineItemTitle", ->
             .withArgs('COMMON.SEE_USER_PROFILE', {username: timeline.getIn(['data', 'user', 'username'])})
             .returns('user-param')
 
-        usernamelink = sinon.match ((value) ->
-            return value.username == '<span class="username">oo</span>'
-         ), "usernamelink"
-
         mockTranslate.instant
-            .withArgs('TITLE_USER_NAME', usernamelink)
+            .withArgs('TITLE_USER_NAME', {username: '{{username}}'})
             .returns('title_ok')
 
         title = mySvc.getTitle(timeline, event, type)
@@ -138,12 +130,8 @@ describe "tgUserTimelineItemTitle", ->
             .withArgs('COMMON.FIELDS.STATUS')
             .returns('field-params')
 
-        fieldparam = sinon.match ((value) ->
-            return value.field_name == 'field-params'
-         ), "fieldparam"
-
         mockTranslate.instant
-            .withArgs('TITLE_FIELD', fieldparam)
+            .withArgs('TITLE_FIELD', {field_name: '{{field_name}}'})
             .returns('title_ok')
 
         title = mySvc.getTitle(timeline, event, type)
@@ -168,7 +156,7 @@ describe "tgUserTimelineItemTitle", ->
         }
 
         mockTranslate.instant
-            .withArgs('NEW_VALUE', {new_value: 'new'})
+            .withArgs('NEW_VALUE', {new_value: '{{new_value}}'})
             .returns('new_value_ok')
 
         title = mySvc.getTitle(timeline, event, type)
@@ -191,12 +179,8 @@ describe "tgUserTimelineItemTitle", ->
             translate_params: ['project_name']
         }
 
-        projectparam = sinon.match ((value) ->
-            return value.project_name == '<a tg-nav="project:project=timeline.getIn([\'data\', \'project\', \'slug\'])" title="project_name">project_name</a>'
-         ), "projectparam"
-
         mockTranslate.instant
-            .withArgs('TITLE_PROJECT', projectparam)
+            .withArgs('TITLE_PROJECT', {project_name: '{{project_name}}'})
             .returns('title_ok')
 
         title = mySvc.getTitle(timeline, event, type)
@@ -224,7 +208,7 @@ describe "tgUserTimelineItemTitle", ->
          ), "milestoneparam"
 
         mockTranslate.instant
-            .withArgs('TITLE_MILESTONE', milestoneparam)
+            .withArgs('TITLE_MILESTONE', {sprint_name: '{{sprint_name}}'})
             .returns('title_ok')
 
         title = mySvc.getTitle(timeline, event, type)
@@ -250,12 +234,8 @@ describe "tgUserTimelineItemTitle", ->
             translate_params: ['obj_name']
         }
 
-        objparam = sinon.match ((value) ->
-            return value.obj_name == '<a tg-nav="project-issues-detail:project=timeline.getIn([\'data\', \'project\', \'slug\']),ref=timeline.getIn([\'obj\', \'ref\'])" title="#123 subject">#123 subject</a>'
-         ), "objparam"
-
         mockTranslate.instant
-            .withArgs('TITLE_OBJ', objparam)
+            .withArgs('TITLE_OBJ', obj_name: '{{obj_name}}')
             .returns('title_ok')
 
         title = mySvc.getTitle(timeline, event, type)
@@ -280,12 +260,8 @@ describe "tgUserTimelineItemTitle", ->
             translate_params: ['obj_name']
         }
 
-        objparam = sinon.match ((value) ->
-            return value.obj_name ==  '<a tg-nav="project-wiki-page:project=timeline.getIn([\'data\', \'project\', \'slug\']),slug=timeline.getIn([\'obj\', \'slug\'])" title="Slug wiki">Slug wiki</a>'
-         ), "objparam"
-
         mockTranslate.instant
-            .withArgs('TITLE_OBJ', objparam)
+            .withArgs('TITLE_OBJ', {obj_name: '{{obj_name}}'})
             .returns('title_ok')
 
         title = mySvc.getTitle(timeline, event, type)
@@ -315,7 +291,7 @@ describe "tgUserTimelineItemTitle", ->
          ), "objparam"
 
         mockTranslate.instant
-            .withArgs('TITLE_OBJ', objparam)
+            .withArgs('TITLE_OBJ', {obj_name: '{{obj_name}}'})
             .returns('title_ok')
 
         title = mySvc.getTitle(timeline, event, type)
@@ -349,7 +325,7 @@ describe "tgUserTimelineItemTitle", ->
          ), "objparam"
 
         mockTranslate.instant
-            .withArgs('TITLE_OBJ', objparam)
+            .withArgs('TITLE_OBJ', {us_name: '{{us_name}}'})
             .returns('title_ok')
 
         title = mySvc.getTitle(timeline, event, type)
