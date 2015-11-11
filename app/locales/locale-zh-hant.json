@@ -681,7 +681,7 @@
         },
         "PROFILE_SIDEBAR": {
             "TITLE": "個人資訊",
-            "DESCRIPTION": "人們可以看到你做的成果以及其進度。加入一段描述介紹以強化你的資料。",
+            "DESCRIPTION": "People can see everything you do and what you are working on. Add a nice bio to give an enhanced version of your information.",
             "ADD_INFO": "Edit bio"
         },
         "PROFILE_FAVS": {

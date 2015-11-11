@@ -681,7 +681,7 @@
         },
         "PROFILE_SIDEBAR": {
             "TITLE": "Votre profil",
-            "DESCRIPTION": "Tout le monde peut voir ce que vous faites et ce sur quoi vous travaillez. Ajoutez une bio détaillée pour améliorer la vision perçue de votre profil.",
+            "DESCRIPTION": "People can see everything you do and what you are working on. Add a nice bio to give an enhanced version of your information.",
             "ADD_INFO": "Editer la biographie"
         },
         "PROFILE_FAVS": {
