@@ -76,6 +76,7 @@
     "raven-js": "~1.1.16",
     "l.js": "~0.1.0",
     "angular-translate": "~2.8.1",
+    "angular-translate-loader-partial": "~2.8.1",
     "angular-translate-loader-static-files": "~2.8.1",
     "angular-translate-interpolation-messageformat": "~2.8.1",
     "ngInfiniteScroll": "1.2.1",

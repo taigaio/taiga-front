@@ -39,7 +39,7 @@ taiga.sessionId = taiga.generateUniqueSessionIdentifier()
 
 
 configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEventsProvider,
-             $compileProvider, $translateProvider, $animateProvider) ->
+             $compileProvider, $translateProvider, $translatePartialLoaderProvider, $animateProvider) ->
 
     $animateProvider.classNameFilter(/^(?:(?!ng-animate-disabled).)*$/)
 
@@ -505,10 +505,10 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     # i18n
     preferedLangCode = userInfo?.lang || window.taigaConfig.defaultLanguage || "en"
 
+    $translatePartialLoaderProvider.addPart('taiga')
     $translateProvider
-        .useStaticFilesLoader({
-            prefix: "/locales/locale-",
-            suffix: ".json"
+        .useLoader('$translatePartialLoader', {
+            urlTemplate: '/locales/{part}/locale-{lang}.json'
         })
         .useSanitizeValueStrategy('escapeParameters')
         .addInterpolation('$translateMessageFormatInterpolation')
@@ -684,6 +684,7 @@ module.config([
     "$tgEventsProvider",
     "$compileProvider",
     "$translateProvider",
+    "$translatePartialLoaderProvider",
     "$animateProvider",
     configure
 ])
