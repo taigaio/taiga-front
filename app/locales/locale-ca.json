@@ -681,7 +681,7 @@
         },
         "PROFILE_SIDEBAR": {
             "TITLE": "El teu perfil",
-            "DESCRIPTION": "La gent pot vore tot el que fas i en qué estàs treballant. Afegix una bio interessant per a donar una millor versió de la teua informació.",
+            "DESCRIPTION": "People can see everything you do and what you are working on. Add a nice bio to give an enhanced version of your information.",
             "ADD_INFO": "Edita la bio"
         },
         "PROFILE_FAVS": {

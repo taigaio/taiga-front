@@ -681,7 +681,7 @@
         },
         "PROFILE_SIDEBAR": {
             "TITLE": "Twój profil",
-            "DESCRIPTION": "Użytkownicy mogą zobaczyć wszystko co robisz i nad czym pracujesz. Dodaj jakieś ładne info o sobie, żeby dać im się poznać.",
+            "DESCRIPTION": "People can see everything you do and what you are working on. Add a nice bio to give an enhanced version of your information.",
             "ADD_INFO": "Edit bio"
         },
         "PROFILE_FAVS": {
