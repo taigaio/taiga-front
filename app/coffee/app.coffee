@@ -510,6 +510,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
             prefix: "/locales/locale-",
             suffix: ".json"
         })
+        .useSanitizeValueStrategy('escapeParameters')
         .addInterpolation('$translateMessageFormatInterpolation')
         .preferredLanguage(preferedLangCode)
 
@@ -669,6 +670,7 @@ modules = [
     "templates",
 
     # Vendor modules
+    "ngSanitize",
     "ngRoute",
     "ngAnimate",
     "ngAria",
