@@ -1,4 +1,4 @@
-section.home-project-list(ng-show="vm.projects.size")
+section.home-project-list(ng-if="vm.projects.size")
     ul
         li.home-project-list-single(tg-bind-scope, tg-repeat="project in vm.projects")
             a(href="#", tg-nav="project:project=project.get('slug')")
@@ -17,7 +17,7 @@ section.home-project-list(ng-show="vm.projects.size")
         translate="PROJECT.NAVIGATION.SEE_MORE_PROJECTS"
     )
 
-section.projects-empty(ng-show="!vm.projects.size")
+section.projects-empty(ng-if="vm.projects != undefined && vm.projects.size === 0")
     include ../../../svg/empty-project.svg
     p(translate="HOME.EMPTY_PROJECT_LIST")
     a.create-project-button.button-green(href="#", ng-click="vm.newProject()",
