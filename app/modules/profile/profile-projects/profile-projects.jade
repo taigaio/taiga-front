@@ -1,7 +1,7 @@
 section.profile-projects
     div(ng-if="vm.projects === undefined")
          div.spin
-            img(src="/svg/spinner-circle.svg", alt="Loading...")
+            img(src="/#{v}/svg/spinner-circle.svg", alt="Loading...")
 
     .empty-tab(ng-if="vm.projects && !vm.projects.size")
         include ../../../svg/hide.svg

@@ -219,7 +219,7 @@ MembershipsRowAvatarDirective = ($log, $template, $translate) ->
             ctx = {
                 full_name: if member.full_name then member.full_name else ""
                 email: if member.user_email then member.user_email else member.email
-                imgurl: if member.photo then member.photo else "/images/unnamed.png"
+                imgurl: if member.photo then member.photo else "/" + window._version + "/images/unnamed.png"
                 pending: if !member.is_user_active then pending else ""
             }
 

@@ -1,7 +1,7 @@
 section.profile-timeline
     div(ng-if="!vm.timelineList.size")
          div.spin
-            img(src="/svg/spinner-circle.svg", alt="Loading...")
+            img(src="/#{v}/svg/spinner-circle.svg", alt="Loading...")
 
     div(infinite-scroll="vm.loadTimeline()", infinite-scroll-distance="3", infinite-scroll-disabled="vm.scrollDisabled")
         div(tg-repeat="timeline in vm.timelineList", tg-user-timeline-item="timeline")

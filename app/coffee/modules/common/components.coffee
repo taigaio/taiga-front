@@ -140,7 +140,7 @@ CreatedByDisplayDirective = ($template, $compile, $translate, $navUrls)->
             if model?
                 $scope.owner = model.owner_extra_info or {
                     full_name_display: $translate.instant("COMMON.EXTERNAL_USER")
-                    photo: "/images/user-noimage.png"
+                    photo: "/" + window._version + "/images/user-noimage.png"
                 }
 
                 $scope.url = if $scope.owner?.is_active then $navUrls.resolve("user-profile", {username: $scope.owner.username}) else ""
@@ -643,7 +643,7 @@ ListItemAssignedtoDirective = ($template) ->
     link = ($scope, $el, $attrs) ->
         bindOnce $scope, "usersById", (usersById) ->
             item = $scope.$eval($attrs.tgListitemAssignedto)
-            ctx = {name: "Unassigned", imgurl: "/images/unnamed.png"}
+            ctx = {name: "Unassigned", imgurl: "/" + window._version + "/images/unnamed.png"}
 
             member = usersById[item.assigned_to]
             if member

@@ -68,14 +68,14 @@ class AppMetaService
         @._set("twitter:site", "@taigaio")
         @._set("twitter:title", title)
         @._set("twitter:description", truncate(description, 300))
-        @._set("twitter:image", "#{window.location.origin}/images/logo-color.png")
+        @._set("twitter:image", "#{window.location.origin}/#{window._version}/images/logo-color.png")
 
     setOpenGraphMetas: (title, description) ->
         @._set("og:type", "object")
         @._set("og:site_name", "Taiga - Love your projects")
         @._set("og:title", title)
         @._set("og:description", truncate(description, 300))
-        @._set("og:image", "#{window.location.origin}/images/logo-color.png")
+        @._set("og:image", "#{window.location.origin}/#{window._version}/images/logo-color.png")
         @._set("og:url", window.location.href)
 
     setAll: (title, description) ->

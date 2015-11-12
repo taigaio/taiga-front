@@ -157,7 +157,7 @@ WikiSummaryDirective = ($log, $template, $compile, $translate) ->
                 user = $scope.usersById[wiki.last_modifier]
 
             if user is undefined
-                user = {name: "unknown", imgUrl: "/images/user-noimage.png"}
+                user = {name: "unknown", imgUrl: "/" + window._version + "/images/user-noimage.png"}
             else
                 user = {name: user.full_name_display, imgUrl: user.photo}
 

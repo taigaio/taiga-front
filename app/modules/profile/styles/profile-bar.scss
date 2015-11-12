@@ -149,7 +149,7 @@
     .profile-quote {
         @extend %light;
         @extend %large;
-        background: url('/images/quote.png') no-repeat top left;
+        background: url('../images/quote.png') no-repeat top left;
         line-height: 1.4;
         padding: .5rem;
     }

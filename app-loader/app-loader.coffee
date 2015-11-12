@@ -1,4 +1,4 @@
-version = ___VERSION___
+window._version = "___VERSION___"
 window.taigaConfig = {
     "api": "http://localhost:8000/api/v1/",
     "eventsUrl": null,
@@ -16,16 +16,16 @@ window.taigaConfig = {
     "contribPlugins": []
 }
 
-promise = $.getJSON "/js/conf.json"
+promise = $.getJSON "/conf.json"
 promise.done (data) ->
     window.taigaConfig = _.extend({}, window.taigaConfig, data)
 
 promise.always ->
     if window.taigaConfig.contribPlugins.length > 0
-        plugins = _.map(window.taigaConfig.contribPlugins, (plugin) -> "#{plugin}?v=#{version}")
+        plugins = _.map(window.taigaConfig.contribPlugins, (plugin) -> "#{plugin}")
         ljs.load plugins, ->
-            ljs.load "/js/app.js?v=#{version}", ->
+            ljs.load "/#{window._version}/js/app.js", ->
                 angular.bootstrap(document, ['taiga'])
     else
-        ljs.load "/js/app.js?v=#{version}", ->
+        ljs.load "/#{window._version}/js/app.js", ->
             angular.bootstrap(document, ['taiga'])

@@ -185,7 +185,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
                     @scope.usTasks[task.user_story][task.status].push(task)
 
             if tasks.length == 0
-                
+
                 if @scope.userstories.length > 0
                     usId = @scope.userstories[0].id
                 else
@@ -442,7 +442,7 @@ TaskboardUserDirective = ($log) ->
             user = $scope.usersById[assigned_to]
 
             if user is undefined
-                _.assign($scope, {name: "Unassigned", imgurl: "/images/unnamed.png", clickable: clickable})
+                _.assign($scope, {name: "Unassigned", imgurl: "/" + window._version + "/images/unnamed.png", clickable: clickable})
             else
                 _.assign($scope, {name: user.full_name_display, imgurl: user.photo, clickable: clickable})
 

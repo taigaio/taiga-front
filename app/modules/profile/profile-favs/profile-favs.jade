@@ -68,13 +68,13 @@ section.profile-favs
     div(ng-if="vm.isLoading")
         div.spin
             img(
-                src="/svg/spinner-circle.svg"
+                src="/#{v}/svg/spinner-circle.svg"
                 alt="{{ 'COMMON.LOADING'|translate }}"
             )
 
     .empty-search-results(ng-if="vm.hasNoResults && !vm.isLoading")
         img(
-            src="../../images/search-empty.png"
+            src="/#{v}/images/search-empty.png"
             alt="{{ 'USER.PROFILE_FAVS.EMPTY_TITLE' | translate }}"
         )
         p.title {{ 'USER.PROFILE_FAVS.EMPTY_TITLE' | translate }}
