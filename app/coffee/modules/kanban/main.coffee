@@ -82,8 +82,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 projectDescription: @scope.project.description
             })
             @appMetaService.setAll(title, description)
-            @.generateFilters()
-
+        
         # On Error
         promise.then null, @.onInitialDataError.bind(@)
 
@@ -134,8 +133,10 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         params = {
             status__is_archived: false
         }
-
-        return @rs.userstories.listAll(@scope.projectId, params).then (userstories) =>
+        @scope.httpParams = @.getUrlFilters()
+        @scope.httpParams.status__is_archived = false
+        
+        return @rs.userstories.listAll(@scope.projectId, @scope.httpParams).then (userstories) =>
             @scope.userstories = userstories
 
             usByStatus = _.groupBy(userstories, "status")
@@ -214,7 +215,8 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         return promise.then (project) =>
             @.fillUsersAndRoles(project.members, project.roles)
             @.initializeSubscription()
-            @.loadKanban().then( => @scope.$broadcast("redraw:wip"))
+            @.loadKanban()
+            @.generateFilters().then( => @scope.$broadcast("redraw:wip"))
 
 
     ## View Mode methods
@@ -291,7 +293,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         return promise
     
     getUrlFilters: ->
-        return _.pick(@location.search(), "status", "tags", "owners", "q")
+        return _.pick(@location.search(), "status", "tags", "owners", "assigned_to", "q")
         
     generateFilters: ->
         urlfilters = @.getUrlFilters()
@@ -301,7 +303,8 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         loadFilters.project = @scope.projectId
         loadFilters.tags = urlfilters.tags
         loadFilters.status = urlfilters.status
-        loadFilters.owners = urlfilters.owners
+        loadFilters.owner = urlfilters.owner
+        loadFilters.assigned_to = urlfilters.assigned_to
         loadFilters.q = urlfilters.q
         loadFilters.milestone = 'null'
 
@@ -310,45 +313,57 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 _.map choices, (t) ->
                     t.type = type
                     return t
-
+    
             tagsFilterFormat = (tags) =>
                 return _.map tags, (t) ->
                     t.id = t.name
                     t.type = 'tags'
                     return t
             
-            loadOwners = (owners) =>
-                return _.map owners, (t) ->
-                    t.id = t.full_name
-                    t.name = t.full_name
-                    t.type = 'owners'
-                    return t
+            loadUsers = (data, type) =>
+                return _.map data, (t) ->
+                    if not t.full_name? or t.full_name == ""
+                        t.full_name = 'Unassigned' 
 
+                    t.name = t.full_name
+                    t.type = type
+                    return t
+    
+            console.log data
+    
             # Build filters data structure
             @scope.filters.status = choicesFiltersFormat(data.statuses, "status", @scope.usStatusById)
             @scope.filters.tags = tagsFilterFormat(data.tags)
-            @scope.filters.owners = loadOwners(data.owners)
-
+            @scope.filters.owner = loadUsers(data.owners, "owner")
+            @scope.filters.assigned_to = loadUsers(data.assigned_to, "assigned_to")
+            
+            console.log  @scope.filters.assigned_to
+                            
             selectedTags = _.filter(@scope.filters.tags, "selected")
             selectedTags = _.map(selectedTags, "id")
-
+    
             selectedStatuses = _.filter(@scope.filters.status, "selected")
             selectedStatuses = _.map(selectedStatuses, "id")
             
-            selectedOwners = _.filter(@scope.filters.owners, "selected")
-            selectedOwners = _.map(selectedOwners, "id")
-
+            selectedOwner = _.filter(@scope.filters.owner, "selected")
+            selectedOwner = _.map(selectedOwner, "id")
+            
+            selectedAssignees = _.filter(@scope.filters.assigned_to, "selected")
+            selectedAssignees = _.map(selectedAssignees, "id")
+    
             @.markSelectedFilters(@scope.filters, urlfilters)
-
+            
             #store query params
             @rs.userstories.storeQueryParams(@scope.projectId, {
                 "status": selectedStatuses,
                 "tags": selectedTags,
-                "owners": selectedOwners,
+                "owner": selectedOwner,
+                "assigned_to": selectedAssignees,
                 "project": @scope.projectId
                 "milestone": null
             })
                 
+           
     toggleActiveFilters: ->
         @activeFilters = !@activeFilters
         
