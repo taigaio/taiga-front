@@ -4,8 +4,17 @@ div.wrapper(tg-kanban, ng-controller="KanbanController as ctrl"
             ng-init="section='kanban'")
     tg-project-menu
 
+    sidebar.menu-secondary.extrabar.filters-bar(tg-kanban-filters)
+        include ../includes/modules/kanban-filters
+        
     section.main.kanban
         include ../includes/components/mainTitle
+        a.trans-button(
+                    href=""
+                    title="{{'BACKLOG.FILTERS.TOGGLE' | translate}}"
+                    id="show-filters-button"
+                    translate="BACKLOG.FILTERS.SHOW"
+                )
         include ../includes/modules/kanban-table
 
     div.lightbox.lightbox-generic-form.lb-create-edit-userstory(tg-lb-create-edit-userstory)
