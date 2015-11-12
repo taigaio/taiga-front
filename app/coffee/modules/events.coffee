@@ -137,7 +137,7 @@ class EventsService
         for msg in messages
             @.ws.send(msg)
 
-    processMesage: (data) =>
+    processMessage: (data) =>
         routingKey = data.routing_key
 
         if not @.subscriptions[routingKey]?
