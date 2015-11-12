@@ -36,8 +36,8 @@ module = angular.module("taigaKanban")
 #############################################################################
 
 KanbanFiltersDirective = ($q, $log, $location, $templates) ->
-    template = $templates.get("backlog/filters.html", true)
-    templateSelected = $templates.get("backlog/filter-selected.html", true)
+    template = $templates.get("kanban/filters.html", true)
+    templateSelected = $templates.get("kanban/filter-selected.html", true)
 
     link = ($scope, $el, $attrs) ->
         currentFiltersType = ''
@@ -121,7 +121,7 @@ KanbanFiltersDirective = ($q, $log, $location, $templates) ->
 
         selectQFilter = debounceLeading 100, (value) ->
             return if value is undefined
-
+                
             if value.length == 0
                 $ctrl.replaceFilter("q", null)
             else
