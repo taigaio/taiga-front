@@ -989,7 +989,8 @@
             "CLOSED_TASKS": "suljettu<br/>tehtävää",
             "IOCAINE_DOSES": "myrkkye-<br/>annosta",
             "SHOW_STATISTICS_TITLE": "Näytä tilastot",
-            "TOGGLE_BAKLOG_GRAPH": "Show/Hide burndown graph"
+            "TOGGLE_BAKLOG_GRAPH": "Show/Hide burndown graph",
+            "PRINT_SPRINT": "Kirjoittaa kierroksia"
         },
         "SUMMARY": {
             "PROJECT_POINTS": "projekti<br/>pistettä",

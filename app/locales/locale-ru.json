@@ -989,7 +989,8 @@
             "CLOSED_TASKS": "завершённые <br /> задачи",
             "IOCAINE_DOSES": "иокаина<br />дозы",
             "SHOW_STATISTICS_TITLE": "Показать статистику",
-            "TOGGLE_BAKLOG_GRAPH": "Показать/Скрыть график решения задач"
+            "TOGGLE_BAKLOG_GRAPH": "Показать/Скрыть график решения задач",
+            "PRINT_SPRINT": "Печать спринт"
         },
         "SUMMARY": {
             "PROJECT_POINTS": "проектные<br />очки",

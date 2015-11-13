@@ -992,7 +992,8 @@
             "CLOSED_TASKS": "closed<br />tasks",
             "IOCAINE_DOSES": "iocaine<br />doses",
             "SHOW_STATISTICS_TITLE": "Show statistics",
-            "TOGGLE_BAKLOG_GRAPH": "Show/Hide burndown graph"
+            "TOGGLE_BAKLOG_GRAPH": "Show/Hide burndown graph",
+            "PRINT_SPRINT": "Print sprint"
         },
         "SUMMARY": {
             "PROJECT_POINTS": "project<br />points",

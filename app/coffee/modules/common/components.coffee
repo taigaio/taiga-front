@@ -667,12 +667,30 @@ ListItemIssueStatusDirective = ->
 
 module.directive("tgListitemIssueStatus", ListItemIssueStatusDirective)
 
+#Function to get the color easiest to distinguish from the background color
+InvertColor = (typeColor)->
+    invert=typeColor
+    for color in typeColor.toUpperCase()
+        switch color
+            when '#' then invert="#"
+            when '0' then invert+='F'
+            when '1' then invert+='F'
+            when '2' then invert+='F'
+            when '3' then invert+='F'
+            when '4' then invert+='F'
+            when '5' then invert+='F'
+            when '6' then invert+='F'
+            when '7' then invert+='F'
+            else invert+='0'
+    return invert
 
 ListItemTypeDirective = ->
     link = ($scope, $el, $attrs) ->
         render = (issueTypeById, issue) ->
             type = issueTypeById[issue.type]
             domNode = $el.find(".level")
+            domNode.html(type.name[0])
+            domNode.css("color", InvertColor(type.color))
             domNode.css("background-color", type.color)
             domNode.attr("title", type.name)
 
@@ -696,6 +714,8 @@ ListItemPriorityDirective = ->
         render = (priorityById, issue) ->
             priority = priorityById[issue.priority]
             domNode = $el.find(".level")
+            domNode.html(priority.name[0])
+            domNode.css("color", InvertColor(priority.color))
             domNode.css("background-color", priority.color)
             domNode.attr("title", priority.name)
 
@@ -719,6 +739,8 @@ ListItemSeverityDirective = ->
         render = (severityById, issue) ->
             severity = severityById[issue.severity]
             domNode = $el.find(".level")
+            domNode.html(severity.name[0])
+            domNode.css("color", InvertColor(severity.color))
             domNode.css("background-color", severity.color)
             domNode.attr("title", severity.name)
 

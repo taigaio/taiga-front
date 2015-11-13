@@ -1,7 +1,12 @@
 .level {
     background-color: $gray-light;
     border-radius: 9px;
+    color: $white;
+    font-size: 12px;
+    font-weight: bold;
     height: 18px;
     margin: 0 auto;
+    padding-top: 1px;
+    text-align: center;
     width: 18px;
 }

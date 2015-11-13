@@ -989,7 +989,8 @@
             "CLOSED_TASKS": "gesloten<br/>taken",
             "IOCAINE_DOSES": "iocaine<br />dosissen",
             "SHOW_STATISTICS_TITLE": "Toon statistieken",
-            "TOGGLE_BAKLOG_GRAPH": "Toon/Verstop burndown grafiek"
+            "TOGGLE_BAKLOG_GRAPH": "Toon/Verstop burndown grafiek",
+            "PRINT_SPRINT": "Afdruk sprint"
         },
         "SUMMARY": {
             "PROJECT_POINTS": "project<br/>punten",

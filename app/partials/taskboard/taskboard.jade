@@ -16,7 +16,8 @@ div.wrapper(tg-taskboard, ng-controller="TaskboardController as ctrl",
                     include ../includes/modules/burndown
 
             include ../includes/modules/taskboard-table
-
+        div(style="margin-top:5px; text-align:right")
+            a.printtable(href="", onClick="var bodyhtml=document.body.innerHTML; document.body.innerHTML = document.getElementById('taskboardt').innerHTML; window.print(); document.body.innerHTML = bodyhtml;") {{'BACKLOG.SPRINT_SUMMARY.PRINT_SPRINT' | translate}}
     div.lightbox.lightbox-generic-form(tg-lb-create-edit-task)
         include ../includes/modules/lightbox-task-create-edit
 

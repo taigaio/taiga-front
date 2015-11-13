@@ -989,7 +989,8 @@
             "CLOSED_TASKS": "zamkniętych<br />zadań",
             "IOCAINE_DOSES": "dawek<br />Iokainy",
             "SHOW_STATISTICS_TITLE": "Pokaż statystyki",
-            "TOGGLE_BAKLOG_GRAPH": "Pokaż/Ukryj wykres spalania"
+            "TOGGLE_BAKLOG_GRAPH": "Pokaż/Ukryj wykres spalania",
+            "PRINT_SPRINT": "Drukuj sprintu"
         },
         "SUMMARY": {
             "PROJECT_POINTS": "punktów w<br />projekcie",
