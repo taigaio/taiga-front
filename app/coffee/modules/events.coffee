@@ -204,7 +204,7 @@ class EventsService
         @.log.debug "WebSocket message received: #{event.data}"
 
         data = JSON.parse(event.data)
-        if data.cmd = "pong"
+        if data.cmd == "pong"
             @.processHeartBeatPongMessage(data)
         else
             @.processMessage(data)
