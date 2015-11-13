@@ -11,27 +11,27 @@ section.filters
         div.filters-step-cat
             div.filters-applied
             h2.hidden.breadcrumb
-                a.back(href="", title="{{'COMMON.FILTERS.BREADCRUMB_TITLE' | translate}}", translate="BACKLOG.FILTERS.TITLE")
+                a.back(href="", title="{{'COMMON.FILTERS.BREADCRUMB_TITLE' | translate}}", translate="KANBAN.FILTERS.TITLE")
                 span.icon-arrow-right
                 a.subfilter(href="")
                     span.title(translate="COMMON.FILTERS.BREADCRUMB_STATUS")
             div.filters-cats
                 ul
                     li
-                        a(href="", title="{{'BACKLOG.FILTERS.FILTER_CATEGORY_STATUS' | translate}}", data-type="status")
+                        a(href="", title="{{'KANBAN.FILTERS.FILTER_CATEGORY_STATUS' | translate}}", data-type="status")
                             span.title(translate="BACKLOG.FILTERS.FILTER_CATEGORY_STATUS")
                             span.icon.icon-arrow-right
                     li
-                        a(href="", title="{{'BACKLOG.FILTERS.FILTER_CATEGORY_TAGS' | translate}}", data-type="tags")
+                        a(href="", title="{{'KANBAN.FILTERS.FILTER_CATEGORY_TAGS' | translate}}", data-type="tags")
                             span.title(translate="BACKLOG.FILTERS.FILTER_CATEGORY_TAGS")
                             span.icon.icon-arrow-right
                     li
-                        a(href="", title="OWNERS (translate me)", data-type="owner")
-                            span.title(translate="OWNERS (translate me)")
+                        a(href="", title="{{'KANBAN.FILTERS.OWNER' | translate}}", data-type="owner")
+                            span.title(translate="KANBAN.FILTERS.OWNER")
                             span.icon.icon-arrow-right
                     li
-                        a(href="", title="ASSIGNEE (translate me)", data-type="assigned_to")
-                            span.title(translate="ASSIGNEE (translate me)")
+                        a(href="", title="{{'KANBAN.FILTERS.ASSIGNEE' | translate}}", data-type="assigned_to")
+                            span.title(translate="KANBAN.FILTERS.ASSIGNEE")
                             span.icon.icon-arrow-right
 
         div.filter-list.hidden

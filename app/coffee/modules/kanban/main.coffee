@@ -308,7 +308,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
     generateFilters: ->
         urlfilters = @.getUrlFilters()
         @scope.filters =  {}
-
+        
         loadFilters = {}
         loadFilters.project = @scope.projectId
         loadFilters.tags = urlfilters.tags
@@ -317,6 +317,8 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         loadFilters.assigned_to = urlfilters.assigned_to
         loadFilters.q = urlfilters.q
         loadFilters.milestone = 'null'
+        
+        $translate = @translate
         
         return @rs.userstories.filtersData(loadFilters).then (data) =>
             choicesFiltersFormat = (choices, type, byIdObject) =>
@@ -334,7 +336,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 return _.map data, (t) ->                    
                     if not t.full_name? or t.full_name == ""
                         t.id = "null" 
-                        t.full_name = "Unassigned (translate me)"
+                        t.full_name = $translate.instant("KANBAN.FILTERS.UNASSIGNED")
                     
                     t.name = t.full_name
                     t.type = type
@@ -428,11 +430,10 @@ KanbanDirective = ($repo, $rootscope, $translate) ->
         sidebar.toggleClass("active")
         target.toggleClass("active")
 
-        hideText = $translate.instant("BACKLOG.FILTERS.HIDE")
-        showText = $translate.instant("BACKLOG.FILTERS.SHOW")
+        hideText = $translate.instant("KANBAN.FILTERS.HIDE")
+        showText = $translate.instant("KANBAN.FILTERS.SHOW")
 
-        toggleText(target.find(".text"), [hideText, showText])
-
+        toggleText(target, [hideText, showText])
         if !sidebar.hasClass("active")
             $ctrl.resetFilters()
 

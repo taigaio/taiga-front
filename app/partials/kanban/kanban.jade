@@ -2,19 +2,25 @@ doctype html
 
 div.wrapper(tg-kanban, ng-controller="KanbanController as ctrl"
             ng-init="section='kanban'")
-    tg-project-menu
-
+    tg-project-menu            
+            
     sidebar.menu-secondary.extrabar.filters-bar(tg-kanban-filters)
         include ../includes/modules/kanban-filters
         
     section.main.kanban
         include ../includes/components/mainTitle
-        a.trans-button(
+        
+        div.backlog-menu
+            div.backlog-table-options
+                a.trans-button(
+                    ng-if="userstories.length"
                     href=""
-                    title="{{'BACKLOG.FILTERS.TOGGLE' | translate}}"
+                    title="{{'KANBAN.FILTERS.TOGGLE' | translate}}"
                     id="show-filters-button"
-                    translate="BACKLOG.FILTERS.SHOW"
+                    translate="KANBAN.FILTERS.SHOW"
                 )
+            include ../includes/components/addnewus
+        
         include ../includes/modules/kanban-table
 
     div.lightbox.lightbox-generic-form.lb-create-edit-userstory(tg-lb-create-edit-userstory)
