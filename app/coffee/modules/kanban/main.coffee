@@ -134,6 +134,13 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             status__is_archived: false
         }
         @scope.httpParams = @.getUrlFilters()
+        
+        _.each(@scope.httpParams, (v,k) ->
+            if not v?
+                delete @scope.httpParams[k]
+                return
+        )
+                
         @scope.httpParams.status__is_archived = false
         
         return @rs.userstories.listAll(@scope.projectId, @scope.httpParams).then (userstories) =>
@@ -216,8 +223,9 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @.fillUsersAndRoles(project.members, project.roles)
             @.initializeSubscription()
             @.loadKanban()
-            @.generateFilters().then( => @scope.$broadcast("redraw:wip"))
-
+            @.generateFilters()
+            .then( => @scope.$broadcast("redraw:wip"))
+            .then(=> @scope.$emit("kanban:loaded"))
 
     ## View Mode methods
 
@@ -291,9 +299,11 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 return itemsToSave
 
         return promise
+        
+    # Filter methods
     
     getUrlFilters: ->
-        return _.pick(@location.search(), "status", "tags", "owners", "assigned_to", "q")
+        return _.pick(@location.search(), "status", "tags", "owner", "assigned_to", "q")
         
     generateFilters: ->
         urlfilters = @.getUrlFilters()
@@ -307,7 +317,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         loadFilters.assigned_to = urlfilters.assigned_to
         loadFilters.q = urlfilters.q
         loadFilters.milestone = 'null'
-
+        
         return @rs.userstories.filtersData(loadFilters).then (data) =>
             choicesFiltersFormat = (choices, type, byIdObject) =>
                 _.map choices, (t) ->
@@ -321,24 +331,21 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                     return t
             
             loadUsers = (data, type) =>
-                return _.map data, (t) ->
+                return _.map data, (t) ->                    
                     if not t.full_name? or t.full_name == ""
-                        t.full_name = 'Unassigned' 
-
+                        t.id = "null" 
+                        t.full_name = "Unassigned (translate me)"
+                    
                     t.name = t.full_name
                     t.type = type
                     return t
-    
-            console.log data
     
             # Build filters data structure
             @scope.filters.status = choicesFiltersFormat(data.statuses, "status", @scope.usStatusById)
             @scope.filters.tags = tagsFilterFormat(data.tags)
             @scope.filters.owner = loadUsers(data.owners, "owner")
             @scope.filters.assigned_to = loadUsers(data.assigned_to, "assigned_to")
-            
-            console.log  @scope.filters.assigned_to
-                            
+                                        
             selectedTags = _.filter(@scope.filters.tags, "selected")
             selectedTags = _.map(selectedTags, "id")
     
@@ -362,8 +369,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 "project": @scope.projectId
                 "milestone": null
             })
-                
-           
+            
     toggleActiveFilters: ->
         @activeFilters = !@activeFilters
         
@@ -402,7 +408,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         for key, value of filters
             for obj in value
                 obj.selected = if isSelected(obj.type, obj.id) then true else undefined
-    
+  
 module.controller("KanbanController", KanbanController)
 
 #############################################################################

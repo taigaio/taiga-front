@@ -97,20 +97,25 @@ KanbanFiltersDirective = ($q, $log, $location, $templates) ->
 
         toggleFilterSelection = (type, id) ->
             currentFiltersType = getFiltersType()
-
+                
             filters = $scope.filters[type]
-            filter = _.find(filters, {id: id})
+
+            if not id?
+                filter = _.find(filters, {id: "null"})
+            else
+                filter = _.find(filters, {id: id})
+
             filter.selected = (not filter.selected)
 
             if filter.selected
                 selectedFilters.push(filter)
                 $scope.$apply ->
-                    $ctrl.selectFilter(type, id)
+                    $ctrl.selectFilter(type, filter.id)
             else
                 selectedFilters = _.reject selectedFilters, (selected) ->
                     return filter.type == selected.type &&  filter.id == selected.id
 
-                $ctrl.unselectFilter(type, id)
+                $ctrl.unselectFilter(type, filter.id)
 
             renderSelectedFilters(selectedFilters)
 
@@ -132,7 +137,7 @@ KanbanFiltersDirective = ($q, $log, $location, $templates) ->
         $scope.$watch("filtersQ", selectQFilter)
 
         ## Angular Watchers
-        $scope.$on "backlog:loaded", (ctx) ->
+        $scope.$on "kanban:loaded", (ctx) ->
             initializeSelectedFilters()
 
         $scope.$on "filters:update", (ctx) ->
