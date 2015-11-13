@@ -1,16 +1,15 @@
 sudo: false
-
+language: node_js
+node_js:
+  - "4.1"
 before_install:
   - export CHROME_BIN=chromium-browser
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
-  - npm install -g bower
-  - npm install -g gulp
+  - travis_retry npm install -g bower
+  - travis_retry npm install -g gulp
 install:
-  - npm install
-  - bower install
+  - travis_retry npm install
+  - travis_retry bower install
 before_script:
   - gulp deploy
-language: node_js
-node_js:
-  - "4.1"
