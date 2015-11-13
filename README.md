@@ -140,7 +140,7 @@ If you want to run e2e tests
 ```
 npm install -g protractor
 npm install -g mocha
-npm install -g babel
+npm install -g babel@5
 
 webdriver-manager update
 ```
