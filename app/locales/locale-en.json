@@ -111,7 +111,7 @@
             "ADD": "Add tag"
         },
         "DESCRIPTION": {
-            "EMPTY": "Empty space is so boring... go on be descriptive...",
+            "EMPTY": "As a [write your role] I would like to [add feature], so I can [write the reason]",
             "NO_DESCRIPTION": "No description yet"
         },
         "FIELDS": {
