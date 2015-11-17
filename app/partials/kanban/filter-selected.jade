@@ -1,0 +1,6 @@
+<% _.each(filters, function(f) { %>
+a.single-filter.selected(data-type!="<%- f.type %>", data-id!="<%- f.id %>")
+    span.name(style!="<%- f.style %>")
+        | <%- f.name %>
+    span.icon.icon-delete
+<% }) %>

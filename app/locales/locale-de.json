@@ -1190,7 +1190,19 @@
         "ARCHIVED": "Sie haben es archiviert",
         "UNDO_ARCHIVED": "Wiederholen Sie Drag & Drop zum Rückgängigmachen ",
         "PLACEHOLDER_CARD_TITLE": "Dies sind deine User Stories",
-        "PLACEHOLDER_CARD_TEXT": "Stories können Unteraufgaben für weitere Anforderungen haben"
+        "PLACEHOLDER_CARD_TEXT": "Stories können Unteraufgaben für weitere Anforderungen haben",
+        "FILTERS": {
+            "TOGGLE": "Filter sichtbar schalten",
+            "TITLE": "Filter",
+            "REMOVE": "Filter entfernen",
+            "HIDE": "Filter verbergen",
+            "SHOW": "Filter anzeigen",
+            "FILTER_CATEGORY_STATUS": "Status",
+            "FILTER_CATEGORY_TAGS": "Schlagwörter",
+            "OWNER": "Besitzer",
+            "ASSIGNEE": "Bearbeiter",
+            "UNASSIGNED": "Nicht zugewiesen"
+        },
     },
     "SEARCH": {
         "PAGE_TITLE": "Suche - {{projectName}}",

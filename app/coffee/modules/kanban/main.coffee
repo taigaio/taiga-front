@@ -66,12 +66,14 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
         bindMethods(@)
 
+        @activeFilters = false
+
         @scope.sectionName = @translate.instant("KANBAN.SECTION_NAME")
         @scope.statusViewModes = {}
         @.initializeEventHandlers()
 
         promise = @.loadInitialData()
-
+        
         # On Success
         promise.then =>
             title = @translate.instant("KANBAN.PAGE_TITLE", {projectName: @scope.project.name})
@@ -80,7 +82,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 projectDescription: @scope.project.description
             })
             @appMetaService.setAll(title, description)
-
+        
         # On Error
         promise.then null, @.onInitialDataError.bind(@)
 
@@ -131,8 +133,17 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         params = {
             status__is_archived: false
         }
-
-        return @rs.userstories.listAll(@scope.projectId, params).then (userstories) =>
+        @scope.httpParams = @.getUrlFilters()
+        
+        _.each(@scope.httpParams, (v,k) ->
+            if not v?
+                delete @scope.httpParams[k]
+                return
+        )
+                
+        @scope.httpParams.status__is_archived = false
+        
+        return @rs.userstories.listAll(@scope.projectId, @scope.httpParams).then (userstories) =>
             @scope.userstories = userstories
 
             usByStatus = _.groupBy(userstories, "status")
@@ -211,8 +222,10 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         return promise.then (project) =>
             @.fillUsersAndRoles(project.members, project.roles)
             @.initializeSubscription()
-            @.loadKanban().then( => @scope.$broadcast("redraw:wip"))
-
+            @.loadKanban()
+            @.generateFilters()
+            .then( => @scope.$broadcast("redraw:wip"))
+            .then(=> @scope.$emit("kanban:loaded"))
 
     ## View Mode methods
 
@@ -286,16 +299,154 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 return itemsToSave
 
         return promise
+        
+    # Filter methods
+    
+    getUrlFilters: ->
+        return _.pick(@location.search(), "status", "tags", "owner", "assigned_to", "q")
+        
+    generateFilters: ->
+        urlfilters = @.getUrlFilters()
+        @scope.filters =  {}
+        
+        loadFilters = {}
+        loadFilters.project = @scope.projectId
+        loadFilters.tags = urlfilters.tags
+        loadFilters.status = urlfilters.status
+        loadFilters.owner = urlfilters.owner
+        loadFilters.assigned_to = urlfilters.assigned_to
+        loadFilters.q = urlfilters.q
+        loadFilters.milestone = 'null'
+        
+        $translate = @translate
+        
+        return @rs.userstories.filtersData(loadFilters).then (data) =>
+            choicesFiltersFormat = (choices, type, byIdObject) =>
+                _.map choices, (t) ->
+                    t.type = type
+                    return t
+    
+            tagsFilterFormat = (tags) =>
+                return _.map tags, (t) ->
+                    t.id = t.name
+                    t.type = 'tags'
+                    return t
+            
+            loadUsers = (data, type) =>
+                return _.map data, (t) ->                    
+                    if not t.full_name? or t.full_name == ""
+                        t.id = "null" 
+                        t.full_name = $translate.instant("KANBAN.FILTERS.UNASSIGNED")
+                    
+                    t.name = t.full_name
+                    t.type = type
+                    return t
+    
+            # Build filters data structure
+            @scope.filters.status = choicesFiltersFormat(data.statuses, "status", @scope.usStatusById)
+            @scope.filters.tags = tagsFilterFormat(data.tags)
+            @scope.filters.owner = loadUsers(data.owners, "owner")
+            @scope.filters.assigned_to = loadUsers(data.assigned_to, "assigned_to")
+                                        
+            selectedTags = _.filter(@scope.filters.tags, "selected")
+            selectedTags = _.map(selectedTags, "id")
+    
+            selectedStatuses = _.filter(@scope.filters.status, "selected")
+            selectedStatuses = _.map(selectedStatuses, "id")
+            
+            selectedOwner = _.filter(@scope.filters.owner, "selected")
+            selectedOwner = _.map(selectedOwner, "id")
+            
+            selectedAssignees = _.filter(@scope.filters.assigned_to, "selected")
+            selectedAssignees = _.map(selectedAssignees, "id")
+    
+            @.markSelectedFilters(@scope.filters, urlfilters)
+            
+            #store query params
+            @rs.userstories.storeQueryParams(@scope.projectId, {
+                "status": selectedStatuses,
+                "tags": selectedTags,
+                "owner": selectedOwner,
+                "assigned_to": selectedAssignees,
+                "project": @scope.projectId
+                "milestone": null
+            })
+            
+    toggleActiveFilters: ->
+        @activeFilters = !@activeFilters
+        
+    resetFilters: ->
+        selectedTags = _.filter(@scope.filters.tags, "selected")
+        selectedStatuses = _.filter(@scope.filters.status, "selected")
 
+        @scope.filtersQ = ""
 
+        _.each [selectedTags, selectedStatuses], (filterGrp) =>
+            _.each filterGrp, (item) =>
+                filters = @scope.filters[item.type]
+                filter = _.find(filters, {id: taiga.toString(item.id)})
+                filter.selected = false
+
+                @.unselectFilter(item.type, item.id)
+
+        @.loadUserstories()
+        @rootscope.$broadcast("filters:update")
+        
+    markSelectedFilters: (filters, urlfilters) ->
+        # Build selected filters (from url) fast lookup data structure
+        searchdata = {}
+        for name, value of _.omit(urlfilters, "page", "orderBy")
+            if not searchdata[name]?
+                searchdata[name] = {}
+
+            for val in "#{value}".split(",")
+                searchdata[name][val] = true
+
+        isSelected = (type, id) ->
+            if searchdata[type]? and searchdata[type][id]
+                return true
+            return false
+
+        for key, value of filters
+            for obj in value
+                obj.selected = if isSelected(obj.type, obj.id) then true else undefined
+  
 module.controller("KanbanController", KanbanController)
 
 #############################################################################
 ## Kanban Directive
 #############################################################################
 
-KanbanDirective = ($repo, $rootscope) ->
-    link = ($scope, $el, $attrs) ->
+KanbanDirective = ($repo, $rootscope, $translate) ->
+     
+    showHideFilter = ($scope, $el, $ctrl) ->
+        sidebar = $el.find("sidebar.filters-bar")
+        sidebar.one "transitionend", () ->
+            timeout 150, ->
+                $rootscope.$broadcast("resize")
+                $('.burndown').css("visibility", "visible")
+
+        target = angular.element("#show-filters-button")
+        sidebar.toggleClass("active")
+        target.toggleClass("active")
+
+        hideText = $translate.instant("KANBAN.FILTERS.HIDE")
+        showText = $translate.instant("KANBAN.FILTERS.SHOW")
+
+        toggleText(target, [hideText, showText])
+        if !sidebar.hasClass("active")
+            $ctrl.resetFilters()
+
+        $ctrl.toggleActiveFilters()
+        
+    linkFilters = ($scope, $el, $attrs, $ctrl) ->
+        $scope.filtersSearch = {}
+        $el.on "click", "#show-filters-button", (event) ->
+            event.preventDefault()
+            $scope.$apply ->
+                showHideFilter($scope, $el, $ctrl)  
+                 
+    link = ($scope, $el, $attrs, $ctrl) ->
         tableBodyDom = $el.find(".kanban-table-body")
 
         tableBodyDom.on "scroll", (event) ->
@@ -303,12 +454,15 @@ KanbanDirective = ($repo, $rootscope) ->
             tableHeaderDom = $el.find(".kanban-table-header .kanban-table-inner")
             tableHeaderDom.css("left", -1 * target.scrollLeft())
 
+        $ctrl = $el.controller()
+        linkFilters($scope, $el, $attrs, $ctrl)
+        
         $scope.$on "$destroy", ->
             $el.off()
-
+        
     return {link: link}
 
-module.directive("tgKanban", ["$tgRepo", "$rootScope", KanbanDirective])
+module.directive("tgKanban", ["$tgRepo", "$rootScope", "$translate", KanbanDirective])
 
 #############################################################################
 ## Kanban Archived Status Column Header Control

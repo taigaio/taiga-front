@@ -1193,7 +1193,19 @@
         "ARCHIVED": "You have archived",
         "UNDO_ARCHIVED": "Drag & drop again to undo",
         "PLACEHOLDER_CARD_TITLE": "These are your User Stories",
-        "PLACEHOLDER_CARD_TEXT": "Stories might also have subtasks to separate requirements"
+        "PLACEHOLDER_CARD_TEXT": "Stories might also have subtasks to separate requirements",
+        "FILTERS": {
+            "TOGGLE": "Toggle filters visibility",
+            "TITLE": "Filters",
+            "REMOVE": "Remove Filters",
+            "HIDE": "Hide Filters",
+            "SHOW": "Show Filters",
+            "FILTER_CATEGORY_STATUS": "Status",
+            "FILTER_CATEGORY_TAGS": "Tags",
+            "OWNER": "Owner",
+            "ASSIGNEE": "Assignee",
+            "UNASSIGNED": "Unassigned"
+        }
     },
     "SEARCH": {
         "PAGE_TITLE": "Search - {{projectName}}",
