@@ -4,6 +4,8 @@ div.register-form-container(tg-register)
         fieldset
             input(
                 type="text"
+                autocorrect="off" 
+                autocapitalize="none"
                 name="username"
                 ng-model="data.username"
                 data-required="true"
@@ -24,7 +26,7 @@ div.register-form-container(tg-register)
 
         fieldset
             input(
-                type="text"
+                type="email"
                 name="email"
                 ng-model="data.email"
                 data-required="true"
