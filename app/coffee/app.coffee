@@ -522,12 +522,6 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     _.each decorators, (decorator) ->
         $provide.decorator decorator.provider, decorator.decorator
 
-    # decoratos
-    decorators = _.where(@.taigaContribPlugins, {"type": "decorator"})
-
-    _.each decorators, (decorator) ->
-        $provide.decorator decorator.provider, decorator.decorator
-
 i18nInit = (lang, $translate) ->
     # i18n - moment.js
     moment.locale(lang)
