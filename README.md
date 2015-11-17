@@ -42,7 +42,7 @@ If you **need help to setup Taiga**, want to **talk about some cool enhancemnt**
 If you **find a bug** in Taiga you can always report it:
 
 - in our [mailing list](http://groups.google.com/d/forum/taigaio).
-- in [github issues](https://github.com/taigaio/taiga-front/issues). 
+- in [github issues](https://github.com/taigaio/taiga-front/issues).
 - send us a mail to support@taiga.io if is a bug related to tree.taiga.io.
 - send a mail to security@taiga.io if is a **security bug**.
 
@@ -53,7 +53,7 @@ Please, before reporting a bug write down how can we reproduce it, your operatin
 
 #### Documentation improvements ####
 
-We are gathering lots of information from our users to build and enhance our documentation. If you use the documentation to install or develop with Taiga and find any mistakes, omissions or confused sequences, it is enormously helpful to report it. Or better still, if you believe you can author additions, please make a pull-request to taiga project. 
+We are gathering lots of information from our users to build and enhance our documentation. If you use the documentation to install or develop with Taiga and find any mistakes, omissions or confused sequences, it is enormously helpful to report it. Or better still, if you believe you can author additions, please make a pull-request to taiga project.
 
 Currently, we have authored three main documentation hubs:
 
@@ -69,14 +69,14 @@ We are ready now to accept your help translating Taiga. It's easy (and fun!) jus
 
 #### Code patches ####
 
-Taiga will always be glad to receive code patches to update, fix or improve its code. 
+Taiga will always be glad to receive code patches to update, fix or improve its code.
 
 If you know how to improve our code base or you found a bug, a security vulnerability or a performance issue and you think you can solve it, we will be very happy to accept your pull-request. If your code requires considerable changes, we recommend you first  talk to us directly. We will find the best way to help.
 
 
 #### UI enhancements ####
 
-Taiga is made for developers and designers. We care enormously about UI because usability and design are both critical aspects of the Taiga experience. 
+Taiga is made for developers and designers. We care enormously about UI because usability and design are both critical aspects of the Taiga experience.
 
 There are two possible ways to contribute to our UI:
 - **Bugs**: If you find a bug regarding front-end, please report it as previously indicated in the Bug reports section or send a pull-request as indicated in the Code Patches section.
@@ -144,6 +144,8 @@ npm install -g babel@5
 
 webdriver-manager update
 ```
+
+To run a local Selenium Server, you will need to have the Java Development Kit (JDK) installed.
 
 ## Tests ##
 
