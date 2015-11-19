@@ -148,6 +148,7 @@ paths.libs = [
     paths.vendor + "angular-animate/angular-animate.js",
     paths.vendor + "angular-aria/angular-aria.js",
     paths.vendor + "angular-translate/angular-translate.js",
+    paths.vendor + "angular-translate-loader-partial/angular-translate-loader-partial.js",
     paths.vendor + "angular-translate-loader-static-files/angular-translate-loader-static-files.js",
     paths.vendor + "angular-translate-interpolation-messageformat/angular-translate-interpolation-messageformat.js",
     paths.vendor + "moment/min/moment-with-locales.js",
