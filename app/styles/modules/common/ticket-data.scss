@@ -1,23 +1,53 @@
-.ticket-data {
+.ticket-header {
+    margin: 1.5rem 0 2rem;
     .ticket-title {
         @extend %larger;
         @extend %light;
-        margin: 1.5rem 0 2rem;
         text-transform: uppercase;
-        span {
-            margin-right: .25rem;
-            &:last-child {
-                @extend %large;
-            }
-        }
+        vertical-align: sub;
     }
-    .ticket-data-container {
+    .detail-status {
         @extend %small;
-        @extend %normal;
-        margin-bottom: 1rem;
-        .icon {
+        display: inline-block;
+        margin-left: .25rem;
+        position: relative;
+        .icon-arrow-bottom {
             margin-left: .25rem;
         }
+    }
+    .detail-status-inner {
+        color: $white;
+        display: flex;
+        justify-content: center;
+        padding: .15rem .25rem;
+        text-transform: uppercase;
+    }
+    .pop-status {
+        @include popover(150px, 1.25rem, 0, '', '');
+        padding: 0;
+        text-transform: none;
+        a {
+            @extend %text;
+            padding: .5rem 1rem;
+        }
+        a:hover {
+            background: rgba($primary-light, .2);
+        }
+    }
+}
+
+.ticket-data-container {
+    @extend %small;
+    @extend %normal;
+    margin-bottom: 1rem;
+    .icon {
+        margin-left: .25rem;
+    }
+}
+
+.ticket-status {
+    &:last-child {
+        margin: 0;
     }
     .level {
         display: inline-block;
@@ -29,29 +59,6 @@
         float: right;
         text-transform: lowercase;
     }
-
-    .ticket-estimation {
-        .ticket-role-points {
-            max-width: 25%;
-            &:first-child {
-                flex-basis: 100%;
-                max-width: 100%;
-            }
-        }
-    }
-}
-
-.ticket-status {
-    margin-bottom: .5rem;
-    &:last-child {
-        margin: 0;
-    }
-    div {
-        background: darken($whitish, 5%);
-        padding: .5rem;
-        padding-right: 1rem;
-        transition: background .2s ease-in;
-    }
     .clickable {
         &:hover {
             background: darken($whitish, 10%);
@@ -59,142 +66,153 @@
         }
     }
     .type-data {
+        background: darken($whitish, 5%);
+        margin-bottom: .5rem;
+        padding: .5rem;
+        padding-right: 1rem;
         position: relative;
+        transition: background .2s ease-in;
         .pop-type {
             @include popover(150px, '', 30px, '', '');
         }
     }
     .severity-data {
+        background: darken($whitish, 5%);
+        margin-bottom: .5rem;
+        padding: .5rem;
+        padding-right: 1rem;
         position: relative;
+        transition: background .2s ease-in;
         .pop-severity {
             @include popover(150px, '', 30px, '', '');
         }
     }
     .priority-data {
+        background: darken($whitish, 5%);
+        margin-bottom: .5rem;
+        padding: .5rem;
+        padding-right: 1rem;
         position: relative;
+        transition: background .2s ease-in;
         .pop-priority {
             @include popover(150px, '', 30px, '', '');
         }
     }
-    .status-data {
-        position: relative;
-        .pop-status {
-            @include popover(150px, '', 30px, '', '');
-        }
-    }
 }
 
-.ticket-track-buttons {
-    .track-inner {
+.ticket-watch {
+    .ticket-watch-title {
+        @extend %bold;
+        margin-bottom: .5rem;
+    }
+    .ticket-watch-inner {
+        display: flex;
+    }
+    .track-icon {
+        position: relative;
+        top: 2px;
+    }
+    .ticket-watch-button,
+    .add-watcher {
         @extend %light;
         @extend %small;
-        background: darken($whitish, 5%);
+        background: $gray-light;
+        color: $white;
+        flex: 1;
         padding: .25rem;
+        text-align: center;
         text-transform: uppercase;
         transition: background .25s;
-        &:hover {
-            background: darken($whitish, 10%);
-        }
-    }
-    .track-button {
-        width: 100%;
-    }
-    .active {
-        .track-button-counter {
-            background: rgba($grayer, .5);
+        path {
+            fill: $white;
         }
         &:hover {
-            .track-inner {
-                background: rgba($primary-light, .2);
-            }
+            background: $primary-light;
         }
         &.is-hover {
-            .track-inner {
-                background: $red;
-                color: $whitish;
-                transition: background .3s;
-            }
-            path {
+            background: $red;
+            color: $whitish;
+            transition: background .3s;
+            svg {
                 fill: $red-light;
             }
         }
-    }
-    .track-button-counter {
-        @extend %large;
-        background: rgba($grayer, .25);
-        color: $whitish;
-        padding: 0 .5rem;
-    }
-    .vote-button {
-        margin-bottom: .3rem;
-    }
-    .watch-button {
-        border-bottom: 0;
-    }
-    .ticket-watchers {
-        margin: .5rem 0;
-    }
-    .add-watcher {
-        display: block;
-        margin: .5rem;
-        .icon {
-            background: rgba($grayer, .25);
-            color: $whitish;
-            margin-right: .5rem;
-            padding: .25rem;
-        }
-        &:hover {
-            .icon {
-                background: $primary-light;
-                color: $whitish;
-                transition: background .3s linear;
+        &.active {
+            background: $primary-light;
+            &:hover {
+                background: $red-light;
+            }
+            svg {
+                fill: $white;
             }
         }
+
+    }
+    .ticket-watch-button {
+        margin-right: .25rem;
     }
 }
 
 .ticket-detail-settings {
+    display: flex;
+    justify-content: center;
     margin-top: 2rem;
     label,
-    .button {
-        display: block;
-        margin-bottom: .5rem;
-        text-align: center;
-        &.editable {
+    .item-block,
+    .item-unblock,
+    .promote-button,
+    .button-delete {
+        background: $gray-light;
+        display: inline-block;
+        margin-right: .5rem;
+        padding: 1rem;
+        transition: background .2s linear;
+        transition-delay: .1s;
+        &:hover {
+            background: $gray-light;
+            cursor: default;
+        }
+        &.is-editable {
+            background: $gray-light;
             cursor: pointer;
+            &:hover {
+                background: $gray;
+            }
+        }
+        &.active {
+            background: $primary-light;
         }
         +input {
             display: none;
         }
     }
-    .loading-spinner {
-        @extend %loading-spinner;
+    .item-block,
+    .item-unblock {
+        display: none;
+        &.is-active {
+            display: inline-block;
+        }
     }
-    .button-gray {
-        background: $gray-light;
+    .item-unblock {
+        background: $red;
+    }
+    .button-delete {
+        background: $red-light;
         &:hover {
-            background: $gray-light;
-        }
-        &.editable {
-            &:hover {
-                background: $grayer;
-                cursor: pointer;
-            }
-        }
-        &.active {
-            background: $primary;
+            background: $red;
+            cursor: pointer;
         }
     }
-    .item-block {
-        &.editable {
-            &:hover {
-                background: $red;
-                cursor: pointer;
-            }
-        }
+    img {
+        max-height: 1.25rem;
+        max-width: 1.25rem;
+        width: 100%;
     }
-    .button-red {
-        display: block;
-        margin-top: 2rem;
+    svg {
+        fill: $white;
+        height: 100%;
+        max-height: 1.25rem;
+        max-width: 1.25rem;
+        width: 100%;
     }
 }

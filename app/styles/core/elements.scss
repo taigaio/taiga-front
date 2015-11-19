@@ -47,6 +47,11 @@ sup {
     cursor: move;
 }
 
+svg {
+    max-height: 1rem;
+    max-width: 1rem;
+}
+
 //Datepicker
 .pika-single {
     // scss-lint:disable ImportantRule

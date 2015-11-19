@@ -1,0 +1,37 @@
+div.ticket-watch-title(
+    title="{{ 'COMMON.WATCH_BUTTON.COUNTER_TITLE'|translate:{total:vm.item.watchers.length||0}:'messageformat' }}",
+    tg-loading="vm.loading"
+) {{ vm.item.watchers.length }} {{'COMMON.WATCHERS.WATCHERS' | translate}}
+
+div.ticket-watch-inner
+    a.ticket-watch-button(
+        href=""
+        title="{{ 'COMMON.WATCH_BUTTON.BUTTON_TITLE' | translate }}"
+        ng-if="::vm.user"
+        ng-click="vm.toggleWatch()"
+        ng-class="{'active': vm.item.is_watcher, 'is-hover': vm.item.is_watcher && vm.isMouseOver}"
+        ng-mouseover="vm.showTextWhenMouseIsOver()"
+        ng-mouseleave="vm.showTextWhenMouseIsLeave()"
+    )
+        span.track-icon
+            include ../../../svg/watch.svg
+        span(
+            ng-if="!vm.item.is_watcher",
+            translate="COMMON.WATCH_BUTTON.WATCH"
+        )
+        span(
+            ng-if="vm.item.is_watcher && !vm.isMouseOver",
+            translate="COMMON.WATCH_BUTTON.WATCHING"
+        )
+        span(
+            ng-if="vm.item.is_watcher && vm.isMouseOver",
+            translate="COMMON.WATCH_BUTTON.UNWATCH"
+        )
+
+    a.add-watcher(
+        href=""
+        title="{{'COMMON.WATCHERS.TITLE_ADD' | translate}}"
+        ng-click="vm.openWatchers()"
+        tg-check-permission="{{vm.getPerms()}}"
+    )
+        span + {{'COMMON.WATCHERS.ADD' | translate}}

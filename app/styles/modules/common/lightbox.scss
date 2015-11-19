@@ -507,18 +507,23 @@
 }
 
 .lb-create-edit-userstory {
+    .points-per-role {
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 0;
+    }
     .ticket-role-points {
-        flex-grow: 1;
-        flex-shrink: 1;
-        max-width: calc(100% * (1/6) - .2rem);
+        margin: .1rem;
+        min-width: 20%;
         &:first-child {
             margin-left: 0;
         }
-        &:nth-child(5n+5) {
+        &:nth-child(4n + 4) {
             margin-right: 0;
         }
-    }
-    .points-per-role {
-        margin-bottom: 0;
+        &:last-child {
+            margin: .1rem 0;
+            min-width: 100%;
+        }
     }
 }

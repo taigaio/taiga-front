@@ -1,4 +1,11 @@
-label(for="client-requirement",
-       class!="button button-gray client-requirement <% if(canEdit){ %>editable<% }; %> <% if(isRequired){ %>active<% }; %>", translate="US.FIELDS.CLIENT_REQUIREMENT")
-
-input(type="checkbox", id="client-requirement", name="client-requirement")
+label.button-gray.client-requirement(
+    for="client-requirement"
+    class!="<% if(canEdit){ %>is-editable<% }; %> <% if(isRequired){ %>active<% }; %>"
+    title="{{ 'COMMON.CLIENT_REQUIREMENT' | translate }}"
+)
+        include ../../svg/client-requirement.svg
+input(
+    type="checkbox"
+    id="client-requirement"
+    name="client-requirement"
+)

@@ -1,9 +1,17 @@
-.user-avatar
-    a(href="{{url}}", title="{{owner.full_name_display}}")
-        img(src="{{owner.photo}}", alt="{{owner.full_name_display}}")
-
 .created-by
-    a(href="{{url}}", title="{{owner.full_name_display}}")
-        span.created-title(translate="COMMON.CREATED_BY", translate-values="{ 'fullDisplayName': owner.full_name_display}")
-    span.created-date
-      | {{date}}
+    a.created-title(
+        href="{{url}}"
+        title="{{owner.full_name_display}}"
+        translate="COMMON.CREATED_BY"
+        translate-values="{ 'fullDisplayName': owner.full_name_display}"
+    )
+    .created-date {{date}}
+.user-avatar
+    a(
+        href="{{url}}"
+        title="{{owner.full_name_display}}"
+    )
+        img(
+            src="{{owner.photo}}"
+            alt="{{owner.full_name_display}}"
+        )

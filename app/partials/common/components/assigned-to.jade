@@ -1,6 +1,10 @@
 <% if (assignedTo) { %>
-.user-avatar
+.user-avatar(class!="<% if(isIocaine){ %> is-iocaine <% }; %>")
     img(src!="<%- assignedTo.photo %>", alt!="<%- assignedTo.full_name_display %>")
+    <% if(isIocaine){ %>
+    .iocaine-symbol(title="{{ 'TASK.TITLE_ACTION_IOCAINE' | translate }}")
+        include ../../../svg/iocaine.svg
+    <% }; %>
 <% } %>
 
 .assigned-to
@@ -9,11 +13,7 @@
     a(href="" title="{{ 'COMMON.ASSIGNED_TO.TITLE_ACTION_EDIT_ASSIGNMENT'|translate }}",
       class!="user-assigned <% if(isEditable){ %>editable<% }; %>")
         span.assigned-name
-            <% if (assignedTo) { %>
             <%- assignedTo.full_name_display %>
-            <% } else { %>
-            | {{ 'COMMON.ASSIGNED_TO.NOT_ASSIGNED'|translate }}
-            <% } %>
             <% if(isEditable){ %>
             span.icon.icon-arrow-bottom
             <% }; %>

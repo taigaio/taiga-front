@@ -18,6 +18,10 @@
         padding: 0 33%;
         text-align: center;
         width: 100%;
+        svg {
+            max-height: 100%;
+            max-width: 100%;
+        }
     }
     .logo {
         @extend %xxlarge;

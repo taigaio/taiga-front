@@ -185,13 +185,13 @@ WatchersDirective = ($rootscope, $confirm, $repo, $qqueue, $template, $compile, 
 
             promise = $repo.save($model.$modelValue)
             promise.then ->
-                $confirm.notify("success")
                 watchers = _.map(watchers, (watcherId) -> $scope.usersById[watcherId])
                 renderWatchers(watchers)
                 $rootscope.$broadcast("object:updated")
 
             promise.then null, ->
                 $model.$modelValue.revert()
+                $confirm.notify("error")
 
         deleteWatcher = $qqueue.bindAdd (watcherIds) =>
             item = $model.$modelValue.clone()
@@ -200,14 +200,12 @@ WatchersDirective = ($rootscope, $confirm, $repo, $qqueue, $template, $compile, 
 
             promise = $repo.save($model.$modelValue)
             promise.then ->
-                $confirm.notify("success")
                 watchers = _.map(item.watchers, (watcherId) -> $scope.usersById[watcherId])
                 renderWatchers(watchers)
                 $rootscope.$broadcast("object:updated")
             promise.then null, ->
                 item.revert()
                 $confirm.notify("error")
-
 
         renderWatchers = (watchers) ->
             ctx = {
@@ -234,12 +232,6 @@ WatchersDirective = ($rootscope, $confirm, $repo, $qqueue, $template, $compile, 
                 watcherIds = _.pull(watcherIds, watcherId)
 
                 deleteWatcher(watcherIds)
-
-        $el.on "click", ".js-add-watcher", (event) ->
-            event.preventDefault()
-            return if not isEditable()
-            $scope.$apply ->
-                $rootscope.$broadcast("watcher:add", $model.$modelValue)
 
         $scope.$on "watcher:added", (ctx, watcherId) ->
             watchers = _.clone($model.$modelValue.watchers, false)
@@ -285,7 +277,6 @@ AssignedToDirective = ($rootscope, $confirm, $repo, $loading, $qqueue, $template
             promise = $repo.save($model.$modelValue)
             promise.then ->
                 currentLoading.finish()
-                $confirm.notify("success")
                 renderAssignedTo($model.$modelValue)
                 $rootscope.$broadcast("object:updated")
             promise.then null, ->
@@ -295,13 +286,21 @@ AssignedToDirective = ($rootscope, $confirm, $repo, $loading, $qqueue, $template
 
             return promise
 
-        renderAssignedTo = (issue) ->
-            assignedToId = issue?.assigned_to
-            assignedTo = if assignedToId? then $scope.usersById[assignedToId] else null
+        renderAssignedTo = (assignedObject) ->
+            if assignedObject?.assigned_to_extra_info?
+                assignedTo = assignedObject?.assigned_to_extra_info
+            else
+                assignedTo = {
+                    full_name_display: $translate.instant("COMMON.ASSIGNED_TO.NOT_ASSIGNED")
+                    photo: "/#{window._version}/images/unnamed.png"
+                }
+
+            isIocaine = assignedObject?.is_iocaine
 
             ctx = {
                 assignedTo: assignedTo
                 isEditable: isEditable()
+                isIocaine: isIocaine
             }
             html = $compile(template(ctx))($scope)
             $el.html(html)
@@ -357,14 +356,14 @@ BlockButtonDirective = ($rootscope, $loading, $template) ->
             return if not item
 
             if isEditable()
-                $el.find('.item-block').addClass('editable')
+                $el.find('.item-block').addClass('is-editable')
 
             if item.is_blocked
-                $el.find('.item-block').hide()
-                $el.find('.item-unblock').show()
+                $el.find('.item-block').removeClass('is-active')
+                $el.find('.item-unblock').addClass('is-active')
             else
-                $el.find('.item-block').show()
-                $el.find('.item-unblock').hide()
+                $el.find('.item-block').addClass('is-active')
+                $el.find('.item-unblock').removeClass('is-active')
 
         $el.on "click", ".item-block", (event) ->
             event.preventDefault()
@@ -711,13 +710,16 @@ ListItemTaskStatusDirective = ->
 module.directive("tgListitemTaskStatus", ListItemTaskStatusDirective)
 
 
-ListItemAssignedtoDirective = ($template) ->
+ListItemAssignedtoDirective = ($template, $translate) ->
     template = $template.get("common/components/list-item-assigned-to-avatar.html", true)
 
     link = ($scope, $el, $attrs) ->
         bindOnce $scope, "usersById", (usersById) ->
             item = $scope.$eval($attrs.tgListitemAssignedto)
-            ctx = {name: "Unassigned", imgurl: "/" + window._version + "/images/unnamed.png"}
+            ctx = {
+                name: $translate.instant("COMMON.ASSIGNED_TO.NOT_ASSIGNED"),
+                imgurl: "/#{window._version}/images/unnamed.png"
+            }
 
             member = usersById[item.assigned_to]
             if member
@@ -728,7 +730,7 @@ ListItemAssignedtoDirective = ($template) ->
 
     return {link:link}
 
-module.directive("tgListitemAssignedto", ["$tgTemplate", ListItemAssignedtoDirective])
+module.directive("tgListitemAssignedto", ["$tgTemplate", "$translate", ListItemAssignedtoDirective])
 
 
 ListItemIssueStatusDirective = ->

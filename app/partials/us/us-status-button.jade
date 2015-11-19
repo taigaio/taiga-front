@@ -1,14 +1,19 @@
-div(class!="status-data <% if(editable){ %>clickable<% }%>")
-    span.level(style!="background-color:<%- status.color %>")
-    span.status-status <%- status.name %>
+span.detail-status-inner.js-edit-status(
+    class!="<% if(editable){ %>clickable<% }%>"
+    style!="background-color:<%- status.color %>"
+)
+    span <%- status.name %>
     <% if(editable){ %>
     span.icon.icon-arrow-bottom
     <% }%>
-    span.level-name(translate="COMMON.FIELDS.STATUS")
 
-    ul.popover.pop-status
+    ul.pop-status.popover
         <% _.each(statuses, function(st) { %>
         li
-            a(href="", class="status", title!="<%- st.name %>", data-status-id!="<%- st.id %>")
+            a.status(
+                href=""
+                title!="<%- st.name %>"
+                data-status-id!="<%- st.id %>"
+            )
                 | <%- st.name %>
         <% }); %>

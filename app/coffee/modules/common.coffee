@@ -98,16 +98,26 @@ module.factory("$selectedText", ["$window", "$document", SelectedText])
 
 CheckPermissionDirective = (projectService) ->
     render = ($el, project, permission) ->
-        $el.removeClass('hidden') if project.get('my_permissions').indexOf(permission) > -1
+        if project && permission
+            $el.removeClass('hidden') if project.get('my_permissions').indexOf(permission) > -1
 
     link = ($scope, $el, $attrs) ->
         $el.addClass('hidden')
         permission = $attrs.tgCheckPermission
 
-        $scope.$watch ( () ->
+        unwatch = $scope.$watch () ->
             return projectService.project
-        ), () ->
-            render($el, projectService.project, permission) if projectService.project
+        , () ->
+            return if !projectService.project
+
+            render($el, projectService.project, permission)
+            unwatch()
+
+        unObserve = $attrs.$observe "tgCheckPermission", (permission) ->
+            return if !permission
+
+            render($el, projectService.project, permission)
+            unObserve()
 
         $scope.$on "$destroy", ->
             $el.off()

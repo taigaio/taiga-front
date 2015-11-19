@@ -65,8 +65,9 @@ div.wrapper(
                             tg-bo-href="nextUrl"
                             title="{{'US.NEXT' | translate}}"
                         )
-
-            div.tags-block(tg-tag-line, ng-model="us", required-perm="modify_us")
+            .subheader
+                .tags-block(tg-tag-line, ng-model="us", required-perm="modify_us")
+                tg-created-by-display.ticket-created-by(ng-model="us")
 
         section.duty-content(tg-editable-description, tg-editable-wysiwyg, ng-model="us", required-perm="modify_us")
 
@@ -92,24 +93,18 @@ div.wrapper(
         )
 
     sidebar.menu-secondary.sidebar.ticket-data
-        section
-            div.ticket-title(
+        
+        section.ticket-header
+            span.ticket-title(
                 tg-us-status-display
                 ng-model="us"
             )
+            span.detail-status(
+                tg-us-status-button
+                ng-model="us"
+            )
 
-            tg-created-by-display.ticket-created-by(ng-model="us")
-
-            //div.ticket-detail-progress-bar(tg-us-tasks-progress-display, ng-model="tasks")
-
-            div.ticket-data-container
-                div.ticket-status(
-                    tg-us-status-button
-                    ng-model="us"
-                )
-
-        section.ticket-estimation
-            tg-us-estimation(ng-model="us")
+        tg-us-estimation.ticket-estimation(ng-model="us")
 
         section.ticket-assigned-to(
             tg-assigned-to
@@ -117,19 +112,20 @@ div.wrapper(
             required-perm="modify_us"
         )
 
-        section.track-buttons-container.ticket-track-buttons
-            div.watch-button
-                tg-watch-button(
-                    item="us"
-                    on-watch="ctrl.onWatch"
-                    on-unwatch="ctrl.onUnwatch"
-                )
-
+        section.ticket-watch-buttons
+            div.ticket-watch(
+                tg-watch-button
+                item="us"
+                data-environment="ticket"
+                on-watch="ctrl.onWatch"
+                on-unwatch="ctrl.onUnwatch"
+            )
             div.ticket-watchers(
                 tg-watchers
                 ng-model="us"
                 required-perm="modify_us"
             )
+
 
         section.ticket-detail-settings
             tg-us-team-requirement-button(ng-model="us")
