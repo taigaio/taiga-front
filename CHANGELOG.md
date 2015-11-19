@@ -1,5 +1,7 @@
 # Changelog #
 
+## 1.10.0 ??? (unreleased)
+- Statics folder hash
 
 ## 1.9.0 Abies Siberica (2015-11-XX)
 

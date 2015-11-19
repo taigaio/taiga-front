@@ -1,7 +1,7 @@
 a.list-itemtype-ticket(
     href="{{ ::vm.duty.get('url') }}"
     title="{{ ::duty.get('subject') }}"
-)   
+)
     div.list-itemtype-avatar(ng-if="::vm.duty.get('assigned_to_extra_info')")
         img(
             ng-src="{{ ::vm.duty.get('assigned_to_extra_info').get('photo') }}"
@@ -9,7 +9,7 @@ a.list-itemtype-ticket(
         )
     div.list-itemtype-avatar(ng-if="::!vm.duty.get('assigned_to_extra_info')")
         img(
-            src="/images/unnamed.png"
+            src="/#{v}/images/unnamed.png"
             title="{{'ACTIVITY.VALUES.UNASSIGNED' | translate}}"
         )
     div.list-itemtype-ticket-data
@@ -17,7 +17,7 @@ a.list-itemtype-ticket(
             span.ticket-project {{ ::vm.duty.get('projectName')}}
             span.ticket-type {{ ::vm.getDutyType() }}
             span.ticket-status(ng-style="{'color': vm.duty.get('status_extra_info').get('color')}") {{ ::vm.duty.get('status_extra_info').get('name') }}
-        
+
         h2
             span.ticket-id(tg-bo-ref="duty.get('ref')")
             span.ticket-title {{ ::duty.get('subject') }}

@@ -780,7 +780,7 @@ IssueAssignedToInlineEditionDirective = ($repo, $rootscope, popoverService) ->
 
     link = ($scope, $el, $attrs) ->
         updateIssue = (issue) ->
-            ctx = {name: "Unassigned", imgurl: "/images/unnamed.png"}
+            ctx = {name: "Unassigned", imgurl: "/" + window._version + "/images/unnamed.png"}
             member = $scope.usersById[issue.assigned_to]
             if member
                 ctx.imgurl = member.photo

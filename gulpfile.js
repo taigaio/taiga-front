@@ -37,9 +37,12 @@ if (argv.theme) {
     themes.set(argv.theme);
 }
 
+var version = "v-" + Date.now();
+
 var paths = {};
 paths.app = "app/";
 paths.dist = "dist/";
+paths.distVersion = paths.dist + version + "/";
 paths.tmp = "tmp/";
 paths.extras = "extras/";
 paths.vendor = "vendor/";
@@ -190,7 +193,7 @@ gulp.task("jade", function() {
     return gulp.src(paths.jade)
         .pipe(plumber())
         .pipe(cached("jade"))
-        .pipe(jade({pretty: true, locals:{v:(new Date()).getTime()}}))
+        .pipe(jade({pretty: true, locals:{v:version}}))
         .pipe(gulp.dest(paths.tmp));
 });
 
@@ -199,7 +202,7 @@ gulp.task("jade-inheritance", function() {
         .pipe(plumber())
         .pipe(cached("jade"))
         .pipe(jadeInheritance({basedir: "./app/"}))
-        .pipe(jade({pretty: true, locals:{v:(new Date()).getTime()}}))
+        .pipe(jade({pretty: true, locals:{v: version}}))
         .pipe(gulp.dest(paths.tmp));
 });
 
@@ -211,7 +214,7 @@ gulp.task("copy-index", function() {
 gulp.task("template-cache", function() {
     return gulp.src(paths.htmlPartials)
         .pipe(templateCache({standalone: true}))
-        .pipe(gulp.dest(paths.dist + "js/"));
+        .pipe(gulp.dest(paths.distVersion + "js/"));
 });
 
 gulp.task("jade-deploy", function(cb) {
@@ -316,7 +319,7 @@ gulp.task("main-css", function() {
     return gulp.src(_paths)
         .pipe(concat("theme-" + themes.current.name + ".css"))
         .pipe(gulpif(isDeploy, minifyCSS({noAdvanced: true})))
-        .pipe(gulp.dest(paths.dist + "styles/"));
+        .pipe(gulp.dest(paths.distVersion + "styles/"));
 });
 
 var compileThemes = function (cb) {
@@ -365,19 +368,19 @@ gulp.task("styles-dependencies", function(cb) {
 */
 gulp.task("conf", function() {
     return gulp.src(["conf/conf.example.json"])
-        .pipe(gulp.dest(paths.dist + "js/"));
+        .pipe(gulp.dest(paths.dist));
 });
 
 gulp.task("app-loader", function() {
     return gulp.src("app-loader/app-loader.coffee")
-        .pipe(replace("___VERSION___", (new Date()).getTime()))
+        .pipe(replace("___VERSION___", version))
         .pipe(coffee())
-        .pipe(gulp.dest(paths.dist + "js/"));
+        .pipe(gulp.dest(paths.distVersion + "js/"));
 });
 
 gulp.task("locales", function() {
     return gulp.src(paths.locales)
-        .pipe(gulp.dest(paths.dist + "locales"));
+        .pipe(gulp.dest(paths.distVersion + "locales"));
 });
 
 gulp.task("coffee-lint", function () {
@@ -412,14 +415,14 @@ gulp.task("coffee", function() {
         })
         .pipe(concat("app.js"))
         .pipe(sourcemaps.write('./maps'))
-        .pipe(gulp.dest(paths.dist + "js/"));
+        .pipe(gulp.dest(paths.distVersion + "js/"));
 });
 
 gulp.task("jslibs-watch", function() {
     return gulp.src(paths.libs)
         .pipe(plumber())
         .pipe(concat("libs.js"))
-        .pipe(gulp.dest(paths.dist + "js/"));
+        .pipe(gulp.dest(paths.distVersion + "js/"));
 });
 
 gulp.task("jslibs-deploy", function() {
@@ -429,19 +432,17 @@ gulp.task("jslibs-deploy", function() {
         .pipe(concat("libs.js"))
         .pipe(uglify({mangle:false, preserveComments: false}))
         .pipe(sourcemaps.write("./maps"))
-        .pipe(gulp.dest(paths.dist + "js/"));
+        .pipe(gulp.dest(paths.distVersion + "js/"));
 });
 
 gulp.task("app-watch", ["coffee-lint", "coffee", "conf", "locales", "app-loader"]);
 
 gulp.task("app-deploy", ["coffee", "conf", "locales", "app-loader"], function() {
-    return gulp.src(paths.dist)
-        .pipe(order(paths.coffee_order, {base: '.'}))
+    return gulp.src(paths.distVersion + "js/app.js")
         .pipe(sourcemaps.init())
-            .pipe(concat("app.js"))
             .pipe(uglify({mangle:false, preserveComments: false}))
         .pipe(sourcemaps.write("./maps"))
-        .pipe(gulp.dest(paths.dist + "js/"));
+        .pipe(gulp.dest(paths.distVersion + "js/"));
 });
 
 /*
@@ -456,45 +457,45 @@ gulp.task("clear", ["clear-sass-cache"], function(done) {
 //SVG
 gulp.task("copy-svg", function() {
     return gulp.src(paths.app + "/svg/**/*")
-        .pipe(gulp.dest(paths.dist + "/svg/"));
+        .pipe(gulp.dest(paths.distVersion + "/svg/"));
 });
 
 gulp.task("copy-theme-svg", function() {
     return gulp.src(themes.current.path + "/svg/**/*")
-        .pipe(gulp.dest(paths.dist + "/svg/" + themes.current.name));
+        .pipe(gulp.dest(paths.distVersion + "/svg/" + themes.current.name));
 });
 
 gulp.task("copy-fonts", function() {
     return gulp.src(paths.app + "/fonts/*")
-        .pipe(gulp.dest(paths.dist + "/fonts/"));
+        .pipe(gulp.dest(paths.distVersion + "/fonts/"));
 });
 
 gulp.task("copy-theme-fonts", function() {
     return gulp.src(themes.current.path + "/fonts/*")
-        .pipe(gulp.dest(paths.dist + "/fonts/" + themes.current.name));
+        .pipe(gulp.dest(paths.distVersion + "/fonts/" + themes.current.name));
 });
 
 gulp.task("copy-images", function() {
     return gulp.src(paths.app + "/images/**/*")
         .pipe(gulpif(isDeploy, imagemin({progressive: true})))
-        .pipe(gulp.dest(paths.dist + "/images/"));
+        .pipe(gulp.dest(paths.distVersion + "/images/"));
 });
 
 gulp.task("copy-theme-images", function() {
     return gulp.src(themes.current.path + "/images/**/*")
         .pipe(gulpif(isDeploy, imagemin({progressive: true})))
-        .pipe(gulp.dest(paths.dist + "/images/"  + themes.current.name));
+        .pipe(gulp.dest(paths.distVersion + "/images/"  + themes.current.name));
 });
 
 gulp.task("copy-images-plugins", function() {
     return gulp.src(paths.app + "/plugins/**/images/*")
         .pipe(flatten())
-        .pipe(gulp.dest(paths.dist + "/images/"));
+        .pipe(gulp.dest(paths.distVersion + "/images/"));
 });
 
 gulp.task("copy-plugin-templates", function() {
     return gulp.src(paths.app + "/plugins/**/templates/**/*.html")
-        .pipe(gulp.dest(paths.dist + "/plugins/"));
+        .pipe(gulp.dest(paths.distVersion + "/plugins/"));
 });
 
 gulp.task("copy-extras", function() {
@@ -514,6 +515,10 @@ gulp.task("copy", [
     "copy-extras"
 ]);
 
+gulp.task("delete-old-version", function() {
+    del.sync(paths.dist + "v-*");
+});
+
 gulp.task("delete-tmp", function() {
     del.sync(paths.tmp);
 });
@@ -522,15 +527,16 @@ gulp.task("express", function() {
     var express = require("express");
     var app = express();
 
-    app.use("/js", express.static(__dirname + "/dist/js"));
-    app.use("/styles", express.static(__dirname + "/dist/styles"));
-    app.use("/images", express.static(__dirname + "/dist/images"));
-    app.use("/svg", express.static(__dirname + "/dist/svg"));
-    app.use("/partials", express.static(__dirname + "/dist/partials"));
-    app.use("/fonts", express.static(__dirname + "/dist/fonts"));
-    app.use("/plugins", express.static(__dirname + "/dist/plugins"));
-    app.use("/locales", express.static(__dirname + "/dist/locales"));
-    app.use("/maps", express.static(__dirname + "/dist/maps"));
+    app.use("/" + version + "/js", express.static(__dirname + "/dist/" + version + "/js"));
+    app.use("/" + version + "/styles", express.static(__dirname + "/dist/" + version + "/styles"));
+    app.use("/" + version + "/images", express.static(__dirname + "/dist/" + version + "/images"));
+    app.use("/" + version + "/svg", express.static(__dirname + "/dist/" + version + "/svg"));
+    app.use("/" + version + "/partials", express.static(__dirname + "/dist/" + version + "/partials"));
+    app.use("/" + version + "/fonts", express.static(__dirname + "/dist/" + version + "/fonts"));
+    app.use("/" + version + "/plugins", express.static(__dirname + "/dist/" + version + "/plugins"));
+    app.use("/" + version + "/locales", express.static(__dirname + "/dist/" + version + "/locales"));
+    app.use("/" + version + "/maps", express.static(__dirname + "/dist/" + version + "/maps"));
+    app.use("/conf.json", express.static(__dirname + "/dist/conf.json"));
 
     app.all("/*", function(req, res, next) {
         //Just send the index.html for other files to support HTML5Mode
@@ -554,7 +560,7 @@ gulp.task("watch", function() {
 });
 
 gulp.task("deploy", function(cb) {
-    runSequence("clear", "delete-tmp", [
+    runSequence("clear", "delete-old-version", "delete-tmp", [
         "copy",
         "jade-deploy",
         "app-deploy",
@@ -564,7 +570,7 @@ gulp.task("deploy", function(cb) {
 });
 //The default task (called when you run gulp from cli)
 gulp.task("default", function(cb) {
-    runSequence("delete-tmp", [
+    runSequence("delete-old-version", "delete-tmp", [
         "copy",
         "styles",
         "app-watch",

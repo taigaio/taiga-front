@@ -508,7 +508,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     $translatePartialLoaderProvider.addPart('taiga')
     $translateProvider
         .useLoader('$translatePartialLoader', {
-            urlTemplate: '/locales/{part}/locale-{lang}.json'
+            urlTemplate: '/' + window._version + '/locales/{part}/locale-{lang}.json'
         })
         .useSanitizeValueStrategy('escapeParameters')
         .addInterpolation('$translateMessageFormatInterpolation')

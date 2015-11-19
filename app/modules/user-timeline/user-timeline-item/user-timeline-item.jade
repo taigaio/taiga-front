@@ -7,10 +7,10 @@ div.activity-item
         // profile image with url
         div.profile-contact-picture(ng-if="timeline.getIn(['data', 'user', 'is_profile_visible'])")
             a(tg-nav="user-profile:username=timeline.getIn(['data', 'user', 'username'])", title="{{::timeline.getIn(['data', 'user', 'name']) }}")
-                img(ng-src="{{::timeline.getIn(['data', 'user', 'photo']) || '/images/user-noimage.png'}}", alt="{{::timeline.getIn(['data', 'user', 'name'])}}")
+                img(ng-src="{{::timeline.getIn(['data', 'user', 'photo']) || '/#{v}/images/user-noimage.png'}}", alt="{{::timeline.getIn(['data', 'user', 'name'])}}")
         // profile image without url
         div.profile-contact-picture(ng-if="!timeline.getIn(['data', 'user', 'is_profile_visible'])")
-          img(ng-src="{{::timeline.getIn(['data', 'user', 'photo']) || '/images/user-noimage.png'}}", alt="{{::timeline.getIn(['data', 'user', 'name'])}}")
+          img(ng-src="{{::timeline.getIn(['data', 'user', 'photo']) || '/#{v}/images/user-noimage.png'}}", alt="{{::timeline.getIn(['data', 'user', 'name'])}}")
 
         p(tg-compile-html="timeline.get('title_html')")
 

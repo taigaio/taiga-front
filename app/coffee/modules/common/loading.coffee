@@ -22,7 +22,7 @@
 module = angular.module("taigaCommon")
 
 TgLoadingService = ($compile) ->
-    spinner = "<img class='loading-spinner' src='/svg/spinner-circle.svg' alt='loading...' />"
+    spinner = "<img class='loading-spinner' src='/" + window._version + "/svg/spinner-circle.svg' alt='loading...' />"
 
     return () ->
         service = {

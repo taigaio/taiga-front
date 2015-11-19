@@ -547,7 +547,7 @@ KanbanUserDirective = ($log, $compile) ->
 
         render = (user) ->
             if user is undefined
-                ctx = {name: "Unassigned", imgurl: "/images/unnamed.png", clickable: clickable}
+                ctx = {name: "Unassigned", imgurl: "/" + window._version + "/images/unnamed.png", clickable: clickable}
             else
                 ctx = {name: user.full_name_display, imgurl: user.photo, clickable: clickable}
 
