@@ -1,7 +1,14 @@
 # Changelog #
 
+
 ## 1.10.0 ??? (unreleased)
-- Statics folder hash
+- [118n] Now taiga plugins can be translatable.
+
+### Misc
+- Statics folder hash to prevent cache problems when a new version is released.
+- Implement websockets heartbeat messages system for taiga-events.
+- Lots of small and not so small bugfixes.
+
 
 ## 1.9.0 Abies Siberica (2015-11-XX)
 
