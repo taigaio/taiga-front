@@ -21,7 +21,7 @@
     "e2e": "node ./node_modules/babel/bin/babel-node.js --stage=1 ./run-e2e.js"
   },
   "devDependencies": {
-    "angular-mocks": "^1.5.0-beta.0",
+    "angular-mocks": "^1.4.7",
     "babel": "^5.6.5",
     "bluebird": "^3.0.2",
     "chai": "^3.3.0",
