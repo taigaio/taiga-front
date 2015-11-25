@@ -25,6 +25,7 @@ var gulp = require("gulp"),
     order = require("gulp-order"),
     print = require('gulp-print'),
     del = require("del"),
+    livereload = require('gulp-livereload'),
     coffeelint = require('gulp-coffeelint');
 
 var argv = require('minimist')(process.argv.slice(2));
@@ -319,7 +320,8 @@ gulp.task("main-css", function() {
     return gulp.src(_paths)
         .pipe(concat("theme-" + themes.current.name + ".css"))
         .pipe(gulpif(isDeploy, minifyCSS({noAdvanced: true})))
-        .pipe(gulp.dest(paths.distVersion + "styles/"));
+        .pipe(gulp.dest(paths.distVersion + "styles/"))
+        .pipe(livereload());
 });
 
 var compileThemes = function (cb) {
@@ -415,7 +417,8 @@ gulp.task("coffee", function() {
         })
         .pipe(concat("app.js"))
         .pipe(sourcemaps.write('./maps'))
-        .pipe(gulp.dest(paths.distVersion + "js/"));
+        .pipe(gulp.dest(paths.distVersion + "js/"))
+        .pipe(livereload());
 });
 
 gulp.task("jslibs-watch", function() {
@@ -537,6 +540,9 @@ gulp.task("express", function() {
     app.use("/" + version + "/locales", express.static(__dirname + "/dist/" + version + "/locales"));
     app.use("/" + version + "/maps", express.static(__dirname + "/dist/" + version + "/maps"));
     app.use("/conf.json", express.static(__dirname + "/dist/conf.json"));
+    app.use(require('connect-livereload')({
+        port: 35729
+    }));
 
     app.all("/*", function(req, res, next) {
         //Just send the index.html for other files to support HTML5Mode
@@ -548,6 +554,8 @@ gulp.task("express", function() {
 
 //Rerun the task when a file changes
 gulp.task("watch", function() {
+    livereload.listen();
+
     gulp.watch(paths.jade, ["jade-watch"]);
     gulp.watch(paths.sass_watch, ["styles"]);
     gulp.watch(paths.styles_dependencies, ["styles-dependencies"]);
