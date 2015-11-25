@@ -13,5 +13,6 @@
     "privacyPolicyUrl": null,
     "termsOfServiceUrl": null,
     "maxUploadFileSize": null,
-    "contribPlugins": []
+    "contribPlugins": [],
+    "tribeHost": null
 }

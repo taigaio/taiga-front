@@ -1,0 +1,123 @@
+.tribe-linked {
+    margin-left: auto;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 99;
+    .tribe-linked-inner {
+        padding: .5rem;
+        transition: .2s;
+        &:hover {
+            background: $white;
+            cursor: pointer;
+        }
+        .title,
+        .gig-title,
+        .delete-link,
+        .synchronize-link,
+        .close {
+            display: none;
+            opacity: 0;
+        }
+    }
+    .tribe-logo {
+        height: 2rem;
+        width: 2rem;
+    }
+    &.is-active {
+        animation-duration: 1s;
+        animation-name: slideTribeInner;
+        background: $white;
+        box-shadow: 1px 1px 5px rgba($grayer, .2);
+        overflow: hidden;
+        .tribe-linked-inner {
+            height: 100%;
+            min-width: 300px;
+            .title,
+            .gig-title,
+            .delete-link,
+            .synchronize-link,
+            .close {
+                animation-duration: 1.25s;
+                animation-name: fadeInFromNone;
+                display: block;
+                opacity: 1;
+            }
+        }
+        .tribe-linked-header {
+            align-items: center;
+            display: flex;
+            margin-bottom: 1rem;
+        }
+        .tribe-logo {
+            margin-right: .5rem;
+            vertical-align: text-bottom;
+        }
+        svg {
+            fill: $red-light;
+            height: 1.5rem;
+            max-height: 1.5rem;
+            max-width: 1.5rem;
+            transition: all .2s;
+            width: 1.5rem;
+            &:hover {
+                fill: $red;
+            }
+        }
+        .title {
+            margin-bottom: 0;
+        }
+        .gig-title {
+            @include font-type(light);
+            color: $tribe-primary;
+            margin-bottom: .5rem;
+        }
+        .delete-link {
+            @include font-type(light);
+            @include font-size(small);
+            color: $primary;
+            display: block;
+            margin-bottom: 1rem;
+        }
+        .synchronize-link {
+            display: block;
+            padding: .5rem;
+        }
+        .close {
+            align-self: flex-start;
+            margin-left: 1rem;
+        }
+    }
+}
+
+@keyframes slideTribeInner {
+    0% {
+        max-height: 60px;
+        width: 100px;
+    }
+    20% {
+        max-height: 60px;
+        width: 300px;
+    }
+    100% {
+        max-height: 225px;
+    }
+}
+
+@keyframes fadeInFromNone {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+
+    80% {
+        display: block;
+        opacity: 0;
+    }
+
+    100% {
+        display: block;
+        opacity: 1;
+    }
+}

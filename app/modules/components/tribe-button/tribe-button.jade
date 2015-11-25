@@ -1,0 +1,10 @@
+a.button-tribe(
+    ng-href="{{::vm.tribeHost}}/gigs/import-from-taiga?project={{projectSlug}}&us={{usId}}",
+    title="{{ 'US.TRIBE.PUBLISH' | translate }}"
+    target="_blank"
+)
+    img.tribe-logo(
+        src="/#{v}/images/tribe-logo.png"
+        alt="{{ 'US.TRIBE.PUBLISH' | translate }}"
+    )
+    span {{ 'US.TRIBE.PUBLISH' | translate }}
