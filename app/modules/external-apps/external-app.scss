@@ -3,9 +3,12 @@
     text-align: center;
     width: 480px;
     .logo {
-        height: 6rem;
+        height: 4rem;
         margin: 0 auto;
-        width: 6rem;
+        width: 4rem;
+    }
+    svg {
+        @include svg-size(4rem);
     }
     h1 {
         margin-bottom: 0;

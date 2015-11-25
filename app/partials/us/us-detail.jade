@@ -107,6 +107,12 @@ div.wrapper(
                 ng-model="us"
             )
 
+            tg-tribe-linked(
+                ng-if="tribeEnabled && us.tribe_gig",
+                gig-title="us.tribe_gig.title"
+                gig-id="us.tribe_gig.id"
+            )
+
         tg-us-estimation.ticket-estimation(ng-model="us")
 
         section.ticket-assigned-to(
@@ -129,6 +135,16 @@ div.wrapper(
                 required-perm="modify_us"
             )
 
+        section.ticket-to-tribe(ng-if="tribeEnabled && !us.tribe_gig")
+            tg-tribe-button(
+                us-id="us.id"
+                project-slug="project.slug"
+            )
+            a.tribe-more-info(
+                href=""
+                title="{{'US.TRIBE.PUBLISH_TITLE' | translate}}"
+                ng-click="ctrl.onTribeInfo()"
+            ) {{'US.TRIBE.PUBLISH_INFO' | translate}}
 
         section.ticket-detail-settings
             tg-us-team-requirement-button(ng-model="us")

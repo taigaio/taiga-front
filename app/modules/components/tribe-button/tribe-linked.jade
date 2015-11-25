@@ -1,0 +1,33 @@
+.tribe-linked.js-tribe-linked(ng-class="{'is-active': vm.open, 'is-inactive': vm.open == false}")
+    .tribe-linked-inner
+        .tribe-linked-header
+            img.tribe-logo(
+                ng-click="vm.show()"
+                alt=""
+                title="{{ 'US.TRIBE.PUBLISHED_AS_GIG' | translate }}"
+                src="/#{v}/images/tribe-logo.png"
+            )
+            p.title {{ "US.TRIBE.PUBLISHED_AS_GIG" | translate }}
+            a.close(
+                ng-click="vm.hide()"
+                href=""
+                title="{{ 'US.TRIBE.CLOSE' | translate }}"
+            )
+                svg.icon.icon-remove
+                    use(xlink:href="#icon-remove")
+                
+        a.gig-title(
+            href="{{::vm.tribeHost}}/gigs/{{gigId}}"
+            title="gigTitle"
+            target="_blank"
+        ) {{gigTitle}}
+        
+        a.delete-link(
+            href="{{::vm.tribeHost}}/gigs/{{gigId}}/link-with-taiga?from=taiga"
+            title="{{ 'US.TRIBE.EDIT_LINK' | translate }}"
+        ) {{ 'US.TRIBE.EDIT_LINK' | translate }}
+        
+        a.synchronize-link.button-tribe(
+            ng-href="{{::vm.tribeHost}}/gigs/sync/{{gigId}}?from=taiga"
+            title="{{ 'US.TRIBE.SINCHRONIZE_LINK' }}"
+        ) {{ 'US.TRIBE.SYNCHRONIZE_LINK' | translate }}
