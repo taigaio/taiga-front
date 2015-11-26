@@ -25,7 +25,7 @@ tg-project-menu {
         .helper {
             @extend %small;
             animation: slideLeft 200ms ease-in-out both;
-            background: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, .8) 100%);
+            background: linear-gradient(to right, rgba($black, 1) 0%, rgba($black, .8) 100%);
             color: $white;
             display: block;
             left: 50px;
@@ -36,7 +36,7 @@ tg-project-menu {
             transition: all .2s;
             white-space: nowrap;
             z-index: 99;
-            &:after {
+            &::after {
                 background: rgba($blackish, 1);
                 content: '';
                 height: $label-arrow-wh;

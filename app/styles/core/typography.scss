@@ -111,7 +111,7 @@ a:visited {
 }
 
 // Taiga Icons
-[data-icon]:before {
+[data-icon]::before {
 
     // scss-lint:disable ImportantRule
     content: attr(data-icon);
@@ -126,8 +126,8 @@ a:visited {
     text-transform: none !important;
 }
 
-[class^='icon-']:before,
-[class*=' icon-']:before {
+[class^='icon-']::before,
+[class*=' icon-']::before {
 
     // scss-lint:disable ImportantRule
     font-family: 'taiga' !important;
@@ -141,156 +141,156 @@ a:visited {
     text-transform: none !important;
 }
 
-.icon-bug:before {
+.icon-bug::before {
     content: 'a';
 }
-.icon-copy:before {
+.icon-copy::before {
     content: 'b';
 }
-.icon-minimize:before {
+.icon-minimize::before {
     content: 'c';
 }
-.icon-maximize:before {
+.icon-maximize::before {
     content: 'd';
 }
-.icon-comment:before {
+.icon-comment::before {
     content: 'e';
 }
-.icon-plus:before {
+.icon-plus::before {
     content: 'f';
 }
-.icon-attachments:before {
+.icon-attachments::before {
     content: 'g';
 }
-.icon-edit:before {
+.icon-edit::before {
     content: 'h';
 }
-.icon-documents:before {
+.icon-documents::before {
     content: 'i';
 }
-.icon-delete:before {
+.icon-delete::before {
     content: 'j';
 }
-.icon-arrow-bottom:before {
+.icon-arrow-bottom::before {
     content: 'k';
 }
-.icon-arrow-left:before {
+.icon-arrow-left::before {
     content: 'l';
 }
-.icon-arrow-right:before {
+.icon-arrow-right::before {
     content: 'm';
 }
-.icon-arrow-up:before {
+.icon-arrow-up::before {
     content: 'n';
 }
-.icon-briefcase:before {
+.icon-briefcase::before {
     content: 'o';
 }
-.icon-caret-down:before {
+.icon-caret-down::before {
     content: 'p';
 }
-.icon-caret-up:before {
+.icon-caret-up::before {
     content: 'q';
 }
-.icon-check-square:before {
+.icon-check-square::before {
     content: 'r';
 }
-.icon-notification-error:before {
+.icon-notification-error::before {
     content: 's';
 }
-.icon-settings:before {
+.icon-settings::before {
     content: 't';
 }
-.icon-document:before {
+.icon-document::before {
     content: 'u';
 }
-.icon-warning:before {
+.icon-warning::before {
     content: 'v';
 }
-.icon-move:before {
+.icon-move::before {
     content: 'w';
 }
-.icon-drag-v:before {
+.icon-drag-v::before {
     content: 'x';
 }
-.icon-filter:before {
+.icon-filter::before {
     content: 'y';
 }
-.icon-help:before {
+.icon-help::before {
     content: 'z';
 }
-.icon-reload:before {
+.icon-reload::before {
     content: 'A';
 }
-.icon-writer:before {
+.icon-writer::before {
     content: 'B';
 }
-.icon-stats:before {
+.icon-stats::before {
     content: 'C';
 }
-.icon-floppy:before {
+.icon-floppy::before {
     content: 'D';
 }
-.icon-warning-alt:before {
+.icon-warning-alt::before {
     content: 'E';
 }
-.icon-video:before {
+.icon-video::before {
     content: 'F';
 }
-.icon-bulk:before {
+.icon-bulk::before {
     content: 'G';
 }
-.icon-vunfold:before {
+.icon-vunfold::before {
     content: 'H';
 }
-.icon-tasks:before {
+.icon-tasks::before {
     content: 'I';
 }
-.icon-kanban:before {
+.icon-kanban::before {
     content: 'J';
 }
-.icon-search:before {
+.icon-search::before {
     content: 'K';
 }
-.icon-wiki:before {
+.icon-wiki::before {
     content: 'L';
 }
-.icon-team:before {
+.icon-team::before {
     content: 'M';
 }
-.icon-vfold:before {
+.icon-vfold::before {
     content: 'N';
 }
-.icon-issues:before {
+.icon-issues::before {
     content: 'O';
 }
-.icon-iocaine:before {
+.icon-iocaine::before {
     content: 'P';
 }
-.icon-archive:before {
+.icon-archive::before {
     content: 'Q';
 }
-.icon-capslock:before {
+.icon-capslock::before {
     content: 'R';
 }
-.icon-upload:before {
+.icon-upload::before {
     content: 'S';
 }
-.icon-github:before {
+.icon-github::before {
     content: 'T';
 }
-.icon-timeline:before {
+.icon-timeline::before {
     content: 'U';
 }
-.icon-scrum:before {
+.icon-scrum::before {
     content: 'V';
 }
-.icon-project:before {
+.icon-project::before {
     content: 'W';
 }
-.icon-heart:before {
+.icon-heart::before {
     content: 'X';
 }
-.icon-eye:before {
+.icon-eye::before {
     content: 'Y';
 }
