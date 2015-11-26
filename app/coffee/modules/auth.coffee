@@ -44,9 +44,9 @@ class AuthService extends taiga.Service
                   @themeService) ->
         super()
 
-        @._currentTheme = @config.get("defaultTheme") || "taiga" # load on index.jade
-
         userModel = @.getUser()
+        @._currentTheme = @._getUserTheme()
+
         @.setUserdata(userModel)
 
     setUserdata: (userModel) ->
@@ -57,7 +57,7 @@ class AuthService extends taiga.Service
             @.userData = null
 
     _getUserTheme: ->
-        return @rootscope.user?.theme || @config.get("defaultTheme") || "taiga"
+        return @rootscope.user?.theme || @config.get("defaultTheme") || "taiga" # load on index.jade
 
     _setTheme: ->
         newTheme = @._getUserTheme()
@@ -84,6 +84,8 @@ class AuthService extends taiga.Service
             @._setTheme()
 
             return user
+        else
+            @._setTheme()
 
         return null
 
