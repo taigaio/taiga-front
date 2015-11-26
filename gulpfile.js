@@ -26,6 +26,7 @@ var gulp = require("gulp"),
     print = require('gulp-print'),
     del = require("del"),
     livereload = require('gulp-livereload'),
+    gulpFilter = require('gulp-filter'),
     coffeelint = require('gulp-coffeelint');
 
 var argv = require('minimist')(process.argv.slice(2));
@@ -215,7 +216,8 @@ gulp.task("copy-index", function() {
 gulp.task("template-cache", function() {
     return gulp.src(paths.htmlPartials)
         .pipe(templateCache({standalone: true}))
-        .pipe(gulp.dest(paths.distVersion + "js/"));
+        .pipe(gulp.dest(paths.distVersion + "js/"))
+        .pipe(gulpif(!isDeploy, livereload()));
 });
 
 gulp.task("jade-deploy", function(cb) {
@@ -407,6 +409,8 @@ gulp.task("coffee-lint", function () {
 });
 
 gulp.task("coffee", function() {
+    var filter = gulpFilter(['*', '!*.map']);
+
     return gulp.src(paths.coffee)
         .pipe(order(paths.coffee_order, {base: '.'}))
         .pipe(sourcemaps.init())
@@ -418,6 +422,7 @@ gulp.task("coffee", function() {
         .pipe(concat("app.js"))
         .pipe(sourcemaps.write('./maps'))
         .pipe(gulp.dest(paths.distVersion + "js/"))
+        .pipe(filter)
         .pipe(livereload());
 });
 
