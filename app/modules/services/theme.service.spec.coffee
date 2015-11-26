@@ -32,5 +32,6 @@ describe "ThemeService", ->
         _inject()
 
     it "use a test theme", () ->
+        window._version = '123'
         themeService.use(data.theme)
-        expect($("link[rel='stylesheet']")).to.have.attr("href", "/styles/theme-#{data.theme}.css")
+        expect($("link[rel='stylesheet']")).to.have.attr("href", "/123/styles/theme-#{data.theme}.css")
