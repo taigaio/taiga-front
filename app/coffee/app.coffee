@@ -622,8 +622,6 @@ init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $na
 
 pluginsWithModule = _.filter(@.taigaContribPlugins, (plugin) -> plugin.module)
 
-pluginsWithModule = _.filter(@.taigaContribPlugins, (plugin) -> plugin.module)
-
 modules = [
     # Main Global Modules
     "taigaBase",
