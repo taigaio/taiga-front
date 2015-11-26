@@ -495,15 +495,9 @@ gulp.task("copy-theme-images", function() {
         .pipe(gulp.dest(paths.distVersion + "/images/"  + themes.current.name));
 });
 
-gulp.task("copy-images-plugins", function() {
-    return gulp.src(paths.app + "/plugins/**/images/*")
-        .pipe(flatten())
-        .pipe(gulp.dest(paths.distVersion + "/images/"));
-});
-
-gulp.task("copy-plugin-templates", function() {
-    return gulp.src(paths.app + "/plugins/**/templates/**/*.html")
-        .pipe(gulp.dest(paths.distVersion + "/plugins/"));
+gulp.task("copy-plugins", function() {
+    return gulp.src(paths.app + "/plugins/**")
+        .pipe(gulp.dest(paths.dist + "/plugins/"));
 });
 
 gulp.task("copy-extras", function() {
@@ -516,8 +510,7 @@ gulp.task("copy", [
     "copy-theme-fonts",
     "copy-images",
     "copy-theme-images",
-    "copy-images-plugins",
-    "copy-plugin-templates",
+    "copy-plugins",
     "copy-svg",
     "copy-theme-svg",
     "copy-extras"
@@ -541,9 +534,9 @@ gulp.task("express", function() {
     app.use("/" + version + "/svg", express.static(__dirname + "/dist/" + version + "/svg"));
     app.use("/" + version + "/partials", express.static(__dirname + "/dist/" + version + "/partials"));
     app.use("/" + version + "/fonts", express.static(__dirname + "/dist/" + version + "/fonts"));
-    app.use("/" + version + "/plugins", express.static(__dirname + "/dist/" + version + "/plugins"));
     app.use("/" + version + "/locales", express.static(__dirname + "/dist/" + version + "/locales"));
     app.use("/" + version + "/maps", express.static(__dirname + "/dist/" + version + "/maps"));
+    app.use("/plugins", express.static(__dirname + "/dist/plugins"));
     app.use("/conf.json", express.static(__dirname + "/dist/conf.json"));
     app.use(require('connect-livereload')({
         port: 35729
