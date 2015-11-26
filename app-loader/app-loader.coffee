@@ -22,7 +22,7 @@ promise.done (data) ->
 
 promise.always ->
     if window.taigaConfig.contribPlugins.length > 0
-        plugins = _.map(window.taigaConfig.contribPlugins, (plugin) -> "#{plugin}")
+        plugins = _.map(window.taigaConfig.contribPlugins, (plugin) -> "/#{window._version}/#{plugin}")
         ljs.load plugins, ->
             ljs.load "/#{window._version}/js/app.js", ->
                 angular.bootstrap(document, ['taiga'])

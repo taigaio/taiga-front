@@ -501,6 +501,11 @@ gulp.task("copy-images-plugins", function() {
         .pipe(gulp.dest(paths.distVersion + "/images/"));
 });
 
+gulp.task("copy-plugins-dist", function() {
+    return gulp.src(paths.dist + "/js/*")
+        .pipe(gulp.dest(paths.distVersion + "/js/"));
+});
+
 gulp.task("copy-plugin-templates", function() {
     return gulp.src(paths.app + "/plugins/**/templates/**/*.html")
         .pipe(gulp.dest(paths.distVersion + "/plugins/"));
@@ -517,6 +522,7 @@ gulp.task("copy", [
     "copy-images",
     "copy-theme-images",
     "copy-images-plugins",
+    "copy-plugins-dist",
     "copy-plugin-templates",
     "copy-svg",
     "copy-theme-svg",
