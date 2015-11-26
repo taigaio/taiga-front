@@ -28,7 +28,7 @@ class ThemeService extends taiga.Service = ->
             stylesheetEl = $("<link rel='stylesheet' href='' type='text/css'>")
             $("head").append(stylesheetEl)
 
-        stylesheetEl.attr("href", "/styles/theme-#{themeName}.css")
+        stylesheetEl.attr("href", "/#{window._version}/styles/theme-#{themeName}.css")
 
 
 angular.module("taigaCommon").service("tgThemeService", ThemeService)
