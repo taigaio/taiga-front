@@ -901,7 +901,7 @@
         "DELETED_ATTACHMENT": "已刪除附件",
         "UPDATED_ATTACHMENT": "更新附件 {{filename}}",
         "DELETED_CUSTOM_ATTRIBUTE": "刪除客製屬性",
-        "SIZE_CHANGE": "使  {size, plural, one{change} 其它{changes}}",
+        "SIZE_CHANGE": "使  {size, plural, one{更改} other{變化}}",
         "VALUES": {
             "YES": "yes",
             "NO": "no",
