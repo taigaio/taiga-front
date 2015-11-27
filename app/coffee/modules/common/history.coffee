@@ -28,7 +28,7 @@ module = angular.module("taigaCommon")
 
 IGNORED_FIELDS = {
     "userstories.userstory": [
-        "watchers", "kanban_order", "backlog_order", "sprint_order", "finish_date"
+        "watchers", "kanban_order", "backlog_order", "sprint_order", "finish_date", "tribe_gig"
     ],
     "tasks.task": [
         "watchers", "us_order", "taskboard_order"
