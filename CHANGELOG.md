@@ -3,6 +3,7 @@
 
 ## 1.9.1 Taiga Tribe (unreleased)
 - [118n] Now taiga plugins can be translatable.
+- New Taiga plugins system.
 
 ### Misc
 - Statics folder hash to prevent cache problems when a new version is released.
@@ -10,7 +11,7 @@
 - Lots of small and not so small bugfixes.
 
 
-## 1.9.0 Abies Siberica (2015-11-XX)
+## 1.9.0 Abies Siberica (2015-11-02)
 
 ### Features
 - Ability to create single-line or multi-line custom fields. (thanks to [@artlepool](https://github.com/artlepool)).

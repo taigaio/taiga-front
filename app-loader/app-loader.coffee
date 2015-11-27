@@ -16,14 +16,35 @@ window.taigaConfig = {
     "contribPlugins": []
 }
 
+loadStylesheet = (path) ->
+    $('head').append('<link rel="stylesheet" href="' + path + '" type="stylesheet" />')
+
+loadPlugin = (pluginPath) ->
+    return new Promise (resolve, reject) ->
+        $.getJSON(pluginPath).then (plugin) ->
+            if plugin.css
+                loadStylesheet(plugin.css)
+
+            #dont' wait for css
+            if plugin.js
+                ljs.load(plugin.js, resolve)
+            else
+                resolve()
+
+loadPlugins = (plugins) ->
+    promises = []
+    _.map plugins, (pluginPath) ->
+        promises.push(loadPlugin(pluginPath))
+
+    return Promise.all(promises)
+
 promise = $.getJSON "/conf.json"
 promise.done (data) ->
     window.taigaConfig = _.extend({}, window.taigaConfig, data)
 
 promise.always ->
     if window.taigaConfig.contribPlugins.length > 0
-        plugins = _.map(window.taigaConfig.contribPlugins, (plugin) -> "#{plugin}")
-        ljs.load plugins, ->
+        loadPlugins(window.taigaConfig.contribPlugins).then () ->
             ljs.load "/#{window._version}/js/app.js", ->
                 angular.bootstrap(document, ['taiga'])
     else

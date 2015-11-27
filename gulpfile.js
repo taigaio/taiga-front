@@ -56,7 +56,6 @@ paths.jade = [
 paths.htmlPartials = [
     paths.tmp + "partials/**/*.html",
     paths.tmp + "modules/**/*.html",
-    paths.tmp + "plugins/**/*.html",
     "!" + paths.tmp + "partials/includes/**/*.html",
     "!" + paths.tmp + "/modules/**/includes/**/*.html"
 ];
@@ -86,8 +85,7 @@ paths.styles_dependencies = [
 
 paths.css = [
     paths.tmp + "styles/**/*.css",
-    paths.tmp + "modules/**/*.css",
-    paths.tmp + "plugins/**/*.css"
+    paths.tmp + "modules/**/*.css"
 ];
 
 paths.css_order = [
@@ -103,7 +101,6 @@ paths.css_order = [
     paths.tmp + "styles/modules/**/*.css",
     paths.tmp + "modules/**/*.css",
     paths.tmp + "styles/shame/*.css",
-    paths.tmp + "plugins/**/*.css",
     paths.tmp + "themes/**/*.css"
 ];
 
@@ -135,9 +132,7 @@ paths.coffee_order = [
     paths.app + "coffee/modules/user-settings/*.coffee",
     paths.app + "coffee/modules/integrations/*.coffee",
     paths.app + "modules/**/*.module.coffee",
-    paths.app + "modules/**/*.coffee",
-    paths.app + "plugins/*.coffee",
-    paths.app + "plugins/**/*.coffee"
+    paths.app + "modules/**/*.coffee"
 ];
 
 paths.libs = [
@@ -495,11 +490,6 @@ gulp.task("copy-theme-images", function() {
         .pipe(gulp.dest(paths.distVersion + "/images/"  + themes.current.name));
 });
 
-gulp.task("copy-plugins", function() {
-    return gulp.src(paths.app + "/plugins/**")
-        .pipe(gulp.dest(paths.dist + "/plugins/"));
-});
-
 gulp.task("copy-extras", function() {
     return gulp.src(paths.extras + "/*")
         .pipe(gulp.dest(paths.dist + "/"));
@@ -510,7 +500,6 @@ gulp.task("copy", [
     "copy-theme-fonts",
     "copy-images",
     "copy-theme-images",
-    "copy-plugins",
     "copy-svg",
     "copy-theme-svg",
     "copy-extras"
