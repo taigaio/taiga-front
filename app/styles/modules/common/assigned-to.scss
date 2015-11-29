@@ -57,20 +57,22 @@
             display: block;
             margin: .2rem 0 .25rem;
         }
-        .user-assigned {
-            @extend %large;
+        .assigned-to-options {
+            display: inline-block;
+        }
+        .user-assigned,
+        .assign-to-me {
             color: $primary;
             cursor: default;
-            &.editable {
+            &:hover {
                 cursor: pointer;
             }
             .icon {
                 vertical-align: middle;
             }
-        }
-        .assigned-name {
-            @include ellipsis(80%);
-            display: inline-block;
+            > span {
+                @include ellipsis(80%);
+            }
         }
         .icon-delete {
             color: $gray-light;

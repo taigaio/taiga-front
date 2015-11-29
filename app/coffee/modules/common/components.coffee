@@ -258,7 +258,7 @@ module.directive("tgWatchers", ["$rootScope", "$tgConfirm", "$tgRepo", "$tgQqueu
 ## Assigned to directive
 #############################################################################
 
-AssignedToDirective = ($rootscope, $confirm, $repo, $loading, $qqueue, $template, $translate, $compile) ->
+AssignedToDirective = ($rootscope, $confirm, $repo, $loading, $qqueue, $template, $translate, $compile, $currentUserService) ->
     # You have to include a div with the tg-lb-assignedto directive in the page
     # where use this directive
     template = $template.get("common/components/assigned-to.html", true)
@@ -287,18 +287,21 @@ AssignedToDirective = ($rootscope, $confirm, $repo, $loading, $qqueue, $template
             return promise
 
         renderAssignedTo = (assignedObject) ->
-            if assignedObject?.assigned_to_extra_info?
-                assignedTo = assignedObject?.assigned_to_extra_info
+            if assignedObject?.assigned_to?
+                fullName = assignedObject.assigned_to_extra_info.full_name_display
+                photo = assignedObject.assigned_to_extra_info.photo
+                isUnassigned = false
             else
-                assignedTo = {
-                    full_name_display: $translate.instant("COMMON.ASSIGNED_TO.NOT_ASSIGNED")
-                    photo: "/#{window._version}/images/unnamed.png"
-                }
+                fullName = $translate.instant("COMMON.ASSIGNED_TO.ASSIGN")
+                photo = "/#{window._version}/images/unnamed.png"
+                isUnassigned = true
 
             isIocaine = assignedObject?.is_iocaine
 
             ctx = {
-                assignedTo: assignedTo
+                fullName: fullName
+                photo: photo
+                isUnassigned: isUnassigned
                 isEditable: isEditable()
                 isIocaine: isIocaine
             }
@@ -310,6 +313,12 @@ AssignedToDirective = ($rootscope, $confirm, $repo, $loading, $qqueue, $template
             return if not isEditable()
             $scope.$apply ->
                 $rootscope.$broadcast("assigned-to:add", $model.$modelValue)
+
+        $el.on "click", ".assign-to-me", (event) ->
+            event.preventDefault()
+            return if not isEditable()
+            $model.$modelValue.assigned_to = $currentUserService.getUser().get('id')
+            save($currentUserService.getUser().get('id'))
 
         $el.on "click", ".icon-delete", (event) ->
             event.preventDefault()
@@ -337,7 +346,7 @@ AssignedToDirective = ($rootscope, $confirm, $repo, $loading, $qqueue, $template
         require:"ngModel"
     }
 
-module.directive("tgAssignedTo", ["$rootScope", "$tgConfirm", "$tgRepo", "$tgLoading", "$tgQqueue", "$tgTemplate", "$translate", "$compile",
+module.directive("tgAssignedTo", ["$rootScope", "$tgConfirm", "$tgRepo", "$tgLoading", "$tgQqueue", "$tgTemplate", "$translate", "$compile","tgCurrentUserService",
                                   AssignedToDirective])
 
 
