@@ -122,7 +122,7 @@ Complete process for all OS at: http://sass-lang.com/install
 
 **Node + Bower + Gulp**
 
-We recommend using [nvm](https://github.com/creationix/nvmv) to manage diferent node versions
+We recommend using [nvm](https://github.com/creationix/nvm) to manage diferent node versions
 ```
 npm install -g gulp
 npm install -g bower
