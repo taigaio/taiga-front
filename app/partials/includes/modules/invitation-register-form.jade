@@ -3,6 +3,8 @@ form.register-form
     fieldset
         input(
             type="text"
+            autocorrect="off" 
+            autocapitalize="none"
             name="username"
             ng-model="dataRegister.username"
             data-required="true"
@@ -23,7 +25,7 @@ form.register-form
 
     fieldset
         input(
-            type="text"
+            type="email"
             name="email"
             ng-model="dataRegister.email"
             data-required="true"
