@@ -19,14 +19,8 @@ After taiga-back and taiga-front are running
 webdriver-manager start
 ```
 
-for auth test:
+run test:
 
 ```
-protractor conf.e2e.js --suite=auth
-```
-
-For full tests
-
-```
-protractor conf.e2e.js --suite=full
+protractor conf.e2e.js --suite=suiteName
 ```
