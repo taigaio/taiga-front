@@ -1,4 +1,5 @@
 var utils = require('../../utils');
+var sharedDetail = require('../../shared/detail');
 var taskDetailHelper = require('../../helpers').taskDetail;
 
 var chai = require('chai');
@@ -26,17 +27,17 @@ describe('Task detail', function(){
         await utils.common.takeScreenshot("tasks", "detail");
     });
 
-    it('title edition', utils.detail.titleTesting);
+    it('title edition', sharedDetail.titleTesting);
 
-    it('tags edition', utils.detail.tagsTesting);
+    it('tags edition', sharedDetail.tagsTesting);
 
-    it('description edition', utils.detail.descriptionTesting);
+    it('description edition', sharedDetail.descriptionTesting);
 
-    it('status edition', utils.detail.statusTesting);
+    it('status edition', sharedDetail.statusTesting);
 
-    describe('assigned to edition', utils.detail.assignedToTesting);
+    describe('assigned to edition', sharedDetail.assignedToTesting);
 
-    describe('watchers edition', utils.detail.watchersTesting);
+    describe('watchers edition', sharedDetail.watchersTesting);
 
     it('iocaine edition', async function() {
       // Toggle iocaine status
@@ -52,20 +53,20 @@ describe('Task detail', function(){
       expect(newIsIocaine).to.be.equal(isIocaine);
     });
 
-    it('history', utils.detail.historyTesting);
+    it('history', sharedDetail.historyTesting);
 
-    it('block', utils.detail.blockTesting);
+    it('block', sharedDetail.blockTesting);
 
-    it('attachments', utils.detail.attachmentTesting);
+    it('attachments', sharedDetail.attachmentTesting);
 
-    describe('custom-fields', utils.detail.customFields.bind(this, 1));
+    describe('custom-fields', sharedDetail.customFields.bind(this, 1));
 
     it('screenshot', async function() {
         await utils.common.takeScreenshot("tasks", "detail updated");
     });
 
     describe('delete & redirect', function() {
-        it('delete', utils.detail.deleteTesting);
+        it('delete', sharedDetail.deleteTesting);
 
         it('redirected', async function (){
             let url = await browser.getCurrentUrl();

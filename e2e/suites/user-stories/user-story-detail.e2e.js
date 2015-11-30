@@ -1,4 +1,5 @@
 var utils = require('../../utils');
+var sharedDetail = require('../../shared/detail');
 var usDetailHelper = require('../../helpers').usDetail;
 
 var chai = require('chai');
@@ -25,15 +26,15 @@ describe('User story detail', function(){
         await utils.common.takeScreenshot("user-stories", "detail");
     });
 
-    it('title edition', utils.detail.titleTesting);
+    it('title edition', sharedDetail.titleTesting);
 
-    it('tags edition', utils.detail.tagsTesting);
+    it('tags edition', sharedDetail.tagsTesting);
 
-    it('description edition', utils.detail.descriptionTesting);
+    it('description edition', sharedDetail.descriptionTesting);
 
-    it('status edition', utils.detail.statusTesting);
+    it('status edition', sharedDetail.statusTesting);
 
-    describe('assigned to edition', utils.detail.assignedToTesting);
+    describe('assigned to edition', sharedDetail.assignedToTesting);
 
     it('team requirement edition', async function() {
       let requirementHelper = usDetailHelper.teamRequirement();
@@ -65,15 +66,15 @@ describe('User story detail', function(){
       expect(isRequired).to.be.equal(newIsRequired);
     });
 
-    describe('watchers edition', utils.detail.watchersTesting);
+    describe('watchers edition', sharedDetail.watchersTesting);
 
-    it('history', utils.detail.historyTesting);
+    it('history', sharedDetail.historyTesting);
 
-    it('block', utils.detail.blockTesting);
+    it('block', sharedDetail.blockTesting);
 
-    it('attachments', utils.detail.attachmentTesting);
+    it('attachments', sharedDetail.attachmentTesting);
 
-    describe('custom-fields', utils.detail.customFields.bind(this, 0));
+    describe('custom-fields', sharedDetail.customFields.bind(this, 0));
 
     describe('related tasks', function() {
         it('create', async function() {
@@ -118,7 +119,7 @@ describe('User story detail', function(){
     });
 
     describe('delete & redirect', function() {
-        it('delete', utils.detail.deleteTesting);
+        it('delete', sharedDetail.deleteTesting);
 
         it('redirected', async function (){
             let url = await browser.getCurrentUrl();

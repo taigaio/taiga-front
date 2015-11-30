@@ -2,8 +2,8 @@ var path = require('path');
 var detailHelper = require('../helpers').detail;
 var commonHelper = require('../helpers').common;
 var customFieldsHelper = require('../helpers/custom-fields-helper');
-var commonUtil = require('./common');
-var notifications = require('./notifications');
+var commonUtil = require('../utils/common');
+var notifications = require('../utils/notifications');
 
 var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
@@ -11,9 +11,9 @@ var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 var expect = chai.expect;
 
-var helper = module.exports;
+var shared = module.exports;
 
-helper.titleTesting = async function() {
+shared.titleTesting = async function() {
     let titleHelper = detailHelper.title();
     let title = await titleHelper.getTitle();
     let date = Date.now();
@@ -22,7 +22,7 @@ helper.titleTesting = async function() {
     expect(newTitle).to.be.not.equal(title);
 }
 
-helper.tagsTesting = async function() {
+shared.tagsTesting = async function() {
     let tagsHelper = detailHelper.tags();
     let tagsText = await tagsHelper.getTagsText();
     await tagsHelper.clearTags();
@@ -35,7 +35,7 @@ helper.tagsTesting = async function() {
     expect(newtagsText).to.be.not.eql(tagsText);
 }
 
-helper.descriptionTesting = async function() {
+shared.descriptionTesting = async function() {
     let descriptionHelper = detailHelper.description();
     let description = await descriptionHelper.getInnerHtml();
     let date = Date.now();
@@ -46,7 +46,7 @@ helper.descriptionTesting = async function() {
     expect(newDescription).to.be.not.equal(description);
 }
 
-helper.statusTesting = async function() {
+shared.statusTesting = async function() {
     let statusHelper = detailHelper.statusSelector();
 
     // Current status
@@ -71,7 +71,7 @@ helper.statusTesting = async function() {
     expect(newGenericStatus).to.be.not.equal(genericStatus);
 }
 
-helper.assignedToTesting = function() {
+shared.assignedToTesting = function() {
     before(function () {
         let assignedTo = detailHelper.assignedTo();
         return assignedTo.clear();
@@ -156,7 +156,7 @@ helper.assignedToTesting = function() {
     });
 }
 
-helper.historyTesting = async function() {
+shared.historyTesting = async function() {
     let historyHelper = detailHelper.history();
 
     //Adding a comment
@@ -188,7 +188,7 @@ helper.historyTesting = async function() {
     expect(activitiesCounter).to.be.least(newCommentsCounter);
 }
 
-helper.blockTesting = async function() {
+shared.blockTesting = async function() {
     let blockHelper = detailHelper.block();
     let blockLightboxHelper = detailHelper.blockLightbox();
 
@@ -208,7 +208,7 @@ helper.blockTesting = async function() {
     expect($('.block-description').isDisplayed()).to.be.eventually.false;
 }
 
-helper.attachmentTesting = async function() {
+shared.attachmentTesting = async function() {
     let attachmentHelper = detailHelper.attachment();
     let date = Date.now();
 
@@ -256,12 +256,12 @@ helper.attachmentTesting = async function() {
     expect(newAttachmentsLength).to.be.equal(attachmentsLength - 1);
 }
 
-helper.deleteTesting = async function() {
+shared.deleteTesting = async function() {
     let deleteHelper = detailHelper.delete();
     await deleteHelper.delete();
 }
 
-helper.watchersTesting = function() {
+shared.watchersTesting = function() {
     before(function () {
         let watchersHelper = detailHelper.watchers();
         return watchersHelper.removeAllWatchers();
@@ -345,7 +345,7 @@ helper.watchersTesting = function() {
     });
 }
 
-helper.customFields = function(typeIndex) {
+shared.customFields = function(typeIndex) {
     before(async function() {
         let url = await browser.getCurrentUrl();
 
