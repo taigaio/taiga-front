@@ -1357,6 +1357,12 @@
         "CANCEL": "Cancel"
     },
     "JOYRIDE": {
+        "NAV": {
+            "NEXT": "Next",
+            "BACK": "Back",
+            "SKIP": "Skip",
+            "DONE": "Done"
+        },
         "DASHBOARD": {
             "STEP1": {
                 "TITLE": "Your project",

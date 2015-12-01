@@ -19,22 +19,10 @@
 
 taiga = @.taiga
 
-JoyRideDirective = ($rootScope, currentUserService, joyRideService, $location) ->
+JoyRideDirective = ($rootScope, currentUserService, joyRideService, $location, $translate) ->
     link = (scope, el, attrs, ctrl) ->
         unsuscribe = null
         intro = introJs()
-
-        #Todo: translate
-        intro.setOptions({
-            exitOnEsc: false,
-            exitOnOverlayClick: false,
-            showStepNumbers: false,
-            nextLabel: 'Next &rarr;',
-            prevLabel: '&larr; Back',
-            skipLabel: 'Skip',
-            doneLabel: 'Done',
-            disableInteraction: true
-        })
 
         intro.oncomplete () ->
             $('html,body').scrollTop(0)
@@ -45,6 +33,17 @@ JoyRideDirective = ($rootScope, currentUserService, joyRideService, $location) -
         initJoyrRide = (next, config) ->
             if !config[next.joyride]
                 return
+
+            intro.setOptions({
+                exitOnEsc: false,
+                exitOnOverlayClick: false,
+                showStepNumbers: false,
+                nextLabel: $translate.instant('JOYRIDE.NAV.NEXT') + ' &rarr;',
+                prevLabel: '&larr; ' + $translate.instant('JOYRIDE.NAV.BACK'),
+                skipLabel: $translate.instant('JOYRIDE.NAV.SKIP'),
+                doneLabel: $translate.instant('JOYRIDE.NAV.DONE'),
+                disableInteraction: true
+            })
 
             intro.setOption('steps', joyRideService.get(next.joyride))
             intro.start()
@@ -78,7 +77,8 @@ JoyRideDirective.$inject = [
     "$rootScope",
     "tgCurrentUserService",
     "tgJoyRideService",
-    "$location"
+    "$location",
+    "$translate"
 ]
 
 angular.module("taigaComponents").directive("tgJoyRide", JoyRideDirective)
