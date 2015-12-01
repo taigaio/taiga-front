@@ -221,6 +221,8 @@ module.directive("tgPublicRegisterMessage", ["$tgConfig", "$tgNavUrls", "$tgTemp
 
 LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls, $events, $translate) ->
     link = ($scope, $el, $attrs) ->
+        form = new checksley.Form($el.find("form.login-form"))
+
         onSuccess = (response) ->
             if $routeParams['next'] and $routeParams['next'] != $navUrls.resolve("login")
                 nextUrl = decodeURIComponent($routeParams['next'])
@@ -236,7 +238,6 @@ LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls, $
         submit = debounce 2000, (event) =>
             event.preventDefault()
 
-            form = new checksley.Form($el.find("form.login-form"))
             if not form.validate()
                 return
 
