@@ -168,7 +168,7 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             for obj in value
                 obj.selected = if isSelected(obj.type, obj.id) then true else undefined
 
-    loadFilters: ->
+    loadFilters: () ->
         urlfilters = @.getUrlFilters()
 
         if urlfilters.q
@@ -561,8 +561,8 @@ IssuesFiltersDirective = ($q, $log, $location, $rs, $confirm, $loading, $templat
             html = $compile(html)($scope)
             $el.find(".filter-list").html(html)
 
-        selectQFilter = debounceLeading 100, (value) ->
-            return if value is undefined
+        selectQFilter = debounceLeading 100, (value, oldValue) ->
+            return if value is undefined or  value == oldValue
 
             $ctrl.replaceFilter("page", null, true)
 
@@ -575,7 +575,10 @@ IssuesFiltersDirective = ($q, $log, $location, $rs, $confirm, $loading, $templat
 
             reloadIssues()
 
-        $scope.$watch("filtersQ", selectQFilter)
+        unwatchIssues = $scope.$watch "issues", (newValue) ->
+            if !_.isUndefined(newValue)
+                $scope.$watch("filtersQ", selectQFilter)
+                unwatchIssues()
 
         # Dom Event Handlers
         $el.on "click", ".filters-cats > ul > li > a", (event) ->
