@@ -3,6 +3,7 @@ var detailHelper = require('../helpers').detail;
 var commonHelper = require('../helpers').common;
 var customFieldsHelper = require('../helpers/custom-fields-helper');
 var commonUtil = require('./common');
+var notifications = require('./notifications');
 
 var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
@@ -74,7 +75,7 @@ helper.assignedToTesting = function() {
     before(function () {
         let assignedTo = detailHelper.assignedTo();
         return assignedTo.clear();
-    })
+    });
 
     it('assign', async function() {
         let assignedTo = detailHelper.assignedTo();
@@ -124,6 +125,7 @@ helper.assignedToTesting = function() {
         assignToLightbox.selectFirst();
 
         await assignToLightbox.waitClose();
+        await notifications.success.close();
     });
 
     it('keyboard navigatin', async function() {
@@ -147,6 +149,10 @@ helper.assignedToTesting = function() {
         let isSelected = await commonUtil.hasClass(selected, 'selected');
 
         expect(isSelected).to.be.true;
+
+        assignToLightbox.close();
+
+        await assignToLightbox.waitClose();
     });
 }
 
@@ -259,7 +265,7 @@ helper.watchersTesting = function() {
     before(function () {
         let watchersHelper = detailHelper.watchers();
         return watchersHelper.removeAllWatchers();
-    })
+    });
 
     it('add watcher', async function() {
         let watchersHelper = detailHelper.watchers();
@@ -309,6 +315,7 @@ helper.watchersTesting = function() {
 
         await watchersLightboxHelper.selectFirst();
         await watchersLightboxHelper.waitClose();
+        await notifications.success.close();
     });
 
     it('keyboard navigatin', async function() {
@@ -331,6 +338,10 @@ helper.watchersTesting = function() {
         let isSelected = await commonUtil.hasClass(selected, 'selected');
 
         expect(isSelected).to.be.true;
+
+        watchersLightboxHelper.close();
+
+        await watchersLightboxHelper.waitClose();
     });
 }
 
