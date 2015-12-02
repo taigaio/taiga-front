@@ -20,7 +20,7 @@ describe('Public', async function(){
         await utils.notifications.success.close();
 
         //We need this click on firefox, probably the mouse is in a previous input
-        $('body').click()
+        $('body').click();
 
         return utils.common.logout();
     });
@@ -82,8 +82,8 @@ describe('Public', async function(){
         utils.common.takeScreenshot('public', 'issue-detail');
     });
 
-    it('task detail', function() {
-        browser.get(browser.params.glob.host + 'project/project-1/backlog');
+    it('task detail', async function() {
+        browser.get(browser.params.glob.host + 'project/project-3/backlog');
 
         utils.nav
             .init()
