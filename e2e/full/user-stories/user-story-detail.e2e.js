@@ -83,6 +83,8 @@ describe('User story detail', function(){
 
             expect(utils.notifications.success.open()).to.be.eventually.true;
 
+            utils.notifications.success.close();
+
             let relatedTaskCount = usDetailHelper.relatedTasks().count();
 
             expect(relatedTaskCount).to.be.eventually.equal(oldRelatedTaskCount + 1);
@@ -92,6 +94,8 @@ describe('User story detail', function(){
             usDetailHelper.editRelatedTasks(0, 'test2', 2, 2);
 
             expect(utils.notifications.success.open()).to.be.eventually.true;
+
+            utils.notifications.success.close();
         });
 
         it('delete', async function() {
@@ -100,6 +104,8 @@ describe('User story detail', function(){
             usDetailHelper.deleteRelatedTask(0);
 
             expect(utils.notifications.success.open()).to.be.eventually.true;
+
+            utils.notifications.success.close();
 
             let relatedTaskCount = usDetailHelper.relatedTasks().count();
 
