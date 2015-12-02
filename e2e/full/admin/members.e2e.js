@@ -107,7 +107,7 @@ describe('admin - members', function() {
     it('resend invitation', async function() {
         let member = adminMembershipsHelper.getMembers().last();
 
-        adminMembershipsHelper.sendInvitation();
+        adminMembershipsHelper.sendInvitation(member);
 
         expect(utils.notifications.success.open()).to.be.eventually.true;
 

@@ -62,5 +62,5 @@ helper.setRole = function(elm, index) {
 };
 
 helper.sendInvitation = function(elm) {
-    $$('.pending').first().click();
+    elm.$('.resend').click();
 };
