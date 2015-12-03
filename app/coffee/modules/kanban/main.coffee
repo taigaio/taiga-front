@@ -132,7 +132,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             status__is_archived: false
         }
 
-        return @rs.userstories.listAll(@scope.projectId, params).then (userstories) =>
+        promise = @rs.userstories.listAll(@scope.projectId, params).then (userstories) =>
             @scope.userstories = userstories
 
             usByStatus = _.groupBy(userstories, "status")
@@ -165,6 +165,10 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 @scope.$broadcast("userstories:loaded", userstories)
 
             return userstories
+
+        promise.then( => @scope.$broadcast("redraw:wip"))
+
+        return promise
 
     loadUserStoriesForStatus: (ctx, statusId) ->
         params = { status: statusId }
@@ -211,7 +215,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         return promise.then (project) =>
             @.fillUsersAndRoles(project.members, project.roles)
             @.initializeSubscription()
-            @.loadKanban().then( => @scope.$broadcast("redraw:wip"))
+            @.loadKanban()
 
 
     ## View Mode methods
