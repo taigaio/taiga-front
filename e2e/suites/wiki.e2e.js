@@ -1,4 +1,5 @@
 var utils = require('../utils');
+var sharedDetail = require('../shared/detail');
 var wikiHelper = require('../helpers').wiki;
 
 var chai = require('chai');
@@ -71,7 +72,7 @@ describe('wiki', function() {
         await utils.common.takeScreenshot("wiki", "home-edition");
     });
 
-    it('attachments', utils.detail.attachmentTesting);
+    it('attachments', sharedDetail.attachmentTesting);
 
     it('delete', async function() {
         await wikiHelper.editor().delete();

@@ -1,4 +1,4 @@
-var utils = require('../utils');
+var utils = require('../../utils');
 
 var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');

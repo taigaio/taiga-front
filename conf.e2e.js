@@ -27,20 +27,20 @@ exports.config = {
     //     version: '11'
     // },
     suites: {
-        auth: "e2e/auth/*.e2e.js",
-        public: "e2e/public/**/*.e2e.js",
-        wiki: "e2e/full/wiki.e2e.js",
-        admin: "e2e/full/admin/**/*.e2e.js",
-        issues: "e2e/full/issues/*.e2e.js",
-        tasks: "e2e/full/tasks/*.e2e.js",
-        userProfile: "e2e/full/user-profile/*.e2e.js",
-        userStories: "e2e/full/user-stories/*.e2e.js",
-        backlog: "e2e/full/backlog.e2e.js",
-        home: "e2e/full/home.e2e.js",
-        kanban: "e2e/full/kanban.e2e.js",
-        projectHome: "e2e/full/project-home.e2e.js",
-        search: "e2e/full/search.e2e.js",
-        team: "e2e/full/team.e2e.js"
+        auth: "e2e/suites/auth/*.e2e.js",
+        public: "e2e/suites/public/**/*.e2e.js",
+        wiki: "e2e/suites/wiki.e2e.js",
+        admin: "e2e/suites/admin/**/*.e2e.js",
+        issues: "e2e/suites/issues/*.e2e.js",
+        tasks: "e2e/suites/tasks/*.e2e.js",
+        userProfile: "e2e/suites/user-profile/*.e2e.js",
+        userStories: "e2e/suites/user-stories/*.e2e.js",
+        backlog: "e2e/suites/backlog.e2e.js",
+        home: "e2e/suites/home.e2e.js",
+        kanban: "e2e/suites/kanban.e2e.js",
+        projectHome: "e2e/suites/project-home.e2e.js",
+        search: "e2e/suites/search.e2e.js",
+        team: "e2e/suites/team.e2e.js"
     },
     onPrepare: function() {
         // track mouse movements
@@ -81,8 +81,7 @@ exports.config = {
 
               setTimeout(function() {
                 dotEl.remove();
-              }, 1000)
-
+              }, 1000);
             }
 
             $document.on({

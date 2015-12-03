@@ -1,4 +1,5 @@
 var utils = require('../../utils');
+var sharedDetail = require('../../shared/detail');
 
 var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
@@ -6,7 +7,7 @@ var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 var expect = chai.expect;
 
-describe('Issue detail', async function(){
+describe.only('Issue detail', async function(){
     let issueUrl = '';
 
     before(async function(){
@@ -24,32 +25,32 @@ describe('Issue detail', async function(){
         await utils.common.takeScreenshot("issues", "detail");
     });
 
-    it('title edition', utils.detail.titleTesting);
+    it('title edition', sharedDetail.titleTesting);
 
-    it('tags edition', utils.detail.tagsTesting);
+    it('tags edition', sharedDetail.tagsTesting);
 
-    it('description edition', utils.detail.descriptionTesting);
+    it('description edition', sharedDetail.descriptionTesting);
 
-    it('status edition', utils.detail.statusTesting);
+    it('status edition', sharedDetail.statusTesting);
 
-    describe('assigned to edition', utils.detail.assignedToTesting);
+    describe('assigned to edition', sharedDetail.assignedToTesting);
 
-    describe('watchers edition', utils.detail.watchersTesting);
+    describe('watchers edition', sharedDetail.watchersTesting);
 
-    it('history', utils.detail.historyTesting);
+    it('history', sharedDetail.historyTesting);
 
-    it('block', utils.detail.blockTesting);
+    it('block', sharedDetail.blockTesting);
 
-    it('attachments', utils.detail.attachmentTesting);
+    it('attachments', sharedDetail.attachmentTesting);
 
-    describe('custom-fields', utils.detail.customFields.bind(this, 2));
+    describe('custom-fields', sharedDetail.customFields.bind(this, 2));
 
     it('screenshot', async function() {
         await utils.common.takeScreenshot("issues", "detail updated");
     });
 
     describe('delete & redirect', function() {
-        it('delete', utils.detail.deleteTesting);
+        it('delete', sharedDetail.deleteTesting);
 
         it('redirected', async function (){
             let url = await browser.getCurrentUrl();
