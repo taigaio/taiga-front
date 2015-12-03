@@ -6,3 +6,11 @@ _:-ms-fullscreen,
         min-height: auto;
     }
 }
+
+
+// External lybrary makes weird things. Please destroy
+.markItUpEditor {
+    @extend %small;
+    line-height: 1.5;
+    font-family: monospace;
+}
