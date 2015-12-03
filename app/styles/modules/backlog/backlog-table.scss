@@ -156,6 +156,7 @@
         &.ui-sortable-helper {
             background: lighten($primary, 60%);
             box-shadow: 1px 1px 10px rgba($black, .1);
+            opacity: .9;
             transition: background .2s ease-in;
         }
         .points {
