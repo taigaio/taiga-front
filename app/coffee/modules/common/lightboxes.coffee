@@ -513,7 +513,7 @@ AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationServic
             username = normalizeString(username)
             text = text.toUpperCase()
             text = normalizeString(text)
-            return _.contains(username, text)
+            return _.includes(username, text)
 
         render = (selected, text) ->
             users = _.clone($scope.activeUsers, true)
@@ -522,7 +522,7 @@ AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationServic
 
             ctx = {
                 selected: selected
-                users: _.first(users, 5)
+                users: _.slice(users, 0, 5)
                 showMore: users.length > 5
             }
 
@@ -608,7 +608,7 @@ WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationS
 
                 username = user.full_name_display.toUpperCase()
                 text = text.toUpperCase()
-                return _.contains(username, text)
+                return _.includes(username, text)
 
             users = _.clone($scope.activeUsers, true)
             users = _.filter(users, _.partial(_filterUsers, text))
@@ -618,7 +618,7 @@ WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationS
         render = (users) ->
             ctx = {
                 selected: false
-                users: _.first(users, 5)
+                users: _.head(users, 5)
                 showMore: users.length > 5
             }
 

@@ -108,7 +108,7 @@ class ProjectValuesController extends taiga.Controller
     loadValues: =>
         return @rs[@scope.resource].listValues(@scope.projectId, @scope.type).then (values) =>
             @scope.values = values
-            @scope.maxValueOrder = _.max(values, "order").order
+            @scope.maxValueOrder = _.maxBy(values, "order").order
             return values
 
     moveValue: (ctx, itemValue, itemIndex) =>
@@ -436,7 +436,7 @@ class ProjectCustomAttributesController extends mixOf(taiga.Controller, taiga.Pa
     loadCustomAttributes: =>
         return @rs.customAttributes[@scope.type].list(@scope.projectId).then (customAttributes) =>
             @scope.customAttributes = customAttributes
-            @scope.maxOrder = _.max(customAttributes, "order").order
+            @scope.maxOrder = _.maxBy(customAttributes, "order").order
             return customAttributes
 
     createCustomAttribute: (attrValues) =>

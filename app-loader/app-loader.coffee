@@ -53,7 +53,7 @@ loadPlugins = (plugins) ->
 
 promise = $.getJSON "/conf.json"
 promise.done (data) ->
-    window.taigaConfig = _.extend({}, window.taigaConfig, data)
+    window.taigaConfig = _.assign({}, window.taigaConfig, data)
 
 promise.always ->
     if window.taigaConfig.contribPlugins.length > 0

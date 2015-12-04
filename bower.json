@@ -47,7 +47,6 @@
     "tests"
   ],
   "dependencies": {
-    "lodash": "~2.4.2",
     "emoticons": "~0.1.7",
     "jquery-flot": "~0.8.2",
     "angular": "1.4.7",
@@ -83,10 +82,11 @@
     "eventemitter2": "~0.4.14",
     "immutable": "~3.7.6",
     "bluebird": "~2.10.2",
-    "intro.js": "~1.1.1"
+    "intro.js": "~1.1.1",
+    "lodash": "~4.0.0"
   },
   "resolutions": {
-    "lodash": "~2.4.2",
+    "lodash": "~4.0.0",
     "moment": "~2.10.6",
     "jquery": "~2.1.1",
     "angular": "1.4.7"
