@@ -200,22 +200,46 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             @rootscope.$broadcast("sprints:loaded", sprints)
             return sprints
 
-    resetFilters: ->
-        selectedTags = _.filter(@scope.filters.tags, "selected")
-        selectedStatuses = _.filter(@scope.filters.status, "selected")
+    restoreFilters: ->
+        selectedTags = @scope.oldSelectedTags
+        selectedStatuses = @scope.oldSelectedStatuses
 
-        @scope.filtersQ = ""
+        return if !selectedStatuses and !selectedStatuses
+
+        @scope.filtersQ = @scope.filtersQOld
+
+        @.replaceFilter("q", @scope.filtersQ)
 
         _.each [selectedTags, selectedStatuses], (filterGrp) =>
             _.each filterGrp, (item) =>
                 filters = @scope.filters[item.type]
-                filter = _.find(filters, {id: taiga.toString(item.id)})
+                filter = _.find(filters, {id: item.id})
+                filter.selected = true
+
+                @.selectFilter(item.type, item.id)
+
+        @.loadUserstories()
+
+    resetFilters: ->
+        selectedTags = _.filter(@scope.filters.tags, "selected")
+        selectedStatuses = _.filter(@scope.filters.status, "selected")
+
+        @scope.oldSelectedTags = selectedTags
+        @scope.oldSelectedStatuses = selectedStatuses
+
+        @scope.filtersQOld = @scope.filtersQ
+        @scope.filtersQ = ""
+        @.replaceFilter("q", null)
+
+        _.each [selectedTags, selectedStatuses], (filterGrp) =>
+            _.each filterGrp, (item) =>
+                filters = @scope.filters[item.type]
+                filter = _.find(filters, {id: item.id})
                 filter.selected = false
 
                 @.unselectFilter(item.type, item.id)
 
         @.loadUserstories()
-        @rootscope.$broadcast("filters:update")
 
     loadUserstories: ->
         @scope.httpParams = @.getUrlFilters()
@@ -732,6 +756,8 @@ BacklogDirective = ($repo, $rootscope, $translate) ->
 
         if !sidebar.hasClass("active")
             $ctrl.resetFilters()
+        else
+            $ctrl.restoreFilters()
 
         $ctrl.toggleActiveFilters()
 
