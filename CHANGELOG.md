@@ -1,7 +1,7 @@
 # Changelog #
 
 
-## 1.10.0 ??? (unreleased)
+## 1.9.1 Taiga Tribe (unreleased)
 - [118n] Now taiga plugins can be translatable.
 
 ### Misc
