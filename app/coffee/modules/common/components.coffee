@@ -263,7 +263,7 @@ module.directive("tgWatchers", ["$rootScope", "$tgConfirm", "$tgRepo", "$tgQqueu
 ## Assigned to directive
 #############################################################################
 
-AssignedToDirective = ($rootscope, $confirm, $repo, $loading, $qqueue, $template, $translate, $compile) ->
+AssignedToDirective = ($rootscope, $confirm, $repo, $loading, $qqueue, $template, $translate, $compile, $currentUserService) ->
     # You have to include a div with the tg-lb-assignedto directive in the page
     # where use this directive
     template = $template.get("common/components/assigned-to.html", true)
@@ -309,6 +309,12 @@ AssignedToDirective = ($rootscope, $confirm, $repo, $loading, $qqueue, $template
             $scope.$apply ->
                 $rootscope.$broadcast("assigned-to:add", $model.$modelValue)
 
+        $el.on "click", ".assign-to-me", (event) ->
+            event.preventDefault()
+            return if not isEditable()
+            $model.$modelValue.assigned_to = $currentUserService.getUser().get('id')
+            save($currentUserService.getUser().get('id'))
+
         $el.on "click", ".icon-delete", (event) ->
             event.preventDefault()
             return if not isEditable()
@@ -335,7 +341,7 @@ AssignedToDirective = ($rootscope, $confirm, $repo, $loading, $qqueue, $template
         require:"ngModel"
     }
 
-module.directive("tgAssignedTo", ["$rootScope", "$tgConfirm", "$tgRepo", "$tgLoading", "$tgQqueue", "$tgTemplate", "$translate", "$compile",
+module.directive("tgAssignedTo", ["$rootScope", "$tgConfirm", "$tgRepo", "$tgLoading", "$tgQqueue", "$tgTemplate", "$translate", "$compile","tgCurrentUserService",
                                   AssignedToDirective])
 
 

@@ -3,6 +3,7 @@
 
 ## 1.9.1 Taiga Tribe (unreleased)
 - [118n] Now taiga plugins can be translatable.
+- Added 'Assign to me' button in User Stories and Issues
 
 ### Misc
 - Statics folder hash to prevent cache problems when a new version is released.

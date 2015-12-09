@@ -49,6 +49,22 @@
             @include ellipsis(80%);
             display: inline-block;
         }
+        .assign-to-me {
+            display: block;
+            font-size: 90%;
+            margin: .5rem .5rem .5rem 0;
+            .icon {
+                background: rgba($grayer, .25);
+                color: $whitish;
+                margin-right: .5rem;
+                padding: .25rem;
+            }
+            &:hover .icon {
+                background: $primary-light;
+                color: $whitish;
+                transition: background .3s linear;
+            }
+        }
         .icon-delete {
             color: $gray-light;
             opacity: 0;

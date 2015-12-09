@@ -143,7 +143,8 @@
             "REMOVE_ASSIGNED": "Verwijder toegewezene",
             "TOO_MANY": "...te veel gebruikers, blijf filteren",
             "CONFIRM_UNASSIGNED": "Weet je zeker dat je deze niet wilt toewijzen?",
-            "TITLE_ACTION_EDIT_ASSIGNMENT": "Toewijzing bewerken"
+            "TITLE_ACTION_EDIT_ASSIGNMENT": "Toewijzing bewerken",
+            "SELF": "Toewijzen aan mij"
         },
         "STATUS": {
             "CLOSED": "Gesloten",

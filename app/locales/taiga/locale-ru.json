@@ -143,7 +143,8 @@
             "REMOVE_ASSIGNED": "Удалить назначение",
             "TOO_MANY": "...слишком много пользователей, продолжайте фильтровать",
             "CONFIRM_UNASSIGNED": "Вы уверены что не хотите назначить ответственного?",
-            "TITLE_ACTION_EDIT_ASSIGNMENT": "Изменить назначение"
+            "TITLE_ACTION_EDIT_ASSIGNMENT": "Изменить назначение",
+            "SELF": "Связать меня"
         },
         "STATUS": {
             "CLOSED": "Закрыт",

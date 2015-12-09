@@ -143,7 +143,8 @@
             "REMOVE_ASSIGNED": "Rimuovi incaricato",
             "TOO_MANY": "...troppi utenti, continua a filtrare",
             "CONFIRM_UNASSIGNED": "Sei sicuro di volerlo lasciare non assegnato?",
-            "TITLE_ACTION_EDIT_ASSIGNMENT": "Modifica incarico"
+            "TITLE_ACTION_EDIT_ASSIGNMENT": "Modifica incarico",
+            "SELF": "Assegna a me"
         },
         "STATUS": {
             "CLOSED": "Chiuso",

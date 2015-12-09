@@ -20,3 +20,11 @@
     <% if (assignedTo!==null && isEditable) { %>
     a.icon.icon-delete(href="" title="{{'COMMON.ASSIGNED_TO.DELETE_ASSIGNMENT' | translate}}")
     <% } %>
+    <% if(isEditable && !assignedTo){ %>
+    a.assign-to-me(
+        href=""
+        title="{{'COMMON.ASSIGNED_TO.SELF' | translate}}"
+    )
+        span.icon.icon-plus
+        span(translate="COMMON.ASSIGNED_TO.SELF")
+    <% }; %>

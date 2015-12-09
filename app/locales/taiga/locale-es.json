@@ -143,7 +143,8 @@
             "REMOVE_ASSIGNED": "Eliminar asignación",
             "TOO_MANY": "...Demasiados usuarios, continué filtrando",
             "CONFIRM_UNASSIGNED": "¿Está seguro de que desea dejarla sin asignar?",
-            "TITLE_ACTION_EDIT_ASSIGNMENT": "Editar asignación"
+            "TITLE_ACTION_EDIT_ASSIGNMENT": "Editar asignación",
+            "SELF": "Asignar a mí"
         },
         "STATUS": {
             "CLOSED": "Cerrada",

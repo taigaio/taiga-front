@@ -143,7 +143,8 @@
             "REMOVE_ASSIGNED": "Zugewiesene entfernen",
             "TOO_MANY": "...zu viele Benutzer. Filtern Sie! ",
             "CONFIRM_UNASSIGNED": "Möchten dies wirklich ohne eine Zuordnung verlassen?",
-            "TITLE_ACTION_EDIT_ASSIGNMENT": "Zuordnungen bearbeiten"
+            "TITLE_ACTION_EDIT_ASSIGNMENT": "Zuordnungen bearbeiten",
+            "SELF": "Vergeben Sie mir"
         },
         "STATUS": {
             "CLOSED": "Geschlossen",

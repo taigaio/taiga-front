@@ -143,7 +143,8 @@
             "REMOVE_ASSIGNED": "Esborra assignat",
             "TOO_MANY": ".. massa usuaris, segueix filtrant",
             "CONFIRM_UNASSIGNED": "Segut que vols deixar-ho sense assignar?",
-            "TITLE_ACTION_EDIT_ASSIGNMENT": "Editar assignament"
+            "TITLE_ACTION_EDIT_ASSIGNMENT": "Editar assignament",
+            "SELF": "Asignar a mí"
         },
         "STATUS": {
             "CLOSED": "Tancat",

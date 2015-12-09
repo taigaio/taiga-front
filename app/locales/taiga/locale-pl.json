@@ -143,7 +143,8 @@
             "REMOVE_ASSIGNED": "Ukryj przypisane",
             "TOO_MANY": "...zbyt wielu użytkowników, filtruj dalej Umpa Lumpy nie ogarniają",
             "CONFIRM_UNASSIGNED": "Jesteś pewny, że chcesz pozostawić nieprzypisane?",
-            "TITLE_ACTION_EDIT_ASSIGNMENT": "Edytuj przypisanie"
+            "TITLE_ACTION_EDIT_ASSIGNMENT": "Edytuj przypisanie",
+            "SELF": "Przypisanie do mnie"
         },
         "STATUS": {
             "CLOSED": "Zamknięte",
