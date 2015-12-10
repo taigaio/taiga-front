@@ -22,7 +22,7 @@ taiga = @.taiga
 
 class ThemeService extends taiga.Service = ->
     use: (themeName) ->
-        stylesheetEl = $("link[rel='stylesheet']")
+        stylesheetEl = $("link[rel='stylesheet']:first")
 
         if stylesheetEl.length == 0
             stylesheetEl = $("<link rel='stylesheet' href='' type='text/css'>")
