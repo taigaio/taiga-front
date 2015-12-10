@@ -97,7 +97,8 @@ class AppMetaService
         @._listener() if @.listener
 
         @._listener = @rootScope.$watchCollection fn, (metas) =>
-            @.setAll(metas.title, metas.description)
-
+            if metas
+                @.setAll(metas.title, metas.description)
+                @._listener()
 
 angular.module("taigaCommon").service("tgAppMetaService", AppMetaService)

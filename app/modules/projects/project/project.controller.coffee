@@ -36,9 +36,9 @@ class ProjectController
         @appMetaService.setfn @._setMeta.bind(this)
 
     _setMeta: (project)->
-        metas = {}
+        return null if !@.project
 
-        return metas if !@.project
+        metas = {}
 
         ctx = {projectName: @.project.get("name")}
 
