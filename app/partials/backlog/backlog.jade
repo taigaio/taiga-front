@@ -24,13 +24,22 @@ div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
 
         div.backlog-menu
             div.backlog-table-options
-                a.trans-button.move-to-current-sprint(
+                a.trans-button.move-to-current-sprint.move-to-sprint(
+                    ng-if="currentSprint"
                     href=""
                     title="{{'BACKLOG.MOVE_US_TO_CURRENT_SPRINT' | translate}}"
                     id="move-to-current-sprint"
                 )
                     span.icon.icon-move
                     span.text(translate="BACKLOG.MOVE_US_TO_CURRENT_SPRINT")
+                a.trans-button.move-to-latest-sprint.move-to-sprint(
+                    ng-if="!currentSprint"
+                    href=""
+                    title="{{'BACKLOG.MOVE_US_TO_LATEST_SPRINT' | translate}}"
+                    id="move-to-latest-sprint"
+                )
+                    span.icon.icon-move
+                    span.text(translate="BACKLOG.MOVE_US_TO_LATEST_SPRINT")
                 a.trans-button(
                     ng-if="userstories.length"
                     href=""
