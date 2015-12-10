@@ -59,39 +59,3 @@
         }
     }
 }
-
-.moustache {
-    animation-duration: 5s;
-    animation-iteration-count: infinite;
-    animation-name: moustache;
-    animation-timing-function: ease-in-out;
-    fill: rgba($primary, .9);
-    stroke: $primary-light;
-    stroke-width: 1px;
-    transform-origin: 50% 50%;
-    transition: .3s;
-    &:hover {
-        fill: rgba($primary-light, .9);
-        transition: .3s;
-    }
-}
-@keyframes moustache {
-    0% {
-        transform: rotate(0);
-    }
-    10% {
-        transform: rotate(-10deg);
-    }
-    30% {
-        transform: rotate(0);
-    }
-    70% {
-        transform: rotate(0);
-    }
-    80% {
-        transform: rotate(10deg);
-    }
-    90% {
-        transform: rotate(0);
-    }
-}
