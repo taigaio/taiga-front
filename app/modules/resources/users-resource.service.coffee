@@ -71,10 +71,13 @@ Resource = (urlsService, http, paginateResponseService) ->
         params.type = type if type?
         params.q = q if q?
 
-        return http.get(url, params)
-            .then (result) ->
-                result = Immutable.fromJS(result)
-                return paginateResponseService(result)
+        return http.get(url, params, {
+            headers: {
+                'x-lazy-pagination': true
+            }
+        }).then (result) ->
+            result = Immutable.fromJS(result)
+            return paginateResponseService(result)
 
     service.getVoted = (userId, page, type, q) ->
         url = urlsService.resolve("user-voted", userId)
@@ -84,10 +87,13 @@ Resource = (urlsService, http, paginateResponseService) ->
         params.type = type if type?
         params.q = q if q?
 
-        return http.get(url, params)
-            .then (result) ->
-                result = Immutable.fromJS(result)
-                return paginateResponseService(result)
+        return http.get(url, params, {
+            headers: {
+                'x-lazy-pagination': true
+            }
+        }).then (result) ->
+            result = Immutable.fromJS(result)
+            return paginateResponseService(result)
 
     service.getWatched = (userId, page, type, q) ->
         url = urlsService.resolve("user-watched", userId)
@@ -97,10 +103,13 @@ Resource = (urlsService, http, paginateResponseService) ->
         params.type = type if type?
         params.q = q if q?
 
-        return http.get(url, params)
-            .then (result) ->
-                result = Immutable.fromJS(result)
-                return paginateResponseService(result)
+        return http.get(url, params, {
+            headers: {
+                'x-lazy-pagination': true
+            }
+        }).then (result) ->
+            result = Immutable.fromJS(result)
+            return paginateResponseService(result)
 
     service.getProfileTimeline = (userId, page) ->
         params = {
@@ -110,7 +119,11 @@ Resource = (urlsService, http, paginateResponseService) ->
         url = urlsService.resolve("timeline-profile")
         url = "#{url}/#{userId}"
 
-        return http.get(url, params).then (result) ->
+        return http.get(url, params, {
+            headers: {
+                'x-lazy-pagination': true
+            }
+        }).then (result) ->
             result = Immutable.fromJS(result)
             return paginateResponseService(result)
 
@@ -122,7 +135,12 @@ Resource = (urlsService, http, paginateResponseService) ->
         url = urlsService.resolve("timeline-user")
         url = "#{url}/#{userId}"
 
-        return http.get(url, params).then (result) ->
+
+        return http.get(url, params, {
+            headers: {
+                'x-lazy-pagination': true
+            }
+        }).then (result) ->
             result = Immutable.fromJS(result)
             return paginateResponseService(result)
 

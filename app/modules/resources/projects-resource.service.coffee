@@ -66,7 +66,11 @@ Resource = (urlsService, http, paginateResponseService) ->
         url = urlsService.resolve("timeline-project")
         url = "#{url}/#{projectId}"
 
-        return http.get(url, params).then (result) ->
+        return http.get(url, params, {
+            headers: {
+                'x-lazy-pagination': true
+            }
+        }).then (result) ->
             result = Immutable.fromJS(result)
             return paginateResponseService(result)
 
