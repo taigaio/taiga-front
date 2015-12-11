@@ -276,7 +276,7 @@
         "LINK_FORGOT_PASSWORD": "Forgot it?",
         "TITLE_LINK_FORGOT_PASSWORD": "Did you forgot your password?",
         "ACTION_ENTER": "Enter",
-        "ACTION_SIGN_IN": "Sign in",
+        "ACTION_SIGN_IN": "Login",
         "PLACEHOLDER_AUTH_PASSWORD": "Password (case sensitive)"
     },
     "LOGIN_FORM": {
