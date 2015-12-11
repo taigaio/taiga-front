@@ -1,26 +1,33 @@
 .search-filter {
-    ul {
-        border-bottom: 3px solid $gray-light;
-        display: flex;
-        padding-bottom: .5rem;
-    }
-    li {
-        margin-right: 1rem;
-    }
+    border-top: 1px solid $whitish;
+    display: flex;
+    margin-bottom: 0;
+    z-index: 9;
     a {
-        @extend %large;
-        @extend %title;
-        opacity: .2;
+        background: $white;
+        color: $gray-light;
+        display: inline-block;
+        margin-right: 1rem;
+        padding: 1rem 1.25rem;
         &:hover {
-            color: $gray;
-            opacity: 1;
-            transition: opacity .3s linear;
+            transition: color .3s linear;
+            .icon {
+                margin-right: .4rem;
+            }
+            .name {
+                padding-left: 5px;
+            }
         }
-    }
-    .active {
-        color: $gray;
-        opacity: 1;
-        transition: opacity .3s linear;
+        &.active {
+            border-left: 1px solid $whitish;
+            border-right: 1px solid $whitish;
+            color: $grayer;
+            position: relative;
+            top: 1px;
+            .icon {
+                color: $primary-light;
+            }
+        }
     }
     .icon {
         margin-right: .4rem;
