@@ -6,13 +6,14 @@ div.wrapper(ng-controller="WikiDetailController as ctrl",
     sidebar.menu-secondary.extrabar(tg-check-permission="view_wiki_links")
         section.wiki-nav(tg-wiki-nav, ng-model="wikiLinks")
     section.main.wiki
-        .header
+        header
             h1
                 span(tg-bo-bind="project.name")
                 span.green(translate="PROJECT.SECTION.WIKI")
-                span.wiki-title(ng-bind='wikiTitle')
+                
 
         div.summary.wiki-summary(tg-wiki-summary, ng-model="wiki", ng-if="wiki.id")
+        h2.wiki-title(ng-bind='wikiTitle')
         section.wiki-content(tg-editable-wiki-content, ng-model="wiki")
 
         tg-attachments(ng-model="wiki", type="wiki_page", ng-if="wiki.id")
