@@ -60,7 +60,8 @@ Resource = (urlsService, http, paginateResponseService) ->
 
     service.getTimeline = (projectId, page) ->
         params = {
-            page: page
+            page: page,
+            only_relevant: true
         }
 
         url = urlsService.resolve("timeline-project")
