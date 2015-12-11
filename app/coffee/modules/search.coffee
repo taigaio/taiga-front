@@ -95,19 +95,15 @@ class SearchController extends mixOf(taiga.Controller, taiga.PageMixin)
         @scope.loading = true
 
         @._loadSearchData(term).then (data) =>
-            if data
-                @scope.searchResults = data
-                @scope.loading = false
+            @scope.searchResults = data
+            @scope.loading = false
 
     _loadSearchData: (term = "") ->
-        @.deferredAbort.resolve() if @.deferredAbort
+        @._promise.abort() if @._promise
 
-        @.deferredAbort = @q.defer()
+        @._promise = @rs.search.do(@scope.projectId, term)
 
-        @rs.search.do(@scope.projectId, term).then (data) =>
-            @.deferredAbort.resolve(data)
-
-        return @.deferredAbort.promise
+        return @._promise
 
     loadInitialData: ->
         return @.loadProject().then (project) =>

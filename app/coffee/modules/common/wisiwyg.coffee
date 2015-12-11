@@ -69,6 +69,8 @@ MarkitupDirective = ($rootscope, $rs, $selectedText, $template, $compile, $trans
         $scope.$on "markdown-editor:submit", ->
             closePreviewMode()
 
+        cancelablePromise = null
+
         preview = ->
             markdownDomNode = element.parents(".markdown")
             markItUpDomNode = element.parents(".markItUp")
@@ -370,7 +372,11 @@ MarkitupDirective = ($rootscope, $rs, $selectedText, $template, $compile, $trans
                                         return true
                                 return false
 
-                            $rs.search.do($scope.projectId, term).then (res) =>
+                            cancelablePromise.abort() if cancelablePromise
+
+                            cancelablePromise = $rs.search.do($scope.projectId, term)
+
+                            cancelablePromise.then (res) =>
                                 # ignore wikipages if they're the only results. can't exclude them in search
                                 if res.count < 1 or res.count == res.wikipages.length
                                     callback([])
