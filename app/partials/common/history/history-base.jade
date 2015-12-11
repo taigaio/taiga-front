@@ -1,4 +1,4 @@
-section.history
+section.history(tg-check-permission!="modify_<%- type %>")
     ul.history-tabs
         li
             a(href="#", class="active", data-section-class="history-comments")
@@ -10,7 +10,7 @@ section.history
                 span.tab-title(translate="ACTIVITY.TITLE")
     section.history-comments
         .comments-list
-        div(tg-check-permission!="modify_<%- type %>", tg-toggle-comment, class="add-comment")
+        div(tg-toggle-comment, class="add-comment")
             textarea(ng-attr-placeholder="{{'COMMENTS.TYPE_NEW_COMMENT' | translate}}", ng-model!="<%- ngmodel %>.comment", tg-markitup="tg-markitup")
             <% if (mode !== "edit") { %>
             a(class="help-markdown", href="https://taiga.io/support/taiga-markdown-syntax/", target="_blank", title="{{'COMMON.WYSIWYG.MARKDOWN_HELP' | translate}}")
