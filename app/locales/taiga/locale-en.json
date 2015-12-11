@@ -274,7 +274,7 @@
         "HEADER": "I already have a Taiga login",
         "PLACEHOLDER_AUTH_NAME": "Username or email (case sensitive)",
         "LINK_FORGOT_PASSWORD": "Forgot it?",
-        "TITLE_LINK_FORGOT_PASSWORD": "Did you forgot your password?",
+        "TITLE_LINK_FORGOT_PASSWORD": "Did you forget your password?",
         "ACTION_ENTER": "Enter",
         "ACTION_SIGN_IN": "Login",
         "PLACEHOLDER_AUTH_PASSWORD": "Password (case sensitive)"
@@ -1311,7 +1311,7 @@
         "HINT2_TEXT": "Teams can now create custom fields as a flexible means to enter specific data useful for their particular workflow.",
         "HINT3_TITLE": "Reorder your projects to feature those most relevant to you.",
         "HINT3_TEXT": "The 10 projects are listed in the direct access bar at the top.",
-        "HINT4_TITLE": "Did you forgot what were you working on?",
+        "HINT4_TITLE": "Did you forget what were you working on?",
         "HINT4_TEXT": "Don't worry, on your dashboard you'll find your open tasks, issues, and user stories in the order you worked on them."
     },
     "TIMELINE": {
