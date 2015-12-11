@@ -45,8 +45,6 @@ class HttpService extends taiga.Service
 
     request: (options) ->
         options.headers = _.merge({}, options.headers or {}, @.headers())
-        if _.isPlainObject(options.data)
-            options.data = JSON.stringify(options.data)
 
         return @http(options)
 

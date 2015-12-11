@@ -419,7 +419,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     # Add next param when user try to access to a secction need auth permissions.
     authHttpIntercept = ($q, $location, $navUrls, $lightboxService) ->
         httpResponseError = (response) ->
-            if response.status == 0 || response.status == -1
+            if response.status == 0 || (response.status == -1 && !response.config.cancelable)
                 $lightboxService.closeAll()
                 $location.path($navUrls.resolve("error"))
                 $location.replace()
