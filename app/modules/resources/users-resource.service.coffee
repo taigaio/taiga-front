@@ -71,6 +71,8 @@ Resource = (urlsService, http, paginateResponseService) ->
         params.type = type if type?
         params.q = q if q?
 
+        params.only_relevant = true
+
         return http.get(url, params, {
             headers: {
                 'x-lazy-pagination': true
@@ -129,7 +131,8 @@ Resource = (urlsService, http, paginateResponseService) ->
 
     service.getUserTimeline = (userId, page) ->
         params = {
-            page: page
+            page: page,
+            only_relevant: true
         }
 
         url = urlsService.resolve("timeline-user")
