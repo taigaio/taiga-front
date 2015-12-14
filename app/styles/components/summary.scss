@@ -150,6 +150,10 @@ $summary-background: $grayer;
     }
 }
 
+.taskboard-summary-points {
+    margin-top: -30px;
+}
+
 .empty-burndown {
     @extend %light;
     align-content: center;
