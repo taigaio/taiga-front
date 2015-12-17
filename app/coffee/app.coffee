@@ -622,6 +622,8 @@ init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $na
 
 pluginsWithModule = _.filter(@.taigaContribPlugins, (plugin) -> plugin.module)
 
+angular.module('infinite-scroll').value('THROTTLE_MILLISECONDS', 500)
+
 modules = [
     # Main Global Modules
     "taigaBase",
