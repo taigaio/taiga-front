@@ -516,11 +516,12 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
 
     $translateProvider.fallbackLanguage(preferedLangCode)
 
-    # decoratos
-    decorators = _.where(@.taigaContribPlugins, {"type": "decorator"})
+    # decoratos plugins
+    decorators = window.getDecorators()
 
     _.each decorators, (decorator) ->
         $provide.decorator decorator.provider, decorator.decorator
+
 
 i18nInit = (lang, $translate) ->
     # i18n - moment.js

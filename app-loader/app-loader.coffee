@@ -15,6 +15,13 @@ window.taigaConfig = {
     "maxUploadFileSize": null,
     "contribPlugins": []
 }
+window._decorators= []
+
+window.addDecorator = (provider, decorator) ->
+    window._decorators.push({provider: provider, decorator: decorator})
+
+window.getDecorators = ->
+    return window._decorators
 
 loadStylesheet = (path) ->
     $('head').append('<link rel="stylesheet" href="' + path + '" type="stylesheet" />')
