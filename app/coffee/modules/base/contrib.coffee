@@ -19,7 +19,8 @@
 # File: modules/base/contrib.coffee
 ###
 
-taigaContribPlugins = @.taigaContribPlugins = @.taigaContribPlugins or []
+module = angular.module("taigaBase")
+
 
 class ContribController extends taiga.Controller
     @.$inject = [
@@ -32,9 +33,7 @@ class ContribController extends taiga.Controller
     ]
 
     constructor: (@rootScope, @scope, @params, @repo, @rs, @confirm) ->
-        @scope.adminPlugins = _.where(@rootScope.contribPlugins, {"type": "admin"})
-        @scope.currentPlugin = _.first(_.where(@scope.adminPlugins, {"slug": @params.plugin}))
-        @scope.pluginTemplate = "contrib/#{@scope.currentPlugin.slug}"
+        @scope.currentPlugin = _.first(_.where(@rootScope.adminPlugins, {"slug": @params.plugin}))
         @scope.projectSlug = @params.pslug
 
         promise = @.loadInitialData()
@@ -53,5 +52,4 @@ class ContribController extends taiga.Controller
     loadInitialData: ->
         return @.loadProject()
 
-module = angular.module("taigaBase")
 module.controller("ContribController", ContribController)

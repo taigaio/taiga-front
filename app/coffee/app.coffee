@@ -20,7 +20,7 @@
 ###
 
 @taiga = taiga = {}
-@.taigaContribPlugins = @.taigaContribPlugins or []
+@.taigaContribPlugins = @.taigaContribPlugins or window.taigaContribPlugins or []
 
 # Generic function for generate hash from a arbitrary length
 # collection of parameters.

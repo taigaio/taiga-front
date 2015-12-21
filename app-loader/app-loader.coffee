@@ -1,4 +1,5 @@
 window._version = "___VERSION___"
+
 window.taigaConfig = {
     "api": "http://localhost:8000/api/v1/",
     "eventsUrl": null,
@@ -15,7 +16,10 @@ window.taigaConfig = {
     "maxUploadFileSize": null,
     "contribPlugins": []
 }
-window._decorators= []
+
+window.taigaContribPlugins = []
+
+window._decorators = []
 
 window.addDecorator = (provider, decorator) ->
     window._decorators.push({provider: provider, decorator: decorator})
@@ -29,6 +33,8 @@ loadStylesheet = (path) ->
 loadPlugin = (pluginPath) ->
     return new Promise (resolve, reject) ->
         $.getJSON(pluginPath).then (plugin) ->
+            window.taigaContribPlugins.push(plugin)
+
             if plugin.css
                 loadStylesheet(plugin.css)
 
