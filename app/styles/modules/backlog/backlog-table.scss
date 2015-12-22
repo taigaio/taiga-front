@@ -46,7 +46,7 @@
             width: 100%;
         }
         .status {
-            flex-basis: 150px;
+            flex-basis: 100px;
             flex-grow: 0;
             flex-shrink: 0;
         }
@@ -190,10 +190,9 @@
             @extend %light;
             display: inline-block;
             flex: 1;
-            max-width: 90%;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
+        }
+        span {
+            line-height: 1.5;
         }
     }
     .tags-block {
