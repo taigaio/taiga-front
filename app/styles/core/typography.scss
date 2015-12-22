@@ -1,14 +1,15 @@
 // Typography
 // Font face
 
-@each $font-face in OpenSans-CondLight,
+@each $font-face in
+OpenSans-CondLight,
 OpenSans-Light,
-opensans-regular,
-opensans-semibold,
+Opensans-Regular,
+Opensans-Bold,
 taiga {
     @font-face {
         font-family: '#{$font-face}';
-        src: url('../fonts/#{$font-face}.eot?#iefix') format('embedded-opentype'), url('../fonts/#{$font-face}.woff') format('woff'), url('../fonts/#{$font-face}.ttf') format('truetype'), url('../fonts/#{$font-face}.svg#{$font-face}') format('svg');
+        src: url('../fonts/#{$font-face}.ttf') format('truetype');
     }
 }
 
