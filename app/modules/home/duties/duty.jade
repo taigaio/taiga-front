@@ -25,5 +25,5 @@ a.list-itemtype-ticket(
                 span.ticket-blocked(
                     ng-if="::vm.duty.get('is_blocked')"
                     title="{{::vm.duty.get('blocked_note')}}"
-                ) Blocked {{ COMMON.BLOCKED | translate }}
-                {{ ::duty.get('subject') }}
+                ) {{ 'COMMON.BLOCKED' | translate }} 
+                span {{ ::duty.get('subject') }}
