@@ -140,13 +140,6 @@
             display: none;
         }
     }
-    .level-field,
-    .created-field,
-    .assigned-field {
-        @include breakpoint(tablet) {
-            display: none;
-        }
-    }
 }
 
 .empty-issues {
