@@ -3,8 +3,17 @@ $label-arrow-wh: 12px;
 tg-project-menu {
     background-position: 0 -300px;
     min-height: $main-height;
+    min-width: 50px;
     padding: 1rem 0;
+    position: relative;
     text-transform: uppercase;
+    z-index: 9;
+    .menu {
+        &.menu-fixed {
+            position: fixed;
+            top: 1rem;
+        }
+    }
 }
 
 .main-nav {

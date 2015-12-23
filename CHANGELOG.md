@@ -9,6 +9,7 @@
 - Drag files from desktop to attachments section.
 - Drag files from desktop in wysiwyg textareas.
 - New design for the detail pages slidebar.
+- Sticky project navigation bar.
 
 ### Misc
 - Lots of small and not so small bugfixes.
@@ -17,7 +18,6 @@
 ## 1.9.1 Taiga Tribe (2016-01-05)
 
 ### Features
-- Statics folder hash.
 - [118n] Now taiga plugins can be translatable.
 - New Taiga plugins system.
 - Now superadmins can send notifications (live announcement) to the user (through taiga-events).
