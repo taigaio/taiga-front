@@ -115,14 +115,14 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.taskId = task.id
             @scope.commentModel = task
 
-            if @scope.task.neighbors.previous.ref?
+            if @scope.task.neighbors.previous?.ref?
                 ctx = {
                     project: @scope.project.slug
                     ref: @scope.task.neighbors.previous.ref
                 }
                 @scope.previousUrl = @navUrls.resolve("project-tasks-detail", ctx)
 
-            if @scope.task.neighbors.next.ref?
+            if @scope.task.neighbors.next?.ref?
                 ctx = {
                     project: @scope.project.slug
                     ref: @scope.task.neighbors.next.ref

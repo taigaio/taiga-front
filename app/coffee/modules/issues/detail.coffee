@@ -127,14 +127,14 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.issueId = issue.id
             @scope.commentModel = issue
 
-            if @scope.issue.neighbors.previous.ref?
+            if @scope.issue.neighbors.previous?.ref?
                 ctx = {
                     project: @scope.project.slug
                     ref: @scope.issue.neighbors.previous.ref
                 }
                 @scope.previousUrl = @navUrls.resolve("project-issues-detail", ctx)
 
-            if @scope.issue.neighbors.next.ref?
+            if @scope.issue.neighbors.next?.ref?
                 ctx = {
                     project: @scope.project.slug
                     ref: @scope.issue.neighbors.next.ref

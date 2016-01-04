@@ -152,14 +152,14 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.usId = us.id
             @scope.commentModel = us
 
-            if @scope.us.neighbors.previous.ref?
+            if @scope.us.neighbors.previous?.ref?
                 ctx = {
                     project: @scope.project.slug
                     ref: @scope.us.neighbors.previous.ref
                 }
                 @scope.previousUrl = @navUrls.resolve("project-userstories-detail", ctx)
 
-            if @scope.us.neighbors.next.ref?
+            if @scope.us.neighbors.next?.ref?
                 ctx = {
                     project: @scope.project.slug
                     ref: @scope.us.neighbors.next.ref
