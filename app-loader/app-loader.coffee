@@ -28,7 +28,7 @@ window.getDecorators = ->
     return window._decorators
 
 loadStylesheet = (path) ->
-    $('head').append('<link rel="stylesheet" href="' + path + '" type="stylesheet" />')
+    $('head').append('<link rel="stylesheet" href="' + path + '" type="text/css" />')
 
 loadPlugin = (pluginPath) ->
     return new Promise (resolve, reject) ->
