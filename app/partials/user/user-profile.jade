@@ -19,7 +19,7 @@ div.wrapper(tg-user-profile, ng-controller="UserSettingsController as ctrl",
                             img.avatar(ng-src="{{user.big_photo}}" alt="avatar")
                             .overlay.hidden
                                 img.loading-spinner(
-                                    src="/svg/spinner-circle.svg",
+                                    src="/#{v}/svg/spinner-circle.svg",
                                     alt="{{'COMMON.LOADING' | translate}}"
                                 )
 
@@ -43,6 +43,8 @@ div.wrapper(tg-user-profile, ng-controller="UserSettingsController as ctrl",
                         label(for="username", translate="USER_PROFILE.FIELD.USERNAME")
                         input(
                             type="text"
+                            autocorrect="off" 
+                            autocapitalize="none"
                             name="username"
                             id="username"
                             ng-model="user.username"
@@ -55,7 +57,7 @@ div.wrapper(tg-user-profile, ng-controller="UserSettingsController as ctrl",
                     fieldset
                         label(for="email", translate="USER_PROFILE.FIELD.EMAIL")
                         input(
-                            type="text"
+                            type="email"
                             name="email"
                             id="email"
                             ng-model="user.email"

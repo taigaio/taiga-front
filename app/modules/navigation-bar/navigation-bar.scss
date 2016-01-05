@@ -5,7 +5,7 @@ $dropdown-width: 350px;
     height: $navbar;
     justify-content: space-between;
     position: relative;
-    &:after {
+    &::after {
         background-size: 200%;
         bottom: 0;
         content: '';

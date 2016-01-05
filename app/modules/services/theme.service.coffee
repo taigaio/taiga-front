@@ -1,5 +1,5 @@
 ###
-# Copyright (C) 2014-2015 Taiga Agile LLC <taiga@taiga.io>
+# Copyright (C) 2014-2016 Taiga Agile LLC <taiga@taiga.io>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -22,13 +22,13 @@ taiga = @.taiga
 
 class ThemeService extends taiga.Service = ->
     use: (themeName) ->
-        stylesheetEl = $("link[rel='stylesheet']")
+        stylesheetEl = $("link[rel='stylesheet']:first")
 
         if stylesheetEl.length == 0
             stylesheetEl = $("<link rel='stylesheet' href='' type='text/css'>")
             $("head").append(stylesheetEl)
 
-        stylesheetEl.attr("href", "/styles/theme-#{themeName}.css")
+        stylesheetEl.attr("href", "/#{window._version}/styles/theme-#{themeName}.css")
 
 
 angular.module("taigaCommon").service("tgThemeService", ThemeService)

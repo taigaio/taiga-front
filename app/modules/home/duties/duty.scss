@@ -12,15 +12,15 @@
         &:last-child {
             border: 0;
         }
-        &.blocked {
-            background: rgba($red-light, .2);
-            color: $red;
-        }
         >a {
             align-items: center;
             border-bottom: 0;
             display: flex;
             flex-direction: row;
+            &.blocked {
+                background: rgba($red-light, .2);
+                color: $red;
+            }
         }
     }
     .see-more {

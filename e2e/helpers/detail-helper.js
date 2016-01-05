@@ -412,6 +412,9 @@ helper.watchersLightbox = function() {
         waitClose: function() {
             return utils.lightbox.close(el);
         },
+        close: function() {
+            el.$$('.icon-delete').first().click();
+        },
         selectFirst: async function() {
             el.$$('div[data-user-id]').first().click();
             await browser.waitForAngular();
@@ -427,7 +430,7 @@ helper.watchersLightbox = function() {
         },
         userList: function() {
             return el.$$('.user-list-single');
-        }        
+        }
     };
 
     return obj;

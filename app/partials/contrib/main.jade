@@ -9,4 +9,4 @@ div.wrapper.roles(ng-init="section='admin'", ng-controller="ContribController as
     sidebar.menu-tertiary.sidebar
         include ../includes/modules/admin/admin-submenu-contrib
 
-    section.main.admin-common.admin-contrib(ng-include="pluginTemplate")
+    section.main.admin-common.admin-contrib(ng-include="currentPlugin.template")

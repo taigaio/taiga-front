@@ -1,7 +1,7 @@
 ###
-# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.be>
-# Copyright (C) 2014-2015 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014-2015 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2016 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2016 David Barragán Merino <bameda@dbarragan.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -219,7 +219,7 @@ MembershipsRowAvatarDirective = ($log, $template, $translate) ->
             ctx = {
                 full_name: if member.full_name then member.full_name else ""
                 email: if member.user_email then member.user_email else member.email
-                imgurl: if member.photo then member.photo else "/images/unnamed.png"
+                imgurl: if member.photo then member.photo else "/" + window._version + "/images/unnamed.png"
                 pending: if !member.is_user_active then pending else ""
             }
 

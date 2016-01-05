@@ -1,7 +1,7 @@
 ###
-# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.be>
-# Copyright (C) 2014-2015 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014-2015 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2016 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2016 David Barragán Merino <bameda@dbarragan.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -20,7 +20,7 @@
 ###
 
 @taiga = taiga = {}
-@.taigaContribPlugins = @.taigaContribPlugins or []
+@.taigaContribPlugins = @.taigaContribPlugins or window.taigaContribPlugins or []
 
 # Generic function for generate hash from a arbitrary length
 # collection of parameters.
@@ -39,7 +39,7 @@ taiga.sessionId = taiga.generateUniqueSessionIdentifier()
 
 
 configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEventsProvider,
-             $compileProvider, $translateProvider, $animateProvider) ->
+             $compileProvider, $translateProvider, $translatePartialLoaderProvider, $animateProvider) ->
 
     $animateProvider.classNameFilter(/^(?:(?!ng-animate-disabled).)*$/)
 
@@ -505,10 +505,10 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     # i18n
     preferedLangCode = userInfo?.lang || window.taigaConfig.defaultLanguage || "en"
 
+    $translatePartialLoaderProvider.addPart('taiga')
     $translateProvider
-        .useStaticFilesLoader({
-            prefix: "/locales/locale-",
-            suffix: ".json"
+        .useLoader('$translatePartialLoader', {
+            urlTemplate: '/' + window._version + '/locales/{part}/locale-{lang}.json'
         })
         .useSanitizeValueStrategy('escapeParameters')
         .addInterpolation('$translateMessageFormatInterpolation')
@@ -516,17 +516,12 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
 
     $translateProvider.fallbackLanguage(preferedLangCode)
 
-    # decoratos
-    decorators = _.where(@.taigaContribPlugins, {"type": "decorator"})
+    # decoratos plugins
+    decorators = window.getDecorators()
 
     _.each decorators, (decorator) ->
         $provide.decorator decorator.provider, decorator.decorator
 
-    # decoratos
-    decorators = _.where(@.taigaContribPlugins, {"type": "decorator"})
-
-    _.each decorators, (decorator) ->
-        $provide.decorator decorator.provider, decorator.decorator
 
 i18nInit = (lang, $translate) ->
     # i18n - moment.js
@@ -578,9 +573,10 @@ init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $na
     Promise.setScheduler (cb) ->
         $rootscope.$evalAsync(cb)
 
+    $events.setupConnection()
+    
     # Load user
     if $auth.isAuthenticated()
-        $events.setupConnection()
         user = $auth.getUser()
 
     # Analytics
@@ -690,6 +686,7 @@ module.config([
     "$tgEventsProvider",
     "$compileProvider",
     "$translateProvider",
+    "$translatePartialLoaderProvider",
     "$animateProvider",
     configure
 ])

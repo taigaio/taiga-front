@@ -1,7 +1,7 @@
 ###
-# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.be>
-# Copyright (C) 2014-2015 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014-2015 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2016 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2016 David Barragán Merino <bameda@dbarragan.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -157,7 +157,7 @@ WikiSummaryDirective = ($log, $template, $compile, $translate) ->
                 user = $scope.usersById[wiki.last_modifier]
 
             if user is undefined
-                user = {name: "unknown", imgUrl: "/images/user-noimage.png"}
+                user = {name: "unknown", imgUrl: "/" + window._version + "/images/user-noimage.png"}
             else
                 user = {name: user.full_name_display, imgUrl: user.photo}
 

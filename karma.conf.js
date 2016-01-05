@@ -2,9 +2,6 @@
 // Generated on Wed Apr 15 2015 09:44:14 GMT+0200 (CEST)
 
 // this is needed by theme.service.spec
-var fs = require('fs');
-fs.writeFileSync('dist/styles/empty.css', '');
-
 module.exports = function(config) {
   var configuration = {
 
@@ -20,7 +17,7 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'karma.app.conf.js',
-      'dist/js/libs.js',
+      'dist/**/js/libs.js',
       'node_modules/angular-mocks/angular-mocks.js',
       'vendor/bluebird/js/browser/bluebird.js',
       'node_modules/chai-jquery/chai-jquery.js',
@@ -28,8 +25,8 @@ module.exports = function(config) {
       'vendor/lodash/dist/lodash.js',
       'vendor/underscore.string/lib/underscore.string.js',
       'test-utils.js',
-      'dist/js/app.js',
-      'dist/js/templates.js',
+      'dist/**/js/app.js',
+      'dist/**/js/templates.js',
       'app/**/*spec.coffee'
     ],
 
@@ -96,8 +93,7 @@ module.exports = function(config) {
     proxies:  {
       '/images/': 'http://localhost:9001/images/',
       '/base/dist/js/maps/': 'http://localhost:9001/js/maps/',
-      '/base/dist/js/maps/': 'http://localhost:9001/js/maps/',
-      '/styles/theme-testTheme.css': 'http://localhost:9001/styles/empty.css'
+      '/base/dist/js/maps/': 'http://localhost:9001/js/maps/'
     },
 
     // Continuous Integration mode

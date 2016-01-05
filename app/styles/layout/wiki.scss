@@ -1,4 +1,8 @@
 .wiki {
+    .wiki-title {
+        @extend %light;
+        @extend %larger;
+    }
     .remove {
         @extend %small;
         color: $gray-light;

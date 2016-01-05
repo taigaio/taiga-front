@@ -1,7 +1,7 @@
 ###
-# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.be>
-# Copyright (C) 2014-2015 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014-2015 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2016 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2016 David Barragán Merino <bameda@dbarragan.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -152,14 +152,14 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.usId = us.id
             @scope.commentModel = us
 
-            if @scope.us.neighbors.previous.ref?
+            if @scope.us.neighbors.previous?.ref?
                 ctx = {
                     project: @scope.project.slug
                     ref: @scope.us.neighbors.previous.ref
                 }
                 @scope.previousUrl = @navUrls.resolve("project-userstories-detail", ctx)
 
-            if @scope.us.neighbors.next.ref?
+            if @scope.us.neighbors.next?.ref?
                 ctx = {
                     project: @scope.project.slug
                     ref: @scope.us.neighbors.next.ref

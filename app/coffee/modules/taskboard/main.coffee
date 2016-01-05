@@ -1,7 +1,7 @@
 ###
-# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.be>
-# Copyright (C) 2014-2015 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014-2015 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2016 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2016 David Barragán Merino <bameda@dbarragan.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -185,7 +185,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
                     @scope.usTasks[task.user_story][task.status].push(task)
 
             if tasks.length == 0
-                
+
                 if @scope.userstories.length > 0
                     usId = @scope.userstories[0].id
                 else
@@ -442,7 +442,7 @@ TaskboardUserDirective = ($log) ->
             user = $scope.usersById[assigned_to]
 
             if user is undefined
-                _.assign($scope, {name: "Unassigned", imgurl: "/images/unnamed.png", clickable: clickable})
+                _.assign($scope, {name: "Unassigned", imgurl: "/" + window._version + "/images/unnamed.png", clickable: clickable})
             else
                 _.assign($scope, {name: user.full_name_display, imgurl: user.photo, clickable: clickable})
 

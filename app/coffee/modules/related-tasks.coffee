@@ -1,7 +1,7 @@
 ###
-# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.be>
-# Copyright (C) 2014-2015 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014-2015 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2016 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2016 David Barragán Merino <bameda@dbarragan.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -248,7 +248,7 @@ RelatedTaskAssignedToInlineEditionDirective = ($repo, $rootscope, popoverService
 
     link = ($scope, $el, $attrs) ->
         updateRelatedTask = (task) ->
-            ctx = {name: "Unassigned", imgurl: "/images/unnamed.png"}
+            ctx = {name: "Unassigned", imgurl: "/" + window._version + "/images/unnamed.png"}
             member = $scope.usersById[task.assigned_to]
             if member
                 ctx.imgurl = member.photo

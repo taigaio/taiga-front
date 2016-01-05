@@ -1,7 +1,7 @@
 ###
-# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.be>
-# Copyright (C) 2014-2015 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014-2015 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2016 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2016 David Barragán Merino <bameda@dbarragan.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -19,7 +19,8 @@
 # File: modules/base/contrib.coffee
 ###
 
-taigaContribPlugins = @.taigaContribPlugins = @.taigaContribPlugins or []
+module = angular.module("taigaBase")
+
 
 class ContribController extends taiga.Controller
     @.$inject = [
@@ -32,9 +33,7 @@ class ContribController extends taiga.Controller
     ]
 
     constructor: (@rootScope, @scope, @params, @repo, @rs, @confirm) ->
-        @scope.adminPlugins = _.where(@rootScope.contribPlugins, {"type": "admin"})
-        @scope.currentPlugin = _.first(_.where(@scope.adminPlugins, {"slug": @params.plugin}))
-        @scope.pluginTemplate = "contrib/#{@scope.currentPlugin.slug}"
+        @scope.currentPlugin = _.first(_.where(@rootScope.adminPlugins, {"slug": @params.plugin}))
         @scope.projectSlug = @params.pslug
 
         promise = @.loadInitialData()
@@ -53,5 +52,4 @@ class ContribController extends taiga.Controller
     loadInitialData: ->
         return @.loadProject()
 
-module = angular.module("taigaBase")
 module.controller("ContribController", ContribController)

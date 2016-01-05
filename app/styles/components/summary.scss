@@ -44,6 +44,9 @@ $summary-background: $grayer;
                 fill: $primary-light;
                 transition: fill .2s;
             }
+            svg {
+                fill: $primary;
+            }
         }
         &.active {
             .white-line,
@@ -53,9 +56,14 @@ $summary-background: $grayer;
             .graph {
                 fill: $primary;
             }
+            svg {
+                fill: $primary;
+            }
         }
         svg {
+            fill: $black;
             height: 100%;
+            transition: all .2s;
             width: 100%;
         }
         .graph,

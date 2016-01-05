@@ -1,7 +1,7 @@
 ###
-# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.be>
-# Copyright (C) 2014-2015 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014-2015 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2016 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2016 David Barragán Merino <bameda@dbarragan.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -44,9 +44,9 @@ class AuthService extends taiga.Service
                   @themeService) ->
         super()
 
-        @._currentTheme = @config.get("defaultTheme") || "taiga" # load on index.jade
-
         userModel = @.getUser()
+        @._currentTheme = @._getUserTheme()
+
         @.setUserdata(userModel)
 
     setUserdata: (userModel) ->
@@ -57,7 +57,7 @@ class AuthService extends taiga.Service
             @.userData = null
 
     _getUserTheme: ->
-        return @rootscope.user?.theme || @config.get("defaultTheme") || "taiga"
+        return @rootscope.user?.theme || @config.get("defaultTheme") || "taiga" # load on index.jade
 
     _setTheme: ->
         newTheme = @._getUserTheme()
@@ -84,6 +84,8 @@ class AuthService extends taiga.Service
             @._setTheme()
 
             return user
+        else
+            @._setTheme()
 
         return null
 
@@ -219,6 +221,8 @@ module.directive("tgPublicRegisterMessage", ["$tgConfig", "$tgNavUrls", "$tgTemp
 
 LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls, $events, $translate) ->
     link = ($scope, $el, $attrs) ->
+        form = new checksley.Form($el.find("form.login-form"))
+
         onSuccess = (response) ->
             if $routeParams['next'] and $routeParams['next'] != $navUrls.resolve("login")
                 nextUrl = decodeURIComponent($routeParams['next'])
@@ -234,7 +238,6 @@ LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls, $
         submit = debounce 2000, (event) =>
             event.preventDefault()
 
-            form = new checksley.Form($el.find("form.login-form"))
             if not form.validate()
                 return
 

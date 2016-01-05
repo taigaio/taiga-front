@@ -1,7 +1,19 @@
 # Changelog #
 
 
-## 1.9.0 Abies Siberica (2015-11-XX)
+## 1.9.1 Taiga Tribe (2016-01-05)
+
+- [118n] Now taiga plugins can be translatable.
+- New Taiga plugins system.
+- Now superadmins can send notifications (live announcement) to the user (through taiga-events).
+
+### Misc
+- Statics folder hash to prevent cache problems when a new version is released.
+- Implement websockets heartbeat messages system for taiga-events.
+- Lots of small and not so small bugfixes.
+
+
+## 1.9.0 Abies Siberica (2015-11-02)
 
 ### Features
 - Ability to create single-line or multi-line custom fields. (thanks to [@artlepool](https://github.com/artlepool)).

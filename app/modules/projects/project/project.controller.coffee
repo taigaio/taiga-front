@@ -1,5 +1,5 @@
 ###
-# Copyright (C) 2014-2015 Taiga Agile LLC <taiga@taiga.io>
+# Copyright (C) 2014-2016 Taiga Agile LLC <taiga@taiga.io>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -36,9 +36,9 @@ class ProjectController
         @appMetaService.setfn @._setMeta.bind(this)
 
     _setMeta: (project)->
-        metas = {}
+        return null if !@.project
 
-        return metas if !@.project
+        metas = {}
 
         ctx = {projectName: @.project.get("name")}
 

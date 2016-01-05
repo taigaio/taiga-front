@@ -82,7 +82,11 @@ helper.editRelatedTasks = function(taskIndex, name, status, assigned_to) {
 helper.deleteRelatedTask = function(taskIndex, name, status, assigned_to) {
     let task = helper.relatedTasks().get(taskIndex);
 
-    task.$('.icon-delete').click();
+    browser
+        .actions()
+        .mouseMove(task.$('.icon-delete'))
+        .click()
+        .perform();
 
     utils.lightbox.confirm.ok();
 };

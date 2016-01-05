@@ -1,6 +1,8 @@
 {
     "api": "http://localhost:8000/api/v1/",
     "eventsUrl": null,
+    "eventsMaxMissedHeartbeats": 5,
+    "eventsHeartbeatIntervalTime": 60000,
     "debug": true,
     "debugInfo": false,
     "defaultLanguage": "en",

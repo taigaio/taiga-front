@@ -1,7 +1,7 @@
 ###
-# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.be>
-# Copyright (C) 2014-2015 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014-2015 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2016 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2016 David Barragán Merino <bameda@dbarragan.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -132,7 +132,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             status__is_archived: false
         }
 
-        return @rs.userstories.listAll(@scope.projectId, params).then (userstories) =>
+        promise = @rs.userstories.listAll(@scope.projectId, params).then (userstories) =>
             @scope.userstories = userstories
 
             usByStatus = _.groupBy(userstories, "status")
@@ -165,6 +165,10 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 @scope.$broadcast("userstories:loaded", userstories)
 
             return userstories
+
+        promise.then( => @scope.$broadcast("redraw:wip"))
+
+        return promise
 
     loadUserStoriesForStatus: (ctx, statusId) ->
         params = { status: statusId }
@@ -211,7 +215,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         return promise.then (project) =>
             @.fillUsersAndRoles(project.members, project.roles)
             @.initializeSubscription()
-            @.loadKanban().then( => @scope.$broadcast("redraw:wip"))
+            @.loadKanban()
 
 
     ## View Mode methods
@@ -547,7 +551,7 @@ KanbanUserDirective = ($log, $compile) ->
 
         render = (user) ->
             if user is undefined
-                ctx = {name: "Unassigned", imgurl: "/images/unnamed.png", clickable: clickable}
+                ctx = {name: "Unassigned", imgurl: "/" + window._version + "/images/unnamed.png", clickable: clickable}
             else
                 ctx = {name: user.full_name_display, imgurl: user.photo, clickable: clickable}
 

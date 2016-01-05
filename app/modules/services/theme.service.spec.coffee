@@ -1,5 +1,5 @@
 ###
-# Copyright (C) 2014-2015 Taiga Agile LLC <taiga@taiga.io>
+# Copyright (C) 2014-2016 Taiga Agile LLC <taiga@taiga.io>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -32,5 +32,6 @@ describe "ThemeService", ->
         _inject()
 
     it "use a test theme", () ->
+        window._version = '123'
         themeService.use(data.theme)
-        expect($("link[rel='stylesheet']")).to.have.attr("href", "/styles/theme-#{data.theme}.css")
+        expect($("link[rel='stylesheet']")).to.have.attr("href", "/123/styles/theme-#{data.theme}.css")

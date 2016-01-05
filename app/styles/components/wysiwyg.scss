@@ -1,5 +1,6 @@
 .wysiwyg {
     line-height: 1.4rem;
+    margin-bottom: 2rem;
     overflow: auto;
     padding: 1rem;
     h1 {
@@ -46,7 +47,6 @@
         }
     }
     p {
-        line-height: 1.4rem;
         margin-bottom: 1rem;
     }
     .codehilite {
@@ -97,5 +97,9 @@
     }
     img {
         max-width: 100%;
+    }
+    textarea {
+        background: $white;
+        max-height: none;
     }
 }

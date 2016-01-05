@@ -11,7 +11,7 @@ blockquote {
     cite {
         @extend %small;
         display: block;
-        &:before {
+        &::before {
             content: '\2014 \0020';
         }
     }

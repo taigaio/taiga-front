@@ -31,6 +31,10 @@ $red-amaranth: #e43050;
 $purple-eggplant: #810061;
 $yellow-pear: #bbe831;
 
+$tribe-primary: #98e0eb;
+$tribe-secondary: #107a8a;
+
+
 $top-icon-color: #11241f;
 $dropdown-color: rgba(darken($grayer, 20%), 1);
 
@@ -63,11 +67,11 @@ $dropdown-color: rgba(darken($grayer, 20%), 1);
 
 // Background images
 %triangled-bg {
-    background: url('/images/bg.png') no-repeat center center;
+    background: url('../images/bg.png') no-repeat center center;
     background-size: cover;
 }
 
 %background-taiga {
-    background: url('/images/invitation_bg.jpg') no-repeat center center;
+    background: url('../images/invitation_bg.jpg') no-repeat center center;
     background-size: cover;
 }

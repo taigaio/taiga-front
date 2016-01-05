@@ -107,7 +107,7 @@ cite {
 // Top navigation bar
 .navbar {
     background: rgba($black, .5);
-    &:after {
+    &::after {
         background: url('../images/menu-vert.png') repeat top left;
     }
 }
