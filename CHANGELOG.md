@@ -2,6 +2,7 @@
 
 
 ## 1.9.1 Taiga Tribe (2016-01-05)
+
 - [118n] Now taiga plugins can be translatable.
 - New Taiga plugins system.
 - Now superadmins can send notifications (live announcement) to the user (through taiga-events).
