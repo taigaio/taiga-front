@@ -1,6 +1,6 @@
 {
     "COMMON": {
-        "YES": "Si",
+        "YES": "Sí",
         "NO": "No",
         "LOADING": "Cargando...",
         "LOADING_PROJECT": "Cargando proyecto...",
@@ -1308,7 +1308,7 @@
         "HINT2_TEXT": "Los equipos ahora pueden crear atributos personalizados como un medio flexible para introducir datos específicos útiles para su flujo de trabajo particular",
         "HINT3_TITLE": "Reordenar tus proyectos para facilitar el acceso a los más relevantes para ti",
         "HINT3_TEXT": "Los 10 primeros proyectos aparecerán en el listado del acceso directo de la barra superior.",
-        "HINT4_TITLE": "Has olvidado en qué estabas trabajando?",
+        "HINT4_TITLE": "¿Has olvidado en qué estabas trabajando?",
         "HINT4_TEXT": "No te preocupes, en el dashboard encontrarás las tareas, peticiones e historias de usuario abiertas en el orden en el que trabajste en ellas."
     },
     "TIMELINE": {
