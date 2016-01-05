@@ -573,9 +573,10 @@ init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $na
     Promise.setScheduler (cb) ->
         $rootscope.$evalAsync(cb)
 
+    $events.setupConnection()
+    
     # Load user
     if $auth.isAuthenticated()
-        $events.setupConnection()
         user = $auth.getUser()
 
     # Analytics
