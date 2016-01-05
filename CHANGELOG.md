@@ -4,6 +4,7 @@
 ## 1.9.1 Taiga Tribe (unreleased)
 - [118n] Now taiga plugins can be translatable.
 - New Taiga plugins system.
+- Now superadmins can send notifications (live announcement) to the user (through taiga-events).
 
 ### Misc
 - Statics folder hash to prevent cache problems when a new version is released.
