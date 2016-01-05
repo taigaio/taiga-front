@@ -1038,12 +1038,6 @@ BurndownBacklogGraphDirective = ($translate) ->
             lines:
                 fillColor : "rgba(102,153,51,0.3)"
         })
-        team_increment_line = _.map(dataToDraw.milestones, (ml) -> -ml["team-increment"])
-        data.push({
-            data: _.zip(milestonesRange, team_increment_line)
-            lines:
-                fillColor : "rgba(153,51,51,0.3)"
-        })
         client_increment_line = _.map dataToDraw.milestones, (ml) ->
             -ml["team-increment"] - ml["client-increment"]
         data.push({
@@ -1051,7 +1045,12 @@ BurndownBacklogGraphDirective = ($translate) ->
             lines:
                 fillColor : "rgba(255,51,51,0.3)"
         })
-
+        team_increment_line = _.map(dataToDraw.milestones, (ml) -> -ml["team-increment"])
+        data.push({
+            data: _.zip(milestonesRange, team_increment_line)
+            lines:
+                fillColor : "rgba(153,51,51,0.3)"
+        })
         colors = [
             "rgba(0,0,0,1)"
             "rgba(120,120,120,0.2)"
@@ -1107,10 +1106,10 @@ BurndownBacklogGraphDirective = ($translate) ->
                         return $translate.instant("BACKLOG.CHART.REAL", ctx)
                     else if flotItem.seriesIndex == 3
                         ctx = {sprintName: dataToDraw.milestones[xval].name, value: Math.abs(yval)}
-                        return $translate.instant("BACKLOG.CHART.INCREMENT_TEAM", ctx)
+                        return $translate.instant("BACKLOG.CHART.INCREMENT_CLIENT", ctx)
                     else
                         ctx = {sprintName: dataToDraw.milestones[xval].name, value: Math.abs(yval)}
-                        return $translate.instant("BACKLOG.CHART.INCREMENT_CLIENT", ctx)
+                        return $translate.instant("BACKLOG.CHART.INCREMENT_TEAM", ctx)
             }
         }
 
