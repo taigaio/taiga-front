@@ -1,14 +1,11 @@
 .search-result-table {
+    border-top: 1px solid $whitish;
     .row {
-        align-content: center;
         align-items: center;
         display: flex;
         justify-content: space-between;
         padding: .5rem;
-        &:hover {
-            background: lighten($primary, 60%);
-            transition: background .2s ease-in;
-        }
+
         .ref {
             flex-basis: 30px;
             flex-grow: 1;
@@ -81,6 +78,10 @@
             width: 80px;
         }
     }
+}
+
+.search-result-table-header {
+    @extend %bold;
 }
 
 .empty-search-results {
