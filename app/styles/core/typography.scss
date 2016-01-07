@@ -4,8 +4,8 @@
 @each $font-face in
 OpenSans-CondLight,
 OpenSans-Light,
-Opensans-Regular,
-Opensans-Bold,
+OpenSans-Regular,
+OpenSans-Semibold,
 taiga {
     @font-face {
         font-family: '#{$font-face}';
