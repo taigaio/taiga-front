@@ -437,9 +437,7 @@ InvitationDirective = ($auth, $confirm, $location, $params, $navUrls, $analytics
             $confirm.notify("success", text)
 
         onErrorSubmitLogin = (response) ->
-            text = $translate.instant("INVITATION_LOGIN_FORM.ERROR")
-
-            $confirm.notify("light-error", text)
+            $confirm.notify("light-error", response.data._error_message)
 
         submitLogin = debounce 2000, (event) =>
             event.preventDefault()
