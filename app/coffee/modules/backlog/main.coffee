@@ -198,6 +198,9 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             @scope.sprintsCounter = sprints.length
             @scope.sprintsById = groupBy(sprints, (x) -> x.id)
             @rootscope.$broadcast("sprints:loaded", sprints)
+
+            @scope.currentSprint = @.findCurrentSprint()
+
             return sprints
 
     restoreFilters: ->
@@ -591,6 +594,15 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
     addNewSprint: () ->
         @rootscope.$broadcast("sprintform:create", @scope.projectId)
 
+    findCurrentSprint: () ->
+      currentDate = new Date().getTime()
+
+      return  _.find @scope.sprints, (sprint) ->
+        start = moment(sprint.estimated_start, 'YYYY-MM-DD').format('x')
+        end = moment(sprint.estimated_finish, 'YYYY-MM-DD').format('x')
+
+        return currentDate >= start && currentDate <= end
+
 module.controller("BacklogController", BacklogController)
 
 #############################################################################
@@ -641,40 +653,56 @@ BacklogDirective = ($repo, $rootscope, $translate) ->
     ## Move to current sprint link
 
     linkToolbar = ($scope, $el, $attrs, $ctrl) ->
-        moveToCurrentSprint = (selectedUss) ->
+        getUsToMove = () ->
+            # Calculating the us's to be modified
+            ussDom = $el.find(".backlog-table-body input:checkbox:checked")
+
+            return _.map ussDom, (item) ->
+                item =  $(item).closest('.tg-scope')
+                itemScope = item.scope()
+                itemScope.us.milestone = $scope.sprints[0].id
+                return itemScope.us
+
+        moveUssToSprint = (selectedUss, sprint) ->
             ussCurrent = _($scope.userstories)
 
             # Remove them from backlog
-            $scope.userstories = ussCurrent.without.apply(ussCurrent, selectedUss).value()
+            #$scope.userstories = ussCurrent.without.apply(ussCurrent, selectedUss).value()
 
             extraPoints = _.map(selectedUss, (v, k) -> v.total_points)
             totalExtraPoints =  _.reduce(extraPoints, (acc, num) -> acc + num)
 
             # Add them to current sprint
-            $scope.sprints[0].user_stories = _.union($scope.sprints[0].user_stories, selectedUss)
+            sprint.user_stories = _.union(sprint.user_stories, selectedUss)
 
             # Update the total of points
-            $scope.sprints[0].total_points += totalExtraPoints
+            sprint.total_points += totalExtraPoints
 
             $repo.saveAll(selectedUss).then ->
                 $ctrl.loadSprints()
                 $ctrl.loadProjectStats()
 
+            $el.find(".move-to-sprint").hide()
+
+        moveToCurrentSprint = (selectedUss) ->
+            moveUssToSprint(selectedUss, $scope.currentSprint)
+
+        moveToLatestSprint = (selectedUss) ->
+            moveUssToSprint(selectedUss, $scope.sprints[0])
 
         shiftPressed = false
         lastChecked = null
 
         checkSelected = (target) ->
             lastChecked = target.closest(".us-item-row")
-            moveToCurrentSprintDom = $el.find("#move-to-current-sprint")
+            target.closest('.us-item-row').toggleClass('ui-multisortable-multiple')
+            moveToSprintDom = $el.find(".move-to-sprint")
             selectedUsDom = $el.find(".backlog-table-body input:checkbox:checked")
 
             if selectedUsDom.length > 0 and $scope.sprints.length > 0
-                moveToCurrentSprintDom.show()
+                moveToSprintDom.show()
             else
-                moveToCurrentSprintDom.hide()
-
-            target.closest('.us-item-row').toggleClass('ui-multisortable-multiple')
+                moveToSprintDom.hide()
 
         $(window).on "keydown.shift-pressed keyup.shift-pressed", (event) ->
             shiftPressed = !!event.shiftKey
@@ -704,15 +732,13 @@ BacklogDirective = ($repo, $rootscope, $translate) ->
             target.closest(".us-item-row").toggleClass('is-checked')
             checkSelected(target)
 
-        $el.on "click", "#move-to-current-sprint", (event) =>
-            # Calculating the us's to be modified
-            ussDom = $el.find(".backlog-table-body input:checkbox:checked")
+        $el.on "click", "#move-to-latest-sprint", (event) =>
+            ussToMove = getUsToMove()
 
-            ussToMove = _.map ussDom, (item) ->
-                item =  $(item).closest('.tg-scope')
-                itemScope = item.scope()
-                itemScope.us.milestone = $scope.sprints[0].id
-                return itemScope.us
+            $scope.$apply(_.partial(moveToLatestSprint, ussToMove))
+
+        $el.on "click", "#move-to-current-sprint", (event) =>
+            ussToMove = getUsToMove()
 
             $scope.$apply(_.partial(moveToCurrentSprint, ussToMove))
 
