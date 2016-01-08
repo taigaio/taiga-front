@@ -49,7 +49,7 @@
             "TYPE_PHONE": "Este valor deveria ser um número telefônico valido.",
             "NOTNULL": "Este valor não deveria ser nulo.",
             "NOT_BLANK": "Esta campo não deveria esta em branco.",
-            "REQUIRED": "Este valor é obrigatório.",
+            "REQUIRED": "Este campo é obrigatório.",
             "REGEXP": "Este valor parece ser inválido.",
             "MIN": "O valor deve ser maior que ou igual a %s.",
             "MAX": "Esse valor deve ser menor que ou igual a %s.",
@@ -104,7 +104,7 @@
         "SEE_USER_PROFILE": "Ver o perfil de {{username }}",
         "USER_STORY": "User Story",
         "TASK": "Tarefa",
-        "ISSUE": "caso",
+        "ISSUE": "Caso",
         "TAGS": {
             "PLACEHOLDER": "To dentro! Me tagueie....",
             "DELETE": "Apagar tag",
@@ -328,7 +328,7 @@
         "PLACEHOLDER_NEW_PASSWORD": "Nova senha",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Redigite a nova senha",
         "ACTION_RESET_PASSWORD": "Resetar Senha",
-        "ERROR": "Our Oompa Loompas can't find your request to recover your password. Try to ask for it again.",
+        "ERROR": "Nossos Oompa Loompas não encontraram a solicitação para recuperar sua senha. Tente solicitar novamente.",
         "SUCCESS": "Nossos Oompa Loompas salvaram sua nova senha.<br /> Tente <strong>identificar-se</strong> com ela."
     },
     "INVITATION": {
@@ -376,7 +376,7 @@
         }
     },
     "PAGINATION": {
-        "PREVIOUS": "Ant",
+        "PREVIOUS": "Anterior",
         "NEXT": "Próximo"
     },
     "ADMIN": {
@@ -601,23 +601,23 @@
         "DEFAULT_VALUES": {
             "LABEL_POINTS": "Valores padrões para o seletor de pontos",
             "LABEL_US": "Valor padrão para seletor de status da US",
-            "LABEL_TASK_STATUS": "Valor padrão para seletor de estatus de tarefa",
+            "LABEL_TASK_STATUS": "Valor padrão para seletor de status de tarefa",
             "LABEL_PRIORITY": "Valor padão para seletor de prioridade",
             "LABEL_SEVERITY": "Valor padrão para seletor de severidade",
             "LABEL_ISSUE_TYPE": "Valor padrão para seletor de tipo de caso",
-            "LABEL_ISSUE_STATUS": "Valor padrão para seletor de estatus de caso"
+            "LABEL_ISSUE_STATUS": "Valor padrão para seletor de status de caso"
         },
         "STATUS": {
-            "PLACEHOLDER_WRITE_STATUS_NAME": "Digite um nome para o novo estatus"
+            "PLACEHOLDER_WRITE_STATUS_NAME": "Digite um nome para o novo status"
         },
         "TYPES": {
             "PLACEHOLDER_WRITE_NAME": "Escreva o nome do novo elemento"
         },
         "US_STATUS": {
-            "ACTION_ADD_STATUS": "Adicionar novo estatus",
+            "ACTION_ADD_STATUS": "Adicionar novo status",
             "IS_ARCHIVED_COLUMN": "Está arquivado?",
             "WIP_LIMIT_COLUMN": "Limite WIP",
-            "PLACEHOLDER_WRITE_NAME": "Digite um nome para o novo estatus"
+            "PLACEHOLDER_WRITE_NAME": "Digite um nome para o novo status"
         },
         "MENU": {
             "TITLE": "Administrador",
@@ -727,7 +727,7 @@
             "PLACEHOLDER_SEARCH": "Procurar em...",
             "ACTION_CREATE_PROJECT": "Criar projeto",
             "ACTION_IMPORT_PROJECT": "Importar projeto",
-            "SEE_MORE_PROJECTS": "Ver mais projetos",
+            "MANAGE_PROJECTS": "Gerenciar projetos",
             "TITLE_CREATE_PROJECT": "Criar projeto",
             "TITLE_IMPORT_PROJECT": "Importar projeto",
             "TITLE_PRVIOUS_PROJECT": "Mostrar projetos prévios",
@@ -961,6 +961,7 @@
         "COMPACT_SPRINT": "Sprint Resumido",
         "GO_TO_TASKBOARD": "Ir ao quadro de tarefas de {{::name}}",
         "EDIT_SPRINT": "Editar Sprint",
+        "CLOSED_POINTS": "fechados",
         "TOTAL_POINTS": "total",
         "STATUS_NAME": "Nome de Situação",
         "SORTABLE_FILTER_ERROR": "Você não pode jogar sobre o  backlog quando filtros estão abertos",
@@ -1278,7 +1279,7 @@
         "CHOOSE_TEMPLATE_TEXT": "Qual template se encaixa melhor no seu projeto?",
         "SECTION_TITLE_CREATE_PROJECT": "Criar Projeto",
         "CREATE_PROJECT_TEXT": "Novo em folha. Tão excitante!",
-        "PROGRESS_TEMPLATE_SELECTION": "Seleção de template",
+        "PROGRESS_TEMPLATE_SELECTION": "Seleção de tipo de projeto",
         "PROGRESS_NAME_DESCRIPTION": "Nome e descrição"
     },
     "WIKI": {
@@ -1354,6 +1355,12 @@
         "CANCEL": "Cancelar"
     },
     "JOYRIDE": {
+        "NAV": {
+            "NEXT": "Próximo",
+            "BACK": "Voltar",
+            "SKIP": "Pular",
+            "DONE": "Concluído"
+        },
         "DASHBOARD": {
             "STEP1": {
                 "TITLE": "Seu projeto",
