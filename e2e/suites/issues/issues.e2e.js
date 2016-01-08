@@ -41,7 +41,11 @@ describe('issues list', function() {
 
             await createIssueLightbox.tags().sendKeys('bbb');
             browser.actions().sendKeys(protractor.Key.ENTER).perform();
+        });
 
+        it('upload attachments', commonHelper.lightboxAttachment);
+
+        it('screenshots', function() {
             utils.common.takeScreenshot('issues', 'create-issue-filled');
         });
 

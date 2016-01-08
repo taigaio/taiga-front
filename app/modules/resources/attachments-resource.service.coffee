@@ -5,6 +5,7 @@
 # Copyright (C) 2014-2016 Alejandro Alonso <alejandro.alonso@kaleidos.net>
 # Copyright (C) 2014-2016 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
 # Copyright (C) 2014-2016 Xavi Julian <xavier.julian@kaleidos.net>
+# Copyright (C) 2014-2016 Taiga Agile LLC <taiga@taiga.io>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -19,29 +20,57 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: modules/resources/attachments.coffee
+# File: attachments-resource.service.coffee
 ###
-
 
 taiga = @.taiga
 sizeFormat = @.taiga.sizeFormat
 
-
-resourceProvider = ($rootScope, $config, $urls, $model, $repo, $auth, $q) ->
+Resource = (urlsService, http, config, $rootScope, $q, storage) ->
     service = {}
 
-    service.list = (urlName, objectId, projectId) ->
-        params = {object_id: objectId, project: projectId}
-        return $repo.queryMany(urlName, params)
+    service.list = (type, objectId, projectId) ->
+        urlname = "attachments/#{type}"
 
-    service.create = (urlName, projectId, objectId, file) ->
+        params = {object_id: objectId, project: projectId}
+        httpOptions = {
+            headers: {
+                "x-disable-pagination": "1"
+            }
+        }
+
+        url = urlsService.resolve(urlname)
+
+        return http.get(url, params, httpOptions)
+            .then (result) -> Immutable.fromJS(result.data)
+
+    service.delete = (type, id) ->
+        urlname = "attachments/#{type}"
+
+        url = urlsService.resolve(urlname) + "/#{id}"
+
+        return http.delete(url)
+
+    service.patch = (type, id, patch) ->
+        urlname = "attachments/#{type}"
+
+        url = urlsService.resolve(urlname) + "/#{id}"
+
+        return http.patch(url, patch)
+
+    service.create = (type, projectId, objectId, file) ->
+        urlname = "attachments/#{type}"
+
+        url = urlsService.resolve(urlname)
+
         defered = $q.defer()
 
         if file is undefined
             defered.reject(null)
             return defered.promise
 
-        maxFileSize = $config.get("maxUploadFileSize", null)
+        maxFileSize = config.get("maxUploadFileSize", null)
+
         if maxFileSize and file.size > maxFileSize
             response = {
                 status: 413,
@@ -64,13 +93,13 @@ resourceProvider = ($rootScope, $config, $urls, $model, $repo, $auth, $q) ->
 
                 status = evt.target.status
                 try
-                    data = JSON.parse(evt.target.responseText)
+                    attachment = JSON.parse(evt.target.responseText)
                 catch
-                    data = {}
+                    attachment = {}
 
                 if status >= 200 and status < 400
-                    model = $model.make_model(urlName, data)
-                    defered.resolve(model)
+                    attachment = Immutable.fromJS(attachment)
+                    defered.resolve(attachment)
                 else
                     response = {
                         status: status,
@@ -93,17 +122,26 @@ resourceProvider = ($rootScope, $config, $urls, $model, $repo, $auth, $q) ->
         xhr.addEventListener("load", uploadComplete, false)
         xhr.addEventListener("error", uploadFailed, false)
 
-        xhr.open("POST", $urls.resolve(urlName))
-        xhr.setRequestHeader("Authorization", "Bearer #{$auth.getToken()}")
+        token = storage.get('token')
+
+        xhr.open("POST", url)
+        xhr.setRequestHeader("Authorization", "Bearer #{token}")
         xhr.setRequestHeader('Accept', 'application/json')
         xhr.send(data)
 
         return defered.promise
 
-    return (instance) ->
-        instance.attachments = service
+    return () ->
+        return {"attachments": service}
 
+Resource.$inject = [
+    "$tgUrls",
+    "$tgHttp",
+    "$tgConfig",
+    "$rootScope",
+    "$q",
+    "$tgStorage"
+]
 
-module = angular.module("taigaResources")
-module.factory("$tgAttachmentsResourcesProvider", ["$rootScope", "$tgConfig", "$tgUrls", "$tgModel", "$tgRepo",
-                                                   "$tgAuth", "$q", resourceProvider])
+module = angular.module("taigaResources2")
+module.factory("tgAttachmentsResource", Resource)

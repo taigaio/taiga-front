@@ -140,3 +140,20 @@ describe "tgProjectService", ->
         expect(projectService.activeMembers.size).to.be.equal(0);
         expect(projectService.section).to.be.null;
         expect(projectService.sectionsBreadcrumb.size).to.be.equal(0);
+
+    it "has permissions", () ->
+        project = Immutable.Map({
+            id: 1,
+            my_permissions: [
+                'test1',
+                'test2'
+            ]
+        })
+
+        projectService._project = project
+
+        perm1 = projectService.hasPermission('test2')
+        perm2 = projectService.hasPermission('test3')
+
+        expect(perm1).to.be.true
+        expect(perm2).to.be.false

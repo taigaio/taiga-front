@@ -193,10 +193,8 @@ RelatedTaskCreateFormDirective = ($repo, $compile, $confirm, $tgmodel, $loading,
     return {link: link}
 module.directive("tgRelatedTaskCreateForm", ["$tgRepo", "$compile", "$tgConfirm", "$tgModel", "$tgLoading", "$tgAnalytics", "$tgTemplate", RelatedTaskCreateFormDirective])
 
-RelatedTaskCreateButtonDirective = ($repo, $compile, $confirm, $tgmodel) ->
-    template = _.template("""
-        <a ng-show="!newRelatedTaskFormOpen" class="icon icon-plus related-tasks-buttons ng-animate-disabled"></a>
-    """)
+RelatedTaskCreateButtonDirective = ($repo, $compile, $confirm, $tgmodel, $template) ->
+    template = $template.get("common/components/add-button.html", true)
 
     link = ($scope, $el, $attrs) ->
         $scope.$watch "project", (val) ->
@@ -207,14 +205,14 @@ RelatedTaskCreateButtonDirective = ($repo, $compile, $confirm, $tgmodel) ->
             else
                 $el.html("")
 
-            $el.on "click", ".icon", (event)->
+            $el.on "click", ".add-button", (event)->
                 $scope.$emit("related-tasks:add-new-clicked")
 
         $scope.$on "$destroy", ->
             $el.off()
 
     return {link: link}
-module.directive("tgRelatedTaskCreateButton", ["$tgRepo", "$compile", "$tgConfirm", "$tgModel", RelatedTaskCreateButtonDirective])
+module.directive("tgRelatedTaskCreateButton", ["$tgRepo", "$compile", "$tgConfirm", "$tgModel", "$tgTemplate", RelatedTaskCreateButtonDirective])
 
 RelatedTasksDirective = ($repo, $rs, $rootscope) ->
     link = ($scope, $el, $attrs) ->

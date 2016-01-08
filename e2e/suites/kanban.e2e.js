@@ -67,6 +67,12 @@ describe('kanban', function() {
             createUSLightbox.settings(1).click();
         });
 
+        it('upload attachments', commonHelper.lightboxAttachment);
+
+        it('screenshots', function() {
+            utils.common.takeScreenshot('kanban', 'create-us-filled');
+        })
+
         it('send form', async function() {
             createUSLightbox.submit();
 
@@ -133,6 +139,8 @@ describe('kanban', function() {
             //settings
             createUSLightbox.settings(1).click();
         });
+
+        it('upload attachments', commonHelper.lightboxAttachment);
 
         it('send form', async function() {
             createUSLightbox.submit();

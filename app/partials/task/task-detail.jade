@@ -75,7 +75,7 @@ div.wrapper(
 
             div.tags-block(tg-tag-line, ng-model="task", required-perm="modify_task")
 
-        section.duty-content(tg-editable-description, ng-model="task", required-perm="modify_task")
+        section.duty-content(tg-editable-description, tg-editable-wysiwyg, ng-model="task", required-perm="modify_task")
 
         // Custom Fields
         tg-custom-attributes-values(
@@ -85,7 +85,12 @@ div.wrapper(
             required-edition-perm="modify_task"
         )
 
-        tg-attachments(ng-model="task", type="task")
+        tg-attachments-full(
+            obj-id="task.id"
+            type="task",
+            project-id="projectId"
+        )
+
         tg-history(ng-model="task", type="task")
 
     sidebar.menu-secondary.sidebar.ticket-data

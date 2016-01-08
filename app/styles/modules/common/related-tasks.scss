@@ -9,18 +9,26 @@
     background: $whitish;
     display: flex;
     justify-content: space-between;
-    padding: .5rem 1rem;
     .related-tasks-title {
         @extend %medium;
         @extend %bold;
+        margin-left: 1rem;
     }
-    .icon {
-        @extend %large;
-        color: $grayer;
-        cursor: pointer;
-        &:hover {
-            color: $primary;
-            transition: color .2s ease-in;
+    .add-button {
+        background: $grayer;
+        border: 0;
+        display: inline-block;
+        padding: .5rem;
+        transition: background .25s;
+        &:hover,
+        &.is-active {
+            background: $primary-light;
+        }
+        svg {
+            fill: $white;
+            height: 1.25rem;
+            margin-bottom: -.2rem;
+            width: 1.25rem;
         }
     }
 }

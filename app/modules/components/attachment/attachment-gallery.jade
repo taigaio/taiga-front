@@ -1,0 +1,36 @@
+.single-attachment(
+    ng-class="{deprecated: vm.attachment.getIn(['file', 'is_deprecated'])}",
+    ng-if="vm.attachment.getIn(['file', 'id'])",
+)
+    a.attachment-image(
+        tg-attachment-link="vm.attachment"
+        href="{{::vm.attachment.getIn(['file', 'url'])}}"
+        title="{{::vm.attachment.getIn(['file', 'name'])}}"
+        target="_blank"
+        download="{{::vm.attachment.getIn(['file', 'name'])}}"
+    )
+        img(
+            alt="{{::vm.attachment.getIn(['file', 'name'])}}"
+            ng-src="{{::vm.attachment.getIn(['file', 'thumbnail_card_url'])}}"
+            ng-if="vm.attachment.getIn(['file', 'thumbnail_card_url'])"
+        )
+        img(
+            alt="{{::vm.attachment.getIn(['file', 'name'])}}"
+            src="/#{v}/images/attachment-gallery.png"
+            ng-if="!vm.attachment.getIn(['file', 'thumbnail_card_url'])"
+        )
+    .attachment-data
+        a.attachment-name(
+            tg-attachment-link="vm.attachment"
+            href="{{::vm.attachment.getIn(['file', 'url'])}}"
+            title="{{::vm.attachment.get(['file', 'name'])}}"
+            target="_blank"
+            download="{{::vm.attachment.getIn(['file', 'name'])}}"
+        )
+            span {{::vm.attachment.getIn(['file', 'name'])}}
+
+        a.icon-delete(
+            href=""
+            title="{{'COMMON.DELETE' | translate}}"
+            ng-click="vm.delete()"
+        )

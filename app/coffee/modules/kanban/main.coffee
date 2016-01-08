@@ -416,7 +416,7 @@ module.directive("tgKanbanArchivedStatusIntro", ["$translate", KanbanArchivedSta
 ## Kanban User Story Directive
 #############################################################################
 
-KanbanUserstoryDirective = ($rootscope, $loading, $rs) ->
+KanbanUserstoryDirective = ($rootscope, $loading, $rs, $rs2) ->
     link = ($scope, $el, $attrs, $model) ->
         $el.disableSelection()
 
@@ -440,8 +440,9 @@ KanbanUserstoryDirective = ($rootscope, $loading, $rs) ->
 
             us = $model.$modelValue
             $rs.userstories.getByRef(us.project, us.ref).then (editingUserStory) =>
-                $rootscope.$broadcast("usform:edit", editingUserStory)
-                currentLoading.finish()
+                $rs2.attachments.list("us", us.id, us.project).then (attachments) =>
+                    $rootscope.$broadcast("usform:edit", editingUserStory, attachments.toJS())
+                    currentLoading.finish()
 
         $scope.getTemplateUrl = () ->
             if $scope.us.isPlaceholder
@@ -458,7 +459,7 @@ KanbanUserstoryDirective = ($rootscope, $loading, $rs) ->
         require: "ngModel"
     }
 
-module.directive("tgKanbanUserstory", ["$rootScope", "$tgLoading", "$tgResources", KanbanUserstoryDirective])
+module.directive("tgKanbanUserstory", ["$rootScope", "$tgLoading", "$tgResources", "tgResources", KanbanUserstoryDirective])
 
 #############################################################################
 ## Kanban Squish Column Directive

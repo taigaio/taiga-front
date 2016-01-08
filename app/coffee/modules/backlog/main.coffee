@@ -54,11 +54,12 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         "$tgEvents",
         "$tgAnalytics",
         "$translate",
-        "$tgLoading"
+        "$tgLoading",
+        "tgResources"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q,
-                  @location, @appMetaService, @navUrls, @events, @analytics, @translate, @loading) ->
+                  @location, @appMetaService, @navUrls, @events, @analytics, @translate, @loading, @rs2) ->
         bindMethods(@)
 
         @scope.sectionName = @translate.instant("BACKLOG.SECTION_NAME")
@@ -566,10 +567,10 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             .timeout(200)
             .start()
 
-        @rs.userstories.getByRef(projectId, ref).then (us) =>
-            @rootscope.$broadcast("usform:edit", us)
-
-            currentLoading.finish()
+        return @rs.userstories.getByRef(projectId, ref).then (us) =>
+            @rs2.attachments.list("us", us.id, projectId).then (attachments) =>
+                @rootscope.$broadcast("usform:edit", us, attachments.toJS())
+                currentLoading.finish()
 
     deleteUserStory: (us) ->
         title = @translate.instant("US.TITLE_DELETE_ACTION")

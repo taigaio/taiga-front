@@ -24,7 +24,8 @@ services = [
     "tgUserstoriesResource",
     "tgTasksResource",
     "tgIssuesResource",
-    "tgExternalAppsResource"
+    "tgExternalAppsResource",
+    "tgAttachmentsResource"
 ]
 
 Resources = ($injector) ->

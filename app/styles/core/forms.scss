@@ -21,6 +21,15 @@ textarea {
         transition: border .3s linear;
     }
 }
+button,
+button:active,
+button:focus {
+    background: none;
+    border: 0;
+    outline: 0;
+    outline-style: none;
+    outline-width: 0;
+}
 textarea {
     min-height: 10rem;
     resize: vertical;

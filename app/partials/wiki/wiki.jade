@@ -16,7 +16,12 @@ div.wrapper(ng-controller="WikiDetailController as ctrl",
         h2.wiki-title(ng-bind='wikiTitle')
         section.wiki-content(tg-editable-wiki-content, ng-model="wiki")
 
-        tg-attachments(ng-model="wiki", type="wiki_page", ng-if="wiki.id")
+        tg-attachments-full(
+            ng-if="wiki.id"
+            obj-id="wiki.id"
+            type="wiki_page",
+            project-id="projectId"
+        )
 
         a.remove(href="", ng-click="ctrl.delete()", ng-if="wiki.id", title="{{'WIKI.REMOVE' | translate}}", tg-check-permission="delete_wiki_page")
             span.icon.icon-delete

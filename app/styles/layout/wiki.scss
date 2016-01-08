@@ -24,6 +24,7 @@
 }
 
 .wiki-content {
+    @include cursor-progress;
     margin-bottom: 2rem;
     position: relative;
     &.editable {

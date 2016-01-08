@@ -256,14 +256,14 @@ helper.delete = function() {
 };
 
 helper.attachment = function() {
-    let el = $('tg-attachments');
+    let el = $('tg-attachments-full');
 
     let obj = {
         el:el,
         upload: async function(filePath, name) {
             let addAttach = el.$('#add-attach');
 
-            let countAttachments = await $$('div[tg-attachment]').count();
+            let countAttachments = await $$('tg-attachment').count();
 
             let toggleInput = function() {
                 $('#add-attach').toggle();
@@ -274,37 +274,37 @@ helper.attachment = function() {
             await browser.waitForAngular();
 
             await browser.wait(async () => {
-                let newCountAttachments = await $$('div[tg-attachment]').count();
+                let newCountAttachments = await $$('tg-attachment').count();
 
                 return newCountAttachments == countAttachments + 1;
             }, 5000);
 
-            await el.$$('div[tg-attachment] .editable-attachment-comment input').last().sendKeys(name);
+            await el.$$('tg-attachment .editable-attachment-comment input').last().sendKeys(name);
             await browser.actions().sendKeys(protractor.Key.ENTER).perform();
             await browser.executeScript(toggleInput);
             await browser.waitForAngular();
         },
 
         renameLastAttchment: async function (name) {
-            await browser.actions().mouseMove(el.$$('div[tg-attachment]').last()).perform();
-            await el.$$('div[tg-attachment] .attachment-settings .icon-edit').last().click();
-            await el.$$('div[tg-attachment] .editable-attachment-comment input').last().sendKeys(name);
+            await browser.actions().mouseMove(el.$$('tg-attachment').last()).perform();
+            await el.$$('tg-attachment .attachment-settings .icon-edit').last().click();
+            await el.$$('tg-attachment .editable-attachment-comment input').last().sendKeys(name);
             await browser.actions().sendKeys(protractor.Key.ENTER).perform();
             return browser.waitForAngular();
         },
 
         getFirstAttachmentName: async function () {
-            let name = await el.$$('div[tg-attachment] .attachment-comments').first().getText();
+            let name = await el.$$('tg-attachment .attachment-comments').first().getText();
             return name;
         },
 
         getLastAttachmentName: async function () {
-            let name = await el.$$('div[tg-attachment] .attachment-comments').last().getText();
+            let name = await el.$$('tg-attachment .attachment-comments').last().getText();
             return name;
         },
 
         countAttachments: async function(){
-            return await el.$$('div[tg-attachment]').count();
+            return await el.$$('tg-attachment').count();
         },
 
         countDeprecatedAttachments: async function(){
@@ -321,10 +321,10 @@ helper.attachment = function() {
         },
 
         deprecateLastAttachment: async function() {
-            await browser.actions().mouseMove(el.$$('div[tg-attachment]').last()).perform();
-            await el.$$('div[tg-attachment] .attachment-settings .icon-edit').last().click();
-            await el.$$('div[tg-attachment] .editable-attachment-deprecated input').last().click();
-            await el.$$('div[tg-attachment] .attachment-settings .editable-settings.icon-floppy').last().click();
+            await browser.actions().mouseMove(el.$$('tg-attachment').last()).perform();
+            await el.$$('tg-attachment .attachment-settings .icon-edit').last().click();
+            await el.$$('tg-attachment .editable-attachment-deprecated input').last().click();
+            await el.$$('tg-attachment .attachment-settings .editable-settings.icon-floppy').last().click();
             await browser.waitForAngular();
         },
 
@@ -333,7 +333,7 @@ helper.attachment = function() {
         },
 
         deleteLastAttachment: async function() {
-            let attachment = await $$('div[tg-attachment]').last();
+            let attachment = await $$('tg-attachment').last();
 
             await browser.actions().mouseMove(attachment).perform();
 
@@ -359,11 +359,23 @@ helper.attachment = function() {
         },
 
         dragLastAttchmentToFirstPosition: async function() {
-            await browser.actions().mouseMove(el.$$('div[tg-attachment]').last()).perform();
-            let lastDraggableAttachment = el.$$('div[tg-attachment] .attachment-settings .icon-drag-v').last();
-            let destination = el.$$('div[tg-attachment] .attachment-settings .icon-drag-v').first();
+            await browser.actions().mouseMove(el.$$('tg-attachment').last()).perform();
+            let lastDraggableAttachment = el.$$('tg-attachment .attachment-settings .icon-drag-v').last();
+            let destination = el.$$('tg-attachment .attachment-settings .icon-drag-v').first();
             await utils.common.drag(lastDraggableAttachment, destination);
-        }
+        },
+
+        galleryImages: function() {
+            return $$('tg-attachment-gallery');
+        },
+
+        gallery: function() {
+            $('.view-gallery').click();
+        },
+
+        list: function() {
+            $('.view-list').click();
+        },
     };
 
     return obj;
