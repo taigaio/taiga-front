@@ -1,5 +1,5 @@
 ###
-# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2015 Andrey Antukh <niwi@niwi.nz>
 # Copyright (C) 2014-2015 Jesús Espino Garcia <jespinog@gmail.com>
 # Copyright (C) 2014-2015 David Barragán Merino <bameda@dbarragan.com>
 # Copyright (C) 2014-2016 Alejandro Alonso <alejandro.alonso@kaleidos.net>
