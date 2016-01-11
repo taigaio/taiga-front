@@ -1,12 +1,23 @@
 # Changelog #
 
+
 ## 1.10.0 ??? (unreleased)
 
-- Statics folder hash.
-- Attachments image gallery.
+### Features
 - Upload attachments on US/issue/task lightbox.
-- Drag files from desktop.
-- Drag files in wysiwyg.
+- Attachments image gallery view mode in detail pages.
+- Drag files from desktop to attachments section.
+- Drag files from desktop in wysiwyg textareas.
+- New design for the detail pages slidebar.
+
+### Misc
+- Lots of small and not so small bugfixes.
+
+
+## 1.9.1 Taiga Tribe (2016-01-05)
+
+### Features
+- Statics folder hash.
 - [118n] Now taiga plugins can be translatable.
 - New Taiga plugins system.
 - Now superadmins can send notifications (live announcement) to the user (through taiga-events).
