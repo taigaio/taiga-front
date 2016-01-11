@@ -156,22 +156,14 @@ LbTagLineDirective = ($rs, $template, $compile) ->
             addValue(value)
             resetInput()
 
-        removeInputLastCharacter = (input) =>
-            inputValue = input.val()
-            input.val inputValue.substring(0, inputValue.length - 1)
-
         ## Events
         $el.on "keypress", "input", (event) ->
-            return if event.keyCode != ENTER_KEY
-            event.preventDefault()
-
-        $el.on "keyup", "input", (event) ->
             target = angular.element(event.currentTarget)
 
             if event.keyCode == ENTER_KEY
                 saveInputTag()
-            else if event.keyCode == COMMA_KEY
-                removeInputLastCharacter(target)
+            else if String.fromCharCode(event.keyCode) == ','
+                event.preventDefault()
                 saveInputTag()
             else
                 if target.val().length
@@ -320,33 +312,27 @@ TagLineDirective = ($rootScope, $repo, $rs, $confirm, $qqueue, $template, $compi
             addValue(value)
             resetInput()
 
-        removeInputLastCharacter = (input) =>
-            inputValue = input.val()
-            input.val inputValue.substring(0, inputValue.length - 1)
-
         ## Events
         $el.on "keypress", "input", (event) ->
-            return if event.keyCode not in [ENTER_KEY, ESC_KEY]
-            event.preventDefault()
-
-        $el.on "keyup", "input", (event) ->
             target = angular.element(event.currentTarget)
 
             if event.keyCode == ENTER_KEY
                 saveInputTag()
-            else if event.keyCode == COMMA_KEY
-                removeInputLastCharacter(target)
+            else if String.fromCharCode(event.keyCode) == ','
+                event.preventDefault()
                 saveInputTag()
-            else if event.keyCode == ESC_KEY
-                resetInput()
-                hideInput()
-                hideSaveButton()
-                showAddTagButton()
             else
                 if target.val().length
                     showSaveButton()
                 else
                     hideSaveButton()
+
+        $el.on "keyup", "input", (event) ->
+            if event.keyCode == ESC_KEY
+                resetInput()
+                hideInput()
+                hideSaveButton()
+                showAddTagButton()
 
         $el.on "click", ".save", (event) ->
             event.preventDefault()
