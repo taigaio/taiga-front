@@ -72,13 +72,14 @@ class ProjectMenuController
 
     _getActiveSection: () ->
         sectionName = @projectService.section
+
         sectionsBreadcrumb = @projectService.sectionsBreadcrumb
 
         indexBacklog = sectionsBreadcrumb.lastIndexOf("backlog")
         indexKanban = sectionsBreadcrumb.lastIndexOf("kanban")
 
         if indexBacklog != -1 || indexKanban != -1
-            if indexKanban == -1 || indexBacklog < indexKanban
+            if indexKanban == -1 || indexBacklog > indexKanban
                 oldSectionName = "backlog"
             else
                 oldSectionName = "kanban"
