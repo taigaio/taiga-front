@@ -100,3 +100,24 @@ describe "WatchButton", ->
             expect(ctrl.loading).to.be.false;
 
             done()
+
+
+    it "get permissions", () ->
+        $scope = $rootScope.$new()
+
+        ctrl = $controller("WatchButton", $scope, {
+            item: {_name: 'tasks'}
+        })
+
+        perm = ctrl.getPerms()
+        expect(perm).to.be.equal('modify_task')
+
+        ctrl.item = {_name: 'issues'}
+
+        perm = ctrl.getPerms()
+        expect(perm).to.be.equal('modify_issue')
+
+        ctrl.item = {_name: 'userstories'}
+
+        perm = ctrl.getPerms()
+        expect(perm).to.be.equal('modify_us')

@@ -24,6 +24,8 @@
         "FROM": "from",
         "TO": "to",
         "CLOSE": "close",
+        "BLOCK": "Block this User Story if it has a dependency that can not be satisfied",
+        "UNBLOCK": "Unblock this User Story",
         "BLOCKED_NOTE": "Why is this user story blocked?",
         "BLOCKED_REASON": "Please explain the reason",
         "GO_HOME": "Take me home",
@@ -36,6 +38,8 @@
         "EXTERNAL_USER": "an external user",
         "GENERIC_ERROR": "One of our Oompa Loompas says {{error}}.",
         "IOCAINE_TEXT": "Feeling a bit overwhelmed by a task? Make sure others know about it by clicking on Iocaine when editing a task. It's possible to become immune to this (fictional) deadly poison by consuming small amounts over time just as it's possible to get better at what you do by occasionally taking on extra challenges!",
+        "CLIENT_REQUIREMENT": "Client requirement is new requirement that was not previously expected and it is required to be part of the project",
+        "TEAM_REQUIREMENT": "Team requirement is a requirement that must exist in the project but should have no cost for the client",
         "CAPSLOCK_WARNING": "Be careful! You're writing with capital letters and this input is case sensitive.",
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "This value seems to be invalid.",
@@ -150,6 +154,7 @@
             "OPEN": "Open"
         },
         "WATCHERS": {
+            "WATCHERS": "Watchers",
             "ADD": "Add watchers",
             "TITLE_ADD": "Add a project member to the watchers list",
             "DELETE": "Delete watcher",

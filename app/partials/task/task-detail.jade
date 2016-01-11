@@ -72,8 +72,9 @@ div.wrapper(
                             tg-bo-href="nextUrl"
                             title="{{'TASK.NEXT' | translate}}"
                         )
-
-            div.tags-block(tg-tag-line, ng-model="task", required-perm="modify_task")
+            .subheader
+                div.tags-block(tg-tag-line, ng-model="task", required-perm="modify_task")
+                tg-created-by-display.ticket-created-by(ng-model="task")
 
         section.duty-content(tg-editable-description, tg-editable-wysiwyg, ng-model="task", required-perm="modify_task")
 
@@ -95,29 +96,30 @@ div.wrapper(
 
     sidebar.menu-secondary.sidebar.ticket-data
 
-        section.status
-
-            .ticket-title(tg-task-status-display, ng-model="task")
-
-            .ticket-created-by(tg-created-by-display, ng-model="task")
-
-            .ticket-data-container
-                .ticket-status(tg-task-status-button, ng-model="task")
+        .ticket-header
+            span.ticket-title(
+                tg-task-status-display
+                ng-model="task"
+            )
+            span.detail-status(
+                tg-task-status-button
+                ng-model="task"
+            )
 
         section.ticket-assigned-to(tg-assigned-to, ng-model="task", required-perm="modify_task")
 
-        section.track-buttons-container.ticket-track-buttons
-            div.watch-button
-                tg-watch-button(
-                    item="task"
-                    on-watch="ctrl.onWatch"
-                    on-unwatch="ctrl.onUnwatch"
-                )
-
+        section.ticket-watch-buttons
+            div.ticket-watch(
+                tg-watch-button
+                item="task"
+                data-environment="ticket"
+                on-watch="ctrl.onWatch"
+                on-unwatch="ctrl.onUnwatch"
+            )
             div.ticket-watchers(
-                tg-watchers,
-                ng-model="task",
-                required-perm="modify_task"
+                tg-watchers
+                ng-model="task"
+                required-perm="modify_us"
             )
 
         section.ticket-detail-settings

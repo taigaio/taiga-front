@@ -31,7 +31,7 @@ module = angular.module("taigaCommon")
 ## User story estimation directive (for Lightboxes)
 #############################################################################
 
-LbUsEstimationDirective = ($tgEstimationsService, $rootScope, $repo, $confirm, $template, $compile) ->
+LbUsEstimationDirective = ($tgEstimationsService, $rootScope, $repo, $template, $compile) ->
     # Display the points of a US and you can edit it.
     #
     # Example:
@@ -72,14 +72,15 @@ LbUsEstimationDirective = ($tgEstimationsService, $rootScope, $repo, $confirm, $
         require: "ngModel"
     }
 
-module.directive("tgLbUsEstimation", ["$tgEstimationsService", "$rootScope", "$tgRepo", "$tgConfirm", "$tgTemplate", "$compile", LbUsEstimationDirective])
+module.directive("tgLbUsEstimation", ["$tgEstimationsService", "$rootScope", "$tgRepo", "$tgTemplate",
+                                      "$compile", LbUsEstimationDirective])
 
 
 #############################################################################
 ## User story estimation directive
 #############################################################################
 
-UsEstimationDirective = ($tgEstimationsService, $rootScope, $repo, $confirm, $qqueue, $template, $compile) ->
+UsEstimationDirective = ($tgEstimationsService, $rootScope, $repo, $qqueue, $template, $compile) ->
     # Display the points of a US and you can edit it.
     #
     # Example:
@@ -120,8 +121,8 @@ UsEstimationDirective = ($tgEstimationsService, $rootScope, $repo, $confirm, $qq
         require: "ngModel"
     }
 
-module.directive("tgUsEstimation", ["$tgEstimationsService", "$rootScope", "$tgRepo", "$tgConfirm", "$tgQqueue", "$tgTemplate", "$compile"
-                                    UsEstimationDirective])
+module.directive("tgUsEstimation", ["$tgEstimationsService", "$rootScope", "$tgRepo", "$tgQqueue",
+                                    "$tgTemplate", "$compile", UsEstimationDirective])
 
 
 #############################################################################
@@ -145,7 +146,6 @@ EstimationsService = ($template, $qqueue, $repo, $confirm, $q) ->
             $qqueue.add () =>
                 onSuccess = =>
                     deferred.resolve()
-                    $confirm.notify("success")
 
                 onError = =>
                     $confirm.notify("error")
@@ -247,4 +247,5 @@ EstimationsService = ($template, $qqueue, $repo, $confirm, $q) ->
         create: create
     }
 
-module.factory("$tgEstimationsService", ["$tgTemplate", "$tgQqueue",  "$tgRepo", "$tgConfirm", "$q", EstimationsService])
+module.factory("$tgEstimationsService", ["$tgTemplate", "$tgQqueue",  "$tgRepo", "$tgConfirm",
+                                         "$q", EstimationsService])

@@ -436,7 +436,7 @@ module.directive("tgTaskboardSquishColumn", ["$tgResources", TaskboardSquishColu
 ## Taskboard User Directive
 #############################################################################
 
-TaskboardUserDirective = ($log) ->
+TaskboardUserDirective = ($log, $translate) ->
     clickable = false
 
     link = ($scope, $el, $attrs) ->
@@ -447,9 +447,17 @@ TaskboardUserDirective = ($log) ->
             user = $scope.usersById[assigned_to]
 
             if user is undefined
-                _.assign($scope, {name: "Unassigned", imgurl: "/" + window._version + "/images/unnamed.png", clickable: clickable})
+                _.assign($scope, {
+                    name: $translate.instant("COMMON.ASSIGNED_TO.NOT_ASSIGNED"),
+                    imgurl: "/#{window._version}/images/unnamed.png",
+                    clickable: clickable
+                })
             else
-                _.assign($scope, {name: user.full_name_display, imgurl: user.photo, clickable: clickable})
+                _.assign($scope, {
+                    name: user.full_name_display,
+                    imgurl: user.photo,
+                    clickable: clickable
+                })
 
             username_label.text($scope.name)
 
@@ -484,4 +492,4 @@ TaskboardUserDirective = ($log) ->
     }
 
 
-module.directive("tgTaskboardUserAvatar", ["$log", TaskboardUserDirective])
+module.directive("tgTaskboardUserAvatar", ["$log", "$translate", TaskboardUserDirective])

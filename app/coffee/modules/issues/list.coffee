@@ -778,7 +778,7 @@ module.directive("tgIssueStatusInlineEdition", ["$tgRepo", "$tgTemplate", "$root
 ## Issue assigned to Directive
 #############################################################################
 
-IssueAssignedToInlineEditionDirective = ($repo, $rootscope, popoverService) ->
+IssueAssignedToInlineEditionDirective = ($repo, $rootscope, $translate) ->
     template = _.template("""
     <img src="<%- imgurl %>" alt="<%- name %>"/>
     <figcaption><%- name %></figcaption>
@@ -786,11 +786,15 @@ IssueAssignedToInlineEditionDirective = ($repo, $rootscope, popoverService) ->
 
     link = ($scope, $el, $attrs) ->
         updateIssue = (issue) ->
-            ctx = {name: "Unassigned", imgurl: "/" + window._version + "/images/unnamed.png"}
-            member = $scope.usersById[issue.assigned_to]
+            ctx = {
+                name: $translate.instant("COMMON.ASSIGNED_TO.NOT_ASSIGNED"),
+                imgurl: "/#{window._version}/images/unnamed.png"
+            }
+
+            member = issue.assigned_to_extra_info
             if member
-                ctx.imgurl = member.photo
                 ctx.name = member.full_name_display
+                ctx.imgurl = member.photo
 
             $el.find(".avatar").html(template(ctx))
             $el.find(".issue-assignedto").attr('title', ctx.name)
@@ -822,5 +826,5 @@ IssueAssignedToInlineEditionDirective = ($repo, $rootscope, popoverService) ->
 
     return {link: link}
 
-module.directive("tgIssueAssignedToInlineEdition", ["$tgRepo", "$rootScope",
+module.directive("tgIssueAssignedToInlineEdition", ["$tgRepo", "$rootScope", "$translate"
                                                     IssueAssignedToInlineEditionDirective])

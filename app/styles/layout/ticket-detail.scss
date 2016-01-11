@@ -1,5 +1,5 @@
 .us-story-main-data {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     header {
         align-content: center;
         align-items: stretch;
@@ -162,6 +162,30 @@
     top: 1rem;
     a {
         @extend %xlarge;
+    }
+}
+
+.subheader {
+    display: flex;
+    justify-content: space-between;
+    @include breakpoint(laptop) {
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+    .ticket-created-by {
+        flex: 1;
+        flex-basis: 250px;
+        @include breakpoint(laptop) {
+            flex: 0;
+            order: 1;
+        }
+    }
+    .tags-block {
+        flex: 3;
+        @include breakpoint(laptop) {
+            flex: 0;
+            order: 2;
+        }
     }
 }
 

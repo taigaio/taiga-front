@@ -49,8 +49,12 @@ tg-project-menu {
             }
         }
     }
-    svg path {
-        opacity: 1;
+    svg {
+        max-height: 1.5rem;
+        max-width: 1.5rem;
+        path {
+            opacity: 1;
+        }
     }
     span {
         display: block;

@@ -27,7 +27,8 @@ WatchButtonDirective = ->
             onUnwatch: "="
         }
         controllerAs: "vm",
-        templateUrl: "components/watch-button/watch-button.html",
+        templateUrl: (item, attributes) ->
+            return "components/watch-button/watch-button-"+attributes.environment+".html"
     }
 
 angular.module("taigaComponents").directive("tgWatchButton", WatchButtonDirective)
