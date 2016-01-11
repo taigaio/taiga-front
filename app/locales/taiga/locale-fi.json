@@ -274,9 +274,9 @@
         "HEADER": "Minulla on jo Taiga tunnus",
         "PLACEHOLDER_AUTH_NAME": "Käyttäjänimi tai sähköposti (kirjainkoko merkitsevä)",
         "LINK_FORGOT_PASSWORD": "Unohditko?",
-        "TITLE_LINK_FORGOT_PASSWORD": "Unohditko salasanasi?",
+        "TITLE_LINK_FORGOT_PASSWORD": "Did you forget your password?",
         "ACTION_ENTER": "Sisään",
-        "ACTION_SIGN_IN": "Kirjaudu sisään",
+        "ACTION_SIGN_IN": "Login",
         "PLACEHOLDER_AUTH_PASSWORD": "Salasana (kirjainkoko merkitsevä)"
     },
     "LOGIN_FORM": {
@@ -361,6 +361,7 @@
         "DEPRECATED": "(poistettu)",
         "DEPRECATED_FILE": "Vanhentunut?",
         "ADD": "Add new attachment. {{maxFileSizeMsg}}",
+        "DROP": "Drop attachments here!",
         "MAX_FILE_SIZE": "[Maks. koko: {{maxFileSize}}]",
         "SHOW_DEPRECATED": "+ näytä vanhentuneet liitteet",
         "HIDE_DEPRECATED": "- piilota vanhentuneet liitteet",
@@ -371,6 +372,7 @@
         "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "Poista liite...",
         "MSG_LIGHTBOX_DELETE_ATTACHMENT": "liite '{{fileName}}'",
         "ERROR_DELETE_ATTACHMENT": "Emme pystyneet poistamaan: {{errorMessage}}",
+        "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is too heavy for our Oompa Loompas, try it with a smaller than ({{maxFileSize}})",
         "FIELDS": {
             "IS_DEPRECATED": "on vanhentunut"
         }
@@ -727,7 +729,7 @@
             "PLACEHOLDER_SEARCH": "Hae täältä...",
             "ACTION_CREATE_PROJECT": "Luo projekti",
             "ACTION_IMPORT_PROJECT": "Import project",
-            "SEE_MORE_PROJECTS": "See more projects",
+            "MANAGE_PROJECTS": "Manage projects",
             "TITLE_CREATE_PROJECT": "Create project",
             "TITLE_IMPORT_PROJECT": "Import project",
             "TITLE_PRVIOUS_PROJECT": "Näytä aikaisemmat projektit",
@@ -950,6 +952,7 @@
         "CUSTOMIZE_GRAPH_ADMIN": "Hallinnoi",
         "CUSTOMIZE_GRAPH_TITLE": "Set up the points and sprints through the Admin",
         "MOVE_US_TO_CURRENT_SPRINT": "Siirrä nykyiseen kierrokseen",
+        "MOVE_US_TO_LATEST_SPRINT": "Move to latest Sprint",
         "SHOW_FILTERS": "Näytä suodattimet",
         "SHOW_TAGS": "Näytä avainsanat",
         "EMPTY": "The backlog is empty!",
@@ -1308,7 +1311,7 @@
         "HINT2_TEXT": "Teams can now create custom fields as a flexible means to enter specific data useful for their particular workflow.",
         "HINT3_TITLE": "Reorder your projects to feature those most relevant to you.",
         "HINT3_TEXT": "The 10 projects are listed in the direct access bar at the top.",
-        "HINT4_TITLE": "Did you forgot what were you working on?",
+        "HINT4_TITLE": "Did you forget what were you working on?",
         "HINT4_TEXT": "Don't worry, on your dashboard you'll find your open tasks, issues, and user stories in the order you worked on them."
     },
     "TIMELINE": {
@@ -1343,7 +1346,7 @@
         "NEW_USER": "{{username}} has joined Taiga"
     },
     "LEGAL": {
-        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>By clicking \"Sign up\"', you agree to our <br /></span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">terms of service</a><span> and </span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">privacy policy</a>."
+        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>When creating a new account, you agree to our <br /></span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">terms of service</a><span> and </span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">privacy policy</a>."
     },
     "EXTERNAL_APP": {
         "PAGE_TITLE": "An external app requires authentication",
@@ -1354,6 +1357,12 @@
         "CANCEL": "Peru"
     },
     "JOYRIDE": {
+        "NAV": {
+            "NEXT": "Next",
+            "BACK": "Back",
+            "SKIP": "Skip",
+            "DONE": "Done"
+        },
         "DASHBOARD": {
             "STEP1": {
                 "TITLE": "Projektisi",

@@ -274,9 +274,9 @@
         "HEADER": "Ya tengo una cuenta en Taiga",
         "PLACEHOLDER_AUTH_NAME": "Nombre de usuario o email (distingue mayúsculas y minúsculas)",
         "LINK_FORGOT_PASSWORD": "¿La olvidaste?",
-        "TITLE_LINK_FORGOT_PASSWORD": "¿Has olvidado tu contraseña?",
+        "TITLE_LINK_FORGOT_PASSWORD": "Did you forget your password?",
         "ACTION_ENTER": "Entrar",
-        "ACTION_SIGN_IN": "Ingresar",
+        "ACTION_SIGN_IN": "Login",
         "PLACEHOLDER_AUTH_PASSWORD": "Contraseña (distingue mayúsculas y minúsculas)"
     },
     "LOGIN_FORM": {
@@ -361,6 +361,7 @@
         "DEPRECATED": "(obsoleto)",
         "DEPRECATED_FILE": "¿Desactualizado?",
         "ADD": "Agrega nuevos adjunto. {{maxFileSizeMsg}}",
+        "DROP": "Drop attachments here!",
         "MAX_FILE_SIZE": "[Tamaño Max. : {{maxFileSize}}]",
         "SHOW_DEPRECATED": "+ muestra adjuntos desactualizados",
         "HIDE_DEPRECATED": "- ocultar adjuntos obsoletos",
@@ -371,6 +372,7 @@
         "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "Borrar adjunto...",
         "MSG_LIGHTBOX_DELETE_ATTACHMENT": "el adjunto '{{fileName}}'",
         "ERROR_DELETE_ATTACHMENT": "No hemos podido borrarlo: {{errorMessage}}",
+        "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is too heavy for our Oompa Loompas, try it with a smaller than ({{maxFileSize}})",
         "FIELDS": {
             "IS_DEPRECATED": "Está desactualizado"
         }
@@ -727,7 +729,7 @@
             "PLACEHOLDER_SEARCH": "Buscar en...",
             "ACTION_CREATE_PROJECT": "Crear proyecto",
             "ACTION_IMPORT_PROJECT": "Importar proyecto",
-            "SEE_MORE_PROJECTS": "Ver más proyectos",
+            "MANAGE_PROJECTS": "Manage projects",
             "TITLE_CREATE_PROJECT": "Crear proyecto",
             "TITLE_IMPORT_PROJECT": "Importar proyecto",
             "TITLE_PRVIOUS_PROJECT": "Mostrar proyectos anteriores",
@@ -950,6 +952,7 @@
         "CUSTOMIZE_GRAPH_ADMIN": "Admin",
         "CUSTOMIZE_GRAPH_TITLE": "Modifica los puntos y sprints a través de la zona de Administración",
         "MOVE_US_TO_CURRENT_SPRINT": "Mover al Sprint en curso",
+        "MOVE_US_TO_LATEST_SPRINT": "Move to latest Sprint",
         "SHOW_FILTERS": "Mostrar filtros",
         "SHOW_TAGS": "Ver etiquetas",
         "EMPTY": "¡El backlog está vacío!",
@@ -1308,7 +1311,7 @@
         "HINT2_TEXT": "Los equipos ahora pueden crear atributos personalizados como un medio flexible para introducir datos específicos útiles para su flujo de trabajo particular",
         "HINT3_TITLE": "Reordenar tus proyectos para facilitar el acceso a los más relevantes para ti",
         "HINT3_TEXT": "Los 10 primeros proyectos aparecerán en el listado del acceso directo de la barra superior.",
-        "HINT4_TITLE": "¿Has olvidado en qué estabas trabajando?",
+        "HINT4_TITLE": "Did you forget what were you working on?",
         "HINT4_TEXT": "No te preocupes, en el dashboard encontrarás las tareas, peticiones e historias de usuario abiertas en el orden en el que trabajste en ellas."
     },
     "TIMELINE": {
@@ -1343,7 +1346,7 @@
         "NEW_USER": "{{username}} se ha unido a Taiga"
     },
     "LEGAL": {
-        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>Haciendo click en \"Registrarme\"', aceptas nuestros <br /></span><a href=\"{{ termsOfServiceUrl }}\" title=\"Ver términos de servicio\" target=\"_blank\">términos de servicio</a><span> y </span><a href=\"{{ privacyPolicyUrl }}\" title=\"Ver política de privacidad\" target=\"_blank\">nuestra política de privacidad</a>."
+        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>When creating a new account, you agree to our <br /></span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">terms of service</a><span> and </span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">privacy policy</a>."
     },
     "EXTERNAL_APP": {
         "PAGE_TITLE": "Una aplicación externa requiere autenticación",
@@ -1354,6 +1357,12 @@
         "CANCEL": "Cancelar"
     },
     "JOYRIDE": {
+        "NAV": {
+            "NEXT": "Next",
+            "BACK": "Back",
+            "SKIP": "Skip",
+            "DONE": "Done"
+        },
         "DASHBOARD": {
             "STEP1": {
                 "TITLE": "Su proyecto",

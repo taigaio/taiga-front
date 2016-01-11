@@ -274,9 +274,9 @@
         "HEADER": "У меня уже есть логин в Taiga",
         "PLACEHOLDER_AUTH_NAME": "Логин или email (с учетом регистра)",
         "LINK_FORGOT_PASSWORD": "Забыли?",
-        "TITLE_LINK_FORGOT_PASSWORD": "Вы забыли пароль?",
+        "TITLE_LINK_FORGOT_PASSWORD": "Did you forget your password?",
         "ACTION_ENTER": "Ввод",
-        "ACTION_SIGN_IN": "Войти",
+        "ACTION_SIGN_IN": "Login",
         "PLACEHOLDER_AUTH_PASSWORD": "Пароль (чувствителен к регистру)"
     },
     "LOGIN_FORM": {
@@ -361,6 +361,7 @@
         "DEPRECATED": "(устаревший)",
         "DEPRECATED_FILE": "Устаревший?",
         "ADD": "Добавить вложение. {{maxFileSizeMsg}}",
+        "DROP": "Drop attachments here!",
         "MAX_FILE_SIZE": "[Макс. размер: {{maxFileSize}}]",
         "SHOW_DEPRECATED": "Показать устаревшие приложения",
         "HIDE_DEPRECATED": "- спрятать устаревшие приложения",
@@ -371,6 +372,7 @@
         "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "Удалить вложение...",
         "MSG_LIGHTBOX_DELETE_ATTACHMENT": "приложение '{{fileName}}'",
         "ERROR_DELETE_ATTACHMENT": "Мы не смогли провести удаление: {{errorMessage}}",
+        "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is too heavy for our Oompa Loompas, try it with a smaller than ({{maxFileSize}})",
         "FIELDS": {
             "IS_DEPRECATED": "рекомендовано"
         }
@@ -727,7 +729,7 @@
             "PLACEHOLDER_SEARCH": "Искать в...",
             "ACTION_CREATE_PROJECT": "Создать проект",
             "ACTION_IMPORT_PROJECT": "Импортировать проект",
-            "SEE_MORE_PROJECTS": "Смотрите другие проекты",
+            "MANAGE_PROJECTS": "Manage projects",
             "TITLE_CREATE_PROJECT": "Создать проект",
             "TITLE_IMPORT_PROJECT": "Импортировать проект",
             "TITLE_PRVIOUS_PROJECT": "Показать предыдущие проекты",
@@ -950,6 +952,7 @@
         "CUSTOMIZE_GRAPH_ADMIN": "Админка",
         "CUSTOMIZE_GRAPH_TITLE": "Настройте очки и спринты в админке",
         "MOVE_US_TO_CURRENT_SPRINT": "Перейти к текущему спринту",
+        "MOVE_US_TO_LATEST_SPRINT": "Move to latest Sprint",
         "SHOW_FILTERS": "Показать фильтры",
         "SHOW_TAGS": "Показать теги",
         "EMPTY": "Список задач пуст!",
@@ -1308,7 +1311,7 @@
         "HINT2_TEXT": "Теперь команды могут создавать специальные поля, чтобы гибко вводить данные, специфические для их рабочего процесса.",
         "HINT3_TITLE": "Перестройте список своих проектов так, чтобы выделить самые важные для себя.",
         "HINT3_TEXT": "Первые 10 проектов доступны из панели прямого доступа сверху.",
-        "HINT4_TITLE": "Вы забыли над чем работали?",
+        "HINT4_TITLE": "Did you forget what were you working on?",
         "HINT4_TEXT": "Не переживайте, на вашем рабочем столе вы найдёте ваши активные задачи, запросы и пользовательские истории в том порядке, в котором вы над ними работали."
     },
     "TIMELINE": {
@@ -1343,7 +1346,7 @@
         "NEW_USER": "{{username}} присоединился к Taiga"
     },
     "LEGAL": {
-        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>Кликая \"Зарегистрироваться\"', вы соглашаетесь с нашими<br /></span><a href=\"{{ termsOfServiceUrl }}\" title=\"Смотреть условия обслуживания\" target=\"_blank\">условиями обслуживания</a><span> и </span><a href=\"{{ privacyPolicyUrl }}\" title=\"Смотреть политику обработки персональных данных\" target=\"_blank\">политикой обработки персональных данных</a>."
+        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>When creating a new account, you agree to our <br /></span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">terms of service</a><span> and </span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">privacy policy</a>."
     },
     "EXTERNAL_APP": {
         "PAGE_TITLE": "Внешнее приложение требующие аутентификации",
@@ -1354,6 +1357,12 @@
         "CANCEL": "Отмена"
     },
     "JOYRIDE": {
+        "NAV": {
+            "NEXT": "Next",
+            "BACK": "Back",
+            "SKIP": "Skip",
+            "DONE": "Done"
+        },
         "DASHBOARD": {
             "STEP1": {
                 "TITLE": "Ваш проект",

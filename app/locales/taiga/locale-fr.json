@@ -274,9 +274,9 @@
         "HEADER": "J'ai déjà un identifiant Taiga",
         "PLACEHOLDER_AUTH_NAME": "Nom d'utilisateur ou adresse courriel (sensible à la casse)",
         "LINK_FORGOT_PASSWORD": "Mot de passe oublié?",
-        "TITLE_LINK_FORGOT_PASSWORD": "Avez-vous oublié votre mot de passe ?",
+        "TITLE_LINK_FORGOT_PASSWORD": "Did you forget your password?",
         "ACTION_ENTER": "Entrer",
-        "ACTION_SIGN_IN": "Connexion",
+        "ACTION_SIGN_IN": "Login",
         "PLACEHOLDER_AUTH_PASSWORD": "Mot de passe (sensible à la casse)"
     },
     "LOGIN_FORM": {
@@ -361,6 +361,7 @@
         "DEPRECATED": "(obsolète)",
         "DEPRECATED_FILE": "Obsolète?",
         "ADD": "Ajoutez une nouvelle pièce jointe. {{maxFileSizeMsg}}",
+        "DROP": "Drop attachments here!",
         "MAX_FILE_SIZE": "[Taille max.: {{maxFileSize}}]",
         "SHOW_DEPRECATED": "+ montrer les pièces jointes obsolètes",
         "HIDE_DEPRECATED": "- cacher les pièces jointes obsolètes",
@@ -371,6 +372,7 @@
         "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "Supprimer la pièce jointe...",
         "MSG_LIGHTBOX_DELETE_ATTACHMENT": "la pièce jointe \"{{fileName}}\"",
         "ERROR_DELETE_ATTACHMENT": "Nous n'avons pas été capable de supprimer {{errorMessage}}.",
+        "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is too heavy for our Oompa Loompas, try it with a smaller than ({{maxFileSize}})",
         "FIELDS": {
             "IS_DEPRECATED": "est obsolète"
         }
@@ -727,7 +729,7 @@
             "PLACEHOLDER_SEARCH": "Rechercher dans...",
             "ACTION_CREATE_PROJECT": "Créer un projet",
             "ACTION_IMPORT_PROJECT": "Importer un projet",
-            "SEE_MORE_PROJECTS": "Voir plus de projets",
+            "MANAGE_PROJECTS": "Manage projects",
             "TITLE_CREATE_PROJECT": "Créer un projet",
             "TITLE_IMPORT_PROJECT": "Importer un projet",
             "TITLE_PRVIOUS_PROJECT": "Montrer les projets précédents",
@@ -950,6 +952,7 @@
         "CUSTOMIZE_GRAPH_ADMIN": "Admin",
         "CUSTOMIZE_GRAPH_TITLE": "Définissez les points et les sprints via l'admin",
         "MOVE_US_TO_CURRENT_SPRINT": "Déplacer vers le Sprint Courant",
+        "MOVE_US_TO_LATEST_SPRINT": "Move to latest Sprint",
         "SHOW_FILTERS": "Afficher les filtres",
         "SHOW_TAGS": "Afficher les mots-clés",
         "EMPTY": "Le carnet de suivi est vide !",
@@ -1308,7 +1311,7 @@
         "HINT2_TEXT": "Les équipes peuvent désormais créer des champs personnalisés comme un moyen flexible d'entrer des données spécifiques utiles pour leur flux de travail particulier.",
         "HINT3_TITLE": "Reorder your projects to feature those most relevant to you.",
         "HINT3_TEXT": "The 10 projects are listed in the direct access bar at the top.",
-        "HINT4_TITLE": "Avez-vous oublié ce sur quoi vous travailliez ?",
+        "HINT4_TITLE": "Did you forget what were you working on?",
         "HINT4_TEXT": "Pas d'inquiétude, vous trouverez dans votre tableau de bord vos tâches, tickets et récits utilisateurs dans l'ordre dans lequel vous avez travaillé dessus."
     },
     "TIMELINE": {
@@ -1343,7 +1346,7 @@
         "NEW_USER": "{{username}} a rejoint Taiga"
     },
     "LEGAL": {
-        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>En cliquant sur \"S'enregistrer\"', vous acceptez nos <br /></span><a href=\"{{ termsOfServiceUrl }}\" title=\"Voir les conditions de service\" target=\"_blank\">conditions de service</a><span> et notre </span><a href=\"{{ privacyPolicyUrl }}\" title=\"Voir la politique de confidentialité\" target=\"_blank\">politique de sécurité</a>."
+        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>When creating a new account, you agree to our <br /></span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">terms of service</a><span> and </span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">privacy policy</a>."
     },
     "EXTERNAL_APP": {
         "PAGE_TITLE": "Une application externe requiert l'authentification",
@@ -1354,6 +1357,12 @@
         "CANCEL": "Annuler"
     },
     "JOYRIDE": {
+        "NAV": {
+            "NEXT": "Next",
+            "BACK": "Back",
+            "SKIP": "Skip",
+            "DONE": "Done"
+        },
         "DASHBOARD": {
             "STEP1": {
                 "TITLE": "Votre projet",
