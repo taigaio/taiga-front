@@ -28,6 +28,7 @@ debounce = @.taiga.debounce
 
 module = angular.module("taigaRelatedTasks", [])
 
+
 RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope, $loading, $template, $translate) ->
     templateView = $template.get("task/related-task-row.html", true)
     templateEdit = $template.get("task/related-task-row-edit.html", true)
@@ -43,7 +44,6 @@ RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope, $loading, $tem
             promise = $repo.save(task)
             promise.then =>
                 currentLoading.finish()
-                $confirm.notify("success")
                 $rootscope.$broadcast("related-tasks:update")
 
             promise.then null, =>
@@ -92,7 +92,6 @@ RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope, $loading, $tem
                     promise = $repo.remove(task)
                     promise.then ->
                         askResponse.finish()
-                        $confirm.notify("success")
                         $scope.$emit("related-tasks:delete")
 
                     promise.then null, ->
@@ -114,7 +113,9 @@ RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope, $loading, $tem
 
     return {link:link, require:"ngModel"}
 
-module.directive("tgRelatedTaskRow", ["$tgRepo", "$compile", "$tgConfirm", "$rootScope", "$tgLoading", "$tgTemplate", "$translate", RelatedTaskRowDirective])
+module.directive("tgRelatedTaskRow", ["$tgRepo", "$compile", "$tgConfirm", "$rootScope", "$tgLoading",
+                                      "$tgTemplate", "$translate", RelatedTaskRowDirective])
+
 
 RelatedTaskCreateFormDirective = ($repo, $compile, $confirm, $tgmodel, $loading, $analytics, $template) ->
     template = $template.get("task/related-task-create-form.html", true)
@@ -141,7 +142,6 @@ RelatedTaskCreateFormDirective = ($repo, $compile, $confirm, $tgmodel, $loading,
                 $analytics.trackEvent("task", "create", "create task on userstory", 1)
                 currentLoading.finish()
                 $scope.$emit("related-tasks:add")
-                $confirm.notify("success")
 
             promise.then null, ->
                 $el.find('input').val(task.subject)
@@ -191,7 +191,10 @@ RelatedTaskCreateFormDirective = ($repo, $compile, $confirm, $tgmodel, $loading,
             $el.off()
 
     return {link: link}
-module.directive("tgRelatedTaskCreateForm", ["$tgRepo", "$compile", "$tgConfirm", "$tgModel", "$tgLoading", "$tgAnalytics", "$tgTemplate", RelatedTaskCreateFormDirective])
+
+module.directive("tgRelatedTaskCreateForm", ["$tgRepo", "$compile", "$tgConfirm", "$tgModel", "$tgLoading",
+                                             "$tgAnalytics", "$tgTemplate", RelatedTaskCreateFormDirective])
+
 
 RelatedTaskCreateButtonDirective = ($repo, $compile, $confirm, $tgmodel, $template) ->
     template = $template.get("common/components/add-button.html", true)
@@ -212,7 +215,10 @@ RelatedTaskCreateButtonDirective = ($repo, $compile, $confirm, $tgmodel, $templa
             $el.off()
 
     return {link: link}
-module.directive("tgRelatedTaskCreateButton", ["$tgRepo", "$compile", "$tgConfirm", "$tgModel", "$tgTemplate", RelatedTaskCreateButtonDirective])
+
+module.directive("tgRelatedTaskCreateButton", ["$tgRepo", "$compile", "$tgConfirm", "$tgModel",
+                                               "$tgTemplate", RelatedTaskCreateButtonDirective])
+
 
 RelatedTasksDirective = ($repo, $rs, $rootscope) ->
     link = ($scope, $el, $attrs) ->
@@ -239,7 +245,9 @@ RelatedTasksDirective = ($repo, $rs, $rootscope) ->
             $el.off()
 
     return {link: link}
+
 module.directive("tgRelatedTasks", ["$tgRepo", "$tgResources", "$rootScope", RelatedTasksDirective])
+
 
 RelatedTaskAssignedToInlineEditionDirective = ($repo, $rootscope, $translate) ->
     template = _.template("""
