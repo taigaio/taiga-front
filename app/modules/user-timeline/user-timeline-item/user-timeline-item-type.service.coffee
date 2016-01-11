@@ -88,7 +88,8 @@ timelineType = (timeline, event) ->
             key: 'TIMELINE.NEW_COMMENT_US',
             translate_params: ['username', 'obj_name'],
             description: (timeline) ->
-                return $(timeline.getIn(['data', 'comment_html'])).text()
+                text = timeline.getIn(['data', 'comment_html'])
+                return $($.parseHTML(text)).text()
         },
         { # NewIssueComment
             check: (timeline, event) ->
@@ -96,7 +97,8 @@ timelineType = (timeline, event) ->
             key: 'TIMELINE.NEW_COMMENT_ISSUE',
             translate_params: ['username', 'obj_name'],
             description: (timeline) ->
-                return $(timeline.getIn(['data', 'comment_html'])).text()
+                text = timeline.getIn(['data', 'comment_html'])
+                return $($.parseHTML(text)).text()
         },
         { # NewTaskComment
             check: (timeline, event) ->
@@ -104,7 +106,8 @@ timelineType = (timeline, event) ->
             key: 'TIMELINE.NEW_COMMENT_TASK'
             translate_params: ['username', 'obj_name'],
             description: (timeline) ->
-                return $(timeline.getIn(['data', 'comment_html'])).text()
+                text = timeline.getIn(['data', 'comment_html'])
+                return $($.parseHTML(text)).text()
         },
         { # UsMove
             check: (timeline, event) ->
@@ -147,7 +150,8 @@ timelineType = (timeline, event) ->
             translate_params: ['username', 'obj_name'],
             description: (timeline) ->
                 if timeline.hasIn(['data', 'value_diff', 'value', 'blocked_note_html'])
-                    return $(timeline.getIn(['data', 'value_diff', 'value', 'blocked_note_html']).get(1)).text()
+                    text = timeline.getIn(['data', 'value_diff', 'value', 'blocked_note_html']).get(1)
+                    return $($.parseHTML(text)).text()
                 else
                     return false
         },
