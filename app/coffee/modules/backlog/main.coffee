@@ -228,8 +228,8 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @scope.oldSelectedStatuses = selectedStatuses
 
         @scope.filtersQOld = @scope.filtersQ
-        @scope.filtersQ = ""
-        @.replaceFilter("q", null)
+        @scope.filtersQ = undefined
+        @.replaceFilter("q", @scope.filtersQ)
 
         _.each [selectedTags, selectedStatuses], (filterGrp) =>
             _.each filterGrp, (item) =>
