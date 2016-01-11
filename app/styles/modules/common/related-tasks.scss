@@ -9,6 +9,7 @@
     background: $whitish;
     display: flex;
     justify-content: space-between;
+    min-height: 36px;
     .related-tasks-title {
         @extend %medium;
         @extend %bold;
