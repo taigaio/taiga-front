@@ -68,27 +68,34 @@ class HomeService extends taiga.Service
         watching = workInProgress.get("watching")
 
         if watching.get("userStories")
-            _duties = watching.get("userStories").map (duty) ->
+            _duties = watching.get("userStories").filter (duty) ->
+                return !!projectsById.get(String(duty.get('project')))
+
+            _duties = _duties.map (duty) ->
                 return _attachProjectInfoToDuty(duty, "userstories")
 
             watching = watching.set("userStories", _duties)
 
         if watching.get("tasks")
-            _duties = watching.get("tasks").map (duty) ->
+            _duties = watching.get("tasks").filter (duty) ->
+                return !!projectsById.get(String(duty.get('project')))
+
+            _duties = _duties.map (duty) ->
                 return _attachProjectInfoToDuty(duty, "tasks")
 
             watching = watching.set("tasks", _duties)
 
         if watching.get("issues")
-            _duties = watching.get("issues").map (duty) ->
+            _duties = watching.get("issues").filter (duty) ->
+                return !!projectsById.get(String(duty.get('project')))
+
+            _duties = _duties.map (duty) ->
                 return _attachProjectInfoToDuty(duty, "issues")
 
             watching = watching.set("issues", _duties)
 
-
         workInProgress = workInProgress.set("assignedTo", assignedTo)
         workInProgress = workInProgress.set("watching", watching)
-
 
     getWorkInProgress: (userId) ->
         projectsById = Immutable.Map()

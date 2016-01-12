@@ -80,8 +80,24 @@ describe "tgHome", ->
                 {id: 2, name: "fake2", slug: "project-2"}
             ]))
 
-        mocks.resources.userstories.listInAllProjects.promise()
+        mocks.resources.userstories.listInAllProjects
+            .withArgs(sinon.match({
+                is_closed: false
+                assigned_to: userId
+            }))
+            .promise()
             .resolve(Immutable.fromJS([{id: 1, ref: 1, project: "1"}]))
+
+        mocks.resources.userstories.listInAllProjects
+            .withArgs(sinon.match({
+                is_closed: false
+                watchers: userId
+            }))
+            .promise()
+            .resolve(Immutable.fromJS([
+                {id: 1, ref: 1, project: "1"},
+                {id: 2, ref: 2, project: "10"} # the user is not member of this project
+            ]))
 
         mocks.resources.tasks.listInAllProjects.promise()
             .resolve(Immutable.fromJS([{id: 2, ref: 2, project: "1"}]))
