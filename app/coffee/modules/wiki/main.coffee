@@ -57,6 +57,7 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         @scope.wikiSlug = @params.slug
         @scope.wikiTitle = @scope.wikiSlug
         @scope.sectionName = "Wiki"
+        @scope.linksVisible = false
 
         promise = @.loadInitialData()
 
@@ -72,10 +73,11 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             projectName: @scope.project.name
         })
         description =  @translate.instant("WIKI.PAGE_DESCRIPTION", {
-            wikiPageContent: angular.element(@scope.wiki.html or "").text()
-            totalEditions: @scope.wiki.editions or 0
-            lastModifiedDate: moment(@scope.wiki.modified_date).format(@translate.instant("WIKI.DATETIME"))
+            wikiPageContent: angular.element(@scope.wiki?.html or "").text()
+            totalEditions: @scope.wiki?.editions or 0
+            lastModifiedDate: moment(@scope.wiki?.modified_date).format(@translate.instant("WIKI.DATETIME"))
         })
+
         @appMetaService.setAll(title, description)
 
     loadProject: ->
@@ -119,8 +121,12 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         promise = @.loadProject()
         return promise.then (project) =>
             @.fillUsersAndRoles(project.members, project.roles)
-            @q.all([@.loadWikiLinks(), @.loadWiki()]).then () =>
+            @q.all([@.loadWikiLinks(), @.loadWiki()]).then @.checkLinksPerms.bind(this)
 
+    checkLinksPerms: ->
+        if @scope.project.my_permissions.indexOf("modify_wiki_link") != -1 ||
+          (@scope.project.my_permissions.indexOf("view_wiki_links") != -1 && @scope.wikiLinks.length)
+            @scope.linksVisible = true
 
     delete: ->
         title = @translate.instant("WIKI.DELETE_LIGHTBOX_TITLE")
