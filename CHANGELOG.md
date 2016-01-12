@@ -10,6 +10,7 @@
 - Drag files from desktop in wysiwyg textareas.
 - New design for the detail pages slidebar.
 - Sticky project navigation bar.
+- Added 'Assign to me' button in User Stories, Tasks and Issues detail pages. (thanks to [@allistera](https://github.com/allistera)).
 
 ### Misc
 - Lots of small and not so small bugfixes.
