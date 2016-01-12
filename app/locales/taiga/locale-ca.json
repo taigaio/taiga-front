@@ -17,8 +17,8 @@
         "DRAG": "Moure",
         "TAG_LINE": "La teua eïna de gestió de projectes àgil, gratuita i de codi obert ",
         "TAG_LINE_2": "ESTIMA EL TEU PROJECTE",
-        "BLOCK": "Bloquejar",
-        "UNBLOCK": "Desbloquejar",
+        "BLOCK": "Block this User Story if it has a dependency that can not be satisfied",
+        "UNBLOCK": "Unblock this User Story",
         "BLOCKED": "Bloquejat",
         "CREATED_BY": "Creat per {{fullDisplayName}}",
         "FROM": "de",
@@ -36,6 +36,8 @@
         "EXTERNAL_USER": "un usuari extern",
         "GENERIC_ERROR": "Un Oompa Loompas diu {{error}}.",
         "IOCAINE_TEXT": "Un poc saturat per una tasca? Fes-ho saber als teus companys clicant a Iocaina quan edites la tasca. Es possible ser inmune a aquesta (fictícia) poció mortal consumint xicotetes dòsis poc a poc, així com es possible millorar amb xicotets nous desafiaments!",
+        "CLIENT_REQUIREMENT": "Client requirement is new requirement that was not previously expected and it is required to be part of the project",
+        "TEAM_REQUIREMENT": "Team requirement is a requirement that must exist in the project but should have no cost for the client",
         "CAPSLOCK_WARNING": "Be careful! You're writing with capital letters and this input is case sensitive.",
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Aquest valor pareix invàlid.",
@@ -139,17 +141,20 @@
         },
         "ASSIGNED_TO": {
             "NOT_ASSIGNED": "Sense assignar",
+            "ASSIGN": "Assign",
             "DELETE_ASSIGNMENT": "Esborrar assignament",
             "REMOVE_ASSIGNED": "Esborra assignat",
             "TOO_MANY": ".. massa usuaris, segueix filtrant",
             "CONFIRM_UNASSIGNED": "Segut que vols deixar-ho sense assignar?",
-            "TITLE_ACTION_EDIT_ASSIGNMENT": "Editar assignament"
+            "TITLE_ACTION_EDIT_ASSIGNMENT": "Editar assignament",
+            "SELF": "Assign to me"
         },
         "STATUS": {
             "CLOSED": "Tancat",
             "OPEN": "Obert"
         },
         "WATCHERS": {
+            "WATCHERS": "Watchers",
             "ADD": "Add watchers",
             "TITLE_ADD": "Add a project member to the watchers list",
             "DELETE": "Esborrar seguidor",
@@ -176,7 +181,7 @@
             "SAVE": "Salva camp personalitzat",
             "EDIT": "Edita el camp personalitzat",
             "DELETE": "Esborrar atribut personalitzat",
-            "CONFIRM_DELETE": "Recorda que tots els valors a aquest camp personalitzat seràn esborrats. </br> Segur que voleu continuar?  "
+            "CONFIRM_DELETE": "Remeber that all values in this custom field will be deleted.\n Are you sure you want to continue?"
         },
         "FILTERS": {
             "TITLE": "filtres",
@@ -344,10 +349,11 @@
         "PAGE_TITLE": "Home - Taiga",
         "PAGE_DESCRIPTION": "La home de Taiga amb els teus projectes principals, totes les històries d'usuari, tasques i incidències que tens assignades i aquelles que estàs Watching",
         "EMPTY_WORKING_ON": "<strong>Sembla buit, no?</strong> Comenceu a treballar amb Taiga i voràs ací les históries, tasques e incidències en les que estás treballant.",
-        "EMPTY_WATCHING": "<strong>Segueix</strong> les históries, tasques e incidéncies...que vols tindre en compte :)",
+        "EMPTY_WATCHING": "<strong>Follow</strong> User Stories, Tasks, Issues in your projects and be notified about its changes :)",
         "EMPTY_PROJECT_LIST": "No tens cap projecte encara",
         "WORKING_ON_SECTION": "En Progrés",
-        "WATCHING_SECTION": "Observant"
+        "WATCHING_SECTION": "Observant",
+        "DASHBOARD": "Projects Dashboard"
     },
     "PROJECTS": {
         "PAGE_TITLE": "Els meus projectes - Taiga",
@@ -372,7 +378,7 @@
         "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "Esborrar adjunt...",
         "MSG_LIGHTBOX_DELETE_ATTACHMENT": "l'adjunt '{{fileName}}'",
         "ERROR_DELETE_ATTACHMENT": "No hem pogut esborrar: {{errorMessage}}",
-        "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is too heavy for our Oompa Loompas, try it with a smaller than ({{maxFileSize}})",
+        "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) es massa gran per als nostres Oompa Loompas, prova amb algun inferior a ({{maxFileSize}})",
         "FIELDS": {
             "IS_DEPRECATED": "es obsolet"
         }
@@ -442,9 +448,18 @@
             "NUMBER_US_POINTS": "Nombre de punts d'històries (0 per a una quantitat indeterminada)",
             "TAGS": "Etiquetes",
             "DESCRIPTION": "Descripció",
+            "RECRUITING": "Is this project looking for people?",
+            "RECRUITING_MESSAGE": "Who are you looking for?",
+            "RECRUITING_PLACEHOLDER": "Define the profiles you are looking for",
             "PUBLIC_PROJECT": "Projecte públic",
+            "PUBLIC_PROJECT_DESC": "Users will be able to find and view your project",
             "PRIVATE_PROJECT": "Projecte privat",
-            "DELETE": "Esborra aquest projecte"
+            "PRIVATE_PROJECT_DESC": "By default, this project will be hidden to the public",
+            "PRIVATE_OR_PUBLIC": "What's the difference between public and private projects?",
+            "DELETE": "Esborra aquest projecte",
+            "LOGO_HELP": "The image will be scaled to 80x80px.",
+            "CHANGE_LOGO": "Change logo",
+            "ACTION_USE_DEFAULT_LOGO": "Use default image"
         },
         "REPORTS": {
             "TITLE": "Informes",
@@ -667,7 +682,7 @@
             "CURRENT_USER_CONTACTS_EMPTY_EXPLAIN": "Les persones amb les que treballa a Taiga seran els seus contactes de forma automàtica",
             "REPORT": "Informar d'un abús",
             "TABS": {
-                "ACTIVITY_TAB": "Activitat",
+                "ACTIVITY_TAB": "Timeline",
                 "ACTIVITY_TAB_TITLE": "Mostra tota la activitat d'aquest usuari",
                 "PROJECTS_TAB": "Projectes",
                 "PROJECTS_TAB_TITLE": "List of all projects in which the user is a member",
@@ -707,6 +722,10 @@
         "SECTION_PROJECTS": "Projectes",
         "HELP": "Reordena els teus projectes per a establir els més utilitzats en les primeres posicions. <br/> Els 10 millors projectes apareixeran en la llista de projectes de la barra de navegació superior",
         "PRIVATE": "Projecte privat",
+        "LOOKING_FOR_PEOPLE": "This project is looking for people",
+        "FANS_COUNTER_TITLE": "{total, plural, one{one fan} other{# fans}}",
+        "WATCHERS_COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}",
+        "MEMBERS_COUNTER_TITLE": "{total, plural, one{one member} other{# members}}",
         "STATS": {
             "PROJECT": "punts<br/> projecte",
             "DEFINED": "punts<br/> definits",
@@ -736,6 +755,7 @@
             "TITLE_NEXT_PROJECT": "Mostrar próxims projectes",
             "HELP_TITLE": "Pàgina d'ajuda de Taiga",
             "HELP": "Ajuda",
+            "HOMEPAGE": "Homepage",
             "FEEDBACK_TITLE": "Enviar suggerències",
             "FEEDBACK": "Suggerències",
             "NOTIFICATIONS_TITLE": "Edita la configuració de les teves notificacions",
@@ -1016,6 +1036,7 @@
             "TITLE_LINK_TASKBOARD": "Anar al panell de {{::name}}",
             "NUMBER_SPRINTS": "<br/> sprints",
             "EMPTY": "There are no sprints yet",
+            "WARNING_EMPTY_SPRINT_ANONYMOUS": "This sprint has no User Stories",
             "WARNING_EMPTY_SPRINT": "Drop here Stories from your backlog to start a new sprint",
             "TITLE_ACTION_NEW_SPRINT": "Add new sprint",
             "TEXT_ACTION_NEW_SPRINT": "You may want to create a new sprint in your project",
@@ -1257,9 +1278,9 @@
         }
     },
     "USER_PROFILE": {
-        "IMAGE_HELP": "La imatge serà escalada a 80x80px.<br />",
+        "IMAGE_HELP": "The image will be scaled to 80x80px.",
         "ACTION_CHANGE_IMAGE": "Canviar",
-        "ACTION_USE_GRAVATAR": "Utilitza imatge de gravatar",
+        "ACTION_USE_GRAVATAR": "Use default image",
         "ACTION_DELETE_ACCOUNT": "Esborrar compte de Taiga",
         "CHANGE_EMAIL_SUCCESS": "<strong>Mira el teu correu!</strong><br />Hem enviat un correu al teu conter<br /> amb les instrucciones per a escriure una nova adreça de correu",
         "CHANGE_PHOTO": "Canviar foto",
@@ -1358,7 +1379,7 @@
     },
     "JOYRIDE": {
         "NAV": {
-            "NEXT": "Next",
+            "NEXT": "Següent",
             "BACK": "Back",
             "SKIP": "Skip",
             "DONE": "Done"
@@ -1374,7 +1395,7 @@
             },
             "STEP3": {
                 "TITLE": "Observant",
-                "TEXT1": "And right here you will find the ones that you want to know about.",
+                "TEXT1": "And right here you will find the ones in your projects that you want to know about.",
                 "TEXT2": "You are already working with Taiga ;)"
             },
             "STEP4": {
@@ -1416,6 +1437,34 @@
                 "TEXT1": "You may want to add a single User Story (add US icon) or a group of them (bulk icon)",
                 "TEXT2": "Good luck!"
             }
+        }
+    },
+    "DISCOVER": {
+        "DISCOVER_TITLE": "Discover projects",
+        "DISCOVER_SUBTITLE": "{projects, plural, one{One public project to discover} other{# public projects to discover}}",
+        "MOST_ACTIVE": "Most active",
+        "MOST_ACTIVE_EMPTY": "There are no ACTIVE projects yet",
+        "MOST_LIKED": "Most liked",
+        "MOST_LIKED_EMPTY": "There are no LIKED projects yet",
+        "VIEW_MORE": "View more",
+        "RECRUITING": "This project is looking for people",
+        "FEATURED": "Featured Projects",
+        "EMPTY": "There are no projects to show with this search criteria.<br> Try again!",
+        "FILTERS": {
+            "ALL": "Tot",
+            "KANBAN": "Kanban",
+            "SCRUM": "Scrum",
+            "PEOPLE": "Looking for people",
+            "WEEK": "Last week",
+            "MONTH": "Last month",
+            "YEAR": "Last year",
+            "ALL_TIME": "All time",
+            "CLEAR": "Clear filters"
+        },
+        "SEARCH": {
+            "INPUT_PLACEHOLDER": "Escriu algo...",
+            "ACTION_TITLE": "Cerca",
+            "RESULTS": "Search results"
         }
     }
 }

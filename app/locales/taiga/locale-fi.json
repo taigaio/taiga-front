@@ -17,8 +17,8 @@
         "DRAG": "Vedä",
         "TAG_LINE": "Ketterä, ilmainne avoimen koodin projektinhallintaohjelmisto",
         "TAG_LINE_2": "Rakasta projektiasi",
-        "BLOCK": "Estä",
-        "UNBLOCK": "Salli",
+        "BLOCK": "Block this User Story if it has a dependency that can not be satisfied",
+        "UNBLOCK": "Unblock this User Story",
         "BLOCKED": "Suljettu",
         "CREATED_BY": "Luonut {{fullDisplayName}}",
         "FROM": "käyttäjältä",
@@ -36,6 +36,8 @@
         "EXTERNAL_USER": "ulkoinen käyttäjä",
         "GENERIC_ERROR": "Oompa Loompas havaitsivat virheen {{error}}.",
         "IOCAINE_TEXT": "Jos tehtävä ahdistaa, merkitse se myrkylliseksi. Ajan mittaa pieninä annoksina saattaa kastokykysi myrkkyä vastaan parantua.",
+        "CLIENT_REQUIREMENT": "Client requirement is new requirement that was not previously expected and it is required to be part of the project",
+        "TEAM_REQUIREMENT": "Team requirement is a requirement that must exist in the project but should have no cost for the client",
         "CAPSLOCK_WARNING": "Be careful! You're writing with capital letters and this input is case sensitive.",
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Tämä arvo vaikuttaa virheelliseltä.",
@@ -139,17 +141,20 @@
         },
         "ASSIGNED_TO": {
             "NOT_ASSIGNED": "Tekijää ei valittu",
+            "ASSIGN": "Assign",
             "DELETE_ASSIGNMENT": "Poista tekijä",
             "REMOVE_ASSIGNED": "Poista tekijä",
             "TOO_MANY": "...liikaa käyttäjiä, lisää suodattimia",
             "CONFIRM_UNASSIGNED": "Haluatko varmasti jättää tämän ilman tekijää?",
-            "TITLE_ACTION_EDIT_ASSIGNMENT": "Muokkaa tekijää"
+            "TITLE_ACTION_EDIT_ASSIGNMENT": "Muokkaa tekijää",
+            "SELF": "Assign to me"
         },
         "STATUS": {
             "CLOSED": "Suljettu",
             "OPEN": "Avoin"
         },
         "WATCHERS": {
+            "WATCHERS": "Watchers",
             "ADD": "Add watchers",
             "TITLE_ADD": "Add a project member to the watchers list",
             "DELETE": "Poista vahti",
@@ -176,7 +181,7 @@
             "SAVE": "Tallenna oma kenttä",
             "EDIT": "Muokkaa omaa kenttää",
             "DELETE": "Poista oma attribuutti",
-            "CONFIRM_DELETE": "Muista että oman kentän arvot poistetaan kentän mukana.<br/>Jatketaanko?"
+            "CONFIRM_DELETE": "Remeber that all values in this custom field will be deleted.\n Are you sure you want to continue?"
         },
         "FILTERS": {
             "TITLE": "suodattimet",
@@ -344,10 +349,11 @@
         "PAGE_TITLE": "Home - Taiga",
         "PAGE_DESCRIPTION": "The Taiga home page with your main projects and all your assigned and watched user stories, tasks and issues",
         "EMPTY_WORKING_ON": "<strong>It feels empty, doesn't it?</strong> Start working with Taiga and you'll see here the stories, tasks and issues you are workin on.",
-        "EMPTY_WATCHING": "<strong>Follow</strong> User Stories, Tasks, Issues... that you want to know about :)",
+        "EMPTY_WATCHING": "<strong>Follow</strong> User Stories, Tasks, Issues in your projects and be notified about its changes :)",
         "EMPTY_PROJECT_LIST": "You don't have any projects yet",
         "WORKING_ON_SECTION": "Working on",
-        "WATCHING_SECTION": "Watching"
+        "WATCHING_SECTION": "Watching",
+        "DASHBOARD": "Projects Dashboard"
     },
     "PROJECTS": {
         "PAGE_TITLE": "My projects - Taiga",
@@ -372,7 +378,7 @@
         "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "Poista liite...",
         "MSG_LIGHTBOX_DELETE_ATTACHMENT": "liite '{{fileName}}'",
         "ERROR_DELETE_ATTACHMENT": "Emme pystyneet poistamaan: {{errorMessage}}",
-        "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is too heavy for our Oompa Loompas, try it with a smaller than ({{maxFileSize}})",
+        "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) on liian iso Oompa Loompaseille, kokeile pienemmällä kuin ({{maxFileSize}})",
         "FIELDS": {
             "IS_DEPRECATED": "on vanhentunut"
         }
@@ -442,9 +448,18 @@
             "NUMBER_US_POINTS": "Number of US points (0 for an undetermined quantity)",
             "TAGS": "Avainsanat",
             "DESCRIPTION": "Kuvaus",
+            "RECRUITING": "Is this project looking for people?",
+            "RECRUITING_MESSAGE": "Who are you looking for?",
+            "RECRUITING_PLACEHOLDER": "Define the profiles you are looking for",
             "PUBLIC_PROJECT": "Julkinen projekti",
+            "PUBLIC_PROJECT_DESC": "Users will be able to find and view your project",
             "PRIVATE_PROJECT": "Yksityinen projekti",
-            "DELETE": "Poista tämä projekti"
+            "PRIVATE_PROJECT_DESC": "By default, this project will be hidden to the public",
+            "PRIVATE_OR_PUBLIC": "What's the difference between public and private projects?",
+            "DELETE": "Poista tämä projekti",
+            "LOGO_HELP": "The image will be scaled to 80x80px.",
+            "CHANGE_LOGO": "Change logo",
+            "ACTION_USE_DEFAULT_LOGO": "Use default image"
         },
         "REPORTS": {
             "TITLE": "Raportit",
@@ -667,7 +682,7 @@
             "CURRENT_USER_CONTACTS_EMPTY_EXPLAIN": "The people with whom you work at Taiga will be your contacts automatically",
             "REPORT": "Report Abuse",
             "TABS": {
-                "ACTIVITY_TAB": "Aktiivisuus",
+                "ACTIVITY_TAB": "Timeline",
                 "ACTIVITY_TAB_TITLE": "Show all the activity of this user",
                 "PROJECTS_TAB": "Projektit",
                 "PROJECTS_TAB_TITLE": "List of all projects in which the user is a member",
@@ -707,6 +722,10 @@
         "SECTION_PROJECTS": "Projektit",
         "HELP": "Reorder your projects to set in the top the most used ones.<br/> The top 10 projects will appear in the top navigation bar project list",
         "PRIVATE": "Yksityinen projekti",
+        "LOOKING_FOR_PEOPLE": "This project is looking for people",
+        "FANS_COUNTER_TITLE": "{total, plural, one{one fan} other{# fans}}",
+        "WATCHERS_COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}",
+        "MEMBERS_COUNTER_TITLE": "{total, plural, one{one member} other{# members}}",
         "STATS": {
             "PROJECT": "projekti<br/> pisteet",
             "DEFINED": "määritely<br/> pistettä",
@@ -736,6 +755,7 @@
             "TITLE_NEXT_PROJECT": "Näytä seuraavat projektit",
             "HELP_TITLE": "Taiga Support Page",
             "HELP": "Help",
+            "HOMEPAGE": "Homepage",
             "FEEDBACK_TITLE": "Lähetä palautetta",
             "FEEDBACK": "Palaute",
             "NOTIFICATIONS_TITLE": "Edit your notification settings",
@@ -1016,6 +1036,7 @@
             "TITLE_LINK_TASKBOARD": "Siirry tehtävätauluun {{name}}",
             "NUMBER_SPRINTS": "<br/>kierroksia",
             "EMPTY": "There are no sprints yet",
+            "WARNING_EMPTY_SPRINT_ANONYMOUS": "This sprint has no User Stories",
             "WARNING_EMPTY_SPRINT": "Drop here Stories from your backlog to start a new sprint",
             "TITLE_ACTION_NEW_SPRINT": "Add new sprint",
             "TEXT_ACTION_NEW_SPRINT": "You may want to create a new sprint in your project",
@@ -1257,9 +1278,9 @@
         }
     },
     "USER_PROFILE": {
-        "IMAGE_HELP": "Kuvan kooksi astetaan 80x80px.<br />",
+        "IMAGE_HELP": "The image will be scaled to 80x80px.",
         "ACTION_CHANGE_IMAGE": "Muuta",
-        "ACTION_USE_GRAVATAR": "Käytä gravatar kuvaa",
+        "ACTION_USE_GRAVATAR": "Use default image",
         "ACTION_DELETE_ACCOUNT": "Poista Taiga-tunnus",
         "CHANGE_EMAIL_SUCCESS": "<strong>Tarkista sähköpostisi!</strong><br />Lähetimme ohjeet<br /><strong>{{email}}</strong><br />uuden osoitteen asettamiseen",
         "CHANGE_PHOTO": "Muuta kuva",
@@ -1358,10 +1379,10 @@
     },
     "JOYRIDE": {
         "NAV": {
-            "NEXT": "Next",
-            "BACK": "Back",
+            "NEXT": "Seuraava",
+            "BACK": "Palvelin",
             "SKIP": "Skip",
-            "DONE": "Done"
+            "DONE": "Tehty"
         },
         "DASHBOARD": {
             "STEP1": {
@@ -1374,7 +1395,7 @@
             },
             "STEP3": {
                 "TITLE": "Seuraa",
-                "TEXT1": "And right here you will find the ones that you want to know about.",
+                "TEXT1": "And right here you will find the ones in your projects that you want to know about.",
                 "TEXT2": "You are already working with Taiga ;)"
             },
             "STEP4": {
@@ -1416,6 +1437,34 @@
                 "TEXT1": "You may want to add a single User Story (add US icon) or a group of them (bulk icon)",
                 "TEXT2": "Good luck!"
             }
+        }
+    },
+    "DISCOVER": {
+        "DISCOVER_TITLE": "Discover projects",
+        "DISCOVER_SUBTITLE": "{projects, plural, one{One public project to discover} other{# public projects to discover}}",
+        "MOST_ACTIVE": "Most active",
+        "MOST_ACTIVE_EMPTY": "There are no ACTIVE projects yet",
+        "MOST_LIKED": "Most liked",
+        "MOST_LIKED_EMPTY": "There are no LIKED projects yet",
+        "VIEW_MORE": "View more",
+        "RECRUITING": "This project is looking for people",
+        "FEATURED": "Featured Projects",
+        "EMPTY": "There are no projects to show with this search criteria.<br> Try again!",
+        "FILTERS": {
+            "ALL": "Kaikki",
+            "KANBAN": "Kanban",
+            "SCRUM": "Scrum",
+            "PEOPLE": "Looking for people",
+            "WEEK": "Last week",
+            "MONTH": "Last month",
+            "YEAR": "Last year",
+            "ALL_TIME": "All time",
+            "CLEAR": "Clear filters"
+        },
+        "SEARCH": {
+            "INPUT_PLACEHOLDER": "Type something...",
+            "ACTION_TITLE": "Hae",
+            "RESULTS": "Search results"
         }
     }
 }

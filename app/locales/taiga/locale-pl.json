@@ -17,8 +17,8 @@
         "DRAG": "Przeciągnij",
         "TAG_LINE": "Twoje zwinne, wolne, otwartoźródłowe narzędzie do zarządzania projektem",
         "TAG_LINE_2": "Pokochaj swój projekt!",
-        "BLOCK": "Blokuj",
-        "UNBLOCK": "Odblokuj",
+        "BLOCK": "Block this User Story if it has a dependency that can not be satisfied",
+        "UNBLOCK": "Unblock this User Story",
         "BLOCKED": "Zablokowane",
         "CREATED_BY": "Utworzone przez {{fullDisplayName}}",
         "FROM": "od",
@@ -36,6 +36,8 @@
         "EXTERNAL_USER": "zewnętrzny użytkownik",
         "GENERIC_ERROR": "Umpa Lumpa mówi {{error}}.",
         "IOCAINE_TEXT": "Czujesz się trochę przytłoczony zadaniem? Daj znać innym klikając na ikonę Iokainy podczas edycji zadania. Jest szansa, że staniesz się odporny na tą (fikcyjną ;) ) śmiertelną truciznę biorąc małe dawki. Z pewnością jednak da Ci ona dodatkowego kopa, który pomoże w pokonaniu nowego wyzwania i staniu się lepszym w tym co robisz!",
+        "CLIENT_REQUIREMENT": "Client requirement is new requirement that was not previously expected and it is required to be part of the project",
+        "TEAM_REQUIREMENT": "Team requirement is a requirement that must exist in the project but should have no cost for the client",
         "CAPSLOCK_WARNING": "UWAGA! Klawisz CAPSLOCK jest aktywny.",
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Nieprawidłowa wartość",
@@ -139,17 +141,20 @@
         },
         "ASSIGNED_TO": {
             "NOT_ASSIGNED": "Nieprzypisane",
+            "ASSIGN": "Assign",
             "DELETE_ASSIGNMENT": "Usuń przypisanie",
             "REMOVE_ASSIGNED": "Ukryj przypisane",
             "TOO_MANY": "...zbyt wielu użytkowników, filtruj dalej Umpa Lumpy nie ogarniają",
             "CONFIRM_UNASSIGNED": "Jesteś pewny, że chcesz pozostawić nieprzypisane?",
-            "TITLE_ACTION_EDIT_ASSIGNMENT": "Edytuj przypisanie"
+            "TITLE_ACTION_EDIT_ASSIGNMENT": "Edytuj przypisanie",
+            "SELF": "Assign to me"
         },
         "STATUS": {
             "CLOSED": "Zamknięte",
             "OPEN": "Otwórz"
         },
         "WATCHERS": {
+            "WATCHERS": "Watchers",
             "ADD": "Dodaj obserwatorów",
             "TITLE_ADD": "Dodaj członka projektu do listy obserwatorów.",
             "DELETE": "Usuń obserwatora",
@@ -176,7 +181,7 @@
             "SAVE": "Zapisz pole niestandardowe",
             "EDIT": "Edytuj pole niestandardowe",
             "DELETE": "Usuń niestandardowy atrybut",
-            "CONFIRM_DELETE": "Pamiętaj, że wszystkie wartości w tym polu zostaną usunięte. </br>Czy kontynuować?"
+            "CONFIRM_DELETE": "Remeber that all values in this custom field will be deleted.\n Are you sure you want to continue?"
         },
         "FILTERS": {
             "TITLE": "filtry",
@@ -344,10 +349,11 @@
         "PAGE_TITLE": "Strona główna - Taiga",
         "PAGE_DESCRIPTION": "Główna strona Taiga, z Twoimi głównymi projektami i wszystkimi przypisanymi Tobie i obserwowanymi historyjkami użytkownika, zadaniami i zgłoszeniami.",
         "EMPTY_WORKING_ON": "<strong>Trochę tu pusto?</strong>Rozpocznij pracę z Taigą, a pojawią się tutaj historie, zadania oraz zgłoszone błędy, nad którymi pracujesz.",
-        "EMPTY_WATCHING": "<strong>Follow</strong> User Stories, Tasks, Issues... that you want to know about :)",
+        "EMPTY_WATCHING": "<strong>Follow</strong> User Stories, Tasks, Issues in your projects and be notified about its changes :)",
         "EMPTY_PROJECT_LIST": "Nie masz jeszcze żadnych projektów",
         "WORKING_ON_SECTION": "Pracujesz nad",
-        "WATCHING_SECTION": "Obserwujesz"
+        "WATCHING_SECTION": "Obserwujesz",
+        "DASHBOARD": "Projects Dashboard"
     },
     "PROJECTS": {
         "PAGE_TITLE": "Moje projekty - Taiga",
@@ -372,7 +378,7 @@
         "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "Usuń załącznik...",
         "MSG_LIGHTBOX_DELETE_ATTACHMENT": "załącznik '{{fileName}}'",
         "ERROR_DELETE_ATTACHMENT": "Nie udało się usunąć załącznika w związku z następującym błędem: {{errorMessage}}",
-        "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is too heavy for our Oompa Loompas, try it with a smaller than ({{maxFileSize}})",
+        "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) plik jest za ciężki, maksymalna wartość to: ({{maxFileSize}})",
         "FIELDS": {
             "IS_DEPRECATED": "jest przedawniony"
         }
@@ -442,9 +448,18 @@
             "NUMBER_US_POINTS": "Number of US points (0 for an undetermined quantity)",
             "TAGS": "Tagi",
             "DESCRIPTION": "Opis",
+            "RECRUITING": "Is this project looking for people?",
+            "RECRUITING_MESSAGE": "Who are you looking for?",
+            "RECRUITING_PLACEHOLDER": "Define the profiles you are looking for",
             "PUBLIC_PROJECT": "Projekt publiczny",
+            "PUBLIC_PROJECT_DESC": "Users will be able to find and view your project",
             "PRIVATE_PROJECT": "Projekt prywatny",
-            "DELETE": "Usuń ten projekt"
+            "PRIVATE_PROJECT_DESC": "By default, this project will be hidden to the public",
+            "PRIVATE_OR_PUBLIC": "What's the difference between public and private projects?",
+            "DELETE": "Usuń ten projekt",
+            "LOGO_HELP": "The image will be scaled to 80x80px.",
+            "CHANGE_LOGO": "Change logo",
+            "ACTION_USE_DEFAULT_LOGO": "Use default image"
         },
         "REPORTS": {
             "TITLE": "Raporty",
@@ -667,7 +682,7 @@
             "CURRENT_USER_CONTACTS_EMPTY_EXPLAIN": "Ludzie z którymi pracujesz w Taiga staną się Twoimi kontaktami automatycznie.",
             "REPORT": "Zgłoś naruszenie",
             "TABS": {
-                "ACTIVITY_TAB": "Aktywność",
+                "ACTIVITY_TAB": "Oś czasu",
                 "ACTIVITY_TAB_TITLE": "Show all the activity of this user",
                 "PROJECTS_TAB": "Projekty",
                 "PROJECTS_TAB_TITLE": "List of all projects in which the user is a member",
@@ -707,6 +722,10 @@
         "SECTION_PROJECTS": "Projekty",
         "HELP": "Ustal kolejność Twoich projektów tak, aby na górze znalazły się te najważniejsze. <br/> Pierwsze 10 projektów pojawi się w liście projektów na górnym pasku nawigacji.",
         "PRIVATE": "Projekt prywatny",
+        "LOOKING_FOR_PEOPLE": "This project is looking for people",
+        "FANS_COUNTER_TITLE": "{total, plural, one{one fan} other{# fans}}",
+        "WATCHERS_COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}",
+        "MEMBERS_COUNTER_TITLE": "{total, plural, one{one member} other{# members}}",
         "STATS": {
             "PROJECT": "projekt<br/> punkty",
             "DEFINED": "zdefiniowane<br/> punkty",
@@ -736,6 +755,7 @@
             "TITLE_NEXT_PROJECT": "Pokaż kolejne projekty",
             "HELP_TITLE": "Taiga strona wsparcia",
             "HELP": "Pomoc",
+            "HOMEPAGE": "Homepage",
             "FEEDBACK_TITLE": "Prześlij opinię",
             "FEEDBACK": "Feedback",
             "NOTIFICATIONS_TITLE": "Edytuj ustawienia powiadomień",
@@ -1016,6 +1036,7 @@
             "TITLE_LINK_TASKBOARD": "Idź do tablicy zadań użytkownika {{name}}",
             "NUMBER_SPRINTS": "<br/>sprintów",
             "EMPTY": "There are no sprints yet",
+            "WARNING_EMPTY_SPRINT_ANONYMOUS": "This sprint has no User Stories",
             "WARNING_EMPTY_SPRINT": "Drop here Stories from your backlog to start a new sprint",
             "TITLE_ACTION_NEW_SPRINT": "Add new sprint",
             "TEXT_ACTION_NEW_SPRINT": "You may want to create a new sprint in your project",
@@ -1257,9 +1278,9 @@
         }
     },
     "USER_PROFILE": {
-        "IMAGE_HELP": "Obraz zostanie przeskalowany do wielkości 80x80px.<br />",
+        "IMAGE_HELP": "The image will be scaled to 80x80px.",
         "ACTION_CHANGE_IMAGE": "Zmień",
-        "ACTION_USE_GRAVATAR": "Użyj Gravatara",
+        "ACTION_USE_GRAVATAR": "Use default image",
         "ACTION_DELETE_ACCOUNT": "Usuń konto Taiga",
         "CHANGE_EMAIL_SUCCESS": "<strong>Sprawdź swoją skrzynkę e-mail!</strong><br />Wysłaliśmy wiadomość z instrukcjami.",
         "CHANGE_PHOTO": "Zmień zdjęcie",
@@ -1358,10 +1379,10 @@
     },
     "JOYRIDE": {
         "NAV": {
-            "NEXT": "Next",
+            "NEXT": "Następny",
             "BACK": "Back",
             "SKIP": "Skip",
-            "DONE": "Done"
+            "DONE": "Gotowe!"
         },
         "DASHBOARD": {
             "STEP1": {
@@ -1374,7 +1395,7 @@
             },
             "STEP3": {
                 "TITLE": "Obserwujesz",
-                "TEXT1": "And right here you will find the ones that you want to know about.",
+                "TEXT1": "And right here you will find the ones in your projects that you want to know about.",
                 "TEXT2": "You are already working with Taiga ;)"
             },
             "STEP4": {
@@ -1416,6 +1437,34 @@
                 "TEXT1": "You may want to add a single User Story (add US icon) or a group of them (bulk icon)",
                 "TEXT2": "Good luck!"
             }
+        }
+    },
+    "DISCOVER": {
+        "DISCOVER_TITLE": "Discover projects",
+        "DISCOVER_SUBTITLE": "{projects, plural, one{One public project to discover} other{# public projects to discover}}",
+        "MOST_ACTIVE": "Most active",
+        "MOST_ACTIVE_EMPTY": "There are no ACTIVE projects yet",
+        "MOST_LIKED": "Most liked",
+        "MOST_LIKED_EMPTY": "There are no LIKED projects yet",
+        "VIEW_MORE": "View more",
+        "RECRUITING": "This project is looking for people",
+        "FEATURED": "Featured Projects",
+        "EMPTY": "There are no projects to show with this search criteria.<br> Try again!",
+        "FILTERS": {
+            "ALL": "Wszystkie",
+            "KANBAN": "Kanban",
+            "SCRUM": "Scrum",
+            "PEOPLE": "Looking for people",
+            "WEEK": "Last week",
+            "MONTH": "Last month",
+            "YEAR": "Last year",
+            "ALL_TIME": "All time",
+            "CLEAR": "Clear filters"
+        },
+        "SEARCH": {
+            "INPUT_PLACEHOLDER": "Type something...",
+            "ACTION_TITLE": "Szukaj",
+            "RESULTS": "Search results"
         }
     }
 }

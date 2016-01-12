@@ -17,8 +17,8 @@
         "DRAG": "拖拉",
         "TAG_LINE": "你的敏捷、免費、和開放原始碼的專案管理工具",
         "TAG_LINE_2": "愛你的專案",
-        "BLOCK": "封鎖",
-        "UNBLOCK": "解除封鎖",
+        "BLOCK": "Block this User Story if it has a dependency that can not be satisfied",
+        "UNBLOCK": "Unblock this User Story",
         "BLOCKED": "已封鎖",
         "CREATED_BY": "由 {{fullDisplayName}}創建",
         "FROM": "from",
@@ -36,6 +36,8 @@
         "EXTERNAL_USER": "外部使用者",
         "GENERIC_ERROR": "我們的系統指出{{error}}.",
         "IOCAINE_TEXT": "感到任務的不堪負荷？確認其它人在編輯任務時知道此狀況，可以點選Iocaine。它可能會成為免疫的致命狀況，只要長期小量消耗，但如果你只是偶而挑戰它可有助表現。",
+        "CLIENT_REQUIREMENT": "Client requirement is new requirement that was not previously expected and it is required to be part of the project",
+        "TEAM_REQUIREMENT": "Team requirement is a requirement that must exist in the project but should have no cost for the client",
         "CAPSLOCK_WARNING": "Be careful! You're writing with capital letters and this input is case sensitive.",
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "該數值似乎為無效",
@@ -139,17 +141,20 @@
         },
         "ASSIGNED_TO": {
             "NOT_ASSIGNED": "未指派",
+            "ASSIGN": "Assign",
             "DELETE_ASSIGNMENT": "刪除指派",
             "REMOVE_ASSIGNED": "數值",
             "TOO_MANY": "太多用戶，繼續過濾中",
             "CONFIRM_UNASSIGNED": "你確定要讓它無任何指派嗎？",
-            "TITLE_ACTION_EDIT_ASSIGNMENT": "編輯指派"
+            "TITLE_ACTION_EDIT_ASSIGNMENT": "編輯指派",
+            "SELF": "Assign to me"
         },
         "STATUS": {
             "CLOSED": "關閉",
             "OPEN": "開啟"
         },
         "WATCHERS": {
+            "WATCHERS": "Watchers",
             "ADD": "Add watchers",
             "TITLE_ADD": "Add a project member to the watchers list",
             "DELETE": "已刪除監督者",
@@ -176,7 +181,7 @@
             "SAVE": "儲存客製化欄位",
             "EDIT": "編輯客製化欄位",
             "DELETE": "刪除客製屬性",
-            "CONFIRM_DELETE": "記得這個客制欄位的數值都將被刪除</br> 你確定要繼續嗎"
+            "CONFIRM_DELETE": "Remeber that all values in this custom field will be deleted.\n Are you sure you want to continue?"
         },
         "FILTERS": {
             "TITLE": "過濾器",
@@ -344,10 +349,11 @@
         "PAGE_TITLE": "首頁 - Taiga",
         "PAGE_DESCRIPTION": "Taiga 首頁，你的主要專案以及任命，觀看使用者故事，任務與問題。",
         "EMPTY_WORKING_ON": "<strong>It feels empty, doesn't it?</strong> Start working with Taiga and you'll see here the stories, tasks and issues you are workin on.",
-        "EMPTY_WATCHING": "<strong>Follow</strong> User Stories, Tasks, Issues... that you want to know about :)",
+        "EMPTY_WATCHING": "<strong>Follow</strong> User Stories, Tasks, Issues in your projects and be notified about its changes :)",
         "EMPTY_PROJECT_LIST": "你尚無任何專案",
         "WORKING_ON_SECTION": "進行中",
-        "WATCHING_SECTION": "觀看中"
+        "WATCHING_SECTION": "觀看中",
+        "DASHBOARD": "Projects Dashboard"
     },
     "PROJECTS": {
         "PAGE_TITLE": "我的專案 - Taiga",
@@ -372,7 +378,7 @@
         "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "刪除附件....",
         "MSG_LIGHTBOX_DELETE_ATTACHMENT": "附件 '{{fileName}}'",
         "ERROR_DELETE_ATTACHMENT": "無法刪除: {{errorMessage}}",
-        "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is too heavy for our Oompa Loompas, try it with a smaller than ({{maxFileSize}})",
+        "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) 超過系統容量上限, 請重傳小一點的檔案 ({{maxFileSize}})",
         "FIELDS": {
             "IS_DEPRECATED": "被棄用"
         }
@@ -442,9 +448,18 @@
             "NUMBER_US_POINTS": "Number of US points (0 for an undetermined quantity)",
             "TAGS": "標籤",
             "DESCRIPTION": "描述",
+            "RECRUITING": "Is this project looking for people?",
+            "RECRUITING_MESSAGE": "Who are you looking for?",
+            "RECRUITING_PLACEHOLDER": "Define the profiles you are looking for",
             "PUBLIC_PROJECT": "公開專案",
+            "PUBLIC_PROJECT_DESC": "Users will be able to find and view your project",
             "PRIVATE_PROJECT": "不公開專案",
-            "DELETE": "刪除此專案"
+            "PRIVATE_PROJECT_DESC": "By default, this project will be hidden to the public",
+            "PRIVATE_OR_PUBLIC": "What's the difference between public and private projects?",
+            "DELETE": "刪除此專案",
+            "LOGO_HELP": "The image will be scaled to 80x80px.",
+            "CHANGE_LOGO": "Change logo",
+            "ACTION_USE_DEFAULT_LOGO": "Use default image"
         },
         "REPORTS": {
             "TITLE": "Reports",
@@ -667,7 +682,7 @@
             "CURRENT_USER_CONTACTS_EMPTY_EXPLAIN": "你在Taiga一同工作的伙伴將自動成為你的聯絡人",
             "REPORT": "回報濫用",
             "TABS": {
-                "ACTIVITY_TAB": "動態",
+                "ACTIVITY_TAB": "時間表",
                 "ACTIVITY_TAB_TITLE": "Show all the activity of this user",
                 "PROJECTS_TAB": "專案",
                 "PROJECTS_TAB_TITLE": "List of all projects in which the user is a member",
@@ -707,6 +722,10 @@
         "SECTION_PROJECTS": "專案",
         "HELP": "記錄你的專案在上方常用欄位<br/> 前十個專案將會顯示在上方導覽處。",
         "PRIVATE": "不公開專案",
+        "LOOKING_FOR_PEOPLE": "This project is looking for people",
+        "FANS_COUNTER_TITLE": "{total, plural, one{one fan} other{# fans}}",
+        "WATCHERS_COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}",
+        "MEMBERS_COUNTER_TITLE": "{total, plural, one{one member} other{# members}}",
         "STATS": {
             "PROJECT": "專案<br/> 點數",
             "DEFINED": "已定義<br/> 點數",
@@ -736,6 +755,7 @@
             "TITLE_NEXT_PROJECT": "顯示下一個任務",
             "HELP_TITLE": "Taiga支援頁",
             "HELP": "幫助",
+            "HOMEPAGE": "Homepage",
             "FEEDBACK_TITLE": "送出回饋 ",
             "FEEDBACK": "回饋 ",
             "NOTIFICATIONS_TITLE": "編輯個人通知設定",
@@ -1016,6 +1036,7 @@
             "TITLE_LINK_TASKBOARD": "到任務板 {{spring.name}}",
             "NUMBER_SPRINTS": "<br/>衝刺任務 ",
             "EMPTY": "There are no sprints yet",
+            "WARNING_EMPTY_SPRINT_ANONYMOUS": "This sprint has no User Stories",
             "WARNING_EMPTY_SPRINT": "Drop here Stories from your backlog to start a new sprint",
             "TITLE_ACTION_NEW_SPRINT": "Add new sprint",
             "TEXT_ACTION_NEW_SPRINT": "You may want to create a new sprint in your project",
@@ -1257,9 +1278,9 @@
         }
     },
     "USER_PROFILE": {
-        "IMAGE_HELP": "此圖片將被裁成80x80px.<br>",
+        "IMAGE_HELP": "The image will be scaled to 80x80px.",
         "ACTION_CHANGE_IMAGE": "變更",
-        "ACTION_USE_GRAVATAR": "用戶大頭貼圖片",
+        "ACTION_USE_GRAVATAR": "Use default image",
         "ACTION_DELETE_ACCOUNT": "刪除Taiga帳戶",
         "CHANGE_EMAIL_SUCCESS": "<strong>檢查你的收信箱</strong><br />我們送出了一封信<br />裏面有設定你新電子郵件的相關指示",
         "CHANGE_PHOTO": "變更照片",
@@ -1358,10 +1379,10 @@
     },
     "JOYRIDE": {
         "NAV": {
-            "NEXT": "Next",
-            "BACK": "Back",
+            "NEXT": "下一個",
+            "BACK": "後台",
             "SKIP": "Skip",
-            "DONE": "Done"
+            "DONE": "完成"
         },
         "DASHBOARD": {
             "STEP1": {
@@ -1374,7 +1395,7 @@
             },
             "STEP3": {
                 "TITLE": "觀看中",
-                "TEXT1": "And right here you will find the ones that you want to know about.",
+                "TEXT1": "And right here you will find the ones in your projects that you want to know about.",
                 "TEXT2": "You are already working with Taiga ;)"
             },
             "STEP4": {
@@ -1416,6 +1437,34 @@
                 "TEXT1": "You may want to add a single User Story (add US icon) or a group of them (bulk icon)",
                 "TEXT2": "Good luck!"
             }
+        }
+    },
+    "DISCOVER": {
+        "DISCOVER_TITLE": "Discover projects",
+        "DISCOVER_SUBTITLE": "{projects, plural, one{One public project to discover} other{# public projects to discover}}",
+        "MOST_ACTIVE": "Most active",
+        "MOST_ACTIVE_EMPTY": "There are no ACTIVE projects yet",
+        "MOST_LIKED": "Most liked",
+        "MOST_LIKED_EMPTY": "There are no LIKED projects yet",
+        "VIEW_MORE": "View more",
+        "RECRUITING": "This project is looking for people",
+        "FEATURED": "Featured Projects",
+        "EMPTY": "There are no projects to show with this search criteria.<br> Try again!",
+        "FILTERS": {
+            "ALL": "所有",
+            "KANBAN": "Kanban(看板)",
+            "SCRUM": "Scrum",
+            "PEOPLE": "Looking for people",
+            "WEEK": "Last week",
+            "MONTH": "Last month",
+            "YEAR": "Last year",
+            "ALL_TIME": "All time",
+            "CLEAR": "Clear filters"
+        },
+        "SEARCH": {
+            "INPUT_PLACEHOLDER": "Type something...",
+            "ACTION_TITLE": "搜尋",
+            "RESULTS": "Search results"
         }
     }
 }
