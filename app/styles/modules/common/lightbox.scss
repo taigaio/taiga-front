@@ -265,6 +265,7 @@
     .subtitle {
         @extend %large;
         @extend %title;
+        white-space: pre-line;
     }
     .options {
         display: flex;

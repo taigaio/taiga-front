@@ -181,7 +181,7 @@
             "SAVE": "Save Custom Field",
             "EDIT": "Edit Custom Field",
             "DELETE": "Delete custom attribute",
-            "CONFIRM_DELETE": "Remeber that all values in this custom field will be deleted.</br> Are you sure you want to continue?"
+            "CONFIRM_DELETE": "Remeber that all values in this custom field will be deleted.\n Are you sure you want to continue?"
         },
         "FILTERS": {
             "TITLE": "filters",
