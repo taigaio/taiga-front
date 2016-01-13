@@ -20,7 +20,8 @@ div.wrapper
                             ng-if="::vm.project.get('is_private')"
                             title="{{'PROJECT.PRIVATE' | translate}}"
                         )
-                            include ../../../svg/lock.svg
+                            svg.icon.icon-lock
+                                use(xlink:href="#icon-lock")
 
                     div.track-buttons-container(ng-if="vm.user")
                         tg-like-project-button(project="vm.project")
@@ -31,15 +32,15 @@ div.wrapper
                             span.list-itemtype-track-likers(
                                 title="{{ 'PROJECT.LIKE_BUTTON.COUNTER_TITLE'|translate:{total:vm.project.get(\"total_fans\")||0}:'messageformat' }}"
                             )
-                                span.icon
-                                    include ../../../svg/like.svg
+                                svg.icon.icon-like
+                                    use(xlink:href="#icon-like")
                                 span {{ ::vm.project.get('total_fans') }}
 
                             span.list-itemtype-track-watchers(
                                 title="{{ 'PROJECT.WATCH_BUTTON.COUNTER_TITLE'|translate:{total:vm.project.get(\"total_watchers\")||0}:'messageformat' }}"
                             )
-                                span.icon
-                                    include ../../../svg/watch.svg
+                                svg.icon.icon-watche
+                                    use(xlink:href="#icon-watch")
                                 span {{ ::vm.project.get('total_watchers') }}
 
                 p.description {{vm.project.get('description')}}

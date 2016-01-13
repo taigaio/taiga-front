@@ -23,8 +23,10 @@
         padding: 8px 10px;
     }
     .name {
+        @include ellipsis(100%);
         background: darken($whitish, 10%); // Fallback
         display: block;
+        padding-right: 2rem;
         width: 100%;
     }
     .number {
@@ -33,15 +35,14 @@
         right: 0;
         top: 0;
     }
-    .icon-delete {
-        color: $grayer;
+    .remove-filter {
+        fill: $gray;
         position: absolute;
         right: .5rem;
-        top: .5rem;
-        transition: color .3s linear;
+        top: .75rem;
+        transition: fill .2s linear;
         &:hover {
-            color: $red;
-            transition: color .3s linear;
+            fill: $red;
         }
     }
 }

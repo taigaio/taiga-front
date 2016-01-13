@@ -13,58 +13,63 @@
                 opacity: 1;
             }
         }
-        .attachment-image {
-            display: inline-block;
-        }
-        img {
-            height: 150px;
-            margin-bottom: .2rem;
-            width: 200px;
-            &:hover {
-                filter: saturate(150%) hue-rotate(60deg);
-                transition: all .3s cubic-bezier(.01, .7, 1, 1);
-            }
-        }
-        &.deprecated {
-            img {
-                opacity: .5;
-            }
-            .attachment-name {
-                color: $gray-light;
-            }
-        }
-        .attachment-data {
-            align-content: center;
-            display: flex;
-            justify-content: space-between;
-        }
         .attachment-name {
             @extend %light;
             @include ellipsis(175px);
             display: inline-block;
         }
-        .icon-delete {
-            color: $red-light;
-            margin-left: auto;
-            opacity: 0;
-            transition: opacity .3s ease-in;
-            transition-delay: .2s;
-            &:hover {
+    }
+    .attachment-image {
+        display: inline-block;
+    }
+    img {
+        height: 150px;
+        margin-bottom: .2rem;
+        width: 200px;
+        &:hover {
+            filter: saturate(150%) hue-rotate(60deg);
+            transition: all .3s cubic-bezier(.01, .7, 1, 1);
+        }
+    }
+    &.deprecated {
+        img {
+            opacity: .5;
+        }
+        .attachment-name {
+            color: $gray-light;
+        }
+    }
+    .attachment-data {
+        align-content: center;
+        display: flex;
+        justify-content: space-between;
+    }
+    .icon-delete {
+        margin-left: auto;
+        opacity: 0;
+        transition: opacity .2s ease-in;
+        transition-delay: .1s;
+        svg {
+            fill: $red-light;
+        }
+        &:hover {
+            svg {
                 color: $red;
             }
+
         }
-        .loading-container {
-            align-items: center;
-            display: flex;
-            height: 150px;
-            justify-content: center;
-            margin: 0 .5rem .5rem 0;
-            width: 200px;
-        }
-        .loading-spinner {
-            margin: 0 auto;
-            max-height: 3rem;
-            max-width: 3rem;
-        }
+    }
+    .loading-container {
+        align-items: center;
+        display: flex;
+        height: 150px;
+        justify-content: center;
+        margin: 0 .5rem .5rem 0;
+        width: 200px;
+    }
+    .loading-spinner {
+        margin: 0 auto;
+        max-height: 3rem;
+        max-width: 3rem;
     }
 }

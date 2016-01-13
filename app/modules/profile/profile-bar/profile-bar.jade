@@ -2,19 +2,10 @@ section.profile-bar
     div.profile-image-wrapper(ng-class="::{'is-current-user': vm.isCurrentUser}")
         img.profile-img(ng-src="{{::vm.user.get('big_photo')}}", alt="{{::vm.user.get('full_name')}}")
         a.profile-edition(title="{{ 'USER.PROFILE.EDIT' | translate }}", tg-nav="user-settings-user-profile", translate="USER.PROFILE.EDIT")
-    // a.button-green
-    //     span(translate="USER.PROFILE.FOLLOW")
     div.profile-data
         h1(ng-class="{'not-full-name': !vm.user.get('full_name')}") {{::vm.user.get("full_name_display")}}
         .username @{{::vm.user.get("username")}}
         h2 {{::vm.stats.get('roles').join(", ")}}
-        // div.location
-        //     include ../../../svg/location.svg
-        //     span Madrid
-        // Remove Abuse Flag when a user is seeing itself
-        // a.flag(href="", title="{{ 'USER.PROFILE.REPORT' | translate }}")
-        //     include ../../../svg/flag.svg
-    // These values in profile stats are not defined yet in UX. Please ask
     div.profile-stats
         div.stat
             span.stat-number {{::vm.stats.get('total_num_projects')}}
@@ -25,14 +16,6 @@ section.profile-bar
         div.stat
             span.stat-number {{::vm.stats.get('total_num_contacts')}}
             span.stat-name(translate="USER.PROFILE.CONTACTS")
-    // TODO Hide until organizations come
-        // div.profile-organizations
-        //     h3 Organizations
-        //     div.profile-organizations-wrapper
-        //         div.organization
-        //         div.organization
-        //         div.organization
-        //         div.organization
 
     div.profile-quote(ng-if="::vm.user.get('bio')")
         span {{::vm.user.get("bio") | limitTo:210 }}{{vm.user.get("bio").length < 210 ? '' : '...'}}

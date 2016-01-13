@@ -11,8 +11,8 @@
         padding: .4rem 1.5rem;
         &.active,
         &:hover {
-            background: $gray;
-            color: $whitish;
+            background: $gray-light;
+            color: $gray;
         }
         &.active {
             &:hover {

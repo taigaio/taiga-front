@@ -1,6 +1,11 @@
 section.search-in
     header
         fieldset
-            input(type="text", placeholder="{{'SEARCH.PLACEHOLDER_SEARCH' | translate}}", ng-model="searchTerm")
+            input(
+                type="text"
+                placeholder="{{'SEARCH.PLACEHOLDER_SEARCH' | translate}}"
+                ng-model="searchTerm"
+            )
             .icon-search-wrapper(tg-loading="loading")
-                a.icon.icon-search(href="", title="{{'SEARCH.TITLE_ACTION_SEARCH' | translate}}")
+                svg.icon.icon-search(title="{{'SEARCH.TITLE_ACTION_SEARCH' | translate}}")
+                    use(xlink:href="#icon-search")

@@ -10,6 +10,21 @@
             padding-left: 50px;
         }
     }
+    .table-main {
+        .row:hover {
+            background: lighten($primary, 60%);
+            cursor: move;
+            transition: background .2s ease-in;
+            .icon {
+                opacity: 1;
+                transition: opacity .2s ease-in;
+            }
+            .options-column {
+                opacity: 1;
+                transition: opacity .3s linear;
+            }
+        }
+    }
     form {
         &:last-child {
             .row {
@@ -23,19 +38,6 @@
         display: flex;
         justify-content: center;
         padding: 1rem;
-        &:hover {
-            background: lighten($primary, 60%);
-            cursor: move;
-            transition: background .2s ease-in;
-            .icon {
-                opacity: 1;
-                transition: opacity .2s ease-in;
-            }
-            .options-column {
-                opacity: 1;
-                transition: opacity .3s linear;
-            }
-        }
         &:last-child {
             border: 0;
         }
@@ -112,26 +114,27 @@
         width: 40px;
     }
     .icon {
-        @extend %large;
-        color: $gray-light;
+        cursor: pointer;
+        fill: $gray-light;
         margin-right: 1rem;
         opacity: 0;
         &:hover {
-            color: $primary;
+            fill: $primary;
             transition: all .2s ease-in;
         }
-        &.icon-check-square {
+        &.icon-check {
+            cursor: default;
+            fill: $primary;
             opacity: 1;
         }
-    }
-    .icon-delete {
-        &:hover {
-            color: $red;
+        &.icon-drag {
+            cursor: move;
         }
-    }
-    .icon-check-square {
-        @extend %large;
-        color: $primary;
+        &.icon-trash {
+            &:hover {
+                fill: $red-light;
+            }
+        }
     }
 
 }

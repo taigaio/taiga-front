@@ -18,12 +18,12 @@ div.discover-header
                     placeholder="{{ 'DISCOVER.SEARCH.INPUT_PLACEHOLDER' | translate }}"
                     ng-model="vm.q"
                 )
-                a.search-button(
+                svg.search-button.icon.icon-search(
                     ng-click="vm.submitFilter()"
                     href="#"
                     title="{{ 'DISCOVER.SEARCH.ACTION_TITLE' | translate }}"
                 )
-                    include ../../../../svg/search.svg
+                    use(xlink:href="#icon-search")
 
             fieldset.searchbox-filters(ng-if="vm.filter")
                 input(

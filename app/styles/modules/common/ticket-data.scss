@@ -11,17 +11,20 @@
     }
     .detail-status {
         @extend %small;
-        display: inline-block;
+        display: flex;
         margin-left: .25rem;
         position: relative;
-        .icon-arrow-bottom {
+        .icon-arrow-down {
+            @include svg-size(.75rem);
+            fill: currentColor;
             margin-left: .25rem;
         }
     }
     .detail-status-inner {
+        align-items: center;
         color: $white;
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         padding: .15rem .25rem;
         text-transform: uppercase;
     }
@@ -44,6 +47,8 @@
     @extend %normal;
     margin-bottom: 1rem;
     .icon {
+        @include svg-size(.7rem);
+        color: currentColor;
         margin-left: .25rem;
     }
 }
@@ -115,7 +120,8 @@
     .ticket-watch-inner {
         display: flex;
     }
-    .track-icon {
+    svg {
+        margin-right: .25rem;
         position: relative;
         top: 2px;
     }
@@ -130,7 +136,7 @@
         text-align: center;
         text-transform: uppercase;
         transition: background .25s;
-        path {
+        svg {
             fill: $white;
         }
         &:hover {

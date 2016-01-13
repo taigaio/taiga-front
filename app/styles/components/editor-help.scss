@@ -13,17 +13,20 @@
 
 .help-markdown,
 .help-button {
-    @extend %xsmall;
     &:hover {
         span {
             transition: color .2s linear;
         }
         .icon {
-            color: $primary-light;
-            transition: color .2s linear;
+            fill: $primary-light;
+            transition: fill .2s linear;
         }
     }
+    span {
+        vertical-align: text-top;
+    }
     .icon {
+        fill: $gray-light;
         margin-right: .2rem;
     }
 }

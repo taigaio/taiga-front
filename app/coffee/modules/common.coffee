@@ -288,13 +288,11 @@ Capslock = ($translate) ->
     link = ($scope, $el, $attrs) ->
         open = false
 
-        warningIcon = $('<div>')
-            .addClass('icon')
-            .addClass('icon-capslock')
-            .attr('title', $translate.instant('COMMON.CAPSLOCK_WARNING'))
+
+        warningIcon = "<svg class='icon icon-capslock' title='" + $translate.instant('COMMON.CAPSLOCK_WARNING') + "'><use xlink:href='#icon-capslock'></svg>";
 
         hideIcon = () ->
-            warningIcon.fadeOut () ->
+            $('.icon-capslock').fadeOut () ->
                 open = false
 
                 $(this).remove()

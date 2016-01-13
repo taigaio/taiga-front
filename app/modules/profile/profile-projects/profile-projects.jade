@@ -4,7 +4,8 @@ section.profile-projects
             img(src="/#{v}/svg/spinner-circle.svg", alt="Loading...")
 
     .empty-tab(ng-if="vm.projects && !vm.projects.size")
-        include ../../../svg/hide.svg
+        svg.icon.icon-unwatch
+            use(xlink:href="#icon-unwatch")
 
         p(
             translate="USER.PROFILE.PROJECTS_EMPTY"
@@ -46,16 +47,16 @@ section.profile-projects
                     ng-class="{'active': project.get('is_fan')}"
                     title="{{ 'PROJECT.LIKE_BUTTON.COUNTER_TITLE'|translate:{total:project.get(\"total_fans\")||0}:'messageformat' }}"
                 )
-                    span.icon
-                        include ../../../svg/like.svg
+                    svg.icon.icon-like
+                        use(xlink:href="#icon-like")
                     span {{ ::project.get('total_fans') }}
 
                 span.list-itemtype-track-watchers(
                     ng-class="{'active': project.get('is_watcher')}"
                     title="{{ 'PROJECT.WATCH_BUTTON.COUNTER_TITLE'|translate:{total:project.get(\"total_watchers\")||0}:'messageformat' }}"
                 )
-                    span.icon
-                        include ../../../svg/watch.svg
+                    svg.icon.icon-watch
+                        use(xlink:href="#icon-watch")
                     span {{ ::project.get('total_watchers') }}
 
             .list-itemtype-project-members

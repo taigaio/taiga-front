@@ -1,5 +1,9 @@
-a.close(href="", title="{{'COMMON.CLOSE' | translate}}")
-    span.icon.icon-delete
+a.close(
+    href=""
+    title="{{'COMMON.CLOSE' | translate}}"
+)
+    svg.icon.icon-close
+        use(xlink:href="#icon-close")
 form
     h2.title(translate="COMMON.NEW_BULK")
     fieldset
@@ -10,6 +14,7 @@ form
             data-required="true"
             data-linewidth="200"
             ng-attr-placeholder="{{'COMMON.ONE_ITEM_LINE' | translate}}"
+
         )
 
     button.button-green.submit-button(

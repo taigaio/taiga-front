@@ -82,10 +82,6 @@ body {
     padding: 1rem 2rem;
 }
 
-.icon {
-    @extend %taiga;
-}
-
 .hidden {
     // scss-lint:disable ImportantRule
     display: none !important;

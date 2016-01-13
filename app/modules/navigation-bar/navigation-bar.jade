@@ -30,14 +30,16 @@ nav.navbar(ng-if="vm.isEnabledHeader")
           ng-class="{active: vm.active}",
           title="{{'PROJECT.NAVIGATION.DASHBOARD_TITLE' | translate}}")
 
-            include ../../svg/dashboard.svg
+            svg.icon.icon-dashboard
+                use(xlink:href="#icon-dashboard")
 
         a(
             href="#",
             tg-nav="discover",
             title="{{'PROJECT.NAVIGATION.DISCOVER_TITLE' | translate}}",
         )
-            include ../../svg/discover.svg
+            svg.icon.icon-discover
+                use(xlink:href="#icon-discover")
 
         div.topnav-dropdown-wrapper(ng-show="vm.projects.size", tg-dropdown-project-list)
         //- div.topnav-dropdown-wrapper(tg-dropdown-organization-list)

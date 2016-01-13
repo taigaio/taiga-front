@@ -1,12 +1,16 @@
 a.close(href="", title="{{'COMMON.CLOSE' | translate}}")
-    span.icon.icon-delete
+    svg.icon.icon-close
+        use(xlink:href="#icon-close")
 form
     h2.title
     p
         span.subtitle
         span.message
     div.options
-        a.button-green(href="", title="{{'COMMON.ACCEPT' | translate}}")
+        a.button-green(
+            href=""
+            title="{{'COMMON.ACCEPT' | translate}}"
+        )
             span(translate="COMMON.ACCEPT")
         a.button-red(href="", title="{{'COMMON.CANCEL' | translate}}")
             span(translate="COMMON.CANCEL")

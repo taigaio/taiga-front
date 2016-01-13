@@ -1,5 +1,6 @@
 .admin-webhooks {
     .webhooks-table {
+        margin-bottom: 1rem;
         .row {
             border-bottom: 0;
             padding: .5rem 0;
@@ -60,14 +61,13 @@
         min-width: 100px;
         text-align: center;
         a {
-            color: $gray-light;
             margin-right: .5rem;
-            transition: color .2s linear;
-            vertical-align: middle;
+        }
+        svg {
+            fill: $gray-light;
             &:hover {
-                color: $primary;
-                transition: color .2s linear;
-
+                fill: $primary;
+                transition: fill .2s linear;
             }
         }
     }

@@ -13,7 +13,8 @@
                     href=""
                     title="{{'PROJECT.NAVIGATION.TITLE_IMPORT_PROJECT' | translate}}"
                 )
-                    span.icon.icon-upload
+                    svg.icon.icon-upload
+                        use(xlink:href="#icon-upload")
                 input.import-file.hidden(type="file")
 
     section.project-list-section
@@ -46,7 +47,8 @@
                                         ng-if="project.get('is_private')"
                                         title="{{'PROJECT.PRIVATE' | translate}}"
                                     )
-                                        include ../../../svg/lock.svg
+                                        svg.icon.icon-lock
+                                            use(xlink:href="#icon-lock")
                                 p {{ ::project.get('description') | limitTo:300 }}
                                     span(ng-if="::project.get('description').length > 300") ...
 
@@ -57,7 +59,8 @@
                             )
                                 span.tag-name {{::tag.get('name')}}
 
-                    span.drag.icon.icon-drag-v
+                    svg.drag.icon.icon-drag
+                        use(xlink:href="#icon-drag")
 
         aside.help-area
             p(translate="PROJECT.HELP")

@@ -47,34 +47,29 @@
         flex-shrink: 0;
         justify-content: space-around;
         margin-left: auto;
-        .settings,
-        .editable-settings {
-            @extend %large;
-            color: $gray-light;
-            &:hover {
-                color: $primary;
-            }
-        }
         .settings {
             opacity: 0;
         }
         .editable-settings {
             opacity: 1;
         }
-        .icon-delete {
+        svg {
+            fill: $gray-light;
+        }
+        .icon-edit,
+        .icon-save {
             &:hover {
-                color: $red;
+                fill: $primary;
             }
         }
-        .icon-drag-v {
-            cursor: move;
+        .icon-trash,
+        .icon-close {
+            &:hover {
+                fill: $red;
+            }
         }
-    }
-    .icon-delete {
-        @extend %large;
-        color: $gray-light;
-        &:hover {
-            color: $red;
+        .icon-drag {
+            cursor: move;
         }
     }
     .editable-attachment-deprecated {

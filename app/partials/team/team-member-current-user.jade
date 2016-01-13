@@ -1,17 +1,20 @@
 .row
     .username
-        figure.avatar
+        .avatar
             img(tg-bo-src="currentUser.photo", tg-bo-alt="currentUser.full_name_display")
 
-            figcaption
+            .avatar-data
                 span.name(tg-bo-bind="currentUser.full_name_display")
 
                 span.position(tg-bo-bind="currentUser.role_name")
 
                 div(tg-leave-project="", projectid="{{projectId}}")
 
-    .member-stats(tg-team-member-stats, stats="stats",
-                                        user="currentUser.user",
-                                        issuesEnabled="issuesEnabled",
-                                        tasksenabled="tasksEnabled",
-                                        wikienabled="wikiEnabled")
+    .member-stats(
+        tg-team-member-stats
+        stats="stats"
+        ser="currentUser.user"
+        issuesEnabled="issuesEnabled"
+        tasksenabled="tasksEnabled"
+        wikienabled="wikiEnabled"
+    )

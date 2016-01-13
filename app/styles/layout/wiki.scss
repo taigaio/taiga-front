@@ -7,13 +7,11 @@
         @extend %small;
         color: $gray-light;
         &:hover {
-            span {
-                color: $grayer;
-                transition: color .2s linear;
-            }
+            color: $red-light;
+            transition: color .1s linear;
             .icon {
-                color: $red;
-                transition: color .2s linear;
+                fill: $red-light;
+                transition: fill .1s linear;
             }
         }
         .icon {
@@ -43,20 +41,25 @@
                 transition: all .2s linear;
             }
         }
-        .edit {
-            background: $whitish;
-            left: 0;
-            opacity: 0;
-            padding: .2rem .5rem;
-            position: absolute;
-            top: 0;
-            transition: all .2s linear;
+    }
+    .edit {
+        @include svg-size(2rem);
+        background: $whitish;
+        left: 0;
+        opacity: 0;
+        padding: .2rem .5rem;
+        position: absolute;
+        top: 0;
+        transition: all .2s linear;
+        &:hover {
+            cursor: pointer;
         }
     }
     .edit-wiki-content {
         .icon {
             &:hover {
-                color: $grayer;
+                cursor: pointer;
+                fill: $primary-dark;
                 opacity: .3;
                 transition: all .2s linear;
             }

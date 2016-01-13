@@ -4,7 +4,8 @@ section.profile-contacts
             img(src="/#{v}/svg/spinner-circle.svg", alt="Loading...")
 
     div.empty-tab(ng-if="vm.contacts && !vm.contacts.size")
-        include ../../../svg/hide.svg
+        svg.icon.icon-unwatch
+            use(xlink:href="#icon-unwatch")
 
         div(ng-if="!vm.isCurrentUser")
             p(translate="USER.PROFILE.CONTACTS_EMPTY", translate-values="{username: vm.user.get('full_name_display')}")

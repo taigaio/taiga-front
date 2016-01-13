@@ -101,7 +101,8 @@
             }
         }
         .icon {
-            color: $gray-light;
+            @include svg-size(.8rem);
+            fill: $gray-light;
             margin-left: .2rem;
             opacity: 0;
         }
@@ -116,6 +117,7 @@
     }
     .task-name {
         display: flex;
+        justify-content: space-between;
         position: relative;
         a {
             display: inline-block;
@@ -123,6 +125,10 @@
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+            svg,
+            span {
+                margin-right: .25rem;
+            }
         }
         svg,
         span {
@@ -144,26 +150,6 @@
             }
         }
     }
-    .blocked,
-    .blocked:hover {
-        background: $red-light;
-        color: $white;
-        a {
-            color: $white;
-            &:hover {
-                color: $white;
-            }
-        }
-        .icon {
-            color: $white;
-            &:hover {
-                color: $white;
-            }
-        }
-    }
-    .icon-iocaine {
-        display: none;
-    }
     .iocaine,
     .iocaine:hover {
         background: rgba($primary-light, .3);
@@ -173,21 +159,48 @@
             margin-right: .5rem;
             vertical-align: top;
         }
+        a,
+        svg {
+            color: $primary-dark;
+            fill: $primary-dark;
+            &:hover {
+                color: currentColor;
+                fill: currentColor;
+            }
+        }
+    }
+    .blocked,
+    .blocked:hover {
+        background: $red-light;
+        color: $white;
+        a,
+        svg {
+            color: $white;
+            fill: $white;
+            &:hover {
+                color: currentColor;
+                fill: currentColor;
+            }
+        }
+    }
+    .icon-iocaine {
+        display: none;
     }
     .task-settings {
-        margin: 0 0 0 2rem;
+        align-items: center;
+        display: flex;
         opacity: 0;
-        position: absolute;
-        right: 0;
-        top: 0;
-        width: 10%;
-        a {
-            @extend %large;
-            color: $gray-light;
-            transition: all .2s ease-in;
+        svg {
+            @include svg-size(1.1rem);
+            fill: $gray-light;
+            margin-right: 2rem;
+            transition: fill .2s ease-in;
             &:hover {
-                color: $grayer;
-                transition: all .2s ease-in;
+                cursor: pointer;
+                fill: $grayer;
+            }
+            &.icon-close:hover {
+                fill: $red-light;
             }
         }
     }
@@ -213,6 +226,8 @@
             white-space: nowrap;
         }
         .icon {
+            @include svg-size(.8rem);
+            fill: $gray-light;
             opacity: 0;
             position: absolute;
             right: .5rem;

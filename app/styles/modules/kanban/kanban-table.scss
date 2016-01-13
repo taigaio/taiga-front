@@ -21,12 +21,7 @@ $column-margin: 0 10px 0 0;
             opacity: .8;
             padding: .5rem 0;
             transition: opacity .3s linear;
-            .icon-plus,
-            .icon-bulk,
-            .icon-vfold,
-            .icon-vunfold,
-            .icon-open-eye,
-            .icon-closed-eye,
+            .option:not(.hunfold),
             span {
                 display: none;
             }
@@ -86,49 +81,17 @@ $column-margin: 0 10px 0 0;
         span {
             @include ellipsis(65%);
         }
-        .icon {
-            @extend %medium;
-            color: $gray-light;
+        .option {
             margin-right: .3rem;
-            transition: color .2s linear;
-            &.hfold,
-            &.hunfold {
-                display: inline-block;
-                transform: rotate(90deg);
-            }
         }
-    }
-    .icon-open-eye,
-    .icon-closed-eye {
-        display: inline-block;
-        svg {
+        .icon {
             fill: $gray-light;
-            height: 1.1rem;
-            margin-top: .25rem;
-            width: 1.1rem;
-
-        }
-        &:hover {
-            svg {
+            height: 1rem;
+            transition: color .2s linear;
+            width: 1rem;
+            &:hover {
                 fill: $primary;
-
             }
-        }
-    }
-    .icon-open-eye {
-        .svg-eye-closed {
-            display: none;
-        }
-        .svg-eye-open {
-            display: block;
-        }
-    }
-    .icon-closed-eye {
-        .svg-eye-closed {
-            display: block;
-        }
-        .svg-eye-open {
-            display: none;
         }
     }
 }

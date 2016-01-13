@@ -19,8 +19,8 @@
         position: relative;
         text-align: center;
         .icon {
-            color: $blackish;
-            font-size: 1.8rem;
+            @include svg-size(1.75rem);
+            fill: $gray;
         }
         .points {
             @extend %larger;
@@ -28,7 +28,7 @@
             color: $grayer;
         }
         .top {
-            color: $primary-light;
+            fill: $primary-light;
             opacity: 1;
         }
         &:hover {
@@ -39,15 +39,17 @@
     }
     .leave-project {
         @extend %small;
-        color: $gray-light;
-        display: block;
+        color: $red-light;
         .icon {
+            @include svg-size(.8rem);
+            fill: currentColor;
             margin-right: .2rem;
         }
         &:hover {
+            color: $red;
             .icon {
-                color: $red;
-                transition: color .3s linear;
+                color: currentColor;
+                transition: fill .3s linear;
             }
         }
     }
@@ -69,12 +71,12 @@
         display: flex;
         img {
             flex-basis: 66px;
-            flex-grow: 1;
-            max-width: 66px;
+            flex-grow: 0;
+            flex-shrink: 0;
+            width: 66px;
         }
-        figcaption {
+        .avatar-data {
             margin-left: 1rem;
-            width: 65%;
             span {
                 overflow: hidden;
                 text-overflow: ellipsis;

@@ -23,10 +23,10 @@
             opacity: 1;
         }
         .icon {
-            @extend %xxlarge;
-            flex-basis: 60px;
-            margin: 0 auto;
-            min-width: 60px;
+            fill: $gray;
+            height: 3rem;
+            margin: 1rem auto;
+            width: 3rem;
         }
         .desc {
             text-align: center;

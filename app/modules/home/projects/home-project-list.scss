@@ -14,13 +14,11 @@
 .projects-empty {
     text-align: center;
     svg {
+        fill: $whitish;
         height: 100px;
         margin: 1rem auto;
         text-align: center;
         width: 100%;
-        path {
-            fill: $whitish;
-        }
     }
     p {
         @extend %small;

@@ -13,20 +13,21 @@
             margin: 0;
         }
     }
-    .create-options a {
-        &.create-project-btn {
-            margin-right: .25rem;
-            padding: .6rem 2.5rem;
-        }
-        &.import-project-button {
-            padding: .53rem .8rem;
-            &:hover {
-                background: $grayer;
-            }
+    .create-project-btn {
+        margin-right: .25rem;
+        padding: .6rem 2.5rem;
+    }
+    .import-project-button {
+        padding: .53rem .8rem;
+        &:hover {
             .icon-upload {
-                margin: 0;
+                fill: $primary-light;
             }
         }
+        .icon-upload {
+            fill: $white;
+        }
+
     }
     .project-list-section {
         display: flex;
@@ -63,10 +64,12 @@
         }
     }
     .drag {
-        @extend %large;
         align-self: center;
-        color: $gray-light;
+        fill: $gray-light;
+        height: 1.1rem;
+        margin-right: .5rem;
         opacity: 0;
         transition: opacity .2s;
+        width: 1.1rem;
     }
 }

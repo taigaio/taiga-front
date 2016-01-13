@@ -120,10 +120,13 @@ LbTagLineDirective = ($rs, $template, $compile) ->
                     tag.style = "border-left: 5px solid #{tag.color}"
 
             html = $compile(templateTags(ctx))($scope)
-            $el.find("div.tags-container").html(html)
+            $el.find(".tags-container").html(html)
 
-        showSaveButton = -> $el.find(".save").removeClass("hidden")
-        hideSaveButton = -> $el.find(".save").addClass("hidden")
+        showSaveButton = ->
+            $el.find(".save").removeClass("hidden")
+
+        hideSaveButton = ->
+            $el.find(".save").addClass("hidden")
 
         resetInput = ->
             $el.find("input").val("")
@@ -179,7 +182,7 @@ LbTagLineDirective = ($rs, $template, $compile) ->
             event.preventDefault()
             saveInputTag()
 
-        $el.on "click", ".icon-delete", (event) ->
+        $el.on "click", ".remove-tag", (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
 
@@ -348,7 +351,7 @@ TagLineDirective = ($rootScope, $repo, $rs, $confirm, $qqueue, $template, $compi
             hideAddTagButton()
             showInput()
 
-        $el.on "click", ".icon-delete", (event) ->
+        $el.on "click", ".remove-tag", (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
 

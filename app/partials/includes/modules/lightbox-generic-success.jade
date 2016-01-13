@@ -1,8 +1,15 @@
-a.close(href="", title="{{'COMMON.CLOSE' | translate}}")
-    span.icon.icon-delete
+a.close(
+    href=""
+    title="{{'COMMON.CLOSE' | translate}}"
+)
+    svg.icon.icon-close
+        use(xlink:href="#icon-close")
 section
     h2.title
     p.message
-    div.options
-        a.button-green(href="", title="{{'COMMON.ACCEPT' | translate}}")
+    .options
+        a.button-green(
+            href=""
+            title="{{'COMMON.ACCEPT' | translate}}"
+        )
             span(translate="COMMON.ACCEPT")

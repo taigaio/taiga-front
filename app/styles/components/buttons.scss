@@ -30,7 +30,6 @@
     }
     .icon {
         color: $white;
-        margin-right: .3rem;
     }
 }
 
@@ -43,12 +42,8 @@
         color: $blackish;
         transition: color .2s linear;
     }
-    &:hover,
-    &.active {
-        span,
-        .icon {
-            color: $primary;
-        }
+    .icon {
+        margin-right: .5rem;
     }
     &:visited {
         color: $blackish;
@@ -118,7 +113,10 @@ a.button-gray {
     background: $primary;
     padding: .35rem .5rem;
     .icon {
+        fill: currentColor;
         margin-right: 0;
+        position: relative;
+        top: 1px;
     }
     &:hover {
         background: $primary-light;

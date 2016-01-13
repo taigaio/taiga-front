@@ -4,6 +4,7 @@
 
 .attachments-header {
     align-content: center;
+    align-items: center;
     background: $whitish;
     display: flex;
     justify-content: space-between;
@@ -33,9 +34,9 @@
         }
         svg {
             fill: $white;
-            height: 1.25rem;
+            height: 1.2rem;
             margin-bottom: -.2rem;
-            width: 1.25rem;
+            width: 1.2rem;
         }
     }
     button {
@@ -50,7 +51,6 @@
         svg {
             fill: $gray-light;
             height: 1.6rem;
-            margin-bottom: -.2rem;
             width: 1.6rem;
         }
     }
@@ -77,6 +77,7 @@
 
 .single-attachment {
     @extend %small;
+    background: rgba($white, .9);
     &.ui-sortable-helper {
         background: lighten($primary, 60%);
         box-shadow: 1px 1px 10px rgba($black, .1);
@@ -89,12 +90,11 @@
     .attachment-name {
         @extend %bold;
         padding-right: 1rem;
-        .icon {
-            margin-right: .25rem;
-        }
         svg {
-            height: 1.2rem;
-            width: 1.2rem;
+            fill: $gray;
+            height: .9rem;
+            margin-right: .25rem;
+            width: .9rem;
         }
     }
     .attachment-size {

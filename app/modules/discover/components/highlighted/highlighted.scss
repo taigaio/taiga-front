@@ -34,14 +34,19 @@
         justify-content: space-between;
         margin-bottom: 1rem;
         svg {
-            @include svg-size(1.5rem);
+            @include svg-size(.8rem);
             fill: $gray-light;
-            margin: .5rem;
+            margin-left: .5rem;
         }
     }
     .title-wrapper {
         align-items: center;
         display: flex;
+        svg {
+            @include svg-size(1.25rem);
+            fill: $gray-light;
+            margin-right: .5rem;
+        }
     }
     .title {
         @extend %bold;
@@ -96,6 +101,11 @@
             margin-left: .2rem;
             position: relative;
             top: .2rem;
+        }
+        &:hover {
+            svg {
+                fill: currentColor;
+            }
         }
     }
     .filter-list {
@@ -163,11 +173,9 @@
         }
     }
     .look-for-people {
-        svg {
-            @include svg-size();
-            fill: $gray-light;
-            margin-left: .5rem;
-        }
+        @include svg-size();
+        fill: $gray-light;
+        margin-left: .5rem;
     }
     .project-description {
         @extend %small;
@@ -179,8 +187,9 @@
         flex-basis: 140px;
         justify-content: flex-end;
         svg {
-            @include svg-size(.8rem);
+            @include svg-size(.75rem);
             fill: $gray-light;
+            margin-right: .25rem;
         }
         .svg-eye-closed {
             display: none;

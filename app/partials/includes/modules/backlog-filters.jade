@@ -6,13 +6,19 @@ section.filters
         form
             fieldset
                 input(type="text", placeholder="{{'COMMON.FILTERS.INPUT_PLACEHOLDER' | translate}}", ng-model="filtersQ")
-                a.icon.icon-search(href="", title="{{'COMMON.FILTERS.TITLE_ACTION_FILTER_BUTTON' | translate}}")
+                svg.icon.icon-search(href="", title="{{'COMMON.FILTERS.TITLE_ACTION_FILTER_BUTTON' | translate}}")
+                    use(xlink:href="#icon-search")
 
         div.filters-step-cat
             div.filters-applied
             h2.hidden.breadcrumb
-                a.back(href="", title="{{'COMMON.FILTERS.BREADCRUMB_TITLE' | translate}}", translate="BACKLOG.FILTERS.TITLE")
-                span.icon-arrow-right
+                a.back(
+                    href=""
+                    title="{{'COMMON.FILTERS.BREADCRUMB_TITLE' | translate}}"
+                    translate="BACKLOG.FILTERS.TITLE"
+                )
+                svg.icon.icon-arrow-right
+                    use(xlink:href="#icon-arrow-right")
                 a.subfilter(href="")
                     span.title(translate="COMMON.FILTERS.BREADCRUMB_STATUS")
             div.filters-cats
@@ -20,10 +26,12 @@ section.filters
                     li
                         a(href="", title="{{'BACKLOG.FILTERS.FILTER_CATEGORY_STATUS' | translate}}", data-type="status")
                             span.title(translate="BACKLOG.FILTERS.FILTER_CATEGORY_STATUS")
-                            span.icon.icon-arrow-right
+                            svg.icon.icon-arrow-right
+                                use(xlink:href="#icon-arrow-right")
                     li
                         a(href="", title="{{'BACKLOG.FILTERS.FILTER_CATEGORY_TAGS' | translate}}", data-type="tags")
                             span.title(translate="BACKLOG.FILTERS.FILTER_CATEGORY_TAGS")
-                            span.icon.icon-arrow-right
+                            svg.icon.icon-arrow-right
+                                use(xlink:href="#icon-arrow-right")
 
         div.filter-list.hidden

@@ -3,9 +3,7 @@
     margin-left: .5rem;
     width: .5rem;
     svg {
-        @include svg-size();
-    }
-    path {
+        @include svg-size(.5rem);
         fill: $gray-light;
         transition: fill .3s linear;
     }

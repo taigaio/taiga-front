@@ -27,7 +27,16 @@ section.table-team.basic-table
                 div.popover.attribute-explanation
                     span(translate="TEAM.EXPLANATION_COLUMN_TOTAL_POWER")
 
-    div.hero(tg-team-current-user, stats="stats", currentuser="currentUser", projectid="projectId", issuesEnabled="issuesEnabled", tasksenabled="tasksEnabled", wikienabled="wikiEnabled", ng-if="::currentUser")
+    div.hero(
+        tg-team-current-user
+        stats="stats"
+        currentuser="currentUser"
+        projectid="projectId"
+        issuesEnabled="issuesEnabled"
+        tasksenabled="tasksEnabled"
+        wikienabled="wikiEnabled"
+        ng-if="::currentUser"
+    )
 
 h2(ng-show="memberships.length")
     span(translate="TEAM.SECTION_TITLE_TEAM")

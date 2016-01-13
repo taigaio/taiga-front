@@ -23,7 +23,7 @@ AttachmentSortableDirective = ($parse) ->
 
         el.sortable({
             items: "div[tg-bind-scope]"
-            handle: "a.settings.icon.icon-drag-v"
+            handle: ".settings .icon"
             containment: ".attachments"
             dropOnEmpty: true
             helper: 'clone'

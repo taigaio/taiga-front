@@ -94,8 +94,8 @@
                 transition: background .3s ease-in;
             }
             .icon {
-                @extend %xxlarge;
-                color: $white;
+                @include svg-size(3rem);
+                fill: currentColor;
             }
         }
         h2 {

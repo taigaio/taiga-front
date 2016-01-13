@@ -1,7 +1,8 @@
 section.profile-favs
     div.profile-filter
         div.searchbox(ng-if="::vm.enableFilterByTextQuery")
-            span.icon-search
+            svg.icon.icon-search
+                use(xlink:href="#icon-search")
             input(
                 type="text"
                 ng-model="vm.q"

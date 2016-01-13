@@ -1,4 +1,4 @@
-div(class!="activity-single <%- mode %>")
+.activity-single(class!="<%- mode %>")
     .activity-user
         a.avatar(href!="<%- userProfileUrl %>", title!="<%- userFullName %>")
             img(src!="<%- avatar %>", alt!="<%- userFullName %>")
@@ -18,11 +18,11 @@ div(class!="activity-single <%- mode %>")
         .comment.wysiwyg(ng-non-bindable)
             | <%= comment %>
             <% if (!deleteCommentDate && mode !== "activity" && canDeleteComment) { %>
-            a.icon.icon-delete.comment-delete(
-                href=""
+            svg.icon.icon-trash.comment-delete(
                 data-activity-id!="<%- activityId %>"
                 title!="<%- deleteCommentActionTitle %>"
             )
+                use(xlink:href="#icon-trash")
             <% } %>
         <% } %>
 
@@ -31,7 +31,8 @@ div(class!="activity-single <%- mode %>")
             <% if (mode != "activity") { %>
             a.changes-title(href="", title="{{'ACTIVITY.SHOW_ACTIVITY' | translate}}")
                 span <%- changesText %>
-                span.icon.icon-arrow-up
+                svg.icon.icon-arrow-right
+                    use(xlink:href="#icon-arrow-right")
             <% } %>
             <% _.each(changes, function(change) { %>
             | <%= change %>

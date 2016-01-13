@@ -204,7 +204,7 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading,
 
         $el.on "submit", "form", submit
 
-        $el.on "click", ".delete-sprint .icon-delete", (event) ->
+        $el.on "click", ".delete-sprint", (event) ->
             event.preventDefault()
             remove()
 

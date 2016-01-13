@@ -28,25 +28,12 @@
             flex-grow: 0;
             flex-shrink: 0;
         }
-        .votes {
-            color: $gray;
-            flex-basis: 65px;
-            flex-grow: 0;
-            flex-shrink: 0;
-            text-align: center;
-            &.inactive {
-                color: $gray-light;
-            }
-            &.is-voted {
-                color: $primary-light;
-            }
-        }
         .user-stories {
             overflow: hidden;
             width: 100%;
         }
         .status {
-            flex-basis: 100px;
+            flex-basis: 120px;
             flex-grow: 0;
             flex-shrink: 0;
         }
@@ -55,6 +42,30 @@
             flex-grow: 0;
         }
 
+    }
+    .votes {
+        color: $gray;
+        flex-basis: 65px;
+        flex-grow: 0;
+        flex-shrink: 0;
+        text-align: center;
+        &.inactive {
+            color: $gray-light;
+            svg {
+                fill: $gray-light;
+            }
+        }
+        &.is-voted {
+            color: $primary-light;
+            fill: $primary-light;
+        }
+        svg {
+            fill: $gray;
+            height: .75rem;
+            margin-right: .25rem;
+            vertical-align: middle;
+            width: .75rem;
+        }
     }
     .status,
     .points {
@@ -70,7 +81,8 @@
             }
         }
         .icon {
-            color: $gray-light;
+            @include svg-size(.75rem);
+            fill: currentColor;
             margin-left: .2rem;
         }
     }
@@ -122,7 +134,7 @@
         @extend %medium;
         border-bottom: 2px solid $gray-light;
         flex-wrap: nowrap;
-        padding-right: 30px;
+        padding-right: 1rem;
     }
     .points {
         cursor: pointer;
@@ -145,7 +157,7 @@
             transition: background .2s ease-in;
             transition-delay: .2s;
             .us-settings,
-            .icon-drag-v {
+            .icon-drag {
                 opacity: 1;
                 transition: all .2s ease-in;
             }
@@ -164,6 +176,11 @@
                 color: $black;
                 cursor: text;
             }
+        }
+        .icon-arrow-down {
+            fill: $gray-light;
+            height: .7rem;
+            width: .7rem;
         }
     }
     .sortable-placeholder {
@@ -241,26 +258,24 @@
             top: -3px;
         }
     }
-    .us-settings a,
-    .icon-drag-v {
-        @extend %large;
-        color: $gray-light;
-        transition: all .2s ease-in;
-        width: 30px;
-        &:hover {
-            color: $grayer;
-            transition: all .2s ease-in;
-        }
-    }
     .us-settings {
         flex-shrink: 0;
-        margin: 0 0 0 2rem;
+        margin-left: 2rem;
         opacity: 0;
+        svg {
+            fill: $gray-light;
+            margin-right: .5rem;
+            transition: fill .2s ease-in;
+            &:hover {
+                fill: $primary-light;
+            }
+        }
     }
-    .icon-drag-v {
+    .icon-drag {
         cursor: move;
+        fill: $gray-light;
         opacity: 0;
-        padding: .1rem .5rem 0 0;
+        padding: .1rem;
     }
     .readonly {
         cursor: auto;

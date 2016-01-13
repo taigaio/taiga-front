@@ -18,7 +18,8 @@ section.project-values-table
             div(ng-repeat="value in values track by value.id", tg-bind-scope)
                 form(tg-bind-scope)
                     div.project-values-row.row.table-main.visualization
-                        span.icon.icon-drag-v
+                        svg.icon.icon-drag
+                            use(xlink:href="#icon-drag")
 
                         div.project-values-name
                             span {{ value.name }}
@@ -27,8 +28,10 @@ section.project-values-table
                             span {{ value.value }}
 
                         div.project-values-settings
-                            a.edit-value.icon.icon-edit(href="", title="{{'ADMIN.POINTS.TITLE_ACTION_EDIT_VALUE' | translate}}")
-                            a.delete-value.icon.icon-delete(href="", title="{{'ADMIN.POINTS.TITLE_ACTION_DELETE_VALUE' | translate}}")
+                            svg.edit-value.icon.icon-edit(title="{{'ADMIN.POINTS.TITLE_ACTION_EDIT_VALUE' | translate}}")
+                                use(xlink:href="#icon-edit")
+                            svg.delete-value.icon.icon-trash(title="{{'ADMIN.POINTS.TITLE_ACTION_DELETE_VALUE' | translate}}")
+                                use(xlink:href="#icon-trash")
 
                     div.project-values-row.row.table-main.edition.hidden
                         div.project-values-name
@@ -38,19 +41,33 @@ section.project-values-table
                             input(name="value", type="text", placeholder="{{'COMMON.FIELDS.VALUE' | translate}}", ng-model="value.value", data-type="number")
 
                         div.project-values-settings
-                            a.save.icon.icon-floppy(href="", title="{{'COMMON.SAVE' | translate}}")
-                            a.cancel.icon.icon-delete(href="", title="{{'COMON.CANCEL' | translate}}")
+                            svg.save.icon.icon-save(title="{{'COMMON.SAVE' | translate}}")
+                                use(xlink:href="#icon-save")
+                            svg.cancel.icon.icon-close(href="", title="{{'COMON.CANCEL' | translate}}")
+                                use(xlink:href="#icon-close")
 
         form
             div.project-values-row.new-value.hidden
                 div.project-values-name
-                     input(name="name", type="text", placeholder="{{'COMMON.FIELDS.NAME' | translate}}", ng-model="newValue.name",
-                         data-required="true")
+                    input(
+                        name="name"
+                        type="text"
+                        placeholder="{{'COMMON.FIELDS.NAME' | translate}}"
+                        ng-model="newValue.name"
+                        data-required="true"
+                    )
 
                 div.project-values-value
-                    input("name=value", type="text", placeholder="{{'COMMON.FIELDS.VALUE' | translate}}", ng-model="newValue.value",
-                          data-type="number")
+                    input(
+                        name="value"
+                        type="text"
+                        placeholder="{{'COMMON.FIELDS.VALUE' | translate}}"
+                        ng-model="newValue.value"
+                        data-type="number"
+                    )
 
                 div.project-values-settings
-                    a.add-new.icon.icon-floppy(href="", title="{{'COMMON.ADD' | translate}}")
-                    a.delete-new.icon.icon-delete(href="", title="{{'COMMON.CANCEL' | translate}}")
+                    svg.add-new.icon.icon-save(title="{{'COMMON.ADD' | translate}}")
+                        use(xlink:href="#icon-save")
+                    svg.delete-new.icon.icon-trash(title="{{'COMMON.CANCEL' | translate}}")
+                        use(xlink:href="#icon-trash")
