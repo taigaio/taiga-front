@@ -296,7 +296,7 @@ RegisterDirective = ($auth, $confirm, $location, $navUrls, $config, $routeParams
 
             $confirm.notify("success", $translate.instant("LOGIN_FORM.SUCCESS"))
 
-            $location.path($scope.nextUrl)
+            $location.url($scope.nextUrl)
 
         onErrorSubmit = (response) ->
             if response.data._error_message
