@@ -365,7 +365,7 @@ BlockButtonDirective = ($rootscope, $loading, $template) ->
             return if not item
 
             if isEditable()
-                $el.find('.item-block').addClass('is-editable')
+                $el.find('.item-block').addClass('editable')
 
             if item.is_blocked
                 $el.find('.item-block').removeClass('is-active')

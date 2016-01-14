@@ -1,5 +1,8 @@
 .ticket-header {
+    align-items: center;
+    display: flex;
     margin: 1.5rem 0 2rem;
+    position: relative;
     .ticket-title {
         @extend %larger;
         @extend %light;
@@ -100,6 +103,10 @@
     }
 }
 
+.ticket-watch-buttons {
+    margin-bottom: 1rem;
+}
+
 .ticket-watch {
     .ticket-watch-title {
         @extend %bold;
@@ -169,18 +176,10 @@
         transition: background .2s linear;
         transition-delay: .1s;
         &:hover {
-            background: $gray-light;
-            cursor: default;
+            background: $gray;
         }
-        &.is-editable {
-            background: $gray-light;
+        &.editable {
             cursor: pointer;
-            &:hover {
-                background: $gray;
-            }
-        }
-        &.active {
-            background: $primary-light;
         }
         +input {
             display: none;
@@ -194,13 +193,15 @@
         }
     }
     .item-unblock {
-        background: $red;
+        background: $red-light;
+        &:hover {
+            background: $red;
+        }
     }
     .button-delete {
         background: $red-light;
         &:hover {
             background: $red;
-            cursor: pointer;
         }
     }
     img {
