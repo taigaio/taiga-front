@@ -212,8 +212,9 @@ PublicRegisterMessageDirective = ($config, $navUrls, $routeParams, templates) ->
             return ""
 
         url = $navUrls.resolve("register")
-        if $routeParams['next'] and $routeParams['next'] != $navUrls.resolve("login")
-            nextUrl = decodeURIComponent($routeParams['next'])
+        if $routeParams['next'] and $routeParams['next'] != $navUrls.resolve("register")
+            nextUrl = encodeURIComponent($routeParams['next'])
+            console.log "-----", nextUrl
             url += "?next=#{nextUrl}"
 
         return template({url:url})
@@ -286,7 +287,7 @@ RegisterDirective = ($auth, $confirm, $location, $navUrls, $config, $routeParams
         $scope.data = {}
         form = $el.find("form").checksley({onlyOneErrorElement: true})
 
-        if $routeParams['next'] and $routeParams['next'] != $navUrls.resolve("login")
+        if $routeParams['next'] and $routeParams['next'] != $navUrls.resolve("register")
             $scope.nextUrl = decodeURIComponent($routeParams['next'])
         else
             $scope.nextUrl = $navUrls.resolve("home")
