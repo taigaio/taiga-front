@@ -122,7 +122,8 @@ timelineType = (timeline, event) ->
             check: (timeline, event) ->
                 if timeline.hasIn(['data', 'value_diff']) &&
                       timeline.getIn(['data', 'value_diff', 'key']) == 'moveInBacklog' &&
-                      event.type == 'change'
+                      event.type == 'change' &&
+                      event.obj == 'userstory'
 
                     return timeline.getIn(['data', 'value_diff', 'value', 'milestone']).get(1) == null
 
@@ -134,7 +135,9 @@ timelineType = (timeline, event) ->
             check: (timeline, event) ->
                 return timeline.hasIn(['data', 'value_diff']) &&
                       timeline.getIn(['data', 'value_diff', 'key']) == 'moveInBacklog' &&
-                      event.type == 'change'
+                      event.type == 'change' &&
+                      event.obj == 'userstory'
+
             key: 'TIMELINE.US_ADDED_MILESTONE',
             translate_params: ['username', 'obj_name', 'sprint_name']
         },

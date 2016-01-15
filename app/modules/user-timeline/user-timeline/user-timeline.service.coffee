@@ -153,7 +153,11 @@ class UserTimelineService extends taiga.Service
                     values_diff = Immutable.Map({'blocked': values_diff})
 
                 if values_diff.has('milestone')
-                    values_diff = Immutable.Map({'moveInBacklog': values_diff})
+                    if event.obj == 'userstory'
+                        values_diff = Immutable.Map({'moveInBacklog': values_diff})
+                    else
+                        values_diff = values_diff.deleteIn(['values_diff', 'milestone'])
+
                 else if event.obj == 'milestone'
                      values_diff = Immutable.Map({'milestone': values_diff})
 
