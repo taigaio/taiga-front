@@ -69,7 +69,7 @@ class AttachmentsFullController
         @.deprecatedsVisible = !@.deprecatedsVisible
         @.generate()
 
-    addAttachment: (file) ->
+    addAttachment: (file, editable = true) ->
         return new Promise (resolve, reject) =>
             if @attachmentsService.validate(file)
                 @.uploadingAttachments.push(file)
@@ -84,7 +84,7 @@ class AttachmentsFullController
 
                     attachment = attachment.merge({
                         file: file,
-                        editable: true,
+                        editable: editable,
                         loading: false
                     })
 
@@ -95,8 +95,8 @@ class AttachmentsFullController
             else
                 reject(file)
 
-    addAttachments: (files) ->
-        _.forEach files, @.addAttachment.bind(this)
+    addAttachments: (files, editable) ->
+        _.forEach files, (file) => @.addAttachment(file, editable)
 
     deleteAttachment: (toDeleteAttachment) ->
         title = @translate.instant("ATTACHMENT.TITLE_LIGHTBOX_DELETE_ATTACHMENT")
