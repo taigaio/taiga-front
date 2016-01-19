@@ -633,6 +633,24 @@ EditableWysiwyg = (attachmentsService) ->
         isInEditMode = ->
             return $el.find('textarea').is(':visible')
 
+
+        uploadFile = (file, type) ->
+            return if !attachmentsService.validate(file)
+
+            attachmentsService.upload(
+                file,
+                $model.$modelValue.id,
+                $model.$modelValue.project,
+                type
+            ).then (result) ->
+                if taiga.isImage(result.get('name'))
+                    url = '![' + result.get('name') + '](' + result.get('url') + ')'
+                else
+                    url = '[' + result.get('name') + '](' + result.get('url') + ')'
+
+
+                return url
+
         $el.on 'dragover', (e) ->
             textarea = $el.find('textarea').focus()
 
@@ -660,24 +678,13 @@ EditableWysiwyg = (attachmentsService) ->
                 else if type == "wiki"
                     type = "wiki_page"
 
-                file = dataTransfer.files[0]
+                promises = _.map dataTransfer.files, (file) ->
+                    return uploadFile(file, type)
 
-                return if !attachmentsService.validate(file)
-
-                attachmentsService.upload(
-                    file,
-                    $model.$modelValue.id,
-                    $model.$modelValue.project,
-                    type
-                ).then (result) ->
+                Promise.all(promises).then (result) ->
                     textarea = $el.find('textarea')
 
-                    if taiga.isImage(result.get('name'))
-                        url = '![' + result.get('name') + '](' + result.get('url') + ')'
-                    else
-                        url = '[' + result.get('name') + '](' + result.get('url') + ')'
-
-                    $.markItUp({ replaceWith: url })
+                    $.markItUp({ replaceWith: result.join(' ') })
 
                     textarea.removeClass('in-progress')
 
