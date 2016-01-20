@@ -286,9 +286,10 @@ TagLineDirective = ($rootScope, $repo, $rs, $confirm, $qqueue, $template, $compi
                 $confirm.notify("error")
                 model.revert()
                 $model.$setViewValue(model)
-            $repo.save(model).then(onSuccess, onError)
 
             hideSaveButton()
+
+            return $repo.save(model).then(onSuccess, onError)
 
         deleteValue = $qqueue.bindAdd (value) ->
             value = trim(value.toLowerCase())
