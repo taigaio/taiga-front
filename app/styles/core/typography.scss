@@ -5,12 +5,19 @@
 OpenSans-CondLight,
 OpenSans-Light,
 OpenSans-Regular,
-OpenSans-Semibold,
-taiga {
+OpenSans-Semibold {
     @font-face {
         font-family: '#{$font-face}';
         src: url('../fonts/#{$font-face}.ttf') format('truetype');
     }
+}
+
+@font-face {
+    font-family: taiga; font-style: normal; font-weight: normal;
+    src: url('../fonts/taiga.eot');
+    src: url('../fonts/taiga.eot?') format('eot'),
+        url('../fonts/taiga.woff') format('woff'),
+        url('../fonts/taiga.ttf')  format('truetype');
 }
 
 h1,
