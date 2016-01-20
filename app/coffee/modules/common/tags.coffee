@@ -164,6 +164,7 @@ LbTagLineDirective = ($rs, $template, $compile) ->
             target = angular.element(event.currentTarget)
 
             if event.keyCode == ENTER_KEY
+                event.preventDefault()
                 saveInputTag()
             else if String.fromCharCode(event.keyCode) == ','
                 event.preventDefault()
