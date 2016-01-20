@@ -201,7 +201,7 @@ describe "tgUserTimelineService", ->
                 expect(res.get('data').size).to.be.equal(13)
 
                 items = config.filter(res.get('data'))
-                expect(items.size).to.be.equal(6)
+                expect(items.size).to.be.equal(5)
 
                 return true
 
@@ -224,7 +224,7 @@ describe "tgUserTimelineService", ->
                 expect(res.get('data').size).to.be.equal(13)
 
                 items = config.filter(res.get('data'))
-                expect(items.size).to.be.equal(6)
+                expect(items.size).to.be.equal(5)
 
                 return true
 
@@ -247,7 +247,7 @@ describe "tgUserTimelineService", ->
                 expect(res.get('data').size).to.be.equal(13)
 
                 items = config.filter(res.get('data'))
-                expect(items.size).to.be.equal(6)
+                expect(items.size).to.be.equal(5)
 
                 return true
 
