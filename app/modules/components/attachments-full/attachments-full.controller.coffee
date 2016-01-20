@@ -21,82 +21,46 @@ sizeFormat = @.taiga.sizeFormat
 
 class AttachmentsFullController
     @.$inject = [
-        "tgAttachmentsService",
-        "$rootScope",
         "$translate",
         "$tgConfirm",
         "$tgConfig",
-        "$tgStorage"
+        "$tgStorage",
+        "tgAttachmentsFullService"
     ]
 
-    constructor: (@attachmentsService, @rootScope, @translate, @confirm, @config, @storage) ->
-        @.deprecatedsVisible = false
-        @.uploadingAttachments = []
-
+    constructor: (@translate, @confirm, @config, @storage, @attachmentsFullService) ->
         @.mode = @storage.get('attachment-mode', 'list')
 
         @.maxFileSize = @config.get("maxUploadFileSize", null)
         @.maxFileSize = sizeFormat(@.maxFileSize) if @.maxFileSize
         @.maxFileSizeMsg = if @.maxFileSize then @translate.instant("ATTACHMENT.MAX_UPLOAD_SIZE", {maxFileSize: @.maxFileSize}) else ""
 
-    loadAttachments: ->
-        @attachmentsService.list(@.type, @.objId, @.projectId).then (files) =>
-            @.attachments = files.map (file) ->
-                attachment = Immutable.Map()
+        taiga.defineImmutableProperty @, 'attachments', () => return @attachmentsFullService.attachments
+        taiga.defineImmutableProperty @, 'deprecatedsCount', () => return @attachmentsFullService.deprecatedsCount
+        taiga.defineImmutableProperty @, 'attachmentsVisible', () => return @attachmentsFullService.attachmentsVisible
+        taiga.defineImmutableProperty @, 'deprecatedsVisible', () => return @attachmentsFullService.deprecatedsVisible
 
-                return attachment.merge({
-                    loading: false,
-                    editable: false,
-                    file: file
-                })
+    uploadingAttachments: () ->
+        return @attachmentsFullService.uploadingAttachments
 
-            @.generate()
+    addAttachment: (file) ->
+        editable = (@.mode == 'list')
+
+        @attachmentsFullService.addAttachment(@.projectId, @.objId, @.type, file, editable)
 
     setMode: (mode) ->
         @.mode = mode
 
         @storage.set('attachment-mode', mode)
 
-    generate: () ->
-        @.deprecatedsCount = @.attachments.count (it) -> it.getIn(['file', 'is_deprecated'])
-
-        if @.deprecatedsVisible
-            @.attachmentsVisible = @.attachments
-        else
-            @.attachmentsVisible = @.attachments.filter (it) -> !it.getIn(['file', 'is_deprecated'])
-
     toggleDeprecatedsVisible: () ->
-        @.deprecatedsVisible = !@.deprecatedsVisible
-        @.generate()
+        @attachmentsFullService.toggleDeprecatedsVisible()
 
-    addAttachment: (file, editable = true) ->
-        return new Promise (resolve, reject) =>
-            if @attachmentsService.validate(file)
-                @.uploadingAttachments.push(file)
+    addAttachments: (files) ->
+        _.forEach files, (file) => @.addAttachment(file)
 
-
-                promise = @attachmentsService.upload(file, @.objId, @.projectId, @.type)
-                promise.then (file) =>
-                    @.uploadingAttachments = @.uploadingAttachments.filter (uploading) ->
-                        return uploading.name != file.get('name')
-
-                    attachment = Immutable.Map()
-
-                    attachment = attachment.merge({
-                        file: file,
-                        editable: editable,
-                        loading: false
-                    })
-
-                    @.attachments = @.attachments.push(attachment)
-                    @.generate()
-                    @rootScope.$broadcast("attachment:create")
-                    resolve(@.attachments)
-            else
-                reject(file)
-
-    addAttachments: (files, editable) ->
-        _.forEach files, (file) => @.addAttachment(file, editable)
+    loadAttachments: ->
+        @attachmentsFullService.loadAttachments(@.type, @.objId, @.projectId)
 
     deleteAttachment: (toDeleteAttachment) ->
         title = @translate.instant("ATTACHMENT.TITLE_LIGHTBOX_DELETE_ATTACHMENT")
@@ -111,40 +75,14 @@ class AttachmentsFullController
                     @confirm.notify("error", null, message)
                     askResponse.finish(false)
 
-                onSuccess = () =>
-                    @.attachments = @.attachments.filter (attachment) -> attachment != toDeleteAttachment
-                    @.generate()
+                onSuccess = () => askResponse.finish()
 
-                    askResponse.finish()
-
-                return @attachmentsService.delete(@.type, toDeleteAttachment.getIn(['file', 'id'])).then(onSuccess, onError)
+                @attachmentsFullService.deleteAttachment(toDeleteAttachment, @.type).then(onSuccess, onError)
 
     reorderAttachment: (attachment, newIndex) ->
-        oldIndex = @.attachments.findIndex (it) -> it == attachment
-        return if oldIndex == newIndex
-
-        attachments = @.attachments.remove(oldIndex)
-        attachments = attachments.splice(newIndex, 0, attachment)
-        attachments = attachments.map (x, i) -> x.setIn(['file', 'order'], i + 1)
-
-        promises = attachments.map (attachment) =>
-            patch = {order: attachment.getIn(['file', 'order'])}
-
-            return @attachmentsService.patch(attachment.getIn(['file', 'id']), @.type, patch)
-
-        return Promise.all(promises.toJS()).then () =>
-            @.attachments = attachments
-            @.generate()
+        @attachmentsFullService.reorderAttachment(@.type, attachment, newIndex)
 
     updateAttachment: (toUpdateAttachment) ->
-        index = @.attachments.findIndex (attachment) ->
-            return attachment.getIn(['file', 'id']) == toUpdateAttachment.getIn(['file', 'id'])
-        oldAttachment = @.attachments.get(index)
-
-        patch = taiga.patch(oldAttachment.get('file'), toUpdateAttachment.get('file'))
-
-        return @attachmentsService.patch(toUpdateAttachment.getIn(['file', 'id']), @.type, patch).then () =>
-            @.attachments = @.attachments.set(index, toUpdateAttachment)
-            @.generate()
+        @attachmentsFullService.updateAttachment(toUpdateAttachment, @.type)
 
 angular.module("taigaComponents").controller("AttachmentsFull", AttachmentsFullController)

@@ -34,7 +34,8 @@ section.attachments(tg-attachments-drop="vm.addAttachments(files, false)")
                     multiple="multiple",
                     tg-file-change="vm.addAttachments(files, true)"
                 )
-    .attachments-empty(ng-if="!vm.attachments.size")
+
+    .attachments-empty(ng-if="!vm.attachments.size && !vm.uploadingAttachments().length")
         div {{'ATTACHMENT.DROP' | translate}}
     .attachment-list.sortable(ng-if="vm.mode == 'list'")
         div(tg-attachments-sortable="vm.reorderAttachment(attachment, index)")
@@ -49,13 +50,13 @@ section.attachments(tg-attachments-drop="vm.addAttachments(files, false)")
                 type="vm.type"
             )
 
-          .single-attachment(ng-repeat="file in vm.uploadingAttachments")
+          .single-attachment(ng-repeat="file in vm.uploadingAttachments()")
               .attachment-name
                   span.icon
                       include ../../../svg/attachment.svg
-                  span {{attachment.get('name')}}
+                  span {{file.name}}
               .attachment-size
-                  span {{attachment.get('size') | sizeFormat}}
+                  span {{file.size | sizeFormat}}
 
               .attachment-comments
                   span {{file.progressMessage}}
@@ -88,7 +89,7 @@ section.attachments(tg-attachments-drop="vm.addAttachments(files, false)")
             on-update="vm.updateAttachment(attachment)",
             type="vm.type"
         )
-        .single-attachment(ng-repeat="file in vm.uploadingAttachments")
+        .single-attachment(ng-repeat="file in vm.uploadingAttachments()")
             .loading-container
                 img.loading-spinner(
                     src="/#{v}/svg/spinner-circle.svg",

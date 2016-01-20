@@ -22,13 +22,6 @@ describe "AttachmentsController", ->
     $controller = null
     mocks = {}
 
-    _mockAttachmentsService = ->
-        mocks.attachmentsService = {
-            upload: sinon.stub()
-        }
-
-        $provide.value("tgAttachmentsService", mocks.attachmentsService)
-
     _mockConfirm = ->
         mocks.confirm = {}
 
@@ -55,21 +48,20 @@ describe "AttachmentsController", ->
 
         $provide.value("$tgStorage", mocks.storage)
 
-    _mockRootScope = ->
-        mocks.rootScope = {}
+    _mockAttachmetsFullService = ->
+        mocks.attachmentsFullService = {}
 
-        $provide.value("$rootScope", mocks.rootScope)
+        $provide.value("tgAttachmentsFullService", mocks.attachmentsFullService)
 
     _mocks = ->
         module (_$provide_) ->
             $provide = _$provide_
 
-            _mockAttachmentsService()
             _mockConfirm()
             _mockTranslate()
             _mockConfig()
             _mockStorage()
-            _mockRootScope()
+            _mockAttachmetsFullService()
 
             return null
 
@@ -86,100 +78,31 @@ describe "AttachmentsController", ->
 
         _setup()
 
-    it "generate, refresh deprecated counter", () ->
-        attachments = Immutable.fromJS([
-            {
-                file: {
-                    is_deprecated: false
-                }
-            },
-            {
-                file: {
-                    is_deprecated: true
-                }
-            },
-            {
-                file: {
-                    is_deprecated: true
-                }
-            },
-            {
-                file: {
-                    is_deprecated: false
-                }
-            },
-            {
-                file: {
-                    is_deprecated: true
-                }
-            }
-        ])
-
-        ctrl = $controller("AttachmentsFull")
-
-        ctrl.attachments = attachments
-
-        ctrl.generate()
-
-        expect(ctrl.deprecatedsCount).to.be.equal(3)
-
     it "toggle deprecated visibility", () ->
+
+        mocks.attachmentsFullService.toggleDeprecatedsVisible = sinon.spy()
+
         ctrl = $controller("AttachmentsFull")
-
-        ctrl.deprecatedsVisible = false
-
-        ctrl.generate = sinon.spy()
 
         ctrl.toggleDeprecatedsVisible()
 
-        expect(ctrl.deprecatedsVisible).to.be.true
-        expect(ctrl.generate).to.be.calledOnce
+        expect(mocks.attachmentsFullService.toggleDeprecatedsVisible).to.be.calledOnce
 
-    describe "add attachments", () ->
-        it "valid attachment", (done) ->
-            file = Immutable.fromJS({
-                file: {},
-                name: 'test',
-                size: 3000
-            })
+    it "add attachment", () ->
+        mocks.attachmentsFullService.addAttachment = sinon.spy()
 
-            mocks.attachmentsService.validate = sinon.stub()
-            mocks.attachmentsService.validate.withArgs(file).returns(true)
+        ctrl = $controller("AttachmentsFull")
 
-            mocks.attachmentsService.upload = sinon.stub()
-            mocks.attachmentsService.upload.promise().resolve(file)
+        file = Immutable.Map()
 
-            mocks.rootScope.$broadcast = sinon.spy()
+        ctrl.projectId = 3
+        ctrl.objId = 30
+        ctrl.type = 'us'
+        ctrl.mode = 'list'
 
-            ctrl = $controller("AttachmentsFull")
-            ctrl.attachments = Immutable.List()
+        ctrl.addAttachment(file)
 
-            ctrl.addAttachment(file).then () ->
-                expect(mocks.rootScope.$broadcast).have.been.calledWith('attachment:create')
-                expect(ctrl.attachments.count()).to.be.equal(1)
-                done()
-
-        it "invalid attachment", () ->
-            file = Immutable.fromJS({
-                file: {},
-                name: 'test',
-                size: 3000
-            })
-
-            mocks.attachmentsService.validate = sinon.stub()
-            mocks.attachmentsService.validate.withArgs(file).returns(false)
-
-            mocks.attachmentsService.upload = sinon.stub()
-            mocks.attachmentsService.upload.promise().resolve(file)
-
-            mocks.rootScope.$broadcast = sinon.spy()
-
-            ctrl = $controller("AttachmentsFull")
-
-            ctrl.attachments = Immutable.List()
-
-            ctrl.addAttachment(file).then null, () ->
-                expect(ctrl.attachments.count()).to.be.equal(0)
+        expect(mocks.attachmentsFullService.addAttachment).to.have.been.calledWith(3, 30, 'us', file, true)
 
     it "add attachments", () ->
         ctrl = $controller("AttachmentsFull")
@@ -199,6 +122,11 @@ describe "AttachmentsController", ->
 
     describe "deleteattachments", () ->
         it "success attachment", (done) ->
+            deleteFile = Immutable.Map()
+
+            mocks.attachmentsFullService.deleteAttachment = sinon.stub()
+            mocks.attachmentsFullService.deleteAttachment.withArgs(deleteFile, 'us').promise().resolve()
+
             askResponse = {
                 finish: sinon.spy()
             }
@@ -209,37 +137,20 @@ describe "AttachmentsController", ->
             mocks.confirm.askOnDelete = sinon.stub()
             mocks.confirm.askOnDelete.withArgs('title', 'message').promise().resolve(askResponse)
 
-            mocks.attachmentsService.delete = sinon.stub()
-            mocks.attachmentsService.delete.withArgs('us', 2).promise().resolve()
-
             ctrl = $controller("AttachmentsFull")
 
             ctrl.type = 'us'
-            ctrl.generate = sinon.spy()
-            ctrl.attachments = Immutable.fromJS([
-                {
-                    file: {id: 1}
-                },
-                {
-                    file: {id: 2}
-                },
-                {
-                    file: {id: 3}
-                },
-                {
-                    file: {id: 4}
-                }
-            ])
-
-            deleteFile = ctrl.attachments.get(1)
 
             ctrl.deleteAttachment(deleteFile).then () ->
-                expect(ctrl.generate).have.been.calledOnce
-                expect(ctrl.attachments.size).to.be.equal(3)
                 expect(askResponse.finish).have.been.calledOnce
                 done()
 
         it "error attachment", (done) ->
+            deleteFile = Immutable.Map()
+
+            mocks.attachmentsFullService.deleteAttachment = sinon.stub()
+            mocks.attachmentsFullService.deleteAttachment.withArgs(deleteFile, 'us').promise().reject()
+
             askResponse = {
                 finish: sinon.spy()
             }
@@ -253,76 +164,52 @@ describe "AttachmentsController", ->
 
             mocks.confirm.notify = sinon.spy()
 
-            mocks.attachmentsService.delete = sinon.stub()
-            mocks.attachmentsService.delete.promise().reject()
-
             ctrl = $controller("AttachmentsFull")
 
             ctrl.type = 'us'
-            ctrl.generate = sinon.spy()
-            ctrl.attachments = Immutable.fromJS([
-                {
-                    file: {id: 1}
-                },
-                {
-                    file: {id: 2}
-                },
-                {
-                    file: {id: 3}
-                },
-                {
-                    file: {id: 4}
-                }
-            ])
-
-            deleteFile = ctrl.attachments.get(1)
 
             ctrl.deleteAttachment(deleteFile).then () ->
-                expect(ctrl.attachments.size).to.be.equal(4)
                 expect(askResponse.finish.withArgs(false)).have.been.calledOnce
                 expect(mocks.confirm.notify.withArgs('error', null, 'error'))
                 done()
 
-    it "reorder attachments", (done) ->
-        attachments = Immutable.fromJS([
-            {file: {id: 0, is_deprecated: false, order: 0}},
-            {file: {id: 1, is_deprecated: true, order: 1}},
-            {file: {id: 2, is_deprecated: true, order: 2}},
-            {file: {id: 3, is_deprecated: false, order: 3}},
-            {file: {id: 4, is_deprecated: true, order: 4}}
-        ])
-
-        mocks.attachmentsService.patch = sinon.stub()
-        mocks.attachmentsService.patch.promise().resolve()
+    it "loadAttachments", () ->
+        mocks.attachmentsFullService.loadAttachments = sinon.spy()
 
         ctrl = $controller("AttachmentsFull")
 
+        ctrl.projectId = 3
+        ctrl.objId = 30
         ctrl.type = 'us'
-        ctrl.attachments = attachments
 
-        ctrl.reorderAttachment(attachments.get(1), 0).then () ->
-            expect(ctrl.attachments.get(0)).to.be.equal(attachments.get(1))
-            done()
+        ctrl.loadAttachments()
+
+        expect(mocks.attachmentsFullService.loadAttachments).to.have.been.calledWith('us', 30, 3)
+
+    it "reorder attachments", () ->
+        mocks.attachmentsFullService.reorderAttachment = sinon.spy()
+
+        ctrl = $controller("AttachmentsFull")
+
+        file = Immutable.Map()
+
+        ctrl.projectId = 3
+        ctrl.objId = 30
+        ctrl.type = 'us'
+
+        ctrl.reorderAttachment(file, 5)
+
+        expect(mocks.attachmentsFullService.reorderAttachment).to.have.been.calledWith('us', file, 5)
 
     it "update attachment", () ->
-        attachments = Immutable.fromJS([
-            {file: {id: 0, is_deprecated: false, order: 0}},
-            {file: {id: 1, is_deprecated: true, order: 1}},
-            {file: {id: 2, is_deprecated: true, order: 2}},
-            {file: {id: 3, is_deprecated: false, order: 3}},
-            {file: {id: 4, is_deprecated: true, order: 4}}
-        ])
-
-        attachment = attachments.get(1)
-        attachment = attachment.setIn(['file', 'is_deprecated'], false)
-
-        mocks.attachmentsService.patch = sinon.stub()
-        mocks.attachmentsService.patch.withArgs(1, 'us', {is_deprecated: false}).promise().resolve()
+        mocks.attachmentsFullService.updateAttachment = sinon.spy()
 
         ctrl = $controller("AttachmentsFull")
 
-        ctrl.type = 'us'
-        ctrl.attachments = attachments
+        file = Immutable.Map()
 
-        ctrl.updateAttachment(attachment).then () ->
-            expect(ctrl.attachments.get(1).toJS()).to.be.eql(attachment.toJS())
+        ctrl.type = 'us'
+
+        ctrl.updateAttachment(file, 5)
+
+        expect(mocks.attachmentsFullService.updateAttachment).to.have.been.calledWith(file, 'us')

@@ -72,10 +72,18 @@ describe "AttachmentController", ->
             attachment : attachment
         })
 
-        ctrl.editable = false
+        ctrl.onUpdate = sinon.spy()
+
+        onUpdate = sinon.match (value) ->
+            value = value.attachment.toJS()
+
+            return value.editable
+
+        , "onUpdate"
+
         ctrl.editMode(true)
 
-        expect(ctrl.attachment.get('editable')).to.be.true
+        expect(ctrl.onUpdate).to.be.calledWith(onUpdate)
 
     it "delete", () ->
         attachment = Immutable.fromJS({
@@ -119,6 +127,12 @@ describe "AttachmentController", ->
 
         ctrl.onUpdate = sinon.spy()
 
+        onUpdateLoading = sinon.match (value) ->
+            value = value.attachment.toJS()
+
+            return value.loading
+        , "onUpdateLoading"
+
         onUpdate = sinon.match (value) ->
             value = value.attachment.toJS()
 
@@ -137,4 +151,5 @@ describe "AttachmentController", ->
 
         attachment = ctrl.attachment.toJS()
 
+        expect(ctrl.onUpdate).to.be.calledWith(onUpdateLoading)
         expect(ctrl.onUpdate).to.be.calledWith(onUpdate)

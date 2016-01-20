@@ -627,7 +627,7 @@ module.directive("tgEditableDescription", [
 
 
 
-EditableWysiwyg = (attachmentsService) ->
+EditableWysiwyg = (attachmentsService, attachmentsFullService) ->
     link = ($scope, $el, $attrs, $model) ->
 
         isInEditMode = ->
@@ -637,19 +637,11 @@ EditableWysiwyg = (attachmentsService) ->
         uploadFile = (file, type) ->
             return if !attachmentsService.validate(file)
 
-            attachmentsService.upload(
-                file,
-                $model.$modelValue.id,
-                $model.$modelValue.project,
-                type
-            ).then (result) ->
-                if taiga.isImage(result.get('name'))
-                    url = '![' + result.get('name') + '](' + result.get('url') + ')'
+            return attachmentsFullService.addAttachment($model.$modelValue.project, $model.$modelValue.id, type, file).then (result) ->
+                if taiga.isImage(result.getIn(['file', 'name']))
+                    return '![' + result.getIn(['file', 'name']) + '](' + result.getIn(['file', 'url']) + ')'
                 else
-                    url = '[' + result.get('name') + '](' + result.get('url') + ')'
-
-
-                return url
+                    return '[' + result.getIn(['file', 'name']) + '](' + result.getIn(['file', 'url']) + ')'
 
         $el.on 'dragover', (e) ->
             textarea = $el.find('textarea').focus()
@@ -694,7 +686,7 @@ EditableWysiwyg = (attachmentsService) ->
         require: "ngModel"
     }
 
-module.directive("tgEditableWysiwyg", ["tgAttachmentsService", EditableWysiwyg])
+module.directive("tgEditableWysiwyg", ["tgAttachmentsService", "tgAttachmentsFullService", EditableWysiwyg])
 
 
 #############################################################################

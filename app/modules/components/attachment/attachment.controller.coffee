@@ -28,21 +28,22 @@ class AttachmentController
         @.form.description = @.attachment.getIn(['file', 'description'])
         @.form.is_deprecated = @.attachment.get(['file', 'is_deprecated'])
 
-        @.loading = false
-
         @.title = @translate.instant("ATTACHMENT.TITLE", {
             fileName: @.attachment.get('name'),
             date: moment(@.attachment.get('created_date')).format(@translate.instant("ATTACHMENT.DATE"))
         })
 
     editMode: (mode) ->
-        @.attachment = @.attachment.set('editable', mode)
+        attachment = @.attachment.set('editable', mode)
+        @.onUpdate({attachment: attachment})
 
     delete: () ->
         @.onDelete({attachment: @.attachment})
 
     save: () ->
-        @.attachment = @.attachment.set('loading', true)
+        attachment = @.attachment.set('loading', true)
+
+        @.onUpdate({attachment: attachment})
 
         attachment = @.attachment.merge({
             editable: false,
