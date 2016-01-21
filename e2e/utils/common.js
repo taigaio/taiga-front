@@ -141,7 +141,9 @@ common.login = function(username, password) {
         let url =  await browser.driver.getCurrentUrl();
 
         return url === browser.params.glob.host;
-    }, 10000);
+    }, 10000).then(function() {
+        return common.closeJoyride();
+    });
 };
 
 common.logout = function() {
@@ -149,7 +151,7 @@ common.logout = function() {
         .mouseMove($('div[tg-dropdown-user]'))
         .perform();
 
-    common.link($$('.navbar-dropdown li a').last())
+    common.link($$('.navbar-dropdown li a').last());
 
     return browser.driver.wait(async function() {
         let url =  await browser.driver.getCurrentUrl();
