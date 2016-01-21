@@ -1,0 +1,54 @@
+.discover-header {
+    background: url('../images/discover.png') repeat-x bottom left $whitish;
+    margin-bottom: 2.5rem;
+    padding: 1rem 1rem 2rem;
+    text-align: center;
+    .discover-header-inner {
+        @include centered;
+        margin: 0 auto;
+    }
+    .title {
+        @extend %xxlarge;
+        margin-bottom: 0;
+    }
+    .project-number {
+        @extend %light;
+        @extend %large;
+        color: $primary;
+    }
+    form {
+        margin: 0 30%;
+        position: relative;
+        @include breakpoint(tablet) {
+            margin: 0 .5rem;
+        }
+    }
+    input[type="text"] {
+        background: $white;
+        border: 0;
+        padding: 1rem;
+        width: 100%;
+        &:focus {
+            outline-color: $primary-light;
+        }
+        &:-webkit-autofill {
+            background: rgba($primary-dark, .5);
+        }
+    }
+    .search-button {
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        &:hover {
+            svg {
+                fill: $primary;
+            }
+        }
+    }
+    svg {
+        fill: $gray-light;
+        height: 1.5rem;
+        transition: all .2;
+        width: 1.5rem;
+    }
+}

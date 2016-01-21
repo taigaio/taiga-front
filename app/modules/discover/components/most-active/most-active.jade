@@ -1,0 +1,18 @@
+.most-active(ng-if="vm.highlighted.size")
+    .header
+        .title-wrapper
+            include ../../../../svg/activity.svg
+            h1.title {{ 'DISCOVER.MOST_ACTIVE' | translate }}
+        tg-discover-home-order-by(on-change="vm.orderBy(orderBy)", order-by="vm.currentOrderBy")
+    
+    tg-highlighted(
+        loading="vm.loading",
+        highlighted="vm.highlighted"
+        order-by="vm.order_by"
+    )
+
+.empty-highlighted-project(
+    ng-if="!vm.highlighted.size"
+)
+    include ../../../../svg/activity.svg
+    span {{ 'DISCOVER.MOST_ACTIVE_EMPTY' | translate }}

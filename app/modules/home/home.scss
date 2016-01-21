@@ -11,7 +11,7 @@
         display: block;
     }
     .title-bar {
-        @extend %title;
+        @extend %light;
         @extend %larger;
         align-content: center;
         background: $whitish;
