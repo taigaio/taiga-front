@@ -4,6 +4,12 @@
         display: flex;
         justify-content: space-between;
         min-height: 10rem;
+        .project-list-single-title-wrapper {
+            display: flex;
+        }
+        .list-itemtype-project-image {
+            flex-shrink: 0;
+        }
         .list-itemtype-project-right {
             display: flex;
             flex-direction: column;

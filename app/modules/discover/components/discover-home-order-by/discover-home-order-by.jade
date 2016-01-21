@@ -1,0 +1,12 @@
+.filter-highlighted(ng-mouseleave="vm.close()")
+    a.current-filter(
+        href="#"
+        ng-click="vm.open()"
+    ) {{vm.currentText()}}
+        span.icon-arrow-bottom
+
+    ul.filter-list(ng-if="vm.is_open")
+        li(ng-click="vm.orderBy('week')") {{ 'DISCOVER.FILTERS.WEEK' | translate }}
+        li(ng-click="vm.orderBy('month')") {{ 'DISCOVER.FILTERS.MONTH' | translate }}
+        li(ng-click="vm.orderBy('year')") {{ 'DISCOVER.FILTERS.YEAR' | translate }}
+        li(ng-click="vm.orderBy('all')") {{ 'DISCOVER.FILTERS.ALL_TIME' | translate }}

@@ -175,6 +175,9 @@ urls = {
     # Application tokens
     "applications": "/applications"
     "application-tokens": "/application-tokens"
+
+    # Stats
+    "stats-discover": "/stats/discover"
 }
 
 # Initialize api urls service

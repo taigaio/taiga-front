@@ -1,23 +1,34 @@
 .single-project {
     .single-project-intro {
+        display: flex;
         margin-bottom: 2rem;
+    }
+    .project-logo {
+        margin-right: 1rem;
+        width: 6rem;
+        img {
+            width: 100%;
+        }
+    }
+    .single-project-title-wrapper {
+        flex: 1;
     }
     .intro-options {
         align-items: center;
         display: flex;
         justify-content: space-between;
+        margin-bottom: .5rem;
+    }
+    .intro-title {
+        align-items: center;
+        display: flex;
     }
     h1 {
         color: $primary;
         display: inline-block;
         line-height: 1.2;
         margin-bottom: 0;
-        margin-right: 3rem;
         vertical-align: middle;
-    }
-    .private {
-        font-size: 1rem;
-        vertical-align: super;
     }
     .like-watch-container {
         margin-left: auto;
@@ -34,6 +45,7 @@
     .description {
         @extend %light;
         @extend %medium;
+        margin: 0;
     }
     .project-data {
         display: flex;
@@ -60,6 +72,18 @@
         max-width: 960px;
         width: 0;
     }
+    .looking-for-people {
+        img {
+            width: 100%;
+        }
+        h3 {
+            @extend %small;
+        }
+        p {
+            @extend %small;
+            @extend %light;
+        }
+    }
     .involved-data {
         flex-basis: 220px;
         width: 220px;
@@ -70,8 +94,8 @@
         flex-wrap: wrap;
         margin-bottom: 1rem;
         li {
+            flex-basis: 24%;
             margin-right: .14rem;
-            width: 24%;
             &:nth-child(4n) {
                 margin-right: 0;
             }

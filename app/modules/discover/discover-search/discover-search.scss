@@ -1,0 +1,131 @@
+.discover-search {
+    .discover-header {
+        form {
+            margin: 0 8rem;
+            position: relative;
+        }
+
+        .search-button {
+            left: 1rem;
+            right: auto;
+        }
+        .searchbox {
+            input {
+                padding-left: 3.5rem;
+                padding-right: 23rem;
+            }
+        }
+    }
+    .searchbox-filters {
+        position: absolute;
+        right: 1rem;
+        top: .7rem;
+        width: auto;
+        input {
+            display: none;
+        }
+        label {
+            border-radius: 4px;
+            color: $gray-light;
+            cursor: pointer;
+            display: inline-block;
+            padding: .4rem .75rem;
+            transition: all .2s;
+            transition-delay: .2s;
+            &.active {
+                background: $primary-light;
+                color: $white;
+            }
+            &:hover {
+                background: $whitish;
+                color: $gray;
+            }
+        }
+    }
+}
+
+.discover-results {
+    @include centered;
+    .discover-results-inner {
+        .spin {
+            margin-top: 4rem;
+        }
+    }
+    .list-itemtype-project {
+        border-bottom: 1px solid $gray-light;
+        display: flex;
+        padding: 1rem 0;
+        &:last-child {
+            border-bottom: 0;
+        }
+    }
+    .list-itemtype-project-left {
+        align-items: flex-start;
+        display: flex;
+    }
+    .list-itemtype-project-image {
+        flex-shrink: 0;
+        margin-right: 1rem;
+    }
+    .list-itemtype-project-data {
+        flex: 1;
+        vertical-align: middle;
+    }
+    .look-for-people {
+        margin-left: .5rem;
+        svg {
+            @include svg-size(1rem);
+            fill: $gray-light;
+        }
+    }
+    .project-statistics {
+        display: flex;
+        flex-basis: 140px;
+        justify-content: flex-end;
+        svg {
+            @include svg-size(.8rem);
+            fill: $gray-light;
+        }
+        .svg-eye-closed {
+            display: none;
+        }
+    }
+    .statistic {
+        @extend %small;
+        color: $gray-light;
+        display: inline-block;
+        margin-right: .5rem;
+        &.active {
+            color: $primary;
+            svg {
+                fill: $primary;
+            }
+        }
+    }
+    .more-results {
+        display: block;
+        margin: 0 20rem;
+        transition: inherit;
+    }
+    div[tg-loading] {
+        img {
+            display: block;
+            margin: 0 auto;
+        }
+    }
+}
+
+.empty-discover-results {
+    @include centered;
+    margin-top: 4rem;
+    text-align: center;
+    img {
+        margin-bottom: 1rem;
+    }
+    .title {
+        @extend %large;
+        @extend %light;
+        margin: 0;
+        text-transform: uppercase;
+    }
+}

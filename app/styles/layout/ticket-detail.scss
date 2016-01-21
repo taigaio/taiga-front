@@ -10,9 +10,11 @@
     .us-title {
         @extend %large;
         @extend %text;
+        align-items: center;
         background: $whitish;
+        display: flex;
         flex: 1;
-        padding: 1rem;
+        padding: .5rem;
         position: relative;
         transition: all .2s linear;
         &.blocked {
@@ -64,11 +66,14 @@
             flex-grow: 1;
         }
         .us-title-text {
+            @extend %larger;
+            @extend %text;
             align-content: center;
             align-items: center;
             display: flex;
+            flex: 1;
             margin-bottom: 0;
-            max-width: 94%;
+            max-width: 92%;
         }
         .us-title-text:hover {
             .icon-edit {
@@ -77,16 +82,14 @@
             }
         }
         .us-number {
-            @extend %xlarge;
-            @extend %title;
+            @extend %text;
             color: $gray-light;
             flex-shrink: 0;
             line-height: 2.2rem;
             margin-right: .5rem;
         }
         .us-name {
-            @extend %xlarge;
-            color: $grayer;
+            color: $gray;
             display: inline-block;
             line-height: 2.2rem;
             padding-right: 1rem;

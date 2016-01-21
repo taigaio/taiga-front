@@ -13,15 +13,24 @@ section.profile-projects
 
     .list-itemtype-project(tg-repeat="project in vm.projects")
         .list-itemtype-project-left
-
-            .project-list-single-title
-                h2
-                    a(
-                        href="#"
-                        tg-nav="project:project=project.get('slug')"
-                        title="{{ ::project.get('name') }}"
-                    ) {{::project.get('name')}}
-                p {{ ::project.get('description') | limitTo:300 }}
+            .project-list-single-title-wrapper
+                a.list-itemtype-project-image(
+                    href="#"
+                    tg-nav="project:project=project.get('slug')"
+                    title="{{ ::project.get('name') }}"
+                )
+                    img(
+                        tg-project-logo-src="::project"
+                        alt="{{::project.get('name')}}"
+                    )
+                .project-list-single-title
+                    h2
+                        a(
+                            href="#"
+                            tg-nav="project:project=project.get('slug')"
+                            title="{{ ::project.get('name') }}"
+                        ) {{::project.get('name')}}
+                    p {{ ::project.get('description') | limitTo:300 }}
 
             .list-itemtype-project-tags.tags-container(ng-if="::project.get('tags').size")
                 span.tag(

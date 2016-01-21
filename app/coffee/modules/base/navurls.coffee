@@ -117,7 +117,7 @@ NavigationUrlsDirective = ($navurls, $auth, $q, $location) ->
         $el.on "mouseenter", (event) ->
             target = $(event.currentTarget)
 
-            if !target.data("fullUrl")
+            if !target.data("fullUrl") || $attrs.tgNavGetParams != target.data("params")
                 parseNav($attrs.tgNav, $scope).then (result) ->
                     [name, options] = result
                     user = $auth.getUser()
@@ -130,6 +130,8 @@ NavigationUrlsDirective = ($navurls, $auth, $q, $location) ->
                         getURLParams = JSON.parse($attrs.tgNavGetParams)
                         getURLParamsStr = $.param(getURLParams)
                         fullUrl = "#{fullUrl}?#{getURLParamsStr}"
+
+                        target.data("params", $attrs.tgNavGetParams)
 
                     target.data("fullUrl", fullUrl)
 

@@ -3,7 +3,7 @@ nav.navbar(ng-if="vm.isEnabledHeader")
         a.logo(
             href="#",
             tg-nav="home",
-            title="{{'PROJECT.NAVIGATION.DASHBOARD_TITLE' | translate}}")
+            title="{{'PROJECT.NAVIGATION.HOMEPAGE' | translate}}")
 
             include ../../svg/logo.svg
 
@@ -15,16 +15,16 @@ nav.navbar(ng-if="vm.isEnabledHeader")
 
     div.nav-right(ng-if="!vm.isAuthenticated")
         a.login(
-            tg-nav="login",
+            ng-click="vm.login()"
             href="#",
-            title="{{ 'LOGIN_COMMON.ACTION_SIGN_IN' | translate }}"   
+            title="{{ 'LOGIN_COMMON.ACTION_SIGN_IN' | translate }}"
         ) {{ 'LOGIN_COMMON.ACTION_SIGN_IN' | translate }}
         a.register(
-            tg-nav="register",
+            ng-click="vm.register()"
             href="#",
-            title="{{ 'REGISTER_FORM.ACTION_SIGN_UP' | translate }}"   
+            title="{{ 'REGISTER_FORM.ACTION_SIGN_UP' | translate }}"
         ) {{ 'REGISTER_FORM.ACTION_SIGN_UP' | translate }}
-        
+
     div.nav-right(ng-if="vm.isAuthenticated")
         a(tg-nav="home",
           ng-class="{active: vm.active}",
@@ -32,6 +32,13 @@ nav.navbar(ng-if="vm.isEnabledHeader")
 
             include ../../svg/dashboard.svg
 
+        a(
+            href="#",
+            tg-nav="discover",
+            title="{{'PROJECT.NAVIGATION.DISCOVER_TITLE' | translate}}",
+        )
+            include ../../svg/discover.svg
+
         div.topnav-dropdown-wrapper(ng-show="vm.projects.size", tg-dropdown-project-list)
-        //div.topnav-dropdown-wrapper(tg-dropdown-organization-list)
+        //- div.topnav-dropdown-wrapper(tg-dropdown-organization-list)
         div.topnav-dropdown-wrapper(tg-dropdown-user)

@@ -1,0 +1,71 @@
+div.discover-header
+    div.discover-header-inner
+
+        h1.title {{ 'DISCOVER.DISCOVER_TITLE' | translate }}
+
+        p.project-number(
+            ng-if="vm.projects",
+            translate="DISCOVER.DISCOVER_SUBTITLE",
+            translate-values="{ projects: '{{vm.projects}}'}"
+            translate-interpolation="messageformat"
+        )
+
+        form(ng-submit="vm.submitFilter()")
+            div.searchbox
+                input(
+                    name="search"
+                    type="text"
+                    placeholder="{{ 'DISCOVER.SEARCH.INPUT_PLACEHOLDER' | translate }}"
+                    ng-model="vm.q"
+                )
+                a.search-button(
+                    ng-click="vm.submitFilter()"
+                    href="#"
+                    title="{{ 'DISCOVER.SEARCH.ACTION_TITLE' | translate }}"
+                )
+                    include ../../../../svg/search.svg
+
+            fieldset.searchbox-filters(ng-if="vm.filter")
+                input(
+                    type='radio'
+                    id="filter-all"
+                    name="filter-search"
+                )
+                label(
+                    for="filter-all"
+                    ng-click="vm.selectFilter('all')"
+                    ng-class="{active: vm.filter == 'all'}",
+                ) {{ 'DISCOVER.FILTERS.ALL' | translate }}
+
+                input(
+                    type='radio'
+                    id="filter-kanban"
+                    name="filter-search"
+                )
+                label(
+                    for="filter-kanban"
+                    ng-class="{active: vm.filter == 'kanban'}",
+                    ng-click="vm.selectFilter('kanban')"
+                ) {{ 'DISCOVER.FILTERS.KANBAN' | translate }}
+
+                input(
+                    type='radio'
+                    id="filter-scrum"
+                    name="filter-search"
+                )
+                label(
+                    for="filter-scrum"
+                    ng-class="{active: vm.filter == 'scrum'}",
+                    ng-click="vm.selectFilter('scrum')"
+                ) {{ 'DISCOVER.FILTERS.SCRUM' | translate }}
+
+                input(
+                    type='radio'
+                    id="filter-people"
+                    name="filter-search"
+                )
+                label(
+                    for="filter-people"
+                    ng-class="{active: vm.filter == 'people'}",
+                    ng-click="vm.selectFilter('people')"
+                ) {{ 'DISCOVER.FILTERS.PEOPLE' | translate }}

@@ -163,7 +163,7 @@ common.prepare = function() {
     browser.get(browser.params.glob.host);
 
     return common.closeCookies();
-}
+};
 
 common.dragEnd = function(elm) {
     return browser.wait(async function() {

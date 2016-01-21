@@ -1,0 +1,52 @@
+.featured-projects(ng-if="vm.featured.size")
+    h1.title {{ 'DISCOVER.FEATURED' | translate }}
+
+    .featured-projects-inner
+        .featured-project(tg-repeat="project in vm.featured track by project.get('id')")
+            .tags-container
+                .project-tag(
+                    style="background: {{tag.get('color')}}"
+                    title="{{tag.get('name')}}"
+                    tg-repeat="tag in project.get('colorized_tags') track by tag.get('name')"
+                )
+            .project-card-inner
+                .project-card-header
+                    a.project-card-logo(
+                        href="#"
+                        tg-nav="project:project=project.get('slug')"
+                        title="{{::project.get('name')}}"
+                    )
+                        img(
+                            tg-project-logo-src="::project"
+                            alt="{{::project.get('name')}}"
+                        )
+                    h2.project-card-name
+                        a(
+                            href="#"
+                            tg-nav="project:project=project.get('slug')"
+                            title="{{::project.get('name')}}"
+                        ) {{::project.get('name')}}
+                        span.look-for-people(
+                            ng-if="project.get('is_looking_for_people')"
+                            title="{{ ::project.get('looking_for_people_note') }}"
+                        )
+                            include ../../../../svg/recruit.svg
+                p.project-card-description {{ ::project.get('description') | limitTo:100 }}{{ ::project.get('description').length < 100 ? '' : '...'}}
+                .project-card-statistics
+                    span.statistic(
+                        ng-class="{'active': project.get('is_fan')}"
+                        title="{{ 'PROJECT.FANS_COUNTER_TITLE'|translate:{total:project.get('total_fans')||0}:'messageformat' }}"
+                    )
+                        include ../../../../svg/like.svg
+                        span {{::project.get('total_fans')}}
+                    span.statistic(
+                        ng-class="{'active': project.get('is_watcher')}"
+                        title="{{ 'PROJECT.WATCHERS_COUNTER_TITLE'|translate:{total:project.get('total_watchers')||0}:'messageformat' }}"
+                    )
+                        include ../../../../svg/eye.svg
+                        span {{::project.get('total_watchers')}}
+                    span.statistic(
+                        title="{{ 'PROJECT.MEMBERS_COUNTER_TITLE'|translate:{total:project.get('members').size||0}:'messageformat' }}"
+                    )
+                        include ../../../../svg/team.svg
+                        span.statistics-num {{ ::project.get('members').size }}

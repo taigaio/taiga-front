@@ -195,6 +195,14 @@ _.mixin
                 delete obj[key]; obj
             , obj).value()
 
+    cartesianProduct: ->
+        _.reduceRight(
+            arguments, (a,b) ->
+                _.flatten(_.map(a, (x) -> _.map b, (y) -> [y].concat(x)), true)
+            , [ [] ])
+
+
+
 isImage = (name) ->
     return name.match(/\.(jpe?g|png|gif|gifv|webm)/i) != null
 

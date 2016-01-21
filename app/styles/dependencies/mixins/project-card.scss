@@ -1,0 +1,75 @@
+@mixin project-card {
+    background: $white;
+    border: 1px solid $whitish;
+    margin: .5rem;
+    .tags-container {
+        display: flex;
+        height: .3rem;
+    }
+    .project-tag {
+        flex: 1;
+    }
+    .project-card-inner {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+    }
+    .project-card-description {
+        @extend %small;
+        @extend %light;
+        color: $gray;
+    }
+    .project-card-statistics {
+        display: flex;
+        margin-top: auto;
+        svg {
+            @include svg-size(.8rem);
+            fill: $gray-light;
+        }
+        .svg-eye-closed {
+            display: none;
+        }
+    }
+    .statistic {
+        @extend %small;
+        color: $gray-light;
+        display: inline-block;
+        margin-right: .5rem;
+        &.active {
+            color: $primary;
+            svg {
+                fill: $primary;
+            }
+        }
+    }
+    .project-card-header {
+        align-items: flex-start;
+        display: flex;
+    }
+    .project-card-logo {
+        flex-basis: 50px;
+        min-width: 50px;
+        margin-right: .5rem;
+        img {
+            width: 100%;
+        }
+    }
+    .project-card-name {
+        line-height: .9;
+        a {
+            @extend %large;
+            @extend %large;
+            color: $primary;
+            &:hover {
+                color: $primary-light;
+            }
+        }
+    }
+    .look-for-people {
+        svg {
+            @include svg-size(1rem);
+            fill: $gray-light;
+            margin: 0 .5rem;
+        }
+    }
+}

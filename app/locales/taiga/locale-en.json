@@ -450,9 +450,18 @@
             "NUMBER_US_POINTS": "Number of US points (0 for an undetermined quantity)",
             "TAGS": "Tags",
             "DESCRIPTION": "Description",
+            "RECRUITING": "Is this project looking for people?",
+            "RECRUITING_MESSAGE": "Who are you looking for?",
+            "RECRUITING_PLACEHOLDER": "Define the profiles you are looking for",
             "PUBLIC_PROJECT": "Public project",
+            "PUBLIC_PROJECT_DESC": "Users will be able to find and view your project",
             "PRIVATE_PROJECT": "Private project",
-            "DELETE": "Delete this project"
+            "PRIVATE_PROJECT_DESC": "By default, this project will be hidden to the public",
+            "PRIVATE_OR_PUBLIC": "What's the difference between public and private projects?",
+            "DELETE": "Delete this project",
+            "LOGO_HELP": "The image will be scaled to 80x80px.",
+            "CHANGE_LOGO": "Change logo",
+            "ACTION_USE_DEFAULT_LOGO": "Use default image"
         },
         "REPORTS": {
             "TITLE": "Reports",
@@ -715,6 +724,10 @@
         "SECTION_PROJECTS": "Projects",
         "HELP": "Reorder your projects to set in the top the most used ones.<br/> The top 10 projects will appear in the top navigation bar project list",
         "PRIVATE": "Private project",
+        "LOOKING_FOR_PEOPLE": "This project is looking for people",
+        "FANS_COUNTER_TITLE": "{total, plural, one{one fan} other{# fans}}",
+        "WATCHERS_COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}",
+        "MEMBERS_COUNTER_TITLE": "{total, plural, one{one member} other{# members}}",
         "STATS": {
             "PROJECT": "project<br/> points",
             "DEFINED": "defined<br/> points",
@@ -744,6 +757,7 @@
             "TITLE_NEXT_PROJECT": "Show next projects",
             "HELP_TITLE": "Taiga Support Page",
             "HELP": "Help",
+            "HOMEPAGE": "Homepage",
             "FEEDBACK_TITLE": "Send feedback",
             "FEEDBACK": "Feedback",
             "NOTIFICATIONS_TITLE": "Edit your notification settings",
@@ -1269,9 +1283,9 @@
         }
     },
     "USER_PROFILE": {
-        "IMAGE_HELP": "The image will be scaled to 80x80px.<br />",
+        "IMAGE_HELP": "The image will be scaled to 80x80px.",
         "ACTION_CHANGE_IMAGE": "Change",
-        "ACTION_USE_GRAVATAR": "Use gravatar image",
+        "ACTION_USE_GRAVATAR": "Use default image",
         "ACTION_DELETE_ACCOUNT": "Delete Taiga account",
         "CHANGE_EMAIL_SUCCESS": "<strong>Check your inbox!</strong><br />We have sent a mail to your account<br />with the instructions to set your new address",
         "CHANGE_PHOTO": "Change photo",
@@ -1428,6 +1442,34 @@
                 "TEXT1": "You may want to add a single User Story (add US icon) or a group of them (bulk icon)",
                 "TEXT2": "Good luck!"
             }
+        }
+    },
+    "DISCOVER": {
+        "DISCOVER_TITLE": "Discover projects",
+        "DISCOVER_SUBTITLE": "{projects, plural, one{One public project to discover} other{# public projects to discover}}",
+        "MOST_ACTIVE": "Most active",
+        "MOST_ACTIVE_EMPTY": "There are no ACTIVE projects yet",
+        "MOST_LIKED": "Most liked",
+        "MOST_LIKED_EMPTY": "There are no LIKED projects yet",
+        "VIEW_MORE": "View more",
+        "RECRUITING": "This project is looking for people",
+        "FEATURED": "Featured Projects",
+        "EMPTY": "There are no projects to show with this search criteria.<br> Try again!",
+        "FILTERS": {
+            "ALL": "All",
+            "KANBAN": "Kanban",
+            "SCRUM": "Scrum",
+            "PEOPLE": "Looking for people",
+            "WEEK": "Last week",
+            "MONTH": "Last month",
+            "YEAR": "Last year",
+            "ALL_TIME": "All time",
+            "CLEAR": "Clear filters"
+        },
+        "SEARCH": {
+            "INPUT_PLACEHOLDER": "Type something...",
+            "ACTION_TITLE": "Search",
+            "RESULTS": "Search results"
         }
     }
 }

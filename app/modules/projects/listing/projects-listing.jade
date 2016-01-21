@@ -1,28 +1,60 @@
-div.project-list-wrapper.centered
-    div.project-list-title
+.project-list-wrapper.centered
+    .project-list-title
         h1(translate="PROJECTS.MY_PROJECTS")
-        div.create-options
-            a.create-project-btn.button-green(href="#", ng-click="vm.newProject()", title="{{'PROJECT.NAVIGATION.ACTION_CREATE_PROJECT' | translate}}", translate="PROJECT.NAVIGATION.ACTION_CREATE_PROJECT")
+        .create-options
+            a.create-project-btn.button-green(
+                href="#"
+                ng-click="vm.newProject()"
+                title="{{'PROJECT.NAVIGATION.ACTION_CREATE_PROJECT' | translate}}"
+                translate="PROJECT.NAVIGATION.ACTION_CREATE_PROJECT"
+            )
             span(tg-import-project-button)
-                a.button-blackish.import-project-button(href="", title="{{'PROJECT.NAVIGATION.TITLE_IMPORT_PROJECT' | translate}}")
+                a.button-blackish.import-project-button(
+                    href=""
+                    title="{{'PROJECT.NAVIGATION.TITLE_IMPORT_PROJECT' | translate}}"
+                )
                     span.icon.icon-upload
                 input.import-file.hidden(type="file")
 
     section.project-list-section
-        div.project-list
+        .project-list
             ul(tg-sort-projects="vm.projects")
-                li.list-itemtype-project(tg-bind-scope, tg-repeat="project in vm.projects track by project.get('id')")
-                    div.list-itemtype-project-left
-                        div.list-itemtype-project-data
-                            h2 
-                                a(href="#", tg-nav="project:project=project.get('slug')", title="{{ ::project.get('name') }}") {{project.get('name')}}
-                                span.private(ng-if="project.get('is_private')", title="{{'PROJECT.PRIVATE' | translate}}")
-                                    include ../../../svg/lock.svg
-                            p {{ ::project.get('description') | limitTo:300 }}
-                                span(ng-if="::project.get('description').length > 300") ...
-                            
-                        div.list-itemtype-project-tags.tag-container(ng-if="::project.get('tags').size")
-                            span.tag(style='border-left: 5px solid {{::tag.get("color")}};', tg-repeat="tag in ::project.get('colorized_tags')")
+                li.list-itemtype-project(
+                    tg-bind-scope
+                    tg-repeat="project in vm.projects track by project.get('id')"
+                )
+                    .list-itemtype-project-left
+
+                        .list-itemtype-project-data-wrapper
+                            a.list-itemtype-project-image(
+                                href="#"
+                                tg-nav="project:project=project.get('slug')"
+                                title="{{ ::project.get('name') }}"
+                            )
+                                img(
+                                    tg-project-logo-src="::project"
+                                    alt="{{::project.get('name')}}"
+                                )
+                            .list-itemtype-project-data
+                                h2
+                                    a(
+                                        href="#"
+                                        tg-nav="project:project=project.get('slug')"
+                                        title="{{ ::project.get('name') }}"
+                                    ) {{project.get('name')}}
+                                    span.private(
+                                        ng-if="project.get('is_private')"
+                                        title="{{'PROJECT.PRIVATE' | translate}}"
+                                    )
+                                        include ../../../svg/lock.svg
+                                p {{ ::project.get('description') | limitTo:300 }}
+                                    span(ng-if="::project.get('description').length > 300") ...
+
+                        .list-itemtype-project-tags.tag-container(ng-if="::project.get('tags').size")
+                            span.tag(
+                                style='border-left: 5px solid {{::tag.get("color")}};'
+                                tg-repeat="tag in ::project.get('colorized_tags')"
+                            )
                                 span.tag-name {{::tag.get('name')}}
 
                     span.drag.icon.icon-drag-v

@@ -449,3 +449,64 @@ CsvIssueDirective = ($translate) ->
     }
 
 module.directive("tgCsvIssue", ["$translate", CsvIssueDirective])
+
+
+#############################################################################
+## Project Logo Directive
+#############################################################################
+
+ProjectLogoDirective = ($auth, $model, $rs, $confirm) ->
+    link = ($scope, $el, $attrs) ->
+        showSizeInfo = ->
+            $el.find(".size-info").addClass("active")
+
+        onSuccess = (response) ->
+            project = $model.make_model("projects", response.data)
+            $scope.project = project
+
+            $el.find('.loading-overlay').removeClass('active')
+            $confirm.notify('success')
+
+        onError = (response) ->
+            showSizeInfo() if response.status == 413
+            $el.find('.loading-overlay').removeClass('active')
+            $confirm.notify('error', response.data._error_message)
+
+        # Change photo
+        $el.on "click", ".js-change-logo", ->
+            $el.find("#logo-field").click()
+
+        $el.on "change", "#logo-field", (event) ->
+            if $scope.logoAttachment
+                $el.find('.loading-overlay').addClass("active")
+                $rs.projects.changeLogo($scope.project.id, $scope.logoAttachment).then(onSuccess, onError)
+
+        # Use default photo
+        $el.on "click", "a.js-use-default-logo", (event) ->
+            $el.find('.loading-overlay').addClass("active")
+            $rs.projects.removeLogo($scope.project.id).then(onSuccess, onError)
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {link:link}
+
+module.directive("tgProjectLogo", ["$tgAuth", "$tgModel", "$tgResources", "$tgConfirm", ProjectLogoDirective])
+
+
+#############################################################################
+## Project Logo Model Directive
+#############################################################################
+
+ProjectLogoModelDirective = ($parse) ->
+    link = ($scope, $el, $attrs) ->
+        model = $parse($attrs.tgProjectLogoModel)
+        modelSetter = model.assign
+
+        $el.bind 'change', ->
+            $scope.$apply ->
+                modelSetter($scope, $el[0].files[0])
+
+    return {link:link}
+
+module.directive('tgProjectLogoModel', ['$parse', ProjectLogoModelDirective])

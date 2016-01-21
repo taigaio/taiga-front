@@ -1,13 +1,26 @@
 .list-itemtype-project
-    .list-itemtype-project-data
-        h2
-            a(
+    .list-itemtype-project-left
+        .list-itemtype-project-data-wrapper
+
+            a.list-itemtype-project-image(
                 href="#"
                 tg-nav="project:project=vm.item.get('slug')"
                 title="{{ ::vm.item.get('name') }}"
-            ) {{ ::vm.item.get('name') }}
-            span.private(ng-if="::project.get('is_private')", title="{{'PROJECT.PRIVATE' | translate}}")
-        p {{ ::vm.item.get('description') }}
+            )
+                img(
+                    tg-project-logo-src="vm.item"
+                    title="{{ ::vm.item.get('name') }}"
+                )
+
+            .list-itemtype-project-data
+                h2
+                    a(
+                        href="#"
+                        tg-nav="project:project=vm.item.get('slug')"
+                        title="{{ ::vm.item.get('name') }}"
+                    ) {{ ::vm.item.get('name') }}
+                    span.private(ng-if="::project.get('is_private')", title="{{'PROJECT.PRIVATE' | translate}}")
+                p {{ ::vm.item.get('description') }}
 
         .list-itemtype-project-tags.tags-container(ng-if="::vm.item.get('tags_colors').size")
             span.tag(

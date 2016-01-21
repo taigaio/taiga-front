@@ -1,0 +1,205 @@
+.highlighted {
+    @include centered;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 4rem;
+    @include breakpoint(tablet) {
+        flex-direction: column;
+        tg-most-active {
+            margin-top: 4rem;
+        }
+    }
+    tg-most-liked,
+    tg-most-active {
+        align-content: stretch;
+        display: flex;
+        flex: 1;
+    }
+    tg-most-liked {
+        margin-right: 8%;
+        @include breakpoint(tablet) {
+            margin-right: 0;
+        }
+    }
+    .most-active,
+    .most-liked {
+        align-content: stretch;
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+    }
+    .header {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+        svg {
+            @include svg-size(1.5rem);
+            fill: $gray-light;
+            margin: .5rem;
+        }
+    }
+    .title-wrapper {
+        align-items: center;
+        display: flex;
+    }
+    .title {
+        @extend %bold;
+        @extend %larger;
+        color: $grayer;
+        display: inline-block;
+        margin: 0;
+    }
+    tg-highlighted {
+        display: flex;
+        flex: 1;
+    }
+    .highlighted-projects-container {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+    .loading-container {
+        margin-top: calc(50% - 1rem);
+    }
+    .loading-spinner {
+        display: block;
+        margin: 2rem auto;
+        max-height: 3rem;
+        max-width: 3rem;
+    }
+    .view-more-projects {
+        margin-top: auto;
+        width: 100%;
+    }
+    .empty-highlighted-project {
+        border: 2px dashed $whitish;
+        padding: 2rem;
+        text-align: center;
+        svg {
+            @include svg-size(2rem);
+            display: block;
+            fill: $gray-light;
+            margin: 1rem auto;
+        }
+        span {
+            @extend %light;
+            color: $gray;
+            display: block;
+        }
+    }
+}
+
+
+.filter-highlighted {
+    position: relative;
+    .current-filter {
+        padding: 1rem;
+        span {
+            margin-left: .2rem;
+            position: relative;
+            top: .2rem;
+        }
+    }
+    .filter-list {
+        background: $black;
+        position: absolute;
+        right: 0;
+        top: 1.5rem;
+        &.ng-enter {
+            animation: dropdownFade .2s ease-in;
+        }
+        &.ng-leave {
+            animation: dropdownFade .2s ease-in;
+            animation-direction: reverse;
+        }
+    }
+    li {
+        @extend %small;
+        color: $white;
+        cursor: pointer;
+        min-width: 8rem;
+        padding: .25rem .5rem;
+        &:hover {
+            background: rgba($primary-light, .4);
+        }
+    }
+}
+
+.highlighted-project {
+    align-items: flex-start;
+    border-bottom: 1px solid $whitish;
+    display: flex;
+    flex-basis: 9rem;
+    min-height: 9rem;
+    padding: 1.5rem 0;
+    &:nth-last-child(-n+2) {
+        border-bottom: 0;
+    }
+    .project-logo {
+        flex-basis: 3rem;
+        height: auto;
+        margin-right: 1rem;
+        width: 3rem;
+        img {
+            width: 100%;
+        }
+    }
+    .project-data-container {
+        flex: 1;
+    }
+    .single-project-header {
+        align-content: center;
+        display: flex;
+        justify-content: space-between;
+    }
+    .project-title {
+        @extend %large;
+        @extend %text;
+        display: inline-block;
+        margin-bottom: .5rem;
+        a {
+            color: $primary;
+            &:hover {
+                color: $primary-light;
+            }
+        }
+    }
+    .look-for-people {
+        svg {
+            @include svg-size();
+            fill: $gray-light;
+            margin-left: .5rem;
+        }
+    }
+    .project-description {
+        @extend %small;
+        color: $gray;
+        margin-bottom: 0;
+    }
+    .project-statistics {
+        display: flex;
+        flex-basis: 140px;
+        justify-content: flex-end;
+        svg {
+            @include svg-size(.8rem);
+            fill: $gray-light;
+        }
+        .svg-eye-closed {
+            display: none;
+        }
+    }
+    .statistic {
+        @extend %small;
+        color: $gray-light;
+        display: inline-block;
+        margin-right: .5rem;
+        &.active {
+            color: $primary;
+            svg {
+                fill: $primary;
+            }
+        }
+    }
+}
