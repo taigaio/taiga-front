@@ -3,7 +3,7 @@ a.close(href="", title="{{'COMMON.CLOSE' | translate}}")
 form
     h2.title(translate="LIGHTBOX.CREATE_EDIT_US.TITLE")
     fieldset
-        input(type="text", name="subject", ng-model="us.subject", placeholder="{{'COMMON.FIELDS.SUBJECT' | translate}}",
+        input(type="text", name="subject", ng-model-options="{ debounce: 200 }", ng-model="us.subject", placeholder="{{'COMMON.FIELDS.SUBJECT' | translate}}",
               data-required="true", data-maxlength="500")
 
     fieldset.ticket-estimation
@@ -16,7 +16,7 @@ form
         div.tags-block(tg-lb-tag-line, ng-model="us.tags")
 
     fieldset
-        textarea.description(name="description", ng-model="us.description",
+        textarea.description(name="description", ng-model="us.description", ng-model-options="{ debounce: 200 }",
                              ng-attr-placeholder="{{'LIGHTBOX.CREATE_EDIT_US.PLACEHOLDER_DESCRIPTION' | translate}}")
     fieldset
         section

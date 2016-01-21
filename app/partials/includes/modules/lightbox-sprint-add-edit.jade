@@ -5,6 +5,7 @@ form
     h2.title(translate="LIGHTBOX.ADD_EDIT_SPRINT.TITLE")
     fieldset
         input.sprint-name(type="text", name="name",  ng-model="sprint.name",
+                          ng-model-options="{ debounce: 200 }",
                           data-required="true", data-maxlength="500",
                           placeholder="{{'LIGHTBOX.ADD_EDIT_SPRINT.PLACEHOLDER_SPRINT_NAME' | translate}}")
         label.last-sprint-name
