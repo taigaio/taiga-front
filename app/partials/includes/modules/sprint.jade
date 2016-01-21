@@ -21,7 +21,7 @@ div.sprint-table
         div.column-points.width-1(tg-bo-bind="us.total_points",
                                   ng-class="{closed: us.is_closed, blocked: us.is_blocked}")
 
-a.button-gray(title="{{ 'BACKLOG.SPRINTS.TITLE_LINK_TASKBOARD' | translate }}",
+a.button-gray(title="{{ 'BACKLOG.SPRINTS.TITLE_LINK_TASKBOARD' | translate: {\"name\": sprint.name} }}",
               tg-nav="project-taskboard:project=project.slug,sprint=sprint.slug",
               tg-check-permission="view_milestones")
 
