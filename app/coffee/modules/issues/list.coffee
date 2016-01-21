@@ -791,7 +791,7 @@ IssueAssignedToInlineEditionDirective = ($repo, $rootscope, $translate) ->
                 imgurl: "/#{window._version}/images/unnamed.png"
             }
 
-            member = issue.assigned_to_extra_info
+            member = $scope.usersById[issue.assigned_to]
             if member
                 ctx.name = member.full_name_display
                 ctx.imgurl = member.photo
