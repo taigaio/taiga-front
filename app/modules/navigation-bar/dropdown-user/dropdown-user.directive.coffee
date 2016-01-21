@@ -27,7 +27,8 @@ DropdownUserDirective = (authService, configService, locationService,
 
         scope.vm.logout = ->
             authService.logout()
-            locationService.path(navUrlsService.resolve("login"))
+            locationService.url(navUrlsService.resolve("discover"))
+            locationService.search({})
 
         scope.vm.sendFeedback = ->
             feedbackService.sendFeedback()

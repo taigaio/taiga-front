@@ -112,7 +112,7 @@ LoadingDirective = ($loading) ->
             if showLoading
                 currentLoading = $loading()
                     .target($el)
-                    .timeout(50)
+                    .timeout(100)
                     .template(template)
                     .scope($scope)
                     .start()

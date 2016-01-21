@@ -66,14 +66,34 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     $routeProvider.when("/",
         {
             templateUrl: "home/home.html",
-            access: {
-                requiresLogin: true
-            },
+            controller: "Home",
+            controllerAs: "vm"
             loader: true,
             title: "HOME.PAGE_TITLE",
             loader: true,
             description: "HOME.PAGE_DESCRIPTION",
             joyride: "dashboard"
+        }
+    )
+
+    $routeProvider.when("/discover",
+        {
+            templateUrl: "discover/discover-home/discover-home.html",
+            controller: "DiscoverHome",
+            controllerAs: "vm",
+            title: "PROJECT.NAVIGATION.DISCOVER",
+            loader: true
+        }
+    )
+
+    $routeProvider.when("/discover/search",
+        {
+            templateUrl: "discover/discover-search/discover-search.html",
+            title: "PROJECT.NAVIGATION.DISCOVER",
+            loader: true,
+            controller: "DiscoverSearch",
+            controllerAs: "vm",
+            reloadOnSearch: false
         }
     )
 
@@ -577,7 +597,7 @@ init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $na
         $rootscope.$evalAsync(cb)
 
     $events.setupConnection()
-    
+
     # Load user
     if $auth.isAuthenticated()
         user = $auth.getUser()
@@ -664,6 +684,7 @@ modules = [
     "taigaHome",
     "taigaUserTimeline",
     "taigaExternalApps",
+    "taigaDiscover",
 
     # template cache
     "templates",
