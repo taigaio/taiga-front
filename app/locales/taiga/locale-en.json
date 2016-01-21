@@ -675,7 +675,7 @@
             "CURRENT_USER_CONTACTS_EMPTY_EXPLAIN": "The people with whom you work at Taiga will be your contacts automatically",
             "REPORT": "Report Abuse",
             "TABS": {
-                "ACTIVITY_TAB": "Activity",
+                "ACTIVITY_TAB": "Timeline",
                 "ACTIVITY_TAB_TITLE": "Show all the activity of this user",
                 "PROJECTS_TAB": "Projects",
                 "PROJECTS_TAB_TITLE": "List of all projects in which the user is a member",
