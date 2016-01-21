@@ -4,15 +4,26 @@
 ## 1.10.0 ??? (unreleased)
 
 ### Features
-- Upload attachments on US/issue/task lightbox.
-- Attachments image gallery view mode in detail pages.
-- Drag files from desktop to attachments section.
-- Drag files from desktop in wysiwyg textareas.
 - New design for the detail pages slidebar.
-- Sticky project navigation bar.
 - Added 'Assign to me' button in User Stories, Tasks and Issues detail pages. (thanks to [@allistera](https://github.com/allistera)).
+- Attachments:
+    - Upload attachments on US/issue/task lightbox.
+    - Attachments image gallery view mode in detail pages.
+    - Drag files from desktop to attachments section.
+    - Drag files from desktop in wysiwyg textareas.
+- Project:
+    - Add a logo to your project.
+    - Denotes that your project is looking for people and add an explanation.
+- Discover section:
+    - List most liked and most active project (last week/month/year or all time).
+    - List featured project.
+    - Search projects:
+        - Full text search with priorities over title, tags and description fields.
+        - Order results alphabeticaly, by most liked or more actived.
+        - Filter by 'use kanban', 'use scrum' or 'looking for people'.
 
 ### Misc
+- Sticky project navigation bar.
 - Lots of small and not so small bugfixes.
 
 

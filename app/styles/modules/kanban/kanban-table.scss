@@ -65,9 +65,11 @@ $column-margin: 0 10px 0 0;
         position: absolute;
     }
     .task-colum-name {
-        @extend %large;
+        @extend %medium;
+        align-items: center;
         background: $whitish;
         border-top: 3px solid $gray-light;
+        color: $gray;
         display: flex;
         flex-basis: $column-width;
         flex-grow: $column-flex;

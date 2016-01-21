@@ -109,7 +109,6 @@
         @extend %small;
         color: $gray-light;
         display: flex;
-        flex-basis: 150px;
         flex-shrink: 0;
         justify-content: flex-end;
         .list-itemtype-track-likers {
@@ -145,5 +144,25 @@
 @mixin cursor-progress {
     .in-progress {
         cursor: progress;
+    }
+}
+
+@mixin centered {
+    margin: 1rem auto;
+    max-width: 1200px;
+    min-width: 768px;
+    @include breakpoint(tablet) {
+        width: 90%;
+        min-width: 0;
+    }
+}
+
+@mixin svg-size($width: 1rem, $height: null) {
+    @if $height == null {
+        width: $width;
+        height: $width;
+    } @else {
+        width: $width;
+        height: $height;
     }
 }

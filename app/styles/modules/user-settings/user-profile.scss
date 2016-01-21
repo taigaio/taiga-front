@@ -1,81 +1,10 @@
+@import '../dependencies/mixins/profile-form';
+
 .user-profile {
-    form {
-        max-width: 700px;
+    @include profile-form;
+    max-width: 780px;
+    .submit-button {
         width: 100%;
-        .container {
-            display: flex;
-        }
-        .avatar-container {
-            flex-basis: 0;
-            flex-grow: 1;
-            margin-right: 1rem;
-            .image-container {
-                position: relative;
-            }
-            .avatar {
-                border-radius: 8%;
-                width: 100%;
-            }
-            .overlay {
-                align-items: center;
-                background: rgba($blackish, .8);
-                bottom: 0;
-                display: flex;
-                left: 0;
-                position: absolute;
-                right: 0;
-                top: 0;
-                width: 100%;
-            }
-            .loading-spinner {
-                @extend %loading-spinner;
-                border: 0;
-                min-height: 3rem;
-                min-width: 3rem;
-                transform-origin: center center;
-            }
-            p {
-                @extend %xsmall;
-                line-height: .8rem;
-                margin-bottom: .3rem;
-                text-align: center;
-            }
-            span {
-                @extend %bold;
-            }
-            .use-gravatar {
-                @extend %small;
-                cursor: pointer;
-                display: inline-block;
-                text-align: center;
-                width: 100%;
-            }
-        }
-        .data {
-            flex-basis: 0;
-            flex-grow: 3;
-        }
-    }
-    fieldset {
-        margin-bottom: 1rem;
-    }
-    .submit {
-        margin-top: 2rem;
-    }
-    label {
-        @extend %title;
-        display: block;
-        margin-bottom: .5rem;
-    }
-    textarea {
-        min-height: 7rem;
-    }
-    .button-green {
-        color: $white;
-        cursor: pointer;
-        display: block;
-        padding: 12px;
-        text-align: center;
     }
     .delete-account {
         @extend %small;

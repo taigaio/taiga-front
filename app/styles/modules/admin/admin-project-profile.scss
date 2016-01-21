@@ -1,74 +1,106 @@
+@import '../dependencies/mixins/profile-form';
+
 .project-details {
-    form {
-        max-width: 700px;
-        width: 100%;
+    @include profile-form;
+    .looking-for-people {
+        @extend %light;
+        border-bottom: 1px solid $whitish;
+        border-top: 1px solid $whitish;
+        padding: 1rem 0;
     }
-    input,
-    textarea {
-        @extend %title;
+    .looking-for-people-selector {
+        align-items: center;
+        display: flex;
+        svg {
+            @include svg-size();
+            fill: $gray-light;
+            margin-left: .5rem;
+        }
+        .check {
+            margin-left: auto;
+        }
     }
-    fieldset {
-        margin-bottom: 1rem;
+    .looking-for-people-reason {
+        display: block;
+        margin-top: 1rem;
+        &.ng-hide-remove-active {
+            animation: dropdownFade .3s;
+        }
+        &.ng-hide-add-active {
+            animation: dropdownFade .2s reverse;
+            animation-delay: .1s;
+        }
+    }
+
+    .delete-project {
+        @extend %xsmall;
+        display: block;
+        margin-top: 1rem;
+        text-align: right;
+        &:hover {
+            color: $red;
+        }
+    }
+    .private-or-public {
+        @extend %xsmall;
+        color: $gray-light;
+        margin-bottom: 2rem;
+        svg {
+            @include svg-size(1.1rem);
+            fill: $gray-light;
+            margin-right: .5rem;
+            vertical-align: middle;
+        }
+    }
+
+}
+
+.project-privacy-settings {
+    display: flex;
+    margin-bottom: .5rem;
+    .privacy-option {
+        flex: 1;
+        transition: .2 linear;
+        &:first-child {
+            margin-right: .5rem;
+        }
+    }
+    input[type="radio"] {
+        display: none;
+    }
+    input[type="text"] {
+        display: none;
     }
     label {
-        @extend %title;
-        display: block;
-        margin-bottom: .2rem;
-    }
-    textarea {
-        height: 10rem;
-    }
-    .privacy-settings {
-        display: flex;
-        margin-bottom: 2rem;
-        > div {
-            flex-basis: 0;
-            flex-grow: 1;
-            overflow: hidden;
-            position: relative;
-            &:first-child {
-                margin-right: .5rem;
+        background: $whitish;
+        color: $grayer;
+        text-align: center;
+        transition: all .2s linear;
+        &:hover {
+            background: rgba($primary-light, .4);
+            color: $grayer;
+            svg {
+                fill: $grayer;
             }
         }
-        label {
-            @extend %title;
-            border: 1px solid $gray-light;
-            cursor: not-allowed;
-            display: block;
-            text-align: center;
-            transition: all .2s linear;
-            span {
-                color: $gray-light;
-            }
+        svg {
+            @include svg-size(1.1rem);
+            fill: $grayer;
+            margin-left: .5rem;
+            vertical-align: middle;
         }
-    }
-    .privacy-project {
-        cursor: pointer;
-        height: 50px;
-        left: -10px;
-        opacity: 0;
-        position: absolute;
-        top: -10px;
-        width: 500px;
-        z-index: 999;
     }
     .privacy-project:checked {
         + label {
             background: $primary-light;
-            border: 1px solid $primary-light;
-            span {
-                color: $white;
+            color: $white;
+            svg {
+                @include svg-size(1.1rem);
+                fill: $white;
             }
         }
-    }
-    .button-green {
-        color: $white;
-        display: block;
-        text-align: center;
-    }
-    .delete-project {
-        @extend %small;
-        display: block;
-        margin-top: 1rem;
+        ~input[type="text"] {
+            display: block;
+        }
     }
 }
