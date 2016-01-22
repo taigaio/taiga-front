@@ -123,9 +123,14 @@ class AttachmentsFullService extends taiga.Service
 
         patch = taiga.patch(oldAttachment.get('file'), toUpdateAttachment.get('file'))
 
-        return @attachmentsService.patch(toUpdateAttachment.getIn(['file', 'id']), type, patch).then () =>
+        if toUpdateAttachment.get('loading')
             @._attachments = @._attachments.set(index, toUpdateAttachment)
 
             @.regenerate()
+        else
+            return @attachmentsService.patch(toUpdateAttachment.getIn(['file', 'id']), type, patch).then () =>
+                @._attachments = @._attachments.set(index, toUpdateAttachment)
+
+                @.regenerate()
 
 angular.module("taigaComponents").service("tgAttachmentsFullService", AttachmentsFullService)
