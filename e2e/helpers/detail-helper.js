@@ -260,6 +260,13 @@ helper.attachment = function() {
 
     let obj = {
         el:el,
+        waitEditableClose: function() {
+            return browser.wait(async () => {
+                let editableAttachmentsCount = await $$('tg-attachment .editable-attachment-comment').count();
+
+                return !editableAttachmentsCount;
+            }, 5000);
+        },
         upload: async function(filePath, name) {
             let addAttach = el.$('#add-attach');
 
@@ -274,15 +281,16 @@ helper.attachment = function() {
             await browser.waitForAngular();
 
             await browser.wait(async () => {
-                let newCountAttachments = await $$('tg-attachment').count();
+                let count = await $$('tg-attachment .editable-attachment-comment input').count();
 
-                return newCountAttachments == countAttachments + 1;
+                return !!count;
             }, 5000);
 
             await el.$$('tg-attachment .editable-attachment-comment input').last().sendKeys(name);
             await browser.actions().sendKeys(protractor.Key.ENTER).perform();
             await browser.executeScript(toggleInput);
             await browser.waitForAngular();
+            await obj.waitEditableClose();
         },
 
         renameLastAttchment: async function (name) {
@@ -290,7 +298,8 @@ helper.attachment = function() {
             await el.$$('tg-attachment .attachment-settings .icon-edit').last().click();
             await el.$$('tg-attachment .editable-attachment-comment input').last().sendKeys(name);
             await browser.actions().sendKeys(protractor.Key.ENTER).perform();
-            return browser.waitForAngular();
+            await browser.waitForAngular();
+            await obj.waitEditableClose();
         },
 
         getFirstAttachmentName: async function () {
