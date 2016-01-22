@@ -43,8 +43,6 @@ class AttachmentController
     save: () ->
         attachment = @.attachment.set('loading', true)
 
-        @.onUpdate({attachment: attachment})
-
         attachment = @.attachment.merge({
             editable: false,
             loading: false
