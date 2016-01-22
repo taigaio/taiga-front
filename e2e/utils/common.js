@@ -51,7 +51,7 @@ common.browserSkip = function(browserName, name, fn) {
 common.link = async function(el) {
     let oldUrl = await browser.getCurrentUrl();
 
-    browser
+    await browser
         .actions()
         .mouseMove(el)
         .perform();
@@ -62,20 +62,22 @@ common.link = async function(el) {
     // aren't fired (we need them for the tg-nav calculation). Moving the cursor
     // "a little bit" tries to ensure the href text is really hovered and the
     // events are fired
-    browser.actions()
+    await browser.actions()
         .mouseMove({x: -10, y: -10})
         .perform();
 
-    browser.actions()
+    await browser.actions()
         .mouseMove({x: 10, y: 10})
         .perform();
 
+
     await browser.wait(async function() {
         let href = await el.getAttribute('href');
-        return href.length > 1 && href !== browser.params.glob.host + "#";
+
+        return (href.length > 1 && href !== browser.params.glob.host + "#");
      }, 5000);
 
-     browser
+    await browser
         .actions()
         .mouseMove(el)
         .click()
@@ -83,6 +85,7 @@ common.link = async function(el) {
 
     return browser.wait(async function() {
         let newUrl = await browser.getCurrentUrl();
+
         return oldUrl !== newUrl;
     }, 5000);
 };
@@ -146,12 +149,16 @@ common.login = function(username, password) {
     });
 };
 
-common.logout = function() {
-    browser.actions()
-        .mouseMove($('div[tg-dropdown-user]'))
+common.logout = async function() {
+    let dropdown = $('div[tg-dropdown-user]');
+
+    await browser.actions()
+        .mouseMove(dropdown)
         .perform();
 
-    common.link($$('.navbar-dropdown li a').last());
+    await common.waitTransitionTime(dropdown);
+
+    $$('.navbar-dropdown li a').last().click();
 
     return browser.driver.wait(async function() {
         let url =  await browser.driver.getCurrentUrl();

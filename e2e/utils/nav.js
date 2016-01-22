@@ -23,10 +23,10 @@ var actions = {
 
         return common.waitLoader();
     },
-    issue: function(index) {
+    issue: async function(index) {
         let issue = $$('section.issues-table .row.table-main .subject a').get(index);
 
-        common.link(issue);
+        await common.link(issue);
 
         return common.waitLoader();
     },
@@ -35,10 +35,10 @@ var actions = {
 
         return common.waitLoader();
     },
-    us: function(index) {
+    us: async function(index) {
         let us = $$('.user-story-name>a').get(index);
 
-        common.link(us);
+        await common.link(us);
 
         return common.waitLoader();
     },
@@ -46,15 +46,17 @@ var actions = {
         browser.get(browser.params.glob.host);
         return common.waitLoader();
     },
-    taskboard: function(index) {
+    taskboard: async function(index) {
         let link = $$('.sprints .button-gray').get(index);
 
-        common.link(link);
+        await common.link(link);
 
         return common.waitLoader();
     },
-    task: function(index) {
-        common.link($$('div[tg-taskboard-task] a.task-name').get(index));
+    task: async function(index) {
+        let task = $$('div[tg-taskboard-task] a.task-name').get(index);
+
+        await common.link(task);
 
         return common.waitLoader();
     }
