@@ -213,3 +213,24 @@ describe "tgAttachmentsFullService", ->
 
         attachmentsFullService.updateAttachment(attachment, 'us').then () ->
             expect(attachmentsFullService.attachments.get(1).toJS()).to.be.eql(attachment.toJS())
+
+    it "update loading attachment", () ->
+        attachments = Immutable.fromJS([
+            {file: {id: 0, is_deprecated: false, order: 0}},
+            {loading: true, file: {id: 1, is_deprecated: true, order: 1}},
+            {file: {id: 2, is_deprecated: true, order: 2}},
+            {file: {id: 3, is_deprecated: false, order: 3}},
+            {file: {id: 4, is_deprecated: true, order: 4}}
+        ])
+
+        attachment = attachments.get(1)
+        attachment = attachment.setIn(['file', 'is_deprecated'], false)
+
+        mocks.attachmentsService.patch = sinon.stub()
+        mocks.attachmentsService.patch.withArgs(1, 'us', {is_deprecated: false}).promise().resolve()
+
+        attachmentsFullService._attachments = attachments
+
+        attachmentsFullService.updateAttachment(attachment, 'us')
+
+        expect(attachmentsFullService.attachments.get(1).toJS()).to.be.eql(attachment.toJS())
