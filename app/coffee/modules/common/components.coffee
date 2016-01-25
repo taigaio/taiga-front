@@ -854,7 +854,7 @@ module.directive("tgProgressBar", ["$tgTemplate", TgProgressBarDirective])
 TgMainTitleDirective = ($translate) ->
     link = ($scope, $el, $attrs) ->
         $attrs.$observe "i18nSectionName", (i18nSectionName) ->
-            $scope.sectionName = $translate.instant(i18nSectionName)
+            $scope.sectionName = i18nSectionName
 
         $scope.$on "$destroy", ->
             $el.off()
