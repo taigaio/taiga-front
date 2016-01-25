@@ -18,7 +18,11 @@ div(class!="activity-single <%- mode %>")
         .comment.wysiwyg(ng-non-bindable)
             | <%= comment %>
             <% if (!deleteCommentDate && mode !== "activity" && canDeleteComment) { %>
-            a(href="", class="icon icon-delete comment-delete", data-activity-id!="<%- activityId %>")
+            a.icon.icon-delete.comment-delete(
+                href=""
+                data-activity-id!="<%- activityId %>"
+                title!="<%- deleteCommentActionTitle %>"
+            )
             <% } %>
         <% } %>
 

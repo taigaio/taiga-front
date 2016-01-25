@@ -305,6 +305,7 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $c
                 changesText: renderChangesHelperText(comment)
                 changes: renderChangeEntries(comment)
                 mode: "comment"
+                deleteCommentActionTitle: $translate.instant("COMMENTS.DELETE")
                 deleteCommentDate: moment(comment.delete_comment_date).format(getPrettyDateFormat()) if comment.delete_comment_date
                 deleteCommentUser: comment.delete_comment_user.name if comment.delete_comment_user?.name
                 activityId: comment.id

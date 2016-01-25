@@ -8,7 +8,11 @@
           class="hide-deleted-comment hidden", translate="COMMENTS.HIDE_DELETED")
         .comment-body.wysiwyg <%= deleteComment %>
     <% if (canRestoreComment) { %>
-    a(href="", class="comment-restore", data-activity-id!="<%- activityId %>")
+    a.comment-restore(
+        href=""
+        data-activity-id!="<%- activityId %>"
+        title="{{ 'COMMENTS.RESTORE' | translate }}"
+    )
         span.icon.icon-reload
         span(translate="COMMENTS.RESTORE")
     <% } %>

@@ -4,14 +4,16 @@ section.attachments(tg-attachments-drop="vm.addAttachments(files, false)")
         .options
             button.view-gallery(
                 ng-class="{'is-active': vm.mode == 'gallery'}"
-                ng-if="vm.attachments.size",
+                ng-if="vm.attachments.size"
                 ng-click="vm.setMode('gallery')"
+                title="{{ 'ATTACHMENT.GALLERY_VIEW_MODE' | translate }}"
             )
                 include ../../../svg/gallery.svg
             button.view-list(
                 ng-class="{'is-active': vm.mode == 'list'}"
-                ng-if="vm.attachments.size",
+                ng-if="vm.attachments.size"
                 ng-click="vm.setMode('list')"
+                title="{{ 'ATTACHMENT.LIST_VIEW_MODE' | translate }}"
             )
                 include ../../../svg/list.svg
             .add-attach(
