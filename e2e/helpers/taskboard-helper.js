@@ -84,7 +84,7 @@ helper.getCreateTask = function() {
             return el.$('.blocked');
         },
         blockedNote: function() {
-            return el.$('textarea[name="blocked_note"]');
+            return el.$('input[name="blocked_note"]');
         },
         submit: function() {
             el.$('button[type="submit"]').click();
