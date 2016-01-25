@@ -2,6 +2,7 @@
     "COMMON": {
         "YES": "Yes",
         "NO": "No",
+        "OR": "or",
         "LOADING": "Loading...",
         "LOADING_PROJECT": "Loading project...",
         "DATE": "DD MMM YYYY",

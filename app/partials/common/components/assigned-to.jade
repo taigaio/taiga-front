@@ -25,7 +25,8 @@
                 <% }; %>
 
         <% if (isEditable && isUnassigned) { %>
-        span or
+        span(translate="COMMON.OR")
+        | &nbsp;
         a.assign-to-me(
             href="#"
             title="{{'COMMON.ASSIGNED_TO.SELF' | translate}}"
