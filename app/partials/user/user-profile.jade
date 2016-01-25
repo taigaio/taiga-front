@@ -113,17 +113,17 @@ div.wrapper(
                         maxlength="210"
                     )
 
-        fieldset.submit
-            button.button-green.submit-button(
-                type="submit"
-                title="{{'COMMON.SAVE' | translate}}",
-                translate="COMMON.SAVE"
-            )
-            a.delete-account(
-                href=""
-                title="{{'USER_PROFILE.ACTION_DELETE_ACCOUNT' | translate}}"
-                ng-click="ctrl.openDeleteLightbox()"
-                translate="USER_PROFILE.ACTION_DELETE_ACCOUNT"
-            )
+                fieldset.submit
+                    button.button-green.submit-button(
+                        type="submit"
+                        title="{{'COMMON.SAVE' | translate}}",
+                        translate="COMMON.SAVE"
+                    )
+                    a.delete-account(
+                        href=""
+                        title="{{'USER_PROFILE.ACTION_DELETE_ACCOUNT' | translate}}"
+                        ng-click="ctrl.openDeleteLightbox()"
+                        translate="USER_PROFILE.ACTION_DELETE_ACCOUNT"
+                    )
 
 div.lightbox.lightbox-delete-account(tg-lb-delete-user)
