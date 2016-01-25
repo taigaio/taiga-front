@@ -161,7 +161,7 @@ EstimationsService = ($template, $qqueue, $repo, $confirm, $q) ->
             values = _.map(@us.points, (v, k) => @pointsById[v]?.value)
 
             if values.length == 0
-                return "0"
+                return "?"
 
             notNullValues = _.filter(values, (v) -> v?)
             if notNullValues.length == 0
