@@ -17,9 +17,15 @@ shared.titleTesting = async function() {
     let titleHelper = detailHelper.title();
     let title = await titleHelper.getTitle();
     let date = Date.now();
+
     titleHelper.setTitle("New title " + date);
+    titleHelper.save();
+
     let newTitle = await titleHelper.getTitle();
+    expect(notifications.success.open()).to.be.eventually.true;
     expect(newTitle).to.be.not.equal(title);
+
+    await notifications.success.close();
 }
 
 shared.tagsTesting = async function() {
@@ -28,7 +34,8 @@ shared.tagsTesting = async function() {
     await tagsHelper.clearTags();
     let date = Date.now();
     let tags = [1, 2, 3].map((i) => date + "-" + i);
-    tagsHelper.addTags(tags);
+
+    await tagsHelper.addTags(tags);
 
     let newtagsText = await tagsHelper.getTagsText();
 
@@ -42,38 +49,37 @@ shared.descriptionTesting = async function() {
     descriptionHelper.enabledEditionMode();
     descriptionHelper.setText("New description " + date);
     descriptionHelper.save();
+
     let newDescription = await descriptionHelper.getInnerHtml();
+
+    expect(notifications.success.open()).to.be.eventually.true;
     expect(newDescription).to.be.not.equal(description);
+
+    await notifications.success.close();
 }
 
 shared.statusTesting = async function() {
     let statusHelper = detailHelper.statusSelector();
 
-    // Current status
-    let selectedStatus = await statusHelper.getSelectedStatus();
-    let genericStatus = await statusHelper.getGeneralStatus();
-    expect(selectedStatus).to.be.equal(genericStatus);
-
     // Status 1
     await statusHelper.setStatus(1);
 
-    selectedStatus = await statusHelper.getSelectedStatus();
-    genericStatus = await statusHelper.getGeneralStatus();
-    expect(selectedStatus).to.be.equal(genericStatus);
+    let selectedStatus = await statusHelper.getSelectedStatus();
+    expect(selectedStatus).to.be.equal('In progress');
 
     // Status 2
     await statusHelper.setStatus(2);
 
     let newSelectedStatus = await statusHelper.getSelectedStatus();
-    let newGenericStatus = await statusHelper.getGeneralStatus();
-    expect(newSelectedStatus).to.be.equal(newGenericStatus);
-    expect(newSelectedStatus).to.be.not.equal(selectedStatus);
-    expect(newGenericStatus).to.be.not.equal(genericStatus);
+    expect(newSelectedStatus).to.be.equal('Ready for test');
+
+    await notifications.success.close();
 }
 
 shared.assignedToTesting = function() {
     before(function () {
         let assignedTo = detailHelper.assignedTo();
+
         return assignedTo.clear();
     });
 
@@ -97,13 +103,10 @@ shared.assignedToTesting = function() {
 
     it('unassign', async function() {
         let assignedTo = detailHelper.assignedTo();
-        let assignToLightbox = commonHelper.assignToLightbox();
 
         await assignedTo.clear();
 
-        let newUserName = await assignedTo.getUserName();
-
-        expect(newUserName).to.be.equal('Not assigned');
+        expect(assignedTo.isUnassigned()).to.be.eventually.true;
     });
 
     it('filter', async function () {
@@ -206,6 +209,8 @@ shared.blockTesting = async function() {
     blockHelper.unblock();
 
     expect($('.block-description').isDisplayed()).to.be.eventually.false;
+
+    await notifications.success.close();
 }
 
 shared.attachmentTesting = async function() {
@@ -360,29 +365,28 @@ shared.watchersTesting = function() {
 shared.customFields = function(typeIndex) {
     before(async function() {
         let url = await browser.getCurrentUrl();
-
         let rootUrl = await commonUtil.getProjectUrlRoot();
-
         browser.get(rootUrl + '/admin/project-values/custom-fields');
 
-        commonUtil.waitLoader();
-
-        customFieldsHelper.create(typeIndex, 'detail-test-custom-fields-text', 'desc1', 1);
+        await customFieldsHelper.create(typeIndex, 'detail-test-custom-fields-text', 'desc1', 1);
 
         // debounce :(
-        browser.sleep(2000);
+        await browser.sleep(2000);
 
-        customFieldsHelper.create(typeIndex, 'detail-test-custom-fields-multi', 'desc1', 3);
+        await customFieldsHelper.create(typeIndex, 'detail-test-custom-fields-multi', 'desc1', 3);
 
         // debounce :(
-        browser.sleep(2000);
+        await browser.sleep(2000);
 
         browser.get(url);
-        commonUtil.waitLoader();
+
+        await commonUtil.waitLoader();
     });
 
     it('text create', async function() {
         let customFields = customFieldsHelper.getDetailFields();
+
+        // await browser.sleep(4000);
         let count = await customFields.count();
 
         let textField = customFields.get(count - 2);

@@ -8,12 +8,16 @@ helper.title = function() {
         el: el,
 
         getTitle: function() {
-          return el.$('.view-subject').getText();
+            return el.$('.view-subject').getText();
         },
 
         setTitle: function(title) {
-          el.$('.view-subject').click();
-          el.$('.edit-subject input').clear().sendKeys(title);
+            el.$('.view-subject').click();
+            el.$('.edit-subject input').clear().sendKeys(title);
+        },
+
+        save: function() {
+            el.$('.save').click();
         }
     };
 
@@ -94,16 +98,15 @@ helper.statusSelector = function() {
         el: el,
 
         setStatus: async function(value) {
-            let status = el.$('.status-data');
+            let status = el.$('.detail-status-inner');
+
             await utils.popover.open(status, value);
-            return this.getSelectedStatus()
+
+            return this.getSelectedStatus();
         },
         getSelectedStatus: async function(){
-            return el.$('.status-status').getInnerHtml();
-        },
-        getGeneralStatus: async function(){
-            return el.$('.detail-status').getInnerHtml();
-        },
+            return el.$$('.detail-status-inner span').first().getInnerHtml();
+        }
     };
 
     return obj;
@@ -115,10 +118,12 @@ helper.assignedTo = function() {
     let obj = {
         el: el,
         clear: async function() {
-            await browser.actions().mouseMove(el).perform();
-
             if (await el.$('.icon-delete').isPresent()) {
-                el.$('.icon-delete').click();
+                await browser.actions()
+                    .mouseMove(el.$('.icon-delete'))
+                    .click()
+                    .perform();
+
                 await utils.lightbox.confirm.ok();
                 await browser.waitForAngular();
             }
@@ -128,6 +133,9 @@ helper.assignedTo = function() {
         },
         getUserName: function() {
             return el.$('.user-assigned').getText();
+        },
+        isUnassigned: function() {
+            return el.$('.assign-to-me').isPresent();
         }
     };
 
@@ -393,7 +401,7 @@ helper.attachment = function() {
 
 
 helper.watchers = function() {
-    let el = $('.ticket-track-buttons .ticket-watchers');
+    let el = $('.ticket-watch-buttons');
 
     let obj = {
         el: el,

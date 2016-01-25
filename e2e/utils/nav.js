@@ -3,7 +3,7 @@ var helper = module.exports;
 var common = require('./common');
 
 var actions = {
-    project: function(index) {
+    project: async function(index) {
         browser.actions().mouseMove($('div[tg-dropdown-project-list]')).perform();
 
         let project = null;
@@ -14,12 +14,12 @@ var actions = {
             project = $$('div[tg-dropdown-project-list] li a').get(index);
         }
 
-        common.link(project);
+        await common.link(project);
 
         return common.waitLoader();
     },
-    issues: function(index) {
-        common.link($('#nav-issues a'));
+    issues: async function(index) {
+        await common.link($('#nav-issues a'));
 
         return common.waitLoader();
     },
@@ -30,8 +30,8 @@ var actions = {
 
         return common.waitLoader();
     },
-    backlog: function() {
-        common.link($('#nav-backlog a'));
+    backlog: async function() {
+        await common.link($('#nav-backlog a'));
 
         return common.waitLoader();
     },

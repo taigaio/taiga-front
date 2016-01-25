@@ -7,7 +7,7 @@ var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 var expect = chai.expect;
 
-describe.only('Issue detail', async function(){
+describe('Issue detail', async function(){
     let issueUrl = '';
 
     before(async function(){

@@ -11,6 +11,7 @@ var expect = chai.expect;
 describe('issues list', function() {
     before(async function() {
         browser.get(browser.params.glob.host + 'project/project-3/issues');
+
         await utils.common.waitLoader();
 
         utils.common.takeScreenshot('issues', 'issues');
@@ -55,6 +56,8 @@ describe('issues list', function() {
             await createIssueLightbox.waitClose();
 
             expect(utils.notifications.success.open()).to.be.eventually.true;
+
+            await utils.notifications.success.close();
         });
     });
 
@@ -83,6 +86,8 @@ describe('issues list', function() {
             await createIssueLightbox.waitClose();
 
             expect(utils.notifications.success.open()).to.be.eventually.true;
+
+            await utils.notifications.success.close();
         });
     });
 
