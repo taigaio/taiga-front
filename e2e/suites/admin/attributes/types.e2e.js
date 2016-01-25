@@ -12,7 +12,7 @@ describe('attributes - types', function() {
     before(async function(){
         browser.get(browser.params.glob.host + 'project/project-0/admin/project-values/types');
 
-        await utils.common.waitLoader();
+        await adminAttributesHelper.waitLoad();
 
         utils.common.takeScreenshot('attributes', 'types');
     });

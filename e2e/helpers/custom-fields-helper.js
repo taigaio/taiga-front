@@ -55,11 +55,12 @@ helper.getCustomFiledsByType = function(indexType) {
 helper.delete = async function(indexType, indexCustomField) {
     let customField = helper.getCustomFiledsByType(indexType).get(indexCustomField);
 
-    let count = await helper.getCustomFiledsByType(indexType).count();
+    browser.actions()
+        .mouseMove(customField.$('.js-delete-custom-field-button'))
+        .click()
+        .perform();
 
-    customField.$('.js-delete-custom-field-button').click();
-
-    utils.lightbox.confirm.ok();
+    return utils.lightbox.confirm.ok();
 };
 
 helper.getName = function(indexType, indexCustomField) {

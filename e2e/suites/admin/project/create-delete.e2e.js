@@ -55,7 +55,9 @@ describe('create-delete project', function() {
         let linkAdmin = $('#nav-admin a');
         utils.common.link(linkAdmin);
 
-        await utils.common.waitLoader();
+        browser.wait(function() {
+            return $('.project-details').isPresent();
+        });
 
         await createProject.delete();
         await browser.waitForAngular();
