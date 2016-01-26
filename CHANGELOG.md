@@ -1,7 +1,7 @@
 # Changelog #
 
 
-## 1.10.0 Dryas Octopetala (unreleased)
+## 1.10.0 Dryas Octopetala (2016-01-30)
 
 ### Features
 - New design for the detail pages slidebar.
