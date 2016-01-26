@@ -2,6 +2,7 @@
     "COMMON": {
         "YES": "Sì",
         "NO": "No",
+        "OR": "or",
         "LOADING": "Caricamento...",
         "LOADING_PROJECT": "Stiamo caricando il progetto...",
         "DATE": "DD MMM YYYY",
@@ -17,15 +18,17 @@
         "DRAG": "Drag",
         "TAG_LINE": "Il tuo agile, libero e opensource strumento di project management",
         "TAG_LINE_2": "ADORO IL VOSTRO PROGETTO",
-        "BLOCK": "Blocca questa Storia Utente se ha dipendenze che non possono essere sodisfatte",
-        "UNBLOCK": "Sblocca questa Storia Utente",
+        "BLOCK": "Blocca",
+        "BLOCK_TITLE": "Block this item for example if it has a dependency that can not be satisfied",
         "BLOCKED": "Bloccato",
+        "UNBLOCK": "Sblocca",
+        "UNBLOCK_TITLE": "Unblock this item",
+        "BLOCKED_NOTE": "Why is this blocked?",
+        "BLOCKED_REASON": "Spiega il motivo",
         "CREATED_BY": "Creato da {{fullDisplayName}}",
         "FROM": "da",
         "TO": "a",
         "CLOSE": "chiudi",
-        "BLOCKED_NOTE": "Perchè questa storia è bloccata?",
-        "BLOCKED_REASON": "Spiega il motivo",
         "GO_HOME": "Ritorna all'inizio",
         "PLUGINS": "Plugin",
         "BETA": "Siamo in beta!",
@@ -141,13 +144,13 @@
         },
         "ASSIGNED_TO": {
             "NOT_ASSIGNED": "Non assegnato",
-            "ASSIGN": "Assign",
+            "ASSIGN": "Assegna",
             "DELETE_ASSIGNMENT": "Elimina incarico",
             "REMOVE_ASSIGNED": "Rimuovi incaricato",
             "TOO_MANY": "...troppi utenti, continua a filtrare",
             "CONFIRM_UNASSIGNED": "Sei sicuro di volerlo lasciare non assegnato?",
             "TITLE_ACTION_EDIT_ASSIGNMENT": "Modifica incarico",
-            "SELF": "Assign to me"
+            "SELF": "Assegna a me"
         },
         "STATUS": {
             "CLOSED": "Chiuso",
@@ -363,6 +366,8 @@
     "ATTACHMENT": {
         "SECTION_NAME": "allegati",
         "TITLE": "{{ fileName }} caricato il {{ date }}",
+        "LIST_VIEW_MODE": "List view mode",
+        "GALLERY_VIEW_MODE": "Gallery view mode",
         "DESCRIPTION": "Inserisci una breve descrizione",
         "DEPRECATED": "(deprecato)",
         "DEPRECATED_FILE": "Deprecato?",
@@ -448,18 +453,18 @@
             "NUMBER_US_POINTS": "Numero di punti delle storie utente (0 come quantità indeterminata)",
             "TAGS": "Tag",
             "DESCRIPTION": "Descrizione",
-            "RECRUITING": "Is this project looking for people?",
-            "RECRUITING_MESSAGE": "Who are you looking for?",
-            "RECRUITING_PLACEHOLDER": "Define the profiles you are looking for",
+            "RECRUITING": "Il progetto cerca persone?",
+            "RECRUITING_MESSAGE": "Chi stai cercando?",
+            "RECRUITING_PLACEHOLDER": "Definisci il profilo che stai cercando",
             "PUBLIC_PROJECT": "Progetto pubblico",
-            "PUBLIC_PROJECT_DESC": "Users will be able to find and view your project",
+            "PUBLIC_PROJECT_DESC": "Gli utenti possono cercare e vedere il tuo progetto",
             "PRIVATE_PROJECT": "Progetto privato",
-            "PRIVATE_PROJECT_DESC": "By default, this project will be hidden to the public",
-            "PRIVATE_OR_PUBLIC": "What's the difference between public and private projects?",
+            "PRIVATE_PROJECT_DESC": "Di default, il progetto sarà nascosto al pubblico",
+            "PRIVATE_OR_PUBLIC": "Quale è la differenza tra progetto privato e pubblico?",
             "DELETE": "Elimina questo progetto",
-            "LOGO_HELP": "The image will be scaled to 80x80px.",
-            "CHANGE_LOGO": "Change logo",
-            "ACTION_USE_DEFAULT_LOGO": "Use default image"
+            "LOGO_HELP": "L'immagine sarà scalata a 80x80px.",
+            "CHANGE_LOGO": "Cambia Logo",
+            "ACTION_USE_DEFAULT_LOGO": "Usa l'immagine di default"
         },
         "REPORTS": {
             "TITLE": "Rapporti",
@@ -722,10 +727,10 @@
         "SECTION_PROJECTS": "Progetti",
         "HELP": "Riordina i tuoi progetti per avere in alto i più usati.<br/> I primi 10 progetti compariranno nella lista dei progetti della barra di navigazione, su in alto",
         "PRIVATE": "Progetto privato",
-        "LOOKING_FOR_PEOPLE": "This project is looking for people",
+        "LOOKING_FOR_PEOPLE": "Il progetto cerca persone",
         "FANS_COUNTER_TITLE": "{total, plural, one{un follower} other{# followers}}",
         "WATCHERS_COUNTER_TITLE": "{total, plural, one{un osservatore} other{# osservatori}} ",
-        "MEMBERS_COUNTER_TITLE": "{total, plural, one{one member} other{# members}}",
+        "MEMBERS_COUNTER_TITLE": "{total, plural, one{un membro} other{# membri}}",
         "STATS": {
             "PROJECT": "progetto<br/> punti",
             "DEFINED": "Definiti <br/> punti",
@@ -909,6 +914,7 @@
         "TYPE_NEW_COMMENT": "Scrivi un nuovo commento qui",
         "SHOW_DELETED": "Visualizza commento cancellato",
         "HIDE_DELETED": "Nascondi commento cancellato",
+        "DELETE": "Delete comment",
         "RESTORE": "Ripristina commento"
     },
     "ACTIVITY": {
@@ -975,7 +981,7 @@
         "MOVE_US_TO_LATEST_SPRINT": "Vai allo Sprint più recente",
         "SHOW_FILTERS": "Mostra filtri",
         "SHOW_TAGS": "Mostra tag",
-        "EMPTY": "OMG..Il backlog é pieno!!",
+        "EMPTY": "OMG..Il backlog é vuoto!!",
         "CREATE_NEW_US": "Crea una nuova Storia Utente",
         "CREATE_NEW_US_EMPTY_HELP": "Potresti voler creare una nuova storia utente",
         "EXCESS_OF_POINTS": "Eccesso di punti",
@@ -1036,7 +1042,7 @@
             "TITLE_LINK_TASKBOARD": "Vai al pannello dei compiti di \"{{name}}\"",
             "NUMBER_SPRINTS": "<br/>sprints",
             "EMPTY": "Non ci sono ancora sprints disponibili",
-            "WARNING_EMPTY_SPRINT_ANONYMOUS": "This sprint has no User Stories",
+            "WARNING_EMPTY_SPRINT_ANONYMOUS": "Lo Sprint non ha Storie Utente",
             "WARNING_EMPTY_SPRINT": "Metti qui le storie del tuo backlog che iniziare in nuovo sprint",
             "TITLE_ACTION_NEW_SPRINT": "Aggiungi un nuovo sprint",
             "TEXT_ACTION_NEW_SPRINT": "Potresti voler creare un nuovo sprint nel tuo progetto",
@@ -1278,9 +1284,9 @@
         }
     },
     "USER_PROFILE": {
-        "IMAGE_HELP": "The image will be scaled to 80x80px.",
+        "IMAGE_HELP": "L'immagine sarà scalata a 80x80px.",
         "ACTION_CHANGE_IMAGE": "Cambia",
-        "ACTION_USE_GRAVATAR": "Use default image",
+        "ACTION_USE_GRAVATAR": "Usa l'immagine di default",
         "ACTION_DELETE_ACCOUNT": "Elimina l'account Taiga",
         "CHANGE_EMAIL_SUCCESS": "<strong>Controlla la tua casella di posta</strong><br />abbiamo mandato una mail al tuo account<br />con le istruzioni per impostare un nuovo indirizzo",
         "CHANGE_PHOTO": "Cambia foto",
@@ -1440,31 +1446,31 @@
         }
     },
     "DISCOVER": {
-        "DISCOVER_TITLE": "Discover projects",
-        "DISCOVER_SUBTITLE": "{projects, plural, one{One public project to discover} other{# public projects to discover}}",
-        "MOST_ACTIVE": "Most active",
-        "MOST_ACTIVE_EMPTY": "There are no ACTIVE projects yet",
-        "MOST_LIKED": "Most liked",
-        "MOST_LIKED_EMPTY": "There are no LIKED projects yet",
-        "VIEW_MORE": "View more",
-        "RECRUITING": "This project is looking for people",
-        "FEATURED": "Featured Projects",
-        "EMPTY": "There are no projects to show with this search criteria.<br> Try again!",
+        "DISCOVER_TITLE": "Scopri progetti",
+        "DISCOVER_SUBTITLE": "{projects, plural, one{Un progetto pubblico da scoprire} other{# progetti pubblici da scoprire}}",
+        "MOST_ACTIVE": "Più attivi",
+        "MOST_ACTIVE_EMPTY": "Non ci sono ancora progetti ATTIVI",
+        "MOST_LIKED": "Preferiti",
+        "MOST_LIKED_EMPTY": "Non ci sono ancora progetti PREFERITI",
+        "VIEW_MORE": "Vedi altro",
+        "RECRUITING": "Il progetto cerca persone",
+        "FEATURED": "Progetti in Vetrina",
+        "EMPTY": "Non ci sono progetti da mostrare con questi criteri.<br>Prova ancora!",
         "FILTERS": {
             "ALL": "Tutti",
             "KANBAN": "Kanban",
             "SCRUM": "Scrum",
-            "PEOPLE": "Looking for people",
-            "WEEK": "Last week",
-            "MONTH": "Last month",
-            "YEAR": "Last year",
-            "ALL_TIME": "All time",
-            "CLEAR": "Clear filters"
+            "PEOPLE": "Cerca persone",
+            "WEEK": "Ultima settimana",
+            "MONTH": "Ultimo mese",
+            "YEAR": "Ultimo anno",
+            "ALL_TIME": "Tutto",
+            "CLEAR": "Cancella filtri"
         },
         "SEARCH": {
             "INPUT_PLACEHOLDER": "Inserisci testo...",
             "ACTION_TITLE": "Cerca",
-            "RESULTS": "Search results"
+            "RESULTS": "Risultati della ricerca"
         }
     }
 }

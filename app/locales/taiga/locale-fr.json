@@ -2,6 +2,7 @@
     "COMMON": {
         "YES": "Oui",
         "NO": "Non",
+        "OR": "or",
         "LOADING": "Veuillez patienter...",
         "LOADING_PROJECT": "Chargement du projet...",
         "DATE": "DD MMM YYYY",
@@ -17,15 +18,17 @@
         "DRAG": "Faire glisser",
         "TAG_LINE": "Votre outil de gestion de projet agile, libre et open source",
         "TAG_LINE_2": "AIMEZ VOTRE PROJET",
-        "BLOCK": "Bloquer ce récit utilisateur s'il a une dépendance qui ne peut être satisfaite",
-        "UNBLOCK": "Débloquer ce récit utilisateur",
+        "BLOCK": "Bloquer",
+        "BLOCK_TITLE": "Block this item for example if it has a dependency that can not be satisfied",
         "BLOCKED": "Bloqué",
+        "UNBLOCK": "Débloquer",
+        "UNBLOCK_TITLE": "Unblock this item",
+        "BLOCKED_NOTE": "Why is this blocked?",
+        "BLOCKED_REASON": "Veillez s'il vous plait indiquer la raison",
         "CREATED_BY": "Créé par {{fullDisplayName}}",
         "FROM": "de",
         "TO": "à",
         "CLOSE": "clos",
-        "BLOCKED_NOTE": "Pourquoi ce récit utilisateur est-il bloqué ?",
-        "BLOCKED_REASON": "Veillez s'il vous plait indiquer la raison",
         "GO_HOME": "Retour à l'accueil",
         "PLUGINS": "Plugins",
         "BETA": "Version beta !",
@@ -141,13 +144,13 @@
         },
         "ASSIGNED_TO": {
             "NOT_ASSIGNED": "Non affecté",
-            "ASSIGN": "Assign",
+            "ASSIGN": "Assigné",
             "DELETE_ASSIGNMENT": "Supprimer l'affectation",
             "REMOVE_ASSIGNED": "Supprimer l'affectation",
             "TOO_MANY": "...trop d'utilisateurs ; filtrez davantage",
             "CONFIRM_UNASSIGNED": "Etes-vous sûr de vouloir continuer sans affectation ?",
             "TITLE_ACTION_EDIT_ASSIGNMENT": "Modifier l'affectation",
-            "SELF": "Assign to me"
+            "SELF": "Me l'assigné"
         },
         "STATUS": {
             "CLOSED": "Fermé",
@@ -271,7 +274,7 @@
     },
     "AUTH": {
         "INVITED_YOU": "vous a invité-e à rejoindre le projet",
-        "NOT_REGISTERED_YET": "Pas encore inscrit ?",
+        "NOT_REGISTERED_YET": "Pas encore inscrit?",
         "REGISTER": "S'inscrire",
         "CREATE_ACCOUNT": "créer votre compte gratuit ici"
     },
@@ -363,6 +366,8 @@
     "ATTACHMENT": {
         "SECTION_NAME": "pièces jointes",
         "TITLE": "{{ fileName }} déposé le {{ date }}",
+        "LIST_VIEW_MODE": "List view mode",
+        "GALLERY_VIEW_MODE": "Gallery view mode",
         "DESCRIPTION": "Saisissez une courte description",
         "DEPRECATED": "(obsolète)",
         "DEPRECATED_FILE": "Obsolète ?",
@@ -448,18 +453,18 @@
             "NUMBER_US_POINTS": "Nombre de points de RU (0 pour non déterminé)",
             "TAGS": "Mots-clés",
             "DESCRIPTION": "Description",
-            "RECRUITING": "Is this project looking for people?",
-            "RECRUITING_MESSAGE": "Who are you looking for?",
-            "RECRUITING_PLACEHOLDER": "Define the profiles you are looking for",
+            "RECRUITING": "Est-ce que ce projet recherche des membres ?",
+            "RECRUITING_MESSAGE": "Qui cherchez-vous ?",
+            "RECRUITING_PLACEHOLDER": "Définissez le profil que vous recherchez",
             "PUBLIC_PROJECT": "Projet public",
-            "PUBLIC_PROJECT_DESC": "Users will be able to find and view your project",
+            "PUBLIC_PROJECT_DESC": "Les membres vont pouvoir chercher et voir votre projet.",
             "PRIVATE_PROJECT": "Projet privé",
-            "PRIVATE_PROJECT_DESC": "By default, this project will be hidden to the public",
-            "PRIVATE_OR_PUBLIC": "What's the difference between public and private projects?",
+            "PRIVATE_PROJECT_DESC": "Par défaut, ce project va être caché au public",
+            "PRIVATE_OR_PUBLIC": "Quelle est la différence entre les projets publics et privés ?",
             "DELETE": "Supprimer ce projet",
-            "LOGO_HELP": "The image will be scaled to 80x80px.",
-            "CHANGE_LOGO": "Change logo",
-            "ACTION_USE_DEFAULT_LOGO": "Use default image"
+            "LOGO_HELP": "L'image va être agrandie à 80x80px",
+            "CHANGE_LOGO": "Changer le logo",
+            "ACTION_USE_DEFAULT_LOGO": "Utiliser l'image par défaut "
         },
         "REPORTS": {
             "TITLE": "Rapports",
@@ -722,7 +727,7 @@
         "SECTION_PROJECTS": "Projets",
         "HELP": "Réorganisez vos projets pour placer les plus utilisés en premier.<br/> Les 10 premiers projets apparaitront dans la liste des projets de la barre de navigation supérieure",
         "PRIVATE": "Projet privé",
-        "LOOKING_FOR_PEOPLE": "This project is looking for people",
+        "LOOKING_FOR_PEOPLE": "Est-ce que ce projet recherche des membres ?",
         "FANS_COUNTER_TITLE": "{total, plural, one{un fan} other{# fans}}",
         "WATCHERS_COUNTER_TITLE": "{total, plural, one{un observateur} other{# observateurs}}",
         "MEMBERS_COUNTER_TITLE": "{total, plural, one{one member} other{# members}}",
@@ -755,7 +760,7 @@
             "TITLE_NEXT_PROJECT": "Montrer les projets suivants",
             "HELP_TITLE": "Page d'assistance Taiga",
             "HELP": "Aide",
-            "HOMEPAGE": "Homepage",
+            "HOMEPAGE": "Page d'accueil ",
             "FEEDBACK_TITLE": "Envoyez vos commentaires",
             "FEEDBACK": "Feedback",
             "NOTIFICATIONS_TITLE": "Modifier vos réglages de notification",
@@ -909,6 +914,7 @@
         "TYPE_NEW_COMMENT": "Entrez un nouveau commentaire ici",
         "SHOW_DELETED": "Afficher le commentaire supprimé",
         "HIDE_DELETED": "Cacher le commentaire supprimé",
+        "DELETE": "Delete comment",
         "RESTORE": "Restaurer le commentaire"
     },
     "ACTIVITY": {
@@ -1036,7 +1042,7 @@
             "TITLE_LINK_TASKBOARD": "Aller au tableau des tâches de \"{{name}}\"",
             "NUMBER_SPRINTS": "<br/>sprints",
             "EMPTY": "Il n'y a pas encore de sprint",
-            "WARNING_EMPTY_SPRINT_ANONYMOUS": "This sprint has no User Stories",
+            "WARNING_EMPTY_SPRINT_ANONYMOUS": "Ce sprint n'a pas de \"User Stories\"",
             "WARNING_EMPTY_SPRINT": "Déposez ici les récits depuis votre backlog pour démarrer un nouveau sprint",
             "TITLE_ACTION_NEW_SPRINT": "Ajouter un sprint",
             "TEXT_ACTION_NEW_SPRINT": "Vous souhaitez peut être créer un nouveau sprint dans votre projet.",
@@ -1278,9 +1284,9 @@
         }
     },
     "USER_PROFILE": {
-        "IMAGE_HELP": "The image will be scaled to 80x80px.",
+        "IMAGE_HELP": "L'image va être agrandie à 80x80px",
         "ACTION_CHANGE_IMAGE": "Modifier",
-        "ACTION_USE_GRAVATAR": "Use default image",
+        "ACTION_USE_GRAVATAR": "Utiliser l'image par défaut ",
         "ACTION_DELETE_ACCOUNT": "Supprime le compte Taiga",
         "CHANGE_EMAIL_SUCCESS": "<strong>Consultez votre messagerie !</strong><br />Nous vous avons envoyé un courriel<br />avec les instructions à suivre pour saisir votre nouvelle adresse",
         "CHANGE_PHOTO": "Changer la photo",
@@ -1440,31 +1446,31 @@
         }
     },
     "DISCOVER": {
-        "DISCOVER_TITLE": "Discover projects",
+        "DISCOVER_TITLE": "Découvrir les projets",
         "DISCOVER_SUBTITLE": "{projects, plural, one{One public project to discover} other{# public projects to discover}}",
         "MOST_ACTIVE": "Most active",
-        "MOST_ACTIVE_EMPTY": "There are no ACTIVE projects yet",
+        "MOST_ACTIVE_EMPTY": "Il n'y a pas de projets actifs pour le moment",
         "MOST_LIKED": "Most liked",
         "MOST_LIKED_EMPTY": "There are no LIKED projects yet",
-        "VIEW_MORE": "View more",
-        "RECRUITING": "This project is looking for people",
-        "FEATURED": "Featured Projects",
+        "VIEW_MORE": "Voir plus",
+        "RECRUITING": "Ce projet recherche des membres",
+        "FEATURED": "Projets mis en avant",
         "EMPTY": "There are no projects to show with this search criteria.<br> Try again!",
         "FILTERS": {
             "ALL": "Toutes",
             "KANBAN": "Kanban",
             "SCRUM": "Scrum",
-            "PEOPLE": "Looking for people",
-            "WEEK": "Last week",
-            "MONTH": "Last month",
-            "YEAR": "Last year",
-            "ALL_TIME": "All time",
-            "CLEAR": "Clear filters"
+            "PEOPLE": "En recherche de membres",
+            "WEEK": "Semaine dernière",
+            "MONTH": "Mois dernier",
+            "YEAR": "Leanne dernière",
+            "ALL_TIME": "Tout le temps",
+            "CLEAR": "Effacer les filtres"
         },
         "SEARCH": {
             "INPUT_PLACEHOLDER": "Écrivez quelque chose...",
             "ACTION_TITLE": "Rechercher",
-            "RESULTS": "Search results"
+            "RESULTS": "Résultats de la recherche"
         }
     }
 }

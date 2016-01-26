@@ -2,6 +2,7 @@
     "COMMON": {
         "YES": "Да",
         "NO": "Нет",
+        "OR": "or",
         "LOADING": "Пожалуйста, подождите...",
         "LOADING_PROJECT": "Проект загружается...",
         "DATE": "DD MMM YYYY",
@@ -17,15 +18,17 @@
         "DRAG": "Перетащите",
         "TAG_LINE": "Ваш свободный, agile инструмент управления проектами с открытым исходным кодом",
         "TAG_LINE_2": "Любит ваши проекты",
-        "BLOCK": "Block this User Story if it has a dependency that can not be satisfied",
-        "UNBLOCK": "Unblock this User Story",
+        "BLOCK": "Блокировать",
+        "BLOCK_TITLE": "Block this item for example if it has a dependency that can not be satisfied",
         "BLOCKED": "Заблокирован",
+        "UNBLOCK": "Разблокировать",
+        "UNBLOCK_TITLE": "Unblock this item",
+        "BLOCKED_NOTE": "Why is this blocked?",
+        "BLOCKED_REASON": "Пожалуйста разъясните причину",
         "CREATED_BY": "Создано {{fullDisplayName}}",
         "FROM": "от",
         "TO": "к",
         "CLOSE": "закрыть",
-        "BLOCKED_NOTE": "Почему эта пользовательская история заблокирована?",
-        "BLOCKED_REASON": "Пожалуйста разъясните причину",
         "GO_HOME": "Домой",
         "PLUGINS": "Плагины",
         "BETA": "Программа тестируется!",
@@ -279,9 +282,9 @@
         "HEADER": "У меня уже есть логин в Taiga",
         "PLACEHOLDER_AUTH_NAME": "Логин или email (с учетом регистра)",
         "LINK_FORGOT_PASSWORD": "Забыли?",
-        "TITLE_LINK_FORGOT_PASSWORD": "Did you forget your password?",
+        "TITLE_LINK_FORGOT_PASSWORD": "Вы забыли свой пароль?",
         "ACTION_ENTER": "Ввод",
-        "ACTION_SIGN_IN": "Login",
+        "ACTION_SIGN_IN": "Логин",
         "PLACEHOLDER_AUTH_PASSWORD": "Пароль (чувствителен к регистру)"
     },
     "LOGIN_FORM": {
@@ -363,6 +366,8 @@
     "ATTACHMENT": {
         "SECTION_NAME": "Вложения",
         "TITLE": "{{ fileName }} загружен {{ date }}",
+        "LIST_VIEW_MODE": "List view mode",
+        "GALLERY_VIEW_MODE": "Gallery view mode",
         "DESCRIPTION": "Введите краткое описание",
         "DEPRECATED": "(устаревший)",
         "DEPRECATED_FILE": "Устаревший?",
@@ -909,6 +914,7 @@
         "TYPE_NEW_COMMENT": "Добавить комментарий",
         "SHOW_DELETED": "Показать удаленный комментарий",
         "HIDE_DELETED": "Скрыть удаленный комментарий",
+        "DELETE": "Delete comment",
         "RESTORE": "Показать удаленный комментарий"
     },
     "ACTIVITY": {

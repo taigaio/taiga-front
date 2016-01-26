@@ -2,6 +2,7 @@
     "COMMON": {
         "YES": "Yes",
         "NO": "No",
+        "OR": "or",
         "LOADING": "載入中...",
         "LOADING_PROJECT": "載入專案中...",
         "DATE": "DD MMM YYYY",
@@ -17,15 +18,17 @@
         "DRAG": "拖拉",
         "TAG_LINE": "你的敏捷、免費、和開放原始碼的專案管理工具",
         "TAG_LINE_2": "愛你的專案",
-        "BLOCK": "Block this User Story if it has a dependency that can not be satisfied",
-        "UNBLOCK": "Unblock this User Story",
+        "BLOCK": "封鎖",
+        "BLOCK_TITLE": "Block this item for example if it has a dependency that can not be satisfied",
         "BLOCKED": "已封鎖",
+        "UNBLOCK": "解除封鎖",
+        "UNBLOCK_TITLE": "解除項目封鎖",
+        "BLOCKED_NOTE": "為何遭到封鎖?",
+        "BLOCKED_REASON": "請解釋此原因",
         "CREATED_BY": "由 {{fullDisplayName}}創建",
         "FROM": "from",
         "TO": "to",
         "CLOSE": "關閉",
-        "BLOCKED_NOTE": "為何這個使用者故事被封鎖?",
-        "BLOCKED_REASON": "請解釋此原因",
         "GO_HOME": "帶我回到首頁",
         "PLUGINS": "外掛",
         "BETA": "我們在測試中",
@@ -38,7 +41,7 @@
         "IOCAINE_TEXT": "感到任務的不堪負荷？確認其它人在編輯任務時知道此狀況，可以點選Iocaine。它可能會成為免疫的致命狀況，只要長期小量消耗，但如果你只是偶而挑戰它可有助表現。",
         "CLIENT_REQUIREMENT": "Client requirement is new requirement that was not previously expected and it is required to be part of the project",
         "TEAM_REQUIREMENT": "Team requirement is a requirement that must exist in the project but should have no cost for the client",
-        "CAPSLOCK_WARNING": "Be careful! You're writing with capital letters and this input is case sensitive.",
+        "CAPSLOCK_WARNING": "注意你輸入了大寫符號，大小寫字母有所不同",
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "該數值似乎為無效",
             "TYPE_EMAIL": "該電子郵件應為有效地址",
@@ -141,38 +144,38 @@
         },
         "ASSIGNED_TO": {
             "NOT_ASSIGNED": "未指派",
-            "ASSIGN": "Assign",
+            "ASSIGN": "指派",
             "DELETE_ASSIGNMENT": "刪除指派",
             "REMOVE_ASSIGNED": "數值",
             "TOO_MANY": "太多用戶，繼續過濾中",
             "CONFIRM_UNASSIGNED": "你確定要讓它無任何指派嗎？",
             "TITLE_ACTION_EDIT_ASSIGNMENT": "編輯指派",
-            "SELF": "Assign to me"
+            "SELF": "指派給我"
         },
         "STATUS": {
             "CLOSED": "關閉",
             "OPEN": "開啟"
         },
         "WATCHERS": {
-            "WATCHERS": "Watchers",
-            "ADD": "Add watchers",
-            "TITLE_ADD": "Add a project member to the watchers list",
+            "WATCHERS": "觀注者",
+            "ADD": "新增觀注者",
+            "TITLE_ADD": "將專案成員加到觀注者清單裏",
             "DELETE": "已刪除監督者",
             "TITLE_LIGHTBOX_DELETE_WARTCHER": "刪除監督者"
         },
         "WATCH_BUTTON": {
-            "WATCH": "Watch",
+            "WATCH": "觀注",
             "WATCHING": "觀看中",
-            "UNWATCH": "Unwatch",
-            "WATCHERS": "Watchers",
+            "UNWATCH": "不觀注",
+            "WATCHERS": "觀注者",
             "BUTTON_TITLE": "Watch/Unwatch this item",
-            "COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}"
+            "COUNTER_TITLE": "{total, plural, one{一個觀注者} other{# 觀注者}}"
         },
         "VOTE_BUTTON": {
             "UPVOTE": "Upvote",
             "UPVOTED": "Upvoted",
             "DOWNVOTE": "Downvote",
-            "VOTERS": "Voters",
+            "VOTERS": "投票者",
             "BUTTON_TITLE": "Upvote/Downvote this item",
             "COUNTER_TITLE": "{total, plural, one{one vote} other{# votes}}"
         },
@@ -181,7 +184,7 @@
             "SAVE": "儲存客製化欄位",
             "EDIT": "編輯客製化欄位",
             "DELETE": "刪除客製屬性",
-            "CONFIRM_DELETE": "Remeber that all values in this custom field will be deleted.\n Are you sure you want to continue?"
+            "CONFIRM_DELETE": "記住在此客制欄位裏的數值資料都將遭刪除\n你確定要繼續嗎?"
         },
         "FILTERS": {
             "TITLE": "過濾器",
@@ -279,9 +282,9 @@
         "HEADER": "我已登入Taiga",
         "PLACEHOLDER_AUTH_NAME": "使用者名稱或電子郵件（注意大小寫）",
         "LINK_FORGOT_PASSWORD": "忘記了?",
-        "TITLE_LINK_FORGOT_PASSWORD": "Did you forget your password?",
+        "TITLE_LINK_FORGOT_PASSWORD": "你是否忘了密碼嗎",
         "ACTION_ENTER": "Enter",
-        "ACTION_SIGN_IN": "Login",
+        "ACTION_SIGN_IN": "登入",
         "PLACEHOLDER_AUTH_PASSWORD": "密碼（大小寫有別）"
     },
     "LOGIN_FORM": {
@@ -341,7 +344,7 @@
         "PAGE_DESCRIPTION": "接受邀請加入Taiga上的專案，它是一個給新創團隊與敏捷開發者設計師使用的專案管理平台。Taiga是一個簡易輕鬆美觀的工具，讓工作變成樂趣。"
     },
     "INVITATION_LOGIN_FORM": {
-        "NOT_FOUND": "Our Oompa Loompas can't find your invitation.",
+        "NOT_FOUND": "我們找不到你的邀請碼",
         "SUCCESS": "你成功地加入此專案，歡迎來到 {{project_name}}",
         "ERROR": "按我們的記錄，你尚未註冊或是未輸入有效的密碼　"
     },
@@ -353,7 +356,7 @@
         "EMPTY_PROJECT_LIST": "你尚無任何專案",
         "WORKING_ON_SECTION": "進行中",
         "WATCHING_SECTION": "觀看中",
-        "DASHBOARD": "Projects Dashboard"
+        "DASHBOARD": "專案控制台"
     },
     "PROJECTS": {
         "PAGE_TITLE": "我的專案 - Taiga",
@@ -363,11 +366,13 @@
     "ATTACHMENT": {
         "SECTION_NAME": "附件",
         "TITLE": "{{ fileName }} 上傳於 {{ date }}",
+        "LIST_VIEW_MODE": "列出檢視模視",
+        "GALLERY_VIEW_MODE": "檢視模視選項",
         "DESCRIPTION": "輸入一段簡短描述",
         "DEPRECATED": "(被棄用)",
         "DEPRECATED_FILE": "棄用?",
         "ADD": "加入新附件 {{maxFileSizeMsg}}",
-        "DROP": "Drop attachments here!",
+        "DROP": "在此移除附件 ",
         "MAX_FILE_SIZE": "[Max. size: {{maxFileSize}}]",
         "SHOW_DEPRECATED": "+ 顯示棄用的附件",
         "HIDE_DEPRECATED": "+ 隱藏棄用的附件",
@@ -444,22 +449,22 @@
             "PROJECT_DETAILS": "專案細節",
             "PROJECT_NAME": "專案名稱",
             "PROJECT_SLUG": "專案代稱",
-            "NUMBER_SPRINTS": "Number of sprints (0 for an undetermined quantity)",
-            "NUMBER_US_POINTS": "Number of US points (0 for an undetermined quantity)",
+            "NUMBER_SPRINTS": "衝刺任務數目(0為未決定數量)",
+            "NUMBER_US_POINTS": "使用者故事點數數目 (0 為未決定數目)",
             "TAGS": "標籤",
             "DESCRIPTION": "描述",
-            "RECRUITING": "Is this project looking for people?",
-            "RECRUITING_MESSAGE": "Who are you looking for?",
-            "RECRUITING_PLACEHOLDER": "Define the profiles you are looking for",
+            "RECRUITING": "這個專案是否在徵人",
+            "RECRUITING_MESSAGE": "你在找誰？",
+            "RECRUITING_PLACEHOLDER": "定義你要找的資訊",
             "PUBLIC_PROJECT": "公開專案",
-            "PUBLIC_PROJECT_DESC": "Users will be able to find and view your project",
+            "PUBLIC_PROJECT_DESC": "用戶能夠找到並檢視你的專案",
             "PRIVATE_PROJECT": "不公開專案",
-            "PRIVATE_PROJECT_DESC": "By default, this project will be hidden to the public",
-            "PRIVATE_OR_PUBLIC": "What's the difference between public and private projects?",
+            "PRIVATE_PROJECT_DESC": "本專案預設為私密不公開顯示",
+            "PRIVATE_OR_PUBLIC": "公開專案和私密專案有何差異?",
             "DELETE": "刪除此專案",
-            "LOGO_HELP": "The image will be scaled to 80x80px.",
-            "CHANGE_LOGO": "Change logo",
-            "ACTION_USE_DEFAULT_LOGO": "Use default image"
+            "LOGO_HELP": "此圖片將被裁成80x80px.<br>",
+            "CHANGE_LOGO": "更改圖標",
+            "ACTION_USE_DEFAULT_LOGO": "使用設預圖片"
         },
         "REPORTS": {
             "TITLE": "Reports",
@@ -490,7 +495,7 @@
             "ISSUE_ADD": "在問題中加入客制欄位",
             "FIELD_TYPE_TEXT": "單行文字",
             "FIELD_TYPE_MULTI": "多行",
-            "FIELD_TYPE_DATE": "Date"
+            "FIELD_TYPE_DATE": "日期"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - 專案數值 - {{projectName}}",
@@ -596,7 +601,7 @@
             "CANCEL_TITLE": "取消創建",
             "SET_FIELD_NAME": "設定你的客制欄位名稱　",
             "SET_FIELD_DESCRIPTION": "設定你客製化欄位的文字描述",
-            "FIELD_TYPE_DEFAULT": "-- select one --",
+            "FIELD_TYPE_DEFAULT": "-- 選擇其一 --",
             "ACTION_UPDATE": "更新客製化欄位",
             "ACTION_CANCEL_EDITION": "取消編輯　"
         },
@@ -608,7 +613,7 @@
             "STATUS_ACTIVE": "活躍　",
             "STATUS_PENDING": "待辦中",
             "DELETE_MEMBER": "刪除成員",
-            "RESEND": "Resend",
+            "RESEND": "重新送出",
             "SUCCESS_SEND_INVITATION": "我們已再次發出邀請信給'{{email}}'.　",
             "ERROR_SEND_INVITATION": "我們未送出邀請 ",
             "SUCCESS_DELETE": "已刪除 {{message}}.",
@@ -683,37 +688,37 @@
             "REPORT": "回報濫用",
             "TABS": {
                 "ACTIVITY_TAB": "時間表",
-                "ACTIVITY_TAB_TITLE": "Show all the activity of this user",
+                "ACTIVITY_TAB_TITLE": "顯示該用戶的所有活動",
                 "PROJECTS_TAB": "專案",
-                "PROJECTS_TAB_TITLE": "List of all projects in which the user is a member",
-                "LIKES_TAB": "Likes",
-                "LIKES_TAB_TITLE": "List all likes made by this user",
+                "PROJECTS_TAB_TITLE": "列出所有專案的用戶成員名單",
+                "LIKES_TAB": "喜歡",
+                "LIKES_TAB_TITLE": "列出該使用者的喜受清單",
                 "VOTES_TAB": "投票數",
-                "VOTES_TAB_TITLE": "List all votes made by this user",
-                "WATCHED_TAB": "Watched",
-                "WATCHED_TAB_TITLE": "List all item watched by this user",
+                "VOTES_TAB_TITLE": "列出該使用者的所有投票數",
+                "WATCHED_TAB": "已觀注",
+                "WATCHED_TAB_TITLE": "該使用者所有觀注的專案清單",
                 "CONTACTS_TAB": "聯絡人",
-                "CONTACTS_TAB_TITLE": "List all contacts made by this user"
+                "CONTACTS_TAB_TITLE": "列出該使用者所有的聯絡人"
             }
         },
         "PROFILE_SIDEBAR": {
             "TITLE": "個人資訊",
             "DESCRIPTION": "People can see everything you do and what you are working on. Add a nice bio to give an enhanced version of your information.",
-            "ADD_INFO": "Edit bio"
+            "ADD_INFO": "編輯自介"
         },
         "PROFILE_FAVS": {
-            "FILTER_INPUT_PLACEHOLDER": "Type something...",
+            "FILTER_INPUT_PLACEHOLDER": "輸入文字",
             "FILTER_TYPE_ALL": "所有",
-            "FILTER_TYPE_ALL_TITLE": "Show all",
+            "FILTER_TYPE_ALL_TITLE": "顯示全部",
             "FILTER_TYPE_PROJECTS": "專案",
-            "FILTER_TYPE_PROJECT_TITLES": "Show only projects",
-            "FILTER_TYPE_USER_STORIES": "Stories",
-            "FILTER_TYPE_USER_STORIES_TITLES": "Show only user stories",
+            "FILTER_TYPE_PROJECT_TITLES": "只顯示專案",
+            "FILTER_TYPE_USER_STORIES": "故事",
+            "FILTER_TYPE_USER_STORIES_TITLES": "只顯視使用者故事",
             "FILTER_TYPE_TASKS": "任務 ",
-            "FILTER_TYPE_TASK_TITLES": "Show only tasks",
+            "FILTER_TYPE_TASK_TITLES": "只顯示任務 ",
             "FILTER_TYPE_ISSUES": "問題 ",
-            "FILTER_TYPE_ISSUES_TITLE": "Show only issues",
-            "EMPTY_TITLE": "It looks like there's nothing to show here."
+            "FILTER_TYPE_ISSUES_TITLE": "只顯示問題 ",
+            "EMPTY_TITLE": "似乎沒有東西可顯示"
         }
     },
     "PROJECT": {
@@ -722,9 +727,9 @@
         "SECTION_PROJECTS": "專案",
         "HELP": "記錄你的專案在上方常用欄位<br/> 前十個專案將會顯示在上方導覽處。",
         "PRIVATE": "不公開專案",
-        "LOOKING_FOR_PEOPLE": "This project is looking for people",
-        "FANS_COUNTER_TITLE": "{total, plural, one{one fan} other{# fans}}",
-        "WATCHERS_COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}",
+        "LOOKING_FOR_PEOPLE": "這個專案正在徵人",
+        "FANS_COUNTER_TITLE": "{total, plural, one{一個粉絲} other{# 粉絲}}",
+        "WATCHERS_COUNTER_TITLE": "{total, plural, one{一個觀注者} other{# 觀注者}}",
         "MEMBERS_COUNTER_TITLE": "{total, plural, one{one member} other{# members}}",
         "STATS": {
             "PROJECT": "專案<br/> 點數",
@@ -748,14 +753,14 @@
             "PLACEHOLDER_SEARCH": "搜尋",
             "ACTION_CREATE_PROJECT": "創建專案",
             "ACTION_IMPORT_PROJECT": "滙入專案",
-            "MANAGE_PROJECTS": "Manage projects",
+            "MANAGE_PROJECTS": "管理專案",
             "TITLE_CREATE_PROJECT": "創建專案",
             "TITLE_IMPORT_PROJECT": "滙入專案",
             "TITLE_PRVIOUS_PROJECT": "顯示過去專案",
             "TITLE_NEXT_PROJECT": "顯示下一個任務",
             "HELP_TITLE": "Taiga支援頁",
             "HELP": "幫助",
-            "HOMEPAGE": "Homepage",
+            "HOMEPAGE": "首頁",
             "FEEDBACK_TITLE": "送出回饋 ",
             "FEEDBACK": "回饋 ",
             "NOTIFICATIONS_TITLE": "編輯個人通知設定",
@@ -789,24 +794,24 @@
             "SYNC_SUCCESS": "你的專案已成功滙入"
         },
         "LIKE_BUTTON": {
-            "LIKE": "Like",
-            "LIKED": "Liked",
-            "UNLIKE": "Unlike",
-            "BUTTON_TITLE": "Like or unlike this project",
-            "COUNTER_TITLE": "{total, plural, one{one fan} other{# fans}}"
+            "LIKE": "喜歡",
+            "LIKED": "喜歡",
+            "UNLIKE": "不喜歡",
+            "BUTTON_TITLE": "是否喜歡該專案",
+            "COUNTER_TITLE": "{total, plural, one{一個粉絲} other{# 粉絲}}"
         },
         "WATCH_BUTTON": {
-            "BUTTON_TITLE": "Watch this project and set notification policy",
-            "WATCH": "Watch",
+            "BUTTON_TITLE": "觀注本專案並設置通知選項",
+            "WATCH": "觀注",
             "WATCHING": "觀看中",
-            "COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}",
+            "COUNTER_TITLE": "{total, plural, one{一個觀注者} other{# 觀注者}}",
             "OPTIONS": {
-                "NOTIFY_ALL": "Receive all notifications",
-                "NOTIFY_ALL_TITLE": "Receive all notifications for this project",
-                "NOTIFY_INVOLVED": "Only involved",
-                "NOTIFY_INVOLVED_TITLE": "Recive notificacions only when you are involved",
-                "UNWATCH": "Unwatch",
-                "UNWATCH_TITLE": "Unwatch this project"
+                "NOTIFY_ALL": "接收所有通知",
+                "NOTIFY_ALL_TITLE": "接到該專案的所有通知",
+                "NOTIFY_INVOLVED": "只有相關",
+                "NOTIFY_INVOLVED_TITLE": "只接收與你相關的通知訊息",
+                "UNWATCH": "不觀注",
+                "UNWATCH_TITLE": "不再觀注此專案"
             }
         }
     },
@@ -880,7 +885,7 @@
         "SECTION_NAME": "使用者故事細節",
         "LINK_TASKBOARD": "任務板",
         "TITLE_LINK_TASKBOARD": "到任務板去",
-        "TOTAL_POINTS": "total points",
+        "TOTAL_POINTS": "所有點數",
         "ADD": "+新增使用者故事",
         "ADD_BULK": "批次加入新使用者故事",
         "PROMOTED": "此使用者故事已提昇成問題:",
@@ -909,6 +914,7 @@
         "TYPE_NEW_COMMENT": "在此輸入一個新的評論",
         "SHOW_DELETED": "顯示遭刪除的評論 ",
         "HIDE_DELETED": "隱藏已刪除之評論 ",
+        "DELETE": "刪除評論 ",
         "RESTORE": "恢復原評論 "
     },
     "ACTIVITY": {
@@ -970,9 +976,9 @@
         "CUSTOMIZE_GRAPH": "Customize your backlog graph",
         "CUSTOMIZE_GRAPH_TEXT": "To have a nice graph that helps you follow the evolution of the project you have to set up the points and sprints through the",
         "CUSTOMIZE_GRAPH_ADMIN": "管理者",
-        "CUSTOMIZE_GRAPH_TITLE": "Set up the points and sprints through the Admin",
+        "CUSTOMIZE_GRAPH_TITLE": "透由管理頁面設置點數與衝刺任務 \n ",
         "MOVE_US_TO_CURRENT_SPRINT": "移到目前的 Sprint",
-        "MOVE_US_TO_LATEST_SPRINT": "Move to latest Sprint",
+        "MOVE_US_TO_LATEST_SPRINT": "移到最近的一個衝刺任務 ",
         "SHOW_FILTERS": "顯示過濾器",
         "SHOW_TAGS": "顯示標籤 (Tag)",
         "EMPTY": "The backlog is empty!",
@@ -1035,11 +1041,11 @@
             "LINK_TASKBOARD": "衝刺任務板",
             "TITLE_LINK_TASKBOARD": "到任務板 {{spring.name}}",
             "NUMBER_SPRINTS": "<br/>衝刺任務 ",
-            "EMPTY": "There are no sprints yet",
-            "WARNING_EMPTY_SPRINT_ANONYMOUS": "This sprint has no User Stories",
+            "EMPTY": "尚無衝刺任務",
+            "WARNING_EMPTY_SPRINT_ANONYMOUS": "此衝刺任務無使用者故事",
             "WARNING_EMPTY_SPRINT": "Drop here Stories from your backlog to start a new sprint",
-            "TITLE_ACTION_NEW_SPRINT": "Add new sprint",
-            "TEXT_ACTION_NEW_SPRINT": "You may want to create a new sprint in your project",
+            "TITLE_ACTION_NEW_SPRINT": "增加衝刺任務",
+            "TEXT_ACTION_NEW_SPRINT": "你可以在你的專案下創建一個新衝刺任務",
             "ACTION_SHOW_CLOSED_SPRINTS": "顯示關閉衝刺任務",
             "ACTION_HIDE_CLOSED_SPRINTS": "隱藏衝刺任務"
         }
@@ -1049,7 +1055,7 @@
         "NOT_FOUND": "找不到",
         "NOT_FOUND_TEXT": "Error 404，你要找的網頁不存在，你可以稍後再回來TAIGA首頁，看看是否能再次找到要找的東西。",
         "PERMISSION_DENIED": "無此權限",
-        "PERMISSION_DENIED_TEXT": "You don't have permission to access to this page.",
+        "PERMISSION_DENIED_TEXT": "您無權限設進入此頁面",
         "VERSION_ERROR": "Taiga某人之前更改了這個，而我們的工程師無法再做改變。請重新載入頁面來使用你的更新（之前設定將消失）"
     },
     "TASKBOARD": {
@@ -1060,7 +1066,7 @@
         "TITLE_ACTION_ADD_BULK": "批次加入新任務 ",
         "TITLE_ACTION_ASSIGN": "指派任務 ",
         "TITLE_ACTION_EDIT": "結束任務 ",
-        "PLACEHOLDER_CARD_TITLE": "This could be a task",
+        "PLACEHOLDER_CARD_TITLE": "這可能是一項任務",
         "PLACEHOLDER_CARD_TEXT": "Split Stories into tasks to track them separately",
         "TABLE": {
             "COLUMN": "使用者故事",
@@ -1213,8 +1219,8 @@
         "HIDDEN_USER_STORIES": "此狀態下的使用者故事預設為隱藏",
         "ARCHIVED": "你已歸檔",
         "UNDO_ARCHIVED": "拖移 & 丟到未做",
-        "PLACEHOLDER_CARD_TITLE": "These are your User Stories",
-        "PLACEHOLDER_CARD_TEXT": "Stories might also have subtasks to separate requirements"
+        "PLACEHOLDER_CARD_TITLE": "這裏是你的使用者故事",
+        "PLACEHOLDER_CARD_TEXT": "在此可以找到你想了解的專案"
     },
     "SEARCH": {
         "PAGE_TITLE": "搜尋 - {{projectName}}",
@@ -1278,9 +1284,9 @@
         }
     },
     "USER_PROFILE": {
-        "IMAGE_HELP": "The image will be scaled to 80x80px.",
+        "IMAGE_HELP": "此圖片將被裁成80x80px.<br>",
         "ACTION_CHANGE_IMAGE": "變更",
-        "ACTION_USE_GRAVATAR": "Use default image",
+        "ACTION_USE_GRAVATAR": "使用預設圖像",
         "ACTION_DELETE_ACCOUNT": "刪除Taiga帳戶",
         "CHANGE_EMAIL_SUCCESS": "<strong>檢查你的收信箱</strong><br />我們送出了一封信<br />裏面有設定你新電子郵件的相關指示",
         "CHANGE_PHOTO": "變更照片",
@@ -1329,10 +1335,10 @@
         "HINT1_TITLE": "你知道可以滙入與滙出專案嗎？",
         "HINT1_TEXT": "可以從 Taiga提取所有個人資料記錄，移入其它地方。",
         "HINT2_TITLE": "你知道可以創建個人化欄位嗎",
-        "HINT2_TEXT": "Teams can now create custom fields as a flexible means to enter specific data useful for their particular workflow.",
-        "HINT3_TITLE": "Reorder your projects to feature those most relevant to you.",
-        "HINT3_TEXT": "The 10 projects are listed in the direct access bar at the top.",
-        "HINT4_TITLE": "Did you forget what were you working on?",
+        "HINT2_TEXT": "團隊可以使用客制化欄位來彈性地輸入特殊資料以應付其特定的工作流程 ",
+        "HINT3_TITLE": "重新整理與你相關的專案特徵",
+        "HINT3_TEXT": "本頁上方直接列出前10個專案選單",
+        "HINT4_TITLE": "你是否忘了你在做什麼?",
         "HINT4_TEXT": "別憺心，在控制台可以找到你的公開任務、問題以及使用者故事的工作次序。"
     },
     "TIMELINE": {
@@ -1360,55 +1366,55 @@
         "NEW_COMMENT_TASK": "{{username}} 評論了此任務{{obj_name}}",
         "NEW_MEMBER": "{{project_name}} 有新成員",
         "US_ADDED_MILESTONE": "{{username}} 增加使用者故事 {{obj_name}} 給 {{sprint_name}}",
-        "US_MOVED": "{{username}} has moved the US {{obj_name}}",
+        "US_MOVED": "{{username}} 搬移了使用者故事 {{obj_name}}",
         "US_REMOVED_FROM_MILESTONE": "{{username}} 新增使用者故事 {{obj_name}} 到待辦工作優先列表",
         "BLOCKED": "{{username}} 封鎖了 {{obj_name}}",
         "UNBLOCKED": "{{username}} 解除了封鎖 {{obj_name}}",
         "NEW_USER": "{{username}} 已加入 Taiga"
     },
     "LEGAL": {
-        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>When creating a new account, you agree to our <br /></span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">terms of service</a><span> and </span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">privacy policy</a>."
+        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>當創建新帳號時，你必須同意我們的<br /></span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">服務條款</a><span> 和 </span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">隱私權政策</a>."
     },
     "EXTERNAL_APP": {
-        "PAGE_TITLE": "An external app requires authentication",
-        "PAGE_DESCRIPTION": "An external app requires authentication",
-        "AUTHORIZATION_REQUEST": "Authorize {{application}} to use your Taiga account?",
-        "LOGIN_WITH_ANOTHER_USER": "Login with another user",
-        "AUTHORIZE_APP": "Authorize app",
+        "PAGE_TITLE": "外部的應用程式要求取得授權",
+        "PAGE_DESCRIPTION": "外部的應用程式要求取得授權",
+        "AUTHORIZATION_REQUEST": "同意授權 {{application}} 應用程式使用你的帳戶資訊?",
+        "LOGIN_WITH_ANOTHER_USER": "以其它帳號登入",
+        "AUTHORIZE_APP": "授權的應用服務 ",
         "CANCEL": "取消"
     },
     "JOYRIDE": {
         "NAV": {
             "NEXT": "下一個",
             "BACK": "後台",
-            "SKIP": "Skip",
+            "SKIP": "略過",
             "DONE": "完成"
         },
         "DASHBOARD": {
             "STEP1": {
                 "TITLE": "你的專案",
-                "TEXT": "Welcome! Here you will find the projects you are involved on."
+                "TEXT": "歡迎！你可以在此找到相關的專案"
             },
             "STEP2": {
                 "TITLE": "進行中",
-                "TEXT": "Here you will find the User Stories, Tasks and Issues in which you are working on."
+                "TEXT": "你可以在此找到你正在處理的使用者故事,任務,問題。 "
             },
             "STEP3": {
                 "TITLE": "觀看中",
-                "TEXT1": "And right here you will find the ones in your projects that you want to know about.",
-                "TEXT2": "You are already working with Taiga ;)"
+                "TEXT1": "在此你可以找到你想知道的專案",
+                "TEXT2": "你現在可利用Taiga進行工作了"
             },
             "STEP4": {
-                "TITLE": "Let’s start",
-                "TEXT1": "You can start by creating your first Taiga project.",
-                "TEXT2": "Good luck!"
+                "TITLE": "我們開始吧",
+                "TEXT1": "你可以開始創建你在Taiga上的第一個專案了",
+                "TEXT2": "祝好運!"
             }
         },
         "BACKLOG": {
             "STEP1": {
-                "TITLE": "Project summary",
-                "TEXT1": "Here you will see the state of your project.",
-                "TEXT2": "You can change every kind of project settings through the admin."
+                "TITLE": "專案摘要",
+                "TEXT1": "你可以看到專案的狀態",
+                "TEXT2": "你可以在管理頁面變更專案的設定"
             },
             "STEP2": {
                 "TITLE": "Product backlog",
@@ -1416,7 +1422,7 @@
             },
             "STEP3": {
                 "TITLE": "衝刺任務",
-                "TEXT": "Sprints are short periods of time (usually 2 weeks) during which specific work has to be completed and delivered."
+                "TEXT": "衝刺任務為短期(通常為2 週)內特定工作必須要完成與送達."
             },
             "STEP4": {
                 "TITLE": "使用者故事",
@@ -1425,46 +1431,46 @@
         },
         "KANBAN": {
             "STEP1": {
-                "TITLE": "Customize your workflow",
-                "TEXT": "Set up the columns you need to map your workflow statuses through the admin."
+                "TITLE": "調整你的工作流程 ",
+                "TEXT": "你可在管理者頁面設置欄位來繪製工作流程狀態"
             },
             "STEP2": {
-                "TITLE": "User Stories & Tasks",
+                "TITLE": "使用者故事與任務",
                 "TEXT": "User Stories are the requirements at high level. You can drag them to different columns."
             },
             "STEP3": {
-                "TITLE": "Adding User Stories",
+                "TITLE": "新增使用者故事",
                 "TEXT1": "You may want to add a single User Story (add US icon) or a group of them (bulk icon)",
-                "TEXT2": "Good luck!"
+                "TEXT2": "祝好運!"
             }
         }
     },
     "DISCOVER": {
-        "DISCOVER_TITLE": "Discover projects",
+        "DISCOVER_TITLE": "發現更多專案",
         "DISCOVER_SUBTITLE": "{projects, plural, one{One public project to discover} other{# public projects to discover}}",
-        "MOST_ACTIVE": "Most active",
-        "MOST_ACTIVE_EMPTY": "There are no ACTIVE projects yet",
-        "MOST_LIKED": "Most liked",
-        "MOST_LIKED_EMPTY": "There are no LIKED projects yet",
-        "VIEW_MORE": "View more",
-        "RECRUITING": "This project is looking for people",
-        "FEATURED": "Featured Projects",
-        "EMPTY": "There are no projects to show with this search criteria.<br> Try again!",
+        "MOST_ACTIVE": "最活躍",
+        "MOST_ACTIVE_EMPTY": "目前尚無活進行中的專案",
+        "MOST_LIKED": "最受喜愛的",
+        "MOST_LIKED_EMPTY": "尚未有喜愛的專案",
+        "VIEW_MORE": "顯示更多",
+        "RECRUITING": "這個專案正在徵人",
+        "FEATURED": "受矚目專案",
+        "EMPTY": "沒有專案符合你尋找的條件.<br> 再試一次",
         "FILTERS": {
             "ALL": "所有",
             "KANBAN": "Kanban(看板)",
             "SCRUM": "Scrum",
-            "PEOPLE": "Looking for people",
-            "WEEK": "Last week",
-            "MONTH": "Last month",
-            "YEAR": "Last year",
-            "ALL_TIME": "All time",
-            "CLEAR": "Clear filters"
+            "PEOPLE": "找尋人員",
+            "WEEK": "上星期",
+            "MONTH": "上個月",
+            "YEAR": "去年",
+            "ALL_TIME": "全部時間",
+            "CLEAR": "清除過濾器 "
         },
         "SEARCH": {
-            "INPUT_PLACEHOLDER": "Type something...",
+            "INPUT_PLACEHOLDER": "輸入文字",
             "ACTION_TITLE": "搜尋",
-            "RESULTS": "Search results"
+            "RESULTS": "搜尋結果"
         }
     }
 }
