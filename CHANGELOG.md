@@ -21,6 +21,8 @@
         - Full text search with priorities over title, tags and description fields.
         - Order results alphabeticaly, by most liked or more actived.
         - Filter by 'use kanban', 'use scrum' or 'looking for people'.
+- i18n.
+  - Add swedish (sv) translation.
 
 ### Misc
 - Sticky project navigation bar.
