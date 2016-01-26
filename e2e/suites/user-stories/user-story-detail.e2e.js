@@ -32,7 +32,7 @@ describe('User story detail', function(){
 
     it('description edition', sharedDetail.descriptionTesting);
 
-    it('status edition', sharedDetail.statusTesting);
+    it('status edition', sharedDetail.statusTesting.bind(this, 'Ready', 'In progress'));
 
     describe('assigned to edition', sharedDetail.assignedToTesting);
 
@@ -80,33 +80,25 @@ describe('User story detail', function(){
         it('create', async function() {
             let oldRelatedTaskCount = await usDetailHelper.relatedTasks().count();
 
-            usDetailHelper.createRelatedTasks('test', 1, 1);
+            await usDetailHelper.createRelatedTasks('test', 1, 1);
 
-            expect(utils.notifications.success.open()).to.be.eventually.true;
+            let relatedTaskCount = await usDetailHelper.relatedTasks().count();
 
-            utils.notifications.success.close();
-
-            let relatedTaskCount = usDetailHelper.relatedTasks().count();
-
-            expect(relatedTaskCount).to.be.eventually.equal(oldRelatedTaskCount + 1);
+            expect(relatedTaskCount).to.be.equal(oldRelatedTaskCount + 1);
         });
 
-        it('edit', function() {
-            usDetailHelper.editRelatedTasks(0, 'test2', 2, 2);
+        it('edit', async function() {
+            await usDetailHelper.editRelatedTasks(0, 'test2', 2, 2);
 
-            expect(utils.notifications.success.open()).to.be.eventually.true;
+            let count = await usDetailHelper.editRelatedTasksEnabled();
 
-            utils.notifications.success.close();
+            expect(count).to.be.equal.false;
         });
 
         it('delete', async function() {
             let oldRelatedTaskCount = await usDetailHelper.relatedTasks().count();
 
-            usDetailHelper.deleteRelatedTask(0);
-
-            expect(utils.notifications.success.open()).to.be.eventually.true;
-
-            utils.notifications.success.close();
+            await usDetailHelper.deleteRelatedTask(0);
 
             let relatedTaskCount = usDetailHelper.relatedTasks().count();
 

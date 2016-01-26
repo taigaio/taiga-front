@@ -58,22 +58,20 @@ shared.descriptionTesting = async function() {
     await notifications.success.close();
 }
 
-shared.statusTesting = async function() {
+shared.statusTesting = async function(status1 , status2) {
     let statusHelper = detailHelper.statusSelector();
 
     // Status 1
     await statusHelper.setStatus(1);
 
     let selectedStatus = await statusHelper.getSelectedStatus();
-    expect(selectedStatus).to.be.equal('In progress');
+    expect(selectedStatus).to.be.equal(status1);
 
     // Status 2
     await statusHelper.setStatus(2);
 
     let newSelectedStatus = await statusHelper.getSelectedStatus();
-    expect(newSelectedStatus).to.be.equal('Ready for test');
-
-    await notifications.success.close();
+    expect(newSelectedStatus).to.be.equal(status2);
 }
 
 shared.assignedToTesting = function() {

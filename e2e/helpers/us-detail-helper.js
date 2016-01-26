@@ -43,32 +43,30 @@ helper.clientRequirement = function() {
     return obj;
 };
 
-helper.relatedTaskForm = function(form, name, status, assigned_to) {
+helper.relatedTaskForm = async function(form, name, status, assigned_to) {
    form.$('input').sendKeys(name);
 
     let taskStatus = form.$('.task-status');
 
-    utils.popover.open(taskStatus, status);
+    await utils.popover.open(taskStatus, status);
 
     form.$('.task-assignedto').click();
 
     let assignToLightbox = commonHelper.assignToLightbox();
 
-    assignToLightbox.waitOpen();
-
-    assignToLightbox.selectFirst();
-
-    assignToLightbox.waitClose();
+    await assignToLightbox.waitOpen();
+    await assignToLightbox.selectFirst();
+    await assignToLightbox.waitClose();
 
     form.$('.icon-floppy').click();
 };
 
 helper.createRelatedTasks = function(name, status, assigned_to) {
-    $$('.related-tasks-buttons').get(0).click();
+    $('section[tg-related-tasks] .add-button').click();
 
     let form = $('.related-task-create-form');
 
-    helper.relatedTaskForm(form, status, assigned_to);
+    return helper.relatedTaskForm(form, status, assigned_to);
 };
 
 helper.editRelatedTasks = function(taskIndex, name, status, assigned_to) {
@@ -76,7 +74,11 @@ helper.editRelatedTasks = function(taskIndex, name, status, assigned_to) {
 
     task.$('.icon-edit').click();
 
-    helper.relatedTaskForm(task, status, assigned_to);
+    return helper.relatedTaskForm(task, status, assigned_to);
+};
+
+helper.editRelatedTasksEnabled = function() {
+    return $$('related-task-create-form.active');
 };
 
 helper.deleteRelatedTask = function(taskIndex, name, status, assigned_to) {
@@ -88,7 +90,7 @@ helper.deleteRelatedTask = function(taskIndex, name, status, assigned_to) {
         .click()
         .perform();
 
-    utils.lightbox.confirm.ok();
+    return utils.lightbox.confirm.ok();
 };
 
 helper.relatedTasks = function() {
