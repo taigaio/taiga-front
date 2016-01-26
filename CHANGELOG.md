@@ -23,6 +23,7 @@
         - Filter by 'use kanban', 'use scrum' or 'looking for people'.
 - i18n.
   - Add swedish (sv) translation.
+  - Add turkish (tr) translation.
 
 ### Misc
 - Sticky project navigation bar.
