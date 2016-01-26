@@ -25,9 +25,11 @@ describe('change password', function() {
         await $('#new-password').sendKeys('123456');
         await $('#retype-password').sendKeys('000');
 
-        $('button[type="submit"]').click();
+        $('.submit-button').click();
 
-        expect(utils.notifications.error.open()).to.be.eventually.equal(true);
+        let waitErrorOpen = await utils.notifications.error.open();
+
+        expect(waitErrorOpen).to.be.ok;
     });
 
     it('incorrect current password', async function() {
@@ -37,7 +39,9 @@ describe('change password', function() {
 
         $('button[type="submit"]').click();
 
-        expect(utils.notifications.error.open()).to.be.eventually.equal(true);
+        let waitErrorOpen = await utils.notifications.error.open();
+
+        expect(waitErrorOpen).to.be.ok;
     });
 
     it('change password', async function() {
@@ -47,7 +51,9 @@ describe('change password', function() {
 
         $('button[type="submit"]').click();
 
-        expect(utils.notifications.success.open()).to.be.eventually.equal(true);
+        let waitSuccessOpen = await utils.notifications.success.open();
+
+        expect(waitSuccessOpen).to.be.ok;
     });
 
     after(async function() {
@@ -61,6 +67,8 @@ describe('change password', function() {
 
         $('button[type="submit"]').click();
 
+        await utils.notifications.success.open();
+
         await browser.waitForAngular();
-    })
+    });
 });

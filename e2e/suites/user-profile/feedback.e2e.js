@@ -26,6 +26,8 @@ describe('feedback', function() {
 
         feedbackLightbox.$('button[type=submit]').click();
 
-        expect(utils.notifications.success.open()).to.be.eventually.equal(true);
+        let notificationOpen = await utils.notifications.success.open();
+
+        expect(notificationOpen).to.be.true;
     });
 });

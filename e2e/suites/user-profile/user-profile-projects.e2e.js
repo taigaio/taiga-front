@@ -15,7 +15,7 @@ describe('user profile - projects', function() {
 
             $$('.tab').get(1).click();
 
-            browser.waitForAngular();
+            await browser.waitForAngular();
 
             utils.common.takeScreenshot('user-profile', 'other-user-projects');
         });

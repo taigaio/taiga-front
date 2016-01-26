@@ -15,7 +15,7 @@ describe('user profile - contacts', function() {
 
             $$('.tab').get(4).click();
 
-            browser.waitForAngular();
+            await browser.waitForAngular();
 
             utils.common.takeScreenshot('user-profile', 'current-user-contacts');
         });
@@ -35,7 +35,7 @@ describe('user profile - contacts', function() {
 
             $$('.tab').get(5).click();
 
-            browser.waitForAngular();
+            await browser.waitForAngular();
 
             utils.common.takeScreenshot('user-profile', 'other-user-contacts');
         });

@@ -15,7 +15,7 @@ describe('user profile - votes', function() {
 
             $$('.tab').get(2).click();
 
-            browser.waitForAngular();
+            await browser.waitForAngular();
 
             utils.common.takeScreenshot('user-profile', 'current-user-votes');
         });
@@ -105,7 +105,7 @@ describe('user profile - votes', function() {
 
             $$('.tab').get(3).click();
 
-            browser.waitForAngular();
+            await browser.waitForAngular();
 
             utils.common.takeScreenshot('user-profile', 'other-user-votes');
         });
