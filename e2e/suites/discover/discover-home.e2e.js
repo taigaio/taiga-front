@@ -19,45 +19,47 @@ describe('discover', () => {
     });
 
     describe('most liked', () => {
-        it('has projects', () => {
+        it('has projects', async () => {
             let projects = discoverHelper.likedProjects();
 
-            expect(projects.count()).to.be.eventually.above(0);
+            let projectCount = await projects.count();
+
+            expect(projectCount).to.be.above(0);
         });
 
-        it('rearrange', () => {
+        it('rearrange', async () => {
             discoverHelper.rearrangeLike(3);
 
-            let filterText = discoverHelper.getLikeFilterText();
+            let filterText = await discoverHelper.getLikeFilterText();
             let projects = discoverHelper.likedProjects();
 
-            expect(filterText).to.be.eventually.equal('All time');
-            expect(projects.count()).to.be.eventually.equal(5);
+            expect(filterText).to.be.equal('All time');
+            expect(await projects.count()).to.be.equal(5);
 
         });
     });
 
     describe('most active', () => {
-        it('has projects', () => {
+        it('has projects', async () => {
             let projects = discoverHelper.activeProjects();
 
-            expect(projects.count()).to.be.eventually.above(0);
+            expect(await projects.count()).to.be.above(0);
         });
 
-        it('rearrange', () => {
+        it('rearrange', async () => {
             discoverHelper.rearrangeActive(3);
 
-            let filterText = discoverHelper.getActiveFilterText();
+            let filterText = await discoverHelper.getActiveFilterText();
             let projects = discoverHelper.activeProjects();
 
-            expect(filterText).to.be.eventually.equal('All time');
-            expect(projects.count()).to.be.eventually.equal(5);
+            expect(filterText).to.be.equal('All time');
+            expect(await projects.count()).to.be.equal(5);
         });
     });
 
-    it('featured projects', () => {
+    it('featured projects', async () => {
         let projects = discoverHelper.featuredProjects();
 
-        expect(projects.count()).to.be.eventually.above(0);
+        expect(await projects.count()).to.be.eventually.above(0);
     });
 });

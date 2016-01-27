@@ -14,16 +14,16 @@ describe('home', function() {
         utils.common.takeScreenshot("home", "dashboard");
     });
 
-    it('working on filled', function() {
-        return expect($$('.working-on div[tg-duty]').count()).to.be.eventually.above(0);
+    it('working on filled', async function() {
+        return expect(await $$('.working-on div[tg-duty]').count()).to.be.above(0);
     });
 
-    it('watching filled', function() {
-        return expect($$('.watching div[tg-duty]').count()).to.be.eventually.above(0);
+    it('watching filled', async function() {
+        return expect(await $$('.watching div[tg-duty]').count()).to.be.above(0);
     });
 
-    it('project list filled', function() {
-        return expect($$('.home-project-list-single').count()).to.be.eventually.above(0);
+    it('project list filled', async function() {
+        return expect(await $$('.home-project').count()).to.be.above(0);
     });
 
     describe('projects list', function() {
@@ -34,16 +34,16 @@ describe('home', function() {
             utils.common.takeScreenshot("home", "projects");
         });
 
-        it('open create project lightbox', function() {
+        it('open create project lightbox', async function() {
             $('.master .create-project-btn').click();
 
-            return expect(utils.lightbox.open('div[tg-lb-create-project]')).to.be.eventually.equal(true);
+            return expect(await utils.lightbox.open('div[tg-lb-create-project]')).to.be.equal(true);
         });
 
-        it('close create project lightbox', function() {
+        it('close create project lightbox', async function() {
             $('div[tg-lb-create-project] .icon-delete').click();
 
-            return expect(utils.lightbox.close('div[tg-lb-create-project]')).to.be.eventually.equal(true);
+            return expect(await utils.lightbox.close('div[tg-lb-create-project]')).to.be.equal(true);
         });
     });
 
@@ -55,7 +55,7 @@ describe('home', function() {
 
             let dragableElements = element.all(by.css('.list-itemtype-project'));
             let dragElement = dragableElements.get(3);
-            let dragElementLink = dragElement.element(by.css('a'));
+            let dragElementLink = dragElement.element(by.css('h2 a'));
 
             await utils.common.waitLoader();
 
@@ -65,23 +65,23 @@ describe('home', function() {
             await browser.waitForAngular();
         });
 
-        utils.common.browserSkip('firefox', 'projects list has the new order', function() {
-            var firstElement = $$('.list-itemtype-project a').first().getText();
+        utils.common.browserSkip('firefox', 'projects list has the new order', async function() {
+            var firstElement = await $$('.list-itemtype-project h2 a').first().getText();
 
-            expect(firstElement).to.be.eventually.equal(draggedElementText);
+            expect(firstElement).to.be.equal(draggedElementText);
         });
 
-        utils.common.browserSkip('firefox', 'projects menu has the new order', function() {
-            var firstElementText = $$('div[tg-dropdown-project-list] ul a').first().getInnerHtml();
+        utils.common.browserSkip('firefox', 'projects menu has the new order', async function() {
+            var firstElementText = await $$('div[tg-dropdown-project-list] ul a').first().getInnerHtml();
 
-            expect(firstElementText).to.be.eventually.equal(draggedElementText);
+            expect(firstElementText).to.be.equal(draggedElementText);
         });
 
         after(async function() {
             //restore project position
             let dragableElements = element.all(by.css('.list-itemtype-project'));
             let dragElement = dragableElements.get(0);
-            let dragElementLink = dragElement.element(by.css('a'));
+            let dragElementLink = dragElement.element(by.css('h2 a'));
 
             await utils.common.waitLoader();
 
