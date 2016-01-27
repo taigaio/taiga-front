@@ -671,7 +671,7 @@ BacklogDirective = ($repo, $rootscope, $translate) ->
             ussCurrent = _($scope.userstories)
 
             # Remove them from backlog
-            #$scope.userstories = ussCurrent.without.apply(ussCurrent, selectedUss).value()
+            $scope.userstories = ussCurrent.without.apply(ussCurrent, selectedUss).value()
 
             extraPoints = _.map(selectedUss, (v, k) -> v.total_points)
             totalExtraPoints =  _.reduce(extraPoints, (acc, num) -> acc + num)
