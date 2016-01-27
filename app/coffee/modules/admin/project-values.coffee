@@ -381,6 +381,7 @@ module.directive("tgColorSelection", ColorSelectionDirective)
 TEXT_TYPE = "text"
 MULTILINE_TYPE = "multiline"
 DATE_TYPE = "date"
+URL_TYPE = "url"
 
 
 TYPE_CHOICES = [
@@ -395,6 +396,10 @@ TYPE_CHOICES = [
     {
         key: DATE_TYPE,
         name: "ADMIN.CUSTOM_FIELDS.FIELD_TYPE_DATE"
+    },
+    {
+        key: URL_TYPE,
+        name: "ADMIN.CUSTOM_FIELDS.FIELD_TYPE_URL"
     }
 ]
 
@@ -555,7 +560,6 @@ ProjectCustomAttributesDirective = ($log, $confirm, animationFrame, $translate) 
 
         $el.on "click", ".js-add-custom-field-button", (event) ->
             event.preventDefault()
-
             showCreateForm()
 
         $el.on "click", ".js-create-custom-field-button", debounce 2000, (event) ->
@@ -567,7 +571,6 @@ ProjectCustomAttributesDirective = ($log, $confirm, animationFrame, $translate) 
 
         $el.on "click", ".js-cancel-new-custom-field-button", (event) ->
             event.preventDefault()
-
             cancelCreate()
 
         $el.on "keyup", ".js-new-custom-field input", (event) ->
