@@ -27,7 +27,7 @@ describe('discover search', () => {
         it('filters', async () => {
             let htmlChanges = await utils.common.outerHtmlChanges(discoverHelper.searchProjectsList());
 
-            discoverHelper.searchFilter(1);
+            discoverHelper.searchFilter(3);
 
             await htmlChanges();
 
@@ -35,17 +35,17 @@ describe('discover search', () => {
 
             let projects = discoverHelper.searchProjects();
 
-            expect(projects.count()).to.be.eventually.above(0);
-            expect(url).to.be.equal(browser.params.glob.host + 'discover/search?filter=kanban');
+            expect(await projects.count()).to.be.above(0);
+            expect(url).to.be.equal(browser.params.glob.host + 'discover/search?filter=people');
         });
 
-        it('search by text', () => {
+        it('search by text', async () => {
             discoverHelper.searchInput().sendKeys('Project Example 0');
 
             discoverHelper.sendSearch();
 
             let projects = discoverHelper.searchProjects();
-            expect(projects.count()).to.be.eventually.equal(1);
+            expect(await projects.count()).to.be.equal(1);
         });
     });
 
@@ -72,16 +72,16 @@ describe('discover search', () => {
 
             let url = await browser.getCurrentUrl();
 
-            expect(projects.count()).to.be.eventually.above(0);
+            expect(await projects.count()).to.be.above(0);
             expect(url).to.be.equal(browser.params.glob.host + 'discover/search?order_by=-total_fans');
         });
 
-        it('clear', () => {
+        it('clear', async () => {
             discoverHelper.clearOrder();
 
             let orderSelector = discoverHelper.orderSelectorWrapper();
 
-            expect(orderSelector.isPresent()).to.be.eventually.equal(false);
+            expect(await orderSelector.isPresent()).to.be.equal(false);
         });
     });
 
@@ -108,16 +108,16 @@ describe('discover search', () => {
 
             let url = await browser.getCurrentUrl();
 
-            expect(projects.count()).to.be.eventually.above(0);
+            expect(await projects.count()).to.be.above(0);
             expect(url).to.be.equal(browser.params.glob.host + 'discover/search?order_by=-total_activity');
         });
 
-        it('clear', () => {
+        it('clear', async () => {
             discoverHelper.clearOrder();
 
             let orderSelector = discoverHelper.orderSelectorWrapper();
 
-            expect(orderSelector.isPresent()).to.be.eventually.equal(false);
+            expect(await orderSelector.isPresent()).to.be.equal(false);
         });
     });
 });

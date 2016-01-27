@@ -60,6 +60,6 @@ describe('discover', () => {
     it('featured projects', async () => {
         let projects = discoverHelper.featuredProjects();
 
-        expect(await projects.count()).to.be.eventually.above(0);
+        expect(await projects.count()).to.be.above(0);
     });
 });

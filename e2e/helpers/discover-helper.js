@@ -83,5 +83,5 @@ helper.orderSelectorWrapper = function() {
 };
 
 helper.clearOrder = function() {
-    helper.orderSelectorWrapper().$('.results a').click();
+    helper.orderSelectorWrapper().$('.results').click();
 };
