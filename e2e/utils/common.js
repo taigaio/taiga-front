@@ -70,7 +70,6 @@ common.link = async function(el) {
         .mouseMove({x: 10, y: 10})
         .perform();
 
-
     await browser.wait(async function() {
         let href = await el.getAttribute('href');
 

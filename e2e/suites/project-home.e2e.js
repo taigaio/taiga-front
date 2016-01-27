@@ -16,9 +16,6 @@ describe('project home', function() {
         await utils.common.takeScreenshot("project", "home");
     });
 
-    it('go to project', async function() {
-        await utils.common.goToFirstProject();
-    });
 /*
     it('timeline filled', function() {
         expect($$('div[tg-user-timeline-item]').count()).to.be.eventually.above(0);
@@ -49,10 +46,10 @@ describe('project home', function() {
 
         await browser.waitForAngular();
 
-        let likeActive = utils.common.hasClass(link, 'active');
+        let likeActive = await utils.common.hasClass(link, 'active');
         let likesCounter = parseInt(await link.$('.track-button-counter').getText(), 10);
 
-        expect(likeActive).to.be.eventually.false;
+        expect(likeActive).to.be.false;
         expect(likesCounter).to.be.equal(likesCounterOld - 1);
     });
 
@@ -65,10 +62,10 @@ describe('project home', function() {
         await browser.waitForAngular();
         await utils.common.takeScreenshot("project", "home-like");
 
-        let likeActive = utils.common.hasClass(link, 'active');
+        let likeActive = await utils.common.hasClass(link, 'active');
         let likesCounter = parseInt(await link.$('.track-button-counter').getText(), 10);
 
-        expect(likeActive).to.be.eventually.true;
+        expect(likeActive).to.be.true;
         expect(likesCounter).to.be.equal(likesCounterOld + 1);
     });
 
@@ -91,10 +88,10 @@ describe('project home', function() {
             return await utils.common.hasClass(watchOptions, 'hidden');
         }, 4000);
 
-        let watchActive = utils.common.hasClass(link, 'active');
+        let watchActive = await utils.common.hasClass(link, 'active');
         let watchCounter = parseInt(await link.$('.track-button-counter').getText(), 10);
 
-        expect(watchActive).to.be.eventually.false;
+        expect(watchActive).to.be.false;
         expect(watchCounter).to.be.equal(watchCounterOld - 1);
     });
 
@@ -117,12 +114,12 @@ describe('project home', function() {
             return await utils.common.hasClass(watchOptions, 'hidden');
         }, 4000);
 
-        let watchActive = utils.common.hasClass(link, 'active');
+        let watchActive = await utils.common.hasClass(link, 'active');
         let watchCounter = parseInt(await link.$('.track-button-counter').getText(), 10);
 
         await utils.common.takeScreenshot("project", "home-watch");
 
-        expect(watchActive).to.be.eventually.true;
+        expect(watchActive).to.be.true;
         expect(watchCounter).to.be.equal(watchCounterOld + 1);
     });
 
