@@ -220,6 +220,7 @@ shared.attachmentTesting = async function() {
     var fileToUpload = commonUtil.uploadFilePath();
 
     await attachmentHelper.upload(fileToUpload, 'This is the testing name ' + date);
+    await browser.sleep(5000);
 
     // Check set name
     let name = await attachmentHelper.getLastAttachmentName();

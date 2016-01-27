@@ -54,10 +54,10 @@ helper.lightboxAttachment = async function() {
     var fileToUpload1 = utils.common.uploadImagePath();
     var fileToUpload2 = utils.common.uploadFilePath();
 
-    await utils.common.uploadFile(addAttachment, fileToUpload1)
-    await utils.common.uploadFile(addAttachment, fileToUpload2)
+    await utils.common.uploadFile(addAttachment, fileToUpload1);
+    await utils.common.uploadFile(addAttachment, fileToUpload2);
 
-    el.$$('.attachment-delete').get(0).click()
+    el.$$('.attachment-delete').get(0).click();
 
     let newCountAttachments = await el.$$('.single-attachment').count();
 

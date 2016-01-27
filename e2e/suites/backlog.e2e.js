@@ -23,6 +23,7 @@ describe('backlog', function() {
             backlogHelper.openNewUs();
 
             createUSLightbox = backlogHelper.getCreateEditUsLightbox();
+
             await createUSLightbox.waitOpen();
         });
 
@@ -35,8 +36,8 @@ describe('backlog', function() {
             createUSLightbox.subject().sendKeys('subject');
 
             // roles
-            createUSLightbox.setRole(1, 3);
-            createUSLightbox.setRole(3, 4);
+            await createUSLightbox.setRole(1, 3);
+            await createUSLightbox.setRole(3, 4);
 
             let totalPoints = await createUSLightbox.getRolePoints();
 
@@ -73,6 +74,8 @@ describe('backlog', function() {
             createUSLightbox.submit();
 
             await utils.lightbox.close(createUSLightbox.el);
+
+            await browser.waitForAngular();
 
             let newUsCount = await backlogHelper.userStories().count();
 
@@ -128,10 +131,10 @@ describe('backlog', function() {
             editUSLightbox.subject().sendKeys('subjectedit');
 
             // roles
-            editUSLightbox.setRole(1, 3);
-            editUSLightbox.setRole(2, 3);
-            editUSLightbox.setRole(3, 3);
-            editUSLightbox.setRole(4, 3);
+            await editUSLightbox.setRole(0, 3);
+            await editUSLightbox.setRole(1, 3);
+            await editUSLightbox.setRole(2, 3);
+            await editUSLightbox.setRole(3, 3);
 
             let totalPoints = await editUSLightbox.getRolePoints();
 
@@ -175,9 +178,13 @@ describe('backlog', function() {
     });
 
     it('edit points inline', async function() {
+        let usPointsOriginal = await backlogHelper.getUsPoints(0, 1, 1);
+
         await backlogHelper.setUsPoints(0, 1, 1);
 
-        expect(utils.notifications.success.open()).to.be.eventually.true;
+        let usPointsNew = await backlogHelper.getUsPoints(0);
+
+        expect(usPointsOriginal).not.to.be.equal(usPointsNew);
     });
 
     it('delete US', async function() {
@@ -197,7 +204,6 @@ describe('backlog', function() {
 
         let dragElement = dragableElements.get(1);
         let dragElementHandler = dragElement.$('.icon-drag-v');
-
         let draggedElementRef = await backlogHelper.getUsRef(dragElement);
 
         await utils.common.drag(dragElementHandler, dragableElements.get(0));
@@ -334,7 +340,7 @@ describe('backlog', function() {
         let firstInput = dragableElements.get(0).$('input[type="checkbox"]');
         let lastInput = dragableElements.get(3).$('input[type="checkbox"]');
 
-        browser.actions()
+        await browser.actions()
             .mouseMove(firstInput)
             .keyDown(protractor.Key.SHIFT)
             .click()
@@ -549,7 +555,9 @@ describe('backlog', function() {
 
             await utils.common.drag(dragElement, dragableElements.get(0));
 
-            expect(utils.notifications.error.open()).to.be.eventually.true;
+            let waitErrorOpen = await utils.notifications.error.open();
+
+            expect(waitErrorOpen).to.be.true;
 
             await utils.notifications.error.close();
         });
@@ -562,7 +570,9 @@ describe('backlog', function() {
 
             await transition();
 
-            expect(menu.getCssValue('width')).to.be.eventually.equal('0px');
+            let waitWidth = await menu.getCssValue('width');
+
+            expect(waitWidth).to.be.equal('0px');
         });
     });
 

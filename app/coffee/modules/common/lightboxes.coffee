@@ -373,8 +373,7 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
                 broadcastEvent = "usform:edit:success"
 
             promise.then (data) ->
-                createAttachments(data)
-                deleteAttachments(data)
+                deleteAttachments(data).then () =>  createAttachments(data)
 
                 return data
 
