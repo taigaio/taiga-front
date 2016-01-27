@@ -44,10 +44,10 @@ describe('kanban', function() {
             createUSLightbox.subject().sendKeys(formFields.subject);
 
             // roles
-            createUSLightbox.setRole(1, 3);
-            createUSLightbox.setRole(2, 3);
-            createUSLightbox.setRole(3, 3);
-            createUSLightbox.setRole(4, 3);
+            await createUSLightbox.setRole(0, 3);
+            await createUSLightbox.setRole(1, 3);
+            await createUSLightbox.setRole(2, 3);
+            await createUSLightbox.setRole(3, 3);
 
             let totalPoints = await createUSLightbox.getRolePoints();
 
@@ -71,7 +71,7 @@ describe('kanban', function() {
 
         it('screenshots', function() {
             utils.common.takeScreenshot('kanban', 'create-us-filled');
-        })
+        });
 
         it('send form', async function() {
             createUSLightbox.submit();
@@ -117,10 +117,10 @@ describe('kanban', function() {
             subject.sendKeys(formFields.subject);
 
             // roles
-            createUSLightbox.setRole(1, 3);
-            createUSLightbox.setRole(2, 3);
-            createUSLightbox.setRole(3, 3);
-            createUSLightbox.setRole(4, 3);
+            await createUSLightbox.setRole(0, 3);
+            await createUSLightbox.setRole(1, 3);
+            await createUSLightbox.setRole(2, 3);
+            await createUSLightbox.setRole(3, 3);
 
             let totalPoints = await createUSLightbox.getRolePoints();
 
