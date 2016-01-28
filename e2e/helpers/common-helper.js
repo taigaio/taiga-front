@@ -62,4 +62,4 @@ helper.lightboxAttachment = async function() {
     let newCountAttachments = await el.$$('.single-attachment').count();
 
     expect(countAttachments + 1).to.be.equal(newCountAttachments);
-}
+};

@@ -214,7 +214,7 @@ describe('backlog', function() {
         expect(firstElementTextRef).to.be.equal(draggedElementRef);
     });
 
-    it('reorder multiple us', async function() {
+    utils.common.browserSkip(['firefox', 'internet explorer'], 'reorder multiple us', async function() {
         let dragableElements = backlogHelper.userStories();
 
         let count = await dragableElements.count();
@@ -243,7 +243,7 @@ describe('backlog', function() {
         expect(elementRef1).to.be.equal(draggedRefs[1]);
     });
 
-    it('drag multiple us to milestone', async function() {
+    utils.common.browserSkip(['firefox', 'internet explorer'], 'drag multiple us to milestone', async function() {
         let sprint = backlogHelper.sprints().get(0);
         let initUssSprintCount = await backlogHelper.getSprintUsertories(sprint).count();
 
@@ -346,6 +346,7 @@ describe('backlog', function() {
             .click()
             .mouseMove(lastInput)
             .click()
+            .keyUp(protractor.Key.SHIFT)
             .perform();
 
         let count = await backlogHelper.selectedUserStories().count();
@@ -623,7 +624,7 @@ describe('backlog', function() {
             expect(closedSprints).to.be.equal(0);
         });
 
-        it('open sprint by drag open US to closed sprint', async function() {
+        utils.common.browserSkip(['firefox', 'internet explorer'], 'open sprint by drag open US to closed sprint', async function() {
             backlogHelper.toggleClosedSprints();
 
             await backlogHelper.setUsStatus(1, 0);
