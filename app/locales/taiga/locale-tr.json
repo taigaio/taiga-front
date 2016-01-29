@@ -109,7 +109,7 @@
         "SEE_USER_PROFILE": " {{username }} profilini gör",
         "USER_STORY": "Kullanıcı hikayesi",
         "TASK": "Görev",
-        "ISSUE": "Talep",
+        "ISSUE": "Sorun",
         "TAGS": {
             "PLACEHOLDER": "Ben O'yum! Etiketle beni...",
             "DELETE": "Etiket sil",
@@ -246,11 +246,11 @@
                 "DELETE_TASKS": "Görevleri sil"
             },
             "ISSUES": {
-                "NAME": "Talepler",
-                "VIEW_ISSUES": "Talepleri gör",
-                "ADD_ISSUES": "Talepleri ekle",
-                "MODIFY_ISSUES": "Talepleri değiştir",
-                "DELETE_ISSUES": "Talepleri sil"
+                "NAME": "Sorunlar",
+                "VIEW_ISSUES": "Sorunları gör",
+                "ADD_ISSUES": "Sorunları ekle",
+                "MODIFY_ISSUES": "Sorunları değiştir",
+                "DELETE_ISSUES": "Sorunları sil"
             },
             "WIKI": {
                 "NAME": "Wiki",
@@ -269,7 +269,7 @@
         }
     },
     "LOGIN": {
-        "PAGE_TITLE": "Bağlan - Taiga",
+        "PAGE_TITLE": "Giriş - Taiga",
         "PAGE_DESCRIPTION": "Yeni girişimciler, çevik geliştiriciler ve tasarımcılar için çalışmaları gerçekten eğlenceli hale getiren basit, güzel bir proje yönetim platformu Taiga ya giriş yapılıyor."
     },
     "AUTH": {
@@ -282,7 +282,7 @@
         "HEADER": "Zaten bir Taiga hesabım var",
         "PLACEHOLDER_AUTH_NAME": "Kullanıcı adı yada e-posta (büyük küçük harf duyarlı)",
         "LINK_FORGOT_PASSWORD": "Unuttunuz mu?",
-        "TITLE_LINK_FORGOT_PASSWORD": "Şifrenizi Unuttunuz mu?",
+        "TITLE_LINK_FORGOT_PASSWORD": "Parolanızı mı unuttunuz?",
         "ACTION_ENTER": "Giriş",
         "ACTION_SIGN_IN": "Giriş",
         "PLACEHOLDER_AUTH_PASSWORD": "Parola (büyük küçük harf duyarlı)"
@@ -350,8 +350,8 @@
     },
     "HOME": {
         "PAGE_TITLE": "AnaSayfa - Taiga",
-        "PAGE_DESCRIPTION": "Atanmış ve izlenen kullanıcı hikayeleri, talepler, görevlerin yanı sıra ana projeleriniz için Taiga ana sayfanız",
-        "EMPTY_WORKING_ON": "<strong>Bomboş hissettiriyor degil mi?</strong> Taiga ile çalışmaya başlayın ve burada üzerinde çalıştığınız hikayeleri, görevleri ve talepleri göreceksiniz.",
+        "PAGE_DESCRIPTION": "Atanmış ve izlenen kullanıcı hikayeleri, işler ve sorunların yanı sıra ana projeleriniz için Taiga ana sayfanız",
+        "EMPTY_WORKING_ON": "<strong>Bomboş hissettiriyor degil mi?</strong> Taiga ile çalışmaya başlayın ve burada üzerinde çalıştığınız hikayeleri, işleri ve sorunları göreceksiniz.",
         "EMPTY_WATCHING": "Projelerinizdeki Kullanıcı Hikayelerini, İşleri ve Sorunları <strong>takip edin</strong> ve değişikliklerden haberdar olun :) ",
         "EMPTY_PROJECT_LIST": "Henüz bir projeniz yok",
         "WORKING_ON_SECTION": "Üzerinde çalışılıyor",
@@ -426,11 +426,11 @@
             "TITLE": "Modüller",
             "ENABLE": "Etkinleştir",
             "DISABLE": "Pasifleştir",
-            "BACKLOG": "Birikmiş İşler",
+            "BACKLOG": "Havuz",
             "BACKLOG_DESCRIPTION": "Yeni gelen ve önceliklendirilmiş işler için düzenli bir görünüm elde etmek için kullanıcı hikayelerinizi yönetin.",
             "KANBAN": "Kanban",
             "KANBAN_DESCRIPTION": "Bu pano ile projenizi güzel bir şekilde düzenleyin.",
-            "ISSUES": "Talepler",
+            "ISSUES": "Sorunlar",
             "ISSUES_DESCRIPTION": "Proje ile ilgili hataları, sorular ve geliştirmeleri izle. Hiçbir şeyi kaçırma!!",
             "WIKI": "Wiki",
             "WIKI_DESCRIPTION": "Diğerleriyle işbirliği yaparak içerik ekleyin, düzenleyin ve silin. Burası projenizin dokümantasyonu için doğru yer.",
@@ -477,7 +477,7 @@
         "CSV": {
             "SECTION_TITLE_US": "kullanıcı hikayeleri raporları",
             "SECTION_TITLE_TASK": "görevlere ait raporlar",
-            "SECTION_TITLE_ISSUE": "talep raporları",
+            "SECTION_TITLE_ISSUE": "sorun raporları",
             "DOWNLOAD": "CSV İndir",
             "URL_FIELD_PLACEHOLDER": "Lütfen CSV url'ini yeniden oluşturun",
             "TITLE_REGENERATE_URL": "CSV url ini yeniden oluştur",
@@ -486,13 +486,13 @@
         },
         "CUSTOM_FIELDS": {
             "TITLE": "Özel Alanlar",
-            "SUBTITLE": "Görevleriniz, talepleriniz ve kullanıcı hikayeleriniz için özel alan belirtin",
+            "SUBTITLE": "Hikayeleriniz, işleriniz ve sorunlarınız için özel alanları tanımlayın",
             "US_DESCRIPTION": "Kullanıcı hikayeleri özel alanları",
             "US_ADD": "Kullanıcı hikayelerine özel bir alan ekleyin",
             "TASK_DESCRIPTION": "Görevlere ait özel alanlar",
             "TASK_ADD": "Görevlere özel alan ekle",
-            "ISSUE_DESCRIPTION": "Taleplere ait özel alanlar",
-            "ISSUE_ADD": "Taleplere yeni bir özel alan ekle",
+            "ISSUE_DESCRIPTION": "Sorunlar için özel alanlar",
+            "ISSUE_ADD": "Sorunlara yeni bir özel alan ekle",
             "FIELD_TYPE_TEXT": "Metin",
             "FIELD_TYPE_MULTI": "Çoklu-satır",
             "FIELD_TYPE_DATE": "Tarih"
@@ -510,27 +510,27 @@
         },
         "PROJECT_VALUES_PRIORITIES": {
             "TITLE": "Öncelikler",
-            "SUBTITLE": "Taleplerinizin sahip olacağı önceliği belirtiniz",
-            "ISSUE_TITLE": "Talep öncelikleri",
+            "SUBTITLE": "Sorunların alabileceği öncelik seviyelerini belirtin",
+            "ISSUE_TITLE": "Sorun öncelikleri",
             "ACTION_ADD": "Yeni öncelik ekle"
         },
         "PROJECT_VALUES_SEVERITIES": {
             "TITLE": "Önem Dereceleri",
-            "SUBTITLE": "Taleplerinizin sahip olacağı önem derecesini belirleyin",
-            "ISSUE_TITLE": "Talep önem dereceleri",
+            "SUBTITLE": "Sorunların alabileceği önem derecelerini tanımlayın",
+            "ISSUE_TITLE": "Sorun önem dereceleri",
             "ACTION_ADD": "Yeni önem derecesi ekle"
         },
         "PROJECT_VALUES_STATUS": {
             "TITLE": "Durum",
-            "SUBTITLE": "Görevleriniz, talepleriniz ve kullanıcı hikayeleriniz için ayarlanacak durumu belirleyin",
+            "SUBTITLE": "Hikayeleriniz, işleriniz ve sorunlarınızın alabileceği durumları tanımlayın",
             "US_TITLE": "KH Durumları",
             "TASK_TITLE": "Görev Durumları",
-            "ISSUE_TITLE": "Talep Durumları"
+            "ISSUE_TITLE": "Sorun Durumları"
         },
         "PROJECT_VALUES_TYPES": {
             "TITLE": "Tipler",
             "SUBTITLE": "Taleblerinizin olası tiplerini belirtin",
-            "ISSUE_TITLE": "Talep tipleri",
+            "ISSUE_TITLE": "Sorun türleri",
             "ACTION_ADD": "Ekle yeni {{objName}}"
         },
         "ROLES": {
@@ -626,8 +626,8 @@
             "LABEL_TASK_STATUS": "Görev durum seçici için varsayılan değer",
             "LABEL_PRIORITY": "Önceli seçicisi için varsayılan değer",
             "LABEL_SEVERITY": "Önem derecesi seçicisi için varsayılan değer",
-            "LABEL_ISSUE_TYPE": "Talep tipi seçici için varsayılan değer",
-            "LABEL_ISSUE_STATUS": "Talep durumu seçici için varsayılan değer"
+            "LABEL_ISSUE_TYPE": "Sorun tipi seçici için varsayılan değer",
+            "LABEL_ISSUE_STATUS": "Sorun durumu seçici için varsayılan değer"
         },
         "STATUS": {
             "PLACEHOLDER_WRITE_STATUS_NAME": "Yeni durum için bir isim yaz"
@@ -716,8 +716,8 @@
             "FILTER_TYPE_USER_STORIES_TITLES": "Sadece kullanıcı hikayelerini göster",
             "FILTER_TYPE_TASKS": "Görevler",
             "FILTER_TYPE_TASK_TITLES": "Sadece görevleri göster",
-            "FILTER_TYPE_ISSUES": "Talepler ",
-            "FILTER_TYPE_ISSUES_TITLE": "Sadece talepleri göster",
+            "FILTER_TYPE_ISSUES": "Sorunlar ",
+            "FILTER_TYPE_ISSUES_TITLE": "Sadece sorunları göster",
             "EMPTY_TITLE": "Görünüşe göre burada gösterilecek bir şey yok."
         }
     },
@@ -740,9 +740,9 @@
         "SECTION": {
             "SEARCH": "Ara",
             "TIMELINE": "Zaman Çizelgesi",
-            "BACKLOG": "Birikmiş İşler",
+            "BACKLOG": "Havuz",
             "KANBAN": "Kanban",
-            "ISSUES": "Talepler ",
+            "ISSUES": "Sorunlar",
             "WIKI": "Wiki",
             "TEAM": "Takım",
             "MEETUP": "Toplantı",
@@ -837,7 +837,7 @@
             "HELP_TEXT": "Eğer kullanıcılar önceden Taigaya kayıt olmuşlarsa, otomatik olarak ekleneceklerdir. Eğer olmamışlarsa bir davet mektubu alacaklardır."
         },
         "CREATE_ISSUE": {
-            "TITLE": "Talep Ekle"
+            "TITLE": "Sorun Ekle"
         },
         "FEEDBACK": {
             "TITLE": "Bize birşeyler anlat..",
@@ -888,7 +888,7 @@
         "TOTAL_POINTS": "toplam puanlar",
         "ADD": "+ Yeni bir Kullanıcı Hikayesi ekle",
         "ADD_BULK": "Toplu halde yeni Kullanıcı Hikayeleri ekle",
-        "PROMOTED": "Bu KH 'sinin yükseltildiği talep:",
+        "PROMOTED": "Bu hikayenin temelindeki sorun:",
         "TITLE_LINK_GO_TO_ISSUE": "Talebe git",
         "EXTERNAL_REFERENCE": "Bu KH 'ni oluşturulduğu",
         "GO_TO_EXTERNAL_REFERENCE": "Kökenine git ",
@@ -962,7 +962,7 @@
             "ATTACHMENTS": "ekler",
             "IS_DEPRECATED": "kaldırıldı",
             "ORDER": "sıra",
-            "BACKLOG_ORDER": "birikmiş iş sırası",
+            "BACKLOG_ORDER": "havuz sıralaması",
             "SPRINT_ORDER": "koşu sırası",
             "KANBAN_ORDER": "kanban sırası",
             "TASKBOARD_ORDER": "Görev panosu sırası",
@@ -970,9 +970,9 @@
         }
     },
     "BACKLOG": {
-        "PAGE_TITLE": "Birikmiş İşler - {{projectName}}",
+        "PAGE_TITLE": "Havuz - {{projectName}}",
         "PAGE_DESCRIPTION": "{{projectName}} projesinin koşuları ve kullanıcı hikayeleriyle birlikte havuz paneli: {{projectDescription}}",
-        "SECTION_NAME": "Birikmiş İşler",
+        "SECTION_NAME": "Havuz",
         "CUSTOMIZE_GRAPH": "Havuz grafiğinizi özelleştirin",
         "CUSTOMIZE_GRAPH_TEXT": "Projenizin gelişimini görebileceğiniz güzel bir grafik için koşu ve puanları ayarlayın",
         "CUSTOMIZE_GRAPH_ADMIN": "Yönetim",
@@ -1134,20 +1134,20 @@
         "SUCCESS": "Honki ponkiler e-postanızı güncelledi"
     },
     "ISSUES": {
-        "PAGE_TITLE": "Talepler - {{projectName}}",
-        "PAGE_DESCRIPTION": "{{projectName}} projesinin talep listesi paneli: {{projectDescription}}",
-        "LIST_SECTION_NAME": "Talepler",
-        "SECTION_NAME": "Talep detayları",
-        "ACTION_NEW_ISSUE": "+ YENİ TALEP",
+        "PAGE_TITLE": "Sorunlar - {{projectName}}",
+        "PAGE_DESCRIPTION": "{{projectName}} projesinin sorun listesi paneli: {{projectDescription}}",
+        "LIST_SECTION_NAME": "Sorunlar",
+        "SECTION_NAME": "Sorun detayları",
+        "ACTION_NEW_ISSUE": "+ YENİ SORUN",
         "ACTION_PROMOTE_TO_US": "Kullanıcı Hikayesine Terfi Ettir",
         "PLACEHOLDER_FILTER_NAME": "Filtre adı yazın ve enter a basın",
-        "PROMOTED": "Bu talep kullanıcı hikayesine terfi ettirildi:",
+        "PROMOTED": "Bu sorun, kullanıcı hikayesine yükseltildi:",
         "EXTERNAL_REFERENCE": "Bu talebin oluşturulduğu ",
         "GO_TO_EXTERNAL_REFERENCE": "Kökenine git",
         "BLOCKED": "Bu sorun engelli",
-        "TITLE_PREVIOUS_ISSUE": "önceki talep",
-        "TITLE_NEXT_ISSUE": "sonraki talep",
-        "ACTION_DELETE": "Talep sil",
+        "TITLE_PREVIOUS_ISSUE": "önceki sorun",
+        "TITLE_NEXT_ISSUE": "sonraki sorun",
+        "ACTION_DELETE": "Sorun sil",
         "LIGHTBOX_TITLE_BLOKING_ISSUE": "Engelleyen sorun",
         "FIELDS": {
             "PRIORITY": "Öncelik",
@@ -1156,7 +1156,7 @@
         },
         "CONFIRM_PROMOTE": {
             "TITLE": "Bu talebi yeni bir kullanıcı hikayesi olacak şekilde terfi ettirin",
-            "MESSAGE": "Bu talepten yeni bir KH oluşturmak istediğinize emin misiniz?"
+            "MESSAGE": "Bu sorundan yeni bir hikaye oluşturmak istediğinize emin misiniz?"
         },
         "FILTERS": {
             "TITLE": "Filtreler",
@@ -1195,13 +1195,13 @@
             "TITLE_ACTION_ASSIGNED_TO": "Atanmış",
             "BLOCKED": "Engelli",
             "EMPTY": {
-                "TITLE": "Raporlanan talep yok :)",
-                "SUBTITLE": "Bir talep mi buldunuz?"
+                "TITLE": "Bildirilen sorun yok :)",
+                "SUBTITLE": "Bir sorun mu buldunuz?"
             }
         }
     },
     "ISSUE": {
-        "PAGE_TITLE": "{{issueSubject}} - Talep {{issueRef}} - {{projectName}}",
+        "PAGE_TITLE": "{{issueSubject}} - Sorun {{issueRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Durum: {{issueStatus }}. Tip: {{issueType}}, Öncelik: {{issuePriority}}. Önem: {{issueSeverity}}. Tanı: {{issueDescription}}"
     },
     "KANBAN": {
@@ -1224,9 +1224,9 @@
     },
     "SEARCH": {
         "PAGE_TITLE": "Ara - {{projectName}}",
-        "PAGE_DESCRIPTION": "Projedeki kullanıcı hikayelerini, talepleri, görevleri, wiki sayfalarını ya da herhangi bir şeyi arayın {{projectName}}: {{projectDescription}}",
+        "PAGE_DESCRIPTION": "Projedeki hikayeleri, sorunları, işleri, viki sayfalarını ya da herhangi bir şeyi arayın {{projectName}}: {{projectDescription}}",
         "FILTER_USER_STORIES": "Kullanıcı Hikayeleri",
-        "FILTER_ISSUES": "Talepler ",
+        "FILTER_ISSUES": "Sorunlar ",
         "FILTER_TASKS": "Görevler",
         "FILTER_WIKI": "Wiki Sayfaları",
         "PLACEHOLDER_SEARCH": "Aranan konum...",
@@ -1241,13 +1241,13 @@
         "APP_TITLE": "TAKIM - {{projectName}}",
         "PLACEHOLDER_INPUT_SEARCH": "Tam ad ile ara",
         "COLUMN_MR_WOLF": "Reyiz",
-        "EXPLANATION_COLUMN_MR_WOLF": "Kapatılmış talepler",
+        "EXPLANATION_COLUMN_MR_WOLF": "Kapatılmış sorunlar",
         "COLUMN_IOCAINE": "Baldıran İçici",
         "EXPLANATION_COLUMN_IOCAINE": "içilen baldıran miktarı",
         "COLUMN_CERVANTES": "Katip",
         "EXPLANATION_COLUMN_CERVANTES": "Düzenlenmiş Wiki sayfaları",
         "COLUMN_BUG_HUNTER": "Böcek Avcısı",
-        "EXPLANATION_COLUMN_BUG_HUNTER": "Raporlanan talepler",
+        "EXPLANATION_COLUMN_BUG_HUNTER": "Bildirilen sorunlar",
         "COLUMN_NIGHT_SHIFT": "Akşamcı",
         "EXPLANATION_COLUMN_NIGHT_SHIFT": "Kapatılmış görevler",
         "COLUMN_TOTAL_POWER": "Toplam Güç",
@@ -1339,12 +1339,12 @@
         "HINT3_TITLE": "Projelerinizi, sizi en çok ilgilendirenleri öne çıkartacak şekilde sıralayın.",
         "HINT3_TEXT": "10 proje üstteki doğrudan erişim bölümünde gözükür",
         "HINT4_TITLE": "Nerede kaldığınızı unuttunuz mu?",
-        "HINT4_TEXT": "Kaygılanmayın, çalışma sıranıza göre ayarlanan açılmış görevlerinize, taleplerinize ve kullanıcı hikayelerinize panonuzdan erişebilirsiniz."
+        "HINT4_TEXT": "Kaygılanmayın, çalışma sıranıza göre ayarlanan açık işlerinize, sorunlarınıza ve kullanıcı hikayelerinize panonuzdan erişebilirsiniz."
     },
     "TIMELINE": {
         "UPLOAD_ATTACHMENT": "{{username}} kullanıcısı  {{obj_name}} 'ye bir yeni ek yükledi",
         "US_CREATED": "{{project_name}} projesinde yer alacak {{us_name}} adlı yeni bir KH, {{username}} tarafından oluşturuldu",
-        "ISSUE_CREATED": "{{project_name}} projesindeki  yeni talep {{obj_name}}, {{username}} tarafından oluşturuldu",
+        "ISSUE_CREATED": "{{username}}, {{project_name}} projesinde yeni sorun ({{obj_name}}) oluşturdu",
         "TASK_CREATED": "{{project_name}} projesindeki  yeni görev  {{obj_name}}, {{username}} tarafından oluşturuldu",
         "TASK_CREATED_WITH_US": " {{project_name}} projesinde yer alan {{us_name}} adlı KH ya ait yeni bir görev {{obj_name}}, {{username}} tarafından oluşturuldu",
         "WIKI_CREATED": "{{project_name}} projesindeki yeni wiki sayfası {{obj_name}}, {{username}} tarafından oluşturuldu",
@@ -1367,7 +1367,7 @@
         "NEW_MEMBER": "{{project_name}} projesi yeni bir üyeye sahip",
         "US_ADDED_MILESTONE": " {{username}}, {{sprint_name}} koşusuna {{obj_name}} hikayesini ekledi",
         "US_MOVED": "{{username}}, {{obj_name}} hikayesini taşıdı",
-        "US_REMOVED_FROM_MILESTONE": "Birikmiş işlere {{obj_name}} KH'si, {{username}} tarafından eklendi",
+        "US_REMOVED_FROM_MILESTONE": "{{username}} havuza {{obj_name}} hikayesini ekledi",
         "BLOCKED": "{{obj_name}}, {{username}}  tarafından engellendi",
         "UNBLOCKED": "{{obj_name}} nin engeli {{username}} tarafından kaldırıldı ",
         "NEW_USER": "{{username}}  Taiga ya katıldı"

@@ -2,7 +2,7 @@
     "COMMON": {
         "YES": "Oui",
         "NO": "Non",
-        "OR": "or",
+        "OR": "ou",
         "LOADING": "Veuillez patienter...",
         "LOADING_PROJECT": "Chargement du projet...",
         "DATE": "DD MMM YYYY",
@@ -19,11 +19,11 @@
         "TAG_LINE": "Votre outil de gestion de projet agile, libre et open source",
         "TAG_LINE_2": "AIMEZ VOTRE PROJET",
         "BLOCK": "Bloquer",
-        "BLOCK_TITLE": "Block this item for example if it has a dependency that can not be satisfied",
+        "BLOCK_TITLE": "Bloquer cet élément si, par exemple, il a une dépendance qui ne peut être satisfaite",
         "BLOCKED": "Bloqué",
         "UNBLOCK": "Débloquer",
-        "UNBLOCK_TITLE": "Unblock this item",
-        "BLOCKED_NOTE": "Why is this blocked?",
+        "UNBLOCK_TITLE": "Débloquer cet élément",
+        "BLOCKED_NOTE": "Pourquoi est-ce bloqué ?",
         "BLOCKED_REASON": "Veillez s'il vous plait indiquer la raison",
         "CREATED_BY": "Créé par {{fullDisplayName}}",
         "FROM": "de",
@@ -310,7 +310,7 @@
         "PAGE_DESCRIPTION": "Saisissez votre nom d'utilisateur ou votre adresse courriel pour recevoir un nouveau mot de passe et accéder à nouveau à Taiga."
     },
     "FORGOT_PASSWORD_FORM": {
-        "TITLE": "Oops, avez-vous oublié votre mot de passe ?",
+        "TITLE": "Oups, avez-vous oublié votre mot de passe ?",
         "SUBTITLE": "Saisissez votre nom d'utilisateur ou votre adresse courriel pour en obtenir un nouveau",
         "PLACEHOLDER_FIELD": "Nom d'utilisateur ou adresse courriel",
         "ACTION_RESET_PASSWORD": "Réinitialiser le mot de passe",
@@ -366,8 +366,8 @@
     "ATTACHMENT": {
         "SECTION_NAME": "pièces jointes",
         "TITLE": "{{ fileName }} déposé le {{ date }}",
-        "LIST_VIEW_MODE": "List view mode",
-        "GALLERY_VIEW_MODE": "Gallery view mode",
+        "LIST_VIEW_MODE": "Vue sous forme de liste",
+        "GALLERY_VIEW_MODE": "Vue sous forme de galerie",
         "DESCRIPTION": "Saisissez une courte description",
         "DEPRECATED": "(obsolète)",
         "DEPRECATED_FILE": "Obsolète ?",
@@ -730,7 +730,7 @@
         "LOOKING_FOR_PEOPLE": "Est-ce que ce projet recherche des membres ?",
         "FANS_COUNTER_TITLE": "{total, plural, one{un fan} other{# fans}}",
         "WATCHERS_COUNTER_TITLE": "{total, plural, one{un observateur} other{# observateurs}}",
-        "MEMBERS_COUNTER_TITLE": "{total, plural, one{one member} other{# members}}",
+        "MEMBERS_COUNTER_TITLE": "{total, plural, one{un membre} other{# membres}}",
         "STATS": {
             "PROJECT": "points<br/> projet",
             "DEFINED": "points<br/> définis",
@@ -914,7 +914,7 @@
         "TYPE_NEW_COMMENT": "Entrez un nouveau commentaire ici",
         "SHOW_DELETED": "Afficher le commentaire supprimé",
         "HIDE_DELETED": "Cacher le commentaire supprimé",
-        "DELETE": "Delete comment",
+        "DELETE": "Supprimer le commentaire",
         "RESTORE": "Restaurer le commentaire"
     },
     "ACTIVITY": {
@@ -1447,15 +1447,15 @@
     },
     "DISCOVER": {
         "DISCOVER_TITLE": "Découvrir les projets",
-        "DISCOVER_SUBTITLE": "{projects, plural, one{One public project to discover} other{# public projects to discover}}",
-        "MOST_ACTIVE": "Most active",
+        "DISCOVER_SUBTITLE": "{projects, plural, one{Un projet public à découvrir} other{# projets publics à découvrir}}",
+        "MOST_ACTIVE": "les plus actifs",
         "MOST_ACTIVE_EMPTY": "Il n'y a pas de projets actifs pour le moment",
-        "MOST_LIKED": "Most liked",
-        "MOST_LIKED_EMPTY": "There are no LIKED projects yet",
+        "MOST_LIKED": "Les plus « aimés »",
+        "MOST_LIKED_EMPTY": "Il n'y a pas encore de projet « aimé »",
         "VIEW_MORE": "Voir plus",
         "RECRUITING": "Ce projet recherche des membres",
         "FEATURED": "Projets mis en avant",
-        "EMPTY": "There are no projects to show with this search criteria.<br> Try again!",
+        "EMPTY": "Aucun projet ne correspond à ce critère de recherche.<br> Essayez encore !",
         "FILTERS": {
             "ALL": "Toutes",
             "KANBAN": "Kanban",
