@@ -304,6 +304,7 @@ AssignedToDirective = ($rootscope, $confirm, $repo, $loading, $qqueue, $template
                 isUnassigned: isUnassigned
                 isEditable: isEditable()
                 isIocaine: isIocaine
+                fullNameVisible: !(isUnassigned && !$currentUserService.isAuthenticated())
             }
             html = $compile(template(ctx))($scope)
             $el.html(html)

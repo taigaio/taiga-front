@@ -19,7 +19,7 @@
             class!="user-assigned <% if (isEditable) { %>editable<% }; %>"
         )
             span.assigned-name
-                <% if (isEditable && isUnassigned) { %>
+                <% if (fullNameVisible) { %>
                 <%- fullName %>
                 <% }; %>
                 <% if (isEditable && !isUnassigned) { %>
