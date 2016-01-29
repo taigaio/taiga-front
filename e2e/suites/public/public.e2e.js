@@ -12,7 +12,7 @@ describe('Public', async function(){
 
         await utils.common.waitLoader();
 
-        $$('.privacy-settings input').get(0).click();
+        $$('.project-privacy-settings label').get(0).click();
 
         $('button[type="submit"]').click();
 
