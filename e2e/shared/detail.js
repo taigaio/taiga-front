@@ -225,15 +225,17 @@ shared.attachmentTesting = async function() {
     // Check set name
     let name = await attachmentHelper.getLastAttachmentName();
     expect(name).to.be.equal('This is the testing name ' + date);
+
     // Check new length
     let newAttachmentsLength = await attachmentHelper.countAttachments();
     expect(newAttachmentsLength).to.be.equal(attachmentsLength + 1);
 
     //Drag'n drop
-    await attachmentHelper.dragLastAttchmentToFirstPosition();
-    name = await attachmentHelper.getFirstAttachmentName();
-    expect(name).to.be.equal('This is the testing name ' + date);
-
+    if (['firefox', 'internet explorer'].indexOf(browser.browserName) === -1) {
+        await attachmentHelper.dragLastAttchmentToFirstPosition();
+        name = await attachmentHelper.getFirstAttachmentName();
+        expect(name).to.be.equal('This is the testing name ' + date);
+    }
     // Renaming
     await attachmentHelper.renameLastAttchment('This is the new testing name ' + date);
     name = await attachmentHelper.getLastAttachmentName();
@@ -263,7 +265,6 @@ shared.attachmentTesting = async function() {
     expect(countImages).to.be.above(0);
 
     attachmentHelper.list();
-
 
     // Deleting
     attachmentsLength = await attachmentHelper.countAttachments();
