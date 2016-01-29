@@ -35,6 +35,17 @@
     h2 {
         @extend %large;
     }
+    .list-itemtype-project-data-wrapper {
+        display: flex;
+    }
+    .list-itemtype-project-image {
+        flex-shrink: 0;
+        margin-right: .5rem;
+        width: 3rem;
+        img {
+            width: 100%;
+        }
+    }
     .list-itemtype-project-members {
         align-self: flex-end;
         display: flex;

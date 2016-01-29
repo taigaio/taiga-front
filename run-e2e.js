@@ -17,7 +17,8 @@ var suites = [
     'kanban',
     'projectHome',
     'search',
-    'team'
+    'team',
+    'discover'
 ];
 
 var lunchSuites = [];

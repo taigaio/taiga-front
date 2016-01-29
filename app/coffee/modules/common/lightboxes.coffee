@@ -1,7 +1,10 @@
 ###
-# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.nz>
 # Copyright (C) 2014-2016 Jesús Espino Garcia <jespinog@gmail.com>
 # Copyright (C) 2014-2016 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2016 Alejandro Alonso <alejandro.alonso@kaleidos.net>
+# Copyright (C) 2014-2016 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
+# Copyright (C) 2014-2016 Xavi Julian <xavier.julian@kaleidos.net>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -24,6 +27,7 @@ module = angular.module("taigaCommon")
 bindOnce = @.taiga.bindOnce
 timeout = @.taiga.timeout
 debounce = @.taiga.debounce
+sizeFormat = @.taiga.sizeFormat
 
 #############################################################################
 ## Common Lightbox Services
@@ -262,13 +266,30 @@ module.directive("tgBlockingMessageInput", ["$log", "$tgTemplate", "$compile", B
 ## Create/Edit Userstory Lightbox Directive
 #############################################################################
 
-CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService, $loading, $translate) ->
+CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService, $loading, $translate, $confirm, $q, attachmentsService) ->
     link = ($scope, $el, attrs) ->
+        $scope.createEditUs = {}
         $scope.isNew = true
+
+        attachmentsToAdd = Immutable.List()
+        attachmentsToDelete = Immutable.List()
+
+        resetAttachments = () ->
+            attachmentsToAdd = Immutable.List()
+            attachmentsToDelete = Immutable.List()
+
+        $scope.addAttachment = (attachment) ->
+            attachmentsToAdd = attachmentsToAdd.push(attachment)
+
+        $scope.deleteAttachment = (attachment) ->
+            attachmentsToDelete = attachmentsToDelete.push(attachment)
 
         $scope.$on "usform:new", (ctx, projectId, status, statusList) ->
             $scope.isNew = true
             $scope.usStatusList = statusList
+            $scope.attachments = Immutable.List()
+
+            resetAttachments()
 
             $scope.us = $model.make_model("userstories", {
                 project: projectId
@@ -290,9 +311,12 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
 
             lightboxService.open($el)
 
-        $scope.$on "usform:edit", (ctx, us) ->
+        $scope.$on "usform:edit", (ctx, us, attachments) ->
             $scope.us = us
+            $scope.attachments = Immutable.fromJS(attachments)
             $scope.isNew = false
+
+            resetAttachments()
 
             # Update texts for edition
             $el.find(".button-green").html($translate.instant("COMMON.SAVE"))
@@ -318,6 +342,18 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
 
             lightboxService.open($el)
 
+        createAttachments = (obj) ->
+            promises = _.map attachmentsToAdd.toJS(), (attachment) ->
+                attachmentsService.upload(attachment.file, obj.id, $scope.us.project, 'us')
+
+            return $q.all(promises)
+
+        deleteAttachments = (obj) ->
+            promises = _.map attachmentsToDelete.toJS(), (attachment) ->
+                return attachmentsService.delete("us", attachment.id)
+
+            return $q.all(promises)
+
         submit = debounce 2000, (event) =>
             event.preventDefault()
 
@@ -335,6 +371,11 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
             else
                 promise = $repo.save($scope.us)
                 broadcastEvent = "usform:edit:success"
+
+            promise.then (data) ->
+                deleteAttachments(data).then () =>  createAttachments(data)
+
+                return data
 
             promise.then (data) ->
                 currentLoading.finish()
@@ -377,6 +418,9 @@ module.directive("tgLbCreateEditUserstory", [
     "lightboxService",
     "$tgLoading",
     "$translate",
+    "$tgConfirm",
+    "$q",
+    "tgAttachmentsService",
     CreateEditUserstoryDirective
 ])
 
@@ -629,30 +673,14 @@ module.directive("tgLbWatchers", ["$tgRepo", "lightboxService", "lightboxKeyboar
 ## Attachment Preview Lighbox
 #############################################################################
 
-AttachmentPreviewLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationService, $template, $compile) ->
+AttachmentPreviewLightboxDirective = (lightboxService, $template, $compile) ->
     link = ($scope, $el, attrs) ->
-        template = $template.get("common/lightbox/lightbox-attachment-preview.html", true)
-
-        $scope.$on "attachment:preview", (event, attachment) ->
-            lightboxService.open($el)
-            render(attachment)
-
-        $scope.$on "$destroy", ->
-            $el.off()
-
-        render = (attachment) ->
-            ctx = {
-                url: attachment.url,
-                title: attachment.description,
-                name: attachment.name
-            }
-
-            html = template(ctx)
-            html = $compile(html)($scope)
-            $el.html(html)
+        lightboxService.open($el)
 
     return {
-        link: link
+        templateUrl: 'common/lightbox/lightbox-attachment-preview.html',
+        link: link,
+        scope: true
     }
 
-module.directive("tgLbAttachmentPreview", ["$tgRepo", "lightboxService", "lightboxKeyboardNavigationService", "$tgTemplate", "$compile", AttachmentPreviewLightboxDirective])
+module.directive("tgLbAttachmentPreview", ["lightboxService", "$tgTemplate", "$compile", AttachmentPreviewLightboxDirective])

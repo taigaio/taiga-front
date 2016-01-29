@@ -252,23 +252,24 @@ describe('taskboard', function() {
         });
     });
 
+    describe ('inline', function() {
+        it('Change task assigned to', async function(){
+            await taskboardHelper.watchersLinks().first().click();
 
-    it('Change task assigned to', async function(){
-        await taskboardHelper.watchersLinks().first().click();
+            let lightbox = commonHelper.assignToLightbox();
 
-        let lightbox = commonHelper.assignToLightbox();
+            await lightbox.waitOpen();
 
-        await lightbox.waitOpen();
+            let assgnedToName = await lightbox.getName(0);
 
-        let assgnedToName = await lightbox.getName(0);
+            lightbox.selectFirst();
 
-        lightbox.selectFirst();
+            await lightbox.waitClose();
 
-        await lightbox.waitClose();
+            let usAssignedTo = await taskboardHelper.getBoxTasks(0, 0).get(0).$('.task-assigned').getText();
 
-        let usAssignedTo = await taskboardHelper.getBoxTasks(0, 0).get(0).$('.task-assigned').getText();
-
-        expect(assgnedToName).to.be.equal(usAssignedTo);
+            expect(assgnedToName).to.be.equal(usAssignedTo);
+        });
     });
 
     describe('Graph', function(){

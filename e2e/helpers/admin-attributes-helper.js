@@ -100,3 +100,9 @@ helper.getGenericForm = function(form) {
 helper.getGenericNames = function(section) {
     return section.$$('.status-name span').getText();
 };
+
+helper.waitLoad = function() {
+    return browser.wait(function() {
+        return $('.admin-attributes').isPresent();
+    }, 5000);
+};

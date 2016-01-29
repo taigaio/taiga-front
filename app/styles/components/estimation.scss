@@ -1,48 +1,57 @@
-%estimation {
+@mixin estimation {
     .points-per-role {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+        flex-direction: column;
     }
     .ticket-role-points {
-        background: rgba($gray-light, .1);
-        border-radius: 2px;
-        color: rgba($grayer, .3);
-        flex-basis: 20%;
-        flex-grow: 1;
-        flex-shrink: 0;
-        margin: .1rem;
-        padding: .5rem 0 .1rem;
+        background: rgba($gray-light, .2);
+        color: $gray-light;
+        display: flex;
+        flex: 1;
+        justify-content: space-between;
+        margin-bottom: .1rem;
+        min-height: 2rem;
+        padding: .5rem 1rem;
         position: relative;
-        text-align: center;
         transition: color .3s linear;
-        &.active {
-            background: rgba($primary-light, .9);
-            color: $whitish;
-        }
-        &:first-child {
-            background: rgba($grayer, .25);
-            border-radius: 0;
-            color: $whitish;
+        &.clickable {
+            &:hover,
+            &.active {
+                background: rgba($primary-light, .9);
+                color: $whitish;
+                .points,
+                .role,
+                .icon-arrow-bottom {
+                    color: $whitish;
+                }
+            }
         }
         &:last-child {
-            border: 0;
+            background: rgba($primary-dark, .5);
+            border-bottom: 0;
+            color: $whitish;
+            .points,
+            .role,
+            .icon-arrow-bottom {
+                @extend %text;
+                color: $whitish;
+            }
+        }
+        .icon-arrow-bottom {
+            color: $gray-light;
+            margin-left: .25rem;
+            vertical-align: middle;
         }
         .points {
-            @extend %larger;
-            @extend %text;
-            display: block;
-            text-align: center;
+            @extend %light;
+            color: $grayer;
         }
         .role {
-            @extend %small;
-            @include ellipsis(90%);
-            display: inline-block;
-            text-align: center;
+            @extend %light;
         }
     }
     .popover {
-        @include popover(200px, $top: 105%, $left: 35%, $arrow-width: 10px, $arrow-top: -5px, $arrow-left: 10px, $arrow-height: 10px);
+        @include popover(200px, $top: 100%, $left: .5rem, $arrow-width: 10px, $arrow-top: -5px, $arrow-left: 10px, $arrow-height: 10px);
         li {
             display: inline-block;
             width: 23%;
@@ -57,11 +66,11 @@
             }
         }
         &.fix {
-            @include popover(200px, $top: 105%, $left: -160px, $arrow-width: 10px, $arrow-top: -5px, $arrow-left: 90%, $arrow-height: 10px);
+            @include popover(200px, $top: 100%, $left: -160px, $arrow-width: 10px, $arrow-top: -5px, $arrow-left: 90%, $arrow-height: 10px);
         }
     }
 }
 
 .ticket-estimation {
-    @extend %estimation;
+    @include estimation;
 }

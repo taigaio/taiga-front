@@ -1,3 +1,12 @@
-label(for="team-requirement", class!="button button-gray team-requirement <% if(canEdit){ %>editable<% }; %> <% if(isRequired){ %>active<% }; %>", translate="US.FIELDS.TEAM_REQUIREMENT")
+label.button-gray.team-requirement(
+    for="team-requirement"
+    class!=" <% if(canEdit){ %>is-editable<% }; %> <% if(isRequired){ %>active<% }; %>"
+    title="{{ 'COMMON.TEAM_REQUIREMENT' | translate }}"
+)
+    include ../../svg/team-requirement.svg
 
-input(type="checkbox", id="team-requirement", name="team-requirement")
+input(
+    type="checkbox"
+    id="team-requirement"
+    name="team-requirement"
+)

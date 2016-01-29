@@ -40,7 +40,8 @@ exports.config = {
         kanban: "e2e/suites/kanban.e2e.js",
         projectHome: "e2e/suites/project-home.e2e.js",
         search: "e2e/suites/search.e2e.js",
-        team: "e2e/suites/team.e2e.js"
+        team: "e2e/suites/team.e2e.js",
+        discover: "e2e/suites/discover/*.e2e.js"
     },
     onPrepare: function() {
         // track mouse movements

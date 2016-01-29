@@ -2,6 +2,6 @@
     | {{ item.subject }}
     a.edit.icon.icon-edit(href="" title="{{'COMMON.EDIT' | translate}}")
 .edit-subject
-    input(type="text", ng-model="item.subject", data-required="true", data-maxlength="500")
+    input(type="text", ng-model="item.subject", data-required="true", data-maxlength="500", ng-model-options="{ debounce: 200 }")
     span.save-container
         a.save.icon.icon-floppy(href="", title="{{'COMMON.SAVE' | translate}}")

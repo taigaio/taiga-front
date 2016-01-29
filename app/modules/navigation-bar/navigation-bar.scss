@@ -32,7 +32,9 @@ $dropdown-width: 350px;
             }
             svg {
                 height: 1.6rem;
+                max-height: 1.6rem;
                 max-width: 2rem;
+                width: 1.6rem;
             }
             path {
                 fill: $white;
@@ -79,7 +81,9 @@ $dropdown-width: 350px;
     }
     svg {
         height: 1.2rem;
+        max-height: 1.2rem;
         max-width: 1.2rem;
+        width: 1.2rem;
         path {
             fill: $top-icon-color;
             transition: all .2s;

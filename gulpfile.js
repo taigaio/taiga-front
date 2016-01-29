@@ -173,7 +173,8 @@ paths.libs = [
     paths.app + "js/jquery-ui.drag-multiple-custom.js",
     paths.app + "js/jquery.ui.touch-punch.min.js",
     paths.app + "js/tg-repeat.js",
-    paths.app + "js/sha1-custom.js"
+    paths.app + "js/sha1-custom.js",
+    paths.app + "js/murmurhash3_gc.js"
 ];
 
 var isDeploy = argv["_"].indexOf("deploy") !== -1;
@@ -438,7 +439,7 @@ gulp.task("jslibs-deploy", function() {
         .pipe(gulp.dest(paths.distVersion + "js/"));
 });
 
-gulp.task("app-watch", ["coffee-lint", "coffee", "conf", "locales", "app-loader"]);
+gulp.task("app-watch", ["coffee", "conf", "locales", "app-loader"]);
 
 gulp.task("app-deploy", ["coffee", "conf", "locales", "app-loader"], function() {
     return gulp.src(paths.distVersion + "js/app.js")

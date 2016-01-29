@@ -1,4 +1,7 @@
-nav.menu(ng-if="vm.project")
+nav.menu(
+    ng-if="vm.project"
+    ng-class="{'menu-fixed': vm.fixed}",
+) 
     div(class="menu-container")
         ul(class="main-nav")
             li(id="nav-search")

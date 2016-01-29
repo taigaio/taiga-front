@@ -1,7 +1,10 @@
 ###
-# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.nz>
 # Copyright (C) 2014-2016 Jesús Espino Garcia <jespinog@gmail.com>
 # Copyright (C) 2014-2016 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2016 Alejandro Alonso <alejandro.alonso@kaleidos.net>
+# Copyright (C) 2014-2016 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
+# Copyright (C) 2014-2016 Xavi Julian <xavier.julian@kaleidos.net>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -274,54 +277,6 @@ UsStatusDisplayDirective = ($template, $compile) ->
 
 module.directive("tgUsStatusDisplay", ["$tgTemplate", "$compile", UsStatusDisplayDirective])
 
-
-#############################################################################
-## User story related tasts progress splay Directive
-#############################################################################
-
-UsTasksProgressDisplayDirective = ($template, $compile) ->
-    # Display a progress bar with the stats of completed tasks.
-    #
-    # Example:
-    #     tg-us-tasks-progress-display(ng-model="tasks")
-    #
-    # Requirements:
-    #   - Task object list (ng-model)
-    #   - scope.taskStatusById object
-
-    link = ($scope, $el, $attrs) ->
-        render = (tasks) ->
-            totalTasks = tasks.length
-            totalClosedTasks = _.filter(tasks, (task) => $scope.taskStatusById[task.status].is_closed).length
-
-            progress = if totalTasks > 0 then 100 * totalClosedTasks / totalTasks else 0
-
-            _.assign($scope, {
-                totalTasks: totalTasks
-                totalClosedTasks: totalClosedTasks
-                progress: progress,
-                style: {
-                    width: progress + "%"
-                }
-            })
-
-        $scope.$watch $attrs.ngModel, (tasks) ->
-            render(tasks) if tasks?
-
-        $scope.$on "$destroy", ->
-            $el.off()
-
-    return {
-        templateUrl: "us/us-task-progress.html"
-        link: link
-        restrict: "EA"
-        require: "ngModel"
-        scope: true
-    }
-
-module.directive("tgUsTasksProgressDisplay", ["$tgTemplate", "$compile", UsTasksProgressDisplayDirective])
-
-
 #############################################################################
 ## User story status button directive
 #############################################################################
@@ -362,11 +317,10 @@ UsStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $temp
             $.fn.popover().closeAll()
 
             currentLoading = $loading()
-                .target($el.find(".level-name"))
+                .target($el)
                 .start()
 
             onSuccess = ->
-                $confirm.notify("success")
                 $model.$setViewValue(us)
                 $rootScope.$broadcast("object:updated")
                 currentLoading.finish()
@@ -377,7 +331,7 @@ UsStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $temp
 
             $repo.save(us).then(onSuccess, onError)
 
-        $el.on "click", ".status-data", (event) ->
+        $el.on "click", ".js-edit-status", (event) ->
             event.preventDefault()
             event.stopPropagation()
             return if not isEditable()
@@ -422,10 +376,6 @@ UsTeamRequirementButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $qq
             return $scope.project.my_permissions.indexOf("modify_us") != -1
 
         render = (us) ->
-            if not canEdit() and not us.team_requirement
-                $el.html("")
-                return
-
             ctx = {
                 canEdit: canEdit()
                 isRequired: us.team_requirement
@@ -486,10 +436,6 @@ UsClientRequirementButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $
             return $scope.project.my_permissions.indexOf("modify_us") != -1
 
         render = (us) ->
-            if not canEdit() and not us.client_requirement
-                $el.html("")
-                return
-
             ctx = {
                 canEdit: canEdit()
                 isRequired: us.client_requirement

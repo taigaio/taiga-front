@@ -1,2 +1,5 @@
-a(class="button button-gray editable", tg-check-permission="add_us")
-    span(translate="ISSUES.ACTION_PROMOTE_TO_US")
+a.promote-button.editable(
+    tg-check-permission="add_us"
+    title="{{ 'ISSUES.ACTION_PROMOTE_TO_US' | translate }}"
+)
+    include ../../svg/promote.svg

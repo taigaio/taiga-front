@@ -1,7 +1,10 @@
 ###
-# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.nz>
 # Copyright (C) 2014-2016 Jesús Espino Garcia <jespinog@gmail.com>
 # Copyright (C) 2014-2016 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2016 Alejandro Alonso <alejandro.alonso@kaleidos.net>
+# Copyright (C) 2014-2016 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
+# Copyright (C) 2014-2016 Xavi Julian <xavier.julian@kaleidos.net>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -25,6 +28,7 @@ debounce = @.taiga.debounce
 
 module = angular.module("taigaRelatedTasks", [])
 
+
 RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope, $loading, $template, $translate) ->
     templateView = $template.get("task/related-task-row.html", true)
     templateEdit = $template.get("task/related-task-row-edit.html", true)
@@ -40,7 +44,6 @@ RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope, $loading, $tem
             promise = $repo.save(task)
             promise.then =>
                 currentLoading.finish()
-                $confirm.notify("success")
                 $rootscope.$broadcast("related-tasks:update")
 
             promise.then null, =>
@@ -89,7 +92,6 @@ RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope, $loading, $tem
                     promise = $repo.remove(task)
                     promise.then ->
                         askResponse.finish()
-                        $confirm.notify("success")
                         $scope.$emit("related-tasks:delete")
 
                     promise.then null, ->
@@ -111,7 +113,9 @@ RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope, $loading, $tem
 
     return {link:link, require:"ngModel"}
 
-module.directive("tgRelatedTaskRow", ["$tgRepo", "$compile", "$tgConfirm", "$rootScope", "$tgLoading", "$tgTemplate", "$translate", RelatedTaskRowDirective])
+module.directive("tgRelatedTaskRow", ["$tgRepo", "$compile", "$tgConfirm", "$rootScope", "$tgLoading",
+                                      "$tgTemplate", "$translate", RelatedTaskRowDirective])
+
 
 RelatedTaskCreateFormDirective = ($repo, $compile, $confirm, $tgmodel, $loading, $analytics, $template) ->
     template = $template.get("task/related-task-create-form.html", true)
@@ -138,7 +142,6 @@ RelatedTaskCreateFormDirective = ($repo, $compile, $confirm, $tgmodel, $loading,
                 $analytics.trackEvent("task", "create", "create task on userstory", 1)
                 currentLoading.finish()
                 $scope.$emit("related-tasks:add")
-                $confirm.notify("success")
 
             promise.then null, ->
                 $el.find('input').val(task.subject)
@@ -188,12 +191,13 @@ RelatedTaskCreateFormDirective = ($repo, $compile, $confirm, $tgmodel, $loading,
             $el.off()
 
     return {link: link}
-module.directive("tgRelatedTaskCreateForm", ["$tgRepo", "$compile", "$tgConfirm", "$tgModel", "$tgLoading", "$tgAnalytics", "$tgTemplate", RelatedTaskCreateFormDirective])
 
-RelatedTaskCreateButtonDirective = ($repo, $compile, $confirm, $tgmodel) ->
-    template = _.template("""
-        <a ng-show="!newRelatedTaskFormOpen" class="icon icon-plus related-tasks-buttons ng-animate-disabled"></a>
-    """)
+module.directive("tgRelatedTaskCreateForm", ["$tgRepo", "$compile", "$tgConfirm", "$tgModel", "$tgLoading",
+                                             "$tgAnalytics", "$tgTemplate", RelatedTaskCreateFormDirective])
+
+
+RelatedTaskCreateButtonDirective = ($repo, $compile, $confirm, $tgmodel, $template) ->
+    template = $template.get("common/components/add-button.html", true)
 
     link = ($scope, $el, $attrs) ->
         $scope.$watch "project", (val) ->
@@ -204,14 +208,17 @@ RelatedTaskCreateButtonDirective = ($repo, $compile, $confirm, $tgmodel) ->
             else
                 $el.html("")
 
-            $el.on "click", ".icon", (event)->
+            $el.on "click", ".add-button", (event)->
                 $scope.$emit("related-tasks:add-new-clicked")
 
         $scope.$on "$destroy", ->
             $el.off()
 
     return {link: link}
-module.directive("tgRelatedTaskCreateButton", ["$tgRepo", "$compile", "$tgConfirm", "$tgModel", RelatedTaskCreateButtonDirective])
+
+module.directive("tgRelatedTaskCreateButton", ["$tgRepo", "$compile", "$tgConfirm", "$tgModel",
+                                               "$tgTemplate", RelatedTaskCreateButtonDirective])
+
 
 RelatedTasksDirective = ($repo, $rs, $rootscope) ->
     link = ($scope, $el, $attrs) ->
@@ -238,9 +245,11 @@ RelatedTasksDirective = ($repo, $rs, $rootscope) ->
             $el.off()
 
     return {link: link}
+
 module.directive("tgRelatedTasks", ["$tgRepo", "$tgResources", "$rootScope", RelatedTasksDirective])
 
-RelatedTaskAssignedToInlineEditionDirective = ($repo, $rootscope, popoverService) ->
+
+RelatedTaskAssignedToInlineEditionDirective = ($repo, $rootscope, $translate) ->
     template = _.template("""
     <img src="<%- imgurl %>" alt="<%- name %>"/>
     <figcaption><%- name %></figcaption>
@@ -248,7 +257,10 @@ RelatedTaskAssignedToInlineEditionDirective = ($repo, $rootscope, popoverService
 
     link = ($scope, $el, $attrs) ->
         updateRelatedTask = (task) ->
-            ctx = {name: "Unassigned", imgurl: "/" + window._version + "/images/unnamed.png"}
+            ctx = {
+                name: $translate.instant("COMMON.ASSIGNED_TO.NOT_ASSIGNED"),
+                imgurl: "/" + window._version + "/images/unnamed.png"
+            }
             member = $scope.usersById[task.assigned_to]
             if member
                 ctx.imgurl = member.photo
@@ -286,4 +298,5 @@ RelatedTaskAssignedToInlineEditionDirective = ($repo, $rootscope, popoverService
 
     return {link: link}
 
-module.directive("tgRelatedTaskAssignedToInlineEdition", ["$tgRepo", "$rootScope", RelatedTaskAssignedToInlineEditionDirective])
+module.directive("tgRelatedTaskAssignedToInlineEdition", ["$tgRepo", "$rootScope", "$translate",
+                                                          RelatedTaskAssignedToInlineEditionDirective])

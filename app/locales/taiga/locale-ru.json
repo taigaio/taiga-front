@@ -2,6 +2,7 @@
     "COMMON": {
         "YES": "Да",
         "NO": "Нет",
+        "OR": "or",
         "LOADING": "Пожалуйста, подождите...",
         "LOADING_PROJECT": "Проект загружается...",
         "DATE": "DD MMM YYYY",
@@ -18,14 +19,16 @@
         "TAG_LINE": "Ваш свободный, agile инструмент управления проектами с открытым исходным кодом",
         "TAG_LINE_2": "Любит ваши проекты",
         "BLOCK": "Блокировать",
-        "UNBLOCK": "Разблокировать",
+        "BLOCK_TITLE": "Block this item for example if it has a dependency that can not be satisfied",
         "BLOCKED": "Заблокирован",
+        "UNBLOCK": "Разблокировать",
+        "UNBLOCK_TITLE": "Unblock this item",
+        "BLOCKED_NOTE": "Why is this blocked?",
+        "BLOCKED_REASON": "Пожалуйста разъясните причину",
         "CREATED_BY": "Создано {{fullDisplayName}}",
         "FROM": "от",
         "TO": "к",
         "CLOSE": "закрыть",
-        "BLOCKED_NOTE": "Почему эта пользовательская история заблокирована?",
-        "BLOCKED_REASON": "Пожалуйста разъясните причину",
         "GO_HOME": "Домой",
         "PLUGINS": "Плагины",
         "BETA": "Программа тестируется!",
@@ -36,6 +39,8 @@
         "EXTERNAL_USER": "внешний пользователь",
         "GENERIC_ERROR": "Один из Умпа-Лумп говорит {{error}}.",
         "IOCAINE_TEXT": "Чувствуете, что задание берет верх над вами? Дайте другим знать об этом, нажав на \"Иокаин\", когда редактируете задание. Возможно стать неуязвимым к этому (выдуманному) смертельном яду, потребляя небольшие количества время от времени, так же как возможно стать лучше в том, что вы делаете, временами беря на себя дополнительные препятствия!",
+        "CLIENT_REQUIREMENT": "Client requirement is new requirement that was not previously expected and it is required to be part of the project",
+        "TEAM_REQUIREMENT": "Team requirement is a requirement that must exist in the project but should have no cost for the client",
         "CAPSLOCK_WARNING": "Будьте внимательны! Введённый текст состоит из заглавных букв, а регистр имеет значение.",
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Кажется, это значение некорректно.",
@@ -139,17 +144,20 @@
         },
         "ASSIGNED_TO": {
             "NOT_ASSIGNED": "Не назначен",
+            "ASSIGN": "Assign",
             "DELETE_ASSIGNMENT": "Удалить назначение",
             "REMOVE_ASSIGNED": "Удалить назначение",
             "TOO_MANY": "...слишком много пользователей, продолжайте фильтровать",
             "CONFIRM_UNASSIGNED": "Вы уверены что не хотите назначить ответственного?",
-            "TITLE_ACTION_EDIT_ASSIGNMENT": "Изменить назначение"
+            "TITLE_ACTION_EDIT_ASSIGNMENT": "Изменить назначение",
+            "SELF": "Assign to me"
         },
         "STATUS": {
             "CLOSED": "Закрыт",
             "OPEN": "Открыть"
         },
         "WATCHERS": {
+            "WATCHERS": "Наблюдатели",
             "ADD": "Добавить наблюдателей",
             "TITLE_ADD": "Добавить участника проекта к списку наблюдателей",
             "DELETE": "Удалить наблюдателя",
@@ -176,7 +184,7 @@
             "SAVE": "Сохранить поле",
             "EDIT": "Редактировать поле",
             "DELETE": "Удалить атрибут",
-            "CONFIRM_DELETE": "Не забудьте, что все значения для этого специального поля будут удалены.</br> Вы действительно хотите продолжить?"
+            "CONFIRM_DELETE": "Remeber that all values in this custom field will be deleted.\n Are you sure you want to continue?"
         },
         "FILTERS": {
             "TITLE": "фильтры",
@@ -274,9 +282,9 @@
         "HEADER": "У меня уже есть логин в Taiga",
         "PLACEHOLDER_AUTH_NAME": "Логин или email (с учетом регистра)",
         "LINK_FORGOT_PASSWORD": "Забыли?",
-        "TITLE_LINK_FORGOT_PASSWORD": "Вы забыли пароль?",
+        "TITLE_LINK_FORGOT_PASSWORD": "Вы забыли свой пароль?",
         "ACTION_ENTER": "Ввод",
-        "ACTION_SIGN_IN": "Войти",
+        "ACTION_SIGN_IN": "Логин",
         "PLACEHOLDER_AUTH_PASSWORD": "Пароль (чувствителен к регистру)"
     },
     "LOGIN_FORM": {
@@ -344,10 +352,11 @@
         "PAGE_TITLE": "Домашняя страница - Taiga",
         "PAGE_DESCRIPTION": "Главная страница Taiga с вашими основными проектами, назначенными и отслеживаемыми ПИ, задачами и запросами",
         "EMPTY_WORKING_ON": "<strong>Пустовато, не правда ли?</strong> Начните работать в Taiga - и тут появятся ПИ, задачи и запросы, над которыми вы работаете.",
-        "EMPTY_WATCHING": "<strong>Следите</strong> за ПИ, задачами, запросами... о которых хотите знать :)",
+        "EMPTY_WATCHING": "<strong>Follow</strong> User Stories, Tasks, Issues in your projects and be notified about its changes :)",
         "EMPTY_PROJECT_LIST": "У Вас пока нет проектов",
         "WORKING_ON_SECTION": "Работает над",
-        "WATCHING_SECTION": "Отслеживаемые"
+        "WATCHING_SECTION": "Отслеживаемые",
+        "DASHBOARD": "Projects Dashboard"
     },
     "PROJECTS": {
         "PAGE_TITLE": "Мои проекты",
@@ -357,10 +366,13 @@
     "ATTACHMENT": {
         "SECTION_NAME": "Вложения",
         "TITLE": "{{ fileName }} загружен {{ date }}",
+        "LIST_VIEW_MODE": "List view mode",
+        "GALLERY_VIEW_MODE": "Gallery view mode",
         "DESCRIPTION": "Введите краткое описание",
         "DEPRECATED": "(устаревший)",
         "DEPRECATED_FILE": "Устаревший?",
         "ADD": "Добавить вложение. {{maxFileSizeMsg}}",
+        "DROP": "Drop attachments here!",
         "MAX_FILE_SIZE": "[Макс. размер: {{maxFileSize}}]",
         "SHOW_DEPRECATED": "Показать устаревшие приложения",
         "HIDE_DEPRECATED": "- спрятать устаревшие приложения",
@@ -371,6 +383,7 @@
         "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "Удалить вложение...",
         "MSG_LIGHTBOX_DELETE_ATTACHMENT": "приложение '{{fileName}}'",
         "ERROR_DELETE_ATTACHMENT": "Мы не смогли провести удаление: {{errorMessage}}",
+        "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) это слишком много для наших Умпа-Лумп, попробуйте еще раз с размером меньшим, чем ({{maxFileSize}})",
         "FIELDS": {
             "IS_DEPRECATED": "рекомендовано"
         }
@@ -440,9 +453,18 @@
             "NUMBER_US_POINTS": "Количество очков ПИ (0 - неопределенное количество)",
             "TAGS": "Тэги",
             "DESCRIPTION": "Описание",
+            "RECRUITING": "Is this project looking for people?",
+            "RECRUITING_MESSAGE": "Who are you looking for?",
+            "RECRUITING_PLACEHOLDER": "Define the profiles you are looking for",
             "PUBLIC_PROJECT": "Публичный проект",
+            "PUBLIC_PROJECT_DESC": "Users will be able to find and view your project",
             "PRIVATE_PROJECT": "Закрытый проект",
-            "DELETE": "Удалить проект"
+            "PRIVATE_PROJECT_DESC": "By default, this project will be hidden to the public",
+            "PRIVATE_OR_PUBLIC": "What's the difference between public and private projects?",
+            "DELETE": "Удалить проект",
+            "LOGO_HELP": "The image will be scaled to 80x80px.",
+            "CHANGE_LOGO": "Change logo",
+            "ACTION_USE_DEFAULT_LOGO": "Use default image"
         },
         "REPORTS": {
             "TITLE": "Отчеты",
@@ -665,7 +687,7 @@
             "CURRENT_USER_CONTACTS_EMPTY_EXPLAIN": "Люди, с которыми вы работаете в Taiga, будут отмечены как ваши контакты автоматически",
             "REPORT": "Пожаловаться",
             "TABS": {
-                "ACTIVITY_TAB": "Действия",
+                "ACTIVITY_TAB": "График работ",
                 "ACTIVITY_TAB_TITLE": "Показать все действия пользователя",
                 "PROJECTS_TAB": "Проекты",
                 "PROJECTS_TAB_TITLE": "Список всех проектов, в которых участвует пользователь",
@@ -705,6 +727,10 @@
         "SECTION_PROJECTS": "Проекты",
         "HELP": "Реорганизуйте свои проекты так чтобы часто используемые были бы наверху.<br/> Первые 10 проектов будут находится вверху списка проектов.",
         "PRIVATE": "Закрытый проект",
+        "LOOKING_FOR_PEOPLE": "This project is looking for people",
+        "FANS_COUNTER_TITLE": "{total, plural, one{один фанат} other{# фаната (-ов)}}",
+        "WATCHERS_COUNTER_TITLE": "{total, plural, one{один наблюдатель} other{# наблюдателя (-ей)}}",
+        "MEMBERS_COUNTER_TITLE": "{total, plural, one{one member} other{# members}}",
         "STATS": {
             "PROJECT": "проекта<br/> очки",
             "DEFINED": "заданные<br/> очки",
@@ -727,13 +753,14 @@
             "PLACEHOLDER_SEARCH": "Искать в...",
             "ACTION_CREATE_PROJECT": "Создать проект",
             "ACTION_IMPORT_PROJECT": "Импортировать проект",
-            "SEE_MORE_PROJECTS": "Смотрите другие проекты",
+            "MANAGE_PROJECTS": "Manage projects",
             "TITLE_CREATE_PROJECT": "Создать проект",
             "TITLE_IMPORT_PROJECT": "Импортировать проект",
             "TITLE_PRVIOUS_PROJECT": "Показать предыдущие проекты",
             "TITLE_NEXT_PROJECT": "Показать следующие проекты",
             "HELP_TITLE": "Страница поддержки Taiga",
             "HELP": "Помощь",
+            "HOMEPAGE": "Homepage",
             "FEEDBACK_TITLE": "Оставить отзыв",
             "FEEDBACK": "Обратная связь",
             "NOTIFICATIONS_TITLE": "Настроить уведомления",
@@ -887,6 +914,7 @@
         "TYPE_NEW_COMMENT": "Добавить комментарий",
         "SHOW_DELETED": "Показать удаленный комментарий",
         "HIDE_DELETED": "Скрыть удаленный комментарий",
+        "DELETE": "Delete comment",
         "RESTORE": "Показать удаленный комментарий"
     },
     "ACTIVITY": {
@@ -950,6 +978,7 @@
         "CUSTOMIZE_GRAPH_ADMIN": "Админка",
         "CUSTOMIZE_GRAPH_TITLE": "Настройте очки и спринты в админке",
         "MOVE_US_TO_CURRENT_SPRINT": "Перейти к текущему спринту",
+        "MOVE_US_TO_LATEST_SPRINT": "Move to latest Sprint",
         "SHOW_FILTERS": "Показать фильтры",
         "SHOW_TAGS": "Показать теги",
         "EMPTY": "Список задач пуст!",
@@ -1013,6 +1042,7 @@
             "TITLE_LINK_TASKBOARD": "Перейти к Панели Задач \"{{name}}\"",
             "NUMBER_SPRINTS": "<br/>спринты",
             "EMPTY": "Спринтов пока что нет",
+            "WARNING_EMPTY_SPRINT_ANONYMOUS": "This sprint has no User Stories",
             "WARNING_EMPTY_SPRINT": "Накидайте сюда ПИ из списка задач чтобы начать новый спринт",
             "TITLE_ACTION_NEW_SPRINT": "Добавить новый спринт",
             "TEXT_ACTION_NEW_SPRINT": "Вы можете создать новый спринт в проекте",
@@ -1254,9 +1284,9 @@
         }
     },
     "USER_PROFILE": {
-        "IMAGE_HELP": "Изображение будет отмасштабировано до 80x80px.<br />",
+        "IMAGE_HELP": "The image will be scaled to 80x80px.",
         "ACTION_CHANGE_IMAGE": "Изменить",
-        "ACTION_USE_GRAVATAR": "Испольвать аватар из gravatar",
+        "ACTION_USE_GRAVATAR": "Use default image",
         "ACTION_DELETE_ACCOUNT": "Удалить аккаунт",
         "CHANGE_EMAIL_SUCCESS": "<strong>Проверьте входящие письма!</strong><br />Мы послали письмо на ваш аккаунт<br />с инструкциями по установке вашего нового адреса.",
         "CHANGE_PHOTO": "Изменить фото",
@@ -1308,7 +1338,7 @@
         "HINT2_TEXT": "Теперь команды могут создавать специальные поля, чтобы гибко вводить данные, специфические для их рабочего процесса.",
         "HINT3_TITLE": "Перестройте список своих проектов так, чтобы выделить самые важные для себя.",
         "HINT3_TEXT": "Первые 10 проектов доступны из панели прямого доступа сверху.",
-        "HINT4_TITLE": "Вы забыли над чем работали?",
+        "HINT4_TITLE": "Did you forget what were you working on?",
         "HINT4_TEXT": "Не переживайте, на вашем рабочем столе вы найдёте ваши активные задачи, запросы и пользовательские истории в том порядке, в котором вы над ними работали."
     },
     "TIMELINE": {
@@ -1343,7 +1373,7 @@
         "NEW_USER": "{{username}} присоединился к Taiga"
     },
     "LEGAL": {
-        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>Кликая \"Зарегистрироваться\"', вы соглашаетесь с нашими<br /></span><a href=\"{{ termsOfServiceUrl }}\" title=\"Смотреть условия обслуживания\" target=\"_blank\">условиями обслуживания</a><span> и </span><a href=\"{{ privacyPolicyUrl }}\" title=\"Смотреть политику обработки персональных данных\" target=\"_blank\">политикой обработки персональных данных</a>."
+        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>When creating a new account, you agree to our <br /></span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">terms of service</a><span> and </span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">privacy policy</a>."
     },
     "EXTERNAL_APP": {
         "PAGE_TITLE": "Внешнее приложение требующие аутентификации",
@@ -1354,6 +1384,12 @@
         "CANCEL": "Отмена"
     },
     "JOYRIDE": {
+        "NAV": {
+            "NEXT": "Следующий",
+            "BACK": "Бэкенд разработчик",
+            "SKIP": "Skip",
+            "DONE": "Завершена"
+        },
         "DASHBOARD": {
             "STEP1": {
                 "TITLE": "Ваш проект",
@@ -1365,7 +1401,7 @@
             },
             "STEP3": {
                 "TITLE": "Отслеживаемое",
-                "TEXT1": "And right here you will find the ones that you want to know about.",
+                "TEXT1": "And right here you will find the ones in your projects that you want to know about.",
                 "TEXT2": "You are already working with Taiga ;)"
             },
             "STEP4": {
@@ -1407,6 +1443,34 @@
                 "TEXT1": "Вы можете добавить одну пользовательскую историю (кнопка \"добавить ПИ\") или сразу несколько (кнопка \"пакетное добавление\")",
                 "TEXT2": "Удачи!"
             }
+        }
+    },
+    "DISCOVER": {
+        "DISCOVER_TITLE": "Discover projects",
+        "DISCOVER_SUBTITLE": "{projects, plural, one{One public project to discover} other{# public projects to discover}}",
+        "MOST_ACTIVE": "Most active",
+        "MOST_ACTIVE_EMPTY": "There are no ACTIVE projects yet",
+        "MOST_LIKED": "Most liked",
+        "MOST_LIKED_EMPTY": "There are no LIKED projects yet",
+        "VIEW_MORE": "View more",
+        "RECRUITING": "This project is looking for people",
+        "FEATURED": "Featured Projects",
+        "EMPTY": "There are no projects to show with this search criteria.<br> Try again!",
+        "FILTERS": {
+            "ALL": "Все",
+            "KANBAN": "Kanban",
+            "SCRUM": "Scrum",
+            "PEOPLE": "Looking for people",
+            "WEEK": "Last week",
+            "MONTH": "Last month",
+            "YEAR": "Last year",
+            "ALL_TIME": "All time",
+            "CLEAR": "Clear filters"
+        },
+        "SEARCH": {
+            "INPUT_PLACEHOLDER": "Введите что-нибудь...",
+            "ACTION_TITLE": "Поиск",
+            "RESULTS": "Search results"
         }
     }
 }

@@ -18,12 +18,9 @@
     }
 
     textarea {
-        margin-bottom: 1rem;
-        max-height: 9rem;
-        min-height: 7rem;
+        min-height: 4.5rem;
         resize: vertical;
     }
-
     label {
         @extend %xsmall;
         background: $whitish;
@@ -47,12 +44,12 @@
     .settings {
         display: flex;
         justify-content: center;
-        margin-bottom: 1rem;
         fieldset {
             margin-right: .5rem;
             &:hover {
                 color: $white;
                 transition: all .2s ease-in;
+                transition-delay: .2s;
             }
             &:last-child {
                 margin: 0;
@@ -96,6 +93,26 @@
         }
         input {
             display: none;
+        }
+    }
+    .attachments {
+        margin-bottom: 0;
+    }
+    .attachment-body {
+        max-height: 7.5rem;
+        overflow-y: auto;
+    }
+    .attachment-delete {
+        right: .5rem;
+        svg {
+            fill: $gray-light;
+            height: 1.25rem;
+            width: 1.25rem;
+        }
+        &:hover {
+            svg {
+                fill: $red;
+            }
         }
     }
 }
@@ -248,6 +265,7 @@
     .subtitle {
         @extend %large;
         @extend %title;
+        white-space: pre-line;
     }
     .options {
         display: flex;
@@ -490,18 +508,23 @@
 }
 
 .lb-create-edit-userstory {
+    .points-per-role {
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 0;
+    }
     .ticket-role-points {
-        flex-grow: 1;
-        flex-shrink: 1;
-        max-width: calc(100% * (1/5) - .2rem);
+        margin: .1rem;
+        min-width: 20%;
         &:first-child {
             margin-left: 0;
         }
-        &:nth-child(5n+5) {
+        &:nth-child(4n + 4) {
             margin-right: 0;
         }
-    }
-    .points-per-role {
-        margin-bottom: 1rem;
+        &:last-child {
+            margin: .1rem 0;
+            min-width: 100%;
+        }
     }
 }

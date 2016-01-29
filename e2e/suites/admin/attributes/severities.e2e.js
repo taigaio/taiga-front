@@ -12,7 +12,7 @@ describe('attributes - severities', function() {
     before(async function(){
         browser.get(browser.params.glob.host + 'project/project-0/admin/project-values/severities');
 
-        await utils.common.waitLoader();
+        await adminAttributesHelper.waitLoad();
 
         utils.common.takeScreenshot('attributes', 'severities');
     });

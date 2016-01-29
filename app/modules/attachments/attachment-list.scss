@@ -1,0 +1,103 @@
+.attachment-list {
+    .single-attachment {
+        align-items: center;
+        border-bottom: 1px solid $whitish;
+        display: flex;
+        padding: .5rem 0 .5rem .5rem;
+        position: relative;
+        &:hover {
+            .settings {
+                opacity: 1;
+                transition: opacity .2s ease-in;
+            }
+        }
+        &.deprecated {
+            color: $gray-light;
+            .attachment-name a {
+                color: $gray-light;
+            }
+        }
+    }
+    .attachment-name {
+        @include ellipsis(90%);
+        flex-basis: 25%;
+        flex-grow: 1;
+        flex-shrink: 0;
+        padding-right: 1rem;
+    }
+    .attachment-comments,
+    .editable-attachment-comment {
+        flex: 2;
+        flex-basis: 50%;
+        margin-right: .5rem;
+        span {
+            color: $gray;
+        }
+    }
+    .attachment-size {
+        flex-basis: 125px;
+        flex-grow: 0;
+        flex-shrink: 0;
+    }
+    .attachment-settings {
+        align-items: center;
+        display: flex;
+        flex-basis: 10%;
+        flex-grow: 0;
+        flex-shrink: 0;
+        justify-content: space-around;
+        margin-left: auto;
+        .settings,
+        .editable-settings {
+            @extend %large;
+            color: $gray-light;
+            &:hover {
+                color: $primary;
+            }
+        }
+        .settings {
+            opacity: 0;
+        }
+        .editable-settings {
+            opacity: 1;
+        }
+        .icon-delete {
+            &:hover {
+                color: $red;
+            }
+        }
+        .icon-drag-v {
+            cursor: move;
+        }
+    }
+    .icon-delete {
+        @extend %large;
+        color: $gray-light;
+        &:hover {
+            color: $red;
+        }
+    }
+    .editable-attachment-deprecated {
+        display: flex;
+        padding-left: 1rem;
+        span {
+            color: $gray-light;
+        }
+        input {
+            margin-right: .2rem;
+            vertical-align: middle;
+            &:checked+span {
+                color: $grayer;
+            }
+        }
+    }
+    .percentage {
+        background: rgba($primary, .1);
+        bottom: 0;
+        height: 40px;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 45%;
+    }
+}

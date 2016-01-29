@@ -3,7 +3,7 @@ var helper = module.exports;
 var common = require('./common');
 
 var actions = {
-    project: function(index) {
+    project: async function(index) {
         browser.actions().mouseMove($('div[tg-dropdown-project-list]')).perform();
 
         let project = null;
@@ -14,31 +14,31 @@ var actions = {
             project = $$('div[tg-dropdown-project-list] li a').get(index);
         }
 
-        common.link(project);
+        await common.link(project);
 
         return common.waitLoader();
     },
-    issues: function(index) {
-        common.link($('#nav-issues a'));
+    issues: async function(index) {
+        await common.link($('#nav-issues a'));
 
         return common.waitLoader();
     },
-    issue: function(index) {
+    issue: async function(index) {
         let issue = $$('section.issues-table .row.table-main .subject a').get(index);
 
-        common.link(issue);
+        await common.link(issue);
 
         return common.waitLoader();
     },
-    backlog: function() {
-        common.link($('#nav-backlog a'));
+    backlog: async function() {
+        await common.link($('#nav-backlog a'));
 
         return common.waitLoader();
     },
-    us: function(index) {
+    us: async function(index) {
         let us = $$('.user-story-name>a').get(index);
 
-        common.link(us);
+        await common.link(us);
 
         return common.waitLoader();
     },
@@ -46,15 +46,17 @@ var actions = {
         browser.get(browser.params.glob.host);
         return common.waitLoader();
     },
-    taskboard: function(index) {
+    taskboard: async function(index) {
         let link = $$('.sprints .button-gray').get(index);
 
-        common.link(link);
+        await common.link(link);
 
         return common.waitLoader();
     },
-    task: function(index) {
-        common.link($$('div[tg-taskboard-task] a.task-name').get(index));
+    task: async function(index) {
+        let task = $$('div[tg-taskboard-task] a.task-name').get(index);
+
+        await common.link(task);
 
         return common.waitLoader();
     }

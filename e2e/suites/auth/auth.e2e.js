@@ -22,7 +22,11 @@ describe('auth', function() {
 
         $('.submit-button').click();
 
-        expect(browser.getCurrentUrl()).to.be.eventually.equal(browser.params.glob.host);
+        await utils.common.waitLoader();
+
+        let url = await browser.getCurrentUrl();
+
+        expect(url).to.be.equal(browser.params.glob.host);
     });
 
     describe('page without perms', function() {
@@ -35,7 +39,9 @@ describe('auth', function() {
         it("redirect to login", async function() {
             browser.get(browser.params.glob.host + path);
 
-            expect(browser.getCurrentUrl()).to.be.eventually.equal(browser.params.glob.host + 'login?next=' + encodeURIComponent('/' + path));
+            let url = await browser.getCurrentUrl();
+
+            expect(url).to.be.equal(browser.params.glob.host + 'login?next=' + encodeURIComponent('/' + path));
         });
 
         it("login redirect to the previous one", async function() {
@@ -43,7 +49,9 @@ describe('auth', function() {
             $('input[name="password"]').sendKeys('123123');
             $('.submit-button').click();
 
-            expect(browser.getCurrentUrl()).to.be.eventually.equal(browser.params.glob.host + path);
+            let url = await browser.getCurrentUrl();
+
+            expect(url).to.be.equal(browser.params.glob.host + path);
         });
     });
 
@@ -60,7 +68,11 @@ describe('auth', function() {
             browser.actions().mouseMove($('div[tg-dropdown-user]')).perform();
             $$('.dropdown-user li a').last().click();
 
-            expect(browser.getCurrentUrl()).to.be.eventually.equal(browser.params.glob.host + 'login');
+            await utils.common.waitLoader();
+
+            let url = await browser.getCurrentUrl();
+
+            expect(url).to.be.equal(browser.params.glob.host + 'login');
         });
 
         describe("register", function() {
@@ -105,7 +117,7 @@ describe('auth', function() {
             beforeEach(async function() {
                 await utils.common.login(user.username, user.password);
 
-                browser.get(browser.params.glob.host + 'user-settings/user-change-password');
+                return browser.get(browser.params.glob.host + 'user-settings/user-change-password');
             });
 
             it("error", function() {
@@ -176,7 +188,9 @@ describe('auth', function() {
 
                 $('.lightbox-delete-account .button-green').click();
 
-                expect(browser.getCurrentUrl()).to.be.eventually.equal(browser.params.glob.host + 'login');
+                let url = await browser.getCurrentUrl();
+
+                expect(url).to.be.equal(browser.params.glob.host + 'login');
             });
         });
     });

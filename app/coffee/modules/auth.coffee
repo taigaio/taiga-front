@@ -1,7 +1,10 @@
 ###
-# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.nz>
 # Copyright (C) 2014-2016 Jesús Espino Garcia <jespinog@gmail.com>
 # Copyright (C) 2014-2016 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2016 Alejandro Alonso <alejandro.alonso@kaleidos.net>
+# Copyright (C) 2014-2016 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
+# Copyright (C) 2014-2016 Xavi Julian <xavier.julian@kaleidos.net>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -200,14 +203,21 @@ module.service("$tgAuth", AuthService)
 # Directive that manages the visualization of public register
 # message/link on login page.
 
-PublicRegisterMessageDirective = ($config, $navUrls, templates) ->
+PublicRegisterMessageDirective = ($config, $navUrls, $routeParams, templates) ->
     template = templates.get("auth/login-text.html", true)
 
     templateFn = ->
         publicRegisterEnabled = $config.get("publicRegisterEnabled")
         if not publicRegisterEnabled
             return ""
-        return template({url:$navUrls.resolve("register")})
+
+        url = $navUrls.resolve("register")
+        if $routeParams['next'] and $routeParams['next'] != $navUrls.resolve("register")
+            nextUrl = encodeURIComponent($routeParams['next'])
+            console.log "-----", nextUrl
+            url += "?next=#{nextUrl}"
+
+        return template({url:url})
 
     return {
         restrict: "AE"
@@ -215,22 +225,22 @@ PublicRegisterMessageDirective = ($config, $navUrls, templates) ->
         template: templateFn
     }
 
-module.directive("tgPublicRegisterMessage", ["$tgConfig", "$tgNavUrls", "$tgTemplate",
-                                             PublicRegisterMessageDirective])
+module.directive("tgPublicRegisterMessage", ["$tgConfig", "$tgNavUrls", "$routeParams",
+                                             "$tgTemplate", PublicRegisterMessageDirective])
 
 
 LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls, $events, $translate) ->
     link = ($scope, $el, $attrs) ->
         form = new checksley.Form($el.find("form.login-form"))
 
-        onSuccess = (response) ->
-            if $routeParams['next'] and $routeParams['next'] != $navUrls.resolve("login")
-                nextUrl = decodeURIComponent($routeParams['next'])
-            else
-                nextUrl = $navUrls.resolve("home")
+        if $routeParams['next'] and $routeParams['next'] != $navUrls.resolve("login")
+            $scope.nextUrl = decodeURIComponent($routeParams['next'])
+        else
+            $scope.nextUrl = $navUrls.resolve("home")
 
+        onSuccess = (response) ->
             $events.setupConnection()
-            $location.url(nextUrl)
+            $location.url($scope.nextUrl)
 
         onError = (response) ->
             $confirm.notify("light-error", $translate.instant("LOGIN_FORM.ERROR_AUTH_INCORRECT"))
@@ -268,7 +278,7 @@ module.directive("tgLogin", ["$tgAuth", "$tgConfirm", "$tgLocation", "$tgConfig"
 ## Register Directive
 #############################################################################
 
-RegisterDirective = ($auth, $confirm, $location, $navUrls, $config, $analytics, $translate) ->
+RegisterDirective = ($auth, $confirm, $location, $navUrls, $config, $routeParams, $analytics, $translate) ->
     link = ($scope, $el, $attrs) ->
         if not $config.get("publicRegisterEnabled")
             $location.path($navUrls.resolve("not-found"))
@@ -277,12 +287,17 @@ RegisterDirective = ($auth, $confirm, $location, $navUrls, $config, $analytics, 
         $scope.data = {}
         form = $el.find("form").checksley({onlyOneErrorElement: true})
 
+        if $routeParams['next'] and $routeParams['next'] != $navUrls.resolve("register")
+            $scope.nextUrl = decodeURIComponent($routeParams['next'])
+        else
+            $scope.nextUrl = $navUrls.resolve("home")
+
         onSuccessSubmit = (response) ->
             $analytics.trackEvent("auth", "register", "user registration", 1)
 
             $confirm.notify("success", $translate.instant("LOGIN_FORM.SUCCESS"))
 
-            $location.path($navUrls.resolve("home"))
+            $location.url($scope.nextUrl)
 
         onErrorSubmit = (response) ->
             if response.data._error_message
@@ -310,7 +325,7 @@ RegisterDirective = ($auth, $confirm, $location, $navUrls, $config, $analytics, 
     return {link:link}
 
 module.directive("tgRegister", ["$tgAuth", "$tgConfirm", "$tgLocation", "$tgNavUrls", "$tgConfig",
-                                "$tgAnalytics", "$translate", RegisterDirective])
+                                "$routeParams", "$tgAnalytics", "$translate", RegisterDirective])
 
 
 #############################################################################
@@ -437,9 +452,7 @@ InvitationDirective = ($auth, $confirm, $location, $params, $navUrls, $analytics
             $confirm.notify("success", text)
 
         onErrorSubmitLogin = (response) ->
-            text = $translate.instant("INVITATION_LOGIN_FORM.ERROR")
-
-            $confirm.notify("light-error", text)
+            $confirm.notify("light-error", response.data._error_message)
 
         submitLogin = debounce 2000, (event) =>
             event.preventDefault()

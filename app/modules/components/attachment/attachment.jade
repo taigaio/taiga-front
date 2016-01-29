@@ -1,0 +1,80 @@
+form.single-attachment(
+    ng-class="{deprecated: vm.attachment.getIn(['file', 'is_deprecated'])}",
+    ng-if="vm.attachment.getIn(['file', 'id'])",
+    ng-submit="vm.save()"
+)
+
+    .attachment-name
+        a(
+            tg-attachment-link="vm.attachment"
+            href="{{::vm.attachment.getIn(['file', 'url'])}}"
+            title="{{::vm.attachment.get(['file', 'name'])}}"
+            target="_blank"
+            download="{{::vm.attachment.getIn(['file', 'name'])}}"
+        )
+            span.icon
+                include ../../../svg/attachment.svg
+            span {{::vm.attachment.getIn(['file', 'name'])}}
+
+    .attachment-comments(ng-if="!vm.attachment.get('editable') && vm.attachment.getIn(['file', 'description'])")
+        span.deprecated-file(ng-if="vm.attachment.getIn(['file', 'is_deprecated'])") {{'ATTACHMENT.DEPRECATED' | translate}}
+        span {{vm.attachment.getIn(['file', 'description'])}}
+
+    .attachment-size
+        span {{::vm.attachment.getIn(['file', 'size']) | sizeFormat}}
+
+    .editable.editable-attachment-comment(ng-if="vm.attachment.get('editable')")
+        input(
+            type="text",
+            name="description",
+            maxlength="140",
+            ng-model="vm.form.description",
+            tg-auto-select,
+            ng-keydown="$event.which === 27 && vm.editMode(false)"
+            placeholder="{{'ATTACHMENT.DESCRIPTION' | translate}}"
+        )
+
+    .editable.editable-attachment-deprecated(ng-if="vm.attachment.get('editable')")
+        input(
+            type="checkbox"
+            ng-model="vm.form.is_deprecated"
+            name="is-deprecated"
+            id="attach-{{::vm.attachment.getIn(['file', 'id'])}}-is-deprecated"
+        )
+        label.is_deprecated(
+            for="attach-{{::vm.attachment.getIn(['file', 'id'])}}-is-deprecated"
+            translate="{{'ATTACHMENT.DEPRECATED_FILE' | translate}}")
+
+    .attachment-settings(ng-if="vm.attachment.get('editable')")
+        div(tg-loading="vm.attachment.get('loading')")
+            a.editable-settings.icon.icon-floppy(
+                href=""
+                title="{{'COMMON.SAVE' | translate}}"
+                ng-click="vm.save()"
+            )
+
+        div
+            a.editable-settings.icon.icon-delete(
+                href=""
+                title="{{'COMMON.CANCEL' | translate}}"
+                ng-click="vm.editMode(false)"
+            )
+
+    .attachment-settings(
+        ng-if="!vm.attachment.get('editable')"
+        tg-check-permission="modify_{{vm.type}}"
+    )
+        a.settings.icon.icon-edit(
+            href=""
+            title="{{'COMMON.EDIT' | translate}}"
+            ng-click="vm.editMode(true)"
+        )
+        a.settings.icon.icon-delete(
+            href=""
+            title="{{'COMMON.DELETE' | translate}}"
+            ng-click="vm.delete()"
+        )
+        a.settings.icon.icon-drag-v(
+            href=""
+            title="{{'COMMON.DRAG' | translate}}"
+        )

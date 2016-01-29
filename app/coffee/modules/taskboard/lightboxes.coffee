@@ -1,7 +1,10 @@
 ###
-# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.nz>
 # Copyright (C) 2014-2016 Jesús Espino Garcia <jespinog@gmail.com>
 # Copyright (C) 2014-2016 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2016 Alejandro Alonso <alejandro.alonso@kaleidos.net>
+# Copyright (C) 2014-2016 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
+# Copyright (C) 2014-2016 Xavi Julian <xavier.julian@kaleidos.net>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -23,9 +26,35 @@ taiga = @.taiga
 bindOnce = @.taiga.bindOnce
 debounce = @.taiga.debounce
 
-CreateEditTaskDirective = ($repo, $model, $rs, $rootscope, $loading, lightboxService, $translate) ->
+CreateEditTaskDirective = ($repo, $model, $rs, $rootscope, $loading, lightboxService, $translate, $q, attachmentsService) ->
     link = ($scope, $el, attrs) ->
         $scope.isNew = true
+
+        attachmentsToAdd = Immutable.List()
+        attachmentsToDelete = Immutable.List()
+
+        resetAttachments = () ->
+            attachmentsToAdd = Immutable.List()
+            attachmentsToDelete = Immutable.List()
+
+        $scope.addAttachment = (attachment) ->
+            attachmentsToAdd = attachmentsToAdd.push(attachment)
+
+        $scope.deleteAttachment = (attachment) ->
+            attachmentsToDelete = attachmentsToDelete.push(attachment)
+
+        createAttachments = (obj) ->
+            promises = _.map attachmentsToAdd.toJS(), (attachment) ->
+                attachmentsService.upload(attachment.file, obj.id, $scope.task.project, 'task')
+
+            return $q.all(promises)
+
+        deleteAttachments = (obj) ->
+            console.log attachmentsToDelete.toJS()
+            promises = _.map attachmentsToDelete.toJS(), (attachment) ->
+                return attachmentsService.delete("task", attachment.id)
+
+            return $q.all(promises)
 
         $scope.$on "taskform:new", (ctx, sprintId, usId) ->
             $scope.task = {
@@ -38,6 +67,9 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootscope, $loading, lightboxSer
                 tags: []
             }
             $scope.isNew = true
+            $scope.attachments = Immutable.List()
+
+            resetAttachments()
 
             # Update texts for creation
             create = $translate.instant("COMMON.CREATE")
@@ -49,9 +81,13 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootscope, $loading, lightboxSer
             $el.find(".tag-input").val("")
             lightboxService.open($el)
 
-        $scope.$on "taskform:edit", (ctx, task) ->
+        $scope.$on "taskform:edit", (ctx, task, attachments) ->
             $scope.task = task
             $scope.isNew = false
+
+            $scope.attachments = Immutable.fromJS(attachments)
+
+            resetAttachments()
 
             # Update texts for edition
             save = $translate.instant("COMMON.SAVE")
@@ -79,6 +115,12 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootscope, $loading, lightboxSer
             else
                 promise = $repo.save($scope.task)
                 broadcastEvent = "taskform:edit:success"
+
+            promise.then (data) ->
+                createAttachments(data)
+                deleteAttachments(data)
+
+                return data
 
             currentLoading = $loading()
                 .target(submitButton)
@@ -152,7 +194,9 @@ module.directive("tgLbCreateEditTask", [
     "$rootScope",
     "$tgLoading",
     "lightboxService",
-    "$translate"
+    "$translate",
+    "$q",
+    "tgAttachmentsService",
     CreateEditTaskDirective
 ])
 

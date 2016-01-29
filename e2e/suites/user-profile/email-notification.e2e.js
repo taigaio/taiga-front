@@ -20,7 +20,9 @@ describe('email notification', function() {
 
         row.$$('label').get(0).click();
 
-        expect(utils.notifications.success.open()).to.be.eventually.equal(true);
+        let notificationOpen = await utils.notifications.success.open();
+
+        expect(notificationOpen).to.be.true;
 
         await utils.notifications.success.close();
     });
@@ -30,7 +32,9 @@ describe('email notification', function() {
 
         row.$$('label').get(2).click();
 
-        expect(utils.notifications.success.open()).to.be.eventually.equal(true);
+        let notificationOpen = await utils.notifications.success.open();
+
+        expect(notificationOpen).to.be.true;
 
         await utils.notifications.success.close();
     });
@@ -40,7 +44,9 @@ describe('email notification', function() {
 
         row.$$('label').get(1).click();
 
-        expect(utils.notifications.success.open()).to.be.eventually.equal(true);
+        let notificationOpen = await utils.notifications.success.open();
+
+        expect(notificationOpen).to.be.true;
 
         await utils.notifications.success.close();
     });

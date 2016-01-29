@@ -4,7 +4,7 @@ div.register-form-container(tg-register)
         fieldset
             input(
                 type="text"
-                autocorrect="off" 
+                autocorrect="off"
                 autocapitalize="none"
                 name="username"
                 ng-model="data.username"
@@ -46,11 +46,16 @@ div.register-form-container(tg-register)
             )
 
         fieldset
-            button.button-register.button-gray.submit-button(
+            button.button-register.button-green.submit-button(
                 type="submit"
                 title="{{'REGISTER_FORM.ACTION_SIGN_UP' | translate}}"
                 translate="REGISTER_FORM.ACTION_SIGN_UP"
             )
+
+        fieldset(
+            ng-repeat="plugin in contribPlugins|filter:{type: 'auth'}"
+            ng-include="plugin.template"
+        )
 
         //- Only displays terms notice when terms plugin is loaded.
         tg-terms-of-service-and-privacy-policy-notice
@@ -59,5 +64,6 @@ div.register-form-container(tg-register)
             href=""
             title="{{'REGISTER_FORM.TITLE_LINK_LOGIN' | translate}}"
             tg-nav="login"
+            tg-nav-get-params="{\"next\": \"{{nextUrl}}\"}"
             translate="REGISTER_FORM.LINK_LOGIN"
         )

@@ -40,9 +40,7 @@ helper.getCreateEditUsLightbox = function() {
             return utils.popover.open(role, value);
         },
         getRolePoints: function() {
-            let role = obj.roles().get(0);
-
-            return role.$('.points').getText();
+            return el.$$('.ticket-role-points').last().$('.points').getText();
         }
     };
 
@@ -152,6 +150,10 @@ helper.setUsPoints = async function(item, value1, value2)  {
     let points = $$('.backlog-table-body > div .us-points').get(item).$$('span').get(0);
 
     return  utils.popover.open(points, value1, value2);
+};
+
+helper.getUsPoints = async function(item)  {
+    return $$('.backlog-table-body > div .us-points').get(item).$$('span').get(0).getText();
 };
 
 helper.deleteUs = function(item) {

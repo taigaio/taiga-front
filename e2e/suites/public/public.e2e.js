@@ -60,21 +60,25 @@ describe('Public', async function(){
         utils.common.takeScreenshot('public', 'kanban');
     });
 
-    it('us detail', function() {
+    it('us detail', async function() {
         browser.get(browser.params.glob.host + 'project/project-3/backlog');
 
-        utils.nav
+        await utils.common.waitLoader();
+
+        await utils.nav
             .init()
             .us(0)
             .go();
 
-        utils.common.takeScreenshot('public', 'us-detail');
+        return utils.common.takeScreenshot('public', 'us-detailb');
     });
 
-    it('issue detail', function() {
+    it('issue detail', async function() {
         browser.get(browser.params.glob.host + 'project/project-3/issues');
 
-        utils.nav
+        await utils.common.waitLoader();
+
+        await utils.nav
             .init()
             .issue(0)
             .go();
@@ -85,7 +89,9 @@ describe('Public', async function(){
     it('task detail', async function() {
         browser.get(browser.params.glob.host + 'project/project-3/backlog');
 
-        utils.nav
+        await utils.common.waitLoader();
+
+        await utils.nav
             .init()
             .taskboard(0)
             .task(0)

@@ -1,0 +1,57 @@
+.highlighted-projects-container
+    .loading-container(
+        tg-loading="loading"
+        ng-show="loading"
+    )
+    .highlighted-project(
+        tg-repeat="project in highlighted track by project.get('id')"
+        ng-if="!loading"
+    )
+        a.project-logo(
+            href="#"
+            tg-nav="project:project=project.get('slug')"
+            title="{{::project.get('name')}}"
+        )
+            img(
+                tg-project-logo-src="::project"
+                alt="{{::project.get('name')}}"
+            )
+        .project-data-container
+            .single-project-header
+                h2.project-title
+                    a(
+                        href="#"
+                        tg-nav="project:project=project.get('slug')"
+                        title="{{::project.get('name')}}"
+                    ) {{::project.get('name')}}
+                    span.look-for-people(
+                        ng-if="project.get('is_looking_for_people')"
+                        title="{{ ::project.get('looking_for_people_note') }}"
+                    )
+                        include ../../../../svg/recruit.svg
+                .project-statistics
+                    span.statistic(
+                        ng-class="{'active': project.get('is_fan')}"
+                        title="{{ 'PROJECT.FANS_COUNTER_TITLE'|translate:{total:project.get('total_fans')||0}:'messageformat' }}"
+                    )
+                        include ../../../../svg/like.svg
+                        span {{::project.get('total_fans')}}
+                    span.statistic(
+                        ng-class="{'active': project.get('is_watcher')}"
+                        title="{{ 'PROJECT.WATCHERS_COUNTER_TITLE'|translate:{total:project.get('total_watchers')||0}:'messageformat' }}"
+                    )
+                        include ../../../../svg/eye.svg
+                        span {{::project.get('total_watchers')}}
+                    span.statistic(
+                        title="{{ 'PROJECT.MEMBERS_COUNTER_TITLE'|translate:{total:project.get('members').size||0}:'messageformat' }}"
+                    )
+                        include ../../../../svg/team.svg
+                        span.statistics-num {{ ::project.get('members').size }}
+            p.project-description {{ ::project.get('description') | limitTo:150 }}{{ ::project.get('description').length < 150 ? '' : '...'}}
+
+    a.view-more-projects.button-green(
+        ng-if="highlighted"
+        tg-nav="discover-search"
+        tg-nav-get-params="{\"order_by\": \"{{orderBy}}\"}"
+        href="#"
+    ) {{ 'DISCOVER.VIEW_MORE' | translate }}

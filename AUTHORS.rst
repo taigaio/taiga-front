@@ -1,6 +1,6 @@
 The PRIMARY AUTHORS are:
 
-- Andrey Antukh <niwi@niwi.be>
+- Andrey Antukh <niwi@niwi.nz>
 - Jesus Espino Garcia <jespinog@gmail.com>
 - David Barragán Merino <bameda@dbarragan.com>
 - Xavi Julian <xavier.julian@kaleidos.net>
@@ -16,16 +16,17 @@ And here is an inevitably incomplete list of MUCH-APPRECIATED CONTRIBUTORS --
 people who have submitted patches, reported bugs, added translations, helped
 answer newbie questions, and generally made Taiga that much better:
 
-- Pilar Esteban <pilar.esteban@gmail.com>
-- Guilhem Got <guilhem.got@gmail.com>
-- Ramiro Sánchez <ramiro.sanzhez@kaleidos.net>
-- Miguel de la Cruz <miguel.delacruz@kaleidos.net>
+- Allister Antosik <me@allisterantosik.com>
 - Andrea Stagi <stagi.andrea@gmail.com>
-- Jordan Rinke
-- Wil Wade
+- Brett Profitt <brett.profitt@gmail.com>
+- Chris Wilson <chris.wilson@aridhia.com>
 - Daniel Koch
 - Florian Bezagu
+- Guilhem Got <guilhem.got@gmail.com>
+- Jordan Rinke
+- Miguel de la Cruz <miguel.delacruz@kaleidos.net>
+- Pilar Esteban <pilar.esteban@gmail.com>
+- Ramiro Sánchez <ramiro.sanzhez@kaleidos.net>
 - Ryan Swanstrom
-- Chris Wilson <chris.wilson@aridhia.com>
-- Brett Profitt <brett.profitt@gmail.com>
 - Vlad Topala <topalavlad@gmail.com>
+- Wil Wade

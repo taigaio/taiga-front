@@ -47,6 +47,11 @@ sup {
     cursor: move;
 }
 
+svg {
+    height: 1rem;
+    width: 1rem;
+}
+
 //Datepicker
 .pika-single {
     // scss-lint:disable ImportantRule
@@ -77,5 +82,13 @@ sup {
             border-radius: 0 !important; //Important added because plugin has it :S
             box-shadow: inset 0 1px 3px $primary-light !important; //Important added because plugin has it :S
         }
+    }
+}
+
+.spin {
+    img {
+        @extend %loading-spinner;
+        max-height: 2rem;
+        max-width: 2rem;
     }
 }

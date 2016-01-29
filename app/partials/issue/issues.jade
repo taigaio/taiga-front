@@ -1,6 +1,6 @@
 doctype html
 
-div.wrapper.issues(tg-issues, ng-controller="IssuesController as ctrl", ng-init="section='issues'")
+div.wrapper.issues.lightbox-generic-form(tg-issues, ng-controller="IssuesController as ctrl", ng-init="section='issues'")
     tg-project-menu
     sidebar.menu-secondary.extrabar.filters-bar(tg-issues-filters)
         include ../includes/modules/issues-filters

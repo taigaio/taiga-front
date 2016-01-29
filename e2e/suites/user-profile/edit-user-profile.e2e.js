@@ -20,7 +20,9 @@ describe('edit user profile', function() {
 
         $('button[type="submit"]').click();
 
-        expect(utils.notifications.success.open()).to.be.eventually.equal(true);
+        let successOpen = await utils.notifications.success.open();
+
+        expect(successOpen).to.be.ok;
 
         // debounce :(
         await browser.sleep(2000);
@@ -91,7 +93,7 @@ describe('edit user profile', function() {
 
         await htmlChanges();
 
-        let avatar = imageContainer.$('.avatar');
+        let avatar = imageContainer.$('.image');
 
         let src = await avatar.getAttribute('src');
 

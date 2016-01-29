@@ -1,9 +1,12 @@
 ul.points-per-role
+    <% _.each(roles, function(role) { %>
+    li.ticket-role-points.total(class!="<% if(editable){ %>clickable<% } %>", data-role-id!="<%- role.id %>", title!="<%- role.name %>")
+        span.points 
+            <%- role.points %>
+            span.icon-arrow-bottom
+        span.role 
+            <%- role.name %>
+    <% }); %>
     li.ticket-role-points.total
         span.points <%- totalPoints %>
         span.role(translate="US.TOTAL_POINTS")
-    <% _.each(roles, function(role) { %>
-    li.ticket-role-points(class!="total <% if(editable){ %>clickable<% } %>", data-role-id!="<%- role.id %>", title!="<%- role.name %>")
-        span.points <%- role.points %>
-        span.role <%- role.name %>
-    <% }); %>

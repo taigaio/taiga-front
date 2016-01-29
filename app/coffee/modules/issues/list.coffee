@@ -1,7 +1,10 @@
 ###
-# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.nz>
 # Copyright (C) 2014-2016 Jesús Espino Garcia <jespinog@gmail.com>
 # Copyright (C) 2014-2016 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2016 Alejandro Alonso <alejandro.alonso@kaleidos.net>
+# Copyright (C) 2014-2016 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
+# Copyright (C) 2014-2016 Xavi Julian <xavier.julian@kaleidos.net>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -775,7 +778,7 @@ module.directive("tgIssueStatusInlineEdition", ["$tgRepo", "$tgTemplate", "$root
 ## Issue assigned to Directive
 #############################################################################
 
-IssueAssignedToInlineEditionDirective = ($repo, $rootscope, popoverService) ->
+IssueAssignedToInlineEditionDirective = ($repo, $rootscope, $translate) ->
     template = _.template("""
     <img src="<%- imgurl %>" alt="<%- name %>"/>
     <figcaption><%- name %></figcaption>
@@ -783,11 +786,15 @@ IssueAssignedToInlineEditionDirective = ($repo, $rootscope, popoverService) ->
 
     link = ($scope, $el, $attrs) ->
         updateIssue = (issue) ->
-            ctx = {name: "Unassigned", imgurl: "/" + window._version + "/images/unnamed.png"}
+            ctx = {
+                name: $translate.instant("COMMON.ASSIGNED_TO.NOT_ASSIGNED"),
+                imgurl: "/#{window._version}/images/unnamed.png"
+            }
+
             member = $scope.usersById[issue.assigned_to]
             if member
-                ctx.imgurl = member.photo
                 ctx.name = member.full_name_display
+                ctx.imgurl = member.photo
 
             $el.find(".avatar").html(template(ctx))
             $el.find(".issue-assignedto").attr('title', ctx.name)
@@ -819,5 +826,5 @@ IssueAssignedToInlineEditionDirective = ($repo, $rootscope, popoverService) ->
 
     return {link: link}
 
-module.directive("tgIssueAssignedToInlineEdition", ["$tgRepo", "$rootScope",
+module.directive("tgIssueAssignedToInlineEdition", ["$tgRepo", "$rootScope", "$translate"
                                                     IssueAssignedToInlineEditionDirective])

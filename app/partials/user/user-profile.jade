@@ -1,126 +1,129 @@
 doctype html
 
-div.wrapper(tg-user-profile, ng-controller="UserSettingsController as ctrl",
-            ng-init="section='user-settings'")
+div.wrapper(
+    tg-user-profile
+    ng-controller="UserSettingsController as ctrl"
+    ng-init="section='user-settings'"
+)
 
     sidebar.menu-secondary.sidebar.settings-nav(tg-user-settings-navigation="user-profile")
         include ../includes/modules/user-settings-menu
 
     section.main.user-profile
         header
-            h1
-                span.green {{sectionName | translate}}
+            include ../includes/components/mainTitle
 
         form
-            div.container
-                div.avatar-container
-                    fieldset(tg-user-avatar)
-                        .image-container
-                            img.avatar(ng-src="{{user.big_photo}}" alt="avatar")
-                            .overlay.hidden
-                                img.loading-spinner(
-                                    src="/#{v}/svg/spinner-circle.svg",
-                                    alt="{{'COMMON.LOADING' | translate}}"
-                                )
-
-                        input.hidden(
-                            type="file"
-                            id="avatar-field"
-                            tg-avatar-model="avatarAttachment"
+            .project-details-image(tg-user-avatar)
+                fieldset.image-container
+                    img.image(ng-src="{{user.big_photo}}" alt="avatar")
+                    .loading-overlay
+                        img.loading-spinner(
+                            src="/#{v}/svg/spinner-circle.svg",
+                            alt="{{'COMMON.LOADING' | translate}}"
                         )
+                    input.hidden(
+                        type="file"
+                        id="avatar-field"
+                        tg-avatar-model="avatarAttachment"
+                    )
+                p.image-help
+                    span {{ 'USER_PROFILE.IMAGE_HELP' | translate }}
+                    span.size-info.hidden(tg-bo-html="maxFileSizeMsg")
 
-                        p(translate="USER_PROFILE.IMAGE_HELP")
-                            span.size-info.hidden(tg-bo-html="maxFileSizeMsg")
+                a.button-green.change.js-change-avatar(
+                    href="#"
+                    title="{{'USER_PROFILE.CHANGE_PHOTO' | translate}}"
+                ) {{'USER_PROFILE.CHANGE_PHOTO' | translate}}
 
-                        a.button-green.change.js-change-avatar(
-                            translate="USER_PROFILE.ACTION_CHANGE_IMAGE",
-                            title="{{'USER_PROFILE.CHANGE_PHOTO' | translate}} {{maxFileSizeMsg}}"
-                        )
-                        a.use-gravatar(translate="USER_PROFILE.ACTION_USE_GRAVATAR")
+                a.use-default-image.js-use-gravatar(
+                    href="#"
+                    title="{{ 'USER_PROFILE.ACTION_USE_GRAVATAR' | translate }}"
+                ) {{ 'USER_PROFILE.ACTION_USE_GRAVATAR' | translate }}
 
-                div.data
-                    fieldset
-                        label(for="username", translate="USER_PROFILE.FIELD.USERNAME")
-                        input(
-                            type="text"
-                            autocorrect="off" 
-                            autocapitalize="none"
-                            name="username"
-                            id="username"
-                            ng-model="user.username"
-                            data-required="true"
-                            data-maxlength="255"
-                            data-regexp="^[\\w.-]+$"
-                            placeholder="{{'USER_PROFILE.FIELD.USERNAME' | translate}}",
-                        )
+            .project-details-form-data
+                fieldset
+                    label(for="username", translate="USER_PROFILE.FIELD.USERNAME")
+                    input(
+                        type="text"
+                        autocorrect="off"
+                        autocapitalize="none"
+                        name="username"
+                        id="username"
+                        ng-model="user.username"
+                        data-required="true"
+                        data-maxlength="255"
+                        data-regexp="^[\\w.-]+$"
+                        placeholder="{{'USER_PROFILE.FIELD.USERNAME' | translate}}",
+                    )
 
-                    fieldset
-                        label(for="email", translate="USER_PROFILE.FIELD.EMAIL")
-                        input(
-                            type="email"
-                            name="email"
-                            id="email"
-                            ng-model="user.email"
-                            data-type="email"
-                            data-required="true"
-                            data-maxlength="255"
-                            placeholder="{{'USER_PROFILE.FIELD.EMAIL' | translate}}"
-                        )
+                fieldset
+                    label(for="email", translate="USER_PROFILE.FIELD.EMAIL")
+                    input(
+                        type="email"
+                        name="email"
+                        id="email"
+                        ng-model="user.email"
+                        data-type="email"
+                        data-required="true"
+                        data-maxlength="255"
+                        placeholder="{{'USER_PROFILE.FIELD.EMAIL' | translate}}"
+                    )
 
-                    fieldset
-                        label(for="full-name", translate="USER_PROFILE.FIELD.FULL_NAME")
-                        input(
-                            type="text"
-                            name="full_name"
-                            id="full-name"
-                            ng-model="user.full_name"
-                            data-required="true"
-                            data-maxlength="256"
-                            placeholder="{{'USER_PROFILE.FIELD.PLACEHOLDER_FULL_NAME' | translate}}",
-                        )
+                fieldset
+                    label(for="full-name", translate="USER_PROFILE.FIELD.FULL_NAME")
+                    input(
+                        type="text"
+                        name="full_name"
+                        id="full-name"
+                        ng-model="user.full_name"
+                        data-required="true"
+                        data-maxlength="256"
+                        placeholder="{{'USER_PROFILE.FIELD.PLACEHOLDER_FULL_NAME' | translate}}",
+                    )
 
-                    fieldset
-                        label(for="lang", translate="USER_PROFILE.FIELD.LANGUAGE")
-                        select(
-                            name="lang"
-                            id="lang"
-                            ng-model="lang"
-                            ng-options="locale.code as locale.name for locale in locales"
-                        )
-                            option(value="", translate="USER_PROFILE.FIELD.LANGUAGE_DEFAULT")
+                fieldset
+                    label(for="lang", translate="USER_PROFILE.FIELD.LANGUAGE")
+                    select(
+                        name="lang"
+                        id="lang"
+                        ng-model="lang"
+                        ng-options="locale.code as locale.name for locale in locales"
+                    )
+                        option(value="", translate="USER_PROFILE.FIELD.LANGUAGE_DEFAULT")
 
-                     fieldset
-                        label(for="theme", translate="USER_PROFILE.FIELD.THEME")
-                        select(
-                            name="theme"
-                            id="theme"
-                            ng-model="theme"
-                            ng-options="availableTheme for availableTheme in availableThemes"
-                        )
-                            option(value="", translate="USER_PROFILE.FIELD.THEME_DEFAULT")
+                 fieldset
+                    label(for="theme", translate="USER_PROFILE.FIELD.THEME")
+                    select(
+                        name="theme"
+                        id="theme"
+                        ng-model="theme"
+                        ng-options="availableTheme for availableTheme in availableThemes"
+                    )
+                        option(value="", translate="USER_PROFILE.FIELD.THEME_DEFAULT")
 
-                    fieldset
-                        label(for="bio", translate="USER_PROFILE.FIELD.BIO")
-                        textarea(
-                            name="bio"
-                            id="bio"
-                            ng-model="user.bio"
-                            ng-attr-placeholder="{{'USER_PROFILE.FIELD.PLACEHOLDER_BIO' | translate}}"
-                            ng-maxlength="210"
-                            maxlength="210"
-                        )
+                fieldset
+                    label(for="bio", translate="USER_PROFILE.FIELD.BIO")
+                    textarea(
+                        name="bio"
+                        id="bio"
+                        ng-model="user.bio"
+                        ng-attr-placeholder="{{'USER_PROFILE.FIELD.PLACEHOLDER_BIO' | translate}}"
+                        ng-maxlength="210"
+                        maxlength="210"
+                    )
 
-            fieldset.submit
-                button.button-green.submit-button(
-                    type="submit"
-                    title="{{'COMMON.SAVE' | translate}}",
-                    translate="COMMON.SAVE"
-                )
-                a.delete-account(
-                    href=""
-                    title="{{'USER_PROFILE.ACTION_DELETE_ACCOUNT' | translate}}"
-                    ng-click="ctrl.openDeleteLightbox()"
-                    translate="USER_PROFILE.ACTION_DELETE_ACCOUNT"
-                )
+                fieldset.submit
+                    button.button-green.submit-button(
+                        type="submit"
+                        title="{{'COMMON.SAVE' | translate}}",
+                        translate="COMMON.SAVE"
+                    )
+                    a.delete-account(
+                        href=""
+                        title="{{'USER_PROFILE.ACTION_DELETE_ACCOUNT' | translate}}"
+                        ng-click="ctrl.openDeleteLightbox()"
+                        translate="USER_PROFILE.ACTION_DELETE_ACCOUNT"
+                    )
 
 div.lightbox.lightbox-delete-account(tg-lb-delete-user)

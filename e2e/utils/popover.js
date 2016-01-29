@@ -1,4 +1,4 @@
-var common = require('./common')
+var common = require('./common');
 
 var popover = module.exports;
 
@@ -13,7 +13,7 @@ async function selectPopoverItem(popover, item) {
 popover.wait = async function() {
     await browser.wait(async function() {
         return await $$('.popover.active').count() === 1;
-    }, 1000);
+    }, 3000);
 
     return $('.popover.active');
 };

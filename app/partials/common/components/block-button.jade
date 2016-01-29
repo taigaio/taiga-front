@@ -1,4 +1,10 @@
-a(href="#", class="button button-gray item-block")
-    span(translate="COMMON.BLOCK")
-a(href="#", class="button button-red item-unblock")
-    span(translate="COMMON.UNBLOCK")
+a.button-gray.item-block(
+    href=""
+    title="{{ 'COMMON.BLOCK_TITLE' | translate }}"
+)
+    include ../../../svg/lock.svg
+a.button-red.item-unblock(
+    href=""
+    title="{{ 'COMMON.UNBLOCK_TITLE' | translate }}"
+)
+    include ../../../svg/unlock.svg

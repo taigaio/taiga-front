@@ -14,10 +14,12 @@
         flex-basis: 400px;
     }
     .logo-svg {
-        max-height: 140px;
-        padding: 0 33%;
         text-align: center;
         width: 100%;
+        svg {
+            height: 8rem;
+            width: 8rem;
+        }
     }
     .logo {
         @extend %xxlarge;

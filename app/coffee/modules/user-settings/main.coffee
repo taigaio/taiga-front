@@ -1,7 +1,10 @@
 ###
-# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.nz>
 # Copyright (C) 2014-2016 Jesús Espino Garcia <jespinog@gmail.com>
 # Copyright (C) 2014-2016 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2016 Alejandro Alonso <alejandro.alonso@kaleidos.net>
+# Copyright (C) 2014-2016 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
+# Copyright (C) 2014-2016 Xavi Julian <xavier.julian@kaleidos.net>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -145,12 +148,12 @@ UserAvatarDirective = ($auth, $model, $rs, $confirm) ->
             $auth.setUser(user)
             $scope.user = user
 
-            $el.find('.overlay').addClass('hidden')
+            $el.find('.loading-overlay').removeClass('active')
             $confirm.notify('success')
 
         onError = (response) ->
             showSizeInfo() if response.status == 413
-            $el.find('.overlay').addClass('hidden')
+            $el.find('.loading-overlay').removeClass('active')
             $confirm.notify('error', response.data._error_message)
 
         # Change photo
@@ -159,12 +162,12 @@ UserAvatarDirective = ($auth, $model, $rs, $confirm) ->
 
         $el.on "change", "#avatar-field", (event) ->
             if $scope.avatarAttachment
-                $el.find('.overlay').removeClass('hidden')
+                $el.find('.loading-overlay').addClass("active")
                 $rs.userSettings.changeAvatar($scope.avatarAttachment).then(onSuccess, onError)
 
         # Use gravatar photo
-        $el.on "click", "a.use-gravatar", (event) ->
-            $el.find('.overlay').removeClass('hidden')
+        $el.on "click", "a.js-use-gravatar", (event) ->
+            $el.find('.loading-overlay').addClass("active")
             $rs.userSettings.removeAvatar().then(onSuccess, onError)
 
         $scope.$on "$destroy", ->

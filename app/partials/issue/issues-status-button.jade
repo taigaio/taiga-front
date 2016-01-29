@@ -1,15 +1,20 @@
-div(class!="status-data <% if(editable){ %>clickable<% }%>")
-    span(class="level", style!="background-color:<%- status.color %>")
-    span(class="status-status") <%- status.name %>
+span.detail-status-inner.js-edit-status(
+    class!="<% if(editable){ %>clickable<% }%>"
+    style!="background-color:<%- status.color %>"
+    ng-click="editStatus()"
+)
+    span <%- status.name %>
     <% if(editable){ %>
-    span(class="icon icon-arrow-bottom")
-    <% } %>
-    span(class="level-name", translate="COMMON.FIELDS.STATUS")
+    span.icon.icon-arrow-bottom
+    <% }%>
 
-    ul(class="popover pop-status")
+    ul.popover.pop-status
         <% _.each(statuses, function(st) { %>
         li
-            a(href="", class="status", title!="<%- st.name %>",
-               data-status-id!="<%- st.id %>")
+            a.status(
+                href=""
+                title!="<%- st.name %>"
+                data-status-id!="<%- st.id %>"
+            )
                 | <%- st.name %>
         <% }); %>

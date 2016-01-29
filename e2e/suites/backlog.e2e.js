@@ -1,5 +1,6 @@
 var utils = require('../utils');
 var backlogHelper = require('../helpers').backlog;
+var commonHelper = require('../helpers').common;
 
 var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
@@ -22,6 +23,7 @@ describe('backlog', function() {
             backlogHelper.openNewUs();
 
             createUSLightbox = backlogHelper.getCreateEditUsLightbox();
+
             await createUSLightbox.waitOpen();
         });
 
@@ -34,8 +36,8 @@ describe('backlog', function() {
             createUSLightbox.subject().sendKeys('subject');
 
             // roles
-            createUSLightbox.setRole(1, 3);
-            createUSLightbox.setRole(3, 4);
+            await createUSLightbox.setRole(1, 3);
+            await createUSLightbox.setRole(3, 4);
 
             let totalPoints = await createUSLightbox.getRolePoints();
 
@@ -57,9 +59,12 @@ describe('backlog', function() {
             //settings
             createUSLightbox.settings(0).click();
 
-
             await utils.common.waitTransitionTime(createUSLightbox.settings(0));
+        });
 
+        it('upload attachments', commonHelper.lightboxAttachment);
+
+        it('screenshots', function() {
             utils.common.takeScreenshot('backlog', 'create-us-filled');
         });
 
@@ -69,6 +74,8 @@ describe('backlog', function() {
             createUSLightbox.submit();
 
             await utils.lightbox.close(createUSLightbox.el);
+
+            await browser.waitForAngular();
 
             let newUsCount = await backlogHelper.userStories().count();
 
@@ -124,10 +131,10 @@ describe('backlog', function() {
             editUSLightbox.subject().sendKeys('subjectedit');
 
             // roles
-            editUSLightbox.setRole(1, 3);
-            editUSLightbox.setRole(2, 3);
-            editUSLightbox.setRole(3, 3);
-            editUSLightbox.setRole(4, 3);
+            await editUSLightbox.setRole(0, 3);
+            await editUSLightbox.setRole(1, 3);
+            await editUSLightbox.setRole(2, 3);
+            await editUSLightbox.setRole(3, 3);
 
             let totalPoints = await editUSLightbox.getRolePoints();
 
@@ -150,6 +157,8 @@ describe('backlog', function() {
             editUSLightbox.settings(1).click();
         });
 
+        it('upload attachments', commonHelper.lightboxAttachment);
+
         it('send form', async function() {
             editUSLightbox.submit();
 
@@ -169,9 +178,13 @@ describe('backlog', function() {
     });
 
     it('edit points inline', async function() {
+        let usPointsOriginal = await backlogHelper.getUsPoints(0, 1, 1);
+
         await backlogHelper.setUsPoints(0, 1, 1);
 
-        expect(utils.notifications.success.open()).to.be.eventually.true;
+        let usPointsNew = await backlogHelper.getUsPoints(0);
+
+        expect(usPointsOriginal).not.to.be.equal(usPointsNew);
     });
 
     it('delete US', async function() {
@@ -191,7 +204,6 @@ describe('backlog', function() {
 
         let dragElement = dragableElements.get(1);
         let dragElementHandler = dragElement.$('.icon-drag-v');
-
         let draggedElementRef = await backlogHelper.getUsRef(dragElement);
 
         await utils.common.drag(dragElementHandler, dragableElements.get(0));
@@ -202,7 +214,7 @@ describe('backlog', function() {
         expect(firstElementTextRef).to.be.equal(draggedElementRef);
     });
 
-    it('reorder multiple us', async function() {
+    utils.common.browserSkip(['firefox', 'internet explorer'], 'reorder multiple us', async function() {
         let dragableElements = backlogHelper.userStories();
 
         let count = await dragableElements.count();
@@ -231,7 +243,7 @@ describe('backlog', function() {
         expect(elementRef1).to.be.equal(draggedRefs[1]);
     });
 
-    it('drag multiple us to milestone', async function() {
+    utils.common.browserSkip(['firefox', 'internet explorer'], 'drag multiple us to milestone', async function() {
         let sprint = backlogHelper.sprints().get(0);
         let initUssSprintCount = await backlogHelper.getSprintUsertories(sprint).count();
 
@@ -328,12 +340,13 @@ describe('backlog', function() {
         let firstInput = dragableElements.get(0).$('input[type="checkbox"]');
         let lastInput = dragableElements.get(3).$('input[type="checkbox"]');
 
-        browser.actions()
+        await browser.actions()
             .mouseMove(firstInput)
             .keyDown(protractor.Key.SHIFT)
             .click()
             .mouseMove(lastInput)
             .click()
+            .keyUp(protractor.Key.SHIFT)
             .perform();
 
         let count = await backlogHelper.selectedUserStories().count();
@@ -543,7 +556,9 @@ describe('backlog', function() {
 
             await utils.common.drag(dragElement, dragableElements.get(0));
 
-            expect(utils.notifications.error.open()).to.be.eventually.true;
+            let waitErrorOpen = await utils.notifications.error.open();
+
+            expect(waitErrorOpen).to.be.true;
 
             await utils.notifications.error.close();
         });
@@ -556,7 +571,9 @@ describe('backlog', function() {
 
             await transition();
 
-            expect(menu.getCssValue('width')).to.be.eventually.equal('0px');
+            let waitWidth = await menu.getCssValue('width');
+
+            expect(waitWidth).to.be.equal('0px');
         });
     });
 
@@ -607,7 +624,7 @@ describe('backlog', function() {
             expect(closedSprints).to.be.equal(0);
         });
 
-        it('open sprint by drag open US to closed sprint', async function() {
+        utils.common.browserSkip(['firefox', 'internet explorer'], 'open sprint by drag open US to closed sprint', async function() {
             backlogHelper.toggleClosedSprints();
 
             await backlogHelper.setUsStatus(1, 0);

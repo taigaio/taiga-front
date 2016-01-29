@@ -1,7 +1,10 @@
 ###
-# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.nz>
 # Copyright (C) 2014-2016 Jesús Espino Garcia <jespinog@gmail.com>
 # Copyright (C) 2014-2016 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2016 Alejandro Alonso <alejandro.alonso@kaleidos.net>
+# Copyright (C) 2014-2016 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
+# Copyright (C) 2014-2016 Xavi Julian <xavier.julian@kaleidos.net>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -304,7 +307,7 @@ module.directive("tgTaskboard", ["$rootScope", TaskboardDirective])
 ## Taskboard Task Directive
 #############################################################################
 
-TaskboardTaskDirective = ($rootscope, $loading, $rs) ->
+TaskboardTaskDirective = ($rootscope, $loading, $rs, $rs2) ->
     link = ($scope, $el, $attrs, $model) ->
         $el.disableSelection()
 
@@ -327,14 +330,16 @@ TaskboardTaskDirective = ($rootscope, $loading, $rs) ->
                     .start()
 
                 task = $scope.task
+
                 $rs.tasks.getByRef(task.project, task.ref).then (editingTask) =>
-                    $rootscope.$broadcast("taskform:edit", editingTask)
-                    currentLoading.finish()
+                    $rs2.attachments.list("task", editingTask.id, editingTask.project).then (attachments) =>
+                        $rootscope.$broadcast("taskform:edit", editingTask, attachments.toJS())
+                        currentLoading.finish()
 
     return {link:link}
 
 
-module.directive("tgTaskboardTask", ["$rootScope", "$tgLoading", "$tgResources", TaskboardTaskDirective])
+module.directive("tgTaskboardTask", ["$rootScope", "$tgLoading", "$tgResources", "tgResources", TaskboardTaskDirective])
 
 #############################################################################
 ## Taskboard Squish Column Directive
@@ -431,7 +436,7 @@ module.directive("tgTaskboardSquishColumn", ["$tgResources", TaskboardSquishColu
 ## Taskboard User Directive
 #############################################################################
 
-TaskboardUserDirective = ($log) ->
+TaskboardUserDirective = ($log, $translate) ->
     clickable = false
 
     link = ($scope, $el, $attrs) ->
@@ -442,9 +447,17 @@ TaskboardUserDirective = ($log) ->
             user = $scope.usersById[assigned_to]
 
             if user is undefined
-                _.assign($scope, {name: "Unassigned", imgurl: "/" + window._version + "/images/unnamed.png", clickable: clickable})
+                _.assign($scope, {
+                    name: $translate.instant("COMMON.ASSIGNED_TO.NOT_ASSIGNED"),
+                    imgurl: "/#{window._version}/images/unnamed.png",
+                    clickable: clickable
+                })
             else
-                _.assign($scope, {name: user.full_name_display, imgurl: user.photo, clickable: clickable})
+                _.assign($scope, {
+                    name: user.full_name_display,
+                    imgurl: user.photo,
+                    clickable: clickable
+                })
 
             username_label.text($scope.name)
 
@@ -479,4 +492,4 @@ TaskboardUserDirective = ($log) ->
     }
 
 
-module.directive("tgTaskboardUserAvatar", ["$log", TaskboardUserDirective])
+module.directive("tgTaskboardUserAvatar", ["$log", "$translate", TaskboardUserDirective])

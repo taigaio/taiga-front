@@ -1,7 +1,10 @@
 ###
-# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.nz>
 # Copyright (C) 2014-2016 Jesús Espino Garcia <jespinog@gmail.com>
 # Copyright (C) 2014-2016 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2016 Alejandro Alonso <alejandro.alonso@kaleidos.net>
+# Copyright (C) 2014-2016 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
+# Copyright (C) 2014-2016 Xavi Julian <xavier.julian@kaleidos.net>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -29,12 +32,15 @@ module = angular.module("taigaIssues")
 ## Issue Create Lightbox Directive
 #############################################################################
 
-CreateIssueDirective = ($repo, $confirm, $rootscope, lightboxService, $loading) ->
+CreateIssueDirective = ($repo, $confirm, $rootscope, lightboxService, $loading, $q, attachmentsService) ->
     link = ($scope, $el, $attrs) ->
         form = $el.find("form").checksley()
         $scope.issue = {}
+        $scope.attachments = Immutable.List()
 
         $scope.$on "issueform:new", (ctx, project)->
+            attachmentsToAdd = Immutable.List()
+
             $el.find(".tag-input").val("")
 
             lightboxService.open($el)
@@ -52,6 +58,21 @@ CreateIssueDirective = ($repo, $confirm, $rootscope, lightboxService, $loading) 
         $scope.$on "$destroy", ->
             $el.off()
 
+
+        createAttachments = (obj) ->
+            promises = _.map attachmentsToAdd.toJS(), (attachment) ->
+                return attachmentsService.upload(attachment.file, obj.id, $scope.issue.project, 'issue')
+
+            return $q.all(promises)
+
+        attachmentsToAdd = Immutable.List()
+
+        resetAttachments = () ->
+            attachmentsToAdd = Immutable.List()
+
+        $scope.addAttachment = (attachment) ->
+            attachmentsToAdd = attachmentsToAdd.push(attachment)
+
         submit = debounce 2000, (event) =>
             event.preventDefault()
 
@@ -63,6 +84,9 @@ CreateIssueDirective = ($repo, $confirm, $rootscope, lightboxService, $loading) 
                 .start()
 
             promise = $repo.create("issues", $scope.issue)
+
+            promise.then (data) ->
+                return createAttachments(data)
 
             promise.then (data) ->
                 currentLoading.finish()
@@ -82,7 +106,7 @@ CreateIssueDirective = ($repo, $confirm, $rootscope, lightboxService, $loading) 
 
     return {link:link}
 
-module.directive("tgLbCreateIssue", ["$tgRepo", "$tgConfirm", "$rootScope", "lightboxService", "$tgLoading",
+module.directive("tgLbCreateIssue", ["$tgRepo", "$tgConfirm", "$rootScope", "lightboxService", "$tgLoading", "$q", "tgAttachmentsService",
                                      CreateIssueDirective])
 
 

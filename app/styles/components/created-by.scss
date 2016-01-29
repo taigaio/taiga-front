@@ -1,29 +1,45 @@
 .ticket-created-by {
     display: flex;
-    margin-bottom: 1rem;
-    margin-top: .5rem;
-    position: relative;
+    justify-content: flex-end;
+    @include breakpoint(laptop) {
+        justify-content: flex-start;
+        margin-bottom: .5rem;
+    }
     .user-avatar {
-        flex-basis: 3rem;
+        flex-basis: 2rem;
         flex-grow: 0;
-        margin-right: .5rem;
+        margin-left: .5rem;
+        @include breakpoint(laptop) {
+            margin-left: 0;
+            margin-right: .5rem;
+            order: 1;
+        }
         img {
             width: 100%;
         }
     }
     .created-by {
+        @include breakpoint(laptop) {
+            order: 2;
+        }
         .created-title,
         .created-date {
             @extend %light;
             @extend %small;
             color: $gray;
             display: block;
-            line-height: 1.5;
+            text-align: right;
+            @include breakpoint(laptop) {
+                text-align: left;
+            }
         }
         .created-title {
             color: $primary;
-            &.editable {
-                cursor: pointer;
+        }
+        .created-date {
+            margin-left: .5rem;
+            @include breakpoint(laptop) {
+                margin-left: 0;
             }
         }
     }

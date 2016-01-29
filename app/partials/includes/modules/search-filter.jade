@@ -1,30 +1,36 @@
-section.search-filter
-    ul
-        li.userstories(data-name="userstories")
-            a.active(href="#")
-                span.icon.icon-bulk
-                span.num 0
-                span.name(translate="SEARCH.FILTER_USER_STORIES")
+ul.search-filter
+    li.userstories(data-name="userstories")
+        a.active(
+            href="#"
+            title="{{ 'SEARCH.FILTER_USER_STORIES' | translate }}"
+        )
+            span.icon.icon-bulk
+            span.num
+            span.name(translate="SEARCH.FILTER_USER_STORIES")
 
-        li.issues(data-name="issues")
-            a(href="#")
-                span.icon.icon-issues
-                span.num 0
-                span.name(translate="SEARCH.FILTER_ISSUES")
+    li.issues(data-name="issues")
+        a(
+            href="#"
+            title="{{ 'SEARCH.FILTER_ISSUES' | translate }}"
+        )
+            span.icon.icon-issues
+            span.num
+            span.name(translate="SEARCH.FILTER_ISSUES")
 
-        li.tasks(data-name="tasks")
-            a(href="#")
-                span.icon.icon-bulk
-                span.num 0
-                span.name(translate="SEARCH.FILTER_TASKS")
+    li.tasks(data-name="tasks")
+        a(
+            href="#"
+            title="{{ 'SEARCH.FILTER_TASKS' | translate }}"
+        )
+            span.icon.icon-bulk
+            span.num
+            span.name(translate="SEARCH.FILTER_TASKS")
 
-        li.wikipages(data-name="wikipages")
-            a(href="#")
-                span.icon.icon-wiki
-                span.num 0
-                span.name(translate="SEARCH.FILTER_WIKI")
-
-        //- li
-        //-     a(href="#")
-        //-         span.icon.icon-edit
-        //-         | 3 Users
+    li.wikipages(data-name="wikipages")
+        a(
+            href="#"
+            title="{{ 'SEARCH.FILTER_WIKI' | translate }}"
+        )
+            span.icon.icon-wiki
+            span.num
+            span.name(translate="SEARCH.FILTER_WIKI")

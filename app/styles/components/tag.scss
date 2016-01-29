@@ -38,8 +38,12 @@
         display: inline-block;
     }
     input {
+        margin-right: .25rem;
         padding: .4rem;
         width: 14rem;
+        +.icon-floppy {
+            margin-left: .5rem;
+        }
     }
     .tag {
         @extend %small;

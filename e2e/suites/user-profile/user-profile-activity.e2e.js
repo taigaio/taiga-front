@@ -53,7 +53,9 @@ describe('user profile - activity', function() {
 
             utils.common.takeScreenshot('user-profile', 'image-hover');
 
-            expect(profileEdition.isDisplayed()).to.be.eventually.true;
+            let isDisplayed = await profileEdition.isDisplayed();
+
+            expect(isDisplayed).to.be.true;
         });
     });
 

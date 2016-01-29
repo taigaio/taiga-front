@@ -3,7 +3,7 @@ a.close(href="", title="{{'COMMON.CLOSE' | translate}}")
 form
     h2.title(translate="LIGHTBOX.CREATE_EDIT_TASK.TITLE")
     fieldset
-        input(type="text", ng-model="task.subject", ng-attr-placeholder="{{'LIGHTBOX.CREATE_EDIT_TASK.PLACEHOLDER_SUBJECT' | translate}}",
+        input(type="text", ng-model="task.subject", ng-attr-placeholder="{{'LIGHTBOX.CREATE_EDIT_TASK.PLACEHOLDER_SUBJECT' | translate}}", ng-model-options="{ debounce: 200 }",
               data-required="true", data-maxlength="500")
 
     fieldset
@@ -19,7 +19,15 @@ form
         div.tags-block(tg-lb-tag-line, ng-model="task.tags")
 
     fieldset
-        textarea.description(ng-attr-placeholder="{{'LIGHTBOX.CREATE_EDIT_TASK.PLACEHOLDER_SHORT_DESCRIPTION' | translate}}", ng-model="task.description")
+        section
+             tg-attachments-simple(
+                 attachments="attachments",
+                 on-add="addAttachment(attachment)"
+                 on-delete="deleteAttachment(attachment)"
+              )
+
+    fieldset
+        textarea.description(ng-attr-placeholder="{{'LIGHTBOX.CREATE_EDIT_TASK.PLACEHOLDER_SHORT_DESCRIPTION' | translate}}", ng-model="task.description", ng-model-options="{ debounce: 200 }")
 
     div.settings
         fieldset.iocaine-flag(title="{{'COMMON.IOCAINE_TEXT' | translate}}")

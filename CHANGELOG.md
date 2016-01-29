@@ -1,8 +1,38 @@
 # Changelog #
 
 
+## 1.10.0 Dryas Octopetala (2016-01-30)
+
+### Features
+- New design for the detail pages slidebar.
+- Added 'Assign to me' button in User Stories, Tasks and Issues detail pages. (thanks to [@allistera](https://github.com/allistera)).
+- Attachments:
+    - Upload attachments on US/issue/task lightbox.
+    - Attachments image gallery view mode in detail pages.
+    - Drag files from desktop to attachments section.
+    - Drag files from desktop in wysiwyg textareas.
+- Project:
+    - Add a logo to your project.
+    - Denotes that your project is looking for people and add an explanation.
+- Discover section:
+    - List most liked and most active project (last week/month/year or all time).
+    - List featured project.
+    - Search projects:
+        - Full text search with priorities over title, tags and description fields.
+        - Order results alphabeticaly, by most liked or more actived.
+        - Filter by 'use kanban', 'use scrum' or 'looking for people'.
+- i18n.
+  - Add swedish (sv) translation.
+  - Add turkish (tr) translation.
+
+### Misc
+- Sticky project navigation bar.
+- Lots of small and not so small bugfixes.
+
+
 ## 1.9.1 Taiga Tribe (2016-01-05)
 
+### Features
 - [118n] Now taiga plugins can be translatable.
 - New Taiga plugins system.
 - Now superadmins can send notifications (live announcement) to the user (through taiga-events).

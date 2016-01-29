@@ -54,6 +54,13 @@
                 opacity: 1;
             }
         }
+        .list-itemtype-project-data-wrapper {
+            display: flex;
+        }
+        .list-itemtype-project-image {
+            flex-shrink: 0;
+            margin-right: 1rem;
+        }
     }
     .drag {
         @extend %large;

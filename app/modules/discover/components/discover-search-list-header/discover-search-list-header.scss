@@ -1,0 +1,80 @@
+.discover-results-header {
+    .discover-results-header-inner {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+    }
+    svg {
+        @include svg-size(1.1rem);
+        fill: $gray-light;
+    }
+    .title {
+        @extend %bold;
+        @extend %larger;
+        text-transform: uppercase;
+    }
+    h2 {
+        display: inline-block;
+    }
+}
+
+.filter-discover-search {
+    .discover-search-filter {
+        margin-right: 1rem;
+        &.active {
+            color: $primary;
+        }
+    }
+}
+
+.discover-search-subfilter {
+    @include arrow('bottom', $whitish, $whitish, 1, 8);
+    align-items: center;
+    background: $whitish;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    &.most-liked-subfilter {
+        &::after,
+        &::before {
+            left: 85%;
+        }
+    }
+    &.most-active-subfilter {
+        &::after,
+        &::before {
+            left: 95%;
+        }
+    }
+    &.ng-enter {
+        animation: dropdownFade .2s;
+    }
+    .results {
+        @extend %small;
+        color: $red-light;
+        display: block;
+        padding: .5rem 1rem;
+        transition: all .2s;
+        &:hover {
+            color: $red;
+        }
+    }
+    .filter-list {
+        display: flex;
+        margin: 0;
+        margin-left: auto;
+        a {
+            display: block;
+            padding: .5rem 1rem;
+            transition: all .2s;
+            &:hover {
+                background: $gray-light;
+                color: currentColor;
+            }
+            &.active {
+                background: $primary-light;
+                color: $whitish;
+            }
+        }
+    }
+}

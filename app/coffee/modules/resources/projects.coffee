@@ -1,7 +1,10 @@
 ###
-# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.nz>
 # Copyright (C) 2014-2016 Jesús Espino Garcia <jespinog@gmail.com>
 # Copyright (C) 2014-2016 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2016 Alejandro Alonso <alejandro.alonso@kaleidos.net>
+# Copyright (C) 2014-2016 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
+# Copyright (C) 2014-2016 Xavi Julian <xavier.julian@kaleidos.net>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -149,6 +152,31 @@ resourceProvider = ($config, $repo, $http, $urls, $auth, $q, $translate) ->
         xhr.send(data)
 
         return defered.promise
+
+    service.changeLogo = (projectId, file) ->
+        maxFileSize = $config.get("maxUploadFileSize", null)
+        if maxFileSize and file.size > maxFileSize
+            response = {
+                status: 413,
+                data: _error_message: "'#{file.name}' (#{sizeFormat(file.size)}) is too heavy for our oompa
+                                       loompas, try it with a smaller than (#{sizeFormat(maxFileSize)})"
+            }
+            defered = $q.defer()
+            defered.reject(response)
+            return defered.promise
+
+        data = new FormData()
+        data.append('logo', file)
+        options = {
+            transformRequest: angular.identity,
+            headers: {'Content-Type': undefined}
+        }
+        url = "#{$urls.resolve("projects")}/#{projectId}/change_logo"
+        return $http.post(url, data, {}, options)
+
+    service.removeLogo = (projectId) ->
+        url = "#{$urls.resolve("projects")}/#{projectId}/remove_logo"
+        return $http.post(url)
 
     return (instance) ->
         instance.projects = service

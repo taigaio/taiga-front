@@ -28,6 +28,11 @@ There are many different ways to contribute to Taiga's development, just find th
 Big features are also welcome but if you want to see your contributions included in Taiga codebase we strongly recommend you start by initiating a chat though our [mailing list](http://groups.google.co.uk/d/forum/taigaio)
 
 
+#### Code of Conduct ####
+
+Help us keep the Taiga Community open and inclusive. Please read and follow our [Code of Conduct](https://github.com/taigaio/code-of-conduct/blob/master/CODE_OF_CONDUCT.md).
+
+
 #### License ####
 
 Every code patch accepted in taiga codebase is licensed under [AGPL v3.0](http://www.gnu.org/licenses/agpl-3.0.html). You must be careful to not include any code that can not be licensed under this license.
@@ -43,7 +48,7 @@ If you **find a bug** in Taiga you can always report it:
 
 - in our [mailing list](http://groups.google.com/d/forum/taigaio).
 - in [github issues](https://github.com/taigaio/taiga-front/issues).
-- send us a mail to support@taiga.io if is a bug related to tree.taiga.io.
+- send us a mail to support@taiga.io if is a bug related to [tree.taiga.io](https://tree.taiga.io).
 - send a mail to security@taiga.io if is a **security bug**.
 
 One of our fellow Taiga developers will search, find and hunt it as soon as possible.
@@ -80,7 +85,7 @@ Taiga is made for developers and designers. We care enormously about UI because 
 
 There are two possible ways to contribute to our UI:
 - **Bugs**: If you find a bug regarding front-end, please report it as previously indicated in the Bug reports section or send a pull-request as indicated in the Code Patches section.
-- **Enhancements**: If its a design or UX bug or enhancement we will love to receive your feedback. Please send us your enhancement, with the reason and, if possible, an example. Our design and UX team will review your enhancement and fix it as soon as possible. We recommend you to use our [mailing list](http://groups.google.co.uk/d/forum/taigaio){target="_blank"} so we can have a lot of different opinions and debate.
+- **Enhancements**: If its a design or UX bug or enhancement we will love to receive your feedback. Please send us your enhancement, with the reason and, if possible, an example. Our design and UX team will review your enhancement and fix it as soon as possible. We recommend you to use our [mailing list](http://groups.google.co.uk/d/forum/taigaio) so we can have a lot of different opinions and debate.
 - **Language Localization**: We are eager to offer localized versions of Taiga. Some members of the community have already volunteered to work to provide a variety of languages. We are working to implement some changes to allow for this and expect to accept these requests in the near future.
 
 

@@ -3,8 +3,7 @@ a.close(href="", title="{{'COMMON.CLOSE' | translate}}")
 form
     h2.title(translate="LIGHTBOX.CREATE_ISSUE.TITLE")
     fieldset
-        input(type="text", ng-model="issue.subject", ng-attr-placeholder="{{'COMMON.FIELDS.SUBJECT' | translate}}",
-              data-required="true", data-maxlength="500")
+        input(type="text", ng-model="issue.subject", ng-attr-placeholder="{{'COMMON.FIELDS.SUBJECT' | translate}}", ng-model-options="{ debounce: 200 }", data-required="true", data-maxlength="500")
     div.fieldset-row
         fieldset
             select.type(ng-model="issue.type", ng-options="t.id as t.name for t in issueTypes")
@@ -15,6 +14,14 @@ form
 
     fieldset
         div.tags-block(tg-lb-tag-line, ng-model="issue.tags")
+
+    fieldset
+        section
+             tg-attachments-simple(
+                 attachments="attachments",
+                 on-add="addAttachment(attachment)"
+                 on-delete="deleteAttachment(attachment)"
+              )
 
     fieldset
         textarea.description(ng-attr-placeholder="{{'COMMON.FIELDS.DESCRIPTION' | translate}}", ng-model="issue.description")

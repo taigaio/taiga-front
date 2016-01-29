@@ -64,9 +64,9 @@ describe('custom-fields', function() {
             it('delete', async function() {
                 let oldCountCustomFields = await customFieldsHelper.getCustomFiledsByType(typeIndex).count();
 
-                customFieldsHelper.delete(typeIndex, 0);
+                await customFieldsHelper.delete(typeIndex, 0);
 
-                browser.wait(async function() {
+                await browser.wait(async function() {
                     let countCustomFields = await customFieldsHelper.getCustomFiledsByType(typeIndex).count();
 
                     return countCustomFields === oldCountCustomFields - 1;
@@ -84,13 +84,13 @@ describe('custom-fields', function() {
 
                 // debounce :(
                 await utils.notifications.success.open();
-                await browser.sleep(2000);
+                await browser.sleep(2500);
 
                 customFieldsHelper.create(typeIndex, 'test1-multi', 'desc1', 3);
 
                 // debounce :(
                 await utils.notifications.success.open();
-                await browser.sleep(2000);
+                await browser.sleep(2500);
 
                 // customFieldsHelper.create(typeIndex, 'test1-date', 'desc1', 4);
 
@@ -122,9 +122,9 @@ describe('custom-fields', function() {
             it('delete', async function() {
                 let oldCountCustomFields = await customFieldsHelper.getCustomFiledsByType(typeIndex).count();
 
-                customFieldsHelper.delete(typeIndex, 0);
+                await customFieldsHelper.delete(typeIndex, 0);
 
-                browser.wait(async function() {
+                await browser.wait(async function() {
                     let countCustomFields = await customFieldsHelper.getCustomFiledsByType(typeIndex).count();
 
                     return countCustomFields === oldCountCustomFields - 1;
@@ -180,9 +180,9 @@ describe('custom-fields', function() {
             it('delete', async function() {
                 let oldCountCustomFields = await customFieldsHelper.getCustomFiledsByType(typeIndex).count();
 
-                customFieldsHelper.delete(typeIndex, 0);
+                await customFieldsHelper.delete(typeIndex, 0);
 
-                browser.wait(async function() {
+                await browser.wait(async function() {
                     let countCustomFields = await customFieldsHelper.getCustomFiledsByType(typeIndex).count();
 
                     return countCustomFields === oldCountCustomFields - 1;

@@ -1,4 +1,4 @@
-span.project-name
+span.project-name(ng-if="projectName")
     | {{ projectName }}
 span.green
-    | {{ sectionName }}
+    | {{ sectionName | translate }}

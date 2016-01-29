@@ -17,12 +17,14 @@
 # File: navigation-bar.directive.coffee
 ###
 
-NavigationBarDirective = (currentUserService, navigationBarService, $location) ->
+NavigationBarDirective = (currentUserService, navigationBarService,
+      locationService, navUrlsService) ->
+
     link = (scope, el, attrs, ctrl) ->
         scope.vm = {}
 
         scope.$on "$routeChangeSuccess", () ->
-            if $location.path() == "/"
+            if locationService.path() == "/"
                 scope.vm.active = true
             else
                 scope.vm.active = false
@@ -31,6 +33,15 @@ NavigationBarDirective = (currentUserService, navigationBarService, $location) -
         taiga.defineImmutableProperty(scope.vm, "isAuthenticated", () -> currentUserService.isAuthenticated())
         taiga.defineImmutableProperty(scope.vm, "isEnabledHeader", () -> navigationBarService.isEnabledHeader())
 
+        scope.vm.login = ->
+            nextUrl = encodeURIComponent(locationService.url())
+            locationService.url(navUrlsService.resolve("login"))
+            locationService.search({next: nextUrl})
+
+        scope.vm.register = ->
+            nextUrl = encodeURIComponent(locationService.url())
+            locationService.url(navUrlsService.resolve("register"))
+            locationService.search({next: nextUrl})
 
     directive = {
         templateUrl: "navigation-bar/navigation-bar.html"
@@ -42,8 +53,9 @@ NavigationBarDirective = (currentUserService, navigationBarService, $location) -
 
 NavigationBarDirective.$inject = [
     "tgCurrentUserService",
-    "tgNavigationBarService"
-    "$location"
+    "tgNavigationBarService",
+    "$tgLocation",
+    "$tgNavUrls"
 ]
 
 angular.module("taigaNavigationBar").directive("tgNavigationBar", NavigationBarDirective)

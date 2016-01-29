@@ -1,7 +1,10 @@
 ###
-# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.nz>
 # Copyright (C) 2014-2016 Jesús Espino Garcia <jespinog@gmail.com>
 # Copyright (C) 2014-2016 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2016 Alejandro Alonso <alejandro.alonso@kaleidos.net>
+# Copyright (C) 2014-2016 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
+# Copyright (C) 2014-2016 Xavi Julian <xavier.julian@kaleidos.net>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -174,7 +177,7 @@ SearchDirective = ($log, $compile, $templatecache, $routeparams, $location) ->
     linkTable = ($scope, $el, $attrs, $ctrl) ->
         applyAutoTab = true
         activeSectionName = "userstories"
-        tabsDom = $el.find("section.search-filter")
+        tabsDom = $el.find(".search-filter")
         lastSearchResults = null
 
         getActiveSection = (data) ->
@@ -197,7 +200,7 @@ SearchDirective = ($log, $compile, $templatecache, $routeparams, $location) ->
                         maxVal = value.length
                         selectedSection.name = name
                         selectedSection.value = value
-                        break;
+                        break
 
             if maxVal == 0
                 return selectedSection
@@ -206,7 +209,7 @@ SearchDirective = ($log, $compile, $templatecache, $routeparams, $location) ->
 
         renderFilterTabs = (data) ->
             for name, value of data
-                continue if name == "count"
+                tabsDom.find("li.#{name}").show()
                 tabsDom.find("li.#{name} .num").html(value.length)
 
         markSectionTabActive = (section) ->

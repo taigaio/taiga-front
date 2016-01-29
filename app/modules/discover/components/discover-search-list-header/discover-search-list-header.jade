@@ -1,0 +1,89 @@
+.discover-results-header
+    .discover-results-header-inner
+        .title
+            include ../../../../svg/search.svg
+            h2 {{ 'DISCOVER.SEARCH.RESULTS' | translate }}
+
+        .filter-discover-search(ng-mouseleave="vm.toggleClose()")
+            a.discover-search-filter(
+                href="#"
+                ng-click="vm.openLike()"
+                ng-class="{active: vm.like_is_open}"
+            )
+                include ../../../../svg/like.svg
+                span {{ 'DISCOVER.MOST_LIKED' | translate }}
+            a.discover-search-filter(
+                href="#"
+                ng-click="vm.openActivity()"
+                ng-class="{active: vm.activity_is_open}"
+            )
+                include ../../../../svg/activity.svg
+                span {{ 'DISCOVER.MOST_ACTIVE' | translate }}
+
+    .discover-search-subfilter.most-liked-subfilter(ng-if="vm.like_is_open")
+        a.results(
+            ng-if="vm.orderBy"
+            title=""
+            href="#",
+            ng-click="vm.setOrderBy()"
+        ) {{ 'DISCOVER.FILTERS.CLEAR' | translate }}
+
+        ul.filter-list
+            li
+                a(
+                    ng-class="{active: vm.orderBy == '-total_fans_last_week'}",
+                    href="#",
+                    ng-click="vm.setOrderBy('-total_fans_last_week')"
+                ) {{ 'DISCOVER.FILTERS.WEEK' | translate }}
+            li
+                a(
+                    ng-class="{active: vm.orderBy == '-total_fans_last_month'}",
+                    href="#",
+                    ng-click="vm.setOrderBy('-total_fans_last_month')"
+                ) {{ 'DISCOVER.FILTERS.MONTH' | translate }}
+            li
+                a(
+                    ng-class="{active: vm.orderBy == '-total_fans_last_year'}",
+                    href="#",
+                    ng-click="vm.setOrderBy('-total_fans_last_year')"
+                ) {{ 'DISCOVER.FILTERS.YEAR' | translate }}
+            li
+                a(
+                    ng-class="{active: vm.orderBy == '-total_fans'}",
+                    href="#",
+                    ng-click="vm.setOrderBy('-total_fans')"
+                ) {{ 'DISCOVER.FILTERS.ALL_TIME' | translate }}
+
+    .discover-search-subfilter.most-active-subfilter(ng-if="vm.activity_is_open")
+        a.results(
+            ng-if="vm.orderBy"
+            title=""
+            href="#",
+            ng-click="vm.setOrderBy()"
+        ) {{ 'DISCOVER.FILTERS.CLEAR' | translate }}
+
+        ul.filter-list
+            li
+                a(
+                    ng-class="{active: vm.orderBy == '-total_activity_last_week'}",
+                    href="#",
+                    ng-click="vm.setOrderBy('-total_activity_last_week')"
+                ) {{ 'DISCOVER.FILTERS.WEEK' | translate }}
+            li
+                a(
+                    ng-class="{active: vm.orderBy == '-total_activity_last_month'}",
+                    href="#",
+                    ng-click="vm.setOrderBy('-total_activity_last_month')"
+                ) {{ 'DISCOVER.FILTERS.MONTH' | translate }}
+            li
+                a(
+                    ng-class="{active: vm.orderBy == '-total_activity_last_year'}",
+                    href="#",
+                    ng-click="vm.setOrderBy('-total_activity_last_year')"
+                ) {{ 'DISCOVER.FILTERS.YEAR' | translate }}
+            li
+                a(
+                    ng-class="{active: vm.orderBy == '-total_activity'}",
+                    href="#",
+                    ng-click="vm.setOrderBy('-total_activity')"
+                ) {{ 'DISCOVER.FILTERS.ALL_TIME' | translate }}

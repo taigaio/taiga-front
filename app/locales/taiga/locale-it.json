@@ -2,6 +2,7 @@
     "COMMON": {
         "YES": "Sì",
         "NO": "No",
+        "OR": "or",
         "LOADING": "Caricamento...",
         "LOADING_PROJECT": "Stiamo caricando il progetto...",
         "DATE": "DD MMM YYYY",
@@ -18,14 +19,16 @@
         "TAG_LINE": "Il tuo agile, libero e opensource strumento di project management",
         "TAG_LINE_2": "ADORO IL VOSTRO PROGETTO",
         "BLOCK": "Blocca",
-        "UNBLOCK": "Sblocca",
+        "BLOCK_TITLE": "Block this item for example if it has a dependency that can not be satisfied",
         "BLOCKED": "Bloccato",
+        "UNBLOCK": "Sblocca",
+        "UNBLOCK_TITLE": "Unblock this item",
+        "BLOCKED_NOTE": "Why is this blocked?",
+        "BLOCKED_REASON": "Spiega il motivo",
         "CREATED_BY": "Creato da {{fullDisplayName}}",
         "FROM": "da",
         "TO": "a",
         "CLOSE": "chiudi",
-        "BLOCKED_NOTE": "Perchè questa storia è bloccata?",
-        "BLOCKED_REASON": "Spiega il motivo",
         "GO_HOME": "Ritorna all'inizio",
         "PLUGINS": "Plugin",
         "BETA": "Siamo in beta!",
@@ -34,8 +37,10 @@
         "RELATED_TASKS": "Compiti correlati",
         "LOGOUT": "Esci",
         "EXTERNAL_USER": "un utente esterno",
-        "GENERIC_ERROR": "C'é uno dei nostri Digital Champions che dice {{error}}.",
+        "GENERIC_ERROR": "C'é uno dei nostri Oompa Loompa che dice {{error}}.",
         "IOCAINE_TEXT": "Sei stremato? Assicurati che gli altri lo sappiano cliccando su 'aspirina' quando stai lavorando su un compito che ti affatica. Ma non demordere, ricordati: si può migliorare solo se di tanto in tanto si accettano sfide extra!",
+        "CLIENT_REQUIREMENT": "Requisito del Cliente è un nuovo requisito che non era stato previsto ed ora è stato richiesto come requisito del progetto",
+        "TEAM_REQUIREMENT": "Requisito del Team è un requisito che deve esistere nel progetto ma non deve avere costi per il cliente",
         "CAPSLOCK_WARNING": "Attento! stai scrivendo in maiuscolo e questo input è sensibile alle maiuscole..",
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Questo valore non è valido.",
@@ -139,17 +144,20 @@
         },
         "ASSIGNED_TO": {
             "NOT_ASSIGNED": "Non assegnato",
+            "ASSIGN": "Assegna",
             "DELETE_ASSIGNMENT": "Elimina incarico",
             "REMOVE_ASSIGNED": "Rimuovi incaricato",
             "TOO_MANY": "...troppi utenti, continua a filtrare",
             "CONFIRM_UNASSIGNED": "Sei sicuro di volerlo lasciare non assegnato?",
-            "TITLE_ACTION_EDIT_ASSIGNMENT": "Modifica incarico"
+            "TITLE_ACTION_EDIT_ASSIGNMENT": "Modifica incarico",
+            "SELF": "Assegna a me"
         },
         "STATUS": {
             "CLOSED": "Chiuso",
             "OPEN": "Apri"
         },
         "WATCHERS": {
+            "WATCHERS": "Osservatori",
             "ADD": "Aggiungi osservatori",
             "TITLE_ADD": "Aggiungi un membro di progetto alla lista degli osservatori",
             "DELETE": "Elimina osservatore",
@@ -176,7 +184,7 @@
             "SAVE": "Salva il campo personalizzato",
             "EDIT": "Modifica Campo Personalizzato",
             "DELETE": "Elimina l'attributo personalizzato",
-            "CONFIRM_DELETE": "Ricordati che tutti i valori nel campo personalizzato saranno cancellati. Sei sicuro di voler continuare?"
+            "CONFIRM_DELETE": "Ricorda che tutti i valori in questo campo custom andranno persi.\nSei sicuro di voler continuare?"
         },
         "FILTERS": {
             "TITLE": "filtri",
@@ -274,14 +282,14 @@
         "HEADER": "Ho già un account Taiga",
         "PLACEHOLDER_AUTH_NAME": "nome utente o email (occhio alle maiuscole)",
         "LINK_FORGOT_PASSWORD": "Password dimenticata?",
-        "TITLE_LINK_FORGOT_PASSWORD": "Password dimenticata?",
+        "TITLE_LINK_FORGOT_PASSWORD": "Hai dimenticato la tua password?",
         "ACTION_ENTER": "Conferma",
-        "ACTION_SIGN_IN": "Accedi",
+        "ACTION_SIGN_IN": "Login",
         "PLACEHOLDER_AUTH_PASSWORD": "Password (occhio alle maiuscole)"
     },
     "LOGIN_FORM": {
-        "ERROR_AUTH_INCORRECT": "Secondo i nostri Digital Champions, i tuoi nomi utente, email o password sono errati.",
-        "SUCCESS": "I nostri Digital Champions sono entusiasti! Benvenuto in Taiga!"
+        "ERROR_AUTH_INCORRECT": "Secondo i nostri Oompa Loompa, i tuoi nomi utente, email o password sono errati.",
+        "SUCCESS": "I nostri Oompa Loompa sono entusiasti! Benvenuto in Taiga!"
     },
     "REGISTER": {
         "PAGE_TITLE": "Registrazione - Taiga",
@@ -308,7 +316,7 @@
         "ACTION_RESET_PASSWORD": "Reimposta la password",
         "LINK_CANCEL": "Fa niente dai, riportami indietro. Penso di ricordarmela.",
         "SUCCESS": "<strong>Controlla la tua posta!</strong><br />Ti abbiamo inviato una email con le istruzioni per reimpostare la password",
-        "ERROR": "Secondo i nostri Digital Champions, non sei ancora registrato."
+        "ERROR": "Secondo i nostri Oompa Loompa, non sei ancora registrato."
     },
     "CHANGE_PASSWORD": {
         "PAGE_TITLE": "Cambia la tua password - Taiga",
@@ -328,26 +336,27 @@
         "PLACEHOLDER_NEW_PASSWORD": "Nuova password",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Digita una nuova password",
         "ACTION_RESET_PASSWORD": "Reimposta la password",
-        "ERROR": "I nostri Digital Champions non riescono a trovare la tua richiesta di recupero password. Prova a chiedergliela di nuovo.",
-        "SUCCESS": "I nostri Digital Champions hanno salvato la tua nuova password. Che bravi!<br /> Pova a fare <strong>login</strong> con questa."
+        "ERROR": "I nostri Oompa Loompa non riescono a trovare la tua richiesta di recupero password. Prova a chiedergliela di nuovo.",
+        "SUCCESS": "I nostri Oompa Loompa hanno salvato la tua nuova password. Che bravi!<br /> Pova a fare <strong>login</strong> con questa."
     },
     "INVITATION": {
         "PAGE_TITLE": "Invito ad accedere - Taiga",
         "PAGE_DESCRIPTION": "Accetta l'invito a partecipare ad un progetto in Taiga, una piattaforma semplice di project management che rende il lavoro davvero piacevole a start-up e a chi sviluppa e progetta con il metodo \"agile\"."
     },
     "INVITATION_LOGIN_FORM": {
-        "NOT_FOUND": "I nostri Digital Champions non hanno trovato il tuo invito.",
+        "NOT_FOUND": "I nostri Oompa Loompa non hanno trovato il tuo invito.",
         "SUCCESS": "Sei ora un membro di questo progetto. Benvenuto in {{project_name}}",
-        "ERROR": "Secondo i nostri Digital Champions, non sei ancora regisrtrato o hai inserito una password non valida."
+        "ERROR": "Secondo i nostri Oompa Loompa, non sei ancora registrato o hai inserito una password non valida."
     },
     "HOME": {
         "PAGE_TITLE": "Home - Taiga",
         "PAGE_DESCRIPTION": "La home di Taiga con i tuoi principali progetti e tutte le storie utente, i compiti e problemi assegnati e osservati. ",
         "EMPTY_WORKING_ON": "<strong>Dà un po' l'idea di vuoto, no?</strong> Inizia a lavorare con Taiga e qui vedrai le storie, i compiti ed i problemi su cui stai lavorando.",
-        "EMPTY_WATCHING": "<strong>Segui</strong> le storie utente, i compiti e i problemi... sui quali vuoi rimanere informato :)",
+        "EMPTY_WATCHING": "<strong>Ossserva</strong> Storie Utente, Compiti, Criticità nel progetto e ti verranno notificate le sue modifiche :)",
         "EMPTY_PROJECT_LIST": "Per ora non hai nessun progetto",
         "WORKING_ON_SECTION": "Sta lavorando su",
-        "WATCHING_SECTION": "Osservando"
+        "WATCHING_SECTION": "Osservando",
+        "DASHBOARD": "Dashboard Progetti"
     },
     "PROJECTS": {
         "PAGE_TITLE": "I miei progetti - Taiga",
@@ -357,10 +366,13 @@
     "ATTACHMENT": {
         "SECTION_NAME": "allegati",
         "TITLE": "{{ fileName }} caricato il {{ date }}",
+        "LIST_VIEW_MODE": "List view mode",
+        "GALLERY_VIEW_MODE": "Gallery view mode",
         "DESCRIPTION": "Inserisci una breve descrizione",
         "DEPRECATED": "(deprecato)",
         "DEPRECATED_FILE": "Deprecato?",
         "ADD": "Aggiungi un nuovo allegato. {{maxFileSizeMsg}}",
+        "DROP": "Rilascia qui l'allegato!",
         "MAX_FILE_SIZE": "[Dimensione max. {{maxFileSize}}]",
         "SHOW_DEPRECATED": "+ visualizza allegati deprecati",
         "HIDE_DEPRECATED": "- nascondi allegati deprecati",
@@ -371,6 +383,7 @@
         "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "Cancella l'allegato",
         "MSG_LIGHTBOX_DELETE_ATTACHMENT": "l'allegato '{{fileName}}'",
         "ERROR_DELETE_ATTACHMENT": "Non siamo riusciti a cancellare: {{errorMessage}}",
+        "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) è troppo pesante per i nostri Oompa Loompa; falli contenti, prova con una dimensione minore di ({{maxFileSize}})",
         "FIELDS": {
             "IS_DEPRECATED": "è deprecato"
         }
@@ -405,9 +418,9 @@
             "LOADING_MESSAGE": "Non chiudere questa pagina.",
             "ASYNC_MESSAGE": "Ti invieremo una mail quando sarà pronto",
             "SYNC_MESSAGE": "Se il download non parte automaticamente clicca <a href='{{url}}' titolo del download='Download the dump file'>here</a>.",
-            "ERROR": "I nostri Digital Champion hanno qualche problema a generare il tuo dump. Prova di nuova.",
-            "ERROR_BUSY": "Scusali, i nostri Digital Champions sono occupati. Riprova di nuovo in qualche minuto.",
-            "ERROR_MESSAGE": "Accidenti, i nostri Digital Champions hanno qualche problema a generare il tuo dump: {{message}}"
+            "ERROR": "I nostri Oompa Loompa hanno qualche problema a generare il tuo dump. Prova di nuova.",
+            "ERROR_BUSY": "Scusali, i nostri Oompa Loompa sono occupati. Riprova di nuovo in qualche minuto.",
+            "ERROR_MESSAGE": "Accidenti, i nostri Oompa Loompa hanno qualche problema a generare il tuo dump: {{message}}"
         },
         "MODULES": {
             "TITLE": "Moduli",
@@ -440,9 +453,18 @@
             "NUMBER_US_POINTS": "Numero di punti delle storie utente (0 come quantità indeterminata)",
             "TAGS": "Tag",
             "DESCRIPTION": "Descrizione",
+            "RECRUITING": "Il progetto cerca persone?",
+            "RECRUITING_MESSAGE": "Chi stai cercando?",
+            "RECRUITING_PLACEHOLDER": "Definisci il profilo che stai cercando",
             "PUBLIC_PROJECT": "Progetto pubblico",
+            "PUBLIC_PROJECT_DESC": "Gli utenti possono cercare e vedere il tuo progetto",
             "PRIVATE_PROJECT": "Progetto privato",
-            "DELETE": "Elimina questo progetto"
+            "PRIVATE_PROJECT_DESC": "Di default, il progetto sarà nascosto al pubblico",
+            "PRIVATE_OR_PUBLIC": "Quale è la differenza tra progetto privato e pubblico?",
+            "DELETE": "Elimina questo progetto",
+            "LOGO_HELP": "L'immagine sarà scalata a 80x80px.",
+            "CHANGE_LOGO": "Cambia Logo",
+            "ACTION_USE_DEFAULT_LOGO": "Usa l'immagine di default"
         },
         "REPORTS": {
             "TITLE": "Rapporti",
@@ -665,7 +687,7 @@
             "CURRENT_USER_CONTACTS_EMPTY_EXPLAIN": "Le persone con cui lavori in Taiga saranno automaticamente tra tuoi contatti",
             "REPORT": "Segnala abuso",
             "TABS": {
-                "ACTIVITY_TAB": "Attività",
+                "ACTIVITY_TAB": "Cronologia",
                 "ACTIVITY_TAB_TITLE": "Mostra tutte le attività dell'utente",
                 "PROJECTS_TAB": "Progetti",
                 "PROJECTS_TAB_TITLE": "La lista di tutti i progetti di cui l'utente è membro",
@@ -705,6 +727,10 @@
         "SECTION_PROJECTS": "Progetti",
         "HELP": "Riordina i tuoi progetti per avere in alto i più usati.<br/> I primi 10 progetti compariranno nella lista dei progetti della barra di navigazione, su in alto",
         "PRIVATE": "Progetto privato",
+        "LOOKING_FOR_PEOPLE": "Il progetto cerca persone",
+        "FANS_COUNTER_TITLE": "{total, plural, one{un follower} other{# followers}}",
+        "WATCHERS_COUNTER_TITLE": "{total, plural, one{un osservatore} other{# osservatori}} ",
+        "MEMBERS_COUNTER_TITLE": "{total, plural, one{un membro} other{# membri}}",
         "STATS": {
             "PROJECT": "progetto<br/> punti",
             "DEFINED": "Definiti <br/> punti",
@@ -727,13 +753,14 @@
             "PLACEHOLDER_SEARCH": "Cerca in...",
             "ACTION_CREATE_PROJECT": "Crea progetto",
             "ACTION_IMPORT_PROJECT": "Importa progetto",
-            "SEE_MORE_PROJECTS": "Guarda più progetti",
+            "MANAGE_PROJECTS": "Gestisci Progetti",
             "TITLE_CREATE_PROJECT": "Crea progetto",
             "TITLE_IMPORT_PROJECT": "Importa progetto",
             "TITLE_PRVIOUS_PROJECT": "Mostra i progetti precedenti",
             "TITLE_NEXT_PROJECT": "Progetto successivo",
             "HELP_TITLE": "Pagina di supporto Taiga",
             "HELP": "Aiuto",
+            "HOMEPAGE": "Homepage",
             "FEEDBACK_TITLE": "Invia feedback",
             "FEEDBACK": "Feedback",
             "NOTIFICATIONS_TITLE": "Modifica le impostazioni delle notifiche",
@@ -757,13 +784,13 @@
             "TITLE": "Importazione Progetto",
             "UPLOADING_FILE": "Carico il file di dump",
             "DESCRIPTION": "Questo processo puó durare un po', nel frattempo lasciare questa finestra aperta.",
-            "ASYNC_IN_PROGRESS_TITLE": "I nostri Digital Champions stanno lavorando per importare il tuo progetto!",
+            "ASYNC_IN_PROGRESS_TITLE": "I nostri Oompa Loompa stanno lavorando per importare il tuo progetto!",
             "ASYNC_IN_PROGRESS_MESSAGE": "Questo processo puó durare minuti. <br/> Verrá inviata una mail al suo completamento",
             "UPLOAD_IN_PROGRESS_MESSAGE": "Caricati {{uploadedSize}} di {{totalSize}}",
-            "ERROR": "Mannaggia, i Digital Champions hanno qualche problema ad importare il dump. Prova di nuovo.",
-            "ERROR_TOO_MANY_REQUEST": "Scusaci, i nostri Digital Champions sono di nuovo occupati. Riprova di nuovo in qualche minuto.",
-            "ERROR_MESSAGE": "I nostri Digital Champions hanno qualche problema ad importare il dump dei tuoi dati: {{error_message}}",
-            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) è troppo pesante per i nostri Digital Champions; falli contenti, prova con una dimensione minore di ({{maxFileSize}})",
+            "ERROR": "Mannaggia, i Oompa Loompa hanno qualche problema ad importare il dump. Prova di nuovo.",
+            "ERROR_TOO_MANY_REQUEST": "Scusaci, i nostri Oompa Loompa sono di nuovo occupati. Riprova di nuovo in qualche minuto.",
+            "ERROR_MESSAGE": "I nostri Oompa Loompa hanno qualche problema ad importare il dump dei tuoi dati: {{error_message}}",
+            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) è troppo pesante per i nostri Oompa Loompa; falli contenti, prova con una dimensione minore di ({{maxFileSize}})",
             "SYNC_SUCCESS": "Il tuo progetto è stato importato con successo"
         },
         "LIKE_BUTTON": {
@@ -887,6 +914,7 @@
         "TYPE_NEW_COMMENT": "Scrivi un nuovo commento qui",
         "SHOW_DELETED": "Visualizza commento cancellato",
         "HIDE_DELETED": "Nascondi commento cancellato",
+        "DELETE": "Delete comment",
         "RESTORE": "Ripristina commento"
     },
     "ACTIVITY": {
@@ -950,9 +978,10 @@
         "CUSTOMIZE_GRAPH_ADMIN": "Amministratore",
         "CUSTOMIZE_GRAPH_TITLE": "Imposta i punti e gli sprint come Amministratore",
         "MOVE_US_TO_CURRENT_SPRINT": "Spostati allo sprint attuale",
+        "MOVE_US_TO_LATEST_SPRINT": "Vai allo Sprint più recente",
         "SHOW_FILTERS": "Mostra filtri",
         "SHOW_TAGS": "Mostra tag",
-        "EMPTY": "OMG..Il backlog é pieno!!",
+        "EMPTY": "OMG..Il backlog é vuoto!!",
         "CREATE_NEW_US": "Crea una nuova Storia Utente",
         "CREATE_NEW_US_EMPTY_HELP": "Potresti voler creare una nuova storia utente",
         "EXCESS_OF_POINTS": "Eccesso di punti",
@@ -1013,6 +1042,7 @@
             "TITLE_LINK_TASKBOARD": "Vai al pannello dei compiti di \"{{name}}\"",
             "NUMBER_SPRINTS": "<br/>sprints",
             "EMPTY": "Non ci sono ancora sprints disponibili",
+            "WARNING_EMPTY_SPRINT_ANONYMOUS": "Lo Sprint non ha Storie Utente",
             "WARNING_EMPTY_SPRINT": "Metti qui le storie del tuo backlog che iniziare in nuovo sprint",
             "TITLE_ACTION_NEW_SPRINT": "Aggiungi un nuovo sprint",
             "TEXT_ACTION_NEW_SPRINT": "Potresti voler creare un nuovo sprint nel tuo progetto",
@@ -1021,12 +1051,12 @@
         }
     },
     "ERROR": {
-        "TEXT1": "E' successo qualcosa, ma i nostri Digital Champions ci stanno lavorando sodo!",
+        "TEXT1": "E' successo qualcosa, ma i nostri Oompa Loompa ci stanno lavorando sodo!",
         "NOT_FOUND": "Non trovato",
         "NOT_FOUND_TEXT": "Errore 404. La pagina che stai cercando non esiste più. Forse puoi tornare alla home e vedere se è possibile trovare quello che stai cercando.",
         "PERMISSION_DENIED": "Permesso negato",
         "PERMISSION_DENIED_TEXT": "Non si hanno i permessi necessari per accedere a questa pagina.",
-        "VERSION_ERROR": "Qualcuno all'interno di Taiga ha fatto un cambiamento prima che i nostri Digital Champion potessero applicare le modifiche. Per favore ricarica e applica di nuovo le modifiche (altrimenti andranno perse)."
+        "VERSION_ERROR": "Qualcuno all'interno di Taiga ha fatto un cambiamento prima che i nostri Oompa Loompa potessero applicare le modifiche. Per favore ricarica e applica di nuovo le modifiche (altrimenti andranno perse)."
     },
     "TASKBOARD": {
         "PAGE_TITLE": "{{sprintName}} - Pannello dei compiti dello Sprint - {{projectName}}",
@@ -1083,8 +1113,8 @@
     "NOTIFICATION": {
         "OK": "E' tutto ok!",
         "WARNING": "Oops, é successo qualcosa...",
-        "WARNING_TEXT": "Accidenti! I nostri Digital Champions sono tristi..le modifiche non sono state salvate",
-        "SAVED": "I nostri Digital Champions hanno salvato tutte le modifiche! wow!!",
+        "WARNING_TEXT": "Accidenti! I nostri Oompa Loompa sono tristi..le modifiche non sono state salvate",
+        "SAVED": "I nostri Oompa Loompa hanno salvato tutte le modifiche! wow!!",
         "CLOSE": "Chiudi notifica",
         "MAIL": "Notifica tramite mail",
         "ASK_DELETE": "Sei sicuro di voler cancellare?"
@@ -1094,14 +1124,14 @@
         "SUBTITLE": "Ci spiace se stai lasciando Taiga, speriamo che il tuo soggiorno sia stato piacevole :)",
         "PLACEHOLDER_INPUT_TOKEN": "cancella il token dell'account",
         "ACTION_LEAVING": "Si, sto abbandonando!",
-        "SUCCESS": "I nostri Digital Champions hanno eliminato il tuo account, e ora sono tristi"
+        "SUCCESS": "I nostri Oompa Loompa hanno eliminato il tuo account, e ora sono tristi"
     },
     "CHANGE_EMAIL_FORM": {
         "TITLE": "Cambia la tua email",
         "SUBTITLE": "Un'altro click e la tua mail verrá aggiornata!",
         "PLACEHOLDER_INPUT_TOKEN": "Modifica il token della mail",
         "ACTION_CHANGE_EMAIL": "Cambia email",
-        "SUCCESS": "I nostri Digital Champions hanno aggiornato la tua mail"
+        "SUCCESS": "I nostri Oompa Loompa hanno aggiornato la tua mail"
     },
     "ISSUES": {
         "PAGE_TITLE": "Criticitá - {{projectName}}",
@@ -1254,9 +1284,9 @@
         }
     },
     "USER_PROFILE": {
-        "IMAGE_HELP": "L'immagine verrà scalata a 80x80px.<br />",
+        "IMAGE_HELP": "L'immagine sarà scalata a 80x80px.",
         "ACTION_CHANGE_IMAGE": "Cambia",
-        "ACTION_USE_GRAVATAR": "Usa gravatar",
+        "ACTION_USE_GRAVATAR": "Usa l'immagine di default",
         "ACTION_DELETE_ACCOUNT": "Elimina l'account Taiga",
         "CHANGE_EMAIL_SUCCESS": "<strong>Controlla la tua casella di posta</strong><br />abbiamo mandato una mail al tuo account<br />con le istruzioni per impostare un nuovo indirizzo",
         "CHANGE_PHOTO": "Cambia foto",
@@ -1343,7 +1373,7 @@
         "NEW_USER": "{{username}} si é iscritto su Taiga"
     },
     "LEGAL": {
-        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>Cliccando \"Inscriviti\"', esprimi il tuo accordo con i nostri <br /></span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">termini di servizi</a><span> e </span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">con la nostra privacy policy</a>."
+        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>Quando crei un nuovo account accetti i nostri <br /></span><a href=\"{{ termsOfServiceUrl }}\" title=\"Vedi i termini del servizio\" target=\"_blank\">termini del servizio</a><span> e </span><a href=\"{{ privacyPolicyUrl }}\" title=\"Vedi Politica sulla Privacy\" target=\"_blank\">Politica sulla Privacy</a>."
     },
     "EXTERNAL_APP": {
         "PAGE_TITLE": "Un'applicazione esterna richiede l'autenticazione",
@@ -1354,6 +1384,12 @@
         "CANCEL": "Annulla"
     },
     "JOYRIDE": {
+        "NAV": {
+            "NEXT": "Successivo",
+            "BACK": "Back",
+            "SKIP": "Salta",
+            "DONE": "Fatto"
+        },
         "DASHBOARD": {
             "STEP1": {
                 "TITLE": "Il tuo progetto",
@@ -1365,7 +1401,7 @@
             },
             "STEP3": {
                 "TITLE": "In osservazione",
-                "TEXT1": "E qui puoi trovare quelle che vuoi tenere d'occhio.",
+                "TEXT1": "E qui trovi tutte quelle cose del progetto di cui volevi sapere.",
                 "TEXT2": "Stai giù lavorando in Taiga ;) "
             },
             "STEP4": {
@@ -1407,6 +1443,34 @@
                 "TEXT1": "Potresti voler aggiungere una solo storia utente (aggiungi l'icona storia utente) o più di una, in gruppo (icona bulk)",
                 "TEXT2": "Buona fortuna! "
             }
+        }
+    },
+    "DISCOVER": {
+        "DISCOVER_TITLE": "Scopri progetti",
+        "DISCOVER_SUBTITLE": "{projects, plural, one{Un progetto pubblico da scoprire} other{# progetti pubblici da scoprire}}",
+        "MOST_ACTIVE": "Più attivi",
+        "MOST_ACTIVE_EMPTY": "Non ci sono ancora progetti ATTIVI",
+        "MOST_LIKED": "Preferiti",
+        "MOST_LIKED_EMPTY": "Non ci sono ancora progetti PREFERITI",
+        "VIEW_MORE": "Vedi altro",
+        "RECRUITING": "Il progetto cerca persone",
+        "FEATURED": "Progetti in Vetrina",
+        "EMPTY": "Non ci sono progetti da mostrare con questi criteri.<br>Prova ancora!",
+        "FILTERS": {
+            "ALL": "Tutti",
+            "KANBAN": "Kanban",
+            "SCRUM": "Scrum",
+            "PEOPLE": "Cerca persone",
+            "WEEK": "Ultima settimana",
+            "MONTH": "Ultimo mese",
+            "YEAR": "Ultimo anno",
+            "ALL_TIME": "Tutto",
+            "CLEAR": "Cancella filtri"
+        },
+        "SEARCH": {
+            "INPUT_PLACEHOLDER": "Inserisci testo...",
+            "ACTION_TITLE": "Cerca",
+            "RESULTS": "Risultati della ricerca"
         }
     }
 }

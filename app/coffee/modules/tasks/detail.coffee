@@ -1,7 +1,10 @@
 ###
-# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.nz>
 # Copyright (C) 2014-2016 Jesús Espino Garcia <jespinog@gmail.com>
 # Copyright (C) 2014-2016 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2016 Alejandro Alonso <alejandro.alonso@kaleidos.net>
+# Copyright (C) 2014-2016 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
+# Copyright (C) 2014-2016 Xavi Julian <xavier.julian@kaleidos.net>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -275,12 +278,11 @@ TaskStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $co
             task.status = status
 
             currentLoading = $loading()
-                .target($el.find(".level-name"))
+                .target($el)
                 .start()
 
             onSuccess = ->
                 $model.$setViewValue(task)
-                $confirm.notify("success")
                 $rootScope.$broadcast("object:updated")
                 currentLoading.finish()
 
@@ -290,7 +292,7 @@ TaskStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $co
 
             $repo.save(task).then(onSuccess, onError)
 
-        $el.on "click", ".status-data", (event) ->
+        $el.on "click", ".js-edit-status", (event) ->
             event.preventDefault()
             event.stopPropagation()
             return if not isEditable()
@@ -324,17 +326,8 @@ module.directive("tgTaskStatusButton", ["$rootScope", "$tgRepo", "$tgConfirm", "
                                         "$compile", "$translate", "$tgTemplate", TaskStatusButtonDirective])
 
 
-TaskIsIocaineButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $qqueue, $compile) ->
-    template = _.template("""
-      <fieldset title="{{ 'TASK.TITLE_ACTION_IOCAINE' | translate }}">
-        <label for="is-iocaine"
-               translate="TASK.ACTION_IOCAINE"
-               class="button button-gray is-iocaine <% if(isEditable){ %>editable<% }; %> <% if(isIocaine){ %>active<% }; %>">
-              Iocaine
-        </label>
-        <input type="checkbox" id="is-iocaine" name="is-iocaine"/>
-      </fieldset>
-    """)
+TaskIsIocaineButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $qqueue, $compile, $template) ->
+    template = $template.get("issue/iocaine-button.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
         isEditable = ->
@@ -364,7 +357,6 @@ TaskIsIocaineButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $qqueue
 
             promise.then ->
                 $model.$setViewValue(task)
-                $confirm.notify("success")
                 $rootscope.$broadcast("object:updated")
 
             promise.then null, ->
@@ -392,4 +384,4 @@ TaskIsIocaineButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $qqueue
     }
 
 module.directive("tgTaskIsIocaineButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", "$tgQqueue",
-                                           "$compile", TaskIsIocaineButtonDirective])
+                                           "$compile", "$tgTemplate", TaskIsIocaineButtonDirective])

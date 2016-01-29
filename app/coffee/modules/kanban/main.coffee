@@ -1,7 +1,10 @@
 ###
-# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.be>
+# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.nz>
 # Copyright (C) 2014-2016 Jesús Espino Garcia <jespinog@gmail.com>
 # Copyright (C) 2014-2016 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2016 Alejandro Alonso <alejandro.alonso@kaleidos.net>
+# Copyright (C) 2014-2016 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
+# Copyright (C) 2014-2016 Xavi Julian <xavier.julian@kaleidos.net>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -413,7 +416,7 @@ module.directive("tgKanbanArchivedStatusIntro", ["$translate", KanbanArchivedSta
 ## Kanban User Story Directive
 #############################################################################
 
-KanbanUserstoryDirective = ($rootscope, $loading, $rs) ->
+KanbanUserstoryDirective = ($rootscope, $loading, $rs, $rs2) ->
     link = ($scope, $el, $attrs, $model) ->
         $el.disableSelection()
 
@@ -437,8 +440,9 @@ KanbanUserstoryDirective = ($rootscope, $loading, $rs) ->
 
             us = $model.$modelValue
             $rs.userstories.getByRef(us.project, us.ref).then (editingUserStory) =>
-                $rootscope.$broadcast("usform:edit", editingUserStory)
-                currentLoading.finish()
+                $rs2.attachments.list("us", us.id, us.project).then (attachments) =>
+                    $rootscope.$broadcast("usform:edit", editingUserStory, attachments.toJS())
+                    currentLoading.finish()
 
         $scope.getTemplateUrl = () ->
             if $scope.us.isPlaceholder
@@ -455,7 +459,7 @@ KanbanUserstoryDirective = ($rootscope, $loading, $rs) ->
         require: "ngModel"
     }
 
-module.directive("tgKanbanUserstory", ["$rootScope", "$tgLoading", "$tgResources", KanbanUserstoryDirective])
+module.directive("tgKanbanUserstory", ["$rootScope", "$tgLoading", "$tgResources", "tgResources", KanbanUserstoryDirective])
 
 #############################################################################
 ## Kanban Squish Column Directive
@@ -523,7 +527,7 @@ module.directive("tgKanbanWipLimit", KanbanWipLimitDirective)
 ## Kanban User Directive
 #############################################################################
 
-KanbanUserDirective = ($log, $compile) ->
+KanbanUserDirective = ($log, $compile, $translate) ->
     template = _.template("""
     <figure class="avatar">
         <a href="#" title="{{'US.ASSIGN' | translate}}" <% if (!clickable) {%>class="not-clickable"<% } %>>
@@ -551,9 +555,17 @@ KanbanUserDirective = ($log, $compile) ->
 
         render = (user) ->
             if user is undefined
-                ctx = {name: "Unassigned", imgurl: "/" + window._version + "/images/unnamed.png", clickable: clickable}
+                ctx = {
+                    name: $translate.instant("COMMON.ASSIGNED_TO.NOT_ASSIGNED"),
+                    imgurl: "/#{window._version}/images/unnamed.png",
+                    clickable: clickable
+                }
             else
-                ctx = {name: user.full_name_display, imgurl: user.photo, clickable: clickable}
+                ctx = {
+                    name: user.full_name_display,
+                    imgurl: user.photo,
+                    clickable: clickable
+                }
 
             html = $compile(template(ctx))($scope)
             $el.html(html)
@@ -584,4 +596,4 @@ KanbanUserDirective = ($log, $compile) ->
 
     return {link: link, require:"ngModel"}
 
-module.directive("tgKanbanUserAvatar", ["$log", "$compile", KanbanUserDirective])
+module.directive("tgKanbanUserAvatar", ["$log", "$compile", "$translate", KanbanUserDirective])

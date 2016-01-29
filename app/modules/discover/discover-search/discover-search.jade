@@ -1,0 +1,77 @@
+div(tg-discover-search)
+    .discover-search
+        tg-discover-search-bar(
+            filter="vm.filter",
+            q="vm.q",
+            on-change="vm.onChangeFilter(filter, q)"
+        )
+
+    .empty-discover-results(ng-if="!vm.searchResult.size && !vm.loadingGlobal && !vm.loadingList")
+        img(
+            src="/#{v}/images/issues-empty.png",
+            alt="{{ DISCOVER.EMPTY | translate }}"
+        )
+        p.title(translate="DISCOVER.EMPTY")
+
+    .discover-results(ng-if="vm.searchResult.size || vm.loadingGlobal || vm.loadingList")
+        .spin(tg-loading="vm.loadingGlobal")
+
+        .discover-results-inner(ng-if="!vm.loadingGlobal")
+            tg-discover-search-list-header(
+                on-change="vm.onChangeOrder(orderBy)",
+                order-by="vm.orderBy"
+            )
+
+            .spin(ng-show="vm.loadingList", tg-loading="vm.loadingList")
+
+            ul.project-list(ng-if="!vm.loadingList && vm.searchResult.size")
+                li.list-itemtype-project(tg-repeat="project in vm.searchResult track by project.get('id')")
+                    .list-itemtype-project-left
+                        a.list-itemtype-project-image(
+                            href="#"
+                            tg-nav="project:project=project.get('slug')"
+                            title="{{ ::project.get('name') }}"
+                        )
+                            img(
+                                tg-project-logo-src="::project"
+                                alt="{{::project.get('name')}}"
+                            )
+                        .list-itemtype-project-data
+                            h2
+                                a(
+                                    href="#"
+                                    tg-nav="project:project=project.get('slug')"
+                                    title="{{ ::project.get('name') }}"
+                                ) {{project.get('name')}}
+                                span.look-for-people(
+                                    ng-if="project.get('is_looking_for_people')"
+                                    title="{{ ::project.get('looking_for_people_note') }}"
+                                )
+                                    include ../../../svg/recruit.svg
+                            p {{ ::project.get('description') | limitTo:300 }}
+                                span(ng-if="::project.get('description').length > 300") ...
+                    .list-itemtype-project-right.project-statistics
+                        span.statistic(
+                            ng-class="{'active': project.get('is_fan')}"
+                            title="{{ 'PROJECT.FANS_COUNTER_TITLE'|translate:{total:project.get('total_fans')||0}:'messageformat' }}"
+                        )
+                            include ../../../svg/like.svg
+                            span {{::project.get('total_fans')}}
+                        span.statistic(
+                            ng-class="{'active': project.get('is_watcher')}"
+                            title="{{ 'PROJECT.WATCHERS_COUNTER_TITLE'|translate:{total:project.get('total_watchers')||0}:'messageformat' }}"
+                        )
+                            include ../../../svg/eye.svg
+                            span {{::project.get('total_watchers')}}
+                        span.statistic(
+                            title="{{ 'PROJECT.MEMBERS_COUNTER_TITLE'|translate:{total:project.get('members').size||0}:'messageformat' }}"
+                        )
+                            include ../../../svg/team.svg
+                            span.statistics-num {{ ::project.get('members').size }}
+
+            a.button-green.more-results(
+                tg-loading="vm.loadingPagination"
+                href="#"
+                ng-click="vm.showMore()"
+                ng-if="vm.nextSearchPage"
+            ) {{ 'DISCOVER.VIEW_MORE' | translate }}

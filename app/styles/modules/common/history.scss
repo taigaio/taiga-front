@@ -67,10 +67,12 @@
     }
 }
 .add-comment {
+    @include cursor-progress;
     @include clearfix;
     &.active {
         .button-green {
             display: block;
+            margin-top: .5rem;
         }
         textarea {
             height: 6rem;
@@ -89,7 +91,6 @@
     textarea {
         background: $white;
         height: 5rem;
-        margin-bottom: .5rem;
         min-height: 41px;
     }
     .help-markdown {

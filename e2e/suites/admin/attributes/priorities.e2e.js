@@ -12,7 +12,7 @@ describe('attributes - priorities', function() {
     before(async function(){
         browser.get(browser.params.glob.host + 'project/project-0/admin/project-values/priorities');
 
-        await utils.common.waitLoader();
+        await adminAttributesHelper.waitLoad();
 
         utils.common.takeScreenshot('attributes', 'priorities');
     });
