@@ -19,7 +19,9 @@
             class!="user-assigned <% if (isEditable) { %>editable<% }; %>"
         )
             span.assigned-name
+                <% if (isEditable && isUnassigned) { %>
                 <%- fullName %>
+                <% }; %>
                 <% if (isEditable && !isUnassigned) { %>
                 span.icon.icon-arrow-bottom
                 <% }; %>
