@@ -30,7 +30,7 @@ Resource = (urlsService, http, paginateResponseService) ->
         if !pagination
             httpOptions = {
                 headers: {
-                    "x-disable-pagination": "1"
+                    "x-lazy-pagination": true
                 }
             }
 
