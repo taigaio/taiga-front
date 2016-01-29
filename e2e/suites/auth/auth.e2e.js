@@ -72,7 +72,9 @@ describe('auth', function() {
 
             let url = await browser.getCurrentUrl();
 
-            expect(url).to.be.equal(browser.params.glob.host + 'login');
+            await browser.wait(async () => {
+                return url === browser.params.glob.host + 'discover';
+            }, 2000);
         });
 
         describe("register", function() {
