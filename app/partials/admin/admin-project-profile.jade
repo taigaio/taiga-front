@@ -73,7 +73,6 @@ div.wrapper(
                         ng-model="project.description"
                         data-required="true"
                     )
-
                 fieldset
                     label(for="tags") {{ 'ADMIN.PROJECT_PROFILE.TAGS' | translate }}
                     div.tags-block(
@@ -81,6 +80,31 @@ div.wrapper(
                         tg-lb-tag-line
                         ng-model="project.tags"
                     )
+
+                fieldset
+                    label(for="project-sprints") {{ 'ADMIN.PROJECT_PROFILE.NUMBER_SPRINTS' | translate }}
+                    input(
+                        type="number"
+                        name="total_milestones"
+                        min="0"
+                        placeholder="{{'ADMIN.PROJECT_PROFILE.NUMBER_SPRINTS' | translate}}"
+                        id="project-sprints"
+                        ng-model="project.total_milestones"
+                        data-type="digits"
+                    )
+
+                fieldset
+                    label(for="total-story-points") {{ 'ADMIN.PROJECT_PROFILE.NUMBER_US_POINTS' | translate }}
+                    input(
+                        type="number"
+                        name="total_story_points"
+                        min="0"
+                        placeholder="{{'ADMIN.PROJECT_PROFILE.NUMBER_US_POINTS' | translate}}"
+                        id="total-story-points"
+                        ng-model="project.total_story_points"
+                        data-type="digits"
+                    )
+
                 fieldset.looking-for-people
                     .looking-for-people-selector
                         span {{ 'ADMIN.PROJECT_PROFILE.RECRUITING' | translate }}
@@ -119,7 +143,7 @@ div.wrapper(
                             label.trans-button(for="private-project") {{ 'ADMIN.PROJECT_PROFILE.PUBLIC_PROJECT' | translate }}
                                 span(title="{{ 'ADMIN.PROJECT_PROFILE.PUBLIC_PROJECT_DESC' | translate }}")
                                     include ../../svg/help.svg
-                                    
+
                         div.privacy-option
                             input.privacy-project(
                                 type="radio"
