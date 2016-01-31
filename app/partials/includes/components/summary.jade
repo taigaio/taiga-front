@@ -4,14 +4,14 @@ div.summary
     div.data
         span.number(ng-bind="stats.completedPercentage + '%'")
 
-    div.summary-stats(ng-if="stats.total_points")
+    div.summary-stats(ng-if="stats.total_points | number:2")
         span.number(ng-bind="stats.total_points") --
         span.description(translate="BACKLOG.SUMMARY.PROJECT_POINTS")
     div.summary-stats
-        span.number(ng-bind="stats.defined_points") --
+        span.number(ng-bind="stats.defined_points | number:2") --
         span.description(translate="BACKLOG.SUMMARY.DEFINED_POINTS")
     div.summary-stats
-        span.number(ng-bind="stats.closed_points") --
+        span.number(ng-bind="stats.closed_points | number:2") --
         span.description(translate="BACKLOG.SUMMARY.CLOSED_POINTS")
     div.summary-stats
         span.number(ng-bind="stats.speed | number:0") --
