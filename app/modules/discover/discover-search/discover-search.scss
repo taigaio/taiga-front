@@ -81,7 +81,7 @@
     }
     .project-statistics {
         display: flex;
-        flex-basis: 140px;
+        flex-basis: 300px;
         justify-content: flex-end;
         svg {
             @include svg-size(.8rem);

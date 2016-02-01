@@ -35,11 +35,8 @@ div.wrapper(
                         id="logo-field"
                         tg-project-logo-model="logoAttachment"
                     )
-                p.image-help
-                    span {{ 'ADMIN.PROJECT_PROFILE.LOGO_HELP' | translate }}
-                    span.size-info.hidden(tg-bo-html="maxFileSizeMsg")
 
-                a.button-green.change.js-change-logo(
+                a.button-green.change-image.js-change-logo(
                     href="#"
                     title="{{'ADMIN.PROJECT_PROFILE.CHANGE_LOGO' | translate}}"
                 ) {{'ADMIN.PROJECT_PROFILE.CHANGE_LOGO' | translate}}

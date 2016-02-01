@@ -373,7 +373,6 @@
         "DEPRECATED_FILE": "Deprecated?",
         "ADD": "Add new attachment. {{maxFileSizeMsg}}",
         "DROP": "Drop attachments here!",
-        "MAX_FILE_SIZE": "[Max. size:  {{maxFileSize}}]",
         "SHOW_DEPRECATED": "+ show deprecated atachments",
         "HIDE_DEPRECATED": "- hide deprecated atachments",
         "COUNT_DEPRECATED": "({{ counter }} deprecated)",

@@ -27,11 +27,8 @@ div.wrapper(
                         id="avatar-field"
                         tg-avatar-model="avatarAttachment"
                     )
-                p.image-help
-                    span {{ 'USER_PROFILE.IMAGE_HELP' | translate }}
-                    span.size-info.hidden(tg-bo-html="maxFileSizeMsg")
 
-                a.button-green.change.js-change-avatar(
+                a.button-green.change-image.js-change-avatar(
                     href="#"
                     title="{{'USER_PROFILE.CHANGE_PHOTO' | translate}}"
                 ) {{'USER_PROFILE.CHANGE_PHOTO' | translate}}

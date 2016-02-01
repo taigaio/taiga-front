@@ -20,11 +20,6 @@ section.attachments(tg-attachments-drop="vm.addAttachments(files, false)")
                 tg-check-permission="modify_{{vm.type}}"
                 title!="{{'ATTACHMENT.ADD' | translate}}"
             )
-                span.size-info(
-                    ng-if="vm.maxFileSize",
-                    translate="ATTACHMENT.MAX_FILE_SIZE",
-                    translate-values="{ 'maxFileSize': vm.maxFileSize}"
-                )
 
                 label.add-attachment-button(for="add-attach")
                     include ../../../svg/add.svg
