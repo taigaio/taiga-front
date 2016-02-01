@@ -94,6 +94,10 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
     initializeEventHandlers: ->
         @scope.$on "related-tasks:update", =>
             @scope.tasks = _.clone(@scope.tasks, false)
+            allClosed = _.every @scope.tasks, (task) -> return task.is_closed
+
+            if @scope.us.is_closed != allClosed
+                @.loadUs()
 
         @scope.$on "attachment:create", =>
             @analytics.trackEvent("attachment", "create", "create attachment on userstory", 1)
