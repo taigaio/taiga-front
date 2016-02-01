@@ -1446,6 +1446,8 @@
         }
     },
     "DISCOVER": {
+        "PAGE_TITLE": "Discover projects - Taiga",
+        "PAGE_DESCRIPTION": "Searchable directory of Public Projects in Taiga. Explore backlogs, timelines, issues, and teams. Check out the most liked or most active projects. Filter by Kanban or Scrum.",
         "DISCOVER_TITLE": "發現更多專案",
         "DISCOVER_SUBTITLE": "{projects, plural, one{One public project to discover} other{# public projects to discover}}",
         "MOST_ACTIVE": "最活躍",
@@ -1468,6 +1470,8 @@
             "CLEAR": "清除過濾器 "
         },
         "SEARCH": {
+            "PAGE_TITLE": "Search - Discover projects - Taiga",
+            "PAGE_DESCRIPTION": "Searchable directory of Public Projects in Taiga. Explore backlogs, timelines, issues, and teams. Check out the most liked or most active projects. Filter by Kanban or Scrum.",
             "INPUT_PLACEHOLDER": "輸入文字",
             "ACTION_TITLE": "搜尋",
             "RESULTS": "搜尋結果"

@@ -2,7 +2,7 @@
     "COMMON": {
         "YES": "Ja",
         "NO": "Nej",
-        "OR": "or",
+        "OR": "eller",
         "LOADING": "Laddar ...",
         "LOADING_PROJECT": "Laddar projekt...",
         "DATE": "YYYY-MM-DD",
@@ -454,16 +454,16 @@
             "TAGS": "Etiketter",
             "DESCRIPTION": "Beskrivning",
             "RECRUITING": "Is this project looking for people?",
-            "RECRUITING_MESSAGE": "Who are you looking for?",
+            "RECRUITING_MESSAGE": "Vem letar du efter?",
             "RECRUITING_PLACEHOLDER": "Define the profiles you are looking for",
             "PUBLIC_PROJECT": "Publika projekt",
             "PUBLIC_PROJECT_DESC": "Users will be able to find and view your project",
             "PRIVATE_PROJECT": "Privata projekt",
             "PRIVATE_PROJECT_DESC": "By default, this project will be hidden to the public",
-            "PRIVATE_OR_PUBLIC": "What's the difference between public and private projects?",
+            "PRIVATE_OR_PUBLIC": "Vad är skillnaden mellan publika och privata projekt?",
             "DELETE": "Ta bort projekt",
-            "LOGO_HELP": "The image will be scaled to 80x80px.",
-            "CHANGE_LOGO": "Change logo",
+            "LOGO_HELP": "Bilden kommer skalas till 80x80px.",
+            "CHANGE_LOGO": "Ändra logga",
             "ACTION_USE_DEFAULT_LOGO": "Use default image"
         },
         "REPORTS": {
@@ -914,7 +914,7 @@
         "TYPE_NEW_COMMENT": "Skriv en ny kommentar här",
         "SHOW_DELETED": "Visa raderade kommentarer",
         "HIDE_DELETED": "Dölj raderade kommentarer",
-        "DELETE": "Delete comment",
+        "DELETE": "Ta bort kommentar",
         "RESTORE": "Hämta tillbaka tidigare kommentarer"
     },
     "ACTIVITY": {
@@ -1284,7 +1284,7 @@
         }
     },
     "USER_PROFILE": {
-        "IMAGE_HELP": "The image will be scaled to 80x80px.",
+        "IMAGE_HELP": "Bilden kommer skalas till 80x80px.",
         "ACTION_CHANGE_IMAGE": "Ändra",
         "ACTION_USE_GRAVATAR": "Use default image",
         "ACTION_DELETE_ACCOUNT": "Ta bort Taiga-kontot",
@@ -1446,6 +1446,8 @@
         }
     },
     "DISCOVER": {
+        "PAGE_TITLE": "Discover projects - Taiga",
+        "PAGE_DESCRIPTION": "Searchable directory of Public Projects in Taiga. Explore backlogs, timelines, issues, and teams. Check out the most liked or most active projects. Filter by Kanban or Scrum.",
         "DISCOVER_TITLE": "Discover projects",
         "DISCOVER_SUBTITLE": "{projects, plural, one{One public project to discover} other{# public projects to discover}}",
         "MOST_ACTIVE": "Most active",
@@ -1468,6 +1470,8 @@
             "CLEAR": "Clear filters"
         },
         "SEARCH": {
+            "PAGE_TITLE": "Search - Discover projects - Taiga",
+            "PAGE_DESCRIPTION": "Searchable directory of Public Projects in Taiga. Explore backlogs, timelines, issues, and teams. Check out the most liked or most active projects. Filter by Kanban or Scrum.",
             "INPUT_PLACEHOLDER": "Skriv något ...",
             "ACTION_TITLE": "Sök",
             "RESULTS": "Search results"

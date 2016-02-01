@@ -22,6 +22,19 @@ describe "DiscoverSearch", ->
     $controller = null
     mocks = {}
 
+    _mockTranslate = () ->
+        mocks.translate = {}
+        mocks.translate.instant = sinon.stub()
+
+        $provide.value "$translate", mocks.translate
+
+    _mockAppMetaService = () ->
+        mocks.appMetaService = {
+            setAll: sinon.spy()
+        }
+
+        $provide.value "tgAppMetaService", mocks.appMetaService
+
     _mockRouteParams = ->
         mocks.routeParams = {}
 
@@ -46,6 +59,8 @@ describe "DiscoverSearch", ->
         module (_$provide_) ->
             $provide = _$provide_
 
+            _mockTranslate()
+            _mockAppMetaService()
             _mockRoute()
             _mockRouteParams()
             _mockDiscoverProjects()
@@ -64,6 +79,18 @@ describe "DiscoverSearch", ->
         module "taigaDiscover"
 
         _setup()
+
+    it "initialize meta data", () ->
+        mocks.translate.instant
+            .withArgs('DISCOVER.SEARCH.PAGE_TITLE')
+            .returns('meta-title')
+        mocks.translate.instant
+            .withArgs('DISCOVER.SEARCH.PAGE_DESCRIPTION')
+            .returns('meta-description')
+
+        ctrl = $controller('DiscoverSearch')
+
+        expect(mocks.appMetaService.setAll.calledWithExactly("meta-title", "meta-description")).to.be.true
 
     it "initialize search params", () ->
         mocks.routeParams.text = 'text'

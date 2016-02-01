@@ -2,7 +2,7 @@
     "COMMON": {
         "YES": "Si",
         "NO": "No",
-        "OR": "or",
+        "OR": "o",
         "LOADING": "Carregant...",
         "LOADING_PROJECT": "Carregant projecte...",
         "DATE": "DD MMM YYYY",
@@ -19,11 +19,11 @@
         "TAG_LINE": "La teua eïna de gestió de projectes àgil, gratuita i de codi obert ",
         "TAG_LINE_2": "ESTIMA EL TEU PROJECTE",
         "BLOCK": "Bloquejar",
-        "BLOCK_TITLE": "Block this item for example if it has a dependency that can not be satisfied",
+        "BLOCK_TITLE": "Bloqueja aquest element si té una dependència que no pot ser satisfeta",
         "BLOCKED": "Bloquejat",
         "UNBLOCK": "Desbloquejar",
-        "UNBLOCK_TITLE": "Unblock this item",
-        "BLOCKED_NOTE": "Why is this blocked?",
+        "UNBLOCK_TITLE": "Desbloquejar aquest element",
+        "BLOCKED_NOTE": "Per qué està bloquejat?",
         "BLOCKED_REASON": "Per favor, explica la raó",
         "CREATED_BY": "Creat per {{fullDisplayName}}",
         "FROM": "de",
@@ -169,7 +169,7 @@
             "UNWATCH": "Unwatch",
             "WATCHERS": "Watchers",
             "BUTTON_TITLE": "Watch/Unwatch this item",
-            "COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}"
+            "COUNTER_TITLE": "{total, plural, one{un seguidor} other{# seguidors}}"
         },
         "VOTE_BUTTON": {
             "UPVOTE": "Upvote",
@@ -282,9 +282,9 @@
         "HEADER": "Ja tinc un compte de Taiga",
         "PLACEHOLDER_AUTH_NAME": "Nom d'usuari i correu electrònic (sensible a majúscules i minúscules)",
         "LINK_FORGOT_PASSWORD": "L'has oblidat?",
-        "TITLE_LINK_FORGOT_PASSWORD": "Did you forget your password?",
+        "TITLE_LINK_FORGOT_PASSWORD": "Has oblidat la contrasenya?",
         "ACTION_ENTER": "Entrar",
-        "ACTION_SIGN_IN": "Login",
+        "ACTION_SIGN_IN": "Entrar",
         "PLACEHOLDER_AUTH_PASSWORD": "Contrasenya (sensible a majúscules i minúscules)"
     },
     "LOGIN_FORM": {
@@ -352,11 +352,11 @@
         "PAGE_TITLE": "Home - Taiga",
         "PAGE_DESCRIPTION": "La home de Taiga amb els teus projectes principals, totes les històries d'usuari, tasques i incidències que tens assignades i aquelles que estàs Watching",
         "EMPTY_WORKING_ON": "<strong>Sembla buit, no?</strong> Comenceu a treballar amb Taiga i voràs ací les históries, tasques e incidències en les que estás treballant.",
-        "EMPTY_WATCHING": "<strong>Follow</strong> User Stories, Tasks, Issues in your projects and be notified about its changes :)",
+        "EMPTY_WATCHING": "<strong>Segueix</strong> históries, tasques e incidéncies en els teus project i rep notificacions quan canvien :)",
         "EMPTY_PROJECT_LIST": "No tens cap projecte encara",
         "WORKING_ON_SECTION": "En Progrés",
         "WATCHING_SECTION": "Observant",
-        "DASHBOARD": "Projects Dashboard"
+        "DASHBOARD": "Panell principal"
     },
     "PROJECTS": {
         "PAGE_TITLE": "Els meus projectes - Taiga",
@@ -366,13 +366,13 @@
     "ATTACHMENT": {
         "SECTION_NAME": "Adjunts",
         "TITLE": "{{ fileName }} pujat el {{ date }}",
-        "LIST_VIEW_MODE": "List view mode",
-        "GALLERY_VIEW_MODE": "Gallery view mode",
+        "LIST_VIEW_MODE": "Vista de llista",
+        "GALLERY_VIEW_MODE": "Galeria",
         "DESCRIPTION": "Escriu una descripció curta",
         "DEPRECATED": "(obsolet)",
         "DEPRECATED_FILE": "Obsolet?",
         "ADD": "Afegeix un nou adjunt. {{maxFileSizeMsg}}",
-        "DROP": "Drop attachments here!",
+        "DROP": "Deixa els adjunts ací",
         "MAX_FILE_SIZE": "[Max. grandària:  {{maxFileSize}}]",
         "SHOW_DEPRECATED": "+ mostra els adjunts obsolets",
         "HIDE_DEPRECATED": "- Amagar els adjunts obsolets",
@@ -453,11 +453,11 @@
             "NUMBER_US_POINTS": "Nombre de punts d'històries (0 per a una quantitat indeterminada)",
             "TAGS": "Etiquetes",
             "DESCRIPTION": "Descripció",
-            "RECRUITING": "Is this project looking for people?",
-            "RECRUITING_MESSAGE": "Who are you looking for?",
-            "RECRUITING_PLACEHOLDER": "Define the profiles you are looking for",
+            "RECRUITING": "Este projecte busca col·laboracions?",
+            "RECRUITING_MESSAGE": "A qui estàs buscant?",
+            "RECRUITING_PLACEHOLDER": "Defineix els perfils que estàs buscant",
             "PUBLIC_PROJECT": "Projecte públic",
-            "PUBLIC_PROJECT_DESC": "Users will be able to find and view your project",
+            "PUBLIC_PROJECT_DESC": "Els usuaris podràn trobar i vore el teu projecte",
             "PRIVATE_PROJECT": "Projecte privat",
             "PRIVATE_PROJECT_DESC": "By default, this project will be hidden to the public",
             "PRIVATE_OR_PUBLIC": "What's the difference between public and private projects?",
@@ -690,9 +690,9 @@
                 "ACTIVITY_TAB": "Timeline",
                 "ACTIVITY_TAB_TITLE": "Mostra tota la activitat d'aquest usuari",
                 "PROJECTS_TAB": "Projectes",
-                "PROJECTS_TAB_TITLE": "List of all projects in which the user is a member",
-                "LIKES_TAB": "Likes",
-                "LIKES_TAB_TITLE": "List all likes made by this user",
+                "PROJECTS_TAB_TITLE": "Mostra tots els projects del que el usuari es administrador",
+                "LIKES_TAB": "Favorits",
+                "LIKES_TAB_TITLE": "Mostra tots els favorits del usuari",
                 "VOTES_TAB": "Vots",
                 "VOTES_TAB_TITLE": "List all votes made by this user",
                 "WATCHED_TAB": "Watched",
@@ -703,7 +703,7 @@
         },
         "PROFILE_SIDEBAR": {
             "TITLE": "El teu perfil",
-            "DESCRIPTION": "People can see everything you do and what you are working on. Add a nice bio to give an enhanced version of your information.",
+            "DESCRIPTION": "La gent pot vore tot el que fas i en qué estàs treballant. Afegix una bio interessant per a donar una millor versió de la teua informació.",
             "ADD_INFO": "Edita la bio"
         },
         "PROFILE_FAVS": {
@@ -718,7 +718,7 @@
             "FILTER_TYPE_TASK_TITLES": "Mostra només tasquest",
             "FILTER_TYPE_ISSUES": "Incidències",
             "FILTER_TYPE_ISSUES_TITLE": "Mostra només incidències",
-            "EMPTY_TITLE": "It looks like there's nothing to show here."
+            "EMPTY_TITLE": "Sembla que no hi ha res que mostrar"
         }
     },
     "PROJECT": {
@@ -727,10 +727,10 @@
         "SECTION_PROJECTS": "Projectes",
         "HELP": "Reordena els teus projectes per a establir els més utilitzats en les primeres posicions. <br/> Els 10 millors projectes apareixeran en la llista de projectes de la barra de navegació superior",
         "PRIVATE": "Projecte privat",
-        "LOOKING_FOR_PEOPLE": "This project is looking for people",
-        "FANS_COUNTER_TITLE": "{total, plural, one{one fan} other{# fans}}",
-        "WATCHERS_COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}",
-        "MEMBERS_COUNTER_TITLE": "{total, plural, one{one member} other{# members}}",
+        "LOOKING_FOR_PEOPLE": "Este projecte busca col·laboracions",
+        "FANS_COUNTER_TITLE": "{total, plural, one{un fan} other{# fans}}",
+        "WATCHERS_COUNTER_TITLE": "{total, plural, one{un seguidor} other{# seguidors}}",
+        "MEMBERS_COUNTER_TITLE": "{total, plural, one{un membre} other{# membres}}",
         "STATS": {
             "PROJECT": "punts<br/> projecte",
             "DEFINED": "punts<br/> definits",
@@ -753,7 +753,7 @@
             "PLACEHOLDER_SEARCH": "Cerca en...",
             "ACTION_CREATE_PROJECT": "Crear projecte",
             "ACTION_IMPORT_PROJECT": "Importar projecte",
-            "MANAGE_PROJECTS": "Manage projects",
+            "MANAGE_PROJECTS": "Gestiona els projectes",
             "TITLE_CREATE_PROJECT": "Crear projecte",
             "TITLE_IMPORT_PROJECT": "Importar projecte",
             "TITLE_PRVIOUS_PROJECT": "Mostra projectes previs",
@@ -797,14 +797,14 @@
             "LIKE": "M'agrada",
             "LIKED": "T'agrada",
             "UNLIKE": "No t'agrada",
-            "BUTTON_TITLE": "Like or unlike this project",
-            "COUNTER_TITLE": "{total, plural, one{one fan} other{# fans}}"
+            "BUTTON_TITLE": "Favoriteja o desfavoriteja aquest projecte",
+            "COUNTER_TITLE": "{total, plural, un{un fan} altres{# fans}}"
         },
         "WATCH_BUTTON": {
             "BUTTON_TITLE": "Segueix este projecte i edita les notificacions",
             "WATCH": "Segueix",
             "WATCHING": "Observant",
-            "COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}",
+            "COUNTER_TITLE": "{total, plural, one{un seguidor} other{# seguidors}}",
             "OPTIONS": {
                 "NOTIFY_ALL": "Receive all notifications",
                 "NOTIFY_ALL_TITLE": "Receive all notifications for this project",
@@ -914,7 +914,7 @@
         "TYPE_NEW_COMMENT": "Escriu un nou comentari ací",
         "SHOW_DELETED": "Mostra el comentari esborrat.",
         "HIDE_DELETED": "Amaga el comentari esborrat",
-        "DELETE": "Delete comment",
+        "DELETE": "Esborrar comentari",
         "RESTORE": "Resturar comentari."
     },
     "ACTIVITY": {
@@ -976,12 +976,12 @@
         "CUSTOMIZE_GRAPH": "Edita el teu gràfic de backlog",
         "CUSTOMIZE_GRAPH_TEXT": "Per a tindre un gràfic que t'ajude a seguir la evolució del projecte deus de editar els punts i els sprints per mig del",
         "CUSTOMIZE_GRAPH_ADMIN": "Admin",
-        "CUSTOMIZE_GRAPH_TITLE": "Set up the points and sprints through the Admin",
+        "CUSTOMIZE_GRAPH_TITLE": "Estableix els punts i els sprints al Admin",
         "MOVE_US_TO_CURRENT_SPRINT": "Envia al Sprint",
-        "MOVE_US_TO_LATEST_SPRINT": "Move to latest Sprint",
+        "MOVE_US_TO_LATEST_SPRINT": "Posar a l'ultim sprint",
         "SHOW_FILTERS": "Mostra filtres",
         "SHOW_TAGS": "Mostra etiquetes",
-        "EMPTY": "The backlog is empty!",
+        "EMPTY": "El backlog està buit!",
         "CREATE_NEW_US": "Crea una nova US",
         "CREATE_NEW_US_EMPTY_HELP": "Potser vols crear una nova història d'usuari",
         "EXCESS_OF_POINTS": "Excés de punts",
@@ -1066,8 +1066,8 @@
         "TITLE_ACTION_ADD_BULK": "Afegeix noves històries d'usuari en grup",
         "TITLE_ACTION_ASSIGN": "Assignar tasca",
         "TITLE_ACTION_EDIT": "Editar tasca",
-        "PLACEHOLDER_CARD_TITLE": "This could be a task",
-        "PLACEHOLDER_CARD_TEXT": "Split Stories into tasks to track them separately",
+        "PLACEHOLDER_CARD_TITLE": "Açó podría ser una tasca",
+        "PLACEHOLDER_CARD_TEXT": "Divideix les históries per a poder gertionar-les separadament",
         "TABLE": {
             "COLUMN": "Història d'usuari",
             "TITLE_ACTION_FOLD": "Plegar columna",
@@ -1135,7 +1135,7 @@
     },
     "ISSUES": {
         "PAGE_TITLE": "Incidències - {{projectName}}",
-        "PAGE_DESCRIPTION": "The issues list panel of the project {{projectName}}: {{projectDescription}}",
+        "PAGE_DESCRIPTION": "El panell d'incidències de {{projectName}}: {{projectDescription}}",
         "LIST_SECTION_NAME": "Incidències",
         "SECTION_NAME": "Detalls d'incidència",
         "ACTION_NEW_ISSUE": "+ NOVA INCIDÈNCIA",
@@ -1224,7 +1224,7 @@
     },
     "SEARCH": {
         "PAGE_TITLE": "Cerca - {{projectName}}",
-        "PAGE_DESCRIPTION": "Search anything, user stories, issues, tasks or wiki pages, in the project {{projectName}}: {{projectDescription}}",
+        "PAGE_DESCRIPTION": "Busca qualsevol cosa al projecte {{projectName}}: {{projectDescription}}",
         "FILTER_USER_STORIES": "Històries d'usuari",
         "FILTER_ISSUES": "Incidències",
         "FILTER_TASKS": "Tasca",
@@ -1236,7 +1236,7 @@
     },
     "TEAM": {
         "PAGE_TITLE": "Equip - {{projectName}}",
-        "PAGE_DESCRIPTION": "The team panel to show all the members of the project {{projectName}}: {{projectDescription}}",
+        "PAGE_DESCRIPTION": "El panell d'equip mostra tots els membres del projecte {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Equip",
         "APP_TITLE": "EQUIP - {{projectName}}",
         "PLACEHOLDER_INPUT_SEARCH": "Busca per nom complet...",
@@ -1446,6 +1446,8 @@
         }
     },
     "DISCOVER": {
+        "PAGE_TITLE": "Discover projects - Taiga",
+        "PAGE_DESCRIPTION": "Searchable directory of Public Projects in Taiga. Explore backlogs, timelines, issues, and teams. Check out the most liked or most active projects. Filter by Kanban or Scrum.",
         "DISCOVER_TITLE": "Discover projects",
         "DISCOVER_SUBTITLE": "{projects, plural, one{One public project to discover} other{# public projects to discover}}",
         "MOST_ACTIVE": "Most active",
@@ -1453,7 +1455,7 @@
         "MOST_LIKED": "Most liked",
         "MOST_LIKED_EMPTY": "There are no LIKED projects yet",
         "VIEW_MORE": "View more",
-        "RECRUITING": "This project is looking for people",
+        "RECRUITING": "Este projecte busca col·laborados",
         "FEATURED": "Featured Projects",
         "EMPTY": "There are no projects to show with this search criteria.<br> Try again!",
         "FILTERS": {
@@ -1468,6 +1470,8 @@
             "CLEAR": "Clear filters"
         },
         "SEARCH": {
+            "PAGE_TITLE": "Search - Discover projects - Taiga",
+            "PAGE_DESCRIPTION": "Searchable directory of Public Projects in Taiga. Explore backlogs, timelines, issues, and teams. Check out the most liked or most active projects. Filter by Kanban or Scrum.",
             "INPUT_PLACEHOLDER": "Escriu algo...",
             "ACTION_TITLE": "Cerca",
             "RESULTS": "Search results"

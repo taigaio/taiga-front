@@ -21,10 +21,12 @@ class DiscoverSearchController
     @.$inject = [
         '$routeParams',
         'tgDiscoverProjectsService',
-        '$route'
+        '$route',
+        'tgAppMetaService',
+        '$translate'
     ]
 
-    constructor: (@routeParams, @discoverProjectsService, @route) ->
+    constructor: (@routeParams, @discoverProjectsService, @route, @appMetaService, @translate) ->
         @.page = 1
 
         taiga.defineImmutableProperty @, "searchResult", () => return @discoverProjectsService.searchResult
@@ -37,6 +39,10 @@ class DiscoverSearchController
         @.loadingGlobal = false
         @.loadingList = false
         @.loadingPagination = false
+
+        title = @translate.instant("DISCOVER.SEARCH.PAGE_TITLE")
+        description = @translate.instant("DISCOVER.SEARCH.PAGE_DESCRIPTION")
+        @appMetaService.setAll(title, description)
 
     fetch: () ->
         @.page = 1
