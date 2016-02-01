@@ -10,10 +10,11 @@
     .us-title {
         @extend %large;
         @extend %text;
-        align-items: center;
+        align-items: flex-start;
         background: $whitish;
         display: flex;
         flex: 1;
+        flex-direction: column;
         padding: .5rem;
         position: relative;
         transition: all .2s linear;
@@ -57,10 +58,11 @@
             align-content: center;
             align-items: center;
             display: flex;
+            width: 100%;
         }
         input {
             background: $white;
-            flex-grow: 9;
+            flex-grow: 1;
         }
         .save-container {
             flex-grow: 1;
@@ -74,6 +76,7 @@
             flex: 1;
             margin-bottom: 0;
             max-width: 92%;
+            width: 100%;
         }
         .us-title-text:hover {
             .icon-edit {
@@ -91,6 +94,7 @@
         .us-name {
             color: $gray;
             display: inline-block;
+            flex-grow: 1;
             line-height: 2.2rem;
             padding-right: 1rem;
             width: 100%;

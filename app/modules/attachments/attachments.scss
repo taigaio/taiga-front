@@ -20,7 +20,7 @@
     }
     label {
         cursor: pointer;
-        margin-left: 1rem;
+        margin-left: .25rem;
         &.add-attachment-button {
             background: $gray;
             border: 0;
@@ -53,6 +53,12 @@
             margin-bottom: -.2rem;
             width: 1.6rem;
         }
+    }
+    .size-info {
+        @extend %light;
+        @extend %small;
+        color: $gray;
+        padding-left: 1rem;
     }
     input {
         display: none;
