@@ -47,7 +47,7 @@
     "tests"
   ],
   "dependencies": {
-    "lodash": "~2.4.2",
+    "lodash": "~3.10.1",
     "emoticons": "~0.1.7",
     "jquery-flot": "~0.8.2",
     "angular": "1.4.7",
@@ -86,7 +86,7 @@
     "intro.js": "~1.1.1"
   },
   "resolutions": {
-    "lodash": "~2.4.2",
+    "lodash": "~3.10.1",
     "moment": "~2.10.6",
     "jquery": "~2.1.1",
     "angular": "1.4.7"

@@ -22,7 +22,7 @@ module.exports = function(config) {
       'vendor/bluebird/js/browser/bluebird.js',
       'node_modules/chai-jquery/chai-jquery.js',
       'node_modules/chai-jquery/chai-jquery.js',
-      'vendor/lodash/dist/lodash.js',
+      'vendor/lodash/lodash.js',
       'vendor/underscore.string/lib/underscore.string.js',
       'test-utils.js',
       'dist/**/js/app.js',
