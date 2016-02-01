@@ -22,6 +22,19 @@ describe "DiscoverHomeController", ->
     $controller = null
     mocks = {}
 
+    _mockTranslate = () ->
+        mocks.translate = {}
+        mocks.translate.instant = sinon.stub()
+
+        $provide.value "$translate", mocks.translate
+
+    _mockAppMetaService = () ->
+        mocks.appMetaService = {
+            setAll: sinon.spy()
+        }
+
+        $provide.value "tgAppMetaService", mocks.appMetaService
+
     _mockLocation = ->
         mocks.location = {}
 
@@ -40,6 +53,8 @@ describe "DiscoverHomeController", ->
         module (_$provide_) ->
             $provide = _$provide_
 
+            _mockTranslate()
+            _mockAppMetaService()
             _mockLocation()
             _mockNavUrls()
 
@@ -53,6 +68,18 @@ describe "DiscoverHomeController", ->
 
         _mocks()
         _setup()
+
+    it "initialize meta data", () ->
+        mocks.translate.instant
+            .withArgs('DISCOVER.PAGE_TITLE')
+            .returns('meta-title')
+        mocks.translate.instant
+            .withArgs('DISCOVER.PAGE_DESCRIPTION')
+            .returns('meta-description')
+
+        ctrl = $controller('DiscoverHome')
+
+        expect(mocks.appMetaService.setAll.calledWithExactly("meta-title", "meta-description")).to.be.true
 
     it "onSubmit redirect to discover search", () ->
         mocks.navUrls.resolve = sinon.stub().withArgs('discover-search').returns('url')
@@ -68,4 +95,4 @@ describe "DiscoverHomeController", ->
 
         ctrl.onSubmit('query')
 
-        expect(pathSpy).to.have.been.calledWith('url');
+        expect(pathSpy).to.have.been.calledWith('url')
