@@ -51,7 +51,7 @@ ProjectLogoSrcDirective = ($parse) ->
 
             return if not project
 
-            projectLogo = project.get('logo_small_url')
+            projectLogo = project.get('logo_big_url')
 
             if projectLogo
                 el.attr("src", projectLogo)

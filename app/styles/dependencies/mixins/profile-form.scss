@@ -18,14 +18,13 @@
         .image {
             width: 100%;
         }
-        .loading-spinner {
-
-        }
     }
-
+    .change-image {
+        display: block;
+    }
     .image-container {
         position: relative;
-        margin-bottom: 0;
+        margin-bottom: .5rem;
     }
     .loading-overlay {
         display: none;
@@ -46,14 +45,10 @@
         border: 0;
         transform-origin: center center;
     }
-    .image-help {
-        @extend %xsmall;
-        line-height: 1rem;
-        margin-bottom: .5rem;
-        text-align: center;
-    }
     .use-default-image {
         @extend %xsmall;
+        display: block;
+        margin-top: .25rem;
         text-align: center;
         &:hover {
             color: $red;

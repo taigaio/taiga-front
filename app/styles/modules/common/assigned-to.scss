@@ -60,20 +60,6 @@
         .assigned-to-options {
             display: inline-block;
         }
-        .user-assigned,
-        .assign-to-me {
-            color: $primary;
-            cursor: default;
-            &:hover {
-                cursor: pointer;
-            }
-            .icon {
-                vertical-align: middle;
-            }
-            > span {
-                @include ellipsis(80%);
-            }
-        }
         .icon-delete {
             color: $gray-light;
             opacity: 0;
@@ -83,6 +69,25 @@
             &:hover {
                 color: $red;
             }
+        }
+    }
+    .user-assigned,
+    .assign-to-me {
+        cursor: default;
+        &:hover {
+            color: currentColor;
+        }
+        &.editable {
+            color: $primary;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+        .icon {
+            vertical-align: middle;
+        }
+        > span {
+            @include ellipsis(80%);
         }
     }
 }
