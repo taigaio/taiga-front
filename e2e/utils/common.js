@@ -161,7 +161,7 @@ common.logout = async function() {
 
     return browser.driver.wait(async function() {
         let url =  await browser.driver.getCurrentUrl();
-        return url === browser.params.glob.host + 'login';
+        return url === browser.params.glob.host + 'discover';
     }, 10000);
 };
 
