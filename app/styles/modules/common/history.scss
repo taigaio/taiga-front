@@ -49,6 +49,9 @@
         &:first-child {
             border-right: 1px solid $gray-light;
         }
+        &:last-child {
+            border-right: 0;
+        }
     }
     a {
         color: $gray-light;

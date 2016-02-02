@@ -1,15 +1,21 @@
 include ../components/wysiwyg.jade
 
 section.history
+    <% if (commentsVisible || historyVisible) { %>
     ul.history-tabs
+        <% if (commentsVisible) { %>
         li
             a(href="#", class="active", data-section-class="history-comments")
                 span.icon.icon-comment
                 span.tab-title(translate="COMMENTS.TITLE")
+        <% } %>
+        <% if (historyVisible) { %>
         li
             a(href="#", data-section-class="history-activity")
                 span.icon.icon-issues
                 span.tab-title(translate="ACTIVITY.TITLE")
+        <% } %>
+    <% } %>
     section.history-comments
         .comments-list
         div(tg-editable-wysiwyg, ng-model!="<%- ngmodel %>")
