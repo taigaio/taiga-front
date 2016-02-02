@@ -49,9 +49,10 @@
                         span.statistics-num {{ ::project.get('members').size }}
             p.project-description {{ ::project.get('description') | limitTo:150 }}{{ ::project.get('description').length < 150 ? '' : '...'}}
 
-    a.view-more-projects.button-green(
-        ng-if="highlighted"
-        tg-nav="discover-search"
-        tg-nav-get-params="{\"order_by\": \"{{orderBy}}\"}"
-        href="#"
-    ) {{ 'DISCOVER.VIEW_MORE' | translate }}
+    div(ng-if="!loading")
+        a.view-more-projects.button-green(
+            ng-if="highlighted"
+            tg-nav="discover-search"
+            tg-nav-get-params="{\"order_by\": \"{{orderBy}}\"}"
+            href="#"
+        ) {{ 'DISCOVER.VIEW_MORE' | translate }}
