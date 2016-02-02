@@ -882,7 +882,7 @@ UsRolePointsSelectorDirective = ($rootscope, $template, $compile, $translate) ->
 
     return {link: link}
 
-module.directive("tgUsRolePointsSelector", ["$rootScope", "$tgTemplate", "$compile", UsRolePointsSelectorDirective])
+module.directive("tgUsRolePointsSelector", ["$rootScope", "$tgTemplate", "$compile", "$translate", UsRolePointsSelectorDirective])
 
 
 UsPointsDirective = ($tgEstimationsService, $repo, $tgTemplate) ->
