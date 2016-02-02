@@ -27,6 +27,7 @@ var gulp = require("gulp"),
     del = require("del"),
     livereload = require('gulp-livereload'),
     gulpFilter = require('gulp-filter'),
+    addsrc = require('gulp-add-src');
     coffeelint = require('gulp-coffeelint');
 
 var argv = require('minimist')(process.argv.slice(2));
@@ -70,10 +71,10 @@ paths.locales = paths.app + "locales/**/*.json";
 
 paths.sass = [
     paths.app + "**/*.scss",
-    "!" + paths.app + "/styles/bourbon/**/*.scss",
-    "!" + paths.app + "/styles/dependencies/**/*.scss",
-    "!" + paths.app + "/styles/extras/**/*.scss",
-    "!" + paths.app + "/themes/**/variables.scss",
+    "!" + paths.app + "styles/bourbon/**/*.scss",
+    "!" + paths.app + "styles/dependencies/**/*.scss",
+    "!" + paths.app + "styles/extras/**/*.scss",
+    "!" + paths.app + "themes/**/*.scss",
 ];
 
 paths.sass_watch = paths.sass.concat(themes.current.customScss);
@@ -85,7 +86,8 @@ paths.styles_dependencies = [
 
 paths.css = [
     paths.tmp + "styles/**/*.css",
-    paths.tmp + "modules/**/*.css"
+    paths.tmp + "modules/**/*.css",
+    paths.tmp + "custom.css"
 ];
 
 paths.css_order = [
@@ -101,7 +103,7 @@ paths.css_order = [
     paths.tmp + "styles/modules/**/*.css",
     paths.tmp + "modules/**/*.css",
     paths.tmp + "styles/shame/*.css",
-    paths.tmp + "themes/**/*.css"
+    paths.tmp + "custom.css"
 ];
 
 paths.coffee = [
@@ -259,9 +261,8 @@ gulp.task("clear-sass-cache", function() {
 });
 
 gulp.task("sass-compile", [], function() {
-    var sassFiles = paths.sass.concat(themes.current.customScss);
-
-    return gulp.src(sassFiles)
+    return gulp.src(paths.sass)
+        .pipe(addsrc.append(themes.current.customScss))
         .pipe(plumber())
         .pipe(insert.prepend('@import "dependencies";'))
         .pipe(cached("sass"))
@@ -292,9 +293,7 @@ gulp.task("css-lint-app", function() {
 });
 
 gulp.task("app-css", function() {
-    var cssFiles = paths.css.concat(themes.current.customCss);
-
-    return gulp.src(cssFiles)
+    return gulp.src(paths.css)
         .pipe(order(paths.css_order, {base: '.'}))
         .pipe(concat("theme-" + themes.current.name + ".css"))
         .pipe(autoprefixer({

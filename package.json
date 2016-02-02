@@ -34,6 +34,7 @@
     "express": "^4.12.0",
     "glob": "^5.0.14",
     "gulp": "^3.8.11",
+    "gulp-add-src": "^0.2.0",
     "gulp-angular-templatecache": "^1.5.0",
     "gulp-autoprefixer": "^3.0.1",
     "gulp-cache": "^0.3.0",
