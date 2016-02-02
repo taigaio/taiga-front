@@ -61,12 +61,12 @@ TgLoadingService = ($compile) ->
                 target = service.settings.target
                 service.settings.classes.map (className) -> target.removeClass(className)
 
+                if not target.hasClass('loading') && !service.settings.template
+                    service.settings.template = target.html()
+
                 # The loader is shown after that quantity of milliseconds
                 timeoutId = setTimeout (->
                     if not target.hasClass('loading')
-                        if !service.settings.template
-                            service.settings.template = target.html()
-
                         target.addClass('loading')
 
                         target.html(spinner)
