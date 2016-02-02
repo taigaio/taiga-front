@@ -62,7 +62,7 @@ describe "tgDiscoverProjectsService", ->
         _inject()
 
     it "fetch most liked", (done) ->
-        params = {test: 1}
+        params = {test: 1, discover_mode: true}
 
         mocks.resources.projects.getProjects.withArgs(sinon.match(params), false).promise().resolve({
             data: [
@@ -80,12 +80,12 @@ describe "tgDiscoverProjectsService", ->
             result = discoverProjectsService._mostLiked.toJS()
 
             expect(result).to.have.length(5)
-            expect(result[0].decorate).to.be.ok;
+            expect(result[0].decorate).to.be.ok
 
             done()
 
     it "fetch most active", (done) ->
-        params = {test: 1}
+        params = {test: 1, discover_mode: true}
 
         mocks.resources.projects.getProjects.withArgs(sinon.match(params), false).promise().resolve({
             data: [
@@ -103,12 +103,13 @@ describe "tgDiscoverProjectsService", ->
             result = discoverProjectsService._mostActive.toJS()
 
             expect(result).to.have.length(5)
-            expect(result[0].decorate).to.be.ok;
+            expect(result[0].decorate).to.be.ok
 
             done()
 
     it "fetch featured", (done) ->
-        mocks.resources.projects.getProjects.withArgs(sinon.match({is_featured: true}), false).promise().resolve({
+        params = {is_featured: true, discover_mode: true}
+        mocks.resources.projects.getProjects.withArgs(sinon.match(params), false).promise().resolve({
             data: [
                 {id: 1},
                 {id: 2},
@@ -124,7 +125,7 @@ describe "tgDiscoverProjectsService", ->
             result = discoverProjectsService._featured.toJS()
 
             expect(result).to.have.length(4)
-            expect(result[0].decorate).to.be.ok;
+            expect(result[0].decorate).to.be.ok
 
             done()
 
@@ -148,7 +149,7 @@ describe "tgDiscoverProjectsService", ->
             done()
 
     it "fetch search", (done) ->
-        params = {test: 1}
+        params = {test: 1, discover_mode: true}
 
         result = {
             headers: sinon.stub(),
