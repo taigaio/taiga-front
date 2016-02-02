@@ -43,6 +43,7 @@
                         include ../../../../svg/eye.svg
                         span {{::project.get('total_watchers')}}
                     span.statistic(
+                        ng-class="{'active': project.get('i_am_member')}"
                         title="{{ 'PROJECT.MEMBERS_COUNTER_TITLE'|translate:{total:project.get('members').size||0}:'messageformat' }}"
                     )
                         include ../../../../svg/team.svg
