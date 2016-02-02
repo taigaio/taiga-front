@@ -354,6 +354,16 @@ describe('backlog', function() {
         expect(count).to.be.equal(4);
     });
 
+    it('role filters', async function() {
+        await backlogHelper.fiterRole(1);
+
+        utils.common.takeScreenshot('backlog', 'backlog-role-filters');
+
+        let usPoints = await backlogHelper.getUsPoints(0);
+
+        expect(usPoints).to.match(/\d+\s\/\s\d+/);
+    });
+
     describe('milestones', function() {
         it('create', async function() {
             backlogHelper.openNewMilestone();

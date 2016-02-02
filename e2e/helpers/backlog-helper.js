@@ -197,3 +197,9 @@ helper.getSprintsTitles = function() {
 helper.goBackFilters = function() {
     return $$('.filters-step-cat .breadcrumb a').first().click();
 };
+
+helper.fiterRole = async function(value) {
+    let rolePointsSelector = $('div[tg-us-role-points-selector]');
+
+    return utils.popover.open(rolePointsSelector, value);
+};
