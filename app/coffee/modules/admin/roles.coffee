@@ -251,7 +251,7 @@ NewRoleDirective = ($tgrepo, $confirm) ->
                     project: $scope.projectId
                     name: target.val()
                     permissions: DEFAULT_PERMISSIONS
-                    order: _.max($scope.roles, (r) -> r.order).order + 1
+                    order: _.maxBy($scope.roles, (r) -> r.order).order + 1
                     computable: false
                 }
 

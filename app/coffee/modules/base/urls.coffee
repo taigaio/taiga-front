@@ -48,8 +48,8 @@ class UrlsService extends taiga.Service
         url = format(@.urls[name], args.slice(1))
 
         return format("%s/%s", [
-            _.str.rtrim(@.mainUrl, "/"),
-            _.str.ltrim(url, "/")
+            _.trimEnd(@.mainUrl, "/"),
+            _.trimStart(url, "/")
         ])
 
     resolveAbsolute: ->

@@ -38,7 +38,7 @@ TagsDirective = ->
 
     parser = (v) ->
         return [] if not v
-        result = _(v.split(",")).map((x) -> _.str.trim(x))
+        result = _(v.split(",")).map((x) -> _.trim(x))
 
         return result.value()
 

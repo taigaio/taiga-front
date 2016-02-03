@@ -59,16 +59,19 @@ mixOf = (base, mixins...) ->
 
 
 trim = (data, char) ->
-    return _.str.trim(data, char)
+    return _.trim(data, char)
 
 
 slugify = (data) ->
-    return _.str.slugify(data)
-
+    return data.toString().toLowerCase().trim()
+        .replace(/\s+/g, '-')
+        .replace(/&/g, '-and-')
+        .replace(/[^\w\-]+/g, '')
+        .replace(/\-\-+/g, '-')
 
 unslugify = (data) ->
     if data
-        return _.str.capitalize(data.replace(/-/g, ' '))
+        return _.capitalize(data.replace(/-/g, ' '))
     return data
 
 
@@ -114,7 +117,7 @@ toString = (value) ->
 
 
 joinStr = (str, coll) ->
-    return _.str.join(str, coll)
+    return coll.join(str)
 
 
 debounce = (wait, func) ->
@@ -126,7 +129,7 @@ debounceLeading = (wait, func) ->
 
 
 startswith = (str1, str2) ->
-    return _.str.startsWith(str1, str2)
+    return _.startsWith(str1, str2)
 
 
 truncate = (str, maxLength, suffix="...") ->

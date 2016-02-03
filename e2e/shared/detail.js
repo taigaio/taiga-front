@@ -65,6 +65,7 @@ shared.statusTesting = async function(status1 , status2) {
     await statusHelper.setStatus(1);
 
     let selectedStatus = await statusHelper.getSelectedStatus();
+
     expect(selectedStatus).to.be.equal(status1);
 
     // Status 2
