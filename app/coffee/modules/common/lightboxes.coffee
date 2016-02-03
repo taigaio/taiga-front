@@ -268,6 +268,7 @@ module.directive("tgBlockingMessageInput", ["$log", "$tgTemplate", "$compile", B
 
 CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService, $loading, $translate, $confirm, $q, attachmentsService) ->
     link = ($scope, $el, attrs) ->
+        form = null
         $scope.createEditUs = {}
         $scope.isNew = true
 
@@ -285,6 +286,7 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
             attachmentsToDelete = attachmentsToDelete.push(attachment)
 
         $scope.$on "usform:new", (ctx, projectId, status, statusList) ->
+            form.reset() if form
             $scope.isNew = true
             $scope.usStatusList = statusList
             $scope.attachments = Immutable.List()
@@ -312,6 +314,8 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
             lightboxService.open($el)
 
         $scope.$on "usform:edit", (ctx, us, attachments) ->
+            form.reset() if form
+
             $scope.us = us
             $scope.attachments = Immutable.fromJS(attachments)
             $scope.isNew = false
@@ -431,7 +435,11 @@ module.directive("tgLbCreateEditUserstory", [
 
 CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService, $loading) ->
     link = ($scope, $el, attrs) ->
+        form = null
+
         $scope.$on "usform:bulk", (ctx, projectId, status) ->
+            form.reset() if form
+
             $scope.new = {
                 projectId: projectId
                 statusId: status

@@ -39,6 +39,8 @@ CreateIssueDirective = ($repo, $confirm, $rootscope, lightboxService, $loading, 
         $scope.attachments = Immutable.List()
 
         $scope.$on "issueform:new", (ctx, project)->
+            form.reset()
+
             attachmentsToAdd = Immutable.List()
 
             $el.find(".tag-input").val("")
@@ -116,7 +118,11 @@ module.directive("tgLbCreateIssue", ["$tgRepo", "$tgConfirm", "$rootScope", "lig
 
 CreateBulkIssuesDirective = ($repo, $rs, $confirm, $rootscope, $loading, lightboxService) ->
     link = ($scope, $el, attrs) ->
+        form = null
+
         $scope.$on "issueform:bulk", (ctx, projectId, status)->
+            form.reset() if form
+
             lightboxService.open($el)
             $scope.new = {
                 projectId: projectId

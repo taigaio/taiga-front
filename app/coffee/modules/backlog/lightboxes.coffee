@@ -36,8 +36,11 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading,
     link = ($scope, $el, attrs) ->
         hasErrors = false
         createSprint = true
+        form = null
 
         resetSprint = () ->
+            form.reset() if form
+
             $scope.sprint = {
                 project: null
                 name: null
