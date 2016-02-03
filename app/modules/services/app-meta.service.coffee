@@ -33,7 +33,7 @@ class AppMetaService
         return if not key
 
         if key == "title"
-            meta = $("title")
+            meta = $("head title")
 
             if meta.length == 0
                 meta = $("<title></title>")
@@ -41,7 +41,7 @@ class AppMetaService
 
             meta.text(value or "")
         else if key.indexOf("og:") == 0
-            meta = $("meta[property='#{key}']")
+            meta = $("head meta[property='#{key}']")
 
             if meta.length == 0
                 meta = $("<meta property='#{key}'/>")
@@ -49,7 +49,7 @@ class AppMetaService
 
             meta.attr("content", value or "")
         else
-            meta = $("meta[name='#{key}']")
+            meta = $("head meta[name='#{key}']")
 
             if meta.length == 0
                 meta = $("<meta name='#{key}'/>")
@@ -91,7 +91,7 @@ class AppMetaService
         )
 
     removeMobileViewport: () ->
-        $("meta[name=\"viewport\"]").remove()
+        $("head meta[name=\"viewport\"]").remove()
 
     setfn: (fn) ->
         @._listener() if @.listener
