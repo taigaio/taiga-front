@@ -25,6 +25,10 @@ class DiscoverProjectsService extends taiga.Service
         "tgProjectsService"
     ]
 
+    _discoverParams = {
+        discover_mode: true
+    }
+
     constructor: (@rs, @projectsService) ->
         @._mostLiked = Immutable.List()
         @._mostActive = Immutable.List()
@@ -42,7 +46,8 @@ class DiscoverProjectsService extends taiga.Service
         taiga.defineImmutableProperty @, "projectsCount", () => return @._projectsCount
 
     fetchMostLiked: (params) ->
-        return @rs.projects.getProjects(params, false)
+        _params = _.extend({}, _discoverParams, params)
+        return @rs.projects.getProjects(_params, false)
             .then (result) =>
                 data = result.data.slice(0, 5)
 
@@ -52,7 +57,8 @@ class DiscoverProjectsService extends taiga.Service
                 @._mostLiked = projects
 
     fetchMostActive: (params) ->
-        return @rs.projects.getProjects(params, false)
+        _params = _.extend({}, _discoverParams, params)
+        return @rs.projects.getProjects(_params, false)
             .then (result) =>
                 data = result.data.slice(0, 5)
 
@@ -62,9 +68,10 @@ class DiscoverProjectsService extends taiga.Service
                 @._mostActive = projects
 
     fetchFeatured: () ->
-        params = {is_featured: true}
+        _params = _.extend({}, _discoverParams)
+        _params.is_featured = true
 
-        return @rs.projects.getProjects(params, false)
+        return @rs.projects.getProjects(_params, false)
             .then (result) =>
                 data = result.data.slice(0, 4)
 
@@ -81,7 +88,8 @@ class DiscoverProjectsService extends taiga.Service
             @._projectsCount = discover.getIn(['projects', 'total'])
 
     fetchSearch: (params) ->
-        return @rs.projects.getProjects(params)
+        _params = _.extend({}, _discoverParams, params)
+        return @rs.projects.getProjects(_params)
             .then (result) =>
                 @._nextSearchPage = !!result.headers('X-Pagination-Next')
 
