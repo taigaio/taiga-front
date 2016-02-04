@@ -110,15 +110,18 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
           @scope.stats.totals = @scope.totals
 
     _processStat: (stat) ->
-        max = _.max(stat)
-        min = _.min(stat)
-        singleStat = _.map stat, (value, key) ->
+        max = _.max(_.toArray(stat))
+        min = _.min(_.toArray(stat))
+
+        singleStat = Object()
+        for own key, value of stat
             if value == min
-                return [key, 0.1]
-            if value == max
-                return [key, 1]
-            return [key, (value * 0.5) / max]
-        singleStat = _.object(singleStat)
+                singleStat[key] = 0.1
+            else if value == max
+                singleStat[key] = 1
+            else
+                singleStat[key] = (value * 0.5) / max
+
         return singleStat
 
     _processStats: (stats) ->
