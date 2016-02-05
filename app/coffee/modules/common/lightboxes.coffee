@@ -618,7 +618,7 @@ WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationS
         render = (users) ->
             ctx = {
                 selected: false
-                users: _.head(users, 5)
+                users: _.slice(users, 0, 5)
                 showMore: users.length > 5
             }
 
