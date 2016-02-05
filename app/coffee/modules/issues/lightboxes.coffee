@@ -39,7 +39,9 @@ CreateIssueDirective = ($repo, $confirm, $rootscope, lightboxService, $loading, 
         $scope.attachments = Immutable.List()
 
         $scope.$on "issueform:new", (ctx, project)->
-            attachmentsToAdd = Immutable.List()
+            form.reset()
+
+            resetAttachments()
 
             $el.find(".tag-input").val("")
 
@@ -69,6 +71,7 @@ CreateIssueDirective = ($repo, $confirm, $rootscope, lightboxService, $loading, 
 
         resetAttachments = () ->
             attachmentsToAdd = Immutable.List()
+            $scope.attachments = Immutable.List()
 
         $scope.addAttachment = (attachment) ->
             attachmentsToAdd = attachmentsToAdd.push(attachment)

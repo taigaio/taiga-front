@@ -13,6 +13,7 @@
         @extend %medium;
         @extend %bold;
         color: $grayer;
+        line-height: 36px;
         padding: 0 1rem;
     }
     .options {
