@@ -148,7 +148,9 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
             completedPointsSum = _.reduce(_.values(stats.completed_points), ((res, n) -> res + n), 0)
             remainingPointsSum = totalPointsSum - completedPointsSum
             remainingTasks = stats.total_tasks - stats.completed_tasks
+            @scope.showPointsDetail = false
             @scope.stats = stats
+            @scope.stats.totalPoints = stats.total_points
             @scope.stats.totalPointsSum = totalPointsSum
             @scope.stats.completedPointsSum = completedPointsSum
             @scope.stats.remainingPointsSum = remainingPointsSum
