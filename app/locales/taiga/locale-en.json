@@ -66,6 +66,7 @@
             "MAX_CHECK": "You must select %s choices or less.",
             "RANGE_CHECK": "You must select between %s and %s choices.",
             "EQUAL_TO": "This value should be the same.",
+            "LINEWIDTH": "One or some lines are too long. They should have %s characters or less.",
             "PIKADAY": "Invalid date format, use DD MMM YYYY (like 23 Mar 1984)"
         },
         "PICKERDATE": {
