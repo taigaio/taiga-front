@@ -1,0 +1,10 @@
+doctype html
+
+div.wrapper(
+    ng-controller="ContribUserSettingsController as ctrl"
+    ng-init="section='user-settings'"
+)
+    sidebar.menu-secondary.sidebar.settings-nav(tg-user-settings-navigation)
+        include ../includes/modules/user-settings-menu
+
+    section.main(ng-include="currentPlugin.template")
