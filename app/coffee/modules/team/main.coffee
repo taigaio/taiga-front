@@ -134,6 +134,11 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
         return promise.then (project) =>
             @.fillUsersAndRoles(project.members, project.roles)
             @.loadMembers()
+
+            userRoles = _.map @scope.users, (user) -> user.role
+
+            @scope.roles = _.filter @scope.roles, (role) -> userRoles.indexOf(role.id) != -1
+
             return @.loadMemberStats()
 
 module.controller("TeamController", TeamController)
