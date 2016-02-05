@@ -124,6 +124,10 @@
             text-overflow: ellipsis;
             white-space: nowrap;
         }
+        svg,
+        span {
+            margin-right: .25rem;
+        }
         input {
             @extend %medium;
             margin-right: 1rem;
