@@ -9,7 +9,12 @@ div.custom-field-single
 
     div.custom-field-value.js-value-view-mode
         span
+            <% if (type=="url") { %>
+            a(href!="<%- value %>")
+                <%- value %>
+            <% } else { %>
             <%- value %>
+            <% } %>
 
     <% if (isEditable) { %>
     div.custom-field-options
