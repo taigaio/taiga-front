@@ -171,10 +171,10 @@ $summary-background: $grayer;
     margin-bottom: 1rem;
     padding: 2rem 6rem;
     svg {
+        @include svg-size(5rem);
         flex-basis: 5rem;
         flex-shrink: 0;
         margin-right: 1rem;
-        width: 5rem;
     }
     p {
         margin: 0;
