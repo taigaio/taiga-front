@@ -1,4 +1,7 @@
-section.related-tasks(tg-related-tasks)
+section.related-tasks(
+    tg-related-tasks
+    ng-show="showRelatedTasks()"
+)
     .related-tasks-header
         span.related-tasks-title(translate="COMMON.RELATED_TASKS")
         div(tg-related-task-create-button)
