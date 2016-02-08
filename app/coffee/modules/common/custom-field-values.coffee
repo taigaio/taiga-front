@@ -34,6 +34,7 @@ module = angular.module("taigaCommon")
 TEXT_TYPE = "text"
 MULTILINE_TYPE = "multiline"
 DATE_TYPE = "date"
+URL_TYPE = "url"
 
 
 TYPE_CHOICES = [
@@ -48,6 +49,10 @@ TYPE_CHOICES = [
     {
         key: DATE_TYPE,
         name: "ADMIN.CUSTOM_FIELDS.FIELD_TYPE_DATE"
+    },
+    {
+        key: URL_TYPE,
+        name: "ADMIN.CUSTOM_FIELDS.FIELD_TYPE_URL"
     }
 ]
 
@@ -100,6 +105,7 @@ class CustomAttributesValuesController extends taiga.Controller
 
 CustomAttributesValuesDirective = ($templates, $storage) ->
     template = $templates.get("custom-attributes/custom-attributes-values.html", true)
+
     collapsedHash = (type) ->
         return generateHash(["custom-attributes-collapsed", type])
 
@@ -198,12 +204,14 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile, $translate,
         submit = debounce 2000, (event) =>
             event.preventDefault()
 
-            attributeValue.value = $el.find("input[name=value], textarea[name='value']").val()
+            form = $el.find("form").checksley()
+            return if not form.validate()
+
+            input = $el.find("input[name=value], textarea[name='value']")
+            attributeValue.value = input.val()
             if attributeValue.type is DATE_TYPE
                 if moment(attributeValue.value, prettyDate).isValid()
                     attributeValue.value = moment(attributeValue.value, prettyDate).format("YYYY-MM-DD")
-                else
-                    attributeValue.value = ""
 
             $scope.$apply ->
                 $ctrl.updateAttributeValue(attributeValue).then ->
@@ -217,6 +225,10 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile, $translate,
         render(attributeValue)
 
         ## Actions (on view mode)
+
+        $el.on "click", ".js-value-view-mode span a", (event) ->
+            event.stopPropagation()
+
         $el.on "click", ".js-value-view-mode", ->
             return if not isEditable()
             return if $selectedText.get().length

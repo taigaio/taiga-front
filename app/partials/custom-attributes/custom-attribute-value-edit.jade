@@ -14,7 +14,9 @@ form.custom-field-single.editable
         <% } else if (type=="multiline") { %>
         textarea#custom-field-value(name="value") <%- value %>
         <% } else if (type=="date") { %>
-        input#custom-field-value(name="value", type="text", value!="<%- value %>")
+        input#custom-field-value(name="value", type="text", data-pikaday, value!="<%- value %>")
+        <% } else if (type=="url") { %>
+        input#custom-field-value(name="value", type="url", data-type="url", value!="<%- value %>")
         <% } else { %>
         input#custom-field-value(name="value", type="text", value!="<%- value %>")
         <% } %>

@@ -4,7 +4,7 @@
 ## 2.0.0 ??? (unreleased)
 
 ### Features
-- ...
+- Ability to create url custom fields. (thanks to [@astagi](https://github.com/astagi)).
 
 ### Misc
 - Lots of small and not so small bugfixes.

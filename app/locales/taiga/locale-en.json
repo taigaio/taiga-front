@@ -65,7 +65,9 @@
             "MIN_CHECK": "You must select at least %s choices.",
             "MAX_CHECK": "You must select %s choices or less.",
             "RANGE_CHECK": "You must select between %s and %s choices.",
-            "EQUAL_TO": "This value should be the same."
+            "EQUAL_TO": "This value should be the same.",
+            "LINEWIDTH": "One or some lines are too long. They should have %s characters or less.",
+            "PIKADAY": "Invalid date format, use DD MMM YYYY (like 23 Mar 1984)"
         },
         "PICKERDATE": {
             "FORMAT": "DD MMM YYYY",
@@ -494,7 +496,8 @@
             "ISSUE_ADD": "Add a custom field in issues",
             "FIELD_TYPE_TEXT": "Text",
             "FIELD_TYPE_MULTI": "Multi-line",
-            "FIELD_TYPE_DATE": "Date"
+            "FIELD_TYPE_DATE": "Date",
+            "FIELD_TYPE_URL": "Url"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - Project values - {{projectName}}",
