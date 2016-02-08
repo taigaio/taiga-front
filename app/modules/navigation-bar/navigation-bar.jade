@@ -3,27 +3,31 @@ nav.navbar(ng-if="vm.isEnabledHeader")
         a.logo(
             href="#",
             tg-nav="home",
-            title="{{'PROJECT.NAVIGATION.HOMEPAGE' | translate}}")
-
+            title="{{'PROJECT.NAVIGATION.HOMEPAGE' | translate}}"
+        )
             include ../../svg/logo.svg
 
         a(
             href="https://taiga.io/support/",
             target="_blank",
             title="{{'PROJECT.NAVIGATION.HELP_TITLE' | translate}}",
-            translate="PROJECT.NAVIGATION.HELP")
+            translate="PROJECT.NAVIGATION.HELP"
+        )
 
     div.nav-right(ng-if="!vm.isAuthenticated")
         a.login(
             ng-click="vm.login()"
             href="#",
             title="{{ 'LOGIN_COMMON.ACTION_SIGN_IN' | translate }}"
-        ) {{ 'LOGIN_COMMON.ACTION_SIGN_IN' | translate }}
+            translate="LOGIN_COMMON.ACTION_SIGN_IN"
+        )
         a.register(
             ng-click="vm.register()"
+            ng-if="vm.publicRegisterEnabled"
             href="#",
             title="{{ 'REGISTER_FORM.ACTION_SIGN_UP' | translate }}"
-        ) {{ 'REGISTER_FORM.ACTION_SIGN_UP' | translate }}
+            translate="REGISTER_FORM.ACTION_SIGN_UP"
+        )
 
     div.nav-right(ng-if="vm.isAuthenticated")
         a(tg-nav="home",
