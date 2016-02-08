@@ -227,6 +227,19 @@ RelatedTasksDirective = ($repo, $rs, $rootscope) ->
                 $scope.tasks = _.sortBy(tasks, 'ref')
                 return tasks
 
+        _isVisible = ->
+            if $scope.project
+                return $scope.project.my_permissions.indexOf("view_tasks") != -1
+            return false
+
+        _isEditable = ->
+            if $scope.project
+                return $scope.project.my_permissions.indexOf("modify_task") != -1
+            return false
+
+        $scope.showRelatedTasks = ->
+            return _isVisible() && ( _isEditable() ||  $scope.tasks?.length )
+
         $scope.$on "related-tasks:add", ->
             loadTasks().then ->
                 $rootscope.$broadcast("related-tasks:update")

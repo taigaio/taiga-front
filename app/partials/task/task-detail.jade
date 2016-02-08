@@ -92,8 +92,9 @@ div.wrapper(
 
         tg-attachments-full(
             obj-id="task.id"
-            type="task",
+            type="task"
             project-id="projectId"
+            edit-permission = "modify_task"
         )
 
         tg-history(ng-model="task", type="task")

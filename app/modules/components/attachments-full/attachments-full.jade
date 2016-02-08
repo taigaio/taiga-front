@@ -1,4 +1,7 @@
-section.attachments(tg-attachments-drop="vm.addAttachments(files, false)")
+section.attachments(
+    tg-attachments-drop="vm.addAttachments(files, false)"
+    ng-show="vm.showAttachments()"
+)
     .attachments-header
         h3.attachments-title #[span.attachments-num {{vm.attachments.size}}] #[span.attachments-text(translate="ATTACHMENT.SECTION_NAME")]
         .options

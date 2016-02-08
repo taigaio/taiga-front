@@ -53,6 +53,14 @@ describe "AttachmentsController", ->
 
         $provide.value("tgAttachmentsFullService", mocks.attachmentsFullService)
 
+    _mockProjectService = ->
+        mocks.projectService = {
+            project: sinon.stub()
+            hasPermission: sinon.stub()
+        }
+
+        $provide.value("tgProjectService", mocks.projectService)
+
     _mocks = ->
         module (_$provide_) ->
             $provide = _$provide_
@@ -62,6 +70,7 @@ describe "AttachmentsController", ->
             _mockConfig()
             _mockStorage()
             _mockAttachmetsFullService()
+            _mockProjectService()
 
             return null
 
@@ -213,3 +222,17 @@ describe "AttachmentsController", ->
         ctrl.updateAttachment(file, 5)
 
         expect(mocks.attachmentsFullService.updateAttachment).to.have.been.calledWith(file, 'us')
+
+    it "if attachments editable", () ->
+        mocks.projectService.project = true
+        ctrl = $controller("AttachmentsFull")
+
+        ctrl._isEditable()
+
+        expect(mocks.projectService.hasPermission).has.been.called
+
+    it "if attachments are not editable", () ->
+        mocks.projectService.project = false
+        ctrl = $controller("AttachmentsFull")
+
+        expect(ctrl._isEditable()).to.be.false
