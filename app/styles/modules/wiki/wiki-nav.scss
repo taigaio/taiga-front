@@ -7,21 +7,26 @@
         &:hover {
             .icon {
                 opacity: 1;
-                transition: opacity 1s linear;
+                transition: opacity .2s linear;
+                transition-delay: .2s;
             }
         }
         a {
-            display: block;
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
             padding: 1rem 0 1rem 1rem;
             span {
                 cursor: pointer;
             }
         }
         .icon {
-            color: $blackish;
-            float: right;
+            fill: $gray-light;
             opacity: 0;
-            transition: opacity 1s linear;
+            &:hover {
+                cursor: pointer;
+                fill: $red;
+            }
         }
         input {
             @extend %text;

@@ -43,11 +43,9 @@ div(tg-discover-search)
                                     tg-nav="project:project=project.get('slug')"
                                     title="{{ ::project.get('name') }}"
                                 ) {{project.get('name')}}
-                                span.look-for-people(
-                                    ng-if="project.get('is_looking_for_people')"
-                                    title="{{ ::project.get('looking_for_people_note') }}"
-                                )
-                                    include ../../../svg/recruit.svg
+                                svg.look-for-people.icon.icon-recruit(ng-if="project.get('is_looking_for_people')")
+                                    use(xlink:href="#icon-recruit")
+                                        title="{{ ::project.get('looking_for_people_note') }}"
                             p {{ ::project.get('description') | limitTo:300 }}
                                 span(ng-if="::project.get('description').length > 300") ...
                     .list-itemtype-project-right.project-statistics
@@ -55,19 +53,22 @@ div(tg-discover-search)
                             ng-class="{'active': project.get('is_fan')}"
                             title="{{ 'PROJECT.FANS_COUNTER_TITLE'|translate:{total:project.get('total_fans')||0}:'messageformat' }}"
                         )
-                            include ../../../svg/like.svg
+                            svg.icon.icon-like
+                                use(xlink:href="#icon-like")
                             span {{::project.get('total_fans')}}
                         span.statistic(
                             ng-class="{'active': project.get('is_watcher')}"
                             title="{{ 'PROJECT.WATCHERS_COUNTER_TITLE'|translate:{total:project.get('total_watchers')||0}:'messageformat' }}"
                         )
-                            include ../../../svg/eye.svg
+                            svg.icon.icon-watch
+                                use(xlink:href="#icon-watch")
                             span {{::project.get('total_watchers')}}
                         span.statistic(
                             ng-class="{'active': project.get('i_am_member')}"
                             title="{{ 'PROJECT.MEMBERS_COUNTER_TITLE'|translate:{total:project.get('members').size||0}:'messageformat' }}"
                         )
-                            include ../../../svg/team.svg
+                            svg.icon.icon-team
+                                use(xlink:href="#icon-team")
                             span.statistics-num {{ ::project.get('members').size }}
 
             a.button-green.more-results(

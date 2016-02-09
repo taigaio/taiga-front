@@ -359,7 +359,9 @@ MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm, $compile, $transla
     </div>
     <a class="delete" href=""
        title="{{ 'ADMIN.MEMBERSHIP.DELETE_MEMBER' | translate }}">
-        <span class="icon icon-delete"></span>
+        <svg class="icon icon-trash">
+            <use xlink:href="#icon-trash">
+        </svg>
     </a>
     """
 
@@ -370,7 +372,9 @@ MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm, $compile, $transla
     </a>
     <a class="delete" href=""
        title="{{ 'ADMIN.MEMBERSHIP.DELETE_MEMBER' | translate }}">
-        <span class="icon icon-delete"></span>
+        <svg class="icon icon-trash">
+            <use xlink:href="#icon-trash">
+        </svg>
     </a>
     """
 

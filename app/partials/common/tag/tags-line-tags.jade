@@ -2,6 +2,7 @@
 span(class="tag", style!="border-left: 5px solid <%- tag.color %>;")
     span.tag-name <%- tag.name %>
     <% if (isEditable) { %>
-    a(href="", title="{{ 'COMMON.TAGS.DELETE' | translate }}", class="icon icon-delete")
+    svg.icon.icon-close.remove-tag(title="{{ 'COMMON.TAGS.DELETE' | translate }}")
+        use(xlink:href="#icon-close")
     <% } %>
 <% }); %>

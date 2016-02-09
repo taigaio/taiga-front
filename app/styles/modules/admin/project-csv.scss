@@ -13,8 +13,12 @@
             @extend %small;
             min-width: 110px;
         }
-        .icon {
+        .icon:not(.icon-clipboard) {
+            fill: currentColor;
+            height: .9rem;
             margin-right: .3rem;
+            vertical-align: middle;
+            width: .9rem;
         }
     }
     .field-with-options {

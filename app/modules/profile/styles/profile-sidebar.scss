@@ -6,9 +6,10 @@
         margin-bottom: .5rem;
         padding: .5rem;
         .icon {
-            color: $gray-light;
+            fill: $gray-light;
             margin-right: .3rem;
-            vertical-align: text-bottom;
+            margin-top: -3px;
+            vertical-align: middle;
         }
     }
     p {

@@ -321,7 +321,7 @@ AssignedToDirective = ($rootscope, $confirm, $repo, $loading, $qqueue, $template
             $model.$modelValue.assigned_to = $currentUserService.getUser().get('id')
             save($currentUserService.getUser().get('id'))
 
-        $el.on "click", ".icon-delete", (event) ->
+        $el.on "click", ".remove-user", (event) ->
             event.preventDefault()
             return if not isEditable()
             title = $translate.instant("COMMON.ASSIGNED_TO.CONFIRM_UNASSIGNED")
@@ -498,11 +498,10 @@ EditableSubjectDirective = ($rootscope, $repo, $confirm, $loading, $qqueue, $tem
             else if event.keyCode == 27
                 $scope.$apply () => $model.$modelValue.revert()
 
-                $el.find('div.edit-subject').hide()
-                $el.find('div.view-subject').show()
+                $el.find('.edit-subject').hide()
+                $el.find('.view-subject').show()
 
-        $el.find('div.edit-subject').hide()
-        $el.find('div.view-subject span.edit').hide()
+        $el.find('.edit-subject').hide()
 
         $scope.$watch $attrs.ngModel, (value) ->
             return if not value

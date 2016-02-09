@@ -53,12 +53,21 @@ CreateMembersDirective = ($rs, $rootScope, $confirm, $loading, lightboxService, 
                 <option value="<%- role.id %>"><%- role.name %></option>
                 <% }); %>
             </select>
-            <a class="icon icon-plus add-fieldset" href=""></a>
+            <a class="add-fieldset" href="">
+                <svg class="icon icon-add">
+                    <use xlink:href="#icon-add">
+                </svg>
+            </a>
         </fieldset>
     </div>
     """)
 
     link = ($scope, $el, $attrs) ->
+        createButton = (type) ->
+            html = "<svg class='icon " + type + "'><use xlink:href='#" + type + "'></svg>";
+            console.log html
+            return html
+
         createFieldSet = (required = true)->
             ctx = {roleList: $scope.project.roles, required: required}
             return $compile(template(ctx))($scope)
@@ -88,17 +97,19 @@ CreateMembersDirective = ($rs, $rootScope, $confirm, $loading, lightboxService, 
             fieldSet.remove()
 
             lastActionButton = $el.find(".add-member-wrapper fieldset:last > a")
-            if lastActionButton.hasClass("icon-delete delete-fieldset")
-                lastActionButton.removeClass("icon-delete delete-fieldset")
-                                .addClass("icon-plus add-fieldset")
+            if lastActionButton.hasClass("delete-fieldset")
+                lastActionButton.removeClass("delete-fieldset").addClass("add-fieldset")
+                svg = createButton('icon-add')
+                lastActionButton.html(svg)
 
         $el.on "click", ".add-fieldset", (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
             fieldSet = target.closest('.add-member-wrapper')
 
-            target.removeClass("icon-plus add-fieldset")
-                  .addClass("icon-delete delete-fieldset")
+            target.removeClass("add-fieldset").addClass("delete-fieldset")
+            svg = createButton('icon-trash')
+            target.html(svg)
 
             newFieldSet = createFieldSet(false)
             fieldSet.after(newFieldSet)
@@ -106,8 +117,10 @@ CreateMembersDirective = ($rs, $rootScope, $confirm, $loading, lightboxService, 
             $scope.$digest() # To compile newFieldSet and translate text
 
             if $el.find(".add-member-wrapper").length == MAX_MEMBERSHIP_FIELDSETS
-                $el.find(".add-member-wrapper fieldset:last > a").removeClass("icon-plus add-fieldset")
-                                             .addClass("icon-delete delete-fieldset")
+                $el.find(".add-member-wrapper fieldset:last > a")
+                    .removeClass("add-fieldset").addClass("delete-fieldset")
+                svg = createButton('icon-trash')
+                $el.find(".add-member-wrapper fieldset:last > a").html(svg)
 
         submit = debounce 2000, (event) =>
             event.preventDefault()

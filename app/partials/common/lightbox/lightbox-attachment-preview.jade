@@ -1,6 +1,6 @@
 .attachment-preview
-    a.close(href="", title="{{'COMMON.CLOSE' | translate}}")
-        span.icon.icon-delete
+    svg.close.icon.icon-close(href="", title="{{'COMMON.CLOSE' | translate}}")
+        use(xlink:href="#icon-close")
 
     a(href="{{::file.get('url')}}", title="{{::file.get('description')}}", target="_blank", download="{{::file.get('name')}}")
         img(src="{{::file.get('url')}}")

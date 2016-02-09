@@ -6,13 +6,15 @@ section.history
         <% if (commentsVisible) { %>
         li
             a(href="#", class="active", data-section-class="history-comments")
-                span.icon.icon-comment
+                svg.icon.icon-writer
+                    use(xlink:href="#icon-writer")
                 span.tab-title(translate="COMMENTS.TITLE")
         <% } %>
         <% if (historyVisible) { %>
         li
             a(href="#", data-section-class="history-activity")
-                span.icon.icon-issues
+                svg.icon.icon-timeline
+                    use(xlink:href="#icon-timeline")
                 span.tab-title(translate="ACTIVITY.TITLE")
         <% } %>
     <% } %>

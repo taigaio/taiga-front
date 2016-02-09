@@ -7,7 +7,7 @@
     &:hover {
         .icon {
             color: $primary;
-            transform: rotate(180deg);
+            transform: rotate(90deg);
             transition: all .2s linear;
         }
     }
@@ -40,33 +40,40 @@
 }
 .history-tabs {
     @extend %title;
-    border-bottom: 3px solid $gray-light;
+    border-bottom: 1px solid $whitish;
+    border-top: 1px solid $whitish;
     margin-bottom: 0;
-    padding: .5rem 0;
     li {
         @extend %large;
         display: inline-block;
         &:first-child {
-            border-right: 1px solid $gray-light;
+            border-right: 1px solid $whitish;
         }
         &:last-child {
             border-right: 0;
         }
     }
     a {
+        background: $white;
         color: $gray-light;
-        padding: 0 2rem;
+        display: inline-block;
+        padding: .5rem 2rem;
+        position: relative;
         transition: color .2s ease-in;
         &.active {
-            color: $grayer;
+            color: $primary;
+            top: 1px;
         }
         &:hover {
-            color: $primary;
+            color: $grayer;
             transition: color .2s ease-in;
         }
     }
     .icon {
+        fill: currentColor;
+        height: .75rem;
         margin-right: .5rem;
+        width: .75rem;
     }
 }
 .add-comment {
@@ -110,6 +117,14 @@
     .preview-icon {
         position: absolute;
         right: 1rem;
+        top: .5rem;
+    }
+    .edit {
+        fill: $gray-light;
+        &:hover {
+            cursor: pointer;
+            fill: $primary;
+        }
     }
     .preview-icon {
         opacity: 0;
@@ -252,14 +267,15 @@
         margin-bottom: 0;
     }
     .comment-delete {
-        color: $red;
+        cursor: pointer;
+        fill: $red-light;
         opacity: 0;
         position: absolute;
-        right: 0;
+        right: .5rem;
         top: 2rem;
         transition: all .2s linear;
         &:hover {
-            color: $red-light;
+            fill: $red;
             transition: color .2s linear;
         }
     }

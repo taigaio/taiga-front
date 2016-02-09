@@ -49,6 +49,7 @@
 
 .notification-message-error {
     background: rgba($red, .9);
+    opacity: 1;
     top: 0;
     transform: translateY(-100%);
     width: 100%;
@@ -60,10 +61,10 @@
     &.inactive {
         transition: all .6s ease-in-out;
     }
-    .icon-notification-error {
-        @extend %xxlarge;
-        display: inline;
-        vertical-align: sub;
+    .icon-error {
+        @include svg-size(3rem);
+        fill: $white;
+        margin-right: .5rem;
     }
     .warning {
         @extend %xlarge;
@@ -79,8 +80,9 @@
             margin: 0;
         }
     }
-    .icon-delete {
-        color: $white;
+    .icon-close {
+        cursor: pointer;
+        fill: $white;
         position: absolute;
         right: 1rem;
         top: 1rem;
@@ -131,7 +133,7 @@
     .close {
         margin-right: 1rem;
         width: 2rem;
-        path {
+        svg {
             fill: $white;
         }
     }

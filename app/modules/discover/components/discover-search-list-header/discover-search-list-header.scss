@@ -5,8 +5,9 @@
         justify-content: space-between;
     }
     svg {
-        @include svg-size(1.1rem);
+        @include svg-size(1.2rem);
         fill: $gray-light;
+        margin-right: .25rem;
     }
     .title {
         @extend %bold;
@@ -23,7 +24,13 @@
         margin-right: 1rem;
         &.active {
             color: $primary;
+            svg {
+                fill: $primary;
+            }
         }
+    }
+    svg {
+        @include svg-size(.8rem);
     }
 }
 

@@ -86,11 +86,12 @@
             max-width: 95%;
             overflow: hidden;
             text-overflow: ellipsis;
-            vertical-align: middle;
+            vertical-align: sub;
             white-space: nowrap;
         }
         .icon {
-            margin-right: .3rem;
+            fill: $grayer;
+            margin-right: .5rem;
         }
     }
     .spin {

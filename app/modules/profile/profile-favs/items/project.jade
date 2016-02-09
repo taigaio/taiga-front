@@ -34,14 +34,14 @@
             ng-class="{'active': vm.item.get('is_fan')}"
             title="{{ 'PROJECT.LIKE_BUTTON.COUNTER_TITLE'|translate:{total:vm.item.get(\"total_fans\")||0}:'messageformat' }}"
          )
-            span.icon
-                include ../../../../svg/like.svg
+            svg.icon.icon-like
+                use(xlink:href="#icon-like")
             span {{ ::vm.item.get('total_fans') }}
 
         span.list-itemtype-track-watchers(
             ng-class="{'active': vm.item.get('is_watcher')}"
             title="{{ 'PROJECT.WATCH_BUTTON.COUNTER_TITLE'|translate:{total:vm.item.get(\"total_watchers\")||0}:'messageformat' }}"
         )
-            span.icon
-                include ../../../../svg/watch.svg
+            svg.icon.icon-watch
+                use(xlink:href="#icon-watch")
             span {{ ::vm.item.get('total_watchers') }}

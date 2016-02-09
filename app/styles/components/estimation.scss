@@ -13,7 +13,6 @@
         min-height: 2rem;
         padding: .5rem 1rem;
         position: relative;
-        transition: color .3s linear;
         &.clickable {
             &:hover,
             &.active {
@@ -22,7 +21,8 @@
                 .points,
                 .role,
                 .icon-arrow-bottom {
-                    color: $whitish;
+                    color: currentColor;
+                    fill: currentColor;
                 }
             }
         }
@@ -34,13 +34,15 @@
             .role,
             .icon-arrow-bottom {
                 @extend %text;
-                color: $whitish;
+                color: currentColor;
+                fill: currentColor;
             }
         }
-        .icon-arrow-bottom {
-            color: $gray-light;
+        .icon-arrow-down {
+            fill: currentColor;
+            height: .6rem;
             margin-left: .25rem;
-            vertical-align: middle;
+            width: .6rem;
         }
         .points {
             @extend %light;

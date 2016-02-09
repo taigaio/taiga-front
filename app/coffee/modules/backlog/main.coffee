@@ -563,7 +563,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
         currentLoading = @loading()
             .target(target)
-            .removeClasses("icon-edit")
+            .removeClasses("edit-story")
             .timeout(200)
             .start()
 

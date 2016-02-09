@@ -10,11 +10,13 @@
     }
     .total {
         @extend %large;
+        align-items: center;
         background-color: $whitish;
         color: $grayer;
+        display: flex;
         padding: .3rem 1rem;
         &:hover {
-            .edit-value {
+            .icon-edit {
                 opacity: 1;
                 transition: opacity .3s linear;
             }

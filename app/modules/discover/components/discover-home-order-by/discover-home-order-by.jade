@@ -3,7 +3,8 @@
         href="#"
         ng-click="vm.open()"
     ) {{vm.currentText()}}
-        span.icon-arrow-bottom
+        svg.icon.icon-arrow-down
+            use(xlink:href="#icon-arrow-down")
 
     ul.filter-list(ng-if="vm.is_open")
         li(ng-click="vm.orderBy('week')") {{ 'DISCOVER.FILTERS.WEEK' | translate }}

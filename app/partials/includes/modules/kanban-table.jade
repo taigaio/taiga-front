@@ -7,37 +7,67 @@ div.kanban-table(tg-kanban-squish-column)
                                tg-class-permission="{'readonly': '!modify_task'}")
                 span(tg-bo-bind="s.name")
                 div.options
-                    a.icon.icon-vfold.hfold(href="", ng-click='foldStatus(s)',
-                                            title="{{'KANBAN.TITLE_ACTION_FOLD' | translate}}",
-                                            ng-class='{hidden:folds[s.id]}')
-                    a.icon.icon-vunfold.hunfold(href="", ng-click='foldStatus(s)',
-                                                title="{{'KANBAN.TITLE_ACTION_UNFOLD' | translate}}",
-                                                 ng-class='{hidden:!folds[s.id]}')
+                    a.option(
+                        href=""
+                        ng-click='foldStatus(s)'
+                        title="{{'KANBAN.TITLE_ACTION_FOLD' | translate}}"
+                        ng-class='{hidden:folds[s.id]}'
+                    )
+                        svg.icon.icon-fold-column
+                            use(xlink:href="#icon-fold-column")
+                    a.option.hunfold(
+                        href=""
+                        ng-click='foldStatus(s)'
+                        title="{{'KANBAN.TITLE_ACTION_UNFOLD' | translate}}"
+                        ng-class='{hidden:!folds[s.id]}'
+                    )
+                        svg.icon.icon-unfold-column
+                            use(xlink:href="#icon-unfold-column")
+                    a.option(
+                        href=""
+                        title="{{'KANBAN.TITLE_ACTION_FOLD_CARDS' | translate}}"
+                        ng-class="{hidden:statusViewModes[s.id] == 'minimized'}"
+                        ng-click="ctrl.updateStatusViewMode(s.id, 'minimized')"
+                    )
+                        svg.icon.icon-fold-row
+                            use(xlink:href="#icon-fold-row")
+                    a.option(
+                        href=""
+                        title="{{'KANBAN.TITLE_ACTION_UNFOLD_CARDS' | translate}}"
+                        ng-class="{hidden:statusViewModes[s.id] == 'maximized'}"
+                        ng-click="ctrl.updateStatusViewMode(s.id, 'maximized')"
+                    )
+                        svg.icon.icon-unfold-row
+                            use(xlink:href="#icon-unfold-row")
 
-                    a.icon.icon-vfold(href="", title="{{'KANBAN.TITLE_ACTION_FOLD_CARDS' | translate}}",
-                                         ng-class="{hidden:statusViewModes[s.id] == 'minimized'}",
-                                         ng-click="ctrl.updateStatusViewMode(s.id, 'minimized')")
-                    a.icon.icon-vunfold(href="", title="{{'KANBAN.TITLE_ACTION_UNFOLD_CARDS' | translate}}",
-                                         ng-class="{hidden:statusViewModes[s.id] == 'maximized'}",
-                                         ng-click="ctrl.updateStatusViewMode(s.id, 'maximized')")
+                    a.option(
+                        href=""
+                        title="{{'KANBAN.TITLE_ACTION_ADD_US' | translate}}"
+                         ng-click="ctrl.addNewUs('standard', s.id)"
+                         tg-check-permission="add_us"
+                         ng-hide="s.is_archived"
+                    )
+                        svg.icon.icon-add
+                            use(xlink:href="#icon-add")
 
-                    a.icon.icon-plus(href="", title="{{'KANBAN.TITLE_ACTION_ADD_US' | translate}}",
-                                     ng-click="ctrl.addNewUs('standard', s.id)",
-                                     tg-check-permission="add_us",
-                                     ng-hide="s.is_archived")
+                    a.option(
+                        href=""
+                        title="{{'KANBAN.TITLE_ACTION_ADD_BULK' | translate}}"
+                        ng-click="ctrl.addNewUs('bulk', s.id)"
+                        tg-check-permission="add_us"
+                        ng-hide="s.is_archived"
+                    )
+                        svg.icon.icon-bulk
+                            use(xlink:href="#icon-bulk")
 
-                    a.icon.icon-bulk(href="", title="{{'KANBAN.TITLE_ACTION_ADD_BULK' | translate}}",
-                                     ng-click="ctrl.addNewUs('bulk', s.id)",
-                                     tg-check-permission="add_us",
-                                     ng-hide="s.is_archived")
-
-                    a(
+                    a.option(
                         href=""
                         ng-attr-title="{{title}}"
                         ng-class="class"
                         ng-if="s.is_archived"
                         tg-kanban-archived-status-header="s")
-                        include ../../../svg/eye.svg
+                        svg.icon.icon-watch
+                            use(xlink:href="#icon-watch")
 
     div.kanban-table-body
         div.kanban-table-inner

@@ -2,5 +2,6 @@
 a.single-filter.selected(data-type!="<%- f.type %>", data-id!="<%- f.id %>")
     span.name(style!="<%- f.style %>")
         | <%- f.name %>
-    span.icon.icon-delete
+    svg.icon.icon-close.remove-filter
+        use(xlink:href="#icon-close")
 <% }) %>

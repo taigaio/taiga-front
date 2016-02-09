@@ -105,10 +105,9 @@ div.wrapper(
                 fieldset.looking-for-people
                     .looking-for-people-selector
                         span {{ 'ADMIN.PROJECT_PROFILE.RECRUITING' | translate }}
-                        span(
-                            title="{{ 'ADMIN.PROJECT_PROFILE.RECRUITING_MESSAGE' | translate }}"
-                        )
-                            include ../../svg/recruit.svg
+                        svg.icon.icon-recruit
+                            use(xlink:href="#icon-recruit")
+                                title {{ 'ADMIN.PROJECT_PROFILE.RECRUITING_MESSAGE' | translate }}"
                         div.check
                             input(
                                 type="checkbox",
@@ -138,8 +137,6 @@ div.wrapper(
                                 ng-value="false"
                             )
                             label.trans-button(for="private-project") {{ 'ADMIN.PROJECT_PROFILE.PUBLIC_PROJECT' | translate }}
-                                span(title="{{ 'ADMIN.PROJECT_PROFILE.PUBLIC_PROJECT_DESC' | translate }}")
-                                    include ../../svg/help.svg
 
                         div.privacy-option
                             input.privacy-project(
@@ -150,15 +147,14 @@ div.wrapper(
                                 ng-value="true"
                             )
                             label.trans-button(for="public-project") {{'ADMIN.PROJECT_PROFILE.PRIVATE_PROJECT' | translate }}
-                                span(title="{{ 'ADMIN.PROJECT_PROFILE.PRIVATE_PROJECT_DESC' | translate }}")
-                                    include ../../svg/help.svg
 
                     a.private-or-public(
                         href="https://taiga.io/support/whats-the-difference-between-public-and-private-projects/"
                         target="_blank"
                     )
-                        span(title="{{ 'ADMIN.PROJECT_PROFILE.PRIVATE_OR_PUBLIC' | translate }}")
-                            include ../../svg/help.svg
+                        svg.icon.icon-question
+                            use(xlink:href="#icon-question")
+                                title {{ 'ADMIN.PROJECT_PROFILE.PRIVATE_OR_PUBLIC' | translate }}
                         span {{'ADMIN.PROJECT_PROFILE.PRIVATE_OR_PUBLIC' | translate }}
                 button.button-green.submit-button(
                     type="submit"

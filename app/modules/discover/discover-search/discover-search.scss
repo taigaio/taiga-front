@@ -4,7 +4,6 @@
             margin: 0 8rem;
             position: relative;
         }
-
         .search-button {
             left: 1rem;
             right: auto;
@@ -73,19 +72,17 @@
         vertical-align: middle;
     }
     .look-for-people {
+        fill: $gray-light;
         margin-left: .5rem;
-        svg {
-            @include svg-size(1rem);
-            fill: $gray-light;
-        }
     }
     .project-statistics {
         display: flex;
         flex-basis: 300px;
         justify-content: flex-end;
         svg {
-            @include svg-size(.8rem);
+            @include svg-size(.7rem);
             fill: $gray-light;
+            margin-right: .2rem;
         }
         .svg-eye-closed {
             display: none;

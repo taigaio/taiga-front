@@ -6,16 +6,26 @@ form
         div.template-wrapper
             div.template-inner
                 fieldset(ng-repeat="template in templates")
-                    input(type="radio", name="template", id="template-{{ template.id }}",
-                          ng-value='template.id', ng-model="data.creation_template",
-                          data-required="true")
+                    input(
+                        type="radio"
+                        name="template"
+                        id="template-{{ template.id }}"
+                        ng-value='template.id'
+                        ng-model="data.creation_template"
+                        data-required="true"
+                    )
                     label.backlog(for="template-{{ template.id }}")
-                        span.icon( ng-class="'icon-'+template.slug")
+                        svg.icon(ng-class="'icon-'+template.slug")
+                            use(xlink:href="{{'#icon-' + template.slug }}")
                         h2 {{ template.name }}
                     p {{ template.description }}
 
         fieldset
-            a.button-next.button-green(href="#", title="{{'PAGINATION.NEXT' | translate}}", translate="PAGINATION.NEXT")
+            a.button-next.button-green(
+                href="#"
+                title="{{'PAGINATION.NEXT' | translate}}"
+                translate="PAGINATION.NEXT"
+            )
 
     section.wizard-step.create-step2.active(data-step="step2")
         div.title
@@ -24,15 +34,35 @@ form
         div.template-wrapper
             div.template-inner
                 fieldset
-                    input(type="text", name="name", ng-model="data.name", data-required="true", placeholder="{{'COMMON.FIELDS.NAME' | translate}}", maxlength="45")
+                    input(
+                        type="text"
+                        name="name"
+                        ng-model="data.name"
+                        data-required="true"
+                        placeholder="{{'COMMON.FIELDS.NAME' | translate}}"
+                        maxlength="45"
+                    )
                 fieldset
-                    textarea(name="description", ng-model="data.description", data-required="true",  ng-attr-placeholder="{{'COMMON.FIELDS.DESCRIPTION' | translate}}")
+                    textarea(
+                        name="description"
+                        ng-model="data.description"
+                        data-required="true"
+                        ng-attr-placeholder="{{'COMMON.FIELDS.DESCRIPTION' | translate}}"
+                    )
                 fieldset.wizard-action
                     div
-                        a.button-prev.button.button-gray(href="#", title="{{'PAGINATION.PREVIOUS' | translate}}", translate="PAGINATION.PREVIOUS")
-                        button.button-green.submit-button(type="submit", title="{{'COMMON.CREATE' | translate}}", translate="COMMON.CREATE")
+                        a.button-prev.button.button-gray(
+                            href="#"
+                            title="{{'PAGINATION.PREVIOUS' | translate}}"
+                            translate="PAGINATION.PREVIOUS"
+                        )
+                        button.button-green.submit-button(
+                            type="submit"
+                            title="{{'COMMON.CREATE' | translate}}"
+                            translate="COMMON.CREATE"
+                        )
 
-                    button(type="submit", class="hidden")
+                    button.hidden(type="submit")
 
 div.progress-bar
     div.progress-state
@@ -43,4 +73,5 @@ div.progress-bar
         div.bar
 
 a.close(href="#" title="{{'COMMON.CLOSE' | translate}}")
-    span.icon.icon-delete
+    svg.icon.icon-delete
+        use(xlink:href="#icon-delete")

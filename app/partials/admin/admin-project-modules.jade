@@ -15,7 +15,8 @@ div.wrapper(tg-project-modules, ng-controller="ProjectProfileController as ctrl"
 
         form
             div.functionality(ng-class="{true:'active', false:''}[project.is_backlog_activated]")
-                div.icon.icon-scrum
+                svg.icon.icon-scrum
+                    use(xlink:href="#icon-scrum")
                 div.desc
                     p
                         span.title(translate="ADMIN.MODULES.BACKLOG")
@@ -29,7 +30,8 @@ div.wrapper(tg-project-modules, ng-controller="ProjectProfileController as ctrl"
                             span(ng-switch-when="false", translate="ADMIN.MODULES.ENABLE")
 
             div.functionality(ng-class="{true:'active', false:''}[project.is_kanban_activated]")
-                div.icon.icon-kanban
+                svg.icon.icon-kanban
+                    use(xlink:href="#icon-kanban")
                 div.desc
                     p
                         span.title(translate="ADMIN.MODULES.KANBAN")
@@ -43,7 +45,8 @@ div.wrapper(tg-project-modules, ng-controller="ProjectProfileController as ctrl"
                             span(ng-switch-when="false", translate="ADMIN.MODULES.ENABLE")
 
             div.functionality(ng-class="{true:'active', false:''}[project.is_issues_activated]")
-                div.icon.icon-issues
+                svg.icon.icon-issues
+                    use(xlink:href="#icon-issues")
                 div.desc
                     p
                         span.title(translate="ADMIN.MODULES.ISSUES")
@@ -57,7 +60,8 @@ div.wrapper(tg-project-modules, ng-controller="ProjectProfileController as ctrl"
                             span(ng-switch-when="false", translate="ADMIN.MODULES.ENABLE")
 
             div.functionality(ng-class="{true:'active', false:''}[project.is_wiki_activated]")
-                div.icon.icon-wiki
+                svg.icon.icon-wiki
+                    use(xlink:href="#icon-wiki")
                 div.desc
                     p
                         span.title(translate="ADMIN.MODULES.WIKI")
@@ -71,7 +75,8 @@ div.wrapper(tg-project-modules, ng-controller="ProjectProfileController as ctrl"
                             span(ng-switch-when="false", translate="ADMIN.MODULES.ENABLE")
 
             div.functionality(ng-class="{true:'active', false:''}[isVideoconferenceActivated]")
-                div.icon.icon-video
+                svg.icon.icon-bubble-empty
+                    use(xlink:href="#icon-bubble-empty")
                 div.desc
                     p
                         span.title(translate="ADMIN.MODULES.MEETUP")

@@ -6,7 +6,8 @@ div.backlog-table-header
         div.status(translate="COMMON.FIELDS.STATUS")
         div.points(tg-us-role-points-selector, title="{{'BACKLOG.TABLE.TITLE_COLUMN_POINTS' | translate}}")
             span.header-points(translate="COMMON.FIELDS.POINTS")
-            span.icon.icon-arrow-bottom
+            svg.icon.icon-arrow-down
+                use(xlink:href="#icon-arrow-down")
 
 div.backlog-table-body(tg-backlog-sortable, ng-class="{'show-tags': ctrl.showTags, 'active-filters': ctrl.activeFilters}" )
     include ../components/backlog-row

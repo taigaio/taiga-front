@@ -31,12 +31,29 @@ div.wrapper.roles(ng-controller="WebhooksController as ctrl",
                             div.webhook-url
                                 div.webhook-url-inputs
                                     fieldset
-                                        input(type="text", name="url", data-type="url", placeholder="{{'ADMIN.WEBHOOKS.TYPE_PAYLOAD_URL' | translate}}", data-required="true", ng-model="webhook.url")
+                                        input(
+                                            type="text"
+                                            name="url"
+                                            data-type="url"
+                                            placeholder="{{'ADMIN.WEBHOOKS.TYPE_PAYLOAD_URL' | translate}}"
+                                            data-required="true"
+                                            ng-model="webhook.url"
+                                        )
                                     fieldset
-                                        input(type="text", name="key", placeholder="{{'ADMIN.WEBHOOKS.TYPE_SERVICE_SECRET' | translate}}", data-required="true", ng-model="webhook.key")
+                                        input(
+                                            type="text"
+                                            name="key"
+                                            placeholder="{{'ADMIN.WEBHOOKS.TYPE_SERVICE_SECRET' | translate}}"
+                                            data-required="true"
+                                            ng-model="webhook.key"
+                                        )
                             div.webhook-options
-                                a.edit-existing.icon.icon-floppy(href="", title="{{'ADMIN.WEBHOOKS.SAVE' | translate}}")
-                                a.cancel-existing.icon.icon-delete(href="", title="{{'ADMIN.WEBHOOKS.CANCEL' | translate}}")
+                                a.edit-existing(href="", title="{{'ADMIN.WEBHOOKS.SAVE' | translate}}")
+                                    svg.icon.icon-save
+                                        use(xlink:href="#icon-save")
+                                a.cancel-existing(href="", title="{{'ADMIN.WEBHOOKS.CANCEL' | translate}}")
+                                    svg.icon.icon-close
+                                        use(xlink:href="#icon-close")
 
                     div.visualization-mode
                         div.row
@@ -48,9 +65,15 @@ div.wrapper.roles(ng-controller="WebhooksController as ctrl",
 
                             div.webhook-options
                                 div.webhook-options-wrapper
-                                    a.test-webhook.icon.icon-check-square(href="", title="{{'ADMIN.WEBHOOKS.TEST' | translate}}")
-                                    a.edit-webhook.icon.icon-edit(href="", title="{{'ADMIN.WEBHOOKS.EDIT' | translate}}")
-                                    a.delete-webhook.icon.icon-delete(href="", title="{{'ADMIN.WEBHOOKS.DELETE' | translate}}")
+                                    a.test-webhook(href="", title="{{'ADMIN.WEBHOOKS.TEST' | translate}}")
+                                        svg.icon.icon-check-empty
+                                            use(xlink:href="#icon-check-empty")
+                                    a.edit-webhook(href="", title="{{'ADMIN.WEBHOOKS.EDIT' | translate}}")
+                                        svg.icon.icon-edit
+                                            use(xlink:href="#icon-edit")
+                                    a.delete-webhook(href="", title="{{'ADMIN.WEBHOOKS.DELETE' | translate}}")
+                                        svg.icon.icon-trash
+                                            use(xlink:href="#icon-trash")
 
                         div.webhooks-history(ng-show="webhook.logs")
                             div.history-single-wrapper(ng-repeat="log in webhook.logs")
@@ -58,13 +81,15 @@ div.wrapper.roles(ng-controller="WebhooksController as ctrl",
                                     div
                                         span.history-response-icon(ng-class="log.validStatus ? 'history-success' : 'history-error'", title="{{log.status}}")
                                         span.history-date(ng-bind="log.prettyDate")
-                                    span.toggle-log.icon.icon-arrow-bottom
+                                    svg.toggle-log.icon.icon-arrow-down
+                                        use(xlink:href="#icon-arrow-down")
 
                                 div.history-single-response
                                     div.history-single-request-header
                                         span(translate="ADMIN.WEBHOOKS.REQUEST")
                                         a.resend-request(href="", title="{{'ADMIN.WEBHOOKS.RESEND_REQUEST' | translate}}", data-log="{{log.id}}")
-                                            span.icon.icon-reload
+                                            svg.icon.icon-reload
+                                                use(xlink:href="#icon-reload")
                                             span(translate="ADMIN.WEBHOOKS.RESEND_REQUEST")
                                     div.history-single-request-body
                                         div.response-container
@@ -91,9 +116,14 @@ div.wrapper.roles(ng-controller="WebhooksController as ctrl",
                             fieldset
                                 input(type="text", name="key", placeholder="{{'ADMIN.WEBHOOKS.TYPE_SERVICE_SECRET' | translate}}", data-required="true", ng-model="newValue.key")
                     div.webhook-options
-                        a.add-new.icon.icon-floppy(href="", title="{{'ADMIN.WEBHOOKS.SAVE' | translate}}")
-                        a.cancel-new.icon.icon-delete(href="", title="{{'ADMIN.WEBHOOKS.CANCEL' | translate}}")
+                        a.add-new(href="", title="{{'ADMIN.WEBHOOKS.SAVE' | translate}}")
+                            svg.icon.icon-save
+                                use(xlink:href="#icon-save")
+                        a.cancel-new(href="", title="{{'ADMIN.WEBHOOKS.CANCEL' | translate}}")
+                            svg.icon.icon-close
+                                use(xlink:href="#icon-close")
 
         a.help-button(href="https://taiga.io/support/webhooks/", target="_blank")
-            span.icon.icon-help
+            svg.icon.icon-question
+                use(xlink:href="#icon-question")
             span(translate="ADMIN.HELP")

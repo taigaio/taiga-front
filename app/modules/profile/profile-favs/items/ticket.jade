@@ -67,14 +67,14 @@ div.list-itemtype-ticket
             ng-class="{'active': vm.item.get('is_voter')}",
             title="{{ 'COMMON.VOTE_BUTTON.COUNTER_TITLE'|translate:{total:vm.item.get(\"total_voters\")||0}:'messageformat' }}"
         )
-            span.icon
-                include ../../../../svg/upvote.svg
+            svg.icon.icon-upvote
+                use(xlink:href="#icon-upvote")
             span {{ ::vm.item.get('total_voters') }}
 
         span.list-itemtype-track-watchers(
             ng-class="{'active': vm.item.get('is_watcher')}"
             title="{{ 'COMMON.WATCH_BUTTON.COUNTER_TITLE'|translate:{total:vm.item.get(\"total_watchers\")||0}:'messageformat' }}"
         )
-            span.icon
-                include ../../../../svg/watch.svg
+            svg.icon.icon-watch
+                use(xlink:href="#icon-watch")
             span {{ ::vm.item.get('total_watchers') }}

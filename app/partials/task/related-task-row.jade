@@ -1,23 +1,25 @@
 .tasks
     .task-name
-        .icon.icon-iocaine
         a.clickable(
             tg-nav="project-tasks-detail:project=project.slug,ref=task.ref"
             title!="#<%- task.ref %> <%- task.subject %>")
+            svg.icon.icon-iocaine
+                use(xlink:href="#icon-iocaine")
             span #<%- task.ref %>
             span <%- task.subject %>
         .task-settings
             <% if(perms.modify_task) { %>
-            a.icon.icon-edit(
+            svg.icon.icon-edit.edit-task(
                 href=""
                 title="{{'COMMON.EDIT' | translate}}"
             )
+                use(xlink:href="#icon-edit")
             <% } %>
             <% if(perms.delete_task) { %>
-            a.icon.icon-delete.delete-task(
-                href=""
+            svg.icon.icon-trash.delete-task(
                 title="{{'COMMON.DELETE' | translate}}"
             )
+                use(xlink:href="#icon-trash")
             <% } %>
 
 .status(
@@ -30,7 +32,8 @@
     )
         span.task-status-bind
         <% if(perms.modify_task) { %>
-        span.icon.icon-arrow-bottom
+        svg.icon.icon-arrow-down
+            use(xlink:href="#icon-arrow-down")
         <% } %>
 
 .assigned-to(
@@ -42,5 +45,6 @@
     )
         figure.avatar
         <% if(perms.modify_task) { %>
-        span.icon.icon-arrow-bottom
+        svg.icon.icon-arrow-down
+            use(xlink:href="#icon-arrow-down")
         <% } %>

@@ -1,5 +1,6 @@
 div.single-attachment
     blockquote
         a(ng-href="{{ attachment.get('url') }}", title="Click to download {{ attachment.get('filename') }}", target="_blank")
-            span.icon.icon-document
+            svg.icon.icon-attachment
+                use(xlink:href="#icon-attachment")
             span {{attachment.get('filename')}}

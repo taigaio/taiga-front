@@ -117,15 +117,15 @@ CustomAttributesValuesDirective = ($templates, $storage) ->
             $ctrl.initialize($attrs.type, value.id)
             $ctrl.loadCustomAttributesValues()
 
-        $el.on "click", ".custom-fields-header a", ->
+        $el.on "click", ".custom-fields-header .icon", ->
             hash = collapsedHash($attrs.type)
             collapsed = not($storage.get(hash) or false)
             $storage.set(hash, collapsed)
             if collapsed
-                $el.find(".custom-fields-header a").removeClass("open")
+                $el.find(".custom-fields-header .icon").removeClass("open")
                 $el.find(".custom-fields-body").removeClass("open")
             else
-                $el.find(".custom-fields-header a").addClass("open")
+                $el.find(".custom-fields-header .icon").addClass("open")
                 $el.find(".custom-fields-body").addClass("open")
 
         $scope.$on "$destroy", ->
@@ -235,7 +235,7 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile, $translate,
             render(attributeValue, true)
             setFocusAndSelectOnInputField()
 
-        $el.on "click", "a.icon-edit", (event) ->
+        $el.on "click", ".js-edit-description", (event) ->
             event.preventDefault()
             render(attributeValue, true)
             setFocusAndSelectOnInputField()
@@ -249,7 +249,7 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile, $translate,
 
         $el.on "submit", "form", submit
 
-        $el.on "click", "a.icon-floppy", submit
+        $el.on "click", ".js-save-description", submit
 
         $scope.$on "$destroy", ->
             $el.off()

@@ -2,8 +2,7 @@ mixin counter
     span.track-button-counter(
         title="{{ 'COMMON.WATCH_BUTTON.COUNTER_TITLE'|translate:{total:vm.item.watchers.length||0}:'messageformat' }}",
         tg-loading="vm.loading"
-    )
-        | {{ vm.item.watchers.length }}
+    ) {{ vm.item.watchers.length }}
 
 
 //- Registered user button
@@ -17,8 +16,8 @@ a.track-button.watch-button.watch-container(
     ng-mouseleave="vm.showTextWhenMouseIsLeave()"
 )
     span.track-inner
-        span.track-icon
-            include ../../../svg/watch.svg
+        svg.icon.icon-watch
+            use(xlink:href="#icon-watch")
         span(
             ng-if="!vm.item.is_watcher",
             translate="COMMON.WATCH_BUTTON.WATCH"
@@ -39,6 +38,7 @@ span.track-button.watch-button.watch-container(
 )
     span.track-inner
         span.track-icon
-            include ../../../svg/watch.svg
+            svg.icon.icon-watch
+                use(xlink:href="#icon-watch")
         span(translate="COMMON.WATCH_BUTTON.WATCHERS")
     +counter

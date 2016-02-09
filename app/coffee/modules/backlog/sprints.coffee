@@ -40,7 +40,7 @@ BacklogSprintDirective = ($repo, $rootscope) ->
 
     toggleSprint = ($el) =>
         sprintTable = $el.find(".sprint-table")
-        sprintArrow = $el.find(".icon-arrow-up")
+        sprintArrow = $el.find(".compact-sprint")
 
         sprintArrow.toggleClass('active')
         sprintTable.toggleClass('open')
@@ -55,7 +55,7 @@ BacklogSprintDirective = ($repo, $rootscope) ->
                 toggleSprint($el)
 
         # Event Handlers
-        $el.on "click", ".sprint-name > .icon-arrow-up", (event) ->
+        $el.on "click", ".sprint-name > .compact-sprint", (event) ->
             event.preventDefault()
 
             toggleSprint($el)

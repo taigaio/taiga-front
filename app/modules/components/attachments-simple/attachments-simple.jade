@@ -5,7 +5,8 @@ section.attachments(tg-attachments-drop="vm.addAttachments(files)")
         h3.attachments-title #[span.attachments-num {{vm.attachments.size}}] #[span.attachments-text(translate="ATTACHMENT.SECTION_NAME")]
         .add-attach(title!="{{'ATTACHMENT.ADD' | translate}}")
             label.add-attachment-button(for="add-attach")
-                include ../../../svg/add.svg
+                svg.icon.icon-add
+                    use(xlink:href="#icon-add")
             input(
                 id="add-attach"
                 type="file"
@@ -18,8 +19,8 @@ section.attachments(tg-attachments-drop="vm.addAttachments(files)")
     .attachment-body.attachment-list
         .single-attachment(tg-repeat="attachment in vm.attachments track by $index")
             .attachment-name
-                span.icon
-                    include ../../../svg/attachment.svg
+                svg.icon.icon-attachment
+                    use(xlink:href="#icon-attachment")
                 span {{attachment.get('name')}}
             .attachment-size
                 span {{attachment.get('size') | sizeFormat}}
@@ -30,4 +31,5 @@ section.attachments(tg-attachments-drop="vm.addAttachments(files)")
                     title="{{'COMMON.DELETE' | translate}}"
                     ng-click="vm.deleteAttachment(attachment)"
                 )
-                    include ../../../svg/remove.svg
+                    svg.icon.icon-trash
+                        use(xlink:href="#icon-trash")

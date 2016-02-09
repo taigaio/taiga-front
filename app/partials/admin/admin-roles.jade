@@ -18,25 +18,27 @@ div.wrapper.roles(ng-controller="RolesController as ctrl",
                     span(translate="COMMON.DELETE")
 
 
-        div(ng-if="!role.external_user")
-            div(tg-edit-role)
-                .edit-role
-                    input(type="text", value="{{ role.name }}")
-                    a.save.icon-floppy(href="", title="{{'COMMON.SAVE' | translate}}")
+        tg-edit-role(ng-if="!role.external_user")
+            .edit-role
+                input(type="text", value="{{ role.name }}")
+                a.save(href="", title="{{'COMMON.SAVE' | translate}}")
+                    svg.icon.icon-save
+                        use(xlink:href="#icon-save")
+            p.total
+                span.role-name(title="{{'ADMIN.ROLES.COUNT_MEMBERS' | translate}}") {{ role.name }}
+                a.edit-value
+                    svg.icon.icon-edit
+                        use(xlink:href="#icon-edit")
 
-                p.total
-                    span.role-name(title="{{'ADMIN.ROLES.COUNT_MEMBERS' | translate}}") {{ role.name }}
-                    a.edit-value.icon.icon-edit
+        div.any-computable-role(ng-hide="anyComputableRole", translate="ADMIN.ROLES.WARNING_NO_ROLE")
 
-            div.any-computable-role(ng-hide="anyComputableRole", translate="ADMIN.ROLES.WARNING_NO_ROLE")
-
-            div.general-category
-                span(translate="ADMIN.ROLES.HELP_ROLE_ENABLED")
-                div.check
-                    input(type="checkbox", ng-model="role.computable", ng-change="ctrl.toggleComputable()")
-                    div
-                    span.check-text.check-yes(translate="COMMON.YES")
-                    span.check-text.check-no(translate="COMMON.NO")
+        div.general-category
+            span(translate="ADMIN.ROLES.HELP_ROLE_ENABLED")
+            div.check
+                input(type="checkbox", ng-model="role.computable", ng-change="ctrl.toggleComputable()")
+                div
+                span.check-text.check-yes(translate="COMMON.YES")
+                span.check-text.check-no(translate="COMMON.NO")
 
         div(ng-if="role.external_user")
             p.total

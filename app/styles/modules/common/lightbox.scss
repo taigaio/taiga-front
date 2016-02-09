@@ -159,9 +159,6 @@
                 margin-left: .5rem;
             }
         }
-        .icon-delete {
-            @extend %large;
-        }
     }
     .extra-text {
         margin-top: 1rem;
@@ -173,13 +170,18 @@
         width: 80%;
     }
     .icon {
-        @extend %large;
+        fill: $gray;
         margin-left: .5rem;
+        transition: fill .2s;
     }
-    .icon-delete {
-        @extend %xlarge;
+    .icon-add {
         &:hover {
-            color: $red;
+            fill: $primary-light;
+        }
+    }
+    .icon-trash {
+        &:hover {
+            fill: $red;
         }
     }
     .button {
@@ -234,17 +236,18 @@
     }
     .delete-sprint {
         @extend %small;
-        color: $grayer;
-        display: block;
-        margin-top: 1rem;
-        text-align: right;
-        a {
-            color: $gray-light;
-            margin-left: .5rem;
+        color: $gray;
+        float: right;
+        margin: 1rem .25rem 0 0;
+        transition: color .3s linear;
+        .icon {
+            fill: currentColor;
+        }
+        &:hover {
+            color: $red;
             transition: color .3s linear;
-            &:hover {
-                color: $red;
-                transition: color .3s linear;
+            .icon {
+                fill: currentColor;
             }
         }
     }

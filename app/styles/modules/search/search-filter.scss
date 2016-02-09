@@ -11,11 +11,11 @@
         padding: 1rem 1.25rem;
         &:hover {
             transition: color .3s linear;
-            .icon {
-                margin-right: .4rem;
-            }
             .name {
                 padding-left: 5px;
+            }
+            .icon {
+                fill: currentColor;
             }
         }
         &.active {
@@ -25,11 +25,12 @@
             position: relative;
             top: 1px;
             .icon {
-                color: $primary-light;
+                fill: $primary-light;
             }
         }
     }
     .icon {
+        fill: currentColor;
         margin-right: .4rem;
     }
     .name {

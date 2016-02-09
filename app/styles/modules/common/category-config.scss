@@ -9,6 +9,15 @@
         display: flex;
         padding: 1rem;
         position: relative;
+        &.open-drawer {
+            .icon {
+                transform: rotate(90deg);
+            }
+        }
+    }
+    .icon {
+        transform: rotate(0);
+        transition: all .4s;
     }
     .resume-title {
         width: 280px;
@@ -34,11 +43,6 @@
                 background: $gray;
             }
         }
-    }
-    .icon {
-        @extend %xlarge;
-        flex: 1;
-        text-align: right;
     }
     .category-items {
         @include slide(400px, hidden);

@@ -2,10 +2,12 @@ include wysiwyg.jade
 
 .view-description
     section.us-content.wysiwyg(tg-bind-html="item.description_html || noDescriptionMsg")
-    span.edit.icon.icon-edit
+    svg.icon.icon-edit.edit
+        use(xlink:href="#icon-edit")
 
 .edit-description
     textarea(ng-attr-placeholder="{{'COMMON.DESCRIPTION.EMPTY' | translate}}", ng-model="item.description", tg-markitup="tg-markitup")
     +wysihelp
     span.save-container
-        a.save.icon.icon-floppy(href="", title="{{'COMMON.SAVE' | translate}}")
+        svg.save.icon.icon-save(title="{{'COMMON.SAVE' | translate}}")
+            use(xlink:href="#icon-save")

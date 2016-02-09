@@ -1,5 +1,6 @@
 .preview
     .actions
-        a(href="#" title="{{'COMMON.WYSIWYG.EDIT_BUTTON' | translate}}" class="icon icon-edit edit")
+        svg.edit.icon.icon-edit(title="{{'COMMON.WYSIWYG.EDIT_BUTTON' | translate}}")
+            use(xlink:href="#icon-edit")
         .content.wysiwyg
             | <%= data %>

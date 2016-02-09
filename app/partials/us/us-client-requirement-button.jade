@@ -3,7 +3,8 @@ label.button-gray.client-requirement(
     class!="<% if(canEdit){ %>is-editable<% }; %> <% if(isRequired){ %>active<% }; %>"
     title="{{ 'COMMON.CLIENT_REQUIREMENT' | translate }}"
 )
-        include ../../svg/client-requirement.svg
+    svg.icon.icon-client-requirement
+        use(xlink:href="#icon-client-requirement")
 input(
     type="checkbox"
     id="client-requirement"

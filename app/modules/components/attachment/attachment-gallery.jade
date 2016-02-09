@@ -30,8 +30,9 @@
             span {{::vm.attachment.getIn(['file', 'name'])}}
 
         a.icon-delete(
-            ng-if="vm.attachment.get('editable')"
             href=""
             title="{{'COMMON.DELETE' | translate}}"
             ng-click="vm.delete()"
         )
+            svg.icon.icon-trash
+                use(xlink:href="#icon-trash")

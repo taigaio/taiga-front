@@ -1,7 +1,9 @@
 .view-subject
     | {{ item.subject }}
-    a.edit.icon.icon-edit(href="" title="{{'COMMON.EDIT' | translate}}")
+    svg.edit.icon.icon-edit(href="" title="{{'COMMON.EDIT' | translate}}")
+        use(xlink:href="#icon-edit")
 .edit-subject
     input(type="text", ng-model="item.subject", data-required="true", data-maxlength="500", ng-model-options="{ debounce: 200 }")
     span.save-container
-        a.save.icon.icon-floppy(href="", title="{{'COMMON.SAVE' | translate}}")
+        svg.save.icon.icon-save(href="", title="{{'COMMON.SAVE' | translate}}")
+            use(xlink:href="#icon-save")

@@ -23,7 +23,8 @@ div.wrapper.roles(tg-gitlab-webhooks, ng-controller="GitlabController as ctrl",
                         .field-with-option
                             input(type="text", ng-model="gitlab.webhooks_url", name="payload-url", readonly="readonly", placeholder="{{'ADMIN.THIRD_PARTIES.PAYLOAD_URL' | translate}}", id="payload-url")
                             .option-wrapper.select-input-content
-                                .icon.icon-copy
+                                svg.icon.icon-clipboard
+                                    use(xlink:href="#icon-clipboard")
                         .help-copy(translate="COMMON.COPY_TO_CLIPBOARD")
 
             fieldset
@@ -33,5 +34,6 @@ div.wrapper.roles(tg-gitlab-webhooks, ng-controller="GitlabController as ctrl",
             button.button-green.submit-button(type="submit", title="{{'COMMON.SAVE' | translate}}", translate="COMMON.SAVE")
 
         a.help-button(href="https://taiga.io/support/gitlab-integration/", target="_blank")
-            span.icon.icon-help
+            svg.icon.icon-question
+                use(xlink:href="#icon-question")
             span(translate="ADMIN.HELP")

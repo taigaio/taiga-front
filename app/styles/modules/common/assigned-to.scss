@@ -7,11 +7,9 @@
     padding: 1rem 0;
     position: relative;
     &:hover {
-        .assigned-to {
-            .icon-delete {
-                opacity: 1;
-                transition: opacity .3s linear;
-            }
+        .remove-user {
+            opacity: 1;
+            transition: opacity .3s linear;
         }
     }
     .loading-spinner {
@@ -60,15 +58,33 @@
         .assigned-to-options {
             display: inline-block;
         }
-        .icon-delete {
-            color: $gray-light;
-            opacity: 0;
-            position: absolute;
-            right: 0;
-            top: 2rem;
+        .user-assigned,
+        .assign-to-me {
+            color: $primary;
+            cursor: default;
             &:hover {
-                color: $red;
+                cursor: pointer;
             }
+            .icon {
+                fill: currentColor;
+                height: .75rem;
+                width: .75rem;
+            }
+            span {
+                @include ellipsis(80%);
+            }
+        }
+    }
+    .remove-user {
+        fill: $gray;
+        opacity: 0;
+        position: absolute;
+        right: .5rem;
+        top: 2rem;
+        &:hover {
+            cursor: pointer;
+            fill: $red;
+            transition: fill .2s;
         }
     }
     .user-assigned,

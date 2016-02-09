@@ -12,7 +12,6 @@
 %light {font-family: 'OpenSans-Light', Arial, Helvetica, sans-serif; }
 %text {font-family: 'OpenSans-Regular', Arial, Helvetica, sans-serif; }
 %bold {font-family: 'OpenSans-Semibold', Arial, Helvetica, sans-serif; }
-%taiga {font-family: 'taiga'; }
 %mono {font-family: 'courier new', 'monospace';}
 
 %lightbox {
@@ -25,14 +24,17 @@
     top: 0;
     z-index: 99910;
     .close {
-        @extend %xlarge;
-        color: $gray;
+        cursor: pointer;
+        fill: $gray;
         position: absolute;
-        right: 2rem;
-        top: 1rem;
-        transition: color .2s;
+        right: 3rem;
+        top: 3rem;
+        transition: fill .2s;
         &:hover {
-            color: $primary;
+            fill: $red-light;
+        }
+        svg {
+            @include svg-size(2rem);
         }
     }
     &.open {

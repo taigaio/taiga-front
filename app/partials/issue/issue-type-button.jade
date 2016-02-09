@@ -2,7 +2,8 @@ div(class!="type-data <% if(editable){ %>clickable<% }%>")
     span(class="level", style!="background-color:<%- type.color %>")
     span(class="type-type") <%- type.name %>
     <% if(editable){ %>
-    span(class="icon icon-arrow-bottom")
+    svg.icon.icon-arrow-down
+        use(xlink:href="#icon-arrow-down")
     <% }%>
     span(class="level-name", translate="COMMON.FIELDS.TYPE")
 

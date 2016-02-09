@@ -7,8 +7,11 @@
         padding: 1rem;
         &:hover,
         &.active {
-            color: $grayer;
+            color: $gray;
             transition: color .2s linear;
+            .icon {
+                fill: $primary-light;
+            }
         }
         &.active {
             background: $white;
@@ -19,11 +22,13 @@
             transition: color .2s linear;
             .icon {
                 color: $primary;
-                transition: color .2s linear;
             }
         }
     }
     .icon {
-        margin-right: .4rem;
+        fill: $gray-light;
+        height: .8rem;
+        margin-right: .5rem;
+        transition: fill .2s linear;
     }
 }

@@ -1,6 +1,14 @@
-a.icon.icon-plus(tg-check-permission="add_task",
-                 href="", title="{{'TASKBOARD.TITLE_ACTION_ADD' | translate}}",
-                 ng-click="ctrl.addNewTask('standard', us)")
-a.icon.icon-bulk(tg-check-permission="add_task",
-                 href="", title="{{'TASKBOARD.TITLE_ACTION_ADD_BULK' | translate}}",
-                 ng-click="ctrl.addNewTask('bulk', us)")
+svg.icon.icon-add(
+    tg-check-permission="add_task"
+    href=""
+    title="{{'TASKBOARD.TITLE_ACTION_ADD' | translate}}"
+    ng-click="ctrl.addNewTask('standard', us)"
+)
+    use(xlink:href="#icon-add")
+svg.icon.icon-bulk(
+    tg-check-permission="add_task"
+    href=""
+    title="{{'TASKBOARD.TITLE_ACTION_ADD_BULK' | translate}}"
+    ng-click="ctrl.addNewTask('bulk', us)"
+)
+    use(xlink:href="#icon-bulk")

@@ -4,13 +4,23 @@
         @extend %light;
         color: $grayer;
     }
-    .edit-value {
-        @extend %medium;
-        color: $gray-light;
+    .icon {
+        &:hover {
+            fill: $primary;
+            transition: fill .2s linear;
+        }
+    }
+    .icon-edit {
         cursor: pointer;
+        fill: $gray-light;
         margin-left: .5rem;
         opacity: 0;
-        transition: opacity .3s linear;
+        transition: opacity .2s linear;
+    }
+    .icon-save {
+        fill: $gray-light;
+        margin-left: .5rem;
+        transition: fill .2s linear;
     }
     .edit-role {
         background-color: $whitish;
@@ -20,15 +30,6 @@
         input {
             background-color: $white;
             width: 50%;
-        }
-        .icon-floppy {
-            color: $gray-light;
-            margin-left: .5rem;
-            transition: color.3s linear;
-            &:hover {
-                color: $primary;
-                transition: color.3s linear;
-            }
         }
     }
     .any-computable-role {

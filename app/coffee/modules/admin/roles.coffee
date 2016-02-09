@@ -193,7 +193,7 @@ EditRoleDirective = ($repo, $confirm) ->
 
             toggleView()
 
-        $el.on "click", "a.icon-edit", ->
+        $el.on "click", ".edit-value", ->
             toggleView()
             $el.find("input").focus()
             $el.find("input").val($scope.role.name)
@@ -292,7 +292,9 @@ RolePermissionsDirective = ($rootscope, $repo, $confirm, $compile) ->
                  title="{{ '<%- permission.name %>' | translate }}"></div>
         <% }) %>
     </div>
-    <div class="icon icon-arrow-bottom"></div>
+    <svg class="icon icon-arrow-right">
+        <use xlink:href="#icon-arrow-right">
+    </svg>
     """)
 
     categoryTemplate = _.template("""
@@ -431,6 +433,7 @@ RolePermissionsDirective = ($rootscope, $repo, $confirm, $compile) ->
             $el.on "click", ".resume", (event) ->
                 event.preventDefault()
                 target = angular.element(event.currentTarget)
+                target.toggleClass("open-drawer")
                 target.next().toggleClass("open")
 
             $el.on "change", ".category-item input", (event) ->

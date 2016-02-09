@@ -9,11 +9,11 @@
         position: relative;
     }
     .icon {
-        @extend %large;
-        color: $gray-light;
+        cursor: pointer;
+        fill: $gray-light;
         opacity: 0;
         &:hover {
-            color: $grayer;
+            fill: $grayer;
             transition: all .2s ease-in;
         }
     }
@@ -61,16 +61,10 @@
 }
 
 .project-values-settings {
-    a {
-        @extend %large;
-        color: $gray;
+    svg {
         margin-right: .5rem;
-        &:hover {
-            color: $primary;
-            transition: color .3s linear;
-            .icon-delete {
-                color: $red;
-            }
+        &.icon-trash {
+            fill: $red-light;
         }
     }
 }

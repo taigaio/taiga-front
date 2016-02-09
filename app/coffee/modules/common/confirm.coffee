@@ -59,12 +59,12 @@ class ConfirmService extends taiga.Service
         el = angular.element(lightboxSelector)
 
         # Render content
-        el.find("h2.title").text(title)
-        el.find("span.subtitle").text(subtitle)
-        el.find("span.message").text(message)
+        el.find(".title").text(title)
+        el.find(".subtitle").text(subtitle)
+        el.find(".message").text(message)
 
         # Assign event handlers
-        el.on "click.confirm-dialog", "a.button-green", debounce 2000, (event) =>
+        el.on "click.confirm-dialog", ".button-green", debounce 2000, (event) =>
             event.preventDefault()
             target = angular.element(event.currentTarget)
             currentLoading = @loading()
@@ -77,7 +77,7 @@ class ConfirmService extends taiga.Service
                         @.hide(el)
             }
 
-        el.on "click.confirm-dialog", "a.button-red", (event) =>
+        el.on "click.confirm-dialog", ".button-red", (event) =>
             event.preventDefault()
             defered.reject()
             @.hide(el)
@@ -129,7 +129,7 @@ class ConfirmService extends taiga.Service
                         @.hide(el)
             }
 
-        el.on "click.confirm-dialog", "a.button-red", (event) =>
+        el.on "click.confirm-dialog", ".button-red", (event) =>
             event.preventDefault()
             defered.reject()
             @.hide(el)
@@ -144,15 +144,15 @@ class ConfirmService extends taiga.Service
         el = angular.element(".lightbox-generic-error")
 
         # Render content
-        el.find("h2.title").html(message)
+        el.find(".title").html(message)
 
         # Assign event handlers
-        el.on "click.confirm-dialog", "a.button-green", (event) =>
+        el.on "click.confirm-dialog", ".button-green", (event) =>
             event.preventDefault()
             defered.resolve()
             @.hide(el)
 
-        el.on "click.confirm-dialog", "a.close", (event) =>
+        el.on "click.confirm-dialog", ".close", (event) =>
             event.preventDefault()
             defered.resolve()
             @.hide(el)
@@ -167,16 +167,16 @@ class ConfirmService extends taiga.Service
         el = angular.element(".lightbox-generic-success")
 
         # Render content
-        el.find("h2.title").html(title) if title
-        el.find("p.message").html(message) if message
+        el.find(".title").html(title) if title
+        el.find(".message").html(message) if message
 
         # Assign event handlers
-        el.on "click.confirm-dialog", "a.button-green", (event) =>
+        el.on "click.confirm-dialog", ".button-green", (event) =>
             event.preventDefault()
             defered.resolve()
             @.hide(el)
 
-        el.on "click.confirm-dialog", "a.close", (event) =>
+        el.on "click.confirm-dialog", ".close", (event) =>
             event.preventDefault()
             defered.resolve()
             @.hide(el)
@@ -189,15 +189,15 @@ class ConfirmService extends taiga.Service
         el = angular.element(".lightbox-generic-loading")
 
         # Render content
-        el.find("h2.title").html(title) if title
-        el.find("p.message").html(message) if message
+        el.find(".title").html(title) if title
+        el.find(".message").html(message) if message
 
         return {
             start: => @lightboxService.open(el)
             stop: => @lightboxService.close(el)
             update: (status, title, message, percent) =>
-                el.find("h2.title").html(title) if title
-                el.find("p.message").html(message) if message
+                el.find(".title").html(title) if title
+                el.find(".message").html(message) if message
 
                 if percent
                     el.find(".spin").addClass("hidden")
@@ -251,7 +251,7 @@ class ConfirmService extends taiga.Service
 
             delete @.tsem
 
-        el.on "click", ".icon-delete, .close", (event) =>
+        el.on "click", ".icon-close, .close", (event) =>
             body.find(selector)
                 .removeClass('active')
                 .addClass('inactive')

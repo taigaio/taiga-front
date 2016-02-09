@@ -1,11 +1,18 @@
 div.taskboard-tagline(tg-colorize-tags="task.tags", tg-colorize-tags-type="taskboard")
 div.taskboard-task-inner
     div.taskboard-user-avatar(tg-taskboard-user-avatar, users="usersById", task="task", project="project", ng-class="{iocaine: task.is_iocaine}")
-    span.icon.icon-iocaine(ng-if="task.is_iocaine", title="{{'COMMON.IOCAINE_TEXT' | translate}}")
+    svg.icon.icon-iocaine(
+        ng-if="task.is_iocaine"
+        title="{{'COMMON.IOCAINE_TEXT' | translate}}"
+    )
+        use(xlink:href="#icon-iocaine")
     p.taskboard-text
         a.task-assigned(href="", title="{{'TASKBOARD.TITLE_ACTION_ASSIGN' | translate}}")
         span.task-num(tg-bo-ref="task.ref")
         a.task-name(href="", title="#{{ ::task.ref }} {{ ::task.subject }}", ng-bind="task.subject",
                     tg-nav="project-tasks-detail:project=project.slug,ref=task.ref")
-    a.icon.icon-edit(tg-check-permission="modify_task",
-        href="", title="{{'TASKBOARD.TITLE_ACTION_EDIT' | translate}}")
+    svg.icon.icon-edit(
+        tg-check-permission="modify_task"
+        title="{{'TASKBOARD.TITLE_ACTION_EDIT' | translate}}"
+    )
+        use(xlink:href="#icon-edit")

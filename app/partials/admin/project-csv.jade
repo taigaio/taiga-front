@@ -10,11 +10,14 @@ section.project-csv(tg-select-input-text)
             input(type="text", placeholder="{{'ADMIN.CSV.URL_FIELD_PLACEHOLDER' | translate}}",
                   readonly, ng-model="csvUrl")
             div.option-wrapper.select-input-content
-                div.icon.icon-copy
+                svg.icon.icon-clipboard
+                    use(xlink:href="#icon-clipboard")
 
         a(href="", title="{{'ADMIN.CSV.TITLE_REGENERATE_URL' | translate}}", ng-click="ctrl.regenerateUuid()")
-           span.icon.icon-plus(ng-hide="csvUrl")
+           svg.icon.icon-add(ng-hide="csvUrl")
+               use(xlink:href="#icon-add")
            span(ng-hide="csvUrl", translate="ADMIN.CSV.ACTION_GENERATE_URL")
 
-           span.icon.icon-reload(ng-Show="csvUrl")
+           svg.icon.icon-reload(ng-Show="csvUrl")
+               use(xlink:href="#icon-reload")
            span(ng-Show="csvUrl", translate="ADMIN.CSV.ACTION_REGENERATE")

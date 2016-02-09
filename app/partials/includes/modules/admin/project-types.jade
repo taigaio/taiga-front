@@ -16,7 +16,8 @@ section.colors-table
             div(ng-repeat="value in values", tg-bind-scope)
                 form(tg-bind-scope)
                     div.row.table-main.visualization
-                        span.icon.icon-drag-v
+                        svg.icon.icon-drag
+                            use(xlink:href="#icon-drag")
 
                         div.color-column
                             div.current-color(ng-style="{background: value.color}")
@@ -25,32 +26,56 @@ section.colors-table
                             span {{ value.name }}
 
                         div.options-column
-                            a.edit-value.icon.icon-edit(href="", title="{{'ADMIN.COMMON.TITLE_ACTION_EDIT_VALUE' | translate}}")
-                            a.delete-value.icon.icon-delete(href="", title="{{'ADMIN.COMMON.TITLE_ACTION_DELETE_VALUE' | translate}}")
+                            svg.edit-value.icon.icon-edit(title="{{'ADMIN.COMMON.TITLE_ACTION_EDIT_VALUE' | translate}}")
+                                use(xlink:href="#icon-edit")
+                            svg.delete-value.icon.icon-trash(title="{{'ADMIN.COMMON.TITLE_ACTION_DELETE_VALUE' | translate}}")
+                                use(xlink:href="#icon-trash")
 
                     div.row.table-main.edition.hidden
-                        div.color-column(tg-color-selection, ng-model="value")
+                        div.color-column(
+                            tg-color-selection
+                            ng-model="value"
+                        )
                             div.current-color(ng-style="{background: value.color}")
                             include ../../components/select-color
 
                         div.status-name
-                            input(name="name", type="text", placeholder="{{'ADMIN.TYPES.PLACEHOLDER_WRITE_NAME' | translate}}",
-                                  ng-model="value.name", data-required="true", data-maxlength="255")
+                            input(
+                                name="name"
+                                type="text"
+                                placeholder="{{'ADMIN.TYPES.PLACEHOLDER_WRITE_NAME' | translate}}",
+                                ng-model="value.name"
+                                data-required="true"
+                                data-maxlength="255"
+                            )
 
                         div.options-column
-                            a.save.icon.icon-floppy(href="", title="{{'COMMON.SAVE' | translate}}")
-                            a.cancel.icon.icon-delete(href="", title="{{'COMMON.CANCEL' | translate}}")
+                            svg.save.icon.icon-save(title="{{'COMMON.SAVE' | translate}}")
+                                use(xlink:href="#icon-save")
+                            svg.cancel.icon.icon-trash(title="{{'COMMON.CANCEL' | translate}}")
+                                use(xlink:href="#icon-trash")
 
         form
             div.row.table-main.new-value.hidden
-                div.color-column(tg-color-selection, ng-model="newValue")
+                div.color-column(
+                    tg-color-selection
+                    ng-model="newValue"
+                )
                     div.current-color(ng-style="{background: newValue.color}")
                     include ../../components/select-color
 
                 div.status-name
-                    input(name="name", type="text", placeholder="{{'ADMIN.TYPES.PLACEHOLDER_WRITE_NAME' | translate}}",
-                          ng-model="newValue.name", data-required="true", data-maxlength="255")
+                    input(
+                        name="name"
+                        type="text"
+                        placeholder="{{'ADMIN.TYPES.PLACEHOLDER_WRITE_NAME' | translate}}",
+                        ng-model="newValue.name"
+                        data-required="true"
+                        data-maxlength="255"
+                    )
 
                 div.options-column
-                    a.add-new.icon.icon-floppy(href="", title="{{'COMMON.ADD' | translate}}")
-                    a.delete-new.icon.icon-delete(href="", title="{{'COMMON.CANCEL' | translate}}")
+                    svg.add-new.icon.icon-save(title="{{'COMMON.ADD' | translate}}")
+                        use(xlink:href="#icon-save")
+                    svg.delete-new.icon.icon-trash(title="{{'COMMON.CANCEL' | translate}}")
+                        use(xlink:href="#icon-trash")
