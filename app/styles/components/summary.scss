@@ -175,9 +175,9 @@ $summary-background: $grayer;
     padding: 2rem 6rem;
     svg {
         @include svg-size(4rem);
+        fill: $primary-dark;
         flex-basis: 4rem;
         flex-shrink: 0;
-        fill: $primary-dark;
         margin-right: 2rem;
     }
     p {
