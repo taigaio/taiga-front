@@ -112,6 +112,7 @@ urls = {
     "user-settings-user-change-password": "/user-settings/user-change-password"
     "user-settings-user-avatar": "/user-settings/user-avatar"
     "user-settings-mail-notifications": "/user-settings/mail-notifications"
+    "user-settings-contrib": "/user-settings/contrib/:plugin"
 
 }
 

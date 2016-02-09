@@ -335,6 +335,10 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     $routeProvider.when("/cancel-account/:cancel_token",
         {templateUrl: "user/cancel-account.html"})
 
+    # UserSettings - Contrib Plugins
+    $routeProvider.when("/user-settings/contrib/:plugin",
+        {templateUrl: "contrib/user-settings.html"})
+
     # User profile
     $routeProvider.when("/profile",
         {
@@ -594,6 +598,7 @@ init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $na
     # Taiga Plugins
     $rootscope.contribPlugins = @.taigaContribPlugins
     $rootscope.adminPlugins = _.filter(@.taigaContribPlugins, {"type": "admin"})
+    $rootscope.userSettingsPlugins = _.filter(@.taigaContribPlugins, {"type": "userSettings"})
 
     $rootscope.$on "$translateChangeEnd", (e, ctx) ->
         lang = ctx.language
