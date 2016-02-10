@@ -1480,5 +1480,26 @@
             "ACTION_TITLE": "Search",
             "RESULTS": "Search results"
         }
+    },
+    "SUBSCRIPTIONS": {
+        "PLAN": "Plan",
+        "PLAN_STARTING": "Active Plans starting April 30, 2016",
+        "YOUR_PLAN": "Your plan",
+        "YOUR_RECOMMENDED_PLAN": "Your recommended plan",
+        "WANT_PLAN": "I want it!",
+        "UPDATE_PLAN": "Update Plan",
+        "PRIVATE_PROJECTS_LIMIT": "Up to {{limit}} private projects + Unlimited public projects",
+        "MEMBERS_LIMIT": "Up to {{limit}} members per private project",
+        "FREQUENCY_MONTH": "month",
+        "FREQUENCY_YEAR": "year",
+        "HELP": {
+            "WHY": "Why do we recommend this plan?",
+            "NO_PROJECTS": "Currently you have no private projects, so the plan that fits for you is the {{vm.myRecommendedPlan.name}} plan.",
+            "UPGRADE": "You can upgade your plan if you need it.",
+            "ACTIVATION": "On 30th April we will activate the paid plans. If you have more than 1 provate project you could keep its privacity making the payment for the plan that better fits for you.",
+            "PUBLIC": "We love to share, so if you keep your projects public, it will be completely free.",
+            "MORE_INFO_TITLE": "Frequently Asked Questions",
+            "MORE_INFO": "More info (FAQ)"
+        }
     }
 }

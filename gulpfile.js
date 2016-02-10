@@ -480,7 +480,7 @@ gulp.task("copy-theme-fonts", function() {
 });
 
 gulp.task("copy-images", function() {
-    return gulp.src(paths.app + "/images/**/*")
+    return gulp.src([paths.app + "/images/**/*", paths.app + '/modules/compile-modules/**/images/*'])
         .pipe(gulpif(isDeploy, imagemin({progressive: true})))
         .pipe(gulp.dest(paths.distVersion + "/images/"));
 });
