@@ -12,8 +12,8 @@
     .sprint-date {{::estimatedDateRange}}
     ul
         li
-            span.number {{::closedPoints | number:2 | number}}
+            span.number {{::closedPoints | number}}
             span.description(translate="BACKLOG.CLOSED_POINTS")
         li
-            span.number {{::totalPoints | number:2 | number}}
+            span.number {{::totalPoints | number}}
             span.description(translate="BACKLOG.TOTAL_POINTS")
