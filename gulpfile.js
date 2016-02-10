@@ -112,6 +112,8 @@ paths.coffee = [
 ];
 
 paths.coffee_order = [
+    paths.app + "modules/compile-modules/**/*.module.coffee",
+    paths.app + "modules/compile-modules/**/*.coffee",
     paths.app + "coffee/app.coffee",
     paths.app + "coffee/*.coffee",
     paths.app + "coffee/modules/controllerMixins.coffee",
