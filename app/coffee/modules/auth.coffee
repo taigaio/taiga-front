@@ -214,7 +214,6 @@ PublicRegisterMessageDirective = ($config, $navUrls, $routeParams, templates) ->
         url = $navUrls.resolve("register")
         if $routeParams['next'] and $routeParams['next'] != $navUrls.resolve("register")
             nextUrl = encodeURIComponent($routeParams['next'])
-            console.log "-----", nextUrl
             url += "?next=#{nextUrl}"
 
         return template({url:url})

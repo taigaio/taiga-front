@@ -50,7 +50,6 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootscope, $loading, lightboxSer
             return $q.all(promises)
 
         deleteAttachments = (obj) ->
-            console.log attachmentsToDelete.toJS()
             promises = _.map attachmentsToDelete.toJS(), (attachment) ->
                 return attachmentsService.delete("task", attachment.id)
 

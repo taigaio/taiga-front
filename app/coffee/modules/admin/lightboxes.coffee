@@ -65,7 +65,6 @@ CreateMembersDirective = ($rs, $rootScope, $confirm, $loading, lightboxService, 
     link = ($scope, $el, $attrs) ->
         createButton = (type) ->
             html = "<svg class='icon " + type + "'><use xlink:href='#" + type + "'></svg>";
-            console.log html
             return html
 
         createFieldSet = (required = true)->

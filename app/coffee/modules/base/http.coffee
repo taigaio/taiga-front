@@ -49,8 +49,6 @@ class HttpService extends taiga.Service
     request: (options) ->
         options.headers = _.assign({}, options.headers or {}, @.headers())
 
-        console.log options
-
         return @http(options)
 
     get: (url, params, options) ->
