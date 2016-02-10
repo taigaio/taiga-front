@@ -543,7 +543,7 @@
             "COUNT_MEMBERS": "{{ role.members_count }} members with this role",
             "TITLE_DELETE_ROLE": "Delete Role",
             "REPLACEMENT_ROLE": "All the users with this role will be moved to",
-            "WARNING_DELETE_ROLE": "<strong>Be careful, all role estimations will be removed</strong>",
+            "WARNING_DELETE_ROLE": "Be careful, all role estimations will be removed",
             "ERROR_DELETE_ALL": "You can't delete all values",
             "EXTERNAL_USER": "External user"
         },

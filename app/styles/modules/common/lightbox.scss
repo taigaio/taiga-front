@@ -319,6 +319,9 @@
             }
         }
     }
+    .warning {
+        @extend %bold;
+    }
 }
 
 .lightbox-delete-account {
