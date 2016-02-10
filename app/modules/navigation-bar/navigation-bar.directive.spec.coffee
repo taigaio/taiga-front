@@ -49,6 +49,13 @@ describe "navigationBarDirective", () ->
 
         provide.value "$tgLocation", mocks.locationService
 
+    _mocksConfig = () ->
+        mocks.config =  Immutable.fromJS({
+            publicRegisterEnabled: true
+        })
+
+        provide.value "$tgConfig", mocks.config
+
     _mockTgNavUrls = () ->
         mocks.navUrls = {
             resolve: sinon.stub()
@@ -76,6 +83,8 @@ describe "navigationBarDirective", () ->
             _mockTranslateFilter()
             _mockTgDropdownProjectListDirective()
             _mockTgDropdownUserDirective()
+            _mocksConfig()
+
             return null
 
     beforeEach ->
@@ -120,6 +129,7 @@ describe "navigationBarDirective", () ->
         expect(mocks.locationService.search.callCount).to.be.equal(1)
         expect(mocks.locationService.url.calledWith("/login")).to.be.true
         expect(mocks.locationService.search.calledWith({next: encodeURIComponent(nextUrl)})).to.be.true
+        expect(vm.publicRegisterEnabled).to.be.true
 
     it "navigation bar register", () ->
         mocks.navUrls.resolve.withArgs("register").returns("/register")
@@ -135,3 +145,4 @@ describe "navigationBarDirective", () ->
         expect(mocks.locationService.search.callCount).to.be.equal(1)
         expect(mocks.locationService.url.calledWith("/register")).to.be.true
         expect(mocks.locationService.search.calledWith({next: encodeURIComponent(nextUrl)})).to.be.true
+        expect(vm.publicRegisterEnabled).to.be.true
