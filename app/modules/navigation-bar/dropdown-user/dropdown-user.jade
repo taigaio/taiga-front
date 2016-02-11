@@ -22,6 +22,15 @@ div.navbar-dropdown.dropdown-user
                 tg-nav="user-settings-user-profile",
                 title="{{'PROJECT.NAVIGATION.EDIT_PROFILE_TITLE' | translate}}",
                 translate="PROJECT.NAVIGATION.EDIT_PROFILE")
+
+        li(ng-repeat="plugin in vm.userSettingsPlugins")
+            a(
+                href=""
+                tg-nav="user-settings-contrib:plugin=plugin.slug"
+                ng-class="{active: plugin.slug == currentPlugin.slug}"
+            )
+                span.title {{ plugin.name }}
+
         li
             a(
                 href="#",
