@@ -14,12 +14,9 @@
             transition: color .3s linear, opacity .3s linear;
         }
     }
-    &.ui-sortable-helper {
+    &.gu-mirror {
         box-shadow: 1px 1px 15px rgba($black, .4);
         transition: box-shadow .3s linear;
-    }
-    &.ui-sortable-placeholder {
-        background: $grayer;
     }
     .blocked {
         background: $red;

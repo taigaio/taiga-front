@@ -158,7 +158,7 @@
             text-align: left;
             width: 100%;
             &:hover {
-                background: lighten($gray-light, 12%);
+                background: rgba($gray-light, .2);
                 cursor: move;
                 transition: background .2s ease-in;
             }
@@ -168,10 +168,6 @@
             &.readonly {
                 cursor: auto;
             }
-            &.sortable-placeholder {
-                background: lighten($gray-light, 12%);
-                height: 40px;
-            }
             &.ui-sortable-helper {
                 background: lighten($primary, 60%);
                 box-shadow: 1px 1px 10px rgba($black, .1);
@@ -179,6 +175,13 @@
                 transition: background .2s ease-in;
             }
 
+        }
+        .gu-transit {
+            background: lighten($gray-light, 12%);
+            height: 40px;
+            * {
+                display: none;
+            }
         }
         .column-us {
             @extend %small;
@@ -204,6 +207,11 @@
             }
             &.blocked {
                 color: $red;
+            }
+        }
+        &.sprint-empty-wrapper { // hide dragging items
+            .row {
+                display: none;
             }
         }
     }

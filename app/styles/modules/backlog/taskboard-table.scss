@@ -25,9 +25,6 @@ $column-margin: 0 10px 0 0;
         .icon {
             display: none;
         }
-        &.ui-sortable-helper {
-            box-shadow: none;
-        }
     }
     &.task-column,
     .task-column {
@@ -53,6 +50,12 @@ $column-margin: 0 10px 0 0;
     .taskboard-task {
         &.readonly {
             cursor: auto;
+        }
+        &.gu-mirror {
+            opacity: 1;
+            .avatar-task-link {
+                display: none;
+            }
         }
     }
 }

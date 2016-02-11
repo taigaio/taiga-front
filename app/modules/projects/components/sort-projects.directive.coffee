@@ -21,17 +21,15 @@ SortProjectsDirective = (currentUserService) ->
     link = (scope, el, attrs, ctrl) ->
         itemEl = null
 
-        el.sortable({
-            dropOnEmpty: true
-            revert: 200
-            axis: "y"
-            opacity: .95
-            placeholder: 'placeholder'
-            cancel: '.project-name'
+        drake = dragula([el[0]], {
+            copySortSource: false,
+            copy: false,
+            mirrorContainer: el[0],
+            moves: (item) -> return $(item).hasClass('list-itemtype-project')
         })
 
-        el.on "sortstop", (event, ui) ->
-            itemEl = ui.item
+        drake.on 'dragend', (item) ->
+            itemEl = $(item)
             project = itemEl.scope().project
             index = itemEl.index()
 
@@ -45,6 +43,18 @@ SortProjectsDirective = (currentUserService) ->
                 sortData.push({"project_id": value, "order":index})
 
             currentUserService.bulkUpdateProjectsOrder(sortData)
+
+        scroll = autoScroll(window, {
+            margin: 20,
+            pixels: 30,
+            scrollWhenOutside: true,
+            autoScroll: () ->
+                return this.down && drake.dragging;
+        })
+
+        scope.$on "$destroy", ->
+            el.off()
+            drake.destroy()
 
     directive = {
         scope: {

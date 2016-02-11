@@ -309,8 +309,6 @@ module.directive("tgTaskboard", ["$rootScope", TaskboardDirective])
 
 TaskboardTaskDirective = ($rootscope, $loading, $rs, $rs2) ->
     link = ($scope, $el, $attrs, $model) ->
-        $el.disableSelection()
-
         $scope.$watch "task", (task) ->
             if task.is_blocked and not $el.hasClass("blocked")
                 $el.addClass("blocked")

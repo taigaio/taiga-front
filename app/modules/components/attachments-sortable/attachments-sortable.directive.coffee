@@ -21,25 +21,34 @@ AttachmentSortableDirective = ($parse) ->
     link = (scope, el, attrs) ->
         callback = $parse(attrs.tgAttachmentsSortable)
 
-        el.sortable({
-            items: "div[tg-bind-scope]"
-            handle: ".settings .icon"
-            containment: ".attachments"
-            dropOnEmpty: true
-            helper: 'clone'
-            scroll: false
-            tolerance: "pointer"
-            placeholder: "sortable-placeholder single-attachment"
+        drake = dragula([el[0]], {
+            copySortSource: false,
+            copy: false,
+            mirrorContainer: el[0],
+            moves: (item) -> return $(item).is('div[tg-bind-scope]')
         })
 
-        el.on "sortstop", (event, ui) ->
-            attachment = ui.item.scope().attachment
-            newIndex = ui.item.index()
+        drake.on 'dragend', (item) ->
+            item = $(item)
+
+            attachment = item.scope().attachment
+            newIndex = item.index()
 
             scope.$apply () ->
                 callback(scope, {attachment: attachment, index: newIndex})
 
-        scope.$on "$destroy", -> el.off()
+        scroll = autoScroll(window, {
+            margin: 20,
+            pixels: 30,
+            scrollWhenOutside: true,
+            autoScroll: () ->
+                return this.down && drake.dragging;
+        })
+
+
+        scope.$on "$destroy", ->
+            el.off()
+            drake.destroy()
 
     return {
         link: link

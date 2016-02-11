@@ -165,7 +165,7 @@
         &:last-child {
             border-bottom: 0;
         }
-        &.ui-sortable-helper {
+        &.gu-mirror {
             background: lighten($primary, 60%);
             box-shadow: 1px 1px 10px rgba($black, .1);
             opacity: .9;
@@ -183,10 +183,13 @@
             width: .7rem;
         }
     }
-    .sortable-placeholder {
+    .gu-transit {
         background: $whitish;
         height: 40px;
         width: 100%;
+        * {
+            display: none;
+        }
     }
     .row-selected,
     .is-checked {
@@ -301,6 +304,9 @@
     @extend %light;
     padding: 2rem;
     text-align: center;
+    .row {
+        display: none;
+    }
     img {
         margin-bottom: 1rem;
     }

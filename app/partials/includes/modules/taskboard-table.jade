@@ -1,4 +1,4 @@
-div.taskboard-table(tg-taskboard-squish-column)
+div.taskboard-table(tg-taskboard-squish-column, tg-taskboard-sortable)
     div.taskboard-table-header
         div.taskboard-table-inner
             h2.task-colum-name(translate="TASKBOARD.TABLE.COLUMN")
@@ -49,7 +49,7 @@ div.taskboard-table(tg-taskboard-squish-column)
                         span(translate="TASKBOARD.TABLE.FIELD_POINTS")
                     include ../components/addnewtask
 
-                div.taskboard-tasks-box.task-column(ng-repeat="st in taskStatusList track by st.id", tg-taskboard-sortable, class="squish-status-{{st.id}}", ng-class="{'column-fold':statusesFolded[st.id]}", tg-bind-scope)
+                div.taskboard-tasks-box.task-column(ng-repeat="st in taskStatusList track by st.id", class="squish-status-{{st.id}}", ng-class="{'column-fold':statusesFolded[st.id]}", tg-bind-scope)
                     div.taskboard-task(
                         ng-repeat="task in usTasks[us.id][st.id] track by task.id"
                         tg-bind-scope
@@ -82,7 +82,7 @@ div.taskboard-table(tg-taskboard-squish-column)
                     h3.us-title
                         span(translate="TASKBOARD.TABLE.ROW_UNASSIGED_TASKS_TITLE")
                     include ../components/addnewtask.jade
-                div.taskboard-tasks-box.task-column(ng-repeat="st in taskStatusList track by st.id", tg-taskboard-sortable, class="squish-status-{{st.id}}", ng-class="{'column-fold':statusesFolded[st.id]}", tg-bind-scope)
+                div.taskboard-tasks-box.task-column(ng-repeat="st in taskStatusList track by st.id", class="squish-status-{{st.id}}", ng-class="{'column-fold':statusesFolded[st.id]}", tg-bind-scope)
                     div.taskboard-task(
                         ng-repeat="task in usTasks[null][st.id] track by task.id"
                         tg-bind-scope

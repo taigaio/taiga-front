@@ -1,5 +1,6 @@
 var exports = module.exports = {};
 var fs = require("fs");
+var gutil = require('gulp-util');
 
 var Theme = function() {
     var defaultTheme = "taiga";
@@ -71,4 +72,89 @@ exports.themes = {
     sequence: function() {
         return Theme();
     }
+};
+
+exports.unusedCss = function(options) {
+    var through = require('through2');
+    var css = require('css');
+    var path = require('path');
+
+
+    var content = fs.readFileSync(options.css, "utf8");
+    var ast = css.parse(content, {});
+
+    var files = [];
+
+    var validsSelectors = [];
+
+    ast.stylesheet.rules.forEach(function(rule) {
+        if (rule.selectors) {
+            rule.selectors.forEach(function(selectorRule) {
+                var selectors = selectorRule.split(" ");
+
+                selectors.forEach(function(selector) {
+                    var valid = false;
+
+                    if (selector.slice(0, 2) === 'tg') {
+                        valid = true;
+                    } else if (selector[0] === '.') {
+                        valid = true;
+
+                        selector = '.' + selector.split('.')[1]; // '.class1.class2 -> .class1'
+                    }
+
+                    selector = selector.split('::')[0];
+                    selector = selector.split(':')[0];
+
+                    if(valid && validsSelectors.indexOf(selector) === -1) {
+                        validsSelectors.push(selector);
+                    }
+                });
+            });
+        }
+    });
+
+    var addFile = function(file, encoding, cb) {
+        files.push(file);
+        cb();
+    };
+
+    var searchUnusedCss = function(cb) {
+        var invalid = [];
+
+        validsSelectors.forEach(function(validSelector) {
+            var finded = false;
+
+            files.every(function(file) {
+                var content = file.contents.toString();
+                var ext = path.extname(file.path);
+                var pattern = validSelector;
+
+                if (ext === '.html') {
+                    pattern = validSelector.slice(1);
+                }
+
+                if(content.indexOf(pattern) !== -1) {
+                    finded = true;
+
+                    return false;
+                }
+
+                return true;
+            });
+
+            if (!finded) {
+                invalid.push(validSelector);
+            }
+        });
+
+
+        for(var i = 0; i < invalid.length; i++) {
+            gutil.log(gutil.colors.magenta(invalid[i]));
+        }
+
+        cb();
+    };
+
+    return through.obj(addFile, searchUnusedCss);
 };

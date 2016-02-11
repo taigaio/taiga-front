@@ -39,9 +39,9 @@ module = angular.module("taigaBacklog")
 
 TaskboardSortableDirective = ($repo, $rs, $rootscope) ->
     link = ($scope, $el, $attrs) ->
-        bindOnce $scope, "project", (project) ->
+        bindOnce $scope, "tasks", (xx) ->
             # If the user has not enough permissions we don't enable the sortable
-            if not (project.my_permissions.indexOf("modify_us") > -1)
+            if not ($scope.project.my_permissions.indexOf("modify_us") > -1)
                 return
 
             oldParentScope = null
@@ -55,16 +55,22 @@ TaskboardSortableDirective = ($repo, $rs, $rootscope) ->
                 itemEl.off()
                 itemEl.remove()
 
-            tdom.sortable({
-                handle: ".taskboard-task-inner",
-                dropOnEmpty: true
-                connectWith: ".taskboard-tasks-box"
-                revert: 400
+            containers = _.map $el.find('.task-column'), (item) ->
+                return item
+
+            drake = dragula(containers, {
+                copySortSource: false,
+                copy: false,
+                mirrorContainer: $el[0],
+                moves: (item) -> return $(item).hasClass('taskboard-task')
             })
 
-            tdom.on "sortstop", (event, ui) ->
-                parentEl = ui.item.parent()
-                itemEl = ui.item
+            drake.on 'drag', (item) ->
+                oldParentScope = $(item).parent().scope()
+
+            drake.on 'dragend', (item) ->
+                parentEl = $(item).parent()
+                itemEl = $(item)
                 itemTask = itemEl.scope().task
                 itemIndex = itemEl.index()
                 newParentScope = parentEl.scope()
@@ -80,14 +86,17 @@ TaskboardSortableDirective = ($repo, $rs, $rootscope) ->
                 $scope.$apply ->
                     $rootscope.$broadcast("taskboard:task:move", itemTask, newUsId, newStatusId, itemIndex)
 
-                ui.item.find('a').removeClass('noclick')
+            scroll = autoScroll(containers, {
+                margin: 20,
+                pixels: 30,
+                scrollWhenOutside: true,
+                autoScroll: () ->
+                    return this.down && drake.dragging;
+            })
 
-            tdom.on "sortstart", (event, ui) ->
-                oldParentScope = ui.item.parent().scope()
-                ui.item.find('a').addClass('noclick')
-
-        $scope.$on "$destroy", ->
-            $el.off()
+            $scope.$on "$destroy", ->
+                $el.off()
+                drake.destroy()
 
     return {link: link}
 

@@ -22,9 +22,9 @@ exports.config = {
         compilers: 'js:babel-register',
         require: 'babel-polyfill'
     },
-    capabilities: {
-        'browserName': 'firefox'
-    },
+    // capabilities: {
+    //     'browserName': 'firefox'
+    // },
     // capabilities: {
     //     browserName: 'internet explorer',
     //     version: '11'

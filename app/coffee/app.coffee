@@ -601,6 +601,9 @@ i18nInit = (lang, $translate) ->
     # i18n - moment.js
     moment.locale(lang)
 
+    if (lang != 'en') # en is the default, the file doesn't exist
+        ljs.load "/#{window._version}/locales/moment-locales/" + lang + ".js"
+
     # i18n - checksley.js
     messages = {
         defaultMessage: $translate.instant("COMMON.FORM_ERRORS.DEFAULT_MESSAGE")

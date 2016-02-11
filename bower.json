@@ -56,10 +56,6 @@
     "angular-sanitize": "1.4.7",
     "checksley": "~0.6.0",
     "jquery": "~2.1.1",
-    "select2": "~3.4.8",
-    "angular-ui-select2": "~0.0.5",
-    "google-diff-match-patch-js": "~1.0.0",
-    "underscore.string": "~2.3.3",
     "markitup-1x": "~1.1.14",
     "jquery-textcomplete": "yuku-t/jquery-textcomplete#~0.7",
     "flot-axislabels": "markrcote/flot-axislabels",
@@ -67,10 +63,7 @@
     "flot.tooltip": "~0.8.4",
     "Sortable": "~0.1.8",
     "moment": "~2.10.6",
-    "isMobile": "~0.3.1",
-    "favico.js": "0.3.9",
     "pikaday": "~1.4.0",
-    "malihu-custom-scrollbar-plugin": "~3.1.0",
     "raven-js": "~1.1.16",
     "l.js": "~0.1.0",
     "angular-translate": "~2.8.1",
@@ -78,17 +71,19 @@
     "angular-translate-loader-static-files": "~2.8.1",
     "angular-translate-interpolation-messageformat": "~2.8.1",
     "ngInfiniteScroll": "1.2.1",
-    "eventemitter2": "~0.4.14",
     "immutable": "~3.7.6",
     "bluebird": "~2.10.2",
     "intro.js": "~1.1.1",
-    "lodash": "~4.0.0"
+    "lodash": "~4.0.0",
+    "messageformat": "^0.1.8",
+    "dragula.js": "dragula#^3.6.6"
   },
   "resolutions": {
     "lodash": "~4.0.0",
     "moment": "~2.10.6",
     "jquery": "~2.1.1",
-    "angular": "1.4.7"
+    "angular": "1.4.7",
+    "messageformat": "0.1.8"
   },
   "private": true
 }
