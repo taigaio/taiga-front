@@ -1506,6 +1506,11 @@
             "PUBLIC": "We love to share, so if you keep your projects public, it will be completely free.",
             "MORE_INFO_TITLE": "Frequently Asked Questions",
             "MORE_INFO": "More info (FAQ)"
+        },
+        "PAYMENT_HISTORY": {
+            "TITLE": "Payment History",
+            "FREE": "Free until April, 30th",
+            "CHANGE_DATA": "Change payment data"
         }
     }
 }
