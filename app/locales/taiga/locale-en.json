@@ -1511,6 +1511,14 @@
             "TITLE": "Payment History",
             "FREE": "Free until April, 30th",
             "CHANGE_DATA": "Change payment data"
+        },
+        "PLANS_SELECTOR": {
+            "TITLE": "What plan do you need?",
+            "FREE": "Enjoy free plans until <strong>30th April</strong>",
+            "CURRENT": "Current Plan",
+            "RECOMMENDED": "Recommended Plan",
+            "CUSTOM": "Custom",
+            "CONTACT": "Do you need more than 25 users per projects? We have custom plan for enterprises. Get in touch with us at <a href='mailto:support@taiga.io' title='Contact Us'>support@taiga.io</a>"
         }
     }
 }
