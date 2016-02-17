@@ -1519,6 +1519,30 @@
             "RECOMMENDED": "Recommended Plan",
             "CUSTOM": "Custom",
             "CONTACT": "Do you need more than 25 users per projects? We have custom plan for enterprises. Get in touch with us at <a href='mailto:support@taiga.io' title='Contact Us'>support@taiga.io</a>"
+        },
+        "DOWNGRADE": {
+            "TITLE": "Downgrade",
+            "IMAGE_ALT": "Downgrading a plan",
+            "REASON": "You own more private projext or users per project than the maximum allowed by this plan. Your selected plan only allows <strong>{{projects}} private projects and {{members}} members per private project</strong>, so if you want to change to the {{plan}} plan you should make the following changes",
+            "MORE_PROJECTS": "If you have more than {{projects}} private projects",
+            "MORE_PROJECTS_OPTION1": "Keep {{projects}} private projects as maximum and set the others as <strong>public</strong>",
+            "MORE_PROJECTS_OPTION2": "Keep {{projects}} private projects and <strong>delete</strong> the others",
+            "MORE_PROJECTS_OPTION3": "<strong>Transfer the property</strong> of the private projects to another person that has capacity to own more projects",
+            "MORE_PROJECTS_OPTION4": "Or a combination of the above options",
+            "MORE_MEMBERS": "If you have more than {{members}} members per private project",
+            "MORE_MEMBERS_OPTION1": "Have a maximum of {{members}} members in all your private projects",
+            "ACCEPT": "Ok, understood"
+        },
+        "SELECT_PLAN": {
+            "TITLE": "Subscribe to a plan",
+            "SUBTITLE": "You will not billed anything. Enjoy your plan for free until <strong>April, 30th</strong>",
+            "YOUR_NEW_PLAN": "Your new plan",
+            "INTERVAL": "<strong>After the free period</strong> How would you like to pay?",
+            "PAY_MONTHLY": "Monthly",
+            "PAY_YEARLY": "Yeary",
+            "BACK": "Back",
+            "BACK_TITLE": "Back to select plans",
+            "CONTINUE": "Continue"
         }
     }
 }
