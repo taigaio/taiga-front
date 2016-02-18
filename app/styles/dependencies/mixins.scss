@@ -17,6 +17,15 @@
     }
 }
 
+@mixin placeholder {
+  $placeholders: ":-webkit-input" ":-moz" "-moz" "-ms-input";
+  @each $placeholder in $placeholders {
+    &:#{$placeholder}-placeholder {
+      @content;
+    }
+  }
+}
+
 @mixin slide($max, $overflow, $min: 0) {
     max-height: $min;
     transition: max-height .5s ease-in;
