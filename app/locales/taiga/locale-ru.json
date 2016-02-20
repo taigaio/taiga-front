@@ -2,7 +2,7 @@
     "COMMON": {
         "YES": "Да",
         "NO": "Нет",
-        "OR": "or",
+        "OR": "или",
         "LOADING": "Пожалуйста, подождите...",
         "LOADING_PROJECT": "Проект загружается...",
         "DATE": "DD MMM YYYY",
@@ -19,11 +19,11 @@
         "TAG_LINE": "Ваш свободный, agile инструмент управления проектами с открытым исходным кодом",
         "TAG_LINE_2": "Любит ваши проекты",
         "BLOCK": "Блокировать",
-        "BLOCK_TITLE": "Block this item for example if it has a dependency that can not be satisfied",
+        "BLOCK_TITLE": "Заблокировать это, например, если имеются зависимости, которые не могут быть удовлетворены",
         "BLOCKED": "Заблокирован",
         "UNBLOCK": "Разблокировать",
-        "UNBLOCK_TITLE": "Unblock this item",
-        "BLOCKED_NOTE": "Why is this blocked?",
+        "UNBLOCK_TITLE": "Разблокировать это",
+        "BLOCKED_NOTE": "Почему это заблокировано?",
         "BLOCKED_REASON": "Пожалуйста разъясните причину",
         "CREATED_BY": "Создано {{fullDisplayName}}",
         "FROM": "от",
@@ -41,7 +41,7 @@
         "IOCAINE_TEXT": "Чувствуете, что задание берет верх над вами? Дайте другим знать об этом, нажав на \"Иокаин\", когда редактируете задание. Возможно стать неуязвимым к этому (выдуманному) смертельном яду, потребляя небольшие количества время от времени, так же как возможно стать лучше в том, что вы делаете, временами беря на себя дополнительные препятствия!",
         "CLIENT_REQUIREMENT": "Client requirement is new requirement that was not previously expected and it is required to be part of the project",
         "TEAM_REQUIREMENT": "Team requirement is a requirement that must exist in the project but should have no cost for the client",
-        "CAPSLOCK_WARNING": "Будьте внимательны! Введённый текст состоит из заглавных букв, а регистр имеет значение.",
+        "CAPSLOCK_WARNING": "Be careful! You are writing with capital letters and this input is case sensitive.",
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Кажется, это значение некорректно.",
             "TYPE_EMAIL": "Это значение должно быть корректным email-адресом.",
@@ -65,7 +65,9 @@
             "MIN_CHECK": "Вы должны выбрать хотя бы %s вариантов.",
             "MAX_CHECK": "Вы должны выбрать %s вариантов или меньше.",
             "RANGE_CHECK": "Вы должны выбрать от %s до %s вариантов.",
-            "EQUAL_TO": "Это значение должно быть таким же."
+            "EQUAL_TO": "Это значение должно быть таким же.",
+            "LINEWIDTH": "One or some lines are too long. They should have %s characters or less.",
+            "PIKADAY": "Invalid date format, use DD MMM YYYY (like 23 Mar 1984)"
         },
         "PICKERDATE": {
             "FORMAT": "DD MMM YYYY",
@@ -144,13 +146,13 @@
         },
         "ASSIGNED_TO": {
             "NOT_ASSIGNED": "Не назначен",
-            "ASSIGN": "Assign",
+            "ASSIGN": "Назначить",
             "DELETE_ASSIGNMENT": "Удалить назначение",
             "REMOVE_ASSIGNED": "Удалить назначение",
             "TOO_MANY": "...слишком много пользователей, продолжайте фильтровать",
             "CONFIRM_UNASSIGNED": "Вы уверены что не хотите назначить ответственного?",
             "TITLE_ACTION_EDIT_ASSIGNMENT": "Изменить назначение",
-            "SELF": "Assign to me"
+            "SELF": "Назначено мне"
         },
         "STATUS": {
             "CLOSED": "Закрыт",
@@ -175,7 +177,7 @@
             "UPVOTE": "Повысить",
             "UPVOTED": "Повышено",
             "DOWNVOTE": "Понизить",
-            "VOTERS": "Voters",
+            "VOTERS": "Проголосовавшие",
             "BUTTON_TITLE": "Повысить/понизить",
             "COUNTER_TITLE": "{total, plural, one{один голос} other{# голоса (-ов)}}"
         },
@@ -352,11 +354,11 @@
         "PAGE_TITLE": "Домашняя страница - Taiga",
         "PAGE_DESCRIPTION": "Главная страница Taiga с вашими основными проектами, назначенными и отслеживаемыми ПИ, задачами и запросами",
         "EMPTY_WORKING_ON": "<strong>Пустовато, не правда ли?</strong> Начните работать в Taiga - и тут появятся ПИ, задачи и запросы, над которыми вы работаете.",
-        "EMPTY_WATCHING": "<strong>Follow</strong> User Stories, Tasks, Issues in your projects and be notified about its changes :)",
+        "EMPTY_WATCHING": "<strong>Следите</strong> за пользовательскими историями, задачами, запросами в ваших проектах и будьте уведомлены об изменениях :)",
         "EMPTY_PROJECT_LIST": "У Вас пока нет проектов",
         "WORKING_ON_SECTION": "Работает над",
         "WATCHING_SECTION": "Отслеживаемые",
-        "DASHBOARD": "Projects Dashboard"
+        "DASHBOARD": "Рабочий стол с проектами"
     },
     "PROJECTS": {
         "PAGE_TITLE": "Мои проекты",
@@ -366,14 +368,13 @@
     "ATTACHMENT": {
         "SECTION_NAME": "Вложения",
         "TITLE": "{{ fileName }} загружен {{ date }}",
-        "LIST_VIEW_MODE": "List view mode",
-        "GALLERY_VIEW_MODE": "Gallery view mode",
+        "LIST_VIEW_MODE": "Режим \"список\"",
+        "GALLERY_VIEW_MODE": "Режим \"галерея\"",
         "DESCRIPTION": "Введите краткое описание",
         "DEPRECATED": "(устаревший)",
         "DEPRECATED_FILE": "Устаревший?",
         "ADD": "Добавить вложение. {{maxFileSizeMsg}}",
-        "DROP": "Drop attachments here!",
-        "MAX_FILE_SIZE": "[Макс. размер: {{maxFileSize}}]",
+        "DROP": "Перетяните вложение сюда",
         "SHOW_DEPRECATED": "Показать устаревшие приложения",
         "HIDE_DEPRECATED": "- спрятать устаревшие приложения",
         "COUNT_DEPRECATED": "({{ counter }} устарело)",
@@ -453,18 +454,16 @@
             "NUMBER_US_POINTS": "Количество очков ПИ (0 - неопределенное количество)",
             "TAGS": "Тэги",
             "DESCRIPTION": "Описание",
-            "RECRUITING": "Is this project looking for people?",
-            "RECRUITING_MESSAGE": "Who are you looking for?",
-            "RECRUITING_PLACEHOLDER": "Define the profiles you are looking for",
+            "RECRUITING": "Этот проект ищет людей?",
+            "RECRUITING_MESSAGE": "Кого вы ищете?",
+            "RECRUITING_PLACEHOLDER": "Уточните, какие профили вы ищете",
             "PUBLIC_PROJECT": "Публичный проект",
-            "PUBLIC_PROJECT_DESC": "Users will be able to find and view your project",
             "PRIVATE_PROJECT": "Закрытый проект",
-            "PRIVATE_PROJECT_DESC": "By default, this project will be hidden to the public",
-            "PRIVATE_OR_PUBLIC": "What's the difference between public and private projects?",
+            "PRIVATE_OR_PUBLIC": "В чём разница между публичными и приватными проектами?",
             "DELETE": "Удалить проект",
-            "LOGO_HELP": "The image will be scaled to 80x80px.",
+            "LOGO_HELP": "Изображение будет отмасштабировано до 80x80px.",
             "CHANGE_LOGO": "Change logo",
-            "ACTION_USE_DEFAULT_LOGO": "Use default image"
+            "ACTION_USE_DEFAULT_LOGO": "Использовать картинку по умолчанию"
         },
         "REPORTS": {
             "TITLE": "Отчеты",
@@ -495,7 +494,8 @@
             "ISSUE_ADD": "Добавить специальное поле для запросов",
             "FIELD_TYPE_TEXT": "Текст",
             "FIELD_TYPE_MULTI": "Многостроковое",
-            "FIELD_TYPE_DATE": "Дата"
+            "FIELD_TYPE_DATE": "Дата",
+            "FIELD_TYPE_URL": "Url"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - Значения атрибутов проекта - {{projectName}}",
@@ -539,11 +539,11 @@
             "HELP_ROLE_ENABLED": "Когда включено, участники, назначенные на эту роль, смогут оценивать очки для пользовательских историй",
             "DISABLE_COMPUTABLE_ALERT_TITLE": "Отключить оценку очков для этой роли",
             "DISABLE_COMPUTABLE_ALERT_SUBTITLE": "If you disable estimation permissions for role {{roleName}} all previous estimations made by this role will be removed",
-            "DISABLE_COMPUTABLE_ALERT_MESSAGE": "<strong>Are you sure you want to disable this role estimations?</strong>",
+            "DISABLE_COMPUTABLE_ALERT_MESSAGE": "<strong>Вы уверены, что хотите отключить оценку очков для этой роли?</strong>",
             "COUNT_MEMBERS": "{{ role.members_count }} участников с этой ролью",
             "TITLE_DELETE_ROLE": "Удалить Роль",
             "REPLACEMENT_ROLE": "Все пользователи этой роли будут перемещены в",
-            "WARNING_DELETE_ROLE": "<strong>Осторожнее, все оценки, связанные с этой будут удалены</strong>",
+            "WARNING_DELETE_ROLE": "Be careful, all role estimations will be removed",
             "ERROR_DELETE_ALL": "Вы не можете удалить все значения",
             "EXTERNAL_USER": "Внешний пользователь"
         },
@@ -692,13 +692,13 @@
                 "PROJECTS_TAB": "Проекты",
                 "PROJECTS_TAB_TITLE": "Список всех проектов, в которых участвует пользователь",
                 "LIKES_TAB": "Лайки",
-                "LIKES_TAB_TITLE": "List all likes made by this user",
+                "LIKES_TAB_TITLE": "Список всех лайков, поставленных этим пользователем",
                 "VOTES_TAB": "Голоса",
-                "VOTES_TAB_TITLE": "List all votes made by this user",
+                "VOTES_TAB_TITLE": "Список всех голосов, сделанных этим пользователем",
                 "WATCHED_TAB": "Просмотренные",
                 "WATCHED_TAB_TITLE": "Список всего, за чем наблюдает пользователь",
                 "CONTACTS_TAB": "Контакты",
-                "CONTACTS_TAB_TITLE": "List all contacts made by this user"
+                "CONTACTS_TAB_TITLE": "Список всех контактов, созданных этим пользователем"
             }
         },
         "PROFILE_SIDEBAR": {
@@ -727,7 +727,7 @@
         "SECTION_PROJECTS": "Проекты",
         "HELP": "Реорганизуйте свои проекты так чтобы часто используемые были бы наверху.<br/> Первые 10 проектов будут находится вверху списка проектов.",
         "PRIVATE": "Закрытый проект",
-        "LOOKING_FOR_PEOPLE": "This project is looking for people",
+        "LOOKING_FOR_PEOPLE": "Этот проект ищет людей",
         "FANS_COUNTER_TITLE": "{total, plural, one{один фанат} other{# фаната (-ов)}}",
         "WATCHERS_COUNTER_TITLE": "{total, plural, one{один наблюдатель} other{# наблюдателя (-ей)}}",
         "MEMBERS_COUNTER_TITLE": "{total, plural, one{one member} other{# members}}",
@@ -753,14 +753,14 @@
             "PLACEHOLDER_SEARCH": "Искать в...",
             "ACTION_CREATE_PROJECT": "Создать проект",
             "ACTION_IMPORT_PROJECT": "Импортировать проект",
-            "MANAGE_PROJECTS": "Manage projects",
+            "MANAGE_PROJECTS": "Управлять проектами",
             "TITLE_CREATE_PROJECT": "Создать проект",
             "TITLE_IMPORT_PROJECT": "Импортировать проект",
             "TITLE_PRVIOUS_PROJECT": "Показать предыдущие проекты",
             "TITLE_NEXT_PROJECT": "Показать следующие проекты",
             "HELP_TITLE": "Страница поддержки Taiga",
             "HELP": "Помощь",
-            "HOMEPAGE": "Homepage",
+            "HOMEPAGE": "Домашняя страница",
             "FEEDBACK_TITLE": "Оставить отзыв",
             "FEEDBACK": "Обратная связь",
             "NOTIFICATIONS_TITLE": "Настроить уведомления",
@@ -914,7 +914,7 @@
         "TYPE_NEW_COMMENT": "Добавить комментарий",
         "SHOW_DELETED": "Показать удаленный комментарий",
         "HIDE_DELETED": "Скрыть удаленный комментарий",
-        "DELETE": "Delete comment",
+        "DELETE": "Удалить комментарий",
         "RESTORE": "Показать удаленный комментарий"
     },
     "ACTIVITY": {
@@ -973,12 +973,12 @@
         "PAGE_TITLE": "Список задач - {{projectName}}",
         "PAGE_DESCRIPTION": "Список задач с пользовательскими историями и спринтами проекта {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Список задач",
-        "CUSTOMIZE_GRAPH": "Customize your backlog graph",
+        "CUSTOMIZE_GRAPH": "Настроить граф вашего списка задач",
         "CUSTOMIZE_GRAPH_TEXT": "To have a nice graph that helps you follow the evolution of the project you have to set up the points and sprints through the",
         "CUSTOMIZE_GRAPH_ADMIN": "Админка",
         "CUSTOMIZE_GRAPH_TITLE": "Настройте очки и спринты в админке",
         "MOVE_US_TO_CURRENT_SPRINT": "Перейти к текущему спринту",
-        "MOVE_US_TO_LATEST_SPRINT": "Move to latest Sprint",
+        "MOVE_US_TO_LATEST_SPRINT": "Перейти к последнему спринту",
         "SHOW_FILTERS": "Показать фильтры",
         "SHOW_TAGS": "Показать теги",
         "EMPTY": "Список задач пуст!",
@@ -1042,7 +1042,7 @@
             "TITLE_LINK_TASKBOARD": "Перейти к Панели Задач \"{{name}}\"",
             "NUMBER_SPRINTS": "<br/>спринты",
             "EMPTY": "Спринтов пока что нет",
-            "WARNING_EMPTY_SPRINT_ANONYMOUS": "This sprint has no User Stories",
+            "WARNING_EMPTY_SPRINT_ANONYMOUS": "У этого спринта нет пользовательских историй",
             "WARNING_EMPTY_SPRINT": "Накидайте сюда ПИ из списка задач чтобы начать новый спринт",
             "TITLE_ACTION_NEW_SPRINT": "Добавить новый спринт",
             "TEXT_ACTION_NEW_SPRINT": "Вы можете создать новый спринт в проекте",
@@ -1066,7 +1066,7 @@
         "TITLE_ACTION_ADD_BULK": "Добавить новые задачи пакетно",
         "TITLE_ACTION_ASSIGN": "Назначить задачу",
         "TITLE_ACTION_EDIT": "Редактировать задачу",
-        "PLACEHOLDER_CARD_TITLE": "This could be a task",
+        "PLACEHOLDER_CARD_TITLE": "Это может быть задачей",
         "PLACEHOLDER_CARD_TEXT": "Разделяйте ПИ в задачи чтобы отслеживать их по отдельности",
         "TABLE": {
             "COLUMN": "Пользовательская история",
@@ -1268,8 +1268,8 @@
         "NOTIFICATIONS": {
             "SECTION_NAME": "Уведомления почтой",
             "COLUMN_PROJECT": "Проект",
-            "COLUMN_RECEIVE_ALL": "Получать Всё",
-            "COLUMN_ONLY_INVOLVED": "Только задействованные",
+            "COLUMN_RECEIVE_ALL": "Получать все",
+            "COLUMN_ONLY_INVOLVED": "Только вовлечённые",
             "COLUMN_NO_NOTIFICATIONS": "Уведомлений нет",
             "OPTION_ALL": "Все",
             "OPTION_INVOLVED": "Вовлечен",
@@ -1284,9 +1284,9 @@
         }
     },
     "USER_PROFILE": {
-        "IMAGE_HELP": "The image will be scaled to 80x80px.",
+        "IMAGE_HELP": "Изображение будет отмасштабировано до 80x80px.",
         "ACTION_CHANGE_IMAGE": "Изменить",
-        "ACTION_USE_GRAVATAR": "Use default image",
+        "ACTION_USE_GRAVATAR": "Использовать картинку по умолчанию",
         "ACTION_DELETE_ACCOUNT": "Удалить аккаунт",
         "CHANGE_EMAIL_SUCCESS": "<strong>Проверьте входящие письма!</strong><br />Мы послали письмо на ваш аккаунт<br />с инструкциями по установке вашего нового адреса.",
         "CHANGE_PHOTO": "Изменить фото",
@@ -1294,7 +1294,7 @@
             "USERNAME": "Имя пользователя",
             "EMAIL": "Email",
             "FULL_NAME": "Полное имя",
-            "PLACEHOLDER_FULL_NAME": "Установите ваше полное имя (например, Игорь Николаев)",
+            "PLACEHOLDER_FULL_NAME": "Полное имя (например, Игорь Николаев)",
             "BIO": "Биография (не более 210 символов)",
             "PLACEHOLDER_BIO": "Расскажите нам что-нибудь о себе",
             "LANGUAGE": "Язык",
@@ -1338,7 +1338,7 @@
         "HINT2_TEXT": "Теперь команды могут создавать специальные поля, чтобы гибко вводить данные, специфические для их рабочего процесса.",
         "HINT3_TITLE": "Перестройте список своих проектов так, чтобы выделить самые важные для себя.",
         "HINT3_TEXT": "Первые 10 проектов доступны из панели прямого доступа сверху.",
-        "HINT4_TITLE": "Did you forget what were you working on?",
+        "HINT4_TITLE": "Забыли, над чем вы работали?",
         "HINT4_TEXT": "Не переживайте, на вашем рабочем столе вы найдёте ваши активные задачи, запросы и пользовательские истории в том порядке, в котором вы над ними работали."
     },
     "TIMELINE": {
@@ -1387,7 +1387,7 @@
         "NAV": {
             "NEXT": "Следующий",
             "BACK": "Бэкенд разработчик",
-            "SKIP": "Skip",
+            "SKIP": "Пропустить",
             "DONE": "Завершена"
         },
         "DASHBOARD": {
@@ -1402,7 +1402,7 @@
             "STEP3": {
                 "TITLE": "Отслеживаемое",
                 "TEXT1": "And right here you will find the ones in your projects that you want to know about.",
-                "TEXT2": "You are already working with Taiga ;)"
+                "TEXT2": "Вы уже работаете с Taiga ;)"
             },
             "STEP4": {
                 "TITLE": "Давайте начнём",
@@ -1446,35 +1446,35 @@
         }
     },
     "DISCOVER": {
-        "PAGE_TITLE": "Discover projects - Taiga",
+        "PAGE_TITLE": "Найти проекты - Taiga",
         "PAGE_DESCRIPTION": "Searchable directory of Public Projects in Taiga. Explore backlogs, timelines, issues, and teams. Check out the most liked or most active projects. Filter by Kanban or Scrum.",
-        "DISCOVER_TITLE": "Discover projects",
+        "DISCOVER_TITLE": "Найти проекты",
         "DISCOVER_SUBTITLE": "{projects, plural, one{One public project to discover} other{# public projects to discover}}",
-        "MOST_ACTIVE": "Most active",
+        "MOST_ACTIVE": "Наиболее активные",
         "MOST_ACTIVE_EMPTY": "There are no ACTIVE projects yet",
-        "MOST_LIKED": "Most liked",
+        "MOST_LIKED": "Больше всего лайков",
         "MOST_LIKED_EMPTY": "There are no LIKED projects yet",
-        "VIEW_MORE": "View more",
-        "RECRUITING": "This project is looking for people",
-        "FEATURED": "Featured Projects",
-        "EMPTY": "There are no projects to show with this search criteria.<br> Try again!",
+        "VIEW_MORE": "Показать больше",
+        "RECRUITING": "Этот проект ищет людей",
+        "FEATURED": "Популярные проекты",
+        "EMPTY": "Нету проектов, удовлетворяющих заданным критериям поиска.<br/> Попробуйте снова!",
         "FILTERS": {
             "ALL": "Все",
             "KANBAN": "Kanban",
             "SCRUM": "Scrum",
-            "PEOPLE": "Looking for people",
-            "WEEK": "Last week",
-            "MONTH": "Last month",
-            "YEAR": "Last year",
-            "ALL_TIME": "All time",
-            "CLEAR": "Clear filters"
+            "PEOPLE": "Ищем людей",
+            "WEEK": "За неделю",
+            "MONTH": "За месяц",
+            "YEAR": "За год",
+            "ALL_TIME": "За всё время",
+            "CLEAR": "Очистить фильтры"
         },
         "SEARCH": {
-            "PAGE_TITLE": "Search - Discover projects - Taiga",
+            "PAGE_TITLE": "Поиск - Найти проекты - Taiga",
             "PAGE_DESCRIPTION": "Searchable directory of Public Projects in Taiga. Explore backlogs, timelines, issues, and teams. Check out the most liked or most active projects. Filter by Kanban or Scrum.",
             "INPUT_PLACEHOLDER": "Введите что-нибудь...",
             "ACTION_TITLE": "Поиск",
-            "RESULTS": "Search results"
+            "RESULTS": "Результаты поиска"
         }
     }
 }

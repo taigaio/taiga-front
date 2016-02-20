@@ -41,7 +41,7 @@
         "IOCAINE_TEXT": "Un poc saturat per una tasca? Fes-ho saber als teus companys clicant a Iocaina quan edites la tasca. Es possible ser inmune a aquesta (fictícia) poció mortal consumint xicotetes dòsis poc a poc, així com es possible millorar amb xicotets nous desafiaments!",
         "CLIENT_REQUIREMENT": "Client requirement is new requirement that was not previously expected and it is required to be part of the project",
         "TEAM_REQUIREMENT": "Team requirement is a requirement that must exist in the project but should have no cost for the client",
-        "CAPSLOCK_WARNING": "Be careful! You're writing with capital letters and this input is case sensitive.",
+        "CAPSLOCK_WARNING": "Be careful! You are writing with capital letters and this input is case sensitive.",
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Aquest valor pareix invàlid.",
             "TYPE_EMAIL": "Deu ser un correu vàlid.",
@@ -65,7 +65,9 @@
             "MIN_CHECK": "You must select at least %s choices.",
             "MAX_CHECK": "Heu de seleccionar la opció %s o inferior.",
             "RANGE_CHECK": "Heu de seleccionar entre les opcions %s i %s.",
-            "EQUAL_TO": "Aquest valor hauria de ser el mateix."
+            "EQUAL_TO": "Aquest valor hauria de ser el mateix.",
+            "LINEWIDTH": "One or some lines are too long. They should have %s characters or less.",
+            "PIKADAY": "Invalid date format, use DD MMM YYYY (like 23 Mar 1984)"
         },
         "PICKERDATE": {
             "FORMAT": "DD MMM YYYY",
@@ -373,7 +375,6 @@
         "DEPRECATED_FILE": "Obsolet?",
         "ADD": "Afegeix un nou adjunt. {{maxFileSizeMsg}}",
         "DROP": "Deixa els adjunts ací",
-        "MAX_FILE_SIZE": "[Max. grandària:  {{maxFileSize}}]",
         "SHOW_DEPRECATED": "+ mostra els adjunts obsolets",
         "HIDE_DEPRECATED": "- Amagar els adjunts obsolets",
         "COUNT_DEPRECATED": "({{ counter }} obsolet)",
@@ -457,9 +458,7 @@
             "RECRUITING_MESSAGE": "A qui estàs buscant?",
             "RECRUITING_PLACEHOLDER": "Defineix els perfils que estàs buscant",
             "PUBLIC_PROJECT": "Projecte públic",
-            "PUBLIC_PROJECT_DESC": "Els usuaris podràn trobar i vore el teu projecte",
             "PRIVATE_PROJECT": "Projecte privat",
-            "PRIVATE_PROJECT_DESC": "By default, this project will be hidden to the public",
             "PRIVATE_OR_PUBLIC": "What's the difference between public and private projects?",
             "DELETE": "Esborra aquest projecte",
             "LOGO_HELP": "The image will be scaled to 80x80px.",
@@ -495,7 +494,8 @@
             "ISSUE_ADD": "Afegix camps personalitzats en incidències",
             "FIELD_TYPE_TEXT": "Text",
             "FIELD_TYPE_MULTI": "Múltiples línies",
-            "FIELD_TYPE_DATE": "Data"
+            "FIELD_TYPE_DATE": "Data",
+            "FIELD_TYPE_URL": "Url"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - Valors de projecte - {{projectName}}",
@@ -543,7 +543,7 @@
             "COUNT_MEMBERS": "{{ role.members_count }} membres amb aquest rol",
             "TITLE_DELETE_ROLE": "Esborrar rol",
             "REPLACEMENT_ROLE": "Tots els usuaris amb aquest rol es canviaran a",
-            "WARNING_DELETE_ROLE": "<strong>Atenció, totes les estimacions del rol seràn esborrades</strong>",
+            "WARNING_DELETE_ROLE": "Be careful, all role estimations will be removed",
             "ERROR_DELETE_ALL": "No pots esborrar tots els valors",
             "EXTERNAL_USER": "Usuari extern"
         },

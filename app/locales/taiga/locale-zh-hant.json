@@ -41,7 +41,7 @@
         "IOCAINE_TEXT": "感到任務的不堪負荷？確認其它人在編輯任務時知道此狀況，可以點選Iocaine。它可能會成為免疫的致命狀況，只要長期小量消耗，但如果你只是偶而挑戰它可有助表現。",
         "CLIENT_REQUIREMENT": "Client requirement is new requirement that was not previously expected and it is required to be part of the project",
         "TEAM_REQUIREMENT": "Team requirement is a requirement that must exist in the project but should have no cost for the client",
-        "CAPSLOCK_WARNING": "注意你輸入了大寫符號，大小寫字母有所不同",
+        "CAPSLOCK_WARNING": "Be careful! You are writing with capital letters and this input is case sensitive.",
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "該數值似乎為無效",
             "TYPE_EMAIL": "該電子郵件應為有效地址",
@@ -65,7 +65,9 @@
             "MIN_CHECK": "你必須至少選擇 %s 選項",
             "MAX_CHECK": "你必須至多選出 %s選項",
             "RANGE_CHECK": "你必須在%s 與 %s 之間作出選擇",
-            "EQUAL_TO": "該數值應為一致"
+            "EQUAL_TO": "該數值應為一致",
+            "LINEWIDTH": "One or some lines are too long. They should have %s characters or less.",
+            "PIKADAY": "Invalid date format, use DD MMM YYYY (like 23 Mar 1984)"
         },
         "PICKERDATE": {
             "FORMAT": "DD MMM YYYY",
@@ -373,7 +375,6 @@
         "DEPRECATED_FILE": "棄用?",
         "ADD": "加入新附件 {{maxFileSizeMsg}}",
         "DROP": "在此移除附件 ",
-        "MAX_FILE_SIZE": "[Max. size: {{maxFileSize}}]",
         "SHOW_DEPRECATED": "+ 顯示棄用的附件",
         "HIDE_DEPRECATED": "+ 隱藏棄用的附件",
         "COUNT_DEPRECATED": "({{ counter }} 遭棄用)",
@@ -457,9 +458,7 @@
             "RECRUITING_MESSAGE": "你在找誰？",
             "RECRUITING_PLACEHOLDER": "定義你要找的資訊",
             "PUBLIC_PROJECT": "公開專案",
-            "PUBLIC_PROJECT_DESC": "用戶能夠找到並檢視你的專案",
             "PRIVATE_PROJECT": "不公開專案",
-            "PRIVATE_PROJECT_DESC": "本專案預設為私密不公開顯示",
             "PRIVATE_OR_PUBLIC": "公開專案和私密專案有何差異?",
             "DELETE": "刪除此專案",
             "LOGO_HELP": "此圖片將被裁成80x80px.<br>",
@@ -495,7 +494,8 @@
             "ISSUE_ADD": "在問題中加入客制欄位",
             "FIELD_TYPE_TEXT": "單行文字",
             "FIELD_TYPE_MULTI": "多行",
-            "FIELD_TYPE_DATE": "日期"
+            "FIELD_TYPE_DATE": "日期",
+            "FIELD_TYPE_URL": "Url"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - 專案數值 - {{projectName}}",
@@ -543,7 +543,7 @@
             "COUNT_MEMBERS": "{{ role.members_count }} 這類角色的成員",
             "TITLE_DELETE_ROLE": "删除角色",
             "REPLACEMENT_ROLE": "和此角色有關的使用者都將遭移除　",
-            "WARNING_DELETE_ROLE": "<strong>小心, 所有角色的估算都將會移除</strong>",
+            "WARNING_DELETE_ROLE": "Be careful, all role estimations will be removed",
             "ERROR_DELETE_ALL": "你不能刪除所有數值",
             "EXTERNAL_USER": "外部使用者"
         },

@@ -41,7 +41,7 @@
         "IOCAINE_TEXT": "¿Te sientes fuera de tu zona de confort en una tarea? Asegúrate de que los demás están al tanto de ello, marca el check de la Iocaína al editar una tarea. Igual eu era posible llegar a ser inmune a este veneno mortal a base de consumir pequeñas dosis a lo largo del tiempo, es posible conseguir mejor en lo que estás haciendo si afrontas de vez en cuando esta clase de retos!",
         "CLIENT_REQUIREMENT": "Requerimiento de cliente es un nuevo requisito que no se esperaba y es necesario que forme parte del proyecto.",
         "TEAM_REQUIREMENT": "Requerimiento del equipo es un nuevo requisito que debe existir en el proyecto pero que no conllevará ningún coste para el cliente.",
-        "CAPSLOCK_WARNING": "¡Ten cuidado! Usted está escribiendo con mayúsculas y esta entrada es sensible a mayúsculas.",
+        "CAPSLOCK_WARNING": "Be careful! You are writing with capital letters and this input is case sensitive.",
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Este valor parece inválido.",
             "TYPE_EMAIL": "El valor debe ser un email.",
@@ -65,7 +65,9 @@
             "MIN_CHECK": "Debes seleccionar al menos %s.",
             "MAX_CHECK": "Debes seleccionar %s o menos.",
             "RANGE_CHECK": "Debes seleccionar de %s a %s.",
-            "EQUAL_TO": "Este valor debe ser el mismo."
+            "EQUAL_TO": "Este valor debe ser el mismo.",
+            "LINEWIDTH": "One or some lines are too long. They should have %s characters or less.",
+            "PIKADAY": "Invalid date format, use DD MMM YYYY (like 23 Mar 1984)"
         },
         "PICKERDATE": {
             "FORMAT": "DD MMM YYYY",
@@ -373,7 +375,6 @@
         "DEPRECATED_FILE": "¿Desactualizado?",
         "ADD": "Agrega nuevos adjunto. {{maxFileSizeMsg}}",
         "DROP": "¡Arrastre los archivos adjuntos aquí!",
-        "MAX_FILE_SIZE": "[Tamaño Max. : {{maxFileSize}}]",
         "SHOW_DEPRECATED": "+ muestra adjuntos desactualizados",
         "HIDE_DEPRECATED": "- ocultar adjuntos obsoletos",
         "COUNT_DEPRECATED": "({{ counter }} obsoletos)\n",
@@ -457,9 +458,7 @@
             "RECRUITING_MESSAGE": "¿Qué estás buscando?",
             "RECRUITING_PLACEHOLDER": "Define el perfil de lo que estás buscando",
             "PUBLIC_PROJECT": "Proyecto público",
-            "PUBLIC_PROJECT_DESC": "Los usuarios serán capaces de encontrar y ver tu proyecto",
             "PRIVATE_PROJECT": "Proyecto privado",
-            "PRIVATE_PROJECT_DESC": "Este proyecto estará oculto al público por defecto.",
             "PRIVATE_OR_PUBLIC": "¿Cuál es la diferencia entre proyecto público y privado?",
             "DELETE": "Eliminar este proyecto",
             "LOGO_HELP": "La imagen se escalará a 80x80px.",
@@ -495,7 +494,8 @@
             "ISSUE_ADD": "Añadir un atributo personalizado en las peticiones",
             "FIELD_TYPE_TEXT": "Texto",
             "FIELD_TYPE_MULTI": "Multilínea",
-            "FIELD_TYPE_DATE": "Fecha"
+            "FIELD_TYPE_DATE": "Fecha",
+            "FIELD_TYPE_URL": "Url"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - Valores del Proyectos - {{projectName}}",
@@ -543,7 +543,7 @@
             "COUNT_MEMBERS": "{{ role.members_count }} miembros con este rol",
             "TITLE_DELETE_ROLE": "Borrar Rol",
             "REPLACEMENT_ROLE": "Todos los usuarios con este rol serán movidos a",
-            "WARNING_DELETE_ROLE": "<strong>Cuidado, todas las estimaciones asociadas a este rol se perderán</strong>",
+            "WARNING_DELETE_ROLE": "Be careful, all role estimations will be removed",
             "ERROR_DELETE_ALL": "No puedes eliminar todos los valores",
             "EXTERNAL_USER": "Usuario externo"
         },
@@ -1446,8 +1446,8 @@
         }
     },
     "DISCOVER": {
-        "PAGE_TITLE": "Discover projects - Taiga",
-        "PAGE_DESCRIPTION": "Searchable directory of Public Projects in Taiga. Explore backlogs, timelines, issues, and teams. Check out the most liked or most active projects. Filter by Kanban or Scrum.",
+        "PAGE_TITLE": "Descubre proyectos - Taiga",
+        "PAGE_DESCRIPTION": "Directorio de búsqueda de Proyectos Públicos en Taiga. Explora los backlogs, timelines, peticiones y equipos. Echa un vistazo a los proyectos que más  gustan o más activos. Filtrar por Kanban o Scrum.",
         "DISCOVER_TITLE": "Descubre proyectos",
         "DISCOVER_SUBTITLE": "{projects, plural, one{Un proyecto público por descubrir} other{# proyectos público por descubrir}}\n",
         "MOST_ACTIVE": "Más activos",
@@ -1470,8 +1470,8 @@
             "CLEAR": "Borrar filtros"
         },
         "SEARCH": {
-            "PAGE_TITLE": "Search - Discover projects - Taiga",
-            "PAGE_DESCRIPTION": "Searchable directory of Public Projects in Taiga. Explore backlogs, timelines, issues, and teams. Check out the most liked or most active projects. Filter by Kanban or Scrum.",
+            "PAGE_TITLE": "Buscar - Descubre proyectos - Taiga",
+            "PAGE_DESCRIPTION": "Directorio de búsqueda de Proyectos Públicos en Taiga. Explora los backlogs, timelines, peticiones y equipos. Echa un vistazo a los proyectos que más  gustan o más activos. Filtrar por Kanban o Scrum.",
             "INPUT_PLACEHOLDER": "Escribe algo...",
             "ACTION_TITLE": "Buscar",
             "RESULTS": "Resultados de búsqueda"

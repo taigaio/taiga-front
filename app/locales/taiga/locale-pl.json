@@ -41,7 +41,7 @@
         "IOCAINE_TEXT": "Czujesz się trochę przytłoczony zadaniem? Daj znać innym klikając na ikonę Iokainy podczas edycji zadania. Jest szansa, że staniesz się odporny na tą (fikcyjną ;) ) śmiertelną truciznę biorąc małe dawki. Z pewnością jednak da Ci ona dodatkowego kopa, który pomoże w pokonaniu nowego wyzwania i staniu się lepszym w tym co robisz!",
         "CLIENT_REQUIREMENT": "Client requirement is new requirement that was not previously expected and it is required to be part of the project",
         "TEAM_REQUIREMENT": "Team requirement is a requirement that must exist in the project but should have no cost for the client",
-        "CAPSLOCK_WARNING": "UWAGA! Klawisz CAPSLOCK jest aktywny.",
+        "CAPSLOCK_WARNING": "Be careful! You are writing with capital letters and this input is case sensitive.",
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Nieprawidłowa wartość",
             "TYPE_EMAIL": "Podaj prawidłowy adres email.",
@@ -65,7 +65,9 @@
             "MIN_CHECK": "Musisz zaznaczyć przynajmniej %s pozycji.",
             "MAX_CHECK": "Musisz zaznaczyć %s pozycji lub mniej.",
             "RANGE_CHECK": "Musisz zaznaczyć pomiędzy %s a %s pozycji.",
-            "EQUAL_TO": "Ta wartość powinna być taka sama."
+            "EQUAL_TO": "Ta wartość powinna być taka sama.",
+            "LINEWIDTH": "One or some lines are too long. They should have %s characters or less.",
+            "PIKADAY": "Invalid date format, use DD MMM YYYY (like 23 Mar 1984)"
         },
         "PICKERDATE": {
             "FORMAT": "DD MMM YYYY",
@@ -373,7 +375,6 @@
         "DEPRECATED_FILE": "Przestarzałe?",
         "ADD": "Dodaj nowy załącznik. {{maxFileSizeMsg}}",
         "DROP": "Drop attachments here!",
-        "MAX_FILE_SIZE": "[Maks. rozmiar: {{maxFileSize}}]",
         "SHOW_DEPRECATED": "+ pokaż przestarzałe załączniki",
         "HIDE_DEPRECATED": "- ukryj przestarzałe załączniki",
         "COUNT_DEPRECATED": "({{ counter }} przestarzałych",
@@ -457,9 +458,7 @@
             "RECRUITING_MESSAGE": "Who are you looking for?",
             "RECRUITING_PLACEHOLDER": "Define the profiles you are looking for",
             "PUBLIC_PROJECT": "Projekt publiczny",
-            "PUBLIC_PROJECT_DESC": "Users will be able to find and view your project",
             "PRIVATE_PROJECT": "Projekt prywatny",
-            "PRIVATE_PROJECT_DESC": "By default, this project will be hidden to the public",
             "PRIVATE_OR_PUBLIC": "What's the difference between public and private projects?",
             "DELETE": "Usuń ten projekt",
             "LOGO_HELP": "The image will be scaled to 80x80px.",
@@ -495,7 +494,8 @@
             "ISSUE_ADD": "Dodaj własne pole dla zgłoszeń",
             "FIELD_TYPE_TEXT": "Tekst",
             "FIELD_TYPE_MULTI": "Pole wielowierszowe",
-            "FIELD_TYPE_DATE": "Date"
+            "FIELD_TYPE_DATE": "Date",
+            "FIELD_TYPE_URL": "Url"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - Wartości projektu - {{projectName}}",
@@ -543,7 +543,7 @@
             "COUNT_MEMBERS": "{{ role.members_count }} użytkowników pełniących tę rolę w projekcie",
             "TITLE_DELETE_ROLE": "Usuń rolę",
             "REPLACEMENT_ROLE": "Wszyscy użytkownicy pełniący tę rolę zostaną przeniesieni do",
-            "WARNING_DELETE_ROLE": "<strong>Ostrożnie, wszystkie estymaty dodane przez ludzi pełniących tę rolę zostaną usunięte</strong>",
+            "WARNING_DELETE_ROLE": "Be careful, all role estimations will be removed",
             "ERROR_DELETE_ALL": "Nie możesz usunąć wszystkich wartości",
             "EXTERNAL_USER": "Zewnętrzny użytkownik"
         },

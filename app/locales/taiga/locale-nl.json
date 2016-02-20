@@ -2,7 +2,7 @@
     "COMMON": {
         "YES": "Ja",
         "NO": "Nee",
-        "OR": "or",
+        "OR": "of",
         "LOADING": "Aan het laden...",
         "LOADING_PROJECT": "Project laden...",
         "DATE": "DD MMM YYYY",
@@ -41,7 +41,7 @@
         "IOCAINE_TEXT": "Voel je je wat overweldigd door een taak? Zorg ervoor dat anderen dit weten door op Iocaine te klikken bij het wijzigen van een taak. Je kan stapsgewijs immuun worden tegen dit (fictioneel) dodelijk gif door kleine dosissen op te nemen. Net zoals je beter kan worden in wat je doet door af en toe een extra uitdaging aan te gaan!",
         "CLIENT_REQUIREMENT": "Client requirement is new requirement that was not previously expected and it is required to be part of the project",
         "TEAM_REQUIREMENT": "Team requirement is a requirement that must exist in the project but should have no cost for the client",
-        "CAPSLOCK_WARNING": "Let op! Je schrijft met alleen hoofdletters en dit veld is hoofdlettergevoelig.",
+        "CAPSLOCK_WARNING": "Be careful! You are writing with capital letters and this input is case sensitive.",
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Deze waarde lijkt ongeldig te zijn",
             "TYPE_EMAIL": "Deze waarde moet een geldig emailadres bevatten",
@@ -65,7 +65,9 @@
             "MIN_CHECK": "Je moet minstens %s opties selecteren.",
             "MAX_CHECK": "Je moet %s keuzes of minder selecteren.",
             "RANGE_CHECK": "Je moet tussen %s en %s keuzes selecteren.",
-            "EQUAL_TO": "Deze waarde zou hetzelfde moeten zijn."
+            "EQUAL_TO": "Deze waarde zou hetzelfde moeten zijn.",
+            "LINEWIDTH": "One or some lines are too long. They should have %s characters or less.",
+            "PIKADAY": "Invalid date format, use DD MMM YYYY (like 23 Mar 1984)"
         },
         "PICKERDATE": {
             "FORMAT": "DD MMM YYYY",
@@ -282,9 +284,9 @@
         "HEADER": "Ik heb al een Taiga login",
         "PLACEHOLDER_AUTH_NAME": "Gebruikersnaam of email (case sensitive)",
         "LINK_FORGOT_PASSWORD": "Vergeten?",
-        "TITLE_LINK_FORGOT_PASSWORD": "Did you forget your password?",
+        "TITLE_LINK_FORGOT_PASSWORD": "Ben je je wachtwoord vergeten?",
         "ACTION_ENTER": "Enter",
-        "ACTION_SIGN_IN": "Login",
+        "ACTION_SIGN_IN": "Log in",
         "PLACEHOLDER_AUTH_PASSWORD": "Wachtwoord (hoofdlettergevoelig)"
     },
     "LOGIN_FORM": {
@@ -336,7 +338,7 @@
         "PLACEHOLDER_NEW_PASSWORD": "Nieuw wachtwoord",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Herhaal wachtwoord",
         "ACTION_RESET_PASSWORD": "Wachtwoord resetten",
-        "ERROR": "Our Oompa Loompas can't find your request to recover your password. Try to ask for it again.",
+        "ERROR": "Onze Oempa-Loempa's kunnen het verzoek om je wachtwoord te herstellen niet terugvinden. Probeer het nog een keer.",
         "SUCCESS": "Onze Oempa-Loempas hebben je nieuwe wachtwoord opgeslagen.<br /> Probeer ermee <strong>in te loggen</strong>."
     },
     "INVITATION": {
@@ -351,8 +353,8 @@
     "HOME": {
         "PAGE_TITLE": "Home -Taiga",
         "PAGE_DESCRIPTION": "De Taiga start pagina met jouw projecten en de aan jou toegewezen en gevolgde user stories, taken en issues",
-        "EMPTY_WORKING_ON": "<strong>It feels empty, doesn't it?</strong> Start working with Taiga and you'll see here the stories, tasks and issues you are workin on.",
-        "EMPTY_WATCHING": "<strong>Follow</strong> User Stories, Tasks, Issues in your projects and be notified about its changes :)",
+        "EMPTY_WORKING_ON": "<strong>Beetje kaal, vind je niet?</strong> Als je aan de slag gaat met Taiga, zie je hier de stories, taken en issues waar je aan werkt",
+        "EMPTY_WATCHING": "<strong>Volg</strong> User Stories, Taken, Issues binnen jouw projecten en ontvang een bericht bij veranderingen :)",
         "EMPTY_PROJECT_LIST": "Je hebt nog geen projecten",
         "WORKING_ON_SECTION": "Werkt aan",
         "WATCHING_SECTION": "Volgers",
@@ -366,14 +368,13 @@
     "ATTACHMENT": {
         "SECTION_NAME": "bijlagen",
         "TITLE": "{{ fileName }} toegevoegd op {{ date }}",
-        "LIST_VIEW_MODE": "List view mode",
-        "GALLERY_VIEW_MODE": "Gallery view mode",
+        "LIST_VIEW_MODE": "Lijst weergave",
+        "GALLERY_VIEW_MODE": "Afbeeldingweergave",
         "DESCRIPTION": "Geef een korte beschrijving",
         "DEPRECATED": "(verouderd)",
         "DEPRECATED_FILE": "Verouderd?",
         "ADD": "Nieuwe bijlage toevoegen. {{maxFileSizeMsg}}",
         "DROP": "Drop attachments here!",
-        "MAX_FILE_SIZE": "[Max. grootte:  {{maxFileSize}}]",
         "SHOW_DEPRECATED": "+ toon verouderde bijlagen",
         "HIDE_DEPRECATED": "- verberg verouderde bijlagen",
         "COUNT_DEPRECATED": "({{ counter }} verouderd)",
@@ -457,9 +458,7 @@
             "RECRUITING_MESSAGE": "Who are you looking for?",
             "RECRUITING_PLACEHOLDER": "Define the profiles you are looking for",
             "PUBLIC_PROJECT": "Open project",
-            "PUBLIC_PROJECT_DESC": "Users will be able to find and view your project",
             "PRIVATE_PROJECT": "Gesloten project",
-            "PRIVATE_PROJECT_DESC": "By default, this project will be hidden to the public",
             "PRIVATE_OR_PUBLIC": "What's the difference between public and private projects?",
             "DELETE": "Verwijder dit project",
             "LOGO_HELP": "The image will be scaled to 80x80px.",
@@ -495,7 +494,8 @@
             "ISSUE_ADD": "Voeg een aangepast veld toe in issues",
             "FIELD_TYPE_TEXT": "Tekst",
             "FIELD_TYPE_MULTI": "Over meerdere regels",
-            "FIELD_TYPE_DATE": "Date"
+            "FIELD_TYPE_DATE": "Date",
+            "FIELD_TYPE_URL": "Url"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - Project waardes - {{projectName}}",
@@ -543,7 +543,7 @@
             "COUNT_MEMBERS": "{{ role.members_count }} leden met deze rol",
             "TITLE_DELETE_ROLE": "Verwijder Rol",
             "REPLACEMENT_ROLE": "Al de gebruikers met deze rol zullen verplaats worden naar",
-            "WARNING_DELETE_ROLE": "<strong>Wees voorzichtig, alle schattingen door deze rol zullen worden verwijderd</strong>",
+            "WARNING_DELETE_ROLE": "Be careful, all role estimations will be removed",
             "ERROR_DELETE_ALL": "Je kan niet alle waarden verwijderen",
             "EXTERNAL_USER": "Externe gebruiker"
         },
@@ -1171,7 +1171,7 @@
                 "SEVERITY": "Ernst",
                 "PRIORITIES": "Prioriteiten",
                 "TAGS": "Tags",
-                "ASSIGNED_TO": "Toegezen aan",
+                "ASSIGNED_TO": "Toegewezen aan",
                 "CREATED_BY": "Aangemaakt door",
                 "CUSTOM_FILTERS": "Eigen filters"
             },

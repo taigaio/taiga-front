@@ -2,7 +2,7 @@
     "COMMON": {
         "YES": "Sì",
         "NO": "No",
-        "OR": "or",
+        "OR": "o",
         "LOADING": "Caricamento...",
         "LOADING_PROJECT": "Stiamo caricando il progetto...",
         "DATE": "DD MMM YYYY",
@@ -22,8 +22,8 @@
         "BLOCK_TITLE": "Block this item for example if it has a dependency that can not be satisfied",
         "BLOCKED": "Bloccato",
         "UNBLOCK": "Sblocca",
-        "UNBLOCK_TITLE": "Unblock this item",
-        "BLOCKED_NOTE": "Why is this blocked?",
+        "UNBLOCK_TITLE": "Sblocca questo elemento",
+        "BLOCKED_NOTE": "Perché questo compito è bloccato?",
         "BLOCKED_REASON": "Spiega il motivo",
         "CREATED_BY": "Creato da {{fullDisplayName}}",
         "FROM": "da",
@@ -41,7 +41,7 @@
         "IOCAINE_TEXT": "Sei stremato? Assicurati che gli altri lo sappiano cliccando su 'aspirina' quando stai lavorando su un compito che ti affatica. Ma non demordere, ricordati: si può migliorare solo se di tanto in tanto si accettano sfide extra!",
         "CLIENT_REQUIREMENT": "Requisito del Cliente è un nuovo requisito che non era stato previsto ed ora è stato richiesto come requisito del progetto",
         "TEAM_REQUIREMENT": "Requisito del Team è un requisito che deve esistere nel progetto ma non deve avere costi per il cliente",
-        "CAPSLOCK_WARNING": "Attento! stai scrivendo in maiuscolo e questo input è sensibile alle maiuscole..",
+        "CAPSLOCK_WARNING": "Be careful! You are writing with capital letters and this input is case sensitive.",
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Questo valore non è valido.",
             "TYPE_EMAIL": "Questo valore dovrebbe corrispondere ad una mail valida",
@@ -65,7 +65,9 @@
             "MIN_CHECK": "Devi selezionare almeno %s scelte.",
             "MAX_CHECK": "Devi selezionare la scelta %s o meno.",
             "RANGE_CHECK": "Devi selezionare tra %s e %s scelta.",
-            "EQUAL_TO": "Il valore dovrebbe essere uguale"
+            "EQUAL_TO": "Il valore dovrebbe essere uguale",
+            "LINEWIDTH": "One or some lines are too long. They should have %s characters or less.",
+            "PIKADAY": "Invalid date format, use DD MMM YYYY (like 23 Mar 1984)"
         },
         "PICKERDATE": {
             "FORMAT": "DD MMM YYYY",
@@ -373,7 +375,6 @@
         "DEPRECATED_FILE": "Deprecato?",
         "ADD": "Aggiungi un nuovo allegato. {{maxFileSizeMsg}}",
         "DROP": "Rilascia qui l'allegato!",
-        "MAX_FILE_SIZE": "[Dimensione max. {{maxFileSize}}]",
         "SHOW_DEPRECATED": "+ visualizza allegati deprecati",
         "HIDE_DEPRECATED": "- nascondi allegati deprecati",
         "COUNT_DEPRECATED": "({{ counter }} deprecati)",
@@ -457,9 +458,7 @@
             "RECRUITING_MESSAGE": "Chi stai cercando?",
             "RECRUITING_PLACEHOLDER": "Definisci il profilo che stai cercando",
             "PUBLIC_PROJECT": "Progetto pubblico",
-            "PUBLIC_PROJECT_DESC": "Gli utenti possono cercare e vedere il tuo progetto",
             "PRIVATE_PROJECT": "Progetto privato",
-            "PRIVATE_PROJECT_DESC": "Di default, il progetto sarà nascosto al pubblico",
             "PRIVATE_OR_PUBLIC": "Quale è la differenza tra progetto privato e pubblico?",
             "DELETE": "Elimina questo progetto",
             "LOGO_HELP": "L'immagine sarà scalata a 80x80px.",
@@ -495,7 +494,8 @@
             "ISSUE_ADD": "Aggiungi un campo personalizzato alla criticitá",
             "FIELD_TYPE_TEXT": "Testo",
             "FIELD_TYPE_MULTI": "Multilinea",
-            "FIELD_TYPE_DATE": "Data"
+            "FIELD_TYPE_DATE": "Data",
+            "FIELD_TYPE_URL": "Url"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - Valori di progetto - {{projectName}}",
@@ -543,7 +543,7 @@
             "COUNT_MEMBERS": "{{ role.members_count }} membri con questo ruolo",
             "TITLE_DELETE_ROLE": "Elimina ruolo",
             "REPLACEMENT_ROLE": "Tutti gli utenti con questo ruolo saranno spostati a ",
-            "WARNING_DELETE_ROLE": "<strong>Attento, tutte le stime dei ruoli saranno eliminate</strong>",
+            "WARNING_DELETE_ROLE": "Be careful, all role estimations will be removed",
             "ERROR_DELETE_ALL": "Non puoi cancellare tutti i valori",
             "EXTERNAL_USER": "Utente esterno"
         },
@@ -914,7 +914,7 @@
         "TYPE_NEW_COMMENT": "Scrivi un nuovo commento qui",
         "SHOW_DELETED": "Visualizza commento cancellato",
         "HIDE_DELETED": "Nascondi commento cancellato",
-        "DELETE": "Delete comment",
+        "DELETE": "Cancella commento",
         "RESTORE": "Ripristina commento"
     },
     "ACTIVITY": {
@@ -1446,7 +1446,7 @@
         }
     },
     "DISCOVER": {
-        "PAGE_TITLE": "Discover projects - Taiga",
+        "PAGE_TITLE": "Scopri i progetti - Taiga",
         "PAGE_DESCRIPTION": "Searchable directory of Public Projects in Taiga. Explore backlogs, timelines, issues, and teams. Check out the most liked or most active projects. Filter by Kanban or Scrum.",
         "DISCOVER_TITLE": "Scopri progetti",
         "DISCOVER_SUBTITLE": "{projects, plural, one{Un progetto pubblico da scoprire} other{# progetti pubblici da scoprire}}",
@@ -1470,7 +1470,7 @@
             "CLEAR": "Cancella filtri"
         },
         "SEARCH": {
-            "PAGE_TITLE": "Search - Discover projects - Taiga",
+            "PAGE_TITLE": "Cerca - Scopri i progetti - Taiga",
             "PAGE_DESCRIPTION": "Searchable directory of Public Projects in Taiga. Explore backlogs, timelines, issues, and teams. Check out the most liked or most active projects. Filter by Kanban or Scrum.",
             "INPUT_PLACEHOLDER": "Inserisci testo...",
             "ACTION_TITLE": "Cerca",

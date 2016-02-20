@@ -41,7 +41,7 @@
         "IOCAINE_TEXT": "Jos tehtävä ahdistaa, merkitse se myrkylliseksi. Ajan mittaa pieninä annoksina saattaa kastokykysi myrkkyä vastaan parantua.",
         "CLIENT_REQUIREMENT": "Client requirement is new requirement that was not previously expected and it is required to be part of the project",
         "TEAM_REQUIREMENT": "Team requirement is a requirement that must exist in the project but should have no cost for the client",
-        "CAPSLOCK_WARNING": "Be careful! You're writing with capital letters and this input is case sensitive.",
+        "CAPSLOCK_WARNING": "Be careful! You are writing with capital letters and this input is case sensitive.",
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Tämä arvo vaikuttaa virheelliseltä.",
             "TYPE_EMAIL": "Tämän pitäisi olla toimiva sähköpostiosoite.",
@@ -65,7 +65,9 @@
             "MIN_CHECK": "Sinun täytyy valita vähintään %s valintaa.",
             "MAX_CHECK": "Valitse korkeintaan %s vaihtoehtoa.",
             "RANGE_CHECK": "Valitse %s - %s vaihteohtoa.",
-            "EQUAL_TO": "Arvojen pitäisi olla samat."
+            "EQUAL_TO": "Arvojen pitäisi olla samat.",
+            "LINEWIDTH": "One or some lines are too long. They should have %s characters or less.",
+            "PIKADAY": "Invalid date format, use DD MMM YYYY (like 23 Mar 1984)"
         },
         "PICKERDATE": {
             "FORMAT": "DD.MM.YY",
@@ -373,7 +375,6 @@
         "DEPRECATED_FILE": "Vanhentunut?",
         "ADD": "Add new attachment. {{maxFileSizeMsg}}",
         "DROP": "Drop attachments here!",
-        "MAX_FILE_SIZE": "[Maks. koko: {{maxFileSize}}]",
         "SHOW_DEPRECATED": "+ näytä vanhentuneet liitteet",
         "HIDE_DEPRECATED": "- piilota vanhentuneet liitteet",
         "COUNT_DEPRECATED": "({{ counter }} vanhentunutta)",
@@ -457,9 +458,7 @@
             "RECRUITING_MESSAGE": "Who are you looking for?",
             "RECRUITING_PLACEHOLDER": "Define the profiles you are looking for",
             "PUBLIC_PROJECT": "Julkinen projekti",
-            "PUBLIC_PROJECT_DESC": "Users will be able to find and view your project",
             "PRIVATE_PROJECT": "Yksityinen projekti",
-            "PRIVATE_PROJECT_DESC": "By default, this project will be hidden to the public",
             "PRIVATE_OR_PUBLIC": "What's the difference between public and private projects?",
             "DELETE": "Poista tämä projekti",
             "LOGO_HELP": "The image will be scaled to 80x80px.",
@@ -495,7 +494,8 @@
             "ISSUE_ADD": "Lisää oma kenttä pyynnöille",
             "FIELD_TYPE_TEXT": "Text",
             "FIELD_TYPE_MULTI": "Multi-line",
-            "FIELD_TYPE_DATE": "Date"
+            "FIELD_TYPE_DATE": "Date",
+            "FIELD_TYPE_URL": "Url"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - Project values - {{projectName}}",
@@ -543,7 +543,7 @@
             "COUNT_MEMBERS": "{{ role.members_count }} jäsentä joilla tämä rooli",
             "TITLE_DELETE_ROLE": "Poista rooli",
             "REPLACEMENT_ROLE": "Kaikki käyttäjä joilla on tämä rooli siirretään",
-            "WARNING_DELETE_ROLE": "<strong>Ole varovainen, rooli-arvioinnit poistetaan</strong>",
+            "WARNING_DELETE_ROLE": "Be careful, all role estimations will be removed",
             "ERROR_DELETE_ALL": "Voit poistaa kaikki arvot",
             "EXTERNAL_USER": "Ulkoinen käyttäjä"
         },

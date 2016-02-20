@@ -41,7 +41,7 @@
         "IOCAINE_TEXT": "Bir görev size ağır geldi ve bunaldınız mı? Diğerlerinin bu durumdan haberi olması için bir görevi düzenlerken baldıran zehrinin üzerine tıklayın.  Nasıl ki zaman zaman ekstra meydan okumalarla bir işte gittikce iyi olmanız mümkünse, zaman içerisinde küçük dozlar alarak bu ölümcül zehre de bağışıklık kazanabilmek mümkün!",
         "CLIENT_REQUIREMENT": "Müşteri gereksinimi, daha önceden belli olmayan ama projeye dahil olması gereken bir gereksinimdir",
         "TEAM_REQUIREMENT": "Takım gereksinimi, müsteriyi ilgilendirmeyen, ama projede yer alması zorunlu olan bir gereksinimdir.",
-        "CAPSLOCK_WARNING": "Dikkat! Büyük harflerle yazıyorsunuz ve bu girdi büyüklük küçüklük duyarlı.",
+        "CAPSLOCK_WARNING": "Be careful! You are writing with capital letters and this input is case sensitive.",
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Bu değer geçersiz gözüküyor",
             "TYPE_EMAIL": "Bu değer geçerli bir e-posta adresi olmalı.",
@@ -65,7 +65,9 @@
             "MIN_CHECK": "En az %s seçenek belirtmek zorundasınız.",
             "MAX_CHECK": "%s seçenek ya da daha azını seçmek zorunlu.",
             "RANGE_CHECK": "%s ve %s seçenekleri arasında bir seçim yapmak zorunludu.",
-            "EQUAL_TO": "Bu değer aynı olmalı."
+            "EQUAL_TO": "Bu değer aynı olmalı.",
+            "LINEWIDTH": "One or some lines are too long. They should have %s characters or less.",
+            "PIKADAY": "Invalid date format, use DD MMM YYYY (like 23 Mar 1984)"
         },
         "PICKERDATE": {
             "FORMAT": "DD MM YYYY",
@@ -373,7 +375,6 @@
         "DEPRECATED_FILE": "Kaldırıldı mı?",
         "ADD": "Yeni ek ekleyin {{maxFileSizeMsg}}",
         "DROP": "Ekleri buraya bırakın!",
-        "MAX_FILE_SIZE": "[Max. boyut: {{maxFileSize}}]",
         "SHOW_DEPRECATED": "+ kaldırılan ekleri göster",
         "HIDE_DEPRECATED": "- kaldırılan ekleri gizle",
         "COUNT_DEPRECATED": "({{ counter }} kaldırılmış)",
@@ -457,9 +458,7 @@
             "RECRUITING_MESSAGE": "Ne aramıştınız?",
             "RECRUITING_PLACEHOLDER": "Aradığınız özellikleri yazın",
             "PUBLIC_PROJECT": "Açık Proje",
-            "PUBLIC_PROJECT_DESC": "Kullanıcılar projenizi bulabilir ve görebilir",
             "PRIVATE_PROJECT": "Gizli proje",
-            "PRIVATE_PROJECT_DESC": "Normalde bu proje gizli olacak",
             "PRIVATE_OR_PUBLIC": "Açık ve özel projeler arasındaki fark nedir?",
             "DELETE": "Bu projeyi sil",
             "LOGO_HELP": "Resim 80×80 piksel boyutuna ölçeklenecek. ",
@@ -495,7 +494,8 @@
             "ISSUE_ADD": "Sorunlara yeni bir özel alan ekle",
             "FIELD_TYPE_TEXT": "Metin",
             "FIELD_TYPE_MULTI": "Çoklu-satır",
-            "FIELD_TYPE_DATE": "Tarih"
+            "FIELD_TYPE_DATE": "Tarih",
+            "FIELD_TYPE_URL": "Url"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - Proje değerleri- {{projectName}}",
@@ -543,7 +543,7 @@
             "COUNT_MEMBERS": "bu roldeki üyelerin sayısı {{ role.members_count }} ",
             "TITLE_DELETE_ROLE": "Rol Sil",
             "REPLACEMENT_ROLE": "Bu role sahip kullanıcıların taşınacağı",
-            "WARNING_DELETE_ROLE": "<strong>Dikkat lütfen, bütün rol kestirimleri silinecek</strong>",
+            "WARNING_DELETE_ROLE": "Be careful, all role estimations will be removed",
             "ERROR_DELETE_ALL": "Bütün değerleri silemezsiniz",
             "EXTERNAL_USER": "Dış kullanıcı"
         },
