@@ -1523,7 +1523,7 @@
         "DOWNGRADE": {
             "TITLE": "Downgrade",
             "IMAGE_ALT": "Downgrading a plan",
-            "REASON": "You own more private projext or users per project than the maximum allowed by this plan. Your selected plan only allows <strong>{{projects}} private projects and {{members}} members per private project</strong>, so if you want to change to the {{plan}} plan you should make the following changes",
+            "REASON": "You own more private projects or users per project than the maximum allowed by this plan. Your selected plan only allows <strong>{{projects}} private projects and {{members}} members per private project</strong>, so if you want to change to the {{plan}} plan you should make the following changes",
             "MORE_PROJECTS": "If you have more than {{projects}} private projects",
             "MORE_PROJECTS_OPTION1": "Keep {{projects}} private projects as maximum and set the others as <strong>public</strong>",
             "MORE_PROJECTS_OPTION2": "Keep {{projects}} private projects and <strong>delete</strong> the others",
