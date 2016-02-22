@@ -777,6 +777,7 @@
             "CHANGE_PASSWORD": "Change password",
             "DASHBOARD_TITLE": "Dashboard",
             "DISCOVER_TITLE": "Discover trending projects",
+            "NEW_ITEM": "New",
             "DISCOVER": "Discover",
             "ACTION_REORDER": "Drag & drop to reorder"
         },

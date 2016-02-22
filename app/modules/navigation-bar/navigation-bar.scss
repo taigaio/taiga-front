@@ -133,6 +133,20 @@ $dropdown-width: 350px;
         margin-bottom: .5rem;
         padding: 0;
     }
+    .plugin {
+        &:hover {
+            .new {
+                color: $white;
+            }
+        }
+        .new {
+            @extend %small;
+            background: $red-light;
+            float: right;
+            margin-left: auto;
+            padding: .1rem .25rem;
+        }
+    }
     a {
         color: $gray-light;
         display: block;
