@@ -529,6 +529,7 @@
             margin-right: 0;
         }
         &:last-child {
+            flex-basis: 100%;
             margin: .1rem 0;
             min-width: 100%;
         }
