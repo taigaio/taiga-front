@@ -72,6 +72,7 @@
     "karma-coffee-preprocessor": "^0.3.0",
     "karma-mocha": "^0.2.0",
     "karma-sourcemap-loader": "^0.3.4",
+    "merge-stream": "^1.0.0",
     "minimist": "^1.1.1",
     "mocha": "^2.2.4",
     "node-uuid": "^1.4.3",

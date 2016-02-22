@@ -28,6 +28,8 @@ var gulp = require("gulp"),
     livereload = require('gulp-livereload'),
     gulpFilter = require('gulp-filter'),
     addsrc = require('gulp-add-src');
+    mergeStream = require('merge-stream'),
+    path = require('path'),
     coffeelint = require('gulp-coffeelint');
 
 var argv = require('minimist')(process.argv.slice(2));
@@ -379,8 +381,22 @@ gulp.task("app-loader", function() {
 });
 
 gulp.task("locales", function() {
-    return gulp.src(paths.locales)
+    var plugins = gulp.src(paths.app + "modules/**/locales/*.json")
+        .pipe(rename(function (localeFile) {
+            // rename app/modules/compiles-modules/tg-contrib/locales/locale-en.json
+            // to tg-contrib/locale-en.json
+
+            var pluginPath = path.join(localeFile.dirname, '..');
+            var pluginFolder = pluginPath.split('/').pop();
+
+            localeFile.dirname = pluginFolder;
+        }))
         .pipe(gulp.dest(paths.distVersion + "locales"));
+
+    var core = gulp.src(paths.locales)
+            .pipe(gulp.dest(paths.distVersion + "locales"));
+
+    return mergeStream(plugins, core);
 });
 
 gulp.task("coffee-lint", function () {

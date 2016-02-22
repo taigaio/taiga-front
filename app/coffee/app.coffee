@@ -580,6 +580,9 @@ i18nInit = (lang, $translate) ->
 init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $navUrls, appMetaService, projectService, loaderService, navigationBarService) ->
     $log.debug("Initialize application")
 
+    $rootscope.$on '$translatePartialLoaderStructureChanged', () ->
+        $translate.refresh()
+
     # Checksley - Extra validators
     validators = {
         linewidth: (val, width) ->
