@@ -367,7 +367,8 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
             templateUrl: "auth/login.html",
             title: "LOGIN.PAGE_TITLE",
             description: "LOGIN.PAGE_DESCRIPTION",
-            disableHeader: true
+            disableHeader: true,
+            controller: "LoginPage",
         }
     )
     $routeProvider.when("/register",

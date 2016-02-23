@@ -27,6 +27,19 @@ debounce = @.taiga.debounce
 
 module = angular.module("taigaAuth", ["taigaResources"])
 
+class LoginPage
+    @.$inject = [
+        'tgCurrentUserService',
+        '$location',
+        '$tgNavUrls'
+    ]
+
+    constructor: (currentUserService, $location, $navUrls) ->
+        if currentUserService.isAuthenticated()
+            $location.path($navUrls.resolve("home"))
+
+module.controller('LoginPage', LoginPage)
+
 #############################################################################
 ## Authentication Service
 #############################################################################
