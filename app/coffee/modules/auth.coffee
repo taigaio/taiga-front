@@ -299,15 +299,10 @@ RegisterDirective = ($auth, $confirm, $location, $navUrls, $config, $routeParams
         $scope.data = {}
         form = $el.find("form").checksley({onlyOneErrorElement: true})
 
-        if $routeParams['next'] and $routeParams['next'] != $navUrls.resolve("register")
-            $scope.nextUrl = decodeURIComponent($routeParams['next'])
-        else
-            $scope.nextUrl = $navUrls.resolve("home")
+        $scope.nextUrl = $navUrls.resolve("home")
 
         onSuccessSubmit = (response) ->
             $analytics.trackEvent("auth", "register", "user registration", 1)
-
-            $confirm.notify("success", $translate.instant("LOGIN_FORM.SUCCESS"))
 
             $location.url($scope.nextUrl)
 
