@@ -73,7 +73,7 @@ class ProjectValuesSectionController extends mixOf(taiga.Controller, taiga.PageM
 
     loadProject: ->
         return @rs.projects.getBySlug(@params.pslug).then (project) =>
-            if not project.i_am_owner
+            if not project.i_am_admin
                 @location.path(@navUrls.resolve("permission-denied"))
 
             @scope.projectId = project.id

@@ -93,7 +93,7 @@ nav.menu(
                         use(xlink:href="#icon-bubble")
                     span.helper(translate="PROJECT.SECTION.MEETUP")
 
-            li(id="nav-admin", ng-if="vm.project.get('i_am_owner')")
+            li(id="nav-admin", ng-if="vm.project.get('i_am_admin')")
                 a(
                     tg-nav="project-admin-home:project=vm.project.get('slug')"
                     ng-class="{active: vm.active == 'admin'}"
