@@ -11,7 +11,7 @@ div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
         div.backlog-summary(tg-toggle-burndown-visibility)
             include ../includes/components/summary
 
-            div.empty-burndown(ng-if="showGraphPlaceholder && project.i_am_owner")
+            div.empty-burndown(ng-if="showGraphPlaceholder && project.i_am_admin")
                 svg.icon.icon-graph
                     use(xlink:href="#icon-graph")
                 div.empty-text
