@@ -20,7 +20,11 @@ section.watching-container
     .title-bar.watching-title(translate="HOME.WATCHING_SECTION")
 
     .watching(ng-if="vm.watching.size")
-        .duty-single(tg-duty="duty", tg-repeat="duty in vm.watching", ng-class="{'blocked': duty.is_blocked}")
+        .duty-single(
+            tg-duty="duty"
+            tg-repeat="duty in vm.watching"
+            ng-class="{'blocked': duty.is_blocked}"
+        )
 
     .watching-empty(ng-if="vm.watching != undefined && vm.watching.size === 0")
         p(translate="HOME.EMPTY_WATCHING")

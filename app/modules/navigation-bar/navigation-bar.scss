@@ -173,6 +173,14 @@ $dropdown-width: 350px;
         &.create-project-btn {
             flex: 1;
         }
+        &.blocked-project {
+            color: $gray;
+            svg {
+                margin-left: .5rem;
+                position: relative;
+                top: .25rem;
+            }
+        }
     }
     .import-project-button {
         &:hover {

@@ -138,4 +138,11 @@ describe('project home', function() {
         expect(watchCounter).to.be.equal(watchCounterOld + 1);
     });
 
+    it('blocked project', async function() {
+      browser.get(browser.params.glob.host + 'project/project-6/');
+      await utils.common.waitLoader();
+      await utils.common.takeScreenshot("project", "blocked-project");
+      expect(browser.getCurrentUrl()).to.be.eventually.equal(browser.params.glob.host + 'blocked-project/project-6/');
+    });
+
 });

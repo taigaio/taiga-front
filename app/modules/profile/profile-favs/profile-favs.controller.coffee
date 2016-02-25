@@ -184,4 +184,3 @@ class ProfileWatchedController extends FavsBaseController
 
 angular.module("taigaProfile")
     .controller("ProfileWatched", ProfileWatchedController)
-

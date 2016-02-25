@@ -111,6 +111,16 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         }
     )
 
+
+    $routeProvider.when("/blocked-project/:pslug/",
+        {
+            templateUrl: "projects/project/blocked-project.html",
+            loader: true,
+            controller: "Project",
+            controllerAs: "vm"
+        }
+    )
+
     $routeProvider.when("/project/:pslug/",
         {
             templateUrl: "projects/project/project.html",
@@ -514,6 +524,42 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     $provide.factory("versionCheckHttpIntercept", ["$q", versionCheckHttpIntercept])
 
     $httpProvider.interceptors.push("versionCheckHttpIntercept")
+
+
+    blockingIntercept = ($q, $routeParams, $location, $navUrls) ->
+        # API calls can return blocked elements and in that situation the user will be redirected
+        # to the blocked project page
+        # This can happens in two scenarios
+        # - An ok response containing a blocked_code in the data
+        # - An error reponse when updating/creating/deleting including a 451 error code
+        redirectToBlockedPage = ->
+            pslug = $routeParams.pslug
+            blockedUrl = $navUrls.resolve("blocked-project", {project: pslug})
+            currentUrl = $location.url()
+            if currentUrl.indexOf(blockedUrl) == -1
+                $location.replace().path(blockedUrl)
+
+        responseOk = (response) ->
+            if response.data.blocked_code
+                redirectToBlockedPage()
+
+            return response
+
+        responseError = (response) ->
+            if response.status == 451
+                redirectToBlockedPage()
+
+            return $q.reject(response)
+
+        return {
+            response: responseOk
+            responseError: responseError
+        }
+
+    $provide.factory("blockingIntercept", ["$q", "$routeParams", "$location", "$tgNavUrls", blockingIntercept])
+
+    $httpProvider.interceptors.push("blockingIntercept")
+
 
     $compileProvider.debugInfoEnabled(window.taigaConfig.debugInfo || false)
 

@@ -1,7 +1,6 @@
-.list-itemtype-project
+.list-itemtype-project(ng-class="{'blocked-project': vm.item.get('project_blocked_code')}")
     .list-itemtype-project-left
         .list-itemtype-project-data-wrapper
-
             a.list-itemtype-project-image(
                 href="#"
                 tg-nav="project:project=vm.item.get('slug')"
@@ -14,20 +13,21 @@
 
             .list-itemtype-project-data
                 h2
-                    a(
+                    a.list-itemtype-project-name(
                         href="#"
                         tg-nav="project:project=vm.item.get('slug')"
                         title="{{ ::vm.item.get('name') }}"
                     ) {{ ::vm.item.get('name') }}
-                    span.private(ng-if="::project.get('is_private')", title="{{'PROJECT.PRIVATE' | translate}}")
-                p {{ ::vm.item.get('description') }}
-
-        .list-itemtype-project-tags.tags-container(ng-if="::vm.item.get('tags_colors').size")
-            span.tag(
-                tg-repeat="tag in ::vm.item.get('tags_colors')"
-                style='border-left: 5px solid {{ ::tag.get("color") }};'
-            )
-                span.tag-name {{ ::tag.get('name') }}
+                    span.private(
+                        ng-if="::vm.item.get('project_is_private')"
+                        title="{{'PROJECT.PRIVATE' | translate}}"
+                    )
+                        svg.icon.icon-lock
+                            use(xlink:href="#icon-lock")
+                    svg.icon.icon-blocked-project(ng-if="vm.item.get('project_blocked_code')")
+                        use(xlink:href="#icon-blocked-project")
+                            title(translate="PROJECT.BLOCKED_PROJECT.BLOCKED")
+                p.list-itemtype-project-description {{ ::vm.item.get('description') }}
 
     .list-itemtype-track
         span.list-itemtype-track-likers(

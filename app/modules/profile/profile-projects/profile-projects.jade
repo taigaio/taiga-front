@@ -11,8 +11,10 @@ section.profile-projects
             translate="USER.PROFILE.PROJECTS_EMPTY"
             translate-values="{username: vm.user.get('full_name_display')}"
         )
-
-    .list-itemtype-project(tg-repeat="project in vm.projects")
+    .list-itemtype-project(
+        tg-repeat="project in vm.projects"
+        ng-class="{'blocked-project': project.get('blocked_code')}"
+    )
         .list-itemtype-project-left
             .project-list-single-title-wrapper
                 a.list-itemtype-project-image(
@@ -26,19 +28,15 @@ section.profile-projects
                     )
                 .project-list-single-title
                     h2
-                        a(
+                        a.project-title(
                             href="#"
                             tg-nav="project:project=project.get('slug')"
                             title="{{ ::project.get('name') }}"
                         ) {{::project.get('name')}}
-                    p {{ ::project.get('description') | limitTo:300 }}
-
-            .list-itemtype-project-tags.tags-container(ng-if="::project.get('tags').size")
-                span.tag(
-                    style='border-left: 5px solid {{::tag.get("color")}};'
-                    tg-repeat="tag in ::project.get('colorized_tags')"
-                )
-                    span.tag-name {{::tag.get('name')}}
+                        svg.icon.icon-blocked-project(ng-if="project.get('blocked_code')")
+                            use(xlink:href="#icon-blocked-project")
+                                title(translate="PROJECT.BLOCKED_PROJECT.BLOCKED")
+                    p.project-description {{ ::project.get('description') | limitTo:300 }}
 
         .list-itemtype-project-right
 

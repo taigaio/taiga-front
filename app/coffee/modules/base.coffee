@@ -67,6 +67,7 @@ urls = {
     "profile": "/profile"
     "user-profile": "/profile/:username"
 
+    "blocked-project": "/blocked-project/:project"
     "project": "/project/:project"
     "project-backlog": "/project/:project/backlog"
     "project-taskboard": "/project/:project/taskboard/:sprint"

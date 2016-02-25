@@ -60,10 +60,26 @@ section.profile-favs
             tg-repeat="item in vm.items track by $index"
             ng-switch="item.get('type')"
         )
-            div(ng-switch-when="project", tg-fav-item="item", item-type="project")
-            div(ng-switch-when="userstory", tg-fav-item="item", item-type="userstory")
-            div(ng-switch-when="task", tg-fav-item="item", item-type="task")
-            div(ng-switch-when="issue", tg-fav-item="item", item-type="issue")
+            div(
+                ng-switch-when="project"
+                tg-fav-item="item"
+                item-type="project"
+            )
+            div(
+                ng-switch-when="userstory"
+                tg-fav-item="item"
+                item-type="userstory"
+            )
+            div(
+                ng-switch-when="task"
+                tg-fav-item="item"
+                item-type="task"
+            )
+            div(
+                ng-switch-when="issue"
+                tg-fav-item="item"
+                item-type="issue"
+            )
 
     div(ng-if="vm.isLoading")
         div.spin

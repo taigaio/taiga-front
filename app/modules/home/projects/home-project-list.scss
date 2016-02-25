@@ -9,6 +9,20 @@
     &:hover {
         border: 1px solid $primary-light;
     }
+    &.blocked-project {
+        border: $whitish;
+        &:hover {
+            border: $whitish;
+        }
+        .tags-container,
+        .project-card-logo,
+        .project-card-name a,
+        .icon-recruit,
+        .project-card-description,
+        .project-card-statistics {
+            opacity: .3;
+        }
+    }
 }
 
 .projects-empty {
