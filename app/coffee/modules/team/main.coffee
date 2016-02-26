@@ -95,6 +95,7 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.issuesEnabled = project.is_issues_activated
             @scope.tasksEnabled = project.is_kanban_activated or project.is_backlog_activated
             @scope.wikiEnabled = project.is_wiki_activated
+            @scope.owner = project.owner.id
 
             return project
 
@@ -185,10 +186,11 @@ TeamMemberCurrentUserDirective = () ->
         scope: {
             projectId: "=projectid",
             currentUser: "=currentuser",
-            stats: "="
-            issuesEnabled: "=issuesenabled"
-            tasksEnabled: "=tasksenabled"
-            wikiEnabled: "=wikienabled"
+            stats: "=",
+            issuesEnabled: "=issuesenabled",
+            tasksEnabled: "=tasksenabled",
+            wikiEnabled: "=wikienabled",
+            owner: "=owner"
         }
     }
 
@@ -208,10 +210,11 @@ TeamMembersDirective = () ->
             memberships: "=",
             filtersQ: "=filtersq",
             filtersRole: "=filtersrole",
-            stats: "="
-            issuesEnabled: "=issuesenabled"
-            tasksEnabled: "=tasksenabled"
-            wikiEnabled: "=wikienabled"
+            stats: "=",
+            issuesEnabled: "=issuesenabled",
+            tasksEnabled: "=tasksenabled",
+            wikiEnabled: "=wikienabled",
+            owner: "=owner"
         }
     }
 

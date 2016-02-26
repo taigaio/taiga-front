@@ -49,15 +49,14 @@
                                     )
                                         svg.icon.icon-lock
                                             use(xlink:href="#icon-lock")
+                                    
+                                    svg.icon.icon-badge(ng-if="project.get('i_am_owner')")
+                                        use(xlink:href="#icon-badge")
+                                            title(translate="COMMON.OWNER")
+                                            
+                                            
                                 p {{ ::project.get('description') | limitTo:300 }}
                                     span(ng-if="::project.get('description').length > 300") ...
-
-                        .list-itemtype-project-tags.tag-container(ng-if="::project.get('tags').size")
-                            span.tag(
-                                style='border-left: 5px solid {{::tag.get("color")}};'
-                                tg-repeat="tag in ::project.get('colorized_tags')"
-                            )
-                                span.tag-name {{::tag.get('name')}}
 
                     svg.drag.icon.icon-drag
                         use(xlink:href="#icon-drag")

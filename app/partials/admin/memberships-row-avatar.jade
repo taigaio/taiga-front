@@ -2,6 +2,11 @@ figure.avatar
     img(src!="<%- imgurl %>", alt!="<%- full_name %>")
     figcaption
         span.name <%- full_name %>
+            <% if (isOwner) { %>
+            svg.icon.icon-badge
+                use(xlink:href="#icon-badge")
+                    title(translate="COMMON.OWNER")
+            <% }  %>
         div
             span.pending <%- pending %>
             span.email <%- email %>

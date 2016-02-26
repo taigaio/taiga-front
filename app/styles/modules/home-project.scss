@@ -96,6 +96,7 @@
         li {
             flex-basis: 24%;
             margin-right: .14rem;
+            position: relative;
             &:nth-child(4n) {
                 margin-right: 0;
             }
@@ -106,6 +107,11 @@
         img {
             border-radius: .2rem;
             width: 100%;
+        }
+        .icon-badge {
+            bottom: 15%;
+            position: absolute;
+            right: 15%;
         }
     }
 }

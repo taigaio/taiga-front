@@ -35,6 +35,7 @@ section.table-team.basic-table
         issuesEnabled="issuesEnabled"
         tasksenabled="tasksEnabled"
         wikienabled="wikiEnabled"
+        owner="owner"
         ng-if="::currentUser"
     )
 
@@ -42,4 +43,14 @@ h2(ng-show="memberships.length")
     span(translate="TEAM.SECTION_TITLE_TEAM")
     span  {{filtersRole.name || ("TEAM.SECTION_FILTER_ALL" | translate)}}
 
-section.table-team.basic-table(tg-team-members, memberships="memberships", stats="stats", filtersq="filtersQ", filtersrole="filtersRole", issuesEnabled="issuesEnabled", tasksenabled="tasksEnabled", wikienabled="wikiEnabled")
+section.table-team.basic-table(
+    tg-team-members
+    memberships="memberships"
+    stats="stats"
+    filtersq="filtersQ"
+    filtersrole="filtersRole"
+    issuesEnabled="issuesEnabled"
+    tasksenabled="tasksEnabled"
+    wikienabled="wikiEnabled"
+    owner="owner"
+)
