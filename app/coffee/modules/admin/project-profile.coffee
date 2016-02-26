@@ -51,11 +51,13 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$tgLocation",
         "$tgNavUrls",
         "tgAppMetaService",
-        "$translate"
+        "$translate",
+        "$tgAuth",
+        "tgCurrentUserService"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls,
-                  @appMetaService, @translate) ->
+                  @appMetaService, @translate, @tgAuth, @currentUserService) ->
         @scope.project = {}
 
         promise = @.loadInitialData()
@@ -66,6 +68,11 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
                      sectionName: sectionName, projectName: @scope.project.name})
             description = @scope.project.description
             @appMetaService.setAll(title, description)
+
+            @scope.canBePrivateProject = @.currentUserService.canBePrivateProject(@scope.project.id)
+            @scope.canBePublicProject = @.currentUserService.canBePublicProject(@scope.project.id)
+
+            @scope.isPrivateProject = @scope.project.is_private
 
         promise.then null, @.onInitialDataError.bind(@)
 
@@ -94,8 +101,10 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
             return project
 
     loadInitialData: ->
-        promise = @.loadProject()
-        return promise
+        return @q.all([
+            @.loadProject(),
+            @tgAuth.refresh()
+        ])
 
     openDeleteLightbox: ->
         @rootscope.$broadcast("deletelightbox:new", @scope.project)
@@ -510,3 +519,15 @@ ProjectLogoModelDirective = ($parse) ->
     return {link:link}
 
 module.directive('tgProjectLogoModel', ['$parse', ProjectLogoModelDirective])
+
+
+AdminProjectRestrictionsDirective = () ->
+    return {
+        scope: {
+            "canBePrivateProject": "=",
+            "canBePublicProject": "="
+        },
+        templateUrl: "admin/admin-project-restrictions.html"
+    }
+
+module.directive('tgAdminProjectRestrictions', [AdminProjectRestrictionsDirective])

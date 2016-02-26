@@ -45,6 +45,7 @@ urls = {
     "user-voted": "/users/%s/voted"
     "user-watched": "/users/%s/watched"
     "user-contacts": "/users/%s/contacts"
+    "user-me": "/users/me"
 
     # User - Notification
     "permissions": "/permissions"

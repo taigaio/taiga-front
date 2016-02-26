@@ -103,4 +103,47 @@
             display: block;
         }
     }
+    .privacy-project[disabled] {
+        + label {
+            background: $whitish;
+            box-shadow: none;
+            color: $gray-light;
+            cursor: not-allowed;
+            opacity: .65;
+            &:hover {
+                background: $whitish;
+                color: $gray-light;
+            }
+        }
+    }
+}
+
+tg-admin-project-restrictions {
+    p {
+        @extend %xsmall;
+        margin-bottom: 0;
+    }
+    span {
+        display: block;
+    }
+    a {
+        color: $primary;
+    }
+    fieldset {
+        text-align: center;
+    }
+    span:first-child {
+        &::before {
+            border: 1px solid $red-light;
+            border-radius: 6px;
+            color: $red-light;
+            content: '!';
+            display: inline-block;
+            height: 12px;
+            line-height: 12px;
+            margin-right: .5rem;
+            text-align: center;
+            width: 12px;
+        }
+    }
 }

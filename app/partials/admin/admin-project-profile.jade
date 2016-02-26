@@ -126,10 +126,16 @@ div.wrapper(
                             placeholder="{{ 'ADMIN.PROJECT_PROFILE.RECRUITING_PLACEHOLDER' | translate }}"
                         )
 
+                tg-admin-project-restrictions(
+                    can-be-private-project="canBePrivateProject"
+                    can-be-public-project="canBePublicProject"
+                )
+
                 fieldset
                     .project-privacy-settings
                         div.privacy-option
                             input.privacy-project(
+                                ng-disabled="!canBePublicProject.valid"
                                 type="radio"
                                 id="private-project"
                                 name="privacy-project"
@@ -140,6 +146,7 @@ div.wrapper(
 
                         div.privacy-option
                             input.privacy-project(
+                                ng-disabled="!canBePrivateProject.valid"
                                 type="radio"
                                 id="public-project"
                                 name="privacy-project"

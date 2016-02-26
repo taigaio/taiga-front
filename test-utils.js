@@ -30,4 +30,6 @@
         var original = searchOriginal(this);
         original._rejectfn.apply(this, arguments);
     };
+
+    window.addDecorator = function() {};
 }());
