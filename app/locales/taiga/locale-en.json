@@ -139,7 +139,8 @@
             "BLOCKED_NOTE": "blocked note",
             "IS_BLOCKED": "is blocked",
             "REF": "Ref",
-            "VOTES": "Votes"
+            "VOTES": "Votes",
+            "SPRINT": "Sprint"
         },
         "ROLES": {
             "ALL": "All"

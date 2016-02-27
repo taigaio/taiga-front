@@ -17,7 +17,8 @@
             flex-shrink: 1;
         }
         .status,
-        .points {
+        .points,
+        .sprint {
             flex-basis: 150px;
             flex-grow: 0;
             padding: 0 1rem;
@@ -60,7 +61,8 @@
         border-bottom: 1px solid $whitish;
     }
     .status,
-    .points {
+    .points,
+    .sprint {
         position: relative;
     }
     .avatar {

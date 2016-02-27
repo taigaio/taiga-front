@@ -6,6 +6,7 @@
 ### Features
 - Ability to create url custom fields. (thanks to [@astagi](https://github.com/astagi)).
 - Moved from iconfont to SVG sprite icon system and redesign.
+- Add Sprint title on search results for User Stories
 
 ### Misc
 - Lots of small and not so small bugfixes.

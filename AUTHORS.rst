@@ -21,6 +21,7 @@ answer newbie questions, and generally made Taiga that much better:
 - Brett Profitt <brett.profitt@gmail.com>
 - Chris Wilson <chris.wilson@aridhia.com>
 - Daniel Koch
+- Everardo Medina <everblut@gmail.com>
 - Florian Bezagu
 - Guilhem Got <guilhem.got@gmail.com>
 - Jordan Rinke
