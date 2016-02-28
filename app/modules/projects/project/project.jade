@@ -63,7 +63,7 @@ div.wrapper
                         title="{{'PROJECT.LOOKING_FOR_PEOPLE' | translate}}"
                     )
                     h3 {{'PROJECT.LOOKING_FOR_PEOPLE' | translate}}
-                    p(ng-if="vm.project.get('looking_for_people_note')") {{::vm.project.get('looking_for_people_note')}}"
+                    p(ng-if="vm.project.get('looking_for_people_note')") {{::vm.project.get('looking_for_people_note')}}
                 h2.title {{"PROJECT.SECTION.TEAM" | translate}}
                 ul.involved-team
                     li(tg-repeat="member in vm.members")
