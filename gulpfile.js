@@ -70,6 +70,7 @@ paths.css_vendor = [
     paths.vendor + "intro.js/introjs.css"
 ];
 paths.locales = paths.app + "locales/**/*.json";
+paths.modulesLocales = paths.app + "modules/**/locales/*.json";
 
 paths.sass = [
     paths.app + "**/*.scss",
@@ -566,7 +567,7 @@ gulp.task("watch", function() {
     gulp.watch(paths.svg, ["copy-svg"]);
     gulp.watch(paths.coffee, ["app-watch"]);
     gulp.watch(paths.libs, ["jslibs-watch"]);
-    gulp.watch(paths.locales, ["locales"]);
+    gulp.watch([paths.locales, paths.modulesLocales], ["locales"]);
     gulp.watch(paths.images, ["copy-images"]);
     gulp.watch(paths.fonts, ["copy-fonts"]);
 });

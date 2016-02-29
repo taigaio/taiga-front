@@ -135,6 +135,17 @@ class AuthService extends taiga.Service
         return false
 
     ## Http interface
+    refresh: () ->
+        url = @urls.resolve("user-me")
+
+        return @http.get(url).then (data, status) =>
+            user = data.data
+            user.token = @.getUser().auth_token
+
+            user = @model.make_model("users", user)
+
+            @.setUser(user)
+            return user
 
     login: (data, type) ->
         url = @urls.resolve("auth")
