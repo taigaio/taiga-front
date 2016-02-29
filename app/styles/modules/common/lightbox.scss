@@ -1,8 +1,8 @@
 .lightbox {
     @extend %lightbox;
     h2 {
-        @extend %larger;
-        @extend %text;
+        @extend %xlarge;
+        @extend %light;
     }
 }
 

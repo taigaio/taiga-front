@@ -13,9 +13,19 @@ div.wrapper.memberships(ng-controller="MembershipsController as ctrl",
                 include ../includes/components/mainTitle
 
             .action-buttons
-                a.button-green(href="", title="{{ ADMIN.MEMBERSHIPS.ADD_BUTTON_TITLE | translate }}",
-                               ng-click="ctrl.addNewMembers()")
-                   span.text(translate="ADMIN.MEMBERSHIPS.ADD_BUTTON")
+                a.limit-users-warning(
+                    ng-if="!canAddUsers"
+                    translate="ADMIN.MEMBERSHIPS.LIMIT_USERS_WARNING"
+                    translate-values="{members: ctrl.maxMembers}"
+                    href=""
+                    ng-click="ctrl.limitUsersWarning()"
+                )
+                button.button-green(
+                    title="{{ ADMIN.MEMBERSHIPS.ADD_BUTTON_TITLE | translate }}",
+                    ng-click="ctrl.addNewMembers()"
+                    translate="ADMIN.MEMBERSHIPS.ADD_BUTTON"
+                    ng-disabled="!canAddUsers"
+                )
 
         include ../includes/modules/admin/admin-membership-table
 
