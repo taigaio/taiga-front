@@ -129,7 +129,7 @@ class CurrentUserService
 
         user = @.getUser()
 
-        if user.get('max_members_private_projects') != null && project.get('members').size >= user.get('max_members_private_projects')
+        if user.get('max_members_private_projects') != null && project.get('members').size > user.get('max_members_private_projects')
             return {valid: false, reason: 'max_members_private_projects', type: 'private_project'}
 
         return {valid: true}
@@ -145,7 +145,7 @@ class CurrentUserService
 
         user = @.getUser()
 
-        if user.get('max_members_public_projects') != null && project.get('members').size >= user.get('max_members_public_projects')
+        if user.get('max_members_public_projects') != null && project.get('members').size > user.get('max_members_public_projects')
             return {valid: false, reason: 'max_members_public_projects', type: 'public_project'}
 
         return {valid: true}
