@@ -72,3 +72,6 @@ div.wrapper
                             title="{{::member.get('full_name')}}"
                         )
                             img(ng-src="{{::member.get('photo')}}", alt="{{::member.get('full_name')}}")
+                            svg.icon.icon-badge(ng-if="member.get('id') == vm.project.getIn(['owner', 'id'])")
+                                use(xlink:href="#icon-badge")
+                                    title(translate="COMMON.OWNER")

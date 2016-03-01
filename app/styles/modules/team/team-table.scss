@@ -100,4 +100,8 @@
     .popover {
         @include popover(100%, '', 0, 30px, '', 15px, '', 50%, -5px);
     }
+    .icon-badge {
+        position: relative;
+        top: .15rem;
+    }
 }
