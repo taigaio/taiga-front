@@ -78,30 +78,6 @@ div.wrapper(
                         ng-model="project.tags"
                     )
 
-                fieldset
-                    label(for="project-sprints") {{ 'ADMIN.PROJECT_PROFILE.NUMBER_SPRINTS' | translate }}
-                    input(
-                        type="number"
-                        name="total_milestones"
-                        min="0"
-                        placeholder="{{'ADMIN.PROJECT_PROFILE.NUMBER_SPRINTS' | translate}}"
-                        id="project-sprints"
-                        ng-model="project.total_milestones"
-                        data-type="digits"
-                    )
-
-                fieldset
-                    label(for="total-story-points") {{ 'ADMIN.PROJECT_PROFILE.NUMBER_US_POINTS' | translate }}
-                    input(
-                        type="number"
-                        name="total_story_points"
-                        min="0"
-                        placeholder="{{'ADMIN.PROJECT_PROFILE.NUMBER_US_POINTS' | translate}}"
-                        id="total-story-points"
-                        ng-model="project.total_story_points"
-                        data-type="digits"
-                    )
-
                 fieldset.looking-for-people
                     .looking-for-people-selector
                         span {{ 'ADMIN.PROJECT_PROFILE.RECRUITING' | translate }}

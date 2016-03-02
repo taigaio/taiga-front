@@ -1,7 +1,10 @@
 doctype html
 
-div.wrapper(tg-project-modules, ng-controller="ProjectProfileController as ctrl",
-            ng-init="section='admin'; sectionName='ADMIN.MODULES.TITLE'")
+div.wrapper(
+    tg-project-modules
+    ng-controller="ProjectProfileController as ctrl"
+    ng-init="section='admin'; sectionName='ADMIN.MODULES.TITLE'"
+)
     tg-project-menu
     sidebar.menu-secondary.sidebar.settings-nav(tg-admin-navigation="project-profile")
         include ../includes/modules/admin-menu
@@ -13,94 +16,159 @@ div.wrapper(tg-project-modules, ng-controller="ProjectProfileController as ctrl"
         header
             include ../includes/components/mainTitle
 
-        form
-            div.functionality(ng-class="{true:'active', false:''}[project.is_backlog_activated]")
-                svg.icon.icon-scrum
-                    use(xlink:href="#icon-scrum")
-                div.desc
-                    p
-                        span.title(translate="ADMIN.MODULES.BACKLOG")
-                        span(translate="ADMIN.MODULES.BACKLOG_DESCRIPTION")
-                    div.activate
-                        input.activate-input(type="checkbox", id="functionality-backlog",
-                                             ng-model="project.is_backlog_activated")
-                        label.button.button-gray(ng-switch="project.is_backlog_activated",
-                                                 for="functionality-backlog")
-                            span(ng-switch-when="true", translate="ADMIN.MODULES.DISABLE")
-                            span(ng-switch-when="false", translate="ADMIN.MODULES.ENABLE")
+        form.module-container
+            .module.module-scrum(ng-class="{true:'active', false:''}[project.is_backlog_activated]")
+                .module-icon
+                    svg.icon.icon-scrum
+                        use(xlink:href="#icon-scrum")
+                .module-name(translate="ADMIN.MODULES.BACKLOG")
+                .module-desc
+                    p(translate="ADMIN.MODULES.BACKLOG_DESCRIPTION")
+                    .module-desc-options(ng-if="project.is_backlog_activated")
+                        fieldset
+                            label(for="total-sprints") {{ 'ADMIN.MODULES.NUMBER_SPRINTS' | translate }}
+                            input(
+                                id="total-sprints"
+                                name="total-sprints"
+                                type="number"
+                                min="0"
+                                placeholder="{{'ADMIN.MODULES.NUMBER_SPRINTS_HELP' | translate}}"
+                                ng-model="project.total_milestones"
+                                data-type="digits"
+                            )
 
-            div.functionality(ng-class="{true:'active', false:''}[project.is_kanban_activated]")
-                svg.icon.icon-kanban
-                    use(xlink:href="#icon-kanban")
-                div.desc
-                    p
-                        span.title(translate="ADMIN.MODULES.KANBAN")
-                        span(translate="ADMIN.MODULES.KANBAN_DESCRIPTION")
-                    div.activate
-                        input.activate-input(type="checkbox", id="functionality-kanban",
-                                             ng-model="project.is_kanban_activated")
-                        label.button.button-gray(ng-switch="project.is_kanban_activated",
-                                                 for="functionality-kanban")
-                            span(ng-switch-when="true", translate="ADMIN.MODULES.DISABLE")
-                            span(ng-switch-when="false", translate="ADMIN.MODULES.ENABLE")
+                        fieldset
+                            label(for="total-story-points") {{ 'ADMIN.MODULES.NUMBER_US_POINTS' | translate }}
+                            input(
+                                id="total-story-points"
+                                name="total-story-points"
+                                type="number"
+                                min="0"
+                                placeholder="{{'ADMIN.MODULES.NUMBER_US_POINTS_HELP' | translate}}"
+                                ng-model="project.total_story_points"
+                                data-type="digits"
+                            )
+                        svg.icon.icon-save(ng-if="project.is_backlog_activated")
+                            use(xlink:href="#icon-save")
+                .module-activation.module-direct-active
+                    div.check
+                        input.activate-input(
+                            id="functionality-backlog"
+                            name="functionality-backlog"
+                            type="checkbox"
+                            ng-checked="project.is_backlog_activated"
+                            ng-model="project.is_backlog_activated"
+                        )
+                        div
+                        span.check-text.check-yes(translate="COMMON.YES")
+                        span.check-text.check-no(translate="COMMON.NO")
 
-            div.functionality(ng-class="{true:'active', false:''}[project.is_issues_activated]")
-                svg.icon.icon-issues
-                    use(xlink:href="#icon-issues")
-                div.desc
-                    p
-                        span.title(translate="ADMIN.MODULES.ISSUES")
-                        span(translate="ADMIN.MODULES.ISSUES_DESCRIPTION")
-                    div.activate
-                        input.activate-input(type="checkbox", id="functionality-issues",
-                                             ng-model="project.is_issues_activated")
-                        label.button.button-gray(ng-switch="project.is_issues_activated",
-                                                 for="functionality-issues")
-                            span(ng-switch-when="true", translate="ADMIN.MODULES.DISABLE")
-                            span(ng-switch-when="false", translate="ADMIN.MODULES.ENABLE")
+            .module.module-kanban(ng-class="{true:'active', false:''}[project.is_kanban_activated]")
+                .module-icon
+                    svg.icon.icon-kanban
+                        use(xlink:href="#icon-kanban")
+                .module-name(translate="ADMIN.MODULES.KANBAN")
+                .module-desc(translate="ADMIN.MODULES.KANBAN_DESCRIPTION")
+                .module-activation.module-direct-active
+                    div.check
+                        input.activate-input(
+                            id="functionality-kanban"
+                            name="functionality-kanban"
+                            type="checkbox"
+                            ng-checked="project.is_kanban_activated"
+                            ng-model="project.is_kanban_activated"
+                        )
+                        div
+                        span.check-text.check-yes(translate="COMMON.YES")
+                        span.check-text.check-no(translate="COMMON.NO")
 
-            div.functionality(ng-class="{true:'active', false:''}[project.is_wiki_activated]")
-                svg.icon.icon-wiki
-                    use(xlink:href="#icon-wiki")
-                div.desc
-                    p
-                        span.title(translate="ADMIN.MODULES.WIKI")
-                        span(translate="ADMIN.MODULES.WIKI_DESCRIPTION")
-                    div.activate
-                        input.activate-input(type="checkbox", id="functionality-wiki",
-                                             ng-model="project.is_wiki_activated")
-                        label.button.button-gray(ng-switch="project.is_wiki_activated",
-                                                 for="functionality-wiki")
-                            span(ng-switch-when="true", translate="ADMIN.MODULES.DISABLE")
-                            span(ng-switch-when="false", translate="ADMIN.MODULES.ENABLE")
+            .module.module-issues(ng-class="{true:'active', false:''}[project.is_issues_activated]")
+                .module-icon
+                    svg.icon.icon-issues
+                        use(xlink:href="#icon-issues")
+                .module-name(translate="ADMIN.MODULES.ISSUES")
+                .module-desc(translate="ADMIN.MODULES.ISSUES_DESCRIPTION")
+                .module-activation.module-direct-active
+                    div.check
+                        input.activate-input(
+                            id="functionality-issues"
+                            name="functionality-issues"
+                            type="checkbox"
+                            ng-checked="project.is_issues_activated"
+                            ng-model="project.is_issues_activated"
+                        )
+                        div
+                        span.check-text.check-yes(translate="COMMON.YES")
+                        span.check-text.check-no(translate="COMMON.NO")
 
-            div.functionality(ng-class="{true:'active', false:''}[isVideoconferenceActivated]")
-                svg.icon.icon-bubble-empty
-                    use(xlink:href="#icon-bubble-empty")
-                div.desc
-                    p
-                        span.title(translate="ADMIN.MODULES.MEETUP")
-                        span(translate="ADMIN.MODULES.MEETUP_DESCRIPTION")
-                    div.activate
-                        input.activate-input(type="checkbox", id="functionality-video",
-                                             ng-model="isVideoconferenceActivated")
-                        label.button.button-gray(ng-switch="isVideoconferenceActivated",
-                                                 for="functionality-video")
-                            span(ng-switch-when="true", translate="ADMIN.MODULES.DISABLE")
-                            span(ng-switch-when="false", translate="ADMIN.MODULES.ENABLE")
+            .module.module-wiki(ng-class="{true:'active', false:''}[project.is_wiki_activated]")
+                .module-icon
+                    svg.icon.icon-wiki
+                        use(xlink:href="#icon-wiki")
+                .module-name(translate="ADMIN.MODULES.WIKI")
+                .module-desc(translate="ADMIN.MODULES.WIKI_DESCRIPTION")
+                .module-activation.module-direct-active
+                    div.check
+                        input.activate-input(
+                            id="functionality-wiki"
+                            name="functionality-wiki"
+                            type="checkbox"
+                            ng-checked="project.is_wiki_activated"
+                            ng-model="project.is_wiki_activated"
+                        )
+                        div
+                        span.check-text.check-yes(translate="COMMON.YES")
+                        span.check-text.check-no(translate="COMMON.NO")
 
-                    div.videoconference-attributes.hidden
-                        select(ng-model="project.videoconferences",
-                               ng-options="e.id as e.name|translate for e in [{'id':'appear-in', 'name':'ADMIN.MODULES.APPEARIN_CHAT_ROOM'},{'id':'jitsi', 'name': 'ADMIN.MODULES.JITSI_CHAT_ROOM'},{'id':'talky', 'name': 'ADMIN.MODULES.TALKY_CHAT_ROOM'},{'id':'custom', 'name': 'ADMIN.MODULES.CUSTOM_CHAT_ROOM'}]")
-                            option(value="", translate="ADMIN.MODULES.SELECT_VIDEOCONFERENCE")
-                        input(ng-if="project.videoconferences && project.videoconferences != 'custom'",
-                              type="text",
-                              ng-model="project.videoconferences_extra_data",
-                              data-maxlength="255",
-                              placeholder="{{'ADMIN.MODULES.SALT_CHAT_ROOM' | translate}}")
-                        input(ng-if="project.videoconferences == 'custom'",
-                              type="text",
-                              ng-model="project.videoconferences_extra_data",
-                              data-maxlength="255",
-                              placeholder="{{'ADMIN.MODULES.URL_CHAT_ROOM' | translate}}")
-            button.button-green.submit-button(type="submit", title="{{'COMMON.SAVE' | translate}}", translate="COMMON.SAVE")
+            .module.module-videoconference(ng-class="{true:'active', false:''}[isVideoconferenceActivated]")
+                .module-icon
+                    svg.icon.icon-bubble-empty
+                        use(xlink:href="#icon-bubble-empty")
+                .module-name(translate="ADMIN.MODULES.MEETUP")
+                .module-desc
+                    p(translate="ADMIN.MODULES.MEETUP_DESCRIPTION")
+                    div.videoconference-attributes(ng-if="isVideoconferenceActivated")
+                        select(
+                            id="videoconference-type"
+                            name="videoconference-type"
+                            ng-model="project.videoconferences"
+                            ng-options="e.id as e.name|translate for e in [{'id':'appear-in', 'name':'ADMIN.MODULES.APPEARIN_CHAT_ROOM'},{'id':'jitsi', 'name': 'ADMIN.MODULES.JITSI_CHAT_ROOM'},{'id':'talky', 'name': 'ADMIN.MODULES.TALKY_CHAT_ROOM'},{'id':'custom', 'name': 'ADMIN.MODULES.CUSTOM_CHAT_ROOM'}]")
+                            option(
+                                value=""
+                                translate="ADMIN.MODULES.SELECT_VIDEOCONFERENCE"
+                            )
+                        fieldset(ng-if="project.videoconferences && project.videoconferences != 'custom'")
+                            input(
+                                id="videoconference-prefix"
+                                name="videoconference-prefix"
+                                type="text"
+                                ng-model="project.videoconferences_extra_data"
+                                data-maxlength="250"
+                                placeholder="{{'ADMIN.MODULES.SALT_CHAT_ROOM' | translate}}"
+                            )
+                        fieldset(ng-if="project.videoconferences == 'custom'")
+                            input(
+                                id="videoconference-url"
+                                name="videoconference-url"
+                                type="url"
+                                ng-model="project.videoconferences_extra_data"
+                                data-maxlength="250"
+                                placeholder="{{'ADMIN.MODULES.URL_CHAT_ROOM' | translate}}"
+                                data-type="url"
+                                data-required="true"
+                            )
+                        svg.icon.icon-save(ng-if="project.videoconferences")
+                            use(xlink:href="#icon-save")
+
+                .module-activation
+                    div.check
+                        input.activate-input(
+                            id="functionality-video"
+                            name="functionality-video"
+                            type="checkbox"
+                            ng-checked="project.isVideoconferenceActivated"
+                            ng-model="isVideoconferenceActivated"
+                        )
+                        div
+                        span.check-text.check-yes(translate="COMMON.YES")
+                        span.check-text.check-no(translate="COMMON.NO")

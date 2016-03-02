@@ -6,6 +6,7 @@
 ### Features
 - Ability to create url custom fields. (thanks to [@astagi](https://github.com/astagi)).
 - Moved from iconfont to SVG sprite icon system and redesign.
+- Redesign 'Admin > Project > Modules' panel.
 - Add badge to project owners
 
 ### Misc

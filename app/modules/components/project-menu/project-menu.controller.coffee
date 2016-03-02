@@ -95,24 +95,27 @@ class ProjectMenuController
         return sectionName
 
     _videoConferenceUrl: () ->
+        # Get base url
         if @.project.get("videoconferences") == "appear-in"
             baseUrl = "https://appear.in/"
         else if @.project.get("videoconferences") == "talky"
             baseUrl = "https://talky.io/"
         else if @.project.get("videoconferences") == "jitsi"
             baseUrl = "https://meet.jit.si/"
-            url = @.project.get("slug") + "-" + taiga.slugify(@.project.get("videoconferences_extra_data"))
-            url = url.replace(/-/g, "")
-            return baseUrl + url
         else if @.project.get("videoconferences") == "custom"
             return @.project.get("videoconferences_extra_data")
         else
             return ""
 
+        # Add prefix to the chat room name if exist
         if @.project.get("videoconferences_extra_data")
-            url = @.project.get("slug") + "-" + @.project.get("videoconferences_extra_data")
+            url = @.project.get("slug") + "-" + taiga.slugify(@.project.get("videoconferences_extra_data"))
         else
             url = @.project.get("slug")
+
+        # Some special cases
+        if @.project.get("videoconferences") == "jitsi"
+            url = url.replace(/-/g, "")
 
         return baseUrl + url
 

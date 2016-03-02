@@ -1,62 +1,75 @@
 .admin-functionalities {
-    form {
-        display: flex;
-        flex-wrap: wrap;
+    .module-container {
+        max-width: 900px;
+        width: 100%;
     }
-    .functionality {
+    .module {
         align-content: center;
-        align-items: center;
-        background-color: $whitish;
+        align-items: flex-start;
+        border-bottom: 1px solid $whitish;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        margin-bottom: .3rem;
-        margin-right: .3rem;
-        opacity: .5;
-        padding: 1rem;
-        position: relative;
-        transition: all .2s linear;
-        vertical-align: top;
-        width: 32%;
+        padding: 1rem 0;
         &.active {
-            background-color: rgba($primary, .3);
-            opacity: 1;
-        }
-        .icon {
-            fill: $gray;
-            height: 3rem;
-            margin: 1rem auto;
-            width: 3rem;
-        }
-        .desc {
-            text-align: center;
-            width: 100%;
-        }
-        .activate-input {
-            display: none;
-            +label {
-                color: $white;
-                cursor: pointer;
-                display: block;
-                text-align: center;
+            .module-icon .icon,
+            .module-name {
+                color: $primary;
+                fill: $primary;
             }
         }
-        .title {
-            @extend %bold;
-            display: block;
-        }
-        select {
-            margin-top: 1rem;
+    }
+    .module-icon {
+        flex-basis: 2rem;
+        flex-shrink: 0;
+        margin: 0 .5rem 0 0;
+        .icon {
+            @include svg-size(3rem);
+            fill: $gray-light;
         }
     }
+    .module-name {
+        @extend %bold;
+        @extend %large;
+        color: $gray-light;
+        flex-basis: 100px;
+        flex-shrink: 0;
+        margin: 0 .5rem;
+    }
+    .module-desc {
+        @extend %small;
+        color: $gray-light;
+        flex: 1;
+        margin: 0 2rem 0 0;
+        p {
+            margin: 0;
+        }
+    }
+    .module-desc-options,
     .videoconference-attributes {
-        select {
-            margin-bottom: .5rem;
+        align-items: flex-start;
+        display: flex;
+        margin-top: .5rem;
+        fieldset,
+        .icon {
+            margin: 0 .5rem;
+        }
+        .icon {
+            @include svg-size(2.5rem);
+            align-self: center;
+            cursor: pointer;
+            fill: $gray-light;
+            &:hover {
+                fill: $primary;
+            }
         }
     }
-    .button-green {
-        color: $white;
-        display: block;
-        text-align: center;
+    .module-scrum {
+        .icon {
+            align-self: flex-end;
+        }
+    }
+    .module-videoconference {
+        .icon {
+            align-self: flex-start;
+        }
     }
 }
