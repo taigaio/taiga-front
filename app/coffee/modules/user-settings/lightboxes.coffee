@@ -53,11 +53,11 @@ DeleteUserDirective = ($repo, $rootscope, $auth, $location, $navUrls, lightboxSe
             promise.then null, ->
                 console.log "FAIL"
 
-        $el.on "click", ".button-red", (event) ->
+        $el.on "click", ".button-green", (event) ->
             event.preventDefault()
             lightboxService.close($el)
 
-        $el.on "click", ".button-green", debounce 2000, (event) ->
+        $el.on "click", ".button-red", debounce 2000, (event) ->
             event.preventDefault()
             submit()
 

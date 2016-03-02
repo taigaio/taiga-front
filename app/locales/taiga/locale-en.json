@@ -828,8 +828,10 @@
             "SECTION_NAME": "Delete Taiga Account",
             "CONFIRM": "Are you sure you want to delete your Taiga account?",
             "SUBTITLE": "We're going to miss you! :-(",
-            "NEWSLETTER_LABEL_TEXT": "I don't wanna receive your newsletter anymore"
-
+            "NEWSLETTER_LABEL_TEXT": "I don't wanna receive your newsletter anymore",
+            "CANCEL": "Back to settings",
+            "ACCEPT": "Delete account",
+            "BLOCK_PROJECT": "Note that all your projects owned will be <strong>blocked</strong>. If you do not want to block your projects before deleting your account you can transfer ownership of the project to someone else."
         },
         "DELETE_PROJECT": {
             "TITLE": "Delete project",
