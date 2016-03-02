@@ -50,6 +50,11 @@
         opacity: 0;
         transition: opacity .3s ease;
     }
+    .lb-icon {
+        @include svg-size(6rem);
+        display: block;
+        margin: 1rem auto;
+    }
     .title {
         text-align: center;
     }

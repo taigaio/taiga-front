@@ -8,6 +8,7 @@
 - Moved from iconfont to SVG sprite icon system and redesign.
 - Redesign 'Admin > Project > Modules' panel.
 - Add badge to project owners
+- Limit of user per project.
 
 ### Misc
 - Lots of small and not so small bugfixes.

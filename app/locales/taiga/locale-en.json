@@ -408,7 +408,9 @@
             "TITLE": "Manage members",
             "PAGE_TITLE": "Memberships - {{projectName}}",
             "ADD_BUTTON": "+ New member",
-            "ADD_BUTTON_TITLE": "Add new member"
+            "ADD_BUTTON_TITLE": "Add new member",
+            "LIMIT_USERS_WARNING": "Why can't I add more members",
+            "LIMIT_USERS_WARNING_MESSAGE": "Currently you can only have <strong>{{members}}</strong> members per project. If you want to add more members get in touch with the administrators"
         },
         "PROJECT_EXPORT": {
             "TITLE": "Export",

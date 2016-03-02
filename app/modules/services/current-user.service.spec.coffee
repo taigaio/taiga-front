@@ -204,6 +204,112 @@ describe "tgCurrentUserService", ->
 
             done()
 
+    it "the user can't add more members in private projects", () ->
+        user = Immutable.fromJS({
+            id: 1,
+            name: "fake1",
+            max_members_private_projects: 2
+        })
+
+        projects = Immutable.fromJS({
+            all: [
+                {id: 1, name: "fake1"},
+                {id: 2, name: "fake2", members: [1, 2, 3, 4, 5], is_private: true},
+                {id: 3, name: "fake3"},
+                {id: 4, name: "fake4"}
+            ]
+        })
+
+        currentUserService._user = user
+        currentUserService._projects = projects
+
+        result = currentUserService.canAddMoreMembersInPrivateProjects(2)
+
+        expect(result).to.be.eql({
+            valid: false,
+            reason: 'max_members_private_projects',
+            type: 'private_project'
+        })
+
+    it "the user can add more members in private projects", () ->
+        user = Immutable.fromJS({
+            id: 1,
+            name: "fake1",
+            max_members_private_projects: 7
+        })
+
+        currentUserService._user = user
+
+        projects = Immutable.fromJS({
+            all: [
+                {id: 1, name: "fake1"},
+                {id: 2, name: "fake2", members: [1, 2, 3, 4, 5], is_private: true},
+                {id: 3, name: "fake3"},
+                {id: 4, name: "fake4"}
+            ]
+        })
+
+        currentUserService._projects = projects
+
+        result = currentUserService.canAddMoreMembersInPrivateProjects(2)
+
+        expect(result).to.be.eql({
+            valid: true
+        })
+
+    it "the user can't add more members in public projects", () ->
+        user = Immutable.fromJS({
+            id: 1,
+            name: "fake1",
+            max_members_public_projects: 2
+        })
+
+        projects = Immutable.fromJS({
+            all: [
+                {id: 1, name: "fake1"},
+                {id: 2, name: "fake2", members: [1, 2, 3, 4, 5], is_private: false},
+                {id: 3, name: "fake3"},
+                {id: 4, name: "fake4"}
+            ]
+        })
+
+        currentUserService._user = user
+        currentUserService._projects = projects
+
+        result = currentUserService.canAddMoreMembersInPublicProjects(2)
+
+        expect(result).to.be.eql({
+            valid: false,
+            reason: 'max_members_public_projects',
+            type: 'public_project'
+        })
+
+    it "the user can add more members in public projects", () ->
+        user = Immutable.fromJS({
+            id: 1,
+            name: "fake1",
+            max_members_public_projects: 7
+        })
+
+        projects = Immutable.fromJS({
+            all: [
+                {id: 1, name: "fake1"},
+                {id: 2, name: "fake2", members: [1, 2, 3, 4, 5], is_private: false},
+                {id: 3, name: "fake3"},
+                {id: 4, name: "fake4"}
+            ]
+        })
+
+        currentUserService._user = user
+        currentUserService._projects = projects
+
+        result = currentUserService.canAddMoreMembersInPublicProjects(2)
+
+        expect(result).to.be.eql({
+            valid: true
+        })
+
+
     it "the user can't create private projects if they reach the maximum number of private projects", () ->
         user = Immutable.fromJS({
             id: 1,
@@ -214,7 +320,7 @@ describe "tgCurrentUserService", ->
 
         currentUserService._user = user
 
-        result = currentUserService.canCreatePrivateProjects(0)
+        result = currentUserService.canCreatePrivateProjects()
 
         expect(result).to.be.eql({
             valid: false,

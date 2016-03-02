@@ -47,11 +47,13 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
         "$tgNavUrls",
         "$tgAnalytics",
         "tgAppMetaService",
-        "$translate"
+        "$translate",
+        "tgCurrentUserService",
+        "$tgAuth"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls, @analytics,
-                  @appMetaService, @translate) ->
+                  @appMetaService, @translate, @currentUserService, @tgAuth) ->
         bindMethods(@)
 
         @scope.project = {}
@@ -63,6 +65,7 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
            title = @translate.instant("ADMIN.MEMBERSHIPS.PAGE_TITLE", {projectName:  @scope.project.name})
            description = @scope.project.description
            @appMetaService.setAll(title, description)
+           @._checkUsersLimit()
 
         promise.then null, @.onInitialDataError.bind(@)
 
@@ -93,8 +96,11 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
 
     loadInitialData: ->
         promise = @.loadProject()
-        promise.then =>
-            @.loadMembers()
+
+        @q.all([
+            @.loadMembers(),
+            @tgAuth.refresh()
+        ])
 
         return promise
 
@@ -106,6 +112,22 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
     addNewMembers:  ->
         @rootscope.$broadcast("membersform:new")
 
+    _checkUsersLimit: ->
+        @scope.canAddUsers = true
+        userData = @currentUserService.getUser().toJS()
+
+        if @currentUserService.canAddMoreMembersInPrivateProjects(@scope.projectId).valid == false
+            @.maxMembers = userData.max_members_private_projects
+            @scope.canAddUsers = false
+        else if @currentUserService.canAddMoreMembersInPublicProjects(@scope.projectId).valid == false
+            @.maxMembers = userData.max_members_private_projects
+            @scope.canAddUsers = false
+
+    limitUsersWarning: ->
+        title = @translate.instant("ADMIN.MEMBERSHIPS.LIMIT_USERS_WARNING")
+        message = @translate.instant("ADMIN.MEMBERSHIPS.LIMIT_USERS_WARNING_MESSAGE", {members: @.maxMembers})
+        icon = "/" + window._version + "/svg/icons/team-question.svg"
+        @confirm.success(title, message,icon)
 
 module.controller("MembershipsController", MembershipsController)
 

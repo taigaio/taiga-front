@@ -161,10 +161,15 @@ class ConfirmService extends taiga.Service
 
         return defered.promise
 
-    success: (title, message) ->
+    success: (title, message, icon) ->
         defered = @q.defer()
 
         el = angular.element(".lightbox-generic-success")
+
+        el.find("img").remove()
+        detailImage = $('<img>').addClass('lb-icon').attr('src', icon)
+        if detailImage
+            el.find('section').prepend(detailImage)
 
         # Render content
         el.find(".title").html(title) if title

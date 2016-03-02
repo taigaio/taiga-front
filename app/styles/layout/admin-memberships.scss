@@ -5,6 +5,11 @@
             float: right;
         }
     }
+    .limit-users-warning {
+        @extend %small;
+        color: $primary;
+        margin-right: 1rem;
+    }
     .check {
         input { // IE needs smaller size
             height: 40px;

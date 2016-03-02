@@ -44,7 +44,6 @@
         }
     }
 }
-
 .trans-button {
     @extend %medium;
     @extend %title;
@@ -61,12 +60,9 @@
         color: $blackish;
     }
 }
-
-
 .submit-button {
     width: 100%;
 }
-
 .button-green,
 a.button-green {
     @extend %button;
@@ -77,7 +73,6 @@ a.button-green {
         color: $white;
     }
 }
-
 .button-gray,
 a.button-gray {
     @extend %button;
@@ -88,7 +83,6 @@ a.button-gray {
         color: $white;
     }
 }
-
 .button-blackish {
     @extend %button;
     background: $blackish;
@@ -98,7 +92,6 @@ a.button-gray {
         color: $white;
     }
 }
-
 .button-red {
     @extend %button;
     background: $red-light;
@@ -110,7 +103,6 @@ a.button-gray {
         color: $white;
     }
 }
-
 .button-block {
     background: $white;
     color: $red;
@@ -119,7 +111,6 @@ a.button-gray {
         color: $white;
     }
 }
-
 .button-bulk {
     @extend %button;
     background: $primary;
@@ -134,7 +125,6 @@ a.button-gray {
         background: $primary-light;
     }
 }
-
 .button-auth {
     @extend %button;
     background: $grayer;
