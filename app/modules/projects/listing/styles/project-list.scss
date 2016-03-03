@@ -14,7 +14,8 @@
         }
     }
     .icon-lock,
-    .icon-badge {
+    .icon-badge,
+    .icon-blocked-project {
         @include svg-size();
     }
     .icon-badge {
@@ -60,6 +61,16 @@
             transition: background .3s;
             .drag {
                 opacity: 1;
+            }
+        }
+        &.blocked-project {
+            .list-itemtype-project-image,
+            .project-title,
+            .private,
+            .project-description,
+            .icon-badge,
+            .icon-drag {
+                opacity: .25;
             }
         }
         .list-itemtype-project-data-wrapper {

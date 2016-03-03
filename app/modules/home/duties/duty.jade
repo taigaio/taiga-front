@@ -1,7 +1,7 @@
 a.list-itemtype-ticket(
     href="{{ ::vm.duty.get('url') }}"
     title="{{ ::duty.get('subject') }}"
-    ng-class="{'blocked': vm.duty.get('is_blocked')}"
+    ng-class="{'blocked': vm.duty.get('is_blocked'), 'blocked-project': vm.duty.get('blockedProject')}"
 )
     div.list-itemtype-avatar(ng-if="::vm.duty.get('assigned_to_extra_info')")
         img(
@@ -16,8 +16,12 @@ a.list-itemtype-ticket(
     div.list-itemtype-ticket-data
         p
             span.ticket-project {{ ::vm.duty.get('projectName')}}
+                
             span.ticket-type {{ ::vm.getDutyType() }}
             span.ticket-status(ng-style="{'color': vm.duty.get('status_extra_info').get('color')}") {{ ::vm.duty.get('status_extra_info').get('name') }}
+            svg.icon.icon-blocked-project(ng-if="vm.duty.get('blockedProject')")
+                use(xlink:href="#icon-blocked-project")
+                    title(translate="PROJECT.BLOCKED_PROJECT.BLOCKED")
 
         h2
             span.ticket-id(tg-bo-ref="duty.get('ref')")

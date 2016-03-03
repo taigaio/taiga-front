@@ -32,8 +32,20 @@
 .list-itemtype-project {
     @include list-itemtype-common;
     justify-content: space-between;
+    &.blocked-project {
+        .list-itemtype-track,
+        .list-itemtype-project-image,
+        .list-itemtype-project-name,
+        .list-itemtype-project-description,
+        .list-itemtype-project-private {
+            opacity: .4;
+        }
+    }
     h2 {
         @extend %large;
+    }
+    .icon-blocked-project {
+        @include svg-size();
     }
     .list-itemtype-project-data-wrapper {
         display: flex;
@@ -75,6 +87,20 @@
 
 .list-itemtype-ticket {
     @include list-itemtype-common;
+    position: relative;
+    &.blocked-project {
+        .ticket-project,
+        .ticket-type,
+        .ticket-status,
+        .list-itemtype-avatar,
+        .list-itemtype-track,
+        .ticket-title {
+            opacity: .4;
+        }
+        .icon-blocked-project {
+            @include svg-size();
+        }
+    }
     h2 {
         @extend %medium;
     }
@@ -97,7 +123,6 @@
         color: $red;
         margin-left: .3rem;
     }
-
 }
 
 

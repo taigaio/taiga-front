@@ -23,6 +23,7 @@
                 li.list-itemtype-project(
                     tg-bind-scope
                     tg-repeat="project in vm.projects track by project.get('id')"
+                    ng-class="{'blocked-project': project.get('blocked_code')}"
                 )
                     .list-itemtype-project-left
 
@@ -38,7 +39,7 @@
                                 )
                             .list-itemtype-project-data
                                 h2
-                                    a(
+                                    a.project-title(
                                         href="#"
                                         tg-nav="project:project=project.get('slug')"
                                         title="{{ ::project.get('name') }}"
@@ -53,9 +54,12 @@
                                     svg.icon.icon-badge(ng-if="project.get('i_am_owner')")
                                         use(xlink:href="#icon-badge")
                                             title(translate="COMMON.OWNER")
+                                    svg.icon.icon-blocked-project(ng-if="project.get('blocked_code')")
+                                        use(xlink:href="#icon-blocked-project")
+                                            title(translate="PROJECT.BLOCKED_PROJECT.BLOCKED")
                                             
                                             
-                                p {{ ::project.get('description') | limitTo:300 }}
+                                p.project-description {{ ::project.get('description') | limitTo:300 }}
                                     span(ng-if="::project.get('description').length > 300") ...
 
                     svg.drag.icon.icon-drag
