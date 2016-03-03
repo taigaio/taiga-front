@@ -25,8 +25,60 @@
 module = angular.module("taigaCommon")
 
 
-ImportProjectButtonDirective = ($rs, $confirm, $location, $navUrls, $translate) ->
+ImportProjectButtonDirective = ($rs, $confirm, $location, $navUrls, $translate, $lightboxFactory, currentUserService, $tgAuth) ->
     link = ($scope, $el, $attrs) ->
+        getRestrictionError = (result) ->
+            if result.headers
+                errorKey = ''
+
+                user = currentUserService.getUser()
+                maxMembers = 0
+
+                if result.headers.isPrivate
+                    privateError = !currentUserService.canCreatePrivateProjects().valid
+                    maxMembers = null
+
+                    if user.get('max_members_private_projects') != null && result.headers.members > user.get('max_members_private_projects')
+                        membersError = true
+                    else
+                        membersError = false
+
+                    if privateError && membersError
+                        errorKey = 'private-space-members'
+                        maxMembers = user.get('max_members_private_projects')
+                    else if privateError
+                        errorKey = 'private-space'
+                    else if membersError
+                        errorKey = 'private-members'
+                        maxMembers = user.get('max_members_private_projects')
+
+                else
+                    publicError = !currentUserService.canCreatePublicProjects().valid
+
+                    if user.get('max_members_public_projects') != null && result.headers.members > user.get('max_members_public_projects')
+                        membersError = true
+                    else
+                        membersError = false
+
+                    if publicError && membersError
+                        errorKey = 'public-space-members'
+                        maxMembers = user.get('max_members_public_projects')
+                    else if publicError
+                        errorKey = 'public-space'
+                    else if membersError
+                        errorKey = 'public-members'
+                        maxMembers = user.get('max_members_public_projects')
+
+                return {
+                    key: errorKey,
+                    values: {
+                        max_members: maxMembers,
+                        members: result.headers.members
+                    }
+                }
+            else
+                return false
+
         $el.on "click", ".import-project-button", (event) ->
             event.preventDefault()
             $el.find("input.import-file").val("")
@@ -53,19 +105,47 @@ ImportProjectButtonDirective = ($rs, $confirm, $location, $navUrls, $translate) 
                     $confirm.notify("success", msg)
 
             onError = (result) ->
-                loader.stop()
-                errorMsg = $translate.instant("PROJECT.IMPORT.ERROR")
+                $tgAuth.refresh().then () ->
+                    restrictionError = getRestrictionError(result)
 
-                if result.status == 429  # TOO MANY REQUESTS
-                    errorMsg = $translate.instant("PROJECT.IMPORT.ERROR_TOO_MANY_REQUEST")
-                else if result.data?._error_message
-                    errorMsg = $translate.instant("PROJECT.IMPORT.ERROR_MESSAGE", {error_message: result.data._error_message})
-                $confirm.notify("error", errorMsg)
+                    loader.stop()
+
+                    if restrictionError
+                        $lightboxFactory.create('tg-lb-import-error', {
+                            class: 'lightbox lightbox-import-error'
+                        }, restrictionError)
+
+                    else
+                        errorMsg = $translate.instant("PROJECT.IMPORT.ERROR")
+
+                        if result.status == 429  # TOO MANY REQUESTS
+                            errorMsg = $translate.instant("PROJECT.IMPORT.ERROR_TOO_MANY_REQUEST")
+                        else if result.data?._error_message
+                            errorMsg = $translate.instant("PROJECT.IMPORT.ERROR_MESSAGE", {error_message: result.data._error_message})
+                        $confirm.notify("error", errorMsg)
 
             loader.start()
             $rs.projects.import(file, loader.update).then(onSuccess, onError)
 
     return {link: link}
 
-module.directive("tgImportProjectButton", ["$tgResources", "$tgConfirm", "$location", "$tgNavUrls", "$translate",
+module.directive("tgImportProjectButton",
+["$tgResources", "$tgConfirm", "$location", "$tgNavUrls", "$translate", "tgLightboxFactory", "tgCurrentUserService", "$tgAuth",
                                            ImportProjectButtonDirective])
+
+LbImportErrorDirective = (lightboxService) ->
+    link = (scope, el, attrs) ->
+        lightboxService.open(el)
+
+        scope.close = () ->
+            lightboxService.close(el)
+            return
+
+    return {
+        templateUrl: "common/lightbox/lightbox-import-error.html",
+        link: link
+    }
+
+LbImportErrorDirective.$inject = ["lightboxService"]
+
+module.directive("tgLbImportError", LbImportErrorDirective)
