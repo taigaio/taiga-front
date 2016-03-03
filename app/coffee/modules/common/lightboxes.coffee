@@ -74,7 +74,8 @@ class LightboxService extends taiga.Service
             $el.removeAttr('style')
             $el.removeClass("open").removeClass('close')
 
-        $el.addClass('close')
+        @animationFrame.add ->
+            $el.addClass('close')
 
         if $el.hasClass("remove-on-close")
             scope = $el.data("scope")

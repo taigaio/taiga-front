@@ -28,11 +28,11 @@ div.navbar-dropdown.dropdown-project-list
             title="{{'PROJECT.NAVIGATION.ACTION_CREATE_PROJECT' | translate}}",
             translate="PROJECT.NAVIGATION.ACTION_CREATE_PROJECT")
 
-        a.button-blackish.import-project-button(
-            href=""
-            title="{{'PROJECT.NAVIGATION.TITLE_IMPORT_PROJECT' | translate}}"
-            tg-import-project-button
-        )
-            svg.icon.icon-upload
-                use(xlink:href="#icon-upload")
+        span(tg-import-project-button)
+            a.button-blackish.import-project-button(
+                href=""
+                title="{{'PROJECT.NAVIGATION.TITLE_IMPORT_PROJECT' | translate}}"
+            )
+                svg.icon.icon-upload
+                    use(xlink:href="#icon-upload")
             input.import-file.hidden(type="file")
