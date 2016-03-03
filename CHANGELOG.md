@@ -10,6 +10,7 @@
 - Redesign 'Admin > Project > Modules' panel.
 - Add badge to project owners
 - Limit of user per project.
+- Redesign of the create project wizard
 
 ### Misc
 - Lots of small and not so small bugfixes.

@@ -470,9 +470,9 @@
             "CHANGE_LOGO": "Change logo",
             "ACTION_USE_DEFAULT_LOGO": "Use default image",
             "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects",
-            "MAX_PRIVATE_PROJECTS_MEMBERS": "The project exceeds the maximun members number in private projects",
+            "MAX_PRIVATE_PROJECTS_MEMBERS": "The project exceeds the maximum members number in private projects",
             "MAX_PUBLIC_PROJECTS": "You've reached the maximum number of public projects",
-            "MAX_PUBLIC_PROJECTS_MEMBERS": "The project exceeds the maximun members number in public projects"
+            "MAX_PUBLIC_PROJECTS_MEMBERS": "The project exceeds the maximum members number in public projects"
         },
         "REPORTS": {
             "TITLE": "Reports",
@@ -1324,12 +1324,18 @@
         }
     },
     "WIZARD": {
-        "SECTION_TITLE_CHOOSE_TEMPLATE": "Choose a template",
-        "CHOOSE_TEMPLATE_TEXT": "Which template would fit better in your project?",
         "SECTION_TITLE_CREATE_PROJECT": "Create Project",
         "CREATE_PROJECT_TEXT": "Fresh and clean. So exciting!",
-        "PROGRESS_TEMPLATE_SELECTION": "Template selection",
-        "PROGRESS_NAME_DESCRIPTION": "Name and description"
+        "CHOOSE_TEMPLATE": "Which template would fit better in your project?",
+        "CHOOSE_TEMPLATE_TITLE": "More info about project templates",
+        "CHOOSE_TEMPLATE_INFO": "More info",
+        "PROJECT_DETAILS": "Project Details",
+        "PUBLIC_PROJECT": "Public Project",
+        "PRIVATE_PROJECT": "Private Project",
+        "CREATE_PROJECT": "Create project",
+        "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects",
+        "MAX_PUBLIC_PROJECTS": "You've reached the maximum number of public projects",
+        "CHANGE_PLANS": "change plans"
     },
     "WIKI": {
         "PAGE_TITLE": "{{wikiPageName}} - Wiki - {{projectName}}",

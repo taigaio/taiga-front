@@ -29,11 +29,15 @@ debounce = @.taiga.debounce
 
 module = angular.module("taigaProject")
 
-CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $projectUrl, $loading, lightboxService, $cacheFactory, $translate, currentUserService) ->
+CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $projectUrl, $loading, lightboxService, $cacheFactory, $translate, currentUserService, $auth) ->
     link = ($scope, $el, attrs) ->
         $scope.data = {}
         $scope.templates = []
         currentLoading = null
+
+        $auth.refresh()
+        $scope.canCreatePrivateProjects = currentUserService.canCreatePrivateProjects()
+        $scope.canCreatePublicProjects = currentUserService.canCreatePublicProjects()
 
         form = $el.find("form").checksley({"onlyOneErrorElement": true})
 
@@ -58,10 +62,6 @@ CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $project
             selectors = []
             for error_field in _.keys(response)
                 selectors.push("[name=#{error_field}]")
-            $el.find(".active").removeClass("active")
-            error_step = $el.find(selectors.join(",")).first().parents(".wizard-step")
-            error_step.addClass("active")
-            $el.find('.progress-bar').removeClass().addClass('progress-bar').addClass(error_step.data("step"))
 
         submit = (event) =>
             event.preventDefault()
@@ -77,7 +77,9 @@ CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $project
             promise.then(onSuccessSubmit, onErrorSubmit)
 
         openLightbox = ->
-            $scope.data = {}
+            $scope.data = {
+                is_private: false
+            }
 
             if !$scope.templates.length
                 $rs.projects.templates().then (result) =>
@@ -86,40 +88,7 @@ CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $project
             else
                 $scope.data.creation_template = _.head(_.filter($scope.templates, (x) -> x.slug == "scrum")).id
 
-            $el.find(".active").removeClass("active")
-            $el.find(".create-step1").addClass("active")
-
             lightboxService.open($el)
-            timeout 600, ->
-                $el.find(".progress-bar").addClass('step1')
-
-        $el.on "click", ".button-next", (event) ->
-            event.preventDefault()
-
-            current = $el.find(".active")
-
-            valid = true
-            for field in form.fields
-                if current.find("[name=#{field.element.attr('name')}]").length
-                    valid = field.validate() != false and valid
-
-            if not valid
-                return
-
-            next = current.next()
-            current.toggleClass('active')
-            next.toggleClass('active')
-            step = next.data('step')
-            $el.find('.progress-bar').removeClass().addClass('progress-bar').addClass(step)
-
-        $el.on "click", ".button-prev", (event) ->
-            event.preventDefault()
-            current = $el.find(".active")
-            prev = current.prev()
-            current.toggleClass('active')
-            prev.toggleClass('active')
-            step = prev.data('step')
-            $el.find('.progress-bar').removeClass().addClass('progress-bar').addClass(step)
 
         submitButton = $el.find(".submit-button")
 
@@ -145,7 +114,7 @@ CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $project
 
 module.directive("tgLbCreateProject", ["$rootScope", "$tgRepo", "$tgConfirm",
     "$location", "$tgNavUrls", "$tgResources", "$projectUrl", "$tgLoading",
-    "lightboxService", "$cacheFactory", "$translate", "tgCurrentUserService", CreateProject])
+    "lightboxService", "$cacheFactory", "$translate", "tgCurrentUserService", "$tgAuth", CreateProject])
 
 
 #############################################################################

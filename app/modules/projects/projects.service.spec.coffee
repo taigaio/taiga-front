@@ -79,7 +79,7 @@ describe "tgProjectsService", ->
         projectsService.newProject()
 
         expect(mocks.lightboxFactory.create).to.have.been.calledWith("tg-lb-create-project", {
-            "class": "wizard-create-project"
+            "class": "wizard-create-project lightbox"
         })
 
     it "bulkUpdateProjectsOrder and then fetch projects again", () ->
