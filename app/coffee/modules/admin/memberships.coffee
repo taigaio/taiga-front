@@ -81,10 +81,12 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
             @scope.projectId = project.id
             @scope.project = project
             @scope.$emit('project:loaded', project)
+
             return project
 
     loadMembers: ->
         httpFilters = @.getUrlFilters()
+
         return @rs.memberships.list(@scope.projectId, httpFilters).then (data) =>
             @scope.memberships = _.filter(data.models, (membership) ->
                                     membership.user == null or membership.is_user_active)
@@ -95,14 +97,11 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
             return data
 
     loadInitialData: ->
-        promise = @.loadProject()
-
-        @q.all([
-            @.loadMembers(),
-            @tgAuth.refresh()
-        ])
-
-        return promise
+        return @.loadProject().then () =>
+            return @q.all([
+                @.loadMembers(),
+                @tgAuth.refresh()
+            ])
 
     getUrlFilters: ->
         filters = _.pick(@location.search(), "page")
