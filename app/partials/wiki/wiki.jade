@@ -21,6 +21,7 @@ div.wrapper(ng-controller="WikiDetailController as ctrl",
             obj-id="wiki.id"
             type="wiki_page",
             project-id="projectId"
+            edit-permission = "modify_wiki_page"
         )
 
         a.remove(href="", ng-click="ctrl.delete()", ng-if="wiki.id", title="{{'WIKI.REMOVE' | translate}}", tg-check-permission="delete_wiki_page")

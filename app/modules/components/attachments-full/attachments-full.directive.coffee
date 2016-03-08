@@ -28,8 +28,9 @@ AttachmentsFullDirective = () ->
         scope: {},
         bindToController: {
             type: "@",
-            objId: "="
-            projectId: "="
+            objId: "=",
+            projectId: "=",
+            editPermission: "@"
         },
         controller: "AttachmentsFull",
         controllerAs: "vm",

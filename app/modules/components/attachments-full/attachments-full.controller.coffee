@@ -25,10 +25,11 @@ class AttachmentsFullController
         "$tgConfirm",
         "$tgConfig",
         "$tgStorage",
-        "tgAttachmentsFullService"
+        "tgAttachmentsFullService",
+        "tgProjectService"
     ]
 
-    constructor: (@translate, @confirm, @config, @storage, @attachmentsFullService) ->
+    constructor: (@translate, @confirm, @config, @storage, @attachmentsFullService, @projectService) ->
         @.mode = @storage.get('attachment-mode', 'list')
 
         @.maxFileSize = @config.get("maxUploadFileSize", null)
@@ -84,5 +85,13 @@ class AttachmentsFullController
 
     updateAttachment: (toUpdateAttachment) ->
         @attachmentsFullService.updateAttachment(toUpdateAttachment, @.type)
+
+    _isEditable: ->
+        if @projectService.project
+            return @projectService.hasPermission(@.editPermission)
+        return false
+
+    showAttachments: ->
+        return @._isEditable() || @attachmentsFullService.attachments.size
 
 angular.module("taigaComponents").controller("AttachmentsFull", AttachmentsFullController)
