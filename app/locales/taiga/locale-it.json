@@ -41,6 +41,7 @@
         "IOCAINE_TEXT": "Sei stremato? Assicurati che gli altri lo sappiano cliccando su 'aspirina' quando stai lavorando su un compito che ti affatica. Ma non demordere, ricordati: si può migliorare solo se di tanto in tanto si accettano sfide extra!",
         "CLIENT_REQUIREMENT": "Requisito del Cliente è un nuovo requisito che non era stato previsto ed ora è stato richiesto come requisito del progetto",
         "TEAM_REQUIREMENT": "Requisito del Team è un requisito che deve esistere nel progetto ma non deve avere costi per il cliente",
+        "OWNER": "Project Owner",
         "CAPSLOCK_WARNING": "Be careful! You are writing with capital letters and this input is case sensitive.",
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Questo valore non è valido.",
@@ -407,7 +408,9 @@
             "TITLE": "Gestisci membri",
             "PAGE_TITLE": "Webhooks - {{projectName}}",
             "ADD_BUTTON": "Nuovo Membro",
-            "ADD_BUTTON_TITLE": "Aggiungi un nuovo membro"
+            "ADD_BUTTON_TITLE": "Aggiungi un nuovo membro",
+            "LIMIT_USERS_WARNING": "Why can't I add more members",
+            "LIMIT_USERS_WARNING_MESSAGE": "Currently you can only have <strong>{{members}}</strong> members per project. If you want to add more members get in touch with the administrators"
         },
         "PROJECT_EXPORT": {
             "TITLE": "Esporta",
@@ -429,6 +432,10 @@
             "DISABLE": "Disabilita",
             "BACKLOG": "Backlog",
             "BACKLOG_DESCRIPTION": "Amministra le storie degli utenti per mantenere una visione organizzata dei lavori in arrivo e di quelli ad alta priorità ",
+            "NUMBER_SPRINTS": "Expected number of sprints",
+            "NUMBER_SPRINTS_HELP": "0 for an undetermined quantity",
+            "NUMBER_US_POINTS": "Expected total of story points",
+            "NUMBER_US_POINTS_HELP": "0 for an undetermined quantity",
             "KANBAN": "Kanban",
             "KANBAN_DESCRIPTION": "Organizza in modo semplice il tuo progetto con questa board",
             "ISSUES": "problemi",
@@ -436,9 +443,9 @@
             "WIKI": "Wiki",
             "WIKI_DESCRIPTION": "Aggiungi, modifica o elimina i contenuti in collaborazione con gli altri. E' il posto giusto per la documentazione del tuo progetto",
             "MEETUP": "Incontro",
-            "MEETUP_DESCRIPTION": "Scegli il tuo sistema di videoconferenza. Anche gli sviluppatori hanno bisogno di qualche contatto faccia a faccia. ",
+            "MEETUP_DESCRIPTION": "Choose your videoconference system.",
             "SELECT_VIDEOCONFERENCE": "Seleziona un sistema di videoconferenza",
-            "SALT_CHAT_ROOM": "Se preferisci puoi aggiungere un valore sale al nome della chat room",
+            "SALT_CHAT_ROOM": "Add a prefix to the chat room name",
             "JITSI_CHAT_ROOM": "Jitsi",
             "APPEARIN_CHAT_ROOM": "AppearIn",
             "TALKY_CHAT_ROOM": "Talky",
@@ -450,8 +457,6 @@
             "PROJECT_DETAILS": "Dettagli progetto",
             "PROJECT_NAME": "Nome progetto",
             "PROJECT_SLUG": "Progetto lumaca",
-            "NUMBER_SPRINTS": "Numero di sprint (0 come quantità indeterminata)",
-            "NUMBER_US_POINTS": "Numero di punti delle storie utente (0 come quantità indeterminata)",
             "TAGS": "Tag",
             "DESCRIPTION": "Descrizione",
             "RECRUITING": "Il progetto cerca persone?",
@@ -463,7 +468,11 @@
             "DELETE": "Elimina questo progetto",
             "LOGO_HELP": "L'immagine sarà scalata a 80x80px.",
             "CHANGE_LOGO": "Cambia Logo",
-            "ACTION_USE_DEFAULT_LOGO": "Usa l'immagine di default"
+            "ACTION_USE_DEFAULT_LOGO": "Usa l'immagine di default",
+            "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects",
+            "MAX_PRIVATE_PROJECTS_MEMBERS": "The project exceeds the maximum members number in private projects",
+            "MAX_PUBLIC_PROJECTS": "You've reached the maximum number of public projects",
+            "MAX_PUBLIC_PROJECTS_MEMBERS": "The project exceeds the maximum members number in public projects"
         },
         "REPORTS": {
             "TITLE": "Rapporti",
@@ -731,6 +740,11 @@
         "FANS_COUNTER_TITLE": "{total, plural, one{un follower} other{# followers}}",
         "WATCHERS_COUNTER_TITLE": "{total, plural, one{un osservatore} other{# osservatori}} ",
         "MEMBERS_COUNTER_TITLE": "{total, plural, one{un membro} other{# membri}}",
+        "BLOCKED_PROJECT": {
+            "BLOCKED": "Blocked project",
+            "THIS_PROJECT_IS_BLOCKED": "This project is temporarily blocked",
+            "TO_UNBLOCK_CONTACT_THE_ADMIN_STAFF": "To unblock your projects you must contact with the admin staff"
+        },
         "STATS": {
             "PROJECT": "progetto<br/> punti",
             "DEFINED": "Definiti <br/> punti",
@@ -777,6 +791,7 @@
             "CHANGE_PASSWORD": "Cambia password",
             "DASHBOARD_TITLE": "Dashboard",
             "DISCOVER_TITLE": "Scopri i progetti più seguiti",
+            "NEW_ITEM": "New",
             "DISCOVER": "Scopri",
             "ACTION_REORDER": "Usa drag & drop per riordinare"
         },
@@ -791,7 +806,32 @@
             "ERROR_TOO_MANY_REQUEST": "Scusaci, i nostri Oompa Loompa sono di nuovo occupati. Riprova di nuovo in qualche minuto.",
             "ERROR_MESSAGE": "I nostri Oompa Loompa hanno qualche problema ad importare il dump dei tuoi dati: {{error_message}}",
             "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) è troppo pesante per i nostri Oompa Loompa; falli contenti, prova con una dimensione minore di ({{maxFileSize}})",
-            "SYNC_SUCCESS": "Il tuo progetto è stato importato con successo"
+            "SYNC_SUCCESS": "Il tuo progetto è stato importato con successo",
+            "PROJECT_RESTRICTIONS": {
+                "PROJECT_MEMBERS_DESC": "The project you want to import has {{members}} users, but you are only allowed to have {{max_members}} users per project. If you want have more users contact with the administrators.",
+                "PRIVATE_PROJECTS_SPACE": {
+                    "TITLE": "You don't have space for another private project",
+                    "DESC": "The project you want to import is private, but you don't have space to create more."
+                },
+                "PUBLIC_PROJECTS_SPACE": {
+                    "TITLE": "You don't' have space for another public project",
+                    "DESC": "The project you want to import is public, but you don't have space to create more."
+                },
+                "PRIVATE_PROJECTS_MEMBERS": {
+                    "TITLE": "Your account only allows {{max_members}} users per private project"
+                },
+                "PUBLIC_PROJECTS_MEMBERS": {
+                    "TITLE": "Your account only allows {{max_members}} users per public project"
+                },
+                "PRIVATE_PROJECTS_SPACE_MEMBERS": {
+                    "TITLE": "You don't have space for another private project and neither for more than {{max_members}} users per private projects",
+                    "DESC": "The project that you want to import is private and has {{members}} users."
+                },
+                "PUBLIC_PROJECTS_SPACE_MEMBERS": {
+                    "TITLE": "You don't have space for another public project and neither for more than {{max_members}} users per public projects",
+                    "DESC": "The public that you want to import is public and has more than {{members}} users."
+                }
+            }
         },
         "LIKE_BUTTON": {
             "LIKE": "Mi piace",
@@ -820,7 +860,10 @@
             "SECTION_NAME": "Elimina Account Taiga",
             "CONFIRM": "Sei sicuro di voler eliminare il tuo account Taiga?",
             "SUBTITLE": "Ci mancherai! :-(",
-            "NEWSLETTER_LABEL_TEXT": "Non voglio più ricevere le vostre newsletter"
+            "NEWSLETTER_LABEL_TEXT": "Non voglio più ricevere le vostre newsletter",
+            "CANCEL": "Back to settings",
+            "ACCEPT": "Delete account",
+            "BLOCK_PROJECT": "Note that all your projects owned will be <strong>blocked</strong>. If you do not want to block your projects before deleting your account you can transfer ownership of the project to someone else."
         },
         "DELETE_PROJECT": {
             "TITLE": "Elimina progetto",
@@ -1304,12 +1347,18 @@
         }
     },
     "WIZARD": {
-        "SECTION_TITLE_CHOOSE_TEMPLATE": "Scegli il tema",
-        "CHOOSE_TEMPLATE_TEXT": "Quale template si adatta meglio al tuo progetto?",
         "SECTION_TITLE_CREATE_PROJECT": "Crea Progetto",
         "CREATE_PROJECT_TEXT": "Nuovo di zecca. Vai così!",
-        "PROGRESS_TEMPLATE_SELECTION": "Selezione del template",
-        "PROGRESS_NAME_DESCRIPTION": "Nome e descrizione"
+        "CHOOSE_TEMPLATE": "Which template would fit better in your project?",
+        "CHOOSE_TEMPLATE_TITLE": "More info about project templates",
+        "CHOOSE_TEMPLATE_INFO": "More info",
+        "PROJECT_DETAILS": "Project Details",
+        "PUBLIC_PROJECT": "Public Project",
+        "PRIVATE_PROJECT": "Private Project",
+        "CREATE_PROJECT": "Create project",
+        "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects",
+        "MAX_PUBLIC_PROJECTS": "You've reached the maximum number of public projects",
+        "CHANGE_PLANS": "change plans"
     },
     "WIKI": {
         "PAGE_TITLE": "{{wikiPageName}} - Wiki - {{projectName}}",

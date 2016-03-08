@@ -41,6 +41,7 @@
         "IOCAINE_TEXT": "Bir görev size ağır geldi ve bunaldınız mı? Diğerlerinin bu durumdan haberi olması için bir görevi düzenlerken baldıran zehrinin üzerine tıklayın.  Nasıl ki zaman zaman ekstra meydan okumalarla bir işte gittikce iyi olmanız mümkünse, zaman içerisinde küçük dozlar alarak bu ölümcül zehre de bağışıklık kazanabilmek mümkün!",
         "CLIENT_REQUIREMENT": "Müşteri gereksinimi, daha önceden belli olmayan ama projeye dahil olması gereken bir gereksinimdir",
         "TEAM_REQUIREMENT": "Takım gereksinimi, müsteriyi ilgilendirmeyen, ama projede yer alması zorunlu olan bir gereksinimdir.",
+        "OWNER": "Project Owner",
         "CAPSLOCK_WARNING": "Be careful! You are writing with capital letters and this input is case sensitive.",
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Bu değer geçersiz gözüküyor",
@@ -407,7 +408,9 @@
             "TITLE": "Üyeleri yönet",
             "PAGE_TITLE": "Üyelikler - {{projectName}}",
             "ADD_BUTTON": "+ Yeni üye",
-            "ADD_BUTTON_TITLE": "Yeni üye ekle"
+            "ADD_BUTTON_TITLE": "Yeni üye ekle",
+            "LIMIT_USERS_WARNING": "Why can't I add more members",
+            "LIMIT_USERS_WARNING_MESSAGE": "Currently you can only have <strong>{{members}}</strong> members per project. If you want to add more members get in touch with the administrators"
         },
         "PROJECT_EXPORT": {
             "TITLE": "Dışarı aktar",
@@ -429,6 +432,10 @@
             "DISABLE": "Pasifleştir",
             "BACKLOG": "Havuz",
             "BACKLOG_DESCRIPTION": "Yeni gelen ve önceliklendirilmiş işler için düzenli bir görünüm elde etmek için kullanıcı hikayelerinizi yönetin.",
+            "NUMBER_SPRINTS": "Expected number of sprints",
+            "NUMBER_SPRINTS_HELP": "0 for an undetermined quantity",
+            "NUMBER_US_POINTS": "Expected total of story points",
+            "NUMBER_US_POINTS_HELP": "0 for an undetermined quantity",
             "KANBAN": "Kanban",
             "KANBAN_DESCRIPTION": "Bu pano ile projenizi güzel bir şekilde düzenleyin.",
             "ISSUES": "Sorunlar",
@@ -436,9 +443,9 @@
             "WIKI": "Wiki",
             "WIKI_DESCRIPTION": "Diğerleriyle işbirliği yaparak içerik ekleyin, düzenleyin ve silin. Burası projenizin dokümantasyonu için doğru yer.",
             "MEETUP": "Toplantı",
-            "MEETUP_DESCRIPTION": "Video konferans sisteminizi seçin. Yazılımcılar bile yüz yüze görüşmeye ihtiyaç duyarlar.",
+            "MEETUP_DESCRIPTION": "Choose your videoconference system.",
             "SELECT_VIDEOCONFERENCE": "Bir video konferans sistemi seç",
-            "SALT_CHAT_ROOM": "Eğer isterseniz sohbet odası adına salt kod ekleyebilirsiniz",
+            "SALT_CHAT_ROOM": "Add a prefix to the chat room name",
             "JITSI_CHAT_ROOM": "Jitsi",
             "APPEARIN_CHAT_ROOM": "AppearIn",
             "TALKY_CHAT_ROOM": "Talky",
@@ -450,8 +457,6 @@
             "PROJECT_DETAILS": "Proje detayları",
             "PROJECT_NAME": "Proje adı",
             "PROJECT_SLUG": "Proje satırı",
-            "NUMBER_SPRINTS": "Koşu sayısı (belirsiz bir miktar için 0)",
-            "NUMBER_US_POINTS": "KH puanları sayısı (belirlenmemiş miktarlar için 0)",
             "TAGS": "Etiketler",
             "DESCRIPTION": "Tanım",
             "RECRUITING": "Bu proje insan arıyor mu?",
@@ -463,7 +468,11 @@
             "DELETE": "Bu projeyi sil",
             "LOGO_HELP": "Resim 80×80 piksel boyutuna ölçeklenecek. ",
             "CHANGE_LOGO": "Logoyu değiştir",
-            "ACTION_USE_DEFAULT_LOGO": "Varsayılan resmi kullan"
+            "ACTION_USE_DEFAULT_LOGO": "Varsayılan resmi kullan",
+            "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects",
+            "MAX_PRIVATE_PROJECTS_MEMBERS": "The project exceeds the maximum members number in private projects",
+            "MAX_PUBLIC_PROJECTS": "You've reached the maximum number of public projects",
+            "MAX_PUBLIC_PROJECTS_MEMBERS": "The project exceeds the maximum members number in public projects"
         },
         "REPORTS": {
             "TITLE": "Raporlar",
@@ -731,6 +740,11 @@
         "FANS_COUNTER_TITLE": "{total, plural, one{bir meraklı} other{# meraklı}}",
         "WATCHERS_COUNTER_TITLE": "{total, plural, one{bir takipçi} other{# takipçi}}",
         "MEMBERS_COUNTER_TITLE": "{total, plural, one{bir üye} other{# üye}}",
+        "BLOCKED_PROJECT": {
+            "BLOCKED": "Blocked project",
+            "THIS_PROJECT_IS_BLOCKED": "This project is temporarily blocked",
+            "TO_UNBLOCK_CONTACT_THE_ADMIN_STAFF": "To unblock your projects you must contact with the admin staff"
+        },
         "STATS": {
             "PROJECT": "proje<br/> puanlar",
             "DEFINED": "tanımlı<br/> puanlar",
@@ -777,6 +791,7 @@
             "CHANGE_PASSWORD": "Parolayı değiştir",
             "DASHBOARD_TITLE": "Pano",
             "DISCOVER_TITLE": "Trend projeleri keşfet",
+            "NEW_ITEM": "New",
             "DISCOVER": "Keşfet",
             "ACTION_REORDER": "Yeniden sıralamak için sürükleyin ve bırakın"
         },
@@ -791,7 +806,32 @@
             "ERROR_TOO_MANY_REQUEST": "Üzgünüm, bizim honki ponkiler şu anda çok meşgul. Lütfen birkaç dakika içinde yeniden deneyin.",
             "ERROR_MESSAGE": "Honki ponkilerimiz döküm dosyanızı içeri aktarırken birkaç problem yaşadı: {{error_message}}",
             "ERROR_MAX_SIZE_EXCEEDED": "({{fileSize}}) boyutundaki '{{fileName}}' dosya honki ponkilerimiz için oldukça ağır geldi, ({{maxFileSize}}) boyutundan daha küçük bir şeylerle deneyin",
-            "SYNC_SUCCESS": "Projeniz başarıyla içe aktarıldı"
+            "SYNC_SUCCESS": "Projeniz başarıyla içe aktarıldı",
+            "PROJECT_RESTRICTIONS": {
+                "PROJECT_MEMBERS_DESC": "The project you want to import has {{members}} users, but you are only allowed to have {{max_members}} users per project. If you want have more users contact with the administrators.",
+                "PRIVATE_PROJECTS_SPACE": {
+                    "TITLE": "You don't have space for another private project",
+                    "DESC": "The project you want to import is private, but you don't have space to create more."
+                },
+                "PUBLIC_PROJECTS_SPACE": {
+                    "TITLE": "You don't' have space for another public project",
+                    "DESC": "The project you want to import is public, but you don't have space to create more."
+                },
+                "PRIVATE_PROJECTS_MEMBERS": {
+                    "TITLE": "Your account only allows {{max_members}} users per private project"
+                },
+                "PUBLIC_PROJECTS_MEMBERS": {
+                    "TITLE": "Your account only allows {{max_members}} users per public project"
+                },
+                "PRIVATE_PROJECTS_SPACE_MEMBERS": {
+                    "TITLE": "You don't have space for another private project and neither for more than {{max_members}} users per private projects",
+                    "DESC": "The project that you want to import is private and has {{members}} users."
+                },
+                "PUBLIC_PROJECTS_SPACE_MEMBERS": {
+                    "TITLE": "You don't have space for another public project and neither for more than {{max_members}} users per public projects",
+                    "DESC": "The public that you want to import is public and has more than {{members}} users."
+                }
+            }
         },
         "LIKE_BUTTON": {
             "LIKE": "Beğen",
@@ -820,7 +860,10 @@
             "SECTION_NAME": "Taiga Hesabını Sil",
             "CONFIRM": "Taiga hesabınızı silmek istediğinizden emin misiniz?",
             "SUBTITLE": "Sizi özleyeceğiz! :-(",
-            "NEWSLETTER_LABEL_TEXT": "Bundan böyle bülteninizi almak istemiyorum."
+            "NEWSLETTER_LABEL_TEXT": "Bundan böyle bülteninizi almak istemiyorum.",
+            "CANCEL": "Back to settings",
+            "ACCEPT": "Delete account",
+            "BLOCK_PROJECT": "Note that all your projects owned will be <strong>blocked</strong>. If you do not want to block your projects before deleting your account you can transfer ownership of the project to someone else."
         },
         "DELETE_PROJECT": {
             "TITLE": "Proje Sil",
@@ -1304,12 +1347,18 @@
         }
     },
     "WIZARD": {
-        "SECTION_TITLE_CHOOSE_TEMPLATE": "Bir şablon seç",
-        "CHOOSE_TEMPLATE_TEXT": "Hangi şablon sizin projeniz için daha uygun?",
         "SECTION_TITLE_CREATE_PROJECT": "Proje Oluştur",
         "CREATE_PROJECT_TEXT": "Taze ve temiz. Heycan verici!",
-        "PROGRESS_TEMPLATE_SELECTION": "Şablon seçimi",
-        "PROGRESS_NAME_DESCRIPTION": "İsim ve tanım"
+        "CHOOSE_TEMPLATE": "Which template would fit better in your project?",
+        "CHOOSE_TEMPLATE_TITLE": "More info about project templates",
+        "CHOOSE_TEMPLATE_INFO": "More info",
+        "PROJECT_DETAILS": "Project Details",
+        "PUBLIC_PROJECT": "Public Project",
+        "PRIVATE_PROJECT": "Private Project",
+        "CREATE_PROJECT": "Create project",
+        "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects",
+        "MAX_PUBLIC_PROJECTS": "You've reached the maximum number of public projects",
+        "CHANGE_PLANS": "change plans"
     },
     "WIKI": {
         "PAGE_TITLE": "{{wikiPageName}} - Wiki - {{projectName}}",

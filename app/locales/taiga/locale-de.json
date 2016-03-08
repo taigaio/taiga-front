@@ -41,6 +41,7 @@
         "IOCAINE_TEXT": "Fühlen Sie sich von einer Aufgabe etwas erdrückt? Stellen Sie sicher, dass andere davon erfahren, indem Sie auf Locaine klicken, wenn Sie eine Aufgabe ändern. Es ist möglich, gegen dieses (fiktive) tödliche Gift immun zu werden, indem man kleine Mengen über einen Zeitraum hinweg einnimmt. Genauso, wie es möglich ist, besser in dem zu werden, was man tut, indem man gelegentlich zusätzliche Herausforderungen annimmt!",
         "CLIENT_REQUIREMENT": "Client requirement is new requirement that was not previously expected and it is required to be part of the project",
         "TEAM_REQUIREMENT": "Team requirement is a requirement that must exist in the project but should have no cost for the client",
+        "OWNER": "Project Owner",
         "CAPSLOCK_WARNING": "Be careful! You are writing with capital letters and this input is case sensitive.",
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Dieser Wert scheint ungültig zu sein.",
@@ -407,7 +408,9 @@
             "TITLE": "Mitglieder verwalten",
             "PAGE_TITLE": "Mitgliedschaften - {{projectName}}",
             "ADD_BUTTON": "+ Neues Mitglied",
-            "ADD_BUTTON_TITLE": "Neues Mitglied hinzufügen"
+            "ADD_BUTTON_TITLE": "Neues Mitglied hinzufügen",
+            "LIMIT_USERS_WARNING": "Why can't I add more members",
+            "LIMIT_USERS_WARNING_MESSAGE": "Currently you can only have <strong>{{members}}</strong> members per project. If you want to add more members get in touch with the administrators"
         },
         "PROJECT_EXPORT": {
             "TITLE": "Exportieren",
@@ -429,6 +432,10 @@
             "DISABLE": "Deaktivieren",
             "BACKLOG": "Auftragsliste",
             "BACKLOG_DESCRIPTION": "Verwalten Sie Ihre User-Stories, um einen organisierten Überblick der anstehenden und priorisierten Aufgaben zu erhalten.",
+            "NUMBER_SPRINTS": "Expected number of sprints",
+            "NUMBER_SPRINTS_HELP": "0 for an undetermined quantity",
+            "NUMBER_US_POINTS": "Expected total of story points",
+            "NUMBER_US_POINTS_HELP": "0 for an undetermined quantity",
             "KANBAN": "Kanban",
             "KANBAN_DESCRIPTION": "Organisieren Sie Ihr Projekt auf übersichtliche Art.",
             "ISSUES": "Tickets",
@@ -436,9 +443,9 @@
             "WIKI": "Wiki",
             "WIKI_DESCRIPTION": "Fügen Sie Inhalte hinzu, ändern oder löschen Sie sie in Zusammenarbeit mit anderen. Dies ist der richtige Ort für Ihre Projektdokumentation.",
             "MEETUP": "Zusammentreffen",
-            "MEETUP_DESCRIPTION": "Wählen Sie Ihr Videokonferenzsystem. Auch Entwickler brauchen Kontakt von Angesicht zu Angesicht.",
+            "MEETUP_DESCRIPTION": "Choose your videoconference system.",
             "SELECT_VIDEOCONFERENCE": "Wählen Sie ein Videokonferenzsystem",
-            "SALT_CHAT_ROOM": "Wenn Sie möchten, können Sie einen Salt Code zum Namen des Chatrooms hinzufügen",
+            "SALT_CHAT_ROOM": "Add a prefix to the chat room name",
             "JITSI_CHAT_ROOM": "Jitsi",
             "APPEARIN_CHAT_ROOM": "Erscheint in",
             "TALKY_CHAT_ROOM": "Gesprächig",
@@ -450,8 +457,6 @@
             "PROJECT_DETAILS": "Projekt Details",
             "PROJECT_NAME": "Projektname",
             "PROJECT_SLUG": "Projekt Slug",
-            "NUMBER_SPRINTS": "Anzahl von Sprints (0 für unbegrenzte Anzahl)",
-            "NUMBER_US_POINTS": "Anzahl an US Points (0 für unbegrenzte Anzahl)",
             "TAGS": "Schlagwörter",
             "DESCRIPTION": "Beschreibung",
             "RECRUITING": "Is this project looking for people?",
@@ -463,7 +468,11 @@
             "DELETE": "Dieses Projekt löschen",
             "LOGO_HELP": "Das Bild wird auf 80x80px skaliert.",
             "CHANGE_LOGO": "Logo ändern",
-            "ACTION_USE_DEFAULT_LOGO": "Nutze Standardbild"
+            "ACTION_USE_DEFAULT_LOGO": "Nutze Standardbild",
+            "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects",
+            "MAX_PRIVATE_PROJECTS_MEMBERS": "The project exceeds the maximum members number in private projects",
+            "MAX_PUBLIC_PROJECTS": "You've reached the maximum number of public projects",
+            "MAX_PUBLIC_PROJECTS_MEMBERS": "The project exceeds the maximum members number in public projects"
         },
         "REPORTS": {
             "TITLE": "Berichte",
@@ -731,6 +740,11 @@
         "FANS_COUNTER_TITLE": "{total, plural, one{ein Fan} andere{# Fans}}",
         "WATCHERS_COUNTER_TITLE": "{total, plural, one{ein Beobachter} andere{# Beobachter}}",
         "MEMBERS_COUNTER_TITLE": "{total, plural, one{one member} andere{# members}}",
+        "BLOCKED_PROJECT": {
+            "BLOCKED": "Blocked project",
+            "THIS_PROJECT_IS_BLOCKED": "This project is temporarily blocked",
+            "TO_UNBLOCK_CONTACT_THE_ADMIN_STAFF": "To unblock your projects you must contact with the admin staff"
+        },
         "STATS": {
             "PROJECT": "Projekt<br/> Punkte",
             "DEFINED": "definierte<br/> Punkte",
@@ -777,6 +791,7 @@
             "CHANGE_PASSWORD": "Passwort ändern",
             "DASHBOARD_TITLE": "Dashboard",
             "DISCOVER_TITLE": "Entdecke aktuelle Projekte",
+            "NEW_ITEM": "New",
             "DISCOVER": "Entdecken",
             "ACTION_REORDER": "Benutzen Sie Drag & Drop zum neuen Ordnen"
         },
@@ -791,7 +806,32 @@
             "ERROR_TOO_MANY_REQUEST": "Entschuldigung, unsere Helferlein sind derzeit sehr beschäftigt. Bitte versuchen Sie es in ein paar Minuten erneut.",
             "ERROR_MESSAGE": "Unsere Helferlein haben Probleme beim Importieren Ihrer Datei: {{error_message}}",
             "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) ist zu schwierig für unsere Helferlein, versuchen Sie es bitte mit einer kleineren Datei als ({{maxFileSize}})",
-            "SYNC_SUCCESS": "Ihr Projekt wurde erfolgreich importiert"
+            "SYNC_SUCCESS": "Ihr Projekt wurde erfolgreich importiert",
+            "PROJECT_RESTRICTIONS": {
+                "PROJECT_MEMBERS_DESC": "The project you want to import has {{members}} users, but you are only allowed to have {{max_members}} users per project. If you want have more users contact with the administrators.",
+                "PRIVATE_PROJECTS_SPACE": {
+                    "TITLE": "You don't have space for another private project",
+                    "DESC": "The project you want to import is private, but you don't have space to create more."
+                },
+                "PUBLIC_PROJECTS_SPACE": {
+                    "TITLE": "You don't' have space for another public project",
+                    "DESC": "The project you want to import is public, but you don't have space to create more."
+                },
+                "PRIVATE_PROJECTS_MEMBERS": {
+                    "TITLE": "Your account only allows {{max_members}} users per private project"
+                },
+                "PUBLIC_PROJECTS_MEMBERS": {
+                    "TITLE": "Your account only allows {{max_members}} users per public project"
+                },
+                "PRIVATE_PROJECTS_SPACE_MEMBERS": {
+                    "TITLE": "You don't have space for another private project and neither for more than {{max_members}} users per private projects",
+                    "DESC": "The project that you want to import is private and has {{members}} users."
+                },
+                "PUBLIC_PROJECTS_SPACE_MEMBERS": {
+                    "TITLE": "You don't have space for another public project and neither for more than {{max_members}} users per public projects",
+                    "DESC": "The public that you want to import is public and has more than {{members}} users."
+                }
+            }
         },
         "LIKE_BUTTON": {
             "LIKE": "Gefällt mir",
@@ -820,7 +860,10 @@
             "SECTION_NAME": "Dein Taiga Benutzerkonto löschen",
             "CONFIRM": "Sind Sie sicher, dass Sie Ihr Taiga Benutzerkonto löschen wollen?",
             "SUBTITLE": "Wir werden Sie vermissen! :-(",
-            "NEWSLETTER_LABEL_TEXT": "Ich möchte keinen Newsletter mehr erhalten"
+            "NEWSLETTER_LABEL_TEXT": "Ich möchte keinen Newsletter mehr erhalten",
+            "CANCEL": "Back to settings",
+            "ACCEPT": "Delete account",
+            "BLOCK_PROJECT": "Note that all your projects owned will be <strong>blocked</strong>. If you do not want to block your projects before deleting your account you can transfer ownership of the project to someone else."
         },
         "DELETE_PROJECT": {
             "TITLE": "Projekt löschen",
@@ -1304,12 +1347,18 @@
         }
     },
     "WIZARD": {
-        "SECTION_TITLE_CHOOSE_TEMPLATE": "Wählen Sie ein Template",
-        "CHOOSE_TEMPLATE_TEXT": "Welches Template würde besser zu Ihrem Projekt passen?",
         "SECTION_TITLE_CREATE_PROJECT": "Projekt erstellen",
         "CREATE_PROJECT_TEXT": "Frisch und sauber. Wie aufregend!",
-        "PROGRESS_TEMPLATE_SELECTION": "Template Auswahl",
-        "PROGRESS_NAME_DESCRIPTION": "Name und Beschreibung"
+        "CHOOSE_TEMPLATE": "Which template would fit better in your project?",
+        "CHOOSE_TEMPLATE_TITLE": "More info about project templates",
+        "CHOOSE_TEMPLATE_INFO": "More info",
+        "PROJECT_DETAILS": "Project Details",
+        "PUBLIC_PROJECT": "Public Project",
+        "PRIVATE_PROJECT": "Private Project",
+        "CREATE_PROJECT": "Create project",
+        "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects",
+        "MAX_PUBLIC_PROJECTS": "You've reached the maximum number of public projects",
+        "CHANGE_PLANS": "change plans"
     },
     "WIKI": {
         "PAGE_TITLE": "{{wikiPageName}} - Wiki - {{projectName}}",

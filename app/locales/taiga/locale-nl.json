@@ -41,6 +41,7 @@
         "IOCAINE_TEXT": "Voel je je wat overweldigd door een taak? Zorg ervoor dat anderen dit weten door op Iocaine te klikken bij het wijzigen van een taak. Je kan stapsgewijs immuun worden tegen dit (fictioneel) dodelijk gif door kleine dosissen op te nemen. Net zoals je beter kan worden in wat je doet door af en toe een extra uitdaging aan te gaan!",
         "CLIENT_REQUIREMENT": "Client requirement is new requirement that was not previously expected and it is required to be part of the project",
         "TEAM_REQUIREMENT": "Team requirement is a requirement that must exist in the project but should have no cost for the client",
+        "OWNER": "Project Owner",
         "CAPSLOCK_WARNING": "Be careful! You are writing with capital letters and this input is case sensitive.",
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Deze waarde lijkt ongeldig te zijn",
@@ -407,7 +408,9 @@
             "TITLE": "Gebruikers beheren",
             "PAGE_TITLE": "Lidmaatschappen - {{projectName}}",
             "ADD_BUTTON": "+ Nieuwe gebruiker",
-            "ADD_BUTTON_TITLE": "Nieuwe gebruiker toevoegen"
+            "ADD_BUTTON_TITLE": "Nieuwe gebruiker toevoegen",
+            "LIMIT_USERS_WARNING": "Why can't I add more members",
+            "LIMIT_USERS_WARNING_MESSAGE": "Currently you can only have <strong>{{members}}</strong> members per project. If you want to add more members get in touch with the administrators"
         },
         "PROJECT_EXPORT": {
             "TITLE": "Export",
@@ -429,6 +432,10 @@
             "DISABLE": "Uitschakelen",
             "BACKLOG": "Backlog",
             "BACKLOG_DESCRIPTION": "Organiseer je user stories om een duidelijk overzicht van aankomend en geprioritiseerd werk te behouden.",
+            "NUMBER_SPRINTS": "Expected number of sprints",
+            "NUMBER_SPRINTS_HELP": "0 for an undetermined quantity",
+            "NUMBER_US_POINTS": "Expected total of story points",
+            "NUMBER_US_POINTS_HELP": "0 for an undetermined quantity",
             "KANBAN": "Kanban",
             "KANBAN_DESCRIPTION": "Organiseer je project volgens het lean principe met dit bord.",
             "ISSUES": "Issues",
@@ -436,9 +443,9 @@
             "WIKI": "Wiki\n",
             "WIKI_DESCRIPTION": "Voeg toe, wijzig of verwijder inhoud in samenwerking met anderen. Dit is the juiste plaats voor je project documentatie.",
             "MEETUP": "Meet Up",
-            "MEETUP_DESCRIPTION": "Kies je videoconference systeem. Zelfs programmeurs hebben face-to-face contact nodig.",
+            "MEETUP_DESCRIPTION": "Choose your videoconference system.",
             "SELECT_VIDEOCONFERENCE": "Kies een videoconference systeem",
-            "SALT_CHAT_ROOM": "Als je wil kan je een salt code aan de naam van de chatroom toevoegen",
+            "SALT_CHAT_ROOM": "Add a prefix to the chat room name",
             "JITSI_CHAT_ROOM": "Jitsi",
             "APPEARIN_CHAT_ROOM": "AppearIn",
             "TALKY_CHAT_ROOM": "Talky",
@@ -450,8 +457,6 @@
             "PROJECT_DETAILS": "Project details",
             "PROJECT_NAME": "Naam project",
             "PROJECT_SLUG": "Project Slug",
-            "NUMBER_SPRINTS": "Aantal sprinten (0 voor een onbepaalde hoeveelheid)",
-            "NUMBER_US_POINTS": "Aantal US punten (0 voor een onbepaalde hoeveelheid)",
             "TAGS": "Tags",
             "DESCRIPTION": "Beschrijving",
             "RECRUITING": "Is this project looking for people?",
@@ -463,7 +468,11 @@
             "DELETE": "Verwijder dit project",
             "LOGO_HELP": "The image will be scaled to 80x80px.",
             "CHANGE_LOGO": "Change logo",
-            "ACTION_USE_DEFAULT_LOGO": "Use default image"
+            "ACTION_USE_DEFAULT_LOGO": "Use default image",
+            "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects",
+            "MAX_PRIVATE_PROJECTS_MEMBERS": "The project exceeds the maximum members number in private projects",
+            "MAX_PUBLIC_PROJECTS": "You've reached the maximum number of public projects",
+            "MAX_PUBLIC_PROJECTS_MEMBERS": "The project exceeds the maximum members number in public projects"
         },
         "REPORTS": {
             "TITLE": "Rapporten",
@@ -731,6 +740,11 @@
         "FANS_COUNTER_TITLE": "{total, plural, one{one fan} other{# fans}}",
         "WATCHERS_COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}",
         "MEMBERS_COUNTER_TITLE": "{total, plural, one{one member} other{# members}}",
+        "BLOCKED_PROJECT": {
+            "BLOCKED": "Blocked project",
+            "THIS_PROJECT_IS_BLOCKED": "This project is temporarily blocked",
+            "TO_UNBLOCK_CONTACT_THE_ADMIN_STAFF": "To unblock your projects you must contact with the admin staff"
+        },
         "STATS": {
             "PROJECT": "project<br/> punten",
             "DEFINED": "gedefinieerde<br/> punten",
@@ -777,6 +791,7 @@
             "CHANGE_PASSWORD": "Wachtwoord wijzigen",
             "DASHBOARD_TITLE": "Dashboard",
             "DISCOVER_TITLE": "Ontdek trending projecten",
+            "NEW_ITEM": "New",
             "DISCOVER": "Ontdek",
             "ACTION_REORDER": "Sleep om de volgorde te veranderen"
         },
@@ -791,7 +806,32 @@
             "ERROR_TOO_MANY_REQUEST": "Sorry, onze Oempa-Loempa's zijn op het moment erg druk. Probeer het nog eens over een paar minuten.",
             "ERROR_MESSAGE": "Onze Oempa-Loempa's hebben wat problemen met het importeren van je dump: {{error_message}}",
             "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is te zwaar voor onze Oempa-Loempa's, probeer het met een bestand kleiner dan ({{maxFileSize}})",
-            "SYNC_SUCCESS": "Je project werd met succes geïmporteerd"
+            "SYNC_SUCCESS": "Je project werd met succes geïmporteerd",
+            "PROJECT_RESTRICTIONS": {
+                "PROJECT_MEMBERS_DESC": "The project you want to import has {{members}} users, but you are only allowed to have {{max_members}} users per project. If you want have more users contact with the administrators.",
+                "PRIVATE_PROJECTS_SPACE": {
+                    "TITLE": "You don't have space for another private project",
+                    "DESC": "The project you want to import is private, but you don't have space to create more."
+                },
+                "PUBLIC_PROJECTS_SPACE": {
+                    "TITLE": "You don't' have space for another public project",
+                    "DESC": "The project you want to import is public, but you don't have space to create more."
+                },
+                "PRIVATE_PROJECTS_MEMBERS": {
+                    "TITLE": "Your account only allows {{max_members}} users per private project"
+                },
+                "PUBLIC_PROJECTS_MEMBERS": {
+                    "TITLE": "Your account only allows {{max_members}} users per public project"
+                },
+                "PRIVATE_PROJECTS_SPACE_MEMBERS": {
+                    "TITLE": "You don't have space for another private project and neither for more than {{max_members}} users per private projects",
+                    "DESC": "The project that you want to import is private and has {{members}} users."
+                },
+                "PUBLIC_PROJECTS_SPACE_MEMBERS": {
+                    "TITLE": "You don't have space for another public project and neither for more than {{max_members}} users per public projects",
+                    "DESC": "The public that you want to import is public and has more than {{members}} users."
+                }
+            }
         },
         "LIKE_BUTTON": {
             "LIKE": "Vind ik leuk",
@@ -820,7 +860,10 @@
             "SECTION_NAME": "Taiga account verwijderen",
             "CONFIRM": "Weet je zeker dat je je Taiga account wilt verwijderen?",
             "SUBTITLE": "We gaan je missen! :-(",
-            "NEWSLETTER_LABEL_TEXT": "Ik wil de nieuwsbrief niet meer ontvangen"
+            "NEWSLETTER_LABEL_TEXT": "Ik wil de nieuwsbrief niet meer ontvangen",
+            "CANCEL": "Back to settings",
+            "ACCEPT": "Delete account",
+            "BLOCK_PROJECT": "Note that all your projects owned will be <strong>blocked</strong>. If you do not want to block your projects before deleting your account you can transfer ownership of the project to someone else."
         },
         "DELETE_PROJECT": {
             "TITLE": "Verwijder project",
@@ -1304,12 +1347,18 @@
         }
     },
     "WIZARD": {
-        "SECTION_TITLE_CHOOSE_TEMPLATE": "Kies een template",
-        "CHOOSE_TEMPLATE_TEXT": "Welk template zou beter bij je project passen?",
         "SECTION_TITLE_CREATE_PROJECT": "Project aanmaken",
         "CREATE_PROJECT_TEXT": "Vers en proper. Spanned!",
-        "PROGRESS_TEMPLATE_SELECTION": "Template selectie",
-        "PROGRESS_NAME_DESCRIPTION": "Naam en beschrijving"
+        "CHOOSE_TEMPLATE": "Which template would fit better in your project?",
+        "CHOOSE_TEMPLATE_TITLE": "More info about project templates",
+        "CHOOSE_TEMPLATE_INFO": "More info",
+        "PROJECT_DETAILS": "Project Details",
+        "PUBLIC_PROJECT": "Public Project",
+        "PRIVATE_PROJECT": "Private Project",
+        "CREATE_PROJECT": "Create project",
+        "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects",
+        "MAX_PUBLIC_PROJECTS": "You've reached the maximum number of public projects",
+        "CHANGE_PLANS": "change plans"
     },
     "WIKI": {
         "PAGE_TITLE": "{{wikiPageName}} - Wiki - {{projectName}}",

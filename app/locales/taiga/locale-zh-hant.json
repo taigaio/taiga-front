@@ -41,6 +41,7 @@
         "IOCAINE_TEXT": "感到任務的不堪負荷？確認其它人在編輯任務時知道此狀況，可以點選Iocaine。它可能會成為免疫的致命狀況，只要長期小量消耗，但如果你只是偶而挑戰它可有助表現。",
         "CLIENT_REQUIREMENT": "Client requirement is new requirement that was not previously expected and it is required to be part of the project",
         "TEAM_REQUIREMENT": "Team requirement is a requirement that must exist in the project but should have no cost for the client",
+        "OWNER": "Project Owner",
         "CAPSLOCK_WARNING": "Be careful! You are writing with capital letters and this input is case sensitive.",
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "該數值似乎為無效",
@@ -407,7 +408,9 @@
             "TITLE": "管理成員",
             "PAGE_TITLE": "成員資格 - {{projectName}}",
             "ADD_BUTTON": "+ 新成員",
-            "ADD_BUTTON_TITLE": "增加新成員"
+            "ADD_BUTTON_TITLE": "增加新成員",
+            "LIMIT_USERS_WARNING": "Why can't I add more members",
+            "LIMIT_USERS_WARNING_MESSAGE": "Currently you can only have <strong>{{members}}</strong> members per project. If you want to add more members get in touch with the administrators"
         },
         "PROJECT_EXPORT": {
             "TITLE": "匯出",
@@ -429,6 +432,10 @@
             "DISABLE": "停用",
             "BACKLOG": "待辦任務優先表",
             "BACKLOG_DESCRIPTION": "管理你的 User Story 讓接下來的及優先的工作能被有條理地檢視 ",
+            "NUMBER_SPRINTS": "Expected number of sprints",
+            "NUMBER_SPRINTS_HELP": "0 for an undetermined quantity",
+            "NUMBER_US_POINTS": "Expected total of story points",
+            "NUMBER_US_POINTS_HELP": "0 for an undetermined quantity",
             "KANBAN": "Kanban(看板)",
             "KANBAN_DESCRIPTION": "在此看板上組織你的專案",
             "ISSUES": "問題 ",
@@ -436,9 +443,9 @@
             "WIKI": "維基",
             "WIKI_DESCRIPTION": "新增,修正或是刪除與他人合作的內容。這裏正是專案文件記錄區",
             "MEETUP": "符合",
-            "MEETUP_DESCRIPTION": "選擇你的視訊系統。有些開發者需要面對面接觸",
+            "MEETUP_DESCRIPTION": "Choose your videoconference system.",
             "SELECT_VIDEOCONFERENCE": "選擇一個視訊會議系統　",
-            "SALT_CHAT_ROOM": "你可以把聊天室名稱加上salt code亂數密碼　",
+            "SALT_CHAT_ROOM": "Add a prefix to the chat room name",
             "JITSI_CHAT_ROOM": "Jitsi",
             "APPEARIN_CHAT_ROOM": "AppearIn",
             "TALKY_CHAT_ROOM": "Talky",
@@ -450,8 +457,6 @@
             "PROJECT_DETAILS": "專案細節",
             "PROJECT_NAME": "專案名稱",
             "PROJECT_SLUG": "專案代稱",
-            "NUMBER_SPRINTS": "衝刺任務數目(0為未決定數量)",
-            "NUMBER_US_POINTS": "使用者故事點數數目 (0 為未決定數目)",
             "TAGS": "標籤",
             "DESCRIPTION": "描述",
             "RECRUITING": "這個專案是否在徵人",
@@ -463,7 +468,11 @@
             "DELETE": "刪除此專案",
             "LOGO_HELP": "此圖片將被裁成80x80px.<br>",
             "CHANGE_LOGO": "更改圖標",
-            "ACTION_USE_DEFAULT_LOGO": "使用設預圖片"
+            "ACTION_USE_DEFAULT_LOGO": "使用設預圖片",
+            "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects",
+            "MAX_PRIVATE_PROJECTS_MEMBERS": "The project exceeds the maximum members number in private projects",
+            "MAX_PUBLIC_PROJECTS": "You've reached the maximum number of public projects",
+            "MAX_PUBLIC_PROJECTS_MEMBERS": "The project exceeds the maximum members number in public projects"
         },
         "REPORTS": {
             "TITLE": "Reports",
@@ -731,6 +740,11 @@
         "FANS_COUNTER_TITLE": "{total, plural, one{一個粉絲} other{# 粉絲}}",
         "WATCHERS_COUNTER_TITLE": "{total, plural, one{一個觀注者} other{# 觀注者}}",
         "MEMBERS_COUNTER_TITLE": "{total, plural, one{one member} other{# members}}",
+        "BLOCKED_PROJECT": {
+            "BLOCKED": "Blocked project",
+            "THIS_PROJECT_IS_BLOCKED": "This project is temporarily blocked",
+            "TO_UNBLOCK_CONTACT_THE_ADMIN_STAFF": "To unblock your projects you must contact with the admin staff"
+        },
         "STATS": {
             "PROJECT": "專案<br/> 點數",
             "DEFINED": "已定義<br/> 點數",
@@ -777,6 +791,7 @@
             "CHANGE_PASSWORD": "更換密碼 ",
             "DASHBOARD_TITLE": "控制台",
             "DISCOVER_TITLE": "發現流行專案",
+            "NEW_ITEM": "New",
             "DISCOVER": "發現",
             "ACTION_REORDER": "拖移 & 丟到來記錄"
         },
@@ -791,7 +806,32 @@
             "ERROR_TOO_MANY_REQUEST": "抱歉系統繁忙中，請稍後再試試　",
             "ERROR_MESSAGE": "我們的系統無法滙入你的資料",
             "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) 超過系統容量上限, 請重傳小一點的檔案 ({{maxFileSize}})",
-            "SYNC_SUCCESS": "你的專案已成功滙入"
+            "SYNC_SUCCESS": "你的專案已成功滙入",
+            "PROJECT_RESTRICTIONS": {
+                "PROJECT_MEMBERS_DESC": "The project you want to import has {{members}} users, but you are only allowed to have {{max_members}} users per project. If you want have more users contact with the administrators.",
+                "PRIVATE_PROJECTS_SPACE": {
+                    "TITLE": "You don't have space for another private project",
+                    "DESC": "The project you want to import is private, but you don't have space to create more."
+                },
+                "PUBLIC_PROJECTS_SPACE": {
+                    "TITLE": "You don't' have space for another public project",
+                    "DESC": "The project you want to import is public, but you don't have space to create more."
+                },
+                "PRIVATE_PROJECTS_MEMBERS": {
+                    "TITLE": "Your account only allows {{max_members}} users per private project"
+                },
+                "PUBLIC_PROJECTS_MEMBERS": {
+                    "TITLE": "Your account only allows {{max_members}} users per public project"
+                },
+                "PRIVATE_PROJECTS_SPACE_MEMBERS": {
+                    "TITLE": "You don't have space for another private project and neither for more than {{max_members}} users per private projects",
+                    "DESC": "The project that you want to import is private and has {{members}} users."
+                },
+                "PUBLIC_PROJECTS_SPACE_MEMBERS": {
+                    "TITLE": "You don't have space for another public project and neither for more than {{max_members}} users per public projects",
+                    "DESC": "The public that you want to import is public and has more than {{members}} users."
+                }
+            }
         },
         "LIKE_BUTTON": {
             "LIKE": "喜歡",
@@ -820,7 +860,10 @@
             "SECTION_NAME": "刪除Taiga帳戶",
             "CONFIRM": "你確定要刪除Taiga帳戶嗎？",
             "SUBTITLE": "我們會想念你:-(",
-            "NEWSLETTER_LABEL_TEXT": "不願再收到電子月報"
+            "NEWSLETTER_LABEL_TEXT": "不願再收到電子月報",
+            "CANCEL": "Back to settings",
+            "ACCEPT": "Delete account",
+            "BLOCK_PROJECT": "Note that all your projects owned will be <strong>blocked</strong>. If you do not want to block your projects before deleting your account you can transfer ownership of the project to someone else."
         },
         "DELETE_PROJECT": {
             "TITLE": "刪除專案",
@@ -1304,12 +1347,18 @@
         }
     },
     "WIZARD": {
-        "SECTION_TITLE_CHOOSE_TEMPLATE": "選擇外觀 ",
-        "CHOOSE_TEMPLATE_TEXT": "哪一個樣版最適合你的專案",
         "SECTION_TITLE_CREATE_PROJECT": "創建專案",
         "CREATE_PROJECT_TEXT": "新鮮與乾淨，太好了",
-        "PROGRESS_TEMPLATE_SELECTION": "外觀選擇",
-        "PROGRESS_NAME_DESCRIPTION": "名稱與描述"
+        "CHOOSE_TEMPLATE": "Which template would fit better in your project?",
+        "CHOOSE_TEMPLATE_TITLE": "More info about project templates",
+        "CHOOSE_TEMPLATE_INFO": "More info",
+        "PROJECT_DETAILS": "Project Details",
+        "PUBLIC_PROJECT": "Public Project",
+        "PRIVATE_PROJECT": "Private Project",
+        "CREATE_PROJECT": "Create project",
+        "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects",
+        "MAX_PUBLIC_PROJECTS": "You've reached the maximum number of public projects",
+        "CHANGE_PLANS": "change plans"
     },
     "WIKI": {
         "PAGE_TITLE": "{{wikiPageName}} - 維基 - {{projectName}}",

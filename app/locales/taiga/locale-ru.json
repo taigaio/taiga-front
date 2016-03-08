@@ -41,6 +41,7 @@
         "IOCAINE_TEXT": "Чувствуете, что задание берет верх над вами? Дайте другим знать об этом, нажав на \"Иокаин\", когда редактируете задание. Возможно стать неуязвимым к этому (выдуманному) смертельном яду, потребляя небольшие количества время от времени, так же как возможно стать лучше в том, что вы делаете, временами беря на себя дополнительные препятствия!",
         "CLIENT_REQUIREMENT": "Client requirement is new requirement that was not previously expected and it is required to be part of the project",
         "TEAM_REQUIREMENT": "Team requirement is a requirement that must exist in the project but should have no cost for the client",
+        "OWNER": "Project Owner",
         "CAPSLOCK_WARNING": "Be careful! You are writing with capital letters and this input is case sensitive.",
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Кажется, это значение некорректно.",
@@ -407,7 +408,9 @@
             "TITLE": "Управление участниками",
             "PAGE_TITLE": "Участие - {{projectName}}",
             "ADD_BUTTON": "+ Новый участник",
-            "ADD_BUTTON_TITLE": "Добавить нового участника"
+            "ADD_BUTTON_TITLE": "Добавить нового участника",
+            "LIMIT_USERS_WARNING": "Why can't I add more members",
+            "LIMIT_USERS_WARNING_MESSAGE": "Currently you can only have <strong>{{members}}</strong> members per project. If you want to add more members get in touch with the administrators"
         },
         "PROJECT_EXPORT": {
             "TITLE": "Экспорт",
@@ -429,6 +432,10 @@
             "DISABLE": "Выключить",
             "BACKLOG": "Список задач",
             "BACKLOG_DESCRIPTION": "Управляйте пользовательскими историями, чтобы поддерживать организованное видение важных и приоритетных задач.",
+            "NUMBER_SPRINTS": "Expected number of sprints",
+            "NUMBER_SPRINTS_HELP": "0 for an undetermined quantity",
+            "NUMBER_US_POINTS": "Expected total of story points",
+            "NUMBER_US_POINTS_HELP": "0 for an undetermined quantity",
             "KANBAN": "Kanban",
             "KANBAN_DESCRIPTION": "Организуйте эффективную работу с проектом с помощью этой панели",
             "ISSUES": "Запросы",
@@ -436,9 +443,9 @@
             "WIKI": "Вики",
             "WIKI_DESCRIPTION": "Добавляйте, изменяйте или удаляйте контент совместно с остальными. Это самое правильное место для документации вашего проекта.",
             "MEETUP": "Созвониться",
-            "MEETUP_DESCRIPTION": "Выберите вашу систему для видеоконференций. Даже разработчикам нужны митинги \"лицом к лицу\"",
+            "MEETUP_DESCRIPTION": "Choose your videoconference system.",
             "SELECT_VIDEOCONFERENCE": "Выберите систему видеоконференций",
-            "SALT_CHAT_ROOM": "Если хотите, можете добавить \"соль\" к имени чат-комнаты",
+            "SALT_CHAT_ROOM": "Add a prefix to the chat room name",
             "JITSI_CHAT_ROOM": "Jitsi",
             "APPEARIN_CHAT_ROOM": "AppearIn",
             "TALKY_CHAT_ROOM": "Talky",
@@ -450,8 +457,6 @@
             "PROJECT_DETAILS": "Детали проекта",
             "PROJECT_NAME": "Название проекта",
             "PROJECT_SLUG": "Ссылочное имя проекта",
-            "NUMBER_SPRINTS": "Количество спринтов (0 - неопределенное количество)",
-            "NUMBER_US_POINTS": "Количество очков ПИ (0 - неопределенное количество)",
             "TAGS": "Тэги",
             "DESCRIPTION": "Описание",
             "RECRUITING": "Этот проект ищет людей?",
@@ -463,7 +468,11 @@
             "DELETE": "Удалить проект",
             "LOGO_HELP": "Изображение будет отмасштабировано до 80x80px.",
             "CHANGE_LOGO": "Change logo",
-            "ACTION_USE_DEFAULT_LOGO": "Использовать картинку по умолчанию"
+            "ACTION_USE_DEFAULT_LOGO": "Использовать картинку по умолчанию",
+            "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects",
+            "MAX_PRIVATE_PROJECTS_MEMBERS": "The project exceeds the maximum members number in private projects",
+            "MAX_PUBLIC_PROJECTS": "You've reached the maximum number of public projects",
+            "MAX_PUBLIC_PROJECTS_MEMBERS": "The project exceeds the maximum members number in public projects"
         },
         "REPORTS": {
             "TITLE": "Отчеты",
@@ -731,6 +740,11 @@
         "FANS_COUNTER_TITLE": "{total, plural, one{один фанат} other{# фаната (-ов)}}",
         "WATCHERS_COUNTER_TITLE": "{total, plural, one{один наблюдатель} other{# наблюдателя (-ей)}}",
         "MEMBERS_COUNTER_TITLE": "{total, plural, one{one member} other{# members}}",
+        "BLOCKED_PROJECT": {
+            "BLOCKED": "Blocked project",
+            "THIS_PROJECT_IS_BLOCKED": "This project is temporarily blocked",
+            "TO_UNBLOCK_CONTACT_THE_ADMIN_STAFF": "To unblock your projects you must contact with the admin staff"
+        },
         "STATS": {
             "PROJECT": "проекта<br/> очки",
             "DEFINED": "заданные<br/> очки",
@@ -777,6 +791,7 @@
             "CHANGE_PASSWORD": "Изменить пароль",
             "DASHBOARD_TITLE": "Рабочий стол",
             "DISCOVER_TITLE": "Найти проекты в тренде",
+            "NEW_ITEM": "New",
             "DISCOVER": "Найти",
             "ACTION_REORDER": "Можно перетаскивать мышкой"
         },
@@ -791,7 +806,32 @@
             "ERROR_TOO_MANY_REQUEST": "Извините, Oompa Loompas очень загружен сейчас. Повторите через несколько минут.",
             "ERROR_MESSAGE": "У Oompa Loompas возникли проблемы при импорте резервной копии: {{error_message}}",
             "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) это слишком много для наших Умпа-Лумп, попробуйте еще раз с размером меньшим, чем ({{maxFileSize}})",
-            "SYNC_SUCCESS": "Импорт проекта выполнен успешно"
+            "SYNC_SUCCESS": "Импорт проекта выполнен успешно",
+            "PROJECT_RESTRICTIONS": {
+                "PROJECT_MEMBERS_DESC": "The project you want to import has {{members}} users, but you are only allowed to have {{max_members}} users per project. If you want have more users contact with the administrators.",
+                "PRIVATE_PROJECTS_SPACE": {
+                    "TITLE": "You don't have space for another private project",
+                    "DESC": "The project you want to import is private, but you don't have space to create more."
+                },
+                "PUBLIC_PROJECTS_SPACE": {
+                    "TITLE": "You don't' have space for another public project",
+                    "DESC": "The project you want to import is public, but you don't have space to create more."
+                },
+                "PRIVATE_PROJECTS_MEMBERS": {
+                    "TITLE": "Your account only allows {{max_members}} users per private project"
+                },
+                "PUBLIC_PROJECTS_MEMBERS": {
+                    "TITLE": "Your account only allows {{max_members}} users per public project"
+                },
+                "PRIVATE_PROJECTS_SPACE_MEMBERS": {
+                    "TITLE": "You don't have space for another private project and neither for more than {{max_members}} users per private projects",
+                    "DESC": "The project that you want to import is private and has {{members}} users."
+                },
+                "PUBLIC_PROJECTS_SPACE_MEMBERS": {
+                    "TITLE": "You don't have space for another public project and neither for more than {{max_members}} users per public projects",
+                    "DESC": "The public that you want to import is public and has more than {{members}} users."
+                }
+            }
         },
         "LIKE_BUTTON": {
             "LIKE": "Мне нравится",
@@ -820,7 +860,10 @@
             "SECTION_NAME": "Удалить аккаунт",
             "CONFIRM": "Вы уверены, что хотите удалить ваш аккаунт?",
             "SUBTITLE": "Мы будем скучать по вам! :-(",
-            "NEWSLETTER_LABEL_TEXT": "Я больше не хочу получать вашу новостную рассылку"
+            "NEWSLETTER_LABEL_TEXT": "Я больше не хочу получать вашу новостную рассылку",
+            "CANCEL": "Back to settings",
+            "ACCEPT": "Delete account",
+            "BLOCK_PROJECT": "Note that all your projects owned will be <strong>blocked</strong>. If you do not want to block your projects before deleting your account you can transfer ownership of the project to someone else."
         },
         "DELETE_PROJECT": {
             "TITLE": "Удалить проект",
@@ -1304,12 +1347,18 @@
         }
     },
     "WIZARD": {
-        "SECTION_TITLE_CHOOSE_TEMPLATE": "Выберете шаблон",
-        "CHOOSE_TEMPLATE_TEXT": "Какой шаблон лучше всего подойдет для Вашего проекта?",
         "SECTION_TITLE_CREATE_PROJECT": "Создать проект",
         "CREATE_PROJECT_TEXT": "Свежий и чистый! Так здóрово!",
-        "PROGRESS_TEMPLATE_SELECTION": "Выбор шаблона",
-        "PROGRESS_NAME_DESCRIPTION": "Название и описание"
+        "CHOOSE_TEMPLATE": "Which template would fit better in your project?",
+        "CHOOSE_TEMPLATE_TITLE": "More info about project templates",
+        "CHOOSE_TEMPLATE_INFO": "More info",
+        "PROJECT_DETAILS": "Project Details",
+        "PUBLIC_PROJECT": "Public Project",
+        "PRIVATE_PROJECT": "Private Project",
+        "CREATE_PROJECT": "Create project",
+        "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects",
+        "MAX_PUBLIC_PROJECTS": "You've reached the maximum number of public projects",
+        "CHANGE_PLANS": "change plans"
     },
     "WIKI": {
         "PAGE_TITLE": "{{wikiPageName}} - Вики - {{projectName}}",

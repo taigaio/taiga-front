@@ -41,6 +41,7 @@
         "IOCAINE_TEXT": "Jos tehtävä ahdistaa, merkitse se myrkylliseksi. Ajan mittaa pieninä annoksina saattaa kastokykysi myrkkyä vastaan parantua.",
         "CLIENT_REQUIREMENT": "Client requirement is new requirement that was not previously expected and it is required to be part of the project",
         "TEAM_REQUIREMENT": "Team requirement is a requirement that must exist in the project but should have no cost for the client",
+        "OWNER": "Project Owner",
         "CAPSLOCK_WARNING": "Be careful! You are writing with capital letters and this input is case sensitive.",
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Tämä arvo vaikuttaa virheelliseltä.",
@@ -407,7 +408,9 @@
             "TITLE": "Hallinnoi jäseniä",
             "PAGE_TITLE": "Memberships - {{projectName}}",
             "ADD_BUTTON": "+ Uusi jäsen",
-            "ADD_BUTTON_TITLE": "Lisää jäsen"
+            "ADD_BUTTON_TITLE": "Lisää jäsen",
+            "LIMIT_USERS_WARNING": "Why can't I add more members",
+            "LIMIT_USERS_WARNING_MESSAGE": "Currently you can only have <strong>{{members}}</strong> members per project. If you want to add more members get in touch with the administrators"
         },
         "PROJECT_EXPORT": {
             "TITLE": "Vie",
@@ -429,6 +432,10 @@
             "DISABLE": "Passivoi",
             "BACKLOG": "Odottavat",
             "BACKLOG_DESCRIPTION": "Hallinnoi käyttäjätarinoita: järjestele ja priorisoi työtä.",
+            "NUMBER_SPRINTS": "Expected number of sprints",
+            "NUMBER_SPRINTS_HELP": "0 for an undetermined quantity",
+            "NUMBER_US_POINTS": "Expected total of story points",
+            "NUMBER_US_POINTS_HELP": "0 for an undetermined quantity",
             "KANBAN": "Kanban",
             "KANBAN_DESCRIPTION": "Järjestä projektisi tehokkaasti tällä taululla.",
             "ISSUES": "Pyynnöt",
@@ -436,9 +443,9 @@
             "WIKI": "Wiki",
             "WIKI_DESCRIPTION": "Lisää, muokkaa tai poista sisältöä yhteistyössä muiden kanssa. Tämä on oikea paikka projektin dokumentaatiolle.",
             "MEETUP": "Tapaa",
-            "MEETUP_DESCRIPTION": "Valitse videoneuvottelu- järjestelmä. Jopa kehittäjät tarvitsevat katsekontaktia.",
+            "MEETUP_DESCRIPTION": "Choose your videoconference system.",
             "SELECT_VIDEOCONFERENCE": "Valitse videoconferenssi-järjestelmä",
-            "SALT_CHAT_ROOM": "Voit halutessasi lisätä suolaan chat-huoneen nimeen",
+            "SALT_CHAT_ROOM": "Add a prefix to the chat room name",
             "JITSI_CHAT_ROOM": "Jitsi",
             "APPEARIN_CHAT_ROOM": "AppearIn",
             "TALKY_CHAT_ROOM": "Talky",
@@ -450,8 +457,6 @@
             "PROJECT_DETAILS": "Projektin tiedot",
             "PROJECT_NAME": "Projektin nimi",
             "PROJECT_SLUG": "Projektin hukka-aika",
-            "NUMBER_SPRINTS": "Number of sprints (0 for an undetermined quantity)",
-            "NUMBER_US_POINTS": "Number of US points (0 for an undetermined quantity)",
             "TAGS": "Avainsanat",
             "DESCRIPTION": "Kuvaus",
             "RECRUITING": "Is this project looking for people?",
@@ -463,7 +468,11 @@
             "DELETE": "Poista tämä projekti",
             "LOGO_HELP": "The image will be scaled to 80x80px.",
             "CHANGE_LOGO": "Change logo",
-            "ACTION_USE_DEFAULT_LOGO": "Use default image"
+            "ACTION_USE_DEFAULT_LOGO": "Use default image",
+            "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects",
+            "MAX_PRIVATE_PROJECTS_MEMBERS": "The project exceeds the maximum members number in private projects",
+            "MAX_PUBLIC_PROJECTS": "You've reached the maximum number of public projects",
+            "MAX_PUBLIC_PROJECTS_MEMBERS": "The project exceeds the maximum members number in public projects"
         },
         "REPORTS": {
             "TITLE": "Raportit",
@@ -731,6 +740,11 @@
         "FANS_COUNTER_TITLE": "{total, plural, one{one fan} other{# fans}}",
         "WATCHERS_COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}",
         "MEMBERS_COUNTER_TITLE": "{total, plural, one{one member} other{# members}}",
+        "BLOCKED_PROJECT": {
+            "BLOCKED": "Blocked project",
+            "THIS_PROJECT_IS_BLOCKED": "This project is temporarily blocked",
+            "TO_UNBLOCK_CONTACT_THE_ADMIN_STAFF": "To unblock your projects you must contact with the admin staff"
+        },
         "STATS": {
             "PROJECT": "projekti<br/> pisteet",
             "DEFINED": "määritely<br/> pistettä",
@@ -777,6 +791,7 @@
             "CHANGE_PASSWORD": "Muuta salasanaa",
             "DASHBOARD_TITLE": "Dashboard",
             "DISCOVER_TITLE": "Discover trending projects",
+            "NEW_ITEM": "New",
             "DISCOVER": "Discover",
             "ACTION_REORDER": "Drag & drop to reorder"
         },
@@ -791,7 +806,32 @@
             "ERROR_TOO_MANY_REQUEST": "Oompa Loompas ovat kiireisiä juuri nyt. Yritä hetken päästä uudelleen.",
             "ERROR_MESSAGE": "Oompa Loompas eivät pysty lukemaan tiedostoasi: {{error_message}}",
             "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) on liian iso Oompa Loompaseille, kokeile pienemmällä kuin ({{maxFileSize}})",
-            "SYNC_SUCCESS": "Projektisi on tuotu sisään onnistuneesti"
+            "SYNC_SUCCESS": "Projektisi on tuotu sisään onnistuneesti",
+            "PROJECT_RESTRICTIONS": {
+                "PROJECT_MEMBERS_DESC": "The project you want to import has {{members}} users, but you are only allowed to have {{max_members}} users per project. If you want have more users contact with the administrators.",
+                "PRIVATE_PROJECTS_SPACE": {
+                    "TITLE": "You don't have space for another private project",
+                    "DESC": "The project you want to import is private, but you don't have space to create more."
+                },
+                "PUBLIC_PROJECTS_SPACE": {
+                    "TITLE": "You don't' have space for another public project",
+                    "DESC": "The project you want to import is public, but you don't have space to create more."
+                },
+                "PRIVATE_PROJECTS_MEMBERS": {
+                    "TITLE": "Your account only allows {{max_members}} users per private project"
+                },
+                "PUBLIC_PROJECTS_MEMBERS": {
+                    "TITLE": "Your account only allows {{max_members}} users per public project"
+                },
+                "PRIVATE_PROJECTS_SPACE_MEMBERS": {
+                    "TITLE": "You don't have space for another private project and neither for more than {{max_members}} users per private projects",
+                    "DESC": "The project that you want to import is private and has {{members}} users."
+                },
+                "PUBLIC_PROJECTS_SPACE_MEMBERS": {
+                    "TITLE": "You don't have space for another public project and neither for more than {{max_members}} users per public projects",
+                    "DESC": "The public that you want to import is public and has more than {{members}} users."
+                }
+            }
         },
         "LIKE_BUTTON": {
             "LIKE": "Like",
@@ -820,7 +860,10 @@
             "SECTION_NAME": "Poista Taiga-tunnus",
             "CONFIRM": "Haluatko varmasti poistaa Taiga-tunnuksesi?",
             "SUBTITLE": "Tulemme kaipaamaan sinua! :-(",
-            "NEWSLETTER_LABEL_TEXT": "En halua uutiskirjettä enää"
+            "NEWSLETTER_LABEL_TEXT": "En halua uutiskirjettä enää",
+            "CANCEL": "Back to settings",
+            "ACCEPT": "Delete account",
+            "BLOCK_PROJECT": "Note that all your projects owned will be <strong>blocked</strong>. If you do not want to block your projects before deleting your account you can transfer ownership of the project to someone else."
         },
         "DELETE_PROJECT": {
             "TITLE": "Poista projekti",
@@ -1304,12 +1347,18 @@
         }
     },
     "WIZARD": {
-        "SECTION_TITLE_CHOOSE_TEMPLATE": "Valitse pohja",
-        "CHOOSE_TEMPLATE_TEXT": "Mikä pohja sopii paremmin projektillesi?",
         "SECTION_TITLE_CREATE_PROJECT": "Luo projekti",
         "CREATE_PROJECT_TEXT": "Täysin koskematon. Jännittävää!",
-        "PROGRESS_TEMPLATE_SELECTION": "Pohjan valinta",
-        "PROGRESS_NAME_DESCRIPTION": "Nimi ja kuvaus"
+        "CHOOSE_TEMPLATE": "Which template would fit better in your project?",
+        "CHOOSE_TEMPLATE_TITLE": "More info about project templates",
+        "CHOOSE_TEMPLATE_INFO": "More info",
+        "PROJECT_DETAILS": "Project Details",
+        "PUBLIC_PROJECT": "Public Project",
+        "PRIVATE_PROJECT": "Private Project",
+        "CREATE_PROJECT": "Create project",
+        "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects",
+        "MAX_PUBLIC_PROJECTS": "You've reached the maximum number of public projects",
+        "CHANGE_PLANS": "change plans"
     },
     "WIKI": {
         "PAGE_TITLE": "{{wikiPageName}} - Wiki - {{projectName}}",
