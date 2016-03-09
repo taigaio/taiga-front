@@ -25,7 +25,7 @@
         display: flex;
         margin-top: auto;
         svg {
-            @include svg-size(.8rem);
+            @include svg-size(.75rem);
             fill: currentColor;
             margin-right: .25rem;
         }
