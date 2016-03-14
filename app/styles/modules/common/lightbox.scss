@@ -339,10 +339,6 @@
         line-height: 2rem;
         text-align: center;
     }
-    .subtitle {
-        @extend %large;
-        @extend %title;
-    }
     .newsletter {
         margin: 1rem 0;
         text-align: center;

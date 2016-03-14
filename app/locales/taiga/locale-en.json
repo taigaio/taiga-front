@@ -859,7 +859,6 @@
         "DELETE_ACCOUNT": {
             "SECTION_NAME": "Delete Taiga Account",
             "CONFIRM": "Are you sure you want to delete your Taiga account?",
-            "SUBTITLE": "We're going to miss you! :-(",
             "NEWSLETTER_LABEL_TEXT": "I don't wanna receive your newsletter anymore",
             "CANCEL": "Back to settings",
             "ACCEPT": "Delete account",
