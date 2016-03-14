@@ -27,153 +27,112 @@ debounce = @.taiga.debounce
 
 module = angular.module("taigaKanban")
 
-MAX_MEMBERSHIP_FIELDSETS = 4
-
 #############################################################################
 ## Create Members Lightbox Directive
 #############################################################################
 
-CreateMembersDirective = ($rs, $rootScope, $confirm, $loading, lightboxService, $compile) ->
-    extraTextTemplate = """
-    <fieldset class="extra-text">
-        <textarea ng-attr-placeholder="{{'LIGHTBOX.CREATE_MEMBER.PLACEHOLDER_INVITATION_TEXT' | translate}}"
-                  maxlength="255"></textarea>
-    </fieldset>
-    """
+class LightboxAddMembersController
+    @.$inject = [
+        "$scope",
+        "lightboxService",
+        "tgLoader",
+        "$tgConfirm",
+        "$tgResources",
+        "$rootScope",
+    ]
 
-    template = _.template("""
-    <div class="add-member-wrapper">
-        <fieldset>
-            <input tg-capslock type="email" placeholder="{{'LIGHTBOX.CREATE_MEMBER.PLACEHOLDER_TYPE_EMAIL' | translate}}"
-                   <% if(required) { %> data-required="true" <% } %> data-type="email" />
-        </fieldset>
-        <fieldset>
-            <select <% if(required) { %> data-required="true" <% } %> data-required="true">
-                <% _.each(roleList, function(role) { %>
-                <option value="<%- role.id %>"><%- role.name %></option>
-                <% }); %>
-            </select>
-            <a class="add-fieldset" href="">
-                <svg class="icon icon-add">
-                    <use xlink:href="#icon-add">
-                </svg>
-            </a>
-        </fieldset>
-    </div>
-    """)
+    constructor: (@scope, @lightboxService, @tgLoader, @confirm, @rs, @rootScope) ->
+        @._defaultMaxInvites = 4
+        @._defaultRole = @.project.roles[0].id
+        @.form = null
+        @.submitInvites = false
+        @.canAddUsers = true
+        @.memberInvites = []
 
-    link = ($scope, $el, $attrs) ->
-        createButton = (type) ->
-            html = "<svg class='icon " + type + "'><use xlink:href='#" + type + "'></svg>";
-            return html
+        if @.project.max_memberships == null
+            @.membersLimit = @._defaultMaxInvites
+        else
+            pendingMembersCount = Math.max(@.project.max_memberships - @.project.total_memberships, 0)
+            @.membersLimit = Math.min(pendingMembersCount, @._defaultMaxInvites)
 
-        createFieldSet = (required = true)->
-            ctx = {roleList: $scope.project.roles, required: required}
-            return $compile(template(ctx))($scope)
+        @.addSingleMember()
 
-        resetForm = ->
-            $el.find("form textarea").remove()
-            $el.find("form .add-member-wrapper").remove()
+    addSingleMember: () ->
+        @.memberInvites.push({email:'', role_id: @._defaultRole})
 
-            invitations = $el.find(".add-member-forms")
-            invitations.html($compile(extraTextTemplate)($scope))
+        if @.memberInvites.length >= @.membersLimit
+            @.canAddUsers = false
+        @.showWarningMessage = (!@.canAddUsers &&
+                            @.project.total_memberships + @.memberInvites.length == @.project.max_memberships)
 
-            fieldSet = createFieldSet()
-            invitations.prepend(fieldSet)
+    removeSingleMember: (index) ->
+        @.memberInvites.splice(index, 1)
 
-        $scope.$on "membersform:new",  ->
-            resetForm()
-            lightboxService.open($el)
+        @.canAddUsers = true
+        @.showWarningMessage = @.membersLimit == 1
 
-        $scope.$on "$destroy", ->
-            $el.off()
+    submit: () ->
+        # Need to reset the form constrains
+        @.form.initializeFields()
+        @.form.reset()
+        return if not @.form.validate()
 
-        $el.on "click", ".delete-fieldset", (event) ->
-            event.preventDefault()
-            target = angular.element(event.currentTarget)
-            fieldSet = target.closest('.add-member-wrapper')
+        @.submitInvites = true
+        promise = @rs.memberships.bulkCreateMemberships(
+            @.project.id,
+            @.memberInvites,
+            @.invitationText
+        )
+        promise.then(
+            @._onSuccessInvite.bind(this),
+            @._onErrorInvite.bind(this)
+        )
 
-            fieldSet.remove()
+    _onSuccessInvite: () ->
+        @.submitInvites = false
+        @rootScope.$broadcast("membersform:new:success")
+        @lightboxService.closeAll()
+        @confirm.notify("success")
 
-            lastActionButton = $el.find(".add-member-wrapper fieldset:last > a")
-            if lastActionButton.hasClass("delete-fieldset")
-                lastActionButton.removeClass("delete-fieldset").addClass("add-fieldset")
-                svg = createButton('icon-add')
-                lastActionButton.html(svg)
+    _onErrorInvite: (response) ->
+        @.submitInvites = false
+        @.form.setErrors(response.data)
+        if response.data._error_message
+            @confirm.notify("error", response.data._error_message)
 
-        $el.on "click", ".add-fieldset", (event) ->
-            event.preventDefault()
-            target = angular.element(event.currentTarget)
-            fieldSet = target.closest('.add-member-wrapper')
+module.controller("LbAddMembersController", LightboxAddMembersController)
 
-            target.removeClass("add-fieldset").addClass("delete-fieldset")
-            svg = createButton('icon-trash')
-            target.html(svg)
 
-            newFieldSet = createFieldSet(false)
-            fieldSet.after(newFieldSet)
 
-            $scope.$digest() # To compile newFieldSet and translate text
+LightboxAddMembersDirective = (lightboxService) ->
+    link = (scope, el, attrs, ctrl) ->
+        lightboxService.open(el)
+        ctrl.form = el.find("form").checksley()
 
-            if $el.find(".add-member-wrapper").length == MAX_MEMBERSHIP_FIELDSETS
-                $el.find(".add-member-wrapper fieldset:last > a")
-                    .removeClass("add-fieldset").addClass("delete-fieldset")
-                svg = createButton('icon-trash')
-                $el.find(".add-member-wrapper fieldset:last > a").html(svg)
+    return {
+        scope: {},
+        bindToController: {
+            project: '=',
+        },
+        controller: 'LbAddMembersController',
+        controllerAs: 'vm',
+        templateUrl: 'admin/lightbox-add-members.html',
+        link: link
+    }
 
-        submit = debounce 2000, (event) =>
-            event.preventDefault()
+module.directive("tgLbAddMembers", ["lightboxService", LightboxAddMembersDirective])
 
-            currentLoading = $loading()
-                .target(submitButton)
-                .start()
 
-            onSuccess = (data) ->
-                currentLoading.finish()
-                lightboxService.close($el)
-                $confirm.notify("success")
-                $rootScope.$broadcast("membersform:new:success")
+#############################################################################
+## Warning message directive
+#############################################################################
 
-            onError = (data) ->
-                currentLoading.finish()
-                lightboxService.close($el)
-                $confirm.notify("error")
-                $rootScope.$broadcast("membersform:new:error")
+LightboxAddMembersWarningMessageDirective = () ->
+    return {
+          templateUrl: "admin/lightbox-add-members-no-more=memberships-warning-message.html"
+          scope: {
+              project: "="
+          }
+    }
 
-            form = $el.find("form").checksley()
-
-            #checksley find new fields
-            form.destroy()
-            form.initialize()
-            if not form.validate()
-                return
-
-            memberWrappers = $el.find("form .add-member-wrapper")
-            memberWrappers = _.filter memberWrappers, (mw) ->
-                angular.element(mw).find("input").hasClass('checksley-ok')
-
-            invitations = _.map memberWrappers, (mw) ->
-                memberWrapper = angular.element(mw)
-                email =  memberWrapper.find("input")
-                role = memberWrapper.find("select")
-
-                return {
-                    email: email.val()
-                    role_id: role.val()
-                }
-
-            if invitations.length
-                invitation_extra_text = $el.find("form textarea").val()
-
-                promise = $rs.memberships.bulkCreateMemberships($scope.project.id,
-                                                      invitations, invitation_extra_text)
-                promise.then(onSuccess, onError)
-
-        submitButton = $el.find(".submit-button")
-
-        $el.on "submit", "form", submit
-
-    return {link: link}
-
-module.directive("tgLbCreateMembers", ["$tgResources", "$rootScope", "$tgConfirm", "$tgLoading",
-                                       "lightboxService", "$compile", CreateMembersDirective])
+module.directive("tgLightboxAddMembersWarningMessage", [LightboxAddMembersWarningMessageDirective])

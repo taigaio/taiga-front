@@ -1,35 +1,30 @@
 doctype html
 
-div.wrapper.memberships(ng-controller="MembershipsController as ctrl",
-                        ng-init="section='admin'; sectionName='ADMIN.MEMBERSHIPS.TITLE'", tg-memberships)
+div.wrapper.memberships(
+    ng-controller="MembershipsController as ctrl"
+    ng-init="section='admin'; sectionName='ADMIN.MEMBERSHIPS.TITLE'"
+    tg-memberships
+)
     tg-project-menu
 
     sidebar.menu-secondary.sidebar.settings-nav(tg-admin-navigation="memberships")
         include ../includes/modules/admin-menu
 
-    section.main.admin-membership
+    section.main.admin-membership.admin-common
         .header-with-actions
             header
                 include ../includes/components/mainTitle
+                tg-no-more-memberships-explanation(ng-if="canAddUsers == false", project="project")
 
             .action-buttons
-                a.limit-users-warning(
-                    ng-if="!canAddUsers"
-                    translate="ADMIN.MEMBERSHIPS.LIMIT_USERS_WARNING"
-                    translate-values="{members: ctrl.maxMembers}"
-                    href=""
-                    ng-click="ctrl.limitUsersWarning()"
-                )
                 button.button-green(
+                    translate="ADMIN.MEMBERSHIPS.ADD_BUTTON"
                     title="{{ ADMIN.MEMBERSHIPS.ADD_BUTTON_TITLE | translate }}",
                     ng-click="ctrl.addNewMembers()"
-                    translate="ADMIN.MEMBERSHIPS.ADD_BUTTON"
-                    ng-disabled="!canAddUsers"
+                    ng-disabled="canAddUsers == false"
                 )
+
 
         include ../includes/modules/admin/admin-membership-table
 
         div.paginator.memberships-paginator
-
-    div.lightbox.lightbox-add-member(tg-lb-create-members)
-        include ../includes/modules/lightbox-add-member
