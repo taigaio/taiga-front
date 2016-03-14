@@ -73,16 +73,24 @@ MarkitupDirective = ($rootscope, $rs, $selectedText, $template, $compile, $trans
             closePreviewMode()
 
         cancelablePromise = null
+        previewInProgress = false
 
         preview = ->
+            return if previewInProgress
+
+            previewInProgress = true
+
             markdownDomNode = element.parents(".markdown")
             markItUpDomNode = element.parents(".markItUp")
+
             $rs.mdrender.render($scope.projectId, $model.$modelValue).then (data) ->
                 html = previewTemplate({data: data.data})
                 html = $compile(html)($scope)
 
                 markdownDomNode.append(html)
                 markItUpDomNode.hide()
+
+                previewInProgress = false
 
                 markdown = element.closest(".markdown")
 
