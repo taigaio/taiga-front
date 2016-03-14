@@ -919,6 +919,17 @@
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(Optional) Add a personalized text to the invitation. Tell something lovely to your new members ;-)",
             "PLACEHOLDER_TYPE_EMAIL": "Type an Email"
+        },
+        "LEAVE_PROJECT_WARNING": {
+            "TITLE": "You can not leave the project without owner",
+            "CURRENT_USER_OWNER": {
+                "DESC": "You are the project owner before leaving it you must pass the property to someone else.",
+                "BUTTON": "Change the project owner"
+            },
+            "OTHER_USER_OWNER": {
+                "DESC": "You can't delete the project owner, you must request a new owner before deleting the user.",
+                "BUTTON": "Request change project owner"
+            }
         }
     },
     "US": {
