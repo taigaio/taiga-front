@@ -14,7 +14,11 @@ div.wrapper(ng-controller="WikiDetailController as ctrl",
 
         div.summary.wiki-summary(tg-wiki-summary, ng-model="wiki", ng-if="wiki.id")
         h2.wiki-title(ng-bind='wikiTitle')
-        section.wiki-content(tg-editable-wiki-content, ng-model="wiki")
+        section.wiki-content(
+            tg-editable-wysiwyg,
+            tg-editable-wiki-content,
+            ng-model="wiki"
+        )
 
         tg-attachments-full(
             ng-if="wiki.id"
