@@ -11,6 +11,7 @@
 - Add badge to project owners
 - Limit of user per project.
 - Redesign of the create project wizard
+- Transfer project ownership
 
 ### Misc
 - Lots of small and not so small bugfixes.

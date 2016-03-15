@@ -333,6 +333,16 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     $routeProvider.when("/project/:pslug/admin/contrib/:plugin",
         {templateUrl: "contrib/main.html"})
 
+    # Transfer project
+    $routeProvider.when("/project/:pslug/transfer/:token",
+        {
+            templateUrl: "projects/transfer/transfer-page.html",
+            loader: true,
+            controller: "Project",
+            controllerAs: "vm"
+        }
+    )
+
     # User settings
     $routeProvider.when("/user-settings/user-profile",
         {templateUrl: "user/user-profile.html"})

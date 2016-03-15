@@ -33,7 +33,7 @@
     .user-list-single {
         &:hover,
         &.selected {
-            background: lighten($primary, 58%);
+            background: rgba(lighten($primary-light, 30%), .3);
             cursor: pointer;
         }
         &:hover {
@@ -41,7 +41,7 @@
             transition-delay: .2s;
         }
         &.is-active {
-            background: lighten($primary, 55%);
+            background: rgba(lighten($primary-light, 30%), .3);
             cursor: pointer;
             margin-bottom: 1rem;
             position: relative;

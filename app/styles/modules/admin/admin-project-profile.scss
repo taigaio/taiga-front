@@ -1,5 +1,4 @@
 @import '../dependencies/mixins/profile-form';
-
 .project-details {
     @include profile-form;
     .looking-for-people {
@@ -31,7 +30,6 @@
             animation-delay: .1s;
         }
     }
-
     .delete-project {
         @extend %xsmall;
         display: block;
@@ -52,9 +50,7 @@
             vertical-align: middle;
         }
     }
-
 }
-
 .project-privacy-settings {
     display: flex;
     margin-bottom: .5rem;
@@ -117,7 +113,6 @@
         }
     }
 }
-
 tg-admin-project-restrictions {
     p {
         @extend %xsmall;
@@ -145,5 +140,38 @@ tg-admin-project-restrictions {
             text-align: center;
             width: 12px;
         }
+    }
+}
+.admin-project-profile-owner-actions {
+    align-items: center;
+    border-top: 1px solid $whitish;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1rem;
+    a {
+        color: $primary;
+        &:hover {
+            color: $primary-light;
+            transition: color .2s;
+        }
+    }
+    img {
+        width: 100%;
+    }
+    .owner-info {
+        flex: 1;
+        padding-left: .5rem;
+    }
+    .owner-info-title {
+        color: $gray-light;
+    }
+    .owner-name {
+        @extend %bold;
+    }
+    .owner-avatar {
+        width: 2.5rem;
+    }
+    .request {
+        flex-shrink: 0;
     }
 }

@@ -435,3 +435,50 @@ common.closeJoyride = async function() {
         await browser.sleep(600);
     }
 };
+
+common.createProject = async function(members = []) {
+    var createProject = require('../helpers').createProject;
+    var notifications = require('./notifications');
+
+    browser.get(browser.params.glob.host + 'projects/');
+    await common.waitLoader();
+
+    let lb = createProject.createProjectLightbox();
+
+    createProject.openWizard();
+
+    await lb.waitOpen();
+
+    lb.name().sendKeys('aaa');
+
+    lb.description().sendKeys('bbb');
+
+    await lb.submit();
+
+    await notifications.success.open();
+    await notifications.success.close();
+
+    if (members.length) {
+        var adminMembershipsHelper = require('../helpers').adminMemberships;
+
+        let url = await browser.getCurrentUrl();
+        url = url.split('/');
+        url = browser.params.glob.host + '/project/' + url[4] + '/admin/memberships';
+
+        browser.get(url);
+        await common.waitLoader();
+
+        let newMemberLightbox = adminMembershipsHelper.getNewMemberLightbox();
+        adminMembershipsHelper.openNewMemberLightbox();
+
+        await newMemberLightbox.waitOpen();
+
+        for(var i = 0; i < members.length; i++) {
+            newMemberLightbox.newEmail(members[i]);
+        }
+
+        newMemberLightbox.submit();
+
+        await newMemberLightbox.waitClose();
+    }
+};

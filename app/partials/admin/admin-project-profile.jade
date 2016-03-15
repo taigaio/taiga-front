@@ -78,6 +78,19 @@ div.wrapper(
                         ng-model="project.tags"
                     )
 
+                fieldset(ng-if="project.owner.id != user.id")
+                    tg-admin-project-request-ownership.admin-project-profile-owner-actions(
+                        owner="project.owner",
+                        project-id="project.id"
+                    )
+
+                fieldset(ng-if="project.owner.id == user.id")
+                    tg-admin-project-change-owner.admin-project-profile-owner-actions(
+                        owner="project.owner",
+                        project-id="project.id"
+                        active-users="activeUsers"
+                    )
+
                 fieldset.looking-for-people
                     .looking-for-people-selector
                         span {{ 'ADMIN.PROJECT_PROFILE.RECRUITING' | translate }}

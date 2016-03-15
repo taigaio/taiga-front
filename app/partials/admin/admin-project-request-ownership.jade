@@ -1,0 +1,8 @@
+.owner-avatar
+    img(ng-src="{{::owner.photo || '/#{v}/images/user-noimage.png'}}", alt="{{::owner.full_name_display}}")
+
+.owner-info
+    .title {{ 'ADMIN.PROJECT_PROFILE.PROJECT_OWNER' | translate }}
+    .owner-name {{::owner.full_name_display}}
+
+a.request(href="", ng-click="requestOwnership()") {{ 'ADMIN.PROJECT_PROFILE.REQUEST_OWNERSHIP' | translate }}

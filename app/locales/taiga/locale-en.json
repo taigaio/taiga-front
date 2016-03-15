@@ -472,7 +472,16 @@
             "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects",
             "MAX_PRIVATE_PROJECTS_MEMBERS": "The project exceeds the maximum members number in private projects",
             "MAX_PUBLIC_PROJECTS": "You've reached the maximum number of public projects",
-            "MAX_PUBLIC_PROJECTS_MEMBERS": "The project exceeds the maximum members number in public projects"
+            "MAX_PUBLIC_PROJECTS_MEMBERS": "The project exceeds the maximum members number in public projects",
+            "PROJECT_OWNER": "Project owner",
+            "REQUEST_OWNERSHIP": "Request ownership",
+            "REQUEST_OWNERSHIP_CONFIRMATION_TITLE": "Do you want to be the project owner?",
+            "REQUEST_OWNERSHIP_DESC": "Ask the owner {{name}} to transfert to you the project ownership.",
+            "REQUEST_OWNERSHIP_BUTTON": "Request",
+            "REQUEST_OWNERSHIP_SUCCESS": "We'll notify the project owner",
+            "CHANGE_OWNER": "Change owner",
+            "CHANGE_OWNER_SUCCESS_TITLE": "Ok, your request has been sent",
+            "CHANGE_OWNER_SUCCESS_DESC": "We will notify you by email whether it accepts or rejects the ownership of the project."
         },
         "REPORTS": {
             "TITLE": "Reports",
@@ -680,6 +689,24 @@
         },
         "SUBMENU_THIDPARTIES": {
             "TITLE": "Services"
+        },
+        "PROJECT_TRANSFER": {
+            "DO_YOU_ACCEPT_PROJECT_OWNERNSHIP": "Do you want to be the new project owner?",
+            "PRIVATE": "Private",
+            "ACCEPTED_PROJECT_OWNERNSHIP": "OK. Now you are the new owner of the project.",
+            "REJECTED_PROJECT_OWNERNSHIP": "OK. We will contact with the owner",
+            "ACCEPT": "Accept",
+            "REJECT": "Reject",
+            "PROPOSE_OWNERSHIP": "<strong>{{owner}}</strong>, the current owner of the project <strong>{{project}}</strong> wants you to be the new owner of the project.",
+            "ADD_COMMENT_QUESTION": "Do you want to add a comment for the owner?",
+            "ADD_COMMENT": "Do you want to add a comment for the owner?",
+            "UNLIMITED_PROJECTS": "Unlimited",
+            "OWNER_MESSAGE": {
+                "PRIVATE": "Remember, you can own up to <strong>{{maxProjects}}</strong> private projects and you already own <strong>{{currentProjects}}</strong> private projects",
+                "PUBLIC": "Remember, you can own <strong>{{maxProjects}}</strong> public projects and you already own <strong>{{currentProjects}}</strong> public projects"
+            },
+            "CANT_BE_OWNED": "Right now you can't be the owner of a project with this characteristics. To be the owner of this project you should contact the admin staff and change your account conditions.",
+            "CHANGE_MY_PLAN": "Change my plan"
         }
     },
     "USER": {
@@ -932,6 +959,11 @@
                 "DESC": "You can't delete the project owner, you must request a new owner before deleting the user.",
                 "BUTTON": "Request change project owner"
             }
+        },
+        "CHANGE_OWNER": {
+            "TITLE": "Who do you want to be the new owner?",
+            "ADD_COMMENT": "Add comment",
+            "BUTTON": "Ask this teammate to be the owner"
         }
     },
     "US": {

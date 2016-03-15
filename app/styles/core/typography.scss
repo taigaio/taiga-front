@@ -96,6 +96,10 @@ em {
     font-style: italic;
 }
 
+small {
+    @extend %xsmall;
+}
+
 strong {
     font-weight: bold;
 }
