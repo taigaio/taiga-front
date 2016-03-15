@@ -35,8 +35,28 @@ helper.getNewMemberLightbox = function() {
     return obj;
 };
 
+helper.leavingProjectWarningLb = function() {
+    return $('div[tg-lightbox-leave-project-warning]');
+};
+
+helper.isLeaveProjectWarningOpen = function() {
+    return helper.leavingProjectWarningLb().isPresent();
+};
+
 helper.getMembers = function() {
     return $$('.admin-membership-table .row');
+};
+
+helper.getOwner = function() {
+    return helper.getMembers().filter(async (member) => {
+        return !!await member.$$('.icon-badge').count();
+    }).first();
+};
+
+helper.excludeOwner = function(members) {
+    return members.filter(async (member) => {
+        return !await member.$$('.icon-badge').count();
+    });
 };
 
 helper.isActive = function(elm) {

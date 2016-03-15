@@ -366,7 +366,7 @@ module.directive("tgMembershipsRowRoleSelector", ["$log", "$tgRepo", "$tgConfirm
 ## Member Actions Directive
 #############################################################################
 
-MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm, $compile, $translate) ->
+MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm, $compile, $translate, currentUserService, lightboxFactory) ->
     activedTemplate = """
     <div class="active"
          translate="ADMIN.MEMBERSHIP.STATUS_ACTIVE">
@@ -421,9 +421,7 @@ MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm, $compile, $transla
 
             $rs.memberships.resendInvitation($scope.member.id).then(onSuccess, onError)
 
-        $el.on "click", ".delete", (event) ->
-            event.preventDefault()
-
+        leaveConfirm = () ->
             title = $translate.instant("ADMIN.MEMBERSHIP.DELETE_MEMBER")
             defaultMsg = $translate.instant("ADMIN.MEMBERSHIP.DEFAULT_DELETE_MESSAGE", {email: member.email})
             message = if member.user then member.full_name else defaultMsg
@@ -448,6 +446,22 @@ MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm, $compile, $transla
 
                 $repo.remove(member).then(onSuccess, onError)
 
+        $el.on "click", ".delete", (event) ->
+            event.preventDefault()
+
+            if $scope.project.owner.id == member.user
+                currentUser = currentUserService.getUser()
+                isCurrentUser = currentUser.get('id') == member.user
+
+                lightboxFactory.create("tg-lightbox-leave-project-warning", {
+                    class: "lightbox lightbox-leave-project-warning"
+                }, {
+                    currentUser: isCurrentUser,
+                    project: $scope.project
+                })
+            else
+                leaveConfirm()
+
         $scope.$on "$destroy", ->
             $el.off()
 
@@ -455,4 +469,4 @@ MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm, $compile, $transla
 
 
 module.directive("tgMembershipsRowActions", ["$log", "$tgRepo", "$tgResources", "$tgConfirm", "$compile",
-                                             "$translate", MembershipsRowActionsDirective])
+                                             "$translate", "tgCurrentUserService", "tgLightboxFactory", MembershipsRowActionsDirective])

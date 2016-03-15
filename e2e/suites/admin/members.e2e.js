@@ -78,7 +78,7 @@ describe('admin - members', function() {
     it('delete member', async function() {
         let initMembersCount = await adminMembershipsHelper.getMembers().count();
 
-        let member = adminMembershipsHelper.getMembers().last();
+        let member = adminMembershipsHelper.excludeOwner(adminMembershipsHelper.getMembers()).last();
 
         adminMembershipsHelper.delete(member);
 
@@ -89,6 +89,25 @@ describe('admin - members', function() {
         let membersCount = await adminMembershipsHelper.getMembers().count();
 
         expect(membersCount).to.be.equal(initMembersCount - 1);
+
+        await utils.notifications.success.close();
+    });
+
+    it('trying to delete owner', async function() {
+        let member = await adminMembershipsHelper.getOwner();
+
+        adminMembershipsHelper.delete(member);
+
+        utils.common.takeScreenshot('memberships', 'delete-owner-lb');
+
+        let isLeaveProjectWarningOpen = await adminMembershipsHelper.isLeaveProjectWarningOpen();
+
+        expect(isLeaveProjectWarningOpen).to.be.equal(true);
+
+        let lb = adminMembershipsHelper.leavingProjectWarningLb();
+
+        await utils.lightbox.exit(lb);
+        await utils.lightbox.close(lb);
     });
 
     it('change role', async function() {

@@ -225,7 +225,7 @@ module.directive("tgTeamMembers", TeamMembersDirective)
 ## Leave project Directive
 #############################################################################
 
-LeaveProjectDirective = ($repo, $confirm, $location, $rs, $navurls, $translate, lightboxFactory, currentUserService) ->
+LeaveProjectDirective = ($repo, $confirm, $location, $rs, $navurls, $translate, lightboxFactory) ->
     link = ($scope, $el, $attrs) ->
         leaveConfirm = () ->
             leave_project_text = $translate.instant("TEAM.ACTION_LEAVE_PROJECT")
@@ -245,8 +245,6 @@ LeaveProjectDirective = ($repo, $confirm, $location, $rs, $navurls, $translate, 
 
         $scope.leave = () ->
             if $scope.project.owner.id == $scope.user.id
-                currentUser = currentUserService.getUser()
-
                 lightboxFactory.create("tg-lightbox-leave-project-warning", {
                     class: "lightbox lightbox-leave-project-warning"
                 }, {
@@ -265,7 +263,7 @@ LeaveProjectDirective = ($repo, $confirm, $location, $rs, $navurls, $translate, 
         link: link
     }
 
-module.directive("tgLeaveProject", ["$tgRepo", "$tgConfirm", "$tgLocation", "$tgResources", "$tgNavUrls", "$translate", "tgLightboxFactory", "tgCurrentUserService",
+module.directive("tgLeaveProject", ["$tgRepo", "$tgConfirm", "$tgLocation", "$tgResources", "$tgNavUrls", "$translate", "tgLightboxFactory",
                                     LeaveProjectDirective])
 
 
