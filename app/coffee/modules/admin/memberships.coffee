@@ -48,12 +48,11 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
         "$tgAnalytics",
         "tgAppMetaService",
         "$translate",
-        "tgCurrentUserService",
         "$tgAuth"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls, @analytics,
-                  @appMetaService, @translate, @currentUserService, @tgAuth) ->
+                  @appMetaService, @translate, @tgAuth) ->
         bindMethods(@)
 
         @scope.project = {}
@@ -112,15 +111,8 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
         @rootscope.$broadcast("membersform:new")
 
     _checkUsersLimit: ->
-        @scope.canAddUsers = true
-        userData = @currentUserService.getUser().toJS()
-
-        if @currentUserService.canAddMoreMembersInPrivateProjects(@scope.projectId).valid == false
-            @.maxMembers = userData.max_memberships_private_projects
-            @scope.canAddUsers = false
-        else if @currentUserService.canAddMoreMembersInPublicProjects(@scope.projectId).valid == false
-            @.maxMembers = userData.max_memberships_public_projects
-            @scope.canAddUsers = false
+        @scope.canAddUsers = @.project.get('total_memberships') > @.project.get('max_memberships')
+        @.maxMembers = @.project.get('max_memberships')
 
     limitUsersWarning: ->
         title = @translate.instant("ADMIN.MEMBERSHIPS.LIMIT_USERS_WARNING")

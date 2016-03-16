@@ -69,11 +69,6 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
             description = @scope.project.description
             @appMetaService.setAll(title, description)
 
-            @scope.canBePrivateProject = @.currentUserService.canBePrivateProject(@scope.project.id)
-            @scope.canBePublicProject = @.currentUserService.canBePublicProject(@scope.project.id)
-
-            @scope.isPrivateProject = @scope.project.is_private
-
         promise.then null, @.onInitialDataError.bind(@)
 
         @scope.$on "project:loaded", =>
@@ -534,8 +529,7 @@ module.directive('tgProjectLogoModel', ['$parse', ProjectLogoModelDirective])
 AdminProjectRestrictionsDirective = () ->
     return {
         scope: {
-            "canBePrivateProject": "=",
-            "canBePublicProject": "="
+            "project": "="
         },
         templateUrl: "admin/admin-project-restrictions.html"
     }
