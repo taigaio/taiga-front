@@ -116,10 +116,10 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
         userData = @currentUserService.getUser().toJS()
 
         if @currentUserService.canAddMoreMembersInPrivateProjects(@scope.projectId).valid == false
-            @.maxMembers = userData.max_members_private_projects
+            @.maxMembers = userData.max_memberships_private_projects
             @scope.canAddUsers = false
         else if @currentUserService.canAddMoreMembersInPublicProjects(@scope.projectId).valid == false
-            @.maxMembers = userData.max_members_public_projects
+            @.maxMembers = userData.max_memberships_public_projects
             @scope.canAddUsers = false
 
     limitUsersWarning: ->

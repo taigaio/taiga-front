@@ -2,10 +2,10 @@ fieldset(ng-if="!canBePrivateProject.valid")
     p
       span(ng-if="canBePrivateProject.reason == 'max_private_projects'") {{ 'ADMIN.PROJECT_PROFILE.MAX_PRIVATE_PROJECTS' | translate }}
 
-      span(ng-if="canBePrivateProject.reason == 'max_members_private_projects'") {{ 'ADMIN.PROJECT_PROFILE.MAX_PRIVATE_PROJECTS_MEMBERS' | translate }}
+      span(ng-if="canBePrivateProject.reason == 'max_memberships_private_projects'") {{ 'ADMIN.PROJECT_PROFILE.MAX_PRIVATE_PROJECTS_MEMBERS' | translate }}
 
 fieldset(ng-if="!canBePublicProject.valid")
     p
       span(ng-if="canBePublicProject.reason == 'max_public_projects'") {{ 'ADMIN.PROJECT_PROFILE.MAX_PUBLIC_PROJECTS' | translate }}
 
-      span(ng-if="canBePublicProject.reason == 'max_members_public_projects'") {{ 'ADMIN.PROJECT_PROFILE.MAX_PUBLIC_PROJECTS_MEMBERS' | translate }}
+      span(ng-if="canBePublicProject.reason == 'max_memberships_public_projects'") {{ 'ADMIN.PROJECT_PROFILE.MAX_PUBLIC_PROJECTS_MEMBERS' | translate }}

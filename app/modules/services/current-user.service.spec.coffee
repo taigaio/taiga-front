@@ -208,7 +208,7 @@ describe "tgCurrentUserService", ->
         user = Immutable.fromJS({
             id: 1,
             name: "fake1",
-            max_members_private_projects: 2
+            max_memberships_private_projects: 2
         })
 
         projects = Immutable.fromJS({
@@ -227,7 +227,7 @@ describe "tgCurrentUserService", ->
 
         expect(result).to.be.eql({
             valid: false,
-            reason: 'max_members_private_projects',
+            reason: 'max_memberships_private_projects',
             type: 'private_project'
         })
 
@@ -235,7 +235,7 @@ describe "tgCurrentUserService", ->
         user = Immutable.fromJS({
             id: 1,
             name: "fake1",
-            max_members_private_projects: 7
+            max_memberships_private_projects: 7
         })
 
         currentUserService._user = user
@@ -261,7 +261,7 @@ describe "tgCurrentUserService", ->
         user = Immutable.fromJS({
             id: 1,
             name: "fake1",
-            max_members_public_projects: 2
+            max_memberships_public_projects: 2
         })
 
         projects = Immutable.fromJS({
@@ -280,7 +280,7 @@ describe "tgCurrentUserService", ->
 
         expect(result).to.be.eql({
             valid: false,
-            reason: 'max_members_public_projects',
+            reason: 'max_memberships_public_projects',
             type: 'public_project'
         })
 
@@ -288,7 +288,7 @@ describe "tgCurrentUserService", ->
         user = Immutable.fromJS({
             id: 1,
             name: "fake1",
-            max_members_public_projects: 7
+            max_memberships_public_projects: 7
         })
 
         projects = Immutable.fromJS({
@@ -334,7 +334,7 @@ describe "tgCurrentUserService", ->
             name: "fake1",
             max_private_projects: 10,
             total_private_projects: 1,
-            max_members_private_projects: 20
+            max_memberships_private_projects: 20
         })
 
         currentUserService._user = user
@@ -351,7 +351,7 @@ describe "tgCurrentUserService", ->
             name: "fake1",
             max_private_projects: 10,
             total_private_projects: 1,
-            max_members_public_projects: 2
+            max_memberships_public_projects: 2
         })
 
         currentUserService._user = user
@@ -371,7 +371,7 @@ describe "tgCurrentUserService", ->
 
         expect(result).to.be.eql({
             valid: false,
-            reason: 'max_members_public_projects',
+            reason: 'max_memberships_public_projects',
             type: 'public_project'
         })
 
@@ -381,7 +381,7 @@ describe "tgCurrentUserService", ->
             name: "fake1",
             max_private_projects: 10,
             total_private_projects: 1,
-            max_members_public_projects: 20
+            max_memberships_public_projects: 20
         })
 
         currentUserService._user = user
@@ -409,7 +409,7 @@ describe "tgCurrentUserService", ->
             name: "fake1",
             max_private_projects: 10,
             total_private_projects: 100,
-            max_members_public_projects: 2
+            max_memberships_public_projects: 2
         })
 
         currentUserService._user = user
@@ -455,7 +455,7 @@ describe "tgCurrentUserService", ->
             name: "fake1",
             max_public_projects: 10,
             total_public_projects: 1,
-            max_members_public_projects: 20
+            max_memberships_public_projects: 20
         })
 
         currentUserService._user = user
@@ -472,7 +472,7 @@ describe "tgCurrentUserService", ->
             name: "fake1",
             max_public_projects: 10,
             total_public_projects: 1,
-            max_members_private_projects: 2
+            max_memberships_private_projects: 2
         })
 
         currentUserService._user = user
@@ -492,7 +492,7 @@ describe "tgCurrentUserService", ->
 
         expect(result).to.be.eql({
             valid: false,
-            reason: 'max_members_private_projects',
+            reason: 'max_memberships_private_projects',
             type: 'private_project'
         })
 
@@ -502,7 +502,7 @@ describe "tgCurrentUserService", ->
             name: "fake1",
             max_public_projects: 10,
             total_public_projects: 1,
-            max_members_private_projects: 20
+            max_memberships_private_projects: 20
         })
 
         currentUserService._user = user
@@ -530,7 +530,7 @@ describe "tgCurrentUserService", ->
             name: "fake1",
             max_public_projects: 10,
             total_public_projects: 1,
-            max_members_private_projects: 20
+            max_memberships_private_projects: 20
         })
 
         currentUserService._user = user

@@ -38,36 +38,36 @@ ImportProjectButtonDirective = ($rs, $confirm, $location, $navUrls, $translate, 
                     privateError = !currentUserService.canCreatePrivateProjects().valid
                     maxMembers = null
 
-                    if user.get('max_members_private_projects') != null && result.headers.members > user.get('max_members_private_projects')
+                    if user.get('max_memberships_private_projects') != null && result.headers.members > user.get('max_memberships_private_projects')
                         membersError = true
                     else
                         membersError = false
 
                     if privateError && membersError
                         errorKey = 'private-space-members'
-                        maxMembers = user.get('max_members_private_projects')
+                        maxMembers = user.get('max_memberships_private_projects')
                     else if privateError
                         errorKey = 'private-space'
                     else if membersError
                         errorKey = 'private-members'
-                        maxMembers = user.get('max_members_private_projects')
+                        maxMembers = user.get('max_memberships_private_projects')
 
                 else
                     publicError = !currentUserService.canCreatePublicProjects().valid
 
-                    if user.get('max_members_public_projects') != null && result.headers.members > user.get('max_members_public_projects')
+                    if user.get('max_memberships_public_projects') != null && result.headers.members > user.get('max_memberships_public_projects')
                         membersError = true
                     else
                         membersError = false
 
                     if publicError && membersError
                         errorKey = 'public-space-members'
-                        maxMembers = user.get('max_members_public_projects')
+                        maxMembers = user.get('max_memberships_public_projects')
                     else if publicError
                         errorKey = 'public-space'
                     else if membersError
                         errorKey = 'public-members'
-                        maxMembers = user.get('max_members_public_projects')
+                        maxMembers = user.get('max_memberships_public_projects')
 
                 return {
                     key: errorKey,
