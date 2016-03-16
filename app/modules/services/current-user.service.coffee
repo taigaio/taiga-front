@@ -122,8 +122,8 @@ class CurrentUserService
         project = @.projects.get('all').find (project) -> project.get('id') == projectId
         user = @.getUser()
 
-        if user.get('max_members_private_projects') != null && project.get('members').size >= user.get('max_members_private_projects')
-            return {valid: false, reason: 'max_members_private_projects', type: 'private_project'}
+        if user.get('max_memberships_private_projects') != null && project.get('members').size >= user.get('max_memberships_private_projects')
+            return {valid: false, reason: 'max_memberships_private_projects', type: 'private_project'}
 
         return {valid: true}
 
@@ -131,8 +131,8 @@ class CurrentUserService
         project = @.projects.get('all').find (project) -> project.get('id') == projectId
         user = @.getUser()
 
-        if user.get('max_members_public_projects') != null && project.get('members').size >= user.get('max_members_public_projects')
-            return {valid: false, reason: 'max_members_public_projects', type: 'public_project'}
+        if user.get('max_memberships_public_projects') != null && project.get('members').size >= user.get('max_memberships_public_projects')
+            return {valid: false, reason: 'max_memberships_public_projects', type: 'public_project'}
 
         return {valid: true}
 
@@ -148,8 +148,8 @@ class CurrentUserService
 
         user = @.getUser()
 
-        if user.get('max_members_private_projects') != null && project.get('members').size > user.get('max_members_private_projects')
-            return {valid: false, reason: 'max_members_private_projects', type: 'private_project'}
+        if user.get('max_memberships_private_projects') != null && project.get('members').size > user.get('max_memberships_private_projects')
+            return {valid: false, reason: 'max_memberships_private_projects', type: 'private_project'}
 
         return {valid: true}
 
@@ -164,8 +164,8 @@ class CurrentUserService
 
         user = @.getUser()
 
-        if user.get('max_members_public_projects') != null && project.get('members').size > user.get('max_members_public_projects')
-            return {valid: false, reason: 'max_members_public_projects', type: 'public_project'}
+        if user.get('max_memberships_public_projects') != null && project.get('members').size > user.get('max_memberships_public_projects')
+            return {valid: false, reason: 'max_memberships_public_projects', type: 'public_project'}
 
         return {valid: true}
 
