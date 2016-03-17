@@ -108,7 +108,7 @@ div.wrapper(
                     .project-privacy-settings
                         div.privacy-option
                             input.privacy-project(
-                                ng-disabled="project.is_private && !project.can_is_private_be_updated"
+                                ng-disabled="project.is_private && !project.is_private_extra_data.can_be_updated"
                                 type="radio"
                                 id="private-project"
                                 name="privacy-project"
@@ -119,7 +119,7 @@ div.wrapper(
 
                         div.privacy-option
                             input.privacy-project(
-                                ng-disabled="!project.is_private && !project.can_is_private_be_updated"
+                                ng-disabled="!project.is_private && !project.is_private_extra_data.can_be_updated"
                                 type="radio"
                                 id="public-project"
                                 name="privacy-project"
