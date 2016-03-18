@@ -16,12 +16,10 @@ div.wrapper
                     .intro-title
                         h1
                             span.project-name {{::vm.project.get("name")}}
-                        span.private(
-                            ng-if="::vm.project.get('is_private')"
-                            title="{{'PROJECT.PRIVATE' | translate}}"
-                        )
-                            svg.icon.icon-lock
-                                use(xlink:href="#icon-lock")
+                                
+                        svg.icon.icon-lock.private(ng-if="::vm.project.get('is_private')")
+                            use(xlink:href="#icon-lock")
+                                title {{'PROJECT.PRIVATE' | translate}}"
 
                     div.track-buttons-container(ng-if="vm.user")
                         tg-like-project-button(project="vm.project")

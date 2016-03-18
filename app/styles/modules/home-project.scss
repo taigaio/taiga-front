@@ -30,6 +30,9 @@
         margin-bottom: 0;
         vertical-align: middle;
     }
+    .private {
+        @include svg-size(1.1rem);
+    }
     .like-watch-container {
         margin-left: auto;
     }

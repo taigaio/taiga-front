@@ -45,7 +45,7 @@
         @extend %large;
     }
     .icon-blocked-project {
-        @include svg-size();
+        @include svg-size(.75rem);
     }
     .list-itemtype-project-data-wrapper {
         display: flex;

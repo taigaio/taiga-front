@@ -18,12 +18,9 @@
                         tg-nav="project:project=vm.item.get('slug')"
                         title="{{ ::vm.item.get('name') }}"
                     ) {{ ::vm.item.get('name') }}
-                    span.private(
-                        ng-if="::vm.item.get('project_is_private')"
-                        title="{{'PROJECT.PRIVATE' | translate}}"
-                    )
-                        svg.icon.icon-lock
-                            use(xlink:href="#icon-lock")
+                    svg.icon.icon-lock.private(ng-if="::vm.item.get('project_is_private')")
+                        use(xlink:href="#icon-lock")
+                            title {{'PROJECT.PRIVATE' | translate}}"
                     svg.icon.icon-blocked-project(ng-if="vm.item.get('project_blocked_code')")
                         use(xlink:href="#icon-blocked-project")
                             title(translate="PROJECT.BLOCKED_PROJECT.BLOCKED")

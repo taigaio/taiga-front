@@ -44,12 +44,9 @@
                                         tg-nav="project:project=project.get('slug')"
                                         title="{{ ::project.get('name') }}"
                                     ) {{project.get('name')}}
-                                    span.private(
-                                        ng-if="project.get('is_private')"
-                                        title="{{'PROJECT.PRIVATE' | translate}}"
-                                    )
-                                        svg.icon.icon-lock
-                                            use(xlink:href="#icon-lock")
+                                    svg.icon.icon-lock.private(ng-if="project.get('is_private')")
+                                        use(xlink:href="#icon-lock")
+                                            title {{'PROJECT.PRIVATE' | translate}}"
                                     
                                     svg.icon.icon-badge(ng-if="project.get('i_am_owner')")
                                         use(xlink:href="#icon-badge")
