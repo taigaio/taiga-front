@@ -4,10 +4,10 @@
     @include project-card;
     cursor: pointer;
     margin-bottom: 1rem;
-    transition: .2s;
-    transition-delay: .1s;
+    transition: all .2s;
     &:hover {
-        border: 1px solid $primary-light;
+        border: 1px solid rgba($primary-light, .2);
+        box-shadow: 0 0 5px $whitish;
     }
     &.blocked-project {
         border: $whitish;
