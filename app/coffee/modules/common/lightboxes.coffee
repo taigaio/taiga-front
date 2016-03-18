@@ -697,3 +697,15 @@ AttachmentPreviewLightboxDirective = (lightboxService, $template, $compile) ->
     }
 
 module.directive("tgLbAttachmentPreview", ["lightboxService", "$tgTemplate", "$compile", AttachmentPreviewLightboxDirective])
+
+LightboxLeaveProjectWarningDirective = (lightboxService, $template, $compile) ->
+    link = ($scope, $el, attrs) ->
+        lightboxService.open($el)
+
+    return {
+        templateUrl: 'common/lightbox/lightbox-leave-project-warning.html',
+        link: link,
+        scope: true
+    }
+
+module.directive("tgLightboxLeaveProjectWarning", ["lightboxService", LightboxLeaveProjectWarningDirective])

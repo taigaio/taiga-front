@@ -552,3 +552,16 @@
         height: 5rem;
     }
 }
+
+.lightbox-leave-project-warning {
+    text-align: center;
+    .icon {
+        fill: $gray-light;
+        height: 3rem;
+        margin-bottom: 1rem;
+        width: 3rem;
+    }
+    .content {
+        width: 500px;
+    }
+}

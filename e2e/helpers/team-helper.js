@@ -53,3 +53,11 @@ helper.filters = function() {
 
   return obj;
 };
+
+helper.leavingProjectWarningLb = function() {
+    return $('div[tg-lightbox-leave-project-warning]');
+};
+
+helper.isLeaveProjectWarningOpen = function() {
+    return helper.leavingProjectWarningLb().isPresent();
+};

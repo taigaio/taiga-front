@@ -59,6 +59,11 @@ var actions = {
         await common.link(task);
 
         return common.waitLoader();
+    },
+    team: async function() {
+        await common.link($('#nav-team a'));
+
+        return common.waitLoader();
     }
 };
 
@@ -93,6 +98,10 @@ var nav = {
     },
     task: function(index) {
         this.actions.push(actions.task.bind(null, index));
+        return this;
+    },
+    team: function(index) {
+        this.actions.push(actions.team.bind(null, index));
         return this;
     },
     go: function() {
