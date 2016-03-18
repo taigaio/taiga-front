@@ -13,6 +13,7 @@
         border: $whitish;
         &:hover {
             border: $whitish;
+            box-shadow: none;
         }
         .tags-container,
         .project-card-logo,
