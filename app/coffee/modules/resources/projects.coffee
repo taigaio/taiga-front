@@ -131,7 +131,7 @@ resourceProvider = ($config, $repo, $http, $urls, $auth, $q, $translate) ->
             if evt.target.getResponseHeader('Taiga-Info-Project-Is-Private')
                 response.headers = {
                     isPrivate: evt.target.getResponseHeader('Taiga-Info-Project-Is-Private') == 'True',
-                    members: parseInt(evt.target.getResponseHeader('Taiga-Info-Project-Memberships'))
+                    memberships: parseInt(evt.target.getResponseHeader('Taiga-Info-Project-Memberships'))
                 }
             defered.resolve(response) if response.status in [201, 202]
             defered.reject(response)

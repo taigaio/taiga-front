@@ -808,7 +808,7 @@
             "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is too heavy for our Oompa Loompas, try it with a smaller than ({{maxFileSize}})",
             "SYNC_SUCCESS": "Your project has been imported successfuly",
             "PROJECT_RESTRICTIONS": {
-                "PROJECT_MEMBERS_DESC": "The project you want to import has {{members}} users, but you are only allowed to have {{max_members}} users per project. If you want have more users contact with the administrators.",
+                "PROJECT_MEMBERS_DESC": "The project you want to import has {{members}} users, but you are only allowed to have {{max_memberships}} users per project. If you want have more users contact with the administrators.",
                 "PRIVATE_PROJECTS_SPACE": {
                     "TITLE": "You don't have space for another private project",
                     "DESC": "The project you want to import is private, but you don't have space to create more."
@@ -818,17 +818,17 @@
                     "DESC": "The project you want to import is public, but you don't have space to create more."
                 },
                 "PRIVATE_PROJECTS_MEMBERS": {
-                    "TITLE": "Your account only allows {{max_members}} users per private project"
+                    "TITLE": "Your account only allows {{max_memberships}} users per private project"
                 },
                 "PUBLIC_PROJECTS_MEMBERS": {
-                    "TITLE": "Your account only allows {{max_members}} users per public project"
+                    "TITLE": "Your account only allows {{max_memberships}} users per public project"
                 },
                 "PRIVATE_PROJECTS_SPACE_MEMBERS": {
-                    "TITLE": "You don't have space for another private project and neither for more than {{max_members}} users per private projects",
+                    "TITLE": "You don't have space for another private project and neither for more than {{max_memberships}} users per private projects",
                     "DESC": "The project that you want to import is private and has {{members}} users."
                 },
                 "PUBLIC_PROJECTS_SPACE_MEMBERS": {
-                    "TITLE": "You don't have space for another public project and neither for more than {{max_members}} users per public projects",
+                    "TITLE": "You don't have space for another public project and neither for more than {{max_memberships}} users per public projects",
                     "DESC": "The public that you want to import is public and has more than {{members}} users."
                 }
             }
