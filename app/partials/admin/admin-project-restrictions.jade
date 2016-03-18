@@ -1,10 +1,8 @@
-fieldset(ng-if="!project.can_is_private_be_updated")
-    p(ng-if="!project.is_private")
-      span(ng-if="project.total_memberships < project.max_memberships") {{ 'ADMIN.PROJECT_PROFILE.MAX_PRIVATE_PROJECTS' | translate }}
+fieldset(ng-if="!project.is_private_extra_data.can_be_updated" ng-switch="project.is_private_extra_data.reason")
+      span(ng-switch-when="max-private-projects") {{ 'ADMIN.PROJECT_PROFILE.MAX_PRIVATE_PROJECTS' | translate }}
 
-      span(ng-if="project.total_memberships >= project.max_memberships") {{ 'ADMIN.PROJECT_PROFILE.MAX_PRIVATE_PROJECTS_MEMBERS' | translate }}
+      span(ng-switch-when="max-private-projects-memberships") {{ 'ADMIN.PROJECT_PROFILE.MAX_PRIVATE_PROJECTS_MEMBERS' | translate }}
 
-    p(ng-if="project.is_private")
-      span(ng-if="project.total_memberships < project.max_memberships") {{ 'ADMIN.PROJECT_PROFILE.MAX_PUBLIC_PROJECTS' | translate }}
+      span(ng-switch-when="max-public-projects") {{ 'ADMIN.PROJECT_PROFILE.MAX_PUBLIC_PROJECTS' | translate }}
 
-      span(ng-if="project.total_memberships >= project.max_memberships") {{ 'ADMIN.PROJECT_PROFILE.MAX_PUBLIC_PROJECTS_MEMBERS' | translate }}
+      span(ng-switch-when="max-public-projects-memberships") {{ 'ADMIN.PROJECT_PROFILE.MAX_PUBLIC_PROJECTS_MEMBERS' | translate }}

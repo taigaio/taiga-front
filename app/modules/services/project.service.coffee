@@ -74,6 +74,6 @@ class ProjectService
         pslug = @.project.get('slug')
 
         return @projectsService.getProjectBySlug(pslug).then (project) => @.setProject(project)
-        
+
 
 angular.module("taigaCommon").service("tgProjectService", ProjectService)
