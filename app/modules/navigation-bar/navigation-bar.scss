@@ -53,7 +53,7 @@ $dropdown-width: 350px;
         display: inline-block;
         transition: all .2s linear;
         svg {
-            fill: darken($primary-dark, 8%);
+            fill: rgba($primary-dark, .8);
             transition: all .2s linear;
         }
         &:hover {
@@ -85,10 +85,6 @@ $dropdown-width: 350px;
         max-height: 1.2rem;
         max-width: 1.2rem;
         width: 1.2rem;
-        path {
-            fill: $top-icon-color;
-            transition: all .2s;
-        }
     }
     .topnav-dropdown-wrapper {
         position: relative;
