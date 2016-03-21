@@ -277,6 +277,10 @@ NewWebhookDirective = ($rs, $repo, $confirm, $loading) ->
             $scope.$apply ->
                 initializeNewValue()
 
+                # Close form if there some webhooks created
+                if $scope.webhooks.length >= 1
+                    formDOMNode.addClass("hidden")
+
         addWebhookDOMNode.on "click", (event) ->
             formDOMNode.removeClass("hidden")
             formDOMNode.find("input")[0].focus()
