@@ -58,7 +58,7 @@ helper.relatedTaskForm = async function(form, name, status, assigned_to) {
     await assignToLightbox.selectFirst();
     await assignToLightbox.waitClose();
 
-    form.$('.icon-floppy').click();
+    form.$('.icon-save').click();
 };
 
 helper.createRelatedTasks = function(name, status, assigned_to) {
@@ -86,7 +86,7 @@ helper.deleteRelatedTask = function(taskIndex, name, status, assigned_to) {
 
     browser
         .actions()
-        .mouseMove(task.$('.icon-delete'))
+        .mouseMove(task.$('.icon-trash'))
         .click()
         .perform();
 

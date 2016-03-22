@@ -959,7 +959,7 @@ UsPointsDirective = ($tgEstimationsService, $repo, $tgTemplate) ->
             $el.find(".pop-role").popover().open(() -> $(this).remove())
 
         bindClickElements = () ->
-            $el.on "click", "a.us-points span", (event) ->
+            $el.on "click", "a.us-points", (event) ->
                 event.preventDefault()
                 event.stopPropagation()
                 us = $scope.$eval($attrs.tgBacklogUsPoints)

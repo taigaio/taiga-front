@@ -41,7 +41,7 @@ describe('home', function() {
         });
 
         it('close create project lightbox', async function() {
-            $('div[tg-lb-create-project] .icon-delete').click();
+            $('div[tg-lb-create-project] .icon-close').click();
 
             return expect(await utils.lightbox.close('div[tg-lb-create-project]')).to.be.equal(true);
         });

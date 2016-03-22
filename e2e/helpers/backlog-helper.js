@@ -87,7 +87,7 @@ helper.getCreateEditMilestone = function() {
             el.$('button[type="submit"]').click();
         },
         delete: function() {
-            el.$('.delete-sprint .icon-delete').click();
+            el.$('.delete-sprint').click();
         }
     };
 

@@ -368,8 +368,12 @@ common.uploadFile = async function(inputFile, filePath) {
     await browser.executeScript(toggleInput, inputFile.getWebElement());
 };
 
+common.getMenu = function() {
+    return $('div[tg-dropdown-user]');
+};
+
 common.topMenuOption = async function(option) {
-    let menu = $('div[tg-dropdown-user]');
+    let menu = common.getMenu();
     let menuOption = menu.$$('li a').get(option);
     browser.actions().mouseMove(menu).perform();
     return browser.actions().mouseMove(menuOption).click().perform();
@@ -421,12 +425,13 @@ common.uploadImagePath = function() {
     }
 };
 
-common.closeJoyride = function() {
-    browser.waitForAngular();
-    $('.introjs-skipbutton').isPresent().then((present) => {
-        if (present) {
-            $('.introjs-skipbutton').click();
-            browser.sleep(600);
-        }
-    });
+common.closeJoyride = async function() {
+    await browser.waitForAngular();
+
+    let present = await $('.introjs-skipbutton').isPresent();
+
+    if (present) {
+        $('.introjs-skipbutton').click();
+        await browser.sleep(600);
+    }
 };

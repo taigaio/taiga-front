@@ -203,7 +203,7 @@ describe('backlog', function() {
         let dragableElements = backlogHelper.userStories();
 
         let dragElement = dragableElements.get(1);
-        let dragElementHandler = dragElement.$('.icon-drag-v');
+        let dragElementHandler = dragElement.$('.icon-drag');
         let draggedElementRef = await backlogHelper.getUsRef(dragElement);
 
         await utils.common.drag(dragElementHandler, dragableElements.get(0));
@@ -254,7 +254,7 @@ describe('backlog', function() {
         // the us 1 and 2 are selected on the previous test
 
         let dragElement = dragableElements.get(0);
-        let dragElementHandler = dragElement.$('.icon-drag-v');
+        let dragElementHandler = dragElement.$('.icon-drag');
 
         await utils.common.drag(dragElementHandler, sprint);
         await browser.waitForAngular();
@@ -269,7 +269,7 @@ describe('backlog', function() {
 
         let dragableElements = backlogHelper.userStories();
         let dragElement = dragableElements.get(0);
-        let dragElementHandler = dragElement.$('.icon-drag-v');
+        let dragElementHandler = dragElement.$('.icon-drag');
 
         let draggedElementRef = await backlogHelper.getUsRef(dragElement);
 
@@ -361,7 +361,7 @@ describe('backlog', function() {
 
         let usPoints = await backlogHelper.getUsPoints(0);
 
-        expect(usPoints).to.match(/\d+\s\/\s\d+/);
+        expect(usPoints).to.match(/[0-9?]+\s\/\s[0-9?]+/);
     });
 
     describe('milestones', function() {
@@ -403,7 +403,8 @@ describe('backlog', function() {
             createMilestoneLightbox.name().sendKeys(sprintName);
 
             createMilestoneLightbox.submit();
-            await browser.waitForAngular();
+
+            await createMilestoneLightbox.waitClose();
 
             let sprintTitles = await backlogHelper.getSprintsTitles();
 
@@ -605,7 +606,7 @@ describe('backlog', function() {
             await backlogHelper.setUsStatus(2, 5);
 
             let dragElement =  backlogHelper.userStories().get(2);
-            let dragElementHandler = dragElement.$('.icon-drag-v');
+            let dragElementHandler = dragElement.$('.icon-drag');
 
             let sprint = backlogHelper.sprints().last();
             await utils.common.drag(dragElementHandler, sprint);
@@ -640,7 +641,7 @@ describe('backlog', function() {
             await backlogHelper.setUsStatus(1, 0);
 
             let dragElement =  backlogHelper.userStories().get(0);
-            let dragElementHandler = dragElement.$('.icon-drag-v');
+            let dragElementHandler = dragElement.$('.icon-drag');
 
             let sprint = backlogHelper.sprints().last();
             await utils.common.drag(dragElementHandler, sprint);

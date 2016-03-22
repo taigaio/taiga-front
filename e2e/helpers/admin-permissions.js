@@ -16,8 +16,8 @@ helper.getRoles = function() {
 };
 
 helper.editRole = async function(roleName) {
-    let elm = $('div[tg-edit-role]');
-    let editButton = elm.$('.icon-edit');
+    let elm = $('tg-edit-role');
+    let editButton = elm.$('.edit-value');
 
     await browser.actions()
         .mouseMove(editButton)

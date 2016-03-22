@@ -167,6 +167,7 @@ class ConfirmService extends taiga.Service
         el = angular.element(".lightbox-generic-success")
 
         el.find("img").remove()
+
         detailImage = $('<img>').addClass('lb-icon').attr('src', icon)
         if detailImage
             el.find('section').prepend(detailImage)

@@ -16,7 +16,7 @@ helper.getSection = function(item) {
             return section.$$('.ui-sortable > div');
         },
         delete: function(row) {
-            let deleteButton = row.$$('.icon-delete').first();
+            let deleteButton = row.$$('.icon-trash').first();
 
             return browser.actions()
                 .mouseMove(deleteButton)
@@ -41,7 +41,7 @@ helper.getStatusNames = function(section) {
 helper.getForm = function(form) {
     return {
         save: function() {
-            let saveButton = form.$('.icon-floppy');
+            let saveButton = form.$('.icon-save');
 
             browser.actions()
                 .mouseMove(saveButton)

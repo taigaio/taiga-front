@@ -6,7 +6,7 @@ var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 var expect = chai.expect;
 
-describe('modules', function() {
+describe.only('modules', function() {
     before(async function(){
         browser.get(browser.params.glob.host + 'project/project-0/admin/project-profile/modules');
 
@@ -16,18 +16,16 @@ describe('modules', function() {
     });
 
     it('disable module', async function() {
-        let functionalities = $$('.functionality');
+        let functionalities = $$('.module');
 
         let functionality = functionalities.get(0);
 
-        let label = functionality.$('label');
+        let label = functionality.$('.check div');
 
         browser.actions()
             .mouseMove(label)
             .click()
             .perform();
-
-        $('button[type="submit"]').click();
 
         let active = await utils.common.hasClass(functionality, 'active');
 
@@ -38,18 +36,16 @@ describe('modules', function() {
     });
 
     it('enable module', async function() {
-        let functionalities = $$('.functionality');
+        let functionalities = $$('.module');
 
         let functionality = functionalities.get(0);
 
-        let label = functionality.$('label');
+        let label = functionality.$('.check div');
 
         browser.actions()
             .mouseMove(label)
             .click()
             .perform();
-
-        $('button[type="submit"]').click();
 
         let active = await utils.common.hasClass(functionality, 'active');
 
@@ -60,9 +56,9 @@ describe('modules', function() {
     });
 
     it('enable videoconference', async function() {
-        let functionality = $$('.functionality').get(4);
+        let functionality = $$('.module').get(4);
 
-        let label = functionality.$('label');
+        let label = functionality.$('.check div');
 
         browser.actions()
             .mouseMove(label)
@@ -77,7 +73,7 @@ describe('modules', function() {
 
         salt.sendKeys('abccceee');
 
-        $('button[type="submit"]').click();
+        functionality.$('.icon-save').click();
         expect(utils.notifications.success.open()).to.be.eventually.equal(true);
     });
 });

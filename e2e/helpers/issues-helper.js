@@ -120,12 +120,12 @@ helper.backToFilters = function() {
 };
 
 helper.removeFilters = async function() {
-    let count = await $$('.filters-applied .icon-delete').count();
+    let count = await $$('.filters-applied .single-filter.selected').count();
 
     while(count) {
-        $$('.filters-applied .icon-delete').get(0).click();
+        $$('.single-filter.selected').get(0).click();
 
-        count = await $$('.filters-applied .icon-delete').count();
+        count = await $$('.single-filter.selected').count();
     }
 };
 
