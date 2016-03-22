@@ -29,10 +29,11 @@
     a.task-status(
         href="" 
         title="{{'TASK.TITLE_SELECT_STATUS' | translate}}"
+        ng-style="{'color': task.status_extra_info.color}"
     )
         span.task-status-bind
         <% if(perms.modify_task) { %>
-        svg.icon.icon-arrow-down
+        svg.icon.icon-arrow-down(ng-style="{'fill': task.status_extra_info.color}")
             use(xlink:href="#icon-arrow-down")
         <% } %>
 
