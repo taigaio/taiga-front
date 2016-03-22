@@ -142,54 +142,62 @@
 
 .lightbox-add-member {
     .add-member-wrapper {
+        max-width: 600px;
+        width: 90%;
+    }
+    .add-single-member {
+        align-items: center;
         display: flex;
+        justify-content: space-between;
         margin-bottom: .5rem;
         &:last-child {
             margin-bottom: 0;
         }
         fieldset {
-            position: relative;
-            &:first-child {
-                flex-basis: 400px;
-                flex-grow: 3;
-            }
+            display: inline-block;
+            flex: 1;
+            margin: 0 .5rem 0 0;
             &:last-child {
-                flex-basis: 200px;
-                flex-grow: 1;
-                margin-left: .5rem;
+                flex-basis: 30px;
+                flex-grow: 0;
+                flex-shrink: 0;
             }
+            &:first-child {
+                flex-basis: 20%;
+            }
+
         }
     }
-    .extra-text {
-        margin-top: 1rem;
-    }
-    fieldset {
-        margin-bottom: 0;
-    }
-    select {
-        width: 80%;
-    }
     .icon {
+        @include svg-size(1.25rem);
         fill: $gray;
         margin-left: .5rem;
-        transition: fill .2s;
     }
     .icon-add {
         &:hover {
-            fill: $primary-light;
+            fill: $primary;
+            transition: fill .2s;
         }
     }
     .icon-trash {
+        fill: $red-light;
         &:hover {
             fill: $red;
+            transition: fill .2s;
         }
     }
-    .button {
-        margin-top: 1rem;
+    .member-limit-warning {
+        @extend %small;
+        background: $red-light;
+        color: $white;
+        margin: 1rem 0;
+        padding: 1rem 2rem;
+        text-align: center;
     }
     .help-text {
         @extend %small;
-        padding: .5rem 1rem;
+        @extend %light;
+        margin-top: 1rem;
     }
     .checksley-error-list {
         right: .5rem;

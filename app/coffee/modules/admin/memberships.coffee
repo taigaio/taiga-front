@@ -49,10 +49,11 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
         "tgAppMetaService",
         "$translate",
         "$tgAuth"
+        "tgLightboxFactory"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls, @analytics,
-                  @appMetaService, @translate, @tgAuth) ->
+                  @appMetaService, @translate, @auth, @lightboxFactory) ->
         bindMethods(@)
 
         @scope.project = {}
@@ -64,7 +65,6 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
            title = @translate.instant("ADMIN.MEMBERSHIPS.PAGE_TITLE", {projectName:  @scope.project.name})
            description = @scope.project.description
            @appMetaService.setAll(title, description)
-           @._checkUsersLimit()
 
         promise.then null, @.onInitialDataError.bind(@)
 
@@ -79,8 +79,10 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
 
             @scope.projectId = project.id
             @scope.project = project
-            @scope.$emit('project:loaded', project)
 
+            @scope.canAddUsers = project.max_memberships == null || project.max_memberships > project.total_memberships
+
+            @scope.$emit('project:loaded', project)
             return project
 
     loadMembers: ->
@@ -99,7 +101,7 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
         return @.loadProject().then () =>
             return @q.all([
                 @.loadMembers(),
-                @tgAuth.refresh()
+                @auth.refresh()
             ])
 
     getUrlFilters: ->
@@ -107,16 +109,25 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
         filters.page = 1 if not filters.page
         return filters
 
+    # Actions
+
     addNewMembers:  ->
-        @rootscope.$broadcast("membersform:new")
+        @lightboxFactory.create(
+            'tg-lb-add-members',
+            {
+                "class": "lightbox lightbox-add-member",
+                "project": "project"
+            },
+            {
+                "project": @scope.project
+            }
+        )
 
-    _checkUsersLimit: ->
-        @scope.canAddUsers = @.project.get('total_memberships') > @.project.get('max_memberships')
-        @.maxMembers = @.project.get('max_memberships')
-
-    limitUsersWarning: ->
+    showLimitUsersWarningMessage: ->
         title = @translate.instant("ADMIN.MEMBERSHIPS.LIMIT_USERS_WARNING")
-        message = @translate.instant("ADMIN.MEMBERSHIPS.LIMIT_USERS_WARNING_MESSAGE", {members: @.maxMembers})
+        message = @translate.instant("ADMIN.MEMBERSHIPS.LIMIT_USERS_WARNING_MESSAGE", {
+            members: @scope.project.max_memberships
+        })
         icon = "/" + window._version + "/svg/icons/team-question.svg"
         @confirm.success(title, message,icon)
 
@@ -266,6 +277,18 @@ MembershipsRowAdminCheckboxDirective = ($log, $repo, $confirm, $template, $compi
     template = $template.get("admin/admin-memberships-row-checkbox.html", true)
 
     link = ($scope, $el, $attrs) ->
+        $scope.$on "$destroy", ->
+            $el.off()
+
+        if not $attrs.tgMembershipsRowAdminCheckbox?
+            return $log.error "MembershipsRowAdminCheckboxDirective: the directive need a member"
+
+        member = $scope.$eval($attrs.tgMembershipsRowAdminCheckbox)
+
+        if member.is_owner
+            $el.find(".js-check").remove()
+            return
+
         render = (member) ->
             ctx = {inputId: "is-admin-#{member.id}"}
 
@@ -273,15 +296,6 @@ MembershipsRowAdminCheckboxDirective = ($log, $repo, $confirm, $template, $compi
             html = $compile(html)($scope)
 
             $el.html(html)
-
-        if not $attrs.tgMembershipsRowAdminCheckbox?
-            return $log.error "MembershipsRowAdminCheckboxDirective: the directive need a member"
-
-        member = $scope.$eval($attrs.tgMembershipsRowAdminCheckbox)
-        html = render(member)
-
-        if member.is_admin
-            $el.find(":checkbox").prop("checked", true)
 
         $el.on "click", ":checkbox", (event) =>
             onSuccess = ->
@@ -296,8 +310,10 @@ MembershipsRowAdminCheckboxDirective = ($log, $repo, $confirm, $template, $compi
             member.is_admin = target.prop("checked")
             $repo.save(member).then(onSuccess, onError)
 
-        $scope.$on "$destroy", ->
-            $el.off()
+        html = render(member)
+
+        if member.is_admin
+            $el.find(":checkbox").prop("checked", true)
 
     return {link: link}
 
@@ -469,4 +485,19 @@ MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm, $compile, $transla
 
 
 module.directive("tgMembershipsRowActions", ["$log", "$tgRepo", "$tgResources", "$tgConfirm", "$compile",
-                                             "$translate", "tgCurrentUserService", "tgLightboxFactory", MembershipsRowActionsDirective])
+                                             "$translate", MembershipsRowActionsDirective])
+
+
+#############################################################################
+## No more memberships explanation directive
+#############################################################################
+
+NoMoreMembershipsExplanationDirective = () ->
+    return {
+          templateUrl: "admin/no-more-memberships-explanation.html"
+          scope: {
+              project: "="
+          }
+    }
+
+module.directive("tgNoMoreMembershipsExplanation", [NoMoreMembershipsExplanationDirective])
