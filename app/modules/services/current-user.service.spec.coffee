@@ -273,3 +273,157 @@ describe "tgCurrentUserService", ->
         expect(result).to.be.eql({
             valid: true
         })
+
+    it "the user can own public project", () ->
+        user = Immutable.fromJS({
+            id: 1,
+            name: "fake1",
+            max_public_projects: 10,
+            total_public_projects: 1,
+            max_memberships_public_projects: 20
+        })
+
+        currentUserService._user = user
+
+        project = Immutable.fromJS({
+                id: 2,
+                name: "fake2",
+                total_memberships: 5,
+                is_private: false
+        })
+
+        result = currentUserService.canOwnProject(project)
+
+        expect(result).to.be.eql({
+            valid: true
+        })
+
+    it "the user can't own public project because of max projects", () ->
+        user = Immutable.fromJS({
+            id: 1,
+            name: "fake1",
+            max_public_projects: 1,
+            total_public_projects: 1,
+            max_memberships_public_projects: 20
+        })
+
+        currentUserService._user = user
+
+        project = Immutable.fromJS({
+                id: 2,
+                name: "fake2",
+                total_memberships: 5,
+                is_private: false
+        })
+
+        result = currentUserService.canOwnProject(project)
+
+        expect(result).to.be.eql({
+            valid: false
+            reason: 'max_public_projects'
+            type: 'public_project'
+        })
+
+
+    it "the user can't own public project because of max memberships", () ->
+        user = Immutable.fromJS({
+            id: 1,
+            name: "fake1",
+            max_public_projects: 5,
+            total_public_projects: 1,
+            max_memberships_public_projects: 4
+        })
+
+        currentUserService._user = user
+
+        project = Immutable.fromJS({
+                id: 2,
+                name: "fake2",
+                total_memberships: 5,
+                is_private: false
+        })
+
+        result = currentUserService.canOwnProject(project)
+
+        expect(result).to.be.eql({
+            valid: false
+            reason: 'max_members_public_projects'
+            type: 'public_project'
+        })
+
+    it "the user can own private project", () ->
+        user = Immutable.fromJS({
+            id: 1,
+            name: "fake1",
+            max_private_projects: 10,
+            total_private_projects: 1,
+            max_memberships_private_projects: 20
+        })
+
+        currentUserService._user = user
+
+        project = Immutable.fromJS({
+                id: 2,
+                name: "fake2",
+                total_memberships: 5,
+                is_private: true
+        })
+
+        result = currentUserService.canOwnProject(project)
+
+        expect(result).to.be.eql({
+            valid: true
+        })
+
+    it "the user can't own private project because of max projects", () ->
+        user = Immutable.fromJS({
+            id: 1,
+            name: "fake1",
+            max_private_projects: 1,
+            total_private_projects: 1,
+            max_memberships_private_projects: 20
+        })
+
+        currentUserService._user = user
+
+        project = Immutable.fromJS({
+                id: 2,
+                name: "fake2",
+                total_memberships: 5,
+                is_private: true
+        })
+
+        result = currentUserService.canOwnProject(project)
+
+        expect(result).to.be.eql({
+            valid: false
+            reason: 'max_private_projects'
+            type: 'private_project'
+        })
+
+
+    it "the user can't own private project because of max memberships", () ->
+        user = Immutable.fromJS({
+            id: 1,
+            name: "fake1",
+            max_private_projects: 10,
+            total_private_projects: 1,
+            max_memberships_private_projects: 4
+        })
+
+        currentUserService._user = user
+
+        project = Immutable.fromJS({
+                id: 2,
+                name: "fake2",
+                total_memberships: 5,
+                is_private: true
+        })
+
+        result = currentUserService.canOwnProject(project)
+
+        expect(result).to.be.eql({
+            valid: false
+            reason: 'max_members_private_projects'
+            type: 'private_project'
+        })

@@ -108,6 +108,42 @@ Resource = (urlsService, http, paginateResponseService) ->
         url = urlsService.resolve("project-unwatch", projectId)
         return http.post(url)
 
+    service.transferValidateToken = (projectId, token) ->
+        data = {
+            token: token
+        }
+        url = urlsService.resolve("project-transfer-validate-token", projectId)
+        return http.post(url, data)
+
+    service.transferAccept = (projectId, token, reason) ->
+        data = {
+            token: token
+            reason: reason
+        }
+        url = urlsService.resolve("project-transfer-accept", projectId)
+        return http.post(url, data)
+
+    service.transferReject = (projectId, token, reason) ->
+        data = {
+            token: token
+            reason: reason
+        }
+        url = urlsService.resolve("project-transfer-reject", projectId)
+        return http.post(url, data)
+
+    service.transferRequest = (projectId) ->
+        url = urlsService.resolve("project-transfer-request", projectId)
+        return http.post(url)
+
+    service.transferStart = (projectId, userId, reason) ->
+        data = {
+            user: userId,
+            reason: reason
+        }
+
+        url = urlsService.resolve("project-transfer-start", projectId)
+        return http.post(url, data)
+
     return () ->
         return {"projects": service}
 

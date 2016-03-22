@@ -504,7 +504,7 @@
     .user-list-single {
         &:hover,
         &.selected {
-            background: lighten($primary, 58%);
+            background: rgba(lighten($primary-light, 30%), .3);
             cursor: pointer;
         }
         &:hover {
@@ -517,6 +517,33 @@
         @extend %medium;
         padding: .5rem;
         text-align: center;
+    }
+    .submit-button {
+        margin-top: 1rem;
+    }
+    .add-comment {
+        position: relative;
+        text-align: center;
+        .icon-close {
+            cursor: pointer;
+            fill: $gray;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transition: fill .2s;
+            &:hover {
+                fill: $red-light;
+            }
+            svg {
+                @include svg-size(2rem);
+            }
+        }
+        textarea {
+            margin-top: 1rem;
+        }
+        a {
+            color: $primary;
+        }
     }
 }
 
@@ -569,6 +596,13 @@
         margin-bottom: 1rem;
         width: 3rem;
     }
+    .content {
+        width: 500px;
+    }
+}
+
+.lightbox-request-ownership {
+    text-align: center;
     .content {
         width: 500px;
     }

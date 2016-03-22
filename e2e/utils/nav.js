@@ -46,6 +46,11 @@ var actions = {
         browser.get(browser.params.glob.host);
         return common.waitLoader();
     },
+    admin: async function() {
+        await common.link($('#nav-admin a'));
+
+        return common.waitLoader();
+    },
     taskboard: async function(index) {
         let link = $$('.sprints .button-gray').get(index);
 
@@ -90,6 +95,10 @@ var nav = {
     },
     home: function() {
         this.actions.push(actions.home.bind(null));
+        return this;
+    },
+    admin: function() {
+        this.actions.push(actions.admin.bind(null));
         return this;
     },
     taskboard: function(index) {

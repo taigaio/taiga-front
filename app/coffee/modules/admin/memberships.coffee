@@ -129,7 +129,10 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
             members: @scope.project.max_memberships
         })
         icon = "/" + window._version + "/svg/icons/team-question.svg"
-        @confirm.success(title, message,icon)
+        @confirm.success(title, message, {
+            name: icon,
+            type: "img"
+        })
 
 module.controller("MembershipsController", MembershipsController)
 

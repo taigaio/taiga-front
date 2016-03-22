@@ -78,4 +78,43 @@ describe('project detail', function() {
 
         expect(src).to.contains('upload-image-test.png');
     });
+
+    it('request ownership', async function() {
+        adminHelper.requestOwnership();
+
+        await utils.lightbox.open(adminHelper.requestOwnershipLb());
+
+        expect(utils.notifications.success.open()).to.be.eventually.true;
+    });
+
+    it('change ownership', async function() {
+        await utils.common.createProject(['user5@taigaio.demo']);
+
+        await utils.nav
+            .init()
+            .admin()
+            .go();
+
+        adminHelper.changeOwner();
+
+        let lb = adminHelper.getChangeOwnerLb();
+
+        await lb.waitOpen();
+
+        lb.search('Alicia Flores');
+        lb.select(0);
+        lb.addComment('text');
+
+        utils.common.takeScreenshot('admin', 'project-transfer-lb');
+
+        lb.send();
+
+        let changeOwnerSuccessLb = adminHelper.changeOwnerSuccessLb();
+
+        await utils.lightbox.open(changeOwnerSuccessLb);
+
+        changeOwnerSuccessLb.$('.button-green').click();
+
+        await utils.lightbox.close(changeOwnerSuccessLb);
+    });
 });
