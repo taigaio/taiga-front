@@ -22,12 +22,9 @@
     }
     h1 {
         color: $white;
-        margin-bottom: 3rem;
+        margin-bottom: 1rem;
     }
     a {
-        color: $primary;
-        &:hover {
-            color: $primary-light;
-        }
+        color: $primary-light;
     }
 }
