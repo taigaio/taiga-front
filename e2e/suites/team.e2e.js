@@ -40,8 +40,12 @@ describe('leaving project owner', function(){
 
         let lb = teamHelper.leavingProjectWarningLb();
 
-        await utils.lightbox.exit(lb);
-        await utils.lightbox.close(lb);
+        await utils.lightbox.open(lb);
+
+        utils.lightbox.exit(lb);
+
+        let isPresent = await lb.isPresent();
+        expect(isPresent).to.be.false;
     });
 });
 

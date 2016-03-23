@@ -4,13 +4,11 @@ var lightbox = module.exports;
 var transition = 300;
 
 lightbox.exit = function(el) {
-    var deferred = protractor.promise.defer();
-
     if (typeof el === 'string' || el instanceof String) {
         el = $(el);
     }
 
-    el.$('.icon-close').click();
+    el.$('.close').click();
 };
 
 lightbox.open = async function(el) {
