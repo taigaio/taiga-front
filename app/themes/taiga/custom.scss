@@ -61,11 +61,11 @@ input[type="date"],
 input[type="password"],
 select,
 textarea {
-    background: $whitish;
+    background: lighten($whitish, 6%);
     border-color: $gray-light;
     color: $grayer;
     @include placeholder {
-        color: darken($gray-light, 10%);
+        color: lighten($gray-light, 10%);
     }
     &.checksley-error {
         border: 1px solid $red;

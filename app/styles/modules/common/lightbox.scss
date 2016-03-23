@@ -57,9 +57,13 @@
         }
         .requirement,
         .iocaine {
+            vertical-align: middle;
             &:hover {
                 background: $primary-light;
                 border: 1px solid $primary;
+            }
+            svg {
+                @include svg-size(.75rem);
             }
         }
 
