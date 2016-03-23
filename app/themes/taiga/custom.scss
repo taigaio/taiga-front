@@ -152,7 +152,7 @@ tg-project-menu {
 //Kanban table
 .kanban-table-header {
     .task-colum-name {
-        background: $whitish;
+        background: lighten($whitish, 5%);
         border-top: 3px solid $gray-light;
         .icon {
             color: $gray-light;
@@ -162,6 +162,6 @@ tg-project-menu {
 
 .kanban-table-body {
     .kanban-uses-box {
-        background: $whitish;
+        background: lighten($whitish, 5%);
     }
 }

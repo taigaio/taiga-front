@@ -158,12 +158,12 @@ tg-project-menu {
 }
 
 .main-nav {
-    svg path {
+    svg {
         fill: $white;
     }
     .active {
         background: $white;
-        svg path {
+        svg {
             fill: $black;
         }
     }
@@ -198,7 +198,7 @@ tg-project-menu {
 //Kanban table
 .kanban-table-header {
     .task-colum-name {
-        background: lighten($white, 20%);
+        background: lighten($whitish, 50%);
         border-top: 3px solid $black;
         .icon {
             color: $black;
@@ -208,7 +208,7 @@ tg-project-menu {
 
 .kanban-table-body {
     .kanban-uses-box {
-        background: $whitish;
+        background: lighten($whitish, 50%);
     }
 }
 
