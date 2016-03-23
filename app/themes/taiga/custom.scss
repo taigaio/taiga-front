@@ -132,7 +132,7 @@ tg-project-menu {
 //Taskboard table
 .taskboard-table-header {
     .task-colum-name {
-        background: $whitish;
+        background: lighten($whitish, 5%);
         border-top: 3px solid $gray-light;
         .icon {
             fill: $gray-light;
@@ -141,7 +141,7 @@ tg-project-menu {
 }
 .taskboard-table-body {
     .taskboard-tasks-box {
-        background: $whitish;
+        background: lighten($whitish, 5%);
     }
 }
 
