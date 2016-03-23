@@ -1,6 +1,5 @@
-require("babel/register")({
-    stage: 1
-});
+require("babel-register");
+require("babel-polyfill");
 
 var utils = require('./e2e/utils');
 
@@ -20,8 +19,12 @@ exports.config = {
     },
     mochaOpts: {
         timeout: 45000,
-        compilers: 'js:babel/register'
+        compilers: 'js:babel-register',
+        require: 'babel-polyfill'
     },
+    // capabilities: {
+    //     'browserName': 'firefox'
+    // },
     // capabilities: {
     //     browserName: 'internet explorer',
     //     version: '11'
@@ -99,10 +102,6 @@ exports.config = {
 
         browser.driver.manage().window().maximize();
 
-        browser.getCapabilities().then(function (cap) {
-            browser.browserName = cap.caps_.browserName;
-        });
-
         browser.get(browser.params.glob.host + 'login');
 
         var username = $('input[name="username"]');
@@ -124,11 +123,6 @@ exports.config = {
         }, 10000)
         .then(function() {
             return utils.common.closeJoyride();
-        })
-        .then(function() {
-            return browser.getCapabilities();
-        }).then(function (cap) {
-            browser.browserName = cap.caps_.browserName;
         })
         .then(function() {
             return browser.get(browser.params.glob.host);

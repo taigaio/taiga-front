@@ -26,10 +26,8 @@ common.hasClass = async function (element, cls) {
     return classes.split(' ').indexOf(cls) !== -1;
 };
 
-common.isBrowser = async function(browserName) {
-    let cap = await browser.getCapabilities();
-
-    return browserName === cap.caps_.browserName;
+common.isBrowser = function(browserName) {
+    return browserName === browser.browserName;
 };
 
 common.browserSkip = function(browserName, name, fn) {
@@ -102,8 +100,7 @@ common.waitLoader = function () {
 common.takeScreenshot = async function (section, filename) {
     await common.waitRequestAnimationFrame();
 
-    let cap = await browser.getCapabilities();
-    let browserName = cap.caps_.browserName;
+    let browserName = browser.browserName;
 
     let screenshotsFolder = __dirname + "/../screenshots/" + browserName + "/";
     let dir = screenshotsFolder + section + "/";

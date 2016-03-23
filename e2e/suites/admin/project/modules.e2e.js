@@ -6,7 +6,7 @@ var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 var expect = chai.expect;
 
-describe.only('modules', function() {
+describe('modules', function() {
     before(async function(){
         browser.get(browser.params.glob.host + 'project/project-0/admin/project-profile/modules');
 
@@ -20,10 +20,10 @@ describe.only('modules', function() {
 
         let functionality = functionalities.get(0);
 
-        let label = functionality.$('.check div');
+        let input = functionality.$('.check input');
 
         browser.actions()
-            .mouseMove(label)
+            .mouseMove(input)
             .click()
             .perform();
 
@@ -40,10 +40,10 @@ describe.only('modules', function() {
 
         let functionality = functionalities.get(0);
 
-        let label = functionality.$('.check div');
+        let input = functionality.$('.check input');
 
         browser.actions()
-            .mouseMove(label)
+            .mouseMove(input)
             .click()
             .perform();
 
@@ -58,18 +58,18 @@ describe.only('modules', function() {
     it('enable videoconference', async function() {
         let functionality = $$('.module').get(4);
 
-        let label = functionality.$('.check div');
+        let input = functionality.$('.check input');
 
         browser.actions()
-            .mouseMove(label)
+            .mouseMove(input)
             .click()
             .perform();
 
         let videoconference = functionality.$$('select').get(0);
 
-        videoconference.$(`option:nth-child(1)`).click();
+        videoconference.$(`option:nth-child(2)`).click();
 
-        let salt = functionality.$$('select').get(0);
+        let salt = $('#videoconference-prefix');
 
         salt.sendKeys('abccceee');
 

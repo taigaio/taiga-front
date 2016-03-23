@@ -8,10 +8,20 @@ module.exports = browser.getCapabilities().then(function(s) {
     var shortName, shortVersion;
     var ie, ff, ch, sa;
     var platform;
-    platform = s.caps_.platform;
-    browserName = s.caps_.browserName;
-    browserVersion = s.caps_.version;
+
+    var capabilities = {};
+
+    for(let item of s) {
+        capabilities[item[0]] = item[1];
+    }
+
+    platform = capabilities.platform;
+    browserName = capabilities.browserName;
+    browserVersion = capabilities.version;
     shortVersion = browserVersion.split('.')[0];
+
+    browser.browserName = browserName;
+
     ie = /i.*explore/.test(browserName);
     ff = /firefox/.test(browserName);
     ch = /chrome/.test(browserName);
@@ -86,7 +96,7 @@ module.exports = browser.getCapabilities().then(function(s) {
     };
 
     // Save current webdriver session id for later use
-    browser.webdriverRemoteSessionId = s.caps_['webdriver.remote.sessionid'];
+    browser.webdriverRemoteSessionId = capabilities['webdriver.remote.sessionid'];
 
     browser.inSauceLabs = function() {
         return !!(browser.params.inSauceLabs);
