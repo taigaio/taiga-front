@@ -7,7 +7,7 @@ helper.openNewMemberLightbox = function() {
 };
 
 helper.getNewMemberLightbox = function() {
-    let el = $('div[tg-lb-create-members]');
+    let el = $('div[tg-lb-add-members]');
 
     let obj = {
         el: el,

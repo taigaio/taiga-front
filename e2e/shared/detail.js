@@ -367,7 +367,9 @@ shared.customFields = function(typeIndex) {
     before(async function() {
         let url = await browser.getCurrentUrl();
         let rootUrl = await commonUtil.getProjectUrlRoot();
-        browser.get(rootUrl + '/admin/project-values/custom-fields');
+
+        await browser.get(rootUrl + '/admin/project-values/custom-fields');
+        await browser.sleep(2000);
 
         await customFieldsHelper.create(typeIndex, 'detail-test-custom-fields-text', 'desc1', 1);
 

@@ -486,9 +486,8 @@ MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm, $compile, $transla
 
     return {link: link}
 
-
 module.directive("tgMembershipsRowActions", ["$log", "$tgRepo", "$tgResources", "$tgConfirm", "$compile",
-                                             "$translate", MembershipsRowActionsDirective])
+                                             "$translate", "tgCurrentUserService", "tgLightboxFactory", MembershipsRowActionsDirective])
 
 
 #############################################################################

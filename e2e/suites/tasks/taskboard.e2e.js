@@ -151,7 +151,7 @@ describe('taskboard', function() {
         });
     });
 
-    describe.only('folds', function() {
+    describe('folds', function() {
         it('fold row', async function() {
             taskboardHelper.foldRow(0);
 

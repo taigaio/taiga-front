@@ -44,7 +44,7 @@ helper.clientRequirement = function() {
 };
 
 helper.relatedTaskForm = async function(form, name, status, assigned_to) {
-   form.$('input').sendKeys(name);
+    await form.$('input').sendKeys(name);
 
     let taskStatus = form.$('.task-status');
 
@@ -58,7 +58,12 @@ helper.relatedTaskForm = async function(form, name, status, assigned_to) {
     await assignToLightbox.selectFirst();
     await assignToLightbox.waitClose();
 
-    form.$('.icon-save').click();
+    let saveBtn = form.$('.icon-save');
+
+    await browser.actions()
+        .mouseMove(saveBtn)
+        .click()
+        .perform();
 };
 
 helper.createRelatedTasks = function(name, status, assigned_to) {
@@ -94,5 +99,5 @@ helper.deleteRelatedTask = function(taskIndex, name, status, assigned_to) {
 };
 
 helper.relatedTasks = function() {
-    return $$('.related-tasks-body .single-related-task');
+    return $$('.js-related-task');
 };

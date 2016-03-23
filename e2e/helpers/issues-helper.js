@@ -134,13 +134,13 @@ helper.getCustomFilters = function() {
 };
 
 helper.removeCustomFilters = async function() {
-    let count = await $$('.filter-list .icon-delete').count();
+    let count = await $$('.filter-list .remove-filter').count();
 
     while(count) {
-        $$('.filter-list .icon-delete').get(0).click();
+        $$('.filter-list .remove-filter').get(0).click();
 
         await utils.lightbox.confirm.ok();
 
-        count = await $$('.filter-list .icon-delete').count();
+        count = await $$('.filter-list .remove-filter').count();
     }
 };

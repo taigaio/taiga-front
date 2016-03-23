@@ -106,8 +106,12 @@ describe('admin - members', function() {
 
         let lb = adminMembershipsHelper.leavingProjectWarningLb();
 
-        await utils.lightbox.exit(lb);
-        await utils.lightbox.close(lb);
+        await utils.lightbox.open(lb);
+
+        utils.lightbox.exit(lb);
+
+        let isPresent = await lb.isPresent();
+        expect(isPresent).to.be.false;
     });
 
     it('change role', async function() {

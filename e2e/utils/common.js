@@ -74,6 +74,8 @@ common.link = async function(el) {
         return (href.length > 1 && href !== browser.params.glob.host + "#");
      }, 5000);
 
+
+
     await browser
         .actions()
         .mouseMove(el)
