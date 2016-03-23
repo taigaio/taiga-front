@@ -889,7 +889,8 @@
             "NEWSLETTER_LABEL_TEXT": "I don't wanna receive your newsletter anymore",
             "CANCEL": "Back to settings",
             "ACCEPT": "Delete account",
-            "BLOCK_PROJECT": "Note that all your projects owned will be <strong>blocked</strong>. If you do not want to block your projects before deleting your account you can transfer ownership of the project to someone else."
+            "BLOCK_PROJECT": "Note that all your projects owned will be <strong>blocked</strong>. If you do not want to block your projects before deleting your account you can transfer ownership of the project to someone else.",
+            "SUBTITLE": "You are going to miss you!:("
         },
         "DELETE_PROJECT": {
             "TITLE": "Delete project",
