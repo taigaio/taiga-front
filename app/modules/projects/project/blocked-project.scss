@@ -2,8 +2,11 @@
     align-items: center;
     background: url('../images/discover.png') bottom center repeat-x;
     display: flex;
+    height: calc(100vh - 40px);
     justify-content: center;
     min-height: calc(100vh - 40px);
+    min-width: 100vw;
+    width: 100vw;
 }
 
 .blocked-project-inner {
